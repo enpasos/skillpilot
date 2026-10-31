@@ -1,0 +1,171 @@
+% SPDX-License-Identifier: Apache-2.0
+\section{Curriculare Level: Erwerbsordnung und Bewältigbarkeit}
+\label{sec:levels}
+\begin{principle}{Status: optionales Planungsprofil}
+Die folgenden Bedingungen definieren einen curricularen Levelplan.
+Sie ändern weder Grundgraphgültigkeit noch aktuelle Frontier oder
+gespeicherte Mastery. Es wird damit kein bereits implementierter
+Levelvalidator behauptet. Personalisierungsstufen, Schwierigkeit und
+QA-Reifegrade sind andere Begriffe.
+\end{principle}
+
+Ein curricularer Level ist eine kontextgebundene Erwerbsetappe, etwa ein
+Schuljahr, ein Semester oder eine fachübergreifende Stufe. Das anschauliche
+Bild eines Wissensgebäudes hilft: Kompetenzen sind Bauteile, Voraussetzungen
+tragende Beziehungen, ein Level eine geplante Bauetappe. Das Bild darf aber
+nicht suggerieren, alle Fächer müssten vollständig abgeschlossen sein,
+bevor irgendwo ein Ziel des nächsten Levels verfügbar wird.
+
+\subsection{Plan, Eintrittsbasis und eindeutiger Ersterwerb}
+Für einen aufgelösten Plan $\pi$ seien
+\begin{align}
+ T_\pi&\subseteq A &&\text{geplante Erwerbsziele},\\
+ B_\pi&\subseteq A\setminus T_\pi &&\text{ausdrücklich angenommene Eintrittsbasis},\\
+ n_\pi&\in\N_{>0},\qquad
+ \ell_\pi:T_\pi\to\{1,\ldots,n_\pi\} &&\text{Erwerbslevel}.
+\end{align}
+Die Levelmengen und ihre Präfixe sind
+\[
+ L_i=\{g\in T_\pi\mid\ell_\pi(g)=i\},\quad
+ L_{<i}=\bigcup_{j<i}L_j,\quad L_{\leq i}=\bigcup_{j\leq i}L_j.
+\]
+Jedes Ziel erhält in diesem Plan genau einen Ersterwerbslevel. Ein anderer
+Bildungsgang darf es anders platzieren. Spätere Wiederholung, Vertiefung oder
+Anwendung sind zusätzliche Aktivitäten, keine neue Zielidentität.
+$B_\pi$ ist eine Planungsannahme; sie schreibt keine Lernergebnisse.
+Persönliche Lücken in dieser Basis brauchen eine eigene Diagnose und
+zusätzliche Lernzeit.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[node distance=10mm]
+\node[goal,text width=24mm] (b) {Eintrittsbasis\\$B_\pi$};
+\node[goal,text width=24mm,right=12mm of b] (l1) {Level 1\\$L_1$};
+\node[goal,text width=24mm,right=12mm of l1] (l2) {Level 2\\$L_2$};
+\node[goal,text width=24mm,right=12mm of l2] (l3) {Level 3\\$L_3$};
+\draw[-{Stealth},draw=muted] (b)--(l1);
+\draw[-{Stealth},draw=muted] (l1)--(l2);
+\draw[-{Stealth},draw=muted] (l2)--(l3);
+\coordinate (levelscenter) at ($(b.south)!0.5!(l3.south)$);
+\node[info,anchor=north,text width=130mm] at ($(levelscenter)+(0,-7mm)$)
+ {Jedes Level besitzt einen global gültigen Erwerbsweg\\und ein begründetes Zeitbudget.};
+\end{tikzpicture}
+\caption[Curriculare Erwerbsstufen]{Planungsreihenfolge, keine \code{requires}-Kanten zwischen
+Levelcontainern. Einzelziele werden über ihre eigenen Voraussetzungen verfügbar.}
+\label{fig:levels}
+\end{figure}
+
+\subsection{Strukturelle Machbarkeit durch einen Abschlusszeugen}
+Ein Level $L_i$ ist strukturell machbar, wenn sich seine Ziele als
+$a_1,\ldots,a_m$ aufzählen lassen, sodass
+\begin{equation}
+ a_j\in\Frontier\!\left(B_\pi\cup L_{<i}\cup
+                         \{a_1,\ldots,a_{j-1}\}\right)
+ \qquad(1\leq j\leq m).
+ \label{eq:level-witness}
+\end{equation}
+Hier gilt die \emph{globale} Frontier. Vererbte und entlang offener Ziele verfolgte,
+clusterbezogene und nach Referenzauflösung fachübergreifende Anforderungen
+bleiben erhalten. Ein Normalmodusfilter würde gerade jene Anforderungen
+ausblenden können, deren Einhaltung die Levelprüfung nachweisen soll.
+
+Zur Diagnose dienen die benötigten Atome
+\begin{equation}
+ \ReqAtoms(g)=\bigcup_{\substack{p\in G\\(g,p)\in\Reff^+}}\Atoms(p).
+ \label{eq:reqatoms}
+\end{equation}
+Aus einem Abschlusszeugen folgt notwendig
+\begin{equation}
+ \forall g\in T_\pi:\quad
+ \ReqAtoms(g)\subseteq B_\pi\cup L_{\leq\ell_\pi(g)}.
+ \label{eq:level-closure}
+\end{equation}
+Eine benötigte Kompetenz außerhalb $B_\pi\cup T_\pi$ ist ungeplant;
+ein benötigtes Ziel mit höherem Erwerbslevel ist ein Reihenfolgefehler.
+Voraussetzungen innerhalb desselben Levels sind erlaubt. Die Mengenbedingung
+allein genügt bei Clusteranforderungen noch nicht: Der Selbstblocker aus
+Abschnitt~\ref{sec:validity} erfüllt sie für $L_1=\{a\}$,
+besitzt aber keinen Abschlusszeugen.
+
+Ein endlicher Prüfalgorithmus startet für jedes Level mit
+$M^{(0)}=B_\pi\cup L_{<i}$ und wiederholt
+\begin{equation}
+ M^{(r+1)}=M^{(r)}\cup\bigl(L_i\cap\Frontier(M^{(r)})\bigr).
+\end{equation}
+Er ist erfolgreich genau dann, wenn sein Fixpunkt ganz $L_i$ enthält.
+Die Verfügbarkeit eines noch offenen Ziels kann durch zusätzliche
+Erfüllungen nicht verschlechtert werden. Deshalb kann jede gleichzeitig
+hinzugefügte Menge auch nacheinander erworben werden. Ein vorhandener
+Abschlusszeuge kann umgekehrt nicht vorzeitig an diesem Verfahren scheitern.
+Das Verfahren ist ein \emph{hypothetischer} Lerndurchlauf; es ändert keine
+persönlichen Daten. Im rein atomaren DAG liefert eine voraussetzungsgetreue
+topologische Ordnung den bekannten Spezialfall.
+
+\subsection{Aufwand, Reserve und Budget}
+Strukturelle Machbarkeit beweist noch nicht, dass ein Schuljahr zeitlich
+ausreicht. Jede Zeitbehauptung nennt Referenzlernende, Eintrittsbedingungen,
+Ziel- und Wahlauswahl, Kalender, Schätzmethode und Unsicherheit.
+Alle Größen müssen in derselben kalibrierten Zeiteinheit vorliegen:
+\begin{equation}
+ \Work_\pi(i;\Theta_\pi)+\Reserve_\pi(i)\leq \Budget_\pi(i),
+ \qquad i=1,\ldots,n_\pi.
+ \label{eq:budget}
+\end{equation}
+Dabei sind $\Work\geq0$, $\Reserve\geq0$ und $\Budget>0$.
+Reserve ist geschützt und wird nicht gleichzeitig als verplanbare Zeit
+ausgegeben. Ein Nullpuffer ist möglich, aber offenzulegen. Bereits im
+Arbeitsaufwand enthaltene Prüfungsvorbereitung oder Wiederholung darf nicht
+ein zweites Mal als Reservebedarf gezählt werden.
+
+Ein erklärtes Aktivitätenmodell kann
+$\Work_\pi(i;\Theta_\pi)=\sum_{h\in\mathcal H_i}\widehat t_h(\Theta_\pi)$
+verwenden. $\mathcal H_i$ enthält jeden tatsächlichen Aufwand genau einmal:
+Ersterwerb, gezielte Übung, Abruf, Prüfung und weitere geplante Arbeit.
+Dasselbe kanonische Atom wird nicht in Mathematik und Physik zweimal als
+Ersterwerb gezählt; eine zusätzliche Anwendung in Physik kann dennoch
+eigenständige Zeit kosten. Unkalibrierte \glqq Zielpunkte\grqq{} oder
+\code{weight}-Werte sind keine Minutenschätzung.
+Tabelle~\ref{tab:workload} veranschaulicht die getrennte Verbuchung von Arbeit und Reserve.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Illustrative Planung & Stunden & Bedeutung\\
+\midrule
+Ersterwerb & 42 & Bereits um gemeinsame Ziele bereinigt\\
+Übung und Anwendung & 12 & Zusätzliche Tätigkeiten\\
+Prüfung und Wiederholung & 6 & Im Arbeitsaufwand enthalten\\
+Geschützte Reserve & 10 & Nicht für obige Arbeit verplant\\
+Verfügbare Zeit & 75 & Nach Kalenderausschlüssen\\
+\bottomrule
+\end{tabular}
+\caption{Rechenbeispiel: $\Work=60$ und $\Reserve=10$ passen in
+$\Budget=75$. Die erfundenen Zahlen demonstrieren nur die Rechnung,
+keine empirisch abgesicherte Dauer eines SkillPilot-Curriculums.}
+\label{tab:workload}
+\end{table}
+
+Ein Gesamtbudget genügt nicht, wenn Fächer, Räume oder Termine eigene
+bindende Grenzen haben. Für eine zusätzlich deklarierte Fächerzuordnung
+müssen auch die jeweiligen $\Work_{i,s}+\Reserve_{i,s}\leq \Budget_{i,s}$
+gelten, ohne Doppelzählung gemeinsam zugeordneter Zeit. Ein Kalenderplan
+muss außerdem Voraussetzungen vor der konkreten Anwendung bereitstellen.
+
+\subsection{Gültigkeitsanspruch und Abschlussgrenzen}
+Ein Levelplan ist unter diesem optionalen Profil gültig, wenn er sowohl
+strukturell als auch unter seinen erklärten Annahmen zeitlich machbar ist.
+Ohne belastbare Aufwandsschätzung ist allein die strukturelle Aussage
+zulässig. Der Anspruch bindet Plan, Curriculumfassung, aufgelösten Umfang
+und Schätzannahmen. Er garantiert keine identische Lerngeschwindigkeit
+für jede Person.
+
+Der Abschluss eines Levels wird aus seiner vollständigen Zielmenge und den
+Zieltypverträgen abgeleitet. Er ist keine pauschale Voraussetzung für alle
+Ziele des nächsten Levels. Soll ein Teil der Arbeit durch Prüfungsnachweise
+ersetzt werden, benötigt das den folgenden gesonderten Abschlussvertrag.
+
+\paragraph{Quellen.}
+\srcref{docs/concept/skill-graph/curriculum-levels.md}{Curriculum Levels};
+\srcref{docs/concept/skill-graph/graph-definition.md}{Graph Definition, Abschnitt 12};
+\srcref{docs/concept/didactic/curriculum-time-axis-and-pacing.md}{Zeitachse und Kapazität}.

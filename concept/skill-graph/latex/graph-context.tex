@@ -1,0 +1,604 @@
+% SPDX-License-Identifier: Apache-2.0
+% Technical graph documentation; included by the main compendium.
+
+\section{Stabile Ziele, kontextabhängige Struktur}
+\label{sec:context-model}
+
+Der Graph beantwortet, \emph{was} eine lernende Person können soll und
+welche fachlichen Voraussetzungen dafür benötigt werden. Ein Bildungsgang
+beantwortet zusätzlich, \emph{wo} diese Ziele verortet sind. Ein persönlicher
+Lernplan bestimmt, \emph{wann} daran gearbeitet werden soll. Diese drei
+Fragen brauchen unterschiedliche Daten: Das Umordnen eines Lehrplans darf
+weder eine neue Kompetenz erzeugen noch bereits gespeicherte Ergebnisse
+löschen.
+
+Das allgemeine Zielmodell unterscheidet vier semantische Ebenen
+und eine Darstellungsebene (Tabelle~\ref{tab:layers}). Es beschreibt die Richtung der schrittweisen
+Migration; nicht jede hier genannte Datenstruktur ist damit bereits in
+allen Landschaften vollständig umgesetzt.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabularx}{\linewidth}{@{}P{27mm}XX@{}}
+\toprule
+Ebene & Bedeutung & Beispiel und Grenze \\
+\midrule
+Ziele & Konkrete Kompetenzen und fachliche Bündel; hier liegen
+\code{requires} und \code{contains}. & Eine lineare Gleichung lösen;
+Grundlagen linearer Funktionen. \\
+Programme & Jahre, Semester, Module, Phasen und andere strukturelle
+Einheiten. & Jahrgang 8 ist ein organisatorischer Abschnitt, keine
+Kompetenz. \\
+Platzierungen & Kontextuelle Zuordnung eines Ziels zu einer
+Programmeinheit. & Dasselbe Ziel wird in einem Bildungsgang in Jahrgang 8,
+in einem anderen in Jahrgang 9 erworben. \\
+Kompetenzachsen & Fachliche Taxonomien und querschnittliche
+Kategorien. & K1 \glqq Mathematisch argumentieren\grqq{} ist eine Kategorie;
+\glqq Argumentationslücken erkennen\grqq{} kann ein konkretes Ziel sein. \\
+Kompositionssicht & Geprüfter Aufbau des sichtbaren Baums für einen
+aufgelösten Bildungsumfang. & Eine Landesansicht verweist auf kanonische
+Teilbäume, ohne deren Ziele zu kopieren. \\
+\bottomrule
+\end{tabularx}
+\caption{Fünf Modellierungsaufgaben, ein gemeinsamer Bestand stabiler Ziele.}
+\label{tab:layers}
+\end{table}
+
+\subsection{Identität trotz unterschiedlicher Einordnung}
+
+Die Identitäts-, Attribut- und Atomaritätsregeln aus
+Abschnitt~\ref{sec:core} gelten in allen Schichten unverändert.
+Eine neue Platzierung erzeugt deshalb keine neue Kompetenz.
+Ein Programmabschnitt vom Typ \code{exam} ist noch kein
+Prüfungsziel mit Aufgaben, Bewertungsraster und Lernergebnis.
+Und \code{phase: Q1} erzeugt weder eine Elternkante zu einem
+Q1-Knoten noch eine Voraussetzung zwischen Q1 und Q2.
+
+Historische Bäume können Jahrgangs- und Phasenknoten als
+Kompatibilitätsgerüst enthalten. Im allgemeinen Zielmodell
+übernimmt explizite Programmstruktur diese Aufgabe; die
+fachlichen Ziele bleiben eigenständig. Der gleiche Inhalt
+kann so in mehreren Bildungsgängen anders eingeordnet werden,
+ohne seine Ziel-ID oder gespeicherte Ergebnisse zu kopieren.
+
+\subsection{Platzierungen und Projektionen}
+
+\code{programUnits} beschreiben im Zielmodell einen expliziten Baum oder
+Wald von Programmeinheiten. \code{goalPlacements} verbinden Ziele mit
+diesen Einheiten. Eine \code{primary}-Platzierung liefert den normalen
+Programmanchor; \code{secondary} zeigt zusätzliche Relevanz,
+\code{assessed} einen Prüfungsbezug. Sekundäre und prüfungsbezogene
+Zuordnungen erzeugen keine weiteren sichtbaren Kopien desselben Ziels.
+
+Für einen aufgelösten Kontext gilt: Genau eine passende primäre
+Platzierung ergibt einen eindeutigen Anker. Ohne passende Platzierung
+darf die Darstellung keinen Elternknoten erfinden. Mehrere passende
+primäre Platzierungen benötigen eine ausdrücklich geprüfte Auflösung;
+sonst ist die Projektion uneindeutig. Kontextmerkmale wie Bundesland,
+Schulform, Stufe, Dauer und Kursprofil ändern dabei nicht die Ziel-ID.
+
+Die normale Inhaltssicht folgt ausschließlich den expliziten
+\code{contains}-Kanten. Die Programmsicht folgt Programmeinheiten und
+Platzierungen. Die Kompetenzsicht folgt Katalogeinträgen und
+Kompetenzreferenzen. Die Reihenfolge der Kinder kommt aus der dafür
+deklarierten Datenreihenfolge; eine topologische Sortierung nach
+Voraussetzungen ist eine gesondert benannte didaktische Ansicht.
+
+\subsection{Geprüfte Kompositionssichten}
+
+Eine Kompositionssicht beschreibt den sichtbaren oberen Aufbau eines
+Curriculums durch Strukturknoten, Beschriftungen, Reihenfolge und
+Referenzen auf kanonische Teilbäume. Sie enthält keine neu verfassten
+Atomziele und keine neuen \code{requires}-Kanten. Wo eine solche Sicht
+für den Kontext maßgeblich ist, darf ein Renderer sie nicht durch
+Vermutungen aus Titeln, \code{phase} oder alternativen Platzierungen
+überschreiben.
+
+Der aufgelöste Standardbaum muss jedes sichtbare Ziel höchstens einmal
+und unter höchstens einem sichtbaren Elternknoten zeigen. Ein globaler
+DAG kann mehrere fachliche Elternbezüge besitzen; die sichtbare
+Baumprojektion benötigt dafür eine deterministische, geprüfte
+Auflösungsregel. Überlappende Teilbaumreferenzen sind ohne einen solchen
+Vertrag ungültig. Eine Rollenregel für überlappende Referenzen ist noch
+keine Erlaubnis, Ziele im sichtbaren Baum zu duplizieren.
+
+Die Kompilation soll früh erfolgen: Kontext auflösen, passende Sicht
+auswählen, kanonische Referenzen expandieren, Rollen und sichtbare Eltern
+prüfen, dann das Ergebnis für die Laufzeit bereitstellen. Damit wird
+Strukturvalidierung möglich, bevor eine Benutzeroberfläche daraus einen
+Baum zeichnet.
+
+Ein autoritativ als \code{curricularArea} klassifizierter Cluster
+darf nicht über eine direkte \code{goalEntry}-Referenz als
+undurchsichtiges, atomar wirkendes Laufzeitziel erscheinen. Eine
+\code{canonicalSubtree}-Referenz erhält seine geprüften Nachkommen;
+alternativ benennt eine explizite Sichtstruktur die beabsichtigten
+Atomziele. Diese Darstellungsregel verändert keine Projektionsrolle.
+
+\paragraph{Quellen.}
+\srcref{docs/concept/skill-graph/general-goal-system-and-migration.md}{Allgemeines Zielsystem und Migration};
+\srcref{docs/concept/skill-graph/view-projection-and-goal-placement.md}{Sichten und Zielplatzierung}.
+
+\section{Persönlicher Umfang, Fokus und sichtbare Ziele}
+\label{sec:personal-scope}
+
+\subsection{Vier Personalisierungsstufen}
+
+Die Auswahl \glqq Schule\grqq{}, \glqq Hochschule\grqq{} oder \glqq Sprachen\grqq{} ist zunächst
+Katalognavigation. Erst danach beginnen die vier
+Personalisierungsstufen. Sie sind von den curricularen Levels zu
+unterscheiden, die Erwerbsetappen mit Voraussetzungen und Zeitbudgets
+bezeichnen.
+
+\begin{enumerate}
+\item \textbf{Basiscurriculum:} ein ausdrücklich auswählbares
+Wurzelcurriculum stellt den Zielbestand bereit.
+\item \textbf{Personal Curriculum:} der längerfristig festgelegte,
+backendseitig verantwortete Bildungsumfang. Dazu gehören beim
+Schulcurriculum der Landes- beziehungsweise kanonische Kontext,
+gegebenenfalls G8/G9, eine ausdrücklich bestimmte Stufe, die Fächer
+und deren Kursprofile.
+\item \textbf{Lernfokus und aktives Ziel:} Ein oder mehrere Wurzeln
+begrenzen vorübergehend den Arbeitsbereich; genau ein atomarer
+Lerngegenstand ist das aktuelle Ziel. Fokus und aktives Ziel sind
+veränderlich.
+\item \textbf{Mastery:} Das binäre Ergebnis \glqq geschafft\grqq{} oder
+\glqq noch nicht geschafft\grqq{} gehört zur stabilen atomaren Ziel-ID.
+Die Ergebnisse bleiben bei Änderungen der Sicht oder des
+Fokus erhalten. Clusterfortschritt wird daraus abgeleitet.
+\end{enumerate}
+
+Ein Kursprofil wie LK ist ein Fachattribut und bestimmt nicht implizit
+die Schulstufe. Fehlende Angaben zur Stufe bleiben ungeklärt. Eine
+Änderung des Personal Curriculum prüft Fokus und aktives Ziel erneut
+gegen die neue Zielmenge; sie darf globale Ergebnisse weder löschen
+noch neu vergeben. Die aktuelle Konfiguration des Personal Curriculum
+erfolgt über die dafür vorgesehenen SkillPilot-Oberflächen. Der
+OpenAI-V1-Coach ändert diese Konfiguration nicht selbständig.
+
+Alle \code{target}-Ziele im Personal Curriculum bleiben beabsichtigte
+Lernziele. Ein enger Fokus reduziert den vorübergehenden Arbeitsbereich,
+nicht den längerfristigen Gesamtumfang oder dessen Abschlussbedingungen.
+
+\subsection{Zielrolle und Voraussetzungshilfe}
+
+Eine Referenz in einer Kompositionssicht kann ausdrücklich eine von
+zwei Rollen tragen:
+
+\begin{description}
+\item[\code{target}] Das Ziel gehört zur auswählbaren Lernmenge,
+zur Frontier, zum Fortschritt und zum Abschluss dieser Sicht.
+\item[\code{prerequisiteOnly}] Das Ziel bleibt für
+Voraussetzungsprüfungen mit seiner globalen Identität und seinem
+gespeicherten Zustand verfügbar. Es ist in dieser Sicht kein
+auswählbares Ziel und zählt nicht zum Fortschrittsnenner.
+\end{description}
+
+Fehlt eine Rollenangabe, gilt \code{target}. Teilbaumreferenzen vererben
+ihre Rolle an Nachkommen. Bei überlappenden Rollenfestlegungen entscheidet
+die Spezifität: Eine direkte \code{goalEntry}-Referenz geht einer
+Teilbaumvererbung vor; eine nähere Teilbaumwurzel geht einer breiteren
+vor; erst bei gleicher Spezifität gewinnt \code{target}. Diese Regel
+löst die Rolle, nicht eine ansonsten unzulässige doppelte Darstellung.
+
+Rollen werden nicht aus Alter, Phase oder Voraussetzungspfaden erraten.
+Ein mathematisches Ziel kann in Mathematik ein Lernziel und in Physik
+eine unterstützende Voraussetzung sein. Eine gemeinsame Planung
+identifiziert es dennoch nur einmal. Seine Physikrolle löscht keine
+Mathematikergebnisse und erzeugt auch keinen zweiten Kompetenzerwerb.
+
+Jede direkte kanonische Voraussetzung eines sichtbaren Ziels muss
+in der maßgeblichen Level-2-Komposition als \code{target} oder
+\code{prerequisiteOnly} auflösbar sein. Fehlt sie, ist die
+Konfiguration fehlerhaft und das Ziel bleibt gesperrt. Nur bei
+ausgelassenen Anforderungen, die von übergangsweise vorhandenen
+Legacy-Clustern geerbt werden, bleibt das besondere
+Kompatibilitätsverhalten bestehen. Diese Gültigkeitsprüfung ist
+von der späteren Level-3-Fokuswahl getrennt: Eine gültig
+aufgelöste Voraussetzung außerhalb des Fokus blockiert den
+Normalmodus weiterhin nicht.
+
+\subsection{Anwendbarkeit ist keine Platzierung}
+
+\code{applicability} ist kompilierte Sichtmetadateninformation, etwa
+für einen Bundeslandfilter. Sie wird aus überprüfbaren Quellen,
+Mappings, Provenienz und begründeten Ausnahmen gewonnen. Sie beantwortet,
+in welchem Kontext ein Ziel sichtbar ist. Eine Platzierung beantwortet,
+wo es in einer Programmstruktur liegt. Keine der beiden Angaben ist
+ein Beweis für individuelle Beherrschung.
+
+Bei landesspezifischen Ergänzungen kann eine ausdrücklich deklarierte
+Vererbungsgrenze verhindern, dass eine breite Quellenzuordnung eines
+Vorfahren als Quellenbeleg aller neuen Nachkommen ausgegeben wird.
+Direkte Quellen und Zuordnungen im Ergänzungszweig bleiben maßgeblich.
+Ebenso kann die Sichtbarkeit eines lokalen Übungs- oder Prüfungsendpunkts
+unter einem dafür vorgesehenen Vertrag aus seinen Voraussetzungen
+abgeleitet werden. Das belegt seine Anwendbarkeit, nicht automatisch
+seine Lehrplanabdeckung.
+
+\subsection{Fokuswechsel ohne impliziten Kompetenzerwerb}
+
+Ein Fokus besteht aus der Vereinigung der gewählten Wurzeln und ihrer
+sichtbaren Nachkommen, eingeschränkt auf das Personal Curriculum.
+Im Normalmodus werden die effektiven Voraussetzungen innerhalb dieses
+Fokus geprüft; der explizite strenge Modus prüft global. Eine außerhalb
+liegende Voraussetzung wird im Normalmodus weder zum Hindernis noch
+dadurch gemeistert. Die formalen Unterschiede der Frontier-Berechnung
+werden im mathematischen Teil behandelt.
+
+Eine Fokusausweitung folgt dem eindeutigen sichtbaren Elternpfad. Die
+Backendoption muss eine echte Obermenge liefern und mindestens ein
+noch offenes Ziel hinzufügen. Bei mehreren Wurzeln ersetzt sie nur den
+abgedeckten Zweig und bewahrt die unabhängigen Wurzeln. Der Coach
+übernimmt die veröffentlichte Option vollständig und wartet vor der
+Änderung auf die Zustimmung der lernenden Person.
+
+Eine automatische Ausweitung wird erst nach tatsächlichem Abschluss
+des aktuellen Fokus vorgeschlagen. Eine leere Frontier kann auch einen
+blockierten, unvollständigen Fokus bedeuten. Sie beweist keinen
+Abschluss. Nach der Ausweitung werden neu enthaltene, unbeherrschte
+Voraussetzungen regulär geprüft: Die Beherrschung eines abhängigen Ziels
+überträgt keine Mastery rückwärts. Ihre Erforderlichkeit wird aus dem
+vollständigen Bedarfskontext neu berechnet; rein implizit erledigte
+Erweiterungen begründen keinen neuen Pflichtvorschlag.
+
+\paragraph{Quellen.}
+\srcref{docs/concept/levels-of-personalization.md}{Personalisierungsstufen};
+\srcref{docs/concept/skill-graph/view-projection-and-goal-placement.md}{Projektionsrollen und Sichtvertrag}.
+
+\section{Zieltypen und die Bedeutung eines Ergebnisses}
+\label{sec:goal-types}
+
+Der Graph erhält einen zieltypgerecht aufgelösten Zustand. Er entscheidet
+nicht selbst, ob eine Antwort fachlich überzeugend war, ein
+Orientierungsgespräch angemessen abgeschlossen wurde oder alle
+Karten eines Decks sicher abgerufen wurden. Diese Entscheidungen
+gehören zum jeweiligen Ergebnisvertrag.
+
+Das Ergebnis jedes Lernziels bleibt binär: geschafft oder noch nicht
+geschafft. Der Zieltyp bestimmt, wann es als geschafft gilt.
+Bei einem Inhaltsziel ist dies die fachlich festgestellte Beherrschung;
+bei Orientierung der abgeschlossene motivierende Einstieg, kein
+fachliches Zertifikat. Bei Memorierung wird das eine Zielergebnis aus
+den Kartendaten abgeleitet. Unterschiede der Abschlussbedingungen
+erzeugen keine zusätzlichen Mastery-Stufen oder parallelen Zielergebnisse.
+
+\subsection{Verstehen und Anwenden}
+
+Ein gewöhnliches Inhaltsziel beschreibt konzeptuelles oder prozedurales
+Verstehen. Die Beurteilung muss die in der Beschreibung verlangten
+Aspekte abdecken. Eine gelöste Aufgabe ist ein möglicher Beleg, aber
+nicht schon per Definition die Beherrschung des ganzen Ziels.
+Mehrschrittiger Transfer in einer Aufgabe kann ausreichend sein; eine
+pauschale Mindestzahl von Aufgaben wäre ebenso unbegründet wie das
+automatische Anerkennen jeder richtigen Einzelantwort.
+
+Im coachgeführten Ablauf wird eine ausreichend belegte Beherrschung
+unmittelbar gespeichert. Erst eine bestätigte Speicherung erlaubt
+die Aussage, das Ergebnis sei gesichert. Eine zusätzliche Zustimmung
+zum Speichern ist kein fachlicher Nachweis und wird für den regulären
+Erfolgsfall nicht als weitere Abschlussbedingung eingeführt.
+Der anschließende Themenwechsel bleibt eine andere Entscheidung:
+Der Coach bietet das backendseitig gewählte nächste Thema an und wartet
+auf erkennbares Einverständnis, bevor neues Material beginnt.
+
+\subsection{Orientierung als eigener Abschlussvertrag}
+
+Ein autoritativ als \code{orientation} klassifiziertes Ziel zeigt
+konkrete Möglichkeiten und ehrliche positive Perspektiven des
+folgenden Lernstoffs. Es prüft weder Vorwissen noch Fachbegriffe,
+Rechenfertigkeiten, Abruf, Transfer oder Prüfungsleistung. Wie bei allen
+Lernzielen ist das Ergebnis binär; eine Prozentbewertung der persönlichen
+Motivation wäre zudem inhaltlich irreführend.
+
+Wählt die lernende Person eines der angebotenen Interessen, beginnt
+dadurch zunächst eine passende motivierende Vertiefung. Der Coach
+verknüpft das Interesse mit etwas Konkretem, das die Person verstehen,
+erkunden, gestalten oder tun kann, und lädt zu einer einfachen
+persönlichen Reaktion, Wahl oder Frage ein. Das bloße Wiederholen
+eines Angebotslabels schließt die Orientierung nicht ab.
+
+Nach einer sinnvollen Antwort auf diese Vertiefung oder dem
+ausdrücklichen Wunsch, die Orientierung zu verlassen, folgt eine
+positive Zusammenfassung mit einem gesonderten Abschlussangebot.
+Erst die weitere Zustimmung dazu begründet den Abschlussmarker.
+Dieser Ablauf darf weder als Fachprüfung umgedeutet noch auf normale
+Inhaltsziele übertragen werden. Orientierungsknoten sind reine
+voraussetzungsfreie atomare Einstiege; Prüfungs- und Memory-Metadaten
+gehören nicht auf denselben Knoten.
+
+Bei einem echten Neueinstieg ohne bisherigen Fortschritt im projizierten
+Umfang sind offene Orientierungsziele die einzigen auswählbaren Frontier-Ziele.
+Lernende mit bereits bestehendem Fachfortschritt werden nicht auf diese
+Einstiegsregel zurückgesetzt.
+
+\subsection{Memorierung: Übung und verifizierter Abruf}
+
+Ein Memorierziel bündelt die erforderlichen Karten eines Decks.
+Die Karten besitzen zwei getrennte Prozesszustände. Die SRS-Übung steuert
+Wiederholungsintervalle. Der verifizierte Abruf hält fest, ob eine
+Karte in einer kontrollierten Abfrage korrekt beantwortet wurde.
+Das Umdrehen einer Karte oder eine Selbsteinschätzung in der Übung
+ist kein solcher Nachweis. Aus den Kartendaten folgt genau ein binäres
+Mastery-Ergebnis des Lernziels; Übungs- und Abrufprozess sind keine
+zusätzlichen gespeicherten Zielergebnisse.
+
+Sei $K_g$ die aufgelöste Menge erforderlicher Karten eines Ziels $g$.
+Für einen Zeitpunkt $t$ bezeichnet $\Due(k,t)$ die Fälligkeit und
+$\Verified(k)$ einen aktuell gültigen bestandenen Abruf. Der
+\emph{dokumentierte Zieltypvertrag} verlangt beide Bedingungen:
+\[
+  \Complete_{\mathrm{memory,doc}}(g,t)
+  \iff
+  \bigl(\forall k\in K_g:\neg \Due(k,t)\bigr)
+  \land
+  \bigl(\forall k\in K_g:\Verified(k)\bigr).
+\]
+Diese Formel setzt ein vollständig aufgelöstes, gültiges Deck voraus.
+Fehlende Kartendaten werden dadurch nicht als leeres, automatisch
+abgeschlossenes Deck interpretiert.
+
+\textbf{Abweichung des geprüften Codes.} Der zum Dokumentstand
+gelesene \code{LearnerService} und der Frontend-Hook
+\code{useSrsMastery} leiten Memorier-Mastery dagegen allein aus dem
+verifizierten Abruf aller erforderlichen Karten ab. Für ein nichtleeres,
+vollständig aufgelöstes Deck lautet diese Implementierungsregel:
+\[
+  \Complete_{\mathrm{memory,code}}(g)
+  \iff \forall k\in K_g:\Verified(k).
+\]
+Neue SRS-Fälligkeit entzieht danach nicht automatisch die Mastery.
+Ein fehlgeschlagener erneuter Abruf kann sie hingegen zurücknehmen.
+Dokumentierte Sollsemantik und aktueller Code sind damit nicht
+deckungsgleich; dieses Kompendium trifft keine stillschweigende
+Migrationsentscheidung. Die Abweichung ist einmal im Zieltypvertrag
+aufzulösen. Die allgemeine Abschlussberechnung verwendet dasselbe binäre
+Zielergebnis wie die übrigen Oberflächen; es führt keine eigene
+Anerkennung von Memorier-Mastery ein. Fällige Übung bleibt eine
+Prozessaussage über die Karten.
+
+Der gegenwärtig dokumentierte SRS-Vertrag verwendet SM-2-Zustand mit
+Intervall, Wiederholungszähler, Leichtigkeitsfaktor und nächstem
+Wiederholungsdatum. Eine Karte ohne gespeicherten Zustand ist fällig.
+Erfolgreiche Übung verlängert nach den festgelegten Regeln das
+Intervall; unzureichende Übung setzt die Wiederholungsfolge zurück.
+Diese Zeitplanung ersetzt den verifizierten Abruf nicht.
+
+Eine harte Abfrage kann die lernende Person beim aktiven Memorierziel
+auch beginnen, wenn die SRS-Warteschlange noch nicht leer ist. Zuerst
+wird nur die Frage abgerufen, dann antwortet die Person ohne
+Kartenhilfe. Erst anschließend wird die erwartete Antwort geladen
+und der Abruf als bestanden oder fehlgeschlagen gespeichert.
+Ein bestandener Abruf aktualisiert auch die SRS-Spur als starke
+erfolgreiche Wiederholung. Ein Fehlschlag hebt den verifizierten
+Status dieser Karte auf und führt sie in die Übung zurück.
+
+\subsection{Prüfungsziele im geltenden Ablauf}
+
+Prüfungsziele verwenden \code{examData} mit Aufgabeninhalt,
+Lösungsinhalt und Bewertungsraster. Das Raster enthält maximale
+Punkte, Bestehensgrenze und bewertbare Schritte. Für gültig
+vergebene Schrittpunkte $p_j$ gilt im aktuellen Vertrag:
+\[
+  \Score=\min\!\left\{\sum_j p_j,\;\MaxPoints\right\},
+  \qquad
+  \Passed\iff \Score\ge \PassingPoints.
+\]
+Die Punktevergabe folgt den einzelnen Rastervorgaben. Die
+Gesamtsummenformel allein legitimiert keine frei erfundenen
+Punkte, negativen Bewertungen oder Änderungen des Aufgabeninhalts.
+
+Der normale Lernzugang prüft direkte effektive Voraussetzungen einschließlich
+der atomaren Erfüllung erforderlicher Cluster. Für Prüfungen gilt zusätzlich
+der allgemeine direkte Zugang: Fehlende Vorbereitungsmastery sperrt einen
+bewusst gewählten Prüfungsversuch nicht. Aufgabenverfügbarkeit, persönlicher
+Geltungsbereich und autorisierte Sitzung bleiben erforderlich. Dieser Zugang
+ist lokal implementiert; tatsächliches Deployment und Coach-Abnahme sind
+getrennt nachzuweisen.
+
+Im Prüfungsmodus erhält die Person die vollständige, unveränderte Aufgabe
+und bearbeitet sie ohne inhaltliche Hilfen. Ihre vollständige Einreichung
+wird anhand des Rasters bewertet. Bei Erfolg wird Mastery unmittelbar
+gespeichert. Ein Fehlversuch speichert weder Ergebnis noch Punkte und lässt
+vorhandene Mastery bestehen. Erst die bestätigte Speicherung erlaubt die
+Aussage, der Erfolg sei gesichert.
+
+Nach der Bewertung erhält die Person Ergebnis, Punkte, Begründung und
+Lösung; neues Material beginnt nach ihrer weiteren Entscheidung. Die
+unbegrenzte Wiederholung derselben Aufgabe bleibt möglich. Bekannte Lösungen
+können die Aussagekraft eines Versuchs verringern, erzeugen aber keine zweite
+Anerkennungsstufe: Vorhandene Prüfungs-Mastery zählt unmittelbar in der
+allgemeinen Abschlussberechnung. Entfallende Arbeit wird aus dem vollständigen
+Bedarfsgraphen und der Mastery aller Zielarten abgeleitet, nicht ausschließlich
+aus bestandenen Prüfungen.
+
+\paragraph{Quellen.}
+\srcref{docs/concept/skill-graph/node-types.md}{Zieltypen und Prüfungsablauf};
+\srcref{AGENTS.md}{Projektregeln zu Orientierung, Evidenz und Fortsetzung};
+\srcref{backend/src/main/java/com/skillpilot/backend/service/LearnerService.java}{Backend-Ableitung von Memorier-Mastery};
+\srcref{app/src/hooks/useSrsMastery.ts}{Frontend-Ableitung von Memorier-Mastery}.
+
+\section{Zeitplanung als ergänzende Sicht}
+\label{sec:time-context}
+
+Ein Zeitplan bindet einen erklärten Zielumfang, eine Curriculumfassung,
+Kalender, verfügbare Kapazität und Planungsversion. Absolute Termine
+gehören nicht auf kanonische Ziele, Cluster oder Platzierungen.
+Derselbe Inhalt kann in verschiedenen Kursen zu verschiedenen
+Zeiten bearbeitet werden, ohne seine fachliche Identität zu ändern.
+
+Die Zeitplanung ist eine zusätzliche Ausführungsplanung und keine
+fünfte Personalisierungsstufe. Sie darf Ziele priorisieren, die im
+aktuellen Arbeitsbereich verfügbar sind. Sie erzeugt keine
+Voraussetzungskanten, keine neue Frontier und keine Lernergebnisse.
+Ein curricularer Level ordnet Erwerbsetappen gröber; ein datierter
+Ablaufplan muss darüber hinaus gewährleisten, dass eine Voraussetzung
+rechtzeitig vor ihrer geplanten Verwendung erarbeitet wird.
+
+Verfügbare Kapazität berücksichtigt tatsächliche Unterrichts- oder
+Lernminuten nach Ferien, Ausfällen und anderen Ausschlüssen.
+Aktivitäten, geschützte Reserve und verbindliche Fachbudgets
+müssen darin ohne Doppelzählung Platz finden. Die formale
+Budgetprüfung und ihre Anforderungen an kalibrierte
+Aufwandsschätzungen folgen in Abschnitt~\ref{sec:levels}.
+
+Plan-Soll und tatsächliche Zielerreichung verwenden denselben
+benannten Umfang. Gespeicherte Lernergebnisse sind die Quelle
+der Zielerreichung; eine zusätzliche manuelle
+Unterrichtsabdeckung begründet oder verbirgt keinen Abschluss.
+Fehlende Ergebnisse bleiben als nicht verfügbar erkennbar.
+Neue Planrevisionen dürfen historische Ziele, Ergebnisse und
+frühere Aussagen nicht stillschweigend umdeuten.
+
+Der dokumentierte lokale Planungspilot und die angestrebte
+backendseitig maßgebliche Architektur sind getrennt zu betrachten.
+Insbesondere behauptet die Leveldefinition noch keine
+implementierte fachübergreifende Budgetprüfung.
+
+\paragraph{Quelle.}
+\srcref{docs/concept/didactic/curriculum-time-axis-and-pacing.md}{Zeitachse, Kapazität und Planungsgrenzen}.
+
+\section{Herkunft, Materialien und belastbare Qualitätsaussagen}
+\label{sec:evidence-context}
+
+\subsection{Drei Arten von Verweisen}
+
+Curriculare Herkunft, eigene Veranschaulichung und optionales
+Lernmaterial haben verschiedene Funktionen. Ein offizieller
+Quellenverweis begründet die Aufnahme oder Formulierung eines
+Lernziels. Ein eigenes Lernzielbild veranschaulicht dessen Kernidee.
+Ein Buch, Video oder eine Simulation kann bei der Erarbeitung
+helfen. Keiner dieser Verweise ist für sich ein individueller
+Kompetenznachweis.
+
+Die verbindliche Inhaltsarchitektur lautet: Materialien
+referenzieren das Curriculum; das Curriculum wählt keine
+Materialanbieter. Neue optionale externe Lernmaterialien gehören
+in getrennte Inhaltspakete, die auf stabile Ziel-IDs verweisen.
+Die Auswahl eines Pakets verändert weder Personal Curriculum
+noch Voraussetzungen, Mastery oder Abschlussregeln. Unvollständige
+Materialabdeckung darf normale Lernarbeit nicht sperren.
+
+Offizielle Quellen, Mappings und strukturierte Provenienz bleiben
+am Curriculum nachvollziehbar. Eigene Zielvisualisierungen behalten
+ihren gesonderten kanonischen Referenz- und Qualitätsvertrag.
+Bestehende externe Links auf kanonischen Zielen sind gegebenenfalls
+Migrationsbestand; daraus folgt keine dauerhafte zweite
+Autorenarchitektur. Eine reine Linklieferung belegt außerdem
+nicht, dass ein Coach den verknüpften Inhalt gelesen hat.
+
+\subsection{Quellenbegründung für Ziele und Beziehungen}
+
+Eine überprüfbare Herkunftskette verbindet das kanonische Ziel mit
+einer Quelle, einem konkreten Quellabschnitt, einer nachvollziehbaren
+Extraktion und einer geprüften Mappingentscheidung. Diese kann
+eins zu eins, teilweise, aggregierend oder auf mehrere Ziele
+aufteilend sein. Eine verständliche Begründung erklärt diese Form,
+anstatt jede Zuordnung als wortgleiche Lehrplanübernahme darzustellen.
+
+Für \code{requires} und \code{contains} ist ebenfalls zu
+unterscheiden, ob eine Beziehung ausdrücklich in der Quelle steht
+oder eine fachlich begründete Modellierungsentscheidung ist.
+Ein plausibler Zieltext erlaubt keine nachträglich erfundene
+Provenienz. Ungeklärte Quellen, veraltete Fassungen und
+widersprüchliche Zuordnungen bleiben sichtbare Befunde.
+
+Die menschenlesbare Begründung ist eine Darstellung vorhandener
+Evidenz, kein zweites führendes Register. Strukturierte Referenzen
+und Fingerprints ermöglichen, dieselbe Begründung in Dokumenten,
+Exporten und Laufzeitwerkzeugen konsistent auszugeben. Ein
+zusätzlicher MEM/FWU-Abgleich kann die klassische Quellenroute
+stützen oder infrage stellen; er ersetzt sie nur unter einem
+ausdrücklich geprüften Vertrag für den konkreten Umfang.
+
+\subsection{Algorithmische Gültigkeit und fachliche Qualität}
+
+Die Ebenen der Qualität bauen aufeinander auf, sagen aber nicht
+dasselbe aus. Ein Parser erkennt fehlerhaftes JSON; eine
+Referenzprüfung unbekannte IDs; ein Zyklustest unerlaubte
+Kantenfolgen. Keiner dieser Tests beurteilt allein, ob die
+Kompetenz sinnvoll geschnitten, eine Erklärung verständlich
+oder eine Aufgabe didaktisch geeignet ist.
+
+Die in Abschnitt~\ref{sec:validity} erläuterten
+Gültigkeits- und Routenprofile brauchen jeweils einen benannten
+Prüfumfang. Ein lokales Migrationsgate oder ein einzelner
+grüner Strukturcheck bestätigt nicht automatisch sämtliche
+Anforderungen an Graph, Projektion und Lernbarkeit.
+
+Für vertiefte Curriculum-QS unterscheidet SkillPilot fünf
+gleichzeitig aktuelle Nachweisbereiche:
+\begin{description}
+\item[D -- Beschreibung:] Ist der Zieltext fachlich korrekt und klar?
+\item[P -- positive Verständnisnachweise:] Welche beobachtbare
+Leistung zeigt das geforderte Verständnis?
+\item[A -- Atomarität:] Ist die Kompetenz sinnvoll zugeschnitten?
+\item[M -- Memory:] Ist die Entscheidung über notwendige
+Memorieranteile begründet und aktuell?
+\item[V -- Visualisierung:] Ist die Darstellung fachlich geeignet
+und an die geprüften Bild- und Zielstände gebunden?
+\end{description}
+
+Der Reifegrad M7 bezeichnet den vollständigen geltenden
+maschinellen Abschluss dieser Anforderungen und der
+vorausgesetzten unteren Reifegrade für den erklärten Umfang.
+Er ist keine menschliche Freigabe, keine menschliche Erprobung
+und kein Nachweis von Lernwirksamkeit. Solche Aussagen
+benötigen eigene Prüfungen und eigene Evidenz. Auch mehrere
+übereinstimmende KI-Reviews ersetzen keine gesondert
+vorgeschriebene menschliche Entscheidung.
+
+Eine Prüfung bindet die genaue Fassung ihrer Gegenstände.
+Ein gültiges Bildreview für einen alten Asset-Hash bestätigt
+nicht das neue Bild. Eine Änderung von Zieltext oder
+Voraussetzungen kann bisherige inhaltliche Evidenz berühren;
+ein rein technischer Umzug kann unter einem eng begründeten
+Kompatibilitätsnachweis anders zu behandeln sein. Beides darf
+nicht durch pauschales Erneuern von Hashes verborgen werden.
+
+\subsection{Veröffentlichung und Austausch}
+
+Fachliche Änderungen erfolgen in kanonischen Autorenquellen.
+Pakete, Bücher, Bilder und Validierungsberichte werden daraus neu gebaut;
+historische veröffentlichte Archive bleiben unverändert.
+
+JSON- und Ontologiepakete sollen aus demselben fachlichen Stand entstehen.
+Das JSON-Laufzeitmodell ist die normative Referenz. Der Ontologie-Roundtrip
+muss Zielidentitäten, Relationen, Rollen, Texte und weitere fachliche Felder
+gemäß ihrem Gleichheitsvertrag erhalten. Unterschiedliche JSON-/RDF-Texte
+benötigen semantische Gleichheit, binäre Ressourcen identische Bytes.
+Das Austauschformat darf keine abweichende Laufzeitsemantik einführen.
+
+Externe Zielreferenzen müssen vollständig aufgelöst sein. Ein Physikpaket
+mit mathematischen Voraussetzungen benötigt deren Definitionen;
+leere Platzhalter genügen nicht. Diese vollständige fachliche Closure
+bestimmt noch nicht, welche Ziele für die Person als \code{target}
+auswählbar sind.
+
+Veröffentlichungs- und Prüfaussagen nennen Artefakt, Umfang, Version und
+gebundene Quellen. Ein lokaler Build belegt weder fremde Hostanzeige noch
+pädagogische Wirksamkeit. Dieses Kompendium erteilt keine Release- oder
+Produktionsfreigabe.
+
+\subsection{Lizenzen und private Lernergebnisse}
+
+Software, technische Schemas, Entwicklerdokumentation und funktionale
+Coachanweisungen stehen unter Apache-2.0; eigene Skill-Landschaften,
+Zieltexte, didaktische Aufgaben, Karten, Bilder und Bildungsdokumentation
+unter CC-BY-4.0. Entscheidend ist die Funktion, nicht die Dateiendung.
+Gemischte Sammlungen sind nicht pauschal doppelt lizenziert.
+
+Fremde Quellen, Abhängigkeiten, Medien und Marken behalten ihre Bedingungen.
+Quellenangabe oder KI-Herkunft sind weder Rechtefreigabe noch Qualitätsbeweis.
+Exporte führen zutreffende Lizenzen, Herkunftsangaben und Änderungshinweise
+mit. Private Lernergebnisse, Sitzungsdaten und Gespräche gehören weder zur
+öffentlichen Inhaltslizenz noch in öffentliche Quellen- oder Reviewpakete.
+
+\paragraph{Quellen.}
+\srcref{docs/concept/skill-graph/source-and-resource-links.md}{Quellen und Materialien};
+\srcref{docs/concept/skill-graph/human-readable-source-rationales.md}{Menschenlesbare Quellenbegründungen};
+\srcref{docs/qa-ci/graph-validation-rules.md}{Algorithmische Graphvalidierung};
+\srcref{docs/qa-ci/curriculum-quality-maturity-and-routes.md}{Reifegrade und Qualitätsregeln};
+\srcref{docs/concept/skill-graph/learning-goal-book-and-evidence-review-pipeline.md}{Lernzielbuch und Evidenzreview};
+\srcref{docs/concept/skill-graph/dual-curriculum-package-releases.md}{Curriculum-Pakete};
+\srcref{LICENSING.md}{Lizenzaufteilung}.
