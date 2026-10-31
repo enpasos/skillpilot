@@ -50,6 +50,14 @@ no learner-specific evidence requirement or additional persisted outcome.
 No other prerequisite receives a waiver or mastery. The earlier review's
 limits, including its single positive projection example, still apply.
 
+The G8/G9 layout policy also binds the complete canonical Mathematics file.
+Its input hash is refreshed after comparing the complete graph delta: only
+this assessment's task, solution, review note and source references changed.
+Goal IDs, graph edges, placements, applicability, scoring and all other goal
+fields are unchanged. The existing `check:math-duration-composition-views`
+gate confirms that all 18 generated views still match their committed bytes.
+Historical layout receipts and the layout rules themselves remain unchanged.
+
 ## Exact input bindings
 
 Hashes use the same canonical JSON and exact UTF-8 byte conventions documented
