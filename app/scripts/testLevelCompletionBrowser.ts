@@ -60,7 +60,7 @@ let browser: Browser | null = null
 try {
   browser = await chromium.launch({ headless: true, args: ['--disable-background-networking', '--disable-dev-shm-usage', '--disable-gpu', '--no-sandbox'] })
   const open = async (initial: LevelCompletion, mobile = false, completionTree = false) => {
-    const context = await browser!.newContext({ viewport: mobile ? { width: 390, height: 844 } : { width: 1280, height: 900 }, locale: 'de-DE' })
+    const context = await browser!.newContext({ viewport: mobile ? { width: 390, height: 844 } : { width: 1280, height: 900 }, hasTouch: mobile, locale: 'de-DE' })
     await context.addInitScript(({ learner, rootId, termsVersion }) => {
       localStorage.setItem('skillpilot_lang', 'de')
       localStorage.setItem('skillpilot_theme', 'light')
@@ -268,16 +268,63 @@ try {
     const waiver = row.getByTestId('completion-tree-waiver')
     await waiver.waitFor({ state: 'visible' })
     assert.equal(await row.locator('svg.lucide-check').count(), 0, 'waived preparation does not acquire a mastery check')
+    assert.equal(await waiver.locator('svg.lucide-shield-check').count(), 1, 'coverage uses its own compact status icon')
+    assert.equal(await row.locator('svg.lucide-target').count(), 0, 'the coverage icon replaces the open target icon')
     assert.equal(await h.page.locator('[data-goal-id="math-exam"] svg.lucide-check').count(), 1, 'only the actually mastered exam has a check')
-    await waiver.locator('summary').click()
-    await waiver.getByText('Die separate Vorbereitung entfällt', { exact: false }).waitFor()
-    await waiver.getByRole('button', { name: 'Skalarprodukt prüfen', exact: true }).waitFor()
-    assert.equal(await h.page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true)
-    assert.equal(h.writes.length, 0, 'showing goals and waiver explanations must not write learner state')
+    assert.equal(await waiver.getAttribute('aria-label'), 'Für diesen Abschnitt durch Prüfung abgedeckt')
+    assert.equal(await row.locator('details, summary').count(), 0, 'the tree keeps a compact row without an inline explanation block')
+    assert.doesNotMatch(await row.innerText(), /Für diesen Abschnitt durch Prüfung abgedeckt|separate Vorbereitung/u)
     const screenshotDir = fileURLToPath(new URL('../../tmp/level-completion-browser/', import.meta.url))
     await mkdir(screenshotDir, { recursive: true })
+    await h.page.locator('#learner-goal-sidebar').screenshot({ path: `${screenshotDir}${mobile ? 'mobile' : 'desktop'}-tree-compact.png` })
+    await row.screenshot({ path: `${screenshotDir}${mobile ? 'mobile' : 'desktop'}-waiver-row.png` })
+    const rowHeight = (await row.boundingBox())!.height
+    const tooltip = h.page.getByRole('tooltip')
+    assert.equal(await tooltip.count(), 0)
+    if (mobile) await waiver.tap()
+    else await waiver.hover()
+    await tooltip.waitFor({ state: 'visible' })
+    await tooltip.getByText(title.de, { exact: false }).waitFor()
+    await tooltip.getByText('Skalarprodukt prüfen', { exact: false }).waitFor()
+    await tooltip.getByText(/Lernstand.*unverändert/u).waitFor()
+    if (mobile) await tooltip.getByText('Skalarprodukt prüfen', { exact: false }).tap()
+    else {
+      await waiver.focus()
+      await tooltip.getByText('Skalarprodukt prüfen', { exact: false }).click()
+    }
+    // Touch compatibility mouse events and the 150 ms leave timer must not
+    // dismiss explanatory content while the learner interacts inside it.
+    await h.page.waitForTimeout(200)
+    assert.equal(await tooltip.isVisible(), true, 'interacting inside the tooltip keeps it available')
+    assert.equal(await waiver.getAttribute('aria-describedby'), await tooltip.getAttribute('id'))
+    assert.equal(await tooltip.getByRole('button').count(), 0, 'the explanatory tooltip is noninteractive')
+    assert.equal((await row.boundingBox())!.height, rowHeight, 'opening the tooltip does not expand the tree row')
+    const tooltipBox = (await tooltip.boundingBox())!
+    const viewport = h.page.viewportSize()!
+    assert.ok(tooltipBox.x >= 0 && tooltipBox.y >= 0
+      && tooltipBox.x + tooltipBox.width <= viewport.width
+      && tooltipBox.y + tooltipBox.height <= viewport.height, 'tooltip remains within the visible viewport')
+    assert.equal(await h.page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true)
+    assert.equal(h.writes.length, 0, 'showing goals and waiver explanations must not write learner state')
     await h.page.screenshot({ path: `${screenshotDir}${mobile ? 'mobile' : 'desktop'}-tree-waiver.png` })
-    await waiver.getByRole('button', { name: 'Skalarprodukt prüfen', exact: true }).click()
+    await waiver.press('Escape')
+    await tooltip.waitFor({ state: 'detached' })
+    if (!mobile) {
+      await h.page.mouse.move(0, 0)
+      await waiver.blur()
+      await waiver.focus()
+      await tooltip.waitFor({ state: 'visible' })
+      await waiver.press('Escape')
+      await tooltip.waitFor({ state: 'detached' })
+      assert.equal(await waiver.evaluate((element) => element === document.activeElement), true, 'keyboard dismissal preserves icon focus')
+    }
+    if (mobile) await waiver.tap()
+    else await waiver.hover()
+    await tooltip.waitFor({ state: 'visible' })
+    await h.page.locator('#learner-goal-sidebar').getByText('Meine Lernziele', { exact: true }).click()
+    await tooltip.waitFor({ state: 'detached' })
+    if (mobile) await h.page.getByRole('button', { name: 'Lernzielmenü schließen', exact: true }).click()
+    await card.getByRole('button', { name: 'Im Lernzielbaum anzeigen: Skalarprodukt prüfen', exact: true }).click()
     await h.page.waitForFunction(() => document.querySelector('[data-goal-id="math-exam"]')?.classList.contains('bg-sky-100'))
     await h.page.locator('[data-goal-id="math-sek-ii"]').getByRole('button', { name: /einklappen$/ }).click()
     await waiver.waitFor({ state: 'detached' })
@@ -298,15 +345,71 @@ try {
       { ...completed, learnerRevision: 12, calculationStatus: 'invalid' as const, complete: undefined },
       unselected(13),
     ]) {
+      if (mobile) await waiver.tap()
+      else await waiver.focus()
+      await tooltip.waitFor({ state: 'visible' })
       await update(next)
       await waiver.waitFor({ state: 'detached' })
+      await tooltip.waitFor({ state: 'detached' })
       await update(completed)
       await waiver.waitFor({ state: 'visible' })
     }
+    if (mobile) await waiver.tap()
+    else await waiver.focus()
+    await tooltip.waitFor({ state: 'visible' })
     h.unavailable()
     await update(completed)
     await waiver.waitFor({ state: 'detached' })
+    await tooltip.waitFor({ state: 'detached' })
     assert.equal(h.writes.length, 0)
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+  {
+    const assessments = ['math-exam', 'math-exam-two', 'math-exam-three'].map((goalId, index) => ({
+      goalId,
+      title: { de: `Prüfung ${index + 1}: ${'Vektorprojektionen geometrisch erläutern und begründet anwenden. '.repeat(3)}`.slice(0, 130) },
+      mastered: true, startAvailable: false,
+    }))
+    const completed: LevelCompletion = {
+      ...selected(20), complete: true, targetCount: 4, masteredTargetCount: 3, waivedTargetCount: 1, pendingTargetCount: 0,
+      requiredAssessmentCount: 3, masteredAssessmentCount: 3, waivedTargetGoalIds: ['math-upper'], assessments,
+      waiverDetails: [{ goalId: 'math-upper', title: { de: 'Ableitungen für Wachstumsmodelle deuten' }, ruleId: 'three-assessments',
+        assessments: assessments.map(({ goalId, title: assessmentTitle }) => ({ goalId, title: assessmentTitle })), assessmentCount: 3 }],
+    }
+    const h = await open(completed, false, true)
+    await h.page.setViewportSize({ width: 640, height: 360 })
+    const card = h.page.getByTestId('level-completion-card')
+    await card.getByText('Warum entfällt diese Vorbereitung?', { exact: true }).click()
+    await card.locator('details').getByRole('button', { name: 'Im Lernzielbaum anzeigen' }).click()
+    const waiver = h.page.locator('[data-goal-id="math-upper"]').getByTestId('completion-tree-waiver')
+    await waiver.focus()
+    const tooltip = h.page.getByRole('tooltip')
+    await tooltip.waitFor({ state: 'visible' })
+    assert.equal(await tooltip.evaluate((element) => element.scrollHeight > element.clientHeight), true,
+      'long valid assessment titles exercise an overflowing tooltip in a short viewport')
+    await tooltip.getByText('Für diesen Abschnitt durch Prüfung abgedeckt', { exact: true }).click()
+    await h.page.waitForTimeout(200)
+    assert.equal(await tooltip.isVisible(), true, 'clicking tooltip text after trigger focus does not dismiss it')
+    await waiver.focus()
+    await waiver.press('ArrowDown')
+    const afterArrow = await tooltip.evaluate((element) => element.scrollTop)
+    assert.ok(afterArrow > 0, 'ArrowDown scrolls explanatory content while focus stays on the icon')
+    await waiver.press('PageDown')
+    assert.ok(await tooltip.evaluate((element) => element.scrollTop) > afterArrow, 'PageDown reveals more of the tooltip')
+    await waiver.press('End')
+    const end = await tooltip.evaluate((element) => ({ top: element.scrollTop, maximum: element.scrollHeight - element.clientHeight }))
+    assert.ok(Math.abs(end.top - end.maximum) <= 1, 'End reaches the complete explanation')
+    const reasonBox = (await tooltip.getByText(/Lernstand.*unverändert/u).boundingBox())!
+    const tooltipBox = (await tooltip.boundingBox())!
+    assert.ok(reasonBox.y >= tooltipBox.y && reasonBox.y + reasonBox.height <= tooltipBox.y + tooltipBox.height,
+      'the unchanged-mastery explanation at the bottom is visible after keyboard scrolling')
+    await waiver.press('Home')
+    assert.equal(await tooltip.evaluate((element) => element.scrollTop), 0, 'Home returns to the start of the tooltip')
+    await waiver.press('Escape')
+    await tooltip.waitFor({ state: 'detached' })
+    assert.equal(await waiver.evaluate((element) => element === document.activeElement), true, 'Escape retains trigger focus')
+    assert.equal(h.writes.length, 0, 'reading and scrolling the tooltip never writes learner state')
     assert.deepEqual(h.errors, [])
     await h.context.close()
   }

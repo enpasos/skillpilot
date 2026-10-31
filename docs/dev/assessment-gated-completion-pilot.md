@@ -74,9 +74,11 @@ Cockpit und Coach erklären den Geltungsbereich; eine veraltete oder nicht
 verfügbare Berechnung übernimmt keine frühere Begründung.
 
 Im Lernzielbaum erscheint an den ausdrücklich entfallenden, noch nicht
-gemeisterten Vorbereitungszielen der Hinweis **„Für diesen Abschnitt durch
-Prüfung abgedeckt“**. Aufklappen zeigt den Abschnitt und, soweit die begrenzte
-Serverantwort sie enthält, die zugehörigen bestandenen Prüfungen. Der Hinweis
+gemeisterten Vorbereitungszielen ein **blaues Schild mit Häkchen** anstelle
+des roten Ziel-Icons. Der Tooltip **„Für diesen Abschnitt durch Prüfung
+abgedeckt“** zeigt bei Mausberührung, Tastaturfokus oder Antippen den Abschnitt
+und, soweit die begrenzte Serverantwort sie enthält, die zugehörigen bestandenen
+Prüfungen. Die Zeile bleibt einzeilig; der Hinweis
 verändert weder Einzelmastery noch Fortschrittsbalken oder Zähler. Bei
 ungültigem oder veraltetem Zustand und beim Verlassen des Profils verschwindet
 er. Aus der Abschlusskarte führt **„Im Lernzielbaum anzeigen“** zum jeweiligen
@@ -501,7 +503,7 @@ Nach bestätigter Speicherung und Cockpit-Reload gilt exakt:
 | Pflichtprüfung | **1 von 1 geschafft** |
 | Vorbereitung | **Für 1 Lernziel entfällt die Vorbereitung für diesen Abschnitt** |
 | Einzelziele | Prüfung gemeistert; Vorbereitungsziel weiterhin nicht gemeistert |
-| Vorbereitungsziel im Baum | „Für diesen Abschnitt durch Prüfung abgedeckt“, aufklappbar mit Abschnitt und bestandener Prüfung |
+| Vorbereitungsziel im Baum | Blaues Schild mit Häkchen; Tooltip mit Abschnitt und bestandener Prüfung |
 
 Über **„Warum entfällt diese Vorbereitung?“** muss die zugehörige gemeisterte
 Prüfung sichtbar werden. Es darf weder **2 von 2** noch ein neuer Mastery-Haken
@@ -512,8 +514,11 @@ Unterstützungsschritte als Pflicht empfohlen. **„Für heute beenden“** paus
 nach Reload bleibt der Abschluss sichtbar und kein anderes Ziel startet.
 **„Zur normalen Lernansicht“** verlässt die Profilsteuerung bewusst.
 
-Über **„Im Lernzielbaum anzeigen“** das Vorbereitungsziel aufrufen, seinen
-Hinweis aufklappen und die zugehörige Prüfung prüfen. Den übergeordneten
+Über **„Im Lernzielbaum anzeigen“** das Vorbereitungsziel aufrufen, sein
+Icon fokussieren oder antippen und die zugehörige Prüfung im Tooltip prüfen.
+Escape oder Antippen außerhalb schließt den Tooltip; die Zeilenhöhe bleibt gleich.
+Bei langen Begründungen kann am fokussierten Icon mit Pfeil- und Bildtasten
+gescrollt werden. Den übergeordneten
 Baumzweig schließen: Er muss geschlossen bleiben, bis eine neue Navigation
 oder ein ausdrückliches Anzeigen des Ziels ihn wieder öffnet. Nach Verlassen
 des Abschlussprofils darf der abschnittsbezogene Hinweis nicht weiter erscheinen.
