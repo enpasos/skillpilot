@@ -91,6 +91,38 @@ test('OAuth concurrency separates trigger events while superseding older runs fo
   }
 })
 
+test('Claude revocation checkout contains its safety dependencies without curriculum assets', () => {
+  const lane = docsWorkflow.match(/^ {2}claude-revocation-postgres:\n([\s\S]*?)(?=^ {2}[\w-]+:|$(?![\s\S]))/mu)?.[1]
+  assert.ok(lane, 'Missing Claude revocation job')
+  const checkout = lane.match(/- name: Checkout\n([\s\S]*?)(?=\n {6}- name:)/u)?.[1]
+  assert.ok(checkout, 'Missing revocation checkout')
+  assert.match(checkout, /uses: actions\/checkout@v6/u)
+  assert.doesNotMatch(checkout, /sparse-checkout-cone-mode: false|fetch-depth: 0/u)
+  const directories = checkout.match(/sparse-checkout: \|\n((?: {12}[^\n]+\n?)+)/u)?.[1]
+    .trim().split('\n').map(line => line.trim())
+  assert.ok(directories, 'Revocation must not materialize the complete repository')
+  assert.deepEqual(new Set(directories), new Set(['.github/actions', 'scripts', 'deploy/nginx']),
+    'Keep this lane bounded to the revocation scripts, local actions and containment configuration')
+  for (const file of [
+    'scripts/claude_v1_revoke.py',
+    'scripts/test_claude_v1_revoke.py',
+    '.github/actions/postgres-service/action.yml',
+    '.github/actions/postgres-service/postgres_service.py',
+    '.github/actions/postgres-service/test_postgres_service.py',
+    '.github/actions/ubuntu-apt/action.yml',
+    '.github/actions/ubuntu-apt/apt.conf',
+    '.github/actions/ubuntu-apt/render-ubuntu-sources.sh',
+    'deploy/nginx/skillpilot-claude-connector-v1-contained.conf',
+  ]) {
+    assert.ok(directories.some(directory => file.startsWith(`${directory}/`)), `Checkout excludes ${file}`)
+    assert.ok(existsSync(new URL(`../${file}`, import.meta.url)), `Missing safety dependency ${file}`)
+  }
+  assert.match(lane, /run: python3 -m unittest -v scripts\.test_claude_v1_revoke/u)
+  assert.match(lane, /SKILLPILOT_CLAUDE_V1_REVOKE_TEST_CONFIRM: USE-LOCAL-DISPOSABLE-POSTGRES/u)
+  assert.match(lane, /SKILLPILOT_CLAUDE_V1_REVOKE_TEST_DSN: postgresql:\/\/postgres:skillpilot-test-only@127\.0\.0\.1:5432\/skillpilot_revoke_test/u)
+  assert.match(lane, /Stop disposable PostgreSQL\n        if: always\(\)\n        uses: \.\/\.github\/actions\/postgres-service/u)
+})
+
 test('OAuth security covers both providers and requires the real PostgreSQL lane', () => {
   for (const suite of [
     'com.skillpilot.backend.openai.de.oauth.*Test',

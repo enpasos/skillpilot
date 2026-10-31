@@ -121,6 +121,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          sparse-checkout: |
+            .github/actions
+            scripts
+            deploy/nginx
       - name: Test disposable PostgreSQL setup and registry fallback
         run: python3 -m unittest discover -s .github/actions/postgres-service -p 'test_*.py' -v
       - name: Start disposable PostgreSQL 15
