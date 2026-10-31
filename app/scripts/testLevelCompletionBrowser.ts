@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { mkdir } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
-import { chromium, type Browser } from 'playwright'
+import { chromium, type Browser, type Page } from 'playwright'
 import type { LevelCompletion } from '../src/utils/levelCompletionApi'
 import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
 import { startViteTestServer } from './viteTestServer'
@@ -53,6 +53,10 @@ const savedPlan = {
   currentSelectedOptions: [], currentRewindId: null, completedDecisions: [], preservedDecisions: [], pendingDecisions: [],
   canReopenMigratedPersonalization: false, problemCode: null,
 }
+
+const waitForTreeReveal = (page: Page, goalId: string) => page.waitForFunction(id => (
+  document.activeElement === document.querySelector(`[data-goal-id="${CSS.escape(id)}"]`)
+), goalId)
 
 const appRoot = fileURLToPath(new URL('../', import.meta.url))
 const server = await startViteTestServer(appRoot, 'scripts/fixtures/learnerViewStartupUi.html', { plugins: [tailwindcss()] })
@@ -325,6 +329,7 @@ try {
     await card.getByText('1 von 2 Lernzielen geschafft.', { exact: true }).waitFor()
     await card.getByText('Warum entfällt diese Vorbereitung?', { exact: true }).click()
     await card.locator('details').getByRole('button', { name: 'Im Lernzielbaum anzeigen' }).click()
+    await waitForTreeReveal(h.page, 'math-upper')
     const row = h.page.locator('[data-goal-id="math-upper"]')
     const waiver = row.getByTestId('completion-tree-waiver')
     await waiver.waitFor({ state: 'visible' })
@@ -386,11 +391,13 @@ try {
     await tooltip.waitFor({ state: 'detached' })
     if (mobile) await h.page.getByRole('button', { name: 'Lernzielmenü schließen', exact: true }).click()
     await card.getByRole('button', { name: 'Im Lernzielbaum anzeigen: Skalarprodukt prüfen', exact: true }).click()
+    await waitForTreeReveal(h.page, 'math-exam')
     await h.page.waitForFunction(() => document.querySelector('[data-goal-id="math-exam"]')?.classList.contains('bg-sky-100'))
     await h.page.locator('[data-goal-id="math-sek-ii"]').getByRole('button', { name: /einklappen$/ }).click()
     await waiver.waitFor({ state: 'detached' })
     if (mobile) await h.page.getByRole('button', { name: 'Lernzielmenü schließen', exact: true }).click()
     await card.locator('details').getByRole('button', { name: 'Im Lernzielbaum anzeigen' }).click()
+    await waitForTreeReveal(h.page, 'math-upper')
     await waiver.waitFor({ state: 'visible' })
     await h.page.waitForFunction(() => document.querySelector('[data-goal-id="math-upper"]')?.classList.contains('bg-sky-100'))
     let revision = completed.learnerRevision
@@ -443,8 +450,13 @@ try {
     const card = h.page.getByTestId('level-completion-card')
     await card.getByText('Warum entfällt diese Vorbereitung?', { exact: true }).click()
     await card.locator('details').getByRole('button', { name: 'Im Lernzielbaum anzeigen' }).click()
+    // Reveal finishes by focusing the row in a rendering frame. Enter the icon
+    // only after that navigation, otherwise the pending row focus steals it.
+    await waitForTreeReveal(h.page, 'math-upper')
     const waiver = h.page.locator('[data-goal-id="math-upper"]').getByTestId('completion-tree-waiver')
-    await waiver.focus()
+    await h.page.keyboard.press('Tab')
+    assert.equal(await waiver.evaluate(element => element === document.activeElement), true,
+      'keyboard navigation enters the waiver icon after revealing its goal row')
     const tooltip = h.page.getByRole('tooltip')
     await tooltip.waitFor({ state: 'visible' })
     assert.equal(await tooltip.evaluate((element) => element.scrollHeight > element.clientHeight), true,
