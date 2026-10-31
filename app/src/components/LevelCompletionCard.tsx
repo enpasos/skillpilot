@@ -22,21 +22,31 @@ export interface LevelCompletionCardProps {
   onAction: (action: CompletionActionInput) => void
   onRetry: () => void
   onShowGoal?: (goalId: string) => void
+  /** Read-only handoff from a coach; opening this disclosure never selects a route. */
+  discoveryOpenRequest?: string
+  onOpenSettings?: () => void
+  requestedAssessmentMissing?: boolean
 }
 
 /** All counts and choices come from the same backend state as the active goal. */
 export const LevelCompletionCard = ({
   completion, language, stale = false, busy = false, error, learningPlanPaused = false, onAction, onRetry, onShowGoal,
+  discoveryOpenRequest, onOpenSettings, requestedAssessmentMissing = false,
 }: LevelCompletionCardProps) => {
   const en = language.startsWith('en')
   const headingId = React.useId()
   const [pendingChoice, setPendingChoice] = React.useState<{ action: CompletionActionInput; revision: number } | null>(null)
+  const [discoveryOpen, setDiscoveryOpen] = React.useState(Boolean(discoveryOpenRequest || completion.notice))
+  React.useEffect(() => {
+    if (discoveryOpenRequest) setDiscoveryOpen(true)
+  }, [discoveryOpenRequest])
   const pendingTrigger = React.useRef<HTMLElement | null>(null)
   const pendingCurrent = pendingChoice?.revision === completion.learnerRevision
   React.useEffect(() => {
     if (pendingChoice && !pendingCurrent) pendingTrigger.current?.focus()
   }, [pendingChoice, pendingCurrent])
   const disabled = stale || busy
+  const discoveryDisabled = disabled || completion.calculationStatus === 'invalid' || completion.calculationStatus === 'unavailable'
   const active = Boolean(completion.profileId)
   const valid = completion.calculationStatus === 'valid'
   const choose = (action: CompletionActionInput, trigger: HTMLElement) => {
@@ -49,13 +59,78 @@ export const LevelCompletionCard = ({
   }
   const cancel = () => { setPendingChoice(null); pendingTrigger.current?.focus() }
   const buttonClass = 'min-h-11 rounded-lg border border-sky-400 px-3 py-2 text-sm font-semibold text-text-primary hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed disabled:opacity-50 dark:hover:bg-sky-950/40'
+  if (!active) return (
+    <section data-testid="level-completion-card" aria-busy={busy}
+      className="mb-4 w-full rounded-2xl border border-border-color bg-sidebar-bg p-4 sm:p-5">
+      <details data-testid="completion-shortcut-discovery" open={discoveryOpen}
+        onToggle={event => setDiscoveryOpen(event.currentTarget.open)}>
+        <summary data-completion-shortcuts-heading className="cursor-pointer rounded font-semibold text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+          {en ? 'Assessment shortcuts' : 'Prüfungsabkürzungen'}
+        </summary>
+        <p className="mt-3 text-sm text-text-secondary">{en
+          ? 'Already familiar with a topic? Try its assessment directly. Passing can remove preparation for that section; other goals keep their saved result.'
+          : 'Du kennst ein Thema bereits? Versuche seine Prüfung direkt. Nach dem Bestehen kann Vorbereitung für den Abschnitt entfallen; andere Lernziele behalten ihren gespeicherten Stand.'}</p>
+        {stale ? <p role="status" className="mt-3 text-sm text-text-secondary">{en
+          ? 'This view is out of date. Reload before choosing your next step.'
+          : 'Diese Ansicht ist veraltet. Lade den aktuellen Stand, bevor du den nächsten Schritt wählst.'}</p> : null}
+        {completion.notice ? <p className="mt-3 text-sm text-text-secondary">{completionNotice(completion.notice, language)}</p> : null}
+        {requestedAssessmentMissing ? <p role="status" className="mt-3 text-sm text-text-secondary">{en
+          ? 'The requested assessment is not currently available as a shortcut here. You can review your Personal Curriculum in the settings.'
+          : 'Die angefragte Prüfung ist hier aktuell nicht als Abkürzung verfügbar. Du kannst deinen Persönlichen Lehrplan in den Einstellungen prüfen.'}</p> : null}
+        <ul className="mt-4 space-y-4">
+          {completion.profileOptions.map(option => <li key={option.profileId} className="space-y-3">
+            <h3 className="font-semibold text-text-primary"><InlineMathText text={completionLabel(option.title, language)} /></h3>
+            {option.targetCount !== undefined && option.requiredAssessmentCount !== undefined ? <p className="text-sm text-text-secondary">{en
+              ? `${option.targetCount} learning ${option.targetCount === 1 ? 'goal' : 'goals'}, including ${option.requiredAssessmentCount} required ${option.requiredAssessmentCount === 1 ? 'assessment' : 'assessments'}.`
+              : `${option.targetCount} ${option.targetCount === 1 ? 'Lernziel' : 'Lernziele'}, davon ${option.requiredAssessmentCount} erforderliche ${option.requiredAssessmentCount === 1 ? 'Prüfung' : 'Prüfungen'}.`}</p> : null}
+            {option.assessments?.map(assessment => <div key={assessment.goalId} className="flex flex-col gap-2 border-l-2 border-sky-300 pl-3 text-sm">
+              <p className="font-medium"><InlineMathText text={completionLabel(assessment.title, language)} /></p>
+              <p className="text-text-secondary">{assessment.mastered ? (en ? 'Achieved' : 'Geschafft') : (en ? 'Not yet achieved' : 'Noch nicht geschafft')}</p>
+              {!assessment.mastered && !assessment.startAvailable
+                ? <p className="text-text-secondary">{completionUnavailableReason(assessment.unavailableReason ?? 'unavailable', language)}</p> : null}
+              <div className="flex flex-wrap gap-3">
+                {!assessment.mastered && assessment.startAvailable ? (discoveryDisabled
+                  ? <span aria-disabled="true" className={`${buttonClass} opacity-50`}>{en ? 'Try assessment directly' : 'Prüfung direkt versuchen'}</span>
+                  : <Link className={buttonClass} to={buildCompletionAssessmentStartHref({ profileId: option.profileId, goalId: assessment.goalId, expectedRevision: completion.learnerRevision })}>
+                    {en ? 'Try assessment directly' : 'Prüfung direkt versuchen'}
+                  </Link>) : null}
+                {onShowGoal ? <button type="button" disabled={stale} onClick={() => onShowGoal(assessment.goalId)}
+                  aria-label={`${en ? 'Show in goal tree' : 'Im Lernzielbaum anzeigen'}: ${completionLabel(assessment.title, language)}`}
+                  className="min-h-9 rounded underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:opacity-50">
+                  {en ? 'Show in goal tree' : 'Im Lernzielbaum anzeigen'}
+                </button> : null}
+              </div>
+            </div>)}
+            <button type="button" disabled={discoveryDisabled} className={buttonClass}
+              aria-label={`${en ? 'Choose section as learning route' : 'Abschnitt als Lernweg wählen'}: ${completionLabel(option.title, language)}`}
+              onClick={event => choose({ action: 'selectProfile', profileId: option.profileId }, event.currentTarget)}>
+              {en ? 'Choose section as learning route' : 'Abschnitt als Lernweg wählen'}
+            </button>
+          </li>)}
+        </ul>
+        {completion.profileOptions.length === 0 ? <p role="status" className="mt-3 text-sm text-text-secondary">{en
+          ? 'No suitable assessment shortcuts are currently available.' : 'Aktuell sind keine passenden Prüfungsabkürzungen verfügbar.'}</p> : null}
+        {(completion.profileOptions.length === 0 || requestedAssessmentMissing) && onOpenSettings
+          ? <button type="button" className={`mt-3 ${buttonClass}`} onClick={onOpenSettings}>{en ? 'Open learning settings' : 'Lerneinstellungen öffnen'}</button> : null}
+        {stale || completion.calculationStatus === 'unavailable' || completion.calculationStatus === 'invalid'
+          ? <button type="button" disabled={busy} className={`mt-3 ${buttonClass}`} onClick={onRetry}>{en ? 'Reload' : 'Neu laden'}</button> : null}
+        {error ? <p role="alert" className="mt-3 text-sm text-amber-800 dark:text-amber-200">{error}</p> : null}
+      </details>
+    </section>
+  )
   return (
     <section data-testid="level-completion-card" aria-labelledby={headingId} aria-busy={busy}
       className="mb-4 w-full rounded-2xl border border-sky-200 bg-sidebar-bg p-4 shadow-sm dark:border-sky-900/60 sm:p-5">
-      <h2 id={headingId} className="flex items-center gap-2 font-semibold text-text-primary">
+      <h2 id={headingId} data-completion-shortcuts-heading tabIndex={-1} className="flex items-center gap-2 font-semibold text-text-primary focus:outline-none">
         <ClipboardCheck size={20} aria-hidden="true" />
         <InlineMathText text={completionLabel(completion.title, language, en ? 'Complete a learning section' : 'Einen Lernabschnitt abschließen')} />
       </h2>
+      {requestedAssessmentMissing ? <p role="status" className="mt-3 text-sm text-text-secondary">{en
+        ? 'The requested assessment is not currently available as a shortcut in this learning route. You can review your Personal Curriculum in the settings.'
+        : 'Die angefragte Prüfung ist in diesem Lernweg aktuell nicht als Abkürzung verfügbar. Du kannst deinen Persönlichen Lehrplan in den Einstellungen prüfen.'}</p> : null}
+      {requestedAssessmentMissing && onOpenSettings ? <button type="button" className={`mt-3 ${buttonClass}`} onClick={onOpenSettings}>
+        {en ? 'Open learning settings' : 'Lerneinstellungen öffnen'}
+      </button> : null}
       {stale ? (
         <p role="status" className="mt-3 text-sm text-text-secondary">{en ? 'This view is out of date. Reload before choosing your next step.' : 'Diese Ansicht ist veraltet. Lade den aktuellen Stand, bevor du den nächsten Schritt wählst.'}</p>
       ) : null}
@@ -121,15 +196,6 @@ export const LevelCompletionCard = ({
           ))}
         </ul>
       ) : null}
-      {completion.profileOptions.length > 0 && !active ? <div className="mt-4 flex flex-wrap gap-2">
-        {completion.profileOptions.map((option) => <div key={option.profileId} className="space-y-2">
-          {option.targetCount !== undefined && option.requiredAssessmentCount !== undefined ? <p className="text-sm text-text-secondary">{en
-            ? `${option.targetCount} learning ${option.targetCount === 1 ? 'goal' : 'goals'}, including ${option.requiredAssessmentCount} required ${option.requiredAssessmentCount === 1 ? 'assessment' : 'assessments'}.`
-            : `${option.targetCount} ${option.targetCount === 1 ? 'Lernziel' : 'Lernziele'}, davon ${option.requiredAssessmentCount} erforderliche ${option.requiredAssessmentCount === 1 ? 'Prüfung' : 'Prüfungen'}.`}</p> : null}
-          <button type="button" disabled={disabled} className={buttonClass}
-            onClick={(event) => choose({ action: 'selectProfile', profileId: option.profileId }, event.currentTarget)}>{completionLabel(option.title, language)}</button>
-        </div>)}
-      </div> : null}
       <div className="mt-4 flex flex-wrap gap-2">
         {completion.actions.map((action, index) => <button key={`${action.action}:${action.goalId ?? index}`} type="button" disabled={disabled}
           className={buttonClass} onClick={(event) => choose({ action: action.action, goalId: action.goalId, intent: action.intent }, event.currentTarget)}>{completionLabel(action.title, language)}</button>)}

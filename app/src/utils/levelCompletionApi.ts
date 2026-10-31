@@ -19,6 +19,14 @@ export interface CompletionAction {
   intent?: CompletionNavigationIntent
 }
 
+export interface CompletionAssessment {
+  goalId: string
+  title: CompletionTitle
+  mastered: boolean
+  startAvailable: boolean
+  unavailableReason?: string
+}
+
 export interface LevelCompletion {
   calculationStatus: CompletionCalculationStatus
   contextRef?: string
@@ -37,8 +45,8 @@ export interface LevelCompletion {
   waivedTargetGoalIds: string[]
   waiverDetails?: { goalId: string; title: CompletionTitle; ruleId: string;
     assessments: { goalId: string; title: CompletionTitle }[]; assessmentCount: number }[]
-  assessments: { goalId: string; title: CompletionTitle; mastered: boolean; startAvailable: boolean; unavailableReason?: string }[]
-  profileOptions: { profileId: string; title: CompletionTitle; targetCount?: number; requiredAssessmentCount?: number }[]
+  assessments: CompletionAssessment[]
+  profileOptions: { profileId: string; title: CompletionTitle; targetCount?: number; requiredAssessmentCount?: number; assessments?: CompletionAssessment[] }[]
   navigationIntent?: CompletionNavigationIntent | 'paused'
   directAssessmentRunning: boolean
   notice?: string
@@ -56,6 +64,18 @@ export interface CompletionTreeWaiver {
   sectionTitle: CompletionTitle
   assessments: { goalId: string; title: CompletionTitle }[]
   assessmentCount?: number
+}
+
+/** Exact authored assessment references only; prerequisites never imply coverage. */
+export const completionAssessmentsForGoal = (completion: LevelCompletion | null, goalId: string) => {
+  if (!completion || completion.calculationStatus === 'invalid' || completion.calculationStatus === 'unavailable') return []
+  const profiles = completion.profileId
+    ? (completion.calculationStatus === 'valid'
+      ? [{ profileId: completion.profileId, title: completion.title, assessments: completion.assessments }] : [])
+    : completion.profileOptions
+  return profiles.flatMap(profile => (profile.assessments ?? [])
+    .filter(assessment => assessment.goalId === goalId)
+    .map(assessment => ({ profileId: profile.profileId, profileTitle: profile.title, assessment })))
 }
 
 /** Annotate only the backend's current scoped waivers; never infer mastery or coverage. */
@@ -119,6 +139,17 @@ const actionName = (value: unknown): CompletionActionName => {
   return value
 }
 
+const assessment = (value: unknown): CompletionAssessment => {
+  const source = record(value)
+  const result = {
+    goalId: text(source.goalId), title: title(source.title),
+    mastered: bool(source.mastered), startAvailable: bool(source.startAvailable),
+    unavailableReason: optionalText(source.unavailableReason),
+  }
+  if (result.mastered && result.startAvailable) throw invalid()
+  return result
+}
+
 /** Read the one projection supplied with the learner state; never calculate mastery here. */
 export const parseLevelCompletion = (value: unknown): LevelCompletion | null => {
   if (value === null || value === undefined) return null
@@ -150,21 +181,17 @@ export const parseLevelCompletion = (value: unknown): LevelCompletion | null => 
       if (!assessmentCount || assessments.length > assessmentCount || assessments.length > 3) throw invalid()
       return { goalId: text(detail.goalId), title: title(detail.title), ruleId: text(detail.ruleId), assessments, assessmentCount }
     }),
-    assessments: list(source.assessments).map((value) => {
-      const assessment = record(value)
-      return {
-        goalId: text(assessment.goalId), title: title(assessment.title),
-        mastered: bool(assessment.mastered), startAvailable: bool(assessment.startAvailable),
-        unavailableReason: optionalText(assessment.unavailableReason),
-      }
-    }),
+    assessments: list(source.assessments).map(assessment),
     profileOptions: list(source.profileOptions).map((value) => {
       const option = record(value)
       const targetCount = option.targetCount == null ? undefined : integer(option.targetCount)
       const requiredAssessmentCount = option.requiredAssessmentCount == null ? undefined : integer(option.requiredAssessmentCount)
       if ((targetCount === undefined) !== (requiredAssessmentCount === undefined)
           || (requiredAssessmentCount !== undefined && (requiredAssessmentCount === 0 || requiredAssessmentCount > targetCount!))) throw invalid()
-      return { profileId: text(option.profileId), title: title(option.title), targetCount, requiredAssessmentCount }
+      const assessments = list(option.assessments ?? []).map(assessment)
+      if (assessments.length > 24 || new Set(assessments.map(entry => entry.goalId)).size !== assessments.length
+          || (requiredAssessmentCount !== undefined && assessments.length > requiredAssessmentCount)) throw invalid()
+      return { profileId: text(option.profileId), title: title(option.title), targetCount, requiredAssessmentCount, assessments }
     }),
     navigationIntent: source.navigationIntent === 'paused' ? 'paused' : intent(source.navigationIntent),
     directAssessmentRunning: bool(source.directAssessmentRunning),
@@ -174,6 +201,7 @@ export const parseLevelCompletion = (value: unknown): LevelCompletion | null => 
       return { action: actionName(action.action), goalId: optionalText(action.goalId), title: title(action.title), intent: intent(action.intent) }
     }),
   }
+  if (result.profileOptions.length > 24) throw invalid()
   if (status === 'valid') {
     result.complete = bool(source.complete)
     if (!result.profileId || !result.contextRef

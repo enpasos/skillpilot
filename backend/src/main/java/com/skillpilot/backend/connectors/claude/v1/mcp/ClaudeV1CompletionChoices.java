@@ -34,8 +34,16 @@ final class ClaudeV1CompletionChoices {
                 || "completion_assessment_owned_elsewhere".equals(completion.notice())) return List.of();
         boolean en = "en".equals(language);
         List<Choice> candidates = new ArrayList<>();
-        if (!active(completion) && completion.profileOptions() != null) {
+        if (!active(completion) && "unresolved".equals(completion.calculationStatus())
+                && completion.notice() == null && completion.profileOptions() != null) {
             for (var option : completion.profileOptions()) {
+                for (var assessment : option.assessments()) {
+                    if (!assessment.mastered() && assessment.startAvailable()) {
+                        candidates.add(new Choice((en ? "Try assessment directly: " : "Prüfung direkt versuchen: ")
+                                + label(assessment.title(), language), "startAssessment", option.profileId(),
+                                assessment.goalId(), null));
+                    }
+                }
                 candidates.add(new Choice((en ? "Choose section: " : "Abschnitt wählen: ")
                         + label(option.title(), language), "selectProfile", option.profileId(), null, null));
             }
@@ -92,6 +100,11 @@ final class ClaudeV1CompletionChoices {
                 section.put("title", label(option.title(), language));
                 if (option.targetCount() != null) section.put("targetCount", option.targetCount());
                 if (option.requiredAssessmentCount() != null) section.put("requiredAssessmentCount", option.requiredAssessmentCount());
+                if (!option.assessments().isEmpty()) {
+                    section.put("assessments", option.assessments().stream().limit(MAX_CHOICES).map(assessment ->
+                            Map.of("title", label(assessment.title(), language), "mastered", assessment.mastered(),
+                                    "startAvailable", supported() && assessment.startAvailable())).toList());
+                }
                 return section;
             }).toList());
         }
@@ -133,8 +146,11 @@ final class ClaudeV1CompletionChoices {
         }
         result.put("choices", published(completion, language).stream().map(Choice::label).toList());
         result.put("instruction", "Use this backend completion statement without recalculating or turning waived preparation into mastery. "
+                + "Available direct assessment choices can be selected from ordinary learning without choosing a section first. "
+                + "Offer them when the learner asks for a shortcut, an assessment or to demonstrate existing knowledge; do not interrupt ordinary teaching unprompted. "
                 + "For an explicit learner choice, copy exactly one current choices entry into choose_skillpilot_completion_route. "
-                + "Offer choices by their exact titles and wait for the learner's explicit selection before invoking the choice tool. "
+                + "An explicit learner request to start exactly one currently published assessment already supplies selection consent; invoke that choice without asking again. "
+                + "Otherwise offer choices by their exact titles and wait for the learner's explicit selection before invoking the choice tool. "
                 + "A successfully accepted navigation choice needs no second consent; respect pauses. "
                 + "Do not call ordinary focus, goal-selection or plan-resume tools while this completion route owns navigation. "
                 + "If the calculation is unavailable, do not invent remaining obligations or report failure. "

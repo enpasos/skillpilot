@@ -3,6 +3,24 @@ import { mapLegacyGymnasiumLandscapeIdToCanonical } from './trainerLandscapeCont
 
 type Role = 'learner' | 'trainer' | 'explorer'
 
+/** Keep only entry settings; a coach handoff carries no identity or launch grant. */
+export const getSessionStartSearch = (landscapeId: string, role: Role, sourceSearch: string) => {
+  const params = new URLSearchParams()
+  if (landscapeId) params.set('l', landscapeId)
+  if (role === 'learner' && new URLSearchParams(sourceSearch).get('completionShortcuts') === '1') {
+    params.set('completionShortcuts', '1')
+  }
+  const search = params.toString()
+  return search ? `?${search}` : ''
+}
+
+/** A handoff opens discovery once; choosing another goal resumes ordinary navigation. */
+export const getGoalNavigationSearch = (search: string | URLSearchParams, currentGoalId: string | undefined, nextGoalId: string) => {
+  const params = new URLSearchParams(search)
+  if (currentGoalId !== nextGoalId) params.delete('completionShortcuts')
+  return params
+}
+
 export const normalizeLearnerLandscapeId = (landscapeId?: string | null) =>
   mapLegacyGymnasiumLandscapeIdToCanonical(landscapeId)
 

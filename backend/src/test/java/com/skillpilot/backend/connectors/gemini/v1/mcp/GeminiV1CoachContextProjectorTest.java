@@ -35,6 +35,32 @@ import org.junit.jupiter.params.provider.CsvSource;
 class GeminiV1CoachContextProjectorTest {
 
     @Test
+    void masterySuccessorKeepsReadOnlyAssessmentDiscoveryWithoutReplacingTheChosenNextGoal() {
+        var facade = mock(CoachToolFacade.class);
+        var projector = new GeminiV1CoachContextProjector(new CoachStateProjection("https://skillpilot.test"),
+                facade, "https://skillpilot.test");
+        when(facade.getPersonalizationPlan("learner")).thenReturn(PersonalizationPlan.complete(List.of()));
+        var base = stateWithActiveGoal(goal("next-goal", List.of()));
+        var completion = new com.skillpilot.backend.api.LevelCompletionResponse("unresolved", null, null,
+                null, "private-generation", 7, Map.of(), null, 0, 0, 0, 0, 0, 0, List.of(), List.of(),
+                List.of(new com.skillpilot.backend.api.LevelCompletionResponse.ProfileOption("private-profile",
+                        Map.of("en", "Vectors"), 2, 1,
+                        List.of(new com.skillpilot.backend.api.LevelCompletionResponse.Assessment("public-exam",
+                                Map.of("en", "Explain projection"), false, true, null)))),
+                null, false, null, List.of());
+        var update = new com.skillpilot.backend.api.MasteryUpdateResponse(true, "previous-goal", 1.0,
+                base.frontier(), base.nextAllowedActions(), base.learningState(), base.activeGoal(),
+                base.stateMachine(), base.goals(), completion);
+
+        var context = projector.projectMasteryContext("learner", 7, "en", base.curriculum(), update);
+        var discovery = (com.skillpilot.backend.ai.AssessmentShortcutDiscovery) context.get("assessmentShortcuts");
+        assertNotNull(discovery);
+        assertEquals("Explain projection", discovery.options().getFirst().assessmentTitle());
+        assertEquals(projector.formatGoal(base.activeGoal()), context.get("activeGoal"));
+        assertEquals(List.of(), context.get("frontier"));
+    }
+
+    @Test
     void optionalMaterialsAreActiveGoalOnlyAndDisappearImmediatelyAfterDeactivation() {
         CoachStateProjection projection = new CoachStateProjection("https://skillpilot.com");
         CoachToolFacade facade = mock(CoachToolFacade.class);

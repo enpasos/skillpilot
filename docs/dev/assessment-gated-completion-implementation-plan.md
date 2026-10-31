@@ -12,6 +12,16 @@ Lernziel-Ergebniszustand. Die Auswahl eines konkreten Lernabschnitts bleibt
 bewusst. Fachliche Reviewbindungen und die dokumentierten Laufzeitkapazitäten
 werden durch die Standardaktivierung nicht erweitert.
 
+Die ergänzende Entscheidung zum direkten Einstieg am selben Tag trennt
+**Ansehen** und **Starten**: Cockpit und Coaches erhalten vor der Profilwahl
+eine begrenzte Vorschau konkreter, aktuell verfügbarer Prüfungen. Eine
+ausdrückliche Prüfungswahl wählt Profil und Prüfung atomar; bloßes Ansehen
+ändert keine Navigation. Claude unterstützt diese Wahl innerhalb seiner
+bestehenden Sitzung. ChatGPT und Gemini bieten einen gezielten, rein
+navigierenden Cockpit-Link mit offenem Claude-Hinweis. Eine native Ausführung
+in diesen Anbietern setzt weiterhin ihren eigenen geprüften Vertrag voraus.
+Konkrete Bedienung und Prüfpfade stehen im oben verlinkten Pilotdokument.
+
 Stand: 30. Oktober 2026. Grundlage ist der Code bei `8aee10595` und das
 [fachliche Konzept](../concept/skill-graph/assessment-gated-completion.md).
 Dieses Dokument beschreibt die empfohlene Implementierung einschließlich

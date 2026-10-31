@@ -140,6 +140,16 @@ public class ClaudeV1CoachContextProjector {
         context.put("stateVersion", stateVersion);
         context.put("language", language);
         if (completion != null) context.put("levelCompletion", ClaudeV1CompletionChoices.project(completion, language));
+        if (!completionRoute && !ClaudeV1CompletionChoices.supported()) {
+            var discovery = com.skillpilot.backend.ai.AssessmentShortcutDiscovery.project(completion, publicBaseUrl, language);
+            if (discovery != null) {
+                context.put("assessmentShortcuts", new com.skillpilot.backend.ai.AssessmentShortcutDiscovery(
+                        "en".equals(language)
+                                ? "Ordinary learning can continue in this chat. To use an assessment shortcut, open the chosen assessment in the Cockpit and start a fresh supported Claude session."
+                                : "Normales Lernen ist in diesem Chat weiterhin möglich. Für eine Prüfungsabkürzung öffne die gewünschte Prüfung im Cockpit und starte eine neue unterstützte Claude-Sitzung.",
+                        discovery.options(), discovery.instruction()));
+            }
+        }
         if (activeGoal != null && "atomic".equals(activeGoal.type())
                 && !ClaudeV1McpContractAdapter.isMemoryGoal(activeGoal)) {
             context.put("toolPreparationInstruction", TOOL_PREPARATION_INSTRUCTION);

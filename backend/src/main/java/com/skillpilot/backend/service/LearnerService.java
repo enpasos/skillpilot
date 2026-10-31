@@ -259,6 +259,29 @@ public class LearnerService {
     private record CompletionSnapshot(LevelCompletionResponse response,
                                       CompiledCompletionProfile compiled, CompletionEvaluation evaluation) { }
 
+    private static final int MAX_COMPLETION_DISCOVERY_CHOICES = 24;
+
+    /** One result snapshot for discovery and the selected route, never one database read per profile. */
+    private Map<String, Double> completionMasterySnapshot(Learner learner, Map<String, LearningGoal> graph,
+            Collection<CompiledCompletionProfile> profiles, boolean includePreparation) {
+        Map<String, LearningGoal> contextGoals = new LinkedHashMap<>();
+        profiles.forEach(profile -> (includePreparation ? profile.contextGoalIds() : profile.assessmentGoalIds())
+                .forEach(id -> contextGoals.put(id, graph.get(id))));
+        Map<String, Double> storedMastery = new LinkedHashMap<>();
+        masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())
+                .forEach(entry -> storedMastery.put(entry.getGoalKey(), entry.getValue()));
+        Map<String, Double> mastery = new LinkedHashMap<>(applyCanonicalMasteryProjection(
+                contextGoals, storedMastery, resolveProjectionStateFilterId(learner)));
+        // The ordinary discovery surface needs only assessment results; its exams are
+        // never memorisation goals. Preparation/SRS work belongs to route evaluation.
+        if (includePreparation) {
+            resolveSrsMasterySnapshot(learner.getSkillpilotId(), contextGoals.values().stream()
+                    .filter(Objects::nonNull).toList())
+                    .forEach((id, mastered) -> mastery.put(id, mastered ? 1.0 : 0.0));
+        }
+        return mastery;
+    }
+
     private void assertCompletionApplicability(Learner learner, CompiledCompletionProfile compiled) {
         if (compiled.profile().applicability().isEmpty()) return;
         Set<String> subjects = compiled.targetGoalIds().stream().map(landscapeService::getLandscapeIdForGoal)
@@ -290,17 +313,46 @@ public class LearnerService {
             }
         }
         Set<String> targets = projection == null ? Set.of() : projection.targetGoalIds();
+        Map<String, CompiledCompletionProfile> candidates = new LinkedHashMap<>();
         if (catalog.available() && graphProblem == null) {
-            for (var profile : catalog.profiles().values()) {
+            for (var profile : catalog.profiles().values().stream()
+                    .sorted(Comparator.comparing(CompletionProfileDefinition::id))
+                    .limit(MAX_COMPLETION_DISCOVERY_CHOICES).toList()) {
                 try {
                     var candidate = completionApplicationService.compile(profile.id(), learner.getSelectedCurriculum(), graph, targets);
                     assertCompletionApplicability(learner, candidate);
-                    options.add(new LevelCompletionResponse.ProfileOption(profile.id(), profile.title(),
-                            candidate.targetGoalIds().size(), candidate.assessmentGoalIds().size()));
+                    candidates.put(profile.id(), candidate);
                 } catch (CompletionApplicationService.PreparedContextUnavailableException | IllegalArgumentException e) {
                     /* Unprepared or inapplicable profiles are never offered. */
                 }
             }
+        }
+        Map<String, Double> masterySnapshot = Map.of();
+        RuntimeException masteryFailure = null;
+        if (!candidates.isEmpty()) {
+            try {
+                masterySnapshot = completionMasterySnapshot(learner, graph, candidates.values(),
+                        workflow != null && completionWorkflowMatches(learner, workflow));
+            } catch (RuntimeException e) {
+                masteryFailure = e;
+            }
+        }
+        for (var candidate : candidates.values()) {
+            List<LevelCompletionResponse.Assessment> preview = new ArrayList<>();
+            if (masteryFailure == null) {
+                for (String id : candidate.assessmentGoalIds().stream().sorted()
+                        .limit(MAX_COMPLETION_DISCOVERY_CHOICES).toList()) {
+                    LearningGoal goal = graph.get(id);
+                    boolean mastered = Mastery.isMastered(masterySnapshot.get(id));
+                    boolean taskAvailable = !isExamGoalUnavailableForHardCheck(goal);
+                    boolean available = !routeOwnsNavigation && workflow == null && !mastered && taskAvailable;
+                    preview.add(new LevelCompletionResponse.Assessment(id, completionTitle(goal), mastered,
+                            available, mastered ? null : routeOwnsNavigation ? "completion_route_active"
+                                    : taskAvailable ? null : "assessment_task_unavailable"));
+                }
+            }
+            options.add(new LevelCompletionResponse.ProfileOption(candidate.profile().id(), candidate.profile().title(),
+                    candidate.targetGoalIds().size(), candidate.assessmentGoalIds().size(), preview));
         }
         if (!routeOwnsNavigation && options.isEmpty()) return null;
         String status = "unresolved";
@@ -314,6 +366,7 @@ public class LearnerService {
         boolean invalidDirectBinding = storedDirect && !directRunning;
         if (!catalog.available()) { status = "unavailable"; notice = "completion_generation_unavailable"; }
         else if (graphProblem != null) { status = graphProblem; notice = "completion_profile_invalid"; }
+        else if (masteryFailure != null) { status = "unavailable"; notice = "completion_mastery_unavailable"; }
         else if (workflow == null && completionRouteOwnsNavigation(learner)) {
             status = "invalid"; notice = "completion_workflow_invalid";
         } else if (workflow != null && !completionWorkflowMatches(learner, workflow)) {
@@ -327,17 +380,11 @@ public class LearnerService {
             try {
                 compiled = completionApplicationService.compile(workflow.profileId(), learner.getSelectedCurriculum(), graph, targets);
                 assertCompletionApplicability(learner, compiled);
-                Map<String, Double> storedMastery = new LinkedHashMap<>();
-                masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())
-                        .forEach(entry -> storedMastery.put(entry.getGoalKey(), entry.getValue()));
-                Map<String, LearningGoal> contextGoals = new LinkedHashMap<>();
-                for (String id : compiled.contextGoalIds()) contextGoals.put(id, graph.get(id));
-                Map<String, Double> mastery = new LinkedHashMap<>(applyCanonicalMasteryProjection(
-                        contextGoals, storedMastery, resolveProjectionStateFilterId(learner)));
-                resolveSrsMasterySnapshot(learner.getSkillpilotId(), compiled.contextGoalIds().stream()
-                        .map(graph::get).filter(Objects::nonNull).toList())
-                        .forEach((id, mastered) -> mastery.put(id, mastered ? 1.0 : 0.0));
-                evaluation = completionApplicationService.evaluate(compiled, mastery);
+                if (masteryFailure != null) throw masteryFailure;
+                if (!candidates.containsKey(compiled.profile().id())) {
+                    masterySnapshot = completionMasterySnapshot(learner, graph, List.of(compiled), true);
+                }
+                evaluation = completionApplicationService.evaluate(compiled, masterySnapshot);
                 status = "valid";
                 CompletionCallContext call = CompletionCallContext.current();
                 boolean foreignOwner = storedDirect && call != null && !ownsDirectAssessment(call, workflow);
@@ -479,7 +526,8 @@ public class LearnerService {
         GoalProjection currentProjection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
         CompletionSnapshot offered = completionSnapshot(learner, currentProjection);
         boolean published = offered != null && ("selectProfile".equals(request.action())
-                ? existingWorkflow == null && offered.response().profileOptions().stream()
+                ? existingWorkflow == null && "unresolved".equals(offered.response().calculationStatus())
+                    && offered.response().notice() == null && offered.response().profileOptions().stream()
                     .anyMatch(option -> Objects.equals(option.profileId(), request.profileId()))
                 : offered.response().actions().stream().anyMatch(action ->
                     Objects.equals(action.action(), request.action()) && Objects.equals(action.goalId(), request.goalId())
@@ -583,28 +631,51 @@ public class LearnerService {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
         CompletionWorkflowState workflow = completionWorkflow(learner);
+        boolean newRoute = workflow == null && !completionRouteOwnsNavigation(learner);
+        CompletionCallContext call = CompletionCallContext.current();
         if (request == null || request.expectedRevision() == null
                 || request.expectedRevision() != learner.getCoachStateRevision()
-                || !completionWorkflowMatches(learner, workflow)
-                || !Objects.equals(workflow.profileId(), request.profileId())
-                || !"claude".equals(provider) || sessionBinding == null || expiresAt == null || !expiresAt.isAfter(Instant.now())) {
+                || (!newRoute && (!completionWorkflowMatches(learner, workflow)
+                    || !Objects.equals(workflow.profileId(), request.profileId())))
+                || (newRoute && Boolean.TRUE.equals(request.restartCurrent()))
+                || !"claude".equals(provider) || sessionBinding == null || sessionBinding.isBlank()
+                || expiresAt == null || !expiresAt.isAfter(Instant.now())
+                || (call != null && (!call.supported() || !Objects.equals(call.provider(), provider)
+                    || !Objects.equals(call.sessionBinding(), sessionBinding) || !Objects.equals(call.expiresAt(), expiresAt)))) {
             if (request != null && request.expectedRevision() != null
                     && request.expectedRevision() != learner.getCoachStateRevision()) recordCompletionRevisionConflict();
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT, "Refresh and deliberately choose the assessment again.");
         }
         GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
         CompletionSnapshot snapshot = completionSnapshot(learner, projection);
-        boolean publishedStart = snapshot != null && (Boolean.TRUE.equals(request.restartCurrent())
+        boolean publishedStart = snapshot != null && (newRoute
+                ? snapshot.response().profileOptions().stream()
+                    .filter(option -> Objects.equals(option.profileId(), request.profileId()))
+                    .flatMap(option -> option.assessments().stream())
+                    .anyMatch(assessment -> assessment.startAvailable() && !assessment.mastered()
+                        && Objects.equals(assessment.goalId(), request.goalId()))
+                : Boolean.TRUE.equals(request.restartCurrent())
                 ? snapshot.response().actions().stream().anyMatch(action -> "retryAssessment".equals(action.action())
                     && Objects.equals(action.goalId(), request.goalId()))
                 : snapshot.response().assessments().stream().anyMatch(assessment -> assessment.startAvailable()
                     && Objects.equals(assessment.goalId(), request.goalId())));
-        if (!publishedStart || snapshot.evaluation() == null
+        if (!publishedStart || (!newRoute && (snapshot.evaluation() == null
                 || !snapshot.compiled().assessmentGoalIds().contains(request.goalId())
-                || snapshot.evaluation().masteredAssessmentGoalIds().contains(request.goalId())
+                || snapshot.evaluation().masteredAssessmentGoalIds().contains(request.goalId())))
                 || isExamGoalUnavailableForHardCheck(projection.visibleGoals().get(request.goalId()))) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT, "This assessment cannot be started.");
         }
+        if (newRoute) {
+            assertPersonalizationCompleteForLearning(learner);
+            var compiled = completionApplicationService.compile(request.profileId(), learner.getSelectedCurriculum(),
+                    completionCanonicalGraph(learner.getSelectedCurriculum()), projection.targetGoalIds());
+            assertCompletionApplicability(learner, compiled);
+            workflow = new CompletionWorkflowState(compiled.profile().id(), compiled.profile().revision(),
+                    compiled.curriculumGeneration(), learner.getSelectedCurriculum(), completionScopeDigest(learner),
+                    "required", null, null);
+        }
+        // The explicit assessment choice selects its reviewed section and binds the exam in
+        // one transaction. Discovery and rejected starts never change navigation or mastery.
         saveCompletionWorkflow(learner, workflow.withDirectAssessment(new CompletionWorkflowState.DirectAssessmentContext(
                 provider, sessionBinding, request.goalId(), expiresAt)));
         learner.setActiveGoalId(request.goalId()); learner.setLearningState(LearningState.TEACHING);

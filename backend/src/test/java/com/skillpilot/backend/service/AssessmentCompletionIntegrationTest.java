@@ -87,6 +87,174 @@ class AssessmentCompletionIntegrationTest {
         learner = learnerRepository.findById(id).orElseThrow();
     }
 
+    @Test void discoveryPublishesOnlyAssessmentMetadataWithoutChangingOrdinaryLearning() throws Exception {
+        learner.setActiveGoalId(PREPARATION);
+        learner.setLearningState(LearningState.TEACHING);
+        learner.setStrictMode(true);
+        long before = learner.getCoachStateRevision();
+        var state = learners.getLearnerState(learner.getSkillpilotId());
+        assertThat(state.levelCompletion().profileId()).isNull();
+        assertThat(state.levelCompletion().profileOptions()).singleElement().satisfies(option -> {
+            assertThat(option.profileId()).isEqualTo(PROFILE);
+            assertThat(option.assessments()).singleElement().satisfies(assessment -> {
+                assertThat(assessment.goalId()).isEqualTo(EXAM);
+                assertThat(assessment.startAvailable()).isTrue();
+                assertThat(assessment.mastered()).isFalse();
+            });
+        });
+        assertThat(mapper.writeValueAsString(state.levelCompletion())).doesNotContain(
+                "taskContent", "solutionContent", "passingPoints", "evaluationCapability", "sessionBinding");
+        learners.getLearnerState(learner.getSkillpilotId());
+        assertThat(learner.getCoachStateRevision()).isEqualTo(before);
+        assertThat(learner.getCompletionWorkflow()).isNull();
+        assertThat(learner.getActiveGoalId()).isEqualTo(PREPARATION);
+        assertThat(focus.findByLearner_SkillpilotId(learner.getSkillpilotId()))
+                .extracting(PlannedGoal::getGoalId).containsExactly(PREPARATION);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
+    }
+
+    @Test void directEntrySelectsAndBindsItsSectionWithOneRevisionAndOneEvent() {
+        learner.setActiveGoalId(PREPARATION);
+        learner.setLearningState(LearningState.TEACHING);
+        learner.setStrictMode(true);
+        long before = learner.getCoachStateRevision();
+        Object originalPublisher = ReflectionTestUtils.getField(learners, "eventPublisher");
+        var publisher = org.mockito.Mockito.mock(org.springframework.context.ApplicationEventPublisher.class);
+        ReflectionTestUtils.setField(learners, "eventPublisher", publisher);
+        try {
+            learners.startCompletionAssessment(learner.getSkillpilotId(),
+                    new CompletionAssessmentStart(PROFILE, EXAM, before),
+                    "claude", "direct-owner", Instant.now().plusSeconds(600));
+            assertThat(learner.getCoachStateRevision()).isEqualTo(before + 1);
+            var event = org.mockito.ArgumentCaptor.forClass(org.springframework.context.ApplicationEvent.class);
+            org.mockito.Mockito.verify(publisher).publishEvent(event.capture());
+            assertThat(event.getValue()).isInstanceOfSatisfying(com.skillpilot.backend.events.LearnerStateChangedEvent.class,
+                    changed -> assertThat(changed.getChangeType()).isEqualTo("COMPLETION_ASSESSMENT_START"));
+            org.mockito.Mockito.verifyNoMoreInteractions(publisher);
+        } finally {
+            ReflectionTestUtils.setField(learners, "eventPublisher", originalPublisher);
+        }
+        var current = learners.getLearnerState(learner.getSkillpilotId());
+        assertThat(current.activeGoal().id()).isEqualTo(EXAM);
+        assertThat(current.levelCompletion().profileId()).isEqualTo(PROFILE);
+        assertThat(current.levelCompletion().directAssessmentRunning()).isTrue();
+        assertThat(current.levelCompletion().profileOptions()).allSatisfy(option ->
+                assertThat(option.assessments()).allSatisfy(assessment -> assertThat(assessment.startAvailable()).isFalse()));
+        assertThat(learner.getStrictMode()).isTrue();
+        assertThat(focus.findByLearner_SkillpilotId(learner.getSkillpilotId()))
+                .extracting(PlannedGoal::getGoalId).containsExactly(PREPARATION);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
+    }
+
+    @Test void unsupportedCoachCanDiscoverButCannotExecuteAReviewedShortcut() {
+        Instant expires = Instant.now().plusSeconds(600);
+        var call = new CompletionCallContext("openai", "openai-session", expires, false);
+        var preview = CompletionCallContext.with(call, () -> learners.getLearnerState(learner.getSkillpilotId()));
+        assertThat(preview.levelCompletion().profileOptions().getFirst().assessments().getFirst().startAvailable()).isTrue();
+        long before = learner.getCoachStateRevision();
+        assertThatThrownBy(() -> CompletionCallContext.with(call, () -> {
+            learners.startCompletionAssessment(learner.getSkillpilotId(),
+                    new CompletionAssessmentStart(PROFILE, EXAM, before), "claude", "openai-session", expires);
+            return null;
+        })).isInstanceOf(ResponseStatusException.class);
+        assertThat(learner.getCoachStateRevision()).isEqualTo(before);
+        assertThat(learner.getCompletionWorkflow()).isNull();
+        assertThat(learner.getActiveGoalId()).isNull();
+    }
+
+    @Test void newRouteRejectsStaleForgedExpiredAndOptedOutStartsWithoutMutation() {
+        long before = learner.getCoachStateRevision();
+        Instant expires = Instant.now().plusSeconds(600);
+        for (var request : List.of(new CompletionAssessmentStart(PROFILE, EXAM, before + 1),
+                new CompletionAssessmentStart("not-published", EXAM, before),
+                new CompletionAssessmentStart(PROFILE, PREPARATION, before),
+                new CompletionAssessmentStart(PROFILE, EXAM, before, true))) {
+            assertThatThrownBy(() -> learners.startCompletionAssessment(learner.getSkillpilotId(), request,
+                    "claude", "direct-owner", expires)).isInstanceOf(ResponseStatusException.class);
+        }
+        assertThatThrownBy(() -> learners.startCompletionAssessment(learner.getSkillpilotId(),
+                new CompletionAssessmentStart(PROFILE, EXAM, before), "claude", "direct-owner", Instant.now().minusSeconds(1)))
+                .isInstanceOf(ResponseStatusException.class);
+        learner.setUseAssessmentShortcuts(false);
+        assertThatThrownBy(() -> learners.startCompletionAssessment(learner.getSkillpilotId(),
+                new CompletionAssessmentStart(PROFILE, EXAM, before), "claude", "direct-owner", expires))
+                .isInstanceOf(ResponseStatusException.class);
+        assertThat(learner.getCoachStateRevision()).isEqualTo(before);
+        assertThat(learner.getCompletionWorkflow()).isNull();
+        assertThat(learner.getActiveGoalId()).isNull();
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
+    }
+
+    @Test void newRouteCannotReplaceAnInvalidWorkflowOrRestartAMasteredExam() {
+        long before = learner.getCoachStateRevision();
+        learner.setCompletionWorkflow("{broken");
+        assertThatThrownBy(() -> learners.startCompletionAssessment(learner.getSkillpilotId(),
+                new CompletionAssessmentStart(PROFILE, EXAM, before), "claude", "direct-owner", Instant.now().plusSeconds(600)))
+                .isInstanceOf(ResponseStatusException.class);
+        assertThat(learner.getCompletionWorkflow()).isEqualTo("{broken");
+        learner.setCompletionWorkflow(null);
+        masteryRepository.saveAndFlush(new Mastery(learner, EXAM, 1.0));
+        var preview = learners.getLearnerState(learner.getSkillpilotId()).levelCompletion()
+                .profileOptions().getFirst().assessments().getFirst();
+        assertThat(preview.mastered()).isTrue();
+        assertThat(preview.startAvailable()).isFalse();
+        assertThatThrownBy(() -> learners.startCompletionAssessment(learner.getSkillpilotId(),
+                new CompletionAssessmentStart(PROFILE, EXAM, before), "claude", "direct-owner", Instant.now().plusSeconds(600)))
+                .isInstanceOf(ResponseStatusException.class);
+        assertThat(learner.getCoachStateRevision()).isEqualTo(before);
+        assertThat(learner.getCompletionWorkflow()).isNull();
+    }
+
+    @Test void unpreparedCatalogCannotBeWarmedOrEnteredThroughDiscovery() {
+        var application = (CompletionApplicationService) ReflectionTestUtils.getField(learners, "completionApplicationService");
+        application.sealPreparedContexts(Map.of());
+        long before = learner.getCoachStateRevision();
+        assertThat(learners.getLearnerState(learner.getSkillpilotId()).levelCompletion()).isNull();
+        assertThatThrownBy(() -> learners.startCompletionAssessment(learner.getSkillpilotId(),
+                new CompletionAssessmentStart(PROFILE, EXAM, before), "claude", "direct-owner", Instant.now().plusSeconds(600)))
+                .isInstanceOf(ResponseStatusException.class);
+        assertThat(learner.getCoachStateRevision()).isEqualTo(before);
+        assertThat(learner.getCompletionWorkflow()).isNull();
+    }
+
+    @Test void directEntryStillRequiresCompletedPersonalization() throws Exception {
+        var config = (com.fasterxml.jackson.databind.node.ObjectNode) mapper.readTree(learner.getPersonalCurriculum());
+        ((com.fasterxml.jackson.databind.node.ObjectNode) config.get(CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY))
+                .put(CurriculumPersonalizationPlanner.MIGRATION_COMPLETED_KEY, false);
+        learner.setPersonalCurriculum(mapper.writeValueAsString(config));
+        long before = learner.getCoachStateRevision();
+        assertThat(learners.getPersonalizationPlan(learner.getSkillpilotId()).required()).isTrue();
+        assertThatThrownBy(() -> learners.startCompletionAssessment(learner.getSkillpilotId(),
+                new CompletionAssessmentStart(PROFILE, EXAM, before), "claude", "direct-owner", Instant.now().plusSeconds(600)))
+                .isInstanceOf(ResponseStatusException.class);
+        assertThat(learner.getCoachStateRevision()).isEqualTo(before);
+        assertThat(learner.getCompletionWorkflow()).isNull();
+        assertThat(learner.getActiveGoalId()).isNull();
+    }
+
+    @Test void failedDiscoveryMasteryReadPublishesUnavailableWithoutInventingAssessmentResults() {
+        Object projection = ReflectionTestUtils.invokeMethod(learners, "getGoalProjection", ROOT, learner.getPersonalCurriculum());
+        var unavailable = org.mockito.Mockito.mock(MasteryRepository.class);
+        org.mockito.Mockito.when(unavailable.findByLearner_SkillpilotId(learner.getSkillpilotId()))
+                .thenThrow(new IllegalStateException("synthetic result-store outage"));
+        ReflectionTestUtils.setField(learners, "masteryRepository", unavailable);
+        try {
+            Object snapshot = ReflectionTestUtils.invokeMethod(learners, "completionSnapshot", learner, projection);
+            var response = (LevelCompletionResponse) ReflectionTestUtils.getField(snapshot, "response");
+            assertThat(response.calculationStatus()).isEqualTo("unavailable");
+            assertThat(response.notice()).isEqualTo("completion_mastery_unavailable");
+            assertThat(response.complete()).isNull();
+            assertThat(response.profileOptions()).allSatisfy(option -> assertThat(option.assessments()).isEmpty());
+            assertThatThrownBy(this::select).isInstanceOf(ResponseStatusException.class);
+            org.mockito.Mockito.verify(unavailable, org.mockito.Mockito.times(2))
+                    .findByLearner_SkillpilotId(learner.getSkillpilotId());
+            org.mockito.Mockito.verifyNoMoreInteractions(unavailable);
+            assertThat(learner.getCompletionWorkflow()).isNull();
+        } finally {
+            ReflectionTestUtils.setField(learners, "masteryRepository", masteryRepository);
+        }
+    }
+
     @Test void shortcutsDefaultOnAndAnOptOutGatesChoicesWithoutChangingOrdinaryMastery() {
         assertThat(learner.getUseAssessmentShortcuts()).isTrue();
         assertThat(learners.getLearnerState(learner.getSkillpilotId()).levelCompletion()).isNotNull();

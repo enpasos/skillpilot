@@ -47,6 +47,22 @@ assert.doesNotMatch(render(open, { stale: true }), /href=.*completionProfile=/u)
 assert.match(render({ ...open, calculationStatus: 'unresolved', complete: undefined, profileId: undefined,
   profileOptions: [{ profileId: 'profile', title: { de: 'Skalarprodukt' }, targetCount: 2, requiredAssessmentCount: 1 }] }),
   /2 Lernziele, davon 1 erforderliche Prüfung/u, 'the learner sees the scope before choosing the completion route')
+const discovery: LevelCompletion = { ...open, calculationStatus: 'notApplicable', complete: undefined, profileId: undefined,
+  profileOptions: [{ profileId: 'profile', title: { de: 'Skalarprodukt', en: 'Dot product' }, targetCount: 2, requiredAssessmentCount: 1,
+    assessments: [{ goalId: 'Q', title: { de: 'Prüfung', en: 'Assessment' }, mastered: false, startAvailable: true }] }] }
+const discoveryHtml = render(discovery)
+assert.match(discoveryHtml, /Prüfungsabkürzungen/u)
+assert.match(discoveryHtml, /completionProfile=profile/u, 'an unselected profile can offer its published direct assessment')
+assert.doesNotMatch(discoveryHtml, /<details[^>]* open=/u, 'ordinary discovery remains compact')
+assert.doesNotMatch(render(discovery, { stale: true }), /href=.*completionProfile=/u)
+assert.match(render(discovery, { language: 'en' }), /Assessment shortcuts/u)
+const unavailableDiscovery = render({ ...discovery, calculationStatus: 'unavailable', notice: 'completion_mastery_unavailable' })
+assert.match(unavailableDiscovery, /Dein Lernstand kann gerade nicht zuverlässig geladen werden/u)
+assert.match(unavailableDiscovery, /<button[^>]*disabled=""[^>]*aria-label="Abschnitt als Lernweg wählen/u)
+assert.match(unavailableDiscovery, /Neu laden/u)
+assert.doesNotMatch(unavailableDiscovery, /completionProfile=/u)
+assert.doesNotMatch(render({ ...discovery, profileOptions: [{ ...discovery.profileOptions[0],
+  assessments: [{ ...discovery.profileOptions[0].assessments![0], mastered: true, startAvailable: false }] }] }), /completionProfile=/u)
 assert.match(render(open, { stale: true }), /aria-disabled="true"/u)
 assert.match(render(open, { language: 'en' }), /Not yet achieved/u)
 

@@ -60,7 +60,15 @@ public record LevelCompletionResponse(
     public record Assessment(String goalId, Map<String, String> title, boolean mastered,
                              boolean startAvailable, String unavailableReason) { }
     public record ProfileOption(String profileId, Map<String, String> title,
-                                Integer targetCount, Integer requiredAssessmentCount) {
+                                Integer targetCount, Integer requiredAssessmentCount,
+                                List<Assessment> assessments) {
+        public ProfileOption {
+            assessments = assessments == null ? List.of() : List.copyOf(assessments);
+        }
+        public ProfileOption(String profileId, Map<String, String> title,
+                             Integer targetCount, Integer requiredAssessmentCount) {
+            this(profileId, title, targetCount, requiredAssessmentCount, List.of());
+        }
         public ProfileOption(String profileId, Map<String, String> title) {
             this(profileId, title, null, null);
         }

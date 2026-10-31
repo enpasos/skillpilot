@@ -16,7 +16,7 @@ import { getDisplayFiltersForLandscapeSelection } from '../utils/landscapeFilter
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 import { normalizeLearnerProjectedEntries } from '../utils/learnerTreeProjection'
 import { CANONICAL_GYMNASIUM_ROOT_ID, isRepositoryGymnasiumFramework } from '../utils/curriculumDisplay'
-import { getStoredLandscapeIdForRole, normalizeLearnerLandscapeId } from '../utils/learnerProfile'
+import { getGoalNavigationSearch, getStoredLandscapeIdForRole, normalizeLearnerLandscapeId } from '../utils/learnerProfile'
 import {
   applyMatchedCompositionRouteGoalProjection,
   applyCompositionViewProjection,
@@ -876,16 +876,16 @@ export function useAppCore({
     }
     const path = location.pathname.split('/')
     const view = path[1]
-    navigate(`/${view}/${id}?${searchParams.toString()}`)
+    navigate(`/${view}/${id}?${getGoalNavigationSearch(searchParams, currentGoalId, id).toString()}`)
   }
 
   const handleSelectAbsolute = useCallback((id: string) => {
     if (!id) return
     const view = location.pathname.split('/')[1]
-    const nextSearch = searchParams.toString()
+    const currentRouteGoalId = goalId ?? ''
+    const nextSearch = getGoalNavigationSearch(searchParams, currentRouteGoalId, id).toString()
     const nextPath = `/${view}/${id}`
     const nextUrl = nextSearch ? `${nextPath}?${nextSearch}` : nextPath
-    const currentRouteGoalId = goalId ?? ''
     const currentUrl = `${location.pathname}${location.search}`
 
     // Selection is URL-driven. If the router already targets this goal, another navigate
@@ -904,7 +904,8 @@ export function useAppCore({
   const handleNavigateToExternal = useCallback(
     (targetLandscapeId: string, goalId: string) => {
       if (!goalId) return
-      const newSearchParams = new URLSearchParams(searchParams)
+      const currentRouteGoalId = matchPath('/:view/:goalId', location.pathname)?.params.goalId
+      const newSearchParams = getGoalNavigationSearch(searchParams, currentRouteGoalId, goalId)
       // A canonical multi-subject cockpit already owns its projected subject
       // goals. Revealing one must not reload a subject closure and immediately
       // bounce back to the learner's committed root curriculum.

@@ -48,7 +48,7 @@ import type { ToastKind } from '../hooks/useToast'
 import { queueToastForNextLoad } from '../hooks/useToast'
 import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
 import { createSynchronousInFlightGuard } from '../utils/synchronousInFlightGuard'
-import { buildCompletionRouteStartHref, completionWaiversForTree, parseLevelCompletion, requestLevelCompletionAction, type CompletionActionInput, type LevelCompletion } from '../utils/levelCompletionApi'
+import { buildCompletionAssessmentStartHref, buildCompletionRouteStartHref, completionAssessmentsForGoal, completionLabel, completionUnavailableReason, completionWaiversForTree, parseLevelCompletion, requestLevelCompletionAction, type CompletionActionInput, type LevelCompletion } from '../utils/levelCompletionApi'
 import {
   beginLatestRequest,
   invalidateLatestRequest,
@@ -511,6 +511,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const runtimeCatalogState = useRuntimeCurriculumCatalog()
   const t = useTranslation();
   const location = useLocation()
+  const completionDiscoveryRequest = new URLSearchParams(location.search).get('completionShortcuts') === '1'
+    ? `${learnerStateScopeKey}:${location.key}` : undefined
+  const completionEntryRef = useRef<HTMLDivElement>(null)
+  const completedDiscoveryRevealRef = useRef<string | null>(null)
+  const selectedGoalAssessments = useMemo(
+    () => currentGoal ? completionAssessmentsForGoal(levelCompletion, currentGoal.id) : [],
+    [currentGoal, levelCompletion],
+  )
   const localizedLanguage = language === 'en' ? 'en' : 'de'
   const localizedLearningPlans = scopedLearningPlans?.status.language === localizedLanguage
     ? scopedLearningPlans
@@ -2626,6 +2634,24 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     })
     return () => window.cancelAnimationFrame(frame)
   }, [completionTreeRevealId])
+  useEffect(() => {
+    if (!completionDiscoveryRequest) {
+      completedDiscoveryRevealRef.current = null
+      return
+    }
+    if (completedDiscoveryRevealRef.current === completionDiscoveryRequest
+      || learnerStateLoadStatus === 'loading' || isPersonalConfigHydrating
+      || personalConfigLoadStatus === 'loading') return
+    const frame = window.requestAnimationFrame(() => {
+      const target = completionEntryRef.current?.querySelector<HTMLElement>('[data-completion-shortcuts-heading]')
+      if (!target) return
+      completedDiscoveryRevealRef.current = completionDiscoveryRequest
+      target.scrollIntoView({ block: 'start', inline: 'nearest' })
+      target.focus({ preventScroll: true })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [completionDiscoveryRequest, isPersonalConfigHydrating, learnerStateLoadStatus, personalConfigLoadStatus, levelCompletion])
+
   const mobileEdgeTouchStart = useRef<{ identifier: number; x: number; y: number } | null>(null)
   const desktopHideButtonRef = useRef<HTMLButtonElement>(null)
   const desktopShowButtonRef = useRef<HTMLButtonElement>(null)
@@ -3475,20 +3501,51 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         onTouchEnd={finishMobileEdgeSwipe}
         onTouchCancel={() => { mobileEdgeTouchStart.current = null }}
       >
-        {levelCompletion && (!isGuidedPersonalizationRequired || learnerStateLoadStatus === 'error') ? (
-          <LevelCompletionCard
-            key={`${learnerStateScopeKey}:${levelCompletion.profileId ?? 'selection'}`}
-            completion={levelCompletion}
-            language={localizedLanguage}
-            stale={learnerStateLoadStatus !== 'ready'}
-            busy={completionActionBusy}
-            error={completionActionError}
-            learningPlanPaused={learnerData?.followLearningPlans === true && Boolean(scopedLearningPlans?.plans.length)}
-            onAction={(action) => { void handleCompletionAction(action) }}
-            onRetry={() => { void refreshState(true) }}
-            onShowGoal={showCompletionGoalInTree}
-          />
-        ) : null}
+        {levelCompletion || completionDiscoveryRequest ? <div ref={completionEntryRef} className="w-full">
+          {levelCompletion && (!isGuidedPersonalizationRequired || learnerStateLoadStatus === 'error') ? (
+            <LevelCompletionCard
+              key={`${learnerStateScopeKey}:${levelCompletion.profileId ?? 'selection'}`}
+              completion={levelCompletion}
+              language={localizedLanguage}
+              stale={learnerStateLoadStatus !== 'ready'}
+              busy={completionActionBusy}
+              error={completionActionError}
+              learningPlanPaused={learnerData?.followLearningPlans === true && Boolean(scopedLearningPlans?.plans.length)}
+              discoveryOpenRequest={completionDiscoveryRequest}
+              requestedAssessmentMissing={Boolean(completionDiscoveryRequest && selectedGoalAssessments.length === 0)}
+              onAction={(action) => { void handleCompletionAction(action) }}
+              onRetry={() => { void refreshState(true) }}
+              onShowGoal={showCompletionGoalInTree}
+              onOpenSettings={() => setIsSetupOpen(true)}
+            />
+          ) : completionDiscoveryRequest ? (
+            <section data-testid="completion-shortcuts-unavailable" className="mb-4 rounded-2xl border border-border-color bg-sidebar-bg p-4 sm:p-5">
+              <h2 data-completion-shortcuts-heading tabIndex={-1} className="font-semibold text-text-primary focus:outline-none">
+                {localizedLanguage === 'en' ? 'Assessment shortcuts' : 'Prüfungsabkürzungen'}
+              </h2>
+              <p role="status" className="mt-3 text-sm text-text-secondary">{
+                learnerStateLoadStatus === 'loading' || isPersonalConfigHydrating
+                  ? (localizedLanguage === 'en' ? 'Loading the current choices…' : 'Die aktuellen Möglichkeiten werden geladen…')
+                  : learnerStateLoadStatus === 'error'
+                    ? (localizedLanguage === 'en' ? 'The current choices could not be loaded. Please try again.' : 'Die aktuellen Möglichkeiten konnten nicht geladen werden. Bitte versuche es erneut.')
+                    : learnerData?.useAssessmentShortcuts === false
+                      ? (localizedLanguage === 'en' ? 'You have turned off assessment shortcuts. You can enable them in your learning settings; this link does not change your choice.' : 'Du hast Prüfungsabkürzungen ausgeschaltet. Du kannst sie in deinen Lerneinstellungen einschalten; dieser Link ändert deine Wahl nicht.')
+                      : (localizedLanguage === 'en' ? 'No suitable assessment shortcuts are currently available for your Personal Curriculum. You can review your curriculum and learning settings.' : 'Für deinen Persönlichen Lehrplan sind aktuell keine passenden Prüfungsabkürzungen verfügbar. Du kannst deinen Lehrplan und die Lerneinstellungen prüfen.')
+              }</p>
+              <div className="mt-3 flex flex-wrap gap-3">
+                <button type="button" onClick={() => setIsSetupOpen(true)}
+                  disabled={isPersonalConfigHydrating}
+                  className="min-h-11 rounded-lg border border-sky-400 px-3 py-2 text-sm font-semibold disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+                  {localizedLanguage === 'en' ? 'Open learning settings' : 'Lerneinstellungen öffnen'}
+                </button>
+                {learnerStateLoadStatus === 'error' ? <button type="button" onClick={() => { void refreshState(true) }}
+                  className="min-h-11 rounded-lg px-3 py-2 text-sm underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+                  {localizedLanguage === 'en' ? 'Reload' : 'Neu laden'}
+                </button> : null}
+              </div>
+            </section>
+          ) : null}
+        </div> : null}
         <div className="mb-4 flex w-full justify-end">
           <Link to={buildCompletionRouteStartHref(levelCompletion?.profileId)} data-testid="learner-coach-start-link"
             title={t.startPage.login.coachProviderLabel}
@@ -3736,6 +3793,23 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                       activeFilter={effectiveActiveFilter}
                     />
                   )}
+
+                {selectedGoalAssessments.length > 0 ? <div data-testid="selected-goal-assessment-shortcuts" className="mt-3 flex flex-col items-start gap-2 text-sm">
+                  {selectedGoalAssessments.map(({ profileId, profileTitle, assessment }) => <div key={profileId} className="flex flex-wrap items-center gap-3">
+                    <span className="text-text-secondary">{localizedLanguage === 'en' ? 'Assessment shortcut for ' : 'Prüfungsabkürzung für '}
+                      <InlineMathText text={completionLabel(profileTitle, localizedLanguage)} />
+                    </span>
+                    {assessment.mastered ? <span>{localizedLanguage === 'en' ? 'Achieved' : 'Geschafft'}</span>
+                      : assessment.startAvailable && !levelCompletion?.directAssessmentRunning ? (
+                        learnerStateLoadStatus === 'ready' && !completionActionBusy
+                          ? <Link to={buildCompletionAssessmentStartHref({ profileId, goalId: assessment.goalId, expectedRevision: levelCompletion!.learnerRevision })}
+                            className="inline-flex min-h-11 items-center rounded-lg border border-sky-400 px-3 py-2 font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+                            {localizedLanguage === 'en' ? 'Try assessment directly' : 'Prüfung direkt versuchen'}
+                          </Link>
+                          : <span aria-disabled="true" className="text-text-secondary">{localizedLanguage === 'en' ? 'Reload the current choices first.' : 'Lade zuerst die aktuellen Möglichkeiten.'}</span>
+                      ) : <span className="text-text-secondary">{completionUnavailableReason(assessment.unavailableReason ?? 'unavailable', localizedLanguage)}</span>}
+                  </div>)}
+                </div> : null}
 
                 {levelCompletion?.calculationStatus === 'valid' && levelCompletion.waivedTargetGoalIds.includes(currentGoal.id) ? (
                   <p data-testid="level-completion-goal-context" className="mt-3 text-sm text-text-secondary">

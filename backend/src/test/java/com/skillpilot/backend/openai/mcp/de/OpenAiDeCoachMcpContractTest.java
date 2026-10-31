@@ -79,6 +79,35 @@ import org.springframework.web.server.ResponseStatusException;
 
 class OpenAiDeCoachMcpContractTest {
 
+    @Test
+    void currentContextPreservesReadOnlyAssessmentDiscoveryThroughPlanDecorationAndOutputSchema() {
+        useCurrentContract();
+        var base = visualizationState();
+        var preview = new com.skillpilot.backend.api.LevelCompletionResponse("unresolved", null, null,
+                null, "private-generation", 0, Map.of(), null, 0, 0, 0, 0, 0, 0, List.of(), List.of(),
+                List.of(new com.skillpilot.backend.api.LevelCompletionResponse.ProfileOption("private-profile",
+                        Map.of("de", "Vektoren"), 2, 1,
+                        List.of(new com.skillpilot.backend.api.LevelCompletionResponse.Assessment("public-exam",
+                                Map.of("de", "Projektion erklären"), false, true, null)))),
+                null, false, null, List.of());
+        var offered = new UnifiedLearnerStateResponse(base.skillpilotId(), base.curriculum(), base.frontier(),
+                base.goals(), base.nextAllowedActions(), base.activeFilters(), base.copySources(),
+                base.learningState(), base.activeGoal(), base.stateMachine(), preview);
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(offered);
+
+        var result = call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of());
+        assertThat(result.isError()).isFalse();
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_CONTEXT, result);
+        var context = structured(result, OpenAiDeCoachContext.class);
+        assertThat(context.assessmentShortcuts()).isNotNull();
+        assertThat(context.assessmentShortcuts().options().getFirst().cockpitUrl())
+                .isEqualTo("https://skillpilot.test/learner/public-exam?completionShortcuts=1");
+        assertThat(context.activeGoal().goalId()).isEqualTo(base.activeGoal().id());
+        assertThat(context.nextAllowedTools()).noneMatch(tool -> tool.contains("completion"));
+        assertThat(objectMapper.valueToTree(context.assessmentShortcuts()).toString())
+                .doesNotContain(LEARNER_ID, "private-profile", "private-generation", "learningSessionId");
+    }
+
     private static final String SERVER_BUILD = "0123456789abcdef0123456789abcdef01234567";
 
     private static final List<String> HISTORICAL_GOAL_VISUALIZATION_ARTIFACT_SHA256S = List.of(

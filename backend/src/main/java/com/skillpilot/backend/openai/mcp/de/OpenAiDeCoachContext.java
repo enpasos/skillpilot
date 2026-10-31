@@ -1,6 +1,7 @@
 package com.skillpilot.backend.openai.mcp.de;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.skillpilot.backend.ai.AssessmentShortcutDiscovery;
 import java.util.List;
 
 /** Compact, allowlist-only state returned to the OpenAI Coach V1. */
@@ -25,7 +26,8 @@ public record OpenAiDeCoachContext(
         Completion completion,
         List<String> policies,
         String instruction,
-        OpenAiDeLearningPlanToday learningPlanToday) {
+        OpenAiDeLearningPlanToday learningPlanToday,
+        AssessmentShortcutDiscovery assessmentShortcuts) {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public record Curriculum(

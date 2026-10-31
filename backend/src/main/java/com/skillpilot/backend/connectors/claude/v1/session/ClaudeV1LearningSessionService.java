@@ -65,11 +65,11 @@ public class ClaudeV1LearningSessionService {
         Instant startedAt = Instant.now().truncatedTo(java.time.temporal.ChronoUnit.MICROS);
         String learningSessionId = tokenCodec.issue();
         Instant expiresAt = startedAt.plus(SESSION_TTL);
-        boolean completionRoute = learnerService.completionRouteOwnsNavigation(learner);
         if (request.completionAssessment() != null) {
             learnerService.startCompletionAssessment(skillpilotId, request.completionAssessment(),
                     "claude", tokenCodec.hash(learningSessionId), expiresAt);
         }
+        boolean completionRoute = learnerService.completionRouteOwnsNavigation(learner);
         sessions.insert(new ClaudeV1LearningSession(
                 tokenCodec.hash(learningSessionId),
                 learner.getSkillpilotId(),

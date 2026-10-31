@@ -46,6 +46,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
     private static final String EXAM = "e98672c6-871a-5d0b-889c-5afc51040f0d";
     @Autowired ClaudeV1McpContractAdapter adapter;
     @Autowired ClaudeV1LearningSessionService sessions;
+    @Autowired com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionRepository sessionRepository;
+    @Autowired com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1SessionTokenCodec sessionTokens;
     @Autowired LearnerService learners;
     @Autowired LearnerRepository learnerRepository;
     @Autowired MasteryRepository masteryRepository;
@@ -75,6 +77,87 @@ class ClaudeV1CompletionRouteIntegrationTest {
     }
 
     @AfterEach void clearAuthentication() { SecurityContextHolder.clearContext(); }
+
+    private void returnToOrdinaryLearning() {
+        learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
+                "leaveProfile", PROFILE, null, null, version()));
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setActiveGoalId(PREPARATION);
+        learner.setLearningState(com.skillpilot.backend.domain.LearningState.TEACHING);
+        learnerRepository.saveAndFlush(learner);
+    }
+
+    @Test void ordinaryCoachSessionOffersAndStartsTheExamWithoutPriorSectionSelection() throws Exception {
+        returnToOrdinaryLearning();
+        long before = version();
+        var pending = context();
+        assertThat(map(pending, "activeGoal")).containsEntry("id", PREPARATION);
+        assertThat(map(pending, "levelCompletion").get("choices")).isEqualTo(List.of());
+        assertThat(pending).doesNotContainKey("assessmentShortcuts");
+        successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
+                Map.of("receiptCapability", map(pending, "completionContract").get("receiptCapability")));
+        var offered = context();
+        String start = choice(offered, "Prüfung direkt versuchen: ");
+        assertThat(start).contains("Skalarprodukt über eine orthogonale Projektion erklären");
+        assertThat(mapper.writeValueAsString(offered)).doesNotContain("taskContent", "solutionContent", "evaluationCapability");
+        assertThat(version()).isEqualTo(before);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getCompletionWorkflow()).isNull();
+        assertThat(call(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
+                writeArgs("stale-direct-entry", before - 1, Map.of("choice", start))).isError()).isTrue();
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(PREPARATION);
+        var started = successful(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
+                writeArgs("ordinary-direct-entry", before, Map.of("choice", start)));
+        assertThat(version()).isEqualTo(before + 1);
+        assertThat(map(map(started, "context"), "activeGoal")).containsEntry("id", EXAM);
+        assertThat(map(map(started, "context"), "levelCompletion")).containsEntry("directAssessmentRunning", true);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).isEmpty();
+        assertThat(focus.findByLearner_SkillpilotId(learnerId)).extracting(PlannedGoal::getGoalId).containsExactly(PREPARATION);
+    }
+
+    @Test void anObsoleteOrdinarySessionKeepsTeachingAndOffersOnlyTheReadOnlyCockpitHandoff() throws Exception {
+        returnToOrdinaryLearning();
+        sessionRepository.updateCompletionContract(sessionTokens.hash(session), "confirmed:obsolete-contract");
+        long before = version();
+        var ordinary = context();
+        assertThat(map(ordinary, "activeGoal")).containsEntry("id", PREPARATION);
+        assertThat(ordinary).doesNotContainKey("completionContract");
+        assertThat(map(ordinary, "levelCompletion").get("choices")).isEqualTo(List.of());
+        var handoff = map(ordinary, "assessmentShortcuts");
+        assertThat(handoff.get("notice").toString()).contains("Normales Lernen", "neue unterstützte Claude-Sitzung");
+        assertThat(handoff.get("options").toString()).contains("/learner/" + EXAM + "?completionShortcuts=1");
+        assertThat(handoff.toString()).doesNotContain(learnerId, session, "taskContent", "solutionContent");
+        assertThat(version()).isEqualTo(before);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getCompletionWorkflow()).isNull();
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).isEmpty();
+    }
+
+    @Test void firstPartyDirectLaunchSelectsTheSectionAndBindsOnlyItsNewSession() throws Exception {
+        returnToOrdinaryLearning();
+        String oldSession = session;
+        long before = version();
+        var launch = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start",
+                new com.skillpilot.backend.api.CompletionAssessmentStart(PROFILE, EXAM, before)));
+        assertThat(launch.prompt()).contains("level-completion context");
+        assertThat(version()).isEqualTo(before + 1);
+        session = launch.learningSessionId();
+        authenticate();
+        var pending = context();
+        successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
+                Map.of("receiptCapability", map(pending, "completionContract").get("receiptCapability")));
+        assertThat(map(context(), "activeGoal")).containsEntry("id", EXAM);
+        session = oldSession;
+        authenticate();
+        var oldPending = context();
+        if (oldPending.containsKey("completionContract")) {
+            successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
+                    Map.of("receiptCapability", map(oldPending, "completionContract").get("receiptCapability")));
+        }
+        var foreign = context();
+        assertThat(foreign.get("activeGoal")).isNull();
+        assertThat(map(foreign, "levelCompletion").get("choices")).isEqualTo(List.of());
+        assertThat(call(ClaudeV1Contract.TOOL_GET_EXAM_EVALUATION, Map.of("goalId", EXAM)).isError()).isTrue();
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).isEmpty();
+    }
 
     @Test void failedAssessmentRetryAndConfirmedMasteryUseFreshCapabilitiesAndOneBinaryResult() throws Exception {
         Map<String, Object> pending = context();

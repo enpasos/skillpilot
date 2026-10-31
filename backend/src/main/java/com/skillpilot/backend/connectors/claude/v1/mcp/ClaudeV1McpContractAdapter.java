@@ -594,9 +594,17 @@ public class ClaudeV1McpContractAdapter {
 
                 Assessment completion route: when context.levelCompletion is present, use its
                 exact backend statement and published choices. A profile completion is scoped work
-                completion, never new mastery. While that route owns navigation, do not resume a
-                regular learning plan or choose an ordinary focus/goal outside its choices. First
-                offer a fitting published choice and wait for the learner's explicit selection.
+                completion, never new mastery. In ordinary learning, a published direct-assessment
+                choice starts its reviewed section and assessment together; no preliminary section
+                selection is needed. When the learner asks for a shortcut, an exam or to show existing
+                knowledge, offer the fitting published assessment by its exact title. Until the learner
+                explicitly chooses it, do not start, teach, render or disclose that assessment's task.
+                Do not repeatedly interrupt ordinary learning with these optional offers.
+                While that route owns navigation, do not resume a
+                regular learning plan or choose an ordinary focus/goal outside its choices. If the
+                learner already explicitly requested to start exactly one published assessment,
+                that request is selection consent: do not ask again. Otherwise offer a fitting
+                published choice and wait for the learner's explicit selection.
                 Then call choose_skillpilot_completion_route with that exact choice, the current
                 stateVersion and a fresh clientRequestId. The server binds direct assessments to
                 this authenticated session; never invent bypass flags or another pass record.
@@ -1333,6 +1341,9 @@ public class ClaudeV1McpContractAdapter {
                     // first section. Cached old clients can ignore this offer and keep learning
                     // normally; only an active completion route requires the receipt to proceed.
                     if (completionEnabled && ctx.pendingCompletionBinding() != null) {
+                        // This fresh session can acknowledge the current contract in place;
+                        // reserve the Cockpit handoff for sessions with an obsolete contract.
+                        response.remove("assessmentShortcuts");
                         response.put("completionContract", Map.of("status", "pending", ARG_RECEIPT_CAPABILITY,
                                 capabilityService.mintCompletionContractCapability(connectionId, ctx.pendingCompletionBinding())));
                     }

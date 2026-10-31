@@ -16,7 +16,8 @@ const unselected = (revision: number): LevelCompletion => ({
   calculationStatus: 'notApplicable', learnerRevision: revision, title: {},
   masteredTargetCount: 0, waivedTargetCount: 0, pendingTargetCount: 0, targetCount: 0,
   masteredAssessmentCount: 0, requiredAssessmentCount: 0, waivedTargetGoalIds: [], assessments: [],
-  profileOptions: [{ profileId: 'math-completion', title }], directAssessmentRunning: false, actions: [],
+  profileOptions: [{ profileId: 'math-completion', title, targetCount: 2, requiredAssessmentCount: 1,
+    assessments: [{ goalId: 'math-exam', title: { de: 'Skalarprodukt prüfen', en: 'Assess dot product' }, mastered: false, startAvailable: true }] }], directAssessmentRunning: false, actions: [],
 })
 const selected = (revision: number, running = false): LevelCompletion => ({
   calculationStatus: 'valid', contextRef: 'fixture-context', profileId: 'math-completion', profileRevision: '1',
@@ -64,7 +65,7 @@ let browser: Browser | null = null
 try {
   browser = await chromium.launch({ headless: true, args: ['--disable-background-networking', '--disable-dev-shm-usage', '--disable-gpu', '--no-sandbox'] })
   const open = async (initial: LevelCompletion, mobile = false, completionTree = false,
-    options: { shortcutPreference?: boolean; language?: 'de' | 'en' } = {}) => {
+    options: { shortcutPreference?: boolean; language?: 'de' | 'en'; handoff?: boolean; entryGoal?: string; examMastered?: boolean; noCompletion?: boolean } = {}) => {
     const context = await browser!.newContext({ viewport: mobile ? { width: 390, height: 844 } : { width: 1280, height: 900 }, hasTouch: mobile, locale: 'de-DE' })
     await context.addInitScript(({ learner, rootId, termsVersion, language }) => {
       localStorage.setItem('skillpilot_lang', language)
@@ -77,7 +78,7 @@ try {
     const page = await context.newPage()
     const errors: string[] = []
     const writes: { path: string; body: Record<string, unknown> }[] = []
-    let completion: LevelCompletion | null = options.shortcutPreference === false ? null : initial
+    let completion: LevelCompletion | null = options.shortcutPreference === false || options.noCompletion ? null : initial
     let storedProfile = { ...profile, ...(options.shortcutPreference === undefined ? {} : { useAssessmentShortcuts: options.shortcutPreference }) }
     let automaticPreferenceSse = false
     let preferencesFailOnce = false
@@ -143,14 +144,23 @@ try {
         return json(state(completion))
       }
       if (request.method() === 'POST' && path.endsWith('/claude/v1/launch')) {
-        writes.push({ path, body: request.postDataJSON() as Record<string, unknown> })
+        const body = request.postDataJSON() as Record<string, unknown>
+        writes.push({ path, body })
+        const assessment = body.completionAssessment as { expectedRevision?: number } | undefined
+        if (assessment && assessment.expectedRevision !== completion?.learnerRevision) return json({ error: 'stale-assessment-choice' }, 409)
         const learningSessionId = `spc_${'A'.repeat(43)}`
         return json({ prompt: `Nutze SkillPilot. Session: ${learningSessionId}`, webUrl: 'https://claude.ai/new', learningSessionId, expiresAt: '2027-01-01T00:00:00Z' })
       }
       return json({}, 404)
     })
-    await page.goto(`${server.baseUrl}/scripts/fixtures/learnerViewStartupUi.html${completionTree ? '?completionTree=1' : ''}`)
-    if (options.shortcutPreference === false) await page.getByTestId('learner-current-goal').waitFor()
+    const params = new URLSearchParams({
+      ...(completionTree ? { completionTree: '1' } : {}),
+      ...(options.handoff ? { completionShortcuts: '1' } : {}),
+      ...(options.entryGoal ? { entryGoal: options.entryGoal } : {}),
+      ...(options.examMastered === false ? { examMastered: '0' } : {}),
+    })
+    await page.goto(`${server.baseUrl}/scripts/fixtures/learnerViewStartupUi.html?${params}`)
+    if (options.shortcutPreference === false || options.noCompletion) await page.getByTestId('learner-current-goal').waitFor()
     else await page.getByTestId('level-completion-card').waitFor()
     return { page, context, writes, errors, unavailable: () => { stateUnavailable = true }, update: (next: LevelCompletion) => { completion = next },
       autoPreferenceSse: () => { automaticPreferenceSse = true },
@@ -176,7 +186,8 @@ try {
   {
     const h = await open(unselected(1))
     assert.equal(h.writes.length, 0, 'a profile is never selected automatically')
-    await h.page.getByTestId('level-completion-card').getByRole('button', { name: title.de, exact: true }).click()
+    await h.page.getByTestId('completion-shortcut-discovery').locator('summary').click()
+    await h.page.getByTestId('level-completion-card').getByRole('button', { name: `Abschnitt als Lernweg wählen: ${title.de}`, exact: true }).click()
     await h.page.getByTestId('level-completion-card').getByText('0 von 2 Lernzielen geschafft.', { exact: true }).waitFor()
     assert.equal(await h.page.getByText('Dein regulärer Lernplan ist pausiert', { exact: false }).count(), 0,
       'a saved following preference alone does not establish an existing paused plan')
@@ -202,6 +213,129 @@ try {
     await h.context.close()
   }
 
+  {
+    const h = await open(unselected(100), false, true, { examMastered: false })
+    const disclosure = h.page.getByTestId('completion-shortcut-discovery')
+    assert.equal(await disclosure.evaluate(element => (element as HTMLDetailsElement).open), false,
+      'discovery starts compact and does not interrupt ordinary learning')
+    await disclosure.locator('summary').click()
+    await disclosure.getByText('Skalarprodukt prüfen', { exact: true }).waitFor()
+    assert.equal(h.writes.length, 0, 'browsing concrete assessments does not select a profile')
+    await disclosure.getByRole('button', { name: 'Im Lernzielbaum anzeigen: Skalarprodukt prüfen', exact: true }).click()
+    await waitForTreeReveal(h.page, 'math-exam')
+    const contextual = h.page.getByTestId('selected-goal-assessment-shortcuts')
+    await contextual.getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).waitFor()
+    assert.equal(h.writes.length, 0, 'the exact assessment goal can be inspected without activating normal or shortcut work')
+    await contextual.getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).click()
+    const providers = h.page.getByTestId('coach-provider-choice')
+    await providers.waitFor()
+    assert.equal(await providers.getByRole('radio', { name: /Claude/u }).isChecked(), true)
+    assert.equal(await providers.getByRole('radio', { name: /ChatGPT Desktop/u }).isDisabled(), true)
+    assert.equal(await providers.getByRole('radio', { name: /Gemini/u }).isDisabled(), true)
+    assert.equal(h.writes.length, 0, 'provider selection alone still does not activate a profile or assessment')
+    await h.page.evaluate(() => { window.open = (() => ({ opener: null, location: { href: '' }, close() {} })) as unknown as typeof window.open })
+    await Promise.all([
+      h.page.waitForResponse(response => new URL(response.url()).pathname.endsWith('/claude/v1/launch')),
+      h.page.getByTestId('claude-plugin-start').click(),
+    ])
+    assert.equal(h.writes.length, 1)
+    assert.match(h.writes[0].path, /\/claude\/v1\/launch$/u)
+    assert.deepEqual(h.writes[0].body.completionAssessment, { profileId: 'math-completion', goalId: 'math-exam', expectedRevision: 100 },
+      'the explicit launch carries the unselected-profile assessment choice atomically')
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+  {
+    const h = await open(unselected(110), true, true, { handoff: true, entryGoal: 'math-exam', examMastered: false, language: 'en' })
+    const disclosure = h.page.getByTestId('completion-shortcut-discovery')
+    const summary = disclosure.locator('summary')
+    await h.page.waitForFunction(() => document.activeElement?.matches('[data-completion-shortcuts-heading]'))
+    assert.equal(await disclosure.evaluate(element => (element as HTMLDetailsElement).open), true)
+    await disclosure.getByText('Assess dot product', { exact: true }).waitFor()
+    await h.page.getByTestId('selected-goal-assessment-shortcuts').getByRole('link', { name: 'Try assessment directly', exact: true }).waitFor()
+    assert.equal(h.writes.length, 0, 'a provider-neutral handoff only opens and focuses discovery')
+    await summary.click()
+    const ordinaryStart = h.page.getByTestId('learner-coach-start-link')
+    await ordinaryStart.focus()
+    h.update(unselected(111))
+    const refreshed = h.page.waitForEvent('console', { predicate: message => message.text().includes('[SSE] ✅ Preferences refresh complete') })
+    await h.page.evaluate(learnerId => window.dispatchEvent(new CustomEvent('learner-startup-fixture-sse', { detail: { learnerId, type: 'PREFERENCES_CHANGED' } })), learner)
+    await refreshed
+    assert.equal(await disclosure.evaluate(element => (element as HTMLDetailsElement).open), false, 'refresh does not reopen a manually closed handoff disclosure')
+    assert.equal(await ordinaryStart.evaluate(element => element === document.activeElement), true, 'the read-only handoff focuses once per navigation')
+    assert.equal(h.writes.length, 0)
+    assert.equal(await h.page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true)
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+  {
+    const h = await open(unselected(115), false, true, { handoff: true, entryGoal: 'math-upper', examMastered: false })
+    const disclosure = h.page.getByTestId('completion-shortcut-discovery')
+    await disclosure.getByText('Die angefragte Prüfung ist hier aktuell nicht als Abkürzung verfügbar.', { exact: false }).waitFor()
+    await disclosure.getByText('Skalarprodukt prüfen', { exact: true }).waitFor()
+    assert.equal(await h.page.getByTestId('selected-goal-assessment-shortcuts').count(), 0,
+      'other offered assessments are not presented as a shortcut for the requested unrelated goal')
+    await disclosure.getByRole('button', { name: 'Lerneinstellungen öffnen', exact: true }).click()
+    await h.page.getByRole('dialog', { name: 'Mein Lehrplan', exact: true }).waitFor()
+    assert.equal(h.writes.length, 0)
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+  {
+    const preview = unselected(116)
+    preview.profileOptions[0].assessments![0] = { ...preview.profileOptions[0].assessments![0], mastered: true, startAvailable: false }
+    const h = await open(preview, false, true, { handoff: true, entryGoal: 'math-exam' })
+    const contextual = h.page.getByTestId('selected-goal-assessment-shortcuts')
+    await contextual.getByText('Geschafft', { exact: true }).waitFor()
+    assert.equal(await h.page.getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).count(), 0,
+      'an already mastered assessment is shown as achieved without a fresh shortcut attempt')
+    assert.equal(await h.page.getByText('Die angefragte Prüfung ist hier aktuell nicht als Abkürzung verfügbar.', { exact: false }).count(), 0)
+    assert.equal(h.writes.length, 0)
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+  for (const disabled of [true, false]) {
+    const h = await open(unselected(120), false, true, { handoff: true, entryGoal: 'math-exam',
+      shortcutPreference: disabled ? false : undefined, noCompletion: !disabled, language: disabled ? 'de' : 'en' })
+    const notice = h.page.getByTestId('completion-shortcuts-unavailable')
+    await notice.getByText(disabled ? 'Du hast Prüfungsabkürzungen ausgeschaltet.' : 'No suitable assessment shortcuts are currently available', { exact: false }).waitFor()
+    assert.equal(await h.page.getByRole('link', { name: /Prüfung direkt versuchen|Try assessment directly/u }).count(), 0)
+    await notice.getByRole('button', { name: disabled ? 'Lerneinstellungen öffnen' : 'Open learning settings', exact: true }).click()
+    const settings = h.page.getByRole('dialog', { name: disabled ? 'Mein Lehrplan' : 'My Curriculum', exact: true })
+    const choice = settings.getByRole('checkbox', { name: disabled ? 'Abkürzungen durch bestandene Prüfungen nutzen' : 'Use shortcuts through passed assessments', exact: true })
+    assert.equal(await choice.isChecked(), !disabled, 'handoff does not override the learner preference')
+    assert.equal(h.writes.length, 0)
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+  {
+    const h = await open(unselected(130), false, true, { entryGoal: 'math-exam', examMastered: false })
+    await h.page.getByTestId('completion-shortcut-discovery').locator('summary').click()
+    h.unavailable()
+    await h.page.evaluate(learnerId => window.dispatchEvent(new CustomEvent('learner-startup-fixture-sse', { detail: { learnerId, type: 'ACTIVE_GOAL_CHANGED' } })), learner)
+    await h.page.getByText('Diese Ansicht ist veraltet.', { exact: false }).waitFor()
+    assert.equal(await h.page.getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).count(), 0,
+      'a stale state disables discovery and contextual direct entry together')
+    assert.equal(h.writes.length, 0)
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+  {
+    const h = await open(unselected(140))
+    const discovery = h.page.getByTestId('completion-shortcut-discovery')
+    await discovery.locator('summary').click()
+    await discovery.getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).click()
+    await h.page.getByTestId('coach-provider-choice').waitFor()
+    assert.equal(h.writes.length, 0)
+    h.update(unselected(141))
+    await h.page.evaluate(() => { window.open = (() => ({ opener: null, location: { href: '' }, close() {} })) as unknown as typeof window.open })
+    await h.page.getByTestId('claude-plugin-start').click()
+    await h.page.getByTestId('completion-assessment-launch-notice').getByText('Diese Prüfungsauswahl konnte nicht bestätigt werden.', { exact: false }).waitFor()
+    assert.equal(h.writes.length, 1, 'a revision conflict does not fall back to profile selection or another launch')
+    assert.deepEqual(h.writes[0].body.completionAssessment, { profileId: 'math-completion', goalId: 'math-exam', expectedRevision: 140 })
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
   {
     const h = await open(selected(40))
     const tree = h.page.locator('#learner-goal-sidebar')
@@ -254,7 +388,7 @@ try {
     assert.equal(h.writes.length, 0, 'cancelling preserves the active assessment')
     await card.getByRole('button', { name: 'Zur regulären Lernansicht', exact: true }).click()
     await card.getByRole('button', { name: 'Prüfung beenden und wechseln' }).click()
-    await card.getByRole('button', { name: title.de, exact: true }).waitFor()
+    await card.getByTestId('completion-shortcut-discovery').waitFor()
     assert.deepEqual(h.writes[0].body, { action: 'leaveProfile', expectedRevision: 3 })
     assert.equal(await h.page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), true)
     assert.deepEqual(h.errors, [])
@@ -276,7 +410,7 @@ try {
     assert.equal(h.writes.length, 0)
     await support.press('Enter')
     await card.getByRole('button', { name: 'Prüfung beenden und wechseln' }).click()
-    await card.getByRole('button', { name: title.de, exact: true }).waitFor()
+    await card.getByTestId('completion-shortcut-discovery').waitFor()
     assert.deepEqual(h.writes[0].body, { action: 'learnGoal', goalId: 'math-support', intent: 'support', expectedRevision: 8 })
     assert.deepEqual(h.errors, [])
     await h.context.close()
@@ -541,7 +675,7 @@ try {
     await choice.check()
     await dialog.getByRole('button', { name: 'Fertig', exact: true }).click()
     await dialog.waitFor({ state: 'detached' })
-    await card.getByRole('button', { name: title.de, exact: true }).waitFor()
+    await card.getByTestId('completion-shortcut-discovery').waitFor()
     assert.equal(await waiver.count(), 0, 'enabling restores backend options without silently reselecting a profile')
     await openSettings()
     assert.equal(await choice.isChecked(), true, 'the restored preference is rehydrated from the saved profile')
@@ -648,7 +782,7 @@ try {
     await h.page.evaluate(learnerId => window.dispatchEvent(new CustomEvent('learner-startup-fixture-sse', { detail: { learnerId, type: 'PREFERENCES_CHANGED' } })), learner)
     release()
     await dialog.waitFor({ state: 'detached' })
-    await h.page.getByTestId('level-completion-card').getByRole('button', { name: title.de, exact: true }).waitFor()
+    await h.page.getByTestId('completion-shortcut-discovery').waitFor()
     await h.page.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
     assert.equal(await choice.isChecked(), true, 'a concurrent remote save is reflected after the pending reload completes')
     assert.equal(await dialog.getByRole('alert').count(), 0, 'the backend save event does not cause a spurious reload error')

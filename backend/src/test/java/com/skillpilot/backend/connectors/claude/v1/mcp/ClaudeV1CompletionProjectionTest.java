@@ -86,6 +86,39 @@ class ClaudeV1CompletionProjectionTest {
     }
 
     @Test
+    void ordinaryContextPublishesDirectAssessmentChoiceWithoutExposingPrivateIdsOrSelectingASection() {
+        var offered = new LevelCompletionResponse("unresolved", null, null, null, "private-generation", 10,
+                null, null, 0, 0, 0, 0, 0, 0, List.of(), List.of(), List.of(
+                new LevelCompletionResponse.ProfileOption("private-profile", Map.of("en", "Geometry"), 2, 1,
+                        List.of(new LevelCompletionResponse.Assessment("private-exam", Map.of("en", "Explain projection"),
+                                false, true, null)))), null, false, null, List.of());
+        CompletionCallContext.with(supported(), () -> {
+            var choices = ClaudeV1CompletionChoices.published(offered, "en");
+            assertThat(choices).anySatisfy(choice -> {
+                assertThat(choice.label()).isEqualTo("Try assessment directly: Explain projection");
+                assertThat(choice.request(10)).hasFieldOrPropertyWithValue("action", "startAssessment")
+                        .hasFieldOrPropertyWithValue("profileId", "private-profile")
+                        .hasFieldOrPropertyWithValue("goalId", "private-exam");
+            });
+            var projected = ClaudeV1CompletionChoices.project(offered, "en");
+            assertThat(projected.toString()).contains("Explain projection").doesNotContain(
+                    "private-profile", "private-exam", "private-generation", "taskContent", "solutionContent");
+            assertThat(ClaudeV1CompletionChoices.active(offered)).isFalse();
+            return null;
+        });
+        assertThat(ClaudeV1CompletionChoices.published(offered, "en")).isEmpty();
+    }
+
+    @Test
+    void unavailablePreviewCannotOfferASectionSelection() {
+        var unavailable = new LevelCompletionResponse("unavailable", null, null, null, "generation", 10,
+                null, null, 0, 0, 0, 0, 0, 0, List.of(), List.of(), List.of(
+                new LevelCompletionResponse.ProfileOption("profile", Map.of("de", "Geometrie"), 2, 1)),
+                null, false, "completion_mastery_unavailable", List.of());
+        assertThat(CompletionCallContext.with(supported(), () -> ClaudeV1CompletionChoices.published(unavailable, "de"))).isEmpty();
+    }
+
+    @Test
     void choicesResolveToAuthorizedActionsAndAmbiguousNamesAreNeverExecutable() {
         CompletionCallContext.with(supported(), () -> {
             var offered = new LevelCompletionResponse("unresolved", null, null, null, "private-generation", 10,

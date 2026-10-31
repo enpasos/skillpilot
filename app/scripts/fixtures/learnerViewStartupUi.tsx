@@ -56,7 +56,9 @@ const subjectScope = (id: string, landscapeId: string, title: string, children: 
   tags: ['synthetic:program-unit'],
   extendedData: { syntheticStructureKind: 'compositionView' },
 })
-const completionTreeFixture = new URLSearchParams(window.location.search).get('completionTree') === '1'
+const fixtureParams = new URLSearchParams(window.location.search)
+const completionTreeFixture = fixtureParams.get('completionTree') === '1'
+const fixtureEntryGoalId = fixtureParams.get('entryGoal') ?? 'math-upper'
 const mathUpper = goal('math-upper', mathId, 'Ableitungen für Wachstumsmodelle deuten', 'SekII')
 const physicsUpper = goal('physics-upper', physicsId, 'Elektrische Felder untersuchen', 'SekII')
 const allGoals = new Map([
@@ -74,7 +76,7 @@ const allGoals = new Map([
 ].map((entry) => [entry.id, entry]))
 const rootGoals = [mathRoot, physicsRoot]
 const landscapes = [{ landscapeId: mathId, title: 'Mathematik' }, { landscapeId: physicsId, title: 'Physik' }]
-const getMastery = (id: string) => completionTreeFixture && id === 'math-exam' ? 1 : 0
+const getMastery = (id: string) => completionTreeFixture && fixtureParams.get('examMastered') !== '0' && id === 'math-exam' ? 1 : 0
 const fixtureRootLandscapeId = new URLSearchParams(window.location.search).get('root') === 'legacy'
   ? 'legacy-school-root'
   : CANONICAL_GYMNASIUM_ROOT_ID
@@ -83,7 +85,7 @@ const Fixture = () => {
   const location = useLocation()
   const [role, setRole] = useState<'learner' | 'trainer' | 'explorer' | null>('learner')
   const [learnerId, setLearnerId] = useState('fixture-learner-a')
-  const [currentGoal, setCurrentGoal] = useState(mathUpper)
+  const [currentGoal, setCurrentGoal] = useState(allGoals.get(fixtureEntryGoalId) ?? mathUpper)
   const selectGoal = useCallback((id: string) => {
     const selected = allGoals.get(id)
     if (selected) setCurrentGoal(selected)
@@ -123,7 +125,7 @@ if (!element) throw new Error('missing fixture root')
 // Production mount semantics: StrictMode's development-only effect replay is
 // deliberately not counted as an independent duplicate fetch here.
 createRoot(element).render(
-  <MemoryRouter initialEntries={['/learner/math-upper']}>
+  <MemoryRouter initialEntries={[`/learner/${fixtureEntryGoalId}${fixtureParams.get('completionShortcuts') === '1' ? '?completionShortcuts=1' : ''}`]}>
     <LanguageProvider><ThemeProvider><Fixture /></ThemeProvider></LanguageProvider>
   </MemoryRouter>,
 )

@@ -1,6 +1,7 @@
 package com.skillpilot.backend.connectors.gemini.v1.mcp;
 
 import com.skillpilot.backend.ai.CoachStateProjection;
+import com.skillpilot.backend.ai.AssessmentShortcutDiscovery;
 import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
@@ -111,7 +112,8 @@ public class GeminiV1CoachContextProjector {
                 Set.of(),
                 projectedUpdate.learningState(),
                 projectedUpdate.activeGoal(),
-                projectedUpdate.stateMachine());
+                projectedUpdate.stateMachine(),
+                projectedUpdate.levelCompletion());
         return projectContext(skillpilotId, stateVersion, language, projectedState, true);
     }
 
@@ -125,6 +127,9 @@ public class GeminiV1CoachContextProjector {
         FrontierGoal activeGoal = projectedState.activeGoal();
         context.put("stateVersion", stateVersion);
         context.put("language", language);
+        AssessmentShortcutDiscovery shortcuts = AssessmentShortcutDiscovery.project(
+                projectedState.levelCompletion(), publicBaseUrl, language);
+        if (shortcuts != null) context.put("assessmentShortcuts", shortcuts);
         Map<String, Object> dailyPlan = projectLearningPlanToday(
                 coachToolFacade.getLearningPlanTodayStatus(skillpilotId, language), activeGoal != null, language);
         context.put("learningPlanToday", dailyPlan);

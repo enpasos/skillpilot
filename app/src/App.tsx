@@ -18,6 +18,7 @@ import {
 } from './utils/rootRoutePolicy'
 import {
   getLearnerPathToken,
+  getSessionStartSearch,
   getStoredLandscapeIdForRole,
   normalizeLearnerLandscapeId,
 } from './utils/learnerProfile'
@@ -742,7 +743,7 @@ const App: React.FC = () => {
       setPendingLandscapeId(effectiveLandscapeId)
       core.setSelectedLandscapeId(effectiveLandscapeId)
     }
-    const search = effectiveLandscapeId ? `?l=${effectiveLandscapeId}` : ''
+    const search = getSessionStartSearch(effectiveLandscapeId, activeRole, location.search)
     // Fallback to URL if not passed explicitly (for manual clicks). The route token is a goal id only.
     const params = new URLSearchParams(location.search)
     const routeGoalId = routeGoalToken && routeGoalToken !== sanitizedId ? routeGoalToken : ''

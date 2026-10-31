@@ -1,9 +1,11 @@
 import assert from 'node:assert/strict'
 import { requestClaudeV1Start } from '../coachVariants/claudeV1/request'
+import { getGoalNavigationSearch, getSessionStartSearch } from './learnerProfile'
 import {
   buildCompletionAssessmentStartHref,
   buildCompletionRouteStartHref,
   completionNotice,
+  completionAssessmentsForGoal,
   completionWaiversForTree,
   completionUnavailableReason,
   LevelCompletionApiError,
@@ -56,6 +58,24 @@ assert.equal(parseLevelCompletion({ ...valid, navigationIntent: 'paused' })?.nav
 assert.equal(parseLevelCompletion({ ...valid, actions: [{ action: 'pauseProfile', title: { de: 'Für heute beenden' } }] })?.actions[0].action, 'pauseProfile')
 const profileOption = { profileId: 'next', title: { de: 'Abschnitt' }, targetCount: 2, requiredAssessmentCount: 1 }
 assert.equal(parseLevelCompletion({ ...valid, profileOptions: [profileOption] })?.profileOptions[0].targetCount, 2)
+assert.deepEqual(parseLevelCompletion({ ...valid, profileOptions: [profileOption] })?.profileOptions[0].assessments, [], 'legacy profile options remain readable')
+const availableAssessment = { goalId: 'next-exam', title: { de: 'Prüfung' }, mastered: false, startAvailable: true }
+const discovery = parseLevelCompletion({ ...valid, calculationStatus: 'notApplicable', complete: undefined, profileId: undefined,
+  profileOptions: [{ ...profileOption, assessments: [availableAssessment] }] })!
+assert.equal(completionAssessmentsForGoal(discovery, 'next-exam')[0].profileId, 'next')
+assert.equal(completionAssessmentsForGoal(discovery, 'A').length, 0, 'a preparation goal is never inferred to be an assessment choice')
+assert.equal(completionAssessmentsForGoal({ ...discovery, calculationStatus: 'unavailable' }, 'next-exam').length, 0)
+assert.equal(completionAssessmentsForGoal({ ...parseLevelCompletion(valid)!, profileOptions: discovery.profileOptions }, 'next-exam').length, 0,
+  'an existing route only exposes its own published assessments')
+for (const assessments of [
+  [availableAssessment, availableAssessment],
+  [{ ...availableAssessment, mastered: true }],
+  [{ ...availableAssessment, startAvailable: 'yes' }],
+]) assert.throws(() => parseLevelCompletion({ ...valid, profileOptions: [{ ...profileOption, assessments }] }))
+assert.throws(() => parseLevelCompletion({ ...valid, profileOptions: [{ ...profileOption, targetCount: 30, requiredAssessmentCount: 30,
+  assessments: Array.from({ length: 25 }, (_, i) => ({ ...availableAssessment, goalId: `exam-${i}` })) }] }))
+assert.throws(() => parseLevelCompletion({ ...valid,
+  profileOptions: Array.from({ length: 25 }, (_, i) => ({ ...profileOption, profileId: `profile-${i}` })) }))
 for (const changes of [{ requiredAssessmentCount: 3 }, { requiredAssessmentCount: null }, { targetCount: -1 }]) {
   assert.throws(() => parseLevelCompletion({ ...valid, profileOptions: [{ ...profileOption, ...changes }] }))
 }
@@ -67,6 +87,17 @@ assert.throws(() => parseLevelCompletion({ ...valid, waiverDetails: [{ ...explan
 assert.throws(() => parseLevelCompletion({ ...valid, waiverDetails: [explanation, explanation] }))
 
 const choice = { profileId: 'profile:math', goalId: 'goal/1', expectedRevision: 4 }
+const handoffSearch = '?completionShortcuts=1&learnerId=private&token=private&completionRevision=4&completionProfile=old&completionGoal=old'
+assert.equal(getSessionStartSearch('math', 'learner', handoffSearch), '?l=math&completionShortcuts=1',
+  'login preserves only the harmless discovery intent, never identity, session tokens or a launch grant')
+assert.equal(getSessionStartSearch('', 'learner', '?completionShortcuts=0'), '')
+assert.equal(getSessionStartSearch('math', 'trainer', handoffSearch), '?l=math')
+const routeSearch = new URLSearchParams('l=math&f=GK&completionShortcuts=1')
+assert.equal(getGoalNavigationSearch(routeSearch, 'exam', 'exam').toString(), routeSearch.toString(),
+  'automatic same-goal navigation cannot consume the initial handoff before rendering')
+assert.equal(getGoalNavigationSearch(routeSearch, 'exam', 'next-goal').toString(), 'l=math&f=GK',
+  'ordinary goal navigation retains scope but does not reopen discovery')
+assert.equal(routeSearch.get('completionShortcuts'), '1', 'navigation never mutates the current router query')
 assert.equal(buildCompletionRouteStartHref(), '/?start=coach')
 assert.match(buildCompletionRouteStartHref('math'), /completionRoute=math/u)
 assert.equal(readCompletionAssessmentStart(buildCompletionRouteStartHref('math')), null, 'ordinary completion route does not grant direct assessment entry')

@@ -75,6 +75,41 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
     @Autowired ClaudeV1McpContractAdapter adapter;
     @Autowired LearnerService learnerService;
 
+    @Test void directHttpLaunchUsesThePublishedAssessmentWithoutAProfileSelectionWrite() throws Exception {
+        String id = createSyntheticLearner();
+        URI base = URI.create("http://127.0.0.1:" + port + "/api/ui/learners/" + id + "/");
+        try (HttpClient client = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(10)).build()) {
+            var previewResponse = client.send(HttpRequest.newBuilder(base.resolve("state"))
+                    .timeout(Duration.ofSeconds(60)).GET().build(), HttpResponse.BodyHandlers.ofByteArray());
+            assertThat(previewResponse.statusCode()).isEqualTo(200);
+            JsonNode preview = mapper.readTree(previewResponse.body()).path("levelCompletion");
+            assertThat(preview.path("profileId").isMissingNode() || preview.path("profileId").isNull()).isTrue();
+            JsonNode option = preview.path("profileOptions").get(0);
+            assertThat(option.path("assessments").get(0).path("goalId").asText()).isEqualTo(EXAM);
+            assertThat(option.path("assessments").get(0).path("startAvailable").asBoolean()).isTrue();
+            assertThat(learners.findById(id).orElseThrow().getCompletionWorkflow()).isNull();
+            long revision = preview.path("learnerRevision").asLong();
+            var launch = HttpRequest.newBuilder(base.resolve("claude/v1/launch"))
+                    .timeout(Duration.ofSeconds(60)).header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(mapper.writeValueAsString(Map.of(
+                            "client", "web-start", "communicationLocale", "de",
+                            "completionAssessment", Map.of("profileId", option.path("profileId").asText(),
+                                    "goalId", EXAM, "expectedRevision", revision))))).build();
+            var response = client.send(launch, HttpResponse.BodyHandlers.ofByteArray());
+            assertThat(response.statusCode()).isEqualTo(200);
+            assertThat(mapper.readTree(response.body()).path("prompt").asText()).contains("level-completion context");
+            Learner persisted = learners.findById(id).orElseThrow();
+            assertThat(persisted.getActiveGoalId()).isEqualTo(EXAM);
+            assertThat(persisted.getCoachStateRevision()).isEqualTo(revision + 1);
+            assertThat(mapper.readValue(persisted.getCompletionWorkflow(), CompletionWorkflowState.class)
+                    .directAssessment().goalId()).isEqualTo(EXAM);
+        }
+        assertThat(mastery.findByLearner_SkillpilotId(id)).isEmpty();
+        assertThat(focus.findByLearner_SkillpilotId(id)).extracting(PlannedGoal::getGoalId).containsExactly(PREPARATION);
+        assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM claude_v1_learning_session WHERE learner_id = ?",
+                Integer.class, id)).isEqualTo(1);
+    }
+
     @Test void mobileCockpitAndProviderStartUseRealHttpAndPersistOneOwnedAssessment() throws Exception {
         String id = createSyntheticLearner();
         Path app = Path.of("../app").toAbsolutePath().normalize();

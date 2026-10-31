@@ -48,8 +48,11 @@ Level-2-Ziele bestimmen den Zielnenner.
 
 Die gemeinsame Zustandsantwort enthält `levelCompletion`; Cockpit und
 Lerncoach erhalten dieselbe Fachberechnung. Bereits das Profilangebot nennt seinen
-statischen Zielumfang und die Zahl erforderlicher Prüfungen, bevor es aktiviert
-wird; dafür ist kein zusätzlicher Mastery-Read oder Evaluatorlauf nötig. Automatische Empfehlungen bleiben
+statischen Zielumfang, die Zahl erforderlicher Prüfungen sowie deren genaue Titel
+und aktuelle Startverfügbarkeit, bevor es aktiviert wird. Die Vorschau verwendet
+den gemeinsamen Mastery-Snapshot; sie führt keinen Evaluatorlauf je angebotenem
+Profil aus. Aufgaben, Lösungen und Bewertungsregeln gehören nicht in diese
+Vorschau. Automatische Empfehlungen bleiben
 auf offene Abschnittsziele beschränkt. Unterstützung und freiwillige
 Vertiefung sind bewusste Entscheidungen. Eine ausdrücklich angenommene
 Fokusergänzung bewahrt alle unabhängigen bisherigen Fokuswurzeln und ändert
@@ -88,8 +91,10 @@ lassen sich anschließend manuell schließen und bleiben bei unveränderten
 Zustandsaktualisierungen geschlossen.
 
 Der Direktstart führt aus dem Cockpit zunächst in die bestehende Anbieterwahl.
-Erst der tatsächliche Lernstart bindet die gewählte Prüfung an eine frische
-Claude-Sitzung. Die Ausnahme gilt nur für diese Prüfung, einschließlich im
+Erst der tatsächliche Lernstart wählt gegebenenfalls das Profil und bindet die
+gewählte Prüfung atomar an eine frische Claude-Sitzung. Im unterstützten
+Claude-Coach kann dieselbe bewusste Prüfungswahl unmittelbar in der bestehenden
+Sitzung erfolgen. Die Ausnahme gilt nur für diese Prüfung, einschließlich im
 Striktmodus. Andere Sitzungen erhalten keine Aufgaben- oder
 Bewertungsberechtigung aus dieser Bindung. Eine noch gültige Bindung bleibt
 bei einem Cockpit-Refresh erhalten. Bei Ablauf oder ungültig gewordener
@@ -230,8 +235,9 @@ normalen Kontext erlaubt die Bestätigung und anschließend die erste bewusste
 Abschnittswahl direkt im Coach. Dieser technische Austausch braucht keine
 zusätzliche Bestätigung durch die lernende Person. Alte oder inkompatible
 Sitzungen können den aktiven Profilweg nicht ungefiltert fortsetzen und benötigen
-einen frischen unterstützten Start. Andere Anbieter bleiben für diesen Ablauf
-bis zu ihrer gesonderten Prüfung gesperrt.
+einen frischen unterstützten Start. Andere Anbieter zeigen verfügbare
+Prüfungsabkürzungen mit gezieltem Cockpit-Link; die Ausführung innerhalb ihrer
+eigenen Sitzung bleibt bis zur gesonderten Adapterprüfung gesperrt.
 
 Diese Quittung belegt eine technische Sitzungskommunikation, **nicht**, dass ein
 Host oder Modell die Instructions vollständig gelesen oder befolgt hat. Echte
@@ -481,9 +487,17 @@ Sicherheitsprüfung oder öffentliche Origin-Pins auf HTTP-Loopback umbiegen.
    trägt danach **„Aktueller Lernfokus“**. Auf einer neuen ID sind keine
    unabhängigen alten Fokuswurzeln zu entfernen.
 
-Die Abschlusskarte heißt vor Auswahl **„Einen Lernabschnitt abschließen“**.
-Sie zeigt vor dem Profilknopf bereits **„2 Lernziele, davon 1 erforderliche
-Prüfung.“** Den Knopf **„Skalarprodukt und orthogonale Projektion“** wählen.
+Die aufklappbare Auswahl **„Prüfungsabkürzungen“** zeigt bereits vor der
+Profilwahl den Abschnitt, **„2 Lernziele, davon 1 erforderliche Prüfung.“**
+und das konkrete Prüfungsziel. Das Aufklappen verändert weder aktives Ziel,
+Fokus, Profilwahl noch Mastery. **„Prüfung direkt versuchen“** führt ohne
+vorherige Profilwahl in die Anbieterwahl. Am entsprechenden Prüfungslernziel
+im Baum ist derselbe Einstieg erreichbar; dafür werden keine weiteren
+Baumzeilen oder Erlassbehauptungen erzeugt.
+
+Wer stattdessen den Abschnitt regulär bearbeiten möchte, wählt den
+Knopf **„Abschnitt als Lernweg wählen“** unter
+**„Skalarprodukt und orthogonale Projektion“**.
 Erwartung bei der neuen ID: **0 von 2 Lernzielen geschafft**, **0 von 1
 Prüfungen geschafft**, kein Erlass, Abschnitt noch offen. Die technische ID des
 Profils lautet `math-dot-product-projection`; sie muss nicht eingegeben werden.
@@ -578,6 +592,35 @@ frische Startaktion und macht alte Bewertungs-Capabilities ungültig. Dies wird
 zusätzlich durch die echten MCP-Regressionstests geprüft, ohne dass Testende
 Capabilities aus Chats kopieren müssen. Ohne laufende Direktbindung pausiert
 **„Für heute beenden“** auch einen noch offenen Abschnitt.
+
+### Prüfungsabkürzungen aus dem Coach ansteuern
+
+Eine neue Claude-Sitzung mit regulärem Lernweg beginnen und zum Beispiel fragen:
+**„Welche Prüfungen kann ich direkt versuchen, um Vorbereitung abzukürzen?“**
+Der Coach nennt ausschließlich aktuell angebotene Prüfungen und den jeweiligen
+Abschnitt. Er zeigt dabei weder Aufgaben noch Lösungen. Im Pilot ist dies
+**„Skalarprodukt über eine orthogonale Projektion erklären“**.
+
+Diese konkrete Prüfung ausdrücklich wählen. Der Coach nutzt die exakt
+veröffentlichte Auswahl; das Backend wählt Profil und Prüfung gemeinsam und
+bindet sie an dieselbe Sitzung. Es gibt keine zusätzliche Frage nach einer
+technischen Profil-ID und keine zweite Zustimmung zur bereits eindeutigen
+Prüfungswahl. Ein bloßer Informationswunsch startet nichts. Die technische
+Vertragsquittung benötigt ebenfalls keine menschliche Bestätigung.
+
+ChatGPT und Gemini nennen dieselben verfügbaren Prüfungen und einen gezielten
+Cockpit-Link mit dem Hinweis, dass Direktprüfungen derzeit mit Claude laufen.
+Der Link öffnet ausschließlich die Auswahl am betreffenden Prüfungsziel.
+Er enthält keine SkillPilot-ID, Sitzung, Startberechtigung oder mitgebrachte
+Zustandsrevision. Das Cockpit verwendet seine aktuell angemeldete Test-ID,
+lädt deren frischen Stand und erfordert den bewussten Start. Der Link
+autorisiert weder einen Anbieterwechsel noch die Prüfung selbst.
+
+Zusätzlich prüfen: Abkürzungen abschalten, Prüfung bereits bestehen lassen,
+den Persönlichen Lehrplan ändern oder einen alten Link erneut öffnen. Es darf
+keine nicht mehr angebotene Prüfung gestartet und keine gewöhnliche Zielwahl
+als Prüfungsabkürzung ausgegeben werden. Ein laufender oder abgeschlossener
+normaler Lernschritt wird nicht ungefragt durch ein Prüfungsmenü ersetzt.
 
 ### Reload, alte Ansicht und vorhandene Mastery prüfen
 

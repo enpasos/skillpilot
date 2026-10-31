@@ -114,7 +114,9 @@ try {
       }
     })
     await page.goto(`${server.baseUrl}/scripts/fixtures/levelCompletionBackendUi.html?learner=${learner}`)
-    await page.getByTestId('level-completion-card').getByRole('button', { name: title, exact: true }).waitFor()
+    const discovery = page.getByTestId('completion-shortcut-discovery')
+    await discovery.locator('summary').click()
+    await discovery.getByRole('button', { name: `Abschnitt als Lernweg wählen: ${title}`, exact: true }).waitFor()
     return { page, context, failState: (failed: boolean) => { abortState = failed }, holdState: () => {
       const held = new Promise<void>((resolveHeld) => { stateHeld = resolveHeld })
       stateGate = new Promise<void>((release) => { releaseState = release })
@@ -128,7 +130,7 @@ try {
   const card = mobile.page.getByTestId('level-completion-card')
   assert.equal(requests.filter((r) => r.path.endsWith('/level-completion/actions')).length, 0)
   await card.getByText('2 Lernziele, davon 1 erforderliche Prüfung.', { exact: true }).waitFor()
-  const profileChoice = card.getByRole('button', { name: title, exact: true })
+  const profileChoice = card.getByRole('button', { name: `Abschnitt als Lernweg wählen: ${title}`, exact: true })
   await profileChoice.focus()
   assert.equal(await profileChoice.evaluate((element) => element === document.activeElement), true)
   const selectedResponse = mobile.page.waitForResponse((response) => response.url().endsWith('/level-completion/actions'))
@@ -154,7 +156,7 @@ try {
   assert.equal(titleOverlapsStart, false, 'The actual long assessment title must not overlap its start button on mobile')
 
   const conflict = parallel.page.waitForResponse((response) => response.url().endsWith('/level-completion/actions'))
-  await parallel.page.getByTestId('level-completion-card').getByRole('button', { name: title, exact: true }).click()
+  await parallel.page.getByTestId('level-completion-card').getByRole('button', { name: `Abschnitt als Lernweg wählen: ${title}`, exact: true }).click()
   assert.equal((await conflict).status(), 409, 'The second tab sends its actual old revision to the backend')
   await parallel.page.getByRole('alert').filter({ hasText: 'Deine Auswahl konnte nicht bestätigt werden' }).waitFor()
   await parallel.page.getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).waitFor()
