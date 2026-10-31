@@ -10,6 +10,7 @@ import static org.mockito.Mockito.when;
 
 import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.api.LevelCompletionResponse;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.PersonalizationRequest;
@@ -78,6 +79,47 @@ class CoachToolFacadeTest {
                 chatSessionService,
                 new CoachStateProjection("https://skillpilot.test"),
                 learnerLifecycle);
+    }
+
+    @Test
+    void automaticOverviewDoesNotPauseUnsupportedProvidersOrOptedOutOrdinaryLearning() {
+        for (String provider : List.of("legacy", "openai", "gemini")) {
+            for (String status : List.of("valid", "unavailable")) {
+                var overview = completionState("automatic:personal-curriculum", null, false, status);
+                when(learnerService.getCoachLearnerState("learner-1")).thenReturn(overview);
+                var returned = com.skillpilot.backend.completion.CompletionCallContext.with(
+                        new com.skillpilot.backend.completion.CompletionCallContext(provider, "session", null, false),
+                        () -> facade.getLearnerState("learner-1"));
+                assertThat(returned).isSameAs(overview);
+                assertThat(returned.stateMachine().requiredAction()).isEqualTo("learn");
+                assertThat(returned.levelCompletion().profileOptions()).isEmpty();
+            }
+        }
+        verify(learnerService, org.mockito.Mockito.times(6)).assertActiveLearnerRouteAccess("learner-1");
+        verify(learnerService, org.mockito.Mockito.times(6)).getCoachLearnerState("learner-1");
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void selectedAutomaticAndHistoricalRoutesStillRequireASupportedCoachSession() {
+        for (var selected : List.of(completionState("automatic:personal-curriculum", "required", false, "valid"),
+                completionState("automatic:personal-curriculum", null, true, "valid"),
+                completionState("historical-profile", null, false, "valid"))) {
+            when(learnerService.getCoachLearnerState("learner-1")).thenReturn(selected);
+            assertThatThrownBy(() -> facade.getLearnerState("learner-1"))
+                    .isInstanceOfSatisfying(ResponseStatusException.class,
+                            failure -> assertThat(failure.getStatusCode()).isEqualTo(HttpStatus.CONFLICT));
+        }
+    }
+
+    private static UnifiedLearnerStateResponse completionState(String profile, String intent, boolean running, String status) {
+        var state = learnerState("learner-1", "learn");
+        var completion = new LevelCompletionResponse(status, null, profile, "revision", "generation", 1,
+                Map.of(), null, 0, 0, 0, 0, 0, 0, List.of(), List.of(), List.of(), intent, running,
+                "completion_coach_contract_unsupported", List.of());
+        return new UnifiedLearnerStateResponse(state.skillpilotId(), state.curriculum(), state.frontier(), state.goals(),
+                state.nextAllowedActions(), state.activeFilters(), state.copySources(), state.learningState(),
+                state.activeGoal(), state.stateMachine(), completion);
     }
 
     @Test

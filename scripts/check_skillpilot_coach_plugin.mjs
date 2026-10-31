@@ -4,7 +4,7 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { computeRepositoryCurriculumRevision } from "./compute_curriculum_revision.mjs";
-import { assertCurrentCoachBehavior } from "./check_skillpilot_coach_behavior.mjs";
+import { assertCurrentCoachBehavior, assertCurrentCompletionBehavior } from "./check_skillpilot_coach_behavior.mjs";
 import { OPENAI_PLUGIN } from "./lib/openai_plugin_config.mjs";
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -193,6 +193,7 @@ const contractMetadata = read(resolve(
 const releaseScript = read(resolve(repositoryRoot, "scripts/openai_plugin_release.mjs"));
 const combinedSkill = `${skill}\n${policy}`;
 assertCurrentCoachBehavior({ skill, policy });
+assertCurrentCompletionBehavior({ skill, policy, serverInstructions: mcpContract });
 // Assessment prose is conversation-local, never a tool argument or receipt.
 for (const [name, source] of [
   ["active skill/policy", combinedSkill],
@@ -1099,25 +1100,12 @@ assertBehaviorFragments(
 );
 
 assertBehaviorFragments(
-  combinedSkill,
-  [
-    /`requires` is one-way/u,
-    /mastery of B never implies\s+mastery of A/u,
-    /Every\s+unmastered personalized target remains a normal frontier candidate/u,
-    /own effective prerequisites are satisfied/u,
-  ],
-  "directed prerequisite and frontier preservation",
-);
-
-assertBehaviorFragments(
   mcpContract,
   [
     /Backend-published suitable learner-facing ancestors come first, nearest broader focus first/u,
     /completion\.scopeComplete=true and requiredAction=setScope[\s\S]+offer the first option/u,
     /do not mutate until the learner accepts/u,
     /For an unqualified request or acceptance to broaden the focus, copy exactly the first published option's goalIds unchanged/u,
-    /mastery of a dependent goal never implies mastery of, or suppresses, an unmastered prerequisite/u,
-    /Every unmastered target in the Personal Curriculum remains subject to the normal frontier test/u,
   ],
   "server-owned focus widening and directed prerequisites",
 );

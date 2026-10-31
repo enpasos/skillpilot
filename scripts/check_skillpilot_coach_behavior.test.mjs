@@ -1,12 +1,17 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
-import { assertCurrentCoachBehavior } from "./check_skillpilot_coach_behavior.mjs";
+import { assertCurrentCoachBehavior, assertCurrentCompletionBehavior } from "./check_skillpilot_coach_behavior.mjs";
 
 const skillRoot = new URL("../ai/openai plugin/skillpilot-coach/skills/skillpilot-coach/", import.meta.url);
 const source = {
   skill: readFileSync(new URL("SKILL.md", skillRoot), "utf8"),
   policy: readFileSync(new URL("references/coaching-policy.md", skillRoot), "utf8"),
+};
+const completionSource = {
+  ...source,
+  serverInstructions: readFileSync(new URL(
+    "../backend/src/main/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV1McpContractAdapter.java", import.meta.url), "utf8"),
 };
 function changed(field, before, after) {
   const next = { ...source, [field]: source[field].replace(before, after) };
@@ -16,6 +21,64 @@ function changed(field, before, after) {
 
 test("current instructions distinguish ordinary/exam success from orientation and Recall consent", () => {
   assert.doesNotThrow(() => assertCurrentCoachBehavior(source));
+});
+
+test("current package and live instructions separate implicit completion from prerequisite mastery", () => {
+  assert.doesNotThrow(() => assertCurrentCompletionBehavior(completionSource));
+});
+
+test("obsolete mandatory preparation cannot return alongside the correct completion rules", () => {
+  for (const field of Object.keys(completionSource)) {
+    for (const obsolete of [
+      "mastery of a dependent goal never implies mastery of, or suppresses, an unmastered prerequisite",
+      "Do not suppress or mark A as mastered from that relation.",
+      "Every unmastered personalized target remains a normal frontier candidate.",
+      "Every unmastered target in the Personal Curriculum remains subject to the normal frontier test.",
+    ]) {
+      assert.throws(() => assertCurrentCompletionBehavior({
+        ...completionSource, [field]: `${completionSource[field]}\n${obsolete}`,
+      }), /Obsolete mandatory-prerequisite instructions/u);
+    }
+  }
+});
+
+test("implicit completion and dependent mastery cannot become stored prerequisite mastery", () => {
+  for (const field of Object.keys(completionSource)) {
+    for (const invalid of [
+      "Mastery of B implies mastery of A.",
+      "Implicit completion creates mastery.",
+      "Implicit completion writes saved mastery.",
+    ]) {
+      assert.throws(() => assertCurrentCompletionBehavior({
+        ...completionSource, [field]: `${completionSource[field]}\n${invalid}`,
+      }), /must never create prerequisite mastery/u);
+    }
+  }
+});
+
+test("completion guards detect missing mastery barriers, backend authority, scope and voluntary access", () => {
+  for (const [field, pattern, replacement, reason] of [
+    ["skill", /Mastery of a goal never implies mastery of its\s+prerequisites/u,
+      "Check prerequisites separately", /skill must prohibit mastery transfer/u],
+    ["skill", /backend alone determines remaining work/u,
+      "coach determines remaining work", /defer remaining work/u],
+    ["policy", /A mastered goal no longer demands its own prerequisites/u,
+      "Always require every transitive prerequisite", /Mastered intermediate goals/u],
+    ["policy", /full committed Personal Curriculum/u,
+      "current visible learning focus", /full authoritative demand scope/u],
+    ["policy", /Implicit completion needs no passed assessment/u,
+      "Implicit completion requires a passed assessment", /scopes without assessments/u],
+    ["serverInstructions", /Mastery never propagates to prerequisites/u,
+      "Check prerequisite mastery later", /Live instructions must prohibit/u],
+    ["serverInstructions", /Implicit completion changes no saved goal result/u,
+      "Implicit completion changes the saved goal result", /preserve binary results/u],
+    ["serverInstructions", /Explicit voluntary learning remains possible through current published options/u,
+      "Implicitly completed goals cannot be studied", /retain authorized voluntary learning/u],
+  ]) {
+    const mutated = completionSource[field].replace(pattern, replacement);
+    assert.notEqual(mutated, completionSource[field], "The mutation must change a current instruction.");
+    assert.throws(() => assertCurrentCompletionBehavior({ ...completionSource, [field]: mutated }), reason);
+  }
 });
 
 test("restoring obsolete consent gates fails even while the correct instructions remain", () => {

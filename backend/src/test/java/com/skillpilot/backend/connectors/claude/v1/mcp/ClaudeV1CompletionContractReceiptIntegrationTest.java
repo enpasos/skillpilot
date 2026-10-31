@@ -42,13 +42,11 @@ import org.springframework.test.util.ReflectionTestUtils;
 @SpringBootTest(properties = {
         ClaudeV1TestProperties.ENABLED, ClaudeV1TestProperties.SIGNING_SECRET,
         ClaudeV1TestProperties.CAPABILITY_SECRET, ClaudeV1TestProperties.BETA_DISABLED,
-        "skillpilot.completion.enabled=true",
-        "skillpilot.completion.enabled-profile-ids=math-dot-product-projection",
         "spring.datasource.url=jdbc:h2:mem:completion-mcp;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=VALUE"
 })
 @ActiveProfiles("test")
 class ClaudeV1CompletionContractReceiptIntegrationTest {
-    private static final String PROFILE = "math-dot-product-projection";
+    private static final String PROFILE = "automatic:personal-curriculum";
     private static final String ROOT = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String MATH = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String PREPARATION = "3016ec37-1c2e-47db-83f5-e767923bc97e";
@@ -152,8 +150,13 @@ class ClaudeV1CompletionContractReceiptIntegrationTest {
         Map<String, Object> ready = context();
         String choice = ((List<?>) map(ready, "levelCompletion").get("choices")).stream().map(String::valueOf)
                 .filter(label -> label.startsWith("Abschnitt wählen: ")).findFirst().orElseThrow();
+        String selectedProfile = learners.getLearnerState(learnerId).levelCompletion().profileOptions().stream()
+                .filter(option -> choice.equals("Abschnitt wählen: " + option.title().get("de")))
+                .map(option -> option.profileId()).findFirst().orElseThrow();
         successful(session, ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE, writeArgs(Map.of("choice", choice)));
-        assertThat(learnerRepository.findById(learnerId).orElseThrow().getCompletionWorkflow()).contains(PROFILE);
+        assertThat(mapper.readValue(learnerRepository.findById(learnerId).orElseThrow().getCompletionWorkflow(),
+                com.skillpilot.backend.completion.CompletionWorkflowState.class).profileId()).isEqualTo(selectedProfile);
+        assertThat(selectedProfile).startsWith("automatic:").isNotEqualTo(PROFILE);
         assertThat(context()).containsKey("levelCompletion").doesNotContainKey("completionContract");
         assertThat(mastery.findByLearner_SkillpilotId(learnerId)).isEmpty();
     }

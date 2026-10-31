@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="806" viewBox="0 0 1440 806" role="img" aria-labelledby="diagram-title diagram-desc">
 <title id="diagram-title">Assessment-gated completion and shared prerequisites</title>
-<desc id="diagram-desc">Immediate arrows shown run B to A, C to A and A to D, from dependent to prerequisite. The calculation also counts indirect demands B to D and C to D. The reviewed rule requires mastery of both B and C before work on A and D can be waived for this level. Left: only B passed, discharging its demands on A and D. The rule is not enabled; C still needs A and D, so both stay open. Right: both exams passed, enabling the rule; A is waived in round 1 and D in round 2. Exams always require explicit passes. Waived work is calculated; only mastery is stored per goal.</desc>
+<desc id="diagram-desc">Immediate arrows shown run B to A, C to A and A to D, from dependent to prerequisite. Demand travels only through unfinished goals. Mastery stops outgoing demand; no manual waiver rule is needed. Left: only B passed, discharging its demands on A and D. C still needs A, and A still needs D, so both stay open. Right: both exams passed; A is waived in round 1 and D in round 2. Exams always require explicit passes. Waived work is calculated; only mastery is stored per goal.</desc>
 <defs>
 <marker id="arrow-discharged" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#087b67"/></marker>
 <marker id="arrow-active" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#bd6b10"/></marker>
@@ -24,7 +24,7 @@
 </defs>
 <rect width="1440" height="806" fill="#f5f8fc"/>
 <text class="heading" x="40" y="54">When passed exams waive separate learning work</text>
-<text class="subtitle" x="40" y="87">Immediate arrows shown: dependent → prerequisite. Calculation also includes indirect demands B → D and C → D.</text>
+<text class="subtitle" x="40" y="87">Direct requirements: consumer → prerequisite. Mastered or implicit goals no longer demand their preparation.</text>
 <g>
 <rect x="32" y="117" width="674" height="523" rx="21" fill="#fff" stroke="#d7e1ec" stroke-width="1.7"/>
 <text class="paneltitle" x="60" y="160">1 · Only exam B passed</text>
@@ -43,8 +43,8 @@
 <rect class="pending" x="570" y="321" width="110" height="94" rx="16"/>
 <text class="goal" x="590" y="355">D</text><text class="state" x="590" y="382">still</text><text class="state" x="590" y="402">required</text>
 <rect x="60" y="546" width="618" height="61" rx="13" fill="#f5f8fc"/>
-<text class="hint" x="78" y="572">The waiver rule is not enabled: C still needs a pass.</text>
-<text class="hint" x="78" y="594">C → A, C → D and A → D remain active.</text>
+<text class="hint" x="78" y="572">C is still open and continues to need A.</text>
+<text class="hint" x="78" y="594">C → A and A → D remain active; B → A is discharged.</text>
 </g>
 <g transform="translate(698 0)">
 <rect x="32" y="117" width="674" height="523" rx="21" fill="#fff" stroke="#d7e1ec" stroke-width="1.7"/>
@@ -62,7 +62,7 @@
 <rect class="waived" x="570" y="321" width="110" height="94" rx="16"/>
 <text class="goal" x="590" y="355">D</text><text class="state" x="590" y="382">waived</text><text class="state" x="590" y="402">round 2</text>
 <rect x="60" y="546" width="618" height="61" rx="13" fill="#f5f8fc"/>
-<text class="hint" x="78" y="572">Mastery of B and C enables the reviewed waiver rule.</text>
+<text class="hint" x="78" y="572">Neither B nor C needs preparation anymore.</text>
 <text class="hint" x="78" y="594">A is waived, then D; global mastery stays unchanged.</text>
 </g>
 <rect x="32" y="664" width="1378" height="110" rx="19" fill="#fff" stroke="#d7e1ec" stroke-width="1.7"/>

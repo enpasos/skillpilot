@@ -10,7 +10,7 @@ Layering, migration strategy, and canonical rollout policy are specified separat
 
 Related planning scope: [Curriculum Levels](curriculum-levels.md) explains how bounded learning stages, including school years, organize canonical goals. The optional formal profile in §12 checks a resolved plan without changing base graph validity.
 
-Related **proposed** completion calculation: [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md) derives level completion and work waivers from a fixed scope, reviewed static rules and existing mastery. Mastery remains the sole stored result per goal; an assessment needs no second qualification. The canonical atomic demand relation serves that calculation only; it does **not** alter this document's current graph or frontier semantics.
+Related completion contract: [Implicit Completion and Direct Assessment Access](assessment-gated-completion.md) derives remaining work from direct normalised requirements and existing mastery. Any mastered goal ends its own prerequisite demand; unused non-assessment goals become implicitly completed. Mastery remains the sole stored goal result. The 31 October 2026 decision replaces manual waiver profiles and changes prerequisite availability to stop at mastered intermediate goals.
 
 > **Normative definition.** This document defines the skill graph’s semantics and validity requirements.
 >
@@ -309,7 +309,7 @@ $$
 
 A goal’s requirements include its own direct prerequisites and the direct prerequisites declared by its contains ancestors. The **effective prerequisite relation** records all these applicable requirements in the direction **goal → prerequisite**.
 
-**Quality-assurance context.** Contains-based inheritance supports modeling and compatibility where prerequisites are declared on clusters. The [QA route gates](../../qa-ci/curriculum-quality-maturity-and-routes.md) described in §5.2 distinguish effective route coverage (`CQR-101`) from direct atomic route coverage (`CQR-102`) and the absence of direct `requires` on selected clusters (`CQR-103`). In a fully atomic-authored prerequisite graph, $R_{\mathrm{effective}}=R$ (§6.3): the effective relation remains defined, but inheritance contributes no additional pairs. Longer prerequisite chains still apply through the transitive closure.
+**Quality-assurance context.** Contains-based inheritance supports modeling and compatibility where prerequisites are declared on clusters. The [QA route gates](../../qa-ci/curriculum-quality-maturity-and-routes.md) described in §5.2 distinguish effective route coverage (`CQR-101`) from direct atomic route coverage (`CQR-102`) and the absence of direct `requires` on selected clusters (`CQR-103`). In a fully atomic-authored prerequisite graph, $R_{\mathrm{effective}}=R$ (§6.3): the effective relation remains defined, but inheritance contributes no additional pairs. Longer prerequisite chains remain structurally reachable; runtime demand stops at mastered intermediate goals.
 
 ### 6.1 Effective prerequisite relation
 
@@ -328,7 +328,7 @@ Interpretation:
 - $g$ requires $p$ effectively when $g$ declares that prerequisite itself or inherits it from a contains ancestor.
 - Every direct requirement is also effective: $R\subseteq R_{\mathrm{effective}}$. The same ordered pair occurs only once in a relation, even when there are several inheritance paths.
 - Inheritance follows the contains hierarchy. It copies direct requirements declared by ancestors to their descendants; it does not copy requirements from prerequisite goals.
-- $R_{\mathrm{effective}}$ is computed by the inheritance rule, not by taking a transitive closure. Chains of requirements are evaluated using $R_{\mathrm{effective}}^+$; this is distinct from contains-based inheritance.
+- $R_{\mathrm{effective}}$ is computed by the inheritance rule, not by taking a transitive closure. Structural reachability uses $R_{\mathrm{effective}}^+$, whereas runtime availability checks direct effective requirements and demand traversal stops at mastery; neither operation is contains-based inheritance.
 
 **Inherited prerequisite pairs.** The additional pairs contributed by containment-based inheritance are:
 
@@ -422,31 +422,15 @@ $$
 
 ### 7.3 Transitive minimality
 
-A direct prerequisite edge MUST NOT be present if the prerequisite relationship already follows from other effective prerequisite paths.
+**Superseded as a mandatory constraint on 31 October 2026.** A direct
+requirement can remain independently meaningful even if another path reaches
+the same prerequisite. For C → B → A with mastered B, C no longer needs A
+through B. An additional direct C → A still requires A while C remains open.
 
-Formally, for each $(g,p)\in R$, remove that single direct edge and recompute effective requirements; the prerequisite must no longer be implied transitively.
-
-Let:
-
-$$
-R' = R \setminus \{(g,p)\}
-$$
-
-and let $R_{\mathrm{effective}}'$ be the effective relation computed from $R'$ using the definition in §6.1.
-
-Then the constraint is:
-
-$$
-\forall (g,p)\in R:\ (g,p)\notin (R_{\mathrm{effective}}')^+
-$$
-
-Interpretation: every edge in $R$ is necessary to preserve prerequisite reachability under the inheritance rules.
-
-With acyclic containment, this also implies local minimality (§7.2). A contains
-ancestor $a$ of $g$ differs from $g$, so removing $(g,p)$ leaves an ancestor's
-direct pair $(a,p)$ intact. If that pair exists, $(g,p)$ remains inherited in
-$R_{\mathrm{effective}}'$ and therefore in its transitive closure, contrary to
-§7.3. Local minimality remains listed separately as a simpler authoring check.
+Do not remove that direct edge merely because reachability stays unchanged.
+Transitive reduction and closure need not preserve the completion and access
+contract. Local duplicate inheritance (§7.2) remains redundant because it
+produces the same effective direct pair. Cycles remain invalid.
 
 ---
 
@@ -683,17 +667,13 @@ Interpretation:
 - an atomic goal is satisfied iff it is in $M_A$,
 - a cluster goal is satisfied iff all of its atomic descendants are in $M_A$.
 
-**Implementation boundary (checked 29 October 2026).** This is the normative
-binary, set-based model. The current API/storage also accept numeric
-intermediate values, and ordinary goal controls expose a slider and a 50%
-option; these are implementation discrepancies. The current backend's `computeEffectivePrereqMastery` and
-`computeScopedPrerequisiteMastery` prefer children selected by `isCoreForPrereqs`
-when such children exist; prerequisite checks also use a numeric threshold
-of `0.9`. That implementation policy is not equivalent to requiring every
-atomic descendant under this definition. See the explicit comparison in
-[Die Graph-Definition von SkillPilot](skillpilot-graph-definition.pdf), Appendix A.
-This specification does not silently change that runtime policy or certify
-the implementation's full conformance.
+**Implementation boundary (updated 31 October 2026).** New general writes and
+ordinary controls use binary results. Historical numeric rows remain readable
+through the shared `0.9` threshold. The backend's `computeEffectivePrereqMastery`
+and `computeScopedPrerequisiteMastery` still prefer children selected by
+`isCoreForPrereqs` when such children exist. That cluster policy is not
+identical to requiring every atomic descendant in the formula above; see the
+comparison in [the graph reference](skillpilot-graph-definition.pdf), Appendix A.
 
 The normative learner frontier is defined on atomic goals:
 
@@ -701,22 +681,26 @@ $$
 Frontier(M_A) =
 \left\{
 g \in A\setminus M_A \ \middle|\ 
-\forall p\in G:\ (g,p)\in R_{\mathrm{effective}}^+ \Rightarrow Sat(p,M_A)
+\forall p\in G:\ (g,p)\in R_{\mathrm{effective}} \Rightarrow Sat(p,M_A)
 \right\}
 $$
 
-Interpretation: an unmastered atomic goal is available if every prerequisite reachable by following one or more outgoing edges of the effective prerequisite relation is satisfied. This includes longer prerequisite chains. Cluster prerequisites are evaluated through their atomic descendants using $Sat$.
+Interpretation: an unmastered atomic goal is available if its direct effective prerequisites are satisfied. Inheritance is included; cluster prerequisites use their atomic descendants through $Sat$. Mastery of a prerequisite ends its preparation demand, so no additional requirement is pursued beyond that mastered goal.
 
 If a product also exposes **cluster availability** for navigation purposes, it SHOULD derive it from the same satisfaction predicate:
 
 $$
 Frontier_K(M_A)=
 \left\{
-k\in K \mid Atoms(k)\neq\varnothing\ \land\ \neg Sat(k,M_A)\ \land\ \forall p\in G:\ (k,p)\in R_{\mathrm{effective}}^+ \Rightarrow Sat(p,M_A)
+k\in K \mid Atoms(k)\neq\varnothing\ \land\ \neg Sat(k,M_A)\ \land\ \forall p\in G:\ (k,p)\in R_{\mathrm{effective}} \Rightarrow Sat(p,M_A)
 \right\}
 $$
 
-Availability is evaluated through reachability in $R_{\mathrm{effective}}^+$. If prerequisites are authored only between atomic goals, $R_{\mathrm{effective}}=R$ (§6.3), so this is reachability in $R^+$. Where cluster-level requirements are present, inherited requirements participate in the same check.
+The formula describes raw availability for deliberate learning. Required-work
+recommendations additionally exclude goals implicitly completed under the full
+authoritative scope. This exclusion never changes mastery or prevents voluntary
+learning. With only atomic authored prerequisites, the effective relation is
+simply $R$; inherited requirements otherwise remain part of the direct check.
 
 <!-- BEGIN SKILLPILOT-ILLUSTRATION: fig-06 -->
 
@@ -741,8 +725,7 @@ A skill graph $(G,C,R)$ is valid iff:
 3. $(G,R)$ is a DAG
 4. $R_{\mathrm{effective}}$ (computed from $C$ and $R$) is acyclic
 5. $R$ satisfies local minimality
-6. $R$ satisfies transitive minimality
-7. Goal attributes satisfy their declared domains. If `ShortKey` or explicit atomic/cluster classification metadata is exposed, it satisfies the applicable requirements in §2.
+6. Goal attributes satisfy their declared domains. If `ShortKey` or explicit atomic/cluster classification metadata is exposed, it satisfies the applicable requirements in §2.
 
 These requirements define base full-graph validity. Recommended modeling guidance is separate; named validator profiles and scoped views may impose additional requirements.
 
@@ -913,7 +896,7 @@ Such composition-view artifacts remain outside the formal graph object defined i
 
 ### 11.3 Optimistic mode
 
-In **optimistic mode**, first compute $R_{\mathrm{effective}}$ on the full graph, then restrict it to $R_{\mathrm{effective}}|_F$ (§11.2). Availability uses paths in this restricted relation and scope-relative satisfaction. Prerequisites that lie outside the scope do not block this evaluation; those goals are not thereby marked as mastered.
+In **optimistic mode**, first compute $R_{\mathrm{effective}}$ on the full graph, then restrict it to $R_{\mathrm{effective}}|_F$ (§11.2). Availability checks direct pairs in this restricted effective relation using scope-relative satisfaction; required clusters are resolved through their in-scope atomic descendants. A mastered prerequisite ends its own preparation demand. Static path reachability describes graph structure and is not an additional runtime prerequisite check. Prerequisites that lie outside the scope do not block this evaluation; those goals are not thereby marked as mastered.
 
 Define the filtered atomic set:
 
@@ -943,7 +926,7 @@ $$
 Frontier_{opt}(M_A,F) =
 \left\{
 g \in A_F \setminus M_A \ \middle|\ 
-\forall p\in G_F:\ (g,p)\in (R_{\mathrm{effective}}|_F)^+ \Rightarrow Sat_F(p,M_A)
+\forall p\in G_F:\ (g,p)\in (R_{\mathrm{effective}}|_F) \Rightarrow Sat_F(p,M_A)
 \right\}.
 $$
 
@@ -957,7 +940,7 @@ $$
 Frontier_{pess}(M_A,F) =
 \left\{
 g \in A_F \setminus M_A \ \middle|\ 
-\forall p\in G:\ (g,p)\in R_{\mathrm{effective}}^+ \Rightarrow Sat(p,M_A)
+\forall p\in G:\ (g,p)\in R_{\mathrm{effective}} \Rightarrow Sat(p,M_A)
 \right\}.
 $$
 
@@ -977,11 +960,11 @@ $$
 
 Diagnostics distinguish **unsatisfied prerequisite goals** from the **unmastered atomic goals needed to satisfy them**. Both diagnostics below use the global effective relation and global atomic bases. The filter classifies the results by location.
 
-**Prerequisite-goal diagnosis.** Define the set of unsatisfied prerequisites of a goal $g$:
+**Prerequisite-goal diagnosis.** Define the set of unsatisfied direct effective prerequisites of a goal $g$:
 
 $$
 Missing(g,M_A) =
-\{\, p \in G \mid (g,p)\in R_{\mathrm{effective}}^+ \land \neg Sat(p,M_A) \,\}.
+\{\, p \in G \mid (g,p)\in R_{\mathrm{effective}} \land \neg Sat(p,M_A) \,\}.
 $$
 
 Partition these prerequisite goals by membership in the selected scope:
@@ -1038,7 +1021,7 @@ $$
 Frontier_{scope}(M_A,F,S) =
 \left\{
 g \in A_F \setminus M_A \ \middle|\ 
-\forall p\in S:\ (g,p)\in R_{\mathrm{effective}}^+ \Rightarrow Sat(p,M_A)
+\forall p\in S:\ (g,p)\in R_{\mathrm{effective}} \Rightarrow Sat(p,M_A)
 \right\}.
 $$
 

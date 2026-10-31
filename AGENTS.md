@@ -349,9 +349,11 @@ Interpretation rules:
   multiple focus roots, widening replaces only the covered branch and the
   option's complete ordered `goalIds` payload retains every independent root
 - `requires` is strictly directional for mastery: mastery of a dependent goal
-  never creates mastery of, or suppresses, an unmastered prerequisite. After
-  focus widening, every newly included unmastered target remains eligible for
-  the normal frontier test using its own effective prerequisites
+  never creates mastery of its prerequisites. Under the 31 October 2026
+  completion decision it ends that goal's outgoing preparation demand;
+  unneeded non-assessment goals become implicitly completed without changing
+  their mastery. Required-work recommendations and voluntary availability
+  must be kept separate after focus widening as well
 - learner-facing default trees for resolved scopes should preferably be compiled from reviewed composition views early enough that validation can run before UI rendering
 - composition views should reference canonical subtree roots and should not inline authored atomic goals
 - composition-view references may explicitly use `projectionRole: "target"` or `projectionRole: "prerequisiteOnly"`; an omitted role means `target`
@@ -471,8 +473,15 @@ Mastery is the sole persisted learner-result state per learning goal. An
 assessment goal uses the same authoritative mastered/not-mastered decision as
 other goals; existing mastery must not need a second profile-specific pass,
 qualification record, or evidence-acceptance decision. Assessment-gated
-completion is a derived calculation over the graph, reviewed static completion
-rules and that mastery state. Work no longer required for a particular
+completion is a derived calculation over the graph and that mastery state.
+The 31 October 2026 decision replaces manually maintained waiver profiles: any
+mastered goal ends its outgoing prerequisite demand; any non-assessment goal
+with no remaining unfinished consumer becomes implicitly complete and ends
+its own demand. Every assessment remains required until mastered and is directly
+selectable. Ordinary terminal goals, orientation and cards are not extra
+protected categories. A valid finite scope without assessments is entirely
+explicitly or implicitly completed. Use direct atomic/inherited requirements;
+mastery stops demand traversal, so static transitive closure is incorrect. Work no longer required for a particular
 completion scope is calculated, never stored as a second goal result or written
 back as mastery. Assessment quality belongs to task/rubric authoring and the
 normal grading workflow. See
@@ -1292,6 +1301,38 @@ mastery snapshots. Unreliable plan or completion data must remain explicitly
 unevaluable. The binding calculation, data and presentation contract is
 `docs/concept/didactic/unified-learning-plan-status.md`; the former daily-quota
 contract is superseded.
+
+The Product Owner's **31 October 2026** plan-accounting decision extends that
+contract: first derive implicit completion W_PC from the complete Personal
+Curriculum and its full prerequisite context, including genuine cross-subject
+demand. Then count each unique goal in the fixed, subject-specific plan baseline
+G once: `I = |G ∩ (M ∪ W_PC)|`. G is a dated selection, not a second completion
+scope; an open assessment outside G can still require a goal inside G.
+A separate Cockpit preference, “Nur explizit erreichte Lernziele zählen”,
+defaults to off and limits IST to `|G ∩ M|` when selected. The local plan service
+and Cockpit implement this preference. Preserve the fixed baseline, dates and
+actual completion events; current-period H remains based on explicit goal
+completions. Never write implicit work completion back as mastery or substitute
+a selected section's implicit set for W_PC. The chosen navigation route does
+not determine plan credit. This preference changes counting only, not exam
+access or the existing shortcut preference.
+
+The same day's binding completion decision removes manual profile grants and
+assessment-only waiver anchors. Any mastered goal ends its own preparation
+demand; non-assessment goals with no unfinished consumer become implicitly
+complete. Final assessments remain required and directly selectable. Derive
+this by traversing direct requirements from open assessments and stopping at
+every mastered node. Do not carry transitive demand through mastered nodes.
+The default scope is the complete Personal Curriculum. Automatic plan credit
+also evaluates that complete curriculum first, then intersects with the fixed
+plan baseline: a dated plan is not an independent assessment scope. Genuine
+cross-subject demands remain; quotas still balance separately by subject.
+Explicit structural section selection can show its own completion view but
+never silently redefines plan credit.
+Temporary focus only ranks suggestions. Existing exam/assessment classification
+supplies the endpoints; do not infer them from titles or coverage lists.
+No implicit result creates mastery or card recall. Historical manual pilot
+artifacts remain evidence, not prerequisites for current graph completion.
 
 ### 10.3 Layer C – LLM-/MCP-Integration
 

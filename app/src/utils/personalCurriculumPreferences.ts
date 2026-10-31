@@ -6,6 +6,7 @@ export interface PersonalCurriculumPreferences {
   followLearningPlans: boolean
   /** Day or week basis; stored per SkillPilot-ID, never per client. */
   learningPlanPeriodBasis: 'DAY' | 'WEEK'
+  learningPlanCountOnlyExplicitGoals: boolean
   strictMode: boolean
   useAssessmentShortcuts: boolean
   showGoalVisualizationsInChat: boolean
@@ -16,6 +17,7 @@ export const learnerPreferences = (learner: Learner | null) => ({
   autoPilot: learner?.autoPilot ?? true,
   followLearningPlans: learner?.followLearningPlans ?? false,
   learningPlanPeriodBasis: learner?.learningPlanPeriodBasis ?? 'WEEK',
+  learningPlanCountOnlyExplicitGoals: learner?.learningPlanCountOnlyExplicitGoals ?? false,
   strictMode: learner?.strictMode ?? false,
   useAssessmentShortcuts: learner?.useAssessmentShortcuts ?? true,
   showGoalVisualizationsInChat: learner?.showGoalVisualizationsInChat ?? true,

@@ -166,7 +166,11 @@ public class CoachToolFacade {
     private UnifiedLearnerStateResponse completionAwareCoachState(String skillpilotId) {
         UnifiedLearnerStateResponse state = learnerService.getCoachLearnerState(skillpilotId);
         var call = com.skillpilot.backend.completion.CompletionCallContext.current();
-        if (state.levelCompletion() != null && state.levelCompletion().profileId() != null
+        var completion = state.levelCompletion();
+        boolean automaticOverview = completion != null && completion.profileId() != null
+                && completion.profileId().startsWith("automatic:") && completion.navigationIntent() == null
+                && !completion.directAssessmentRunning();
+        if (completion != null && completion.profileId() != null && !automaticOverview
                 && call != null && !call.supported() && !"claude".equals(call.provider())) {
             throw new ResponseStatusException(HttpStatus.CONFLICT,
                     "The selected completion route requires a supported coach session. Pause learning and return to the Cockpit to start that session or deliberately leave the route.");

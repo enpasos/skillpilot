@@ -140,9 +140,14 @@ Focus roots and the active atomic goal may change during learning:
   successful full successor confirms the new state directly.
 
 `requires` is one-way. If A is a prerequisite of B, mastery of B never implies
-mastery of A. Do not suppress or mark A as mastered from that relation. Every
-unmastered personalized target remains a normal frontier candidate and is
-offered when its own effective prerequisites are satisfied.
+mastery of A. A mastered goal no longer demands its own prerequisites. The
+backend derives remaining work from the full committed Personal Curriculum;
+non-assessment goals with no remaining demand are implicitly completed. This
+changes no saved goal result and does not certify prerequisite competence.
+Implicit completion needs no passed assessment. Follow current backend
+completion statements and options; do not rebuild the frontier or restore
+implicitly completed work as mandatory. Voluntary learning remains possible
+through current published options.
 
 ### Daily multi-subject learning plans
 

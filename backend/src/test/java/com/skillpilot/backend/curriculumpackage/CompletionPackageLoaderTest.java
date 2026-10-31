@@ -48,10 +48,41 @@ class CompletionPackageLoaderTest {
                 true, "", "package", snapshots);
         assertThat(catalog.available()).isTrue();
         assertThat(catalog.generation()).isEqualTo(snapshot.generationSha256());
-        assertThat(catalog.profiles()).containsOnlyKeys(PROFILE);
+        assertThat(catalog.automatic()).isTrue();
+        assertThat(catalog.profiles()).isEmpty();
         verifyNoInteractions(landscapes, mappings, decks);
         Files.writeString(fixture.root.resolve(REVIEW), "later-corruption");
         assertThat(CompletionPackageCatalog.load(snapshot, mapper).profiles()).containsOnlyKeys(PROFILE);
+    }
+
+    @Test void automaticCatalogUsesVerifiedPackageWithoutCompletionCapabilityOrProfiles() throws Exception {
+        var helper = new CurriculumPackageTestFixture(mapper);
+        var store = helper.create(temporary.resolve("ordinary-package"),
+                CurriculumPackageTestFixture.PackageSpec.packageSpec("ordinary", 'c'));
+        var properties = new CurriculumPackageProperties();
+        properties.setSource(CurriculumSourceMode.PACKAGE);
+        properties.setConsumerVersion("0.1.0");
+        properties.getPackages().setStoreDirectory(store.root().toString());
+        var reader = new CurriculumPackageFileReader();
+        var repository = new FileSystemCurriculumPackageRepository(properties, mapper, reader);
+        var provider = new CurriculumRuntimeSnapshotProvider(new JsonCurriculumPackageLoader(
+                properties, repository, reader, mapper));
+        var snapshot = provider.current();
+        assertThat(snapshot.packages()).allSatisfy(p ->
+                assertThat(p.capabilities()).doesNotContain(CompletionPackageCatalog.CAPABILITY));
+        @SuppressWarnings("unchecked")
+        ObjectProvider<CurriculumRuntimeSnapshotProvider> snapshots = mock(ObjectProvider.class);
+        when(snapshots.getIfAvailable()).thenReturn(provider);
+        var landscapes = mock(LandscapeService.class);
+        var mappings = mock(GoalMappingService.class);
+        var decks = mock(DeckResourceService.class);
+        var catalog = new CompletionProfileCatalog(new LandscapeProperties(), mapper, landscapes, mappings, decks,
+                true, "obsolete-pilot", "package", snapshots);
+        assertThat(catalog.available()).isTrue();
+        assertThat(catalog.automatic()).isTrue();
+        assertThat(catalog.profiles()).isEmpty();
+        assertThat(catalog.generation()).isEqualTo(snapshot.generationSha256());
+        verifyNoInteractions(landscapes, mappings, decks);
     }
 
     @Test void rejectsMissingCapabilityAndOldRuntimePretendingToCarryCompletion() throws Exception {

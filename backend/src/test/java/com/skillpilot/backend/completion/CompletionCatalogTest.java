@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -26,6 +27,82 @@ import org.junit.jupiter.api.io.TempDir;
 class CompletionCatalogTest {
     @TempDir Path temporary;
     private final ObjectMapper mapper = new ObjectMapper();
+
+    @Test
+    void automaticProductionPinsRealGraphWithoutAnyCompletionProfile() throws Exception {
+        Fixture f = fixture();
+        Files.delete(f.profile());
+        Files.delete(f.scope());
+        Files.delete(f.review());
+        // Other curriculum resources need not be landscape-shaped JSON objects.
+        Files.writeString(f.root().resolve("dictionary.json"), "\"ordinary curriculum resource\"");
+        var mappings = new GoalMappingService(f.properties(), mapper);
+        var landscapes = new LandscapeService(f.properties(), mapper, mappings);
+        var decks = new DeckResourceService(f.properties());
+        var catalog = new CompletionProfileCatalog(f.properties(), mapper, landscapes, mappings, decks,
+                true, "obsolete-operator-profile", "repository", null);
+        assertThat(catalog.automatic()).isTrue();
+        assertThat(catalog.available()).isTrue();
+        assertThat(catalog.profiles()).isEmpty();
+        assertThat(landscapes.getById("math").getGoals()).hasSize(2);
+        var graph = new CompletionCanonicalGraphResolver(landscapes, mapper).load("math");
+        var compiled = new CompletionProfileCompiler().compileAutomatic(graph, graph.keySet(), graph.keySet(), catalog.generation());
+        assertThat(new CompletionEvaluator().evaluateAutomatic(compiled, java.util.Set.of("Q")).waivedGoalIds())
+                .containsExactly("A");
+        f.goals().getFirst().put("title", "Unpublished");
+        f.writeGraph();
+        assertThat(landscapes.getById("math").getGoals().getFirst().getTitle()).isEqualTo("Before");
+        catalog.verifyPinnedGeneration();
+        assertThat(catalog.available()).isFalse();
+    }
+
+    @Test
+    void automaticProductionNeverValidatesOldProfilesReviewsOrAllowlists() throws Exception {
+        for (String defect : List.of("stale-review", "invalid-profile", "missing-review")) {
+            Fixture f = fixture(temporary.resolve(defect));
+            if (defect.equals("stale-review")) {
+                f.goals().getFirst().put("description", "Current graph semantics");
+                f.writeGraph();
+            } else if (defect.equals("invalid-profile")) {
+                Files.writeString(f.profile(), "{\"no-longer-a-profile\":true}");
+                Files.writeString(f.scope(), "\"old scope\"");
+            } else Files.delete(f.review());
+            var landscapes = mock(LandscapeService.class);
+            var mappings = mock(GoalMappingService.class);
+            var decks = mock(DeckResourceService.class);
+            var catalog = new CompletionProfileCatalog(f.properties(), mapper, landscapes, mappings, decks,
+                    true, "unknown-and-unneeded", "repository", null);
+            assertThat(catalog.automatic()).isTrue();
+            assertThat(catalog.available()).isTrue();
+            assertThat(catalog.profiles()).isEmpty();
+            verify(landscapes).pinRuntimeGeneration();
+            verify(mappings).pinRuntimeGeneration();
+            verify(decks).pinRuntimeGeneration();
+        }
+    }
+
+    @Test
+    void automaticGenerationStillBindsRuntimeInputsButNotHistoricalPilotArtifacts() throws Exception {
+        for (String change : List.of("graph", "mapping", "deck", "new-runtime")) {
+            Fixture f = fixture(temporary.resolve(change));
+            var catalog = new CompletionProfileCatalog(f.properties(), mapper,
+                    mock(LandscapeService.class), mock(GoalMappingService.class), mock(DeckResourceService.class),
+                    true, "unused", "repository", null);
+            Files.writeString(f.profile(), "old discarded profile bytes");
+            Files.delete(f.scope());
+            Files.writeString(f.review(), "historical authoring note");
+            catalog.verifyPinnedGeneration();
+            assertThat(catalog.available()).isTrue();
+            switch (change) {
+                case "graph" -> { f.goals().getFirst().put("title", "Changed"); f.writeGraph(); }
+                case "mapping" -> f.writeMappings(true);
+                case "deck" -> Files.writeString(f.deck(), "{\"cards\":[\"changed\"]}");
+                default -> Files.writeString(f.root().resolve("new-runtime.json"), "{}");
+            }
+            catalog.verifyPinnedGeneration();
+            assertThat(catalog.available()).isFalse();
+        }
+    }
 
     @Test
     void emptyOperatorAllowlistPublishesReviewedProfilesWithoutOptIn() throws Exception {
@@ -54,6 +131,8 @@ class CompletionCatalogTest {
                 landscapes, mappings, decks,
                 true, "", "repository");
         assertThat(catalog.profiles()).isEmpty();
+        assertThat(catalog.automatic()).isFalse();
+        assertThat(catalog.available()).isFalse();
         verifyNoInteractions(landscapes, mappings, decks);
     }
 

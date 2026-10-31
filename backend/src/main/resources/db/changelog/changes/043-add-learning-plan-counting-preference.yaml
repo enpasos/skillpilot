@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: 043-add-learning-plan-counting-preference
+      author: skillpilot
+      changes:
+        - addColumn:
+            tableName: learner
+            columns:
+              - column:
+                  name: learning_plan_count_only_explicit_goals
+                  type: BOOLEAN
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+      rollback:
+        - dropColumn:
+            tableName: learner
+            columnName: learning_plan_count_only_explicit_goals

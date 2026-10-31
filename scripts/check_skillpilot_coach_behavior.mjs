@@ -13,6 +13,58 @@ function requireRules(source, rules) {
   for (const [pattern, reason] of rules) assert.match(source, pattern, reason);
 }
 
+export function assertCurrentCompletionBehavior({ skill, policy, serverInstructions }) {
+  const sources = [skill, policy, serverInstructions].map(compact);
+  for (const source of sources) {
+    assert.doesNotMatch(source,
+      /(?:mastery of a dependent goal never implies mastery of, or suppresses, an unmastered prerequisite|Do not suppress or mark A as mastered|Every unmastered (?:personalized target|target in the Personal Curriculum) remains (?:a normal frontier candidate|subject to the normal frontier test))/iu,
+      "Obsolete mandatory-prerequisite instructions must not override backend-derived implicit completion.");
+    assert.doesNotMatch(source,
+      /(?:Mastery of B implies mastery of A|Implicit completion (?:creates|writes|is) (?:saved )?mastery)/iu,
+      "Implicit completion or dependent mastery must never create prerequisite mastery.");
+  }
+  requireRules(sources[0], [
+    [/Mastery of a goal never implies mastery of its prerequisites/u,
+      "The skill must prohibit mastery transfer to prerequisites."],
+    [/backend alone determines remaining work[\s\S]+mastered goals end their own prerequisite demand/u,
+      "The skill must defer remaining work and mastered-goal demand to the backend."],
+    [/implicitly completed without changing any saved goal result/u,
+      "Implicit completion must remain separate from saved goal results."],
+    [/Do not restore implicitly completed work as mandatory or create mastery for it/u,
+      "The skill must not recreate discharged work or fabricate mastery."],
+  ]);
+  requireRules(sources[1], [
+    [/`requires` is one-way[\s\S]+mastery of B never implies mastery of A/u,
+      "The policy must prohibit mastery transfer to prerequisites."],
+    [/A mastered goal no longer demands its own prerequisites/u,
+      "Mastered intermediate goals must end their own preparation demand."],
+    [/full committed Personal Curriculum[\s\S]+non-assessment goals with no remaining demand are implicitly completed/u,
+      "The policy must preserve the full authoritative demand scope."],
+    [/changes no saved goal result and does not certify prerequisite competence/u,
+      "The policy must separate implicit completion from results and competence claims."],
+    [/Implicit completion needs no passed assessment/u,
+      "Ordinary mastery and scopes without assessments must support implicit completion."],
+    [/do not rebuild the frontier or restore implicitly completed work as mandatory/u,
+      "The policy must preserve backend-owned required-work decisions."],
+  ]);
+  requireRules(sources[2], [
+    [/Mastery never propagates to prerequisites/u,
+      "Live instructions must prohibit prerequisite mastery transfer."],
+    [/full committed Personal Curriculum[\s\S]+a mastered goal no longer demands its own prerequisites/u,
+      "Live instructions must use the full scope and stop demand at mastered goals."],
+    [/non-assessment goals with no remaining demand are implicitly completed/u,
+      "Live instructions must permit general implicit completion."],
+    [/Implicit completion changes no saved goal result and is not proof of prerequisite competence/u,
+      "Live instructions must preserve binary results without competence inference."],
+    [/do not rebuild the frontier, restore implicitly completed work as mandatory, or create mastery for it/u,
+      "Live instructions must preserve backend-owned required-work decisions."],
+  ]);
+  for (const source of sources) {
+    assert.match(source, /[Vv]oluntary learning remains possible through current published options/u,
+      "Implicit completion must retain authorized voluntary learning.");
+  }
+}
+
 // Source regression gates, not proof of model behavior or real-host acceptance.
 // Keep completion modes separate so orientation/Recall consent cannot satisfy
 // the ordinary-learning or exam rules by accident.

@@ -33,7 +33,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.ActiveProfiles;
 
-/** Real canonical pilot through the MCP handler, capabilities and persisted coordinator transactions. */
+/** General automatic completion through the real canonical MCP handler and persisted transactions. */
 @SpringBootTest(properties = {
         ClaudeV1TestProperties.ENABLED, ClaudeV1TestProperties.SIGNING_SECRET,
         ClaudeV1TestProperties.CAPABILITY_SECRET, ClaudeV1TestProperties.BETA_DISABLED,
@@ -41,7 +41,7 @@ import org.springframework.test.context.ActiveProfiles;
 })
 @ActiveProfiles("test")
 class ClaudeV1CompletionRouteIntegrationTest {
-    private static final String PROFILE = "math-dot-product-projection";
+    private static final String PROFILE = "automatic:personal-curriculum";
     private static final String ROOT = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String MATH = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String PREPARATION = "3016ec37-1c2e-47db-83f5-e767923bc97e";
@@ -213,14 +213,20 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 "evaluationCapability", freshEvaluation.get("evaluationCapability"), "earnedPoints", 10.0));
         var saved = successful(ClaudeV1Contract.TOOL_SET_MASTERY, passArgs);
         assertThat(saved).containsEntry("savedGoalId", EXAM).containsEntry("savedMastery", 1.0);
-        assertThat(map(map(saved, "context"), "levelCompletion")).containsEntry("complete", true);
-        assertThat(map(map(saved, "context"), "levelCompletion").get("waivedPreparation").toString())
-                .contains("Definition des Skalarprodukts", "Skalarprodukt über eine orthogonale Projektion erklären");
+        // Passing one assessment cannot complete the full Personal Curriculum.
+        // Other open assessments may still demand the same preparation.
+        assertThat(map(map(saved, "context"), "levelCompletion")).containsEntry("complete", false);
+        var completed = learners.getLearnerState(learnerId).levelCompletion();
+        assertThat(completed.masteredAssessmentCount()).isEqualTo(1);
+        assertThat(completed.requiredAssessmentCount()).isGreaterThan(24);
+        assertThat(completed.pendingTargetCount()).isPositive();
+        assertThat(completed.assessments()).filteredOn(assessment -> EXAM.equals(assessment.goalId()))
+                .singleElement().satisfies(assessment -> assertThat(assessment.mastered()).isTrue());
         assertThat(successful(ClaudeV1Contract.TOOL_SET_MASTERY, passArgs)).isEqualTo(saved);
         assertThat(call(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("new-write", version(), Map.of("goalId", EXAM))).isError()).isTrue();
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).singleElement()
                 .satisfies(m -> { assertThat(m.getGoalKey()).isEqualTo(EXAM); assertThat(m.getValue()).isEqualTo(1.0); });
-        assertThat(learners.getLearnerState(learnerId).levelCompletion().waivedTargetCount()).isEqualTo(1);
+        assertThat(learners.getMastery(learnerId).getOrDefault(PREPARATION, 0.0)).isZero();
     }
 
     @Test void cockpitOptOutInvalidatesAlreadyIssuedExamAndRouteCapabilities() throws Exception {
@@ -235,7 +241,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
         long before = version();
         learners.setPreferences(learnerId, null, null, null, null, null, null, false);
         assertThat(version()).isGreaterThan(before);
-        assertThat(context()).doesNotContainKey("levelCompletion");
+        assertThat(map(context(), "levelCompletion")).containsEntry("calculationStatus", "valid")
+                .containsEntry("directAssessmentRunning", false).containsEntry("choices", List.of());
         assertThat(call(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("stale-grade-after-opt-out", before,
                 Map.of("goalId", EXAM, "evaluationCapability", evaluation.get("evaluationCapability"), "earnedPoints", 10.0))).isError()).isTrue();
         assertThat(call(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("old-evaluation-new-version", version(),
@@ -257,7 +264,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
         learners.setPreferences(learnerId, null, null, null, null, null, null, false);
         session = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
         authenticate();
-        assertThat(context()).doesNotContainKey("levelCompletion");
+        assertThat(map(context(), "levelCompletion")).containsEntry("calculationStatus", "valid")
+                .containsEntry("directAssessmentRunning", false).containsEntry("choices", List.of());
         learners.setPreferences(learnerId, null, null, null, null, null, null, true);
         var learner = learnerRepository.findById(learnerId).orElseThrow();
         learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
@@ -283,7 +291,10 @@ class ClaudeV1CompletionRouteIntegrationTest {
     }
     private String choice(Map<String, Object> context, String prefix) {
         return ((List<?>) map(context, "levelCompletion").get("choices")).stream().map(String::valueOf)
-                .filter(label -> label.startsWith(prefix)).findFirst().orElseThrow();
+                .filter(label -> label.startsWith(prefix))
+                .filter(label -> !prefix.equals("Prüfung direkt versuchen: ")
+                        || label.contains("Skalarprodukt über eine orthogonale Projektion erklären"))
+                .findFirst().orElseThrow();
     }
     private McpSchema.CallToolResult call(String tool, Map<String, Object> arguments) {
         Map<String, Object> request = new LinkedHashMap<>(arguments);

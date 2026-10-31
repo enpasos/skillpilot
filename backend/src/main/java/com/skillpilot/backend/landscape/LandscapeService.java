@@ -33,6 +33,8 @@ public class LandscapeService {
     private static final Path SOURCE_LANDSCAPE_REGISTRY_PATH = Path.of(
             "DE", "Gymnasium", "provenance", "source-landscape-registry.json");
     private static final Path QUALITY_REVIEW_ARTIFACTS_PATH = Path.of("DE", "Gymnasium", "quality");
+    private static final Path COMPLETION_PROFILES_PATH = Path.of("DE", "Gymnasium", "completion-profiles");
+    private static final Path COMPLETION_SCOPES_PATH = Path.of("DE", "Gymnasium", "completion-scopes");
     private static final int SUPPORTED_SOURCE_GOAL_CLOSURE_REGISTRY_VERSION = 1;
     private static final Path SOURCE_GOAL_CLOSURE_REGISTRY_PATH = Path.of(
             "DE", "Gymnasium", "provenance", "source-goal-closure-registry.json");
@@ -740,7 +742,7 @@ public class LandscapeService {
 
         try {
             List<Path> files = PrunedFileTree.files(dir,
-                            path -> path.startsWith(dir.resolve(QUALITY_REVIEW_ARTIFACTS_PATH))).stream()
+                            path -> isReservedMetadataPath(dir, path)).stream()
                     .filter(p -> isRuntimeLandscapeJson(dir, p))
                     .sorted()
                     .collect(Collectors.toList());
@@ -880,8 +882,15 @@ public class LandscapeService {
         return Files.isRegularFile(file)
                 && StringUtils.hasText(file.getFileName().toString())
                 && file.getFileName().toString().endsWith(".json")
-                // Review candidates may contain real landscape IDs but are not runtime curricula.
-                && !file.startsWith(dir.resolve(QUALITY_REVIEW_ARTIFACTS_PATH));
+                // Reserved authoring metadata cannot introduce unpinned runtime landscapes,
+                // even if an accidental file contains otherwise valid landscape fields.
+                && !isReservedMetadataPath(dir, file);
+    }
+
+    private boolean isReservedMetadataPath(Path dir, Path path) {
+        return path.startsWith(dir.resolve(QUALITY_REVIEW_ARTIFACTS_PATH))
+                || path.startsWith(dir.resolve(COMPLETION_PROFILES_PATH))
+                || path.startsWith(dir.resolve(COMPLETION_SCOPES_PATH));
     }
 
     private long loadArchivedSourceLandscapes(Path dir, List<SkillLandscape> loaded) {
@@ -1871,7 +1880,7 @@ public class LandscapeService {
         }
         try {
             return PrunedFileTree.files(dir,
-                            path -> path.startsWith(dir.resolve(QUALITY_REVIEW_ARTIFACTS_PATH))).stream()
+                            path -> isReservedMetadataPath(dir, path)).stream()
                     .filter(p -> isRuntimeLandscapeJson(dir, p))
                     .mapToLong(p -> {
                         try {

@@ -17,9 +17,10 @@ export function CompletionWaiverIcon({ waiver, language }: {
   const [position, setPosition] = useState<{
     left: number; top: number; width: number; maxHeight: number; above: boolean
   } | null>(null)
-  const label = language === 'en'
-    ? 'Covered by assessment for this section'
-    : 'Für diesen Abschnitt durch Prüfung abgedeckt'
+  const implicit = waiver.reason === 'no_remaining_demand'
+  const label = implicit
+    ? (language === 'en' ? 'No longer required for this section' : 'Für diesen Abschnitt nicht mehr erforderlich')
+    : (language === 'en' ? 'Covered by assessment for this section' : 'Für diesen Abschnitt durch Prüfung abgedeckt')
   const cancelClose = () => clearTimeout(closeTimer.current)
   const open = () => {
     cancelClose()
@@ -133,7 +134,7 @@ export function CompletionWaiverIcon({ waiver, language }: {
         <p className="mt-2">{language === 'en' ? 'Section: ' : 'Lernabschnitt: '}
           <InlineMathText text={completionLabel(waiver.sectionTitle, language)} />
         </p>
-        {waiver.assessments.length > 0 && <p className="mt-2">
+        {!implicit && waiver.assessments.length > 0 && <p className="mt-2">
           {language === 'en' ? 'Passed assessments: ' : 'Bestandene Prüfungen: '}
           <InlineMathText text={waiver.assessments.map(a => completionLabel(a.title, language)).join('; ')} />
           {(waiver.assessmentCount ?? 0) > waiver.assessments.length
@@ -142,9 +143,13 @@ export function CompletionWaiverIcon({ waiver, language }: {
               : ` (+${waiver.assessmentCount! - waiver.assessments.length} weitere)`)
             : null}
         </p>}
-        <p className="mt-2">{language === 'en'
-          ? 'Separate preparation is no longer required for this section. This goal keeps its existing learning result and remains available to learn voluntarily.'
-          : 'Die separate Vorbereitung entfällt für diesen Abschnitt. Der Lernstand dieses Ziels bleibt unverändert; du kannst es weiterhin freiwillig bearbeiten.'}</p>
+        <p className="mt-2">{implicit
+          ? (language === 'en'
+            ? 'No remaining work needs this goal in this section. This goal is implicitly completed here; its saved learning result stays unchanged. You can still choose to study it.'
+            : 'In diesem Abschnitt benötigt keine verbleibende Arbeit dieses Ziel mehr. Das Ziel ist hier implizit erledigt; sein gespeicherter Lernstand bleibt unverändert. Du kannst es weiterhin freiwillig bearbeiten.')
+          : (language === 'en'
+            ? 'Separate preparation is no longer required for this section. This goal keeps its existing learning result and remains available to learn voluntarily.'
+            : 'Die separate Vorbereitung entfällt für diesen Abschnitt. Der Lernstand dieses Ziels bleibt unverändert; du kannst es weiterhin freiwillig bearbeiten.')}</p>
       </div>, document.body,
     )}
   </>

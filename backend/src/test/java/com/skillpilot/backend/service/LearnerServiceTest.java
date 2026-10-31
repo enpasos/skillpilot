@@ -332,6 +332,41 @@ public class LearnerServiceTest {
         abstract Boolean getUseAssessmentShortcuts();
     }
 
+    abstract static class PrePlanCountingLearnerJson {
+        @com.fasterxml.jackson.annotation.JsonIgnore
+        abstract Boolean getLearningPlanCountOnlyExplicitGoals();
+    }
+
+    @Test
+    void planCountingPreferencePreservesLegacySignaturesAndRoundTripsExplicitChoice() throws Exception {
+        Learner source = learnerService.createLearner();
+        var exported = learnerService.exportLearner(source.getSkillpilotId());
+        ObjectMapper oldMapper = objectMapper.copy().addMixIn(Learner.class, PrePlanCountingLearnerJson.class);
+        String oldPayload = oldMapper.writeValueAsString(exported.data());
+        assertThat(oldPayload).doesNotContain("learningPlanCountOnlyExplicitGoals");
+        String secret = (String) ReflectionTestUtils.getField(learnerService, "signingSecret");
+        javax.crypto.Mac mac = javax.crypto.Mac.getInstance("HmacSHA256");
+        mac.init(new javax.crypto.spec.SecretKeySpec(secret.getBytes(java.nio.charset.StandardCharsets.UTF_8), "HmacSHA256"));
+        String signature = java.util.HexFormat.of().formatHex(mac.doFinal(oldPayload.getBytes(java.nio.charset.StandardCharsets.UTF_8)));
+        var oldData = objectMapper.readValue(oldPayload, com.skillpilot.backend.api.LearnerDataDTO.class);
+        learnerService.setPreferences(learnerId, null, null, null, null, null, null, null, true);
+        learnerService.importLearner(learnerId, new com.skillpilot.backend.api.SignedLearnerDataDTO(oldData, signature));
+        assertThat(learnerService.getLearner(learnerId).getLearningPlanCountOnlyExplicitGoals()).isFalse();
+
+        learnerService.setPreferences(source.getSkillpilotId(), null, null, null, null, null, null, null, true);
+        String explicitJson = objectMapper.writeValueAsString(learnerService.exportLearner(source.getSkillpilotId()));
+        assertThat(explicitJson).contains("\"learningPlanCountOnlyExplicitGoals\":true");
+        learnerService.importLearner(learnerId, objectMapper.readValue(explicitJson,
+                com.skillpilot.backend.api.SignedLearnerDataDTO.class));
+        assertThat(learnerService.getLearner(learnerId).getLearningPlanCountOnlyExplicitGoals()).isTrue();
+        var tampered = objectMapper.readValue(explicitJson.replace(
+                "\"learningPlanCountOnlyExplicitGoals\":true", "\"learningPlanCountOnlyExplicitGoals\":false"),
+                com.skillpilot.backend.api.SignedLearnerDataDTO.class);
+        assertThatThrownBy(() -> learnerService.importLearner(learnerId, tampered))
+                .isInstanceOf(ResponseStatusException.class).hasMessageContaining("Invalid data signature");
+        assertThat(learnerService.getLearner(learnerId).getLearningPlanCountOnlyExplicitGoals()).isTrue();
+    }
+
     @Test
     void legacyAssessmentShortcutArchiveSignatureSurvivesAndExplicitOptOutRoundTrips() throws Exception {
         Learner source = learnerService.createLearner();
@@ -4519,8 +4554,8 @@ public class LearnerServiceTest {
         assertThat(focusAtoms).isNotEmpty();
         List<String> priorGoalIds = CanonicalPrerequisiteTestContext.withStoredPrerequisites(
                 landscapeService, List.copyOf(focusAtoms), List.of(), Set.of());
-        // Mastered intermediates alone are insufficient: earlier prerequisites
-        // remain independent, even when they are outside the Level-3 focus.
+        // Deliberately broad prior learning keeps this navigation fixture independent
+        // of which direct prerequisites a projected scope exposes.
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         masteryRepository.saveAllAndFlush(priorGoalIds.stream()
                 .filter(id -> goals.get(id).getContains() == null || goals.get(id).getContains().isEmpty())

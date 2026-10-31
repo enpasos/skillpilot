@@ -214,9 +214,6 @@ class ProjectionRoleLearnerServiceTest {
             when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
                     .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
             Mastery requiredMastery = new Mastery(fixture.learner(), EXTERNAL_PREREQUISITE_ID, 1.0);
-            when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
-                    .thenReturn(List.of(requiredMastery));
-
             ProjectionSets projection = projectionSets(fixture.service());
             assertThat(projection.targetGoalIds()).containsExactly(TARGET_ID);
             assertThat(projection.prerequisiteOnlyGoalIds()).containsExactlyInAnyOrder(
@@ -224,11 +221,25 @@ class ProjectionRoleLearnerServiceTest {
                     EXTERNAL_PREREQUISITE_CHILD_ID, unusedMathematicsId);
             assertThat(fixture.service().getFilteredAtomicGoalIds(
                     LANDSCAPE_ID, PERSONAL_CURRICULUM, null, false)).containsExactly(TARGET_ID);
+            // Strict mode still requires the immediate supporting goal; normal
+            // mode ignores that valid requirement outside the selected focus.
+            when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                    .thenReturn(List.of());
             assertThat(fixture.service().getFrontier(LEARNER_ID))
                     .containsExactlyElementsOf(strictMode ? List.of() : List.of(TARGET_ID));
             assertThat(fixture.service().getRichFrontier(LEARNER_ID))
                     .extracting(FrontierGoal::id)
                     .containsExactlyElementsOf(strictMode ? List.of() : List.of(TARGET_ID));
+
+            // Once that supporting goal is mastered, its own preparation no
+            // longer blocks TARGET_ID. Neither foundation nor unused leaf is mastered.
+            when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                    .thenReturn(List.of(requiredMastery));
+            assertThat(fixture.service().getFrontier(LEARNER_ID)).containsExactly(TARGET_ID);
+            assertThat(fixture.service().getRichFrontier(LEARNER_ID))
+                    .extracting(FrontierGoal::id).containsExactly(TARGET_ID);
+            assertThat(fixture.service().getMastery(LEARNER_ID))
+                    .doesNotContainKeys(EXTERNAL_PREREQUISITE_CHILD_ID, unusedMathematicsId);
 
             when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
                     .thenReturn(List.of(requiredMastery,
@@ -583,16 +594,16 @@ class ProjectionRoleLearnerServiceTest {
     }
 
     @Test
-    void simpleFrontierChecksTransitivePrerequisitesDespiteMasteredIntermediateGoal() {
-        assertTransitivePrerequisiteBlocksUntilStoredMastery(false);
+    void simpleFrontierStopsAtMasteredIntermediateButKeepsIndependentDirectRequirements() {
+        assertMasteredIntermediateStopsItsOwnDemand(false);
     }
 
     @Test
-    void richFrontierChecksTransitivePrerequisitesDespiteMasteredIntermediateGoal() {
-        assertTransitivePrerequisiteBlocksUntilStoredMastery(true);
+    void richFrontierStopsAtMasteredIntermediateButKeepsIndependentDirectRequirements() {
+        assertMasteredIntermediateStopsItsOwnDemand(true);
     }
 
-    private void assertTransitivePrerequisiteBlocksUntilStoredMastery(boolean richFrontier) {
+    private void assertMasteredIntermediateStopsItsOwnDemand(boolean richFrontier) {
         for (boolean strictMode : List.of(false, true)) {
             for (String mathematicsRole : List.of("target", "prerequisiteOnly")) {
                 Fixture fixture = fixture(view(
@@ -639,6 +650,20 @@ class ProjectionRoleLearnerServiceTest {
                         ? projection.targetGoalIds() : projection.prerequisiteOnlyGoalIds())
                         .contains(EXTERNAL_PREREQUISITE_ID);
 
+                List<String> intermediateFrontier = richFrontier
+                        ? fixture.service().getRichFrontier(LEARNER_ID).stream().map(FrontierGoal::id).toList()
+                        : fixture.service().getFrontier(LEARNER_ID);
+                assertThat(intermediateFrontier)
+                        .as("strict=%s, mathematicsRole=%s", strictMode, mathematicsRole)
+                        .contains(TARGET_ID);
+                assertThat(fixture.service().getMastery(LEARNER_ID))
+                        .doesNotContainKey(EXTERNAL_PREREQUISITE_ID);
+
+                // A separate direct edge still demands the earlier goal. It is not
+                // redundant merely because another path reaches the same prerequisite.
+                fixture.landscape().getGoals().stream()
+                        .filter(goal -> TARGET_ID.equals(goal.getId())).findFirst().orElseThrow()
+                        .setRequires(List.of(PREREQUISITE_ID, EXTERNAL_PREREQUISITE_ID));
                 List<String> blockedFrontier = richFrontier
                         ? fixture.service().getRichFrontier(LEARNER_ID).stream().map(FrontierGoal::id).toList()
                         : fixture.service().getFrontier(LEARNER_ID);

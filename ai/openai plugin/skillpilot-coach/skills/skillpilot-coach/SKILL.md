@@ -264,8 +264,12 @@ explicit continuation. Hints inside an unfinished task need no closure round.
   transfer may occur within one task; judge evidence, not task count. Stop
   assessing once every aspect is shown; require no extra task quota.
 - **Directed prerequisites:** Mastery of a goal never implies mastery of its
-  prerequisites. Every unmastered personalized target remains subject to the
-  normal frontier test using its own effective prerequisites.
+  prerequisites. The backend alone determines remaining work: mastered goals
+  end their own prerequisite demand; goals with no remaining demand may be
+  implicitly completed without changing any saved goal result. Follow current
+  completion statements and options. Do not restore implicitly completed work
+  as mandatory or create mastery for it. Voluntary learning remains possible
+  through current published options.
 - **Memory:** Normal card practice and strict Verified Recall are different
   learning modes. Only the component reviews displayed practice cards; normal
   practice changes repetition scheduling, never mastery. In Verified Recall,

@@ -48,7 +48,7 @@ import type { ToastKind } from '../hooks/useToast'
 import { queueToastForNextLoad } from '../hooks/useToast'
 import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
 import { createSynchronousInFlightGuard } from '../utils/synchronousInFlightGuard'
-import { buildCompletionAssessmentStartHref, buildCompletionRouteStartHref, completionAssessmentsForGoal, completionLabel, completionUnavailableReason, completionWaiversForTree, parseLevelCompletion, requestLevelCompletionAction, type CompletionActionInput, type LevelCompletion } from '../utils/levelCompletionApi'
+import { buildCompletionAssessmentStartHref, buildCompletionRouteStartHref, completionAssessmentsForGoal, completionLabel, completionUnavailableReason, completionWaiversForTree, hasActiveCompletionRoute, parseLevelCompletion, requestLevelCompletionAction, type CompletionActionInput, type LevelCompletion } from '../utils/levelCompletionApi'
 import {
   beginLatestRequest,
   invalidateLatestRequest,
@@ -2885,6 +2885,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           autoPilot: preferences.autoPilot,
           followLearningPlans: preferences.followLearningPlans,
           learningPlanPeriodBasis: preferences.learningPlanPeriodBasis,
+          learningPlanCountOnlyExplicitGoals: preferences.learningPlanCountOnlyExplicitGoals,
           strictMode: preferences.strictMode,
           useAssessmentShortcuts: preferences.useAssessmentShortcuts,
           showGoalVisualizationsInChat: preferences.showGoalVisualizationsInChat,
@@ -3304,7 +3305,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [learnerDataManagementCopy.deleteMissing, learnerDataManagementCopy.deleteSuccess, onLogout, onNotify, skillpilotId])
 
   const showLearningProgress = !isGuidedPersonalizationRequired
-    && !levelCompletion?.profileId
+    && !hasActiveCompletionRoute(levelCompletion)
     && (scopedLearningPlans?.followLearningPlans
       ?? (learnerData?.skillpilotId === skillpilotId && learnerData?.followLearningPlans)) === true
   const activeGoalTitle = effectiveActiveGoalId ? goalIndexAll.get(effectiveActiveGoalId)?.title : undefined
@@ -3547,7 +3548,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           ) : null}
         </div> : null}
         <div className="mb-4 flex w-full justify-end">
-          <Link to={buildCompletionRouteStartHref(levelCompletion?.profileId)} data-testid="learner-coach-start-link"
+          <Link to={buildCompletionRouteStartHref(hasActiveCompletionRoute(levelCompletion) ? levelCompletion?.profileId : undefined)} data-testid="learner-coach-start-link"
             title={t.startPage.login.coachProviderLabel}
             className="inline-flex min-h-11 items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
             <Send size={16} aria-hidden="true" />{t.startPage.cards.gpt.title}
@@ -3796,7 +3797,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
                 {selectedGoalAssessments.length > 0 ? <div data-testid="selected-goal-assessment-shortcuts" className="mt-3 flex flex-col items-start gap-2 text-sm">
                   {selectedGoalAssessments.map(({ profileId, profileTitle, assessment }) => <div key={profileId} className="flex flex-wrap items-center gap-3">
-                    <span className="text-text-secondary">{localizedLanguage === 'en' ? 'Assessment shortcut for ' : 'Prüfungsabkürzung für '}
+                    <span className="text-text-secondary">{profileId.startsWith('automatic:')
+                      ? (localizedLanguage === 'en' ? 'Assessment in ' : 'Prüfung im Abschnitt ')
+                      : (localizedLanguage === 'en' ? 'Assessment shortcut for ' : 'Prüfungsabkürzung für ')}
                       <InlineMathText text={completionLabel(profileTitle, localizedLanguage)} />
                     </span>
                     {assessment.mastered ? <span>{localizedLanguage === 'en' ? 'Achieved' : 'Geschafft'}</span>
@@ -3811,11 +3814,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   </div>)}
                 </div> : null}
 
-                {levelCompletion?.calculationStatus === 'valid' && levelCompletion.waivedTargetGoalIds.includes(currentGoal.id) ? (
+                {learnerStateLoadStatus === 'ready' && levelCompletion?.calculationStatus === 'valid' && levelCompletion.waivedTargetGoalIds.includes(currentGoal.id) ? (
                   <p data-testid="level-completion-goal-context" className="mt-3 text-sm text-text-secondary">
-                    {localizedLanguage === 'en'
-                      ? 'Preparation for this goal is no longer required for the selected section. You can still choose to study it.'
-                      : 'Für den gewählten Abschnitt ist die Vorbereitung zu diesem Lernziel nicht mehr erforderlich. Du kannst es freiwillig weiterlernen.'}
+                    {levelCompletion.profileId?.startsWith('automatic:')
+                      ? (localizedLanguage === 'en'
+                        ? 'This goal is implicitly completed in the selected section because no remaining work requires it. Its saved learning result stays unchanged; you can still choose to study it.'
+                        : 'Dieses Ziel ist im gewählten Abschnitt implizit erledigt, weil keine verbleibende Arbeit es benötigt. Sein gespeicherter Lernstand bleibt unverändert; du kannst es freiwillig weiterlernen.')
+                      : (localizedLanguage === 'en'
+                        ? 'Preparation for this goal is no longer required for the selected section. You can still choose to study it.'
+                        : 'Für den gewählten Abschnitt ist die Vorbereitung zu diesem Lernziel nicht mehr erforderlich. Du kannst es freiwillig weiterlernen.')}
                   </p>
                 ) : null}
                 <GoalAdditionalMaterials
@@ -3983,6 +3990,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         initialAutoPilot={learnerData?.autoPilot}
         initialFollowLearningPlans={learnerData?.followLearningPlans}
         initialPeriodBasis={learnerData?.learningPlanPeriodBasis}
+        initialCountOnlyExplicitGoals={learnerData?.learningPlanCountOnlyExplicitGoals}
         initialStrictMode={learnerData?.strictMode}
         initialUseAssessmentShortcuts={learnerData?.useAssessmentShortcuts}
         directAssessmentRunning={levelCompletion?.directAssessmentRunning === true}

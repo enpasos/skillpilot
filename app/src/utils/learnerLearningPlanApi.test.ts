@@ -218,6 +218,7 @@ const legacySubject = { ...parsed.status.subjects[0] }
 delete legacySubject.achievedGoalCount
 delete legacySubject.targetGoalCount
 delete legacySubject.balanceDialText
+delete legacySubject.planCreditText
 const parseSubjectUpdate = (changes: Record<string, unknown>) => parseLearnerPlanStatus({
   ...parsed.status,
   subjects: [{ ...legacySubject, ...changes }],
@@ -226,6 +227,14 @@ const parsedLegacySubject = parseSubjectUpdate({})
 assert.equal(Object.prototype.hasOwnProperty.call(parsedLegacySubject, 'achievedGoalCount'), false)
 assert.equal(Object.prototype.hasOwnProperty.call(parsedLegacySubject, 'targetGoalCount'), false)
 assert.equal(Object.prototype.hasOwnProperty.call(parsedLegacySubject, 'balanceDialText'), false)
+assert.equal(Object.prototype.hasOwnProperty.call(parsedLegacySubject, 'planCreditText'), false)
+const planCreditText = 'Im Plan angerechnet: 3 Ziele, davon 2 durch Prüfungen abgedeckt.'
+assert.equal(parseSubjectUpdate({ planCreditText }).planCreditText, planCreditText,
+  'the localized credit explanation is delivered unchanged by the backend')
+assert.equal(parseSubjectUpdate({ planCreditText: null }).planCreditText, null)
+for (const invalid of ['', '   ', 3, false, {}, []]) {
+  assert.throws(() => parseSubjectUpdate({ planCreditText: invalid }), /planCreditText/u)
+}
 
 const countedSubject = parseSubjectUpdate({
   achievedGoalCount: 10,
@@ -273,6 +282,9 @@ const unevaluableSubject = {
 }
 assert.equal(parseSubjectUpdate(unevaluableSubject).achievedGoalCount, 10,
   'goal counts may be available even when the plan balance is not evaluable')
+assert.equal(parseSubjectUpdate({ ...unevaluableSubject, planCreditText: null }).planCreditText, null)
+assert.throws(() => parseSubjectUpdate({ ...unevaluableSubject, planCreditText }), /planCreditText/u,
+  'unavailable plan status must not claim derived plan credits')
 for (const invalid of ['', '1 im Rückstand', undefined]) {
   assert.throws(() => parseSubjectUpdate({ ...unevaluableSubject, balanceDialText: invalid }), /evaluability/u)
 }

@@ -341,7 +341,7 @@ public class LearnerServiceReproTest {
             // Cluster E.2 (GK) -> Contains:
             // - Target (GK, Unmastered) -> Requires Prereq
             // - Prereq (GK, Mastered) -> Requires DeepPrereq
-            // - DeepPrereq (GK, Mastered)
+            // - DeepPrereq (GK, Unmastered)
             // Plan: E.2
             // Expected: Target should be in Frontier (since Prereq is mastered)
 
@@ -382,12 +382,10 @@ public class LearnerServiceReproTest {
             when(plannedGoalRepository.findByLearner_SkillpilotId("test-learner"))
                     .thenReturn(List.of(new com.skillpilot.backend.domain.PlannedGoal(learner, "E.2")));
 
-            // Mastery: Prereq and DeepPrereq are Mastered (1.0)
+            // Mastery of the intermediate prerequisite ends its earlier demand.
             com.skillpilot.backend.domain.Mastery m1 = new com.skillpilot.backend.domain.Mastery(learner, "Prereq",
                     1.0);
-            com.skillpilot.backend.domain.Mastery m2 = new com.skillpilot.backend.domain.Mastery(learner, "DeepPrereq",
-                    1.0);
-            when(masteryRepository.findByLearner_SkillpilotId("test-learner")).thenReturn(List.of(m1, m2));
+            when(masteryRepository.findByLearner_SkillpilotId("test-learner")).thenReturn(List.of(m1));
 
             // Run getRichFrontier
             List<FrontierGoal> frontier = learnerService.getRichFrontier("test-learner");
@@ -398,6 +396,7 @@ public class LearnerServiceReproTest {
             // "Target" should be visible
             assertThat(frontier).isNotEmpty();
             assertThat(frontier).anyMatch(g -> g.id().equals("Target"));
+            assertThat(learnerService.getMastery("test-learner")).doesNotContainKey("DeepPrereq");
 
         } catch (Exception e) {
             e.printStackTrace();

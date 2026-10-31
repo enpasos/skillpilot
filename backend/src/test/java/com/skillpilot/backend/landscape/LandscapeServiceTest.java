@@ -14,6 +14,31 @@ import org.junit.jupiter.api.io.TempDir;
 
 class LandscapeServiceTest {
 
+        @Test
+        void completionMetadataDirectoriesCannotIntroduceRuntimeLandscapes(@TempDir Path curriculaDir) throws Exception {
+                String landscape = "{\"landscapeId\":\"%s\",\"title\":\"Fixture\",\"goals\":[{\"id\":\"%s\",\"title\":\"Goal\",\"contains\":[]}]}";
+                for (String directory : List.of("completion-profiles", "completion-scopes")) {
+                        Path reserved = Files.createDirectories(curriculaDir.resolve("DE/Gymnasium/" + directory + "/nested"));
+                        Files.writeString(reserved.resolve("landscape.json"), landscape.formatted(directory, directory + "-goal"));
+                }
+                // Similar names and the same directory names outside the reserved location
+                // are ordinary runtime inputs and must not be broadly excluded.
+                for (String directory : List.of("DE/Gymnasium/completion-profiles-extra", "Other/completion-scopes")) {
+                        Path ordinary = Files.createDirectories(curriculaDir.resolve(directory));
+                        String id = directory.replace('/', '-');
+                        Files.writeString(ordinary.resolve("landscape.json"), landscape.formatted(id, id + "-goal"));
+                }
+                LandscapeProperties properties = new LandscapeProperties();
+                properties.setDirectory(curriculaDir.toString());
+                LandscapeService service = new LandscapeService(properties, new ObjectMapper());
+                service.pinRuntimeGeneration();
+
+                assertThat(service.getAll()).extracting(SkillLandscape::getLandscapeId)
+                        .containsExactlyInAnyOrder("DE-Gymnasium-completion-profiles-extra", "Other-completion-scopes");
+                assertThat(service.getLandscapeIdForGoal("completion-profiles-goal")).isNull();
+                assertThat(service.getLandscapeIdForGoal("completion-scopes-goal")).isNull();
+        }
+
         private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
         private static final String CANONICAL_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
         private static final String CANONICAL_PHYSICS_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";

@@ -9,7 +9,15 @@ public record PreferencesRequest(
                 Boolean showGoalVisualizationsInChat,
                 Boolean followLearningPlans,
                 PeriodBasis learningPlanPeriodBasis,
-                Boolean useAssessmentShortcuts) {
+                Boolean useAssessmentShortcuts,
+                Boolean learningPlanCountOnlyExplicitGoals) {
+
+    public PreferencesRequest(String learningStrategy, Boolean autoPilot, Boolean strictMode,
+            Boolean showGoalVisualizationsInChat, Boolean followLearningPlans, PeriodBasis learningPlanPeriodBasis,
+            Boolean useAssessmentShortcuts) {
+        this(learningStrategy, autoPilot, strictMode, showGoalVisualizationsInChat,
+                followLearningPlans, learningPlanPeriodBasis, useAssessmentShortcuts, null);
+    }
 
     public PreferencesRequest(String learningStrategy, Boolean autoPilot, Boolean strictMode,
             Boolean showGoalVisualizationsInChat, Boolean followLearningPlans, PeriodBasis learningPlanPeriodBasis) {

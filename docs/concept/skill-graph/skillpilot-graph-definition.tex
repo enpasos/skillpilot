@@ -24,7 +24,7 @@
 \hypersetup{colorlinks=true,linkcolor=ink,urlcolor=teal,citecolor=teal,
  pdftitle={Die Graph-Definition von SkillPilot},
  pdfauthor={SkillPilot / enpasos},
- pdfsubject={Graphsemantik, curriculare Sichten, Lernzustand und prüfungsbasierter Abschluss},
+ pdfsubject={Graphsemantik, curriculare Sichten, Lernzustand und implizite Erledigung},
  pdfkeywords={SkillPilot, Skill Graph, Lernziele, Frontier, Assessment, Curriculum}}
 \setkomafont{disposition}{\normalfont\sffamily\bfseries\color{ink}}
 \setkomafont{pageheadfoot}{\normalfont\sffamily\small\color{muted}}
@@ -105,7 +105,7 @@
 {\sffamily\bfseries\fontsize{32}{37}\selectfont\color{ink}
 Die Graph-Definition\par von SkillPilot\par}
 \vspace{9mm}
-{\Large Struktur, Mathematik, curriculare Sichten\par und prüfungsbasierter Abschluss\par}
+{\Large Struktur, Mathematik, curriculare Sichten\par und implizite Erledigung\par}
 \vspace{14mm}
 \begin{center}\begin{tikzpicture}[node distance=14mm]
 \node[goal,minimum width=39mm] (c) {Fachlicher Cluster};
@@ -121,10 +121,11 @@ Die Graph-Definition\par von SkillPilot\par}
 \vfill
 \begin{principle}{Geltung dieser Fassung}
 Deutsche Gesamtdarstellung der technischen Modellverträge, Stand
-\textbf{29. Oktober 2026}. Sie verbindet die normative Graph-Definition mit
-ihren angrenzenden Konzepten. Optionale Planungsprofile und der Vorschlag
-eines prüfungsbasierten Abschlusses sind als solche gekennzeichnet.
-Eine dokumentierte Regel ist kein Nachweis ihrer vollständigen Umsetzung.
+\textbf{31. Oktober 2026}. Sie verbindet die normative Graph-Definition mit
+ihren angrenzenden Konzepten. Optionale Planungsprofile sind als solche
+gekennzeichnet. Die allgemeine Bedarfsrechnung, der direkte Prüfungszugang
+und die inklusive Plananrechnung sind lokal implementiert. Ihre Beschreibung
+ist kein Nachweis eines Deployments oder einer tatsächlichen Coach-Abnahme.
 \end{principle}
 \vspace{6mm}
 {\small SkillPilot · enpasos -- Enterprise Patterns \& Solutions GmbH\par
@@ -138,8 +139,8 @@ Didaktische Abbildungen: projektbezogene Inhaltslizenz CC BY 4.0; siehe Anhang.}
 Ein SkillPilot-Graph beschreibt, \emph{was} gelernt werden kann und welche
 Voraussetzungen dabei gelten. Curriculare Sichten bestimmen, welche dieser
 stabilen Ziele für eine Person gelten. Der Lernzustand hält für jedes atomare
-Ziel fest, ob es geschafft ist. Planung verteilt Erwerb und Übung auf verfügbare Zeit. Ein
-Abschlussprofil berechnet schließlich aus Mastery und fachlichen Regeln,
+Ziel fest, ob es geschafft ist. Planung verteilt Erwerb und Übung auf verfügbare Zeit.
+Die automatische Bedarfsrechnung bestimmt aus Mastery und direkten Anforderungen,
 ob ein genau benannter Lernumfang abgeschlossen ist. Diese Aussagen dürfen sich aufeinander beziehen,
 aber nicht stillschweigend gegenseitig ersetzen.
 
@@ -161,8 +162,8 @@ Angrenzender Vertrag & Semantik von Projektion, Zieltypen, Quellen oder
 Lernablauf; Implementierungsstand ist jeweils gesondert zu prüfen.\\
 Optionales Profil & Curriculum-Level mit Struktur- und Zeitprüfung;
 konzeptionell definiert, kein behaupteter neuer produktiver Validator.\\
-Entwurf & Prüfungsbasierter Abschluss mit Freistellungen;
-keine bereits verfügbare Umgehung der Prüfungszugangssperre.\\
+Aktuelle Umsetzung & Automatische Bedarfsberechnung und direkter Prüfungszugang;
+Deployment und Coach-Abnahme bleiben gesonderte Nachweise.\\
 \bottomrule
 \end{tabularx}\end{center}
 
@@ -187,7 +188,7 @@ fachliche Aufgabenreviews noch Untersuchungen mit Lernenden.
 \ohead{Curriculare Planung}
 \input{latex/graph-planning.tex}
 \clearpage
-\ohead{Prüfungsbasierter Abschluss}
+\ohead{Implizite Erledigung und Prüfungszugang}
 \input{latex/graph-assessment.tex}
 \clearpage
 \ohead{Anhänge}

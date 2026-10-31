@@ -125,7 +125,19 @@ public record LearnerPlanTodayStatus(
             Integer targetGoalCount,
             String balanceDialText,
             @JsonIgnore PlanBalanceResult balance,
-            @JsonInclude(JsonInclude.Include.NON_NULL) LearningScope learningScope) {
+            @JsonInclude(JsonInclude.Include.NON_NULL) LearningScope learningScope,
+            @JsonInclude(JsonInclude.Include.NON_NULL) String planCreditText) {
+
+        public SubjectStatus(List<String> landscapeIds, String subjectKey, String subjectLabel,
+                boolean evaluable, String periodText, String planStatusText, String subjectLine,
+                StatusDirection statusDirection, boolean current, boolean canContinue,
+                PeriodGauge periodGauge, BalanceGauge balanceGauge, Integer achievedGoalCount,
+                Integer targetGoalCount, String balanceDialText, PlanBalanceResult balance,
+                LearningScope learningScope) {
+            this(landscapeIds, subjectKey, subjectLabel, evaluable, periodText, planStatusText,
+                    subjectLine, statusDirection, current, canContinue, periodGauge, balanceGauge,
+                    achievedGoalCount, targetGoalCount, balanceDialText, balance, learningScope, null);
+        }
 
         public SubjectStatus(List<String> landscapeIds, String subjectKey, String subjectLabel,
                 boolean evaluable, String periodText, String planStatusText, String subjectLine,

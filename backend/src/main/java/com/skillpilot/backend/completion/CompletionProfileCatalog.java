@@ -34,10 +34,11 @@ import com.skillpilot.backend.curriculumpackage.CurriculumRuntimeSnapshotProvide
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-/** Immutable reviewed authoring generation, optionally restricted by an operator allowlist. */
+/** Pinned curriculum generation; authored profiles remain available to historical validation only. */
 @Component
 public class CompletionProfileCatalog {
     private final boolean enabled;
+    private final boolean automatic;
     private final Map<String, CompletionProfileDefinition> profiles;
     private final Map<String, CompletionScopeDefinition> scopes;
     private final Path root;
@@ -53,7 +54,16 @@ public class CompletionProfileCatalog {
             @Value("${skillpilot.completion.enabled-profile-ids:}") String allowedProfiles,
             @Value("${skillpilot.curriculum.source:repository}") String source,
             ObjectProvider<CurriculumRuntimeSnapshotProvider> packageSnapshots) {
+        this(properties, objectMapper, landscapes, mappings, decks, enabled, allowedProfiles, source,
+                packageSnapshots, true);
+    }
+
+    private CompletionProfileCatalog(LandscapeProperties properties, ObjectMapper objectMapper,
+            LandscapeService landscapes, GoalMappingService mappings, DeckResourceService decks,
+            boolean enabled, String allowedProfiles, String source,
+            ObjectProvider<CurriculumRuntimeSnapshotProvider> packageSnapshots, boolean automatic) {
         this.enabled = enabled;
+        this.automatic = automatic;
         this.root = "repository".equals(source)
                 ? Path.of(properties.getDirectory()).toAbsolutePath().normalize() : null;
         if (!enabled) {
@@ -66,18 +76,25 @@ public class CompletionProfileCatalog {
             if (provider == null) throw new IllegalStateException("Completion requires the active package snapshot");
             try {
                 var snapshot = provider.current();
-                var documents = CompletionPackageCatalog.load(snapshot, objectMapper);
-                Map<String, CompletionProfileDefinition> allowed = new TreeMap<>(documents.profiles());
-                Set<String> selected = allowedProfileIds(allowedProfiles);
-                if (!allowed.keySet().containsAll(selected)) {
-                    throw new IllegalArgumentException("Unknown allowlisted packaged completion profile");
+                if (automatic) {
+                    // The package loader has already verified the immutable graph
+                    // generation. Automatic demand needs no completion extension.
+                    profiles = Map.of();
+                    scopes = Map.of();
+                } else {
+                    var documents = CompletionPackageCatalog.load(snapshot, objectMapper);
+                    Map<String, CompletionProfileDefinition> allowed = new TreeMap<>(documents.profiles());
+                    Set<String> selected = allowedProfileIds(allowedProfiles);
+                    if (!allowed.keySet().containsAll(selected)) {
+                        throw new IllegalArgumentException("Unknown allowlisted packaged completion profile");
+                    }
+                    if (!selected.isEmpty()) allowed.keySet().retainAll(selected);
+                    profiles = Collections.unmodifiableMap(allowed);
+                    scopes = documents.scopes();
                 }
-                if (!selected.isEmpty()) allowed.keySet().retainAll(selected);
-                profiles = Collections.unmodifiableMap(allowed);
-                scopes = documents.scopes();
                 stamps = Map.of();
                 generation = snapshot.generationSha256();
-                available = snapshot.packages().stream()
+                available = automatic ? !snapshot.packages().isEmpty() : snapshot.packages().stream()
                         .anyMatch(p -> p.capabilities().contains(CompletionPackageCatalog.CAPABILITY));
             } catch (Exception e) {
                 throw new IllegalStateException("Cannot initialize packaged completion catalog", e);
@@ -86,40 +103,40 @@ public class CompletionProfileCatalog {
         }
         if (!"repository".equals(source)) throw new IllegalArgumentException("Unknown curriculum source");
         try {
-            ObjectMapper strictMapper = objectMapper.copy()
-                    .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
             // Capture before parsing. Reading a profile first and hashing it later can
             // otherwise associate old parsed data with a new source generation.
             Map<Path, Input> captured = capture(runtimeInputs());
-            Map<String, Path> scopePaths = new TreeMap<>();
-            Map<String, CompletionScopeDefinition> loadedScopes = load(
-                    root.resolve("DE/Gymnasium/completion-scopes"), captured, scopePaths, strictMapper,
-                    CompletionScopeDefinition.class, CompletionScopeDefinition::id);
-            Map<String, CompletionProfileDefinition> loadedProfiles = load(
-                    root.resolve("DE/Gymnasium/completion-profiles"), captured, new TreeMap<>(), strictMapper,
-                    CompletionProfileDefinition.class, CompletionProfileDefinition::id);
-            Set<String> allowed = allowedProfileIds(allowedProfiles);
-            if (!loadedProfiles.keySet().containsAll(allowed)) {
-                throw new IllegalArgumentException("Unknown allowlisted completion profile");
-            }
-            if (!allowed.isEmpty()) loadedProfiles.keySet().retainAll(allowed);
-            if (loadedProfiles.isEmpty()) {
-                // Default availability must not pin ordinary curricula without completion content.
-                profiles = Map.of(); scopes = Map.of(); stamps = Map.of(); generation = "no-completion-profiles";
-                available = false;
-                return;
-            }
-            Map<String, JsonNode> goalInputs = goalInputs(captured, strictMapper);
-            for (CompletionProfileDefinition definition : loadedProfiles.values()) {
-                CompletionScopeDefinition scope = loadedScopes.get(definition.levelScopeRef());
-                if (scope == null) {
-                    throw new IllegalArgumentException("Unresolved completion scope: " + definition.levelScopeRef());
+            Map<String, CompletionScopeDefinition> loadedScopes = Map.of();
+            Map<String, CompletionProfileDefinition> loadedProfiles = Map.of();
+            if (!automatic) {
+                ObjectMapper strictMapper = objectMapper.copy().enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+                Map<String, Path> scopePaths = new TreeMap<>();
+                loadedScopes = load(root.resolve("DE/Gymnasium/completion-scopes"), captured, scopePaths, strictMapper,
+                        CompletionScopeDefinition.class, CompletionScopeDefinition::id);
+                loadedProfiles = load(root.resolve("DE/Gymnasium/completion-profiles"), captured, new TreeMap<>(), strictMapper,
+                        CompletionProfileDefinition.class, CompletionProfileDefinition::id);
+                Set<String> allowed = allowedProfileIds(allowedProfiles);
+                if (!loadedProfiles.keySet().containsAll(allowed)) {
+                    throw new IllegalArgumentException("Unknown allowlisted completion profile");
                 }
-                if (definition.review() == null) throw new IllegalArgumentException("Missing completion review");
-                captureReview(definition.review().reference(), captured);
-                for (var rule : definition.rules()) captureReview(rule.reviewRef(), captured);
-                validateReviewBindings(definition, scope, captured.get(scopePaths.get(scope.id())).bytes(),
-                        goalInputs, strictMapper);
+                if (!allowed.isEmpty()) loadedProfiles.keySet().retainAll(allowed);
+                if (loadedProfiles.isEmpty()) {
+                    profiles = Map.of(); scopes = Map.of(); stamps = Map.of(); generation = "no-completion-profiles";
+                    available = false;
+                    return;
+                }
+                Map<String, JsonNode> goalInputs = goalInputs(captured, strictMapper);
+                for (CompletionProfileDefinition definition : loadedProfiles.values()) {
+                    CompletionScopeDefinition scope = loadedScopes.get(definition.levelScopeRef());
+                    if (scope == null) {
+                        throw new IllegalArgumentException("Unresolved completion scope: " + definition.levelScopeRef());
+                    }
+                    if (definition.review() == null) throw new IllegalArgumentException("Missing completion review");
+                    captureReview(definition.review().reference(), captured);
+                    for (var rule : definition.rules()) captureReview(rule.reviewRef(), captured);
+                    validateReviewBindings(definition, scope, captured.get(scopePaths.get(scope.id())).bytes(),
+                            goalInputs, strictMapper);
+                }
             }
             // Pin methods force a fresh reload, bypassing ordinary two-second checks.
             // This startup publication stays unavailable if any input changes meanwhile.
@@ -143,15 +160,16 @@ public class CompletionProfileCatalog {
             stamps = Collections.unmodifiableMap(observed);
             available = true;
         } catch (Exception e) {
-            throw new IllegalStateException("Cannot initialize reviewed completion catalog", e);
+            throw new IllegalStateException(automatic ? "Cannot initialize automatic completion generation"
+                    : "Cannot initialize reviewed completion catalog", e);
         }
     }
 
-    /** Source-compatible constructor for repository-only test fixtures. */
+    /** Historical repository authoring fixture; production uses the automatic constructor above. */
     public CompletionProfileCatalog(LandscapeProperties properties, ObjectMapper objectMapper,
             LandscapeService landscapes, GoalMappingService mappings, DeckResourceService decks,
             boolean enabled, String allowedProfiles, String source) {
-        this(properties, objectMapper, landscapes, mappings, decks, enabled, allowedProfiles, source, null);
+        this(properties, objectMapper, landscapes, mappings, decks, enabled, allowedProfiles, source, null, false);
     }
 
     private static Set<String> allowedProfileIds(String value) {
@@ -163,12 +181,20 @@ public class CompletionProfileCatalog {
     /** Test fixture constructor; production always uses the configured generation above. */
     public CompletionProfileCatalog(Map<String, CompletionProfileDefinition> profiles,
             Map<String, CompletionScopeDefinition> scopes, String generation) {
+        this(profiles, scopes, generation, false);
+    }
+
+    /** Explicit automatic-generation fixture; the three-argument fixture preserves historical profile tests. */
+    public CompletionProfileCatalog(Map<String, CompletionProfileDefinition> profiles,
+            Map<String, CompletionScopeDefinition> scopes, String generation, boolean automatic) {
         this.enabled = true; this.root = null; this.stamps = Map.of();
+        this.automatic = automatic;
         this.profiles = Map.copyOf(profiles); this.scopes = Map.copyOf(scopes);
         this.generation = generation; this.available = true;
     }
 
     public boolean enabled() { return enabled; }
+    public boolean automatic() { return automatic; }
     public boolean available() { return available; }
     public String generation() { return generation; }
     public Map<String, CompletionProfileDefinition> profiles() { return profiles; }
@@ -194,7 +220,9 @@ public class CompletionProfileCatalog {
 
     private List<Path> runtimeInputs() throws IOException {
         return new ArrayList<>(PrunedFileTree.files(root, p -> !p.equals(root)
-                && Set.of("quality", ".git", "node_modules").contains(p.getFileName().toString()))
+                && (Set.of("quality", ".git", "node_modules").contains(p.getFileName().toString())
+                    || automatic && (p.equals(root.resolve("DE/Gymnasium/completion-profiles"))
+                        || p.equals(root.resolve("DE/Gymnasium/completion-scopes")))))
                 .stream().filter(Files::isRegularFile).filter(this::isRuntimeJson)
                 .map(p -> p.toAbsolutePath().normalize()).sorted().toList());
     }

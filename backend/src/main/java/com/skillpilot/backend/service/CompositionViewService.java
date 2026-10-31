@@ -38,6 +38,7 @@ public class CompositionViewService {
     private static final String COURSE_PROFILE_COMBINED = "GK+LK";
     private static final String COURSE_PROFILE_GK = "GK";
     private static final String COURSE_PROFILE_LK = "LK";
+    static final int MAX_MERGED_VIEW_CACHE_ENTRIES = 64;
     private static final Set<String> LEARNER_SCOPE_DIMENSIONS = Set.of(
             "schoolForm",
             "jurisdiction",
@@ -55,6 +56,10 @@ public class CompositionViewService {
     private final PackageCompositionViewState packageState;
     private final Supplier<Map<String, List<String>>> canonicalGraphSupplier;
     private volatile RepositoryViewIndex repositoryViewIndex;
+    private final Object mergedViewCacheLock = new Object();
+    private final Map<List<Map<String, Object>>, List<Map<String, Object>>> mergedViewRoots =
+            new LinkedHashMap<>(16, 0.75f, true);
+    private Map<String, List<String>> mergedViewGraph;
 
     public CompositionViewService(LandscapeProperties properties, ObjectMapper objectMapper) {
         this(properties, objectMapper, null);
@@ -687,7 +692,9 @@ public class CompositionViewService {
     /**
      * One service instance represents one repository directory snapshot. Load
      * and validate its authored views once, then reuse immutable indexes for
-     * every offering probe and learner-facing resolution.
+     * every offering probe and learner-facing resolution. Changed authored view
+     * files require a new service instance; neither this index nor its merged
+     * trees hot-reload independently of that source snapshot.
      */
     private RepositoryViewIndex repositoryViewIndex() {
         RepositoryViewIndex current = repositoryViewIndex;
@@ -717,7 +724,7 @@ public class CompositionViewService {
                     .sorted()
                     .map(this::readViewFile)
                     .filter(Objects::nonNull)
-                    .map(view -> Collections.unmodifiableMap(new LinkedHashMap<>(view)))
+                    .map(CompositionViewService::deepFreezeMap)
                     .toList();
             Map<String, List<Map<String, Object>>> mutableByLandscapeId =
                     new LinkedHashMap<>();
@@ -957,16 +964,8 @@ public class CompositionViewService {
             String landscapeId,
             Map<String, String> requestedScope,
             List<Map<String, Object>> views) {
-        List<Map<String, Object>> normalizedViews = views.stream()
-                .map(view -> Collections.unmodifiableMap(new LinkedHashMap<>(view)))
-                .toList();
-        List<List<Map<String, Object>>> sourceRoots = normalizedViews.stream()
-                .map(view -> asNodeList(view.get("rootNodes")))
-                .toList();
-        List<Map<String, Object>> mergedRootNodes = canonicalGraphSupplier == null
-                ? CourseProfileCompositionViewMerger.merge(sourceRoots.stream().flatMap(List::stream).toList())
-                : CourseProfileCompositionViewMerger.mergeViews(sourceRoots, canonicalGraphSupplier.get());
-        List<String> sourceViewIds = normalizedViews.stream()
+        List<Map<String, Object>> mergedRootNodes = mergedRoots(views);
+        List<String> sourceViewIds = views.stream()
                 .map(view -> asString(view.get("viewId")))
                 .filter(StringUtils::hasText)
                 .distinct()
@@ -979,6 +978,63 @@ public class CompositionViewService {
         merged.put("rootNodes", mergedRootNodes);
         merged.put("mergedFromViewIds", sourceViewIds);
         return Collections.unmodifiableMap(merged);
+    }
+
+    /**
+     * Only the structural merge is shared: scope/landscape envelopes are rebuilt
+     * for each lookup. The ordered source documents belong to the immutable view
+     * index; full documents prevent equal view IDs from aliasing different sources.
+     * Compare the complete current canonical contains graph before any hit,
+     * including when a supplier reuses a mutable map/list. A changed graph clears
+     * all trees and must pass the ordinary strict merger again. No learner data,
+     * authorization or scope resolution is cached here.
+     */
+    private List<Map<String, Object>> mergedRoots(List<Map<String, Object>> views) {
+        List<Map<String, Object>> key = List.copyOf(views);
+        synchronized (mergedViewCacheLock) {
+            if (canonicalGraphSupplier != null) {
+                Map<String, List<String>> current = canonicalGraphSupplier.get();
+                if (current == null) throw new IllegalArgumentException("Canonical contains graph is required");
+                if (!current.equals(mergedViewGraph)) {
+                    Map<String, List<String>> snapshot = new LinkedHashMap<>();
+                    current.forEach((id, children) -> snapshot.put(id, List.copyOf(children)));
+                    mergedViewGraph = Collections.unmodifiableMap(snapshot);
+                    mergedViewRoots.clear();
+                }
+            }
+            List<Map<String, Object>> cached = mergedViewRoots.get(key);
+            if (cached != null) return cached;
+            List<List<Map<String, Object>>> sourceRoots = views.stream()
+                    .map(view -> asNodeList(view.get("rootNodes"))).toList();
+            List<Map<String, Object>> merged = canonicalGraphSupplier == null
+                    ? CourseProfileCompositionViewMerger.merge(sourceRoots.stream().flatMap(List::stream).toList())
+                    : CourseProfileCompositionViewMerger.mergeViews(sourceRoots, mergedViewGraph);
+            // Also freeze arbitrary nested authored metadata, not only children.
+            List<Map<String, Object>> frozen = merged.stream().map(CompositionViewService::deepFreezeMap).toList();
+            mergedViewRoots.put(key, frozen);
+            while (mergedViewRoots.size() > MAX_MERGED_VIEW_CACHE_ENTRIES) {
+                mergedViewRoots.remove(mergedViewRoots.keySet().iterator().next());
+            }
+            return frozen;
+        }
+    }
+
+    private static Map<String, Object> deepFreezeMap(Map<String, Object> source) {
+        Map<String, Object> frozen = new LinkedHashMap<>();
+        source.forEach((key, value) -> frozen.put(key, deepFreezeValue(value)));
+        return Collections.unmodifiableMap(frozen);
+    }
+
+    private static Object deepFreezeValue(Object value) {
+        if (value instanceof Map<?, ?> map) {
+            Map<Object, Object> frozen = new LinkedHashMap<>();
+            map.forEach((key, child) -> frozen.put(key, deepFreezeValue(child)));
+            return Collections.unmodifiableMap(frozen);
+        }
+        if (value instanceof List<?> list) {
+            return list.stream().map(CompositionViewService::deepFreezeValue).toList();
+        }
+        return value;
     }
 
     @SuppressWarnings("unchecked")

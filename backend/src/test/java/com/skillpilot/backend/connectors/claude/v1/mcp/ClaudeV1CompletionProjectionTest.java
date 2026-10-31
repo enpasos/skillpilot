@@ -86,6 +86,42 @@ class ClaudeV1CompletionProjectionTest {
     }
 
     @Test
+    void implicitCompletionWithoutAssessmentsDoesNotClaimMasteryOrInventPassedAssessmentEvidence() {
+        var detail = new LevelCompletionResponse.WaiverDetail("private-goal",
+                Map.of("de", "Zahlen vergleichen", "en", "Compare numbers"),
+                "no_remaining_demand", List.of(), 0);
+        var response = new LevelCompletionResponse("valid", "private-context", "automatic:private-scope",
+                "general-demand-v1", "private-generation", 10,
+                Map.of("de", "Abschnitt", "en", "Section"), true, 0, 1, 0, 1, 0, 0,
+                List.of("private-goal"), List.of(), List.of(), null, false, null, List.of())
+                .withWaiverDetails(List.of(detail));
+        for (String language : List.of("de", "en")) {
+            var projected = ClaudeV1CompletionChoices.project(response, language);
+            assertThat(projected.get("complete")).isEqualTo(true);
+            assertThat(projected.get("choices")).isEqualTo(List.of());
+            assertThat(ClaudeV1CompletionChoices.active(response)).isFalse();
+            assertThat(projected.get("text").toString()).isEqualTo("en".equals(language)
+                    ? "Directly achieved learning goals: 0 of 1. Required assessments passed: 0 of 0. "
+                            + "Implicitly completed learning goals in this section: 1. Saved goal results stay unchanged. "
+                            + "Remaining target obligations: 0. Learning section completed."
+                    : "Direkt geschaffte Lernziele: 0 von 1. Geschaffte erforderliche Prüfungen: 0 von 0. "
+                            + "In diesem Abschnitt implizit erledigte Lernziele: 1. Die gespeicherten Lernstände bleiben unverändert. "
+                            + "Noch offene Zielpflichten: 0. Lernabschnitt abgeschlossen.");
+            var details = (List<?>) projected.get("waivedPreparation");
+            assertThat(details).hasSize(1);
+            var projectedDetail = (Map<?, ?>) details.getFirst();
+            assertThat(projectedDetail.get("passedAssessments")).isEqualTo(List.of());
+            assertThat(projectedDetail.get("supportingAssessmentCount")).isEqualTo(0);
+            assertThat(projected.get("instruction").toString())
+                    .contains("A passed assessment is not required for implicit completion")
+                    .contains("Do not restore implicitly completed work as mandatory")
+                    .contains("read-only overview, not an active completion route");
+            assertThat(projected.toString()).doesNotContain("private-goal", "private-scope", "private-generation",
+                    "private-context", "no_remaining_demand", "taskContent", "solutionContent");
+        }
+    }
+
+    @Test
     void ordinaryContextPublishesDirectAssessmentChoiceWithoutExposingPrivateIdsOrSelectingASection() {
         var offered = new LevelCompletionResponse("unresolved", null, null, null, "private-generation", 10,
                 null, null, 0, 0, 0, 0, 0, 0, List.of(), List.of(), List.of(

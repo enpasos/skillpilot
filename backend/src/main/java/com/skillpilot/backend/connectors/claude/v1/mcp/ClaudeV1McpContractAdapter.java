@@ -593,9 +593,15 @@ public class ClaudeV1McpContractAdapter {
                 """ + (completionEnabled ? """
 
                 Assessment completion route: when context.levelCompletion is present, use its
-                exact backend statement and published choices. A profile completion is scoped work
-                completion, never new mastery. In ordinary learning, a published direct-assessment
-                choice starts its reviewed section and assessment together; no preliminary section
+                exact backend statement and published choices. Section completion is scoped work
+                completion, never new mastery. Within the authoritative scope, mastered goals no
+                longer demand their own prerequisites; non-assessment goals with no remaining demand
+                are implicitly completed. This does not certify prerequisite competence or change
+                saved goal results. A section with no required assessments may also be complete.
+                Do not recalculate this result or restore implicitly completed work as mandatory;
+                voluntary learning remains possible through current published choices.
+                In ordinary learning, a published direct-assessment
+                choice starts its current section and assessment together; no preliminary section
                 selection is needed. When the learner asks for a shortcut, an exam or to show existing
                 knowledge, offer the fitting published assessment by its exact title. Until the learner
                 explicitly chooses it, do not start, teach, render or disclose that assessment's task.
@@ -921,7 +927,7 @@ public class ClaudeV1McpContractAdapter {
                     TOOL_CHOOSE_COMPLETION_ROUTE,
                     "Choose SkillPilot Completion Route",
                     "Accepts exactly one choice copied from the newest context.levelCompletion.choices "
-                            + "after the learner explicitly selects it. Chooses a reviewed section, starts "
+                            + "after the learner explicitly selects it. Chooses a current learning section, starts "
                             + "its direct assessment in this authenticated session, requests support or "
                             + "voluntary learning, pauses neutrally, or returns to regular learning. "
                             + "Never send goal identifiers, prerequisite bypasses, answers, scores or failure status. "

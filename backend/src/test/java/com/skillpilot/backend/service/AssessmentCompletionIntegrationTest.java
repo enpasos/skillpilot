@@ -36,6 +36,8 @@ class AssessmentCompletionIntegrationTest {
     @Autowired PlannedGoalRepository focus;
     @Autowired ObjectMapper mapper;
     @Autowired com.skillpilot.backend.ui.LearnerUiController ui;
+    @Autowired com.skillpilot.backend.ui.LearnerLearningPlanController planUi;
+    @Autowired LearnerLearningPlanService learningPlans;
     Learner learner;
     Object originalApplication;
 
@@ -350,6 +352,143 @@ class AssessmentCompletionIntegrationTest {
                     return null;
                 })).isInstanceOf(ResponseStatusException.class).hasMessageContaining("403");
         assertThat(learner.getUseAssessmentShortcuts()).isTrue();
+    }
+
+    @Test void planCountingPreferenceHttpRoundTripPreservesDirectAssessmentAndOmittedChoice() throws Exception {
+        assertThat(learner.getLearningPlanCountOnlyExplicitGoals()).isFalse();
+        select();
+        learners.startCompletionAssessment(learner.getSkillpilotId(),
+                new CompletionAssessmentStart(PROFILE, EXAM, learner.getCoachStateRevision()),
+                "claude", "owner-hash", Instant.now().plusSeconds(600));
+        nextRequestTransaction(true);
+        String workflow = learner.getCompletionWorkflow();
+        long revision = learner.getCoachStateRevision();
+        var mvc = org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup(ui)
+                .setMessageConverters(new org.springframework.http.converter.json.MappingJackson2HttpMessageConverter(mapper)).build();
+        for (String payload : List.of("{\"learningPlanCountOnlyExplicitGoals\":true}", "{\"autoPilot\":false}")) {
+            mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put(
+                    "/api/ui/learners/{id}/preferences", learner.getSkillpilotId())
+                    .contentType(org.springframework.http.MediaType.APPLICATION_JSON).content(payload))
+                    .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.status().isOk());
+            mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get(
+                    "/api/ui/learners/{id}", learner.getSkillpilotId()))
+                    .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.status().isOk())
+                    .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath(
+                            "$.learningPlanCountOnlyExplicitGoals").value(true));
+            assertThat(learner.getCompletionWorkflow()).isEqualTo(workflow);
+            assertThat(learner.getActiveGoalId()).isEqualTo(EXAM);
+            assertThat(learner.getUseAssessmentShortcuts()).isTrue();
+        }
+        assertThat(learner.getCoachStateRevision()).isEqualTo(revision + 1);
+        learners.setPreferences(learner.getSkillpilotId(), null, null, null, null, null, null, null, false);
+        assertThat(learner.getLearningPlanCountOnlyExplicitGoals()).isFalse();
+        assertThat(learner.getCompletionWorkflow()).isEqualTo(workflow);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
+    }
+
+    @Test void coachCannotChangeTheCockpitPlanCountingPreference() {
+        assertThatThrownBy(() -> CompletionCallContext.with(new CompletionCallContext(
+                "claude", "owner-hash", Instant.now().plusSeconds(600), true), () -> {
+                    learners.setPreferences(learner.getSkillpilotId(), null, null, null, null, null, null, null, true);
+                    return null;
+                })).isInstanceOf(ResponseStatusException.class).hasMessageContaining("403");
+        assertThat(learner.getLearningPlanCountOnlyExplicitGoals()).isFalse();
+    }
+
+    @Test void planCompletionInputsDoNotRequireAnActiveRouteOrEnabledShortcutStarts() {
+        learners.setPreferences(learner.getSkillpilotId(), null, null, null, null, null, null, false);
+        var context = learners.getLearningPlanCompletionContext(learner.getSkillpilotId(), Set.of(PREPARATION));
+        assertThat(context.reviewedProfiles()).extracting(p -> p.definition().id()).containsExactly(PROFILE);
+        // A grant in the prerequisite closure must remain discoverable, even when
+        // its target is not directly scheduled in the plan's captured goal set.
+        assertThat(learners.getLearningPlanCompletionContext(learner.getSkillpilotId(), Set.of(EXAM))
+                .reviewedProfiles()).extracting(p -> p.definition().id()).containsExactly(PROFILE);
+        assertThat(learner.getCompletionWorkflow()).isNull();
+        assertThat(learner.getUseAssessmentShortcuts()).isFalse();
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
+    }
+
+    @Test void realReviewedAssessmentCreditsTheHttpPlanAndPreferenceChangesOnlyCounting() throws Exception {
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.temporal.TemporalAdjusters.previousOrSame(java.time.DayOfWeek.MONDAY));
+        var block = new LearnerLearningPlanApi.Block("pilot", "learning", null, "Prüfungsabschnitt",
+                monday, monday.plusDays(4), null, List.of(PREPARATION, EXAM), List.of(PREPARATION, EXAM), true);
+        var mvc = org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup(ui, planUi)
+                .setMessageConverters(new org.springframework.http.converter.json.MappingJackson2HttpMessageConverter(mapper)).build();
+        mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put(
+                "/api/ui/learners/{id}/learning-plans/by-landscape", learner.getSkillpilotId())
+                .queryParam("landscapeId", MATH).queryParam("asOf", today.toString())
+                .contentType(org.springframework.http.MediaType.APPLICATION_JSON)
+                .content(mapper.writeValueAsString(new LearnerLearningPlanApi.UpsertRequest(0L,
+                        "Prüfungsabschnitt", List.of(block)))))
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.status().isOk());
+        var baseline = learningPlans.getPlan(learner.getSkillpilotId(), MATH, today).blocks();
+        assertThat(baseline.getFirst().atomicGoalIds()).containsExactlyInAnyOrder(PREPARATION, EXAM);
+
+        select();
+        learners.startCompletionAssessment(learner.getSkillpilotId(),
+                new CompletionAssessmentStart(PROFILE, EXAM, learner.getCoachStateRevision()),
+                "claude", "owner-hash", Instant.now().plusSeconds(600));
+        CompletionCallContext.with(new CompletionCallContext("claude", "owner-hash", Instant.now().plusSeconds(600), true),
+                () -> learners.setMastery(learner.getSkillpilotId(), new MasteryUpdateRequest(Map.of(EXAM, 1.0), EXAM)));
+        // Ending the route and disabling new shortcut starts must not remove valid credit.
+        learners.setPreferences(learner.getSkillpilotId(), null, null, null, null, null, null, false);
+        assertThat(learner.getCompletionWorkflow()).isNull();
+        var events = learners.getGoalCompletionsBetween(learner.getSkillpilotId(), monday, monday.plusDays(6));
+        assertThat(events).containsOnlyKeys(EXAM);
+        var defaultStatus = learningPlans.getTodayStatus(learner.getSkillpilotId(), "de");
+        assertThat(defaultStatus.subjects()).singleElement().satisfies(subject -> {
+            assertThat(subject.balance().rohsaldo()).isZero();
+            assertThat(subject.periodGauge().target()).isEqualTo(2);
+            assertThat(subject.periodGauge().completed()).isEqualTo(2);
+        });
+        mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get(
+                "/api/ui/learners/{id}/learning-plans/status", learner.getSkillpilotId()).queryParam("language", "de"))
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.status().isOk())
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath("$.subjects[0].periodGauge.completed").value(2))
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath("$.subjects[0].planCreditText").isNotEmpty());
+        mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put(
+                "/api/ui/learners/{id}/preferences", learner.getSkillpilotId())
+                .contentType(org.springframework.http.MediaType.APPLICATION_JSON)
+                .content("{\"learningPlanCountOnlyExplicitGoals\":true}"))
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.status().isOk());
+        mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get(
+                "/api/ui/learners/{id}/learning-plans/status", learner.getSkillpilotId()).queryParam("language", "de"))
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.status().isOk())
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath("$.subjects[0].periodGauge.completed").value(1))
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath("$.subjects[0].periodGauge.target").value(2))
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath("$.subjects[0].planCreditText").doesNotExist());
+        assertThat(learningPlans.getTodayStatus(learner.getSkillpilotId(), "de").subjects().getFirst().balance().rohsaldo()).isEqualTo(-1);
+        assertThat(learningPlans.getPlan(learner.getSkillpilotId(), MATH, today).blocks()).isEqualTo(baseline);
+        assertThat(learners.getGoalCompletionsBetween(learner.getSkillpilotId(), monday, monday.plusDays(6))).isEqualTo(events);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).singleElement()
+                .satisfies(result -> assertThat(result.getGoalKey()).isEqualTo(EXAM));
+    }
+
+    @Test void unrelatedPlanDoesNotDependOnUnavailableCompletionRules() {
+        var application = (CompletionApplicationService) ReflectionTestUtils.getField(learners, "completionApplicationService");
+        ReflectionTestUtils.setField(application.catalog(), "available", false);
+        assertThat(learners.getLearningPlanCompletionContext(learner.getSkillpilotId(), Set.of(UNRELATED))).isNull();
+        assertThatThrownBy(() -> learners.getLearningPlanCompletionContext(learner.getSkillpilotId(), Set.of(PREPARATION)))
+                .isInstanceOf(IllegalStateException.class).hasMessageContaining("unavailable");
+    }
+
+    @Test void baseWithoutTheCompleteReviewedScopeDoesNotRequireAPreparedContext() {
+        var application = (CompletionApplicationService) ReflectionTestUtils.getField(learners, "completionApplicationService");
+        var originalScope = application.catalog().scope(PROFILE);
+        var foreignScope = new CompletionScopeDefinition(originalScope.schemaVersion(), originalScope.id(),
+                originalScope.revision(), originalScope.title(), List.of(PREPARATION, "foreign-assessment"));
+        var otherApplication = new CompletionApplicationService(new CompletionProfileCatalog(
+                application.catalog().profiles(), Map.of(PROFILE, foreignScope), "other-base"));
+        ReflectionTestUtils.setField(otherApplication, "preparedContexts", Map.of());
+        ReflectionTestUtils.setField(learners, "completionApplicationService", otherApplication);
+        assertThat(learners.getLearningPlanCompletionContext(learner.getSkillpilotId(), Set.of(PREPARATION))).isNull();
+
+        // Missing prepared inputs for a genuinely applicable scope are a real failure.
+        ReflectionTestUtils.setField(application, "preparedContexts", Map.of());
+        ReflectionTestUtils.setField(learners, "completionApplicationService", application);
+        assertThatThrownBy(() -> learners.getLearningPlanCompletionContext(learner.getSkillpilotId(), Set.of(PREPARATION)))
+                .isInstanceOf(CompletionApplicationService.PreparedContextUnavailableException.class);
     }
 
     @Test void existingAssessmentMasteryCompletesOnlyThisScopeWithoutCreatingPreparationMastery() {

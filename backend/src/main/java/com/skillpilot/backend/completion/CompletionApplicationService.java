@@ -14,12 +14,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class CompletionApplicationService {
     private static final String RESOLVER_SEMANTICS_VERSION = "atomic-inherited-prerequisites-v1";
+    private static final String AUTOMATIC_SEMANTICS_VERSION = "direct-demand-stops-at-mastery-v1";
     private final CompletionProfileCatalog catalog;
     private final CompletionTelemetry telemetry;
     private final CompletionProfileCompiler compiler = new CompletionProfileCompiler();
     private final CompletionEvaluator evaluator = new CompletionEvaluator();
     private final Map<CacheKey, CompiledCompletionProfile> cache = new LinkedHashMap<>(16, .75f, true);
     private final Map<String, Map<String, LearningGoal>> canonicalGraphs = new LinkedHashMap<>(4, .75f, true);
+    // Automatic scopes use the same fixed budgets independently of the sealed historical warm set.
+    private final Map<AutomaticCacheKey, CompiledCompletionProfile> automaticCache = new LinkedHashMap<>(16, .75f, true);
+    private final Map<String, Map<String, LearningGoal>> automaticCanonicalGraphs = new LinkedHashMap<>(4, .75f, true);
     private static final int MAX_CACHED_CONTEXTS = 32;
     private static final long MAX_CACHED_EDGES = 500_000;
     private static final long MAX_CACHED_NODES = 100_000;
@@ -28,6 +32,8 @@ public class CompletionApplicationService {
     private final long maximumNodes;
     private long cachedEdges;
     private long cachedNodes;
+    private long automaticCachedEdges;
+    private long automaticCachedNodes;
     // Null only during bootstrap or isolated test construction. Contains no learner scope/results.
     private Map<String, Set<String>> preparedContexts;
 
@@ -81,6 +87,68 @@ public class CompletionApplicationService {
         return loaded;
     }
 
+    /** Bounded, lazy static bases for automatic scopes; historical readiness bindings stay sealed. */
+    public synchronized Map<String, LearningGoal> automaticCanonicalGraph(String curriculumId,
+            java.util.function.Supplier<Map<String, LearningGoal>> loader) {
+        if (!catalog.available()) throw new IllegalStateException("Completion curriculum generation is unavailable");
+        if (curriculumId == null || curriculumId.isBlank()) {
+            throw new IllegalArgumentException("A pinned canonical graph identity is required");
+        }
+        Map<String, LearningGoal> prepared = canonicalGraphs.get(curriculumId);
+        Map<String, LearningGoal> existing = prepared != null ? prepared : automaticCanonicalGraphs.get(curriculumId);
+        telemetry.cacheRequest(CompletionTelemetry.CacheKind.CANONICAL, existing != null);
+        if (existing != null) return existing;
+        Map<String, LearningGoal> loaded = java.util.Collections.unmodifiableMap(new LinkedHashMap<>(loader.get()));
+        if (loaded.isEmpty() || loaded.size() > MAX_CACHED_NODES) {
+            throw new IllegalArgumentException("Canonical graph is empty or exceeds the supported generation budget");
+        }
+        while (automaticCanonicalGraphs.size() >= 4) {
+            automaticCanonicalGraphs.remove(automaticCanonicalGraphs.keySet().iterator().next());
+            telemetry.cacheEviction(CompletionTelemetry.CacheKind.CANONICAL);
+        }
+        automaticCanonicalGraphs.put(curriculumId, loaded);
+        return loaded;
+    }
+
+    /** Compile the complete server-resolved target set; no individual learner result enters this cache. */
+    public synchronized CompiledCompletionProfile compileAutomatic(CompletionProfileDefinition definition,
+            String canonicalGraphIdentity, Map<String, LearningGoal> canonicalGoals,
+            Set<String> scopeTargetIds, Set<String> level2TargetIds) {
+        if (!catalog.available()) throw new IllegalStateException("Completion curriculum generation is unavailable");
+        if (canonicalGraphIdentity == null || canonicalGraphIdentity.isBlank()) {
+            throw new IllegalArgumentException("A pinned canonical graph identity is required");
+        }
+        if (definition == null || definition.id() == null || !definition.id().startsWith("automatic:")
+                || definition.id().length() == "automatic:".length()) {
+            throw new IllegalArgumentException("An automatic scope identity is required");
+        }
+        Set<String> targets = Set.copyOf(java.util.Objects.requireNonNull(scopeTargetIds));
+        if (level2TargetIds == null || !level2TargetIds.containsAll(targets)) throw new ScopeNotApplicableException();
+        AutomaticCacheKey key = new AutomaticCacheKey(definition, catalog.generation(), canonicalGraphIdentity,
+                AUTOMATIC_SEMANTICS_VERSION, targets);
+        CompiledCompletionProfile compiled = automaticCache.get(key);
+        telemetry.cacheRequest(CompletionTelemetry.CacheKind.COMPILED, compiled != null);
+        if (compiled != null) return compiled;
+        compiled = telemetry.timeCompile(() -> compiler.compileAutomaticProfile(
+                definition, canonicalGoals, targets, level2TargetIds, catalog.generation()));
+        if (compiled.expandedEdgeCount() > maximumEdges || compiled.contextGoalIds().size() > maximumNodes) {
+            throw new IllegalArgumentException("Automatic completion context exceeds the graph budget");
+        }
+        while (!automaticCache.isEmpty() && (automaticCache.size() >= maximumContexts
+                || automaticCachedEdges + compiled.expandedEdgeCount() > maximumEdges
+                || automaticCachedNodes + compiled.contextGoalIds().size() > maximumNodes)) {
+            CompiledCompletionProfile removed = automaticCache.remove(automaticCache.keySet().iterator().next());
+            automaticCachedEdges -= removed.expandedEdgeCount();
+            automaticCachedNodes -= removed.contextGoalIds().size();
+            telemetry.cacheEviction(CompletionTelemetry.CacheKind.COMPILED);
+        }
+        automaticCache.put(key, compiled);
+        automaticCachedEdges += compiled.expandedEdgeCount();
+        automaticCachedNodes += compiled.contextGoalIds().size();
+        recordCacheSize();
+        return compiled;
+    }
+
     public synchronized CompiledCompletionProfile compile(String profileId, String canonicalGraphIdentity,
             Map<String, LearningGoal> canonicalGoals, Set<String> level2TargetIds) {
         if (!catalog.available()) throw new IllegalStateException("Completion curriculum generation is unavailable");
@@ -123,8 +191,13 @@ public class CompletionApplicationService {
         cache.put(key, compiled);
         cachedEdges += compiled.expandedEdgeCount();
         cachedNodes += compiled.contextGoalIds().size();
-        telemetry.cacheSize(cache.size(), cachedNodes, cachedEdges);
+        recordCacheSize();
         return compiled;
+    }
+
+    private void recordCacheSize() {
+        telemetry.cacheSize(cache.size() + automaticCache.size(), cachedNodes + automaticCachedNodes,
+                cachedEdges + automaticCachedEdges);
     }
 
     public CompletionEvaluation evaluate(CompiledCompletionProfile profile, Map<String, Double> mastery) {
@@ -186,4 +259,6 @@ public class CompletionApplicationService {
     }
     private record CacheKey(String id, String revision, String scopeRevision, String generation,
                             String canonicalGraphIdentity, String resolverSemanticsVersion) { }
+    private record AutomaticCacheKey(CompletionProfileDefinition definition, String generation,
+            String canonicalGraphIdentity, String resolverSemanticsVersion, Set<String> targetGoalIds) { }
 }

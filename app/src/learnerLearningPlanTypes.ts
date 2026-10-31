@@ -113,6 +113,8 @@ export interface LearnerPlanSubjectStatus {
   targetGoalCount?: number | null
   /** Backend-localized short balance wording for the dial; absent on older responses. */
   balanceDialText?: string | null
+  /** Backend-localized explanation of plan credits, shown only in plan details. */
+  planCreditText?: string | null
   /** Selected exam or learning scope; absent on older responses. */
   learningScope?: LearnerPlanLearningScope | null
   current: boolean

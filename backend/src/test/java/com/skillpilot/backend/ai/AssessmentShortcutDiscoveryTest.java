@@ -62,6 +62,31 @@ class AssessmentShortcutDiscoveryTest {
                 .isEqualTo("https://skillpilot.com/learner/exam%200%26token%3Dsecret?completionShortcuts=1");
     }
 
+    @Test
+    void automaticOverviewPermitsFreshClaudeRecoveryButNeverTreatsAnOwnedRouteAsDiscovery() {
+        for (String notice : java.util.Arrays.asList(null, "completion_coach_contract_unsupported")) {
+            var overview = offer("valid", "automatic:personal-curriculum", notice,
+                    List.of(assessment("exam", false, true)));
+            var recovery = AssessmentShortcutDiscovery.project(overview, null, "de");
+            assertThat(recovery).isNotNull();
+            assertThat(recovery.options()).hasSize(1);
+            var selected = new LevelCompletionResponse(overview.calculationStatus(), overview.contextRef(),
+                    overview.profileId(), overview.profileRevision(), overview.curriculumGeneration(), overview.learnerRevision(),
+                    overview.title(), overview.complete(), 0, 0, 0, 0, 0, 0, List.of(), List.of(),
+                    overview.profileOptions(), "required", false, notice, List.of());
+            assertThat(AssessmentShortcutDiscovery.project(selected, null, "de")).isNull();
+        }
+        assertThat(AssessmentShortcutDiscovery.project(offer("valid", "automatic:personal-curriculum",
+                "completion_scope_changed", List.of(assessment("exam", false, true))), null, "de")).isNull();
+    }
+
+    @Test
+    void automaticOptOutKeepsTheCalculationButPublishesNoRecoveryChoices() {
+        var overview = offer("valid", "automatic:personal-curriculum", null,
+                List.of(assessment("exam", false, false)));
+        assertThat(AssessmentShortcutDiscovery.project(overview, null, "de")).isNull();
+    }
+
     private static LevelCompletionResponse.Assessment assessment(String id, boolean mastered, boolean available) {
         return new LevelCompletionResponse.Assessment(id, TITLE, mastered, available, null);
     }

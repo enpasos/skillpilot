@@ -155,12 +155,14 @@ Dabei sind
 Mehrere Elternpfade addieren Anforderungen als Mengenvereinigung, ohne
 Mehrfachzählung. \emph{Vererbung} in \eqref{eq:effective} und
 \emph{transitive Hülle} $\Reff^+$ sind verschiedene Operationen.
-Die Anforderungen von Voraussetzungen werden durch Pfade geprüft,
-nicht durch ein neues Vererbungsprinzip.
+Die transitive Hülle beschreibt statische Pfaderreichbarkeit im Graphen.
+Laufzeitverfügbarkeit prüft dagegen direkte effektive Anforderungen;
+Cluster werden über ihre atomare Basis erfüllt. Mastery einer Voraussetzung
+beendet deren eigenen Bedarf, statt weitere Pfadglieder nachzufordern.
 
 Sind alle direkten Anforderungen atomar verfasst, gilt $\Reff=R$:
 Containment-Vorfahren sind Cluster und tragen dann keine ausgehenden
-Anforderungen. Transitive Ketten bleiben trotzdem relevant.
+Anforderungen. Transitive Ketten bleiben als Graphstruktur relevant.
 
 \sourcefig{04-effective-requires.png}
 {Eine Cluster-Anforderung wird vererbt. \emph{Vectors} liegt in diesem
@@ -182,29 +184,18 @@ erfüllt sind:
  &(g,p)\in R\Longrightarrow
       \nexists a\in\Anc(g):(a,p)\in R.\label{eq:localmin}
 \end{align}
-Zusätzlich gilt \emph{transitive Minimalität}. Für jede direkte Kante
-$e=(g,p)\in R$ wird $R'=R\setminus\{e\}$ gebildet und die effektive
-Relation $\Reff'$ aus $C,R'$ vollständig neu berechnet. Gefordert ist
-\begin{equation}
- (g,p)\notin(\Reff')^+.
- \label{eq:transmin}
-\end{equation}
-Die direkte Kante muss also für die effektive Erreichbarkeit notwendig sein.
-Nur die sichtbare Kante aus $\Reff$ zu löschen wäre falsch: Mit ihr können
-auch von ihr abgeleitete Vererbungen entfallen.
+Die frühere Pflicht zur \emph{transitiven Minimalität} entfällt mit der
+Abschlussentscheidung vom 31. Oktober 2026. In $C\to B\to A$ beendet Mastery
+von B den Bedarf an A; eine zusätzliche Kante $C\to A$ bleibt dagegen eine
+eigene Anforderung. Eine Kante darf deshalb nicht allein aufgrund unveränderter
+Erreichbarkeit entfernt werden. Identisch geerbte direkte Paare bleiben lokal
+redundant; Zyklen bleiben unzulässig.
 
 Die DAG-Bedingung für $R$ folgt bereits aus derjenigen für $\Reff$, weil
 $R\subseteq\Reff$. Sie bleibt als verständliche eigenständige
 Autorenprüfung aufgeführt. Unabhängig davon bleibt die Azyklizität von $C$
 erforderlich. Identitäten und Referenzen müssen auflösbar sein; unbekannte
 Knoten sind keine erfüllten Voraussetzungen.
-
-Auch lokale Minimalität~\eqref{eq:localmin} folgt bereits aus
-transitiver Minimalität~\eqref{eq:transmin}: Bei azyklischem $C$ ist jeder
-Vorfahr $a$ von $g$ verschieden von $g$. Eine redundante Kante $(g,p)$
-zu entfernen lässt daher die Vorfahrenkante $(a,p)$ bestehen;
-$(g,p)$ bliebe in $\Reff'$ und somit in $(\Reff')^+$.
-Die lokale Bedingung bleibt als einfach prüfbarer Autorenhinweis ausdrücklich genannt.
 
 \sourcefig{05-validity-and-cycles.png}
 {Direkte Azyklizität genügt nicht. Aus $A$ enthält $B$ und $A$ benötigt $X$
@@ -303,10 +294,11 @@ berechtigt nicht zum pauschalen Schreiben von Nachweisen seiner Kinder.
 Die Menge der nächsten verfügbaren atomaren Ziele lautet
 \begin{equation}
  \Frontier(M_A)=\left\{g\in A\setminus M_A\;\middle|\;
- \forall p\in G:\ (g,p)\in\Reff^+\Rightarrow\Sat(p,M_A)\right\}.
+ \forall p\in G:\ (g,p)\in\Reff\Rightarrow\Sat(p,M_A)\right\}.
  \label{eq:frontier}
 \end{equation}
-Sie fordert sämtliche transitiv erreichbaren Voraussetzungen. Ein teilweise
+Sie fordert die direkten effektiven Voraussetzungen. An gemeisterten
+Voraussetzungen endet die weitere Bedarfsverfolgung. Ein teilweise
 bearbeitetes Ziel ist nicht schon deshalb erfüllt. Ein Cluster als
 Voraussetzung wird über seine atomare Basis geprüft.
 
@@ -315,7 +307,7 @@ Für Navigation kann getrennt eine Clusterverfügbarkeit definiert werden:
  \begin{split}
  \Frontier_K(M_A)=\{k\in K\mid&\ \Atoms(k)\ne\varnothing,
  \ \neg\Sat(k,M_A),\\
- &\forall p\in G:\ (k,p)\in\Reff^+\Rightarrow\Sat(p,M_A)\}.
+ &\forall p\in G:\ (k,p)\in\Reff\Rightarrow\Sat(p,M_A)\}.
  \end{split}
 \end{equation}
 Sie ersetzt die atomare Lernfrontier nicht. Eine Oberfläche kann darüber
@@ -416,7 +408,7 @@ Kompetenz und verändert keinen gespeicherten Lernzustand. Die Frontier ist
  \begin{split}
  \Frontier_{\mathrm{opt}}(M_A,F)=\{g\in A_F\setminus M_A\mid
  \forall p\in G_F:\quad\\
- (g,p)\in(\Reff|_F)^+\Rightarrow\Sat_F(p,M_A)\}.
+ (g,p)\in(\Reff|_F)\Rightarrow\Sat_F(p,M_A)\}.
  \end{split}
 \end{equation}
 Im strikten Modus bleiben die Kandidaten im Fokus, die Anforderungen
@@ -424,21 +416,20 @@ werden jedoch global geprüft:
 \begin{equation}
  \Frontier_{\mathrm{strict}}(M_A,F)=
  \{g\in A_F\setminus M_A\mid
- \forall p\in G:\ (g,p)\in\Reff^+\Rightarrow\Sat(p,M_A)\}.
+ \forall p\in G:\ (g,p)\in\Reff\Rightarrow\Sat(p,M_A)\}.
 \end{equation}
 Somit gilt für dieselben Eingaben
 \[
  \Frontier_{\mathrm{strict}}(M_A,F)\subseteq
  \Frontier_{\mathrm{opt}}(M_A,F).
 \]
-Jeder eingeschränkte Pfad ist ein globaler Pfad; globale Erfüllung impliziert
+Jede eingeschränkte direkte Anforderung ist auch eine globale Anforderung; globale Erfüllung impliziert
 die relative Erfüllung. Der umgekehrte Schluss gilt nicht.
 
-Auch \emph{Hülle und Einschränkung} sind nicht vertauschbar. Bei
-$g\to x\to p$ und $G_F=\{g,p\}$ existiert kein Pfad in
-$(\Reff|_F)^+$. Die globale Hülle enthält trotzdem $(g,p)$.
-Normalmodus schließt hier die über $x$ laufende Kette aus; strikter Modus
-behält sie bei. Das ist die definierte Scope-Semantik.
+Bei $g\to x\to p$ und $G_F=\{g,p\}$ ignoriert der Normalmodus
+die außerhalb liegende direkte Voraussetzung x. Der strikte Modus prüft x
+global. Ist x gemeistert, verlangt auch er nicht zusätzlich p:
+Mastery beendet die weitere Bedarfsverfolgung in beiden Modi.
 
 \sourcefig{07-filter-modes.png}
 {Identischer Fokus, unterschiedlicher Prüfbereich. \emph{Vectors} liegt
@@ -450,9 +441,9 @@ englischen Quellspezifikation.}
 \FloatBarrier
 
 \subsection{Fehlende Voraussetzungen und fehlende Atome}
-Die globale Diagnose trennt benötigte Knoten und noch offene Zielatome:
+Die globale Diagnose trennt unmittelbar benötigte Knoten und deren noch offene Zielatome:
 \begin{align}
- \Missing(g,M_A)&=\{p\in G\mid(g,p)\in\Reff^+\land\neg\Sat(p,M_A)\},\\
+ \Missing(g,M_A)&=\{p\in G\mid(g,p)\in\Reff\land\neg\Sat(p,M_A)\},\\
  \MissingAtoms(g,M_A)&=
  \left(\bigcup_{p\in \Missing(g,M_A)}\Atoms(p)\right)\setminus M_A.
 \end{align}
@@ -469,11 +460,14 @@ des Normalmodus noch eine Frontier und erzeugt keine Kanten.
 Ein optionaler Prüfbereich $S\subseteq G$ ergibt
 \begin{equation}
  \Frontier_{S}(M_A,F)=\{g\in A_F\setminus M_A\mid
- \forall p\in S:\ (g,p)\in\Reff^+\Rightarrow\Sat(p,M_A)\}.
+ \forall p\in S:\ (g,p)\in\Reff\Rightarrow\Sat(p,M_A)\}.
 \end{equation}
 $S=G$ ergibt den strikten Modus, $S=G_F$ im Allgemeinen \emph{nicht} den
-Normalmodus: Pfade und Erfüllung bleiben global. Dieses abgeschwächte
-strikte Profil ist ein Modellvorschlag, keine aktivierte dritte Betriebsart.
+Normalmodus: Die Erfüllung erforderlicher Cluster verwendet weiterhin ihre
+globale atomare Basis statt der auf den Fokus eingeschränkten Basis.
+Es werden auch hier direkte effektive Anforderungen geprüft, keine zusätzliche
+transitive Hülle. Dieses abgeschwächte strikte Profil ist ein Modellvorschlag,
+keine aktivierte dritte Betriebsart.
 
 \noindent\small Quellen dieses Teils:
 \srcref{docs/concept/skill-graph/graph-definition.md}{Graph Definition};

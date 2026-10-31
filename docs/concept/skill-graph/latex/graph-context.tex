@@ -238,7 +238,9 @@ des aktuellen Fokus vorgeschlagen. Eine leere Frontier kann auch einen
 blockierten, unvollständigen Fokus bedeuten. Sie beweist keinen
 Abschluss. Nach der Ausweitung werden neu enthaltene, unbeherrschte
 Voraussetzungen regulär geprüft: Die Beherrschung eines abhängigen Ziels
-überträgt sich nicht rückwärts auf sie.
+überträgt keine Mastery rückwärts. Ihre Erforderlichkeit wird aus dem
+vollständigen Bedarfskontext neu berechnet; rein implizit erledigte
+Erweiterungen begründen keinen neuen Pflichtvorschlag.
 
 \paragraph{Quellen.}
 \srcref{docs/concept/levels-of-personalization.md}{Personalisierungsstufen};
@@ -350,7 +352,7 @@ Ein fehlgeschlagener erneuter Abruf kann sie hingegen zurücknehmen.
 Dokumentierte Sollsemantik und aktueller Code sind damit nicht
 deckungsgleich; dieses Kompendium trifft keine stillschweigende
 Migrationsentscheidung. Die Abweichung ist einmal im Zieltypvertrag
-aufzulösen. Das Abschlussprofil verwendet anschließend dasselbe binäre
+aufzulösen. Die allgemeine Abschlussberechnung verwendet dasselbe binäre
 Zielergebnis wie die übrigen Oberflächen; es führt keine eigene
 Anerkennung von Memorier-Mastery ein. Fällige Übung bleibt eine
 Prozessaussage über die Karten.
@@ -386,10 +388,13 @@ Die Punktevergabe folgt den einzelnen Rastervorgaben. Die
 Gesamtsummenformel allein legitimiert keine frei erfundenen
 Punkte, negativen Bewertungen oder Änderungen des Aufgabeninhalts.
 
-Der bestehende Prüfungszugang wird durch Voraussetzungen gesteuert.
-Die direkte Prüfung eines noch nicht freigeschalteten Ziels ist eine
-gesonderte vorgeschlagene Erweiterung des Abschlussprofils, keine
-bereits aus dieser Typdefinition folgende Ausnahme.
+Der normale Lernzugang prüft direkte effektive Voraussetzungen einschließlich
+der atomaren Erfüllung erforderlicher Cluster. Für Prüfungen gilt zusätzlich
+der allgemeine direkte Zugang: Fehlende Vorbereitungsmastery sperrt einen
+bewusst gewählten Prüfungsversuch nicht. Aufgabenverfügbarkeit, persönlicher
+Geltungsbereich und autorisierte Sitzung bleiben erforderlich. Dieser Zugang
+ist lokal implementiert; tatsächliches Deployment und Coach-Abnahme sind
+getrennt nachzuweisen.
 
 Im Prüfungsmodus erhält die Person die vollständige, unveränderte Aufgabe
 und bearbeitet sie ohne inhaltliche Hilfen. Ihre vollständige Einreichung
@@ -402,8 +407,10 @@ Nach der Bewertung erhält die Person Ergebnis, Punkte, Begründung und
 Lösung; neues Material beginnt nach ihrer weiteren Entscheidung. Die
 unbegrenzte Wiederholung derselben Aufgabe bleibt möglich. Bekannte Lösungen
 können die Aussagekraft eines Versuchs verringern, erzeugen aber keine zweite
-Anerkennungsstufe: Vorhandene Prüfungs-Mastery zählt im vorgeschlagenen
-Abschlussprofil unmittelbar. Entfallende Vorbereitung wird daraus berechnet.
+Anerkennungsstufe: Vorhandene Prüfungs-Mastery zählt unmittelbar in der
+allgemeinen Abschlussberechnung. Entfallende Arbeit wird aus dem vollständigen
+Bedarfsgraphen und der Mastery aller Zielarten abgeleitet, nicht ausschließlich
+aus bestandenen Prüfungen.
 
 \paragraph{Quellen.}
 \srcref{docs/concept/skill-graph/node-types.md}{Zieltypen und Prüfungsablauf};

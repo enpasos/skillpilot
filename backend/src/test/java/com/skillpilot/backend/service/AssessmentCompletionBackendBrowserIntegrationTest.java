@@ -52,8 +52,6 @@ import java.nio.file.attribute.PosixFilePermissions;
         ClaudeV1TestProperties.ENABLED, ClaudeV1TestProperties.SIGNING_SECRET,
         ClaudeV1TestProperties.CAPABILITY_SECRET, ClaudeV1TestProperties.BETA_DISABLED,
         "server.address=127.0.0.1",
-        "skillpilot.completion.enabled=true",
-        "skillpilot.completion.enabled-profile-ids=math-dot-product-projection",
         "spring.datasource.url=jdbc:h2:mem:completion-backend-browser;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=VALUE;LOCK_TIMEOUT=30000",
         "spring.jpa.show-sql=false"
 })
@@ -61,6 +59,10 @@ import java.nio.file.attribute.PosixFilePermissions;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 @EnabledIfEnvironmentVariable(named = "SKILLPILOT_COMPLETION_BACKEND_BROWSER", matches = "true")
 class AssessmentCompletionBackendBrowserIntegrationTest {
+    private static final String PROFILE = "automatic:personal-curriculum";
+    // The real 916-target / 139-assessment scope measured 175,890 bytes on
+    // 2026-10-31. 256 KiB leaves about 49% reserve while retaining a fixed gate.
+    private static final int COMPLETION_PAYLOAD_BUDGET = 256 * 1024;
     private static final String ROOT = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String MATH = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String PREPARATION = "3016ec37-1c2e-47db-83f5-e767923bc97e";
@@ -83,10 +85,15 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
                     .timeout(Duration.ofSeconds(60)).GET().build(), HttpResponse.BodyHandlers.ofByteArray());
             assertThat(previewResponse.statusCode()).isEqualTo(200);
             JsonNode preview = mapper.readTree(previewResponse.body()).path("levelCompletion");
-            assertThat(preview.path("profileId").isMissingNode() || preview.path("profileId").isNull()).isTrue();
-            JsonNode option = preview.path("profileOptions").get(0);
-            assertThat(option.path("assessments").get(0).path("goalId").asText()).isEqualTo(EXAM);
-            assertThat(option.path("assessments").get(0).path("startAvailable").asBoolean()).isTrue();
+            assertThat(preview.path("profileId").asText()).isEqualTo(PROFILE);
+            assertThat(preview.path("calculationStatus").asText()).isEqualTo("valid");
+            assertThat(preview.hasNonNull("navigationIntent")).isFalse();
+            JsonNode option = java.util.stream.StreamSupport.stream(preview.path("profileOptions").spliterator(), false)
+                    .filter(entry -> PROFILE.equals(entry.path("profileId").asText())).findFirst().orElseThrow();
+            assertThat(option.path("assessments").size()).isGreaterThan(24);
+            JsonNode assessment = java.util.stream.StreamSupport.stream(option.path("assessments").spliterator(), false)
+                    .filter(entry -> EXAM.equals(entry.path("goalId").asText())).findFirst().orElseThrow();
+            assertThat(assessment.path("startAvailable").asBoolean()).isTrue();
             assertThat(learners.findById(id).orElseThrow().getCompletionWorkflow()).isNull();
             long revision = preview.path("learnerRevision").asLong();
             var launch = HttpRequest.newBuilder(base.resolve("claude/v1/launch"))
@@ -97,7 +104,10 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
                                     "goalId", EXAM, "expectedRevision", revision))))).build();
             var response = client.send(launch, HttpResponse.BodyHandlers.ofByteArray());
             assertThat(response.statusCode()).isEqualTo(200);
-            assertThat(mapper.readTree(response.body()).path("prompt").asText()).contains("level-completion context");
+            JsonNode launchResult = mapper.readTree(response.body());
+            assertThat(launchResult.path("prompt").asText()).isEqualTo(
+                    "Nutze den SkillPilot-Coach-Skill und lerne mit meinem aktuellen SkillPilot-Lernkontext weiter."
+                            + "\nlearningSessionId: " + launchResult.path("learningSessionId").asText());
             Learner persisted = learners.findById(id).orElseThrow();
             assertThat(persisted.getActiveGoalId()).isEqualTo(EXAM);
             assertThat(persisted.getCoachStateRevision()).isEqualTo(revision + 1);
@@ -133,7 +143,7 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
         // a real committed session, not only correctly rendered JSON payloads.
         Learner persisted = learners.findById(id).orElseThrow();
         CompletionWorkflowState workflow = mapper.readValue(persisted.getCompletionWorkflow(), CompletionWorkflowState.class);
-        assertThat(workflow.profileId()).isEqualTo("math-dot-product-projection");
+        assertThat(workflow.profileId()).isEqualTo(PROFILE);
         assertThat(workflow.directAssessment()).isNotNull();
         assertThat(workflow.directAssessment().provider()).isEqualTo("claude");
         assertThat(workflow.directAssessment().goalId()).isEqualTo(EXAM);
@@ -185,7 +195,8 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
                         "evaluationCapability", evaluation.path("evaluationCapability").asText(),
                         "expectedStateVersion", current.path("stateVersion").asLong(),
                         "clientRequestId", UUID.randomUUID().toString()));
-                assertThat(saved.path("context").path("levelCompletion").path("complete").asBoolean()).isTrue();
+                assertThat(saved.path("context").path("levelCompletion").path("complete").asBoolean()).isFalse();
+                assertThat(learnerService.getLearnerState(id).levelCompletion().masteredAssessmentCount()).isEqualTo(1);
             } finally { SecurityContextHolder.clearContext(); }
             Files.writeString(ipc.resolve("result-ready"), "confirmed");
             browser.assertSuccessful();
@@ -200,7 +211,8 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
         assertThat(mastery.findByLearner_SkillpilotId(id)).singleElement().satisfies(result -> {
             assertThat(result.getGoalKey()).isEqualTo(EXAM); assertThat(result.getValue()).isEqualTo(1.0);
         });
-        assertThat(learnerService.getLearnerState(id).levelCompletion().complete()).isTrue();
+        assertThat(learnerService.getLearnerState(id).levelCompletion().complete()).isFalse();
+        assertThat(learnerService.getLearnerState(id).levelCompletion().masteredAssessmentCount()).isEqualTo(1);
         assertThat(learnerService.getLearnerState(id).levelCompletion().navigationIntent()).isEqualTo("paused");
         assertThat(learners.findById(id).orElseThrow().getActiveGoalId()).isNull();
         assertThat(focus.findByLearner_SkillpilotId(id)).extracting(PlannedGoal::getGoalId).containsExactly(PREPARATION);
@@ -224,7 +236,7 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
             var select = HttpRequest.newBuilder(URI.create("http://127.0.0.1:" + port + "/api/ui/learners/" + id + "/level-completion/actions"))
                     .timeout(Duration.ofSeconds(60)).header("Content-Type", "application/json")
                     .POST(HttpRequest.BodyPublishers.ofString(mapper.writeValueAsString(Map.of(
-                            "action", "selectProfile", "profileId", "math-dot-product-projection", "expectedRevision", revision))))
+                            "action", "selectProfile", "profileId", PROFILE, "expectedRevision", revision))))
                     .build();
             assertThat(client.send(select, HttpResponse.BodyHandlers.ofByteArray()).statusCode()).isEqualTo(200);
             var profiled = sampleState(client, stateUrl, true);
@@ -234,8 +246,8 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
             report.put("recordedAt", Instant.now().toString());
             report.put("transport", "real-loopback-http");
             report.put("database", "isolated H2, ordinary production repositories; PostgreSQL snapshot semantics tested separately");
-            report.put("method", "3 warmups then 30 sequential GET /state requests per condition, no-profile then profile, same learner/focus, autoPilot=false, strictMode=true; no network TLS");
-            report.put("limitations", "One local process and one canonical pilot; order/JIT/GC effects remain. Difference of p95 values is observational, not a paired causal estimate. No host acceptance or production capacity claim.");
+            report.put("method", "3 warmups then 30 sequential GET /state requests per condition, automatic overview then explicit full-curriculum route, same learner/focus, autoPilot=false, strictMode=true; no network TLS");
+            report.put("limitations", "One local process and one full canonical Mathematics Personal Curriculum; order/JIT/GC effects remain. Difference of p95 values is observational, not a paired causal estimate. No host acceptance or production capacity claim.");
             report.put("learnerSetup", Map.of("root", ROOT, "subject", MATH, "region", "DE-HE", "stage", "CrossStage",
                     "durationModel", "G9", "courseProfile", "GK+LK", "focus", List.of(PREPARATION), "masteryRows", 0));
             report.put("profileId", last.path("levelCompletion").path("profileId").asText());
@@ -251,7 +263,7 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
             report.put("additionalP95WithinInformationalBudget", delta <= 100);
             int projectionBytes = mapper.writeValueAsBytes(last.path("levelCompletion")).length;
             report.put("levelCompletionJsonBytes", projectionBytes);
-            report.put("levelCompletionBudgetBytes", 8192);
+            report.put("levelCompletionBudgetBytes", COMPLETION_PAYLOAD_BUDGET);
             report.put("fullResponseBytesDelta", ((Number) profiled.get("lastResponseBytes")).intValue()
                     - ((Number) baseline.get("lastResponseBytes")).intValue());
             var environment = new LinkedHashMap<String, Object>();
@@ -269,7 +281,8 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
             Path output = Path.of("../tmp/level-completion-backend-browser/http-performance.json");
             Files.createDirectories(output.getParent());
             Files.writeString(output, mapper.writerWithDefaultPrettyPrinter().writeValueAsString(report));
-            assertThat(projectionBytes).as("Compact real pilot projection stays within the static payload budget").isLessThan(8192);
+            assertThat(projectionBytes).as("Full Personal Curriculum projection stays within its measured payload budget")
+                    .isLessThan(COMPLETION_PAYLOAD_BUDGET);
         }
         assertThat(mastery.findByLearner_SkillpilotId(id)).isEmpty();
         assertThat(focus.findByLearner_SkillpilotId(id)).extracting(PlannedGoal::getGoalId).containsExactly(PREPARATION);
@@ -287,7 +300,9 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
             double elapsed = (System.nanoTime() - start) / 1_000_000.0;
             assertThat(response.statusCode()).isEqualTo(200);
             last = mapper.readTree(response.body());
-            assertThat(last.path("levelCompletion").path("calculationStatus").asText()).isEqualTo(profiled ? "valid" : "unresolved");
+            assertThat(last.path("levelCompletion").path("calculationStatus").asText()).isEqualTo("valid");
+            if (profiled) assertThat(last.path("levelCompletion").path("navigationIntent").asText()).isEqualTo("required");
+            else assertThat(last.path("levelCompletion").hasNonNull("navigationIntent")).isFalse();
             assertThat(last.path("levelCompletion").path("directAssessmentRunning").asBoolean()).isFalse();
             bytes = response.body().length;
             if (index >= 0) samples.add(elapsed);

@@ -8,6 +8,7 @@ import {
   completionAssessmentsForGoal,
   completionWaiversForTree,
   completionUnavailableReason,
+  hasActiveCompletionRoute,
   LevelCompletionApiError,
   parseLevelCompletion,
   readCompletionAssessmentStart,
@@ -72,10 +73,11 @@ for (const assessments of [
   [{ ...availableAssessment, mastered: true }],
   [{ ...availableAssessment, startAvailable: 'yes' }],
 ]) assert.throws(() => parseLevelCompletion({ ...valid, profileOptions: [{ ...profileOption, assessments }] }))
-assert.throws(() => parseLevelCompletion({ ...valid, profileOptions: [{ ...profileOption, targetCount: 30, requiredAssessmentCount: 30,
-  assessments: Array.from({ length: 25 }, (_, i) => ({ ...availableAssessment, goalId: `exam-${i}` })) }] }))
-assert.throws(() => parseLevelCompletion({ ...valid,
-  profileOptions: Array.from({ length: 25 }, (_, i) => ({ ...profileOption, profileId: `profile-${i}` })) }))
+assert.equal(parseLevelCompletion({ ...valid, profileOptions: [{ ...profileOption, targetCount: 30, requiredAssessmentCount: 30,
+  assessments: Array.from({ length: 30 }, (_, i) => ({ ...availableAssessment, goalId: `exam-${i}` })) }] })?.profileOptions[0].assessments?.length, 30,
+  'Cockpit choices are complete; provider-specific output limits do not truncate its assessment list')
+assert.equal(parseLevelCompletion({ ...valid,
+  profileOptions: Array.from({ length: 30 }, (_, i) => ({ ...profileOption, profileId: `profile-${i}` })) })?.profileOptions.length, 30)
 for (const changes of [{ requiredAssessmentCount: 3 }, { requiredAssessmentCount: null }, { targetCount: -1 }]) {
   assert.throws(() => parseLevelCompletion({ ...valid, profileOptions: [{ ...profileOption, ...changes }] }))
 }
@@ -85,6 +87,43 @@ assert.deepEqual(parseLevelCompletion({ ...valid, waiverDetails: [explanation] }
 assert.throws(() => parseLevelCompletion({ ...valid, waiverDetails: [{ ...explanation, goalId: 'outside-scope' }] }))
 assert.throws(() => parseLevelCompletion({ ...valid, waiverDetails: [{ ...explanation, assessmentCount: 0 }] }))
 assert.throws(() => parseLevelCompletion({ ...valid, waiverDetails: [explanation, explanation] }))
+
+const implicit = parseLevelCompletion({ ...valid, profileId: 'automatic:personal-curriculum',
+  masteredTargetCount: 0, waivedTargetCount: 1500, targetCount: 1500,
+  requiredAssessmentCount: 0, masteredAssessmentCount: 0, assessments: [],
+  waivedTargetGoalIds: Array.from({ length: 1500 }, (_, i) => `implicit-${i}`),
+  waiverDetails: [{ goalId: 'implicit-0', title: { de: 'Nicht mehr benötigtes Ziel' },
+    ruleId: 'no_remaining_demand', assessments: [], assessmentCount: 0 }],
+  profileOptions: [{ profileId: 'automatic:section', title: { de: 'Abschnitt ohne Abschlussprüfung' },
+    targetCount: 2, requiredAssessmentCount: 0, assessments: [] }],
+})!
+assert.equal(implicit.complete, true, 'an automatic scope may have no completion assessments')
+assert.equal(hasActiveCompletionRoute(implicit), false, 'a read-only automatic evaluation does not own navigation')
+assert.equal(hasActiveCompletionRoute({ ...implicit, navigationIntent: 'required' }), true)
+assert.equal(hasActiveCompletionRoute({ ...implicit, navigationIntent: 'paused' }), true)
+assert.equal(hasActiveCompletionRoute({ ...implicit, directAssessmentRunning: true }), true)
+assert.equal(hasActiveCompletionRoute(treeCompletion), true, 'legacy selected profiles retain their route semantics')
+assert.equal(hasActiveCompletionRoute(null), false)
+assert.equal(completionWaiversForTree(implicit, false).size, 1500, 'the full scope remains annotatable beyond old preview limits')
+assert.equal(completionWaiversForTree(implicit, false).get('implicit-1499')?.reason, 'no_remaining_demand',
+  'automatic scope annotations never invent assessment coverage when details are bounded')
+assert.deepEqual(completionWaiversForTree(implicit, false).get('implicit-0')?.assessments, [])
+assert.throws(() => parseLevelCompletion({ ...implicit, waiverDetails: [{ ...implicit.waiverDetails![0],
+  assessments: [{ goalId: 'Q', title: { de: 'Erfundene Prüfung' } }] }] }),
+  'zero supporting assessments cannot claim an assessment title')
+
+const supportAssessments = [1, 2].map(index => ({ goalId: `support-exam-${index}`, title: { de: `Prüfung ${index}` },
+  mastered: false, startAvailable: false, unavailableReason: 'assessment_outside_personal_curriculum' }))
+const externalAssessmentScope = parseLevelCompletion({ ...valid, profileId: 'automatic:small-section', complete: false,
+  masteredTargetCount: 0, waivedTargetCount: 0, pendingTargetCount: 1, targetCount: 1, waivedTargetGoalIds: [],
+  masteredAssessmentCount: 0, requiredAssessmentCount: 2, assessments: supportAssessments,
+  profileOptions: [{ profileId: 'automatic:small-section', title: { de: 'Kleiner Abschnitt' }, targetCount: 1,
+    requiredAssessmentCount: 2, assessments: supportAssessments }] })!
+assert.equal(externalAssessmentScope.requiredAssessmentCount, 2,
+  'assessment obligations may belong to the full prerequisite context beyond the counted targets')
+assert.equal(externalAssessmentScope.profileOptions[0].requiredAssessmentCount, 2)
+assert.match(completionUnavailableReason('assessment_outside_personal_curriculum', 'de'), /außerhalb deines Personal Curriculums/u)
+assert.match(completionUnavailableReason('assessment_outside_personal_curriculum', 'en'), /outside your Personal Curriculum/u)
 
 const choice = { profileId: 'profile:math', goalId: 'goal/1', expectedRevision: 4 }
 const handoffSearch = '?completionShortcuts=1&learnerId=private&token=private&completionRevision=4&completionProfile=old&completionGoal=old'

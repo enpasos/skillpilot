@@ -3,7 +3,7 @@ import { mkdir, readFile, realpath, rename, stat, writeFile } from 'node:fs/prom
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
-import { chromium, type Browser } from 'playwright'
+import { chromium, type Browser, type Locator } from 'playwright'
 import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
 import { startViteTestServer } from './viteTestServer'
 
@@ -18,7 +18,7 @@ assert.equal(backend.pathname, '/')
 assert.equal(backend.username + backend.password + backend.search + backend.hash, '')
 const learner = process.env.SKILLPILOT_COMPLETION_BROWSER_LEARNER ?? ''
 assert.match(learner, /^completion-browser-[a-f0-9-]{36}$/u)
-const profileId = 'math-dot-product-projection'
+const profileId = 'automatic:personal-curriculum'
 const rootId = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
 const examId = 'e98672c6-871a-5d0b-889c-5afc51040f0d'
 const learnerPath = `/api/ui/learners/${learner}`
@@ -26,15 +26,38 @@ const state = async () => {
   const response = await fetch(new URL(`${learnerPath}/state`, backend), { redirect: 'error' })
   assert.equal(response.status, 200)
   const snapshot = await response.json()
-  assert.ok(Buffer.byteLength(JSON.stringify(snapshot.levelCompletion), 'utf8') <= 8192,
-    'every exercised pilot state must keep the additional standard projection within 8 KiB')
+  // Real 916-target / 139-assessment scope: 175,890 bytes measured 2026-10-31.
+  // Match the Java transport gate, with about 49% reserve for the full scope.
+  assert.ok(Buffer.byteLength(JSON.stringify(snapshot.levelCompletion), 'utf8') <= 256 * 1024,
+    'every exercised full-curriculum state must keep the projection within 256 KiB')
   return snapshot
 }
 const initial = await state()
-assert.equal(initial.levelCompletion.calculationStatus, 'unresolved')
+assert.equal(initial.levelCompletion.calculationStatus, 'valid')
+assert.equal(initial.levelCompletion.profileId, profileId)
+assert.equal(initial.levelCompletion.navigationIntent ?? null, null, 'the initial evaluation is read-only, not a selected route')
 const option = initial.levelCompletion.profileOptions.find((entry: { profileId: string }) => entry.profileId === profileId)
-assert.ok(option, 'The real enabled canonical pilot must be available')
+assert.ok(option, 'The real automatic Personal Curriculum scope must be available')
+assert.ok(initial.levelCompletion.assessments.length > 24, 'the real scope exposes its complete assessment list')
+const exam = initial.levelCompletion.assessments.find((entry: { goalId: string }) => entry.goalId === examId)
+assert.ok(exam?.startAvailable, 'the intended authored assessment must be directly available')
+const examTitle: string = exam.title.de
 const title: string = option.title.de
+const masteryText = (completion: { masteredTargetCount: number; targetCount: number }) =>
+  `${completion.masteredTargetCount} von ${completion.targetCount} Lernzielen direkt geschafft.`
+const assessmentText = (completion: { masteredAssessmentCount: number; requiredAssessmentCount: number }) =>
+  `Abschlussprüfungen: ${completion.masteredAssessmentCount} von ${completion.requiredAssessmentCount} geschafft.`
+const findExamRow = async (card: Locator) => {
+  const list = card.getByRole('list', { name: 'Prüfungen in diesem Abschnitt', exact: true })
+  await list.waitFor() // Wait for the selected route, not the preceding read-only search field.
+  await card.getByRole('searchbox', { name: 'Prüfung suchen', exact: true }).fill(examTitle)
+  const row = list.getByRole('listitem').filter({
+    has: card.page().getByRole('button', { name: `Im Lernzielbaum anzeigen: ${examTitle}`, exact: true }),
+  })
+  await row.waitFor()
+  assert.equal(await row.count(), 1, 'search resolves the intended exact backend assessment')
+  return row
+}
 const appRoot = fileURLToPath(new URL('../', import.meta.url))
 const output = fileURLToPath(new URL('../../tmp/level-completion-backend-browser/', import.meta.url))
 const resultMode = process.env.SKILLPILOT_COMPLETION_BROWSER_RESULT === 'true'
@@ -129,23 +152,29 @@ try {
   const parallel = await open(false)
   const card = mobile.page.getByTestId('level-completion-card')
   assert.equal(requests.filter((r) => r.path.endsWith('/level-completion/actions')).length, 0)
-  await card.getByText('2 Lernziele, davon 1 erforderliche Prüfung.', { exact: true }).waitFor()
+  await card.getByTestId('completion-default-overview').waitFor()
+  assert.equal(await card.getByText('Dein regulärer Lernplan ist pausiert', { exact: false }).count(), 0,
+    'read-only discovery does not pause the ordinary learning route')
   const profileChoice = card.getByRole('button', { name: `Abschnitt als Lernweg wählen: ${title}`, exact: true })
   await profileChoice.focus()
   assert.equal(await profileChoice.evaluate((element) => element === document.activeElement), true)
   const selectedResponse = mobile.page.waitForResponse((response) => response.url().endsWith('/level-completion/actions'))
   await mobile.page.keyboard.press('Enter')
   assert.equal((await selectedResponse).status(), 200)
-  await card.getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).waitFor()
+  const selectedExam = await findExamRow(card)
+  await selectedExam.getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).waitFor()
   const selected = await state()
   assert.equal(selected.levelCompletion.profileId, profileId)
-  assert.equal(selected.levelCompletion.targetCount, 2)
-  assert.equal(selected.levelCompletion.pendingTargetCount, 2)
+  assert.equal(selected.levelCompletion.navigationIntent, 'required')
+  assert.ok(selected.levelCompletion.targetCount > 2)
+  for (const count of ['targetCount', 'masteredTargetCount', 'waivedTargetCount', 'pendingTargetCount', 'requiredAssessmentCount']) {
+    assert.equal(selected.levelCompletion[count], initial.levelCompletion[count], 'scope selection alone does not alter the evaluated result')
+  }
   assert.equal(selected.levelCompletion.directAssessmentRunning, false)
   assert.ok(selected.levelCompletion.learnerRevision > initial.levelCompletion.learnerRevision)
   assert.equal(await mobile.page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), true)
   await mobile.page.screenshot({ path: `${output}/mobile-selected.png`, fullPage: true })
-  const titleOverlapsStart = await card.getByRole('list', { name: 'Erforderliche Prüfungen' }).locator('li').evaluateAll((items) => items.some((item) => {
+  const titleOverlapsStart = await card.getByRole('list', { name: 'Prüfungen in diesem Abschnitt' }).locator('li').evaluateAll((items) => items.some((item) => {
     const title = item.querySelector('div > span')
     const start = item.querySelector('a')
     if (!title || !start) return false
@@ -159,14 +188,15 @@ try {
   await parallel.page.getByTestId('level-completion-card').getByRole('button', { name: `Abschnitt als Lernweg wählen: ${title}`, exact: true }).click()
   assert.equal((await conflict).status(), 409, 'The second tab sends its actual old revision to the backend')
   await parallel.page.getByRole('alert').filter({ hasText: 'Deine Auswahl konnte nicht bestätigt werden' }).waitFor()
-  await parallel.page.getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).waitFor()
+  const refreshedParallelExam = await findExamRow(parallel.page.getByTestId('level-completion-card'))
+  await refreshedParallelExam.getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).waitFor()
   const afterConflict = await state()
   assert.deepEqual(afterConflict.levelCompletion, selected.levelCompletion, 'Conflict must preserve the latest backend completion state')
   assert.equal(requests.filter((r) => r.path.endsWith('/level-completion/actions') && r.status === 409).length, 1)
   await parallel.page.unrouteAll({ behavior: 'wait' })
   await parallel.context.close()
 
-  await card.getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).click()
+  await selectedExam.getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).click()
   const providers = mobile.page.getByTestId('coach-provider-choice')
   await providers.waitFor()
   assert.equal(await providers.getByRole('radio', { name: /Claude/u }).isChecked(), true)
@@ -210,7 +240,7 @@ try {
     const slow = mobile.holdState()
     await mobile.page.evaluate(() => document.dispatchEvent(new Event('visibilitychange')))
     await slow.held
-    assert.equal(await reloadedCard.getByText('0 von 2 Lernzielen geschafft.', { exact: true }).isVisible(), true,
+    assert.equal(await reloadedCard.getByText(masteryText(running.levelCompletion), { exact: true }).isVisible(), true,
       'delayed real requests keep the last authoritative snapshot visible')
     await mobile.page.waitForTimeout(1000) // A real slow transport, also beyond the UI event coalescing window.
     const released = mobile.page.waitForResponse((response) => new URL(response.url()).pathname === `${learnerPath}/state`)
@@ -225,7 +255,7 @@ try {
     await mobile.page.evaluate(() => document.dispatchEvent(new Event('visibilitychange')))
     await reloadedCard.getByText('Diese Ansicht ist veraltet.', { exact: false }).waitFor()
     await failedRefreshCompleted
-    assert.equal(await reloadedCard.getByText('0 von 2 Lernzielen geschafft.', { exact: true }).isVisible(), true)
+    assert.equal(await reloadedCard.getByText(masteryText(running.levelCompletion), { exact: true }).isVisible(), true)
     assert.equal(await reloadedCard.getByRole('button', { name: leaveTitle, exact: true }).isDisabled(), true,
       'a failed transport cannot leave stale mutations enabled')
     assert.equal((await state()).levelCompletion.learnerRevision, running.levelCompletion.learnerRevision)
@@ -253,15 +283,31 @@ try {
     assert.equal(resultReady, true, 'the parent must confirm the actual MCP write')
     await mobile.page.waitForTimeout(1000) // A learner returns to the tab after the completed conversation.
     await mobile.page.evaluate(() => document.dispatchEvent(new Event('visibilitychange')))
-    const completed = reloadedCard.getByRole('status').filter({ hasText: 'Lernabschnitt abgeschlossen.' })
-    await completed.waitFor()
-    assert.equal(await completed.getAttribute('role'), 'status', 'the confirmed result has a screenreader status region')
-    assert.equal(await reloadedCard.getByText('1 von 2 Lernzielen geschafft.', { exact: true }).isVisible(), true)
-    await reloadedCard.getByText('Warum entfällt diese Vorbereitung?', { exact: true }).click()
-    assert.equal(await reloadedCard.getByText('Definition des Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen', { exact: true }).isVisible(), true)
-    assert.equal(await reloadedCard.getByText('Geschaffte Prüfungen:', { exact: false }).isVisible(), true)
-    await mobile.page.screenshot({ path: `${output}/mobile-completed.png`, fullPage: true })
     const beforePause = await state()
+    assert.equal(beforePause.levelCompletion.complete, false, 'passing one exam cannot complete the whole Personal Curriculum')
+    assert.equal(beforePause.levelCompletion.masteredAssessmentCount, running.levelCompletion.masteredAssessmentCount + 1)
+    assert.equal(beforePause.levelCompletion.assessments.find((entry: { goalId: string }) => entry.goalId === examId)?.mastered, true)
+    const confirmed = reloadedCard.getByRole('status').filter({ hasText: assessmentText(beforePause.levelCompletion) })
+    await confirmed.waitFor()
+    assert.equal(await confirmed.getAttribute('role'), 'status', 'the confirmed individual assessment has a screenreader status region')
+    await reloadedCard.getByText(masteryText(beforePause.levelCompletion), { exact: true }).waitFor()
+    assert.equal(await reloadedCard.getByText('Lernabschnitt abgeschlossen.', { exact: true }).count(), 0)
+    const passedExam = await findExamRow(reloadedCard)
+    await passedExam.getByText('Geschafft', { exact: true }).waitFor()
+    assert.equal(await passedExam.getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).count(), 0)
+    // Explain an actually derived goal, not a presumed waiver for the former
+    // two-goal pilot: other open assessments may still need that preparation.
+    const waived = beforePause.levelCompletion.waiverDetails.find((detail: { ruleId: string }) => detail.ruleId === 'no_remaining_demand')
+    assert.ok(waived, 'the real canonical scope must expose a generic explanation for an actual implicit goal')
+    assert.ok(beforePause.levelCompletion.waivedTargetGoalIds.includes(waived.goalId))
+    assert.deepEqual(waived.assessments, [])
+    await reloadedCard.getByText('Warum sind diese Ziele implizit erledigt?', { exact: true }).click()
+    const explanation = reloadedCard.locator('details').getByRole('listitem').filter({
+      has: mobile.page.getByRole('button', { name: `Im Lernzielbaum anzeigen: ${waived.title.de}`, exact: true }),
+    })
+    await explanation.getByText('Keine verbleibende Arbeit benötigt dieses Ziel in diesem Abschnitt.', { exact: false }).waitFor()
+    assert.equal(await explanation.getByText('Geschaffte Prüfungen:', { exact: false }).count(), 0)
+    await mobile.page.screenshot({ path: `${output}/mobile-assessment-passed.png`, fullPage: true })
     const paused = mobile.page.waitForResponse((response) => response.url().endsWith('/level-completion/actions'))
     await reloadedCard.getByRole('button', { name: 'Für heute beenden', exact: true }).focus()
     await mobile.page.keyboard.press('Enter')
@@ -272,8 +318,11 @@ try {
     const afterPause = await state()
     assert.equal(afterPause.levelCompletion.profileId, profileId)
     assert.equal(afterPause.levelCompletion.navigationIntent, 'paused')
-    assert.equal(afterPause.levelCompletion.complete, true)
+    assert.equal(afterPause.levelCompletion.complete, false)
+    assert.equal(afterPause.levelCompletion.masteredAssessmentCount, beforePause.levelCompletion.masteredAssessmentCount)
     assert.equal(afterPause.levelCompletion.masteredTargetCount, 1)
+    assert.deepEqual(afterPause.levelCompletion.waivedTargetGoalIds, beforePause.levelCompletion.waivedTargetGoalIds,
+      'pausing navigation cannot alter the current derived implicit result')
     assert.equal(afterPause.levelCompletion.learnerRevision, beforePause.levelCompletion.learnerRevision + 1)
     assert.equal(afterPause.activeGoal, null)
   }
@@ -284,8 +333,8 @@ try {
     checks: ['keyboard-profile-choice', 'mobile-card', 'stale-parallel-choice-409', 'provider-session-start',
       'cockpit-reload-preserves-assessment', 'keyboard-exit-cancel-preserves-assessment'],
     resultChecks: resultMode ? ['real-delayed-state-read', 'real-aborted-state-read', 'reload-recovers-authoritative-state',
-      'actual-mcp-write-completes-section', 'accessible-confirmed-status', 'scoped-waiver-explanation',
-      'keyboard-pause-retains-profile-and-completion-after-reload'] : [],
+      'actual-mcp-write-passes-assessment-with-section-still-open', 'accessible-confirmed-status', 'scoped-waiver-explanation',
+      'keyboard-pause-retains-profile-and-results-after-reload'] : [],
     initialRevision: initial.levelCompletion.learnerRevision,
     selectedRevision: selected.levelCompletion.learnerRevision,
     runningRevision: running.levelCompletion.learnerRevision,

@@ -76,6 +76,138 @@ public class LearnerLearningPlanService {
     private final ApplicationEventPublisher eventPublisher;
     private final LandscapeService landscapeService;
     private final Clock clock;
+    private final com.skillpilot.backend.completion.LearningPlanCompletionProjection completionProjection =
+            new com.skillpilot.backend.completion.LearningPlanCompletionProjection();
+
+    /** Operation-local result: no learner outcome is retained in a shared cache. */
+    private record PlanFulfillment(Map<String, Set<String>> waivedByLandscape, Set<String> unavailable) {
+        Set<String> waived(String landscapeId) {
+            if (unavailable.contains(landscapeId)) {
+                throw conflict("Learning-plan completion calculation is currently unavailable");
+            }
+            return waivedByLandscape.getOrDefault(landscapeId, Set.of());
+        }
+    }
+
+    private PlanFulfillment planFulfillment(String learnerId, List<LearnerLearningPlan> planInputs,
+            Map<String, Double> mastery) {
+        Map<String, Set<String>> obligationsByLandscape = new LinkedHashMap<>();
+        Set<String> invalidObligations = new HashSet<>();
+        Set<String> invalid = new HashSet<>();
+        Map<String, Set<String>> obligationsBySubject = new LinkedHashMap<>();
+        for (var plan : planInputs) {
+            try {
+                List<LearnerLearningPlanApi.Block> blocks = readBlocks(plan);
+                obligationsByLandscape.put(plan.getLandscapeId(), atomicIds(blocks));
+                requireCurrentBlocks(learnerId, plan);
+                Set<String> obligations = new LinkedHashSet<>(atomicIds(blocks));
+                // Keep the authored obligation scope, including goals already mastered
+                // before G was captured. A later revocation must still block a waiver.
+                for (var block : blocks) {
+                    if (!block.isActive() || block.focusGoalIds().isEmpty()
+                            || !("learning".equals(block.kind()) || "milestone".equals(block.kind()))) continue;
+                    try {
+                        obligations.addAll(learners.resolveLearningPlanGoalIds(
+                                learnerId, plan.getLandscapeId(), block.focusGoalIds()));
+                    } catch (ResponseStatusException e) {
+                        if (block.goalIds() != null || e.getStatusCode().is5xxServerError()) throw e;
+                        // Historical single milestone labels were not authoritative scopes.
+                    }
+                }
+                obligationsByLandscape.put(plan.getLandscapeId(), Set.copyOf(obligations));
+                String subject = stableSubjectKey(plan.getLandscapeId());
+                if (subject == null) throw conflict("Learning-plan subject cannot be resolved");
+                obligationsBySubject.computeIfAbsent(subject, ignored -> new LinkedHashSet<>()).addAll(obligations);
+            } catch (RuntimeException e) {
+                invalidObligations.add(plan.getLandscapeId());
+            }
+        }
+        Map<String, Set<String>> waived = new LinkedHashMap<>();
+        Map<String, Set<String>> resolvedBySubject = new LinkedHashMap<>();
+        Set<String> unavailableSubjects = new HashSet<>();
+        com.skillpilot.backend.completion.LearningPlanCompletionContext automaticContext = null;
+        Set<String> automaticTargets = null;
+        Set<String> automaticWaived = null;
+        RuntimeException automaticFailure = null;
+        for (var entry : obligationsByLandscape.entrySet()) {
+            String subject = stableSubjectKey(entry.getKey());
+            if (unavailableSubjects.contains(subject)) { invalid.add(entry.getKey()); continue; }
+            if (resolvedBySubject.containsKey(subject)) {
+                waived.put(entry.getKey(), resolvedBySubject.get(subject));
+                continue;
+            }
+            try {
+                Set<String> allObligations = obligationsBySubject.getOrDefault(subject, entry.getValue());
+                var context = automaticContext != null ? automaticContext
+                        : learners.getLearningPlanCompletionContext(learnerId, allObligations);
+                if (context == null) {
+                    waived.put(entry.getKey(), Set.of());
+                    resolvedBySubject.put(subject, Set.of());
+                    continue;
+                }
+                if (subject == null || invalidObligations.stream()
+                        .anyMatch(id -> Objects.equals(subject, stableSubjectKey(id)))) {
+                    throw conflict("An active subject plan obligation scope cannot be resolved");
+                }
+                Set<String> resolved;
+                if (context.semantics()
+                        == com.skillpilot.backend.completion.LearningPlanCompletionContext.Semantics.AUTOMATIC) {
+                    // All dated plans share one Personal Curriculum and one mastery
+                    // snapshot within this operation. Compute its demand exactly once;
+                    // subject quotas and individual schedules only select the result.
+                    automaticContext = context;
+                    if (automaticTargets == null) automaticTargets = context.level2TargetGoalIds().stream()
+                            .filter(id -> {
+                                var goal = context.canonicalGoals().get(id);
+                                return goal == null || goal.getContains() == null || goal.getContains().isEmpty();
+                            }).collect(java.util.stream.Collectors.toUnmodifiableSet());
+                    if (!automaticTargets.containsAll(allObligations)) {
+                        throw conflict("Plan obligations are outside the atomic Personal Curriculum targets");
+                    }
+                    if (automaticFailure != null) throw automaticFailure;
+                    if (automaticWaived == null) {
+                        try {
+                            automaticWaived = completionProjection.waivedGoals(context, automaticTargets,
+                                    ids -> learners.resolveLearningPlanCompletionMastery(learnerId, mastery, ids));
+                        } catch (RuntimeException e) {
+                            automaticFailure = e;
+                            throw e;
+                        }
+                    }
+                    Set<String> subjectWaived = new LinkedHashSet<>(automaticWaived);
+                    subjectWaived.retainAll(allObligations);
+                    resolved = Set.copyOf(subjectWaived);
+                } else {
+                    resolved = completionProjection.waivedGoals(context, allObligations,
+                            ids -> learners.resolveLearningPlanCompletionMastery(learnerId, mastery, ids));
+                }
+                resolvedBySubject.put(subject, resolved);
+                waived.put(entry.getKey(), resolved);
+            } catch (RuntimeException e) {
+                invalid.add(entry.getKey());
+                unavailableSubjects.add(subject);
+            }
+        }
+        return new PlanFulfillment(Map.copyOf(waived), Set.copyOf(invalid));
+    }
+
+    private PlanFulfillment planFulfillment(String learnerId, String landscapeId,
+            List<LearnerLearningPlanApi.Block> blocks, Map<String, Double> mastery) {
+        List<LearnerLearningPlan> allPlans = new ArrayList<>(
+                plans.findByLearner_SkillpilotIdOrderByLandscapeIdAsc(learnerId));
+        allPlans.removeIf(plan -> landscapeId.equals(plan.getLandscapeId()));
+        LearnerLearningPlan supplied = new LearnerLearningPlan();
+        supplied.setLandscapeId(landscapeId);
+        supplied.setCurriculumId(learners.getLearner(learnerId).getSelectedCurriculum());
+        supplied.setBlocksJson(writeBlocks(blocks));
+        allPlans.add(supplied);
+        return planFulfillment(learnerId, allPlans, mastery);
+    }
+
+    private static Set<String> countedWaivers(Learner learner, Set<String> waived) {
+        return Boolean.TRUE.equals(learner.getLearningPlanCountOnlyExplicitGoals()) ? Set.of() : waived;
+    }
+
 
     @Autowired
     public LearnerLearningPlanService(
@@ -152,6 +284,9 @@ public class LearnerLearningPlanService {
                 && !activeGoalId.isBlank()
                 && mastery.getOrDefault(activeGoalId, 0.0) < MASTERY_THRESHOLD;
 
+        PlanFulfillment fulfillment = snapshot != null && snapshot.fulfillment() != null
+                ? snapshot.fulfillment() : planFulfillment(skillpilotId, subjectPlans, mastery);
+
         // One balance per subject: every plan of the same subject is merged before the
         // calculation, so a goal shared by two plans counts once and its earliest valid
         // scheduled date wins. The stable subject key orders the output identically in
@@ -179,7 +314,7 @@ public class LearnerLearningPlanService {
                     periodEnd,
                     enabled,
                     activeGoalInProgress ? activeGoalId : null,
-                    effectiveLocale);
+                    effectiveLocale, mastery, fulfillment);
             if (evaluation.isEmpty()) {
                 unavailablePlanCount++;
                 aggregate.markUnevaluable();
@@ -196,7 +331,8 @@ public class LearnerLearningPlanService {
                 String subjectKey = stableSubjectKey(landscapeId);
                 SubjectAggregate aggregate = subjectKey == null ? null : bySubject.get(subjectKey);
                 if (aggregate != null && (aggregate.evaluable() || aggregate.canContinue())) continue;
-                if (firstPersonalCurriculumGoal(skillpilotId, landscapeId).isPresent()) {
+                if (!fulfillment.unavailable().contains(landscapeId)
+                        && firstPersonalCurriculumGoal(skillpilotId, landscapeId, fulfillment.waived(landscapeId)).isPresent()) {
                     personalContinuationAvailable = true;
                     if (aggregate != null) aggregate.allowContinuation();
                 }
@@ -213,7 +349,7 @@ public class LearnerLearningPlanService {
         // The dated plan captures only goals still open when it was created. The Cockpit's
         // overall achievement count instead uses every current Level-2 target in the subject,
         // including goals mastered before that plan and goals outside its dated blocks.
-        Map<String, SubjectAchievement> achievementBySubject = snapshot == null
+        Map<String, SubjectAchievement> achievementBySubject = snapshot == null || snapshot.achievements() == null
                 ? currentSubjectAchievements(skillpilotId, mastery, bySubject.keySet())
                 : snapshot.achievements();
 
@@ -223,6 +359,7 @@ public class LearnerLearningPlanService {
         for (SubjectAggregate aggregate : bySubject.values()) {
             LearnerPlanTodayStatus.SubjectStatus subject = aggregate.toSubjectStatus(
                     periodBasis, periodStart, periodEnd, mastery, periodCompletions,
+                    countedWaivers(learner, aggregate.waivedGoalIds),
                     achievementBySubject.get(aggregate.subjectKey), effectiveLocale);
             subjects.add(subject);
             if (subject.subjectLine() != null && !subject.subjectLine().isBlank()) {
@@ -252,6 +389,13 @@ public class LearnerLearningPlanService {
         if (!unidentifiedNotice.isBlank()) {
             noticeText = noticeText.isBlank() ? unidentifiedNotice : noticeText + "\n" + unidentifiedNotice;
         }
+        if (Boolean.TRUE.equals(learner.getLearningPlanCountOnlyExplicitGoals())
+                && !fulfillment.unavailable().isEmpty()) {
+            String coverageNotice = effectiveLocale.startsWith("en")
+                    ? "The completion calculation is currently unavailable. Explicit plan counts remain visible; affected plan continuations are paused."
+                    : "Die Abschlussberechnung ist derzeit nicht verfügbar. Explizite Planstände bleiben sichtbar; betroffene Planfortsetzungen sind pausiert.";
+            noticeText = noticeText.isBlank() ? coverageNotice : noticeText + "\n" + coverageNotice;
+        }
         if (subjectPlans.isEmpty()) {
             noticeText = UnifiedLearningPlanStatusFormatter.formatNoPlansNotice(effectiveLocale);
         }
@@ -269,9 +413,9 @@ public class LearnerLearningPlanService {
                 .allMatch(subject -> subject.balance().offenesPeriodenpensum() == 0);
 
         boolean automaticResume = !preview && enabled && !activeGoalInProgress && firstCandidateAcrossPlans(
-                skillpilotId, subjectPlans, asOf, mastery, false).isPresent();
+                skillpilotId, subjectPlans, asOf, mastery, false, false, true, fulfillment).isPresent();
         boolean resumeAvailable = !activeGoalInProgress && enabled && (personalContinuationAvailable
-                || firstCandidateAcrossPlans(skillpilotId, subjectPlans, asOf, mastery, false, true).isPresent());
+                || firstCandidateAcrossPlans(skillpilotId, subjectPlans, asOf, mastery, false, true, true, fulfillment).isPresent());
 
         return new LearnerPlanTodayStatus(
                 asOf,
@@ -352,7 +496,11 @@ public class LearnerLearningPlanService {
 
     private record StatusReadSnapshot(
             Map<String, Double> mastery,
-            Map<String, SubjectAchievement> achievements) {
+            Map<String, SubjectAchievement> achievements,
+            PlanFulfillment fulfillment) {
+        StatusReadSnapshot(Map<String, Double> mastery, Map<String, SubjectAchievement> achievements) {
+            this(mastery, achievements, null);
+        }
     }
 
     /**
@@ -384,7 +532,7 @@ public class LearnerLearningPlanService {
             LocalDate periodEnd,
             boolean enabled,
             String activeGoalId,
-            String locale) {
+            String locale, Map<String, Double> mastery, PlanFulfillment fulfillment) {
         final Evaluation evaluation;
         try {
             evaluation = summarize(
@@ -395,7 +543,7 @@ public class LearnerLearningPlanService {
                     periodStart,
                     periodEnd,
                     enabled,
-                    activeGoalId);
+                    activeGoalId, mastery, fulfillment);
         } catch (ResponseStatusException exception) {
             if (exception.getStatusCode().is5xxServerError()) {
                 throw exception;
@@ -416,6 +564,8 @@ public class LearnerLearningPlanService {
             return Optional.empty();
         }
         Set<String> plannedGoalIds = atomicIds(evaluation.blocks());
+        Set<String> waived = fulfillment.unavailable().contains(plan.getLandscapeId())
+                ? Set.of() : fulfillment.waived(plan.getLandscapeId());
 
         return Optional.of(new PlanEvaluation(
                 dueDates,
@@ -427,8 +577,10 @@ public class LearnerLearningPlanService {
                                 landscapeService.getLandscapeIdForGoal(activeGoalId))),
                 scopeWithBlockage(skillpilotId,
                         scopeProgress(learningScope(skillpilotId, plan.getLandscapeId(), evaluation.blocks(), asOf, true),
-                                evaluation.blocks(), learners.getMastery(skillpilotId), locale),
-                        summary.nextEligibleGoal() == null, locale)));
+                                evaluation.blocks(), mastery,
+                                countedWaivers(learners.getLearner(skillpilotId), waived), locale),
+                        summary.nextEligibleGoal() == null && !fulfillment.unavailable().contains(plan.getLandscapeId()),
+                        waived, mastery, locale), waived));
     }
 
     /** Stable subject identity: the landscape's canonical subject, never its translated label. */
@@ -525,10 +677,13 @@ public class LearnerLearningPlanService {
         boolean enabled = com.skillpilot.backend.completion.CompletionNavigationPolicy.followsPlans(learner);
         List<LearnerLearningPlan> storedPlans = plans
                 .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(skillpilotId);
+        Map<String, Double> mastery = learners.getMastery(skillpilotId);
+        PlanFulfillment fulfillment = planFulfillment(skillpilotId, storedPlans, mastery);
         LearnerPlanTodayStatus status = calculateStatus(
-                skillpilotId, learner, storedPlans, asOf, communicationLocale, false);
+                skillpilotId, learner, storedPlans, asOf, communicationLocale, false,
+                new StatusReadSnapshot(mastery, null, fulfillment));
         List<LearnerLearningPlanApi.PlanSummary> summaries = storedPlans.stream()
-                .map(plan -> safeSummary(skillpilotId, plan, asOf, enabled, learner.getActiveGoalId()))
+                .map(plan -> safeSummary(skillpilotId, plan, asOf, enabled, learner.getActiveGoalId(), mastery, fulfillment))
                 .filter(Objects::nonNull)
                 .toList();
         return new LearnerLearningPlanApi.CollectionResponse(asOf, enabled, summaries, status);
@@ -536,9 +691,11 @@ public class LearnerLearningPlanService {
 
     private LearnerLearningPlanApi.PlanSummary safeSummary(
             String skillpilotId, LearnerLearningPlan plan, LocalDate asOf,
-            boolean enabled, String activeGoalId) {
+            boolean enabled, String activeGoalId, Map<String, Double> mastery, PlanFulfillment fulfillment) {
         try {
-            return summarize(skillpilotId, plan, asOf, enabled, activeGoalId).summary();
+            PeriodBasis basis = learners.getLearner(skillpilotId).getLearningPlanPeriodBasis();
+            return summarize(skillpilotId, plan, asOf, basis, periodStart(basis, asOf), periodEnd(basis, asOf),
+                    enabled, activeGoalId, mastery, fulfillment).summary();
         } catch (ResponseStatusException exception) {
             if (exception.getStatusCode().is5xxServerError()) throw exception;
             return null;
@@ -549,12 +706,13 @@ public class LearnerLearningPlanService {
         }
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public LearnerLearningPlanApi.PlanDetail getPlan(
             String skillpilotId,
             String landscapeId,
             LocalDate requestedAsOf) {
         String normalizedLandscapeId = requireText(landscapeId, "landscapeId", 255);
+        learners.acquireLearningPlanMutationLock(skillpilotId);
         Learner learner = learners.getLearner(skillpilotId);
         LearnerLearningPlan plan = plans
                 .findByLearner_SkillpilotIdAndLandscapeId(skillpilotId, normalizedLandscapeId)
@@ -646,7 +804,8 @@ public class LearnerLearningPlanService {
             }
         }
         StatusReadSnapshot snapshot = new StatusReadSnapshot(mastery,
-                currentSubjectAchievements(skillpilotId, mastery, displayedSubjects));
+                currentSubjectAchievements(skillpilotId, mastery, displayedSubjects),
+                planFulfillment(skillpilotId, drafts, mastery));
         List<LearnerLearningPlanApi.PreviewDay> days = new ArrayList<>();
         for (int offset = 0; offset < PREVIEW_DAYS; offset++) {
             LocalDate date = asOf.plusDays(offset);
@@ -1236,6 +1395,14 @@ public class LearnerLearningPlanService {
     private Optional<PlanGoalCandidate> firstCandidateAcrossPlans(
             String skillpilotId, List<LearnerLearningPlan> candidatePlans, LocalDate asOf,
             Map<String, Double> mastery, boolean failOnInvalidPlan, boolean allowExtra, boolean keepBinding) {
+        return firstCandidateAcrossPlans(skillpilotId, candidatePlans, asOf, mastery, failOnInvalidPlan,
+                allowExtra, keepBinding, planFulfillment(skillpilotId, candidatePlans, mastery));
+    }
+
+    private Optional<PlanGoalCandidate> firstCandidateAcrossPlans(
+            String skillpilotId, List<LearnerLearningPlan> candidatePlans, LocalDate asOf,
+            Map<String, Double> mastery, boolean failOnInvalidPlan, boolean allowExtra, boolean keepBinding,
+            PlanFulfillment fulfillment) {
         List<PlanGoalCandidate> candidates = new ArrayList<>();
         List<PlanGoalCandidate> furtherLearning = new ArrayList<>();
         Learner learner = learners.getLearner(skillpilotId);
@@ -1276,8 +1443,14 @@ public class LearnerLearningPlanService {
             // An invalid part plan must not leave an apparently complete subject quota.
             // Explicit continuation remains independent of the unavailable balance.
             if (unavailableSubjects.contains(subjectKey) && !allowExtra) continue;
+            if (fulfillment.unavailable().contains(plan.getLandscapeId())) {
+                if (failOnInvalidPlan) throw conflict("Learning-plan assessment coverage is currently unavailable");
+                continue;
+            }
+            Set<String> waived = fulfillment.waived(plan.getLandscapeId());
             PlanBalanceResult balance = calculateBalance(goalsBySubject.get(subjectKey),
-                    datesBySubject.get(subjectKey), periodStart, periodEnd, mastery, completions);
+                    datesBySubject.get(subjectKey), periodStart, periodEnd, mastery, completions,
+                    countedWaivers(learner, waived));
             boolean quotaComplete = balance.offenesPeriodenpensum() == 0;
             if (quotaComplete && !allowExtra) continue;
             var scope = learningScope(skillpilotId, plan.getLandscapeId(), blocks, asOf, keepBinding);
@@ -1288,14 +1461,14 @@ public class LearnerLearningPlanService {
                             .filter(goal -> "atomic".equals(goal.type()) && scopeIds.contains(goal.id()))
                             .map(FrontierGoal::id).collect(java.util.stream.Collectors.toSet());
             Optional<DueGoal> due = "exam".equals(scope.kind())
-                    ? firstEligibleDueGoal(blocks, periodEnd, mastery, ignored -> frontierIds)
-                    : firstEligibleDueGoal(skillpilotId, blocks, periodEnd, mastery);
+                    ? firstEligibleDueGoal(blocks, periodEnd, mastery, waived, ignored -> frontierIds)
+                    : firstEligibleDueGoal(skillpilotId, blocks, periodEnd, mastery, waived);
             if (due.isPresent()) {
                 // With explicit authorization, an earlier open goal keeps its priority
                 // even when advance work has already covered this subject's quota.
                 candidates.add(new PlanGoalCandidate(plan, due.get()));
             } else if (allowExtra) {
-                firstScopeContinuationGoal(skillpilotId, plan.getLandscapeId(), blocks, asOf, mastery, keepBinding)
+                firstScopeContinuationGoal(skillpilotId, plan.getLandscapeId(), blocks, asOf, mastery, keepBinding, waived)
                         .ifPresent(goal -> furtherLearning.add(new PlanGoalCandidate(plan, goal)));
             }
         }
@@ -1366,7 +1539,22 @@ public class LearnerLearningPlanService {
             LocalDate periodEnd,
             boolean enabled,
             String activeGoalId) {
+        Map<String, Double> mastery = learners.getMastery(skillpilotId);
         List<LearnerLearningPlanApi.Block> blocks = readBlocks(plan);
+        return summarize(skillpilotId, plan, asOf, periodBasis, periodStart, periodEnd, enabled, activeGoalId,
+                mastery, planFulfillment(skillpilotId, plan.getLandscapeId(), blocks, mastery));
+    }
+
+    private Evaluation summarize(String skillpilotId, LearnerLearningPlan plan, LocalDate asOf,
+            PeriodBasis periodBasis, LocalDate periodStart, LocalDate periodEnd, boolean enabled,
+            String activeGoalId, Map<String, Double> mastery, PlanFulfillment fulfillment) {
+        List<LearnerLearningPlanApi.Block> blocks = readBlocks(plan);
+        boolean coverageUnavailable = fulfillment.unavailable().contains(plan.getLandscapeId());
+        if (coverageUnavailable && !Boolean.TRUE.equals(
+                learners.getLearner(skillpilotId).getLearningPlanCountOnlyExplicitGoals())) {
+            throw conflict("Learning-plan assessment coverage is currently unavailable");
+        }
+        Set<String> waived = coverageUnavailable ? Set.of() : fulfillment.waived(plan.getLandscapeId());
         boolean stale = true;
         try {
             stale = !learners.isLearningPlanCompatible(
@@ -1378,9 +1566,8 @@ public class LearnerLearningPlanService {
             stale = true;
         }
 
-        Map<String, Double> mastery = learners.getMastery(skillpilotId);
-        Optional<DueGoal> eligible = !stale
-                ? firstExplicitContinuationGoal(skillpilotId, plan.getLandscapeId(), blocks, asOf, mastery)
+        Optional<DueGoal> eligible = !stale && !coverageUnavailable
+                ? firstScopeContinuationGoal(skillpilotId, plan.getLandscapeId(), blocks, asOf, mastery, true, waived)
                 : Optional.empty();
         boolean blockedByActiveGoal = eligible
                 .map(next -> isBlockingActiveGoal(activeGoalId, next.atomicGoalId(), mastery))
@@ -1392,6 +1579,8 @@ public class LearnerLearningPlanService {
                         ? "learning-plan-following-disabled"
                         : stale
                                 ? "personal-curriculum-changed"
+                                : coverageUnavailable
+                                        ? "assessment-coverage-unavailable"
                                 : eligible.isEmpty()
                                         ? "no-open-due-frontier-goal"
                                         : "active-goal-in-progress";
@@ -1416,7 +1605,8 @@ public class LearnerLearningPlanService {
                 canContinue,
                 stale ? null : scopeWithBlockage(skillpilotId,
                         scopeProgress(learningScope(skillpilotId, plan.getLandscapeId(), blocks, asOf, true),
-                                blocks, mastery, "de"), eligible.isEmpty(), "de"));
+                                blocks, mastery, countedWaivers(learners.getLearner(skillpilotId), waived), "de"),
+                        eligible.isEmpty() && !coverageUnavailable, waived, mastery, "de"));
         return new Evaluation(summary, blocks);
     }
 
@@ -1424,11 +1614,12 @@ public class LearnerLearningPlanService {
             String skillpilotId,
             List<LearnerLearningPlanApi.Block> blocks,
             LocalDate asOf,
-            Map<String, Double> mastery) {
+            Map<String, Double> mastery, Set<String> waived) {
         return firstEligibleDueGoal(
                 blocks,
                 asOf,
                 mastery,
+                waived,
                 focusGoalIds -> learners.getUncompactedRichFrontierForFocus(
                                 skillpilotId,
                                 focusGoalIds)
@@ -1439,8 +1630,16 @@ public class LearnerLearningPlanService {
     }
 
     private Optional<DueGoal> firstPersonalCurriculumGoal(String skillpilotId, String landscapeId) {
+        Map<String, Double> mastery = learners.getMastery(skillpilotId);
+        PlanFulfillment fulfillment = planFulfillment(skillpilotId,
+                plans.findByLearner_SkillpilotIdOrderByLandscapeIdAsc(skillpilotId), mastery);
+        if (fulfillment.unavailable().contains(landscapeId)) return Optional.empty();
+        return firstPersonalCurriculumGoal(skillpilotId, landscapeId, fulfillment.waived(landscapeId));
+    }
+
+    private Optional<DueGoal> firstPersonalCurriculumGoal(String skillpilotId, String landscapeId, Set<String> waived) {
         return learners.getPersonalCurriculumSubjectFrontier(skillpilotId, landscapeId).stream()
-                .filter(goal -> "atomic".equals(goal.type()))
+                .filter(goal -> "atomic".equals(goal.type()) && !waived.contains(goal.id()))
                 .findFirst().map(goal -> new DueGoal(goal.id(), goal.id(), null, null));
     }
 
@@ -1468,8 +1667,10 @@ public class LearnerLearningPlanService {
                 return Optional.empty();
             }
             Set<String> inactiveOnly = inactiveOnlyAtomicIds(blocks);
+            Set<String> waived = planFulfillment(skillpilotId, currentPlans, learners.getMastery(skillpilotId))
+                    .waived(landscapeId);
             return learners.getPersonalCurriculumSubjectFrontier(skillpilotId, landscapeId).stream()
-                    .filter(goal -> "atomic".equals(goal.type()) && !inactiveOnly.contains(goal.id()))
+                    .filter(goal -> "atomic".equals(goal.type()) && !inactiveOnly.contains(goal.id()) && !waived.contains(goal.id()))
                     .findFirst().map(goal -> new DueGoal(goal.id(), goal.id(), null, null));
         }
         return firstPersonalCurriculumGoal(skillpilotId, landscapeId);
@@ -1531,10 +1732,10 @@ public class LearnerLearningPlanService {
 
     private static LearnerPlanTodayStatus.LearningScope scopeProgress(
             LearningPlanScopeResolver.Scope scope, List<LearnerLearningPlanApi.Block> blocks,
-            Map<String, Double> mastery, String locale) {
+            Map<String, Double> mastery, Set<String> waived, String locale) {
         if (scope.goalIds().isEmpty()) return null;
         int achieved = (int) scope.goalIds().stream()
-                .filter(id -> mastery.getOrDefault(id, 0.0) >= MASTERY_THRESHOLD).count();
+                .filter(id -> mastery.getOrDefault(id, 0.0) >= MASTERY_THRESHOLD || waived.contains(id)).count();
         // This names the existence of a real dated schedule, not full coverage of E.
         boolean scheduled = !atomicIds(blocks).isEmpty();
         boolean english = locale != null && locale.startsWith("en");
@@ -1549,9 +1750,13 @@ public class LearnerLearningPlanService {
     }
 
     private LearnerPlanTodayStatus.LearningScope scopeWithBlockage(String skillpilotId,
-            LearnerPlanTodayStatus.LearningScope scope, boolean noCandidate, String locale) {
-        if (scope == null || !noCandidate || scope.achievedGoalCount() == scope.targetGoalCount()) return scope;
-        String reason = learners.describeLearningPlanBlockage(skillpilotId, scope.goalIds(), locale);
+            LearnerPlanTodayStatus.LearningScope scope, boolean noCandidate, Set<String> waived,
+            Map<String, Double> mastery, String locale) {
+        if (scope == null || !noCandidate) return scope;
+        List<String> stillRequired = scope.goalIds().stream()
+                .filter(id -> !waived.contains(id) && mastery.getOrDefault(id, 0.0) < MASTERY_THRESHOLD).toList();
+        if (stillRequired.isEmpty()) return scope;
+        String reason = learners.describeLearningPlanBlockage(skillpilotId, stillRequired, locale);
         if (reason == null || reason.isBlank()) return scope;
         return new LearnerPlanTodayStatus.LearningScope(scope.kind(), scope.sourceBlockId(), scope.title(),
                 scope.goalIds(), scope.achievedGoalCount(), scope.targetGoalCount(), scope.needlePosition(),
@@ -1561,20 +1766,27 @@ public class LearnerLearningPlanService {
     private Optional<DueGoal> firstScopeContinuationGoal(
             String skillpilotId, String landscapeId, List<LearnerLearningPlanApi.Block> blocks,
             LocalDate asOf, Map<String, Double> mastery, boolean keepBinding) {
+        return firstScopeContinuationGoal(skillpilotId, landscapeId, blocks, asOf, mastery, keepBinding,
+                planFulfillment(skillpilotId, landscapeId, blocks, mastery).waived(landscapeId));
+    }
+
+    private Optional<DueGoal> firstScopeContinuationGoal(
+            String skillpilotId, String landscapeId, List<LearnerLearningPlanApi.Block> blocks,
+            LocalDate asOf, Map<String, Double> mastery, boolean keepBinding, Set<String> waived) {
         var scope = learningScope(skillpilotId, landscapeId, blocks, asOf, keepBinding);
         if (!"exam".equals(scope.kind())) {
             if (blocks.stream().noneMatch(block -> block.isActive() && "learning".equals(block.kind()))) return Optional.empty();
             LocalDate cutoff = periodEnd(learners.getLearner(skillpilotId).getLearningPlanPeriodBasis(), asOf);
-            var due = firstEligibleDueGoal(skillpilotId, blocks, cutoff, mastery);
+            var due = firstEligibleDueGoal(skillpilotId, blocks, cutoff, mastery, waived);
             if (due.isPresent()) return due;
             LocalDate scheduleEnd = blocks.stream().filter(LearnerLearningPlanApi.Block::isActive)
                     .filter(block -> "learning".equals(block.kind())).map(LearnerLearningPlanApi.Block::endDate)
                     .max(LocalDate::compareTo).orElse(asOf);
-            var planned = firstEligibleDueGoal(skillpilotId, blocks, scheduleEnd, mastery);
+            var planned = firstEligibleDueGoal(skillpilotId, blocks, scheduleEnd, mastery, waived);
             if (planned.isPresent()) return planned;
             Set<String> inactive = inactiveOnlyAtomicIds(blocks);
             return learners.getPersonalCurriculumSubjectFrontier(skillpilotId, landscapeId).stream()
-                    .filter(goal -> "atomic".equals(goal.type()) && !inactive.contains(goal.id()))
+                    .filter(goal -> "atomic".equals(goal.type()) && !inactive.contains(goal.id()) && !waived.contains(goal.id()))
                     .findFirst().map(goal -> new DueGoal(goal.id(), goal.id(), null, null));
         }
         if (scope.goalIds().isEmpty()) return Optional.empty();
@@ -1583,11 +1795,11 @@ public class LearnerLearningPlanService {
                 .filter(goal -> "atomic".equals(goal.type()) && selectedIds.contains(goal.id()))
                 .map(FrontierGoal::id).collect(java.util.stream.Collectors.toSet());
         LocalDate dueCutoff = periodEnd(learners.getLearner(skillpilotId).getLearningPlanPeriodBasis(), asOf);
-        Optional<DueGoal> due = firstEligibleDueGoal(blocks, dueCutoff, mastery, ignored -> frontierIds);
+        Optional<DueGoal> due = firstEligibleDueGoal(blocks, dueCutoff, mastery, waived, ignored -> frontierIds);
         if (due.isPresent()) {
             return due;
         }
-        return scope.goalIds().stream().filter(frontierIds::contains)
+        return scope.goalIds().stream().filter(frontierIds::contains).filter(id -> !waived.contains(id))
                 .filter(id -> mastery.getOrDefault(id, 0.0) < MASTERY_THRESHOLD)
                 .findFirst().map(id -> new DueGoal(id, id, null, null));
     }
@@ -1615,6 +1827,12 @@ public class LearnerLearningPlanService {
             LocalDate asOf,
             Map<String, Double> mastery,
             Function<List<String>, Set<String>> frontierIdsForFocus) {
+        return firstEligibleDueGoal(blocks, asOf, mastery, Set.of(), frontierIdsForFocus);
+    }
+
+    static Optional<DueGoal> firstEligibleDueGoal(List<LearnerLearningPlanApi.Block> blocks,
+            LocalDate asOf, Map<String, Double> mastery, Set<String> waived,
+            Function<List<String>, Set<String>> frontierIdsForFocus) {
         Map<String, LocalDate> dueDates = scheduledAtomicGoalDueDatesForSchedule(blocks);
         LinkedHashSet<String> alreadyDue = new LinkedHashSet<>();
         List<DueGoal> candidates = new ArrayList<>();
@@ -1622,6 +1840,7 @@ public class LearnerLearningPlanService {
             LearnerLearningPlanApi.Block block = dueBlock.block();
             List<String> openDueInBlock = dueBlock.atomicGoalIds().stream()
                     .filter(alreadyDue::add)
+                    .filter(goalId -> !waived.contains(goalId))
                     .filter(goalId -> mastery.getOrDefault(goalId, 0.0) < MASTERY_THRESHOLD)
                     .toList();
             if (openDueInBlock.isEmpty()) continue;
@@ -2321,8 +2540,9 @@ public class LearnerLearningPlanService {
      * The one quantitative balance, over an already merged subject goal set.
      *
      * <p>S counts plan goals scheduled through the end of the period, P those newly due
-     * within it, I every currently mastered plan goal regardless of its date, and H the
-     * distinct goals actually completed within the period that are still mastered.</p>
+     * within it, I mastered goals plus the selected plan-only waiver credit, and H the
+     * distinct goals actually completed within the period that are still mastered.
+     * Waivers never enter the mastery map or the real completion-event ledger.</p>
      */
     static PlanBalanceResult calculateBalance(
             Set<String> plannedGoalIds,
@@ -2331,6 +2551,12 @@ public class LearnerLearningPlanService {
             LocalDate periodEnd,
             Map<String, Double> mastery,
             Map<String, Instant> periodCompletions) {
+        return calculateBalance(plannedGoalIds, dueDates, periodStart, periodEnd, mastery, periodCompletions, Set.of());
+    }
+
+    static PlanBalanceResult calculateBalance(Set<String> plannedGoalIds, Map<String, LocalDate> dueDates,
+            LocalDate periodStart, LocalDate periodEnd, Map<String, Double> mastery,
+            Map<String, Instant> periodCompletions, Set<String> waived) {
         Objects.requireNonNull(plannedGoalIds, "plan goal set");
         Objects.requireNonNull(dueDates, "plan due dates");
         Objects.requireNonNull(mastery, "mastery snapshot");
@@ -2351,7 +2577,7 @@ public class LearnerLearningPlanService {
             }
         }
         int i = (int) plannedGoalIds.stream()
-                .filter(id -> mastery.getOrDefault(id, 0.0) >= MASTERY_THRESHOLD)
+                .filter(id -> mastery.getOrDefault(id, 0.0) >= MASTERY_THRESHOLD || waived.contains(id))
                 .count();
         int h = (int) periodCompletions.entrySet().stream()
                 .filter(entry -> plannedGoalIds.contains(entry.getKey()))
@@ -2438,7 +2664,8 @@ public class LearnerLearningPlanService {
             boolean canContinue,
             boolean resumable,
             boolean current,
-            LearnerPlanTodayStatus.LearningScope learningScope) {
+            LearnerPlanTodayStatus.LearningScope learningScope,
+            Set<String> waivedGoalIds) {
     }
 
     /**
@@ -2452,6 +2679,7 @@ public class LearnerLearningPlanService {
         private final List<String> landscapeIds = new ArrayList<>();
         private final Map<String, LocalDate> dueDates = new LinkedHashMap<>();
         private final Set<String> plannedGoalIds = new LinkedHashSet<>();
+        private final Set<String> waivedGoalIds = new LinkedHashSet<>();
         private boolean evaluable = true;
         private boolean canContinue;
         private boolean resumable;
@@ -2496,6 +2724,7 @@ public class LearnerLearningPlanService {
             evaluation.dueDates().forEach((goalId, dueDate) -> dueDates.merge(
                     goalId, dueDate, (left, right) -> left.isBefore(right) ? left : right));
             plannedGoalIds.addAll(evaluation.plannedGoalIds());
+            waivedGoalIds.addAll(evaluation.waivedGoalIds());
             canContinue |= evaluation.canContinue();
             resumable |= evaluation.resumable();
             current |= evaluation.current();
@@ -2511,6 +2740,7 @@ public class LearnerLearningPlanService {
                 LocalDate periodEnd,
                 Map<String, Double> mastery,
                 Map<String, Instant> periodCompletions,
+                Set<String> waived,
                 SubjectAchievement achievement,
                 String locale) {
             // An ambiguous subject fails closed for switching: a switch must never guess
@@ -2525,7 +2755,7 @@ public class LearnerLearningPlanService {
                         null, null);
             }
             PlanBalanceResult balance = calculateBalance(
-                    plannedGoalIds, dueDates, periodStart, periodEnd, mastery, periodCompletions);
+                    plannedGoalIds, dueDates, periodStart, periodEnd, mastery, periodCompletions, waived);
             boolean hasScheduledGoals = !plannedGoalIds.isEmpty();
             LearnerPlanTodayStatus.LearningScope selectedScope = learningScope;
             boolean unscheduledScope = !hasScheduledGoals && selectedScope != null;
@@ -2561,8 +2791,23 @@ public class LearnerLearningPlanService {
                     hasScheduledGoals ? UnifiedLearningPlanStatusFormatter.formatBalanceDialText(balance, locale)
                             : planStatusText,
                     balance,
-                    selectedScope);
+                    selectedScope,
+                    planCreditText(plannedGoalIds, mastery, waived, locale));
         }
+    }
+
+    private static String planCreditText(Set<String> goals, Map<String, Double> mastery,
+            Set<String> waived, String locale) {
+        long implicit = goals.stream().filter(waived::contains)
+                .filter(id -> mastery.getOrDefault(id, 0.0) < MASTERY_THRESHOLD).count();
+        if (implicit == 0) return null;
+        long total = goals.stream()
+                .filter(id -> waived.contains(id) || mastery.getOrDefault(id, 0.0) >= MASTERY_THRESHOLD).count();
+        return locale.startsWith("en")
+                ? "Credited in this plan: " + total + (total == 1 ? " goal" : " goals")
+                        + ", including " + implicit + " implicitly completed."
+                : "Im Plan angerechnet: " + total + (total == 1 ? " Ziel" : " Ziele")
+                        + ", davon " + implicit + " implizit erledigt.";
     }
 
     private static boolean isBlockingActiveGoal(

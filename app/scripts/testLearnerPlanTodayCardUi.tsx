@@ -157,6 +157,30 @@ assert.match(enabledMarkup, /Analysis/u)
 assert.match(enabledMarkup, /Klausur/u)
 assert.match(enabledMarkup, /6 von 8 Werktagen verbleiben/u)
 
+// Plan credit explanations belong to the existing details, once per merged
+// subject. They are backend wording, never another client-side count or dial.
+assert.doesNotMatch(enabledMarkup, /learner-plan-credit-detail/u)
+for (const planCreditText of [null, 'Im Plan angerechnet: 3 Ziele, davon 2 durch Prüfungen abgedeckt.']) {
+  const markup = renderToStaticMarkup(
+    <LearnerPlanTodayOverview
+      status={status([{ ...mathsBehind, planCreditText }])}
+      plans={[math, { ...math, planId: 'second-math-plan' }]}
+      language="de" planModeEnabled
+      subjectLabel={() => 'Mathematik'} goalLabel={(id) => goalLabels.get(id)}
+      onSwitch={() => undefined}
+    />,
+  )
+  if (planCreditText === null) {
+    assert.doesNotMatch(markup, /learner-plan-credit-detail/u)
+  } else {
+    const details = markup.match(/<details\b[^>]*>[\s\S]*?<\/details>/u)?.[0] ?? ''
+    assert.ok(details.includes(planCreditText), 'the exact backend explanation appears inside the collapsed plan details')
+    assert.equal(markup.split(planCreditText).length - 1, 1, 'merged subject credits are not repeated for every plan')
+    assert.ok(!markup.replace(details, '').includes(planCreditText), 'compact status and gauges do not gain credit text')
+    assert.doesNotMatch(details, /<details\b[^>]*\sopen(?:\s|>)/u)
+  }
+}
+
 // Plandetails only name schedule elements that exist. A plan without a current
 // block, milestone, or reserved workdays still has its overall plan period.
 const unstructuredPlan: LearnerLearningPlanSummary = {

@@ -23,6 +23,7 @@ export interface Learner {
   autoPilot?: boolean;
   followLearningPlans?: boolean;
   learningPlanPeriodBasis?: 'DAY' | 'WEEK';
+  learningPlanCountOnlyExplicitGoals?: boolean;
   strictMode?: boolean;
   useAssessmentShortcuts?: boolean;
   showGoalVisualizationsInChat?: boolean;

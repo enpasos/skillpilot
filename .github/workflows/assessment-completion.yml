@@ -199,9 +199,22 @@ jobs:
           --tests 'com.skillpilot.backend.completion.CompletionTelemetryTest'
           --tests 'com.skillpilot.backend.completion.CompletionResponseProjectionTest'
           --tests 'com.skillpilot.backend.completion.CompletionWarmupRunnerTest'
+          --tests 'com.skillpilot.backend.completion.LearningPlanCompletionProjectionTest'
+          --tests 'com.skillpilot.backend.completion.AutomaticCompletionTest'
+          --tests 'com.skillpilot.backend.completion.AutomaticLearningPlanCompletionProjectionTest'
+          --tests 'com.skillpilot.backend.completion.AutomaticCompletionApplicationServiceTest'
           --tests 'com.skillpilot.backend.ai.AssessmentShortcutDiscoveryTest'
+          --tests 'com.skillpilot.backend.ai.CoachToolFacadeTest.automaticOverviewDoesNotPauseUnsupportedProvidersOrOptedOutOrdinaryLearning'
+          --tests 'com.skillpilot.backend.ai.CoachToolFacadeTest.selectedAutomaticAndHistoricalRoutesStillRequireASupportedCoachSession'
           --tests 'com.skillpilot.backend.curriculumpackage.CompletionPackageLoaderTest'
           --tests 'com.skillpilot.backend.service.AssessmentCompletionIntegrationTest'
+          --tests 'com.skillpilot.backend.service.AutomaticCompletionIntegrationTest'
+          --tests 'com.skillpilot.backend.service.AutomaticCompletionFrontierTest'
+          --tests 'com.skillpilot.backend.service.CompositionViewServiceCacheTest'
+          --tests 'com.skillpilot.backend.landscape.LandscapeServiceTest.completionMetadataDirectoriesCannotIntroduceRuntimeLandscapes'
+          --tests 'com.skillpilot.backend.service.LearningPlanAssessmentCreditTest'
+          --tests 'com.skillpilot.backend.migration.LearningPlanCountingPreferenceMigrationTest'
+          --tests 'com.skillpilot.backend.ui.LearnerUiControllerPersonalizationTest.preferencesForwardExplicitPlanCountingWithoutChangingShortcutChoice'
           --tests 'com.skillpilot.backend.service.AssessmentCompletionSrsIntegrationTest'
           --tests 'com.skillpilot.backend.service.SrsMasteryBatchQueryTest'
           --tests 'com.skillpilot.backend.service.AssessmentCompletionPostgresIntegrationTest'
@@ -221,6 +234,7 @@ jobs:
           --tests 'com.skillpilot.backend.service.LearnerServiceTest.anOlderSignedCardBackupCannotEraseAnAlreadySavedRecallSuccess'
           --tests 'com.skillpilot.backend.service.LearnerServiceTest.legacyArchiveWithUnrestorableRecallMasteryIsRejectedBeforeMutation'
           --tests 'com.skillpilot.backend.service.LearnerServiceTest.unreadableStoredCardStateIsATechnicalFailure'
+          --tests 'com.skillpilot.backend.service.LearnerServiceTest.planCountingPreferencePreservesLegacySignaturesAndRoundTripsExplicitChoice'
       - name: Require executed integration evidence, including every PostgreSQL contract
         if: always()
         run: |
@@ -231,29 +245,41 @@ jobs:
           required = {
               'com.skillpilot.backend.completion.CompletionCoreTest': 20,
               'com.skillpilot.backend.completion.CompletionApplicationServiceTest': 6,
-              'com.skillpilot.backend.completion.CompletionCatalogTest': 9,
+              'com.skillpilot.backend.completion.CompletionCatalogTest': 14,
               'com.skillpilot.backend.completion.CompletionApplicabilityTest': 3,
               'com.skillpilot.backend.completion.CompletionTelemetryTest': 4,
               'com.skillpilot.backend.completion.CompletionResponseProjectionTest': 2,
               'com.skillpilot.backend.completion.CompletionWarmupRunnerTest': 8,
-              'com.skillpilot.backend.ai.AssessmentShortcutDiscoveryTest': 4,
-              'com.skillpilot.backend.curriculumpackage.CompletionPackageLoaderTest': 1,
+              'com.skillpilot.backend.completion.LearningPlanCompletionProjectionTest': 8,
+              'com.skillpilot.backend.completion.AutomaticCompletionTest': 12,
+              'com.skillpilot.backend.completion.AutomaticLearningPlanCompletionProjectionTest': 7,
+              'com.skillpilot.backend.completion.AutomaticCompletionApplicationServiceTest': 6,
+              'com.skillpilot.backend.ai.AssessmentShortcutDiscoveryTest': 6,
+              'com.skillpilot.backend.ai.CoachToolFacadeTest': 2,
+              'com.skillpilot.backend.curriculumpackage.CompletionPackageLoaderTest': 6,
               'com.skillpilot.backend.service.AssessmentCompletionIntegrationTest': 35,
+              'com.skillpilot.backend.service.AutomaticCompletionIntegrationTest': 7,
+              'com.skillpilot.backend.service.AutomaticCompletionFrontierTest': 12,
+              'com.skillpilot.backend.service.CompositionViewServiceCacheTest': 8,
+              'com.skillpilot.backend.landscape.LandscapeServiceTest': 1,
+              'com.skillpilot.backend.service.LearningPlanAssessmentCreditTest': 12,
+              'com.skillpilot.backend.migration.LearningPlanCountingPreferenceMigrationTest': 1,
+              'com.skillpilot.backend.ui.LearnerUiControllerPersonalizationTest': 1,
               'com.skillpilot.backend.service.AssessmentCompletionSrsIntegrationTest': 7,
               'com.skillpilot.backend.service.SrsMasteryBatchQueryTest': 6,
               'com.skillpilot.backend.service.AssessmentCompletionPostgresIntegrationTest': 4,
               'com.skillpilot.backend.service.AssessmentCompletionRestartIntegrationTest': 1,
               'com.skillpilot.backend.service.AssessmentCompletionBackendBrowserIntegrationTest': 4,
-              'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionProjectionTest': 4,
+              'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionProjectionTest': 7,
               'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest': 1,
               'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionContractRegistryTest': 5,
               'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionReceiptCapabilityTest': 2,
               'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CapabilityServiceTest': 16,
               'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionContractReceiptIntegrationTest': 11,
-              'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1McpContractTest': 28,
+              'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1McpContractTest': 30,
               'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1SessionCoordinatorTest': 18,
               'com.skillpilot.backend.service.srs.SrsPracticeStateGuardTest': 6,
-              'com.skillpilot.backend.service.LearnerServiceTest': 7,
+              'com.skillpilot.backend.service.LearnerServiceTest': 8,
           }
           for name, minimum in required.items():
               path = Path('backend/build/test-results/test') / f'TEST-{name}.xml'

@@ -1,400 +1,216 @@
-# Assessment-gated Completion: technischer Pilot
+# Assessment-gated Completion: Implementierung und Prüfung
 
-Stand: 31. Oktober 2026. Dieses Dokument beschreibt den implementierten lokalen
-Pilot und seine Prüfpfade. Der verbindliche Entwurf bleibt der
-[Umsetzungsplan](assessment-gated-completion-implementation-plan.md), die
-fachliche Semantik das [Konzept](../concept/skill-graph/assessment-gated-completion.md).
-Produktive Aktivierung, Veröffentlichung und beobachtete Coach-Host-Abnahme
-sind eigenständige Schritte.
+Stand: 31. Oktober 2026. Der historische Dateiname bleibt bestehen. Dieses
+Dokument beschreibt jetzt die **allgemeine lokale Bedarfsberechnung**, die
+Cockpit-Bedienung und die Plan-IST-Integration. Grundlage sind der
+[aktuelle Umsetzungsplan](assessment-gated-completion-implementation-plan.md)
+und das [fachliche Konzept](../concept/skill-graph/assessment-gated-completion.md).
+Die abschließenden Gesamtprüfungen laufen; dieses Dokument behauptet weder
+entfernten CI-Erfolg noch Deployment oder beobachtete Coach-Host-Abnahme.
 
 ## Umfang und Ergebnisprinzip
 
-Das Profil `math-dot-product-projection` umfasst genau zwei kanonische Ziele:
+Die Funktion benötigt keine manuellen Erlassprofile. Im vollständigen,
+autoritativ bestimmten Umfang gelten drei Regeln:
 
-| Rolle | Ziel-ID |
-| --- | --- |
-| Definition des Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen | `3016ec37-1c2e-47db-83f5-e767923bc97e` |
-| Skalarprodukt über eine orthogonale Projektion erklären: erforderliche Prüfung | `e98672c6-871a-5d0b-889c-5afc51040f0d` |
+1. Jedes gemeisterte Lernziel beendet seinen eigenen Vorbereitungsbedarf.
+2. Jedes nicht mehr benötigte Nicht-Abschlussprüfungsziel ist implizit erledigt.
+   Auch sein Vorbereitungsbedarf entfällt; dies wird bis zum stabilen Zustand
+   fortgesetzt.
+3. Jede Abschlussprüfung ist direkt ansteuerbar. Fehlende Vorbereitungsmastery
+   sperrt den bewussten Versuch nicht; gültige Aufgaben und eine autorisierte,
+   unterstützte Sitzung bleiben erforderlich.
 
-Die [statische Prüfung der Aufgaben und Rubrik](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/assessment-completion/math-dot-product-projection-2026-10-31.md)
-begründet ausschließlich den Erlass des ersten Ziels in diesem Abschnitt,
-wenn die Prüfung gemeistert ist. Sie ist eine Maschinenprüfung. Das Profil
-behauptet keinen Abschluss von Q2, eines Schuljahrs oder des Fachs Mathematik.
+Eine bestandene Prüfung ist damit **keine Voraussetzung** für implizite
+Erledigung. Auch gewöhnliche gemeisterte Ziele stoppen Bedarf. Ein gewöhnliches
+Endziel ohne Verbraucher ist implizit erledigt, ebenso Orientierung oder Karten.
+Enthält der vollständige Kontext keine Abschlussprüfung, ist er bereits ohne
+Mastery vollständig implizit erledigt. Offene Abschlussprüfungen bleiben offen.
 
 Pro atomarem Lernziel bleibt nur `mastery ∈ {0,1}` gespeichert. Neue allgemeine
-Mastery-Writes akzeptieren nur diese Werte; historische Werte ab `0.9` bleiben
-beim Lesen kompatibel. Prüfungen verwenden denselben Mastery-Zustand.
-Vorhandene Prüfungsmastery zählt unmittelbar. Weder ein Fehlversuchsstatus
-noch ein Erlass- oder Anerkennungsregister wird angelegt. Der Erlass verändert
-keine Einzelmastery, Globalstatistik oder Lernplanpunkte.
+Mastery-Writes akzeptieren nur diese Werte; historische Werte ab `0.9` werden
+weiter über den gemeinsamen Kompatibilitätsresolver gelesen. Ein abgeleiteter
+Arbeitsentfall verändert weder Einzelmastery noch globale Mastery-Statistik.
+Es entstehen keine zusätzlichen Prüfbelege, anerkannten Pass-Zustände oder
+Erlassdatensätze. Implizite Karten erzeugen keine Recall-Ergebnisse; implizite
+Orientierung erzeugt keine erfundene Coach-Interaktion.
 
 **Die ausführliche Prüfungsbewertung durch die KI bleibt erhalten.** Nach der
-vollständigen Abgabe gibt der Coach bei bestandenen und nicht bestandenen
-Prüfungen die erreichten und maximalen Punkte, die Bestehensentscheidung und
-eine nachvollziehbare Rückmeldung je Bewertungskriterium. Dazu gehören richtig
-gelöste Anteile, begründete Punktabzüge, konkrete Verbesserungen und die
-Besprechung der freigegebenen Lösung. Die binäre Mastery betrifft das
-gespeicherte Zielergebnis; die differenzierte Bewertung bleibt im Gespräch.
-Maßgeblich ist der [bestehende Prüfungsablauf](../concept/skill-graph/node-types.md#scoring-and-mastery).
+vollständigen Abgabe nennt der Coach erreichte/maximale Punkte, die
+Bestehensentscheidung und nachvollziehbare Rückmeldung je Kriterium. Richtig
+gelöste Anteile, begründete Abzüge, konkrete Verbesserungen und die freigegebene
+Lösung bleiben Teil des Gesprächs. Binär ist das gespeicherte Zielergebnis.
+Maßgeblich bleibt der [Prüfungsablauf](../concept/skill-graph/node-types.md#scoring-and-mastery).
 
 ## Laufzeit und Navigation
 
-`CompletionProfileCompiler` validiert den vollständigen kanonischen Basisgraphen
-und kompiliert den atomaren Voraussetzungskontext. `CompletionEvaluator`
-berechnet daraus und aus dem aktuellen gemeinsamen Mastery-Snapshot rein
-funktional den Abschluss. Versteckte, geerbte und fachübergreifende
-Voraussetzungen bleiben im Kontext; nur die ausdrücklich referenzierten
-Level-2-Ziele bestimmen den Zielnenner.
+Der Default ist eine lesende Auswertung des vollständigen Persönlichen
+Lehrplans. Im bestehenden API-Feld heißt er
+`profileId=automatic:personal-curriculum`; sein `navigationIntent` ist leer.
+Er erzeugt keine gespeicherte Route, pausiert keinen normalen Lernplan und
+ändert weder Fokus noch aktives Ziel. „Lernen starten“ bleibt der normale Einstieg.
 
-Die gemeinsame Zustandsantwort enthält `levelCompletion`; Cockpit und
-Lerncoach erhalten dieselbe Fachberechnung. Bereits das Profilangebot nennt seinen
-statischen Zielumfang, die Zahl erforderlicher Prüfungen sowie deren genaue Titel
-und aktuelle Startverfügbarkeit, bevor es aktiviert wird. Die Vorschau verwendet
-den gemeinsamen Mastery-Snapshot; sie führt keinen Evaluatorlauf je angebotenem
-Profil aus. Aufgaben, Lösungen und Bewertungsregeln gehören nicht in diese
-Vorschau. Automatische Empfehlungen bleiben
-auf offene Abschnittsziele beschränkt. Unterstützung und freiwillige
-Vertiefung sind bewusste Entscheidungen. Eine ausdrücklich angenommene
-Fokusergänzung bewahrt alle unabhängigen bisherigen Fokuswurzeln und ändert
-den Abschlussumfang nicht. Generische Zielwahl kann die aktive Profilroute
-nicht umgehen: Sie übernimmt nur das bereits ausdrücklich gewählte Ziel im
-Voraussetzungskontext. Außerhalb liegende alte Aktivziele werden beim Lesen
-verborgen und beim schreibenden Zustandsabruf kontrolliert bereinigt.
-Eine nachträglich durch Prüfungsmastery entbehrliche laufende Arbeit bleibt
-erhalten; ihre ausdrücklich gewählte freiwillige Fortsetzung übersteht Reloads,
-ohne dadurch eine neue Hilfskette zu eröffnen. „Für heute beenden“ pausiert eine
-gültige Profilroute vor oder nach Abschluss, solange keine Direktprüfung läuft.
-Die Aktion leert nur die aktive Arbeit, bewahrt Profilwahl, Fokus und Mastery
-und lässt keine automatische Empfehlung oder Wiederaufnahme starten. Erst eine
-frische ausdrücklich angenommene Arbeitswahl setzt die Route fort. Die reguläre
-Lernplanung pausiert abgeleitet aus der Profilnavigation; ihre gespeicherte Präferenz wird nicht
-überschrieben. Beim Verlassen gilt auch eine zwischenzeitlich geänderte Präferenz.
+Weitere Abschnitte stammen aus den autoritativen projizierten Unterbäumen.
+Eine bewusste Auswahl bindet `automatic:<Scope-ID>` als Lernweg. Ein- und
+Ausklappen des Baums, Suchfilter und ein engerer temporärer Fokus verkleinern
+den gewählten Abschlussumfang nicht. Der vollständige Bedarf umfasst auch
+versteckte, indirekte und fachübergreifende Voraussetzungen; bei gemeisterten
+Zwischenzielen stoppt er. Das Backend berechnet und erklärt den Zustand gemeinsam
+für Cockpit und unterstützten Coach.
 
-Erlassbegründungen stammen aus derselben aktuellen Auswertung wie die Zählung.
-Die Standardantwort enthält höchstens drei konkrete Zielbegründungen mit jeweils
-höchstens drei zugehörigen gemeisterten Prüfungen sowie deren Gesamtzahl.
-Cockpit und Coach erklären den Geltungsbereich; eine veraltete oder nicht
-verfügbare Berechnung übernimmt keine frühere Begründung.
+Die aufklappbare Karte **„Prüfungsabkürzungen“** enthält die konkreten Prüfungen
+und Abschnittswahl. Prüfungen sind nach Titel durchsuchbar und werden in Seiten
+von acht angezeigt, Abschnitte in Seiten von sechs. Alle Backendangebote
+bleiben erreichbar; die alte Grenze von 24 Vorschauoptionen gilt nicht für das
+Cockpit. Bereits gemeisterte Prüfungen erscheinen als **„Geschafft“**.
+Aufgaben, Lösungen und Bewertungsregeln stehen nicht in dieser Vorschau.
 
-Im Lernzielbaum erscheint an den ausdrücklich entfallenden, noch nicht
-gemeisterten Vorbereitungszielen ein **blaues Schild mit Häkchen** anstelle
-des roten Ziel-Icons. Der Tooltip **„Für diesen Abschnitt durch Prüfung
-abgedeckt“** zeigt bei Mausberührung, Tastaturfokus oder Antippen den Abschnitt
-und, soweit die begrenzte Serverantwort sie enthält, die zugehörigen bestandenen
-Prüfungen. Die Zeile bleibt einzeilig; der Hinweis
-verändert weder Einzelmastery noch Fortschrittsbalken oder Zähler. Bei
-ungültigem oder veraltetem Zustand und beim Verlassen des Profils verschwindet
-er. Aus der Abschlusskarte führt **„Im Lernzielbaum anzeigen“** zum jeweiligen
-Ziel, öffnet seinen Pfad und verschiebt die Baumansicht dorthin, ohne Lernfokus,
-Mastery oder Prüfungsnavigation zu speichern. Automatisch geöffnete Baumknoten
-lassen sich anschließend manuell schließen und bleiben bei unveränderten
-Zustandsaktualisierungen geschlossen.
+**„Prüfung direkt versuchen“** führt zur bestehenden Anbieterwahl. Erst der
+bestätigte Start bindet Umfang und Prüfung atomar an die Sitzung. Ein bloßes
+Ansehen startet nichts. Auch am konkreten Prüfungslernziel ist derselbe Einstieg
+verfügbar. Die Backendprüfung von Revision, Scope, Aufgabenverfügbarkeit und
+Sitzungseigentümer bleibt maßgeblich.
 
-Der Direktstart führt aus dem Cockpit zunächst in die bestehende Anbieterwahl.
-Erst der tatsächliche Lernstart wählt gegebenenfalls das Profil und bindet die
-gewählte Prüfung atomar an eine frische Claude-Sitzung. Im unterstützten
-Claude-Coach kann dieselbe bewusste Prüfungswahl unmittelbar in der bestehenden
-Sitzung erfolgen. Die Ausnahme gilt nur für diese Prüfung, einschließlich im
-Striktmodus. Andere Sitzungen erhalten keine Aufgaben- oder
-Bewertungsberechtigung aus dieser Bindung. Eine noch gültige Bindung bleibt
-bei einem Cockpit-Refresh erhalten. Bei Ablauf oder ungültig gewordener
-Generations-/Profil-/Scope-Bindung zeigt ein reiner Read keine laufende Prüfung;
-der schreibende Cockpitabruf pausiert und bereinigt sie einmalig. Der verifizierte
-Besitzer kann neutral beenden, ohne eine neue fachliche Prüfungsfreigabe zu
-benötigen. Fremde Sitzungen bleiben gesperrt. Veraltete Aktionen ergeben einen
-erklärten Konflikt; Inhalts- und Profilupdates werden von einer Änderung des
-Persönlichen Lehrplans unterschieden.
+Im Lernzielbaum kennzeichnet ein kompaktes blaues Schildsymbol implizite
+Erledigung. Der Tooltip **„Für diesen Abschnitt nicht mehr erforderlich“**
+nennt den Bezug und erklärt den unveränderten Lernstand. Er behauptet nicht,
+dass eine Prüfung bestanden wurde, wenn gewöhnliche Mastery oder fehlender
+Bedarf ausschlaggebend war. Es gibt keinen grünen Mastery-Haken und keinen
+breiten Zusatzblock. Das Symbol ist mit Maus, Tastatur und Touch bedienbar.
+Bei veralteten oder ungültigen Daten verschwinden positive Kontextmarker.
+Nach Verlassen eines gewählten Abschnitts gilt wieder der aktuelle
+Defaultkontext; dessen weiterhin gültige Marker dürfen erhalten bleiben.
 
-Nach einer Rückmeldung ohne erfolgreichen Mastery-Write kann die lernende
-Person ausdrücklich Unterstützung, einen neuen Versuch oder Pause wählen.
-Diese neutralen Navigationen übertragen keinen Fehlstatus, Score oder Chattext.
-Ein neuer Versuch macht alte Bewertungs-Capabilities durch den Revisionswechsel
-ungültig. Ein bestätigter Erfolg beendet die Direktbindung im selben Write.
-Der vorhandene genaue Schreib-Replay bleibt beim Coordinator.
+Manuell geschlossene Baumknoten bleiben geschlossen. Eine neue bewusste
+Navigation kann den Zielpfad wieder öffnen. **„Im Lernzielbaum anzeigen“**
+öffnet, fokussiert und scrollt rein lesend; es speichert keine Mastery oder Route.
 
-Die private `completion_workflow`-Spalte enthält ausschließlich Navigation und
-Sitzungsbindung. Sie fehlt in gewöhnlicher Entitätsserialisierung und signiertem
-Export. Ein erfolgreicher Import entfernt sie vor der Fokusrevalidierung;
-fehlgeschlagene Importvalidierung verändert den Ablauf nicht.
+Ein laufender Direktversuch bleibt an seine Sitzung gebunden. Ein Wechsel,
+Retry oder Beenden wird bewusst durchgeführt; alte Capabilities dürfen den
+neuen Versuch nicht bewerten. Eine ungültige Generations-/Scope-Bindung wird
+kenntlich gemacht. Gespeicherte Ergebnisse gehen dadurch nicht verloren.
 
-Öffentlicher Lernkarten-Sync verwendet eine serverseitige Compare-and-set-
-Revision. Er kann keine bestandenen `verifiedRecall`-Daten erzeugen oder
-überschreiben. Neue signierte Exporte enthalten die nötigen Kartenstände;
-nicht sicher wiederherstellbare alte Kartenarchive werden vor Änderungen
-abgewiesen. Technisch unlesbare Pflichtdaten ergeben `unavailable`.
+## Plan-IST und Explizit-Zählung
 
-SRS-Snapshots, normale Mastery-Overlays, Frontier-Verfügbarkeit und Kartenzählung
-verwenden denselben aufruflokalen Batchresolver. Er liest die benötigten
-Zustandszeilen gebündelt in `IN`-Blöcken von höchstens 500 IDs und liest identische
-Deckressourcen innerhalb des Aufrufs nur einmal. Ein echter H2-SQL-Zähltest
-belegt pro geprüftem Resolver-/Overlaypfad für ein und 40 SRS-Ziele jeweils eine
-Zustandsabfrage; ohne SRS-Ziele entfallen Zustandsabfrage und Deckzugriff. Es gibt keinen personenbezogenen
-Cache über Requests hinweg.
+Die lokale Planintegration zählt im Standard explizite und implizite Erledigung:
 
-Fehlende, unlesbare oder leere Decks, fehlende Vorder-/Rückseiten und beschädigte
-bestehende Kartenstände sind technische Fehler. Für den betroffenen
-Abschluss-Snapshot ergeben sie `unavailable`, keinen erfundenen Fehlversuch
-und keinen Abschluss. Das tolerante normale Overlay bewahrt bei einem solchen
-Ziel die vorhandene Mastery; Fokus und gespeicherte Ergebnisse bleiben erhalten.
-Ein gültiges Deck ohne bisherigen Kartenstand ergibt dagegen regulär nicht
-gemeistert. Diese Unterscheidungen sind durch echte Integrationsfälle geprüft.
+```text
+I = |G ∩ (M ∪ W_PC)|
+```
+
+G ist die feste, fachweise zusammengeführte Planmenge, M explizite Mastery und
+W_PC die im **vollständigen Persönlichen Lehrplan** nicht mehr benötigten Ziele.
+**G ist eine zeitliche Auswahl, kein eigener Abschlussscope.** Die Backendauswertung
+berechnet zuerst den Bedarf des ganzen Persönlichen Lehrplans einschließlich
+seiner vollständigen Voraussetzungshülle und schneidet erst dann mit G.
+
+Enthält G nur Vorbereitung A, während eine offene Prüfung Q außerhalb G im
+Persönlichen Lehrplan weiterhin A benötigt, bleibt A erforderlich: I=0.
+Auch noch nicht eingeplante oder fachübergreifende Verbraucher zählen zum
+Bedarf. Der anschließende IST-Beitrag bleibt auf G des jeweiligen Fachs
+beschränkt; zwischen Fächern wird kein Saldo verrechnet. Ein enger gewählter
+Abschlussabschnitt kann W_section anzeigen, ändert aber Plan-I nicht.
+Jedes gemeisterte Zwischenziel stoppt seinen eigenen Bedarf; eine zusätzliche
+Prüfungsankerregel gibt es nicht.
+
+Unter **Konfiguration → Lerneinstellungen** steht neben der Planperiodenwahl
+**„Nur explizit erreichte Lernziele zählen“**. Die Checkbox ist standardmäßig aus.
+Mit ihr gilt `I = |G ∩ M|`. Erst Speichern wirkt; Schließen ohne Speichern
+verwirft die Änderung. Die Einstellung verändert weder Planbasis, Termine,
+Mastery noch laufende Prüfungen. Ein bereits implizit angerechnetes Ziel zählt
+bei späterer eigener Mastery nicht doppelt.
+
+`learningPlanCountOnlyExplicitGoals` gilt pro SkillPilot-ID. Fehlende Werte in
+alten Profilen oder signierten Backups bedeuten `false`; gespeicherte Werte
+bleiben beim Export/Import erhalten. Die API lässt ausgelassene Felder bei einem
+partiellen Update unverändert. Tatsächliche Periodenabschlüsse stammen weiterhin
+aus echten Abschlussereignissen; implizite Erledigung erzeugt keine künstlichen
+Zeitpunkte oder Lernaktivitäten.
+
+Die vorhandenen **Plandetails** zeigen bei Bedarf einmal pro Fach den
+backendlokalisierten Satz, etwa **„Im Plan angerechnet: 3 Ziele, davon
+2 implizit erledigt.“** Bei expliziter Zählung, fehlendem impliziten Beitrag oder
+fehlender Auswertbarkeit entfällt dieser positive Zusatz. Tachos und kompakte
+Statuszeilen erhalten keine zweite eigene Rechnung.
+
+Die Zähloption ist unabhängig von **„Prüfungsabkürzungen anbieten“**. Route
+verlassen, Fokus ändern oder direkte Prüfungsangebote ausschalten entfernt
+keine weiterhin gültige implizite Plananrechnung. Fachliche oder Planänderungen
+werden dagegen neu ausgewertet. Details stehen im
+[Lernplanstatuskonzept](../concept/didactic/unified-learning-plan-status.md#34-implizite-erledigung-und-optionale-explizit-zahlung)
+und in [Abschnitt 7.1 des Umsetzungsplans](assessment-gated-completion-implementation-plan.md#71-plan-ist-einschließlich-impliziter-erledigung).
 
 ## Aktivierung und Betrieb
 
-Die Funktion ist standardmäßig verfügbar. Es müssen keine Completion-Variablen
-zum Einschalten gesetzt werden. Die geprüften Profile werden geladen; passende
-aktuelle Lehrplanbasen werden im Repository- und Paketmodus automatisch ermittelt.
-Lehrpläne ohne solche Regeln bieten keine Abkürzung an. Das aktuelle fachlich
-freigegebene Angebot bleibt **Skalarprodukt und orthogonale Projektion**; die
-Standardeinstellung erzeugt keine zusätzlichen Abdeckungsbehauptungen.
+Die allgemeine Funktion ist standardmäßig aktiv; es ist keine Liste manueller
+Profile als Freischaltung erforderlich. **„Prüfungsabkürzungen anbieten“** ist
+für neue und alte Lernprofile ohne abweichenden Wert standardmäßig ausgewählt.
+Das Speichern eines Optouts entfernt Angebote und neue Direktstarts. Die
+lesende Defaultberechnung samt impliziten Markern und Plananrechnung bleibt
+bestehen. Ein laufender direkter Prüfungsweg wird mit Hinweis beendet;
+Mastery und unabhängige normale Arbeit bleiben erhalten. Wiedereinschalten
+stellt keine alte Prüfungssitzung wieder her.
 
-Im Cockpit unter **Konfiguration → Lerneinstellungen** ist
-**„Abkürzungen durch bestandene Prüfungen nutzen“** standardmäßig ausgewählt.
-Die Einstellung gilt pro SkillPilot-ID und wird mit den anderen Einstellungen
-gespeichert. Erst das Speichern wirkt auf Cockpit und Lerncoach. Die Auswahl
-eines Lernabschnitts bleibt eine bewusste Lernentscheidung, keine technische
-Freischaltung.
+`SKILLPILOT_COMPLETION_ENABLED=false` ist ein administrativer Kill-Switch.
+`SKILLPILOT_COMPLETION_WARMUP_CURRICULUM_IDS` kann häufige Basen vorwärmen,
+ist im allgemeinen Modus aber keine fachliche Zulassungsliste. Die historische
+Variable `SKILLPILOT_COMPLETION_ENABLED_PROFILE_IDS` und das Ein-Profil-/
+Ein-Prüfung-Limit gehören zum früheren Profilpfad; sie begründen keine
+Beschränkung des allgemeinen Angebots.
 
-Abschalten beendet die gewählte Abschlussroute und einen gegebenenfalls laufenden
-Prüfungsdirektstart. Der Hinweis neben der Einstellung erklärt diese Wirkung.
-Bereits gespeicherte Mastery, reguläre aktive Lernziele, Lernfokus und persönliche
-Planpräferenz bleiben erhalten; normale Prüfungen mit erfüllten Voraussetzungen
-bleiben nutzbar. Wiedereinschalten bietet aktuelle Abschnitte erneut an und stellt
-keine alte Prüfungssitzung wieder her. `useAssessmentShortcuts` ist eine
-Lernpräferenz, kein zusätzlicher Ergebniszustand eines Lernziels. Bestehende IDs
-und ältere Sicherungen erhalten den Standardwert `true`; ein gespeichertes
-`false` bleibt beim Export und Import erhalten.
+Statische Graphen sind an eine unveränderliche Curriculumgeneration gebunden
+und werden in begrenzten Caches wiederverwendet. Mastery wird pro konsistentem
+Lernerzustand ausgewertet. Nicht verfügbare oder ungültige Daten liefern eine
+erklärte Einschränkung; sie gelten nicht als leere, vollständig erledigte Arbeit.
+Historische Paket- und Reviewartefakte bleiben unverändert. Ein neuer
+Produktionsstand benötigt einen eigenen kontrollierten Rollout.
 
-Für den Betrieb bleiben optionale Einschränkungen erhalten:
-
-- `SKILLPILOT_COMPLETION_ENABLED=false` schaltet die Funktion serverweit ab.
-- `SKILLPILOT_COMPLETION_ENABLED_PROFILE_IDS` beschränkt bei einer nichtleeren
-  Liste das Angebot auf diese geprüften Profile. Leer bedeutet alle geprüften
-  Profile innerhalb der unten beschriebenen Kapazitätsgrenzen.
-- `SKILLPILOT_COMPLETION_WARMUP_CURRICULUM_IDS` beschränkt bei einer nichtleeren
-  Liste die vorzubereitenden Basen. Leer verwendet die automatische Ermittlung.
-  Bestehende explizite Werte bleiben wirksam; sie sind keine Voraussetzung mehr.
-
-Die statischen Kontexte werden vor Readiness vorkompiliert, außerhalb einer
-Lernendentransaktion. Ein fehlerhafter oder nicht im Cache haltbarer konfigurierter
-Kontext verhindert einen scheinbar betriebsbereiten Pilotstart. Danach wird die
-verifizierte Menge aus Basis-/Profilpaaren unveränderlich versiegelt. Eine
-unbekannte Basis, eine nicht vorbereitete Paarung oder ein später fehlender
-vorbereiteter Cacheeintrag wird vor Loader beziehungsweise Compiler abgewiesen;
-ein Lernendenrequest kann dadurch keine kalte Kompilierung unter seiner Sperre
-auslösen. Die persönlichen Level-2-Zielmengen bleiben variabel.
-Cache-Schlüssel binden Generation, Profil-/Scope-Revision, kanonische Basis
-und Auflösungssemantik. Die aktuelle Laufzeitkapazität erlaubt ausdrücklich
-höchstens ein freigegebenes Profil und eine erforderliche Prüfung je
-kompiliertem Profil. Die standardmäßige Verfügbarkeit ändert diese Grenze nicht.
-Eine Überschreitung bricht vor Readiness mit Diagnose ab, statt Listen still
-abzuschneiden. Compiler und portabler Datenvertrag behalten ihre allgemeinere
-Semantik. Eine spätere Mehrprofil- oder Großprüfungsfreigabe braucht begrenztes
-Nachladen und eine neue Prüfung der Projektionsbudgets.
-Die aktuelle persönliche Level-2-Anwendbarkeit wird
-auch bei einem Cachetreffer geprüft. Die unterstützten Anwendbarkeitsdimensionen
-sind `schoolForm`, `jurisdiction`, `stage`, `courseProfile` und `durationModel`.
-Nicht aufgelöste Angaben werden nicht als Zustimmung interpretiert; unbekannte
-Dimensionen aktivieren kein Profil.
-
-Repository-Landschaften, Mappings, Decks, Profile und Reviewbindungen bleiben
-pro Prozess auf eine Generation gepinnt. Eine unerwartete Dateiänderung setzt
-die Profilroute auf `unavailable`, bevor unabhängiges Nachladen alte und neue
-Inputs mischt. Ein neuer Stand wird durch einen kontrollierten Prozessneustart
-aktiviert. Im Paketmodus stammen die Completion-Dokumente ausschließlich aus
-dem verifizierten Runtime-Snapshot.
-
-Der optionale Paketvertrag liegt unter `contracts/curriculum-package/v1.1/`.
-Er erweitert Discovery und Capability ausdrücklich. Alte V1-Artefakte und
-Vertrauensprofile bleiben erhalten. Ein normaler Provisioner verwendet für
-solche Kandidaten ausdrücklich `--contracts-dir contracts/curriculum-package/v1.1`.
-Für das reine Mathematik-Paket ist die Warmup-Basis
-`68a8ac50-f5f5-4e24-8aa9-5e408ca01ced`; sie ersetzt dort den Repository-Root.
-Eine lokale Installation in einen privaten Teststore ist keine
-Produktionsaktivierung oder Veröffentlichungsfreigabe.
-
-Es gibt derzeit genau ein fachlich statisch geprüftes Pilotprofil. Nach seinem
-Abschluss wird kein nächster Lernabschnitt erfunden oder automatisch begonnen.
-Ein weiterer Abschnitt setzt ein eigenes geprüftes, anwendbares Profil und eine
-bewusste Auswahl voraus; die normale Lernansicht bleibt ausdrücklich erreichbar.
-
-Der Pilot unterstützt den neuen Ablauf zunächst über den bedingt angebotenen
-Claude-Toolvertrag. Dessen technische Quittung bindet den SHA-256-Fingerprint
-der tatsächlich registrierten Instructions und Tooldefinitionen gemeinsam mit
-der unveränderlichen Curriculumgeneration an die konkrete Sitzung. Eine frische
-Sitzung beginnt mit einer serverseitigen `pending`-Bindung. Nur eine gültige,
-zweck-, sitzungs- und zeitgebundene Capability kann sie idempotent bestätigen;
-NULL, alte Versionsmarkierungen und fremde Fingerprints oder Generationen
-werden nicht automatisch aufgewertet. Die Quittung ändert nur Sessionmetadaten,
-keine Lernendenrevision, Zielwahl oder Mastery.
-
-Ein aktiver Profilweg pausiert bis zur Bestätigung auch Aufgaben, Bewertung und
-Bildausgabe; der Guard greift vor einem gespeicherten Schreib-Replay. Ohne aktives
-Profil bleibt normales Lernen möglich. Ein optionales technisches Angebot im
-normalen Kontext erlaubt die Bestätigung und anschließend die erste bewusste
-Abschnittswahl direkt im Coach. Dieser technische Austausch braucht keine
-zusätzliche Bestätigung durch die lernende Person. Alte oder inkompatible
-Sitzungen können den aktiven Profilweg nicht ungefiltert fortsetzen und benötigen
-einen frischen unterstützten Start. ChatGPT und Gemini sind für diese Funktion
-vorerst zurückgestellt. Ihre spätere Umsetzung soll denselben vollständigen
-Ablauf wie Claude innerhalb der jeweiligen Sitzung unterstützen; ein
-Cockpit-Link als Ersatz für den direkten Prüfungsstart ist nicht vorgesehen.
-
-Diese Quittung belegt eine technische Sitzungskommunikation, **nicht**, dass ein
-Host oder Modell die Instructions vollständig gelesen oder befolgt hat. Echte
-Host-Abnahme bleibt separat. Veröffentlichte Providerpakete wurden nicht
-überschrieben; weitere Anbieter benötigen Adapter- und Hostprüfung.
-
-Die Micrometer-Metriken `skillpilot.completion.compile`, `.evaluate`,
-`.cache.requests`, `.cache.evictions`, `.cache.contexts`, `.cache.nodes`,
-`.cache.edges`, `.scope.status` und `.revision.conflicts` erfassen Berechnungen,
-Cachebetrieb, Scopezustände und konkret abgewiesene Completion-Revisionskonflikte.
-Labels stammen aus festen Mengen; Lernenden-, Profil- und Sitzungskennungen
-werden nicht als Labels verwendet. Die Timer für Compiler und Evaluator
-enthalten keine HTTP-/Datenbanklatenz. Statuszähler zählen Projektionen, keine
-eindeutigen Personen oder fachlichen Lernerfolge. Der Konfliktzähler verwendet
-nur die festen Quellen `ui` und `coach`; fehlende Eingaben oder andere
-HTTP-409-Ursachen werden nicht als Revisionskonflikt gezählt.
+Der direkte Ablauf ist über Claude angebunden. Eine frische Sitzung bestätigt
+zuerst den serverseitigen technischen Completion-Vertrag und lädt danach den
+aktuellen Kontext. Das ist keine zweite Lernendenzustimmung und keine weitere
+Prüfungsqualifikation. ChatGPT und Gemini sind für diese Funktion zurückgestellt;
+ihre spätere Integration braucht denselben vollständigen Sitzungsablauf,
+geeignete Adapter und eigene Host-Abnahme. Ein Cockpit-Link ersetzt diesen
+Ablauf nicht.
 
 ## Reproduzierbare Prüfung
 
+Die folgenden Befehle prüfen den aktuellen lokalen Stand; sie sind keine
+Behauptung, dass ein bestimmter Commit bereits entfernt erfolgreich geprüft ist:
+
 ```sh
-npm --prefix app run check:assessment-completion-profiles
-npm --prefix app run test:assessment-completion-profiles
 npm --prefix app run test:level-completion
 npm --prefix app run test:level-completion-browser
-```
-
-Im Backend wird das im Repository festgelegte JDK verwendet. Der PostgreSQL-
-Test benötigt eine eigene Testdatenbank `skillpilot_completion_test` auf
-Loopback. Er legt ein zufälliges Schema an, führt die echten Liquibase-
-Migrationen aus und entfernt anschließend nur sein eigenes Schema:
-
-```sh
+npm --prefix app run test:learner-learning-plans
 cd backend
-SKILLPILOT_TEST_POSTGRES_URL=jdbc:postgresql://127.0.0.1:5432/skillpilot_completion_test \
-SKILLPILOT_TEST_POSTGRES_USER=completion_test \
-SKILLPILOT_TEST_POSTGRES_PASSWORD=completion-test-only \
-./gradlew test --tests '*AssessmentCompletionPostgresIntegrationTest'
-
-SKILLPILOT_COMPLETION_BENCHMARK=true \
-./gradlew test --tests '*CompletionPerformanceTest'
+./gradlew test --tests '*AutomaticCompletion*Test' --tests '*LearningPlanCompletion*Test'
 ```
 
-Der eigene [CI-Workflow](https://github.com/enpasos/skillpilot/blob/main/.github/workflows/assessment-completion.yml)
-führt Authoring, gemeinsame Fixtures, UI-/Browser-, Backend-, Karten- und
-PostgreSQL-Prüfungen aus und kontrolliert ausdrücklich, dass Pflichtfälle
-tatsächlich ausgeführt wurden. Der Benchmark ist als zusätzliche Messung
-aufrufbar; schwankende Shared-Runner-Zeiten werden nicht als harte
-Millisekunden-Assertions benutzt.
+Die Kernfälle umfassen Mastery an gewöhnlichen Zwischenzielen, direkte statt
+transitive Bedarfsfortpflanzung, mehrere offene Prüfungen, Q=0, unbelegte
+Endziele, vollständigen Personal-Curriculum-Bedarf auch außerhalb G, Defaults,
+Optout, direkte Sitzungswahl,
+Stale-Zustände sowie Desktop/Mobil und Tastatur. Historische Profile behalten
+eigene Kompatibilitätsprüfungen; deren Erfolg ersetzt diese allgemeinen Fälle
+nicht. PostgreSQL- und echte Backend-Browserintegration gehören zusätzlich
+zum bestehenden [CI-Workflow](https://github.com/enpasos/skillpilot/blob/main/.github/workflows/assessment-completion.yml).
 
-Die [lokale Kernmessung vom 30. Oktober 2026](../qa-ci/status/assessment-completion-performance-2026-10-30.json)
-enthält 13 deterministische Graphformen unter Corretto 25.0.2 auf einem
-Xeon E-2286M mit 16 logischen CPUs in WSL2. Beim Datensatz mit genau 10.000
-atomaren Zielen und 100.000 expandierten Kanten betrug die warme p95-Auswertung
-2,085 ms ohne Mastery beziehungsweise 1,813 ms mit gemeisterter Prüfung;
-die erste Kompilierung dieses Datensatzes im bereits laufenden JVM-Prozess
-dauerte 209,990 ms. Acht gleichzeitige erste Zugriffe verwendeten dieselbe
-kompilierte Instanz. Der Bericht nennt Aufwärm-/Messzahlen, Speicherwerte und
-Grenzen: Er ist keine HTTP-/Datenbank-, Produktiv- oder Host-Latenzmessung und
-keine Zusage für andere Hardware oder Curriculumdaten.
-
-Die lokale [Paket- und Startup-Probe](../qa-ci/status/assessment-completion-package-loader-2026-10-30.json)
-belegt den regulären Install-/CAS-Pfad eines echten Mathematik-Pakets
-`0.1.0-completion.2` mit 1.252 Zielen und 836 Bildern. Sein JSON-ZIP hat SHA-256
-`fe52bf0608117e08779e47391c0d32521bf97749b944dd3b70c129207257d839`.
-Der echte Dateisystem-Loader, Completion-Katalog, Compiler und Evaluator wurden
-gegen diesen privaten Teststore geprüft: Bestehende Prüfungsmastery genügt für
-den abgeleiteten Abschluss, ohne das Mastery-Set zu verändern. Bildbytes werden
-nicht zusätzlich als Payload im Runtime-Snapshot behalten. Die einzelne Probe
-lief mit maximal 384 MiB Heap; etwa 24,8 MB waren nach GC belegt. Das ist keine
-allgemeine Speicher- oder HTTP-Latenzzusage.
-
-Dieselbe Nachweisdatei enthält einen echten Repository-Kaltstart einschließlich
-Katalogpinning und beider vorbereiteter Basen: 6.524 Ziele im Root, 1.252 Ziele
-in Mathematik, jeweils zehn Ziele im kompilierten Prüfungskontext. Der Warmup
-benötigte in dieser einzelnen lokalen Messung 767 ms, der gesamte Start
-15,5 Sekunden. Anschließend wurde eine unbekannte Basis vor dem Loader
-abgewiesen. Der zusätzliche HTTP-/Datenbankaufwand wird durch eigene
-Integrationsmessungen beurteilt, nicht aus diesen Kernwerten abgeleitet.
-
-Die ausgeführten lokalen Backendpfade umfassen den echten MCP-Handler mit
-Erstwahl-Quittung, Direktstart, erfolgloser Bewertung ohne Mastery-Write,
-bewusstem Retry, abgewiesener alter Capability, erfolgreichem Write und genauem
-Replay. Weitere Integrationsfälle prüfen parallele Mastery, Ownerwechsel und
-Recovery, Prüfungsangebote außerhalb des Fokus, Prüfungsziele ohne direkte
-`requires`, freiwillige Weiterarbeit nach Reload sowie aktuelle Planpräferenzen.
-Die echte PostgreSQL-Prüfung verwendet die produktiven Liquibase-Migrationen.
-Ein lokaler grüner Testlauf ist keine Behauptung über einen noch nicht
-abgeschlossenen oder nicht gestarteten entfernten CI-Lauf.
-
-Der [abschließende lokale Integrationsbeleg](../qa-ci/status/assessment-completion-integration-2026-10-30.json)
-hält **697 Backendtests in 47 Suiten ohne Fehler oder Skips** und zwölf erfolgreiche
-Frontend-Prüfschritte einschließlich TypeScript, ESLint und Produktionsbuild fest.
-Der neue CI-Pflichtsatz ist vollständig enthalten. Der Bericht bindet die geänderten
-Implementierungsdateien an einen SHA-256-Wert. Er dokumentiert den damaligen
-lokalen Messsnapshot vor dem Implementierungscommit; sein historisches
-`uncommitted`-Feld beschreibt diesen Erfassungszeitpunkt, nicht den aktuellen
-Git-Status. Ein späterer Commit oder Push ersetzt keinen tatsächlich terminalen
-Remote-CI-Nachweis.
-
-Die echten Browserfälle prüfen mobile Darstellung, Tastatur, einen parallelen
-HTTP-409, Anbieterwahl und Sitzungserzeugung, Reload, langsame und abgebrochene
-HTTP-Anfragen, einen bestätigten MCP-Mastery-Write, die zugängliche Abschlussmeldung,
-die zugehörige Erlassbegründung und die Profilpause nach Reload. Der echte
-Zwei-Instanzen-Test startet getrennte Spring-Anwendungen gegen dasselbe isolierte
-PostgreSQL-Schema: Alte Quittungen, Aktionen, Bewertungen und Schreib-Replays
-werden nach dem Generationswechsel abgewiesen; bereits gespeicherte Mastery
-zählt in der neuen Generation sofort weiter. Das ist keine Host- oder menschliche
-Screenreader-Abnahme.
-
-Im dokumentierten HTTP-Lauf betrug p95 ohne Profil 210,156 ms und mit Profil
-218,078 ms; die beobachtete Differenz beträgt 7,922 ms. Die zusätzliche
-Completion-Projektion hatte 1.957 Bytes gegenüber dem Startbudget von 8 KiB.
-Ein einzelner Profilabruf benötigte allerdings 1.992,713 ms. Alle Rohsamples und
-Maxima bleiben erhalten: Diese Messung im breiten lokalen Testprozess ist weder
-ein kausaler Overheadnachweis noch eine Zusage zur Produktivlatenz. Das
-8-KiB-Budget wird außerdem vor der Profilwahl sowie im offenen, laufenden,
-abgeschlossenen und pausierten Pilotzustand geprüft.
-
-## Paketnachweis und externe Freigaben
-
-Der [vollständige lokale Paketnachweis](../qa-ci/status/assessment-completion-fwu-roundtrip-2026-10-30.json)
-bindet das endgültige `.2`-Paket an seine tatsächlichen Receipts. Die normative
-FWU-Prüfung hat alle 18 Gates bestanden; HermiT bestätigt Konsistenz und null
-unerfüllbare Klassen. Zwei frische, hermetisch isolierte Rückbuilds ohne Zugriff
-auf Original-JSON, Authoring-Checkout, Vorwärtsexporter oder Netzwerk erzeugen
-bytegleiche JSON-ZIPs und Manifeste. Beide unabhängigen JSON-Gesamtvalidierungen
-bestehen jeweils alle sechs Gates einschließlich Reviewbindung und Contentdigest;
-auch der separate externe Receiptvalidator ist erfolgreich beendet.
-
-Alle 114 logischen Artefakte und 836 Bilder bleiben erhalten. Die gemeinsame
-semantische Contentidentität stimmt über JSON, FWU und beide Rückexporte überein.
-Nur drei ausdrücklich generierte Build-/Validierungsmetadaten entfallen beim
-Rückexport. Lizenz-, Herkunfts- und Weitergabebindungen aller gemeinsamen
-Dateieinträge sowie beide Lizenztexte bleiben erhalten. Das Paket bleibt ein
-lokaler DRAFT-Kandidat; die dokumentierten offenen Quellen- und
-Weitergabeprüfungen werden durch den technischen Roundtrip nicht freigegeben.
-
-Die Browser-, Neustart- und Datenbankprüfungen sind im oben verlinkten
-Integrationsbeleg abgeschlossen. Der Paketnachweis beruht auf seinen eigenen,
-oben verlinkten Receipts.
-
-Beobachtete Claude-Host-Abnahme, der moderierte Verständlichkeitstest und eine
-spätere fokussierte ChatGPT-Abnahme bleiben vor produktiver Ausweitung eigene
-Freigaben. Maschinenprüfungen werden nicht als menschliche Erprobung oder
-Wirksamkeitsnachweis bezeichnet.
-
+Die [Kernmessung](../qa-ci/status/assessment-completion-performance-2026-10-30.json),
+[Paket-/Startup-Probe](../qa-ci/status/assessment-completion-package-loader-2026-10-30.json),
+[Integrationsbelege](../qa-ci/status/assessment-completion-integration-2026-10-30.json)
+und [FWU-Roundtrip](../qa-ci/status/assessment-completion-fwu-roundtrip-2026-10-30.json)
+vom 30. Oktober sind **historische Belege des manuellen Piloten**. Sie bleiben
+unverändert, beweisen aber weder die neue allgemeine Laufzeit noch deren
+heutige Payloadgröße, p95-Latenz oder Host-Verständlichkeit.
 
 ## Manuell testen: lokale Umgebung und tatsächlicher Claude-Host
 
-Für einen reproduzierbaren Ersttest eine **neue SkillPilot-ID** verwenden, nicht
-das eigene bestehende Lernprofil zurücksetzen. Für Erfolgs- und
-Misserfolgsverlauf am besten zwei neue IDs anlegen. Bei einem vorhandenen Profil
-zählt bereits gespeicherte Prüfungsmastery sofort; die Prüfung wird dann nicht
-noch einmal verlangt.
+Eine eigene neue Test-ID verwenden, statt ein vorhandenes persönliches Profil
+zurückzusetzen. Erfolg und nicht ausreichende Abgabe mit getrennten Test-IDs
+prüfen. Bereits gespeicherte Mastery zählt unmittelbar; sie braucht keinen
+zweiten kontextspezifischen Prüfversuch.
 
-### Lokalen Repository-Pilot starten
+### Lokale Umgebung starten
 
 Voraussetzungen: Corretto **25.0.2.10.1** (Java 25.0.2), Node **20.20.2** gemäß
 `.java-version`, `.corretto-version` und `.nvmrc`, installierte npm-Abhängigkeiten
@@ -449,7 +265,7 @@ VITE_API_BASE=http://localhost:8080 npm --prefix app run dev -- --host 127.0.0.1
 ```
 
 `http://localhost:5173` öffnen. Diese lokale Umgebung erlaubt Cockpit,
-Profilwahl und die lokale Claude-Sitzungserzeugung. **Ein geöffneter Claude-Tab
+Abschnittswahl und die lokale Claude-Sitzungserzeugung. **Ein geöffneter Claude-Tab
 ist noch kein erfolgreicher Hosttest:** Ein entferntes Claude kann diesen
 Loopback-Backend nicht erreichen, und die unveränderten öffentlichen
 Connectoradressen zeigen nicht auf die lokale Instanz. Lokale Startschlüssel
@@ -460,221 +276,92 @@ Sicherheitsprüfung oder öffentliche Origin-Pins auf HTTP-Loopback umbiegen.
 
 ### Neues Lernprofil und sichtbaren Umfang einrichten
 
-1. Auf der Startseite **„Lernen starten“ / „Jetzt starten“** wählen und
-   **„Neue SkillPilot-ID erstellen“** verwenden. Die ID für diesen Test aufheben.
-2. Unter **„Curriculum wählen“** das Curriculum **„Gymnasium (DE)“** wählen,
-   nicht eine eingefrorene Kompatibilitätsansicht.
-3. **„Persönliches Curriculum festlegen“** vollständig durchlaufen:
-   **„Hessen“**, bei **„G8 oder G9?“** **„G9“**, bei
-   **„Welche Lernstufen möchtest du abdecken?“**
-   **„Sekundarstufe I und II“**, als Fach **„Mathematik“** und als Kursprofil
-   **„Grund- und Leistungskurs“** wählen. Das entspricht dem geprüften
-   `CrossStage`-/`GK+LK`-Testumfang; andere Fächer werden für diesen Versuch
-   nicht benötigt. Mehrfachauswahlen mit **„Diese Auswahl abschließen“**
-   abschließen, bis **„Dein persönlicher Lehrplan ist eingerichtet.“** erscheint.
-   Die angebotene Reihenfolge folgt dem Curriculum; keine Phase Q2 als
-   zusätzliche dauerhafte Scopeauswahl erfinden.
-4. **„Cockpit öffnen“**. Unter **„Lehrplan anpassen“** / **„Lerneinstellungen“**
-   für den ersten Versuch **„Autopilot aktivieren“**, **„Nach Plan lernen“** und
-   **„Strict Mode aktivieren“** ausschalten. Mit **„Fertig“** schließen.
-   Der Direktstart funktioniert später auch im Strict Mode; normale Unterstützung
-   kann dort allerdings globale Voraussetzungen benötigen.
-5. Im Lernzielbaum das Ziel **„Definition des Skalarprodukts mithilfe
-   orthogonaler Projektionen veranschaulichen“** öffnen. Als genaue
-   Navigationshilfe funktioniert bei bereits geladenem Lernprofil auch
-   `http://localhost:5173/learner/3016ec37-1c2e-47db-83f5-e767923bc97e?l=a0e13c56-c25f-4742-9272-3a1a603ee52e`.
-   Das Öffnen setzt noch keine Mastery. Über den runden Fokusknopf neben dem
-   Ziel mit Tooltip **„Als Lernfokus setzen“** dieses Ziel fokussieren. Der Knopf
-   trägt danach **„Aktueller Lernfokus“**. Auf einer neuen ID sind keine
-   unabhängigen alten Fokuswurzeln zu entfernen.
-
-Die aufklappbare Auswahl **„Prüfungsabkürzungen“** zeigt bereits vor der
-Profilwahl den Abschnitt, **„2 Lernziele, davon 1 erforderliche Prüfung.“**
-und das konkrete Prüfungsziel. Das Aufklappen verändert weder aktives Ziel,
-Fokus, Profilwahl noch Mastery. **„Prüfung direkt versuchen“** führt ohne
-vorherige Profilwahl in die Anbieterwahl. Am entsprechenden Prüfungslernziel
-im Baum ist derselbe Einstieg erreichbar; dafür werden keine weiteren
-Baumzeilen oder Erlassbehauptungen erzeugt.
-
-Wer stattdessen den Abschnitt regulär bearbeiten möchte, wählt den
-Knopf **„Abschnitt als Lernweg wählen“** unter
-**„Skalarprodukt und orthogonale Projektion“**.
-Erwartung bei der neuen ID: **0 von 2 Lernzielen geschafft**, **0 von 1
-Prüfungen geschafft**, kein Erlass, Abschnitt noch offen. Die technische ID des
-Profils lautet `math-dot-product-projection`; sie muss nicht eingegeben werden.
-Fehlt die Karte, zuerst die gespeicherte Cockpit-Einstellung für Abkürzungen,
-abgeschlossene Personalisierung und die beiden sichtbaren Ziel-IDs prüfen.
-Anschließend gegebenenfalls explizite serverweite Abschaltungen oder
-Einschränkungen prüfen, statt Mastery zu verändern.
+1. Eine neue SkillPilot-ID erstellen und den Persönlichen Lehrplan vollständig
+   konfigurieren, beispielsweise Mathematik mit der gewünschten Stufe.
+2. „Prüfungsabkürzungen“ aufklappen. Die Übersicht nennt ihren tatsächlichen
+   Umfang und enthält die verfügbaren Prüfungslernziele. Auch ohne bewusste
+   Abschnittswahl können implizite Marker vorhanden sein.
+3. Bei vielen Prüfungen Suche und Seitenwechsel verwenden. Einen Eintrag
+   jenseits der ersten Seite aufrufen; die Titel bleiben die Backendtitel.
+4. Einen angebotenen Stufen-/Fachabschnitt bewusst als Lernweg wählen. Sein
+   benannter Umfang darf sich beim Baumzuklappen oder Fokuswechsel nicht ändern.
+   Ein Sek-I-Wunsch darf nicht still in einen Sek-II-Versuch umgedeutet werden.
 
 ### Direktstart, Erfolg und Misserfolg
 
-Auf der Karte **„Prüfung direkt versuchen“** wählen. In der Anbieterwahl bleibt
-für diesen Ablauf **Claude**; die Auswahl allein startet noch keine Prüfung.
-**„Schritt 2: Mit Claude starten“** erstellt die neue gebundene Sitzung und
-öffnet die Startnachricht. Erst diese tatsächliche Startaktion bindet das
-Prüfungsziel. Im Cockpit erscheint **„Eine Prüfung läuft in deinem Lerncoach.“**;
-der bisherige Fokus bleibt erhalten. Reload erhält eine gültige laufende
-Sitzung. Ein echter Hostversuch setzt die unten genannte erreichbare
-Testinstanz voraus.
+„Prüfung direkt versuchen“ wählen, im Anbieterdialog Claude starten und die
+aktuelle Sitzung verbinden. Im Cockpit wird der laufende Versuch angezeigt.
+Der Coach soll keine zweite Zustimmung zur exakt gewählten Prüfung verlangen.
+Erst jetzt werden Aufgabe und normaler Prüfungsablauf ausgegeben.
 
-**Die Qualität der KI-Rückmeldung in beiden Verläufen prüfen:** Nach der
-vollständigen Abgabe müssen Gesamtpunkte mit Maximalpunktzahl,
-Bestehensentscheidung und Punkte samt Begründung je Bewertungskriterium
-nachvollziehbar sein. Der Coach erklärt richtige Lösungsanteile und etwaige
-Fehler, bespricht die freigegebene Lösung und gibt bei Bedarf konkrete
-Verbesserungshinweise. Er bietet Rückfragen an und wartet vor einer neuen
-Aufgabe oder einem anderen Lernziel auf die Entscheidung der lernenden Person.
-Eine bloße Meldung „geschafft/nicht geschafft“ oder „Abschnitt abgeschlossen“
-genügt nicht. Während der noch laufenden Bearbeitung bleiben Lösungen und
-bewertende Hilfen gemäß dem normalen Prüfungsablauf zurückgehalten.
+Die Aufgabe regulär bearbeiten. Bei Erfolg wird ausschließlich die Prüfung
+Mastery erhalten. Der frische Backendstand kann andere Ziele implizit erledigen;
+das ist kein Mastery-Write an deren Voraussetzungen. Eine detaillierte
+Prüfungsbewertung muss bei Erfolg und bei nicht ausreichender Abgabe erfolgen.
+Nichtbestehen bleibt Mastery null, ohne zusätzlichen Ergebnisstatus.
 
-Für den erfolgreichen Versuch die Prüfungsaufgabe regulär bearbeiten. Das
-Pilotziel verlangt gemäß seiner bestehenden Rubrik **10 von 10 Punkten**;
-der Coach muss den normalen bestätigten Mastery-Write verwenden. Keine
-Lösungen oder Erfolgswerte für einen vermeintlich echten Hosttest vorgeben.
-Nach bestätigter Speicherung und Cockpit-Reload gilt exakt:
+Im Baum ein implizites Symbol prüfen: Umfang und Erklärung müssen korrekt,
+Mastery-Haken und globale Masteryzahl unverändert sein. Tooltip per Hover,
+Tabulator/Escape und Touch prüfen. Einen geöffneten Elternknoten schließen;
+er muss bis zur nächsten bewussten Zielnavigation geschlossen bleiben.
 
-| Anzeige / Ergebnis | Erwartung |
+Während eines Versuchs bewusst angebotene Unterstützung, Retry oder Beenden
+verwenden. Ein bestätigter Wechsel beendet den bisherigen Versuch; veraltete
+Bewertungsaktionen dürfen ihn nicht weiterführen. Nach erfolgreichem Speichern
+wird keine ungefragte Folgelektion begonnen.
+
+### Plananrechnung und Zähloption am Pilot prüfen
+
+Das frühere Skalarprodukt-Beispiel ist weiterhin ein kleiner reproduzierbarer
+Testfall, aber kein allgemeiner Freischaltmechanismus:
+
+| Rolle | Ziel-ID |
 | --- | --- |
-| Abschnitt | „Lernabschnitt abgeschlossen.“ |
-| Mastery über die zwei Ziele | **1 von 2 Lernzielen geschafft** |
-| Pflichtprüfung | **1 von 1 geschafft** |
-| Vorbereitung | **Für 1 Lernziel entfällt die Vorbereitung für diesen Abschnitt** |
-| Einzelziele | Prüfung gemeistert; Vorbereitungsziel weiterhin nicht gemeistert |
-| Vorbereitungsziel im Baum | Blaues Schild mit Häkchen; Tooltip mit Abschnitt und bestandener Prüfung |
+| Definition des Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen | `3016ec37-1c2e-47db-83f5-e767923bc97e` |
+| Skalarprodukt über eine orthogonale Projektion erklären: Prüfung | `e98672c6-871a-5d0b-889c-5afc51040f0d` |
 
-Über **„Warum entfällt diese Vorbereitung?“** muss die zugehörige gemeisterte
-Prüfung sichtbar werden. Es darf weder **2 von 2** noch ein neuer Mastery-Haken
-am Vorbereitungsziel entstehen. Der Nenner bleibt gleich; am Vorbereitungsziel
-wird auch global keine Mastery erzeugt. Nur die Prüfung wechselt wie beabsichtigt
-von nicht gemeistert zu gemeistert. Es werden nach Abschluss keine neuen
-Unterstützungsschritte als Pflicht empfohlen. **„Für heute beenden“** pausiert mit erhaltener Profilwahl;
-nach Reload bleibt der Abschluss sichtbar und kein anderes Ziel startet.
-**„Zur normalen Lernansicht“** verlässt die Profilsteuerung bewusst.
+Die [damalige Aufgaben-/Rubrikprüfung](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/assessment-completion/math-dot-product-projection-2026-10-31.md)
+bleibt historische Maschinenprüfung. Die neue Bedarfsregel benötigt keine
+zusätzliche Prüfung-Ziel-Abdeckungsfreigabe.
 
-Über **„Im Lernzielbaum anzeigen“** das Vorbereitungsziel aufrufen, sein
-Icon fokussieren oder antippen und die zugehörige Prüfung im Tooltip prüfen.
-Escape oder Antippen außerhalb schließt den Tooltip; die Zeilenhöhe bleibt gleich.
-Bei langen Begründungen kann am fokussierten Icon mit Pfeil- und Bildtasten
-gescrollt werden. Den übergeordneten
-Baumzweig schließen: Er muss geschlossen bleiben, bis eine neue Navigation
-oder ein ausdrückliches Anzeigen des Ziels ihn wieder öffnet. Nach Verlassen
-des Abschlussprofils darf der abschnittsbezogene Hinweis nicht weiter erscheinen.
+1. Vor dem ersten Bestehen einen Mathematikplan mit genau diesen beiden noch
+   unmastered Zielen erstellen. Für den erwarteten I=2-Nachweis darf nach dem
+   Bestehen kein weiterer offener Verbraucher im vollständigen Persönlichen
+   Lehrplan die Vorbereitung benötigen. Ein auf zwei Ziele begrenzter Plan
+   allein stellt diese Bedingung nicht her.
+   Damit ist die feste Planmenge **|G|=2**. Ein bereits gemeistertes Prüfungsziel
+   würde vor Planerstellung aus G bereinigt und wäre für diesen Vergleich ungeeignet.
+2. „Nur explizit erreichte Lernziele zählen“ ausgeschaltet lassen. Solange die
+   offene Prüfung ihre Vorbereitung benötigt, gilt **I=0**, Mastery **0 von 2**.
+   Den Direktversuch durchführen und den normalen erfolgreichen Write abwarten.
+3. Zur normalen Lernansicht wechseln und die Planansicht aufrufen. Für diese
+   Planmenge gilt jetzt **I=2**: eine explizite Prüfung und ein implizit erledigtes
+   Ziel. Die gespeicherte Mastery bleibt **1 von 2**. Plandetails benennen den
+   impliziten Anteil. Besteht weiterer Bedarf im Persönlichen Lehrplan, bleibt
+   I dagegen korrekt bei 1; eine engere Abschnittsansicht darf das nicht ändern.
+4. „Nur explizit erreichte Lernziele zählen“ aktivieren und speichern:
+   **I=1**, Mastery weiterhin **1 von 2**. Reload erhält die Einstellung. Eine
+   laufende Prüfung darf allein durch diesen Wechsel nicht beendet werden.
+5. Die Zähloption wieder ausschalten: **I=2** ohne neue Mastery oder neues
+   Abschlussereignis. Anschließend „Prüfungsabkürzungen anbieten“ ausschalten:
+   neue Direktangebote entfallen, I und fachlich gültige implizite Marker bleiben.
+   Wiedereinschalten startet keinen Versuch automatisch.
+6. Mit einer separaten frischen Test-ID nur die Vorbereitung in G aufnehmen,
+   während die offene Prüfung im Persönlichen Lehrplan bleibt. I muss **0**
+   bleiben. Die fehlende Prüfung im Plan darf keinen Arbeitsentfall erzeugen.
+   Eine engere Abschnittsansicht und das Abschalten der Prüfungsangebote ändern
+   diesen Planwert nicht.
 
-Die Einstellung zusätzlich prüfen:
+Ergänzend einen gültigen prüfungsfreien Kontext und ein gewöhnliches gemeistertes
+Zwischenziel prüfen. Implizite Erledigung darf in beiden Fällen nicht auf eine
+angebliche bestandene Prüfung zurückgeführt werden. Automatisierte Fixtures
+prüfen diese Fälle ohne Änderung produktiver Curriculum- oder Lernendendaten.
 
-1. **Konfiguration → Lerneinstellungen** öffnen und **„Abkürzungen durch
-   bestandene Prüfungen nutzen“** abwählen. Vor dem Speichern oder nach Abbrechen
-   bleibt der aktuelle Ablauf unverändert.
-2. Speichern: Abschlusskarte und blaue Abschnittssymbole verschwinden. Die
-   bestandene Prüfung und alle Mastery-Zähler bleiben erhalten. Nach Reload
-   bleibt die Einstellung ausgeschaltet; normale Lernziele und regulär
-   zugängliche Prüfungen bleiben nutzbar.
-3. Wieder einschalten und speichern: Der Abschnitt wird erneut angeboten,
-   aber keine Prüfung automatisch gestartet. Nach bewusster Abschnittsauswahl
-   wird die vorhandene Mastery wieder für den Abschluss ausgewertet.
-4. Bei einer zweiten Test-ID während eines Direktversuchs abschalten: Der
-   Dialog weist auf das Beenden hin. Nach Speichern darf eine alte Coach-Aktion
-   diesen Versuch nicht mehr bewerten oder fortsetzen. Bereits vor dem
-   Abschalten gespeicherte Ergebnisse bleiben erhalten. Für den folgenden
-   Nichtbestehenslauf wieder einschalten und den Abschnitt erneut auswählen.
+## Paketnachweis und externe Freigaben
 
-Den nicht erfolgreichen Verlauf mit der zweiten frischen ID durchführen. Eine
-nicht ausreichende Bearbeitung darf keinen Mastery-Write und keinen zusätzlichen
-Fehlversuchsstatus erzeugen: weiterhin **0 von 2**, **0 von 1**, kein Erlass.
-Im Coach eine tatsächlich angebotene **Unterstützung**, **„Prüfung erneut
-versuchen“** oder **„Prüfung beenden und pausieren“** bewusst wählen. Konkrete
-Unterstützungstitel hängen von den aktuellen Voraussetzungen ab; keine
-nicht angebotene Zielwahl erzwingen. Im Cockpit fragt ein Wechsel aus einer
-laufenden Prüfung ausdrücklich nach; **„Prüfung beenden und wechseln“**
-bestätigt ihn, **„Prüfung fortsetzen“** verwirft ihn. Ein Retry benötigt die
-frische Startaktion und macht alte Bewertungs-Capabilities ungültig. Dies wird
-zusätzlich durch die echten MCP-Regressionstests geprüft, ohne dass Testende
-Capabilities aus Chats kopieren müssen. Ohne laufende Direktbindung pausiert
-**„Für heute beenden“** auch einen noch offenen Abschnitt.
-
-### Prüfungsabkürzungen aus dem Coach ansteuern
-
-Die ausdrücklichen Coach-Anweisungen dafür stehen im veröffentlichten
-Paket **Claude 1.1.13** im
-[SkillPilot Marketplace](https://github.com/enpasos/skillpilot-claude-marketplace).
-Nach Aktualisierung des Claude-Pakets in einem frischen Chat testen. Ein
-Backend-Deployment aktualisiert die bereits installierten Skills nicht.
-Die früher veröffentlichten oder importierten Archive bleiben unverändert;
-lokale Paketprüfungen belegen noch keine erfolgreiche Host-Abnahme.
-
-Eine neue Claude-Sitzung mit regulärem Lernweg beginnen und zum Beispiel fragen:
-**„Welche Prüfungen kann ich direkt versuchen, um Vorbereitung abzukürzen?“**
-Der Coach nennt ausschließlich aktuell angebotene Prüfungen und den jeweiligen
-Abschnitt. Er zeigt dabei weder Aufgaben noch Lösungen. Im Pilot ist dies
-**„Skalarprodukt über eine orthogonale Projektion erklären“**.
-
-Diese konkrete Prüfung ausdrücklich wählen. Der Coach nutzt die exakt
-veröffentlichte Auswahl; das Backend wählt Profil und Prüfung gemeinsam und
-bindet sie an dieselbe Sitzung. Es gibt keine zusätzliche Frage nach einer
-technischen Profil-ID und keine zweite Zustimmung zur bereits eindeutigen
-Prüfungswahl. Ein bloßer Informationswunsch startet nichts. Die technische
-Vertragsquittung benötigt ebenfalls keine menschliche Bestätigung.
-
-ChatGPT und Gemini erhalten in diesem Schritt weder neue Shortcut-Anweisungen
-noch eine besondere Link-Übergabe. Ihre spätere Integration übernimmt dieselben
-Auswahl-, Start-, Bewertungs- und Abschlussregeln mit anbietergetrennter Sitzung.
-Ein erfolgreicher Claude-Test ersetzt ihre jeweils eigene Adapter- und
-Host-Abnahme nicht.
-
-Zusätzlich prüfen: Abkürzungen abschalten, Prüfung bereits bestehen lassen,
-den Persönlichen Lehrplan ändern oder einen alten Link erneut öffnen. Es darf
-keine nicht mehr angebotene Prüfung gestartet und keine gewöhnliche Zielwahl
-als Prüfungsabkürzung ausgegeben werden. Ein laufender oder abgeschlossener
-normaler Lernschritt wird nicht ungefragt durch ein Prüfungsmenü ersetzt.
-
-### Reload, alte Ansicht und vorhandene Mastery prüfen
-
-Zwei Cockpit-Tabs derselben Test-ID öffnen. In B eine bewusste Änderung
-vornehmen, etwa **„Für heute beenden“**, und in A eine zuvor angebotene Aktion
-versuchen. Ein noch alter Request muss **HTTP 409** liefern, ohne Fokus oder
-Mastery zu verändern; die Oberfläche meldet **„Deine Auswahl konnte nicht
-bestätigt werden. Lade den aktuellen Stand und wähle erneut.“** und lädt neu.
-Wurde A bereits automatisch aktualisiert, ist eine neue gültige Aktion ohne
-409 korrekt. Für einen deterministischen Konflikttest in den Browser-DevTools
-unter Network einen eigenen POST auf
-`/api/ui/learners/<Test-ID>/level-completion/actions` erfassen, nach einer
-weiteren Änderung in B exakt dessen altes `expectedRevision` per
-**„Copy as fetch“** erneut senden. Nur das eigene Wegwerfprofil verwenden;
-Startschlüssel und IDs nicht als öffentliche Testbelege kopieren.
-
-Die erfolgreich getestete ID anschließend erneut öffnen, die Profilroute
-verlassen und dasselbe Profil wieder wählen. Der Abschluss muss sofort aus der
-bereits vorhandenen Prüfungsmastery berechnet werden. Es darf keine zweite
-Prüfung, technische Quittung über einen Lernerfolg oder Anerkennungsentscheidung
-verlangt werden. Eine neue Coach-Verbindung darf lediglich die beschriebene
-technische Sitzungsquittung benötigen.
-
-### Lokale Technikprüfung und echter Hostversuch getrennt protokollieren
-
-Für die reproduzierbare technische Prüfung ohne externen Claude-Host zunächst
-Chromium für den Repository-Browsertest installieren und anschließend die echten
-lokalen Handler-/HTTP-Prüfungen starten:
-
-```sh
-(cd app && npx playwright install chromium)
-cd backend
-SKILLPILOT_COMPLETION_BACKEND_BROWSER=true ./gradlew test --rerun-tasks \
-  --tests '*AssessmentCompletionBackendBrowserIntegrationTest' \
-  --tests '*ClaudeV1CompletionRouteIntegrationTest' \
-  --tests '*ClaudeV1CompletionContractReceiptIntegrationTest'
-```
-
-`--rerun-tasks` ist hier bewusst angegeben: Die opt-in Umgebungsvariable allein
-ist kein Gradle-Input und darf keinen alten Skip als neuen Testlauf erscheinen
-lassen. Diese Tests verwenden eigene synthetische Lernende und Testdatenbanken; sie
-prüfen echte Backend-/MCP-Writes, aber keine Ausführung in Claude. Für einen
-**echten Hostversuch** den gleichen GUI-Ablauf auf einer separat freigegebenen
-HTTPS-Testinstanz mit passender installierter Claude-Verbindung und aktiviertem
-Pilotprofil durchführen. Neue Claude-Unterhaltung verwenden, Startnachricht
-senden, tatsächliche Toolaufrufe, Erfolgsspeicherung und Cockpit-Reload prüfen.
-Datum, getesteten Commit/Build, Anbieter, Text/Voice, sichtbare Aktionen und
-bestätigte Speicherergebnisse getrennt notieren; keine Tokens oder Chatinhalte
-in öffentliche Nachweise übernehmen. Lokales Grün, technischer Receipt und
-geöffneter Claude-Tab ersetzen diese Beobachtung nicht.
+Unveränderliche historische Profile, veröffentlichte Pakete und deren Receipts
+werden nicht durch die neue Semantik umgebunden. Die lokale allgemeine Laufzeit
+und aktuelle Tests sind gesondert nachzuweisen. Ein lokaler Browserlauf ist
+keine echte Claude-Host-Abnahme; eine technische Vertragsquittung belegt nicht,
+dass das Modell alle Anweisungen verstanden oder befolgt hat. Menschliche
+Verständlichkeit und didaktische Wirksamkeit bleiben eigene Prüfungen.

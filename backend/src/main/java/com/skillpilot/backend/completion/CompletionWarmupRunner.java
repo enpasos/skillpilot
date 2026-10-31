@@ -39,6 +39,17 @@ public final class CompletionWarmupRunner implements ApplicationRunner {
     @Override
     public synchronized void run(ApplicationArguments arguments) {
         CompletionProfileCatalog catalog = application.catalog();
+        if (catalog.enabled() && catalog.automatic()) {
+            if (!catalog.available()) throw new IllegalStateException("Completion curriculum generation is unavailable");
+            if (catalog.generation().equals(warmedGeneration)) return;
+            // Operator warmup hints accelerate common bases; they never restrict which
+            // curriculum or assessment may be used by the general graph calculation.
+            for (String baseId : curriculumIds) {
+                application.automaticCanonicalGraph(baseId, () -> resolver.load(baseId));
+            }
+            warmedGeneration = catalog.generation();
+            return;
+        }
         if (!catalog.enabled() || catalog.profiles().isEmpty()) return;
         if (!catalog.available()) throw new IllegalStateException("Completion warmup cannot use an unavailable curriculum generation");
         if (catalog.profiles().size() > 1) {

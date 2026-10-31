@@ -1,509 +1,276 @@
 # Assessment-Gated Completion and Prerequisite Discharge
 
-A learner who can demonstrate the required outcomes should be able to take
-the level's assessments directly and avoid unnecessary preparatory work.
-This proposal computes **completion of a learning scope** from the existing
-mastery results and reviewed curriculum rules. It does not change what it
-means for an individual learning goal to be achieved.
+**Binding product decision, 31 October 2026.** SkillPilot derives whether
+learning work is still needed from the skill graph and the existing binary
+mastery state. The following three rules replace the earlier pilot's manually
+reviewed waiver profiles:
 
-> **Binding data-model boundary.** Mastery remains the single stored outcome
-> for each learning goal. An assessment goal with mastery is passed and counts
-> immediately. There is no additional qualifying pass, profile-specific
-> recognition, evidence record or stored waiver state for that goal. Completion
-> of a level and preparation no longer required for it are derived results.
+1. When **any** goal is mastered, it no longer demands its own `requires`
+   prerequisites. The source or age of that valid mastery does not matter.
+2. An unmastered goal which no other unfinished goal needs is **implicitly
+   completed**, unless it is a final assessment. Its own prerequisite demand
+   then also disappears. Repeat until stable.
+3. Every final assessment in the applicable learning scope is directly
+   addressable. Missing prerequisite mastery does not prevent an intentional
+   assessment attempt. Choosing useful assessments from the complete set is a
+   discovery and interaction problem, not another eligibility rule.
 
-> **Design proposal — not current runtime behaviour.**
-> This optional completion profile builds on the
-> [Skill Graph](graph-definition.md) and [Curriculum Levels](curriculum-levels.md).
-> It defines a derived view of the existing learner state. The
-> [normal frontier](graph-definition.md#9-learning-availability-and-progression)
-> and the [current exam access gate](node-types.md#requires-semantics) remain
-> unchanged until implementation of the proposed access and continuation rules.
-> The profile introduces no additional learner-result storage.
+Mastery remains the **only persisted outcome per atomic goal**:
+`mastery ∈ {0,1}`. Implicit completion is calculated, never written as mastery,
+never accepted as a second pass, and never stored in an outcome registry.
+The [implementation document](../../dev/assessment-gated-completion-pilot.md)
+separates local implementation, verification and deployment evidence.
+
+## Generalisation without manual waiver profiles
+
+There is no per-assessment profile, `waivableGoalIds` list, coverage grant,
+additional qualifying result or "preparation only" flag in the general
+contract. In particular, a passed assessment is **not** needed to enable
+implicit completion: mastery of an ordinary goal also ends its preparation
+need. Task quality and the ordinary grading contract still determine when
+mastery may be saved; they do not introduce a second acceptance test.
+
+The earlier model combined preparation discharge with certification of every
+prerequisite competence. That was the conceptual error. Implicit completion
+states that separate work is no longer needed in the specified scope; it does
+not certify each competence. Historical pilot profiles and their reviews may
+remain as immutable evidence, but are not runtime prerequisites for this rule.
 
 ## 1. Decisions and learner experience
 
-The proposed profile makes the following decisions:
+The Cockpit distinguishes explicit mastery, implicit completion and remaining
+work without creating three stored goal results. Its compact tree icon explains
+**"Für diesen Abschnitt nicht mehr erforderlich"** in a tooltip. It must not
+claim "passed examination" when an ordinary mastered goal ended the need.
+Mastery bars and mastered-goal counts retain their existing meaning.
 
-1. **A fixed level scope owns the completion calculation.** Later-level goals
-   and unselected optional assessments do not block this level's completion.
-   Hiding a goal or changing the temporary learning focus never reduces its
-   obligations.
-2. **Every required assessment needs mastery.** A passed assessment counts in
-   the same way as any other achieved learning goal. Optional task banks and
-   alternative assessment forms are not additional compulsory exams. Existing
-   required targets remain required until an authorised scope rule resolves a
-   choice.
-3. **Waiver rules are reviewed curriculum rules.** A prerequisite path is not
-   proof of assessment coverage. Authoring review determines which mastered
-   assessment goals justify waiving which preparation. Ordinary goal mastery
-   can discharge a demand, but cannot by itself enable an assessment-based rule.
-4. **Shared prerequisites stay open while a participating consumer needs them
-   directly or indirectly.** An enabled waiver takes effect only after every
-   such consumer has mastery or its work is itself legitimately waived.
-5. **Waived work never becomes global mastery.** A later learning context may
-   require mastery of that competence. Its availability is calculated for its
-   own scope; it does not add a new obligation to this level's calculation.
+The calculation runs without selecting a special profile or starting a coach
+session. The default context is the complete Personal Curriculum. Choosing a
+structural section deliberately creates a section-specific view; opening or
+collapsing tree nodes does not. Learners may still study implicitly completed
+goals voluntarily under their ordinary mastery contract.
 
-The learner deliberately chooses either the normal learning route or a direct
-attempt at an eligible level assessment. Passing writes the existing mastery
-result before any derived progress is shown. Failure preserves existing
-mastery and offers targeted support or another attempt. No failed-attempt or
-score record is added by this profile.
+Final assessments remain open until mastered, even if they have no consumers.
+All other goal types follow rule 2, including orientation and memorisation.
+Their **explicit** mastery workflows remain unchanged. A memory goal becoming
+unnecessary does not mark its cards recalled; an orientation goal becoming
+unnecessary does not fabricate a motivational interaction.
 
-The Cockpit and learning coach distinguish **goal achieved**, **preparation no
-longer required for this level**, and **still required**. These are views of
-mastery and the calculation, not three stored goal states. The interface names
-required assessments still to pass and explains why preparation is no longer
-necessary. It does not count that preparation as individually mastered skills
-or merge it into the global mastery percentage.
+A consequence is intentional: **a finite valid scope with no final assessment
+is entirely explicitly or implicitly completed**. An ordinary terminal goal
+with no consumer is implicitly completed even at zero mastery. Do not defeat
+this rule by silently inventing a protected category or an assessment anchor.
+If content is meant to remain a compulsory endpoint, its assessment role must
+be authoritatively represented in the graph.
 
-## 2. Resolve the level and its obligations
+## 2. Resolve the scope and direct requirements
 
-For one learner, fix a curriculum revision, an applicable completion-profile
-revision, and the authoritative level placement and selection. Let $T_i$ be
-the full set of required atomic targets of level $i$. Resolve any authored
-elective choices before computing completion. Neither a display filter nor
-Level-3 focus is an input to this resolution.
+Fix the curriculum generation and committed Personal Curriculum. Let $T$ be
+the unique applicable atomic targets of the chosen completion scope. The
+scope comes from an authoritative program/composition subtree or the complete
+Personal Curriculum. Resolve authored elective choices and projection roles;
+neither a display filter nor a temporary Level-3 focus silently changes $T$.
 
-Let $Q_i$ be **all required assessment goals in $T_i$**, with
-$\varnothing\ne Q_i\subseteq T_i$. Each must have mastery. If the
-curriculum permits alternative endpoints, the applicable selection contract
-must resolve which endpoint is required; this proposal adds no new selector
-and silently removes no current target. Equivalent task forms for the same
-assessment endpoint do not create additional goal obligations.
+Canonical goal identities remain stable. Expand required clusters into their
+atomic obligations and inherit cluster requirements according to the existing
+[graph definition](graph-definition.md). Apply the authoritative composition
+semantics, including direct atomic goal entries. Include the prerequisite
+closure, with hidden and cross-landscape support, without promoting supporting
+goals to targets. Write $V_H$ for this complete atomic context.
 
-Include the prerequisites needed to interpret these targets, including
-inherited, cluster, cross-landscape, cross-subject and `prerequisiteOnly`
-requirements. Do not include an unrelated future consumer merely because it
-also needs one of these prerequisites. Such a consumer belongs to its own
-completion context. Preserve the distinction between $T_i$ and supporting
-prerequisites throughout; adding a prerequisite to the context never promotes
-it to a target.
-
-### One canonical atomic demand relation
-
-An arrow $B\to A$ means **B requires A**. The overlay counts **all direct and
-indirect atomic requirements**, so equivalent atomic and cluster
-representations do not produce different waiver results.
-
-First resolve the applicable graph and all references, before restricting it
-to this level. The underlying landscapes must satisfy the
-[base graph-validity contract](graph-definition.md#10-summary-of-required-validity-conditions),
-and their composition must satisfy its applicable identity, reference and
-projection contracts. The additional atomic-cycle check below does not replace
-those checks: a cyclic containment relation or redundant authored prerequisite
-is not legitimised by an unchanged waiver result. For the resolved atomic goals $A$, expand
-[Graph Definition §12.2](graph-definition.md#122-structural-feasibility):
+Let
 
 $$
-F=\{(a,b)\in A\times A\mid b\in RequiredAtoms(a)\},
-\qquad D=F^+.
+F_H=\{(u,v)\mid u\text{ directly requires }v
+      \text{ after atomic expansion and inheritance}\}.
 $$
 
-Taking closure **after atomic expansion** matters: an atom inside a required
-cluster can have its own prerequisites. Reject unresolved references, then
-define the prerequisite-closed context and its demand relation by:
+An arrow points **from consumer to prerequisite**. Reject missing references,
+identity conflicts, containment cycles, raw requirement cycles and cycles in
+the reachable expanded atomic graph. An invalid calculation is unavailable,
+not an empty scope or a completed curriculum.
+
+**Do not replace $F_H$ by its static transitive closure.** In
+$C\to B\to A$, mastery of B stops demand at B. The additional authored edge
+$C\to A$ would preserve a separate direct demand for A while C is open.
+These graphs therefore have different work-discharge semantics. Neither
+transitive closure nor transitive reduction is a neutral rewrite here.
+Indirect demand exists only along paths through still-needed, unmastered goals.
+
+Let $Q_H\subseteq V_H$ be the authoritative final-assessment goals. The current
+runtime uses the existing exam/assessment classification (`exam`, assessment
+semantic kinds and compatible `examData` encoding), never title matching or
+`coveredGoalIds`. A practice task which is merely an alternative form must not
+silently become another required goal. Authoring and scope selection decide
+which goal identities participate; runtime does not invent a new selector.
+An assessment already included as a supporting prerequisite remains an
+assessment obligation; hiding it does not make it implicitly complete.
+
+## 3. Mastery and active demand
+
+Let $M$ be the current mastered atomic goals and $E=M\cap V_H$ their
+restriction to the context. This uses the ordinary authoritative goal outcomes,
+including the normal verified-recall resolver for card goals. Existing mastery
+counts immediately, including mastery obtained before this scope was chosen.
+
+For a tentative set $X$ of explicitly or implicitly completed goals:
 
 $$
-\begin{aligned}
-V_H&=T_i\cup\{b\mid\exists t\in T_i:(t,b)\in D\},\\
-R_H&=D\cap(V_H\times V_H).
-\end{aligned}
+Active_H(X)=\{(u,v)\in F_H\mid u\notin X\},
+\qquad Consumers_H(v)=\{u\mid(u,v)\in F_H\}.
 $$
 
-Write $H=(V_H,R_H)$ for this resolved obligation context.
-Reject any reflexive pair in $R_H$: this detects a cyclic expanded requirement
-reachable from this level's targets, including self-dependence through a
-required cluster. This additional check applies to the complete context,
-including supporting goals, not to a display-filtered subset. An atomic
-expansion defect in an unrelated component does not invalidate this local
-calculation, although it remains a defect for any profile that reaches it.
-The full base-graph validity precondition above still applies.
-$R_H$ is a finite, irreflexive, transitive demand relation. Its pairs are
-derived dependency obligations, not additional authored edges. For example,
-$C\to B\to A$ resolves to $(C,B)$, $(B,A)$ **and $(C,A)$**. Even when B is
-mastered, an open C still prevents a waiver of A. Omitting the
-indirect pair would waive A while the normal transitive frontier could still
-require it for C. Adding a redundant authored edge cannot change this result.
+Completing a goal removes its **outgoing demand**. A mastered B does not forward
+an incoming demand from C to B's former preparation A. A separate open consumer
+of A still keeps A necessary. No authored graph edge is deleted in storage.
 
-This is a derived relation for work discharge. It neither edits the authored
-graph nor substitutes for the normative frontier. Equivalence here means
-identical resolved atomic prerequisite reachability; it does not assert that
-every cluster refactoring preserves all other runtime behaviour.
-
-The calculation uses one consistent set of inputs: learner, curriculum and
-profile revisions, level, resolved choices, target roles, dependency resolution
-and current mastery. Different subject views of the same canonical goal use
-one identity and one mastery result. A consistent read of these inputs is not
-an additional persisted evidence snapshot.
-
-Unresolved choices, missing references or an invalid graph produce an
-**invalid or unresolved calculation**, not an empty target set, an empty
-frontier or a completed level. Report the configuration problem separately
-from a learner's remaining goals. A level with no required assessments does
-not use this profile; its ordinary completion contract remains applicable.
-
-## 3. Mastery and reviewed waiver rules
-
-Let $M_A$ be the current set of mastered atomic goals under the existing
-[goal-type semantics](node-types.md). The sole learner-result input to this
-calculation is
-
-$$
-E:=M_A\cap V_H.
-$$
-
-$E$ is a restriction of the existing mastery state, not an independently
-stored or separately approved set of results. An assessment already carrying
-mastery belongs to $E$ whenever it belongs to $V_H$, regardless of when that
-mastery was acquired. The profile cannot reject that success for lack of
-additional metadata. An assumed entry basis or opening an assessment does not
-write mastery and therefore does not add a goal to $E$. The profile introduces
-no separate mastery threshold.
-
-Let $P\subseteq V_H$ contain **every assessment, orientation and memorisation
-goal**, together with any other goal that the applicable type or curriculum
-contract makes non-waivable. This profile introduces no exception for those
-types. Protection preserves an existing obligation; it does not create a new
-target or make every available practice assessment compulsory.
-
-### Reviewed waiver rules
-
-The profile declares a finite set of reviewed rules $(S_r,W_r)$:
-
-- $\varnothing\ne S_r\subseteq Q_i$ identifies the assessment goals that
-  must have mastery together to enable the rule.
-- $W_r\subseteq V_H\setminus P$ identifies the ordinary atomic learning goals
-  whose separate work those assessment successes justify waiving.
-- Every $v\in W_r$ must be a strict prerequisite of at least one supporting
-  assessment: $\exists q\in S_r:(q,v)\in R_H$.
-
-The simplest profile has **one rule**, with $S_r=Q_i$ and a reviewed set of
-waivable goals. Separate rules are useful only when independently sufficient
-assessment groups justify earlier waivers. These are static curriculum policy
-inputs, not individual learner records or a new authored edge type.
-
-Authoring review must establish the substantive justification for each $W_r$
-from the assessment tasks,
-[declared coverage](../runtime-workflows/exam-preparation-planning.md), rubrics
-and the ordinary success contract of the assessment goals.
-`requires` reachability and `examData.coveredGoalIds` alone cannot establish
-that justification. If a passing total could conceal a critical missing
-outcome, or a written task does not adequately cover practical performance,
-leave the affected target outside $W_r$. A waiver rule must be justified by
-what mastery of its assessment goals already means; it must not introduce a
-second, stricter acceptance test for individual learners.
-
-Only **mastery of the required assessment goals** enables a rule:
-
-$$
-W(E)=\bigcup_{r:\ S_r\subseteq E}W_r.
-$$
-
-Derived waivers never enable another rule by pretending to be mastery.
-Mastering an ordinary goal can discharge its outstanding demands, but without
-an enabled rule its prerequisites acquire no waiver. Required targets without
-a reviewed waiver rule still need their own mastery. The strict-prerequisite condition excludes isolated
-targets from waiver eligibility.
-
-### One assessment result, including repeated attempts
-
-The [current exam workflow](node-types.md#scoring-and-mastery) remains the
-outcome contract: a pass writes mastery; a failure leaves it unchanged and
-stores neither the failed attempt nor its score. Existing assessment mastery
-counts immediately, without a separate compatibility or recognition decision.
-There is no state meaning "passed, but not qualified for this level".
-
-The workflow permits repeated attempts at the same task and reveals the
-solution after grading. This profile adds no form history, exposure ledger,
-additional pass certificate or expiry rule. A repeated attempt is evaluated
-under the ordinary assessment contract. A later failure does not remove an
-existing success. Known solutions can limit what repeated-task performance
-establishes; the completion calculation does not turn ordinary mastery into
-proctored or identity-verified certification. Assessment quality remains an
-authoring and coaching responsibility, not another stored learner outcome.
-
-## 4. Derive waived work with a least fixed point
-
-For fixed $H$, policy and current mastery input, define all participating goals
-that directly or indirectly require $v$:
-
-$$
-Consumers_H(v)=\{u\in V_H\mid(u,v)\in R_H\}.
-$$
-
-Starting only from mastery in $E$, add eligible work whose every
-incoming consumer is already mastered or its work is waived:
+## 4. Derive implicit completion with a least fixed point
 
 $$
 \begin{aligned}
-X_0&:=E,\\
-X_{n+1}&:=X_n\cup
-\{v\in W(E)\mid Consumers_H(v)\subseteq X_n\},\\
-X_*&:=\bigcup_{n\geq0}X_n,\qquad I:=X_*\setminus E.
+X_0&=E,\\
+X_{n+1}&=X_n\cup\{v\in V_H\setminus Q_H\mid
+                       Consumers_H(v)\subseteq X_n\},\\
+X_*&=\bigcup_{n\ge0}X_n,\qquad I_H=X_*\setminus E.
 \end{aligned}
 $$
 
-$I$ is the set of work waived **only in this context**. The iteration is
-monotone for fixed inputs and reaches its least fixed point after at most
-$|V_H\setminus E|$ rounds that add a goal. In particular,
-$I\cap P=\varnothing$. No empty-consumer shortcut can waive an unrelated goal,
-because every candidate is tied to an enabled, reviewed assessment rule.
+The operator is monotone and inflationary on a finite set, so iteration reaches
+its least fixed point. Every new implicit completion can remove further demand.
+There is no special rule for the empty consumer set: a non-assessment terminal
+is correctly implicit. Conversely $I_H\cap Q_H=\varnothing$; no assessment is
+implicitly passed. Mastery and $I_H$ are disjoint by definition.
 
-**Why this is well-defined.** On the finite set of subsets of $V_H$, the
-operator $\Phi_E(X)=X\cup\{v\in W(E)\mid Consumers_H(v)\subseteq X\}$ is
-monotone and inflationary. Iteration from $E$ therefore terminates at the
-least fixed point containing $E$. Every newly added element is in $W(E)$,
-which is disjoint from $P$, so protected goals can enter only through $E$.
-An implementation may process consumers before their prerequisites in a
-topological order of $R_H$, but must obtain this same result. Compute a reason
-for each waiver from the enabled rule, its mastered assessment goals and the
-already resolved consumers. These explanations are reproducible from the same
-inputs; they do not require stored individual waiver grants. Iteration rounds
-explain the derivation; they are not elapsed learning time or separate learner
-actions.
+An equivalent linear algorithm starts at all **unmastered assessments** and
+visits their direct prerequisites, stopping whenever it reaches a mastered goal:
 
-Because $R_H$ contains every resolved prerequisite path, a waived goal cannot
-be a prerequisite of any still-open goal in this context:
+```text
+needed = empty set
+pending = all assessment goals without mastery
+while pending is not empty:
+    goal = pop(pending)
+    if goal is mastered or already in needed: continue
+    add goal to needed
+    push its direct expanded prerequisites
+implicit = context goals minus mastered minus needed
+```
 
-$$
-v\in I\ \Longrightarrow\
-\{u\in V_H\mid(u,v)\in R_H\}\subseteq X_*.
-$$
-
-This prevents a waiver from removing work that an open target in the same
-profile still needs. Consumers in a different context remain a separate case.
-
-Demand status is also derived:
-
-$$
-Discharged_H=\{(u,v)\in R_H\mid u\in X_*\},
-\qquad Active_H=R_H\setminus Discharged_H.
-$$
-
-Completion of a consumer discharges its outgoing demands. When an ordinary
-goal becomes waived, its demands discharge in the next iteration. Propagation
-stops at an open consumer, an ineligible goal or a protected goal without
-mastery. Both demand status and waiver status are calculated views. Persist
-neither as additional learner outcomes, and never edit graph edges to store them.
-
-An **active demand** is not the same as an unsatisfied prerequisite. If C is
-open and A has mastery, $C\to A$ is active even though A itself
-satisfies the ordinary mastery test. Conversely, $A\in I$ implies neither
-$A\in M_A$ nor $Sat(A,M_A)$. The fixed point never changes stored results.
+On a valid DAG this is exactly the fixed point above and costs
+$O(|V_H|+|F_H|)$ time and memory. It does not materialise all transitive pairs.
+An implementation can retain a deterministic open-assessment witness for each
+needed goal. An implicit explanation says that no active preparation demand
+remains; it must not fabricate a passed-assessment witness.
 
 ## 5. Worked examples and level completion
 
-B and C are required, protected assessments. Both require A; A requires D.
-The reviewed rule requires **both passes** before A or D is eligible for a
-waiver:
+| Graph and mastery | Result |
+| --- | --- |
+| Assessment C requires B, B requires A; none mastered | C, B and A remain needed. |
+| Same graph, ordinary B mastered | C remains open; A is implicitly complete. |
+| Same graph plus direct C → A; B mastered | A remains needed directly by C. |
+| Assessments B and C both require A; only B mastered | C still needs A. |
+| Same graph, both assessments mastered | A becomes implicit; its unused preparation can follow. |
+| Ordinary terminal Z with no consumer and no mastery | Z is implicitly complete. |
+| Assessment Q with no consumer and no mastery | Q remains open and can be started directly. |
+| Scope contains no assessment | All unmastered goals become implicit, with no mastery writes. |
+
+![B and C directly require A, which requires D. With only B mastered, C keeps A and D needed. With both assessments mastered, A and then D become implicit.](assets/assessment-gated-completion.svg)
+
+The completion condition is
 
 $$
-\begin{aligned}
-R_H&=\{(B,A),(C,A),(A,D),(B,D),(C,D)\},\\
-T_i&=V_H=\{A,B,C,D\},\quad P=Q_i=\{B,C\},\\
-(S_r,W_r)&=(\{B,C\},\{A,D\}).
-\end{aligned}
+Complete(H)\iff T\subseteq X_*\ \land\ Q_H\subseteq E.
 $$
 
-![Two stages showing the immediate prerequisite arrows; the calculation also includes B to D and C to D. With only B passed, the waiver rule is not enabled. With both B and C passed, the reviewed rule enables A and D; A is waived in round 1 and D in round 2. Neither result creates mastery.](assets/assessment-gated-completion.svg)
+For this finite DAG contract, all assessment obligations being mastered is
+also sufficient: without open assessment anchors, every remaining
+non-assessment goal eventually becomes implicit. The target set still governs
+counts: supporting goals do not enter the completion denominator.
 
-The figure shows the immediate arrows for readability. The calculation also
-counts the indirect demands $B\to D$ and $C\to D$: D has three consumers,
-A, B and C, and becomes waived only after all three are done.
+A goal can be implicit in a completed Sek-I section yet needed in a broader
+Sek-I-plus-Sek-II context. That is not a contradiction or a mastery change.
+The UI always names the scope and recomputes when its authoritative inputs
+change. A focus change may reorder suggestions, but must not alter the chosen
+section's obligations.
 
-| Mastered $E$ | Enabled $W(E)$ | Waived $I$ | Interpretation |
-| --- | --- | --- | --- |
-| $\varnothing$ | $\varnothing$ | $\varnothing$ | No passes and no waivers. |
-| $\{B\}$ | $\varnothing$ | $\varnothing$ | B's demands are discharged; C remains required. |
-| $\{B,C\}$ | $\{A,D\}$ | $\{A,D\}$ | A is waived in round 1, D in round 2. |
-| $\{A\}$ | $\varnothing$ | $\varnothing$ | A discharges its demand on D, but no assessment rule enables a waiver. |
-| $\{A,B,C\}$ | $\{A,D\}$ | $\{D\}$ | A keeps its mastery; only D is waived. |
+## 6. Assessment access, discovery and continuation
 
-If an additional **required target** Z in this level also requires D and
-remains open, D stays open after B and C pass. If Z belongs only to a later
-level, it is outside this context and does not block this level's waiver.
-If Z is an unrelated required target, it still requires mastery. If D is a
-protected memory goal, it cannot occur in $W_r$ and needs its own mastery
-wherever it is a target.
+Every applicable assessment is directly selectable without prerequisite mastery,
+including outside the old pilot. The start is deliberate and retains the
+existing authentication, learner revision, session ownership, task availability
+and grading checks. A failed attempt writes no negative pass record and does
+not remove existing mastery. Detailed AI grading, scores, deductions and
+feedback remain part of the conversation under the ordinary exam workflow.
 
-**A supporting goal can still block a waiver.** Let $T_i=\{Q,A\}$,
-$Q_i=\{Q\}$, and let the resolved chain be $Q\to B\to A$. With
-$E=\{Q\}$ and a reviewed rule $(\{Q\},\{A\})$, the context also includes B.
-Since B is neither mastered nor eligible for a waiver, it remains an open
-consumer of A. Hence $I=\varnothing$ and the level is incomplete. B does not
-enter the completion denominator, but its demand still matters. Mastery of A
-suffices for completion; alternatively, mastery of B allows A's enabled waiver.
-A separately reviewed rule could also make B waivable if B is an ordinary,
-unprotected goal with adequate coverage.
-Never waive B automatically merely because it is supporting or
-`prerequisiteOnly`, and never promote it silently to a level target.
+Discovery and starting are separate. Read-only discovery writes no workflow,
+focus or mastery. An accepted selection binds the exact assessment to the
+current learner and supported coach session. Unsupported providers cannot
+borrow that binding. A display limit may bound a page or a coach suggestion
+batch, **not permanently remove assessments from the accessible set**.
 
-The direction matters. For $Q\to A\to B$ with the same targets, mastery
-and waiver rule, B is not a consumer of A. A is waived and the level completes
-while supporting B remains open, even if B is protected. If B also becomes a
-required target, the same mastery and rule no longer complete the level.
-A consumer B that remains open at the fixed point, with $(B,A)\in R_H$,
-prevents an otherwise eligible A from being waived; supporting status alone
-neither blocks completion nor justifies a waiver.
+The Cockpit provides search and paginated rendering over the complete offered
+set. Recommendations can prefer the active goal's structural section and the
+current focus, while the authoritative calculation stays on the complete
+chosen scope. The coach uses backend-published choices; intelligent ranking
+and navigation through a large offer can be improved independently of the
+three completion rules. A single Skalarprodukt example is no longer a valid
+substitute for this general offer.
 
-For this optional profile:
-
-$$
-Complete(i,H,E)\iff(Q_i\subseteq E)\land(T_i\subseteq X_*).
-$$
-
-All required assessments must pass, and every required target must be
-mastered or its work legitimately waived. The assessment clause is written
-explicitly for clarity; it also follows from $Q_i\subseteq T_i\cap P$.
-Only targets count towards level completion and its denominator. Supporting
-prerequisites retain their role even when their separate work can be waived.
-
-**Passing the assessments alone is sufficient only for a profile that proves
-that claim.** Review the coverage and waiver rules, then evaluate the fixed
-point with $E=Q_i$. The claim holds exactly when $T_i\subseteq X_*$ in that
-case. If protected orientation, recall or other non-waivable targets remain,
-state that those additional goals require mastery. This calculation validates
-the policy's consequences; it is not evidence of assessment quality.
-
-## 6. Direct assessment access and subsequent learning
-
-The proposed direct route allows the learner to deliberately attempt a
-required assessment in $Q_i$ even when didactic prerequisites keep it outside
-the normal frontier. Offer it for each $q\in Q_i\setminus E$, subject to the
-existing authorisation and assessment conditions. An assessment with mastery
-already satisfies its obligation; do not demand another pass or reset its
-result. Voluntary repetition remains separate from required work.
-
-The bypass concerns didactic `requires` gating only. It does not waive
-separately required practical safety, supervision, accessibility arrangements
-or other assessment conditions. The ordinary assessment workflow decides
-success and writes mastery. An attempt alone writes no success. Failure leaves
-mastery unchanged and offers targeted remediation without silently enlarging
-the learner's selected scope.
-
-A failed mastery write cannot enable a waiver or produce a claimed completion.
-The response must distinguish feedback about the attempt from a confirmed
-save. Retrying that write must be idempotent and must not award another
-learning-success event for an already mastered goal.
-
-The normal learning route remains available. A level-completion result never
-adds blanket prerequisites between levels and never substitutes $X_*$ for
-the actual mastery set. In an explicitly active completion profile, pending
-target work is $T_i\setminus X_*$. Ordinary recommendations come from its
-intersection with the existing frontier; the direct assessment route is
-offered separately. Do not recommend waived work as unfinished work in this
-same profile. Voluntary review remains available. If pending ordinary work
-has no available goal, distinguish the learner's current focus restriction
-from missing prerequisite mastery. Offer appropriate support; any focus
-change follows the existing selection and continuation rules and needs
-learner acceptance. An empty frontier proves neither level completion nor
-permission to widen focus automatically. After completion, offer closing the
-level or moving to another profile, and wait for the learner's choice.
-This derived level result does not set the ordinary `scopeCompleted` or
-`curriculumComplete` flags to true when their own mastery-based conditions are
-not satisfied. Show the named level's completion separately.
-
-For subsequent learning:
-
-1. Determine availability from real results under the existing normal/strict
-   and focus contracts.
-2. If preparation waived in another resolved profile is required here, explain
-   the different requirements of those named scopes. Describe an earlier
-   waiver only when that earlier calculation is actually known; current
-   mastery alone does not establish that history. Calculate each scope by its
-   own rules; adding the new context alone does not reopen the old one.
-3. Offer a targeted demonstration through the ordinary goal-type workflow or
-   suitable learning support. Persist mastery only from new appropriate
-   evidence, and wait for the learner's choice before starting that work.
-
-Where normal focus rules already permit entry, introduce no additional block
-because of this profile. A waiver must not be exported into another level,
-subject, plan or global frontier as mastery. A target can therefore contribute
-to a completed level while still lacking an individual global competence
-record; show the two claims with their named scopes.
+Normal required-work recommendations omit implicitly completed goals. Raw
+prerequisite availability remains separate for deliberate voluntary learning;
+a derived status never writes mastery to satisfy an access check. The Cockpit
+preference `useAssessmentShortcuts` controls direct assessment offers, not the
+truth of implicit completion or already valid plan credit.
 
 ## 7. Recalculation and adoption requirements
 
-Completion is a current calculation over the resolved scope, static profile
-and graph revision, and existing mastery. Later-level consumers outside this
-context do not affect it. Changing the applicable scope, rules, dependencies
-or mastery requires recalculation. A response must identify the context it
-actually describes; it must not silently carry a previously displayed result
-into changed obligations.
+All consumers use one backend calculation: Cockpit, coach, plan status and
+continuation. A request reads consistent mastery and structural inputs.
+Recompute after mastery, scope or curriculum changes. Increasing mastery cannot
+reopen work for unchanged graph/scope; corrected or removed mastery can.
+Never feed yesterday's implicit set back as today's mastery input.
 
-If an incorrect mastery result is corrected through the ordinary authorised
-mastery workflow, recompute completion and explain any work that is now
-required. There is no separate pass-revocation or waiver-correction register.
-Current mastery alone cannot reconstruct earlier learner states or guarantee
-historical completion claims after their inputs change. This proposal therefore
-adds no persisted completion certificates, evidence snapshots or historical
-learner-result registry. Existing technical state versions and ordinary
-operational history do not become a second outcome contract.
+Only immutable structural compilation is cached, bounded by context, node and
+edge budgets. Keys include curriculum generation, authoritative projection,
+scope targets and semantics revision. No learner-result cache becomes an
+additional source of truth. Discovery does not compile every possible section
+on each request; selected/default contexts share prepared or bounded cached
+normalisation. Configuration and input errors remain visible.
 
-Within fixed scope and policy, $E\subseteq E'$ implies
-$X_*(E)\subseteq X_*(E')$: adding mastery cannot reopen completed or waived
-work. A previously waived goal may instead gain mastery, so the set
-$I=X_*\setminus E$ itself need not grow. Across changed scopes, rules or
-corrected mastery, recompute instead of assuming monotonicity. Never use an
-earlier derived waiver as an input to the next mastery set.
+### Plan integration
 
-A future implementation needs one authoritative backend calculation for the
-scope, existing mastery, normalised demands and fixed point, using a consistent
-read of those inputs. Learner views, coach tools and planning consume that same
-result and its computed explanations. Any cache is disposable, tied to all
-relevant inputs and never authoritative learner-result storage. Changes to
-individual goal outcomes stay with the existing goal-type/mastery workflows.
+For fixed, deduplicated plan baseline $G$, default plan IST is
 
-Keep mastered and waived counts separate. A plan may remove waived work from
-its remaining schedule only through an explicit integration contract. Waivers
-create no goal-success events, learned-goal counts or weekly quota credit, and
-do not rewrite the fixed planning baseline or invent learning-time savings.
+$$
+I_{plan}=|G\cap(M\cup I_H)|.
+$$
 
-Expose calculation validity, derived completion and availability of an
-assessment attempt as separate facts. If a required, unmastered assessment
-cannot currently be offered, report the content or access problem separately
-from learner progress. An already mastered assessment remains fulfilled even
-if its task is currently unavailable. Do not fabricate mastery to work around
-a missing task, and do not introduce another qualifying-success status.
+For automatic plan credit, $H$ is the **complete Personal Curriculum**, not
+merely G or the current dated plan. A plan is a temporal selection, not a new
+completion contract: a preparation-only plan must not become completed while
+an assessment elsewhere in the Personal Curriculum still needs it. First
+compute $I_H$ over all authoritative Level-2 targets and their requirements,
+then intersect with G. Multiple plans still deduplicate each counted goal.
+Real cross-subject prerequisite demand is preserved; quotas and balance remain
+separate by subject. A deliberately chosen smaller completion section may show
+its own implicit set, but does not redefine plan credit. Supporting goals
+outside G do not increase IST.
 
-The independent [structural feasibility and workload checks](curriculum-levels.md)
-remain mandatory for any claim made under those profiles. Direct exam access
-does not justify a cycle, a later-level prerequisite or an unsupported workload.
-Local mathematical checks do not establish task quality, reliable grading or
-learner benefit; these need reviewed assessments and learner trials.
+The Cockpit setting **"Nur explizit erreichte Lernziele zählen"** defaults to
+off. When selected, IST is $|G\cap M|$. G, scheduled quotas and dates stay fixed;
+implicit work does not become compulsory again merely because counting changes.
+Actual completion events and the current-period H input still describe only
+reliably dated explicit outcomes, never fabricated dates of implicit completion.
+See the [shared plan contract](../didactic/unified-learning-plan-status.md#34-implizite-erledigung-und-optionale-explizit-zahlung).
 
-The minimum review matrix is:
+### Acceptance evidence
 
-| Case | Required result |
-| --- | --- |
-| Only B passed; then B and C passed | No waiver, then A and D in successive rounds under the example rule. |
-| Only ordinary A completed | Its demand discharges, but D receives no assessment-based waiver. |
-| Protected or isolated required target | No waiver; mastery of that target remains required. |
-| Open additional in-level consumer of D | D remains open even if its waiver rule is enabled. |
-| Open supporting consumer B in Q → B → A, with only A eligible | A stays open; supporting status does not remove B's demand or make B a target. |
-| Open supporting prerequisite B in Q → A → B, with only A eligible | A can be waived and the level can complete; protecting B does not change this, but making B a required target does. |
-| Later-level consumer; hidden in-level consumer | The former does not block this level; hiding the latter changes nothing. |
-| Optional exam or alternative form | No new target or compulsory pass merely because the task is available. |
-| Equivalent atomic, cluster and transitive representations | Same resolved atomic reachability produces the same $R_H$ and waiver result. |
-| Open C requires B, B requires A, and B has mastery | C's indirect demand keeps A open even if a separate assessment enables its waiver rule. |
-| Missing reference, or reflexive/cyclic atomic expansion reachable from a target | Reject the profile calculation with an identified cause. |
-| Atomic-expansion cycle in an unrelated base-valid component | Do not reject this local calculation; reject any profile whose target closure reaches the cycle. |
-| Invalid base graph, unresolved choice or no required assessment | No completion calculation under this profile; report the applicable configuration or profile boundary. |
-| Inadequate coverage or compensable critical outcome | No approved waiver rule for the affected target. |
-| Failed exam | Mastery stays unchanged; no failed-attempt or score record is introduced. |
-| Required assessment already has mastery, including a previous success | Count it immediately, without another qualification check or forced attempt. |
-| Solution feedback, repeated task or later failed attempt | Apply the ordinary assessment contract; add no exposure ledger or second success status, and preserve existing mastery on failure. |
-| More mastery at fixed scope and policy | Completed-or-waived work stays complete; a waived goal may gain mastery. |
-| Active profile continuation | Recommend pending available targets, offer direct assessments separately, and never silently repeat waived work. |
-| Failed mastery write, concurrent change or replay | No optimistic waiver; calculate from consistent current inputs and preserve write idempotency. |
-| New context or later learning goal | Calculate that scope from the same global mastery; add no consumers to the earlier scope merely because they share prerequisites. |
-| Corrected mastery or changed applicable curriculum rules | Recompute the current result; do not invent historical completion data from the current mastery map. |
-| Required unmastered assessment unavailable or independent condition unmet | Explain unavailable access; no fabricated mastery or learner-failure event. |
-| Already mastered assessment currently unavailable | Its mastery still satisfies the assessment obligation. |
-| Level complete while preparatory targets lack mastery | Show scoped completion and waived preparation; preserve global mastery and ordinary scope/curriculum completion flags. |
-| Every derived update | Mastery, target roles and authored graph remain unchanged; no individual waiver or completion state is persisted. |
-
-This document specifies a proposed policy. It announces no enabled level
-schema, deployed exam bypass, new API or migration of learner data.
+Tests must cover the mastered-intermediate stop, a separate direct edge,
+shared prerequisites, unreferenced ordinary terminals, assessment-only terminals,
+empty assessment sets, projection and scope boundaries, revocation and direct
+non-pilot exam starts. Verify no writes during discovery/evaluation, no forged
+or stale start, preserved session ownership, complete discovery beyond one
+page, plan deduplication, opt-out and signed preference export/import.
+Machine tests establish these contracts; they do not establish assessment
+quality, human usability or learning effectiveness. Deployment and real-coach
+acceptance remain separate from local test results.

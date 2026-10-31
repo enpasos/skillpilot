@@ -57,13 +57,12 @@ import org.springframework.web.server.ResponseStatusException;
  * No bean replacement, synthetic catalog, direct generation-string mutation, or production schema is used. */
 @EnabledIfEnvironmentVariable(named = "SKILLPILOT_TEST_POSTGRES_URL", matches = "jdbc:postgresql://.+")
 class AssessmentCompletionRestartIntegrationTest {
-    private static final String PROFILE = "math-dot-product-projection";
+    private static final String PROFILE = "automatic:personal-curriculum";
     private static final String MATH = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String PREPARATION = "3016ec37-1c2e-47db-83f5-e767923bc97e";
     private static final String EXAM = "e98672c6-871a-5d0b-889c-5afc51040f0d";
     private static final String CHOOSE = "choose_skillpilot_completion_route";
     private static final Path CANONICAL = Path.of("DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json");
-    private static final Path PROFILE_PATH = Path.of("DE/Gymnasium/completion-profiles/" + PROFILE + ".json");
     @TempDir Path temporary;
     private final ObjectMapper files = new ObjectMapper();
     private final Map<Path, String> sourceHashes = new LinkedHashMap<>();
@@ -83,13 +82,14 @@ class AssessmentCompletionRestartIntegrationTest {
         String oldFingerprint;
         String oldBinding;
         String oldProfileRevision;
+        String oldExamTitle;
         String oldSession;
         String oldReceipt;
         String runningSession;
         String runningEvaluation;
         Map<String, Object> passingArguments;
         Map<String, Object> oldSuccess;
-        LevelCompletionActionRequest oldVoluntaryAction;
+        LevelCompletionActionRequest oldNavigationAction;
         CompletionProfileCatalog oldCatalog;
         ClaudeV1CompletionContractRegistry oldRegistry;
         Set<String> canonicalIds;
@@ -98,26 +98,29 @@ class AssessmentCompletionRestartIntegrationTest {
                 Lane a = new Lane(first);
                 oldCatalog = a.catalog(); oldRegistry = a.contract();
                 oldGeneration = oldCatalog.generation(); oldFingerprint = oldRegistry.contractFingerprint();
-                oldBinding = oldRegistry.bindingDigest(); oldProfileRevision = oldCatalog.profile(PROFILE).revision();
+                oldBinding = oldRegistry.bindingDigest();
+                assertThat(oldCatalog.profiles()).isEmpty();
+                oldExamTitle = first.getBean(LandscapeService.class).getGoalDefinition(EXAM).getTitle();
                 canonicalIds = a.canonicalIds();
                 assertThat(canonicalIds).contains(EXAM, PREPARATION);
                 assertThat(AopUtils.isAopProxy(a.service())).isTrue();
                 assertThat(AopUtils.isAopProxy(a.coordinator())).isTrue();
                 a.createLearner(learnerId);
+                oldProfileRevision = a.service().getCoachLearnerState(learnerId).levelCompletion().profileRevision();
                 oldSession = a.launchDirect(learnerId);
                 oldReceipt = a.confirm(oldSession);
                 var evaluation = a.successful(oldSession, ClaudeV1Contract.TOOL_GET_EXAM_EVALUATION, Map.of("goalId", EXAM));
                 passingArguments = a.writeArgs(learnerId, Map.of("goalId", EXAM, "earnedPoints", 10.0,
                         "evaluationCapability", evaluation.get("evaluationCapability")));
                 oldSuccess = a.successful(oldSession, ClaudeV1Contract.TOOL_SET_MASTERY, passingArguments);
-                assertThat(map(map(oldSuccess, "context"), "levelCompletion")).containsEntry("complete", true);
+                assertThat(map(map(oldSuccess, "context"), "levelCompletion")).containsEntry("complete", false);
                 assertThat(a.successful(oldSession, ClaudeV1Contract.TOOL_SET_MASTERY, passingArguments)).isEqualTo(oldSuccess);
                 a.assertMasteryAndFocus(learnerId, true);
                 var complete = a.service().getCoachLearnerState(learnerId).levelCompletion();
-                var voluntary = complete.actions().stream().filter(action -> "learnGoal".equals(action.action())
+                var navigation = complete.actions().stream().filter(action -> "learnGoal".equals(action.action())
                         && PREPARATION.equals(action.goalId())).findFirst().orElseThrow();
-                oldVoluntaryAction = new LevelCompletionActionRequest(voluntary.action(), PROFILE, voluntary.goalId(),
-                        voluntary.intent(), complete.learnerRevision());
+                oldNavigationAction = new LevelCompletionActionRequest(navigation.action(), PROFILE, navigation.goalId(),
+                        navigation.intent(), complete.learnerRevision());
 
                 a.createLearner(runningLearnerId);
                 runningSession = a.launchDirect(runningLearnerId);
@@ -128,13 +131,15 @@ class AssessmentCompletionRestartIntegrationTest {
                 a.assertPrivate(runningLearnerId, runningSession);
 
                 // A real file change is visible to the watcher, but never hot-reloads A's pinned objects.
-                ObjectNode changed = (ObjectNode) files.readTree(Files.readAllBytes(curricula.resolve(PROFILE_PATH)));
-                changed.put("revision", oldProfileRevision + "-restart-B");
-                Files.writeString(curricula.resolve(PROFILE_PATH), files.writerWithDefaultPrettyPrinter().writeValueAsString(changed));
+                ObjectNode changed = (ObjectNode) files.readTree(Files.readAllBytes(curricula.resolve(CANONICAL)));
+                for (var goal : changed.path("goals")) {
+                    if (EXAM.equals(goal.path("id").asText())) ((ObjectNode) goal).put("title", oldExamTitle + " (restart B)");
+                }
+                Files.writeString(curricula.resolve(CANONICAL), files.writerWithDefaultPrettyPrinter().writeValueAsString(changed));
                 oldCatalog.verifyPinnedGeneration();
                 assertThat(oldCatalog.available()).isFalse();
                 assertThat(oldCatalog.generation()).isEqualTo(oldGeneration);
-                assertThat(oldCatalog.profile(PROFILE).revision()).isEqualTo(oldProfileRevision);
+                assertThat(first.getBean(LandscapeService.class).getGoalDefinition(EXAM).getTitle()).isEqualTo(oldExamTitle);
                 assertThat(a.call(oldSession, ClaudeV1Contract.TOOL_SET_MASTERY, passingArguments).isError()).isTrue();
                 a.assertMasteryAndFocus(learnerId, true);
             }
@@ -145,7 +150,9 @@ class AssessmentCompletionRestartIntegrationTest {
                 assertThat(b.contract()).isNotSameAs(oldRegistry);
                 assertThat(b.catalog().available()).isTrue();
                 assertThat(b.catalog().generation()).isNotEqualTo(oldGeneration);
-                assertThat(b.catalog().profile(PROFILE).revision()).isEqualTo(oldProfileRevision + "-restart-B");
+                assertThat(b.catalog().profiles()).isEmpty();
+                assertThat(second.getBean(LandscapeService.class).getGoalDefinition(EXAM).getTitle())
+                        .isEqualTo(oldExamTitle + " (restart B)");
                 assertThat(b.contract().contractFingerprint()).isEqualTo(oldFingerprint);
                 assertThat(b.contract().bindingDigest()).isNotEqualTo(oldBinding);
                 assertThat(b.canonicalIds()).isEqualTo(canonicalIds);
@@ -157,7 +164,7 @@ class AssessmentCompletionRestartIntegrationTest {
                 assertThat(b.call(oldSession, ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
                         Map.of("receiptCapability", oldReceipt)).isError()).isTrue();
                 assertThat(b.call(oldSession, ClaudeV1Contract.TOOL_SET_MASTERY, passingArguments).isError()).isTrue();
-                assertThatThrownBy(() -> b.service().chooseLevelCompletion(learnerId, oldVoluntaryAction))
+                assertThatThrownBy(() -> b.service().chooseLevelCompletion(learnerId, oldNavigationAction))
                         .isInstanceOf(ResponseStatusException.class)
                         .satisfies(error -> assertThat(((ResponseStatusException) error).getStatusCode().value()).isEqualTo(409));
                 assertThat(b.version(learnerId)).isEqualTo(beforeRejectedActions);
@@ -174,17 +181,25 @@ class AssessmentCompletionRestartIntegrationTest {
                 String freshSession = b.sessions().createFirstPartyLaunch(learnerId,
                         new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
                 b.confirm(freshSession);
-                String chooseProfile = ((List<?>) map(b.context(freshSession), "levelCompletion").get("choices")).stream()
-                        .map(String::valueOf).filter(choice -> choice.startsWith("Abschnitt wählen: ")).findFirst().orElseThrow();
+                var examSection = b.service().getCoachLearnerState(learnerId).levelCompletion().profileOptions().stream()
+                        .filter(option -> !PROFILE.equals(option.profileId()))
+                        .filter(option -> option.assessments().stream().anyMatch(assessment -> EXAM.equals(assessment.goalId())))
+                        .findFirst().orElseThrow();
+                String chooseProfile = "Abschnitt wählen: " + examSection.title().get("de");
+                assertThat(((List<?>) map(b.context(freshSession), "levelCompletion").get("choices")).stream()
+                        .map(String::valueOf).toList())
+                        .contains(chooseProfile);
                 var selected = b.successful(freshSession, CHOOSE, b.writeArgs(learnerId, Map.of("choice", chooseProfile)));
-                assertThat(map(map(selected, "context"), "levelCompletion")).containsEntry("complete", true);
+                assertThat(map(map(selected, "context"), "levelCompletion")).containsEntry("complete", false);
                 var current = b.service().getCoachLearnerState(learnerId).levelCompletion();
                 assertThat(current.calculationStatus()).isEqualTo("valid");
-                assertThat(current.complete()).isTrue();
+                assertThat(current.complete()).isFalse();
                 assertThat(current.curriculumGeneration()).isEqualTo(b.catalog().generation());
-                assertThat(current.profileRevision()).isEqualTo(oldProfileRevision + "-restart-B");
+                assertThat(current.profileRevision()).isEqualTo(oldProfileRevision);
                 assertThat(current.masteredTargetCount()).isEqualTo(1);
-                assertThat(current.waivedTargetCount()).isEqualTo(1);
+                assertThat(current.masteredAssessmentCount()).isEqualTo(1);
+                assertThat(current.requiredAssessmentCount()).isGreaterThan(1);
+                assertThat(b.service().getMastery(learnerId).getOrDefault(PREPARATION, 0.0)).isZero();
                 b.assertMasteryAndFocus(learnerId, true);
                 b.assertPrivate(learnerId, freshSession);
                 b.assertPrivate(runningLearnerId, runningSession);
@@ -199,7 +214,7 @@ class AssessmentCompletionRestartIntegrationTest {
                         "profileRevisions", List.of(oldProfileRevision, current.profileRevision()),
                         "checks", List.of("real-mcp-success-before-restart", "no-hot-reload-under-old-hash",
                                 "old-receipt-action-evaluation-and-replay-rejected", "live-direct-binding-recovered",
-                                "existing-mastery-immediately-completes-new-profile", "new-session-and-receipt-work",
+                                "existing-mastery-immediately-counts-in-new-generation", "new-session-and-receipt-work",
                                 "unchanged-focus", "private-workflow-not-exported", "original-input-bytes-unchanged"));
             }
         } finally {
@@ -213,17 +228,7 @@ class AssessmentCompletionRestartIntegrationTest {
     private Path copyRequiredRepositoryInputs() throws Exception {
         Path sourceRoot = Path.of("../curricula").toAbsolutePath().normalize();
         Path targetRoot = temporary.resolve("curricula");
-        List<Path> inputs = new ArrayList<>(List.of(CANONICAL, PROFILE_PATH,
-                Path.of("DE/Gymnasium/completion-scopes/" + PROFILE + ".json")));
-        var profile = files.readTree(Files.readAllBytes(sourceRoot.resolve(PROFILE_PATH)));
-        Set<String> reviews = new java.util.LinkedHashSet<>();
-        reviews.add(profile.path("review").path("reference").asText());
-        profile.path("rules").forEach(rule -> reviews.add(rule.path("reviewRef").asText()));
-        for (String reference : reviews) {
-            Path review = Path.of(reference);
-            assertThat(review.startsWith("curricula")).isTrue();
-            inputs.add(review.subpath(1, review.getNameCount()));
-        }
+        List<Path> inputs = new ArrayList<>(List.of(CANONICAL));
         for (var goal : files.readTree(Files.readAllBytes(sourceRoot.resolve(CANONICAL))).path("goals")) {
             String source = goal.path("extendedData").path("vocabularySource").asText();
             if (!source.isBlank()) inputs.add(Path.of("DE/Gymnasium/memory-decks").resolve(Path.of(source).getFileName()));
@@ -244,9 +249,7 @@ class AssessmentCompletionRestartIntegrationTest {
         return application.run(
                 "--server.address=127.0.0.1", "--server.port=0",
                 "--skillpilot.landscapes.directory=" + curricula,
-                "--skillpilot.curriculum.source=repository", "--skillpilot.completion.enabled=true",
-                "--skillpilot.completion.enabled-profile-ids=" + PROFILE,
-                "--skillpilot.completion.warmup-curriculum-ids=" + MATH,
+                "--skillpilot.curriculum.source=repository",
                 "--" + ClaudeV1TestProperties.ENABLED, "--" + ClaudeV1TestProperties.SIGNING_SECRET,
                 "--" + ClaudeV1TestProperties.CAPABILITY_SECRET, "--" + ClaudeV1TestProperties.BETA_DISABLED,
                 "--spring.datasource.url=" + database.url(), "--spring.datasource.username=completion_test",

@@ -203,7 +203,8 @@ public class LearnerFrontierInvariantTest {
                 snapshot.mastery(),
                 snapshot.plannedGoals());
 
-        // A persisted intermediate skill does not certify its prerequisite.
+        // A persisted intermediate skill ends its own preparation demand without
+        // certifying its prerequisite.
         // This real export has symmetry -> polynomial basics -> orientation,
         // with only polynomial basics mastered.
         String symmetry = "8f42b49d-a2fb-45f5-9da3-97ec96b8113e";
@@ -216,7 +217,7 @@ public class LearnerFrontierInvariantTest {
         assertThat(snapshot.mastery().getOrDefault(symmetry, 0.0)).isZero();
         assertThat(snapshot.mastery()).containsEntry(polynomialBasics, 1.0);
         assertThat(snapshot.mastery().getOrDefault(orientation, 0.0)).isZero();
-        assertThat(actual).contains(orientation).doesNotContain(symmetry);
+        assertThat(actual).contains(orientation, symmetry);
         assertThat(actual).containsExactlyInAnyOrderElementsOf(expected);
 
         Set<String> expectedAtomic = expected.stream()
@@ -349,8 +350,8 @@ public class LearnerFrontierInvariantTest {
         Map<String, Double> effectivePrereqMastery = computeEffectivePrereqMastery(filteredGoals, masteryMap);
         Set<String> scope = computeScope(plannedIds, structuralGoals);
 
-        // Independently derive reachability by repeated set expansion, rather
-        // than using the service's candidate-by-candidate mastery traversal.
+        // Direct effective prerequisites are conjunctive; a mastered intermediate
+        // must not reintroduce its own earlier preparation requirements.
         Map<String, Set<String>> reachablePrerequisites = new LinkedHashMap<>();
         for (LearningGoal goal : filteredGoals.values()) {
             Set<String> prerequisites = new LinkedHashSet<>();
@@ -362,18 +363,6 @@ public class LearnerFrontierInvariantTest {
             }
             reachablePrerequisites.put(goal.getId(), prerequisites);
         }
-        boolean expanded;
-        do {
-            expanded = false;
-            for (Set<String> prerequisites : reachablePrerequisites.values()) {
-                Set<String> next = new LinkedHashSet<>(prerequisites);
-                for (String prerequisite : prerequisites) {
-                    next.addAll(reachablePrerequisites.getOrDefault(prerequisite, Set.of()));
-                }
-                expanded |= prerequisites.addAll(next);
-            }
-        } while (expanded);
-
         List<String> frontier = new ArrayList<>();
         for (LearningGoal goal : filteredGoals.values()) {
             if (!plannedIds.isEmpty() && !scope.contains(goal.getId())) {

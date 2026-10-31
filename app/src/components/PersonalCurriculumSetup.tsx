@@ -75,6 +75,7 @@ interface PersonalCurriculumSetupProps {
     initialAutoPilot?: boolean
     initialFollowLearningPlans?: boolean
     initialPeriodBasis?: 'DAY' | 'WEEK'
+    initialCountOnlyExplicitGoals?: boolean
     initialStrictMode?: boolean
     initialUseAssessmentShortcuts?: boolean
     directAssessmentRunning?: boolean
@@ -98,6 +99,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     initialAutoPilot = true,
     initialFollowLearningPlans = false,
     initialPeriodBasis = 'WEEK',
+    initialCountOnlyExplicitGoals = false,
     initialStrictMode = false,
     initialUseAssessmentShortcuts = true,
     directAssessmentRunning = false,
@@ -107,6 +109,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     materialSettingsBusy = false,
 }) => {
     const titleId = React.useId()
+    const countOnlyExplicitGoalsDescriptionId = React.useId()
     const shortcutDescriptionId = React.useId()
     const shortcutAttemptHintId = React.useId()
     const { language } = useLanguage()
@@ -185,6 +188,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const [autoPilot, setAutoPilot] = useState<boolean>(initialAutoPilot)
     const [followLearningPlans, setFollowLearningPlans] = useState<boolean>(initialFollowLearningPlans)
     const [periodBasis, setPeriodBasis] = useState<'DAY' | 'WEEK'>(initialPeriodBasis)
+    const [countOnlyExplicitGoals, setCountOnlyExplicitGoals] = useState(initialCountOnlyExplicitGoals)
     const [strictMode, setStrictMode] = useState<boolean>(initialStrictMode)
     const [useAssessmentShortcuts, setUseAssessmentShortcuts] = useState(initialUseAssessmentShortcuts)
     const [showGoalVisualizationsInChat, setShowGoalVisualizationsInChat] = useState<boolean>(
@@ -219,6 +223,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         sync('autoPilot', initialAutoPilot, setAutoPilot)
         sync('followLearningPlans', initialFollowLearningPlans, setFollowLearningPlans)
         sync('learningPlanPeriodBasis', initialPeriodBasis, setPeriodBasis)
+        sync('learningPlanCountOnlyExplicitGoals', initialCountOnlyExplicitGoals, setCountOnlyExplicitGoals)
         sync('strictMode', initialStrictMode, setStrictMode)
         sync('useAssessmentShortcuts', initialUseAssessmentShortcuts, setUseAssessmentShortcuts)
         sync('showGoalVisualizationsInChat', initialShowGoalVisualizationsInChat, setShowGoalVisualizationsInChat)
@@ -226,6 +231,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         initialAutoPilot,
         initialFollowLearningPlans,
         initialPeriodBasis,
+        initialCountOnlyExplicitGoals,
         initialShowGoalVisualizationsInChat,
         initialStrategy,
         initialStrictMode,
@@ -253,6 +259,10 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const handlePeriodBasisChange = (value: 'DAY' | 'WEEK') => {
         markPreference('learningPlanPeriodBasis', value !== initialPeriodBasis)
         setPeriodBasis(value)
+    }
+    const handleCountOnlyExplicitGoalsChange = (value: boolean) => {
+        markPreference('learningPlanCountOnlyExplicitGoals', value !== initialCountOnlyExplicitGoals)
+        setCountOnlyExplicitGoals(value)
     }
     const handleStrictModeChange = (value: boolean) => {
         markPreference('strictMode', value !== initialStrictMode)
@@ -490,6 +500,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     autoPilot,
                     followLearningPlans,
                     learningPlanPeriodBasis: periodBasis,
+                    learningPlanCountOnlyExplicitGoals: countOnlyExplicitGoals,
                     strictMode,
                     useAssessmentShortcuts,
                     showGoalVisualizationsInChat,
@@ -516,6 +527,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 autoPilot,
                 followLearningPlans,
                 learningPlanPeriodBasis: periodBasis,
+                learningPlanCountOnlyExplicitGoals: countOnlyExplicitGoals,
                 strictMode,
                 useAssessmentShortcuts,
                 showGoalVisualizationsInChat,
@@ -862,6 +874,21 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                                         ))}
                                     </div>
                                 </fieldset>
+
+                                <label className="ml-6 flex items-start gap-2 cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        checked={countOnlyExplicitGoals}
+                                        onChange={(e) => handleCountOnlyExplicitGoalsChange(e.target.checked)}
+                                        aria-label={setupCopy.countOnlyExplicitGoalsTitle}
+                                        aria-describedby={countOnlyExplicitGoalsDescriptionId}
+                                        className="mt-0.5 w-4 h-4 shrink-0 rounded text-sky-600 focus:ring-sky-500 border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-600"
+                                    />
+                                    <div>
+                                        <span className="text-sm font-medium text-text-primary">{setupCopy.countOnlyExplicitGoalsTitle}</span>
+                                        <p id={countOnlyExplicitGoalsDescriptionId} className="text-xs text-text-secondary">{setupCopy.countOnlyExplicitGoalsDescription}</p>
+                                    </div>
+                                </label>
 
                                 <label className="flex items-center gap-2 cursor-pointer">
                                         <input

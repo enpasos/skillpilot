@@ -15,9 +15,14 @@ public record AssessmentShortcutDiscovery(String notice, List<Option> options, S
 
     public static AssessmentShortcutDiscovery project(LevelCompletionResponse completion,
             String publicBaseUrl, String language) {
-        if (completion == null || completion.profileId() != null || completion.directAssessmentRunning()
-                || !"unresolved".equals(completion.calculationStatus()) || completion.notice() != null
-                || completion.profileOptions() == null) return null;
+        if (completion == null || completion.directAssessmentRunning() || completion.profileOptions() == null) return null;
+        boolean automaticOverview = completion.profileId() != null && completion.profileId().startsWith("automatic:")
+                && completion.navigationIntent() == null;
+        boolean available = automaticOverview ? "valid".equals(completion.calculationStatus())
+                : completion.profileId() == null && "unresolved".equals(completion.calculationStatus());
+        boolean unsupportedOverview = automaticOverview
+                && "completion_coach_contract_unsupported".equals(completion.notice());
+        if (!available || completion.notice() != null && !unsupportedOverview) return null;
         List<Option> options = new ArrayList<>();
         String base = publicBaseUrl == null || publicBaseUrl.isBlank() ? "https://skillpilot.com"
                 : publicBaseUrl.replaceAll("/+$", "");

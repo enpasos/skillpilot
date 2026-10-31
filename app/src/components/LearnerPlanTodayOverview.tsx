@@ -284,6 +284,11 @@ export const LearnerPlanTodayOverview = ({
                     {copy.detailsAction}
                     <ChevronDown className="transition-transform group-open:rotate-180" size={14} aria-hidden="true" />
                   </summary>
+                  {subject.planCreditText ? (
+                    <p data-testid="learner-plan-credit-detail" className="mt-3 text-text-secondary">
+                      {subject.planCreditText}
+                    </p>
+                  ) : null}
                   {subjectPlans.map((subjectPlan) => (
                     <LearnerPlanDetails
                       key={subjectPlan.planId}

@@ -22,6 +22,47 @@ import java.util.TreeSet;
  * context, so an unrelated expansion defect does not change this scope.
  */
 public final class CompletionProfileCompiler {
+    /** Adds existing scope metadata without requiring authored review or waiver grants. */
+    public CompiledCompletionProfile compileAutomaticProfile(
+            CompletionProfileDefinition definition,
+            Map<String, LearningGoal> canonicalGoals,
+            Set<String> resolvedScopeTargetIds,
+            Set<String> level2TargetIds,
+            String curriculumGeneration) {
+        if (definition == null || definition.schemaVersion() != 1 || !text(definition.id())
+                || !text(definition.revision()) || !text(definition.levelScopeRef())
+                || !text(definition.title().get("de")) || !text(definition.title().get("en"))) {
+            fail("INVALID_PROFILE", "Scope identity, version and titles are required");
+        }
+        CompiledAutomaticCompletion graph = compileAutomatic(canonicalGoals, resolvedScopeTargetIds,
+                level2TargetIds, curriculumGeneration);
+        return new CompiledCompletionProfile(definition, curriculumGeneration, graph.goalIds(),
+                java.util.stream.IntStream.range(0, graph.size()).mapToObj(graph::prerequisiteIndices)
+                        .toArray(int[][]::new),
+                graph.order(), graph.targetGoalIds(), graph.assessmentGoalIds(), graph.protectedGoalIds(),
+                List.of(), true);
+    }
+
+    /**
+     * Compiles direct atomic prerequisite edges for automatic completion. Every
+     * assessment in the complete context remains an obligation until mastered.
+     * Orientation, cards and ordinary goals have no additional protected status.
+     */
+    public CompiledAutomaticCompletion compileAutomatic(
+            Map<String, LearningGoal> canonicalGoals,
+            Set<String> resolvedScopeTargetIds,
+            Set<String> level2TargetIds,
+            String curriculumGeneration) {
+        if (!text(curriculumGeneration)) fail("INVALID_GENERATION", "Curriculum generation is required");
+        CompiledCompletionGraph graph = compileGraph(canonicalGoals, resolvedScopeTargetIds, level2TargetIds,
+                List.of(), List.of(), false);
+        Set<String> assessments = new TreeSet<>();
+        for (String id : graph.contextGoalIds()) {
+            if (isAssessment(canonicalGoals.get(id))) assessments.add(id);
+        }
+        return new CompiledAutomaticCompletion(graph, assessments, curriculumGeneration);
+    }
+
     public CompiledCompletionProfile compile(
             CompletionProfileDefinition definition,
             Map<String, LearningGoal> canonicalGoals,
@@ -29,6 +70,48 @@ public final class CompletionProfileCompiler {
             Set<String> level2TargetIds,
             String curriculumGeneration) {
         validateDefinition(definition, curriculumGeneration);
+        CompiledCompletionGraph graph = compileGraph(canonicalGoals, resolvedScopeTargetIds, level2TargetIds,
+                definition.protectedGoalIds(), definition.rules(), true);
+        return new CompiledCompletionProfile(definition, curriculumGeneration, graph.goalIds(),
+                java.util.stream.IntStream.range(0, graph.size()).mapToObj(graph::prerequisiteIndices)
+                        .toArray(int[][]::new),
+                graph.order(), graph.targetGoalIds(), graph.assessmentGoalIds(), graph.protectedGoalIds(), graph.rules());
+    }
+
+    CompiledCompletionGraph compilePlan(LearningPlanCompletionContext context, Set<String> obligations) {
+        Set<String> targets = new TreeSet<>(obligations);
+        Set<String> protectedGoals = new TreeSet<>();
+        List<CompletionProfileDefinition.WaiverRule> rules = new ArrayList<>();
+        for (var profile : context.reviewedProfiles()) {
+            if (!context.generation().equals(profile.curriculumGeneration())) {
+                fail("STALE_REVIEW", "Plan and reviewed profile generations differ");
+            }
+            // A reviewed section may only discharge its own target obligations. Its
+            // supporting-context waivers never acquire a broader planning scope.
+            for (var rule : profile.definition().rules()) {
+                List<String> waivable = rule.waivableGoalIds().stream()
+                        .filter(profile.targetGoalIds()::contains).toList();
+                if (waivable.isEmpty()) continue;
+                targets.addAll(rule.assessmentGoalIds());
+                rules.add(new CompletionProfileDefinition.WaiverRule(
+                        profile.definition().id() + "::" + rule.ruleId(), rule.assessmentGoalIds(), waivable,
+                        rule.rationale(), rule.reviewRef()));
+            }
+            protectedGoals.addAll(profile.protectedGoalIds());
+        }
+        CompiledCompletionGraph graph = compileGraph(context.canonicalGoals(), targets, context.level2TargetGoalIds(),
+                List.copyOf(protectedGoals), rules, false);
+        return new CompiledCompletionGraph(graph.goalIds(),
+                java.util.stream.IntStream.range(0, graph.size()).mapToObj(graph::prerequisiteIndices)
+                        .toArray(int[][]::new),
+                graph.order(), graph.targetGoalIds(), graph.assessmentGoalIds(), graph.protectedGoalIds(),
+                graph.rules(), obligations);
+    }
+
+    private CompiledCompletionGraph compileGraph(Map<String, LearningGoal> canonicalGoals,
+            Set<String> resolvedScopeTargetIds, Set<String> level2TargetIds,
+            List<String> declaredProtectedGoals, List<CompletionProfileDefinition.WaiverRule> declaredRules,
+            boolean requireAssessment) {
         if (canonicalGoals == null || canonicalGoals.isEmpty()) fail("MISSING_REFERENCE", "No canonical goals");
         if (resolvedScopeTargetIds == null || resolvedScopeTargetIds.isEmpty()) fail("EMPTY_SCOPE", "Empty target scope");
         if (level2TargetIds == null) fail("FOREIGN_TARGET", "Missing authoritative Level-2 targets");
@@ -69,7 +152,7 @@ public final class CompletionProfileCompiler {
             if (!level2TargetIds.contains(id)) fail("FOREIGN_TARGET", "Target outside Personal Curriculum: " + id);
             if (node.assessment()) assessments.add(id);
         }
-        if (assessments.isEmpty()) fail("NO_REQUIRED_ASSESSMENT", "Scope has no required assessment");
+        if (requireAssessment && assessments.isEmpty()) fail("NO_REQUIRED_ASSESSMENT", "Scope has no required assessment");
 
         Map<String, Set<String>> expanded = new TreeMap<>();
         Set<String> context = new TreeSet<>();
@@ -86,8 +169,11 @@ public final class CompletionProfileCompiler {
 
         Set<String> protectedIds = new TreeSet<>();
         for (String id : context) if (nodes.get(id).protectedGoal()) protectedIds.add(id);
-        for (String id : definition.protectedGoalIds()) {
-            if (!context.contains(id)) fail("MISSING_REFERENCE", "Protected goal outside context: " + id);
+        for (String id : declaredProtectedGoals) {
+            if (!context.contains(id)) {
+                if (requireAssessment) fail("MISSING_REFERENCE", "Protected goal outside context: " + id);
+                continue;
+            }
             protectedIds.add(id);
         }
 
@@ -102,7 +188,7 @@ public final class CompletionProfileCompiler {
         List<CompiledCompletionProfile.CompiledRule> rules = new ArrayList<>();
         Set<String> ruleIds = new HashSet<>();
         Map<String, Set<String>> reachabilityByAssessment = new HashMap<>();
-        for (var rule : definition.rules().stream()
+        for (var rule : declaredRules.stream()
                 .sorted(java.util.Comparator.comparing(CompletionProfileDefinition.WaiverRule::ruleId,
                         java.util.Comparator.nullsFirst(String::compareTo))).toList()) {
             if (rule == null || !text(rule.ruleId()) || !ruleIds.add(rule.ruleId())
@@ -127,7 +213,7 @@ public final class CompletionProfileCompiler {
                     supporting.stream().map(indices::get).toList(), waivable.stream().map(indices::get).toList(),
                     List.copyOf(supporting)));
         }
-        return new CompiledCompletionProfile(definition, curriculumGeneration, ids, edges,
+        return new CompiledCompletionGraph(ids, edges,
                 order.stream().mapToInt(indices::get).toArray(), targets, assessments, protectedIds, rules);
     }
 

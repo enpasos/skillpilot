@@ -2,12 +2,11 @@
 \appendix
 \section{Statusabgleich und Grenzen der Aussagen}
 \label{sec:implementation}
-Diese Fassung wurde am 29. Oktober 2026 gegen den lokalen Arbeitsstand
-auf Basis des Commits \code{8589c5e499cc} geprüft. Die begleitenden
-Dokumentationskorrekturen gehören zu dieser Lieferung; der Commitbezug
-allein enthält sie noch nicht. Die folgenden Befunde beziehen sich auf
-gelesene lokale Implementierungen, nicht auf eine verifizierte
-Produktivinstallation oder eine vollständige Konformitätsprüfung.
+Diese Fassung berücksichtigt die Produktentscheidung und den lokalen
+Implementierungsstand vom 31. Oktober 2026. Die Aussagen über laufenden Code
+sind keine Behauptung über eine verifizierte Produktivinstallation oder eine
+vollständige Konformitätsprüfung. Frühere Dokumentationsbefunde werden nur
+fortgeführt, soweit sie weiterhin zutreffen.
 
 \begin{longtable}{@{}P{32mm}P{116mm}@{}}
 \toprule
@@ -21,37 +20,31 @@ solches Kind existiert. Diese Einstufung verwendet dort fehlende Tags
 beziehungsweise \code{GK}-Tags, nicht einfach das Feld \code{core}.
 Beide Regeln sind nicht identisch.\\
 Binärer Zielzustand & Verbindlich ist geschafft oder noch nicht geschafft.
-Die aktuelle \code{Mastery}-Entität und der Schreibpfad akzeptieren noch
-numerische Zwischenwerte; \code{GoalCard} bietet einen Regler und
-0/50/100-Schaltflächen. Dienste verwenden teilweise die Schwelle
-$0{,}9$. Diese Stellen entsprechen nicht dem binären Sollmodell.
-Eine numerische Kodierung durch ausschließlich 0 und 1 wäre möglich;
-Zwischenwerte sind keine weiteren zulässigen Ergebniszustände.\\
+Neue allgemeine Schreibzugriffe und gewöhnliche Zielkontrollen verwenden
+binäre Ergebnisse. Historische numerische Daten bleiben über die gemeinsame
+Schwelle $0{,}9$ lesbar; daraus entsteht keine Teil-Mastery.\\
 Gedächtnisabschluss & Der dokumentierte Zieltypvertrag fordert
 verifizierten Abruf und keine fälligen Karten. Backend und
 \code{useSrsMastery} verwenden derzeit allein den verifizierten Abruf
 aller erforderlichen Karten. Erneute Fälligkeit und erneute
 Fehlprüfung haben daher unterschiedliche Auswirkungen.\\
-Graphvalidierung & Die Spezifikation fordert lokale und transitive
-Minimalität. Der dokumentierte und gelesene Core-Validator weist keine
-vollständige entsprechende Minimalitätsprüfung aus. Ein grüner
-Strukturcheck ist deshalb kein vollständiger Konformitätsbeweis.\\
+Graphvalidierung & Lokale direkte Doppelungen bleiben redundant.
+Die frühere transitive Minimalitätsforderung ist aufgehoben: eine direkte
+Kante kann trotz eines alternativen Pfades einen selbständigen Bedarf
+tragen. Strukturtests bleiben von fachlicher Qualität zu unterscheiden.\\
 Curriculare Level & Die mathematischen Machbarkeitsbedingungen sind ein
 optionales Konzeptprofil. Es wird kein produktiv aktivierter neuer
 Levelresolver oder Budgetvalidator behauptet.\\
-Prüfungsabschluss & Direkter Prüfzugang und Freistellungsfixpunkt sind
-ein Entwurf. Er verwendet vorhandene Mastery als einzige individuelle
-Ergebniseingabe; der heutige Ablauf berechnet daraus noch keinen
-solchen Umfangsabschluss.\\
+Prüfungsabschluss & Automatische Bedarfsrechnung, allgemeiner direkter
+Prüfungszugang und inklusive Plananrechnung sind lokal implementiert.
+Die drei Produktregeln ersetzen die manuelle Profilpflege. Terminale
+Test-, CI- und Deploymentnachweise sind getrennt zu prüfen.\\
 \bottomrule
 \end{longtable}
 
-Die Ausarbeitung ändert keinen dieser Laufzeitpfade. Eine Angleichung
-benötigt eine ausdrückliche Entscheidung zum beabsichtigten Verhalten,
-geeignete Regressionen und gegebenenfalls einen Umgang mit vorhandenen
-Lernergebnissen. Die Unterschiede als offene Modell-Implementierungsfragen
-zu benennen ist genauer, als sie durch eine stillschweigende neue Formel
-zu verdecken.
+Die verbleibenden Unterschiede sind als Modell-Implementierungsfragen
+kenntlich. Die bereits angepassten Laufzeitpfade dürfen nicht weiter als
+unveränderte historische Abweichungen beschrieben werden.
 
 \begin{center}\begin{minipage}{\linewidth}
 \paragraph{Prüfbare Codeanker.}
@@ -71,7 +64,7 @@ Die Links zeigen auf die weiterentwickelte Hauptlinie; für eine historische
 Prüfung ist zusätzlich der genannte Stand zu verwenden.
 \end{minipage}\end{center}
 
-\section{Prüfstrategie für den Abschlussentwurf}
+\section{Prüfstrategie für die Abschlussberechnung}
 Das begleitende \code{latex/check-assessment-model.py} ist eine
 ausführbare mathematische Referenzprüfung mit ausschließlich
 Python-Standardbibliothek. Es liest keine Lernerdaten und verändert
@@ -82,29 +75,22 @@ systematische endliche Gegenbeispielsuche.
 \toprule
 Prüfbereich & Geprüfte Aussage\\
 \midrule
-Konkrete Fälle & Geteilte Grundlagen, indirekte Verbraucher,
-unterstützende Nichtziele, spätere externe Verbraucher,
-geschützte Ziele, ungültige Referenzen und erreichbare Zyklen.\\
-Mastery als einzige Eingabe & Vorhandene Prüfungs-Mastery zählt;
-$E=M_A\cap V_H$; externe Mastery verändert den Kontext nicht;
-Freistellungen verändern keine Mastery und werden bei einer
-Mastery-Korrektur neu berechnet.\\
-Alle beschrifteten DAGs bis vier Knoten & Fixpunktgleichheit mit
-topologischer Berechnung; kleinster Fixpunkt; Rundengrenze;
-Schutz; keine offenen Verbraucher eines freigestellten Ziels;
-Monotonie bei wachsender Mastery-Menge.\\
-Regelverhalten bis drei Knoten & Nur Mastery der erforderlichen
-Prüfungsziele aktiviert geprüfte Regeln; zusätzliche Mastery erhält
-Abschluss oder Freistellung.\\
-Kontextgrenzen & Eine unabhängige atomare Expansionsschleife
-blockiert keine fremde lokale Berechnung; ein vom Ziel erreichbarer
-Zyklus wird abgelehnt.\\
+Konkrete Fälle & Mastery-Barriere, zusätzliche unabhängige direkte Kante,
+geteilte Grundlagen, gewöhnliche Endziele und offene Prüfungen.\\
+Mastery als einzige Eingabe & Keine impliziten Prüfungserfolge;
+Mastery bleibt Teil der erledigten Menge. Mehr Mastery öffnet bei
+unverändertem Kontext keine Arbeit erneut.\\
+DAGs bis vier Knoten in topologischer Ordnung & Alle Kantenmengen und
+jede Mastery-/Prüfungsbelegung: insgesamt 16\,932 Fälle. Gleichheit von
+lokalem Verbraucherfixpunkt und Traversierung ab offenen Prüfungen.\\
+Ungültige Eingaben & Zyklen und unbekannte Referenzen bleiben Fehler,
+keine leere und damit vermeintlich abgeschlossene Arbeitsmenge.\\
 \bottomrule
 \end{tabularx}\end{center}
 
 Diese Prüfung enthält keine Modelle realer Aufgabenqualität,
 Benotungszuverlässigkeit, Identitätskontrolle oder pädagogischer Wirkung.
-Eine spätere Umsetzung muss zusätzlich konkurrierende Änderungen,
+Runtime-Regressionen prüfen zusätzlich konkurrierende Änderungen,
 idempotente Mastery-Speicherung, Rechte, korrigierte Mastery und
 übereinstimmende Anzeigen prüfen. Der Referenzalgorithmus
 ist kein neuer produktiver Service.
@@ -136,18 +122,14 @@ Fokus & Vorübergehende Arbeitsauswahl im Personal Curriculum;
 Personalisierungslevel 3.\\
 $T_\pi,B_\pi,\ell_\pi$ & Zielmenge, Eintrittsbasis und Erwerbslevel
 eines curricularen Plans.\\
-$T_i,Q_i$ & Ziele und erforderliche Prüfungsziele eines Abschlussprofils.\\
-$F_{\mathrm{atom}},D_{\mathrm{atom}}$ & Atomar expandierte Anforderungen
-und deren transitive Hülle; im Abschluss-Quelldokument $F,D$.\\
-$H=(V_H,R_H)$ & Unter atomaren Voraussetzungen abgeschlossener
-Berechnungskontext mit transitiver Bedarfsrelation.\\
-$E,P$ & $E=M_A\cap V_H$: vorhandene Mastery im Kontext;
-$P$ enthält geschützte Ziele.\\
-$S_r,W_r,W(E)$ & Zu schaffende Prüfungsziele einer Regel, deren mögliche
-Freistellungen und aktuell aktivierte Freistellungsberechtigung.\\
-$X_*,I$ & Berechnete erledigte Arbeit durch Mastery oder Freistellung;
-$I=X_*\setminus E$ enthält nur Freistellungen. Keine zusätzlichen
-gespeicherten Ergebniszustände.\\
+$T,Q_H$ & Ziele des gewählten Umfangs und Abschlussprüfungen seines vollständigen Kontextes.\\
+$F_H$ & Direkte atomar expandierte und geerbte Bedarfsrelation;
+keine statische transitive Hülle.\\
+$H=(V_H,F_H)$ & Vollständiger Berechnungskontext einschließlich unterstützender Voraussetzungen.\\
+$E$ & Vorhandene Mastery im Kontext: $E=M\cap V_H$.\\
+$X_*,I_H$ & Berechnete explizit oder implizit erledigte Arbeit;
+$I_H=X_*\setminus E$ enthält ausschließlich implizite Erledigung.
+Keine zusätzlichen gespeicherten Ergebniszustände.\\
 M7 & Benannter maschineller Curriculum-QA-Reifegrad,
 kein menschlicher Wirksamkeitsnachweis.\\
 \bottomrule
@@ -179,7 +161,7 @@ Curriculare Planung &
 \srcref{docs/concept/skill-graph/graph-definition.md}{Graph Definition, Abschnitt 12};
 \srcref{docs/concept/skill-graph/curriculum-levels.md}{Curriculum Levels};
 \srcref{docs/concept/didactic/curriculum-time-axis-and-pacing.md}{Curriculum Time Axis and Pacing}.\\
-Prüfungsbasierter Abschluss &
+Impliziter Abschluss &
 \srcref{docs/concept/skill-graph/assessment-gated-completion.md}{Assessment-Gated Completion};
 \srcref{docs/concept/runtime-workflows/exam-preparation-planning.md}{Exam Preparation Planning}.\\
 Herkunft und Materialien &

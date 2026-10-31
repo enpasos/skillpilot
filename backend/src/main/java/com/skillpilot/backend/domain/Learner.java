@@ -77,6 +77,9 @@ public class Learner {
     @Column(name = "learning_plan_period_basis", nullable = false)
     private PeriodBasis learningPlanPeriodBasis = PeriodBasis.WEEK;
 
+    @Column(name = "learning_plan_count_only_explicit_goals", nullable = false)
+    private Boolean learningPlanCountOnlyExplicitGoals = false;
+
     /**
      * Monotone revision of the learner state shared by the cockpit and all
      * coach transports. This is deliberately learner-scoped rather than
@@ -244,6 +247,17 @@ public class Learner {
         this.learningPlanPeriodBasis = learningPlanPeriodBasis != null ? learningPlanPeriodBasis : PeriodBasis.WEEK;
     }
 
+    // Keep signed archives from before this preference byte-compatible by omitting
+    // its inclusive default. This is a counting preference, never a goal result.
+    @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_DEFAULT)
+    public Boolean getLearningPlanCountOnlyExplicitGoals() {
+        return Boolean.TRUE.equals(learningPlanCountOnlyExplicitGoals);
+    }
+
+    public void setLearningPlanCountOnlyExplicitGoals(Boolean learningPlanCountOnlyExplicitGoals) {
+        this.learningPlanCountOnlyExplicitGoals = learningPlanCountOnlyExplicitGoals;
+    }
+
     public long getCoachStateRevision() {
         return coachStateRevision;
     }
@@ -289,6 +303,9 @@ public class Learner {
         }
         if (this.learningPlanPeriodBasis == null) {
             this.learningPlanPeriodBasis = PeriodBasis.WEEK;
+        }
+        if (this.learningPlanCountOnlyExplicitGoals == null) {
+            this.learningPlanCountOnlyExplicitGoals = false;
         }
     }
 }

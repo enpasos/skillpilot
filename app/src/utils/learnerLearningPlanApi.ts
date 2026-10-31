@@ -355,6 +355,12 @@ const parseLearnerPlanSubjectStatus = (value: unknown): LearnerPlanSubjectStatus
   const goalCounts = parseSubjectGoalCounts(source)
   const hasBalanceDialText = Object.prototype.hasOwnProperty.call(source, 'balanceDialText')
   const balanceDialText = nullableText(source.balanceDialText)
+  const hasPlanCreditText = Object.prototype.hasOwnProperty.call(source, 'planCreditText')
+  const planCreditText = !hasPlanCreditText || source.planCreditText === null ? null
+    : requiredString(source.planCreditText, 'subject.planCreditText')
+  if (!evaluable && planCreditText !== null) {
+    throw new Error('Invalid learning-plan status response: subject.planCreditText')
+  }
   // An evaluated empty schedule has text but no balance direction. Older
   // responses may still carry their neutral direction for that empty set.
   const emptySchedule = periodGauge?.target === 0 && balanceGauge === null
@@ -384,6 +390,7 @@ const parseLearnerPlanSubjectStatus = (value: unknown): LearnerPlanSubjectStatus
     ...goalCounts,
     ...(source.learningScope === undefined ? {} : { learningScope: parseLearningScope(source.learningScope) }),
     ...(hasBalanceDialText ? { balanceDialText } : {}),
+    ...(hasPlanCreditText ? { planCreditText } : {}),
     current: requiredBoolean(source.current, 'subject.current'),
     canContinue: requiredBoolean(source.canContinue, 'subject.canContinue'),
   }

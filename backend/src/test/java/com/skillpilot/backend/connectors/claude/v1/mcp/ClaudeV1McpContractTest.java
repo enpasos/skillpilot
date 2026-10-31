@@ -597,6 +597,26 @@ class ClaudeV1McpContractTest {
     }
 
     @Test
+    void completionInstructionsFollowAutomaticDemandWithoutRequiringAnAssessmentPass() {
+        String instructions = contractAdapter.serverInstructions().replaceAll("\\s+", " ");
+        assertTrue(instructions.contains("Section completion is scoped work completion, never new mastery"));
+        assertTrue(instructions.contains("mastered goals no longer demand their own prerequisites"));
+        assertTrue(instructions.contains("non-assessment goals with no remaining demand are implicitly completed"));
+        assertTrue(instructions.contains("does not certify prerequisite competence or change saved goal results"));
+        assertTrue(instructions.contains("A section with no required assessments may also be complete"));
+        assertTrue(instructions.contains("Do not recalculate this result or restore implicitly completed work as mandatory"));
+        assertTrue(instructions.contains("voluntary learning remains possible through current published choices"));
+        assertTrue(instructions.contains("choice starts its current section and assessment together"));
+        assertTrue(instructions.contains("Until the learner explicitly chooses it, do not start, teach, render or disclose"));
+        assertTrue(instructions.contains("completionContract.status=pending"));
+        assertTrue(instructions.contains("silently call confirm_skillpilot_completion_contract"));
+        assertFalse(instructions.contains("starts its reviewed section"));
+        String description = tool(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE).description();
+        assertTrue(description.contains("Chooses a current learning section"));
+        assertFalse(description.contains("reviewed section"));
+    }
+
+    @Test
     void serverInstructionsCarryTheCoachingRulesNotTheToolDescriptions() {
         String instructions = contractAdapter.serverInstructions();
         assertNotNull(instructions);

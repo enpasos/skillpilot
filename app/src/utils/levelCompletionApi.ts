@@ -62,11 +62,22 @@ export interface CompletionActionInput {
 
 export interface CompletionTreeWaiver {
   sectionTitle: CompletionTitle
+  reason?: 'assessment' | 'no_remaining_demand'
   assessments: { goalId: string; title: CompletionTitle }[]
   assessmentCount?: number
 }
 
-/** Exact authored assessment references only; prerequisites never imply coverage. */
+export const isAutomaticCompletion = (completion: Pick<LevelCompletion, 'profileId'> | null): boolean => (
+  completion?.profileId?.startsWith('automatic:') ?? false
+)
+
+/** A read-only automatic overview does not pause or own the normal learning route. */
+export const hasActiveCompletionRoute = (completion: LevelCompletion | null): boolean => Boolean(
+  completion?.profileId && (!isAutomaticCompletion(completion)
+    || completion.navigationIntent || completion.directAssessmentRunning),
+)
+
+/** Exact backend assessment choices only; the UI never derives them from prerequisites. */
 export const completionAssessmentsForGoal = (completion: LevelCompletion | null, goalId: string) => {
   if (!completion || completion.calculationStatus === 'invalid' || completion.calculationStatus === 'unavailable') return []
   const profiles = completion.profileId
@@ -90,6 +101,8 @@ export const completionWaiversForTree = (
     const detail = details.get(goalId)
     result.set(goalId, {
       sectionTitle: completion.title,
+      reason: isAutomaticCompletion(completion) || detail?.ruleId === 'no_remaining_demand'
+        ? 'no_remaining_demand' : 'assessment',
       assessments: detail?.assessments ?? [],
       assessmentCount: detail?.assessmentCount,
     })
@@ -119,8 +132,8 @@ const bool = (value: unknown): boolean => {
   if (typeof value !== 'boolean') throw invalid()
   return value
 }
-const list = (value: unknown): unknown[] => {
-  if (!Array.isArray(value) || value.length > 1000) throw invalid()
+const list = (value: unknown, limit = 1000): unknown[] => {
+  if (!Array.isArray(value) || value.length > limit) throw invalid()
   return value
 }
 const title = (value: unknown): CompletionTitle => {
@@ -155,6 +168,7 @@ export const parseLevelCompletion = (value: unknown): LevelCompletion | null => 
   if (value === null || value === undefined) return null
   const source = record(value)
   const status = source.calculationStatus
+  const automatic = typeof source.profileId === 'string' && source.profileId.startsWith('automatic:')
   if (!['valid', 'unresolved', 'invalid', 'notApplicable', 'unavailable'].includes(String(status))) throw invalid()
   const result: LevelCompletion = {
     calculationStatus: status as CompletionCalculationStatus,
@@ -170,7 +184,7 @@ export const parseLevelCompletion = (value: unknown): LevelCompletion | null => 
     targetCount: integer(source.targetCount),
     masteredAssessmentCount: integer(source.masteredAssessmentCount),
     requiredAssessmentCount: integer(source.requiredAssessmentCount),
-    waivedTargetGoalIds: list(source.waivedTargetGoalIds).map(text),
+    waivedTargetGoalIds: list(source.waivedTargetGoalIds, 100_000).map(text),
     waiverDetails: list(source.waiverDetails ?? []).map((value) => {
       const detail = record(value)
       const assessments = list(detail.assessments).map((value) => {
@@ -178,18 +192,21 @@ export const parseLevelCompletion = (value: unknown): LevelCompletion | null => 
         return { goalId: text(assessment.goalId), title: title(assessment.title) }
       })
       const assessmentCount = integer(detail.assessmentCount)
-      if (!assessmentCount || assessments.length > assessmentCount || assessments.length > 3) throw invalid()
-      return { goalId: text(detail.goalId), title: title(detail.title), ruleId: text(detail.ruleId), assessments, assessmentCount }
+      const ruleId = text(detail.ruleId)
+      if ((!assessmentCount && ruleId !== 'no_remaining_demand')
+          || assessments.length > assessmentCount || assessments.length > 3) throw invalid()
+      return { goalId: text(detail.goalId), title: title(detail.title), ruleId, assessments, assessmentCount }
     }),
-    assessments: list(source.assessments).map(assessment),
+    assessments: list(source.assessments, 100_000).map(assessment),
     profileOptions: list(source.profileOptions).map((value) => {
       const option = record(value)
       const targetCount = option.targetCount == null ? undefined : integer(option.targetCount)
       const requiredAssessmentCount = option.requiredAssessmentCount == null ? undefined : integer(option.requiredAssessmentCount)
+      const automaticOption = typeof option.profileId === 'string' && option.profileId.startsWith('automatic:')
       if ((targetCount === undefined) !== (requiredAssessmentCount === undefined)
-          || (requiredAssessmentCount !== undefined && (requiredAssessmentCount === 0 || requiredAssessmentCount > targetCount!))) throw invalid()
-      const assessments = list(option.assessments ?? []).map(assessment)
-      if (assessments.length > 24 || new Set(assessments.map(entry => entry.goalId)).size !== assessments.length
+          || (requiredAssessmentCount !== undefined && !automaticOption && (requiredAssessmentCount === 0 || requiredAssessmentCount > targetCount!))) throw invalid()
+      const assessments = list(option.assessments ?? [], 100_000).map(assessment)
+      if (new Set(assessments.map(entry => entry.goalId)).size !== assessments.length
           || (requiredAssessmentCount !== undefined && assessments.length > requiredAssessmentCount)) throw invalid()
       return { profileId: text(option.profileId), title: title(option.title), targetCount, requiredAssessmentCount, assessments }
     }),
@@ -201,14 +218,13 @@ export const parseLevelCompletion = (value: unknown): LevelCompletion | null => 
       return { action: actionName(action.action), goalId: optionalText(action.goalId), title: title(action.title), intent: intent(action.intent) }
     }),
   }
-  if (result.profileOptions.length > 24) throw invalid()
   if (status === 'valid') {
     result.complete = bool(source.complete)
     if (!result.profileId || !result.contextRef
       || result.masteredTargetCount + result.waivedTargetCount + result.pendingTargetCount !== result.targetCount
       || result.masteredAssessmentCount > result.requiredAssessmentCount
-      || result.requiredAssessmentCount === 0
-      || result.requiredAssessmentCount > result.targetCount
+      || (!automatic && result.requiredAssessmentCount === 0)
+      || (!automatic && result.requiredAssessmentCount > result.targetCount)
       || result.waivedTargetGoalIds.length > result.waivedTargetCount
       || result.complete !== (result.pendingTargetCount === 0 && result.masteredAssessmentCount === result.requiredAssessmentCount)) throw invalid()
   } else if (source.complete !== null && source.complete !== undefined) {
@@ -246,6 +262,9 @@ export const completionNotice = (code: string, language: string): string => {
 export const completionUnavailableReason = (code: string, language: string): string => {
   const en = language.startsWith('en')
   if (code === 'assessment_running') return en ? 'Another assessment is already running.' : 'Eine andere Prüfung läuft bereits.'
+  if (code === 'assessment_outside_personal_curriculum') return en
+    ? 'This assessment is outside your Personal Curriculum. Adjust your Cockpit selection to start it.'
+    : 'Diese Prüfung liegt außerhalb deines Personal Curriculums. Passe die Auswahl im Cockpit an, um sie zu starten.'
   if (code === 'coach_contract_unsupported') return en ? 'This direct assessment requires a supported Claude connection.' : 'Diese direkte Prüfung benötigt eine unterstützte Claude-Verbindung.'
   return en ? 'This assessment cannot currently be started.' : 'Diese Prüfung kann gerade nicht gestartet werden.'
 }

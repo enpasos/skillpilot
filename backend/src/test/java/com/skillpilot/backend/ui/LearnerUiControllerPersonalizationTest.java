@@ -89,6 +89,7 @@ class LearnerUiControllerPersonalizationTest {
                 false,
                 true,
                 null,
+                null,
                 null);
         verifyNoMoreInteractions(learnerService);
     }
@@ -98,7 +99,16 @@ class LearnerUiControllerPersonalizationTest {
         var request = new com.fasterxml.jackson.databind.ObjectMapper().readValue(
                 "{\"useAssessmentShortcuts\":false}", PreferencesRequest.class);
         controller.updatePreferences(LEARNER_ID, request);
-        verify(learnerService).setPreferences(LEARNER_ID, null, null, null, null, null, null, false);
+        verify(learnerService).setPreferences(LEARNER_ID, null, null, null, null, null, null, false, null);
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void preferencesForwardExplicitPlanCountingWithoutChangingShortcutChoice() throws Exception {
+        var request = new com.fasterxml.jackson.databind.ObjectMapper().readValue(
+                "{\"learningPlanCountOnlyExplicitGoals\":true}", PreferencesRequest.class);
+        controller.updatePreferences(LEARNER_ID, request);
+        verify(learnerService).setPreferences(LEARNER_ID, null, null, null, null, null, null, null, true);
         verifyNoMoreInteractions(learnerService);
     }
 
