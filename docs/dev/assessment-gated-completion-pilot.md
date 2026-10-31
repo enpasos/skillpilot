@@ -235,9 +235,10 @@ normalen Kontext erlaubt die Bestätigung und anschließend die erste bewusste
 Abschnittswahl direkt im Coach. Dieser technische Austausch braucht keine
 zusätzliche Bestätigung durch die lernende Person. Alte oder inkompatible
 Sitzungen können den aktiven Profilweg nicht ungefiltert fortsetzen und benötigen
-einen frischen unterstützten Start. Andere Anbieter zeigen verfügbare
-Prüfungsabkürzungen mit gezieltem Cockpit-Link; die Ausführung innerhalb ihrer
-eigenen Sitzung bleibt bis zur gesonderten Adapterprüfung gesperrt.
+einen frischen unterstützten Start. ChatGPT und Gemini sind für diese Funktion
+vorerst zurückgestellt. Ihre spätere Umsetzung soll denselben vollständigen
+Ablauf wie Claude innerhalb der jeweiligen Sitzung unterstützen; ein
+Cockpit-Link als Ersatz für den direkten Prüfungsstart ist nicht vorgesehen.
 
 Diese Quittung belegt eine technische Sitzungskommunikation, **nicht**, dass ein
 Host oder Modell die Instructions vollständig gelesen oder befolgt hat. Echte
@@ -595,6 +596,13 @@ Capabilities aus Chats kopieren müssen. Ohne laufende Direktbindung pausiert
 
 ### Prüfungsabkürzungen aus dem Coach ansteuern
 
+Die ausdrücklichen Coach-Anweisungen dafür stehen im neuen lokalen
+Paketkandidaten **Claude 1.1.13**. Nach Bereitstellung und Aktualisierung des
+Claude-Pakets in einem frischen Chat testen. Ein
+Backend-Deployment aktualisiert die bereits installierten Skills nicht.
+Die früher veröffentlichten oder importierten Archive bleiben unverändert;
+lokale Paketprüfungen belegen noch keine erfolgreiche Host-Abnahme.
+
 Eine neue Claude-Sitzung mit regulärem Lernweg beginnen und zum Beispiel fragen:
 **„Welche Prüfungen kann ich direkt versuchen, um Vorbereitung abzukürzen?“**
 Der Coach nennt ausschließlich aktuell angebotene Prüfungen und den jeweiligen
@@ -608,13 +616,11 @@ technischen Profil-ID und keine zweite Zustimmung zur bereits eindeutigen
 Prüfungswahl. Ein bloßer Informationswunsch startet nichts. Die technische
 Vertragsquittung benötigt ebenfalls keine menschliche Bestätigung.
 
-ChatGPT und Gemini nennen dieselben verfügbaren Prüfungen und einen gezielten
-Cockpit-Link mit dem Hinweis, dass Direktprüfungen derzeit mit Claude laufen.
-Der Link öffnet ausschließlich die Auswahl am betreffenden Prüfungsziel.
-Er enthält keine SkillPilot-ID, Sitzung, Startberechtigung oder mitgebrachte
-Zustandsrevision. Das Cockpit verwendet seine aktuell angemeldete Test-ID,
-lädt deren frischen Stand und erfordert den bewussten Start. Der Link
-autorisiert weder einen Anbieterwechsel noch die Prüfung selbst.
+ChatGPT und Gemini erhalten in diesem Schritt weder neue Shortcut-Anweisungen
+noch eine besondere Link-Übergabe. Ihre spätere Integration übernimmt dieselben
+Auswahl-, Start-, Bewertungs- und Abschlussregeln mit anbietergetrennter Sitzung.
+Ein erfolgreicher Claude-Test ersetzt ihre jeweils eigene Adapter- und
+Host-Abnahme nicht.
 
 Zusätzlich prüfen: Abkürzungen abschalten, Prüfung bereits bestehen lassen,
 den Persönlichen Lehrplan ändern oder einen alten Link erneut öffnen. Es darf

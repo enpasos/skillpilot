@@ -20,6 +20,7 @@ import {
   assertActiveUiBindings,
   assertBehavioralReviewApproved,
   assertExactReleaseTree,
+  assertInternalDraftTree,
   assertLifecyclePolicyRevisionMonotone,
   assertReleaseCompatible,
   assertSuccessorVersionClassification,
@@ -314,7 +315,7 @@ try {
         `Missing internal draft ${draftLabel} at ${relative(repositoryRoot, draftVersion)}. ` +
           "Run prepare locally, review the result, and commit it before deployment.",
       );
-      assertInternalDraftTree(candidate, draftVersion);
+      assertInternalDraftTree(candidate, draftVersion, draftLabel);
       console.log(
         `OpenAI plugin V1 sources exactly match internal draft ${draftLabel}`,
       );
@@ -331,7 +332,7 @@ try {
       `Missing internal draft ${draftLabel} at ${relative(repositoryRoot, draftVersion)}. ` +
         "Run prepare locally, review the result, and commit it first.",
     );
-    assertInternalDraftTree(candidate, draftVersion);
+    assertInternalDraftTree(candidate, draftVersion, draftLabel);
     assert.equal(
       existsSync(publishedVersion),
       false,
@@ -644,21 +645,6 @@ function printSurfaceChangeReport(changes) {
     for (const change of changes.reviewRequired) {
       console.log(`- REVIEW: ${change}`);
     }
-  }
-}
-
-function assertInternalDraftTree(candidateRoot, expectedDraftRoot) {
-  try {
-    assertExactReleaseTree(candidateRoot, expectedDraftRoot);
-  } catch (error) {
-    if (error instanceof Error) {
-      error.message +=
-        `\nThe internal draft ${draftLabel} is read-only during deployment. ` +
-        "If the source change is intentional, run " +
-        "`node scripts/openai_plugin_release.mjs prepare` locally, review the " +
-        "result, and commit it before deploying.";
-    }
-    throw error;
   }
 }
 

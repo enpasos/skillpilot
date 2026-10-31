@@ -2,18 +2,18 @@
 
 SkillPilot Coach v1 is the public-plugin candidate for curriculum-grounded
 SkillPilot learning coaching. Its product scope is limited to eligible paid
-Claude Chat on the Web and the native Android app. Version 1.1.12 is the sole
+Claude Chat on the Web and the native Android app. Version 1.1.13 is the sole
 current replacement candidate. Local preparation does not establish deployment,
-Marketplace publication or real-client acceptance. The published 1.1.11
+Marketplace publication or real-client acceptance. The published 1.1.12
 Marketplace package and website download remain immutable; older
 packages are not a fallback for testing this candidate.
 
 Earlier v1 direct-install packages were demonstrated in paid Claude Web chat.
 The Product Owner also used an earlier account-level direct installation with a
 Claude Pro account in the native Claude app on Android. Those observations do
-not transfer to the 1.1.12 candidate. Exact-candidate direct-install,
+not transfer to the 1.1.13 candidate. Exact-candidate direct-install,
 public-listing installation and the complete Android learning flow remain
-pending until they are verified for 1.1.12. The earlier Android observation also
+pending until they are verified for 1.1.13. The earlier Android observation also
 does not establish that the package can be installed from Android itself or
 that a public listing will reach Android. iOS, Claude Desktop Chat, Cowork and
 public Claude Code remain outside this candidate's claims.
@@ -40,11 +40,19 @@ complete installation and security boundary.
 ## Package boundary
 
 The plugin contains the SkillPilot coaching Skill and one declaration for the
-remote SkillPilot connector. All fourteen MCP tools and both interactive MCP Apps
+remote SkillPilot connector. The fourteen base MCP tools, the two optional assessment-completion tools and both interactive MCP Apps
 come from that connector; the plugin does not duplicate their schemas,
 resources, or UI bytes.
 
-Version 1.1.12 retains the evidence check before reporting task or goal completion. It
+Version 1.1.13 adds deliberate assessment-shortcut entry from the coach. Ask which
+assessments are available; the coach offers only current reviewed choices by
+their exact titles. An explicit choice starts the assessment in the same
+learning session without preliminary section selection. Inspection starts
+nothing and reveals no task or solution. Section-specific waived preparation
+never becomes global mastery. These optional tools require the current server
+contract; disabling shortcuts preserves ordinary learning.
+
+Version 1.1.13 retains the evidence check before reporting task or goal completion. It
 keeps internal assessment deliberation out of learner-facing text and speech.
 For an ordinary goal or a passed exam, the coach decides privately from the
 learner's work and saves demonstrated mastery immediately. After the write is
@@ -74,7 +82,7 @@ plugin version. Old cached inputs are rejected; they must not be reintroduced
 to make an old installation work. OAuth, learner-session, tool identity and
 backend-owned progression boundaries remain unchanged.
 
-Version 1.1.12 keeps the chat plan-first with a compact plan status formulated by
+Version 1.1.13 keeps the chat plan-first with a compact plan status formulated by
 the backend. Claude quotes `learningPlanToday.text` verbatim and adds no counts
 or judgement of its own, for example:
 “Mathematik: Tagesziel 2 von 3 · im Plan” and
@@ -94,7 +102,7 @@ prerequisites and the learner's current authorized choices. Only completion of
 the whole Personal Curriculum ends its learning content; temporary blockers
 must not be presented as completion.
 Continue or resume the backend-selected goal without requiring a Web-app
-button. Existing plan dates, fourteen tools and learner-session boundaries
+button. Existing plan dates, base tools and learner-session boundaries
 remain in place.
 An explicit request such as “switch to Physics” changes the current planned
 subject through the connector while every valid subject plan continues to
@@ -122,7 +130,7 @@ from inside the Android app, Claude Desktop Chat, Cowork, hooks, subagents, or
 public Claude Code. Those surfaces require their own acceptance evidence and a
 later reviewed release before SkillPilot can advertise them.
 
-The historical direct-install observations are not evidence for 1.1.12 or public
+The historical direct-install observations are not evidence for 1.1.13 or public
 Directory availability. Submission readiness requires this exact candidate to
 complete the dedicated Web and Android real-client acceptance gates.
 Public-listing reach on Android remains a publication verification, not a

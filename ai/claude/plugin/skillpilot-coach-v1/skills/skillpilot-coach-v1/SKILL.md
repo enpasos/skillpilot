@@ -56,6 +56,35 @@ request to show the image again, reload context once and make one new render if
 the fresh context permits it. A render receipt proves neither host display nor
 visibility; do not invent image details or expose its URLs/metadata.
 
+## Assessment shortcuts
+
+Resolve a request for an assessment shortcut, to skip preparation, or to show
+existing knowledge before ordinary resume, subject switching or goal rendering.
+Read fresh context using the shared state rules.
+When `completionContract.status=pending`, silently follow its server-issued
+`confirm_skillpilot_completion_contract` instruction with the unchanged receipt
+and session, then reload context before matching choices or declaring them
+unavailable. This technical receipt is not learner selection.
+Match the request only to its
+current `levelCompletion.choices`; offer the fitting assessment by its exact
+published title. Inspection changes no learning state and reveals no assessment task,
+hint or solution. An explicit request to start exactly one published assessment
+already supplies selection consent: call `choose_skillpilot_completion_route`
+with that unchanged choice and the shared write fields, without asking again.
+Otherwise clarify ambiguity or offer the current choices and wait for selection.
+No preliminary section selection is needed. After confirmed selection, follow
+the returned context and Exams workflow; make no second start-confirmation round.
+
+If no matching choice is available, explain that honestly and refer to the
+Cockpit for current options or the assessment-shortcut setting; never enable it
+or bypass prerequisites with ordinary goal/focus tools. While a completion route
+owns navigation, use only its published choices instead of normal plan resume.
+Use backend completion statements without recalculating waivers: preparation
+may cease to be required only for that section, never become globally mastered.
+Each atomic goal still has only binary mastery, with no second pass record.
+Detailed exam feedback remains governed by Exams. Do not interrupt current
+feedback or replace an agreed normal successor with unsolicited shortcut offers.
+
 ## Daily plans and learner intent
 
 **A plan guides and prioritizes; it must never prevent learning.** A reached period

@@ -35,7 +35,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 class GeminiV1CoachContextProjectorTest {
 
     @Test
-    void masterySuccessorKeepsReadOnlyAssessmentDiscoveryWithoutReplacingTheChosenNextGoal() {
+    void masterySuccessorDoesNotOfferADeferredAssessmentShortcutHandoff() {
         var facade = mock(CoachToolFacade.class);
         var projector = new GeminiV1CoachContextProjector(new CoachStateProjection("https://skillpilot.test"),
                 facade, "https://skillpilot.test");
@@ -53,9 +53,8 @@ class GeminiV1CoachContextProjectorTest {
                 base.stateMachine(), base.goals(), completion);
 
         var context = projector.projectMasteryContext("learner", 7, "en", base.curriculum(), update);
-        var discovery = (com.skillpilot.backend.ai.AssessmentShortcutDiscovery) context.get("assessmentShortcuts");
-        assertNotNull(discovery);
-        assertEquals("Explain projection", discovery.options().getFirst().assessmentTitle());
+        assertFalse(context.containsKey("assessmentShortcuts"));
+        assertFalse(context.toString().contains("completionShortcuts=1"));
         assertEquals(projector.formatGoal(base.activeGoal()), context.get("activeGoal"));
         assertEquals(List.of(), context.get("frontier"));
     }

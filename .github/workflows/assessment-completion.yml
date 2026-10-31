@@ -200,8 +200,6 @@ jobs:
           --tests 'com.skillpilot.backend.completion.CompletionResponseProjectionTest'
           --tests 'com.skillpilot.backend.completion.CompletionWarmupRunnerTest'
           --tests 'com.skillpilot.backend.ai.AssessmentShortcutDiscoveryTest'
-          --tests 'com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachMcpContractTest.currentContextPreservesReadOnlyAssessmentDiscoveryThroughPlanDecorationAndOutputSchema'
-          --tests 'com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1CoachContextProjectorTest.masterySuccessorKeepsReadOnlyAssessmentDiscoveryWithoutReplacingTheChosenNextGoal'
           --tests 'com.skillpilot.backend.curriculumpackage.CompletionPackageLoaderTest'
           --tests 'com.skillpilot.backend.service.AssessmentCompletionIntegrationTest'
           --tests 'com.skillpilot.backend.service.AssessmentCompletionSrsIntegrationTest'
@@ -239,8 +237,6 @@ jobs:
               'com.skillpilot.backend.completion.CompletionResponseProjectionTest': 2,
               'com.skillpilot.backend.completion.CompletionWarmupRunnerTest': 8,
               'com.skillpilot.backend.ai.AssessmentShortcutDiscoveryTest': 4,
-              'com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachMcpContractTest': 1,
-              'com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1CoachContextProjectorTest': 1,
               'com.skillpilot.backend.curriculumpackage.CompletionPackageLoaderTest': 1,
               'com.skillpilot.backend.service.AssessmentCompletionIntegrationTest': 35,
               'com.skillpilot.backend.service.AssessmentCompletionSrsIntegrationTest': 7,

@@ -13,13 +13,15 @@ bewusst. Fachliche Reviewbindungen und die dokumentierten Laufzeitkapazitäten
 werden durch die Standardaktivierung nicht erweitert.
 
 Die ergänzende Entscheidung zum direkten Einstieg am selben Tag trennt
-**Ansehen** und **Starten**: Cockpit und Coaches erhalten vor der Profilwahl
+**Ansehen** und **Starten**: Cockpit und Claude erhalten vor der Profilwahl
 eine begrenzte Vorschau konkreter, aktuell verfügbarer Prüfungen. Eine
 ausdrückliche Prüfungswahl wählt Profil und Prüfung atomar; bloßes Ansehen
 ändert keine Navigation. Claude unterstützt diese Wahl innerhalb seiner
-bestehenden Sitzung. ChatGPT und Gemini bieten einen gezielten, rein
-navigierenden Cockpit-Link mit offenem Claude-Hinweis. Eine native Ausführung
-in diesen Anbietern setzt weiterhin ihren eigenen geprüften Vertrag voraus.
+bestehenden Sitzung. ChatGPT und Gemini sind vorerst zurückgestellt. Bei ihrer
+Umsetzung gilt derselbe vollständige Ablauf mit direktem Prüfungsstart innerhalb
+der jeweiligen Sitzung; ein Cockpit-Link als abweichende Ersatzfunktion ist
+nicht vorgesehen. Dazu benötigen sie jeweils ihren geprüften Adaptervertrag,
+passende Coach-Anweisungen und eine eigene Host-Abnahme.
 Konkrete Bedienung und Prüfpfade stehen im oben verlinkten Pilotdokument.
 
 Stand: 30. Oktober 2026. Grundlage ist der Code bei `8aee10595` und das

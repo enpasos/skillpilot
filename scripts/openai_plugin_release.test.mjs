@@ -20,6 +20,7 @@ import {
   assertActiveUiBindings,
   assertBehavioralReviewApproved,
   assertExactReleaseTree,
+  assertInternalDraftTree,
   assertLifecyclePolicyRevisionMonotone,
   assertReleaseCompatible,
   assertSuccessorVersionClassification,
@@ -413,6 +414,32 @@ test("exact-tree verification keeps published artifacts immutable", () => {
       () => assertExactReleaseTree(actual, expected),
       /Release artifact changed/,
     );
+  });
+});
+
+test("stale draft verification visibly explains local preparation and never rewrites the draft", () => {
+  withTemporaryDirectory((root) => {
+    const expected = resolve(root, "draft");
+    const actual = resolve(root, "candidate");
+    mkdirSync(resolve(expected, "contract"), { recursive: true });
+    mkdirSync(resolve(actual, "contract"), { recursive: true });
+    const previous = JSON.stringify({ tools: [{ outputSchema: { properties: {} } }] });
+    writeFileSync(resolve(expected, "contract/contract.json"), previous);
+    writeFileSync(resolve(actual, "contract/contract.json"), previous);
+    assert.doesNotThrow(() => assertInternalDraftTree(actual, expected, "1.1.3-SNAPSHOT"));
+
+    writeFileSync(resolve(actual, "contract/contract.json"), JSON.stringify({
+      tools: [{ outputSchema: { properties: { assessmentShortcuts: { type: "object" } } } }],
+    }));
+    assert.throws(() => assertInternalDraftTree(actual, expected, "1.1.3-SNAPSHOT"), (error) => {
+      assert.match(error.stack, /1\.1\.3-SNAPSHOT.*read-only during deployment/u);
+      assert.match(error.stack, /openai_plugin_release\.mjs prepare.*locally.*commit it before deploying/u);
+      assert.ok(error.cause instanceof assert.AssertionError);
+      assert.match(error.cause.message, /Release artifact changed: contract\/contract\.json/u);
+      assert.equal(error.cause.expected, createHash("sha256").update(previous).digest("hex"));
+      return true;
+    });
+    assert.equal(readFileSync(resolve(expected, "contract/contract.json"), "utf8"), previous);
   });
 });
 

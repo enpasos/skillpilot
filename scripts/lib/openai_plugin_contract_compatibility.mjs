@@ -602,6 +602,24 @@ export function assertExactReleaseTree(actualRoot, expectedRoot) {
   }
 }
 
+/** A stale unpublished draft is repaired locally, never rewritten during deployment. */
+export function assertInternalDraftTree(candidateRoot, expectedDraftRoot, draftLabel) {
+  try {
+    assertExactReleaseTree(candidateRoot, expectedDraftRoot);
+  } catch (error) {
+    // AssertionError captures its stack before message can be amended. A new
+    // outer error keeps the remediation visible while preserving exact hashes
+    // and the original mismatch as its cause.
+    throw new Error(
+      `The internal draft ${draftLabel} is out of date and is read-only during deployment. ` +
+        "If the source change is intentional, run " +
+        "`node scripts/openai_plugin_release.mjs prepare` locally, review the " +
+        "result, and commit it before deploying.",
+      { cause: error },
+    );
+  }
+}
+
 export function validatePublishedIndex(index, expectedIdentity, contractMajor) {
   assert.equal(index.schemaVersion, 2, "Unsupported published index schema.");
   assert.equal(

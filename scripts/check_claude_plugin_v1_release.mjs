@@ -26,8 +26,16 @@ const historicalReleaseRoot = `${releaseRoot}/history`;
 const connectorContractBaselinePath =
   "ai/claude/connector-v1/release/contract-baseline.json";
 const expectedPluginIdentity = "skillpilot-coach-v1";
-const expectedPluginVersion = "1.1.12";
+const expectedPluginVersion = "1.1.13";
 const expectedHistoricalReleaseFiles = new Map([
+  ["1.1.12/contract-baseline.json", "6ba51abe4f89ecc8f338a789c348af4c7053e6df1c227fa3c1335efc3b52071e"],
+  ["1.1.12/direct-install-beta.json", "95c02a9d99a191b408049ee004a33676df6a0b3f099436602ca39ce919f68c28"],
+  ["1.1.12/evidence-manifest.json", "15e03a1cdc8e08c9519fdfb5c618c2e459e8e03711f2837aae2772032d491649"],
+  ["1.1.12/lifecycle.json", "9db301d8878c82d29575c4c3f013310e1f5c68afa41b56999e770d0c8efacfdd"],
+  ["1.1.12/marketplace-publication.json", "6c660e4df0271fe958f16cb89d7661ebd615aa65eb0e19f9d4de284654668034"],
+  ["1.1.12/release-gates.json", "4553bc42fc55390b3c67dfe6c9acdb7d0d5983cad316bf5b209884e0ef81bd12"],
+  ["1.1.12/support-readiness-drill.template.md", "3c7b6b533d9388a1ae48f26f71947e7dcec50ac017a3e75290ca4d2c6ef9a6b0"],
+
   ["1.1.11/contract-baseline.json", "2c575e08968f861a85fb137d3d43ab8cb5dc42f9b66ceb5c07c64593ba49bab4"],
   ["1.1.11/direct-install-beta.json", "ceab622317c414ae4009bf37a24fb9f84b8ae0ec09d818254bf2b2a148c7a3fe"],
   ["1.1.11/evidence-manifest.json", "d29d19ed917a2470a4421204a4183e621d53a898c86eb7c1bc9522d1d9329747"],
@@ -248,7 +256,7 @@ export function verifyClaudePluginV1Release({
     );
     check(
       document?.pluginVersion === expectedPluginVersion,
-      "Every plugin release document must use Claude plugin version 1.1.12.",
+      "Every plugin release document must use Claude plugin version 1.1.13.",
     );
   }
 
@@ -308,20 +316,15 @@ export function verifyClaudePluginV1Release({
     "Plugin lifecycle must exclude Claude Free, iOS, Android in-app installation, Desktop Chat, Cowork, public Claude Code, hooks and subagent claims.",
   );
   check(
-    lifecycle?.productOwnerAuthorization?.approvedAt === "2026-09-30"
+    lifecycle?.productOwnerAuthorization?.approvedAt === "2026-10-31"
       && lifecycle?.productOwnerAuthorization?.approvedBy === "product-owner"
-      && /green CI and confirmed server rollout/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
-      && /9a10fd51011e390fbf83a8524454b024279825da/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
-      && /exact SkillPilot Coach v1\.1\.12 candidate/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
-      && /personal Git Marketplace pull-request path/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
-      && /website download and Marketplace must offer the same verified 1\.1\.12 package/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
-      && /Preserve all published 1\.1\.11 files and evidence/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
-      && /two consecutive learning-goal images in one new SkillPilot-started Claude session/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
-      && /all other acceptance remains pending/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /local preparation of the exact SkillPilot Coach v1\.1\.13 candidate/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /Preserve all published 1\.1\.12 files and evidence/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
+      && /all external publication and exact-candidate host acceptance remain pending/u.test(lifecycle?.productOwnerAuthorization?.scope ?? "")
       && Array.isArray(lifecycle?.productOwnerAuthorization?.excludes)
-      && lifecycle.productOwnerAuthorization.excludes.some((entry) => /Credential changes, Anthropic Console submission, unsupported client claims, blanket acceptance of untested flows and inherited candidate acceptance/u.test(entry))
+      && lifecycle.productOwnerAuthorization.excludes.some((entry) => /Deployment, Marketplace publication, Anthropic Console submission, guide activation, credential changes and inherited candidate acceptance/u.test(entry))
       && lifecycle.productOwnerAuthorization.excludes.some((entry) => /Connector Directory/u.test(entry)),
-    "Plugin lifecycle must record the exact 1.1.12 publication authority without inheriting unrelated client acceptance.",
+    "Plugin lifecycle must record local 1.1.13 preparation authority without publication or inherited client acceptance.",
   );
   check(
     lifecycle?.releaseLine?.major === 1
@@ -627,6 +630,7 @@ export function buildCurrentPluginBaseline({
     directoryPublicationRequired: false,
     connectorContractBaseline,
     tools: expectedTools,
+    optionalCompletionTools: ["confirm_skillpilot_completion_contract", "choose_skillpilot_completion_route"],
     mcpApps: expectedMcpApps,
   };
   const candidateContractSha256 = calculatePluginCandidateContractSha256({

@@ -146,7 +146,7 @@ export function validateClaudePluginPackage(root = packageRoot) {
   if (manifest) {
     check(manifest.name === "skillpilot-coach-v1", "Unexpected plugin name.");
     check(/^\d+\.\d+\.\d+$/u.test(manifest.version ?? ""), "Plugin version must be SemVer.");
-    check(manifest.version === "1.1.12", "Claude replacement candidate must be version 1.1.12.");
+    check(manifest.version === "1.1.13", "Claude replacement candidate must be version 1.1.13.");
     check(nonBlank(manifest.description), "Plugin description is required.");
     check(manifest.author?.name === "enpasos GmbH", "Unexpected plugin author.");
     check(manifest.homepage === "https://skillpilot.com", "Unexpected plugin homepage.");
@@ -252,10 +252,10 @@ export function validateClaudePluginPackage(root = packageRoot) {
   check(
     normalizedSetupText.includes("Earlier packages were observed in paid Claude Web chat and, after account-level direct installation on Claude Pro, in the native Claude app on Android")
       && normalizedSetupText.includes("Those observations are historical evidence only")
-      && normalizedSetupText.includes("exact-candidate Web, Android and Voice acceptance for 1.1.12 is still pending")
+      && normalizedSetupText.includes("exact-candidate Web, Android and Voice acceptance for 1.1.13 is still pending")
       && normalizedSetupText.includes("no earlier package is a supported fallback")
       && normalizedSetupText.includes("Fresh public-listing installation and Android use are verified after publication and do not form a circular pre-submission gate"),
-    "SETUP.md must distinguish historical observations from pending 1.1.12 exact-candidate acceptance.",
+    "SETUP.md must distinguish historical observations from pending 1.1.13 exact-candidate acceptance.",
   );
   check(
     normalizedSetupText.includes("The v1 publication scope is limited to eligible paid Claude Chat on the Web and the native Android app after account-level installation")
@@ -274,21 +274,21 @@ export function validateClaudePluginPackage(root = packageRoot) {
     "SETUP.md must preserve the independent Connector Directory lane without gating plugin submission.",
   );
   check(
-    normalizedSetupText.includes("All fourteen MCP tools and both interactive MCP Apps come from the remote SkillPilot connector")
+    normalizedSetupText.includes("The fourteen base MCP tools, the two optional assessment-completion tools and both interactive MCP Apps come from the remote SkillPilot connector")
       && normalizedSetupText.includes("The Skill provides coaching instructions only")
       && normalizedSetupText.includes("without copying their schemas, resources or UI bytes into the plugin package"),
     "SETUP.md must attribute all tools and interactive UIs to the connector without duplicating them in the plugin.",
   );
   check(
     normalizedReadmeText.includes("Its product scope is limited to eligible paid Claude Chat on the Web and the native Android app")
-      && normalizedReadmeText.includes("Version 1.1.12 is the sole current replacement candidate")
+      && normalizedReadmeText.includes("Version 1.1.13 is the sole current replacement candidate")
       && normalizedReadmeText.includes("Local preparation does not establish deployment, Marketplace publication or real-client acceptance")
-      && normalizedReadmeText.includes("The published 1.1.11 Marketplace package and website download remain immutable")
+      && normalizedReadmeText.includes("The published 1.1.12 Marketplace package and website download remain immutable")
       && normalizedReadmeText.includes("This is an intentional input-contract contraction, not backward compatibility")
       && normalizedReadmeText.includes("older packages are not a fallback for testing this candidate")
-      && normalizedReadmeText.includes("Those observations do not transfer to the 1.1.12 candidate")
-      && normalizedReadmeText.includes("Exact-candidate direct-install, public-listing installation and the complete Android learning flow remain pending until they are verified for 1.1.12")
-      && normalizedReadmeText.includes("Version 1.1.12 keeps the chat plan-first with a compact plan status formulated by the backend")
+      && normalizedReadmeText.includes("Those observations do not transfer to the 1.1.13 candidate")
+      && normalizedReadmeText.includes("Exact-candidate direct-install, public-listing installation and the complete Android learning flow remain pending until they are verified for 1.1.13")
+      && normalizedReadmeText.includes("Version 1.1.13 keeps the chat plan-first with a compact plan status formulated by the backend")
       && normalizedReadmeText.includes("Public-listing reach on Android remains a publication verification, not a circular pre-submission requirement")
       && normalizedReadmeText.includes("The permanent SkillPilot ID remains inside SkillPilot")
       && normalizedReadmeText.includes("[SETUP.md](./SETUP.md)")

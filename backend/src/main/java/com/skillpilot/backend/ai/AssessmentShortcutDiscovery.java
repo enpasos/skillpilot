@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/** Read-only discovery for coaches that cannot execute a direct assessment in their own session. */
+/** Read-only recovery for obsolete Claude sessions; other providers have no shortcut integration yet. */
 public record AssessmentShortcutDiscovery(String notice, List<Option> options, String instruction) {
     public static final int MAX_OPTIONS = 6;
 

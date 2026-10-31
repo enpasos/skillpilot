@@ -2,7 +2,6 @@ package com.skillpilot.backend.openai.mcp.de;
 
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import com.skillpilot.backend.ai.CoachStateProjection;
-import com.skillpilot.backend.ai.AssessmentShortcutDiscovery;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.GoalStats;
@@ -144,8 +143,7 @@ public final class OpenAiDeCoachContextProjector {
                         completion,
                         examHasImage,
                         communicationLocale),
-                null,
-                AssessmentShortcutDiscovery.project(state.levelCompletion(), publicBaseUrl, communicationLocale));
+                null);
     }
 
     private OpenAiDeCoachContext.CurriculumCatalog curriculumCatalog(

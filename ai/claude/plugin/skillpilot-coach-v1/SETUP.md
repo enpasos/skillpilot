@@ -4,13 +4,13 @@
 
 SkillPilot has two deliberately separate Claude package routes:
 
-- **Current 1.1.12 replacement candidate:** install it only through an explicitly
+- **Current 1.1.13 replacement candidate:** install it only through an explicitly
   opened SkillPilot candidate test. It contains the coaching Skill and one
   declaration for the same remote SkillPilot connector. Earlier packages were
   observed in paid Claude Web chat and, after account-level direct installation
   on Claude Pro, in the native Claude app on Android. Those observations are
   historical evidence only: exact-candidate Web, Android and Voice acceptance
-  for 1.1.12 is still pending, and no earlier package is a supported fallback
+  for 1.1.13 is still pending, and no earlier package is a supported fallback
   for candidate acceptance. Preparing this candidate does not update existing
   installations, the published Marketplace release or the deployed download.
 - **Separate connector-only installation:** use the published **SkillPilot**
@@ -29,17 +29,17 @@ verified after publication and do not form a circular pre-submission gate.
 A plugin and Directory installation that reference this exact remote MCP URL may coexist; Claude exposes one set of tools for the shared server.
 Do not add a second manual custom SkillPilot connector with the same URL when the plugin or Directory connection already supplies it.
 
-All fourteen MCP tools and both interactive MCP Apps come from the remote
+The fourteen base MCP tools, the two optional assessment-completion tools and both interactive MCP Apps come from the remote
 SkillPilot connector. The Skill provides coaching instructions only. Neither
 the Skill nor the plugin shell implements or duplicates the tools or UIs.
 
-## Current 1.1.12 candidate test
+## Current 1.1.13 candidate test
 
-1. This 1.1.12 candidate is local and unpublished. During an explicitly authorized
+1. This 1.1.13 candidate is local and unpublished. During an explicitly authorized
    candidate test on an eligible paid Claude account, use the exact prepared
-   **SkillPilot Coach v1** 1.1.12 package and enable it. At preparation time, the public Marketplace at
+   **SkillPilot Coach v1** 1.1.13 package and enable it. At preparation time, the public Marketplace at
    `https://github.com/enpasos/skillpilot-claude-marketplace` and the website
-   download continue to provide published 1.1.11 until a
+   download continue to provide published 1.1.12 until a
    separately authorized publication and rollout.
    Do not use an earlier package as a fallback. Do not describe this
    account-level direct installation as an official Directory publication or
@@ -70,7 +70,7 @@ the Skill nor the plugin shell implements or duplicates the tools or UIs.
    > SkillPilot-Lernkontext weiter.
 
 An earlier account-level package was used successfully with Claude Pro in the
-native Claude app on Android. Exact-candidate 1.1.12 acceptance must still
+native Claude app on Android. Exact-candidate 1.1.13 acceptance must still
 exercise the verbatim multi-subject plan status, automatic plan resume, bundled
 connector, an explicit switch between two planned subjects, OAuth, intended
 SkillPilot learning flow and both interactive MCP Apps. The current SkillPilot
@@ -85,6 +85,19 @@ chats, publish it, or ask the learner to type it separately. When the 24 hours
 have elapsed, return to the first-party start page and create a new session.
 Reconnect the plugin-bundled connector only if Claude reports that its
 technical OAuth connection is no longer active.
+
+## Assessment shortcuts
+
+Ask which assessments can shorten preparation. The coach uses current reviewed
+choices and their exact titles. Explicitly request one assessment to start it
+without a separate section-selection step. A request for information makes no
+learning-state change and exposes no task or solution. If shortcuts are disabled
+or unavailable, use the Cockpit to inspect the current setting and curriculum.
+The server supplies fourteen base tools and, when completion is enabled,
+`confirm_skillpilot_completion_contract` and
+`choose_skillpilot_completion_route`. The technical receipt stays silent; it
+never replaces your assessment choice. Use a fresh SkillPilot session after
+the matching server rollout. Exact-candidate host behavior remains pending.
 
 ## Learning with an existing plan
 
@@ -131,7 +144,7 @@ governed by Anthropic.
 
 Historical direct-install evidence demonstrates the Web surface and a native
 Android use on Claude Pro for an earlier package, but it does not validate
-1.1.12 or settle whether Anthropic's official plugin distribution serves either
+1.1.13 or settle whether Anthropic's official plugin distribution serves either
 surface. Public-listing reach is verified after publication against the exact
 candidate.
 
@@ -146,7 +159,7 @@ connector-only route is published and deliberately selected, connect it through
 **Customize > Connectors**. It may coexist with the plugin when both reference
 the exact same remote MCP URL, and Claude exposes one set of tools for that
 shared server. Do not add a separate manual custom connection for the same URL.
-The Directory route supplies the same fourteen tools and two MCP Apps UIs, but not
+The Directory route supplies the same base tools, optional assessment-completion tools and two MCP Apps UIs, but not
 the coaching Skill. Its Team/Enterprise publisher gate applies only to
 Directory submission and does not gate public plugin submission.
 

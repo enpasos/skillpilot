@@ -80,7 +80,7 @@ import org.springframework.web.server.ResponseStatusException;
 class OpenAiDeCoachMcpContractTest {
 
     @Test
-    void currentContextPreservesReadOnlyAssessmentDiscoveryThroughPlanDecorationAndOutputSchema() {
+    void currentContextKeepsDeferredAssessmentShortcutsOutOfOpenAiSchemaAndPayload() {
         useCurrentContract();
         var base = visualizationState();
         var preview = new com.skillpilot.backend.api.LevelCompletionResponse("unresolved", null, null,
@@ -99,13 +99,13 @@ class OpenAiDeCoachMcpContractTest {
         assertThat(result.isError()).isFalse();
         assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_CONTEXT, result);
         var context = structured(result, OpenAiDeCoachContext.class);
-        assertThat(context.assessmentShortcuts()).isNotNull();
-        assertThat(context.assessmentShortcuts().options().getFirst().cockpitUrl())
-                .isEqualTo("https://skillpilot.test/learner/public-exam?completionShortcuts=1");
+        assertThat(objectMapper.valueToTree(context).has("assessmentShortcuts")).isFalse();
+        assertThat(spec(OpenAiDeV1McpContractAdapter.GET_CONTEXT).tool().outputSchema().toString())
+                .doesNotContain("assessmentShortcuts");
         assertThat(context.activeGoal().goalId()).isEqualTo(base.activeGoal().id());
         assertThat(context.nextAllowedTools()).noneMatch(tool -> tool.contains("completion"));
-        assertThat(objectMapper.valueToTree(context.assessmentShortcuts()).toString())
-                .doesNotContain(LEARNER_ID, "private-profile", "private-generation", "learningSessionId");
+        assertThat(objectMapper.valueToTree(context).toString())
+                .doesNotContain("completionShortcuts=1", "private-profile", "private-generation");
     }
 
     private static final String SERVER_BUILD = "0123456789abcdef0123456789abcdef01234567";

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "lane": "CLAUDE_PUBLIC_PLUGIN_V1",
+  "pluginIdentity": "skillpilot-coach-v1",
+  "pluginVersion": "1.1.12",
+  "state": "PRE_SUBMISSION",
+  "submissionTarget": "ANTHROPIC_PLUGIN_CONSOLE",
+  "connectorDirectoryDependency": "none",
+  "supportedSurfaces": [
+    "paid_claude_web_chat",
+    "claude_pro_android_chat"
+  ],
+  "distributionQualification": {
+    "directInstallPilot": "historical_pre_1_1_paid_web_and_claude_pro_account_direct_install_then_native_android_chat",
+    "androidDirectInstallAcceptance": "pending",
+    "androidDirectInstallEvidenceId": null,
+    "androidPublicListingVerification": "not_verified",
+    "androidPublicListingEvidenceId": null
+  },
+  "excludedClaims": [
+    "claude_free",
+    "claude_ios_chat",
+    "android_in_app_plugin_installation",
+    "claude_desktop_chat",
+    "claude_cowork",
+    "public_claude_code",
+    "hooks",
+    "subagents"
+  ],
+  "productOwnerAuthorization": {
+    "approvedAt": "2026-09-30",
+    "approvedBy": "product-owner",
+    "scope": "After green CI and confirmed server rollout of SkillPilot main at 9a10fd51011e390fbf83a8524454b024279825da, the Product Owner authorized preparation and publication of the exact SkillPilot Coach v1.1.12 candidate through the existing personal Git Marketplace pull-request path. The website download and Marketplace must offer the same verified 1.1.12 package. Preserve all published 1.1.11 files and evidence. Verify the public main revision and hashes, a clean eligible Claude-account installation, an update from an existing Marketplace installation, and two consecutive learning-goal images in one new SkillPilot-started Claude session, especially the image after the goal change. Record sanitized results only for checks actually observed; all other acceptance remains pending.",
+    "excludes": [
+      "Connector Directory lifecycle, gates and Team/Enterprise submission access",
+      "Credential changes, Anthropic Console submission, unsupported client claims, blanket acceptance of untested flows and inherited candidate acceptance"
+    ]
+  },
+  "externalStateEvidence": {
+    "submissionEvidenceId": null,
+    "publicationEvidenceId": null
+  },
+  "releaseLine": {
+    "major": 1,
+    "version": "1.1.12",
+    "status": "pre_submission_candidate",
+    "compatibilityPolicy": "Version 1.1.12 retains the 1.1.11 coaching, tool, OAuth, learner-session, privacy, scoring and backend-owned state contracts while binding a new exact plugin package to the deployed goal-image resource correction. Verify image rendering for two consecutive goals in the same Claude session before recording that client check as passed. Published 1.1.11 bytes and evidence remain immutable; no earlier client acceptance transfers."
+  },
+  "stateTransitions": [
+    {
+      "from": "PRE_SUBMISSION",
+      "to": "READY_FOR_SUBMISSION",
+      "requires": "All required plugin gates pass with approved evidence bound to the frozen plugin candidate digest and exact candidate revision, including exact-candidate Web acceptance, Claude Pro Android acceptance after account-level direct installation, the sanitized public GitHub source and an authorized Anthropic Console submitter role. Public-listing Android reach is deliberately verified only after publication."
+    },
+    {
+      "from": "READY_FOR_SUBMISSION",
+      "to": "SUBMITTED",
+      "requires": "An approved Anthropic plugin-console submission receipt bound to the frozen plugin candidate digest and exact candidate revision."
+    },
+    {
+      "from": "SUBMITTED",
+      "to": "PUBLISHED",
+      "requires": "An approved public-listing installation and native Android end-to-end verification bound to the same frozen plugin candidate digest and exact candidate revision."
+    }
+  ],
+  "breakingChangePolicy": "Preserve all released package bytes and evidence. The Product Owner expressly authorized the 12 September 2026 controlled-beta removal of prohibited assessment-prose inputs as correction 1.1.4 under the existing identity, with coordinated backend and catalog rollout. This narrow privacy correction is not a general compatibility exception. Other breaking plugin, identity, OAuth, state or tool-contract changes require a separately approved major-line candidate.",
+  "planStatusContractAdoption": {
+    "approvedAt": "2026-09-16",
+    "approvedBy": "product-owner",
+    "issue": "https://github.com/enpasos/skillpilot/issues/48",
+    "scope": "Version 1.1.7 adopts the unified backend learning-plan status. The consumed Claude connector-v1 publishes learningPlanToday.text as the only formulation together with non-numeric control fields (periodBasis, evaluable and per-subject evaluable and statusDirection; no overall statusDirection or unavailablePlanCount) and no longer publishes totals or the per-subject counts dueToday, completedToday, openToday, openOverdue and extraCompletedToday. The 1.1.7 skill quotes that text verbatim and performs no plan arithmetic. Extended on 2026-09-17 to the binding concept § 6.5: learningPlanToday.text no longer contains the active-goal announcement; the connector publishes it separately as learningPlanToday.activeGoalAnnouncement, which the skill quotes once when teaching begins.",
+    "compatibilityImpact": "Plugin packages up to and including 1.1.6 instruct Claude to report the removed count fields, and the production connector before this change does not publish learningPlanToday.text. Anthropic applies remote MCP changes on the next connection, so the connector change and the 1.1.7 package must reach production in one coordinated step.",
+    "excludes": [
+      "Deployment, Marketplace publication, Anthropic Console submission, guide activation and inherited candidate acceptance",
+      "Connector Directory lifecycle, gates and Team/Enterprise submission access"
+    ]
+  }
+}

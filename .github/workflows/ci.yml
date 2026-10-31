@@ -677,6 +677,9 @@ jobs:
           "${install_dir}/bin/java" -version
       - name: Ensure Gradle wrapper is executable
         run: chmod +x ./gradlew
+      - name: Verify OpenAI V1 release or draft snapshot
+        working-directory: .
+        run: node scripts/openai_plugin_release.mjs verify
       - name: Test backend CI failure prioritization
         run: python3 -B -m unittest discover -s ../scripts -p test_run_backend_ci.py
       - name: Restore previous backend failure selectors
@@ -700,9 +703,6 @@ jobs:
         with:
           path: ${{ runner.temp }}/skillpilot-backend-ci/failed-test-selectors.json
           key: backend-failures-v1-${{ runner.os }}-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
-      - name: Verify OpenAI V1 release or draft snapshot
-        working-directory: .
-        run: node scripts/openai_plugin_release.mjs verify
       - name: Verify Claude direct-install beta publication
         working-directory: .
         run: |

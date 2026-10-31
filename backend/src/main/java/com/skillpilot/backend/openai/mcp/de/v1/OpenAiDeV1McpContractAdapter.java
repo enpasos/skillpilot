@@ -2635,8 +2635,7 @@ public final class OpenAiDeV1McpContractAdapter {
                 context.completion(),
                 context.policies(),
                 null,
-                context.learningPlanToday(),
-                context.assessmentShortcuts());
+                context.learningPlanToday());
     }
 
     private McpSchema.CallToolResult getExamEvaluation(
@@ -2761,8 +2760,7 @@ public final class OpenAiDeV1McpContractAdapter {
                 context.personalizationHistory(), context.decision(),
                 guidedPlan ? List.of() : context.frontier(), context.resources(), context.goalVisualization(),
                 List.copyOf(nextTools), context.progress(), context.completion(), context.policies(),
-                awaitingPlan ? today.guidance().instruction() : context.instruction(), today,
-                context.assessmentShortcuts());
+                awaitingPlan ? today.guidance().instruction() : context.instruction(), today);
     }
 
     private void requireWebFirstContextConfigured(UnifiedLearnerStateResponse state) {
@@ -3558,7 +3556,6 @@ public final class OpenAiDeV1McpContractAdapter {
         properties.put("nextAllowedTools", stringArraySchema(0));
         properties.put("progress", progressSchema());
         properties.put("completion", completionSchema());
-        properties.put("assessmentShortcuts", assessmentShortcutsSchema());
         properties.put("policies", stringArraySchema(0));
         properties.put("instruction", stringSchema());
         if (dailyPlanToolsEnabled) properties.put("learningPlanToday", dailyPlanSchema());
@@ -3576,20 +3573,6 @@ public final class OpenAiDeV1McpContractAdapter {
                         "completion",
                         "policies",
                         "instruction"));
-    }
-
-    private static Map<String, Object> assessmentShortcutsSchema() {
-        return objectSchema(Map.of(
-                "notice", nonEmptyStringSchema(),
-                "instruction", nonEmptyStringSchema(),
-                "options", Map.of("type", "array", "minItems", 1,
-                        "maxItems", com.skillpilot.backend.ai.AssessmentShortcutDiscovery.MAX_OPTIONS,
-                        "items", objectSchema(Map.of(
-                                "assessmentTitle", nonEmptyStringSchema(),
-                                "sectionTitle", nonEmptyStringSchema(),
-                                "cockpitUrl", nonEmptyStringSchema()),
-                                List.of("assessmentTitle", "sectionTitle", "cockpitUrl")))),
-                List.of("notice", "instruction", "options"));
     }
 
     private static Map<String, Object> navigationSchema() {

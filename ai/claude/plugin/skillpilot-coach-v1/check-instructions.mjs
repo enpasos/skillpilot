@@ -2,8 +2,8 @@
 // dialogue quality or real-host acceptance. Each instruction has one owner;
 // specialty references add only the protected workflow they are loaded for.
 export const instructionByteLimits = Object.freeze({
-  // Includes the exam workflow so Claude need not load a second skill/file.
-  skill: 16 * 1024 + 128,
+  // Includes inline exams and explicit shortcut-intent routing; neither needs a second lookup.
+  skill: 18 * 1024,
   taskClosure: 3584,
   recall: 3 * 1024,
 });
@@ -45,6 +45,7 @@ export function validateClaudeCoachInstructions({ skill, taskClosure, recall }) 
   const session = sections["Session, privacy and communication"] ?? "";
   const state = sections["Fresh state and visualization"] ?? "";
   const plans = sections["Daily plans and learner intent"] ?? "";
+  const shortcuts = sections["Assessment shortcuts"] ?? "";
   const coaching = sections["Coaching and completion"] ?? "";
   const navigation = sections["Navigation and specialized practice"] ?? "";
   const accessible = sections["Accessible tasks and failures"] ?? "";
@@ -120,6 +121,28 @@ export function validateClaudeCoachInstructions({ skill, taskClosure, recall }) 
     /explicit request to show the image again, reload context once and make one new render/iu,
     /receipt proves neither host display nor visibility/iu,
     /do not invent image details or expose its URLs\/metadata/iu,
+  ]);
+  requireRule(shortcuts, "assessment-shortcuts", [
+    /assessment shortcut, to skip preparation, or to show existing knowledge before ordinary resume, subject switching or goal rendering/iu,
+    /Read fresh context using the shared state rules/iu,
+    /When completionContract\.status=pending, silently follow its server-issued confirm_skillpilot_completion_contract instruction with the unchanged receipt and session, then reload context before matching choices or declaring them unavailable/iu,
+    /This technical receipt is not learner selection/iu,
+    /only to its current levelCompletion\.choices/iu,
+    /exact published title/iu,
+    /Inspection changes no learning state and reveals no assessment task, hint or solution/iu,
+    /explicit request to start exactly one published assessment already supplies selection consent/iu,
+    /call choose_skillpilot_completion_route with that unchanged choice and the shared write fields, without asking again/iu,
+    /Otherwise clarify ambiguity.+?wait for selection/iu,
+    /No preliminary section selection is needed/iu,
+    /After confirmed selection, follow the returned context and Exams workflow/iu,
+    /make no second start-confirmation round/iu,
+    /If no matching choice is available, explain that honestly.+?never enable it or bypass prerequisites with ordinary goal\/focus tools/iu,
+    /While a completion route owns navigation, use only its published choices instead of normal plan resume/iu,
+    /backend completion statements without recalculating waivers/iu,
+    /only for that section, never become globally mastered/iu,
+    /only binary mastery, with no second pass record/iu,
+    /Detailed exam feedback remains governed by Exams/iu,
+    /Do not interrupt current feedback or replace an agreed normal successor with unsolicited shortcut offers/iu,
   ]);
   requireRule(plans, "intent-priority", [
     /Pause\/stop: if the same turn supplies sufficient ordinary-goal evidence or a complete passing exam submission, record that success first/iu,

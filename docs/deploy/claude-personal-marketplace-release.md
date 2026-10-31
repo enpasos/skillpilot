@@ -11,6 +11,29 @@ Full real-client acceptance remains pending; repository publication does not
 establish installation or synchronization in every account.
 Earlier published packages and their evidence remain immutable history.
 
+## Local 1.1.13 assessment-shortcut candidate
+
+On 31 October 2026, the Product Owner requested explicit assessment-shortcut
+guidance in the Claude Skill. The local **1.1.13** candidate handles this intent
+before ordinary teaching, waits for an explicit assessment choice and uses the
+backend's current published choice directly. A pending technical contract
+receipt is resolved before treating missing choices as unavailable. Inspection
+starts no assessment and discloses no task or solution.
+
+The exact 1.1.12 dossier is preserved under `release/history/1.1.12/`, and its
+43,272-byte archive remains byte-identical. The new candidate has **46,595 bytes**,
+SHA-256 `0e99b10635c0a97a43d5f6fbdc0fa437b6da68bb0483515fdf8230e0764090cd`.
+Package checks, two reproducible builds, strict Claude CLI validation and the
+local first-party installation-guide browser checks passed. The
+[exact-candidate host plan](https://github.com/enpasos/skillpilot/blob/main/ai/claude/plugin/skillpilot-coach-v1/release/1.1.13-assessment-shortcuts-regression-plan.md)
+remains pending. No earlier client acceptance transfers.
+
+This preparation does not publish the candidate. The public Marketplace and
+its workflow remain pinned to 1.1.12; its export gate rejects 1.1.13 until a
+separately reviewed source pin is prepared. The existing backend resource build
+can generate the new download locally, but an actual rollout is a separate
+operation. The tracked historical download index is unchanged.
+
 ## 1.1.12 repository publication and observed clients
 
 On 30 September 2026, SkillPilot `main` at

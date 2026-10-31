@@ -112,6 +112,21 @@ test('current OpenAI contract, submission and runtime checks remain active', () 
   ]) assert(ci.includes(command), `Current check missing: ${command}`)
 })
 
+test('backend CI checks the read-only deploy snapshot before its long test suite', () => {
+  const backend = ci.split('\n  backend-ci:\n')[1]
+  assert.ok(backend, 'Missing backend CI job')
+  const gate = backend.indexOf('      - name: Verify OpenAI V1 release or draft snapshot\n')
+  const tests = backend.indexOf('      - name: Run backend tests\n')
+  assert.ok(gate >= 0 && tests > gate, 'Deploy snapshot drift must fail before the full backend test suite')
+  const step = backend.slice(gate).split(/\n      - name:/u)[0]
+  assert.match(step, /working-directory: \./u)
+  assert.match(step, /run: node scripts\/openai_plugin_release\.mjs verify/u)
+  assert.doesNotMatch(step, /continue-on-error|openai_plugin_release\.mjs prepare/u)
+  const deploy = readFileSync(new URL('../scripts/deploy.sh', import.meta.url), 'utf8')
+  assert.match(deploy, /node scripts\/openai_plugin_release\.mjs verify/u)
+  assert.doesNotMatch(deploy, /node scripts\/openai_plugin_release\.mjs prepare/u)
+})
+
 test('Claude package and publication validation remains independent', () => {
   for (const command of [
     'npm --prefix ai/claude/app test',
