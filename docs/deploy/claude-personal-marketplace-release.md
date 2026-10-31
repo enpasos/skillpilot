@@ -3,36 +3,71 @@
 This runbook governs the repository-backed personal marketplace for
 `skillpilot-coach-v1`. It distributes one exact Claude plugin candidate; the
 marketplace mechanism itself does not alter that candidate. It is not an
-Anthropic-curated or Anthropic-verified listing. Version 1.1.12 is published in
+Anthropic-curated or Anthropic-verified listing. Version 1.1.13 is published in
 the public personal Marketplace; its exact source, package and repository have
-been independently verified. The website currently offers the matching 1.1.12
+been independently verified. The website currently offers the matching 1.1.13
 archive.
 Full real-client acceptance remains pending; repository publication does not
 establish installation or synchronization in every account.
 Earlier published packages and their evidence remain immutable history.
 
-## Local 1.1.13 assessment-shortcut candidate
+## 1.1.13 assessment-shortcut publication
 
 On 31 October 2026, the Product Owner requested explicit assessment-shortcut
-guidance in the Claude Skill. The local **1.1.13** candidate handles this intent
+guidance in the Claude Skill. **1.1.13** handles this intent
 before ordinary teaching, waits for an explicit assessment choice and uses the
 backend's current published choice directly. A pending technical contract
 receipt is resolved before treating missing choices as unavailable. Inspection
 starts no assessment and discloses no task or solution.
 
 The exact 1.1.12 dossier is preserved under `release/history/1.1.12/`, and its
-43,272-byte archive remains byte-identical. The new candidate has **46,595 bytes**,
+43,272-byte archive remains byte-identical. The new release has **46,595 bytes**,
 SHA-256 `0e99b10635c0a97a43d5f6fbdc0fa437b6da68bb0483515fdf8230e0764090cd`.
 Package checks, two reproducible builds, strict Claude CLI validation and the
 local first-party installation-guide browser checks passed. The
 [exact-candidate host plan](https://github.com/enpasos/skillpilot/blob/main/ai/claude/plugin/skillpilot-coach-v1/release/1.1.13-assessment-shortcuts-regression-plan.md)
 remains pending. No earlier client acceptance transfers.
 
-This preparation does not publish the candidate. The public Marketplace and
-its workflow remain pinned to 1.1.12; its export gate rejects 1.1.13 until a
-separately reviewed source pin is prepared. The existing backend resource build
-can generate the new download locally, but an actual rollout is a separate
-operation. The tracked historical download index is unchanged.
+After reporting the backend deployment, the Product Owner explicitly requested
+Marketplace publication. On 31 October 2026, all eight credential-free public
+runtime checks passed; the live index and downloaded archive matched 1.1.13
+exactly. The source commit
+`1394481fd5769b0e9eac2c077cbb4d6b37d05982` passed its complete
+[CI](https://github.com/enpasos/skillpilot/actions/runs/41213161648), including
+the repaired OpenAI draft check and Curriculum package validation. The
+Marketplace workflow pins that commit and the full Claude plugin source-tree
+SHA-256 `80e84ae610ba53cb25f344f35c294131912251ceb382bb73f608727261215384`.
+The twelve-file export has tree SHA-256
+`1ffa2ec07f543b13a4d7111dc4317ff19ebd93290887d1cb924201771caae05f`.
+Astra Ultra independently reviewed the source, export and preserved history.
+
+[Marketplace PR #16](https://github.com/enpasos/skillpilot-claude-marketplace/pull/16)
+passed [PR validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/41218904922)
+and the automatic code review with no open findings. It was squash-merged with
+an exact head-SHA guard. The published `main` revision is
+`803cdbf462465c8686f2b7894a9ddfbdf1ec50b7`; its
+[main-branch validation](https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/41219253428)
+passed. `verify-repository` independently cloned the public default branch,
+checked the closed inventory and exact archive, ran both strict Claude
+validations, installed from the actual HTTPS Marketplace in an isolated
+profile, and confirmed the remote head stayed unchanged throughout.
+Repository verification was recorded at `2026-10-31T16:21:33.000Z`.
+
+A separate isolated Claude Code 2.1.241 profile first installed the actual
+published 1.1.12 from the HTTPS Marketplace. After publication,
+`claude plugin marketplace update skillpilot-marketplace` followed by
+`claude plugin update skillpilot-coach-v1@skillpilot-marketplace --scope user`
+updated that same installation to 1.1.13. It remained enabled with the exact
+SkillPilot MCP endpoint and new repository revision. All seven installed files
+matched the canonical baseline; rebuilding from those installed files yielded
+the exact 46,595-byte archive and SHA-256 above. This proves the explicit CLI
+update route, not automatic delivery, an uploaded-plugin migration or an
+authenticated learning flow in Claude Web or Android Voice.
+
+Only `public-repository-default-branch` is marked `pass`; the lane is
+`published_pending_acceptance`. Account-specific and real-host acceptance
+remain pending. The first-party guide route, its separate decision, the tracked
+historical download index, all prior archives and their evidence remain unchanged.
 
 ## 1.1.12 repository publication and observed clients
 
@@ -1072,7 +1107,7 @@ bound in the marketplace lane.
 
 - Marketplace name: `skillpilot-marketplace`
 - Stable technical plugin name: `skillpilot-coach-v1`
-- Current published candidate version: `1.1.12` (website download and personal Marketplace verified)
+- Current published candidate version: `1.1.13` (website download and personal Marketplace verified)
 - Plugin source: `./plugins/skillpilot-coach-v1`
 - Version authority:
   `plugins/skillpilot-coach-v1/.claude-plugin/plugin.json` only

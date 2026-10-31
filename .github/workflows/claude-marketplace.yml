@@ -35,6 +35,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          # Release checks need Claude history and backend resources, not the
+          # multi-gigabyte curriculum/media tree. Cone mode retains root files.
+          sparse-checkout: |
+            .github/workflows
+            ai/claude
+            backend
+            scripts
       - uses: actions/setup-node@v6
         with:
           node-version: 22

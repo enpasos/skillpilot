@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.1.13 - 2026-10-31
+
+- Handle requested assessment shortcuts using SkillPilot's current backend
+  choices. An explicit request to start one offered assessment is sufficient;
+  browsing options does not start a task or reveal protected material.
+- Confirm a pending technical completion contract silently and reload current
+  options before choosing a route. No extra learner confirmation is required
+  for that technical receipt or an already explicit assessment choice.
+- Keep preparation waivers scoped to their reviewed learning section. Each
+  atomic learning goal still has only binary mastery; detailed assessment
+  feedback and ordinary learning continuation remain unchanged.
+- Preserve every previously published archive and its evidence. Repository
+  publication, account updates and actual Claude Web/Android Voice acceptance
+  remain separate checks for this version.
+
 ## 1.1.12 - 2026-09-30
 
 - Pair the unchanged coaching flow with SkillPilot's updated goal-image renderer.

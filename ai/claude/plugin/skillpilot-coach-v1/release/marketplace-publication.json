@@ -28,7 +28,7 @@
     "directInstallSha256": "0e99b10635c0a97a43d5f6fbdc0fa437b6da68bb0483515fdf8230e0764090cd"
   },
   "activation": {
-    "state": "prepared_not_published",
+    "state": "published_pending_acceptance",
     "firstPartyUiRoute": "controlled_direct_install_beta",
     "marketplaceUiSwitchAllowed": false,
     "firstPartyGuideDecision": {
@@ -44,13 +44,13 @@
     "evidence": [
       {
         "id": "public-repository-default-branch",
-        "status": "pending",
-        "revision": null,
-        "treeSha256": null,
-        "candidateVersion": null,
-        "candidateSha256": null,
-        "verifiedAt": null,
-        "evidenceRef": null
+        "status": "pass",
+        "revision": "803cdbf462465c8686f2b7894a9ddfbdf1ec50b7",
+        "treeSha256": "1ffa2ec07f543b13a4d7111dc4317ff19ebd93290887d1cb924201771caae05f",
+        "candidateVersion": "1.1.13",
+        "candidateSha256": "0e99b10635c0a97a43d5f6fbdc0fa437b6da68bb0483515fdf8230e0764090cd",
+        "verifiedAt": "2026-10-31T16:21:33.000Z",
+        "evidenceRef": "https://github.com/enpasos/skillpilot-claude-marketplace/pull/16; https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/41218904922; https://github.com/enpasos/skillpilot-claude-marketplace/actions/runs/41219253428; verifyPublishedClaudeMarketplace PASS against public main and HTTPS installation"
       },
       {
         "id": "clean-account-marketplace-install",

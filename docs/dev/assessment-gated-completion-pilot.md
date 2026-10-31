@@ -596,9 +596,10 @@ Capabilities aus Chats kopieren müssen. Ohne laufende Direktbindung pausiert
 
 ### Prüfungsabkürzungen aus dem Coach ansteuern
 
-Die ausdrücklichen Coach-Anweisungen dafür stehen im neuen lokalen
-Paketkandidaten **Claude 1.1.13**. Nach Bereitstellung und Aktualisierung des
-Claude-Pakets in einem frischen Chat testen. Ein
+Die ausdrücklichen Coach-Anweisungen dafür stehen im veröffentlichten
+Paket **Claude 1.1.13** im
+[SkillPilot Marketplace](https://github.com/enpasos/skillpilot-claude-marketplace).
+Nach Aktualisierung des Claude-Pakets in einem frischen Chat testen. Ein
 Backend-Deployment aktualisiert die bereits installierten Skills nicht.
 Die früher veröffentlichten oder importierten Archive bleiben unverändert;
 lokale Paketprüfungen belegen noch keine erfolgreiche Host-Abnahme.

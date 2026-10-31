@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           repository: enpasos/skillpilot
-          ref: 0861a33b2a0faee4ccca1fa0ca315920e0bcfbcb
+          ref: 1394481fd5769b0e9eac2c077cbb4d6b37d05982
           path: canonical
           sparse-checkout: ai/claude/plugin/skillpilot-coach-v1
           persist-credentials: false
@@ -34,8 +34,8 @@ jobs:
       - name: Verify pinned source and immutable package parity
         run: |
           canonical="${GITHUB_WORKSPACE}/canonical/ai/claude/plugin/skillpilot-coach-v1"
-          artifact="${RUNNER_TEMP}/skillpilot-coach-v1-1.1.12.plugin"
-          extracted="${RUNNER_TEMP}/skillpilot-coach-v1-1.1.12"
+          artifact="${RUNNER_TEMP}/skillpilot-coach-v1-1.1.13.plugin"
+          extracted="${RUNNER_TEMP}/skillpilot-coach-v1-1.1.13"
           # Publication must not depend on a download that is only indexed after publication.
           # Use the reviewed, immutable source dossier and its builder, never PR-supplied code.
           node --input-type=module - "${canonical}" "${artifact}" <<'NODE'
@@ -70,13 +70,13 @@ jobs:
             sourceHash.update(createHash("sha256").update(readFileSync(absolute)).digest("hex"), "utf8");
             sourceHash.update("\0", "utf8");
           }
-          assert.equal(sourceHash.digest("hex"), "286c80cfd90ba56270b3d69dbeca28454a1bff700077a8957735325b44634c48", "Pinned canonical source tree");
+          assert.equal(sourceHash.digest("hex"), "80e84ae610ba53cb25f344f35c294131912251ceb382bb73f608727261215384", "Pinned canonical source tree");
           const { buildClaudePluginPackage } = await import(pathToFileURL(resolve(canonicalRoot, "build-package.mjs")));
           const { publicationFiles } = await import(pathToFileURL(resolve(canonicalRoot, "check-package.mjs")));
           const baseline = JSON.parse(readFileSync(resolve(canonicalRoot, "release/contract-baseline.json"), "utf8"));
-          assert.equal(baseline.pluginVersion, "1.1.12", "Pinned dossier version");
-          assert.equal(baseline.archive.bytes, 43272, "Pinned dossier archive bytes");
-          assert.equal(baseline.archive.sha256, "d4d2f22a551bfd044d2eeaa36495fe96d62bc588552effecaef213a4e148afc0", "Pinned dossier archive digest");
+          assert.equal(baseline.pluginVersion, "1.1.13", "Pinned dossier version");
+          assert.equal(baseline.archive.bytes, 46595, "Pinned dossier archive bytes");
+          assert.equal(baseline.archive.sha256, "0e99b10635c0a97a43d5f6fbdc0fa437b6da68bb0483515fdf8230e0764090cd", "Pinned dossier archive digest");
           assert.deepEqual([...publicationFiles].sort(), baseline.archive.entries.map(({ packagePath }) => packagePath).sort(), "Pinned dossier inventory");
 
           const expectedFiles = [
@@ -114,7 +114,7 @@ jobs:
           assert.deepEqual(built.entries, baseline.archive.entries, "Rebuilt archive entries");
           NODE
           printf '%s  %s\n' \
-            'd4d2f22a551bfd044d2eeaa36495fe96d62bc588552effecaef213a4e148afc0' \
+            '0e99b10635c0a97a43d5f6fbdc0fa437b6da68bb0483515fdf8230e0764090cd' \
             "${artifact}" | sha256sum --check --strict
           mkdir "${extracted}"
           unzip -q "${artifact}" -d "${extracted}"
