@@ -426,7 +426,7 @@ try {
   )
   const compositionStructureRow = trainerTreePanel
     .getByText('Sekundarstufe II (LK)', { exact: true })
-    .locator('..')
+    .locator('xpath=ancestor::*[@data-goal-id][1]')
   await compositionStructureRow.getByRole('button').first().click()
   const explicitCompositionTarget = trainerTreePanel.getByText('Sekundarstufe II Mathematik', { exact: true })
   await explicitCompositionTarget.waitFor()
