@@ -39,6 +39,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,6 +60,9 @@ class SrsMasteryBatchQueryTest {
     @PersistenceContext EntityManager entities;
     @MockitoSpyBean DeckResourceService decks;
     @MockitoSpyBean LandscapeService landscapes;
+    // Background metrics use the same landscape spy and Hibernate statistics.
+    // Keep their scheduled work outside this synthetic SRS query measurement.
+    @MockitoBean CurriculaService curriculaMetrics;
     private Learner learner;
     private List<LearningGoal> goals;
     private ByteArrayResource resource;
