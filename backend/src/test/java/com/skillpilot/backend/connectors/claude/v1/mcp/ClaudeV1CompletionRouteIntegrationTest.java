@@ -24,6 +24,8 @@ import java.util.UUID;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -72,7 +74,11 @@ class ClaudeV1CompletionRouteIntegrationTest {
         focus.saveAndFlush(new PlannedGoal(learner, PREPARATION));
         learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
                 "selectProfile", PROFILE, null, null, learner.getCoachStateRevision()));
-        session = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
+        var launch = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start"));
+        assertThat(launch.prompt()).isEqualTo(
+                "Nutze den SkillPilot-Coach-Skill und lerne mit meinem aktuellen SkillPilot-Lernkontext weiter."
+                        + "\nlearningSessionId: " + launch.learningSessionId());
+        session = launch.learningSessionId();
         authenticate();
     }
 
@@ -131,13 +137,18 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).isEmpty();
     }
 
-    @Test void firstPartyDirectLaunchSelectsTheSectionAndBindsOnlyItsNewSession() throws Exception {
+    @ParameterizedTest
+    @ValueSource(strings = {"de", "en"})
+    void firstPartyDirectLaunchSelectsTheSectionAndBindsOnlyItsNewSession(String locale) throws Exception {
         returnToOrdinaryLearning();
         String oldSession = session;
         long before = version();
-        var launch = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start",
+        var launch = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest(locale, "web-start",
                 new com.skillpilot.backend.api.CompletionAssessmentStart(PROFILE, EXAM, before)));
-        assertThat(launch.prompt()).contains("level-completion context");
+        String instruction = "de".equals(locale)
+                ? "Nutze den SkillPilot-Coach-Skill und lerne mit meinem aktuellen SkillPilot-Lernkontext weiter."
+                : "Use the SkillPilot Coach skill and continue with my current SkillPilot learning context.";
+        assertThat(launch.prompt()).isEqualTo(instruction + "\nlearningSessionId: " + launch.learningSessionId());
         assertThat(version()).isEqualTo(before + 1);
         session = launch.learningSessionId();
         authenticate();

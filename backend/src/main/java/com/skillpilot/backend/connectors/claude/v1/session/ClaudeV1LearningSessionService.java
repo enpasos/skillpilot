@@ -69,7 +69,6 @@ public class ClaudeV1LearningSessionService {
             learnerService.startCompletionAssessment(skillpilotId, request.completionAssessment(),
                     "claude", tokenCodec.hash(learningSessionId), expiresAt);
         }
-        boolean completionRoute = learnerService.completionRouteOwnsNavigation(learner);
         sessions.insert(new ClaudeV1LearningSession(
                 tokenCodec.hash(learningSessionId),
                 learner.getSkillpilotId(),
@@ -81,10 +80,7 @@ public class ClaudeV1LearningSessionService {
         learners.save(learner);
 
         return new ClaudeV1LaunchResponse(
-                launchPrompt(locale, learningSessionId) + (completionRoute
-                        ? "\n\nUse the current level-completion context and its published choices. "
-                          + "Waived preparation is not mastery. Ask for consent before switching goals."
-                        : ""),
+                launchPrompt(locale, learningSessionId),
                 CLAUDE_WEB_URL,
                 learningSessionId,
                 expiresAt);
