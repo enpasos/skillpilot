@@ -1,6 +1,6 @@
 # Assessment-gated Completion: technischer Pilot
 
-Stand: 30. Oktober 2026. Dieses Dokument beschreibt den implementierten lokalen
+Stand: 31. Oktober 2026. Dieses Dokument beschreibt den implementierten lokalen
 Pilot und seine Prüfpfade. Der verbindliche Entwurf bleibt der
 [Umsetzungsplan](assessment-gated-completion-implementation-plan.md), die
 fachliche Semantik das [Konzept](../concept/skill-graph/assessment-gated-completion.md).
@@ -16,7 +16,7 @@ Das Profil `math-dot-product-projection` umfasst genau zwei kanonische Ziele:
 | Definition des Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen | `3016ec37-1c2e-47db-83f5-e767923bc97e` |
 | Skalarprodukt über eine orthogonale Projektion erklären: erforderliche Prüfung | `e98672c6-871a-5d0b-889c-5afc51040f0d` |
 
-Die [statische Prüfung der Aufgaben und Rubrik](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/assessment-completion/math-dot-product-projection-2026-10-30.md)
+Die [statische Prüfung der Aufgaben und Rubrik](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/assessment-completion/math-dot-product-projection-2026-10-31.md)
 begründet ausschließlich den Erlass des ersten Ziels in diesem Abschnitt,
 wenn die Prüfung gemeistert ist. Sie ist eine Maschinenprüfung. Das Profil
 behauptet keinen Abschluss von Q2, eines Schuljahrs oder des Fachs Mathematik.
@@ -27,6 +27,15 @@ beim Lesen kompatibel. Prüfungen verwenden denselben Mastery-Zustand.
 Vorhandene Prüfungsmastery zählt unmittelbar. Weder ein Fehlversuchsstatus
 noch ein Erlass- oder Anerkennungsregister wird angelegt. Der Erlass verändert
 keine Einzelmastery, Globalstatistik oder Lernplanpunkte.
+
+**Die ausführliche Prüfungsbewertung durch die KI bleibt erhalten.** Nach der
+vollständigen Abgabe gibt der Coach bei bestandenen und nicht bestandenen
+Prüfungen die erreichten und maximalen Punkte, die Bestehensentscheidung und
+eine nachvollziehbare Rückmeldung je Bewertungskriterium. Dazu gehören richtig
+gelöste Anteile, begründete Punktabzüge, konkrete Verbesserungen und die
+Besprechung der freigegebenen Lösung. Die binäre Mastery betrifft das
+gespeicherte Zielergebnis; die differenzierte Bewertung bleibt im Gespräch.
+Maßgeblich ist der [bestehende Prüfungsablauf](../concept/skill-graph/node-types.md#scoring-and-mastery).
 
 ## Laufzeit und Navigation
 
@@ -63,6 +72,18 @@ Die Standardantwort enthält höchstens drei konkrete Zielbegründungen mit jewe
 höchstens drei zugehörigen gemeisterten Prüfungen sowie deren Gesamtzahl.
 Cockpit und Coach erklären den Geltungsbereich; eine veraltete oder nicht
 verfügbare Berechnung übernimmt keine frühere Begründung.
+
+Im Lernzielbaum erscheint an den ausdrücklich entfallenden, noch nicht
+gemeisterten Vorbereitungszielen der Hinweis **„Für diesen Abschnitt durch
+Prüfung abgedeckt“**. Aufklappen zeigt den Abschnitt und, soweit die begrenzte
+Serverantwort sie enthält, die zugehörigen bestandenen Prüfungen. Der Hinweis
+verändert weder Einzelmastery noch Fortschrittsbalken oder Zähler. Bei
+ungültigem oder veraltetem Zustand und beim Verlassen des Profils verschwindet
+er. Aus der Abschlusskarte führt **„Im Lernzielbaum anzeigen“** zum jeweiligen
+Ziel, öffnet seinen Pfad und verschiebt die Baumansicht dorthin, ohne Lernfokus,
+Mastery oder Prüfungsnavigation zu speichern. Automatisch geöffnete Baumknoten
+lassen sich anschließend manuell schließen und bleiben bei unveränderten
+Zustandsaktualisierungen geschlossen.
 
 Der Direktstart führt aus dem Cockpit zunächst in die bestehende Anbieterwahl.
 Erst der tatsächliche Lernstart bindet die gewählte Prüfung an eine frische
@@ -456,6 +477,17 @@ der bisherige Fokus bleibt erhalten. Reload erhält eine gültige laufende
 Sitzung. Ein echter Hostversuch setzt die unten genannte erreichbare
 Testinstanz voraus.
 
+**Die Qualität der KI-Rückmeldung in beiden Verläufen prüfen:** Nach der
+vollständigen Abgabe müssen Gesamtpunkte mit Maximalpunktzahl,
+Bestehensentscheidung und Punkte samt Begründung je Bewertungskriterium
+nachvollziehbar sein. Der Coach erklärt richtige Lösungsanteile und etwaige
+Fehler, bespricht die freigegebene Lösung und gibt bei Bedarf konkrete
+Verbesserungshinweise. Er bietet Rückfragen an und wartet vor einer neuen
+Aufgabe oder einem anderen Lernziel auf die Entscheidung der lernenden Person.
+Eine bloße Meldung „geschafft/nicht geschafft“ oder „Abschnitt abgeschlossen“
+genügt nicht. Während der noch laufenden Bearbeitung bleiben Lösungen und
+bewertende Hilfen gemäß dem normalen Prüfungsablauf zurückgehalten.
+
 Für den erfolgreichen Versuch die Prüfungsaufgabe regulär bearbeiten. Das
 Pilotziel verlangt gemäß seiner bestehenden Rubrik **10 von 10 Punkten**;
 der Coach muss den normalen bestätigten Mastery-Write verwenden. Keine
@@ -469,6 +501,7 @@ Nach bestätigter Speicherung und Cockpit-Reload gilt exakt:
 | Pflichtprüfung | **1 von 1 geschafft** |
 | Vorbereitung | **Für 1 Lernziel entfällt die Vorbereitung für diesen Abschnitt** |
 | Einzelziele | Prüfung gemeistert; Vorbereitungsziel weiterhin nicht gemeistert |
+| Vorbereitungsziel im Baum | „Für diesen Abschnitt durch Prüfung abgedeckt“, aufklappbar mit Abschnitt und bestandener Prüfung |
 
 Über **„Warum entfällt diese Vorbereitung?“** muss die zugehörige gemeisterte
 Prüfung sichtbar werden. Es darf weder **2 von 2** noch ein neuer Mastery-Haken
@@ -478,6 +511,12 @@ von nicht gemeistert zu gemeistert. Es werden nach Abschluss keine neuen
 Unterstützungsschritte als Pflicht empfohlen. **„Für heute beenden“** pausiert mit erhaltener Profilwahl;
 nach Reload bleibt der Abschluss sichtbar und kein anderes Ziel startet.
 **„Zur normalen Lernansicht“** verlässt die Profilsteuerung bewusst.
+
+Über **„Im Lernzielbaum anzeigen“** das Vorbereitungsziel aufrufen, seinen
+Hinweis aufklappen und die zugehörige Prüfung prüfen. Den übergeordneten
+Baumzweig schließen: Er muss geschlossen bleiben, bis eine neue Navigation
+oder ein ausdrückliches Anzeigen des Ziels ihn wieder öffnet. Nach Verlassen
+des Abschlussprofils darf der abschnittsbezogene Hinweis nicht weiter erscheinen.
 
 Den nicht erfolgreichen Verlauf mit der zweiten frischen ID durchführen. Eine
 nicht ausreichende Bearbeitung darf keinen Mastery-Write und keinen zusätzlichen

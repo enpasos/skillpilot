@@ -21,11 +21,12 @@ export interface LevelCompletionCardProps {
   learningPlanPaused?: boolean
   onAction: (action: CompletionActionInput) => void
   onRetry: () => void
+  onShowGoal?: (goalId: string) => void
 }
 
 /** All counts and choices come from the same backend state as the active goal. */
 export const LevelCompletionCard = ({
-  completion, language, stale = false, busy = false, error, learningPlanPaused = false, onAction, onRetry,
+  completion, language, stale = false, busy = false, error, learningPlanPaused = false, onAction, onRetry, onShowGoal,
 }: LevelCompletionCardProps) => {
   const en = language.startsWith('en')
   const headingId = React.useId()
@@ -69,6 +70,11 @@ export const LevelCompletionCard = ({
             <ul className="mt-3 space-y-3">
               {completion.waiverDetails.map((detail) => <li key={detail.goalId}>
                 <p><InlineMathText text={completionLabel(detail.title, language)} className="font-medium" /></p>
+                {onShowGoal ? <button type="button" disabled={stale} onClick={() => onShowGoal(detail.goalId)}
+                  aria-label={`${en ? 'Show in goal tree' : 'Im Lernzielbaum anzeigen'}: ${completionLabel(detail.title, language)}`}
+                  className="min-h-9 rounded text-left underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:opacity-50">
+                  {en ? 'Show in goal tree' : 'Im Lernzielbaum anzeigen'}
+                </button> : null}
                 <p>{en ? 'Passed assessments: ' : 'Geschaffte Prüfungen: '}
                   {detail.assessments.map((assessment, index) => <React.Fragment key={assessment.goalId}>
                     {index > 0 ? '; ' : ''}<InlineMathText text={completionLabel(assessment.title, language)} />
@@ -100,6 +106,11 @@ export const LevelCompletionCard = ({
               <div className="min-w-0 flex-1">
                 <InlineMathText text={completionLabel(assessment.title, language)} className="font-medium" />
                 <p className="mt-1 flex items-center gap-1 text-sm text-text-secondary">{assessment.mastered ? <Check size={16} aria-hidden="true" /> : null}{assessment.mastered ? (en ? 'Achieved' : 'Geschafft') : (en ? 'Not yet achieved' : 'Noch nicht geschafft')}</p>
+                {onShowGoal ? <button type="button" disabled={stale} onClick={() => onShowGoal(assessment.goalId)}
+                  aria-label={`${en ? 'Show in goal tree' : 'Im Lernzielbaum anzeigen'}: ${completionLabel(assessment.title, language)}`}
+                  className="min-h-9 rounded text-left text-sm underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:opacity-50">
+                  {en ? 'Show in goal tree' : 'Im Lernzielbaum anzeigen'}
+                </button> : null}
                 {!assessment.mastered && !assessment.startAvailable && assessment.unavailableReason ? <p className="mt-1 text-sm text-text-secondary">{completionUnavailableReason(assessment.unavailableReason, language)}</p> : null}
               </div>
               {!assessment.mastered && assessment.startAvailable && completion.profileId && !completion.directAssessmentRunning ? (

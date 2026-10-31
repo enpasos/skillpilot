@@ -92496,7 +92496,7 @@
         "applicabilityFromRequires": true,
         "applicabilityMappingInheritance": "boundary"
       },
-      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/m7-route-repair-20260929-v1/tasks.md",
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/dot-projection-notation-20261031-v1/tasks.md",
       "dimensionTags": {
         "framework": "canonical-gymnasium-math",
         "demandLevel": "AB3",
@@ -92519,7 +92519,7 @@
       "resourceLinks": [],
       "examData": {
         "reviewStatus": "released",
-        "reviewNote": "Machine-only focused content and calculation review, 2026-09-29; source section SHA-256 0b5cf9be5b85aa22e9da6cc7d6a3c73bb95b5304cac90ac733df95f7466276af. All scored parts are required because the backend currently enforces only total points; no human review, learner trial or publication claimed.",
+        "reviewNote": "Machine-only focused notation, content and calculation review, 2026-10-31; source section SHA-256 a487b43beb1c5974b72c058562a09ea069d55c7aa9f16593229e2c09d600c69d. Vector arrows and column vectors replace plain-letter tuple notation; the redundant nonzero condition is omitted and the angle is named. Mathematical demands and the 10/10 scoring contract are unchanged. No human review, learner trial or publication claimed.",
         "coveredGoalIds": [
           "3016ec37-1c2e-47db-83f5-e767923bc97e"
         ],
@@ -92531,9 +92531,9 @@
           "AB2",
           "AB3"
         ],
-        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/m7-route-repair-20260929-v1/tasks.md",
-        "taskContent": "Gegeben sind $a=(3,4,0)$ und $b=(4,0,0)$ mit $b\\ne0$.\n\n1. Bestimme die orthogonale Projektion von $a$ auf die Richtung von $b$ und den dazu senkrechten Rest. Prüfe die Orthogonalität. (4 BE)\n2. Berechne $a\\cdot b$ und veranschauliche die Definition $a\\cdot b=|b|\\,s$ mit der vorzeichenbehafteten Projektionslänge $s$ von $a$ auf $b$. Erkläre auch $s=|a|\\cos\\theta$. (6 BE)",
-        "solutionContent": "$\\operatorname{proj}_b(a)=((a\\cdot b)/(b\\cdot b))b=(12/16)b=(3,0,0)$, der Rest ist $(0,4,0)$ und hat Skalarprodukt $0$ mit $b$. Die gerichtete Projektionslänge ist $s=3$ und $|b|=4$, also $a\\cdot b=4\\cdot3=12$. Weil $|a|=5$, folgt $\\cos\\theta=3/5$ und $s=|a|\\cos\\theta$. Die Projektion liefert damit die geometrische Bedeutung der algebraischen Definition des Skalarprodukts.",
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/dot-projection-notation-20261031-v1/tasks.md",
+        "taskContent": "Gegeben sind die Vektoren\n$$\n\\vec a=\\begin{pmatrix}3\\\\4\\\\0\\end{pmatrix}\n\\quad\\text{und}\\quad\n\\vec b=\\begin{pmatrix}4\\\\0\\\\0\\end{pmatrix}.\n$$\n\n1. Bestimme die orthogonale Projektion von $\\vec a$ auf die Richtung von $\\vec b$ und den dazu senkrechten Restvektor. Prüfe die Orthogonalität. (4 BE)\n2. Berechne $\\vec a\\cdot\\vec b$ und veranschauliche die Definition $\\vec a\\cdot\\vec b=|\\vec b|\\,s$ mit der vorzeichenbehafteten Projektionslänge $s$ von $\\vec a$ auf $\\vec b$. Erkläre auch $s=|\\vec a|\\cos\\theta$. Dabei bezeichnet $\\theta$ den Winkel zwischen $\\vec a$ und $\\vec b$. (6 BE)",
+        "solutionContent": "Der Projektionsvektor ist\n$$\n\\vec p=\\frac{\\vec a\\cdot\\vec b}{\\vec b\\cdot\\vec b}\\,\\vec b\n=\\frac{12}{16}\\,\\vec b\n=\\begin{pmatrix}3\\\\0\\\\0\\end{pmatrix}.\n$$\nFür den Restvektor gilt\n$$\n\\vec r=\\vec a-\\vec p=\\begin{pmatrix}0\\\\4\\\\0\\end{pmatrix},\n\\qquad\\vec r\\cdot\\vec b=0.\n$$\nDer Restvektor steht somit senkrecht auf $\\vec b$ und auf dem Projektionsvektor.\nDie gerichtete Projektionslänge ist $s=3$ und $|\\vec b|=4$, also\n$\\vec a\\cdot\\vec b=|\\vec b|\\,s=4\\cdot3=12$.\nWeil $|\\vec a|=5$, folgt $\\cos\\theta=3/5$ und $s=|\\vec a|\\cos\\theta$.\nDie Projektion liefert damit die geometrische Bedeutung der algebraischen\nDefinition des Skalarprodukts.",
         "scoring": {
           "maxPoints": 10,
           "passingPoints": 10,

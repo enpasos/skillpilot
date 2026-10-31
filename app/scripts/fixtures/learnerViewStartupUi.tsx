@@ -56,6 +56,7 @@ const subjectScope = (id: string, landscapeId: string, title: string, children: 
   tags: ['synthetic:program-unit'],
   extendedData: { syntheticStructureKind: 'compositionView' },
 })
+const completionTreeFixture = new URLSearchParams(window.location.search).get('completionTree') === '1'
 const mathUpper = goal('math-upper', mathId, 'Ableitungen für Wachstumsmodelle deuten', 'SekII')
 const physicsUpper = goal('physics-upper', physicsId, 'Elektrische Felder untersuchen', 'SekII')
 const allGoals = new Map([
@@ -63,16 +64,17 @@ const allGoals = new Map([
   subjectScope('math-subject-scope', mathId, 'Mathematik', ['math-sek-i', 'math-sek-ii']),
   subjectScope('physics-subject-scope', physicsId, 'Physik', ['physics-sek-i', 'physics-sek-ii']),
   goal('math-sek-i', mathId, 'Sekundarstufe I', 'SekI', ['math-lower']),
-  goal('math-sek-ii', mathId, 'Sekundarstufe II', 'SekII', [mathUpper.id]),
+  goal('math-sek-ii', mathId, 'Sekundarstufe II', 'SekII', [mathUpper.id, ...(completionTreeFixture ? ['math-exam'] : [])]),
   goal('physics-sek-i', physicsId, 'Sekundarstufe I', 'SekI', ['physics-lower']),
   goal('physics-sek-ii', physicsId, 'Sekundarstufe II', 'SekII', [physicsUpper.id]),
   goal('math-lower', mathId, 'Lineare Gleichungen lösen', 'SekI'),
   goal('physics-lower', physicsId, 'Kräfte und Bewegung erklären', 'SekI'),
   mathUpper, physicsUpper,
+  ...(completionTreeFixture ? [goal('math-exam', mathId, 'Skalarprodukt prüfen', 'SekII')] : []),
 ].map((entry) => [entry.id, entry]))
 const rootGoals = [mathRoot, physicsRoot]
 const landscapes = [{ landscapeId: mathId, title: 'Mathematik' }, { landscapeId: physicsId, title: 'Physik' }]
-const getMastery = () => 0
+const getMastery = (id: string) => completionTreeFixture && id === 'math-exam' ? 1 : 0
 const fixtureRootLandscapeId = new URLSearchParams(window.location.search).get('root') === 'legacy'
   ? 'legacy-school-root'
   : CANONICAL_GYMNASIUM_ROOT_ID

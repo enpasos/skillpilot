@@ -242,7 +242,7 @@ try {
     } } })
     await waitReady(h.page, mathTitle)
     const mathRow = h.page.locator('#learner-goal-sidebar')
-      .getByText('Mathematik', { exact: true }).locator('..')
+      .locator('[data-goal-id="math-root"]')
     assert.equal(await mathRow.getByRole('img', { name: 'Aktueller Lernfokus' }).count(), 1,
       'the visible subject heading represents the existing hidden subject focus')
     await h.page.getByTitle('Gehe zum markierten Scope', { exact: true }).click()
@@ -396,7 +396,7 @@ try {
     const focus = h.page.locator('#learner-goal-sidebar button[aria-pressed="true"]')
     await focus.waitFor()
     assert.equal(await focus.count(), 1, 'full /state planned goals preserve exactly the saved focus')
-    assert.match(await focus.locator('..').innerText(), /Ableitungen/u)
+    assert.match(await focus.locator('xpath=ancestor::*[@data-goal-id][1]').innerText(), /Ableitungen/u)
     assert.deepEqual(h.unexpected, [], 'initial loading must not request the redundant /planned endpoint')
     assert.deepEqual(h.contentRequests.map((path) => path.split('/').at(-1)).sort(), ['content-materials'],
       'learning reads only goal links; material configuration loads lazily when settings open')
@@ -414,7 +414,7 @@ try {
       await activeBanner.getByRole('button').click()
       await h.page.getByTestId('learner-current-goal').getByRole('heading', { name: mathTitle, exact: true }).waitFor()
       assert.equal(await focus.count(), 1)
-      assert.match(await focus.locator('..').innerText(), /Ableitungen/u,
+      assert.match(await focus.locator('xpath=ancestor::*[@data-goal-id][1]').innerText(), /Ableitungen/u,
         'returning from browsing preserves the saved learning focus')
       assert.deepEqual(h.unexpected, [], 'revealing the active goal is navigation without a learner-state write')
 
@@ -492,7 +492,7 @@ try {
     await waitReady(h.page, physicsTitle)
     const focus = h.page.locator('#learner-goal-sidebar button[aria-pressed="true"]')
     assert.equal(await focus.count(), 1)
-    assert.match(await focus.locator('..').innerText(), /Elektrische Felder/u)
+    assert.match(await focus.locator('xpath=ancestor::*[@data-goal-id][1]').innerText(), /Elektrische Felder/u)
     assert.equal(switchRequests, 1)
 
     const oldStateResponse = h.page.waitForResponse((response) => (
@@ -503,7 +503,7 @@ try {
     await settledFrame(h.page)
     await waitReady(h.page, physicsTitle)
     assert.equal(await focus.count(), 1)
-    assert.match(await focus.locator('..').innerText(), /Elektrische Felder/u,
+    assert.match(await focus.locator('xpath=ancestor::*[@data-goal-id][1]').innerText(), /Elektrische Felder/u,
       'an older same-scope /state response must not restore the previous focus after a plan switch')
     await h.page.getByTestId('learner-active-goal-banner').getByText(/Du lernst gerade · Physik/u).waitFor()
     await assertNoFalseSetup(h.page)
@@ -598,7 +598,7 @@ try {
     await assertNoFalseSetup(h.page)
     const focus = h.page.locator('#learner-goal-sidebar button[aria-pressed="true"]')
     assert.equal(await focus.count(), 1)
-    assert.match(await focus.locator('..').innerText(), /Elektrische Felder/u)
+    assert.match(await focus.locator('xpath=ancestor::*[@data-goal-id][1]').innerText(), /Elektrische Felder/u)
     assert.equal(h.requests.filter((r) => r.learnerId === learnerB && r.endpoint === 'profile').length, 1)
     assert.deepEqual(h.unexpected, [])
     assert.deepEqual(h.errors, [])

@@ -52,6 +52,31 @@ export interface CompletionActionInput {
   intent?: CompletionNavigationIntent
 }
 
+export interface CompletionTreeWaiver {
+  sectionTitle: CompletionTitle
+  assessments: { goalId: string; title: CompletionTitle }[]
+  assessmentCount?: number
+}
+
+/** Annotate only the backend's current scoped waivers; never infer mastery or coverage. */
+export const completionWaiversForTree = (
+  completion: LevelCompletion | null,
+  stale: boolean,
+): ReadonlyMap<string, CompletionTreeWaiver> => {
+  const result = new Map<string, CompletionTreeWaiver>()
+  if (stale || completion?.calculationStatus !== 'valid' || !completion.profileId) return result
+  const details = new Map(completion.waiverDetails?.map((detail) => [detail.goalId, detail]))
+  for (const goalId of completion.waivedTargetGoalIds) {
+    const detail = details.get(goalId)
+    result.set(goalId, {
+      sectionTitle: completion.title,
+      assessments: detail?.assessments ?? [],
+      assessmentCount: detail?.assessmentCount,
+    })
+  }
+  return result
+}
+
 export const requiresCompletionExitConfirmation = (completion: LevelCompletion, action: CompletionActionInput): boolean => (
   completion.directAssessmentRunning && ['leaveProfile', 'selectProfile', 'learnGoal', 'retryAssessment', 'includeTarget', 'includeSupport'].includes(action.action)
 )

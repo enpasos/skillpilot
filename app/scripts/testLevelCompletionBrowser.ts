@@ -59,7 +59,7 @@ const server = await startViteTestServer(appRoot, 'scripts/fixtures/learnerViewS
 let browser: Browser | null = null
 try {
   browser = await chromium.launch({ headless: true, args: ['--disable-background-networking', '--disable-dev-shm-usage', '--disable-gpu', '--no-sandbox'] })
-  const open = async (initial: LevelCompletion, mobile = false) => {
+  const open = async (initial: LevelCompletion, mobile = false, completionTree = false) => {
     const context = await browser!.newContext({ viewport: mobile ? { width: 390, height: 844 } : { width: 1280, height: 900 }, locale: 'de-DE' })
     await context.addInitScript(({ learner, rootId, termsVersion }) => {
       localStorage.setItem('skillpilot_lang', 'de')
@@ -81,7 +81,11 @@ try {
       const json = (body: unknown, status = 200) => route.fulfill({ status, contentType: 'application/json', body: JSON.stringify(body) })
       if (path === '/api/ui/curriculum-catalog') return json({ catalogApiVersion: '1.2', generationSha256: '0'.repeat(64), packages: [], rootLandscapeIds: [], landscapes: [], views: [], offerings: [], decks: [], resources: [], sourceEvidence: [] })
       if (path === `/api/ui/learners/${learner}`) return json(profile)
-      if (path === `/api/ui/learners/${learner}/state`) return stateUnavailable ? json({}, 503) : json(state(completion))
+      if (path === `/api/ui/learners/${learner}/state`) {
+        const payload = state(completion)
+        if (completionTree) payload.goals = { ...payload.goals, mastered_count: 1, total_count: 5, personalized: { mastered_atomic: 1, total_atomic: 5 } }
+        return stateUnavailable ? json({}, 503) : json(payload)
+      }
       if (path === `/api/ui/learners/${learner}/resume`) return json({ lastActivityAt: '2026-09-09T08:00:00Z', scheduledDeletionAt: '2027-03-09T08:00:00Z' })
       if (path === '/api/ui/landscapes') return json({ summaries: [{ curriculumId: rootId, filename: 'canonical-gymnasium.json', country: 'DE', region: 'DE', type: 'GYMNASIUM', level: 'Sekundarstufe', subject: 'Gymnasium', locale: 'de-DE', title: 'Gymnasium (DE)', schoolType: 'Gymnasium', qualityMaturity: 'M6' }] })
       if (path === `/api/ui/learners/${learner}/personalization-plan`) return json(savedPlan)
@@ -99,7 +103,7 @@ try {
       }
       return json({}, 404)
     })
-    await page.goto(`${server.baseUrl}/scripts/fixtures/learnerViewStartupUi.html`)
+    await page.goto(`${server.baseUrl}/scripts/fixtures/learnerViewStartupUi.html${completionTree ? '?completionTree=1' : ''}`)
     await page.getByTestId('level-completion-card').waitFor()
     return { page, context, writes, errors, unavailable: () => { stateUnavailable = true }, update: (next: LevelCompletion) => { completion = next } }
   }
@@ -129,6 +133,47 @@ try {
     const launches = h.writes.filter((write) => write.path.endsWith('/launch'))
     assert.equal(launches.length, 1, 'synchronous double click creates only one provider session')
     assert.deepEqual(launches[0].body.completionAssessment, { profileId: 'math-completion', goalId: 'math-exam', expectedRevision: 2 })
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+
+  {
+    const h = await open(selected(40))
+    const tree = h.page.locator('#learner-goal-sidebar')
+    const upperBranch = tree.locator('[data-goal-id="math-sek-ii"] > button[aria-expanded]')
+    const rootBranch = tree.locator('[data-goal-id="math-root"] > button[aria-expanded]')
+    await upperBranch.waitFor()
+    assert.equal(await upperBranch.getAttribute('aria-expanded'), 'true', 'entry reveals the active path')
+    await upperBranch.click()
+    assert.equal(await upperBranch.getAttribute('aria-expanded'), 'false', 'an automatically revealed branch can be closed')
+    assert.equal(await tree.locator('[data-goal-id="math-upper"]').count(), 0)
+
+    h.update({ ...selected(41), title: { de: 'Aktualisierter Lernabschnitt', en: 'Updated section' } })
+    await h.page.evaluate((learnerId) => window.dispatchEvent(new CustomEvent('learner-startup-fixture-sse', { detail: { learnerId, type: 'ACTIVE_GOAL_CHANGED' } })), learner)
+    await h.page.getByTestId('level-completion-card').getByText('Aktualisierter Lernabschnitt', { exact: true }).waitFor()
+    assert.equal(await upperBranch.getAttribute('aria-expanded'), 'false', 'refreshing unchanged navigation respects the manual collapse')
+
+    await upperBranch.focus()
+    await upperBranch.press('Enter')
+    assert.equal(await upperBranch.getAttribute('aria-expanded'), 'true', 'keyboard can reopen a branch')
+    await upperBranch.press('Space')
+    assert.equal(await upperBranch.getAttribute('aria-expanded'), 'false', 'keyboard can close it again')
+    await rootBranch.click()
+    assert.equal(await rootBranch.getAttribute('aria-expanded'), 'false', 'the active root can also be closed')
+    await rootBranch.click()
+    assert.equal(await upperBranch.getAttribute('aria-expanded'), 'false', 'reopening a parent preserves the child collapse')
+
+    const lowerBranch = tree.locator('[data-goal-id="math-sek-i"] > button[aria-expanded]')
+    if (await lowerBranch.getAttribute('aria-expanded') === 'false') await lowerBranch.click()
+    await tree.locator('[data-goal-id="math-lower"]').click()
+    assert.equal(await lowerBranch.getAttribute('aria-expanded'), 'true', 'navigation reveals its selected branch')
+    assert.equal(await upperBranch.getAttribute('aria-expanded'), 'false', 'navigation leaves an unrelated branch closed')
+
+    await tree.getByTitle('Gehe zum aktiven Ziel', { exact: true }).click()
+    assert.equal(await upperBranch.getAttribute('aria-expanded'), 'true', 'an explicit reveal reopens the active path')
+    await upperBranch.click()
+    assert.equal(await upperBranch.getAttribute('aria-expanded'), 'false', 'explicit reveal does not lock the path open')
+    assert.equal(h.writes.length, 0, 'tree expansion never writes learner results or focus')
     assert.deepEqual(h.errors, [])
     await h.context.close()
   }
@@ -203,6 +248,65 @@ try {
     const screenshotDir = fileURLToPath(new URL('../../tmp/level-completion-browser/', import.meta.url))
     await mkdir(screenshotDir, { recursive: true })
     await h.page.screenshot({ path: `${screenshotDir}mobile-stale.png` })
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+  for (const mobile of [false, true]) {
+    const completed: LevelCompletion = {
+      ...selected(10), complete: true, masteredTargetCount: 1, waivedTargetCount: 1, pendingTargetCount: 0,
+      masteredAssessmentCount: 1, waivedTargetGoalIds: ['math-upper'],
+      assessments: [{ goalId: 'math-exam', title: { de: 'Skalarprodukt prüfen' }, mastered: true, startAvailable: false }],
+      waiverDetails: [{ goalId: 'math-upper', title: { de: 'Ableitungen für Wachstumsmodelle deuten' }, ruleId: 'rule',
+        assessments: [{ goalId: 'math-exam', title: { de: 'Skalarprodukt prüfen' } }], assessmentCount: 1 }],
+    }
+    const h = await open(completed, mobile, true)
+    const card = h.page.getByTestId('level-completion-card')
+    await card.getByText('1 von 2 Lernzielen geschafft.', { exact: true }).waitFor()
+    await card.getByText('Warum entfällt diese Vorbereitung?', { exact: true }).click()
+    await card.locator('details').getByRole('button', { name: 'Im Lernzielbaum anzeigen' }).click()
+    const row = h.page.locator('[data-goal-id="math-upper"]')
+    const waiver = row.getByTestId('completion-tree-waiver')
+    await waiver.waitFor({ state: 'visible' })
+    assert.equal(await row.locator('svg.lucide-check').count(), 0, 'waived preparation does not acquire a mastery check')
+    assert.equal(await h.page.locator('[data-goal-id="math-exam"] svg.lucide-check').count(), 1, 'only the actually mastered exam has a check')
+    await waiver.locator('summary').click()
+    await waiver.getByText('Die separate Vorbereitung entfällt', { exact: false }).waitFor()
+    await waiver.getByRole('button', { name: 'Skalarprodukt prüfen', exact: true }).waitFor()
+    assert.equal(await h.page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true)
+    assert.equal(h.writes.length, 0, 'showing goals and waiver explanations must not write learner state')
+    const screenshotDir = fileURLToPath(new URL('../../tmp/level-completion-browser/', import.meta.url))
+    await mkdir(screenshotDir, { recursive: true })
+    await h.page.screenshot({ path: `${screenshotDir}${mobile ? 'mobile' : 'desktop'}-tree-waiver.png` })
+    await waiver.getByRole('button', { name: 'Skalarprodukt prüfen', exact: true }).click()
+    await h.page.waitForFunction(() => document.querySelector('[data-goal-id="math-exam"]')?.classList.contains('bg-sky-100'))
+    await h.page.locator('[data-goal-id="math-sek-ii"]').getByRole('button', { name: /einklappen$/ }).click()
+    await waiver.waitFor({ state: 'detached' })
+    if (mobile) await h.page.getByRole('button', { name: 'Lernzielmenü schließen', exact: true }).click()
+    await card.locator('details').getByRole('button', { name: 'Im Lernzielbaum anzeigen' }).click()
+    await waiver.waitFor({ state: 'visible' })
+    await h.page.waitForFunction(() => document.querySelector('[data-goal-id="math-upper"]')?.classList.contains('bg-sky-100'))
+    let revision = completed.learnerRevision
+    const update = async (next: LevelCompletion) => {
+      h.update({ ...next, learnerRevision: ++revision })
+      const refreshed = h.page.waitForEvent('console', { predicate: (message) => message.text().includes('[SSE] ✅ Refresh complete') })
+      // Use the real active-goal event so successive updates bypass the generic 800ms refresh throttle.
+      await h.page.evaluate((learnerId) => window.dispatchEvent(new CustomEvent('learner-startup-fixture-sse', { detail: { learnerId, type: 'ACTIVE_GOAL_UPDATE' } })), learner)
+      await refreshed
+    }
+    for (const next of [
+      { ...completed, learnerRevision: 11, waivedTargetGoalIds: [], waiverDetails: [], waivedTargetCount: 0, pendingTargetCount: 1, complete: false },
+      { ...completed, learnerRevision: 12, calculationStatus: 'invalid' as const, complete: undefined },
+      unselected(13),
+    ]) {
+      await update(next)
+      await waiver.waitFor({ state: 'detached' })
+      await update(completed)
+      await waiver.waitFor({ state: 'visible' })
+    }
+    h.unavailable()
+    await update(completed)
+    await waiver.waitFor({ state: 'detached' })
+    assert.equal(h.writes.length, 0)
     assert.deepEqual(h.errors, [])
     await h.context.close()
   }

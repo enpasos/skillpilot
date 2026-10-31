@@ -4,6 +4,7 @@ import {
   buildCompletionAssessmentStartHref,
   buildCompletionRouteStartHref,
   completionNotice,
+  completionWaiversForTree,
   completionUnavailableReason,
   LevelCompletionApiError,
   parseLevelCompletion,
@@ -22,6 +23,26 @@ const valid = {
 assert.equal(parseLevelCompletion(null), null)
 assert.equal(parseLevelCompletion(undefined), null)
 assert.equal(parseLevelCompletion(valid)?.masteredTargetCount, 1)
+const treeCompletion = parseLevelCompletion({ ...valid, waiverDetails: [{
+  goalId: 'A', title: { de: 'Vorbereitung' }, ruleId: 'rule', assessmentCount: 1,
+  assessments: [{ goalId: 'Q', title: { de: 'Prüfung' } }],
+}] })!
+const originalTreeCompletion = JSON.stringify(treeCompletion)
+assert.deepEqual([...completionWaiversForTree(treeCompletion, false).keys()], ['A'])
+assert.equal(completionWaiversForTree(treeCompletion, false).get('A')?.assessments[0].goalId, 'Q')
+assert.equal(completionWaiversForTree(treeCompletion, false).has('Q'), false, 'passed assessments are not waived goals')
+assert.equal(completionWaiversForTree(treeCompletion, true).size, 0, 'stale snapshots must not annotate the tree')
+assert.equal(completionWaiversForTree(null, false).size, 0)
+for (const calculationStatus of ['invalid', 'unresolved', 'notApplicable', 'unavailable'] as const) {
+  assert.equal(completionWaiversForTree({ ...treeCompletion, calculationStatus, complete: undefined }, false).size, 0)
+}
+assert.equal(completionWaiversForTree({ ...treeCompletion, profileId: undefined }, false).size, 0)
+assert.equal(completionWaiversForTree({ ...treeCompletion, waivedTargetGoalIds: [] }, false).size, 0, 'details alone do not grant a waiver')
+assert.deepEqual(completionWaiversForTree({ ...treeCompletion, waiverDetails: [] }, false).get('A')?.assessments, [],
+  'bounded response details must not be filled in using unrelated assessments')
+assert.equal(completionWaiversForTree({ ...treeCompletion, complete: false, targetCount: 3, pendingTargetCount: 1 }, false).size, 1,
+  'valid waivers remain visible before the entire section is complete')
+assert.equal(JSON.stringify(treeCompletion), originalTreeCompletion, 'annotations never change mastery or backend counts')
 for (const changes of [
   { complete: false }, { masteredTargetCount: 2 }, { masteredAssessmentCount: 2 },
   { requiredAssessmentCount: 0 }, { learnerRevision: -1 },

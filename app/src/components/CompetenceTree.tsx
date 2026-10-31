@@ -6,6 +6,7 @@ import type { UiGoal } from '../goalTypes'
 import { sortGoalsTopologically } from '../utils/goalSorter'
 import { isCompleteMastery, isMastered, masteryColorClass } from '../goalUiUtils'
 import { InlineMathText } from './InlineMathText'
+import { completionLabel, type CompletionTreeWaiver } from '../utils/levelCompletionApi'
 import { isWildcardFilter } from '../utils/goalFilters'
 import { isCourseProfileFilterId } from '../utils/personalCurriculumStageScope'
 import { formatFilterDisplayLabel, formatJurisdictionScopedTitle, type LabelLanguage } from '../utils/filterLabels'
@@ -141,6 +142,7 @@ interface TreeNodeProps {
   parentGoalId?: string
   audience?: TreeAudience
   useRawGoalTitles?: boolean
+  completionWaivers?: ReadonlyMap<string, CompletionTreeWaiver>
 }
 
 const formatFilterLabel = (filterId: string | undefined, language: LabelLanguage) => {
@@ -187,6 +189,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   parentGoalId,
   audience = 'trainer',
   useRawGoalTitles = false,
+  completionWaivers,
 }) => {
   const t = useTranslation()
   const { language } = useLanguage()
@@ -236,6 +239,9 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     : isForcedExpanded || localIsExpanded
   const hasChildren = renderedChildren.length > 0
   const mastered = isMastered(mastery)
+  const completionWaiver = audience === 'learner' && !hasChildren && !mastered
+    ? completionWaivers?.get(goal.id)
+    : undefined
   const complete = isCompleteMastery(mastery)
   const hasProgress = mastery > 0
   const isPlanned = plannedGoals.has(goal.id)
@@ -310,12 +316,21 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   return (
     <div className="">
       <div
-        className={`flex items-center gap-2 py-1.5 px-2 rounded-md cursor-pointer transition-colors border border-transparent ${isSelected ? 'bg-sky-100 dark:bg-sky-900/40 border-sky-300 dark:border-sky-500/50' : 'hover:bg-slate-200 dark:hover:bg-slate-800/50'
+        data-goal-id={goal.id}
+        tabIndex={-1}
+        className={`flex ${completionWaiver ? 'items-start' : 'items-center'} gap-2 py-1.5 px-2 rounded-md cursor-pointer transition-colors border border-transparent ${isSelected ? 'bg-sky-100 dark:bg-sky-900/40 border-sky-300 dark:border-sky-500/50' : 'hover:bg-slate-200 dark:hover:bg-slate-800/50'
           }`}
         style={{ paddingLeft: `${depth * 16 + 8}px` }}
         onClick={() => onSelect(goal.id)}
       >
         <button
+          type="button"
+          aria-expanded={hasChildren ? isExpanded : undefined}
+          aria-label={hasChildren
+            ? `${displayTitle} ${localizedLanguage === 'en'
+              ? (isExpanded ? 'collapse' : 'expand')
+              : (isExpanded ? 'einklappen' : 'ausklappen')}`
+            : undefined}
           onClick={(e) => {
             e.stopPropagation()
             if (isExpansionControlled) {
@@ -363,18 +378,57 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           </div>
         )}
 
-        <InlineMathText
-          text={displayTitle}
-          title={displayTitle}
-          className={`text-sm truncate flex-1 transition-colors ${isDimmed
-            ? 'text-slate-300 dark:text-slate-600' // Dimmed (Outside Scope)
-            : isPlanned
-              ? 'text-slate-900 dark:text-slate-100 font-medium' // Planned (Focus)
-              : mastered
-                ? 'text-slate-500 dark:text-slate-400' // Mastered (Normal Scope)
-                : 'text-slate-700 dark:text-slate-200' // Open (Normal Scope)
+        <div className="min-w-0 flex-1">
+          <InlineMathText
+            text={displayTitle}
+            title={displayTitle}
+            className={`block text-sm truncate transition-colors ${isDimmed
+              ? 'text-slate-300 dark:text-slate-600' // Dimmed (Outside Scope)
+              : isPlanned
+                ? 'text-slate-900 dark:text-slate-100 font-medium' // Planned (Focus)
+                : mastered
+                  ? 'text-slate-500 dark:text-slate-400' // Mastered (Normal Scope)
+                  : 'text-slate-700 dark:text-slate-200' // Open (Normal Scope)
             }`}
-        />
+          />
+          {completionWaiver ? (
+            <details
+              data-testid="completion-tree-waiver"
+              className="mt-1 rounded-md border border-sky-200 bg-sky-50 px-2 py-1 text-xs text-sky-900 dark:border-sky-800 dark:bg-sky-950/40 dark:text-sky-100"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <summary className="cursor-pointer rounded-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+                {localizedLanguage === 'en' ? 'Covered by assessment for this section' : 'Für diesen Abschnitt durch Prüfung abgedeckt'}
+              </summary>
+              <div className="mt-2 space-y-2">
+                <p>{localizedLanguage === 'en' ? 'Section: ' : 'Lernabschnitt: '}
+                  <InlineMathText text={completionLabel(completionWaiver.sectionTitle, localizedLanguage)} />
+                </p>
+                <p>{localizedLanguage === 'en'
+                  ? 'Separate preparation is no longer required for this section. This goal keeps its existing learning result and remains available to learn voluntarily.'
+                  : 'Die separate Vorbereitung entfällt für diesen Abschnitt. Der Lernstand dieses Ziels bleibt unverändert; du kannst es weiterhin freiwillig bearbeiten.'}</p>
+                {completionWaiver.assessments.length ? (
+                  <div>
+                    <p>{localizedLanguage === 'en' ? 'Passed assessments:' : 'Bestandene Prüfungen:'}</p>
+                    <ul className="space-y-1">
+                      {completionWaiver.assessments.map((assessment) => (
+                        <li key={assessment.goalId}>
+                          <button type="button" className="min-h-8 rounded-sm text-left underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
+                            onClick={() => onSelect(assessment.goalId)}>
+                            <InlineMathText text={completionLabel(assessment.title, localizedLanguage)} />
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                    {(completionWaiver.assessmentCount ?? 0) > completionWaiver.assessments.length ? <p>{localizedLanguage === 'en'
+                      ? `And ${completionWaiver.assessmentCount! - completionWaiver.assessments.length} more passed assessments.`
+                      : `Und ${completionWaiver.assessmentCount! - completionWaiver.assessments.length} weitere bestandene Prüfungen.`}</p> : null}
+                  </div>
+                ) : null}
+              </div>
+            </details>
+          ) : null}
+        </div>
 
         {audience !== 'learner' && isSyntheticStructureNode && !hideTechnicalStructureUi && (
           <span
@@ -486,6 +540,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 onToggleExpanded={onToggleExpanded}
                 forcedExpandedIds={forcedExpandedIds}
                 frontierIds={frontierIds}
+                completionWaivers={completionWaivers}
                 parentGoalId={goal.id}
                 audience={audience}
                 useRawGoalTitles={useRawGoalTitles}
@@ -530,6 +585,7 @@ interface CompetenceTreeProps {
   audience?: TreeAudience
   visibleChildrenByParentOverride?: Map<string, string[]>
   useRawGoalTitles?: boolean
+  completionWaivers?: ReadonlyMap<string, CompletionTreeWaiver>
 }
 
 export const CompetenceTree: React.FC<CompetenceTreeProps> = ({

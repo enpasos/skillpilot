@@ -46,7 +46,7 @@ import type { ToastKind } from '../hooks/useToast'
 import { queueToastForNextLoad } from '../hooks/useToast'
 import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
 import { createSynchronousInFlightGuard } from '../utils/synchronousInFlightGuard'
-import { buildCompletionRouteStartHref, parseLevelCompletion, requestLevelCompletionAction, type CompletionActionInput, type LevelCompletion } from '../utils/levelCompletionApi'
+import { buildCompletionRouteStartHref, completionWaiversForTree, parseLevelCompletion, requestLevelCompletionAction, type CompletionActionInput, type LevelCompletion } from '../utils/levelCompletionApi'
 import {
   beginLatestRequest,
   invalidateLatestRequest,
@@ -414,6 +414,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       : skillpilotId
         ? 'loading'
         : 'ready'
+  const completionTreeWaivers = useMemo(
+    () => completionWaiversForTree(levelCompletion, learnerStateLoadStatus !== 'ready'),
+    [levelCompletion, learnerStateLoadStatus],
+  )
   const [personalConfigLoadState, setPersonalConfigLoadState] = useState<{
     scopeKey: string
     status: LearnerStateLoadStatus
@@ -916,9 +920,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     return expanded
   }, [effectiveLearnerParentMap, goalIndexAll, learnerVisibleChildrenByParent, subjectRootIdByAlias, visibleRootGoals])
 
-  const forcedExpandedGoalIds = useMemo(() => {
+  const learnerTreeRevealPathKey = useMemo(() => {
     const targetId = currentRouteGoalId || effectiveActiveGoalId || selectedId
-    return targetId ? buildCollapsedFocusPath(targetId) : new Set<string>()
+    return JSON.stringify(targetId ? Array.from(buildCollapsedFocusPath(targetId)).sort() : [])
   }, [buildCollapsedFocusPath, currentRouteGoalId, effectiveActiveGoalId, selectedId])
 
   useEffect(() => {
@@ -943,6 +947,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       setExpandedGoalIds(fallbackExpanded)
     }
   }, [learnerTreeExpansionStorageKey, visibleRootGoals])
+
+  useEffect(() => {
+    // Reveal a newly selected path once, then let the learner close any branch.
+    // Compare path contents so an unchanged API refresh cannot reopen it.
+    const revealIds = JSON.parse(learnerTreeRevealPathKey) as string[]
+    setExpandedGoalIds((current) => {
+      if (revealIds.every((goalId) => current.has(goalId))) return current
+      return new Set([...current, ...revealIds])
+    })
+  }, [learnerTreeExpansionStorageKey, learnerTreeRevealPathKey])
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -2517,6 +2531,26 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [sidebarWidth, setSidebarWidth] = useState(320)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [isDesktopSidebarOpen, setIsDesktopSidebarOpen] = useState(true)
+  const [completionTreeRevealId, setCompletionTreeRevealId] = useState<string | null>(null)
+  const showCompletionGoalInTree = useCallback((goalId: string) => {
+    if (!visibleGoals.has(goalId)) return
+    setExpandedGoalIds((current) => new Set([...current, ...buildCollapsedFocusPath(goalId)]))
+    onSelectGoal(goalId)
+    setIsSidebarOpen(true)
+    setIsDesktopSidebarOpen(true)
+    setCompletionTreeRevealId(goalId)
+  }, [buildCollapsedFocusPath, onSelectGoal, visibleGoals])
+  useEffect(() => {
+    if (!completionTreeRevealId) return
+    const frame = window.requestAnimationFrame(() => {
+      const row = document.getElementById('learner-goal-sidebar')
+        ?.querySelector<HTMLElement>(`[data-goal-id="${CSS.escape(completionTreeRevealId)}"]`)
+      row?.scrollIntoView({ block: 'nearest', inline: 'nearest' })
+      row?.focus({ preventScroll: true })
+      setCompletionTreeRevealId(null)
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [completionTreeRevealId])
   const mobileEdgeTouchStart = useRef<{ identifier: number; x: number; y: number } | null>(null)
   const desktopHideButtonRef = useRef<HTMLButtonElement>(null)
   const desktopShowButtonRef = useRef<HTMLButtonElement>(null)
@@ -3307,8 +3341,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               activeGoalId={effectiveActiveGoalId ?? undefined}
               expandedGoalIds={expandedGoalIds}
               onToggleExpanded={toggleExpandedGoal}
-              forcedExpandedIds={forcedExpandedGoalIds}
               frontierIds={frontierIds}
+              completionWaivers={completionTreeWaivers}
               audience="learner"
               visibleChildrenByParentOverride={learnerVisibleChildrenByParent}
               useRawGoalTitles={currentLandscapeHasMatchedCompositionView}
@@ -3361,6 +3395,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             learningPlanPaused={learnerData?.followLearningPlans === true && Boolean(scopedLearningPlans?.plans.length)}
             onAction={(action) => { void handleCompletionAction(action) }}
             onRetry={() => { void refreshState(true) }}
+            onShowGoal={showCompletionGoalInTree}
           />
         ) : null}
         <div className="mb-4 flex w-full justify-end">
