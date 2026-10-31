@@ -1199,6 +1199,62 @@ export async function verifyPublicClaudeDirectInstallBetaPublication({
     publicationRoot,
   });
   const expectedIndexBytes = readFileSync(local.indexPath);
+  return verifyPublicPublication({ publicBaseUrl, fetchImpl, local, expectedIndexBytes });
+}
+
+/** Verify a locally selected, already published build while a successor is only prepared. */
+export async function verifyPublicClaudeHistoricalBuildPublication({
+  repositoryRoot = defaultRepositoryRoot,
+  version,
+  baseUrl,
+  fetchImpl = globalThis.fetch,
+} = {}) {
+  const publicBaseUrl = parsePublicBaseUrl(baseUrl);
+  if (typeof fetchImpl !== "function") throw new Error("fetchImpl must be a function.");
+  assertSemanticVersion(version, "supported historical publication version");
+  verifyHistoricalReleaseHistory(repositoryRoot, (condition, message) => {
+    if (!condition) throw new Error(message);
+  });
+  const historyRoot = resolveWithin(repositoryRoot,
+    `${packageRelativeRoot}/release/history/${version}`, "supported historical release");
+  const lane = readJson(resolve(historyRoot, "direct-install-beta.json"), "historical direct-install lane");
+  const baseline = readJson(resolve(historyRoot, "contract-baseline.json"), "historical contract baseline");
+  const marketplace = readJson(resolve(historyRoot, "marketplace-publication.json"), "historical publication record");
+  validateDirectInstallBetaLane(lane);
+  assertEqual(baseline.pluginIdentity, lane.plugin.id, "historical baseline identity");
+  assertEqual(baseline.pluginVersion, version, "historical baseline version");
+  assertEqual(lane.candidate.version, version, "historical lane version");
+  assertEqual(baseline.archive?.sha256, lane.candidate.sha256, "historical archive SHA-256");
+  if (!["published_pending_acceptance", "published_verified"].includes(marketplace.activation?.state)) {
+    throw new Error("Supported historical publication must have a recorded publication.");
+  }
+  assertEqual(marketplace.plugin?.name, lane.plugin.id, "historical published identity");
+  assertEqual(marketplace.plugin?.version, version, "historical published version");
+  assertEqual(marketplace.plugin?.directInstallSha256, lane.candidate.sha256, "historical published SHA-256");
+  const filename = `${lane.plugin.id}-${version}.plugin`;
+  const index = createPublicationIndex({
+    lane,
+    manifest: { version },
+    preparedAt: `${baseline.capturedAt}T00:00:00.000Z`,
+    filename,
+    bytes: baseline.archive.bytes,
+    sha256: lane.candidate.sha256,
+  });
+  validateClaudePluginPublicationIndex(index, lane, { name: lane.plugin.id, version });
+  const publicationRoot = resolveWithin(repositoryRoot, expectedPublicationRoot, "publication history");
+  validateIndexedArtifact(publicationRoot, index.plugins[0]);
+  const local = {
+    artifactPath: resolve(publicationRoot, lane.plugin.id, version, `sha256-${lane.candidate.sha256}`, filename),
+    filename,
+    bytes: baseline.archive.bytes,
+    sha256: lane.candidate.sha256,
+    version,
+  };
+  const expectedIndexBytes = Buffer.from(`${JSON.stringify(index, null, 2)}\n`);
+  return verifyPublicPublication({ publicBaseUrl, fetchImpl, local, expectedIndexBytes });
+}
+
+async function verifyPublicPublication({ publicBaseUrl, fetchImpl, local, expectedIndexBytes }) {
   const index = JSON.parse(expectedIndexBytes.toString("utf8"));
   const plugin = index.plugins[0];
 

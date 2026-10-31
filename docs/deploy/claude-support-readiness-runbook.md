@@ -60,14 +60,18 @@ response bodies. It verifies the current immutable plugin publication, public
 legal and privacy pages, application readiness, connector OAuth discovery and
 the unauthenticated MCP challenge.
 
-During a backend rollout, the publication check accepts either the exact
-immutable checked-in publication or the current publication reproduced locally
-with the backend's deterministic build generator. Both paths verify the entire
-index and the archive against locally checked release evidence; an arbitrary
-remote version or hash is never accepted. Temporary build resources are removed
-after the check. The reported candidate identifies the publication actually
-served. This availability check does not replace the deployment gate, which
-requires the exact newly built publication.
+During a backend rollout, the publication check accepts the exact immutable
+checked-in publication, the explicitly selected already published build
+**1.1.12**, or the current publication reproduced locally with the backend's
+deterministic build generator. The historical build is verified against its
+immutable archived dossier, recorded publication binding and retained archive;
+its expected index is reconstructed from local release metadata. Preparing
+**1.1.13** therefore does not require that successor to be deployed already.
+Every path verifies the entire index and archive; an arbitrary remote version
+or hash is never accepted. Temporary build resources are removed after the
+check. The reported candidate identifies the publication actually served.
+This availability check does not replace the deployment gate, which requires
+the exact newly built publication, or establish host acceptance.
 
 Run its unit tests and then the live check:
 

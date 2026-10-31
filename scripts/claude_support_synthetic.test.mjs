@@ -9,6 +9,10 @@ import {
   verifyClaudeSupportSynthetic,
 } from "./claude_support_synthetic.mjs";
 import { generateClaudePluginPublication } from "./generate_claude_plugin_publication.mjs";
+import { verifyPublicClaudeHistoricalBuildPublication } from "./claude_direct_install_beta_release.mjs";
+
+const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const recordedRoot = resolve(repositoryRoot, "backend/src/main/resources/claude-plugin-publication");
 
 const candidate = {
   version: "1.0.2",
@@ -16,8 +20,6 @@ const candidate = {
 };
 
 test("synthetic strictly verifies recorded and generated publications during rollout", async (t) => {
-  const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-  const recordedRoot = resolve(repositoryRoot, "backend/src/main/resources/claude-plugin-publication");
   const recordedIndex = readFileSync(join(recordedRoot, "index.json"));
   const temporaryRoot = mkdtempSync(join(tmpdir(), "skillpilot-support-test-"));
   t.after(() => rmSync(temporaryRoot, { recursive: true, force: true }));
@@ -64,6 +66,48 @@ test("synthetic strictly verifies recorded and generated publications during rol
   });
 
   assert.deepEqual(readFileSync(join(recordedRoot, "index.json")), recordedIndex);
+});
+
+test("synthetic verifies the deployed published build while a newer candidate is only prepared", async () => {
+  const fixture = historicalPublicationFixture();
+  const result = await verifyClaudeSupportSynthetic({ fetchImpl: fixture.fetchImpl });
+  assert.deepEqual(result.candidate, {
+    version: "1.1.12",
+    sha256: "d4d2f22a551bfd044d2eeaa36495fe96d62bc588552effecaef213a4e148afc0",
+  });
+  assert.equal(result.outcome, "pass");
+  assert.ok(fixture.requested.some(({ url }) => url.endsWith(fixture.plugin.downloadUrl)));
+  assert.equal(fixture.requested.some(({ url }) => url.includes("/1.1.13/")), false);
+});
+
+test("published historical fallback rejects changed index metadata and archive bytes", async () => {
+  for (const field of ["sha256", "preparedAt"]) {
+    const fixture = historicalPublicationFixture({
+      mutateIndex(index) {
+        if (field === "sha256") index.plugins[0].sha256 = "f".repeat(64);
+        else index.preparedAt = "2026-10-31T00:00:00.000Z";
+      },
+    });
+    await assert.rejects(verifyClaudeSupportSynthetic({ fetchImpl: fixture.fetchImpl }),
+      /public-plugin-publication failed/u);
+    assert.equal(fixture.requested.some(({ url }) => url.endsWith(".plugin")), false);
+  }
+  const fixture = historicalPublicationFixture({ corruptArchive: true });
+  await assert.rejects(verifyPublicClaudeHistoricalBuildPublication({
+    version: "1.1.12", baseUrl: "https://skillpilot.com", fetchImpl: fixture.fetchImpl,
+  }), /artifact SHA-256/u);
+  await assert.rejects(verifyClaudeSupportSynthetic({ fetchImpl: fixture.fetchImpl }),
+    /public-plugin-publication failed/u);
+});
+
+test("historical verification cannot adopt an unknown version or an unpublished successor", async () => {
+  const requested = [];
+  for (const version of ["1.1.99", "1.1.13"]) {
+    await assert.rejects(verifyPublicClaudeHistoricalBuildPublication({
+      version, baseUrl: "https://skillpilot.com", fetchImpl: fixtureFetch({ requested }),
+    }));
+  }
+  assert.deepEqual(requested, []);
 });
 
 test("synthetic validates only the fixed public read-only support surface", async () => {
@@ -320,8 +364,25 @@ test("synthetic timeout remains active while reading a response body", async () 
   );
 });
 
-function publicationFixture(publicationRoot, { mutateIndex, corruptArchive = false } = {}) {
-  const indexBytes = readFileSync(join(publicationRoot, "index.json"));
+function historicalPublicationFixture(options = {}) {
+  // Reproduce the previously deployed index from the retained catalog metadata;
+  // these version/hash/date values are fixed test evidence, never remote input.
+  const index = JSON.parse(readFileSync(join(recordedRoot, "index.json"), "utf8"));
+  index.preparedAt = "2026-09-30T00:00:00.000Z";
+  Object.assign(index.plugins[0], {
+    version: "1.1.12", bytes: 43272,
+    sha256: "d4d2f22a551bfd044d2eeaa36495fe96d62bc588552effecaef213a4e148afc0",
+    filename: "skillpilot-coach-v1-1.1.12.plugin",
+    downloadUrl: "/api/public/claude/plugins/skillpilot-coach-v1/1.1.12/sha256-d4d2f22a551bfd044d2eeaa36495fe96d62bc588552effecaef213a4e148afc0/skillpilot-coach-v1-1.1.12.plugin",
+  });
+  return publicationFixture(recordedRoot, {
+    ...options, indexBytes: Buffer.from(`${JSON.stringify(index, null, 2)}\n`),
+  });
+}
+
+function publicationFixture(publicationRoot, {
+  indexBytes = readFileSync(join(publicationRoot, "index.json")), mutateIndex, corruptArchive = false,
+} = {}) {
   const index = JSON.parse(indexBytes.toString("utf8"));
   const plugin = { ...index.plugins[0] };
   const artifact = readFileSync(join(publicationRoot, plugin.id, plugin.version,
