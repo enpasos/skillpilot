@@ -4,6 +4,11 @@ import { MemoryRouter } from 'react-router-dom'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { LevelCompletionCard } from '../src/components/LevelCompletionCard'
 import { requiresCompletionExitConfirmation, type LevelCompletion } from '../src/utils/levelCompletionApi'
+import { TreeCompletionProgressBar } from '../src/components/TreeCompletionProgressBar'
+import type { TreeCompletionProgress } from '../src/utils/treeCompletionProgress'
+import { CompetenceTree } from '../src/components/CompetenceTree'
+import { LanguageProvider } from '../src/contexts/LanguageContext'
+import type { UiGoal } from '../src/goalTypes'
 
 const completed: LevelCompletion = {
   calculationStatus: 'valid', contextRef: 'context', profileId: 'profile', profileRevision: '1',
@@ -78,4 +83,66 @@ assert.equal(requiresCompletionExitConfirmation(running, { action: 'learnGoal', 
 assert.equal(requiresCompletionExitConfirmation(running, { action: 'endAssessment' }), false)
 assert.equal(requiresCompletionExitConfirmation(open, { action: 'leaveProfile' }), false)
 assert.doesNotMatch(render(running), /completionProfile=/u)
+const treeProgress: TreeCompletionProgress = {
+  totalCount: 3, explicitCount: 1, implicitCount: 2, openCount: 0,
+  totalWeight: 3, explicitWeight: 1, implicitWeight: 2, openWeight: 0,
+  explicitRatio: 1 / 3, implicitRatio: 2 / 3,
+}
+const renderProgress = (progress: TreeCompletionProgress, language: 'de' | 'en' = 'de') => renderToStaticMarkup(
+  <TreeCompletionProgressBar progress={progress} title="Lineare Gleichungen" language={language}
+    sectionTitle={{ de: 'Sekundarstufe I', en: 'Lower secondary' }} />,
+)
+const treeHtml = renderProgress(treeProgress)
+assert.match(treeHtml, /3 von 3 Lernzielen erledigt/u)
+assert.match(treeHtml, /1 explizit geschafft\. 2 implizit erledigt\. 0 offen/u)
+assert.match(treeHtml, /Gewichteter Fortschritt: 100 %/u)
+assert.match(treeHtml, /Implizite Erledigung im Lernabschnitt: Sekundarstufe I/u)
+assert.match(treeHtml, /<button[^>]*type="button"[^>]*aria-label=/u)
+assert.doesNotMatch(treeHtml, /100% Mastery|role="progressbar"/u)
+const englishTreeHtml = renderProgress(treeProgress, 'en')
+assert.match(englishTreeHtml, /3 of 3 learning goals completed/u)
+assert.match(englishTreeHtml, /1 explicitly achieved\. 2 implicitly completed\. 0 open/u)
+assert.match(englishTreeHtml, /Weighted progress: 100%/u)
+const weightedTreeHtml = renderProgress({
+  totalCount: 2, explicitCount: 1, implicitCount: 0, openCount: 1,
+  totalWeight: 4, explicitWeight: 3, implicitWeight: 0, openWeight: 1,
+  explicitRatio: 0.75, implicitRatio: 0,
+})
+assert.match(weightedTreeHtml, /1 von 2 Lernzielen erledigt/u)
+assert.match(weightedTreeHtml, /Gewichteter Fortschritt: 75 %/u)
+assert.doesNotMatch(weightedTreeHtml, /Implizite Erledigung im Lernabschnitt/u)
+assert.match(renderProgress({
+  totalCount: 2, explicitCount: 1, implicitCount: 0, openCount: 1,
+  totalWeight: 100000, explicitWeight: 99999, implicitWeight: 0, openWeight: 1,
+  explicitRatio: 0.99999, implicitRatio: 0,
+}), /Gewichteter Fortschritt: 99,9 %/u, 'A small open weight must not be announced as fully completed')
+const emptyTreeHtml = renderProgress({
+  totalCount: 0, explicitCount: 0, implicitCount: 0, openCount: 0,
+  totalWeight: 0, explicitWeight: 0, implicitWeight: 0, openWeight: 0,
+  explicitRatio: 0, implicitRatio: 0,
+})
+assert.match(emptyTreeHtml, /Keine Lernziele in dieser Ansicht/u)
+assert.doesNotMatch(emptyTreeHtml, /100 %|NaN|Infinity/u)
+
+const savedStorage = Object.getOwnPropertyDescriptor(globalThis, 'localStorage')
+try {
+  Object.defineProperty(globalThis, 'localStorage', { configurable: true, value: { getItem: () => 'de' } })
+  const atom: UiGoal = {
+    id: 'atom', title: 'Lernziel', description: '', phase: 'GLOBAL', themenfeld: '', area: '', level: 1,
+    core: true, weight: 1, leitideen: [], kompetenzen: [], sourceRef: '', requires: [], contains: [], examples: [],
+  }
+  const cluster: UiGoal = { ...atom, id: 'cluster', title: 'Abschnitt', contains: ['atom'], type: 'cluster' }
+  const trainerTree = renderToStaticMarkup(<LanguageProvider><CompetenceTree
+    rootGoals={[cluster]} allGoals={new Map([[cluster.id, cluster], [atom.id, atom]])}
+    getMastery={() => 0.5} plannedGoals={new Set()} onTogglePlan={() => undefined}
+    onSelect={() => undefined} selectedId="" audience="trainer"
+    completionWaivers={new Map([['atom', { reason: 'no_remaining_demand', sectionTitle: { de: 'Abschnitt' }, assessments: [] }]])}
+  /></LanguageProvider>)
+  assert.match(trainerTree, /width:50%/u, 'Trainer averages retain fractional progress')
+  assert.doesNotMatch(trainerTree, /completion-tree-progress|completion-tree-waiver/u,
+    'Learner completion overlays must never reinterpret trainer averages')
+} finally {
+  if (savedStorage) Object.defineProperty(globalThis, 'localStorage', savedStorage)
+  else Reflect.deleteProperty(globalThis, 'localStorage')
+}
 console.log('Level completion UI contract tests passed.')

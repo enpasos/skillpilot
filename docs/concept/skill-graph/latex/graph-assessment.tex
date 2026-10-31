@@ -161,6 +161,16 @@ Der Baum verwendet ein kompaktes Icon mit dem Tooltip
 „Für diesen Abschnitt nicht mehr erforderlich“. Diese Aussage behauptet
 keinen Prüfungserfolg, wenn ein gewöhnliches Lernziel den Bedarf beendet hat.
 Mastery-Anzeigen und abgeleitete Erledigung bleiben unterscheidbar.
+Die Balken an Sammelknoten der Lernendenansicht sind grün für explizit
+geschaffte, blau für implizit erledigte und grau für offene Ziele. Grundlage
+sind die eindeutigen atomaren Nachfahren der dargestellten Projektion mit ihren
+atomaren Gewichten; das Zuklappen verändert diese Menge nicht. Der blaue Anteil
+verwendet denselben gültigen Abschnittskontext wie die Schildsymbole und entfällt
+bei veralteten Daten. Bei drei gleich gewichteten Zielen ergeben ein explizit
+geschafftes und zwei implizit erledigte Ziele einen vollen Balken, ohne Mastery
+umzuschreiben.
+Ein mit Maus, Tastatur und Touch erreichbarer Tooltip erläutert Zielanzahlen,
+gewichteten Fortschritt und den Bezug der impliziten Erledigung.
 
 Für die feste, eindeutige Planbasis $G$ gilt standardmäßig
 \begin{equation}
@@ -175,6 +185,7 @@ Quoten und Fachbilanzen getrennt bleiben. Eine kleine Abschnittsauswertung
 ändert die Plananrechnung nicht.
 Die Cockpit-Einstellung „Nur explizit erreichte Lernziele zählen“ ist
 standardmäßig aus; bei Auswahl zählt nur $|G\cap M|$.
+Diese ausschließlich planbezogene Option verändert weder Baumbalken noch Schilde.
 Planbasis, Termine und Sollmengen ändern sich dadurch nicht. Der Periodenwert
 $H$ zählt weiterhin ausschließlich tatsächliche, zeitlich belegte Abschlüsse;
 aktuelle implizite Erledigung erzeugt keine historischen Lernerfolgsereignisse.

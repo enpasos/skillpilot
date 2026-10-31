@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { MemoryRouter, useLocation } from 'react-router-dom'
 
@@ -76,7 +76,8 @@ const allGoals = new Map([
 ].map((entry) => [entry.id, entry]))
 const rootGoals = [mathRoot, physicsRoot]
 const landscapes = [{ landscapeId: mathId, title: 'Mathematik' }, { landscapeId: physicsId, title: 'Physik' }]
-const getMastery = (id: string) => completionTreeFixture && fixtureParams.get('examMastered') !== '0' && id === 'math-exam' ? 1 : 0
+const initialMastery: Record<string, number> = completionTreeFixture && fixtureParams.get('examMastered') !== '0'
+  ? { 'math-exam': 1 } : {}
 const fixtureRootLandscapeId = new URLSearchParams(window.location.search).get('root') === 'legacy'
   ? 'legacy-school-root'
   : CANONICAL_GYMNASIUM_ROOT_ID
@@ -86,6 +87,20 @@ const Fixture = () => {
   const [role, setRole] = useState<'learner' | 'trainer' | 'explorer' | null>('learner')
   const [learnerId, setLearnerId] = useState('fixture-learner-a')
   const [currentGoal, setCurrentGoal] = useState(allGoals.get(fixtureEntryGoalId) ?? mathUpper)
+  const [mastery, setMastery] = useState(initialMastery)
+  // This fixture models refreshed authoritative mastery separately from the
+  // completion overlay. Tooltip interactions never dispatch this event.
+  useEffect(() => {
+    const update = (event: Event) => {
+      const { goalId, value } = (event as CustomEvent<{ goalId: string; value: number }>).detail
+      if (allGoals.has(goalId) && (value === 0 || value === 1)) {
+        setMastery(previous => ({ ...previous, [goalId]: value }))
+      }
+    }
+    window.addEventListener('learner-startup-fixture-mastery', update)
+    return () => window.removeEventListener('learner-startup-fixture-mastery', update)
+  }, [])
+  const getMastery = useCallback((id: string) => mastery[id] ?? 0, [mastery])
   const selectGoal = useCallback((id: string) => {
     const selected = allGoals.get(id)
     if (selected) setCurrentGoal(selected)
@@ -95,7 +110,7 @@ const Fixture = () => {
     return <SessionSetup role={role} setRole={setRole} skillpilotId={learnerId} setSkillpilotId={setLearnerId} onStart={() => undefined} />
   }
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-full flex-col" data-fixture-selected-goal={currentGoal.id}>
       <button type="button" data-testid="fixture-switch-learner" onClick={() => {
         setLearnerId('fixture-learner-b')
         setCurrentGoal(physicsUpper)

@@ -8,6 +8,8 @@ import { isCompleteMastery, isMastered, masteryColorClass } from '../goalUiUtils
 import { InlineMathText } from './InlineMathText'
 import type { CompletionTreeWaiver } from '../utils/levelCompletionApi'
 import { CompletionWaiverIcon } from './CompletionWaiverIcon'
+import { TreeCompletionProgressBar } from './TreeCompletionProgressBar'
+import { buildTreeCompletionProgressMap, type TreeCompletionProgress } from '../utils/treeCompletionProgress'
 import { isWildcardFilter } from '../utils/goalFilters'
 import { isCourseProfileFilterId } from '../utils/personalCurriculumStageScope'
 import { formatFilterDisplayLabel, formatJurisdictionScopedTitle, type LabelLanguage } from '../utils/filterLabels'
@@ -111,6 +113,8 @@ interface TreeNodeProps {
   visibleChildrenByParent: Map<string, string[]>
   sortedChildrenByParent: Map<string, string[]>
   masteryByGoalId: Map<string, number>
+  completionProgressByGoalId?: Map<string, TreeCompletionProgress>
+  completionSectionTitle?: CompletionTreeWaiver['sectionTitle']
   plannedGoals: Set<string>
   plannedScopeGoalIds: Set<string>
   plannedScopeDescendantCounts: Map<string, number>
@@ -164,6 +168,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   visibleChildrenByParent,
   sortedChildrenByParent,
   masteryByGoalId,
+  completionProgressByGoalId,
+  completionSectionTitle,
   plannedGoals,
   plannedScopeGoalIds,
   plannedScopeDescendantCounts,
@@ -228,6 +234,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     sortedChildrenByParent,
   )
   const mastery = masteryByGoalId.get(goalId) ?? 0
+  const completionProgress = completionProgressByGoalId?.get(goalId)
 
   const hasStructuralChildren = (goal.contains ?? []).length > 0
   if (audience === 'learner' && hasStructuralChildren && renderedChildren.length === 0 && !goal.tags?.includes('root')) {
@@ -346,7 +353,14 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           <span className="text-[10px]">{isExpanded ? '▼' : '▶'}</span>
         </button>
 
-        {hasChildren && (
+        {hasChildren && (completionProgress ? (
+          <TreeCompletionProgressBar
+            progress={completionProgress}
+            title={displayTitle}
+            language={localizedLanguage}
+            sectionTitle={completionSectionTitle}
+          />
+        ) : (
           <div
             className="w-12 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden flex-shrink-0"
             title={`${t.tooltips.progress}: ${(mastery * 100).toFixed(0)}%`}
@@ -356,7 +370,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
               style={{ width: `${mastery * 100}%` }}
             />
           </div>
-        )}
+        ))}
 
         {!hasChildren && (
           <div
@@ -483,6 +497,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 visibleChildrenByParent={visibleChildrenByParent}
                 sortedChildrenByParent={sortedChildrenByParent}
                 masteryByGoalId={masteryByGoalId}
+                completionProgressByGoalId={completionProgressByGoalId}
+                completionSectionTitle={completionSectionTitle}
                 plannedGoals={plannedGoals}
                 plannedScopeGoalIds={plannedScopeGoalIds}
                 plannedScopeDescendantCounts={plannedScopeDescendantCounts}
@@ -591,6 +607,13 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
     () => buildAggregatedMasteryMap(props.allGoals, visibleChildrenByParent, props.getMastery),
     [props.allGoals, props.getMastery, visibleChildrenByParent],
   )
+  const completionProgressByGoalId = React.useMemo(
+    () => audience === 'learner'
+      ? buildTreeCompletionProgressMap(props.allGoals, visibleChildrenByParent, props.getMastery, props.completionWaivers)
+      : undefined,
+    [audience, props.allGoals, visibleChildrenByParent, props.getMastery, props.completionWaivers],
+  )
+  const completionSectionTitle = props.completionWaivers?.values().next().value?.sectionTitle
   const plannedScopeGoalIds = React.useMemo(
     () => plannedScopeGoalIdsOverride ?? buildGoalContainsClosure(props.plannedGoals, props.allGoals),
     [plannedScopeGoalIdsOverride, props.allGoals, props.plannedGoals],
@@ -618,6 +641,8 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
           visibleChildrenByParent={visibleChildrenByParent}
           sortedChildrenByParent={sortedChildrenByParent}
           masteryByGoalId={masteryByGoalId}
+          completionProgressByGoalId={completionProgressByGoalId}
+          completionSectionTitle={completionSectionTitle}
           plannedScopeGoalIds={plannedScopeGoalIds}
           plannedScopeDescendantCounts={plannedScopeDescendantCounts}
           plannedScopeMarkerGoalIds={plannedScopeMarkerGoalIds}

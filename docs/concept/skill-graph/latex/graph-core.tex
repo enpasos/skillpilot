@@ -327,7 +327,7 @@ Die Cluster sind keine direkt auszuwählenden atomaren Lernschritte.}
 Sei $S\subseteq A$ eine fest benannte Menge von Zielatomen,
 $w(a)>0$ ihr Fortschrittsgewicht und
 $m(a)=\mathbf{1}_{\{a\in M_A\}}\in\{0,1\}$ ihr binärer
-Mastery-Indikator. Der gewichtete Fortschritt ist
+Mastery-Indikator. Der gewichtete Mastery-Fortschritt ist
 \begin{equation}
  P(S)=\frac{\sum_{a\in S}w(a)m(a)}{\sum_{a\in S}w(a)}\qquad(S\ne\varnothing).
 \end{equation}
@@ -337,6 +337,9 @@ Für mehrere Cluster wird $S$ als Vereinigung ihrer Zielatome gebildet.
 Cluster und Kinder dürfen nicht zusätzlich gemeinsam gezählt werden.
 Ein Fortschritt von beispielsweise 50\,\% bezeichnet einen Anteil
 geschaffter Ziele im Umfang, keine halbe Beherrschung eines einzelnen Ziels.
+Davon zu unterscheiden ist die segmentierte Erledigungsanzeige im Lernzielbaum:
+Sie weist explizite Mastery und abgeleitete implizite Erledigung getrennt aus.
+Ein vollständig gefüllter Erledigungsbalken behauptet daher nicht $P(S)=1$.
 
 Bei der Konvention $w(a)=1$ entspricht das Clustergewicht der Zahl seiner
 eindeutigen atomaren Nachfahren. Das ist eine zulässige konkrete

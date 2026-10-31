@@ -259,7 +259,7 @@
     "test:math-pythagoras-structure": "tsx scripts/testMathPythagorasStructure.ts",
     "check:assessment-completion-profiles": "tsx scripts/checkAssessmentCompletionProfiles.ts",
     "test:assessment-completion-profiles": "tsx scripts/testAssessmentCompletionProfiles.ts",
-    "test:level-completion": "tsx src/utils/levelCompletionApi.test.ts && tsx scripts/testLevelCompletionUi.tsx",
+    "test:level-completion": "tsx src/utils/levelCompletionApi.test.ts && tsx src/utils/treeCompletionProgress.test.ts && tsx scripts/testLevelCompletionUi.tsx",
     "test:level-completion-browser": "tsx scripts/testLevelCompletionBrowser.ts"
   },
   "dependencies": {

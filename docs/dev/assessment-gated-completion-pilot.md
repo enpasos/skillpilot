@@ -81,6 +81,21 @@ Bei veralteten oder ungültigen Daten verschwinden positive Kontextmarker.
 Nach Verlassen eines gewählten Abschnitts gilt wieder der aktuelle
 Defaultkontext; dessen weiterhin gültige Marker dürfen erhalten bleiben.
 
+Die Balken an Sammelknoten der Lernendenansicht zeigen die Erledigung in drei
+Anteilen: **grün = explizit geschafft**, **blau = implizit erledigt**,
+**grau = offen**. Blau verwendet dieselben gültigen, auf den aktuellen Abschnitt
+bezogenen Markierungen wie die Schilde; bei veralteten Daten entfällt dieser
+Anteil ebenfalls. Jeder Balken zählt die eindeutigen atomaren Nachfahren der
+dargestellten Projektion mit ihren atomaren Gewichten. Gemeinsame Nachfahren
+zählen einmal, Clustergewichte nicht zusätzlich. Zu- und Aufklappen verändert
+diese Menge nicht. Ein explizit geschafftes und zwei implizit erledigte Ziele
+mit gleichen Gewichten ergeben einen vollen Balken: ein Drittel grün und zwei
+Drittel blau. Das bedeutet vollständige Erledigung, nicht vollständige Mastery.
+Der Tooltip ist per Maus, Tastatur und Touch erreichbar und nennt Zielanzahlen,
+gewichteten Fortschritt sowie den Abschnitt der impliziten Erledigung.
+Die Plan-IST-Option **„Nur explizit erreichte Lernziele zählen“** verändert weder
+diesen Balken noch die Schilde; gespeicherte Mastery bleibt unverändert.
+
 Manuell geschlossene Baumknoten bleiben geschlossen. Eine neue bewusste
 Navigation kann den Zielpfad wieder öffnen. **„Im Lernzielbaum anzeigen“**
 öffnet, fokussiert und scrollt rein lesend; es speichert keine Mastery oder Route.
@@ -303,7 +318,8 @@ Nichtbestehen bleibt Mastery null, ohne zusätzlichen Ergebnisstatus.
 Im Baum ein implizites Symbol prüfen: Umfang und Erklärung müssen korrekt,
 Mastery-Haken und globale Masteryzahl unverändert sein. Tooltip per Hover,
 Tabulator/Escape und Touch prüfen. Einen geöffneten Elternknoten schließen;
-er muss bis zur nächsten bewussten Zielnavigation geschlossen bleiben.
+er muss bis zur nächsten bewussten Zielnavigation geschlossen bleiben. Sein
+segmentierter Balken und die Tooltip-Zählungen bleiben beim Zuklappen gleich.
 
 Während eines Versuchs bewusst angebotene Unterstützung, Retry oder Beenden
 verwenden. Ein bestätigter Wechsel beendet den bisherigen Versuch; veraltete
