@@ -180,7 +180,9 @@ the reference curriculum's past definition.
 
 ## Level completion and individual availability
 
-> **Related proposed profile:** [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md) derives completion from a fixed level scope, mastery of the required assessments and reviewed static rules for waiving remaining learning work. Mastery is the sole stored goal result; waivers and level completion are calculated. Later-level consumers outside that scope do not block it, and waived work never becomes global mastery. This proposal does not change the currently implemented goal results, level completion, or exam access rules.
+[Assessment-gated completion](assessment-gated-completion.md) derives completion from the authoritative scope and existing mastery. A final assessment needs an explicit pass. When an ordinary preparation step becomes unnecessary, the waiver gives no evidence of mastery for that goal.
+
+The optional [curriculum levels with completion gates](curriculum-level-gates.md) design adds an explicit course mode. Selected cluster placements have local assessment endpoints, required card recall and declared predecessor levels. Its entry gates apply only where the plan chooses this mode.
 
 A level declares its completion rule over an explicit required target set and
 any applicable, resolved selection rules. Completion is derived from the stored

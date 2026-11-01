@@ -1139,4 +1139,6 @@ A plan is valid under this optional profile iff it is structurally feasible and 
 
 Level validity does not add blanket dependencies between successive levels. Individual availability continues to follow the existing prerequisite semantics and selected runtime evaluation contract. Finishing a whole level is an aggregate plan result, not a prerequisite for every target in the next level.
 
+The optional [curriculum levels with completion gates](curriculum-level-gates.md) design adds an explicit course policy over selected cluster placements. It defines local assessment routes, mandatory card recall and whole-level entry gates. Its proposed `requiresLevel` relation belongs to the resolved plan and sits outside the base graph relations $C$ and $R$.
+
 Level assignment, plan validation, or a presentation of completed levels MUST NOT copy, infer, reset, or otherwise alter learner mastery. The profile supplies planning constraints without changing the learner-state or scoped-evaluation contracts above.
