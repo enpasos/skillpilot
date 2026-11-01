@@ -25,11 +25,12 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [SkillPilot Skill Graph Specification](skill-graph/graph-definition.md)
   Core graph model and formal vocabulary.
 - [Assessment-Gated Completion and Prerequisite Discharge](skill-graph/assessment-gated-completion.md)
-  Proposed level completion and work waivers calculated from existing mastery
-  and reviewed static rules, with a fixed scope and no additional stored goal results.
+  Direct assessment access and implicit completion derived from the applicable scope and existing mastery.
 - [Curriculum Levels](skill-graph/curriculum-levels.md)
   Contextual learning stages with prerequisite-consistent targets, feasible
   workload, and a connection to the knowledge-building metaphor.
+- [Curriculum levels with completion gates](skill-graph/curriculum-level-gates.md)
+  Design for cluster-based course units with explicit assessment, required card recall and whole-level entry gates.
 - [General Goal System and Migration](skill-graph/general-goal-system-and-migration.md)
   Long-term goal-system split and migration direction.
 - [Node Types](skill-graph/node-types.md)

@@ -288,6 +288,8 @@ global identity or difficulty field. It is distinct from the four levels of
 personalization. Level completion aggregates the applicable goal results; it
 does not add a blanket prerequisite for entering later levels. This is a
 conceptual planning contract, not a claim of an implemented level feature.
+An optional [course design with completion gates](skill-graph/curriculum-level-gates.md)
+adds explicit entry restrictions between selected levels.
 
 ### Goal placement
 

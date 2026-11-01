@@ -14,14 +14,17 @@ learning stages. This section explains both the graph and the contracts around i
 - [Graph Definition](graph-definition.md): formal goals, relations, prerequisites,
   frontier, and graph-validity conditions.
 - [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md):
-  proposed level completion and work waivers calculated from existing mastery,
-  reviewed static rules and a fixed scope, without additional stored goal results.
+  direct access to final assessments and implicit completion of ordinary work
+  derived from existing mastery in the chosen scope.
   [Umsetzungsplan](../../dev/assessment-gated-completion-implementation-plan.md):
   implementation design for the backend, Cockpit and learning coach, including
   performance, consistency and staged acceptance.
 - [Curriculum Levels](curriculum-levels.md): ordered learning stages with
   prerequisite-consistent targets and a feasible workload, including school
   years across subjects and the knowledge-building metaphor.
+- [Curriculum levels with completion gates](curriculum-level-gates.md) describes
+  how a course can use cluster placements as units with local assessment routes,
+  required card recall and explicit gates between units.
 - [General Goal System and Migration](general-goal-system-and-migration.md):
   the separation of goals, programmes, placements, competency axes, and views.
 - [Node Types](node-types.md): understanding, memorisation, and assessment goals.
