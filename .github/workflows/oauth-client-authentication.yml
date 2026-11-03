@@ -48,6 +48,27 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v6
+        with:
+          # Keep provider-security sources, release evidence and runtime JSON.
+          # The catalog needs reviewed assessment rules, not raster/review bulk.
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /.github/
+            /ai/
+            /backend/
+            /content/
+            /contracts/
+            /curricula/
+            !/curricula/DE/Gymnasium/quality/
+            !/curricula/DE/Gymnasium/visualizations/
+            /curricula/DE/Gymnasium/quality/assessment-completion/
+            /curricula/DE/Gymnasium/visualizations/**/*.json
+            /app/src/generated/gymnasiumDurationOfferings.ts
+            /app/scripts/config/curriculum-maturity-floor-policy.json
+            /docs/
+            /scripts/
       - uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
