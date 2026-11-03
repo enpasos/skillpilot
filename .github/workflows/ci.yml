@@ -276,6 +276,52 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          # Preserve source rasters, book QA and source-atlas evidence directories.
+          # Runtime preparation restores byte-identical public raster mirrors.
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /.github/
+            /ai/
+            /app/
+            !/app/public/assets/goal-visualizations/
+            /content/
+            /contracts/
+            /docs/
+            /scripts/
+            /curricula/DE/BW/
+            /curricula/DE/BY/
+            /curricula/DE/Gymnasium/archive/
+            /curricula/DE/Gymnasium/assessments/
+            /curricula/DE/Gymnasium/canonical/
+            /curricula/DE/Gymnasium/completion-profiles/
+            /curricula/DE/Gymnasium/completion-scopes/
+            /curricula/DE/Gymnasium/composition-views/
+            /curricula/DE/Gymnasium/input/
+            /curricula/DE/Gymnasium/mapping/
+            /curricula/DE/Gymnasium/memory-decks/
+            /curricula/DE/Gymnasium/provenance/
+            /curricula/DE/Gymnasium/visualizations/
+            /curricula/DE/HE/
+            /curricula/EU/
+            /curricula/INTERNATIONAL_GITHUB/
+            /curricula/QA/
+            /curricula/US/
+            /curricula/curriculum_manifest.json
+            /curricula/DE/Gymnasium/quality/goal-book-publication/
+            /curricula/DE/Gymnasium/quality/goal-visualization-qa/
+            /curricula/DE/Gymnasium/quality/release-model/
+            /curricula/DE/Gymnasium/quality/goal-evidence/**/primary/
+            /curricula/DE/Gymnasium/quality/goal-evidence/**/sources/
+            /curricula/DE/Gymnasium/quality/goal-evidence/**/source-components/
+            /curricula/DE/Gymnasium/quality/goal-evidence/**/source-extraction*/
+            /curricula/DE/Gymnasium/quality/goal-evidence/**/lower-secondary/
+            /curricula/DE/Gymnasium/quality/goal-evidence/**/upper-secondary/
+            /curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/
+            /curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-first-M7-D9-and14-qualified-integration-root-v1/
+            /curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-two-P-terminology-followup-to-current-D-recommendations-AUTHOR-INERT-root-v1/
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
