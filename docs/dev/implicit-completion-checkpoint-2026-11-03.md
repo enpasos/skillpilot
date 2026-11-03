@@ -2,7 +2,8 @@
 
 Dieser Zwischenstand wird auf Wunsch des Product Owners auf dem Branch
 `wip/implicit-completion-math-checkpoint-20261103` und in einem Draft-PR
-gesichert. Er ist keine Merge-, M7-, Deployment- oder CI-Freigabe.
+gesichert: [Draft-PR #79](https://github.com/enpasos/skillpilot/pull/79).
+Er ist keine Merge-, M7-, Deployment- oder CI-Freigabe.
 
 ## Bereits im Arbeitsbaum
 
@@ -67,3 +68,16 @@ Der ausführliche Prüfstand steht in
 der fachliche Vertrag in
 [Assessment-gated Completion](../concept/skill-graph/assessment-gated-completion.md).
 Produktionsdaten des Beta-Testers gehören nicht in diesen Checkpoint.
+
+## Gesicherte, noch nicht integrierte Kandidaten
+
+Das getrennte [Recovery-Archiv](checkpoints/2026-11-03/README.md) sichert
+351 ausgewählte Quelldateien, Aufgaben, eigene Diagramme und Reviewunterlagen
+am ursprünglichen Repositorypfad. Das [Manifest](checkpoints/2026-11-03/manifest.json)
+bindet jede Datei und das Archiv per SHA-256. Es enthält insbesondere die
+geprüften Fokus-/SH-/Prüfungsrollen-Kandidaten sowie noch offene Entwürfe.
+
+Dies ist eine Quellensicherung. Vor einer Übernahme müssen konkurrierende
+Datenstände zusammengeführt, erforderliche Prüfungen erneut ausgeführt und
+veraltete Bindungen gezielt erneuert werden. Das Archiv aktiviert keine
+Funktionalität und ersetzt keine vollständigen Ausführungsnachweise.
