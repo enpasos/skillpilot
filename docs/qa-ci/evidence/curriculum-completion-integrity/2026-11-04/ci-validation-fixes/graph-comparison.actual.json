@@ -1,0 +1,132 @@
+{
+  "status": "PASS_NARROW_SELECTOR_FIX_REAL_GRAPH_DATA_GAPS_STILL_FAIL",
+  "commands": [
+    {
+      "name": "graph-before",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/host/app/node_modules/tsx/dist/cli.mjs",
+        "scripts/validateGraph.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/host/app",
+      "exitCode": 1,
+      "seconds": 17.2,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/checks/graph-before.stdout.txt",
+        "sha256": "1547777459036d1e0197326a5f7b44c3f61ea1bc5788d77710e4d1509ec31b9c"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/checks/graph-before.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "new-regression-before-fix",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/host/app/node_modules/tsx/dist/cli.mjs",
+        "scripts/testHardLearningRouteValidation.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/host/app",
+      "exitCode": 1,
+      "seconds": 0.62,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/checks/new-regression-before-fix.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/checks/new-regression-before-fix.stderr.txt",
+        "sha256": "9b9951473ef058b953fb7e7c0d1bf90282606ab4cc330a35433bc20658eaf400"
+      }
+    },
+    {
+      "name": "hard-routes-after",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/host/app/node_modules/tsx/dist/cli.mjs",
+        "scripts/testHardLearningRouteValidation.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/host/app",
+      "exitCode": 0,
+      "seconds": 1.92,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/checks/hard-routes-after.stdout.txt",
+        "sha256": "608072019b3c156c3e75014af086448bad8de2d3bd83df54e3432707cb56dbf8"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/checks/hard-routes-after.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "graph-after",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/host/app/node_modules/tsx/dist/cli.mjs",
+        "scripts/validateGraph.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/host/app",
+      "exitCode": 1,
+      "seconds": 5.04,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/checks/graph-after.stdout.txt",
+        "sha256": "e0a3e801375904d36bd49614929429031f42332e0317f810f730029309752e71"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/checks/graph-after.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "beforeErrors": 114,
+  "afterErrors": 75,
+  "removedErrors": 39,
+  "newErrors": 0,
+  "removedFindings": [
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 81c8da58-9258-488e-9ab8-48500ab31652 (Prüfungen Jahrgangsstufe 5) Terminal goal must be an in-scope atomic assessment (semanticKind=practiceAssessment or actual assessment execution form) goal for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 81c8da58-9258-488e-9ab8-48500ab31652 (Prüfungen Jahrgangsstufe 5) Terminal goal has no direct atomic path to its motivation anchor for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 7a2a5706-aff4-4fd0-b092-1779d6ecbc1f (Prüfungen Jahrgangsstufe 6) Terminal goal must be an in-scope atomic assessment (semanticKind=practiceAssessment or actual assessment execution form) goal for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 7a2a5706-aff4-4fd0-b092-1779d6ecbc1f (Prüfungen Jahrgangsstufe 6) Terminal goal has no direct atomic path to its motivation anchor for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 811d6d09-130e-47b2-aba8-a5c401fe3251 (Prüfungen Jahrgangsstufe 7) Terminal goal must be an in-scope atomic assessment (semanticKind=practiceAssessment or actual assessment execution form) goal for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 811d6d09-130e-47b2-aba8-a5c401fe3251 (Prüfungen Jahrgangsstufe 7) Terminal goal has no direct atomic path to its motivation anchor for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 5fb3ee61-059c-47f4-8c6f-7285d7982a41 (Prüfungen Jahrgangsstufe 8) Terminal goal must be an in-scope atomic assessment (semanticKind=practiceAssessment or actual assessment execution form) goal for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 5fb3ee61-059c-47f4-8c6f-7285d7982a41 (Prüfungen Jahrgangsstufe 8) Terminal goal has no direct atomic path to its motivation anchor for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] f6c9c2b8-3dbd-4839-972f-c60f33c44b63 (Prüfungen Jahrgangsstufe 9) Terminal goal must be an in-scope atomic assessment (semanticKind=practiceAssessment or actual assessment execution form) goal for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] f6c9c2b8-3dbd-4839-972f-c60f33c44b63 (Prüfungen Jahrgangsstufe 9) Terminal goal has no direct atomic path to its motivation anchor for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] cb20dd6b-c4ff-4a1b-9636-3b3d6ea86aa8 (Prüfungen Jahrgangsstufe 10) Terminal goal must be an in-scope atomic assessment (semanticKind=practiceAssessment or actual assessment execution form) goal for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] cb20dd6b-c4ff-4a1b-9636-3b3d6ea86aa8 (Prüfungen Jahrgangsstufe 10) Terminal goal has no direct atomic path to its motivation anchor for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 81c8da58-9258-488e-9ab8-48500ab31652 (Prüfungen Jahrgangsstufe 5) Terminal goal has no route through an ordinary curricular atomic goal for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 7a2a5706-aff4-4fd0-b092-1779d6ecbc1f (Prüfungen Jahrgangsstufe 6) Terminal goal has no route through an ordinary curricular atomic goal for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 811d6d09-130e-47b2-aba8-a5c401fe3251 (Prüfungen Jahrgangsstufe 7) Terminal goal has no route through an ordinary curricular atomic goal for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 5fb3ee61-059c-47f4-8c6f-7285d7982a41 (Prüfungen Jahrgangsstufe 8) Terminal goal has no route through an ordinary curricular atomic goal for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] f6c9c2b8-3dbd-4839-972f-c60f33c44b63 (Prüfungen Jahrgangsstufe 9) Terminal goal has no route through an ordinary curricular atomic goal for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] cb20dd6b-c4ff-4a1b-9636-3b3d6ea86aa8 (Prüfungen Jahrgangsstufe 10) Terminal goal has no route through an ordinary curricular atomic goal for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 28b45b93-11e1-5a96-97a1-4cfee171802b (Übungen E-Phase) Terminal goal must be an in-scope atomic assessment (semanticKind=practiceAssessment or actual assessment execution form) goal for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 28b45b93-11e1-5a96-97a1-4cfee171802b (Übungen E-Phase) Terminal goal has no direct atomic path to its motivation anchor for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] c25158fc-4860-59b2-8ef0-dca355f3a8b1 (Übungen Q1) Terminal goal must be an in-scope atomic assessment (semanticKind=practiceAssessment or actual assessment execution form) goal for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] c25158fc-4860-59b2-8ef0-dca355f3a8b1 (Übungen Q1) Terminal goal has no direct atomic path to its motivation anchor for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 14b19ee4-364e-50bd-b6a3-499471356ef3 (Übungen Q2) Terminal goal must be an in-scope atomic assessment (semanticKind=practiceAssessment or actual assessment execution form) goal for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 14b19ee4-364e-50bd-b6a3-499471356ef3 (Übungen Q2) Terminal goal has no direct atomic path to its motivation anchor for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] f24096c6-6ca0-5c15-a2f5-7bdaec789a8d (Übungen Q3) Terminal goal must be an in-scope atomic assessment (semanticKind=practiceAssessment or actual assessment execution form) goal for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] f24096c6-6ca0-5c15-a2f5-7bdaec789a8d (Übungen Q3) Terminal goal has no direct atomic path to its motivation anchor for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 57f07e66-800c-5f7e-99ab-11dd6e520eb1 (Übungen Q4) Terminal goal must be an in-scope atomic assessment (semanticKind=practiceAssessment or actual assessment execution form) goal for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 57f07e66-800c-5f7e-99ab-11dd6e520eb1 (Übungen Q4) Terminal goal has no direct atomic path to its motivation anchor for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] d2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1 (Übungen Prozesskompetenzen) Terminal goal must be an in-scope atomic assessment (semanticKind=practiceAssessment or actual assessment execution form) goal for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] d2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1 (Übungen Prozesskompetenzen) Terminal goal has no direct atomic path to its motivation anchor for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 6b0d2a97-cf9c-4778-9c68-16bb82b7afde (Prüfung zur Koordinatenachsendrehung (LK)) Terminal goal must be an in-scope atomic assessment (semanticKind=practiceAssessment or actual assessment execution form) goal for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 6b0d2a97-cf9c-4778-9c68-16bb82b7afde (Prüfung zur Koordinatenachsendrehung (LK)) Terminal goal has no direct atomic path to its motivation anchor for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 28b45b93-11e1-5a96-97a1-4cfee171802b (Übungen E-Phase) Terminal goal has no route through an ordinary curricular atomic goal for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] c25158fc-4860-59b2-8ef0-dca355f3a8b1 (Übungen Q1) Terminal goal has no route through an ordinary curricular atomic goal for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 14b19ee4-364e-50bd-b6a3-499471356ef3 (Übungen Q2) Terminal goal has no route through an ordinary curricular atomic goal for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] f24096c6-6ca0-5c15-a2f5-7bdaec789a8d (Übungen Q3) Terminal goal has no route through an ordinary curricular atomic goal for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 57f07e66-800c-5f7e-99ab-11dd6e520eb1 (Übungen Q4) Terminal goal has no route through an ordinary curricular atomic goal for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] d2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1 (Übungen Prozesskompetenzen) Terminal goal has no route through an ordinary curricular atomic goal for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+    "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 6b0d2a97-cf9c-4778-9c68-16bb82b7afde (Prüfung zur Koordinatenachsendrehung (LK)) Terminal goal has no route through an ordinary curricular atomic goal for canonical DE Gymnasium mathematics / Sek II curricular atomic goals."
+  ],
+  "newFindings": [],
+  "remainingErrorsUnchanged": true,
+  "graphRemainsFailingForRealDataGaps": true,
+  "regressionFailsBeforeAndPassesAfter": true,
+  "onlyImplicitSelectorAdmissionChanged": true,
+  "rootMutation": false
+}

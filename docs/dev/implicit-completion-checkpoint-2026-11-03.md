@@ -143,6 +143,14 @@ exakt. Lernzielbuch, Completion-Kern und Cockpit bestehen. Die allgemeine
 Graphprüfung meldet 114 Fehler; ihre Routen- und Typdiagnosen werden gesondert
 geprüft. Dies ist keine vollständige CI-Freigabe.
 
+Der anschließende geprüfte CI-Fix entfernt genau 39 falsche Meldungen zu
+nichtatomaren Prüfungsordnern und erhält alle echten Routenprüfungen. Der
+Physics-Eingabetest trennt seine feste Algorithmus-Testeingabe von der Bindung
+an lebende Mathematikdaten. Beide vollständigen Testbefehle bestehen nach
+dem Import; der aktuelle Gesamtgraph mit den vier Raumgeometrieformen
+bleibt mit **72 Datenbefunden** rot.
+[Unabhängiges Review und aktueller Nachlauf](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/ci-validation-fixes/README.md).
+
 Im [GitHub-Lauf für `8899fb212c`](https://github.com/enpasos/skillpilot/actions/runs/41707073546)
 besteht der reale vollständige Mathematik-MCP-Prüfungsablauf einschließlich
 bestätigter binärer Mastery. Die strenge Prüfung aller 161 Mathematikangebote

@@ -1,0 +1,58 @@
+{
+  "status": "ACTUAL_CURRENT_ROOT_CHECKS_COMPLETE",
+  "baseHead": "bd04246a8be27373955ba8a175677d36ed023e93",
+  "commands": [
+    {
+      "name": "hard-routes",
+      "argv": [
+        "node",
+        "node_modules/tsx/dist/cli.mjs",
+        "scripts/testHardLearningRouteValidation.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "exitCode": 0,
+      "seconds": 1.93,
+      "stdoutSha256": "608072019b3c156c3e75014af086448bad8de2d3bd83df54e3432707cb56dbf8",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "physics-book-inputs",
+      "argv": [
+        "node",
+        "node_modules/tsx/dist/cli.mjs",
+        "scripts/testPhysicsGoalBookInputs.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "exitCode": 0,
+      "seconds": 70.97,
+      "stdoutSha256": "01de63797c5da2769ed9433f15b2170a9dc63139e2e57c5296568e15e90333c4",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "current-full-graph",
+      "argv": [
+        "node",
+        "node_modules/tsx/dist/cli.mjs",
+        "scripts/validateGraph.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "exitCode": 1,
+      "seconds": 4.36,
+      "stdoutSha256": "f1d6470116ccea3bca52cba014a8d10baf48381588e08a5cfdc35b36cfe9b2b3",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "boundInputs": {
+    "app/scripts/lib/hardLearningRouteValidation.ts": "352b53c99cd007ed69b32dd50aaae3f97b1c0e36e5e7f3310f11bfd05654412a",
+    "app/scripts/testHardLearningRouteValidation.ts": "103c219cdcb6c62e3ee6a531546ebaad29bdfca1c14ce0b950ec6cba521854f6",
+    "app/scripts/testPhysicsGoalBookInputs.ts": "25811383198f2256c8d50bbfaa71e638afcd4df50209fc38f46df52e571d9bdd",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "b68fbcb02247bad1b01e46be96ff0f8c73a833f8c13af7cd17b6e7b5a52ef363",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json": "e1719316bdacf2a874b23ee06ed77192ce71831781309991ddc26ba0e49faf1d",
+    "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json": "6bd58f1a064c0120d249ffb5942f46998284816ea23160b1fe4c9b2990dfd624"
+  },
+  "inputsUnchanged": true,
+  "actualGraphErrors": 72,
+  "actualGraphWarnings": 0,
+  "graphDataFailuresRemain": true,
+  "noCompleteCiClaim": true
+}

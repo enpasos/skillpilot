@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "two-observed-ci-corrections-independent-review-20261104",
+  "reviewedAt": "2026-11-03T23:30:38.295051+00:00",
+  "reviewerAgent": "/root/astra_space_geometry_four_forms",
+  "authorIndependent": true,
+  "verdict": "PASS",
+  "approvalScope": "Exactly the three candidate code/test files in the bound manifest; two observed CI false failures. No source, scope, prerequisite, goal, runtime, scoring, ledger or ontology change. No overall CI or Mathematics M7 success claim.",
+  "manifest": {
+    "path": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/manifest.json",
+    "sha256": "6645547b6511c89e0618a1197179e0617d2524c5c99e81b5fded4cf288334435"
+  },
+  "files": [
+    {
+      "path": "app/scripts/lib/hardLearningRouteValidation.ts",
+      "candidatePath": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/overlay/app/scripts/lib/hardLearningRouteValidation.ts",
+      "beforeSha256": "2984f6d0f1d0b2a14aea0305553cc9646d23df135a73797b35b99fddd84ff46b",
+      "candidateSha256": "352b53c99cd007ed69b32dd50aaae3f97b1c0e36e5e7f3310f11bfd05654412a",
+      "bytes": 15075
+    },
+    {
+      "path": "app/scripts/testHardLearningRouteValidation.ts",
+      "candidatePath": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/overlay/app/scripts/testHardLearningRouteValidation.ts",
+      "beforeSha256": "2754ad6bcd04dbef88352ee6a081312ab6a753ceee345e00a14d05b1a2abc297",
+      "candidateSha256": "103c219cdcb6c62e3ee6a531546ebaad29bdfca1c14ce0b950ec6cba521854f6",
+      "bytes": 32472
+    },
+    {
+      "path": "app/scripts/testPhysicsGoalBookInputs.ts",
+      "candidatePath": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/overlay/app/scripts/testPhysicsGoalBookInputs.ts",
+      "beforeSha256": "eb3f809e41f10a3a2e4a7ca25d2ca6252e4bb4816ebefe16a79ef01f6e9c61a1",
+      "candidateSha256": "25811383198f2256c8d50bbfaa71e638afcd4df50209fc38f46df52e571d9bdd",
+      "bytes": 112522
+    }
+  ],
+  "decisions": [
+    {
+      "id": "CI-ATOMIC-TERMINAL-SELECTOR",
+      "verdict": "PASS",
+      "reason": "The implicit supplementary selector must select atomic assessment goals. Its existing assessment-role predicate also matches structural practiceAssessment containers. Reusing the existing isAtomic predicate makes this branch agree with the explicit-folder atomic-descendant branch and prevents folders from becoming fictitious terminals. The sole production-code edit does not change role checks, concrete task readiness, route order, scope checks, direct requires edges, descendant expansion or ordinary-goal coverage.",
+      "regressions": "New production-like selector fixture passes while bad leaf prerequisites and non-assessment explicit descendants still fail. Existing same-ID assessment, scope, missing-metadata, ordinary-route and curricular-population regressions remain active. Reviewer reran the complete hard-route regression file successfully.",
+      "actualGraphEvidence": {
+        "path": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/astra-independent-review/independent-graph-log-comparison.json",
+        "sha256": "70d12a3d29905b608c8a6e43af3fdf54a7c133c26db768bd34297de429f5bdc3"
+      }
+    },
+    {
+      "id": "CI-FIXED-GOLDEN-AND-LIVE-LEDGER",
+      "verdict": "PASS",
+      "reason": "A living mathematics assessment changed examData under an existing reviewed ledger rebind; freezing its old fingerprint in an unrelated Physics test incorrectly conflated algorithm stability with curriculum immutability. The candidate preserves a literal fixed-input/fixed-output algorithm golden and separately verifies the real goal against exactly one authoritative decision in the profile-selected current ledger, with ledger identity, landscape identity/path and contract identity checks. The fingerprint implementation and normalization profile are unchanged.",
+      "reviewedLivingGoalChange": {
+        "path": "curricula/DE/Gymnasium/quality/release-model/mathematik-semantic-fingerprint-rebind-3a3792.json",
+        "sha256": "735d4bdd44296b26fe9976818a6e3cdcab2d612eedbeb996040db511a3eb9ac0",
+        "goalId": "000b2764-c5d9-5521-b39e-fc15a4aa72e2",
+        "changedFields": [
+          "examData"
+        ],
+        "historicalFingerprint": "sha256:3f3ae251b2b2d66a0dc22eb0ec76584c9c3b5902a0ea9376aae5f3accc5a1d0a",
+        "currentBoundFingerprint": "sha256:7ab9e9bbc8e78fc94d7bc7f3efba531e6f1911bed6ea74ef802320d50f124616"
+      },
+      "fixedGoldenFingerprint": "sha256:0ab92bcec472da55677e85d096fb6c12bf609cefbe4ab5b7efea1d90aead3028",
+      "countercases": {
+        "path": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/astra-independent-review/fingerprint-counterchecks.actual.json",
+        "sha256": "c08f374791561059b2765d59b7677a3cbd95115bda5bc89afa9e0bb120594437"
+      },
+      "countercaseResult": "Exact extracted candidate assertions: current state passes;12 corrupted/stale/missing/duplicated/non-authoritative/foreign-binding cases reject.",
+      "existingPhysicsConstraints": "162 cross-subject R edges,54 actual math IDs and the remaining Physics QA assertions are unchanged."
+    }
+  ],
+  "independentHardRouteRun": {
+    "path": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/astra-independent-review/hard-route-independent-run.json",
+    "sha256": "c64a1a2008219df7f48796462ae31211748ddbb3c2cbc75346881d95793e6a83"
+  },
+  "authorFullPhysicsRunReused": {
+    "path": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/physics-golden.actual.json",
+    "sha256": "06b45f6e22099f02565566adae6d2297c407b6923b45736f267e51094d0d9f87"
+  },
+  "fullPhysicsRunBoundary": "Read and hash-verified author normal test result: exit0,87.52s,766 ledger decisions,478 curricular atoms,64 state views,16 duration decisions. Reviewer did not rerun this expensive complete suite.",
+  "openBlockingFindings": [],
+  "actualGraphStillFailsOnRealDataDebt": true,
+  "approvedForRootImportOfExactThreeFiles": true,
+  "rootImportOrRemoteCIClaimed": false,
+  "mathM7Accepted": false,
+  "humanReviewClaimed": false,
+  "rootOrGitMutation": false,
+  "reviewerWrites": "Only additive evidence inside this private review directory."
+}

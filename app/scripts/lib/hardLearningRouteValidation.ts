@@ -242,7 +242,8 @@ export const validateHardDirectAtomicRoutes = <TGoal extends HardRouteGoal>(
       return []
     }
     return collectAtomicDescendants(clusterId, goalById)
-  }), ...goals.filter(goal => profile.terminalGoalSelector?.(goal)
+  }), ...goals.filter(goal => isAtomic(goal)
+    && profile.terminalGoalSelector?.(goal)
     && (profile.routeGoalSelector?.(goal) ?? true)
     && hasHardRouteAssessmentRole(goal, semanticKindByGoalId.get(goal.id))).map(goal => goal.id)]))
 

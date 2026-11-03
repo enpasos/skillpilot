@@ -6,6 +6,7 @@ import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 import assert from 'node:assert/strict'
 import {
   validateHardDirectAtomicRoutes,
+  hasHardRouteAssessmentRole,
   validateOrientationMotivationStructure,
   type HardRouteGoal,
   type HardRouteSemanticKind,
@@ -300,6 +301,31 @@ const profile = {
 }
 
 assert.deepEqual(validateHardDirectAtomicRoutes(goals, kinds, profile), [])
+
+const productionLikeProfile = {
+  ...profile,
+  terminalGoalSelector: (goal: HardRouteGoal) => hasHardRouteAssessmentRole(goal, kinds.get(goal.id)),
+}
+assert.deepEqual(
+  validateHardDirectAtomicRoutes(goals, kinds, productionLikeProfile),
+  [],
+  'the production selector must select the assessment leaf without treating its practiceAssessment folder as a terminal',
+)
+assert.ok(
+  validateHardDirectAtomicRoutes(goals.map((goal) => (
+    goal.id === 'exam-seki' ? { ...goal, requires: [] } : goal
+  )), kinds, productionLikeProfile).some((finding) => finding.goalId === 'exam-seki'
+    && finding.message.includes('no direct atomic path')),
+  'excluding an implicit folder must preserve the selected assessment leaf prerequisite-route check',
+)
+assert.ok(
+  validateHardDirectAtomicRoutes(goals.map((goal) => (
+    goal.id === 'exam-folder-seki' ? { ...goal, contains: ['exam-seki', 'understand-b'] } : goal
+  )), kinds, productionLikeProfile).some((finding) => finding.goalId === 'understand-b'
+    && finding.message.includes('Terminal goal must be an in-scope atomic assessment')),
+  'explicit folder descendants still require assessment roles even when the implicit selector excludes folders',
+)
+
 
 const routeWithOptionalMemory: HardRouteGoal[] = [
   ...goals,
