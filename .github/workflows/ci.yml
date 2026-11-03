@@ -39,6 +39,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          # Keep all package-license manifests and Action/Gemini contract inputs.
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /.github/
+            /ai/
+            /app/package.json
+            /app/package-lock.json
+            /deploy/gemini-v1/
+            /scripts/
+            /tools/demo-video/
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
@@ -221,6 +234,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          # Edge contracts read scripts, pinned CA material and Nginx sources.
+          sparse-checkout: |
+            .github/workflows
+            deploy/nginx
+            deploy/openai-mtls
+            scripts
       - name: Validate public edge script
         run: |
           bash -n scripts/verify_openai_v1_public_edge.sh
