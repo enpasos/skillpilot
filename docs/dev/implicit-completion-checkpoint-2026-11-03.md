@@ -50,6 +50,11 @@ M7-, Deployment- oder vollständige CI-Freigabe.
   20 weiteren fachlich geprüften Oberstufenangeboten erreichbar. Die Aufgabe
   und ihre Voraussetzungen bleiben unverändert. Bei zusätzlichem Stoff wird
   keine offizielle Pflichtstoffabdeckung behauptet.
+- Die bestehende Prüfung zu räumlichen Koordinaten und Vektoroperationen ist
+  in 36 weiteren geprüften Angeboten erreichbar. Ein veraltetes Länderfeld
+  wird mit dem Ergebnis des vorhandenen Compilers synchronisiert. Die Aufgabe
+  und ihre bewertete Abdeckung bleiben unverändert. Die tatsächlichen Bäume
+  bestätigen alle neuen Plätze auch bei gemeinsamer Auswahl von GK und LK.
 
 Die Konzepte und das LaTeX/PDF sind Teil des PR. Der abschließende Abgleich mit
 allen weiteren fachlichen Korrekturen bleibt Bestandteil des Meilensteins.
@@ -108,6 +113,20 @@ relevanten Autorenchecks bestehen; alle 2.607 tatsächlich gemessenen
 Runtime-Eingänge stimmen nach dem Import überein. Sämtliche bisherigen
 sichtbaren Zielpfade und wirksamen Voraussetzungen bleiben erhalten.
 [Messung und Import](../qa-ci/evidence/curriculum-completion-integrity/2026-11-03/drug-twenty/README.md).
+
+Die anschließende Vektorplatzierung schließt weitere **81 Ziel-Angebots-Paare
+und 18 Endpunktpaare**. Es verbleiben **348 ungedeckte Ziel-IDs / 8.136
+Ziel-Angebots-Paare sowie 204 gewöhnliche Endpunkt-IDs / 4.151 Endpunktpaare**.
+Alle 125 übrigen Angebotsobjekte bleiben vollständig gleich. Die sieben
+Autorenchecks bestehen; nach dem Import aller 49 Dateien stimmen sämtliche
+2.636 gemessenen Runtime-Eingaben überein. Die 807 curricularen Ziele bleiben
+in der Qualitätsprüfung. Der gesamte Mathematik-Corpus bleibt rot.
+[Messung, Review und Import](../qa-ci/evidence/curriculum-completion-integrity/2026-11-03/vector-thirtysix/README.md).
+
+Der GitHub-Nachlauf von `4aba8e0c33` bestätigt alle dort gemessenen Lückenpaare
+exakt. Lernzielbuch, Completion-Kern und Cockpit bestehen. Die allgemeine
+Graphprüfung meldet 114 Fehler; ihre Routen- und Typdiagnosen werden gesondert
+geprüft. Dies ist keine vollständige CI-Freigabe.
 
 Im [GitHub-Lauf für `8899fb212c`](https://github.com/enpasos/skillpilot/actions/runs/41707073546)
 besteht der reale vollständige Mathematik-MCP-Prüfungsablauf einschließlich

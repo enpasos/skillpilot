@@ -2,7 +2,27 @@
 
 Stand: 3. November 2026, lokale Prüfung. Die ergänzte deterministische Prüfung verwendet die tatsächliche Backend-Projektion der Länderangebote, einschließlich G8/G9, Stufe, GK, LK und Kurszusammenführung, sowie der tatsächlich auswählbaren kanonischen Personal Curricula unter „Alle Bundesländer“. Sie berücksichtigt auch direkte `goalEntry`-Referenzen, die einen kanonischen Cluster in der geprüften Projektion zu einem atomaren Ziel machen. Die im Grundreview gefundene ALL-Inventarlücke ist im tatsächlichen Mathematiknachlauf geschlossen: 154 Länderangebote und sieben ALL-Konfigurationen sind geprüft; die rohe kanonische Diagnose bleibt separat.
 
-## Aktueller integrierter Stand: bestehende Modellierungsprüfung in 20 weiteren Angeboten
+## Aktueller integrierter Stand: bestehende Vektorprüfung in 36 weiteren Angeboten
+
+Die bestehende Prüfung zu räumlichen Koordinaten und Vektoroperationen ist in
+36 weiteren fachlich geprüften Angeboten erreichbar. Genau ein veraltetes
+Länderfeld wird aus dem bestehenden Applicability-Compiler übernommen.
+Aufgabe, Lösung, Punkte, Voraussetzungskanten und bewertete Abdeckung bleiben
+unverändert. Die tatsächlichen Backendbäume bestätigen alle 36 neuen Plätze
+auch in den Kursvereinigungen. Alle 125 übrigen Angebotsobjekte bleiben gleich.
+
+Der Java-Nachlauf schließt **81 weitere Ziel-Angebots-Paare und 18
+Endpunktpaare**. Aktuell verbleiben **348 ungedeckte Ziel-IDs / 8.136
+Ziel-Angebots-Paare sowie 204 gewöhnliche Endpunkt-IDs / 4.151 Endpunktpaare**.
+Thüringen Sekundarstufe I / G8 / GK+LK bleibt gültig; die übrigen 160 Angebote
+und die vollständige Mathematikprüfung bleiben rot.
+
+Alle sieben relevanten Autorenprüfungen bestehen. Nach dem Import aller
+49 Dateien stimmen sämtliche 2.636 gemessenen Runtime-Eingänge überein.
+[Ausführung, unabhängiges Review und Import](evidence/curriculum-completion-integrity/2026-11-03/vector-thirtysix/README.md)
+sind getrennt von der noch ausstehenden M7-, Gesamt-CI- und Deployment-Abnahme.
+
+## Vorheriger integrierter Stand: bestehende Modellierungsprüfung in 20 weiteren Angeboten
 
 Die unveränderte Prüfung zur Medikamentenkonzentration ist in Niedersachsen,
 Nordrhein-Westfalen, Saarland, Sachsen und Sachsen-Anhalt in weiteren

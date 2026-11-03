@@ -1,0 +1,174 @@
+{
+  "status": "PASS_SEVEN_GENUINE_RECEIPT_BOUND_AUTHORING_CHECKS",
+  "startedAt": "2026-11-03T22:58:42.245522+00:00",
+  "dataRoot": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/check-host",
+  "policySha256": "ecc263e4f68ec3befc0cfed59190d7ae5dc63d8104d6e1f85f55a32d8084feb4",
+  "actualIndependentReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/stage-scope-implementation-vector-thirtysix-cache-sync.review.json",
+    "sha256": "8aae45d0cd43216cd1086e59c6a3a52d0a68fed6bcfe5d6bd7528f83618ce12c"
+  },
+  "sourceFrozenManifestSha256": "fb40a2d3748524061813d19739ff63b068f774f506518f72efe2b8ada74a7b66",
+  "commands": [
+    {
+      "name": "stage-policy",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/check-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testMathStageScopePolicy.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/check-host",
+      "exitCode": 0,
+      "seconds": 0.51,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/final-bound-checks/stage-policy.stdout.txt",
+        "sha256": "16d099c7afb360af7d577313297891faf2d7ac8095750d33480804c04b88fc90",
+        "bytes": 780
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/final-bound-checks/stage-policy.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "hard-routes",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/check-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testHardLearningRouteValidation.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/check-host",
+      "exitCode": 0,
+      "seconds": 1.85,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/final-bound-checks/hard-routes.stdout.txt",
+        "sha256": "608072019b3c156c3e75014af086448bad8de2d3bd83df54e3432707cb56dbf8",
+        "bytes": 205
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/final-bound-checks/hard-routes.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "phase-compatibility",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/check-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testPhaseCompatibilityValidation.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/check-host",
+      "exitCode": 0,
+      "seconds": 3.11,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/final-bound-checks/phase-compatibility.stdout.txt",
+        "sha256": "cc2a5c16e156122544633444a3f69dff5c21fb830b73d4fe8f1b1097a5632a65",
+        "bytes": 116
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/final-bound-checks/phase-compatibility.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "duration18",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/check-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateMathDurationCompositionViews.ts",
+        "--check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/check-host",
+      "exitCode": 0,
+      "seconds": 16.65,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/final-bound-checks/duration18.stdout.txt",
+        "sha256": "500b7a870c51e2f2ab0e0898d6f51fd2e9c771d18918e0bf2e03f63873670cbf",
+        "bytes": 1689
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/final-bound-checks/duration18.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "source-coverage",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/check-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateCurriculumSourceCoverageAudit.ts",
+        "--check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/check-host",
+      "exitCode": 0,
+      "seconds": 24.75,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/final-bound-checks/source-coverage.stdout.txt",
+        "sha256": "6229cca161cb085091658a3398a3066a294aad1f1363d848dab67597bebba79a",
+        "bytes": 47
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/final-bound-checks/source-coverage.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "country83",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/check-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateMathCountrySekICompositionViews.ts",
+        "--check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/check-host",
+      "exitCode": 0,
+      "seconds": 49.22,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/final-bound-checks/country83.stdout.txt",
+        "sha256": "6a69bd16ab6619a9ea388ee5b1aefe69770a4ff4cf8196bab88dbe1309e078da",
+        "bytes": 112
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/final-bound-checks/country83.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "stage-country",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/check-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testMathCountrySekICompositionViews.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/check-host",
+      "exitCode": 0,
+      "seconds": 272.39,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/final-bound-checks/stage-country.stdout.txt",
+        "sha256": "775444aa2bb9a33016eee37e3a6861610065f6c87b657f5e74adb91011f53e77",
+        "bytes": 134
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v3/final-bound-checks/stage-country.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "noNewGoalbookAtomicityMemoryOrM7Cycle": true,
+  "nativeRunOwnedByRoot": true,
+  "tmpParentPreparedBeforeFirstAttempt": true,
+  "rootOrGitMutation": false,
+  "payloadDrift": [],
+  "rootReadInputDrift": [],
+  "frozenFortyOverlayDrift": [],
+  "frozenManifestUnchanged": true,
+  "allRequestedChecksCompleted": true,
+  "allExitCodesZero": true,
+  "completedAt": "2026-11-03T23:03:31.912527+00:00"
+}

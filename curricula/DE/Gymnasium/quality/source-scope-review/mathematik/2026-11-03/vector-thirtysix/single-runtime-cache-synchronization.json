@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "status": "BOUNDED_SINGLE_EXISTING_COMPILER_RUNTIME_CACHE_SYNC_PRODUCTIVE_FINGERPRINTS_VALID_NATIVE_PENDING",
+  "taskGoalId": "853905c5-e82b-592f-a485-1ff84c8bb22e",
+  "changedCanonicalGoalIds": [
+    "853905c5-e82b-592f-a485-1ff84c8bb22e"
+  ],
+  "changedGoalFields": [
+    "applicability"
+  ],
+  "allOtherCanonicalObjectsExactlyEqual": true,
+  "allOtherTaskFieldsExactlyEqual": true,
+  "allBytesOutsideSingleAppValueExactlyPreserved": true,
+  "byteReplacement": {
+    "startUtf8Byte": 1560290,
+    "oldValueBytes": 101,
+    "newValueBytes": 348,
+    "unchangedPrefixSha256": "917e515cb572d6c1bc70c1f28cf241eb16a3ad1c7bda9bfe610c91b7f374d7dd",
+    "unchangedSuffixSha256": "b27b29c422df92f691f79bd127a06ce36badcdac980e23f7205288a70258c443"
+  },
+  "beforeCanonicalSha256": "9194410383fd9b8b5a8661f765c81030197c524620690a73bebd9b1c086cc15b",
+  "afterCanonicalSha256": "50479471d27c2af77ba192e0a595d2c90e022ddeca86ff83cc12ac8cbf89834a",
+  "beforeWholeGoalSha256": "fb0032f65ec3979e2bb9288ce20b3aca23cd6749bdc6c582e42cb97149abee0a",
+  "afterWholeGoalSha256": "02fb3c499b62b2bb37c364d7cadedb894b8e599449efdc744fc71006fe591bdc",
+  "functionalWholeGoalExcludingOnlyApplicabilitySha256": "f7ff504eb4518d4556df0716a7c77d0500c178447f68d991c977faecbf945dd4",
+  "functionalTaskContractUnchanged": true,
+  "before": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BW",
+      "DE-SL"
+    ]
+  },
+  "after": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "actualExistingCompilerEvidence": {
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/vector-thirtysix/reviews/existing-applicability-six-goal.actual.json",
+    "sha256": "ffc65c73b5e89746d8cbfdd149f4c5fa6bc3ca58fec877647be8acb0eeac17d6",
+    "compiler": {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd",
+      "function": "buildApplicabilityCompilation",
+      "writerFunctionsNotCalled": true
+    },
+    "evidenceKind": "assessment-requires",
+    "evidenceRows": 80
+  },
+  "independentBoundedDecision": {
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/vector-thirtysix/reviews/independent-existing-applicability-cache-decision.json",
+    "sha256": "373c49356cc8bf745c1a742cbd03f30829de42a57938228557e4a2fa7c925b9e"
+  },
+  "actualProductiveFingerprintProofPending": false,
+  "noOther54CacheSynchronization": true,
+  "noRegistryOverrideSchemaFlagRequiresCoverageSourceContentRubricMasteryOrRuntimeCodeChanges": true,
+  "oldV2ConditionalStageReceipt": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/stage-scope-implementation-vector-thirtysix.review.json",
+  "oldV2NativeWasZeroEffectNotAccepted": true,
+  "actualV3NativeStillRequired": true,
+  "actualProductiveFingerprintObservation": {
+    "status": "PASS_ACTUAL_PRODUCTIVE_FINGERPRINTS_AND_UNMODIFIED_LEDGER_NOT_CONTENT_REVIEW_OR_NATIVE_ACCEPTANCE",
+    "canonicalBeforeSha256": "9194410383fd9b8b5a8661f765c81030197c524620690a73bebd9b1c086cc15b",
+    "canonicalAfterSha256": "50479471d27c2af77ba192e0a595d2c90e022ddeca86ff83cc12ac8cbf89834a",
+    "actualFunctions": [
+      "fingerprintSemanticKindSourceGoal",
+      "parseSemanticKindLedger",
+      "fingerprintGoalForEvidence",
+      "fingerprintGoalForPositiveEvidence",
+      "fingerprintGoalEvidenceReviewInput"
+    ],
+    "implementations": [
+      {
+        "path": "app/scripts/goalBookModel.ts",
+        "sha256": "5bbb98ce627b46f003f7777d59a537ef7d32a9fddea44eeed70391af2e724a81"
+      },
+      {
+        "path": "app/scripts/lib/semanticKindLedger.ts",
+        "sha256": "238f42200ff568818b8860413c1d2353d69e9933edf7a6a1a7414ab7094c9cc1"
+      },
+      {
+        "path": "app/scripts/goalEvidenceProfileModel.ts",
+        "sha256": "50c932f1bb2e6db266756113dbbb82af9d59e172825d2039cdc9dcd9a10c3a26"
+      },
+      {
+        "path": "app/scripts/positiveGoalEvidenceProfileModel.ts",
+        "sha256": "33d3005224e75527fab24fd625d15908716a8e028870625a9a002d39820114a6"
+      }
+    ],
+    "canonicalGoalCount": 1265,
+    "curricularAtomicCount": 807,
+    "changedSemanticKindSourceFingerprints": [],
+    "changedGoalEvidenceFingerprints": [],
+    "changedPositiveGoalEvidenceFingerprints": [],
+    "changedReviewInputFingerprints": [],
+    "semanticKindLedger": {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "sha256": "2b36c1542c4ed43557c233194f245365bd7e2a63d9567bb1d3e2cd960119a2c0",
+      "unchangedAndValidForBothCanonicalObjects": true,
+      "counts": {
+        "curricularAtomic": 807,
+        "curricularArea": 241,
+        "practiceAssessment": 191,
+        "programStructure": 7,
+        "memory": 6,
+        "runtimeSupport": 11,
+        "orientation": 2,
+        "total": 1265
+      }
+    },
+    "taskActualProductiveFingerprints": {
+      "goalId": "853905c5-e82b-592f-a485-1ff84c8bb22e",
+      "semanticKind": "practiceAssessment",
+      "before": {
+        "semanticKindSource": "sha256:576006defa6733de2749efe4ecb974999c7798b95a1e6063336b39fae0ac5d6e",
+        "goalEvidence": "sha256:62c60909500d333e9f271e249389db3278e0f6c739d7f6ef77d9262d06887408",
+        "positiveGoalEvidence": "sha256:62c60909500d333e9f271e249389db3278e0f6c739d7f6ef77d9262d06887408",
+        "goalEvidenceReviewInput": "sha256:aec636f290cf9843d162daf8e69f910f2e3dc752b3dbbc1b03525f1da41373d1"
+      },
+      "after": {
+        "semanticKindSource": "sha256:576006defa6733de2749efe4ecb974999c7798b95a1e6063336b39fae0ac5d6e",
+        "goalEvidence": "sha256:62c60909500d333e9f271e249389db3278e0f6c739d7f6ef77d9262d06887408",
+        "positiveGoalEvidence": "sha256:62c60909500d333e9f271e249389db3278e0f6c739d7f6ef77d9262d06887408",
+        "goalEvidenceReviewInput": "sha256:aec636f290cf9843d162daf8e69f910f2e3dc752b3dbbc1b03525f1da41373d1"
+      }
+    },
+    "allOther807CurricularIdentitiesAndAllKindsPreserved": true,
+    "noLedgerOrQaRowsRebound": true,
+    "noGoalbookGenerationOrNewAMRound": true,
+    "rootOrGitMutation": false
+  }
+}

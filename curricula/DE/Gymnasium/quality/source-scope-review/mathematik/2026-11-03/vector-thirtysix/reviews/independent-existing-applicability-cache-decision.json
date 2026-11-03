@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "status": "APPROVE_BOUNDED_EXISTING_COMPILER_CACHE_SYNC_ONLY_NOT_ACTIVATION",
+  "reviewerAgent": "/root/astra_cuboid_existing_scope",
+  "reviewedAt": "2026-11-03T22:43:40.812766+00:00",
+  "taskGoalId": "853905c5-e82b-592f-a485-1ff84c8bb22e",
+  "basis": {
+    "path": "tmp/approach-review-20261101/vector36-current-root-rebase-20261103-v2/existing-applicability-six-goal.actual.json",
+    "sha256": "ffc65c73b5e89746d8cbfdd149f4c5fa6bc3ca58fec877647be8acb0eeac17d6",
+    "compiler": {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd",
+      "function": "buildApplicabilityCompilation",
+      "writerFunctionsNotCalled": true
+    },
+    "canonical": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "9194410383fd9b8b5a8661f765c81030197c524620690a73bebd9b1c086cc15b"
+    }
+  },
+  "actualFinding": "Stored task applicability has only BB/BW/SL. The existing unmodified buildApplicabilityCompilation actually computes all16 jurisdictions from the all-of intersection of the same five prerequisites:80 assessment-requires evidence entries. This is a stale compiled cache, not missing source-authoring authority or a missing runtime override.",
+  "minimalAuthorizedDelta": {
+    "field": "853905c5-e82b-592f-a485-1ff84c8bb22e.applicability",
+    "before": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BW",
+        "DE-SL"
+      ]
+    },
+    "after": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "method": "Copy exactly this one goal cache from the actual existing compilation result into a fresh private successor; preserve every other pre-existing cache discrepancy without silently applying it.",
+    "leaveAppFromRequiresTrue": true,
+    "noRegistryOverride": true,
+    "noRuntimeChange": true,
+    "preserveTaskSolutionRubricRequiresCoverageSourceRefsKindsAndDescriptions": true
+  },
+  "scopeInterpretation": "16-country prerequisite-derived applicability is applicability evidence only. It does not create source coverage, target membership, official examinations or new manual36-scope author approvals. Actual target selection remains the reviewed authored36 additions plus16 old selections;109 negative selections must remain negative.",
+  "existingSourceDecision": {
+    "path": "tmp/approach-review-20261101/astra-next-existing-three-routes-scope-review-20261103-v1/vector-scope-decision.json",
+    "sha256": "df6d1d02385d2a76e78c65c10a4d2d13e6ce21717131ec33b46086871fcedae0"
+  },
+  "minimalFollowup": [
+    "Prove the whole canonical diff changes only the one applicability field. Task-content equivalence must explicitly exclude this declared metadata delta; do not continue claiming the old full normalized goal-object hash is unchanged.",
+    "Recompute actual productive goal/ledger fingerprints. Preserve unaffected review rows and semantic-kind populations; update only bindings actually dependent on the changed bytes. No full content/source re-review or blanket cache/fingerprint rewrite.",
+    "Rebind the exact current canonical source pins and bounded author/stage successor; preserve V1 failed-run and V2 conditional-stage/zero-effect measurements as history.",
+    "Root runs the actual fresh candidate comparison:161 scopes/46 unions; exactly36 newly selected task scopes,16 old task scopes preserved,109negative unchanged, all125 unaffected scopes and commonR unchanged, all reviewed actual single and merged program paths retained, no lost ordinary targets or hidden prerequisite changes. Measure U/endpoints rather than reusing the static81/18 prediction."
+  ],
+  "nativeV3Accepted": false,
+  "rootActivationApproved": false,
+  "m7OrCiOrProductionPass": false,
+  "changesMade": "This review file only; no Root/F/candidate source mutation or JVM execution."
+}
