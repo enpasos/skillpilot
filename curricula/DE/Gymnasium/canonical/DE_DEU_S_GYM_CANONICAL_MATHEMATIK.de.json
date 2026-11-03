@@ -64943,7 +64943,86 @@
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
         }
-      ]
+      ],
+      "nodeKind": "exam",
+      "examData": {
+        "reviewStatus": "released",
+        "taskContent": "# Eine Kameradrohne geradlinig bewegen\n\nEine Kameradrohne fliegt während eines kurzen Messabschnitts geradlinig mit\nkonstantem Geschwindigkeitsvektor. In einem festen räumlichen Koordinatensystem\nwerden alle Koordinaten in Metern und die Zeit $t$ in Sekunden seit Beginn\ndes Messabschnitts angegeben. Bei $t=2$ befindet sich die Drohne in\n$P(5\\mid3\\mid8)$, bei $t=5$ in $Q(11\\mid0\\mid5)$.\nDas Modell soll nur für $0\\leq t\\leq8$ verwendet werden.\n\nZeige deine Ansätze und Rechenschritte. Insgesamt sind **20 BE** erreichbar.\n\n**1. Ein Bewegungsmodell aufstellen (8 BE)**\n\nBestimme aus den beiden Messungen den Geschwindigkeitsvektor $\\vec v$ und\nden Ortsvektor $\\vec x_0$ zum Zeitpunkt $t=0$. Stelle das vollständige\nModell $\\vec x(t)=\\vec x_0+t\\vec v$ mit seinem Zeitbereich auf.\nPrüfe, dass dein Modell beide Messungen wiedergibt.\n\n**2. Das Modell auswerten (4 BE)**\n\nBerechne den Ort der Drohne bei $t=6$. Bestimme außerdem ihren\nVerschiebungsvektor vom Zeitpunkt $t=1$ zum Zeitpunkt $t=4$.\n\n**3. Den Geschwindigkeitsvektor deuten (4 BE)**\n\nErkläre im Sachzusammenhang, was die drei Komponenten von $\\vec v$ mit\nihren Vorzeichen und ihrer Einheit bedeuten. Erläutere auch den Unterschied\nzwischen dem Ortsvektor $\\vec x_0$ und dem Geschwindigkeitsvektor $\\vec v$.\nEine Berechnung des Betrags von $\\vec v$ ist nicht verlangt.\n\n**4. Vorgegebene Orte überprüfen (4 BE)**\n\nUntersuche, ob die Drohne im angegebenen Zeitbereich den Ort\n$R(15\\mid-2\\mid3)$ erreicht. Gib gegebenenfalls den Zeitpunkt an und\nprüfe alle drei Koordinaten. Entscheide anschließend begründet, ob sie\n$S(15\\mid-1\\mid3)$ erreicht. Ein passender Wert in nur einer Koordinate\ngenügt nicht.\n",
+        "taskContentEn": "# Model the straight flight of a camera drone\n\nDuring a short observation interval, a camera drone flies in a straight line\nwith a constant velocity vector. In a fixed three-dimensional coordinate\nsystem, all coordinates are in metres and $t$ is the time in seconds since\nthe start of the interval. At $t=2$ the drone is at $P(5,3,8)$; at $t=5$\nit is at $Q(11,0,5)$. Use the model only for $0\\leq t\\leq8$.\n\nShow your setup and calculations. A total of **20 points** is available.\n\n**1. Form a motion model (8 points)**\n\nUse the two observations to determine the velocity vector $\\vec v$ and\nthe position vector $\\vec x_0$ at $t=0$. State the complete model\n$\\vec x(t)=\\vec x_0+t\\vec v$, including its time interval.\nCheck that it reproduces both observations.\n\n**2. Use the model (4 points)**\n\nCalculate the drone's position at $t=6$. Also find its displacement vector\nfrom $t=1$ to $t=4$.\n\n**3. Interpret the velocity vector (4 points)**\n\nExplain what each component of $\\vec v$, including its sign and unit,\nmeans in this situation. Also explain the difference between the position\nvector $\\vec x_0$ and the velocity vector $\\vec v$.\nYou are not asked to calculate the magnitude of $\\vec v$.\n\n**4. Test specified positions (4 points)**\n\nInvestigate whether the drone reaches $R(15,-2,3)$ within the stated time\ninterval. If it does, give the time and check all three coordinates.\nThen decide, with reasons, whether it reaches $S(15,-1,3)$.\nA matching value for just one coordinate is insufficient.\n",
+        "solutionContent": "# Musterlösung: Kameradrohne\n\n**1. Modell**\n\nZwischen den Messungen vergehen $5-2=3$ Sekunden. Die Verschiebung ist\n\n$$\n\\overrightarrow{PQ}=\\begin{pmatrix}11-5\\\\0-3\\\\5-8\\end{pmatrix}\n=\\begin{pmatrix}6\\\\-3\\\\-3\\end{pmatrix}\\,\\mathrm m.\n$$\n\nDamit ist\n\n$$\n\\vec v=\\frac{1}{3}\\overrightarrow{PQ}\n=\\begin{pmatrix}2\\\\-1\\\\-1\\end{pmatrix}\\,\\frac{\\mathrm m}{\\mathrm s}.\n$$\n\nDa die erste Messung erst bei $t=2$ erfolgt, ist $\\overrightarrow{OP}$\nnicht der gesuchte Startvektor. Es gilt\n\n$$\n\\vec x_0=\\begin{pmatrix}5\\\\3\\\\8\\end{pmatrix}\n-2\\begin{pmatrix}2\\\\-1\\\\-1\\end{pmatrix}\n=\\begin{pmatrix}1\\\\5\\\\10\\end{pmatrix}\\,\\mathrm m.\n$$\n\nFür die Zahlenwerte in den angegebenen Einheiten lautet das Modell\n\n$$\n\\vec x(t)=\\begin{pmatrix}1\\\\5\\\\10\\end{pmatrix}\n+t\\begin{pmatrix}2\\\\-1\\\\-1\\end{pmatrix},\\qquad0\\leq t\\leq8.\n$$\n\nEinsetzen liefert $\\vec x(2)=(5,3,8)^{\\mathsf T}$ und\n$\\vec x(5)=(11,0,5)^{\\mathsf T}$, also genau die Messpunkte.\n\n**2. Ort und Verschiebung**\n\n$$\n\\vec x(6)=\\begin{pmatrix}13\\\\-1\\\\4\\end{pmatrix}.\n$$\n\nDie Drohne befindet sich in $(13\\mid-1\\mid4)$.\nAußerdem sind $\\vec x(1)=(3,4,9)^{\\mathsf T}$ und\n$\\vec x(4)=(9,1,6)^{\\mathsf T}$. Daher ist die Verschiebung\n\n$$\n\\vec x(4)-\\vec x(1)=\\begin{pmatrix}6\\\\-3\\\\-3\\end{pmatrix}\\,\\mathrm m.\n$$\n\nGleichwertig ist direkt $(4-1)\\vec v=3\\vec v$.\n\n**3. Bedeutung**\n\nPro Sekunde nimmt die erste Koordinate um $2\\,\\mathrm m$ zu, die zweite\nund die dritte nehmen jeweils um $1\\,\\mathrm m$ ab. Die Vorzeichen geben\ndie Bewegungsrichtung entlang der jeweiligen Koordinatenachsen an.\nAlle drei Änderungen finden gleichzeitig statt; $\\vec v$ ist die\nVerschiebung pro Zeiteinheit und bleibt in diesem Modell konstant.\n$\\vec x_0$ zeigt vom Ursprung zum Ort der Drohne bei $t=0$ und hat die\nEinheit Meter. $\\vec v$ beschreibt die zeitliche Ortsänderung und hat\ndie Einheit Meter pro Sekunde; es ist kein Ortsvektor eines festen Punkts.\n\n**4. Erreichbarkeit**\n\nFür $R$ ergibt die erste Koordinate $1+2t=15$, also $t=7$.\nDieser Zeitpunkt liegt im Modellbereich. Auch $5-7=-2$ und $10-7=3$\nstimmen; folglich wird $R$ bei $t=7\\,\\mathrm s$ erreicht.\nFür $S$ erzwingen die erste und die dritte Koordinate ebenfalls $t=7$.\nDann ist die zweite Koordinate aber $-2$ statt $-1$. Es gibt keinen\ngemeinsamen Zeitpunkt für alle drei Koordinaten; $S$ wird nicht erreicht.\n\n# Eine Gesamtbewertung\n\nEs gibt genau eine Gesamtpunktzahl aus 20 BE und genau ein binäres\nGesamtergebnis: **bestanden ab 15 BE**, sonst nicht bestanden. Die in der\nAufgabe angegebenen Teilpunkte sind keine eigenen Bestehensgrenzen.\n\nBewerte nachvollziehbare mathematische Leistungen unabhängig davon, in\nwelchem Aufgabenteil sie stehen. Gleichwertige Verfahren und andere\nParameterformen erhalten denselben Kredit; identische Leistungen zählen\nnur einmal. Teilpunkte wie angegeben, sonst 0,5 BE für eine fachlich\nsinnvolle, aber unvollständige Teilleistung. Ein lokaler Rechen- oder\nÜbertragungsfehler wird nicht mehrfach bestraft; fachlich richtige und\nnachvollziehbare Folgearbeit behält ihren Kredit. Ein solcher lokaler\nFehler allein löst keine Gesamtpunktkappung aus. Auch knappe korrekte\nErklärungen genügen; bestimmte Schlüsselwörter oder eine bestimmte\nReihenfolge sind nicht verlangt.\n\n| Kriterium | BE |\n|---|---:|\n| Verschiebung und Zeitdifferenz richtig angesetzt (1); durch die Zeitdifferenz geteilt (1); Geschwindigkeitsvektor korrekt (2, je 1 für zwei bzw. drei richtige Komponenten). | 4 |\n| Startvektor aus einer Messung unter Berücksichtigung ihrer Zeit hergeleitet (1) und korrekt berechnet (1). | 2 |\n| Vollständiges zeitabhängiges Modell samt Zeitbereich (1); beide Messungen durch Einsetzen geprüft (je 0,5). | 2 |\n| Nachvollziehbare Auswertung bei t=6 (1); richtiger Ort (1). | 2 |\n| Verschiebung für das richtige Zeitintervall angesetzt (1); richtiger Vektor (1). | 2 |\n| Gleichzeitige Änderung der drei Koordinaten pro Sekunde mit Vorzeichen und Einheit zutreffend erklärt (je 1). | 3 |\n| Anfangsort und Ortsänderung pro Zeit mit ihren unterschiedlichen Einheiten sinnvoll unterschieden. | 1 |\n| Zeitpunkt für R bestimmt (1), alle Koordinaten geprüft (1), Modellbereich und Erreichen richtig zugeordnet (1). | 3 |\n| S mit unvereinbaren Koordinatenbedingungen begründet ausgeschlossen. | 1 |\n\nBegrenze vor dem Vergleich mit der Bestehensgrenze die Gesamtpunktzahl auf höchstens 14 BE, wenn über die gesamte Abgabe entweder kein fachlich brauchbarer zeitabhängiger Bewegungsansatz aus den Messungen erkennbar ist, keinerlei sinnvolle Auswertung oder Untersuchung dieses Ansatzes erfolgt oder die Deutung des Geschwindigkeitsvektors als gerichtete Ortsänderung pro Zeiteinheit vollständig fehlt. Ein bloß genannter Zahlenvektor ersetzt diese Deutung nicht. Eine knappe richtige Erklärung genügt; nicht jede Komponente muss nochmals ausgeschrieben werden, wenn eine allgemeine Erklärung ihre Vorzeichen und Einheiten eindeutig umfasst.\n\nMehrere zutreffende Kappungsgründe führen weiterhin nur zur selben Obergrenze von 14 BE. Es bleibt bei einer Gesamtbewertung ohne zusätzliche Teilbestehensbedingungen.\n",
+        "solutionContentEn": "# Worked solution: camera drone\n\n**1. Model**\n\nThe time between the observations is $5-2=3$ seconds. The displacement is\n\n$$\n\\overrightarrow{PQ}=\\begin{pmatrix}11-5\\\\0-3\\\\5-8\\end{pmatrix}\n=\\begin{pmatrix}6\\\\-3\\\\-3\\end{pmatrix}\\,\\mathrm m.\n$$\n\nThus\n\n$$\n\\vec v=\\frac{1}{3}\\overrightarrow{PQ}\n=\\begin{pmatrix}2\\\\-1\\\\-1\\end{pmatrix}\\,\\frac{\\mathrm m}{\\mathrm s}.\n$$\n\nThe first observation occurs at $t=2$, so $\\overrightarrow{OP}$ is not\nthe required initial vector. Instead,\n\n$$\n\\vec x_0=\\begin{pmatrix}5\\\\3\\\\8\\end{pmatrix}\n-2\\begin{pmatrix}2\\\\-1\\\\-1\\end{pmatrix}\n=\\begin{pmatrix}1\\\\5\\\\10\\end{pmatrix}\\,\\mathrm m.\n$$\n\nUsing numerical values in the stated units, the model is\n\n$$\n\\vec x(t)=\\begin{pmatrix}1\\\\5\\\\10\\end{pmatrix}\n+t\\begin{pmatrix}2\\\\-1\\\\-1\\end{pmatrix},\\qquad0\\leq t\\leq8.\n$$\n\nSubstitution gives $\\vec x(2)=(5,3,8)^{\\mathsf T}$ and\n$\\vec x(5)=(11,0,5)^{\\mathsf T}$, exactly reproducing the observations.\n\n**2. Position and displacement**\n\n$$\n\\vec x(6)=\\begin{pmatrix}13\\\\-1\\\\4\\end{pmatrix}.\n$$\n\nThe drone is at $(13,-1,4)$.\nAlso, $\\vec x(1)=(3,4,9)^{\\mathsf T}$ and\n$\\vec x(4)=(9,1,6)^{\\mathsf T}$. Hence its displacement is\n\n$$\n\\vec x(4)-\\vec x(1)=\\begin{pmatrix}6\\\\-3\\\\-3\\end{pmatrix}\\,\\mathrm m.\n$$\n\nThe direct calculation $(4-1)\\vec v=3\\vec v$ is equivalent.\n\n**3. Meaning**\n\nEach second, the first coordinate increases by $2\\,\\mathrm m$, while the\nsecond and third coordinates each decrease by $1\\,\\mathrm m$. The signs\nindicate the direction of motion along the respective coordinate axes.\nAll three changes occur simultaneously. The constant vector $\\vec v$\nis the displacement per unit time.\n$\\vec x_0$ points from the origin to the drone's position at $t=0$ and\nhas unit metres. The vector $\\vec v$ describes change in position over\ntime and has unit metres per second; it is not the position vector of a\nfixed point.\n\n**4. Reachability**\n\nFor $R$, the first coordinate gives $1+2t=15$, so $t=7$, which is within\nthe model's interval. The other coordinates also agree: $5-7=-2$ and\n$10-7=3$. Thus the drone reaches $R$ at $t=7\\,\\mathrm s$.\nFor $S$, the first and third coordinates again require $t=7$.\nAt that time the second coordinate is $-2$, not $-1$. No single time\nsatisfies all three coordinates, so the drone does not reach $S$.\n\n# One overall assessment\n\nThere is exactly one total score out of 20 points and one binary\noverall result: **pass at 15 points or more**, otherwise not passed.\nThe point allocations for individual parts are not separate pass thresholds.\n\nCredit traceable mathematical work wherever it appears in the submission.\nEquivalent methods and alternative parameterisations receive equal credit;\ncount the same performance only once. Award partial credit as specified,\notherwise 0.5 points for meaningful but incomplete mathematical work.\nDo not repeatedly penalise one local arithmetic or copying error; credit\nsound, traceable follow-through. Such a local error alone does not trigger\na total-score cap. Concise correct explanations suffice; no prescribed\nkeywords or order of work are required.\n\n| Criterion | Points |\n|---|---:|\n| Correct displacement and time interval setup (1); division by the time interval (1); correct velocity vector (2: 1 for two correct components, 2 for all three). | 4 |\n| Derives the initial vector from an observation using its time (1) and calculates it correctly (1). | 2 |\n| Complete time-dependent model with its time interval (1); checks both observations by substitution (0.5 each). | 2 |\n| Traceable evaluation at t=6 (1); correct position (1). | 2 |\n| Sets up displacement over the correct time interval (1); correct vector (1). | 2 |\n| Correctly explains the simultaneous change per second of each coordinate, including sign and unit (1 each). | 3 |\n| Meaningfully distinguishes initial position from change in position per time, with their different units. | 1 |\n| Finds the time for R (1), checks all coordinates (1), and correctly relates the time interval to reaching R (1). | 3 |\n| Rejects S with a reason based on incompatible coordinate conditions. | 1 |\n\nBefore comparison with the passing threshold, cap the total at 14 points if, across the entire submission, there is no mathematically workable time-dependent motion setup from the observations, no meaningful evaluation or investigation of that setup at all, or no interpretation of velocity as directed change in position per unit time. Merely stating a numerical vector does not provide that interpretation. A concise correct explanation is sufficient; the components need not be repeated individually if a general explanation clearly includes their signs and units.\n\nMultiple applicable cap reasons still give the same upper limit of 14 points. There is still one overall assessment, without additional part pass conditions.\n",
+        "coveredGoalIds": [
+          "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+        ],
+        "coveredStrands": [
+          "L3"
+        ],
+        "demandLevels": [
+          "AB2"
+        ],
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "velocity",
+              "points": 4,
+              "description": "Verschiebung und Zeitdifferenz richtig angesetzt (1); durch die Zeitdifferenz geteilt (1); Geschwindigkeitsvektor korrekt (2, je 1 für zwei bzw. drei richtige Komponenten).",
+              "descriptionEn": "Correct displacement and time interval setup (1); division by the time interval (1); correct velocity vector (2: 1 for two correct components, 2 for all three)."
+            },
+            {
+              "id": "initial",
+              "points": 2,
+              "description": "Startvektor aus einer Messung unter Berücksichtigung ihrer Zeit hergeleitet (1) und korrekt berechnet (1).",
+              "descriptionEn": "Derives the initial vector from an observation using its time (1) and calculates it correctly (1)."
+            },
+            {
+              "id": "model",
+              "points": 2,
+              "description": "Vollständiges zeitabhängiges Modell samt Zeitbereich (1); beide Messungen durch Einsetzen geprüft (je 0,5).",
+              "descriptionEn": "Complete time-dependent model with its time interval (1); checks both observations by substitution (0.5 each)."
+            },
+            {
+              "id": "evaluate",
+              "points": 2,
+              "description": "Nachvollziehbare Auswertung bei t=6 (1); richtiger Ort (1).",
+              "descriptionEn": "Traceable evaluation at t=6 (1); correct position (1)."
+            },
+            {
+              "id": "displacement",
+              "points": 2,
+              "description": "Verschiebung für das richtige Zeitintervall angesetzt (1); richtiger Vektor (1).",
+              "descriptionEn": "Sets up displacement over the correct time interval (1); correct vector (1)."
+            },
+            {
+              "id": "interpret",
+              "points": 3,
+              "description": "Gleichzeitige Änderung der drei Koordinaten pro Sekunde mit Vorzeichen und Einheit zutreffend erklärt (je 1).",
+              "descriptionEn": "Correctly explains the simultaneous change per second of each coordinate, including sign and unit (1 each)."
+            },
+            {
+              "id": "distinguish",
+              "points": 1,
+              "description": "Anfangsort und Ortsänderung pro Zeit mit ihren unterschiedlichen Einheiten sinnvoll unterschieden.",
+              "descriptionEn": "Meaningfully distinguishes initial position from change in position per time, with their different units."
+            },
+            {
+              "id": "reach-r",
+              "points": 3,
+              "description": "Zeitpunkt für R bestimmt (1), alle Koordinaten geprüft (1), Modellbereich und Erreichen richtig zugeordnet (1).",
+              "descriptionEn": "Finds the time for R (1), checks all coordinates (1), and correctly relates the time interval to reaching R (1)."
+            },
+            {
+              "id": "reject-s",
+              "points": 1,
+              "description": "S mit unvereinbaren Koordinatenbedingungen begründet ausgeschlossen.",
+              "descriptionEn": "Rejects S with a reason based on incompatible coordinate conditions."
+            }
+          ]
+        },
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/space-geometry-four-same-identity-2026-11-04-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/reviewed-execution-contract.json",
+        "reviewNote": "Whole bilingual same-identity assessment approved by the independent whole-content review and bounded plane-rubric followup. One ordinary 20-point total, pass at 15, with the reviewed overall caps. Only this stable goal ID is assessed; its existing curricular identity and preparation contract are retained."
+      }
     },
     {
       "id": "211fa3c8-9e74-5c82-8863-0d51700185cd",
@@ -80085,7 +80164,74 @@
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
         }
-      ]
+      ],
+      "nodeKind": "exam",
+      "examData": {
+        "reviewStatus": "released",
+        "taskContent": "# Eine Gerade durch die Koordinatenebenen verfolgen\n\nGegeben ist die Gerade\n\n$$\ng:\\quad\\vec x=\\begin{pmatrix}2\\\\-3\\\\6\\end{pmatrix}\n+r\\begin{pmatrix}1\\\\2\\\\-2\\end{pmatrix},\\qquad r\\in\\mathbb R.\n$$\n\nDie $xy$-Ebene hat die Gleichung $z=0$, die $xz$-Ebene $y=0$ und\ndie $yz$-Ebene $x=0$.\n\nZeige deine Ansätze und Rechenschritte. Insgesamt sind **20 BE** erreichbar.\n\n**1. Alle drei Spurpunkte bestimmen und prüfen (12 BE)**\n\nBestimme den Schnittpunkt von $g$ mit jeder der drei Koordinatenebenen.\nGib jeweils die eingesetzte Ebenenbedingung, den Geradenparameter und den\nPunkt an. Prüfe jeden Punkt rechnerisch sowohl an der ursprünglichen\nGeradengleichung als auch an der betreffenden Ebenenbedingung.\n\n**2. Die Punkte geometrisch deuten (2 BE)**\n\nErkläre, weshalb die drei Punkte Durchstoßpunkte bzw. Spurpunkte der\nGeraden sind. Erläutere, warum man einen solchen Punkt im Allgemeinen\nnicht erhält, indem man bei einem beliebigen Punkt auf $g$ einfach eine\nKoordinate durch null ersetzt.\n\n**3. Zwei Sonderfälle unterscheiden (6 BE)**\n\nBetrachte zusätzlich die Geraden\n\n$$\nh:\\quad\\vec x=\\begin{pmatrix}1\\\\2\\\\0\\end{pmatrix}\n+s\\begin{pmatrix}2\\\\-1\\\\0\\end{pmatrix},\\qquad s\\in\\mathbb R,\n$$\n\n$$\nk:\\quad\\vec x=\\begin{pmatrix}1\\\\2\\\\4\\end{pmatrix}\n+u\\begin{pmatrix}2\\\\-1\\\\0\\end{pmatrix},\\qquad u\\in\\mathbb R.\n$$\n\nUntersuche **nur ihre Beziehung zur $xy$-Ebene**. Begründe jeweils mit\nder Koordinatenbedingung, ob es keinen, genau einen oder unendlich viele\ngemeinsame Punkte gibt. Entscheide jeweils, ob ein einzelner eindeutiger\nDurchstoßpunkt angegeben werden kann.\n",
+        "taskContentEn": "# Follow a line through the coordinate planes\n\nConsider the line\n\n$$\ng:\\quad\\vec x=\\begin{pmatrix}2\\\\-3\\\\6\\end{pmatrix}\n+r\\begin{pmatrix}1\\\\2\\\\-2\\end{pmatrix},\\qquad r\\in\\mathbb R.\n$$\n\nThe $xy$-plane has equation $z=0$, the $xz$-plane has equation $y=0$,\nand the $yz$-plane has equation $x=0$.\n\nShow your setup and calculations. A total of **20 points** is available.\n\n**1. Find and check all three trace points (12 points)**\n\nFind the intersection of $g$ with each of the three coordinate planes.\nFor each one, state the plane condition used, the line parameter, and the\npoint. Check each point algebraically against both the original line\nequation and the corresponding plane condition.\n\n**2. Interpret the points geometrically (2 points)**\n\nExplain why these are intersection points, also called trace points, of\nthe line with the coordinate planes. Explain why, in general, a trace\npoint cannot be found by taking an arbitrary point on $g$ and simply\nreplacing one coordinate by zero.\n\n**3. Distinguish two special cases (6 points)**\n\nAlso consider\n\n$$\nh:\\quad\\vec x=\\begin{pmatrix}1\\\\2\\\\0\\end{pmatrix}\n+s\\begin{pmatrix}2\\\\-1\\\\0\\end{pmatrix},\\qquad s\\in\\mathbb R,\n$$\n\n$$\nk:\\quad\\vec x=\\begin{pmatrix}1\\\\2\\\\4\\end{pmatrix}\n+u\\begin{pmatrix}2\\\\-1\\\\0\\end{pmatrix},\\qquad u\\in\\mathbb R.\n$$\n\nInvestigate **only their relationship to the $xy$-plane**. Use the coordinate\ncondition to justify whether each line has no common point, exactly one,\nor infinitely many common points with that plane. In each case, decide\nwhether a single unique trace point can be given.\n",
+        "solutionContent": "# Musterlösung: Spurpunkte\n\nAuf $g$ gelten gleichzeitig $x=2+r$, $y=-3+2r$ und $z=6-2r$.\n\n**1. Schnittpunkte und Proben**\n\nFür die $xy$-Ebene ist $6-2r=0$, also $r=3$. Damit ist\n$T_{xy}(5\\mid3\\mid0)$. Die Probe an der Geraden liefert\n\n$$\n\\begin{pmatrix}2\\\\-3\\\\6\\end{pmatrix}\n+3\\begin{pmatrix}1\\\\2\\\\-2\\end{pmatrix}\n=\\begin{pmatrix}5\\\\3\\\\0\\end{pmatrix}.\n$$\n\nDie dritte Koordinate ist null, also liegt der Punkt auch in der $xy$-Ebene.\n\nFür die $xz$-Ebene ist $-3+2r=0$, also $r=\\frac32$. Damit ist\n$T_{xz}(\\frac72\\mid0\\mid3)$. Die Geradenprobe ist\n\n$$\n\\begin{pmatrix}2\\\\-3\\\\6\\end{pmatrix}\n+\\frac32\\begin{pmatrix}1\\\\2\\\\-2\\end{pmatrix}\n=\\begin{pmatrix}\\frac72\\\\0\\\\3\\end{pmatrix}.\n$$\n\nDie zweite Koordinate ist null, also ist auch die Ebenenbedingung erfüllt.\n\nFür die $yz$-Ebene ist $2+r=0$, also $r=-2$. Damit ist\n$T_{yz}(0\\mid-7\\mid10)$. Die Geradenprobe ist\n\n$$\n\\begin{pmatrix}2\\\\-3\\\\6\\end{pmatrix}\n-2\\begin{pmatrix}1\\\\2\\\\-2\\end{pmatrix}\n=\\begin{pmatrix}0\\\\-7\\\\10\\end{pmatrix}.\n$$\n\nDie erste Koordinate ist null; damit gilt auch die Ebenenbedingung.\nJede der drei Ebenenbedingungen bestimmt hier genau einen Parameterwert.\n\n**2. Geometrische Bedeutung**\n\nEin Spurpunkt liegt gleichzeitig auf der Geraden und in der jeweiligen\nKoordinatenebene. An ihm durchstößt $g$ diese Ebene. Beim Verändern von\n$r$ ändern sich hier alle drei Koordinaten zusammen. Nur eine Koordinate\neines beliebigen Geradenpunkts auf null zu setzen führt zwar zu einem\nPunkt in der betreffenden Ebene, im Allgemeinen aber weg von $g$.\nBeispielsweise liegt $(2\\mid-3\\mid0)$ in der $xy$-Ebene, aber nicht auf\n$g$: Aus $x=2$ würde $r=0$ folgen, was auf $g$ die Höhe $z=6$ ergibt.\n\n**3. Sonderfälle**\n\nBei $h$ ist die dritte Koordinate für jedes $s$ gleich null. Die\nEbenenbedingung lautet $0=0$ und ist für alle Parameter erfüllt.\nDie ganze Gerade liegt in der $xy$-Ebene; es gibt unendlich viele\ngemeinsame Punkte und keinen einzelnen eindeutigen Durchstoßpunkt.\n\nBei $k$ ist die dritte Koordinate stets $4$. Die Bedingung $z=0$ würde\n$4=0$ verlangen, ist also für keinen Parameter erfüllt. Die Gerade ist\nzur $xy$-Ebene parallel und liegt außerhalb dieser Ebene. Es gibt keinen\ngemeinsamen Punkt und damit keinen Durchstoßpunkt.\n\n# Eine Gesamtbewertung\n\nEs gibt genau eine Gesamtpunktzahl aus 20 BE und genau ein binäres\nGesamtergebnis: **bestanden ab 15 BE**, sonst nicht bestanden. Die in der\nAufgabe angegebenen Teilpunkte sind keine eigenen Bestehensgrenzen.\n\nBewerte nachvollziehbare mathematische Leistungen unabhängig davon, in\nwelchem Aufgabenteil sie stehen. Gleichwertige Verfahren und andere\nParameterformen erhalten denselben Kredit; identische Leistungen zählen\nnur einmal. Teilpunkte wie angegeben, sonst 0,5 BE für eine fachlich\nsinnvolle, aber unvollständige Teilleistung. Ein lokaler Rechen- oder\nÜbertragungsfehler wird nicht mehrfach bestraft; fachlich richtige und\nnachvollziehbare Folgearbeit behält ihren Kredit. Ein solcher lokaler\nFehler allein löst keine Gesamtpunktkappung aus. Auch knappe korrekte\nErklärungen genügen; bestimmte Schlüsselwörter oder eine bestimmte\nReihenfolge sind nicht verlangt.\n\n| Kriterium | BE |\n|---|---:|\n| xy: richtige Bedingung (1), Parameter (1), Punkt (1), ausdrückliche Geraden- und Ebenenprobe (je 0,5). | 4 |\n| xz: richtige Bedingung (1), Parameter (1), Punkt (1), ausdrückliche Geraden- und Ebenenprobe (je 0,5). | 4 |\n| yz: richtige Bedingung (1), Parameter (1), Punkt (1), ausdrückliche Geraden- und Ebenenprobe (je 0,5). | 4 |\n| Gemeinsame Zugehörigkeit als Bedeutung des Spurpunkts erklärt (1); bloßes Nullsetzen einer Koordinate eines beliebigen Geradenpunkts zutreffend abgegrenzt (1). | 2 |\n| h: für alle Parameter z=0 nachgewiesen (1); ganze Gerade in der Ebene und unendlich viele gemeinsame Punkte erkannt (1). | 2 |\n| k: Widerspruch 4=0 nachgewiesen (1); parallel außerhalb und ohne gemeinsame Punkte richtig gedeutet (1). | 2 |\n| Für h und k jeweils richtig begründet, dass kein einzelner eindeutiger Durchstoßpunkt vorliegt (je 1). | 2 |\n\nBegrenze vor dem Vergleich mit der Bestehensgrenze die Gesamtpunktzahl auf höchstens 14 BE, wenn über die gesamte Abgabe die Schnittuntersuchung mit einer der drei Koordinatenebenen vollständig fehlt, keinerlei tragfähige geometrische Deutung der Schnittmenge erkennbar ist oder rechnerische Kontrollen der gemeinsamen Geraden- und Ebenenzugehörigkeit vollständig fehlen. Ein Einsetzen in die Geradengleichung darf gleichzeitig zur Bestimmung und zur Probe zählen, wenn die gemeinsame Zugehörigkeit daran ausdrücklich kontrolliert wird; eine künstliche Wiederholung derselben Rechnung ist nicht nötig.\n\nMehrere zutreffende Kappungsgründe führen weiterhin nur zur selben Obergrenze von 14 BE. Es bleibt bei einer Gesamtbewertung ohne zusätzliche Teilbestehensbedingungen.\n",
+        "solutionContentEn": "# Worked solution: trace points\n\nOn $g$, the simultaneous coordinate equations are $x=2+r$, $y=-3+2r$,\nand $z=6-2r$.\n\n**1. Intersections and checks**\n\nFor the $xy$-plane, $6-2r=0$, so $r=3$. Thus $T_{xy}=(5,3,0)$.\nChecking the line gives\n\n$$\n\\begin{pmatrix}2\\\\-3\\\\6\\end{pmatrix}\n+3\\begin{pmatrix}1\\\\2\\\\-2\\end{pmatrix}\n=\\begin{pmatrix}5\\\\3\\\\0\\end{pmatrix}.\n$$\n\nThe third coordinate is zero, so the point also lies in the $xy$-plane.\n\nFor the $xz$-plane, $-3+2r=0$, so $r=\\frac32$. Thus\n$T_{xz}=(\\frac72,0,3)$. The line check is\n\n$$\n\\begin{pmatrix}2\\\\-3\\\\6\\end{pmatrix}\n+\\frac32\\begin{pmatrix}1\\\\2\\\\-2\\end{pmatrix}\n=\\begin{pmatrix}\\frac72\\\\0\\\\3\\end{pmatrix}.\n$$\n\nThe second coordinate is zero, satisfying the plane condition as well.\n\nFor the $yz$-plane, $2+r=0$, so $r=-2$. Thus $T_{yz}=(0,-7,10)$.\nThe line check is\n\n$$\n\\begin{pmatrix}2\\\\-3\\\\6\\end{pmatrix}\n-2\\begin{pmatrix}1\\\\2\\\\-2\\end{pmatrix}\n=\\begin{pmatrix}0\\\\-7\\\\10\\end{pmatrix}.\n$$\n\nThe first coordinate is zero, so the plane condition also holds.\nHere, each plane condition determines exactly one value of the line parameter.\n\n**2. Geometric meaning**\n\nA trace point lies both on the line and in the relevant coordinate plane.\nIt is where $g$ crosses that plane. Changing $r$ changes all three\ncoordinates together in this example. Replacing just one coordinate of\nan arbitrary point on the line by zero gives a point in the plane, but\ngenerally takes it off the line.\nFor example, $(2,-3,0)$ is in the $xy$-plane but not on $g$: its first\ncoordinate would require $r=0$, for which the line gives $z=6$.\n\n**3. Special cases**\n\nOn $h$, the third coordinate is zero for every $s$. The plane condition\nis $0=0$ and holds for every parameter. The entire line lies in the\n$xy$-plane, so there are infinitely many common points and no single\nunique trace point.\n\nOn $k$, the third coordinate is always $4$. The condition $z=0$ would\nrequire $4=0$, which holds for no parameter. The line is parallel to\nthe $xy$-plane and lies outside it. There is no common point and hence\nno trace point.\n\n# One overall assessment\n\nThere is exactly one total score out of 20 points and one binary\noverall result: **pass at 15 points or more**, otherwise not passed.\nThe point allocations for individual parts are not separate pass thresholds.\n\nCredit traceable mathematical work wherever it appears in the submission.\nEquivalent methods and alternative parameterisations receive equal credit;\ncount the same performance only once. Award partial credit as specified,\notherwise 0.5 points for meaningful but incomplete mathematical work.\nDo not repeatedly penalise one local arithmetic or copying error; credit\nsound, traceable follow-through. Such a local error alone does not trigger\na total-score cap. Concise correct explanations suffice; no prescribed\nkeywords or order of work are required.\n\n| Criterion | Points |\n|---|---:|\n| xy: correct condition (1), parameter (1), point (1), explicit checks of line and plane membership (0.5 each). | 4 |\n| xz: correct condition (1), parameter (1), point (1), explicit checks of line and plane membership (0.5 each). | 4 |\n| yz: correct condition (1), parameter (1), point (1), explicit checks of line and plane membership (0.5 each). | 4 |\n| Explains the trace point as belonging to both line and plane (1); correctly distinguishes this from merely zeroing a coordinate of an arbitrary point on the line (1). | 2 |\n| h: shows z=0 for every parameter (1); recognises that the whole line is in the plane, with infinitely many common points (1). | 2 |\n| k: shows the contradiction 4=0 (1); correctly interprets the line as parallel, outside the plane, with no common point (1). | 2 |\n| Correctly justifies for h and k that neither has a single unique trace point (1 each). | 2 |\n\nBefore comparison with the passing threshold, cap the total at 14 points if, across the entire submission, investigation of one of the three coordinate-plane intersections is entirely absent, there is no sound geometric interpretation of the intersection set at all, or algebraic checks of simultaneous line and plane membership are entirely absent. Substitution into the line equation may count both for finding and for checking a point if simultaneous membership is explicitly checked there; artificially repeating the same calculation is unnecessary.\n\nMultiple applicable cap reasons still give the same upper limit of 14 points. There is still one overall assessment, without additional part pass conditions.\n",
+        "coveredGoalIds": [
+          "a9fde754-51b4-58d7-85e5-5e36160581e6"
+        ],
+        "coveredStrands": [
+          "L3"
+        ],
+        "demandLevels": [
+          "AB2"
+        ],
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "xy",
+              "points": 4,
+              "description": "xy: richtige Bedingung (1), Parameter (1), Punkt (1), ausdrückliche Geraden- und Ebenenprobe (je 0,5).",
+              "descriptionEn": "xy: correct condition (1), parameter (1), point (1), explicit checks of line and plane membership (0.5 each)."
+            },
+            {
+              "id": "xz",
+              "points": 4,
+              "description": "xz: richtige Bedingung (1), Parameter (1), Punkt (1), ausdrückliche Geraden- und Ebenenprobe (je 0,5).",
+              "descriptionEn": "xz: correct condition (1), parameter (1), point (1), explicit checks of line and plane membership (0.5 each)."
+            },
+            {
+              "id": "yz",
+              "points": 4,
+              "description": "yz: richtige Bedingung (1), Parameter (1), Punkt (1), ausdrückliche Geraden- und Ebenenprobe (je 0,5).",
+              "descriptionEn": "yz: correct condition (1), parameter (1), point (1), explicit checks of line and plane membership (0.5 each)."
+            },
+            {
+              "id": "meaning",
+              "points": 2,
+              "description": "Gemeinsame Zugehörigkeit als Bedeutung des Spurpunkts erklärt (1); bloßes Nullsetzen einer Koordinate eines beliebigen Geradenpunkts zutreffend abgegrenzt (1).",
+              "descriptionEn": "Explains the trace point as belonging to both line and plane (1); correctly distinguishes this from merely zeroing a coordinate of an arbitrary point on the line (1)."
+            },
+            {
+              "id": "contained",
+              "points": 2,
+              "description": "h: für alle Parameter z=0 nachgewiesen (1); ganze Gerade in der Ebene und unendlich viele gemeinsame Punkte erkannt (1).",
+              "descriptionEn": "h: shows z=0 for every parameter (1); recognises that the whole line is in the plane, with infinitely many common points (1)."
+            },
+            {
+              "id": "parallel",
+              "points": 2,
+              "description": "k: Widerspruch 4=0 nachgewiesen (1); parallel außerhalb und ohne gemeinsame Punkte richtig gedeutet (1).",
+              "descriptionEn": "k: shows the contradiction 4=0 (1); correctly interprets the line as parallel, outside the plane, with no common point (1)."
+            },
+            {
+              "id": "uniqueness",
+              "points": 2,
+              "description": "Für h und k jeweils richtig begründet, dass kein einzelner eindeutiger Durchstoßpunkt vorliegt (je 1).",
+              "descriptionEn": "Correctly justifies for h and k that neither has a single unique trace point (1 each)."
+            }
+          ]
+        },
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/space-geometry-four-same-identity-2026-11-04-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/reviewed-execution-contract.json",
+        "reviewNote": "Whole bilingual same-identity assessment approved by the independent whole-content review and bounded plane-rubric followup. One ordinary 20-point total, pass at 15, with the reviewed overall caps. Only this stable goal ID is assessed; its existing curricular identity and preparation contract are retained."
+      }
     },
     {
       "id": "58f613da-03be-5c6a-90a9-ff0958aa7849",
@@ -80863,7 +81009,104 @@
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
         }
-      ]
+      ],
+      "nodeKind": "exam",
+      "examData": {
+        "reviewStatus": "released",
+        "taskContent": "# Eine Geradenschar mit zwei festen Geraden vergleichen\n\nFür jedes $a\\in\\mathbb R$ ist eine Gerade gegeben durch\n\n$$\ng_a:\\quad\\vec x=\\begin{pmatrix}0\\\\a-1\\\\a(a-1)\\end{pmatrix}\n+r\\begin{pmatrix}1\\\\a\\\\0\\end{pmatrix},\\qquad r\\in\\mathbb R.\n$$\n\nDie Vergleichsgeraden sind\n\n$$\nh:\\quad\\vec x=\\begin{pmatrix}0\\\\0\\\\0\\end{pmatrix}\n+s\\begin{pmatrix}1\\\\0\\\\0\\end{pmatrix},\\qquad s\\in\\mathbb R,\n$$\n\n$$\nk:\\quad\\vec x=\\begin{pmatrix}0\\\\0\\\\2\\end{pmatrix}\n+u\\begin{pmatrix}0\\\\1\\\\0\\end{pmatrix},\\qquad u\\in\\mathbb R.\n$$\n\nZeige deine Ansätze und Rechenschritte. Insgesamt sind **20 BE** erreichbar.\n\n**1. Die Schar verstehen (6 BE)**\n\nErläutere die unterschiedlichen Rollen von $a$ und $r$. Gib die Geraden\n$g_0$, $g_1$ und $g_2$ ausdrücklich an. Begründe, warum die Vorschrift\nfür jeden reellen Wert von $a$ tatsächlich eine Gerade beschreibt.\n\n**2. Die Lage zu $h$ für alle Parameter untersuchen (9 BE)**\n\nUntersuche für **alle** $a\\in\\mathbb R$, ob $g_a$ und $h$ identisch,\necht parallel, schneidend oder windschief sind. Leite die notwendigen\nParameterbedingungen rechnerisch her und unterscheide die Fälle\nvollständig. Gib bei einem Schnitt den Schnittpunkt an. Erkläre auch,\nwarum nicht schneidende Geraden in diesem Beispiel nicht automatisch\nparallel sind. Einzelne eingesetzte Beispielwerte reichen als\nUntersuchung aller Parameter nicht aus.\n\n**3. Eine weitere Schnittbedingung erfüllen (5 BE)**\n\nBestimme alle Werte von $a$, für die $g_a$ die Gerade $k$ schneidet.\nBerechne für jeden gefundenen Wert den Schnittpunkt und prüfe ihn an\nbeiden betreffenden Geraden. Deute, ob die gefundenen Schargeraden\ndenselben Punkt auf $k$ treffen.\nFür die Parameterrechnung darfst du die Identität\n$a(a-1)-2=(a-2)(a+1)$ verwenden.\n",
+        "taskContentEn": "# Compare a family of lines with two fixed lines\n\nFor each $a\\in\\mathbb R$, define a line by\n\n$$\ng_a:\\quad\\vec x=\\begin{pmatrix}0\\\\a-1\\\\a(a-1)\\end{pmatrix}\n+r\\begin{pmatrix}1\\\\a\\\\0\\end{pmatrix},\\qquad r\\in\\mathbb R.\n$$\n\nThe fixed comparison lines are\n\n$$\nh:\\quad\\vec x=\\begin{pmatrix}0\\\\0\\\\0\\end{pmatrix}\n+s\\begin{pmatrix}1\\\\0\\\\0\\end{pmatrix},\\qquad s\\in\\mathbb R,\n$$\n\n$$\nk:\\quad\\vec x=\\begin{pmatrix}0\\\\0\\\\2\\end{pmatrix}\n+u\\begin{pmatrix}0\\\\1\\\\0\\end{pmatrix},\\qquad u\\in\\mathbb R.\n$$\n\nShow your setup and calculations. A total of **20 points** is available.\n\n**1. Understand the family (6 points)**\n\nExplain the different roles of $a$ and $r$. State $g_0$, $g_1$, and\n$g_2$ explicitly. Justify why the formula defines a genuine line for\nevery real value of $a$.\n\n**2. Investigate the position relative to $h$ for every parameter (9 points)**\n\nFor **all** $a\\in\\mathbb R$, determine whether $g_a$ and $h$ are\nidentical, distinct parallel lines, intersecting, or skew. Derive the\nnecessary parameter conditions algebraically and give a complete case\ndistinction. Where an intersection exists, give its point. Also explain\nwhy lines that do not intersect are not automatically parallel in this\nexample. Testing a few individual values is insufficient to investigate\nall parameters.\n\n**3. Satisfy another intersection condition (5 points)**\n\nFind every value of $a$ for which $g_a$ intersects $k$. Calculate each\nintersection point and check it on both relevant lines. Explain whether\nthe resulting family members meet $k$ at the same point.\nFor the parameter calculation, you may use the identity\n$a(a-1)-2=(a-2)(a+1)$.\n",
+        "solutionContent": "# Musterlösung: Geradenschar\n\n**1. Scharparameter und Geradenparameter**\n\nEin fest gewählter Wert von $a$ wählt eine Gerade aus der Schar aus.\nAuf dieser einen Geraden durchläuft $r$ alle reellen Werte.\n\n$$\ng_0:\\quad\\vec x=\\begin{pmatrix}0\\\\-1\\\\0\\end{pmatrix}\n+r\\begin{pmatrix}1\\\\0\\\\0\\end{pmatrix},\n$$\n\n$$\ng_1:\\quad\\vec x=\\begin{pmatrix}0\\\\0\\\\0\\end{pmatrix}\n+r\\begin{pmatrix}1\\\\1\\\\0\\end{pmatrix},\n$$\n\n$$\ng_2:\\quad\\vec x=\\begin{pmatrix}0\\\\1\\\\2\\end{pmatrix}\n+r\\begin{pmatrix}1\\\\2\\\\0\\end{pmatrix}.\n$$\n\nDer Richtungsvektor $(1,a,0)^{\\mathsf T}$ ist wegen seiner ersten\nKomponente für kein $a$ der Nullvektor. Daher ist jedes $g_a$ eine Gerade.\n\n**2. Lage zu $h$**\n\nGleichsetzen der Koordinaten liefert\n\n$$\nr=s,\\qquad a-1+ar=0,\\qquad a(a-1)=0.\n$$\n\nDie letzte Gleichung erlaubt einen Schnitt nur für $a=0$ oder $a=1$.\n\nFür $a=0$ ist die zweite Gleichung $-1=0$, also unlösbar.\nDie Richtungsvektoren von $g_0$ und $h$ sind gleich; $g_0$ liegt aber\nbei $y=-1$ statt $y=0$. Die Geraden sind **echt parallel**.\n\nFür $a=1$ ergibt die zweite Gleichung $r=0$, also auch $s=0$.\nDie Geraden schneiden sich im Ursprung $O(0\\mid0\\mid0)$ und sind\nwegen der nicht parallelen Richtungen verschieden.\n\nFür $a\\notin\\{0,1\\}$ verhindert die von null verschiedene konstante\ndritte Koordinate $a(a-1)$ einen Schnitt mit $h$. Gleichzeitig ist\n$(1,a,0)^{\\mathsf T}$ nicht parallel zu $(1,0,0)^{\\mathsf T}$, weil\n$a\\neq0$. Die Geraden sind daher **windschief**.\n\nIdentische Geraden gibt es in diesem Vergleich für keinen Wert von $a$:\nParallele Richtungen wären nur bei $a=0$ möglich, dort sind die Geraden\naber verschieden. Nichtschneiden allein beweist im Raum keine Parallelität;\nes kann wie hier bei $a\\notin\\{0,1\\}$ auch Windschiefe vorliegen.\n\n**3. Schnitt mit $k$**\n\nDie Koordinaten von $k$ verlangen $x=0$ und $z=2$. Aus $x=r=0$ folgt\n\n$$\na(a-1)=2\\quad\\Longleftrightarrow\\quad\na^2-a-2=(a-2)(a+1)=0.\n$$\n\nSomit ist $a=2$ oder $a=-1$.\n\nFür $a=2$ ergibt $r=0$ auf $g_2$ den Punkt $(0\\mid1\\mid2)$.\nAuf $k$ entsteht derselbe Punkt bei $u=1$.\nFür $a=-1$ ergibt $r=0$ auf $g_{-1}$ den Punkt $(0\\mid-2\\mid2)$;\nauf $k$ entsteht er bei $u=-2$.\nDamit sind beide Schnittpunkte an beiden jeweiligen Geraden geprüft.\nWeitere Schargeraden können $k$ nicht schneiden, da die notwendige\nquadratische Bedingung keine weiteren Lösungen hat.\nDie zwei gefundenen Schargeraden treffen $k$ an **verschiedenen** Punkten.\n\n# Eine Gesamtbewertung\n\nEs gibt genau eine Gesamtpunktzahl aus 20 BE und genau ein binäres\nGesamtergebnis: **bestanden ab 15 BE**, sonst nicht bestanden. Die in der\nAufgabe angegebenen Teilpunkte sind keine eigenen Bestehensgrenzen.\n\nBewerte nachvollziehbare mathematische Leistungen unabhängig davon, in\nwelchem Aufgabenteil sie stehen. Gleichwertige Verfahren und andere\nParameterformen erhalten denselben Kredit; identische Leistungen zählen\nnur einmal. Teilpunkte wie angegeben, sonst 0,5 BE für eine fachlich\nsinnvolle, aber unvollständige Teilleistung. Ein lokaler Rechen- oder\nÜbertragungsfehler wird nicht mehrfach bestraft; fachlich richtige und\nnachvollziehbare Folgearbeit behält ihren Kredit. Ein solcher lokaler\nFehler allein löst keine Gesamtpunktkappung aus. Auch knappe korrekte\nErklärungen genügen; bestimmte Schlüsselwörter oder eine bestimmte\nReihenfolge sind nicht verlangt.\n\n| Kriterium | BE |\n|---|---:|\n| a als Auswahl einer Schargeraden und r als Laufparameter auf dieser Geraden zutreffend unterschieden (je 1). | 2 |\n| g0, g1 und g2 mit Stütz- und Richtungsvektor richtig angegeben (je 1; 0,5 für nur einen richtigen Vektor). | 3 |\n| Für alle a nicht verschwindenden Richtungsvektor begründet. | 1 |\n| Koordinatenbedingungen für einen Schnitt mit h hergeleitet (1); vollständige Einschränkung auf a=0 oder a=1 nachvollziehbar gewonnen (1). | 2 |\n| Fall a=0 rechnerisch untersucht (1) und als echt parallel begründet (1). | 2 |\n| Fall a=1 mit r=s=0 gelöst (1); Schnittpunkt und schneidende Lage richtig zugeordnet (1). | 2 |\n| Für alle übrigen a Nichtschneiden begründet (1) und wegen nicht paralleler Richtungen Windschiefe erklärt (1). | 2 |\n| Identische Geraden für alle a begründet ausgeschlossen; eine dazu passende Fallunterscheidung genügt. | 1 |\n| Für k die Bedingungen r=0 und a(a-1)=2 hergeleitet. | 1 |\n| Beide und nur die Parameterwerte a=2 und a=-1 bestimmt. | 1 |\n| Beide Schnittpunkte richtig bestimmt und an beiden jeweiligen Geraden geprüft (je 1: 0,5 Bestimmung, 0,5 Probe). | 2 |\n| Die zwei verschiedenen Treffpunkte auf k geometrisch richtig gedeutet. | 1 |\n\nBegrenze vor dem Vergleich mit der Bestehensgrenze die Gesamtpunktzahl auf höchstens 14 BE, wenn über die gesamte Abgabe eine parameterabhängige Untersuchung der Lage zu h vollständig durch bloße Einzelbeispiele ersetzt wird, die Herleitung von Parameterwerten aus einer vorgegebenen Lage- oder Schnittbedingung vollständig fehlt oder keine fachlich tragfähige geometrische Deutung der Geradenkonfigurationen erfolgt. Insbesondere ersetzt die bloße Aussage „kein Schnitt“ ohne Unterscheidung von Parallelität und Windschiefe keine solche Lageuntersuchung. Eine richtige allgemeine Fallbegründung kann mehrere Einzelfälle zugleich abdecken.\n\nMehrere zutreffende Kappungsgründe führen weiterhin nur zur selben Obergrenze von 14 BE. Es bleibt bei einer Gesamtbewertung ohne zusätzliche Teilbestehensbedingungen.\n",
+        "solutionContentEn": "# Worked solution: family of lines\n\n**1. Family parameter and line parameter**\n\nChoosing one fixed value of $a$ selects one line from the family.\nOn that line, $r$ ranges over all real numbers.\n\n$$\ng_0:\\quad\\vec x=\\begin{pmatrix}0\\\\-1\\\\0\\end{pmatrix}\n+r\\begin{pmatrix}1\\\\0\\\\0\\end{pmatrix},\n$$\n\n$$\ng_1:\\quad\\vec x=\\begin{pmatrix}0\\\\0\\\\0\\end{pmatrix}\n+r\\begin{pmatrix}1\\\\1\\\\0\\end{pmatrix},\n$$\n\n$$\ng_2:\\quad\\vec x=\\begin{pmatrix}0\\\\1\\\\2\\end{pmatrix}\n+r\\begin{pmatrix}1\\\\2\\\\0\\end{pmatrix}.\n$$\n\nThe direction vector $(1,a,0)^{\\mathsf T}$ is never zero because its\nfirst component is $1$. Thus $g_a$ is a genuine line for every $a$.\n\n**2. Position relative to $h$**\n\nEquating coordinates gives\n\n$$\nr=s,\\qquad a-1+ar=0,\\qquad a(a-1)=0.\n$$\n\nThe last equation allows an intersection only for $a=0$ or $a=1$.\n\nFor $a=0$, the second equation is $-1=0$, which is impossible.\nThe direction vectors of $g_0$ and $h$ are equal, but $g_0$ has $y=-1$\ninstead of $y=0$. They are **distinct parallel lines**.\n\nFor $a=1$, the second equation gives $r=0$, and hence $s=0$.\nThe lines intersect at the origin $O=(0,0,0)$. Their directions are not\nparallel, so the lines are different.\n\nFor $a\\notin\\{0,1\\}$, the constant third coordinate $a(a-1)$ is nonzero,\npreventing an intersection with $h$. At the same time, $(1,a,0)^{\\mathsf T}$\nis not parallel to $(1,0,0)^{\\mathsf T}$ because $a\\neq0$.\nThe lines are therefore **skew**.\n\nThere are no identical lines in this comparison for any $a$. Parallel\ndirections would require $a=0$, where the lines are distinct.\nIn three dimensions, not intersecting does not by itself prove parallelism;\nas for $a\\notin\\{0,1\\}$ here, the lines may be skew.\n\n**3. Intersection with $k$**\n\nThe coordinates of $k$ require $x=0$ and $z=2$. Since $x=r=0$, we obtain\n\n$$\na(a-1)=2\\quad\\Longleftrightarrow\\quad\na^2-a-2=(a-2)(a+1)=0.\n$$\n\nThus $a=2$ or $a=-1$.\n\nFor $a=2$, substituting $r=0$ in $g_2$ gives $(0,1,2)$, which also lies\non $k$ at $u=1$.\nFor $a=-1$, substituting $r=0$ in $g_{-1}$ gives $(0,-2,2)$, which lies\non $k$ at $u=-2$.\nBoth intersection points have therefore been checked on both relevant lines.\nThere are no further family members intersecting $k$, as the necessary\nquadratic condition has no further solutions.\nThe two family members meet $k$ at **different** points.\n\n# One overall assessment\n\nThere is exactly one total score out of 20 points and one binary\noverall result: **pass at 15 points or more**, otherwise not passed.\nThe point allocations for individual parts are not separate pass thresholds.\n\nCredit traceable mathematical work wherever it appears in the submission.\nEquivalent methods and alternative parameterisations receive equal credit;\ncount the same performance only once. Award partial credit as specified,\notherwise 0.5 points for meaningful but incomplete mathematical work.\nDo not repeatedly penalise one local arithmetic or copying error; credit\nsound, traceable follow-through. Such a local error alone does not trigger\na total-score cap. Concise correct explanations suffice; no prescribed\nkeywords or order of work are required.\n\n| Criterion | Points |\n|---|---:|\n| Correctly distinguishes a as selecting a family member and r as locating points on that line (1 each). | 2 |\n| States g0, g1 and g2 with correct position and direction vectors (1 each; 0.5 for just one correct vector). | 3 |\n| Justifies that the direction vector is nonzero for every a. | 1 |\n| Derives coordinate conditions for intersection with h (1); obtains the complete restriction a=0 or a=1 with reasoning (1). | 2 |\n| Investigates a=0 algebraically (1) and justifies that the lines are distinct and parallel (1). | 2 |\n| Solves a=1 with r=s=0 (1); correctly identifies the intersection point and intersecting position (1). | 2 |\n| Justifies nonintersection for every other a (1) and explains skewness using nonparallel directions (1). | 2 |\n| Rules out identical lines for every a with reasoning; the corresponding case analysis is sufficient. | 1 |\n| Derives r=0 and a(a-1)=2 for k. | 1 |\n| Finds both and only the parameter values a=2 and a=-1. | 1 |\n| Correctly determines both intersection points and checks each on the two relevant lines (1 each: 0.5 finding, 0.5 checking). | 2 |\n| Correctly interprets the two distinct meeting points on k geometrically. | 1 |\n\nBefore comparison with the passing threshold, cap the total at 14 points if, across the entire submission, the parameter-dependent investigation relative to h is replaced entirely by isolated examples, there is no derivation of parameter values from any specified positional or intersection condition, or there is no mathematically sound geometric interpretation of the line configurations. In particular, merely stating “no intersection” without distinguishing parallel from skew lines does not provide such a positional investigation. A correct general case argument may cover several individual cases at once.\n\nMultiple applicable cap reasons still give the same upper limit of 14 points. There is still one overall assessment, without additional part pass conditions.\n",
+        "coveredGoalIds": [
+          "edaf0bb4-e12e-5a6c-b484-91124ba209f3"
+        ],
+        "coveredStrands": [
+          "L3"
+        ],
+        "demandLevels": [
+          "AB3"
+        ],
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "parameters",
+              "points": 2,
+              "description": "a als Auswahl einer Schargeraden und r als Laufparameter auf dieser Geraden zutreffend unterschieden (je 1).",
+              "descriptionEn": "Correctly distinguishes a as selecting a family member and r as locating points on that line (1 each)."
+            },
+            {
+              "id": "examples",
+              "points": 3,
+              "description": "g0, g1 und g2 mit Stütz- und Richtungsvektor richtig angegeben (je 1; 0,5 für nur einen richtigen Vektor).",
+              "descriptionEn": "States g0, g1 and g2 with correct position and direction vectors (1 each; 0.5 for just one correct vector)."
+            },
+            {
+              "id": "genuine-line",
+              "points": 1,
+              "description": "Für alle a nicht verschwindenden Richtungsvektor begründet.",
+              "descriptionEn": "Justifies that the direction vector is nonzero for every a."
+            },
+            {
+              "id": "system",
+              "points": 2,
+              "description": "Koordinatenbedingungen für einen Schnitt mit h hergeleitet (1); vollständige Einschränkung auf a=0 oder a=1 nachvollziehbar gewonnen (1).",
+              "descriptionEn": "Derives coordinate conditions for intersection with h (1); obtains the complete restriction a=0 or a=1 with reasoning (1)."
+            },
+            {
+              "id": "parallel-case",
+              "points": 2,
+              "description": "Fall a=0 rechnerisch untersucht (1) und als echt parallel begründet (1).",
+              "descriptionEn": "Investigates a=0 algebraically (1) and justifies that the lines are distinct and parallel (1)."
+            },
+            {
+              "id": "intersection-case",
+              "points": 2,
+              "description": "Fall a=1 mit r=s=0 gelöst (1); Schnittpunkt und schneidende Lage richtig zugeordnet (1).",
+              "descriptionEn": "Solves a=1 with r=s=0 (1); correctly identifies the intersection point and intersecting position (1)."
+            },
+            {
+              "id": "skew-case",
+              "points": 2,
+              "description": "Für alle übrigen a Nichtschneiden begründet (1) und wegen nicht paralleler Richtungen Windschiefe erklärt (1).",
+              "descriptionEn": "Justifies nonintersection for every other a (1) and explains skewness using nonparallel directions (1)."
+            },
+            {
+              "id": "no-identical",
+              "points": 1,
+              "description": "Identische Geraden für alle a begründet ausgeschlossen; eine dazu passende Fallunterscheidung genügt.",
+              "descriptionEn": "Rules out identical lines for every a with reasoning; the corresponding case analysis is sufficient."
+            },
+            {
+              "id": "second-condition",
+              "points": 1,
+              "description": "Für k die Bedingungen r=0 und a(a-1)=2 hergeleitet.",
+              "descriptionEn": "Derives r=0 and a(a-1)=2 for k."
+            },
+            {
+              "id": "second-roots",
+              "points": 1,
+              "description": "Beide und nur die Parameterwerte a=2 und a=-1 bestimmt.",
+              "descriptionEn": "Finds both and only the parameter values a=2 and a=-1."
+            },
+            {
+              "id": "second-points",
+              "points": 2,
+              "description": "Beide Schnittpunkte richtig bestimmt und an beiden jeweiligen Geraden geprüft (je 1: 0,5 Bestimmung, 0,5 Probe).",
+              "descriptionEn": "Correctly determines both intersection points and checks each on the two relevant lines (1 each: 0.5 finding, 0.5 checking)."
+            },
+            {
+              "id": "second-meaning",
+              "points": 1,
+              "description": "Die zwei verschiedenen Treffpunkte auf k geometrisch richtig gedeutet.",
+              "descriptionEn": "Correctly interprets the two distinct meeting points on k geometrically."
+            }
+          ]
+        },
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/space-geometry-four-same-identity-2026-11-04-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/reviewed-execution-contract.json",
+        "reviewNote": "Whole bilingual same-identity assessment approved by the independent whole-content review and bounded plane-rubric followup. One ordinary 20-point total, pass at 15, with the reviewed overall caps. Only this stable goal ID is assessed; its existing curricular identity and preparation contract are retained."
+      }
     },
     {
       "id": "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
@@ -80934,7 +81177,104 @@
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
         }
-      ]
+      ],
+      "nodeKind": "exam",
+      "examData": {
+        "reviewStatus": "released",
+        "taskContent": "# Eine Ebenenschar und ihre gemeinsame Gerade untersuchen\n\nFür jedes $a\\in\\mathbb R$ ist die Ebene\n\n$$\nE_a:\\quad(a-1)x+y+az=a+1\n$$\n\ngegeben. Außerdem seien $F:\\ y+z=2$, $G:\\ y+z=3$ und der Punkt\n$P(2\\mid0\\mid1)$ gegeben.\n\nZeige deine Ansätze und Rechenschritte. Insgesamt sind **20 BE** erreichbar.\n\n**1. Die Schar beschreiben (4 BE)**\n\nGib einen Normalenvektor $\\vec n_a$ von $E_a$ sowie die Gleichungen von\n$E_0$ und $E_1$ an. Begründe, warum für jeden reellen Wert von $a$\ntatsächlich eine Ebene vorliegt.\n\n**2. Die Lage zu $F$ für alle Parameter untersuchen (7 BE)**\n\nBestimme für **alle** $a\\in\\mathbb R$, ob $E_a$ und $F$ identisch,\necht parallel oder schneidend sind. Leite deine Fallunterscheidung aus\nden Gleichungen her. Gib im schneidenden Fall die Schnittgerade in\nParameterform an und erläutere die Bedeutung deiner Lösung.\nAchte auf Werte von $a$, bei denen ein verwendeter Divisor null wäre.\n\n**3. Die gemeinsame Konfiguration erklären (4 BE)**\n\nZeige, dass alle Ebenen der Schar eine gemeinsame Gerade enthalten.\nBegründe auch, warum es keine weiteren Punkte gibt, die in **jeder**\nEbene der Schar liegen. Deute diese Konfiguration geometrisch.\n\n**4. Vorgegebene Bedingungen erfüllen (5 BE)**\n\nBestimme alle Werte von $a$, für die $P$ in $E_a$ liegt, und prüfe\ndein Ergebnis durch Einsetzen.\nBestimme außerdem alle Werte von $a$, für die $E_a$ zur Ebene $G$\nparallel ist. Entscheide dabei, ob die Ebenen identisch oder echt\nparallel sind, und begründe die Lage zu $G$ für die übrigen Werte.\n",
+        "taskContentEn": "# Investigate a family of planes and its common line\n\nFor each $a\\in\\mathbb R$, consider the plane\n\n$$\nE_a:\\quad(a-1)x+y+az=a+1.\n$$\n\nAlso let $F:\\ y+z=2$, $G:\\ y+z=3$, and $P=(2,0,1)$.\n\nShow your setup and calculations. A total of **20 points** is available.\n\n**1. Describe the family (4 points)**\n\nState a normal vector $\\vec n_a$ of $E_a$ and the equations of $E_0$\nand $E_1$. Justify why the equation defines a genuine plane for every\nreal value of $a$.\n\n**2. Investigate the position relative to $F$ for every parameter (7 points)**\n\nFor **all** $a\\in\\mathbb R$, determine whether $E_a$ and $F$ are\nidentical, distinct parallel planes, or intersecting. Derive your case\ndistinction from the equations. In the intersecting case, give a\nparametric equation of the intersection line and explain what the\nsolution means. Check any value of $a$ at which a divisor you use would\nbe zero.\n\n**3. Explain the common configuration (4 points)**\n\nShow that every plane in the family contains one common line.\nAlso justify why there are no further points that belong to **every**\nplane in the family. Interpret this configuration geometrically.\n\n**4. Satisfy specified conditions (5 points)**\n\nFind all values of $a$ for which $P$ lies in $E_a$ and check your result\nby substitution.\nAlso find every value of $a$ for which $E_a$ is parallel to $G$.\nDecide whether the planes are identical or distinct and parallel, and\njustify their position relative to $G$ for the remaining values.\n",
+        "solutionContent": "# Musterlösung: Ebenenschar\n\n**1. Normalenvektor und einzelne Ebenen**\n\nEin Normalenvektor ist\n\n$$\n\\vec n_a=\\begin{pmatrix}a-1\\\\1\\\\a\\end{pmatrix}.\n$$\n\nWegen seiner zweiten Komponente $1$ ist er für kein $a$ der Nullvektor.\nDamit beschreibt die Gleichung für jedes $a$ eine Ebene. Es gilt\n\n$$\nE_0:\\ -x+y=1,\\qquad E_1:\\ y+z=2.\n$$\n\n**2. Lage zu $F$**\n\nSubtraktion der Gleichung von $F$ von der Gleichung von $E_a$ ergibt\n\n$$\n (a-1)x+(a-1)z=a-1,\n$$\n\nalso $(a-1)(x+z-1)=0$.\n\nFür $a=1$ ist diese Gleichung für jeden Punkt von $F$ erfüllt, und\n$E_1$ ist genau $F$. Die gemeinsame Punktmenge ist die ganze Ebene.\n\nFür $a\\neq1$ darf durch $a-1$ geteilt werden. Gemeinsam gelten dann\n\n$$\nx+z=1,\\qquad y+z=2.\n$$\n\nMit $x=t$ folgt $z=1-t$ und $y=1+t$. Die Schnittgerade ist\n\n$$\nL:\\quad\\vec x=\\begin{pmatrix}0\\\\1\\\\1\\end{pmatrix}\n+t\\begin{pmatrix}1\\\\1\\\\-1\\end{pmatrix},\\qquad t\\in\\mathbb R.\n$$\n\nGenau diese Punkte liegen in beiden Ebenen. Somit schneiden sich\n$E_a$ und $F$ für jedes $a\\neq1$ in derselben Geraden $L$.\nEin Fall echter Parallelität zu $F$ tritt nicht auf.\n\n**3. Gemeinsame Gerade**\n\nFür einen beliebigen Punkt $(t,1+t,1-t)$ von $L$ gilt\n\n$$\n(a-1)t+(1+t)+a(1-t)=a+1\n$$\n\nfür jedes $a$. Also liegt die ganze Gerade in jeder Scharebene.\nUmgekehrt muss ein Punkt, der in allen Scharebenen liegt, insbesondere\nin $E_0$ und $E_1$ liegen. Deren Gleichungen $-x+y=1$ und $y+z=2$\nliefern genau $y=1+x$ und $z=1-x$, also genau die Gerade $L$.\nWeitere gemeinsame Punkte gibt es deshalb nicht.\nDie verschiedenen Ebenen der Schar haben somit eine gemeinsame Achse:\nSie liegen wie aufgeschlagene Buchseiten um dieselbe Gerade.\nDie Schar besteht tatsächlich aus verschiedenen Ebenen: Weil der\n$y$-Koeffizient immer $1$ ist, können zwei Gleichungen nur dann\nproportional und damit identisch sein, wenn ihre Parameter gleich sind.\n\n**4. Punktbedingung und Parallelität zu $G$**\n\nEinsetzen von $P$ ergibt\n\n$$\n2(a-1)+a=a+1\\quad\\Longleftrightarrow\\quad2a=3,\n$$\n\nalso $a=\\frac32$. Die Probe in\n$E_{3/2}:\\ \\frac12x+y+\\frac32z=\\frac52$ liefert\n$1+0+\\frac32=\\frac52$.\n\nDer Normalenvektor von $G$ ist $(0,1,1)^{\\mathsf T}$.\nFür parallele Ebenen müssen die Normalenvektoren parallel sein.\nDa beide zweite Komponente $1$ haben, wäre ihr Proportionalitätsfaktor\n$1$. Es müssen also $a-1=0$ und $a=1$ gelten: genau $a=1$.\nDann ist $E_1:\\ y+z=2$ von $G:\\ y+z=3$ verschieden, also **echt parallel**.\nFür $a\\neq1$ sind die Normalenvektoren nicht parallel; die Ebenen\nschneiden sich daher in einer Geraden. Es gibt keinen Parameterwert,\nfür den $E_a$ und $G$ identisch sind.\n\n# Eine Gesamtbewertung\n\nEs gibt genau eine Gesamtpunktzahl aus 20 BE und genau ein binäres\nGesamtergebnis: **bestanden ab 15 BE**, sonst nicht bestanden. Die in der\nAufgabe angegebenen Teilpunkte sind keine eigenen Bestehensgrenzen.\n\nBewerte nachvollziehbare mathematische Leistungen unabhängig davon, in\nwelchem Aufgabenteil sie stehen. Gleichwertige Verfahren und andere\nParameterformen erhalten denselben Kredit; identische Leistungen zählen\nnur einmal. Teilpunkte wie angegeben, sonst 0,5 BE für eine fachlich\nsinnvolle, aber unvollständige Teilleistung. Ein lokaler Rechen- oder\nÜbertragungsfehler wird nicht mehrfach bestraft; fachlich richtige und\nnachvollziehbare Folgearbeit behält ihren Kredit. Ein solcher lokaler\nFehler allein löst keine Gesamtpunktkappung aus. Auch knappe korrekte\nErklärungen genügen; bestimmte Schlüsselwörter oder eine bestimmte\nReihenfolge sind nicht verlangt.\n\n| Kriterium | BE |\n|---|---:|\n| Normalenvektor korrekt angegeben. | 1 |\n| Für alle a nicht verschwindenden Normalenvektor und damit echte Ebene begründet. | 1 |\n| E0 und E1 richtig angegeben (je 1). | 2 |\n| Gemeinsame Gleichungen mit F sinnvoll umgeformt (1); Bedingung (a-1)(x+z-1)=0 oder gleichwertig hergeleitet (1). | 2 |\n| Sonderfall a=1 getrennt und ohne unzulässiges Teilen untersucht (1); Identität mit F samt ganzer Ebene als Schnittmenge begründet (1). | 2 |\n| Für a ungleich 1 die zwei unabhängigen Bedingungen gelöst (1); richtige Parameterform der Schnittgeraden (1). | 2 |\n| Für alle übrigen Parameter dieselbe Schnittgerade und kein echt paralleler Fall zu F sinnvoll gedeutet. | 1 |\n| Allgemeinen Punkt von L für beliebiges a eingesetzt (1); Identität und Zugehörigkeit zu allen Scharebenen begründet (1). | 2 |\n| Mit zwei verschiedenen Scharebenen oder gleichwertig bewiesen, dass keine weiteren Punkte allen Ebenen gemeinsam sind. | 1 |\n| Konfiguration verschiedener Ebenen mit gemeinsamer Achse geometrisch verständlich gedeutet. | 1 |\n| Einzige Lösung a=3/2 aus Punktbedingung hergeleitet (1); durch Einsetzen geprüft (1). | 2 |\n| Normalenvergleich liefert nur a=1 (1); dort echte Parallelität zu G begründet (1); übrige Parameter als schneidend und Identität als unmöglich begründet (1). | 3 |\n\nBegrenze vor dem Vergleich mit der Bestehensgrenze die Gesamtpunktzahl auf höchstens 14 BE, wenn über die gesamte Abgabe die parameterabhängige Lageuntersuchung vollständig durch Einzelbeispiele ersetzt wird, keine vorgegebene Lage- oder Schnittbedingung zu begründet bestimmten Parameterwerten führt oder eine geometrisch tragfähige Deutung der Ebenenkonfigurationen vollständig fehlt. Dieselbe Kappung gilt, wenn über die gesamte Abgabe keine fachlich tragfähige Untersuchung des Sonderfalls a=1 bei der Lage zu F erkennbar ist. Der Wechsel von der Schnittgeraden für a≠1 zur ganzen Ebene für a=1 darf nicht vollständig fehlen. Dies gilt bei bloßem Auslassen ebenso wie bei Verlust des Falls durch unzulässiges Teilen durch a−1. Eine knappe begründete Feststellung E₁=F genügt; eine richtige Behandlung an anderer Stelle zählt. Ein einzelner lokaler Rechen- oder Übertragungsfehler allein löst weiterhin keine Kappung aus.\n\nMehrere zutreffende Kappungsgründe führen weiterhin nur zur selben Obergrenze von 14 BE. Es bleibt bei einer Gesamtbewertung ohne zusätzliche Teilbestehensbedingungen.\n",
+        "solutionContentEn": "# Worked solution: family of planes\n\n**1. Normal vector and individual planes**\n\nA normal vector is\n\n$$\n\\vec n_a=\\begin{pmatrix}a-1\\\\1\\\\a\\end{pmatrix}.\n$$\n\nIts second component is $1$, so it is nonzero for every $a$.\nThe equation therefore defines a genuine plane for every $a$.\nIn particular,\n\n$$\nE_0:\\ -x+y=1,\\qquad E_1:\\ y+z=2.\n$$\n\n**2. Position relative to $F$**\n\nSubtracting the equation of $F$ from that of $E_a$ gives\n\n$$\n (a-1)x+(a-1)z=a-1,\n$$\n\nor $(a-1)(x+z-1)=0$.\n\nFor $a=1$, this equation holds for every point of $F$, and $E_1$ is\nexactly $F$. Their intersection is the entire plane.\n\nFor $a\\neq1$, division by $a-1$ is valid. The simultaneous conditions are\n\n$$\nx+z=1,\\qquad y+z=2.\n$$\n\nPutting $x=t$ gives $z=1-t$ and $y=1+t$. The intersection line is\n\n$$\nL:\\quad\\vec x=\\begin{pmatrix}0\\\\1\\\\1\\end{pmatrix}\n+t\\begin{pmatrix}1\\\\1\\\\-1\\end{pmatrix},\\qquad t\\in\\mathbb R.\n$$\n\nExactly these points lie in both planes. Thus, for every $a\\neq1$,\n$E_a$ and $F$ intersect in this same line $L$.\nThere is no case of distinct parallel planes relative to $F$.\n\n**3. Common line**\n\nFor an arbitrary point $(t,1+t,1-t)$ on $L$,\n\n$$\n(a-1)t+(1+t)+a(1-t)=a+1\n$$\n\nholds for every $a$. Thus every plane in the family contains the whole line.\nConversely, any point belonging to all family members must in particular\nbelong to $E_0$ and $E_1$. Their equations $-x+y=1$ and $y+z=2$ give\nexactly $y=1+x$ and $z=1-x$, which describe $L$.\nThere are therefore no further points common to every plane.\nThe different planes share one common axis, like open book pages around\nthe same line. The family members are indeed different planes: since\nthe coefficient of $y$ is always $1$, two equations can be proportional,\nand hence define the same plane, only when their parameters are equal.\n\n**4. Point condition and parallelism to $G$**\n\nSubstituting $P$ gives\n\n$$\n2(a-1)+a=a+1\\quad\\Longleftrightarrow\\quad2a=3,\n$$\n\nso $a=\\frac32$. Checking in\n$E_{3/2}:\\ \\frac12x+y+\\frac32z=\\frac52$ gives\n$1+0+\\frac32=\\frac52$.\n\nThe normal vector of $G$ is $(0,1,1)^{\\mathsf T}$.\nParallel planes must have parallel normal vectors. Both normal vectors\nhave second component $1$, so the proportionality factor would have to\nbe $1$. Thus $a-1=0$ and $a=1$ are required, giving exactly $a=1$.\nThen $E_1:\\ y+z=2$ differs from $G:\\ y+z=3$, so the planes are\n**distinct and parallel**. For $a\\neq1$, their normals are not parallel,\nso the planes intersect in a line. No parameter makes $E_a$ identical\nto $G$.\n\n# One overall assessment\n\nThere is exactly one total score out of 20 points and one binary\noverall result: **pass at 15 points or more**, otherwise not passed.\nThe point allocations for individual parts are not separate pass thresholds.\n\nCredit traceable mathematical work wherever it appears in the submission.\nEquivalent methods and alternative parameterisations receive equal credit;\ncount the same performance only once. Award partial credit as specified,\notherwise 0.5 points for meaningful but incomplete mathematical work.\nDo not repeatedly penalise one local arithmetic or copying error; credit\nsound, traceable follow-through. Such a local error alone does not trigger\na total-score cap. Concise correct explanations suffice; no prescribed\nkeywords or order of work are required.\n\n| Criterion | Points |\n|---|---:|\n| States a correct normal vector. | 1 |\n| Justifies a nonzero normal vector and hence a genuine plane for every a. | 1 |\n| States E0 and E1 correctly (1 each). | 2 |\n| Transforms the simultaneous equations with F appropriately (1); derives (a-1)(x+z-1)=0 or an equivalent condition (1). | 2 |\n| Treats a=1 separately without invalid division (1); justifies equality with F and the whole plane as intersection (1). | 2 |\n| Solves the two independent conditions for a not equal to 1 (1); correct parametric intersection line (1). | 2 |\n| Meaningfully interprets the same intersection line for every other parameter and the absence of a distinct parallel case relative to F. | 1 |\n| Substitutes a general point of L for arbitrary a (1); establishes the identity and membership in every family plane (1). | 2 |\n| Uses two different family planes or an equivalent argument to prove there are no further points common to all planes. | 1 |\n| Clearly interprets the configuration of different planes sharing an axis. | 1 |\n| Derives the unique value a=3/2 from the point condition (1); checks by substitution (1). | 2 |\n| Comparison of normals gives only a=1 (1); justifies distinct parallel planes there (1); justifies intersection for other parameters and impossibility of equality (1). | 3 |\n\nBefore comparison with the passing threshold, cap the total at 14 points if, across the entire submission, the parameter-dependent positional investigation is replaced entirely by isolated examples, no specified positional or intersection condition leads to justified parameter values, or a geometrically sound interpretation of the plane configurations is entirely absent. The same cap applies if no mathematically sound treatment of the exceptional case a=1 relative to F is evident anywhere in the submission. The change from an intersection line for a≠1 to the entire plane for a=1 must not be entirely absent. This includes simply omitting the case as well as losing it through invalid division by a−1. A concise justified statement that E₁=F is sufficient; a correct treatment elsewhere counts. A single local arithmetic or copying error alone still does not trigger the cap.\n\nMultiple applicable cap reasons still give the same upper limit of 14 points. There is still one overall assessment, without additional part pass conditions.\n",
+        "coveredGoalIds": [
+          "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc"
+        ],
+        "coveredStrands": [
+          "L3"
+        ],
+        "demandLevels": [
+          "AB3"
+        ],
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "normal",
+              "points": 1,
+              "description": "Normalenvektor korrekt angegeben.",
+              "descriptionEn": "States a correct normal vector."
+            },
+            {
+              "id": "genuine-plane",
+              "points": 1,
+              "description": "Für alle a nicht verschwindenden Normalenvektor und damit echte Ebene begründet.",
+              "descriptionEn": "Justifies a nonzero normal vector and hence a genuine plane for every a."
+            },
+            {
+              "id": "examples",
+              "points": 2,
+              "description": "E0 und E1 richtig angegeben (je 1).",
+              "descriptionEn": "States E0 and E1 correctly (1 each)."
+            },
+            {
+              "id": "elimination",
+              "points": 2,
+              "description": "Gemeinsame Gleichungen mit F sinnvoll umgeformt (1); Bedingung (a-1)(x+z-1)=0 oder gleichwertig hergeleitet (1).",
+              "descriptionEn": "Transforms the simultaneous equations with F appropriately (1); derives (a-1)(x+z-1)=0 or an equivalent condition (1)."
+            },
+            {
+              "id": "exception",
+              "points": 2,
+              "description": "Sonderfall a=1 getrennt und ohne unzulässiges Teilen untersucht (1); Identität mit F samt ganzer Ebene als Schnittmenge begründet (1).",
+              "descriptionEn": "Treats a=1 separately without invalid division (1); justifies equality with F and the whole plane as intersection (1)."
+            },
+            {
+              "id": "intersection",
+              "points": 2,
+              "description": "Für a ungleich 1 die zwei unabhängigen Bedingungen gelöst (1); richtige Parameterform der Schnittgeraden (1).",
+              "descriptionEn": "Solves the two independent conditions for a not equal to 1 (1); correct parametric intersection line (1)."
+            },
+            {
+              "id": "position-meaning",
+              "points": 1,
+              "description": "Für alle übrigen Parameter dieselbe Schnittgerade und kein echt paralleler Fall zu F sinnvoll gedeutet.",
+              "descriptionEn": "Meaningfully interprets the same intersection line for every other parameter and the absence of a distinct parallel case relative to F."
+            },
+            {
+              "id": "common-inclusion",
+              "points": 2,
+              "description": "Allgemeinen Punkt von L für beliebiges a eingesetzt (1); Identität und Zugehörigkeit zu allen Scharebenen begründet (1).",
+              "descriptionEn": "Substitutes a general point of L for arbitrary a (1); establishes the identity and membership in every family plane (1)."
+            },
+            {
+              "id": "common-exact",
+              "points": 1,
+              "description": "Mit zwei verschiedenen Scharebenen oder gleichwertig bewiesen, dass keine weiteren Punkte allen Ebenen gemeinsam sind.",
+              "descriptionEn": "Uses two different family planes or an equivalent argument to prove there are no further points common to all planes."
+            },
+            {
+              "id": "common-meaning",
+              "points": 1,
+              "description": "Konfiguration verschiedener Ebenen mit gemeinsamer Achse geometrisch verständlich gedeutet.",
+              "descriptionEn": "Clearly interprets the configuration of different planes sharing an axis."
+            },
+            {
+              "id": "point-condition",
+              "points": 2,
+              "description": "Einzige Lösung a=3/2 aus Punktbedingung hergeleitet (1); durch Einsetzen geprüft (1).",
+              "descriptionEn": "Derives the unique value a=3/2 from the point condition (1); checks by substitution (1)."
+            },
+            {
+              "id": "parallel-condition",
+              "points": 3,
+              "description": "Normalenvergleich liefert nur a=1 (1); dort echte Parallelität zu G begründet (1); übrige Parameter als schneidend und Identität als unmöglich begründet (1).",
+              "descriptionEn": "Comparison of normals gives only a=1 (1); justifies distinct parallel planes there (1); justifies intersection for other parameters and impossibility of equality (1)."
+            }
+          ]
+        },
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/space-geometry-four-same-identity-2026-11-04-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/reviewed-execution-contract.json",
+        "reviewNote": "Whole bilingual same-identity assessment approved by the independent whole-content review and bounded plane-rubric followup. One ordinary 20-point total, pass at 15, with the reviewed overall caps. Only this stable goal ID is assessed; its existing curricular identity and preparation contract are retained."
+      }
     },
     {
       "id": "eb112b6f-4cc4-58af-975a-f1ea61b727f0",

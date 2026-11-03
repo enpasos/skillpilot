@@ -1,8 +1,28 @@
 # Abschlussintegrität der bisher mit M7 geführten Curricula
 
-Stand: 3. November 2026, lokale Prüfung. Die ergänzte deterministische Prüfung verwendet die tatsächliche Backend-Projektion der Länderangebote, einschließlich G8/G9, Stufe, GK, LK und Kurszusammenführung, sowie der tatsächlich auswählbaren kanonischen Personal Curricula unter „Alle Bundesländer“. Sie berücksichtigt auch direkte `goalEntry`-Referenzen, die einen kanonischen Cluster in der geprüften Projektion zu einem atomaren Ziel machen. Die im Grundreview gefundene ALL-Inventarlücke ist im tatsächlichen Mathematiknachlauf geschlossen: 154 Länderangebote und sieben ALL-Konfigurationen sind geprüft; die rohe kanonische Diagnose bleibt separat.
+Stand: 4. November 2026, lokale Prüfung. Die ergänzte deterministische Prüfung verwendet die tatsächliche Backend-Projektion der Länderangebote, einschließlich G8/G9, Stufe, GK, LK und Kurszusammenführung, sowie der tatsächlich auswählbaren kanonischen Personal Curricula unter „Alle Bundesländer“. Sie berücksichtigt auch direkte `goalEntry`-Referenzen, die einen kanonischen Cluster in der geprüften Projektion zu einem atomaren Ziel machen. Die im Grundreview gefundene ALL-Inventarlücke ist im tatsächlichen Mathematiknachlauf geschlossen: 154 Länderangebote und sieben ALL-Konfigurationen sind geprüft; die rohe kanonische Diagnose bleibt separat.
 
-## Aktueller integrierter Stand: bestehende Vektorprüfung in 36 weiteren Angeboten
+## Aktueller integrierter Stand: vier ganze Raumgeometrie-Prüfungsformen
+
+Die vier bestehenden Kompetenzen zu geradlinigen Bewegungen mit Vektoren,
+Spurpunkten, Geraden- und Ebenenscharen besitzen vollständige deutsche und
+englische Prüfungsformen mit Lösungen und Gesamtbewertung. Bestehende IDs,
+Kompetenzbeschreibungen, Zielumfänge, sichtbare Pfade und Voraussetzungen
+bleiben unverändert. Acht betroffene A/M-Zeilen sind tatsächlich unabhängig
+neu bewertet; alle 807 curricularen Ziele bleiben in der Qualitätsprüfung.
+
+Der tatsächliche Java-Nachlauf über 161 Angebote und 46 Kursvereinigungen
+schließt weitere **426 Ziel-Angebots-Paare und 406 Endpunktpaare** ohne neue
+Lücken. Es verbleiben **343 ungedeckte Ziel-IDs / 7.710 Ziel-Angebots-Paare
+sowie 200 gewöhnliche Endpunkt-IDs / 3.745 Endpunktpaare**. Thüringen
+Sekundarstufe I / G8 / GK+LK bleibt gültig, die anderen 160 Angebote bleiben rot.
+
+Alle elf normalen Autorenchecks bestehen. Nach dem Import aller 82 Dateien
+stimmen die 2.655 tatsächlich gemessenen Runtime-Eingänge überein.
+[Messung, unabhängiges Review und Import](evidence/curriculum-completion-integrity/2026-11-04/space-geometry-four/README.md)
+ersetzen keine vollständige Mathematik-, M7-, CI- oder Deployment-Abnahme.
+
+## Vorheriger integrierter Stand: bestehende Vektorprüfung in 36 weiteren Angeboten
 
 Die bestehende Prüfung zu räumlichen Koordinaten und Vektoroperationen ist in
 36 weiteren fachlich geprüften Angeboten erreichbar. Genau ein veraltetes

@@ -55,6 +55,11 @@ M7-, Deployment- oder vollständige CI-Freigabe.
   wird mit dem Ergebnis des vorhandenen Compilers synchronisiert. Die Aufgabe
   und ihre bewertete Abdeckung bleiben unverändert. Die tatsächlichen Bäume
   bestätigen alle neuen Plätze auch bei gemeinsamer Auswahl von GK und LK.
+- Vier weitere bestehende Raumgeometriekompetenzen besitzen vollständige
+  Prüfungsformen: geradlinige Bewegungen mit Vektoren, Spurpunkte, Geraden-
+  und Ebenenscharen. Die Gesamtbewertung schützt die wesentlichen Leistungen;
+  insbesondere darf der zentrale Spezialfall der Ebenenschar nicht vollständig
+  fehlen und trotzdem zum Bestehen führen.
 
 Die Konzepte und das LaTeX/PDF sind Teil des PR. Der abschließende Abgleich mit
 allen weiteren fachlichen Korrekturen bleibt Bestandteil des Meilensteins.
@@ -122,6 +127,16 @@ Autorenchecks bestehen; nach dem Import aller 49 Dateien stimmen sämtliche
 2.636 gemessenen Runtime-Eingaben überein. Die 807 curricularen Ziele bleiben
 in der Qualitätsprüfung. Der gesamte Mathematik-Corpus bleibt rot.
 [Messung, Review und Import](../qa-ci/evidence/curriculum-completion-integrity/2026-11-03/vector-thirtysix/README.md).
+
+Die vier zusätzlichen Raumgeometrie-Prüfungsformen schließen weitere
+**426 Ziel-Angebots-Paare und 406 Endpunktpaare**. Aktuell bleiben **343
+ungedeckte Ziel-IDs / 7.710 Ziel-Angebots-Paare sowie 200 gewöhnliche
+Endpunkt-IDs / 3.745 Endpunktpaare**. Zielumfang, sichtbare Pfade und wirksame
+Voraussetzungen bleiben unverändert. Alle elf normalen Autorenchecks bestehen;
+nach dem Import der 82 Dateien stimmen die 2.655 gemessenen Runtime-Eingänge.
+Die acht betroffenen A/M-Zeilen sind tatsächlich unabhängig neu bewertet.
+Thüringen Sekundarstufe I bleibt gültig, die anderen 160 Angebote bleiben rot.
+[Messung, unabhängiges Review und Import](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/space-geometry-four/README.md).
 
 Der GitHub-Nachlauf von `4aba8e0c33` bestätigt alle dort gemessenen Lückenpaare
 exakt. Lernzielbuch, Completion-Kern und Cockpit bestehen. Die allgemeine

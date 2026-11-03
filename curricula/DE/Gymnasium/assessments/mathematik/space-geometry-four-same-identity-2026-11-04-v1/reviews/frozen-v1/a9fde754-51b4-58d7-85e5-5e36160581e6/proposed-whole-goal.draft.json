@@ -1,0 +1,137 @@
+{
+  "id": "a9fde754-51b4-58d7-85e5-5e36160581e6",
+  "shortKey": "canonical_math_q2_find_line_coordinate_plane_intersections_spur_points",
+  "title": "Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen",
+  "titleEn": "Determine intersections of a line with coordinate planes",
+  "description": "Die lernende Person kann Schnittpunkte einer Geraden mit Koordinatenebenen bestimmen, diese als Durchstoßpunkte bzw. Spurpunkte deuten und rechnerisch prüfen.",
+  "descriptionEn": "The learner can determine intersections of a line with coordinate planes, interpret them as trace points, and check them algebraically.",
+  "requires": [
+    "525b1da9-7fdd-4a70-9f30-ff01d7511b04",
+    "27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB2",
+    "processCompetencies": [
+      "K3.2",
+      "K4.1"
+    ],
+    "guidingIdeas": [
+      "L3"
+    ],
+    "phase": "Q2",
+    "area": "LinearAlgebra",
+    "topicCode": "CANONICAL.MATH.SEK2.Q2.3.LINE_COORDINATE_PLANE_SPUR_POINTS"
+  },
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 2",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "canonical"
+  ],
+  "contains": [],
+  "type": "atomic",
+  "semanticAtomic": true,
+  "resourceLinks": [
+    {
+      "type": "goal-visualization",
+      "resourceType": "image",
+      "role": "primary",
+      "skillpilotId": "a9fde754-51b4-58d7-85e5-5e36160581e6",
+      "title": "Visualisierung: Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen",
+      "url": "/assets/goal-visualizations/mathematik/a9fde754-51b4-58d7-85e5-5e36160581e6/a9fde754-51b4-58d7-85e5-5e36160581e6.png",
+      "provider": "OpenAI / ChatGPT-Codex image generation",
+      "description": "Visualisierung zum Lernziel: Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen.",
+      "altText": "Didaktische Visualisierung zum Lernziel \"Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen\". Die lernende Person kann Schnittpunkte einer Geraden mit Koordinatenebenen bestimmen, diese als Durchstoßpunkte bzw. Spurpunkte deuten und rechnerisch prüfen.",
+      "lang": "de",
+      "license": "AI-generated, SkillPilot-curated",
+      "reviewStatus": "pilot"
+    }
+  ],
+  "nodeKind": "exam",
+  "examData": {
+    "reviewStatus": "draft",
+    "taskContent": "# Eine Gerade durch die Koordinatenebenen verfolgen\n\nGegeben ist die Gerade\n\n$$\ng:\\quad\\vec x=\\begin{pmatrix}2\\\\-3\\\\6\\end{pmatrix}\n+r\\begin{pmatrix}1\\\\2\\\\-2\\end{pmatrix},\\qquad r\\in\\mathbb R.\n$$\n\nDie $xy$-Ebene hat die Gleichung $z=0$, die $xz$-Ebene $y=0$ und\ndie $yz$-Ebene $x=0$.\n\nZeige deine Ansätze und Rechenschritte. Insgesamt sind **20 BE** erreichbar.\n\n**1. Alle drei Spurpunkte bestimmen und prüfen (12 BE)**\n\nBestimme den Schnittpunkt von $g$ mit jeder der drei Koordinatenebenen.\nGib jeweils die eingesetzte Ebenenbedingung, den Geradenparameter und den\nPunkt an. Prüfe jeden Punkt rechnerisch sowohl an der ursprünglichen\nGeradengleichung als auch an der betreffenden Ebenenbedingung.\n\n**2. Die Punkte geometrisch deuten (2 BE)**\n\nErkläre, weshalb die drei Punkte Durchstoßpunkte bzw. Spurpunkte der\nGeraden sind. Erläutere, warum man einen solchen Punkt im Allgemeinen\nnicht erhält, indem man bei einem beliebigen Punkt auf $g$ einfach eine\nKoordinate durch null ersetzt.\n\n**3. Zwei Sonderfälle unterscheiden (6 BE)**\n\nBetrachte zusätzlich die Geraden\n\n$$\nh:\\quad\\vec x=\\begin{pmatrix}1\\\\2\\\\0\\end{pmatrix}\n+s\\begin{pmatrix}2\\\\-1\\\\0\\end{pmatrix},\\qquad s\\in\\mathbb R,\n$$\n\n$$\nk:\\quad\\vec x=\\begin{pmatrix}1\\\\2\\\\4\\end{pmatrix}\n+u\\begin{pmatrix}2\\\\-1\\\\0\\end{pmatrix},\\qquad u\\in\\mathbb R.\n$$\n\nUntersuche **nur ihre Beziehung zur $xy$-Ebene**. Begründe jeweils mit\nder Koordinatenbedingung, ob es keinen, genau einen oder unendlich viele\ngemeinsame Punkte gibt. Entscheide jeweils, ob ein einzelner eindeutiger\nDurchstoßpunkt angegeben werden kann.\n",
+    "taskContentEn": "# Follow a line through the coordinate planes\n\nConsider the line\n\n$$\ng:\\quad\\vec x=\\begin{pmatrix}2\\\\-3\\\\6\\end{pmatrix}\n+r\\begin{pmatrix}1\\\\2\\\\-2\\end{pmatrix},\\qquad r\\in\\mathbb R.\n$$\n\nThe $xy$-plane has equation $z=0$, the $xz$-plane has equation $y=0$,\nand the $yz$-plane has equation $x=0$.\n\nShow your setup and calculations. A total of **20 points** is available.\n\n**1. Find and check all three trace points (12 points)**\n\nFind the intersection of $g$ with each of the three coordinate planes.\nFor each one, state the plane condition used, the line parameter, and the\npoint. Check each point algebraically against both the original line\nequation and the corresponding plane condition.\n\n**2. Interpret the points geometrically (2 points)**\n\nExplain why these are intersection points, also called trace points, of\nthe line with the coordinate planes. Explain why, in general, a trace\npoint cannot be found by taking an arbitrary point on $g$ and simply\nreplacing one coordinate by zero.\n\n**3. Distinguish two special cases (6 points)**\n\nAlso consider\n\n$$\nh:\\quad\\vec x=\\begin{pmatrix}1\\\\2\\\\0\\end{pmatrix}\n+s\\begin{pmatrix}2\\\\-1\\\\0\\end{pmatrix},\\qquad s\\in\\mathbb R,\n$$\n\n$$\nk:\\quad\\vec x=\\begin{pmatrix}1\\\\2\\\\4\\end{pmatrix}\n+u\\begin{pmatrix}2\\\\-1\\\\0\\end{pmatrix},\\qquad u\\in\\mathbb R.\n$$\n\nInvestigate **only their relationship to the $xy$-plane**. Use the coordinate\ncondition to justify whether each line has no common point, exactly one,\nor infinitely many common points with that plane. In each case, decide\nwhether a single unique trace point can be given.\n",
+    "solutionContent": "# Musterlösung: Spurpunkte\n\nAuf $g$ gelten gleichzeitig $x=2+r$, $y=-3+2r$ und $z=6-2r$.\n\n**1. Schnittpunkte und Proben**\n\nFür die $xy$-Ebene ist $6-2r=0$, also $r=3$. Damit ist\n$T_{xy}(5\\mid3\\mid0)$. Die Probe an der Geraden liefert\n\n$$\n\\begin{pmatrix}2\\\\-3\\\\6\\end{pmatrix}\n+3\\begin{pmatrix}1\\\\2\\\\-2\\end{pmatrix}\n=\\begin{pmatrix}5\\\\3\\\\0\\end{pmatrix}.\n$$\n\nDie dritte Koordinate ist null, also liegt der Punkt auch in der $xy$-Ebene.\n\nFür die $xz$-Ebene ist $-3+2r=0$, also $r=\\frac32$. Damit ist\n$T_{xz}(\\frac72\\mid0\\mid3)$. Die Geradenprobe ist\n\n$$\n\\begin{pmatrix}2\\\\-3\\\\6\\end{pmatrix}\n+\\frac32\\begin{pmatrix}1\\\\2\\\\-2\\end{pmatrix}\n=\\begin{pmatrix}\\frac72\\\\0\\\\3\\end{pmatrix}.\n$$\n\nDie zweite Koordinate ist null, also ist auch die Ebenenbedingung erfüllt.\n\nFür die $yz$-Ebene ist $2+r=0$, also $r=-2$. Damit ist\n$T_{yz}(0\\mid-7\\mid10)$. Die Geradenprobe ist\n\n$$\n\\begin{pmatrix}2\\\\-3\\\\6\\end{pmatrix}\n-2\\begin{pmatrix}1\\\\2\\\\-2\\end{pmatrix}\n=\\begin{pmatrix}0\\\\-7\\\\10\\end{pmatrix}.\n$$\n\nDie erste Koordinate ist null; damit gilt auch die Ebenenbedingung.\nJede der drei Ebenenbedingungen bestimmt hier genau einen Parameterwert.\n\n**2. Geometrische Bedeutung**\n\nEin Spurpunkt liegt gleichzeitig auf der Geraden und in der jeweiligen\nKoordinatenebene. An ihm durchstößt $g$ diese Ebene. Beim Verändern von\n$r$ ändern sich hier alle drei Koordinaten zusammen. Nur eine Koordinate\neines beliebigen Geradenpunkts auf null zu setzen führt zwar zu einem\nPunkt in der betreffenden Ebene, im Allgemeinen aber weg von $g$.\nBeispielsweise liegt $(2\\mid-3\\mid0)$ in der $xy$-Ebene, aber nicht auf\n$g$: Aus $x=2$ würde $r=0$ folgen, was auf $g$ die Höhe $z=6$ ergibt.\n\n**3. Sonderfälle**\n\nBei $h$ ist die dritte Koordinate für jedes $s$ gleich null. Die\nEbenenbedingung lautet $0=0$ und ist für alle Parameter erfüllt.\nDie ganze Gerade liegt in der $xy$-Ebene; es gibt unendlich viele\ngemeinsame Punkte und keinen einzelnen eindeutigen Durchstoßpunkt.\n\nBei $k$ ist die dritte Koordinate stets $4$. Die Bedingung $z=0$ würde\n$4=0$ verlangen, ist also für keinen Parameter erfüllt. Die Gerade ist\nzur $xy$-Ebene parallel und liegt außerhalb dieser Ebene. Es gibt keinen\ngemeinsamen Punkt und damit keinen Durchstoßpunkt.\n\n# Eine Gesamtbewertung\n\nEs gibt genau eine Gesamtpunktzahl aus 20 BE und genau ein binäres\nGesamtergebnis: **bestanden ab 15 BE**, sonst nicht bestanden. Die in der\nAufgabe angegebenen Teilpunkte sind keine eigenen Bestehensgrenzen.\n\nBewerte nachvollziehbare mathematische Leistungen unabhängig davon, in\nwelchem Aufgabenteil sie stehen. Gleichwertige Verfahren und andere\nParameterformen erhalten denselben Kredit; identische Leistungen zählen\nnur einmal. Teilpunkte wie angegeben, sonst 0,5 BE für eine fachlich\nsinnvolle, aber unvollständige Teilleistung. Ein lokaler Rechen- oder\nÜbertragungsfehler wird nicht mehrfach bestraft; fachlich richtige und\nnachvollziehbare Folgearbeit behält ihren Kredit. Ein solcher lokaler\nFehler allein löst keine Gesamtpunktkappung aus. Auch knappe korrekte\nErklärungen genügen; bestimmte Schlüsselwörter oder eine bestimmte\nReihenfolge sind nicht verlangt.\n\n| Kriterium | BE |\n|---|---:|\n| xy: richtige Bedingung (1), Parameter (1), Punkt (1), ausdrückliche Geraden- und Ebenenprobe (je 0,5). | 4 |\n| xz: richtige Bedingung (1), Parameter (1), Punkt (1), ausdrückliche Geraden- und Ebenenprobe (je 0,5). | 4 |\n| yz: richtige Bedingung (1), Parameter (1), Punkt (1), ausdrückliche Geraden- und Ebenenprobe (je 0,5). | 4 |\n| Gemeinsame Zugehörigkeit als Bedeutung des Spurpunkts erklärt (1); bloßes Nullsetzen einer Koordinate eines beliebigen Geradenpunkts zutreffend abgegrenzt (1). | 2 |\n| h: für alle Parameter z=0 nachgewiesen (1); ganze Gerade in der Ebene und unendlich viele gemeinsame Punkte erkannt (1). | 2 |\n| k: Widerspruch 4=0 nachgewiesen (1); parallel außerhalb und ohne gemeinsame Punkte richtig gedeutet (1). | 2 |\n| Für h und k jeweils richtig begründet, dass kein einzelner eindeutiger Durchstoßpunkt vorliegt (je 1). | 2 |\n\nBegrenze vor dem Vergleich mit der Bestehensgrenze die Gesamtpunktzahl auf höchstens 14 BE, wenn über die gesamte Abgabe die Schnittuntersuchung mit einer der drei Koordinatenebenen vollständig fehlt, keinerlei tragfähige geometrische Deutung der Schnittmenge erkennbar ist oder rechnerische Kontrollen der gemeinsamen Geraden- und Ebenenzugehörigkeit vollständig fehlen. Ein Einsetzen in die Geradengleichung darf gleichzeitig zur Bestimmung und zur Probe zählen, wenn die gemeinsame Zugehörigkeit daran ausdrücklich kontrolliert wird; eine künstliche Wiederholung derselben Rechnung ist nicht nötig.\n\nMehrere zutreffende Kappungsgründe führen weiterhin nur zur selben Obergrenze von 14 BE. Es bleibt bei einer Gesamtbewertung ohne zusätzliche Teilbestehensbedingungen.\n",
+    "solutionContentEn": "# Worked solution: trace points\n\nOn $g$, the simultaneous coordinate equations are $x=2+r$, $y=-3+2r$,\nand $z=6-2r$.\n\n**1. Intersections and checks**\n\nFor the $xy$-plane, $6-2r=0$, so $r=3$. Thus $T_{xy}=(5,3,0)$.\nChecking the line gives\n\n$$\n\\begin{pmatrix}2\\\\-3\\\\6\\end{pmatrix}\n+3\\begin{pmatrix}1\\\\2\\\\-2\\end{pmatrix}\n=\\begin{pmatrix}5\\\\3\\\\0\\end{pmatrix}.\n$$\n\nThe third coordinate is zero, so the point also lies in the $xy$-plane.\n\nFor the $xz$-plane, $-3+2r=0$, so $r=\\frac32$. Thus\n$T_{xz}=(\\frac72,0,3)$. The line check is\n\n$$\n\\begin{pmatrix}2\\\\-3\\\\6\\end{pmatrix}\n+\\frac32\\begin{pmatrix}1\\\\2\\\\-2\\end{pmatrix}\n=\\begin{pmatrix}\\frac72\\\\0\\\\3\\end{pmatrix}.\n$$\n\nThe second coordinate is zero, satisfying the plane condition as well.\n\nFor the $yz$-plane, $2+r=0$, so $r=-2$. Thus $T_{yz}=(0,-7,10)$.\nThe line check is\n\n$$\n\\begin{pmatrix}2\\\\-3\\\\6\\end{pmatrix}\n-2\\begin{pmatrix}1\\\\2\\\\-2\\end{pmatrix}\n=\\begin{pmatrix}0\\\\-7\\\\10\\end{pmatrix}.\n$$\n\nThe first coordinate is zero, so the plane condition also holds.\nHere, each plane condition determines exactly one value of the line parameter.\n\n**2. Geometric meaning**\n\nA trace point lies both on the line and in the relevant coordinate plane.\nIt is where $g$ crosses that plane. Changing $r$ changes all three\ncoordinates together in this example. Replacing just one coordinate of\nan arbitrary point on the line by zero gives a point in the plane, but\ngenerally takes it off the line.\nFor example, $(2,-3,0)$ is in the $xy$-plane but not on $g$: its first\ncoordinate would require $r=0$, for which the line gives $z=6$.\n\n**3. Special cases**\n\nOn $h$, the third coordinate is zero for every $s$. The plane condition\nis $0=0$ and holds for every parameter. The entire line lies in the\n$xy$-plane, so there are infinitely many common points and no single\nunique trace point.\n\nOn $k$, the third coordinate is always $4$. The condition $z=0$ would\nrequire $4=0$, which holds for no parameter. The line is parallel to\nthe $xy$-plane and lies outside it. There is no common point and hence\nno trace point.\n\n# One overall assessment\n\nThere is exactly one total score out of 20 points and one binary\noverall result: **pass at 15 points or more**, otherwise not passed.\nThe point allocations for individual parts are not separate pass thresholds.\n\nCredit traceable mathematical work wherever it appears in the submission.\nEquivalent methods and alternative parameterisations receive equal credit;\ncount the same performance only once. Award partial credit as specified,\notherwise 0.5 points for meaningful but incomplete mathematical work.\nDo not repeatedly penalise one local arithmetic or copying error; credit\nsound, traceable follow-through. Such a local error alone does not trigger\na total-score cap. Concise correct explanations suffice; no prescribed\nkeywords or order of work are required.\n\n| Criterion | Points |\n|---|---:|\n| xy: correct condition (1), parameter (1), point (1), explicit checks of line and plane membership (0.5 each). | 4 |\n| xz: correct condition (1), parameter (1), point (1), explicit checks of line and plane membership (0.5 each). | 4 |\n| yz: correct condition (1), parameter (1), point (1), explicit checks of line and plane membership (0.5 each). | 4 |\n| Explains the trace point as belonging to both line and plane (1); correctly distinguishes this from merely zeroing a coordinate of an arbitrary point on the line (1). | 2 |\n| h: shows z=0 for every parameter (1); recognises that the whole line is in the plane, with infinitely many common points (1). | 2 |\n| k: shows the contradiction 4=0 (1); correctly interprets the line as parallel, outside the plane, with no common point (1). | 2 |\n| Correctly justifies for h and k that neither has a single unique trace point (1 each). | 2 |\n\nBefore comparison with the passing threshold, cap the total at 14 points if, across the entire submission, investigation of one of the three coordinate-plane intersections is entirely absent, there is no sound geometric interpretation of the intersection set at all, or algebraic checks of simultaneous line and plane membership are entirely absent. Substitution into the line equation may count both for finding and for checking a point if simultaneous membership is explicitly checked there; artificially repeating the same calculation is unnecessary.\n\nMultiple applicable cap reasons still give the same upper limit of 14 points. There is still one overall assessment, without additional part pass conditions.\n",
+    "coveredGoalIds": [
+      "a9fde754-51b4-58d7-85e5-5e36160581e6"
+    ],
+    "coveredStrands": [
+      "L3"
+    ],
+    "demandLevels": [
+      "AB2"
+    ],
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 15,
+      "steps": [
+        {
+          "id": "xy",
+          "points": 4,
+          "description": "xy: richtige Bedingung (1), Parameter (1), Punkt (1), ausdrückliche Geraden- und Ebenenprobe (je 0,5).",
+          "descriptionEn": "xy: correct condition (1), parameter (1), point (1), explicit checks of line and plane membership (0.5 each)."
+        },
+        {
+          "id": "xz",
+          "points": 4,
+          "description": "xz: richtige Bedingung (1), Parameter (1), Punkt (1), ausdrückliche Geraden- und Ebenenprobe (je 0,5).",
+          "descriptionEn": "xz: correct condition (1), parameter (1), point (1), explicit checks of line and plane membership (0.5 each)."
+        },
+        {
+          "id": "yz",
+          "points": 4,
+          "description": "yz: richtige Bedingung (1), Parameter (1), Punkt (1), ausdrückliche Geraden- und Ebenenprobe (je 0,5).",
+          "descriptionEn": "yz: correct condition (1), parameter (1), point (1), explicit checks of line and plane membership (0.5 each)."
+        },
+        {
+          "id": "meaning",
+          "points": 2,
+          "description": "Gemeinsame Zugehörigkeit als Bedeutung des Spurpunkts erklärt (1); bloßes Nullsetzen einer Koordinate eines beliebigen Geradenpunkts zutreffend abgegrenzt (1).",
+          "descriptionEn": "Explains the trace point as belonging to both line and plane (1); correctly distinguishes this from merely zeroing a coordinate of an arbitrary point on the line (1)."
+        },
+        {
+          "id": "contained",
+          "points": 2,
+          "description": "h: für alle Parameter z=0 nachgewiesen (1); ganze Gerade in der Ebene und unendlich viele gemeinsame Punkte erkannt (1).",
+          "descriptionEn": "h: shows z=0 for every parameter (1); recognises that the whole line is in the plane, with infinitely many common points (1)."
+        },
+        {
+          "id": "parallel",
+          "points": 2,
+          "description": "k: Widerspruch 4=0 nachgewiesen (1); parallel außerhalb und ohne gemeinsame Punkte richtig gedeutet (1).",
+          "descriptionEn": "k: shows the contradiction 4=0 (1); correctly interprets the line as parallel, outside the plane, with no common point (1)."
+        },
+        {
+          "id": "uniqueness",
+          "points": 2,
+          "description": "Für h und k jeweils richtig begründet, dass kein einzelner eindeutiger Durchstoßpunkt vorliegt (je 1).",
+          "descriptionEn": "Correctly justifies for h and k that neither has a single unique trace point (1 each)."
+        }
+      ]
+    }
+  }
+}
