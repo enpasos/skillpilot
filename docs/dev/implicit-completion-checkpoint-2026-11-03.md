@@ -46,6 +46,10 @@ M7-, Deployment- oder vollständige CI-Freigabe.
   In Thüringen werden außerdem 21 durch Originalquellen belegte Grundlagen
   als eigene Lernziele angeboten, auch bei gemeinsamer Auswahl beider
   Schulstufen. Die reine Oberstufenansicht bleibt unverändert.
+- Die bestehende Modellierungsprüfung zur Medikamentenkonzentration ist in
+  20 weiteren fachlich geprüften Oberstufenangeboten erreichbar. Die Aufgabe
+  und ihre Voraussetzungen bleiben unverändert. Bei zusätzlichem Stoff wird
+  keine offizielle Pflichtstoffabdeckung behauptet.
 
 Die Konzepte und das LaTeX/PDF sind Teil des PR. Der abschließende Abgleich mit
 allen weiteren fachlichen Korrekturen bleibt Bestandteil des Meilensteins.
@@ -94,6 +98,16 @@ Runtime-Eingaben und die geprüfte Korrektur; ignorierte lokale Quellencaches
 sind nicht Teil dieses Nachweises. Die 807 curricularen Ziele bleiben in der
 Qualitätsprüfung.
 [Messung und Standardprüfungen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-03/th-seki-geometry/README.md).
+
+Die anschließende Platzierung der bestehenden Medikamentenkonzentrationsprüfung
+schließt weitere **100 Ziel-Angebots-Paare und 60 Endpunktpaare**. Aktuell
+bleiben **353 ungedeckte Ziel-IDs / 8.217 Ziel-Angebots-Paare sowie 206
+gewöhnliche Endpunkt-IDs / 4.169 Endpunktpaare**. Thüringen Sekundarstufe I
+bleibt gültig, die übrigen 160 Angebote enthalten weiterhin Lücken. Die sieben
+relevanten Autorenchecks bestehen; alle 2.607 tatsächlich gemessenen
+Runtime-Eingänge stimmen nach dem Import überein. Sämtliche bisherigen
+sichtbaren Zielpfade und wirksamen Voraussetzungen bleiben erhalten.
+[Messung und Import](../qa-ci/evidence/curriculum-completion-integrity/2026-11-03/drug-twenty/README.md).
 
 Im [GitHub-Lauf für `8899fb212c`](https://github.com/enpasos/skillpilot/actions/runs/41707073546)
 besteht der reale vollständige Mathematik-MCP-Prüfungsablauf einschließlich

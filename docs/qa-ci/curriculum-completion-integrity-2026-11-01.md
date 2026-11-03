@@ -2,7 +2,28 @@
 
 Stand: 3. November 2026, lokale Prüfung. Die ergänzte deterministische Prüfung verwendet die tatsächliche Backend-Projektion der Länderangebote, einschließlich G8/G9, Stufe, GK, LK und Kurszusammenführung, sowie der tatsächlich auswählbaren kanonischen Personal Curricula unter „Alle Bundesländer“. Sie berücksichtigt auch direkte `goalEntry`-Referenzen, die einen kanonischen Cluster in der geprüften Projektion zu einem atomaren Ziel machen. Die im Grundreview gefundene ALL-Inventarlücke ist im tatsächlichen Mathematiknachlauf geschlossen: 154 Länderangebote und sieben ALL-Konfigurationen sind geprüft; die rohe kanonische Diagnose bleibt separat.
 
-## Aktueller integrierter Stand: zwei Geometrieprüfungen und Thüringer Grundlagen
+## Aktueller integrierter Stand: bestehende Modellierungsprüfung in 20 weiteren Angeboten
+
+Die unveränderte Prüfung zur Medikamentenkonzentration ist in Niedersachsen,
+Nordrhein-Westfalen, Saarland, Sachsen und Sachsen-Anhalt in weiteren
+fachlich geprüften LK- und Vereinigungsangeboten erreichbar. Die unabhängige
+Quellenprüfung unterscheidet Pflichtstoff und eigene zusätzliche Kompetenz.
+Es entstehen weder neue Voraussetzungskanten noch neue Aussagen über die
+bewertete Abdeckung. Alle bisherigen sichtbaren Zielpfade bleiben erhalten.
+
+Der tatsächliche Java-Nachlauf über **161 Angebote und 46 Kursvereinigungen**
+schließt **100 weitere Ziel-Angebots-Paare und 60 Endpunktpaare**, ohne neue
+Lücken oder Zielverluste. Aktuell verbleiben **353 ungedeckte Ziel-IDs / 8.217
+Ziel-Angebots-Paare sowie 206 gewöhnliche Endpunkt-IDs / 4.169 Endpunktpaare**.
+Thüringen Sekundarstufe I / G8 / GK+LK bleibt gültig; die übrigen 160 Angebote
+und die vollständige Mathematikprüfung bleiben rot.
+
+Alle sieben relevanten Autorenprüfungen bestehen. Nach dem Import aller
+19 Dateien stimmen sämtliche 2.607 gemessenen Runtime-Eingänge überein.
+[Ausführung, Vergleich und Import](evidence/curriculum-completion-integrity/2026-11-03/drug-twenty/README.md)
+sind getrennt von der noch ausstehenden M7-, Gesamt-CI- und Deployment-Abnahme.
+
+## Vorheriger integrierter Stand: zwei Geometrieprüfungen und Thüringer Grundlagen
 
 Zwei bestehende Kompetenz-IDs besitzen jetzt ganze deutsche und englische
 Prüfungsformen mit Lösungen und einer Gesamtbewertung: kongruente und
