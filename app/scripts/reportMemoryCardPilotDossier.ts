@@ -1,3 +1,4 @@
+import { isAuthoritativeCurricularReviewGoal, loadCurricularReviewLandscape } from './lib/curricularReviewPopulation'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
@@ -307,6 +308,8 @@ function isMemoryGoal(goal: LearningGoal): boolean {
 }
 
 function isReviewRelevantGoal(goal: LearningGoal): boolean {
+  const authoritative = isAuthoritativeCurricularReviewGoal(goal)
+  if (authoritative !== undefined) return authoritative
   const tags = new Set(goal.tags ?? [])
   if (tags.has('Practice') || tags.has('Assessment')) return false
   if (tags.has('Motivation') || tags.has('Orientation')) return false
@@ -558,7 +561,7 @@ function main() {
   const args = parseArgs(process.argv.slice(2))
   const status = readJson<StatusDocument>(args.statusPath)
   const curriculum = findCurriculum(status, args.subject)
-  const landscape = readJson<SkillLandscape>(curriculum.path)
+  const landscape = loadCurricularReviewLandscape(readJson<SkillLandscape>(curriculum.path), resolve(repoRoot, curriculum.path), repoRoot)
   const outputRepoPath = args.outputPath ?? `docs/qa-ci/status/memory-card-pilot-${slugify(args.subject)}.md`
   const outputPath = resolve(repoRoot, outputRepoPath)
   const outputDir = dirname(outputPath)

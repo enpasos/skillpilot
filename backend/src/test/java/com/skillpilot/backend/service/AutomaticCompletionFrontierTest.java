@@ -355,6 +355,168 @@ class AutomaticCompletionFrontierTest {
         verify(clientStates, never()).save(any());
     }
 
+    @Test void ordinaryMasteryKeepsItsNormalSequentialSuccessorUnderPureCoverageFailure() {
+        readyAssessment(); addForeignSubject("physics");
+        learner.setAutoPilot(true); learner.setLearningStrategy("SEQUENTIAL");
+        service.setActiveGoal(LEARNER, "A");
+        var result = service.setMastery(LEARNER, new MasteryUpdateRequest(Map.of("A", 1.0), "A"));
+        assertThat(result.activeGoal().id()).isEqualTo("B");
+        assertThat(learner.getActiveGoalId()).isEqualTo("B");
+        assertThat(result.activeGoal().examData()).isNull();
+        assertThat(learner.getCompletionWorkflow()).isNull();
+        assertThat(mastery).containsExactlyEntriesOf(Map.of("A", 1.0));
+        assertThat(focus).containsExactly("ROOT");
+        assertThat(result.goals().scope_completed()).isFalse();
+        assertThat(result.levelCompletion().calculationStatus()).isEqualTo("invalid");
+        assertThat(result.levelCompletion().notice()).isEqualTo("completion_target_routes_uncovered");
+        assertThat(result.levelCompletion().complete()).isNull();
+        assertThat(result.levelCompletion().waivedTargetGoalIds()).isEmpty();
+        assertThat(result.levelCompletion().targetCount()).isZero();
+        verify(masteryRepository, times(1)).save(any());
+    }
+
+    @Test void orientationRemainsAvailableWithoutTurningItIntoAnAssessment() {
+        readyAssessment(); addForeignSubject("physics");
+        graph.get("A").setTags(List.of("orientation"));
+        assertThat(service.getFrontier(LEARNER)).containsExactly("A");
+        assertThat(ids(service.getRichFrontier(LEARNER))).containsExactly("A");
+        service.setActiveGoal(LEARNER, "A");
+        var state = service.getCoachLearnerState(LEARNER);
+        assertThat(state.activeGoal().id()).isEqualTo("A");
+        assertThat(state.activeGoal().examData()).isNull();
+        assertThat(state.stateMachine().requiredAction()).isEqualTo("orientActiveGoal");
+        assertThat(learner.getCompletionWorkflow()).isNull();
+        assertThat(mastery).isEmpty();
+        verify(masteryRepository, never()).save(any());
+    }
+
+    @Test void coverageFailureCannotAutostartAnExamOrDeclareTheFocusComplete() {
+        readyAssessment(); addForeignSubject("physics");
+        mastery.putAll(Map.of("A", 1.0, "B", 1.0, "C", 1.0));
+        learner.setAutoPilot(true);
+        var state = service.getLearnerState(LEARNER);
+        assertThat(state.activeGoal()).isNull();
+        assertThat(learner.getCompletionWorkflow()).isNull();
+        assertThat(state.goals().scope_completed()).isFalse();
+        assertThat(state.stateMachine().requiredAction()).isNotEqualTo("setScope");
+        assertThat(service.getFrontier(LEARNER)).doesNotContain("Q", "FOREIGN");
+        assertThat(ids(service.getUncompactedRichFrontier(LEARNER))).contains("Q");
+        assertThat(focus).containsExactly("ROOT");
+        service.setActiveGoal(LEARNER, "Q");
+        service.assertCurrentAssessmentStarted(LEARNER, "Q");
+        assertThat(learner.getActiveGoalId()).isEqualTo("Q");
+        assertThat(mastery).containsExactlyInAnyOrderEntriesOf(Map.of("A", 1.0, "B", 1.0, "C", 1.0));
+        verify(masteryRepository, never()).save(any());
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {false, true})
+    void simpleAndRichNormalAvailabilityUseStrictRecallInsteadOfStoredMemoryMastery(boolean rich) {
+        readyAssessment(); addForeignSubject("physics");
+        encodeMemory(graph.get("B"), "nodeKind");
+        graph.get("B").setExtendedData(Map.of("vocabularySource", "synthetic-memory.json"));
+        var resource = new ByteArrayResource(
+                "{\"cards\":[{\"id\":\"card\",\"front\":\"Question\",\"back\":\"Answer\",\"tags\":[\"memorization\"]}]}"
+                        .getBytes(StandardCharsets.UTF_8));
+        when(decks.resolveDeckResource("B", "synthetic-memory.json")).thenReturn(resource);
+        mastery.put("B", 1.0);
+        var reads = new java.util.concurrent.atomic.AtomicInteger();
+        when(clientStates.findByLearnerAndNodeIds(anyString(), any())).thenAnswer(call -> {
+            if (reads.incrementAndGet() == 1) return List.of();
+            throw new IllegalStateException("Later tolerant read must not restore the stored result");
+        });
+        List<String> options = rich ? ids(service.getRichFrontier(LEARNER)) : service.getFrontier(LEARNER);
+        assertThat(options).contains("A").doesNotContain("B", "C", "Q", "FOREIGN");
+        assertThat(reads.get()).isEqualTo(1);
+        assertThat(service.getMastery(LEARNER)).containsEntry("B", 1.0);
+        assertThat(options).doesNotContain("C");
+        assertThat(mastery).containsExactlyEntriesOf(Map.of("B", 1.0));
+        verify(masteryRepository, never()).save(any());
+    }
+
+    @Test void failedStrictStateReadDoesNotRetryAfterTolerantMasteryButTheNextReadCanRecover() {
+        readyAssessment(); addForeignSubject("physics");
+        encodeMemory(graph.get("B"), "nodeKind");
+        graph.get("B").setExtendedData(Map.of("vocabularySource", "synthetic-memory.json"));
+        var resource = new ByteArrayResource(
+                "{\"cards\":[{\"id\":\"card\",\"front\":\"Question\",\"back\":\"Answer\",\"tags\":[\"memorization\"]}]}"
+                        .getBytes(StandardCharsets.UTF_8));
+        when(decks.resolveDeckResource("B", "synthetic-memory.json")).thenReturn(resource);
+        mastery.put("B", 1.0);
+        learner.setAutoPilot(true);
+        var reads = new java.util.concurrent.atomic.AtomicInteger();
+        when(clientStates.findByLearnerAndNodeIds(anyString(), any())).thenAnswer(call -> {
+            int read = reads.incrementAndGet();
+            if (read <= 2) throw new IllegalStateException(read == 1
+                    ? "Initial strict SRS read failed" : "Tolerant read preserves stored M1");
+            return List.of(); // A later independent strict read can prove genuine M0.
+        });
+        long revision = learner.getCoachStateRevision();
+        var unavailable = service.getLearnerState(LEARNER);
+        assertThat(reads.get()).isEqualTo(2);
+        assertThat(unavailable.levelCompletion().calculationStatus()).isEqualTo("unavailable");
+        assertThat(unavailable.levelCompletion().complete()).isNull();
+        assertThat(unavailable.levelCompletion().waivedTargetGoalIds()).isEmpty();
+        assertThat(unavailable.frontier()).isEmpty();
+        assertThat(unavailable.stateMachine().goalOptions()).isEmpty();
+        assertThat(unavailable.nextAllowedActions()).doesNotContain("setActiveGoal");
+        assertThat(unavailable.activeGoal()).isNull();
+        assertThat(learner.getActiveGoalId()).isNull();
+        assertThat(learner.getCoachStateRevision()).isEqualTo(revision);
+
+        var recovered = service.getLearnerState(LEARNER);
+        assertThat(reads.get()).isGreaterThan(2);
+        assertThat(recovered.levelCompletion().calculationStatus()).isEqualTo("invalid");
+        assertThat(recovered.levelCompletion().notice()).isEqualTo("completion_target_routes_uncovered");
+        assertThat(recovered.levelCompletion().complete()).isNull();
+        assertThat(recovered.levelCompletion().waivedTargetGoalIds()).isEmpty();
+        assertThat(recovered.activeGoal().id()).isEqualTo("A");
+        assertThat(ids(recovered.frontier())).doesNotContain("B", "C", "Q", "FOREIGN");
+        assertThat(recovered.goals().scope().mastered_atomic()).isZero();
+        assertThat(mastery).containsExactlyEntriesOf(Map.of("B", 1.0));
+        assertThat(focus).containsExactly("ROOT");
+        verify(masteryRepository, never()).save(any());
+        verify(clientStates, never()).save(any());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"missing-deck", "repository"})
+    void uncoveredTargetsCannotTurnUnavailableRecallIntoNormalAvailability(String failure) {
+        readyAssessment(); addForeignSubject("physics");
+        encodeMemory(graph.get("B"), "nodeKind");
+        graph.get("B").setExtendedData(Map.of("vocabularySource", "synthetic-memory.json"));
+        mastery.put("B", 1.0);
+        if (failure.equals("repository")) {
+            when(clientStates.findByLearnerAndNodeIds(anyString(), any()))
+                    .thenThrow(new IllegalStateException("SRS unavailable"));
+        }
+        assertThat(service.getFrontier(LEARNER)).isEmpty();
+        assertThat(service.getRichFrontier(LEARNER)).isEmpty();
+        var state = service.getCoachLearnerState(LEARNER);
+        assertThat(state.activeGoal()).isNull();
+        assertThat(state.stateMachine().goalOptions()).isEmpty();
+        assertThat(state.levelCompletion().calculationStatus()).isEqualTo("unavailable");
+        assertThat(state.levelCompletion().complete()).isNull();
+        assertThat(state.levelCompletion().waivedTargetGoalIds()).isEmpty();
+        assertThat(mastery).containsExactlyEntriesOf(Map.of("B", 1.0));
+        verify(masteryRepository, never()).save(any());
+        verify(clientStates, never()).save(any());
+    }
+
+    @Test void uncoveredInitialAtomicScopeOptionsNeverBecomeAnAutomaticTeachingChoice() {
+        graph.clear(); graph.put("A", atomic("A"));
+        landscape.setGoals(List.of(graph.get("A")));
+        focus.clear(); learner.setAutoPilot(true);
+        assertThat(service.getFrontier(LEARNER)).isEmpty();
+        assertThat(service.getRichFrontier(LEARNER)).isEmpty();
+        var state = service.getCoachLearnerState(LEARNER);
+        assertThat(state.activeGoal()).isNull();
+        assertThat(state.nextAllowedActions()).doesNotContain("setActiveGoal");
+        assertThat(learner.getActiveGoalId()).isNull();
+        assertThat(focus).isEmpty();
+        verify(masteryRepository, never()).save(any());
+    }
+
     private LearnerLearningPlan prepareAutomaticPlan(PeriodBasis basis, boolean onlyExplicit, List<String> atoms) throws Exception {
         focus.clear();
         focus.add("B");
@@ -427,8 +589,8 @@ class AutomaticCompletionFrontierTest {
 
     @Test void curriculumWithoutProtectedRootsCannotInventCompletionButOrdinaryLearningRemainsAvailable() {
         graph.get("Q").setNodeKind(null);
-        assertThat(service.getFrontier(LEARNER)).isEmpty();
-        assertThat(service.getRichFrontier(LEARNER)).isEmpty();
+        assertThat(service.getFrontier(LEARNER)).containsExactly("A");
+        assertThat(ids(service.getRichFrontier(LEARNER))).containsExactly("A");
         var state = service.getCoachLearnerState(LEARNER);
         assertThat(state.goals().scope_completed()).isFalse();
         assertThat(state.goals().scope().mastered_atomic()).isZero();
@@ -439,7 +601,7 @@ class AutomaticCompletionFrontierTest {
         assertThat(state.stateMachine().requiredAction()).isEqualTo("setActiveGoal");
         assertThat(ids(state.stateMachine().goalOptions())).containsExactly("A");
         assertThat(state.stateMachine().goalOptions().getFirst().reason()).contains("Freiwillig");
-        assertThat(state.frontier()).isEmpty();
+        assertThat(ids(state.frontier())).containsExactly("A");
         assertThat(learner.getActiveGoalId()).isNull();
         assertThat(ids(service.getUncompactedRichFrontier(LEARNER))).contains("A");
         service.setActiveGoal(LEARNER, "A");
@@ -517,7 +679,7 @@ class AutomaticCompletionFrontierTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"physics", "non-m7-language"})
-    void defectiveForeignSubjectOffersOnlyVoluntaryCurrentFocusWithoutDroppingItsConsumer(String foreignId) {
+    void defectiveForeignSubjectPreservesNormalCurrentFocusWithoutDroppingItsConsumer(String foreignId) {
         readyAssessment();
         addForeignSubject(foreignId);
         learner.setAutoPilot(true);
@@ -525,8 +687,8 @@ class AutomaticCompletionFrontierTest {
         String config = learner.getPersonalCurriculum();
         for (int read = 0; read < 2; read++) {
             var state = service.getCoachLearnerState(LEARNER);
-            assertThat(service.getFrontier(LEARNER)).isEmpty();
-            assertThat(state.frontier()).isEmpty();
+            assertThat(service.getFrontier(LEARNER)).containsExactly("A");
+            assertThat(ids(state.frontier())).containsExactly("A");
             assertThat(ids(state.stateMachine().goalOptions())).containsExactly("A");
             assertThat(state.stateMachine().requiredAction()).isEqualTo("setActiveGoal");
             assertThat(state.levelCompletion().calculationStatus()).isEqualTo("invalid");
@@ -559,16 +721,20 @@ class AutomaticCompletionFrontierTest {
         focus.clear(); focus.add("B");
         learner.setStrictMode(strict);
         var state = service.getCoachLearnerState(LEARNER);
-        assertThat(state.frontier()).isEmpty();
-        if (strict) assertThat(state.stateMachine().goalOptions()).isEmpty();
-        else assertThat(ids(state.stateMachine().goalOptions())).containsExactly("B");
+        if (strict) {
+            assertThat(state.frontier()).isEmpty();
+            assertThat(state.stateMachine().goalOptions()).isEmpty();
+        } else {
+            assertThat(ids(state.frontier())).containsExactly("B");
+            assertThat(ids(state.stateMachine().goalOptions())).containsExactly("B");
+        }
         assertThat(mastery).isEmpty();
         assertThat(focus).containsExactly("B");
     }
 
     @ParameterizedTest
     @ValueSource(booleans = {false, true})
-    void voluntaryChoicesUseTheSameStrictRecallSnapshotDespiteALaterTolerantReadFailure(boolean verified) {
+    void normalChoicesUseTheSameStrictRecallSnapshotDespiteALaterTolerantReadFailure(boolean verified) {
         readyAssessment(); addForeignSubject("physics");
         encodeMemory(graph.get("B"), "nodeKind");
         graph.get("B").setExtendedData(Map.of("vocabularySource", "synthetic-memory.json"));
@@ -592,7 +758,7 @@ class AutomaticCompletionFrontierTest {
         if (verified) assertThat(choices).contains("C");
         else assertThat(choices).doesNotContain("C");
         assertThat(choices).doesNotContain("B", "Q", "FOREIGN");
-        assertThat(state.frontier()).isEmpty();
+        assertThat(ids(state.frontier())).containsExactlyElementsOf(choices);
         assertThat(state.levelCompletion().calculationStatus()).isEqualTo("invalid");
         assertThat(state.levelCompletion().notice()).isEqualTo("completion_target_routes_uncovered");
         assertThat(state.levelCompletion().complete()).isNull();

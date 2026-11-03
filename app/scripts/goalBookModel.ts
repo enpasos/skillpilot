@@ -1,3 +1,5 @@
+import { parseSemanticKindLedger as validateSemanticKindLedger } from './lib/semanticKindLedger'
+export { SEMANTIC_KIND_SOURCE_FINGERPRINT_CONTRACT_ID } from './lib/semanticKindLedger'
 import { createHash } from 'node:crypto'
 import { readFileSync } from 'node:fs'
 import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises'
@@ -50,16 +52,6 @@ export const GOAL_BOOK_ATLAS_COURSE_PROFILE_POLICY = 'canonical-course-markers-v
 export type GoalBookPublicationMode = 'review' | 'public'
 export type GoalBookVisualizationQaStatus = 'approved' | 'review_candidate' | 'rejected'
 
-const SEMANTIC_KINDS = new Set([
-  'orientation',
-  'curricularAtomic',
-  'curricularArea',
-  'practiceAssessment',
-  'memory',
-  'programStructure',
-  'runtimeSupport',
-])
-
 const REPOSITORY_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const GOAL_BOOK_MODEL_SCHEMA_PATH = resolve(
   REPOSITORY_ROOT,
@@ -69,13 +61,6 @@ const GOAL_BOOK_SOURCE_MANIFEST_SCHEMA_PATH = resolve(
   REPOSITORY_ROOT,
   'contracts/goal-book/v1/goal-book-source-manifest-v2.schema.json',
 )
-const SEMANTIC_KIND_LEDGER_SCHEMA_PATH = resolve(
-  REPOSITORY_ROOT,
-  'contracts/curriculum-package/v1/curriculum-ontology-profile.schema.json',
-)
-export const SEMANTIC_KIND_SOURCE_FINGERPRINT_CONTRACT_ID = (
-  'semantic-kind-source-fingerprint-v1'
-) as const
 const SEMANTIC_KIND_SOURCE_FINGERPRINT_DOMAIN = (
   'skillpilot:semantic-kind-source-fingerprint:v1'
 ) as const
@@ -115,7 +100,6 @@ const createSchemaValidator = (schemaPath: string, includeFormats = false) => {
 
 let cachedGoalBookSchemaValidator: ReturnType<typeof createSchemaValidator> | null = null
 let cachedSourceManifestSchemaValidator: ReturnType<typeof createSchemaValidator> | null = null
-let cachedSemanticKindLedgerSchemaValidator: ReturnType<typeof createSchemaValidator> | null = null
 let semanticKindFingerprintProfileVerified = false
 
 export interface GoalBookApplicabilityScope {
@@ -407,11 +391,6 @@ interface CompiledGoalBookViewSource {
   compilation: CompositionCompileResult
   targetCollection: TargetGoalCollection
   curricularAtomicGoalIds: Set<string>
-}
-
-interface SemanticKindLedgerResult {
-  semanticKindByGoalId: Map<string, string>
-  ledgerId: string
 }
 
 interface ResolvedExternalLandscapes {
@@ -806,107 +785,9 @@ const resolveExternalLandscapes = (
 }
 
 const parseSemanticKindLedger = (
-  value: unknown,
-  rawLandscape: unknown,
-  landscapeId: string,
-  landscapePath: string,
-): SemanticKindLedgerResult => {
-  const validator = cachedSemanticKindLedgerSchemaValidator
-    ?? (cachedSemanticKindLedgerSchemaValidator = createSchemaValidator(
-      SEMANTIC_KIND_LEDGER_SCHEMA_PATH,
-      true,
-    ))
-  if (!validator.validate(value)) {
-    fail(`semantic-kind ledger violates its closed JSON Schema: ${validator.ajv.errorsText(
-      validator.validate.errors,
-      { separator: '; ' },
-    )}.`)
-  }
-  const record = asRecord(value, 'semanticKindLedger')
-  const ledgerId = nonEmptyString(record.ledgerId, 'semanticKindLedger.ledgerId')
-  const sourceLandscapeId = nonEmptyString(
-    record.sourceLandscapeId,
-    'semanticKindLedger.sourceLandscapeId',
-  )
-  if (sourceLandscapeId !== landscapeId) {
-    fail(`semantic-kind ledger targets ${sourceLandscapeId}, expected ${landscapeId}.`)
-  }
-  const sourceLandscapePath = nonEmptyString(
-    record.sourceLandscapePath,
-    'semanticKindLedger.sourceLandscapePath',
-  )
-  if (sourceLandscapePath !== landscapePath) {
-    fail(`semantic-kind ledger binds ${sourceLandscapePath}, expected ${landscapePath}.`)
-  }
-  if (record.sourceFingerprintContractId !== SEMANTIC_KIND_SOURCE_FINGERPRINT_CONTRACT_ID) {
-    fail(
-      `semantic-kind ledger uses unsupported source fingerprint contract `
-      + `${String(record.sourceFingerprintContractId)}.`,
-    )
-  }
-  const decisions = Array.isArray(record.decisions)
-    ? record.decisions
-    : fail('semanticKindLedger.decisions must be an array.')
-
-  const rawLandscapeRecord = asRecord(rawLandscape, 'landscape')
-  const rawGoals = Array.isArray(rawLandscapeRecord.goals)
-    ? rawLandscapeRecord.goals
-    : fail('landscape.goals must be an array.')
-  const rawGoalById = new Map<string, Record<string, unknown>>()
-  rawGoals.forEach((rawGoal, index) => {
-    const goal = asRecord(rawGoal, `landscape.goals[${index}]`)
-    const goalId = nonEmptyString(goal.id, `landscape.goals[${index}].id`)
-    if (rawGoalById.has(goalId)) fail(`duplicate canonical goal ID ${goalId}.`)
-    rawGoalById.set(goalId, goal)
-  })
-  const canonicalGoalIds = new Set(rawGoalById.keys())
-  const semanticKindByGoalId = new Map<string, string>()
-  const actualCounts = new Map<string, number>([...SEMANTIC_KINDS].map((kind) => [kind, 0]))
-  decisions.forEach((rawDecision, index) => {
-    const decision = asRecord(rawDecision, `semanticKindLedger.decisions[${index}]`)
-    const goalId = nonEmptyString(decision.goalId, `semanticKindLedger.decisions[${index}].goalId`)
-    const semanticKind = nonEmptyString(
-      decision.semanticKind,
-      `semanticKindLedger.decisions[${index}].semanticKind`,
-    )
-    if (!SEMANTIC_KINDS.has(semanticKind)) {
-      fail(`semantic-kind ledger has unsupported semanticKind ${semanticKind} for ${goalId}.`)
-    }
-    if (decision.decisionStatus !== 'authoritative') {
-      fail(`semantic-kind decision for ${goalId} is not authoritative.`)
-    }
-    if (!canonicalGoalIds.has(goalId)) {
-      fail(`semantic-kind ledger references unknown goal ${goalId}.`)
-    }
-    if (semanticKindByGoalId.has(goalId)) {
-      fail(`semantic-kind ledger contains duplicate decision for ${goalId}.`)
-    }
-    const currentFingerprint = fingerprintSemanticKindSourceGoal(rawGoalById.get(goalId)!)
-    if (decision.sourceFingerprint !== currentFingerprint) {
-      fail(`stale semantic-kind decision for goal ${goalId}; expected ${currentFingerprint}.`)
-    }
-    semanticKindByGoalId.set(goalId, semanticKind)
-    actualCounts.set(semanticKind, (actualCounts.get(semanticKind) ?? 0) + 1)
-  })
-
-  const missingGoalIds = [...canonicalGoalIds]
-    .filter((goalId) => !semanticKindByGoalId.has(goalId))
-  if (missingGoalIds.length > 0) {
-    fail(`semantic-kind ledger has no authoritative decision for ${missingGoalIds.slice(0, 10).join(', ')}${missingGoalIds.length > 10 ? ' ...' : ''}.`)
-  }
-
-  const declaredCounts = asRecord(record.counts, 'semanticKindLedger.counts')
-  SEMANTIC_KINDS.forEach((semanticKind) => {
-    if (declaredCounts[semanticKind] !== actualCounts.get(semanticKind)) {
-      fail(`semantic-kind ledger count for ${semanticKind} does not match its decisions.`)
-    }
-  })
-  if (declaredCounts.total !== decisions.length || decisions.length !== canonicalGoalIds.size) {
-    fail('semantic-kind ledger total count must match exactly every canonical goal.')
-  }
-
-  return { semanticKindByGoalId, ledgerId }
-}
+  value: unknown, rawLandscape: unknown, landscapeId: string, landscapePath: string,
+) => validateSemanticKindLedger(value, rawLandscape, landscapeId, landscapePath,
+  fingerprintSemanticKindSourceGoal)
 
 const parseGoalVisualizationQa = (
   value: unknown,

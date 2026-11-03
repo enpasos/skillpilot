@@ -1101,10 +1101,32 @@ const complexQ4Assessment = canonicalGoalById.get('a8525adc-fad3-53f5-953f-213bd
   | { requires: string[]; examData?: { coveredGoalIds: string[]; taskContent: string } }
   | undefined
 assert.ok(complexQ4Assessment?.examData)
+// Preparation can be broader than the whole contracts assessed by this task.
+// The reviewed task observes only multiplication by i in the Gaussian plane;
+// it does not assess the complete addition/subtraction/multiplication/division goal.
 assert.deepEqual(
-  complexQ4Assessment.requires,
-  complexQ4Assessment.examData.coveredGoalIds,
-  'Q4 complex-number exam prerequisites must match its claimed assessment coverage',
+  [...complexQ4Assessment.requires].sort(),
+  [
+    '5922affd-b1f9-5ad9-963e-25d3734c3b72',
+    'eda8580e-1f10-5dbd-9aaf-92367f40a6bd',
+    '9a0987cd-1e6e-5c09-a602-9fda43b8f655',
+    'a7fb1a7a-8315-5bcb-842e-48293293dfcc',
+  ].sort(),
+  'Q4 complex-number task retains its four independently reviewed preparation goals',
+)
+assert.deepEqual(
+  [...complexQ4Assessment.examData.coveredGoalIds].sort(),
+  [
+    '5922affd-b1f9-5ad9-963e-25d3734c3b72',
+    'eda8580e-1f10-5dbd-9aaf-92367f40a6bd',
+    '9a0987cd-1e6e-5c09-a602-9fda43b8f655',
+  ].sort(),
+  'Q4 complex-number task claims only its three independently reviewed assessed contracts',
+)
+assert.ok(complexQ4Assessment.requires.includes('a7fb1a7a-8315-5bcb-842e-48293293dfcc'))
+assert.ok(
+  !complexQ4Assessment.examData.coveredGoalIds.includes('a7fb1a7a-8315-5bcb-842e-48293293dfcc'),
+  'Gaussian-plane preparation must not be promoted to whole-contract assessment coverage',
 )
 assert.ok(
   !complexQ4Assessment.requires.includes('9b339361-7719-573d-a913-432246c502ee'),

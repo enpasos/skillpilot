@@ -12,6 +12,8 @@ export interface HardRouteGoal {
   title?: string
   requires?: string[]
   contains?: string[]
+  nodeKind?: string
+  examData?: unknown
 }
 
 export interface OrientationMotivationGoal extends HardRouteGoal {
@@ -27,6 +29,8 @@ export interface HardRouteProfile<TGoal extends HardRouteGoal> {
   scopeLabel: string
   motivationAnchorGoalIds: string[]
   terminalGoalClusterIds: string[]
+  /** Include genuine in-scope assessment forms outside the legacy exam folders. */
+  terminalGoalSelector?: (goal: TGoal) => boolean
   /**
    * Selects every semantic route node that is allowed to prove this scoped
    * route. This is deliberately separate from goalSelector: a stage profile
@@ -112,6 +116,12 @@ const ROUTE_ORDER: Readonly<Record<HardRouteProofSemanticKind, number>> = {
   memory: 1,
   practiceAssessment: 2,
 }
+
+/** Mirrors the runtime protection role; semantic membership stays independent. */
+export const hasHardRouteAssessmentRole = (
+  goal: HardRouteGoal, kind: HardRouteSemanticKind | undefined,
+): boolean => kind === 'practiceAssessment' || goal.nodeKind?.toLowerCase() === 'exam'
+  || goal.examData !== undefined && goal.examData !== null
 
 const hasPathToTarget = (
   startId: string,
@@ -226,13 +236,15 @@ export const validateHardDirectAtomicRoutes = <TGoal extends HardRouteGoal>(
     }
   })
 
-  const terminalIds = Array.from(new Set(profile.terminalGoalClusterIds.flatMap((clusterId) => {
+  const terminalIds = Array.from(new Set([...profile.terminalGoalClusterIds.flatMap((clusterId) => {
     if (!goalById.has(clusterId)) {
       findings.push({ goalId: clusterId, message: `Missing terminal cluster for ${profile.scopeLabel}.` })
       return []
     }
     return collectAtomicDescendants(clusterId, goalById)
-  })))
+  }), ...goals.filter(goal => profile.terminalGoalSelector?.(goal)
+    && (profile.routeGoalSelector?.(goal) ?? true)
+    && hasHardRouteAssessmentRole(goal, semanticKindByGoalId.get(goal.id))).map(goal => goal.id)]))
 
   if (terminalIds.length === 0) {
     findings.push({ message: `No atomic terminal goals configured for ${profile.scopeLabel}.` })
@@ -245,12 +257,23 @@ export const validateHardDirectAtomicRoutes = <TGoal extends HardRouteGoal>(
       return
     }
     if (!isAtomic(terminal)
-        || semanticKindByGoalId.get(terminalId) !== 'practiceAssessment'
+        || !hasHardRouteAssessmentRole(terminal, semanticKindByGoalId.get(terminalId))
         || !(profile.routeGoalSelector?.(terminal) ?? true)) {
       findings.push({
         goalId: terminalId,
-        message: `Terminal goal must be an in-scope atomic semanticKind=practiceAssessment goal for ${profile.scopeLabel}.`,
+        message: `Terminal goal must be an in-scope atomic assessment (semanticKind=practiceAssessment or actual assessment execution form) goal for ${profile.scopeLabel}.`,
       })
+    }
+    if (terminal.nodeKind?.toLowerCase() === 'exam' || terminal.examData != null) {
+      const exam = terminal.examData as { taskContent?: string; solutionContent?: string; reviewStatus?: string;
+        scoring?: { maxPoints?: number; passingPoints?: number; steps?: unknown[] } } | undefined
+      if (!exam || typeof exam.taskContent !== 'string' || !exam.taskContent.trim()
+          || typeof exam.solutionContent !== 'string' || !exam.solutionContent.trim()
+          || exam.reviewStatus && exam.reviewStatus.trim().toLowerCase() !== 'released'
+          || !(Number(exam.scoring?.maxPoints) > 0) || !(Number(exam.scoring?.passingPoints) > 0)
+          || !Array.isArray(exam.scoring?.steps) || !exam.scoring.steps.length) {
+        findings.push({ goalId: terminalId, message: `Assessment execution terminal lacks usable released task/rubric metadata for ${profile.scopeLabel}.` })
+      }
     }
     reportInvalidRequirements(terminal)
     if (!profile.motivationAnchorGoalIds.some((anchorId) =>
@@ -296,7 +319,8 @@ export const validateHardDirectAtomicRoutes = <TGoal extends HardRouteGoal>(
 
   const selectedCurricularGoalIds = goals
     .filter(profile.goalSelector)
-    .filter((goal) => isAtomic(goal) && semanticKindByGoalId.get(goal.id) === 'curricularAtomic')
+    .filter((goal) => isAtomic(goal) && semanticKindByGoalId.get(goal.id) === 'curricularAtomic'
+      && !hasHardRouteAssessmentRole(goal, semanticKindByGoalId.get(goal.id)))
     .map((goal) => goal.id)
 
   terminalIds.forEach((terminalId) => {
@@ -329,7 +353,9 @@ export const validateHardDirectAtomicRoutes = <TGoal extends HardRouteGoal>(
     for (const requiredId of directAtomicEdges.get(goal.id) ?? []) {
       const requiredKind = semanticKindByGoalId.get(requiredId)
       if (!isRouteSemanticKind(requiredKind)) continue
-      if (ROUTE_ORDER[requiredKind] <= ROUTE_ORDER[goalKind]) continue
+      const goalOrder = hasHardRouteAssessmentRole(goal, goalKind) ? 2 : ROUTE_ORDER[goalKind]
+      const requiredOrder = hasHardRouteAssessmentRole(goalById.get(requiredId)!, requiredKind) ? 2 : ROUTE_ORDER[requiredKind]
+      if (requiredOrder <= goalOrder) continue
       findings.push({
         goalId: goal.id,
         message: `Route order is reversed: ${goalKind} directly requires later ${requiredKind} goal ${requiredId} for ${profile.scopeLabel}.`,

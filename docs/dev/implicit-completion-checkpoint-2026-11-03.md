@@ -1,83 +1,92 @@
 # Arbeitsstand: implizite Erledigung und Mathematik-Nachprüfung
 
-Dieser Zwischenstand wird auf Wunsch des Product Owners auf dem Branch
-`wip/implicit-completion-math-checkpoint-20261103` und in einem Draft-PR
-gesichert: [Draft-PR #79](https://github.com/enpasos/skillpilot/pull/79).
-Er ist keine Merge-, M7-, Deployment- oder CI-Freigabe.
+Der Zwischenstand liegt im [Draft-PR #79](https://github.com/enpasos/skillpilot/pull/79)
+auf `wip/implicit-completion-math-checkpoint-20261103`. Er ist keine Merge-,
+M7-, Deployment- oder vollständige CI-Freigabe.
 
-## Bereits im Arbeitsbaum
+## Integrierter Stand
 
 - Ein binäres Mastery-Ergebnis pro atomarem Lernziel. Implizite Erledigung ist
-  abgeleitet; sie erzeugt keine Mastery-Einträge.
-- Prüfungen und Lernkarten bleiben geschützt. Die Bedarfsberechnung beginnt
-  bei den offenen geschützten Targets des vollständigen persönlichen
-  Lehrplans und endet an bereits gemeisterten Zielen.
-- Deterministische Abschlussintegritätsprüfung der tatsächlich angebotenen
-  vollständigen Lehrpläne einschließlich Kursvereinigungen und ALL-Angeboten.
-- Abgleich von Cockpit, Coach und Planzählung: Tages-/Wochenkontingente zählen
-  explizite Abschlüsse, Gesamtfortschritt kann implizite Erledigung einschließen.
-- Mathematik-Datenkorrekturen bis V30, projektionstreuer Fokus, Prüfungsstart-
-  Bindung als Prozesszustand sowie aktualisierte Konzepte und LaTeX/PDF.
+  abgeleitet und erzeugt keine Mastery-Einträge. Prüfungen und Lernkarten bleiben
+  bis zum expliziten Abschluss geschützt.
+- Die Bedarfsberechnung beginnt bei den offenen geschützten Targets des
+  vollständigen persönlichen Lehrplans und endet an bereits gemeisterten Zielen.
+  Deterministische Tests prüfen alle tatsächlich angebotenen vollständigen
+  Lehrpläne einschließlich Kursvereinigungen und ALL-Angeboten.
+- Tages-/Wochenkontingente zählen explizite Abschlüsse. Gesamtfortschritt und
+  Gesamtsaldo können implizite Erledigung einschließen.
+- Eine konkrete Prüfungsform kann zur bestehenden curricularen Kompetenz gehören.
+  Prüfungsrolle und curriculare Zugehörigkeit werden getrennt ausgewertet;
+  die 807 curricularen Mathematikziele bleiben Teil der Qualitätsprüfung.
+- Gespeicherte gültige aktive Ziele können nach Baumkorrekturen weiterbearbeitet
+  werden, auch wenn ihre bisherige Fokuswurzel entfällt oder sich verkleinert.
+  Explizite Neuauswahl und Konfigurationsänderungen prüfen den aktuellen Baum.
+- Ein reiner Fehler `UNCOVERED_COMPLETION_TARGETS` unterbindet implizite
+  Gutschriften und abgeleitete Abschlüsse. Sichere normale Lernangebote und der
+  bereits aktivierte normale Autopilot bleiben im gültigen gespeicherten Fokus
+  nutzbar. Sie verwenden denselben strikt geprüften Mastery-/Lernkartensnapshot.
+  Ein fehlgeschlagener Snapshot bleibt für den ganzen Lesevorgang gesperrt.
+  Prüfungsstart, Sitzungsbesitz, Planmodus und Fokusgrenzen bleiben gesondert
+  geprüft; daraus entstehen keine automatischen Prüfungsstarts.
+- Die SH-Zylinderkorrektur und die gemeinsame Prüfungsrolle sind integriert.
+  Die Voraussetzungen der Q4-Prüfung und ihre tatsächlich bewertete Abdeckung
+  werden im Lernzielbuchtest getrennt geprüft.
 
-Der letzte tatsächliche Nachlauf dieses übernommenen Stands besteht mit
-**126 von 126 Tests** in acht vollständigen Java-Suiten, ohne Skips oder
-Abbrüche. Die gebundene Klassenbasis umfasst 947 Main-/431 Testklassen.
-Der zugehörige tatsächliche Bericht hat SHA-256
-`77da7ec8a5d9acd4595af2a83a42d03202c14d4602d55836f8e5161abbe446a4`.
-Die normale App-Typprüfung und die abgegrenzten Zielauswahl-/Completion-UI-
-Prüfungen des unveränderten Appstands waren ebenfalls erfolgreich.
+Die Konzepte und das LaTeX/PDF sind Teil des PR. Der abschließende Abgleich mit
+allen weiteren fachlichen Korrekturen bleibt Bestandteil des Meilensteins.
 
-## Weiterhin offen
+## Tatsächliche Prüfungen und Grenzen
 
-Im übernommenen V30-Kanon bleiben in 161 Mathematik-Angeboten **385
-unterschiedliche Ziel-IDs** mit mindestens einer ungedeckten Abschlussroute,
-insgesamt 9.818 Ziel-Angebots-Paare und 216 gewöhnliche Endpunkt-IDs. Der
-strenge Corpus ist deshalb weiterhin rot. Die übrigen Fächer folgen nach dem
-Mathematik-Meilenstein in dieser Reihenfolge: Physik, Biologie, Chemie,
-Wirtschaftswissenschaften.
+Der Quellen-/Autoren-Nachlauf nach dem 40-Dateien-Import besteht alle zehn
+normalen Kommandos: Source21, Lernzielbuch, Länderansichten83, Daueransichten18,
+Source-Coverage, Stage, RP, Hard Routes, Phase und Python-Populationstests.
+Ein zusätzlicher Rohvergleich gespeicherter gegen kompilierte Applicability
+bleibt mit 66 Unterschieden rot. Diese ganzen Datensätze und die 21
+APV203-Warnungen sind vor und nach dem Import identisch; sie wurden weder
+überschrieben noch zu erfolgreichen Prüfungen umdeklariert.
 
-Noch nicht übernommene Kandidaten sind ausdrücklich getrennt zu behandeln:
+Der frisch kompilierte integrierte Java-Stand besteht **337/337 Tests** in zwölf
+vollständigen Suiten ohne Skips oder Abbrüche. Darunter sind alle drei realen
+Gemini-Lernflüsse, 85 Frontierfälle, die 34 historischen Fokusfälle sowie
+Prüfungsstart-, Lernkarten-, Coach-, Projektions- und Plangrenzen.
+[Ausführungsnachweis](../qa-ci/evidence/curriculum-completion-integrity/2026-11-03/integrated-normal-frontier/execution.json).
+Dies ist ein gezielter Nachlauf, kein vollständiger Backend- oder CI-PASS.
 
-- Die SH-Zylinderkorrektur ist fachlich und durch einen tatsächlichen
-  vollständigen Vorher-/Nachhervergleich geprüft: 56 ungedeckte Paare und
-  16 Endpunktpaare geschlossen, keine neuen; 385 auf 378 ungedeckte Ziel-IDs.
-  Sie ist im vorliegenden V30-Arbeitsbaum noch nicht aktiviert.
-- Die erweiterte Fortsetzung gespeicherter Ziele nach einer Baumänderung ist
-  privat mit 34 Fokus- und 199 angrenzenden Tests geprüft. Historische
-  Testdaten verhindern eine Bindung an spätere Änderungen des Live-Kanons.
-  Diese 233 Erfolge sind kein bereits integrierter Root-Nachlauf.
-- Die gemeinsame curriculare Prüfungsrolle und die getrennte Prüfung von
-  Voraussetzungen und tatsächlicher Aufgabenabdeckung sind unabhängig
-  geprüft; beide vollständigen privaten Goalbookläufe sind grün. Die 807
-  curricularen Mathematikziele bleiben erhalten.
-- Weitere Aufgabenentwürfe, darunter vier Stochastikformen und die bestehende
-  Kompetenz zur quadratischen Funktion aus drei Bedingungen, sind noch nicht
-  vollständig materialisiert und abgenommen.
+Die vollständige Mathematik-Datenmessung nach der SH-Korrektur schließt 56
+ungedeckte Ziel-Angebots-Paare und 16 Endpunktpaare, ohne neue hinzuzufügen.
+Es bleiben **378 unterschiedliche ungedeckte Ziel-IDs / 9.762
+Ziel-Angebots-Paare und 214 gewöhnliche Endpunkt-IDs**. Alle **161 Angebote**
+besitzen weiterhin ungedeckte Routen. Der Mathematik-Corpus ist deshalb rot.
 
-## Weiterarbeit
+Die tatsächliche GitHub-CI des vorherigen PR-Heads meldet erfolgreiche
+Completion-Profile-/Cockpit-Prüfungen. Die vier positiven vollständigen
+Mathematik-Browserfälle sind durch die ungültige Datenbasis blockiert; der
+Restart-Fall benötigt zusätzlich eine Prüfung des neutralen Verlassens eines
+ungültigen Workflows. Der Ressourcenfehler beim Start des realen Mathematik-
+MCP-Tests ist im Workflow korrigiert: Der zusätzliche reale Test besteht
+mit dem normalen Gradle-Ressourcen-/Buildprozess (ein Fall, keine Skips).
+Die neun Workflow-Kontrakttests bestehen ebenfalls. Keine dieser Grenzen ist durch einen
+lokalen Teilnachlauf oder private Aufgabenentwürfe erledigt.
 
-Zuerst die geprüften Kandidaten kontrolliert übernehmen und den tatsächlichen
-Arbeitsbaum frisch prüfen. Anschließend die verbliebenen Mathematikrouten
-fachlich schließen, ohne künstliche Voraussetzungen, zusätzliche
-Mastery-Qualifikationen oder gelockerte Qualitätsgrenzen einzuführen. Der
-Mathematik-Meilenstein verlangt einen grünen vollständigen Fachbericht und
-bestandene erforderliche GitHub-Checks des konkreten PR-Commits.
+## Nächste fachliche Pakete
+
+Die fünf vorbereiteten Aufgabenformen für quadratische Funktionen und
+Stochastik behalten ihre bestehenden Lernziel-IDs und unveränderten
+Inhaltsfreigaben. Ihre Programmplätze und Datenbindungen werden gemeinsam
+fertiggestellt. Parallel werden weitere fachlich legitime Plätze einer bereits
+vorhandenen Matrixprüfung geprüft. Mechanisch vorhandene Voraussetzungen sind
+Suchkandidaten und ersetzen keine Quellen- oder Erwerbsfolgeentscheidung.
+
+Der Mathematik-Meilenstein verlangt gültige vollständige Angebote, die
+bestehenden M7-Grenzen und bestandene erforderliche GitHub-Checks des konkreten
+PR-Commits. Danach folgen separat Physik, Biologie, Chemie und
+Wirtschaftswissenschaften. Produktionsdaten des Beta-Testers bleiben außerhalb
+dieses Checkpoints.
 
 Der ausführliche Prüfstand steht in
 [Abschlussintegrität](../qa-ci/status/curriculum-completion-integrity-2026-11-01.md),
 der fachliche Vertrag in
 [Assessment-gated Completion](../concept/skill-graph/assessment-gated-completion.md).
-Produktionsdaten des Beta-Testers gehören nicht in diesen Checkpoint.
-
-## Gesicherte, noch nicht integrierte Kandidaten
-
-Das getrennte [Recovery-Archiv](checkpoints/2026-11-03/README.md) sichert
-351 ausgewählte Quelldateien, Aufgaben, eigene Diagramme und Reviewunterlagen
-am ursprünglichen Repositorypfad. Das [Manifest](checkpoints/2026-11-03/manifest.json)
-bindet jede Datei und das Archiv per SHA-256. Es enthält insbesondere die
-geprüften Fokus-/SH-/Prüfungsrollen-Kandidaten sowie noch offene Entwürfe.
-
-Dies ist eine Quellensicherung. Vor einer Übernahme müssen konkurrierende
-Datenstände zusammengeführt, erforderliche Prüfungen erneut ausgeführt und
-veraltete Bindungen gezielt erneuert werden. Das Archiv aktiviert keine
-Funktionalität und ersetzt keine vollständigen Ausführungsnachweise.
+Die ursprüngliche [Quellensicherung](checkpoints/2026-11-03/README.md) enthält
+351 ausgewählte Kandidatendateien mit SHA-256-Manifest. Sie ist ein historischer
+Recovery-Snapshot und aktiviert keine noch offenen Kandidaten.

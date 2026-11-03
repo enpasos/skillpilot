@@ -5,7 +5,7 @@
   "inputs": {
     "canonical": {
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
-      "sha256": "5f23d314ed1b31caae2e5994921c5fa2599ca7e7f718a5b9fc9d61334713bf37"
+      "sha256": "9cdb5af9778eba22d69d8d5105b5fffbc0cc60f3ec1a6487d9bcbc45fe1326b2"
     },
     "parentDerivativeReceipt": {
       "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-split-composition-view-follow-up-2026-08-16.receipt.json",
@@ -110,11 +110,15 @@
       {
         "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/he5-cuboid48-probability-two-edge/joint-closed-scope-author-decision.json",
         "sha256": "cedf65795487c204b95233299301d75f660b4e209040ba6a82d0239896a2cf29"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/sh-cylinder-eight-existing-route/author-source-and-exact-operations.json",
+        "sha256": "7e1de0b141efb34b34567f4bbf2a26988de23b48442b5279783bbafaa5a27441"
       }
     ]
   },
   "policy": {
-    "sourceOfLayoutTruth": "The reviewed duration-specific Sek-I layouts and bound additive structural adjudications are authoritative for the 84 split placements. Mapping buckets remain authoritative for the ordinary atomic target set.",
+    "sourceOfLayoutTruth": "The reviewed duration-specific Sek-I layouts and bound additive structural adjudications are authoritative for the 92 split placements. Mapping buckets remain authoritative for the ordinary atomic target set.",
     "transform": [
       "Generate the flat mapping-derived Sek-I view exactly as before, with atomic-asserted goalEntry nodes.",
       "For each placement, remove removeAtomicGoalIds from every direct reference occurrence in the generated Sek-I node.",
@@ -183,7 +187,7 @@
   },
   "counts": {
     "sek1TemplateCount": 6,
-    "splitPlacementCount": 84,
+    "splitPlacementCount": 92,
     "crossStageOutputCount": 12,
     "totalOutputCount": 18
   },
@@ -1217,7 +1221,7 @@
       "fileName": "de-sh-seki-g8.view.json",
       "viewId": "de-sh-gym-seki-math-g8",
       "fileSha256": "066f9c01dfcbaa17c70327929f0793c5d2e751e9a8128cabff7547f9ce946a5b",
-      "placementCount": 15,
+      "placementCount": 19,
       "excludedGoalIds": [
         "f17935b0-189f-5e0c-988d-ce508b710097",
         "5518ceb3-f668-5b52-a9b1-57653b16ca98",
@@ -1310,7 +1314,8 @@
           ],
           "replacementNode": {
             "kind": "canonicalSubtree",
-            "goalId": "797c4b05-96c4-59a7-85b2-f2690e22918f"
+            "goalId": "797c4b05-96c4-59a7-85b2-f2690e22918f",
+            "displayLabel": "Zusätzliche Anwendung (SkillPilot): Tangenten an Kreise konstruieren"
           }
         },
         {
@@ -1466,6 +1471,86 @@
           "replacementNode": {
             "kind": "canonicalSubtree",
             "goalId": "1bc118c3-1f05-5f2a-b125-418017180d75"
+          }
+        },
+        {
+          "parentStructureId": "sh-jg5-6-g8-kompetenzen",
+          "splitCode": "sh-cylinder-volume-units-basis-g8",
+          "oldClusterGoalId": "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+          "renderKind": "structure",
+          "removeAtomicGoalIds": [
+            "57fbbf31-9b8c-5408-9af5-fbc73acd12bb"
+          ],
+          "replacementNode": {
+            "kind": "structure",
+            "id": "sh-cylinder-volume-units-basis-g8",
+            "label": "Volumeneinheiten als Größenbasis",
+            "children": [
+              {
+                "kind": "goalEntry",
+                "goalId": "57fbbf31-9b8c-5408-9af5-fbc73acd12bb"
+              }
+            ]
+          }
+        },
+        {
+          "parentStructureId": "sh-jg7-9-g8-kompetenzen",
+          "splitCode": "sh-cylinder-area-formula-basis-g8",
+          "oldClusterGoalId": "491e0858-e977-516e-a339-1cc2f9e9690f",
+          "renderKind": "structure",
+          "removeAtomicGoalIds": [
+            "491e0858-e977-516e-a339-1cc2f9e9690f"
+          ],
+          "replacementNode": {
+            "kind": "structure",
+            "id": "sh-cylinder-area-formula-basis-g8",
+            "label": "Flächenformeln durch Zerlegen und Ergänzen begründen",
+            "children": [
+              {
+                "kind": "goalEntry",
+                "goalId": "491e0858-e977-516e-a339-1cc2f9e9690f"
+              }
+            ]
+          }
+        },
+        {
+          "parentStructureId": "sh-jg7-9-g8-kompetenzen",
+          "splitCode": "sh-locus-own-extension-g8",
+          "oldClusterGoalId": "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+          "renderKind": "structure",
+          "removeAtomicGoalIds": [
+            "cf8c5677-f3c5-5563-8f0a-68443fbab7bf"
+          ],
+          "replacementNode": {
+            "kind": "structure",
+            "id": "sh-locus-own-extension-g8",
+            "label": "Zusätzliche Anwendung (SkillPilot): Ortslinien für Konstruktionen auswählen",
+            "children": [
+              {
+                "kind": "goalEntry",
+                "goalId": "cf8c5677-f3c5-5563-8f0a-68443fbab7bf"
+              }
+            ]
+          }
+        },
+        {
+          "parentStructureId": "sh-jg7-9-g8-kompetenzen",
+          "splitCode": "sh-circle-basis-and-own-extension-g8",
+          "oldClusterGoalId": "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
+          "renderKind": "structure",
+          "removeAtomicGoalIds": [
+            "21342eb9-9cfd-4fbf-b28e-60aa2b48f702"
+          ],
+          "replacementNode": {
+            "kind": "structure",
+            "id": "sh-circle-basis-and-own-extension-g8",
+            "label": "Kreisbeziehungen: Basis und Zusatzanwendungen (Umfangswinkel: fakultativ)",
+            "children": [
+              {
+                "kind": "goalEntry",
+                "goalId": "21342eb9-9cfd-4fbf-b28e-60aa2b48f702"
+              }
+            ]
           }
         }
       ],
@@ -1478,7 +1563,7 @@
       "fileName": "de-sh-seki-g9.view.json",
       "viewId": "de-sh-gym-seki-math-g9",
       "fileSha256": "d8d2f75eae4fde1bc07892abc6c33e755bf7f28f00d97c8e363aef792eeb2677",
-      "placementCount": 15,
+      "placementCount": 19,
       "excludedGoalIds": [
         "f17935b0-189f-5e0c-988d-ce508b710097",
         "5518ceb3-f668-5b52-a9b1-57653b16ca98",
@@ -1571,7 +1656,8 @@
           ],
           "replacementNode": {
             "kind": "canonicalSubtree",
-            "goalId": "797c4b05-96c4-59a7-85b2-f2690e22918f"
+            "goalId": "797c4b05-96c4-59a7-85b2-f2690e22918f",
+            "displayLabel": "Zusätzliche Anwendung (SkillPilot): Tangenten an Kreise konstruieren"
           }
         },
         {
@@ -1727,6 +1813,86 @@
           "replacementNode": {
             "kind": "canonicalSubtree",
             "goalId": "1bc118c3-1f05-5f2a-b125-418017180d75"
+          }
+        },
+        {
+          "parentStructureId": "sh-jg5-6-g9-kompetenzen",
+          "splitCode": "sh-cylinder-volume-units-basis-g9",
+          "oldClusterGoalId": "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+          "renderKind": "structure",
+          "removeAtomicGoalIds": [
+            "57fbbf31-9b8c-5408-9af5-fbc73acd12bb"
+          ],
+          "replacementNode": {
+            "kind": "structure",
+            "id": "sh-cylinder-volume-units-basis-g9",
+            "label": "Volumeneinheiten als Größenbasis",
+            "children": [
+              {
+                "kind": "goalEntry",
+                "goalId": "57fbbf31-9b8c-5408-9af5-fbc73acd12bb"
+              }
+            ]
+          }
+        },
+        {
+          "parentStructureId": "sh-jg7-9-g9-kompetenzen",
+          "splitCode": "sh-cylinder-area-formula-basis-g9",
+          "oldClusterGoalId": "491e0858-e977-516e-a339-1cc2f9e9690f",
+          "renderKind": "structure",
+          "removeAtomicGoalIds": [
+            "491e0858-e977-516e-a339-1cc2f9e9690f"
+          ],
+          "replacementNode": {
+            "kind": "structure",
+            "id": "sh-cylinder-area-formula-basis-g9",
+            "label": "Flächenformeln durch Zerlegen und Ergänzen begründen",
+            "children": [
+              {
+                "kind": "goalEntry",
+                "goalId": "491e0858-e977-516e-a339-1cc2f9e9690f"
+              }
+            ]
+          }
+        },
+        {
+          "parentStructureId": "sh-jg7-9-g9-kompetenzen",
+          "splitCode": "sh-locus-own-extension-g9",
+          "oldClusterGoalId": "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+          "renderKind": "structure",
+          "removeAtomicGoalIds": [
+            "cf8c5677-f3c5-5563-8f0a-68443fbab7bf"
+          ],
+          "replacementNode": {
+            "kind": "structure",
+            "id": "sh-locus-own-extension-g9",
+            "label": "Zusätzliche Anwendung (SkillPilot): Ortslinien für Konstruktionen auswählen",
+            "children": [
+              {
+                "kind": "goalEntry",
+                "goalId": "cf8c5677-f3c5-5563-8f0a-68443fbab7bf"
+              }
+            ]
+          }
+        },
+        {
+          "parentStructureId": "sh-jg7-9-g9-kompetenzen",
+          "splitCode": "sh-circle-basis-and-own-extension-g9",
+          "oldClusterGoalId": "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
+          "renderKind": "structure",
+          "removeAtomicGoalIds": [
+            "21342eb9-9cfd-4fbf-b28e-60aa2b48f702"
+          ],
+          "replacementNode": {
+            "kind": "structure",
+            "id": "sh-circle-basis-and-own-extension-g9",
+            "label": "Kreisbeziehungen: Basis und Zusatzanwendungen (Umfangswinkel: fakultativ)",
+            "children": [
+              {
+                "kind": "goalEntry",
+                "goalId": "21342eb9-9cfd-4fbf-b28e-60aa2b48f702"
+              }
+            ]
           }
         }
       ],

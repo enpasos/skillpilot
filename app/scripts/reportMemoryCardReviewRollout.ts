@@ -1,3 +1,4 @@
+import { isAuthoritativeCurricularReviewGoal, loadCurricularReviewLandscape } from './lib/curricularReviewPopulation'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -96,6 +97,8 @@ function isMemoryGoal(goal: LearningGoal): boolean {
 }
 
 function isReviewRelevantGoal(goal: LearningGoal): boolean {
+  const authoritative = isAuthoritativeCurricularReviewGoal(goal)
+  if (authoritative !== undefined) return authoritative
   const tags = new Set(goal.tags ?? [])
   if (tags.has('Practice') || tags.has('Assessment')) return false
   if (tags.has('Motivation') || tags.has('Orientation')) return false
@@ -217,7 +220,7 @@ function renderReport(status: StatusDocument, statusPath: string): string {
         || rule?.status === 'warn'
     })
     .map((curriculum) => {
-      const landscape = readJson<SkillLandscape>(curriculum.path)
+      const landscape = loadCurricularReviewLandscape(readJson<SkillLandscape>(curriculum.path), resolve(repoRoot, curriculum.path), repoRoot)
       const reviewGoals = landscape.goals.filter((goal) => isAtomicGoal(goal) && isReviewRelevantGoal(goal))
       const heuristicCandidates = reviewGoals.filter(isHeuristicMemoryCandidate)
       const memoryGoals = landscape.goals.filter(isMemoryGoal)

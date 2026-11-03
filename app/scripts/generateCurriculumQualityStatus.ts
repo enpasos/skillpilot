@@ -1,3 +1,5 @@
+import { hasHardRouteAssessmentRole } from './lib/hardLearningRouteValidation'
+import { isAuthoritativeCurricularReviewGoal, loadCurricularReviewLandscape } from './lib/curricularReviewPopulation'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs'
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
@@ -1516,6 +1518,8 @@ function isAtomicGoal(goal: LearningGoal): boolean {
 }
 
 function isSemanticAtomicityRelevantGoal(goal: LearningGoal): boolean {
+  const authoritative = isAuthoritativeCurricularReviewGoal(goal)
+  if (authoritative !== undefined) return authoritative
   const tags = new Set(goal.tags ?? [])
   if (tags.has('Practice') || tags.has('Assessment')) return false
   if (tags.has('Motivation') || tags.has('Orientation')) return false
@@ -1583,6 +1587,8 @@ function isProjectedRouteTargetGoal(goal: LearningGoal | undefined): goal is Lea
 
 function isCurriculumSourceCoverageGoal(goal: LearningGoal | undefined): boolean {
   if (!goal) return false
+  const authoritative = isAuthoritativeCurricularReviewGoal(goal)
+  if (authoritative !== undefined) return authoritative
   if (isMemoryGoal(goal) || isPracticeOrAssessmentGoal(goal)) return false
   const tags = goal.tags ?? []
   if (tags.includes('Motivation') || tags.includes('Orientation')) return false
@@ -1974,23 +1980,46 @@ function normalizeDurationModelForRouteScope(value: unknown): DurationModel | nu
   return value === 'G8' || value === 'G9' ? value : null
 }
 
-function terminalAutonomyGoalsForRouteScope(
+function isCurricularAssessmentTerminal(goal: LearningGoal): boolean {
+  return isAtomicGoal(goal)
+    && isAuthoritativeCurricularReviewGoal(goal) === true
+    && hasHardRouteAssessmentRole(goal, goal.semanticKind)
+}
+
+/** Curricular membership and terminal execution are independent roles. */
+export function collectRouteTerminalAutonomyGoals(
+  landscape: SkillLandscape, profile: Pick<RouteProfile, 'terminalAutonomyClusterIds' | 'goalSelector'>,
+): LearningGoal[] {
+  const byId = new Map(landscape.goals.map(goal => [goal.id, goal]))
+  const configured = profile.terminalAutonomyClusterIds
+    .flatMap(clusterId => byId.get(clusterId)?.contains ?? [])
+    .map(id => byId.get(id))
+    .filter((goal): goal is LearningGoal => !!goal && isAtomicGoal(goal) && !isMemoryGoal(goal))
+  const curricular = landscape.goals.filter(profile.goalSelector).filter(isCurricularAssessmentTerminal)
+  return [...new Map([...configured, ...curricular].map(goal => [goal.id, goal])).values()]
+}
+
+export function terminalAutonomyGoalsForRouteScope(
   goalById: Map<string, LearningGoal>,
   profile: RouteProfile,
   scope: Record<string, unknown>,
   fallbackTerminalAutonomyGoals: LearningGoal[],
+  actualTargetGoalIds: ReadonlySet<string>,
 ): LearningGoal[] {
   const durationModel = normalizeDurationModelForRouteScope(scope.durationModel)
   const clusterIds = durationModel
     ? profile.terminalAutonomyClusterIdsByDurationModel?.[durationModel]
     : undefined
-  if (!clusterIds) return fallbackTerminalAutonomyGoals
-
-  return clusterIds
-    .flatMap((clusterId) => goalById.get(clusterId)?.contains ?? [])
-    .map((goalId) => goalById.get(goalId))
-    .filter((goal): goal is LearningGoal => !!goal)
-    .filter((goal) => isAtomicGoal(goal) && !isMemoryGoal(goal))
+  const configured = (clusterIds
+    ? clusterIds.flatMap(clusterId => goalById.get(clusterId)?.contains ?? [])
+      .map(goalId => goalById.get(goalId))
+      .filter((goal): goal is LearningGoal => !!goal && isAtomicGoal(goal) && !isMemoryGoal(goal))
+    : fallbackTerminalAutonomyGoals)
+    .filter(goal => !isCurricularAssessmentTerminal(goal))
+  // A protected curricular support atom never creates an independent target.
+  const curricular = fallbackTerminalAutonomyGoals.filter(goal =>
+    isCurricularAssessmentTerminal(goal) && actualTargetGoalIds.has(goal.id))
+  return [...new Map([...configured, ...curricular].map(goal => [goal.id, goal])).values()]
 }
 
 /** Complete hard prerequisites of a whole assessment material. Cluster
@@ -2143,12 +2172,6 @@ function evaluateRouteEndpointCompositionVisibility(
         ? view.rootNodes.filter((node) => node.kind === 'structure')
         : collectCompositionStageStructures(view.rootNodes, profile.compositionViewStage!)
       : []
-    const scopedTerminalGoals = terminalAutonomyGoalsForRouteScope(
-      goalById,
-      profile,
-      view.scope,
-      terminalAutonomyGoals,
-    )
     const viewJurisdiction = typeof view.scope.jurisdiction === 'string'
       ? view.scope.jurisdiction
       : null
@@ -2291,6 +2314,9 @@ function evaluateRouteEndpointCompositionVisibility(
           }
         })
       }
+      const scopedTerminalGoals = terminalAutonomyGoalsForRouteScope(
+        goalById, profile, view.scope, terminalAutonomyGoals, visibleTargetAtomicGoalIds,
+      )
       const expectedTerminalGoalIds = scopedTerminalGoals
         // Whole Economics materials must also match the actual authored course
         // and duration. Compiled country applicability alone does not imply this.
@@ -2712,7 +2738,7 @@ function isPlaceholderExamData(goal: LearningGoal): boolean {
     && !/\b\d+[,.]?\d*\b/u.test(task)
 }
 
-function concreteExamReadinessIssues(goal: LearningGoal): string[] {
+export function concreteExamReadinessIssues(goal: LearningGoal): string[] {
   if (!goal.examData) return ['missing examData']
   const issues: string[] = []
   if (hasBlockingExamReviewStatus(goal)) {
@@ -2772,11 +2798,7 @@ function evaluateRouteProfile(
   const hasReverseEffectivePath = createPathChecker(reverseEffectiveEdges)
   const hasAtomicDirectPath = createPathChecker(atomicDirectEdges)
   const hasReverseAtomicDirectPath = createPathChecker(reverseAtomicDirectEdges)
-  const terminalAutonomyGoals = profile.terminalAutonomyClusterIds
-    .flatMap((clusterId) => goalById.get(clusterId)?.contains ?? [])
-    .map((goalId) => goalById.get(goalId))
-    .filter((goal): goal is LearningGoal => !!goal)
-    .filter((goal) => isAtomicGoal(goal) && !isMemoryGoal(goal))
+  const terminalAutonomyGoals = collectRouteTerminalAutonomyGoals(landscape, profile)
   const terminalGoalIds = terminalAutonomyGoals.map((goal) => goal.id)
 
   const missingEffectiveMotivation = selectedGoals.filter((goal) =>
@@ -3548,7 +3570,7 @@ function readActiveDeepUnderstandingReviewConfigs(): Map<string, ActiveDeepUnder
   }>(deepUnderstandingRegistryPath)
   const activeByLandscapeId = new Map<string, ActiveDeepUnderstandingReviewConfigs>()
   for (const subject of registry.subjects) {
-    const landscape = loadJson<SkillLandscape>(resolve(repoRoot, subject.landscapePath))
+    const landscape = loadCurricularReviewLandscape(loadJson<SkillLandscape>(resolve(repoRoot, subject.landscapePath)), resolve(repoRoot, subject.landscapePath), repoRoot)
     const semanticAtomicityConfigPaths = [
       ...(subject.semanticAtomicityConfigPath ? [subject.semanticAtomicityConfigPath] : []),
       ...(subject.semanticAtomicityConfigPaths ?? []),
@@ -4182,7 +4204,7 @@ const compositionViewDirectoryByLandscapeId = new Map<string, string>([
 function readLandscapeForReport(report: CoverageReport): SkillLandscape | null {
   const absolutePath = resolve(repoRoot, report.file)
   if (!existsSync(absolutePath)) return null
-  return loadJson<SkillLandscape>(absolutePath)
+  return loadCurricularReviewLandscape(loadJson<SkillLandscape>(absolutePath), absolutePath, repoRoot)
 }
 
 function readCompositionViewFilesForLandscapeId(landscapeId: string): string[] {
@@ -4480,7 +4502,7 @@ function readExtractedSourceAtomicGoalIdsByLandscapeId(): Map<string, Set<string
     if (!sourcePath) continue
 
     try {
-      const sourceLandscape = loadJson<SkillLandscape>(sourcePath)
+      const sourceLandscape = loadCurricularReviewLandscape(loadJson<SkillLandscape>(sourcePath), sourcePath, repoRoot)
       const atomicGoalIds = new Set(
         (sourceLandscape.goals ?? [])
           .filter((goal) => allGoalIds.has(goal.id) && isAtomicGoal(goal))
@@ -4510,7 +4532,7 @@ function readExtractedSourceGoalIdsByLandscapeId(): Map<string, Set<string>> {
     if (!sourcePath) continue
 
     try {
-      const sourceLandscape = loadJson<SkillLandscape>(sourcePath)
+      const sourceLandscape = loadCurricularReviewLandscape(loadJson<SkillLandscape>(sourcePath), sourcePath, repoRoot)
       const goalIds = new Set(
         (sourceLandscape.goals ?? [])
           .map((goal) => goal.id),
@@ -4910,7 +4932,7 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
     collectFiles(canonicalRoot, (fileName) => /\.json$/i.test(fileName) && !/_deck/i.test(fileName))
       .flatMap((file) => {
         try {
-          const landscape = loadJson<SkillLandscape>(file)
+          const landscape = loadCurricularReviewLandscape(loadJson<SkillLandscape>(file), file, repoRoot)
           return landscape.goals.map((goal) => goal.id)
         } catch {
           return []
@@ -5163,7 +5185,7 @@ function createSourceSnapshotMappingPipeline(
 
   let sourceLandscape: SkillLandscape
   try {
-    sourceLandscape = loadJson<SkillLandscape>(sourcePath)
+    sourceLandscape = loadCurricularReviewLandscape(loadJson<SkillLandscape>(sourcePath), sourcePath, repoRoot)
   } catch {
     return null
   }
@@ -6172,7 +6194,7 @@ async function main() {
   const canonicalFiles = collectFiles(canonicalRoot, (fileName) => /\.json$/i.test(fileName) && !/_deck/i.test(fileName))
   const loadedLandscapes = canonicalFiles.map((file) => ({
     file,
-    landscape: loadJson<SkillLandscape>(file),
+    landscape: loadCurricularReviewLandscape(loadJson<SkillLandscape>(file), file, repoRoot),
   }))
   const globalGoalIds = new Set(loadedLandscapes.flatMap(({ landscape }) => landscape.goals.map((goal) => goal.id)))
 

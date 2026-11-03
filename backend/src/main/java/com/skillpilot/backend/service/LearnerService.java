@@ -2306,7 +2306,7 @@ public class LearnerService {
                 plannedScopeIds,
                 projection.structuralGoals(),
                 projectedTargetScopeMembership(plannedScopeIds, projection))
-                && !mayContinueChosenAtomicGoalAfterStoredFocusLoss(learner, projection, activeGoalId)) {
+                && !mayContinueStoredAtomicGoal(learner, projection, activeGoalId)) {
             throw verifiedRecallActiveGoalConflict();
         }
 
@@ -3455,10 +3455,18 @@ public class LearnerService {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "Cannot set mastery on cluster goals. Select an atomic goal first.");
         }
-        if (isSrsGoal(def) && hasUnresolvableStoredFocusReference(learner,
-                getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum()))) {
-            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
-                    "Continue the active memorization goal through Verified Recall before choosing a new focus.");
+        if (isSrsGoal(def)) {
+            GoalProjection projection = getGoalProjection(
+                    learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+            List<String> focusScopeIds = resolveProjectedTargetScopeIds(
+                    resolveEffectiveProjectedFocusIds(learner, projection), projection);
+            boolean retainedOutsideFocus = mayContinueStoredAtomicGoal(learner, projection, effectiveGoalId)
+                    && isGoalOutOfPlannedScope(effectiveGoalId, focusScopeIds, projection.structuralGoals(),
+                            projectedTargetScopeMembership(focusScopeIds, projection));
+            if (hasUnresolvableStoredFocusReference(learner, projection) || retainedOutsideFocus) {
+                throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                        "Continue the active memorization goal through Verified Recall before choosing a new focus.");
+            }
         }
         if (isOrientationGoal(def) && Double.compare(masteryValue, 1.0) != 0) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
@@ -4928,23 +4936,24 @@ public class LearnerService {
     }
 
     /**
-     * Preserves only the pointer the learner had already chosen. This never
-     * extends focus members, raw availability, completion, or future choices.
+     * A read may continue the same server-owned stored atomic target after a
+     * presentation change, including when its focus root survives with fewer
+     * members. This never extends focus membership or authorizes a new choice.
      * Explicit focus and Level-2 writes retain their ordinary revalidation.
      */
-    private boolean mayContinueChosenAtomicGoalAfterStoredFocusLoss(
+    private boolean mayContinueStoredAtomicGoal(
             Learner learner,
             GoalProjection projection,
             String activeGoalId) {
         if (learner == null || projection == null || activeGoalId == null
+                || completionRouteOwnsNavigation(learner)
                 || !projection.targetGoalIds().contains(activeGoalId)
                 || !Objects.equals(activeGoalId, resolveGoalIdInVisibleGoals(
                         learner.getActiveGoalId(), projection.visibleGoals(), false))) {
             return false;
         }
         LearningGoal active = projection.visibleGoals().get(activeGoalId);
-        return active != null && isAtomicGoal(active)
-                && hasUnresolvableStoredFocusReference(learner, projection);
+        return active != null && isAtomicGoal(active);
     }
 
     private boolean hasCompletedPersonalCurriculum(Learner learner) {
@@ -6951,17 +6960,35 @@ public class LearnerService {
         return goal != null && (goal.getContains() == null || goal.getContains().isEmpty());
     }
 
-    /**
-     * Work demand belongs to the complete Personal Curriculum, not the current focus.
-     * A null result means unavailable automatic inputs; it is never an empty demand claim.
-     * This uses the caller's mastery read and never enters completionSnapshot/frontier again.
-     */
-    private Set<String> automaticFrontierWaivers(Learner learner, GoalProjection projection,
+    /** One operation's verified inputs; a missing evaluation never means empty demand. */
+    private record FrontierInputProof(Map<String, Double> mastery, Set<String> waivers,
+            boolean uncoveredTargets) {
+        FrontierInputProof {
+            mastery = Map.copyOf(mastery);
+            waivers = waivers == null ? null : Set.copyOf(waivers);
+        }
+    }
+
+    private Map<String, Double> frontierStoredMastery(Learner learner, GoalProjection projection) {
+        if (completionApplicationService == null || !completionApplicationService.catalog().automatic()
+                || !completionApplicationService.catalog().enabled()) return getMastery(learner.getSkillpilotId());
+        Map<String, Double> stored = new LinkedHashMap<>();
+        masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())
+                .forEach(entry -> stored.put(entry.getGoalKey(), entry.getValue()));
+        return applyCanonicalMasteryProjection(projection.structuralGoals(), stored,
+                resolveProjectionStateFilterId(learner));
+    }
+
+    private FrontierInputProof automaticFrontierInputs(Learner learner, GoalProjection projection,
             Map<String, Double> existingMastery) {
         if (completionApplicationService == null || !completionApplicationService.catalog().automatic()
-                || !completionApplicationService.catalog().enabled()) return Set.of();
-        if (!completionApplicationService.catalog().available()) return null;
-        if (projection.targetGoalIds().isEmpty()) return Set.of();
+                || !completionApplicationService.catalog().enabled()) {
+            return new FrontierInputProof(existingMastery, Set.of(), false);
+        }
+        if (!completionApplicationService.catalog().available()) {
+            return new FrontierInputProof(existingMastery, null, false);
+        }
+        if (projection.targetGoalIds().isEmpty()) return new FrontierInputProof(existingMastery, Set.of(), false);
         try {
             Map<String, LearningGoal> graph = completionGraph(learner, projection);
             CompiledCompletionProfile compiled = compileCompletionScope(learner, AUTOMATIC_COMPLETION_DEFAULT,
@@ -6972,13 +6999,56 @@ public class LearnerService {
                     contextGoals, existingMastery, resolveProjectionStateFilterId(learner)));
             resolveSrsMasterySnapshot(learner.getSkillpilotId(), List.copyOf(contextGoals.values()))
                     .forEach((id, mastered) -> mastery.put(id, mastered ? 1.0 : 0.0));
-            return completionApplicationService.evaluate(compiled, mastery).waivedGoalIds();
+            try {
+                return new FrontierInputProof(mastery,
+                        completionApplicationService.evaluate(compiled, mastery).waivedGoalIds(), false);
+            } catch (com.skillpilot.backend.completion.CompletionCompilationException invalid) {
+                if (!"UNCOVERED_COMPLETION_TARGETS".equals(invalid.code())) throw invalid;
+                return new FrontierInputProof(mastery, null, true);
+            }
         } catch (RuntimeException unavailable) {
-            // The context projection publishes the error. Do not recommend work from an
-            // invented fallback outcome; explicit raw availability remains separate.
             completionApplicationService.recordStatus("unavailable");
-            return null;
+            return new FrontierInputProof(existingMastery, null, false);
         }
+    }
+
+    private FrontierInputProof frontierInputs(CompletionSnapshot snapshot, Map<String, Double> existingMastery) {
+        if (snapshot == null) return null;
+        if (snapshot.compiled() == null) {
+            // A known failed automatic read cannot be retried inside the same
+            // state response with a different SRS snapshot or tolerant M1.
+            return completionApplicationService != null && completionApplicationService.catalog().automatic()
+                    && completionApplicationService.catalog().enabled()
+                            ? new FrontierInputProof(existingMastery, null, false) : null;
+        }
+        if (!snapshot.compiled().automatic()
+                || !AUTOMATIC_COMPLETION_DEFAULT.equals(snapshot.compiled().profile().id())) return null;
+        return new FrontierInputProof(snapshot.strictMasterySnapshot() == null
+                        ? existingMastery : snapshot.strictMasterySnapshot(),
+                snapshot.evaluation() == null ? null : snapshot.evaluation().waivedGoalIds(),
+                snapshot.strictMasterySnapshot() != null
+                        && "UNCOVERED_COMPLETION_TARGETS".equals(snapshot.failureCode()));
+    }
+
+    private boolean normalAvailabilityAfterCoverageFailure(Learner learner, GoalProjection projection,
+            FrontierInputProof inputs) {
+        return inputs != null && inputs.uncoveredTargets() && projection != null
+                && !completionRouteOwnsNavigation(learner) && !effectivePlanFollowing(learner)
+                && hasCompletedPersonalCurriculum(learner)
+                && !getStoredPlannedGoals(learner.getSkillpilotId()).isEmpty()
+                && !hasUnresolvedStoredFocus(learner, projection)
+                && !resolveEffectiveProjectedFocusIds(learner, projection).isEmpty();
+    }
+
+    private boolean normalCoverageGoal(LearningGoal goal) {
+        return isAtomicGoal(goal) && !CompletionProfileCompiler.isAssessment(goal)
+                && !CompletionProfileCompiler.isMemory(goal);
+    }
+
+    /** Completion, focus widening and plan handoff still receive null on failed integrity. */
+    private Set<String> automaticFrontierWaivers(Learner learner, GoalProjection projection,
+            Map<String, Double> existingMastery) {
+        return automaticFrontierInputs(learner, projection, existingMastery).waivers();
     }
 
     /** Lift derived completion to navigation clusters without changing mastery. */
@@ -7024,11 +7094,14 @@ public class LearnerService {
         Set<String> followedScope = followedLearningScopeIds(learner, projection, null);
         if (followedScope != null && followedScope.isEmpty()) return List.of();
         Map<String, LearningGoal> allGoals = projection.visibleGoals();
-        Map<String, Double> masteryMap = getMastery(skillpilotId);
+        FrontierInputProof inputs = automaticFrontierInputs(learner, projection, frontierStoredMastery(learner, projection));
+        boolean normalCoverageAvailability = normalAvailabilityAfterCoverageFailure(learner, projection, inputs);
+        if (inputs.waivers() == null && !normalCoverageAvailability) return List.of();
+        Map<String, Double> masteryMap = inputs.mastery();
         Map<String, Double> effectiveMastery = computeEffectiveMastery(allGoals, masteryMap);
-        Set<String> waived = automaticFrontierWaivers(learner, projection, masteryMap);
-        if (waived == null) return List.of();
-        Set<String> completedWork = completedFrontierWork(allGoals, effectiveMastery, waived);
+        Set<String> waived = inputs.waivers() == null ? Set.of() : inputs.waivers();
+        Set<String> completedWork = inputs.waivers() == null ? Set.of()
+                : completedFrontierWork(allGoals, effectiveMastery, waived);
 
         List<String> projectedFocusIds = resolveEffectiveProjectedFocusIds(
                 learner,
@@ -7047,7 +7120,8 @@ public class LearnerService {
                     masteryMap,
                     projectedFocusIds,
                     plannedIds,
-                    scope).stream().filter(goal -> !waived.contains(goal.id())).toList();
+                    scope).stream().filter(goal -> !waived.contains(goal.id()))
+                    .filter(goal -> !normalCoverageAvailability || normalCoverageGoal(allGoals.get(goal.id()))).toList();
             if (!requiredOrientationGoals.isEmpty()) {
                 return requiredOrientationGoals.stream()
                         .filter(goal -> followedScope == null || followedScope.contains(goal.id()))
@@ -7064,6 +7138,7 @@ public class LearnerService {
 
         List<String> frontier = new ArrayList<>();
         for (LearningGoal goal : allGoals.values()) {
+            if (normalCoverageAvailability && !normalCoverageGoal(goal)) continue;
             if (completedWork.contains(goal.getId())) continue;
             if (followedScope != null && !followedScope.contains(goal.getId())) continue;
             if (!projection.targetGoalIds().contains(goal.getId())) {
@@ -7148,6 +7223,13 @@ public class LearnerService {
             List<String> prospectiveFocusGoalIds,
             boolean requiredRecommendations,
             Map<String, Double> validatedMasterySnapshot) {
+        return getRichFrontier(skillpilotId, compactFrontier, prospectiveFocusGoalIds,
+                requiredRecommendations, validatedMasterySnapshot, null);
+    }
+
+    private List<FrontierGoal> getRichFrontier(String skillpilotId, boolean compactFrontier,
+            List<String> prospectiveFocusGoalIds, boolean requiredRecommendations,
+            Map<String, Double> validatedMasterySnapshot, FrontierInputProof sharedInputs) {
         if (validatedMasterySnapshot != null && requiredRecommendations) {
             throw new IllegalArgumentException("A validated input override is only for explicit raw availability");
         }
@@ -7166,16 +7248,15 @@ public class LearnerService {
         Map<String, LearningGoal> allFilteredGoals = projection.visibleGoals();
         Map<String, LearningGoal> allStructuralGoals = projection.structuralGoals();
 
-        Map<String, Double> masteryMap = validatedMasterySnapshot == null
-                ? getMastery(skillpilotId) : validatedMasterySnapshot;
+        FrontierInputProof inputs = sharedInputs != null ? sharedInputs
+                : validatedMasterySnapshot != null ? new FrontierInputProof(validatedMasterySnapshot, null, false)
+                : automaticFrontierInputs(learner, projection, frontierStoredMastery(learner, projection));
+        boolean normalCoverageAvailability = normalAvailabilityAfterCoverageFailure(learner, projection, inputs);
+        if (requiredRecommendations && inputs.waivers() == null && !normalCoverageAvailability) return List.of();
+        Map<String, Double> masteryMap = inputs.mastery();
         Map<String, Double> effectiveMastery = computeEffectiveMastery(allFilteredGoals, masteryMap);
-        // A known failed calculation supplies no waivers. Reuse its strictly
-        // verified input for raw availability instead of rereading SRS tolerantly.
-        Set<String> automaticWaivers = validatedMasterySnapshot == null
-                ? automaticFrontierWaivers(learner, projection, masteryMap) : null;
-        if (requiredRecommendations && automaticWaivers == null) return List.of();
-        Set<String> waived = automaticWaivers == null ? Set.of() : automaticWaivers;
-        Set<String> completedWork = requiredRecommendations
+        Set<String> waived = inputs.waivers() == null ? Set.of() : inputs.waivers();
+        Set<String> completedWork = requiredRecommendations && inputs.waivers() != null
                 ? completedFrontierWork(allFilteredGoals, effectiveMastery, waived) : Set.of();
 
         // The focus is the union of selected roots and their contains descendants.
@@ -7226,7 +7307,8 @@ public class LearnerService {
                 masteryMap,
                 projectedFocusIds,
                 plannedIds,
-                scope).stream().filter(goal -> !waived.contains(goal.id())).toList();
+                scope).stream().filter(goal -> !waived.contains(goal.id()))
+                .filter(goal -> !normalCoverageAvailability || normalCoverageGoal(allFilteredGoals.get(goal.id()))).toList();
         if (!requiredOrientationGoals.isEmpty()) {
             return orderFrontierByProjection(requiredOrientationGoals.stream()
                     .filter(goal -> followedScope == null || followedScope.contains(goal.id())).toList(), projection);
@@ -7238,6 +7320,7 @@ public class LearnerService {
 
         // Iterate FILTERED goals (what the user should see)
         for (LearningGoal goal : allFilteredGoals.values()) {
+            if (requiredRecommendations && normalCoverageAvailability && !normalCoverageGoal(goal)) continue;
             if (completedWork.contains(goal.getId())) continue;
             if (followedScope != null && !followedScope.contains(goal.getId())) continue;
             if (!projection.targetGoalIds().contains(goal.getId())) {
@@ -7268,7 +7351,9 @@ public class LearnerService {
             }
 
             if (prerequisitesMet) {
-                frontier.add(toFrontierGoal(goal, "Prerequisites met", null));
+                frontier.add(toFrontierGoal(goal, normalCoverageAvailability
+                        ? "Freiwillig verfügbar; die automatische Pflichtberechnung ist derzeit nicht verlässlich."
+                        : "Prerequisites met", null));
             }
         }
         frontier = new ArrayList<>(filterVerifiedRecallAvailableMemoryGoals(skillpilotId, frontier));
@@ -8376,7 +8461,9 @@ public class LearnerService {
                 : getGoalProjection(curriculumId, learner.getPersonalCurriculum());
         CompletionSnapshot completion = completionSnapshot(learner, completionProjection);
         boolean completionOwnsNavigation = completionRouteOwnsNavigation(learner);
-        Map<String, Double> mastery = getMastery(skillpilotId);
+        Map<String, Double> storedMastery = getMastery(skillpilotId);
+        FrontierInputProof readInputs = frontierInputs(completion, storedMastery);
+        Map<String, Double> mastery = readInputs == null ? storedMastery : readInputs.mastery();
         boolean followingLearningPlans = effectivePlanFollowing(learner);
         List<LearnerLearningPlan> followedLearningPlans = currentFollowedLearningPlans(learner);
         boolean hasFollowedLearningPlans = !followedLearningPlans.isEmpty();
@@ -8399,7 +8486,7 @@ public class LearnerService {
                     publishTransitionEvents);
         }
 
-        List<FrontierGoal> frontier = getRichFrontier(skillpilotId);
+        List<FrontierGoal> frontier = getRichFrontier(skillpilotId, true, null, true, null, readInputs);
         List<FrontierGoal> frontierAtomic = completionRecommendations(filterAtomicFrontier(frontier), completion,
                 completionOwnsNavigation);
 
@@ -8418,7 +8505,8 @@ public class LearnerService {
                 && isSequentialLearningStrategy(learner)
                 && Boolean.TRUE.equals(learner.getAutoPilot())) {
             sequentialAutopilotSearchAtomic = completionRecommendations(
-                    filterAtomicFrontier(getRichFrontier(skillpilotId, false)), completion, completionOwnsNavigation);
+                    filterAtomicFrontier(getRichFrontier(skillpilotId, false, null, true, null, readInputs)),
+                    completion, completionOwnsNavigation);
         }
 
         List<String> plannedIds = resolveEffectiveProjectedFocusIds(
@@ -8480,13 +8568,13 @@ public class LearnerService {
         boolean activeGoalIsCurrentViewGoal = storedActiveGoalId != null
                 && !storedActiveGoalId.isBlank()
                 && storedActiveGoalId.equals(activeGoalId);
-        // A valid atomic goal was already explicitly chosen. Losing its old
-        // navigation wrapper does not authorize a broader focus or cancel that
-        // in-progress goal; after completion the learner chooses a new focus.
-        boolean continuingChosenAtomicGoal = mayContinueChosenAtomicGoalAfterStoredFocusLoss(
+        // Preserve the same valid stored atom through a presentation correction,
+        // even if its old root still resolves. This read exception does not widen
+        // focus or authorize an outside successor or a new outside selection.
+        boolean continuingStoredAtomicGoal = mayContinueStoredAtomicGoal(
                 learner, goalProjection, activeGoalId);
         boolean activeGoalOutOfScope = activeGoalIsCurrentViewGoal
-                && !continuingChosenAtomicGoal
+                && !continuingStoredAtomicGoal
                 && !preservesDirectAssessment(learner, activeGoalId)
                 && activeGoalId != null
                 && !exactFollowedScope
@@ -8568,7 +8656,8 @@ public class LearnerService {
                 && AUTOMATIC_COMPLETION_DEFAULT.equals(completion.compiled().profile().id())) {
             ordinaryWaivers = completion.evaluation().waivedGoalIds();
         } else {
-            ordinaryWaivers = automaticFrontierWaivers(learner, goalProjection, mastery);
+            ordinaryWaivers = readInputs == null
+                    ? automaticFrontierWaivers(learner, goalProjection, mastery) : readInputs.waivers();
         }
         Set<String> focusTargetAtoms = goalProjection == null ? Set.of()
                 : projectedAtomicTargetIds(plannedIds, goalProjection);
@@ -8736,21 +8825,6 @@ public class LearnerService {
                     stateMachine.curriculumOptions(), activeGoal, stateMachine.modeOptions());
             nextAllowedActions.remove("setMastery");
             if (!choices.isEmpty()) nextAllowedActions.add("setActiveGoal");
-        }
-
-        // These are explicit ordinary choices, never inputs to required-work
-        // recommendation, autopilot, completion, or automatic plan handoff.
-        if (!invalidDirect && !blockedCoach && !completionOwnsNavigation
-                && !personalizationRequired && !unresolvedStoredFocus && activeGoal == null
-                && !followingLearningPlans
-                && "getFrontier".equals(stateMachine.requiredAction())) {
-            List<FrontierGoal> voluntary = voluntaryOrdinaryOptionsAfterCoverageFailure(
-                    skillpilotId, goalProjection, completion);
-            if (!voluntary.isEmpty()) {
-                stateMachine = new StateMachineInfo(stateMachine.state(), "setActiveGoal", voluntary,
-                        stateMachine.curriculumOptions(), null, stateMachine.modeOptions());
-                nextAllowedActions.add("setActiveGoal");
-            }
         }
 
         /*
@@ -8926,29 +9000,6 @@ public class LearnerService {
         LearningGoal goal = projection == null ? null : projection.visibleGoals().get(workflow.currentGoalId());
         return goal != null && projection.targetGoalIds().contains(goal.getId()) && isAtomicGoal(goal)
                 && !CompletionProfileCompiler.isAssessment(goal) && !CompletionProfileCompiler.isMemory(goal);
-    }
-
-    private List<FrontierGoal> voluntaryOrdinaryOptionsAfterCoverageFailure(String skillpilotId,
-            GoalProjection projection, CompletionSnapshot snapshot) {
-        if (snapshot == null || snapshot.compiled() == null || !snapshot.compiled().automatic()
-                || !AUTOMATIC_COMPLETION_DEFAULT.equals(snapshot.compiled().profile().id())
-                || snapshot.strictMasterySnapshot() == null
-                || !"UNCOVERED_COMPLETION_TARGETS".equals(snapshot.failureCode())) return List.of();
-        return filterAtomicFrontier(getRichFrontier(skillpilotId, false, null, false,
-                snapshot.strictMasterySnapshot())).stream()
-                .filter(option -> projection.targetGoalIds().contains(option.id()))
-                .filter(option -> {
-                    LearningGoal goal = projection.visibleGoals().get(option.id());
-                    return goal != null && !CompletionProfileCompiler.isAssessment(goal)
-                            && !CompletionProfileCompiler.isMemory(goal);
-                })
-                .map(option -> new FrontierGoal(option.id(), option.title(), option.description(), option.type(),
-                        option.nodeKind(), option.semanticKind(),
-                        "Freiwillig verfügbar; die automatische Pflichtberechnung ist derzeit nicht verlässlich.",
-                        option.tags(), option.resourceLinks(), option.sourceRef(), option.sourceLicense(),
-                        option.sourceLicenseUrl(), option.examData(), option.examReadyForSelection(),
-                        option.selectionGoalIds()))
-                .toList();
     }
 
     private List<FrontierGoal> completionRecommendations(List<FrontierGoal> normal,

@@ -4,6 +4,7 @@ import type { SkillLandscape } from '../src/landscapeTypes'
 import { convertLearningGoal, type UiGoal } from '../src/goalTypes'
 import {
   validateHardDirectAtomicRoutes,
+  hasHardRouteAssessmentRole,
   validateOrientationMotivationStructure,
   type HardRouteSemanticKind,
   type HardRouteProfile,
@@ -509,6 +510,7 @@ const scopedFullRouteCoverageProfiles: ScopedFullRouteCoverageProfile[] = [
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
     motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID],
     terminalGoalClusterIds: CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS,
+    terminalGoalSelector: (goal) => hasHardRouteAssessmentRole(goal, canonicalMathSemanticKindByGoalId.get(goal.id)),
     routeGoalSelector: isCanonicalGymMathSek1Goal,
     goalSelector: isCanonicalGymMathSek1CurricularGoal,
     scopeLabel: 'canonical DE Gymnasium mathematics / Sek I curricular atomic goals',
@@ -517,6 +519,7 @@ const scopedFullRouteCoverageProfiles: ScopedFullRouteCoverageProfile[] = [
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
     motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID],
     terminalGoalClusterIds: CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS,
+    terminalGoalSelector: (goal) => hasHardRouteAssessmentRole(goal, canonicalMathSemanticKindByGoalId.get(goal.id)),
     routeGoalSelector: isCanonicalGymMathSek2Goal,
     goalSelector: isCanonicalGymMathSek2CurricularGoal,
     scopeLabel: 'canonical DE Gymnasium mathematics / Sek II curricular atomic goals',

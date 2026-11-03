@@ -1,3 +1,8 @@
+import { collectCompositionProjectionRoleGoalIds } from '../src/utils/authoring/compositionViewAuthoring'
+import { collectRouteTerminalAutonomyGoals, terminalAutonomyGoalsForRouteScope, concreteExamReadinessIssues } from './generateCurriculumQualityStatus'
+import { readFileSync } from 'node:fs'
+import { bindCurricularReviewLandscape, isAuthoritativeCurricularReviewGoal } from './lib/curricularReviewPopulation'
+import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 import assert from 'node:assert/strict'
 import {
   validateHardDirectAtomicRoutes,
@@ -492,3 +497,121 @@ assert.ok(
 )
 
 console.log('Hard learning-route validation regression tests passed.')
+
+// An assessment execution form can assess the same authoritative curricular atom.
+const curricularExam = { id: 'curricular-exam', nodeKind: 'exam', contains: [], requires: ['understand-b'],
+  examData: { taskContent: '1. Solve.', solutionContent: 'Complete solution.', reviewStatus: 'released',
+    scoring: { maxPoints: 2, passingPoints: 1, steps: [{ id: 'a', points: 2, description: 'Solve.' }] } } }
+const sameIdentityGoals = [...goals.filter(g => !g.id.startsWith('exam-')), curricularExam]
+const sameIdentityKinds = new Map(kinds).set('curricular-exam', 'curricularAtomic')
+const sameIdentityProfile = { ...profile, terminalGoalClusterIds: [],
+  goalSelector: (g: HardRouteGoal) => ['understand-a', 'understand-b', 'curricular-exam'].includes(g.id),
+  terminalGoalSelector: (g: HardRouteGoal) => g.nodeKind === 'exam' || g.examData != null }
+assert.deepEqual(validateHardDirectAtomicRoutes(sameIdentityGoals, sameIdentityKinds, sameIdentityProfile), [])
+assert.ok(validateHardDirectAtomicRoutes(sameIdentityGoals.map(g => g.id === curricularExam.id
+  ? { ...g, nodeKind: undefined, examData: undefined, title: 'Exam in the title' } : g), sameIdentityKinds, sameIdentityProfile)
+  .some(f => f.message.includes('No atomic terminal')), 'an ordinary endpoint/title is not a terminal')
+assert.ok(validateHardDirectAtomicRoutes(sameIdentityGoals, sameIdentityKinds, { ...sameIdentityProfile,
+  routeGoalSelector: g => g.id !== curricularExam.id }).some(f => f.message.includes('terminal')),
+  'an out-of-scope assessment cannot close this scope')
+assert.ok(validateHardDirectAtomicRoutes(sameIdentityGoals.filter(g => !g.id.startsWith('understand-'))
+  .map(g => g.id === curricularExam.id ? { ...g, requires: ['orientation-seki'] } : g), sameIdentityKinds,
+  { ...sameIdentityProfile, goalSelector: g => g.id === curricularExam.id })
+  .some(f => f.message.includes('ordinary curricular')), 'zero-length self-reach is not ordinary preparation')
+assert.ok(validateHardDirectAtomicRoutes(sameIdentityGoals.map(g => g.id === 'understand-a'
+  ? { ...g, requires: [] } : g), sameIdentityKinds, sameIdentityProfile)
+  .some(f => f.message.includes('motivation')), 'motivation remains necessary')
+const earlyCurricularAssessmentKinds = new Map(earlyAssessmentKinds).set('early-assessment', 'curricularAtomic')
+const earlyCurricularAssessmentGoals = assessmentBeforeUnderstanding.map(g => g.id === 'early-assessment'
+  ? { ...g, nodeKind: 'exam', examData: curricularExam.examData } : g)
+assert.ok(validateHardDirectAtomicRoutes(earlyCurricularAssessmentGoals, earlyCurricularAssessmentKinds, profile)
+  .some(f => f.message.includes('Route order is reversed')), 'curricular membership does not lower the assessment execution role')
+
+// Test the existing strict schema+fingerprint ledger parser on whole real input,
+// with transient copies only. No stale evidence or changed counts are accepted.
+const canonicalPath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
+const raw = JSON.parse(readFileSync(new URL('../../'+canonicalPath, import.meta.url), 'utf8'))
+const ledger = JSON.parse(readFileSync(new URL('../../curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json', import.meta.url), 'utf8'))
+const targetId = '5743b8f9-86cb-4e24-8859-351708d070ab'
+const edited = structuredClone(raw)
+const goal = edited.goals.find((g: {id: string}) => g.id === targetId)
+Object.assign(goal, { nodeKind: 'exam', examData: curricularExam.examData })
+// Use the actual current closed-schema ledger without rewriting decision bases.
+const freshLedger = structuredClone(ledger)
+freshLedger.decisions.find((d: {goalId: string}) => d.goalId === targetId).sourceFingerprint = fingerprintSemanticKindSourceGoal(goal)
+const bound = bindCurricularReviewLandscape(edited, freshLedger, canonicalPath)
+assert.equal(isAuthoritativeCurricularReviewGoal(bound.goals.find(g => g.id === targetId)!), true)
+assert.equal(bound.goals.filter(g => isAuthoritativeCurricularReviewGoal(g)).length, ledger.counts.curricularAtomic,
+  'the complete curricular denominator is preserved exactly')
+const staleLedger = structuredClone(freshLedger)
+staleLedger.decisions.find((d: {goalId: string}) => d.goalId === targetId).sourceFingerprint = ledger.decisions.find((d: {goalId: string}) => d.goalId === targetId).sourceFingerprint
+assert.throws(() => bindCurricularReviewLandscape(edited, staleLedger, canonicalPath), /stale semantic-kind decision/)
+assert.throws(() => bindCurricularReviewLandscape(edited, { ...freshLedger, counts: { ...freshLedger.counts, curricularAtomic: 0 } }, canonicalPath), /count/)
+assert.equal(isAuthoritativeCurricularReviewGoal(bound.goals.find(g => g.semanticKind === 'practiceAssessment')!), false)
+assert.equal(isAuthoritativeCurricularReviewGoal(bound.goals.find(g => g.semanticKind === 'orientation')!), false)
+assert.equal(isAuthoritativeCurricularReviewGoal(bound.goals.find(g => g.semanticKind === 'memory')!), false)
+assert.equal(isAuthoritativeCurricularReviewGoal({ ...goal, semanticKind: undefined }), undefined,
+  'the existing legacy selector remains in charge without an authoritative decision')
+console.log('Same-identity curricular assessment route and population regressions passed.')
+
+assert.ok(validateHardDirectAtomicRoutes(sameIdentityGoals.map(g => g.id === curricularExam.id
+  ? { ...g, examData: { ...curricularExam.examData, solutionContent: '' } } : g), sameIdentityKinds, sameIdentityProfile)
+  .some(f => f.message.includes('task/rubric metadata')), 'missing actual task metadata stays invalid')
+
+const invalidBasis = structuredClone(freshLedger)
+invalidBasis.decisions[0].decisionBasis = 'arbitrary-unreviewed-basis'
+assert.throws(() => bindCurricularReviewLandscape(edited, invalidBasis, canonicalPath), /closed JSON Schema/)
+
+assert.equal(isAuthoritativeCurricularReviewGoal({ ...goal, semanticKind: 'curricularAtomic' }), undefined, 'unverified raw semanticKind cannot override a legacy review selector')
+
+// The actual CQS global/scoped consumer sees the same competency as a terminal,
+// while retaining the old duration-folder contract and all curricular members.
+const cqsProfile = {
+  terminalAutonomyClusterIds: [],
+  terminalAutonomyClusterIdsByDurationModel: { G8: [], G9: [] },
+  goalSelector: (g: {id: string}) => g.id === targetId,
+}
+const cqsTerminals = collectRouteTerminalAutonomyGoals(bound, cqsProfile)
+assert.deepEqual(cqsTerminals.map(g => g.id), [targetId])
+assert.equal(bound.goals.find(g => g.id === targetId)!.semanticKind, 'curricularAtomic')
+const cqsMap = new Map(bound.goals.map(g => [g.id, g]))
+for (const durationModel of ['G8', 'G9']) {
+  assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, cqsProfile as any, {durationModel}, cqsTerminals,
+    new Set([targetId])).map(g => g.id), [targetId], 'a same-ID target remains an endpoint outside the old exam folders')
+  assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, cqsProfile as any, {durationModel}, cqsTerminals,
+    new Set()), [], 'prerequisite-only or absent curricular assessment does not import a new obligation')
+}
+const ordinaryBound = bindCurricularReviewLandscape(raw, { ...freshLedger, decisions: freshLedger.decisions.map((d: any) =>
+  d.goalId === targetId ? { ...d, sourceFingerprint: fingerprintSemanticKindSourceGoal(raw.goals.find((g: any) => g.id === targetId)) } : d) }, canonicalPath)
+assert.deepEqual(collectRouteTerminalAutonomyGoals(ordinaryBound, cqsProfile), [], 'an ordinary endpoint is not a CQS assessment terminal')
+const cqsTask = bound.goals.find(g => g.id === targetId)!
+assert.deepEqual(concreteExamReadinessIssues(cqsTask), [])
+const unready = { ...cqsTask, examData: { ...cqsTask.examData!, solutionContent: '' } }
+assert.ok(concreteExamReadinessIssues(unready).includes('missing solutionContent'), 'selection cannot suppress the real task/rubric gate')
+console.log('CQS same-ID global/scoped terminal and unready-task regressions passed.')
+
+const scopedPOnlyRoles = collectCompositionProjectionRoleGoalIds([{kind: 'goalEntry', goalId: targetId, projectionRole: 'prerequisiteOnly'}], cqsMap)
+assert.ok(scopedPOnlyRoles.prerequisiteOnlyGoalIds.has(targetId))
+assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, cqsProfile as any, {durationModel:'G8'}, cqsTerminals, scopedPOnlyRoles.targetGoalIds), [])
+const absentRoles = collectCompositionProjectionRoleGoalIds([{kind: 'goalEntry', goalId: '546bf0b3-6921-416b-a2ef-8fd37d429dc7'}], cqsMap)
+assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, cqsProfile as any, {durationModel:'G9'}, cqsTerminals, absentRoles.targetGoalIds), [])
+const actualParent = bound.goals.find(g => g.contains?.includes(targetId))!
+assert.equal(collectRouteTerminalAutonomyGoals(bound, {...cqsProfile, terminalAutonomyClusterIds:[actualParent.id]}).filter(g => g.id===targetId).length, 1)
+const unreadyRaw = structuredClone(edited)
+unreadyRaw.goals.find((g: any) => g.id===targetId).examData.solutionContent = ''
+const unreadyLedger = structuredClone(freshLedger)
+unreadyLedger.decisions.find((d: any) => d.goalId===targetId).sourceFingerprint = fingerprintSemanticKindSourceGoal(unreadyRaw.goals.find((g: any) => g.id===targetId))
+const unreadyBound = bindCurricularReviewLandscape(unreadyRaw, unreadyLedger, canonicalPath)
+const stillChecked = collectRouteTerminalAutonomyGoals(unreadyBound, cqsProfile)
+assert.deepEqual(stillChecked.map(g => g.id), [targetId], 'an unready task stays in QA instead of disappearing')
+assert.ok(concreteExamReadinessIssues(stillChecked[0]).includes('missing solutionContent'))
+
+const legacyParent = bound.goals.find(g => g.contains?.some(id => cqsMap.get(id)?.semanticKind==='practiceAssessment'))!
+const legacyIds = (legacyParent.contains ?? []).filter(id => !cqsMap.get(id)?.contains?.length && cqsMap.get(id)?.nodeKind!=='memory')
+const durationProfile = {...cqsProfile, terminalAutonomyClusterIds:[legacyParent.id], terminalAutonomyClusterIdsByDurationModel:{G8:[legacyParent.id],G9:[]}}
+const mixedTerminals = collectRouteTerminalAutonomyGoals(bound, durationProfile)
+const durationG8 = terminalAutonomyGoalsForRouteScope(cqsMap, durationProfile as any, {durationModel:'G8'}, mixedTerminals, new Set([targetId])).map(g=>g.id)
+assert.ok(durationG8.includes(targetId))
+for (const id of legacyIds) assert.ok(durationG8.includes(id), 'legacy G8 terminal inventory retained '+id)
+assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, durationProfile as any, {durationModel:'G9'}, mixedTerminals, new Set([targetId])).map(g=>g.id), [targetId], 'legacy per-duration narrowing stays exact')
+assert.deepEqual(collectRouteTerminalAutonomyGoals(bound, {...cqsProfile, goalSelector:()=>false}), [], 'no assessment crosses the selected global stage/profile')

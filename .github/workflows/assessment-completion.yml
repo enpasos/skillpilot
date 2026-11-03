@@ -96,6 +96,7 @@ jobs:
       - name: Validate package completion contracts and independent FWU reconstruction
         run: |
           python3 ../scripts/test_assessment_completion_package.py
+          python3 ../scripts/test_curricular_assessment_population.py
           npm run test:fwu-owl-package-builder
       - name: Check TypeScript, state parsing, binary goals and public practice synchronization
         run: |
@@ -194,7 +195,6 @@ jobs:
         run: >-
           ./gradlew test --console=plain --rerun-tasks
           --tests 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1MathematicsCompletionIntegrationTest'
-          -x processResources -x generateClaudePluginPublication
       - name: Require the executed positive real-Mathematics MCP flow
         if: always()
         run: |

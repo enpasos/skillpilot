@@ -4,7 +4,7 @@
   "authorStatus": "PROPOSAL_REQUIRES_INDEPENDENT_SOURCE_FRAGMENT_REVIEW",
   "canonical": {
     "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
-    "sha256": "5f23d314ed1b31caae2e5994921c5fa2599ca7e7f718a5b9fc9d61334713bf37"
+    "sha256": "9cdb5af9778eba22d69d8d5105b5fffbc0cc60f3ec1a6487d9bcbc45fe1326b2"
   },
   "nativeCompiler": {
     "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
@@ -322,6 +322,10 @@
     {
       "path": "app/scripts/config/math-reviewed-assessment-placements.json",
       "sha256": "cb1bc50566906fcd19a6f53b31c881d8689162e6f5beb6845178d68207c69e28"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json",
+      "sha256": "c11193bebc32b4d317e981be243de1b7e376e21d9333360fcd2968a254fe33dc"
     }
   ],
   "variantRegistry": {
@@ -2244,7 +2248,11 @@
       "additionalSourceDecisions": [
         "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/duration-rebase-source-decisions.review.json#de-sh",
         "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-sh-source-decisions.review.json#decisions",
-        "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-sh-source-decisions.review.json#boundedSpatialScopeAddendum"
+        "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-sh-source-decisions.review.json#boundedSpatialScopeAddendum",
+        "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/sh-cylinder-eight-existing-route/author-source-and-exact-operations.json#genericJ8SlotExclusionBeforeTheSixPositivePlacements"
+      ],
+      "deniedAssessmentGoalIds": [
+        "3045f00d-a5b9-547c-b568-593aeac9ffa3"
       ]
     },
     {
@@ -2305,7 +2313,11 @@
       "additionalSourceDecisions": [
         "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/duration-rebase-source-decisions.review.json#de-sh",
         "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-sh-source-decisions.review.json#decisions",
-        "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-sh-source-decisions.review.json#boundedSpatialScopeAddendum"
+        "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-sh-source-decisions.review.json#boundedSpatialScopeAddendum",
+        "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/sh-cylinder-eight-existing-route/author-source-and-exact-operations.json#genericJ8SlotExclusionBeforeTheSixPositivePlacements"
+      ],
+      "deniedAssessmentGoalIds": [
+        "3045f00d-a5b9-547c-b568-593aeac9ffa3"
       ]
     },
     {
@@ -3083,6 +3095,14 @@
     {
       "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/he5-cuboid48-probability-two-edge/normal-producer-upper-boundary-and-representation.json",
       "sha256": "64b1013044d8696e501f4485f62b2a6c01758199a1baffa20896493d65cc55c4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/sh-cylinder-eight-existing-route/author-source-and-exact-operations.json",
+      "sha256": "7e1de0b141efb34b34567f4bbf2a26988de23b48442b5279783bbafaa5a27441"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/sh-cylinder-eight-existing-route/independent-sh-cylinder-scope-decision.json",
+      "sha256": "76c2cef65acdf33df060dffe738b93953e0ea09f309aba342e03e62ac8d387ac"
     }
   ],
   "existingStageViews": [
@@ -4465,7 +4485,7 @@
     "de-sh-gym-math-gk-g9",
     "de-sh-gym-math-lk-g9"
   ],
-  "reviewReceiptPath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/stage-scope-implementation-v30-semantic-decision-basis.review.json",
+  "reviewReceiptPath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/stage-scope-implementation-sh-cylinder-eight.review.json",
   "assessmentScopeOperations": [
     {
       "id": "mv-seki-material-exclude",
@@ -11105,6 +11125,72 @@
       "anchorStructureId": "q2",
       "label": "Prüfung: Drei geometrische Abbildungen konstruieren und prüfen",
       "sourceDecision": "curricula/DE/Gymnasium/assessments/mathematik/matrix-three-geometric-transformations-2026-11-03-v1/author-materialization-and-exact-operations.json"
+    },
+    {
+      "id": "sh-cylinder-existing-de-sh-gym-seki-math-g8",
+      "viewId": "de-sh-gym-seki-math-g8",
+      "goalIds": [
+        "3045f00d-a5b9-547c-b568-593aeac9ffa3"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "sh-jg7-9-g8-kompetenzen",
+      "label": "Eigene Prüfung: Zylinder und Kreistangenten (Zusatzanwendung; SH-Jahrgangsband 6/7/8)",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/sh-cylinder-eight-existing-route/author-source-and-exact-operations.json#exactEightScopes"
+    },
+    {
+      "id": "sh-cylinder-existing-de-sh-gym-math-gk-g8",
+      "viewId": "de-sh-gym-math-gk-g8",
+      "goalIds": [
+        "3045f00d-a5b9-547c-b568-593aeac9ffa3"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "sh-jg7-9-g8-kompetenzen",
+      "label": "Eigene Prüfung: Zylinder und Kreistangenten (Zusatzanwendung; SH-Jahrgangsband 6/7/8)",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/sh-cylinder-eight-existing-route/author-source-and-exact-operations.json#exactEightScopes"
+    },
+    {
+      "id": "sh-cylinder-existing-de-sh-gym-math-lk-g8",
+      "viewId": "de-sh-gym-math-lk-g8",
+      "goalIds": [
+        "3045f00d-a5b9-547c-b568-593aeac9ffa3"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "sh-jg7-9-g8-kompetenzen",
+      "label": "Eigene Prüfung: Zylinder und Kreistangenten (Zusatzanwendung; SH-Jahrgangsband 6/7/8)",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/sh-cylinder-eight-existing-route/author-source-and-exact-operations.json#exactEightScopes"
+    },
+    {
+      "id": "sh-cylinder-existing-de-sh-gym-seki-math-g9",
+      "viewId": "de-sh-gym-seki-math-g9",
+      "goalIds": [
+        "3045f00d-a5b9-547c-b568-593aeac9ffa3"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "sh-jg7-9-g9-kompetenzen",
+      "label": "Eigene Prüfung: Zylinder und Kreistangenten (Zusatzanwendung; SH-Jahrgangsband 7/8/9)",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/sh-cylinder-eight-existing-route/author-source-and-exact-operations.json#exactEightScopes"
+    },
+    {
+      "id": "sh-cylinder-existing-de-sh-gym-math-gk-g9",
+      "viewId": "de-sh-gym-math-gk-g9",
+      "goalIds": [
+        "3045f00d-a5b9-547c-b568-593aeac9ffa3"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "sh-jg7-9-g9-kompetenzen",
+      "label": "Eigene Prüfung: Zylinder und Kreistangenten (Zusatzanwendung; SH-Jahrgangsband 7/8/9)",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/sh-cylinder-eight-existing-route/author-source-and-exact-operations.json#exactEightScopes"
+    },
+    {
+      "id": "sh-cylinder-existing-de-sh-gym-math-lk-g9",
+      "viewId": "de-sh-gym-math-lk-g9",
+      "goalIds": [
+        "3045f00d-a5b9-547c-b568-593aeac9ffa3"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "sh-jg7-9-g9-kompetenzen",
+      "label": "Eigene Prüfung: Zylinder und Kreistangenten (Zusatzanwendung; SH-Jahrgangsband 7/8/9)",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/sh-cylinder-eight-existing-route/author-source-and-exact-operations.json#exactEightScopes"
     }
   ],
   "revision": "bbb-existing-reference-v2",

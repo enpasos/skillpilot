@@ -2,7 +2,27 @@
 
 Stand: 3. November 2026, lokale Prüfung. Die ergänzte deterministische Prüfung verwendet die tatsächliche Backend-Projektion der Länderangebote, einschließlich G8/G9, Stufe, GK, LK und Kurszusammenführung, sowie der tatsächlich auswählbaren kanonischen Personal Curricula unter „Alle Bundesländer“. Sie berücksichtigt auch direkte `goalEntry`-Referenzen, die einen kanonischen Cluster in der geprüften Projektion zu einem atomaren Ziel machen. Die im Grundreview gefundene ALL-Inventarlücke ist im tatsächlichen Mathematiknachlauf geschlossen: 154 Länderangebote und sieben ALL-Konfigurationen sind geprüft; die rohe kanonische Diagnose bleibt separat.
 
-## Aktueller Mathematikstand V30: gemeinsame Datenkorrektur und projektionstreuer Fokus
+## Aktueller integrierter Stand: SH, Prüfungsrolle und normale Frontier
+
+Der nächste geprüfte Zwischenstand integriert die 40 zuvor getrennten
+Fokus-/SH-/Prüfungsrollendateien und den unabhängig gegengelesenen normalen
+Frontierfix. **337/337 Tests in zwölf vollständigen Suiten** bestehen nach
+frischem Root-Compile; zusätzlich besteht der reale vollständige Mathematik-
+MCP-Test mit dem normalen Gradle-Ressourcenprozess. Die zehn normalen
+Quellen-/Autorenchecks sind grün. Die 66 rohen Applicabilityunterschiede und
+21 APV203-Warnungen bleiben als unveränderter Bestand ausdrücklich offen.
+
+Nach der SH-Korrektur bleiben **378 ungedeckte Ziel-IDs / 9.762
+Ziel-Angebots-Paare und 214 gewöhnliche Endpunkt-IDs**. Alle **161 Angebote**
+besitzen weiterhin ungedeckte Abschlussrouten. Keine M7- oder vollständige
+CI-Abnahme wird behauptet. Prüfungen und Lernkarten bleiben geschützt; die
+807 curricularen Mathematikziele bleiben in der Qualitätsprüfung.
+
+Der [aktuelle Checkpoint](../../dev/implicit-completion-checkpoint-2026-11-03.md)
+und der [tatsächliche Ausführungsbeleg](../evidence/curriculum-completion-integrity/2026-11-03/integrated-normal-frontier/execution.json)
+trennen diesen integrierten Nachlauf von den folgenden historischen Vorläufen.
+
+## Historischer Mathematikstand V30: gemeinsame Datenkorrektur und projektionstreuer Fokus
 
 Der zusätzliche Prüfungsstart-Nachlauf ist als **23 Code-/Test-/Appdateien**
 übernommen. Dieser vorherige Nachlauf war mit 9.550 Quelldateien und

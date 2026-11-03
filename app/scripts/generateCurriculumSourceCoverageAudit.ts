@@ -1,3 +1,4 @@
+import { isAuthoritativeCurricularReviewGoal, loadCurricularReviewLandscape } from './lib/curricularReviewPopulation'
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -105,7 +106,7 @@ type CoverageGoalReport = CoverageReport['goals'][number]
 function readLandscapeForReport(report: CoverageReport): SkillLandscape | null {
   const absolutePath = resolve(repoRoot, report.file)
   if (!existsSync(absolutePath)) return null
-  return JSON.parse(readFileSync(absolutePath, 'utf8')) as SkillLandscape
+  return loadCurricularReviewLandscape(JSON.parse(readFileSync(absolutePath, 'utf8')) as SkillLandscape, absolutePath, repoRoot)
 }
 
 function collectFiles(directory: string): string[] {
@@ -158,6 +159,8 @@ function isPracticeOrAssessmentGoal(goal: LearningGoal): boolean {
 
 function isCurriculumSourceCoverageGoal(goal: LearningGoal | undefined): boolean {
   if (!goal) return false
+  const authoritative = isAuthoritativeCurricularReviewGoal(goal)
+  if (authoritative !== undefined) return authoritative
   if (isMemoryGoal(goal) || isPracticeOrAssessmentGoal(goal)) return false
   const tags = goal.tags ?? []
   if (tags.includes('Motivation') || tags.includes('Orientation')) return false
@@ -275,7 +278,7 @@ function renderMarkdown(audit: SourceCoverageAudit): string {
   lines.push('')
   lines.push('`Covered` means direct source/mapping evidence plus explicitly accepted surrogate evidence. `Direct` excludes surrogate evidence; `Surrogate-only` is the accepted requires-closure bridge count. `View status` evaluates only learner-facing `target` atoms in authoritative jurisdiction composition views; `prerequisiteOnly` atoms and applicability inherited only through `requires-closure` outside those views are not source targets.')
   lines.push('')
-  lines.push('Memory/SRS, practice, assessment, motivation, orientation, and `examData` goals are excluded from the source-coverage denominator; memory traceability is handled by the separate memory-card review.')
+  lines.push('The authoritative curricularAtomic population stays in source coverage even when a competency has an assessment execution form. Non-curricular practice/assessment, memory and orientation stay excluded. Landscapes without an authoritative ledger retain their legacy exclusions; memory traceability is handled by the separate memory-card review.')
   lines.push('')
   lines.push('The Applicability compiler supplies source evidence and projection findings; learner-facing visibility is resolved from the same composition-view target projection used by the Workbench `Curriculum Quality` counters. Those counters additionally include extracted source atoms and fully covered source original goals.')
   lines.push('')
