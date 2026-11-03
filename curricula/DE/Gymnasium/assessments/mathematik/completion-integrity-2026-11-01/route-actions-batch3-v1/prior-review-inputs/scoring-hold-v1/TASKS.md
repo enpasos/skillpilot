@@ -1,0 +1,309 @@
+# Drei begrenzte Mathematik-Aufgabenergänzungen – Autorenkandidat
+
+Stand: 1. November 2026. DRAFT; nicht aktiviert und noch nicht unabhängig inhaltlich angenommen.
+
+Gebundener Originalkanon: `3a3792d14057854c79a3d8c4d38cd98dd6e28e936865ebd3447107404b58474c`.
+
+Die bestehenden drei Prüfungs-IDs und ihre bisherigen Aufgabenhandlungen bleiben erhalten. Bereits gültige Mastery bleibt gültig; kein neuer Passstatus und keine rückwirkende Requalifikation. Aufgaben, Lösungen und Rubriken unten sind exakt aus `after-goals.json` abgeleitet. Die zwei neuen SVG-Dateien liegen in `materials/`; die öffentlichen Pfade in den Aufgaben sind die vorgesehene Materialisierung, hier wird nichts öffentlich geschrieben.
+
+## bc244d82-bac0-5b13-8a33-d7b101835480: Geradenschnitt mit einer Ebene deuten
+
+18 BE, Gesamtpunktschwelle 11 BE. Ausschließlich Gesamtbewertung, keine zusätzlichen Teilpassregeln.
+
+### Aufgabe (DE)
+
+Eine Flugbahn wird durch $g:X=(1,0,2)+t(1,2,-1)$ beschrieben. Eine Messfläche liegt in $E:x+y+z=6$.
+
+1. Bestimme den Schnittpunkt von $g$ und $E$ durch Einsetzen. Prüfe ihn in beiden Gleichungen. (6 BE)
+2. Begründe geometrisch mit Richtungsvektor und Ebenennormale, warum es genau einen Schnittpunkt gibt. Deute den Parameterwert auf der Flugbahn. (4 BE)
+
+3. Betrachte dieselbe Bahn $g$ als vollständige Gerade mit $t\in\mathbb{R}$. Bestimme ihre Schnittpunkte mit der $xy$-, der $xz$- und der $yz$-Ebene und jeweils den zugehörigen Parameterwert. Prüfe jeden Punkt sowohl mit der Geradengleichung als auch mit der Gleichung der betreffenden Koordinatenebene. Deute die drei Punkte als Durchstoß- bzw. Spurpunkte. Erläutere, weshalb dabei auch ein negativer Parameterwert zulässig ist. (8 BE)
+
+### Lösung und Bewertungshinweis (DE)
+
+Einsetzen ergibt $(1+t)+2t+(2-t)=3+2t=6$, also $t=3/2$ und $S=(5/2,3,1/2)$. In der Ebene gilt $5/2+3+1/2=6$; in der Geraden entsteht genau dieser Punkt bei $t=3/2$. Der Richtungsvektor $v=(1,2,-1)$ hat mit $n=(1,1,1)$ das Skalarprodukt $n\cdot v=2\ne0$, daher verläuft die Bahn nicht parallel zur Messfläche und durchstößt sie genau einmal. $t=3/2$ bezeichnet die Lage dieses Punkts auf der parametrierten Flugbahn; ohne Zeiteinheit ist es keine physikalische Flugzeit.
+
+**3. Koordinatenebenen und Spurpunkte (8 BE):**
+
+| Ebene | Bedingung | Parameter | Spurpunkt | Probe in $g$ und in der Ebene |
+|---|---|---|---|---|
+| $xy$ | $z=0$ | $2-t=0\Rightarrow t=2$ | $S_{xy}=(3,4,0)$ | $(1,0,2)+2(1,2,-1)=(3,4,0)$ und $z=0$ |
+| $xz$ | $y=0$ | $2t=0\Rightarrow t=0$ | $S_{xz}=(1,0,2)$ | $(1,0,2)+0(1,2,-1)=(1,0,2)$ und $y=0$ |
+| $yz$ | $x=0$ | $1+t=0\Rightarrow t=-1$ | $S_{yz}=(0,-2,3)$ | $(1,0,2)-(1,2,-1)=(0,-2,3)$ und $x=0$ |
+
+Jeder Spurpunkt ist die Stelle, an der die Gerade die betreffende Koordinatenebene durchstößt. Alle drei sind eindeutig, weil die jeweils senkrecht zur Ebene gemessene Koordinate einen von null verschiedenen Richtungsanteil hat. Für die ausdrücklich vollständige Gerade gilt $t\in\mathbb{R}$, also ist auch $t=-1$ zulässig. Eine reale Flugstrecke könnte einen engeren Parameterbereich haben; ein solcher wird hier nicht unterstellt.
+
+**Normale Gesamtrubrik-Kappung: Fehlt in Teil 3 jeder ermittelte Spurpunkt mit einer rechnerischen Probe, ist die Gesamtpunktzahl auf höchstens 10 von 18 BE begrenzt. Die bloße allgemeine Deutung ersetzt die geforderte Schnittberechnung nicht.**
+
+**Bewertungshinweis:** Die Lösung ist eine nicht ausschließliche Referenz. Fachlich gleichwertige Ergebnisse, zulässige Näherungen, Darstellungen und Lösungswege sind anzuerkennen; ausdrücklich geforderte Begründungsformen bleiben verbindlich. Teilpunkte nach den Rubrikschritten vergeben, einen Rechenfehler nicht mehrfach als denselben fachlichen Fehler abziehen und nachvollziehbare Folgearbeit eigenständig würdigen. Nur verlässlich lesbare eingereichte Arbeit bewerten, keine Rückfragen zur Vervollständigung. Es gilt ausschließlich die angegebene Gesamtpunktschwelle nach Anwendung der normalen Rubrik-Kappung, kein zusätzlicher Teilpassstatus. Bereits gültige Mastery wird durch diese Aufgabenergänzung nicht neu qualifiziert.
+
+### Rubrik (DE)
+
+| ID | BE | Kriterium |
+|---|---:|---|
+| `q2_m7_line_plane_intersection_1` | 6 | Teil 1: Einsetzgleichung 1 BE; t=3/2 1 BE; Punktkoordinaten 2 BE; explizite Probe in E 1 BE und in g 1 BE. Gleichwertige Darstellungen anerkennen. |
+| `q2_m7_line_plane_intersection_2` | 4 | Teil 2: Ebenennormale 1 BE; Skalarprodukt ungleich null 1 BE; daraus genau ein Schnitt statt Parallelität 1 BE; t als Parameterlage ohne erfundene Zeiteinheit 1 BE. |
+| `q2_line_coordinate_xy` | 2 | Teil 3, xy-Ebene: richtige Nullkoordinatenbedingung, Parameter und Punkt zusammen 1 BE; beide expliziten Proben zusammen 1 BE. Nach nachvollziehbarem Rechenfehler passende Folgeproben eigenständig bewerten. |
+| `q2_line_coordinate_xz` | 2 | Teil 3, xz-Ebene: richtige Nullkoordinatenbedingung, Parameter und Punkt zusammen 1 BE; beide expliziten Proben zusammen 1 BE. Nach nachvollziehbarem Rechenfehler passende Folgeproben eigenständig bewerten. |
+| `q2_line_coordinate_yz` | 2 | Teil 3, yz-Ebene: richtige Nullkoordinatenbedingung, Parameter und Punkt zusammen 1 BE; beide expliziten Proben zusammen 1 BE. Nach nachvollziehbarem Rechenfehler passende Folgeproben eigenständig bewerten. |
+| `q2_line_coordinate_interpretation` | 2 | Teil 3: Spurpunkte als Durchgänge der Geraden durch die jeweiligen Koordinatenebenen deuten 1 BE; negativen Parameter mit t∈R rechtfertigen und nicht als negative reale Flugzeit missdeuten 1 BE. Normale Gesamtrubrik-Kappung: Fehlt in Teil 3 jeder ermittelte Spurpunkt mit einer rechnerischen Probe, ist die Gesamtpunktzahl auf höchstens 10 von 18 BE begrenzt. Die bloße allgemeine Deutung ersetzt die geforderte Schnittberechnung nicht. |
+
+### Task (EN)
+
+A trajectory is described by $g:X=(1,0,2)+t(1,2,-1)$. A measurement surface lies in $E:x+y+z=6$.
+
+1. Find the intersection of $g$ and $E$ by substitution. Check the point in both equations. (6 points)
+2. Use the direction vector and the plane's normal vector to justify geometrically why there is exactly one intersection. Interpret the parameter value on the trajectory. (4 points)
+3. Regard the same trajectory $g$ as a complete line with $t\in\mathbb{R}$. Find its intersections with the $xy$-, $xz$- and $yz$-planes, including the corresponding parameter value for each. Check every point using both the line equation and the equation of the relevant coordinate plane. Interpret the three points as intersection or trace points. Explain why a negative parameter value is permitted here. (8 points)
+
+### Solution and grading note (EN)
+
+Substitution gives $(1+t)+2t+(2-t)=3+2t=6$, so $t=3/2$ and $S=(5/2,3,1/2)$. The plane check is $5/2+3+1/2=6$; substituting $t=3/2$ into the line gives exactly this point. For the direction vector $v=(1,2,-1)$ and normal $n=(1,1,1)$, $n\cdot v=2\ne0$. Hence the line is not parallel to the plane and intersects it exactly once. The value $t=3/2$ locates the point on the parametrised trajectory; without a time unit it is not a physical flight time.
+
+**3. Coordinate planes and trace points (8 points):**
+
+| Plane | Condition | Parameter | Trace point | Check in $g$ and the plane |
+|---|---|---|---|---|
+| $xy$ | $z=0$ | $2-t=0\Rightarrow t=2$ | $S_{xy}=(3,4,0)$ | $(1,0,2)+2(1,2,-1)=(3,4,0)$ and $z=0$ |
+| $xz$ | $y=0$ | $2t=0\Rightarrow t=0$ | $S_{xz}=(1,0,2)$ | $(1,0,2)+0(1,2,-1)=(1,0,2)$ and $y=0$ |
+| $yz$ | $x=0$ | $1+t=0\Rightarrow t=-1$ | $S_{yz}=(0,-2,3)$ | $(1,0,2)-(1,2,-1)=(0,-2,3)$ and $x=0$ |
+
+Each trace point is where the line passes through the corresponding coordinate plane. Each is unique because the direction component perpendicular to that plane is nonzero. This is explicitly a complete line, with $t\in\mathbb{R}$, so $t=-1$ is permitted. A physical flight segment could have a narrower parameter interval; none is assumed here.
+
+**Normal total-score cap: If part 3 contains no determined trace point with an algebraic check, cap the overall score at 10 out of 18. A general interpretation alone does not replace the required intersection calculation.**
+
+**Grading note:** The solution is a non-exclusive reference. Accept mathematically equivalent results, permitted approximations, representations and methods; explicitly required reasoning forms remain binding. Award partial credit by rubric step, do not penalise one arithmetic error repeatedly as the same conceptual error, and credit traceable follow-through separately. Grade only reliably legible submitted work, without follow-up questions to complete it. Apply the normal rubric cap before comparing with the stated total-point threshold; there is no additional part-pass status. Previously valid mastery is not requalified by this task extension.
+
+### Rubric (EN)
+
+| ID | Points | Criterion |
+|---|---:|---|
+| `q2_m7_line_plane_intersection_1` | 6 | Part 1: substitution equation 1 point; t=3/2 1; point coordinates 2; explicit checks in E 1 and g 1. Accept equivalent representations. |
+| `q2_m7_line_plane_intersection_2` | 4 | Part 2: plane normal 1 point; nonzero dot product 1; unique intersection rather than parallelism 1; parameter location without an invented time unit 1. |
+| `q2_line_coordinate_xy` | 2 | Part 3, xy-plane: correct zero-coordinate condition, parameter and point together 1 point; both explicit checks together 1. Credit consistent checks after a traceable arithmetic error separately. |
+| `q2_line_coordinate_xz` | 2 | Part 3, xz-plane: correct zero-coordinate condition, parameter and point together 1 point; both explicit checks together 1. Credit consistent checks after a traceable arithmetic error separately. |
+| `q2_line_coordinate_yz` | 2 | Part 3, yz-plane: correct zero-coordinate condition, parameter and point together 1 point; both explicit checks together 1. Credit consistent checks after a traceable arithmetic error separately. |
+| `q2_line_coordinate_interpretation` | 2 | Part 3: interpret the trace points as passages through the corresponding coordinate planes 1 point; justify a negative parameter by t∈R without interpreting it as negative physical flight time 1. Normal total-score cap: If part 3 contains no determined trace point with an algebraic check, cap the overall score at 10 out of 18. A general interpretation alone does not replace the required intersection calculation. |
+
+## 77940875-ad1e-5272-9002-3ca9db810a18: Zufallsexperimente und Modelle vergleichen
+
+20 BE, Gesamtpunktschwelle 12 BE. Ausschließlich Gesamtbewertung, keine zusätzlichen Teilpassregeln.
+
+### Aufgabe (DE)
+
+Für ein Forschungscamp werden $3$ Plätze unter $20$ Bewerberinnen und Bewerbern verlost. Darunter sind $8$ Personen aus dem Leistungskurs Mathematik und $12$ aus anderen Kursen.
+
+1. Beschreiben Sie das Ziehen ohne Zurücklegen mit einem geeigneten Modell und berechnen Sie die Wahrscheinlichkeit, dass genau zwei der drei ausgewählten Personen aus dem Leistungskurs Mathematik stammen.
+2. Eine Schülerin vereinfacht das Experiment zu drei Ziehungen mit Zurücklegen und verwendet ein Binomialmodell mit $p=0{,}4$. Berechnen Sie in diesem Modell ebenfalls die Wahrscheinlichkeit für genau zwei Leistungskurs-Personen.
+3. Vergleichen Sie beide Ergebnisse und beurteilen Sie, welches Modell die reale Situation besser beschreibt.
+4. Erläutern Sie, warum die Binomialmodellierung bei einer sehr grossen Grundgesamtheit mit demselben Anteil von $40\,$% deutlich besser geeignet ist.
+
+Die Teile 1 bis 4 werden mit 4, 3, 2 und 2 BE bewertet.
+
+5. Für eine weitere Losaktion ist zunächst nur der Wahrscheinlichkeitsterm
+$$T=\sum_{k=1}^{2}\binom{4}{k}\left(\frac{1}{3}\right)^k\left(\frac{2}{3}\right)^{4-k}$$
+gegeben. Formuliere ein eigenes passendes Ziehexperiment mit einer selbst gewählten Urne und ein Ereignis, dessen Wahrscheinlichkeit genau durch diesen Term beschrieben wird. Lege insbesondere die Urnenzusammensetzung, die Anzahl der Ziehungen und das Zurücklegen fest. Ordne die Zahl $4$, die Brüche, die Exponenten, den Binomialkoeffizienten, die Summengrenzen und das Addieren der Summanden deinem Experiment und Ereignis zu. Der Zahlenwert von $T$ muss nicht berechnet werden. (9 BE)
+
+### Lösung und Bewertungshinweis (DE)
+
+1. Da ohne Zurücklegen gezogen wird, ist die hypergeometrische Modellierung passend. Für genau zwei Leistungskurs-Personen gilt
+$$
+P(X=2)=\frac{\binom{8}{2}\binom{12}{1}}{\binom{20}{3}}=\frac{28\cdot 12}{1140}\approx 0{,}2947.
+$$
+
+2. Im Binomialmodell mit $n=3$ und $p=0{,}4$ ergibt sich
+$$
+P(Y=2)=\binom{3}{2}\cdot 0{,}4^2\cdot 0{,}6=3\cdot 0{,}16\cdot 0{,}6=0{,}288.
+$$
+
+3. Beide Werte liegen nah beieinander, unterscheiden sich aber leicht. Das reale Ziehen ohne Zurücklegen wird durch das hypergeometrische Modell besser beschrieben, weil sich die Wahrscheinlichkeiten nach jeder Ziehung verändern.
+
+4. Bei einer sehr grossen Grundgesamtheit ändert sich der Anteil von Leistungskurs-Personen durch eine einzelne Ziehung kaum. Dann sind die Ziehungen nahezu unabhängig, sodass die Binomialverteilung eine gute Approximation liefert.
+
+**5. Beispiel einer inversen Modellierung (9 BE):**
+
+Eine selbst gewählte Urne enthält eine rote und zwei blaue Kugeln. Es wird viermal mit Zurücklegen gezogen und vor jeder Ziehung gut gemischt. Rot zählt als Erfolg, Blau als Misserfolg. Das Ereignis lautet: „In den vier Ziehungen wird genau ein oder genau zwei Mal Rot gezogen.“ Für $X=$ Anzahl roter Ziehergebnisse gilt $X\sim B(4,1/3)$ und das Ereignis ist $\{X=1\}\cup\{X=2\}$.
+
+$4$ zählt die unabhängigen Ziehungen, $1/3$ ist die Erfolgswahrscheinlichkeit, $2/3$ die Misserfolgswahrscheinlichkeit. Bei $k$ Erfolgen sind die Exponenten $k$ und $4-k$ die jeweiligen Anzahlen. $\binom{4}{k}$ zählt die möglichen Anordnungen dieser Erfolge. Die Grenzen 1 und 2 wählen die erlaubten Erfolgsanzahlen; die Summe addiert die Wahrscheinlichkeiten der disjunkten Ereignisse $X=1$ und $X=2$.
+
+Dies ist nur ein Beispiel. Jede passende Urne mit dem Erfolgsanteil 1/3 und unabhängigem Ziehen mit Zurücklegen ist gleichwertig, etwa zwei rote und vier blaue Kugeln. Eine andersartige fachlich korrekte Experimentkonstruktion belegt die allgemeine inverse Handlung ebenfalls; die ausdrücklich verlangte Urnenkonstruktion muss für deren Experimentpunkt erkennbar sein. Ohne Zurücklegen passt die angegebene Binomialbegründung nicht; bloß den Term auszurechnen ersetzt Experiment und Ereignis nicht.
+
+**Normale Gesamtrubrik-Kappung: Fehlt in Teil 5 eine eigene passende Experimentbeschreibung oder eine eigene passende Ereignisbeschreibung, ist die Gesamtpunktzahl auf höchstens 11 von 20 BE begrenzt. Isoliertes Aufzählen von Formelsymbolen ersetzt die inverse Modellierung nicht.**
+
+**Bewertungshinweis:** Die Lösung ist eine nicht ausschließliche Referenz. Fachlich gleichwertige Ergebnisse, zulässige Näherungen, Darstellungen und Lösungswege sind anzuerkennen; ausdrücklich geforderte Begründungsformen bleiben verbindlich. Teilpunkte nach den Rubrikschritten vergeben, einen Rechenfehler nicht mehrfach als denselben fachlichen Fehler abziehen und nachvollziehbare Folgearbeit eigenständig würdigen. Nur verlässlich lesbare eingereichte Arbeit bewerten, keine Rückfragen zur Vervollständigung. Es gilt ausschließlich die angegebene Gesamtpunktschwelle nach Anwendung der normalen Rubrik-Kappung, kein zusätzlicher Teilpassstatus. Bereits gültige Mastery wird durch diese Aufgabenergänzung nicht neu qualifiziert.
+
+### Rubrik (DE)
+
+| ID | BE | Kriterium |
+|---|---:|---|
+| `q3a_1` | 4 | Teil 1: Modell ohne Zurücklegen 1 BE; passende Anzahlen im Zähler 1 BE; Nenner 1 BE; korrekte Wahrscheinlichkeit 1 BE. Gleichwertige Baum-/Pfadrechnung anerkennen. |
+| `q3a_2` | 3 | Teil 2: Binomialansatz mit n=3 und p=0,4 1 BE; Anordnungsfaktor und Produkt 1 BE; Wahrscheinlichkeit 0,288 1 BE. |
+| `q3a_3` | 2 | Teil 3: Werte sachgerecht verglichen 1 BE; Modell ohne Zurücklegen wegen veränderlicher Wahrscheinlichkeiten bevorzugt 1 BE. |
+| `q3a_4` | 2 | Teil 4: Anteil ändert sich durch kleine Stichprobe kaum 1 BE; dadurch annähernde Unabhängigkeit und Eignung der Binomialapproximation begründet 1 BE. |
+| `inverse_experiment` | 3 | Teil 5: eigene passende Urnenzusammensetzung und Definition von Erfolg mit p=1/3 sowie Misserfolg mit 2/3 1 BE; vier Ziehungen der Zahl 4 zugeordnet 1 BE; Zurücklegen und Mischen als Unabhängigkeitsgrund angegeben 1 BE. |
+| `inverse_event` | 2 | Teil 5: eigenes Ereignis im selbst konstruierten Kontext eindeutig formuliert 1 BE; genau ein oder genau zwei Erfolge korrekt mit den Summengrenzen verknüpft 1 BE. Worte oder äquivalente Mengenschreibweise zulässig. |
+| `inverse_factors` | 3 | Teil 5: Exponent k als Erfolgsanzahl 1 BE; Exponent 4−k als Misserfolgsanzahl 1 BE; Binomialkoeffizient als Anzahl der Anordnungen erklärt 1 BE. |
+| `inverse_sum` | 1 | Teil 5: Addition wegen disjunkter Ereignisse verschiedener Erfolgsanzahl erklärt. Keine Pflicht zur Berechnung des Zahlenwerts. Normale Gesamtrubrik-Kappung: Fehlt in Teil 5 eine eigene passende Experimentbeschreibung oder eine eigene passende Ereignisbeschreibung, ist die Gesamtpunktzahl auf höchstens 11 von 20 BE begrenzt. Isoliertes Aufzählen von Formelsymbolen ersetzt die inverse Modellierung nicht. |
+
+### Task (EN)
+
+For a research camp, 3 places are allocated by lottery among 20 applicants. Among them, 8 attend the advanced mathematics course and 12 attend other courses.
+
+1. Describe sampling without replacement using a suitable model and calculate the probability that exactly two of the three selected people are from the advanced mathematics course.
+2. A student simplifies the experiment to three draws with replacement and uses a binomial model with $p=0.4$. Calculate the probability of exactly two advanced-course people in this model as well.
+3. Compare the results and assess which model describes the actual situation better.
+4. Explain why a binomial model is much more suitable for a very large population with the same proportion of 40%.
+
+Parts 1 to 4 are worth 4, 3, 2 and 2 points, respectively.
+
+5. For another lottery, initially only the probability expression
+$$T=\sum_{k=1}^{2}\binom{4}{k}\left(\frac{1}{3}\right)^k\left(\frac{2}{3}\right)^{4-k}$$
+is given. Formulate your own matching sampling experiment using an urn you choose, and an event whose probability is exactly described by the expression. Specify the urn composition, number of draws and replacement rule. Relate the number $4$, the fractions, the exponents, the binomial coefficient, the summation limits and the addition of terms to your experiment and event. You do not have to calculate the numerical value of $T$. (9 points)
+
+### Solution and grading note (EN)
+
+1. Sampling without replacement is described by the hypergeometric model. The probability of exactly two advanced-course people is
+$$P(X=2)=\frac{\binom82\binom{12}1}{\binom{20}3}=\frac{336}{1140}\approx0.2947.$$
+
+2. In the binomial model with $n=3$ and $p=0.4$,
+$$P(Y=2)=\binom32(0.4)^2(0.6)=0.288.$$
+
+3. The values are close but slightly different. The hypergeometric model describes the actual sampling without replacement better, because the probabilities change after each draw.
+
+4. For a very large population, a single draw changes the advanced-course proportion very little. The draws are then approximately independent, so the binomial distribution provides a good approximation.
+
+**5. Example of inverse modelling (9 points):**
+
+A self-selected urn contains one red and two blue balls. Four draws are made with replacement, mixing well before each draw. Red is a success and blue a failure. The event is: “Red is drawn exactly once or exactly twice in the four draws.” For $X=$ number of red results, $X\sim B(4,1/3)$ and the event is $\{X=1\}\cup\{X=2\}$.
+
+$4$ counts the independent draws, $1/3$ is the success probability and $2/3$ the failure probability. For $k$ successes the exponents $k$ and $4-k$ are the respective counts. $\binom{4}{k}$ counts the possible arrangements of those successes. Limits 1 and 2 select the allowed success counts; the sum adds the probabilities of the disjoint events $X=1$ and $X=2$.
+
+This is only one example. Any suitable urn with success proportion 1/3 and independent sampling with replacement is equivalent, e.g. two red and four blue balls. Another mathematically correct experiment also demonstrates the general inverse action; the explicitly requested urn must be evident to earn its urn-construction point. Sampling without replacement does not fit the binomial reasoning; merely calculating the expression does not replace the experiment and event.
+
+**Normal total-score cap: If part 5 lacks an own matching experiment or an own matching event, cap the overall score at 11 out of 20. Isolated lists of formula symbols do not replace inverse modelling.**
+
+**Grading note:** The solution is a non-exclusive reference. Accept mathematically equivalent results, permitted approximations, representations and methods; explicitly required reasoning forms remain binding. Award partial credit by rubric step, do not penalise one arithmetic error repeatedly as the same conceptual error, and credit traceable follow-through separately. Grade only reliably legible submitted work, without follow-up questions to complete it. Apply the normal rubric cap before comparing with the stated total-point threshold; there is no additional part-pass status. Previously valid mastery is not requalified by this task extension.
+
+### Rubric (EN)
+
+| ID | Points | Criterion |
+|---|---:|---|
+| `q3a_1` | 4 | Part 1: model without replacement 1 point; suitable numerator counts 1; denominator 1; correct probability 1. Accept equivalent tree/path calculations. |
+| `q3a_2` | 3 | Part 2: binomial model n=3 and p=0.4 1 point; arrangement factor and product 1; probability 0.288 1. |
+| `q3a_3` | 2 | Part 3: appropriate comparison of values 1 point; prefers sampling without replacement because the probabilities change 1. |
+| `q3a_4` | 2 | Part 4: small sample barely changes the proportion 1 point; explains approximate independence and suitability of the binomial approximation 1. |
+| `inverse_experiment` | 3 | Part 5: own matching urn and success/failure definition with probabilities 1/3 and 2/3 1 point; relates the number 4 to four draws 1; replacement and mixing as the independence justification 1. |
+| `inverse_event` | 2 | Part 5: unambiguous own event in the constructed context 1 point; correctly links exactly one or two successes to the summation limits 1. Accept words or equivalent set notation. |
+| `inverse_factors` | 3 | Part 5: exponent k as success count 1 point; exponent 4−k as failure count 1; binomial coefficient as the number of arrangements 1. |
+| `inverse_sum` | 1 | Part 5: explains addition by the disjointness of the different success-count events. No numerical evaluation required. Normal total-score cap: If part 5 lacks an own matching experiment or an own matching event, cap the overall score at 11 out of 20. Isolated lists of formula symbols do not replace inverse modelling. |
+
+## 7337049a-c85c-5b94-adaa-81dc93528bf8: Darstellungen sicher wechseln und bewerten
+
+20 BE, Gesamtpunktschwelle 12 BE. Ausschließlich Gesamtbewertung, keine zusätzlichen Teilpassregeln.
+
+### Aufgabe (DE)
+
+Gegeben ist p(x)=−0,5x²+12x. Ein digitales Rechen- oder Graphikwerkzeug steht zur Verfügung; dokumentieren Sie die verwendeten Eingaben und Ergebnisse.
+
+1. Erstellen Sie zunächst von Hand eine Wertetabelle für x=0,4,8,12,16,20,24. Kontrollieren Sie danach mindestens die Werte p(8) und p(12) mit dem digitalen Werkzeug. Vergleichen Sie die Ergebnisse, erklären Sie gegebenenfalls eine Abweichung und beschreiben Sie bei Übereinstimmung eine typische Eingabe- oder Rundungsfehlerquelle samt geeigneter Kontrolle.
+2. Bestimmen Sie mit dem Term die Nullstellen und den Scheitelpunkt und skizzieren Sie den Graphen auf 0≤x≤24 mit einer geeigneten Achsenskalierung.
+3. Erläutern Sie, was Term, Tabelle und Schaubild jeweils zeigen. Begründen und prüfen Sie ausdrücklich, warum Nullstellen, Scheitel und die kontrollierten Tabellenpunkte in allen drei Darstellungen zusammenpassen.
+4. Ein Diagramm zeigt nur die Endpunkte x=0 und x=24 und benutzt die y-Skala 0 bis 10000. Eine Schülerin bezeichnet den Graphen als „fast linear“. Beurteilen Sie diese Aussage für [6,18] nach dem überprüfbaren Kriterium: Die Verbindungsgerade der beiden Intervallendpunkte darf vom Funktionswert höchstens 5 Einheiten abweichen. Berechnen Sie die maximale Abweichung. Erklären Sie den Einfluss der Skalierung und der fehlenden Zwischenwerte; schlagen Sie eine konkrete klarere Darstellung vor und prüfen Sie diese mit dem digitalen Werkzeug.
+
+Die Teile 1 bis 4 werden mit 3, 3, 2 und 3 BE bewertet.
+
+**5. Zusätzliche graphische Untersuchung (9 BE):**
+
+Die folgende Darstellung zeigt denselben Graphen von $p$ ausschließlich im Bereich $0\le x\le24$ und drei horizontale Geraden $a$, $b$ und $c$.
+
+![Gegebener Graph von p mit drei horizontalen Vergleichsgeraden](/assets/assessments/mathematik/completion-integrity-2026-11-01/route-actions-batch3-v1/graph-comparison.de.svg)
+
+Begründe anhand der Darstellung für jede der drei Geraden, wie viele verschiedene gemeinsame Punkte sie mit dem dargestellten Graphen von $p$ hat. Erläutere dabei, welche der Geraden hier eine Tangente ist und woran man das erkennt. Begründe auch, weshalb es im angegebenen Bereich keine weiteren gemeinsamen Punkte gibt. Eine reine Zahlenliste genügt nicht; für diesen Teil ist eine anschauliche Begründung am gegebenen Graphen gefragt, keine erneute Gleichungslösung.
+
+### Lösung und Bewertungshinweis (DE)
+
+1. Die Werte sind 0,40,64,72,64,40,0. Digitale Eingaben beispielsweise p(8)=−0,5·8²+12·8=64 und p(12)=72 werden mit den eigenen Handwerten verglichen. Ein typischer Fehler ist falsche Klammerung oder ein falsches Vorzeichen; erneutes Einsetzen und Vergleich mit p(x)=−0,5(x−12)²+72 sichern die Rechnung. Tatsächliche eigene Abweichungen sind passend zu erklären; eine erfundene Abweichung ist nicht nötig.
+
+2. p(x)=x(−0,5x+12) hat Nullstellen 0 und 24. Quadratische Ergänzung liefert p(x)=−0,5(x−12)²+72, also S=(12,72). Ein sinnvoller Graph zeigt x von 0 bis 24 und y etwa von 0 bis 80 mit beschrifteten Achsen und Zwischenpunkten.
+
+3. Der Term erlaubt exakte allgemeine Rechnungen; die Tabelle zeigt ausgewählte Werte, aber keine gesicherte Aussage über alle Zwischenwerte. Der Graph verdeutlicht den Verlauf abhängig von Skalierung/Auflösung. Tabelle und Term liefern dieselben Nullstellen, die Symmetrie um x=12 und den Maximalwert 72. Die kontrollierten Punkte (8,64) und (12,72) müssen auf dem skizzierten Graphen liegen; diese Konsistenzprüfungen begründen die Übertragung.
+
+4. p(6)=p(18)=54, daher ist die Verbindungsgerade l(x)=54. Auf [6,18] ist p(x)−54=18−0,5(x−12)²≥0, maximal 18 bei x=12. Die Toleranz von 5 wird verletzt; nach dem angegebenen Kriterium ist diese Näherung nicht hinreichend linear. Das widerlegt keine beliebige andere Toleranzdefinition. Eine y-Skala bis 10000 lässt die Höhe 72 nahezu verschwinden. Zwei Endpunkte allein erfassen den Scheitel/Innenverlauf nicht. Konkrete Verbesserung: geeignete y-Skala etwa 0 bis 80, zusätzlich Werte bei x=6,12,18, beide Kurven p und l im selben Fenster darstellen und die 18-Einheiten-Differenz markieren. Dokumentierte digitale Kontrolle muss diese Werte und den deutlich gekrümmten Verlauf bestätigen.
+
+**5. Anschauliche Schnittanzahl (9 BE):**
+
+- $a$: zwei gemeinsame Punkte. Die Gerade auf Höhe54 schneidet den steigenden linken und den fallenden rechten Ast jeweils einmal. Innerhalb jedes Astes gibt es keine weitere Umkehr; im vollständig dargestellten Bereich kommen keine weiteren Schnitte hinzu.
+- $b$: ein gemeinsamer Punkt. Sie berührt am Scheitel den Graphen, ohne ihn dort zu durchqueren. Damit ist $b$ hier die waagerechte Tangente. Sämtliche anderen Graphpunkte liegen unter ihr; eine Berührung zählt als ein gemeinsamer Punkt.
+- $c$: kein gemeinsamer Punkt. Der höchste abgebildete Graphpunkt hat die Höhe72. Die Gerade liegt auf Höhe80 darüber, sodass kein Punkt im gesamten angegebenen Bereich auf ihr liegen kann.
+
+Gleichwertige klare Bildbegründungen sind zulässig. Die bloße Zahlenfolge 2/1/0 belegt nur die drei Anzahlpunkte, nicht die sechs Begründungspunkte. Eine ausschließlich rechnerische Lösung kann die Anzahlen belegen, ersetzt aber nicht den ausdrücklich verlangten graphischen Begründungsweg.
+
+**Normale Gesamtrubrik-Kappung: Fehlt in Teil 5 jede nachvollziehbare anschauliche Begründung am gegebenen Graphen, ist die Gesamtpunktzahl auf höchstens 11 von 20 BE begrenzt. Bloßes Zählen oder ausschließliches Gleichungslösen ersetzt diese ausdrücklich verlangte Handlung nicht.**
+
+**Bewertungshinweis:** Die Lösung ist eine nicht ausschließliche Referenz. Fachlich gleichwertige Ergebnisse, zulässige Näherungen, Darstellungen und Lösungswege sind anzuerkennen; ausdrücklich geforderte Begründungsformen bleiben verbindlich. Teilpunkte nach den Rubrikschritten vergeben, einen Rechenfehler nicht mehrfach als denselben fachlichen Fehler abziehen und nachvollziehbare Folgearbeit eigenständig würdigen. Nur verlässlich lesbare eingereichte Arbeit bewerten, keine Rückfragen zur Vervollständigung. Es gilt ausschließlich die angegebene Gesamtpunktschwelle nach Anwendung der normalen Rubrik-Kappung, kein zusätzlicher Teilpassstatus. Bereits gültige Mastery wird durch diese Aufgabenergänzung nicht neu qualifiziert.
+
+### Rubrik (DE)
+
+| ID | BE | Kriterium |
+|---|---:|---|
+| `pk_4_1` | 3 | Teil 1: Handtabelle richtig 1 BE; wirkliche digitale Eingaben/Ergebnisse samt Vergleich dokumentiert 1 BE; passende Fehlerkontrolle erläutert 1 BE. Abweichung darf nicht erfunden werden. |
+| `pk_4_2` | 3 | Teil 2: Nullstellen hergeleitet 1 BE; Scheitel hergeleitet 1 BE; passende selbst erstellte beschriftete Skizze 1 BE. Das gegebene Bild ersetzt diese eigene Zeichenleistung nicht. |
+| `pk_4_3` | 2 | Teil 3: Stärken/Grenzen von Term,Tabelle,Schaubild erklärt 1 BE; Übertragung anhand konkreter Nullstellen-,Scheitel- und Punktkonsistenz geprüft 1 BE. |
+| `pk_4_4` | 3 | Teil 4: Verbindungsgerade 54, maximale Abweichung 18 und Toleranzentscheid korrekt 1 BE; Skalen-/Datenproblem und konkrete Verbesserung erklärt 1 BE; Verbesserung wirklich digital geprüft und Eingaben/Ergebnisse dokumentiert 1 BE. |
+| `visual_a` | 3 | Teil 5a: zwei gemeinsame Punkte 1 BE; anschaulich je ein Schnitt am steigenden und fallenden Ast 1 BE; Ausschluss weiterer Schnitte durch durchgehend steigenden/fallenden Ast im ganzen Bereich 1 BE. |
+| `visual_b` | 3 | Teil 5b: ein gemeinsamer Punkt 1 BE; Scheitelberührung ohne Durchqueren als Tangente erkannt und anschaulich erklärt 1 BE; weitere Schnitte wegen sämtlicher übriger Graphpunkte unterhalb ausgeschlossen 1 BE. |
+| `visual_c` | 3 | Teil 5c: kein gemeinsamer Punkt 1 BE; höchsten Graphwert 72 im Bild als obere Schranke erkannt 1 BE; c mit Höhe 80 liegt darüber, also im ganzen Bereich kein Schnitt, anschaulich verglichen 1 BE. Normale Gesamtrubrik-Kappung: Fehlt in Teil 5 jede nachvollziehbare anschauliche Begründung am gegebenen Graphen, ist die Gesamtpunktzahl auf höchstens 11 von 20 BE begrenzt. Bloßes Zählen oder ausschließliches Gleichungslösen ersetzt diese ausdrücklich verlangte Handlung nicht. |
+
+### Task (EN)
+
+Given $p(x)=-0.5x^2+12x$, a digital calculation or graphing tool is available. Document the inputs and results you use.
+
+1. First create a table by hand for $x=0,4,8,12,16,20,24$. Then use the digital tool to check at least $p(8)$ and $p(12)$. Compare the results, explain any discrepancy and, if they agree, describe a typical input or rounding error together with a suitable check.
+2. Use the expression to find the roots and vertex and sketch the graph on $0\le x\le24$ with a suitable axis scale.
+3. Explain what the expression, table and graph each show. Explicitly justify and check why the roots, vertex and checked table points agree across all three representations.
+4. A diagram shows only the endpoints $x=0$ and $x=24$ with a y-scale from 0 to 10000. A student calls the graph “almost linear”. Assess this claim for $[6,18]$ using the verifiable criterion: the line joining the interval endpoints may differ from the function by at most 5 units. Calculate the maximum difference. Explain the effects of the scale and missing intermediate values; propose a concrete clearer representation and check it using the digital tool.
+
+Parts 1 to 4 are worth 3,3,2 and3 points, respectively.
+
+**5. Additional graphical investigation (9 points):**
+
+The following diagram shows the same graph of $p$ only on $0\le x\le24$, together with three horizontal lines $a$, $b$ and $c$.
+
+![Given graph of p with three horizontal comparison lines](/assets/assessments/mathematik/completion-integrity-2026-11-01/route-actions-batch3-v1/graph-comparison.en.svg)
+
+Use the diagram to justify how many distinct points each of the three lines shares with the displayed graph of $p$. Explain which of the lines is a tangent here and how this is visible. Also justify why there are no further common points in the stated interval. A list of numbers alone is insufficient; this part asks for a visual justification from the given graph, not another equation-solving calculation.
+
+### Solution and grading note (EN)
+
+1. The table values are 0,40,64,72,64,40,0. Digital inputs such as $p(8)=-0.5\cdot8^2+12\cdot8=64$ and $p(12)=72$ are compared with the manual results. Typical errors include incorrect grouping or signs; substitution and comparison with $p(x)=-0.5(x-12)^2+72$ check the calculation. Explain actual discrepancies if present; an invented discrepancy is unnecessary.
+
+2. Since $p(x)=x(-0.5x+12)$, the roots are 0 and 24. Completing the square gives $p(x)=-0.5(x-12)^2+72$, hence $S=(12,72)$. A suitable graph uses x from 0 to 24 and y approximately0 to 80, with labelled axes and intermediate points.
+
+3. The expression supports exact general calculations; the table provides selected values but does not establish every intermediate value. The graph shows the shape subject to scale and resolution. Table and expression give the same roots, symmetry about x=12 and maximum 72. Checked points (8,64) and (12,72) must lie on the sketched graph; these checks justify the translation.
+
+4. Since $p(6)=p(18)=54$, the connecting line is $l(x)=54$. On [6,18], $p(x)-54=18-0.5(x-12)^2\ge0$, with maximum18 at x=12. This exceeds the tolerance 5, so the approximation fails the stated criterion; it does not disprove every possible tolerance definition. A y-scale up to 10000 makes a height of72 almost disappear. Two endpoints miss the vertex and interior shape. A concrete improvement is a y-scale about 0 to 80, extra values at x=6,12,18 and a plot of both p and l, marking the difference 18. Documented digital checks must confirm the values and clearly curved shape.
+
+**5. Visual intersection counts (9 points):**
+
+- $a$: two common points. The line at height 54 crosses the rising left and falling right branches once each. Neither branch reverses again; no further crossings occur in the fully displayed interval.
+- $b$: one common point. It touches the graph at the vertex without crossing it there, so $b$ is the horizontal tangent here. All other graph points lie below it. A point of contact counts as one common point.
+- $c$: no common points. The highest displayed graph point has height 72. The line at height 80 lies above this, excluding any common point throughout the stated interval.
+
+Accept equivalent clear visual explanations. The list 2/1/0 alone earns only the three count points, not the six reasoning points. A purely algebraic solution may establish the counts but does not replace the explicitly required visual reasoning.
+
+**Normal total-score cap: If part 5 contains no traceable visual justification from the given graph, cap the overall score at 11 out of 20. Mere counting or exclusively solving equations does not replace this explicitly required action.**
+
+**Grading note:** The solution is a non-exclusive reference. Accept mathematically equivalent results, permitted approximations, representations and methods; explicitly required reasoning forms remain binding. Award partial credit by rubric step, do not penalise one arithmetic error repeatedly as the same conceptual error, and credit traceable follow-through separately. Grade only reliably legible submitted work, without follow-up questions to complete it. Apply the normal rubric cap before comparing with the stated total-point threshold; there is no additional part-pass status. Previously valid mastery is not requalified by this task extension.
+
+### Rubric (EN)
+
+| ID | Points | Criterion |
+|---|---:|---|
+| `pk_4_1` | 3 | Part 1: correct manual table 1 point; actual digital inputs/results and comparison documented 1; appropriate error check explained 1. Do not require an invented discrepancy. |
+| `pk_4_2` | 3 | Part 2: roots derived 1 point; vertex derived 1; suitable own labelled sketch 1. The given image does not replace the learner’s own drawing. |
+| `pk_4_3` | 2 | Part 3: explains strengths/limits of expression,table,graph 1 point; checks translation using concrete roots,vertex and point consistency 1. |
+| `pk_4_4` | 3 | Part 4: correct line 54,maximum difference 18 and tolerance decision 1 point; explains scale/data limitations and concrete improvement 1; actually checks the improvement digitally and documents inputs/results 1. |
+| `visual_a` | 3 | Part 5a: two common points 1 point; visual explanation of one crossing on each rising/falling branch 1; excludes further crossings from the continuous rising/falling shape over the full interval 1. |
+| `visual_b` | 3 | Part 5b: one common point 1 point; recognises and visually explains vertex contact without crossing as tangency 1; excludes further intersections because all other graph points lie below 1. |
+| `visual_c` | 3 | Part 5c: no common point 1 point; identifies the highest graph value 72 as an upper bound visually 1; visually compares c at 80 above this to exclude intersections throughout the interval 1. Normal total-score cap: If part 5 contains no traceable visual justification from the given graph, cap the overall score at 11 out of 20. Mere counting or exclusively solving equations does not replace this explicitly required action. |
+

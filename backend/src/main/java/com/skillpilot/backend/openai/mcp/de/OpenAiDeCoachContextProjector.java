@@ -2,6 +2,7 @@ package com.skillpilot.backend.openai.mcp.de;
 
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import com.skillpilot.backend.ai.CoachStateProjection;
+import com.skillpilot.backend.ai.TaskImageTransport;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.GoalStats;
@@ -115,6 +116,13 @@ public final class OpenAiDeCoachContextProjector {
         OpenAiDeCoachContext.GoalVisualization goalVisualization = includeGoalVisualization
                 ? goalVisualization(state.curriculum(), activeGoal, communicationLocale)
                 : null;
+        String stateInstruction = CoachStateProjection.requiresAssessmentStartConfirmation(state)
+                ? CoachStateProjection.assessmentStartConfirmationInstruction(communicationLocale)
+                : CoachStateProjection.isVoluntaryLearningChoice(state)
+                ? CoachStateProjection.voluntaryChoiceInstruction(communicationLocale)
+                : CoachStateProjection.completionCalculationWarning(state, communicationLocale)
+                    + instruction(requiredAction, activeGoal, options, decision, orientation, completion,
+                            examHasImage, communicationLocale);
         return new OpenAiDeCoachContext(
                 valueOrEmpty(state.learningState()),
                 valueOrEmpty(requiredAction),
@@ -134,15 +142,7 @@ public final class OpenAiDeCoachContextProjector {
                 progress(state.goals()),
                 completion,
                 policies(interactionMode, examHasImage, orientation, communicationLocale),
-                instruction(
-                        requiredAction,
-                        activeGoal,
-                        options,
-                        decision,
-                        orientation,
-                        completion,
-                        examHasImage,
-                        communicationLocale),
+                stateInstruction,
                 null);
     }
 
@@ -375,6 +375,10 @@ public final class OpenAiDeCoachContextProjector {
     }
 
     public OpenAiDeCoachContext.Option goalOption(FrontierGoal goal, String kind) {
+        return goalOption(goal, kind, false, null);
+    }
+
+    private OpenAiDeCoachContext.Option goalOption(FrontierGoal goal, String kind, boolean voluntary, String language) {
         if (goal == null || blank(goal.id())) {
             return null;
         }
@@ -382,7 +386,8 @@ public final class OpenAiDeCoachContextProjector {
                 kind,
                 goal.id(),
                 fallback(goal.title(), goal.id()),
-                compact(goal.description()),
+                compact(voluntary ? CoachStateProjection.voluntaryChoiceDescription(goal.description(), language)
+                        : goal.description()),
                 goal.selectionGoalIds(),
                 List.of(),
                 null);
@@ -604,7 +609,8 @@ public final class OpenAiDeCoachContextProjector {
                 String kind = "setScope".equals(requiredAction) ? "scope" : "goal";
                 if (machine.goalOptions() != null) {
                     for (FrontierGoal item : machine.goalOptions()) {
-                        add(options, goalOption(item, kind));
+                        add(options, goalOption(item, kind,
+                                CoachStateProjection.isVoluntaryLearningChoice(state), communicationLocale));
                     }
                 }
             }
@@ -688,10 +694,9 @@ public final class OpenAiDeCoachContextProjector {
             return null;
         }
         String task = exam.getTaskContent();
-        boolean hasImage = task != null && task.startsWith(IMAGE_PATH_PREFIX);
-        String visibleTask = hasImage
-                ? task.replaceFirst("^IMAGE_PATH: [^\\r\\n]+(?:\\r?\\n){1,2}", "")
-                : task;
+        TaskImageTransport.VisibleTask visible = TaskImageTransport.readHeader(task);
+        boolean hasImage = visible.hasImage();
+        String visibleTask = visible.body();
         Double maxPoints = exam.getScoring() == null ? null : exam.getScoring().getMaxPoints();
         return new OpenAiDeCoachContext.ExamTask(visibleTask, maxPoints, hasImage);
     }

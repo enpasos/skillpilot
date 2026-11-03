@@ -1,0 +1,4031 @@
+import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { useLearnerUpdates } from '../hooks/useLearnerUpdates'
+import { useTranslation } from '../hooks/useTranslation'
+import { CompetenceTree } from '../components/CompetenceTree'
+import type { TreeStructureMode } from '../components/CompetenceTree'
+import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
+import { learnerPreferences, PreferencesReloadError, type PersonalCurriculumPreferences } from '../utils/personalCurriculumPreferences'
+import { getPersonalCurriculumSetupCopy } from '../utils/curriculumSetupCopy'
+import { LearnerPlanTodayOverview } from '../components/LearnerPlanTodayOverview'
+import { LearnerActiveGoalBanner } from '../components/LearnerActiveGoalBanner'
+import { LevelCompletionCard } from '../components/LevelCompletionCard'
+import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck, PanelLeftClose, PanelLeftOpen } from 'lucide-react'
+import { InfoModal } from '../components/InfoModal'
+import { LogoutButton } from '../components/LogoutButton'
+import { LearnerDataManagementDialog } from '../components/LearnerDataManagementDialog'
+import { GoalCard } from '../components/GoalCard'
+import { MaterialSelectionPanel } from '../components/MaterialSelectionPanel'
+import { GoalAdditionalMaterials } from '../components/GoalAdditionalMaterials'
+import { LearnerGoalFeedbackAction } from '../components/LearnerGoalFeedbackAction'
+import { FlashcardDrill } from '../components/srs/FlashcardDrill'
+import { ProgressPopover } from '../components/ProgressPopover'
+import { InlineMathText } from '../components/InlineMathText'
+import { useLanguage } from '../contexts/LanguageContext'
+import { hasUnsignedLegacySrsData, SRS_STATE_RELOADED_EVENT, type SrsPracticeSnapshot } from '../utils/srsPracticeSync'
+import { isMastered } from '../goalUiUtils'
+import { useSrsMastery } from '../hooks/useSrsMastery'
+import { useFlashcardSetStatus } from '../hooks/useFlashcardSetStatus'
+import { getSrsFilterTagsForGoal } from '../utils/srsTags'
+import { interpolateTemplate } from '../utils/interpolateTemplate'
+import { goalMatchesFilter, isWildcardFilter, splitFilterIds } from '../utils/goalFilters'
+import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
+import { CANONICAL_GYMNASIUM_ROOT_ID } from '../utils/curriculumDisplay'
+import {
+  ABI26_CAMPAIGN_SLUG,
+  ABI26_ROOT_CURRICULUM_ID,
+  buildAbi26PersonalCurriculumConfig,
+  extractAbi26CampaignContext,
+  isAbi26PersonalizationInitialized,
+  loadAbi26CampaignContext,
+  markAbi26PersonalizationInitialized,
+  resolveAbi26PersonalizationRepairAction,
+  saveAbi26CampaignContext,
+} from '../utils/abi26MatheCampaign'
+import { synchronizePersonalCurriculumStageScope } from '../utils/personalCurriculumStageScope'
+import { trackCampaignEvent } from '../utils/campaignTracking'
+import type { ToastKind } from '../hooks/useToast'
+import { queueToastForNextLoad } from '../hooks/useToast'
+import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
+import { createSynchronousInFlightGuard } from '../utils/synchronousInFlightGuard'
+import { buildCompletionAssessmentStartHref, buildCompletionRouteStartHref, completionAssessmentsForGoal, completionLabel, completionUnavailableReason, completionWaiversForTree, hasActiveCompletionRoute, parseLevelCompletion, requestLevelCompletionAction, type CompletionActionInput, type LevelCompletion } from '../utils/levelCompletionApi'
+import {
+  beginLatestRequest,
+  invalidateLatestRequest,
+  isLatestRequestForScope,
+} from '../utils/latestRequestSequence'
+import { getLearnerViewCopy } from '../utils/learnerViewCopy'
+import {
+  clearDeletedLearnerBrowserState,
+  LearnerDataApiError,
+  requestLearnerDeletion,
+  requestLearnerResume,
+  requestLearnerRetention,
+  type LearnerRetentionStatus,
+} from '../utils/learnerDataManagement'
+import { getLearnerDataManagementCopy } from '../utils/learnerDataManagementCopy'
+import {
+  getLearnerLearningPlans,
+  LearnerLearningPlanApiError,
+  reconcileLearnerLearningPlans,
+  switchLearnerLearningPlan,
+} from '../utils/learnerLearningPlanApi'
+import { getLearnerLearningPlanCopy } from '../utils/learnerLearningPlanCopy'
+import {
+  formatLearnerLearningPlanDate,
+  isLearnerPlanActionAvailable,
+  millisecondsUntilNextBerlinDateBoundary,
+  selectScopedLearnerLearningPlans,
+  sortLearnerLearningPlansForToday,
+} from '../utils/learnerLearningPlanReadModel'
+import { navigateToLearnerLearningPlanGoal } from '../utils/learnerLearningPlanNavigation'
+import {
+  getFocusMutationRevealTarget,
+  getInitialLearnerGoalReveal,
+  getNextVisibleLearnerGoalSelection,
+  isActiveGoalRevealEventType,
+  shouldAutoRevealActiveGoal,
+} from '../utils/learnerGoalSelection'
+import { getNextSingleLearnerFocus } from '../utils/learnerFocus'
+import { buildGoalContainsClosure } from '../utils/plannedScope'
+import { collapseLearnerSubjectRoots, normalizeLearnerVisibleChildrenMap } from '../utils/learnerTreeProjection'
+import {
+  deliverCoachChatStart,
+  getActiveVisibleSessionLaunchCopy,
+  isOpenAiMcpCoachActive,
+  requestCoachChatStart,
+} from '../coachVariants/coachLaunch'
+import { isOpenAiMcpEligibilityDeclinedError } from '../coachVariants/openAiMcp/providerEligibility'
+import { buildVisibleSessionVerifiedRecallInstruction } from '../coachVariants/visibleSession/verifiedRecallPrompt'
+import { useRuntimeCurriculumCatalog } from '../hooks/useRuntimeCurriculumCatalog'
+import {
+  usePersonalCurriculumEditor,
+} from '../hooks/usePersonalCurriculumEditor'
+import { resolveGoalDeckHref } from '../utils/runtimeCurriculumCatalog'
+import {
+  buildDirectChildrenMap,
+  buildVisibleChildrenMap,
+  getAudienceGoalTitle,
+  getRenderedChildIds,
+} from '../utils/treeProjectionRuntime'
+
+import type { UiGoal } from '../goalTypes'
+import type { Learner, FrontierGoal } from '../learnerTypes'
+import type { LearnerLearningPlansResponse } from '../learnerLearningPlanTypes'
+import type { ResourceLink } from '../landscapeTypes'
+
+interface LearnerViewProps {
+  rootGoals: UiGoal[]
+  goalIndexAll: Map<string, UiGoal>
+  getMastery: (goalId: string) => number
+  currentGoal: UiGoal | null
+  onSelectGoal: (id: string) => void
+  onSelectGoalInLandscape?: (landscapeId: string, goalId: string) => void
+  routeGoalId?: string
+  skillpilotId: string
+  landscapeId: string
+  landscapeSubject?: string
+  currentLandscapeHasMatchedCompositionView: boolean
+  activeFilter?: string
+  onLogout?: () => void
+  onNotify?: (kind: ToastKind, message: string) => void
+  availableLandscapes?: { landscapeId: string; title: string; filters?: { id: string; label: string }[]; compatibilityOnly?: boolean }[]
+  rootLandscapeId?: string
+  onRefresh?: () => void
+  onScopeDataRefresh?: () => void
+  parentMap?: Map<string, string[]>
+  onLandscapeChange?: (landscapeId: string) => void
+}
+
+type PersonalCurriculumConfig = Record<string, {
+  selected: boolean
+  filterId?: string
+  durationModel?: string
+  stage?: string
+}>
+type LearnerStateLoadStatus = 'loading' | 'ready' | 'error'
+
+const cleanLearningPlanSubjectLabel = (title: string) => title
+  .replace(/^Kanonische\s+/iu, '')
+  .replace(/^Canonical\s+/iu, '')
+  .replace(/\s+Pilot\b/giu, '')
+  .replace(/\s*\(Gymnasium,\s*DE\)\s*$/iu, '')
+  .trim()
+
+type LearnerStateRefreshResult = {
+  activeGoalId: string | null
+  plannedGoalIds: string[]
+}
+
+type LearnerStatePayload = {
+  levelCompletion?: unknown
+  activeGoal?: { id?: string } | null
+  frontier?: FrontierGoal[]
+  stateMachine?: {
+    activeGoal?: { id?: string } | null
+    goalOptions?: FrontierGoal[]
+    requiredAction?: string | null
+  } | null
+  goals?: {
+    planned?: Array<{ id?: string }>
+    mastered_count?: number
+    total_count?: number
+    personalized?: {
+      mastered_atomic?: number
+      total_atomic?: number
+    }
+  } | null
+}
+
+const isLearnerStatePayload = (value: unknown): value is LearnerStatePayload => {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return false
+  const candidate = value as Record<string, unknown>
+  const goals = candidate.goals
+  return Object.hasOwn(candidate, 'stateMachine')
+    || (!!goals && typeof goals === 'object' && !Array.isArray(goals))
+}
+
+const readPersonalCurriculumConfig = (value: unknown): PersonalCurriculumConfig => {
+  const parsed = typeof value === 'string'
+    ? (value.trim() ? JSON.parse(value) : {})
+    : value
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    return {}
+  }
+  const nested = (parsed as Record<string, unknown>).personalCurriculum
+  if (nested && typeof nested === 'object' && !Array.isArray(nested)) {
+    return nested as PersonalCurriculumConfig
+  }
+  return parsed as PersonalCurriculumConfig
+}
+
+type BackendStats = {
+  masteredAtomic: number
+  totalAtomic: number
+  personalizedMasteredAtomic?: number
+  personalizedTotalAtomic?: number
+  plannedGoalKey?: string
+}
+
+const VERIFIED_RECALL_DEFAULT_BATCH_SIZE = 10
+const VERIFIED_RECALL_MIN_BATCH_SIZE = 1
+const VERIFIED_RECALL_MAX_BATCH_SIZE = 20
+
+const clampVerifiedRecallBatchSize = (value: number) => {
+  if (!Number.isFinite(value)) return VERIFIED_RECALL_DEFAULT_BATCH_SIZE
+  return Math.max(
+    VERIFIED_RECALL_MIN_BATCH_SIZE,
+    Math.min(VERIFIED_RECALL_MAX_BATCH_SIZE, Math.round(value)),
+  )
+}
+
+const verifiedRecallBatchStorageKey = (skillpilotId: string, goalId: string) => (
+  `verified_recall_batch_size_${skillpilotId}_${goalId}`
+)
+
+const normalizeGoalVisualizationLinkType = (value?: string): string => (value ?? '').trim().toLowerCase()
+
+const isGoalVisualizationLink = (link: ResourceLink): boolean => {
+  const type = normalizeGoalVisualizationLinkType(link?.type)
+  const resourceType = normalizeGoalVisualizationLinkType(link?.resourceType)
+  return type === 'goal-visualization' || resourceType === 'goal-visualization'
+}
+
+const goalIdsKey = (goalIds: Iterable<string>) => (
+  Array.from(goalIds).filter(Boolean).sort().join('|')
+)
+
+const normalizePersonalConfig = (
+  input: PersonalCurriculumConfig,
+  availableLandscapes: { landscapeId: string; filters?: { id: string; label: string }[]; compatibilityOnly?: boolean }[],
+  rootLandscapeId?: string,
+): { config: PersonalCurriculumConfig; corrected: boolean } => {
+  const unwrapNestedConfig = (value: PersonalCurriculumConfig): { config: PersonalCurriculumConfig; corrected: boolean } => {
+    const nested = (value as Record<string, unknown>)?.personalCurriculum
+    if (!nested || typeof nested !== 'object' || Array.isArray(nested)) {
+      return { config: value, corrected: false }
+    }
+    return { config: nested as PersonalCurriculumConfig, corrected: true }
+  }
+
+  const buildDefaultConfig = (): PersonalCurriculumConfig => {
+    const next: PersonalCurriculumConfig = {}
+    availableLandscapes.forEach((landscape) => {
+      next[landscape.landscapeId] = {
+        selected: true,
+        ...(landscape.filters && landscape.filters.length > 0 ? { filterId: landscape.filters[0].id } : {}),
+      }
+    })
+    if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
+      const stageScoped = synchronizePersonalCurriculumStageScope(next, {
+        rootLandscapeId,
+      }).config
+      const rootConfig = { ...stageScoped[rootLandscapeId] }
+      stageScoped[rootLandscapeId] = {
+        ...rootConfig,
+        selected: rootConfig.selected ?? true,
+      }
+      return stageScoped
+    }
+    return next
+  }
+
+  if (!input || typeof input !== 'object' || Object.keys(input).length === 0) {
+    if (availableLandscapes.length === 0) {
+      return { config: {}, corrected: false }
+    }
+    return { config: buildDefaultConfig(), corrected: true }
+  }
+
+  const unwrapped = unwrapNestedConfig(input)
+
+  const childLandscapeIds = availableLandscapes
+    .map((l) => l.landscapeId)
+    .filter((id) => id !== rootLandscapeId)
+
+  let corrected = unwrapped.corrected
+  let normalized: PersonalCurriculumConfig = { ...unwrapped.config }
+
+  if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
+    const stageScoped = synchronizePersonalCurriculumStageScope(normalized, {
+      rootLandscapeId,
+    })
+    normalized = stageScoped.config
+    corrected = corrected || stageScoped.corrected
+  }
+
+  if (childLandscapeIds.length === 0) {
+    return { config: normalized, corrected }
+  }
+
+  availableLandscapes.forEach((landscape) => {
+    const current = normalized[landscape.landscapeId]
+    if (!current) return
+    if (!current.filterId && landscape.filters && landscape.filters.length > 0) {
+      normalized[landscape.landscapeId] = {
+        ...current,
+        filterId: landscape.filters[0].id,
+      }
+      corrected = true
+    }
+  })
+
+  const hasChildEntries = childLandscapeIds.some((id) => normalized[id] !== undefined)
+  const hasSelectedChild = childLandscapeIds.some((id) => normalized[id]?.selected === true)
+
+  // Recovery case: profile explicitly stores child settings, but all children are deselected.
+  // This leads to an empty tree in learner cockpit and is almost always accidental.
+  if (hasChildEntries && !hasSelectedChild) {
+    const repaired: PersonalCurriculumConfig = { ...normalized }
+    if (rootLandscapeId) {
+      repaired[rootLandscapeId] = {
+        ...repaired[rootLandscapeId],
+        selected: true,
+      }
+    }
+    childLandscapeIds.forEach((id) => {
+      repaired[id] = {
+        ...repaired[id],
+        selected: true,
+      }
+    })
+    return { config: repaired, corrected: true }
+  }
+
+  return { config: normalized, corrected }
+}
+
+const personalCurriculumConfigsEqual = (
+  left: PersonalCurriculumConfig,
+  right: PersonalCurriculumConfig,
+) => {
+  const allLandscapeIds = new Set([...Object.keys(left), ...Object.keys(right)])
+  for (const landscapeId of allLandscapeIds) {
+    const leftEntry = left[landscapeId]
+    const rightEntry = right[landscapeId]
+    if ((leftEntry?.selected ?? false) !== (rightEntry?.selected ?? false)) {
+      return false
+    }
+    if ((leftEntry?.filterId ?? '') !== (rightEntry?.filterId ?? '')) {
+      return false
+    }
+    if ((leftEntry?.durationModel ?? '') !== (rightEntry?.durationModel ?? '')) {
+      return false
+    }
+    if ((leftEntry?.stage ?? '') !== (rightEntry?.stage ?? '')) {
+      return false
+    }
+  }
+  return true
+}
+
+export const LearnerView: React.FC<LearnerViewProps> = ({
+  rootGoals,
+  goalIndexAll,
+  getMastery,
+  currentGoal,
+  onSelectGoal,
+  onSelectGoalInLandscape,
+  routeGoalId,
+  skillpilotId,
+  landscapeId,
+  landscapeSubject,
+  currentLandscapeHasMatchedCompositionView,
+  activeFilter = 'all',
+  onLogout,
+  onNotify,
+  availableLandscapes = [],
+  rootLandscapeId,
+  onRefresh,
+  onScopeDataRefresh,
+  parentMap,
+  onLandscapeChange,
+}) => {
+  const learnerStateScopeKey = `${skillpilotId}\u0000${rootLandscapeId ?? ''}`
+  const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
+  const [expandedGoalIds, setExpandedGoalIds] = useState<Set<string>>(new Set())
+  const [learnerData, setLearnerData] = useState<Learner | null>(null)
+  const [materialSelectionRefresh, setMaterialSelectionRefresh] = useState(0)
+  const [materialSelectionSaving, setMaterialSelectionSaving] = useState(false)
+  const [frontierOptions, setFrontierOptions] = useState<FrontierGoal[]>([])
+  const [stateActiveGoalId, setStateActiveGoalId] = useState<string | null>(null)
+  const [stateRequiredAction, setStateRequiredAction] = useState<string | null>(null)
+  const [completionSnapshot, setCompletionSnapshot] = useState<{ scopeKey: string; data: LevelCompletion | null } | null>(null)
+  const [completionActionBusy, setCompletionActionBusy] = useState(false)
+  const [completionActionError, setCompletionActionError] = useState<string | null>(null)
+  const completionActionInFlightRef = useRef(createSynchronousInFlightGuard())
+  const levelCompletion = completionSnapshot?.scopeKey === learnerStateScopeKey ? completionSnapshot.data : null
+  const [learnerStateLoadState, setLearnerStateLoadState] = useState<{
+    scopeKey: string
+    status: LearnerStateLoadStatus
+  }>({
+    scopeKey: learnerStateScopeKey,
+    status: skillpilotId ? 'loading' : 'ready',
+  })
+  const learnerStateLoadStatus: LearnerStateLoadStatus =
+    learnerStateLoadState.scopeKey === learnerStateScopeKey
+      ? learnerStateLoadState.status
+      : skillpilotId
+        ? 'loading'
+        : 'ready'
+  const completionTreeWaivers = useMemo(
+    () => completionWaiversForTree(levelCompletion, learnerStateLoadStatus !== 'ready'),
+    [levelCompletion, learnerStateLoadStatus],
+  )
+  const [personalConfigLoadState, setPersonalConfigLoadState] = useState<{
+    scopeKey: string
+    status: LearnerStateLoadStatus
+  }>({
+    scopeKey: learnerStateScopeKey,
+    status: skillpilotId ? 'loading' : 'ready',
+  })
+  const [personalConfigReloadCounter, setPersonalConfigReloadCounter] = useState(0)
+  const [backendStats, setBackendStats] = useState<BackendStats | null>(null)
+  const [isSetupOpen, setIsSetupOpen] = useState(false)
+  const [personalConfig, setPersonalConfig] = useState<PersonalCurriculumConfig>({})
+  const [isPersonalConfigHydrating, setIsPersonalConfigHydrating] = useState<boolean>(!!skillpilotId)
+  const [isDataManagementOpen, setIsDataManagementOpen] = useState(false)
+  const [learnerRetention, setLearnerRetention] = useState<LearnerRetentionStatus | null>(null)
+  const [learnerRetentionLoading, setLearnerRetentionLoading] = useState(false)
+  const [learnerRetentionError, setLearnerRetentionError] = useState<'missing' | 'failed' | null>(null)
+  const [learnerDeleteBusy, setLearnerDeleteBusy] = useState(false)
+  const [learnerDeleteError, setLearnerDeleteError] = useState<'missing' | 'failed' | null>(null)
+  const [learningPlans, setLearningPlans] = useState<LearnerLearningPlansResponse | null>(null)
+  /** The one backend-formulated status the cockpit renders instead of computing its own. */
+  const [learningPlansDataScopeKey, setLearningPlansDataScopeKey] = useState(learnerStateScopeKey)
+  const [learningPlansLoadState, setLearningPlansLoadState] = useState<{
+    scopeKey: string
+    status: LearnerStateLoadStatus
+  }>({
+    scopeKey: learnerStateScopeKey,
+    status: skillpilotId ? 'loading' : 'ready',
+  })
+  const [learningPlanActionId, setLearningPlanActionId] = useState<string | null>(null)
+  const [learningPlanActionError, setLearningPlanActionError] = useState<string | null>(null)
+  const [learningPlanActionsBlocked, setLearningPlanActionsBlocked] = useState(false)
+  const [learningPlanTransitionLandscapeId, setLearningPlanTransitionLandscapeId] = useState<string | null>(null)
+  const learningPlansLoadStatus: LearnerStateLoadStatus =
+    learningPlansLoadState.scopeKey === learnerStateScopeKey
+      ? learningPlansLoadState.status
+      : skillpilotId
+        ? 'loading'
+        : 'ready'
+  const scopedLearningPlans = selectScopedLearnerLearningPlans(
+    learningPlans,
+    learningPlansDataScopeKey,
+    learnerStateScopeKey,
+  )
+  const sortedLearningPlans = useMemo(
+    () => sortLearnerLearningPlansForToday(scopedLearningPlans?.plans ?? []),
+    [scopedLearningPlans?.plans],
+  )
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [modalTitle, setModalTitle] = useState("");
+  const [modalType, setModalType] = useState<'info' | 'error' | 'success'>('info');
+
+  const [srsMasteryTick, setSrsMasteryTick] = useState(0);
+  const [srsReloadCounter, setSrsReloadCounter] = useState(0)
+  const [optimisticSrsMasteryByGoal, setOptimisticSrsMasteryByGoal] = useState<Record<string, number>>({});
+  const [memoryPracticeGoalId, setMemoryPracticeGoalId] = useState<string | null>(null)
+  const [verifiedRecallBatchSizeByGoal, setVerifiedRecallBatchSizeByGoal] = useState<Record<string, number>>({})
+
+
+  const srsCompletionRef = useRef<Record<string, number>>({})
+  const srsCompletionInFlightRef = useRef<Set<string>>(new Set())
+  const verifiedRecallStartInFlightRef = useRef(createSynchronousInFlightGuard())
+  const learnerDeletionInFlightRef = useRef(createSynchronousInFlightGuard())
+  const learnerResumeAttemptedIdRef = useRef('')
+  const currentSkillpilotIdRef = useRef(skillpilotId)
+  const loadLearnerRetentionRef = useRef<() => Promise<void>>(async () => undefined)
+  const fullRefreshInFlightRef = useRef(false)
+  const lastFullRefreshAtRef = useRef(0)
+  const forceActiveGoalRevealRef = useRef(false)
+  const prevRevealedActiveGoalIdRef = useRef<string | null>(null)
+  const pendingActiveGoalRouteSyncRef = useRef<string | null>(null)
+  const reportedLoadErrorsRef = useRef<Set<string>>(new Set())
+  const learnerStateRequestSequenceRef = useRef(0)
+  const personalCurriculumRefreshSequenceRef = useRef(0)
+  const preferencesRefreshSequenceRef = useRef(0)
+  const preferencesReloadRequiredScopeRef = useRef<string | null>(null)
+  const preferenceSaveRefreshRef = useRef<{ scopeKey: string; pendingEvent: boolean; receivedEvent: boolean } | null>(null)
+  const savedPreferencesSnapshotRef = useRef<{
+    scopeKey: string
+    sequence: number
+    preferences: Partial<ReturnType<typeof learnerPreferences>>
+  } | null>(null)
+  const learningPlansRequestSequenceRef = useRef(0)
+  const learningPlansRefreshInFlightRef = useRef(false)
+  const learningPlanContinueRequestSequenceRef = useRef(0)
+  const learningPlanTransitionInFlightRef = useRef(createSynchronousInFlightGuard())
+  const learningPlanReconcileAttemptedKeyRef = useRef<string | null>(null)
+  const pendingPlanGoalFocusRef = useRef<string | null>(null)
+  const learnerGoalContentRef = useRef<HTMLDivElement | null>(null)
+  const currentLearnerStateScopeKeyRef = useRef(learnerStateScopeKey)
+  currentLearnerStateScopeKeyRef.current = learnerStateScopeKey
+  currentSkillpilotIdRef.current = skillpilotId
+
+  const { language, setLanguage } = useLanguage();
+  const learnerDataManagementCopy = getLearnerDataManagementCopy(language === 'en' ? 'en' : 'de')
+  const runtimeCatalogState = useRuntimeCurriculumCatalog()
+  const t = useTranslation();
+  const location = useLocation()
+  const completionDiscoveryRequest = new URLSearchParams(location.search).get('completionShortcuts') === '1'
+    ? `${learnerStateScopeKey}:${location.key}` : undefined
+  const completionEntryRef = useRef<HTMLDivElement>(null)
+  const completedDiscoveryRevealRef = useRef<string | null>(null)
+  const selectedGoalAssessments = useMemo(
+    () => currentGoal ? completionAssessmentsForGoal(levelCompletion, currentGoal.id) : [],
+    [currentGoal, levelCompletion],
+  )
+  const localizedLanguage = language === 'en' ? 'en' : 'de'
+  const localizedLearningPlans = scopedLearningPlans?.status.language === localizedLanguage
+    ? scopedLearningPlans
+    : null
+  const learningPlanLanguagePending = scopedLearningPlans !== null && localizedLearningPlans === null
+  const learnerViewCopy = getLearnerViewCopy(localizedLanguage)
+  const learnerLearningPlanCopy = getLearnerLearningPlanCopy(localizedLanguage)
+  const learningPlanSubjectLabels = useMemo(() => new Map(
+    availableLandscapes.map((entry) => [
+      entry.landscapeId,
+      cleanLearningPlanSubjectLabel(entry.title) || entry.title,
+    ]),
+  ), [availableLandscapes])
+  const visibleSessionLaunchCopy = getActiveVisibleSessionLaunchCopy(localizedLanguage)
+  const openAiMcpCoachActive = isOpenAiMcpCoachActive(localizedLanguage)
+  useEffect(() => {
+    const resumeId = skillpilotId
+    if (!resumeId || learnerResumeAttemptedIdRef.current === resumeId) return
+    learnerResumeAttemptedIdRef.current = resumeId
+
+    void (async () => {
+      try {
+        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+        const retention = await requestLearnerResume(fetch, apiBase, resumeId)
+        if (currentSkillpilotIdRef.current === resumeId) {
+          setLearnerRetention(retention)
+        }
+      } catch (error) {
+        if (currentSkillpilotIdRef.current !== resumeId) return
+        console.error('Learner resume activity failed', error)
+        if (error instanceof LearnerDataApiError && error.status === 404) {
+          try {
+            clearDeletedLearnerBrowserState(
+              window.localStorage,
+              window.sessionStorage,
+              resumeId,
+            )
+          } catch (cleanupError) {
+            console.warn('Missing learner browser cleanup was incomplete', cleanupError)
+          }
+          if (onNotify) onNotify('error', learnerDataManagementCopy.missingLearner)
+          else queueToastForNextLoad('error', learnerDataManagementCopy.missingLearner)
+          if (onLogout) onLogout()
+          else window.location.replace('/')
+          return
+        }
+
+        if (onNotify) {
+          onNotify('error', learnerDataManagementCopy.resumeFailed)
+        } else {
+          setModalTitle(learnerDataManagementCopy.title)
+          setModalMessage(learnerDataManagementCopy.resumeFailed)
+          setModalType('error')
+          setIsModalOpen(true)
+        }
+      }
+    })()
+  }, [learnerDataManagementCopy.missingLearner, learnerDataManagementCopy.resumeFailed, learnerDataManagementCopy.title, onLogout, onNotify, skillpilotId])
+
+  const queryParams = useMemo(() => new URLSearchParams(location.search), [location.search])
+  const persistedCampaignContext = useMemo(() => loadAbi26CampaignContext(), [])
+  const queryCampaignContext = useMemo(() => extractAbi26CampaignContext(queryParams), [queryParams])
+  const hasAbi26Marker = useMemo(() => {
+    const campaignQuery = queryParams.get('campaign') || queryParams.get('utm_campaign') || queryParams.get('start')
+    return campaignQuery === ABI26_CAMPAIGN_SLUG
+  }, [queryParams])
+  const hasExplicitCampaignCourseLevel = useMemo(() => {
+    const rawCourseLevel = queryParams.get('courseLevel') || queryParams.get('track') || queryParams.get('f')
+    const normalizedCourseLevel = rawCourseLevel?.trim().toUpperCase()
+    return normalizedCourseLevel === 'GK' || normalizedCourseLevel === 'LK'
+  }, [queryParams])
+  const hasPersistedCampaignForLearner =
+    persistedCampaignContext?.slug === ABI26_CAMPAIGN_SLUG &&
+    persistedCampaignContext.skillpilotId === skillpilotId
+  const isAbi26CampaignSession = hasAbi26Marker || hasPersistedCampaignForLearner
+  const campaignContext = useMemo(() => {
+    if (hasAbi26Marker) {
+      if (!hasExplicitCampaignCourseLevel && hasPersistedCampaignForLearner && persistedCampaignContext) {
+        return persistedCampaignContext
+      }
+      return { ...queryCampaignContext, skillpilotId }
+    }
+    if (hasPersistedCampaignForLearner && persistedCampaignContext) return persistedCampaignContext
+    return null
+  }, [
+    hasAbi26Marker,
+    hasExplicitCampaignCourseLevel,
+    hasPersistedCampaignForLearner,
+    persistedCampaignContext,
+    queryCampaignContext,
+    skillpilotId,
+  ])
+  const abi26PersonalizationAlreadyInitialized = useMemo(() => (
+    campaignContext
+      ? isAbi26PersonalizationInitialized(skillpilotId, campaignContext.courseLevel)
+      : false
+  ), [campaignContext, skillpilotId])
+  const [abi26PersonalizationRepairSuppressed, setAbi26PersonalizationRepairSuppressed] =
+    useState(false)
+  useEffect(() => {
+    setAbi26PersonalizationRepairSuppressed(false)
+  }, [campaignContext?.courseLevel, skillpilotId])
+  const shouldAutoRepairAbi26Personalization =
+    isAbi26CampaignSession
+    && !!campaignContext
+    && !abi26PersonalizationAlreadyInitialized
+    && !abi26PersonalizationRepairSuppressed
+  const canAutoRepairAbi26Personalization =
+    shouldAutoRepairAbi26Personalization
+    && rootLandscapeId === ABI26_ROOT_CURRICULUM_ID
+
+  const currentRouteGoalId = routeGoalId ?? ''
+  const selectedId = currentRouteGoalId || currentGoal?.id || rootGoals[0]?.id || ''
+  const effectiveActiveGoalId = stateActiveGoalId
+  const activeLearningPlanLandscapeId = effectiveActiveGoalId
+    ? goalIndexAll.get(effectiveActiveGoalId)?.landscapeId
+      ?? learningPlanTransitionLandscapeId
+      ?? landscapeId
+    : null
+  const hasTrackedCampaignOpenRef = useRef(false)
+  const guidedPersonalizationRefreshInFlightRef = useRef(0)
+  const [guidedPersonalizationRefreshing, setGuidedPersonalizationRefreshing] = useState(false)
+  const abi26PersonalizationRepairRef = useRef({
+    scopeKey: '',
+    inFlight: false,
+    restarted: false,
+    complete: false,
+    failed: false,
+    errorReported: false,
+    applySteps: 0,
+    appliedOptionIds: new Set<string>(),
+  })
+  const claimAbi26PersonalizationOwnership = useCallback(() => {
+    if (!isAbi26CampaignSession || !campaignContext) return
+    markAbi26PersonalizationInitialized(
+      skillpilotId,
+      campaignContext.courseLevel,
+    )
+    setAbi26PersonalizationRepairSuppressed(true)
+    abi26PersonalizationRepairRef.current.complete = true
+  }, [
+    campaignContext,
+    isAbi26CampaignSession,
+    skillpilotId,
+  ])
+
+  useEffect(() => {
+    if (!isSetupOpen || !canAutoRepairAbi26Personalization) return
+    claimAbi26PersonalizationOwnership()
+  }, [
+    canAutoRepairAbi26Personalization,
+    claimAbi26PersonalizationOwnership,
+    isSetupOpen,
+  ])
+
+  const notifyLoadErrorOnce = useCallback((key: string, message: string) => {
+    if (!onNotify) return
+    if (reportedLoadErrorsRef.current.has(key)) return
+    reportedLoadErrorsRef.current.add(key)
+    onNotify('error', message)
+  }, [onNotify])
+
+  const clearReportedLoadError = useCallback((key: string) => {
+    reportedLoadErrorsRef.current.delete(key)
+  }, [])
+
+  useEffect(() => {
+    reportedLoadErrorsRef.current.clear()
+  }, [skillpilotId])
+
+  useEffect(() => {
+    if (rootLandscapeId !== CANONICAL_GYMNASIUM_ROOT_ID) return
+    if (learnerData?.selectedCurriculum !== CANONICAL_GYMNASIUM_ROOT_ID) return
+    if (landscapeId === CANONICAL_GYMNASIUM_ROOT_ID) return
+    onLandscapeChange?.(CANONICAL_GYMNASIUM_ROOT_ID)
+  }, [landscapeId, learnerData?.selectedCurriculum, onLandscapeChange, rootLandscapeId])
+
+  const getSrsSource = useCallback((goal: UiGoal) => {
+    return resolveGoalDeckHref(runtimeCatalogState, goal, localizedLanguage, () => {
+      const extendedData = goal.extendedData as {
+        vocabularySource?: string
+        vocabularySourceEn?: string
+      } | undefined
+      const sourceDe = typeof extendedData?.vocabularySource === 'string' ? extendedData.vocabularySource : undefined
+      const sourceEn = typeof extendedData?.vocabularySourceEn === 'string' ? extendedData.vocabularySourceEn : undefined
+      return localizedLanguage === 'en' ? (sourceEn ?? sourceDe) : (sourceDe ?? sourceEn)
+    })
+  }, [localizedLanguage, runtimeCatalogState])
+
+  const srsGoals = useMemo(() => {
+    return Array.from(goalIndexAll.values()).filter((goal) => {
+      if (landscapeId && goal.landscapeId && goal.landscapeId !== landscapeId) return false
+      if (!goal.tags || !goal.tags.some((tag) => tag.startsWith('srs-deck'))) return false
+      return typeof getSrsSource(goal) === 'string'
+    })
+  }, [goalIndexAll, landscapeId, getSrsSource])
+
+  const srsMasteryByGoal = useSrsMastery(srsGoals, skillpilotId, srsMasteryTick, localizedLanguage, getSrsSource)
+  const currentFlashcardSetStatus = useFlashcardSetStatus(
+    currentGoal?.tags?.some((tag) => tag.startsWith('srs-deck')) ? currentGoal : null,
+    skillpilotId,
+    srsReloadCounter,
+    localizedLanguage,
+    getSrsSource,
+  )
+  const currentFlashcardVerificationComplete =
+    Boolean(currentFlashcardSetStatus && currentFlashcardSetStatus.total > 0 && currentFlashcardSetStatus.verifiedPending === 0)
+  const currentFlashcardVerificationWaiting =
+    Boolean(currentFlashcardSetStatus && currentFlashcardSetStatus.total > 0
+      && currentFlashcardSetStatus.verifiedPending > 0
+      && currentFlashcardSetStatus.verificationEligible === 0)
+  const currentActiveFlashcardVerificationWaiting =
+    Boolean(currentFlashcardVerificationWaiting && currentGoal?.id === effectiveActiveGoalId)
+  const currentVerifiedRecallBatchSize = currentGoal
+    ? (verifiedRecallBatchSizeByGoal[currentGoal.id] ?? VERIFIED_RECALL_DEFAULT_BATCH_SIZE)
+    : VERIFIED_RECALL_DEFAULT_BATCH_SIZE
+
+  useEffect(() => {
+    if (!currentGoal?.tags?.some((tag) => tag.startsWith('srs-deck'))) return
+    setVerifiedRecallBatchSizeByGoal((current) => {
+      if (current[currentGoal.id] !== undefined) return current
+      const stored = localStorage.getItem(verifiedRecallBatchStorageKey(skillpilotId, currentGoal.id))
+      const parsed = stored ? Number(stored) : Number.NaN
+      return {
+        ...current,
+        [currentGoal.id]: clampVerifiedRecallBatchSize(parsed),
+      }
+    })
+  }, [currentGoal, skillpilotId])
+
+  const handleVerifiedRecallBatchSizeChange = useCallback((goalId: string, value: number) => {
+    const next = clampVerifiedRecallBatchSize(value)
+    setVerifiedRecallBatchSizeByGoal((current) => ({ ...current, [goalId]: next }))
+    localStorage.setItem(verifiedRecallBatchStorageKey(skillpilotId, goalId), String(next))
+  }, [skillpilotId])
+
+  useEffect(() => {
+    setOptimisticSrsMasteryByGoal((current) => {
+      let changed = false
+      const next = { ...current }
+      Object.entries(current).forEach(([goalId, mastery]) => {
+        if (srsMasteryByGoal[goalId] === mastery) {
+          delete next[goalId]
+          changed = true
+        }
+      })
+      return changed ? next : current
+    })
+  }, [srsMasteryByGoal])
+
+  const getEffectiveMastery = useCallback((goalId: string) => {
+    const optimistic = optimisticSrsMasteryByGoal[goalId]
+    if (optimistic !== undefined) return optimistic
+    const override = srsMasteryByGoal[goalId]
+    return override !== undefined ? override : getMastery(goalId)
+  }, [optimisticSrsMasteryByGoal, srsMasteryByGoal, getMastery])
+
+  const currentLandscapeRootGoals = useMemo(() => {
+    const localRoots = rootGoals.filter((goal) => goal.landscapeId === landscapeId)
+    return localRoots.length > 0 ? localRoots : rootGoals
+  }, [rootGoals, landscapeId])
+
+  const visibleRootGoals = useMemo(() => {
+    if (isPersonalConfigHydrating) {
+      return []
+    }
+    return currentLandscapeRootGoals
+  }, [currentLandscapeRootGoals, isPersonalConfigHydrating])
+  const learnerStructureMode: TreeStructureMode = 'content'
+
+  // Determine effective active filter based on personal config for current landscape
+  const supportedFilterIds = useMemo(() => {
+    const ids = new Set<string>()
+    availableLandscapes?.forEach((landscape) => {
+      landscape.filters?.forEach((filter) => ids.add(filter.id))
+    })
+    return ids
+  }, [availableLandscapes])
+
+  const effectiveActiveFilter = useMemo(() => {
+    const config = personalConfig[landscapeId]
+    if (config?.filterId) {
+      return supportedFilterIds.has(config.filterId) ? config.filterId : undefined
+    }
+    if (!activeFilter || isWildcardFilter(activeFilter)) return activeFilter
+    const supportedActiveFilters = splitFilterIds(activeFilter).filter((filterId) => {
+      const normalized = filterId.trim().toUpperCase()
+      return supportedFilterIds.has(filterId)
+        || !!normalizeJurisdictionCode(filterId)
+        || normalized === 'GK'
+        || normalized === 'LK'
+        || normalized === 'GK+LK'
+        || normalized === 'G8'
+        || normalized === 'G9'
+    })
+    return supportedActiveFilters.length > 0 ? supportedActiveFilters.join(',') : undefined
+  }, [landscapeId, personalConfig, activeFilter, supportedFilterIds])
+  const bavarianMathCompositionView = currentLandscapeHasMatchedCompositionView
+    && landscapeSubject === 'Mathematik'
+    && normalizeJurisdictionCode(rootLandscapeId ? personalConfig[rootLandscapeId]?.filterId : undefined) === 'DE-BY'
+  const learnerTreeProjection = useMemo(
+    () => {
+      const visibleChildren = currentLandscapeHasMatchedCompositionView
+        ? buildDirectChildrenMap(goalIndexAll)
+        : normalizeLearnerVisibleChildrenMap(goalIndexAll, buildVisibleChildrenMap(
+          goalIndexAll,
+          effectiveActiveFilter,
+          personalConfig,
+          learnerStructureMode,
+          rootLandscapeId,
+        ))
+      return collapseLearnerSubjectRoots(goalIndexAll, visibleChildren)
+    },
+    [
+      currentLandscapeHasMatchedCompositionView,
+      effectiveActiveFilter,
+      goalIndexAll,
+      learnerStructureMode,
+      personalConfig,
+      rootLandscapeId,
+    ],
+  )
+  const {
+    childrenByParent: learnerVisibleChildrenByParent,
+    subjectRootIdByAlias,
+    childrenBySubjectRootAlias,
+  } = learnerTreeProjection
+
+  const learnerProjectedParentMap = useMemo(() => {
+    const next = new Map<string, string[]>()
+    learnerVisibleChildrenByParent.forEach((childIds, parentId) => {
+      childIds.forEach((childId) => {
+        const currentParents = next.get(childId)
+        if (currentParents) {
+          currentParents.push(parentId)
+        } else {
+          next.set(childId, [parentId])
+        }
+      })
+    })
+    return next
+  }, [learnerVisibleChildrenByParent])
+
+  const effectiveLearnerParentMap = useMemo(
+    () => learnerProjectedParentMap.size > 0 ? learnerProjectedParentMap : (parentMap ?? new Map<string, string[]>()),
+    [learnerProjectedParentMap, parentMap],
+  )
+
+  const learnerTreeScopeKey = useMemo(() => {
+    const selectedScopeEntries = Object.entries(personalConfig)
+      .filter(([, config]) => config.selected || config.filterId)
+      .sort(([left], [right]) => left.localeCompare(right))
+      .map(([scopeId, config]) => `${scopeId}:${config.selected ? '1' : '0'}:${config.filterId ?? ''}:${config.durationModel ?? ''}`)
+
+    return [
+      landscapeId,
+      effectiveActiveFilter ?? 'all',
+      learnerStructureMode,
+      ...visibleRootGoals.map((goal) => goal.id),
+      ...selectedScopeEntries,
+    ].join('|')
+  }, [effectiveActiveFilter, landscapeId, learnerStructureMode, personalConfig, visibleRootGoals])
+
+  const learnerTreeExpansionStorageKey = useMemo(
+    () => `skillpilot:learner-tree-expanded:${skillpilotId || 'anonymous'}:${learnerTreeScopeKey}`,
+    [learnerTreeScopeKey, skillpilotId],
+  )
+
+  const buildCollapsedFocusPath = useCallback((targetId: string) => {
+    if (!targetId) return new Set<string>()
+    const visibleTargetId = subjectRootIdByAlias.get(targetId) ?? targetId
+
+    const visiblePath = new Set<string>()
+    const visited = new Set<string>()
+    const findVisiblePath = (goalId: string): boolean => {
+      if (visited.has(goalId)) return false
+      visited.add(goalId)
+      if (goalId === visibleTargetId) {
+        visiblePath.add(goalId)
+        return true
+      }
+
+      const childIds = getRenderedChildIds(goalId, goalIndexAll, learnerVisibleChildrenByParent)
+      for (const childId of childIds) {
+        if (findVisiblePath(childId)) {
+          visiblePath.add(goalId)
+          return true
+        }
+      }
+      return false
+    }
+
+    for (const rootGoal of visibleRootGoals) {
+      if (findVisiblePath(rootGoal.id)) {
+        return visiblePath
+      }
+    }
+
+    const expanded = new Set<string>()
+    const queue = [visibleTargetId]
+    while (queue.length > 0) {
+      const current = queue.pop()!
+      if (expanded.has(current)) continue
+      expanded.add(current)
+      const parents = effectiveLearnerParentMap.get(current)
+      if (!parents) continue
+      parents.forEach((parentId) => queue.push(parentId))
+    }
+    return expanded
+  }, [effectiveLearnerParentMap, goalIndexAll, learnerVisibleChildrenByParent, subjectRootIdByAlias, visibleRootGoals])
+
+  const learnerTreeRevealPathKey = useMemo(() => {
+    const targetId = currentRouteGoalId || effectiveActiveGoalId || selectedId
+    return JSON.stringify(targetId ? Array.from(buildCollapsedFocusPath(targetId)).sort() : [])
+  }, [buildCollapsedFocusPath, currentRouteGoalId, effectiveActiveGoalId, selectedId])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const fallbackExpanded = new Set(visibleRootGoals.map((goal) => goal.id))
+    try {
+      const raw = window.localStorage.getItem(learnerTreeExpansionStorageKey)
+      if (!raw) {
+        setExpandedGoalIds(fallbackExpanded)
+        return
+      }
+
+      const parsed = JSON.parse(raw)
+      if (!Array.isArray(parsed)) {
+        setExpandedGoalIds(fallbackExpanded)
+        return
+      }
+
+      setExpandedGoalIds(new Set(parsed.filter((value): value is string => typeof value === 'string')))
+    } catch {
+      setExpandedGoalIds(fallbackExpanded)
+    }
+  }, [learnerTreeExpansionStorageKey, visibleRootGoals])
+
+  useEffect(() => {
+    // Reveal a newly selected path once, then let the learner close any branch.
+    // Compare path contents so an unchanged API refresh cannot reopen it.
+    const revealIds = JSON.parse(learnerTreeRevealPathKey) as string[]
+    setExpandedGoalIds((current) => {
+      if (revealIds.every((goalId) => current.has(goalId))) return current
+      return new Set([...current, ...revealIds])
+    })
+  }, [learnerTreeExpansionStorageKey, learnerTreeRevealPathKey])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    window.localStorage.setItem(learnerTreeExpansionStorageKey, JSON.stringify(Array.from(expandedGoalIds)))
+  }, [expandedGoalIds, learnerTreeExpansionStorageKey])
+
+  const toggleExpandedGoal = useCallback((goalId: string) => {
+    setExpandedGoalIds((current) => {
+      const next = new Set(current)
+      if (next.has(goalId)) {
+        next.delete(goalId)
+      } else {
+        next.add(goalId)
+      }
+      return next
+    })
+  }, [])
+
+  const getVisibleChildIds = useCallback((parentId: string) => {
+    if (isPersonalConfigHydrating) return []
+    return childrenBySubjectRootAlias.get(parentId)
+      ?? getRenderedChildIds(parentId, goalIndexAll, learnerVisibleChildrenByParent)
+  }, [childrenBySubjectRootAlias, goalIndexAll, isPersonalConfigHydrating, learnerVisibleChildrenByParent])
+
+  const getLearnerGoalTitle = useCallback(
+    (goal: Pick<UiGoal, 'title'>) => currentLandscapeHasMatchedCompositionView ? goal.title : getAudienceGoalTitle(goal),
+    [currentLandscapeHasMatchedCompositionView],
+  )
+
+  useEffect(() => {
+    setMemoryPracticeGoalId(null)
+  }, [currentGoal?.id])
+
+  const buildVerifiedRecallPromptContext = useCallback((goal: UiGoal, batchSize: number) => {
+    const title = getLearnerGoalTitle(goal)
+    if (openAiMcpCoachActive) {
+      return `Bitte starte für mein aktuelles Lernziel die harte Kartenprüfung mit einer Batchgröße von ${batchSize}.`
+    }
+    const hasVisualization = Array.isArray(goal.resourceLinks) && goal.resourceLinks.some(isGoalVisualizationLink)
+    const cockpitLink = hasVisualization
+      ? [
+          '',
+          localizedLanguage === 'en'
+            ? `Cockpit view for ${title}:`
+            : `Cockpit-Ansicht für ${title}:`,
+          `https://skillpilot.com/?l=${encodeURIComponent(goal.landscapeId ?? landscapeId)}&goal=${encodeURIComponent(goal.id)}`,
+        ].join('\n')
+      : ''
+    if (localizedLanguage === 'en') {
+      const toolInstruction = visibleSessionLaunchCopy
+        ? buildVisibleSessionVerifiedRecallInstruction(localizedLanguage, batchSize)
+        : `Use the SkillPilot verified-recall tools: call verified-recall/start with batchSize=${batchSize}, ask all returned prompts as one numbered batch, let me answer without help, fetch the expected answers only after I have submitted my answers, then save passed/failed for every card.`
+      return [
+        `Active learning goal: ${goal.id} - ${title}`,
+        `Flashcard verification batch size: ${batchSize}`,
+        '',
+        cockpitLink,
+        'Please start hard flashcard verification for this active memorization goal.',
+        toolInstruction,
+      ].join('\n')
+    }
+    const toolInstruction = visibleSessionLaunchCopy
+      ? buildVisibleSessionVerifiedRecallInstruction(localizedLanguage, batchSize)
+      : `Nutze die SkillPilot-Werkzeuge für verified recall: rufe verified-recall/start mit batchSize=${batchSize} auf, stelle alle zurückgegebenen Fragen als nummerierten Batch, lass mich ohne Hilfe antworten, rufe die erwarteten Antworten erst nach meinen Antworten ab und speichere danach passed/failed für jede Karte.`
+    return [
+      `Aktives Lernziel: ${goal.id} - ${title}`,
+      `Batchgröße für die Kartenprüfung: ${batchSize}`,
+      '',
+      cockpitLink,
+      'Bitte starte die harte Kartenprüfung für dieses aktive Memorize-Ziel.',
+      toolInstruction,
+    ].join('\n')
+  }, [getLearnerGoalTitle, landscapeId, localizedLanguage, openAiMcpCoachActive, visibleSessionLaunchCopy])
+
+  const handleStartVerifiedRecall = useCallback(async (goal: UiGoal) => {
+    if (!verifiedRecallStartInFlightRef.current.tryStart()) return
+    const chatWindow = window.open('', '_blank')
+    const batchSize = verifiedRecallBatchSizeByGoal[goal.id] ?? VERIFIED_RECALL_DEFAULT_BATCH_SIZE
+    try {
+      const chatStart = await requestCoachChatStart({
+        skillpilotId,
+        language,
+        selectedCurriculum: rootLandscapeId || landscapeId,
+        promptContext: buildVerifiedRecallPromptContext(goal, batchSize),
+        launchIntent: openAiMcpCoachActive
+          ? { type: 'VERIFIED_RECALL', goalId: goal.id, batchSize }
+          : undefined,
+        client: 'verified-recall',
+      })
+      await deliverCoachChatStart(
+        chatStart,
+        (url) => {
+          if (chatWindow) {
+            chatWindow.opener = null
+            chatWindow.location.href = url
+          } else {
+            window.open(url, '_blank', 'noopener,noreferrer')
+          }
+        },
+      )
+    } catch (caught) {
+      if (chatWindow) {
+        chatWindow.close()
+      }
+      if (isOpenAiMcpEligibilityDeclinedError(caught)) {
+        onNotify?.('info', caught.message)
+        return
+      }
+      onNotify?.('error', learnerViewCopy.memoryVerifiedRecallLaunchFailed)
+    } finally {
+      verifiedRecallStartInFlightRef.current.finish()
+    }
+  }, [
+    buildVerifiedRecallPromptContext,
+    landscapeId,
+    language,
+    learnerViewCopy.memoryVerifiedRecallLaunchFailed,
+    onNotify,
+    openAiMcpCoachActive,
+    rootLandscapeId,
+    skillpilotId,
+    verifiedRecallBatchSizeByGoal,
+  ])
+
+  const visibleGoals = useMemo(() => {
+    if (isPersonalConfigHydrating) {
+      return new Set<string>()
+    }
+
+    const visible = new Set<string>()
+    const stack = [...visibleRootGoals]
+    const hasConfig = Object.keys(personalConfig).length > 0
+
+    while (stack.length > 0) {
+      const g = stack.pop()
+      if (!g) continue
+
+      // If config exists, respect visibility settings for children
+      if (hasConfig) {
+        const cfg = personalConfig[g.id]
+        // If explicitly unselected, skip branch
+        if (cfg && cfg.selected === false) continue
+      }
+
+      if (visible.has(g.id)) continue
+      visible.add(g.id)
+      const childIds = getVisibleChildIds(g.id)
+      childIds.forEach((childId) => {
+        const child = goalIndexAll.get(childId)
+        if (child) stack.push(child)
+      })
+    }
+    return visible
+  }, [visibleRootGoals, goalIndexAll, isPersonalConfigHydrating, personalConfig, getVisibleChildIds])
+
+  const plannedScopeGoalIds = useMemo(() => {
+    if (plannedGoals.size === 0) {
+      return new Set<string>()
+    }
+
+    return buildGoalContainsClosure(plannedGoals, goalIndexAll)
+  }, [goalIndexAll, plannedGoals])
+
+  useEffect(() => {
+    const nextVisibleGoalId = getNextVisibleLearnerGoalSelection({
+      currentGoalId: currentGoal?.id,
+      currentRouteGoalId,
+      learnerStateReady: learnerStateLoadStatus === 'ready',
+      visibleGoalIds: visibleGoals,
+      activeGoalId: effectiveActiveGoalId,
+      plannedGoalIds: plannedGoals,
+      plannedScopeGoalIds,
+      visibleRootGoalIds: visibleRootGoals.map((goal) => goal.id),
+    })
+
+    if (nextVisibleGoalId) {
+      onSelectGoal(nextVisibleGoalId)
+    }
+  }, [
+    currentGoal,
+    currentRouteGoalId,
+    learnerStateLoadStatus,
+    visibleGoals,
+    effectiveActiveGoalId,
+    plannedGoals,
+    plannedScopeGoalIds,
+    visibleRootGoals,
+    onSelectGoal,
+  ])
+
+  const getFilteredMastery = useCallback(
+    (goalId: string) => {
+      const masteryCache = new Map<string, { masterySum: number; weightSum: number }>()
+
+      const compute = (
+        gId: string,
+        visited: Set<string> = new Set(),
+      ): { masterySum: number; weightSum: number } => {
+        if (masteryCache.has(gId)) return masteryCache.get(gId)!
+        if (visited.has(gId)) return { masterySum: 0, weightSum: 0 }
+
+        visited.add(gId)
+        const goal = goalIndexAll.get(gId)
+        if (!goal) return { masterySum: 0, weightSum: 0 }
+
+        let masterySum = 0
+        let weightSum = 0
+        const children = getVisibleChildIds(gId)
+
+        if (!goal.contains || goal.contains.length === 0 || children.length === 0) {
+          const masteryValue = getEffectiveMastery(gId)
+          const weight = goal.weight ?? 1
+          masterySum = masteryValue * weight
+          weightSum = weight
+        } else {
+          children.forEach((childId) => {
+            const childTotals = compute(childId, new Set(visited))
+            masterySum += childTotals.masterySum
+            weightSum += childTotals.weightSum
+          })
+        }
+
+        visited.delete(gId)
+        masteryCache.set(gId, { masterySum, weightSum })
+        return { masterySum, weightSum }
+      }
+
+      const totals = compute(goalId)
+      return totals.weightSum > 0 ? totals.masterySum / totals.weightSum : 0
+    },
+    [goalIndexAll, getEffectiveMastery, getVisibleChildIds],
+  )
+
+  // Calculate statistics: Total Atomic and Mastered Atomic
+  // Relative to Focus (Planned Subtree) if active, otherwise Global Visible.
+  const stats = useMemo(() => {
+    const hasPersonalConfig = Object.keys(personalConfig).length > 0
+    const hasActiveFilter = !!effectiveActiveFilter && !isWildcardFilter(effectiveActiveFilter)
+    const plannedKey = goalIdsKey(plannedGoals)
+
+    // In global mode (no planned goals), prefer backend stats only when no filters are active
+    if (plannedGoals.size === 0 && backendStats && !hasPersonalConfig && !hasActiveFilter) {
+      return backendStats
+    }
+
+    // Composition-view structure scopes are expanded by the backend, not by visibleGoals.
+    if (plannedGoals.size > 0 && backendStats?.plannedGoalKey === plannedKey) {
+      return backendStats
+    }
+
+    // Local calculation for scope mode or fallback
+    let totalAtomic = 0
+    let masteredAtomic = 0
+
+    if (plannedGoals.size > 0) {
+      // Focus Mode: count visible atomic goals that belong to the canonical scope
+      // even when the planned root is hidden by a composition-view projection.
+      visibleGoals.forEach(id => {
+        if (!plannedScopeGoalIds.has(id)) return
+        const g = goalIndexAll.get(id)
+        if (g && (!g.contains || g.contains.length === 0)) {
+          totalAtomic++
+          if (isMastered(getEffectiveMastery(id))) {
+            masteredAtomic++
+          }
+        }
+      })
+    } else {
+      // Global Mode: Local fallback if backend stats not available
+      visibleGoals.forEach(id => {
+        const g = goalIndexAll.get(id)
+        if (g && (!g.contains || g.contains.length === 0)) {
+          totalAtomic++
+          if (isMastered(getEffectiveMastery(id))) {
+            masteredAtomic++
+          }
+        }
+      })
+    }
+
+    return { totalAtomic, masteredAtomic }
+  }, [plannedGoals, goalIndexAll, visibleGoals, plannedScopeGoalIds, getEffectiveMastery, backendStats, personalConfig, effectiveActiveFilter])
+
+
+  // Reveal Active Goal Logic
+  const revealActiveGoal = useCallback((): boolean => {
+    if (!effectiveActiveGoalId || effectiveLearnerParentMap.size === 0) return false
+    const targetId = effectiveActiveGoalId
+    setExpandedGoalIds(buildCollapsedFocusPath(targetId))
+    if (targetId !== currentRouteGoalId) {
+      const targetLandscapeId = goalIndexAll.get(targetId)?.landscapeId
+      if (!targetLandscapeId) return false
+      return navigateToLearnerLearningPlanGoal(
+        landscapeId,
+        {
+          landscapeId: targetLandscapeId,
+          activeGoalId: targetId,
+        },
+        {
+          selectGoal: onSelectGoal,
+          selectGoalInLandscape: onSelectGoalInLandscape,
+        },
+      )
+    }
+    return true
+  }, [
+    buildCollapsedFocusPath,
+    currentRouteGoalId,
+    effectiveActiveGoalId,
+    effectiveLearnerParentMap,
+    goalIndexAll,
+    landscapeId,
+    onSelectGoal,
+    onSelectGoalInLandscape,
+  ])
+
+  const focusLearnerGoalContent = useCallback((goalId: string) => {
+    pendingPlanGoalFocusRef.current = goalId
+    if (currentGoal?.id !== goalId || currentRouteGoalId !== goalId) return
+    window.requestAnimationFrame(() => {
+      if (pendingPlanGoalFocusRef.current !== goalId) return
+      const target = learnerGoalContentRef.current
+      if (!target) return
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      target.focus({ preventScroll: true })
+      pendingPlanGoalFocusRef.current = null
+    })
+  }, [currentGoal?.id, currentRouteGoalId])
+
+  useEffect(() => {
+    const pendingGoalId = pendingPlanGoalFocusRef.current
+    if (!pendingGoalId || currentGoal?.id !== pendingGoalId || currentRouteGoalId !== pendingGoalId) return
+    const frame = window.requestAnimationFrame(() => {
+      if (pendingPlanGoalFocusRef.current !== pendingGoalId) return
+      const target = learnerGoalContentRef.current
+      if (!target) return
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      target.focus({ preventScroll: true })
+      pendingPlanGoalFocusRef.current = null
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [currentGoal?.id, currentRouteGoalId, landscapeId])
+
+  // Reveal Scope (Planned Goals) Logic
+  const revealScope = useCallback(() => {
+    if (effectiveLearnerParentMap.size === 0 || plannedGoals.size === 0) return
+    // Prefer a visible representative of the scope. Canonical planned roots can
+    // be hidden by composition views while their descendants are still visible.
+    const targetId =
+      effectiveActiveGoalId && plannedScopeGoalIds.has(effectiveActiveGoalId) && visibleGoals.has(effectiveActiveGoalId)
+        ? effectiveActiveGoalId
+        : Array.from(plannedGoals).find((goalId) => visibleGoals.has(goalId))
+          ?? Array.from(plannedScopeGoalIds).find((goalId) => visibleGoals.has(goalId))
+          ?? Array.from(plannedGoals)[0]
+    if (!targetId) return
+    setExpandedGoalIds(buildCollapsedFocusPath(targetId))
+    if (targetId !== currentRouteGoalId) {
+      onSelectGoal(targetId)
+    }
+  }, [
+    buildCollapsedFocusPath,
+    currentRouteGoalId,
+    effectiveActiveGoalId,
+    effectiveLearnerParentMap,
+    plannedGoals,
+    plannedScopeGoalIds,
+    visibleGoals,
+    onSelectGoal,
+  ])
+
+  // Reveal the active goal on entry, or the planned scope when no active goal exists.
+  const hasAppliedInitialGoalRevealRef = useRef(false)
+  useEffect(() => {
+    hasAppliedInitialGoalRevealRef.current = false
+    prevRevealedActiveGoalIdRef.current = null
+    pendingActiveGoalRouteSyncRef.current = null
+  }, [landscapeId, learnerStateScopeKey, learnerTreeScopeKey])
+
+  useEffect(() => {
+    const initialReveal = getInitialLearnerGoalReveal({
+      learnerStateReady: learnerStateLoadStatus === 'ready',
+      hasAlreadyRevealed: hasAppliedInitialGoalRevealRef.current,
+      hasLearnerTree: effectiveLearnerParentMap.size > 0,
+      currentRouteGoalId,
+      activeGoalId: effectiveActiveGoalId,
+      hasPlannedGoals: plannedGoals.size > 0,
+    })
+    if (!initialReveal) return
+
+    if (initialReveal === 'active') {
+      if (!revealActiveGoal()) return
+      hasAppliedInitialGoalRevealRef.current = true
+      forceActiveGoalRevealRef.current = false
+      prevRevealedActiveGoalIdRef.current = effectiveActiveGoalId
+      pendingActiveGoalRouteSyncRef.current = effectiveActiveGoalId
+      return
+    }
+    hasAppliedInitialGoalRevealRef.current = true
+    revealScope()
+  }, [
+    currentRouteGoalId,
+    effectiveActiveGoalId,
+    effectiveLearnerParentMap,
+    learnerStateLoadStatus,
+    plannedGoals,
+    revealActiveGoal,
+    revealScope,
+  ])
+
+  // When a connected agent changes the scope, open the new path even if the
+  // learner was still routed to the completed previous scope.
+  const prevRevealedPlannedScopeKeyRef = useRef<string | null>(null)
+  useEffect(() => {
+    prevRevealedPlannedScopeKeyRef.current = null
+  }, [landscapeId, learnerTreeScopeKey])
+
+  useEffect(() => {
+    const plannedScopeKey = goalIdsKey(plannedGoals)
+    if (!plannedScopeKey) {
+      prevRevealedPlannedScopeKeyRef.current = null
+      return
+    }
+    if (learnerStateLoadStatus !== 'ready') return
+    if (effectiveLearnerParentMap.size === 0) return
+    if (effectiveActiveGoalId) {
+      prevRevealedPlannedScopeKeyRef.current = plannedScopeKey
+      return
+    }
+
+    const previousScopeKey = prevRevealedPlannedScopeKeyRef.current
+    if (!previousScopeKey) {
+      prevRevealedPlannedScopeKeyRef.current = plannedScopeKey
+      return
+    }
+    if (previousScopeKey === plannedScopeKey) return
+
+    console.log('[SSE] 🧭 Planned scope ready for reveal:', plannedScopeKey)
+    revealScope()
+    prevRevealedPlannedScopeKeyRef.current = plannedScopeKey
+  }, [
+    effectiveActiveGoalId,
+    effectiveLearnerParentMap,
+    landscapeId,
+    learnerStateLoadStatus,
+    learnerTreeScopeKey,
+    plannedGoals,
+    revealScope,
+  ])
+
+  // Frontier Logic: Identify the "Next Actionable" goal in every branch.
+  // Assumption: Content is sequential within containers.
+  const frontierIds = useMemo(() => {
+    const ids = new Set<string>()
+
+    const check = (id: string, visiting: Set<string> = new Set()): boolean => {
+      // Respect Global Visibility Config (e.g. Personal Curriculum)
+      if (!visibleGoals.has(id)) return false
+      if (visiting.has(id)) return false
+
+      const nextVisiting = new Set(visiting)
+      nextVisiting.add(id)
+
+      const g = goalIndexAll.get(id)
+      if (!g) return false
+
+      // Check Prerequisites (Requires)
+      // If ANY required goal is not masterd, this goal is BLOCKED (not frontier).
+      if (g.requires && g.requires.length > 0) {
+        for (const reqId of g.requires) {
+          // Check if requirement is visible? Usually yes.
+          // Check mastery.
+          if (!isMastered(getEffectiveMastery(reqId))) {
+            return false // Blocked by prerequisite
+          }
+        }
+      }
+
+      // 1. If Atomic
+      if (!g.contains || g.contains.length === 0) {
+        if (!bavarianMathCompositionView && !goalMatchesFilter(g, effectiveActiveFilter)) {
+          return false
+        }
+
+        const m = getEffectiveMastery(id)
+        if (!isMastered(m)) {
+          ids.add(id)
+          return true // Found frontier, branch is active
+        }
+        return false // Mastered
+      }
+
+      // 2. If Container
+      // If the container ITSELF is marked mastered (explicitly), we might skip children?
+      // But typically mastery is on atomic leaves. Let's traverse children.
+      let containerActive = false
+      for (const childId of g.contains) {
+        // If we found the frontier in this child, we STOP checking subsequent children (Sequential assumption).
+        // This ensures typically only 1 frontier goal per container.
+        const childActive = check(childId, nextVisiting)
+        if (childActive) {
+          containerActive = true
+          break
+        }
+      }
+      return containerActive
+    }
+
+    // Check all visible roots in parallel (parallel tracks)
+    visibleRootGoals.forEach(r => check(r.id))
+
+    return ids
+  }, [visibleRootGoals, goalIndexAll, getEffectiveMastery, visibleGoals, effectiveActiveFilter, bavarianMathCompositionView])
+
+  const atomicFrontierOptions = useMemo(() => {
+    const atomic = frontierOptions.filter((candidate) => candidate.type === 'atomic')
+    const strategy = learnerData?.learningStrategy ?? 'SEQUENTIAL'
+
+    if (strategy === 'SEQUENTIAL') {
+      return atomic
+    } else {
+      // RANDOM: Deterministic shuffle based on options length/content to avoid jitter
+      // We will just shuffle once when list changes.
+      const shuffled = [...atomic]
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled
+    }
+  }, [frontierOptions, learnerData?.learningStrategy])
+
+  const nextStepOptions = useMemo(() => {
+    if (!currentActiveFlashcardVerificationWaiting || !effectiveActiveGoalId) {
+      return atomicFrontierOptions
+    }
+    return atomicFrontierOptions.filter((candidate) => candidate.id !== effectiveActiveGoalId)
+  }, [atomicFrontierOptions, currentActiveFlashcardVerificationWaiting, effectiveActiveGoalId])
+
+  const backendFrontierIds = useMemo(
+    () => new Set(atomicFrontierOptions.map((goal) => goal.id)),
+    [atomicFrontierOptions],
+  )
+
+  const shouldShowNextSteps =
+    nextStepOptions.length > 0 &&
+    (stateRequiredAction
+      ? stateRequiredAction === 'setActiveGoal' || currentActiveFlashcardVerificationWaiting
+      : !effectiveActiveGoalId)
+
+  const usesGuidedPersonalCurriculumEditor =
+    rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
+  const personalConfigLoadStatus: LearnerStateLoadStatus =
+    personalConfigLoadState.scopeKey === learnerStateScopeKey
+      ? personalConfigLoadState.status
+      : skillpilotId
+        ? 'loading'
+        : 'ready'
+  const guidedPersonalizationGateReason =
+    !usesGuidedPersonalCurriculumEditor
+      ? null
+      : learnerStateLoadStatus === 'loading' || personalConfigLoadStatus === 'loading'
+        ? 'scopeLoading'
+        : learnerStateLoadStatus === 'error' || personalConfigLoadStatus === 'error'
+          ? 'scopeError'
+          : stateRequiredAction === 'setPersonalization'
+            ? 'selection'
+            : null
+  const isGuidedPersonalizationRequired =
+    guidedPersonalizationGateReason !== null
+  const personalCurriculumEditor = usePersonalCurriculumEditor({
+    skillpilotId,
+    enabled: usesGuidedPersonalCurriculumEditor
+      && (isSetupOpen || canAutoRepairAbi26Personalization),
+  })
+  const currentFlashcardVerificationDisabled =
+    currentFlashcardVerificationComplete || currentFlashcardVerificationWaiting
+  const personalizationGateCopy = language === 'en'
+    ? guidedPersonalizationGateReason === 'scopeError'
+      ? {
+        title: 'Your learning scope could not be verified',
+        body: 'The learning tree remains locked so that no broad fallback curriculum is shown.',
+        action: 'Try again',
+      }
+      : {
+          title: 'Complete your personal curriculum',
+          body: 'Choose your lasting curriculum scope before selecting a concrete learning goal.',
+          action: 'Continue setup',
+        }
+    : guidedPersonalizationGateReason === 'scopeError'
+      ? {
+        title: 'Dein Lernumfang konnte nicht geprüft werden',
+        body: 'Der Lernbaum bleibt gesperrt, damit kein breiter Fallback-Lehrplan angezeigt wird.',
+        action: 'Erneut versuchen',
+      }
+      : {
+          title: 'Persönlichen Lehrplan vervollständigen',
+          body: 'Lege zuerst deinen dauerhaften Lernumfang fest, bevor du ein konkretes Lernziel auswählst.',
+          action: 'Einrichtung fortsetzen',
+        }
+  const personalizationAutoOpenKeyRef = useRef<string | null>(null)
+
+  useEffect(() => {
+    invalidateLatestRequest(learnerStateRequestSequenceRef)
+    invalidateLatestRequest(personalCurriculumRefreshSequenceRef)
+    invalidateLatestRequest(preferencesRefreshSequenceRef)
+    preferencesReloadRequiredScopeRef.current = null
+    preferenceSaveRefreshRef.current = null
+    savedPreferencesSnapshotRef.current = null
+    invalidateLatestRequest(learningPlansRequestSequenceRef)
+    invalidateLatestRequest(learningPlanContinueRequestSequenceRef)
+    setStateRequiredAction(null)
+    setCompletionSnapshot(null)
+    setCompletionActionBusy(false)
+    setCompletionActionError(null)
+    completionActionInFlightRef.current = createSynchronousInFlightGuard()
+    learningPlanTransitionInFlightRef.current = createSynchronousInFlightGuard()
+    learningPlanReconcileAttemptedKeyRef.current = null
+    pendingPlanGoalFocusRef.current = null
+    setLearningPlanActionId(null)
+    setLearningPlanActionError(null)
+    setLearningPlanActionsBlocked(false)
+    setLearningPlanTransitionLandscapeId(null)
+    setLearningPlans(null)
+    setLearningPlansDataScopeKey(learnerStateScopeKey)
+    setLearningPlansLoadState({
+      scopeKey: learnerStateScopeKey,
+      status: skillpilotId ? 'loading' : 'ready',
+    })
+  }, [learnerStateScopeKey, skillpilotId])
+
+  useEffect(() => {
+    if (guidedPersonalizationGateReason !== 'selection') {
+      personalizationAutoOpenKeyRef.current = null
+      return
+    }
+    if (canAutoRepairAbi26Personalization) {
+      return
+    }
+    const autoOpenKey = `${skillpilotId}:setPersonalization`
+    if (personalizationAutoOpenKeyRef.current === autoOpenKey) return
+    personalizationAutoOpenKeyRef.current = autoOpenKey
+    setIsSetupOpen(true)
+  }, [
+    canAutoRepairAbi26Personalization,
+    guidedPersonalizationGateReason,
+    skillpilotId,
+  ])
+
+
+  const applyLearnerStatePayload = useCallback((
+    data: LearnerStatePayload,
+    requestScopeKey: string,
+  ): LearnerStateRefreshResult => {
+    const completion = parseLevelCompletion(data.levelCompletion)
+    const backendActiveGoalId = data.activeGoal?.id ?? data.stateMachine?.activeGoal?.id ?? null
+    if (data.frontier && Array.isArray(data.frontier)) {
+      setFrontierOptions(data.frontier)
+    } else if (data.stateMachine && Array.isArray(data.stateMachine.goalOptions)) {
+      setFrontierOptions(data.stateMachine.goalOptions)
+    } else {
+      setFrontierOptions([])
+    }
+    const backendPlannedGoalIds = data.goals?.planned && Array.isArray(data.goals.planned)
+      ? data.goals.planned
+        .map((goal) => goal.id)
+        .filter((id: string | undefined): id is string => Boolean(id))
+      : []
+    if (data.goals?.planned && Array.isArray(data.goals.planned)) {
+      setPlannedGoals(new Set(backendPlannedGoalIds))
+    }
+    setStateActiveGoalId(backendActiveGoalId)
+    setLearnerData(prev => prev ? { ...prev, activeGoalId: backendActiveGoalId ?? undefined } : prev)
+    setStateRequiredAction(data.stateMachine?.requiredAction ?? null)
+    setCompletionSnapshot({ scopeKey: requestScopeKey, data: completion })
+    // Store backend-computed stats for consistency with GPT
+    if (data.goals) {
+      setBackendStats({
+        masteredAtomic: data.goals.mastered_count ?? 0,
+        totalAtomic: data.goals.total_count ?? 0,
+        personalizedMasteredAtomic: data.goals.personalized?.mastered_atomic,
+        personalizedTotalAtomic: data.goals.personalized?.total_atomic,
+        plannedGoalKey: goalIdsKey(backendPlannedGoalIds),
+      })
+    }
+    setLearnerStateLoadState({
+      scopeKey: requestScopeKey,
+      status: 'ready',
+    })
+    clearReportedLoadError('learner-initial-load')
+    return {
+      activeGoalId: backendActiveGoalId,
+      plannedGoalIds: backendPlannedGoalIds,
+    }
+  }, [clearReportedLoadError])
+
+  const refreshState = useCallback(
+    async (cacheBust = false): Promise<LearnerStateRefreshResult | null> => {
+      if (!skillpilotId) {
+        setLearnerStateLoadState({
+          scopeKey: learnerStateScopeKey,
+          status: 'ready',
+        })
+        return null
+      }
+      const requestSequence = beginLatestRequest(learnerStateRequestSequenceRef)
+      const requestScopeKey = learnerStateScopeKey
+      const isCurrentRequest = () => isLatestRequestForScope(
+        learnerStateRequestSequenceRef,
+        requestSequence,
+        currentLearnerStateScopeKeyRef.current,
+        requestScopeKey,
+      )
+      setLearnerStateLoadState((current) => (
+        current.scopeKey === requestScopeKey && current.status === 'ready'
+          ? current
+          : { scopeKey: requestScopeKey, status: 'loading' }
+      ))
+      try {
+        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+        const suffix = cacheBust ? `?_t=${Date.now()}` : ''
+        const url = apiBase
+          ? `${apiBase}/api/ui/learners/${skillpilotId}/state${suffix}`
+          : `/api/ui/learners/${skillpilotId}/state${suffix}`
+        const res = await fetch(url)
+        if (res.ok) {
+          const data = await res.json()
+          if (!isCurrentRequest()) return null
+          if (!isLearnerStatePayload(data)) return null
+          return applyLearnerStatePayload(data, requestScopeKey)
+        }
+        if (!isCurrentRequest()) return null
+        setLearnerStateLoadState({
+          scopeKey: requestScopeKey,
+          status: 'error',
+        })
+        notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
+        return null
+      } catch (e) {
+        if (!isCurrentRequest()) return null
+        console.warn('Failed to load learner state', e)
+        setLearnerStateLoadState({
+          scopeKey: requestScopeKey,
+          status: 'error',
+        })
+        notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
+        return null
+      }
+    },
+    [
+      applyLearnerStatePayload,
+      learnerStateScopeKey,
+      notifyLoadErrorOnce,
+      skillpilotId,
+      t.notifications.learnerInitialLoadFailed,
+    ],
+
+  )
+
+  const refreshLearningPlans = useCallback(async (): Promise<LearnerLearningPlansResponse | null> => {
+    if (!skillpilotId) {
+      learningPlansRefreshInFlightRef.current = false
+      setLearningPlans(null)
+      setLearningPlansDataScopeKey(learnerStateScopeKey)
+      setLearningPlansLoadState({ scopeKey: learnerStateScopeKey, status: 'ready' })
+      return null
+    }
+    const requestSequence = beginLatestRequest(learningPlansRequestSequenceRef)
+    const requestScopeKey = learnerStateScopeKey
+    const isCurrentRequest = () => isLatestRequestForScope(
+      learningPlansRequestSequenceRef,
+      requestSequence,
+      currentLearnerStateScopeKeyRef.current,
+      requestScopeKey,
+    )
+    learningPlansRefreshInFlightRef.current = true
+    setLearningPlansLoadState({ scopeKey: requestScopeKey, status: 'loading' })
+    try {
+      // One backend snapshot supplies schedule and authoritative status together.
+      const response = await getLearnerLearningPlans(skillpilotId, undefined, { language: localizedLanguage })
+      if (!isCurrentRequest()) return null
+      if (response.status.language !== localizedLanguage) {
+        throw new Error('Learning-plan status language does not match the requested language')
+      }
+      learningPlansRefreshInFlightRef.current = false
+      setLearningPlans(response)
+      setLearningPlansDataScopeKey(requestScopeKey)
+      setLearningPlansLoadState({ scopeKey: requestScopeKey, status: 'ready' })
+      return response
+    } catch (error) {
+      if (!isCurrentRequest()) return null
+      learningPlansRefreshInFlightRef.current = false
+      console.warn('Failed to load learner learning plans', error)
+      setLearningPlansLoadState({ scopeKey: requestScopeKey, status: 'error' })
+      return null
+    }
+    // The status text is formulated in the display language, so a language switch reloads it.
+  }, [learnerStateScopeKey, localizedLanguage, skillpilotId])
+
+  const applySavedPreferences = useCallback((
+    preferences: Partial<ReturnType<typeof learnerPreferences>>,
+    requestScopeKey: string,
+    sequence: number,
+  ) => {
+    if (currentLearnerStateScopeKeyRef.current !== requestScopeKey) return
+    const previous = savedPreferencesSnapshotRef.current
+    savedPreferencesSnapshotRef.current = {
+      scopeKey: requestScopeKey,
+      sequence,
+      preferences: { ...(previous?.scopeKey === requestScopeKey ? previous.preferences : {}), ...preferences },
+    }
+    setLearnerData(current => current?.skillpilotId === skillpilotId ? { ...current, ...preferences } : current)
+  }, [skillpilotId])
+
+  const refreshPreferences = useCallback(async (): Promise<boolean> => {
+    if (!skillpilotId) return true
+    const sequence = beginLatestRequest(preferencesRefreshSequenceRef)
+    const requestScopeKey = learnerStateScopeKey
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const response = await fetch(`${apiBase}/api/ui/learners/${skillpilotId}`, { cache: 'no-store' })
+      if (!response.ok) throw new Error(`preferences-refresh-failed:${response.status}`)
+      const saved = await response.json() as Learner
+      if (saved.skillpilotId !== skillpilotId) throw new Error('preferences-refresh-scope-mismatch')
+      if (!isLatestRequestForScope(preferencesRefreshSequenceRef, sequence,
+        currentLearnerStateScopeKeyRef.current, requestScopeKey)) return false
+      applySavedPreferences(learnerPreferences(saved), requestScopeKey, sequence)
+      return true
+    } catch (error) {
+      console.warn('Failed to reload learner preferences', error)
+      return false
+    }
+  }, [applySavedPreferences, learnerStateScopeKey, skillpilotId])
+
+  // A full profile request can predate a newer preference event or accepted save.
+  // Retain those newer fields while still completing curriculum hydration.
+  const applyLoadedProfile = useCallback((data: Learner, requestScopeKey: string, preferenceSequenceAtStart: number) => {
+    if (currentLearnerStateScopeKeyRef.current !== requestScopeKey) return
+    const latest = savedPreferencesSnapshotRef.current
+    setLearnerData(latest?.scopeKey === requestScopeKey && latest.sequence > preferenceSequenceAtStart
+      ? { ...data, ...latest.preferences }
+      : data)
+  }, [])
+
+  const handleCompletionAction = useCallback(async (action: CompletionActionInput) => {
+    if (!levelCompletion || learnerStateLoadStatus !== 'ready') return
+    const guard = completionActionInFlightRef.current
+    if (!guard.tryStart()) return
+    const requestScopeKey = learnerStateScopeKey
+    setCompletionActionBusy(true)
+    setCompletionActionError(null)
+    invalidateLatestRequest(learnerStateRequestSequenceRef)
+    try {
+      const response = await requestLevelCompletionAction(skillpilotId, action, levelCompletion.learnerRevision)
+      if (currentLearnerStateScopeKeyRef.current !== requestScopeKey) return
+      if (!isLearnerStatePayload(response)) throw new Error('Invalid completion state')
+      invalidateLatestRequest(learnerStateRequestSequenceRef)
+      const result = applyLearnerStatePayload(response, requestScopeKey)
+      if (action.action === 'learnGoal' && result.activeGoalId) onSelectGoal(result.activeGoalId)
+      await refreshLearningPlans()
+      onRefresh?.()
+    } catch {
+      if (currentLearnerStateScopeKeyRef.current !== requestScopeKey) return
+      setCompletionActionError(localizedLanguage === 'en'
+        ? 'Your choice could not be confirmed. Reload the current state and choose again.'
+        : 'Deine Auswahl konnte nicht bestätigt werden. Lade den aktuellen Stand und wähle erneut.')
+      await refreshState(true)
+    } finally {
+      guard.finish()
+      if (currentLearnerStateScopeKeyRef.current === requestScopeKey) setCompletionActionBusy(false)
+    }
+  }, [applyLearnerStatePayload, learnerStateLoadStatus, learnerStateScopeKey, levelCompletion, localizedLanguage, onRefresh, onSelectGoal, refreshLearningPlans, refreshState, skillpilotId])
+
+  useEffect(() => {
+    if (!skillpilotId) return
+
+    let midnightRefresh: ReturnType<typeof setTimeout> | null = null
+    const scheduleMidnightRefresh = () => {
+      if (midnightRefresh !== null) clearTimeout(midnightRefresh)
+      midnightRefresh = setTimeout(() => {
+        void refreshLearningPlans()
+        scheduleMidnightRefresh()
+      }, millisecondsUntilNextBerlinDateBoundary())
+    }
+    const refreshWhenVisible = () => {
+      if (document.visibilityState === 'visible') void refreshLearningPlans()
+    }
+
+    document.addEventListener('visibilitychange', refreshWhenVisible)
+    scheduleMidnightRefresh()
+    return () => {
+      document.removeEventListener('visibilitychange', refreshWhenVisible)
+      if (midnightRefresh !== null) clearTimeout(midnightRefresh)
+    }
+  }, [refreshLearningPlans, skillpilotId])
+
+  const handlePersonalizationGateAction = useCallback(() => {
+    if (guidedPersonalizationGateReason === 'scopeError') {
+      setPersonalConfigReloadCounter((current) => current + 1)
+      return
+    }
+    if (guidedPersonalizationGateReason === 'selection') {
+      setIsSetupOpen(true)
+    }
+  }, [guidedPersonalizationGateReason])
+
+  const handleGuidedPersonalizationPlanChanged = useCallback(async (
+  ): Promise<PersonalCurriculumConfig | null> => {
+    if (!skillpilotId || !usesGuidedPersonalCurriculumEditor) return null
+    const refreshSequence = beginLatestRequest(personalCurriculumRefreshSequenceRef)
+    const preferenceSequenceAtStart = preferencesRefreshSequenceRef.current
+    const requestScopeKey = learnerStateScopeKey
+    guidedPersonalizationRefreshInFlightRef.current += 1
+    setGuidedPersonalizationRefreshing(true)
+    const isCurrentRefresh = () => isLatestRequestForScope(
+      personalCurriculumRefreshSequenceRef,
+      refreshSequence,
+      currentLearnerStateScopeKeyRef.current,
+      requestScopeKey,
+    )
+
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase
+        ? `${apiBase}/api/ui/learners/${skillpilotId}`
+        : `/api/ui/learners/${skillpilotId}`
+      const response = await fetch(url)
+      if (!response.ok) {
+        throw new Error(`learner-refresh-failed:${response.status}`)
+      }
+      const data = await response.json()
+      if (!isCurrentRefresh()) return null
+      const refreshedConfig = readPersonalCurriculumConfig(data.personalCurriculum)
+      applyLoadedProfile(data, requestScopeKey, preferenceSequenceAtStart)
+      setPersonalConfig(refreshedConfig)
+      setIsPersonalConfigHydrating(false)
+      setPersonalConfigLoadState({
+        scopeKey: requestScopeKey,
+        status: 'ready',
+      })
+
+      onScopeDataRefresh?.()
+      await Promise.all([
+        refreshState(true),
+        onRefresh?.(),
+      ])
+      if (!isCurrentRefresh()) return null
+      if (
+        rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
+        && landscapeId !== CANONICAL_GYMNASIUM_ROOT_ID
+      ) {
+        onLandscapeChange?.(CANONICAL_GYMNASIUM_ROOT_ID)
+      }
+      return refreshedConfig
+    } catch (error) {
+      if (!isCurrentRefresh()) return null
+      console.warn('Failed to refresh personalized curriculum scope', error)
+      setIsPersonalConfigHydrating(false)
+      setPersonalConfigLoadState({
+        scopeKey: requestScopeKey,
+        status: 'error',
+      })
+      onNotify?.('error', t.notifications.personalCurriculumSaveFailed)
+      return null
+    } finally {
+      guidedPersonalizationRefreshInFlightRef.current = Math.max(
+        0,
+        guidedPersonalizationRefreshInFlightRef.current - 1,
+      )
+      if (guidedPersonalizationRefreshInFlightRef.current === 0) {
+        setGuidedPersonalizationRefreshing(false)
+      }
+    }
+  }, [
+    applyLoadedProfile,
+    landscapeId,
+    learnerStateScopeKey,
+    onLandscapeChange,
+    onNotify,
+    onRefresh,
+    onScopeDataRefresh,
+    refreshState,
+    rootLandscapeId,
+    skillpilotId,
+    t.notifications.personalCurriculumSaveFailed,
+    usesGuidedPersonalCurriculumEditor,
+  ])
+
+  const {
+    applyOption: applyPersonalCurriculumOption,
+    reopen: reopenPersonalCurriculum,
+    rewind: rewindPersonalCurriculum,
+    restart: restartPersonalCurriculum,
+  } = personalCurriculumEditor
+
+  const applyGuidedPersonalizationOption = useCallback(async (optionId: string) => {
+    claimAbi26PersonalizationOwnership()
+    const nextPlan = await applyPersonalCurriculumOption(optionId)
+    if (nextPlan) {
+      await handleGuidedPersonalizationPlanChanged()
+    }
+    return nextPlan
+  }, [
+    applyPersonalCurriculumOption,
+    claimAbi26PersonalizationOwnership,
+    handleGuidedPersonalizationPlanChanged,
+  ])
+
+  const reopenGuidedPersonalization = useCallback(async () => {
+    claimAbi26PersonalizationOwnership()
+    const nextPlan = await reopenPersonalCurriculum()
+    if (nextPlan) {
+      await handleGuidedPersonalizationPlanChanged()
+    }
+    return nextPlan
+  }, [
+    claimAbi26PersonalizationOwnership,
+    handleGuidedPersonalizationPlanChanged,
+    reopenPersonalCurriculum,
+  ])
+
+  const rewindGuidedPersonalization = useCallback(async (rewindId: string) => {
+    claimAbi26PersonalizationOwnership()
+    const nextPlan = await rewindPersonalCurriculum(rewindId)
+    if (nextPlan) {
+      await handleGuidedPersonalizationPlanChanged()
+    }
+    return nextPlan
+  }, [
+    claimAbi26PersonalizationOwnership,
+    handleGuidedPersonalizationPlanChanged,
+    rewindPersonalCurriculum,
+  ])
+
+  const handleSseUpdate = useCallback(async (payload?: { type?: string; nodeId?: string }) => {
+    if (payload?.type === 'PREFERENCES_CHANGED') {
+      const saving = preferenceSaveRefreshRef.current
+      if (saving?.scopeKey === learnerStateScopeKey) {
+        saving.pendingEvent = true
+        saving.receivedEvent = true
+        return
+      }
+      // Preference changes must not be dropped by the generic SSE throttle or
+      // an in-flight refresh: a remote opt-out changes the completion context.
+      await Promise.all([refreshPreferences(), refreshState(true), refreshLearningPlans(), onRefresh?.()])
+      dispatchLearnerUiRefresh({ skillpilotId, reason: payload.type, targets: ['all'] })
+      console.log('[SSE] ✅ Preferences refresh complete')
+      return
+    }
+    if (payload?.type === 'CLIENT_STATE_UPDATED' && payload?.nodeId) {
+      setSrsMasteryTick(c => c + 1)
+      dispatchLearnerUiRefresh({
+        skillpilotId,
+        reason: payload.type,
+        targets: ['history'],
+      })
+      if (currentGoal?.id === payload.nodeId) {
+        setSrsReloadCounter(c => c + 1)
+      }
+      void refreshLearningPlans()
+      return
+    }
+
+    const forceActiveGoalReveal = isActiveGoalRevealEventType(payload?.type)
+    if (forceActiveGoalReveal) {
+      forceActiveGoalRevealRef.current = true
+    }
+
+    const saving = preferenceSaveRefreshRef.current
+    if (saving?.scopeKey === learnerStateScopeKey) {
+      saving.pendingEvent = true
+      saving.receivedEvent = true
+      return
+    }
+    const now = Date.now()
+    if (fullRefreshInFlightRef.current) return
+    if (!forceActiveGoalReveal && now - lastFullRefreshAtRef.current < 800) return
+
+    fullRefreshInFlightRef.current = true
+    lastFullRefreshAtRef.current = now
+    console.log('[SSE] 🔄 Triggering full refresh...')
+    // The full state already includes planned goals. Do not compute the same
+    // learner scope again through a separate /planned request.
+    try {
+      await Promise.all([
+        refreshState(true),
+        refreshLearningPlans(),
+        onRefresh?.()
+      ])
+      dispatchLearnerUiRefresh({
+        skillpilotId,
+        reason: payload?.type ?? 'FULL_REFRESH',
+        targets: ['all'],
+      })
+      console.log('[SSE] ✅ Refresh complete')
+    } finally {
+      fullRefreshInFlightRef.current = false
+    }
+  }, [learnerStateScopeKey, refreshPreferences, refreshState, refreshLearningPlans, onRefresh, currentGoal?.id, skillpilotId])
+
+  useEffect(() => {
+    if (!campaignContext) return
+    saveAbi26CampaignContext(campaignContext)
+  }, [campaignContext])
+
+  useEffect(() => {
+    if (!isAbi26CampaignSession) return
+    if (language === 'de') return
+    setLanguage('de')
+    localStorage.setItem('skillpilot_lang', 'de')
+  }, [isAbi26CampaignSession, language, setLanguage])
+
+  useEffect(() => {
+    if (!campaignContext || hasTrackedCampaignOpenRef.current) return
+    hasTrackedCampaignOpenRef.current = true
+    trackCampaignEvent('cockpit_opened', {
+      start: ABI26_CAMPAIGN_SLUG,
+      source: campaignContext.source,
+      campaign: campaignContext.campaign,
+      medium: campaignContext.medium,
+      courseLevel: campaignContext.courseLevel,
+      location: 'cockpit',
+    }, skillpilotId)
+  }, [campaignContext, skillpilotId])
+
+  useLearnerUpdates(skillpilotId, handleSseUpdate)
+
+
+  // Auto-reveal when active goal changes (including from SSE updates).
+  // Keep at most one pending selection request per active goal while the router catches up.
+  useEffect(() => {
+    if (!effectiveActiveGoalId) {
+      prevRevealedActiveGoalIdRef.current = null
+      pendingActiveGoalRouteSyncRef.current = null
+      forceActiveGoalRevealRef.current = false
+      return
+    }
+    if (effectiveLearnerParentMap.size === 0) return
+
+    if (currentRouteGoalId === effectiveActiveGoalId) {
+      pendingActiveGoalRouteSyncRef.current = null
+      forceActiveGoalRevealRef.current = false
+      prevRevealedActiveGoalIdRef.current = effectiveActiveGoalId
+    }
+
+    if (!shouldAutoRevealActiveGoal({
+      activeGoalId: effectiveActiveGoalId,
+      previousRevealedActiveGoalId: prevRevealedActiveGoalIdRef.current,
+      currentRouteGoalId,
+      pendingRouteSyncGoalId: pendingActiveGoalRouteSyncRef.current,
+      forceActiveGoalReveal: forceActiveGoalRevealRef.current,
+    })) return
+
+    console.log('[SSE] 🎯 Active goal ready for reveal:', effectiveActiveGoalId)
+    if (!revealActiveGoal()) return
+    forceActiveGoalRevealRef.current = false
+    prevRevealedActiveGoalIdRef.current = effectiveActiveGoalId
+    pendingActiveGoalRouteSyncRef.current = currentRouteGoalId ? null : effectiveActiveGoalId
+  }, [currentRouteGoalId, effectiveActiveGoalId, effectiveLearnerParentMap, revealActiveGoal])
+
+
+  // Personal configuration below loads the profile and full state (including
+  // planned goals). Only the independent plan summaries need another request.
+  React.useEffect(() => {
+    if (!skillpilotId) return
+    void refreshLearningPlans()
+  }, [skillpilotId, refreshLearningPlans])
+
+  const handleSetActiveGoal = useCallback(async (goalId: string) => {
+    if (!skillpilotId) return;
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/active-goal` : `/api/ui/learners/${skillpilotId}/active-goal`
+
+      const redirect = Boolean(
+        effectiveActiveGoalId
+        && stateRequiredAction
+        && stateRequiredAction !== 'setActiveGoal'
+        && goalId !== effectiveActiveGoalId,
+      )
+
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ goalId, redirect })
+      });
+
+      if (res.ok) {
+        const data = await res.json()
+        if (data.frontier && Array.isArray(data.frontier)) {
+          setFrontierOptions(data.frontier)
+        } else if (data.stateMachine && Array.isArray(data.stateMachine.goalOptions)) {
+          setFrontierOptions(data.stateMachine.goalOptions)
+        }
+
+        const targetId = data.activeGoal?.id ?? goalId
+        setLearnerData((prev) => (prev ? { ...prev, activeGoalId: targetId } : prev))
+        setStateActiveGoalId(targetId)
+        setStateRequiredAction(data.stateMachine?.requiredAction ?? null)
+        if (parentMap) {
+          setExpandedGoalIds(buildCollapsedFocusPath(targetId))
+        }
+        if (targetId !== currentRouteGoalId) {
+          pendingActiveGoalRouteSyncRef.current = targetId
+          onSelectGoal(targetId)
+        }
+        onRefresh?.()
+      } else {
+        const message = await res.text()
+        if (onNotify) {
+          onNotify('error', message || t.notifications.activeGoalSetFailed)
+        } else {
+          setModalTitle(learnerViewCopy.activeGoalNotAllowedTitle)
+          setModalMessage(message || learnerViewCopy.activeGoalNotInFrontierMessage)
+          setModalType('error')
+          setIsModalOpen(true)
+        }
+      }
+    } catch (e) {
+      console.warn('Failed to set active goal', e)
+      onNotify?.('error', t.notifications.activeGoalSetSystemFailed)
+    }
+  }, [
+    learnerViewCopy.activeGoalNotAllowedTitle,
+    learnerViewCopy.activeGoalNotInFrontierMessage,
+    onNotify,
+    onRefresh,
+    onSelectGoal,
+    buildCollapsedFocusPath,
+    currentRouteGoalId,
+    effectiveActiveGoalId,
+    parentMap,
+    skillpilotId,
+    stateRequiredAction,
+    t.notifications.activeGoalSetFailed,
+    t.notifications.activeGoalSetSystemFailed,
+  ])
+
+  const togglePlan = useCallback(async (id: string) => {
+    // Single-focus mode: a completed personal curriculum always keeps one
+    // focus. Re-selecting the current focus is therefore idempotent; selecting
+    // another row replaces it.
+    const previousPlannedGoals = new Set(plannedGoals)
+    const next = getNextSingleLearnerFocus(plannedGoals, id)
+    if (next.size === plannedGoals.size
+      && Array.from(next).every((goalId) => plannedGoals.has(goalId))) return
+
+    setPlannedGoals(next)
+
+    if (!skillpilotId) return
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/planned` : `/api/ui/learners/${skillpilotId}/planned`
+      const res = await fetch(url, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ goals: Array.from(next) })
+      })
+      if (!res.ok) {
+        throw new Error(`planned-goal-save-failed:${res.status}`)
+      }
+      let mutationPayload: unknown = null
+      try {
+        mutationPayload = await res.json()
+      } catch {
+        // Older compatible backends may return no JSON body. In that case the
+        // authoritative state is loaded through the established GET fallback.
+      }
+      const embeddedState = mutationPayload && typeof mutationPayload === 'object'
+        ? (mutationPayload as { state?: unknown }).state
+        : null
+      let refreshedState: LearnerStateRefreshResult | null
+      if (isLearnerStatePayload(embeddedState)) {
+        invalidateLatestRequest(learnerStateRequestSequenceRef)
+        refreshedState = applyLearnerStatePayload(embeddedState, learnerStateScopeKey)
+      } else {
+        refreshedState = await refreshState(true)
+      }
+      if (!refreshedState) return
+
+      const targetId = getFocusMutationRevealTarget({
+        activeGoalId: refreshedState.activeGoalId,
+        authoritativeFocusGoalIds: refreshedState.plannedGoalIds,
+        requestedFocusGoalIds: next,
+      })
+      if (targetId) {
+        setExpandedGoalIds(buildCollapsedFocusPath(targetId))
+        if (targetId !== currentRouteGoalId) {
+          onSelectGoal(targetId)
+        }
+      }
+    } catch (e) {
+      console.warn('Failed to save planned goals', e)
+      setPlannedGoals(previousPlannedGoals)
+      onNotify?.('error', t.notifications.plannedGoalSaveFailed)
+    }
+  }, [
+    applyLearnerStatePayload,
+    buildCollapsedFocusPath,
+    currentRouteGoalId,
+    learnerStateScopeKey,
+    onNotify,
+    onSelectGoal,
+    plannedGoals,
+    refreshState,
+    skillpilotId,
+    t.notifications.plannedGoalSaveFailed,
+  ])
+
+  const applyLearningPlanTransition = useCallback(async (
+    result: Awaited<ReturnType<typeof reconcileLearnerLearningPlans>>,
+    requestScopeKey: string,
+    isCurrentRequest: () => boolean,
+  ) => {
+    if (!result || !isCurrentRequest()) return
+
+    invalidateLatestRequest(learnerStateRequestSequenceRef)
+    if (isLearnerStatePayload(result.state)) {
+      applyLearnerStatePayload(result.state, requestScopeKey)
+    } else {
+      await refreshState(true)
+      if (!isCurrentRequest()) return
+    }
+
+    if (!result.activeGoalId) return
+    const targetLandscapeId = result.landscapeId
+      ?? goalIndexAll.get(result.activeGoalId)?.landscapeId
+    if (!targetLandscapeId) return
+
+    setLearningPlanTransitionLandscapeId(targetLandscapeId)
+    forceActiveGoalRevealRef.current = true
+    setExpandedGoalIds(buildCollapsedFocusPath(result.activeGoalId))
+    focusLearnerGoalContent(result.activeGoalId)
+    if (result.activeGoalId === currentRouteGoalId && targetLandscapeId === landscapeId) return
+
+    pendingActiveGoalRouteSyncRef.current = result.activeGoalId
+    const navigated = navigateToLearnerLearningPlanGoal(
+      landscapeId,
+      {
+        landscapeId: targetLandscapeId,
+        activeGoalId: result.activeGoalId,
+      },
+      {
+        selectGoal: onSelectGoal,
+        selectGoalInLandscape: onSelectGoalInLandscape,
+      },
+    )
+    if (!navigated) {
+      throw new Error('learning-plan-navigation-unavailable')
+    }
+  }, [
+    applyLearnerStatePayload,
+    buildCollapsedFocusPath,
+    currentRouteGoalId,
+    focusLearnerGoalContent,
+    goalIndexAll,
+    landscapeId,
+    onSelectGoal,
+    onSelectGoalInLandscape,
+    refreshState,
+  ])
+
+  const handleSwitchLearningPlan = useCallback(async (planId: string) => {
+    const response = scopedLearningPlans
+    const plan = response?.plans.find((candidate) => candidate.planId === planId)
+    const requestGuard = learningPlanTransitionInFlightRef.current
+    if (
+      !skillpilotId
+      || !response?.followLearningPlans
+      || !plan
+      || plan.stale
+      // Whether anything can be started is the backend's answer, not a local count.
+      || !plan.nextEligibleGoal
+      || !isLearnerPlanActionAvailable(
+        learningPlansLoadStatus,
+        learningPlansRefreshInFlightRef.current,
+      )
+      || learningPlanActionsBlocked
+      || (plan.landscapeId !== landscapeId && !onSelectGoalInLandscape)
+      || !requestGuard.tryStart()
+    ) return
+
+    const requestSequence = beginLatestRequest(learningPlanContinueRequestSequenceRef)
+    const requestScopeKey = learnerStateScopeKey
+    const isCurrentRequest = () => isLatestRequestForScope(
+      learningPlanContinueRequestSequenceRef,
+      requestSequence,
+      currentLearnerStateScopeKeyRef.current,
+      requestScopeKey,
+    )
+    setLearningPlanActionId(planId)
+    setLearningPlanActionError(null)
+    try {
+      const result = await switchLearnerLearningPlan(skillpilotId, planId, {
+        expectedRevision: plan.revision,
+        asOf: response.asOf,
+      })
+      if (!isCurrentRequest()) return
+      if (!result?.activeGoalId || !result.landscapeId) {
+        throw new Error('learning-plan-switch-without-target')
+      }
+      await applyLearningPlanTransition(result, requestScopeKey, isCurrentRequest)
+      if (!isCurrentRequest()) return
+      setLearningPlanActionsBlocked(false)
+      await Promise.all([
+        refreshLearningPlans(),
+        onRefresh?.(),
+      ])
+    } catch (error) {
+      if (!isCurrentRequest()) return
+      console.warn('Failed to switch learner learning plan', error)
+      const refreshed = await refreshLearningPlans()
+      if (!isCurrentRequest()) return
+      setLearningPlanActionsBlocked(!refreshed)
+      const conflict = error instanceof LearnerLearningPlanApiError
+        && (error.status === 409 || error.status === 412)
+      const message = conflict
+        ? learnerLearningPlanCopy.continueConflict
+        : learnerLearningPlanCopy.switchFailed
+      setLearningPlanActionError(message)
+      onNotify?.('error', message)
+    } finally {
+      requestGuard.finish()
+      if (isCurrentRequest()) {
+        setLearningPlanActionId((current) => current === planId ? null : current)
+      }
+    }
+  }, [
+    applyLearningPlanTransition,
+    landscapeId,
+    learnerLearningPlanCopy.continueConflict,
+    learnerLearningPlanCopy.switchFailed,
+    learnerStateScopeKey,
+    learningPlanActionsBlocked,
+    learningPlansLoadStatus,
+    onNotify,
+    onRefresh,
+    onSelectGoalInLandscape,
+    refreshLearningPlans,
+    scopedLearningPlans,
+    skillpilotId,
+  ])
+
+  const retryLearningPlans = useCallback(async () => {
+    setLearningPlanActionError(null)
+    setLearningPlanActionsBlocked(false)
+    learningPlanReconcileAttemptedKeyRef.current = null
+    await Promise.all([
+      refreshState(true),
+      refreshLearningPlans(),
+    ])
+  }, [refreshLearningPlans, refreshState])
+
+  useEffect(() => {
+    const response = scopedLearningPlans
+    if (
+      !skillpilotId
+      || learnerStateLoadStatus !== 'ready'
+      || learningPlansLoadStatus !== 'ready'
+      || !response?.followLearningPlans
+      || response.plans.length === 0
+      || effectiveActiveGoalId
+      || learningPlanActionsBlocked
+    ) return
+
+    const reconcileKey = [
+      learnerStateScopeKey,
+      response.asOf,
+      ...response.plans
+        .map((plan) => `${plan.planId}:${plan.revision}`)
+        .sort(),
+    ].join('|')
+    if (learningPlanReconcileAttemptedKeyRef.current === reconcileKey) return
+    const requestGuard = learningPlanTransitionInFlightRef.current
+    if (!requestGuard.tryStart()) return
+    learningPlanReconcileAttemptedKeyRef.current = reconcileKey
+
+    const requestSequence = beginLatestRequest(learningPlanContinueRequestSequenceRef)
+    const requestScopeKey = learnerStateScopeKey
+    const isCurrentRequest = () => isLatestRequestForScope(
+      learningPlanContinueRequestSequenceRef,
+      requestSequence,
+      currentLearnerStateScopeKeyRef.current,
+      requestScopeKey,
+    )
+    setLearningPlanActionId('reconcile')
+    setLearningPlanActionError(null)
+
+    void (async () => {
+      try {
+        const result = await reconcileLearnerLearningPlans(skillpilotId, { asOf: response.asOf })
+        if (!isCurrentRequest()) return
+        await applyLearningPlanTransition(result, requestScopeKey, isCurrentRequest)
+        if (!isCurrentRequest()) return
+        setLearningPlanActionsBlocked(false)
+        await Promise.all([
+          refreshLearningPlans(),
+          onRefresh?.(),
+        ])
+      } catch (error) {
+        if (!isCurrentRequest()) return
+        console.warn('Failed to reconcile learner learning plans', error)
+        setLearningPlanActionsBlocked(true)
+        setLearningPlanActionError(learnerLearningPlanCopy.reconcileFailed)
+        onNotify?.('error', learnerLearningPlanCopy.reconcileFailed)
+      } finally {
+        requestGuard.finish()
+        if (isCurrentRequest()) {
+          setLearningPlanActionId((current) => current === 'reconcile' ? null : current)
+        }
+      }
+    })()
+  }, [
+    applyLearningPlanTransition,
+    effectiveActiveGoalId,
+    learnerLearningPlanCopy.reconcileFailed,
+    learnerStateLoadStatus,
+    learnerStateScopeKey,
+    learningPlanActionsBlocked,
+    learningPlansLoadStatus,
+    onNotify,
+    onRefresh,
+    refreshLearningPlans,
+    scopedLearningPlans,
+    skillpilotId,
+  ])
+
+  // Load personal config from backend
+  React.useEffect(() => {
+    let cancelled = false
+    if (!skillpilotId) {
+      setIsPersonalConfigHydrating(false)
+      setPersonalConfigLoadState({
+        scopeKey: learnerStateScopeKey,
+        status: 'ready',
+      })
+      return
+    }
+
+    const refreshSequence = beginLatestRequest(personalCurriculumRefreshSequenceRef)
+    const preferenceSequenceAtStart = preferencesRefreshSequenceRef.current
+    const isCurrentRefresh = () => (
+      !cancelled
+      && isLatestRequestForScope(
+        personalCurriculumRefreshSequenceRef,
+        refreshSequence,
+        currentLearnerStateScopeKeyRef.current,
+        learnerStateScopeKey,
+      )
+    )
+    setIsPersonalConfigHydrating(true)
+    setPersonalConfigLoadState({
+      scopeKey: learnerStateScopeKey,
+      status: 'loading',
+    })
+    const fetchConfig = async () => {
+      try {
+        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
+        const res = await fetch(url)
+        if (res.ok) {
+          const data = await res.json()
+          if (isCurrentRefresh()) applyLoadedProfile(data, learnerStateScopeKey, preferenceSequenceAtStart)
+          if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
+            if (isCurrentRefresh()) {
+              setPersonalConfig(readPersonalCurriculumConfig(data.personalCurriculum))
+            }
+          } else if (data.personalCurriculum) {
+            const parsed = readPersonalCurriculumConfig(data.personalCurriculum)
+            const { config, corrected } = normalizePersonalConfig(parsed, availableLandscapes, rootLandscapeId)
+            if (isCurrentRefresh()) {
+              setPersonalConfig(config || {})
+            }
+
+            if (corrected && isCurrentRefresh()) {
+              const saveUrl = apiBase
+                ? `${apiBase}/api/ui/learners/${skillpilotId}/personal-curriculum`
+                : `/api/ui/learners/${skillpilotId}/personal-curriculum`
+              await fetch(saveUrl, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(config),
+              })
+            }
+          } else if (isCurrentRefresh()) {
+            setPersonalConfig({})
+          }
+          if (isCurrentRefresh()) {
+            setPersonalConfigLoadState({
+              scopeKey: learnerStateScopeKey,
+              status: 'ready',
+            })
+            clearReportedLoadError('learner-initial-load')
+          }
+          return
+        }
+        if (isCurrentRefresh()) {
+          setPersonalConfigLoadState({
+            scopeKey: learnerStateScopeKey,
+            status: 'error',
+          })
+          notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
+        }
+      } catch (e) {
+        if (!isCurrentRefresh()) return
+        console.warn('Failed to load personal curriculum', e)
+        setPersonalConfigLoadState({
+          scopeKey: learnerStateScopeKey,
+          status: 'error',
+        })
+        notifyLoadErrorOnce('learner-initial-load', t.notifications.learnerInitialLoadFailed)
+      } finally {
+        if (isCurrentRefresh()) {
+          setIsPersonalConfigHydrating(false)
+        }
+      }
+    }
+    fetchConfig()
+    refreshState()
+    return () => {
+      cancelled = true
+    }
+  }, [
+    applyLoadedProfile,
+    availableLandscapes,
+    clearReportedLoadError,
+    learnerStateScopeKey,
+    notifyLoadErrorOnce,
+    personalConfigReloadCounter,
+    refreshState,
+    rootLandscapeId,
+    skillpilotId,
+    t.notifications.learnerInitialLoadFailed,
+  ])
+
+  // Check mobile state
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Sidebar state
+  const [sidebarWidth, setSidebarWidth] = useState(320)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [isDesktopSidebarOpen, setIsDesktopSidebarOpen] = useState(true)
+  const [completionTreeRevealId, setCompletionTreeRevealId] = useState<string | null>(null)
+  const showCompletionGoalInTree = useCallback((goalId: string) => {
+    if (!visibleGoals.has(goalId)) return
+    setExpandedGoalIds((current) => new Set([...current, ...buildCollapsedFocusPath(goalId)]))
+    onSelectGoal(goalId)
+    setIsSidebarOpen(true)
+    setIsDesktopSidebarOpen(true)
+    setCompletionTreeRevealId(goalId)
+  }, [buildCollapsedFocusPath, onSelectGoal, visibleGoals])
+  useEffect(() => {
+    if (!completionTreeRevealId) return
+    const frame = window.requestAnimationFrame(() => {
+      const row = document.getElementById('learner-goal-sidebar')
+        ?.querySelector<HTMLElement>(`[data-goal-id="${CSS.escape(completionTreeRevealId)}"]`)
+      row?.scrollIntoView({ block: 'nearest', inline: 'nearest' })
+      row?.focus({ preventScroll: true })
+      setCompletionTreeRevealId(null)
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [completionTreeRevealId])
+  useEffect(() => {
+    if (!completionDiscoveryRequest) {
+      completedDiscoveryRevealRef.current = null
+      return
+    }
+    if (completedDiscoveryRevealRef.current === completionDiscoveryRequest
+      || learnerStateLoadStatus === 'loading' || isPersonalConfigHydrating
+      || personalConfigLoadStatus === 'loading') return
+    const frame = window.requestAnimationFrame(() => {
+      const target = completionEntryRef.current?.querySelector<HTMLElement>('[data-completion-shortcuts-heading]')
+      if (!target) return
+      completedDiscoveryRevealRef.current = completionDiscoveryRequest
+      target.scrollIntoView({ block: 'start', inline: 'nearest' })
+      target.focus({ preventScroll: true })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [completionDiscoveryRequest, isPersonalConfigHydrating, learnerStateLoadStatus, personalConfigLoadStatus, levelCompletion])
+
+  const mobileEdgeTouchStart = useRef<{ identifier: number; x: number; y: number } | null>(null)
+  const desktopHideButtonRef = useRef<HTMLButtonElement>(null)
+  const desktopShowButtonRef = useRef<HTMLButtonElement>(null)
+  const isResizing = useRef(false)
+
+  const startMobileEdgeSwipe = (event: React.TouchEvent<HTMLDivElement>) => {
+    if (!isMobile || isSidebarOpen || event.touches.length !== 1) {
+      mobileEdgeTouchStart.current = null
+      return
+    }
+    const touch = event.touches[0]
+    if (touch.clientX > 32) {
+      mobileEdgeTouchStart.current = null
+      return
+    }
+    mobileEdgeTouchStart.current = { identifier: touch.identifier, x: touch.clientX, y: touch.clientY }
+  }
+
+  const finishMobileEdgeSwipe = (event: React.TouchEvent<HTMLDivElement>) => {
+    const start = mobileEdgeTouchStart.current
+    mobileEdgeTouchStart.current = null
+    if (!start || event.touches.length > 0) return
+    const touch = Array.from(event.changedTouches).find((entry) => entry.identifier === start.identifier)
+    if (!touch) return
+    const horizontalDistance = touch.clientX - start.x
+    const verticalDistance = Math.abs(touch.clientY - start.y)
+    if (horizontalDistance >= 72 && horizontalDistance > verticalDistance * 1.5) {
+      setIsSidebarOpen(true)
+    }
+  }
+
+  const resize = useCallback((e: MouseEvent) => {
+    if (isResizing.current) {
+      setSidebarWidth(Math.max(240, Math.min(800, e.clientX)))
+    }
+  }, [])
+
+  const stopResizing = useCallback(() => {
+    isResizing.current = false
+    document.removeEventListener('mousemove', resize)
+    document.removeEventListener('mouseup', stopResizing)
+    document.body.style.cursor = ''
+    document.body.style.userSelect = ''
+  }, [resize])
+
+  const startResizing = useCallback(() => {
+    isResizing.current = true
+    document.addEventListener('mousemove', resize)
+    document.addEventListener('mouseup', stopResizing)
+    document.body.style.cursor = 'col-resize'
+    document.body.style.userSelect = 'none'
+  }, [resize, stopResizing])
+
+  useEffect(() => {
+    if (!canAutoRepairAbi26Personalization || !campaignContext || !rootLandscapeId) return
+    if (isSetupOpen) return
+    if (isPersonalConfigHydrating) return
+    if (personalConfigLoadStatus !== 'ready') return
+    if (rootLandscapeId !== ABI26_ROOT_CURRICULUM_ID) return
+
+    const repairScopeKey = [
+      skillpilotId,
+      rootLandscapeId,
+      campaignContext.courseLevel,
+    ].join('\u0000')
+    if (abi26PersonalizationRepairRef.current.scopeKey !== repairScopeKey) {
+      abi26PersonalizationRepairRef.current = {
+        scopeKey: repairScopeKey,
+        inFlight: false,
+        restarted: false,
+        complete: false,
+        failed: false,
+        errorReported: false,
+        applySteps: 0,
+        appliedOptionIds: new Set<string>(),
+      }
+    }
+
+    const repairState = abi26PersonalizationRepairRef.current
+    if (personalCurriculumEditor.error) {
+      if (!repairState.errorReported) {
+        repairState.errorReported = true
+        onNotify?.('error', t.notifications.personalCurriculumSaveFailed)
+        setIsSetupOpen(true)
+      }
+      return
+    }
+    repairState.errorReported = false
+    if (
+      repairState.inFlight
+      || repairState.complete
+      || repairState.failed
+      || guidedPersonalizationRefreshing
+      || guidedPersonalizationRefreshInFlightRef.current > 0
+      || personalCurriculumEditor.loading
+      || personalCurriculumEditor.busy
+      || !personalCurriculumEditor.plan
+    ) {
+      return
+    }
+
+    const expectedConfig = buildAbi26PersonalCurriculumConfig(
+      campaignContext.courseLevel,
+      personalConfig,
+    )
+    const action = resolveAbi26PersonalizationRepairAction(
+      personalCurriculumEditor.plan,
+      campaignContext.courseLevel,
+      personalCurriculumConfigsEqual(personalConfig, expectedConfig),
+      repairState.restarted,
+    )
+
+    if (action.kind === 'COMPLETE') {
+      repairState.complete = true
+      markAbi26PersonalizationInitialized(
+        skillpilotId,
+        campaignContext.courseLevel,
+      )
+      return
+    }
+    if (action.kind === 'UNAVAILABLE') {
+      repairState.failed = true
+      onNotify?.('error', t.notifications.personalCurriculumSaveFailed)
+      setIsSetupOpen(true)
+      return
+    }
+
+    repairState.inFlight = true
+    const applyRepairAction = async () => {
+      try {
+        const verifyCompletedScope = async () => {
+          const refreshedConfig = await handleGuidedPersonalizationPlanChanged()
+          if (!refreshedConfig) {
+            return
+          }
+          const refreshedExpectedConfig = buildAbi26PersonalCurriculumConfig(
+            campaignContext.courseLevel,
+            refreshedConfig,
+          )
+          if (personalCurriculumConfigsEqual(refreshedConfig, refreshedExpectedConfig)) {
+            repairState.complete = true
+            markAbi26PersonalizationInitialized(
+              skillpilotId,
+              campaignContext.courseLevel,
+            )
+          }
+        }
+
+        if (action.kind === 'RESTART') {
+          repairState.applySteps = 0
+          repairState.appliedOptionIds.clear()
+          const nextPlan = await restartPersonalCurriculum()
+          if (!nextPlan) return
+          repairState.restarted = true
+          if (nextPlan.stage === 'COMPLETE') {
+            await verifyCompletedScope()
+          }
+          return
+        }
+
+        if (
+          repairState.applySteps >= 10
+          || repairState.appliedOptionIds.has(action.optionId)
+        ) {
+          repairState.failed = true
+          onNotify?.('error', t.notifications.personalCurriculumSaveFailed)
+          setIsSetupOpen(true)
+          return
+        }
+        const nextPlan = await applyPersonalCurriculumOption(action.optionId)
+        if (!nextPlan) return
+        repairState.applySteps += 1
+        repairState.appliedOptionIds.add(action.optionId)
+        if (nextPlan.stage === 'COMPLETE') {
+          await verifyCompletedScope()
+        }
+      } finally {
+        repairState.inFlight = false
+      }
+    }
+
+    void applyRepairAction()
+  }, [
+    applyPersonalCurriculumOption,
+    canAutoRepairAbi26Personalization,
+    campaignContext,
+    guidedPersonalizationRefreshing,
+    handleGuidedPersonalizationPlanChanged,
+    isPersonalConfigHydrating,
+    isSetupOpen,
+    onNotify,
+    personalConfig,
+    personalConfigLoadStatus,
+    personalCurriculumEditor.busy,
+    personalCurriculumEditor.error,
+    personalCurriculumEditor.loading,
+    personalCurriculumEditor.plan,
+    restartPersonalCurriculum,
+    rootLandscapeId,
+    skillpilotId,
+    t.notifications.personalCurriculumSaveFailed,
+  ])
+
+  const handlePersonalCurriculumApply = useCallback(async (
+    newConfig: PersonalCurriculumConfig,
+    preferences: PersonalCurriculumPreferences,
+  ) => {
+    const configChanged = !personalCurriculumConfigsEqual(newConfig, personalConfig)
+    const savedPreferences = learnerPreferences(learnerData)
+    const { strategy, ...otherPreferences } = preferences
+    const requestedPreferences = { learningStrategy: strategy, ...otherPreferences }
+    // Optional API fields preserve values changed in another tab, including
+    // when its SSE event has not arrived before this save.
+    const changes = Object.fromEntries(Object.entries(requestedPreferences).filter(
+      ([key, value]) => savedPreferences[key as keyof typeof savedPreferences] !== value,
+    )) as Partial<typeof savedPreferences>
+    const preferencesChanged = Object.keys(changes).length > 0
+    const requestScopeKey = learnerStateScopeKey
+    const retryReload = preferencesReloadRequiredScopeRef.current === requestScopeKey
+
+    if (!configChanged && !preferencesChanged && !retryReload) return
+
+    if (!skillpilotId) {
+      if (configChanged) {
+        setPersonalConfig(newConfig)
+      }
+      if (preferencesChanged) {
+        setLearnerData(prev => prev ? {
+          ...prev,
+          learningStrategy: preferences.strategy,
+          autoPilot: preferences.autoPilot,
+          followLearningPlans: preferences.followLearningPlans,
+          learningPlanPeriodBasis: preferences.learningPlanPeriodBasis,
+          learningPlanCountOnlyExplicitGoals: preferences.learningPlanCountOnlyExplicitGoals,
+          strictMode: preferences.strictMode,
+          useAssessmentShortcuts: preferences.useAssessmentShortcuts,
+          showGoalVisualizationsInChat: preferences.showGoalVisualizationsInChat,
+        } : prev)
+      }
+      return
+    }
+
+    let preferencesCommitted = retryReload
+    const saving = { scopeKey: requestScopeKey, pendingEvent: false, receivedEvent: false }
+    if (preferencesChanged || retryReload) preferenceSaveRefreshRef.current = saving
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+
+      if (configChanged) {
+        const configRes = await fetch(`${apiBase}/api/ui/learners/${skillpilotId}/personal-curriculum`, {
+          method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newConfig),
+        })
+        if (!configRes.ok) throw new Error(`personal-curriculum-save-failed:${configRes.status}`)
+        if (currentLearnerStateScopeKeyRef.current !== requestScopeKey) return
+        setPersonalConfig(newConfig)
+      }
+
+      if (preferencesChanged) {
+        const preferencesRes = await fetch(`${apiBase}/api/ui/learners/${skillpilotId}/preferences`, {
+          method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(changes),
+        })
+        if (!preferencesRes.ok) throw new Error(`preferences-save-failed:${preferencesRes.status}`)
+        if (currentLearnerStateScopeKeyRef.current !== requestScopeKey) return
+        preferencesCommitted = true
+        preferencesReloadRequiredScopeRef.current = requestScopeKey
+        // The endpoint returns an empty response. Only after its successful
+        // write may the accepted fields replace the saved checkbox values.
+        applySavedPreferences(changes, requestScopeKey, beginLatestRequest(preferencesRefreshSequenceRef))
+      }
+
+      if (configChanged) {
+        onScopeDataRefresh?.()
+        if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID && landscapeId !== CANONICAL_GYMNASIUM_ROOT_ID) {
+          onLandscapeChange?.(CANONICAL_GYMNASIUM_ROOT_ID)
+        }
+      }
+
+      // Independently refresh state even if the profile reload fails. Stale
+      // waiver annotations must disappear after an accepted opt-out.
+      let profileReloaded: boolean
+      let refreshedState: LearnerStateRefreshResult | null
+      do {
+        // Coalesce events received during the write, and repeat if another tab
+        // commits during this reload. Its event must not supersede our requests
+        // and turn a successful save into a spurious reload error.
+        saving.pendingEvent = false
+        ;[profileReloaded, refreshedState] = await Promise.all([
+          preferencesCommitted ? refreshPreferences() : Promise.resolve(true),
+          refreshState(true),
+          refreshLearningPlans(),
+          onRefresh?.(),
+        ])
+        if (currentLearnerStateScopeKeyRef.current !== requestScopeKey) return
+      } while (saving.pendingEvent)
+      if (saving.receivedEvent) dispatchLearnerUiRefresh({ skillpilotId, reason: 'FULL_REFRESH', targets: ['all'] })
+      if (preferencesCommitted && (!profileReloaded || !refreshedState)) throw new PreferencesReloadError()
+      preferencesReloadRequiredScopeRef.current = null
+    } catch (error) {
+      if (currentLearnerStateScopeKeyRef.current !== requestScopeKey) return
+      console.warn('Failed to apply personal curriculum setup', error)
+      if (error instanceof PreferencesReloadError) {
+        onNotify?.('error', getPersonalCurriculumSetupCopy(localizedLanguage).saveCommittedReloadFailed)
+      } else {
+        onNotify?.('error', configChanged ? t.notifications.personalCurriculumSaveFailed : t.notifications.preferencesSaveFailed)
+      }
+      throw error
+    } finally {
+      if (preferenceSaveRefreshRef.current === saving) {
+        preferenceSaveRefreshRef.current = null
+        // A failed write can coincide with a real remote change. Preserve its
+        // refresh even though this local save could not reach the reload step.
+        if (saving.pendingEvent) {
+          void Promise.all([refreshPreferences(), refreshState(true), refreshLearningPlans(), onRefresh?.()]).then(() => {
+            if (currentLearnerStateScopeKeyRef.current === requestScopeKey) {
+              dispatchLearnerUiRefresh({ skillpilotId, reason: 'FULL_REFRESH', targets: ['all'] })
+            }
+          })
+        }
+      }
+    }
+  }, [
+    applySavedPreferences,
+    learnerData,
+    learnerStateScopeKey,
+    landscapeId,
+    localizedLanguage,
+    onNotify,
+    onRefresh,
+    onLandscapeChange,
+    onScopeDataRefresh,
+    personalConfig,
+    refreshLearningPlans,
+    refreshPreferences,
+    refreshState,
+    rootLandscapeId,
+    skillpilotId,
+    t.notifications.personalCurriculumSaveFailed,
+    t.notifications.preferencesSaveFailed,
+  ])
+
+  // Save preferences to backend
+
+
+
+
+  const downloadJsonPayload = useCallback((payload: unknown, filenamePrefix: string) => {
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' })
+    const link = document.createElement('a')
+    link.href = URL.createObjectURL(blob)
+    const timestamp = new Date().toISOString().slice(0, 16).replace('T', '_').replace(':', '')
+    link.download = `${filenamePrefix}_${skillpilotId}_${timestamp}.json`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }, [skillpilotId])
+
+  const handleExport = useCallback(async () => {
+    if (!skillpilotId) return
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/export` : `/api/ui/learners/${skillpilotId}/export`
+      const res = await fetch(url)
+      if (res.ok) {
+        const serverData = await res.json()
+
+        // Card process data is part of the server's versioned, signed archive.
+        const exportPayload = {
+          version: '3.0',
+          exportedAt: new Date().toISOString(),
+          serverExport: serverData,
+        }
+
+        downloadJsonPayload(exportPayload, 'learner_data')
+        await loadLearnerRetentionRef.current()
+        onNotify?.('success', t.notifications.learnerExported)
+      } else {
+        console.error("Export failed", res.status, res.statusText)
+        onNotify?.('error', t.notifications.learnerExportFailed)
+      }
+    } catch (e) {
+      console.error("Export error", e)
+      onNotify?.('error', t.notifications.learnerExportFailed)
+    }
+  }, [downloadJsonPayload, onNotify, skillpilotId, t.notifications.learnerExportFailed, t.notifications.learnerExported])
+
+  const syncClientData = useCallback(async (
+    nodeId: string,
+    snapshot?: SrsPracticeSnapshot,
+    onSaved?: (updatedAt: string) => void,
+  ): Promise<boolean> => {
+    if (!skillpilotId || !nodeId) return false
+    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+    const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/client-state/${nodeId}` : `/api/ui/learners/${skillpilotId}/client-state/${nodeId}`
+    const lastSyncKey = `srs_state_last_sync_${skillpilotId}_${nodeId}`
+    const storageKey = `srs_state_${skillpilotId}_${nodeId}`
+    try {
+      // A caller without a bound practice snapshot only refreshes the mirror.
+      // It cannot promote a stale local map to the latest server revision.
+      if (!snapshot) return (await fetch(url, { cache: 'no-store' })).ok
+      const res = await fetch(url, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(snapshot),
+      })
+      if (res.ok) {
+        const data = await res.json()
+        if (typeof data.savedAt !== 'string') return false
+        localStorage.setItem(lastSyncKey, data.savedAt)
+        onSaved?.(data.savedAt)
+        return true
+      }
+      if (res.status === 409) {
+        const current = await fetch(url, { cache: 'no-store' })
+        if (current.ok) {
+          const payload = await current.json()
+          localStorage.setItem(storageKey, JSON.stringify(payload.srsState))
+          if (payload.updatedAt) localStorage.setItem(lastSyncKey, payload.updatedAt)
+          else localStorage.removeItem(lastSyncKey)
+          window.dispatchEvent(new CustomEvent(SRS_STATE_RELOADED_EVENT, {
+            detail: { goalId: nodeId, srsState: payload.srsState, expectedUpdatedAt: payload.updatedAt ?? null },
+          }))
+        }
+      }
+      console.warn('Client-state sync failed', res.status)
+      return false
+    } catch (error) {
+      console.warn('Client-state sync error', error)
+      return false
+    }
+  }, [skillpilotId])
+
+  useEffect(() => {
+    const goalId = currentGoal?.id
+    if (!goalId) return
+    if (!currentGoal?.tags?.some((tag) => tag.startsWith('srs-deck'))) return
+
+    const mastery = srsMasteryByGoal[goalId]
+    if (mastery === undefined) return
+
+    const previous = srsCompletionRef.current[goalId]
+    if (previous === mastery) return
+    srsCompletionRef.current[goalId] = mastery
+
+    if (mastery < 1) return
+    if (srsCompletionInFlightRef.current.has(goalId)) return
+
+    srsCompletionInFlightRef.current.add(goalId)
+    void (async () => {
+      try {
+        await syncClientData(goalId)
+        await refreshState(true)
+        onRefresh?.()
+        dispatchLearnerUiRefresh({
+          skillpilotId,
+          reason: 'SRS_SYNC',
+          targets: ['all'],
+        })
+      } finally {
+        srsCompletionInFlightRef.current.delete(goalId)
+      }
+    })()
+  }, [currentGoal?.id, currentGoal?.tags, skillpilotId, srsMasteryByGoal, refreshState, onRefresh, syncClientData])
+
+  const handleFileChange = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file || !skillpilotId) return;
+
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      try {
+        const json = JSON.parse(e.target?.result as string);
+
+        if (hasUnsignedLegacySrsData(json)) {
+          const message = language === 'de'
+            ? 'Diese ältere Sicherung kann die Lernkartenerfolge nicht zuverlässig wiederherstellen. Bitte erstelle beim ursprünglichen Lernstand eine neue Sicherung und importiere diese.'
+            : 'This older backup cannot reliably restore flashcard achievements. Please create a new backup from the original learner and import that file.'
+          if (onNotify) onNotify('error', message)
+          else {
+            setModalMessage(message)
+            setModalTitle(learnerViewCopy.importValidationFailedTitle)
+            setModalType('error')
+            setIsModalOpen(true)
+          }
+          return
+        }
+        const payloadToSend: unknown = json.serverExport ?? json
+
+        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/import` : `/api/ui/learners/${skillpilotId}/import`
+
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payloadToSend)
+        });
+
+        if (res.ok) {
+          // A successful server import restores signed card data atomically.
+          // Remove stale browser mirrors; the next load obtains authoritative state.
+          const statePrefix = `srs_state_${skillpilotId}_`
+          const syncPrefix = `srs_state_last_sync_${skillpilotId}_`
+          const obsoleteKeys: string[] = []
+          for (let index = 0; index < localStorage.length; index++) {
+            const key = localStorage.key(index)
+            if (key?.startsWith(statePrefix) || key?.startsWith(syncPrefix)) obsoleteKeys.push(key)
+          }
+          obsoleteKeys.forEach(key => localStorage.removeItem(key))
+          queueToastForNextLoad('success', t.notifications.learnerImported)
+          // Keep the reload for now because import may replace learner context,
+          // selected curriculum, and local mirrored state across the app.
+          window.location.reload();
+        } else {
+          console.error("Import failed", res.status);
+
+          let serverMsg = "";
+          try {
+            const errData = await res.json();
+            if (errData && errData.message) serverMsg = errData.message;
+          } catch { /* ignore */ }
+
+          const notifyImportError = (message: string, title: string) => {
+            if (onNotify) {
+              onNotify('error', message)
+              return
+            }
+            setModalMessage(message)
+            setModalTitle(title)
+            setModalType('error')
+            setIsModalOpen(true)
+          }
+
+	          // Use helpful message if signature error suspected (400 Bad Request) or generic otherwise
+	          if (res.status === 400) {
+	            notifyImportError(
+	              t.notifications.learnerImportValidationFailed,
+	              learnerViewCopy.importValidationFailedTitle,
+	            )
+	          } else {
+	            notifyImportError(
+	              serverMsg || t.notifications.learnerImportFailed,
+	              learnerViewCopy.importFailedTitle,
+	            )
+	          }
+	        }
+	      } catch (err) {
+	        console.error("Import error", err);
+	        if (onNotify) {
+	          onNotify('error', t.notifications.learnerImportSystemFailed)
+	        } else {
+	          setModalMessage(learnerViewCopy.importSystemMessage);
+	          setModalTitle(learnerViewCopy.importErrorTitle);
+	          setModalType('error');
+	          setIsModalOpen(true);
+	        }
+	      }
+    };
+    reader.readAsText(file);
+    // Reset input so same file can be selected again if needed
+    event.currentTarget.value = '';
+  }, [
+    language,
+    skillpilotId,
+    learnerViewCopy.importErrorTitle,
+    learnerViewCopy.importFailedTitle,
+    learnerViewCopy.importSystemMessage,
+    learnerViewCopy.importValidationFailedTitle,
+    onNotify,
+    t.notifications.learnerImported,
+    t.notifications.learnerImportFailed,
+    t.notifications.learnerImportSystemFailed,
+    t.notifications.learnerImportValidationFailed,
+  ]);
+
+  const loadLearnerRetention = useCallback(async () => {
+    if (!skillpilotId) return
+    setLearnerRetentionLoading(true)
+    setLearnerRetention(null)
+    setLearnerRetentionError(null)
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const retention = await requestLearnerRetention(fetch, apiBase, skillpilotId)
+      setLearnerRetention(retention)
+    } catch (error) {
+      console.error('Learner retention lookup failed', error)
+      setLearnerRetentionError(
+        error instanceof LearnerDataApiError && error.status === 404
+          ? 'missing'
+          : 'failed',
+      )
+    } finally {
+      setLearnerRetentionLoading(false)
+    }
+  }, [skillpilotId])
+  loadLearnerRetentionRef.current = loadLearnerRetention
+
+  useEffect(() => {
+    if (!isDataManagementOpen) return
+    void loadLearnerRetention()
+  }, [isDataManagementOpen, loadLearnerRetention])
+
+  const handleLearnerDeletion = useCallback(async () => {
+    if (!skillpilotId || !learnerDeletionInFlightRef.current.tryStart()) return
+    setLearnerDeleteBusy(true)
+    setLearnerDeleteError(null)
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      await requestLearnerDeletion(fetch, apiBase, skillpilotId)
+
+      // The browser mirror is removed only after the server has confirmed the
+      // irreversible deletion. A storage failure must not turn that confirmed
+      // server result into a misleading deletion error.
+      try {
+        clearDeletedLearnerBrowserState(
+          window.localStorage,
+          window.sessionStorage,
+          skillpilotId,
+        )
+      } catch (error) {
+        console.warn('Deleted learner browser cleanup was incomplete', error)
+      }
+
+      setIsDataManagementOpen(false)
+      onNotify?.('success', learnerDataManagementCopy.deleteSuccess)
+      onLogout?.()
+    } catch (error) {
+      console.error('Learner deletion failed', error)
+      if (error instanceof LearnerDataApiError && error.status === 404) {
+        try {
+          clearDeletedLearnerBrowserState(
+            window.localStorage,
+            window.sessionStorage,
+            skillpilotId,
+          )
+        } catch (cleanupError) {
+          console.warn('Missing learner browser cleanup was incomplete', cleanupError)
+        }
+        setIsDataManagementOpen(false)
+        if (onNotify) onNotify('error', learnerDataManagementCopy.deleteMissing)
+        else queueToastForNextLoad('error', learnerDataManagementCopy.deleteMissing)
+        if (onLogout) onLogout()
+        else window.location.replace('/')
+        return
+      }
+      setLearnerDeleteError(
+        'failed',
+      )
+    } finally {
+      setLearnerDeleteBusy(false)
+      learnerDeletionInFlightRef.current.finish()
+    }
+  }, [learnerDataManagementCopy.deleteMissing, learnerDataManagementCopy.deleteSuccess, onLogout, onNotify, skillpilotId])
+
+  const showLearningProgress = !isGuidedPersonalizationRequired
+    && !hasActiveCompletionRoute(levelCompletion)
+    && (scopedLearningPlans?.followLearningPlans
+      ?? (learnerData?.skillpilotId === skillpilotId && learnerData?.followLearningPlans)) === true
+  const activeGoalTitle = effectiveActiveGoalId ? goalIndexAll.get(effectiveActiveGoalId)?.title : undefined
+  const showActiveGoalBanner = !isGuidedPersonalizationRequired
+    && Boolean(skillpilotId)
+    && learnerStateLoadState.scopeKey === learnerStateScopeKey
+    && learnerStateLoadStatus === 'ready'
+    && Boolean(effectiveActiveGoalId)
+  const activeLearningPlanSubjectLabel = activeLearningPlanLandscapeId
+    ? localizedLearningPlans?.status.subjects.find((subject) => subject.landscapeIds.includes(activeLearningPlanLandscapeId))?.subjectLabel
+      ?? learningPlanSubjectLabels.get(activeLearningPlanLandscapeId)
+    : undefined
+
+  return (
+    <div className="flex h-screen bg-chat-bg text-text-primary overflow-hidden transition-colors">
+
+      {/* Mobile Backdrop */}
+      {isMobile && isSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 animate-in fade-in duration-200"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
+      <aside
+        id="learner-goal-sidebar"
+        className={`flex flex-col bg-sidebar-bg border-r border-border-color shrink-0
+          fixed inset-y-0 left-0 z-50 shadow-2xl transition-transform duration-300
+          ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+          md:relative md:shadow-none md:transition-none
+          ${isDesktopSidebarOpen ? 'md:flex md:translate-x-0' : 'md:hidden'}
+        `}
+        style={{
+          width: isMobile ? '85%' : sidebarWidth,
+          maxWidth: isMobile ? '320px' : 'none'
+        }}
+      >
+        <div className="p-4 border-b border-border-color flex items-center justify-between shrink-0">
+          <div className="flex-1 min-w-0 mr-2">
+            <h2 className="font-bold text-sky-600 dark:text-sky-400 truncate">{t.learner.myGoals}</h2>
+            {learnerStateLoadStatus !== 'ready' || personalConfigLoadStatus !== 'ready' ? (
+              <div className="mt-2 h-4 w-36 rounded bg-border-color" aria-hidden="true" data-testid="learner-progress-loading" />
+            ) : (
+              <div className="text-xs flex items-center gap-2 mt-1">
+                <button
+                  className="flex items-center gap-1 font-bold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300 transition-colors"
+	                onClick={revealScope}
+	                disabled={plannedGoals.size === 0}
+	                title={plannedGoals.size > 0
+	                  ? learnerViewCopy.revealMarkedScopeTitle
+	                  : t.learner.totalInContext
+	                }
+	              >
+                {stats.totalAtomic}{' '}
+                <Target
+                  size={16}
+                  className={plannedGoals.size > 0 ? 'text-red-500 dark:text-red-400' : undefined}
+                />
+              </button>
+              <MoveRight size={12} className="text-slate-400" />
+              <button
+                className="text-slate-400 dark:text-slate-500 flex items-center gap-1 text-[10px] hover:text-sky-500 transition-colors"
+                onClick={revealActiveGoal}
+                title={learnerViewCopy.revealActiveGoalTitle}
+              >
+                <Send size={16} className="text-amber-500" />
+              </button>
+              <MoveRight size={12} className="text-slate-400" />
+              <ProgressPopover
+                skillpilotId={skillpilotId}
+                goalIndexAll={goalIndexAll}
+              >
+                <button
+                  className="flex items-center gap-1 font-bold text-emerald-500 hover:text-emerald-400 transition-colors"
+                  title={t.learner.completed}
+                >
+                  {stats.masteredAtomic} <Check size={16} strokeWidth={3} />
+                </button>
+              </ProgressPopover>
+            </div>
+            )}
+          </div>
+          <div className="flex items-center gap-1 shrink-0">
+
+            {/* SSE auto-refresh now active - manual refresh button removed */}
+            <button type="button" aria-label={localizedLanguage === 'de' ? 'Einstellungen öffnen' : 'Open settings'} onClick={() => setIsSetupOpen(true)} className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-text-secondary hover:text-sky-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"><Settings size={18} aria-hidden="true" /></button>
+            <button
+              ref={desktopHideButtonRef}
+              type="button"
+              aria-label={learnerViewCopy.hideGoalSidebarLabel}
+              aria-controls="learner-goal-sidebar"
+              aria-expanded={isDesktopSidebarOpen}
+              title={learnerViewCopy.hideGoalSidebarLabel}
+              onClick={() => {
+                setIsDesktopSidebarOpen(false)
+                requestAnimationFrame(() => desktopShowButtonRef.current?.focus())
+              }}
+              className="hidden min-h-11 min-w-11 items-center justify-center rounded-md text-text-secondary hover:text-sky-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 md:inline-flex"
+            >
+              <PanelLeftClose size={18} aria-hidden="true" />
+            </button>
+            {isMobile && (
+              <button
+                type="button"
+                aria-label={learnerViewCopy.closeGoalMenuLabel}
+                title={learnerViewCopy.closeGoalMenuLabel}
+                onClick={() => setIsSidebarOpen(false)}
+                className="ml-1 inline-flex min-h-11 min-w-11 items-center justify-center text-text-secondary hover:text-red-400"
+              >
+                <X size={20} aria-hidden="true" />
+              </button>
+            )}
+          </div>
+        </div>
+        <div className="flex-1 overflow-y-auto p-2">
+          {isPersonalConfigHydrating || guidedPersonalizationGateReason === 'scopeLoading' ? (
+            <div className="space-y-4 p-8" aria-hidden="true" data-testid="learner-tree-loading">
+              <div className="h-4 w-3/4 rounded bg-border-color" />
+              <div className="ml-4 h-4 w-1/2 rounded bg-border-color" />
+              <div className="ml-4 h-4 w-2/3 rounded bg-border-color" />
+            </div>
+          ) : isGuidedPersonalizationRequired ? (
+            <div className="m-2 rounded-xl border border-sky-300 bg-sky-50 p-4 text-sm dark:border-sky-900/60 dark:bg-sky-950/20">
+              <h3 className="font-semibold text-text-primary">{personalizationGateCopy.title}</h3>
+              <p className="mt-1 text-text-secondary">{personalizationGateCopy.body}</p>
+              <button
+                type="button"
+                onClick={handlePersonalizationGateAction}
+                className="mt-3 rounded-lg bg-sky-600 px-3 py-2 font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-wait disabled:opacity-60"
+              >
+                {personalizationGateCopy.action}
+              </button>
+            </div>
+          ) : (
+            <CompetenceTree
+              key={learnerTreeScopeKey}
+              rootGoals={visibleRootGoals}
+              allGoals={goalIndexAll}
+              getMastery={getEffectiveMastery}
+              plannedGoals={plannedGoals}
+              plannedScopeGoalIds={plannedScopeGoalIds}
+              onTogglePlan={togglePlan}
+              onSelect={onSelectGoal}
+              selectedId={subjectRootIdByAlias.get(selectedId) ?? selectedId}
+              activeFilter={effectiveActiveFilter}
+              structureMode={learnerStructureMode}
+              hideTechnicalStructureUi
+              allowClusterPlanning
+              personalConfig={personalConfig}
+              rootLandscapeId={rootLandscapeId}
+              activeGoalId={effectiveActiveGoalId ?? undefined}
+              expandedGoalIds={expandedGoalIds}
+              onToggleExpanded={toggleExpandedGoal}
+              frontierIds={frontierIds}
+              completionWaivers={completionTreeWaivers}
+              audience="learner"
+              visibleChildrenByParentOverride={learnerVisibleChildrenByParent}
+              useRawGoalTitles={currentLandscapeHasMatchedCompositionView}
+            />
+          )}
+        </div>
+        <div className="flex items-center justify-between gap-2 border-t border-border-color p-2">
+          <button
+            type="button"
+            onClick={() => {
+              setLearnerDeleteError(null)
+              setIsDataManagementOpen(true)
+            }}
+            className="inline-flex min-h-9 items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-text-secondary transition-colors hover:bg-sky-50 hover:text-sky-600 dark:hover:bg-sky-950/30 dark:hover:text-sky-300"
+          >
+            <Database size={16} />
+            <span>{learnerDataManagementCopy.openAction}</span>
+          </button>
+          {onLogout && <LogoutButton onLogout={onLogout} />}
+        </div>
+
+        {/* Resize Handle (Desktop) */}
+        {!isMobile && (
+          <div
+            className="absolute right-0 top-0 bottom-0 w-1 hover:w-1.5 cursor-col-resize z-10 transition-colors group"
+            style={{ right: -2 }}
+            onMouseDown={startResizing}
+          >
+            {/* Visual indicator on hover */}
+            <div className="absolute inset-y-0 right-0 w-full bg-transparent group-hover:bg-sky-400/50 transition-colors" />
+          </div>
+        )}
+      </aside>
+
+      <main
+        data-testid="learner-main-content"
+        className="relative flex flex-1 flex-col items-center overflow-y-auto bg-chat-bg p-6"
+        onTouchStart={startMobileEdgeSwipe}
+        onTouchEnd={finishMobileEdgeSwipe}
+        onTouchCancel={() => { mobileEdgeTouchStart.current = null }}
+      >
+        {levelCompletion || completionDiscoveryRequest ? <div ref={completionEntryRef} className="w-full">
+          {levelCompletion && (!isGuidedPersonalizationRequired || learnerStateLoadStatus === 'error') ? (
+            <LevelCompletionCard
+              key={`${learnerStateScopeKey}:${levelCompletion.profileId ?? 'selection'}`}
+              completion={levelCompletion}
+              language={localizedLanguage}
+              stale={learnerStateLoadStatus !== 'ready'}
+              busy={completionActionBusy}
+              error={completionActionError}
+              learningPlanPaused={learnerData?.followLearningPlans === true && Boolean(scopedLearningPlans?.plans.length)}
+              discoveryOpenRequest={completionDiscoveryRequest}
+              requestedAssessmentMissing={Boolean(completionDiscoveryRequest && selectedGoalAssessments.length === 0)}
+              onAction={(action) => { void handleCompletionAction(action) }}
+              onRetry={() => { void refreshState(true) }}
+              onShowGoal={showCompletionGoalInTree}
+              onOpenSettings={() => setIsSetupOpen(true)}
+            />
+          ) : completionDiscoveryRequest ? (
+            <section data-testid="completion-shortcuts-unavailable" className="mb-4 rounded-2xl border border-border-color bg-sidebar-bg p-4 sm:p-5">
+              <h2 data-completion-shortcuts-heading tabIndex={-1} className="font-semibold text-text-primary focus:outline-none">
+                {localizedLanguage === 'en' ? 'Assessment shortcuts' : 'Prüfungsabkürzungen'}
+              </h2>
+              <p role="status" className="mt-3 text-sm text-text-secondary">{
+                learnerStateLoadStatus === 'loading' || isPersonalConfigHydrating
+                  ? (localizedLanguage === 'en' ? 'Loading the current choices…' : 'Die aktuellen Möglichkeiten werden geladen…')
+                  : learnerStateLoadStatus === 'error'
+                    ? (localizedLanguage === 'en' ? 'The current choices could not be loaded. Please try again.' : 'Die aktuellen Möglichkeiten konnten nicht geladen werden. Bitte versuche es erneut.')
+                    : learnerData?.useAssessmentShortcuts === false
+                      ? (localizedLanguage === 'en' ? 'You have turned off assessment shortcuts. You can enable them in your learning settings; this link does not change your choice.' : 'Du hast Prüfungsabkürzungen ausgeschaltet. Du kannst sie in deinen Lerneinstellungen einschalten; dieser Link ändert deine Wahl nicht.')
+                      : (localizedLanguage === 'en' ? 'No suitable assessment shortcuts are currently available for your Personal Curriculum. You can review your curriculum and learning settings.' : 'Für deinen Persönlichen Lehrplan sind aktuell keine passenden Prüfungsabkürzungen verfügbar. Du kannst deinen Lehrplan und die Lerneinstellungen prüfen.')
+              }</p>
+              <div className="mt-3 flex flex-wrap gap-3">
+                <button type="button" onClick={() => setIsSetupOpen(true)}
+                  disabled={isPersonalConfigHydrating}
+                  className="min-h-11 rounded-lg border border-sky-400 px-3 py-2 text-sm font-semibold disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+                  {localizedLanguage === 'en' ? 'Open learning settings' : 'Lerneinstellungen öffnen'}
+                </button>
+                {learnerStateLoadStatus === 'error' ? <button type="button" onClick={() => { void refreshState(true) }}
+                  className="min-h-11 rounded-lg px-3 py-2 text-sm underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+                  {localizedLanguage === 'en' ? 'Reload' : 'Neu laden'}
+                </button> : null}
+              </div>
+            </section>
+          ) : null}
+        </div> : null}
+        <div className="mb-4 flex w-full justify-end">
+          <Link to={buildCompletionRouteStartHref(hasActiveCompletionRoute(levelCompletion) ? levelCompletion?.profileId : undefined)} data-testid="learner-coach-start-link"
+            title={t.startPage.login.coachProviderLabel}
+            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+            <Send size={16} aria-hidden="true" />{t.startPage.cards.gpt.title}
+          </Link>
+        </div>
+        {!isDesktopSidebarOpen && (
+          <div className="mb-4 hidden w-full md:flex">
+            <button
+              ref={desktopShowButtonRef}
+              type="button"
+              aria-label={learnerViewCopy.showGoalSidebarLabel}
+              aria-controls="learner-goal-sidebar"
+              aria-expanded={isDesktopSidebarOpen}
+              onClick={() => {
+                setIsDesktopSidebarOpen(true)
+                requestAnimationFrame(() => desktopHideButtonRef.current?.focus())
+              }}
+              className="inline-flex min-h-11 items-center gap-2 rounded-md border border-border-color bg-sidebar-bg px-3 text-sm font-medium text-text-secondary shadow-sm hover:text-sky-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
+            >
+              <PanelLeftOpen size={18} aria-hidden="true" />
+              {learnerViewCopy.showGoalSidebarLabel}
+            </button>
+          </div>
+        )}
+        {/* Keyboard and screen-reader access to the mobile drawer */}
+        {isMobile && !isSidebarOpen && (
+          <button
+            type="button"
+            data-testid="learner-mobile-menu-button"
+            aria-label={learnerViewCopy.openGoalMenuLabel}
+            aria-controls="learner-goal-sidebar"
+            aria-expanded="false"
+            title={learnerViewCopy.openGoalMenuLabel}
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:inline-flex focus:min-h-11 focus:min-w-11 focus:items-center focus:justify-center focus:rounded-md focus:border focus:border-border-color focus:bg-sidebar-bg focus:text-text-secondary focus:shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+            onClick={() => setIsSidebarOpen(true)}
+          >
+            <Menu size={20} aria-hidden="true" />
+          </button>
+        )}
+        <div className={`learner-cockpit-layout${isGuidedPersonalizationRequired ? ' learner-cockpit-layout-gated' : ''}`}>
+          {showActiveGoalBanner ? (
+            <div className="mb-6">
+              <LearnerActiveGoalBanner
+                language={localizedLanguage}
+                subjectLabel={activeLearningPlanSubjectLabel}
+                title={localizedLearningPlans?.status.activeGoal?.title ?? activeGoalTitle}
+                announcement={localizedLearningPlans?.status.activeGoal?.announcement}
+                onReveal={revealActiveGoal}
+              />
+            </div>
+          ) : null}
+          <div className={`learner-cockpit-grid${showLearningProgress ? ' learner-cockpit-grid-with-progress' : ''}`}>
+            {guidedPersonalizationGateReason === 'scopeLoading' ? (
+              <div className="flex min-h-full w-full max-w-xl items-center justify-center" role="status">
+                <p className="text-sm text-text-secondary">
+                  {localizedLanguage === 'de' ? 'Dein Cockpit wird geladen …' : 'Loading your cockpit …'}
+                </p>
+              </div>
+            ) : isGuidedPersonalizationRequired ? (
+              <div className="flex min-h-full w-full max-w-xl items-center justify-center">
+                <div className="rounded-2xl border border-sky-300 bg-white p-6 text-center shadow-sm dark:border-sky-900/60 dark:bg-slate-900">
+                  <h2 className="text-xl font-bold text-text-primary">{personalizationGateCopy.title}</h2>
+                  <p className="mt-2 text-sm text-text-secondary">{personalizationGateCopy.body}</p>
+                  <button
+                    type="button"
+                    onClick={handlePersonalizationGateAction}
+                    className="mt-5 rounded-full bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-wait disabled:opacity-60"
+                  >
+                    {personalizationGateCopy.action}
+                  </button>
+                </div>
+              </div>
+            ) : currentGoal ? (
+              <div
+                ref={learnerGoalContentRef}
+                data-testid="learner-current-goal"
+                tabIndex={-1}
+                className="learner-cockpit-selection w-full scroll-mt-6 animate-in fade-in slide-in-from-bottom-4 duration-500 focus:outline-none"
+              >
+                <h2 className="mb-3 text-sm font-semibold text-text-secondary">{learnerViewCopy.selectedGoalHeading}</h2>
+                {/* Check for SRS Tag */}
+                {currentGoal.tags && currentGoal.tags.some(t => t.startsWith('srs-deck')) ? (
+                    <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6">
+                      <div className="mb-6 border-b border-border-color pb-4">
+                        <h1 className="text-2xl font-bold text-sky-600 dark:text-sky-400 mb-2">
+                          <InlineMathText text={getLearnerGoalTitle(currentGoal)} />
+                        </h1>
+                        {currentGoal.description ? (
+                          <p className="text-text-secondary">{currentGoal.description}</p>
+                        ) : null}
+                      </div>
+                      {memoryPracticeGoalId === currentGoal.id ? (
+                        <>
+                          <button
+                            type="button"
+                            onClick={() => setMemoryPracticeGoalId(null)}
+                            className="mb-4 inline-flex items-center gap-2 rounded-lg border border-border-color px-3 py-2 text-sm font-medium text-text-secondary transition-colors hover:bg-slate-50 dark:hover:bg-slate-800"
+                          >
+                            <MoveRight size={16} className="rotate-180" />
+                            {learnerViewCopy.memoryPracticeBackAction}
+                          </button>
+                          <FlashcardDrill
+                            key={currentGoal.id}
+                            goalId={currentGoal.id}
+                            dataSourceUrl={getSrsSource(currentGoal)}
+                            skillPilotId={skillpilotId}
+                            titleOverride={getLearnerGoalTitle(currentGoal)}
+                            onSync={syncClientData}
+                            reloadSignal={srsReloadCounter}
+                            filterTags={getSrsFilterTagsForGoal(currentGoal)}
+                            onStateChange={({ goalId, mastery }) => {
+                              setOptimisticSrsMasteryByGoal((current) => {
+                                if (current[goalId] === mastery) return current
+                                return { ...current, [goalId]: mastery }
+                              })
+                              setSrsMasteryTick(c => c + 1)
+                            }}
+                          />
+                        </>
+                      ) : (
+                        <div className="space-y-5">
+                          <div>
+                            <div className="text-sm font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-300">
+                              {learnerViewCopy.memoryGoalModeTitle}
+                            </div>
+                            <p className="mt-2 max-w-3xl text-sm text-text-secondary">
+                              {learnerViewCopy.memoryGoalModeBody}
+                            </p>
+                          </div>
+                          <div className="learner-cockpit-goal-options grid gap-4">
+                            <button
+                              type="button"
+                              onClick={() => setMemoryPracticeGoalId(currentGoal.id)}
+                              className="flex min-h-32 items-start gap-4 rounded-xl border border-border-color bg-slate-50/70 p-5 text-left transition-colors hover:border-sky-300 hover:bg-sky-50/80 dark:bg-slate-950/30 dark:hover:border-sky-800 dark:hover:bg-sky-950/30"
+                            >
+                              <span className="rounded-lg bg-white p-2 text-sky-700 shadow-sm dark:bg-slate-900 dark:text-sky-300">
+                                <BookOpen size={22} />
+                              </span>
+                              <span>
+                                <span className="block text-base font-semibold text-text-primary">
+                                  {learnerViewCopy.memoryPracticeAction}
+                                </span>
+                                {currentFlashcardSetStatus && currentFlashcardSetStatus.total > 0 ? (
+                                  <span className="mt-1 block text-sm font-semibold text-sky-700 dark:text-sky-300">
+                                    {interpolateTemplate(learnerViewCopy.memoryPracticeDueStatus, [
+                                      currentFlashcardSetStatus.due,
+                                      currentFlashcardSetStatus.total,
+                                    ])}
+                                  </span>
+                                ) : null}
+                                <span className="mt-2 block text-sm text-text-secondary">
+                                  {learnerViewCopy.memoryPracticeBody}
+                                </span>
+                              </span>
+                            </button>
+                            <div
+                              className={`flex min-h-32 items-start gap-4 rounded-xl border border-sky-200 bg-sky-50/70 p-5 text-left transition-colors dark:border-sky-900/60 dark:bg-sky-950/20 ${
+                                currentFlashcardVerificationDisabled
+                                  ? 'opacity-70'
+                                  : 'hover:border-sky-400 hover:bg-sky-100/80 dark:hover:border-sky-700 dark:hover:bg-sky-950/40'
+                              }`}
+                            >
+                              <span className="rounded-lg bg-white p-2 text-sky-700 shadow-sm dark:bg-slate-900 dark:text-sky-300">
+                                <ClipboardCheck size={22} />
+                              </span>
+                              <div className="min-w-0 flex-1">
+                                <span className="block text-base font-semibold text-text-primary">
+                                  {currentFlashcardVerificationComplete
+                                    ? learnerViewCopy.memoryVerificationCompleteStatus
+                                    : currentFlashcardVerificationWaiting
+                                      ? learnerViewCopy.memoryVerificationWaitingStatus
+                                      : learnerViewCopy.memoryVerifiedRecallAction}
+                                </span>
+                                {currentFlashcardSetStatus && currentFlashcardSetStatus.total > 0 ? (
+                                  <span className="mt-1 block text-sm font-semibold text-sky-700 dark:text-sky-300">
+                                    {interpolateTemplate(learnerViewCopy.memoryVerificationPassedStatus, [
+                                      currentFlashcardSetStatus.verifiedPassed,
+                                      currentFlashcardSetStatus.total,
+                                    ])}
+                                    {' · '}
+                                    {interpolateTemplate(learnerViewCopy.memoryVerificationEligibleStatus, [
+                                      currentFlashcardSetStatus.verificationEligible,
+                                    ])}
+                                    {currentFlashcardSetStatus.verificationBlockedToday > 0 ? (
+                                      <>
+                                        {' · '}
+                                        {interpolateTemplate(learnerViewCopy.memoryVerificationBlockedStatus, [
+                                          currentFlashcardSetStatus.verificationBlockedToday,
+                                        ])}
+                                      </>
+                                    ) : null}
+                                  </span>
+                                ) : null}
+                                <span className="mt-2 block text-sm text-text-secondary">
+                                  {learnerViewCopy.memoryVerifiedRecallBody}
+                                </span>
+                                <span className="mt-4 flex flex-wrap items-center gap-3">
+                                  <label className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-text-secondary">
+                                    {learnerViewCopy.memoryVerifiedRecallBatchLabel}
+                                    <input
+                                      type="number"
+                                      min={VERIFIED_RECALL_MIN_BATCH_SIZE}
+                                      max={VERIFIED_RECALL_MAX_BATCH_SIZE}
+                                      step={1}
+                                      value={currentVerifiedRecallBatchSize}
+                                      onChange={(event) => handleVerifiedRecallBatchSizeChange(currentGoal.id, Number(event.target.value))}
+                                      className="h-8 w-16 rounded-lg border border-sky-200 bg-white px-2 text-sm font-semibold text-text-primary outline-none transition-colors focus:border-sky-500 dark:border-sky-900/60 dark:bg-slate-950"
+                                      disabled={currentFlashcardVerificationComplete}
+                                    />
+                                  </label>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleStartVerifiedRecall(currentGoal)}
+                                    disabled={currentFlashcardVerificationDisabled}
+                                    className="inline-flex items-center justify-center rounded-lg bg-sky-600 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-sky-700 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-600 dark:disabled:bg-slate-800 dark:disabled:text-slate-300"
+                                  >
+                                    {learnerViewCopy.memoryVerifyMode}
+                                  </button>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <GoalCard
+                      goal={currentGoal}
+                      masteryValue={
+                        currentGoal.contains && currentGoal.contains.length > 0
+                          ? getFilteredMastery(currentGoal.id)
+                          : getEffectiveMastery(currentGoal.id)
+                      }
+                      showLearnerTools={true}
+                      hideTechnicalStructureUi
+                      hideTitleWhenPrimaryVisualizationVisible
+                      isPlanned={plannedGoals.has(currentGoal.id)}
+                      isActive={effectiveActiveGoalId === currentGoal.id}
+                      onSetActive={handleSetActiveGoal}
+                      onRevealActive={revealActiveGoal}
+                      isFrontier={backendFrontierIds.has(currentGoal.id)}
+                      useRawGoalTitles={currentLandscapeHasMatchedCompositionView}
+                      activeFilter={effectiveActiveFilter}
+                    />
+                  )}
+
+                {selectedGoalAssessments.length > 0 ? <div data-testid="selected-goal-assessment-shortcuts" className="mt-3 flex flex-col items-start gap-2 text-sm">
+                  {selectedGoalAssessments.map(({ profileId, profileTitle, assessment }) => <div key={profileId} className="flex flex-wrap items-center gap-3">
+                    <span className="text-text-secondary">{profileId.startsWith('automatic:')
+                      ? (localizedLanguage === 'en' ? 'Assessment in ' : 'Prüfung im Abschnitt ')
+                      : (localizedLanguage === 'en' ? 'Assessment shortcut for ' : 'Prüfungsabkürzung für ')}
+                      <InlineMathText text={completionLabel(profileTitle, localizedLanguage)} />
+                    </span>
+                    {assessment.mastered ? <span>{localizedLanguage === 'en' ? 'Achieved' : 'Geschafft'}</span>
+                      : assessment.startAvailable && !levelCompletion?.directAssessmentRunning ? (
+                        learnerStateLoadStatus === 'ready' && !completionActionBusy
+                          ? <Link to={buildCompletionAssessmentStartHref({ profileId, goalId: assessment.goalId, expectedRevision: levelCompletion!.learnerRevision })}
+                            className="inline-flex min-h-11 items-center rounded-lg border border-sky-400 px-3 py-2 font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+                            {localizedLanguage === 'en' ? 'Try assessment directly' : 'Prüfung direkt versuchen'}
+                          </Link>
+                          : <span aria-disabled="true" className="text-text-secondary">{localizedLanguage === 'en' ? 'Reload the current choices first.' : 'Lade zuerst die aktuellen Möglichkeiten.'}</span>
+                      ) : <span className="text-text-secondary">{completionUnavailableReason(assessment.unavailableReason ?? 'unavailable', localizedLanguage)}</span>}
+                  </div>)}
+                </div> : null}
+
+                {learnerStateLoadStatus === 'ready' && levelCompletion?.calculationStatus === 'valid' && levelCompletion.waivedTargetGoalIds.includes(currentGoal.id) ? (
+                  <p data-testid="level-completion-goal-context" className="mt-3 text-sm text-text-secondary">
+                    {levelCompletion.profileId?.startsWith('automatic:')
+                      ? (localizedLanguage === 'en'
+                        ? 'This goal is implicitly completed in the selected section because no remaining work requires it. Its saved learning result stays unchanged; you can still choose to study it.'
+                        : 'Dieses Ziel ist im gewählten Abschnitt implizit erledigt, weil keine verbleibende Arbeit es benötigt. Sein gespeicherter Lernstand bleibt unverändert; du kannst es freiwillig weiterlernen.')
+                      : (localizedLanguage === 'en'
+                        ? 'Preparation for this goal is no longer required for the selected section. You can still choose to study it.'
+                        : 'Für den gewählten Abschnitt ist die Vorbereitung zu diesem Lernziel nicht mehr erforderlich. Du kannst es freiwillig weiterlernen.')}
+                  </p>
+                ) : null}
+                <GoalAdditionalMaterials
+                  skillpilotId={skillpilotId}
+                  goalId={currentGoal.id}
+                  language={localizedLanguage}
+                  refreshKey={materialSelectionRefresh}
+                />
+                <LearnerGoalFeedbackAction
+                  key={`${currentGoal.landscapeId ?? 'unknown'}:${currentGoal.id}`}
+                  goal={currentGoal}
+                />
+
+                {/* Extended Frontier Panel (Below GoalCard) */}
+                {shouldShowNextSteps && (
+                  <div className="mt-8 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="p-2 bg-sky-100 dark:bg-sky-900/30 rounded-lg text-sky-600 dark:text-sky-400">
+                        <Send size={24} />
+                      </div>
+                      <div>
+                        <h2 className="text-lg font-bold text-text-primary">
+                          {t.learner?.nextSteps || "Als nächste Lernziele stehen dir offen:"}
+                        </h2>
+                        <p className="text-sm text-text-secondary">
+                          {t.learner?.chooseNext || "Welches möchtest du als Nächstes angehen?"}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="learner-cockpit-goal-options grid grid-cols-1 gap-3">
+                      {nextStepOptions
+                        .map((candidate, idx) => (
+                          <button
+                            key={candidate.id}
+                            onClick={() => handleSetActiveGoal(candidate.id)}
+                            className="flex items-start gap-3 p-4 bg-gray-50 dark:bg-slate-800/50 rounded-xl border border-border-color hover:border-sky-400 dark:hover:border-sky-500 hover:shadow-md transition-all text-left group"
+                          >
+                            <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-700 text-xs font-bold text-text-secondary border border-border-color group-hover:border-sky-400 group-hover:text-sky-500 transition-colors shrink-0 mt-0.5">
+                              {idx + 1}
+                            </span>
+                            <div>
+                              <InlineMathText
+                                text={getLearnerGoalTitle(candidate)}
+                                className="font-semibold text-text-primary group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors line-clamp-2"
+                              />
+                            </div>
+                          </button>
+                        ))}
+                    </div>
+                  </div>
+                )}
+
+              </div>
+            ) : (
+              <div className="flex flex-col items-center justify-center h-full text-text-secondary">
+                <p>Select a goal to start learning</p>
+              </div>
+            )}
+            {showLearningProgress && (
+              <section
+                data-testid="learner-learning-progress"
+                aria-label={learnerViewCopy.learningProgressHeading}
+                aria-busy={learningPlansLoadStatus === 'loading' || learningPlanLanguagePending}
+                className="learner-cockpit-progress flex w-full flex-col gap-4"
+              >
+                <h2 className="text-sm font-semibold text-text-secondary">{learnerViewCopy.learningProgressHeading}</h2>
+                {(learningPlansLoadStatus === 'loading' || learningPlanLanguagePending)
+                  && learningPlansLoadStatus !== 'error'
+                  && !localizedLearningPlans ? (
+                  <p className="rounded-xl border border-border-color bg-sidebar-bg p-4 text-sm text-text-secondary" role="status">
+                    {learnerLearningPlanCopy.loading}
+                  </p>
+                ) : null}
+                {learningPlansLoadStatus === 'error' && !localizedLearningPlans ? (
+                  <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950 dark:border-amber-900/70 dark:bg-amber-950/20 dark:text-amber-100" role="alert">
+                    <span>{learnerLearningPlanCopy.loadFailed}</span>
+                    <button
+                      type="button"
+                      onClick={() => { void retryLearningPlans() }}
+                      className="min-h-10 rounded-lg border border-current px-3 py-2 font-semibold"
+                    >
+                      {learnerLearningPlanCopy.retryAction}
+                    </button>
+                  </div>
+                ) : null}
+                {learningPlansLoadStatus === 'ready'
+                  && localizedLearningPlans
+                  && (localizedLearningPlans.followLearningPlans || localizedLearningPlans.status.unavailablePlanCount > 0)
+                  && localizedLearningPlans.plans.length === 0
+                  && localizedLearningPlans.status.subjects.length === 0 ? (
+                    <div
+                      data-testid={localizedLearningPlans.status.unavailablePlanCount > 0 ? 'learner-plan-notice' : 'learner-plan-empty'}
+                      className="rounded-xl border border-border-color bg-sidebar-bg p-5 text-sm text-text-secondary shadow-sm"
+                      role="status"
+                    >
+                      <p className="whitespace-pre-line leading-6">{localizedLearningPlans.status.statusText}</p>
+                    </div>
+                  ) : null}
+                {localizedLearningPlans && localizedLearningPlans.status.subjects.length > 0 ? (
+                  <LearnerPlanTodayOverview
+                    status={localizedLearningPlans.status}
+                    plans={sortedLearningPlans}
+                    language={localizedLanguage}
+                    planModeEnabled={localizedLearningPlans.followLearningPlans}
+                    subjectLabel={(planLandscapeId) => (
+                      learningPlanSubjectLabels.get(planLandscapeId) ?? planLandscapeId
+                    )}
+                    goalLabel={(goalId) => goalIndexAll.get(goalId)?.title}
+                    showActiveGoal={false}
+                    activeGoalId={effectiveActiveGoalId}
+                    activeLandscapeId={activeLearningPlanLandscapeId}
+                    actionsDisabled={
+                      !isLearnerPlanActionAvailable(
+                        learningPlansLoadStatus,
+                        learningPlansRefreshInFlightRef.current,
+                      )
+                      || learningPlanActionsBlocked
+                    }
+                    navigationAvailable={(planLandscapeId) => (
+                      planLandscapeId === landscapeId || !!onSelectGoalInLandscape
+                    )}
+                    isReconciling={learningPlanActionId === 'reconcile'}
+                    switchingPlanId={learningPlanActionId === 'reconcile' ? null : learningPlanActionId}
+                    staleDataMessage={learningPlansLoadStatus === 'error'
+                      ? learnerLearningPlanCopy.staleData(formatLearnerLearningPlanDate(localizedLearningPlans.asOf, localizedLanguage))
+                      : undefined}
+                    actionError={learningPlanActionError ?? undefined}
+                    onSwitch={(planId) => { void handleSwitchLearningPlan(planId) }}
+                    onRetry={() => { void retryLearningPlans() }}
+                  />
+                ) : null}
+              </section>
+            )}
+          </div>
+        </div>
+      </main>
+
+      <LearnerDataManagementDialog
+        isOpen={isDataManagementOpen}
+        skillpilotId={skillpilotId}
+        copySources={learnerData?.copySources}
+        retention={learnerRetention}
+        retentionLoading={learnerRetentionLoading}
+        retentionError={learnerRetentionError}
+        deleteBusy={learnerDeleteBusy}
+        deleteError={learnerDeleteError}
+        onClose={() => setIsDataManagementOpen(false)}
+        onExport={() => { void handleExport() }}
+        onImportFileChange={handleFileChange}
+        onDelete={() => { void handleLearnerDeletion() }}
+      />
+
+      <PersonalCurriculumSetup
+        key={`personal-curriculum:${skillpilotId}:${landscapeId}:${rootLandscapeId ?? 'no-root'}:${availableLandscapes.map((landscape) => landscape.landscapeId).join(',')}:${isSetupOpen ? 'open' : 'closed'}`}
+        isOpen={isSetupOpen}
+        onClose={() => setIsSetupOpen(false)}
+        availableLandscapes={availableLandscapes}
+        currentLandscapeId={landscapeId}
+        onApply={handlePersonalCurriculumApply}
+        onPreferencesApply={(preferences) =>
+          handlePersonalCurriculumApply(personalConfig, preferences)}
+        initialConfig={personalConfig}
+        rootLandscapeId={rootLandscapeId}
+        initialStrategy={learnerData?.learningStrategy}
+        initialAutoPilot={learnerData?.autoPilot}
+        initialFollowLearningPlans={learnerData?.followLearningPlans}
+        initialPeriodBasis={learnerData?.learningPlanPeriodBasis}
+        initialCountOnlyExplicitGoals={learnerData?.learningPlanCountOnlyExplicitGoals}
+        initialStrictMode={learnerData?.strictMode}
+        initialUseAssessmentShortcuts={learnerData?.useAssessmentShortcuts}
+        directAssessmentRunning={levelCompletion?.directAssessmentRunning === true}
+        initialShowGoalVisualizationsInChat={learnerData?.showGoalVisualizationsInChat}
+        materialSettingsBusy={materialSelectionSaving}
+        materialSettings={!isGuidedPersonalizationRequired && guidedPersonalizationGateReason !== 'scopeLoading' ? (
+          <MaterialSelectionPanel
+            skillpilotId={skillpilotId}
+            language={localizedLanguage}
+            onSavingChange={setMaterialSelectionSaving}
+            onSaved={() => {
+              setMaterialSelectionRefresh((value) => value + 1)
+              dispatchLearnerUiRefresh({ skillpilotId, reason: 'content-selection', targets: ['all'] })
+            }}
+          />
+        ) : undefined}
+        personalizationEditor={usesGuidedPersonalCurriculumEditor
+          ? {
+            ...personalCurriculumEditor,
+            busy: personalCurriculumEditor.busy || guidedPersonalizationRefreshing,
+            applyOption: applyGuidedPersonalizationOption,
+            reopen: reopenGuidedPersonalization,
+            rewind: rewindGuidedPersonalization,
+          }
+          : undefined}
+      />
+
+      <InfoModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title={modalTitle}
+        type={modalType}
+      >
+        {modalMessage}
+      </InfoModal>
+    </div>
+  )
+}

@@ -1,0 +1,54 @@
+{
+  "status": "PASS_BOUNDED_TECHNICAL_VERIFICATION_NOT_INDEPENDENT_APPROVAL",
+  "operatorAgent": "/root/sol_stable_math_targets/rp_anchor_rebase",
+  "checkedCases": 9,
+  "positiveCases": "Three exact final raw RP-G8 views, two tasks added each, zero other target/prerequisiteOnly delta; original final-year placement and idempotent replay preserved; 1a25 is known task support without target role.",
+  "negativeCases": [
+    "missing canonical support definition",
+    "known but unreachable support forged consistently in test-only Selection/Plan/native evidence",
+    "after-anchor hash differs from bound Plan; and consistently forged Selection/Plan after-hash still differs from computed placement result",
+    "changed existing year anchor",
+    "changed offered scope",
+    "changed task requirement"
+  ],
+  "testPassReceipts": "Synthetic test-only files in an automatically deleted system-temp fixture; actual Root and candidate receipt/registry remained unchanged and V2 production review was still PENDING.",
+  "currentSupportSemantics": {
+    "perTask": 42,
+    "union": 43,
+    "taskRootsExcluded": true,
+    "historicalUnion": 48,
+    "historicalNoLongerReachable": 5,
+    "newSupportIds": 0
+  },
+  "codeBindings": [
+    {
+      "path": "app/scripts/mathReviewedAssessmentPlacements.ts",
+      "sha256": "5d1e127d4e9cca9cc07091c3be009e5fa2e077e5fa638c1a3321a3c37e5e8255"
+    },
+    {
+      "path": "app/scripts/mathStageScopePolicy.ts",
+      "sha256": "feaac1c5ff25d0db44a9516e43382107939cdd72e50277b8972be4f9eb1b0282"
+    },
+    {
+      "path": "app/scripts/testMathReviewedAssessmentPlacements.ts",
+      "sha256": "2b7ea5c8c4426865a85956bd0231075b9505be7d4f57ab4f8fd01544226f607f"
+    }
+  ],
+  "nativeEvidence": {
+    "path": "tmp/math-bbb-stage-candidate-20261101/docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/native-task-support-context.json",
+    "sha256": "8825be39979dea7afd7da0c149061007a460f49b61c3b4ab9447f345990094a6"
+  },
+  "noRootMutation": true,
+  "noRuntimeOrFullCorpusOrM7OrCiAcceptance": true,
+  "historicalV1Cases": 13,
+  "activeV2RegistryAtRun": false,
+  "independentProductionApproval": false,
+  "syntheticTestProducer": {
+    "path": "tmp/math-stable-target-candidate-20261101/test-rp-anchor-rebase.ts",
+    "sha256": "cf5ca6aa6f6e5cdabe0b458582c7bd09a1ea2ce00f85890f58854be821d3e5ad"
+  },
+  "freshCommands": [
+    "app/node_modules/.bin/tsx app/scripts/testMathReviewedAssessmentPlacements.ts: 13 historical V1 PASS; active V2 skipped while registry still V1",
+    "app/node_modules/.bin/tsx tmp/math-stable-target-candidate-20261101/test-rp-anchor-rebase.ts: 9 V2 synthetic fixture categories PASS"
+  ]
+}

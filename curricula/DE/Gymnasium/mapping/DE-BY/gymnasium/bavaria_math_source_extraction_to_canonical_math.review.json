@@ -2990,20 +2990,14 @@
     },
     {
       "legacyGoalId": "by-math-m12-v-1-f4ca3e96-s02-bba508c3e1",
-      "canonicalGoalId": "36f16d92-7430-50c3-8696-cf486470f771",
-      "matchType": "partial",
-      "reviewDecisionId": "by-math-m12-v-1-f4ca3e96-s02-bba508c3e1"
-    },
-    {
-      "legacyGoalId": "by-math-m12-v-1-f4ca3e96-s02-bba508c3e1",
       "canonicalGoalId": "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
       "matchType": "partial",
       "reviewDecisionId": "by-math-m12-v-1-f4ca3e96-s02-bba508c3e1"
     },
     {
       "legacyGoalId": "by-math-m12-v-1-2ed3d3c6-s02-2df2691849",
-      "canonicalGoalId": "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
-      "matchType": "exact",
+      "canonicalGoalId": "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+      "matchType": "partial",
       "reviewDecisionId": "by-math-m12-v-1-2ed3d3c6-s02-2df2691849"
     },
     {
@@ -12220,20 +12214,23 @@
       "decision": "mapped",
       "canonicalGoalIds": [
         "22b66c1e-50b1-505f-a388-c39131a4e1c3",
-        "36f16d92-7430-50c3-8696-cf486470f771",
         "a7fb1a7a-8315-5bcb-842e-48293293dfcc"
       ],
       "matchType": "partial",
-      "rationale": "Split-Aspekt aus dem bereits fachlich reviewten BY-LehrplanPLUS-Source-Ziel f4ca3e96-0bec-5267-a94a-fcb240547c08; die Parent-Entscheidung deckte den offiziellen Bullet inhaltlich ab und wurde fuer diesen fachlichen Teilaspekt uebernommen.",
-      "reviewedAt": "2026-05-08",
-      "reviewer": "codex",
+      "rationale": "Geometrisches Deuten von Addition/Subtraktion belegt keine algebraische Multiplikation/Division; legitime Quotientenquelle f4ca3e96 bleibt unverändert.",
+      "reviewedAt": "2026-11-02",
+      "reviewer": "codex-independent-source-scope-review",
       "evidence": {
-        "method": "source-split-parent-review-inherited",
+        "method": "current-whole-primary-module-and-split-clause-independent-ai-review",
         "parentSourceGoalId": "f4ca3e96-0bec-5267-a94a-fcb240547c08",
         "sourceSplitIndex": 2,
         "sourceSplitPartCount": 2,
         "sourceTopicCode": "M12-V.1",
-        "sourceDocumentKey": "JGST12_VERTIEFUNG"
+        "sourceDocumentKey": "JGST12_VERTIEFUNG",
+        "sourceReviewArtifact": "tmp/approach-review-20261101/astra-complex-numbers-scope-review/source-scope-PASS-HOLD-matrix.json",
+        "primarySourcePath": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_12_Vertiefungskurs.pdf",
+        "primarySourcePrintedPage": 1,
+        "priorDecisionRetainedIn": "two-BY-mapping-corrections.EXACT-INERT.json"
       }
     },
     {
@@ -12242,19 +12239,23 @@
       "sourceSpan": "deuten Multiplikation und Division geometrisch.",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "4f64f771-20ba-581a-86ba-bcdb1759e4d2"
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc"
       ],
-      "matchType": "exact",
-      "rationale": "Split-Aspekt aus dem bereits fachlich reviewten BY-LehrplanPLUS-Source-Ziel 2ed3d3c6-f1ef-543f-94d8-f9d619f14611; die Parent-Entscheidung deckte den offiziellen Bullet inhaltlich ab und wurde fuer diesen fachlichen Teilaspekt uebernommen.",
-      "reviewedAt": "2026-05-08",
-      "reviewer": "codex",
+      "matchType": "partial",
+      "rationale": "Geometrische Multiplikations-/Divisionsdeutung ist eine Teilabdeckung des Gesamtziels für die vier Grundrechenarten; der komplementäre Additions-/Subtraktionsaspekt bleibt separat belegt.",
+      "reviewedAt": "2026-11-02",
+      "reviewer": "codex-independent-source-scope-review",
       "evidence": {
-        "method": "source-split-parent-review-inherited",
+        "method": "current-whole-primary-module-and-split-clause-independent-ai-review",
         "parentSourceGoalId": "2ed3d3c6-f1ef-543f-94d8-f9d619f14611",
         "sourceSplitIndex": 2,
         "sourceSplitPartCount": 3,
         "sourceTopicCode": "M12-V.1",
-        "sourceDocumentKey": "JGST12_VERTIEFUNG"
+        "sourceDocumentKey": "JGST12_VERTIEFUNG",
+        "sourceReviewArtifact": "tmp/approach-review-20261101/astra-complex-numbers-scope-review/source-scope-PASS-HOLD-matrix.json",
+        "primarySourcePath": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_12_Vertiefungskurs.pdf",
+        "primarySourcePrintedPage": 1,
+        "priorDecisionRetainedIn": "two-BY-mapping-corrections.EXACT-INERT.json"
       }
     },
     {
@@ -12659,6 +12660,28 @@
         "sourceTopicCode": "M13.4",
         "sourceDocumentKey": "JGST13_EA_TEIL2"
       }
+    }
+  ],
+  "sourceScopeReviewAddenda": [
+    {
+      "reviewAddendumId": "by-two-geometric-versus-algebraic-complex-mapping-corrections-2026-11-02",
+      "status": "independently-source-reviewed-candidate",
+      "scopeDecision": {
+        "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-02/by-two-source-mapping-corrections.review.json",
+        "sha256": "41a2e83e82a1ba2142eea10491c719d09bd5f6a60ef9d33d37d5ef201bbfbeb6"
+      },
+      "completeBeforeFile": {
+        "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-02/history/source-course-five-block-before/DE-BY__gymnasium__bavaria_math_source_extraction_to_canonical_math.review.json",
+        "sha256": "ba8e59686c1a83d4240e02ca1bc2f17970f6b50e43fa6dbd1517cbcb5759a569"
+      },
+      "legitimateDivisionSourcePreserved": {
+        "legacyGoalId": "f4ca3e96-0bec-5267-a94a-fcb240547c08",
+        "canonicalGoalId": "36f16d92-7430-50c3-8696-cf486470f771",
+        "matchType": "partial",
+        "reviewDecisionId": "f4ca3e96-0bec-5267-a94a-fcb240547c08"
+      },
+      "noTargetChangeApproved": true,
+      "noHumanOrRuntimeAcceptance": true
     }
   ]
 }

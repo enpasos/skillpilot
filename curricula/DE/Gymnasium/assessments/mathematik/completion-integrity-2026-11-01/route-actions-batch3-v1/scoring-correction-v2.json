@@ -1,0 +1,139 @@
+{
+  "status": "DRAFT_SINGLE_SCORING_CORRECTION_AWAITING_NARROW_INDEPENDENT_REVIEW",
+  "goalId": "bc244d82-bac0-5b13-8a33-d7b101835480",
+  "priorManifestSha256": "06edd6c4bc0585a9066b09c64a453e8a694e4f974f51930aa9a422684d83cfdf",
+  "currentManifestSha256": "5ab23e3c70350b0d972684951c8bf5a29f3dd6995f467fbedc27a4bd674d3bac",
+  "priorAfterGoalsSha256": "40deed8cd231ab4617e2226c77cdc10517b5fe714e5d40e784ca87a5265b4c19",
+  "currentAfterGoalsSha256": "ed5df5d721e98e97bac187645249c06137c4e6c1836594e21efb99e34f8fb3c1",
+  "priorGoalNormalizedSha256": "e9f331f6078e3e2d4a7ba588505be8e484d7057194a55a5cc93e3a35cef77026",
+  "currentGoalNormalizedSha256": "6f59192a27045cfd234d4bbb6f2cd101b7e4c7174287188baa746e7fc5d875fc",
+  "changedJsonPointers": [
+    "/goals/0/examData/scoring/steps/5/description",
+    "/goals/0/examData/scoring/steps/5/descriptionEn",
+    "/goals/0/examData/solutionContent",
+    "/goals/0/examData/solutionContentEn"
+  ],
+  "otherThreeGoalObjectsIdentical": true,
+  "taskAndMathematicalSolutionBeforeCapUnchanged": true,
+  "preservedFiles": [
+    "before-goals.json",
+    "context-goals.json",
+    "materials/graph-comparison.de.svg",
+    "materials/graph-comparison.en.svg",
+    "materials/graph-comparison.de.png",
+    "materials/graph-comparison.en.png",
+    "independent-content-review.md",
+    "independent-content-review.json"
+  ],
+  "normalThreshold": {
+    "maxPoints": 18,
+    "passingPoints": 11,
+    "capIfOldOrNewCoreMissing": 10,
+    "meaning": "Conscious changed point weighting from original10/10; preserved substantive core actions, not a claim of identical relative threshold or empirical difficulty."
+  },
+  "checksSha256": "02b06a69215b981cce7260c78b388b12899495c66aea8b09ae312896ddffa6df",
+  "boundedScoringChecks": {
+    "scope": "Only bc244 solution/evaluation DE+EN and the global cap text within its last rubric step changed.",
+    "priorAfterGoalsSha256": "40deed8cd231ab4617e2226c77cdc10517b5fe714e5d40e784ca87a5265b4c19",
+    "revisedAfterGoalsSha256": "ed5df5d721e98e97bac187645249c06137c4e6c1836594e21efb99e34f8fb3c1",
+    "otherThreeAcceptedGoalObjectsAndMaterialsByteIdentical": true,
+    "originalIndependentReviewPreserved": true,
+    "negativeAndFairnessExamples": [
+      {
+        "scenario": "old_general_intersection_calculation_absent",
+        "rawPoints": 12,
+        "missingCore": "old general-plane calculation with parameter and point",
+        "expectedSingleTotal": 10,
+        "passingPoints": 11,
+        "expectedVerdict": "not mastered"
+      },
+      {
+        "scenario": "old_line_check_absent",
+        "rawPoints": 17,
+        "missingCore": "old check in line",
+        "expectedSingleTotal": 10,
+        "passingPoints": 11,
+        "expectedVerdict": "not mastered"
+      },
+      {
+        "scenario": "old_general_plane_check_absent",
+        "rawPoints": 17,
+        "missingCore": "old check in general plane",
+        "expectedSingleTotal": 10,
+        "passingPoints": 11,
+        "expectedVerdict": "not mastered"
+      },
+      {
+        "scenario": "old_geometric_uniqueness_absent",
+        "rawPoints": 15,
+        "missingCore": "old geometric uniqueness",
+        "expectedSingleTotal": 10,
+        "passingPoints": 11,
+        "expectedVerdict": "not mastered"
+      },
+      {
+        "scenario": "old_parameter_interpretation_absent",
+        "rawPoints": 17,
+        "missingCore": "old parameter interpretation",
+        "expectedSingleTotal": 10,
+        "passingPoints": 11,
+        "expectedVerdict": "not mastered"
+      },
+      {
+        "scenario": "new_trace_point_calculation_absent",
+        "rawPoints": 12,
+        "missingCore": "new determined coordinate-plane trace point",
+        "expectedSingleTotal": 10,
+        "passingPoints": 11,
+        "expectedVerdict": "not mastered"
+      },
+      {
+        "scenario": "all_new_trace_line_checks_absent",
+        "rawPoints": 15,
+        "missingCore": "new trace-point check in line",
+        "expectedSingleTotal": 10,
+        "passingPoints": 11,
+        "expectedVerdict": "not mastered"
+      },
+      {
+        "scenario": "all_new_coordinate_plane_checks_absent",
+        "rawPoints": 15,
+        "missingCore": "new trace-point check in coordinate plane",
+        "expectedSingleTotal": 10,
+        "passingPoints": 11,
+        "expectedVerdict": "not mastered"
+      },
+      {
+        "scenario": "new_trace_interpretation_absent",
+        "rawPoints": 17,
+        "missingCore": "new trace interpretation",
+        "expectedSingleTotal": 10,
+        "passingPoints": 11,
+        "expectedVerdict": "not mastered"
+      },
+      {
+        "scenario": "all_core_methods_substantively_present_one_arithmetic_error_with_traceable_follow_through",
+        "rawPoints": 17,
+        "missingCore": null,
+        "expectedSingleTotal": 17,
+        "passingPoints": 11,
+        "expectedVerdict": "mastered"
+      },
+      {
+        "scenario": "substantive_equivalent_geometric_method_and_valid_checks",
+        "rawPoints": 18,
+        "missingCore": null,
+        "expectedSingleTotal": 18,
+        "passingPoints": 11,
+        "expectedVerdict": "mastered"
+      }
+    ],
+    "examplesBoundary": "Authored expected scalar rubric totals; no actual LLM-grader execution or learner-state write is claimed."
+  },
+  "boundaries": [
+    "No task/source/scope expansion",
+    "No new pass persistence, mastery writes or requalification",
+    "No root canon, Java or policy changes",
+    "Same Astra reviewer to perform only exact scoring follow-up"
+  ]
+}

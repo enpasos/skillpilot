@@ -1,0 +1,105 @@
+{
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "canonical",
+    "phase:SekI",
+    "ExamTask"
+  ],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "contains": [],
+  "phase": "J7",
+  "type": "atomic",
+  "nodeKind": "exam",
+  "extendedData": {
+    "applicabilityMappingInheritance": "boundary",
+    "applicabilityFromRequires": true
+  },
+  "id": "e5494c67-aed6-5710-8ae3-51ae147c10e9",
+  "shortKey": "canonical_math_sek1_j7_assessment_right_prism_volume_surface_without_density",
+  "title": "Prismenvolumen und Beschichtungsfläche bestimmen",
+  "description": "Die lernende Person kann an einem geraden Dreiecksprisma das Volumen aus kongruenten Schichten begründen und berechnen sowie alle Außenflächen zur gesamten Beschichtungsfläche addieren und beide Ergebnisse mit ihren Einheiten im Sachkontext deuten.",
+  "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/prism-volume-surface-v1/draft_v1.md",
+  "requires": [
+    "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+    "f1348d40-3872-5e44-8892-3600c811796f"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB2",
+    "processCompetencies": [
+      "K1",
+      "K2",
+      "K3",
+      "K4"
+    ],
+    "guidingIdeas": [
+      "L2",
+      "L3"
+    ],
+    "phase": "J7",
+    "area": "Mathematik",
+    "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J7.PRISM_VOLUME_SURFACE"
+  },
+  "examData": {
+    "reviewStatus": "released",
+    "reviewNote": "Independent machine content review PASS on 2026-11-01; exact task, solution, rubric, prerequisites and coverage bound in prism-volume-surface-v1/review.receipt.json. Explicit replacement placements are checked separately. No human approval, learner trial or host acceptance.",
+    "coveredGoalIds": [
+      "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+      "f1348d40-3872-5e44-8892-3600c811796f"
+    ],
+    "coveredStrands": [
+      "L2",
+      "L3"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2"
+    ],
+    "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/prism-volume-surface-v1/draft_v1.md",
+    "taskContent": "Im Technikraum wird ein vollständig ausgefüllter Messkeil als gerades Prisma gebaut. Seine Grundfläche ist ein rechtwinkliges Dreieck mit Katheten $6 cm$ und $8 cm$; die dritte Seite ist $10 cm$. Der senkrechte Abstand der beiden Dreiecksflächen beträgt $20 cm$.\n\n1. Berechne den Flächeninhalt einer dreieckigen Grundfläche. (1 BE)\n2. Erkläre mit gedanklich übereinandergestapelten, kongruenten Dreiecksschichten, warum hier $V = G · h$ gilt. Berechne damit das Volumen des Keils und deute den Wert am Körper. (2 BE)\n3. Berechne den gesamten äußeren Oberflächeninhalt des Keils. Zeige, welche Flächen du zählst, und erkläre, wofür dieser Wert im Technikraum gebraucht werden könnte. (3 BE)",
+    "solutionContent": "Eine Grundfläche hat $G = 6 \\cdot 8 / 2 = 24 cm^2$.\n\nIn jeder zur Dreiecksgrundfläche parallelen Schicht bleibt die Dreiecksfläche $24 cm^2$ groß. Bei 1 cm dicken Schichten füllen 20 kongruente Schichten den Keil; daher wird die Grundfläche mit der senkrechten Körperhöhe $h = 20 cm$ multipliziert. Das Volumen ist $V = G \\cdot h = 24 \\cdot 20 = 480 cm^3$ und beschreibt den Rauminhalt des ausgefüllten Keils.\n\nDie Außenfläche besteht aus zwei kongruenten Dreiecken und drei Mantelrechtecken. Ihre Inhalte sind $2 \\cdot 24 = 48 cm^2$ und $(6 + 8 + 10) \\cdot 20 = 480 cm^2$. Damit ist $O = 48 + 480 = 528 cm^2$. Das ist die gesamte Fläche, die zum Beispiel bei vollständiger Beschichtung des Keils bedeckt werden müsste, nicht sein Innenraum.",
+    "scoring": {
+      "maxPoints": 6,
+      "passingPoints": 6,
+      "steps": [
+        {
+          "id": "j7_prism_v6_base",
+          "points": 1,
+          "description": "Flächeninhalt der dreieckigen Grundfläche korrekt mit Quadrateinheit bestimmen."
+        },
+        {
+          "id": "j7_prism_v6_volume",
+          "points": 2,
+          "description": "0 Punkte ohne Begründung durch kongruente Dreiecksschichten und korrekte Rechnung G · h = 480 cm³; danach 1 Punkt für diesen Kern, 1 Punkt für die Deutung als Rauminhalt."
+        },
+        {
+          "id": "j7_prism_v6_surface",
+          "points": 3,
+          "description": "0 Punkte ohne beide Grundflächen, alle drei Mantelflächen und korrekt berechnete 528 cm²; danach 2 Punkte für diesen Kern und 1 Punkt für die Deutung als Beschichtungsfläche."
+        }
+      ]
+    }
+  }
+}

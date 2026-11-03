@@ -1,0 +1,3858 @@
+{
+  "schemaVersion": 1,
+  "status": "ONE_REVIEWABLE_MATHEMATICS_TARGET_BASIS_NOT_COMPLETION_OR_M7_ACCEPTANCE",
+  "canonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "3a3792d14057854c79a3d8c4d38cd98dd6e28e936865ebd3447107404b58474c"
+  },
+  "scope": "80 main views and18 duration views; source-backed target selection separated from full canonical support; no runtime/mastery/other-subject change",
+  "rootAlreadyAppliedCode": [
+    {
+      "path": "app/scripts/generateMathDurationCompositionViews.ts",
+      "sha256": "f1f838a531fff6ed33c0babbef91237e761276e80f9d5f989baeae17f549e9e6"
+    },
+    {
+      "path": "app/scripts/mathStageScopePolicy.ts",
+      "sha256": "feaac1c5ff25d0db44a9516e43382107939cdd72e50277b8972be4f9eb1b0282"
+    },
+    {
+      "path": "app/scripts/testMathStageScopePolicy.ts",
+      "sha256": "8322d474e199d2ded902e8c2acf0d7a9a0b946af05dad4997dc4bd4389ffdc8f"
+    },
+    {
+      "path": "app/scripts/testHessenMathQ21Scope.ts",
+      "sha256": "c8145cb37471c390b1664b7e1bcb5abd80659db834aa892df0ef14bead4e51e0"
+    },
+    {
+      "path": "app/scripts/mathReviewedAssessmentPlacements.ts",
+      "sha256": "5d1e127d4e9cca9cc07091c3be009e5fa2e077e5fa638c1a3321a3c37e5e8255"
+    },
+    {
+      "path": "app/scripts/testMathReviewedAssessmentPlacements.ts",
+      "sha256": "2b7ea5c8c4426865a85956bd0231075b9505be7d4f57ab4f8fd01544226f607f"
+    }
+  ],
+  "rootNIReferenceCorrectionAlreadyPresent": true,
+  "knownOpenCourseUnionErrors": {
+    "jurisdiction": "DE-HE",
+    "stages": [
+      "CrossStage/G8/GK+LK",
+      "CrossStage/G9/GK+LK"
+    ],
+    "perScopeBefore": 99,
+    "perScopeAfter": 99,
+    "newFindingsFromThisCandidate": 0,
+    "mandatoryRemainingWork": true
+  },
+  "sourceReviews": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-he-source-decisions.review.json",
+      "sha256": "3f9f7bcadb445ff3602258d5cc835c7051689b6ddb855b3e2abd9655af685704"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-rp-source-decisions.review.json",
+      "sha256": "2adb6b4b3448341de127a64ba95c908e69e49e22030febaf99557d5fc83dd3fc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-sh-source-decisions.review.json",
+      "sha256": "f1249bc205a60db9ff7b0c0426fa69e8028fb66ff6912deb8083e878379f8172"
+    }
+  ],
+  "outputCount": 98,
+  "outputs": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+      "viewId": "de-bb-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-BB",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "sha256": "63cbd497ca320b692037e05256bac8fbf1f0cdfb9372d02cc8864552fe2b6572",
+      "atomicTargets": 808,
+      "selectedProtectedTargets": 133,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-lk.view.json",
+      "viewId": "de-bb-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-BB",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "sha256": "bf19190a7a6b05e553d722a2c15c4e940c6ceb95bc44c12b682860aadab50d91",
+      "atomicTargets": 819,
+      "selectedProtectedTargets": 136,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-seki.view.json",
+      "viewId": "de-bb-gym-seki-math",
+      "scope": {
+        "jurisdiction": "DE-BB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "sha256": "c507b3b3dc7e416dce6cab7a9a4e959e63cece7e645e51f02aefe392583534fa",
+      "atomicTargets": 238,
+      "selectedProtectedTargets": 52,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json",
+      "viewId": "de-bb-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-BB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "sha256": "7c1a405553f410dc16daa6b646c421152f97fad1e0cbd6648bcd63fbe8e6266a",
+      "atomicTargets": 573,
+      "selectedProtectedTargets": 81,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-lk.view.json",
+      "viewId": "de-bb-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-BB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "sha256": "76bc2687f7a2261fbfa872c3811998dfab2b66ef151677a772d32be4a4d90fc4",
+      "atomicTargets": 584,
+      "selectedProtectedTargets": 84,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json",
+      "viewId": "de-be-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-BE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "sha256": "ce1f16032cc82408685bfe011b7266f6a6b5705dcf3e9b521cc81d5bc1c891e8",
+      "atomicTargets": 797,
+      "selectedProtectedTargets": 131,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-lk.view.json",
+      "viewId": "de-be-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-BE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "sha256": "12f4c2d2a9163bfb15431d4d52d7b736915e4539bcf9318a41a90f5e2e740b66",
+      "atomicTargets": 809,
+      "selectedProtectedTargets": 135,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-seki.view.json",
+      "viewId": "de-be-gym-seki-math",
+      "scope": {
+        "jurisdiction": "DE-BE",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "sha256": "8cf2cf3e30b3efad0951a4bd8752526920dcafbfc8071277020da5c1f074abd6",
+      "atomicTargets": 230,
+      "selectedProtectedTargets": 51,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-lk.view.json",
+      "viewId": "de-be-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-BE",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "sha256": "8a936e3ba7effb4c070217b05a1fe808fff4db926ab5b69cccb4a8ea3e260b44",
+      "atomicTargets": 582,
+      "selectedProtectedTargets": 84,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk-g8.view.json",
+      "viewId": "de-bw-gym-math-gk-g8",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G8"
+      },
+      "sha256": "aa57a48b0cf9492756c2c91205062494a93b87abb37a0bb15b0089decbf9f3fd",
+      "atomicTargets": 788,
+      "selectedProtectedTargets": 116,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk-g9.view.json",
+      "viewId": "de-bw-gym-math-gk-g9",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G9"
+      },
+      "sha256": "056e789e06360ffa7a42416ab4d6b0266d5c5b4305393e0634433a8db49c510d",
+      "atomicTargets": 788,
+      "selectedProtectedTargets": 116,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+      "viewId": "de-bw-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "sha256": "76c8bb0f0b7ce5851a6eb6c17a94a8084d342eda5f33835530f28fbdceb9c78a",
+      "atomicTargets": 788,
+      "selectedProtectedTargets": 116,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk-g8.view.json",
+      "viewId": "de-bw-gym-math-lk-g8",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G8"
+      },
+      "sha256": "4143f7320540fcde43fdf9b4e4cc7492eed84f9832786cd669f043d18aef0191",
+      "atomicTargets": 819,
+      "selectedProtectedTargets": 128,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk-g9.view.json",
+      "viewId": "de-bw-gym-math-lk-g9",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G9"
+      },
+      "sha256": "88f9077d6dd59872891ef32718f84800d888f19aed7fa43baf2f07860d253106",
+      "atomicTargets": 819,
+      "selectedProtectedTargets": 128,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+      "viewId": "de-bw-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "sha256": "643437c728a022d9cf383462636ae6ff0dcd1b63288510c5bd3efe3c902353b8",
+      "atomicTargets": 819,
+      "selectedProtectedTargets": 128,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki-g8.view.json",
+      "viewId": "de-bw-gym-seki-math-g8",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G8"
+      },
+      "sha256": "57006151229c0e189fdbc09d6dd0ad5316ebfa2f852e8b8b70f8351a4790ff8d",
+      "atomicTargets": 269,
+      "selectedProtectedTargets": 58,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki-g9.view.json",
+      "viewId": "de-bw-gym-seki-math-g9",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G9"
+      },
+      "sha256": "65f5a0a86f6724b0334e36a631d51dbc1a084336ae5532ba93b1d25631aaf996",
+      "atomicTargets": 258,
+      "selectedProtectedTargets": 56,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "ea664a30-98be-508e-90ac-5304679814ee"
+      ],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk-g9.view.json",
+      "viewId": "de-bw-gym-sekii-math-gk-g9",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK",
+        "durationModel": "G9"
+      },
+      "sha256": "03563eb420130c6678ba4448db3d7c3f65ecc199dacf5e260f7f86b3953f4d62",
+      "atomicTargets": 573,
+      "selectedProtectedTargets": 64,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a",
+        "ea664a30-98be-508e-90ac-5304679814ee"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json",
+      "viewId": "de-bw-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "sha256": "ed7acf324f5d08a69893eb52a837d9a25f4f999031609b8707d74ff9c7a621d1",
+      "atomicTargets": 563,
+      "selectedProtectedTargets": 63,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk-g9.view.json",
+      "viewId": "de-bw-gym-sekii-math-lk-g9",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK",
+        "durationModel": "G9"
+      },
+      "sha256": "ebef9b439bf26b63718e0d304f796bff2deaf9fd89e0125671d6b75417db8225",
+      "atomicTargets": 603,
+      "selectedProtectedTargets": 75,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a",
+        "ea664a30-98be-508e-90ac-5304679814ee"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk.view.json",
+      "viewId": "de-bw-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "sha256": "09b7ed5a5b412fd14baf8479d522af7efdaaf9a832710acde5fd4c8b9a3d4f3e",
+      "atomicTargets": 592,
+      "selectedProtectedTargets": 73,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json",
+      "viewId": "de-by-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-BY",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "sha256": "fed9534afc0007823de7fef2d3c67c7b86d0ab408d72561202cac9f486b10727",
+      "atomicTargets": 460,
+      "selectedProtectedTargets": 73,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [
+        "2f626446-4b32-5674-a687-9cd754bdfede"
+      ],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
+      "viewId": "de-by-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-BY",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "sha256": "921bfb2c76b4689eb3c04431c60766fd2e6ae8a69a083603d28183a5e1ca3910",
+      "atomicTargets": 657,
+      "selectedProtectedTargets": 90,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [
+        "2f626446-4b32-5674-a687-9cd754bdfede"
+      ],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-seki.view.json",
+      "viewId": "de-by-gym-seki-math",
+      "scope": {
+        "jurisdiction": "DE-BY",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "sha256": "0148c97b2cdce21e75064702fd1a7f09cff03169806e3f7ed18c5154be2bf14a",
+      "atomicTargets": 260,
+      "selectedProtectedTargets": 50,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "2f626446-4b32-5674-a687-9cd754bdfede"
+      ],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+      "viewId": "de-by-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-BY",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "sha256": "ebb96f847731935cbb75f957546b29be0afbc2a485c70c5e6017e77209ca522f",
+      "atomicTargets": 208,
+      "selectedProtectedTargets": 23,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+      "viewId": "de-by-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-BY",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "sha256": "c8f1f59fd97336c4cfd08b096ddee5b94a5ea331f6d4eefc37987d7e18a6a4ab",
+      "atomicTargets": 406,
+      "selectedProtectedTargets": 40,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-gk.view.json",
+      "viewId": "de-hb-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-HB",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "sha256": "73f8d6e0261c2e3f563a4d43cdb620f2ce3c31e1d23d6faed0a0dbfbfc5952be",
+      "atomicTargets": 778,
+      "selectedProtectedTargets": 131,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-lk.view.json",
+      "viewId": "de-hb-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-HB",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "sha256": "c0337950bd2685f7cc5c0740de7161b29235c8ab1e99fd3cafb294254b148491",
+      "atomicTargets": 785,
+      "selectedProtectedTargets": 133,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-seki.view.json",
+      "viewId": "de-hb-gym-seki-math",
+      "scope": {
+        "jurisdiction": "DE-HB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "sha256": "9dffbd4e4c0067d39c6e08c686bd7b20a6c28a886710c90744d0c917e9ad37a2",
+      "atomicTargets": 211,
+      "selectedProtectedTargets": 50,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
+      "viewId": "de-hb-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-HB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "sha256": "1e6c8fd29673a8825c29b25a20002bc00dfddf5218094b5b6c5195ae8f35f5c0",
+      "atomicTargets": 570,
+      "selectedProtectedTargets": 81,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-lk.view.json",
+      "viewId": "de-hb-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-HB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "sha256": "fc3d0bd3cbcb94b2a09bf1c4c86a035497b827e9a87c41633cc66dbb2c34e8c5",
+      "atomicTargets": 577,
+      "selectedProtectedTargets": 83,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+      "viewId": "de-he-gym-math-gk-g8",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G8"
+      },
+      "sha256": "310c9736dbfa2c527133c61e9de8a1489954dc18eebe72188710f3770008f5e1",
+      "atomicTargets": 833,
+      "selectedProtectedTargets": 118,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "53b47494-ec60-4128-840d-2a4c4bab6d32",
+        "8d30d241-0247-48ac-83d3-4e0de61584d3",
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+        "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+      ],
+      "nativeCompilerErrors": [],
+      "deltaFromPrePromotionRemoval": {
+        "addedAtomicTargets": [],
+        "removedOrdinaryTargets": [
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "53b47494-ec60-4128-840d-2a4c4bab6d32",
+          "8d30d241-0247-48ac-83d3-4e0de61584d3",
+          "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+          "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+          "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+        ],
+        "removedProtectedTargets": []
+      },
+      "spatialStageCorrections": {
+        "unsupportedS1TargetsAbsent": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "d1352ce0-9502-5039-9af6-318fe385b6fd"
+        ],
+        "existingCrossStageSiiTargetsPreserved": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "d1352ce0-9502-5039-9af6-318fe385b6fd"
+        ]
+      },
+      "explicitReviewedStagewideTargets": [
+        "26f668a0-6425-5466-9cf7-6295dd189005",
+        "36728db8-da44-4add-97b8-0fdd7cfd9c41",
+        "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "596345cd-679e-5c7b-955f-e8cb1ec81e96",
+        "79dd11f0-ed20-5b92-a215-b061a2098c0c",
+        "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+        "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+        "e02c58a2-2a32-49bd-b110-7b307e0317fb"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+      "viewId": "de-he-gym-math-gk-g9",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G9"
+      },
+      "sha256": "50dbec245bab781fc6fd4aa8cad46709e1cf0b1496b52f396549a70e8bb5890e",
+      "atomicTargets": 842,
+      "selectedProtectedTargets": 121,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "53b47494-ec60-4128-840d-2a4c4bab6d32",
+        "8d30d241-0247-48ac-83d3-4e0de61584d3",
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+      ],
+      "nativeCompilerErrors": [],
+      "deltaFromPrePromotionRemoval": {
+        "addedAtomicTargets": [],
+        "removedOrdinaryTargets": [
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "53b47494-ec60-4128-840d-2a4c4bab6d32",
+          "8d30d241-0247-48ac-83d3-4e0de61584d3",
+          "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+          "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+        ],
+        "removedProtectedTargets": []
+      },
+      "spatialStageCorrections": {
+        "unsupportedS1TargetsAbsent": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3"
+        ],
+        "existingCrossStageSiiTargetsPreserved": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3"
+        ]
+      },
+      "explicitReviewedStagewideTargets": [
+        "14d0e697-3fb0-5074-a08c-7e01ca9bbda8",
+        "2bd88d66-5daf-53bb-aa02-4c010963679d",
+        "36728db8-da44-4add-97b8-0fdd7cfd9c41",
+        "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+        "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+        "8a691345-3216-522c-a898-d65e8e94db28",
+        "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+        "d0db87c4-36f5-5ac6-8428-da96d31b253a",
+        "f39c49c7-003b-471a-a33e-6cfea1d7b7b1",
+        "f52e9d72-4995-5c80-91d2-7761ea0cbec0"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk.view.json",
+      "viewId": "de-he-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "sha256": "15aac0cc2c82f126eba20fd4ac1a83601b7f163eba78dbdf4705183563e05738",
+      "atomicTargets": 843,
+      "selectedProtectedTargets": 129,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+      "viewId": "de-he-gym-math-lk-g8",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G8"
+      },
+      "sha256": "20a036c6a59fe19ef8de5dc31c92c999ca15d5f63b643f968a7ee85ae713edab",
+      "atomicTargets": 887,
+      "selectedProtectedTargets": 132,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "53b47494-ec60-4128-840d-2a4c4bab6d32",
+        "8d30d241-0247-48ac-83d3-4e0de61584d3",
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+        "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+      ],
+      "nativeCompilerErrors": [],
+      "deltaFromPrePromotionRemoval": {
+        "addedAtomicTargets": [
+          "bbb340ed-1009-4966-ae96-bfea4437505a"
+        ],
+        "removedOrdinaryTargets": [
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "53b47494-ec60-4128-840d-2a4c4bab6d32",
+          "8d30d241-0247-48ac-83d3-4e0de61584d3",
+          "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+          "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+          "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+        ],
+        "removedProtectedTargets": []
+      },
+      "spatialStageCorrections": {
+        "unsupportedS1TargetsAbsent": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "d1352ce0-9502-5039-9af6-318fe385b6fd"
+        ],
+        "existingCrossStageSiiTargetsPreserved": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "d1352ce0-9502-5039-9af6-318fe385b6fd"
+        ]
+      },
+      "explicitReviewedStagewideTargets": [
+        "26f668a0-6425-5466-9cf7-6295dd189005",
+        "36728db8-da44-4add-97b8-0fdd7cfd9c41",
+        "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "596345cd-679e-5c7b-955f-e8cb1ec81e96",
+        "79dd11f0-ed20-5b92-a215-b061a2098c0c",
+        "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+        "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+        "e02c58a2-2a32-49bd-b110-7b307e0317fb"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+      "viewId": "de-he-gym-math-lk-g9",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G9"
+      },
+      "sha256": "f049d0bd86f5c0d03ce028dc222991bfc6cd919f15d63eb39e69b65da4aca347",
+      "atomicTargets": 896,
+      "selectedProtectedTargets": 135,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "53b47494-ec60-4128-840d-2a4c4bab6d32",
+        "8d30d241-0247-48ac-83d3-4e0de61584d3",
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+      ],
+      "nativeCompilerErrors": [],
+      "deltaFromPrePromotionRemoval": {
+        "addedAtomicTargets": [
+          "bbb340ed-1009-4966-ae96-bfea4437505a"
+        ],
+        "removedOrdinaryTargets": [
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "53b47494-ec60-4128-840d-2a4c4bab6d32",
+          "8d30d241-0247-48ac-83d3-4e0de61584d3",
+          "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+          "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+        ],
+        "removedProtectedTargets": []
+      },
+      "spatialStageCorrections": {
+        "unsupportedS1TargetsAbsent": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3"
+        ],
+        "existingCrossStageSiiTargetsPreserved": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3"
+        ]
+      },
+      "explicitReviewedStagewideTargets": [
+        "14d0e697-3fb0-5074-a08c-7e01ca9bbda8",
+        "2bd88d66-5daf-53bb-aa02-4c010963679d",
+        "36728db8-da44-4add-97b8-0fdd7cfd9c41",
+        "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+        "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+        "8a691345-3216-522c-a898-d65e8e94db28",
+        "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+        "d0db87c4-36f5-5ac6-8428-da96d31b253a",
+        "f39c49c7-003b-471a-a33e-6cfea1d7b7b1",
+        "f52e9d72-4995-5c80-91d2-7761ea0cbec0"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk.view.json",
+      "viewId": "de-he-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "sha256": "71428a731de2226adeb7ebe15a618d2e467dd036d02d514b2ad6641f5acc77cc",
+      "atomicTargets": 897,
+      "selectedProtectedTargets": 143,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g8.view.json",
+      "viewId": "de-he-gym-seki-math-g8",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G8"
+      },
+      "sha256": "3eb72a0f968ebe3b4bb3a78d9b6a786d17300ff7a81ca292c5af7e872c24fe5f",
+      "atomicTargets": 314,
+      "selectedProtectedTargets": 42,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "53b47494-ec60-4128-840d-2a4c4bab6d32",
+        "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+        "8d30d241-0247-48ac-83d3-4e0de61584d3",
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+        "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+        "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+        "d1352ce0-9502-5039-9af6-318fe385b6fd",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+        "f242a3e8-55a3-492e-8354-b81b24cdbb78"
+      ],
+      "nativeCompilerErrors": [],
+      "deltaFromPrePromotionRemoval": {
+        "addedAtomicTargets": [],
+        "removedOrdinaryTargets": [
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "53b47494-ec60-4128-840d-2a4c4bab6d32",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "8d30d241-0247-48ac-83d3-4e0de61584d3",
+          "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+          "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+          "d1352ce0-9502-5039-9af6-318fe385b6fd",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78"
+        ],
+        "removedProtectedTargets": []
+      },
+      "spatialStageCorrections": {
+        "unsupportedS1TargetsAbsent": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "d1352ce0-9502-5039-9af6-318fe385b6fd"
+        ],
+        "existingCrossStageSiiTargetsPreserved": []
+      },
+      "explicitReviewedStagewideTargets": [
+        "26f668a0-6425-5466-9cf7-6295dd189005",
+        "36728db8-da44-4add-97b8-0fdd7cfd9c41",
+        "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "596345cd-679e-5c7b-955f-e8cb1ec81e96",
+        "79dd11f0-ed20-5b92-a215-b061a2098c0c",
+        "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+        "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+        "e02c58a2-2a32-49bd-b110-7b307e0317fb"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g9.view.json",
+      "viewId": "de-he-gym-seki-math-g9",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G9"
+      },
+      "sha256": "b26b4bf14b169b27324166d532a915d7086432745a2ba4fda71062a4801a6f80",
+      "atomicTargets": 341,
+      "selectedProtectedTargets": 45,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "53b47494-ec60-4128-840d-2a4c4bab6d32",
+        "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+        "8d30d241-0247-48ac-83d3-4e0de61584d3",
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+        "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+      ],
+      "nativeCompilerErrors": [],
+      "deltaFromPrePromotionRemoval": {
+        "addedAtomicTargets": [],
+        "removedOrdinaryTargets": [
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "53b47494-ec60-4128-840d-2a4c4bab6d32",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "8d30d241-0247-48ac-83d3-4e0de61584d3",
+          "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+          "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+        ],
+        "removedProtectedTargets": []
+      },
+      "spatialStageCorrections": {
+        "unsupportedS1TargetsAbsent": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3"
+        ],
+        "existingCrossStageSiiTargetsPreserved": []
+      },
+      "explicitReviewedStagewideTargets": [
+        "14d0e697-3fb0-5074-a08c-7e01ca9bbda8",
+        "2bd88d66-5daf-53bb-aa02-4c010963679d",
+        "36728db8-da44-4add-97b8-0fdd7cfd9c41",
+        "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+        "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+        "8a691345-3216-522c-a898-d65e8e94db28",
+        "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+        "d0db87c4-36f5-5ac6-8428-da96d31b253a",
+        "f39c49c7-003b-471a-a33e-6cfea1d7b7b1",
+        "f52e9d72-4995-5c80-91d2-7761ea0cbec0"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-gk.view.json",
+      "viewId": "de-he-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "sha256": "77af14ff10af1ca9b7667da66b61745729a58a6d5e7806cf1d3fcf8d3457ba11",
+      "atomicTargets": 562,
+      "selectedProtectedTargets": 76,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json",
+      "viewId": "de-he-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "sha256": "08cf90f46b75140407365bdfb7eb27f853f31ffa61bd6c1c49f7e729e51806e3",
+      "atomicTargets": 604,
+      "selectedProtectedTargets": 89,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-gk.view.json",
+      "viewId": "de-hh-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-HH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "sha256": "3aebe93f33c624ec6ef785d155e489989491e5cfae10a1dd6335bea055b38a70",
+      "atomicTargets": 806,
+      "selectedProtectedTargets": 130,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-lk.view.json",
+      "viewId": "de-hh-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-HH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "sha256": "1dafda0650fbbcd4be0465f5112b582caa8538f25fe903695d78bbe39641df89",
+      "atomicTargets": 812,
+      "selectedProtectedTargets": 132,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-seki.view.json",
+      "viewId": "de-hh-gym-seki-math",
+      "scope": {
+        "jurisdiction": "DE-HH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "sha256": "dd1c33e0dd02ba40fd65917d98aa7fd6e9b5735347e881be3b831e914c21d87f",
+      "atomicTargets": 244,
+      "selectedProtectedTargets": 50,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-gk.view.json",
+      "viewId": "de-hh-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-HH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "sha256": "3df93c3e61a0f5af0bb86b2632e55142c025f15534c6193a320ffdc0dc79459c",
+      "atomicTargets": 567,
+      "selectedProtectedTargets": 80,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-lk.view.json",
+      "viewId": "de-hh-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-HH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "sha256": "021b94118deb85bbae5216d99b37bec37d71b3c9be5965813ea4f3aa15bbad00",
+      "atomicTargets": 573,
+      "selectedProtectedTargets": 82,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
+      "viewId": "de-mv-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-MV",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "sha256": "fdd7a1a27353e1bafbf680cfaf428619e91688781eae4684bbf06bc77d4eecb7",
+      "atomicTargets": 731,
+      "selectedProtectedTargets": 109,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-lk.view.json",
+      "viewId": "de-mv-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-MV",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "sha256": "3f1440cc2aa58c4e42bec6ae4669bd1d6f66b9162a03f0bbb892b024a8162457",
+      "atomicTargets": 742,
+      "selectedProtectedTargets": 116,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-seki.view.json",
+      "viewId": "de-mv-gym-seki-math",
+      "scope": {
+        "jurisdiction": "DE-MV",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "sha256": "8cfe8576a7b16f50a136013bcc563b675f5f899a6c02fbd47b2bed67a9ea42f1",
+      "atomicTargets": 190,
+      "selectedProtectedTargets": 55,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json",
+      "viewId": "de-mv-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-MV",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "sha256": "e7cafa6ce6eadcb7d691e1de501d1fe32932db8a8bae47a020c37483bc2f093e",
+      "atomicTargets": 542,
+      "selectedProtectedTargets": 54,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-lk.view.json",
+      "viewId": "de-mv-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-MV",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "sha256": "ceadd91b585feb6866f4b508e24a8960fa49b6deffd3dd99f51c60ff4f1e579b",
+      "atomicTargets": 557,
+      "selectedProtectedTargets": 65,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+      "viewId": "de-ni-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "sha256": "13a09db2c3b2aa8f21c5cc815ab02872f4d46f0aaf75e2585f3ce9019a0cfda3",
+      "atomicTargets": 783,
+      "selectedProtectedTargets": 108,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-lk.view.json",
+      "viewId": "de-ni-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "sha256": "8dc406240a2c67e6e7c259f013c9f3a2ce130bc63cfacd9adb027ba9c03b29db",
+      "atomicTargets": 795,
+      "selectedProtectedTargets": 116,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-seki.view.json",
+      "viewId": "de-ni-gym-seki-math",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "sha256": "a35a6870fc27bb163dc5faa97b578097896b9ff9291a9af957db498f4930bb86",
+      "atomicTargets": 246,
+      "selectedProtectedTargets": 55,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+      "viewId": "de-ni-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "sha256": "fe0fa001c1e089a3256c6e84872d33744df2819babe885acba01dc3aa37097b0",
+      "atomicTargets": 541,
+      "selectedProtectedTargets": 53,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-lk.view.json",
+      "viewId": "de-ni-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "sha256": "69b3b6d95b0c1fafacd4f1901bbffbcf774bc6213df33b74e69f7eb316a040f7",
+      "atomicTargets": 557,
+      "selectedProtectedTargets": 65,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+      "viewId": "de-nw-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-NW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "sha256": "2c94662819ec878f3b923e3823a493458d69da38ec60278038347c0aeabc6e0a",
+      "atomicTargets": 781,
+      "selectedProtectedTargets": 109,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-lk.view.json",
+      "viewId": "de-nw-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-NW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "sha256": "dd2fb893ae51a6ba64a5e35ed96b13f25ac88f5947f57fb877a5102cbc829679",
+      "atomicTargets": 792,
+      "selectedProtectedTargets": 116,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-seki.view.json",
+      "viewId": "de-nw-gym-seki-math",
+      "scope": {
+        "jurisdiction": "DE-NW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "sha256": "9ebe4f0b89246aebc2251d919f67992d3b4de996783fcad9fa57cb7815d6cf9c",
+      "atomicTargets": 242,
+      "selectedProtectedTargets": 55,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json",
+      "viewId": "de-nw-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-NW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "sha256": "521b5708d525c1fde31ff20e646af416ec477d94b90775bb6240b1e4179dcb04",
+      "atomicTargets": 542,
+      "selectedProtectedTargets": 54,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-lk.view.json",
+      "viewId": "de-nw-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-NW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "sha256": "bb57f2cf968c5c2a3988759fbe570dce3b9133137eac86bcd441982e5d94519a",
+      "atomicTargets": 557,
+      "selectedProtectedTargets": 65,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+      "viewId": "de-rp-gym-math-gk-g8",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G8"
+      },
+      "sha256": "6684cb9c71805bdb6f628a189705955dbcacedbe6ef53d9a17e03aa9cc99ba7e",
+      "atomicTargets": 789,
+      "selectedProtectedTargets": 91,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+        "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
+        "66077296-a8f8-4645-938b-7c3424cb2f14",
+        "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+        "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+      ],
+      "nativeCompilerErrors": [],
+      "deltaFromPrePromotionRemoval": {
+        "addedAtomicTargets": [],
+        "removedOrdinaryTargets": [
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+          "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
+          "66077296-a8f8-4645-938b-7c3424cb2f14",
+          "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+          "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+          "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+        ],
+        "removedProtectedTargets": []
+      },
+      "spatialStageCorrections": {
+        "unsupportedS1TargetsAbsent": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "d1352ce0-9502-5039-9af6-318fe385b6fd"
+        ],
+        "existingCrossStageSiiTargetsPreserved": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "d1352ce0-9502-5039-9af6-318fe385b6fd"
+        ]
+      },
+      "explicitReviewedStagewideTargets": [
+        "02013455-72a0-5213-9509-ed77f7ede62b",
+        "03a87896-088d-4b21-a37b-d0604d784540",
+        "05012547-7263-5bfa-9e7c-df970745a011",
+        "093397e0-eec8-45bb-9a5a-a24827876df5",
+        "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+        "0bd7dc9b-c7f9-52e6-b374-a019edfd821c",
+        "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+        "11c88ea2-8502-5008-bec2-3e491c75ace4",
+        "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+        "15512e77-31e3-5222-8a6b-84791618e5ce",
+        "191c67db-44a8-4f63-994a-d85e8e301194",
+        "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+        "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+        "2331caf2-ccb2-5492-9fc6-48763b848bae",
+        "26f668a0-6425-5466-9cf7-6295dd189005",
+        "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5",
+        "2ae76eae-799c-463e-9ec9-82327f8209a8",
+        "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+        "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+        "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+        "31a89d59-7d45-5e60-a8e8-561001b05f2d",
+        "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+        "34200b88-c616-58f6-aa03-efb9fd766f88",
+        "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+        "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+        "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+        "3e53a39b-1c75-4034-a647-8de85719e1fb",
+        "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "47d8d47c-7c59-5394-9098-11d9ad3723f1",
+        "491e0858-e977-516e-a339-1cc2f9e9690f",
+        "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+        "4f889e45-3c1d-4a8e-8fcb-3582d40d9e8a",
+        "53b47494-ec60-4128-840d-2a4c4bab6d32",
+        "54148506-c23f-41b8-959b-068dd194cf15",
+        "546bf0b3-6921-416b-a2ef-8fd37d429dc7",
+        "570d5931-f126-5bb4-8b7f-db236d6b727f",
+        "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+        "596345cd-679e-5c7b-955f-e8cb1ec81e96",
+        "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
+        "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+        "60c2418b-aaff-58f6-964a-bc7cda2a673c",
+        "62e0a4e3-d1d3-46a2-982d-6b99dca6d3fb",
+        "6596405a-9728-41df-9163-53670ec2a937",
+        "68505a32-3b1d-57b2-a495-00b4097eb50d",
+        "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+        "72b6bfa5-8e34-4029-8f85-0277207c485e",
+        "743e5470-ff39-551e-9aba-529656418c66",
+        "76478e47-5ff9-5de1-b601-5e6e436ad855",
+        "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+        "79dd11f0-ed20-5b92-a215-b061a2098c0c",
+        "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+        "7fad6a57-cda1-5dee-a55e-877be64ba992",
+        "804d7443-9976-5d81-a47d-1601f42f7e0e",
+        "8a691345-3216-522c-a898-d65e8e94db28",
+        "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+        "8d30d241-0247-48ac-83d3-4e0de61584d3",
+        "959cc50b-6c81-4fa1-800f-4804a707b1ee",
+        "acbb7e26-f85f-405b-a3e5-affa6add6711",
+        "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+        "b44f038c-fb1f-527e-b9ad-382214d0328a",
+        "b5de0574-93ed-409c-80ee-312211420cd6",
+        "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+        "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+        "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+        "c420e0be-1e74-4050-834c-d8da7f41095a",
+        "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+        "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+        "c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1",
+        "ca623958-c204-5d1b-bdd0-3f76765674cb",
+        "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+        "cc60f759-1168-5fc0-8ff5-5f7a2533e61c",
+        "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+        "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+        "d825f7ce-e19b-594a-8181-eff199c21d93",
+        "e131c594-c45e-5718-9f33-7ae39ddc82ad",
+        "e42c208d-9555-43cc-92f5-5bb4c0688726",
+        "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+        "f17935b0-189f-5e0c-988d-ce508b710097",
+        "f509a549-aee5-5468-af73-5b1efa3f342c",
+        "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+        "f6b13b8e-1ecd-5420-905d-21290aa996a6",
+        "f7a9a0b4-ec64-468f-8da4-59c5055eac1d",
+        "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+        "f9e21454-857c-5a6a-8367-32a34fc0026b",
+        "fa72cf74-a31e-402e-90d7-422c118f4a5b",
+        "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+      "viewId": "de-rp-gym-math-gk-g9",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G9"
+      },
+      "sha256": "921386691187366249576b502c5067011003171e20c5ba267b407fe14c675df4",
+      "atomicTargets": 794,
+      "selectedProtectedTargets": 94,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "14d0e697-3fb0-5074-a08c-7e01ca9bbda8",
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+        "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
+        "2bd88d66-5daf-53bb-aa02-4c010963679d",
+        "66077296-a8f8-4645-938b-7c3424cb2f14",
+        "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+        "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+      ],
+      "nativeCompilerErrors": [],
+      "deltaFromPrePromotionRemoval": {
+        "addedAtomicTargets": [],
+        "removedOrdinaryTargets": [
+          "14d0e697-3fb0-5074-a08c-7e01ca9bbda8",
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+          "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
+          "2bd88d66-5daf-53bb-aa02-4c010963679d",
+          "66077296-a8f8-4645-938b-7c3424cb2f14",
+          "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+          "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+          "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+        ],
+        "removedProtectedTargets": []
+      },
+      "spatialStageCorrections": {
+        "unsupportedS1TargetsAbsent": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3"
+        ],
+        "existingCrossStageSiiTargetsPreserved": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3"
+        ]
+      },
+      "explicitReviewedStagewideTargets": [
+        "02013455-72a0-5213-9509-ed77f7ede62b",
+        "03a87896-088d-4b21-a37b-d0604d784540",
+        "05012547-7263-5bfa-9e7c-df970745a011",
+        "093397e0-eec8-45bb-9a5a-a24827876df5",
+        "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+        "0bd7dc9b-c7f9-52e6-b374-a019edfd821c",
+        "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+        "11c88ea2-8502-5008-bec2-3e491c75ace4",
+        "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+        "15512e77-31e3-5222-8a6b-84791618e5ce",
+        "191c67db-44a8-4f63-994a-d85e8e301194",
+        "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+        "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+        "2331caf2-ccb2-5492-9fc6-48763b848bae",
+        "26f668a0-6425-5466-9cf7-6295dd189005",
+        "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5",
+        "2ae76eae-799c-463e-9ec9-82327f8209a8",
+        "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+        "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+        "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+        "31a89d59-7d45-5e60-a8e8-561001b05f2d",
+        "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+        "34200b88-c616-58f6-aa03-efb9fd766f88",
+        "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+        "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+        "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+        "3e53a39b-1c75-4034-a647-8de85719e1fb",
+        "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "47d8d47c-7c59-5394-9098-11d9ad3723f1",
+        "491e0858-e977-516e-a339-1cc2f9e9690f",
+        "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+        "4f889e45-3c1d-4a8e-8fcb-3582d40d9e8a",
+        "53b47494-ec60-4128-840d-2a4c4bab6d32",
+        "54148506-c23f-41b8-959b-068dd194cf15",
+        "546bf0b3-6921-416b-a2ef-8fd37d429dc7",
+        "570d5931-f126-5bb4-8b7f-db236d6b727f",
+        "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+        "596345cd-679e-5c7b-955f-e8cb1ec81e96",
+        "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
+        "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+        "60c2418b-aaff-58f6-964a-bc7cda2a673c",
+        "62e0a4e3-d1d3-46a2-982d-6b99dca6d3fb",
+        "6596405a-9728-41df-9163-53670ec2a937",
+        "68505a32-3b1d-57b2-a495-00b4097eb50d",
+        "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+        "72b6bfa5-8e34-4029-8f85-0277207c485e",
+        "743e5470-ff39-551e-9aba-529656418c66",
+        "76478e47-5ff9-5de1-b601-5e6e436ad855",
+        "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+        "79dd11f0-ed20-5b92-a215-b061a2098c0c",
+        "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+        "7fad6a57-cda1-5dee-a55e-877be64ba992",
+        "804d7443-9976-5d81-a47d-1601f42f7e0e",
+        "8a691345-3216-522c-a898-d65e8e94db28",
+        "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+        "8d30d241-0247-48ac-83d3-4e0de61584d3",
+        "959cc50b-6c81-4fa1-800f-4804a707b1ee",
+        "acbb7e26-f85f-405b-a3e5-affa6add6711",
+        "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+        "b44f038c-fb1f-527e-b9ad-382214d0328a",
+        "b5de0574-93ed-409c-80ee-312211420cd6",
+        "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+        "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+        "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+        "c420e0be-1e74-4050-834c-d8da7f41095a",
+        "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+        "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+        "c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1",
+        "ca623958-c204-5d1b-bdd0-3f76765674cb",
+        "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+        "cc60f759-1168-5fc0-8ff5-5f7a2533e61c",
+        "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+        "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "d0db87c4-36f5-5ac6-8428-da96d31b253a",
+        "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+        "d825f7ce-e19b-594a-8181-eff199c21d93",
+        "e131c594-c45e-5718-9f33-7ae39ddc82ad",
+        "e42c208d-9555-43cc-92f5-5bb4c0688726",
+        "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+        "f17935b0-189f-5e0c-988d-ce508b710097",
+        "f509a549-aee5-5468-af73-5b1efa3f342c",
+        "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+        "f6b13b8e-1ecd-5420-905d-21290aa996a6",
+        "f7a9a0b4-ec64-468f-8da4-59c5055eac1d",
+        "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+        "f9e21454-857c-5a6a-8367-32a34fc0026b",
+        "fa72cf74-a31e-402e-90d7-422c118f4a5b",
+        "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json",
+      "viewId": "de-rp-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "sha256": "d9f4e9d97018fd91c471c746fecc2417479fd5b5765a0bcd19e9dac9610fe76d",
+      "atomicTargets": 786,
+      "selectedProtectedTargets": 109,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+      "viewId": "de-rp-gym-math-lk-g8",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G8"
+      },
+      "sha256": "d1552fd6478a391373ddddbda72918760edf89254674277f908b632ba316eacb",
+      "atomicTargets": 803,
+      "selectedProtectedTargets": 98,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+        "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
+        "66077296-a8f8-4645-938b-7c3424cb2f14",
+        "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+        "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+      ],
+      "nativeCompilerErrors": [],
+      "deltaFromPrePromotionRemoval": {
+        "addedAtomicTargets": [],
+        "removedOrdinaryTargets": [
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+          "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
+          "66077296-a8f8-4645-938b-7c3424cb2f14",
+          "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+          "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+          "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+        ],
+        "removedProtectedTargets": []
+      },
+      "spatialStageCorrections": {
+        "unsupportedS1TargetsAbsent": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "d1352ce0-9502-5039-9af6-318fe385b6fd"
+        ],
+        "existingCrossStageSiiTargetsPreserved": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "d1352ce0-9502-5039-9af6-318fe385b6fd"
+        ]
+      },
+      "explicitReviewedStagewideTargets": [
+        "02013455-72a0-5213-9509-ed77f7ede62b",
+        "03a87896-088d-4b21-a37b-d0604d784540",
+        "05012547-7263-5bfa-9e7c-df970745a011",
+        "093397e0-eec8-45bb-9a5a-a24827876df5",
+        "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+        "0bd7dc9b-c7f9-52e6-b374-a019edfd821c",
+        "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+        "11c88ea2-8502-5008-bec2-3e491c75ace4",
+        "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+        "15512e77-31e3-5222-8a6b-84791618e5ce",
+        "191c67db-44a8-4f63-994a-d85e8e301194",
+        "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+        "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+        "2331caf2-ccb2-5492-9fc6-48763b848bae",
+        "26f668a0-6425-5466-9cf7-6295dd189005",
+        "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5",
+        "2ae76eae-799c-463e-9ec9-82327f8209a8",
+        "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+        "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+        "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+        "31a89d59-7d45-5e60-a8e8-561001b05f2d",
+        "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+        "34200b88-c616-58f6-aa03-efb9fd766f88",
+        "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+        "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+        "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+        "3e53a39b-1c75-4034-a647-8de85719e1fb",
+        "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "47d8d47c-7c59-5394-9098-11d9ad3723f1",
+        "491e0858-e977-516e-a339-1cc2f9e9690f",
+        "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+        "4f889e45-3c1d-4a8e-8fcb-3582d40d9e8a",
+        "53b47494-ec60-4128-840d-2a4c4bab6d32",
+        "54148506-c23f-41b8-959b-068dd194cf15",
+        "546bf0b3-6921-416b-a2ef-8fd37d429dc7",
+        "570d5931-f126-5bb4-8b7f-db236d6b727f",
+        "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+        "596345cd-679e-5c7b-955f-e8cb1ec81e96",
+        "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
+        "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+        "60c2418b-aaff-58f6-964a-bc7cda2a673c",
+        "62e0a4e3-d1d3-46a2-982d-6b99dca6d3fb",
+        "6596405a-9728-41df-9163-53670ec2a937",
+        "68505a32-3b1d-57b2-a495-00b4097eb50d",
+        "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+        "72b6bfa5-8e34-4029-8f85-0277207c485e",
+        "743e5470-ff39-551e-9aba-529656418c66",
+        "76478e47-5ff9-5de1-b601-5e6e436ad855",
+        "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+        "79dd11f0-ed20-5b92-a215-b061a2098c0c",
+        "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+        "7fad6a57-cda1-5dee-a55e-877be64ba992",
+        "804d7443-9976-5d81-a47d-1601f42f7e0e",
+        "8a691345-3216-522c-a898-d65e8e94db28",
+        "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+        "8d30d241-0247-48ac-83d3-4e0de61584d3",
+        "959cc50b-6c81-4fa1-800f-4804a707b1ee",
+        "acbb7e26-f85f-405b-a3e5-affa6add6711",
+        "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+        "b44f038c-fb1f-527e-b9ad-382214d0328a",
+        "b5de0574-93ed-409c-80ee-312211420cd6",
+        "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+        "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+        "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+        "c420e0be-1e74-4050-834c-d8da7f41095a",
+        "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+        "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+        "c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1",
+        "ca623958-c204-5d1b-bdd0-3f76765674cb",
+        "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+        "cc60f759-1168-5fc0-8ff5-5f7a2533e61c",
+        "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+        "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+        "d825f7ce-e19b-594a-8181-eff199c21d93",
+        "e131c594-c45e-5718-9f33-7ae39ddc82ad",
+        "e42c208d-9555-43cc-92f5-5bb4c0688726",
+        "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+        "f17935b0-189f-5e0c-988d-ce508b710097",
+        "f509a549-aee5-5468-af73-5b1efa3f342c",
+        "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+        "f6b13b8e-1ecd-5420-905d-21290aa996a6",
+        "f7a9a0b4-ec64-468f-8da4-59c5055eac1d",
+        "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+        "f9e21454-857c-5a6a-8367-32a34fc0026b",
+        "fa72cf74-a31e-402e-90d7-422c118f4a5b",
+        "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g9.view.json",
+      "viewId": "de-rp-gym-math-lk-g9",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G9"
+      },
+      "sha256": "423ce528147de4f73450ae069086a2e6704c65ccffcd1189de4d4f54b2520644",
+      "atomicTargets": 808,
+      "selectedProtectedTargets": 101,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "14d0e697-3fb0-5074-a08c-7e01ca9bbda8",
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+        "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
+        "2bd88d66-5daf-53bb-aa02-4c010963679d",
+        "66077296-a8f8-4645-938b-7c3424cb2f14",
+        "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+        "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+      ],
+      "nativeCompilerErrors": [],
+      "deltaFromPrePromotionRemoval": {
+        "addedAtomicTargets": [],
+        "removedOrdinaryTargets": [
+          "14d0e697-3fb0-5074-a08c-7e01ca9bbda8",
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+          "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
+          "2bd88d66-5daf-53bb-aa02-4c010963679d",
+          "66077296-a8f8-4645-938b-7c3424cb2f14",
+          "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+          "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+          "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+        ],
+        "removedProtectedTargets": []
+      },
+      "spatialStageCorrections": {
+        "unsupportedS1TargetsAbsent": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3"
+        ],
+        "existingCrossStageSiiTargetsPreserved": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3"
+        ]
+      },
+      "explicitReviewedStagewideTargets": [
+        "02013455-72a0-5213-9509-ed77f7ede62b",
+        "03a87896-088d-4b21-a37b-d0604d784540",
+        "05012547-7263-5bfa-9e7c-df970745a011",
+        "093397e0-eec8-45bb-9a5a-a24827876df5",
+        "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+        "0bd7dc9b-c7f9-52e6-b374-a019edfd821c",
+        "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+        "11c88ea2-8502-5008-bec2-3e491c75ace4",
+        "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+        "15512e77-31e3-5222-8a6b-84791618e5ce",
+        "191c67db-44a8-4f63-994a-d85e8e301194",
+        "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+        "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+        "2331caf2-ccb2-5492-9fc6-48763b848bae",
+        "26f668a0-6425-5466-9cf7-6295dd189005",
+        "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5",
+        "2ae76eae-799c-463e-9ec9-82327f8209a8",
+        "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+        "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+        "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+        "31a89d59-7d45-5e60-a8e8-561001b05f2d",
+        "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+        "34200b88-c616-58f6-aa03-efb9fd766f88",
+        "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+        "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+        "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+        "3e53a39b-1c75-4034-a647-8de85719e1fb",
+        "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "47d8d47c-7c59-5394-9098-11d9ad3723f1",
+        "491e0858-e977-516e-a339-1cc2f9e9690f",
+        "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+        "4f889e45-3c1d-4a8e-8fcb-3582d40d9e8a",
+        "53b47494-ec60-4128-840d-2a4c4bab6d32",
+        "54148506-c23f-41b8-959b-068dd194cf15",
+        "546bf0b3-6921-416b-a2ef-8fd37d429dc7",
+        "570d5931-f126-5bb4-8b7f-db236d6b727f",
+        "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+        "596345cd-679e-5c7b-955f-e8cb1ec81e96",
+        "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
+        "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+        "60c2418b-aaff-58f6-964a-bc7cda2a673c",
+        "62e0a4e3-d1d3-46a2-982d-6b99dca6d3fb",
+        "6596405a-9728-41df-9163-53670ec2a937",
+        "68505a32-3b1d-57b2-a495-00b4097eb50d",
+        "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+        "72b6bfa5-8e34-4029-8f85-0277207c485e",
+        "743e5470-ff39-551e-9aba-529656418c66",
+        "76478e47-5ff9-5de1-b601-5e6e436ad855",
+        "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+        "79dd11f0-ed20-5b92-a215-b061a2098c0c",
+        "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+        "7fad6a57-cda1-5dee-a55e-877be64ba992",
+        "804d7443-9976-5d81-a47d-1601f42f7e0e",
+        "8a691345-3216-522c-a898-d65e8e94db28",
+        "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+        "8d30d241-0247-48ac-83d3-4e0de61584d3",
+        "959cc50b-6c81-4fa1-800f-4804a707b1ee",
+        "acbb7e26-f85f-405b-a3e5-affa6add6711",
+        "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+        "b44f038c-fb1f-527e-b9ad-382214d0328a",
+        "b5de0574-93ed-409c-80ee-312211420cd6",
+        "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+        "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+        "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+        "c420e0be-1e74-4050-834c-d8da7f41095a",
+        "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+        "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+        "c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1",
+        "ca623958-c204-5d1b-bdd0-3f76765674cb",
+        "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+        "cc60f759-1168-5fc0-8ff5-5f7a2533e61c",
+        "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+        "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "d0db87c4-36f5-5ac6-8428-da96d31b253a",
+        "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+        "d825f7ce-e19b-594a-8181-eff199c21d93",
+        "e131c594-c45e-5718-9f33-7ae39ddc82ad",
+        "e42c208d-9555-43cc-92f5-5bb4c0688726",
+        "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+        "f17935b0-189f-5e0c-988d-ce508b710097",
+        "f509a549-aee5-5468-af73-5b1efa3f342c",
+        "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+        "f6b13b8e-1ecd-5420-905d-21290aa996a6",
+        "f7a9a0b4-ec64-468f-8da4-59c5055eac1d",
+        "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+        "f9e21454-857c-5a6a-8367-32a34fc0026b",
+        "fa72cf74-a31e-402e-90d7-422c118f4a5b",
+        "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk.view.json",
+      "viewId": "de-rp-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "sha256": "7a02b016de30cd44b48616947312d3b631ae750e3cdaa7919283dfa3e8a1e48a",
+      "atomicTargets": 800,
+      "selectedProtectedTargets": 116,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g8.view.json",
+      "viewId": "de-rp-gym-seki-math-g8",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G8"
+      },
+      "sha256": "f93d6fa0f109f2c920e0dc5f33618ee53f023c01ca193e797961aa7663e985fe",
+      "atomicTargets": 256,
+      "selectedProtectedTargets": 38,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+        "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
+        "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+        "66077296-a8f8-4645-938b-7c3424cb2f14",
+        "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+        "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+        "d1352ce0-9502-5039-9af6-318fe385b6fd",
+        "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+        "f242a3e8-55a3-492e-8354-b81b24cdbb78"
+      ],
+      "nativeCompilerErrors": [],
+      "deltaFromPrePromotionRemoval": {
+        "addedAtomicTargets": [],
+        "removedOrdinaryTargets": [
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+          "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "66077296-a8f8-4645-938b-7c3424cb2f14",
+          "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+          "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+          "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "d1352ce0-9502-5039-9af6-318fe385b6fd",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78"
+        ],
+        "removedProtectedTargets": []
+      },
+      "spatialStageCorrections": {
+        "unsupportedS1TargetsAbsent": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "d1352ce0-9502-5039-9af6-318fe385b6fd"
+        ],
+        "existingCrossStageSiiTargetsPreserved": []
+      },
+      "explicitReviewedStagewideTargets": [
+        "02013455-72a0-5213-9509-ed77f7ede62b",
+        "03a87896-088d-4b21-a37b-d0604d784540",
+        "05012547-7263-5bfa-9e7c-df970745a011",
+        "093397e0-eec8-45bb-9a5a-a24827876df5",
+        "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+        "0bd7dc9b-c7f9-52e6-b374-a019edfd821c",
+        "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+        "11c88ea2-8502-5008-bec2-3e491c75ace4",
+        "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+        "15512e77-31e3-5222-8a6b-84791618e5ce",
+        "191c67db-44a8-4f63-994a-d85e8e301194",
+        "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+        "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+        "2331caf2-ccb2-5492-9fc6-48763b848bae",
+        "26f668a0-6425-5466-9cf7-6295dd189005",
+        "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5",
+        "2ae76eae-799c-463e-9ec9-82327f8209a8",
+        "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+        "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+        "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+        "30c013ac-5164-4c3c-8bc1-9a10b2f49533",
+        "31a89d59-7d45-5e60-a8e8-561001b05f2d",
+        "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+        "34200b88-c616-58f6-aa03-efb9fd766f88",
+        "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+        "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+        "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+        "3e53a39b-1c75-4034-a647-8de85719e1fb",
+        "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "47d8d47c-7c59-5394-9098-11d9ad3723f1",
+        "491e0858-e977-516e-a339-1cc2f9e9690f",
+        "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+        "4f889e45-3c1d-4a8e-8fcb-3582d40d9e8a",
+        "53b47494-ec60-4128-840d-2a4c4bab6d32",
+        "54148506-c23f-41b8-959b-068dd194cf15",
+        "546bf0b3-6921-416b-a2ef-8fd37d429dc7",
+        "570d5931-f126-5bb4-8b7f-db236d6b727f",
+        "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+        "596345cd-679e-5c7b-955f-e8cb1ec81e96",
+        "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
+        "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+        "60c2418b-aaff-58f6-964a-bc7cda2a673c",
+        "62e0a4e3-d1d3-46a2-982d-6b99dca6d3fb",
+        "6596405a-9728-41df-9163-53670ec2a937",
+        "68505a32-3b1d-57b2-a495-00b4097eb50d",
+        "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+        "72b6bfa5-8e34-4029-8f85-0277207c485e",
+        "743e5470-ff39-551e-9aba-529656418c66",
+        "76478e47-5ff9-5de1-b601-5e6e436ad855",
+        "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+        "79dd11f0-ed20-5b92-a215-b061a2098c0c",
+        "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+        "7fad6a57-cda1-5dee-a55e-877be64ba992",
+        "804d7443-9976-5d81-a47d-1601f42f7e0e",
+        "8a691345-3216-522c-a898-d65e8e94db28",
+        "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+        "8d30d241-0247-48ac-83d3-4e0de61584d3",
+        "959cc50b-6c81-4fa1-800f-4804a707b1ee",
+        "acbb7e26-f85f-405b-a3e5-affa6add6711",
+        "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+        "b44f038c-fb1f-527e-b9ad-382214d0328a",
+        "b5de0574-93ed-409c-80ee-312211420cd6",
+        "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+        "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+        "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+        "c420e0be-1e74-4050-834c-d8da7f41095a",
+        "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+        "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+        "c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1",
+        "ca623958-c204-5d1b-bdd0-3f76765674cb",
+        "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+        "cc60f759-1168-5fc0-8ff5-5f7a2533e61c",
+        "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+        "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+        "d825f7ce-e19b-594a-8181-eff199c21d93",
+        "e131c594-c45e-5718-9f33-7ae39ddc82ad",
+        "e42c208d-9555-43cc-92f5-5bb4c0688726",
+        "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+        "f17935b0-189f-5e0c-988d-ce508b710097",
+        "f509a549-aee5-5468-af73-5b1efa3f342c",
+        "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+        "f6b13b8e-1ecd-5420-905d-21290aa996a6",
+        "f7a9a0b4-ec64-468f-8da4-59c5055eac1d",
+        "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+        "f9e21454-857c-5a6a-8367-32a34fc0026b",
+        "fa72cf74-a31e-402e-90d7-422c118f4a5b",
+        "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g9.view.json",
+      "viewId": "de-rp-gym-seki-math-g9",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G9"
+      },
+      "sha256": "668a92675568cbd3a582bfdcce786ac35eaf653650a99274c03a1affd60d7a3b",
+      "atomicTargets": 263,
+      "selectedProtectedTargets": 41,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "14d0e697-3fb0-5074-a08c-7e01ca9bbda8",
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+        "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
+        "2bd88d66-5daf-53bb-aa02-4c010963679d",
+        "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+        "66077296-a8f8-4645-938b-7c3424cb2f14",
+        "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+        "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+        "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+      ],
+      "nativeCompilerErrors": [],
+      "deltaFromPrePromotionRemoval": {
+        "addedAtomicTargets": [],
+        "removedOrdinaryTargets": [
+          "14d0e697-3fb0-5074-a08c-7e01ca9bbda8",
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+          "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
+          "2bd88d66-5daf-53bb-aa02-4c010963679d",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "66077296-a8f8-4645-938b-7c3424cb2f14",
+          "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+          "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+          "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+        ],
+        "removedProtectedTargets": []
+      },
+      "spatialStageCorrections": {
+        "unsupportedS1TargetsAbsent": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3"
+        ],
+        "existingCrossStageSiiTargetsPreserved": []
+      },
+      "explicitReviewedStagewideTargets": [
+        "02013455-72a0-5213-9509-ed77f7ede62b",
+        "03a87896-088d-4b21-a37b-d0604d784540",
+        "05012547-7263-5bfa-9e7c-df970745a011",
+        "093397e0-eec8-45bb-9a5a-a24827876df5",
+        "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+        "0bd7dc9b-c7f9-52e6-b374-a019edfd821c",
+        "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+        "11c88ea2-8502-5008-bec2-3e491c75ace4",
+        "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+        "15512e77-31e3-5222-8a6b-84791618e5ce",
+        "191c67db-44a8-4f63-994a-d85e8e301194",
+        "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+        "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+        "2331caf2-ccb2-5492-9fc6-48763b848bae",
+        "26f668a0-6425-5466-9cf7-6295dd189005",
+        "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5",
+        "2ae76eae-799c-463e-9ec9-82327f8209a8",
+        "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+        "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+        "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+        "30c013ac-5164-4c3c-8bc1-9a10b2f49533",
+        "31a89d59-7d45-5e60-a8e8-561001b05f2d",
+        "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+        "34200b88-c616-58f6-aa03-efb9fd766f88",
+        "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+        "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+        "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+        "3e53a39b-1c75-4034-a647-8de85719e1fb",
+        "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "47d8d47c-7c59-5394-9098-11d9ad3723f1",
+        "491e0858-e977-516e-a339-1cc2f9e9690f",
+        "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+        "4f889e45-3c1d-4a8e-8fcb-3582d40d9e8a",
+        "53b47494-ec60-4128-840d-2a4c4bab6d32",
+        "54148506-c23f-41b8-959b-068dd194cf15",
+        "546bf0b3-6921-416b-a2ef-8fd37d429dc7",
+        "570d5931-f126-5bb4-8b7f-db236d6b727f",
+        "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+        "596345cd-679e-5c7b-955f-e8cb1ec81e96",
+        "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
+        "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+        "60c2418b-aaff-58f6-964a-bc7cda2a673c",
+        "62e0a4e3-d1d3-46a2-982d-6b99dca6d3fb",
+        "6596405a-9728-41df-9163-53670ec2a937",
+        "68505a32-3b1d-57b2-a495-00b4097eb50d",
+        "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+        "72b6bfa5-8e34-4029-8f85-0277207c485e",
+        "743e5470-ff39-551e-9aba-529656418c66",
+        "76478e47-5ff9-5de1-b601-5e6e436ad855",
+        "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+        "79dd11f0-ed20-5b92-a215-b061a2098c0c",
+        "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+        "7fad6a57-cda1-5dee-a55e-877be64ba992",
+        "804d7443-9976-5d81-a47d-1601f42f7e0e",
+        "8a691345-3216-522c-a898-d65e8e94db28",
+        "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+        "8d30d241-0247-48ac-83d3-4e0de61584d3",
+        "959cc50b-6c81-4fa1-800f-4804a707b1ee",
+        "acbb7e26-f85f-405b-a3e5-affa6add6711",
+        "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+        "b44f038c-fb1f-527e-b9ad-382214d0328a",
+        "b5de0574-93ed-409c-80ee-312211420cd6",
+        "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+        "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+        "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+        "c420e0be-1e74-4050-834c-d8da7f41095a",
+        "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+        "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+        "c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1",
+        "ca623958-c204-5d1b-bdd0-3f76765674cb",
+        "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+        "cc60f759-1168-5fc0-8ff5-5f7a2533e61c",
+        "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+        "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "d0db87c4-36f5-5ac6-8428-da96d31b253a",
+        "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+        "d825f7ce-e19b-594a-8181-eff199c21d93",
+        "e131c594-c45e-5718-9f33-7ae39ddc82ad",
+        "e42c208d-9555-43cc-92f5-5bb4c0688726",
+        "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+        "f17935b0-189f-5e0c-988d-ce508b710097",
+        "f509a549-aee5-5468-af73-5b1efa3f342c",
+        "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+        "f6b13b8e-1ecd-5420-905d-21290aa996a6",
+        "f7a9a0b4-ec64-468f-8da4-59c5055eac1d",
+        "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+        "f9e21454-857c-5a6a-8367-32a34fc0026b",
+        "fa72cf74-a31e-402e-90d7-422c118f4a5b",
+        "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "viewId": "de-sh-gym-math-gk-g8",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G8"
+      },
+      "sha256": "3128947f1c09178f31eb3551a39a3a4fcea88b9525579c4816e903ef8e09f3f0",
+      "atomicTargets": 742,
+      "selectedProtectedTargets": 81,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+        "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+        "66077296-a8f8-4645-938b-7c3424cb2f14",
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+        "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+        "d1352ce0-9502-5039-9af6-318fe385b6fd",
+        "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+        "f242a3e8-55a3-492e-8354-b81b24cdbb78"
+      ],
+      "nativeCompilerErrors": [],
+      "deltaFromPrePromotionRemoval": {
+        "addedAtomicTargets": [],
+        "removedOrdinaryTargets": [
+          "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+          "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+          "66077296-a8f8-4645-938b-7c3424cb2f14",
+          "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+          "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+          "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+          "d1352ce0-9502-5039-9af6-318fe385b6fd",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78"
+        ],
+        "removedProtectedTargets": []
+      },
+      "spatialStageCorrections": {
+        "unsupportedS1TargetsAbsent": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "235ae698-369f-4dbe-b46f-87e8b65bb03d"
+        ],
+        "existingCrossStageSiiTargetsPreserved": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "235ae698-369f-4dbe-b46f-87e8b65bb03d"
+        ]
+      },
+      "explicitReviewedStagewideTargets": [
+        "02013455-72a0-5213-9509-ed77f7ede62b",
+        "05012547-7263-5bfa-9e7c-df970745a011",
+        "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+        "11c88ea2-8502-5008-bec2-3e491c75ace4",
+        "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "491e0858-e977-516e-a339-1cc2f9e9690f",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+        "6596405a-9728-41df-9163-53670ec2a937",
+        "68505a32-3b1d-57b2-a495-00b4097eb50d",
+        "7fad6a57-cda1-5dee-a55e-877be64ba992",
+        "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+        "8a691345-3216-522c-a898-d65e8e94db28",
+        "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+        "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+        "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "viewId": "de-sh-gym-math-gk-g9",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G9"
+      },
+      "sha256": "d8ea08eabbd3c016393e1def3f126c0b2fbd3169944b279fb384d3737523c596",
+      "atomicTargets": 749,
+      "selectedProtectedTargets": 88,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+        "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+        "66077296-a8f8-4645-938b-7c3424cb2f14",
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+        "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+        "d1352ce0-9502-5039-9af6-318fe385b6fd",
+        "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+        "f242a3e8-55a3-492e-8354-b81b24cdbb78"
+      ],
+      "nativeCompilerErrors": [],
+      "deltaFromPrePromotionRemoval": {
+        "addedAtomicTargets": [],
+        "removedOrdinaryTargets": [
+          "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+          "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+          "66077296-a8f8-4645-938b-7c3424cb2f14",
+          "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+          "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+          "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+          "d1352ce0-9502-5039-9af6-318fe385b6fd",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78"
+        ],
+        "removedProtectedTargets": []
+      },
+      "spatialStageCorrections": {
+        "unsupportedS1TargetsAbsent": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "235ae698-369f-4dbe-b46f-87e8b65bb03d"
+        ],
+        "existingCrossStageSiiTargetsPreserved": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "235ae698-369f-4dbe-b46f-87e8b65bb03d"
+        ]
+      },
+      "explicitReviewedStagewideTargets": [
+        "02013455-72a0-5213-9509-ed77f7ede62b",
+        "05012547-7263-5bfa-9e7c-df970745a011",
+        "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+        "11c88ea2-8502-5008-bec2-3e491c75ace4",
+        "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "491e0858-e977-516e-a339-1cc2f9e9690f",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+        "6596405a-9728-41df-9163-53670ec2a937",
+        "68505a32-3b1d-57b2-a495-00b4097eb50d",
+        "7fad6a57-cda1-5dee-a55e-877be64ba992",
+        "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+        "8a691345-3216-522c-a898-d65e8e94db28",
+        "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+        "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+        "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+      "viewId": "de-sh-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "sha256": "e852d54b1a506971b66772a92fae7311f49a8fd5dd3068c0c5a059a6fc0048b0",
+      "atomicTargets": 764,
+      "selectedProtectedTargets": 110,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "viewId": "de-sh-gym-math-lk-g8",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G8"
+      },
+      "sha256": "4c1c64f48bb29945b44dc884edb34a5ec893199d2a927a6018711dd25f5ea562",
+      "atomicTargets": 770,
+      "selectedProtectedTargets": 86,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [
+        "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+        "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+        "66077296-a8f8-4645-938b-7c3424cb2f14",
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+        "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+        "d1352ce0-9502-5039-9af6-318fe385b6fd",
+        "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+        "f242a3e8-55a3-492e-8354-b81b24cdbb78"
+      ],
+      "nativeCompilerErrors": [],
+      "deltaFromPrePromotionRemoval": {
+        "addedAtomicTargets": [
+          "bbb340ed-1009-4966-ae96-bfea4437505a"
+        ],
+        "removedOrdinaryTargets": [
+          "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+          "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+          "66077296-a8f8-4645-938b-7c3424cb2f14",
+          "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+          "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+          "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+          "d1352ce0-9502-5039-9af6-318fe385b6fd",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78"
+        ],
+        "removedProtectedTargets": []
+      },
+      "spatialStageCorrections": {
+        "unsupportedS1TargetsAbsent": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "235ae698-369f-4dbe-b46f-87e8b65bb03d"
+        ],
+        "existingCrossStageSiiTargetsPreserved": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "235ae698-369f-4dbe-b46f-87e8b65bb03d"
+        ]
+      },
+      "explicitReviewedStagewideTargets": [
+        "02013455-72a0-5213-9509-ed77f7ede62b",
+        "05012547-7263-5bfa-9e7c-df970745a011",
+        "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+        "11c88ea2-8502-5008-bec2-3e491c75ace4",
+        "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "491e0858-e977-516e-a339-1cc2f9e9690f",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+        "6596405a-9728-41df-9163-53670ec2a937",
+        "68505a32-3b1d-57b2-a495-00b4097eb50d",
+        "7fad6a57-cda1-5dee-a55e-877be64ba992",
+        "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+        "8a691345-3216-522c-a898-d65e8e94db28",
+        "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+        "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+        "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "viewId": "de-sh-gym-math-lk-g9",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G9"
+      },
+      "sha256": "6ab3a020b393fa86fec06de9b97d76291c8b8f03e2787300a324dc00169c25fe",
+      "atomicTargets": 777,
+      "selectedProtectedTargets": 93,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [
+        "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+        "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+        "66077296-a8f8-4645-938b-7c3424cb2f14",
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+        "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+        "d1352ce0-9502-5039-9af6-318fe385b6fd",
+        "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+        "f242a3e8-55a3-492e-8354-b81b24cdbb78"
+      ],
+      "nativeCompilerErrors": [],
+      "deltaFromPrePromotionRemoval": {
+        "addedAtomicTargets": [
+          "bbb340ed-1009-4966-ae96-bfea4437505a"
+        ],
+        "removedOrdinaryTargets": [
+          "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+          "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+          "66077296-a8f8-4645-938b-7c3424cb2f14",
+          "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+          "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+          "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+          "d1352ce0-9502-5039-9af6-318fe385b6fd",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78"
+        ],
+        "removedProtectedTargets": []
+      },
+      "spatialStageCorrections": {
+        "unsupportedS1TargetsAbsent": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "235ae698-369f-4dbe-b46f-87e8b65bb03d"
+        ],
+        "existingCrossStageSiiTargetsPreserved": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "235ae698-369f-4dbe-b46f-87e8b65bb03d"
+        ]
+      },
+      "explicitReviewedStagewideTargets": [
+        "02013455-72a0-5213-9509-ed77f7ede62b",
+        "05012547-7263-5bfa-9e7c-df970745a011",
+        "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+        "11c88ea2-8502-5008-bec2-3e491c75ace4",
+        "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "491e0858-e977-516e-a339-1cc2f9e9690f",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+        "6596405a-9728-41df-9163-53670ec2a937",
+        "68505a32-3b1d-57b2-a495-00b4097eb50d",
+        "7fad6a57-cda1-5dee-a55e-877be64ba992",
+        "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+        "8a691345-3216-522c-a898-d65e8e94db28",
+        "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+        "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+        "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+      "viewId": "de-sh-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "sha256": "ddd0ee62fe9d0ce39d2036abc1ae5fba9b7c1a5253687f152ce3a9c1cbbc8d8a",
+      "atomicTargets": 792,
+      "selectedProtectedTargets": 115,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+      "viewId": "de-sh-gym-seki-math-g8",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G8"
+      },
+      "sha256": "55ea10981c264c093cb1e8b680dc5296db50cc09a418018827893e3008ea42f0",
+      "atomicTargets": 242,
+      "selectedProtectedTargets": 24,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "235ae698-369f-4dbe-b46f-87e8b65bb03d",
+        "30c013ac-5164-4c3c-8bc1-9a10b2f49533",
+        "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+        "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+        "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+        "66077296-a8f8-4645-938b-7c3424cb2f14",
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+        "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+        "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+        "d1352ce0-9502-5039-9af6-318fe385b6fd",
+        "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+        "f242a3e8-55a3-492e-8354-b81b24cdbb78"
+      ],
+      "nativeCompilerErrors": [],
+      "deltaFromPrePromotionRemoval": {
+        "addedAtomicTargets": [],
+        "removedOrdinaryTargets": [
+          "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "235ae698-369f-4dbe-b46f-87e8b65bb03d",
+          "30c013ac-5164-4c3c-8bc1-9a10b2f49533",
+          "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+          "66077296-a8f8-4645-938b-7c3424cb2f14",
+          "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+          "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+          "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "d1352ce0-9502-5039-9af6-318fe385b6fd",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78"
+        ],
+        "removedProtectedTargets": []
+      },
+      "spatialStageCorrections": {
+        "unsupportedS1TargetsAbsent": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "235ae698-369f-4dbe-b46f-87e8b65bb03d"
+        ],
+        "existingCrossStageSiiTargetsPreserved": []
+      },
+      "explicitReviewedStagewideTargets": [
+        "02013455-72a0-5213-9509-ed77f7ede62b",
+        "05012547-7263-5bfa-9e7c-df970745a011",
+        "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+        "11c88ea2-8502-5008-bec2-3e491c75ace4",
+        "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "491e0858-e977-516e-a339-1cc2f9e9690f",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+        "6596405a-9728-41df-9163-53670ec2a937",
+        "68505a32-3b1d-57b2-a495-00b4097eb50d",
+        "7fad6a57-cda1-5dee-a55e-877be64ba992",
+        "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+        "8a691345-3216-522c-a898-d65e8e94db28",
+        "959cc50b-6c81-4fa1-800f-4804a707b1ee",
+        "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+        "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+        "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+      "viewId": "de-sh-gym-seki-math-g9",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G9"
+      },
+      "sha256": "8c759e986439e3db62ef359872642fa71416fde981b96b3cad5bfd47b44ba19a",
+      "atomicTargets": 247,
+      "selectedProtectedTargets": 29,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [
+        "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "235ae698-369f-4dbe-b46f-87e8b65bb03d",
+        "30c013ac-5164-4c3c-8bc1-9a10b2f49533",
+        "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+        "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+        "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+        "66077296-a8f8-4645-938b-7c3424cb2f14",
+        "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+        "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+        "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+        "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+        "d1352ce0-9502-5039-9af6-318fe385b6fd",
+        "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+        "f242a3e8-55a3-492e-8354-b81b24cdbb78"
+      ],
+      "nativeCompilerErrors": [],
+      "deltaFromPrePromotionRemoval": {
+        "addedAtomicTargets": [],
+        "removedOrdinaryTargets": [
+          "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "235ae698-369f-4dbe-b46f-87e8b65bb03d",
+          "30c013ac-5164-4c3c-8bc1-9a10b2f49533",
+          "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+          "66077296-a8f8-4645-938b-7c3424cb2f14",
+          "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+          "bc6e4c14-d4f7-537e-8e83-9b5c0086e807",
+          "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "d1352ce0-9502-5039-9af6-318fe385b6fd",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78"
+        ],
+        "removedProtectedTargets": []
+      },
+      "spatialStageCorrections": {
+        "unsupportedS1TargetsAbsent": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "235ae698-369f-4dbe-b46f-87e8b65bb03d"
+        ],
+        "existingCrossStageSiiTargetsPreserved": []
+      },
+      "explicitReviewedStagewideTargets": [
+        "02013455-72a0-5213-9509-ed77f7ede62b",
+        "05012547-7263-5bfa-9e7c-df970745a011",
+        "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+        "11c88ea2-8502-5008-bec2-3e491c75ace4",
+        "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "491e0858-e977-516e-a339-1cc2f9e9690f",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+        "6596405a-9728-41df-9163-53670ec2a937",
+        "68505a32-3b1d-57b2-a495-00b4097eb50d",
+        "7fad6a57-cda1-5dee-a55e-877be64ba992",
+        "88abc886-cce8-55cf-b86c-eb4ba45a92d7",
+        "8a691345-3216-522c-a898-d65e8e94db28",
+        "959cc50b-6c81-4fa1-800f-4804a707b1ee",
+        "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+        "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+        "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+      "viewId": "de-sh-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "sha256": "4574b1f28289371d94685648692a091a10523c9fdb9faeb9acef40a1d56ec572",
+      "atomicTargets": 537,
+      "selectedProtectedTargets": 62,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
+      "viewId": "de-sl-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-SL",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "sha256": "235b1b5242232d3cdf7f95b5e99f5c3b6dd0dabdbb5f3308e02d19626fb6af61",
+      "atomicTargets": 798,
+      "selectedProtectedTargets": 116,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-lk.view.json",
+      "viewId": "de-sl-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-SL",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "sha256": "8769cccb47beaba431de5b42c3e71296e6d8bda828d33094e12e3937e73ad54d",
+      "atomicTargets": 812,
+      "selectedProtectedTargets": 124,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-seki.view.json",
+      "viewId": "de-sl-gym-seki-math",
+      "scope": {
+        "jurisdiction": "DE-SL",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "sha256": "51e8a8808b89ce8875cc13bea1adacdeb131a588fdf1c891bbdc25e51b871969",
+      "atomicTargets": 257,
+      "selectedProtectedTargets": 61,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json",
+      "viewId": "de-sl-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-SL",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "sha256": "979afd805e4b21edfa92f5fd95ecc066e824f49d0b23702d73ab7984e036e8ee",
+      "atomicTargets": 544,
+      "selectedProtectedTargets": 55,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-lk.view.json",
+      "viewId": "de-sl-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-SL",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "sha256": "df6546097405cdc5ff9b4a19635a8daabaaf5615229314c51db8f8e76a2ec9e8",
+      "atomicTargets": 562,
+      "selectedProtectedTargets": 67,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
+      "viewId": "de-sn-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-SN",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "sha256": "b6f810f491ace636dc2c8ee453449cab3a30914f35d0dc4d5e1276ecedf536bc",
+      "atomicTargets": 785,
+      "selectedProtectedTargets": 109,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-lk.view.json",
+      "viewId": "de-sn-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-SN",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "sha256": "ccee5fa4e1bb52eab32efec63401e11abcd4fd316cd8134e39816dfefece3085",
+      "atomicTargets": 796,
+      "selectedProtectedTargets": 116,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-seki.view.json",
+      "viewId": "de-sn-gym-seki-math",
+      "scope": {
+        "jurisdiction": "DE-SN",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "sha256": "fa0dfbfc79bea803d19f78033821c76e5ba4e6068640aa45920b75932486b210",
+      "atomicTargets": 246,
+      "selectedProtectedTargets": 55,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json",
+      "viewId": "de-sn-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-SN",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "sha256": "7ac923aa0ab5a6c1e1984060a0702c5010b0324b7587d7e052b0bd8eab31101c",
+      "atomicTargets": 542,
+      "selectedProtectedTargets": 54,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-lk.view.json",
+      "viewId": "de-sn-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-SN",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "sha256": "b73055fc0d3de10a4a2faf30c5cb54040866a7f8e887866707694ab7abf4cd2e",
+      "atomicTargets": 557,
+      "selectedProtectedTargets": 65,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json",
+      "viewId": "de-st-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-ST",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "sha256": "f0213cc56db9a2d5f20978e6d1d40341615c703cf874b88fb547dcfb9a016c6c",
+      "atomicTargets": 778,
+      "selectedProtectedTargets": 108,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-lk.view.json",
+      "viewId": "de-st-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-ST",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "sha256": "febe60a18cbee780ef19396b42e47ac79e991d4997faf7aec68784b4f51d0d53",
+      "atomicTargets": 790,
+      "selectedProtectedTargets": 115,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-seki.view.json",
+      "viewId": "de-st-gym-seki-math",
+      "scope": {
+        "jurisdiction": "DE-ST",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "sha256": "fa747a3429de2ca782f59a4a88c7b8015007ebb0f4b90ccb4b4bd63d04be8b16",
+      "atomicTargets": 240,
+      "selectedProtectedTargets": 55,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json",
+      "viewId": "de-st-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-ST",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "sha256": "9f29ac73af59a3a2ef5b50b64c4f6387e164096c8a6affdb7107bf1a94f6375b",
+      "atomicTargets": 541,
+      "selectedProtectedTargets": 53,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-lk.view.json",
+      "viewId": "de-st-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-ST",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "sha256": "83066db175e7d87c509c9c31b72bb9c9669eda148c40025df5ce550ccbaf8f29",
+      "atomicTargets": 557,
+      "selectedProtectedTargets": 64,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
+      "viewId": "de-th-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-TH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "sha256": "3b18182bafd74f121d174abc23c0ea8f58bfc7f88607005a32bc177f9e98acd3",
+      "atomicTargets": 720,
+      "selectedProtectedTargets": 108,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-lk.view.json",
+      "viewId": "de-th-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-TH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "sha256": "d3eb70568b8845aa8d84eb1f3a65b8b77a9345460edb93968abbdb4141512d82",
+      "atomicTargets": 733,
+      "selectedProtectedTargets": 116,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-seki.view.json",
+      "viewId": "de-th-gym-seki-math",
+      "scope": {
+        "jurisdiction": "DE-TH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "sha256": "a268c216c8bbb87a0c1bfbc324e793b31ed2a13f97a540dcb2a11e250fb7d038",
+      "atomicTargets": 180,
+      "selectedProtectedTargets": 55,
+      "addedAtomicTargets": [],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json",
+      "viewId": "de-th-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-TH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "sha256": "0e3bddfdb7ba9afdb210239bb5b2ef13a95f91d022efcfe671931dd588e0b321",
+      "atomicTargets": 540,
+      "selectedProtectedTargets": 53,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-lk.view.json",
+      "viewId": "de-th-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-TH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "sha256": "43b0727d8e873b6fea45dbc7a9e882976d635789ebec8d0e0d3d96d23090d22e",
+      "atomicTargets": 557,
+      "selectedProtectedTargets": 65,
+      "addedAtomicTargets": [
+        "bbb340ed-1009-4966-ae96-bfea4437505a"
+      ],
+      "removedAtomicTargets": [],
+      "nativeCompilerErrors": []
+    }
+  ],
+  "activationFiles": [
+    {
+      "path": "app/scripts/config/math-country-seki-stage-policy.json",
+      "expectedRootSha256": "6b4609711b5d0131cdec1be9026a8705988fe4805f2ea1b1563af1ccd88d528b",
+      "candidateSha256": "5b55fb1509051e26d79b4d62ede112de32a8dcac30aff391c203acbf84e796a2"
+    },
+    {
+      "path": "app/scripts/config/math-duration-split-spanning-tree-policy.json",
+      "expectedRootSha256": "30bc8755dfb68c28387f1085d7465b69cb6d19f86cf2b4bf56258eba542c2a97",
+      "candidateSha256": "311a17c46c9c0ee4e26fafc2f85298b6dac334b6a7f2510c233eb786ea2a3643"
+    },
+    {
+      "path": "app/scripts/config/math-reviewed-assessment-placements.json",
+      "expectedRootSha256": "957067cb5f014f14267bd9aca61ca8dd074228f2bc6f514881a30b073c101ab8",
+      "candidateSha256": "5df1ef04aa6f6787e6ee34bbd4ea730e8d727f32b26585331b9bea4c725d227b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/rp-g8-sphere-routes-v1/composition-selection.stable-target-anchor-rebase.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "a6aba317631cf578689d4af574d90057a0171004b0715d3f9b97d1d10a1cac72"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/rp-g8-sphere-routes-v1/composition-selection.stable-target.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "9e3e7537bdf6554a46b5cfe208c77c02cd2e4fdebc7c12a8bb680b258669bdaa"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+      "expectedRootSha256": "b34836a513a69cf546c098766f45ebca84efeb7d981b4cc69ec85753efa56f4e",
+      "candidateSha256": "63cbd497ca320b692037e05256bac8fbf1f0cdfb9372d02cc8864552fe2b6572"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-lk.view.json",
+      "expectedRootSha256": "49769e9198ea3f2b1c294b7894d427111d1e687fb297b1c78113764017e0caf1",
+      "candidateSha256": "bf19190a7a6b05e553d722a2c15c4e940c6ceb95bc44c12b682860aadab50d91"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json",
+      "expectedRootSha256": "0f420a487ae4911801c86ab34465e9bc2c1f9e40115ee810734af818f4cf5940",
+      "candidateSha256": "7c1a405553f410dc16daa6b646c421152f97fad1e0cbd6648bcd63fbe8e6266a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-lk.view.json",
+      "expectedRootSha256": "19ab12cc93887735b059e69d74124e5b5ad3b91cfc249aa63160c9addcc0e575",
+      "candidateSha256": "76bc2687f7a2261fbfa872c3811998dfab2b66ef151677a772d32be4a4d90fc4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-lk.view.json",
+      "expectedRootSha256": "8df23185d19e708d437555d42b2b7931dbbf3858367d200d0f1ecc87f142ca55",
+      "candidateSha256": "12f4c2d2a9163bfb15431d4d52d7b736915e4539bcf9318a41a90f5e2e740b66"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-lk.view.json",
+      "expectedRootSha256": "b5657d07db1d8f7bfec34869790f9b7f3fb916e98ef613b17a9ca2c795f83afd",
+      "candidateSha256": "8a936e3ba7effb4c070217b05a1fe808fff4db926ab5b69cccb4a8ea3e260b44"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk-g8.view.json",
+      "expectedRootSha256": "8457e545fd4dc1c736e5af55bcc309db84d1ff77197968f7bc4f969f179c9706",
+      "candidateSha256": "aa57a48b0cf9492756c2c91205062494a93b87abb37a0bb15b0089decbf9f3fd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk-g9.view.json",
+      "expectedRootSha256": "d02cab6313c9a5c794d2695e5967214a697570f98e0feb9fa45dd85db7ef28bf",
+      "candidateSha256": "056e789e06360ffa7a42416ab4d6b0266d5c5b4305393e0634433a8db49c510d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+      "expectedRootSha256": "4be42fe373fe60742c04453a7cd4dfa9446c7a6aa699e0fc7bfd48e44948bb2e",
+      "candidateSha256": "76c8bb0f0b7ce5851a6eb6c17a94a8084d342eda5f33835530f28fbdceb9c78a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk-g8.view.json",
+      "expectedRootSha256": "956282d82e9a697ea87515266c82b144fdab2c20419aff5a1eeca089ef9d05ce",
+      "candidateSha256": "4143f7320540fcde43fdf9b4e4cc7492eed84f9832786cd669f043d18aef0191"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk-g9.view.json",
+      "expectedRootSha256": "dafc971c148bb450d7f99c883a0e7a2133f70a39fda5963b051ac9bc997e6217",
+      "candidateSha256": "88f9077d6dd59872891ef32718f84800d888f19aed7fa43baf2f07860d253106"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+      "expectedRootSha256": "1c59a2182579cda49df0faf5c39dbfb41ffd9b95475d8404f7aedefd05b24ed0",
+      "candidateSha256": "643437c728a022d9cf383462636ae6ff0dcd1b63288510c5bd3efe3c902353b8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki-g9.view.json",
+      "expectedRootSha256": "85ed9f29643b921582cc057638327d55212aa653d8bd60b54bdf482df4b4f6ee",
+      "candidateSha256": "65f5a0a86f6724b0334e36a631d51dbc1a084336ae5532ba93b1d25631aaf996"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk-g9.view.json",
+      "expectedRootSha256": "a1334cd54b0cf06f0d981d7e2aec62d73f6711253d69051b316c6739013ad202",
+      "candidateSha256": "03563eb420130c6678ba4448db3d7c3f65ecc199dacf5e260f7f86b3953f4d62"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json",
+      "expectedRootSha256": "01ca6b505d87df3357b929905f122fdb1accf3c05cb20ddc479350bf1ec67f20",
+      "candidateSha256": "ed7acf324f5d08a69893eb52a837d9a25f4f999031609b8707d74ff9c7a621d1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk-g9.view.json",
+      "expectedRootSha256": "7bae1f1d3cf97e670c86dfb07ad8662cf0c5a53ad65a276d6d954f22bf874681",
+      "candidateSha256": "ebef9b439bf26b63718e0d304f796bff2deaf9fd89e0125671d6b75417db8225"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk.view.json",
+      "expectedRootSha256": "3a76190539b64de65743d0f3993376159f17c1a6e9a69d92df391e6be7b96c76",
+      "candidateSha256": "09b7ed5a5b412fd14baf8479d522af7efdaaf9a832710acde5fd4c8b9a3d4f3e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json",
+      "expectedRootSha256": "677a714b8685dcccfe7eb1a8cc29aec95910d18dc982bad8f4e24bca357a7c0e",
+      "candidateSha256": "fed9534afc0007823de7fef2d3c67c7b86d0ab408d72561202cac9f486b10727"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
+      "expectedRootSha256": "1ac0c97add980333226eab9492f3207075dabc37fb2047bda7f7c59aca6dede0",
+      "candidateSha256": "921bfb2c76b4689eb3c04431c60766fd2e6ae8a69a083603d28183a5e1ca3910"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-seki.view.json",
+      "expectedRootSha256": "8f19fbd8a04cced2fd50a78e78c1a344e5b0c7b59fd1f823da319a9640a5fe81",
+      "candidateSha256": "0148c97b2cdce21e75064702fd1a7f09cff03169806e3f7ed18c5154be2bf14a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+      "expectedRootSha256": "3045366ac9f9361c7c3504cdaa5a17eb85e98f579e9f541e5190922a18276e3e",
+      "candidateSha256": "ebb96f847731935cbb75f957546b29be0afbc2a485c70c5e6017e77209ca522f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+      "expectedRootSha256": "e5817e8844a34e23f0fde6057e904c5be83400760acfccdd26e969daae64bfdd",
+      "candidateSha256": "c8f1f59fd97336c4cfd08b096ddee5b94a5ea331f6d4eefc37987d7e18a6a4ab"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-gk.view.json",
+      "expectedRootSha256": "0edc2a182a925c3ae6fca10649d6f38e373db6ceb7e162e1e5ace18757e78dc4",
+      "candidateSha256": "73f8d6e0261c2e3f563a4d43cdb620f2ce3c31e1d23d6faed0a0dbfbfc5952be"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-lk.view.json",
+      "expectedRootSha256": "3be8e9d97bb9363c39e43ecd8faccc8ed067d1d373e018d9365f98878d3e8878",
+      "candidateSha256": "c0337950bd2685f7cc5c0740de7161b29235c8ab1e99fd3cafb294254b148491"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
+      "expectedRootSha256": "f15d857b0e399aefb71eaa9f3fed7300bcf7d80a352c8bc49e30ff04d787165f",
+      "candidateSha256": "1e6c8fd29673a8825c29b25a20002bc00dfddf5218094b5b6c5195ae8f35f5c0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-lk.view.json",
+      "expectedRootSha256": "53d7ec3cf1df2181b423b96cd4ec8ed09ae71ca8692f45e1761077edc720b436",
+      "candidateSha256": "fc3d0bd3cbcb94b2a09bf1c4c86a035497b827e9a87c41633cc66dbb2c34e8c5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+      "expectedRootSha256": "c6bad6526171044c52e062cc3131b1304d0dfcf294407a650ac32dd53a2d9acc",
+      "candidateSha256": "310c9736dbfa2c527133c61e9de8a1489954dc18eebe72188710f3770008f5e1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+      "expectedRootSha256": "ebc4e1edce14057a4dd51439c4cad47c0288e81c6201ebcda80351b5c39c943c",
+      "candidateSha256": "50dbec245bab781fc6fd4aa8cad46709e1cf0b1496b52f396549a70e8bb5890e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk.view.json",
+      "expectedRootSha256": "ae468d8e3ec9b6a655225623074b452d7137f96f5d42ffc477a936ce3c0af518",
+      "candidateSha256": "15aac0cc2c82f126eba20fd4ac1a83601b7f163eba78dbdf4705183563e05738"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+      "expectedRootSha256": "a044aa2fdcc8b5bce1f0acbb5be0c4c23e2b9a9adb00c24cdada02a906cf75de",
+      "candidateSha256": "20a036c6a59fe19ef8de5dc31c92c999ca15d5f63b643f968a7ee85ae713edab"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+      "expectedRootSha256": "15f79afdb9be82ec4aef1d314c08d63e70f207d4da86e83ab69efbc042af1090",
+      "candidateSha256": "f049d0bd86f5c0d03ce028dc222991bfc6cd919f15d63eb39e69b65da4aca347"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk.view.json",
+      "expectedRootSha256": "cd1fb052e6376c8a8e18c579bd2c552218d015ad669d8a0ae90b000dec07452d",
+      "candidateSha256": "71428a731de2226adeb7ebe15a618d2e467dd036d02d514b2ad6641f5acc77cc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g8.view.json",
+      "expectedRootSha256": "9c1bef25443e2d071710ee2400cf41c58ecd099b04873428c68c8c33dd165c66",
+      "candidateSha256": "3eb72a0f968ebe3b4bb3a78d9b6a786d17300ff7a81ca292c5af7e872c24fe5f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g9.view.json",
+      "expectedRootSha256": "280293ddc0cec3766f0d1f214d32160de5355119d32bac1f8fc599258e7863a5",
+      "candidateSha256": "b26b4bf14b169b27324166d532a915d7086432745a2ba4fda71062a4801a6f80"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-gk.view.json",
+      "expectedRootSha256": "3888f56417b1759afd195cb8098f2115f98c530ce9fe264ae02fd92ebc8da09e",
+      "candidateSha256": "77af14ff10af1ca9b7667da66b61745729a58a6d5e7806cf1d3fcf8d3457ba11"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json",
+      "expectedRootSha256": "c410c6c2068539efbd769b2833571fcae8c0460e96689b9992b5b3b37a173271",
+      "candidateSha256": "08cf90f46b75140407365bdfb7eb27f853f31ffa61bd6c1c49f7e729e51806e3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-gk.view.json",
+      "expectedRootSha256": "e700b22589123ed57bd34c933924f319fc4cb1cee371fbdda27ee52775b913f1",
+      "candidateSha256": "3aebe93f33c624ec6ef785d155e489989491e5cfae10a1dd6335bea055b38a70"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-lk.view.json",
+      "expectedRootSha256": "8824f5f01263d63fd7869f00c2fd5c16754ebdd81105ce653a17dd2c38a1d145",
+      "candidateSha256": "1dafda0650fbbcd4be0465f5112b582caa8538f25fe903695d78bbe39641df89"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-gk.view.json",
+      "expectedRootSha256": "a71c10b4f8e82f30b83a097c9f1857b8a8bb52149374b23ab25c89a51df3206a",
+      "candidateSha256": "3df93c3e61a0f5af0bb86b2632e55142c025f15534c6193a320ffdc0dc79459c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-lk.view.json",
+      "expectedRootSha256": "5a201376f57be9bab522e9cc3f2b63a2fa5f1e5d37f7bf7ac5832d133e6df362",
+      "candidateSha256": "021b94118deb85bbae5216d99b37bec37d71b3c9be5965813ea4f3aa15bbad00"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
+      "expectedRootSha256": "ae1d25ae8441041369a87159cff00ed30a8fe1490fd7b5882e33415b86b6d28a",
+      "candidateSha256": "fdd7a1a27353e1bafbf680cfaf428619e91688781eae4684bbf06bc77d4eecb7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-lk.view.json",
+      "expectedRootSha256": "4f567ed31aba56cc6b8236c2a9833c8d3df71f074b392360a8ed6da5f3656878",
+      "candidateSha256": "3f1440cc2aa58c4e42bec6ae4669bd1d6f66b9162a03f0bbb892b024a8162457"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json",
+      "expectedRootSha256": "c0b5abad74a69d2fd952a962b318db974d41b5fe58538d4c6a683ad19d062d8d",
+      "candidateSha256": "e7cafa6ce6eadcb7d691e1de501d1fe32932db8a8bae47a020c37483bc2f093e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-lk.view.json",
+      "expectedRootSha256": "5b621d67af8033506802382e920bacf7665c6e26daaef0b1b489c2a930df81a0",
+      "candidateSha256": "ceadd91b585feb6866f4b508e24a8960fa49b6deffd3dd99f51c60ff4f1e579b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+      "expectedRootSha256": "dbedd062047101542846fff81fd8bfb6ab3ca067e67c85e83ce09f70b9eb28a5",
+      "candidateSha256": "13a09db2c3b2aa8f21c5cc815ab02872f4d46f0aaf75e2585f3ce9019a0cfda3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-lk.view.json",
+      "expectedRootSha256": "c619ca15a7a9d3391a385c6d0e61f9c3bd023c0817c0469ba477a1f9e0a76097",
+      "candidateSha256": "8dc406240a2c67e6e7c259f013c9f3a2ce130bc63cfacd9adb027ba9c03b29db"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+      "expectedRootSha256": "c78e7b3f4509ca9dce3c57c7dcf55c34b5d340da10ef98ea4c9b9541b323b467",
+      "candidateSha256": "fe0fa001c1e089a3256c6e84872d33744df2819babe885acba01dc3aa37097b0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-lk.view.json",
+      "expectedRootSha256": "e934df7fb8676f31ad1c620f644937bf76f83b6606040ab2b5e01ce98b7fe079",
+      "candidateSha256": "69b3b6d95b0c1fafacd4f1901bbffbcf774bc6213df33b74e69f7eb316a040f7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+      "expectedRootSha256": "0b224474e2faabdf7bd8bc00c0546b584e7d2d2bac2caf59c6d7e485b5b03627",
+      "candidateSha256": "2c94662819ec878f3b923e3823a493458d69da38ec60278038347c0aeabc6e0a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-lk.view.json",
+      "expectedRootSha256": "c0a6b14059bd4460851787e54acf953c170eb9690bdb69bf6e55a0ac3cd3e779",
+      "candidateSha256": "dd2fb893ae51a6ba64a5e35ed96b13f25ac88f5947f57fb877a5102cbc829679"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json",
+      "expectedRootSha256": "75a62c76e2a6fe7db8005b0b370d4188f4ba3f975e9f90f9c4cf77dc42371509",
+      "candidateSha256": "521b5708d525c1fde31ff20e646af416ec477d94b90775bb6240b1e4179dcb04"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-lk.view.json",
+      "expectedRootSha256": "6356605265c019984ab0f1b4421f263e4f3dc0286342c96b6983aeafc597f710",
+      "candidateSha256": "bb57f2cf968c5c2a3988759fbe570dce3b9133137eac86bcd441982e5d94519a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+      "expectedRootSha256": "3b4153aa81fca38e491dac2f17bbdc8bf6f10419b33527ed9a4d8c7d0460be8b",
+      "candidateSha256": "6684cb9c71805bdb6f628a189705955dbcacedbe6ef53d9a17e03aa9cc99ba7e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+      "expectedRootSha256": "ad0b4f6bfcca7a6e8f4a9108bfd22a079c1a1da3632bc3143dcc40c4ba67ffe8",
+      "candidateSha256": "921386691187366249576b502c5067011003171e20c5ba267b407fe14c675df4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json",
+      "expectedRootSha256": "e8777235f29fd8b297f14488e017513d97262bc56defda56bcb74b2079c5c984",
+      "candidateSha256": "d9f4e9d97018fd91c471c746fecc2417479fd5b5765a0bcd19e9dac9610fe76d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+      "expectedRootSha256": "e625f84621db9710adf1abc06dcd787f2fecc640b1bf465d9c4a05257d56a607",
+      "candidateSha256": "d1552fd6478a391373ddddbda72918760edf89254674277f908b632ba316eacb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g9.view.json",
+      "expectedRootSha256": "5eab862fd15adf4e55b85fe8e66ceecaccd0e9ab7e93a34ff73df812b3448207",
+      "candidateSha256": "423ce528147de4f73450ae069086a2e6704c65ccffcd1189de4d4f54b2520644"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk.view.json",
+      "expectedRootSha256": "d0900dbc85231e914d3a967e0bb4b0e6ace004f3249aaf84c57c22f1f3193301",
+      "candidateSha256": "7a02b016de30cd44b48616947312d3b631ae750e3cdaa7919283dfa3e8a1e48a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g8.view.json",
+      "expectedRootSha256": "39e310e2d4193e8291f26c9431100a09373daa1a757cbe872bb1f1fdebf2fa3c",
+      "candidateSha256": "f93d6fa0f109f2c920e0dc5f33618ee53f023c01ca193e797961aa7663e985fe"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g9.view.json",
+      "expectedRootSha256": "5205eec9055920bdbc7add9195bfcf6213095198788217df042ec454a8208938",
+      "candidateSha256": "668a92675568cbd3a582bfdcce786ac35eaf653650a99274c03a1affd60d7a3b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "expectedRootSha256": "f8c6b009237715c5d3d7a436a9707ead47349e92a7018018dfe95454aaede486",
+      "candidateSha256": "3128947f1c09178f31eb3551a39a3a4fcea88b9525579c4816e903ef8e09f3f0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "expectedRootSha256": "3ceffabb875aba01cbd0f119b54ce8e5fc546186cdfdf8c4c9d6204770feb9b9",
+      "candidateSha256": "d8ea08eabbd3c016393e1def3f126c0b2fbd3169944b279fb384d3737523c596"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+      "expectedRootSha256": "3e32d9f79e1d3b15e8e41db5715162c1158b42f35d4110833c3935a3251860d8",
+      "candidateSha256": "e852d54b1a506971b66772a92fae7311f49a8fd5dd3068c0c5a059a6fc0048b0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "expectedRootSha256": "6dd15e274e4c3dea0832109bd61228f139a3d49f12e2b3ad4d3c0781c048171e",
+      "candidateSha256": "4c1c64f48bb29945b44dc884edb34a5ec893199d2a927a6018711dd25f5ea562"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "expectedRootSha256": "96e9707ea72da1e25ec6857e7387c2c20ad70d2d644877056952fd2f8797807a",
+      "candidateSha256": "6ab3a020b393fa86fec06de9b97d76291c8b8f03e2787300a324dc00169c25fe"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+      "expectedRootSha256": "997edfb07a759adc2a68ba8bea68a07c5553424ec0334e905ce8071bef74db0e",
+      "candidateSha256": "ddd0ee62fe9d0ce39d2036abc1ae5fba9b7c1a5253687f152ce3a9c1cbbc8d8a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+      "expectedRootSha256": "cbcc9b4647eed7eb16b47aaa95e5d7172e42ad517936c305e22aed01a3f10678",
+      "candidateSha256": "55ea10981c264c093cb1e8b680dc5296db50cc09a418018827893e3008ea42f0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+      "expectedRootSha256": "eacfab0657a943d1aea60471086c8cf6738ec43173c64a5a8932151e69bbfdf2",
+      "candidateSha256": "8c759e986439e3db62ef359872642fa71416fde981b96b3cad5bfd47b44ba19a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+      "expectedRootSha256": "032e46fedeec31a16ef9da2ba6d977e703007a4eb994445d916bc231903266a8",
+      "candidateSha256": "4574b1f28289371d94685648692a091a10523c9fdb9faeb9acef40a1d56ec572"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
+      "expectedRootSha256": "3c9da6449954ffc7a7158b13c2a5c042b4340a8b1cbd7b9d5ec074aa09e9b070",
+      "candidateSha256": "235b1b5242232d3cdf7f95b5e99f5c3b6dd0dabdbb5f3308e02d19626fb6af61"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-lk.view.json",
+      "expectedRootSha256": "7bf130b132c8284cba5411f73c0be28d3bbd45df71d6a4c90f741a613cc0ab89",
+      "candidateSha256": "8769cccb47beaba431de5b42c3e71296e6d8bda828d33094e12e3937e73ad54d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json",
+      "expectedRootSha256": "8c66a4dfc90586ef7c6e9f9d28108fbdb8952e2b9d48ec5635cbd3c4bc5f5d1a",
+      "candidateSha256": "979afd805e4b21edfa92f5fd95ecc066e824f49d0b23702d73ab7984e036e8ee"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-lk.view.json",
+      "expectedRootSha256": "c77b136e5bf2236ceac773e410658b319b6b16e6c0f6fea1a25b650ba6ab332d",
+      "candidateSha256": "df6546097405cdc5ff9b4a19635a8daabaaf5615229314c51db8f8e76a2ec9e8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
+      "expectedRootSha256": "85e13dd19353705891264e1824f2f2537e1875ce38f516998509552f2f48bd76",
+      "candidateSha256": "b6f810f491ace636dc2c8ee453449cab3a30914f35d0dc4d5e1276ecedf536bc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-lk.view.json",
+      "expectedRootSha256": "138d88d89d553b17403bc7a9e12f39f92017d4c16738006752fdf383b923993f",
+      "candidateSha256": "ccee5fa4e1bb52eab32efec63401e11abcd4fd316cd8134e39816dfefece3085"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json",
+      "expectedRootSha256": "afb8eb77e40d71f47f15b5533a88dcd2fd4888661f09abb67f582beb91728f62",
+      "candidateSha256": "7ac923aa0ab5a6c1e1984060a0702c5010b0324b7587d7e052b0bd8eab31101c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-lk.view.json",
+      "expectedRootSha256": "6e30241247cd8aa382317fe06200a3106541281c165569c06f9c567ae417d106",
+      "candidateSha256": "b73055fc0d3de10a4a2faf30c5cb54040866a7f8e887866707694ab7abf4cd2e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
+      "expectedRootSha256": "376eb7365965c4b1f4c859e88da5bee672f201187ce576c686acf8b127404fd1",
+      "candidateSha256": "3b18182bafd74f121d174abc23c0ea8f58bfc7f88607005a32bc177f9e98acd3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-lk.view.json",
+      "expectedRootSha256": "292a9b8d113261942fcdb9aab638bb2a1df927e220fad9dd4b94fa36bd6c47f0",
+      "candidateSha256": "d3eb70568b8845aa8d84eb1f3a65b8b77a9345460edb93968abbdb4141512d82"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json",
+      "expectedRootSha256": "f37cc549754031c7e6ad2518c27f62e479af1ec03da24b5279a68664da4b76a3",
+      "candidateSha256": "0e3bddfdb7ba9afdb210239bb5b2ef13a95f91d022efcfe671931dd588e0b321"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-lk.view.json",
+      "expectedRootSha256": "abad63d34d4dd02cdfb2ec545b5793f6a541053fcbf5ffd8a95f095a0a92e0fc",
+      "candidateSha256": "43b0727d8e873b6fea45dbc7a9e882976d635789ebec8d0e0d3d96d23090d22e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/history/2026-11-01/mathematik-semantic-kinds-pre-3a3792.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "715164ded2d862256c2fb4f1600103c78a6550f36e77f4c09498e1770a37dece"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik-semantic-fingerprint-rebind-3a3792.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "735d4bdd44296b26fe9976818a6e3cdcab2d612eedbeb996040db511a3eb9ac0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik-semantic-fingerprint-rebind-review-20261101.md",
+      "expectedRootSha256": null,
+      "candidateSha256": "56def1931355899514a477b0bcabdbb9216f75bcedabbdc0e596d3982e0d1993"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "expectedRootSha256": "715164ded2d862256c2fb4f1600103c78a6550f36e77f4c09498e1770a37dece",
+      "candidateSha256": "50376d2db47596939635553dd78691b4a7fe8e9a891462f55064f68d3f1b4302"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/bbb-existing-route-scope.review.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "0b9239380c05a8a147132c812f28e7d93abbeb97b75f58d81c17443ca644fada"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/bbb-existing-route-scope.review.md",
+      "expectedRootSha256": null,
+      "candidateSha256": "5a6654d5830a15a4c3532d3b30cf332f4686d32a8362d5c67313850184b0cbfd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/ni-model-area-projection.review.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "b4eba11557e22a5e5ac035935d135c62dd747f41a025b6a2475a8d5f2de5d080"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/ni-model-area-projection.review.md",
+      "expectedRootSha256": null,
+      "candidateSha256": "4507861ebafe1ac9fa3f6d3859c407abdc42db4842d05375012968d362b29960"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/phase-reference-integrity.review.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "13dfe8c3fefe73bddc0b8d81d3c36cdafc21c6059cf507722dc64af3ffbb7c13"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/phase-reference-integrity.review.md",
+      "expectedRootSha256": null,
+      "candidateSha256": "e317e34995ad28cb131cf850639aaa9e872c7cec5608ea458f6cfb14bcd52a8f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-by-union-parent.native-proof.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "31843b0bd64d5c8b55e832de9056747f9491f9ad2311d746a79f20d53167ba57"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-by-union-parent.review.md",
+      "expectedRootSha256": null,
+      "candidateSha256": "6e01cfd215a028185f124746e74d42187857e4f48041a15d3bb6658d007c8b57"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-duration-native-protected-support.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "48cf3568c70f89ed2ab21da6b98885e175b4b8804193a20364dae4d1d4e05b0b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-he-bbb-parent.delta.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "f7b12981a05807355d9a3d3ebcebe2de14654dceafa2fdb0234a8ceb4022794a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-he-bbb-parent.native-union-delta.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "b4eccc241049c4cb62cf63d715eea48905169a841103a16b6698bee1912602ae"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-he-source-decisions.review.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "3f9f7bcadb445ff3602258d5cc835c7051689b6ddb855b3e2abd9655af685704"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-rp-source-decisions.review.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "2adb6b4b3448341de127a64ba95c908e69e49e22030febaf99557d5fc83dd3fc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-sh-source-decisions.review.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "f1249bc205a60db9ff7b0c0426fa69e8028fb66ff6912deb8083e878379f8172"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-source-selection.review.md",
+      "expectedRootSha256": null,
+      "candidateSha256": "73db36c728d1231d7dadb87afe2ae2d81502f42720f7e6f1c5c58d797fc6262b"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/anchor-rebase.proof.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "141a57cc4574d0b28397dc713e9f16dbc63c61a945b5ec71a9bb97d2b65cbe07"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/anchor-rebase.validation.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "154e55eb29e30ee53c7c81b55da660b5b4cc07522882e5adfec7c154f0ac3a86"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/candidate-operations.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "9e756e119fc80f051f46ec809bb1f365031aff9c894493eda805de48b3f51688"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/independent-anchor-rebase-review.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "714382a3cf96db04681b18e207b78e20f5de827702d3c77ff1e5fbb3f4ab14f0"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/independent-anchor-rebase-review.md",
+      "expectedRootSha256": null,
+      "candidateSha256": "7e7e0788ff46d0c9f6828bb32c7941b3553bbdcebee3aa962486bf3e367dcc9b"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/input-views/de-rp-gk-g8.view.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "a4d9c6117a70ca053d35554479ddf31a1b7fda86ae10757ff5519abd067483e0"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/input-views/de-rp-lk-g8.view.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "230f3d8dac56179db74c805efe866e08240308ce521f5e8a89bba5ca7c19d479"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/input-views/de-rp-seki-g8.view.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "284d5044f046bb1c37d4e4f820958a23f7c0fa888c5110c9577c062df0f4b996"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/native-task-support-context.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "8825be39979dea7afd7da0c149061007a460f49b61c3b4ab9447f345990094a6"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/registry-proposal.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "ab373d940c7f0269e61adfbf1e2b10d3f7be02740f4351ae7da55b2c8e1649ad"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/review.receipt.json",
+      "expectedRootSha256": null,
+      "candidateSha256": "32744cb64258329d8be7034ca3ad5ea2e48960c993d9a0c1623aa1cc49d4105d"
+    }
+  ],
+  "nativeDurationProtectedSupport": {
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-duration-native-protected-support.json",
+    "sha256": "48cf3568c70f89ed2ab21da6b98885e175b4b8804193a20364dae4d1d4e05b0b",
+    "scopes": 18,
+    "includesRestoredRpSphereAssessments": true,
+    "includesSelectedS1MemoryRoots": true,
+    "spatialConsumers": 0
+  },
+  "checks": {
+    "compositionErrors": 0,
+    "knownCanonicalSupport": true,
+    "independentlyReviewedAssessmentScopeRemovals": [
+      {
+        "viewId": "de-bw-gym-seki-math-g9",
+        "goalId": "ea664a30-98be-508e-90ac-5304679814ee"
+      },
+      {
+        "viewId": "de-by-gym-math-gk",
+        "goalId": "2f626446-4b32-5674-a687-9cd754bdfede"
+      },
+      {
+        "viewId": "de-by-gym-math-lk",
+        "goalId": "2f626446-4b32-5674-a687-9cd754bdfede"
+      },
+      {
+        "viewId": "de-by-gym-seki-math",
+        "goalId": "2f626446-4b32-5674-a687-9cd754bdfede"
+      }
+    ],
+    "unreviewedAssessmentScopeRemovals": 0,
+    "memoryTargetRemovals": 0,
+    "durationSourceAssessmentOrMemoryRemovals": 0,
+    "rpPlacement": "independently reviewed V2,13 historical V1 and9 active V2 regression cases pass",
+    "sourceRuleSelection": "explicit source-layout rules never serve as duration fallback; G8/G9 exact selection and ambiguity tests pass"
+  },
+  "deferredAcceptance": [
+    "Actual154 native backend offerings including all course unions are owned by Root and remain to run on the integrated files.",
+    "Existing uncovered endpoint routes and M7/CI gates remain obligations; this target-basis preparation does not pass them.",
+    "Historical V1, author-PENDING, immutable reviews and earlier published artifacts are retained."
+  ]
+}

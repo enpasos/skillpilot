@@ -1,14 +1,14 @@
 # Assessment-Gated Completion and Prerequisite Discharge
 
-**Binding product decision, 31 October 2026.** SkillPilot derives whether
+**Binding product decision, 31 October 2026, corrected 1 November 2026.** SkillPilot derives whether
 learning work is still needed from the skill graph and the existing binary
 mastery state. The following three rules replace the earlier pilot's manually
 reviewed waiver profiles:
 
 1. When **any** goal is mastered, it no longer demands its own `requires`
    prerequisites. The source or age of that valid mastery does not matter.
-2. An unmastered goal which no other unfinished goal needs is **implicitly
-   completed**, unless it is a final assessment. Its own prerequisite demand
+2. An unmastered goal which no still-needed unfinished goal needs is **implicitly
+   completed**, unless it is a final assessment or memory goal. Its own prerequisite demand
    then also disappears. Repeat until stable.
 3. Every final assessment in the applicable learning scope is directly
    addressable. Missing prerequisite mastery does not prevent an intentional
@@ -45,30 +45,37 @@ claim "passed examination" when an ordinary mastered goal ended the need.
 Mastery bars and mastered-goal counts retain their existing meaning.
 
 The calculation runs without selecting a special profile or starting a coach
-session. The default context is the complete Personal Curriculum. Choosing a
-structural section deliberately creates a section-specific view; opening or
-collapsing tree nodes does not. Learners may still study implicitly completed
+session. The demand context is always the complete committed Personal Curriculum.
+Choosing a structural section masks the targets shown and counted from that
+same result; it does not remove downstream consumers. Opening or collapsing
+tree nodes does not change either calculation. Learners may still study implicitly completed
 goals voluntarily under their ordinary mastery contract.
 
-Final assessments remain open until mastered, even if they have no consumers.
-All other goal types follow rule 2, including orientation and memorisation.
-Their **explicit** mastery workflows remain unchanged. A memory goal becoming
-unnecessary does not mark its cards recalled; an orientation goal becoming
-unnecessary does not fabricate a motivational interaction.
+Selected final assessments and memory goals remain open until mastered, even
+if they have no consumers. Protected prerequisites outside the selected targets
+remain unmastered until explicitly completed; their classification does not
+create an additional independent completion obligation. Memory mastery still comes exclusively from the existing
+verified-recall resolver; an examination success cannot supply it. Orientation
+and ordinary goals follow rule 2. Their **explicit** mastery workflows remain
+unchanged; implicit orientation does not fabricate a motivational interaction.
 
-A consequence is intentional: **a finite valid scope with no final assessment
-is entirely explicitly or implicitly completed**. An ordinary terminal goal
-with no consumer is implicitly completed even at zero mastery. Do not defeat
-this rule by silently inventing a protected category or an assessment anchor.
-If content is meant to remain a compulsory endpoint, its assessment role must
-be authoritatively represented in the graph.
+The graph must support this calculation. In each complete authoritative
+curriculum and supported projection, **every target must be reachable from an
+selected assessment or memory target at zero mastery**, following the direct prerequisite
+edges. An ordinary unneeded endpoint, or a nonempty curriculum without any
+protected goal, is an authoring defect. Deterministic tests must report it;
+the mathematically empty demand must not be advertised as valid curriculum
+completion. Repair the didactic route or missing reviewed assessment rather
+than inventing mastery, suppressing the finding, or reclassifying an ordinary
+goal without its corresponding goal-type contract. An assessment-free
+curriculum can be valid when memory goals genuinely anchor all its targets.
 
 ## 2. Resolve the scope and direct requirements
 
 Fix the curriculum generation and committed Personal Curriculum. Let $T$ be
-the unique applicable atomic targets of the chosen completion scope. The
-scope comes from an authoritative program/composition subtree or the complete
-Personal Curriculum. Resolve authored elective choices and projection roles;
+its unique applicable atomic targets. An explicitly selected authoritative
+program/composition subtree supplies a display mask $S\subseteq T$, not a new
+demand context. Resolve authored elective choices and projection roles;
 neither a display filter nor a temporary Level-3 focus silently changes $T$.
 
 Canonical goal identities remain stable. Expand required clusters into their
@@ -103,8 +110,15 @@ semantic kinds and compatible `examData` encoding), never title matching or
 `coveredGoalIds`. A practice task which is merely an alternative form must not
 silently become another required goal. Authoring and scope selection decide
 which goal identities participate; runtime does not invent a new selector.
-An assessment already included as a supporting prerequisite remains an
-assessment obligation; hiding it does not make it implicitly complete.
+Let $K_H\subseteq V_H$ be the existing authoritative memory goals, including
+compatible memorisation and deck encodings. Define the protected classification
+$P_H=Q_H\cup K_H$ and the independent completion obligations
+$R_H=P_H\cap T$. These are different sets. A supporting protected goal is never
+implicitly completed, but only carries preparation demand while an unfinished
+selected obligation still needs it. It does not become an extra target or an
+independent obligation merely by belonging to the prerequisite closure.
+Memory goals do not become assessments, enter examination counts,
+or acquire direct examination-start actions.
 
 ## 3. Mastery and active demand
 
@@ -113,51 +127,59 @@ restriction to the context. This uses the ordinary authoritative goal outcomes,
 including the normal verified-recall resolver for card goals. Existing mastery
 counts immediately, including mastery obtained before this scope was chosen.
 
-For a tentative set $X$ of explicitly or implicitly completed goals:
-
-$$
-Active_H(X)=\{(u,v)\in F_H\mid u\notin X\},
-\qquad Consumers_H(v)=\{u\mid(u,v)\in F_H\}.
-$$
+An assessment uses its normal overall scoring rules. `coveredGoalIds` records
+the assessed task content, not separate pass decisions for its prerequisites.
+The demand calculation uses mastery alone; it does not inspect point
+distributions or individual demonstrations of prerequisite goals. Task-specific
+score caps remain part of the normal assessment rubric.
 
 Completing a goal removes its **outgoing demand**. A mastered B does not forward
 an incoming demand from C to B's former preparation A. A separate open consumer
 of A still keeps A necessary. No authored graph edge is deleted in storage.
 
-## 4. Derive implicit completion with a least fixed point
+## 4. Derive remaining demand with a least fixed point
+
+Compute the active demand from the selected protected obligations, rather than
+treating every protected support goal as an independent root:
 
 $$
 \begin{aligned}
-X_0&=E,\\
-X_{n+1}&=X_n\cup\{v\in V_H\setminus Q_H\mid
-                       Consumers_H(v)\subseteq X_n\},\\
-X_*&=\bigcup_{n\ge0}X_n,\qquad I_H=X_*\setminus E.
+N_0&=R_H\setminus E,\\
+N_{n+1}&=N_n\cup\{v\in V_H\setminus E\mid
+                       \exists u\in N_n:(u,v)\in F_H\},\\
+N_*&=\bigcup_{n\ge0}N_n,\\
+I_H&=V_H\setminus(E\cup N_*\cup P_H).
 \end{aligned}
 $$
 
 The operator is monotone and inflationary on a finite set, so iteration reaches
-its least fixed point. Every new implicit completion can remove further demand.
-There is no special rule for the empty consumer set: a non-assessment terminal
-is correctly implicit. Conversely $I_H\cap Q_H=\varnothing$; no assessment is
-implicitly passed. Mastery and $I_H$ are disjoint by definition.
+its least fixed point. Mastered goals are never added to $N_*$, so they stop
+traversal and do not forward demand to their own preparation. Ordinary goals
+outside the remaining demand are implicitly complete. In a complete authoritative
+curriculum, an ordinary target outside the zero-mastery reachability of $R_H$
+is an authoring defect, not accepted progress. Conversely
+$I_H\cap P_H=\varnothing$: neither an assessment nor a memory goal is implicitly
+mastered. An unused protected support goal belongs to neither $N_*$ nor $I_H$;
+it remains unmastered without blocking the selected targets. Mastery and $I_H$
+are disjoint by definition.
 
-An equivalent linear algorithm starts at all **unmastered assessments** and
+An equivalent linear algorithm starts at all **unmastered protected targets** and
 visits their direct prerequisites, stopping whenever it reaches a mastered goal:
 
 ```text
 needed = empty set
-pending = all assessment goals without mastery
+pending = selected assessment and memory targets without mastery
 while pending is not empty:
     goal = pop(pending)
     if goal is mastered or already in needed: continue
     add goal to needed
     push its direct expanded prerequisites
-implicit = context goals minus mastered minus needed
+implicit = context goals minus mastered minus needed minus protected goals
 ```
 
 On a valid DAG this is exactly the fixed point above and costs
 $O(|V_H|+|F_H|)$ time and memory. It does not materialise all transitive pairs.
-An implementation can retain a deterministic open-assessment witness for each
+An implementation can retain a deterministic open-protected-goal witness for each
 needed goal. An implicit explanation says that no active preparation demand
 remains; it must not fabricate a passed-assessment witness.
 
@@ -170,28 +192,35 @@ remains; it must not fabricate a passed-assessment witness.
 | Same graph plus direct C → A; B mastered | A remains needed directly by C. |
 | Assessments B and C both require A; only B mastered | C still needs A. |
 | Same graph, both assessments mastered | A becomes implicit; its unused preparation can follow. |
-| Ordinary terminal Z with no consumer and no mastery | Z is implicitly complete. |
+| Ordinary terminal Z with no consumer and no mastery | Mathematically implicit; a zero-mastery target route defect in a complete curriculum. |
 | Assessment Q with no consumer and no mastery | Q remains open and can be started directly. |
-| Scope contains no assessment | All unmastered goals become implicit, with no mastery writes. |
+| Selected memory K with no consumer and no mastery | K remains open until verified recall supplies mastery. |
+| Q mastered; selected memory K also requires A and remains open | K and A remain needed, even if Q also requires A. |
+| Selected Q requires hidden memory K; Q mastered, K unmastered | Q is complete; K remains unmastered, is not implicit and creates no independent completion obligation. |
+| Nonempty complete curriculum contains no protected goal | Authoring validation fails; empty demand is not curriculum acceptance. |
 
 ![B and C directly require A, which requires D. With only B mastered, C keeps A and D needed. With both assessments mastered, A and then D become implicit.](assets/assessment-gated-completion.svg)
 
 The completion condition is
 
 $$
-Complete(H)\iff T\subseteq X_*\ \land\ Q_H\subseteq E.
+Complete(H)\iff T\subseteq E\cup I_H.
 $$
 
-For this finite DAG contract, all assessment obligations being mastered is
-also sufficient: without open assessment anchors, every remaining
-non-assessment goal eventually becomes implicit. The target set still governs
-counts: supporting goals do not enter the completion denominator.
+For this finite DAG contract, mastery of all protected obligations is also
+sufficient on a structurally valid curriculum: without open selected protected
+roots, every remaining ordinary target becomes implicit. Mastering every
+selected assessment alone does not suffice while a selected memory target is
+open. Hidden support goals do not enter the completion denominator or enlarge
+the selected completion contract.
 
-A goal can be implicit in a completed Sek-I section yet needed in a broader
-Sek-I-plus-Sek-II context. That is not a contradiction or a mastery change.
-The UI always names the scope and recomputes when its authoritative inputs
-change. A focus change may reorder suggestions, but must not alter the chosen
-section's obligations.
+A displayed section is complete exactly when $S\subseteq E\cup I_H$ using
+the full Personal Curriculum result. A preparation-only section does not become
+implicit merely because its assessment lies outside the mask. An independently
+chosen stage is a Level-2 Personal Curriculum change and therefore creates a
+different authoritative context. The UI names the displayed section and
+recomputes when authoritative inputs change. A focus change may reorder
+suggestions, but does not change demand or section completion.
 
 ## 6. Assessment access, discovery and continuation
 
@@ -233,9 +262,47 @@ Never feed yesterday's implicit set back as today's mastery input.
 Only immutable structural compilation is cached, bounded by context, node and
 edge budgets. Keys include curriculum generation, authoritative projection,
 scope targets and semantics revision. No learner-result cache becomes an
-additional source of truth. Discovery does not compile every possible section
+additional source of truth. Before evaluating implicit work, validate target
+coverage from selected protected targets at zero mastery. A failed check makes
+implicit evaluation unavailable: publish no implicit credit or success based
+on inferred completion. Explicit mastery remains true: when every known
+selected target is explicitly mastered, that explicit completion remains
+recognisable alongside the graph-quality warning. An invalid scope definition
+does not supply a known target set and cannot use this exception. Ordinary learning, stored mastery and structurally
+valid direct examination discovery/start remain available under their existing
+authorization and grading checks. This validation is separate from structural
+compilation and examination binding. Discovery does not compile every possible section
 on each request; selected/default contexts share prepared or bounded cached
-normalisation. Configuration and input errors remain visible.
+normalisation. Configuration and input errors remain visible. The current
+global suppression of implicit credit in a defective mixed-subject curriculum
+is a conservative intermediate limit, not proof of independent automatic
+availability per subject. A later finer degradation must retain foreign
+consumers and only credit independently proven implicit completions.
+
+### Repairing an incomplete assessment route
+
+An uncovered ordinary target is an authoring defect. Repair its actual route;
+do not hide a valid target, manufacture a prerequisite, or relabel it as an
+assessment merely to satisfy the structural check.
+
+A final-assessment task authored by SkillPilot can be justified by the whole, unchanged learning
+contracts already selected in a Personal Curriculum. Its complete task and
+rubric must genuinely match those contracts and its additional demands must
+fit the accepted program and entry basis. This repairs an assessment route;
+it does not assert that an authority prescribes that task or add official
+source coverage. A missing direct single-goal mapping alone therefore does
+not confine the task to the first jurisdiction reviewed. Known incorrect
+target assignments, incompatible task demands and missing genuine preparation
+remain unresolved until corrected.
+
+Authoring still selects the assessment identity through the reviewed program
+and composition structure. Explicit `applicabilityFromRequires` may derive a
+local assessment's applicability from its real preparation; this is
+applicability evidence, not source-coverage evidence or an automatic promotion
+of support to targets. Do not turn alternative task forms into several
+independent obligations. Verify the intended new assessment occurrences in
+every actual offered configuration, preserve all other valid targets and
+compare the complete remaining-demand and projection results.
 
 ### Plan integration
 
@@ -252,8 +319,8 @@ an assessment elsewhere in the Personal Curriculum still needs it. First
 compute $I_H$ over all authoritative Level-2 targets and their requirements,
 then intersect with G. Multiple plans still deduplicate each counted goal.
 Real cross-subject prerequisite demand is preserved; quotas and balance remain
-separate by subject. A deliberately chosen smaller completion section may show
-its own implicit set, but does not redefine plan credit. Supporting goals
+separate by subject. A deliberately chosen smaller section displays only a
+mask of that same implicit set and does not redefine plan credit. Supporting goals
 outside G do not increase IST.
 
 The Cockpit setting **"Nur explizit erreichte Lernziele zählen"** defaults to
@@ -261,13 +328,24 @@ off. When selected, IST is $|G\cap M|$. G, scheduled quotas and dates stay fixed
 implicit work does not become compulsory again merely because counting changes.
 Actual completion events and the current-period H input still describe only
 reliably dated explicit outcomes, never fabricated dates of implicit completion.
+Under the confirmed 1 November 2026 period rule, the fulfilled daily/weekly
+quota is `min(P,H)` and the remaining quota is `max(0,P-H)`. Implicit credit
+and earlier advance work affect overall plan balance, never the current-period
+counter. An open quota neither fabricates repeat completions nor turns implicit
+work into compulsory learning.
+If implicit evaluation is unavailable, explicit counts remain visible with the
+existing unavailable-calculation notice; affected automatic plan continuations
+remain paused. Explicit counts alone must not claim the missing implicit result.
 See the [shared plan contract](../didactic/unified-learning-plan-status.md#34-implizite-erledigung-und-optionale-explizit-zahlung).
 
 ### Acceptance evidence
 
 Tests must cover the mastered-intermediate stop, a separate direct edge,
-shared prerequisites, unreferenced ordinary terminals, assessment-only terminals,
-empty assessment sets, projection and scope boundaries, revocation and direct
+shared prerequisites, every compatible memory encoding, protected hidden
+support, separate examination counts, memory-only contexts, and revocation.
+Authoring tests must reject uncovered target routes at zero mastery in complete
+curricula and supported projections. Test ordinary terminals as defects and
+assessment/memory terminals as protected, plus projection and scope boundaries and direct
 non-pilot exam starts. Verify no writes during discovery/evaluation, no forged
 or stale start, preserved session ownership, complete discovery beyond one
 page, plan deduplication, opt-out and signed preference export/import.

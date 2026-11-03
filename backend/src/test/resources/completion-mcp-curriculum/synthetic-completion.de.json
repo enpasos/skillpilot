@@ -1,0 +1,129 @@
+{
+  "landscapeId": "e6110c42-b4cb-5d40-94d3-d26a70736055",
+  "title": "Synthetischer MCP-Vertragstest",
+  "titleEn": "Synthetic MCP contract test",
+  "locale": "de",
+  "subject": "TEST",
+  "goals": [
+    {
+      "id": "e44ed535-b215-5fff-af88-7e3e924d3ba0",
+      "type": "cluster",
+      "title": "Testabschnitt: Zwei Prüfungen",
+      "titleEn": "Test section: two assessments",
+      "weight": 3,
+      "requires": [],
+      "contains": [
+        "5c1506ce-5b8d-5908-9e20-47c3836a7a6c",
+        "91e9f31d-4195-59ee-93a8-fd0d94b549e1",
+        "9847e0aa-b10d-5fb4-b3fb-ac5fcb485935"
+      ]
+    },
+    {
+      "type": "atomic",
+      "weight": 1,
+      "core": true,
+      "requires": [],
+      "contains": [],
+      "id": "5c1506ce-5b8d-5908-9e20-47c3836a7a6c",
+      "title": "Testkompetenz: Gleichungen umformen",
+      "titleEn": "Test skill: transform equations",
+      "description": "Eine lineare Gleichung durch äquivalente Umformungen lösen.",
+      "semanticKind": "curricularAtomic"
+    },
+    {
+      "type": "atomic",
+      "weight": 1,
+      "core": true,
+      "requires": [
+        "5c1506ce-5b8d-5908-9e20-47c3836a7a6c"
+      ],
+      "contains": [],
+      "id": "91e9f31d-4195-59ee-93a8-fd0d94b549e1",
+      "nodeKind": "exam",
+      "semanticKind": "practiceAssessment",
+      "title": "Testaufgabe: Lineare Gleichung lösen",
+      "titleEn": "Test assessment: solve a linear equation",
+      "description": "Isolierte synthetische Prüfung für MCP-Vertragstests.",
+      "examData": {
+        "reviewStatus": "released",
+        "reviewNote": "Synthetic automated test fixture, not a curricular content release.",
+        "coveredGoalIds": [
+          "5c1506ce-5b8d-5908-9e20-47c3836a7a6c"
+        ],
+        "taskContent": "Löse die Gleichung 2x + 1 = 5 durch äquivalente Umformungen. Begründe die Schritte und prüfe das Ergebnis.",
+        "taskContentEn": "Solve 2x + 1 = 5 using equivalent transformations. Explain the steps and check the result.",
+        "solutionContent": "x = 2; korrektes Umformen und Einsetzen zeigen die Gleichheit beider Seiten.",
+        "solutionContentEn": "x = 2; equivalent transformations and substitution verify equality of both sides.",
+        "scoring": {
+          "maxPoints": 10,
+          "passingPoints": 7,
+          "steps": [
+            {
+              "id": "transform",
+              "points": 5,
+              "description": "Gleichung korrekt umformen / correct equivalent transformations."
+            },
+            {
+              "id": "solve",
+              "points": 3,
+              "description": "Ergebnis bestimmen; richtige Folgearbeit werten / solution with correct follow-through."
+            },
+            {
+              "id": "check",
+              "points": 2,
+              "description": "Ergebnis durch Einsetzen prüfen / verify by substitution."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "atomic",
+      "weight": 1,
+      "core": true,
+      "requires": [
+        "5c1506ce-5b8d-5908-9e20-47c3836a7a6c"
+      ],
+      "contains": [],
+      "id": "9847e0aa-b10d-5fb4-b3fb-ac5fcb485935",
+      "nodeKind": "exam",
+      "semanticKind": "practiceAssessment",
+      "title": "Testaufgabe: Zweite lineare Gleichung",
+      "titleEn": "Test assessment: a second linear equation",
+      "description": "Isolierte synthetische Prüfung für MCP-Vertragstests.",
+      "examData": {
+        "reviewStatus": "released",
+        "reviewNote": "Synthetic automated test fixture, not a curricular content release.",
+        "coveredGoalIds": [
+          "5c1506ce-5b8d-5908-9e20-47c3836a7a6c"
+        ],
+        "taskContent": "Löse die Gleichung 3x - 2 = 7 durch äquivalente Umformungen. Begründe die Schritte und prüfe das Ergebnis.",
+        "taskContentEn": "Solve 3x - 2 = 7 using equivalent transformations. Explain the steps and check the result.",
+        "solutionContent": "x = 3; korrektes Umformen und Einsetzen zeigen die Gleichheit beider Seiten.",
+        "solutionContentEn": "x = 3; equivalent transformations and substitution verify equality of both sides.",
+        "scoring": {
+          "maxPoints": 10,
+          "passingPoints": 7,
+          "steps": [
+            {
+              "id": "transform",
+              "points": 5,
+              "description": "Gleichung korrekt umformen / correct equivalent transformations."
+            },
+            {
+              "id": "solve",
+              "points": 3,
+              "description": "Ergebnis bestimmen; richtige Folgearbeit werten / solution with correct follow-through."
+            },
+            {
+              "id": "check",
+              "points": 2,
+              "description": "Ergebnis durch Einsetzen prüfen / verify by substitution."
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "frameworkId": "canonical-gymnasium-test-fixture"
+}

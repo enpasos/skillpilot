@@ -34,10 +34,18 @@ Das Vorhaben schafft kein neues allgemeines Planungssystem. Es vereinheitlicht d
 standardmäßig auch im vollständigen Persönlichen Lehrplan **implizit erledigte
 Ziele**, soweit sie zur festen Planmenge gehören.
 Jedes gemeisterte Ziel beendet seinen eigenen Vorbereitungsbedarf. Jedes nicht
-mehr benötigte Nicht-Abschlussprüfungsziel ist implizit erledigt; dessen Bedarf
+mehr benötigte gewöhnliche Ziel ist implizit erledigt; dessen Bedarf
 entfällt ebenfalls, bis ein stabiler Zustand erreicht ist. Dafür sind weder eine
 bestandene Prüfung noch manuelle Zuordnungen zwischen Prüfung und Vorbereitung
-notwendig. Offene Abschlussprüfungen werden nicht implizit erledigt.
+notwendig. Nach der Korrektur vom 1. November bleiben Prüfungs- und
+Gedächtnisziele bis zur Mastery geschützt und werden nie implizit erledigt.
+
+**Ergänzende Produktentscheidung vom 1. November 2026:** Das Tages-/Wochenziel
+zählt ausschließlich verlässlich belegte explizite Abschlüsse innerhalb der
+laufenden Periode. Implizite Erledigung und frühere Vorarbeit beeinflussen den
+Gesamtplanstand, erfüllen aber kein aktuelles Periodenkontingent. Damit gilt
+für dessen erfüllten Anteil `min(P, H)`. Diese Regel ersetzt die bisherige
+Anrechnung von Vorarbeit auf das Tages-/Wochenziel.
 
 Die optionale Einstellung „Nur explizit erreichte Lernziele zählen“ schränkt
 allein die Plananrechnung ein. Die Erweiterung in Abschnitt 3.4 ist im lokalen
@@ -195,13 +203,16 @@ bei. Q aus G herauszulassen darf A nicht implizit erledigen. Das gilt ebenso
 für einen echten Verbraucher in einem anderen Fach. Eine Vereinigung kleiner
 Abschnittserlasse oder getrennte Auswertung nur der Fachpläne wäre falsch.
 
-Ein Nicht-Abschlussprüfungsziel ohne verbleibenden Verbraucher ist auch ohne
-bestandene Prüfung implizit erledigt. Enthält der vollständige Persönliche
-Lehrplan samt Voraussetzungshülle keine Abschlussprüfung, entfällt dort jede
-noch nicht explizit erledigte Arbeit. Ein bloß prüfungsfreier Plan genügt dafür
-nicht. Nicht geplante Ziele erhöhen I nicht; sie können den Bedarf aber weiterhin
-bestimmen. Eine bewusst gewählte Abschnittsansicht zeigt W_section, ersetzt
-für die Planrechnung jedoch niemals W_PC.
+Ein gewöhnliches Ziel ohne verbleibenden Verbraucher kann nach Mastery seiner
+Verbraucher auch ohne bestandene Prüfung implizit erledigt sein. Bei Mastery null
+muss jedoch jedes Target des vollständigen Persönlichen Lehrplans über direkte
+Voraussetzungen von einer geschützten Prüfungs- oder Gedächtniswurzel erreichbar
+sein. Fehlende Routen sind ein Modellierungsfehler und machen die implizite
+Auswertung unverfügbar; betroffene automatische Planfortsetzungen pausieren.
+Explizite Zahlen bleiben mit entsprechender Einschränkung sichtbar. Nicht
+geplante Ziele erhöhen I nicht; sie können den Bedarf aber weiterhin bestimmen.
+Eine bewusst gewählte Abschnittsansicht zeigt nur W_PC innerhalb ihrer
+Targetmaske und erzeugt keinen eigenen Bedarf oder Abschnittserlass.
 
 Die Berechnung hängt nicht davon ab, welcher Baumzweig sichtbar ist, welcher
 Fokus gewählt wurde oder welche Abschlussroute gerade aktiv ist. Auch das
@@ -310,9 +321,9 @@ Einstellungswechsels oder einer aktuellen Erlassberechnung ist kein
 Abschlusszeitpunkt. Aus heutigen Mastery-Werten oder einer aktuell angezeigten
 Erlassbegründung lässt sich der damalige Eintritt des Erlasses nicht verlässlich
 rekonstruieren. Deshalb wird hierfür keine neue Ereignis- oder Ergebnishistorie
-angelegt. Implizite Erledigung wirkt über I und die nachfolgende Mengenbilanz
-auf das Pensum. Die zeitliche Aufteilung zwischen Rückstand und laufendem
-Pensum bleibt von den belegten expliziten Abschlüssen abhängig.
+angelegt. Implizite Erledigung wirkt ausschließlich über I auf die
+Gesamtbilanz. Der erfüllte Anteil des laufenden Pensums hängt nur von den
+belegten expliziten Abschlüssen H und dem geplanten Pensum P ab.
 
 Wird ein gestern bereits angerechnetes erlassenes Ziel heute regulär
 gemeistert, bleibt sein Beitrag zu I eins; sein echter heutiger Abschluss darf
@@ -329,26 +340,39 @@ Rohsaldo                  = I − S
 
 Noch zu deckendes Soll    = max(0, −Rohsaldo)
 
-Offenes Periodenpensum    = min(
-                               Noch zu deckendes Soll,
-                               max(0, P − H)
-                            )
+Offenes Periodenpensum    = max(0, P − H)
 
-Rückstand                 = Noch zu deckendes Soll
-                            − Offenes Periodenpensum
+Rückstand                 = max(0, Noch zu deckendes Soll
+                                   − Offenes Periodenpensum)
 
 Vorsprung                 = max(0, Rohsaldo)
 
-Erfülltes Periodenziel    = P − Offenes Periodenpensum
+Erfülltes Periodenziel    = min(P, H)
 ```
 
 Die Zurechnungsregel lautet:
 
 > **Abschlüsse der laufenden Periode erfüllen zunächst deren Pensum. Darüber hinausgehende Leistung reduziert den Rückstand oder erzeugt Vorarbeit.**
 
-Bereits vorhandene Vorarbeit kann das Periodenziel ebenfalls ganz oder teilweise abdecken.
+Bereits vorhandene Vorarbeit und zusätzliche implizite Erledigung verändern
+die Gesamtbilanz, aber nicht den erfüllten Anteil des Periodenziels. Auch bei
+einem Gesamtvorsprung kann deshalb „Tagesziel 0 von 3“ korrekt sein. Die
+Rückstands- und Vorsprungsrechnung bleibt gegenüber der bisherigen Regel
+unverändert; das offene Periodenpensum ist jetzt eine eigenständige Größe.
 
-**Das geplante Pensum P wird nicht aufgrund bereits beherrschter Ziele gekappt.** Ein vorgesehenes, durch Vorarbeit abgedecktes Pensum wird als erreicht dargestellt und nicht nachträglich als „kein Pensum“.
+Wird ein bereits implizit angerechnetes Ziel später explizit geschafft, kann H
+steigen, während I gleich bleibt. Der gleiche verbleibende Gesamtbedarf kann
+dadurch anders zwischen laufender Periode und Rückstand aufgeteilt werden.
+Beispiel: S=8, P=3, I=2 ergibt bei H=1 Rückstand 4, bei H=2 Rückstand 5;
+der Rohsaldo I−S bleibt −6. Das ist kein neuer Bedarf und keine Entwertung des
+gespeicherten Erfolgs, sondern die bestehende zeitliche Aufteilung.
+
+**Das geplante Pensum P wird nicht aufgrund bereits beherrschter Ziele gekappt.**
+Ein bereits abgeschlossener Gesamtplan bleibt daneben abgeschlossen; ein noch
+offenes Periodenkontingent erzeugt weder fiktive Abschlussereignisse noch eine
+Pflicht, bereits gemeisterte Ziele erneut zu meistern. Implizit erledigte Ziele
+bleiben freiwillig bearbeitbar und werden nicht allein wegen des offenen
+Kontingents automatisch aktiviert.
 
 ### 5.4 Statusrichtung
 
@@ -368,14 +392,15 @@ Die Richtung wird nicht allein aus dem Vorzeichen des Rohsaldos bestimmt. Ein ne
 | Rückstand, ein Ziel heute erledigt | 13 / 3 / 9 / 1 | Tagesziel 1 von 3 · 2 Lernziele im Rückstand |
 | Tagesziel erfüllt, Rückstand verbleibt | 13 / 3 / 12 / 4 | Tagesziel erreicht · 1 Lernziel im Rückstand |
 | Über das Soll hinaus gelernt | 13 / 3 / 15 / 6 | Tagesziel erreicht · 2 Lernziele vorgearbeitet |
-| Tagespensum durch Vorarbeit abgedeckt | 13 / 3 / 13 / 0 | Tagesziel erreicht · im Plan |
+| Gesamtplanstand durch Vorarbeit gedeckt, heute kein Abschluss | 13 / 3 / 13 / 0 | Tagesziel 0 von 3 · im Plan |
+| Gesamtvorsprung, heute kein Abschluss | 13 / 3 / 15 / 0 | Tagesziel 0 von 3 · 2 Lernziele vorgearbeitet |
 | Kein Tagespensum, Rückstand vorhanden | 10 / 0 / 8 / 0 | Heute kein Tagesziel · 2 Lernziele im Rückstand |
-| Heute Prüfung bestanden, ein Vorbereitungsziel wirksam erlassen | 3 / 3 / 2 / 1 | Tagesziel 2 von 3 · im Plan |
+| Heute Prüfung bestanden, ein Vorbereitungsziel wirksam erlassen | 3 / 3 / 2 / 1 | Tagesziel 1 von 3 · im Plan |
 | Dieselben zwei Planbeiträge bei größerem bisherigen Rückstand | 8 / 3 / 2 / 1 | Tagesziel 1 von 3 · 4 Lernziele im Rückstand |
 
 Die letzten beiden Fälle zeigen die Unterscheidung: Beide Ziele zählen zu I,
-aber nur der tatsächliche Prüfungsabschluss zählt zu H. Bei bestehendem
-Rückstand kann die zusätzliche Plananrechnung daher zunächst diesen reduzieren.
+aber nur der tatsächliche Prüfungsabschluss zählt zu H und zum Periodenziel.
+Die zusätzliche implizite Plananrechnung kann den Gesamt-Rückstand reduzieren.
 
 Dieselbe Rechnung gilt im Wochenmodus mit entsprechend abgegrenzten Eingangsgrößen und Wochenformulierungen.
 
@@ -408,7 +433,11 @@ Bei **P = 0** wird ein fehlendes Periodenpensum benannt. Bei **P > 0** wird entw
 | Wochenziel erfüllt | Wochenziel erreicht | Weekly target reached |
 | Kein Wochenpensum | Diese Woche kein Wochenziel | No weekly target this week |
 
-Der Zielstand kann durch Vorarbeit erfüllt sein. Deshalb darf aus „Tagesziel erreicht“ nicht automatisch „Heute P Lernziele abgeschlossen“ werden.
+„Tagesziel erreicht“ bedeutet mindestens P gültige explizite Abschlüsse in der
+laufenden Tagesperiode; im Wochenmodus gilt dies für die ganze Woche. Die
+gedeckelte Periodenanzeige ist keine vollständige Aktivitätsstatistik, wenn
+mehr als P Ziele abgeschlossen wurden. Ein Gesamtplanabschluss bleibt eine
+getrennte Aussage.
 
 Eine Statistik tatsächlicher Abschlüsse ist eine eigenständige Aktivitätsauswertung und nicht Bestandteil dieser Statuszeile.
 
@@ -488,9 +517,10 @@ Die erste Scheibe erhält `periodGauge` mit `completed` (erfülltes
 Periodenziel), `target` (**P**) und `needlePosition` im Bereich 0 bis 1. Ihr
 Titel richtet sich nach der gespeicherten Periodenbasis: „Heute“ oder „Diese
 Woche“. Die Zähleinheit sind **fortschrittswirksame Lernziele der bereinigten
-Planmenge G**, nicht einzelne Übungsaufgaben im Chat. `completed` kann auch
-durch früher erbrachte Vorarbeit größer als die Zahl der in der laufenden
-Periode neu abgeschlossenen Ziele sein. Bei **P > 0** berechnet das Backend
+Planmenge G**, nicht einzelne Übungsaufgaben im Chat. `completed = min(P, H)`
+enthält ausschließlich gültige explizite Abschlüsse der aktuellen Periode;
+implizite Erledigung und frühere Vorarbeit bewegen diese Nadel nicht.
+Bei **P > 0** berechnet das Backend
 `needlePosition = completed / target`. Bei **P = 0** liefert das Backend
 `completed = 0`, `target = 0` und `needlePosition = null`; die Anzeige benennt
 den fehlenden Tages- oder Wochenzielwert, statt einen Fortschrittsanteil zu

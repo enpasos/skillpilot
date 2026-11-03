@@ -1,0 +1,953 @@
+{
+  "schemaVersion": 2,
+  "status": "anchor-and-support-semantics-rebase-pending-independent-review",
+  "supersedesOnly": "The nine RP stage-wide reference operations in the prior38 capsule; original capsule remains immutable candidate history.",
+  "inputs": {
+    "tmp/math-existing-j10-endpoint-candidates-20261101/candidate-operations-native-baseline-rebased.json": "91f734933c22cf1cbc487b0522aea2d279ffdc8f83bf8a8387503f16096e4c00",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "59e46903674d89295c84ab6a149601c3e1c27ce6c3428d2c883a881eca51c81c",
+    "backend/build/reports/curriculum-completion-integrity.json": "fb4f2d3e4881661220bb902049e971845b7124cc6f2603e2bb06b11a4ee9ecbe",
+    "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_MATHEMATIK_SEKI_RAHMENLEHRPLAN_2007.source-extraction.json": "9b419872be53efe0da1f2feae08a0594ac66d10cfd56c36aad78daa3535055fd",
+    "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_I.pdf": "005085fa940a3dfd7619ea274f5e16ee34c50ba452223774aca19fb4025abe61",
+    "AGENTS.md": "f8c2dad2080f5965afdb545014b37c376725c3fe00c687336b68961d2ffb6e61"
+  },
+  "priorRpDecision": {
+    "status": "CHANGES_REQUIRED",
+    "referenceCount": 9,
+    "reason": "AGENTS6.3 requires year/year-band exam folders and forbids a stage-wide SekI exam branch."
+  },
+  "counts": {
+    "correctedSphereReferences": 6,
+    "views": 3,
+    "heldMonteCarloReferences": 3,
+    "newCanonicalGoals": 0,
+    "changedCanonicalOrAssessmentFields": 0
+  },
+  "operations": [
+    {
+      "viewId": "de-rp-gym-math-gk-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+      "expectedScope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G8"
+      },
+      "mode": "replace-exact-existing-final-year-exam-slot-with-selected-wrapper",
+      "yearStructureId": "rp-klasse9-10-msa-g8",
+      "yearDisplayLabel": "Klassenstufe 9 (G8)",
+      "yearStructurePath": [
+        "rootNodes",
+        26,
+        "children",
+        0,
+        "children",
+        4
+      ],
+      "originalExamSlotIndex": 1,
+      "expectedOriginalExamReference": {
+        "kind": "canonicalSubtree",
+        "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+        "displayLabel": "Prüfungen Jahrgangsstufe 9"
+      },
+      "expectedYearStructureSha256": "ad6e0fe417a62fc11c9af6c6c585ce5a74c3584c719bb6dba8e2d6ffd6e3941e",
+      "replacementNode": {
+        "kind": "structure",
+        "id": "rp-g8-final-year-reviewed-exams",
+        "label": "Prüfungen Jahrgangsstufe 9",
+        "children": [
+          {
+            "kind": "canonicalSubtree",
+            "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+            "displayLabel": "Basisaufgaben"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "64f37348-20f7-55b1-82a8-8fc388087577"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "926d0551-4537-569e-b6ad-fc33bb17546e"
+          }
+        ]
+      },
+      "newTargetGoalIds": [
+        "64f37348-20f7-55b1-82a8-8fc388087577",
+        "926d0551-4537-569e-b6ad-fc33bb17546e"
+      ],
+      "generated": true,
+      "integration": "explicit exact-view generator selection; never generated-output-only edit",
+      "historicalBackendScopeChecks": [
+        {
+          "scope": "DE-RP/CrossStage/G8/GK",
+          "actualTargetGoalIdsSha256": "f22d0e79806f886654f9fd86dfe1b346f57d1158107bb1211bf699bb2db383b9",
+          "actualTargetCount": 690,
+          "tasks": [
+            {
+              "goalId": "64f37348-20f7-55b1-82a8-8fc388087577",
+              "effectiveDirectPrerequisiteIds": [
+                "7b01d3d8-1fff-5924-b133-5a4825dc742e"
+              ],
+              "explicitCoveredGoalIds": [
+                "7b01d3d8-1fff-5924-b133-5a4825dc742e"
+              ],
+              "fullSupportGoalIds": [
+                "11c88ea2-8502-5008-bec2-3e491c75ace4",
+                "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+                "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+                "191c67db-44a8-4f63-994a-d85e8e301194",
+                "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+                "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+                "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+                "2331caf2-ccb2-5492-9fc6-48763b848bae",
+                "25593605-5e13-55cc-9a05-8f3d737e15e9",
+                "2ae76eae-799c-463e-9ec9-82327f8209a8",
+                "3e53a39b-1c75-4034-a647-8de85719e1fb",
+                "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+                "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+                "491e0858-e977-516e-a339-1cc2f9e9690f",
+                "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+                "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+                "54148506-c23f-41b8-959b-068dd194cf15",
+                "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+                "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+                "624764d6-becd-5f9b-ada3-0d4f9d143073",
+                "65365dce-f33f-49d8-9516-42f75883aa86",
+                "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+                "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+                "7c978529-ce62-5adc-897f-24ea80babbc8",
+                "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+                "8a691345-3216-522c-a898-d65e8e94db28",
+                "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+                "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+                "b44f038c-fb1f-527e-b9ad-382214d0328a",
+                "b5de0574-93ed-409c-80ee-312211420cd6",
+                "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+                "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+                "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+                "ca623958-c204-5d1b-bdd0-3f76765674cb",
+                "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+                "cf474eab-1379-4877-907e-58b0892ce734",
+                "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+                "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+                "d825f7ce-e19b-594a-8181-eff199c21d93",
+                "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+                "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+                "f0a49da2-018b-4cda-adbd-27047b610a0f",
+                "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+                "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+                "f65ab452-1884-57b0-9be3-c7d9e4944891",
+                "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+                "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+              ],
+              "newSupportContextGoalIds": []
+            },
+            {
+              "goalId": "926d0551-4537-569e-b6ad-fc33bb17546e",
+              "effectiveDirectPrerequisiteIds": [
+                "bb227e31-0b0b-544a-b5e0-548256a70dec"
+              ],
+              "explicitCoveredGoalIds": [
+                "bb227e31-0b0b-544a-b5e0-548256a70dec"
+              ],
+              "fullSupportGoalIds": [
+                "11c88ea2-8502-5008-bec2-3e491c75ace4",
+                "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+                "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+                "191c67db-44a8-4f63-994a-d85e8e301194",
+                "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+                "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+                "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+                "2331caf2-ccb2-5492-9fc6-48763b848bae",
+                "25593605-5e13-55cc-9a05-8f3d737e15e9",
+                "2ae76eae-799c-463e-9ec9-82327f8209a8",
+                "3e53a39b-1c75-4034-a647-8de85719e1fb",
+                "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+                "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+                "491e0858-e977-516e-a339-1cc2f9e9690f",
+                "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+                "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+                "54148506-c23f-41b8-959b-068dd194cf15",
+                "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+                "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+                "624764d6-becd-5f9b-ada3-0d4f9d143073",
+                "65365dce-f33f-49d8-9516-42f75883aa86",
+                "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+                "7c978529-ce62-5adc-897f-24ea80babbc8",
+                "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+                "8a691345-3216-522c-a898-d65e8e94db28",
+                "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+                "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+                "b44f038c-fb1f-527e-b9ad-382214d0328a",
+                "b5de0574-93ed-409c-80ee-312211420cd6",
+                "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+                "bb227e31-0b0b-544a-b5e0-548256a70dec",
+                "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+                "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+                "ca623958-c204-5d1b-bdd0-3f76765674cb",
+                "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+                "cf474eab-1379-4877-907e-58b0892ce734",
+                "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+                "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+                "d825f7ce-e19b-594a-8181-eff199c21d93",
+                "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+                "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+                "f0a49da2-018b-4cda-adbd-27047b610a0f",
+                "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+                "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+                "f65ab452-1884-57b0-9be3-c7d9e4944891",
+                "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+                "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+              ],
+              "newSupportContextGoalIds": []
+            }
+          ]
+        }
+      ],
+      "canonicalTaskContextChecks": [
+        {
+          "taskGoalId": "64f37348-20f7-55b1-82a8-8fc388087577",
+          "supportGoalIds": [
+            "11c88ea2-8502-5008-bec2-3e491c75ace4",
+            "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+            "191c67db-44a8-4f63-994a-d85e8e301194",
+            "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+            "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+            "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+            "2331caf2-ccb2-5492-9fc6-48763b848bae",
+            "25593605-5e13-55cc-9a05-8f3d737e15e9",
+            "2ae76eae-799c-463e-9ec9-82327f8209a8",
+            "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+            "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+            "491e0858-e977-516e-a339-1cc2f9e9690f",
+            "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+            "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+            "54148506-c23f-41b8-959b-068dd194cf15",
+            "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+            "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+            "624764d6-becd-5f9b-ada3-0d4f9d143073",
+            "65365dce-f33f-49d8-9516-42f75883aa86",
+            "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+            "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+            "7c978529-ce62-5adc-897f-24ea80babbc8",
+            "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+            "8a691345-3216-522c-a898-d65e8e94db28",
+            "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+            "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+            "b44f038c-fb1f-527e-b9ad-382214d0328a",
+            "b5de0574-93ed-409c-80ee-312211420cd6",
+            "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+            "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+            "ca623958-c204-5d1b-bdd0-3f76765674cb",
+            "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+            "cf474eab-1379-4877-907e-58b0892ce734",
+            "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+            "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+            "d825f7ce-e19b-594a-8181-eff199c21d93",
+            "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+            "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+            "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+            "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+            "f65ab452-1884-57b0-9be3-c7d9e4944891",
+            "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+          ],
+          "effectiveDirectPrerequisiteIds": [
+            "7b01d3d8-1fff-5924-b133-5a4825dc742e"
+          ],
+          "coveredGoalIds": [
+            "7b01d3d8-1fff-5924-b133-5a4825dc742e"
+          ]
+        },
+        {
+          "taskGoalId": "926d0551-4537-569e-b6ad-fc33bb17546e",
+          "supportGoalIds": [
+            "11c88ea2-8502-5008-bec2-3e491c75ace4",
+            "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+            "191c67db-44a8-4f63-994a-d85e8e301194",
+            "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+            "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+            "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+            "2331caf2-ccb2-5492-9fc6-48763b848bae",
+            "25593605-5e13-55cc-9a05-8f3d737e15e9",
+            "2ae76eae-799c-463e-9ec9-82327f8209a8",
+            "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+            "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+            "491e0858-e977-516e-a339-1cc2f9e9690f",
+            "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+            "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+            "54148506-c23f-41b8-959b-068dd194cf15",
+            "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+            "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+            "624764d6-becd-5f9b-ada3-0d4f9d143073",
+            "65365dce-f33f-49d8-9516-42f75883aa86",
+            "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+            "7c978529-ce62-5adc-897f-24ea80babbc8",
+            "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+            "8a691345-3216-522c-a898-d65e8e94db28",
+            "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+            "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+            "b44f038c-fb1f-527e-b9ad-382214d0328a",
+            "b5de0574-93ed-409c-80ee-312211420cd6",
+            "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+            "bb227e31-0b0b-544a-b5e0-548256a70dec",
+            "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+            "ca623958-c204-5d1b-bdd0-3f76765674cb",
+            "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+            "cf474eab-1379-4877-907e-58b0892ce734",
+            "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+            "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+            "d825f7ce-e19b-594a-8181-eff199c21d93",
+            "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+            "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+            "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+            "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+            "f65ab452-1884-57b0-9be3-c7d9e4944891",
+            "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+          ],
+          "effectiveDirectPrerequisiteIds": [
+            "bb227e31-0b0b-544a-b5e0-548256a70dec"
+          ],
+          "coveredGoalIds": [
+            "bb227e31-0b0b-544a-b5e0-548256a70dec"
+          ]
+        }
+      ],
+      "expectedAfterYearStructureSha256": "809b439c51ac3d90f36bb2812060074ec9bcfa9a87ccb897e73169def068f6cd"
+    },
+    {
+      "viewId": "de-rp-gym-math-lk-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+      "expectedScope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G8"
+      },
+      "mode": "replace-exact-existing-final-year-exam-slot-with-selected-wrapper",
+      "yearStructureId": "rp-klasse9-10-msa-g8",
+      "yearDisplayLabel": "Klassenstufe 9 (G8)",
+      "yearStructurePath": [
+        "rootNodes",
+        23,
+        "children",
+        0,
+        "children",
+        4
+      ],
+      "originalExamSlotIndex": 1,
+      "expectedOriginalExamReference": {
+        "kind": "canonicalSubtree",
+        "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+        "displayLabel": "Prüfungen Jahrgangsstufe 9"
+      },
+      "expectedYearStructureSha256": "ad6e0fe417a62fc11c9af6c6c585ce5a74c3584c719bb6dba8e2d6ffd6e3941e",
+      "replacementNode": {
+        "kind": "structure",
+        "id": "rp-g8-final-year-reviewed-exams",
+        "label": "Prüfungen Jahrgangsstufe 9",
+        "children": [
+          {
+            "kind": "canonicalSubtree",
+            "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+            "displayLabel": "Basisaufgaben"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "64f37348-20f7-55b1-82a8-8fc388087577"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "926d0551-4537-569e-b6ad-fc33bb17546e"
+          }
+        ]
+      },
+      "newTargetGoalIds": [
+        "64f37348-20f7-55b1-82a8-8fc388087577",
+        "926d0551-4537-569e-b6ad-fc33bb17546e"
+      ],
+      "generated": true,
+      "integration": "explicit exact-view generator selection; never generated-output-only edit",
+      "historicalBackendScopeChecks": [
+        {
+          "scope": "DE-RP/CrossStage/G8/LK",
+          "actualTargetGoalIdsSha256": "ff1f565d060d82ce3fd2513475d7547c727b1b2913400626f68521ab8917abc9",
+          "actualTargetCount": 810,
+          "tasks": [
+            {
+              "goalId": "64f37348-20f7-55b1-82a8-8fc388087577",
+              "effectiveDirectPrerequisiteIds": [
+                "7b01d3d8-1fff-5924-b133-5a4825dc742e"
+              ],
+              "explicitCoveredGoalIds": [
+                "7b01d3d8-1fff-5924-b133-5a4825dc742e"
+              ],
+              "fullSupportGoalIds": [
+                "11c88ea2-8502-5008-bec2-3e491c75ace4",
+                "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+                "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+                "191c67db-44a8-4f63-994a-d85e8e301194",
+                "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+                "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+                "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+                "2331caf2-ccb2-5492-9fc6-48763b848bae",
+                "25593605-5e13-55cc-9a05-8f3d737e15e9",
+                "2ae76eae-799c-463e-9ec9-82327f8209a8",
+                "3e53a39b-1c75-4034-a647-8de85719e1fb",
+                "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+                "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+                "491e0858-e977-516e-a339-1cc2f9e9690f",
+                "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+                "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+                "54148506-c23f-41b8-959b-068dd194cf15",
+                "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+                "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+                "624764d6-becd-5f9b-ada3-0d4f9d143073",
+                "65365dce-f33f-49d8-9516-42f75883aa86",
+                "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+                "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+                "7c978529-ce62-5adc-897f-24ea80babbc8",
+                "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+                "8a691345-3216-522c-a898-d65e8e94db28",
+                "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+                "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+                "b44f038c-fb1f-527e-b9ad-382214d0328a",
+                "b5de0574-93ed-409c-80ee-312211420cd6",
+                "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+                "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+                "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+                "ca623958-c204-5d1b-bdd0-3f76765674cb",
+                "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+                "cf474eab-1379-4877-907e-58b0892ce734",
+                "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+                "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+                "d825f7ce-e19b-594a-8181-eff199c21d93",
+                "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+                "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+                "f0a49da2-018b-4cda-adbd-27047b610a0f",
+                "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+                "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+                "f65ab452-1884-57b0-9be3-c7d9e4944891",
+                "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+                "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+              ],
+              "newSupportContextGoalIds": []
+            },
+            {
+              "goalId": "926d0551-4537-569e-b6ad-fc33bb17546e",
+              "effectiveDirectPrerequisiteIds": [
+                "bb227e31-0b0b-544a-b5e0-548256a70dec"
+              ],
+              "explicitCoveredGoalIds": [
+                "bb227e31-0b0b-544a-b5e0-548256a70dec"
+              ],
+              "fullSupportGoalIds": [
+                "11c88ea2-8502-5008-bec2-3e491c75ace4",
+                "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+                "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+                "191c67db-44a8-4f63-994a-d85e8e301194",
+                "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+                "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+                "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+                "2331caf2-ccb2-5492-9fc6-48763b848bae",
+                "25593605-5e13-55cc-9a05-8f3d737e15e9",
+                "2ae76eae-799c-463e-9ec9-82327f8209a8",
+                "3e53a39b-1c75-4034-a647-8de85719e1fb",
+                "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+                "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+                "491e0858-e977-516e-a339-1cc2f9e9690f",
+                "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+                "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+                "54148506-c23f-41b8-959b-068dd194cf15",
+                "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+                "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+                "624764d6-becd-5f9b-ada3-0d4f9d143073",
+                "65365dce-f33f-49d8-9516-42f75883aa86",
+                "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+                "7c978529-ce62-5adc-897f-24ea80babbc8",
+                "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+                "8a691345-3216-522c-a898-d65e8e94db28",
+                "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+                "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+                "b44f038c-fb1f-527e-b9ad-382214d0328a",
+                "b5de0574-93ed-409c-80ee-312211420cd6",
+                "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+                "bb227e31-0b0b-544a-b5e0-548256a70dec",
+                "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+                "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+                "ca623958-c204-5d1b-bdd0-3f76765674cb",
+                "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+                "cf474eab-1379-4877-907e-58b0892ce734",
+                "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+                "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+                "d825f7ce-e19b-594a-8181-eff199c21d93",
+                "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+                "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+                "f0a49da2-018b-4cda-adbd-27047b610a0f",
+                "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+                "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+                "f65ab452-1884-57b0-9be3-c7d9e4944891",
+                "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+                "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+              ],
+              "newSupportContextGoalIds": []
+            }
+          ]
+        }
+      ],
+      "canonicalTaskContextChecks": [
+        {
+          "taskGoalId": "64f37348-20f7-55b1-82a8-8fc388087577",
+          "supportGoalIds": [
+            "11c88ea2-8502-5008-bec2-3e491c75ace4",
+            "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+            "191c67db-44a8-4f63-994a-d85e8e301194",
+            "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+            "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+            "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+            "2331caf2-ccb2-5492-9fc6-48763b848bae",
+            "25593605-5e13-55cc-9a05-8f3d737e15e9",
+            "2ae76eae-799c-463e-9ec9-82327f8209a8",
+            "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+            "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+            "491e0858-e977-516e-a339-1cc2f9e9690f",
+            "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+            "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+            "54148506-c23f-41b8-959b-068dd194cf15",
+            "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+            "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+            "624764d6-becd-5f9b-ada3-0d4f9d143073",
+            "65365dce-f33f-49d8-9516-42f75883aa86",
+            "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+            "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+            "7c978529-ce62-5adc-897f-24ea80babbc8",
+            "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+            "8a691345-3216-522c-a898-d65e8e94db28",
+            "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+            "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+            "b44f038c-fb1f-527e-b9ad-382214d0328a",
+            "b5de0574-93ed-409c-80ee-312211420cd6",
+            "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+            "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+            "ca623958-c204-5d1b-bdd0-3f76765674cb",
+            "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+            "cf474eab-1379-4877-907e-58b0892ce734",
+            "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+            "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+            "d825f7ce-e19b-594a-8181-eff199c21d93",
+            "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+            "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+            "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+            "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+            "f65ab452-1884-57b0-9be3-c7d9e4944891",
+            "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+          ],
+          "effectiveDirectPrerequisiteIds": [
+            "7b01d3d8-1fff-5924-b133-5a4825dc742e"
+          ],
+          "coveredGoalIds": [
+            "7b01d3d8-1fff-5924-b133-5a4825dc742e"
+          ]
+        },
+        {
+          "taskGoalId": "926d0551-4537-569e-b6ad-fc33bb17546e",
+          "supportGoalIds": [
+            "11c88ea2-8502-5008-bec2-3e491c75ace4",
+            "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+            "191c67db-44a8-4f63-994a-d85e8e301194",
+            "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+            "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+            "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+            "2331caf2-ccb2-5492-9fc6-48763b848bae",
+            "25593605-5e13-55cc-9a05-8f3d737e15e9",
+            "2ae76eae-799c-463e-9ec9-82327f8209a8",
+            "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+            "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+            "491e0858-e977-516e-a339-1cc2f9e9690f",
+            "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+            "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+            "54148506-c23f-41b8-959b-068dd194cf15",
+            "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+            "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+            "624764d6-becd-5f9b-ada3-0d4f9d143073",
+            "65365dce-f33f-49d8-9516-42f75883aa86",
+            "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+            "7c978529-ce62-5adc-897f-24ea80babbc8",
+            "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+            "8a691345-3216-522c-a898-d65e8e94db28",
+            "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+            "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+            "b44f038c-fb1f-527e-b9ad-382214d0328a",
+            "b5de0574-93ed-409c-80ee-312211420cd6",
+            "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+            "bb227e31-0b0b-544a-b5e0-548256a70dec",
+            "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+            "ca623958-c204-5d1b-bdd0-3f76765674cb",
+            "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+            "cf474eab-1379-4877-907e-58b0892ce734",
+            "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+            "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+            "d825f7ce-e19b-594a-8181-eff199c21d93",
+            "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+            "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+            "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+            "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+            "f65ab452-1884-57b0-9be3-c7d9e4944891",
+            "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+          ],
+          "effectiveDirectPrerequisiteIds": [
+            "bb227e31-0b0b-544a-b5e0-548256a70dec"
+          ],
+          "coveredGoalIds": [
+            "bb227e31-0b0b-544a-b5e0-548256a70dec"
+          ]
+        }
+      ],
+      "expectedAfterYearStructureSha256": "809b439c51ac3d90f36bb2812060074ec9bcfa9a87ccb897e73169def068f6cd"
+    },
+    {
+      "viewId": "de-rp-gym-seki-math-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g8.view.json",
+      "expectedScope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G8"
+      },
+      "mode": "replace-exact-existing-final-year-exam-slot-with-selected-wrapper",
+      "yearStructureId": "rp-klasse9-10-msa-g8",
+      "yearDisplayLabel": "Klassenstufe 9 (G8)",
+      "yearStructurePath": [
+        "rootNodes",
+        4,
+        "children",
+        4
+      ],
+      "originalExamSlotIndex": 1,
+      "expectedOriginalExamReference": {
+        "kind": "canonicalSubtree",
+        "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+        "displayLabel": "Prüfungen Jahrgangsstufe 9"
+      },
+      "expectedYearStructureSha256": "ad6e0fe417a62fc11c9af6c6c585ce5a74c3584c719bb6dba8e2d6ffd6e3941e",
+      "replacementNode": {
+        "kind": "structure",
+        "id": "rp-g8-final-year-reviewed-exams",
+        "label": "Prüfungen Jahrgangsstufe 9",
+        "children": [
+          {
+            "kind": "canonicalSubtree",
+            "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+            "displayLabel": "Basisaufgaben"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "64f37348-20f7-55b1-82a8-8fc388087577"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "926d0551-4537-569e-b6ad-fc33bb17546e"
+          }
+        ]
+      },
+      "newTargetGoalIds": [
+        "64f37348-20f7-55b1-82a8-8fc388087577",
+        "926d0551-4537-569e-b6ad-fc33bb17546e"
+      ],
+      "generated": true,
+      "integration": "explicit exact-view generator selection; never generated-output-only edit",
+      "historicalBackendScopeChecks": [
+        {
+          "scope": "DE-RP/SekI/G8/GK+LK",
+          "actualTargetGoalIdsSha256": "9309fa568682a8cdbaf9aeb8744ba93bc8cda3eba338307646e894301a72246f",
+          "actualTargetCount": 268,
+          "tasks": [
+            {
+              "goalId": "64f37348-20f7-55b1-82a8-8fc388087577",
+              "effectiveDirectPrerequisiteIds": [
+                "7b01d3d8-1fff-5924-b133-5a4825dc742e"
+              ],
+              "explicitCoveredGoalIds": [
+                "7b01d3d8-1fff-5924-b133-5a4825dc742e"
+              ],
+              "fullSupportGoalIds": [
+                "11c88ea2-8502-5008-bec2-3e491c75ace4",
+                "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+                "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+                "191c67db-44a8-4f63-994a-d85e8e301194",
+                "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+                "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+                "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+                "2331caf2-ccb2-5492-9fc6-48763b848bae",
+                "25593605-5e13-55cc-9a05-8f3d737e15e9",
+                "2ae76eae-799c-463e-9ec9-82327f8209a8",
+                "3e53a39b-1c75-4034-a647-8de85719e1fb",
+                "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+                "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+                "491e0858-e977-516e-a339-1cc2f9e9690f",
+                "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+                "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+                "54148506-c23f-41b8-959b-068dd194cf15",
+                "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+                "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+                "624764d6-becd-5f9b-ada3-0d4f9d143073",
+                "65365dce-f33f-49d8-9516-42f75883aa86",
+                "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+                "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+                "7c978529-ce62-5adc-897f-24ea80babbc8",
+                "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+                "8a691345-3216-522c-a898-d65e8e94db28",
+                "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+                "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+                "b44f038c-fb1f-527e-b9ad-382214d0328a",
+                "b5de0574-93ed-409c-80ee-312211420cd6",
+                "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+                "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+                "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+                "ca623958-c204-5d1b-bdd0-3f76765674cb",
+                "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+                "cf474eab-1379-4877-907e-58b0892ce734",
+                "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+                "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+                "d825f7ce-e19b-594a-8181-eff199c21d93",
+                "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+                "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+                "f0a49da2-018b-4cda-adbd-27047b610a0f",
+                "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+                "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+                "f65ab452-1884-57b0-9be3-c7d9e4944891",
+                "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+                "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+              ],
+              "newSupportContextGoalIds": []
+            },
+            {
+              "goalId": "926d0551-4537-569e-b6ad-fc33bb17546e",
+              "effectiveDirectPrerequisiteIds": [
+                "bb227e31-0b0b-544a-b5e0-548256a70dec"
+              ],
+              "explicitCoveredGoalIds": [
+                "bb227e31-0b0b-544a-b5e0-548256a70dec"
+              ],
+              "fullSupportGoalIds": [
+                "11c88ea2-8502-5008-bec2-3e491c75ace4",
+                "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+                "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+                "191c67db-44a8-4f63-994a-d85e8e301194",
+                "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+                "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+                "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+                "2331caf2-ccb2-5492-9fc6-48763b848bae",
+                "25593605-5e13-55cc-9a05-8f3d737e15e9",
+                "2ae76eae-799c-463e-9ec9-82327f8209a8",
+                "3e53a39b-1c75-4034-a647-8de85719e1fb",
+                "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+                "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+                "491e0858-e977-516e-a339-1cc2f9e9690f",
+                "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+                "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+                "54148506-c23f-41b8-959b-068dd194cf15",
+                "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+                "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+                "624764d6-becd-5f9b-ada3-0d4f9d143073",
+                "65365dce-f33f-49d8-9516-42f75883aa86",
+                "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+                "7c978529-ce62-5adc-897f-24ea80babbc8",
+                "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+                "8a691345-3216-522c-a898-d65e8e94db28",
+                "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+                "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+                "b44f038c-fb1f-527e-b9ad-382214d0328a",
+                "b5de0574-93ed-409c-80ee-312211420cd6",
+                "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+                "bb227e31-0b0b-544a-b5e0-548256a70dec",
+                "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+                "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+                "ca623958-c204-5d1b-bdd0-3f76765674cb",
+                "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+                "cf474eab-1379-4877-907e-58b0892ce734",
+                "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+                "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+                "d825f7ce-e19b-594a-8181-eff199c21d93",
+                "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+                "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+                "f0a49da2-018b-4cda-adbd-27047b610a0f",
+                "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+                "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+                "f65ab452-1884-57b0-9be3-c7d9e4944891",
+                "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+                "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+              ],
+              "newSupportContextGoalIds": []
+            }
+          ]
+        }
+      ],
+      "canonicalTaskContextChecks": [
+        {
+          "taskGoalId": "64f37348-20f7-55b1-82a8-8fc388087577",
+          "supportGoalIds": [
+            "11c88ea2-8502-5008-bec2-3e491c75ace4",
+            "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+            "191c67db-44a8-4f63-994a-d85e8e301194",
+            "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+            "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+            "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+            "2331caf2-ccb2-5492-9fc6-48763b848bae",
+            "25593605-5e13-55cc-9a05-8f3d737e15e9",
+            "2ae76eae-799c-463e-9ec9-82327f8209a8",
+            "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+            "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+            "491e0858-e977-516e-a339-1cc2f9e9690f",
+            "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+            "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+            "54148506-c23f-41b8-959b-068dd194cf15",
+            "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+            "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+            "624764d6-becd-5f9b-ada3-0d4f9d143073",
+            "65365dce-f33f-49d8-9516-42f75883aa86",
+            "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+            "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+            "7c978529-ce62-5adc-897f-24ea80babbc8",
+            "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+            "8a691345-3216-522c-a898-d65e8e94db28",
+            "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+            "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+            "b44f038c-fb1f-527e-b9ad-382214d0328a",
+            "b5de0574-93ed-409c-80ee-312211420cd6",
+            "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+            "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+            "ca623958-c204-5d1b-bdd0-3f76765674cb",
+            "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+            "cf474eab-1379-4877-907e-58b0892ce734",
+            "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+            "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+            "d825f7ce-e19b-594a-8181-eff199c21d93",
+            "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+            "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+            "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+            "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+            "f65ab452-1884-57b0-9be3-c7d9e4944891",
+            "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+          ],
+          "effectiveDirectPrerequisiteIds": [
+            "7b01d3d8-1fff-5924-b133-5a4825dc742e"
+          ],
+          "coveredGoalIds": [
+            "7b01d3d8-1fff-5924-b133-5a4825dc742e"
+          ]
+        },
+        {
+          "taskGoalId": "926d0551-4537-569e-b6ad-fc33bb17546e",
+          "supportGoalIds": [
+            "11c88ea2-8502-5008-bec2-3e491c75ace4",
+            "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+            "191c67db-44a8-4f63-994a-d85e8e301194",
+            "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+            "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+            "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+            "2331caf2-ccb2-5492-9fc6-48763b848bae",
+            "25593605-5e13-55cc-9a05-8f3d737e15e9",
+            "2ae76eae-799c-463e-9ec9-82327f8209a8",
+            "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+            "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+            "491e0858-e977-516e-a339-1cc2f9e9690f",
+            "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+            "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+            "54148506-c23f-41b8-959b-068dd194cf15",
+            "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+            "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+            "624764d6-becd-5f9b-ada3-0d4f9d143073",
+            "65365dce-f33f-49d8-9516-42f75883aa86",
+            "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+            "7c978529-ce62-5adc-897f-24ea80babbc8",
+            "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+            "8a691345-3216-522c-a898-d65e8e94db28",
+            "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+            "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+            "b44f038c-fb1f-527e-b9ad-382214d0328a",
+            "b5de0574-93ed-409c-80ee-312211420cd6",
+            "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+            "bb227e31-0b0b-544a-b5e0-548256a70dec",
+            "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+            "ca623958-c204-5d1b-bdd0-3f76765674cb",
+            "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+            "cf474eab-1379-4877-907e-58b0892ce734",
+            "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+            "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+            "d825f7ce-e19b-594a-8181-eff199c21d93",
+            "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+            "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+            "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+            "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+            "f65ab452-1884-57b0-9be3-c7d9e4944891",
+            "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+          ],
+          "effectiveDirectPrerequisiteIds": [
+            "bb227e31-0b0b-544a-b5e0-548256a70dec"
+          ],
+          "coveredGoalIds": [
+            "bb227e31-0b0b-544a-b5e0-548256a70dec"
+          ]
+        }
+      ],
+      "expectedAfterYearStructureSha256": "809b439c51ac3d90f36bb2812060074ec9bcfa9a87ccb897e73169def068f6cd"
+    }
+  ],
+  "heldTask": {
+    "goalId": "e5055665-89ae-5be6-8fc7-42a9e991d63d",
+    "referenceCount": 3,
+    "status": "CHANGES_REQUIRED_CONTENT_EVIDENCE",
+    "reason": "The current e55 goal explicitly requires simulation, obtaining estimates and interpreting MonteCarlo. The released e505 task supplies simulation results but never elicits simulation design/execution. Positive original-source stage support does not fix that whole-goal assessment gap.",
+    "noPermittedShortcut": "Do not weaken the ordinary goal, scoring, coverage or prerequisite fields to make the route appear valid. A separately reviewed stronger task variant is needed if this goal is to be assessed."
+  },
+  "preserved": [
+    "All ordinary goal placements and existing target/support roles",
+    "Canonical J9 exam-folder identity and all its existing task descendants",
+    "Canonical ownership of the sphere tasks in the historicalJ10 folder",
+    "Official source and original E/V status; no claim of universal official requirement"
+  ],
+  "wrapperRationale": "At the existing final-year9(G8) examination slot, one authored examination heading retains the original canonical year9 folder once as Basisaufgaben and adds only the two reviewed sphere task references. This satisfies year-local navigation without a new stage-wide branch, duplicate canonical task ownership or an opaque folder goal.",
+  "canonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "837961634da057f95cc187fc213f99306e55ef62e176bae0956acd1a5528317c"
+  },
+  "nativeSupportEvidence": {
+    "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/markov-basis-image-preparation-v24-canonical-carryforward-20261102/native-task-support-context.json",
+    "sha256": "e6fb3b6d0855a9c3a8a64841ff1ce3dd1a11f4e01116523425d099ee9ac3dd0f"
+  },
+  "anchorRebase": {
+    "kind": "exact-structure-anchor-and-explicit-support-context-v2-rebase",
+    "historicalPlan": {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/reviewed-candidate/candidate-operations.json",
+      "sha256": "50b1ee61dd474809abd7a247b086c5b2318b36a3b0447f70e6e610ddfff93f00"
+    },
+    "historicalReceipt": {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/reviewed-candidate/review.receipt.json",
+      "sha256": "2dee4037a559887df5295fabb798796d559fd1753ad333c1cd02ce41ae535faf"
+    },
+    "inputBindings": [
+      {
+        "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/input-views/de-rp-gk-g8.view.json",
+        "sha256": "a4d9c6117a70ca053d35554479ddf31a1b7fda86ae10757ff5519abd067483e0",
+        "viewId": "de-rp-gym-math-gk-g8"
+      },
+      {
+        "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/input-views/de-rp-lk-g8.view.json",
+        "sha256": "230f3d8dac56179db74c805efe866e08240308ce521f5e8a89bba5ca7c19d479",
+        "viewId": "de-rp-gym-math-lk-g8"
+      },
+      {
+        "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/input-views/de-rp-seki-g8.view.json",
+        "sha256": "284d5044f046bb1c37d4e4f820958a23f7c0fa888c5110c9577c062df0f4b996",
+        "viewId": "de-rp-gym-seki-math-g8"
+      }
+    ],
+    "canonical": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "3a3792d14057854c79a3d8c4d38cd98dd6e28e936865ebd3447107404b58474c"
+    },
+    "historicalBackendScopeChecksPreservedAsHistory": true,
+    "newRuntimeAcceptance": false
+  }
+}

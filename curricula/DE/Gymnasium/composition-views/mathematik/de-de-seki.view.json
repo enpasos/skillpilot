@@ -339,9 +339,21 @@
               "goalId": "0fd96c54-c629-45aa-a640-e2718890ddf9"
             },
             {
-              "kind": "canonicalSubtree",
-              "goalId": "cb20dd6b-c4ff-4a1b-9636-3b3d6ea86aa8",
-              "displayLabel": "Prüfungen Jahrgangsstufe 10"
+              "kind": "structure",
+              "id": "reviewed-monotonicity-j10-exams-de-de-gym-seki-math",
+              "label": "Prüfungen Jahrgangsstufe 10",
+              "children": [
+                {
+                  "kind": "canonicalSubtree",
+                  "goalId": "cb20dd6b-c4ff-4a1b-9636-3b3d6ea86aa8",
+                  "displayLabel": "Prüfungen Jahrgangsstufe 10"
+                },
+                {
+                  "kind": "goalEntry",
+                  "goalId": "010c133c-dcf1-5530-8305-61bc638017bc",
+                  "projectionRole": "target"
+                }
+              ]
             }
           ]
         }
@@ -380,6 +392,16 @@
     {
       "kind": "goalEntry",
       "goalId": "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+      "projectionRole": "prerequisiteOnly"
+    },
+    {
+      "kind": "goalEntry",
+      "goalId": "e5494c67-aed6-5710-8ae3-51ae147c10e9",
+      "projectionRole": "prerequisiteOnly"
+    },
+    {
+      "kind": "goalEntry",
+      "goalId": "8f964887-e699-5d3d-9bc3-84a1b9982bdd",
       "projectionRole": "prerequisiteOnly"
     }
   ]

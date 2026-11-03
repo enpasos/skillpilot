@@ -1,16 +1,23 @@
 % SPDX-License-Identifier: Apache-2.0
 \section{Implizite Erledigung und direkter Prüfungszugang}
 \label{sec:assessment}
-\begin{principle}{Verbindliche Produktentscheidung vom 31. Oktober 2026}
+\begin{principle}{Produktentscheidung vom 31. Oktober, korrigiert am 1. November 2026}
 Jedes gemeisterte Lernziel beendet seinen eigenen Vorbereitungsbedarf.
-Ein von keinem offenen Ziel mehr benötigtes Nicht-Prüfungsziel ist implizit
-erledigt und beendet ebenfalls seinen Bedarf. Jede Abschlussprüfung bleibt
+Ein von keinem offenen Ziel mehr benötigtes gewöhnliches Ziel ist implizit
+erledigt und beendet ebenfalls seinen Bedarf. Prüfungs- und Gedächtnisziele
+bleiben bis zur Mastery geschützt. Jede Abschlussprüfung bleibt
 ohne Mastery offen und muss direkt ansteuerbar sein. Manuelle
 Freistellungsprofile und zusätzliche Prüfbelege sind dafür nicht erforderlich.
 \end{principle}
 
 Mastery bleibt der einzige gespeicherte Ergebniszustand pro atomarem Lernziel.
 Implizite Erledigung wird abgeleitet und niemals als Mastery zurückgeschrieben.
+Für eine Prüfung gelten ihre normalen Bewertungsregeln.
+\code{coveredGoalIds} beschreibt die bewerteten Aufgabenhandlungen und
+begründet keine eigenen Bestehensentscheidungen für die Voraussetzungen.
+Für die Bedarfsrechnung zählt allein Mastery; Punktverteilungen oder
+Einzelnachweise wertet sie nicht aus. Aufgabenspezifische Punktekappungen
+bleiben Teil der normalen Bewertungsrubrik.
 Grundlage ist die \srcref{docs/concept/skill-graph/assessment-gated-completion.md}{aktuelle
 Konzeptspezifikation}; der \srcref{docs/dev/assessment-gated-completion-pilot.md}{Implementierungsstand}
 trennt lokale Tests, Deployment und tatsächliche Coach-Abnahme.
@@ -20,8 +27,9 @@ Für eine Curriculumgeneration und das verbindliche Personal Curriculum sei
 $T$ die Menge der eindeutigen atomaren Ziele des gewählten Umfangs.
 Maßgeblich ist die aufgelöste Program-/Kompositionsstruktur. Ein temporärer
 Lernfokus oder eingeklappter Baumzweig verändert diesen Umfang nicht.
-Die Standardauswertung umfasst das Personal Curriculum; ein ausdrücklich
-gewählter Abschnitt erhält seine eigene vollständige Auswertung.
+Die Bedarfsrechnung umfasst immer das vollständige Personal Curriculum.
+Ein ausdrücklich gewählter Abschnitt ist eine Targetmaske über demselben
+Ergebnis. Er entfernt insbesondere keine außerhalb liegenden Prüfungen.
 
 Cluster-Voraussetzungen werden in atomare Pflichten expandiert;
 vererbte Anforderungen und autoritative atomare \code{goalEntry}-Projektionen
@@ -47,53 +55,79 @@ keine bedeutungserhaltenden Umformungen dieser Abschlusssemantik.
 
 Sei $Q_H\subseteq V_H$ die autoritativ bestimmte Menge der Abschlussprüfungen.
 Die aktuelle Abbildung nutzt die bestehenden Prüfungs-/Assessmenttypen,
-nicht Titel oder \code{coveredGoalIds}. Bereits im Kontext enthaltene
-Prüfungspflichten verschwinden nicht dadurch, dass sie nur als Unterstützung
-oder in einer anderen Ansicht sichtbar sind. Alternative Aufgabenformen
+nicht Titel oder \code{coveredGoalIds}. Alternative Aufgabenformen
 und Wahlentscheidungen müssen bereits bei der Umfangsauflösung geklärt sein.
+Sei $K_H$ die bestehende Menge der Gedächtnisziele und
+$P_H=Q_H\cup K_H$ die geschützte Menge. Die unabhängigen Abschlusspflichten
+sind dagegen nur $R_H=P_H\cap T$. Versteckte Unterstützung behält
+ihren Schutz, wird dadurch aber nicht zur zusätzlichen unabhängigen Pflicht.
+Gedächtnisziele folgen ihrem bestehenden Recall-Vertrag;
+sie werden weder als Prüfungen gezählt noch direkt als Prüfungen gestartet.
+
+\paragraph{Strukturelle Freigabebedingung.}
+In jedem vollständigen autoritativen Curriculum und jeder unterstützten
+Projektion muss jedes Target bei Mastery null über direkte Voraussetzungskanten
+von einer ausgewählten geschützten Wurzel aus erreichbar sein. Ein gewöhnliches Endziel
+ohne solchen Bedarf ist ein Modellierungsfehler. Auch ein nichtleerer Lehrplan
+ohne geschützte Wurzeln ist nicht freigabefähig. Deterministische Tests melden
+diese Fehler; neue Kanten oder Prüfungsziele benötigen eine fachliche Begründung.
+Eine rechnerisch leere Nachfrage beweist keine gültige Curriculum-Erledigung.
+
+\paragraph{Eigene Abschlussaufgaben.}
+Eigene kompetenztreue Abschlussaufgaben dürfen bereits ausgewählte ganze
+Zielverträge absichern. Aufgabe, Rubrik und Vorbereitung müssen zum Programm
+und seiner Eingangsbasis passen. Dies begründet keine amtliche Aufgabenpflicht
+oder zusätzliche Quellenabdeckung. Fehlende Einzelmappings allein sind keine
+Bundeslandgrenze; falsche Targetzuordnungen bleiben Korrekturbedarf.
+Die geprüfte Kompositionsstruktur entscheidet über neue Pflichten;
+\code{applicabilityFromRequires} liefert nur Anwendbarkeit.
+Aufgabenalternativen sind keine automatischen Zusatzpflichten.
+Alle Vorkommen sind im vollständigen Angebotsinventar zu prüfen;
+andere gültige Targets bleiben erhalten.
 
 \subsection{Mastery, Bedarf und kleinster Fixpunkt}
 Mit der aktuellen globalen Mastery-Menge $M$ sei $E=M\cap V_H$.
-Für eine Menge $X$ bereits ausdrücklich oder implizit erledigter Ziele gilt
-\begin{align}
- \Consumers_H(v)&=\{u\mid(u,v)\in F_H\},\\
- \Active_H(X)&=\{(u,v)\in F_H\mid u\notin X\}.
-\end{align}
 Mastery beendet die \emph{eigenen ausgehenden} Anforderungen. Ein eingehender
 Bedarf an einem bereits gemeisterten Ziel wird nicht durch dieses Ziel
 hindurch an dessen frühere Vorbereitung weitergereicht.
 
-Die drei Produktregeln ergeben unmittelbar
+Der noch aktive Bedarf ist der kleinste Fixpunkt
 \begin{align}
- X_0&=E,\\
- X_{n+1}&=X_n\cup\{v\in V_H\setminus Q_H\mid
-              \Consumers_H(v)\subseteq X_n\},\label{eq:waiver-step}\\
- X_*&=\bigcup_{n\geq0}X_n,\qquad I_H=X_*\setminus E.
+ N_0&=R_H\setminus E,\\
+ N_{n+1}&=N_n\cup\{v\in V_H\setminus E\mid
+              \exists u\in N_n:(u,v)\in F_H\},\label{eq:waiver-step}\\
+ N_*&=\bigcup_{n\geq0}N_n,\\
+ I_H&=V_H\setminus(E\cup N_*\cup P_H).
  \label{eq:waiver-result}
 \end{align}
 Der Operator ist monoton und inflationär. Auf dem endlichen Graphen erreicht
 die Iteration ihren kleinsten Fixpunkt. Dabei gilt stets
-$I_H\cap E=\varnothing$ und $I_H\cap Q_H=\varnothing$.
+$I_H\cap E=\varnothing$ und $I_H\cap P_H=\varnothing$.
 Es entsteht keine zusätzliche gespeicherte Ergebnisart.
 
-Die leere Verbrauchermenge ist kein Sonderfall: Ein gewöhnliches Endziel
-ohne Verbraucher ist implizit erledigt. Dies gilt auch für Orientierung
-und Gedächtnisziele. Die ausdrücklichen Interaktions- und Recall-Verträge
-bleiben unverändert; weder ein Kartenerfolg noch eine motivational erfolgte
-Interaktion wird durch die Auswertung erfunden. Enthält ein gültiger endlicher
-Umfang keine Abschlussprüfung, wird seine gesamte nicht gemeisterte Arbeit
-implizit erledigt. Zusätzliche Ausnahmen für einzelne Zielarten sind in
-diesen drei Regeln nicht vorgesehen.
+Die leere Verbrauchermenge ist rechnerisch kein Sonderfall: Ein gewöhnliches
+Endziel ohne Verbraucher wäre implizit erledigt. Bei Mastery null weist das
+in einem vollständigen Curriculum auf den genannten Routenfehler hin.
+Ausgewählte Gedächtnisziele bleiben auch ohne Verbraucher offen; ein Prüfungserfolg
+ersetzt keine Recall-Mastery. Nicht mehr benötigte geschützte Unterstützung
+gehört weder zu $N_*$ noch zu $I_H$: Sie bleibt unmastered, ohne den gewählten
+Abschluss zu blockieren. Die ausdrücklichen Zieltypverträge bleiben
+unverändert. Implizite Orientierung erfindet keine motivationale Interaktion.
 
+\begin{samepage}
 \paragraph{Äquivalenter linearer Algorithmus.}
-Starte bei allen noch nicht gemeisterten Abschlussprüfungen. Folge ihren direkten
+Starte bei allen noch nicht gemeisterten ausgewählten Prüfungs- und Gedächtnis-Targets. Folge ihren direkten
 Voraussetzungskanten, besuche jedes Ziel höchstens einmal und stoppe an
 \emph{jedem} gemeisterten Ziel. Die erreichten nicht gemeisterten Ziele
-bleiben benötigt. Alle übrigen nicht gemeisterten Ziele sind implizit erledigt.
+bleiben benötigt. Alle übrigen nicht gemeisterten gewöhnlichen Ziele sind implizit erledigt;
+geschützte Unterstützung erhält keinen impliziten Ergebnisstatus.
 Auf einem DAG entspricht dies genau dem Fixpunkt und benötigt
 $O(|V_H|+|F_H|)$ Zeit und Speicher. Eine quadratische Speicherung aller
 indirekten Beziehungen entfällt.
+\par
+\end{samepage}
 
+\FloatBarrier
 \subsection{Beispiel: Mastery unterbricht den Bedarf}
 \begin{figure}[htbp]
 \centering
@@ -123,8 +157,10 @@ $C\to B\to A$, nur B gemeistert & A implizit; Prüfung C bleibt offen.\\
 Zusätzlich $C\to A$ & A bleibt direkt für C erforderlich.\\
 Prüfungen B und C benötigen A & Ein einzelner Erfolg reicht nicht, solange der andere Verbraucher offen ist.\\
 Beide Prüfungen gemeistert & A und anschließend seine nicht mehr benötigte Vorbereitung werden implizit erledigt.\\
-Gewöhnliches Endziel ohne Verbraucher & Implizit erledigt, auch ohne bisherigen Erfolg.\\
+Gewöhnliches Endziel ohne Verbraucher & Rechnerisch implizit; bei Mastery null ein Target-Routenfehler im vollständigen Curriculum.\\
 Prüfung ohne Verbraucher & Bleibt bis zu ihrer Mastery offen.\\
+Gedächtnisziel ohne Verbraucher & Bleibt bis zur gültigen Recall-Mastery offen.\\
+Gemeistertes Target benötigt versteckte Lernkarte & Die Karte bleibt unmastered, ist nicht implizit erledigt und blockiert den Targetabschluss nicht.\\
 \bottomrule
 \end{tabularx}
 \caption{Bedarfsrechnung ohne manuelle Freistellungsregeln.}
@@ -134,13 +170,16 @@ Prüfung ohne Verbraucher & Bleibt bis zu ihrer Mastery offen.\\
 \subsection{Abschluss und direkte Prüfungsauswahl}
 Der Umfang ist abgeschlossen genau dann, wenn
 \begin{equation}
- \Complete(H)\iff T\subseteq X_*\ \land\ Q_H\subseteq E.
+ \Complete(H)\iff T\subseteq E\cup I_H.
 \end{equation}
-Auf dem endlichen DAG sind alle Prüfungspflichten gemeistert auch hinreichend:
-Ohne offene Prüfung bleibt keine dauerhafte Nachfrage nach Nicht-Prüfungsarbeit.
+Auf dem strukturell gültigen endlichen DAG ist Mastery aller ausgewählten
+geschützten Pflichten auch hinreichend: Ohne offene ausgewählte geschützte
+Wurzel bleibt keine dauerhafte Nachfrage nach gewöhnlicher Vorbereitung.
+Alle ausgewählten Prüfungen allein genügen bei offenen Gedächtnis-Targets nicht.
 Der Nenner zählt trotzdem nur Ziele aus $T$, nicht zusätzliche Unterstützung.
-Eine in Sekundarstufe~I implizit erledigte Kompetenz kann im größeren
-stufenübergreifenden Umfang noch benötigt werden; ihre globale Mastery bleibt gleich.
+Für eine Abschnittsmaske $S\subseteq T$ gilt Abschluss genau dann, wenn
+$S\subseteq E\cup I_H$. Eine unabhängig gewählte Stufe ist dagegen eine
+Änderung des verbindlichen Personal Curriculum auf Level~2.
 
 Jede passende Abschlussprüfung ist ohne vorherige Voraussetzungsmastery direkt
 wählbar. Bewusste Auswahl, Authentifizierung, Lernendenrevision,
@@ -157,20 +196,18 @@ Normale Pflichtvorschläge lassen implizit erledigte Arbeit aus. Freiwilliges
 Lernen bleibt über die unveränderte fachliche Zugangsprüfung möglich.
 
 \subsection{Cockpit, Lernplan und technische Grenzen}
-Der Baum verwendet ein kompaktes Icon mit dem Tooltip
-„Für diesen Abschnitt nicht mehr erforderlich“. Diese Aussage behauptet
-keinen Prüfungserfolg, wenn ein gewöhnliches Lernziel den Bedarf beendet hat.
-Mastery-Anzeigen und abgeleitete Erledigung bleiben unterscheidbar.
-Die Balken an Sammelknoten der Lernendenansicht sind grün für explizit
-geschaffte, blau für implizit erledigte und grau für offene Ziele. Grundlage
-sind die eindeutigen atomaren Nachfahren der dargestellten Projektion mit ihren
-atomaren Gewichten; das Zuklappen verändert diese Menge nicht. Der blaue Anteil
-verwendet denselben gültigen Abschnittskontext wie die Schildsymbole und entfällt
-bei veralteten Daten. Bei drei gleich gewichteten Zielen ergeben ein explizit
-geschafftes und zwei implizit erledigte Ziele einen vollen Balken, ohne Mastery
-umzuschreiben.
-Ein mit Maus, Tastatur und Touch erreichbarer Tooltip erläutert Zielanzahlen,
-gewichteten Fortschritt und den Bezug der impliziten Erledigung.
+Das kompakte Baumsymbol erläutert per Tooltip: „Für diesen Abschnitt nicht
+mehr erforderlich“. Es behauptet keinen Prüfungserfolg oder Mastery.
+Sammelbalken zeigen explizite Abschlüsse grün, implizite Erledigung blau und
+offene Ziele grau. Sie zählen die eindeutigen atomaren Nachfahren der
+Projektion mit ihren Gewichten, unabhängig vom Zuklappen. Der blaue Anteil
+nutzt denselben gültigen Abschnittskontext wie die Schildsymbole; bei veralteten
+Daten entfällt er. Ein expliziter und zwei implizite Abschlüsse füllen bei
+gleichen Gewichten den Balken, ohne Mastery umzuschreiben. Tooltips erklären
+Zahlen, Gewichtung und Kontext und sind mit Maus, Tastatur und Touch erreichbar.
+Entfällt eine gespeicherte Fokusreferenz durch eine Baumkorrektur, verlangt
+dies eine bewusste Neuwahl statt ungefragter Erweiterung auf den Gesamtlehrplan.
+Ein weiterhin gültiges aktives Atom darf zu Ende bearbeitet werden.
 
 Für die feste, eindeutige Planbasis $G$ gilt standardmäßig
 \begin{equation}
@@ -182,13 +219,22 @@ ist keine eigene abgeschlossene Prüfungswelt: Ein reiner Vorbereitungsplan
 darf nicht schon deshalb fertig sein, weil seine Prüfung außerhalb von $G$
 liegt. Auch echte fachübergreifende Anforderungen bleiben Bedarf, während
 Quoten und Fachbilanzen getrennt bleiben. Eine kleine Abschnittsauswertung
-ändert die Plananrechnung nicht.
+zeigt nur dieselbe implizite Menge innerhalb ihrer Targetmaske und ändert
+die Plananrechnung nicht.
 Die Cockpit-Einstellung „Nur explizit erreichte Lernziele zählen“ ist
 standardmäßig aus; bei Auswahl zählt nur $|G\cap M|$.
 Diese ausschließlich planbezogene Option verändert weder Baumbalken noch Schilde.
 Planbasis, Termine und Sollmengen ändern sich dadurch nicht. Der Periodenwert
 $H$ zählt weiterhin ausschließlich tatsächliche, zeitlich belegte Abschlüsse;
 aktuelle implizite Erledigung erzeugt keine historischen Lernerfolgsereignisse.
+Nach der bestätigten Periodenregel gilt für das Tages-/Wochenziel
+$\min(P,H)$ als erfüllter und $\max(0,P-H)$ als offener Anteil.
+Implizite Beiträge und frühere Vorarbeit verändern den Gesamtplanstand,
+aber nicht diesen Periodenzähler. Ein offenes Kontingent macht implizite
+Vorbereitung nicht zur Pflicht und erzeugt keinen erneuten Abschluss eines
+bereits gemeisterten Ziels.
+Die kanalübergreifende Umsetzung liegt im
+\srcref{backend/src/main/java/com/skillpilot/backend/service/learningplan/UnifiedLearningPlanStatusCalculator.java}{gemeinsamen Planrechner}.
 
 „Prüfungsabkürzungen anbieten“ steuert direkte Einstiege. Die Einstellung
 verändert weder Mastery noch den berechneten Bedarf oder gültige Plananrechnung.
@@ -196,9 +242,15 @@ Der \srcref{docs/concept/didactic/unified-learning-plan-status.md}{gemeinsame
 Lernplanstatusvertrag} gilt für Cockpit und Coach gleichermaßen.
 
 Statische Kompilierungen werden begrenzt nach Curriculumgeneration,
-Projektion, Zielumfang und Semantikrevision zwischengespeichert. Mastery und
-implizite Ergebnisse sind keine zweite Wahrheitsquelle. Nach Ergebnis- oder
-Umfangsänderungen wird neu gerechnet; alte implizite Mengen werden niemals
-zu Mastery-Eingaben. Ungültige Daten bleiben als Einschränkung sichtbar.
-Automatische Tests prüfen diese Verträge, ersetzen aber weder Aufgabenqualität
-noch menschliche Erprobung oder nachgewiesene Lernwirksamkeit.
+Projektion, Zielumfang und Semantikrevision zwischengespeichert. Ergebnis-
+oder Umfangsänderungen erfordern Neuberechnung; implizite Mengen sind niemals
+Mastery-Eingaben. Fehlende Target-Routen sperren implizite Anrechnung und
+abgeleiteten Abschluss. Ausdrückliche Mastery aller bekannten ausgewählten
+Targets bleibt neben der Qualitätswarnung ein Abschluss; unbekannte oder
+ungültige Umfänge sind davon ausgenommen. Die globale Sperre in defekten
+gemischten Lehrplänen ist eine Zwischenstufe und beweist keine unabhängige
+Fächerbenutzbarkeit. Gültige direkte Prüfungen, normale Lernwege und gespeicherte
+Mastery bleiben unter den bisherigen Zugriffsprüfungen erhalten. Explizite
+Planwerte bleiben mit Einschränkungshinweis sichtbar. Automatische Tests
+ersetzen weder Aufgabenqualität noch menschliche Erprobung oder nachgewiesene
+Lernwirksamkeit.

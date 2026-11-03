@@ -1,0 +1,234 @@
+{
+  "status": "PASS_BOUNDED_DESIGN_IMPLEMENTATION_MAY_PROCEED_PRIVATELY_NO_CODE_OR_STAGE_ACCEPTANCE",
+  "request": {
+    "path": "tmp/approach-review-20261101/proof-methods-assessment-materialization-candidate-20261102/normal-wrapper-proposal-handoff.json",
+    "sha256": "71f4490b969673ec74094866f16625281ff46c3d15bf61942f6649922aa68c72"
+  },
+  "proposal": {
+    "path": "tmp/approach-review-20261101/proof-methods-assessment-materialization-candidate-20261102/normal-wrapper-operation-proposal.json",
+    "sha256": "f0244fad37bae92d7ae3f0b5cd0ce280bca32c8f78b6bc1293f92e222b777fcd",
+    "bytes": 6890
+  },
+  "explanation": {
+    "path": "tmp/approach-review-20261101/proof-methods-assessment-materialization-candidate-20261102/normal-wrapper-operation-proposal.md",
+    "sha256": "75d22bed2f0ac9e1b4fb73c6f4b75fefcfbb88bf38a3c1a179f9e365a8db082a",
+    "bytes": 4188
+  },
+  "decision": "Approve implementation confined to existing include-target optional exactExamSlot and its tests for the two exact HE scope/slot operations.",
+  "approvedImplementationFiles": [
+    "app/scripts/mathStageScopePolicy.ts",
+    "app/scripts/testMathStageScopePolicy.ts"
+  ],
+  "currentImplementationBeforeBindings": [
+    {
+      "path": "app/scripts/mathStageScopePolicy.ts",
+      "sha256": "8254c3b7a393d17186b7991a7df194ed8a760de8711dca6f33f5d3e3f79bc8e7"
+    },
+    {
+      "path": "app/scripts/testMathStageScopePolicy.ts",
+      "sha256": "8322d474e199d2ded902e8c2acf0d7a9a0b946af05dad4997dc4bd4389ffdc8f"
+    }
+  ],
+  "existingProducerCallerBindings": [
+    {
+      "path": "app/scripts/generateMathCountrySekICompositionViews.ts",
+      "sha256": "3772e4969cf0ba6419075ed2bbdba5eb4d3e81d95147f7cadddf6bab3efb7cda"
+    },
+    {
+      "path": "app/scripts/generateMathDurationCompositionViews.ts",
+      "sha256": "f1f838a531fff6ed33c0babbef91237e761276e80f9d5f989baeae17f549e9e6"
+    }
+  ],
+  "projectionRoleHelperBinding": {
+    "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
+    "sha256": "d7ee9ab670d2d73a3ed82700c2bca2dee3f2da6c8e9517120c5c45acac0d84a7"
+  },
+  "exactOperationIds": [
+    "proof-methods-he-g8-seki-exact-exam-slot",
+    "proof-methods-he-g9-seki-exact-exam-slot"
+  ],
+  "exactOperations": [
+    {
+      "id": "proof-methods-he-g8-seki-exact-exam-slot",
+      "viewId": "de-he-gym-seki-math-g8",
+      "goalIds": [
+        "da30a5ab-6609-533f-b6f1-c717fee3a795"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "j8-g8",
+      "label": "Prüfungen Jahrgangsstufe 8",
+      "sourceDecision": "curricula/DE/Gymnasium/assessments/mathematik/proof-methods-parity-2026-11-02/placement-recommendation.json#heG8SekI",
+      "exactExamSlot": {
+        "expectedScope": {
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "SekI",
+          "durationModel": "G8"
+        },
+        "childIndex": 1,
+        "expectedReference": {
+          "kind": "structure",
+          "id": "reviewed-stage-split-5fb3ee61-059c-47f4-8c6f-7285d7982a41",
+          "label": "Prüfungen Jahrgangsstufe 8",
+          "children": [
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "4553367f-6265-511b-8632-46d99109e69b"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "df9ecf0f-f4c9-5859-b99e-11cb62f6bb35"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "9accf4e2-f92d-5ff1-8d47-dfec33a8a707"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "3045f00d-a5b9-547c-b568-593aeac9ffa3"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "fbf10244-9e55-597a-98d4-006d972a5c41"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "10a77422-6ceb-57ce-a90f-0ebc1179aaae"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "a70d4194-1f95-5dc4-884d-8ca856663601"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "0d2cfddc-7af6-5709-819f-929e6cf9c192"
+            }
+          ]
+        },
+        "beforeAnchorObjectSha256": "85e8bdefa78e9a2886b40d8a8d3e02e63e17dda488339ce3d51fbe632ba63e31",
+        "afterAnchorObjectSha256": "602a7de3498fdca4b3d76d039adf5676dd3e789d95efb5bc341d7fdca1bd7311"
+      }
+    },
+    {
+      "id": "proof-methods-he-g9-seki-exact-exam-slot",
+      "viewId": "de-he-gym-seki-math-g9",
+      "goalIds": [
+        "da30a5ab-6609-533f-b6f1-c717fee3a795"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "j9-g9",
+      "label": "Prüfungen Jahrgangsstufe 9",
+      "sourceDecision": "curricula/DE/Gymnasium/assessments/mathematik/proof-methods-parity-2026-11-02/placement-recommendation.json#heG9SekI",
+      "exactExamSlot": {
+        "expectedScope": {
+          "jurisdiction": "DE-HE",
+          "schoolForm": "Gymnasium",
+          "stage": "SekI",
+          "durationModel": "G9"
+        },
+        "childIndex": 1,
+        "expectedReference": {
+          "kind": "canonicalSubtree",
+          "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+          "displayLabel": "Prüfungen Jahrgangsstufe 9"
+        },
+        "beforeAnchorObjectSha256": "1cc4bd48fe8d4d9d79df593dcfe173a562ddf4ed94bde2f020ac2598bcb84623",
+        "afterAnchorObjectSha256": "355f7b2a0681aac71f4ee1af3a04e960358061f75306706dd7620f5bab62e180",
+        "wrapperStructureId": "reviewed-methods-he-g9-year9-exams"
+      }
+    }
+  ],
+  "twoSlotsIndependentlyReconstructed": {
+    "path": "tmp/approach-review-20261101/astra-remaining-material-scope/methods-normal-wrapper-design-review-20261102-v1/independent-two-slot-reconstruction.json",
+    "sha256": "e00afbed346cc20f296ecbe00428e720b4d3e951df968ee9f4889625e9d294a5"
+  },
+  "reasoningAndImplementationClarifications": {
+    "path": "tmp/approach-review-20261101/astra-remaining-material-scope/methods-normal-wrapper-design-review-20261102-v1/design-review.md",
+    "sha256": "10c9626add114ac54d1139039e852adeda43740cbc7bb47fb6d556a213fb27f7"
+  },
+  "requiredFixtureGroups": [
+    {
+      "id": 1,
+      "case": "HE G8: append only one exact goalEntry to preserved whole existing structure; all children and order remain."
+    },
+    {
+      "id": 2,
+      "case": "HE G9: one wrapper containing byte-equivalent old canonicalSubtree object plus one exact goalEntry; no global year9 cluster change."
+    },
+    {
+      "id": 3,
+      "case": "Both operations are strictly idempotent and leave input objects unchanged."
+    },
+    {
+      "id": 4,
+      "case": "Complete hidden support remains hidden/unselected; only two direct prerequisite targets are required, not all ten additional support nodes."
+    },
+    {
+      "id": 5,
+      "case": "Wrong scope with same viewId fails."
+    },
+    {
+      "id": 6,
+      "case": "Missing or duplicate year anchor fails."
+    },
+    {
+      "id": 7,
+      "case": "Negative/noninteger/out-of-range slot index fails."
+    },
+    {
+      "id": 8,
+      "case": "Changed original node, sibling, order or before-object hash fails."
+    },
+    {
+      "id": 9,
+      "case": "Changed after-object hash or mismatching already-applied replacement fails."
+    },
+    {
+      "id": 10,
+      "case": "Duplicate wrapper ID anywhere in tree fails."
+    },
+    {
+      "id": 11,
+      "case": "Existing new task selected outside the authorized slot, or duplicate reference after application, fails."
+    },
+    {
+      "id": 12,
+      "case": "Wrong action, directReference combination, multiple goalIds or unsupported old reference kind fails."
+    },
+    {
+      "id": 13,
+      "case": "Unreleased/unknown/nonassessment/memory task or unknown coverage/requires fails."
+    },
+    {
+      "id": 14,
+      "case": "Either required method or covered target absent, or overridden to prerequisiteOnly, fails without promotion."
+    },
+    {
+      "id": 15,
+      "case": "An unrelated canonical sibling outside the bound slot/context leaves this structural operation valid; no whole-file hash is consulted."
+    },
+    {
+      "id": 16,
+      "case": "Every legacy operation fixture continues unchanged."
+    }
+  ],
+  "fullSupportMustRemainUnselectedAndUntruncated": true,
+  "noNewWholeCanonicalPlacementPin": true,
+  "noRegistryOrRpContractChange": true,
+  "noGeneratorChangeRequiredByDesign": true,
+  "privateV2AttemptNotAdopted": {
+    "path": "tmp/approach-review-20261101/proof-methods-assessment-materialization-candidate-20261102/private-v2-attempt-preserved-not-for-adoption/freeze.json",
+    "sha256": "a28807609dfb3296722056ca849136dfffa08b6247bb8e9a797a8f7d43ac7265",
+    "bytes": 9342
+  },
+  "notClaimed": [
+    "Completed code or fixtures",
+    "Global atomic DAG validity",
+    "Methods134 native selection/closure",
+    "Source or producer neutrality",
+    "Final stage receipt",
+    "Root activation"
+  ],
+  "rootWrites": false,
+  "jvmStarted": false
+}

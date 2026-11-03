@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CompletionApplicationService {
     private static final String RESOLVER_SEMANTICS_VERSION = "atomic-inherited-prerequisites-v1";
-    private static final String AUTOMATIC_SEMANTICS_VERSION = "direct-demand-stops-at-mastery-v1";
+    private static final String AUTOMATIC_SEMANTICS_VERSION = "covered-full-curriculum-target-demand-v4";
     private final CompletionProfileCatalog catalog;
     private final CompletionTelemetry telemetry;
     private final CompletionProfileCompiler compiler = new CompletionProfileCompiler();
@@ -201,12 +201,49 @@ public class CompletionApplicationService {
     }
 
     public CompletionEvaluation evaluate(CompiledCompletionProfile profile, Map<String, Double> mastery) {
+        return telemetry.timeEvaluate(() -> evaluator.evaluate(profile, masteredGoals(profile, mastery)));
+    }
+
+    private Set<String> masteredGoals(CompiledCompletionGraph graph, Map<String, Double> mastery) {
         Set<String> mastered = new LinkedHashSet<>();
-        for (String id : profile.contextGoalIds()) {
+        for (String id : graph.contextGoalIds()) {
             Double value = mastery.get(id);
             if (Mastery.isMastered(value)) mastered.add(id);
         }
-        return telemetry.timeEvaluate(() -> evaluator.evaluate(profile, mastered));
+        return mastered;
+    }
+
+    /** A structural section is a target mask over the same complete Personal Curriculum result. */
+    public CompletionEvaluation evaluateAutomaticSection(CompiledCompletionProfile complete,
+            CompiledCompletionProfile section, Map<String, Double> mastery) {
+        if (!complete.automatic() || !section.automatic()
+                || !complete.targetGoalIds().containsAll(section.targetGoalIds())
+                || !complete.curriculumGeneration().equals(section.curriculumGeneration())) {
+            throw new ScopeNotApplicableException();
+        }
+        CompletionEvaluation full;
+        try {
+            full = evaluate(complete, mastery);
+        } catch (CompletionCompilationException error) {
+            Set<String> mastered = masteredGoals(section, mastery);
+            if (!"UNCOVERED_COMPLETION_TARGETS".equals(error.code())
+                    || !mastered.containsAll(section.targetGoalIds())) throw error;
+            // An entirely explicit mask needs no implicit evaluation of the faulty
+            // Full PC. Other masks still retain every foreign consumer and fail closed.
+            return telemetry.timeEvaluate(() -> evaluator.evaluateExplicitTargets(section, mastered));
+        }
+        if (complete.profile().id().equals(section.profile().id())) return full;
+        Set<String> pending = new LinkedHashSet<>(full.pendingTargetGoalIds());
+        pending.retainAll(section.targetGoalIds());
+        Set<String> masteredAssessments = new LinkedHashSet<>(full.masteredAssessmentGoalIds());
+        Set<String> targetAssessments = new LinkedHashSet<>(section.assessmentGoalIds());
+        targetAssessments.retainAll(section.targetGoalIds());
+        masteredAssessments.retainAll(targetAssessments);
+        int masteredTargets = (int) section.targetGoalIds().stream().filter(full.masteredGoalIds()::contains).count();
+        int implicitTargets = (int) section.targetGoalIds().stream().filter(full.waivedGoalIds()::contains).count();
+        return new CompletionEvaluation(full.masteredGoalIds(), full.waivedGoalIds(), pending,
+                masteredAssessments, full.waiverReasons(), full.blockedByGoalIds(), pending.isEmpty(),
+                section.targetGoalIds().size(), masteredTargets, implicitTargets, targetAssessments.size());
     }
 
     /** Startup verifies the complete warm set after all LRU insertions, without recompiling under a learner lock. */

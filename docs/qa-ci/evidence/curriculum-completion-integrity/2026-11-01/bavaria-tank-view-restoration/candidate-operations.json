@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "status": "candidate-only-independent-source-placement-review-pending",
+  "goalId": "c849eeab-e88f-5e82-89d9-761a1e17d97b",
+  "goalFieldWhitelist": [],
+  "goalBeforeAfterIdentical": true,
+  "operations": [
+    {
+      "viewFile": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json",
+      "viewId": "de-by-gym-math-gk",
+      "parentStructureId": "gk-sek-ii-q4",
+      "operation": "append-explicit-authored-structure",
+      "entry": {
+        "kind": "structure",
+        "id": "gk-sek-ii-q4-pruefungen",
+        "label": "Prüfungen Q4",
+        "children": [
+          {
+            "kind": "goalEntry",
+            "goalId": "c849eeab-e88f-5e82-89d9-761a1e17d97b",
+            "projectionRole": "target"
+          }
+        ]
+      }
+    },
+    {
+      "viewFile": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+      "viewId": "de-by-gym-sekii-math-gk",
+      "parentStructureId": "gk-sek-ii-only-q4",
+      "operation": "append-explicit-authored-structure",
+      "entry": {
+        "kind": "structure",
+        "id": "gk-sek-ii-only-q4-pruefungen",
+        "label": "Prüfungen Q4",
+        "children": [
+          {
+            "kind": "goalEntry",
+            "goalId": "c849eeab-e88f-5e82-89d9-761a1e17d97b",
+            "projectionRole": "target"
+          }
+        ]
+      }
+    }
+  ],
+  "rejectGlobalGoalTagChange": "Bavarian runtime already delegates course selection to authored views; tag-only changes are unnecessary and must not broaden other contexts.",
+  "technicalBavariaSemantics": "GK is the full compulsory regular elevated-level curriculum; LK additionally contains Vertiefungskurs modules.",
+  "noRuntimeEnrollmentInference": true
+}

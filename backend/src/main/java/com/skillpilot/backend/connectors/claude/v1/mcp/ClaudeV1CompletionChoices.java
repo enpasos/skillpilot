@@ -54,7 +54,9 @@ final class ClaudeV1CompletionChoices {
                         + label(option.title(), language), "selectProfile", option.profileId(), null, null));
             }
         }
-        if ("valid".equals(completion.calculationStatus()) && completion.assessments() != null
+        boolean integrityUnavailable = "invalid".equals(completion.calculationStatus())
+                && "completion_target_routes_uncovered".equals(completion.notice());
+        if (("valid".equals(completion.calculationStatus()) || integrityUnavailable) && completion.assessments() != null
                 && !completion.directAssessmentRunning()) {
             for (var assessment : completion.assessments()) {
                 if (!assessment.mastered() && assessment.startAvailable()) {
@@ -158,6 +160,11 @@ final class ClaudeV1CompletionChoices {
             result.put("notice", en
                     ? "This assessment belongs to another coach session. Pause here; continue in that session or deliberately end it in the Cockpit."
                     : "Diese Prüfung gehört zu einer anderen Coach-Sitzung. Pausiere hier; setze sie dort fort oder beende sie bewusst im Cockpit.");
+        } else if ("invalid".equals(completion.calculationStatus())
+                && "completion_target_routes_uncovered".equals(completion.notice())) {
+            result.put("notice", en
+                    ? "Implicit completion is unavailable because some curriculum routes lack a protected endpoint. Ordinary learning and the listed direct assessments remain available; no completion or implicit credit is claimed."
+                    : "Die implizite Erledigung ist wegen fehlender geschützter Endpunkte in einigen Lernwegen nicht verfügbar. Normales Lernen und die angebotenen Direktprüfungen bleiben möglich; Abschluss und implizite Anrechnung werden nicht behauptet.");
         } else if (completion.notice() != null) {
             result.put("notice", en
                     ? "This completion route cannot currently be used reliably. Follow only the published choices; existing mastery is retained."
@@ -165,7 +172,7 @@ final class ClaudeV1CompletionChoices {
         }
         result.put("choices", published(completion, language).stream().map(Choice::label).toList());
         result.put("instruction", "Use this backend completion statement without recalculating or turning implicit completion into mastery. "
-                + "A mastered goal no longer demands its own prerequisites; the backend marks non-assessment goals with no remaining demand as implicitly completed. "
+                + "A mastered goal no longer demands its own prerequisites; the backend marks ordinary goals with no remaining demand as implicitly completed. Assessments and memory goals remain protected until mastered through their own workflows. "
                 + "A passed assessment is not required for implicit completion, and it does not certify prerequisite competence. "
                 + "Do not restore implicitly completed work as mandatory. "
                 + "Available direct assessment choices can be selected from ordinary learning without choosing a section first. "

@@ -1,0 +1,530 @@
+{
+  "status": "PASS_INDEPENDENT_WHOLE_CONTENT_AND_POSITIVE_COMMON_LEVEL_SOURCE_ONLY",
+  "reviewerAgent": "/root/astra_complex_numbers_scope_review",
+  "date": "2026-11-02",
+  "reviewedWholeTask": {
+    "path": "tmp/approach-review-20261101/sh-gk-binomial-histogram-sigma-authoring-20261101/whole-task-unreviewed-draft-v2.json",
+    "sha256": "691fe4be09bc4c495401c5a96f021d8bba671531bf310773a97df068fd7e4331",
+    "markdownPath": "tmp/approach-review-20261101/sh-gk-binomial-histogram-sigma-authoring-20261101/whole-task-unreviewed-draft-v2.md",
+    "markdownSha256": "866e00474d08a6aeb4d3ad24eb20d92276cd88c966c953fb17fd262eccd403b1"
+  },
+  "historicalOriginalPreserved": {
+    "path": "tmp/approach-review-20261101/sh-gk-binomial-histogram-sigma-authoring-20261101/whole-task-unreviewed-draft.json",
+    "sha256": "aa9851bad88e0658a8549c7fd2a3e3e6d4552a97c0d294f824dd2d4f1e69318a"
+  },
+  "initialWholeReview": {
+    "path": "tmp/approach-review-20261101/astra-sh-gk-20be-content-review/whole-task-v1-content-review.HOLD.json",
+    "sha256": "f0fbd16cd153f6a780843f0e34a851e31ed32731870c56eaa2ff2562efe0c8f6"
+  },
+  "exactFollowUp": {
+    "authorDeltaPath": "tmp/approach-review-20261101/sh-gk-binomial-histogram-sigma-authoring-20261101/whole-task-v2-review-delta.json",
+    "authorDeltaSha256": "7ed87b7620e3201718e489d397084b7bb529602a1a31f06bc4eddbc46782a332",
+    "all4SentenceReplacementsReplayedExactly": true,
+    "allOtherTaskRubricIdScopeRequiresCoverageFieldsExactlyUnchanged": true,
+    "entireDEENStringsMatchMarkdown": true,
+    "resolvedFindings": [
+      {
+        "id": "SH-CONTENT-01",
+        "decision": "PASS",
+        "reason": "Non-strict probability monotonicity now correctly allows discrete plateaus, including the verified c1.96/c2 identical8..22 example."
+      },
+      {
+        "id": "SH-CONTENT-02",
+        "decision": "PASS",
+        "reason": "Both full solutions explicitly connect variance14.1 with sigma² and the histogram spread. This clarifies the existing characteristic-value requirement without adding another action or core score gate."
+      }
+    ]
+  },
+  "wholeContractOutcome": {
+    "taskSolutionRubricDEEN": "PASS",
+    "mathematicsAndDiscreteIntervals": "PASS",
+    "visualHistogramSolutions": "PASS",
+    "fair12of20AndWholeCoreMax11Rubric": "PASS",
+    "fourWholeDeclaredCoverageContracts": "PASS",
+    "sigmaPreparationDemand": "PASS_FOR_REAL_SIGMA_ACTION_NOT_WHOLE_8AD_COVERAGE",
+    "noWhole8adCoverageClaim": true,
+    "sourcePositivity": "PASS_ALL_PARTS_COMMON_SH_LEVEL",
+    "independentNumericalMethod": "Exact rational PMF with p=3/50, Decimal85 bounds; all stated values confirmed. No normal-CDF computation is a required learner operation."
+  },
+  "sourceEvidence": {
+    "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+    "sha256": "17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28",
+    "pagesVisuallyRead": [
+      60,
+      71,
+      72
+    ],
+    "sourceMatrix": [
+      {
+        "wholeTaskPart": 1,
+        "printedPage": 71,
+        "officialPositiveItems": [
+          "Random variables and distributions as models",
+          "Characteristic values interpreted in context",
+          "Expected value, variance, standard deviation",
+          "Bernoulli experiment/chain",
+          "Binomial distributions with expectation and standard deviation"
+        ],
+        "decision": "PASS_COMMON_LEVEL"
+      },
+      {
+        "wholeTaskPart": 2,
+        "printedPage": 71,
+        "officialPositiveItems": [
+          "Histogram",
+          "Single-value and interval probabilities",
+          "Interpret distributions as forecasts of frequency distributions",
+          "Use digital tools for probabilities"
+        ],
+        "decision": "PASS_COMMON_LEVEL"
+      },
+      {
+        "wholeTaskPart": 3,
+        "printedPage": 71,
+        "officialPositiveItems": [
+          "Sigma rules",
+          "Binomial distributions and digital probability computations",
+          "Context interpretation of probabilities/distributions"
+        ],
+        "decision": "PASS_COMMON_LEVEL_QUALITATIVE_NO_NORMAL_CDF"
+      },
+      {
+        "courseBoundary": "S60 explains bold+grey means beyond basic level. The relevant S71 rows are not bold+grey. The S72 normal density functions, NormalCDF, Moivre-Laplace condition/formula and continuity correction are bold+grey. The task does not demand those formal operations.",
+        "decision": "PASS_VISUALLY_VERIFIED"
+      }
+    ],
+    "officialVsOwn": "The official curriculum positively supports the competencies; this20-point task, parcel parameters, particular Sigma table operationalisation, cutoff12 and core-action caps are own SkillPilot content, not an official prescribed examination."
+  },
+  "wholeCoverageAndPreparationReview": [
+    {
+      "goalId": "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+      "wholeCurrentContract": {
+        "id": "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+        "title": "Zufallsgrößen und Verteilungen als Modellrahmen einordnen",
+        "titleEn": "Classify random variables and distributions as a modeling framework",
+        "description": "Die lernende Person kann zu einfachen stochastischen Situationen eine passende Zufallsgröße und die zugehörige diskrete Wahrscheinlichkeitsverteilung als Modellrahmen beschreiben.",
+        "descriptionEn": "The learner can describe a suitable random variable and the associated discrete probability distribution as a modeling framework for simple stochastic situations.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K1.2",
+            "K4.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+            "title": "Visualisierung: Zufallsgrößen und Verteilungen als Modellrahmen einordnen",
+            "url": "/assets/goal-visualizations/mathematik/da95ab35-bac2-54f2-b38f-8b612cde8b54/da95ab35-bac2-54f2-b38f-8b612cde8b54.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Zufallsgrößen und Verteilungen als Modellrahmen einordnen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Zufallsgrößen und Verteilungen als Modellrahmen einordnen\". Die lernende Person kann zu einfachen stochastischen Situationen eine passende Zufallsgröße und die zugehörige diskrete Wahrscheinlichkeitsverteilung als Modellrahmen beschreiben.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "declaredCovered": true,
+      "declaredDirectPreparation": false,
+      "evidence": "Part1 defines X as the count0..250 and describes B(250,0.06); PMF appears in solution;1point for count/discrete model.",
+      "decision": "PASS_CONTENT_ROLE"
+    },
+    {
+      "goalId": "e495fa38-b198-5280-a405-9e41cafd6d17",
+      "wholeCurrentContract": {
+        "id": "e495fa38-b198-5280-a405-9e41cafd6d17",
+        "shortKey": "canonical_math_q3_identify_bernoulli_experiments_chains_parameters",
+        "title": "Bernoulli-Experimente und -Ketten identifizieren und parametrisieren",
+        "titleEn": "Identify and parameterise Bernoulli experiments and chains",
+        "description": "Die lernende Person kann Bernoulli-Experimente und Bernoulli-Ketten anhand ihrer Voraussetzungen identifizieren und Länge $n$ sowie Trefferwahrscheinlichkeit $p$ aus dem Kontext angeben.",
+        "descriptionEn": "The learner can identify Bernoulli experiments and Bernoulli chains from their assumptions and determine the length $n$ and success probability $p$ from context.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47, Spiegelstrich 2",
+        "requires": [
+          "3019e775-1420-510f-850b-5a29acc47a64"
+        ],
+        "contains": [],
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "e495fa38-b198-5280-a405-9e41cafd6d17",
+            "title": "Visualisierung: Bernoulli-Experimente und -Ketten identifizieren und parametrisieren",
+            "url": "/assets/goal-visualizations/mathematik/e495fa38-b198-5280-a405-9e41cafd6d17/e495fa38-b198-5280-a405-9e41cafd6d17.png",
+            "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+            "description": "Visualisierung zum Lernziel: Bernoulli-Experimente und -Ketten identifizieren und parametrisieren.",
+            "altText": "Vier unabhängige Münzwürfe als Bernoulli-Kette mit n = 4; beim fairen Einzelwurf ist p(Kopf) = 1/2.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "declaredCovered": true,
+      "declaredDirectPreparation": false,
+      "evidence": "Part1 explicitly identifies two outcomes, independence, constant p and n/p;2points and complete solution.",
+      "decision": "PASS_CONTENT_ROLE"
+    },
+    {
+      "goalId": "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+      "wholeCurrentContract": {
+        "id": "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+        "title": "Kenngrößen binomialverteilter Zufallsgrößen",
+        "titleEn": "Characteristic values of binomially distributed random variables",
+        "description": "Die lernende Person kann für binomialverteilte Zufallsgrößen Erwartungswert, Varianz und Standardabweichung berechnen und diese mit der zugrunde liegenden Bernoulli-Situation in Beziehung setzen.",
+        "descriptionEn": "The learner can calculate expected value, variance, and standard deviation for binomial distributed random variables and relate them to the underlying Bernoulli situation.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "e495fa38-b198-5280-a405-9e41cafd6d17"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.2",
+            "K4.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47, Spiegelstrich 3",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+            "title": "Visualisierung: Kenngrößen binomialverteilter Zufallsgrößen",
+            "url": "/assets/goal-visualizations/mathematik/7d41b805-0fd8-5ac3-980d-79112a27c1b4/7d41b805-0fd8-5ac3-980d-79112a27c1b4.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Kenngrößen binomialverteilter Zufallsgrößen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Kenngrößen binomialverteilter Zufallsgrößen\". Die lernende Person kann für binomialverteilte Zufallsgrößen Erwartungswert, Varianz und Standardabweichung berechnen und diese mit der zugrunde liegenden Bernoulli-Situation in Beziehung setzen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "declaredCovered": true,
+      "declaredDirectPreparation": false,
+      "evidence": "Part1 calculates all three quantities and relates them to Bernoulli parameters and daily mean/spread;3points for characteristics/context. Part2 additionally uses their graph meaning.",
+      "decision": "PASS_CONTENT_ROLE"
+    },
+    {
+      "goalId": "9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+      "wholeCurrentContract": {
+        "id": "9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+        "title": "Histogramme erstellen und lesen",
+        "titleEn": "Create and read histograms",
+        "description": "Die lernende Person kann Histogramme diskreter Zufallsgrößen erstellen, lesen und mit Kenngrößen (Erwartungswert, Varianz, Standardabweichung) in einfachen Beispielen verknüpfen.",
+        "descriptionEn": "The learner can create and read histograms of discrete random variables and connect them with characteristic values (expected value, variance, standard deviation) in simple examples.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+          "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K1.2",
+            "K4.2"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47, Spiegelstrich 1",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+            "title": "Visualisierung: Histogramme erstellen und lesen",
+            "url": "/assets/goal-visualizations/mathematik/9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0/9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Histogramme erstellen und lesen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Histogramme erstellen und lesen\". Die lernende Person kann Histogramme diskreter Zufallsgrößen erstellen, lesen und mit Kenngrößen (Erwartungswert, Varianz, Standardabweichung) in einfachen Beispielen verknüpfen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "declaredCovered": true,
+      "declaredDirectPreparation": false,
+      "evidence": "Part2 requires actual learner-created histogram, reads P(X=15), marks mean±sigma and explains graph location/width;7points and whole-action scoring cap. The required explicit variance-square sentence is present in both V2 solutions, completing the declared graphical linkage.",
+      "decision": "PASS_CONTENT_ROLE"
+    },
+    {
+      "goalId": "8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+      "wholeCurrentContract": {
+        "id": "8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+        "title": "Sigma-Regeln für Verteilungen anwenden",
+        "titleEn": "Apply sigma rules for distributions",
+        "description": "Die lernende Person kann an Histogrammen, Dichtegraphen und Diagrammen annähernd normalverteilter Größen ablesen, welcher Anteil der Werte in $\\sigma$-Umgebungen um den Mittelwert liegt, und die Sigma- beziehungsweise Quantilregeln für $1\\sigma$, $1{,}64\\sigma$, $1{,}96\\sigma$, $2\\sigma$, $2{,}58\\sigma$ und $3\\sigma$ qualitativ erläutern.",
+        "descriptionEn": "The learner can use histograms, density graphs, and diagrams of approximately normally distributed variables to identify what proportion of values lies within $\\sigma$ neighborhoods around the mean and qualitatively explain the sigma and quantile rules for $1\\sigma$, $1.64\\sigma$, $1.96\\sigma$, $2\\sigma$, $2.58\\sigma$, and $3\\sigma$.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+          "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47, Spiegelstrich 5",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+            "title": "Visualisierung: Sigma-Regeln für Verteilungen anwenden",
+            "url": "/assets/goal-visualizations/mathematik/8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d/8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Sigma-Regeln für Verteilungen anwenden.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Sigma-Regeln für Verteilungen anwenden\". Die lernende Person kann an Histogrammen, Dichtegraphen und Diagrammen annähernd normalverteilter Größen ablesen, welcher Anteil der Werte in $\\sigma$-Umgebungen um den Mittelwert liegt, und die Sigma- beziehungsweise Quantilregeln für $1\\sigma$, $1{,}64\\sigma$, $1{,}96\\sigma$, $2\\sigma$, $2{,}58\\sigma$ und $3\\sigma$ qualitativ erläutern.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "declaredCovered": false,
+      "declaredDirectPreparation": true,
+      "evidence": "Part3 actually applies all six central Sigma reference pairs, exact discrete check and approximation interpretation. This is real preparation demand on the existing Sigma competency; the task does not assess its separate density-graph reading component, so it correctly does not declare whole8ad coverage.",
+      "decision": "PASS_CONTENT_ROLE"
+    }
+  ],
+  "scoringBoundary": {
+    "points": [
+      6,
+      7,
+      7
+    ],
+    "total": 20,
+    "passAt": 12,
+    "decision": "PASS_FAIR_CONTENT_RUBRIC",
+    "wholeHistogramAbsent": "Explicit cap11 prevents passing with other parts alone; a table or normal curve does not perform the demanded discrete histogram action.",
+    "wholeQualitativeApproximationAbsent": "Explicit cap11 prevents exact-binomial-only work from passing without the distinct Sigma interpretation.",
+    "minorErrorFairness": "Individual bars, markers, matching errors, sensible rounding, equivalent expressions and follow-on errors keep ordinary partial credit. Cap concerns total absence of a core, not every imperfection.",
+    "globalMasteryBoundary": "No per-covered-goal auto-mastery claim and no new persisted qualification state.",
+    "runtimeLimit": "Content/rubric review does not establish server enforcement of text-based caps, actual learner trials or runtime acceptance."
+  },
+  "scopeBoundary": {
+    "wholeTaskSourcePositiveForAllProposedEightScopes": true,
+    "proposedEightScopes": [
+      "DE-SH/SekII/G8/GK",
+      "DE-SH/SekII/G8/GK+LK",
+      "DE-SH/SekII/G9/GK",
+      "DE-SH/SekII/G9/GK+LK",
+      "DE-SH/CrossStage/G8/GK",
+      "DE-SH/CrossStage/G8/GK+LK",
+      "DE-SH/CrossStage/G9/GK",
+      "DE-SH/CrossStage/G9/GK+LK"
+    ],
+    "sourceCommonLevelAlsoLegitimateForLK": true,
+    "pureLKOmissionIsAuthoredDeliveryChoiceNotOfficialAbsence": "Common-level source also teaches these foundations in LK. Exactly4GK plus4GK+LK union obligations, and no pureLK addition, are the explicit proposed delivery scope; source alone does not select it.",
+    "runtimeScopeProof": "HOLD_NOT_MEASURED_BY_CONTENT_REVIEW",
+    "newObligations": 8,
+    "sameContextIsNotDuplicateContract": "Existing9cf requires formal normal approximation, continuity correction, tails and anomaly interpretation; existing6644 requires a prediction interval and correcting inference claims. Neither replaces actual histogram creation plus all six qualitative Sigma pairs. The shared own parcel context does not make whole tasks identical.",
+    "existingTasksUnchanged": [
+      "9cf020ee-4f6b-554e-97d6-eca3e2aabe99",
+      "6644a4dc-a773-525f-a382-5e1e3c592b4f"
+    ]
+  },
+  "deliveryStillUnapproved": [
+    "Stable ID finalisation and canonical placement",
+    "Actual eight-offer target delta and preservation of all other offered targets/support",
+    "Whole154 native runtime/context/readiness/hierarchy verification",
+    "Source/applicability/semantic-ledger/materialisation gates",
+    "Release/integration and actual learner/host acceptance"
+  ],
+  "explicitNonClaims": [
+    "No existing9cf task, source, rubric, ID or mastery state changed.",
+    "This own20-point task is not an official mandatory exam.",
+    "The common-level official source also supports these foundations in LK; excluding pureLK is the proposed delivery choice, not an official prohibition.",
+    "A content PASS does not verify text-based core-cap enforcement by the backend.",
+    "No invented preparation or assessment-coverage edge was used to reduce the complex-division gap."
+  ],
+  "rootOrLearnerWrites": false,
+  "allConsumedV1EvidenceUnchangedAtFollowup": true
+}

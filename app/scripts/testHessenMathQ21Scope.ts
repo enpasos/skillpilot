@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
 import { readFileSync, readdirSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -56,7 +57,7 @@ assert.deepEqual(rawGoalById.get(assessmentClusterId)?.contains, tasks)
 // Applicability is a compiled eligibility cache, not a composition placement.
 // These original assessments have no independent source-goal mapping: derive
 // eligibility from all assessed prerequisites, while the views below retain
-// their deliberately HE-GK-only target placement.
+// their separately authored placement and exact independently reviewed allowlists.
 for (const id of tasks) {
   assert.equal(rawGoalById.get(id)?.extendedData?.applicabilityFromRequires, true, `${id}: assessment applicability must derive from all prerequisites`)
   assert.equal(rawGoalById.get(id)?.extendedData?.applicabilityMappingInheritance, 'boundary', `${id}: broad ancestor mappings must not supply assessment applicability`)
@@ -100,7 +101,9 @@ const heGkFiles = new Set(['de-he-sekii-gk.view.json', 'de-he-gk.view.json', 'de
 const ancestorClosure = (start: string) => {
   const visited = new Set<string>()
   const visit = (id: string) => {
-    for (const predecessor of goalById.get(id)?.requires ?? []) {
+    const goal = goalById.get(id)
+    assert(goal, `Unknown canonical prerequisite ${id}`)
+    for (const predecessor of goal.requires) {
       if (visited.has(predecessor)) continue
       visited.add(predecessor)
       visit(predecessor)
@@ -142,13 +145,33 @@ assert.deepEqual([...assessed].sort(), [...common].sort())
 const viewDir = 'curricula/DE/Gymnasium/composition-views/mathematik'
 const memory = readFileSync(resolve(repoRoot, 'curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl'), 'utf8')
   .trim().split('\n').map((line) => JSON.parse(line) as { goalId: string, status: string, memoryGoalIds?: string[] })
+const bbbScopeReview = readJson('curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/bbb-existing-route-scope.review.json') as { exactProposedReferenceOperations: Array<{ viewId: string }>; retainExistingReferences: Array<{ viewId: string }> }
+const bbbAllowedViews = new Set([...bbbScopeReview.exactProposedReferenceOperations, ...bbbScopeReview.retainExistingReferences].map(row => row.viewId))
+assert.equal(bbbAllowedViews.size, 68)
+const existingEndpointsDir = 'docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/existing-endpoint-restoration'
+const endpointScopeReceipt = readJson(`${existingEndpointsDir}/scope-review.receipt.json`)
+assert.equal(endpointScopeReceipt.verdict, 'PASS')
+assert.equal(endpointScopeReceipt.authorIndependent, true)
+const endpointOperationsBytes = readFileSync(resolve(repoRoot, `${existingEndpointsDir}/candidate-operations.json`))
+assert.equal(createHash('sha256').update(endpointOperationsBytes).digest('hex'),
+  endpointScopeReceipt.files['tmp/math-existing-endpoint-candidates-20261101/candidate-operations.json'], 'existing endpoint allowlist must remain independently receipt-bound')
+const endpointOperations = JSON.parse(endpointOperationsBytes.toString('utf8')) as {
+  operations: Array<{ goalId: string; viewId: string }>; sourceOperations: Array<{ goalId: string; viewId: string }>
+}
+const originalHeViewIds = [...heGkFiles].map(file => readJson(`${viewDir}/${file}`).viewId as string)
+const otherTaskAllowedViews = new Map(tasks.slice(1).map(taskId => [taskId, new Set([
+  ...originalHeViewIds,
+  ...[...endpointOperations.operations, ...endpointOperations.sourceOperations].filter(op => op.goalId === taskId).map(op => op.viewId),
+])]))
+for (const allowed of otherTaskAllowedViews.values()) assert.equal(allowed.size, 8, 'only four original HE-GK and four independently restored SH-GK views select each task')
 let checkedHe = 0
 let checkedOther = 0
 for (const name of readdirSync(resolve(repoRoot, viewDir)).filter((name) => name.endsWith('.view.json'))) {
   const view = normalizeCompositionView(readJson(`${viewDir}/${name}`))
   const { targetGoalIds, prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(view.rootNodes, goalById)
+  assert.equal(targetGoalIds.has(tasks[0]), bbbAllowedViews.has(view.viewId), `${name}: BBB must follow only its exact independent allowlist`)
+  for (const id of tasks.slice(1)) assert.equal(targetGoalIds.has(id), otherTaskAllowedViews.get(id)!.has(view.viewId), `${name}: local endpoint must follow its exact reviewed per-ID allowlist`)
   if (!heGkFiles.has(name)) {
-    for (const id of tasks) assert(!targetGoalIds.has(id), `${name}: HE-only assessment leaked into another existing view`)
     checkedOther += 1
     continue
   }
@@ -159,9 +182,11 @@ for (const name of readdirSync(resolve(repoRoot, viewDir)).filter((name) => name
     assert(!targetGoalIds.has(id), `${name}: LK-only Q2.1 content is a GK target`)
     assert(!prerequisiteOnlyGoalIds.has(id), `${name}: LK-only content hidden as a prerequisite`)
   }
+  // Canonical support (including 26f668a0 in pure HE-SII-GK) need not
+  // have an authoring reference. Native backend compilation checks its context.
   for (const id of [...common, ...tasks]) {
-    for (const predecessor of goalById.get(id)!.requires) {
-      assert(targetGoalIds.has(predecessor) || prerequisiteOnlyGoalIds.has(predecessor), `${name}: direct route prerequisite missing: ${predecessor}`)
+    for (const predecessor of ancestorClosure(id)) {
+      assert(!lkOnly.includes(predecessor), `${name}: forbidden LK prerequisite: ${predecessor}`)
     }
   }
   for (const decision of memory.filter((item) => item.status === 'memory_required' && targetGoalIds.has(item.goalId))) {
@@ -169,4 +194,4 @@ for (const name of readdirSync(resolve(repoRoot, viewDir)).filter((name) => name
   }
 }
 assert.equal(checkedHe, 4)
-console.log(`HE Q2.1 regression passed: ${checkedHe} GK views, 10 shared goals, 3 local assessments; ${checkedOther} other views exclude the new HE assessments; native requires-derived/child-union applicability, current caches, memory visibility and removed prerequisite coupling checked.`)
+console.log(`HE Q2.1 regression passed: ${checkedHe} GK views, 10 shared goals, 3 local assessments; ${checkedOther} other views follow the independently selected local endpoints and exact reviewed BBB allowlist; native requires-derived/child-union applicability, current caches, memory visibility and removed prerequisite coupling checked.`)

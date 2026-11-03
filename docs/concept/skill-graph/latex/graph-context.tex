@@ -115,9 +115,42 @@ undurchsichtiges, atomar wirkendes Laufzeitziel erscheinen. Eine
 alternativ benennt eine explizite Sichtstruktur die beabsichtigten
 Atomziele. Diese Darstellungsregel verändert keine Projektionsrolle.
 
+\subsection{Kursprofile ohne zusätzliche Ziele vereinigen}
+
+Bei einer Kursunion werden die Rollen und die Kursverfügbarkeit zunächst
+\emph{je Quellsicht} aufgelöst. Bundesland, Stufe, Dauer und die übrigen
+gemeinsam angefragten Kontextmerkmale bleiben dabei gleich. Mit den atomaren
+Zielen $B_i$ in autoritativer Targetrolle und der unter der jeweiligen
+Kursregel verfügbaren Menge $U_i$ gilt
+\begin{equation}
+ T_i=B_i\cap U_i,\qquad
+ T_{\mathrm{GK+LK}}=T_{\mathrm{GK}}\cup T_{\mathrm{LK}}.
+\end{equation}
+Die Rollenpriorität gilt innerhalb einer Quellsicht. Ein tatsächlich
+ausgewähltes LK-Ziel bleibt deshalb auch dann ein Unionstarget, wenn es in
+der GK-Sicht nur Unterstützung ist. Ist ein Ziel dagegen im GK nicht
+verfügbar und im LK ausdrücklich kein Target, gehört es nicht zur Union.
+Die bloße Vereinigung aller Rollen mit anschließender gemeinsamer
+Verfügbarkeitsprüfung könnte es fälschlich hinzufügen.
+
+Sichtbaum, Lernprojektion und Abschluss verwenden dieselbe Targetmenge.
+Eine kompilierte Nicht-Target-Referenz begründet weder eine zusätzliche
+Unterstützungspflicht noch ein Lernergebnis. Die Bedarfsrechnung erfolgt
+anschließend einmal im vollständigen Personal Curriculum; implizite
+Teilergebnisse einzelner Kurse dürfen wegen geteilter Verbraucher nicht
+einfach vereinigt werden. Statische Caches berücksichtigen auch die aktuelle
+Kursverfügbarkeit und den angefragten Kontext. Eine Sicht-ID muss dieselbe
+aufgelöste Targetberechtigung rekonstruieren, ohne persönliche Auswahl oder
+Mastery umzuschreiben. Dafür neutrale Kontextmerkmale müssen nicht in der ID
+stehen; ihr vollständiger Wert kommt weiterhin aus der aktuellen Anfrage.
+
 \paragraph{Quellen.}
 \srcref{docs/concept/skill-graph/general-goal-system-and-migration.md}{Allgemeines Zielsystem und Migration};
-\srcref{docs/concept/skill-graph/view-projection-and-goal-placement.md}{Sichten und Zielplatzierung}.
+\srcref{docs/concept/skill-graph/view-projection-and-goal-placement.md}{Sichten und Zielplatzierung};
+\srcref{backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java}{Auswahl und Kompilation der Sichten};
+\srcref{backend/src/main/java/com/skillpilot/backend/composition/CourseProfileCompositionViewMerger.java}{Vereinigung von Kurssichten};
+\srcref{backend/src/main/java/com/skillpilot/backend/composition/CourseProfileAvailability.java}{Kursverfügbarkeit};
+\srcref{backend/src/main/java/com/skillpilot/backend/landscape/RepositoryCurriculumConfiguration.java}{Produktive Serviceverdrahtung}.
 
 \section{Persönlicher Umfang, Fokus und sichtbare Ziele}
 \label{sec:personal-scope}
@@ -218,8 +251,19 @@ seine Lehrplanabdeckung.
 
 \subsection{Fokuswechsel ohne impliziten Kompetenzerwerb}
 
-Ein Fokus besteht aus der Vereinigung der gewählten Wurzeln und ihrer
-sichtbaren Nachkommen, eingeschränkt auf das Personal Curriculum.
+Ein Fokus besteht aus der Vereinigung seiner tatsächlich angebotenen
+Mitglieder, eingeschränkt auf das Personal Curriculum. In einer Kompositionssicht
+entscheidet der aufgelöste sichtbare Pfad. Ein direkter atomarer
+\code{goalEntry} umfasst nur dieses Ziel; ein ausdrücklich angebotener
+Fachwurzel-Alias umfasst die gewählten Targets dieses Faches. Ein anderer
+rohkanonischer Vorfahr begründet keinen zusätzlichen Fokuspfad. Die aufgelösten
+Mengen werden vereinigt und danach nicht erneut kanonisch expandiert oder
+anhand fremder Elternbeziehungen gekürzt.
+
+Entfällt ein Programmzweig, bleibt seine gespeicherte Referenz erhalten und
+verlangt eine neue ausdrückliche Auswahl. Sie führt nicht zum Gesamtlehrplan
+zurück. Ein bereits gewähltes gültiges atomares Ziel darf unter seinem
+bisherigen Ablauf beendet werden.
 Im Normalmodus werden die effektiven Voraussetzungen innerhalb dieses
 Fokus geprüft; der explizite strenge Modus prüft global. Eine außerhalb
 liegende Voraussetzung wird im Normalmodus weder zum Hindernis noch

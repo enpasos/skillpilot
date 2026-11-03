@@ -283,6 +283,7 @@ class CoachToolFacadeTest {
         verify(learnerService).assertWritableLearningSession(skillpilotId);
         verify(learnerService).assertCompletionAssessmentOwner(skillpilotId, goalId);
         verify(learnerService).getCoachLearnerState(skillpilotId);
+        verify(learnerService).assertCurrentAssessmentStarted(skillpilotId, goalId);
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 
@@ -500,6 +501,7 @@ class CoachToolFacadeTest {
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).getCoachLearnerState(skillpilotId);
         verify(learnerService).assertCompletionAssessmentOwner(skillpilotId, examGoal.id());
+        verify(learnerService).assertCurrentAssessmentStarted(skillpilotId, examGoal.id());
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 
@@ -522,6 +524,7 @@ class CoachToolFacadeTest {
         ordered.verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         ordered.verify(learnerService).getCoachLearnerState(skillpilotId);
         ordered.verify(learnerService).assertCompletionAssessmentOwner(skillpilotId, examGoal.id());
+        ordered.verify(learnerService).assertCurrentAssessmentStarted(skillpilotId, examGoal.id());
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 

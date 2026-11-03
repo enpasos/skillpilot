@@ -10,6 +10,7 @@ import {
 } from './lib/hardLearningRouteValidation'
 import { validateOrientationOutlooks } from './lib/orientationOutlookValidation'
 import { findExamMarkdownTableIssues } from './lib/examMarkdownValidation'
+import { validatePhaseCompatibility } from './lib/phaseCompatibilityValidation'
 
 type Issue = { level: 'error' | 'warn'; message: string }
 
@@ -434,35 +435,6 @@ function isYearLevelPhase(phase: string): boolean {
 
 function isAllowedPhase(phase: string): boolean {
   return allowedPhases.has(phase) || isYearLevelPhase(phase)
-}
-
-function getComparablePhaseRank(phase: string): number | null {
-  const upper = phase.toUpperCase()
-  const sMatch = upper.match(/^S(\d{1,2})$/)
-  if (sMatch) return 100 + Number(sMatch[1])
-
-  const jMatch = upper.match(/^J(\d{1,2})$/)
-  if (jMatch) return 200 + Number(jMatch[1])
-
-  const yearLevelMatch = upper.match(/^(\d{1,2})(?:\.(\d{1,2}))?$/)
-  if (yearLevelMatch) {
-    const year = Number(yearLevelMatch[1])
-    if (year >= 5 && year <= 13) {
-      const part = yearLevelMatch[2] ? Number(yearLevelMatch[2]) / 100 : 0
-      return 200 + year + part
-    }
-  }
-
-  // In mixed school landscapes, late Sek-I year buckets must come before
-  // upper-secondary phases so J8/J9/J10 -> E/Q/Abitur bridge edges stay valid.
-  if (upper === 'E') return 300
-  if (upper === 'Q1') return 310
-  if (upper === 'Q2') return 320
-  if (upper === 'Q3') return 330
-  if (upper === 'Q4') return 340
-  if (upper === 'ABITUR') return 350
-
-  return null
 }
 
 function isAtomicGoal(goal: UiGoal): boolean {
@@ -937,38 +909,9 @@ function validateLandscape(landscape: ParsedLandscape) {
   }
   detectCycles(effectiveEdges, 'effective_requires (with inheritance)')
 
-  // GVR-002:
-  // For comparable phase systems (E/Q*/Abitur, S*, J*), prerequisites must not point to later phases.
-  const reportedPhaseViolations = new Set<string>()
-  landscape.goals.forEach((goal) => {
-    const goalRank = getComparablePhaseRank(goal.phase)
-    if (goalRank === null) return
-
-    computeEffectiveRequires(goal.id).forEach((rawReq) => {
-      const parsed = parseReference(rawReq, landscape.landscapeId)
-      if (parsed.landscapeId !== landscape.landscapeId || !localMap.has(parsed.goalId)) return
-      const reqGoal = localMap.get(parsed.goalId)
-      if (!reqGoal) return
-
-      const reqRank = getComparablePhaseRank(reqGoal.phase)
-      if (reqRank === null || reqRank <= goalRank) return
-
-      const dedupeKey = `${goal.id}->${reqGoal.id}`
-      if (reportedPhaseViolations.has(dedupeKey)) return
-      reportedPhaseViolations.add(dedupeKey)
-
-      const isDirect = goal.requires.some((rawDirectReq) => {
-        const parsedDirect = parseReference(rawDirectReq, landscape.landscapeId)
-        return parsedDirect.landscapeId === landscape.landscapeId && parsedDirect.goalId === reqGoal.id
-      })
-      const edgeType = isDirect ? 'direct' : 'inherited/effective'
-
-      addIssue(
-        graphRuleIssueLevel,
-        landscape.landscapeId,
-        `[${RULE_PHASE_MONOTONIC}] Goal ${goal.id} (${goal.title}, phase ${goal.phase}) has ${edgeType} prerequisite ${reqGoal.id} (${reqGoal.title}, phase ${reqGoal.phase}), which points to a later phase.`,
-      )
-    })
+  // GVR-002 uses an explicit reference-metadata profile only for the reviewed Math canon.
+  validatePhaseCompatibility(landscape, computeEffectiveRequires).forEach((message) => {
+    addIssue(graphRuleIssueLevel, landscape.landscapeId, `[${RULE_PHASE_MONOTONIC}] ${message}`)
   })
 
   // GVR-004 / GVR-005:

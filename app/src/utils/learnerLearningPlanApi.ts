@@ -199,6 +199,7 @@ export const parseLearnerLearningPlanSummary = (value: unknown): LearnerLearning
     null,
     'learning-plan-following-disabled',
     'personal-curriculum-changed',
+    'assessment-coverage-unavailable',
     'no-open-due-frontier-goal',
     'active-goal-in-progress',
   ].includes(parsedContinueReason)) {

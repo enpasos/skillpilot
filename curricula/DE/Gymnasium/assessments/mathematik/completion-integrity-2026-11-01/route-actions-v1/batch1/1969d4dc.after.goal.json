@@ -1,0 +1,125 @@
+{
+  "id": "1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf",
+  "title": "Funktionenscharen und Ortskurven untersuchen",
+  "description": "Die lernende Person kann eine materialgestützte Q4-Klausuraufgabe zu Funktionenscharen, Parameteruntersuchungen und Ortskurven selbstständig bearbeiten und die Ergebnisse begründen.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment"
+  ],
+  "dimensionTags": {
+    "framework": "hessen-kc-2024",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K1",
+      "K2",
+      "K3"
+    ],
+    "guidingIdeas": [
+      "L1",
+      "L2",
+      "L4"
+    ],
+    "phase": "Q4"
+  },
+  "requires": [
+    "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+    "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+    "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+    "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+    "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+    "9023226b-fc17-412b-807c-2bb45cd551d5",
+    "d144a855-9139-55c7-a801-e8b85dab5f01"
+  ],
+  "contains": [],
+  "examples": [],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "examData": {
+    "reviewStatus": "pending",
+    "coveredGoalIds": [
+      "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+      "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+      "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+      "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+      "d144a855-9139-55c7-a801-e8b85dab5f01"
+    ],
+    "coveredStrands": [
+      "L1",
+      "L2",
+      "L4"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "Gegeben ist für $a \\in \\mathbb R$ die Funktionenschar\n$$\nf_a(x)=x^2-2ax+2a.\n$$\n\n1. Bestimmen Sie den Scheitelpunkt $S_a$ des Graphen von $f_a$ in Abhängigkeit von $a$.\n2. Weisen Sie nach, dass die Scheitelpunkte aller Graphen auf einer gemeinsamen Ortskurve liegen, und geben Sie deren Gleichung an.\n3. Untersuchen Sie in Abhängigkeit von $a$, für welche Werte die Parabel keine reellen Nullstellen besitzt.\n4a. Lassen Sie zunächst $a$ als Parameter stehen. Bestimmen Sie eine Stammfunktion $F_a$ von $f_a$ und berechnen Sie das bestimmte Integral\n$$\nI(a)=\\int_0^1 f_a(x)\\,dx\n$$\nsymbolisch in Abhängigkeit von $a$. Bestimmen Sie den Parameter mit $I(a)=0$ und deuten Sie das Ergebnis als orientierte Flächenbilanz. Erläutern Sie, warum $I(a)=0$ nicht bedeutet, dass der Graph auf dem ganzen Intervall die $x$-Achse ist. Erst danach bearbeiten Sie 4b.\n\n4b. Berechnen Sie für $a=3$ den Flächeninhalt der von dem Graphen von $f_3$, der $x$-Achse und den Nullstellen eingeschlossenen Fläche.\n\nBewertung: 1: 5 BE, 2: 5 BE, 3: 4 BE, 4a: 5 BE, 4b: 6 BE; insgesamt 25 BE, bestanden ab 13 BE. Ohne nachvollziehbare parameterabhängige Stammfunktion, daraus berechneten parameterabhängigen Integralterm und sachlich richtige Flächenbilanzdeutung in 4a höchstens 12 BE insgesamt. Einzelne Rechenfehler bei erkennbar ausgeführtem, fachlich tragfähigem Kernverfahren lösen die Kappung nicht automatisch aus.",
+    "solutionContent": "1. Durch quadratische Ergänzung erhält man\n$$\nf_a(x)=x^2-2ax+2a=(x-a)^2-a^2+2a.\n$$\nDamit ist der Scheitelpunkt\n$$\nS_a=(a\\mid -a^2+2a).\n$$\n\n2. Für die Scheitelpunkte gilt $x=a$. Einsetzen in die $y$-Koordinate liefert\n$$\ny=-a^2+2a=-x^2+2x.\n$$\nDie Ortskurve der Scheitelpunkte ist also\n$$\ny=-x^2+2x.\n$$\n\n3. Die Funktion $f_a$ besitzt genau dann keine reellen Nullstellen, wenn die Diskriminante negativ ist:\n$$\n\\Delta=(-2a)^2-4\\cdot 1\\cdot 2a=4a^2-8a=4a(a-2).\n$$\nGesucht ist\n$$\n4a(a-2)<0.\n$$\nDas gilt für\n$$\n0<a<2.\n$$\n\n4a. Beim Integrieren nach $x$ ist $a$ konstant. Eine Stammfunktion ist\n$$\nF_a(x)=\\frac{x^3}{3}-ax^2+2ax+C_a.\n$$\nDie Integrationskonstante darf von $a$ abhängen. Die Ableitung nach $x$ ergibt wieder $f_a$. Deshalb\n$$\nI(a)=F_a(1)-F_a(0)=\\frac13-a+2a=a+\\frac13.\n$$\nSomit ist $I(a)=0$ genau für $a=-\\frac13$. $I(a)$ beschreibt die vorzeichenbehaftete Flächenbilanz zwischen Graph und $x$-Achse auf $[0,1]$: positiv für $a>-\\frac13$, negativ für $a<-\\frac13$, null für $a=-\\frac13$. Beim Nullwert gleichen sich positive und negative Beiträge aus. Der Graph ist nicht identisch null, denn für jedes $a$ gilt $f_a(1)=1$; für $a=-\\frac13$ gilt außerdem $f_a(0)=-\\frac23$. Der stetige Graph liegt also auf Teilen des Intervalls unter und auf anderen über der Achse. Der Integralwert ist nicht allgemein der nichtnegative geometrische Flächeninhalt.\n\n4b. Für $a=3$ ist\n$$\nf_3(x)=x^2-6x+6=(x-3)^2-3.\n$$\nDie Nullstellen sind\n$$\nx_{1,2}=3\\pm \\sqrt{3}.\n$$\nZwischen diesen Nullstellen liegt der Graph unter der $x$-Achse. Der Flächeninhalt ist daher\n$$\nA=\\int_{3-\\sqrt{3}}^{3+\\sqrt{3}} -f_3(x)\\,dx.\n$$\nMit $u=x-3$ wird\n$$\nA=\\int_{-\\sqrt{3}}^{\\sqrt{3}} (3-u^2)\\,du = \\left[3u-\\frac{u^3}{3}\\right]_{-\\sqrt{3}}^{\\sqrt{3}} = 4\\sqrt{3}.\n$$\nAlso gilt\n$$\nA=4\\sqrt{3}.\n$$",
+    "scoring": {
+      "maxPoints": 25,
+      "passingPoints": 13,
+      "steps": [
+        {
+          "id": "q4a_1",
+          "points": 5,
+          "description": "Scheitelpunkt der Funktionenschar korrekt bestimmt"
+        },
+        {
+          "id": "q4a_2",
+          "points": 5,
+          "description": "Ortskurve korrekt hergeleitet"
+        },
+        {
+          "id": "q4a_3",
+          "points": 4,
+          "description": "Parameterbereich ohne reelle Nullstellen korrekt bestimmt"
+        },
+        {
+          "id": "q4a_4a_antiderivative",
+          "points": 2,
+          "description": "4a: Parameter als konstant behandelt und F_a=x³/3−ax²+2ax+C_a angegeben. Kernkappung für die gesamte Bewertung: Fehlt eine nachvollziehbare parameterabhängige Stammfunktion ODER der daraus berechnete parameterabhängige bestimmte Integralterm ODER die sachlich richtige Flächenbilanzdeutung, höchstens 12/25 BE, unter Passgrenze 13. Einzelne Rechenfehler bei substantiv erbrachtem Kernverfahren bewirken nicht automatisch die Kappung."
+        },
+        {
+          "id": "q4a_4a_definite_parameter",
+          "points": 2,
+          "description": "4a: Grenzen an F_a ausgewertet, I(a)=a+1/3 hergeleitet (1 BE) und I(a)=0 genau für a=−1/3 bestimmt (1 BE)"
+        },
+        {
+          "id": "q4a_4a_signed_meaning",
+          "points": 1,
+          "description": "4a: Vorzeichenbehaftete Flächenbilanz mit Ausgleich bei a=−1/3 erklärt und durch f_a(1)=1 oder vergleichbares Argument von der Nullfunktion unterschieden"
+        },
+        {
+          "id": "q4a_4",
+          "points": 6,
+          "description": "4b: Flächeninhalt für a=3 korrekt berechnet (bisherige 6 BE unverändert)"
+        }
+      ]
+    },
+    "reviewNote": "Nicht aktivierter Aufgabenkandidat 2026-11-01, Routenblock 1. Die neue Handlung, Lösung, Coverage und Rubrik benötigen unabhängiges Inhaltsreview; frühere Freigaben gelten nicht für diese neuen Aufgabenbytes. Die Rubrik-Kappung gehört zur normalen Aufgabenbewertung; der Server prüft nur Gesamtpunkte. Keine neue Prüfung, keine Scope-/Quellenfreigabe, keine Änderung bestehender Mastery.",
+    "sourceArtifactPath": "tmp/approach-review-20261101/route-actions-batch1/1969d4dc.task.md",
+    "taskContentEn": "For $a\\in\\mathbb R$, consider the family\n$$\nf_a(x)=x^2-2ax+2a.\n$$\n\n1. Determine the vertex $S_a$ as a function of $a$.\n2. Show that all vertices lie on one locus and state its equation.\n3. Determine the parameter values for which the parabola has no real roots.\n4a. First keep $a$ symbolic. Find an antiderivative $F_a$ of $f_a$ and compute\n$$\nI(a)=\\int_0^1 f_a(x)\\,dx\n$$\nas a function of $a$. Find the parameter for which $I(a)=0$ and interpret it as a signed area balance. Explain why a zero integral does not mean that the graph is the $x$-axis throughout the interval. Only then proceed to 4b.\n\n4b. For $a=3$, find the area enclosed by the graph of $f_3$, the $x$-axis and the roots.\n\nScoring: 1: 5 points, 2: 5, 3: 4, 4a: 5, 4b: 6; total 25, pass at 13. Without a demonstrable parameter-dependent antiderivative, a definite-integral expression derived from it and a valid signed-area interpretation in 4a, the total is capped at 12. Isolated calculation errors do not automatically trigger this cap when the required reasoning and method are substantively present.",
+    "solutionContentEn": "1. Completing the square gives $f_a(x)=(x-a)^2-a^2+2a$, so $S_a=(a,-a^2+2a)$.\n\n2. Since the vertex has $x=a$, its ordinate is $y=-x^2+2x$. This is the locus of all vertices; every real $x$ occurs because $a$ ranges over $\\mathbb R$.\n\n3. The discriminant is $\\Delta=4a(a-2)$. There are no real roots exactly when $\\Delta<0$, hence $0<a<2$.\n\n4a. Treating $a$ as constant when integrating with respect to $x$ gives\n$$\nF_a(x)=\\frac{x^3}{3}-ax^2+2ax+C_a,\n\\qquad I(a)=F_a(1)-F_a(0)=a+\\frac13.\n$$\nThe integration constant may depend on $a$. Differentiating $F_a$ with respect to $x$ recovers $f_a$. The integral vanishes exactly at $a=-\\frac13$. It is the signed area balance on $[0,1]$: positive for $a>-\\frac13$ and negative for $a<-\\frac13$. At the zero parameter the positive and negative contributions cancel. The function is not identically zero: $f_a(1)=1$ for every $a$, and $f_{-1/3}(0)=-\\frac23$. Continuity therefore gives portions below and above the axis. A signed integral is not generally the nonnegative geometric area.\n\n4b. For $a=3$, $f_3(x)=(x-3)^2-3$ with roots $3\\pm\\sqrt3$. The graph is below the axis between them. Thus\n$$\nA=\\int_{3-\\sqrt3}^{3+\\sqrt3}-f_3(x)\\,dx\n=\\int_{-\\sqrt3}^{\\sqrt3}(3-u^2)\\,du=4\\sqrt3,\n$$\nusing $u=x-3$."
+  },
+  "phase": "Q4",
+  "type": "atomic"
+}

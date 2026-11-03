@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 2,
+  "reviewType": "INDEPENDENT_RP_V2_BY_E465_CANONICAL_BINDING_CARRYFORWARD",
+  "verdict": "PASS",
+  "contentVerdict": "PASS",
+  "placementVerdict": "PASS_EXACT_UNCHANGED_RP_TASK_OPERATIONS_AND_SUPPORT_CANONICAL_BINDING_CARRYFORWARD",
+  "verdictScope": "Only canonical-file and native-evidence rebinding of already approved RP selection after e465 positive BY applicability. No new RP source/task/placement or BY activation approval from this receipt.",
+  "reviewerAgent": "/root/astra_math_material_scope_resume",
+  "authorAgent": "/root/sol_math_v7_status_and_handoff",
+  "authorIndependent": true,
+  "humanApproval": false,
+  "reviewDate": "2026-11-01",
+  "approvedViewIds": [
+    "de-rp-gym-math-gk-g8",
+    "de-rp-gym-math-lk-g8",
+    "de-rp-gym-seki-math-g8"
+  ],
+  "approvedTaskGoalIds": [
+    "64f37348-20f7-55b1-82a8-8fc388087577",
+    "926d0551-4537-569e-b6ad-fc33bb17546e"
+  ],
+  "approvedReferenceCount": 6,
+  "inputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "aee7e86f84814967022e12190f34dcbdeef0d2430f0b1a5fd89f11d93bd243f4"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/by-e465-canonical-carryforward/candidate-operations.json",
+      "sha256": "0914d4e910395fdc3c0fb00008e60beaad1ca7a21f965884f5d2b5656e545f0a"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/by-e465-canonical-carryforward/native-task-support-context.json",
+      "sha256": "1da328cec033022c500ea48d607fae864a3c857f32481e05aa04bdeceb63d487"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/by-e465-canonical-carryforward/native-canonical-validation.json",
+      "sha256": "6ecb638855b4fd9d99f2ee67bee6983f0198c3248c5c6e82427473db2586c308"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/transition-model-canonical-carryforward/independent-canonical-carryforward-review.json",
+      "sha256": "619c5b3880a0f2eb692cf727c39915577df378f337da167ea400dc0ba0a43e2a"
+    }
+  ],
+  "historicalReviewReceipt": {
+    "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/transition-model-canonical-carryforward/independent-canonical-carryforward-review.json",
+    "sha256": "619c5b3880a0f2eb692cf727c39915577df378f337da167ea400dc0ba0a43e2a"
+  },
+  "reviewedPendingSelection": {
+    "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/rp-g8-sphere-routes-v1/composition-selection.by-e465-carryforward.json",
+    "sha256": "568f7a72434d1a4910f6fba4fa64bef3c8352d3c1ecb4596624059a8b732bef9"
+  },
+  "independentChecks": {
+    "twoWholeTaskObjectsUnchanged": true,
+    "threeCompleteOperationsAndScopeYearSlotWrapperBeforeAfterAnchorsUnchanged": true,
+    "allDirectRequiresCoverageAndTargetReferencesUnchanged": true,
+    "supportNativeRecomputedAndComparedToPreviousReview": true,
+    "eachTaskAtomicSupportCount": 42,
+    "supportUnionCount": 43,
+    "allSupportWholeGoalsEqualCurrentRoot": true,
+    "newBYTaskAbsentFromRPSupport": true,
+    "supportOnly1a25NotPromoted": true,
+    "exactAll154NativeOfferDeltaReviewed": true,
+    "unchangedNonBYOfferRows": 150,
+    "runtimeClassHashesReverified": 937
+  },
+  "allowedFinalBindingOnly": [
+    "selection.status -> independent-ai-reviewed",
+    "selection.reviewReceipt.sha256 -> this receipt hash",
+    "existing registry selection path/hash -> this reviewed selection",
+    "stage policy existing RP-registry source binding -> final registry hash"
+  ],
+  "boundaries": [
+    "Existing strict V2 loader unchanged.",
+    "Historical RP author/review evidence stays immutable.",
+    "Final producer outputs and V8 manifest need separate review.",
+    "No mastery/result semantics, new source scope or M7/CI/publication acceptance."
+  ]
+}

@@ -550,7 +550,8 @@ class ProjectionRoleLearnerServiceTest {
                 atomicGoal(OUTSIDE_TARGET_ID, List.of(ROOT_CLUSTER_ID))));
         when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new PlannedGoal(fixture.learner(), ROOT_CLUSTER_ID),
-                        new PlannedGoal(fixture.learner(), OUTSIDE_TARGET_ID)));
+                        new PlannedGoal(fixture.learner(), OUTSIDE_TARGET_ID),
+                        new PlannedGoal(fixture.learner(), PREREQUISITE_ID)));
         assertThat(projectionSets(fixture.service()).targetGoalIds())
                 .contains(ROOT_CLUSTER_ID, PREREQUISITE_ID, OUTSIDE_TARGET_ID)
                 .doesNotContain(NESTED_CLUSTER_ID, TRANSITIVE_PREREQUISITE_ID);
@@ -910,17 +911,12 @@ class ProjectionRoleLearnerServiceTest {
 
     @Test
     void broadSyntheticCurriculumFocusDoesNotEnableGlobalAssessmentOfferBranch() {
-        Fixture fixture = fixture(view(
+        Fixture fixture = fixture(syntheticView(
                 canonicalSubtree(ROOT_CLUSTER_ID),
                 canonicalSubtree(GLOBAL_ASSESSMENT_ROOT_ID)));
         addGlobalAssessmentBranch(fixture, List.of(PREREQUISITE_ID));
-        when(fixture.compositionViewService().resolveStructureReference(SYNTHETIC_STRUCTURE_ID))
-                .thenReturn(new CompositionViewService.CompositionStructureResolution(
-                        SYNTHETIC_STRUCTURE_ID,
-                        "projection-role-test",
-                        "sek2",
-                        "Sekundarstufe II",
-                        List.of(ROOT_CLUSTER_ID, GLOBAL_ASSESSMENT_ROOT_ID)));
+        org.mockito.Mockito.doCallRealMethod().when(fixture.compositionViewService())
+                .resolveStructureReference(SYNTHETIC_STRUCTURE_ID);
         when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new PlannedGoal(fixture.learner(), SYNTHETIC_STRUCTURE_ID)));
         when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
@@ -951,7 +947,7 @@ class ProjectionRoleLearnerServiceTest {
 
     @Test
     void switchingFromExplicitAssessmentFocusToBroadSyntheticScopeClearsActiveExam() {
-        Fixture fixture = fixture(view(
+        Fixture fixture = fixture(syntheticView(
                 canonicalSubtree(ROOT_CLUSTER_ID),
                 canonicalSubtree(GLOBAL_ASSESSMENT_ROOT_ID)));
         addGlobalAssessmentBranch(fixture, List.of());
@@ -963,13 +959,8 @@ class ProjectionRoleLearnerServiceTest {
                 NESTED_CLUSTER_ID,
                 OUTSIDE_TARGET_ID,
                 GLOBAL_ASSESSMENT_ROOT_ID));
-        when(fixture.compositionViewService().resolveStructureReference(SYNTHETIC_STRUCTURE_ID))
-                .thenReturn(new CompositionViewService.CompositionStructureResolution(
-                        SYNTHETIC_STRUCTURE_ID,
-                        "projection-role-test",
-                        "sek2",
-                        "Sekundarstufe II",
-                        List.of(ROOT_CLUSTER_ID)));
+        org.mockito.Mockito.doCallRealMethod().when(fixture.compositionViewService())
+                .resolveStructureReference(SYNTHETIC_STRUCTURE_ID);
         fixture.learner().setActiveGoalId(GLOBAL_ASSESSMENT_EXAM_ID);
         when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new PlannedGoal(
@@ -1138,14 +1129,9 @@ class ProjectionRoleLearnerServiceTest {
 
     @Test
     void setPlannedGoalsAllowsVisibleSyntheticCompositionStructureTarget() {
-        Fixture fixture = fixture(view(goalEntry(TARGET_ID)));
-        when(fixture.compositionViewService().resolveStructureReference(SYNTHETIC_STRUCTURE_ID))
-                .thenReturn(new CompositionViewService.CompositionStructureResolution(
-                        SYNTHETIC_STRUCTURE_ID,
-                        "projection-role-test",
-                        "sek2",
-                        "Sekundarstufe II",
-                        List.of(TARGET_ID)));
+        Fixture fixture = fixture(syntheticView(goalEntry(TARGET_ID)));
+        org.mockito.Mockito.doCallRealMethod().when(fixture.compositionViewService())
+                .resolveStructureReference(SYNTHETIC_STRUCTURE_ID);
 
         fixture.service().setPlannedGoals(LEARNER_ID, Set.of(SYNTHETIC_STRUCTURE_ID));
 
@@ -1209,7 +1195,7 @@ class ProjectionRoleLearnerServiceTest {
     }
 
     @Test
-    void storedPrerequisiteOnlyFocusIsFilteredFromLearnerFacingReadsAndCannotConstrainFrontier() {
+    void storedPrerequisiteOnlyFocusRequiresNewSelectionWithoutWritingLearnerResults() {
         Fixture fixture = fixture(view(
                 canonicalSubtree(ROOT_CLUSTER_ID),
                 goalEntry(PREREQUISITE_ID, "prerequisiteOnly")));
@@ -1217,42 +1203,45 @@ class ProjectionRoleLearnerServiceTest {
                 new PlannedGoal(fixture.learner(), PREREQUISITE_ID);
         when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(stalePrerequisiteOnlyFocus));
+        fixture.learner().setAutoPilot(true);
 
         assertThat(fixture.service().getPlannedGoals(LEARNER_ID))
-                .containsExactly(ROOT_CLUSTER_ID);
-        // The restored target root includes TARGET_ID, while its prerequisiteOnly
-        // requirement stays outside the normal focus and cannot block entry.
+                .isEmpty();
+        // An unresolved previously chosen focus offers a new scope choice;
+        // merely reading it must not opt into the entire target root.
+        assertThat(fixture.service().getFrontier(LEARNER_ID)).isEmpty();
         assertThat(fixture.service().getRichFrontier(LEARNER_ID))
                 .extracting(FrontierGoal::id)
-                .containsExactlyInAnyOrder(
-                        ROOT_CLUSTER_ID,
-                        NESTED_CLUSTER_ID,
-                        OUTSIDE_TARGET_ID,
-                        TARGET_ID)
+                .containsExactly(NESTED_CLUSTER_ID, OUTSIDE_TARGET_ID)
                 .doesNotContain(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
 
         var learnerState = fixture.service().getLearnerState(LEARNER_ID);
+        assertThat(learnerState.activeGoal()).isNull();
+        assertThat(learnerState.nextAllowedActions()).doesNotContain("setActiveGoal", "setMastery");
         assertThat(learnerState.goals().planned())
                 .extracting(FrontierGoal::id)
-                .containsExactly(ROOT_CLUSTER_ID);
+                .isEmpty();
+        assertThat(learnerState.stateMachine().requiredAction()).isEqualTo("setScope");
         assertThat(learnerState.frontier())
                 .extracting(FrontierGoal::id)
-                .containsExactlyInAnyOrder(
-                        ROOT_CLUSTER_ID,
-                        NESTED_CLUSTER_ID,
-                        OUTSIDE_TARGET_ID,
-                        TARGET_ID)
+                .containsExactly(NESTED_CLUSTER_ID, OUTSIDE_TARGET_ID)
                 .doesNotContain(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
+        assertThat(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .containsExactly(stalePrerequisiteOnlyFocus);
+        verify(fixture.plannedGoalRepository(), never()).deleteAll(any());
+        verify(fixture.plannedGoalRepository(), never()).save(any());
 
         assertThat(fixture.service().getMastery(LEARNER_ID)).isEmpty();
         verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
         verify(fixture.masteryRepository(), never()).saveAll(any());
 
-        verify(fixture.plannedGoalRepository())
-                .deleteAll(org.mockito.ArgumentMatchers.<Iterable<PlannedGoal>>any());
-        verify(fixture.plannedGoalRepository()).save(
-                org.mockito.ArgumentMatchers.argThat(goal ->
-                        ROOT_CLUSTER_ID.equals(goal.getGoalId())));
+        assertThat(fixture.service().getUncompactedRichFrontier(LEARNER_ID)).isEmpty();
+        assertThatThrownBy(() -> fixture.service().setActiveGoal(LEARNER_ID, OUTSIDE_TARGET_ID))
+                .isInstanceOf(ResponseStatusException.class);
+        assertThatThrownBy(() -> fixture.service().setMastery(LEARNER_ID,
+                new com.skillpilot.backend.api.MasteryUpdateRequest(Map.of(OUTSIDE_TARGET_ID, 1.0), OUTSIDE_TARGET_ID)))
+                .isInstanceOf(ResponseStatusException.class);
+        verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
     }
 
     private Fixture physicsSourceRouteFixture(String methodRole) throws Exception {
@@ -1338,6 +1327,152 @@ class ProjectionRoleLearnerServiceTest {
         verify(fixture.masteryRepository(), never()).saveAndFlush(any(Mastery.class));
     }
 
+    @Test
+    void directRootEntryAndCanonicalRootSubtreeRemainPresentWithNoAncestor() {
+        for(Map<String,Object> entry:List.of(goalEntry(TARGET_ID),canonicalSubtree(NESTED_CLUSTER_ID))) {
+            Map<String,Object> rootView=new java.util.LinkedHashMap<>(view(entry));
+            rootView.put("rootNodes",List.of(entry));
+            Fixture f=fixture(rootView);
+            Map<String,LearningGoal> definitions=f.landscape().getGoals().stream()
+                    .collect(java.util.stream.Collectors.toMap(LearningGoal::getId,goal->goal));
+            String id=(String)entry.get("goalId");
+            var resolution=f.compositionViewService().resolveCanonicalFocusReference(rootView,id,definitions);
+            assertThat(resolution).isNotNull();assertThat(resolution.target()).isTrue();
+            assertThat(resolution.ancestors()).isEmpty();
+            Object projection=ReflectionTestUtils.invokeMethod(f.service(),"getGoalProjection",LANDSCAPE_ID,PERSONAL_CURRICULUM);
+            List<String> targets=ReflectionTestUtils.invokeMethod(f.service(),"resolveProjectedFocusTargetIds",id,projection);
+            assertThat(targets).contains(id);
+        }
+    }
+
+    @Test
+    void validCanonicalClusterCannotRecaptureItsChildPlacedAsIndependentDirectEntry() {
+        Map<String,Object> rootView=new java.util.LinkedHashMap<>(view(canonicalSubtree(NESTED_CLUSTER_ID)));
+        rootView.put("rootNodes",List.of(
+                Map.of("kind","structure","id","early","label","Earlier branch","children",List.of(canonicalSubtree(NESTED_CLUSTER_ID))),
+                Map.of("kind","structure","id","late","label","Later branch","children",List.of(goalEntry(TARGET_ID)))));
+        Fixture f=fixture(rootView);
+        when(f.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(f.learner(),NESTED_CLUSTER_ID)));
+        Object projection=ReflectionTestUtils.invokeMethod(f.service(),"getGoalProjection",LANDSCAPE_ID,PERSONAL_CURRICULUM);
+        Set<String> members=ReflectionTestUtils.invokeMethod(f.service(),"projectedAtomicTargetIds",List.of(NESTED_CLUSTER_ID),projection);
+        assertThat(members).contains(PREREQUISITE_ID).doesNotContain(TARGET_ID);
+        assertThat(f.service().getUncompactedRichFrontierForFocus(LEARNER_ID,List.of(NESTED_CLUSTER_ID)))
+                .extracting(FrontierGoal::id).doesNotContain(TARGET_ID);
+        Set<String> direct=ReflectionTestUtils.invokeMethod(f.service(),"projectedAtomicTargetIds",List.of(TARGET_ID),projection);
+        assertThat(direct).containsExactly(TARGET_ID);
+    }
+
+    @Test
+    void mixedFocusKeepsIndependentlyChosenDirectEntryDespiteRawCanonicalContainment() {
+        Map<String,Object> rootView=new java.util.LinkedHashMap<>(view(canonicalSubtree(NESTED_CLUSTER_ID)));
+        rootView.put("rootNodes",List.of(
+                Map.of("kind","structure","id","early","label","Earlier branch","children",List.of(canonicalSubtree(NESTED_CLUSTER_ID))),
+                Map.of("kind","structure","id","late","label","Later branch","children",List.of(goalEntry(TARGET_ID)))));
+        Fixture f=fixture(rootView);
+        when(f.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(f.learner(),NESTED_CLUSTER_ID),new PlannedGoal(f.learner(),TARGET_ID)));
+        assertThat(f.service().getPlannedGoals(LEARNER_ID)).containsExactly(NESTED_CLUSTER_ID,TARGET_ID);
+        org.mockito.Mockito.verify(f.plannedGoalRepository(),org.mockito.Mockito.never()).save(org.mockito.ArgumentMatchers.any());
+        org.mockito.Mockito.verify(f.plannedGoalRepository(),org.mockito.Mockito.never()).deleteAll(org.mockito.ArgumentMatchers.any());
+    }
+
+    @org.junit.jupiter.params.ParameterizedTest
+    @org.junit.jupiter.params.provider.ValueSource(booleans = {false, true})
+    void independentLaterProgressCannotSuppressEarlierOrientationThroughRawOrSyntheticFocus(
+            boolean syntheticFocus) {
+        String orientationId = "orientation-in-early-branch";
+        Map<String, Object> rootView = new java.util.LinkedHashMap<>(view(canonicalSubtree(NESTED_CLUSTER_ID)));
+        rootView.put("rootNodes", List.of(
+                Map.of("kind", "structure", "id", "early", "label", "Earlier branch",
+                        "children", List.of(canonicalSubtree(NESTED_CLUSTER_ID))),
+                Map.of("kind", "structure", "id", "late", "label", "Later branch",
+                        "children", List.of(goalEntry(TARGET_ID)))));
+        Fixture f = fixture(rootView);
+        LearningGoal orientation = atomicGoal(orientationId, List.of());
+        orientation.setTags(List.of("Orientation"));
+        List<LearningGoal> goals = new java.util.ArrayList<>(f.landscape().getGoals());
+        goals.add(orientation);
+        f.landscape().setGoals(goals);
+        LearningGoal earlyCluster = goals.stream().filter(g -> NESTED_CLUSTER_ID.equals(g.getId()))
+                .findFirst().orElseThrow();
+        List<String> children = new java.util.ArrayList<>(earlyCluster.getContains());
+        children.add(orientationId);
+        earlyCluster.setContains(children);
+        String earlyFocus = syntheticFocus
+                ? "composition:projection-role-test:structure:early" : NESTED_CLUSTER_ID;
+        if (syntheticFocus) {
+            org.mockito.Mockito.doCallRealMethod().when(f.compositionViewService())
+                    .resolveStructureReference(earlyFocus);
+        }
+        List<String> selectedFoci = List.of(earlyFocus, TARGET_ID);
+        when(f.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(selectedFoci.stream().map(id -> new PlannedGoal(f.learner(), id)).toList());
+        when(f.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(f.learner(), TARGET_ID, 1.0)));
+        Object projection = ReflectionTestUtils.invokeMethod(
+                f.service(), "getGoalProjection", LANDSCAPE_ID, PERSONAL_CURRICULUM);
+        List<String> targets = ReflectionTestUtils.invokeMethod(
+                f.service(), "resolveProjectedTargetScopeIds", selectedFoci, projection);
+        Set<String> relevant = ReflectionTestUtils.invokeMethod(
+                f.service(), "resolveRelevantPlannedScope", orientationId, selectedFoci, projection,
+                new java.util.LinkedHashSet<>(targets));
+        assertThat(relevant).contains(orientationId, PREREQUISITE_ID).doesNotContain(TARGET_ID);
+        assertThat(f.service().getRichFrontier(LEARNER_ID)).extracting(FrontierGoal::id).contains(orientationId);
+        org.mockito.Mockito.verify(f.masteryRepository(), org.mockito.Mockito.never())
+                .save(org.mockito.ArgumentMatchers.any());
+    }
+
+    @Test
+    void actualFocusSelectionWritePreservesBothIndependentRootsAndTheirMembers() {
+        Map<String, Object> rootView = new java.util.LinkedHashMap<>(view(canonicalSubtree(NESTED_CLUSTER_ID)));
+        rootView.put("rootNodes", List.of(
+                Map.of("kind", "structure", "id", "early", "label", "Earlier branch",
+                        "children", List.of(canonicalSubtree(NESTED_CLUSTER_ID))),
+                Map.of("kind", "structure", "id", "late", "label", "Later branch",
+                        "children", List.of(goalEntry(TARGET_ID)))));
+        Fixture f = fixture(rootView);
+        when(f.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenAnswer(call -> List.copyOf(f.savedGoals()));
+        Set<String> selection = new java.util.LinkedHashSet<>(List.of(NESTED_CLUSTER_ID, TARGET_ID));
+        assertThat(f.service().setPlannedGoals(LEARNER_ID, selection))
+                .containsExactly(NESTED_CLUSTER_ID, TARGET_ID);
+        assertThat(f.savedGoals()).extracting(PlannedGoal::getGoalId)
+                .containsExactly(NESTED_CLUSTER_ID, TARGET_ID);
+        assertThat(f.service().getPlannedGoals(LEARNER_ID)).containsExactly(NESTED_CLUSTER_ID, TARGET_ID);
+        Object projection = ReflectionTestUtils.invokeMethod(
+                f.service(), "getGoalProjection", LANDSCAPE_ID, PERSONAL_CURRICULUM);
+        Set<String> members = ReflectionTestUtils.invokeMethod(
+                f.service(), "projectedAtomicTargetIds", List.of(NESTED_CLUSTER_ID, TARGET_ID), projection);
+        assertThat(members).containsExactlyInAnyOrder(PREREQUISITE_ID, TARGET_ID);
+        org.mockito.Mockito.verify(f.masteryRepository(), org.mockito.Mockito.never())
+                .save(org.mockito.ArgumentMatchers.any());
+    }
+
+    @Test
+    void realTwentyOnePlusOneRootBalanceRetainsTheIndependentlyChosenSmallRoot() {
+        String large = "large-chosen-root";
+        String small = "small-chosen-root";
+        String singleton = "independent-small-root-atom";
+        List<String> largeAtoms = java.util.stream.IntStream.range(0, 21)
+                .mapToObj(i -> "large-root-atom-" + i).toList();
+        Fixture f = fixture(view(canonicalSubtree(large), canonicalSubtree(small)));
+        List<LearningGoal> goals = new java.util.ArrayList<>(f.landscape().getGoals());
+        goals.add(clusterGoal(large, largeAtoms));
+        goals.add(clusterGoal(small, List.of(singleton)));
+        largeAtoms.forEach(id -> goals.add(atomicGoal(id, List.of())));
+        goals.add(atomicGoal(singleton, List.of()));
+        f.landscape().setGoals(goals);
+        LearningGoal root = goals.stream().filter(g -> ROOT_CLUSTER_ID.equals(g.getId())).findFirst().orElseThrow();
+        root.setContains(List.of(large, small));
+        when(f.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(f.learner(), large), new PlannedGoal(f.learner(), small)));
+        assertThat(f.service().getUncompactedRichFrontier(LEARNER_ID)).extracting(FrontierGoal::id)
+                .containsAll(largeAtoms).contains(singleton);
+        assertThat(f.service().getRichFrontier(LEARNER_ID)).extracting(FrontierGoal::id)
+                .hasSize(20).contains(singleton);
+    }
+
     private Fixture fixture(Map<String, Object> matchedView) {
         SkillLandscape landscape = landscape();
         LandscapeService landscapeService = mock(LandscapeService.class);
@@ -1359,6 +1494,11 @@ class ProjectionRoleLearnerServiceTest {
                     .thenReturn(matchedView);
             when(compositionViewService.findDefaultView(LANDSCAPE_ID))
                     .thenReturn(matchedView);
+            when(compositionViewService.findViewById((String) matchedView.get("viewId"))).thenReturn(matchedView);
+            org.mockito.Mockito.doCallRealMethod().when(compositionViewService)
+                    .resolveCanonicalFocusReference(org.mockito.ArgumentMatchers.<String, Object>anyMap(),
+                            org.mockito.ArgumentMatchers.anyString(), anyMap());
+
         }
 
         Learner learner = new Learner();
@@ -1491,6 +1631,11 @@ class ProjectionRoleLearnerServiceTest {
         goals.add(root);
         goals.add(exam);
         fixture.landscape().setGoals(goals);
+    }
+
+    private Map<String, Object> syntheticView(Map<String, Object>... entries) {
+        return view(Map.of("kind", "structure", "id", "sek2", "label", "Sekundarstufe II",
+                "children", List.of(entries)));
     }
 
     private Map<String, Object> view(Map<String, Object>... entries) {

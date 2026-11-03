@@ -2,6 +2,7 @@ package com.skillpilot.backend.ai.visiblesession;
 
 import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.ai.CoachStateProjection;
+import com.skillpilot.backend.ai.TaskImageTransport;
 import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
@@ -551,6 +552,15 @@ public class VisibleSessionService {
                 : forcedSelectionPlan != null
                         ? forcedSelectionPlan
                         : buildSelectionPlan(chatSessionToken, language, state);
+        String stateInstruction = instructionOverride == null ? instructionForState(language, action) : instructionOverride;
+        if (CoachStateProjection.requiresAssessmentStartConfirmation(state)) {
+            stateInstruction = CoachStateProjection.assessmentStartConfirmationInstruction(language);
+        } else if (CoachStateProjection.isVoluntaryLearningChoice(state) && forcedSelectionPlan == null && !suppressSelection) {
+            stateInstruction = CoachStateProjection.voluntaryChoiceInstruction(language)
+                    + (instructionOverride == null ? "" : " " + instructionOverride);
+        } else {
+            stateInstruction = CoachStateProjection.completionCalculationWarning(state, language) + stateInstruction;
+        }
         return new VisibleCoachStateResponse(
                 relayFooter(chatSessionToken, currentGoal, language),
                 state == null || state.learningState() == null ? "" : state.learningState(),
@@ -576,7 +586,7 @@ public class VisibleSessionService {
                 allowedActionsOverride == null
                         ? visibleAllowedActions(action, selectionPlan, currentGoal)
                         : List.copyOf(allowedActionsOverride),
-                instructionOverride == null ? instructionForState(language, action) : instructionOverride);
+                stateInstruction);
     }
 
     /**
@@ -665,7 +675,9 @@ public class VisibleSessionService {
                 displayOptions.add(new VisibleCoachStateResponse.SelectionOption(
                         displayOptions.size() + 1,
                         option.title(),
-                        compactText(option.description()),
+                        compactText(CoachStateProjection.isVoluntaryLearningChoice(state)
+                                ? CoachStateProjection.voluntaryChoiceDescription(option.description(), language)
+                                : option.description()),
                         "setActiveGoal".equals(action) ? option.id() : null));
             }
         } else if ("setPersonalization".equals(action)) {
@@ -749,7 +761,10 @@ public class VisibleSessionService {
                 List.copyOf(targets),
                 new VisibleCoachStateResponse.Selection(
                         reference,
-                        selectionQuestion(language, action),
+                        CoachStateProjection.isVoluntaryLearningChoice(state)
+                                ? localized(language, "Möchtest du freiwillig an einem dieser verfügbaren Lernziele arbeiten?",
+                                        "Would you like to work voluntarily on one of these available goals?")
+                                : selectionQuestion(language, action),
                         List.copyOf(displayOptions)),
                 false);
     }
@@ -970,10 +985,9 @@ public class VisibleSessionService {
         }
         String task = localizedContent(language, exam.getTaskContent(), exam.getTaskContentEn());
         Double maxPoints = exam.getScoring() == null ? null : exam.getScoring().getMaxPoints();
-        boolean hasImage = task != null && task.startsWith("IMAGE_PATH: ");
-        String visibleTask = hasImage
-                ? task.replaceFirst("^IMAGE_PATH: [^\\r\\n]+(?:\\r?\\n){1,2}", "")
-                : task;
+        TaskImageTransport.VisibleTask visible = TaskImageTransport.readHeader(task);
+        boolean hasImage = visible.hasImage();
+        String visibleTask = visible.body();
         return new VisibleCoachStateResponse.ExamTask(
                 visibleTask,
                 maxPoints,

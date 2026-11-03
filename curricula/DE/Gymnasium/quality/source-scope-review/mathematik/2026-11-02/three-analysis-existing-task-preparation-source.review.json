@@ -1,0 +1,1180 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_THREE_EXACT_ANALYSIS_PREPARATION_EDGES_CONTENT_ONLY_NOT_MATERIALIZATION",
+  "reviewerAgent": "/root/astra_math_material_scope_resume",
+  "reviewDate": "2026-11-02",
+  "canonicalBinding": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "746a926833862f1587d9c260c86f2edba02724bb4ae9fa522390dc74f1d61d0a"
+  },
+  "actualBaselineAudit": {
+    "path": "tmp/approach-review-20261101/post-sh-binomial-native-154-audit.json",
+    "sha256": "5efcb4486cbb029f134d22f3c80f27b0183477055451a8e43eb9c66eaf70a9c4"
+  },
+  "wholeTaskAndGoalInputArchive": {
+    "path": "tmp/approach-review-20261101/astra-remaining-material-scope/three-analysis-preparation-whole-contract-inputs-v15.json",
+    "sha256": "ac62e789fd3985ffc424bf5bbfc8ae03616befe47ea037d14f394c5924f6fff3"
+  },
+  "priorHoldRecord": {
+    "path": "tmp/approach-review-20261101/astra-remaining-material-scope/mass-endpoint-family-triage-v12.json",
+    "sha256": "8b98c56b42d8b03f3aec933094f7afc8e8305b644a19ace7682299fe384d1d6c",
+    "preservedUnchanged": true,
+    "resolution": "The three provisional HOLDs are resolved only for genuine preparation. Their warnings against equating partial task performance with complete assessment coverage remain valid."
+  },
+  "decisions": [
+    {
+      "verdict": "PASS_GENUINE_PREPARATION_ONLY_UNCHANGED_WHOLE_TASK",
+      "taskGoalId": "1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf",
+      "preparationGoalId": "647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+      "wholeTaskBefore": {
+        "id": "1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf",
+        "title": "Funktionenscharen und Ortskurven untersuchen",
+        "description": "Die lernende Person kann eine materialgestützte Q4-Klausuraufgabe zu Funktionenscharen, Parameteruntersuchungen und Ortskurven selbstständig bearbeiten und die Ergebnisse begründen.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1",
+            "K2",
+            "K3"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2",
+            "L4"
+          ],
+          "phase": "Q4"
+        },
+        "requires": [
+          "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+          "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+          "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+          "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+          "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+          "9023226b-fc17-412b-807c-2bb45cd551d5",
+          "d144a855-9139-55c7-a801-e8b85dab5f01"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+            "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+            "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+            "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+            "d144a855-9139-55c7-a801-e8b85dab5f01"
+          ],
+          "coveredStrands": [
+            "L1",
+            "L2",
+            "L4"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "Gegeben ist für $a \\in \\mathbb R$ die Funktionenschar\n$$\nf_a(x)=x^2-2ax+2a.\n$$\n\n1. Bestimmen Sie den Scheitelpunkt $S_a$ des Graphen von $f_a$ in Abhängigkeit von $a$.\n2. Weisen Sie nach, dass die Scheitelpunkte aller Graphen auf einer gemeinsamen Ortskurve liegen, und geben Sie deren Gleichung an.\n3. Untersuchen Sie in Abhängigkeit von $a$, für welche Werte die Parabel keine reellen Nullstellen besitzt.\n4a. Lassen Sie zunächst $a$ als Parameter stehen. Bestimmen Sie eine Stammfunktion $F_a$ von $f_a$ und berechnen Sie das bestimmte Integral\n$$\nI(a)=\\int_0^1 f_a(x)\\,dx\n$$\nsymbolisch in Abhängigkeit von $a$. Bestimmen Sie den Parameter mit $I(a)=0$ und deuten Sie das Ergebnis als orientierte Flächenbilanz. Erläutern Sie, warum $I(a)=0$ nicht bedeutet, dass der Graph auf dem ganzen Intervall die $x$-Achse ist. Erst danach bearbeiten Sie 4b.\n\n4b. Berechnen Sie für $a=3$ den Flächeninhalt der von dem Graphen von $f_3$, der $x$-Achse und den Nullstellen eingeschlossenen Fläche.\n\nBewertung: 1: 5 BE, 2: 5 BE, 3: 4 BE, 4a: 5 BE, 4b: 6 BE; insgesamt 25 BE, bestanden ab 13 BE. Ohne nachvollziehbare parameterabhängige Stammfunktion, daraus berechneten parameterabhängigen Integralterm und sachlich richtige Flächenbilanzdeutung in 4a höchstens 12 BE insgesamt. Einzelne Rechenfehler bei erkennbar ausgeführtem, fachlich tragfähigem Kernverfahren lösen die Kappung nicht automatisch aus.",
+          "solutionContent": "1. Durch quadratische Ergänzung erhält man\n$$\nf_a(x)=x^2-2ax+2a=(x-a)^2-a^2+2a.\n$$\nDamit ist der Scheitelpunkt\n$$\nS_a=(a\\mid -a^2+2a).\n$$\n\n2. Für die Scheitelpunkte gilt $x=a$. Einsetzen in die $y$-Koordinate liefert\n$$\ny=-a^2+2a=-x^2+2x.\n$$\nDie Ortskurve der Scheitelpunkte ist also\n$$\ny=-x^2+2x.\n$$\n\n3. Die Funktion $f_a$ besitzt genau dann keine reellen Nullstellen, wenn die Diskriminante negativ ist:\n$$\n\\Delta=(-2a)^2-4\\cdot 1\\cdot 2a=4a^2-8a=4a(a-2).\n$$\nGesucht ist\n$$\n4a(a-2)<0.\n$$\nDas gilt für\n$$\n0<a<2.\n$$\n\n4a. Beim Integrieren nach $x$ ist $a$ konstant. Eine Stammfunktion ist\n$$\nF_a(x)=\\frac{x^3}{3}-ax^2+2ax+C_a.\n$$\nDie Integrationskonstante darf von $a$ abhängen. Die Ableitung nach $x$ ergibt wieder $f_a$. Deshalb\n$$\nI(a)=F_a(1)-F_a(0)=\\frac13-a+2a=a+\\frac13.\n$$\nSomit ist $I(a)=0$ genau für $a=-\\frac13$. $I(a)$ beschreibt die vorzeichenbehaftete Flächenbilanz zwischen Graph und $x$-Achse auf $[0,1]$: positiv für $a>-\\frac13$, negativ für $a<-\\frac13$, null für $a=-\\frac13$. Beim Nullwert gleichen sich positive und negative Beiträge aus. Der Graph ist nicht identisch null, denn für jedes $a$ gilt $f_a(1)=1$; für $a=-\\frac13$ gilt außerdem $f_a(0)=-\\frac23$. Der stetige Graph liegt also auf Teilen des Intervalls unter und auf anderen über der Achse. Der Integralwert ist nicht allgemein der nichtnegative geometrische Flächeninhalt.\n\n4b. Für $a=3$ ist\n$$\nf_3(x)=x^2-6x+6=(x-3)^2-3.\n$$\nDie Nullstellen sind\n$$\nx_{1,2}=3\\pm \\sqrt{3}.\n$$\nZwischen diesen Nullstellen liegt der Graph unter der $x$-Achse. Der Flächeninhalt ist daher\n$$\nA=\\int_{3-\\sqrt{3}}^{3+\\sqrt{3}} -f_3(x)\\,dx.\n$$\nMit $u=x-3$ wird\n$$\nA=\\int_{-\\sqrt{3}}^{\\sqrt{3}} (3-u^2)\\,du = \\left[3u-\\frac{u^3}{3}\\right]_{-\\sqrt{3}}^{\\sqrt{3}} = 4\\sqrt{3}.\n$$\nAlso gilt\n$$\nA=4\\sqrt{3}.\n$$",
+          "scoring": {
+            "maxPoints": 25,
+            "passingPoints": 13,
+            "steps": [
+              {
+                "id": "q4a_1",
+                "points": 5,
+                "description": "Scheitelpunkt der Funktionenschar korrekt bestimmt"
+              },
+              {
+                "id": "q4a_2",
+                "points": 5,
+                "description": "Ortskurve korrekt hergeleitet"
+              },
+              {
+                "id": "q4a_3",
+                "points": 4,
+                "description": "Parameterbereich ohne reelle Nullstellen korrekt bestimmt"
+              },
+              {
+                "id": "q4a_4a_antiderivative",
+                "points": 2,
+                "description": "4a: Parameter als konstant behandelt und F_a=x³/3−ax²+2ax+C_a angegeben. Kernkappung für die gesamte Bewertung: Fehlt eine nachvollziehbare parameterabhängige Stammfunktion ODER der daraus berechnete parameterabhängige bestimmte Integralterm ODER die sachlich richtige Flächenbilanzdeutung, höchstens 12/25 BE, unter Passgrenze 13. Einzelne Rechenfehler bei substantiv erbrachtem Kernverfahren bewirken nicht automatisch die Kappung."
+              },
+              {
+                "id": "q4a_4a_definite_parameter",
+                "points": 2,
+                "description": "4a: Grenzen an F_a ausgewertet, I(a)=a+1/3 hergeleitet (1 BE) und I(a)=0 genau für a=−1/3 bestimmt (1 BE)"
+              },
+              {
+                "id": "q4a_4a_signed_meaning",
+                "points": 1,
+                "description": "4a: Vorzeichenbehaftete Flächenbilanz mit Ausgleich bei a=−1/3 erklärt und durch f_a(1)=1 oder vergleichbares Argument von der Nullfunktion unterschieden"
+              },
+              {
+                "id": "q4a_4",
+                "points": 6,
+                "description": "4b: Flächeninhalt für a=3 korrekt berechnet (bisherige 6 BE unverändert)"
+              }
+            ]
+          },
+          "reviewNote": "Independent bounded machine content/preparation PASS 2026-11-01: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/route-actions-v1/batch1/independent-content-review.json. Released metadata for this exact reviewed task/solution/rubric/coverage and prerequisite delta; sourceArtifactPath identifies its durable task artifact. No source/target enrollment, learner trial, Mathematics/M7 or CI acceptance is implied. Existing valid mastery remains valid without a second pass or requalification. Detailed grading uses the normal rubric; the server continues to enforce total points.",
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/route-actions-v1/batch1/1969d4dc.task.md",
+          "taskContentEn": "For $a\\in\\mathbb R$, consider the family\n$$\nf_a(x)=x^2-2ax+2a.\n$$\n\n1. Determine the vertex $S_a$ as a function of $a$.\n2. Show that all vertices lie on one locus and state its equation.\n3. Determine the parameter values for which the parabola has no real roots.\n4a. First keep $a$ symbolic. Find an antiderivative $F_a$ of $f_a$ and compute\n$$\nI(a)=\\int_0^1 f_a(x)\\,dx\n$$\nas a function of $a$. Find the parameter for which $I(a)=0$ and interpret it as a signed area balance. Explain why a zero integral does not mean that the graph is the $x$-axis throughout the interval. Only then proceed to 4b.\n\n4b. For $a=3$, find the area enclosed by the graph of $f_3$, the $x$-axis and the roots.\n\nScoring: 1: 5 points, 2: 5, 3: 4, 4a: 5, 4b: 6; total 25, pass at 13. Without a demonstrable parameter-dependent antiderivative, a definite-integral expression derived from it and a valid signed-area interpretation in 4a, the total is capped at 12. Isolated calculation errors do not automatically trigger this cap when the required reasoning and method are substantively present.",
+          "solutionContentEn": "1. Completing the square gives $f_a(x)=(x-a)^2-a^2+2a$, so $S_a=(a,-a^2+2a)$.\n\n2. Since the vertex has $x=a$, its ordinate is $y=-x^2+2x$. This is the locus of all vertices; every real $x$ occurs because $a$ ranges over $\\mathbb R$.\n\n3. The discriminant is $\\Delta=4a(a-2)$. There are no real roots exactly when $\\Delta<0$, hence $0<a<2$.\n\n4a. Treating $a$ as constant when integrating with respect to $x$ gives\n$$\nF_a(x)=\\frac{x^3}{3}-ax^2+2ax+C_a,\n\\qquad I(a)=F_a(1)-F_a(0)=a+\\frac13.\n$$\nThe integration constant may depend on $a$. Differentiating $F_a$ with respect to $x$ recovers $f_a$. The integral vanishes exactly at $a=-\\frac13$. It is the signed area balance on $[0,1]$: positive for $a>-\\frac13$ and negative for $a<-\\frac13$. At the zero parameter the positive and negative contributions cancel. The function is not identically zero: $f_a(1)=1$ for every $a$, and $f_{-1/3}(0)=-\\frac23$. Continuity therefore gives portions below and above the axis. A signed integral is not generally the nonnegative geometric area.\n\n4b. For $a=3$, $f_3(x)=(x-3)^2-3$ with roots $3\\pm\\sqrt3$. The graph is below the axis between them. Thus\n$$\nA=\\int_{3-\\sqrt3}^{3+\\sqrt3}-f_3(x)\\,dx\n=\\int_{-\\sqrt3}^{\\sqrt3}(3-u^2)\\,du=4\\sqrt3,\n$$\nusing $u=x-3$."
+        },
+        "phase": "Q4",
+        "type": "atomic"
+      },
+      "wholePreparationGoalUnchanged": {
+        "id": "647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+        "title": "Integrationsgrenzen und Parameter bestimmen",
+        "titleEn": "Determine integration limits and parameters",
+        "description": "Die lernende Person kann aus vorgegebenen Gleichungen mit bestimmten Integralen Integrationsgrenzen oder Parameterwerte eines Funktionsterms so bestimmen, dass ein geforderter Flächeninhalt oder Bestand erreicht wird.",
+        "descriptionEn": "The learner can determine integration limits or parameter values of a function term from given equations with definite integrals so that a required area or stock is achieved.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.1"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q1.2, S. 37, Spiegelstrich 1",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+            "title": "Visualisierung: Integrationsgrenzen und Parameter bestimmen",
+            "url": "/assets/goal-visualizations/mathematik/647888d2-8e23-52b2-a2ec-fad3f31cb1a6/647888d2-8e23-52b2-a2ec-fad3f31cb1a6.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Integrationsgrenzen und Parameter bestimmen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Integrationsgrenzen und Parameter bestimmen\". Die lernende Person kann aus vorgegebenen Gleichungen mit bestimmten Integralen Integrationsgrenzen oder Parameterwerte eines Funktionsterms so bestimmen, dass ein geforderter Flächeninhalt oder Bestand erreicht wird.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeTaskBeforeObjectSha256": "20be299e1c20dff7dadb77bd93292db0d82d77e0b6ab0cbf0ca178988ab6647a",
+      "wholeTaskAfterObjectSha256": "c47a0e0af94f56060e6e07b4e00b3eedc8803537d4d435ec55e1816c36323dae",
+      "wholeExamDataUnchangedObjectSha256": "50035eab943cde45ccf2a8d3f7d395947c3f2b6ca0d294215dbebb707641ecc4",
+      "operation": {
+        "op": "add",
+        "path": "/requires/-",
+        "value": "647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+        "expectedBeforeRequires": [
+          "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+          "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+          "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+          "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+          "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+          "9023226b-fc17-412b-807c-2bb45cd551d5",
+          "d144a855-9139-55c7-a801-e8b85dab5f01"
+        ],
+        "expectedAfterRequires": [
+          "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+          "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+          "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+          "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+          "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+          "9023226b-fc17-412b-807c-2bb45cd551d5",
+          "d144a855-9139-55c7-a801-e8b85dab5f01",
+          "647888d2-8e23-52b2-a2ec-fad3f31cb1a6"
+        ]
+      },
+      "didacticRationaleDe": [
+        "Teil4a verlangt die vorgegebene Gleichung ∫_0^1 f_a(x)dx=0 nach dem Parameter aufzulösen. Die Lösung wertet das Integral als I(a)=a+1/3 aus, bestimmt a=−1/3 und interpretiert die Orientierung und den Ausgleich der Beiträge.",
+        "Damit wird genau das inverse Integralverfahren gebraucht: Gleichung auswerten, unbekannten Parameter bestimmen und Ergebnis/Zulässigkeit deuten. Es genügt nicht, nur eine Stammfunktion oder einen numerischen Integralwert zu berechnen.",
+        "Die aktuelle textgleiche Bedeutungsfestlegung nennt ausdrücklich vorgegebene Integralgleichungen, Parameter, Orientierung und Sachbedingungen. Der Zielvertrag ist kein zusätzliches Modellierungsziel und fordert nicht zugleich jeden Grenz-, Parameter-, Flächen- und Bestandsfall in derselben Aufgabe."
+      ],
+      "counterargumentsAndCoverageBoundaryDe": [
+        "I(a)=0 ist keine nichtnegative geometrische Fläche0. Dieser Unterschied bleibt in Aufgabe und Lösung ausdrücklich erhalten; die Vorbereitungskante benennt das gemeinsame inverse Verfahren, keine Umdeutung des konkreten Ergebnisses.",
+        "Die Formulierung Flächeninhalt oder Bestand begründet die Anwendungen der Kompetenz. Sie verlangt keine neue Modellierungsgeschichte als notwendige Bedingung jeder Verwendung des vorbereiteten Integralgleichungsverfahrens.",
+        "Aus dem vorhandenen Fall folgt keine neue ganze coveredGoalIds-Abdeckung: unbekannte Integrationsgrenzen, Anfangsbestand und weitere Zulässigkeitsfälle werden nicht vollständig erneut geprüft."
+      ],
+      "existingMeaningEvidence": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-041-integral-applications-10-v1/resolutions-current-keep4-v1/647888d2-8e23-52b2-a2ec-fad3f31cb1a6.resolution.json",
+        "sha256": "4b6ba0d7f84d3ce2e6e77c68c9257e8452766e981f715f9fc0347ee433e6bc5f",
+        "fourFinalTextFieldsExactlyMatchCurrentGoal": true,
+        "usedOnlyForContractMeaningNotHistoricalApprovalOrSourceEntitlement": true,
+        "understandingEvidence": {
+          "essentialUnderstandingDe": "Eine vorgegebene Integralgleichung kann eine unbekannte Grenze oder einen Parameter enthalten. Nach korrekter Auswertung entsteht eine Gleichung; deren Lösungen müssen zusätzlich zu Definitionsbereich, Orientierung und Sachbedingungen passen.",
+          "essentialUnderstandingEn": "A given integral equation may contain an unknown limit or parameter. Correct evaluation yields an equation whose solutions must additionally satisfy the domain, orientation, and contextual conditions.",
+          "observablePerformanceDe": "Aus ∫_0^b(2t+1)dt=12 und b≥0 gewinnt die Person b²+b=12, löst b=3 oder b=−4 und verwirft −4 wegen der vorgegebenen Zeitbedingung; die verbleibende Lösung wird eingesetzt und geprüft.",
+          "observablePerformanceEn": "From ∫_0^b(2t+1)dt=12 with b≥0, the learner obtains b²+b=12, finds b=3 or b=−4, rejects −4 because of the given time constraint, and verifies the remaining solution.",
+          "transferExpectationDe": "In der frischen Gleichung 5+∫_0^2 kt dt=17 bestimmt die Person k=6, interpretiert 5 als Anfangsbestand und 12 als geforderte Änderung und erklärt, warum die Zielzahl 17 nicht unmittelbar der Integralwert ist.",
+          "transferExpectationEn": "In the fresh equation 5+∫_0^2 kt dt=17, the learner finds k=6, interprets 5 as the initial quantity and 12 as the required change, and explains why the target 17 is not directly the integral value."
+        }
+      },
+      "actualV15MembershipOnlyNotNewEdgeSimulation": {
+        "selectedTaskOffers": [
+          "DE-BB/SekII/G8/GK",
+          "DE-BB/SekII/G8/LK",
+          "DE-BB/SekII/G8/GK+LK",
+          "DE-BB/SekII/G9/GK",
+          "DE-BB/SekII/G9/LK",
+          "DE-BB/SekII/G9/GK+LK",
+          "DE-BB/CrossStage/G8/GK",
+          "DE-BB/CrossStage/G8/LK",
+          "DE-BB/CrossStage/G8/GK+LK",
+          "DE-BB/CrossStage/G9/GK",
+          "DE-BB/CrossStage/G9/LK",
+          "DE-BB/CrossStage/G9/GK+LK",
+          "DE-BE/SekII/G8/GK",
+          "DE-BE/SekII/G8/LK",
+          "DE-BE/SekII/G8/GK+LK",
+          "DE-BE/SekII/G9/GK",
+          "DE-BE/SekII/G9/LK",
+          "DE-BE/SekII/G9/GK+LK",
+          "DE-BE/CrossStage/G8/GK",
+          "DE-BE/CrossStage/G8/LK",
+          "DE-BE/CrossStage/G8/GK+LK",
+          "DE-BE/CrossStage/G9/GK",
+          "DE-BE/CrossStage/G9/LK",
+          "DE-BE/CrossStage/G9/GK+LK",
+          "DE-BW/SekII/G8/LK",
+          "DE-BW/SekII/G8/GK+LK",
+          "DE-BW/SekII/G9/LK",
+          "DE-BW/SekII/G9/GK+LK",
+          "DE-BW/CrossStage/G8/LK",
+          "DE-BW/CrossStage/G8/GK+LK",
+          "DE-BW/CrossStage/G9/LK",
+          "DE-BW/CrossStage/G9/GK+LK",
+          "DE-HB/SekII/G8/GK",
+          "DE-HB/SekII/G8/LK",
+          "DE-HB/SekII/G8/GK+LK",
+          "DE-HB/CrossStage/G8/GK",
+          "DE-HB/CrossStage/G8/LK",
+          "DE-HB/CrossStage/G8/GK+LK",
+          "DE-HE/SekII/G8/GK",
+          "DE-HE/SekII/G8/LK",
+          "DE-HE/SekII/G8/GK+LK",
+          "DE-HE/SekII/G9/GK",
+          "DE-HE/SekII/G9/LK",
+          "DE-HE/SekII/G9/GK+LK",
+          "DE-HE/CrossStage/G8/GK",
+          "DE-HE/CrossStage/G8/LK",
+          "DE-HE/CrossStage/G8/GK+LK",
+          "DE-HE/CrossStage/G9/GK",
+          "DE-HE/CrossStage/G9/LK",
+          "DE-HE/CrossStage/G9/GK+LK",
+          "DE-HH/SekII/G8/GK",
+          "DE-HH/SekII/G8/LK",
+          "DE-HH/SekII/G8/GK+LK",
+          "DE-HH/CrossStage/G8/GK",
+          "DE-HH/CrossStage/G8/LK",
+          "DE-HH/CrossStage/G8/GK+LK",
+          "DE-MV/SekII/G8/LK",
+          "DE-MV/SekII/G8/GK+LK",
+          "DE-MV/CrossStage/G8/LK",
+          "DE-MV/CrossStage/G8/GK+LK",
+          "DE-NI/SekII/G9/LK",
+          "DE-NI/SekII/G9/GK+LK",
+          "DE-NI/CrossStage/G9/LK",
+          "DE-NI/CrossStage/G9/GK+LK",
+          "DE-NW/SekII/G9/LK",
+          "DE-NW/SekII/G9/GK+LK",
+          "DE-NW/CrossStage/G9/LK",
+          "DE-NW/CrossStage/G9/GK+LK",
+          "DE-RP/SekII/G8/LK",
+          "DE-RP/SekII/G8/GK+LK",
+          "DE-RP/SekII/G9/LK",
+          "DE-RP/SekII/G9/GK+LK",
+          "DE-RP/CrossStage/G8/LK",
+          "DE-RP/CrossStage/G8/GK+LK",
+          "DE-RP/CrossStage/G9/LK",
+          "DE-RP/CrossStage/G9/GK+LK",
+          "DE-SL/SekII/G9/LK",
+          "DE-SL/SekII/G9/GK+LK",
+          "DE-SL/CrossStage/G9/LK",
+          "DE-SL/CrossStage/G9/GK+LK",
+          "DE-SN/SekII/G8/LK",
+          "DE-SN/SekII/G8/GK+LK",
+          "DE-SN/CrossStage/G8/LK",
+          "DE-SN/CrossStage/G8/GK+LK",
+          "DE-ST/SekII/G8/LK",
+          "DE-ST/SekII/G8/GK+LK",
+          "DE-ST/CrossStage/G8/LK",
+          "DE-ST/CrossStage/G8/GK+LK",
+          "DE-TH/SekII/G8/LK",
+          "DE-TH/SekII/G8/GK+LK",
+          "DE-TH/CrossStage/G8/LK",
+          "DE-TH/CrossStage/G8/GK+LK"
+        ],
+        "preparationAlreadyTargetInAllSelectedTaskOffers": true,
+        "currentlyUncoveredPreparationPairs": 92
+      },
+      "applicabilityFromRequires": false,
+      "smallestTaskTextChangeRequired": null,
+      "newAssessmentIdentityRequired": false,
+      "additionalCoveredGoalIdApproved": false
+    },
+    {
+      "verdict": "PASS_GENUINE_PREPARATION_ONLY_UNCHANGED_WHOLE_TASK",
+      "taskGoalId": "9634bfe1-39ea-5428-a042-c3f970f811a3",
+      "preparationGoalId": "f05acdc5-4949-54c7-b8cd-56ddd1fbdbad",
+      "wholeTaskBefore": {
+        "id": "9634bfe1-39ea-5428-a042-c3f970f811a3",
+        "title": "Exponentialfunktionen und Ableitungsregeln anwenden",
+        "description": "Die lernende Person kann eine E-Phasen-Klausuraufgabe zu exponentiellen Modellen, e-Schreibweise sowie Produkt- und Kettenregel bei Exponentialverknüpfungen selbstständig bearbeiten.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1",
+            "K2",
+            "K3",
+            "K4",
+            "K5"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2",
+            "L4"
+          ],
+          "phase": "E"
+        },
+        "requires": [
+          "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+          "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+          "3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb",
+          "c3c057a3-caf9-44a5-ae60-639e3119e94a",
+          "628928a6-4f48-54dc-952d-dec0e69dc856",
+          "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+          "ab720928-9dbc-53c2-a1f8-865dda92122d",
+          "dc69a261-31c9-5c6b-af71-ae27877a3dc1",
+          "adcac2a7-e763-5442-abf2-866532fedcda",
+          "9db266a2-1889-5792-82b0-a7463f0832f1",
+          "1341c20b-87ab-51e7-bd4a-50166c27806e",
+          "864f9a45-badf-5a31-88d3-da4525808c2d",
+          "d0a9e407-e654-5940-958f-6f608bf3d654"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "c3c057a3-caf9-44a5-ae60-639e3119e94a",
+            "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+            "dc69a261-31c9-5c6b-af71-ae27877a3dc1",
+            "adcac2a7-e763-5442-abf2-866532fedcda",
+            "9db266a2-1889-5792-82b0-a7463f0832f1",
+            "1341c20b-87ab-51e7-bd4a-50166c27806e",
+            "d0a9e407-e654-5940-958f-6f608bf3d654"
+          ],
+          "coveredStrands": [
+            "L1",
+            "L2",
+            "L4"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "taskContent": "Die Temperatur eines Werkstücks nach dem Erhitzen wird durch\n$$\nT(t)=20+60\\cdot 0{,}8^t \\quad (t\\ge 0)\n$$\nmodelliert. Dabei ist $t$ die Zeit in Minuten und $T(t)$ die Temperatur in Grad Celsius.\n\n1. Deuten Sie die Parameter $20$, $60$ und $0{,}8$ im Sachzusammenhang. Bestimmen Sie die Halbwertszeit der Temperaturdifferenz zur Umgebungstemperatur.\n2. Schreiben Sie das Modell in der Form $T(t)=20+60e^{kt}$ und bestimmen Sie $k$. Berechnen Sie, wann erstmals $T(t)=35$ gilt.\n3. Vergleichen Sie das Temperaturmodell qualitativ mit einem linearen und einem quadratischen Modell für dieselbe Anfangssituation.\n4. Gegeben ist zusätzlich $g(x)=(2x+1)e^{0{,}4x}$. Zerlegen Sie $g$ in Produkt und Verkettung geeigneter Teilfunktionen und bestimmen Sie $g'(x)$ mit Produkt- und Kettenregel. Erläutern Sie an diesem Beispiel, woran man die beiden Regeln erkennt.",
+          "solutionContent": "1. $20$ ist die Umgebungstemperatur beziehungsweise langfristige Grenztemperatur. $60$ ist die anfängliche Temperaturdifferenz zur Umgebung. Der Faktor $0{,}8$ bedeutet, dass pro Minute noch $80\\,$% der vorherigen Differenz zur Umgebung bestehen bleiben. Die Halbwertszeit $H$ erfüllt\n$$\n0{,}8^H=0{,}5.\n$$\nAlso\n$$\nH=\\frac{\\ln(0{,}5)}{\\ln(0{,}8)}\\approx 3{,}11.\n$$\nDie Temperaturdifferenz halbiert sich nach etwa $3{,}1$ Minuten.\n\n2. Wegen $0{,}8^t=e^{t\\ln(0{,}8)}$ gilt\n$$\nT(t)=20+60e^{\\ln(0{,}8)t}.\n$$\nDamit ist $k=\\ln(0{,}8)\\approx -0{,}2231$. Für $T(t)=35$ gilt\n$$\n20+60\\cdot0{,}8^t=35 \\Rightarrow 0{,}8^t=0{,}25.\n$$\nAlso\n$$\nt=\\frac{\\ln(0{,}25)}{\\ln(0{,}8)}\\approx 6{,}21.\n$$\n\n3. Ein lineares Modell hätte eine konstante Abnahme und könnte langfristig unter die Umgebungstemperatur fallen. Ein quadratisches Modell kann je nach Öffnung und Scheitelpunkt eine unpassende Umkehr oder unbegrenztes Wachstum bzw. Fallen erzeugen. Das Exponentialmodell beschreibt dagegen eine prozentuale Abnahme der Differenz und nähert sich der Umgebungstemperatur asymptotisch.\n\n4. $g$ ist ein Produkt aus $u(x)=2x+1$ und $v(x)=e^{0{,}4x}$; in $v$ ist die lineare innere Funktion $0{,}4x$ verkettet mit $e^x$. Mit Produkt- und Kettenregel folgt\n$$\ng'(x)=2e^{0{,}4x}+(2x+1)\\cdot0{,}4e^{0{,}4x}.\n$$\nZusammengefasst:\n$$\ng'(x)=e^{0{,}4x}(0{,}8x+2{,}4).\n$$\nDie Produktregel ist nötig, weil ein linearer Faktor mit einer Exponentialfunktion multipliziert wird. Die Kettenregel ist nötig, weil im Exponenten die innere Funktion $0{,}4x$ steht.",
+          "scoring": {
+            "maxPoints": 24,
+            "passingPoints": 12,
+            "steps": [
+              {
+                "id": "e4_exp_rule_1",
+                "points": 6,
+                "description": "Parameter und Halbwertszeit korrekt gedeutet und berechnet"
+              },
+              {
+                "id": "e4_exp_rule_2",
+                "points": 6,
+                "description": "e-Schreibweise, Wachstumsparameter und Exponentialgleichung korrekt bearbeitet"
+              },
+              {
+                "id": "e4_exp_rule_3",
+                "points": 4,
+                "description": "Exponentialmodell sachgerecht mit linearem und quadratischem Modell verglichen"
+              },
+              {
+                "id": "e4_exp_rule_4",
+                "points": 8,
+                "description": "Produkt- und Kettenregel strukturiert erkannt, angewandt und erklärt"
+              }
+            ]
+          },
+          "reviewNote": "Begrenzte Inhaltskorrektur vom 01.11.2026 unabhängig mit Astra Ultra fachlich geprüft; exakte Nachkorrekturen berücksichtigt. Nachweis: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-upper-candidate-review.json. Historische Quellen und bestehende gültige Mastery bleiben unverändert."
+        },
+        "phase": "E",
+        "type": "atomic"
+      },
+      "wholePreparationGoalUnchanged": {
+        "id": "f05acdc5-4949-54c7-b8cd-56ddd1fbdbad",
+        "title": "Natürliche Exponentialfunktion für kontinuierliche Prozesse verwenden",
+        "titleEn": "Use the natural exponential function for continuous processes",
+        "description": "Die lernende Person kann kontinuierliche Wachstums- oder Zerfallsprozesse mit konstanter relativer Änderungsrate durch Funktionen der Form $N(t)=N_0\\cdot e^{kt}$ modellieren und Ergebnisse im Kontext deuten.",
+        "descriptionEn": "The learner can model continuous growth or decay processes with a constant relative rate of change using functions of the form $N(t)=N_0\\cdot e^{kt}$ and interpret results in context.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "628928a6-4f48-54dc-952d-dec0e69dc856",
+          "346efb31-c400-5bd3-a698-dd9a7e1bc3f7"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K3.2",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "E",
+          "topicCode": "CANONICAL.MATH.E.EXPONENTIAL.NATURAL_CONTINUOUS_MODELS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "shortKey": "canonical_math_e_natural_exponential_continuous_models",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "f05acdc5-4949-54c7-b8cd-56ddd1fbdbad",
+            "title": "Visualisierung: Natürliche Exponentialfunktion für kontinuierliche Prozesse verwenden",
+            "url": "/assets/goal-visualizations/mathematik/f05acdc5-4949-54c7-b8cd-56ddd1fbdbad/f05acdc5-4949-54c7-b8cd-56ddd1fbdbad.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Natürliche Exponentialfunktion für kontinuierliche Prozesse verwenden.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Natürliche Exponentialfunktion für kontinuierliche Prozesse verwenden\". Die lernende Person kann kontinuierliche Wachstums- oder Zerfallsprozesse mit konstanter relativer Änderungsrate durch Funktionen der Form $N(t)=N_0\\cdot e^{kt}$ modellieren und Ergebnisse im Kontext deuten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeTaskBeforeObjectSha256": "7346dea0d9b0420ecba20f9d551cda1a0abd8cad610738973ee8aa6f1fc5f0a0",
+      "wholeTaskAfterObjectSha256": "0fbdf481d1af0f3e556e952d50fc53f03cb35beab5d482a19ca94d9b1e11f43d",
+      "wholeExamDataUnchangedObjectSha256": "8a40c69ea57f925311c58eafc1d201475a233e8dfdb8f561a5da22df650f650e",
+      "operation": {
+        "op": "add",
+        "path": "/requires/-",
+        "value": "f05acdc5-4949-54c7-b8cd-56ddd1fbdbad",
+        "expectedBeforeRequires": [
+          "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+          "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+          "3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb",
+          "c3c057a3-caf9-44a5-ae60-639e3119e94a",
+          "628928a6-4f48-54dc-952d-dec0e69dc856",
+          "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+          "ab720928-9dbc-53c2-a1f8-865dda92122d",
+          "dc69a261-31c9-5c6b-af71-ae27877a3dc1",
+          "adcac2a7-e763-5442-abf2-866532fedcda",
+          "9db266a2-1889-5792-82b0-a7463f0832f1",
+          "1341c20b-87ab-51e7-bd4a-50166c27806e",
+          "864f9a45-badf-5a31-88d3-da4525808c2d",
+          "d0a9e407-e654-5940-958f-6f608bf3d654"
+        ],
+        "expectedAfterRequires": [
+          "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+          "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+          "3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb",
+          "c3c057a3-caf9-44a5-ae60-639e3119e94a",
+          "628928a6-4f48-54dc-952d-dec0e69dc856",
+          "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+          "ab720928-9dbc-53c2-a1f8-865dda92122d",
+          "dc69a261-31c9-5c6b-af71-ae27877a3dc1",
+          "adcac2a7-e763-5442-abf2-866532fedcda",
+          "9db266a2-1889-5792-82b0-a7463f0832f1",
+          "1341c20b-87ab-51e7-bd4a-50166c27806e",
+          "864f9a45-badf-5a31-88d3-da4525808c2d",
+          "d0a9e407-e654-5940-958f-6f608bf3d654",
+          "f05acdc5-4949-54c7-b8cd-56ddd1fbdbad"
+        ]
+      },
+      "didacticRationaleDe": [
+        "Teile1–3 behandeln einen kontinuierlichen Abkühlvorgang für reelles t≥0, interpretieren Anfangsdifferenz und zeitlichen Faktor, schreiben das Modell in e-Form um, bestimmen einen nichtganzzahligen Zeitpunkt und beurteilen den Modelltyp im Kontext.",
+        "Die relevante Größe ist N(t)=T(t)−20=60·0,8^t=60·e^(kt), k=ln(0,8)≈−0,22314355 min⁻¹. Sie ist positiv und erfüllt N′/N=k. Die Gesamtgröße T hat gerade keine konstante relative Änderungsrate; kein falsches T′/T=k wird behauptet.",
+        "Die Kompetenz, einen kontinuierlichen Prozess mit konstanter relativer Rate als N0e^(kt) zu modellieren und im Kontext zu deuten, ist die sachliche Vorbereitung dieses Modellgebrauchs. Dass der Funktionsterm geliefert wird, macht die notwendige Unterscheidung von endlichem Faktor, kontinuierlichem k und Umgebungsverschiebung nicht gegenstandslos."
+      ],
+      "counterargumentsAndCoverageBoundaryDe": [
+        "0,8 ist der Ein-Minuten-Faktor; −20% pro Minute als endliche Änderung ist nicht gleich dem kontinuierlichen k=ln(0,8). Der Review hält diese Unterscheidung fest und verlangt keine allgemeine Differentialgleichungsherleitung.",
+        "Die unveränderte Aufgabe prüft nicht den vollständigen frischen Modellaufbau aus allein gegebenem Anfangsbestand und kontinuierlicher Rate sowie alle Zeiteinheitentransfers. Das verhindert eine zusätzliche vollständige Coveragefreigabe, aber nicht die Vorbereitungskante.",
+        "Die Kante folgt aus Teilen1–3 und dem ganzen Modell, nicht aus der bloßen e-Umformung in Teil2 oder der unabhängigen Ableitungsrechnung in Teil4."
+      ],
+      "existingMeaningEvidence": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-038s-exponential-wording-and-images-5-v1/resolutions/f05acdc5-4949-54c7-b8cd-56ddd1fbdbad.resolution.json",
+        "sha256": "550232616ba7bd743cdfb73820ec4beb69f52b7a3e6eca732af77f91ba2f368e",
+        "fourFinalTextFieldsExactlyMatchCurrentGoal": true,
+        "usedOnlyForContractMeaningNotHistoricalApprovalOrSourceEntitlement": true,
+        "understandingEvidence": {
+          "essentialUnderstandingDe": "Ein kontinuierlicher Prozess mit konstanter relativer Änderungsrate k lässt sich für einen positiven Anfangsbestand als N(t)=N_0·e^(kt) beschreiben. N_0 ist der Bestand am gewählten Zeitnullpunkt, und das Vorzeichen von k unterscheidet Wachstum und Zerfall. k bezieht sich auf die gewählte Zeiteinheit; über ein endliches Intervall Δt ist der Faktor e^(k·Δt), sodass k nicht ungeprüft mit einer prozentualen Änderung über dieses Intervall gleichgesetzt werden darf.",
+          "essentialUnderstandingEn": "A continuous process with constant relative rate of change k can be described for a positive initial quantity by N(t)=N_0·e^(kt). N_0 is the quantity at the chosen time origin, and the sign of k distinguishes growth from decay. k refers to the chosen time unit; over a finite interval Δt, the factor is e^(k·Δt), so k must not be equated without justification with the percentage change over that interval.",
+          "observablePerformanceDe": "Aus einer unabhängig vorgelegten Beschreibung mit Anfangsbestand und kontinuierlicher relativer Änderungsrate formuliert die lernende Person das passende Modell. Sie erklärt Vorzeichen und Zeiteinheit von k, berechnet einen Bestand zu einem angegebenen Zeitpunkt und deutet ihn mit der Bestands- und Zeiteinheit. Sie erläutert, dass die Prognose den Fortbestand der konstanten relativen Änderungsrate voraussetzt.",
+          "observablePerformanceEn": "From an independently presented description giving an initial quantity and a continuous relative rate of change, the learner constructs the appropriate model. The learner explains the sign and time unit of k, calculates the quantity at a specified time and interprets it using the quantity and time units. The learner explains that the prediction assumes the relative rate of change remains constant.",
+          "transferExpectationDe": "Eine frische Aufgabe wechselt von Wachstum zu Zerfall und gibt die Zeit in einer anderen Einheit an. Die lernende Person passt Vorzeichen und Zahlenwert von k an, ohne dadurch den beschriebenen zeitlichen Verlauf zu verändern, und deutet eine Prognose zu einer nicht ganzzahligen Zeit. Sie begründet die Anpassung mit demselben Produkt k·t.",
+          "transferExpectationEn": "A fresh task changes from growth to decay and expresses time in another unit. The learner adjusts the sign and numerical value of k without thereby changing the described time course and interprets a prediction at a non-integer time. The learner justifies the unit adjustment through the same product k·t."
+        }
+      },
+      "actualV15MembershipOnlyNotNewEdgeSimulation": {
+        "selectedTaskOffers": [
+          "DE-BB/SekII/G8/GK",
+          "DE-BB/SekII/G8/LK",
+          "DE-BB/SekII/G8/GK+LK",
+          "DE-BB/SekII/G9/GK",
+          "DE-BB/SekII/G9/LK",
+          "DE-BB/SekII/G9/GK+LK",
+          "DE-BB/CrossStage/G8/GK",
+          "DE-BB/CrossStage/G8/LK",
+          "DE-BB/CrossStage/G8/GK+LK",
+          "DE-BB/CrossStage/G9/GK",
+          "DE-BB/CrossStage/G9/LK",
+          "DE-BB/CrossStage/G9/GK+LK",
+          "DE-BE/SekII/G8/GK",
+          "DE-BE/SekII/G8/LK",
+          "DE-BE/SekII/G8/GK+LK",
+          "DE-BE/SekII/G9/GK",
+          "DE-BE/SekII/G9/LK",
+          "DE-BE/SekII/G9/GK+LK",
+          "DE-BE/CrossStage/G8/GK",
+          "DE-BE/CrossStage/G8/LK",
+          "DE-BE/CrossStage/G8/GK+LK",
+          "DE-BE/CrossStage/G9/GK",
+          "DE-BE/CrossStage/G9/LK",
+          "DE-BE/CrossStage/G9/GK+LK",
+          "DE-BW/SekII/G8/GK",
+          "DE-BW/SekII/G8/LK",
+          "DE-BW/SekII/G8/GK+LK",
+          "DE-BW/SekII/G9/GK",
+          "DE-BW/SekII/G9/LK",
+          "DE-BW/SekII/G9/GK+LK",
+          "DE-BW/CrossStage/G8/GK",
+          "DE-BW/CrossStage/G8/LK",
+          "DE-BW/CrossStage/G8/GK+LK",
+          "DE-BW/CrossStage/G9/GK",
+          "DE-BW/CrossStage/G9/LK",
+          "DE-BW/CrossStage/G9/GK+LK",
+          "DE-BY/SekII/G9/GK",
+          "DE-BY/SekII/G9/LK",
+          "DE-BY/SekII/G9/GK+LK",
+          "DE-BY/CrossStage/G9/GK",
+          "DE-BY/CrossStage/G9/LK",
+          "DE-BY/CrossStage/G9/GK+LK",
+          "DE-HB/SekII/G8/GK",
+          "DE-HB/SekII/G8/LK",
+          "DE-HB/SekII/G8/GK+LK",
+          "DE-HB/CrossStage/G8/GK",
+          "DE-HB/CrossStage/G8/LK",
+          "DE-HB/CrossStage/G8/GK+LK",
+          "DE-HE/SekII/G8/GK",
+          "DE-HE/SekII/G8/LK",
+          "DE-HE/SekII/G8/GK+LK",
+          "DE-HE/SekII/G9/GK",
+          "DE-HE/SekII/G9/LK",
+          "DE-HE/SekII/G9/GK+LK",
+          "DE-HE/CrossStage/G8/GK",
+          "DE-HE/CrossStage/G8/LK",
+          "DE-HE/CrossStage/G8/GK+LK",
+          "DE-HE/CrossStage/G9/GK",
+          "DE-HE/CrossStage/G9/LK",
+          "DE-HE/CrossStage/G9/GK+LK",
+          "DE-HH/SekII/G8/GK",
+          "DE-HH/SekII/G8/LK",
+          "DE-HH/SekII/G8/GK+LK",
+          "DE-HH/CrossStage/G8/GK",
+          "DE-HH/CrossStage/G8/LK",
+          "DE-HH/CrossStage/G8/GK+LK",
+          "DE-MV/SekII/G8/GK",
+          "DE-MV/SekII/G8/LK",
+          "DE-MV/SekII/G8/GK+LK",
+          "DE-MV/CrossStage/G8/GK",
+          "DE-MV/CrossStage/G8/LK",
+          "DE-MV/CrossStage/G8/GK+LK",
+          "DE-NI/SekII/G9/GK",
+          "DE-NI/SekII/G9/LK",
+          "DE-NI/SekII/G9/GK+LK",
+          "DE-NI/CrossStage/G9/GK",
+          "DE-NI/CrossStage/G9/LK",
+          "DE-NI/CrossStage/G9/GK+LK",
+          "DE-NW/SekII/G9/GK",
+          "DE-NW/SekII/G9/LK",
+          "DE-NW/SekII/G9/GK+LK",
+          "DE-NW/CrossStage/G9/GK",
+          "DE-NW/CrossStage/G9/LK",
+          "DE-NW/CrossStage/G9/GK+LK",
+          "DE-RP/SekII/G8/GK",
+          "DE-RP/SekII/G8/LK",
+          "DE-RP/SekII/G8/GK+LK",
+          "DE-RP/SekII/G9/GK",
+          "DE-RP/SekII/G9/LK",
+          "DE-RP/SekII/G9/GK+LK",
+          "DE-RP/CrossStage/G8/GK",
+          "DE-RP/CrossStage/G8/LK",
+          "DE-RP/CrossStage/G8/GK+LK",
+          "DE-RP/CrossStage/G9/GK",
+          "DE-RP/CrossStage/G9/LK",
+          "DE-RP/CrossStage/G9/GK+LK",
+          "DE-SH/SekII/G8/GK",
+          "DE-SH/SekII/G8/LK",
+          "DE-SH/SekII/G8/GK+LK",
+          "DE-SH/SekII/G9/GK",
+          "DE-SH/SekII/G9/LK",
+          "DE-SH/SekII/G9/GK+LK",
+          "DE-SH/CrossStage/G8/GK",
+          "DE-SH/CrossStage/G8/LK",
+          "DE-SH/CrossStage/G8/GK+LK",
+          "DE-SH/CrossStage/G9/GK",
+          "DE-SH/CrossStage/G9/LK",
+          "DE-SH/CrossStage/G9/GK+LK",
+          "DE-SL/SekII/G9/GK",
+          "DE-SL/SekII/G9/LK",
+          "DE-SL/SekII/G9/GK+LK",
+          "DE-SL/CrossStage/G9/GK",
+          "DE-SL/CrossStage/G9/LK",
+          "DE-SL/CrossStage/G9/GK+LK",
+          "DE-SN/SekII/G8/GK",
+          "DE-SN/SekII/G8/LK",
+          "DE-SN/SekII/G8/GK+LK",
+          "DE-SN/CrossStage/G8/GK",
+          "DE-SN/CrossStage/G8/LK",
+          "DE-SN/CrossStage/G8/GK+LK",
+          "DE-ST/SekII/G8/GK",
+          "DE-ST/SekII/G8/LK",
+          "DE-ST/SekII/G8/GK+LK",
+          "DE-ST/CrossStage/G8/GK",
+          "DE-ST/CrossStage/G8/LK",
+          "DE-ST/CrossStage/G8/GK+LK",
+          "DE-TH/SekII/G8/GK",
+          "DE-TH/SekII/G8/LK",
+          "DE-TH/SekII/G8/GK+LK",
+          "DE-TH/CrossStage/G8/GK",
+          "DE-TH/CrossStage/G8/LK",
+          "DE-TH/CrossStage/G8/GK+LK"
+        ],
+        "preparationAlreadyTargetInAllSelectedTaskOffers": true,
+        "currentlyUncoveredPreparationPairs": 132
+      },
+      "applicabilityFromRequires": false,
+      "smallestTaskTextChangeRequired": null,
+      "newAssessmentIdentityRequired": false,
+      "additionalCoveredGoalIdApproved": false
+    },
+    {
+      "verdict": "PASS_GENUINE_PREPARATION_ONLY_UNCHANGED_WHOLE_TASK",
+      "taskGoalId": "4293cf40-06fb-51e3-9799-6fde0bf2771b",
+      "preparationGoalId": "7e613c02-b0e9-4eb3-8bc0-93c37c30bf44",
+      "wholeTaskBefore": {
+        "id": "4293cf40-06fb-51e3-9799-6fde0bf2771b",
+        "shortKey": "canonical_math_own_transition_path_reconstruction_joins_inflection_v1",
+        "title": "Übergangsweg rekonstruieren, glatt anschließen und Wendestelle begründen",
+        "titleEn": "Reconstruct a transition path, join it smoothly and justify its inflection point",
+        "description": "Die lernende Person kann für einen zusammenhängenden Übergangsweg Werte-, Steigungs- und Wendebedingungen in ein ganzrationales Modell übersetzen, das Koeffizienten-LGS lösen sowie beide glatten Nähte und den tatsächlichen Krümmungswechsel fachlich prüfen und deuten.",
+        "descriptionEn": "The learner can translate value, slope and inflection conditions for one transition path into a polynomial model, solve its coefficient system, and mathematically check and interpret both smooth joins and the actual change of concavity.",
+        "type": "atomic",
+        "nodeKind": "exam",
+        "contains": [],
+        "weight": 1,
+        "requires": [
+          "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941",
+          "b88cbf71-5e3e-55e3-ba94-6789408d38d6",
+          "4b16fce6-84cc-52ae-98ca-f88cc518cc28",
+          "546bf0b3-6921-416b-a2ef-8fd37d429dc7"
+        ],
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "ExamTask",
+          "canonical"
+        ],
+        "phase": "E",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "phase": "E",
+          "area": "Analysis",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1",
+            "K2",
+            "K3",
+            "K5",
+            "K6"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/polynomial-transition-model-v1/task.de.md#aufgabe",
+        "extendedData": {
+          "applicabilityFromRequires": true,
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "reviewNote": "Independent bounded machine content PASS and placement/additional-obligation PASS2026-11-01: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/polynomial-transition-model-v1/content-review/independent-model-content-rereview.json; curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/polynomial-transition-model-v1/placement-review/independent-placement-review.json. Released metadata for the exact reviewed DE/EN task, solution, normal13-point rubric/passing11, three covered actions and four preparation goals. The ordinary rubric caps the total at10 for a missing or conceptually wrong essential action; the server enforces total points, without a second qualification result. The placement approval permits one new own protected assessment in exactly132 already eligible target offerings. This candidate does not claim actual integration, full applicability revalidation, Mathematics/M7, CI, human trial, measured workload or official extra-exam status. E is compatibility metadata. Existing valid mastery and historical task identities remain unchanged; the new assessment requires only its own normal explicit mastery.",
+          "coveredGoalIds": [
+            "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941",
+            "b88cbf71-5e3e-55e3-ba94-6789408d38d6",
+            "4b16fce6-84cc-52ae-98ca-f88cc518cc28"
+          ],
+          "coveredStrands": [
+            "L1",
+            "L4"
+          ],
+          "demandLevels": [
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "Ein Besucherweg soll zwei vorhandene Abschnitte verbinden. Die waagerechte Koordinate $t$ und alle Höhen werden in Metern gemessen. In der Nähe der ersten Anschlussstelle verläuft der linke Abschnitt nach\n$$\\ell(t)=5-\\frac{t}{10}\\quad(t\\leq0).$$\nDer rechte Abschnitt ist in der Nähe der zweiten Anschlussstelle waagerecht:\n$$r(t)=\\frac72\\quad(t\\geq20).$$\nDazwischen soll für $0\\leq t\\leq20$ ein geeignetes Polynom $q$ vom Grad höchstens vier den Höhenverlauf beschreiben. An beiden Anschlussstellen dürfen weder ein Höhensprung noch ein Knick auftreten. Außerdem soll bei $t=10$ eine Wendestelle des Übergangs liegen. Andere Wendestellen werden nicht ausgeschlossen.\n\n1. Übersetzen Sie die beiden sprung- und knickfreien Anschlüsse in vier Gleichungen für $q$ und $q'$. Erläutern Sie die Bedeutung der Werte und der Steigungen. (2 BE)\n2. Formulieren Sie die zunächst notwendige Gleichung aus der geplanten Wendestelle. Erklären Sie, weshalb diese Gleichung allein noch keinen tatsächlichen Krümmungswechsel beweist. (2 BE)\n3. Verwenden Sie den Ansatz $q(t)=at^4+bt^3+ct^2+dt+e$. Stellen Sie aus Ihren fünf Bedingungen ein lineares Gleichungssystem für die Koeffizienten auf und lösen Sie es nachvollziehbar. Prüfen Sie die erhaltenen Koeffizienten an allen fünf Bedingungen. (4 BE)\n4. Begründen Sie für die zusammengesetzte Wegfunktion mit $\\ell$, $q$ und $r$, dass beide Anschlüsse tatsächlich ohne Höhensprung und ohne Knick sind. Eine bloße Liste von Koeffizienten genügt nicht. (2 BE)\n5. Prüfen Sie am erhaltenen Modell den Krümmungswechsel bei $t=10$ und erläutern Sie ihn für den Höhenverlauf. Nennen Sie auch eine gegebenenfalls weitere Wendestelle im Übergangsintervall; bewerten Sie, ob sie den Vorgaben widerspricht. (2 BE)\n6. Prüfen Sie, ob der Übergang zwischen den vorgegebenen Anschlusshöhen bleibt. Benennen Sie eine Grenze dieses geometrischen Modells; etwaige bautechnische Eignung ist durch die Rechnung allein nicht nachgewiesen. (1 BE)\n\nHilfsmittel dürfen zur Kontrolle verwendet werden. Ein bloß ausgegebener Funktionsterm ersetzt das selbst aufgestellte Gleichungssystem und die geforderten Begründungen nicht.\n\nBewertet wird eine Gesamtpunktzahl von höchstens 13 BE; bestanden ist die Aufgabe ab 11 BE. Die Gesamtpunktzahl wird auf höchstens 10 BE begrenzt, wenn eine der folgenden wesentlichen Modellierungshandlungen fehlt oder fachlich falsch ist:\n\n- Rekonstruktion: das vollständige Koeffizienten-LGS aus allen fünf Vorgaben aufstellen, ein nachvollziehbar gültiges Lösungsverfahren durchführen und den erhaltenen Term tatsächlich an den Vorgaben kontrollieren.\n- Anschlussmodellierung: die Werte- und Steigungsübereinstimmung an beiden Nähten formulieren, im Kontext deuten und beide Anschlüsse fachlich richtig prüfen.\n- Wendemodellierung: die Wendebedingung aus dem Kontext formulieren, notwendig und hinreichend unterscheiden, einen gültigen Test auf eine tatsächliche Wendestelle anwenden und den Wechsel im Höhenverlauf deuten.\n\nFür die Bewertung zählt die gesamte Lösung, nicht der Antwortort. Gleichwertige systematische Lösungs- und Eliminationswege sind zulässig. Nachweise aus den Teilen 3, 4 und 5 können einander belegen; dieselbe Rechnung muss nicht erneut aufgeschrieben werden. Eine fachlich ausreichende Erklärung in Teil 2 genügt; ein Gegenbeispiel ist eine mögliche, keine verpflichtende Begründung.\n\nEin nachvollziehbarer isolierter Rechenfehler gilt nicht schon als fehlende Modellierungshandlung. Fachlich richtige Folgearbeit am eigenen Term wird gewertet; derselbe Ursprungsfehler wird nicht wiederholt abgezogen. Eine korrekt durchgeführte Kontrolle kann ausdrücklich ergeben, dass der eigene Term eine Vorgabe nicht erfüllt. Eine ungeprüfte oder fachlich falsche Behauptung, alle Vorgaben seien erfüllt, gilt nicht als Kontrolle. Mehrere unabhängige Fehler begründen keinen pauschalen Bestehensanspruch. Ein vor Abgabe selbst korrigierter Fehler kostet keinen Punkt. Die zusätzliche Wendestelle und die Höhen-/Modellgrenzenprüfung sind reguläre Einzelpunkte, keine weiteren wesentlichen Handlungen für die Kappung. Aus der so bewerteten Gesamtpunktzahl folgt ein einziges binäres Ergebnis.",
+          "taskContentEn": "A visitor path is to connect two existing sections. The horizontal coordinate $t$ and all heights are measured in metres. Near the first join, the left section follows\n$$\\ell(t)=5-\\frac{t}{10}\\quad(t\\leq0).$$\nNear the second join, the right section is horizontal:\n$$r(t)=\\frac72\\quad(t\\geq20).$$\nBetween them, a suitable polynomial $q$ of degree at most four is to describe the height for $0\\leq t\\leq20$. Neither join may have a jump in height or a kink. The transition must also have an inflection point at $t=10$. Other inflection points are not excluded.\n\n1. Translate the two joins without jumps or kinks into four equations involving $q$ and $q'$. Explain the meaning of the values and slopes. (2 points)\n2. State the initially necessary equation from the proposed inflection point. Explain why this equation alone does not prove an actual change of concavity. (2 points)\n3. Use $q(t)=at^4+bt^3+ct^2+dt+e$. Set up a linear system for its coefficients from your five conditions and solve it with a clear method. Check the resulting coefficients against all five conditions. (4 points)\n4. Explain why the piecewise path formed by $\\ell$, $q$ and $r$ actually has neither a jump nor a kink at either join. A list of coefficients alone is insufficient. (2 points)\n5. Check the change of concavity at $t=10$ in your model and explain its meaning for the height profile. Identify any further inflection point in the transition interval and decide whether it contradicts the requirements. (2 points)\n6. Check whether the transition stays between the prescribed endpoint heights. State one limitation of this geometric model; the calculations alone do not establish engineering suitability. (1 point)\n\nTools may be used to check your work. A function returned by a tool does not replace the independently formulated linear system and the required explanations.\n\nThe maximum overall score is 13 points; 11 points are required to pass. The overall score is capped at 10 points if any of the following essential modelling actions is missing or conceptually incorrect:\n\n- Reconstruction: formulate the full coefficient system from all five requirements, carry out a recognizably valid solution method, and actually check the resulting polynomial against the requirements.\n- Join modelling: formulate and interpret the value and slope equalities at both joins and perform a mathematically valid check of both joins.\n- Inflection modelling: formulate the inflection condition from context, distinguish necessity from sufficiency, apply a valid test for an actual inflection point, and interpret the change in the height profile.\n\nEvidence is assessed across the complete solution, wherever it appears. Equivalent systematic solution and elimination methods are accepted. Evidence in parts 3, 4 and 5 may support each other; the same calculation need not be written twice. A mathematically sufficient explanation in part 2 is enough; a counterexample is one possible explanation, not a requirement.\n\nAn identifiable isolated computational slip does not by itself mean that a modelling action is absent. Mathematically valid follow-through on the learner's own polynomial earns credit; the same source error is not deducted repeatedly. A correctly performed check may explicitly establish that the learner's own polynomial fails an original requirement. An unchecked or mathematically incorrect assertion that all requirements hold is not a check. Multiple independent errors do not create an automatic entitlement to pass. An error corrected before submission loses no point. The further inflection point and the height/model-limit check earn ordinary individual points; they are not additional essential actions for the cap. The resulting overall score determines one binary result.",
+          "solutionContent": "Aus der ersten Naht folgen $q(0)=\\ell(0)=5$ und $q'(0)=\\ell'(0)=-1/10$. An der zweiten Naht gelten $q(20)=r(20)=7/2$ und $q'(20)=r'(20)=0$. Gleiche Funktionswerte verhindern einen Höhensprung; gleiche erste Ableitungen verhindern einen Knick.\n\nDie geplante Wendestelle liefert zunächst $q''(10)=0$. Diese notwendige Bedingung allein reicht nicht: Beispielsweise hat $t^4$ bei $0$ zwar eine Nullstelle der zweiten Ableitung, dort aber keinen Vorzeichenwechsel der zweiten Ableitung.\n\nBeim Polynomansatz gilt $e=5$, $d=-1/10$. Die übrigen Bedingungen liefern\n$$\\begin{aligned}\n160000a+8000b+400c&=\\frac12,\\\\\n32000a+1200b+40c&=\\frac1{10},\\\\\n1200a+60b+2c&=0.\n\\end{aligned}$$\nAus der dritten Gleichung folgt $c=-600a-30b$. Einsetzen in die zweite liefert $8000a=1/10$, also $a=1/80000$. Die erste wird zu $-80000a-4000b=1/2$ und ergibt $b=-3/8000$. Damit ist $c=3/800$. Insgesamt:\n$$q(t)=\\frac{t^4}{80000}-\\frac{3t^3}{8000}+\\frac{3t^2}{800}-\\frac t{10}+5.$$\nDie Kontrolle ergibt $q(0)=5$, $q'(0)=-1/10$, $q(20)=7/2$, $q'(20)=0$ und $q''(10)=0$. Die Koeffizienten sind durch die angegebenen Eliminationsschritte eindeutig bestimmt.\n\nFür die zusammengesetzte Wegfunktion stimmen bei $t=0$ die einseitigen Höhenwerte und Steigungen von $\\ell$ und $q$ überein. Dasselbe gilt bei $t=20$ für $q$ und $r$. Die Wegfunktion ist an beiden Stellen stetig und hat dort jeweils eine übereinstimmende erste Ableitung. Eine übereinstimmende zweite Ableitung ist nicht verlangt und liegt hier an den Nähten nicht vor.\n\nEs gilt\n$$q''(t)=\\frac{3(t-5)(t-10)}{20000}.$$\nLinks von $10$ (zwischen $5$ und $10$) ist $q''<0$, rechts von $10$ ist $q''>0$. Damit liegt tatsächlich eine Wendestelle vor. Alternativ bestätigt $q^{(3)}(10)=3/4000\\neq0$ den Wechsel. Die Steigung des abfallenden Wegs nimmt unmittelbar vor $t=10$ ab und danach wieder zu. Auch bei $t=5$ wechselt das Vorzeichen, von positiv zu negativ; das ist eine weitere Wendestelle. Sie widerspricht den Vorgaben nicht, da keine Einzigkeit der Wendestelle gefordert wurde.\n\nFür die Plausibilitätsprüfung eignet sich\n$$q'(t)=\\frac{(t-20)(2t^2-5t+200)}{40000}.$$\nDer zweite Faktor ist stets positiv, denn $2t^2-5t+200=2(t-5/4)^2+1575/8>0$. Daher ist $q'<0$ für $0\\leq t<20$ und $q'(20)=0$. Der Übergang fällt von $5$ auf $7/2$ und bleibt dazwischen. Das Modell beschreibt nur einen geometrischen Höhenverlauf. Material, Tragfähigkeit, zulässige Steigungen oder kontinuierliche Krümmung an den Nähten sind damit nicht nachgewiesen.\n\n13 BE insgesamt; bestanden ab 11 BE nach den oben genannten gewöhnlichen Bewertungsregeln einschließlich der Gesamtkappung auf 10 BE bei einer fehlenden oder fachlich falschen wesentlichen Modellierungshandlung. Der dargestellte Lösungsweg ist ein Beispiel; gleichwertige Verfahren sind zulässig. Kontrollen in den Teilen 3, 4 und 5 dürfen einander belegen. Die fehlende Übersetzung einer Bedingung darf nicht durch eine passende, aber unbegründet ausgegebene Koeffizientenliste ersetzt werden.",
+          "solutionContentEn": "At the first join, $q(0)=\\ell(0)=5$ and $q'(0)=\\ell'(0)=-1/10$. At the second join, $q(20)=r(20)=7/2$ and $q'(20)=r'(20)=0$. Equal values prevent a height jump; equal first derivatives prevent a kink.\n\nThe proposed inflection point initially gives $q''(10)=0$. This necessary condition is insufficient by itself: $t^4$ has a zero of its second derivative at $0$ without a change of sign there.\n\nThe polynomial gives $e=5$ and $d=-1/10$. The other conditions become\n$$\\begin{aligned}\n160000a+8000b+400c&=\\frac12,\\\\\n32000a+1200b+40c&=\\frac1{10},\\\\\n1200a+60b+2c&=0.\n\\end{aligned}$$\nThe third equation gives $c=-600a-30b$. Substitution into the second gives $8000a=1/10$, hence $a=1/80000$. The first becomes $-80000a-4000b=1/2$, giving $b=-3/8000$ and then $c=3/800$. Thus\n$$q(t)=\\frac{t^4}{80000}-\\frac{3t^3}{8000}+\\frac{3t^2}{800}-\\frac t{10}+5.$$\nChecking gives $q(0)=5$, $q'(0)=-1/10$, $q(20)=7/2$, $q'(20)=0$ and $q''(10)=0$. These elimination steps determine the coefficients uniquely.\n\nAt $t=0$, the one-sided heights and slopes of $\\ell$ and $q$ agree. The same holds for $q$ and $r$ at $t=20$. The piecewise path is continuous and has matching first derivatives at both joins. Matching second derivatives was not required and does not hold at these joins.\n\nThe second derivative is\n$$q''(t)=\\frac{3(t-5)(t-10)}{20000}.$$\nIt is negative immediately to the left of $10$, between $5$ and $10$, and positive immediately to the right. Thus there is an actual inflection point. Alternatively, $q^{(3)}(10)=3/4000\\neq0$ establishes the change. The descending path's slope decreases immediately before $t=10$ and increases afterwards. There is another inflection point at $t=5$, where the sign changes from positive to negative. It does not contradict the requirements, which did not require a unique inflection point.\n\nFor a plausibility check,\n$$q'(t)=\\frac{(t-20)(2t^2-5t+200)}{40000}.$$\nThe quadratic factor is always positive because $2t^2-5t+200=2(t-5/4)^2+1575/8>0$. Hence $q'<0$ for $0\\leq t<20$ and $q'(20)=0$. The transition descends from $5$ to $7/2$ and stays between them. The model describes geometry only. It does not establish material strength, admissible slopes or continuous curvature at the joins.\n\n13 points in total; pass from 11 points under the ordinary grading rules above, including the overall cap of 10 points if an essential modelling action is missing or conceptually incorrect. The method shown is one example; equivalent methods are accepted. Checks in parts 3, 4 and 5 may support each other. An unexplained list of correct coefficients does not replace translating a required condition.",
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/polynomial-transition-model-v1/task.de.md",
+          "scoring": {
+            "maxPoints": 13,
+            "passingPoints": 11,
+            "steps": [
+              {
+                "id": "transition-v1-joins-model",
+                "points": 2,
+                "description": "Vier Werte-/Steigungsbedingungen aus beiden Nähten selbstständig formulieren und im Kontext begründen; je Naht 1 BE."
+              },
+              {
+                "id": "transition-v1-inflection-model",
+                "points": 2,
+                "description": "q''(10)=0 aus der Wendestellenvorgabe formulieren (1); notwendig und hinreichend fachlich ausreichend unterscheiden, beispielsweise mit einem optionalen Gegenbeispiel (1)."
+              },
+              {
+                "id": "transition-v1-reconstruction-system",
+                "points": 4,
+                "description": "Koeffizientenansatz und vollständiges LGS (1; gleichwertige Formulierungen zulässig); systematisch gültige Lösungsschritte beginnen (1; jeder gleichwertige Eliminations-/Lösungsweg zulässig); die Koeffizienten nachvollziehbar bestimmen (1; jeder gleichwertige Lösungsweg zulässig); alle fünf Bedingungen tatsächlich kontrollieren (1; gleichwertige Kontrollen auch in 4/5 zählen, keine doppelte Niederschrift). Folgefehlerregel und Gesamtkappung aus den Bewertungshinweisen anwenden."
+              },
+              {
+                "id": "transition-v1-joins-verify",
+                "points": 2,
+                "description": "Beide Nähte mit Funktionswert und erster Ableitung prüfen und Sprung-/Knickfreiheit erklären; je Naht 1 BE."
+              },
+              {
+                "id": "transition-v1-inflection-verify",
+                "points": 2,
+                "description": "Tatsächlichen Vorzeichenwechsel bei t=10 nachweisen und im Höhenverlauf deuten (1); zusätzliche Wendestelle t=5 erkennen und die nicht geforderte Einzigkeit korrekt beurteilen (1)."
+              },
+              {
+                "id": "transition-v1-model-validation",
+                "points": 1,
+                "description": "Keine Über-/Unterschreitung der Anschlusshöhen fachlich prüfen und mindestens eine Grenze des geometrischen Modells benennen; beides für 1 BE erforderlich."
+              }
+            ]
+          }
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      },
+      "wholePreparationGoalUnchanged": {
+        "id": "7e613c02-b0e9-4eb3-8bc0-93c37c30bf44",
+        "title": "Lokale Differenzierbarkeit am Graphen beurteilen",
+        "titleEn": "Assess local differentiability from graphs",
+        "description": "Die lernende Person kann an Graphen die lokale Differenzierbarkeit einer Funktion beurteilen, nicht differenzierbare Stellen identifizieren und typische Gegenbeispiele (z. B. Knicke) skizzieren.",
+        "descriptionEn": "The learner can assess the local differentiability of a function from graphs, identify non-differentiable points, and sketch typical counterexamples (e.g. corners).",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "b42bdfcc-3db7-5697-8b3e-69e50962ca86"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.3",
+            "K3.1",
+            "K4.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "7e613c02-b0e9-4eb3-8bc0-93c37c30bf44",
+            "title": "Visualisierung: Lokale Differenzierbarkeit am Graphen beurteilen",
+            "url": "/assets/goal-visualizations/mathematik/7e613c02-b0e9-4eb3-8bc0-93c37c30bf44/7e613c02-b0e9-4eb3-8bc0-93c37c30bf44.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Lokale Differenzierbarkeit am Graphen beurteilen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Lokale Differenzierbarkeit am Graphen beurteilen\". Die lernende Person kann an Graphen die lokale Differenzierbarkeit einer Funktion beurteilen, nicht differenzierbare Stellen identifizieren und typische Gegenbeispiele (z. B. Knicke) skizzieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeTaskBeforeObjectSha256": "d88454835ff15032f2deb1270805a966284158ab9105279e8ff0b891245944be",
+      "wholeTaskAfterObjectSha256": "b5f7366857e9670c0fccaf9e0076a0320e8e08ab8f544c46fb94f415923802eb",
+      "wholeExamDataUnchangedObjectSha256": "5efb41791ca801ebb93d3300eace0089303dff013f98cd03f1c8cb67e7f06e7b",
+      "operation": {
+        "op": "add",
+        "path": "/requires/-",
+        "value": "7e613c02-b0e9-4eb3-8bc0-93c37c30bf44",
+        "expectedBeforeRequires": [
+          "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941",
+          "b88cbf71-5e3e-55e3-ba94-6789408d38d6",
+          "4b16fce6-84cc-52ae-98ca-f88cc518cc28",
+          "546bf0b3-6921-416b-a2ef-8fd37d429dc7"
+        ],
+        "expectedAfterRequires": [
+          "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941",
+          "b88cbf71-5e3e-55e3-ba94-6789408d38d6",
+          "4b16fce6-84cc-52ae-98ca-f88cc518cc28",
+          "546bf0b3-6921-416b-a2ef-8fd37d429dc7",
+          "7e613c02-b0e9-4eb3-8bc0-93c37c30bf44"
+        ]
+      },
+      "didacticRationaleDe": [
+        "Teile1 und4 verlangen ausdrücklich, den geometrischen Ausschluss von Höhensprung und Knick an zwei Nähten in Werte-/Steigungsbedingungen zu übersetzen, zu prüfen und fachlich zu erklären. Eine passende Koeffizientenliste genügt laut Aufgaben- und Bewertungstext nicht.",
+        "Die Lösung unterscheidet gemeinsame seitliche Höhenwerte von gemeinsamen endlichen ersten Ableitungen. Das ist die lokale graphische Unterscheidung von Sprung, stetigem Knick und glattem Verlauf, angewandt auf analytisch beschriebene Graphen.",
+        "Die Fähigkeit, typische nichtdifferenzierbare Gegenverläufe zu erkennen und zu skizzieren, gehört zu dieser kohärenten vorbereitenden Vorstellung. Sie erklärt gerade, weshalb bloße Stetigkeit oder ein richtig eingesetzter Höhenwert keine Knickfreiheit beweist. Ein gedrucktes Diagramm ist für die Verwendung dieser geometrischen Kompetenz nicht erforderlich."
+      ],
+      "counterargumentsAndCoverageBoundaryDe": [
+        "Die Aufgabe verlangt keine neue vollständige Graphensammlung, Gegenbeispielskizze oder senkrechte Tangente. Deshalb wird 7e613 nicht zu coveredGoalIds hinzugefügt. Die Vorbereitung wird nicht mit einer erneut vollständig bepunkteten Prüfung aller Darstellungs-/Transferfälle verwechselt.",
+        "Der Zusammenhang beruht auf der verpflichtenden geometrischen Begründung beider Nähte, nicht nur auf dem gemeinsamen Wort Knick. Eine reine algebraische Koeffizientenberechnung ohne Anschlussdeutung würde diese Begründung nicht tragen.",
+        "Der bestehende Vertrag bewahrt seinen ganzen Umfang. Es wird weder 7e613 auf einen Teilfall verkürzt noch 4293 um eine neue Prüfhandlung erweitert."
+      ],
+      "existingMeaningEvidence": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-037a-diagrams-and-first-calculus-19-v1/resolutions-current-carryover-v1/7e613c02-b0e9-4eb3-8bc0-93c37c30bf44.resolution.json",
+        "sha256": "7457f44d5fc6322700c0d7901ffb7d16e8cc14408574ce686fe6a790af6c8c4e",
+        "fourFinalTextFieldsExactlyMatchCurrentGoal": true,
+        "usedOnlyForContractMeaningNotHistoricalApprovalOrSourceEntitlement": true,
+        "understandingEvidence": {
+          "essentialUnderstandingDe": "Lokale Differenzierbarkeit bedeutet eine gemeinsame endliche Steigung im Grenzfall der links- und rechtsseitigen Sekanten. Ein Knick besitzt verschiedene seitliche Steigungen, ein Sprung unterbricht den stetigen Verlauf und eine senkrechte Tangente liefert keine endliche Ableitung; bloße Stetigkeit genügt nicht.",
+          "essentialUnderstandingEn": "Local differentiability means a common finite slope in the limit of left- and right-hand secants. A corner has different one-sided slopes, a jump interrupts continuity, and a vertical tangent does not give a finite derivative; continuity alone is insufficient.",
+          "observablePerformanceDe": "Auf einem neu vorgelegten Satz von Graphenausschnitten unterscheidet die lernende Person eine glatte Stelle, einen Knick und einen Sprung. Sie begründet ihre Zuordnung anhand des lokalen Verlaufs beziehungsweise der seitlichen Richtungen und skizziert selbst ein stetiges Gegenbeispiel mit Knick.",
+          "observablePerformanceEn": "On a newly presented collection of graph excerpts, the learner distinguishes a smooth point, a corner and a jump. They justify their classification using the local course or one-sided directions and independently sketch a continuous counterexample with a corner.",
+          "transferExpectationDe": "In einer unabhängigen Aufgabe wird ein stetiger, ohne Ecke erscheinender Graph mit senkrechter Tangente gezeigt. Die lernende Person erklärt, warum dort dennoch keine endliche Ableitung vorliegt, und vergleicht diese Stelle mit einer waagerechten Tangente, an der die Ableitung null sein kann.",
+          "transferExpectationEn": "In an independent task, a continuous graph with no apparent corner but a vertical tangent is shown. The learner explains why it still has no finite derivative there and compares it with a horizontal tangent where the derivative may be zero."
+        }
+      },
+      "actualV15MembershipOnlyNotNewEdgeSimulation": {
+        "selectedTaskOffers": [
+          "DE-BB/SekII/G8/GK",
+          "DE-BB/SekII/G8/LK",
+          "DE-BB/SekII/G8/GK+LK",
+          "DE-BB/SekII/G9/GK",
+          "DE-BB/SekII/G9/LK",
+          "DE-BB/SekII/G9/GK+LK",
+          "DE-BB/CrossStage/G8/GK",
+          "DE-BB/CrossStage/G8/LK",
+          "DE-BB/CrossStage/G8/GK+LK",
+          "DE-BB/CrossStage/G9/GK",
+          "DE-BB/CrossStage/G9/LK",
+          "DE-BB/CrossStage/G9/GK+LK",
+          "DE-BE/SekII/G8/GK",
+          "DE-BE/SekII/G8/LK",
+          "DE-BE/SekII/G8/GK+LK",
+          "DE-BE/SekII/G9/GK",
+          "DE-BE/SekII/G9/LK",
+          "DE-BE/SekII/G9/GK+LK",
+          "DE-BE/CrossStage/G8/GK",
+          "DE-BE/CrossStage/G8/LK",
+          "DE-BE/CrossStage/G8/GK+LK",
+          "DE-BE/CrossStage/G9/GK",
+          "DE-BE/CrossStage/G9/LK",
+          "DE-BE/CrossStage/G9/GK+LK",
+          "DE-BW/SekII/G8/GK",
+          "DE-BW/SekII/G8/LK",
+          "DE-BW/SekII/G8/GK+LK",
+          "DE-BW/SekII/G9/GK",
+          "DE-BW/SekII/G9/LK",
+          "DE-BW/SekII/G9/GK+LK",
+          "DE-BW/CrossStage/G8/GK",
+          "DE-BW/CrossStage/G8/LK",
+          "DE-BW/CrossStage/G8/GK+LK",
+          "DE-BW/CrossStage/G9/GK",
+          "DE-BW/CrossStage/G9/LK",
+          "DE-BW/CrossStage/G9/GK+LK",
+          "DE-BY/SekII/G9/GK",
+          "DE-BY/SekII/G9/LK",
+          "DE-BY/SekII/G9/GK+LK",
+          "DE-BY/CrossStage/G9/GK",
+          "DE-BY/CrossStage/G9/LK",
+          "DE-BY/CrossStage/G9/GK+LK",
+          "DE-HB/SekII/G8/GK",
+          "DE-HB/SekII/G8/LK",
+          "DE-HB/SekII/G8/GK+LK",
+          "DE-HB/CrossStage/G8/GK",
+          "DE-HB/CrossStage/G8/LK",
+          "DE-HB/CrossStage/G8/GK+LK",
+          "DE-HE/SekII/G8/GK",
+          "DE-HE/SekII/G8/LK",
+          "DE-HE/SekII/G8/GK+LK",
+          "DE-HE/SekII/G9/GK",
+          "DE-HE/SekII/G9/LK",
+          "DE-HE/SekII/G9/GK+LK",
+          "DE-HE/CrossStage/G8/GK",
+          "DE-HE/CrossStage/G8/LK",
+          "DE-HE/CrossStage/G8/GK+LK",
+          "DE-HE/CrossStage/G9/GK",
+          "DE-HE/CrossStage/G9/LK",
+          "DE-HE/CrossStage/G9/GK+LK",
+          "DE-HH/SekII/G8/GK",
+          "DE-HH/SekII/G8/LK",
+          "DE-HH/SekII/G8/GK+LK",
+          "DE-HH/CrossStage/G8/GK",
+          "DE-HH/CrossStage/G8/LK",
+          "DE-HH/CrossStage/G8/GK+LK",
+          "DE-MV/SekII/G8/GK",
+          "DE-MV/SekII/G8/LK",
+          "DE-MV/SekII/G8/GK+LK",
+          "DE-MV/CrossStage/G8/GK",
+          "DE-MV/CrossStage/G8/LK",
+          "DE-MV/CrossStage/G8/GK+LK",
+          "DE-NI/SekII/G9/GK",
+          "DE-NI/SekII/G9/LK",
+          "DE-NI/SekII/G9/GK+LK",
+          "DE-NI/CrossStage/G9/GK",
+          "DE-NI/CrossStage/G9/LK",
+          "DE-NI/CrossStage/G9/GK+LK",
+          "DE-NW/SekII/G9/GK",
+          "DE-NW/SekII/G9/LK",
+          "DE-NW/SekII/G9/GK+LK",
+          "DE-NW/CrossStage/G9/GK",
+          "DE-NW/CrossStage/G9/LK",
+          "DE-NW/CrossStage/G9/GK+LK",
+          "DE-RP/SekII/G8/GK",
+          "DE-RP/SekII/G8/LK",
+          "DE-RP/SekII/G8/GK+LK",
+          "DE-RP/SekII/G9/GK",
+          "DE-RP/SekII/G9/LK",
+          "DE-RP/SekII/G9/GK+LK",
+          "DE-RP/CrossStage/G8/GK",
+          "DE-RP/CrossStage/G8/LK",
+          "DE-RP/CrossStage/G8/GK+LK",
+          "DE-RP/CrossStage/G9/GK",
+          "DE-RP/CrossStage/G9/LK",
+          "DE-RP/CrossStage/G9/GK+LK",
+          "DE-SH/SekII/G8/GK",
+          "DE-SH/SekII/G8/LK",
+          "DE-SH/SekII/G8/GK+LK",
+          "DE-SH/SekII/G9/GK",
+          "DE-SH/SekII/G9/LK",
+          "DE-SH/SekII/G9/GK+LK",
+          "DE-SH/CrossStage/G8/GK",
+          "DE-SH/CrossStage/G8/LK",
+          "DE-SH/CrossStage/G8/GK+LK",
+          "DE-SH/CrossStage/G9/GK",
+          "DE-SH/CrossStage/G9/LK",
+          "DE-SH/CrossStage/G9/GK+LK",
+          "DE-SL/SekII/G9/GK",
+          "DE-SL/SekII/G9/LK",
+          "DE-SL/SekII/G9/GK+LK",
+          "DE-SL/CrossStage/G9/GK",
+          "DE-SL/CrossStage/G9/LK",
+          "DE-SL/CrossStage/G9/GK+LK",
+          "DE-SN/SekII/G8/GK",
+          "DE-SN/SekII/G8/LK",
+          "DE-SN/SekII/G8/GK+LK",
+          "DE-SN/CrossStage/G8/GK",
+          "DE-SN/CrossStage/G8/LK",
+          "DE-SN/CrossStage/G8/GK+LK",
+          "DE-ST/SekII/G8/GK",
+          "DE-ST/SekII/G8/LK",
+          "DE-ST/SekII/G8/GK+LK",
+          "DE-ST/CrossStage/G8/GK",
+          "DE-ST/CrossStage/G8/LK",
+          "DE-ST/CrossStage/G8/GK+LK",
+          "DE-TH/SekII/G8/GK",
+          "DE-TH/SekII/G8/LK",
+          "DE-TH/SekII/G8/GK+LK",
+          "DE-TH/CrossStage/G8/GK",
+          "DE-TH/CrossStage/G8/LK",
+          "DE-TH/CrossStage/G8/GK+LK"
+        ],
+        "preparationAlreadyTargetInAllSelectedTaskOffers": true,
+        "currentlyUncoveredPreparationPairs": 132
+      },
+      "applicabilityFromRequires": true,
+      "smallestTaskTextChangeRequired": null,
+      "newAssessmentIdentityRequired": false,
+      "additionalCoveredGoalIdApproved": false
+    }
+  ],
+  "approvedSemanticDelta": "Exactly three append-only requires entries on the named existing assessment goals; no other goal/task/coverage/scoring/source/course/view/kind operation. Recompute exactly those source fingerprints and necessary metadata pins during a separately reviewed materialization.",
+  "independentStaticChecks": {
+    "wholeThreeDEENTasksSolutionsRubricsAndThreeGoalContractsRead": true,
+    "rawRequiresDagAfterProposedThreeEdgesAcyclic": true,
+    "containsDagUnchangedAcyclic": true,
+    "allThreePrerequisiteGoalsAlreadyTargetsWhereTheirTasksAreSelectedInActualV15": true,
+    "prospectiveDirectUncoveredPairs": 356,
+    "noNativeRouteRepairClaim": true
+  },
+  "requiredMaterializationChecks": [
+    "Rebase on the actual Root baseline after preceding approved integrations; preserve all original receipts.",
+    "Validate full raw/inherited/expanded DAG and readiness, task/scoring/coveredGoalIds bytes, all existing source kinds and protected obligations.",
+    "Measure all154 complete target sets and all producer eligibility before/after.4293 has applicabilityFromRequires=true; no unchecked task loss or weakening of eligibility is approved.",
+    "Check all ordinary/protected demand contexts, genuine GK+LK unions and visible paths. Report direct and existing transitive repaired pairs separately;356 is only the current direct membership intersection, not a guaranteed full runtime delta.",
+    "Only selected assessment/memory targets seed demand. Do not enroll support, mint mastery/recall or rewrite fixed dated plan baselines.",
+    "No new assessment identity, no extension of selected course scope, no whole-coverage grant and no Math/M7/CI acceptance is implied."
+  ],
+  "noRootMutation": true
+}

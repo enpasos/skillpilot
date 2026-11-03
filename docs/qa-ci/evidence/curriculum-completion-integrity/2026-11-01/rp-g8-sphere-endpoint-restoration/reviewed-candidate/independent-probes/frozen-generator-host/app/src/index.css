@@ -1,0 +1,356 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Caveat';
+  src: url('/fonts/caveat-latin-wght.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+/* The learning scene belongs to the public landing only, never to learner forms. */
+.public-landing-page { background: #f7f5f0; }
+.public-landing-hero {
+  grid-column: 1 / -1;
+  isolation: isolate;
+  padding: 0 24px 28px;
+  border-radius: 24px;
+  background: #f4f1e9;
+}
+.public-landing-hero-visual {
+  position: relative;
+  width: calc(100% + 48px);
+  aspect-ratio: 4 / 3;
+  margin: 0 -24px;
+  touch-action: pan-y pinch-zoom;
+  background: #f4f1e9;
+}
+.public-landing-hero-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 55%;
+}
+.public-landing-scene-image { opacity: 0; transition: opacity 350ms ease; }
+.public-landing-scene-image[data-active="true"] { opacity: 1; }
+/* Preserve the right edge; any necessary horizontal crop comes from the left. */
+.public-landing-voice-image { object-position: 100% 50%; }
+.dark .public-landing-hero-visual { background: #1d282d; }
+.public-landing-hero-veil { display: none; pointer-events: none; }
+.public-landing-scene-controls {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  width: min(100%, 340px);
+  margin: 12px 0 26px;
+  padding: 4px;
+  border: 1px solid #d6d3cb;
+  border-radius: 28px;
+  background: #eae8e2;
+}
+.public-landing-scene-controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+  min-height: 44px;
+  padding: 6px 8px;
+  border-radius: 24px;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.public-landing-scene-controls button[aria-pressed="true"] {
+  color: #92400e;
+  background: #fff;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 8%);
+}
+.public-landing-scene-controls button:hover { color: #92400e; }
+.public-landing-scene-controls button:focus-visible { outline: 2px solid #b45309; outline-offset: 1px; }
+.dark .public-landing-scene-controls { background: #253238; border-color: #475569; }
+.dark .public-landing-scene-controls button { color: #cbd5e1; }
+.dark .public-landing-scene-controls button[aria-pressed="true"] { background: #35474b; color: #fde68a; }
+.dark .public-landing-scene-controls button:hover { color: #fde68a; }
+.dark .public-landing-scene-controls button:focus-visible { outline-color: #fbbf24; }
+@media (prefers-reduced-motion: reduce) {
+  .public-landing-scene-image { transition: none; }
+}
+.public-landing-image-caption {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  border-radius: 6px;
+  padding: 3px 7px;
+  background: rgb(0 0 0 / 60%);
+  color: white;
+  font-size: 10px;
+  line-height: 1.5;
+}
+.public-landing-eyebrow {
+  position: relative;
+  color: #786049;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.public-landing-hero-title {
+  position: relative;
+  margin-top: 14px;
+  font-family: 'Caveat', 'Segoe Print', 'Bradley Hand', cursive;
+  font-size: clamp(38px, 11vw, 72px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.015em;
+  white-space: pre-line;
+}
+.public-landing-hero-description {
+  position: relative;
+  max-width: 370px;
+  margin-top: 22px;
+  font-size: 15px;
+  line-height: 1.75;
+}
+.public-landing-hero-actions { position: relative; margin-top: 26px; }
+.public-landing-hero-primary {
+  min-height: 44px;
+  padding: 10px 17px;
+  border-color: #f59e0b;
+  background: #f59e0b;
+  color: #111827;
+  font-size: 14px;
+  font-weight: 600;
+}
+.public-landing-hero-primary svg { color: inherit; }
+.public-landing-hero-primary:hover { background: #d97706; color: #111827; }
+.public-landing-hero-access { position: relative; max-width: 400px; margin-top: 25px; }
+.dark .public-landing-page { background: #171e22; }
+.dark .public-landing-hero { background: #1d282d; }
+.dark .public-landing-eyebrow { color: #dec19f; }
+
+@media (min-width: 1024px) {
+  .public-landing-hero { min-height: 630px; padding: 80px 48px 112px; }
+  .public-landing-hero-visual {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    z-index: -2;
+    aspect-ratio: auto;
+  }
+  .public-landing-hero-image {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: 77%;
+    height: 100%;
+    object-position: 50% 38%;
+  }
+  .public-landing-voice-image {
+    /* Extend underneath the opaque side of the veil so no image boundary shows. */
+    width: 100%;
+    object-position: 100% 50%;
+  }
+  .public-landing-hero-veil {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, #f4f1e9 0%, #f4f1e9 25%, rgb(244 241 233 / 96%) 33%, rgb(244 241 233 / 72%) 42%, transparent 59%);
+  }
+  .public-landing-scene-controls { position: absolute; left: 48px; bottom: 28px; width: 340px; max-width: 38%; margin: 0; }
+  .public-landing-hero-title { max-width: 44%; font-size: clamp(56px, 5vw, 72px); }
+  .public-landing-hero-description { max-width: 33%; }
+  .public-landing-hero-actions, .public-landing-hero-access { max-width: 38%; }
+  .public-landing-image-caption { top: auto; bottom: 14px; right: 16px; }
+  .dark .public-landing-hero-veil {
+    background: linear-gradient(90deg, #1d282d 0%, #1d282d 25%, rgb(29 40 45 / 97%) 33%, rgb(29 40 45 / 76%) 42%, transparent 59%);
+  }
+}
+@plugin "@tailwindcss/typography";
+
+/* Force class-based dark mode instead of media-query default */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-gray-50: #f9f9f9;
+  --color-gray-700: #40414f;
+  --color-gray-800: #343541;
+  --color-gray-900: #202123;
+
+  --color-chat-bg: var(--chat-bg);
+  --color-sidebar-bg: var(--sidebar-bg);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-color: var(--border-color);
+  --color-input-bg: var(--input-bg);
+
+  --color-background: rgb(var(--color-bg-main) / <alpha-value>);
+  --color-background-card: rgb(var(--color-bg-card) / <alpha-value>);
+  --color-background-sidebar: rgb(var(--color-bg-sidebar) / <alpha-value>);
+
+  --color-primary: rgb(var(--color-primary) / <alpha-value>);
+  --color-primary-glow: rgb(var(--color-primary-glow) / <alpha-value>);
+
+  --color-mastery-high: #10b981;
+  --color-mastery-medium: #fbbf24;
+  --color-mastery-low: #fbbf24;
+  --color-mastery-none: #475569;
+
+  --background-image-app-gradient: radial-gradient(circle at top, #1e293b, #020617);
+  --background-image-card-gradient: radial-gradient(circle at top left, #1f2937, #020617);
+
+  --shadow-card-2xl: 0 18px 40px rgba(15, 23, 42, 0.7);
+}
+
+:root {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color-scheme: light dark;
+  --color-bg-main: 11 16 32;
+  --color-bg-card: 31 41 55;
+  --color-bg-sidebar: 15 23 42;
+  --color-primary: 59 130 246;
+  --color-primary-glow: 147 197 253;
+
+  /* ChatGPT Theme - Light Mode Defaults */
+  --chat-bg: #ffffff;
+  --sidebar-bg: #f9f9f9;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --border-color: #e5e7eb;
+  --input-bg: #ffffff;
+}
+
+/* Explicit force for light mode to fight Samsung Dark Mode */
+html.light {
+  color-scheme: light;
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  --chat-bg: #ffffff !important;
+}
+
+.dark {
+  color-scheme: dark;
+  /* ChatGPT Theme - Dark Mode */
+  --chat-bg: #343541;
+  --sidebar-bg: #202123;
+  --text-primary: #ececf1;
+  --text-secondary: #c5c5d2;
+  --border-color: #4d4d4f;
+  --input-bg: #40414f;
+}
+
+@layer base {
+  * {
+    font-family: inherit;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    @apply bg-chat-bg text-text-primary antialiased transition-colors;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply rounded-2xl border border-border-color bg-sidebar-bg backdrop-blur transition-colors;
+  }
+}
+
+/* Use the main area's width so an open or resized goal tree cannot squeeze the cards. */
+.learner-cockpit-layout {
+  container: learner-cockpit / inline-size;
+  width: 100%;
+  max-width: 79.5rem;
+}
+
+.learner-cockpit-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.learner-cockpit-selection,
+.learner-cockpit-progress {
+  min-width: 0;
+}
+
+.learner-cockpit-selection {
+  container: learner-goal-content / inline-size;
+}
+
+.learner-cockpit-layout-gated {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.learner-cockpit-layout-gated > .learner-cockpit-grid {
+  width: 100%;
+  justify-items: center;
+}
+
+.learner-cockpit-grid:not(.learner-cockpit-grid-with-progress) > .learner-cockpit-selection {
+  width: 100%;
+  max-width: 48rem;
+  justify-self: center;
+}
+
+@container learner-cockpit (min-width: 781px) {
+  .learner-cockpit-grid-with-progress {
+    grid-template-columns: minmax(0, 1fr) 370px;
+  }
+}
+
+@container learner-goal-content (min-width: 640px) {
+  .learner-cockpit-goal-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* The cockpit can be narrow even when the browser window is wide. */
+.learner-plan-subject-row {
+  container: learner-plan-subject / inline-size;
+}
+
+.learner-plan-subject-progress {
+  width: 100%;
+}
+
+.learner-plan-progress-dials {
+  max-width: 32rem;
+}
+
+@container learner-plan-subject (min-width: 56rem) {
+  .learner-plan-subject-progress {
+    width: auto;
+    flex: 1 1 0%;
+  }
+
+  .learner-plan-progress {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .learner-plan-progress-heading {
+    width: 16rem;
+    flex-shrink: 0;
+  }
+
+  .learner-plan-progress-dials {
+    width: 100%;
+    flex: 1 1 0%;
+    margin-top: 0;
+  }
+}

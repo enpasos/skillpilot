@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "change": "Final source-mapping review disposition and existing reference-validity guards for MAPPING-3 normalization",
+  "codeFiles": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "1daa144296027493c051176f8519b793a0e06567b7b9f38f68caaedff1df4ae3"
+    },
+    {
+      "path": "app/scripts/testSourceExtractionInventory.ts",
+      "sha256": "a0a28ee40b559f073d0e7ca58cb2ec0bffc33ca0f8bcdfb41d10dbd34d708eab"
+    }
+  ],
+  "semantics": [
+    "Only mapped and needsCanonicalGoal / needs_canonical_goal are final review dispositions.",
+    "Pending, unknown, blank or absent decisions remain unreviewed even when a mapping edge exists.",
+    "A final canonical gap remains unresolved despite retained partial edges or conflicting mapped decisions.",
+    "Conflicting pending/mapped and canonical-gap/mapped decisions are handled without load-order or date precedence.",
+    "Unknown source IDs in decisions or edges and nonexistent or absent canonical target IDs prevent MAPPING-3 completion.",
+    "Legacy mapped rows do not need a new per-row reviewer field; source/header review authority policy is unchanged."
+  ],
+  "tests": [
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/source-m3-final-dispositions/source-extraction-inventory.receipt.json",
+      "sha256": "2ba91dc2f1794afb9aaf6422f5c97b0a12b4355630e07b6d9252efd6a789d93b",
+      "exitCode": 0
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/source-m3-final-dispositions/targeted-eslint.receipt.json",
+      "sha256": "f0a3e84b1fa2e33437cacad92a5a29a835ec41749f0d176c0996fdf3ebe52a91",
+      "exitCode": 0
+    }
+  ],
+  "regressionCases": [
+    "pendingReview with an existing edge",
+    "needs_current_primary_clause_review with an existing edge",
+    "unknown/blank/absent decision with an existing edge",
+    "legacy mapped + valid source and target succeeds",
+    "both canonical-gap aliases remain open with an edge",
+    "conflicting duplicates in both orders remain open",
+    "unknown decision source ID",
+    "unknown mapping source ID",
+    "nonexistent mapping target",
+    "missing mapping target ID"
+  ],
+  "existingCiEntry": ".github/workflows/ci.yml: test:source-extraction-inventory",
+  "curriculumSourceDataChangedByThisFix": false,
+  "nativeStatusRegeneration": "PENDING: batch approved BY and SH data changes, run one actual backend matrix, then regenerate quality status and run protected floors. No new generation was started for this code-only checkpoint.",
+  "previousNativeCheckpoint": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/native-rollout-checkpoint/summary.json",
+  "previousNativeCheckpointStatus": "Historical prior to this guard correction; preserved without rebinding.",
+  "potentialNewSourceFailures": "Report honestly after regeneration; queue Bio/Chem findings until their ordered repair phase. No source data is changed to restore an old status.",
+  "humanApproval": false,
+  "m7Acceptance": false,
+  "publicationApproval": false
+}

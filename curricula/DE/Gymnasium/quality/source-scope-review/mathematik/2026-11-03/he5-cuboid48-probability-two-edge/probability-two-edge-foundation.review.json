@@ -1,0 +1,930 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-03",
+  "status": "PASS_EXACT_TWO_EDGE_AUTHORING_DECISION_SINGLE_APPEND_NOT_APPROVED",
+  "rootReadOnly": true,
+  "newNativeJvmProductionRuns": false,
+  "noTaskCoverageOrRubricChanges": true,
+  "decisions": {
+    "newDirectPreparation779ToD830": "PASS: task parts 1-3 construct, interpret and compare two probabilities. This is a real probability-comparison preparation, not a scored-coverage assertion.",
+    "isolatedAppendWithCurrentUpstreamR": "NOT_APPROVED: it needlessly imports the separate whole function-representation chain through 2e40 -> b04d.",
+    "upstreamRemoval2e40ToB04d": "PASS: proving a used calculation rule/transformation and explaining its purpose does not require reconstructing graphs and terms or switching among table/graph/term. Retain the ordinary algebraic distribution/factorisation preparations.",
+    "sourceAndProgram": "PASS for the existing 120 actual PCs only. Q3/Q4 labels do not impose an acquisition barrier; both are full SekII/CrossStage targets, and the existing task already requires Q4-labelled inverse term modelling. No state/course/target expansion."
+  },
+  "exactProposedDelta": {
+    "appendRequires": {
+      "consumerGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "expectedBeforeRequires": [
+        "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+        "508292f2-671b-4fd3-acbf-53d705e44693",
+        "c2831918-26f1-421e-90fb-ce707689594e",
+        "dabff49b-d40a-4c81-a584-21408b2d4219",
+        "21fa0c22-976e-59b3-a871-899f0c0177f3"
+      ],
+      "exactAfterRequires": [
+        "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+        "508292f2-671b-4fd3-acbf-53d705e44693",
+        "c2831918-26f1-421e-90fb-ce707689594e",
+        "dabff49b-d40a-4c81-a584-21408b2d4219",
+        "21fa0c22-976e-59b3-a871-899f0c0177f3",
+        "d8305a49-6d45-52aa-ab88-9163c3b9f198"
+      ],
+      "expectedBeforeWholeGoalNormalizedSha256": "59e4a49925f55cbdc95c1da56d4406f306dfe5b4f9e4892699f109dff5b1dabe"
+    },
+    "removeRequires": {
+      "consumerGoalId": "2e40a879-b62e-5dbf-aa45-020c0625a902",
+      "prerequisiteGoalId": "b04d65dc-1214-5323-89a7-317d6b099e1a",
+      "expectedBeforeRequires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "b04d65dc-1214-5323-89a7-317d6b099e1a",
+        "96c55cb6-d2c7-5145-8567-b5f570f55a8a",
+        "74dc4b0d-a167-564c-bdc1-5cf510aee280"
+      ],
+      "exactAfterRequires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "96c55cb6-d2c7-5145-8567-b5f570f55a8a",
+        "74dc4b0d-a167-564c-bdc1-5cf510aee280"
+      ],
+      "expectedBeforeWholeGoalNormalizedSha256": "c3f4454f8b9951883c759b3f142b335f775ed609173ac4827d7abecd055c5fd6"
+    },
+    "allOtherGoalFieldsAndObjectsUnchanged": true
+  },
+  "numericCheck": {
+    "withoutReplacement": "28/95",
+    "withReplacement": "36/125",
+    "difference": "16/2375",
+    "larger": "without replacement, for this particular event",
+    "interpretation": "Exactly two mathematics-course applicants among three draws, comparing the two stated sampling models. Model choice follows the real no-replacement design, not which probability is larger."
+  },
+  "wholePreparationReview": {
+    "currentTaskSupportIncludingTask": 60,
+    "currentD830SupportIncludingD830": 14,
+    "isolatedAppendSupportIncludingTask": 68,
+    "isolatedAppendAdditionalIds": [
+      "0272c501-2931-5e52-b62f-af068db63c44",
+      "2e40a879-b62e-5dbf-aa45-020c0625a902",
+      "74dc4b0d-a167-564c-bdc1-5cf510aee280",
+      "8dd9f210-2683-5902-acab-e3be22725232",
+      "96c55cb6-d2c7-5145-8567-b5f570f55a8a",
+      "99bfb566-f875-5646-ac3e-05a039838c54",
+      "b04d65dc-1214-5323-89a7-317d6b099e1a",
+      "d8305a49-6d45-52aa-ab88-9163c3b9f198"
+    ],
+    "repairedSupportIncludingTask": 64,
+    "repairedAdditionalIds": [
+      "2e40a879-b62e-5dbf-aa45-020c0625a902",
+      "74dc4b0d-a167-564c-bdc1-5cf510aee280",
+      "96c55cb6-d2c7-5145-8567-b5f570f55a8a",
+      "d8305a49-6d45-52aa-ab88-9163c3b9f198"
+    ],
+    "retain2e40FromD830Rationale": "Comparing derived probability terms requires justified transformations, valid equivalences and meaningful contextual conclusions. The comparison goal includes explaining why one value is larger; the general algebraic reasoning preparation is coherent with that action.",
+    "retain2e40AlgebraicPrerequisitesRationale": "Distribution and reverse factoring are actual algebraic transformations to understand before justifying transformation rules. They remain independent ordinary skills; no assessment coverage claim is added.",
+    "removeGraphBranchRationale": "The whole b04d contract requires transferring information between table, graph and term; its existing prerequisites require recovering term features from a graph, drawing a graph from a term and choosing representations. These are neither necessary for explaining the use/purpose of calculation rules nor for the probability comparisons. Counterexample: justify expansion/factoring by distributivity or multiplication of an equation by a nonzero number, with conditions and purpose, without a graph or table. The removed requirement is too broad at 2e40 itself, not merely convenient to omit in this task.",
+    "scopeOfRemoval": "Only 2e40 -> b04d. Leave d830 -> aa00 and d830 -> 2e40, all four graph-related goals, their other real consumers, all descriptions and goal identities unchanged. No global exemption from graph work."
+  },
+  "actualScopeFacts": {
+    "scopeCount": 120,
+    "courseUnionScopeCount": 40,
+    "allFourAddedPreparationsAlreadyInCurrentContext": true,
+    "additionalProtectedPreparations": 0,
+    "ordinarySupportOnlyCases": [
+      {
+        "scope": "DE-HE/SekII/G8/LK",
+        "goalIds": [
+          "74dc4b0d-a167-564c-bdc1-5cf510aee280",
+          "96c55cb6-d2c7-5145-8567-b5f570f55a8a"
+        ]
+      },
+      {
+        "scope": "DE-HE/SekII/G8/GK+LK",
+        "goalIds": [
+          "74dc4b0d-a167-564c-bdc1-5cf510aee280",
+          "96c55cb6-d2c7-5145-8567-b5f570f55a8a"
+        ]
+      },
+      {
+        "scope": "DE-HE/SekII/G9/LK",
+        "goalIds": [
+          "74dc4b0d-a167-564c-bdc1-5cf510aee280",
+          "96c55cb6-d2c7-5145-8567-b5f570f55a8a"
+        ]
+      },
+      {
+        "scope": "DE-HE/SekII/G9/GK+LK",
+        "goalIds": [
+          "74dc4b0d-a167-564c-bdc1-5cf510aee280",
+          "96c55cb6-d2c7-5145-8567-b5f570f55a8a"
+        ]
+      }
+    ],
+    "otherCurrentScopesUnchangedCount": 41,
+    "existingAuthoredComponentViewsRead": 68
+  },
+  "exactPositiveTaskPcPairs": [
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BB/SekII/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BB/SekII/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BB/SekII/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BB/SekII/G9/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BB/SekII/G9/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BB/SekII/G9/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BB/CrossStage/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BB/CrossStage/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BB/CrossStage/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BB/CrossStage/G9/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BB/CrossStage/G9/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BB/CrossStage/G9/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BE/SekII/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BE/SekII/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BE/SekII/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BE/SekII/G9/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BE/SekII/G9/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BE/SekII/G9/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BE/CrossStage/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BE/CrossStage/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BE/CrossStage/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BE/CrossStage/G9/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BE/CrossStage/G9/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BE/CrossStage/G9/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BW/SekII/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BW/SekII/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BW/SekII/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BW/SekII/G9/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BW/SekII/G9/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BW/SekII/G9/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BW/CrossStage/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BW/CrossStage/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BW/CrossStage/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BW/CrossStage/G9/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BW/CrossStage/G9/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-BW/CrossStage/G9/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HB/SekII/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HB/SekII/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HB/SekII/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HB/CrossStage/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HB/CrossStage/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HB/CrossStage/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HE/SekII/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HE/SekII/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HE/SekII/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HE/SekII/G9/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HE/SekII/G9/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HE/SekII/G9/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HE/CrossStage/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HE/CrossStage/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HE/CrossStage/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HE/CrossStage/G9/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HE/CrossStage/G9/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HE/CrossStage/G9/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HH/SekII/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HH/SekII/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HH/SekII/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HH/CrossStage/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HH/CrossStage/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-HH/CrossStage/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-MV/SekII/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-MV/SekII/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-MV/SekII/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-MV/CrossStage/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-MV/CrossStage/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-MV/CrossStage/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-NI/SekII/G9/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-NI/SekII/G9/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-NI/SekII/G9/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-NI/CrossStage/G9/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-NI/CrossStage/G9/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-NI/CrossStage/G9/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-NW/SekII/G9/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-NW/SekII/G9/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-NW/SekII/G9/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-NW/CrossStage/G9/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-NW/CrossStage/G9/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-NW/CrossStage/G9/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-RP/SekII/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-RP/SekII/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-RP/SekII/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-RP/SekII/G9/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-RP/SekII/G9/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-RP/SekII/G9/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-RP/CrossStage/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-RP/CrossStage/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-RP/CrossStage/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-RP/CrossStage/G9/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-RP/CrossStage/G9/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-RP/CrossStage/G9/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-SL/SekII/G9/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-SL/SekII/G9/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-SL/SekII/G9/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-SL/CrossStage/G9/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-SL/CrossStage/G9/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-SL/CrossStage/G9/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-SN/SekII/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-SN/SekII/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-SN/SekII/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-SN/CrossStage/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-SN/CrossStage/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-SN/CrossStage/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-ST/SekII/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-ST/SekII/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-ST/SekII/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-ST/CrossStage/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-ST/CrossStage/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-ST/CrossStage/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-TH/SekII/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-TH/SekII/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-TH/SekII/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-TH/CrossStage/G8/GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-TH/CrossStage/G8/LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "DE-TH/CrossStage/G8/GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "ALL/SekII//GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "ALL/SekII//LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "ALL/SekII//GK+LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "ALL/CrossStage//GK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "ALL/CrossStage//LK"
+    },
+    {
+      "taskGoalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "prerequisiteGoalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "personalCurriculum": "ALL/CrossStage//GK+LK"
+    }
+  ],
+  "noOutOfScopeEnrollment": "Do not add task 779 or d830 to BY, SH, SekI-only or other currently unselected contexts. This decision does not infer exclusion reasons or alter those curricula.",
+  "staticEffect": {
+    "basedOnExistingNativeDirectRMaps": true,
+    "all161ContextsChecked": true,
+    "newlyUncoveredTargetCount": 0,
+    "newlyReachedTargetPairs": 120,
+    "newlyReachedGoalIds": [
+      "d8305a49-6d45-52aa-ab88-9163c3b9f198"
+    ],
+    "noCandidateNativeAcceptanceClaim": true,
+    "masteryCuts": "Direct prerequisites remain direct. When 779 is mastered it stops its own demand; other unfinished consumers may still require d830. Mastering d830 stops its own outgoing preparation demand. No transitive-cache shortcut or child mastery write."
+  },
+  "currentTaskBindings": {
+    "DE_EN_TaskSolutionRubricCoverageEqualReviewedNovemberAfterGoal": {
+      "taskContent": true,
+      "solutionContent": true,
+      "taskContentEn": true,
+      "solutionContentEn": true,
+      "scoring": true,
+      "coveredGoalIds": true
+    },
+    "taskSha256": "2205d4dd1c5fade56f85fb4ebce62dbac55dbc50e86d996653d46f23ab65d8fb",
+    "solutionSha256": "ec3e18d6e3968f12cd6ee469d15123481aaaf33a0d6bf32015b4e22151054541",
+    "rubricNormalizedSha256": "788a9232bb94b544fd39b2122c03595d6917541eab2bd2102cc33a4fccd83c23",
+    "currentCoveredGoalIds": [
+      "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+      "21fa0c22-976e-59b3-a871-899f0c0177f3"
+    ],
+    "part5Preserved": true,
+    "normalRubricPreserved": "20 maximum, 12 passing, ordinary total-score cap at 11 when own part-5 experiment or event is absent. No extra pass or qualification state."
+  },
+  "sourceCorridor": {
+    "sourceDocument": {
+      "key": "KC_GOS_2024",
+      "title": "Kerncurriculum gymnasiale Oberstufe - Mathematik",
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+      "role": "binding-upper-secondary-core-2024",
+      "official": true,
+      "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf"
+    },
+    "sourceRows": [
+      {
+        "id": "he-math-sekii-q4-2-b08-a01-71bba8fe",
+        "passageId": "he-math-sekii:Q4.2",
+        "topicCode": "Q4.2",
+        "bulletIndex": 8,
+        "aspectIndex": 1,
+        "title": "Argumentieren anhand vorgegebener Rechnungen",
+        "description": "Die lernende Person kann den offiziellen Curriculum-Aspekt \"Argumentieren anhand vorgegebener Rechnungen\" fachgerecht bearbeiten.",
+        "sourceText": "– Argumentieren anhand vorgegebener Rechnungen, Begründen und interpretieren gegebener Terme",
+        "sourceSpan": "Argumentieren anhand vorgegebener Rechnungen",
+        "parentBulletText": "Argumentieren anhand vorgegebener Rechnungen, Begründen und interpretieren gegebener Terme",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 52, Spiegelstrich 8, Aspekt 1",
+        "courseLevel": "GK_LK",
+        "granularity": "officialAspect",
+        "tags": [
+          "source-goal",
+          "topic:Q4.2",
+          "bullet:8",
+          "GK",
+          "LK"
+        ],
+        "rawSourceText": "– Argumentieren anhand vorgegebener Rechnungen, Begründen und interpretieren gegebener Terme",
+        "rawSourceSpan": "Argumentieren anhand vorgegebener Rechnungen",
+        "rawParentBulletText": "Argumentieren anhand vorgegebener Rechnungen, Begründen und interpretieren gegebener Terme"
+      },
+      {
+        "id": "he-math-sekii-q4-2-b08-a02-a1b42ed0",
+        "passageId": "he-math-sekii:Q4.2",
+        "topicCode": "Q4.2",
+        "bulletIndex": 8,
+        "aspectIndex": 2,
+        "title": "Begründen und interpretieren gegebener Terme",
+        "description": "Die lernende Person kann den offiziellen Curriculum-Aspekt \"Begründen und interpretieren gegebener Terme\" fachgerecht bearbeiten.",
+        "sourceText": "– Argumentieren anhand vorgegebener Rechnungen, Begründen und interpretieren gegebener Terme",
+        "sourceSpan": "Begründen und interpretieren gegebener Terme",
+        "parentBulletText": "Argumentieren anhand vorgegebener Rechnungen, Begründen und interpretieren gegebener Terme",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 52, Spiegelstrich 8, Aspekt 2",
+        "courseLevel": "GK_LK",
+        "granularity": "officialAspect",
+        "tags": [
+          "source-goal",
+          "topic:Q4.2",
+          "bullet:8",
+          "GK",
+          "LK"
+        ],
+        "rawSourceText": "– Argumentieren anhand vorgegebener Rechnungen, Begründen und interpretieren gegebener Terme",
+        "rawSourceSpan": "Begründen und interpretieren gegebener Terme",
+        "rawParentBulletText": "Argumentieren anhand vorgegebener Rechnungen, Begründen und interpretieren gegebener Terme"
+      },
+      {
+        "id": "he-math-sekii-q4-2-b13-a01-9970fb1b",
+        "passageId": "he-math-sekii:Q4.2",
+        "topicCode": "Q4.2",
+        "bulletIndex": 13,
+        "aspectIndex": 1,
+        "title": "Vergleichen von Wahrscheinlichkeiten zum Beispiel anhand zu bestimmender Terme",
+        "description": "Die lernende Person kann den offiziellen Curriculum-Aspekt \"Vergleichen von Wahrscheinlichkeiten zum Beispiel anhand zu bestimmender Terme\" fachgerecht bearbeiten.",
+        "sourceText": "– Vergleichen von Wahrscheinlichkeiten zum Beispiel anhand zu bestimmender Terme, Formulieren von Zufallsexperimenten und Ereignissen anhand gegebener Terme",
+        "sourceSpan": "Vergleichen von Wahrscheinlichkeiten zum Beispiel anhand zu bestimmender Terme",
+        "parentBulletText": "Vergleichen von Wahrscheinlichkeiten zum Beispiel anhand zu bestimmender Terme, Formulieren von Zufallsexperimenten und Ereignissen anhand gegebener Terme",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 52, Spiegelstrich 13, Aspekt 1",
+        "courseLevel": "GK_LK",
+        "granularity": "officialAspect",
+        "tags": [
+          "source-goal",
+          "topic:Q4.2",
+          "bullet:13",
+          "GK",
+          "LK"
+        ],
+        "rawSourceText": "– Vergleichen von Wahrscheinlichkeiten zum Beispiel anhand zu bestimmender Terme, Formulieren von Zufallsexperimenten und Ereignissen anhand gegebener Terme",
+        "rawSourceSpan": "Vergleichen von Wahrscheinlichkeiten zum Beispiel anhand zu bestimmender Terme",
+        "rawParentBulletText": "Vergleichen von Wahrscheinlichkeiten zum Beispiel anhand zu bestimmender Terme, Formulieren von Zufallsexperimenten und Ereignissen anhand gegebener Terme"
+      }
+    ],
+    "existingMappingDecisions": [
+      {
+        "sourceGoalId": "he-math-sekii-q4-2-b08-a01-71bba8fe",
+        "topicCode": "Q4.2",
+        "sourceSpan": "Argumentieren anhand vorgegebener Rechnungen",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "591cb948-f313-5b1c-a9cb-3df8162eeb8b",
+          "2e40a879-b62e-5dbf-aa45-020c0625a902",
+          "ae2ca565-928d-55f4-b804-7155cf210120"
+        ],
+        "rationale": "Argumentieren anhand vorgegebener Rechnungen wird über Kettenschlüsse, Begründung von Rechenregeln und dokumentierte Zwischenschritte abgedeckt.",
+        "reviewedAt": "2026-05-06",
+        "reviewer": "codex"
+      },
+      {
+        "sourceGoalId": "he-math-sekii-q4-2-b08-a02-a1b42ed0",
+        "topicCode": "Q4.2",
+        "sourceSpan": "Begründen und interpretieren gegebener Terme",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "2e40a879-b62e-5dbf-aa45-020c0625a902",
+          "fcb4cef1-b17a-5682-924c-41498fc6c9b2"
+        ],
+        "rationale": "Der Aspekt betrifft das Begründen und Interpretieren bereits gegebener Terme. Die verbleibenden Zuordnungen zu begründeten Rechenschritten und strukturierten mathematischen Aussagen bleiben unverändert und bedürfen einer gesonderten fachlichen Prüfung. Das Formulieren von Modellbeziehungen aus Größen ist durch diesen Quellenausschnitt nicht belegt und wird hier nicht mehr zugeordnet.",
+        "reviewedAt": "2026-09-27",
+        "reviewer": "OpenAI Codex; narrow source-edge correction"
+      },
+      {
+        "sourceGoalId": "he-math-sekii-q4-2-b13-a01-9970fb1b",
+        "topicCode": "Q4.2",
+        "sourceSpan": "Vergleichen von Wahrscheinlichkeiten zum Beispiel anhand zu bestimmender Terme",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "d8305a49-6d45-52aa-ab88-9163c3b9f198"
+        ],
+        "rationale": "Das neue Q4.2-Atom deckt das Vergleichen von Wahrscheinlichkeiten anhand zu bestimmender Terme direkt ab.",
+        "reviewedAt": "2026-05-06",
+        "reviewer": "codex"
+      }
+    ],
+    "priorReviewInterpretation": "Aug16 receipt atomised broad prerequisites; it does not give a specific mathematical justification for 2e40 -> b04d. Nov1 whole 779 review explicitly accepted inverse term modelling despite Q4 metadata, while leaving actual offered scope/native gates separate.",
+    "sourcePageNote": "Current d830 sourceRef says S.51; the pinned extraction identifies the same bullet at S.52. No source text or coverage is changed by this two-edge decision."
+  },
+  "inputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "a772d544fc3bf91047c887bb1017ff83b32b2f62bdd8ff0cc263d041917d9482"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "sha256": "c44ea335e761fc25e41bc1f9f76d02589cfd14d0169fbf274c0b1d4cbc039709"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+      "sha256": "ce941f094b4b83fa02a9eacc9a2067e7d564111558a05e3c274ca38ed767ef34"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sha256": "41462123c671854fbab3e38619158f46b0d21bf02a548b1a5fa41d32628928e4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/route-actions-batch3-v1/independent-content-review.json",
+      "sha256": "34d362ac9f98a67e4f265e8f82dab5008017f0b828fe13a9a2575b9bbf081f67"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/route-actions-batch3-v1/independent-content-review.md",
+      "sha256": "19e7ee0a85586f09bd80e336be2d7124221eed2f50d5ddebfdc24562062c8169"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/route-actions-batch3-v1/after-goals.json",
+      "sha256": "ed5df5d721e98e97bac187645249c06137c4e6c1836594e21efb99e34f8fb3c1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/route-actions-batch3-v1/scoring-followup-review.json",
+      "sha256": "9eceac4e980d218bff89fcde32859b101a17cda02db53932ad994618ece9196e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-splits-2026-08-16.receipt.json",
+      "sha256": "0a3f0ced1c35a4f85859aff2be0010170eabe25ac710eee24978ce43c6de6a22"
+    },
+    {
+      "path": "tmp/approach-review-20261101/g8-existing-three-task-native-v3-20261103/candidate-g8-all161-native.json.gz",
+      "sha256": "1646a979de41dbf663350a4c2a4e25d668086905a1120253ef477fc34ae4d2a3"
+    }
+  ],
+  "requiredNextAction": "Author exactly these two requires-array edits together in an isolated candidate, preserve task/solution/rubric/coveredGoalIds/IDs/mastery, refresh normal evidence bindings and run the established candidate compiler, actual 161-PC/46-union direct-demand/mastery-cut and strict QA gates. No new task or review platform is needed."
+}

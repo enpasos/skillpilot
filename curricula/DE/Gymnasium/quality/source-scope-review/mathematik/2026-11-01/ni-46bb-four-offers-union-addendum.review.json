@@ -1,0 +1,633 @@
+{
+  "reviewer": "/root/astra_math_material_scope_resume",
+  "status": "PASS_EXACT_NI_FOUR_OFFERS_GK_AND_TRUE_UNION_SOURCE_ADDENDUM_NOT_MATERIALIZATION",
+  "supersedesExpectationOnly": {
+    "path": "tmp/approach-review-20261101/astra-remaining-material-scope/ni-46bb-two-offers-PASS.json",
+    "sha256": "2b6526c99cb685d6ea9860aa5163dddb94de966e94b8c8ff1db54024174ed04b",
+    "oldHistoricalBytesPreserved": true,
+    "incorrectExpectation": "unchanged target sets in other offers, including two NI GK+LK unions",
+    "correctExpectation": "two authored GK refs imply four offer target additions, including two GK+LK union offers"
+  },
+  "wholeTaskContract": {
+    "id": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+    "shortKey": "canonical_math_q2_graph_transformations_assessment",
+    "title": "Einen unbekannten Graphen gezielt umformen",
+    "titleEn": "Transform an unspecified function graph purposefully",
+    "description": "Die lernende Person kann einen allgemeinen Transformationsterm über Punktabbildungen deuten, Verschiebungen, Streckungen und Spiegelungen grafisch darstellen und die Symmetrie von Funktion und Ableitung begründen.",
+    "descriptionEn": "The learner can interpret a general transformation by mapping points, represent shifts, scaling and reflections graphically, and justify symmetries of the function and its derivative.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment",
+      "ExamTask"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-math",
+      "phase": "Q2",
+      "area": "Analysis",
+      "demandLevel": "AB3",
+      "processCompetencies": [
+        "K1",
+        "K4",
+        "K5"
+      ],
+      "guidingIdeas": [
+        "L4"
+      ]
+    },
+    "contains": [],
+    "requires": [
+      "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+      "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+      "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+      "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+      "62a1c6f2-1775-5a19-98e0-ed3dd722039f"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "applicabilityFromRequires": true,
+      "applicabilityMappingInheritance": "boundary"
+    },
+    "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe 2024, Q2.1, S. 40, gemeinsames Niveau, Spiegelstrich 2; eigenständig verfasste Übungsaufgabe, keine amtliche Prüfungsaufgabe",
+    "phase": "Q2",
+    "type": "atomic",
+    "nodeKind": "exam",
+    "examData": {
+      "reviewStatus": "released",
+      "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/he-q21-common-2026-09-20/candidate.md",
+      "coveredGoalIds": [
+        "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+        "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+        "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+        "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+        "62a1c6f2-1775-5a19-98e0-ed3dd722039f"
+      ],
+      "coveredStrands": [
+        "L4"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "taskContent": "Eine auf $\\mathbb R$ differenzierbare Funktion $f$ ist nicht durch einen Term vorgegeben. Ihr Graph enthält $P(0|1)$ und $Q(2|3)$. Betrachte $h(x)=-2f(-(x-1)/2)+3$.\n\n1. Leite her, wohin ein beliebiger Graphenpunkt $(u|v)$ von $f$ übergeht. Bestimme die Bildpunkte von $P$ und $Q$ und stelle die ursprünglichen Punkte und ihre Bildpunkte in einem Koordinatensystem dar. Erläutere eine korrekte Reihenfolge der Verschiebungen, Streckungen und Spiegelungen in beiden Koordinatenrichtungen. Erkläre den Zusammenhang der beiden Achsenspiegelungen mit einer Punktspiegelung. (8 BE)\n2. Jemand liest den inneren Faktor $-1/2$ als horizontale Stauchung auf die Hälfte. Prüfe das anhand deiner Punktabbildung. Welche horizontale Wirkung hätte stattdessen $k(x)=-2f(-2(x-1))+3$? (3 BE)\n3. Zusätzlich sei $f$ gerade. Begründe die Symmetrieachse von $h$ und anhand gespiegelter Tangentensteigungen die Symmetrie des Graphen von $h'$. Skizziere dazu einen möglichen geraden differenzierbaren Graphen durch $P$ und $Q$ und seinen nach der Vorschrift transformierten Graphen; markiere Symmetrieachse und entsprechende Punkte. (7 BE)",
+      "solutionContent": "1. Aus $u=-(x-1)/2$ folgt $x=1-2u$, und der neue Funktionswert ist $3-2v$. Daher gilt $(u,v)\\mapsto(1-2u,3-2v)$, also $P\\mapsto(1,1)$ und $Q\\mapsto(-3,-3)$. Diese vier Punkte sind korrekt einzuzeichnen. Horizontal: Spiegelung an der y-Achse und Streckung mit Faktor 2, danach Verschiebung um 1 nach rechts. Vertikal: Spiegelung an der x-Achse und Streckung mit Faktor 2, danach Verschiebung um 3 nach oben. Beide Achsenspiegelungen zusammen bilden $(u,v)\\mapsto(-u,-v)$, die Punktspiegelung am Ursprung; die abschließenden Verschiebungen sind davon zu unterscheiden.\n\n2. Der Abstand zum späteren Zentrum $x=1$ wird verdoppelt, nicht halbiert. Bei $k$ ergibt $u=-2(x-1)$ dagegen $x=1-u/2$: horizontale Stauchung auf die Hälfte, Spiegelung und anschließende Verschiebung nach rechts.\n\n3. Weil $f$ gerade ist, gilt $h(1+t)=-2f(-t/2)+3=-2f(t/2)+3=h(1-t)$. Somit ist $x=1$ Symmetrieachse. Die Tangenten an gespiegelten Stellen haben entgegengesetzte Steigungen: $h'(1+t)=-h'(1-t)$. Der Ableitungsgraph ist punktsymmetrisch zu $(1,0)$; insbesondere $h'(1)=0$. Ein mögliches Skizzenbeispiel ist $f(x)=x^2/2+1$ mit $h(x)=1-(x-1)^2/4$. Dazu gehören etwa die Punkte $(-2,3),(0,1),(2,3)$ auf $f$ und $(5,-3),(1,1),(-3,-3)$ auf $h$. Andere passende gerade differenzierbare Ausgangsgraphen sind ebenso richtig; ein Term muss nicht bestimmt werden. Die Skizze illustriert die vorher allgemein begründete Aussage.\n\nBewertung: Teil 1: allgemeine Punktabbildung 2 BE, Bildpunkte und korrekte grafische Darstellung 2 BE, Reihenfolge und Skalierungsrichtungen 2 BE, Spiegelungen einschließlich Punktspiegelung 2 BE. Teil 2: Widerlegung mit Abstandsfaktor 2 BE, Alternative k mit Faktor 1/2 und Spiegelung 1 BE. Teil 3: begründete Achse 2 BE, Tangentenargument und Punktsymmetrie der Ableitung 3 BE, passende Ausgangs- und Bildskizze 2 BE. Fachlich gleichwertige Lösungswege sind zulässig.",
+      "scoring": {
+        "maxPoints": 18,
+        "passingPoints": 9,
+        "steps": [
+          {
+            "id": "q21_transform_1",
+            "points": 8,
+            "description": "Punktabbildung und grafische Wirkung aller Transformationen korrekt hergeleitet"
+          },
+          {
+            "id": "q21_transform_2",
+            "points": 3,
+            "description": "Inverse Wirkung des inneren Skalierungsfaktors mit Gegenfall erklärt"
+          },
+          {
+            "id": "q21_transform_3",
+            "points": 7,
+            "description": "Symmetrie von Funktion und Ableitung begründet und Transformation an einer passenden Skizze dargestellt"
+          }
+        ]
+      },
+      "reviewNote": "Local machine-only acceptance on 2026-09-20 after author check, independent content review math_m7_current_scope and informed Root integration check; exact pre-release goal hashes and calculations are bound in he-q21-scope-repair/assessment-release-root.json. No human review, learner performance, publication or deployment is claimed. Equivalent fully justified solutions receive equivalent credit."
+    },
+    "resourceLinks": []
+  },
+  "wholeSelectedOrdinaryGoalContracts": [
+    {
+      "id": "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+      "title": "Verschiebungen von Funktionsgraphen beschreiben",
+      "titleEn": "Describe shifts of function graphs",
+      "description": "Die lernende Person kann Verschiebungen von Funktionsgraphen in x- und y-Richtung anhand von Parametern im Funktionsterm beschreiben und grafisch darstellen.",
+      "descriptionEn": "The learner can describe shifts of function graphs in the x and y directions using parameters in the function term and represent them graphically.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+        "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.2",
+          "K3.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.1, S. 40, Spiegelstrich 2",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+          "title": "Visualisierung: Verschiebungen von Funktionsgraphen beschreiben",
+          "url": "/assets/goal-visualizations/mathematik/dd6c5e08-0cc6-53c0-b317-ebaba277c776/dd6c5e08-0cc6-53c0-b317-ebaba277c776.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Verschiebungen von Funktionsgraphen beschreiben.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Verschiebungen von Funktionsgraphen beschreiben\". Die lernende Person kann Verschiebungen von Funktionsgraphen in x- und y-Richtung anhand von Parametern im Funktionsterm beschreiben und grafisch darstellen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+      "title": "Streckungen und Stauchungen von Funktionsgraphen beschreiben",
+      "titleEn": "Describe stretches and compressions of function graphs",
+      "description": "Die lernende Person kann Streckungen und Stauchungen in x- oder y-Richtung über Faktoren im Funktionsterm beschreiben und die Auswirkungen auf den Graphen darstellen.",
+      "descriptionEn": "The learner can describe stretches and compressions in the x or y direction using factors in the function term and represent the effects on the graph.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+        "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.2",
+          "K3.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.1, S. 40, Spiegelstrich 2",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+          "title": "Visualisierung: Streckungen und Stauchungen von Funktionsgraphen beschreiben",
+          "url": "/assets/goal-visualizations/mathematik/772b11c9-1348-5ab9-bc3f-458c46b312b6/772b11c9-1348-5ab9-bc3f-458c46b312b6.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Streckungen und Stauchungen von Funktionsgraphen beschreiben.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Streckungen und Stauchungen von Funktionsgraphen beschreiben\". Die lernende Person kann Streckungen und Stauchungen in x- oder y-Richtung über Faktoren im Funktionsterm beschreiben und die Auswirkungen auf den Graphen darstellen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+      "shortKey": "canonical_math_q2_interpret_general_function_transformation_term",
+      "title": "Allgemeinen Transformationsterm interpretieren",
+      "titleEn": "Interpret the general function transformation term",
+      "description": "Die lernende Person kann den Term $g(x)=a\\cdot f(b\\cdot(x-c))+d$ für $a\\ne0$ und $b\\ne0$ als Kombination von Verschiebung, Streckung beziehungsweise Stauchung und Spiegelung deuten, auch ohne konkret gegebenen Funktionsterm von $f$.",
+      "descriptionEn": "The learner can interpret $g(x)=a\\cdot f(b\\cdot(x-c))+d$ for $a\\ne0$ and $b\\ne0$ as a combination of shifts, stretches or compressions, and reflections, even without a concrete function term for $f$.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+        "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+        "4c6369b0-4b58-5ac0-915c-82c348ae1c14"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K3.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "Q2",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.1.GENERAL_TRANSFORMATION_TERM"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.1, S. 40, Spiegelstrich 2",
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+          "title": "Visualisierung: Allgemeinen Transformationsterm interpretieren",
+          "url": "/assets/goal-visualizations/mathematik/a12bef54-7595-5f48-a7a8-9cfe1d8e9729/a12bef54-7595-5f48-a7a8-9cfe1d8e9729.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Allgemeinen Transformationsterm interpretieren.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Allgemeinen Transformationsterm interpretieren\". Die lernende Person kann den Term $g(x)=a\\cdot f(b\\cdot(x-c))+d$ als Kombination von Verschiebung, Streckung beziehungsweise Stauchung und Spiegelung deuten, auch ohne konkret gegebenen Funktionsterm von $f$.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+      "title": "Spiegelungen von Funktionsgraphen beschreiben",
+      "titleEn": "Describe reflections of function graphs",
+      "description": "Die lernende Person kann Spiegelungen an der x-Achse, y-Achse oder am Ursprung anhand von Vorzeichenänderungen im Funktionsterm beschreiben und grafisch darstellen.",
+      "descriptionEn": "The learner can describe reflections across the x-axis, y-axis, or the origin using sign changes in the function term and represent them graphically.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+        "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.2",
+          "K3.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.1, S. 40, Spiegelstrich 2",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+          "title": "Visualisierung: Spiegelungen von Funktionsgraphen beschreiben",
+          "url": "/assets/goal-visualizations/mathematik/4c6369b0-4b58-5ac0-915c-82c348ae1c14/4c6369b0-4b58-5ac0-915c-82c348ae1c14.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Spiegelungen von Funktionsgraphen beschreiben.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Spiegelungen von Funktionsgraphen beschreiben\". Die lernende Person kann Spiegelungen an der x-Achse, y-Achse oder am Ursprung anhand von Vorzeichenänderungen im Funktionsterm beschreiben und grafisch darstellen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
+      "shortKey": "canonical_math_q2_justify_symmetry_of_shifted_and_derivative_graphs",
+      "title": "Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen",
+      "titleEn": "Justify symmetry properties of shifted function and derivative graphs",
+      "description": "Die lernende Person kann Symmetrieeigenschaften eines verschobenen Funktionsgraphen oder des Graphen einer Ableitungsfunktion aus Termstruktur, Transformationen oder Ableitungszusammenhängen begründen.",
+      "descriptionEn": "The learner can justify symmetry properties of a shifted function graph or of a derivative graph from term structure, transformations, or derivative relationships.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K1.4",
+          "K2.2",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "Q2",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.1.SHIFTED_DERIVATIVE_GRAPH_SYMMETRY"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.1, S. 40, Spiegelstrich 2",
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
+          "title": "Visualisierung: Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen",
+          "url": "/assets/goal-visualizations/mathematik/62a1c6f2-1775-5a19-98e0-ed3dd722039f/62a1c6f2-1775-5a19-98e0-ed3dd722039f.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen\". Die lernende Person kann Symmetrieeigenschaften eines verschobenen Funktionsgraphen oder des Graphen einer Ableitungsfunktion aus Termstruktur, Transformationen oder Ableitungszusammenhängen begründen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    }
+  ],
+  "primarySource": {
+    "url": "https://cuvo.nibis.de/index.php?p=download&upload=208",
+    "document": "NI KC Mathematik gymnasiale Oberstufe 2019",
+    "printedPages": [
+      21,
+      22,
+      41
+    ],
+    "reason": "p21 explicitly generalizes y=a*f(b*(x-c))+d and requires explaining graph effects. pp22/41 require justified function/derivative graph relations via tangent slopes. The method-open shifted symmetry transfer is supported; no chain rule is required."
+  },
+  "wholeTaskSourceReason": "The NI common curriculum explicitly treats y=a*f(b*(x-c))+d and justified function/derivative graph relations (pp21,22,41). All 18 BE remain within this positive source scope. GK+LK is the union of the source target sets and therefore includes the same common-level obligation; no advanced operation or second pass is introduced.",
+  "exactOfferIds": [
+    "DE-NI/CrossStage/G9/GK",
+    "DE-NI/CrossStage/G9/GK+LK",
+    "DE-NI/SekII/G9/GK",
+    "DE-NI/SekII/G9/GK+LK"
+  ],
+  "reviewedNativeDelta": [
+    {
+      "scope": "DE-NI/SekII/G9/GK",
+      "addedTargetGoalIds": [
+        "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      ],
+      "removedTargetGoalIds": [],
+      "visibleTaskPaths": [
+        "de-ni-gym-sekii-math-gk/21/3/8"
+      ],
+      "ordinaryGoalsAlreadySelected": [
+        "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+        "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+        "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+        "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+        "62a1c6f2-1775-5a19-98e0-ed3dd722039f"
+      ],
+      "newUncoveredGoalIds": [],
+      "removedUncoveredGoalIds": [
+        "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+        "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
+        "a12bef54-7595-5f48-a7a8-9cfe1d8e9729"
+      ]
+    },
+    {
+      "scope": "DE-NI/SekII/G9/GK+LK",
+      "addedTargetGoalIds": [
+        "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      ],
+      "removedTargetGoalIds": [],
+      "visibleTaskPaths": [
+        "merged:de-ni-gym-sekii-math-lk+de-ni-gym-sekii-math-gk/19/3/8"
+      ],
+      "ordinaryGoalsAlreadySelected": [
+        "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+        "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+        "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+        "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+        "62a1c6f2-1775-5a19-98e0-ed3dd722039f"
+      ],
+      "newUncoveredGoalIds": [],
+      "removedUncoveredGoalIds": []
+    },
+    {
+      "scope": "DE-NI/CrossStage/G9/GK",
+      "addedTargetGoalIds": [
+        "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      ],
+      "removedTargetGoalIds": [],
+      "visibleTaskPaths": [
+        "de-ni-gym-math-gk/25/1/3/8"
+      ],
+      "ordinaryGoalsAlreadySelected": [
+        "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+        "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+        "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+        "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+        "62a1c6f2-1775-5a19-98e0-ed3dd722039f"
+      ],
+      "newUncoveredGoalIds": [],
+      "removedUncoveredGoalIds": [
+        "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
+        "a12bef54-7595-5f48-a7a8-9cfe1d8e9729"
+      ]
+    },
+    {
+      "scope": "DE-NI/CrossStage/G9/GK+LK",
+      "addedTargetGoalIds": [
+        "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      ],
+      "removedTargetGoalIds": [],
+      "visibleTaskPaths": [
+        "merged:de-ni-gym-math-lk+de-ni-gym-math-gk/23/1/3/8"
+      ],
+      "ordinaryGoalsAlreadySelected": [
+        "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+        "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+        "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+        "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+        "62a1c6f2-1775-5a19-98e0-ed3dd722039f"
+      ],
+      "newUncoveredGoalIds": [],
+      "removedUncoveredGoalIds": []
+    }
+  ],
+  "unionSemantics": {
+    "nativeTargetUnionEqualsGkUnionLk": true,
+    "newExplicitUnionObligationAcknowledged": true,
+    "sameStableGoalIdAndSingleGlobalBinaryMastery": true,
+    "oneVisiblePathPerOffer": true,
+    "pureLkRemainsUnchangedTaskAbsent": true,
+    "noNewTaskVariantNoDuplicatedGoalId": true,
+    "reasonForUnionAddition": "The newly selected GK task belongs in the true union even though existing LK-selected tasks already carry the relevant preparation routes. Zero additional repaired union pairs does not remove the GK obligation or authorize a union exception."
+  },
+  "smallestAllowedDelta": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "operation": "append one direct goalEntry",
+      "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+      "siblingContext": "existing 5ebfc509-0b4c-5c60-befb-2477eb24d4b5 advanced-analysis subtree and existing bbb340ed common-function task"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "operation": "append one direct goalEntry",
+      "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+      "siblingContext": "existing 5ebfc509-0b4c-5c60-befb-2477eb24d4b5 advanced-analysis subtree and existing bbb340ed common-function task"
+    }
+  ],
+  "combinedExpectation": {
+    "niOffersChanged": 4,
+    "shOffersChanged": 8,
+    "totalOffersChanged": 12,
+    "unchangedOf154": 142,
+    "newTaskTargetOccurrences": 20,
+    "condition": "SH contributes the separately approved two whole tasks in each of eight LK/union offers; pure SH GK stays unchanged."
+  },
+  "limits": [
+    "This addendum approves the two previously omitted NI union obligations explicitly; no pure-LK, other-state or ordinary target addition.",
+    "Existing original source review remains historical; CombinedV11 must bind this addendum and fresh combined native proof.",
+    "Only five uncovered pairs are repaired by isolated NI additions: three SekII GK and two CrossStage GK. Union additions repair zero existing pairs.",
+    "No source decision derives from tags, existing metadata or route counts.",
+    "No Root write, new task, mastery mutation, materialization-stage approval or M7/CI claim."
+  ],
+  "inputs": {
+    "tmp/approach-review-20261101/astra-remaining-material-scope/ni-46bb-two-offers-PASS.json": "2b6526c99cb685d6ea9860aa5163dddb94de966e94b8c8ff1db54024174ed04b",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/child-transform-review.json": "e3e74fc404334483d2e8963db0d9c9e049fa1a25f01cf07a89ca7719891f7690",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/NI-0.txt": "43017d9c9e8b828fbedd61a90f96a6789866e62edcd0969f56bb3b3b92f5da12",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "bd14a4e87cf57d5fe9e7da6519508ef3ef9998c45a95bf95aa36012471cf8cb1",
+    "tmp/approach-review-20261101/post-normal-preparation-native-154-audit.json": "2f5c7459c47b14210c3f66ff97387e96a41e7f5f1becbd31c0a9b49eebfa903b",
+    "tmp/approach-review-20261101/ni-46bb-two-offers-candidate-20261101/baseline-all154-native.json": "d47c7e4c1c153acf0ffa3e7e59de415a3dffaa0db5e3fa4f0d34ef1b18e6e31e",
+    "tmp/approach-review-20261101/ni-46bb-two-offers-candidate-20261101/candidate-all154-native.json": "ca43e35fca0b5a4c1db469d1c2e50321196370d43078a73dd2a4f1f0c4643d24",
+    "tmp/approach-review-20261101/ni-46bb-two-offers-candidate-20261101/native154-bindings.json": "1774cbcd82ada1c7c94e525804ae7ff91968374b04e7eb2221d4ac558c92f3ca"
+  }
+}

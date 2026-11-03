@@ -56,8 +56,8 @@ public record LearnerPlanTodayStatus(
     }
 
     /**
-     * Progress-effective plan goals credited toward the current day or week. Completion may
-     * come from advance work, so it does not imply all goals were finished in this period.
+     * Distinct plan goals explicitly completed within the current day or week, capped at
+     * its planned quota. Earlier mastery and implicit completion do not fill this gauge.
      * A null needle position means that this evaluable period has no target.
      */
     public record PeriodGauge(int completed, int target, Double needlePosition) {

@@ -1,0 +1,662 @@
+{
+  "schemaVersion": 1,
+  "status": "candidate-source-proof-independent-astra-review-required",
+  "scope": "One ordinary calculus goal, f9 sine/cosine derivatives. No equation or Cavalieri target is removed in this bounded candidate.",
+  "inputs": {
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "59e46903674d89295c84ab6a149601c3e1c27ce6c3428d2c883a881eca51c81c",
+    "app/scripts/config/math-duration-split-spanning-tree-policy.json": "b3b336dc244b1f4a55a901896420c69e2b8605aac4035a90ebfe47bc476928de",
+    "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_math_upper_secondary_source_extraction_to_canonical_math.review.json": "3c7b3a8b117caf632b602c5d2a20ed699b60f5aaa75a9e91004e341b9a8dbbf7",
+    "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_source_extraction_to_canonical_math.review.json": "632e178911d6c8bbd6e0457da27a46544bc12ed1a5609d83b315eb694deae4b9",
+    "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_to_canonical_math.json": "27a7d9450daa4887f301922f7319aaac7c389fcda70ad32a9a8fe98bc7511529",
+    "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json": "71b9b16473d16ae6d526bfdc56a7c39b03a1ad0512f4dfd19a007213e583ac87",
+    "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_MATHEMATIK_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json": "a66cf627e3da9c2d2c67f31c96478e4d691815cc3351ed5f9db09abe43be488d",
+    "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf": "17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28",
+    "backend/build/reports/curriculum-completion-integrity.json": "fb4f2d3e4881661220bb902049e971845b7124cc6f2603e2bb06b11a4ee9ecbe"
+  },
+  "ordinaryGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+  "unchangedGoalSha256": "f8f07338f064257520694b9b3c68d5f3e495362289ef4d14deeddbfca8f57de8",
+  "unchangedOwnAssessmentId": "c9d7546d-3d4a-5f68-b609-831ee8de8877",
+  "unchangedOwnAssessmentSha256": "0bbdd1fd77ba5e14dfd5a9039b73a8c8842ffecc53c12ce95800d7411710a7c8",
+  "canonicalPlacementOperation": {
+    "appendAfterIndependentReview": {
+      "goalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "unitId": "de-gym-math-sek2",
+      "relation": "secondary",
+      "context": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "SekII"
+      }
+    }
+  },
+  "sourceMappingOperations": [
+    {
+      "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K014-9bff2fded0",
+      "sourceGoalSha256": "c2bdde371e5cd2227e7bfa3df4647a36a19d2785636179b5b36f97912c729e17",
+      "appendEdgeAfterIndependentReview": {
+        "legacyGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K014-9bff2fded0",
+        "canonicalGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+        "matchType": "partial",
+        "reviewDecisionId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K014-9bff2fded0"
+      },
+      "beforeDecision": {
+        "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K014-9bff2fded0",
+        "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-K014",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 4: Funktionaler Zusammenhang, Zeile 3577",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "a668ea17-9226-4074-8f8e-051acbe839eb",
+          "c9d92f32-167a-4006-a940-b8063a6ed434",
+          "bc68c585-3b1d-4c94-8a2b-c10a4dcdb4e8",
+          "38234acf-d0f8-4ff9-a6f8-852d1596a692",
+          "5518ceb3-f668-5b52-a9b1-57653b16ca98"
+        ],
+        "rationale": "entwickeln Ableitungsgraphen aus dem Funktionsgraphen und umgekehrt ist inhaltlich durch die referenzierten kanonischen Mathematikziele abgedeckt; partial beschreibt hier die Zuordnungsform ueber Teil- oder Sammelziele, nicht eine offene fachliche Luecke. Quellen-/Stufenprüfung 2026-09-29: S. 67: Ableitungsgraph und Funktionsgraph in beiden Richtungen; S. 74 ordnet die Differentialrechnung dem Einführungsjahr der Sekundarstufe II zu.",
+        "reviewedAt": "2026-09-29",
+        "reviewer": "codex-j10-source-stage-repair",
+        "evidence": {
+          "method": "official-source-extraction-m3-review",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json"
+        },
+        "matchType": "partial"
+      },
+      "candidateDecision": {
+        "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K014-9bff2fded0",
+        "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-K014",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 4: Funktionaler Zusammenhang, Zeile 3577",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "a668ea17-9226-4074-8f8e-051acbe839eb",
+          "c9d92f32-167a-4006-a940-b8063a6ed434",
+          "bc68c585-3b1d-4c94-8a2b-c10a4dcdb4e8",
+          "38234acf-d0f8-4ff9-a6f8-852d1596a692",
+          "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+          "f9fdb733-5838-4983-888a-05624eabbe17"
+        ],
+        "rationale": "entwickeln Ableitungsgraphen aus dem Funktionsgraphen und umgekehrt ist inhaltlich durch die referenzierten kanonischen Mathematikziele abgedeckt; partial beschreibt hier die Zuordnungsform ueber Teil- oder Sammelziele, nicht eine offene fachliche Luecke. Quellen-/Stufenprüfung 2026-09-29: S. 67: Ableitungsgraph und Funktionsgraph in beiden Richtungen; S. 74 ordnet die Differentialrechnung dem Einführungsjahr der Sekundarstufe II zu.",
+        "reviewedAt": "2026-09-29",
+        "reviewer": "codex-j10-source-stage-repair",
+        "evidence": {
+          "method": "official-source-extraction-m3-review",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json"
+        },
+        "matchType": "partial",
+        "pendingSourceScopeAddenda": [
+          {
+            "status": "independent-primary-source-review-pending",
+            "goalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+            "primaryDocumentSha256": "17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28",
+            "primaryPrintedPages": [
+              66,
+              67
+            ],
+            "rationale": "SekII p67 requires developing a derivative graph from a function graph and conversely. The four partial links jointly bind the limited whole-goal context; no single edge claims exact whole-source coverage."
+          }
+        ]
+      }
+    },
+    {
+      "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K018-ea9c6d8ade",
+      "sourceGoalSha256": "4efdf6401ede51f7a22e899b151ca3842cd6ced968ffdbb5dda437a513b5e4cb",
+      "appendEdgeAfterIndependentReview": {
+        "legacyGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K018-ea9c6d8ade",
+        "canonicalGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+        "matchType": "partial",
+        "reviewDecisionId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K018-ea9c6d8ade"
+      },
+      "beforeDecision": {
+        "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K018-ea9c6d8ade",
+        "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-K018",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 4: Funktionaler Zusammenhang, Zeile 3594",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+          "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+          "e9445479-c188-5c09-842d-faa5e8678099",
+          "9634bfe1-39ea-5428-a042-c3f970f811a3"
+        ],
+        "rationale": "Ableitungen der genannten Funktionsklassen bilden ist inhaltlich durch die referenzierten kanonischen Mathematikziele abgedeckt; partial beschreibt hier die Zuordnungsform ueber mehrere Teilziele oder ein weiter gefasstes Sammelziel, nicht eine offene fachliche Luecke.",
+        "reviewedAt": "2026-05-08",
+        "reviewer": "codex",
+        "evidence": {
+          "method": "official-source-extraction-m3-review",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json"
+        },
+        "matchType": "partial"
+      },
+      "candidateDecision": {
+        "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K018-ea9c6d8ade",
+        "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-K018",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 4: Funktionaler Zusammenhang, Zeile 3594",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+          "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+          "e9445479-c188-5c09-842d-faa5e8678099",
+          "9634bfe1-39ea-5428-a042-c3f970f811a3",
+          "f9fdb733-5838-4983-888a-05624eabbe17"
+        ],
+        "rationale": "Ableitungen der genannten Funktionsklassen bilden ist inhaltlich durch die referenzierten kanonischen Mathematikziele abgedeckt; partial beschreibt hier die Zuordnungsform ueber mehrere Teilziele oder ein weiter gefasstes Sammelziel, nicht eine offene fachliche Luecke.",
+        "reviewedAt": "2026-05-08",
+        "reviewer": "codex",
+        "evidence": {
+          "method": "official-source-extraction-m3-review",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json"
+        },
+        "matchType": "partial",
+        "pendingSourceScopeAddenda": [
+          {
+            "status": "independent-primary-source-review-pending",
+            "goalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+            "primaryDocumentSha256": "17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28",
+            "primaryPrintedPages": [
+              66,
+              67
+            ],
+            "rationale": "SekII p67 requires differentiating the function classes previously specified. The four partial links jointly bind the limited whole-goal context; no single edge claims exact whole-source coverage."
+          }
+        ]
+      }
+    },
+    {
+      "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T040-bd30abc57c",
+      "sourceGoalSha256": "c8008d86c0066644cb3883bb62fce51c99ef7e9ff56745276b85cfad1693a58d",
+      "appendEdgeAfterIndependentReview": {
+        "legacyGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T040-bd30abc57c",
+        "canonicalGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+        "matchType": "partial",
+        "reviewDecisionId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T040-bd30abc57c"
+      },
+      "beforeDecision": {
+        "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T040-bd30abc57c",
+        "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T040",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 4: Funktionaler Zusammenhang, Zeile 3524",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "d51e649f-5dc8-40b8-b580-589016137458",
+          "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+          "eda3a298-4965-525e-878d-f05b9e2d4503",
+          "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+          "6acd79f5-9447-5ea1-8127-6dbb72bd057d"
+        ],
+        "rationale": "Sinusfunktion ist inhaltlich durch die referenzierten kanonischen Mathematikziele abgedeckt; partial beschreibt hier die Zuordnungsform ueber Teil- oder Sammelziele, nicht eine offene fachliche Luecke.",
+        "reviewedAt": "2026-05-07",
+        "reviewer": "codex",
+        "evidence": {
+          "method": "official-source-extraction-m3-review",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json"
+        },
+        "matchType": "partial"
+      },
+      "candidateDecision": {
+        "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T040-bd30abc57c",
+        "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T040",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 4: Funktionaler Zusammenhang, Zeile 3524",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "d51e649f-5dc8-40b8-b580-589016137458",
+          "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+          "eda3a298-4965-525e-878d-f05b9e2d4503",
+          "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+          "6acd79f5-9447-5ea1-8127-6dbb72bd057d",
+          "f9fdb733-5838-4983-888a-05624eabbe17"
+        ],
+        "rationale": "Sinusfunktion ist inhaltlich durch die referenzierten kanonischen Mathematikziele abgedeckt; partial beschreibt hier die Zuordnungsform ueber Teil- oder Sammelziele, nicht eine offene fachliche Luecke.",
+        "reviewedAt": "2026-05-07",
+        "reviewer": "codex",
+        "evidence": {
+          "method": "official-source-extraction-m3-review",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json"
+        },
+        "matchType": "partial",
+        "pendingSourceScopeAddenda": [
+          {
+            "status": "independent-primary-source-review-pending",
+            "goalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+            "primaryDocumentSha256": "17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28",
+            "primaryPrintedPages": [
+              66,
+              67
+            ],
+            "rationale": "SekII p66 explicitly includes the sine function in those function classes. The four partial links jointly bind the limited whole-goal context; no single edge claims exact whole-source coverage."
+          }
+        ]
+      }
+    },
+    {
+      "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T041-bf2d1db023",
+      "sourceGoalSha256": "6cf8c0f1f02f4727c3be8ac4aa523082fae18350189fada3970e9e6d17b0789d",
+      "appendEdgeAfterIndependentReview": {
+        "legacyGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T041-bf2d1db023",
+        "canonicalGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+        "matchType": "partial",
+        "reviewDecisionId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T041-bf2d1db023"
+      },
+      "beforeDecision": {
+        "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T041-bf2d1db023",
+        "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T041",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 4: Funktionaler Zusammenhang, Zeile 3526",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "d51e649f-5dc8-40b8-b580-589016137458",
+          "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+          "eda3a298-4965-525e-878d-f05b9e2d4503",
+          "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+          "6acd79f5-9447-5ea1-8127-6dbb72bd057d"
+        ],
+        "rationale": "Kosinusfunktion ist inhaltlich durch die referenzierten kanonischen Mathematikziele abgedeckt; partial beschreibt hier die Zuordnungsform ueber Teil- oder Sammelziele, nicht eine offene fachliche Luecke.",
+        "reviewedAt": "2026-05-07",
+        "reviewer": "codex",
+        "evidence": {
+          "method": "official-source-extraction-m3-review",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json"
+        },
+        "matchType": "partial"
+      },
+      "candidateDecision": {
+        "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T041-bf2d1db023",
+        "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T041",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 4: Funktionaler Zusammenhang, Zeile 3526",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "d51e649f-5dc8-40b8-b580-589016137458",
+          "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+          "eda3a298-4965-525e-878d-f05b9e2d4503",
+          "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+          "6acd79f5-9447-5ea1-8127-6dbb72bd057d",
+          "f9fdb733-5838-4983-888a-05624eabbe17"
+        ],
+        "rationale": "Kosinusfunktion ist inhaltlich durch die referenzierten kanonischen Mathematikziele abgedeckt; partial beschreibt hier die Zuordnungsform ueber Teil- oder Sammelziele, nicht eine offene fachliche Luecke.",
+        "reviewedAt": "2026-05-07",
+        "reviewer": "codex",
+        "evidence": {
+          "method": "official-source-extraction-m3-review",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json"
+        },
+        "matchType": "partial",
+        "pendingSourceScopeAddenda": [
+          {
+            "status": "independent-primary-source-review-pending",
+            "goalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+            "primaryDocumentSha256": "17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28",
+            "primaryPrintedPages": [
+              66,
+              67
+            ],
+            "rationale": "SekII p66 explicitly includes the cosine function in those function classes. The four partial links jointly bind the limited whole-goal context; no single edge claims exact whole-source coverage."
+          }
+        ]
+      }
+    }
+  ],
+  "sourceAuthoringExclusionOperations": [
+    {
+      "templateFileName": "de-sh-seki-g8.view.json",
+      "expectedExcludedGoalIds": [
+        "f17935b0-189f-5e0c-988d-ce508b710097",
+        "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+        "2850e8f6-2330-50d3-a577-d519540d9924",
+        "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+        "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+        "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+        "baea3966-5d10-53bf-8193-3fcda7b1e73f",
+        "f9fdb733-5838-4983-888a-05624eabbe17"
+      ],
+      "appendExcludedGoalIdAfterIndependentReview": "f9fdb733-5838-4983-888a-05624eabbe17"
+    },
+    {
+      "templateFileName": "de-sh-seki-g9.view.json",
+      "expectedExcludedGoalIds": [
+        "f17935b0-189f-5e0c-988d-ce508b710097",
+        "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+        "2850e8f6-2330-50d3-a577-d519540d9924",
+        "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+        "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+        "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+        "baea3966-5d10-53bf-8193-3fcda7b1e73f",
+        "f9fdb733-5838-4983-888a-05624eabbe17"
+      ],
+      "appendExcludedGoalIdAfterIndependentReview": "f9fdb733-5838-4983-888a-05624eabbe17"
+    }
+  ],
+  "baseAndStandaloneUpperViewOperations": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+      "viewId": "de-sh-gym-math-gk",
+      "expectedScope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "removeOnlyFromStructureId": "sek1",
+      "expectedRemovedReferences": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f9fdb733-5838-4983-888a-05624eabbe17"
+        }
+      ],
+      "appendTargetInStructureId": "analysis-derivative-applications-sekii",
+      "appendReference": {
+        "kind": "goalEntry",
+        "goalId": "f9fdb733-5838-4983-888a-05624eabbe17"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+      "viewId": "de-sh-gym-math-lk",
+      "expectedScope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "removeOnlyFromStructureId": "sek1",
+      "expectedRemovedReferences": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f9fdb733-5838-4983-888a-05624eabbe17"
+        }
+      ],
+      "appendTargetInStructureId": "analysis-derivative-applications-sekii",
+      "appendReference": {
+        "kind": "goalEntry",
+        "goalId": "f9fdb733-5838-4983-888a-05624eabbe17"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+      "viewId": "de-sh-gym-sekii-math-gk",
+      "expectedScope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "removeOnlyFromStructureId": null,
+      "expectedRemovedReferences": [],
+      "appendTargetInStructureId": "analysis-derivative-applications-sekii",
+      "appendReference": {
+        "kind": "goalEntry",
+        "goalId": "f9fdb733-5838-4983-888a-05624eabbe17"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+      "viewId": "de-sh-gym-sekii-math-lk",
+      "expectedScope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "removeOnlyFromStructureId": null,
+      "expectedRemovedReferences": [],
+      "appendTargetInStructureId": "analysis-derivative-applications-sekii",
+      "appendReference": {
+        "kind": "goalEntry",
+        "goalId": "f9fdb733-5838-4983-888a-05624eabbe17"
+      }
+    }
+  ],
+  "sourceReviewDecisionToPinAfterIndependentApproval": {
+    "futurePath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/sh-sine-derivative-stage-decision.json",
+    "requiresActualIndependentReviewBeforeApprovedStatus": true,
+    "pinInDurationPolicyInputsSourceScopeDecisions": true
+  },
+  "actualBaselineAndExpectedScopeImpact": [
+    {
+      "scope": "DE-SH/SekI/G8/GK+LK",
+      "compositionViewIds": [
+        "de-sh-gym-seki-math-g8"
+      ],
+      "actualBaselineTargetCount": 262,
+      "actualBaselineTargetGoalIdsSha256": "960890baf8a2b323f3764048982bb5f1e37c6097df7a124cda906e58ff5b5087",
+      "addedTargetGoalIds": [],
+      "removedTargetGoalIds": [
+        "f9fdb733-5838-4983-888a-05624eabbe17"
+      ],
+      "expectedAfterTargetCount": 261,
+      "expectedAfterTargetGoalIdsSha256": "da98e9eb179bf1abfcd61f1bcb34af7712dd35c47b96749df25ef13c59926e4d",
+      "preservedCanonicalGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "wholeTaskWithheldWhenSineDerivativeIsOutsideStandaloneSekI": false,
+      "backendAfterIntegrationStillRequired": true
+    },
+    {
+      "scope": "DE-SH/SekI/G9/GK+LK",
+      "compositionViewIds": [
+        "de-sh-gym-seki-math-g9"
+      ],
+      "actualBaselineTargetCount": 268,
+      "actualBaselineTargetGoalIdsSha256": "b2ff16a3373863127220a572557bd27ba7f82dd6936d9aaca91cfc43d9997eb1",
+      "addedTargetGoalIds": [],
+      "removedTargetGoalIds": [
+        "c9d7546d-3d4a-5f68-b609-831ee8de8877",
+        "f9fdb733-5838-4983-888a-05624eabbe17"
+      ],
+      "expectedAfterTargetCount": 266,
+      "expectedAfterTargetGoalIdsSha256": "94067f2962d7f8c17167fa0ab97db2395ecc00bd79a9b5822746a20b32504efa",
+      "preservedCanonicalGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "wholeTaskWithheldWhenSineDerivativeIsOutsideStandaloneSekI": true,
+      "backendAfterIntegrationStillRequired": true
+    },
+    {
+      "scope": "DE-SH/SekII/G8/GK",
+      "compositionViewIds": [
+        "de-sh-gym-sekii-math-gk"
+      ],
+      "actualBaselineTargetCount": 424,
+      "actualBaselineTargetGoalIdsSha256": "273fe2e2d421508b96fb702e2ba6c10928c65bf99e9f3848d20ed0dcd53617f7",
+      "addedTargetGoalIds": [
+        "f9fdb733-5838-4983-888a-05624eabbe17"
+      ],
+      "removedTargetGoalIds": [],
+      "expectedAfterTargetCount": 425,
+      "expectedAfterTargetGoalIdsSha256": "9ff8d71177fc66e46e8ce87fc02fb5f8856809e1dd00ccc3c3262a4c917143c0",
+      "preservedCanonicalGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "wholeTaskWithheldWhenSineDerivativeIsOutsideStandaloneSekI": false,
+      "backendAfterIntegrationStillRequired": true
+    },
+    {
+      "scope": "DE-SH/SekII/G8/LK",
+      "compositionViewIds": [
+        "de-sh-gym-sekii-math-lk"
+      ],
+      "actualBaselineTargetCount": 524,
+      "actualBaselineTargetGoalIdsSha256": "40f069baf86264e0f39ef422faf9e209ee0c853b7949c9ab023be95e67d45082",
+      "addedTargetGoalIds": [
+        "f9fdb733-5838-4983-888a-05624eabbe17"
+      ],
+      "removedTargetGoalIds": [],
+      "expectedAfterTargetCount": 525,
+      "expectedAfterTargetGoalIdsSha256": "2e150137ceba661bf89c3e295809c9a02723da18c53c8b06e1c52a2e20e75014",
+      "preservedCanonicalGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "wholeTaskWithheldWhenSineDerivativeIsOutsideStandaloneSekI": false,
+      "backendAfterIntegrationStillRequired": true
+    },
+    {
+      "scope": "DE-SH/SekII/G8/GK+LK",
+      "compositionViewIds": [
+        "merged:de-sh-gym-sekii-math-lk+de-sh-gym-sekii-math-gk"
+      ],
+      "actualBaselineTargetCount": 527,
+      "actualBaselineTargetGoalIdsSha256": "166b8afdbf27b8895e6d089ca392d960a7609174fbf5de0e432bc233ae06205e",
+      "addedTargetGoalIds": [
+        "f9fdb733-5838-4983-888a-05624eabbe17"
+      ],
+      "removedTargetGoalIds": [],
+      "expectedAfterTargetCount": 528,
+      "expectedAfterTargetGoalIdsSha256": "8ac23689d59214c58ffc89784957c47b469c4f01c5f52b8ba9613e7ddf219ff2",
+      "preservedCanonicalGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "wholeTaskWithheldWhenSineDerivativeIsOutsideStandaloneSekI": false,
+      "backendAfterIntegrationStillRequired": true
+    },
+    {
+      "scope": "DE-SH/SekII/G9/GK",
+      "compositionViewIds": [
+        "de-sh-gym-sekii-math-gk"
+      ],
+      "actualBaselineTargetCount": 424,
+      "actualBaselineTargetGoalIdsSha256": "273fe2e2d421508b96fb702e2ba6c10928c65bf99e9f3848d20ed0dcd53617f7",
+      "addedTargetGoalIds": [
+        "f9fdb733-5838-4983-888a-05624eabbe17"
+      ],
+      "removedTargetGoalIds": [],
+      "expectedAfterTargetCount": 425,
+      "expectedAfterTargetGoalIdsSha256": "9ff8d71177fc66e46e8ce87fc02fb5f8856809e1dd00ccc3c3262a4c917143c0",
+      "preservedCanonicalGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "wholeTaskWithheldWhenSineDerivativeIsOutsideStandaloneSekI": false,
+      "backendAfterIntegrationStillRequired": true
+    },
+    {
+      "scope": "DE-SH/SekII/G9/LK",
+      "compositionViewIds": [
+        "de-sh-gym-sekii-math-lk"
+      ],
+      "actualBaselineTargetCount": 524,
+      "actualBaselineTargetGoalIdsSha256": "40f069baf86264e0f39ef422faf9e209ee0c853b7949c9ab023be95e67d45082",
+      "addedTargetGoalIds": [
+        "f9fdb733-5838-4983-888a-05624eabbe17"
+      ],
+      "removedTargetGoalIds": [],
+      "expectedAfterTargetCount": 525,
+      "expectedAfterTargetGoalIdsSha256": "2e150137ceba661bf89c3e295809c9a02723da18c53c8b06e1c52a2e20e75014",
+      "preservedCanonicalGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "wholeTaskWithheldWhenSineDerivativeIsOutsideStandaloneSekI": false,
+      "backendAfterIntegrationStillRequired": true
+    },
+    {
+      "scope": "DE-SH/SekII/G9/GK+LK",
+      "compositionViewIds": [
+        "merged:de-sh-gym-sekii-math-lk+de-sh-gym-sekii-math-gk"
+      ],
+      "actualBaselineTargetCount": 527,
+      "actualBaselineTargetGoalIdsSha256": "166b8afdbf27b8895e6d089ca392d960a7609174fbf5de0e432bc233ae06205e",
+      "addedTargetGoalIds": [
+        "f9fdb733-5838-4983-888a-05624eabbe17"
+      ],
+      "removedTargetGoalIds": [],
+      "expectedAfterTargetCount": 528,
+      "expectedAfterTargetGoalIdsSha256": "8ac23689d59214c58ffc89784957c47b469c4f01c5f52b8ba9613e7ddf219ff2",
+      "preservedCanonicalGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "wholeTaskWithheldWhenSineDerivativeIsOutsideStandaloneSekI": false,
+      "backendAfterIntegrationStillRequired": true
+    },
+    {
+      "scope": "DE-SH/CrossStage/G8/GK",
+      "compositionViewIds": [
+        "de-sh-gym-math-gk-g8"
+      ],
+      "actualBaselineTargetCount": 673,
+      "actualBaselineTargetGoalIdsSha256": "a22405ff3a2b0c8a68858dbcbc7adf2c0da0027f7cf2c40c2ac2184e241638fb",
+      "addedTargetGoalIds": [],
+      "removedTargetGoalIds": [],
+      "expectedAfterTargetCount": 673,
+      "expectedAfterTargetGoalIdsSha256": "a22405ff3a2b0c8a68858dbcbc7adf2c0da0027f7cf2c40c2ac2184e241638fb",
+      "preservedCanonicalGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "wholeTaskWithheldWhenSineDerivativeIsOutsideStandaloneSekI": false,
+      "backendAfterIntegrationStillRequired": true
+    },
+    {
+      "scope": "DE-SH/CrossStage/G8/LK",
+      "compositionViewIds": [
+        "de-sh-gym-math-lk-g8"
+      ],
+      "actualBaselineTargetCount": 773,
+      "actualBaselineTargetGoalIdsSha256": "fe0c92acc8f30c01cd133003ac0b3d4aace9d68cfe77fe68350646bdb1bd1ae0",
+      "addedTargetGoalIds": [],
+      "removedTargetGoalIds": [],
+      "expectedAfterTargetCount": 773,
+      "expectedAfterTargetGoalIdsSha256": "fe0c92acc8f30c01cd133003ac0b3d4aace9d68cfe77fe68350646bdb1bd1ae0",
+      "preservedCanonicalGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "wholeTaskWithheldWhenSineDerivativeIsOutsideStandaloneSekI": false,
+      "backendAfterIntegrationStillRequired": true
+    },
+    {
+      "scope": "DE-SH/CrossStage/G8/GK+LK",
+      "compositionViewIds": [
+        "merged:de-sh-gym-math-lk-g8+de-sh-gym-math-gk-g8"
+      ],
+      "actualBaselineTargetCount": 776,
+      "actualBaselineTargetGoalIdsSha256": "e05ab371dbe2185496375ed7163b31f6c2ab57d28ecb97968bfde294cbc8fd7b",
+      "addedTargetGoalIds": [],
+      "removedTargetGoalIds": [],
+      "expectedAfterTargetCount": 776,
+      "expectedAfterTargetGoalIdsSha256": "e05ab371dbe2185496375ed7163b31f6c2ab57d28ecb97968bfde294cbc8fd7b",
+      "preservedCanonicalGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "wholeTaskWithheldWhenSineDerivativeIsOutsideStandaloneSekI": false,
+      "backendAfterIntegrationStillRequired": true
+    },
+    {
+      "scope": "DE-SH/CrossStage/G9/GK",
+      "compositionViewIds": [
+        "de-sh-gym-math-gk-g9"
+      ],
+      "actualBaselineTargetCount": 680,
+      "actualBaselineTargetGoalIdsSha256": "d0c068905d9ef49605def4093c9d32933f0ca47cce78e86c8b0d24b61c11fe97",
+      "addedTargetGoalIds": [],
+      "removedTargetGoalIds": [],
+      "expectedAfterTargetCount": 680,
+      "expectedAfterTargetGoalIdsSha256": "d0c068905d9ef49605def4093c9d32933f0ca47cce78e86c8b0d24b61c11fe97",
+      "preservedCanonicalGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "wholeTaskWithheldWhenSineDerivativeIsOutsideStandaloneSekI": false,
+      "backendAfterIntegrationStillRequired": true
+    },
+    {
+      "scope": "DE-SH/CrossStage/G9/LK",
+      "compositionViewIds": [
+        "de-sh-gym-math-lk-g9"
+      ],
+      "actualBaselineTargetCount": 781,
+      "actualBaselineTargetGoalIdsSha256": "138117f1479c7ab13415dc1ebbdabfc390c684413f1498900cdb4167275d4e5f",
+      "addedTargetGoalIds": [],
+      "removedTargetGoalIds": [],
+      "expectedAfterTargetCount": 781,
+      "expectedAfterTargetGoalIdsSha256": "138117f1479c7ab13415dc1ebbdabfc390c684413f1498900cdb4167275d4e5f",
+      "preservedCanonicalGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "wholeTaskWithheldWhenSineDerivativeIsOutsideStandaloneSekI": false,
+      "backendAfterIntegrationStillRequired": true
+    },
+    {
+      "scope": "DE-SH/CrossStage/G9/GK+LK",
+      "compositionViewIds": [
+        "merged:de-sh-gym-math-lk-g9+de-sh-gym-math-gk-g9"
+      ],
+      "actualBaselineTargetCount": 784,
+      "actualBaselineTargetGoalIdsSha256": "f39c4e4cecb909af49cd40a4cfac0c4fbc9eb6b9d15092981291abf085c2fcba",
+      "addedTargetGoalIds": [],
+      "removedTargetGoalIds": [],
+      "expectedAfterTargetCount": 784,
+      "expectedAfterTargetGoalIdsSha256": "f39c4e4cecb909af49cd40a4cfac0c4fbc9eb6b9d15092981291abf085c2fcba",
+      "preservedCanonicalGoalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "wholeTaskWithheldWhenSineDerivativeIsOutsideStandaloneSekI": false,
+      "backendAfterIntegrationStillRequired": true
+    }
+  ],
+  "deferredCasesWithoutPrimaryExclusionProof": [
+    {
+      "goalIds": [
+        "14d0e697-3fb0-5074-a08c-7e01ca9bbda8",
+        "d0db87c4-36f5-5ac6-8428-da96d31b253a",
+        "2bd88d66-5daf-53bb-aa02-4c010963679d"
+      ],
+      "reason": "SH p38 has genuine general equation-strategy/inverse-operation competencies and p30 covers powers/fractional exponents. These neither automatically establish every complete specialized technique goal nor prove its exclusion. No goal is removed based only on absence of a technique name."
+    },
+    {
+      "goalIds": [
+        "a506fc1d-b784-548f-90c3-5aae1b819b68"
+      ],
+      "reason": "SH p33 covers prism volumes and process reasoning, but the whole named Cavalieri/oblique-prism competence is not directly demonstrated by the existing broad legacy mapping. Further bounded original-source review is needed; no deletion and no exam restoration are proposed."
+    }
+  ],
+  "adjacentCalculusWarningNotAutomaticallyEdited": {
+    "goalId": "f76d00dc-6b31-59cd-b01a-3610eadc9908",
+    "reason": "Its exact description uses derivatives throughout an interval and a nonconverse counterexample. SH p37 graph monotonicity alone does not support that calculus theorem. Positive SekII derivative/monotonicity context is pp67-68; independently review this related source-stage correction before using new SH SekI assessment routes."
+  },
+  "mandatoryOpenConsequences": [
+    "Standalone SekI G9 loses the whole c9d assessment because one of its genuine declared competencies is upper-secondary. Keep the other seven legitimate trig targets unchanged; a source-correct assessment route is still needed.",
+    "Standalone SekII newly acquires the legitimate f9 target, whose narrow assessment route and full support context must be checked. Do not claim completion integrity is repaired by this source change alone.",
+    "CrossStage retains f9 and whole-task target availability when all task targets are present. Its existing G9 c9d navigation is still in a SekI year folder; an independently reviewed stage-appropriate assessment/navigation correction remains necessary.",
+    "All content/goal IDs, mastery keys, task/rubric/coverage bytes, official PDF/extractions and immutable historical records remain unchanged. Current source/M7 gates must be rerun; no threshold or floor is lowered."
+  ]
+}

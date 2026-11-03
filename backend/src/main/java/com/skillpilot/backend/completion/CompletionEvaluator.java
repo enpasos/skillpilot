@@ -9,10 +9,10 @@ import java.util.Set;
 /** Linear work-discharge evaluation over one immutable compiled context and binary mastery. */
 public final class CompletionEvaluator {
     /**
-     * Open assessments retain direct prerequisite demand. Mastered nodes stop
-     * that demand, so no transitive consumer relation is precomputed or applied.
-     * Every remaining unmastered ordinary node is implicitly complete in this
-     * context, even when no mastery or assessment exists in the context.
+     * Open selected assessments and memory goals root direct prerequisite demand.
+     * Mastered nodes stop that demand, so no transitive consumer relation is stored.
+     * Unneeded ordinary nodes are implicitly complete; protected support is never
+     * implicit and does not independently enlarge the selected completion contract.
      */
     public CompletionEvaluation evaluateAutomatic(CompiledAutomaticCompletion graph, Set<String> mastery) {
         return evaluateAutomaticGraph(graph, mastery);
@@ -21,17 +21,23 @@ public final class CompletionEvaluator {
     private CompletionEvaluation evaluateAutomaticGraph(CompiledCompletionGraph graph, Set<String> mastery) {
         Objects.requireNonNull(graph, "graph");
         Objects.requireNonNull(mastery, "mastery");
+        if (!AutomaticCompletionIntegrity.uncoveredTargets(graph).isEmpty()) {
+            // Authoring faults must not create implicit credit. Known explicit
+            // target results remain true independently of graph-quality approval.
+            if (mastery.containsAll(graph.targetGoalIds())) return evaluateExplicitTargets(graph, mastery);
+            AutomaticCompletionIntegrity.requireCoveredTargets(graph);
+        }
         boolean[] mastered = new boolean[graph.size()];
         boolean[] needed = new boolean[graph.size()];
-        int[] blockingAssessment = new int[graph.size()];
-        java.util.Arrays.fill(blockingAssessment, -1);
+        int[] blockingObligation = new int[graph.size()];
+        java.util.Arrays.fill(blockingObligation, -1);
         java.util.ArrayDeque<Integer> pending = new java.util.ArrayDeque<>();
         for (int i = 0; i < graph.size(); i++) {
             String id = graph.goalIds().get(i);
             mastered[i] = mastery.contains(id);
-            if (!mastered[i] && graph.assessmentGoalIds().contains(id)) {
+            if (!mastered[i] && graph.protectedTargetGoalIds().contains(id)) {
                 needed[i] = true;
-                blockingAssessment[i] = i;
+                blockingObligation[i] = i;
                 pending.addLast(i);
             }
         }
@@ -40,7 +46,7 @@ public final class CompletionEvaluator {
             for (int prerequisite : graph.prerequisiteIndices(consumer)) {
                 if (mastered[prerequisite] || needed[prerequisite]) continue;
                 needed[prerequisite] = true;
-                blockingAssessment[prerequisite] = blockingAssessment[consumer];
+                blockingObligation[prerequisite] = blockingObligation[consumer];
                 pending.addLast(prerequisite);
             }
         }
@@ -57,22 +63,35 @@ public final class CompletionEvaluator {
         for (int i = 0; i < graph.size(); i++) {
             String id = graph.goalIds().get(i);
             if (mastered[i]) masteredIds.add(id);
-            else if (!needed[i]) {
+            else if (!needed[i] && !graph.protectedGoalIds().contains(id)) {
                 waivedIds.add(id);
                 reasons.put(id, reason);
-            } else if (!graph.assessmentGoalIds().contains(id)) {
-                blockers.put(id, graph.goalIds().get(blockingAssessment[i]));
+            } else if (!graph.protectedGoalIds().contains(id)) {
+                blockers.put(id, graph.goalIds().get(blockingObligation[i]));
             }
             if (graph.targetGoalIds().contains(id)) {
                 if (mastered[i]) masteredTargetCount++;
-                else if (!needed[i]) waivedTargetCount++;
+                else if (waivedIds.contains(id)) waivedTargetCount++;
                 else pendingTargets.add(id);
             }
             if (mastered[i] && graph.assessmentGoalIds().contains(id)) passedAssessments.add(id);
         }
         return new CompletionEvaluation(masteredIds, waivedIds, pendingTargets, passedAssessments, reasons, blockers,
-                pendingTargets.isEmpty() && passedAssessments.size() == graph.assessmentGoalIds().size(),
+                pendingTargets.isEmpty(),
                 graph.targetGoalIds().size(), masteredTargetCount, waivedTargetCount, graph.assessmentGoalIds().size());
+    }
+
+    /** Explicit-only evidence remains usable under static authoring faults; no support is discharged. */
+    CompletionEvaluation evaluateExplicitTargets(CompiledCompletionGraph graph, Set<String> mastery) {
+        if (!mastery.containsAll(graph.targetGoalIds())) {
+            throw new IllegalArgumentException("Every selected target must be explicitly mastered");
+        }
+        Set<String> mastered = new LinkedHashSet<>(graph.contextGoalIds());
+        mastered.retainAll(mastery);
+        Set<String> assessments = new LinkedHashSet<>(graph.assessmentGoalIds());
+        assessments.retainAll(mastery);
+        return new CompletionEvaluation(mastered, Set.of(), Set.of(), assessments, Map.of(), Map.of(), true,
+                graph.targetGoalIds().size(), graph.targetGoalIds().size(), 0, graph.assessmentGoalIds().size());
     }
 
     public CompletionEvaluation evaluate(CompiledCompletionProfile profile, Set<String> mastery) {

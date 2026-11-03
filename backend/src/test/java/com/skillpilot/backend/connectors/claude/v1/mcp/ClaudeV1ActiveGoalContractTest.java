@@ -350,4 +350,34 @@ class ClaudeV1ActiveGoalContractTest {
     private long currentStateVersion() {
         return learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision();
     }
+
+    private UnifiedLearnerStateResponse retainedTaskConfirmation(boolean published) {
+        FrontierGoal active=new FrontierGoal(CURRENT_GOAL_ID,"Current exam","Current task", "atomic","exam",null,
+                "test",List.of(),List.of(),null,null,null,null);
+        return new UnifiedLearnerStateResponse(null,null,List.of(),null,List.of("setActiveGoal"),List.of(),Set.of(),
+                "TEACHING",active,new StateMachineInfo("TEACHING","setActiveGoal",published?List.of(active):List.of(),List.of(),active));
+    }
+
+    @Test void explicitPublishedSameTaskConfirmationIsNotARedirectOrAnAlreadyActiveConflict() throws Exception {
+        when(coachToolFacade.getLearnerState(learnerId)).thenReturn(retainedTaskConfirmation(true));
+        when(coachToolFacade.setActiveGoal(eq(learnerId),any(ActiveGoalRequest.class))).thenAnswer(invocation->{
+            Learner learner=learnerRepository.findById(learnerId).orElseThrow();
+            learner.setCoachStateRevision(learner.getCoachStateRevision()+1);learnerRepository.save(learner);
+            return learnerState(CURRENT_GOAL_ID);
+        });
+        McpSchema.CallToolResult result=callActiveGoal(CURRENT_GOAL_ID,false,UUID.randomUUID().toString());
+        assertThat(result.isError()).isFalse();
+        assertThat(payload(result)).containsEntry("activatedGoalId",CURRENT_GOAL_ID)
+                .containsEntry("redirectApplied",false).doesNotContainKey("displacedGoalId");
+        verify(coachToolFacade).setActiveGoal(learnerId,new ActiveGoalRequest(CURRENT_GOAL_ID,false));
+        assertThat(currentStateVersion()).isEqualTo(11L);
+    }
+
+    @Test void retainedExamWithoutPublishedCurrentChoiceDoesNotAuthorizeARepeatedSelection() throws Exception {
+        when(coachToolFacade.getLearnerState(learnerId)).thenReturn(retainedTaskConfirmation(false));
+        McpSchema.CallToolResult result=callActiveGoal(CURRENT_GOAL_ID,false,UUID.randomUUID().toString());
+        assertThat(result.isError()).isTrue();
+        verify(coachToolFacade,never()).setActiveGoal(eq(learnerId),any(ActiveGoalRequest.class));
+        assertThat(currentStateVersion()).isEqualTo(INITIAL_STATE_VERSION);
+    }
 }

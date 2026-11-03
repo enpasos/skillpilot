@@ -1,0 +1,117 @@
+{
+  "id": "bc04599b-e498-53c8-96f5-850549bdde4f",
+  "shortKey": "canonical_math_local_assessment_geometry_cone_pyramid_limit",
+  "title": "Kegeldach: die Volumenformel mit Pyramiden plausibilisieren",
+  "description": "Die lernende Person kann die Volumenformel eines Kegeldachs mit einbeschriebenen und umbeschriebenen Pyramiden gleicher Höhe anschaulich herleiten und für die gegebenen Dachmaße anwenden.",
+  "core": true,
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "ExamTask",
+    "canonical"
+  ],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/cone-pyramid-limit-draft_v1.md",
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB2",
+    "processCompetencies": [
+      "K1",
+      "K2",
+      "K3",
+      "K4",
+      "K6"
+    ],
+    "guidingIdeas": [
+      "L2"
+    ],
+    "phase": "J10",
+    "area": "Geometry",
+    "topicCode": "CANONICAL.MATH.LOCAL.ASSESSMENT.GEOMETRY.CONE_PYRAMID_LIMIT"
+  },
+  "contains": [],
+  "requires": [
+    "50612a57-7b9d-45fd-bc08-e95556444760"
+  ],
+  "phase": "J10",
+  "type": "atomic",
+  "nodeKind": "exam",
+  "extendedData": {
+    "applicabilityMappingInheritance": "boundary",
+    "applicabilityFromRequires": true
+  },
+  "examData": {
+    "reviewStatus": "draft",
+    "reviewNote": "Author candidate 2026-11-01. Newly authored cone-roof problem with an explicit inner/outer pyramid approximation argument and exact plus rounded volume. The earlier mixed drone/tank Task 5, subtask 4 only inspired the tank context; this is not an exact excerpt or an official examination. Independent content, source/placement, exclusivity and machine-QA review remain pending; no human approval, teaching trial, host acceptance or M7 result claimed.",
+    "coveredGoalIds": [
+      "50612a57-7b9d-45fd-bc08-e95556444760"
+    ],
+    "coveredStrands": [
+      "L2"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2"
+    ],
+    "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/cone-pyramid-limit-draft_v1.md",
+    "taskContent": "Das Dach eines idealisierten Regenwassertanks ist ein gerader Kreiskegel mit Radius $r=2\\,\\mathrm{m}$ und senkrechter Höhe $h_K=1{,}5\\,\\mathrm{m}$. Du kennst bereits die Volumenformel $V_P=\\frac13G h$ für Pyramiden mit Grundflächeninhalt $G$ und senkrechter Höhe $h$.\n\nDie Volumenformel für Kegel soll jetzt mit geeigneten Pyramiden anschaulich begründet werden. Eine formale Grenzwertrechnung oder ein rechnerischer Beweis für die Annäherung von Vielecksflächen wird nicht verlangt; entscheidend ist eine nachvollziehbare geometrische Erklärung.\n\n1. Beschreibe oder skizziere Pyramiden, deren regelmäßige Grundvielecke dem Grundkreis einbeschrieben beziehungsweise umbeschrieben sind. Alle Pyramiden sollen dieselbe Spitze wie der Kegel und dieselbe senkrechte Höhe haben. Erläutere, was bei wachsender Eckenzahl mit den Grundflächen und den eingeschlossenen beziehungsweise umschließenden Körpern geschieht. Begründe damit die Formel $V_K=\\frac13\\pi r^2h_K$. Es reicht nicht, nur zu schreiben: „Ein Kegel ist eine Pyramide mit unendlich vielen Ecken.“ (5 BE)\n2. Berechne mit der so begründeten Formel das Volumen des Kegeldachs. Gib das Ergebnis genau und sinnvoll gerundet mit Einheit an. (1 BE)",
+    "solutionContent": "Man betrachtet in der Grundebene regelmäßige Vielecke innerhalb des Grundkreises, deren Eckpunkte auf dem Kreis liegen, und regelmäßige Vielecke außerhalb des Kreises, deren Seiten den Kreis berühren. Verbindet man ihre Ecken jeweils mit der Kegelspitze, entstehen eingeschriebene und umschriebene Pyramiden. Sie haben dieselbe senkrechte Höhe $h_K$ wie der Kegel. Die eingeschriebene Pyramide liegt im Kegel; die umschriebene enthält ihn.\n\nBei immer feinerer Annäherung, beispielsweise durch fortgesetztes Verdoppeln der Eckenzahl, nähern sich beide Grundflächen dem Kreis an. Ihre Flächeninhalte $G_n^-$ und $G_n^+$ nähern sich von innen beziehungsweise außen dem Kreisflächeninhalt $\\pi r^2$. Wenn die Zentriwinkel der regelmäßigen Vielecke kleiner werden, nähert sich der Radius eines Innenkreises im einbeschriebenen Vieleck dem Radius r. Ebenso nähert sich der Radius eines Außenkreises um das umbeschriebene Vieleck dem Radius r. Die noch fehlenden beziehungsweise überschüssigen Flächen liegen damit in einem immer dünneren Kreisring. Mit der Kreisflächenformel wird anschaulich klar, dass die Fläche dieses Rings und damit die beiden Flächenunterschiede beliebig klein werden können. Entsprechend füllen die eingeschriebenen Pyramiden den Kegel immer genauer aus, während der Überschuss der umschriebenen Pyramiden immer kleiner wird.\n\nFür jede dieser Pyramiden gilt $V_n^-=\\frac13G_n^-h_K$ beziehungsweise $V_n^+=\\frac13G_n^+h_K$. Der Faktor $\\frac13h_K$ bleibt unverändert. Deshalb nähern sich beide Pyramidenvolumina demselben Wert $\\frac13\\pi r^2h_K$. Das Kegelvolumen liegt zwischen ihnen und wird dadurch anschaulich als $V_K=\\frac13\\pi r^2h_K$ plausibel. Der Faktor ein Drittel stammt aus der Pyramidenformel; die bloße Annäherung einer Vielecksfläche an einen Kreis würde ihn allein nicht begründen. Die Erklärung verwendet keinen zweiten bekannten Kegelvolumensatz als Begründung.\n\nFür das Kegeldach gilt $V_K=\\frac13\\pi\\cdot 2^2\\cdot 1{,}5\\,\\mathrm{m}^3=2\\pi\\,\\mathrm{m}^3\\approx6{,}28\\,\\mathrm{m}^3$.",
+    "scoring": {
+      "maxPoints": 6,
+      "passingPoints": 6,
+      "steps": [
+        {
+          "id": "cone-pyramid-families",
+          "points": 1,
+          "description": "Geeignete einbeschriebene und umbeschriebene regelmäßige Grundvielecke sowie die gemeinsame Spitze und die unveränderte senkrechte Höhe h_K richtig beschreiben oder skizzieren."
+        },
+        {
+          "id": "cone-pyramid-law",
+          "points": 1,
+          "description": "Die bekannte Pyramidenformel V = ein Drittel G h_K auf beide Näherungskörper anwenden; Grundflächeninhalt und feste senkrechte Höhe müssen erkennbar zugeordnet sein."
+        },
+        {
+          "id": "cone-base-area-approximation",
+          "points": 1,
+          "description": "Geometrisch erläutern, warum sich bei wachsender Eckenzahl die beiden Grundflächen dem Kreis und ihre Flächeninhalte pi r² annähern; nur eine steigende Eckenzahl zu erwähnen genügt nicht."
+        },
+        {
+          "id": "cone-inner-outer-solids",
+          "points": 1,
+          "description": "Die eingeschriebene Pyramide als im Kegel liegend und die umschriebene als den Kegel enthaltend deuten; erklären, dass die verbleibenden räumlichen Unterschiede bei feinerer Näherung verschwinden."
+        },
+        {
+          "id": "cone-volume-conclusion",
+          "points": 1,
+          "description": "Aus der Annäherung beider Grundflächeninhalte und der festen Höhe nachvollziehbar V_K = ein Drittel pi r² h_K folgern und den Faktor ein Drittel auf die Pyramidenformel zurückführen; bloßes Zitieren der Kegelformel oder der unendlichen Eckenzahl genügt nicht."
+        },
+        {
+          "id": "cone-roof-volume",
+          "points": 1,
+          "description": "Die begründete Formel mit r = 2 m und h_K = 1,5 m richtig anwenden und 2 pi m³ und ungefähr 6,28 m³ erhalten."
+        }
+      ]
+    }
+  }
+}

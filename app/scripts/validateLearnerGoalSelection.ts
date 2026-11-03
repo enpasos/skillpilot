@@ -7,6 +7,7 @@ import { LanguageProvider } from '../src/contexts/LanguageContext'
 import type { UiGoal } from '../src/goalTypes'
 import {
   getFocusMutationRevealTarget,
+  getRequiredGoalSelectionOptions,
   getInitialLearnerGoalReveal,
   getNextVisibleLearnerGoalSelection,
   isActiveGoalRevealEventType,
@@ -925,5 +926,18 @@ const emptyAliasChildren = new Map(genericSubjectChildren)
 emptyAliasChildren.set('subject-alias', [])
 assert.equal(collapseLearnerSubjectRoots(genericSubjectGoals, emptyAliasChildren).subjectRootIdByAlias.size, 0,
   'A filtered-empty alias must not become an invented replacement branch.')
+
+
+const retainedAssessmentChoice = { id: 'current-exam', nodeKind: 'exam' }
+const unrelatedFrontierChoice = { id: 'ordinary-next' }
+assert.deepEqual(getRequiredGoalSelectionOptions({ frontier: [unrelatedFrontierChoice],
+  stateMachine: { requiredAction: 'setActiveGoal', goalOptions: [retainedAssessmentChoice] } }), [retainedAssessmentChoice],
+  'A retained same-ID exam confirmation must not be hidden by the raw frontier.')
+assert.deepEqual(getRequiredGoalSelectionOptions({ frontier: [unrelatedFrontierChoice],
+  stateMachine: { requiredAction: 'setActiveGoal', goalOptions: [] } }), [],
+  'An unavailable current-task confirmation must not invent a replacement choice.')
+assert.deepEqual(getRequiredGoalSelectionOptions({ frontier: [unrelatedFrontierChoice],
+  stateMachine: { requiredAction: 'teachActiveGoal', goalOptions: [retainedAssessmentChoice] } }), [unrelatedFrontierChoice],
+  'Ordinary non-selection frontier behavior remains unchanged.')
 
 console.log('✅ Learner goal selection regression checks passed.')

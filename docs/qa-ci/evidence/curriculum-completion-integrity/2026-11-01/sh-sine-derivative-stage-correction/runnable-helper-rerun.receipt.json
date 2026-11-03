@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "change": "Locate repository from exact backend/build.gradle.kts and app/package.json ancestor markers; supports repository and retained evidence helper locations independent of cwd.",
+  "oldHelperSha256": "e24dcda6a25e4aea4585dd86aa4700a32593625ec4e8933cc9a578dbffd3c542",
+  "newHelperSha256": "52e26ae08f04334a6b19704136b47887ae04f3fc5f34b856330a78c0464db74f",
+  "sourceAndRetainedHelperIdentical": true,
+  "repositoryRoot": "/home/enpasos/projects/skillpilot",
+  "runs": [
+    {
+      "entryPoint": "repository-script",
+      "command": [
+        "/home/enpasos/.pyenv/versions/3.12.9/bin/python",
+        "-O",
+        "/home/enpasos/projects/skillpilot/scripts/test_math_sh_sine_derivative_scope_guards.py"
+      ],
+      "cwd": "/tmp",
+      "startedAt": "2026-11-01T07:53:56.394615+00:00",
+      "completedAt": "2026-11-01T07:53:57.344238+00:00",
+      "exitCode": 0,
+      "logPath": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/sh-sine-derivative-stage-correction/portable-helper-repository-script.log",
+      "logSha256": "6b7b6a56c7dc90b1c20662f04779a26d2224aa07b7e91b9f7238e86f81cba344"
+    },
+    {
+      "entryPoint": "retained-evidence-helper",
+      "command": [
+        "/home/enpasos/.pyenv/versions/3.12.9/bin/python",
+        "-O",
+        "/home/enpasos/projects/skillpilot/docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/sh-sine-derivative-stage-correction/test_math_sh_sine_derivative_scope_guards.py"
+      ],
+      "cwd": "/tmp",
+      "startedAt": "2026-11-01T07:53:57.344450+00:00",
+      "completedAt": "2026-11-01T07:53:58.313998+00:00",
+      "exitCode": 0,
+      "logPath": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/sh-sine-derivative-stage-correction/portable-helper-retained-evidence-helper.log",
+      "logSha256": "6b7b6a56c7dc90b1c20662f04779a26d2224aa07b7e91b9f7238e86f81cba344"
+    }
+  ],
+  "optimizedProbesPerEntryPoint": 11,
+  "historicalGuardResultBytesUnchanged": true,
+  "historicalAstraReceiptUnchanged": true,
+  "historicalManifestUnchanged": true,
+  "summaryV1Unchanged": true,
+  "liveProductDataChanged": false
+}

@@ -1,0 +1,486 @@
+{
+  "reviewer": "/root/astra_math_material_scope_resume",
+  "date": "2026-11-01",
+  "status": "CONFIRMED_REQUIRED_CARD_SCOPE_DEFECT; PASS_SOURCE_SCOPE_OPTION_ONLY; MATERIALIZATION_PENDING",
+  "noRootMutation": true,
+  "baselineAudit": {
+    "path": "tmp/approach-review-20261101/post-normal-preparation-native-154-audit.json",
+    "sha256": "2f5c7459c47b14210c3f66ff97387e96a41e7f5f1becbd31c0a9b49eebfa903b"
+  },
+  "wholeMemoryContract": {
+    "id": "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+    "title": "Lernkarten - Stochastik-Kernbegriffe",
+    "titleEn": "Flashcards - Core Stochastics Terms",
+    "description": "Die lernende Person festigt zentrale Begriffe und Formeln zu Wahrscheinlichkeiten, Zufallsgrößen, Verteilungen und Hypothesentests. Verstehen und Anwenden werden in den zugehörigen Lernzielen geübt.",
+    "descriptionEn": "The learner consolidates key concepts and formulas for probabilities, random variables, distributions, and hypothesis tests. Understanding and application are practiced in the related learning goals.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "srs-deck:de_gymnasium_math_stochastics_core",
+      "memorization"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "vocabularySource": "/data/de_gymnasium_math_flashcards_stochastics_core.de.json",
+      "vocabularySourceEn": "/data/de_gymnasium_math_flashcards_stochastics_core.en.json"
+    },
+    "contains": [],
+    "requires": [
+      "09f47964-2cd0-410e-93ee-9632b582fc91",
+      "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+      "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024",
+      "demandLevel": "AB1",
+      "processCompetencies": [
+        "K5"
+      ],
+      "guidingIdeas": [
+        "L1",
+        "L4"
+      ],
+      "phase": "GLOBAL"
+    },
+    "nodeKind": "memory",
+    "type": "atomic"
+  },
+  "wholeBilingualDeckContracts": {
+    "de": {
+      "deckId": "de_gymnasium_math_stochastics_core",
+      "title": "Stochastik-Core - Kernaussagen",
+      "cards": [
+        {
+          "id": "math_stoch_c01",
+          "front": "Formel für bedingte Wahrscheinlichkeit $P(A|B)$",
+          "back": "$P(A|B) = \\frac{P(A \\cap B)}{P(B)}$",
+          "category": "Grundlagen",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c02",
+          "front": "Bedingung für stochastische Unabhängigkeit von $A$ und $B$",
+          "back": "$P(A \\cap B) = P(A) \\cdot P(B)$",
+          "category": "Grundlagen",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c03",
+          "front": "Laplace-Experiment: Bedingung und Berechnung",
+          "back": "Alle Ergebnisse sind gleich wahrscheinlich.\n\n$P(E) = \\frac{\\text{Anzahl günstige Ergebnisse}}{\\text{Anzahl mögliche Ergebnisse}}$",
+          "category": "Grundlagen",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c04",
+          "front": "Erwartungswert $E(X)$ einer Zufallsgröße",
+          "back": "Summe der Produkte aus Wert und Wahrscheinlichkeit.\n\n$\\mu = \\sum x_i \\cdot P(X=x_i)$",
+          "category": "Kenngrößen",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c05",
+          "front": "Binomialkoeffizient $\\binom{n}{k}$: Bedeutung",
+          "back": "Anzahl der Möglichkeiten, $k$ Elemente aus $n$ Elementen auszuwählen.\n\nOhne Reihenfolge, ohne Zurücklegen.",
+          "category": "Kombinatorik",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c06",
+          "front": "Bernoulli-Formel (Binomialverteilung)",
+          "back": "$P(X=k) = \\binom{n}{k} \\cdot p^k \\cdot (1-p)^{n-k}$",
+          "category": "Verteilungen",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c07",
+          "front": "Erwartungswert $\\mu$ einer Binomialverteilung",
+          "back": "$\\mu = n \\cdot p$",
+          "category": "Verteilungen",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c08",
+          "front": "Standardabweichung $\\sigma$ einer Binomialverteilung",
+          "back": "$\\sigma = \\sqrt{n \\cdot p \\cdot (1-p)}$",
+          "category": "Verteilungen",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c09",
+          "front": "1-2-3-Sigma-Regel (Normalverteilung)",
+          "back": "$\\approx 68\\%$ in $[\\mu-\\sigma,\\mu+\\sigma]$\n\n$\\approx 95\\%$ in $[\\mu-2\\sigma,\\mu+2\\sigma]$\n\n$\\approx 99{,}7\\%$ in $[\\mu-3\\sigma,\\mu+3\\sigma]$",
+          "category": "Verteilungen",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c10",
+          "front": "Hypothesentest: \n\nFehler 1. Art ($\\alpha$-Fehler)",
+          "back": "Die Nullhypothese $H_0$ wird abgelehnt, obwohl sie wahr ist.",
+          "category": "Tests",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c11",
+          "front": "Hypothesentest: \n\nFehler 2. Art ($\\beta$-Fehler)",
+          "back": "Die Nullhypothese $H_0$ wird beibehalten, obwohl die Alternativhypothese $H_1$ wahr ist.",
+          "category": "Tests",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c12",
+          "front": "Rechtsseitiger Test: Aufbau der Nullhypothese",
+          "back": "$H_0: p \\le p_0$.\n\nAblehnungsbereich liegt rechts.",
+          "category": "Tests",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+    },
+    "en": {
+      "deckId": "de_gymnasium_math_stochastics_core",
+      "title": "Core Stochastics - Key Statements",
+      "cards": [
+        {
+          "id": "math_stoch_c01",
+          "front": "Formula for conditional probability $P(A|B)$",
+          "back": "$P(A|B) = \\frac{P(A \\cap B)}{P(B)}$",
+          "category": "Basics",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c02",
+          "front": "Condition for stochastic independence of $A$ and $B$",
+          "back": "$P(A \\cap B) = P(A) \\cdot P(B)$",
+          "category": "Basics",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c03",
+          "front": "Laplace experiment: condition and calculation",
+          "back": "All outcomes are equally likely.\n\n$P(E) = \\frac{\\text{number of favorable outcomes}}{\\text{number of possible outcomes}}$",
+          "category": "Basics",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c04",
+          "front": "Expected value $E(X)$ of a random variable",
+          "back": "Sum of products of value and probability.\n\n$\\mu = \\sum x_i \\cdot P(X=x_i)$",
+          "category": "Measures",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c05",
+          "front": "Binomial coefficient $\\binom{n}{k}$: meaning",
+          "back": "Number of ways to choose $k$ elements from $n$ elements.\n\nWithout order, without replacement.",
+          "category": "Combinatorics",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c06",
+          "front": "Bernoulli formula (binomial distribution)",
+          "back": "$P(X=k) = \\binom{n}{k} \\cdot p^k \\cdot (1-p)^{n-k}$",
+          "category": "Distributions",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c07",
+          "front": "Expected value $\\mu$ of a binomial distribution",
+          "back": "$\\mu = n \\cdot p$",
+          "category": "Distributions",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c08",
+          "front": "Standard deviation $\\sigma$ of a binomial distribution",
+          "back": "$\\sigma = \\sqrt{n \\cdot p \\cdot (1-p)}$",
+          "category": "Distributions",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c09",
+          "front": "1-2-3 sigma rule (normal distribution)",
+          "back": "$\\approx 68\\%$ in $[\\mu-\\sigma,\\mu+\\sigma]$\n\n$\\approx 95\\%$ in $[\\mu-2\\sigma,\\mu+2\\sigma]$\n\n$\\approx 99.7\\%$ in $[\\mu-3\\sigma,\\mu+3\\sigma]$",
+          "category": "Distributions",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c10",
+          "front": "Hypothesis test:\n\nType I error ($\\alpha$ error)",
+          "back": "The null hypothesis $H_0$ is rejected even though it is true.",
+          "category": "Tests",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c11",
+          "front": "Hypothesis test:\n\nType II error ($\\beta$ error)",
+          "back": "The null hypothesis $H_0$ is retained even though the alternative $H_1$ is true.",
+          "category": "Tests",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "math_stoch_c12",
+          "front": "Right-tailed test: form of the null hypothesis",
+          "back": "$H_0: p \\le p_0$.\n\nRejection region is on the right.",
+          "category": "Tests",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+    }
+  },
+  "exactAffectedOffers": [
+    "DE-SH/CrossStage/G8/GK",
+    "DE-SH/CrossStage/G9/GK",
+    "DE-SH/SekII/G8/GK",
+    "DE-SH/SekII/G9/GK"
+  ],
+  "actualResolverEvidence": {
+    "path": "tmp/approach-review-20261101/astra-remaining-material-scope/sh-memory-required-card-native.json",
+    "sha256": "93fee381c1cc35ee28077986ac18f2ce25110341429418ba051d0c7299bdafd5",
+    "fourProfilesTwoLanguages": 8,
+    "productionMethods": [
+      "getGoalProjection",
+      "automaticCompletionTargets",
+      "getVocabularySource",
+      "loadSrsDeckCards(goal, source, true)",
+      "filterSrsCards",
+      "isSrsMasteredByVerifiedRecall"
+    ],
+    "deckResolution": "DeckResourceService with pinned current repository generation; no package or classpath fallback manufactured",
+    "filterTags": [
+      "GK",
+      "LK",
+      "memorization"
+    ],
+    "filterLogic": "Any card tag matches any goal filter tag; no course/jurisdiction parameter; all 12 cards match.",
+    "syntheticRecallWitness": "All twelve passed yields true; only c01-c09 passed yields false. Synthetic maps are an inert predicate witness, not actual learner evidence or a mastery write.",
+    "codeLocations": {
+      "goalFilterTags": "LearnerService.java:1211",
+      "requiredCardsInSnapshot": "LearnerService.java:1384",
+      "everyRequiredCardMustPass": "LearnerService.java:1410",
+      "recallContext": "LearnerService.java:2158",
+      "filter": "LearnerService.java:2227"
+    }
+  },
+  "sourceEvidence": {
+    "primarySource": {
+      "key": "SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+      "title": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024",
+      "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+      "textPath": "tmp/sh_text/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.layout.txt",
+      "role": "binding-upper-secondary-mathematics",
+      "official": true,
+      "url": "https://fachportal.lernnetz.de/sh/faecher/mathematik/fachanforderungen.html?file=files/Fachanforderungen%20und%20Leitf%C3%A4den/Sekundarstufe/Fachanforderungen/Fachanforderungen%20Mathematik%20Sekundarstufe%20%282024%29%2C%20barrierearm.pdf&cid=16990"
+    },
+    "levelRule": "Printed p60: bold AND grey in first two columns denotes content beyond basic level. All 18 extracted competencies/topics on printed pp72-73 are visibly bold and grey. Printed p71 separately assigns Sigma-Regeln to common content.",
+    "advancedCardIds": [
+      "math_stoch_c10",
+      "math_stoch_c11",
+      "math_stoch_c12"
+    ],
+    "sourceRows": [
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T058-c5a58651a8",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T058",
+        "rowIndex": 58,
+        "title": "Fehler 1. und 2. Art",
+        "description": "Die lernende Person kann fachlich mit Fehler 1. und 2. Art arbeiten.",
+        "sourceText": "Fehler 1. und 2. Art",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3892",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 73",
+        "sourcePage": 73,
+        "sourceLine": 3892,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "GK_LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T062-6d38cbd6d4",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T062",
+        "rowIndex": 62,
+        "title": "rechtsseitiger und linksseitiger Hypothesentest",
+        "description": "Die lernende Person kann fachlich mit rechtsseitigen und linksseitigen Hypothesentests arbeiten.",
+        "sourceText": "rechtsseitiger und linksseitiger Hypothesentest",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3905",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 73",
+        "sourcePage": 73,
+        "sourceLine": 3905,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "GK_LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      }
+    ],
+    "reason": "Page 73 explicitly places errors of type I/II and one-sided hypothesis tests at elevated level. The unchanged whole memory goal mandates recall of these cards in all four pure SH GK offers."
+  },
+  "options": [
+    {
+      "id": "static-whole-goal-nonselection",
+      "verdict": "PASS_SOURCE_SCOPE_OPTION; exact candidate/native review required",
+      "recommended": true,
+      "delta": "Append one direct prerequisiteOnly goalEntry for this memory ID to each existing authored de-sh-gk and de-sh-sekii-gk root. Preserve V9 masks. Generate duration views with existing producers. Expected exactly four pure GK target removals, one goal each.",
+      "unchanged": [
+        "Canonical memory ID, title, descriptions, requires, tags and applicability",
+        "Both whole decks and all card IDs, texts and tags",
+        "All existing global goal mastery and card recall state",
+        "All ordinary foundational targets",
+        "Every LK and GK+LK target set; whole 12-card obligation stays where selected",
+        "Other jurisdictions and SekI offers",
+        "Fixed dated plan baselines and historic completion dates"
+      ],
+      "support": "If a selected consumer still requires this goal, preserve it as unmastered protected support. Support does not seed demand and is not a new target obligation. No implicit memory completion.",
+      "candidateAcceptance": [
+        "Compare all 154 target sets; exactly four selected memory target removals, no other target changes",
+        "Check all GK+LK unions retain their existing whole memory target exactly once",
+        "Report actual uncovered/readiness/hierarchy differences without forcing zero new route errors",
+        "No mastery, recall or plan-baseline writes; existing invalid focus follows explicit reselection/compatibility path",
+        "No claim that the remaining nine cards have individually passed or that all basic content must receive another new memory target"
+      ]
+    },
+    {
+      "id": "new-common-memory-identity-or-split",
+      "verdict": "HOLD; no authoring or migration approval",
+      "reason": "A new goal is a new explicit obligation. It requires a fully reviewed stable contract, whole basic-card source scope, union semantics, card-to-goal recall bindings and explicit migration rules preserving valid old evidence. There is no necessity proof yet for another memory goal solely to replace the unsuitable whole target."
+    },
+    {
+      "id": "contextual-three-card-filter-on-existing-ID",
+      "verdict": "REJECT",
+      "reason": "Different required-card contracts under one stable goal would create context-dependent mastery or silently weaken the whole goal contract."
+    },
+    {
+      "id": "global-retag-or-delete-three-cards",
+      "verdict": "REJECT",
+      "reason": "Would alter unrelated existing course contracts and valid global card bindings without a source-specific migration decision."
+    }
+  ],
+  "limits": [
+    "This is separate from V9 fourteen-target correction; historic V9 evidence is unchanged.",
+    "Actual four-profile resolver and inert recall predicate are verified; no existing-user database or migration path was executed.",
+    "Nine-card goal content and creation are not approved.",
+    "No deck migration, new goal, dynamic filter, root mutation, CI/M7 pass or implicit memory completion."
+  ],
+  "inputs": {
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "bd14a4e87cf57d5fe9e7da6519508ef3ef9998c45a95bf95aa36012471cf8cb1",
+    "tmp/approach-review-20261101/post-normal-preparation-native-154-audit.json": "2f5c7459c47b14210c3f66ff97387e96a41e7f5f1becbd31c0a9b49eebfa903b",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/sh-memory-required-card-native.json": "93fee381c1cc35ee28077986ac18f2ce25110341429418ba051d0c7299bdafd5",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/sh-memory-required-card-native-bindings.json": "1d5dbec6b255751d4b225fe6a609e39864e18e46751f6a580e571fe92452acff",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/ShMemoryCardScopeProbe.java": "e5d787ebd0dd9084560e7efdbe7153fd772bb9c8f142e67f6e477b2379406aae",
+    "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf": "17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28",
+    "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java": "a154c85fe703268870db96865dfdef14f53a4cb1c8d0821d92ce3c3a859b1548",
+    "backend/src/main/java/com/skillpilot/backend/service/DeckResourceService.java": "25fb9f6993b0a3431ebd2ce1c02c33a0e495fff8a1b2055cb974fcb75d50a1df",
+    "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_stochastics_core.de.json": "9a8badd5cf880f8fb00e7921766f512078d0cb2f11a586c89a6a1b79e775f580",
+    "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_stochastics_core.en.json": "32eec76558dad768a2a7c217fedb51a472b8a446b130e006e847d2fd654beaa5"
+  }
+}

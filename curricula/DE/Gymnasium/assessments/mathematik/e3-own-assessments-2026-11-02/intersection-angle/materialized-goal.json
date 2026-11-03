@@ -1,0 +1,149 @@
+{
+  "id": "6d1eacae-e3c1-59b5-b4ae-1eb68441b95f",
+  "shortKey": "canonical_math_e3_intersection_angle",
+  "title": "Lokale Schnittwinkel zweier Funktionsgraphen bestimmen",
+  "titleEn": "Find local intersection angles of two function graphs",
+  "description": "Die lernende Person kann den Kompetenzvertrag „Schnittwinkel zwischen Funktionsgraphen deuten“ in einer eigenständigen Abschlussaufgabe nachweisen.",
+  "descriptionEn": "The learner can demonstrate the full reviewed competency in an independently authored assessment.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "ExamTask"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB2",
+    "processCompetencies": [
+      "K2.3",
+      "K3.2",
+      "K5.2"
+    ],
+    "guidingIdeas": [
+      "L1",
+      "L2",
+      "L4"
+    ],
+    "phase": "E",
+    "area": "Analysis",
+    "topicCode": "CANONICAL.MATH.E.DERIVATIVE.INTERSECTION_ANGLES"
+  },
+  "contains": [],
+  "requires": [
+    "56b4acb5-6024-573f-9890-35fbd21ee343"
+  ],
+  "extendedData": {
+    "applicabilityFromRequires": true,
+    "applicabilityMappingInheritance": "boundary"
+  },
+  "sourceRef": "Eigenständig verfasste SkillPilot-Abschlussaufgabe für den bereits ausgewählten ganzen Kompetenzvertrag; keine amtliche Prüfungsaufgabe oder zusätzliche amtliche Source-Coverage-Behauptung.",
+  "type": "atomic",
+  "nodeKind": "exam",
+  "examData": {
+    "reviewStatus": "released",
+    "taskContent": "Gegeben sind $f(x)=x^2$ und $g(x)=x$. Ihre Schnittpunkte sind bereits bekannt: $P_0(0|0)$ und $P_1(1|1)$.\n\n1. Bestimme die Tangentensteigungen beider Graphen in jedem der beiden Schnittpunkte. (6 BE)\n2. Bestimme in jedem Schnittpunkt den kleineren Schnittwinkel der Graphen. Gib die Winkel exakt oder als Gradnäherung auf eine Nachkommastelle an und zeige deinen Rechenweg. (4 BE)\n3. Erläutere die lokale Bedeutung der beiden Winkel. Erkläre insbesondere, warum sie sich unterscheiden können, obwohl dieselben beiden Graphen betrachtet werden. (2 BE)",
+    "taskContentEn": "Let $f(x)=x^2$ and $g(x)=x$. Their intersection points are already given: $P_0=(0,0)$ and $P_1=(1,1)$.\n\n1. Find the tangent slopes of both graphs at each intersection point. (6 points)\n2. Find the smaller intersection angle of the graphs at each point. Give exact angles or values in degrees rounded to one decimal place, showing your method. (4 points)\n3. Explain the local meaning of the two angles. In particular, explain why they can differ even though the same two graphs are involved. (2 points)",
+    "solutionContent": "Es gilt $f'(x)=2x$ und $g'(x)=1$. In $P_0$ sind die Tangentensteigungen $m_f=0$ und $m_g=1$; in $P_1$ sind sie $m_f=2$ und $m_g=1$.\n\nFür den kleineren Winkel der Tangenten kann hier\n$$\\tan\\alpha=\\left|\\frac{m_f-m_g}{1+m_fm_g}\\right|$$\nverwendet werden. In $P_0$ folgt $\\tan\\alpha_0=1$, also $\\alpha_0=45^\\circ$. In $P_1$ folgt $\\tan\\alpha_1=\\tfrac13$, also der durch $\\arctan(\\tfrac13)$ bestimmte spitze Winkel, im Gradmaß $\\alpha_1\\approx18.4349488^\\circ\\approx18.4^\\circ$.\n\nGleichwertig ist die Differenz der passend gewählten Tangentenrichtungswinkel oder der Winkel zwischen den Richtungsvektoren $(1,m_f)$ und $(1,m_g)$ mit Auswahl des kleineren Winkels.\n\nEin Graphenschnittwinkel ist der Winkel der beiden Tangenten **am jeweiligen Schnittpunkt**, keine einzige globale Winkelzahl für die vollständigen Kurven. Die Parabeltangente hat bei $P_0$ Steigung $0$, bei $P_1$ Steigung $2$; die Geradentangente hat jeweils Steigung $1$. Deshalb treffen die Graphen lokal einmal mit $45^\\circ$ und einmal mit etwa $18.4^\\circ$ aufeinander. Die Verbindungsgerade der beiden Schnittpunkte ist keine Ersatz-Tangente der Parabel. Die Schnittpunkte müssen nicht erneut berechnet werden.\n\n**Normale Gesamtkappung:** Fehlt jede fachlich zutreffende lokale Deutung als Tangentenwinkel am betrachteten Schnittpunkt, wird die Gesamtpunktzahl vor dem Vergleich mit 9 BE auf höchstens 8 von 12 BE begrenzt. Eine kurze richtige lokale Erklärung genügt.\n\n**Bewertungshinweis:** Die Musterlösung ist nicht ausschließlich. Gleichwertige korrekte Terme, nachvollziehbare alternative Verfahren und zulässige Näherungen anerkennen. Teilpunkte getrennt vergeben. Einen Rechen- oder Abschreibfehler nicht mehrfach als denselben Fehler abziehen; erkennbare fachlich richtige Folgearbeit würdigen, ohne falsche Aussagen als richtig auszugeben. Nur die eingereichte, verlässlich lesbare Arbeit bewerten. Es gibt genau eine Gesamtpunktzahl und eine Schwelle, gegebenenfalls nach der ausdrücklich genannten normalen Gesamtkappung; keine zusätzlichen Teilpassfelder.",
+    "solutionContentEn": "We have $f'(x)=2x$ and $g'(x)=1$. At $P_0$, the tangent slopes are $m_f=0$ and $m_g=1$; at $P_1$, they are $m_f=2$ and $m_g=1$.\n\nHere the smaller angle between the tangents can be found from\n$$\\tan\\alpha=\\left|\\frac{m_f-m_g}{1+m_fm_g}\\right|.$$\nAt $P_0$, this gives $\\tan\\alpha_0=1$, hence $\\alpha_0=45^\\circ$. At $P_1$, it gives $\\tan\\alpha_1=\\tfrac13$, so the acute angle is determined by $\\arctan(\\tfrac13)$ and has degree measure $\\alpha_1\\approx18.4349488^\\circ\\approx18.4^\\circ$.\n\nEquivalent methods include a suitable difference of tangent direction angles or the angle between direction vectors $(1,m_f)$ and $(1,m_g)$, selecting the smaller angle.\n\nThe intersection angle is the angle of the two tangents **at that particular intersection**, not one global angle for the entire curves. The parabola tangent has slope $0$ at $P_0$ and $2$ at $P_1$, whereas the line tangent has slope $1$ at both points. The graphs therefore meet locally at $45^\\circ$ and approximately $18.4^\\circ$, respectively. The line joining the two intersection points is not a substitute for the parabola tangent. The given intersections need not be calculated again.\n\n**Ordinary total-score cap:** If there is no mathematically correct local interpretation as the tangent angle at the intersection under consideration, cap the total at 8 out of 12 before comparing with threshold 9. A concise correct local explanation suffices.\n\n**Grading note:** The reference solution is not exclusive. Accept equivalent correct expressions, valid alternative methods and permitted approximations. Award partial credit by step. Do not penalise one arithmetic or copying error repeatedly as the same error; credit traceable correct follow-through without treating false statements as true. Grade reliably legible submitted work. There is one total score and one threshold, after any explicitly stated ordinary total-score cap; no additional part-pass fields.",
+    "coveredGoalIds": [
+      "56b4acb5-6024-573f-9890-35fbd21ee343"
+    ],
+    "scoring": {
+      "maxPoints": 12,
+      "passingPoints": 9,
+      "steps": [
+        {
+          "id": "derivative-f",
+          "points": 1,
+          "description": "f'(x)=2x korrekt.",
+          "descriptionEn": "Correct f'(x)=2x."
+        },
+        {
+          "id": "derivative-g",
+          "points": 1,
+          "description": "g'(x)=1 korrekt.",
+          "descriptionEn": "Correct g'(x)=1."
+        },
+        {
+          "id": "slope-f-zero",
+          "points": 1,
+          "description": "Parabeltangentensteigung 0 in P0.",
+          "descriptionEn": "Parabola tangent slope 0 at P0."
+        },
+        {
+          "id": "slope-g-zero",
+          "points": 1,
+          "description": "Geradentangentensteigung 1 in P0.",
+          "descriptionEn": "Line tangent slope 1 at P0."
+        },
+        {
+          "id": "slope-f-one",
+          "points": 1,
+          "description": "Parabeltangentensteigung 2 in P1.",
+          "descriptionEn": "Parabola tangent slope 2 at P1."
+        },
+        {
+          "id": "slope-g-one",
+          "points": 1,
+          "description": "Geradentangentensteigung 1 in P1.",
+          "descriptionEn": "Line tangent slope 1 at P1."
+        },
+        {
+          "id": "angle-zero-method",
+          "points": 1,
+          "description": "Gültiger Tangentenwinkelweg in P0; gleichwertige Verfahren und sinnvolle Folgearbeit anerkennen.",
+          "descriptionEn": "Valid tangent-angle method at P0; accept equivalent methods and meaningful follow-through."
+        },
+        {
+          "id": "angle-zero-value",
+          "points": 1,
+          "description": "Kleinerer Winkel 45 Grad korrekt.",
+          "descriptionEn": "Correct smaller angle of 45 degrees."
+        },
+        {
+          "id": "angle-one-method",
+          "points": 1,
+          "description": "Gültiger Tangentenwinkelweg in P1.",
+          "descriptionEn": "Valid tangent-angle method at P1."
+        },
+        {
+          "id": "angle-one-value",
+          "points": 1,
+          "description": "Kleinerer Winkel arctan(1/3), etwa 18,4 Grad; korrekte genauere Angabe ebenfalls anerkennen.",
+          "descriptionEn": "Correct smaller angle determined by arctan(1/3), approximately 18.4 degrees; accept a correct more precise value."
+        },
+        {
+          "id": "local-meaning",
+          "points": 2,
+          "description": "Winkel der Tangenten am jeweiligen Schnittpunkt erklärt 1 BE; unterschiedliche Parabeltangenten als Grund der verschiedenen Winkel erklärt 1 BE. Normale Gesamtkappung: Fehlt jede fachlich zutreffende lokale Deutung als Tangentenwinkel am betrachteten Schnittpunkt, wird die Gesamtpunktzahl vor dem Vergleich mit 9 BE auf höchstens 8 von 12 BE begrenzt. Eine kurze richtige lokale Erklärung genügt.",
+          "descriptionEn": "Explains the angle between tangents at the particular intersection 1 point; explains the differing parabola tangents as the reason for the differing angles 1. Ordinary total-score cap: If there is no mathematically correct local interpretation as the tangent angle at the intersection under consideration, cap the total at 8 out of 12 before comparing with threshold 9. A concise correct local explanation suffices."
+        }
+      ]
+    },
+    "reviewNote": "Eigene SkillPilot-Abschlussaufgabe; ganzer DE/EN-Inhalt und Rubrik unabhängig geprüft (295d5df8); Platzierung separat geprüft, noch keine Laufzeitabnahme.",
+    "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/e3-own-assessments-2026-11-02/intersection-angle/task.de.md"
+  },
+  "resourceLinks": [],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  }
+}

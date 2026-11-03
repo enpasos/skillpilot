@@ -1,0 +1,396 @@
+{
+  "status": "WHOLE_UNCHANGED_EXISTING_CONTRACTS_NOT_NEW_CONTENT_OR_SCOPE_PASS",
+  "jointCanonical": {
+    "path": "tmp/approach-review-20261101/joint-stats-geo-nw-native-v3-20261102/candidate-capsule/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "a772d544fc3bf91047c887bb1017ff83b32b2f62bdd8ff0cc263d041917d9482",
+    "bytes": 4043037
+  },
+  "initialIndependentReview": {
+    "path": "tmp/approach-review-20261101/astra-remaining-material-scope/g8-three-existing-tasks-review-20261102-v1/review.json",
+    "sha256": "31a2d6c25ae404d44c0df68844d87fb9b7acc892d4b21a0b3ce91424b2bc62a4",
+    "bytes": 17595
+  },
+  "wholeGoals": [
+    {
+      "id": "af7905d0-e684-5ea3-99ac-8a045455370e",
+      "title": "Aufgabe 1 (Jahrgangsstufe 10, 10 BE)",
+      "description": "Die lernende Person kann eine freigegebene Prüfungsaufgabe der Jahrgangsstufe 10 bearbeiten: Exponentialmodelle, Logarithmen, Halbwertszeit, Asymptotik und Zinseszins im Kontext deuten.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical",
+        "phase:SekI",
+        "ExamTask"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v2.md#task-1",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K1",
+          "K2",
+          "K3",
+          "K4"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J10",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J10.TASK.1"
+      },
+      "shortKey": "canonical_math_sek1_practice_j10_task_1",
+      "contains": [],
+      "requires": [
+        "31207307-0cf9-4a56-bf14-90196dc2b3d4",
+        "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+        "c19d1f8f-b297-5a58-b1d4-26d811e4aff4",
+        "308f19e2-e202-5300-a2fa-1eaa717f4e73",
+        "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+        "c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+        "aed3ca99-815b-40b8-ae91-e11bf92f51da",
+        "367a59ce-a388-5c93-b6f9-a3b0c6c3b45e"
+      ],
+      "phase": "J10",
+      "type": "atomic",
+      "nodeKind": "exam",
+      "examData": {
+        "reviewStatus": "released",
+        "reviewNote": "Begrenzte Inhaltskorrektur vom 01.11.2026 unabhängig mit Astra Ultra fachlich geprüft; exakte Nachkorrekturen berücksichtigt. Nachweis: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-seki-candidate-review.json. Feste vorgegebene Modelle verlangen keine eigene Modellwahl/Annahmenvariation/Grenzenentscheidung. Dieser breite Claim entfällt aus Coverage und direkter Vorbereitung; Parameter-/Exponential-/Logarithmuskompetenzen bleiben. Korrekte Rundung und die fehlende Jahresdefinition werden redaktionell ergänzt.",
+        "coveredGoalIds": [
+          "31207307-0cf9-4a56-bf14-90196dc2b3d4",
+          "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+          "c19d1f8f-b297-5a58-b1d4-26d811e4aff4",
+          "308f19e2-e202-5300-a2fa-1eaa717f4e73",
+          "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+          "c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+          "aed3ca99-815b-40b8-ae91-e11bf92f51da",
+          "367a59ce-a388-5c93-b6f9-a3b0c6c3b45e"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v2.md",
+        "taskContent": "Der Akkustand eines Sensors wird durch $B(t)=1200\\cdot 0{,}82^t$ modelliert. $t$ ist die Zeit in Stunden nach Beginn einer Nachtmessung. Für Ersatzteile wird ein Konto mit $K(n)=2500\\cdot 1{,}035^n$ modelliert; $n$ zählt die Jahre seit Kontoeröffnung.\n\n1. Beschreibe den Verlauf des Graphen von $B$ anhand der Parameter und nenne die Asymptote. (2 BE)\n2. Berechne $B(0)$ und $B(3)$. (1 BE)\n3. Bestimme die Zeit, ab der der Akkustand unter $500 Wh$ fällt, und berechne die Halbwertszeit. Erkläre, warum Logarithmen nötig sind. (4 BE)\n4. Berechne $K(5)$ und erläutere Anfangskapital, Zinssatz, Laufzeit, Endkapital und Zinseszins im Modell. (3 BE)",
+        "solutionContent": "$B$ hat Anfangswert $1200$, Wachstumsfaktor $0{,}82<1$, ist streng fallend und hat die waagerechte Asymptote $y=0$.\n\n$B(0)=1200$, $B(3)=1200\\cdot 0{,}82^3≈661{,}6\\,Wh$.\n\n$1200\\cdot 0{,}82^t<500$ ergibt $t>\\log(500/1200)/\\log(0{,}82)≈4{,}41$. Die Halbwertszeit erfüllt $0{,}82^t=0{,}5$, also $t=\\log(0{,}5)/\\log(0{,}82)≈3{,}49$. Logarithmen sind nötig, weil die gesuchte Zeit im Exponenten steht.\n\n$K(5)=2500\\cdot 1{,}035^5≈2969{,}22$. Anfangskapital $2500\\,\\mathrm{EUR}$, Zinssatz $3{,}5\\,\\%$, Laufzeit $5$ Jahre, Endkapital etwa $2969{,}22\\,\\mathrm{EUR}$; Zinseszins bedeutet, dass Zinsen in Folgejahren mitverzinst werden.\n\nDer exakte Wert B(3)=661,6416 Wh wird auf eine Nachkommastelle zu 661,6 Wh gerundet; andere fachlich sinnvolle Genauigkeiten sind gleichwertig.",
+        "scoring": {
+          "maxPoints": 10,
+          "passingPoints": 5,
+          "steps": [
+            {
+              "id": "j10_released_v2_1",
+              "points": 10,
+              "description": "Exponentialmodelle, Logarithmen, Halbwertszeit, Asymptotik und Zinseszins im Kontext deuten."
+            }
+          ]
+        }
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityFromRequires": true
+      }
+    },
+    {
+      "id": "b1166cc7-dca0-5ac4-b0c4-9a7196186a2a",
+      "title": "Aufgabe 4 (Jahrgangsstufe 10, 8 BE)",
+      "description": "Die lernende Person kann eine freigegebene Prüfungsaufgabe der Jahrgangsstufe 10 bearbeiten: Wurzel-, Potenz- und Substitutionsgleichungen lösen und mögliche Scheinlösungen prüfen.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical",
+        "phase:SekI",
+        "ExamTask"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v1.md#task-4",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K1",
+          "K2",
+          "K3",
+          "K4"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J10",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J10.TASK.4"
+      },
+      "shortKey": "canonical_math_sek1_practice_j10_task_4",
+      "contains": [],
+      "requires": [
+        "14d0e697-3fb0-5074-a08c-7e01ca9bbda8",
+        "d0db87c4-36f5-5ac6-8428-da96d31b253a",
+        "2bd88d66-5daf-53bb-aa02-4c010963679d"
+      ],
+      "phase": "J10",
+      "type": "atomic",
+      "nodeKind": "exam",
+      "examData": {
+        "reviewStatus": "released",
+        "reviewNote": "released after simulated internal review on 2026-06-28 for J10",
+        "coveredGoalIds": [
+          "14d0e697-3fb0-5074-a08c-7e01ca9bbda8",
+          "d0db87c4-36f5-5ac6-8428-da96d31b253a",
+          "2bd88d66-5daf-53bb-aa02-4c010963679d"
+        ],
+        "coveredStrands": [
+          "L1"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v1.md",
+        "taskContent": "In einem CAS-Protokoll sollen drei Gleichungen von Hand kontrolliert werden.\n\n1. Löse $\\sqrt{x+5}=x-1$ durch einmaliges Quadrieren und prüfe mögliche Scheinlösungen. (3 BE)\n2. Löse die Potenzgleichung $x^4=81$ in den reellen Zahlen. (2 BE)\n3. Löse $x^4-5x^2+4=0$ mit der Substitution $z=x^2$ und führe die Rücksubstitution durch. (3 BE)",
+        "solutionContent": "Bei $\\sqrt{x+5}=x-1$ muss $x\\ge1$ gelten. Quadrieren liefert $x+5=x^2-2x+1$, also $x^2-3x-4=0$ und $x=4$ oder $x=-1$; durch Definitionsbedingung und Einsetzen bleibt nur $x=4$.\n\nAus $x^4=81$ folgen die reellen Lösungen $x=3$ und $x=-3$.\n\nSetze $z=x^2$; dann $z^2-5z+4=0$, also $z=1$ oder $z=4$. Rücksubstitution ergibt $x=\\pm1$ oder $x=\\pm2$.",
+        "scoring": {
+          "maxPoints": 8,
+          "passingPoints": 4,
+          "steps": [
+            {
+              "id": "j10_released_v1_4",
+              "points": 8,
+              "description": "Wurzel-, Potenz- und Substitutionsgleichungen lösen und mögliche Scheinlösungen prüfen."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "68ffe46f-7b74-58e0-954b-6b2f83345a82",
+      "shortKey": "canonical_math_j10_structural_split_follow_up_j10_cavalieri_oblique_prism",
+      "title": "Das Volumen eines schiefen Prismas mit Cavalieri erklären",
+      "titleEn": "Explain the volume of an oblique prism using Cavalieri",
+      "description": "Die lernende Person kann die Volumenformel eines schiefen Prismas mit dem Prinzip von Cavalieri plausibilisieren, anwenden und die senkrechte Höhe von einer schiefen Seitenkante unterscheiden.",
+      "descriptionEn": "The learner can make the volume formula for an oblique prism plausible using Cavalieri’s principle, apply it, and distinguish perpendicular height from a slanted edge.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical",
+        "phase:SekI",
+        "ExamTask"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-08-16/j10/j10-cavalieri-oblique-prism/draft_v1.md#aufgabe",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J10",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J10.J10_CAVALIERI_OBLIQUE_PRISM"
+      },
+      "contains": [],
+      "requires": [
+        "a506fc1d-b784-548f-90c3-5aae1b819b68"
+      ],
+      "phase": "J10",
+      "type": "atomic",
+      "nodeKind": "exam",
+      "extendedData": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "a506fc1d-b784-548f-90c3-5aae1b819b68"
+        ],
+        "coveredStrands": [
+          "L2"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-08-16/j10/j10-cavalieri-oblique-prism/draft_v1.md",
+        "taskContent": "Ein gerades und ein schiefes Prisma haben jeweils eine Grundfläche von $G=24\\,\\mathrm{cm}^2$ und dieselbe senkrechte Höhe $h=10\\,\\mathrm{cm}$. Beim schiefen Prisma ist eine Seitenkante $13\\,\\mathrm{cm}$ lang. Jede Ebene parallel zu den Grundflächen schneidet beide Körper in einer Fläche von $24\\,\\mathrm{cm}^2$.\n\n1. Erkläre mit dem Prinzip von Cavalieri, warum beide Prismen dasselbe Volumen besitzen. (3 BE)\n2. Plausibilisiere damit die Formel $V=G\\cdot h$ für das schiefe Prisma und berechne das Volumen. (3 BE)\n3. Erkläre, warum in der Formel $h=10\\,\\mathrm{cm}$ und nicht die $13\\,\\mathrm{cm}$ lange Seitenkante eingesetzt wird. (2 BE)",
+        "solutionContent": "1. In jeder gleichen senkrechten Höhe über den Grundflächen haben die parallelen Querschnitte beider Körper denselben Flächeninhalt $24\\,\\mathrm{cm}^2$. Da außerdem die Körperhöhen übereinstimmen, folgt nach dem Prinzip von Cavalieri, dass die Volumina gleich sind. (3 BE)\n2. Ein gerades Prisma lässt sich als Stapel gleich großer Querschnitte auffassen und besitzt das Volumen $V=G\\cdot h$. Cavalieri überträgt dieses Volumen auf das schiefe Prisma, weil die Querschnittsflächen auf jeder Höhe übereinstimmen. Somit gilt $V=24\\cdot10=240\\,\\mathrm{cm}^3$. (2 BE für die Begründung, 1 BE für Ergebnis und Einheit)\n3. Die Höhe ist der senkrechte Abstand zwischen den Ebenen der Grundflächen. Die schiefe Seitenkante steht nicht senkrecht auf diesen Ebenen und misst deshalb nicht die Dicke des Stapels paralleler Querschnitte. (2 BE)",
+        "scoring": {
+          "maxPoints": 8,
+          "passingPoints": 4,
+          "steps": [
+            {
+              "id": "cavalieri_1",
+              "points": 3,
+              "description": "Volumengleichheit aus höhengleichen Querschnitten mit Cavalieri erklärt"
+            },
+            {
+              "id": "cavalieri_2",
+              "points": 3,
+              "description": "Formel V=G·h plausibilisiert und Volumen korrekt berechnet"
+            },
+            {
+              "id": "cavalieri_3",
+              "points": 2,
+              "description": "Senkrechte Körperhöhe von der schiefen Seitenkante unterschieden"
+            }
+          ]
+        }
+      },
+      "resourceLinks": []
+    },
+    {
+      "id": "2bd88d66-5daf-53bb-aa02-4c010963679d",
+      "shortKey": "canonical_math_sek1_j10_use_substitution_to_solve_equations",
+      "title": "Substitution zum Lösen von Gleichungen anwenden",
+      "titleEn": "Use substitution to solve equations",
+      "description": "Die lernende Person kann Gleichungen durch eine geeignete Substitution auf eine bekannte Gleichungsform zurückführen, die Rücksubstitution durchführen und die Lösungen prüfen.",
+      "descriptionEn": "The learner can use a suitable substitution to reduce equations to a known equation form, back-substitute, and check the solutions.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.1",
+          "K4.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "J10",
+        "area": "Algebra",
+        "topicCode": "CANONICAL.MATH.SEK1.J10.EQUATIONS.SUBSTITUTION"
+      },
+      "contains": [],
+      "requires": [
+        "9023226b-fc17-412b-807c-2bb45cd551d5",
+        "d0db87c4-36f5-5ac6-8428-da96d31b253a"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.3.1, Kompetenz 8, S. 31.",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "2bd88d66-5daf-53bb-aa02-4c010963679d",
+          "title": "Visualisierung: Substitution zum Lösen von Gleichungen anwenden",
+          "url": "/assets/goal-visualizations/mathematik/2bd88d66-5daf-53bb-aa02-4c010963679d/2bd88d66-5daf-53bb-aa02-4c010963679d.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Substitution zum Lösen von Gleichungen anwenden.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Substitution zum Lösen von Gleichungen anwenden\". Die lernende Person kann Gleichungen durch eine geeignete Substitution auf eine bekannte Gleichungsform zurückführen, die Rücksubstitution durchführen und die Lösungen prüfen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    }
+  ],
+  "originalWholeContextEvidence": {
+    "path": "tmp/approach-review-20261101/astra-remaining-material-scope/g8-three-existing-tasks-review-20261102-v1/current-whole-task-and-preparation-contracts.json",
+    "sha256": "21ce357fa5e8dc23d2c589162b9264297a058137a924fac269e53ba93dcc9f24",
+    "bytes": 615025
+  },
+  "all109RelevantWholeAtomsExactlyEqual": true
+}

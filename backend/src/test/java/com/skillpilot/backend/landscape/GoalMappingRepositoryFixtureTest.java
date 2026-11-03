@@ -739,9 +739,18 @@ class GoalMappingRepositoryFixtureTest {
         assertThat(file.getVersion()).isEqualTo(1);
         assertThat(file.getSourceLandscapeId()).isEqualTo(NIEDERSACHSEN_MATH_UPPER_SECONDARY_LANDSCAPE_ID);
         assertThat(file.getTargetLandscapeId()).isEqualTo(CANONICAL_MATH_ID);
-        assertThat(file.getMappings()).hasSize(167);
+        assertThat(file.getMappings()).hasSize(168);
         assertThat(file.getMappings()).filteredOn(entry -> "exact".equals(entry.getMatchType())).hasSize(9);
-        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(158);
+        assertThat(file.getMappings()).filteredOn(entry -> "partial".equals(entry.getMatchType())).hasSize(159);
+        // The reviewed source separates projection tasks into their actual R3
+        // and R2 atomic contracts; the former broad matrix aggregate is gone.
+        assertThat(file.getMappings())
+                .filteredOn(entry -> "67bd9b91-3c08-4d20-9200-8241d66cb2c1".equals(entry.getLegacyGoalId()))
+                .extracting(GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
+                .containsExactlyInAnyOrder(
+                        Tuple.tuple("55039f9c-4ebc-5115-add5-fae95b915e46", "partial"),
+                        Tuple.tuple("4d331ba0-56d6-5730-a51b-e3d1126b31ba", "partial"))
+                .doesNotContain(Tuple.tuple("803d910d-96d1-5118-b9ca-29e93d0da76d", "partial"));
         assertThat(file.getMappings())
                 .extracting(GoalMappingEntry::getLegacyGoalId, GoalMappingEntry::getCanonicalGoalId, GoalMappingEntry::getMatchType)
                 .contains(

@@ -1,0 +1,300 @@
+{
+  "schemaVersion": 2,
+  "kind": "existing-assessment-placement",
+  "status": "independent-ai-reviewed",
+  "selectionId": "rp-g8-final-year-sphere-routes-v1-stable-target-anchor-rebase",
+  "reviewReceipt": {
+    "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/independent-anchor-rebase-review.json",
+    "sha256": "714382a3cf96db04681b18e207b78e20f5de827702d3c77ff1e5fbb3f4ab14f0"
+  },
+  "taskGoalIds": [
+    "64f37348-20f7-55b1-82a8-8fc388087577",
+    "926d0551-4537-569e-b6ad-fc33bb17546e"
+  ],
+  "operations": [
+    {
+      "viewId": "de-rp-gym-math-gk-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+      "expectedScope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G8"
+      },
+      "mode": "replace-exact-existing-final-year-exam-slot-with-selected-wrapper",
+      "yearStructureId": "rp-klasse9-10-msa-g8",
+      "yearDisplayLabel": "Klassenstufe 9 (G8)",
+      "originalExamSlotIndex": 1,
+      "expectedOriginalExamReference": {
+        "kind": "canonicalSubtree",
+        "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+        "displayLabel": "Prüfungen Jahrgangsstufe 9"
+      },
+      "expectedYearStructureSha256": "ad6e0fe417a62fc11c9af6c6c585ce5a74c3584c719bb6dba8e2d6ffd6e3941e",
+      "replacementNode": {
+        "kind": "structure",
+        "id": "rp-g8-final-year-reviewed-exams",
+        "label": "Prüfungen Jahrgangsstufe 9",
+        "children": [
+          {
+            "kind": "canonicalSubtree",
+            "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+            "displayLabel": "Basisaufgaben"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "64f37348-20f7-55b1-82a8-8fc388087577"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "926d0551-4537-569e-b6ad-fc33bb17546e"
+          }
+        ]
+      },
+      "newTargetGoalIds": [
+        "64f37348-20f7-55b1-82a8-8fc388087577",
+        "926d0551-4537-569e-b6ad-fc33bb17546e"
+      ],
+      "expectedAfterYearStructureSha256": "809b439c51ac3d90f36bb2812060074ec9bcfa9a87ccb897e73169def068f6cd"
+    },
+    {
+      "viewId": "de-rp-gym-math-lk-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+      "expectedScope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G8"
+      },
+      "mode": "replace-exact-existing-final-year-exam-slot-with-selected-wrapper",
+      "yearStructureId": "rp-klasse9-10-msa-g8",
+      "yearDisplayLabel": "Klassenstufe 9 (G8)",
+      "originalExamSlotIndex": 1,
+      "expectedOriginalExamReference": {
+        "kind": "canonicalSubtree",
+        "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+        "displayLabel": "Prüfungen Jahrgangsstufe 9"
+      },
+      "expectedYearStructureSha256": "ad6e0fe417a62fc11c9af6c6c585ce5a74c3584c719bb6dba8e2d6ffd6e3941e",
+      "replacementNode": {
+        "kind": "structure",
+        "id": "rp-g8-final-year-reviewed-exams",
+        "label": "Prüfungen Jahrgangsstufe 9",
+        "children": [
+          {
+            "kind": "canonicalSubtree",
+            "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+            "displayLabel": "Basisaufgaben"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "64f37348-20f7-55b1-82a8-8fc388087577"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "926d0551-4537-569e-b6ad-fc33bb17546e"
+          }
+        ]
+      },
+      "newTargetGoalIds": [
+        "64f37348-20f7-55b1-82a8-8fc388087577",
+        "926d0551-4537-569e-b6ad-fc33bb17546e"
+      ],
+      "expectedAfterYearStructureSha256": "809b439c51ac3d90f36bb2812060074ec9bcfa9a87ccb897e73169def068f6cd"
+    },
+    {
+      "viewId": "de-rp-gym-seki-math-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g8.view.json",
+      "expectedScope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G8"
+      },
+      "mode": "replace-exact-existing-final-year-exam-slot-with-selected-wrapper",
+      "yearStructureId": "rp-klasse9-10-msa-g8",
+      "yearDisplayLabel": "Klassenstufe 9 (G8)",
+      "originalExamSlotIndex": 1,
+      "expectedOriginalExamReference": {
+        "kind": "canonicalSubtree",
+        "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+        "displayLabel": "Prüfungen Jahrgangsstufe 9"
+      },
+      "expectedYearStructureSha256": "ad6e0fe417a62fc11c9af6c6c585ce5a74c3584c719bb6dba8e2d6ffd6e3941e",
+      "replacementNode": {
+        "kind": "structure",
+        "id": "rp-g8-final-year-reviewed-exams",
+        "label": "Prüfungen Jahrgangsstufe 9",
+        "children": [
+          {
+            "kind": "canonicalSubtree",
+            "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+            "displayLabel": "Basisaufgaben"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "64f37348-20f7-55b1-82a8-8fc388087577"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "926d0551-4537-569e-b6ad-fc33bb17546e"
+          }
+        ]
+      },
+      "newTargetGoalIds": [
+        "64f37348-20f7-55b1-82a8-8fc388087577",
+        "926d0551-4537-569e-b6ad-fc33bb17546e"
+      ],
+      "expectedAfterYearStructureSha256": "809b439c51ac3d90f36bb2812060074ec9bcfa9a87ccb897e73169def068f6cd"
+    }
+  ],
+  "heldTaskGoalIds": [
+    "e5055665-89ae-5be6-8fc7-42a9e991d63d"
+  ],
+  "noCanonicalOrTaskChanges": true,
+  "noRuntimeEnrollmentInference": true,
+  "noStageWideExamBranch": true,
+  "reviewedPlan": {
+    "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/candidate-operations.json",
+    "sha256": "9e756e119fc80f051f46ec809bb1f365031aff9c894493eda805de48b3f51688"
+  },
+  "supportContextGoalIdsByViewId": {
+    "de-rp-gym-math-gk-g8": [
+      "11c88ea2-8502-5008-bec2-3e491c75ace4",
+      "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+      "191c67db-44a8-4f63-994a-d85e8e301194",
+      "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+      "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+      "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+      "2331caf2-ccb2-5492-9fc6-48763b848bae",
+      "25593605-5e13-55cc-9a05-8f3d737e15e9",
+      "2ae76eae-799c-463e-9ec9-82327f8209a8",
+      "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+      "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+      "491e0858-e977-516e-a339-1cc2f9e9690f",
+      "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+      "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+      "54148506-c23f-41b8-959b-068dd194cf15",
+      "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+      "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+      "624764d6-becd-5f9b-ada3-0d4f9d143073",
+      "65365dce-f33f-49d8-9516-42f75883aa86",
+      "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+      "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+      "7c978529-ce62-5adc-897f-24ea80babbc8",
+      "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+      "8a691345-3216-522c-a898-d65e8e94db28",
+      "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+      "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+      "b44f038c-fb1f-527e-b9ad-382214d0328a",
+      "b5de0574-93ed-409c-80ee-312211420cd6",
+      "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+      "bb227e31-0b0b-544a-b5e0-548256a70dec",
+      "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+      "ca623958-c204-5d1b-bdd0-3f76765674cb",
+      "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+      "cf474eab-1379-4877-907e-58b0892ce734",
+      "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+      "d825f7ce-e19b-594a-8181-eff199c21d93",
+      "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+      "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+      "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+      "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+      "f65ab452-1884-57b0-9be3-c7d9e4944891",
+      "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+    ],
+    "de-rp-gym-math-lk-g8": [
+      "11c88ea2-8502-5008-bec2-3e491c75ace4",
+      "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+      "191c67db-44a8-4f63-994a-d85e8e301194",
+      "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+      "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+      "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+      "2331caf2-ccb2-5492-9fc6-48763b848bae",
+      "25593605-5e13-55cc-9a05-8f3d737e15e9",
+      "2ae76eae-799c-463e-9ec9-82327f8209a8",
+      "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+      "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+      "491e0858-e977-516e-a339-1cc2f9e9690f",
+      "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+      "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+      "54148506-c23f-41b8-959b-068dd194cf15",
+      "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+      "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+      "624764d6-becd-5f9b-ada3-0d4f9d143073",
+      "65365dce-f33f-49d8-9516-42f75883aa86",
+      "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+      "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+      "7c978529-ce62-5adc-897f-24ea80babbc8",
+      "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+      "8a691345-3216-522c-a898-d65e8e94db28",
+      "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+      "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+      "b44f038c-fb1f-527e-b9ad-382214d0328a",
+      "b5de0574-93ed-409c-80ee-312211420cd6",
+      "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+      "bb227e31-0b0b-544a-b5e0-548256a70dec",
+      "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+      "ca623958-c204-5d1b-bdd0-3f76765674cb",
+      "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+      "cf474eab-1379-4877-907e-58b0892ce734",
+      "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+      "d825f7ce-e19b-594a-8181-eff199c21d93",
+      "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+      "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+      "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+      "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+      "f65ab452-1884-57b0-9be3-c7d9e4944891",
+      "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+    ],
+    "de-rp-gym-seki-math-g8": [
+      "11c88ea2-8502-5008-bec2-3e491c75ace4",
+      "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+      "191c67db-44a8-4f63-994a-d85e8e301194",
+      "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+      "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+      "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+      "2331caf2-ccb2-5492-9fc6-48763b848bae",
+      "25593605-5e13-55cc-9a05-8f3d737e15e9",
+      "2ae76eae-799c-463e-9ec9-82327f8209a8",
+      "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+      "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+      "491e0858-e977-516e-a339-1cc2f9e9690f",
+      "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+      "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+      "54148506-c23f-41b8-959b-068dd194cf15",
+      "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+      "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+      "624764d6-becd-5f9b-ada3-0d4f9d143073",
+      "65365dce-f33f-49d8-9516-42f75883aa86",
+      "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+      "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+      "7c978529-ce62-5adc-897f-24ea80babbc8",
+      "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+      "8a691345-3216-522c-a898-d65e8e94db28",
+      "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+      "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+      "b44f038c-fb1f-527e-b9ad-382214d0328a",
+      "b5de0574-93ed-409c-80ee-312211420cd6",
+      "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+      "bb227e31-0b0b-544a-b5e0-548256a70dec",
+      "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+      "ca623958-c204-5d1b-bdd0-3f76765674cb",
+      "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+      "cf474eab-1379-4877-907e-58b0892ce734",
+      "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+      "d825f7ce-e19b-594a-8181-eff199c21d93",
+      "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+      "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+      "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+      "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+      "f65ab452-1884-57b0-9be3-c7d9e4944891",
+      "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+    ]
+  }
+}

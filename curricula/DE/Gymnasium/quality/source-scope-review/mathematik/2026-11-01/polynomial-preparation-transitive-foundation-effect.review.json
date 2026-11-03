@@ -1,0 +1,861 @@
+{
+  "status": "PASS_TRUE_EXISTING_TRANSITIVE_PREPARATION_EFFECT_NOT_NEW_COVERAGE_OR_TARGET_PERMISSION",
+  "reviewerAgent": "/root/astra_math_material_scope_resume",
+  "date": "2026-11-02",
+  "inputBindings": [
+    {
+      "path": "tmp/approach-review-20261101/polynomial-end-behavior-preparation-candidate-20261102/baseline-all154-native.json",
+      "sha256": "5ab5f47a7f28f40afebcd8adfbe9b1811715c4d5abf66c1dc3b223b27f123c14"
+    },
+    {
+      "path": "tmp/approach-review-20261101/polynomial-end-behavior-preparation-candidate-20261102/candidate-all154-native.json",
+      "sha256": "08fa7187bd4f58eb35d97057ad44e42c5ec603a0a5b159dd308fe290b49d536f"
+    },
+    {
+      "path": "tmp/approach-review-20261101/polynomial-end-behavior-preparation-candidate-20261102/native154-bindings.json",
+      "sha256": "5ee023d1c22cc173468f61cdca884215f904019993d68c146b9172a6fa6b2233"
+    },
+    {
+      "path": "tmp/approach-review-20261101/astra-remaining-material-scope/polynomial-end-behavior-existing-task-preparation-PASS.json",
+      "sha256": "fabd02c373e6285b5b23f3cdf4b616cc2752d4d61ca3f1a742fdd249ec8fc23e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "f59348ea39998471a4252de114a115e46bcf2abc1034219f058ce3a27ea425e9"
+    }
+  ],
+  "wholeUnchangedFoundationGoal": {
+    "id": "1ce8af38-082a-477b-af48-b924c92761bf",
+    "shortKey": "canonical_math_sek1_j10_polynomial_functions",
+    "title": "Ganzrationale Funktionen über Term und Graph beschreiben",
+    "titleEn": "Describe polynomial functions using expressions and graphs",
+    "description": "Die lernende Person kann bei einfachen ganzrationalen Funktionen Term und Graph anhand charakteristischer Merkmale wie Nullstellen und Endverhalten einander zuordnen und den Zusammenhang beschreiben.",
+    "descriptionEn": "The learner can match expressions and graphs of simple polynomial functions using characteristic features such as zeros and end behavior, and describe their relationship.",
+    "core": true,
+    "weight": 1,
+    "tags": [
+      "canonical",
+      "modality:visual",
+      "representation:graph",
+      "tool:geogebra"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "1ce8af38-082a-477b-af48-b924c92761bf",
+        "title": "Visualisierung: Ganzrationale Funktionen über Term und Graph beschreiben",
+        "url": "/assets/goal-visualizations/mathematik/1ce8af38-082a-477b-af48-b924c92761bf/1ce8af38-082a-477b-af48-b924c92761bf.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Ganzrationale Funktionen über Term und Graph beschreiben.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Ganzrationale Funktionen über Term und Graph beschreiben\". Die lernende Person kann bei einfachen ganzrationalen Funktionen Term und Graph anhand charakteristischer Merkmale wie Nullstellen und Endverhalten einander zuordnen und den Zusammenhang beschreiben.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      },
+      {
+        "type": "tool",
+        "title": "GeoGebra Graphing Calculator",
+        "url": "https://www.geogebra.org/graphing",
+        "resourceType": "graphing-calculator",
+        "provider": "GeoGebra",
+        "description": "Dynamischer Graphikrechner für Visualisierung und gemeinsame Arbeit an Koordinatensystemen, Graphen und Funktionsdarstellungen.",
+        "lang": "mul"
+      }
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-math",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "K1.1",
+        "K3.1",
+        "K4.1"
+      ],
+      "guidingIdeas": [
+        "L1",
+        "L4"
+      ],
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.4"
+    },
+    "contains": [],
+    "requires": [
+      "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+      "a1c79897-6ded-57f8-bee1-2d365a5083c9",
+      "7bff61c1-1a69-4991-97de-0cff764f507e",
+      "39fa30f2-e1ae-5c36-be56-793b77906abb",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    "type": "atomic",
+    "semanticAtomic": true
+  },
+  "wholeUnchangedEndBehaviorGoal": {
+    "id": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5",
+    "title": "Verhalten ganzrationaler Funktionen im Unendlichen beschreiben",
+    "titleEn": "Describe the end behavior of polynomial functions",
+    "description": "Die lernende Person kann das Verhalten ganzrationaler Funktionen für betragsgroße Argumente mit Limes-Schreibweise beschreiben und aus dem führenden Term begründen.",
+    "descriptionEn": "The learner can describe the end behavior of polynomial functions for large absolute values of the argument using limit notation and justify it from the leading term.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical"
+    ],
+    "contains": [],
+    "requires": [
+      "09f47964-2cd0-410e-93ee-9632b582fc91",
+      "1ce8af38-082a-477b-af48-b924c92761bf"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "K1.2",
+        "K5.1"
+      ],
+      "guidingIdeas": [
+        "L1",
+        "L4"
+      ],
+      "phase": "E"
+    },
+    "shortKey": "canonical_math_e_polynomial_end_behavior_limes",
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "sourceRef": "HKM Kerncurriculum Mathematik gymnasiale Oberstufe, E.1, S. 31",
+    "type": "atomic",
+    "semanticAtomic": true,
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5",
+        "title": "Visualisierung: Verhalten ganzrationaler Funktionen im Unendlichen beschreiben",
+        "url": "/assets/goal-visualizations/mathematik/0b47fec8-33ec-5f29-8d3e-64941a7c8ac5/0b47fec8-33ec-5f29-8d3e-64941a7c8ac5.jpg",
+        "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+        "description": "Visualisierung zum Lernziel: Verhalten ganzrationaler Funktionen im Unendlichen beschreiben.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Verhalten ganzrationaler Funktionen im Unendlichen beschreiben\". Die lernende Person kann das Verhalten ganzrationaler Funktionen für betragsgroße Argumente mit Limes-Schreibweise beschreiben und aus dem führenden Term begründen.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "preparationPath": [
+    "6634ef12-0e88-584e-8e45-9e60eafc0951",
+    "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5",
+    "1ce8af38-082a-477b-af48-b924c92761bf"
+  ],
+  "pathEdgeStatus": [
+    "one independently reviewed new genuine task-preparation edge",
+    "pre-existing unchanged ordinary preparation edge"
+  ],
+  "reviewReason": "Before justifying a cubic polynomial’s leading-term limits and comparing its roots and graphical shape with the sinusoid, recognizing simple polynomial terms/graphs and their characteristic zeros/end behavior is genuine preparation. The31 additional repaired routes use only that existing prerequisite chain. The whole1ce goal remains a distinct ordinary goal; the new task edge neither proves mastery of it nor asserts whole-goal assessment coverage.",
+  "measuredRepairCounts": {
+    "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5": 132,
+    "1ce8af38-082a-477b-af48-b924c92761bf": 31
+  },
+  "repairedPairs": [
+    {
+      "scope": "DE-BB/SekII/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BB/SekII/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BB/SekII/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BB/SekII/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BB/SekII/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BB/SekII/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BB/CrossStage/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BB/CrossStage/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BB/CrossStage/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BB/CrossStage/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BB/CrossStage/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BB/CrossStage/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BE/SekII/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BE/SekII/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BE/SekII/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BE/SekII/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BE/SekII/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BE/SekII/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BE/CrossStage/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BE/CrossStage/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BE/CrossStage/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BE/CrossStage/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BE/CrossStage/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BE/CrossStage/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BW/SekII/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BW/SekII/G8/LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-BW/SekII/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BW/SekII/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BW/SekII/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BW/SekII/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BW/SekII/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BW/CrossStage/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BW/CrossStage/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BW/CrossStage/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BW/CrossStage/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BW/CrossStage/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BW/CrossStage/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BY/SekII/G9/GK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-BY/SekII/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BY/SekII/G9/LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-BY/SekII/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BY/SekII/G9/GK+LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-BY/SekII/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BY/CrossStage/G9/GK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-BY/CrossStage/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BY/CrossStage/G9/LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-BY/CrossStage/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-BY/CrossStage/G9/GK+LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-BY/CrossStage/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HB/SekII/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HB/SekII/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HB/SekII/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HB/CrossStage/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HB/CrossStage/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HB/CrossStage/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HE/SekII/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HE/SekII/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HE/SekII/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HE/SekII/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HE/SekII/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HE/SekII/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HE/CrossStage/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HE/CrossStage/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HE/CrossStage/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HE/CrossStage/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HE/CrossStage/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HE/CrossStage/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HH/SekII/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HH/SekII/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HH/SekII/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HH/CrossStage/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HH/CrossStage/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-HH/CrossStage/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-MV/SekII/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-MV/SekII/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-MV/SekII/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-MV/CrossStage/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-MV/CrossStage/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-MV/CrossStage/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-NI/SekII/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-NI/SekII/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-NI/SekII/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-NI/CrossStage/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-NI/CrossStage/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-NI/CrossStage/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-NW/SekII/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-NW/SekII/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-NW/SekII/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-NW/CrossStage/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-NW/CrossStage/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-NW/CrossStage/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-RP/SekII/G8/GK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-RP/SekII/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-RP/SekII/G8/LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-RP/SekII/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-RP/SekII/G8/GK+LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-RP/SekII/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-RP/SekII/G9/GK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-RP/SekII/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-RP/SekII/G9/LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-RP/SekII/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-RP/SekII/G9/GK+LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-RP/SekII/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-RP/CrossStage/G8/GK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-RP/CrossStage/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-RP/CrossStage/G8/LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-RP/CrossStage/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-RP/CrossStage/G8/GK+LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-RP/CrossStage/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-RP/CrossStage/G9/GK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-RP/CrossStage/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-RP/CrossStage/G9/LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-RP/CrossStage/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-RP/CrossStage/G9/GK+LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-RP/CrossStage/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SH/SekII/G8/GK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-SH/SekII/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SH/SekII/G8/LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-SH/SekII/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SH/SekII/G8/GK+LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-SH/SekII/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SH/SekII/G9/GK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-SH/SekII/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SH/SekII/G9/LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-SH/SekII/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SH/SekII/G9/GK+LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-SH/SekII/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SH/CrossStage/G8/GK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-SH/CrossStage/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SH/CrossStage/G8/LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-SH/CrossStage/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SH/CrossStage/G8/GK+LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-SH/CrossStage/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SH/CrossStage/G9/GK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-SH/CrossStage/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SH/CrossStage/G9/LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-SH/CrossStage/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SH/CrossStage/G9/GK+LK",
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf"
+    },
+    {
+      "scope": "DE-SH/CrossStage/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SL/SekII/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SL/SekII/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SL/SekII/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SL/CrossStage/G9/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SL/CrossStage/G9/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SL/CrossStage/G9/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SN/SekII/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SN/SekII/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SN/SekII/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SN/CrossStage/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SN/CrossStage/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-SN/CrossStage/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-ST/SekII/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-ST/SekII/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-ST/SekII/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-ST/CrossStage/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-ST/CrossStage/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-ST/CrossStage/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-TH/SekII/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-TH/SekII/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-TH/SekII/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-TH/CrossStage/G8/GK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-TH/CrossStage/G8/LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    },
+    {
+      "scope": "DE-TH/CrossStage/G8/GK+LK",
+      "goalId": "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5"
+    }
+  ],
+  "all154TargetsAndDemandContextsExactlyUnchanged": true,
+  "distinctUncoveredBefore": 444,
+  "distinctUncoveredAfter": 443,
+  "limits": [
+    "This is a transitive-effect content review against complete native output hashes, not final materialization/producer/Root acceptance.",
+    "No new1ce edge, ordinary target, assessment target, coverage claim, mastered state or implicit protected completion.",
+    "Native whole154 and final frozen bindings remain the independent Stage gate."
+  ]
+}

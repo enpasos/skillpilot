@@ -1,0 +1,71 @@
+{
+  "status": "PASS_EXACT_HE_GK_DURATION_PRODUCER_INPUT_IMPLEMENTATION_ADDENDUM_NOT_NATIVE_OR_STAGE_APPROVAL",
+  "reviewerAgent": "/root/astra_math_material_scope_resume",
+  "date": "2026-11-02",
+  "originalScopeReviewPreserved": {
+    "path": "tmp/approach-review-20261101/astra-complex-numbers-scope-review/HE-four-GK-whole-task-boundary.EXACT-INERT.json",
+    "sha256": "088257f9497310aac240bee79a4882427a1bf1325c4d0e35c5d40b25e7d685f9"
+  },
+  "reason": "The original scope review names the correct four actual pure-GK offers but treats their three runtime view files as authoring inputs. Existing duration production regenerates de-he-gk-g8 and de-he-gk-g9 from de-he-gk. Applying only masks directly to the generated files is overwritten. A single identical mask in that existing source view is the minimal durable implementation.",
+  "additionalOperation": {
+    "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk.view.json",
+    "expectedBeforeSha256": "15aac0cc2c82f126eba20fd4ac1a83601b7f163eba78dbdf4705183563e05738",
+    "viewId": "de-he-gym-math-gk",
+    "scope": {
+      "jurisdiction": "DE-HE",
+      "schoolForm": "Gymnasium",
+      "stage": "CrossStage",
+      "courseProfile": "GK"
+    },
+    "op": "append",
+    "pointer": "/rootNodes/30",
+    "node": {
+      "kind": "goalEntry",
+      "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
+      "projectionRole": "prerequisiteOnly"
+    },
+    "expectedCandidateSha256": "98b636da9070add25dfca4a48c815fadd9d9ae7901c89b4678c38c0952c0147e"
+  },
+  "expectedGeneratedOutputs": [
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json"
+  ],
+  "originalSekIIGkOperationStillRequired": true,
+  "originalG8G9OperationsNowDerivedOutputContract": true,
+  "existingPolicyPinToRebind": "/existingStageViews/8/source/sha256",
+  "exactSameFourOfferExclusions": [
+    "DE-HE/SekII/G8/GK",
+    "DE-HE/SekII/G9/GK",
+    "DE-HE/CrossStage/G8/GK",
+    "DE-HE/CrossStage/G9/GK"
+  ],
+  "unchangedBoundaries": [
+    "No new authoritative offer or profile-specific mastery.",
+    "Preserve all six ordinary complex goals and the whole8-card memory goal1eb0 in pure HE GK.",
+    "Preserve eight HE LK/union target sets and the whole Q4 practice collection.",
+    "No runtime, producer-model, canonical, task, requires, deck or recall mutation.",
+    "The final full154 comparison must prove exactly the original4 HE exclusions and unchanged other HE targets, including true unions.",
+    "The three newly observed BE/MV/NI SekI prerequisite-only producer mirrors require separate actual target and demand-context verification.",
+    "Keep the original088257 review and failed mechanical previews as history; no new broad source entitlement is inferred."
+  ],
+  "implementationEvidence": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk.view.json",
+      "sha256": "15aac0cc2c82f126eba20fd4ac1a83601b7f163eba78dbdf4705183563e05738"
+    },
+    {
+      "path": "app/scripts/generateMathDurationCompositionViews.ts",
+      "sha256": "f1f838a531fff6ed33c0babbef91237e761276e80f9d5f989baeae17f549e9e6",
+      "relevantLines": [
+        379,
+        982,
+        988,
+        1009
+      ]
+    },
+    {
+      "path": "app/scripts/config/math-duration-split-spanning-tree-policy.json",
+      "sha256": "73cba92ea0caba7e1d9f97e87d0ac31739ad626ac2d7ac552cbdd62dac303dc2"
+    }
+  ]
+}

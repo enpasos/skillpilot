@@ -6,8 +6,19 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class UnifiedLearningPlanStatusFormatterTest {
+
+    @ParameterizedTest
+    @CsvSource({"DAY,Tagesziel,0", "DAY,Tagesziel,1", "WEEK,Wochenziel,0", "WEEK,Wochenziel,1"})
+    void explicitPeriodTextStaysIndependentOfAnAheadOverallBalance(PeriodBasis basis, String label, int h) {
+        var balance = UnifiedLearningPlanStatusCalculator.calculate(new PlanBalanceInputs(3, 3, 6, h));
+        assertThat(UnifiedLearningPlanStatusFormatter.formatSubjectLine("Mathematik", basis, balance, "de"))
+                .isEqualTo("Mathematik: " + label + " " + h + " von 3 · 3 Lernziele vorgearbeitet");
+        assertThat(balance.erfuelltesPeriodenziel()).isEqualTo(h);
+    }
 
     @Test
     void missingOrInvalidBalanceCannotBecomeANormalStatusLine() {
@@ -44,10 +55,10 @@ class UnifiedLearningPlanStatusFormatterTest {
         assertThat(UnifiedLearningPlanStatusFormatter.formatSubjectLine("Mathematik", PeriodBasis.DAY, r4, 3, "de"))
                 .isEqualTo("Mathematik: Tagesziel erreicht · 2 Lernziele vorgearbeitet");
 
-        // Vorarbeit deckt Pensum ab: 13, 3, 13, 0 => erfuellt=3, im Plan
+        // Vorarbeit erfüllt das Gesamtsoll, aber keinen heutigen Abschluss: erfuellt=0, im Plan.
         PlanBalanceResult r5 = UnifiedLearningPlanStatusCalculator.calculate(new PlanBalanceInputs(13, 3, 13, 0));
         assertThat(UnifiedLearningPlanStatusFormatter.formatSubjectLine("Mathematik", PeriodBasis.DAY, r5, 3, "de"))
-                .isEqualTo("Mathematik: Tagesziel erreicht · im Plan");
+                .isEqualTo("Mathematik: Tagesziel 0 von 3 · im Plan");
 
         // Heute nichts geplant, Rückstand vorhanden: 10, 0, 8, 0 => erfuellt=0, rueckstand=2
         PlanBalanceResult r6 = UnifiedLearningPlanStatusCalculator.calculate(new PlanBalanceInputs(10, 0, 8, 0));

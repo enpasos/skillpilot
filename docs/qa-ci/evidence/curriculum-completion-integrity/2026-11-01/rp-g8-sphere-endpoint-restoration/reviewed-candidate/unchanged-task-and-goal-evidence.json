@@ -1,0 +1,601 @@
+{
+  "64f37348-20f7-55b1-82a8-8fc388087577": {
+    "id": "64f37348-20f7-55b1-82a8-8fc388087577",
+    "shortKey": "canonical_math_sek1_j10_assessment_sphere_surface",
+    "title": "Eine Kugelleuchte beschichten: Oberfläche erklären und bestimmen",
+    "titleEn": "Coat a spherical lamp: explain and determine surface area",
+    "description": "Die lernende Person kann die Struktur der Kugeloberflächenformel $O=4\\pi r^2$ geometrisch plausibilisieren, die Formel für einfache Hüll- und Beschichtungsfragen mit Radius oder Durchmesser anwenden und Flächeneinheit sowie quadratische Skalierung begründen.",
+    "descriptionEn": "The learner can give a geometric plausibility argument for the sphere surface-area formula $O=4\\pi r^2$, apply it to simple covering and coating questions from a radius or diameter, and explain the area unit and quadratic scaling.",
+    "core": true,
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment",
+      "canonical",
+      "phase:SekI",
+      "ExamTask"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sphere-split-2026-09-28/sphere-surface/draft_v1.md#aufgabe",
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-math",
+      "demandLevel": "AB3",
+      "processCompetencies": [
+        "K2.1",
+        "K3.1",
+        "K4.1"
+      ],
+      "guidingIdeas": [
+        "L2"
+      ],
+      "phase": "J10",
+      "area": "Mathematik",
+      "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J10.SPHERE_SURFACE"
+    },
+    "contains": [],
+    "requires": [
+      "7b01d3d8-1fff-5924-b133-5a4825dc742e"
+    ],
+    "phase": "J10",
+    "type": "atomic",
+    "nodeKind": "exam",
+    "extendedData": {
+      "applicabilityFromRequires": true,
+      "applicabilityMappingInheritance": "boundary"
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "reviewNote": "Fachlich durch OpenAI Codex geprüft am 2026-09-28; keine menschliche Freigabe oder Real-Host-Erprobung. Siehe simulated_review_v1.md.",
+      "coveredGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e"
+      ],
+      "coveredStrands": [
+        "L2"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sphere-split-2026-09-28/sphere-surface/draft_v1.md",
+      "taskContent": "Eine vollständig geschlossene kugelförmige Leuchte hat einen Außendurchmesser von $12\\,\\mathrm{cm}$. Sie soll außen dünn beschichtet werden. Nähte, Halterung und Materialverluste werden im Modell vernachlässigt.\n\n1. Bestimme den Radius und den zu beschichtenden Flächeninhalt. Begründe die Einheit und prüfe, ob eine Portion Beschichtungsmaterial für $500\\,\\mathrm{cm}^2$ ausreicht. (4 BE)\n2. Bei einem Modellversuch lassen sich kleine, dünne Schalenteile einer Kugel nahezu lückenlos auf vier Kreisscheiben mit demselben Radius verteilen. Erkläre, warum diese Beobachtung $O=4\\pi r^2$ plausibel macht. Beschreibe eine Ungenauigkeit des Versuchs und warum er kein exakter Beweis ist. (4 BE)\n3. Eine zweite Leuchte hat den doppelten Durchmesser. Ein Hersteller rechnet mit doppelt so viel Beschichtungsmaterial. Beurteile diese Behauptung, bestimme den richtigen Flächenfaktor und begründe ihn mit der Formel. (4 BE)",
+      "solutionContent": "1. $r=6\\,\\mathrm{cm}$ und $O=4\\pi\\cdot6^2=144\\pi\\,\\mathrm{cm}^2\\approx452{,}4\\,\\mathrm{cm}^2$. Gemessen wird die zweidimensionale Außenhaut, daher $\\mathrm{cm}^2$. Unter den genannten Modellannahmen reichen $500\\,\\mathrm{cm}^2$ aus.\n\n2. Jede Vergleichsscheibe hat Fläche $\\pi r^2$; vier solcher Scheiben ergeben $4\\pi r^2$. Das Vergleichen der Kugelhaut mit diesen Kreisflächen macht den Faktor vier und die quadratische Radiusabhängigkeit plausibel. Gekrümmte Schalenteile lassen sich nur näherungsweise ohne Überlappung, Zwischenräume oder Verformung eben auslegen; das Experiment belegt daher keinen exakten Gleichheitsbeweis für alle Kugeln.\n\n3. Doppelter Durchmesser bedeutet doppelten Radius. $O(2r)=4\\pi(2r)^2=4O(r)$; benötigt wird viermal so viel Material bei gleicher Schichtdicke. Die Fläche der zweiten Leuchte ist $576\\pi\\,\\mathrm{cm}^2$. Die Behauptung des Herstellers unterschätzt den Bedarf um den Faktor zwei.\n\nFachliche Bestehensgrenze: Jede Teilaufgabe zählt höchstens 1 von 4 BE, wenn ihr Kern fehlt: (1) korrekter Radiusbezug mit Flächen- bzw. Volumeneinheit und eigenständiger Anwendungsentscheidung, (2) verständlicher geometrischer Plausibilitätsgedanke einschließlich seiner Modellgrenze, (3) begründete quadratische bzw. kubische Skalierung. Fehlt einer dieser Kerne, sind höchstens 9 von 12 BE erreichbar; zum Bestehen sind 10 BE nötig. Der Server erzwingt nur die Gesamtpunktgrenze; die Teilfallgrenzen sind Anweisungen für die fachliche Bewertung.",
+      "scoring": {
+        "maxPoints": 12,
+        "passingPoints": 10,
+        "steps": [
+          {
+            "id": "sphere-surface-application",
+            "points": 4,
+            "description": "Radiusbezug, Rechnung, passende Einheit und Anwendungsentscheidung; fehlt dieser Kern, höchstens 1 BE."
+          },
+          {
+            "id": "sphere-surface-plausibility",
+            "points": 4,
+            "description": "Geometrische Plausibilisierung der Formel und Grenze des Versuchs; fehlt dieser Kern, höchstens 1 BE."
+          },
+          {
+            "id": "sphere-surface-scaling",
+            "points": 4,
+            "description": "Korrekte und begründete Flächen- bzw. Volumenskalierung; fehlt dieser Kern, höchstens 1 BE."
+          }
+        ]
+      }
+    },
+    "resourceLinks": []
+  },
+  "926d0551-4537-569e-b6ad-fc33bb17546e": {
+    "id": "926d0551-4537-569e-b6ad-fc33bb17546e",
+    "shortKey": "canonical_math_sek1_j10_assessment_sphere_volume",
+    "title": "Ein kugelförmiges Gefäß füllen: Volumen erklären und bestimmen",
+    "titleEn": "Fill a spherical vessel: explain and determine volume",
+    "description": "Die lernende Person kann die Struktur der Kugelvolumenformel $V=\\frac43\\pi r^3$ geometrisch plausibilisieren, die Formel für einfache Füll- und Rauminhaltsfragen mit Radius oder Durchmesser anwenden und Volumeneinheit sowie kubische Skalierung begründen.",
+    "descriptionEn": "The learner can give a geometric plausibility argument for the sphere-volume formula $V=\\frac43\\pi r^3$, apply it to simple capacity and spatial-volume questions from a radius or diameter, and explain the volume unit and cubic scaling.",
+    "core": true,
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment",
+      "canonical",
+      "phase:SekI",
+      "ExamTask"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sphere-split-2026-09-28/sphere-volume/draft_v1.md#aufgabe",
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-math",
+      "demandLevel": "AB3",
+      "processCompetencies": [
+        "K2.1",
+        "K3.1",
+        "K4.1"
+      ],
+      "guidingIdeas": [
+        "L2"
+      ],
+      "phase": "J10",
+      "area": "Mathematik",
+      "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J10.SPHERE_VOLUME"
+    },
+    "contains": [],
+    "requires": [
+      "bb227e31-0b0b-544a-b5e0-548256a70dec"
+    ],
+    "phase": "J10",
+    "type": "atomic",
+    "nodeKind": "exam",
+    "extendedData": {
+      "applicabilityFromRequires": true,
+      "applicabilityMappingInheritance": "boundary"
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "reviewNote": "Fachlich durch OpenAI Codex geprüft am 2026-09-28; keine menschliche Freigabe oder Real-Host-Erprobung. Siehe simulated_review_v1.md.",
+      "coveredGoalIds": [
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "coveredStrands": [
+        "L2"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sphere-split-2026-09-28/sphere-volume/draft_v1.md",
+      "taskContent": "Ein kugelförmiges Gefäß hat einen Innendurchmesser von $12\\,\\mathrm{cm}$. Seine Wandstärke spielt für den Innenraum keine Rolle. Das Gefäß soll mit Wasser gefüllt werden.\n\n1. Bestimme den Innenradius und das Fassungsvermögen in $\\mathrm{cm}^3$ und Millilitern. Prüfe, ob ein Liter Wasser vollständig hineinpasst. Begründe die Volumeneinheit. (4 BE)\n2. Ein Füllversuch zeigt näherungsweise: Eine Kugel mit Radius $r$ fasst zwei Drittel eines Zylinders mit demselben Radius und der Höhe $2r$. Nutze $V_{\\mathrm{Zylinder}}=\\pi r^2h$, um $V_{\\mathrm{Kugel}}=\\frac43\\pi r^3$ geometrisch plausibel zu machen. Erkläre die Faktoren und nenne eine Grenze des Füllversuchs als Begründung. (4 BE)\n3. Ein zweites Gefäß hat den doppelten Innendurchmesser. Jemand vermutet das vierfache Fassungsvermögen. Prüfe die Behauptung und begründe den richtigen Faktor mit der Formel. (4 BE)",
+      "solutionContent": "1. $r=6\\,\\mathrm{cm}$ und $V=\\frac43\\pi\\cdot6^3=288\\pi\\,\\mathrm{cm}^3\\approx904{,}8\\,\\mathrm{cm}^3=904{,}8\\,\\mathrm{ml}$. Der gefüllte Raum ist dreidimensional, daher eine Volumeneinheit. Ein Liter entspricht $1000\\,\\mathrm{ml}$ und passt nicht hinein; etwa $95{,}2\\,\\mathrm{ml}$ bleiben übrig.\n\n2. Der umschließende Zylinder hat Höhe $2r$ und Volumen $\\pi r^2\\cdot2r=2\\pi r^3$. Zwei Drittel davon ergeben $\\frac23\\cdot2\\pi r^3=\\frac43\\pi r^3$. Der Faktor $2$ stammt aus der Zylinderhöhe, $\\frac23$ aus dem beobachteten Füllverhältnis. Messungenauigkeit, Restwasser oder nicht ideale Formen begrenzen den Versuch: Er plausibilisiert die Formel, beweist aber keine exakte Gleichheit für alle Kugeln. Integralrechnung ist nicht erforderlich.\n\n3. Der Radius verdoppelt sich ebenfalls. $V(2r)=\\frac43\\pi(2r)^3=8V(r)$. Das Fassungsvermögen ist achtfach, nicht vierfach; vierfach ist die Skalierung einer Fläche, nicht eines Volumens.\n\nFachliche Bestehensgrenze: Jede Teilaufgabe zählt höchstens 1 von 4 BE, wenn ihr Kern fehlt: (1) korrekter Radiusbezug mit Flächen- bzw. Volumeneinheit und eigenständiger Anwendungsentscheidung, (2) verständlicher geometrischer Plausibilitätsgedanke einschließlich seiner Modellgrenze, (3) begründete quadratische bzw. kubische Skalierung. Fehlt einer dieser Kerne, sind höchstens 9 von 12 BE erreichbar; zum Bestehen sind 10 BE nötig. Der Server erzwingt nur die Gesamtpunktgrenze; die Teilfallgrenzen sind Anweisungen für die fachliche Bewertung.",
+      "scoring": {
+        "maxPoints": 12,
+        "passingPoints": 10,
+        "steps": [
+          {
+            "id": "sphere-volume-application",
+            "points": 4,
+            "description": "Radiusbezug, Rechnung, passende Einheit und Anwendungsentscheidung; fehlt dieser Kern, höchstens 1 BE."
+          },
+          {
+            "id": "sphere-volume-plausibility",
+            "points": 4,
+            "description": "Geometrische Plausibilisierung der Formel und Grenze des Versuchs; fehlt dieser Kern, höchstens 1 BE."
+          },
+          {
+            "id": "sphere-volume-scaling",
+            "points": 4,
+            "description": "Korrekte und begründete Flächen- bzw. Volumenskalierung; fehlt dieser Kern, höchstens 1 BE."
+          }
+        ]
+      }
+    },
+    "resourceLinks": []
+  },
+  "e5055665-89ae-5be6-8fc7-42a9e991d63d": {
+    "id": "e5055665-89ae-5be6-8fc7-42a9e991d63d",
+    "title": "Aufgabe 6 (Jahrgangsstufe 10, 10 BE)",
+    "description": "Die lernende Person kann eine freigegebene Prüfungsaufgabe der Jahrgangsstufe 10 bearbeiten: Kombinatorische Anzahlen, Wahrscheinlichkeiten und Monte-Carlo-Approximationen bestimmen und kritisch deuten.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment",
+      "canonical",
+      "phase:SekI",
+      "ExamTask"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v1.md#task-6",
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-math",
+      "demandLevel": "AB3",
+      "processCompetencies": [
+        "K1",
+        "K2",
+        "K3",
+        "K4"
+      ],
+      "guidingIdeas": [
+        "L5"
+      ],
+      "phase": "J10",
+      "area": "Mathematik",
+      "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J10.TASK.6"
+    },
+    "shortKey": "canonical_math_sek1_practice_j10_task_6",
+    "contains": [],
+    "requires": [
+      "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+      "e55edcb9-2184-4a24-890e-70cc91028990"
+    ],
+    "phase": "J10",
+    "type": "atomic",
+    "nodeKind": "exam",
+    "examData": {
+      "reviewStatus": "released",
+      "reviewNote": "released after simulated internal review on 2026-06-28 for J10",
+      "coveredGoalIds": [
+        "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+        "e55edcb9-2184-4a24-890e-70cc91028990"
+      ],
+      "coveredStrands": [
+        "L5"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v1.md",
+      "taskContent": "Aus $8$ Sensoren, darunter $3$ fehlerhafte, werden ohne Zurücklegen $2$ Sensoren ausgewählt. Eine Monte-Carlo-Simulation mit $10000$ Durchläufen liefert $1060$ Treffer für \"beide Sensoren fehlerhaft\".\n\n1. Bestimme die Anzahl aller möglichen Zweierauswahlen. (2 BE)\n2. Berechne die Wahrscheinlichkeit, dass beide ausgewählten Sensoren fehlerhaft sind. (3 BE)\n3. Deute den Näherungswert aus der Simulation und erkläre, warum er vom exakten Modellwert abweichen kann. (3 BE)\n4. Beurteile, warum die Voraussetzung \"ohne Zurücklegen\" für das Modell wichtig ist. (2 BE)",
+      "solutionContent": "Es gibt $C(8,2)=28$ mögliche Zweierauswahlen.\n\nGünstig sind $C(3,2)=3$ Auswahlen mit zwei fehlerhaften Sensoren, also $P=3/28≈0.107$.\n\nDie Simulation liefert $1060/10000=0.106$; das liegt nahe am exakten Wert. Abweichungen entstehen durch Zufallsschwankungen und werden bei vielen Durchläufen typischerweise kleiner.\n\nOhne Zurücklegen verändert sich die Zusammensetzung nach der ersten Auswahl. Mit Zurücklegen wären die Pfadwahrscheinlichkeiten anders.",
+      "scoring": {
+        "maxPoints": 10,
+        "passingPoints": 5,
+        "steps": [
+          {
+            "id": "j10_released_v1_6",
+            "points": 10,
+            "description": "Kombinatorische Anzahlen, Wahrscheinlichkeiten und Monte-Carlo-Approximationen bestimmen und kritisch deuten."
+          }
+        ]
+      }
+    },
+    "extendedData": {
+      "applicabilityMappingInheritance": "boundary",
+      "applicabilityFromRequires": true
+    }
+  },
+  "7b01d3d8-1fff-5924-b133-5a4825dc742e": {
+    "id": "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+    "shortKey": "canonical_math_sek1_j10_sphere_surface_area",
+    "title": "Oberfläche von Kugeln deuten und bestimmen",
+    "titleEn": "Interpret and determine the surface area of spheres",
+    "description": "Die lernende Person kann die Struktur der Kugeloberflächenformel $O=4\\pi r^2$ geometrisch plausibilisieren, die Formel für einfache Hüll- und Beschichtungsfragen mit Radius oder Durchmesser anwenden und Flächeneinheit sowie quadratische Skalierung begründen.",
+    "descriptionEn": "The learner can give a geometric plausibility argument for the sphere surface-area formula $O=4\\pi r^2$, apply it to simple covering and coating questions from a radius or diameter, and explain the area unit and quadratic scaling.",
+    "core": true,
+    "weight": 1,
+    "tags": [
+      "canonical"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-math",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "K2.1",
+        "K3.1",
+        "K4.1"
+      ],
+      "guidingIdeas": [
+        "L2"
+      ],
+      "phase": "J10",
+      "area": "Geometry",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.5E.O"
+    },
+    "contains": [],
+    "requires": [
+      "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+      "f65ab452-1884-57b0-9be3-c7d9e4944891",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "semanticAtomic": true,
+    "extendedData": {
+      "applicabilityMappingInheritance": "boundary"
+    },
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "title": "Visualisierung: Oberfläche von Kugeln deuten und bestimmen",
+        "url": "/assets/goal-visualizations/mathematik/7b01d3d8-1fff-5924-b133-5a4825dc742e/7b01d3d8-1fff-5924-b133-5a4825dc742e.png",
+        "provider": "OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)",
+        "description": "Visualisierung zum Lernziel: Oberfläche von Kugeln deuten und bestimmen.",
+        "altText": "Eine Kugel wird nur außen bemalt. Eine Strecke vom Mittelpunkt zur Oberfläche markiert den Radius r. Die Oberfläche beträgt O=4πr²; r ist die Hälfte des Durchmessers, eine Flächeneinheit ist cm². Doppelter Radius bedeutet vierfache Oberfläche. Die Zeichnung unterstützt die Orientierung, die geometrische Plausibilisierung wird im Lerntext behandelt.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "bb227e31-0b0b-544a-b5e0-548256a70dec": {
+    "id": "bb227e31-0b0b-544a-b5e0-548256a70dec",
+    "shortKey": "canonical_math_sek1_j10_sphere_volume",
+    "title": "Volumen von Kugeln deuten und bestimmen",
+    "titleEn": "Interpret and determine the volume of spheres",
+    "description": "Die lernende Person kann die Struktur der Kugelvolumenformel $V=\\frac43\\pi r^3$ geometrisch plausibilisieren, die Formel für einfache Füll- und Rauminhaltsfragen mit Radius oder Durchmesser anwenden und Volumeneinheit sowie kubische Skalierung begründen.",
+    "descriptionEn": "The learner can give a geometric plausibility argument for the sphere-volume formula $V=\\frac43\\pi r^3$, apply it to simple capacity and spatial-volume questions from a radius or diameter, and explain the volume unit and cubic scaling.",
+    "core": true,
+    "weight": 1,
+    "tags": [
+      "canonical"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-math",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "K2.1",
+        "K3.1",
+        "K4.1"
+      ],
+      "guidingIdeas": [
+        "L2"
+      ],
+      "phase": "J10",
+      "area": "Geometry",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.5E.V"
+    },
+    "contains": [],
+    "requires": [
+      "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+      "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "semanticAtomic": true,
+    "extendedData": {
+      "applicabilityMappingInheritance": "boundary"
+    },
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "bb227e31-0b0b-544a-b5e0-548256a70dec",
+        "title": "Visualisierung: Volumen von Kugeln deuten und bestimmen",
+        "url": "/assets/goal-visualizations/mathematik/bb227e31-0b0b-544a-b5e0-548256a70dec/bb227e31-0b0b-544a-b5e0-548256a70dec.png",
+        "provider": "OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)",
+        "description": "Visualisierung zum Lernziel: Volumen von Kugeln deuten und bestimmen.",
+        "altText": "Ein Schnitt durch die Mitte zeigt die Kugel als Kreis, der den umschließenden Zylinderquerschnitt an allen vier Seiten berührt. Beide Körper haben Radius r, der Zylinder Höhe 2r. Das Kugelvolumen ist zwei Drittel des Zylindervolumens, also 4πr³/3. Die Einheit ist zum Beispiel cm³, bei doppeltem Radius wird das Volumen achtmal so groß. Der Schnitt zeigt die Abmessungen, nicht das Volumenverhältnis als Flächenverhältnis.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "e55edcb9-2184-4a24-890e-70cc91028990": {
+    "id": "e55edcb9-2184-4a24-890e-70cc91028990",
+    "shortKey": "canonical_math_sek1_j10_simulation_monte_carlo",
+    "title": "Stochastische Simulationen und Monte-Carlo-Verfahren deuten",
+    "titleEn": "Interpret stochastic simulations and Monte Carlo methods",
+    "description": "Die lernende Person kann Zufallsexperimente simulieren, Näherungswerte für Wahrscheinlichkeiten gewinnen und Monte-Carlo-Verfahren als stochastische Approximation deuten.",
+    "descriptionEn": "The learner can simulate random experiments, obtain approximate probability values, and interpret Monte Carlo methods as stochastic approximation.",
+    "core": true,
+    "weight": 1,
+    "tags": [
+      "canonical"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-math",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "K1.2",
+        "K3.1",
+        "K5.1"
+      ],
+      "guidingIdeas": [
+        "L5"
+      ],
+      "phase": "J10",
+      "area": "Probability",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.2B"
+    },
+    "contains": [],
+    "requires": [
+      "efc3506a-5f35-4d77-9498-d70a091a470b",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "semanticAtomic": true,
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "e55edcb9-2184-4a24-890e-70cc91028990",
+        "title": "Visualisierung: Stochastische Simulationen und Monte-Carlo-Verfahren deuten",
+        "url": "/assets/goal-visualizations/mathematik/e55edcb9-2184-4a24-890e-70cc91028990/e55edcb9-2184-4a24-890e-70cc91028990.jpg",
+        "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+        "description": "Visualisierung zum Lernziel: Stochastische Simulationen und Monte-Carlo-Verfahren deuten.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Stochastische Simulationen und Monte-Carlo-Verfahren deuten\". Die lernende Person kann Zufallsexperimente simulieren, Näherungswerte für Wahrscheinlichkeiten gewinnen und Monte-Carlo-Verfahren als stochastische Approximation deuten.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6": {
+    "id": "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+    "shortKey": "canonical_math_sek1_counting_combinatorial_reasoning_probability",
+    "title": "Zählverfahren und kombinatorische Überlegungen für Wahrscheinlichkeiten nutzen",
+    "titleEn": "Use counting procedures and combinatorial reasoning for probabilities",
+    "description": "Die lernende Person kann Zählverfahren strukturieren, kombinatorische Überlegungen in Sachsituationen einsetzen und sie zur effizienten Bestimmung von Wahrscheinlichkeiten in endlichen Modellen nutzen.",
+    "descriptionEn": "The learner can structure counting procedures, use combinatorial reasoning in contextual situations, and apply it to determine probabilities efficiently in finite models.",
+    "core": true,
+    "weight": 1,
+    "tags": [
+      "canonical"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-math",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "K1.1",
+        "K2.1",
+        "K4.1"
+      ],
+      "guidingIdeas": [
+        "L1",
+        "L5"
+      ],
+      "phase": "J10",
+      "area": "Probability",
+      "topicCode": "CANONICAL.MATH.SEK1.DATA.PROBABILITY.D5A"
+    },
+    "contains": [],
+    "requires": [
+      "2ae76eae-799c-463e-9ec9-82327f8209a8",
+      "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "semanticAtomic": true,
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+        "title": "Visualisierung: Zählverfahren und kombinatorische Überlegungen für Wahrscheinlichkeiten nutzen",
+        "url": "/assets/goal-visualizations/mathematik/3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6/3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6.png",
+        "provider": "Google Gemini gemini-3.1-flash-image (thinking_level=high)",
+        "description": "Mathematische Lernzielvisualisierung; Details im Alternativtext.",
+        "altText": "Aus drei roten und zwei blauen Kugeln werden zwei ohne Zurücklegen gezogen. Drei Rot-Rot- und ein Blau-Blau-Paar ergeben vier günstige von zehn ungeordneten Paaren, Wahrscheinlichkeit zwei Fünftel.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      }
+    ]
+  }
+}

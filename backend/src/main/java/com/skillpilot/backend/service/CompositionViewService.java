@@ -3,14 +3,17 @@ package com.skillpilot.backend.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.composition.CourseProfileCompositionViewMerger;
+import com.skillpilot.backend.composition.CourseProfileAvailability;
 import com.skillpilot.backend.curriculumpackage.PackageCompositionViewState;
 import com.skillpilot.backend.landscape.LandscapeProperties;
+import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
@@ -20,8 +23,11 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.stream.Stream;
 import java.util.function.Supplier;
+import java.util.function.BiFunction;
+import java.nio.charset.StandardCharsets;
 import org.springframework.util.StringUtils;
 
 public class CompositionViewService {
@@ -38,6 +44,8 @@ public class CompositionViewService {
     private static final String COURSE_PROFILE_COMBINED = "GK+LK";
     private static final String COURSE_PROFILE_GK = "GK";
     private static final String COURSE_PROFILE_LK = "LK";
+    private static final String CANONICAL_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
+    private static final String MERGED_SCOPE_SEPARATOR = "~scope~";
     static final int MAX_MERGED_VIEW_CACHE_ENTRIES = 64;
     private static final Set<String> LEARNER_SCOPE_DIMENSIONS = Set.of(
             "schoolForm",
@@ -55,24 +63,45 @@ public class CompositionViewService {
     private final ObjectMapper objectMapper;
     private final PackageCompositionViewState packageState;
     private final Supplier<Map<String, List<String>>> canonicalGraphSupplier;
+    private final BiFunction<String, Map<String, String>, Set<String>> courseAvailabilityResolver;
     private volatile RepositoryViewIndex repositoryViewIndex;
     private final Object mergedViewCacheLock = new Object();
-    private final Map<List<Map<String, Object>>, List<Map<String, Object>>> mergedViewRoots =
+    private final Map<MergedRootsKey, List<Map<String, Object>>> mergedViewRoots =
             new LinkedHashMap<>(16, 0.75f, true);
     private Map<String, List<String>> mergedViewGraph;
 
     public CompositionViewService(LandscapeProperties properties, ObjectMapper objectMapper) {
-        this(properties, objectMapper, null);
+        this(properties, objectMapper, (Supplier<Map<String, List<String>>>) null);
     }
 
     public CompositionViewService(
             LandscapeProperties properties,
             ObjectMapper objectMapper,
             Supplier<Map<String, List<String>>> canonicalGraphSupplier) {
+        this(properties, objectMapper, canonicalGraphSupplier, null);
+    }
+
+    /** Production repository projection: structural graph and course metadata share one catalog. */
+    public CompositionViewService(
+            LandscapeProperties properties, ObjectMapper objectMapper, LandscapeService landscapes) {
+        this(properties, objectMapper, () -> {
+            Map<String, List<String>> contains = new LinkedHashMap<>();
+            landscapes.getAll().forEach(landscape -> landscape.getGoals().forEach(goal ->
+                    contains.put(goal.getId(), goal.getContains() == null ? List.of() : List.copyOf(goal.getContains()))));
+            return contains;
+        }, (landscapeId, scope) -> CourseProfileAvailability.unavailableGoals(landscapes.getById(landscapeId), scope));
+    }
+
+    private CompositionViewService(
+            LandscapeProperties properties,
+            ObjectMapper objectMapper,
+            Supplier<Map<String, List<String>>> canonicalGraphSupplier,
+            BiFunction<String, Map<String, String>, Set<String>> courseAvailabilityResolver) {
         this.properties = Objects.requireNonNull(properties, "properties");
         this.objectMapper = Objects.requireNonNull(objectMapper, "objectMapper");
         this.packageState = null;
         this.canonicalGraphSupplier = canonicalGraphSupplier;
+        this.courseAvailabilityResolver = courseAvailabilityResolver;
     }
 
     public CompositionViewService(PackageCompositionViewState packageState) {
@@ -80,6 +109,7 @@ public class CompositionViewService {
         this.objectMapper = null;
         this.packageState = Objects.requireNonNull(packageState, "packageState");
         this.canonicalGraphSupplier = null;
+        this.courseAvailabilityResolver = null;
     }
 
     public record CompositionStructureResolution(
@@ -184,12 +214,50 @@ public class CompositionViewService {
                     new LinkedHashMap<>());
         }
 
+        CompositionCanonicalFocusResolution resolution = resolveCanonicalFocusReference(view, focusGoalId, structuralGoals);
+        return resolution == null ? List.of() : resolution.ancestors();
+    }
+
+    /** A present root reference may have no ancestors; absence and POnly remain distinct. */
+    public record CompositionCanonicalFocusResolution(
+            String goalId,
+            String viewId,
+            boolean target,
+            List<CompositionStructureResolution> ancestors) {
+        public CompositionCanonicalFocusResolution {
+            ancestors = List.copyOf(ancestors);
+        }
+    }
+
+    /** Uses exactly the selected placement path used by learner-facing ancestor navigation. */
+    public CompositionCanonicalFocusResolution resolveCanonicalFocusReference(
+            String viewId,
+            String focusGoalId,
+            Map<String, LearningGoal> structuralGoals) {
+        if (!StringUtils.hasText(viewId) || !StringUtils.hasText(focusGoalId)) {
+            return null;
+        }
+        return resolveCanonicalFocusReference(findViewById(viewId), focusGoalId, structuralGoals);
+    }
+
+    /** Same pure path selection for a view already resolved by the projection. */
+    public CompositionCanonicalFocusResolution resolveCanonicalFocusReference(
+            Map<String, Object> view,
+            String focusGoalId,
+            Map<String, LearningGoal> structuralGoals) {
+        if (view == null || !StringUtils.hasText(focusGoalId)) {
+            return null;
+        }
+        String resolvedViewId = asString(view.get("viewId"));
+        if (!StringUtils.hasText(resolvedViewId)) {
+            return null;
+        }
         if (structuralGoals == null || structuralGoals.isEmpty()) {
-            return Collections.emptyList();
+            return null;
         }
         String resolvedFocusGoalId = resolveCanonicalGoalReference(focusGoalId, structuralGoals);
         if (resolvedFocusGoalId == null) {
-            return Collections.emptyList();
+            return null;
         }
 
         List<FocusPathCandidate> candidates = new ArrayList<>();
@@ -208,8 +276,11 @@ public class CompositionViewService {
                         .thenComparingInt(FocusPathCandidate::authoredOrder))
                 .findFirst()
                 .orElse(null);
-        if (selectedPath == null || selectedPath.role() != ProjectionRole.TARGET) {
-            return Collections.emptyList();
+        if (selectedPath == null) {
+            return null;
+        }
+        if (selectedPath.role() != ProjectionRole.TARGET) {
+            return new CompositionCanonicalFocusResolution(resolvedFocusGoalId, resolvedViewId, false, List.of());
         }
 
         LinkedHashMap<String, CompositionStructureResolution> ancestors = new LinkedHashMap<>();
@@ -235,10 +306,9 @@ public class CompositionViewService {
                                 List.of(ancestorGoalId)));
             }
         }
-        return resolveEnclosingStructures(
-                selectedPath.structurePath(),
-                resolvedViewId,
-                ancestors);
+        return new CompositionCanonicalFocusResolution(
+                resolvedFocusGoalId, resolvedViewId, true,
+                resolveEnclosingStructures(selectedPath.structurePath(), resolvedViewId, ancestors));
     }
 
     private record CompositionStructureReference(String viewId, String nodeId) {
@@ -625,22 +695,46 @@ public class CompositionViewService {
             return packageState.findViewDocumentById(normalizedViewId);
         }
         if (normalizedViewId.startsWith("merged:")) {
-            List<Map<String, Object>> sourceViews = Arrays.stream(normalizedViewId.substring("merged:".length()).split("\\+"))
-                    .map(String::trim)
-                    .filter(StringUtils::hasText)
+            String sourceIds = normalizedViewId.substring("merged:".length());
+            Map<String, String> encodedScope = null;
+            int scopeSeparator = sourceIds.indexOf(MERGED_SCOPE_SEPARATOR);
+            if (scopeSeparator >= 0) {
+                try {
+                    Map<String, Object> rawScope = objectMapper.readValue(
+                            Base64.getUrlDecoder().decode(sourceIds.substring(scopeSeparator + MERGED_SCOPE_SEPARATOR.length())), MAP_TYPE);
+                    if (rawScope == null) return null;
+                    encodedScope = asStringMap(rawScope);
+                    if (rawScope.size() != encodedScope.size()) return null;
+                } catch (IOException | IllegalArgumentException invalidScope) {
+                    return null;
+                }
+                if (!isConstrainedLearnerScope(encodedScope) || !isCombinedCourseProfileRequest(encodedScope)) return null;
+                sourceIds = sourceIds.substring(0, scopeSeparator);
+            }
+            List<String> ids = Arrays.stream(sourceIds.split("\\+")).map(String::trim).filter(StringUtils::hasText).toList();
+            List<Map<String, Object>> sourceViews = ids.stream()
                     .map(this::findSingleViewById)
                     .filter(Objects::nonNull)
                     .toList();
-            if (sourceViews.isEmpty()) {
+            if (sourceViews.isEmpty() || sourceViews.size() != ids.size()) {
                 return null;
             }
             if (sourceViews.size() == 1) {
+                if (encodedScope != null) return null;
                 return Collections.unmodifiableMap(new LinkedHashMap<>(sourceViews.get(0)));
             }
-            return mergeViews(
-                    asString(sourceViews.get(0).get("landscapeId")),
-                    asStringMap(sourceViews.get(0).get("scope")),
-                    sourceViews);
+            String landscapeId = asString(sourceViews.get(0).get("landscapeId"));
+            Map<String, String> scope = mergedSourceScope(sourceViews);
+            if (encodedScope != null) {
+                for (Map<String, Object> source : sourceViews) {
+                    if (scoreScopeMatch(asStringMap(source.get("scope")), encodedScope) == null) return null;
+                }
+                scope = encodedScope;
+            } else if (sourceUnavailableGoals(landscapeId, scope, sourceViews) == null) {
+                // Preserve legacy structural-only adapters and non-canonical presentation.
+                scope = asStringMap(sourceViews.get(0).get("scope"));
+            }
+            return mergeViews(landscapeId, scope, sourceViews);
         }
         return findSingleViewById(normalizedViewId);
     }
@@ -964,7 +1058,8 @@ public class CompositionViewService {
             String landscapeId,
             Map<String, String> requestedScope,
             List<Map<String, Object>> views) {
-        List<Map<String, Object>> mergedRootNodes = mergedRoots(views);
+        List<Set<String>> unavailable = sourceUnavailableGoals(landscapeId, requestedScope, views);
+        List<Map<String, Object>> mergedRootNodes = mergedRoots(views, requestedScope, unavailable);
         List<String> sourceViewIds = views.stream()
                 .map(view -> asString(view.get("viewId")))
                 .filter(StringUtils::hasText)
@@ -972,7 +1067,20 @@ public class CompositionViewService {
                 .toList();
 
         Map<String, Object> merged = new LinkedHashMap<>();
-        merged.put("viewId", "merged:" + String.join("+", sourceViewIds));
+        String viewId = "merged:" + String.join("+", sourceViewIds);
+        // Most source IDs already determine all course-relevant scope. Encode
+        // a request only when omitted source dimensions change availability;
+        // an ID lookup must never reconstruct another course entitlement.
+        if (unavailable != null && !unavailable.equals(
+                sourceUnavailableGoals(landscapeId, mergedSourceScope(views), views))) {
+            try {
+                viewId += MERGED_SCOPE_SEPARATOR + Base64.getUrlEncoder().withoutPadding().encodeToString(
+                        objectMapper.writeValueAsString(canonicalMergedScope(requestedScope, views)).getBytes(StandardCharsets.UTF_8));
+            } catch (IOException serializationFailure) {
+                throw new IllegalStateException("Cannot encode resolved composition scope", serializationFailure);
+            }
+        }
+        merged.put("viewId", viewId);
         merged.put("landscapeId", landscapeId);
         merged.put("scope", Collections.unmodifiableMap(new LinkedHashMap<>(requestedScope)));
         merged.put("rootNodes", mergedRootNodes);
@@ -980,17 +1088,63 @@ public class CompositionViewService {
         return Collections.unmodifiableMap(merged);
     }
 
+    private static Map<String, String> mergedSourceScope(List<Map<String, Object>> views) {
+        Map<String, String> common = new LinkedHashMap<>(asStringMap(views.get(0).get("scope")));
+        for (Map<String, Object> view : views) {
+            Map<String, String> scope = asStringMap(view.get("scope"));
+            common.entrySet().removeIf(entry -> !Objects.equals(entry.getValue(), scope.get(entry.getKey())));
+        }
+        common.put(COURSE_PROFILE_KEY, COURSE_PROFILE_COMBINED);
+        return common;
+    }
+
+    private static Map<String, String> canonicalMergedScope(
+            Map<String, String> requestedScope, List<Map<String, Object>> views) {
+        Map<String, String> canonical = new TreeMap<>();
+        requestedScope.forEach((key, value) -> {
+            String normalized = normalizeValue(value);
+            String authored = views.stream().map(view -> asStringMap(view.get("scope")).get(key))
+                    .filter(Objects::nonNull).filter(candidate -> normalizeValue(candidate).equals(normalized))
+                    .findFirst().orElse(normalized);
+            canonical.put(key, COURSE_PROFILE_KEY.equals(key) ? COURSE_PROFILE_COMBINED : authored);
+        });
+        return canonical;
+    }
+
+    private List<Set<String>> sourceUnavailableGoals(
+            String landscapeId, Map<String, String> requestedScope, List<Map<String, Object>> views) {
+        if (courseAvailabilityResolver == null) return null;
+        List<Set<String>> result = new ArrayList<>();
+        for (Map<String, Object> view : views) {
+            Map<String, String> sourceScope = new LinkedHashMap<>(requestedScope);
+            sourceScope.put(COURSE_PROFILE_KEY, asStringMap(view.get("scope")).get(COURSE_PROFILE_KEY));
+            Set<String> unavailable = courseAvailabilityResolver.apply(landscapeId, sourceScope);
+            if (unavailable == null) return null;
+            result.add(Set.copyOf(unavailable));
+        }
+        return List.copyOf(result);
+    }
+
+    private record MergedRootsKey(
+            List<Map<String, Object>> sources, Map<String, String> requestedScope,
+            List<Set<String>> unavailableGoalsBySource) { }
+
     /**
-     * Only the structural merge is shared: scope/landscape envelopes are rebuilt
-     * for each lookup. The ordered source documents belong to the immutable view
-     * index; full documents prevent equal view IDs from aliasing different sources.
+     * Only static composition work is shared: scope/landscape envelopes are rebuilt
+     * for each lookup. Ordered complete source documents prevent equal view IDs
+     * from aliasing different sources. Course-aware keys include the actual request
+     * and freshly resolved per-source availability, including changes to tags,
+     * release metadata and authored course semantics.
      * Compare the complete current canonical contains graph before any hit,
      * including when a supplier reuses a mutable map/list. A changed graph clears
-     * all trees and must pass the ordinary strict merger again. No learner data,
-     * authorization or scope resolution is cached here.
+     * all trees and must pass the ordinary strict merger again. The bounded cache
+     * contains no learner state, authorization, mastery, focus or plan data.
      */
-    private List<Map<String, Object>> mergedRoots(List<Map<String, Object>> views) {
-        List<Map<String, Object>> key = List.copyOf(views);
+    private List<Map<String, Object>> mergedRoots(
+            List<Map<String, Object>> views, Map<String, String> requestedScope, List<Set<String>> unavailable) {
+        MergedRootsKey key = new MergedRootsKey(List.copyOf(views),
+                unavailable == null ? Map.of() : Map.copyOf(requestedScope),
+                unavailable == null ? List.of() : unavailable);
         synchronized (mergedViewCacheLock) {
             if (canonicalGraphSupplier != null) {
                 Map<String, List<String>> current = canonicalGraphSupplier.get();
@@ -1008,7 +1162,11 @@ public class CompositionViewService {
                     .map(view -> asNodeList(view.get("rootNodes"))).toList();
             List<Map<String, Object>> merged = canonicalGraphSupplier == null
                     ? CourseProfileCompositionViewMerger.merge(sourceRoots.stream().flatMap(List::stream).toList())
-                    : CourseProfileCompositionViewMerger.mergeViews(sourceRoots, mergedViewGraph);
+                    // Mathematics has passed the graph-verified navigation
+                    // contract. Other subjects retain their existing merge policy
+                    // until their authored presentation overlaps are reviewed.
+                    : CourseProfileCompositionViewMerger.mergeViews(sourceRoots, mergedViewGraph,
+                            views.stream().allMatch(view -> CANONICAL_MATH_ID.equals(view.get("landscapeId"))), unavailable);
             // Also freeze arbitrary nested authored metadata, not only children.
             List<Map<String, Object>> frozen = merged.stream().map(CompositionViewService::deepFreezeMap).toList();
             mergedViewRoots.put(key, frozen);

@@ -5,10 +5,10 @@ package com.skillpilot.backend.service.learningplan;
  *
  * @param rohsaldo I - S
  * @param nochZuDeckendesSoll max(0, -rohsaldo)
- * @param offenesPeriodenpensum min(nochZuDeckendesSoll, max(0, P - H))
- * @param rueckstand nochZuDeckendesSoll - offenesPeriodenpensum
+ * @param offenesPeriodenpensum max(0, P - H)
+ * @param rueckstand max(0, nochZuDeckendesSoll - offenesPeriodenpensum)
  * @param vorsprung max(0, rohsaldo)
- * @param erfuelltesPeriodenziel P - offenesPeriodenpensum
+ * @param erfuelltesPeriodenziel min(P, H), using only dated explicit completions
  * @param direction BEHIND if rueckstand > 0, AHEAD if vorsprung > 0, else ON_TRACK
  */
 public record PlanBalanceResult(

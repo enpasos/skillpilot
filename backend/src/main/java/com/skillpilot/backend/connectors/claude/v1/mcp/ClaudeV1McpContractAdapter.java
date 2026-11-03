@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.ai.CoachToolFacade;
+import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LevelCompletionResponse;
@@ -787,7 +788,7 @@ public class ClaudeV1McpContractAdapter {
                 "Set Active Goal",
                 "Activates one eligible atomic learning goal. If a different goal is already active, redirect "
                         + "must be true and the learner must have explicitly asked to leave that goal. A fresh "
-                        + "request for the already-active goal returns a conflict; an exact replay of the original "
+                        + "request for the already-active goal returns a conflict, except its explicitly published current-task start confirmation; an exact replay of the original "
                         + "successful request remains idempotent. A successful activation advances learner state.",
                 objectSchema(
                         List.of(ARG_GOAL_ID, ARG_EXPECTED_STATE_VERSION, ARG_CLIENT_REQUEST_ID),
@@ -1893,11 +1894,15 @@ public class ClaudeV1McpContractAdapter {
                     FrontierGoal currentActiveGoal = currentState == null ? null : currentState.activeGoal();
                     String displacedGoalId = currentActiveGoal == null ? null : currentActiveGoal.id();
 
-                    if (goalId.equals(displacedGoalId)) {
+                    boolean confirmsCurrentTask = goalId.equals(displacedGoalId)
+                            && CoachStateProjection.requiresAssessmentStartConfirmation(currentState)
+                            && currentState.stateMachine().goalOptions() != null
+                            && currentState.stateMachine().goalOptions().stream().anyMatch(goal -> goalId.equals(goal.id()));
+                    if (goalId.equals(displacedGoalId) && !confirmsCurrentTask) {
                         throw new ToolConflictException(
                                 "This learning goal is already active. Reload the SkillPilot context and continue with it.");
                     }
-                    if (displacedGoalId != null && !Boolean.TRUE.equals(redirect)) {
+                    if (displacedGoalId != null && !confirmsCurrentTask && !Boolean.TRUE.equals(redirect)) {
                         throw new ToolConflictException(
                                 "A different learning goal is already active. Change it only after the learner "
                                         + "explicitly asks to leave it, then retry with redirect enabled.");
@@ -1926,7 +1931,7 @@ public class ClaudeV1McpContractAdapter {
                                 "The canonical active-goal operation returned an inconsistent result.");
                     }
 
-                    boolean redirectApplied = displacedGoalId != null;
+                    boolean redirectApplied = displacedGoalId != null && !goalId.equals(displacedGoalId);
                     Map<String, Object> activation = new LinkedHashMap<>();
                     activation.put("activatedGoalId", activatedGoal.id());
                     activation.put("redirectApplied", redirectApplied);

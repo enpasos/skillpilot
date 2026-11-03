@@ -1,6 +1,7 @@
 package com.skillpilot.backend.completion;
 
 import com.skillpilot.backend.landscape.LearningGoal;
+import com.skillpilot.backend.landscape.MemoryGoalClassification;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,8 +46,9 @@ public final class CompletionProfileCompiler {
 
     /**
      * Compiles direct atomic prerequisite edges for automatic completion. Every
-     * assessment in the complete context remains an obligation until mastered.
-     * Orientation, cards and ordinary goals have no additional protected status.
+     * assessment and memory goal in the complete context is protected from implicit
+     * completion. Only selected protected targets independently retain demand until
+     * mastered; supporting protected goals retain demand only while reached from them.
      */
     public CompiledAutomaticCompletion compileAutomatic(
             Map<String, LearningGoal> canonicalGoals,
@@ -57,10 +59,15 @@ public final class CompletionProfileCompiler {
         CompiledCompletionGraph graph = compileGraph(canonicalGoals, resolvedScopeTargetIds, level2TargetIds,
                 List.of(), List.of(), false);
         Set<String> assessments = new TreeSet<>();
+        Set<String> protectedGoals = new TreeSet<>();
         for (String id : graph.contextGoalIds()) {
-            if (isAssessment(canonicalGoals.get(id))) assessments.add(id);
+            if (isAssessment(canonicalGoals.get(id))) {
+                protectedGoals.add(id);
+                if (graph.targetGoalIds().contains(id)) assessments.add(id);
+            }
+            if (isMemory(canonicalGoals.get(id))) protectedGoals.add(id);
         }
-        return new CompiledAutomaticCompletion(graph, assessments, curriculumGeneration);
+        return new CompiledAutomaticCompletion(graph, assessments, protectedGoals, curriculumGeneration);
     }
 
     public CompiledCompletionProfile compile(
@@ -256,12 +263,7 @@ public final class CompletionProfileCompiler {
     }
 
     public static boolean isMemory(LearningGoal goal) {
-        if (goal == null) return false;
-        if ("memory".equalsIgnoreCase(goal.getNodeKind()) || "memory".equalsIgnoreCase(goal.getSemanticKind())
-                || "memorization".equalsIgnoreCase(goal.getSemanticKind())) return true;
-        if (goal.getExtendedData() != null && goal.getExtendedData().get("vocabularySource") instanceof String) return true;
-        return goal.getTags() != null && goal.getTags().stream().anyMatch(tag -> tag != null
-                && (tag.startsWith("srs-deck") || "memorization".equals(tag)));
+        return MemoryGoalClassification.isMemory(goal);
     }
 
     private static void validateDefinition(CompletionProfileDefinition definition, String generation) {

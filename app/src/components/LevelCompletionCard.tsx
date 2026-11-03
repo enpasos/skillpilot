@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ClipboardCheck } from 'lucide-react'
 import {
   buildCompletionAssessmentStartHref,
+  canDiscoverCompletionAssessments,
   completionLabel,
   completionNotice,
   isAutomaticCompletion,
@@ -51,10 +52,13 @@ export const LevelCompletionCard = ({
   }, [pendingChoice, pendingCurrent])
   const disabled = stale || busy
   const discoveryDisabled = disabled || completion.calculationStatus === 'invalid' || completion.calculationStatus === 'unavailable'
+  const assessmentDiscoveryAvailable = canDiscoverCompletionAssessments(completion)
+  const assessmentDiscoveryDisabled = disabled || !assessmentDiscoveryAvailable
   const automatic = isAutomaticCompletion(completion)
   const active = hasActiveCompletionRoute(completion)
   const automaticOverview = automatic && !active
   const valid = completion.calculationStatus === 'valid'
+  const assessmentScopeAvailable = assessmentDiscoveryAvailable && (valid || completion.calculationStatus === 'invalid')
   const filteredScopes = completion.profileOptions.filter(option => completionLabel(option.title, language)
     .toLocaleLowerCase(en ? 'en' : 'de').includes(scopeQuery.trim().toLocaleLowerCase(en ? 'en' : 'de')))
   const scopeLastPage = Math.max(0, Math.ceil(filteredScopes.length / 6) - 1)
@@ -96,9 +100,9 @@ export const LevelCompletionCard = ({
         {requestedAssessmentMissing ? <p role="status" className="mt-3 text-sm text-text-secondary">{en
           ? 'The requested assessment is not currently available as a shortcut here. You can review your Personal Curriculum in the settings.'
           : 'Die angefragte Prüfung ist hier aktuell nicht als Abkürzung verfügbar. Du kannst deinen Persönlichen Lehrplan in den Einstellungen prüfen.'}</p> : null}
-        {automaticOverview && valid && completion.profileId && completion.assessments.length > 0 ? <CompletionAssessmentList
+        {automaticOverview && assessmentScopeAvailable && completion.profileId && completion.assessments.length > 0 ? <CompletionAssessmentList
           assessments={completion.assessments} profileId={completion.profileId} revision={completion.learnerRevision}
-          language={language} disabled={discoveryDisabled} stale={stale} running={completion.directAssessmentRunning}
+          language={language} disabled={assessmentDiscoveryDisabled} stale={stale} running={completion.directAssessmentRunning}
           label={en ? 'Assessments in your Personal Curriculum' : 'Prüfungen im Persönlichen Lehrplan'} onShowGoal={onShowGoal}
         /> : null}
         {automaticOverview && completion.profileOptions.length > 0 ? <h3 className="mt-5 font-semibold text-text-primary">
@@ -117,7 +121,7 @@ export const LevelCompletionCard = ({
               : `${option.targetCount} ${option.targetCount === 1 ? 'Lernziel' : 'Lernziele'}, ${option.profileId.startsWith('automatic:') ? 'mit' : 'davon'} ${option.requiredAssessmentCount} erforderliche ${option.requiredAssessmentCount === 1 ? 'Prüfung' : 'Prüfungen'}.`}</p> : null}
             {!automaticOverview && option.assessments?.length ? <CompletionAssessmentList
               assessments={option.assessments} profileId={option.profileId} revision={completion.learnerRevision}
-              language={language} disabled={discoveryDisabled} stale={stale} running={completion.directAssessmentRunning}
+              language={language} disabled={assessmentDiscoveryDisabled} stale={stale} running={completion.directAssessmentRunning}
               label={`${en ? 'Assessments in' : 'Prüfungen in'} ${completionLabel(option.title, language)}`}
               onShowGoal={onShowGoal}
             /> : null}
@@ -209,10 +213,10 @@ export const LevelCompletionCard = ({
       {completion.navigationIntent === 'paused' ? <p role="status" className="mt-3 text-sm text-text-secondary">{en ? 'This learning route is paused. Choose your next step when you want to continue.' : 'Dieser Lernweg ist pausiert. Wähle deinen nächsten Schritt, wenn du fortfahren möchtest.'}</p> : null}
       {learningPlanPaused && active ? <p className="mt-3 text-sm text-text-secondary">{en ? 'Your regular learning plan is paused while you work on completing this section.' : 'Dein regulärer Lernplan ist pausiert, während du am Abschluss dieses Abschnitts arbeitest.'}</p> : null}
       {completion.notice ? <p className="mt-3 text-sm text-text-secondary">{completionNotice(completion.notice, language)}</p> : null}
-      {completion.assessments.length > 0 && valid && completion.profileId ? <CompletionAssessmentList
+      {completion.assessments.length > 0 && assessmentScopeAvailable && completion.profileId ? <CompletionAssessmentList
         key={completion.profileId}
         assessments={completion.assessments} profileId={completion.profileId} revision={completion.learnerRevision}
-        language={language} disabled={disabled} stale={stale} running={completion.directAssessmentRunning}
+        language={language} disabled={assessmentDiscoveryDisabled} stale={stale} running={completion.directAssessmentRunning}
         label={automatic ? (en ? 'Assessments in this section' : 'Prüfungen in diesem Abschnitt')
           : (en ? 'Required assessments' : 'Erforderliche Prüfungen')}
         onShowGoal={onShowGoal}

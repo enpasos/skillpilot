@@ -98,6 +98,39 @@ class LearnerAiControllerTest {
         RequestContextHolder.resetRequestAttributes();
     }
 
+    @org.junit.jupiter.params.ParameterizedTest
+    @org.junit.jupiter.params.provider.ValueSource(strings = {"task", "bc60e300-96be-599a-89b6-8fcca380803d", "68a262fc-43f4-5d23-af30-853870bfd45b"})
+    void activeExamTransportKeepsBothLanguageImageListsWithoutChangingSource(String id) throws Exception {
+        var active = examGoal(id);
+        active.examData().setReviewStatus("released");
+        String images = "![bad](http://[)\n![one](/assets/one.svg)\n![repeat](/assets/one.svg)\n![two](/assets/two.png)\n";
+        active.examData().setTaskContent(images + "Aufgabe $x$.\nZweiter Teil.");
+        active.examData().setTaskContentEn(images + "Task $x$.\nSecond part.");
+        active.examData().setSolutionContentEn("English secret solution");
+        var raw = new UnifiedLearnerStateResponse("learner-1", null, List.of(active), null,
+                List.of("setMastery"), List.of(), Set.of(), "TEACHING", active,
+                new StateMachineInfo("TEACHING", "teachActiveGoal", List.of(active), List.of(), active));
+        when(learnerService.getCoachLearnerState("learner-1")).thenReturn(raw);
+
+        var projected = controller.getLearnerState("learner-1");
+
+        for (String task : List.of(projected.activeGoal().examData().getTaskContent(),
+                projected.activeGoal().examData().getTaskContentEn())) {
+            assertThat(task).startsWith("IMAGE_PATH: /ai-assets/one.svg\nIMAGE_PATH: /ai-assets/two.png\n\n")
+                    .contains("\\(x\\)").doesNotContain("![", "http://[", "$x$");
+            if (!"task".equals(id)) {
+                assertThat(task).contains("**Prüfungsmodus – Mathematik LK (Analysis)**", "Wenn du abbrechen möchtest");
+            }
+        }
+        assertThat(projected.frontier().get(0).examData()).isNull();
+        assertThat(projected.stateMachine().activeGoal().examData().getTaskContentEn())
+                .isEqualTo(projected.activeGoal().examData().getTaskContentEn());
+        assertThat(active.examData().getTaskContent()).isEqualTo(images + "Aufgabe $x$.\nZweiter Teil.");
+        verify(learnerService).assertActiveLearnerRouteAccess("learner-1");
+        verify(learnerService).getCoachLearnerState("learner-1");
+        verifyNoMoreInteractions(learnerService);
+    }
+
     @Test
     void setActiveGoal_allowsExplicitRedirectFromMemoryMode() {
         String skillpilotId = "learner-1";

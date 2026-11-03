@@ -36,6 +36,8 @@ import com.skillpilot.backend.landscape.LandscapeSummary;
 import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.ArgumentCaptor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
@@ -43,6 +45,77 @@ import org.springframework.web.server.ResponseStatusException;
 class VisibleSessionServiceTest {
 
     private static final String TOKEN = "sps_VisibleSessionToken123";
+
+    @ParameterizedTest
+    @ValueSource(strings = {"de", "en-US"})
+    void aSingleVoluntaryChoiceWaitsForConsentAndPublishesNoAutomaticActivation(String language) {
+        String description = "Complete goal description. ".repeat(100);
+        var raw = com.skillpilot.backend.ai.VoluntaryLearningChoiceTestFixture.choice(description);
+        var facade = mock(CoachToolFacade.class);
+        when(facade.getSessionState(TOKEN)).thenReturn(raw);
+        var context = new VisibleSessionService(facade, "https://skillpilot.test").getState(TOKEN, language);
+        assertThat(context.activeGoal()).isNull();
+        assertThat(context.selection().question()).contains(language.startsWith("en") ? "voluntarily" : "freiwillig");
+        assertThat(context.selection().options()).singleElement().satisfies(option -> {
+            assertThat(option.label()).isEqualTo("Goal A");
+            assertThat(option.description()).startsWith(language.startsWith("en")
+                    ? "Optional learning choice" : "Freiwillige Lernwahl");
+        });
+        assertThat(context.instruction()).contains(language.startsWith("en") ? "wait" : "warte");
+        assertThat(context.instruction()).contains(language.startsWith("en") ? "first or unique" : "die einzige Option");
+        assertThat(context.instruction()).doesNotContain("Apply one semantically unambiguous match immediately",
+                "Wende einen inhaltlich eindeutigen Treffer sofort an");
+        assertThat(context.instruction()).contains(language.startsWith("en") ? "already stated request" : "bereits ausdrücklich genannter Wunsch");
+        verify(facade, never()).setSessionActiveGoal(any(), any());
+        assertThat(raw.stateMachine().goalOptions().getFirst().description()).isEqualTo(description);
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void authoredSvgUsesTheExistingTaskImageFlagAndCockpitLink(boolean withImage) throws Exception {
+        var facade = mock(CoachToolFacade.class);
+        var exam = examGoal("hyperbola-task", "Hyperbel untersuchen", "released");
+        String body = "1. Bestimme die Funktionsgleichung.\n2. Begründe den Verlauf.";
+        String task = (withImage
+                ? "![Hyperbel](/assets/assessment-materials/mathematik/hyperbola.svg)\n"
+                : "") + body;
+        exam.examData().setTaskContent(task);
+        when(facade.getSessionState(TOKEN)).thenReturn(state("teachActiveGoal", exam, List.of(exam)));
+        var service = new VisibleSessionService(facade, "https://skillpilot.test");
+
+        var context = service.getState(TOKEN, "de");
+
+        assertThat(context.interactionMode()).isEqualTo("exam");
+        assertThat(context.activeGoal().examData().hasImage()).isEqualTo(withImage);
+        assertThat(context.activeGoal().examData().taskContent()).isEqualTo(body);
+        assertThat(context.activeGoal().examData().maxPoints()).isEqualTo(10);
+        assertThat(context.activeGoal().cockpitUrl()).isEqualTo("https://skillpilot.test/?l=math&goal=hyperbola-task");
+        assertThat(new com.fasterxml.jackson.databind.ObjectMapper().writeValueAsString(context))
+                .doesNotContain("Musterlösung", "solutionContent", "sourceArtifactPath", "passingPoints", "IMAGE_PATH");
+        assertThat(exam.examData().getTaskContent()).isEqualTo(task);
+        assertThat(exam.examData().getSolutionContent()).contains("Musterlösung");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"de", "en-US"})
+    void visibleExamConsumesEveryLocalizedHeaderLineWithoutEvaluation(String language) throws Exception {
+        var facade = mock(CoachToolFacade.class);
+        var active = examGoal("two-image-task", "Zwei Abbildungen", "released");
+        String header = "IMAGE_PATH: /private/one.svg\nIMAGE_PATH: /private/two.png\n\n";
+        active.examData().setTaskContent(header + "Aufgabe\nTeil 2.");
+        active.examData().setTaskContentEn(header + "Task\nPart 2.");
+        when(facade.getSessionState(TOKEN)).thenReturn(state("teachActiveGoal", active, List.of(active)));
+
+        var context = new VisibleSessionService(facade, "https://skillpilot.test").getState(TOKEN, language);
+
+        assertThat(context.activeGoal().examData().hasImage()).isTrue();
+        assertThat(context.activeGoal().examData().taskContent()).isEqualTo(
+                language.startsWith("en") ? "Task\nPart 2." : "Aufgabe\nTeil 2.");
+        assertThat(context.activeGoal().examData().maxPoints()).isEqualTo(10.0);
+        assertThat(new com.fasterxml.jackson.databind.ObjectMapper().writeValueAsString(context)).doesNotContain(
+                "IMAGE_PATH:", "/private/one.svg", "/private/two.png", "Musterlösung", "solutionContent", "passingPoints");
+        assertThat(active.examData().getTaskContent()).isEqualTo(header + "Aufgabe\nTeil 2.");
+    }
 
     @Test
     void getState_returnsCompactLocalizedRelayFooterAndActiveGoal() {
@@ -884,13 +957,8 @@ class VisibleSessionServiceTest {
         assertThat(active.progress().personalized().totalAtomic()).isEqualTo(5);
         assertThat(active.completion().curriculumComplete()).isFalse();
         assertThat(active.resources())
-                .anySatisfy(resource -> {
-                    assertThat(resource.type()).isEqualTo("goal-visualization");
-                    assertThat(resource.title()).isEqualTo("goal-visualization");
-                    assertThat(resource.url()).isEqualTo(active.activeGoal().cockpitUrl());
-                    assertThat(resource.requiresCockpit()).isTrue();
-                })
-                .anySatisfy(resource -> {
+                .noneMatch(resource -> "goal-visualization".equals(resource.type()))
+                .singleElement().satisfies(resource -> {
                     assertThat(resource.type()).isEqualTo("reference");
                     assertThat(resource.url()).isEqualTo("https://skillpilot.test/ai-assets/guide.pdf");
                     assertThat(resource.requiresCockpit()).isFalse();

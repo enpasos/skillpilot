@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "authorIndependent": true,
+  "scope": "Only two bibliographic sourceRef scalars; no batch materialization, SourceCoverage, Native, Stage, Root or M7 acceptance.",
+  "authorRequest": {
+    "path": "tmp/approach-review-20261101/source-ref-geometry-page52-candidate-20261103-v1/metadata-correction-handoff.json",
+    "sha256": "3b15a86a8cc787637835c89125392d7b2e41d47ca7773a5501444db2d41a0db9"
+  },
+  "currentCanonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "a772d544fc3bf91047c887bb1017ff83b32b2f62bdd8ff0cc263d041917d9482"
+  },
+  "observedStandaloneCandidate": {
+    "path": "tmp/approach-review-20261101/source-ref-geometry-page52-candidate-20261103-v1/candidate-root/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "af9edb031ba197cf1eea29eb63af82be90f40322d8ef82f3316ac11f6f9ea36e"
+  },
+  "approvedScalarEdits": [
+    {
+      "goalId": "e75ec65a-9692-5871-b90b-fbebe38ae0c3",
+      "pointer": "/goals/763/sourceRef",
+      "before": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 10",
+      "after": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 52, Spiegelstrich 10"
+    },
+    {
+      "goalId": "f2a12269-6bcb-564a-9fdb-45cfdbd704fc",
+      "pointer": "/goals/1178/sourceRef",
+      "before": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 10",
+      "after": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 52, Spiegelstrich 10"
+    }
+  ],
+  "independentChecks": {
+    "entireCanonicalJsonDiffExactlyTwoScalars": true,
+    "mathGoals": 1264,
+    "all175ExamDataUnchanged": true,
+    "allRequiresContainsUnchanged": true,
+    "allOtherGoalAndTopLevelFieldsUnchanged": true,
+    "wholeBeforeAfterObjectsAndLedgerDecisionsMatchActualBytes": true,
+    "canonicalUniverseFiles": 21,
+    "rp45WholeObjectHashesIndependentlyRecomputed": 45,
+    "rpChangedGoalIntersection": []
+  },
+  "sourceFinding": "Die vorhandenen unabhängigen Primärprüfungen binden die Formulierung zu besonderen Lagen und Volumenteilung an die gedruckte HE-2024-Seite 52, Q4.2. Nur die falsche Seitenzahl 51 wird berichtigt. Die bestehende Operationalisierung und ihr Anspruch bleiben unverändert.",
+  "fingerprintFinding": "Produktiver Fingerprintbeleg 5a163cb8 ist an aktuelle Helfer/Profile gebunden; deren gelesene Payloaddefinitionen enthalten sourceRef nicht. Die zwei semantischen Fingerprints stimmen weiter exakt mit dem unveränderten Ledger überein. Der Evidence-Reviewinput-Beleg verwendet ausdrücklich eine leere Assetdigestmap und ist kein neuer Mediennachweis.",
+  "ledgerSha256": "c44ea335e761fc25e41bc1f9f76d02589cfd14d0169fbf274c0b1d4cbc039709",
+  "rpCarryforward": "45 ganze relevante Objekte sind vor/nach exakt gleich und frisch gegen Vertrag/native Objektpins gehasht; beide geänderten IDs liegen außerhalb. Alle requires/contains im gesamten betroffenen Canon bleiben gleich. Für diesen bibliografischen Delta keine neue RP-Plan/Evidence/Receipt/Selection/Registrykette erforderlich.",
+  "integrationConditions": [
+    "Nur die beiden sourceRef-Skalare in die tatsächliche nächste private gemeinsame Basis übernehmen. Keinesfalls die ganze alte af9edb-Datei über einen neueren Kandidaten kopieren.",
+    "Die beiden normalen Canon-Pins in Country/Duration aus dem tatsächlich kombinierten Canon neu ableiten. Die genannten hypothetischen Standalone-Policyhashes sind keine freigegebenen Importbytes.",
+    "Ledger und dessen Sourcebinding unverändert lassen; alte Quellen-/Review-/Nativeartefakte bleiben historische unveränderte Bytes.",
+    "Normaler Source-/Producer-/Stage-Nachlauf bleibt Teil des nächsten konkreten Datenbatches. Dieses Review behauptet weder gemessene View-/Coverage-Neutralität noch neue Source-Coverage."
+  ],
+  "checkedFilePins": {
+    "tmp/approach-review-20261101/source-ref-geometry-page52-candidate-20261103-v1/candidate-root/whole-goals.json": "0112eb625d7c35f271415729e45856d3c766c7dfec9d3a24906867de60ea919c",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/geometry-matrix-five-goal-foundation-c2-20261102-v1/recommendation.md": "a302eddff51b16c19cceb8236552611e220863c8dac7bbc0bc05804d5317d90d",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/geometry-two-goal-whole-content-review-20261102-v1/review.md": "65e03ffabb674034a62e993659134d9b8d187241e9e77b0423cd6f8f0ded2122",
+    "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf": "d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953",
+    "tmp/approach-review-20261101/source-ref-geometry-page52-candidate-20261103-v1/candidate-root/fingerprint-consequences.json": "5a163cb818dc871bf562d9aa186ad86ae44a041e8f83752f7fb87c82772e1ecd",
+    "tmp/approach-review-20261101/source-ref-geometry-page52-candidate-20261103-v1/check_fingerprint_consequences.mts": "3b482f76e2d210a0b3eaa95adcb39436238eea3803895586514c34464c6eea2a",
+    "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json": "c44ea335e761fc25e41bc1f9f76d02589cfd14d0169fbf274c0b1d4cbc039709",
+    "app/scripts/config/math-duration-split-spanning-tree-policy.json": "38ad3d54ff7a9b473fe94a3db492d823b28269d84233a18c5db42989b627c9cf",
+    "app/scripts/config/math-country-seki-stage-policy.json": "2d372e280b59b1ddc97b96363bde40396784b895cc2431799a7c42d69bdf6608",
+    "tmp/approach-review-20261101/source-ref-geometry-page52-candidate-20261103-v1/build_candidate.py": "aa9d6e6f4bcadc9da8410715c2c196454458e1d60689155e8eab9a8d46d16fdf",
+    "tmp/approach-review-20261101/source-ref-geometry-page52-candidate-20261103-v1/candidate-root/canonical.patch": "6879541f90fee6d6cd2ac28b5e68a152f87d2d859c691e2ff7e24d97cc917439",
+    "app/scripts/goalBookModel.ts": "4774479889515b31672c72805cf67ff07e153875a0c08d172e80059010a85fcc",
+    "app/scripts/goalEvidenceProfileModel.ts": "50c932f1bb2e6db266756113dbbb82af9d59e172825d2039cdc9dcd9a10c3a26",
+    "contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca",
+    "app/scripts/mathReviewedAssessmentPlacements.ts": "e09df85d9860f0b965faea9d6bda3844848dbcbb8958a079be6d65a73908468c",
+    "app/scripts/config/math-reviewed-assessment-placements.json": "cb1bc50566906fcd19a6f53b31c881d8689162e6f5beb6845178d68207c69e28",
+    "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/rp-g8-sphere-routes-v1/composition-selection.rp-context-contract-v3.json": "9b6e9849d0bc46da2fcded49987a72df7f365521ea36ec3d174ab4facfb0f653",
+    "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/rp-context-contract-v3-adoption-20261102/candidate-operations.v3.json": "3e1a547d9b8aa42b0a5d9d7f94878ad28c4e5094ac2931a7ba0887b642d9877e",
+    "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/rp-context-contract-v3-adoption-20261102/rp-atomic-context-contract.v3.json": "fcb0b217190b92a46220bd1ad1c6be7250a5f9605bb30c5de40ecd96f4100569",
+    "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/rp-context-contract-v3-adoption-20261102/native-rp-direct-atomic-context.v3.json": "f2b9519079e4e9d7c6d1af513dc43e7d1eb253d9967c60b42cd6b68d57fb4623",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json": "9b3ef170c367b0cd9936804c9b0bb696d0b4f2465d8688f9f707abf962de7b79",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json": "a3994ef18ce0f7e060f1d4d63370af2d04e76c489e1785913a60fdf3e1cf686f",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json": "a23c7fa7ee8d58aa4bcaf75b4d534dcd7f0efe5593c2ee7fbf11d424f1a7312f",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json": "971bdd01947d57c7785ee5c30dd33ac3107c486206d4c39e8357dc50ae72b77a",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json": "3588a10e88164666762d9fe0036c92e598ee41ce9a4e6e02f0987b08f9f5d5bd",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json": "4f562870ab4bc7e35d6d00ca80780e315d88369b678b261a9c324dce5eb82167",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json": "70d07b2ffee3a0cbd54d0699b260706e979fca23362b4c05263514b6d3a946ba",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json": "d385d6873f0b0ea7f61861e4163bc634f64c7c793fd45122a46d6e4dafba4409",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json": "1da16f406ca6c3a7363894130bac877ce73c89e6e933dc86f3ca723dc85ed3e5",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json": "f770aeb33e243511411edda453b3f0f9aa406abd9eb925f53de801ce2ee2a3d2",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "a772d544fc3bf91047c887bb1017ff83b32b2f62bdd8ff0cc263d041917d9482",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json": "5cf5c67237726bcea09b59b62c2e790576b7fe09ec0beeb3b9b24674aa7ee3f5",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json": "e1719316bdacf2a874b23ee06ed77192ce71831781309991ddc26ba0e49faf1d",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json": "c03fbf73879aa72bd668e3a727386d1b2bf796a8e4dc731d5ff0bce43b586a06",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json": "998ffd300c60d31f05e7b3cb8e79e324a2f735a71fbd70be0b8696a8f61863f0",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json": "350aac65027a8632564346e6829bacb25e177feb1d6f6988722f314b1685e849"
+  },
+  "reviewerActions": "Read-only source/hash/object checks; only this private review/verifier written. No Node suite, JVM, Root, Git or production action."
+}

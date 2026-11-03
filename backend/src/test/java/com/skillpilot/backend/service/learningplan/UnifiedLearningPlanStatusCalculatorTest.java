@@ -17,7 +17,9 @@ class UnifiedLearningPlanStatusCalculatorTest {
             "'Rückstand, ein Ziel heute erledigt',            13, 3,  9, 1, 1, 2, 0, BEHIND",
             "'Tagesziel erreicht, Rest offen',                13, 3, 12, 4, 3, 1, 0, BEHIND",
             "'Über das Soll hinaus gelernt',                  13, 3, 15, 6, 3, 0, 2, AHEAD",
-            "'Tagespensum bereits durch Vorarbeit abgedeckt', 13, 3, 13, 0, 3, 0, 0, ON_TRACK",
+            "'Vorarbeit deckt das Gesamtsoll, Periode offen', 13, 3, 13, 0, 0, 0, 0, ON_TRACK",
+            "'Hoher Gesamtstand, ein expliziter Abschluss',    6, 3,  6, 1, 1, 0, 0, ON_TRACK",
+            "'Vorsprung ohne heutigen Abschluss',              6, 3,  9, 0, 0, 0, 3, AHEAD",
             "'Heute nichts geplant, Rückstand vorhanden',     10, 0,  8, 0, 0, 2, 0, BEHIND"
     })
     void matchesSection55ReferenceCases(
@@ -67,6 +69,17 @@ class UnifiedLearningPlanStatusCalculatorTest {
                                 .isLessThanOrEqualTo(before.rueckstand());
                         assertThat(after.vorsprung()).as("lead after completion, " + inputs)
                                 .isGreaterThanOrEqualTo(before.vorsprung());
+                        // Raising I by implicit credit/earlier mastery must never move the period needle.
+                        PlanBalanceResult credited = UnifiedLearningPlanStatusCalculator.calculate(
+                                new PlanBalanceInputs(s, p, i + 1, h));
+                        assertThat(credited.erfuelltesPeriodenziel()).as("period independent of I, " + inputs)
+                                .isEqualTo(before.erfuelltesPeriodenziel());
+                        assertThat(credited.offenesPeriodenpensum()).isEqualTo(before.offenesPeriodenpensum());
+                        assertThat(credited.rohsaldo()).isEqualTo(before.rohsaldo() + 1);
+                        // The independent period changes no residual-backlog meaning.
+                        int previousBacklog = before.nochZuDeckendesSoll()
+                                - Math.min(before.nochZuDeckendesSoll(), Math.max(0, p - h));
+                        assertThat(before.rueckstand()).isEqualTo(previousBacklog);
                     }
                 }
             }
@@ -75,6 +88,8 @@ class UnifiedLearningPlanStatusCalculatorTest {
 
     private static void assertInvariants(PlanBalanceResult result, int p) {
         assertThat(result.erfuelltesPeriodenziel()).isBetween(0, p);
+        assertThat(result.offenesPeriodenpensum()).isBetween(0, p);
+        assertThat(result.erfuelltesPeriodenziel() + result.offenesPeriodenpensum()).isEqualTo(p);
         assertThat(result.rueckstand()).isNotNegative();
         assertThat(result.vorsprung()).isNotNegative();
         assertThat(result.rueckstand() > 0 && result.vorsprung() > 0).isFalse();
@@ -91,20 +106,20 @@ class UnifiedLearningPlanStatusCalculatorTest {
     }
 
     @Test
-    void testPartialVorarbeitCoveringPartofPeriodTarget() {
+    void earlierMasteryReducesTotalDemandWithoutFillingThePeriod() {
         // S = 10, P = 4, I = 8, H = 0.
         // Rohsaldo = 8 - 10 = -2.
         // Noch zu deckendes Soll = 2.
         // max(0, P - H) = 4.
-        // Offenes Periodenpensum = min(2, 4) = 2.
-        // Rückstand = 2 - 2 = 0.
-        // Erfülltes Periodenziel = 4 - 2 = 2.
-        // Status: Tagesziel 2 von 4 · im Plan.
+        // Offenes Periodenpensum = 4, independently of remaining total demand 2.
+        // Rückstand = max(0, 2 - 4) = 0.
+        // Erfülltes Periodenziel = min(4, 0) = 0.
+        // Status: Tagesziel 0 von 4 · im Plan.
         PlanBalanceInputs inputs = new PlanBalanceInputs(10, 4, 8, 0);
         PlanBalanceResult result = UnifiedLearningPlanStatusCalculator.calculate(inputs);
 
-        assertThat(result.erfuelltesPeriodenziel()).isEqualTo(2);
-        assertThat(result.offenesPeriodenpensum()).isEqualTo(2);
+        assertThat(result.erfuelltesPeriodenziel()).isZero();
+        assertThat(result.offenesPeriodenpensum()).isEqualTo(4);
         assertThat(result.rueckstand()).isEqualTo(0);
         assertThat(result.vorsprung()).isEqualTo(0);
         assertThat(result.direction()).isEqualTo(StatusDirection.ON_TRACK);

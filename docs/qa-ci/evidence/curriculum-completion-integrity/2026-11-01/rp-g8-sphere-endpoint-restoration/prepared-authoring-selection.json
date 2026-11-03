@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "kind": "existing-assessment-placement",
+  "status": "independent-ai-reviewed",
+  "selectionId": "rp-g8-final-year-sphere-routes-v1",
+  "reviewReceipt": {
+    "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/reviewed-candidate/review.receipt.json",
+    "sha256": "2dee4037a559887df5295fabb798796d559fd1753ad333c1cd02ce41ae535faf"
+  },
+  "taskGoalIds": [
+    "64f37348-20f7-55b1-82a8-8fc388087577",
+    "926d0551-4537-569e-b6ad-fc33bb17546e"
+  ],
+  "operations": [
+    {
+      "viewId": "de-rp-gym-math-gk-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+      "expectedScope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G8"
+      },
+      "mode": "replace-exact-existing-final-year-exam-slot-with-selected-wrapper",
+      "yearStructureId": "rp-klasse9-10-msa-g8",
+      "yearDisplayLabel": "Klassenstufe 9 (G8)",
+      "originalExamSlotIndex": 1,
+      "expectedOriginalExamReference": {
+        "kind": "canonicalSubtree",
+        "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+        "displayLabel": "Prüfungen Jahrgangsstufe 9"
+      },
+      "expectedYearStructureSha256": "0475e06ba4ac49b6865861695246e87fbaf3a6a70ee8718a116cc834bf30d9c8",
+      "replacementNode": {
+        "kind": "structure",
+        "id": "rp-g8-final-year-reviewed-exams",
+        "label": "Prüfungen Jahrgangsstufe 9",
+        "children": [
+          {
+            "kind": "canonicalSubtree",
+            "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+            "displayLabel": "Basisaufgaben"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "64f37348-20f7-55b1-82a8-8fc388087577"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "926d0551-4537-569e-b6ad-fc33bb17546e"
+          }
+        ]
+      },
+      "newTargetGoalIds": [
+        "64f37348-20f7-55b1-82a8-8fc388087577",
+        "926d0551-4537-569e-b6ad-fc33bb17546e"
+      ],
+      "expectedAfterYearStructureSha256": "4899d93c4af6f018050e7c2d83ae60604e95c07e3d2c810b65adc3bf7c9c909d"
+    },
+    {
+      "viewId": "de-rp-gym-math-lk-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+      "expectedScope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G8"
+      },
+      "mode": "replace-exact-existing-final-year-exam-slot-with-selected-wrapper",
+      "yearStructureId": "rp-klasse9-10-msa-g8",
+      "yearDisplayLabel": "Klassenstufe 9 (G8)",
+      "originalExamSlotIndex": 1,
+      "expectedOriginalExamReference": {
+        "kind": "canonicalSubtree",
+        "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+        "displayLabel": "Prüfungen Jahrgangsstufe 9"
+      },
+      "expectedYearStructureSha256": "0475e06ba4ac49b6865861695246e87fbaf3a6a70ee8718a116cc834bf30d9c8",
+      "replacementNode": {
+        "kind": "structure",
+        "id": "rp-g8-final-year-reviewed-exams",
+        "label": "Prüfungen Jahrgangsstufe 9",
+        "children": [
+          {
+            "kind": "canonicalSubtree",
+            "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+            "displayLabel": "Basisaufgaben"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "64f37348-20f7-55b1-82a8-8fc388087577"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "926d0551-4537-569e-b6ad-fc33bb17546e"
+          }
+        ]
+      },
+      "newTargetGoalIds": [
+        "64f37348-20f7-55b1-82a8-8fc388087577",
+        "926d0551-4537-569e-b6ad-fc33bb17546e"
+      ],
+      "expectedAfterYearStructureSha256": "4899d93c4af6f018050e7c2d83ae60604e95c07e3d2c810b65adc3bf7c9c909d"
+    },
+    {
+      "viewId": "de-rp-gym-seki-math-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g8.view.json",
+      "expectedScope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G8"
+      },
+      "mode": "replace-exact-existing-final-year-exam-slot-with-selected-wrapper",
+      "yearStructureId": "rp-klasse9-10-msa-g8",
+      "yearDisplayLabel": "Klassenstufe 9 (G8)",
+      "originalExamSlotIndex": 1,
+      "expectedOriginalExamReference": {
+        "kind": "canonicalSubtree",
+        "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+        "displayLabel": "Prüfungen Jahrgangsstufe 9"
+      },
+      "expectedYearStructureSha256": "2b3a405e2bcca8e93bec22a56e15227f07a67d701f3b96725ee31c2c3952e161",
+      "replacementNode": {
+        "kind": "structure",
+        "id": "rp-g8-final-year-reviewed-exams",
+        "label": "Prüfungen Jahrgangsstufe 9",
+        "children": [
+          {
+            "kind": "canonicalSubtree",
+            "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+            "displayLabel": "Basisaufgaben"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "64f37348-20f7-55b1-82a8-8fc388087577"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "926d0551-4537-569e-b6ad-fc33bb17546e"
+          }
+        ]
+      },
+      "newTargetGoalIds": [
+        "64f37348-20f7-55b1-82a8-8fc388087577",
+        "926d0551-4537-569e-b6ad-fc33bb17546e"
+      ],
+      "expectedAfterYearStructureSha256": "5c381b7a9f7894609cc060777a67f8b802aecbb9f5382645874d51b485e27504"
+    }
+  ],
+  "heldTaskGoalIds": [
+    "e5055665-89ae-5be6-8fc7-42a9e991d63d"
+  ],
+  "noCanonicalOrTaskChanges": true,
+  "noRuntimeEnrollmentInference": true,
+  "noStageWideExamBranch": true
+}

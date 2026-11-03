@@ -1,0 +1,19 @@
+# HE-Jahrgangsbindung des Zylindermantelziels, 29.09.2026
+
+Ziel: `f65ab452-1884-57b0-9be3-c7d9e4944891` – Zylindermantel aus dem Kreisumfang herleiten.
+
+Die verbindliche Landesplatzierung wird für die aufgelösten hessischen Dauer-Modelle auf **G9: Jahrgang9** und **G8: Jahrgang8** korrigiert. Die gemeinsame kanonische `phase: J8`, stabile ID, DE/EN-Zieltexte, Voraussetzungen und Bilder bleiben unverändert. Die Canon erhält zwei `primary`-Placements mit explizitem Kontext `DE-HE / SekI / G9` beziehungsweise `DE-HE / SekI / G8`. Nur die sechs dauerbezogenen HE-SekI-/GK-/LK-Views werden umgehängt. Andere atomare Ziele und ihre Mitgliedschaft bleiben unverändert.
+
+## Originalquellen
+
+- `input/HE/lower-secondary/g9-mathematik.pdf`, **Druckseite34 / PDF-Seite35, 9.6 Geometrie**: Verbindlicher Kreiszylinderstoff umfasst Netz und Schrägbild, Volumen und Oberflächeninhalt. Das stützt die Netz-Mantelflächen-Herleitung als fachliche Operationalisierung in J9; es behauptet keinen wörtlich vorgegebenen Beweisauftrag. Die vorhandenen passenden G9-Kanten `he-math-seki-g9-9-6-03-807af2e4` und `he-math-seki-g9-9-6-04-b52071b1` bleiben erhalten.
+- `input/HE/lower-secondary/g8-mathematik.pdf`, **Druckseite30 / PDF-Seite31, 8G.3 Geometrie**: Die gemeinsame Zeile zu **Prismen und Kreiszylindern** nennt Körpermodell, Netz, Schrägbild sowie Oberflächeninhalt und Volumen. Sie trägt J8. Ergänzt werden zwei fachlich passende **partielle** Kanten aus `he-math-seki-g8-8g-3-01-422796ef` (Netz/Körperdarstellung) und `he-math-seki-g8-8g-3-02-f0dbbfbf` (Oberflächeninhalt/Volumen). Zusammen tragen sie den geometrischen Zusammenhang von Kreisumfang und Mantelrechteck; keine der beiden Kurzzeilen wird allein als vollständige wörtliche Entsprechung zum Zieltext ausgegeben.
+- `input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf`, **S.26–28, Tabelle7.3**: Der Tabellenkopf unterscheidet 5/6, 7/8, 9/10. Körpermodelle/Netze einschließlich Zylinder stehen im Band7/8, Volumen/Oberfläche des Zylinders im Band9/10. Der aktuelle KC ist die verbindliche fachliche Grundlage; die G8-/G9-Lehrpläne sind im bestehenden Quellenmodell ausdrücklich Referenzen für die genaue Jahrgangssequenz. Aus der allgemeinen Netzkompetenz allein folgt keine verpflichtende G9-J8-Formelherleitung.
+
+Die bereits entfernten unpassenden Kanten aus **G8 7G.3** und **G9 8.2** (Kreis und Geraden) werden nicht wiederhergestellt. Die hessische G8-View hatte das Ziel zuvor sogar in J7, die G9-View in J8; beide Fehlplatzierungen werden korrigiert. Die zwei alten dauerneutralen HE-GK-/LK-Kompositionen werden nicht eigenmächtig als G9 deklariert: Die geltende Dauer-Policy nennt die sechs dauerbezogenen Ansichten als learner-facing Projektionen für aufgelöstes G8/G9. Deren Stufenzuordnung ist Gegenstand dieser Änderung.
+
+## Prüfung und Grenze
+
+Die native Canon-Validierung, der native Composition-Compiler und dieselben nativen Sek-I-Routenfunktionen werden gegen einen isolierten unmittelbar vorherigen Snapshot der sechs Ansichten geprüft. Erwartet sind genau ein sichtbares Vorkommen des Ziels je Ansicht unter dem passenden Jahrgang, unveränderte atomare Target-Mengen und keine neuen Routenbefunde. Das [versionierte historische Prüfprotokoll](../quality/source-scope-review/mathematik/2026-09-29/f65-he-stage/native-validation.json) bestätigt diese Erwartungen; die [Dateiliste](../quality/source-scope-review/mathematik/2026-09-29/f65-he-stage/changed-files.json) beschreibt den damaligen Änderungssatz. Diese Bindungen beziehen sich auf die isolierte Implementierungsphase vor späteren Canon-/View-Änderungen.
+
+Diese Änderung ist eine Quellen-/Platzierungskorrektur, keine neue D/P/A/M/V-Freigabe. Review- und Qualitätsregister bleiben unangetastet. Neue Review-Bindungen und die zentrale Quality-Status-Aktualisierung sind getrennte Folgeschritte.

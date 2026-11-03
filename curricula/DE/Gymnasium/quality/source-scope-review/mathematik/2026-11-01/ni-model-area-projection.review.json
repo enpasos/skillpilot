@@ -1,0 +1,1122 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-11-01",
+  "reviewerAgent": "/root/astra_existing_bbb_route_scope",
+  "independentMechanicalReviewer": "/root/astra_existing_bbb_route_scope/cpv009_semantics",
+  "verdict": "PASS_EXACT_ROLE_PRESERVING_REFERENCE_CORRECTION",
+  "scope": "Exactly two CPV-009 errors for NI model-comparison curricular area. Three JSON mutations across two views; no canonical, source, assessment, role-membership or mastery change.",
+  "notAWholeCurriculumSourceApproval": true,
+  "inputBindings": [
+    {
+      "path": "tmp/approach-review-20261101/common-offline-canonical-math.integration-candidate.json",
+      "sha256": "3a3792d14057854c79a3d8c4d38cd98dd6e28e936865ebd3447107404b58474c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "3a3792d14057854c79a3d8c4d38cd98dd6e28e936865ebd3447107404b58474c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "sha256": "715164ded2d862256c2fb4f1600103c78a6550f36e77f4c09498e1770a37dece"
+    },
+    {
+      "path": "tmp/approach-review-20261101/final-integration-scope-probe/common-candidate-all154.json",
+      "sha256": "e9d9274566c5d3a573bd6554c057e45b1153963e8f8f92286946bd498b939dde"
+    },
+    {
+      "path": "tmp/approach-review-20261101/final-integration-scope-probe/common-scope-probe-binding.json",
+      "sha256": "513211d42aaa8aba7b69d2226aab7ea52242080d43856bfabefd028efc3f332f"
+    },
+    {
+      "path": "tmp/math-stage-view-candidate-20261101/supplement-source-decisions.json",
+      "sha256": "e48a3bcb5333bf80cee86c6ddb81c7ba2f7558a3b81606578b6620fa3d7afaf3"
+    },
+    {
+      "path": "tmp/math-stage-view-candidate-20261101/independent-supplement-source-review.md",
+      "sha256": "5884aca6eb57da1612aa02d201d0d43e6b5d0bed21c2f4846a40fa320ebc6abf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stage-scope-implementation.review.md",
+      "sha256": "46b6820ea31344935ecf1ce33e4f1ae8f42c60b81bbe712c1555119fae96ae54"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stage-scope-implementation.review.json",
+      "sha256": "1af57e59c34bcad62b3383b5c33a1763a05d19e44f3105d24fca903eaf383f61"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/assessment-scope-primary-bindings.review.json",
+      "sha256": "52544879579c5994a7b7da1fbdb5fabe7904034c0f6f40b2d1658f5f832b02b2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/assessment-scope-source-decisions.review.md",
+      "sha256": "b00aaf438aa1bac9e51cad40a6a5d54ce1d863f6727f375d04028503c46e2b0f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/duration-rebase-source-decisions.review.md",
+      "sha256": "286eb0cdf3e67dad336ef8be343772294becf4631457dbdfa1911c2b3681b2e7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stage-scope-source-decisions.review.json",
+      "sha256": "3fdbc346042a7e0556a0eaeac05478fe928e1689ddac03dc571c6ebf0d663838"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/sh-sine-derivative-stage-decision.json",
+      "sha256": "1329d00c8928ba414fc24bad04429668400f4f5deba203b0da16431381599044"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/duration-rebase-source-decisions.review.json",
+      "sha256": "34a13b3ad2628fb42ceca1450b621419f90f6be5674a8ac5e452bd7ab95a2c0a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+      "sha256": "7ba9461f6834327e7b6773a6407e45b95d4b6533ad191c77970ebd45d2fa14b5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+      "sha256": "c78e7b3f4509ca9dce3c57c7dcf55c34b5d340da10ef98ea4c9b9541b323b467"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-lk.view.json",
+      "sha256": "c619ca15a7a9d3391a385c6d0e61f9c3bd023c0817c0469ba477a1f9e0a76097"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-lk.view.json",
+      "sha256": "e934df7fb8676f31ad1c620f644937bf76f83b6606040ab2b5e01ce98b7fe079"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-seki.view.json",
+      "sha256": "633cc6be68f45dfc2102edf259ba5f83afd19f0fd4fdcf83f238e58a500cb444"
+    },
+    {
+      "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
+      "sha256": "d7ee9ab670d2d73a3ed82700c2bca2dee3f2da6c8e9517120c5c45acac0d84a7"
+    },
+    {
+      "path": "app/src/utils/compositionViewRuntime.ts",
+      "sha256": "ed65b0b28ecca6c9c17f8152440681af998b8dd193e7826316d5fd12a51c3fa9"
+    },
+    {
+      "path": "app/scripts/validateCompositionViews.ts",
+      "sha256": "088b275edc7d54f9f6cf39c31436caac600bd204d61707e381b537e8d83f6e09"
+    },
+    {
+      "path": "app/scripts/testCompositionProjectionRoles.ts",
+      "sha256": "387606feb5d83ca7908322b8df12443767f86cc8c93b04148e4bc6b41586dda8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sha256": "dd4dbf8d0cb351cf80f8422646763d76edfaafb75dfecc516658955a9da8f036"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_MATHEMATIK_SEKI_KERNCURRICULUM.source-extraction.json",
+      "sha256": "676643e8b7d263e21502b9b4255a6c0570f94698fa70b7b87cf5d73acc5c28a4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sha256": "ae5e090693bc0187b9979d76d1215e92d301edfa562222cfae163e8399818f89"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_MATHEMATIK_SEKII_KERNCURRICULUM_2019.source-extraction.json",
+      "sha256": "109a07ac3948937e26214da984f52406b1096a9df232cfb199ea72d1c5daa4f3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/ma_gym_si_kc_druck.pdf",
+      "sha256": "1d4e97a9f0f64bfac1526ab108ddba8bfc7859f4f79db80d1ef6cf5ef96f92f3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NI/upper-secondary/ma_go_kc_druck_2019.pdf",
+      "sha256": "f550398fe6871e9ea8a52087fce19286b8d43997d82242e3fb87741233729481"
+    },
+    {
+      "path": "app/scripts/mathStageScopePolicy.ts",
+      "sha256": "2a72eabd2f07f035016cfe8d409cc91bfa3eba0375b12dd338bd8883baa2b8e5"
+    }
+  ],
+  "semanticFinding": {
+    "areaId": "ee920de4-1600-582a-a909-02503aa4d1a6",
+    "ledgerDecision": {
+      "goalId": "ee920de4-1600-582a-a909-02503aa4d1a6",
+      "sourceFingerprint": "sha256:83287c045c7afb4266252c4affae222d9c68ddd4d7f0bbeced7032ae6156de0d",
+      "semanticKind": "curricularArea",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-pilot-curricular-area"
+    },
+    "canonicalType": "cluster",
+    "canonicalContains": [
+      "74f28ce7-e568-5d6e-b946-17445b344fcc",
+      "163dd583-8308-53f0-b60d-34588787988d",
+      "519660d0-85e5-57a6-a219-d0a253336649"
+    ],
+    "ownRequires": [],
+    "canonicalDirectConsumers": [],
+    "whyCPV009IsCorrect": "A curricularArea cannot be an opaque atom. The semantic validator checks every goalEntry including POnly. Runtime technical opacity is not semantic/source permission.",
+    "beforeSpecificCPV009Occurrences": [
+      {
+        "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+        "jsonPointer": "/rootNodes/44"
+      },
+      {
+        "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-seki.view.json",
+        "jsonPointer": "/rootNodes/44"
+      }
+    ],
+    "expectedAfterSpecificCPV009Occurrences": []
+  },
+  "completeReviewedContracts": [
+    {
+      "goal": {
+        "id": "ee920de4-1600-582a-a909-02503aa4d1a6",
+        "title": "Mehrere Modelle vergleichen (LK)",
+        "titleEn": "Compare multiple models (advanced course)",
+        "description": "Die lernende Person kann unterschiedliche mathematische Modelle für einen Sachverhalt gegenüberstellen, Vor- und Nachteile diskutieren und Entscheidungen begründen.",
+        "descriptionEn": "The learner can compare different mathematical models for a situation, discuss advantages and disadvantages and justify decisions.",
+        "weight": 3,
+        "tags": [
+          "LK"
+        ],
+        "contains": [
+          "74f28ce7-e568-5d6e-b946-17445b344fcc",
+          "163dd583-8308-53f0-b60d-34588787988d",
+          "519660d0-85e5-57a6-a219-d0a253336649"
+        ],
+        "requires": [],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K3.4"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4",
+            "L5"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "cluster"
+      },
+      "completeNormalizedGoalSha256": "646eef992075c9678b975d6a78dcc80396eef7c493da384324047d9fde872e34",
+      "semanticDecision": {
+        "goalId": "ee920de4-1600-582a-a909-02503aa4d1a6",
+        "sourceFingerprint": "sha256:83287c045c7afb4266252c4affae222d9c68ddd4d7f0bbeced7032ae6156de0d",
+        "semanticKind": "curricularArea",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-pilot-curricular-area"
+      }
+    },
+    {
+      "goal": {
+        "id": "74f28ce7-e568-5d6e-b946-17445b344fcc",
+        "title": "Alternative Modelle entwickeln (LK)",
+        "titleEn": "Develop alternative models",
+        "description": "Die lernende Person kann für denselben Sachverhalt mindestens zwei plausible Modelle formulieren (z. B. linear vs. exponentiell) und die Annahmen explizit machen.",
+        "descriptionEn": "The learner can formulate at least two plausible models for the same situation (e.g. linear vs. exponential) and make assumptions explicit.",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "a41761f2-8ba8-5af4-87c1-eb5e4ab1d020",
+          "fb4dcd2a-a6a9-5371-a2fc-95348ee130e0"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K3.4"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4",
+            "L5"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "74f28ce7-e568-5d6e-b946-17445b344fcc",
+            "title": "Visualisierung: Alternative Modelle entwickeln (LK)",
+            "url": "/assets/goal-visualizations/mathematik/74f28ce7-e568-5d6e-b946-17445b344fcc/74f28ce7-e568-5d6e-b946-17445b344fcc.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Alternative Modelle entwickeln (LK).",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Alternative Modelle entwickeln (LK)\". Die lernende Person kann für denselben Sachverhalt mindestens zwei plausible Modelle formulieren (z. B. linear vs. exponentiell) und die Annahmen explizit machen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "completeNormalizedGoalSha256": "ec79a604c2f9d9a19c743b437314e67716dd45bbae1b256347d94d6ab7c698ba",
+      "semanticDecision": {
+        "goalId": "74f28ce7-e568-5d6e-b946-17445b344fcc",
+        "sourceFingerprint": "sha256:f04ee44f6460694818c4308d3a8bb1f2a3b655f8ae37e902071de0ba07e9d484",
+        "semanticKind": "curricularAtomic",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+      }
+    },
+    {
+      "goal": {
+        "id": "163dd583-8308-53f0-b60d-34588787988d",
+        "title": "Modelle nach Kriterien vergleichen (LK)",
+        "titleEn": "Compare models by criteria",
+        "description": "Die lernende Person kann Modelle anhand von Einfachheit, Güte und Interpretierbarkeit vergleichen und ihre jeweiligen Vor- und Nachteile für die Fragestellung begründen.",
+        "descriptionEn": "The learner can compare models in terms of simplicity, quality and interpretability and explain their respective advantages and disadvantages for the question at hand.",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "74f28ce7-e568-5d6e-b946-17445b344fcc"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K3.4"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4",
+            "L5"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "163dd583-8308-53f0-b60d-34588787988d",
+            "title": "Visualisierung: Modelle nach Kriterien vergleichen (LK)",
+            "url": "/assets/goal-visualizations/mathematik/163dd583-8308-53f0-b60d-34588787988d/163dd583-8308-53f0-b60d-34588787988d.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Modelle nach Kriterien vergleichen (LK).",
+            "altText": "Comic mit linearem und exponentiellem Modell als gleichberechtigte Beispiele. Drei Fragen: Einfachheit, Güte an Daten und Interpretierbarkeit. Die Wahl hängt von Daten und Zweck ab; keine Modellfamilie ist ohne Daten automatisch besser.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "completeNormalizedGoalSha256": "4c45789471de74bca3431f72038d9b3d385feadcda89b8c6ea5e32eff943404c",
+      "semanticDecision": {
+        "goalId": "163dd583-8308-53f0-b60d-34588787988d",
+        "sourceFingerprint": "sha256:e22fbff0cf475a44d65f768cc818db9d968402d3996279446de41740a7ee6534",
+        "semanticKind": "curricularAtomic",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+      }
+    },
+    {
+      "goal": {
+        "id": "519660d0-85e5-57a6-a219-d0a253336649",
+        "title": "Modellentscheidung begründen (LK)",
+        "titleEn": "Justify the model choice",
+        "description": "Die lernende Person kann eine Modellentscheidung anhand von Vergleichskriterien begründen und qualitativ erläutern, wie empfindlich diese Entscheidung gegenüber Datenunsicherheit oder veränderten Annahmen ist.",
+        "descriptionEn": "The learner can justify a model choice using comparison criteria and explain qualitatively how sensitive that choice is to data uncertainty or changed assumptions.",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "163dd583-8308-53f0-b60d-34588787988d"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K3.4"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4",
+            "L5"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "519660d0-85e5-57a6-a219-d0a253336649",
+            "title": "Visualisierung: Modellentscheidung begründen (LK)",
+            "url": "/assets/goal-visualizations/mathematik/519660d0-85e5-57a6-a219-d0a253336649/519660d0-85e5-57a6-a219-d0a253336649.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Modellentscheidung begründen (LK).",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Modellentscheidung begründen (LK)\". Eine Modellwahl wird mit Vergleichskriterien begründet und ihre Empfindlichkeit gegenüber unsicheren Daten oder veränderten Annahmen qualitativ erläutert.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "completeNormalizedGoalSha256": "4191c2fd0eff6f73bdf716e74223ac8a719a3afccb9ccfb587016c9f4b36c415",
+      "semanticDecision": {
+        "goalId": "519660d0-85e5-57a6-a219-d0a253336649",
+        "sourceFingerprint": "sha256:e0448994fd04d5738e9809d5f217b7f61e1ca2645490b01134a63cfa61bddc25",
+        "semanticKind": "curricularAtomic",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+      }
+    }
+  ],
+  "sourceReview": {
+    "primaryReads": [
+      {
+        "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/ma_gym_si_kc_druck.pdf",
+        "sha256": "1d4e97a9f0f64bfac1526ab108ddba8bfc7859f4f79db80d1ef6cf5ef96f92f3",
+        "pdfPagesOneBased": [
+          19
+        ],
+        "pageTextSha256": [
+          {
+            "page": 19,
+            "sha256": "0fa5f2d777fa79591bcda4738e18a5a9bf14c1154572e6c458f8e961ec4fe074"
+          }
+        ],
+        "extractionLocatorOffset": "Existing extraction labels these pages one lower; actual PDF text read at physical and printed pages listed here. No source file corrected."
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/NI/upper-secondary/ma_go_kc_druck_2019.pdf",
+        "sha256": "f550398fe6871e9ea8a52087fce19286b8d43997d82242e3fb87741233729481",
+        "pdfPagesOneBased": [
+          16,
+          19
+        ],
+        "pageTextSha256": [
+          {
+            "page": 16,
+            "sha256": "2330bd53a3158dc3e77b1c701b7024aca9489ed6700e52f5952db16120afd895"
+          },
+          {
+            "page": 19,
+            "sha256": "9e72f612fcd2c63f2f7303c53091476946a0a878150aa7395c15b5ca8379b55d"
+          }
+        ],
+        "extractionLocatorOffset": "Existing extraction labels these pages one lower; actual PDF text read at physical and printed pages listed here. No source file corrected."
+      }
+    ],
+    "existingEvidence": [
+      {
+        "stage": "lower-secondary",
+        "extractionPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_MATHEMATIK_SEKI_KERNCURRICULUM.source-extraction.json",
+        "mappingPath": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+        "relevantPassages": [
+          {
+            "id": "de-ni-mathematik-seki-kerncurriculum-ni-seki-process-mathematisch-modellieren",
+            "topicCode": "NI-SEKI-PROCESS-MATHEMATISCH-MODELLIEREN",
+            "title": "Prozesskompetenz: Mathematisch modellieren",
+            "sourcePath": "curricula/DE/Gymnasium/input/NI/lower-secondary/ma_gym_si_kc_druck.pdf",
+            "sourceDocumentKey": "NI_GYM_SEKI_MATHEMATIK_KC",
+            "sourceRef": "Kerncurriculum Mathematik fuer das Gymnasium Schuljahrgaenge 5-10, Niedersachsen, S. 18",
+            "text": "Prozesskompetenz: Mathematisch modellieren\n- beschreiben Modellannahmen in Sachaufgaben.\n- bewerten mögliche Einflussfaktoren in Realsituationen.\n- nutzen direkt erkennbare Modelle zur Beschreibung überschaubarer Realsituationen.\n- wählen Modelle zur Beschreibung überschaubarer Realsituationen und begründen ihre Wahl.\n- wählen, variieren und verknüpfen Modelle zur Beschreibung von Realsituationen.\n- rdnen einem mathematischen Modell eine passende Realsituation zu.\n- verwenden geometrische Objekte, Diagramme, Tabellen, Terme oder Häufigkeiten zur Ermittlung von Lösungen im mathematischen Modell.\n- verwenden Terme mit Variablen, Gleichungen, Funktionen oder Wahrscheinlichkeiten zur Ermittlung von Lösungen im mathematischen Modell.\n- modellieren Punktwolken auch mithilfe des Regressionsmoduls.\n- überprüfen die im Modell gewonnenen Ergebnisse im Hinblick auf Realsituation und gegebenenfalls Abschätzung.\n- interpretieren die im Modell gewonnenen Ergebnisse im Hinblick auf die Realsituation, reflektieren die Annahmen und variieren diese gegebenenfalls.\n- analysieren und bewerten verschiedene Modelle im Hinblick auf die Realsituation.",
+            "sourceGoalIds": [
+              "de-ni-mathematik-seki-kerncurriculum-ni-seki-process-mathematisch-modellieren-001-4e8b436053",
+              "de-ni-mathematik-seki-kerncurriculum-ni-seki-process-mathematisch-modellieren-002-eb4cec3458",
+              "de-ni-mathematik-seki-kerncurriculum-ni-seki-process-mathematisch-modellieren-003-2c8e050590",
+              "de-ni-mathematik-seki-kerncurriculum-ni-seki-process-mathematisch-modellieren-004-e10425c688",
+              "de-ni-mathematik-seki-kerncurriculum-ni-seki-process-mathematisch-modellieren-005-ca562084f7",
+              "de-ni-mathematik-seki-kerncurriculum-ni-seki-process-mathematisch-modellieren-006-f510b22a8e",
+              "de-ni-mathematik-seki-kerncurriculum-ni-seki-process-mathematisch-modellieren-007-e501c6a51f",
+              "de-ni-mathematik-seki-kerncurriculum-ni-seki-process-mathematisch-modellieren-008-0577bb5808",
+              "de-ni-mathematik-seki-kerncurriculum-ni-seki-process-mathematisch-modellieren-009-d9876bb5c9",
+              "de-ni-mathematik-seki-kerncurriculum-ni-seki-process-mathematisch-modellieren-010-f6728064ee",
+              "de-ni-mathematik-seki-kerncurriculum-ni-seki-process-mathematisch-modellieren-011-5ee4b31272",
+              "de-ni-mathematik-seki-kerncurriculum-ni-seki-process-mathematisch-modellieren-012-ffb4a90bb3"
+            ]
+          }
+        ],
+        "relevantMappingTargets": [
+          "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+          "3095e125-fbb7-51c6-bf12-ffbb1735b9b7",
+          "3823e90d-a34b-46d2-a0f8-3168138d3a95",
+          "4c319dfd-ebb1-504b-a036-c780e1915900",
+          "624764d6-becd-5f9b-ada3-0d4f9d143073",
+          "91571d3f-3651-4477-ba21-320fc4077453",
+          "99b3435a-fdda-5d1b-9681-0ae6d7d5bfcd",
+          "aad80460-c4b2-4d6f-964b-01c80e7ec6f2",
+          "b9a501c4-9d74-5514-b77b-895980b89b1b",
+          "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee",
+          "e02c58a2-2a32-49bd-b110-7b307e0317fb",
+          "e45a39e5-cc9b-577e-a28d-691319410b9a",
+          "f9d284a3-1a47-4aaa-bde2-3dac1c3bb0f0"
+        ],
+        "directMappingsForAreaAndThreeChildren": [],
+        "interpretation": "Existing mappings address broad process/assessment destinations; neither that mapping nor requires/applicability certifies these three complete child contracts or their target selection. No new mapping or target claim approved."
+      },
+      {
+        "stage": "upper-secondary",
+        "extractionPath": "curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_MATHEMATIK_SEKII_KERNCURRICULUM_2019.source-extraction.json",
+        "mappingPath": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+        "relevantPassages": [
+          {
+            "id": "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-e-process-k3",
+            "topicCode": "NI-SEKII-E-PROCESS-K3",
+            "title": "Einführungsphase Prozesskompetenz K3 Mathematisch modellieren",
+            "sourcePath": "curricula/DE/Gymnasium/input/NI/upper-secondary/ma_go_kc_druck_2019.pdf",
+            "sourceDocumentKey": "NI_GYM_SEKII_MATHEMATIK_KC_2019",
+            "sourceRef": "Kerncurriculum Mathematik fuer die gymnasiale Oberstufe, Niedersachsen 2019, S. 15",
+            "text": "Einführungsphase Prozesskompetenz K3 Mathematisch modellieren\n- wählen, variieren und verknüpfen Modelle zur Beschreibung von Anwendungssituationen.\n- analysieren und bewerten verschiedene Modelle im Hinblick auf die Anwendungssituationen.\n- erkennen funktionale Zusammenhänge in Anwendungssituationen, beschreiben diese und nutzen die globalen und lokalen Eigenschaften bestimmter Funktionen sowie die Variation von Parametern zur Modellierung.",
+            "sourceGoalIds": [
+              "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-e-process-k3-001-604aa1a0e3",
+              "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-e-process-k3-002-7c74a27693",
+              "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-e-process-k3-003-6176f547d4"
+            ]
+          },
+          {
+            "id": "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-process-k3",
+            "topicCode": "NI-SEKII-Q-PROCESS-K3",
+            "title": "Qualifikationsphase Prozesskompetenz K3 Mathematisch modellieren",
+            "sourcePath": "curricula/DE/Gymnasium/input/NI/upper-secondary/ma_go_kc_druck_2019.pdf",
+            "sourceDocumentKey": "NI_GYM_SEKII_MATHEMATIK_KC_2019",
+            "sourceRef": "Kerncurriculum Mathematik fuer die gymnasiale Oberstufe, Niedersachsen 2019, S. 18",
+            "text": "Qualifikationsphase Prozesskompetenz K3 Mathematisch modellieren\n- vereinfachen durch Abstrahieren und Idealisieren Realsituationen, um sie einer mathematischen Beschreibung zugänglich zu machen und reflektieren die Vereinfachungsschritte.\n- beschreiben Realsituationen durch mathematische Modelle wie z. B. durch Funktionen, Zufallsversuche, Wahrscheinlichkeitsverteilungen, Matrizen (Berufliches Gymnasium Gesundheit und Soziales, Berufliches Gymnasium Wirtschaft), Koordinaten und Vektoren.\n- schränken Definitionsbereiche gemäß der Modellierung sinnvoll ein.\n- führen Berechnungen im Modell durch.\n- interpretieren Ergebnisse aus Modellrechnungen in der Realsituation und modifizieren ggf. das Modell.\n- reflektieren die Grenzen von Modellen und der mathematischen Beschreibung von Realsituationen.\n- rdnen einem mathematischen Modell verschiedene passende Realsituationen zu und reflektieren so die Universalität von Modellen.",
+            "sourceGoalIds": [
+              "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-process-k3-001-309ed5d141",
+              "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-process-k3-002-b8bcac375e",
+              "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-process-k3-003-f4b12a6eb3",
+              "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-process-k3-004-b677bf5944",
+              "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-process-k3-005-911eba6d9d",
+              "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-process-k3-006-a5f6486b5c",
+              "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-process-k3-007-eb64ce3dfb"
+            ]
+          }
+        ],
+        "relevantMappingTargets": [
+          "723994fb-c94e-5050-af5e-8748afb3db00",
+          "99b3435a-fdda-5d1b-9681-0ae6d7d5bfcd"
+        ],
+        "directMappingsForAreaAndThreeChildren": [],
+        "interpretation": "Existing mappings address broad process/assessment destinations; neither that mapping nor requires/applicability certifies these three complete child contracts or their target selection. No new mapping or target claim approved."
+      }
+    ],
+    "childDemandAnalysis": [
+      {
+        "goalId": "74f28ce7-e568-5d6e-b946-17445b344fcc",
+        "essentialContract": "At least two plausible models for the same situation, with explicit assumptions. A single model or only choosing a named method is insufficient.",
+        "sourceRelation": "NI SekI PDF19 models, assumptions, varying and comparing models; upper E PDF16 explicitly model variation/comparison. Substantive related evidence exists; the old LK tag does not exclude GK/SekI. No new child target grant is needed for this repair."
+      },
+      {
+        "goalId": "163dd583-8308-53f0-b60d-34588787988d",
+        "essentialContract": "Compare simplicity, fit/quality and interpretability, and justify pros/cons for the actual question.",
+        "sourceRelation": "NI SekI PDF19 and E PDF16 require analysis/evaluation of different models. The particular complete three-criterion operationalization is not separately bound by the existing NI mappings or 18/21 review; it is not silently promoted."
+      },
+      {
+        "goalId": "519660d0-85e5-57a6-a219-d0a253336649",
+        "essentialContract": "Justify choice by comparison criteria and discuss qualitative sensitivity to uncertain data or changed assumptions.",
+        "sourceRelation": "NI SekI PDF19 includes reflecting/varying assumptions; upper Q PDF19 reflects model limitations. This does not by itself convert this exact combined contract into a newly selected target; nor does the missing specific mapping prove official exclusion."
+      }
+    ],
+    "existing18And21ReviewBoundary": "The original18 supplement cases and current21 decisions review NI17c9/647/74dc/9278/96c5 plus fbcb, not this area or any of its three children. Existing source scope rules explicitly retain outer POnly masks. Algebra holds and positive replacement choices remain unchanged.",
+    "existingModelObligations": "Official NI model-analysis duties remain real. Do not claim that broad current mappings to99b3435a or723994fb, or the present CPV009 correction, certify complete coverage of those duties. No whole-model source gap is closed by changing reference kind.",
+    "newWholeGoalTargetGrants": [],
+    "newOfficialExclusionClaims": []
+  },
+  "approvedReferenceOperations": [
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+      "viewId": "de-ni-gym-math-gk",
+      "inputSha256": "7ba9461f6834327e7b6773a6407e45b95d4b6533ad191c77970ebd45d2fa14b5",
+      "patch": [
+        {
+          "op": "test",
+          "path": "/rootNodes/25/children/1/children/5/children/1/children/20",
+          "value": {
+            "kind": "canonicalSubtree",
+            "goalId": "ee920de4-1600-582a-a909-02503aa4d1a6"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/25/children/1/children/5/children/1/children/20/projectionRole",
+          "value": "prerequisiteOnly"
+        },
+        {
+          "op": "test",
+          "path": "/rootNodes/44",
+          "value": {
+            "kind": "goalEntry",
+            "goalId": "ee920de4-1600-582a-a909-02503aa4d1a6",
+            "projectionRole": "prerequisiteOnly"
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/44/kind",
+          "value": "canonicalSubtree"
+        }
+      ],
+      "reason": "Resolve the pre-existing equal-specificity target alias, then express the existing outer POnly mask as a real canonicalSubtree. Preserve the outer reference for normal SekI derivation and all three atomic masks."
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-seki.view.json",
+      "viewId": "de-ni-gym-seki-math",
+      "inputSha256": "633cc6be68f45dfc2102edf259ba5f83afd19f0fd4fdcf83f238e58a500cb444",
+      "patch": [
+        {
+          "op": "test",
+          "path": "/rootNodes/44",
+          "value": {
+            "kind": "goalEntry",
+            "goalId": "ee920de4-1600-582a-a909-02503aa4d1a6",
+            "projectionRole": "prerequisiteOnly"
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/44/kind",
+          "value": "canonicalSubtree"
+        }
+      ],
+      "reason": "Keep the existing support role on the actual area and its already POnly children; use the semantically valid subtree reference."
+    }
+  ],
+  "viewRoleVerification": [
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+      "viewId": "de-ni-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "inputSha256": "7ba9461f6834327e7b6773a6407e45b95d4b6533ad191c77970ebd45d2fa14b5",
+      "matchesFrozen154RuntimeOverlay": true,
+      "beforeAreaAndChildrenRoles": {
+        "ee920de4-1600-582a-a909-02503aa4d1a6": "prerequisiteOnly",
+        "74f28ce7-e568-5d6e-b946-17445b344fcc": "prerequisiteOnly",
+        "163dd583-8308-53f0-b60d-34588787988d": "prerequisiteOnly",
+        "519660d0-85e5-57a6-a219-d0a253336649": "prerequisiteOnly"
+      },
+      "afterAreaAndChildrenRoles": {
+        "ee920de4-1600-582a-a909-02503aa4d1a6": "prerequisiteOnly",
+        "74f28ce7-e568-5d6e-b946-17445b344fcc": "prerequisiteOnly",
+        "163dd583-8308-53f0-b60d-34588787988d": "prerequisiteOnly",
+        "519660d0-85e5-57a6-a219-d0a253336649": "prerequisiteOnly"
+      },
+      "allAuthoredRoleAssignmentsEqual": true,
+      "authoredRoleAssignmentCount": 999,
+      "authoredTargetCountIncludingClusters": 942,
+      "authoredPrerequisiteOnlyCountIncludingClusters": 57,
+      "authoredRoleMapSha256BeforeAndAfter": "1147d862b3af58abde28d846f017ac10877ffb379c23c1450eb8ffbd7ad14375",
+      "referencesBefore": [
+        {
+          "jsonPointer": "/rootNodes/25/children/1/children/5/children/1/children/20",
+          "kind": "canonicalSubtree",
+          "goalId": "ee920de4-1600-582a-a909-02503aa4d1a6"
+        },
+        {
+          "jsonPointer": "/rootNodes/25/children/1/children/5/children/2",
+          "kind": "canonicalSubtree",
+          "goalId": "ee920de4-1600-582a-a909-02503aa4d1a6",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "jsonPointer": "/rootNodes/44",
+          "kind": "goalEntry",
+          "goalId": "ee920de4-1600-582a-a909-02503aa4d1a6",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "jsonPointer": "/rootNodes/45",
+          "kind": "goalEntry",
+          "goalId": "74f28ce7-e568-5d6e-b946-17445b344fcc",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "jsonPointer": "/rootNodes/46",
+          "kind": "goalEntry",
+          "goalId": "163dd583-8308-53f0-b60d-34588787988d",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "jsonPointer": "/rootNodes/47",
+          "kind": "goalEntry",
+          "goalId": "519660d0-85e5-57a6-a219-d0a253336649",
+          "projectionRole": "prerequisiteOnly"
+        }
+      ],
+      "referencesAfter": [
+        {
+          "jsonPointer": "/rootNodes/25/children/1/children/5/children/1/children/20",
+          "kind": "canonicalSubtree",
+          "goalId": "ee920de4-1600-582a-a909-02503aa4d1a6",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "jsonPointer": "/rootNodes/25/children/1/children/5/children/2",
+          "kind": "canonicalSubtree",
+          "goalId": "ee920de4-1600-582a-a909-02503aa4d1a6",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "jsonPointer": "/rootNodes/44",
+          "kind": "canonicalSubtree",
+          "goalId": "ee920de4-1600-582a-a909-02503aa4d1a6",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "jsonPointer": "/rootNodes/45",
+          "kind": "goalEntry",
+          "goalId": "74f28ce7-e568-5d6e-b946-17445b344fcc",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "jsonPointer": "/rootNodes/46",
+          "kind": "goalEntry",
+          "goalId": "163dd583-8308-53f0-b60d-34588787988d",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "jsonPointer": "/rootNodes/47",
+          "kind": "goalEntry",
+          "goalId": "519660d0-85e5-57a6-a219-d0a253336649",
+          "projectionRole": "prerequisiteOnly"
+        }
+      ],
+      "hypotheticalOutputSha256Utf8Indent2FinalNewline": "dbedd062047101542846fff81fd8bfb6ab3ca067e67c85e83ce09f70b9eb28a5",
+      "equivalenceOfRetainedOuterSubtree": "The independently checked remove-alias variant already has a direct POnly canonicalSubtree of the same root. Retaining a duplicate POnly canonicalSubtree adds no goal or role assignment, preserves all direct child masks and avoids rebuilding the SekI outer mask from a deleted source reference."
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-lk.view.json",
+      "viewId": "de-ni-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "inputSha256": "c619ca15a7a9d3391a385c6d0e61f9c3bd023c0817c0469ba477a1f9e0a76097",
+      "matchesFrozen154RuntimeOverlay": true,
+      "beforeAreaAndChildrenRoles": {
+        "ee920de4-1600-582a-a909-02503aa4d1a6": "target",
+        "74f28ce7-e568-5d6e-b946-17445b344fcc": "target",
+        "163dd583-8308-53f0-b60d-34588787988d": "target",
+        "519660d0-85e5-57a6-a219-d0a253336649": "target"
+      },
+      "afterAreaAndChildrenRoles": {
+        "ee920de4-1600-582a-a909-02503aa4d1a6": "target",
+        "74f28ce7-e568-5d6e-b946-17445b344fcc": "target",
+        "163dd583-8308-53f0-b60d-34588787988d": "target",
+        "519660d0-85e5-57a6-a219-d0a253336649": "target"
+      },
+      "allAuthoredRoleAssignmentsEqual": true,
+      "authoredRoleAssignmentCount": 1005,
+      "authoredTargetCountIncludingClusters": 955,
+      "authoredPrerequisiteOnlyCountIncludingClusters": 50,
+      "authoredRoleMapSha256BeforeAndAfter": "8314651138e3eb366d6d51f62ca15728f61ff11674e0bd2619db85edac85d9b8",
+      "referencesBefore": [
+        {
+          "jsonPointer": "/rootNodes/23/children/1/children/5/children/1/children/20",
+          "kind": "canonicalSubtree",
+          "goalId": "ee920de4-1600-582a-a909-02503aa4d1a6"
+        }
+      ],
+      "referencesAfter": [
+        {
+          "jsonPointer": "/rootNodes/23/children/1/children/5/children/1/children/20",
+          "kind": "canonicalSubtree",
+          "goalId": "ee920de4-1600-582a-a909-02503aa4d1a6"
+        }
+      ],
+      "hypotheticalOutputSha256Utf8Indent2FinalNewline": null
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-seki.view.json",
+      "viewId": "de-ni-gym-seki-math",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "inputSha256": "633cc6be68f45dfc2102edf259ba5f83afd19f0fd4fdcf83f238e58a500cb444",
+      "matchesFrozen154RuntimeOverlay": true,
+      "beforeAreaAndChildrenRoles": {
+        "ee920de4-1600-582a-a909-02503aa4d1a6": "prerequisiteOnly",
+        "74f28ce7-e568-5d6e-b946-17445b344fcc": "prerequisiteOnly",
+        "163dd583-8308-53f0-b60d-34588787988d": "prerequisiteOnly",
+        "519660d0-85e5-57a6-a219-d0a253336649": "prerequisiteOnly"
+      },
+      "afterAreaAndChildrenRoles": {
+        "ee920de4-1600-582a-a909-02503aa4d1a6": "prerequisiteOnly",
+        "74f28ce7-e568-5d6e-b946-17445b344fcc": "prerequisiteOnly",
+        "163dd583-8308-53f0-b60d-34588787988d": "prerequisiteOnly",
+        "519660d0-85e5-57a6-a219-d0a253336649": "prerequisiteOnly"
+      },
+      "allAuthoredRoleAssignmentsEqual": true,
+      "authoredRoleAssignmentCount": 354,
+      "authoredTargetCountIncludingClusters": 295,
+      "authoredPrerequisiteOnlyCountIncludingClusters": 59,
+      "authoredRoleMapSha256BeforeAndAfter": "adc281c77137cda4d20be2da6a658394f464660abcfc3cf69ecea713f4a0d152",
+      "referencesBefore": [
+        {
+          "jsonPointer": "/rootNodes/44",
+          "kind": "goalEntry",
+          "goalId": "ee920de4-1600-582a-a909-02503aa4d1a6",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "jsonPointer": "/rootNodes/45",
+          "kind": "goalEntry",
+          "goalId": "74f28ce7-e568-5d6e-b946-17445b344fcc",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "jsonPointer": "/rootNodes/46",
+          "kind": "goalEntry",
+          "goalId": "163dd583-8308-53f0-b60d-34588787988d",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "jsonPointer": "/rootNodes/47",
+          "kind": "goalEntry",
+          "goalId": "519660d0-85e5-57a6-a219-d0a253336649",
+          "projectionRole": "prerequisiteOnly"
+        }
+      ],
+      "referencesAfter": [
+        {
+          "jsonPointer": "/rootNodes/44",
+          "kind": "canonicalSubtree",
+          "goalId": "ee920de4-1600-582a-a909-02503aa4d1a6",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "jsonPointer": "/rootNodes/45",
+          "kind": "goalEntry",
+          "goalId": "74f28ce7-e568-5d6e-b946-17445b344fcc",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "jsonPointer": "/rootNodes/46",
+          "kind": "goalEntry",
+          "goalId": "163dd583-8308-53f0-b60d-34588787988d",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "jsonPointer": "/rootNodes/47",
+          "kind": "goalEntry",
+          "goalId": "519660d0-85e5-57a6-a219-d0a253336649",
+          "projectionRole": "prerequisiteOnly"
+        }
+      ],
+      "hypotheticalOutputSha256Utf8Indent2FinalNewline": "a35a6870fc27bb163dc5faa97b578097896b9ff9291a9af957db498f4930bb86"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+      "viewId": "de-ni-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "inputSha256": "c78e7b3f4509ca9dce3c57c7dcf55c34b5d340da10ef98ea4c9b9541b323b467",
+      "matchesFrozen154RuntimeOverlay": true,
+      "beforeAreaAndChildrenRoles": {
+        "ee920de4-1600-582a-a909-02503aa4d1a6": "prerequisiteOnly",
+        "74f28ce7-e568-5d6e-b946-17445b344fcc": "prerequisiteOnly",
+        "163dd583-8308-53f0-b60d-34588787988d": "prerequisiteOnly",
+        "519660d0-85e5-57a6-a219-d0a253336649": "prerequisiteOnly"
+      },
+      "afterAreaAndChildrenRoles": {
+        "ee920de4-1600-582a-a909-02503aa4d1a6": "prerequisiteOnly",
+        "74f28ce7-e568-5d6e-b946-17445b344fcc": "prerequisiteOnly",
+        "163dd583-8308-53f0-b60d-34588787988d": "prerequisiteOnly",
+        "519660d0-85e5-57a6-a219-d0a253336649": "prerequisiteOnly"
+      },
+      "allAuthoredRoleAssignmentsEqual": true,
+      "authoredRoleAssignmentCount": 688,
+      "authoredTargetCountIncludingClusters": 657,
+      "authoredPrerequisiteOnlyCountIncludingClusters": 31,
+      "authoredRoleMapSha256BeforeAndAfter": "29690b7e898bc17c69b94a041176b142452d9c4bdc8ec7c822f1b7c43169e292",
+      "referencesBefore": [
+        {
+          "jsonPointer": "/rootNodes/21/children/5/children/2",
+          "kind": "canonicalSubtree",
+          "goalId": "ee920de4-1600-582a-a909-02503aa4d1a6",
+          "projectionRole": "prerequisiteOnly"
+        }
+      ],
+      "referencesAfter": [
+        {
+          "jsonPointer": "/rootNodes/21/children/5/children/2",
+          "kind": "canonicalSubtree",
+          "goalId": "ee920de4-1600-582a-a909-02503aa4d1a6",
+          "projectionRole": "prerequisiteOnly"
+        }
+      ],
+      "hypotheticalOutputSha256Utf8Indent2FinalNewline": null
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-lk.view.json",
+      "viewId": "de-ni-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "inputSha256": "e934df7fb8676f31ad1c620f644937bf76f83b6606040ab2b5e01ce98b7fe079",
+      "matchesFrozen154RuntimeOverlay": true,
+      "beforeAreaAndChildrenRoles": {
+        "ee920de4-1600-582a-a909-02503aa4d1a6": "target",
+        "74f28ce7-e568-5d6e-b946-17445b344fcc": "target",
+        "163dd583-8308-53f0-b60d-34588787988d": "target",
+        "519660d0-85e5-57a6-a219-d0a253336649": "target"
+      },
+      "afterAreaAndChildrenRoles": {
+        "ee920de4-1600-582a-a909-02503aa4d1a6": "target",
+        "74f28ce7-e568-5d6e-b946-17445b344fcc": "target",
+        "163dd583-8308-53f0-b60d-34588787988d": "target",
+        "519660d0-85e5-57a6-a219-d0a253336649": "target"
+      },
+      "allAuthoredRoleAssignmentsEqual": true,
+      "authoredRoleAssignmentCount": 698,
+      "authoredTargetCountIncludingClusters": 674,
+      "authoredPrerequisiteOnlyCountIncludingClusters": 24,
+      "authoredRoleMapSha256BeforeAndAfter": "de7bc63263cd9252d083c70029ad80720bc6ab820e8d574833d4f25777fea219",
+      "referencesBefore": [],
+      "referencesAfter": [],
+      "hypotheticalOutputSha256Utf8Indent2FinalNewline": null
+    }
+  ],
+  "actualFrozen154Baseline": {
+    "path": "tmp/approach-review-20261101/final-integration-scope-probe/common-candidate-all154.json",
+    "sha256": "e9d9274566c5d3a573bd6554c057e45b1153963e8f8f92286946bd498b939dde",
+    "scopeCount": 154,
+    "niScopes": [
+      {
+        "scope": "DE-NI/SekI/G9/GK+LK",
+        "compositionViewIds": [
+          "de-ni-gym-seki-math"
+        ],
+        "roleForReviewedIds": {
+          "ee920de4-1600-582a-a909-02503aa4d1a6": "absentFromAtomicRuntimeLists",
+          "74f28ce7-e568-5d6e-b946-17445b344fcc": "absentFromAtomicRuntimeLists",
+          "163dd583-8308-53f0-b60d-34588787988d": "absentFromAtomicRuntimeLists",
+          "519660d0-85e5-57a6-a219-d0a253336649": "absentFromAtomicRuntimeLists"
+        },
+        "targetCount": 243,
+        "contextCount": 419,
+        "expectedAtomicTargetDelta": [],
+        "expectedAtomicContextDelta": []
+      },
+      {
+        "scope": "DE-NI/SekII/G9/GK",
+        "compositionViewIds": [
+          "de-ni-gym-sekii-math-gk"
+        ],
+        "roleForReviewedIds": {
+          "ee920de4-1600-582a-a909-02503aa4d1a6": "absentFromAtomicRuntimeLists",
+          "74f28ce7-e568-5d6e-b946-17445b344fcc": "absentFromAtomicRuntimeLists",
+          "163dd583-8308-53f0-b60d-34588787988d": "absentFromAtomicRuntimeLists",
+          "519660d0-85e5-57a6-a219-d0a253336649": "absentFromAtomicRuntimeLists"
+        },
+        "targetCount": 433,
+        "contextCount": 575,
+        "expectedAtomicTargetDelta": [],
+        "expectedAtomicContextDelta": []
+      },
+      {
+        "scope": "DE-NI/SekII/G9/LK",
+        "compositionViewIds": [
+          "de-ni-gym-sekii-math-lk"
+        ],
+        "roleForReviewedIds": {
+          "ee920de4-1600-582a-a909-02503aa4d1a6": "absentFromAtomicRuntimeLists",
+          "74f28ce7-e568-5d6e-b946-17445b344fcc": "target",
+          "163dd583-8308-53f0-b60d-34588787988d": "target",
+          "519660d0-85e5-57a6-a219-d0a253336649": "target"
+        },
+        "targetCount": 554,
+        "contextCount": 682,
+        "expectedAtomicTargetDelta": [],
+        "expectedAtomicContextDelta": []
+      },
+      {
+        "scope": "DE-NI/SekII/G9/GK+LK",
+        "compositionViewIds": [
+          "merged:de-ni-gym-sekii-math-lk+de-ni-gym-sekii-math-gk"
+        ],
+        "roleForReviewedIds": {
+          "ee920de4-1600-582a-a909-02503aa4d1a6": "absentFromAtomicRuntimeLists",
+          "74f28ce7-e568-5d6e-b946-17445b344fcc": "target",
+          "163dd583-8308-53f0-b60d-34588787988d": "target",
+          "519660d0-85e5-57a6-a219-d0a253336649": "target"
+        },
+        "targetCount": 555,
+        "contextCount": 683,
+        "expectedAtomicTargetDelta": [],
+        "expectedAtomicContextDelta": []
+      },
+      {
+        "scope": "DE-NI/CrossStage/G9/GK",
+        "compositionViewIds": [
+          "de-ni-gym-math-gk"
+        ],
+        "roleForReviewedIds": {
+          "ee920de4-1600-582a-a909-02503aa4d1a6": "absentFromAtomicRuntimeLists",
+          "74f28ce7-e568-5d6e-b946-17445b344fcc": "absentFromAtomicRuntimeLists",
+          "163dd583-8308-53f0-b60d-34588787988d": "absentFromAtomicRuntimeLists",
+          "519660d0-85e5-57a6-a219-d0a253336649": "absentFromAtomicRuntimeLists"
+        },
+        "targetCount": 672,
+        "contextCount": 773,
+        "expectedAtomicTargetDelta": [],
+        "expectedAtomicContextDelta": []
+      },
+      {
+        "scope": "DE-NI/CrossStage/G9/LK",
+        "compositionViewIds": [
+          "de-ni-gym-math-lk"
+        ],
+        "roleForReviewedIds": {
+          "ee920de4-1600-582a-a909-02503aa4d1a6": "absentFromAtomicRuntimeLists",
+          "74f28ce7-e568-5d6e-b946-17445b344fcc": "target",
+          "163dd583-8308-53f0-b60d-34588787988d": "target",
+          "519660d0-85e5-57a6-a219-d0a253336649": "target"
+        },
+        "targetCount": 789,
+        "contextCount": 865,
+        "expectedAtomicTargetDelta": [],
+        "expectedAtomicContextDelta": []
+      },
+      {
+        "scope": "DE-NI/CrossStage/G9/GK+LK",
+        "compositionViewIds": [
+          "merged:de-ni-gym-math-lk+de-ni-gym-math-gk"
+        ],
+        "roleForReviewedIds": {
+          "ee920de4-1600-582a-a909-02503aa4d1a6": "absentFromAtomicRuntimeLists",
+          "74f28ce7-e568-5d6e-b946-17445b344fcc": "target",
+          "163dd583-8308-53f0-b60d-34588787988d": "target",
+          "519660d0-85e5-57a6-a219-d0a253336649": "target"
+        },
+        "targetCount": 790,
+        "contextCount": 866,
+        "expectedAtomicTargetDelta": [],
+        "expectedAtomicContextDelta": []
+      }
+    ],
+    "interpretation": "The actual native probe lists atomic target/context sets after support trimming; unneeded authored POnly IDs are absent. Do not label their absence target or mastery. The role simulation checks authored maps separately. This is a before baseline, not execution of the proposed patch."
+  },
+  "alternatives": {
+    "rejectedNaiveKindOnlyChangeInGk": "Changes area itself from POnly to target because its other direct target canonicalSubtree wins equal specificity; children stay POnly. This is not the approved delta.",
+    "rejectedTargetCanonicalSubtree": "Would need a separate positive whole-contract/stage selection for each child, would enlarge current T, and is not needed for CPV009.",
+    "rejectedOpaqueArea": "Keeping/remaking goalEntry, stripping contains, changing type/ledger to atomic or writing cluster mastery would conceal the real semantic error.",
+    "rejectedDeleteBothWithoutRoleAudit": "GK area would regain target role; S1 area support reference would disappear. Current proposals instead preserve all roles.",
+    "notClaimedRedundantBecauseCoveredAtoms": "Three child masks are already represented, but they are POnly in both affected views, not existing equivalent targets. We do not justify deletion by a false atomic coverage claim."
+  },
+  "technicalBoundary": {
+    "nativeValidationRunByThisReview": false,
+    "verification": "Read authoritative semantic ledger and validator, plus independent in-memory reproduction of exact role precedence for all five NI views. All authored role maps unchanged. The final proposal retains the corrected outer POnly subtree in GK; duplication of the already present identical-role subtree is idempotent under the same role algebra.",
+    "requiredPostImplementationChecks": [
+      "Use exact precondition hashes/objects and preserve all other reference bytes.",
+      "Run native composition validation with authoritative semantic ledger: these two CPV-009 findings must disappear; proper opaque assessment/skill entries retain existing semantics.",
+      "Re-derive affected S1 from corrected NI-GK source and refresh normal authoring/materialization bindings through existing workflow; no hand-edited generated output accepted as final.",
+      "Compare actual NI seven native scope target/context sets and visible parents to frozen baseline; expected no atomic delta from this correction.",
+      "NI-LK, NI-SekII-GK/LK and merged GK+LK target roles stay unchanged; BBB and other pending source cases use their own deltas."
+    ],
+    "noLiveWrites": true,
+    "noCorpusGradleProductionCalls": true,
+    "sourceDerivationObservation": "mathStageScopePolicy.ts:86 preserves POnly references through pruning; retaining the corrected outer subtree allows normal stage derivation to keep the same reference. Final generated output and input-binding checks remain required."
+  },
+  "invariants": [
+    "Frozen3a canonical bytes and all four contracts unchanged.",
+    "No assessment or requires edits; no automatic mastery, cluster mastery or waiver profiles.",
+    "All three direct child POnly masks retained; no unreviewed child target becomes effective.",
+    "CPV-009 remains an error, including POnly opaque areas.",
+    "Source evidence, authored role membership and native pruned atomic runtime scope remain distinct."
+  ],
+  "allBoundInputsUnchangedAtReviewCompletion": true
+}

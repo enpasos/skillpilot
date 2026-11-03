@@ -1,0 +1,4120 @@
+{
+  "schemaVersion": 1,
+  "reviewerAgent": "/root/astra_math_material_scope_resume",
+  "date": "2026-11-01",
+  "status": "PASS_EXACT_56_ADDITIONAL_GK_UNION_OFFERS_AND_HOLD_HB_HH_NOT_MATERIALIZATION",
+  "noRootMutation": true,
+  "wholeTaskContract": {
+    "id": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+    "shortKey": "canonical_math_q2_graph_transformations_assessment",
+    "title": "Einen unbekannten Graphen gezielt umformen",
+    "titleEn": "Transform an unspecified function graph purposefully",
+    "description": "Die lernende Person kann einen allgemeinen Transformationsterm über Punktabbildungen deuten, Verschiebungen, Streckungen und Spiegelungen grafisch darstellen und die Symmetrie von Funktion und Ableitung begründen.",
+    "descriptionEn": "The learner can interpret a general transformation by mapping points, represent shifts, scaling and reflections graphically, and justify symmetries of the function and its derivative.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment",
+      "ExamTask"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-math",
+      "phase": "Q2",
+      "area": "Analysis",
+      "demandLevel": "AB3",
+      "processCompetencies": [
+        "K1",
+        "K4",
+        "K5"
+      ],
+      "guidingIdeas": [
+        "L4"
+      ]
+    },
+    "contains": [],
+    "requires": [
+      "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+      "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+      "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+      "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+      "62a1c6f2-1775-5a19-98e0-ed3dd722039f"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "applicabilityFromRequires": true,
+      "applicabilityMappingInheritance": "boundary"
+    },
+    "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe 2024, Q2.1, S. 40, gemeinsames Niveau, Spiegelstrich 2; eigenständig verfasste Übungsaufgabe, keine amtliche Prüfungsaufgabe",
+    "phase": "Q2",
+    "type": "atomic",
+    "nodeKind": "exam",
+    "examData": {
+      "reviewStatus": "released",
+      "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/he-q21-common-2026-09-20/candidate.md",
+      "coveredGoalIds": [
+        "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+        "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+        "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+        "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+        "62a1c6f2-1775-5a19-98e0-ed3dd722039f"
+      ],
+      "coveredStrands": [
+        "L4"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "taskContent": "Eine auf $\\mathbb R$ differenzierbare Funktion $f$ ist nicht durch einen Term vorgegeben. Ihr Graph enthält $P(0|1)$ und $Q(2|3)$. Betrachte $h(x)=-2f(-(x-1)/2)+3$.\n\n1. Leite her, wohin ein beliebiger Graphenpunkt $(u|v)$ von $f$ übergeht. Bestimme die Bildpunkte von $P$ und $Q$ und stelle die ursprünglichen Punkte und ihre Bildpunkte in einem Koordinatensystem dar. Erläutere eine korrekte Reihenfolge der Verschiebungen, Streckungen und Spiegelungen in beiden Koordinatenrichtungen. Erkläre den Zusammenhang der beiden Achsenspiegelungen mit einer Punktspiegelung. (8 BE)\n2. Jemand liest den inneren Faktor $-1/2$ als horizontale Stauchung auf die Hälfte. Prüfe das anhand deiner Punktabbildung. Welche horizontale Wirkung hätte stattdessen $k(x)=-2f(-2(x-1))+3$? (3 BE)\n3. Zusätzlich sei $f$ gerade. Begründe die Symmetrieachse von $h$ und anhand gespiegelter Tangentensteigungen die Symmetrie des Graphen von $h'$. Skizziere dazu einen möglichen geraden differenzierbaren Graphen durch $P$ und $Q$ und seinen nach der Vorschrift transformierten Graphen; markiere Symmetrieachse und entsprechende Punkte. (7 BE)",
+      "solutionContent": "1. Aus $u=-(x-1)/2$ folgt $x=1-2u$, und der neue Funktionswert ist $3-2v$. Daher gilt $(u,v)\\mapsto(1-2u,3-2v)$, also $P\\mapsto(1,1)$ und $Q\\mapsto(-3,-3)$. Diese vier Punkte sind korrekt einzuzeichnen. Horizontal: Spiegelung an der y-Achse und Streckung mit Faktor 2, danach Verschiebung um 1 nach rechts. Vertikal: Spiegelung an der x-Achse und Streckung mit Faktor 2, danach Verschiebung um 3 nach oben. Beide Achsenspiegelungen zusammen bilden $(u,v)\\mapsto(-u,-v)$, die Punktspiegelung am Ursprung; die abschließenden Verschiebungen sind davon zu unterscheiden.\n\n2. Der Abstand zum späteren Zentrum $x=1$ wird verdoppelt, nicht halbiert. Bei $k$ ergibt $u=-2(x-1)$ dagegen $x=1-u/2$: horizontale Stauchung auf die Hälfte, Spiegelung und anschließende Verschiebung nach rechts.\n\n3. Weil $f$ gerade ist, gilt $h(1+t)=-2f(-t/2)+3=-2f(t/2)+3=h(1-t)$. Somit ist $x=1$ Symmetrieachse. Die Tangenten an gespiegelten Stellen haben entgegengesetzte Steigungen: $h'(1+t)=-h'(1-t)$. Der Ableitungsgraph ist punktsymmetrisch zu $(1,0)$; insbesondere $h'(1)=0$. Ein mögliches Skizzenbeispiel ist $f(x)=x^2/2+1$ mit $h(x)=1-(x-1)^2/4$. Dazu gehören etwa die Punkte $(-2,3),(0,1),(2,3)$ auf $f$ und $(5,-3),(1,1),(-3,-3)$ auf $h$. Andere passende gerade differenzierbare Ausgangsgraphen sind ebenso richtig; ein Term muss nicht bestimmt werden. Die Skizze illustriert die vorher allgemein begründete Aussage.\n\nBewertung: Teil 1: allgemeine Punktabbildung 2 BE, Bildpunkte und korrekte grafische Darstellung 2 BE, Reihenfolge und Skalierungsrichtungen 2 BE, Spiegelungen einschließlich Punktspiegelung 2 BE. Teil 2: Widerlegung mit Abstandsfaktor 2 BE, Alternative k mit Faktor 1/2 und Spiegelung 1 BE. Teil 3: begründete Achse 2 BE, Tangentenargument und Punktsymmetrie der Ableitung 3 BE, passende Ausgangs- und Bildskizze 2 BE. Fachlich gleichwertige Lösungswege sind zulässig.",
+      "scoring": {
+        "maxPoints": 18,
+        "passingPoints": 9,
+        "steps": [
+          {
+            "id": "q21_transform_1",
+            "points": 8,
+            "description": "Punktabbildung und grafische Wirkung aller Transformationen korrekt hergeleitet"
+          },
+          {
+            "id": "q21_transform_2",
+            "points": 3,
+            "description": "Inverse Wirkung des inneren Skalierungsfaktors mit Gegenfall erklärt"
+          },
+          {
+            "id": "q21_transform_3",
+            "points": 7,
+            "description": "Symmetrie von Funktion und Ableitung begründet und Transformation an einer passenden Skizze dargestellt"
+          }
+        ]
+      },
+      "reviewNote": "Local machine-only acceptance on 2026-09-20 after author check, independent content review math_m7_current_scope and informed Root integration check; exact pre-release goal hashes and calculations are bound in he-q21-scope-repair/assessment-release-root.json. No human review, learner performance, publication or deployment is claimed. Equivalent fully justified solutions receive equivalent credit."
+    },
+    "resourceLinks": []
+  },
+  "wholeSelectedOrdinaryGoalContracts": [
+    {
+      "id": "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+      "title": "Verschiebungen von Funktionsgraphen beschreiben",
+      "titleEn": "Describe shifts of function graphs",
+      "description": "Die lernende Person kann Verschiebungen von Funktionsgraphen in x- und y-Richtung anhand von Parametern im Funktionsterm beschreiben und grafisch darstellen.",
+      "descriptionEn": "The learner can describe shifts of function graphs in the x and y directions using parameters in the function term and represent them graphically.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+        "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.2",
+          "K3.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.1, S. 40, Spiegelstrich 2",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+          "title": "Visualisierung: Verschiebungen von Funktionsgraphen beschreiben",
+          "url": "/assets/goal-visualizations/mathematik/dd6c5e08-0cc6-53c0-b317-ebaba277c776/dd6c5e08-0cc6-53c0-b317-ebaba277c776.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Verschiebungen von Funktionsgraphen beschreiben.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Verschiebungen von Funktionsgraphen beschreiben\". Die lernende Person kann Verschiebungen von Funktionsgraphen in x- und y-Richtung anhand von Parametern im Funktionsterm beschreiben und grafisch darstellen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+      "title": "Streckungen und Stauchungen von Funktionsgraphen beschreiben",
+      "titleEn": "Describe stretches and compressions of function graphs",
+      "description": "Die lernende Person kann Streckungen und Stauchungen in x- oder y-Richtung über Faktoren im Funktionsterm beschreiben und die Auswirkungen auf den Graphen darstellen.",
+      "descriptionEn": "The learner can describe stretches and compressions in the x or y direction using factors in the function term and represent the effects on the graph.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+        "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.2",
+          "K3.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.1, S. 40, Spiegelstrich 2",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+          "title": "Visualisierung: Streckungen und Stauchungen von Funktionsgraphen beschreiben",
+          "url": "/assets/goal-visualizations/mathematik/772b11c9-1348-5ab9-bc3f-458c46b312b6/772b11c9-1348-5ab9-bc3f-458c46b312b6.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Streckungen und Stauchungen von Funktionsgraphen beschreiben.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Streckungen und Stauchungen von Funktionsgraphen beschreiben\". Die lernende Person kann Streckungen und Stauchungen in x- oder y-Richtung über Faktoren im Funktionsterm beschreiben und die Auswirkungen auf den Graphen darstellen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+      "shortKey": "canonical_math_q2_interpret_general_function_transformation_term",
+      "title": "Allgemeinen Transformationsterm interpretieren",
+      "titleEn": "Interpret the general function transformation term",
+      "description": "Die lernende Person kann den Term $g(x)=a\\cdot f(b\\cdot(x-c))+d$ für $a\\ne0$ und $b\\ne0$ als Kombination von Verschiebung, Streckung beziehungsweise Stauchung und Spiegelung deuten, auch ohne konkret gegebenen Funktionsterm von $f$.",
+      "descriptionEn": "The learner can interpret $g(x)=a\\cdot f(b\\cdot(x-c))+d$ for $a\\ne0$ and $b\\ne0$ as a combination of shifts, stretches or compressions, and reflections, even without a concrete function term for $f$.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+        "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+        "4c6369b0-4b58-5ac0-915c-82c348ae1c14"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K3.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "Q2",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.1.GENERAL_TRANSFORMATION_TERM"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.1, S. 40, Spiegelstrich 2",
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+          "title": "Visualisierung: Allgemeinen Transformationsterm interpretieren",
+          "url": "/assets/goal-visualizations/mathematik/a12bef54-7595-5f48-a7a8-9cfe1d8e9729/a12bef54-7595-5f48-a7a8-9cfe1d8e9729.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Allgemeinen Transformationsterm interpretieren.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Allgemeinen Transformationsterm interpretieren\". Die lernende Person kann den Term $g(x)=a\\cdot f(b\\cdot(x-c))+d$ als Kombination von Verschiebung, Streckung beziehungsweise Stauchung und Spiegelung deuten, auch ohne konkret gegebenen Funktionsterm von $f$.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+      "title": "Spiegelungen von Funktionsgraphen beschreiben",
+      "titleEn": "Describe reflections of function graphs",
+      "description": "Die lernende Person kann Spiegelungen an der x-Achse, y-Achse oder am Ursprung anhand von Vorzeichenänderungen im Funktionsterm beschreiben und grafisch darstellen.",
+      "descriptionEn": "The learner can describe reflections across the x-axis, y-axis, or the origin using sign changes in the function term and represent them graphically.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+        "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.2",
+          "K3.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.1, S. 40, Spiegelstrich 2",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+          "title": "Visualisierung: Spiegelungen von Funktionsgraphen beschreiben",
+          "url": "/assets/goal-visualizations/mathematik/4c6369b0-4b58-5ac0-915c-82c348ae1c14/4c6369b0-4b58-5ac0-915c-82c348ae1c14.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Spiegelungen von Funktionsgraphen beschreiben.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Spiegelungen von Funktionsgraphen beschreiben\". Die lernende Person kann Spiegelungen an der x-Achse, y-Achse oder am Ursprung anhand von Vorzeichenänderungen im Funktionsterm beschreiben und grafisch darstellen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
+      "shortKey": "canonical_math_q2_justify_symmetry_of_shifted_and_derivative_graphs",
+      "title": "Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen",
+      "titleEn": "Justify symmetry properties of shifted function and derivative graphs",
+      "description": "Die lernende Person kann Symmetrieeigenschaften eines verschobenen Funktionsgraphen oder des Graphen einer Ableitungsfunktion aus Termstruktur, Transformationen oder Ableitungszusammenhängen begründen.",
+      "descriptionEn": "The learner can justify symmetry properties of a shifted function graph or of a derivative graph from term structure, transformations, or derivative relationships.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K1.4",
+          "K2.2",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "Q2",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.1.SHIFTED_DERIVATIVE_GRAPH_SYMMETRY"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.1, S. 40, Spiegelstrich 2",
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
+          "title": "Visualisierung: Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen",
+          "url": "/assets/goal-visualizations/mathematik/62a1c6f2-1775-5a19-98e0-ed3dd722039f/62a1c6f2-1775-5a19-98e0-ed3dd722039f.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen\". Die lernende Person kann Symmetrieeigenschaften eines verschobenen Funktionsgraphen oder des Graphen einer Ableitungsfunktion aus Termstruktur, Transformationen oder Ableitungszusammenhängen begründen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    }
+  ],
+  "sourceReasoningStandard": {
+    "part1": "Each source chain positively establishes translations, scaling and reflections in both coordinate directions, whether written generically or taught through specified function families. The task gives the transformed expression and an arbitrary point(u,v); substituting u=-(x-1)/2 and solving the linear equation yields x=1-2u, while the ordinate is3-2v. This operation does not require analysing an additional function class or discovering a formula for f.",
+    "part2": "The reciprocal horizontal effect follows from that explicit affine inverse equation. It is a short explanation of the taught inner-coordinate transformation, not a new inverse-function chapter.",
+    "part3": "Evenness is given, so the learner transports the already-known symmetric point pair(u,v),(-u,v) to points equidistant fromx=1. Symmetric tangents have opposite slopes; the source-required tangent interpretation of f' therefore gives point symmetry about(1,0). The task explicitly permits/requires this graphical slope argument and does not require a generic algebraic chain-rule proof.",
+    "sketch": "A quadratic f=x^2/2+1 is sufficient as the requested possible illustration. A sketch example does not replace the general point/tangent reasoning.",
+    "courseControl": "These are bounded transfers among positively sourced operations with fixed numeric parameters. They are not a parametric-family investigation, a classification of arbitrary unknown functions, or an appeal to general problem-solving competencies to invent content. Explicit source course exclusions, such as HB shifted-symmetry proofs or HH general symmetry proof reserved to eA, would override this inference and remain untouched."
+  },
+  "mathematicalCrossCheck": {
+    "pointMap": "(u,v)->(1-2u,3-2v); P->(1,1),Q->(-3,-3)",
+    "innerScale": "u=-(x-1)/2 implies x=1-2u; alternative u=-2(x-1) implies x=1-u/2.",
+    "symmetry": "Given paired source points(u,v),(-u,v) map to equal-height points equally distant from x=1. Reflected tangents have opposite slopes, giving h′ point symmetry about(1,0).",
+    "example": "f(x)=x^2/2+1 yields h(x)=1-(x-1)^2/4; example illustrates rather than replaces the general reasoning.",
+    "wholeScoring": "Unchanged18BE with passing9; all three parts and full solution/rubric remain selected."
+  },
+  "actualOfferBasis": {
+    "auditPath": "tmp/approach-review-20261101/post-ni-sh-stochastic-native-154-audit.json",
+    "sha256": "6132897d891c94c4d32c58379750187885c5f8a470e18bad168549a6d144fd2c",
+    "canonicalNow": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "f59348ea39998471a4252de114a115e46bcf2abc1034219f058ce3a27ea425e9"
+    },
+    "actualAuditInputBindingsRehashed": 9407,
+    "v11Carryforward": "All56 complete native scope rows are exactly unchanged in CombinedV11 versus actualV10, and all56 target/uncovered sets match the actualRootV11 audit. Whole46bb/five ordinary contracts and20 author view bytes match current Root. Rebind any later unrelated actualRoot baseline before materialization.",
+    "currentInventoryBoundary": {
+      "auditIsImmutableHistoricalV11Snapshot": true,
+      "all9407RecordedFileHashesMatchAtReview": true,
+      "notClaimedToBeCurrentCompleteInventory": true,
+      "newUnboundTechnicalTest": "backend/src/test/java/com/skillpilot/backend/service/ShMathematicsExistingLearnerScopeRegressionTest.java",
+      "nextCandidateRequirement": "Bind the next actual Root audit after the focused regression test; class/runtime bindings must be fresh. This is source/whole-contract entitlement only."
+    }
+  },
+  "positiveSourceMatrix": [
+    {
+      "state": "DE-BB",
+      "decision": "PASS_WHOLE_FIXED_TASK_AS_BOUNDED_POINT_AND_TANGENT_TRANSFER",
+      "exactOfferIds": [
+        "DE-BB/SekII/G8/GK",
+        "DE-BB/SekII/G8/GK+LK",
+        "DE-BB/SekII/G9/GK",
+        "DE-BB/SekII/G9/GK+LK",
+        "DE-BB/CrossStage/G8/GK",
+        "DE-BB/CrossStage/G8/GK+LK",
+        "DE-BB/CrossStage/G9/GK",
+        "DE-BB/CrossStage/G9/GK+LK"
+      ],
+      "gkViewPaths": [
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json"
+      ],
+      "sourceAdjudication": {
+        "operations": "Common compulsory SekI2023 p61 G/H: describe parameter effects including stretching/compression/translation, symmetry and a*sin(b*x+c)+d, with relations across familiar function types. Both coordinate directions and the inner scale are positively present.",
+        "symmetryDerivative": "Upper-secondary2022 pp23–25: local rate/tangent slope, function/derivative relationships and development of derivative graphs are common GK/LK. The given evenness is transported by the taught coordinate operations, and reflected tangent slopes determine derivative symmetry.",
+        "courseBoundary": "Q1 specifies familiar function classes, but this task neither classifies another function family nor differentiates an unknown formula. The common tangent interpretation suffices; the additional LK linear-approximation method for constructing derivative values is not used. No shifted-symmetry-only-LK rule was found in the read source.",
+        "references": [
+          {
+            "path": "curricula/DE/Gymnasium/input/BB/lower-secondary/Teil_C_Mathematik_2015_10_13_Ma_14.08.2023_Berlin_23_11.pdf",
+            "title": "Gemeinsamer Rahmenlehrplan Berlin/Brandenburg Mathematik 1–10, 2023",
+            "url": "https://bildungsserver.berlin-brandenburg.de/rlp-online/c-faecher/mathematik",
+            "printedPages": [
+              2,
+              15,
+              20,
+              61
+            ],
+            "sourceRule": "Original imprint gives applicability in Brandenburg from2023/24 and all1–10 from2024/25; Berlin fully1–10 from2025/26. Pages15/20 assign H to Gymnasium10 and identify H as Q-phase entry basis. Page61 is compulsory functions content, not elective material."
+          },
+          {
+            "key": "RLP_GOST_MATHEMATIK_2022",
+            "title": "Rahmenlehrplan gymnasiale Oberstufe Brandenburg, Teil C Mathematik, gueltig ab Schuljahr 2022/23",
+            "path": "curricula/DE/Gymnasium/input/BB/upper-secondary/Teil_C_RLP_GOST_2022_Mathematik.pdf",
+            "role": "binding-core",
+            "official": true,
+            "url": "https://bildungsserver.berlin-brandenburg.de/rlp-online/c-faecher/mathematik",
+            "printedPages": [
+              23,
+              24,
+              25
+            ]
+          }
+        ]
+      },
+      "offerEvidence": [
+        {
+          "offerId": "DE-BB/SekII/G8/GK",
+          "compositionViewIds": [
+            "de-bb-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-BB/SekII/G8/GK+LK",
+          "compositionViewIds": [
+            "merged:de-bb-gym-sekii-math-lk+de-bb-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        },
+        {
+          "offerId": "DE-BB/SekII/G9/GK",
+          "compositionViewIds": [
+            "de-bb-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-BB/SekII/G9/GK+LK",
+          "compositionViewIds": [
+            "merged:de-bb-gym-sekii-math-lk+de-bb-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        },
+        {
+          "offerId": "DE-BB/CrossStage/G8/GK",
+          "compositionViewIds": [
+            "de-bb-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-BB/CrossStage/G8/GK+LK",
+          "compositionViewIds": [
+            "merged:de-bb-gym-math-lk+de-bb-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        },
+        {
+          "offerId": "DE-BB/CrossStage/G9/GK",
+          "compositionViewIds": [
+            "de-bb-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-BB/CrossStage/G9/GK+LK",
+          "compositionViewIds": [
+            "merged:de-bb-gym-math-lk+de-bb-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        }
+      ],
+      "ordinaryScopeDecision": "POSITIVE_SOURCE_MATCH_FOR_THE_EXISTING_FIVE_CONTRACTS; no ordinary target additions or removals.",
+      "pureLkBoundary": "Pure LK remains unchanged. Whole task source entitlement does not by itself enroll another assessment in a scope whose route is already carried by existing obligations."
+    },
+    {
+      "state": "DE-BE",
+      "decision": "PASS_WHOLE_FIXED_TASK_AS_BOUNDED_POINT_AND_TANGENT_TRANSFER",
+      "exactOfferIds": [
+        "DE-BE/SekII/G8/GK",
+        "DE-BE/SekII/G8/GK+LK",
+        "DE-BE/SekII/G9/GK",
+        "DE-BE/SekII/G9/GK+LK",
+        "DE-BE/CrossStage/G8/GK",
+        "DE-BE/CrossStage/G8/GK+LK",
+        "DE-BE/CrossStage/G9/GK",
+        "DE-BE/CrossStage/G9/GK+LK"
+      ],
+      "gkViewPaths": [
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-gk.view.json"
+      ],
+      "sourceAdjudication": {
+        "operations": "Upper-secondary2014/2023 E-phase p7 explicitly describes all parameters in a*sin[b*(x-c)]+d, representation changes and their graph effects. Common SekI2023 p61 independently establishes the full operation chain on the compulsory H entry basis.",
+        "symmetryDerivative": "E-phase p7 graphically differentiates; entry basis p19 justifies the derivative-graph course; Q1 common standards pp26–27 use local derivative and develop function/derivative graphs in both directions.",
+        "courseBoundary": "The fixed numeric expression only transports graph coordinates and known evenness. It is not a free function-family analysis or formal parameter-case study. The LK extension for linear approximation is not required by the solution.",
+        "references": [
+          {
+            "path": "curricula/DE/Gymnasium/input/BB/lower-secondary/Teil_C_Mathematik_2015_10_13_Ma_14.08.2023_Berlin_23_11.pdf",
+            "title": "Gemeinsamer Rahmenlehrplan Berlin/Brandenburg Mathematik 1–10, 2023",
+            "url": "https://bildungsserver.berlin-brandenburg.de/rlp-online/c-faecher/mathematik",
+            "printedPages": [
+              2,
+              15,
+              20,
+              61
+            ],
+            "sourceRule": "Original imprint gives applicability in Brandenburg from2023/24 and all1–10 from2024/25; Berlin fully1–10 from2025/26. Pages15/20 assign H to Gymnasium10 and identify H as Q-phase entry basis. Page61 is compulsory functions content, not elective material."
+          },
+          {
+            "key": "BE_GO_MATHEMATIK_2014_2023",
+            "title": "Rahmenlehrplan Mathematik gymnasiale Oberstufe Teil C (Berlin, 2014/2023)",
+            "path": "curricula/DE/Gymnasium/input/BE/upper-secondary/rahmenlehrplan-mathematik_go-teil-c.pdf",
+            "role": "binding-core",
+            "official": true,
+            "url": "https://www.berlin.de/sen/bildung/unterricht/faecher-rahmenlehrplaene/rahmenlehrplaene/rahmenlehrplan-mathematik_go-teil-c.pdf",
+            "printedPages": [
+              7,
+              19,
+              26,
+              27,
+              29
+            ]
+          }
+        ]
+      },
+      "offerEvidence": [
+        {
+          "offerId": "DE-BE/SekII/G8/GK",
+          "compositionViewIds": [
+            "de-be-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-BE/SekII/G8/GK+LK",
+          "compositionViewIds": [
+            "merged:de-be-gym-sekii-math-lk+de-be-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        },
+        {
+          "offerId": "DE-BE/SekII/G9/GK",
+          "compositionViewIds": [
+            "de-be-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-BE/SekII/G9/GK+LK",
+          "compositionViewIds": [
+            "merged:de-be-gym-sekii-math-lk+de-be-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        },
+        {
+          "offerId": "DE-BE/CrossStage/G8/GK",
+          "compositionViewIds": [
+            "de-be-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-BE/CrossStage/G8/GK+LK",
+          "compositionViewIds": [
+            "merged:de-be-gym-math-lk+de-be-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        },
+        {
+          "offerId": "DE-BE/CrossStage/G9/GK",
+          "compositionViewIds": [
+            "de-be-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-BE/CrossStage/G9/GK+LK",
+          "compositionViewIds": [
+            "merged:de-be-gym-math-lk+de-be-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        }
+      ],
+      "ordinaryScopeDecision": "POSITIVE_SOURCE_MATCH_FOR_THE_EXISTING_FIVE_CONTRACTS; no ordinary target additions or removals.",
+      "pureLkBoundary": "Pure LK remains unchanged. Whole task source entitlement does not by itself enroll another assessment in a scope whose route is already carried by existing obligations."
+    },
+    {
+      "state": "DE-BW",
+      "decision": "PASS_WHOLE_FIXED_TASK_AS_BOUNDED_POINT_AND_TANGENT_TRANSFER",
+      "exactOfferIds": [
+        "DE-BW/SekII/G8/GK",
+        "DE-BW/SekII/G8/GK+LK",
+        "DE-BW/SekII/G9/GK",
+        "DE-BW/SekII/G9/GK+LK",
+        "DE-BW/CrossStage/G8/GK",
+        "DE-BW/CrossStage/G8/GK+LK",
+        "DE-BW/CrossStage/G9/GK",
+        "DE-BW/CrossStage/G9/GK+LK"
+      ],
+      "gkViewPaths": [
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json"
+      ],
+      "sourceAdjudication": {
+        "operations": "BP2016 common9/10 3.3.4(5),(8), pp35–36: parameter effects as scaling/reflection/translations and all four sinus parameters. Basisfach3.5.4(4),(5), p48 explicitly handles composition with a linear inner function and investigates its graph.",
+        "symmetryDerivative": "3.3.4(15),(19),(23), p36: tangent slope, derivative as a function at arbitrary points and graph/derivative-graph conversion. These support the reflected-tangent argument for the given even f after its coordinate transformation.",
+        "courseBoundary": "The p36 origin/y-axis examples are transported using the positively taught transformations; no unrelated symmetry theorem or new function class is assumed. The whole task remains a fixed-number graph operation at Basisfach level; no LK function-family investigation or chain-rule proof is needed.",
+        "references": [
+          {
+            "key": "BP2016",
+            "title": "Bildungsplan 2016 Gymnasium Mathematik Baden-Wuerttemberg",
+            "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_M.pdf",
+            "role": "binding-core",
+            "official": true,
+            "url": "https://www.bildungsplaene-bw.de/site/bildungsplan-rebrush2024/get/documents/lsbw/export-pdf/depot-pdf/ALLG/BP2016BW_ALLG_GYM_M.pdf",
+            "printedPages": [
+              35,
+              36,
+              48
+            ],
+            "sections": [
+              "3.3.4(5),(8),(15),(19),(23)",
+              "3.5.4(4),(5)"
+            ]
+          }
+        ]
+      },
+      "offerEvidence": [
+        {
+          "offerId": "DE-BW/SekII/G8/GK",
+          "compositionViewIds": [
+            "de-bw-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-BW/SekII/G8/GK+LK",
+          "compositionViewIds": [
+            "merged:de-bw-gym-sekii-math-lk+de-bw-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        },
+        {
+          "offerId": "DE-BW/SekII/G9/GK",
+          "compositionViewIds": [
+            "de-bw-gym-sekii-math-gk-g9"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-BW/SekII/G9/GK+LK",
+          "compositionViewIds": [
+            "merged:de-bw-gym-sekii-math-lk-g9+de-bw-gym-sekii-math-gk-g9"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        },
+        {
+          "offerId": "DE-BW/CrossStage/G8/GK",
+          "compositionViewIds": [
+            "de-bw-gym-math-gk-g8"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-BW/CrossStage/G8/GK+LK",
+          "compositionViewIds": [
+            "merged:de-bw-gym-math-lk-g8+de-bw-gym-math-gk-g8"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        },
+        {
+          "offerId": "DE-BW/CrossStage/G9/GK",
+          "compositionViewIds": [
+            "de-bw-gym-math-gk-g9"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-BW/CrossStage/G9/GK+LK",
+          "compositionViewIds": [
+            "merged:de-bw-gym-math-lk-g9+de-bw-gym-math-gk-g9"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        }
+      ],
+      "ordinaryScopeDecision": "POSITIVE_SOURCE_MATCH_FOR_THE_EXISTING_FIVE_CONTRACTS; no ordinary target additions or removals.",
+      "pureLkBoundary": "Pure LK remains unchanged. Whole task source entitlement does not by itself enroll another assessment in a scope whose route is already carried by existing obligations."
+    },
+    {
+      "state": "DE-MV",
+      "decision": "PASS_BOUNDED_TRANSFER",
+      "exactOfferIds": [
+        "DE-MV/SekII/G8/GK",
+        "DE-MV/SekII/G8/GK+LK",
+        "DE-MV/CrossStage/G8/GK",
+        "DE-MV/CrossStage/G8/GK+LK"
+      ],
+      "gkViewPaths": [
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json"
+      ],
+      "offerEvidence": [
+        {
+          "offerId": "DE-MV/SekII/G8/GK",
+          "compositionViewIds": [
+            "de-mv-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-MV/SekII/G8/GK+LK",
+          "compositionViewIds": [
+            "merged:de-mv-gym-sekii-math-lk+de-mv-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        },
+        {
+          "offerId": "DE-MV/CrossStage/G8/GK",
+          "compositionViewIds": [
+            "de-mv-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-MV/CrossStage/G8/GK+LK",
+          "compositionViewIds": [
+            "merged:de-mv-gym-math-lk+de-mv-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        }
+      ],
+      "sourceAdjudication": {
+        "operations": "SekI p29 quadratic graph transformations expressly include translation, scaling, compression and reflection; p33 power functions a(x+b)^n+c; p39 sine a*sin(b(x+c))+d and effects of all four parameters, with required connections to previous functions. This positive chain supplies both coordinate operations.",
+        "symmetryDerivative": "SekII p18 explicitly interprets derivative as tangent slope and requires graphical derivatives; p19 includes graph symmetry and graphical investigations. The moved symmetry follows by transporting the already-given even graph, not by introducing an unsupported curve family.",
+        "courseBoundary": "SekII pp16/19 reserve added complexity, compositions and more-than-one-parameter function families to LK; the assessed coefficients are fixed and no family is investigated. The source does not reserve the point/tangent transport of a supplied even graph to LK.",
+        "references": [
+          {
+            "document": "Mathematik_Gymnasium_7_10_2019.pdf",
+            "pages": [
+              29,
+              33,
+              37,
+              39
+            ],
+            "sourceLocation": "Quadratische/Funktionsklassen/Exponential-/Sinusfunktionen",
+            "positiveContent": "Concrete family parameter effects; explicit all four sinus parameters and connections to earlier functions."
+          },
+          {
+            "document": "Mathematik_Gymnasium_11_12_2019.pdf",
+            "pages": [
+              16,
+              18,
+              19
+            ],
+            "sourceLocation": "Course boundary; Ableitungen; Untersuchungen",
+            "positiveContent": "GK tangent slopes, graphical derivatives and origin/y-axis symmetry; LK additionally chain rule, compositions and more-than-one-parameter families."
+          }
+        ]
+      },
+      "anchorRequirement": "Place one explicit goal reference at the existing relevant upper-secondary analysis/function-properties structure. For SL the inspected concrete anchor is geometry-and-advanced-analysis, containing canonical subtree5ebfc509-0b4c-5c60-befb-2477eb24d4b5. Other exact candidate anchors must preserve their current reviewed target tree and uniqueness.",
+      "unionBoundary": "GK references may appear exactly once in listed GK+LK merged offers; autonomous LK task enrollment is outside this decision.",
+      "childProjectedViewInventory": [
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json"
+      ],
+      "ordinaryScopeDecision": "POSITIVE_SOURCE_MATCH_FOR_THE_EXISTING_FIVE_CONTRACTS; no ordinary target additions or removals.",
+      "pureLkBoundary": "Pure LK remains unchanged. Whole task source entitlement does not by itself enroll another assessment in a scope whose route is already carried by existing obligations."
+    },
+    {
+      "state": "DE-NW",
+      "decision": "PASS_BOUNDED_TRANSFER",
+      "exactOfferIds": [
+        "DE-NW/SekII/G9/GK",
+        "DE-NW/SekII/G9/GK+LK",
+        "DE-NW/CrossStage/G9/GK",
+        "DE-NW/CrossStage/G9/GK+LK"
+      ],
+      "gkViewPaths": [
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json"
+      ],
+      "offerEvidence": [
+        {
+          "offerId": "DE-NW/SekII/G9/GK",
+          "compositionViewIds": [
+            "de-nw-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-NW/SekII/G9/GK+LK",
+          "compositionViewIds": [
+            "merged:de-nw-gym-sekii-math-lk+de-nw-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        },
+        {
+          "offerId": "DE-NW/CrossStage/G9/GK",
+          "compositionViewIds": [
+            "de-nw-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-NW/CrossStage/G9/GK+LK",
+          "compositionViewIds": [
+            "merged:de-nw-gym-math-lk+de-nw-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        }
+      ],
+      "sourceAdjudication": {
+        "operations": "E p22 A3/A4 explicitly requires parameter effects and transformations concerning both axes for polynomial and sine functions; the content header names coordinate-axis mirrors, translation and scaling. GK p24 A2 continues using transformations of the listed function classes.",
+        "symmetryDerivative": "E p22 A8/A9 interprets derivative as tangent slope, p23 A11 reconstructs function and derivative graphs; symmetry is named in the function-property content. These are positive mathematical prerequisites for the concrete point/tangent transfer, not merely a generic argumentation standard.",
+        "courseBoundary": "The task needs no general chain rule or high-complexity parameter family. p19/20 generalization/argumentation is a supporting didactic criterion only; the positive content comes from A3/A4/A8/A11/A2.",
+        "references": [
+          {
+            "document": "gost_klp_m_2023_06_07.pdf",
+            "pages": [
+              22,
+              23
+            ],
+            "sourceLocation": "E functions/analysis A3,A4,A8,A11",
+            "positiveContent": "Both-axis transformations, parameter interpretation and graphical differentiation are explicit, with polynomial/sine functions named as content scope."
+          },
+          {
+            "document": "gost_klp_m_2023_06_07.pdf",
+            "pages": [
+              24
+            ],
+            "sourceLocation": "GK A2,A7,A8",
+            "positiveContent": "Transformations of named function classes and simple composition; investigations with parameters."
+          }
+        ]
+      },
+      "anchorRequirement": "Place one explicit goal reference at the existing relevant upper-secondary analysis/function-properties structure. For SL the inspected concrete anchor is geometry-and-advanced-analysis, containing canonical subtree5ebfc509-0b4c-5c60-befb-2477eb24d4b5. Other exact candidate anchors must preserve their current reviewed target tree and uniqueness.",
+      "unionBoundary": "GK references may appear exactly once in listed GK+LK merged offers; autonomous LK task enrollment is outside this decision.",
+      "childProjectedViewInventory": [
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json"
+      ],
+      "ordinaryScopeDecision": "POSITIVE_SOURCE_MATCH_FOR_THE_EXISTING_FIVE_CONTRACTS; no ordinary target additions or removals.",
+      "pureLkBoundary": "Pure LK remains unchanged. Whole task source entitlement does not by itself enroll another assessment in a scope whose route is already carried by existing obligations."
+    },
+    {
+      "state": "DE-RP",
+      "decision": "PASS_BOUNDED_TRANSFER",
+      "exactOfferIds": [
+        "DE-RP/SekII/G8/GK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/GK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/GK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/GK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "gkViewPaths": [
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-gk.view.json"
+      ],
+      "offerEvidence": [
+        {
+          "offerId": "DE-RP/SekII/G8/GK",
+          "compositionViewIds": [
+            "de-rp-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-RP/SekII/G8/GK+LK",
+          "compositionViewIds": [
+            "merged:de-rp-gym-sekii-math-lk+de-rp-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        },
+        {
+          "offerId": "DE-RP/SekII/G9/GK",
+          "compositionViewIds": [
+            "de-rp-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-RP/SekII/G9/GK+LK",
+          "compositionViewIds": [
+            "merged:de-rp-gym-sekii-math-lk+de-rp-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        },
+        {
+          "offerId": "DE-RP/CrossStage/G8/GK",
+          "compositionViewIds": [
+            "de-rp-gym-math-gk-g8"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-RP/CrossStage/G8/GK+LK",
+          "compositionViewIds": [
+            "merged:de-rp-gym-math-lk-g8+de-rp-gym-math-gk-g8"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        },
+        {
+          "offerId": "DE-RP/CrossStage/G9/GK",
+          "compositionViewIds": [
+            "de-rp-gym-math-gk-g9"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-RP/CrossStage/G9/GK+LK",
+          "compositionViewIds": [
+            "merged:de-rp-gym-math-lk-g9+de-rp-gym-math-gk-g9"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        }
+      ],
+      "sourceAdjudication": {
+        "operations": "SekI pp99-104 explicitly connect shifts/scales/parameter effects across nonlinear function classes, include coordinate shifts and y-scaling, power form a(x+b)^z+c, reflected exponential graphs and sine a*sin(b*alpha+c). These cover both coordinate directions and their composition. SekII p4 4.01g/4.02g carries those classes and simple function compositions into Grundfach.",
+        "symmetryDerivative": "SekI p100/101/104 graph symmetry; Grundfach pp4/23 requires tangent interpretation and derivative graphs from given function graphs, with pp23/24 graphical function investigations. A supplied evenness premise avoids an additional symbolic parity-classification requirement.",
+        "courseBoundary": "SekI p82 distinguishes B/E/V and identifies V as preparation for entry to gymnasiale Oberstufe. The operation evidence here is in E content, so no optionalV topic or local module choice is used to authorize this assessment. Both actualG8/G9 upper offers share this Grundfach source contract; the task is not assigned by phase alone.",
+        "references": [
+          {
+            "document": "Mathematik_Sekundarstufe_II_MSS.pdf",
+            "pages": [
+              4,
+              21,
+              23,
+              24
+            ],
+            "sourceLocation": "4.01g-4.08g / Grundfach Analysis",
+            "positiveContent": "Use previous function classes and simple composition; develop derivative graphs and study polynomial functions, also with parameters."
+          },
+          {
+            "document": "Mathematik_Sekundarstufe_I.pdf",
+            "pages": [
+              99,
+              100,
+              101,
+              102,
+              104
+            ],
+            "sourceLocation": "Nicht-lineare Funktionen",
+            "positiveContent": "Shared transformations discussed; quadratic x/y shifts and y-scaling; powers a(x+b)^z+c; exponential shifted/scaled/y-mirrored graphs; sine a*sin(b*alpha+c)."
+          },
+          {
+            "document": "Mathematik_Sekundarstufe_I.pdf",
+            "pages": [
+              82
+            ],
+            "sourceLocation": "Hinweise zur Darstellung B/E/V",
+            "positiveContent": "Clarifies compulsory basic/extended content and upper-secondary preparation; no electiveV enrollment is needed for the reviewed operations."
+          }
+        ]
+      },
+      "anchorRequirement": "Place one explicit goal reference at the existing relevant upper-secondary analysis/function-properties structure. For SL the inspected concrete anchor is geometry-and-advanced-analysis, containing canonical subtree5ebfc509-0b4c-5c60-befb-2477eb24d4b5. Other exact candidate anchors must preserve their current reviewed target tree and uniqueness.",
+      "unionBoundary": "GK references may appear exactly once in listed GK+LK merged offers; autonomous LK task enrollment is outside this decision.",
+      "childProjectedViewInventory": [
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-gk.view.json"
+      ],
+      "ordinaryScopeDecision": "POSITIVE_SOURCE_MATCH_FOR_THE_EXISTING_FIVE_CONTRACTS; no ordinary target additions or removals.",
+      "pureLkBoundary": "Pure LK remains unchanged. Whole task source entitlement does not by itself enroll another assessment in a scope whose route is already carried by existing obligations."
+    },
+    {
+      "state": "DE-SL",
+      "decision": "PASS_BOUNDED_TRANSFER",
+      "exactOfferIds": [
+        "DE-SL/SekII/G9/GK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/GK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "gkViewPaths": [
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json"
+      ],
+      "offerEvidence": [
+        {
+          "offerId": "DE-SL/SekII/G9/GK",
+          "compositionViewIds": [
+            "de-sl-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-SL/SekII/G9/GK+LK",
+          "compositionViewIds": [
+            "merged:de-sl-gym-sekii-math-lk+de-sl-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        },
+        {
+          "offerId": "DE-SL/CrossStage/G9/GK",
+          "compositionViewIds": [
+            "de-sl-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-SL/CrossStage/G9/GK+LK",
+          "compositionViewIds": [
+            "merged:de-sl-gym-math-lk+de-sl-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        }
+      ],
+      "sourceAdjudication": {
+        "operations": "GK p13 visibly states f(x)+d, f(x-c), a*f(x), f(b*x), nonzero a/b with negative cases and their combinations, plus explicit reciprocal factor1/b.",
+        "symmetryDerivative": "GK p12 function/derivative graph relationships and tangent arguments; p13 requires justified shifted quadratic/cubic symmetry. Together these give a direct basis for the supplied-evenness point/tangent transfer.",
+        "courseBoundary": "p14 excludes function-family and locus investigations; the fixed task is neither.",
+        "references": [
+          {
+            "document": "LP_Ma_GOS_HP_G-Kurs_2016_Stand_2019.pdf",
+            "pages": [
+              12,
+              13
+            ],
+            "url": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Mathematik/LP_Ma_GOS_HP_G-Kurs_2016_Stand_2019.pdf?__blob=publicationFile&v=4",
+            "sourceLocation": "Lernbereich1 Grundlegende Funktionen und Ableitungen, G-Kurs",
+            "positiveContent": [
+              "Generic function notation f(x)+d, f(x-c), a*f(x), f(b*x), including a,b nonzero and both negative-factor mirrors.",
+              "Explicit distinction between vertical factor a and horizontal factor1/b; combinations of translations, scalings and mirrors.",
+              "Justified shifted symmetry is common GK content for quadratic/cubic functions.",
+              "Describe and interpret function/derivative graph relationships; develop derivative and original graphs from one another; tangent slopes and graphical arguments for derivatives."
+            ]
+          },
+          {
+            "document": "LP_Ma_GOS_HP_G-Kurs_2016_Stand_2019.pdf",
+            "pages": [
+              14
+            ],
+            "sourceLocation": "Methodische und fachdidaktische Erlaeuterungen",
+            "boundary": "No study of parameterised function families or locus equations is required by the task: its factors and translations are fixed."
+          }
+        ]
+      },
+      "anchorRequirement": "Place one explicit goal reference at the existing relevant upper-secondary analysis/function-properties structure. For SL the inspected concrete anchor is geometry-and-advanced-analysis, containing canonical subtree5ebfc509-0b4c-5c60-befb-2477eb24d4b5. Other exact candidate anchors must preserve their current reviewed target tree and uniqueness.",
+      "unionBoundary": "GK references may appear exactly once in listed GK+LK merged offers; autonomous LK task enrollment is outside this decision.",
+      "childProjectedViewInventory": [
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json"
+      ],
+      "ordinaryScopeDecision": "POSITIVE_SOURCE_MATCH_FOR_THE_EXISTING_FIVE_CONTRACTS; no ordinary target additions or removals.",
+      "pureLkBoundary": "Pure LK remains unchanged. Whole task source entitlement does not by itself enroll another assessment in a scope whose route is already carried by existing obligations."
+    },
+    {
+      "state": "DE-SN",
+      "decision": "PASS_WHOLE_FIXED_TASK_AS_BOUNDED_POINT_AND_TANGENT_TRANSFER",
+      "exactOfferIds": [
+        "DE-SN/SekII/G8/GK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/GK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "gkViewPaths": [
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json"
+      ],
+      "sourceAdjudication": {
+        "operations": "Sachsen2019 Kl10 pp28–29 explicitly treats c*f(x), f(x)+c, f(x+c), f(c*x) for exponential and sinus functions; earlier Kl9 pp24–25 covers symmetry and the first three forms for power/quadratic functions. This establishes both coordinate directions, signs and inverse inner-scale meaning.",
+        "symmetryDerivative": "GK11/12 pp32–33: justify relationships between a function graph and its derivative, interpret derivative as tangent slope, sketch derivative graph for a given graph and reason about symmetry.",
+        "courseBoundary": "The requested arbitrary point is used only to derive the affine graph map; a quadratic supplies the allowed example. It does not require analysing an unspecified new function family or a parametrized family, nor a chain-rule calculation. No explicit elevated-only shifted-symmetry requirement contradicts this bounded transfer.",
+        "references": [
+          {
+            "key": "SN_GYM_MATHEMATIK_LEHRPLAN_2019",
+            "title": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+            "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-mathematik-sachsen-2019.pdf",
+            "textPath": "tmp/sn_text/lehrplan-gymnasium-mathematik-sachsen-2019.layout.txt",
+            "role": "binding-upper-secondary-classes-11-12",
+            "official": true,
+            "url": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/121/galmOUYkLcTVJh8Sk6g9",
+            "printedPages": [
+              24,
+              25,
+              28,
+              29,
+              32,
+              33
+            ]
+          }
+        ]
+      },
+      "offerEvidence": [
+        {
+          "offerId": "DE-SN/SekII/G8/GK",
+          "compositionViewIds": [
+            "de-sn-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-SN/SekII/G8/GK+LK",
+          "compositionViewIds": [
+            "merged:de-sn-gym-sekii-math-lk+de-sn-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        },
+        {
+          "offerId": "DE-SN/CrossStage/G8/GK",
+          "compositionViewIds": [
+            "de-sn-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-SN/CrossStage/G8/GK+LK",
+          "compositionViewIds": [
+            "merged:de-sn-gym-math-lk+de-sn-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        }
+      ],
+      "ordinaryScopeDecision": "POSITIVE_SOURCE_MATCH_FOR_THE_EXISTING_FIVE_CONTRACTS; no ordinary target additions or removals.",
+      "pureLkBoundary": "Pure LK remains unchanged. Whole task source entitlement does not by itself enroll another assessment in a scope whose route is already carried by existing obligations."
+    },
+    {
+      "state": "DE-ST",
+      "decision": "PASS_BOUNDED_TRANSFER",
+      "exactOfferIds": [
+        "DE-ST/SekII/G8/GK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/GK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "gkViewPaths": [
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json"
+      ],
+      "offerEvidence": [
+        {
+          "offerId": "DE-ST/SekII/G8/GK",
+          "compositionViewIds": [
+            "de-st-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-ST/SekII/G8/GK+LK",
+          "compositionViewIds": [
+            "merged:de-st-gym-sekii-math-lk+de-st-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        },
+        {
+          "offerId": "DE-ST/CrossStage/G8/GK",
+          "compositionViewIds": [
+            "de-st-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-ST/CrossStage/G8/GK+LK",
+          "compositionViewIds": [
+            "merged:de-st-gym-math-lk+de-st-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        }
+      ],
+      "sourceAdjudication": {
+        "operations": "p53 names generic a*f(x+c)+d and the interior horizontal factor sin(b*x), together with parameter effects on graph position/shape. This positively teaches each coordinate operation needed; performing the inner affine inverse for a supplied expression is a bounded transfer of the horizontal scaling operation from its sinusoidal example.",
+        "symmetryDerivative": "gA p57 interprets the derivative as tangent slope; p58 explicitly requires reconstructing function/derivative graphs and recognising and justifying their relationships. p53 includes graph symmetry.",
+        "courseBoundary": "p56 explicitly permits all three demand levels in gA while emphasizingI/II. No source restriction of the required point/tangent symmetry reasoning to eA was found in the complete relevant gA units. The absence of a generic f(b*x) formula is not itself a source prohibition.",
+        "references": [
+          {
+            "document": "Mathematik_FLP_Gym_01_07_2019.pdf",
+            "pages": [
+              53
+            ],
+            "sourceLocation": "Jahrgang10 Analysis/Funktionsklassen",
+            "positiveContent": "Generic g(x)=a*f(x+c)+d is named. A horizontal inner factor is separately named only as g(x)=sin(b*x)."
+          },
+          {
+            "document": "Mathematik_FLP_Gym_01_07_2019.pdf",
+            "pages": [
+              57,
+              58
+            ],
+            "sourceLocation": "Grundlegendes Niveau Infinitesimal-/Differentialrechnung",
+            "positiveContent": "Tangent interpretation, graph/derivative reconstruction and justified derivative relationships for the listed function classes."
+          }
+        ]
+      },
+      "anchorRequirement": "Place one explicit goal reference at the existing relevant upper-secondary analysis/function-properties structure. For SL the inspected concrete anchor is geometry-and-advanced-analysis, containing canonical subtree5ebfc509-0b4c-5c60-befb-2477eb24d4b5. Other exact candidate anchors must preserve their current reviewed target tree and uniqueness.",
+      "unionBoundary": "GK references may appear exactly once in listed GK+LK merged offers; autonomous LK task enrollment is outside this decision.",
+      "childProjectedViewInventory": [
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json"
+      ],
+      "ordinaryScopeDecision": "POSITIVE_SOURCE_MATCH_FOR_THE_EXISTING_FIVE_CONTRACTS; no ordinary target additions or removals.",
+      "pureLkBoundary": "Pure LK remains unchanged. Whole task source entitlement does not by itself enroll another assessment in a scope whose route is already carried by existing obligations."
+    },
+    {
+      "state": "DE-TH",
+      "decision": "PASS_WHOLE_FIXED_TASK_AS_BOUNDED_POINT_AND_TANGENT_TRANSFER",
+      "exactOfferIds": [
+        "DE-TH/SekII/G8/GK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/GK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "gkViewPaths": [
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json"
+      ],
+      "sourceAdjudication": {
+        "operations": "Official2025 pp21–22 entry basis explicitly includes shifts, stretching in x/y and reflections in both axes of familiar functions. The2018 predecessor p28 additionally records generic a*f(x-d)+c and sinus/cosinus inner scaling.",
+        "symmetryDerivative": "The2025 p22 common gA/eA cells require derivative as tangent slope and recognizing, justifying and representing function/derivative graph relationships in both directions. This supplies the whole point/tangent proof without the separately eA linear-approximation or chain-rule content.",
+        "courseBoundary": "The actual2025 PDF retains its Entwurf watermark/title. Its own p2 AND the separately archived official portal item18835 explicitly state introduction in2025/26 for5/6 and11/12. This is a revision-specific source decision; the draft label is not erased and no current live-portal acceptance is claimed. External live retrieval was restricted.",
+        "references": [
+          {
+            "key": "TH_GYM_MATHEMATIK_LEHRPLAN_2025",
+            "title": "Lehrplan Mathematik Gymnasium, Thueringen 2025",
+            "path": "curricula/DE/Gymnasium/input/TH/LP_GY_Mathematik_Entwurfsfassung2025.pdf",
+            "textPath": "tmp/th_text/th_math_2025.layout.txt",
+            "role": "binding-for-grade-5-6-and-11-12-from-2025-26",
+            "official": true,
+            "url": "https://www.schulportal-thueringen.de/tip/resources/medien/65648?dateiname=LP_GY_Mathematik_Entwurfsfassung2025.pdf",
+            "printedPages": [
+              2,
+              21,
+              22
+            ]
+          },
+          {
+            "key": "TH_GYM_MATHEMATIK_LEHRPLAN_2018",
+            "title": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019",
+            "path": "curricula/DE/Gymnasium/input/TH/lp_gy_mathematik_10.04.2019_TSP.pdf",
+            "textPath": "tmp/th_text/th_math_2018.layout.txt",
+            "role": "binding-transition-for-grade-7-10-and-11S",
+            "official": true,
+            "url": "https://www.schulportal-thueringen.de/tip/resources/medien/19980?dateiname=lp_gy_mathematik_10.04.2019_TSP.pdf",
+            "printedPages": [
+              28,
+              39
+            ]
+          },
+          {
+            "path": "curricula/DE/Gymnasium/input/TH/lehrplan-mathematik-gymnasium-2025-detail.html",
+            "url": "https://www.schulportal-thueringen.de/media/detail?tspi=18835",
+            "evidence": "Official archived portal description at source line4658 states the2025/26 introduction for5/6 and11/12 alongside the retained Entwurfsfassung title."
+          }
+        ]
+      },
+      "offerEvidence": [
+        {
+          "offerId": "DE-TH/SekII/G8/GK",
+          "compositionViewIds": [
+            "de-th-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-TH/SekII/G8/GK+LK",
+          "compositionViewIds": [
+            "merged:de-th-gym-sekii-math-lk+de-th-gym-sekii-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        },
+        {
+          "offerId": "DE-TH/CrossStage/G8/GK",
+          "compositionViewIds": [
+            "de-th-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": false
+        },
+        {
+          "offerId": "DE-TH/CrossStage/G8/GK+LK",
+          "compositionViewIds": [
+            "merged:de-th-gym-math-lk+de-th-gym-math-gk"
+          ],
+          "allFiveOrdinaryContractsAlreadyTargets": true,
+          "assessmentAbsentBefore": true,
+          "newExplicitProtectedAssessmentObligation": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "gkUnionMembershipAcknowledged": true
+        }
+      ],
+      "ordinaryScopeDecision": "POSITIVE_SOURCE_MATCH_FOR_THE_EXISTING_FIVE_CONTRACTS; no ordinary target additions or removals.",
+      "pureLkBoundary": "Pure LK remains unchanged. Whole task source entitlement does not by itself enroll another assessment in a scope whose route is already carried by existing obligations."
+    }
+  ],
+  "approvedNewOfferIds": [
+    "DE-BB/CrossStage/G8/GK",
+    "DE-BB/CrossStage/G8/GK+LK",
+    "DE-BB/CrossStage/G9/GK",
+    "DE-BB/CrossStage/G9/GK+LK",
+    "DE-BB/SekII/G8/GK",
+    "DE-BB/SekII/G8/GK+LK",
+    "DE-BB/SekII/G9/GK",
+    "DE-BB/SekII/G9/GK+LK",
+    "DE-BE/CrossStage/G8/GK",
+    "DE-BE/CrossStage/G8/GK+LK",
+    "DE-BE/CrossStage/G9/GK",
+    "DE-BE/CrossStage/G9/GK+LK",
+    "DE-BE/SekII/G8/GK",
+    "DE-BE/SekII/G8/GK+LK",
+    "DE-BE/SekII/G9/GK",
+    "DE-BE/SekII/G9/GK+LK",
+    "DE-BW/CrossStage/G8/GK",
+    "DE-BW/CrossStage/G8/GK+LK",
+    "DE-BW/CrossStage/G9/GK",
+    "DE-BW/CrossStage/G9/GK+LK",
+    "DE-BW/SekII/G8/GK",
+    "DE-BW/SekII/G8/GK+LK",
+    "DE-BW/SekII/G9/GK",
+    "DE-BW/SekII/G9/GK+LK",
+    "DE-MV/CrossStage/G8/GK",
+    "DE-MV/CrossStage/G8/GK+LK",
+    "DE-MV/SekII/G8/GK",
+    "DE-MV/SekII/G8/GK+LK",
+    "DE-NW/CrossStage/G9/GK",
+    "DE-NW/CrossStage/G9/GK+LK",
+    "DE-NW/SekII/G9/GK",
+    "DE-NW/SekII/G9/GK+LK",
+    "DE-RP/CrossStage/G8/GK",
+    "DE-RP/CrossStage/G8/GK+LK",
+    "DE-RP/CrossStage/G9/GK",
+    "DE-RP/CrossStage/G9/GK+LK",
+    "DE-RP/SekII/G8/GK",
+    "DE-RP/SekII/G8/GK+LK",
+    "DE-RP/SekII/G9/GK",
+    "DE-RP/SekII/G9/GK+LK",
+    "DE-SL/CrossStage/G9/GK",
+    "DE-SL/CrossStage/G9/GK+LK",
+    "DE-SL/SekII/G9/GK",
+    "DE-SL/SekII/G9/GK+LK",
+    "DE-SN/CrossStage/G8/GK",
+    "DE-SN/CrossStage/G8/GK+LK",
+    "DE-SN/SekII/G8/GK",
+    "DE-SN/SekII/G8/GK+LK",
+    "DE-ST/CrossStage/G8/GK",
+    "DE-ST/CrossStage/G8/GK+LK",
+    "DE-ST/SekII/G8/GK",
+    "DE-ST/SekII/G8/GK+LK",
+    "DE-TH/CrossStage/G8/GK",
+    "DE-TH/CrossStage/G8/GK+LK",
+    "DE-TH/SekII/G8/GK",
+    "DE-TH/SekII/G8/GK+LK"
+  ],
+  "approvedNewProtectedTargetOccurrences": 56,
+  "approvedSingleReferenceOperations": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
+      "beforeSha256": "235b1b5242232d3cdf7f95b5e99f5c3b6dd0dabdbb5f3308e02d19626fb6af61",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "anchorLabel": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+      "parentPointer": "/rootNodes/25/children/1/children/3",
+      "appendPointer": "/rootNodes/25/children/1/children/3/children/9",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+          "displayLabel": "Vertiefung der Analysis"
+        },
+        {
+          "kind": "structure",
+          "id": "shared-vector-operations-q2-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "label": "Punkte, Vektoren und Bewegungen im Raum",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f6232b63-8a2a-5041-817b-f13cab43523d"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+          "displayLabel": "Übungen"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "bea0e5a0-4833-5337-b6f1-7251b8cf8089"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+          "projectionRole": "target"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing structure explicitly combines geometry/linear algebra with advanced analysis and already contains the reviewed5ebfc509 function-properties subtree; append the single whole task without importing siblings."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json",
+      "beforeSha256": "db5c56021298b6750e7469f07d84addd1f7ecac5ad8570059c262d583ec58127",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "anchorLabel": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+      "parentPointer": "/rootNodes/22/children/3",
+      "appendPointer": "/rootNodes/22/children/3/children/9",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+          "displayLabel": "Vertiefung der Analysis"
+        },
+        {
+          "kind": "structure",
+          "id": "shared-vector-operations-q2-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "label": "Punkte, Vektoren und Bewegungen im Raum",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "1bc118c3-1f05-5f2a-b125-418017180d75"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f6232b63-8a2a-5041-817b-f13cab43523d"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+          "displayLabel": "Übungen"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "bea0e5a0-4833-5337-b6f1-7251b8cf8089"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+          "projectionRole": "target"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing structure explicitly combines geometry/linear algebra with advanced analysis and already contains the reviewed5ebfc509 function-properties subtree; append the single whole task without importing siblings."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+      "beforeSha256": "2c94662819ec878f3b923e3823a493458d69da38ec60278038347c0aeabc6e0a",
+      "anchorStructureId": "nw-q-phase-functions-analysis-gk",
+      "anchorLabel": "Q-Phase (GK): Funktionen und Analysis",
+      "parentPointer": "/rootNodes/25/children/1/children/2",
+      "appendPointer": "/rootNodes/25/children/1/children/2/children/7",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "93ac7fc8-6d83-5394-bbea-80758b463da1"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "383ca2b2-565e-5725-a568-7937bb707175"
+        },
+        {
+          "kind": "structure",
+          "id": "canonical-selection-76842ec4-c76b-5c03-9694-8a18acb1da0f",
+          "label": "Vertiefung der Differenzial- und Integralrechnung",
+          "children": [
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "2713980f-75d2-5455-a8cb-bcd3888c49a0"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "93fcf49d-a08c-5aa5-a5b2-cb4ee56fdae4"
+            },
+            {
+              "kind": "structure",
+              "id": "split-s01-47b5671c-f8f5-5574-a2f7-788fd19c1eba",
+              "label": "Wachstums- und Zerfallsprozesse modellieren",
+              "children": [
+                {
+                  "kind": "canonicalSubtree",
+                  "goalId": "4ae9e316-509f-517d-bd94-a165817af24f"
+                }
+              ]
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "ccd83f05-a0ae-4cd1-8917-24793a219fee"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "886caebc-a042-4a94-91f9-6dc184203c42"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "848af536-c7e5-4df0-a4e9-d5d0ff15244c"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "e7350739-c89f-5c7b-b4d1-717d6a767298"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "05946a6a-b41e-5cec-8a39-237f889f4d93"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "df7338ef-65ba-5ece-8aec-7f520dfe5710"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "7e2dfa4d-33b1-55b0-8b97-d4bc4da8e60e"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "917aacc2-7110-58eb-a594-0a5c6aec13cc"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "ca708087-71f8-5fae-91c5-b80721a4208f",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "c25158fc-4860-59b2-8ef0-dca355f3a8b1",
+          "displayLabel": "Übungen"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing Q-phase functions/analysis structure beside its existing exercises."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json",
+      "beforeSha256": "d45e2e51e2f1eb2ef57d60ddc5c47abf705930dc970574130c2028e64f4e3776",
+      "anchorStructureId": "nw-q-phase-functions-analysis-gk",
+      "anchorLabel": "Q-Phase (GK): Funktionen und Analysis",
+      "parentPointer": "/rootNodes/21/children/2",
+      "appendPointer": "/rootNodes/21/children/2/children/8",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "93ac7fc8-6d83-5394-bbea-80758b463da1"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "383ca2b2-565e-5725-a568-7937bb707175"
+        },
+        {
+          "kind": "structure",
+          "id": "canonical-selection-76842ec4-c76b-5c03-9694-8a18acb1da0f",
+          "label": "Vertiefung der Differenzial- und Integralrechnung",
+          "children": [
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "2713980f-75d2-5455-a8cb-bcd3888c49a0"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "e9ad45b9-c0d2-5804-b6bf-79e5ce041d2c"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "93fcf49d-a08c-5aa5-a5b2-cb4ee56fdae4"
+            },
+            {
+              "kind": "structure",
+              "id": "split-s01-47b5671c-f8f5-5574-a2f7-788fd19c1eba",
+              "label": "Wachstums- und Zerfallsprozesse modellieren",
+              "children": [
+                {
+                  "kind": "canonicalSubtree",
+                  "goalId": "4ae9e316-509f-517d-bd94-a165817af24f"
+                }
+              ]
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "ccd83f05-a0ae-4cd1-8917-24793a219fee"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "886caebc-a042-4a94-91f9-6dc184203c42"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "848af536-c7e5-4df0-a4e9-d5d0ff15244c"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "e7350739-c89f-5c7b-b4d1-717d6a767298"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "05946a6a-b41e-5cec-8a39-237f889f4d93"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "df7338ef-65ba-5ece-8aec-7f520dfe5710"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "7e2dfa4d-33b1-55b0-8b97-d4bc4da8e60e"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "917aacc2-7110-58eb-a594-0a5c6aec13cc"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "ca708087-71f8-5fae-91c5-b80721a4208f",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "c25158fc-4860-59b2-8ef0-dca355f3a8b1",
+          "displayLabel": "Übungen"
+        },
+        {
+          "kind": "structure",
+          "id": "reviewed-stage-positive-nw-sekii-gk-material-pendant",
+          "label": "Funktionsuntersuchung und numerische Verfahren",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "4c319dfd-ebb1-504b-a036-c780e1915900"
+            }
+          ]
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing Q-phase functions/analysis structure beside its existing exercises."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
+      "beforeSha256": "fdd7a1a27353e1bafbf680cfaf428619e91688781eae4684bbf06bc77d4eecb7",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "anchorLabel": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+      "parentPointer": "/rootNodes/23/children/1/children/3",
+      "appendPointer": "/rootNodes/23/children/1/children/3/children/8",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+          "displayLabel": "Vertiefung der Analysis"
+        },
+        {
+          "kind": "structure",
+          "id": "shared-vector-operations-q2-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "label": "Punkte, Vektoren und Bewegungen im Raum",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "1bc118c3-1f05-5f2a-b125-418017180d75"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f6232b63-8a2a-5041-817b-f13cab43523d"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+          "displayLabel": "Übungen"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+          "projectionRole": "target"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing structure explicitly combines geometry/linear algebra with advanced analysis and already contains the reviewed5ebfc509 function-properties subtree; append the single whole task without importing siblings."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json",
+      "beforeSha256": "0532b4a186ac47198f7e2f83e6eb981187a65ce42f54d63b2dcd890704c3c010",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "anchorLabel": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+      "parentPointer": "/rootNodes/21/children/3",
+      "appendPointer": "/rootNodes/21/children/3/children/8",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+          "displayLabel": "Vertiefung der Analysis"
+        },
+        {
+          "kind": "structure",
+          "id": "shared-vector-operations-q2-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "label": "Punkte, Vektoren und Bewegungen im Raum",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "1bc118c3-1f05-5f2a-b125-418017180d75"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f6232b63-8a2a-5041-817b-f13cab43523d"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+          "displayLabel": "Übungen"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+          "projectionRole": "target"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing structure explicitly combines geometry/linear algebra with advanced analysis and already contains the reviewed5ebfc509 function-properties subtree; append the single whole task without importing siblings."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json",
+      "beforeSha256": "d9f4e9d97018fd91c471c746fecc2417479fd5b5765a0bcd19e9dac9610fe76d",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "anchorLabel": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+      "parentPointer": "/rootNodes/26/children/2/children/3",
+      "appendPointer": "/rootNodes/26/children/2/children/3/children/7",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+          "displayLabel": "Vertiefung der Analysis"
+        },
+        {
+          "kind": "structure",
+          "id": "shared-vector-operations-q2-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "label": "Punkte, Vektoren und Bewegungen im Raum",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f6232b63-8a2a-5041-817b-f13cab43523d"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+          "displayLabel": "Übungen"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing structure explicitly combines geometry/linear algebra with advanced analysis and already contains the reviewed5ebfc509 function-properties subtree; append the single whole task without importing siblings."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-gk.view.json",
+      "beforeSha256": "37eff0ab077067483351eac8817478e4fa76571126a989a99d8bb12367477bb2",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "anchorLabel": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+      "parentPointer": "/rootNodes/22/children/3",
+      "appendPointer": "/rootNodes/22/children/3/children/7",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+          "displayLabel": "Vertiefung der Analysis"
+        },
+        {
+          "kind": "structure",
+          "id": "shared-vector-operations-q2-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "label": "Punkte, Vektoren und Bewegungen im Raum",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "1bc118c3-1f05-5f2a-b125-418017180d75"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f6232b63-8a2a-5041-817b-f13cab43523d"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+          "displayLabel": "Übungen"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing structure explicitly combines geometry/linear algebra with advanced analysis and already contains the reviewed5ebfc509 function-properties subtree; append the single whole task without importing siblings."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json",
+      "beforeSha256": "f0213cc56db9a2d5f20978e6d1d40341615c703cf874b88fb547dcfb9a016c6c",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "anchorLabel": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+      "parentPointer": "/rootNodes/26/children/1/children/3",
+      "appendPointer": "/rootNodes/26/children/1/children/3/children/7",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+          "displayLabel": "Vertiefung der Analysis"
+        },
+        {
+          "kind": "structure",
+          "id": "shared-vector-operations-q2-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "label": "Punkte, Vektoren und Bewegungen im Raum",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f6232b63-8a2a-5041-817b-f13cab43523d"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+          "displayLabel": "Übungen"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing structure explicitly combines geometry/linear algebra with advanced analysis and already contains the reviewed5ebfc509 function-properties subtree; append the single whole task without importing siblings."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json",
+      "beforeSha256": "e8219a57d39e0eb77e2f450e7f9044953be6af5ed00146346f0f5eb217f58857",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "anchorLabel": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+      "parentPointer": "/rootNodes/22/children/3",
+      "appendPointer": "/rootNodes/22/children/3/children/7",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+          "displayLabel": "Vertiefung der Analysis"
+        },
+        {
+          "kind": "structure",
+          "id": "shared-vector-operations-q2-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "label": "Punkte, Vektoren und Bewegungen im Raum",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "1bc118c3-1f05-5f2a-b125-418017180d75"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f6232b63-8a2a-5041-817b-f13cab43523d"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+          "displayLabel": "Übungen"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing structure explicitly combines geometry/linear algebra with advanced analysis and already contains the reviewed5ebfc509 function-properties subtree; append the single whole task without importing siblings."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+      "beforeSha256": "63cbd497ca320b692037e05256bac8fbf1f0cdfb9372d02cc8864552fe2b6572",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "anchorLabel": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+      "parentPointer": "/rootNodes/27/children/1/children/3",
+      "appendPointer": "/rootNodes/27/children/1/children/3/children/10",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+          "displayLabel": "Vertiefung der Analysis"
+        },
+        {
+          "kind": "structure",
+          "id": "shared-vector-operations-q2-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "label": "Punkte, Vektoren und Bewegungen im Raum",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f6232b63-8a2a-5041-817b-f13cab43523d"
+        },
+        {
+          "kind": "structure",
+          "id": "scalar-product-distances",
+          "label": "Skalarprodukt, Winkel und Abstände",
+          "children": [
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "265af6af-8eac-5632-b730-800aafcde26a"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "9460c3ff-e72d-4107-bc73-087d217200aa"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+              "projectionRole": "target"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "8eb14d81-353a-4909-9464-61be7b1ba5b8",
+              "projectionRole": "target"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+          "displayLabel": "Übungen"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "bea0e5a0-4833-5337-b6f1-7251b8cf8089"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+          "projectionRole": "target"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing structure explicitly combines geometry/linear algebra with advanced analysis and already contains the reviewed5ebfc509 function-properties subtree; append the single whole task without importing siblings."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json",
+      "beforeSha256": "7c1a405553f410dc16daa6b646c421152f97fad1e0cbd6648bcd63fbe8e6266a",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "anchorLabel": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+      "parentPointer": "/rootNodes/23/children/3",
+      "appendPointer": "/rootNodes/23/children/3/children/10",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+          "displayLabel": "Vertiefung der Analysis"
+        },
+        {
+          "kind": "structure",
+          "id": "shared-vector-operations-q2-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "label": "Punkte, Vektoren und Bewegungen im Raum",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "1bc118c3-1f05-5f2a-b125-418017180d75"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f6232b63-8a2a-5041-817b-f13cab43523d"
+        },
+        {
+          "kind": "structure",
+          "id": "scalar-product-distances",
+          "label": "Skalarprodukt, Winkel und Abstände",
+          "children": [
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "265af6af-8eac-5632-b730-800aafcde26a"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "9460c3ff-e72d-4107-bc73-087d217200aa"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+              "projectionRole": "target"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "8eb14d81-353a-4909-9464-61be7b1ba5b8",
+              "projectionRole": "target"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+          "displayLabel": "Übungen"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "bea0e5a0-4833-5337-b6f1-7251b8cf8089"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+          "projectionRole": "target"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing structure explicitly combines geometry/linear algebra with advanced analysis and already contains the reviewed5ebfc509 function-properties subtree; append the single whole task without importing siblings."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json",
+      "beforeSha256": "ce1f16032cc82408685bfe011b7266f6a6b5705dcf3e9b521cc81d5bc1c891e8",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "anchorLabel": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+      "parentPointer": "/rootNodes/25/children/1/children/3",
+      "appendPointer": "/rootNodes/25/children/1/children/3/children/8",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+          "displayLabel": "Vertiefung der Analysis"
+        },
+        {
+          "kind": "structure",
+          "id": "shared-vector-operations-q2-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "label": "Punkte, Vektoren und Bewegungen im Raum",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f6232b63-8a2a-5041-817b-f13cab43523d"
+        },
+        {
+          "kind": "structure",
+          "id": "scalar-product-distances",
+          "label": "Skalarprodukt, Winkel und Abstände",
+          "children": [
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "265af6af-8eac-5632-b730-800aafcde26a"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "9460c3ff-e72d-4107-bc73-087d217200aa"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+              "projectionRole": "target"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "8eb14d81-353a-4909-9464-61be7b1ba5b8",
+              "projectionRole": "target"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+          "displayLabel": "Übungen"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing structure explicitly combines geometry/linear algebra with advanced analysis and already contains the reviewed5ebfc509 function-properties subtree; append the single whole task without importing siblings."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-gk.view.json",
+      "beforeSha256": "975eb7e95a6cacd33fd4886674de81fd1f05691e3573d826506ed3f5b683ce6b",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "anchorLabel": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+      "parentPointer": "/rootNodes/23/children/3",
+      "appendPointer": "/rootNodes/23/children/3/children/8",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+          "displayLabel": "Vertiefung der Analysis"
+        },
+        {
+          "kind": "structure",
+          "id": "shared-vector-operations-q2-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "label": "Punkte, Vektoren und Bewegungen im Raum",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "1bc118c3-1f05-5f2a-b125-418017180d75"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f6232b63-8a2a-5041-817b-f13cab43523d"
+        },
+        {
+          "kind": "structure",
+          "id": "scalar-product-distances",
+          "label": "Skalarprodukt, Winkel und Abstände",
+          "children": [
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "265af6af-8eac-5632-b730-800aafcde26a"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "9460c3ff-e72d-4107-bc73-087d217200aa"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+              "projectionRole": "target"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "8eb14d81-353a-4909-9464-61be7b1ba5b8",
+              "projectionRole": "target"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+          "displayLabel": "Übungen"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing structure explicitly combines geometry/linear algebra with advanced analysis and already contains the reviewed5ebfc509 function-properties subtree; append the single whole task without importing siblings."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+      "beforeSha256": "02ce0fe3fcd36afebdc025bbf045b06728051a9d14ff96a89168ec96f1366644",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "anchorLabel": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+      "parentPointer": "/rootNodes/17/children/1/children/3",
+      "appendPointer": "/rootNodes/17/children/1/children/3/children/8",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+          "displayLabel": "Vertiefung der Analysis"
+        },
+        {
+          "kind": "structure",
+          "id": "shared-vector-operations-q2-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "label": "Punkte, Vektoren und Bewegungen im Raum",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f6232b63-8a2a-5041-817b-f13cab43523d"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+          "displayLabel": "Übungen"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+          "projectionRole": "target"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing structure explicitly combines geometry/linear algebra with advanced analysis and already contains the reviewed5ebfc509 function-properties subtree; append the single whole task without importing siblings."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json",
+      "beforeSha256": "c1223d28ce56b712fe9b3a1b5cb5b20006555f2b7e2a3f185f91a99faf417f51",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "anchorLabel": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+      "parentPointer": "/rootNodes/16/children/3",
+      "appendPointer": "/rootNodes/16/children/3/children/8",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+          "displayLabel": "Vertiefung der Analysis"
+        },
+        {
+          "kind": "structure",
+          "id": "shared-vector-operations-q2-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "label": "Punkte, Vektoren und Bewegungen im Raum",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "1bc118c3-1f05-5f2a-b125-418017180d75"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f6232b63-8a2a-5041-817b-f13cab43523d"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+          "displayLabel": "Übungen"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+          "projectionRole": "target"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing structure explicitly combines geometry/linear algebra with advanced analysis and already contains the reviewed5ebfc509 function-properties subtree; append the single whole task without importing siblings."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
+      "beforeSha256": "b6f810f491ace636dc2c8ee453449cab3a30914f35d0dc4d5e1276ecedf536bc",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "anchorLabel": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+      "parentPointer": "/rootNodes/25/children/1/children/3",
+      "appendPointer": "/rootNodes/25/children/1/children/3/children/8",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+          "displayLabel": "Vertiefung der Analysis"
+        },
+        {
+          "kind": "structure",
+          "id": "shared-vector-operations-q2-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "label": "Punkte, Vektoren und Bewegungen im Raum",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f6232b63-8a2a-5041-817b-f13cab43523d"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+          "displayLabel": "Übungen"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+          "projectionRole": "target"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing structure explicitly combines geometry/linear algebra with advanced analysis and already contains the reviewed5ebfc509 function-properties subtree; append the single whole task without importing siblings."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json",
+      "beforeSha256": "d24da4517ce2a5b3aee9cb10037ae1d5779e3788d4f74af332975974bdeb4c78",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "anchorLabel": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+      "parentPointer": "/rootNodes/21/children/3",
+      "appendPointer": "/rootNodes/21/children/3/children/8",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+          "displayLabel": "Vertiefung der Analysis"
+        },
+        {
+          "kind": "structure",
+          "id": "shared-vector-operations-q2-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "label": "Punkte, Vektoren und Bewegungen im Raum",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "1bc118c3-1f05-5f2a-b125-418017180d75"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f6232b63-8a2a-5041-817b-f13cab43523d"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+          "displayLabel": "Übungen"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+          "projectionRole": "target"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing structure explicitly combines geometry/linear algebra with advanced analysis and already contains the reviewed5ebfc509 function-properties subtree; append the single whole task without importing siblings."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
+      "beforeSha256": "3b18182bafd74f121d174abc23c0ea8f58bfc7f88607005a32bc177f9e98acd3",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "anchorLabel": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+      "parentPointer": "/rootNodes/24/children/1/children/3",
+      "appendPointer": "/rootNodes/24/children/1/children/3/children/8",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+          "displayLabel": "Vertiefung der Analysis"
+        },
+        {
+          "kind": "structure",
+          "id": "shared-vector-operations-q2-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "label": "Punkte, Vektoren und Bewegungen im Raum",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "1bc118c3-1f05-5f2a-b125-418017180d75"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f6232b63-8a2a-5041-817b-f13cab43523d"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+          "displayLabel": "Übungen"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+          "projectionRole": "target"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing structure explicitly combines geometry/linear algebra with advanced analysis and already contains the reviewed5ebfc509 function-properties subtree; append the single whole task without importing siblings."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json",
+      "beforeSha256": "81a1563fc9f73782f3e253df182ee6e8b0ab52dc1e38e46c5618e52d70d40232",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "anchorLabel": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+      "parentPointer": "/rootNodes/22/children/3",
+      "appendPointer": "/rootNodes/22/children/3/children/8",
+      "expectedChildrenBefore": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+          "displayLabel": "Vertiefung der Analysis"
+        },
+        {
+          "kind": "structure",
+          "id": "shared-vector-operations-q2-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
+          "label": "Punkte, Vektoren und Bewegungen im Raum",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "211fa3c8-9e74-5c82-8863-0d51700185cd"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "d9d8cd76-01fb-5f7a-b733-17f81d854af7"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "1bc118c3-1f05-5f2a-b125-418017180d75"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "72dfc164-455d-4b63-85f0-96e803c9a1d5"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "69eda7f9-1898-5220-932d-e7bec839b7af"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f6232b63-8a2a-5041-817b-f13cab43523d"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "d6d8904c-896f-5850-8181-06c223346b80"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b3d2284c-21e0-5af8-942a-a4c11390c84a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "displayLabel": "Lernkarten"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "14b19ee4-364e-50bd-b6a3-499471356ef3",
+          "displayLabel": "Übungen"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+          "projectionRole": "target"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      },
+      "placementReason": "Existing structure explicitly combines geometry/linear algebra with advanced analysis and already contains the reviewed5ebfc509 function-properties subtree; append the single whole task without importing siblings."
+    }
+  ],
+  "heldSourceMatrix": [
+    {
+      "state": "DE-HB",
+      "decision": "HOLD_WHOLE_TASK_DUE_TO_POSITIVE_EXPLICIT_COURSE_BOUNDARY",
+      "exactPureGkOffers": [
+        "DE-HB/SekII/G8/GK",
+        "DE-HB/CrossStage/G8/GK"
+      ],
+      "source": [
+        {
+          "local": "HB-0.txt",
+          "pages": [
+            20
+          ],
+          "section": "BM3.3/BM3.4",
+          "evidence": "Common origin/y-axis symmetry and transformations in both directions."
+        },
+        {
+          "local": "HB-0.txt",
+          "pages": [
+            27
+          ],
+          "section": "A3.7",
+          "evidence": "Shifted parallel-axis symmetry and point symmetry about arbitrary points are explicitly LK additions."
+        }
+      ],
+      "wholeTaskFinding": "Whole part3 requires precisely shifted symmetry of h and h'. Existing GK target membership does not override the explicit course boundary. Do not enroll whole task; review GK scope of shifted-symmetry ordinary goal 62a1c6f2 separately. No global deletion of generic transformations is approved.",
+      "wholeCriticalOrdinaryGoal": {
+        "id": "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
+        "shortKey": "canonical_math_q2_justify_symmetry_of_shifted_and_derivative_graphs",
+        "title": "Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen",
+        "titleEn": "Justify symmetry properties of shifted function and derivative graphs",
+        "description": "Die lernende Person kann Symmetrieeigenschaften eines verschobenen Funktionsgraphen oder des Graphen einer Ableitungsfunktion aus Termstruktur, Transformationen oder Ableitungszusammenhängen begründen.",
+        "descriptionEn": "The learner can justify symmetry properties of a shifted function graph or of a derivative graph from term structure, transformations, or derivative relationships.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+          "858113c5-e53b-57bb-b01f-ba95c3ddcb6f"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1.4",
+            "K2.2",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "Q2",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.1.SHIFTED_DERIVATIVE_GRAPH_SYMMETRY"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.1, S. 40, Spiegelstrich 2",
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
+            "title": "Visualisierung: Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen",
+            "url": "/assets/goal-visualizations/mathematik/62a1c6f2-1775-5a19-98e0-ed3dd722039f/62a1c6f2-1775-5a19-98e0-ed3dd722039f.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen\". Die lernende Person kann Symmetrieeigenschaften eines verschobenen Funktionsgraphen oder des Graphen einer Ableitungsfunktion aus Termstruktur, Transformationen oder Ableitungszusammenhängen begründen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "ordinaryScopeFinding": "The full broad shifted-symmetry intent has a positive source/course conflict, especially explicit arbitrary-axis/point proofs in HB A3.7. This is not evidence to delete the four valid elementary transformation targets. An exact ordinary-target correction is separate and not authorized by this task-reference matrix; HH concrete-term/graph cases need differentiation from the elevated abstract-proof requirement.",
+      "noAutomaticUnionOrPureLkAddition": true,
+      "noOrdinaryRemovalApproved": true
+    },
+    {
+      "state": "DE-HH",
+      "decision": "HOLD_WHOLE_TASK_DUE_TO_POSITIVE_EXPLICIT_COURSE_BOUNDARY",
+      "exactPureGkOffers": [
+        "DE-HH/SekII/G8/GK",
+        "DE-HH/CrossStage/G8/GK"
+      ],
+      "source": [
+        {
+          "local": "HH-0.txt",
+          "pages": [
+            25,
+            26,
+            27
+          ],
+          "section": "Module1.1 Funktionale Zusammenhänge; course typography rule and explicit additional elevated requirements",
+          "evidence": "GK recognises origin/y-axis symmetry from polynomial exponents; proof using f(x)=f(-x) or f(x)=-f(-x) is explicitly additional elevated content."
+        }
+      ],
+      "wholeTaskFinding": "The whole task asks a general parity-based proof for a termless function and its shifted derivative. Generic parameter variation and graphical derivatives alone do not discharge that explicit level distinction. Whole-task GK enrollment remains HOLD; no automatic ordinary-goal removal is authorized.",
+      "wholeCriticalOrdinaryGoal": {
+        "id": "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
+        "shortKey": "canonical_math_q2_justify_symmetry_of_shifted_and_derivative_graphs",
+        "title": "Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen",
+        "titleEn": "Justify symmetry properties of shifted function and derivative graphs",
+        "description": "Die lernende Person kann Symmetrieeigenschaften eines verschobenen Funktionsgraphen oder des Graphen einer Ableitungsfunktion aus Termstruktur, Transformationen oder Ableitungszusammenhängen begründen.",
+        "descriptionEn": "The learner can justify symmetry properties of a shifted function graph or of a derivative graph from term structure, transformations, or derivative relationships.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+          "858113c5-e53b-57bb-b01f-ba95c3ddcb6f"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1.4",
+            "K2.2",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "Q2",
+          "area": "Analysis",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.1.SHIFTED_DERIVATIVE_GRAPH_SYMMETRY"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.1, S. 40, Spiegelstrich 2",
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
+            "title": "Visualisierung: Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen",
+            "url": "/assets/goal-visualizations/mathematik/62a1c6f2-1775-5a19-98e0-ed3dd722039f/62a1c6f2-1775-5a19-98e0-ed3dd722039f.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen\". Die lernende Person kann Symmetrieeigenschaften eines verschobenen Funktionsgraphen oder des Graphen einer Ableitungsfunktion aus Termstruktur, Transformationen oder Ableitungszusammenhängen begründen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "ordinaryScopeFinding": "The full broad shifted-symmetry intent has a positive source/course conflict, especially explicit arbitrary-axis/point proofs in HB A3.7. This is not evidence to delete the four valid elementary transformation targets. An exact ordinary-target correction is separate and not authorized by this task-reference matrix; HH concrete-term/graph cases need differentiation from the elevated abstract-proof requirement.",
+      "noAutomaticUnionOrPureLkAddition": true,
+      "noOrdinaryRemovalApproved": true
+    }
+  ],
+  "original34PureGkGroupAccounting": {
+    "newlyPositivePureGkOffers": 28,
+    "positiveNiPureGkOffersAlreadyReviewed": 2,
+    "heldHbPureGkOffers": 2,
+    "heldHhPureGkOffers": 2,
+    "total": 34,
+    "unionConsequences": "Each newly selected GK task also belongs in the exact corresponding union. These28 additional union obligations are explicit; each has the same stable goal ID and one global binary mastery."
+  },
+  "existingOtherReviewedGroups": [
+    {
+      "group": "NI",
+      "review": "tmp/approach-review-20261101/astra-remaining-material-scope/ni-46bb-four-offers-union-addendum-PASS.json",
+      "decision": "PASS4 already separately materialized in V11; no repeat delta."
+    },
+    {
+      "group": "SH",
+      "review": "tmp/approach-review-20261101/astra-remaining-material-scope/sh-46bb-existing-selection-positive-review.json",
+      "decision": "Existing8 GK/union selections positively source reviewed; no delta."
+    }
+  ],
+  "candidateRequirements": [
+    "Only20 direct goalEntry author additions at exact existing anchors; derived outputs use unchanged real producers. No whole exercise subtree import.",
+    "All154 comparison: exactly56 new46bb protected task targets; other98 targetsets unchanged. No ordinary/memory target change and no support enrollment.",
+    "All ten true GK+LK unions equal the union of their source targets, with46bb visible exactly once; pureLK and SekI unchanged.",
+    "No canonical task, requires, scoring, coveredGoalIds, applicability or semantic-ledger change.",
+    "Check actual graph context, hidden protected support, readiness, hierarchy and genuine route deltas; do not synthesize zero new errors by deleting other goals.",
+    "Keep existing mastery, recall and fixed dated plans. New explicit references are prospective target obligations, not a second per-profile mastery result or silent baseline rewrite.",
+    "New source-only/memory corrections remain separate; this matrix does not activate them."
+  ],
+  "notApproved": [
+    "HB/HH whole-task GK selection or automatic ordinary-goal deletion",
+    "PureLK new task obligation or other-jurisdiction import",
+    "New task variants, fabricated coverage/edges, dynamic conditional mastery, source grants from current metadata",
+    "Root activation, global Mathematics milestone, M7/remoteCI or human/learner acceptance"
+  ],
+  "historicalEvidence": "All earlier source receipts and childV2 retained. Earlier HOLDs caused solely by requiring literal unknown-f wording are superseded by this explicit positive operation-by-operation review; explicit source level boundaries remain decisive.",
+  "inputs": {
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "f59348ea39998471a4252de114a115e46bcf2abc1034219f058ce3a27ea425e9",
+    "tmp/approach-review-20261101/post-ni-sh-stochastic-native-154-audit.json": "6132897d891c94c4d32c58379750187885c5f8a470e18bad168549a6d144fd2c",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/child-transform-review-v3.json": "ca4109b12118513ebee369e3b39f793d541d5ee3ad18e1d63c325b63b44a4a1f",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/child-transform-review.json": "e3e74fc404334483d2e8963db0d9c9e049fa1a25f01cf07a89ca7719891f7690",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/ni-46bb-four-offers-union-addendum-PASS.json": "3e76685fed44c0cb3b039b2afb9e42521d9ddb8b9bd07643babf30e292a85bba",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/sh-46bb-existing-selection-positive-review.json": "6ca08cbb1e22a6b786b8d060038f4c9c22067f531b1013a8880b2c8bb2e17f9f",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/combined-ni-sh-freeze-review.json": "d650ce932070325a3b6833eb559a406207b377e917fa5b33c7d87dd4bcba93d9",
+    "tmp/approach-review-20261101/ni-sh-stochastic-materialization-candidate-20261101/candidate-all154-native.json": "ca5684ade4d3e2d4e2f030fa69c03cf591c2f02659137ff911b328727fa3fde4",
+    "tmp/approach-review-20261101/ni-sh-stochastic-materialization-candidate-20261101/baseline-all154-native.json": "f8b6732f31e7f91e6c6681cc09f6adc33c499e5798cafc0cee407549ec721819",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/BB-BE-lower-functions.txt": "5601f4f50ba050a7b19ac93fd846dd827273a3e927c8977d6874085250acaa63",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json": "235b1b5242232d3cdf7f95b5e99f5c3b6dd0dabdbb5f3308e02d19626fb6af61",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json": "db5c56021298b6750e7469f07d84addd1f7ecac5ad8570059c262d583ec58127",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json": "2c94662819ec878f3b923e3823a493458d69da38ec60278038347c0aeabc6e0a",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json": "d45e2e51e2f1eb2ef57d60ddc5c47abf705930dc970574130c2028e64f4e3776",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json": "fdd7a1a27353e1bafbf680cfaf428619e91688781eae4684bbf06bc77d4eecb7",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json": "0532b4a186ac47198f7e2f83e6eb981187a65ce42f54d63b2dcd890704c3c010",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json": "d9f4e9d97018fd91c471c746fecc2417479fd5b5765a0bcd19e9dac9610fe76d",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-gk.view.json": "37eff0ab077067483351eac8817478e4fa76571126a989a99d8bb12367477bb2",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json": "f0213cc56db9a2d5f20978e6d1d40341615c703cf874b88fb547dcfb9a016c6c",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json": "e8219a57d39e0eb77e2f450e7f9044953be6af5ed00146346f0f5eb217f58857",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json": "63cbd497ca320b692037e05256bac8fbf1f0cdfb9372d02cc8864552fe2b6572",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json": "7c1a405553f410dc16daa6b646c421152f97fad1e0cbd6648bcd63fbe8e6266a",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json": "ce1f16032cc82408685bfe011b7266f6a6b5705dcf3e9b521cc81d5bc1c891e8",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-gk.view.json": "975eb7e95a6cacd33fd4886674de81fd1f05691e3573d826506ed3f5b683ce6b",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json": "02ce0fe3fcd36afebdc025bbf045b06728051a9d14ff96a89168ec96f1366644",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json": "c1223d28ce56b712fe9b3a1b5cb5b20006555f2b7e2a3f185f91a99faf417f51",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json": "b6f810f491ace636dc2c8ee453449cab3a30914f35d0dc4d5e1276ecedf536bc",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json": "d24da4517ce2a5b3aee9cb10037ae1d5779e3788d4f74af332975974bdeb4c78",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json": "3b18182bafd74f121d174abc23c0ea8f58bfc7f88607005a32bc177f9e98acd3",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json": "81a1563fc9f73782f3e253df182ee6e8b0ab52dc1e38e46c5618e52d70d40232",
+    "curricula/DE/Gymnasium/input/BB/lower-secondary/Teil_C_Mathematik_2015_10_13_Ma_14.08.2023_Berlin_23_11.pdf": "eb191cca63670339a8d0e376ad192729bb3ab0d221107ced05e0df27838eb8b5",
+    "curricula/DE/Gymnasium/input/BB/upper-secondary/Teil_C_RLP_GOST_2022_Mathematik.pdf": "3c8c0df6901b6a6e7a1dff4f2d563696c32c43b19c1d0bcf401a0dc4fd224d79",
+    "curricula/DE/Gymnasium/input/BE/upper-secondary/rahmenlehrplan-mathematik_go-teil-c.pdf": "17063893d874ea15073925d1c7f1e71e3926b849190b72b451eae097edb7065f",
+    "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_M.pdf": "b085465143648b3f44c894f8eb0a5ee5d1928cbb1c4c60b3b249559709d26014",
+    "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-mathematik-sachsen-2019.pdf": "de48e13d404cfb4d155f056efdc1a6888857ccda58cc03cf81bcdabb2141f8ae",
+    "curricula/DE/Gymnasium/input/TH/LP_GY_Mathematik_Entwurfsfassung2025.pdf": "992041c34dfd618bdb2b7621ee59fb577f036121e5ea2a55e2086c99e0a4817a",
+    "curricula/DE/Gymnasium/input/TH/lp_gy_mathematik_10.04.2019_TSP.pdf": "ee1fca0285f1c9d72edd990073dc4909b0ab5b127ddef59fc46d2c54932179b2",
+    "curricula/DE/Gymnasium/input/TH/lehrplan-mathematik-gymnasium-2025-detail.html": "74ad5ef4068908d8c99114c67df32b9f3782374036a666e205a8eb539c1cfce6",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/SL-0.txt": "1057591448592e99e6d0f713dacd5c1dd8abf163165a2700ba2a16eaab5436f2",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/SL-1.txt": "8d75c1a19f71382e26a598fecf6694a80c5cfa6736b0b56daf559e733e7ca048",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/SL-2.txt": "a7fcd63b02a86c6d3d7aacc9fdb5fabaf160fe0d4715253d9b36dc603abd06e7",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/NW-0.txt": "25d1dcac2b191e85401865afede07bb28468697abde4479cc70b419f792579f9",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/MV-0.txt": "5d5cd44136105a671de5df43f420d1334d5df7f1b8580de5d3c9200d5a4150e8",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/RP-0.txt": "5f36e932dddf35cf6f56f3c5585fbae77af9c54a5b6ed83e1320b6e75f16f4f6",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/ST-0.txt": "0d3e998735488e6219fa75faa710998eccd84f228443f35c024e063ab07e9fc5",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/child-SL-GK-transform-page-13.png": "b379108b6473c742b02be1b6a23e6cb0f1abdadf4c9b1de95039f95cf47de06e",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/child-RP-seki-full.txt": "4075d9127b7cc1aebae80be5b2ccace493ec732e335e928bdffcb999fce26511",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/child-MV-seki-full.txt": "ec80f8740bbe37060961a272ebc24aa233c42340a71ebd22cb1d405c6964675a",
+    "curricula/DE/Gymnasium/input/SL/LP_Ma_GOS_HP_G-Kurs_2016_Stand_2019.pdf": "ee77ed726ee6be38a66a1830f0f69fd672883a2fb558cd6ceed41894fd0a5086",
+    "curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_m_2023_06_07.pdf": "211bad803486637f541447546073d0c7678f527b366da1ba63c5b9edc5d28533",
+    "curricula/DE/Gymnasium/input/MV/Mathematik_Gymnasium_11_12_2019.pdf": "b634920997200114dce8e222ac3a6d7995d89353c247794a57b68ae8d34e486d",
+    "curricula/DE/Gymnasium/input/MV/Mathematik_Gymnasium_7_10_2019.pdf": "b0bc0f6e671d0b64b71d4386f587a189ac2fbb9c25651989b582da6398df409c",
+    "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_II_MSS.pdf": "764a2f6160cda3dde2dc97914e2c0a361ef1461a0a5fced0b1c100e69762c3fb",
+    "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_I.pdf": "005085fa940a3dfd7619ea274f5e16ee34c50ba452223774aca19fb4025abe61",
+    "curricula/DE/Gymnasium/input/ST/Mathematik_FLP_Gym_01_07_2019.pdf": "317e0b55339ca687bf5c0401f57cafdab4e911cb14e5d5bf65696eeeadc73622",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/BW-basis-p48.png": "958a549e238a3172dfcb951baa263d119f8b7ef4c195bcb317f2de640b12924d",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/BW-common-p35.png": "36da5aa18a9ade01e0b39d1f4cf56dd0ef832f9ae60bfdbef82ca3c948b223e7",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/BW-common-p36.png": "5c436bbeaa7601162b25742082eac7bfa1b3312acc6a50f5052dce2005726a40",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/BB-BE-common-H-p61.png": "b3f07b67ffe85a0f7cae5e328ca2c53464096d235eb620077f277dc0026808e3",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/TH-common-p22.png": "1e4c64c07946adffad9c082fd1c2f1d2f9de1b43b2c9e053478b18304bfb6298"
+  }
+}

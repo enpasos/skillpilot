@@ -278,10 +278,25 @@ Follow the existing pattern: `field` (local language) and `fieldEn` (English). T
 
 ### Requires semantics
 
-- **Access control (current runtime):** `requires` is used to gate exam tasks until prerequisites are met.
-- **Remediation:** If the user fails, `requires` drives targeted review suggestions.
+- **Preparation:** `requires` identifies the preparation for the normal learning
+  path. A published direct-assessment choice can start a selected, ready exam
+  while that preparation is unfinished. It remains bound to the current
+  authorized curriculum, goal and completion contract.
+- **Remediation:** If the learner does not pass, `requires` supports targeted
+  preparation suggestions. The unsuccessful attempt leaves mastery unchanged.
+- **Derived completion:** [Assessment-Gated Completion](assessment-gated-completion.md)
+  calculates demand from the graph and existing mastery in the complete Personal
+  Curriculum. Mastering any goal stops its outgoing preparation demand; other
+  unfinished consumers may still need the same preparation. This calculation
+  does not require manually maintained completion profiles or qualifying pass
+  records. Selected exams and memory goals remain explicit obligations until
+  their normal mastery is present; neither kind is implicitly completed.
 
-> **Proposed extension, not live:** [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md) specifies direct attempts at required level assessments and work waivers calculated from existing mastery and reviewed static rules. A passed assessment counts immediately through its mastery; there is no additional qualification record or profile-specific acceptance test. The proposal leaves this grading contract intact; its direct-access route and derived completion calculation require a separate runtime implementation.
+The direct-assessment route and graph-derived calculation are implemented in
+the current working baseline. Their availability does not establish that every
+curriculum has passed the new integrity checks. The optional
+[level-gated course mode](curriculum-level-gates.md) remains a separate,
+unimplemented design profile; it does not currently restrict direct exams.
 
 ### Scoring and mastery
 

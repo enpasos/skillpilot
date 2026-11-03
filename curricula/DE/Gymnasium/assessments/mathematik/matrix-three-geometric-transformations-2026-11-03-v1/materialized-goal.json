@@ -1,0 +1,227 @@
+{
+  "id": "aa56cd8e-232e-5c16-bd9b-7ccdbe67c22a",
+  "shortKey": "canonical_math_q2_three_geometric_transformations_own_assessment",
+  "title": "Drei geometrische Abbildungen konstruieren und prüfen",
+  "titleEn": "Construct and check three geometric transformations",
+  "description": "Die lernende Person kann in einer eigenständigen Aufgabe eine zentrische Streckung am Ursprung, Parallelprojektionen auf Koordinatenebenen und eine gerichtete Streckung aus geometrischen Vorgaben als Matrizen konstruieren, Bildpunkte berechnen sowie die Abbildungen testen und geometrisch begründen.",
+  "descriptionEn": "The learner can independently construct matrices for a central dilation about the origin, parallel projections onto coordinate planes, and a directional stretch from geometric requirements, calculate image points, and test and geometrically justify the transformations.",
+  "type": "atomic",
+  "nodeKind": "exam",
+  "core": false,
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "ExamTask",
+    "canonical",
+    "phase:Q2"
+  ],
+  "phase": "Q2",
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K2.3",
+      "K3.3",
+      "K5.2"
+    ],
+    "guidingIdeas": [
+      "L3"
+    ],
+    "phase": "Q2",
+    "area": "LinearAlgebra",
+    "topicCode": "CANONICAL.MATH.SEK2.Q2.THREE_GEOMETRIC_TRANSFORMATIONS.OWN_ASSESSMENT"
+  },
+  "requires": [
+    "168d8879-0412-5524-94c5-c1d8169dbd65",
+    "55039f9c-4ebc-5115-add5-fae95b915e46",
+    "35558905-753d-5fcb-b25e-7f85ffdbff56"
+  ],
+  "contains": [],
+  "examples": [],
+  "resourceLinks": [],
+  "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/matrix-three-geometric-transformations-2026-11-03-v1/task.de.md",
+  "extendedData": {
+    "applicabilityFromRequires": true,
+    "applicabilityMappingInheritance": "boundary"
+  },
+  "examData": {
+    "reviewStatus": "released",
+    "taskContent": "Wir arbeiten im dreidimensionalen Koordinatenraum mit Spaltenvektoren und der Standardbasis $\\vec e_1,\\vec e_2,\\vec e_3$. Ein Punkt wird durch seinen Ortsvektor abgebildet. Für alle drei Teile ist $P=(2,1,3)$ mit Ortsvektor $\\vec p$ gegeben. Bestimme die Matrizen selbst aus den geometrischen Vorgaben und zeige deinen Weg. Gleichwertige mathematisch richtige Verfahren sind zulässig.\n\n**A · Zentrische Streckung am Ursprung (8 BE)**\n\nEine zentrische Streckung mit Zentrum $O=(0,0,0)$ und Faktor $2$ soll beschrieben werden.\n\nA1. Leite ihre Matrix $Z$ aus der Wirkung auf die Standardbasis oder aus einer allgemeinen Koordinatendarstellung her. (3 BE)\n\nA2. Berechne den Bildpunkt von $P$ mit deiner Matrix. (2 BE)\n\nA3. Untersuche und begründe, was mit dem Ursprung, der Richtung eines Ursprungsstrahls und dem Abstand eines Punktes vom Ursprung geschieht. (3 BE)\n\n**B · Parallelprojektionen auf Koordinatenebenen (10 BE)**\n\nEine Parallelprojektion auf die $xy$-Ebene erfolgt parallel zur Richtung $\\vec r=(1,0,1)^{\\mathsf T}$. Der Bildpunkt eines beliebigen Punktes mit Ortsvektor $\\vec v=(x,y,z)^{\\mathsf T}$ liegt auf der Geraden $\\vec v+t\\vec r$ und in der $xy$-Ebene.\n\nB1. Bestimme aus diesen Bedingungen die Koordinaten des Bildes von $\\vec v$ und leite daraus die Matrix $Q$ her. (4 BE)\n\nB2. Berechne den Bildpunkt von $P$. (1 BE)\n\nB3. Begründe, welche Punkte der Zielebene fest bleiben, warum $\\vec p$ und $\\vec p+\\vec r$ dasselbe Bild haben und was eine zweite Anwendung von $Q$ mit dem ersten Bild macht. (3 BE)\n\nB4. Bestimme als zwei kurze Varianten jeweils die Matrix und den Bildpunkt von $P$: orthogonale Projektion auf die $xz$-Ebene und orthogonale Projektion auf die $yz$-Ebene. Die Projektionsrichtung steht dabei jeweils senkrecht auf der Zielebene. (2 BE)\n\n**C · Eine eigene gerichtete Streckung (12 BE)**\n\nGesucht ist eine lineare Abbildung, die jeden Vektor parallel zu $\\vec d=(1,1,0)^{\\mathsf T}$ mit Faktor $3$ streckt. Jeder Vektor senkrecht zu $\\vec d$ soll unverändert bleiben. Die Vektoren $\\vec n=(1,-1,0)^{\\mathsf T}$ und $\\vec e_3=(0,0,1)^{\\mathsf T}$ sind dazu senkrecht.\n\nC1. Konstruiere eine passende Matrix $M$ und leite ihre Standardbasisspalten nachvollziehbar her. Du darfst den Hinweis $\\vec e_1=(\\vec d+\\vec n)/2$ und $\\vec e_2=(\\vec d-\\vec n)/2$ verwenden. (4 BE)\n\nC2. Teste deine Matrix durch die drei Produkte $M\\vec d$, $M\\vec n$ und $M\\vec e_3$ an den geforderten Wirkungen. (3 BE)\n\nC3. Begründe, warum deine Matrix die Anforderungen für alle Richtungen parallel beziehungsweise senkrecht zu $\\vec d$ erfüllt. Eine kurze Rechnung mit $(a,-a,b)^{\\mathsf T}$ oder eine geeignete Richtungszerlegung genügt. (2 BE)\n\nC4. Berechne $M\\vec p$ und erkläre an einem geeigneten Vektor, warum dies keine zentrische Streckung mit Faktor $3$ ist. (3 BE)\n\nEs sind keine Eigenwerte, keine Matrixinversion und keine Determinanten erforderlich.",
+    "taskContentEn": "Work in three-dimensional coordinate space using column vectors and the standard basis $\\vec e_1,\\vec e_2,\\vec e_3$. A point is mapped by applying the matrix to its position vector. In all three parts, use $P=(2,1,3)$ with position vector $\\vec p$. Construct the matrices yourself from the geometric requirements and show your method. Mathematically correct equivalent methods are accepted.\n\n**A · Central dilation about the origin (8 points)**\n\nA central dilation has centre $O=(0,0,0)$ and scale factor $2$.\n\nA1. Derive its matrix $Z$ from the images of the standard basis vectors or from a general coordinate formula. (3 points)\n\nA2. Use your matrix to calculate the image of $P$. (2 points)\n\nA3. Investigate and explain what happens to the origin, the direction of a ray from the origin, and a point's distance from the origin. (3 points)\n\n**B · Parallel projections onto coordinate planes (10 points)**\n\nA parallel projection onto the $xy$-plane is taken along direction $\\vec r=(1,0,1)^{\\mathsf T}$. The image of an arbitrary point with position vector $\\vec v=(x,y,z)^{\\mathsf T}$ lies both on the line $\\vec v+t\\vec r$ and in the $xy$-plane.\n\nB1. Use these conditions to find the coordinates of the image of $\\vec v$, and derive its matrix $Q$. (4 points)\n\nB2. Calculate the image of $P$. (1 point)\n\nB3. Explain which points in the target plane remain fixed, why $\\vec p$ and $\\vec p+\\vec r$ have the same image, and what a second application of $Q$ does to the first image. (3 points)\n\nB4. For each of two short variants, find the matrix and the image of $P$: orthogonal projection onto the $xz$-plane, and orthogonal projection onto the $yz$-plane. In each case the projection direction is perpendicular to the target plane. (2 points)\n\n**C · Construct a directional stretch (12 points)**\n\nConstruct a linear transformation that stretches every vector parallel to $\\vec d=(1,1,0)^{\\mathsf T}$ by factor $3$. Every vector perpendicular to $\\vec d$ must remain unchanged. The vectors $\\vec n=(1,-1,0)^{\\mathsf T}$ and $\\vec e_3=(0,0,1)^{\\mathsf T}$ are perpendicular to $\\vec d$.\n\nC1. Construct a suitable matrix $M$ and justify its columns in the standard basis. You may use the hints $\\vec e_1=(\\vec d+\\vec n)/2$ and $\\vec e_2=(\\vec d-\\vec n)/2$. (4 points)\n\nC2. Test your matrix against the requirements by calculating $M\\vec d$, $M\\vec n$ and $M\\vec e_3$. (3 points)\n\nC3. Explain why your matrix satisfies the requirements for every direction parallel or perpendicular to $\\vec d$. A short calculation using $(a,-a,b)^{\\mathsf T}$, or a suitable decomposition into directions, suffices. (2 points)\n\nC4. Calculate $M\\vec p$ and use a suitable vector to explain why this is not a central dilation with scale factor $3$. (3 points)\n\nEigenvalues, matrix inversion and determinants are not required.",
+    "solutionContent": "**A · Zentrische Streckung**\n\nJeder Standardbasisvektor wird auf sein Doppeltes abgebildet. Deshalb sind die Spalten $2\\vec e_1,2\\vec e_2,2\\vec e_3$ und\n$$Z=\\begin{pmatrix}2&0&0\\\\0&2&0\\\\0&0&2\\end{pmatrix}.$$\nGleichwertig liefert die geometrische Vorgabe direkt $(x,y,z)\\mapsto(2x,2y,2z)$. Damit\n$$Z\\vec p=\\begin{pmatrix}4\\\\2\\\\6\\end{pmatrix}.$$\nDer Ursprung bleibt fest, denn $Z\\vec 0=\\vec0$. Für jeden von null verschiedenen Ortsvektor gilt $Z\\vec v=2\\vec v$: Weil der Faktor positiv ist, bleibt sein Ursprungsstrahl erhalten. Zudem gilt $\\lVert Z\\vec v\\rVert=2\\lVert\\vec v\\rVert$. Für $P$ verdoppelt sich der Abstand $\\sqrt{14}$ zu $2\\sqrt{14}$. Die allgemeine Abstandsaussage genügt; die beiden Wurzelwerte sind nicht zusätzlich verlangt.\n\n**B · Parallelprojektionen**\n\nDie Gerade hat die Koordinaten $(x+t,y,z+t)$. In der $xy$-Ebene gilt $z+t=0$, also $t=-z$. Daher\n$$Q\\vec v=\\begin{pmatrix}x-z\\\\y\\\\0\\end{pmatrix},\\qquad Q=\\begin{pmatrix}1&0&-1\\\\0&1&0\\\\0&0&0\\end{pmatrix}.$$\nDie Spalten sind die Bilder $(1,0,0)^{\\mathsf T}$, $(0,1,0)^{\\mathsf T}$ und $(-1,0,0)^{\\mathsf T}$ der drei Standardbasisvektoren. Für $P$ ergibt sich $Q\\vec p=(-1,1,0)^{\\mathsf T}$.\n\nAlle Punkte $(x,y,0)$ bleiben fest, weil ihre letzte Koordinate bereits null ist. Es gilt $\\vec p+\\vec r=(3,1,4)^{\\mathsf T}$ und $Q(\\vec p+\\vec r)=(-1,1,0)^{\\mathsf T}=Q\\vec p$. Allgemein bewirkt eine Änderung um $s\\vec r$ keine Bildänderung: $(x+s)-(z+s)=x-z$. Information über die Lage in dieser Richtung geht verloren. Da das erste Bild in der festen Zielebene liegt, ändert eine zweite Projektion es nicht: $Q(Q\\vec v)=Q\\vec v$. Eine passende allgemeine Rechnung oder $Q^2=Q$ mit Deutung zählt gleichwertig.\n\nBei der orthogonalen Projektion auf die $xz$-Ebene wird die $y$-Koordinate null, bei derjenigen auf die $yz$-Ebene die $x$-Koordinate. Damit\n$$Q_{xz}=\\begin{pmatrix}1&0&0\\\\0&0&0\\\\0&0&1\\end{pmatrix},\\quad Q_{xz}\\vec p=\\begin{pmatrix}2\\\\0\\\\3\\end{pmatrix},$$\n$$Q_{yz}=\\begin{pmatrix}0&0&0\\\\0&1&0\\\\0&0&1\\end{pmatrix},\\quad Q_{yz}\\vec p=\\begin{pmatrix}0\\\\1\\\\3\\end{pmatrix}.$$\n\n**C · Gerichtete Streckung**\n\nAus Linearität und den geometrischen Vorgaben folgen\n$$M\\vec e_1=\\frac{3\\vec d+\\vec n}{2}=\\begin{pmatrix}2\\\\1\\\\0\\end{pmatrix},\\quad M\\vec e_2=\\frac{3\\vec d-\\vec n}{2}=\\begin{pmatrix}1\\\\2\\\\0\\end{pmatrix},\\quad M\\vec e_3=\\begin{pmatrix}0\\\\0\\\\1\\end{pmatrix}.$$\nDiese drei Bildspalten ergeben\n$$M=\\begin{pmatrix}2&1&0\\\\1&2&0\\\\0&0&1\\end{pmatrix}.$$\nDie Tests liefern $M\\vec d=(3,3,0)^{\\mathsf T}=3\\vec d$, $M\\vec n=(1,-1,0)^{\\mathsf T}=\\vec n$ und $M\\vec e_3=(0,0,1)^{\\mathsf T}=\\vec e_3$.\n\nFür jeden Vektor parallel zu $\\vec d$ gilt aufgrund der Linearität $M(t\\vec d)=3t\\vec d$. Ein Vektor ist genau dann senkrecht zu $\\vec d$, wenn seine ersten beiden Koordinaten entgegengesetzt sind; er hat also die Form $(a,-a,b)^{\\mathsf T}$. Direktes Einsetzen ergibt\n$$M\\begin{pmatrix}a\\\\-a\\\\b\\end{pmatrix}=\\begin{pmatrix}a\\\\-a\\\\b\\end{pmatrix}.$$\nGleichwertig: $\\vec n$ und $\\vec e_3$ spannen sämtliche senkrechten Richtungen auf und beide bleiben fest. Somit werden die ganzen geforderten Richtungsanteile erfasst, nicht nur einzelne Testpunkte. Es ist kein Eigenwertargument nötig.\n\nFür den gegebenen Punkt folgt\n$$M\\vec p=\\begin{pmatrix}2\\cdot2+1\\\\2+2\\cdot1\\\\3\\end{pmatrix}=\\begin{pmatrix}5\\\\4\\\\3\\end{pmatrix}.$$\nDies ist keine zentrische Streckung mit Faktor $3$: Beispielsweise bleibt $\\vec n$ unverändert, während $3I$ diesen von null verschiedenen Vektor verdreifachen würde. Ebenso kann $\\vec e_3$ als Gegenbeispiel verwendet werden.\n\n**Bewertung:** Die folgende Referenz ist nicht ausschließlich. Gleichwertige korrekte Darstellungen, Methoden und nachvollziehbare Folgearbeit zählen. Nur verlässlich lesbare eingereichte Arbeit bewerten; keine nicht gezeigten Leistungen unterstellen.\n\n**Eine normale Gesamtkappung:** Zuerst werden die unten beschriebenen Teilpunkte zu einer einzigen Rohsumme von höchstens 30 BE addiert. Die Gesamtpunktzahl wird vor dem Vergleich mit der Schwelle von 22 BE auf höchstens 21 BE begrenzt, wenn mindestens eine der folgenden Kernhandlungen vollständig fehlt oder nur ein konzeptionell ungeeignetes Modell dafür vorliegt:\n\n- In einem der Teile A, B oder C fehlt eine fachlich tragfähige Herleitung der jeweiligen Matrix aus den geometrischen Vorgaben. Ein bloß hingeschriebenes Matrixresultat ohne erkennbaren Zusammenhang mit diesen Vorgaben ersetzt die verlangte Herleitung nicht. Als konzeptionell ungeeignet gelten etwa eine rein orthogonale $xy$-Projektion in B trotz der schrägen Richtung oder $3I$ in C trotz der festbleibenden senkrechten Richtungen.\n- In A oder B fehlt jede echte Bildpunktanwendung: weder ein richtiger Bildpunkt noch ein nachvollziehbarer Matrix-Vektor-Ansatz mit fachlich richtiger Folgearbeit ist erkennbar.\n- In A fehlt jede tragfähige Begründung der Richtungs- und Abstandswirkung der zentrischen Streckung; die bloße Feststellung, dass der Ursprung fest bleibt, reicht hierfür nicht. In B fehlt jede tragfähige begründete Untersuchung der Projektion, etwa zur festen Zielebene, zum Informationsverlust entlang der Projektionsrichtung oder zur erneuten Projektion. Ebenso greift die Kappung, wenn in B beide kurzen Varianten auf die anderen Koordinatenebenen vollständig fehlen oder nur konzeptionell falsch behandelt werden.\n- In C fehlt jeder tatsächliche rechnerische Test der konstruierten Matrix an den geometrischen Anforderungen, oder jede tragfähige Begründung, weshalb ihre Wirkung die geforderten parallelen und senkrechten Richtungen abdeckt. Ein einziger Punktbildwert ersetzt weder den Richtungstest noch die Begründung.\n\nEntscheidend ist der Inhalt der gesamten eingereichten Arbeit, nicht die Position einer Antwort oder ein bestimmtes Schlüsselwort. Eine Leistung, die an anderer Stelle erbracht wird, zählt ebenfalls; derselbe inhaltliche Schritt erhält jedoch nicht doppelte Punkte. Eine knappe richtige Rechnung oder Erklärung genügt. Die Kappung ist keine Forderung nach Fehlerfreiheit: Ein isolierter Rechen-, Vorzeichen- oder Abschreibfehler bei erkennbar geeignetem Modell und nachvollziehbarer Methode löst sie nicht aus. Derselbe lokale Fehler wird nur einmal abgezogen; die darauf folgenden richtig ausgeführten Operationen und folgerichtigen Erklärungen werden nach ihren jeweiligen Kriterien bewertet, ohne das falsche Ausgangsergebnis als richtig auszugeben. Das Fehlen eines einzelnen Teilaspekts ist nach der Rubrik zu bewerten und löst nur dann die Kappung aus, wenn eine der oben genannten Kernhandlungen insgesamt fehlt. Es gibt eine Gesamtpunktzahl und eine Schwelle, keine Teilpassfelder oder zweite Qualifikation.",
+    "solutionContentEn": "**A · Central dilation**\n\nEach standard basis vector maps to twice itself. The columns are therefore $2\\vec e_1,2\\vec e_2,2\\vec e_3$, giving\n$$Z=\\begin{pmatrix}2&0&0\\\\0&2&0\\\\0&0&2\\end{pmatrix}.$$\nEquivalently, the geometric requirement gives $(x,y,z)\\mapsto(2x,2y,2z)$ directly. Thus\n$$Z\\vec p=\\begin{pmatrix}4\\\\2\\\\6\\end{pmatrix}.$$\nThe origin is fixed because $Z\\vec0=\\vec0$. For every nonzero position vector, $Z\\vec v=2\\vec v$: the positive factor preserves the ray from the origin. Also $\\lVert Z\\vec v\\rVert=2\\lVert\\vec v\\rVert$. For $P$, the distance changes from $\\sqrt{14}$ to $2\\sqrt{14}$. The general distance statement suffices; these two square-root values are not additionally required.\n\n**B · Parallel projections**\n\nPoints on the line have coordinates $(x+t,y,z+t)$. The $xy$-plane requires $z+t=0$, hence $t=-z$. Therefore\n$$Q\\vec v=\\begin{pmatrix}x-z\\\\y\\\\0\\end{pmatrix},\\qquad Q=\\begin{pmatrix}1&0&-1\\\\0&1&0\\\\0&0&0\\end{pmatrix}.$$\nIts columns are the images $(1,0,0)^{\\mathsf T}$, $(0,1,0)^{\\mathsf T}$ and $(-1,0,0)^{\\mathsf T}$ of the three standard basis vectors. For $P$, this gives $Q\\vec p=(-1,1,0)^{\\mathsf T}$.\n\nEvery point $(x,y,0)$ is fixed because its last coordinate is already zero. We have $\\vec p+\\vec r=(3,1,4)^{\\mathsf T}$ and $Q(\\vec p+\\vec r)=(-1,1,0)^{\\mathsf T}=Q\\vec p$. In general, changing a vector by $s\\vec r$ does not change its image, since $(x+s)-(z+s)=x-z$. Information about position along this direction is lost. As the first image lies in the fixed target plane, a second projection has no effect: $Q(Q\\vec v)=Q\\vec v$. An appropriate general calculation, or $Q^2=Q$ together with its interpretation, is equally acceptable.\n\nOrthogonal projection onto the $xz$-plane sets the $y$-coordinate to zero; orthogonal projection onto the $yz$-plane sets the $x$-coordinate to zero. Thus\n$$Q_{xz}=\\begin{pmatrix}1&0&0\\\\0&0&0\\\\0&0&1\\end{pmatrix},\\quad Q_{xz}\\vec p=\\begin{pmatrix}2\\\\0\\\\3\\end{pmatrix},$$\n$$Q_{yz}=\\begin{pmatrix}0&0&0\\\\0&1&0\\\\0&0&1\\end{pmatrix},\\quad Q_{yz}\\vec p=\\begin{pmatrix}0\\\\1\\\\3\\end{pmatrix}.$$\n\n**C · Directional stretch**\n\nLinearity and the geometric requirements give\n$$M\\vec e_1=\\frac{3\\vec d+\\vec n}{2}=\\begin{pmatrix}2\\\\1\\\\0\\end{pmatrix},\\quad M\\vec e_2=\\frac{3\\vec d-\\vec n}{2}=\\begin{pmatrix}1\\\\2\\\\0\\end{pmatrix},\\quad M\\vec e_3=\\begin{pmatrix}0\\\\0\\\\1\\end{pmatrix}.$$\nThese three image columns give\n$$M=\\begin{pmatrix}2&1&0\\\\1&2&0\\\\0&0&1\\end{pmatrix}.$$\nThe tests yield $M\\vec d=(3,3,0)^{\\mathsf T}=3\\vec d$, $M\\vec n=(1,-1,0)^{\\mathsf T}=\\vec n$ and $M\\vec e_3=(0,0,1)^{\\mathsf T}=\\vec e_3$.\n\nBy linearity, every vector parallel to $\\vec d$ satisfies $M(t\\vec d)=3t\\vec d$. A vector is perpendicular to $\\vec d$ exactly when its first two coordinates are opposites, so it has form $(a,-a,b)^{\\mathsf T}$. Direct substitution gives\n$$M\\begin{pmatrix}a\\\\-a\\\\b\\end{pmatrix}=\\begin{pmatrix}a\\\\-a\\\\b\\end{pmatrix}.$$\nEquivalently, $\\vec n$ and $\\vec e_3$ span all perpendicular directions, and both are fixed. This covers the full required directional components, not just isolated test points. No eigenvalue argument is needed.\n\nFor the given point,\n$$M\\vec p=\\begin{pmatrix}2\\cdot2+1\\\\2+2\\cdot1\\\\3\\end{pmatrix}=\\begin{pmatrix}5\\\\4\\\\3\\end{pmatrix}.$$\nThis is not a central dilation with factor $3$: for example, $\\vec n$ remains unchanged, whereas $3I$ would triple this nonzero vector. The vector $\\vec e_3$ is an equally valid counterexample.\n\n**Grading:** This reference is not exclusive. Accept correct equivalent representations, methods and traceable follow-through. Grade only reliably legible submitted work; do not assume work that has not been shown.\n\n**One ordinary total-score cap:** First add the partial credit below to obtain one raw score out of 30. Before comparing it with the threshold of 22, cap the total at 21 if any of the following core actions is entirely absent or supported only by a conceptually unsuitable model:\n\n- In any of A, B or C, there is no mathematically sound derivation of the relevant matrix from the geometric requirements. Merely writing down a matrix with no visible connection to those requirements does not replace the requested derivation. Examples of conceptually unsuitable models are an orthogonal $xy$-projection in B despite the oblique direction, or $3I$ in C despite the perpendicular directions having to remain fixed.\n- In A or B, there is no genuine application to an image point: neither a correct image nor a traceable matrix-vector setup with mathematically sound follow-through is present.\n- In A, there is no sound explanation of the directional and distance effects of the central dilation; simply noting that the origin is fixed is insufficient. In B, there is no sound, justified investigation of the projection, for example its fixed target plane, the information lost along the projection direction, or repeated projection. The cap also applies if both short variants onto the other coordinate planes are entirely missing or handled only through conceptually incorrect models.\n- In C, there is no actual calculated test of the constructed matrix against the geometric requirements, or no sound explanation of why its action covers the required parallel and perpendicular directions. A single image-point calculation replaces neither a direction test nor the justification.\n\nJudge evidence across the entire submission, not its location or a particular keyword. Relevant work elsewhere counts, but the same content does not earn points twice. A concise correct calculation or explanation suffices. The cap does not require flawless arithmetic: an isolated arithmetic, sign or copying error within a suitable model and traceable method does not trigger it. Deduct for the same local error only once; assess subsequent correctly executed operations and logically consistent explanations by their respective criteria, without treating the original incorrect result as correct. A missing individual detail is graded by the rubric and triggers the cap only if a core action listed above is absent as a whole. There is one total score and one threshold, with no part-pass fields or second qualification.",
+    "coveredGoalIds": [
+      "168d8879-0412-5524-94c5-c1d8169dbd65",
+      "55039f9c-4ebc-5115-add5-fae95b915e46",
+      "35558905-753d-5fcb-b25e-7f85ffdbff56"
+    ],
+    "scoring": {
+      "maxPoints": 30,
+      "passingPoints": 22,
+      "steps": [
+        {
+          "id": "a-basis",
+          "points": 2,
+          "description": "Bilder der drei Standardbasisvektoren aus der zentrischen Streckung hergeleitet, oder gleichwertig die allgemeine Koordinatenwirkung begründet: vollständig 2, sinnvoll teilweise 1.",
+          "descriptionEn": "Derives the three basis images from the central dilation, or equivalently justifies the general coordinate action: complete 2, meaningful partial work 1."
+        },
+        {
+          "id": "a-matrix",
+          "points": 1,
+          "description": "Z=diag(2,2,2) korrekt als Matrix zusammengestellt.",
+          "descriptionEn": "Correctly assembles Z=diag(2,2,2)."
+        },
+        {
+          "id": "a-point",
+          "points": 2,
+          "description": "Matrix-Vektor-Anwendung an p nachvollziehbar 1; Bildpunkt (4,2,6) korrekt 1. Fachlich richtige Folgearbeit getrennt anerkennen.",
+          "descriptionEn": "Traceable matrix-vector application to p 1; correct image (4,2,6) 1. Credit sound follow-through separately."
+        },
+        {
+          "id": "a-origin",
+          "points": 1,
+          "description": "Festbleiben des Ursprungs begründet.",
+          "descriptionEn": "Justifies that the origin is fixed."
+        },
+        {
+          "id": "a-direction-distance",
+          "points": 2,
+          "description": "Ursprungsstrahl wegen positiven Faktors erhalten begründet 1; Verdopplung des Ursprungsabstands begründet 1. Eine gemeinsame kurze allgemeine Erklärung genügt.",
+          "descriptionEn": "Justifies preservation of the ray because the factor is positive 1; justifies doubling the distance from the origin 1. One concise general explanation can cover both."
+        },
+        {
+          "id": "b-line-plane",
+          "points": 2,
+          "description": "Geradenansatz und Ebenenbedingung z+t=0 mit t=-z 1; daraus Bildform (x-z,y,0) hergeleitet 1. Gleichwertige geometrische Herleitung anerkennen.",
+          "descriptionEn": "Line and plane condition z+t=0 with t=-z 1; derives image formula (x-z,y,0) 1. Accept an equivalent geometric derivation."
+        },
+        {
+          "id": "b-columns-matrix",
+          "points": 2,
+          "description": "Standardbasisbilder oder korrekte Koeffizientenzuordnung zur Bildform 1; Q mit Zeilen (1,0,-1),(0,1,0),(0,0,0) korrekt 1.",
+          "descriptionEn": "Basis images or correct coefficient matching to the image formula 1; correct Q with rows (1,0,-1),(0,1,0),(0,0,0) 1."
+        },
+        {
+          "id": "b-point",
+          "points": 1,
+          "description": "Bildpunkt (-1,1,0) korrekt; sinnvoller Ansatz mit lokalem Rechenfehler kann 0,5 BE erhalten.",
+          "descriptionEn": "Correct image (-1,1,0); a sound setup with a local arithmetic error can earn 0.5 points."
+        },
+        {
+          "id": "b-fixed-plane",
+          "points": 1,
+          "description": "Alle Punkte der xy-Ebene bleiben fest, aus z=0 begründet.",
+          "descriptionEn": "Justifies that all points in the xy-plane are fixed using z=0."
+        },
+        {
+          "id": "b-lost-direction",
+          "points": 1,
+          "description": "Gleiches Bild von p und p+r rechnerisch oder geometrisch begründet; Verlust der Unterscheidbarkeit in dieser Richtung erkennbar.",
+          "descriptionEn": "Justifies the equal images of p and p+r by calculation or geometry, recognising loss of distinguishability along this direction."
+        },
+        {
+          "id": "b-repeat",
+          "points": 1,
+          "description": "Zweite Anwendung ändert das Bild nicht, mit fester Zielebene oder passender Rechnung begründet.",
+          "descriptionEn": "Justifies that applying the projection again does not change the image, using the fixed target plane or a suitable calculation."
+        },
+        {
+          "id": "b-xz",
+          "points": 1,
+          "description": "Orthogonale xz-Matrix diag(1,0,1) 0,5; Bild von P (2,0,3) 0,5.",
+          "descriptionEn": "Orthogonal xz matrix diag(1,0,1) 0.5; image of P (2,0,3) 0.5."
+        },
+        {
+          "id": "b-yz",
+          "points": 1,
+          "description": "Orthogonale yz-Matrix diag(0,1,1) 0,5; Bild von P (0,1,3) 0,5.",
+          "descriptionEn": "Orthogonal yz matrix diag(0,1,1) 0.5; image of P (0,1,3) 0.5."
+        },
+        {
+          "id": "c-column-one",
+          "points": 1,
+          "description": "Erste Standardbasisspalte aus e1=(d+n)/2 hergeleitet: (2,1,0). Gleichwertigen Weg anerkennen.",
+          "descriptionEn": "Derives first basis column (2,1,0) from e1=(d+n)/2, or an equivalent method."
+        },
+        {
+          "id": "c-column-two",
+          "points": 1,
+          "description": "Zweite Standardbasisspalte aus e2=(d-n)/2 hergeleitet: (1,2,0). Gleichwertigen Weg anerkennen.",
+          "descriptionEn": "Derives second basis column (1,2,0) from e2=(d-n)/2, or an equivalent method."
+        },
+        {
+          "id": "c-column-three",
+          "points": 1,
+          "description": "Dritte Standardbasisspalte (0,0,1) aus der festbleibenden senkrechten Richtung hergeleitet.",
+          "descriptionEn": "Derives third basis column (0,0,1) from its unchanged perpendicular direction."
+        },
+        {
+          "id": "c-matrix",
+          "points": 1,
+          "description": "Die hergeleiteten Spalten korrekt zu M mit Zeilen (2,1,0),(1,2,0),(0,0,1) zusammengestellt.",
+          "descriptionEn": "Correctly assembles the derived columns into M with rows (2,1,0),(1,2,0),(0,0,1)."
+        },
+        {
+          "id": "c-test-d",
+          "points": 1,
+          "description": "Md=(3,3,0)=3d als tatsächlichen Test berechnet und zugeordnet.",
+          "descriptionEn": "Calculates Md=(3,3,0)=3d and relates it to the requirement as an actual test."
+        },
+        {
+          "id": "c-test-n",
+          "points": 1,
+          "description": "Mn=(1,-1,0)=n als tatsächlichen Test berechnet und zugeordnet.",
+          "descriptionEn": "Calculates Mn=(1,-1,0)=n and relates it to the requirement as an actual test."
+        },
+        {
+          "id": "c-test-e3",
+          "points": 1,
+          "description": "Me3=(0,0,1)=e3 als tatsächlichen Test berechnet und zugeordnet.",
+          "descriptionEn": "Calculates Me3=(0,0,1)=e3 and relates it to the requirement as an actual test."
+        },
+        {
+          "id": "c-all-directions",
+          "points": 2,
+          "description": "Wirkung auf alle t*d durch Linearität oder Rechnung erklärt 1; gesamte senkrechte Ebene über (a,-a,b) oder Spann von n,e3 als fest begründet 1.",
+          "descriptionEn": "Explains the action on all t*d by linearity or calculation 1; justifies that the full perpendicular plane is fixed using (a,-a,b) or the span of n,e3 1."
+        },
+        {
+          "id": "c-point",
+          "points": 2,
+          "description": "Matrix-Vektor-Anwendung an p nachvollziehbar 1; korrektes Ergebnis (5,4,3) 1.",
+          "descriptionEn": "Traceable matrix-vector application to p 1; correct result (5,4,3) 1."
+        },
+        {
+          "id": "c-not-central",
+          "points": 1,
+          "description": "Mit einem nichtnulligen senkrechten Vektor den Unterschied zu 3I begründet.",
+          "descriptionEn": "Uses a nonzero perpendicular vector to justify the difference from 3I."
+        }
+      ]
+    },
+    "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/matrix-three-geometric-transformations-2026-11-03-v1/task.de.md",
+    "reviewNote": "Eigene SkillPilot-Abschlussaufgabe: ganzer unveränderter DE/EN-Inhalt und normale Gesamtrubrik30/22 mit21er-Kappung unabhängig freigegeben (f69803ef). Keine amtliche Aufgaben-/Source-Coveragebehauptung. Die separate erste HE12+ALL6-Programmentscheidung ist gebunden; frische Applicability-, Producer-, Native- und Stageabnahme bleibt offen."
+  },
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  }
+}

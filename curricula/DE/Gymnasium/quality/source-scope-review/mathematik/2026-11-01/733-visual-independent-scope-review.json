@@ -1,0 +1,819 @@
+{
+  "reviewType": "INDEPENDENT_BOUNDED_733_VISUAL_ASSESSMENT_SCOPE_AND_REFERENCE_REVIEW",
+  "reviewDate": "2026-11-01",
+  "reviewerAgent": "/root/astra_fundamental_approach_recheck",
+  "authorIndependent": true,
+  "decision": "PASS_EXACT_THIRTEEN_GK_OWN_ASSESSMENT_OBLIGATIONS_AND_TEN_SINGLE_REFERENCE_ANCHORS",
+  "snapshot": {
+    "canonical": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "e7f2fbbf64692bd1928ad1751a918f3f7fbdb9980f2ae2aa6b0406ac178d157e"
+    },
+    "baselineAudit": {
+      "path": "tmp/approach-review-20261101/post-transition-model-native-154-audit.json",
+      "sha256": "a14048bdcccec1dbcb7fcad213cbdb38433cf57c125915ce8986db6f5e4d3a27"
+    },
+    "boundary": "The scope facts are independently checked against archived post-V5 audit a140. Concurrent V6 integration changes only separate HE/SH bc244 masks; these nine jurisdictions,733 task bytes and ordinary scope facts are unaffected. Final candidate mechanics must bind the completed V6 baseline, not reuse old aggregate counts."
+  },
+  "assessmentGoalId": "7337049a-c85c-5b94-adaa-81dc93528bf8",
+  "wholeGoalNormalizedSha256": "186b480322ec2c60ed12bb9e68580e3927ec21606bde90a9d3890eec6921a5fb",
+  "normalization": "SHA256(JSON UTF-8 ensure_ascii=False sort_keys=True separators=(comma,colon))",
+  "approvedOfferScopes": [
+    "DE-BW/SekII/G8/GK",
+    "DE-BW/SekII/G9/GK",
+    "DE-BW/CrossStage/G8/GK",
+    "DE-BW/CrossStage/G9/GK",
+    "DE-MV/SekII/G8/GK",
+    "DE-NI/SekII/G9/GK",
+    "DE-NW/SekII/G9/GK",
+    "DE-RP/SekII/G8/GK",
+    "DE-RP/SekII/G9/GK",
+    "DE-SL/SekII/G9/GK",
+    "DE-SN/SekII/G8/GK",
+    "DE-ST/SekII/G8/GK",
+    "DE-TH/SekII/G8/GK"
+  ],
+  "approvedOperations": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+      "expectedRootSha256": "76c8bb0f0b7ce5851a6eb6c17a94a8084d342eda5f33835530f28fbdceb9c78a",
+      "candidateSha256": "02ce0fe3fcd36afebdc025bbf045b06728051a9d14ff96a89168ec96f1366644",
+      "operation": "append-single-goalEntry",
+      "pointer": "/rootNodes/17/children/1/children/5/children/4/children/1",
+      "anchorStructureId": "completion-existing-exams-d2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1",
+      "expectedChildrenBefore": [
+        {
+          "kind": "goalEntry",
+          "goalId": "0c44524c-f617-5076-8acf-729cd5515c14"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "7337049a-c85c-5b94-adaa-81dc93528bf8"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json",
+      "expectedRootSha256": "ed7acf324f5d08a69893eb52a837d9a25f4f999031609b8707d74ff9c7a621d1",
+      "candidateSha256": "c1223d28ce56b712fe9b3a1b5cb5b20006555f2b7e2a3f185f91a99faf417f51",
+      "operation": "append-single-goalEntry",
+      "pointer": "/rootNodes/16/children/5/children/4/children/1",
+      "anchorStructureId": "completion-existing-exams-d2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1",
+      "expectedChildrenBefore": [
+        {
+          "kind": "goalEntry",
+          "goalId": "0c44524c-f617-5076-8acf-729cd5515c14"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "7337049a-c85c-5b94-adaa-81dc93528bf8"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json",
+      "expectedRootSha256": "e7cafa6ce6eadcb7d691e1de501d1fe32932db8a8bae47a020c37483bc2f093e",
+      "candidateSha256": "0532b4a186ac47198f7e2f83e6eb981187a65ce42f54d63b2dcd890704c3c010",
+      "operation": "append-single-goalEntry",
+      "pointer": "/rootNodes/21/children/5/children/4/children/1",
+      "anchorStructureId": "completion-existing-exams-d2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1",
+      "expectedChildrenBefore": [
+        {
+          "kind": "goalEntry",
+          "goalId": "0c44524c-f617-5076-8acf-729cd5515c14"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "7337049a-c85c-5b94-adaa-81dc93528bf8"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+      "expectedRootSha256": "fe0fa001c1e089a3256c6e84872d33744df2819babe885acba01dc3aa37097b0",
+      "candidateSha256": "12a0b431fa13d2c875508deebf7d4b620d22d1123acc4d8c7db85e9e9841fd11",
+      "operation": "append-single-goalEntry",
+      "pointer": "/rootNodes/21/children/5/children/4/children/1",
+      "anchorStructureId": "completion-existing-exams-d2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1",
+      "expectedChildrenBefore": [
+        {
+          "kind": "goalEntry",
+          "goalId": "0c44524c-f617-5076-8acf-729cd5515c14"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "7337049a-c85c-5b94-adaa-81dc93528bf8"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json",
+      "expectedRootSha256": "521b5708d525c1fde31ff20e646af416ec477d94b90775bb6240b1e4179dcb04",
+      "candidateSha256": "d45e2e51e2f1eb2ef57d60ddc5c47abf705930dc970574130c2028e64f4e3776",
+      "operation": "append-single-goalEntry",
+      "pointer": "/rootNodes/21/children/5/children/4/children/1",
+      "anchorStructureId": "completion-existing-exams-d2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1",
+      "expectedChildrenBefore": [
+        {
+          "kind": "goalEntry",
+          "goalId": "0c44524c-f617-5076-8acf-729cd5515c14"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "7337049a-c85c-5b94-adaa-81dc93528bf8"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-gk.view.json",
+      "expectedRootSha256": "687bab0d8904b74d1c7dac7de26f904c4f02fdb6a4984d41890b5a3cf233091c",
+      "candidateSha256": "37eff0ab077067483351eac8817478e4fa76571126a989a99d8bb12367477bb2",
+      "operation": "append-single-goalEntry",
+      "pointer": "/rootNodes/22/children/5/children/4/children/1",
+      "anchorStructureId": "completion-existing-exams-d2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1",
+      "expectedChildrenBefore": [
+        {
+          "kind": "goalEntry",
+          "goalId": "0c44524c-f617-5076-8acf-729cd5515c14"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "7337049a-c85c-5b94-adaa-81dc93528bf8"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json",
+      "expectedRootSha256": "979afd805e4b21edfa92f5fd95ecc066e824f49d0b23702d73ab7984e036e8ee",
+      "candidateSha256": "db5c56021298b6750e7469f07d84addd1f7ecac5ad8570059c262d583ec58127",
+      "operation": "append-single-goalEntry",
+      "pointer": "/rootNodes/22/children/5/children/4/children/1",
+      "anchorStructureId": "completion-existing-exams-d2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1",
+      "expectedChildrenBefore": [
+        {
+          "kind": "goalEntry",
+          "goalId": "0c44524c-f617-5076-8acf-729cd5515c14"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "7337049a-c85c-5b94-adaa-81dc93528bf8"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json",
+      "expectedRootSha256": "7ac923aa0ab5a6c1e1984060a0702c5010b0324b7587d7e052b0bd8eab31101c",
+      "candidateSha256": "d24da4517ce2a5b3aee9cb10037ae1d5779e3788d4f74af332975974bdeb4c78",
+      "operation": "append-single-goalEntry",
+      "pointer": "/rootNodes/21/children/5/children/4/children/1",
+      "anchorStructureId": "completion-existing-exams-d2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1",
+      "expectedChildrenBefore": [
+        {
+          "kind": "goalEntry",
+          "goalId": "0c44524c-f617-5076-8acf-729cd5515c14"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "7337049a-c85c-5b94-adaa-81dc93528bf8"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json",
+      "expectedRootSha256": "9f29ac73af59a3a2ef5b50b64c4f6387e164096c8a6affdb7107bf1a94f6375b",
+      "candidateSha256": "e8219a57d39e0eb77e2f450e7f9044953be6af5ed00146346f0f5eb217f58857",
+      "operation": "append-single-goalEntry",
+      "pointer": "/rootNodes/22/children/5/children/4/children/1",
+      "anchorStructureId": "completion-existing-exams-d2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1",
+      "expectedChildrenBefore": [
+        {
+          "kind": "goalEntry",
+          "goalId": "0c44524c-f617-5076-8acf-729cd5515c14"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "7337049a-c85c-5b94-adaa-81dc93528bf8"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json",
+      "expectedRootSha256": "0e3bddfdb7ba9afdb210239bb5b2ef13a95f91d022efcfe671931dd588e0b321",
+      "candidateSha256": "81a1563fc9f73782f3e253df182ee6e8b0ab52dc1e38e46c5618e52d70d40232",
+      "operation": "append-single-goalEntry",
+      "pointer": "/rootNodes/22/children/5/children/4/children/1",
+      "anchorStructureId": "completion-existing-exams-d2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1",
+      "expectedChildrenBefore": [
+        {
+          "kind": "goalEntry",
+          "goalId": "0c44524c-f617-5076-8acf-729cd5515c14"
+        }
+      ],
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "7337049a-c85c-5b94-adaa-81dc93528bf8"
+      }
+    }
+  ],
+  "approvedObligation": {
+    "kind": "existing-own-protected-assessment-target",
+    "maxPoints": 20,
+    "passingPoints": 12,
+    "existingNormalVisualCoreOmissionCap": 11,
+    "explicitOwnMasteryRequiredWhenSelected": true,
+    "existingGlobalMasteryRemainsValid": true,
+    "notOfficialExamPrescription": true,
+    "noNewCapacityClaim": true
+  },
+  "wholeContractRationale": {
+    "retainedActionGroups": [
+      "Hand-compute the quadratic table, actually verify selected values digitally and document inputs/results/errors or explain matching output.",
+      "Derive roots and vertex, produce a suitable independent sketch and justify/check representation consistency.",
+      "Critique the endpoint-only plot and oversized y scale; use the supplied5-unit chord-error criterion on[6,18], reject because maximum difference18, propose and actually check a better digital display.",
+      "From the supplied scale-accurate plot justify2/1/0 intersections for levels54/72/80, explain vertex tangency and exclude extra intersections."
+    ],
+    "alreadySelectedWholeGoalIds": [
+      "cf4fe700-dec2-502f-888b-90acefa307bb",
+      "42b57670-d2be-5da2-be2f-d58055901813",
+      "d668c22d-caeb-5e91-8980-721c931a2bcf",
+      "7c4e8d59-4acb-5f62-a387-c804c6fa23e0",
+      "1675fdde-cba7-5456-ae70-a846e1924a68"
+    ],
+    "selectedWholeGoalBindings": {
+      "cf4fe700-dec2-502f-888b-90acefa307bb": "9531dd5198407f6a1814167cf52cf7d805ba66ff327f098999f98090402f46fb",
+      "42b57670-d2be-5da2-be2f-d58055901813": "9e36283261d861b3b3c786b9673db4f23f67c899e2bbe763944519873d65035f",
+      "d668c22d-caeb-5e91-8980-721c931a2bcf": "c6e7b79cd881a1d9ce1da5adaa7420e0479973959a5fc9a5152d06d1e2f71723",
+      "7c4e8d59-4acb-5f62-a387-c804c6fa23e0": "a5596e08b8cda8b471655e8aa325c613c936a2e0e430ec02ea1b5b71c1314854",
+      "1675fdde-cba7-5456-ae70-a846e1924a68": "1450950e7f3c953c8f7fca695b19993289eab6a8912bee39cecce2aeacd6ff02"
+    },
+    "absentD047Decision": "The whole d047 text is about visualization significance, scale/data limitations and improvement. The selected d668 text explicitly requires recognizing diagram misinterpretations, correcting them and proposing clearer representations; selected cf4/42b/7c4 and their ordinary representation contracts supply the remaining concrete actions. This is a content-fit judgment for this exact task, not an ID-equivalence, source-mapping, mastery-transfer or universal GK tag decision.",
+    "quadraticPreparation": "Vertex and elementary factoring remain genuine preparation. All matching SekI offers select the vertex whole goal. The factor ID is not selected in seven matching SekI offers; no target selection is inferred from familiarity, a requires edge or the new task. All canonical direct/indirect/inherited preparation remains intact support.",
+    "correctedHistoricalFactorIdClaim": {
+      "factorGoalId": "96c55cb6-d2c7-5145-8567-b5f570f55a8a",
+      "notSelectedInMatchingSekIForTheseOffers": [
+        "DE-NW/SekII/G9/GK",
+        "DE-RP/SekII/G8/GK",
+        "DE-RP/SekII/G9/GK",
+        "DE-SL/SekII/G9/GK",
+        "DE-SN/SekII/G8/GK",
+        "DE-ST/SekII/G8/GK",
+        "DE-TH/SekII/G8/GK"
+      ],
+      "oldMatrixMustNotBeReusedAsCurrentProof": true
+    },
+    "preparationVsCoverage": "All8 canonical directrequires and the existing6 coveredGoalIds remain byte-identical. No prerequisite or covered goal is promoted to target, and no new coverage assertion is made."
+  },
+  "contentReviewCarryforward": {
+    "path": "tmp/approach-review-20261101/route-actions-batch3/independent-content-review.json",
+    "sha256": "34d362ac9f98a67e4f265e8f82dab5008017f0b828fe13a9a2575b9bbf081f67",
+    "rowGoalId": "7337049a-c85c-5b94-adaa-81dc93528bf8",
+    "statusOfThisRow": "PASS",
+    "exactPayloadVerification": "Compared current whole object with approved batch3 after object; only examData.reviewStatus and examData.reviewNote differ as already approved activation metadata. All mathematics, DE/EN task/solution/rubric, requires, coverage and materials are identical."
+  },
+  "sourceBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+      "sha256": "593973654aafc17e38370d2a9fcf537c80130e8a70fb011b11676e12b4ece2b4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_MATHEMATIK_SEKII_RAHMENPLAN_2019.source-extraction.json",
+      "sha256": "9132d7f40a76dd736e7cfe58b488312a1ac5408629d220c6dcbcd3f8e43ad7e7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_MATHEMATIK_SEKII_KERNCURRICULUM_2019.source-extraction.json",
+      "sha256": "109a07ac3948937e26214da984f52406b1096a9df232cfb199ea72d1c5daa4f3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json",
+      "sha256": "b44bae1fdd2b42f9eb0e5759199562901c33fa01ab20cb5578e81b4b581acb34"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_MATHEMATIK_SEKII_MSS_2015.source-extraction.json",
+      "sha256": "670f1a958cbc4d4a2a5dd36aa9e5ae9f8fcd42920de3dbb693e73589a1217b00"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_MATHEMATIK_SEKII_GOS_2014_2019.source-extraction.json",
+      "sha256": "8cbf125e9c938a37a58773eeae051ee3be5037dead129e24ea218f71fbc5dc4d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "sha256": "70f65c212b5e036b20d4942aab26d3ba0f515ac5ffc834620a1b6f788c6048ff"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_MATHEMATIK_SEKII_FACHLEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "sha256": "045cf9f2becf5e49bf80c46069697aa69a141f1c8b4244d3f10e011e08e52fa0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "sha256": "ec548aaeb6743fc5fc25d2e328dd2faa4c232295ed5fa24beedadea4e3f21fbd"
+    },
+    {
+      "path": "tmp/math-f76-source-working-20261101/RP-upper-secondary-Mathematik_Sekundarstufe_II_MSS.txt",
+      "sha256": "5f36e932dddf35cf6f56f3c5585fbae77af9c54a5b6ed83e1320b6e75f16f4f6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_II_MSS.pdf",
+      "sha256": "764a2f6160cda3dde2dc97914e2c0a361ef1461a0a5fced0b1c100e69762c3fb"
+    },
+    {
+      "path": "tmp/math-f76-source-working-20261101/SL-upper-secondary-LP_Ma_GOS_HP_G-Kurs_2016_Stand_2019.txt",
+      "sha256": "8d75c1a19f71382e26a598fecf6694a80c5cfa6736b0b56daf559e733e7ca048"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SL/LP_Ma_GOS_HP_G-Kurs_2016_Stand_2019.pdf",
+      "sha256": "ee77ed726ee6be38a66a1830f0f69fd672883a2fb558cd6ceed41894fd0a5086"
+    },
+    {
+      "path": "tmp/math-f76-source-working-20261101/ST-upper-secondary-Mathematik_FLP_Gym_01_07_2019.txt",
+      "sha256": "0d3e998735488e6219fa75faa710998eccd84f228443f35c024e063ab07e9fc5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/ST/Mathematik_FLP_Gym_01_07_2019.pdf",
+      "sha256": "317e0b55339ca687bf5c0401f57cafdab4e911cb14e5d5bf65696eeeadc73622"
+    },
+    {
+      "path": "tmp/math-f76-source-working-20261101/NI-upper-secondary-ma_go_kc_druck_2019.txt",
+      "sha256": "43017d9c9e8b828fbedd61a90f96a6789866e62edcd0969f56bb3b3b92f5da12"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NI/upper-secondary/ma_go_kc_druck_2019.pdf",
+      "sha256": "f550398fe6871e9ea8a52087fce19286b8d43997d82242e3fb87741233729481"
+    }
+  ],
+  "boundedSourceSupport": [
+    {
+      "jurisdiction": "DE-BW",
+      "sourceExtraction": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+      "reviewedRows": [
+        {
+          "pointer": "/sourceGoals/3",
+          "sourceGoalId": "bw-math-sekii-bp2016-2-1-03-e0792f07",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.1, Kompetenz 3, S. 12.",
+          "sourceSpan": "bei der Entwicklung und Prüfung von Vermutungen Hilfsmittel verwenden (zum Beispiel Taschenrechner, Computerprogramme)"
+        },
+        {
+          "pointer": "/sourceGoals/9",
+          "sourceGoalId": "bw-math-sekii-bp2016-2-1-09-ebcdfaed",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.1, Kompetenz 9, S. 12.",
+          "sourceSpan": "beim Erläutern und Begründen unterschiedliche Darstellungsformen verwenden (verbal, zeichnerisch, tabellarisch, formalisiert)"
+        },
+        {
+          "pointer": "/sourceGoals/16",
+          "sourceGoalId": "bw-math-sekii-bp2016-2-2-02-9a6b4c9f",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.2, Kompetenz 2, S. 13.",
+          "sourceSpan": "Informationen aus den gegebenen Texten, Bildern und Diagrammen entnehmen und auf ihre Bedeutung für die Problemlösung bewerten"
+        },
+        {
+          "pointer": "/sourceGoals/17",
+          "sourceGoalId": "bw-math-sekii-bp2016-2-2-03-30c16c4e",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.2, Kompetenz 3, S. 13.",
+          "sourceSpan": "durch Verwendung verschiedener Darstellungen (informative Figur, verbale Beschreibung, Tabelle, Graph, symbolische Darstellung, Koordinaten) das Problem durchdringen oder umformulieren"
+        },
+        {
+          "pointer": "/sourceGoals/44",
+          "sourceGoalId": "bw-math-sekii-bp2016-2-4-02-c9b236ab",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.4, Kompetenz 2, S. 15.",
+          "sourceSpan": "mathematische Darstellungen zum Strukturieren von Informationen, zum Modellieren und zum Problemlösen auswählen und verwenden"
+        },
+        {
+          "pointer": "/sourceGoals/45",
+          "sourceGoalId": "bw-math-sekii-bp2016-2-4-03-2306bbf8",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.4, Kompetenz 3, S. 15.",
+          "sourceSpan": "zwischen verschiedenen mathematischen Darstellungen wechseln"
+        },
+        {
+          "pointer": "/sourceGoals/49",
+          "sourceGoalId": "bw-math-sekii-bp2016-2-4-07-9bea948e",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.4, Kompetenz 7, S. 15.",
+          "sourceSpan": "Ergebnisse und die Eignung des Verfahrens kritisch prüfen"
+        },
+        {
+          "pointer": "/sourceGoals/50",
+          "sourceGoalId": "bw-math-sekii-bp2016-2-4-08-a1fca84e",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.4, Kompetenz 8, S. 15.",
+          "sourceSpan": "Hilfsmittel (zum Beispiel Formelsammlung, Geodreieck und Zirkel, Taschenrechner, Software) problemangemessen auswählen und einsetzen"
+        },
+        {
+          "pointer": "/sourceGoals/51",
+          "sourceGoalId": "bw-math-sekii-bp2016-2-4-09-6d5894ab",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.4, Kompetenz 9, S. 15.",
+          "sourceSpan": "Taschenrechner und mathematische Software (Tabellenkalkulation, Dynamische Geometriesoftware) bedienen und zum Explorieren, Problemlösen und Modellieren einsetzen"
+        },
+        {
+          "pointer": "/sourceGoals/52",
+          "sourceGoalId": "bw-math-sekii-bp2016-2-4-10-e9d5b4ee",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.4, Kompetenz 10, S. 15.",
+          "sourceSpan": "Ergebnisse, die unter Verwendung eines Taschenrechners oder Computers gewonnen wurden, kritisch prüfen"
+        },
+        {
+          "pointer": "/sourceGoals/53",
+          "sourceGoalId": "bw-math-sekii-bp2016-2-5-01-329b8f6f",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.5, Kompetenz 1, S. 16.",
+          "sourceSpan": "mathematische Einsichten und Lösungswege schriftlich dokumentieren oder mündlich darstellen und erläutern"
+        }
+      ],
+      "boundedRationale": "BP2016 process sections2.1/2.2/2.4/2.5 explicitly support representation changes, extracting and evaluating diagram information, checking errors/results and software control/documentation."
+    },
+    {
+      "jurisdiction": "DE-MV",
+      "sourceExtraction": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_MATHEMATIK_SEKII_RAHMENPLAN_2019.source-extraction.json",
+      "reviewedRows": [
+        {
+          "pointer": "/sourceGoals/21",
+          "sourceGoalId": "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-k4-002-21be14411f",
+          "sourceRef": "Rahmenplan Mathematik Qualifikationsphase Jahrgangsstufen 11/12, Mecklenburg-Vorpommern 2019, S. 16",
+          "sourceSpan": "S. 16, K4 Mathematische Darstellungen verwenden"
+        },
+        {
+          "pointer": "/sourceGoals/22",
+          "sourceGoalId": "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-k4-003-08d25e0df4",
+          "sourceRef": "Rahmenplan Mathematik Qualifikationsphase Jahrgangsstufen 11/12, Mecklenburg-Vorpommern 2019, S. 16",
+          "sourceSpan": "S. 16, K4 Mathematische Darstellungen verwenden"
+        },
+        {
+          "pointer": "/sourceGoals/23",
+          "sourceGoalId": "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-k4-004-80f85e01b8",
+          "sourceRef": "Rahmenplan Mathematik Qualifikationsphase Jahrgangsstufen 11/12, Mecklenburg-Vorpommern 2019, S. 16",
+          "sourceSpan": "S. 16, K4 Mathematische Darstellungen verwenden"
+        },
+        {
+          "pointer": "/sourceGoals/25",
+          "sourceGoalId": "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-k4-006-6e97d5f292",
+          "sourceRef": "Rahmenplan Mathematik Qualifikationsphase Jahrgangsstufen 11/12, Mecklenburg-Vorpommern 2019, S. 16",
+          "sourceSpan": "S. 16, K4 Mathematische Darstellungen verwenden"
+        },
+        {
+          "pointer": "/sourceGoals/26",
+          "sourceGoalId": "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-k4-007-b0423dac1b",
+          "sourceRef": "Rahmenplan Mathematik Qualifikationsphase Jahrgangsstufen 11/12, Mecklenburg-Vorpommern 2019, S. 16",
+          "sourceSpan": "S. 16, K4 Mathematische Darstellungen verwenden"
+        },
+        {
+          "pointer": "/sourceGoals/30",
+          "sourceGoalId": "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-k5-004-7e73895d67",
+          "sourceRef": "Rahmenplan Mathematik Qualifikationsphase Jahrgangsstufen 11/12, Mecklenburg-Vorpommern 2019, S. 17",
+          "sourceSpan": "S. 17, K5 Mit symbolischen, formalen und technischen Elementen der Mathematik umgehen"
+        },
+        {
+          "pointer": "/sourceGoals/33",
+          "sourceGoalId": "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-k5-007-58821103e6",
+          "sourceRef": "Rahmenplan Mathematik Qualifikationsphase Jahrgangsstufen 11/12, Mecklenburg-Vorpommern 2019, S. 17",
+          "sourceSpan": "S. 17, K5 Mit symbolischen, formalen und technischen Elementen der Mathematik umgehen"
+        },
+        {
+          "pointer": "/sourceGoals/35",
+          "sourceGoalId": "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-k5-009-3b8460de47",
+          "sourceRef": "Rahmenplan Mathematik Qualifikationsphase Jahrgangsstufen 11/12, Mecklenburg-Vorpommern 2019, S. 17",
+          "sourceSpan": "S. 17, K5 Mit symbolischen, formalen und technischen Elementen der Mathematik umgehen"
+        },
+        {
+          "pointer": "/sourceGoals/36",
+          "sourceGoalId": "de-mv-mathematik-sekii-rahmenplan-2019-mv-sekii-k5-010-d6a6f101aa",
+          "sourceRef": "Rahmenplan Mathematik Qualifikationsphase Jahrgangsstufen 11/12, Mecklenburg-Vorpommern 2019, S. 17",
+          "sourceSpan": "S. 17, K5 Mit symbolischen, formalen und technischen Elementen der Mathematik umgehen"
+        }
+      ],
+      "boundedRationale": "Common GK/LK K4 pp16 and K5 pp17 explicitly support interpreting/changing/judging representations and selecting/evaluating digital control procedures."
+    },
+    {
+      "jurisdiction": "DE-NI",
+      "sourceExtraction": "curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_MATHEMATIK_SEKII_KERNCURRICULUM_2019.source-extraction.json",
+      "reviewedRows": [
+        {
+          "pointer": "/sourceGoals/11",
+          "sourceGoalId": "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-e-process-k4-002-68d344de22",
+          "sourceRef": "Kerncurriculum Mathematik fuer die gymnasiale Oberstufe, Niedersachsen 2019, S. 15",
+          "sourceSpan": "S. 15, Einführungsphase Prozesskompetenz K4 Mathematische Darstellungen verwenden"
+        },
+        {
+          "pointer": "/sourceGoals/13",
+          "sourceGoalId": "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-e-process-k4-004-d442b3c5a2",
+          "sourceRef": "Kerncurriculum Mathematik fuer die gymnasiale Oberstufe, Niedersachsen 2019, S. 15",
+          "sourceSpan": "S. 15, Einführungsphase Prozesskompetenz K4 Mathematische Darstellungen verwenden"
+        },
+        {
+          "pointer": "/sourceGoals/44",
+          "sourceGoalId": "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-process-k4-001-eb1d7fab4a",
+          "sourceRef": "Kerncurriculum Mathematik fuer die gymnasiale Oberstufe, Niedersachsen 2019, S. 18",
+          "sourceSpan": "S. 18, Qualifikationsphase Prozesskompetenz K4 Mathematische Darstellungen verwenden"
+        },
+        {
+          "pointer": "/sourceGoals/48",
+          "sourceGoalId": "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-process-k4-005-2f78136717",
+          "sourceRef": "Kerncurriculum Mathematik fuer die gymnasiale Oberstufe, Niedersachsen 2019, S. 18",
+          "sourceSpan": "S. 18, Qualifikationsphase Prozesskompetenz K4 Mathematische Darstellungen verwenden"
+        },
+        {
+          "pointer": "/sourceGoals/53",
+          "sourceGoalId": "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-process-k5-004-c811e8fc11",
+          "sourceRef": "Kerncurriculum Mathematik fuer die gymnasiale Oberstufe, Niedersachsen 2019, S. 19",
+          "sourceSpan": "S. 19, Qualifikationsphase Prozesskompetenz K5 Mit symbolischen, formalen und technischen Elementen der Mathematik umgehen"
+        },
+        {
+          "pointer": "/sourceGoals/55",
+          "sourceGoalId": "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-process-k5-006-03f7ee1baf",
+          "sourceRef": "Kerncurriculum Mathematik fuer die gymnasiale Oberstufe, Niedersachsen 2019, S. 19",
+          "sourceSpan": "S. 19, Qualifikationsphase Prozesskompetenz K5 Mit symbolischen, formalen und technischen Elementen der Mathematik umgehen"
+        },
+        {
+          "pointer": "/sourceGoals/60",
+          "sourceGoalId": "de-ni-mathematik-sekii-kerncurriculum-2019-ni-sekii-q-process-k6-003-bd0930af17",
+          "sourceRef": "Kerncurriculum Mathematik fuer die gymnasiale Oberstufe, Niedersachsen 2019, S. 19",
+          "sourceSpan": "S. 19, Qualifikationsphase Prozesskompetenz K6 Kommunizieren"
+        }
+      ],
+      "boundedRationale": "K4 function-representation changes and justified choice, K5 manual and digital methods, K6 documentation. General K4 distinguishes demand levels, not exclusive LK scope; no reliance on an LK-tagged canonical ID as source.",
+      "existingPrimaryTextRead": {
+        "path": "tmp/math-f76-source-working-20261101/NI-upper-secondary-ma_go_kc_druck_2019.txt",
+        "primaryDocumentPath": "curricula/DE/Gymnasium/input/NI/upper-secondary/ma_go_kc_druck_2019.pdf",
+        "spans": [
+          {
+            "section": "K4 definition and three demand levels",
+            "lines": [
+              489,
+              515
+            ]
+          }
+        ],
+        "boundary": "Existing local primary-text cache read, no new PDF clone or extraction and no new source-extraction authoring."
+      }
+    },
+    {
+      "jurisdiction": "DE-NW",
+      "sourceExtraction": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json",
+      "reviewedRows": [
+        {
+          "pointer": "/sourceGoals/4",
+          "sourceGoalId": "de-nw-mathematik-sekii-klp-2023-nw-sekii-process-operieren-005-dc3e939d13",
+          "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 17",
+          "sourceSpan": "S. 17, Qualifikationsphase Prozesskompetenz Operieren"
+        },
+        {
+          "pointer": "/sourceGoals/10",
+          "sourceGoalId": "de-nw-mathematik-sekii-klp-2023-nw-sekii-process-operieren-011-a79639eac2",
+          "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 17",
+          "sourceSpan": "S. 17, Qualifikationsphase Prozesskompetenz Operieren"
+        },
+        {
+          "pointer": "/sourceGoals/12",
+          "sourceGoalId": "de-nw-mathematik-sekii-klp-2023-nw-sekii-process-operieren-013-2ac8eacb29",
+          "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 18",
+          "sourceSpan": "S. 18, Qualifikationsphase Prozesskompetenz Operieren"
+        },
+        {
+          "pointer": "/sourceGoals/13",
+          "sourceGoalId": "de-nw-mathematik-sekii-klp-2023-nw-sekii-process-operieren-014-91b754a957",
+          "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 18",
+          "sourceSpan": "S. 18, Qualifikationsphase Prozesskompetenz Operieren"
+        }
+      ],
+      "boundedRationale": "Common upper-secondary Operieren explicitly includes representation changes, digital drawing/calculation/control, justified tool choice and reflection of limits."
+    },
+    {
+      "jurisdiction": "DE-RP",
+      "sourceExtraction": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_MATHEMATIK_SEKII_MSS_2015.source-extraction.json",
+      "reviewedRows": [
+        {
+          "pointer": "/sourceGoals/48",
+          "sourceGoalId": "de-rp-mathematik-sekii-mss-2015-rp-sekii-gf-wiederholung-002-3d9fc42f77",
+          "sourceRef": "Lehrplan Mathematik Grund- und Leistungsfach in der gymnasialen Oberstufe, Rheinland-Pfalz, Maerz 2015, S. 22",
+          "sourceSpan": "S. 22, Grundfach Wiederholung von Grundlagen"
+        }
+      ],
+      "boundedRationale": "Whole current function and process targets plus primary curriculum pp6/13: use geometric/graphic/numeric/algebraic aids appropriately, interpret and critically assess solutions, use function plots to test/refute claims. No claim that the concrete tolerance test is a prescribed official task.",
+      "existingPrimaryTextRead": {
+        "path": "tmp/math-f76-source-working-20261101/RP-upper-secondary-Mathematik_Sekundarstufe_II_MSS.txt",
+        "primaryDocumentPath": "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_II_MSS.pdf",
+        "spans": [
+          {
+            "printedPages": [
+              6
+            ],
+            "lines": [
+              263,
+              269
+            ]
+          },
+          {
+            "printedPages": [
+              13
+            ],
+            "lines": [
+              570,
+              597
+            ]
+          }
+        ],
+        "boundary": "Existing local primary-text cache read, no new PDF clone or extraction and no new source-extraction authoring."
+      }
+    },
+    {
+      "jurisdiction": "DE-SL",
+      "sourceExtraction": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_MATHEMATIK_SEKII_GOS_2014_2019.source-extraction.json",
+      "reviewedRows": [
+        {
+          "pointer": "/sourceGoals/9",
+          "sourceGoalId": "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-e-gk-lk-t01-allgemeine-sinusfunktion-b10-f46c02f1f7",
+          "sourceRef": "Lehrplan Mathematik Einfuehrungsphase der gymnasialen Oberstufe, Saarland, Juli 2014",
+          "sourceSpan": "Lehrplan Mathematik Einfuehrungsphase der gymnasialen Oberstufe, Saarland, Juli 2014, Allgemeine Sinusfunktion, Kompetenzbuendel 10"
+        },
+        {
+          "pointer": "/sourceGoals/67",
+          "sourceGoalId": "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-e-gk-lk-t03-exponentialfunktionen-b03-15f23edb17",
+          "sourceRef": "Lehrplan Mathematik Einfuehrungsphase der gymnasialen Oberstufe, Saarland, Juli 2014",
+          "sourceSpan": "Lehrplan Mathematik Einfuehrungsphase der gymnasialen Oberstufe, Saarland, Juli 2014, Exponentialfunktionen, Kompetenzbuendel 3"
+        },
+        {
+          "pointer": "/sourceGoals/68",
+          "sourceGoalId": "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-e-gk-lk-t03-exponentialfunktionen-b04-eb91a919ec",
+          "sourceRef": "Lehrplan Mathematik Einfuehrungsphase der gymnasialen Oberstufe, Saarland, Juli 2014",
+          "sourceSpan": "Lehrplan Mathematik Einfuehrungsphase der gymnasialen Oberstufe, Saarland, Juli 2014, Exponentialfunktionen, Kompetenzbuendel 4"
+        },
+        {
+          "pointer": "/sourceGoals/76",
+          "sourceGoalId": "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-e-gk-lk-t03-exponentialfunktionen-b12-1c63dfda95",
+          "sourceRef": "Lehrplan Mathematik Einfuehrungsphase der gymnasialen Oberstufe, Saarland, Juli 2014",
+          "sourceSpan": "Lehrplan Mathematik Einfuehrungsphase der gymnasialen Oberstufe, Saarland, Juli 2014, Exponentialfunktionen, Kompetenzbuendel 12"
+        },
+        {
+          "pointer": "/sourceGoals/156",
+          "sourceGoalId": "de-sl-mathematik-sekii-gos-2014-2019-sl-sekii-e-gk-lk-t06-ganzrationale-funktionen-b18-a6f887b86a",
+          "sourceRef": "Lehrplan Mathematik Einfuehrungsphase der gymnasialen Oberstufe, Saarland, Juli 2014",
+          "sourceSpan": "Lehrplan Mathematik Einfuehrungsphase der gymnasialen Oberstufe, Saarland, Juli 2014, Ganzrationale Funktionen, Kompetenzbuendel 18"
+        }
+      ],
+      "boundedRationale": "G-course primary preamble pp3/5/6 requires understanding and judging computer-method limits, purposeful tool use and K4/K5/K6 across content. Existing entry-phase table/graph and polynomial skills supply the elementary example.",
+      "existingPrimaryTextRead": {
+        "path": "tmp/math-f76-source-working-20261101/SL-upper-secondary-LP_Ma_GOS_HP_G-Kurs_2016_Stand_2019.txt",
+        "primaryDocumentPath": "curricula/DE/Gymnasium/input/SL/LP_Ma_GOS_HP_G-Kurs_2016_Stand_2019.pdf",
+        "spans": [
+          {
+            "printedPages": [
+              3
+            ],
+            "lines": [
+              34,
+              51
+            ]
+          },
+          {
+            "printedPages": [
+              5,
+              6
+            ],
+            "lines": [
+              110,
+              164
+            ]
+          }
+        ],
+        "boundary": "Existing local primary-text cache read, no new PDF clone or extraction and no new source-extraction authoring."
+      }
+    },
+    {
+      "jurisdiction": "DE-SN",
+      "sourceExtraction": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "reviewedRows": [
+        {
+          "pointer": "/sourceGoals/0",
+          "sourceGoalId": "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-zg00-stufenbezogene-ziele-r001-7b47723555",
+          "sourceRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "sourceSpan": "Lehrplan Gymnasium Mathematik, Sachsen, 2019, Jahrgangsstufen 11/12 - Grundkurs, Ziele 00, Zeile 2183"
+        },
+        {
+          "pointer": "/sourceGoals/1",
+          "sourceGoalId": "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-zg00-stufenbezogene-ziele-r002-0fc409c26e",
+          "sourceRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "sourceSpan": "Lehrplan Gymnasium Mathematik, Sachsen, 2019, Jahrgangsstufen 11/12 - Grundkurs, Ziele 00, Zeile 2191"
+        },
+        {
+          "pointer": "/sourceGoals/2",
+          "sourceGoalId": "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-zg00-stufenbezogene-ziele-r003-a046d299d6",
+          "sourceRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "sourceSpan": "Lehrplan Gymnasium Mathematik, Sachsen, 2019, Jahrgangsstufen 11/12 - Grundkurs, Ziele 00, Zeile 2196"
+        },
+        {
+          "pointer": "/sourceGoals/4",
+          "sourceGoalId": "de-sn-mathematik-sekii-lehrplan-gymnasium-2019-sn-sekii-gk-zg00-stufenbezogene-ziele-r005-b1aefaa426",
+          "sourceRef": "Lehrplan Gymnasium Mathematik, Sachsen, 2019",
+          "sourceSpan": "Lehrplan Gymnasium Mathematik, Sachsen, 2019, Jahrgangsstufen 11/12 - Grundkurs, Ziele 00, Zeile 2207"
+        }
+      ],
+      "boundedRationale": "Explicit GK stage goals p44: relations in equations and graphs; critical evaluation of methods/aids/software accuracy and reasoned presentation. The concrete elementary parabola critique fits these existing whole target skills."
+    },
+    {
+      "jurisdiction": "DE-ST",
+      "sourceExtraction": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_MATHEMATIK_SEKII_FACHLEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "reviewedRows": [
+        {
+          "pointer": "/sourceGoals/0",
+          "sourceGoalId": "de-st-mathematik-sekii-fachlehrplan-gymnasium-2019-st-sekii-11-12-gk-grundlagen-der-infinitesimalrechnung-k001-3d8562600a",
+          "sourceRef": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019",
+          "sourceSpan": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019, Qualifikationsphase grundlegendes Anforderungsniveau, Grundlagen der Infinitesimalrechnung, Zeile 2434"
+        },
+        {
+          "pointer": "/sourceGoals/21",
+          "sourceGoalId": "de-st-mathematik-sekii-fachlehrplan-gymnasium-2019-st-sekii-11-12-gk-differentialrechnung-k006-b212f5c5a5",
+          "sourceRef": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019",
+          "sourceSpan": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019, Qualifikationsphase grundlegendes Anforderungsniveau, Differentialrechnung, Zeile 2478"
+        }
+      ],
+      "boundedRationale": "Primary process table p15 applies to schoolyears11/12, not an LK-only column: reflect limits of representations and judge them purposefully; digital-tool section p19 supports function graphs/tables. Thus the simple scale/intermediate-value critique is positively in scope.",
+      "existingPrimaryTextRead": {
+        "path": "tmp/math-f76-source-working-20261101/ST-upper-secondary-Mathematik_FLP_Gym_01_07_2019.txt",
+        "primaryDocumentPath": "curricula/DE/Gymnasium/input/ST/Mathematik_FLP_Gym_01_07_2019.pdf",
+        "spans": [
+          {
+            "printedPages": [
+              15
+            ],
+            "lines": [
+              587,
+              615
+            ]
+          },
+          {
+            "printedPages": [
+              19
+            ],
+            "lines": [
+              750,
+              767
+            ]
+          }
+        ],
+        "boundary": "Existing local primary-text cache read, no new PDF clone or extraction and no new source-extraction authoring."
+      }
+    },
+    {
+      "jurisdiction": "DE-TH",
+      "sourceExtraction": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "reviewedRows": [
+        {
+          "pointer": "/sourceGoals/2",
+          "sourceGoalId": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2025-1-cross-cutting-uebergreifende-kompetenzen-003-6216c7059e",
+          "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2025, S. 5",
+          "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2025, Uebergreifende Lernkompetenzen und digitale Mathematikwerkzeuge, Zeile 136"
+        },
+        {
+          "pointer": "/sourceGoals/4",
+          "sourceGoalId": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2025-1-cross-cutting-uebergreifende-kompetenzen-005-9f720a247e",
+          "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2025, S. 5",
+          "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2025, Uebergreifende Lernkompetenzen und digitale Mathematikwerkzeuge, Zeile 140"
+        },
+        {
+          "pointer": "/sourceGoals/25",
+          "sourceGoalId": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2025-1-cross-cutting-uebergreifende-kompetenzen-026-a11c48af98",
+          "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2025, S. 6",
+          "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2025, Uebergreifende Lernkompetenzen und digitale Mathematikwerkzeuge, Zeile 203"
+        },
+        {
+          "pointer": "/sourceGoals/130",
+          "sourceGoalId": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2025-4-1-analysis-007-302f60788f",
+          "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2025, S. 22",
+          "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2025, Qualifikationsphase: Analysis, Zeile 898"
+        },
+        {
+          "pointer": "/sourceGoals/134",
+          "sourceGoalId": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2025-4-1-analysis-011-361cec3c74",
+          "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2025, S. 22",
+          "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2025, Qualifikationsphase: Analysis, Zeile 909"
+        },
+        {
+          "pointer": "/sourceGoals/158",
+          "sourceGoalId": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2025-4-1-analysis-035-9f618d0be6",
+          "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2025, S. 23",
+          "sourceSpan": "Lehrplan Mathematik Gymnasium, Thueringen 2025, Qualifikationsphase: Analysis, Zeile 968"
+        }
+      ],
+      "boundedRationale": "Existing authoritative source extraction distinguishes2018transition and2025qualification scopes. Use current2025 cross-cutting visual representations/control/information and common polynomial-analysis entries; no new11S obligation for G8 and no promotion from phase metadata."
+    }
+  ],
+  "independentMechanicalChecks": {
+    "tenCurrentAuthorSourcesBoundAndExactJsonDeltaVerified": true,
+    "singleInsertedNode": {
+      "kind": "goalEntry",
+      "goalId": "7337049a-c85c-5b94-adaa-81dc93528bf8"
+    },
+    "anchorStructureId": "completion-existing-exams-d2560dc7-f29a-5e51-ba8c-ec2ca0fb8cc1",
+    "existingChildPreserved": "0c44524c-f617-5076-8acf-729cd5515c14",
+    "allThirteenCurrentOffersLackTaskAndSelectFiveWholeProcessContracts": true,
+    "allCorrespondingLkAndCombinedOffersAlreadySelectTask": true,
+    "allOtherCrossStageOffersInTheseJurisdictionsAlreadySelectTask": true,
+    "expectedNewTaskTargets": 13,
+    "nativeCandidatePropagationStillRequired": true
+  },
+  "implementationConditions": [
+    "Only ten bound single-goalEntry additions in the existing process assessment container; generated BW outputs follow their existing producers. Do not import the whole d256 canonical subtree.",
+    "The previously existing RP-SekII-GK source may be honestly inventoried as a pass-through99th produced view; this is not a new runtime scope or a new ordinary selection. Final bindings and actual99-output generation require separate mechanical review.",
+    "Actual full154 service projection must show exactly the13 approved new733 targets, no losses, no other assessment/memory/ordinary additions, no POnly promotion, one visible path and zero hierarchy/readiness regressions.",
+    "Keep all task bytes, tags, applicability, requires, coverage, canonical parents and stable goal IDs unchanged; no new official-source coverage or default phase inference.",
+    "Root owns activation after exact final bindings and existing strict producer gates. This scope approval is not a Stage materialization receipt or M7/CI approval."
+  ],
+  "notApproved": [
+    "Any additional target scope beyond the listed13.",
+    "A global GK/LK metadata change, any d047 target addition or promotion of factor/vertex/support IDs.",
+    "New mathematical payload, coverage, mastery-requalification or second pass status.",
+    "Changes to other four selection questions or acceptance of remaining Mathematics routes."
+  ]
+}

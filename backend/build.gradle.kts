@@ -1,6 +1,10 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.bundling.Zip
 import org.gradle.jvm.toolchain.JvmVendorSpec
+import org.gradle.api.tasks.testing.Test
+import java.security.MessageDigest
+import java.util.HexFormat
+import java.util.UUID
 
 plugins {
     id("org.springframework.boot") version "4.1.1"
@@ -73,8 +77,22 @@ dependencies {
     testImplementation("com.h2database:h2")
 }
 
+// One inventory binds full-context data and local code bytes for every selector.
+// The helper also consults Git's index, so sparse checkout cannot hide an input.
+val curriculumCompletionInputPaths = providers.exec {
+    workingDir(layout.projectDirectory.dir(".."))
+    commandLine("python3", "scripts/curriculum_completion_inputs.py")
+}.standardOutput.asText.map { output ->
+    (groovy.json.JsonSlurper().parseText(output) as List<*>).map { it as String }
+}
+val curriculumCompletionIntegrityInputs = files(curriculumCompletionInputPaths.map { paths ->
+    paths.map { layout.projectDirectory.dir("..").file(it).asFile }
+})
+
 tasks.test {
-    useJUnitPlatform()
+    // Only the real-data corpus method moves to the dedicated strict task.
+    // Its six semantic fixtures remain ordinary mandatory unit tests.
+    useJUnitPlatform { excludeTags("curriculum-corpus") }
     // Cached failure selectors may outlive JUnit discovery after a source edit.
     // Only the advisory preflight tolerates no matches; the full check stays strict.
     if (providers.gradleProperty("backendFailurePriorityPreflight").orNull == "true") {
@@ -133,11 +151,69 @@ tasks.test {
         "../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json"
     )).withPropertyName("canonicalMathExamEvaluation")
         .withPathSensitivity(PathSensitivity.RELATIVE)
+    // Obligation integrity uses every protected M7 curriculum through actual
+    // Level-2 projection, including course mergers and prerequisite context.
+    inputs.files(curriculumCompletionIntegrityInputs)
+        .withPropertyName("curriculumCompletionIntegrityInputs")
+        .withPathSensitivity(PathSensitivity.RELATIVE)
     // The suite runs 22 @SpringBootTest classes whose distinct property sets each pin their own
     // cached Spring context in this one JVM. 1536m stopped being enough when the Claude v1
     // connector added ten of them, and the executor died with "Java heap space" rather than a
     // test failure.
     maxHeapSize = "3g"
+}
+
+tasks.register<Test>("curriculumCompletionIntegrity") {
+    group = "verification"
+    description = "Strict real-curriculum audit; all protected M7 subjects unless one exact subject ID is selected."
+    testClassesDirs = sourceSets.test.get().output.classesDirs
+    classpath = sourceSets.test.get().runtimeClasspath
+    useJUnitPlatform { includeTags("curriculum-corpus") }
+    filter { includeTestsMatching("com.skillpilot.backend.completion.CurriculumCompletionIntegrityTest") }
+    maxParallelForks = 1
+    maxHeapSize = "1536m"
+    testLogging {
+        events("started", "passed", "skipped", "failed")
+        exceptionFormat = TestExceptionFormat.FULL
+    }
+    val subject = providers.gradleProperty("completionIntegritySubject")
+    // Malformed selectors get a safe failure-output directory, then the test
+    // rejects them after checking the complete protected inventory.
+    val key = subject.map { value ->
+        if (value.matches(Regex("[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}"))) value
+        else "subject-" + HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(value.toByteArray()))
+    }.orElse("all")
+    val reportDirectory = layout.buildDirectory.dir(key.map { "reports/curriculum-completion-integrity/$it" })
+    reports.junitXml.outputLocation.set(layout.buildDirectory.dir(key.map { "test-results/curriculumCompletionIntegrity/$it" }))
+    reports.html.outputLocation.set(layout.buildDirectory.dir(key.map { "reports/tests/curriculumCompletionIntegrity/$it" }))
+    binaryResultsDirectory.set(layout.buildDirectory.dir(key.map { "test-results/curriculumCompletionIntegrity/$it/binary" }))
+    inputs.files(curriculumCompletionIntegrityInputs)
+        .withPropertyName("curriculumCompletionIntegrityInputs").withPathSensitivity(PathSensitivity.RELATIVE)
+    inputs.property("subjectSelectorPresent", subject.isPresent)
+    inputs.property("subjectSelector", subject.orElse("<all-protected-subjects>"))
+    inputs.property("gitCommit", serverBuild)
+    inputs.property("ciRunId", providers.environmentVariable("GITHUB_RUN_ID").orElse("local"))
+    inputs.property("ciRunAttempt", providers.environmentVariable("GITHUB_RUN_ATTEMPT").orElse("local"))
+    outputs.dir(reportDirectory)
+    subject.orNull?.let { systemProperty("skillpilot.completion.integrity.subject", it) }
+    systemProperty("skillpilot.completion.integrity.inputs", reportDirectory.get().file("input-manifest.json").asFile.absolutePath)
+    doFirst {
+        val repositoryRoot = layout.projectDirectory.dir("..").asFile.canonicalFile
+        val hashes = curriculumCompletionIntegrityInputs.files.sortedBy { it.absolutePath }.associate { input ->
+            require(input.isFile) { "Missing curriculum integrity input: $input" }
+            input.relativeTo(repositoryRoot).invariantSeparatorsPath to
+                HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(input.readBytes()))
+        }
+        val manifest = reportDirectory.get().file("input-manifest.json").asFile
+        manifest.parentFile.mkdirs()
+        manifest.writeText(groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(mapOf(
+            "schemaVersion" to 1, "gitCommit" to serverBuild.get(), "subjectSelector" to subject.orNull,
+            "executionId" to UUID.randomUUID().toString(),
+            "ciRunId" to providers.environmentVariable("GITHUB_RUN_ID").orNull,
+            "ciRunAttempt" to providers.environmentVariable("GITHUB_RUN_ATTEMPT").orNull,
+            "files" to hashes
+        ))) + "\n")
+    }
 }
 
 val claudePublicationResources = layout.buildDirectory.dir("generated-resources/claude-plugin-publication")

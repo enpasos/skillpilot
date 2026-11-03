@@ -1,0 +1,273 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "authorIndependent": true,
+  "reviewKind": "WHOLE_DE_EN_CONTENT_AND_ORDINARY_RUBRIC_ONLY",
+  "authorRequest": {
+    "path": "tmp/approach-review-20261101/matrix-three-goal-own-task-candidate-20261103-v1/content-review-handoff.json",
+    "sha256": "d0bef971b4360450f750a458e93a09ff293d26a315a253b6b59c5ab53a84798e",
+    "bytes": 10380
+  },
+  "approvedWholeContent": {
+    "path": "tmp/approach-review-20261101/matrix-three-goal-own-task-candidate-20261103-v1/whole-content-draft.json",
+    "sha256": "f6f0fc4df2bfc3fc76d43a140207df4e73051c8fcab61ca3a281717ab62961cd",
+    "bytes": 27483
+  },
+  "authorEvidenceSuccessor": {
+    "path": "tmp/approach-review-20261101/matrix-three-goal-own-task-candidate-20261103-v1-author-evidence-r2/review-request.json",
+    "sha256": "6ff0c14364d779c0c12ad3e35ea7f231dc8af8ffa2ad64c8489eafe097691f74",
+    "bytes": 3073
+  },
+  "correctedAuthorCases": {
+    "path": "tmp/approach-review-20261101/matrix-three-goal-own-task-candidate-20261103-v1-author-evidence-r2/author-mathematics-and-rubric-counterchecks.r2.json",
+    "sha256": "0443bcee1de28b3f22e29a99cdd932cb83944eb3b6706cc9bd6e9b0b55a19aae",
+    "bytes": 33979
+  },
+  "correctedAuthorCaseReview": {
+    "onlyOriginalCaseChanged": "no-B-image",
+    "correctedTotalWithoutCap": 29,
+    "oneNewCase": "no-B-image-anywhere",
+    "newRawPoints": 28,
+    "newTotalAfterCap": 21,
+    "other20ProfilesWholeEqual": true,
+    "all22ScoreProfileArithmeticVerified": true,
+    "allOriginal24ArtifactsUnchanged": true
+  },
+  "independentReasoning": {
+    "path": "tmp/approach-review-20261101/astra-remaining-material-scope/matrix-three-goal-content-review-v29-20261103-v1/review.md",
+    "sha256": "bec7bf308dc28c61b35d6f554bcc2e7e08838cbc2ca90abe41b2d701b0b39336",
+    "bytes": 5622
+  },
+  "independentMathAndRubricChecks": {
+    "path": "tmp/approach-review-20261101/astra-remaining-material-scope/matrix-three-goal-content-review-v29-20261103-v1/independent-content-checks.json",
+    "sha256": "1d16643b3162875a78ba1fbf15b0cd3d87fa6c650bd6e04da8b5222cfe33ec23",
+    "bytes": 14909
+  },
+  "independentCheckSource": {
+    "path": "tmp/approach-review-20261101/astra-remaining-material-scope/matrix-three-goal-content-review-v29-20261103-v1/verify_content.py",
+    "sha256": "71c6337a8da15a3edc42e4a35ad23bad00b00c0dc345d7902cdbc19b0e048543",
+    "bytes": 7447
+  },
+  "approvedUtf8BodyHashes": {
+    "taskContent": "e763347b6c4f300e336a465773388db10ad89e9fa89a61adf7de6eff8650f438",
+    "taskContentEn": "ccfb2a6e11ea4fac6f63cb079bd85cdf377d1cf8e408569488be57121d21059b",
+    "solutionContent": "42a75518a59aad990289a628c5470fb9355cfe4ab1f681494b0b7c1223d7b655",
+    "solutionContentEn": "0b1db99ed4be3c1a018e3ba30277790a83355099914a069ad318b8b3d2aef88c"
+  },
+  "approvedScoring": {
+    "maxPoints": 30,
+    "passingPoints": 22,
+    "steps": [
+      {
+        "id": "a-basis",
+        "points": 2,
+        "description": "Bilder der drei Standardbasisvektoren aus der zentrischen Streckung hergeleitet, oder gleichwertig die allgemeine Koordinatenwirkung begründet: vollständig 2, sinnvoll teilweise 1.",
+        "descriptionEn": "Derives the three basis images from the central dilation, or equivalently justifies the general coordinate action: complete 2, meaningful partial work 1."
+      },
+      {
+        "id": "a-matrix",
+        "points": 1,
+        "description": "Z=diag(2,2,2) korrekt als Matrix zusammengestellt.",
+        "descriptionEn": "Correctly assembles Z=diag(2,2,2)."
+      },
+      {
+        "id": "a-point",
+        "points": 2,
+        "description": "Matrix-Vektor-Anwendung an p nachvollziehbar 1; Bildpunkt (4,2,6) korrekt 1. Fachlich richtige Folgearbeit getrennt anerkennen.",
+        "descriptionEn": "Traceable matrix-vector application to p 1; correct image (4,2,6) 1. Credit sound follow-through separately."
+      },
+      {
+        "id": "a-origin",
+        "points": 1,
+        "description": "Festbleiben des Ursprungs begründet.",
+        "descriptionEn": "Justifies that the origin is fixed."
+      },
+      {
+        "id": "a-direction-distance",
+        "points": 2,
+        "description": "Ursprungsstrahl wegen positiven Faktors erhalten begründet 1; Verdopplung des Ursprungsabstands begründet 1. Eine gemeinsame kurze allgemeine Erklärung genügt.",
+        "descriptionEn": "Justifies preservation of the ray because the factor is positive 1; justifies doubling the distance from the origin 1. One concise general explanation can cover both."
+      },
+      {
+        "id": "b-line-plane",
+        "points": 2,
+        "description": "Geradenansatz und Ebenenbedingung z+t=0 mit t=-z 1; daraus Bildform (x-z,y,0) hergeleitet 1. Gleichwertige geometrische Herleitung anerkennen.",
+        "descriptionEn": "Line and plane condition z+t=0 with t=-z 1; derives image formula (x-z,y,0) 1. Accept an equivalent geometric derivation."
+      },
+      {
+        "id": "b-columns-matrix",
+        "points": 2,
+        "description": "Standardbasisbilder oder korrekte Koeffizientenzuordnung zur Bildform 1; Q mit Zeilen (1,0,-1),(0,1,0),(0,0,0) korrekt 1.",
+        "descriptionEn": "Basis images or correct coefficient matching to the image formula 1; correct Q with rows (1,0,-1),(0,1,0),(0,0,0) 1."
+      },
+      {
+        "id": "b-point",
+        "points": 1,
+        "description": "Bildpunkt (-1,1,0) korrekt; sinnvoller Ansatz mit lokalem Rechenfehler kann 0,5 BE erhalten.",
+        "descriptionEn": "Correct image (-1,1,0); a sound setup with a local arithmetic error can earn 0.5 points."
+      },
+      {
+        "id": "b-fixed-plane",
+        "points": 1,
+        "description": "Alle Punkte der xy-Ebene bleiben fest, aus z=0 begründet.",
+        "descriptionEn": "Justifies that all points in the xy-plane are fixed using z=0."
+      },
+      {
+        "id": "b-lost-direction",
+        "points": 1,
+        "description": "Gleiches Bild von p und p+r rechnerisch oder geometrisch begründet; Verlust der Unterscheidbarkeit in dieser Richtung erkennbar.",
+        "descriptionEn": "Justifies the equal images of p and p+r by calculation or geometry, recognising loss of distinguishability along this direction."
+      },
+      {
+        "id": "b-repeat",
+        "points": 1,
+        "description": "Zweite Anwendung ändert das Bild nicht, mit fester Zielebene oder passender Rechnung begründet.",
+        "descriptionEn": "Justifies that applying the projection again does not change the image, using the fixed target plane or a suitable calculation."
+      },
+      {
+        "id": "b-xz",
+        "points": 1,
+        "description": "Orthogonale xz-Matrix diag(1,0,1) 0,5; Bild von P (2,0,3) 0,5.",
+        "descriptionEn": "Orthogonal xz matrix diag(1,0,1) 0.5; image of P (2,0,3) 0.5."
+      },
+      {
+        "id": "b-yz",
+        "points": 1,
+        "description": "Orthogonale yz-Matrix diag(0,1,1) 0,5; Bild von P (0,1,3) 0,5.",
+        "descriptionEn": "Orthogonal yz matrix diag(0,1,1) 0.5; image of P (0,1,3) 0.5."
+      },
+      {
+        "id": "c-column-one",
+        "points": 1,
+        "description": "Erste Standardbasisspalte aus e1=(d+n)/2 hergeleitet: (2,1,0). Gleichwertigen Weg anerkennen.",
+        "descriptionEn": "Derives first basis column (2,1,0) from e1=(d+n)/2, or an equivalent method."
+      },
+      {
+        "id": "c-column-two",
+        "points": 1,
+        "description": "Zweite Standardbasisspalte aus e2=(d-n)/2 hergeleitet: (1,2,0). Gleichwertigen Weg anerkennen.",
+        "descriptionEn": "Derives second basis column (1,2,0) from e2=(d-n)/2, or an equivalent method."
+      },
+      {
+        "id": "c-column-three",
+        "points": 1,
+        "description": "Dritte Standardbasisspalte (0,0,1) aus der festbleibenden senkrechten Richtung hergeleitet.",
+        "descriptionEn": "Derives third basis column (0,0,1) from its unchanged perpendicular direction."
+      },
+      {
+        "id": "c-matrix",
+        "points": 1,
+        "description": "Die hergeleiteten Spalten korrekt zu M mit Zeilen (2,1,0),(1,2,0),(0,0,1) zusammengestellt.",
+        "descriptionEn": "Correctly assembles the derived columns into M with rows (2,1,0),(1,2,0),(0,0,1)."
+      },
+      {
+        "id": "c-test-d",
+        "points": 1,
+        "description": "Md=(3,3,0)=3d als tatsächlichen Test berechnet und zugeordnet.",
+        "descriptionEn": "Calculates Md=(3,3,0)=3d and relates it to the requirement as an actual test."
+      },
+      {
+        "id": "c-test-n",
+        "points": 1,
+        "description": "Mn=(1,-1,0)=n als tatsächlichen Test berechnet und zugeordnet.",
+        "descriptionEn": "Calculates Mn=(1,-1,0)=n and relates it to the requirement as an actual test."
+      },
+      {
+        "id": "c-test-e3",
+        "points": 1,
+        "description": "Me3=(0,0,1)=e3 als tatsächlichen Test berechnet und zugeordnet.",
+        "descriptionEn": "Calculates Me3=(0,0,1)=e3 and relates it to the requirement as an actual test."
+      },
+      {
+        "id": "c-all-directions",
+        "points": 2,
+        "description": "Wirkung auf alle t*d durch Linearität oder Rechnung erklärt 1; gesamte senkrechte Ebene über (a,-a,b) oder Spann von n,e3 als fest begründet 1.",
+        "descriptionEn": "Explains the action on all t*d by linearity or calculation 1; justifies that the full perpendicular plane is fixed using (a,-a,b) or the span of n,e3 1."
+      },
+      {
+        "id": "c-point",
+        "points": 2,
+        "description": "Matrix-Vektor-Anwendung an p nachvollziehbar 1; korrektes Ergebnis (5,4,3) 1.",
+        "descriptionEn": "Traceable matrix-vector application to p 1; correct result (5,4,3) 1."
+      },
+      {
+        "id": "c-not-central",
+        "points": 1,
+        "description": "Mit einem nichtnulligen senkrechten Vektor den Unterschied zu 3I begründet.",
+        "descriptionEn": "Uses a nonzero perpendicular vector to justify the difference from 3I."
+      }
+    ]
+  },
+  "approvedRequiresProposal": [
+    "168d8879-0412-5524-94c5-c1d8169dbd65",
+    "55039f9c-4ebc-5115-add5-fae95b915e46",
+    "35558905-753d-5fcb-b25e-7f85ffdbff56"
+  ],
+  "approvedCoveredGoalIdsProposal": [
+    "168d8879-0412-5524-94c5-c1d8169dbd65",
+    "55039f9c-4ebc-5115-add5-fae95b915e46",
+    "35558905-753d-5fcb-b25e-7f85ffdbff56"
+  ],
+  "fullCurrentGoalsAndNeighborsBound": {
+    "path": "tmp/approach-review-20261101/matrix-three-goal-own-task-candidate-20261103-v1/whole-current-goals-and-neighbor-tasks.json",
+    "sha256": "c8a552b6a6d0a5d9f03a417fe5dbc8294fd5f15d7d598f55f4aa9af5d3be40c0",
+    "bytes": 26714
+  },
+  "currentCanon": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "a772d544fc3bf91047c887bb1017ff83b32b2f62bdd8ff0cc263d041917d9482",
+    "bytes": 4043037
+  },
+  "currentLedger": {
+    "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+    "sha256": "c44ea335e761fc25e41bc1f9f76d02589cfd14d0169fbf274c0b1d4cbc039709",
+    "bytes": 408436
+  },
+  "wholeContractFit": {
+    "35558905": "A: derive central-dilation matrix, apply to point, investigate origin/ray/distance",
+    "55039f9c": "B: derive oblique coordinate-plane projection, apply and investigate, add two coordinate-plane variants",
+    "168d8879": "C: construct directed-stretch matrix from requirements, calculate tests, justify whole directions"
+  },
+  "normativeScoreBoundary": {
+    "maxPoints": 30,
+    "passingPoints": 22,
+    "ordinaryTotalCap": 21,
+    "partPointTotals": [
+      8,
+      10,
+      12
+    ],
+    "rubricRows": 23,
+    "noAdditionalPartPassOrMasteryQualification": true,
+    "runtimeDoesNotReadRawPointsOrQualifyingEvidence": true,
+    "validExistingMasteryUnchanged": true,
+    "localArithmeticAndTraceableFollowThroughFairlyCredited": true,
+    "equivalentMethodsAndRelocatedWorkAccepted": true,
+    "B2OmissionWithActualB4ImagesDoesNotTriggerCap": true,
+    "generalCalculatedDirectionIdentityMayReplaceRepeatedSpecialCases": true,
+    "CNotCentralMayUseMpNotEqual3p": true
+  },
+  "verification": {
+    "independentExactMathChecks": 29,
+    "independentHypotheticalRubricCases": 14,
+    "sevenWholeCurrentGoalObjectsMatch": true,
+    "fullDEandENTextAnd23RubricRowsRead": true,
+    "twoActualLocalPreviewPngsVisuallyRead": true,
+    "authorFourStaticBrowserCasesBoundNotRerun": true,
+    "noProductionRendererOrRealHostClaim": true,
+    "onlyPinnedInputsCheckedUnchangedNotANew9512GlobalGuard": true
+  },
+  "scopeBoundary": {
+    "priorFirstScopeFoundation": {
+      "path": "tmp/approach-review-20261101/astra-remaining-material-scope/matrix-three-goal-authoring-scope-v29-20261103-v1/foundation-review.json",
+      "sha256": "5f0148d0a84a4bf7683c1fd2f619506c97e36179c5581942f3b08b7160ed1f0a",
+      "bytes": 3667
+    },
+    "noNewScopeApproval": true,
+    "noTaskPlacementActivated": true,
+    "noNewOfficialSourceCoverage": true,
+    "noNeighborRequiresOrCoverageChanges": true,
+    "laterGoalReleaseApplicabilityViewNativeSourceAndStageReviewRequired": true
+  },
+  "noRootMutationOrJvm": true
+}

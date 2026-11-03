@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS-local-author-validation",
+  "date": "2026-11-01",
+  "candidates": [
+    {
+      "file": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/cone-pyramid-limit.candidate.goal.json",
+      "goalId": "bc04599b-e498-53c8-96f5-850549bdde4f",
+      "candidateSha256": "ab7db8cfb75d90742856904841d6c7b5a2cb289feb90cba48162d76635a4b94c",
+      "draftSha256": "68a778f63b30c8f10bd523dd07cdbf79a0ae9d58aadc90b864d28d302d3c7d94",
+      "points": 6,
+      "markdownMathCounts": {
+        "task": 6,
+        "solution": 10,
+        "draft": 16
+      }
+    },
+    {
+      "file": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/geometry-combined.candidate.goal.json",
+      "goalId": "74ece0b9-7ef3-55da-b803-c62df477a69d",
+      "candidateSha256": "d2d8e313b55fb30fc98f61ea3844b47d1161cbe95723d96f8a4d60acc73c88b2",
+      "draftSha256": "a51e7ebd044fd5e991f52ba53bfc21cb0c6a602665b1ae93a766cc31cfa209d3",
+      "points": 16,
+      "markdownMathCounts": {
+        "task": 8,
+        "solution": 27,
+        "draft": 35
+      }
+    },
+    {
+      "file": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/space-applications.candidate.goal.json",
+      "goalId": "2189ca60-bce7-5cb7-9720-ffea24cc7f9d",
+      "candidateSha256": "5d836606e228f2bdaa4ed40c2dd72345d398d2efc0c7ba4905064454ae76b8fd",
+      "draftSha256": "201e1982f77baa471d8dcdcc9992a531527bffd9f37a7b9d74c243a06795e4f8",
+      "points": 11,
+      "markdownMathCounts": {
+        "task": 6,
+        "solution": 18,
+        "draft": 24
+      }
+    }
+  ],
+  "checks": [
+    "Exact JSON task/solution parity with GFM Markdown sections",
+    "All formulas parsed by KaTeX with throwOnError:true and strict:error",
+    "No doubled LaTeX backslashes",
+    "requires equals coveredGoalIds",
+    "Task point announcements equal rubric totals",
+    "Every rubric requires full score"
+  ],
+  "limitations": "Syntax, byte parity and author checks only; independent content/source/placement review, real-host rendering, exact-head integration and M7 remain pending."
+}

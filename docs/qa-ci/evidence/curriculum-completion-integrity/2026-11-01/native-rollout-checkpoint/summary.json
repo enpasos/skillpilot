@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "scope": "Native strict rollout QA, generated curriculum status, and protected-floor checkpoint after prism + first21 existing endpoints + workshop; no new source-stage candidate integrated",
+  "result": "PASS for existing native QA; completion integrity and source-stage closure remain open",
+  "checkpointInputFilesMatchedAfterCommands": 123,
+  "changedCheckpointInputs": [],
+  "commands": [
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/native-rollout-checkpoint/deep-understanding-rollout-check.receipt.json",
+      "sha256": "a892e0245fcd9da96f28b7cd7367108ce39bf05bad11733d5eb25afd8ae281cf",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "-s",
+        "quality:deep-understanding-rollout:check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/native-rollout-checkpoint/curriculum-quality-status-generation.receipt.json",
+      "sha256": "c23d9a2fd5f17407663b6f69aeabb09851253eb111e3d2f8ec2333bde21114b8",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "-s",
+        "quality:curriculum-status"
+      ],
+      "exitCode": 0
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/native-rollout-checkpoint/protected-maturity-floors.receipt.json",
+      "sha256": "d92bca1741a7669d052ba68a4ad61c013d0f2b956a1dd756da50c19b41cef725",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "-s",
+        "check:curriculum-maturity-floors"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "protectedFloorCount": 10,
+  "protectedFloorPolicyUnchanged": true,
+  "protectedCurricula": [
+    {
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "subject": "Biologie",
+      "maturityBefore": "M7",
+      "maturityAfter": "M7",
+      "newNonPassingRules": [],
+      "nonPassingRules": []
+    },
+    {
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "subject": "Chemie",
+      "maturityBefore": "M7",
+      "maturityAfter": "M7",
+      "newNonPassingRules": [],
+      "nonPassingRules": []
+    },
+    {
+      "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+      "subject": "Deutsch",
+      "maturityBefore": "M6",
+      "maturityAfter": "M6",
+      "newNonPassingRules": [],
+      "nonPassingRules": [
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+      "subject": "Geschichte",
+      "maturityBefore": "M6",
+      "maturityAfter": "M6",
+      "newNonPassingRules": [],
+      "nonPassingRules": [
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+      "subject": "Informatik",
+      "maturityBefore": "M6",
+      "maturityAfter": "M6",
+      "newNonPassingRules": [],
+      "nonPassingRules": [
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+      "subject": "Latein",
+      "maturityBefore": "M6",
+      "maturityAfter": "M6",
+      "newNonPassingRules": [],
+      "nonPassingRules": [
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "subject": "Mathematik",
+      "maturityBefore": "M7",
+      "maturityAfter": "M7",
+      "newNonPassingRules": [],
+      "nonPassingRules": []
+    },
+    {
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "subject": "Physik",
+      "maturityBefore": "M7",
+      "maturityAfter": "M7",
+      "newNonPassingRules": [],
+      "nonPassingRules": []
+    },
+    {
+      "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+      "subject": "Politik und Wirtschaft",
+      "maturityBefore": "M6",
+      "maturityAfter": "M6",
+      "newNonPassingRules": [],
+      "nonPassingRules": [
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
+        }
+      ]
+    },
+    {
+      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "subject": "Wirtschaftswissenschaften",
+      "maturityBefore": "M7",
+      "maturityAfter": "M7",
+      "newNonPassingRules": [],
+      "nonPassingRules": []
+    }
+  ],
+  "newNonPassingRuleCount": 0,
+  "generatedStatusFiles": [
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.json",
+      "sha256": "ffa8af63af341593359bdba19171374592ac8c5eb18822278c8d7c086912de79",
+      "sha256Before": "51725a31b335ac7a2cb12da5f2ca6700ff4c5542280ada92d03dbcd8eaa91740"
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.md",
+      "sha256": "f49f8a9ea75fe7e98cb13ff4f0559403e4e516823130049c6523daea43464d64",
+      "sha256Before": "4235570a69969d373f26b14227cc102eb948c0a8154edb47ac1ecc2d446fe41a"
+    }
+  ],
+  "currentCompletionIntegrityReport": {
+    "path": "backend/build/reports/curriculum-completion-integrity.json",
+    "sha256": "fb4f2d3e4881661220bb902049e971845b7124cc6f2603e2bb06b11a4ee9ecbe",
+    "rerunAtThisCheckpoint": false,
+    "reason": "Only registry review-status metadata changed after the sealed current matrix; actual target and graph inputs remain unchanged.",
+    "checkedOfferedScopes": 584,
+    "failedOfferedScopes": 527,
+    "publicationHold": true
+  },
+  "historicalEvidenceRebound": false,
+  "newSourceStageClaims": false,
+  "otherSubjectsContentChanged": false,
+  "humanApproval": false,
+  "m7Acceptance": false,
+  "publicationApproval": false,
+  "allCurriculaGlobalAndScopeRulesCompared": true,
+  "newNonPassingRulesAcrossAllCurriculaAndScopes": [],
+  "generatedStatusDiffSummary": "Only generated timestamp and Mathematics +2 practice assessments / associated counts differ; no other curriculum entry changes."
+}

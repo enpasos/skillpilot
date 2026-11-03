@@ -474,6 +474,10 @@ jobs:
         run: npm run test:hard-learning-routes
       - name: Test reviewed canonical Mathematics Sek-I exam routes
         run: npm run test:canonical-math-sek1-reviewed-exam-routes
+      - name: Test reviewed Mathematics assessment placements
+        run: npm run test:math-reviewed-assessment-placements
+      - name: Test Mathematics country and stage composition rules
+        run: npm run test:math-country-seki-composition-views
       - name: Test Q4 Caterer exam coverage and scope
         run: npm run test:math-q4-caterer-exam-scope
       - name: Test learner-facing composition labels
@@ -496,6 +500,8 @@ jobs:
         run: npm run check:he-math-duration-projection
       - name: Check generated Math G8/G9 Composition Views
         run: npm run check:math-duration-composition-views
+      - name: Check generated Mathematics country and stage Composition Views
+        run: npm run check:math-country-seki-composition-views
       - name: Check generated German Sek-I Composition Views
         run: npm run check:german-seki-composition-views
       - name: Check generated History Sek-I Composition Views

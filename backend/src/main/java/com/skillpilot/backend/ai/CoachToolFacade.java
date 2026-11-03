@@ -555,7 +555,7 @@ public class CoachToolFacade {
                 String selectedGoalId = extractGoalIdFromMasteryRequest(effectiveRequest);
                 if (selectedGoalId != null && !selectedGoalId.isBlank()) {
                     try {
-                        learnerService.setActiveGoal(skillpilotId, selectedGoalId);
+                        learnerService.setActiveGoalAutomatically(skillpilotId, selectedGoalId);
                         state = learnerService.getCoachLearnerState(skillpilotId);
                         requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
                     } catch (ResponseStatusException exception) {
@@ -573,6 +573,9 @@ public class CoachToolFacade {
         }
 
         try {
+            if (effectiveRequest.mastery().containsValue(1.0)) {
+                learnerService.assertCurrentAssessmentStarted(skillpilotId, extractGoalIdFromMasteryRequest(effectiveRequest));
+            }
             return MasteryResult.updated(learnerService.setMastery(skillpilotId, effectiveRequest));
         } catch (ResponseStatusException exception) {
             if (HttpStatus.CONFLICT.equals(exception.getStatusCode())) {
@@ -675,6 +678,7 @@ public class CoachToolFacade {
                 || !coachStateProjection.isExamReadyForHardCheck(active)) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "The cited goal is not the active exam goal.");
         }
+        learnerService.assertCurrentAssessmentStarted(skillpilotId, request.goalId());
         ExamData exam = active.examData();
         if (exam.getSolutionContent() == null || exam.getSolutionContent().isBlank()) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "The active exam has no released evaluation data.");

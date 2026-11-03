@@ -1,0 +1,1457 @@
+import assert from 'node:assert/strict'
+import './learnerPlanningScope.test'
+
+import {
+  TEACHER_COURSE_PLAN_MAX_REVISION_HISTORY,
+  type LearnerCoursePlanBaseline,
+  type LearnerCoursePlanLandscapeBaseline,
+  type TeacherCoursePlan,
+  type TeacherCoursePlanBlock,
+} from '../coursePlanTypes'
+import type { UiGoal } from '../goalTypes'
+import {
+  addCoursePlanDays,
+  appendCourseCoverageAttestation,
+  appendCourseCoverageEvent,
+  assignAtomicGoalsToLearningBlocks,
+  countCoursePlanWorkdaysInclusive,
+  createTeacherCoursePlan,
+  deleteTeacherCoursePlans,
+  evaluateTeacherCoursePlan,
+  isCourseGoalCovered,
+  loadTeacherCoursePlan,
+  migrateTeacherCoursePlanBaseline,
+  normalizeTeacherCoursePlan,
+  parseCoursePlanDate,
+  parseTeacherCoursePlanStore,
+  resolveAtomicGoalDescendants,
+  reviseTeacherCoursePlan,
+  saveTeacherCoursePlan,
+  toggleCourseGoalCoverage,
+  type StorageWriter,
+  undoLastTeacherCoursePlanRevision,
+} from './localTeacherCoursePlan'
+
+function uiGoal(
+  id: string,
+  contains: string[] = [],
+  type: UiGoal['type'] = contains.length > 0 ? 'cluster' : 'atomic',
+): UiGoal {
+  return {
+    id,
+    title: id,
+    description: id,
+    phase: 'GLOBAL',
+    themenfeld: '',
+    area: '',
+    level: 1,
+    core: true,
+    weight: 1,
+    leitideen: [],
+    kompetenzen: [],
+    sourceRef: '',
+    requires: [],
+    contains,
+    examples: [],
+    type,
+  }
+}
+
+function goalMap(...goals: UiGoal[]): Map<string, UiGoal> {
+  return new Map(goals.map((goal) => [goal.id, goal]))
+}
+
+function requirePlan(plan: TeacherCoursePlan | null): TeacherCoursePlan {
+  assert(plan, 'expected a valid course plan')
+  return plan
+}
+
+function createPlan(classId = 'physics-lk'): TeacherCoursePlan {
+  return requirePlan(createTeacherCoursePlan({
+    classId,
+    createdOn: '2026-08-01',
+    recordedAt: '2026-08-01T08:00:00.000Z',
+    schoolYearLabel: '2026/27',
+  }))
+}
+
+function addBlocks(
+  plan: TeacherCoursePlan,
+  blocks: readonly TeacherCoursePlanBlock[],
+  changedOn = '2026-08-01',
+): TeacherCoursePlan {
+  return requirePlan(reviseTeacherCoursePlan(plan, {
+    blocks,
+    changedOn,
+    recordedAt: `${changedOn}T09:00:00.000Z`,
+  }))
+}
+
+const atoms = Array.from({ length: 10 }, (_, index) => uiGoal(`g${index + 1}`))
+const fullGoalIndex = goalMap(uiGoal('root', atoms.map(({ id }) => id)), ...atoms)
+
+// Calendar dates never round-trip through local time and workdays are Monday-Friday.
+assert.deepEqual(parseCoursePlanDate('2024-02-29'), {
+  value: '2024-02-29',
+  year: 2024,
+  month: 2,
+  day: 29,
+  epochDay: 19782,
+})
+assert.equal(parseCoursePlanDate('2023-02-29'), null)
+assert.equal(parseCoursePlanDate('2026-8-01'), null)
+assert.equal(addCoursePlanDays('2026-03-29', 1), '2026-03-30')
+assert.equal(countCoursePlanWorkdaysInclusive('2026-08-01', '2026-08-09'), 5)
+assert.equal(countCoursePlanWorkdaysInclusive('2026-08-09', '2026-08-01'), null)
+
+// Visible projection children override canonical contains; missing goals and cycles fail closed.
+const projectedIndex = goalMap(
+  uiGoal('projected-root', ['missing-in-canonical']),
+  uiGoal('a'),
+  uiGoal('b'),
+)
+const projected = resolveAtomicGoalDescendants(
+  'projected-root',
+  projectedIndex,
+  new Map([['projected-root', ['b', 'a']]]),
+)
+assert.equal(projected.quality.status, 'complete')
+assert.deepEqual(projected.atomicGoalIds, ['b', 'a'])
+const missing = resolveAtomicGoalDescendants('projected-root', projectedIndex)
+assert.equal(missing.quality.status, 'invalid')
+assert.deepEqual(missing.atomicGoalIds, [])
+const cyclicIndex = goalMap(uiGoal('cycle-a', ['cycle-b']), uiGoal('cycle-b', ['cycle-a']))
+assert.equal(resolveAtomicGoalDescendants('cycle-a', cyclicIndex).quality.status, 'invalid')
+
+// Direct composition goal entries may intentionally hide canonical cluster
+// children for presentation. They stay non-atomic and do not invalidate real
+// atomic siblings of a broader planning section.
+const opaqueCompositionCluster = {
+  ...uiGoal('opaque-composition-cluster', [], 'cluster'),
+  extendedData: { compositionEntryKind: 'goalEntry' },
+}
+const opaqueCompositionIndex = goalMap(
+  uiGoal('composition-section', ['a', opaqueCompositionCluster.id]),
+  uiGoal('a'),
+  opaqueCompositionCluster,
+)
+const opaqueCompositionResolution = resolveAtomicGoalDescendants(
+  'composition-section',
+  opaqueCompositionIndex,
+)
+assert.equal(opaqueCompositionResolution.quality.status, 'complete')
+assert.deepEqual(opaqueCompositionResolution.atomicGoalIds, ['a'])
+assert.equal(
+  resolveAtomicGoalDescendants(opaqueCompositionCluster.id, opaqueCompositionIndex).quality.status,
+  'complete',
+)
+assert.deepEqual(
+  resolveAtomicGoalDescendants(opaqueCompositionCluster.id, opaqueCompositionIndex).atomicGoalIds,
+  [],
+)
+assert.equal(
+  resolveAtomicGoalDescendants(
+    'ordinary-empty-cluster',
+    goalMap(uiGoal('ordinary-empty-cluster', [], 'cluster')),
+  ).quality.status,
+  'insufficient',
+)
+
+// Explicit role projection can remove every child of a valid canonical cluster.
+// It contributes no targets, but must not hide the enclosing school stage.
+const roleFilteredCluster = {
+  ...uiGoal('role-filtered-cluster', [], 'cluster'),
+  extendedData: { compositionEmptyAfterRoleProjection: true },
+}
+const roleFilteredIndex = goalMap(
+  uiGoal('sek-ii', ['a', roleFilteredCluster.id]),
+  uiGoal('a'),
+  roleFilteredCluster,
+)
+assert.deepEqual(resolveAtomicGoalDescendants('sek-ii', roleFilteredIndex).atomicGoalIds, ['a'])
+assert.equal(resolveAtomicGoalDescendants('sek-ii', roleFilteredIndex).quality.status, 'complete')
+assert.deepEqual(resolveAtomicGoalDescendants(roleFilteredCluster.id, roleFilteredIndex).atomicGoalIds, [])
+// The marker is not permission to ignore a broken sibling or missing reference.
+roleFilteredIndex.set('broken-section', uiGoal('broken-section', [roleFilteredCluster.id, 'missing']))
+assert.equal(resolveAtomicGoalDescendants('broken-section', roleFilteredIndex).quality.status, 'invalid')
+roleFilteredIndex.set('empty-source', uiGoal('empty-source', [], 'cluster'))
+roleFilteredIndex.set('broken-section', uiGoal('broken-section', [roleFilteredCluster.id, 'empty-source']))
+assert.equal(resolveAtomicGoalDescendants('broken-section', roleFilteredIndex).quality.status, 'insufficient')
+
+const staleMilestonePlan = addBlocks(createPlan('stale-milestone'), [{
+  id: 'stale-milestone-block',
+  kind: 'milestone',
+  title: 'Abituraufgaben abgeschlossen',
+  goalId: 'goal-no-longer-in-scope',
+  date: '2026-08-21',
+}])
+const staleMilestoneEvaluation = evaluateTeacherCoursePlan(
+  staleMilestonePlan,
+  fullGoalIndex,
+  '2026-08-14',
+)
+assert.equal(staleMilestoneEvaluation.quality.status, 'invalid')
+assert.equal(staleMilestoneEvaluation.metrics, null)
+
+// Exam topic roots are persistent deadline metadata, independent of scheduled
+// work, prior mastery, and requires. The visible contains projection is binding.
+const examScopeRoots = ['projected-root', 'b']
+const examScopePlan = addBlocks(createPlan('exam-scope'), [{
+  id: 'exam-scope-block', kind: 'milestone', title: 'Klausur',
+  goalIds: examScopeRoots, date: '2026-08-21',
+}])
+examScopeRoots.push('unwanted-later-mutation')
+assert.deepEqual(examScopePlan.blocks[0], {
+  id: 'exam-scope-block', kind: 'milestone', title: 'Klausur',
+  goalIds: ['projected-root', 'b'], date: '2026-08-21',
+})
+const examScopeEvaluation = evaluateTeacherCoursePlan(
+  examScopePlan, projectedIndex, '2026-08-14', new Map([['projected-root', ['a', 'b']]]),
+)
+assert.notEqual(examScopeEvaluation.quality.status, 'invalid')
+assert.equal(examScopeEvaluation.metrics?.plannedGoalCount, 0)
+assert.deepEqual(examScopeEvaluation.assignments, [])
+assert.deepEqual(examScopeEvaluation.metrics?.nextMilestone?.goalIds, ['projected-root', 'b'])
+assert.equal(evaluateTeacherCoursePlan(examScopePlan, projectedIndex, '2026-08-14').quality.status, 'invalid')
+
+const examScopeBlock = examScopePlan.blocks[0]!
+assert.equal(examScopeBlock.kind, 'milestone')
+if (examScopeBlock.kind !== 'milestone') throw new Error('expected exam scope block')
+const precedencePlan = normalizeTeacherCoursePlan({
+  ...examScopePlan,
+  blocks: [{ ...examScopeBlock, goalId: 'missing-legacy-target', goalIds: [] }],
+}).plan
+assert(precedencePlan)
+assert.deepEqual(precedencePlan.blocks[0], {
+  id: examScopeBlock.id, kind: 'milestone', title: examScopeBlock.title,
+  goalIds: [], date: examScopeBlock.date,
+})
+assert.notEqual(evaluateTeacherCoursePlan(precedencePlan, projectedIndex, '2026-08-14').quality.status, 'invalid')
+for (const invalidGoalIds of [null, 'a', ['a', 'a'], ['a', ' a '], [''], ['__proto__'], [42],
+  Array.from({ length: 10_001 }, (_, index) => `topic-${index}`)]) {
+  assert.equal(normalizeTeacherCoursePlan({
+    ...examScopePlan, blocks: [{ ...examScopeBlock, goalIds: invalidGoalIds }],
+  }).plan, null, 'invalid or oversized topic root lists fail closed')
+}
+const tooManyRootsAcrossExams = ['first', 'second'].map((id) => ({
+  ...examScopeBlock, id, goalIds: Array.from({ length: 5_001 }, (_, index) => `topic-${index}`),
+}))
+assert.equal(normalizeTeacherCoursePlan({ ...examScopePlan, blocks: tooManyRootsAcrossExams }).plan, null)
+
+const changedExamScopePlan = addBlocks(examScopePlan, [{ ...examScopeBlock, goalIds: ['a'] }], '2026-08-02')
+const previousExamScope = changedExamScopePlan.revisionHistory.at(-1)?.blocks[0]
+assert(previousExamScope?.kind === 'milestone')
+assert.deepEqual(previousExamScope.goalIds, ['projected-root', 'b'])
+assert.notEqual(previousExamScope.goalIds, examScopeBlock.goalIds)
+const restoredExamScopePlan = requirePlan(undoLastTeacherCoursePlanRevision(changedExamScopePlan, {
+  changedOn: '2026-08-03', recordedAt: '2026-08-03T10:00:00.000Z',
+}))
+assert.deepEqual(restoredExamScopePlan.blocks[0], examScopeBlock)
+const examScopeStorage = new Map<string, string>()
+const examScopeStorageAdapter = {
+  getItem: (key: string) => examScopeStorage.get(key) ?? null,
+  setItem: (key: string, value: string) => { examScopeStorage.set(key, value) },
+}
+assert.equal(saveTeacherCoursePlan(restoredExamScopePlan, examScopeStorageAdapter).ok, true)
+assert.deepEqual(loadTeacherCoursePlan('exam-scope', examScopeStorageAdapter).plan, restoredExamScopePlan)
+const staleAdditionalRootPlan = addBlocks(createPlan('stale-additional-root'), [{
+  ...examScopeBlock, goalIds: ['root', 'goal-no-longer-in-scope'],
+}])
+assert.equal(evaluateTeacherCoursePlan(staleAdditionalRootPlan, fullGoalIndex, '2026-08-14').quality.status, 'invalid')
+const invisibleExamTopicPlan = addBlocks(createPlan('empty-exam-topic'), [{
+  ...examScopeBlock, goalIds: [roleFilteredCluster.id],
+}])
+assert.equal(evaluateTeacherCoursePlan(invisibleExamTopicPlan, roleFilteredIndex, '2026-08-14').quality.status, 'invalid')
+
+// Overlapping atoms belong exclusively to the chronologically first learning block.
+const overlapIndex = goalMap(
+  uiGoal('early-root', ['g1', 'g2']),
+  uiGoal('late-root', ['g2', 'g3']),
+  ...atoms.slice(0, 3),
+)
+const overlapPlan = addBlocks(createPlan(), [
+  {
+    id: 'late',
+    kind: 'learning',
+    goalId: 'late-root',
+    startDate: '2026-08-10',
+    endDate: '2026-08-14',
+  },
+  {
+    id: 'early',
+    kind: 'learning',
+    goalId: 'early-root',
+    startDate: '2026-08-03',
+    endDate: '2026-08-07',
+  },
+])
+const overlapAssignments = assignAtomicGoalsToLearningBlocks(overlapPlan, overlapIndex)
+assert.equal(overlapAssignments.quality.status, 'complete')
+assert.deepEqual(overlapAssignments.assignments, [
+  {
+    blockId: 'early',
+    goalId: 'early-root',
+    scopeAtomicGoalIds: ['g1', 'g2'],
+    atomicGoalIds: ['g1', 'g2'],
+    duplicateAtomicGoalIds: [],
+  },
+  {
+    blockId: 'late',
+    goalId: 'late-root',
+    scopeAtomicGoalIds: ['g2', 'g3'],
+    atomicGoalIds: ['g3'],
+    duplicateAtomicGoalIds: ['g2'],
+  },
+])
+
+// Teacher evaluation and learner publication share one stable prerequisite
+// order. Effective and fallback requires may point at clusters, whose atoms
+// are expanded before Kahn ordering while unrelated authored order stays stable.
+const effectivePrerequisite = uiGoal('effective-prerequisite')
+const fallbackPrerequisite = uiGoal('fallback-prerequisite')
+const prerequisiteOrderIndex = goalMap(
+  uiGoal('prerequisite-order-root', [
+    'effective-dependent',
+    'effective-prerequisite-cluster',
+    'fallback-dependent',
+    'fallback-prerequisite-cluster',
+  ]),
+  {
+    ...uiGoal('effective-dependent'),
+    effectiveRequires: ['effective-prerequisite-cluster'],
+  },
+  uiGoal('effective-prerequisite-cluster', [effectivePrerequisite.id]),
+  effectivePrerequisite,
+  {
+    ...uiGoal('fallback-dependent'),
+    requires: ['fallback-prerequisite-cluster'],
+  },
+  uiGoal('fallback-prerequisite-cluster', [fallbackPrerequisite.id]),
+  fallbackPrerequisite,
+)
+const prerequisiteOrderPlan = addBlocks(createPlan('prerequisite-order'), [{
+  id: 'prerequisite-order-block',
+  kind: 'learning',
+  goalId: 'prerequisite-order-root',
+  startDate: '2026-09-01',
+  endDate: '2026-09-04',
+}])
+const prerequisiteOrderAssignments = assignAtomicGoalsToLearningBlocks(
+  prerequisiteOrderPlan,
+  prerequisiteOrderIndex,
+)
+assert.equal(prerequisiteOrderAssignments.quality.status, 'complete')
+assert.deepEqual(prerequisiteOrderAssignments.assignments[0]?.atomicGoalIds, [
+  'effective-prerequisite',
+  'effective-dependent',
+  'fallback-prerequisite',
+  'fallback-dependent',
+])
+const prerequisiteOrderEvaluation = evaluateTeacherCoursePlan(
+  prerequisiteOrderPlan,
+  prerequisiteOrderIndex,
+  '2026-09-01',
+)
+assert.equal(prerequisiteOrderEvaluation.quality.status, 'insufficient')
+assert.deepEqual(prerequisiteOrderEvaluation.metrics?.dueGoalIds, ['effective-prerequisite'])
+
+// Cross-block dependencies use the same immutable global slots as the backend.
+// EDF completes the earlier-starting Sek-I block before the dependent, so the
+// already valid authored prefix remains untouched.
+const crossBlockPrerequisiteIndex = goalMap(
+  uiGoal('sek-one-root', ['sek-one-unrelated', 'prerequisite']),
+  uiGoal('sek-one-unrelated'),
+  uiGoal('prerequisite'),
+  uiGoal('sek-two-root', ['dependent']),
+  { ...uiGoal('dependent'), requires: ['prerequisite'] },
+)
+const crossBlockPrerequisitePlan = addBlocks(createPlan('cross-block-prerequisite'), [
+  {
+    id: 'sek-one-block',
+    kind: 'learning',
+    goalId: 'sek-one-root',
+    startDate: '2026-09-07',
+    endDate: '2026-09-11',
+  },
+  {
+    id: 'sek-two-block',
+    kind: 'learning',
+    goalId: 'sek-two-root',
+    startDate: '2026-09-08',
+    endDate: '2026-09-11',
+  },
+])
+const crossBlockPrerequisiteAssignments = assignAtomicGoalsToLearningBlocks(
+  crossBlockPrerequisitePlan,
+  crossBlockPrerequisiteIndex,
+)
+assert.equal(crossBlockPrerequisiteAssignments.quality.status, 'complete')
+assert.deepEqual(crossBlockPrerequisiteAssignments.assignments, [
+  {
+    blockId: 'sek-one-block',
+    goalId: 'sek-one-root',
+    scopeAtomicGoalIds: ['sek-one-unrelated', 'prerequisite'],
+    atomicGoalIds: ['sek-one-unrelated', 'prerequisite'],
+    duplicateAtomicGoalIds: [],
+  },
+  {
+    blockId: 'sek-two-block',
+    goalId: 'sek-two-root',
+    scopeAtomicGoalIds: ['dependent'],
+    atomicGoalIds: ['dependent'],
+    duplicateAtomicGoalIds: [],
+  },
+])
+assert.deepEqual(
+  evaluateTeacherCoursePlan(
+    crossBlockPrerequisitePlan,
+    crossBlockPrerequisiteIndex,
+    '2026-09-08',
+  ).metrics?.dueGoalIds,
+  ['sek-one-unrelated'],
+)
+assert.deepEqual(
+  evaluateTeacherCoursePlan(
+    crossBlockPrerequisitePlan,
+    crossBlockPrerequisiteIndex,
+    '2026-09-09',
+  ).metrics?.dueGoalIds,
+  ['sek-one-unrelated', 'prerequisite'],
+)
+assert.deepEqual(
+  assignAtomicGoalsToLearningBlocks(
+    crossBlockPrerequisitePlan,
+    crossBlockPrerequisiteIndex,
+  ),
+  crossBlockPrerequisiteAssignments,
+  'cross-block prerequisite repair is deterministic and idempotent',
+)
+
+// EDF handles the earlier B deadline before A, so this overlapping prerequisite
+// graph is already valid and the authored prefixes remain byte-for-byte stable.
+const combinedRepairIndex = goalMap(
+  uiGoal('combined-a-root', ['a0', 'a1']),
+  { ...uiGoal('a0'), requires: ['b0', 'b1'] },
+  { ...uiGoal('a1'), requires: ['b1'] },
+  uiGoal('combined-b-root', ['b0', 'b1']),
+  uiGoal('b0'),
+  uiGoal('b1'),
+)
+const combinedRepairAssignments = assignAtomicGoalsToLearningBlocks(
+  addBlocks(createPlan('combined-cross-block-repair'), [
+    {
+      id: 'combined-a-block',
+      kind: 'learning',
+      goalId: 'combined-a-root',
+      startDate: '2026-09-07',
+      endDate: '2026-09-11',
+    },
+    {
+      id: 'combined-b-block',
+      kind: 'learning',
+      goalId: 'combined-b-root',
+      startDate: '2026-09-07',
+      endDate: '2026-09-09',
+    },
+  ]),
+  combinedRepairIndex,
+)
+assert.equal(combinedRepairAssignments.quality.status, 'complete')
+assert.deepEqual(
+  combinedRepairAssignments.assignments.find(({ blockId }) => blockId === 'combined-a-block')
+    ?.atomicGoalIds,
+  ['a0', 'a1'],
+)
+assert.deepEqual(
+  combinedRepairAssignments.assignments.find(({ blockId }) => blockId === 'combined-b-block')
+    ?.atomicGoalIds,
+  ['b0', 'b1'],
+)
+
+// The actual global slot date is authoritative. With two tied one-atom blocks,
+// an authored dependent-first block order is unsatisfiable because there is no
+// within-block reorder that can move the prerequisite into the first slot.
+const cumulativeOnlyViolation = assignAtomicGoalsToLearningBlocks(
+  addBlocks(createPlan('cumulative-only-prerequisite-violation'), [
+    {
+      id: 'cumulative-dependent-block',
+      kind: 'learning',
+      goalId: 'sek-two-root',
+      startDate: '2026-09-07',
+      endDate: '2026-09-11',
+    },
+    {
+      id: 'cumulative-prerequisite-block',
+      kind: 'learning',
+      goalId: 'prerequisite',
+      startDate: '2026-09-07',
+      endDate: '2026-09-11',
+    },
+  ]),
+  crossBlockPrerequisiteIndex,
+)
+assert.equal(cumulativeOnlyViolation.quality.status, 'invalid')
+assert.equal(
+  cumulativeOnlyViolation.quality.issues[0]?.code,
+  'CP-GOAL-PREREQUISITE-SCHEDULE',
+)
+
+const overlongPrerequisiteSchedule = assignAtomicGoalsToLearningBlocks(
+  addBlocks(createPlan('overlong-prerequisite-schedule'), [{
+    id: 'overlong-block',
+    kind: 'learning',
+    goalId: 'overlong-root',
+    startDate: '2026-01-01',
+    endDate: '2030-12-31',
+  }]),
+  goalMap(
+    uiGoal('overlong-root', ['overlong-prerequisite', 'overlong-dependent']),
+    uiGoal('overlong-prerequisite'),
+    { ...uiGoal('overlong-dependent'), requires: ['overlong-prerequisite'] },
+  ),
+)
+assert.equal(overlongPrerequisiteSchedule.quality.status, 'invalid')
+assert.equal(
+  overlongPrerequisiteSchedule.quality.issues[0]?.code,
+  'CP-GOAL-PREREQUISITE-SCHEDULE',
+)
+
+// The immutable-slot scheduler scales with blocks plus atoms instead of a
+// day-by-goal sweep, so a valid 1,000-workday plan stays usable.
+const operationBudgetAtomIds = Array.from(
+  { length: 8_000 },
+  (_, index) => `budget-atom-${index}`,
+)
+const operationBudgetGoals = operationBudgetAtomIds.map((goalId, index) => (
+  index === operationBudgetAtomIds.length - 1
+    ? { ...uiGoal(goalId), requires: [operationBudgetAtomIds[0]!] }
+    : uiGoal(goalId)
+))
+const operationBudgetSchedule = assignAtomicGoalsToLearningBlocks(
+  addBlocks(createPlan('operation-budget-schedule'), [{
+    id: 'operation-budget-block',
+    kind: 'learning',
+    goalId: 'operation-budget-root',
+    startDate: '2026-01-05',
+    endDate: '2029-11-03',
+  }]),
+  goalMap(
+    uiGoal('operation-budget-root', operationBudgetAtomIds),
+    ...operationBudgetGoals,
+  ),
+)
+assert.equal(countCoursePlanWorkdaysInclusive('2026-01-05', '2029-11-03'), 1_000)
+assert.equal(operationBudgetSchedule.quality.status, 'complete')
+
+// A fixed one-day dependent block before a fixed one-day prerequisite block
+// cannot be repaired by reordering. Such a plan must not be marked ready.
+const impossibleCrossBlockSchedule = assignAtomicGoalsToLearningBlocks(
+  addBlocks(createPlan('impossible-cross-block-prerequisite'), [
+    {
+      id: 'dependent-block',
+      kind: 'learning',
+      goalId: 'sek-two-root',
+      startDate: '2026-09-09',
+      endDate: '2026-09-09',
+    },
+    {
+      id: 'prerequisite-block',
+      kind: 'learning',
+      goalId: 'prerequisite',
+      startDate: '2026-09-10',
+      endDate: '2026-09-10',
+    },
+  ]),
+  crossBlockPrerequisiteIndex,
+)
+assert.equal(impossibleCrossBlockSchedule.quality.status, 'invalid')
+assert.equal(
+  impossibleCrossBlockSchedule.quality.issues[0]?.code,
+  'CP-GOAL-PREREQUISITE-SCHEDULE',
+)
+
+// Equal due dates are valid: the backend rejects only a prerequisite that is
+// strictly later, so parallel same-day blocks must remain publishable.
+const sameDayCrossBlockSchedule = assignAtomicGoalsToLearningBlocks(
+  addBlocks(createPlan('same-day-cross-block-prerequisite'), [
+    {
+      id: 'same-day-dependent-block',
+      kind: 'learning',
+      goalId: 'sek-two-root',
+      startDate: '2026-09-09',
+      endDate: '2026-09-09',
+    },
+    {
+      id: 'same-day-prerequisite-block',
+      kind: 'learning',
+      goalId: 'prerequisite',
+      startDate: '2026-09-09',
+      endDate: '2026-09-09',
+    },
+  ]),
+  crossBlockPrerequisiteIndex,
+)
+assert.equal(sameDayCrossBlockSchedule.quality.status, 'complete')
+assert.deepEqual(
+  sameDayCrossBlockSchedule.assignments.map(({ blockId, atomicGoalIds }) => ({
+    blockId,
+    atomicGoalIds,
+  })),
+  [
+    { blockId: 'same-day-dependent-block', atomicGoalIds: ['dependent'] },
+    { blockId: 'same-day-prerequisite-block', atomicGoalIds: ['prerequisite'] },
+  ],
+)
+
+// A valid plan stays byte-for-byte stable even if a priority-based repair
+// could move a prerequisite between two same-day slots unnecessarily.
+const alreadyValidCrossBlockIndex = goalMap(
+  uiGoal('valid-first-root', ['valid-unrelated', 'valid-prerequisite', 'valid-tail']),
+  uiGoal('valid-unrelated'),
+  uiGoal('valid-prerequisite'),
+  uiGoal('valid-tail'),
+  uiGoal('valid-second-root', ['valid-dependent']),
+  { ...uiGoal('valid-dependent'), requires: ['valid-prerequisite'] },
+)
+const alreadyValidCrossBlockSchedule = assignAtomicGoalsToLearningBlocks(
+  addBlocks(createPlan('already-valid-cross-block-prerequisite'), [
+    {
+      id: 'valid-first-block',
+      kind: 'learning',
+      goalId: 'valid-first-root',
+      startDate: '2026-09-07',
+      endDate: '2026-09-09',
+    },
+    {
+      id: 'valid-second-block',
+      kind: 'learning',
+      goalId: 'valid-second-root',
+      startDate: '2026-09-08',
+      endDate: '2026-09-08',
+    },
+  ]),
+  alreadyValidCrossBlockIndex,
+)
+assert.equal(alreadyValidCrossBlockSchedule.quality.status, 'complete')
+assert.deepEqual(
+  alreadyValidCrossBlockSchedule.assignments.map(({ blockId, atomicGoalIds }) => ({
+    blockId,
+    atomicGoalIds,
+  })),
+  [
+    {
+      blockId: 'valid-first-block',
+      atomicGoalIds: ['valid-unrelated', 'valid-prerequisite', 'valid-tail'],
+    },
+    { blockId: 'valid-second-block', atomicGoalIds: ['valid-dependent'] },
+  ],
+)
+
+const prerequisiteCycleIndex = goalMap(
+  uiGoal('prerequisite-cycle-root', ['cycle-dependent', 'cycle-prerequisite']),
+  { ...uiGoal('cycle-dependent'), effectiveRequires: ['cycle-prerequisite'] },
+  { ...uiGoal('cycle-prerequisite'), effectiveRequires: ['cycle-dependent'] },
+)
+const prerequisiteCycleAssignments = assignAtomicGoalsToLearningBlocks(
+  addBlocks(createPlan('prerequisite-cycle'), [{
+    id: 'prerequisite-cycle-block',
+    kind: 'learning',
+    goalId: 'prerequisite-cycle-root',
+    startDate: '2026-09-01',
+    endDate: '2026-09-04',
+  }]),
+  prerequisiteCycleIndex,
+)
+assert.equal(prerequisiteCycleAssignments.quality.status, 'invalid')
+assert.deepEqual(prerequisiteCycleAssignments.assignments[0]?.atomicGoalIds, [])
+assert.equal(
+  prerequisiteCycleAssignments.quality.issues[0]?.code,
+  'CP-GOAL-PREREQUISITE-CYCLE',
+)
+
+// A landscape-wide learner baseline may contain multiple stages. A selected
+// Sek-I block still reports its 259 descendants and schedules only its 53 open
+// atoms, never the complete landscape denominator.
+const sekOneAtoms = Array.from({ length: 259 }, (_, index) => uiGoal(`sek1-g${index + 1}`))
+const sekOneScopeAtomicGoalIds = sekOneAtoms.map(({ id }) => id)
+const sekOneOpenAtomicGoalIds = sekOneScopeAtomicGoalIds.slice(206)
+const sekOneDoneCluster = uiGoal('sek1-done', sekOneScopeAtomicGoalIds.slice(0, 206))
+const sekOneOpenCluster = uiGoal('sek1-open', sekOneOpenAtomicGoalIds)
+const sekTwoAtoms = Array.from({ length: 100 }, (_, index) => uiGoal(`sek2-g${index + 1}`))
+const sekTwoAtomicGoalIds = sekTwoAtoms.map(({ id }) => id)
+const sekOneGoalIndex = goalMap(
+  uiGoal('sek1-root', [sekOneDoneCluster.id, sekOneOpenCluster.id]),
+  uiGoal('sek2-root', sekTwoAtomicGoalIds),
+  sekOneDoneCluster,
+  sekOneOpenCluster,
+  ...sekOneAtoms,
+  ...sekTwoAtoms,
+)
+const sekOneBaseline: LearnerCoursePlanLandscapeBaseline = {
+  source: 'learner-planning-landscape-v1',
+  curriculumId: 'canonical-mathematics',
+  landscapeId: 'canonical-mathematics',
+  scopeAtomicGoalIds: [...sekOneScopeAtomicGoalIds, ...sekTwoAtomicGoalIds],
+  openAtomicGoalIds: [...sekOneOpenAtomicGoalIds, ...sekTwoAtomicGoalIds],
+  totalAtomicGoalCount: 359,
+  masteredAtomicGoalCount: 206,
+  capturedAt: '2026-09-01T07:00:00.000Z',
+}
+const sekOnePlan = requirePlan(reviseTeacherCoursePlan(createPlan('sek1-baseline'), {
+  planningBaseline: sekOneBaseline,
+  blocks: [
+    {
+      id: 'sek1-block',
+      kind: 'learning',
+      goalId: 'sek1-root',
+      startDate: '2026-09-01',
+      endDate: '2026-09-13',
+    },
+  ],
+  changedOn: '2026-09-01',
+  recordedAt: '2026-09-01T08:00:00.000Z',
+}))
+const sekOneEvaluation = evaluateTeacherCoursePlan(
+  sekOnePlan,
+  sekOneGoalIndex,
+  '2026-09-01',
+)
+assert(sekOneEvaluation.metrics)
+assert.equal(sekOneEvaluation.metrics.scopeAtomicGoalCount, 259)
+assert.equal(sekOneEvaluation.metrics.plannedGoalCount, 53)
+assert(Math.abs(sekOneEvaluation.metrics.expectedGoalEquivalent - (53 / 9)) < 1e-12)
+assert.equal(sekOneEvaluation.metrics.dueGoalIds.length, 6)
+assert.deepEqual(sekOneEvaluation.metrics.dueGoalIds, sekOneOpenAtomicGoalIds.slice(0, 6))
+assert.deepEqual(sekOneEvaluation.assignments, [
+  {
+    blockId: 'sek1-block',
+    goalId: 'sek1-root',
+    scopeAtomicGoalIds: sekOneScopeAtomicGoalIds,
+    atomicGoalIds: sekOneOpenAtomicGoalIds,
+    duplicateAtomicGoalIds: [],
+  },
+])
+
+// Rounding is cumulative across blocks: two partial 0.4 expectations produce
+// one due goal overall, never zero per block while the summary displays one.
+const cumulativeRoundingPlan = requirePlan(reviseTeacherCoursePlan(createPlan('rounding'), {
+  blocks: [
+    {
+      id: 'round-a',
+      kind: 'learning',
+      goalId: 'g1',
+      startDate: '2026-09-07',
+      endDate: '2026-09-11',
+    },
+    {
+      id: 'round-b',
+      kind: 'learning',
+      goalId: 'g2',
+      startDate: '2026-09-07',
+      endDate: '2026-09-11',
+    },
+  ],
+  changedOn: '2026-09-07',
+  recordedAt: '2026-09-07T08:00:00.000Z',
+}))
+const cumulativeRounding = evaluateTeacherCoursePlan(
+  cumulativeRoundingPlan,
+  overlapIndex,
+  '2026-09-08',
+)
+assert(cumulativeRounding.metrics)
+assert(Math.abs(cumulativeRounding.metrics.expectedGoalEquivalent - 0.8) < 1e-12)
+assert.equal(cumulativeRounding.metrics.dueGoalIds.length, 1)
+assert.equal(
+  cumulativeRounding.blocks
+    .filter((metric) => metric.kind === 'learning')
+    .reduce((sum, metric) => sum + (metric.kind === 'learning' ? metric.dueGoalIds.length : 0), 0),
+  1,
+)
+
+// Global due slots are immutable: equal overlapping blocks may not exchange
+// which concrete atom represents the same rounded total on later days.
+const monotoneOverlapIndex = goalMap(
+  uiGoal('monotone-first-root', ['monotone-first-goal']),
+  uiGoal('monotone-second-root', ['monotone-second-goal']),
+  uiGoal('monotone-first-goal'),
+  uiGoal('monotone-second-goal'),
+)
+const monotoneOverlapPlan = addBlocks(createPlan('monotone-overlap'), [
+  {
+    id: 'first-block',
+    kind: 'learning',
+    goalId: 'monotone-first-root',
+    startDate: '2026-09-07',
+    endDate: '2026-09-10',
+  },
+  {
+    id: 'second-block',
+    kind: 'learning',
+    goalId: 'monotone-second-root',
+    startDate: '2026-09-07',
+    endDate: '2026-09-10',
+  },
+])
+const monotoneDailyDue = [
+  '2026-09-07',
+  '2026-09-08',
+  '2026-09-09',
+  '2026-09-10',
+].map((asOf) => {
+  const evaluation = evaluateTeacherCoursePlan(monotoneOverlapPlan, monotoneOverlapIndex, asOf)
+  assert(evaluation.metrics)
+  assert.equal(
+    evaluation.metrics.dueGoalIds.length,
+    Math.round(evaluation.metrics.expectedGoalEquivalent + 1e-9),
+  )
+  return evaluation.metrics.dueGoalIds
+})
+assert.deepEqual(monotoneDailyDue, [
+  ['monotone-first-goal'],
+  ['monotone-first-goal'],
+  ['monotone-first-goal', 'monotone-second-goal'],
+  ['monotone-first-goal', 'monotone-second-goal'],
+])
+for (let day = 1; day < monotoneDailyDue.length; day += 1) {
+  assert(monotoneDailyDue[day - 1]!.every((goalId) => monotoneDailyDue[day]!.includes(goalId)))
+}
+
+// A later-starting block with the earlier deadline receives the first slots,
+// then the long block still reaches its full prefix by its own end date.
+const deadlineOverlapIndex = goalMap(
+  uiGoal('long-root', ['long-1', 'long-2']),
+  uiGoal('short-root', ['short-1', 'short-2']),
+  uiGoal('long-1'),
+  uiGoal('long-2'),
+  uiGoal('short-1'),
+  uiGoal('short-2'),
+)
+const deadlineOverlapPlan = addBlocks(createPlan('deadline-overlap'), [
+  {
+    id: 'long-block',
+    kind: 'learning',
+    goalId: 'long-root',
+    startDate: '2026-09-07',
+    endDate: '2026-09-11',
+  },
+  {
+    id: 'short-block',
+    kind: 'learning',
+    goalId: 'short-root',
+    startDate: '2026-09-08',
+    endDate: '2026-09-09',
+  },
+])
+assert.deepEqual(
+  evaluateTeacherCoursePlan(
+    deadlineOverlapPlan,
+    deadlineOverlapIndex,
+    '2026-09-08',
+  ).metrics?.dueGoalIds,
+  ['short-1', 'short-2'],
+)
+assert.deepEqual(
+  evaluateTeacherCoursePlan(
+    deadlineOverlapPlan,
+    deadlineOverlapIndex,
+    '2026-09-09',
+  ).metrics?.dueGoalIds,
+  ['long-1', 'short-1', 'short-2'],
+)
+assert.deepEqual(
+  evaluateTeacherCoursePlan(
+    deadlineOverlapPlan,
+    deadlineOverlapIndex,
+    '2026-09-10',
+  ).metrics?.dueGoalIds,
+  ['long-1', 'long-2', 'short-1', 'short-2'],
+)
+assert.deepEqual(
+  evaluateTeacherCoursePlan(
+    deadlineOverlapPlan,
+    deadlineOverlapIndex,
+    '2026-09-11',
+  ).metrics?.dueGoalIds,
+  ['long-1', 'long-2', 'short-1', 'short-2'],
+)
+
+// Baseline shape remains strict, but historical landscape atoms are not a
+// contract on future curriculum bytes. A removed atom elsewhere in the
+// snapshot must not invalidate a section whose current references resolve.
+const malformedBaselinePlan = structuredClone(sekOnePlan)
+malformedBaselinePlan.planningBaseline!.totalAtomicGoalCount = 258
+assert.equal(normalizeTeacherCoursePlan(malformedBaselinePlan).plan, null)
+assert.equal(normalizeTeacherCoursePlan(malformedBaselinePlan).quality.status, 'invalid')
+
+const missingBaselineGoalPlan = structuredClone(sekOnePlan)
+missingBaselineGoalPlan.planningBaseline!.scopeAtomicGoalIds[0] = 'missing-baseline-goal'
+const missingBaselineGoalEvaluation = evaluateTeacherCoursePlan(
+  missingBaselineGoalPlan,
+  sekOneGoalIndex,
+  '2026-09-01',
+)
+assert.notEqual(missingBaselineGoalEvaluation.quality.status, 'invalid')
+assert.equal(missingBaselineGoalEvaluation.metrics?.plannedGoalCount, 53)
+assert.deepEqual(missingBaselineGoalEvaluation.assignments[0]?.atomicGoalIds, sekOneOpenAtomicGoalIds)
+
+// Legacy focus-bound snapshots keep their exact referential checks until the
+// existing explicit migration to a landscape baseline.
+const missingLegacyBaselineGoalPlan = structuredClone(missingBaselineGoalPlan)
+missingLegacyBaselineGoalPlan.planningBaseline = {
+  ...missingLegacyBaselineGoalPlan.planningBaseline!,
+  source: 'learner-planning-scope-v1',
+  scopeGoalId: 'sek1-root',
+  focusGoalIds: ['sek1-root'],
+}
+const missingLegacyBaselineGoalEvaluation = evaluateTeacherCoursePlan(
+  missingLegacyBaselineGoalPlan,
+  sekOneGoalIndex,
+  '2026-09-01',
+)
+assert.equal(missingLegacyBaselineGoalEvaluation.quality.status, 'invalid')
+assert.equal(missingLegacyBaselineGoalEvaluation.metrics, null)
+assert(missingLegacyBaselineGoalEvaluation.quality.issues.some(({ code }) => code === 'CP-BASELINE-GOAL'))
+
+// A curriculum update can split an atom under the selected section and remove
+// or reclassify atoms in other branches. Surviving captured open atoms remain
+// schedulable, captured mastery stays excluded, and new atoms are never added
+// silently to the existing plan's publication subset.
+const evolvingBaseline: LearnerCoursePlanLandscapeBaseline = {
+  source: 'learner-planning-landscape-v1',
+  curriculumId: 'canonical-science',
+  landscapeId: 'canonical-science',
+  scopeAtomicGoalIds: ['mastered', 'open', 'split-old', 'removed-elsewhere', 'reclassified'],
+  openAtomicGoalIds: ['open', 'split-old', 'removed-elsewhere', 'reclassified'],
+  totalAtomicGoalCount: 5,
+  masteredAtomicGoalCount: 1,
+  capturedAt: '2026-09-01T07:00:00.000Z',
+}
+const evolvingPlan = requirePlan(reviseTeacherCoursePlan(createPlan('evolving-curriculum'), {
+  planningBaseline: evolvingBaseline,
+  blocks: [{
+    id: 'evolving-section',
+    kind: 'learning',
+    goalId: 'section',
+    title: 'Sek II',
+    startDate: '2026-09-01',
+    endDate: '2026-09-30',
+  }],
+  changedOn: '2026-09-01',
+  recordedAt: '2026-09-01T08:00:00.000Z',
+}))
+const evolvingPlanBefore = structuredClone(evolvingPlan)
+const evolvedIndex = goalMap(
+  uiGoal('section', ['mastered', 'open', 'split-first', 'split-second']),
+  uiGoal('mastered'),
+  uiGoal('open'),
+  uiGoal('split-first'),
+  uiGoal('split-second'),
+  uiGoal('reclassified', ['other-atom']),
+  uiGoal('other-atom'),
+)
+const evolvedEvaluation = evaluateTeacherCoursePlan(evolvingPlan, evolvedIndex, '2026-09-08')
+assert.notEqual(evolvedEvaluation.quality.status, 'invalid')
+assert.equal(evolvedEvaluation.metrics?.scopeAtomicGoalCount, 2)
+assert.equal(evolvedEvaluation.metrics?.plannedGoalCount, 1)
+assert.deepEqual(evolvedEvaluation.assignments[0]?.scopeAtomicGoalIds, ['mastered', 'open'])
+assert.deepEqual(evolvedEvaluation.assignments[0]?.atomicGoalIds, ['open'])
+assert.deepEqual(evolvingPlan, evolvingPlanBefore, 'evaluation cannot rewrite the captured plan or its baseline')
+
+const resavedEvolvingPlan = requirePlan(reviseTeacherCoursePlan(evolvingPlan, {
+  blocks: evolvingPlan.blocks.map((block) => ({ ...block, title: 'Sekundarstufe II' })),
+  changedOn: '2026-09-08',
+  recordedAt: '2026-09-08T08:00:00.000Z',
+}))
+assert.notEqual(evaluateTeacherCoursePlan(resavedEvolvingPlan, evolvedIndex, '2026-09-08').quality.status, 'invalid')
+assert.deepEqual(resavedEvolvingPlan.planningBaseline, evolvingBaseline)
+assert.deepEqual(resavedEvolvingPlan.revisionHistory.at(-1)?.blocks, evolvingPlan.blocks)
+
+for (const missingReferenceIndex of [
+  new Map([...evolvedIndex].filter(([id]) => id !== 'section')),
+  new Map([...evolvedIndex].filter(([id]) => id !== 'open')),
+]) {
+  const invalid = evaluateTeacherCoursePlan(evolvingPlan, missingReferenceIndex, '2026-09-08')
+  assert.equal(invalid.quality.status, 'invalid')
+  assert.equal(invalid.metrics, null)
+  assert(invalid.quality.issues.some(({ code, blockId }) => code === 'CP-GOAL-MISSING' && blockId === 'evolving-section'))
+}
+
+const onlyNewAtomsIndex = goalMap(
+  uiGoal('section', ['new-only']),
+  uiGoal('new-only'),
+)
+const outsideBaselineEvaluation = evaluateTeacherCoursePlan(evolvingPlan, onlyNewAtomsIndex, '2026-09-08')
+assert.equal(outsideBaselineEvaluation.quality.status, 'invalid')
+assert(outsideBaselineEvaluation.quality.issues.some(({ code }) => code === 'CP-GOAL-OUTSIDE-BASELINE'))
+
+// Revisions archive their complete prior plan state; undo is itself a new revision.
+const undoLearningBlock: TeacherCoursePlanBlock = {
+  id: 'undo-learning',
+  kind: 'learning',
+  goalId: 'root',
+  startDate: '2026-08-03',
+  endDate: '2026-08-14',
+}
+const undoBufferBlock: TeacherCoursePlanBlock = {
+  id: 'undo-buffer',
+  kind: 'buffer',
+  title: 'Geschützter Puffer',
+  startDate: '2026-08-17',
+  endDate: '2026-08-19',
+}
+const firstUndoBaseline: LearnerCoursePlanLandscapeBaseline = {
+  source: 'learner-planning-landscape-v1',
+  curriculumId: 'canonical-physics',
+  landscapeId: 'canonical-physics',
+  scopeAtomicGoalIds: atoms.map(({ id }) => id),
+  openAtomicGoalIds: atoms.slice(2).map(({ id }) => id),
+  totalAtomicGoalCount: 10,
+  masteredAtomicGoalCount: 2,
+  capturedAt: '2026-08-02T09:00:00.000Z',
+}
+const secondUndoBaseline: LearnerCoursePlanLandscapeBaseline = {
+  ...firstUndoBaseline,
+  openAtomicGoalIds: atoms.slice(3).map(({ id }) => id),
+  masteredAtomicGoalCount: 3,
+  capturedAt: '2026-08-03T09:00:00.000Z',
+}
+const initialUndoPlan = createPlan('undo-class')
+assert.equal(initialUndoPlan.revisionOrigin, 'initial')
+assert.equal(initialUndoPlan.revisionChangedAt, '2026-08-01T08:00:00.000Z')
+assert.deepEqual(initialUndoPlan.revisionHistory, [])
+const firstEdit = requirePlan(reviseTeacherCoursePlan(initialUndoPlan, {
+  blocks: [undoLearningBlock],
+  planningBaseline: firstUndoBaseline,
+  schoolYearLabel: '2027/28',
+  changedOn: '2026-08-02',
+  recordedAt: '2026-08-02T10:00:00.000Z',
+}))
+const firstEditBeforeNewMasterySnapshot = structuredClone(firstEdit)
+assert.equal(reviseTeacherCoursePlan(firstEdit, {
+  blocks: [undoBufferBlock],
+  planningBaseline: secondUndoBaseline,
+  changedOn: '2026-08-03',
+  recordedAt: '2026-08-03T09:30:00.000Z',
+}), null, 'an established learner-derived planning baseline is immutable')
+assert.deepEqual(firstEdit, firstEditBeforeNewMasterySnapshot)
+const fixedBaselineEvaluation = evaluateTeacherCoursePlan(firstEdit, fullGoalIndex, '2026-08-03')
+assert.equal(fixedBaselineEvaluation.metrics?.scopeAtomicGoalCount, 10)
+assert.equal(fixedBaselineEvaluation.metrics?.plannedGoalCount, 8,
+  'a later mastery snapshot must not shrink the captured planning population')
+assert.deepEqual(fixedBaselineEvaluation.assignments[0]?.atomicGoalIds, firstUndoBaseline.openAtomicGoalIds)
+const secondEdit = requirePlan(reviseTeacherCoursePlan(firstEdit, {
+  blocks: [undoBufferBlock],
+  schoolYearLabel: '',
+  changedOn: '2026-08-03',
+  recordedAt: '2026-08-03T10:00:00.000Z',
+}))
+assert.equal(secondEdit.revision, 3)
+assert.deepEqual(secondEdit.revisionHistory.map(({ revision }) => revision), [1, 2])
+assert.deepEqual(secondEdit.revisionHistory[1]?.blocks, [undoLearningBlock])
+assert.equal(secondEdit.revisionHistory[1]?.schoolYearLabel, '2027/28')
+assert.equal(secondEdit.revisionHistory[1]?.revisionChangedAt, '2026-08-02T10:00:00.000Z')
+assert.equal(secondEdit.revisionHistory[1]?.planningBaseline, undefined)
+
+const undone = requirePlan(undoLastTeacherCoursePlanRevision(secondEdit, {
+  changedOn: '2026-08-04',
+  recordedAt: '2026-08-04T10:00:00.000Z',
+}))
+assert.equal(undone.revision, 4)
+assert.equal(undone.revisionOrigin, 'undo')
+assert.equal(undone.restoredFromRevision, 2)
+assert.equal(undone.schoolYearLabel, '2027/28')
+assert.deepEqual(undone.planningBaseline, firstUndoBaseline)
+assert.deepEqual(undone.blocks, [undoLearningBlock])
+assert.deepEqual(undone.revisionHistory.map(({ revision }) => revision), [1, 2, 3])
+assert.deepEqual(undone.revisionHistory[2]?.blocks, [undoBufferBlock])
+assert.notStrictEqual(undone.blocks[0], undone.revisionHistory[1]?.blocks[0])
+
+// Undoing the undo restores the state that was current immediately before it.
+const undoOfUndo = requirePlan(undoLastTeacherCoursePlanRevision(undone, {
+  changedOn: '2026-08-05',
+  recordedAt: '2026-08-05T10:00:00.000Z',
+}))
+assert.equal(undoOfUndo.revision, 5)
+assert.equal(undoOfUndo.revisionOrigin, 'undo')
+assert.equal(undoOfUndo.restoredFromRevision, 3)
+assert.equal(undoOfUndo.schoolYearLabel, undefined)
+assert.deepEqual(undoOfUndo.planningBaseline, firstUndoBaseline)
+assert.deepEqual(undoOfUndo.blocks, [undoBufferBlock])
+assert.deepEqual(undoOfUndo.revisionHistory.map(({ revision }) => revision), [1, 2, 3, 4])
+
+// A persisted focus baseline stays readable but may be replaced exactly once
+// by a landscape baseline. The replacement is a real revision, invalidates an
+// old attestation, and remains authoritative through undo.
+const legacyBaseline: LearnerCoursePlanBaseline = {
+  source: 'learner-planning-scope-v1',
+  curriculumId: 'canonical-physics',
+  landscapeId: 'canonical-physics',
+  scopeGoalId: 'root',
+  focusGoalIds: ['root'],
+  scopeAtomicGoalIds: atoms.slice(0, 4).map(({ id }) => id),
+  openAtomicGoalIds: atoms.slice(2, 4).map(({ id }) => id),
+  totalAtomicGoalCount: 4,
+  masteredAtomicGoalCount: 2,
+  capturedAt: '2026-08-02T09:00:00.000Z',
+}
+let legacyPlan = requirePlan(reviseTeacherCoursePlan(createPlan('legacy-baseline'), {
+  planningBaseline: legacyBaseline,
+  blocks: [undoLearningBlock],
+  changedOn: '2026-08-02',
+  recordedAt: '2026-08-02T10:00:00.000Z',
+}))
+assert.equal(
+  normalizeTeacherCoursePlan(structuredClone(legacyPlan)).plan?.planningBaseline?.source,
+  'learner-planning-scope-v1',
+)
+legacyPlan = requirePlan(appendCourseCoverageAttestation(legacyPlan, {
+  id: 'legacy-attestation',
+  throughDate: '2026-08-03',
+  recordedAt: '2026-08-03T09:30:00.000Z',
+}))
+const migratedBaseline: LearnerCoursePlanLandscapeBaseline = {
+  source: 'learner-planning-landscape-v1',
+  curriculumId: 'canonical-physics',
+  landscapeId: 'canonical-physics',
+  scopeAtomicGoalIds: atoms.map(({ id }) => id),
+  openAtomicGoalIds: atoms.slice(2).map(({ id }) => id),
+  totalAtomicGoalCount: 10,
+  masteredAtomicGoalCount: 2,
+  capturedAt: '2026-08-03T09:00:00.000Z',
+}
+const migratedPlan = requirePlan(migrateTeacherCoursePlanBaseline(legacyPlan, {
+  planningBaseline: migratedBaseline,
+  changedOn: '2026-08-03',
+  recordedAt: '2026-08-03T10:00:00.000Z',
+}))
+assert.equal(migratedPlan.revision, legacyPlan.revision + 1)
+assert.deepEqual(migratedPlan.planningBaseline, migratedBaseline)
+assert.equal(migratedPlan.revisionHistory.at(-1)?.planningBaseline, undefined)
+assert.equal(migratedPlan.coverageAttestations[0]?.planRevision, legacyPlan.revision)
+assert.equal(
+  evaluateTeacherCoursePlan(migratedPlan, fullGoalIndex, '2026-08-03').coverage?.isAttestedThroughAsOf,
+  false,
+)
+assert.equal(migrateTeacherCoursePlanBaseline(migratedPlan, {
+  planningBaseline: migratedBaseline,
+  changedOn: '2026-08-04',
+  recordedAt: '2026-08-04T10:00:00.000Z',
+}), null, 'a landscape baseline cannot be migrated again')
+assert.equal(reviseTeacherCoursePlan(migratedPlan, {
+  planningBaseline: {
+    ...migratedBaseline,
+    openAtomicGoalIds: atoms.slice(3).map(({ id }) => id),
+    masteredAtomicGoalCount: 3,
+    capturedAt: '2026-08-04T09:00:00.000Z',
+  },
+  changedOn: '2026-08-04',
+  recordedAt: '2026-08-04T10:00:00.000Z',
+}), null, 'an established landscape baseline is immutable')
+const undoAfterMigration = requirePlan(undoLastTeacherCoursePlanRevision(migratedPlan, {
+  changedOn: '2026-08-04',
+  recordedAt: '2026-08-04T11:00:00.000Z',
+}))
+assert.deepEqual(undoAfterMigration.planningBaseline, migratedBaseline)
+
+const blocks: TeacherCoursePlanBlock[] = [
+  {
+    id: 'learning-1',
+    kind: 'learning',
+    goalId: 'root',
+    title: 'Mechanik',
+    startDate: '2026-08-03',
+    endDate: '2026-08-14',
+  },
+  {
+    id: 'buffer-1',
+    kind: 'buffer',
+    title: 'Puffer',
+    startDate: '2026-08-17',
+    endDate: '2026-08-19',
+  },
+  {
+    id: 'milestone-1',
+    kind: 'milestone',
+    title: 'Klausur',
+    goalId: 'root',
+    date: '2026-08-21',
+  },
+]
+let pacedPlan = addBlocks(createPlan(), blocks)
+
+// A Wednesday in a ten-workday block has three deterministic goals due.
+const wednesday = evaluateTeacherCoursePlan(pacedPlan, fullGoalIndex, '2026-08-05')
+assert(wednesday.metrics)
+assert.equal(wednesday.metrics.expectedGoalEquivalent, 3)
+assert.deepEqual(wednesday.metrics.dueGoalIds, ['g1', 'g2', 'g3'])
+const learningOnWednesday = wednesday.blocks.find((block) => block.kind === 'learning')
+assert(learningOnWednesday?.kind === 'learning')
+assert.deepEqual(learningOnWednesday.dueGoalIds, ['g1', 'g2', 'g3'])
+assert.equal(wednesday.quality.status, 'insufficient')
+assert.equal(wednesday.metrics.coverageStatus, 'neutral')
+assert.equal(wednesday.pacingGauge.reason, 'plan-revision-too-recent')
+
+const eventDates = [
+  '2026-08-04',
+  '2026-08-05',
+  '2026-08-07',
+  '2026-08-10',
+  '2026-08-11',
+  '2026-08-12',
+  '2026-08-13',
+  '2026-08-14',
+]
+for (const [index, effectiveOn] of eventDates.entries()) {
+  pacedPlan = requirePlan(appendCourseCoverageEvent(pacedPlan, {
+    id: `event-${index + 1}`,
+    goalId: `g${index + 1}`,
+    action: 'covered',
+    effectiveOn,
+    recordedAt: `${effectiveOn}T12:00:00.000Z`,
+  }))
+}
+pacedPlan = requirePlan(appendCourseCoverageAttestation(pacedPlan, {
+  id: 'attestation-1',
+  throughDate: '2026-08-14',
+  recordedAt: '2026-08-14T18:00:00.000Z',
+}))
+
+// Current plan position and last-week speed are deliberately independent.
+const evaluated = evaluateTeacherCoursePlan(pacedPlan, fullGoalIndex, '2026-08-14')
+assert.equal(evaluated.quality.status, 'complete')
+assert(evaluated.metrics)
+assert.deepEqual(evaluated.metrics.dueGoalIds, atoms.map(({ id }) => id))
+assert.equal(evaluated.metrics.plannedGoalCount, 10)
+assert.equal(evaluated.metrics.expectedGoalEquivalent, 10)
+assert.equal(evaluated.metrics.coveredGoalCount, 8)
+assert.equal(evaluated.metrics.coverageStatus, 'behind')
+assert.equal(evaluated.metrics.totalBufferWorkdays, 3)
+assert.equal(evaluated.metrics.remainingBufferWorkdays, 3)
+assert.deepEqual(evaluated.metrics.nextMilestone, {
+  blockId: 'milestone-1',
+  title: 'Klausur',
+  goalId: 'root',
+  date: '2026-08-21',
+})
+assert.deepEqual(evaluated.pacingGauge, {
+  status: 'ready',
+  asOf: '2026-08-14',
+  windowStart: '2026-08-07',
+  actualGoalsPerWeek: 5,
+  expectedGoalsPerWeek: 5,
+  ratio: 1,
+  zone: 'green',
+  reason: null,
+})
+assert.equal(isCourseGoalCovered(pacedPlan, 'g8', '2026-08-14'), true)
+
+// A new append-only event invalidates the earlier attestation without deleting it.
+const reopenedPlan = requirePlan(toggleCourseGoalCoverage(pacedPlan, {
+  id: 'event-9',
+  goalId: 'g8',
+  effectiveOn: '2026-08-14',
+  recordedAt: '2026-08-14T19:00:00.000Z',
+}))
+assert.equal(reopenedPlan.coverageAttestations.length, 1)
+assert.equal(reopenedPlan.coverageEvents.at(-1)?.action, 'reopened')
+assert.equal(isCourseGoalCovered(reopenedPlan, 'g8', '2026-08-14'), false)
+const invalidatedAttestation = evaluateTeacherCoursePlan(reopenedPlan, fullGoalIndex, '2026-08-14')
+assert.equal(invalidatedAttestation.quality.status, 'insufficient')
+assert.equal(invalidatedAttestation.metrics?.coverageStatus, 'neutral')
+assert.equal(invalidatedAttestation.pacingGauge.reason, 'coverage-not-attested')
+
+// A stable, attested plan still keeps the gauge neutral without any coverage history.
+let emptyHistoryPlan = addBlocks(createPlan('empty-history'), [blocks[0]!])
+emptyHistoryPlan = requirePlan(appendCourseCoverageAttestation(emptyHistoryPlan, {
+  id: 'empty-attestation',
+  throughDate: '2026-08-14',
+  recordedAt: '2026-08-14T18:00:00.000Z',
+}))
+const emptyHistory = evaluateTeacherCoursePlan(emptyHistoryPlan, fullGoalIndex, '2026-08-14')
+assert.equal(emptyHistory.pacingGauge.reason, 'coverage-history-missing')
+assert.equal(emptyHistory.quality.status, 'insufficient')
+
+// A current attestation cannot make a recently revised plan's gauge look reliable.
+let recentRevisionPlan = requirePlan(reviseTeacherCoursePlan(pacedPlan, {
+  blocks,
+  changedOn: '2026-08-10',
+  recordedAt: '2026-08-14T19:30:00.000Z',
+}))
+recentRevisionPlan = requirePlan(appendCourseCoverageAttestation(recentRevisionPlan, {
+  id: 'attestation-after-revision',
+  throughDate: '2026-08-14',
+  recordedAt: '2026-08-14T20:00:00.000Z',
+}))
+assert.equal(
+  evaluateTeacherCoursePlan(recentRevisionPlan, fullGoalIndex, '2026-08-14').pacingGauge.reason,
+  'plan-revision-too-recent',
+)
+
+// A weekend-only learning block is structurally valid but cannot create false metrics.
+const weekendPlan = addBlocks(createPlan('weekend'), [{
+  id: 'weekend-learning',
+  kind: 'learning',
+  goalId: 'root',
+  startDate: '2026-08-01',
+  endDate: '2026-08-02',
+}])
+const weekendEvaluation = evaluateTeacherCoursePlan(weekendPlan, fullGoalIndex, '2026-08-03')
+assert.equal(weekendEvaluation.quality.status, 'invalid')
+assert.equal(weekendEvaluation.metrics, null)
+
+// Storage is schema-versioned, class-keyed, and never overwritten after corrupt input.
+const stored = new Map<string, string>()
+const storage: StorageWriter = {
+  getItem: (key) => stored.get(key) ?? null,
+  setItem: (key, value) => stored.set(key, value),
+}
+assert.equal(saveTeacherCoursePlan(pacedPlan, storage).ok, true)
+const secondPlan = createPlan('math-gk')
+assert.equal(saveTeacherCoursePlan(secondPlan, storage).ok, true)
+const reloadedPhysicsPlan = loadTeacherCoursePlan('physics-lk', storage).plan
+assert.equal(reloadedPhysicsPlan?.classId, 'physics-lk')
+assert.deepEqual(reloadedPhysicsPlan?.revisionHistory.map(({ revision }) => revision), [1])
+assert.equal(loadTeacherCoursePlan('math-gk', storage).plan?.classId, 'math-gk')
+const persisted = JSON.parse([...stored.values()][0]!) as { schemaVersion: number; plansByClassId: unknown }
+assert.equal(persisted.schemaVersion, 1)
+assert.equal(Object.keys(persisted.plansByClassId as object).length, 2)
+
+const contextualPlanOne = createPlan('teacher-course-plan-v2:class-a:context-one')
+const contextualPlanTwo = createPlan('teacher-course-plan-v2:class-a:context-two')
+const foreignContextualPlan = createPlan('teacher-course-plan-v2:class-b:context-one')
+const legacyClassPlan = createPlan('legacy-class-a')
+assert.equal(saveTeacherCoursePlan(contextualPlanOne, storage).ok, true)
+assert.equal(saveTeacherCoursePlan(contextualPlanTwo, storage).ok, true)
+assert.equal(saveTeacherCoursePlan(foreignContextualPlan, storage).ok, true)
+assert.equal(saveTeacherCoursePlan(legacyClassPlan, storage).ok, true)
+assert.equal(deleteTeacherCoursePlans({
+  exactPlanIds: ['legacy-class-a'],
+  planIdPrefixes: ['teacher-course-plan-v2:class-a:'],
+}, storage).ok, true)
+assert.equal(loadTeacherCoursePlan(contextualPlanOne.classId, storage).plan, null)
+assert.equal(loadTeacherCoursePlan(contextualPlanTwo.classId, storage).plan, null)
+assert.equal(loadTeacherCoursePlan(legacyClassPlan.classId, storage).plan, null)
+assert.equal(
+  loadTeacherCoursePlan(foreignContextualPlan.classId, storage).plan?.classId,
+  foreignContextualPlan.classId,
+  'deleting one class keeps similarly named plans from other classes',
+)
+
+stored.set('skillpilot_teacher_course_plans_v1', '{broken')
+const corruptBeforeWrite = stored.get('skillpilot_teacher_course_plans_v1')
+assert.equal(saveTeacherCoursePlan(secondPlan, storage).ok, false)
+assert.equal(stored.get('skillpilot_teacher_course_plans_v1'), corruptBeforeWrite)
+assert.equal(parseTeacherCoursePlanStore('{broken').quality.status, 'invalid')
+
+// Invalid histories are rejected as a whole, not silently repaired into plausible data.
+const malformed = structuredClone(pacedPlan) as TeacherCoursePlan
+malformed.coverageEvents[1]!.id = malformed.coverageEvents[0]!.id
+assert.equal(normalizeTeacherCoursePlan(malformed).plan, null)
+assert.equal(normalizeTeacherCoursePlan(malformed).quality.status, 'invalid')
+
+const missingHistory = structuredClone(pacedPlan) as TeacherCoursePlan
+delete (missingHistory as unknown as Record<string, unknown>).revisionHistory
+assert.equal(normalizeTeacherCoursePlan(missingHistory).plan, null)
+const rewrittenHistory = structuredClone(secondEdit)
+rewrittenHistory.revisionHistory[1]!.revision = 1
+assert.equal(normalizeTeacherCoursePlan(rewrittenHistory).plan, null)
+
+// The history limit fails closed: no oldest snapshot is silently discarded.
+let boundedPlan = createPlan('bounded-history')
+for (let index = 0; index < TEACHER_COURSE_PLAN_MAX_REVISION_HISTORY; index += 1) {
+  const changedOn = addCoursePlanDays('2026-08-02', index)
+  assert(changedOn)
+  boundedPlan = requirePlan(reviseTeacherCoursePlan(boundedPlan, {
+    changedOn,
+    recordedAt: `${changedOn}T10:00:00.000Z`,
+  }))
+}
+assert.equal(boundedPlan.revisionHistory.length, TEACHER_COURSE_PLAN_MAX_REVISION_HISTORY)
+const serializedBoundedHistory = JSON.stringify(boundedPlan.revisionHistory)
+assert.equal(reviseTeacherCoursePlan(boundedPlan, {
+  changedOn: '2027-05-01',
+  recordedAt: '2027-05-01T10:00:00.000Z',
+}), null)
+assert.equal(undoLastTeacherCoursePlanRevision(boundedPlan, {
+  changedOn: '2027-05-01',
+  recordedAt: '2027-05-01T10:00:00.000Z',
+}), null)
+assert.equal(JSON.stringify(boundedPlan.revisionHistory), serializedBoundedHistory)
+
+// Pausing precedes goal assignment: a broad old section cannot reserve work
+// from the active, multi-topic preparation, and paused dates create no demand.
+const preparationGoals = goalMap(
+  uiGoal('all-topics', ['g1', 'g2', 'g3']),
+  uiGoal('topic-a', ['canonical-hidden']),
+  uiGoal('topic-b', ['g2', 'g3']),
+  uiGoal('canonical-hidden'), uiGoal('g1'), uiGoal('g2'),
+  { ...uiGoal('g3'), requires: ['g1'] },
+)
+const preparationChildren = new Map<string, readonly string[]>([
+  ['topic-a', ['g3', 'g1']], ['topic-b', ['g2', 'g3']],
+])
+const pausedBroadBlock: TeacherCoursePlanBlock = {
+  id: 'general-course', kind: 'learning', active: false, goalId: 'all-topics',
+  startDate: '2026-08-03', endDate: '2026-12-31',
+}
+const preparationBlock: TeacherCoursePlanBlock = {
+  id: 'exam-preparation', kind: 'learning', active: true,
+  goalId: 'topic-a', goalIds: ['topic-a', 'topic-b'],
+  startDate: '2026-10-19', endDate: '2026-10-23',
+}
+const preparationPlan = addBlocks(createPlan('paused-course'), [
+  pausedBroadBlock, preparationBlock,
+  { id: 'paused-buffer', kind: 'buffer', active: false, title: 'Puffer',
+    startDate: '2026-10-19', endDate: '2026-10-23' },
+  { id: 'paused-exam', kind: 'milestone', active: false, title: 'Alte Klausur', date: '2026-10-22' },
+  { id: 'active-exam', kind: 'milestone', title: 'Klausur', date: '2026-10-27' },
+])
+const preparationAssignment = assignAtomicGoalsToLearningBlocks(preparationPlan, preparationGoals, preparationChildren)
+assert.equal(preparationAssignment.quality.status, 'complete')
+assert.equal(preparationAssignment.assignments.length, 1)
+assert.equal(preparationAssignment.assignments[0]?.blockId, preparationBlock.id)
+assert.deepEqual(new Set(preparationAssignment.assignments[0]?.atomicGoalIds), new Set(['g1', 'g2', 'g3']))
+assert.deepEqual(preparationAssignment.assignments[0]?.duplicateAtomicGoalIds, [])
+assert(preparationAssignment.assignments[0]!.atomicGoalIds.indexOf('g1')
+  < preparationAssignment.assignments[0]!.atomicGoalIds.indexOf('g3'), 'prerequisites are ordered across selected roots')
+const preparationMetrics = evaluateTeacherCoursePlan(preparationPlan, preparationGoals, '2026-10-22', preparationChildren)
+assert.equal(preparationMetrics.metrics?.plannedGoalCount, 3)
+assert.equal(preparationMetrics.metrics?.totalBufferWorkdays, 0)
+assert.equal(preparationMetrics.metrics?.nextMilestone?.blockId, 'active-exam')
+assert(!preparationMetrics.blocks.some((block) => block.blockId.startsWith('paused-')))
+
+const allPausedPlan = addBlocks(preparationPlan,
+  preparationPlan.blocks.map((block) => ({ ...block, active: false })), '2026-10-22')
+const allPausedMetrics = evaluateTeacherCoursePlan(allPausedPlan, preparationGoals, '2026-10-23', preparationChildren)
+assert.deepEqual(allPausedMetrics.assignments, [])
+assert.deepEqual(allPausedMetrics.blocks, [])
+assert.equal(allPausedMetrics.metrics?.plannedGoalCount, 0)
+assert.equal(allPausedMetrics.metrics?.expectedGoalEquivalent, 0)
+assert.deepEqual(allPausedMetrics.metrics?.dueGoalIds, [])
+assert.equal(allPausedMetrics.metrics?.nextMilestone, null)
+assert.equal(allPausedMetrics.metrics?.remainingBufferWorkdays, 0)
+
+const restoredPreparation = requirePlan(undoLastTeacherCoursePlanRevision(allPausedPlan, {
+  changedOn: '2026-10-22', recordedAt: '2026-10-22T10:00:00.000Z',
+}))
+assert.deepEqual(restoredPreparation.blocks, preparationPlan.blocks, 'undo restores activation and every selected root')
+const reactivatedPlan = addBlocks(allPausedPlan,
+  allPausedPlan.blocks.map((block) => ({ ...block, active: true })), '2026-10-23')
+assert.equal(assignAtomicGoalsToLearningBlocks(reactivatedPlan, preparationGoals, preparationChildren)
+  .assignments[0]?.blockId, 'general-course', 'reactivating restores chronological assignment')
+assert.equal(reactivatedPlan.blocks[0]?.kind === 'learning' && reactivatedPlan.blocks[0].startDate,
+  pausedBroadBlock.startDate, 'reactivating does not move dates')
+const preparationStorageItems = new Map<string, string>()
+const preparationStorage: StorageWriter = {
+  getItem: (key) => preparationStorageItems.get(key) ?? null,
+  setItem: (key, value) => { preparationStorageItems.set(key, value) },
+}
+assert(saveTeacherCoursePlan(allPausedPlan, preparationStorage).ok)
+assert.deepEqual(loadTeacherCoursePlan(allPausedPlan.classId, preparationStorage).plan, allPausedPlan)
+assert.deepEqual(normalizeTeacherCoursePlan(JSON.parse(JSON.stringify(allPausedPlan))).plan, allPausedPlan,
+  'export and import preserve paused multi-root sections and revision history')
+assert.equal(normalizeTeacherCoursePlan({ ...preparationPlan, blocks: [{ ...preparationBlock, goalIds: [] }] }).plan, null)
+assert.equal(normalizeTeacherCoursePlan({ ...preparationPlan, blocks: [{ ...preparationBlock, active: 'false' }] }).plan, null)
+
+console.log('Local teacher course-plan tests passed.')

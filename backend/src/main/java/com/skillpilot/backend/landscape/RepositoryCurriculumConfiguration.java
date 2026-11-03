@@ -36,13 +36,7 @@ public class RepositoryCurriculumConfiguration {
             LandscapeProperties properties,
             ObjectMapper objectMapper,
             LandscapeService landscapeService) {
-        return new CompositionViewService(properties, objectMapper, () -> {
-            java.util.Map<String, java.util.List<String>> contains = new java.util.LinkedHashMap<>();
-            landscapeService.getAll().forEach(landscape -> landscape.getGoals().forEach(goal ->
-                    contains.put(goal.getId(), goal.getContains() == null
-                            ? java.util.List.of() : java.util.List.copyOf(goal.getContains()))));
-            return contains;
-        });
+        return new CompositionViewService(properties, objectMapper, landscapeService);
     }
 
     @Bean

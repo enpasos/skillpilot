@@ -1,0 +1,158 @@
+{
+  "candidateKey": "multiplicity",
+  "status": "PRIVATE_UNREVIEWED_CONTENT_ONLY_NO_NEW_GOAL_ID_OR_PLACEMENT",
+  "title": "Nullstellenvielfachheiten am Graphen deuten",
+  "titleEn": "Interpret zero multiplicities in graph behaviour",
+  "proposedRequires": [
+    "71f62cfa-7cc2-5f60-9691-bcdc2ee910df"
+  ],
+  "proposedCoveredGoalIds": [
+    "71f62cfa-7cc2-5f60-9691-bcdc2ee910df"
+  ],
+  "wholeExistingGoal": {
+    "id": "71f62cfa-7cc2-5f60-9691-bcdc2ee910df",
+    "title": "Vielfachheiten und Graphverhalten aus Linearfaktoren deuten",
+    "titleEn": "Interpret multiplicities and graph behavior from linear factors",
+    "description": "Die lernende Person kann Vielfachheiten von Nullstellen beurteilen und daraus Schlussfolgerungen für das Verhalten des Graphen ziehen.",
+    "descriptionEn": "The learner can assess multiplicities of zeros and infer consequences for graph behavior.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "51e80e7b-df31-5d97-97f9-4c6e26eb7416",
+      "46166788-4a8f-53d5-9fe9-77b0a018d7ee"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "K2.3",
+        "K5.2"
+      ],
+      "guidingIdeas": [
+        "L1"
+      ],
+      "phase": "E",
+      "topicCode": "CANONICAL.MATH.E.POLYNOMIAL.MULTIPLICITY_GRAPH_BEHAVIOR"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "semanticAtomic": true,
+    "shortKey": "canonical_math_e_polynomial_multiplicity_graph_behavior",
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "71f62cfa-7cc2-5f60-9691-bcdc2ee910df",
+        "title": "Visualisierung: Vielfachheiten und Graphverhalten aus Linearfaktoren deuten",
+        "url": "/assets/goal-visualizations/mathematik/71f62cfa-7cc2-5f60-9691-bcdc2ee910df/71f62cfa-7cc2-5f60-9691-bcdc2ee910df.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Vielfachheiten und Graphverhalten aus Linearfaktoren deuten.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Vielfachheiten und Graphverhalten aus Linearfaktoren deuten\". Die lernende Person kann Vielfachheiten von Nullstellen beurteilen und daraus Schlussfolgerungen für das Verhalten des Graphen ziehen.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "examData": {
+    "reviewStatus": "draft",
+    "taskContent": "Gegeben ist die Funktion\n$$q(x)=2(x+2)^2(x-1)^3.$$\n1. Bestimme alle Nullstellen und ihre jeweilige Vielfachheit. (4 BE)\n2. Beschreibe für jede Nullstelle, ob der Graph die $x$-Achse dort berührt oder schneidet und ob ein Vorzeichenwechsel vorliegt. Begründe beide Aussagen anhand der Vielfachheiten beziehungsweise der Faktoren. Du kannst die Faktorform direkt verwenden. (6 BE)",
+    "taskContentEn": "Consider the function\n$$q(x)=2(x+2)^2(x-1)^3.$$\n1. Find all zeros and their multiplicities. (4 points)\n2. For each zero, describe whether the graph touches or crosses the $x$-axis and whether its sign changes. Justify both conclusions using the multiplicities or the factors. You may use the factored form directly. (6 points)",
+    "solutionContent": "Die Nullstelle $x=-2$ hat Vielfachheit $2$, die Nullstelle $x=1$ Vielfachheit $3$. Weitere Nullstellen gibt es nicht, weil der konstante Faktor $2$ nie null ist und nur die beiden angegebenen Linearfaktoren null werden können.\n\nBei $x=-2$ ist der verschwindende Faktor quadriert. Sein Vorzeichen ist auf beiden Seiten gleich; die übrigen Faktoren sind dort in einer hinreichend kleinen Umgebung ungleich null und wechseln ihr Vorzeichen nicht. Daher berührt der Graph die Achse ohne Vorzeichenwechsel. Genauer ist $q$ auf beiden Seiten nahe $-2$ negativ; der Graph berührt von unten. Diese zusätzliche Seitenangabe ist nicht nötig.\n\nBei $x=1$ ist der verschwindende Faktor in ungerader Potenz vorhanden. Er wechselt beim Durchgang durch $1$ das Vorzeichen, während $2(x+2)^2$ dort positiv bleibt. Der Graph schneidet die Achse mit Vorzeichenwechsel von negativ zu positiv. Die knappe Regel „gerade Vielfachheit: kein Wechsel; ungerade Vielfachheit: Wechsel“, korrekt auf beide Stellen bezogen, ist ebenfalls eine gültige Begründung. Ausmultiplizieren, eine Ableitungsrechnung oder eine vollständige Graphskizze sind keine zusätzlichen bewerteten Anforderungen.\n\n**Normale Gesamtkappung:** Fehlt bei beiden Nullstellen jede nachvollziehbare Verbindung zwischen Vielfachheit/Faktorvorzeichen und Graphverhalten, wird der Gesamtwert vor dem Vergleich mit 8 BE auf höchstens 7 von 10 BE begrenzt. Eine korrekte kurze Gerade-/Ungerade-Begründung genügt; es wird keine zusätzliche Beweisform verlangt.\n\n**Bewertungshinweis:** Die Musterlösung ist nicht ausschließlich. Gleichwertige korrekte Terme, nachvollziehbare alternative Verfahren und zulässige Näherungen anerkennen. Teilpunkte getrennt vergeben. Einen Rechen- oder Abschreibfehler nicht mehrfach als denselben Fehler abziehen; erkennbare fachlich richtige Folgearbeit würdigen, ohne falsche Aussagen als richtig auszugeben. Nur die eingereichte, verlässlich lesbare Arbeit bewerten. Es gibt genau eine Gesamtpunktzahl und eine Schwelle, gegebenenfalls nach der ausdrücklich genannten normalen Gesamtkappung; keine zusätzlichen Teilpassfelder.",
+    "solutionContentEn": "The zero $x=-2$ has multiplicity $2$, and $x=1$ has multiplicity $3$. There are no other zeros: the constant factor $2$ is nonzero and only the two displayed linear factors can vanish.\n\nAt $x=-2$, the vanishing factor is squared and has the same sign on both sides. The other factors remain nonzero with unchanged sign in a sufficiently small neighbourhood. The graph therefore touches the axis without a sign change. More specifically, q is negative on both sides close to -2 and touches from below; this extra side description is not required.\n\nAt $x=1$, the vanishing factor has an odd exponent and changes sign, while $2(x+2)^2$ stays positive nearby. The graph crosses the axis and changes from negative to positive. A concise even/odd multiplicity rule correctly applied to the two zeros is also a valid justification. Expansion, differentiation and a complete sketch are not additional scored requirements.\n\n**Ordinary total-score cap:** If neither zero has any traceable link between multiplicity/factor signs and graph behaviour, cap the total at 7 out of 10 before comparing with the threshold 8. A correct concise even/odd explanation suffices; no extra proof format is required.\n\n**Grading note:** The reference solution is not exclusive. Accept equivalent correct expressions, valid alternative methods and permitted approximations. Award partial credit by step. Do not penalise one arithmetic or copying error repeatedly as the same error; credit traceable correct follow-through without treating false statements as true. Grade reliably legible submitted work. There is one total score and one threshold, after any explicitly stated ordinary total-score cap; no additional part-pass fields.",
+    "coveredGoalIds": [
+      "71f62cfa-7cc2-5f60-9691-bcdc2ee910df"
+    ],
+    "scoring": {
+      "maxPoints": 10,
+      "passingPoints": 8,
+      "steps": [
+        {
+          "id": "zero-minus-two",
+          "points": 1,
+          "description": "Nullstelle -2 korrekt.",
+          "descriptionEn": "Correct zero -2."
+        },
+        {
+          "id": "multiplicity-two",
+          "points": 1,
+          "description": "Vielfachheit 2 bei -2 korrekt.",
+          "descriptionEn": "Correct multiplicity 2 at -2."
+        },
+        {
+          "id": "zero-one",
+          "points": 1,
+          "description": "Nullstelle 1 korrekt.",
+          "descriptionEn": "Correct zero 1."
+        },
+        {
+          "id": "multiplicity-three",
+          "points": 1,
+          "description": "Vielfachheit 3 bei 1 korrekt.",
+          "descriptionEn": "Correct multiplicity 3 at 1."
+        },
+        {
+          "id": "touch-minus-two",
+          "points": 1,
+          "description": "Berühren bei -2 korrekt beschrieben.",
+          "descriptionEn": "Correctly describes touching at -2."
+        },
+        {
+          "id": "no-sign-change",
+          "points": 1,
+          "description": "Kein Vorzeichenwechsel bei -2 korrekt.",
+          "descriptionEn": "Correctly identifies no sign change at -2."
+        },
+        {
+          "id": "even-reason",
+          "points": 1,
+          "description": "Gerade Vielfachheit oder gleichbleibendes Faktorvorzeichen als nachvollziehbare Begründung bei -2.",
+          "descriptionEn": "Traceable justification at -2 using even multiplicity or unchanged factor signs."
+        },
+        {
+          "id": "cross-one",
+          "points": 1,
+          "description": "Schneiden bei 1 korrekt beschrieben.",
+          "descriptionEn": "Correctly describes crossing at 1."
+        },
+        {
+          "id": "sign-change",
+          "points": 1,
+          "description": "Vorzeichenwechsel bei 1 korrekt.",
+          "descriptionEn": "Correctly identifies a sign change at 1."
+        },
+        {
+          "id": "odd-reason",
+          "points": 1,
+          "description": "Ungerade Vielfachheit oder wechselndes Faktorvorzeichen als nachvollziehbare Begründung bei 1. Normale Gesamtkappung: Fehlt bei beiden Nullstellen jede nachvollziehbare Verbindung zwischen Vielfachheit/Faktorvorzeichen und Graphverhalten, wird der Gesamtwert vor dem Vergleich mit 8 BE auf höchstens 7 von 10 BE begrenzt. Eine korrekte kurze Gerade-/Ungerade-Begründung genügt; es wird keine zusätzliche Beweisform verlangt.",
+          "descriptionEn": "Traceable justification at 1 using odd multiplicity or changing factor signs. Ordinary total-score cap: If neither zero has any traceable link between multiplicity/factor signs and graph behaviour, cap the total at 7 out of 10 before comparing with the threshold 8. A correct concise even/odd explanation suffices; no extra proof format is required."
+        }
+      ]
+    }
+  },
+  "noCanonAppScopeOrSourceCoverageMutation": true
+}

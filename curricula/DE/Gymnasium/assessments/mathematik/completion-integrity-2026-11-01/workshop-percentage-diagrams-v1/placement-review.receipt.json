@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "reviewType": "independent-machine-placement-review",
+  "reviewerAgent": "/root/astra_completion_foundations",
+  "authorIndependent": true,
+  "verdict": "PASS",
+  "candidateGoalId": "8f964887-e699-5d3d-9bc3-84a1b9982bdd",
+  "originalGoalId": "47c515c9-2174-58c7-a844-6865fc67c243",
+  "approvedScope": "Exact workshop selector, 16 declared offered profiles in 12 authored views, and CPV211 support-only endpoint policy correction against the bound 154-profile evidence",
+  "files": [
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/workshop-percentage-diagrams-v1/placement-review.md",
+      "sha256": "a6ef7c73d2658c7d9f3223fe406dff4bd42d32335483dda713715850cfd13d45"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/workshop-percentage-diagrams-v1/placement-validation.json",
+      "sha256": "f65adb29985eb27457eca822937fa36808bc4b9f10a156e20059785db3638ae6"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/existing-endpoint-restoration/post-integration-validation.json",
+      "sha256": "2ae94acd08127d2172906ccdf90b9e4c68ab8eab4e67561efb4a3abf241b0a7b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/workshop-percentage-diagrams-v1/composition-selection.json",
+      "sha256": "cf4d83cedb851dd03fff6621d4ce751398bd2e1480dadbf70c383756dcec9c18"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/workshop-percentage-diagrams-v1/review.receipt.json",
+      "sha256": "eb11cf26370adffa16d605464cd2a83d4415c5e694006dfcd8d3f81421c06c5e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/workshop-percentage-diagrams-v1/candidate.goal.json",
+      "sha256": "cd9f86c4b71837aac2c1d8fc26e3fa2547c2c7b434085a9e8359819dc63408a8"
+    },
+    {
+      "path": "app/scripts/mathAssessmentScopeVariants.ts",
+      "sha256": "ea77d51d4b3597c9a0521a7d3cd85116be74eb94ad88b0eacc148f49acb85687"
+    },
+    {
+      "path": "app/scripts/applyMathPrismCompletionVariant.ts",
+      "sha256": "8232496a09146a373dca711f4daf7ebfdc10243b3263b6d80982eb7b8fee6dd2"
+    },
+    {
+      "path": "app/scripts/validateCompositionViews.ts",
+      "sha256": "088b275edc7d54f9f6cf39c31436caac600bd204d61707e381b537e8d83f6e09"
+    },
+    {
+      "path": "app/scripts/lib/canonicalMathSek1ReviewedExamRoutes.ts",
+      "sha256": "7c4386d401d56367bcd5bac4fc6336a14e0d50f2b50358032d3c6a663dd8ee72"
+    },
+    {
+      "path": "app/scripts/testCanonicalMathSek1ReviewedExamRoutes.ts",
+      "sha256": "9d6d8a548c638c046dba28ae4bd395707724a7ab036b23191f860ce0f59664ec"
+    }
+  ],
+  "offeredProfiles": [
+    "DE-HE/SekI/G8/GK+LK",
+    "DE-HE/SekI/G9/GK+LK",
+    "DE-HE/CrossStage/G8/GK",
+    "DE-HE/CrossStage/G8/LK",
+    "DE-HE/CrossStage/G8/GK+LK",
+    "DE-HE/CrossStage/G9/GK",
+    "DE-HE/CrossStage/G9/LK",
+    "DE-HE/CrossStage/G9/GK+LK",
+    "DE-SH/SekI/G8/GK+LK",
+    "DE-SH/SekI/G9/GK+LK",
+    "DE-SH/CrossStage/G8/GK",
+    "DE-SH/CrossStage/G8/LK",
+    "DE-SH/CrossStage/G8/GK+LK",
+    "DE-SH/CrossStage/G9/GK",
+    "DE-SH/CrossStage/G9/LK",
+    "DE-SH/CrossStage/G9/GK+LK"
+  ],
+  "targetViewIds": [
+    "de-he-gym-math-gk-g8",
+    "de-he-gym-math-gk-g9",
+    "de-he-gym-math-lk-g8",
+    "de-he-gym-math-lk-g9",
+    "de-he-gym-seki-math-g8",
+    "de-he-gym-seki-math-g9",
+    "de-sh-gym-math-gk-g8",
+    "de-sh-gym-math-gk-g9",
+    "de-sh-gym-math-lk-g8",
+    "de-sh-gym-math-lk-g9",
+    "de-sh-gym-seki-math-g8",
+    "de-sh-gym-seki-math-g9"
+  ],
+  "checks": {
+    "boundInputFilesMatched": 100,
+    "boundNativeLogsMatched": 3,
+    "mathOfferedProfilesChecked": 154,
+    "variantTargetProfiles": 16,
+    "selectedViews": 12,
+    "mandatoryOriginalVariantOverlap": 0,
+    "originalTargetMembershipUnchanged": true,
+    "removedTargets": 0,
+    "workshopAdditionalRepairedTargetScopePairs": 64,
+    "introducedUncoveredTargetScopePairs": 0,
+    "unaddressableProtectedGoalIds": [],
+    "independentFocusedRegression": "PASS: app/scripts/testCanonicalMathSek1ReviewedExamRoutes.ts",
+    "fullMatrixRerunByReviewer": false
+  },
+  "routeRepairGoalIds": [
+    "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+    "5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+    "c9df47fa-81a9-4890-91b7-2cc80da813cb",
+    "f39c49c7-003b-471a-a33e-6cfea1d7b7b1"
+  ],
+  "humanApproval": false,
+  "m7Acceptance": false,
+  "fullM7Closure": false,
+  "publicationApproval": false,
+  "productFilesChangedByReviewer": false,
+  "limitations": [
+    "Independent primary-source placement acceptance for unrelated goals is not implied.",
+    "Existing source holds and other assessment-family placement holds remain.",
+    "No mastery is inferred from route reachability."
+  ]
+}

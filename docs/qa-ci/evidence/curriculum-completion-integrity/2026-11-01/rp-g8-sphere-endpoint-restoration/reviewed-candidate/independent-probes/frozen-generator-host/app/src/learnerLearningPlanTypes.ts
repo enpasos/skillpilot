@@ -1,0 +1,317 @@
+export type LearnerLearningPlanDate = string
+
+export interface LearnerLearningPlanPeriod {
+  startDate: LearnerLearningPlanDate
+  endDate: LearnerLearningPlanDate
+}
+
+export interface LearnerLearningPlanCurrentBlock {
+  blockId: string
+  kind: 'learning' | 'buffer'
+  title: string
+  goalId?: string
+  goalIds?: string[]
+  startDate: LearnerLearningPlanDate
+  endDate: LearnerLearningPlanDate
+}
+
+export interface LearnerLearningPlanMilestone {
+  blockId: string
+  title: string
+  goalId?: string
+  /** Selected topic roots; when present, takes precedence over legacy goalId. */
+  goalIds?: string[]
+  date: LearnerLearningPlanDate
+}
+
+export interface LearnerLearningPlanNextEligibleGoal {
+  goalId: string
+}
+
+export interface LearnerLearningPlanBuffer {
+  totalWorkdays: number
+  remainingWorkdays: number
+}
+
+export type LearnerLearningPlanContinueReason =
+  | 'learning-plan-following-disabled'
+  | 'personal-curriculum-changed'
+  | 'no-open-due-frontier-goal'
+  | 'active-goal-in-progress'
+  | null
+
+export interface LearnerLearningPlanSummary {
+  planId: string
+  revision: number
+  landscapeId: string
+  planLabel: string | null
+  stale: boolean
+  period: LearnerLearningPlanPeriod
+  currentBlock: LearnerLearningPlanCurrentBlock | null
+  nextMilestone: LearnerLearningPlanMilestone | null
+  buffer: LearnerLearningPlanBuffer
+  nextEligibleGoal: LearnerLearningPlanNextEligibleGoal | null
+  continueReason: LearnerLearningPlanContinueReason
+  canContinue: boolean
+  learningScope?: LearnerPlanLearningScope | null
+}
+
+export type LearnerPlanStatusDirection = 'on_track' | 'behind' | 'ahead'
+
+/** Backend-owned values for the selected day or week. A null needle means no period target. */
+export interface LearnerPlanPeriodGauge {
+  completed: number
+  target: number
+  needlePosition: number | null
+}
+
+/** Backend-owned cumulative balance and its subject-specific display scale. */
+export interface LearnerPlanBalanceGauge {
+  net: number
+  typicalAmount: number
+  scaleLimit: number
+  needlePosition: number
+  severeBehind: boolean
+  strongAhead: boolean
+}
+
+/** The exact backend-selected scope, independent of dated work and the active goal cursor. */
+export interface LearnerPlanLearningScope {
+  kind: 'exam' | 'plan'
+  sourceBlockId: string | null
+  title: string
+  goalIds: string[]
+  achievedGoalCount: number
+  targetGoalCount: number
+  needlePosition: number
+  schedulingState: 'scheduled' | 'unscheduled'
+  progressText: string
+}
+
+/**
+ * One subject, merged across every plan of that subject by the backend.
+ *
+ * An unevaluable subject carries no texts and no direction. An evaluated empty
+ * schedule has explanatory texts and a zero period gauge, but no balance direction.
+ * `canContinue` stays
+ * independent of it, because being able to keep learning is not the same question
+ * as whether the plan status can be determined.
+ */
+export interface LearnerPlanSubjectStatus {
+  subjectKey: string
+  landscapeIds: string[]
+  subjectLabel: string
+  evaluable: boolean
+  periodText: string | null
+  planStatusText: string | null
+  subjectLine: string | null
+  statusDirection: LearnerPlanStatusDirection | null
+  periodGauge: LearnerPlanPeriodGauge | null
+  balanceGauge: LearnerPlanBalanceGauge | null
+  /** Current counts for the selected Personal Curriculum; absent on older responses, null if unavailable. */
+  achievedGoalCount?: number | null
+  targetGoalCount?: number | null
+  /** Backend-localized short balance wording for the dial; absent on older responses. */
+  balanceDialText?: string | null
+  /** Backend-localized explanation of plan credits, shown only in plan details. */
+  planCreditText?: string | null
+  /** Selected exam or learning scope; absent on older responses. */
+  learningScope?: LearnerPlanLearningScope | null
+  current: boolean
+  canContinue: boolean
+}
+
+export interface LearnerPlanActiveGoal {
+  title: string
+  announcement: string
+}
+
+/**
+ * The single backend-formulated learning-plan status shared by cockpit and chat.
+ *
+ * The cockpit renders these texts and derives no status of its own from plan metrics;
+ * a second local calculation would be exactly the competing status model this replaces.
+ */
+export interface LearnerPlanStatus {
+  asOf: LearnerLearningPlanDate
+  periodBasis: 'DAY' | 'WEEK'
+  periodStart: LearnerLearningPlanDate
+  periodEnd: LearnerLearningPlanDate
+  timeZone: string
+  language: string
+  evaluable: boolean
+  statusText: string
+  noticeText: string | null
+  activeGoal: LearnerPlanActiveGoal | null
+  followLearningPlans: boolean
+  resumeAvailable: boolean
+  subjects: LearnerPlanSubjectStatus[]
+  unavailablePlanCount: number
+}
+
+export interface LearnerLearningPlansResponse {
+  asOf: LearnerLearningPlanDate
+  followLearningPlans: boolean
+  plans: LearnerLearningPlanSummary[]
+  status: LearnerPlanStatus
+}
+
+export interface LearnerLearningPlanLearningBlock {
+  id: string
+  kind: 'learning'
+  active?: boolean
+  goalId?: string
+  goalIds?: string[]
+  title?: string
+  startDate: LearnerLearningPlanDate
+  endDate: LearnerLearningPlanDate
+  /** Server-materialized, chronologically deduplicated open atomic goals. */
+  atomicGoalIds?: string[]
+}
+
+export interface LearnerLearningPlanBufferBlock {
+  id: string
+  kind: 'buffer'
+  active?: boolean
+  title: string
+  startDate: LearnerLearningPlanDate
+  endDate: LearnerLearningPlanDate
+}
+
+export interface LearnerLearningPlanMilestoneBlock {
+  id: string
+  kind: 'milestone'
+  active?: boolean
+  title: string
+  goalId?: string
+  /** Deadline scope only; it contributes no scheduled work. */
+  goalIds?: string[]
+  date: LearnerLearningPlanDate
+}
+
+export type LearnerLearningPlanBlock =
+  | LearnerLearningPlanLearningBlock
+  | LearnerLearningPlanBufferBlock
+  | LearnerLearningPlanMilestoneBlock
+
+export interface LearnerLearningPlanDetail extends LearnerLearningPlanSummary {
+  blocks: LearnerLearningPlanBlock[]
+}
+
+export interface SaveLearnerLearningPlanLearningBlock {
+  id: string
+  kind: 'learning'
+  active?: boolean
+  goalId?: string
+  goalIds?: string[]
+  title?: string
+  startDate: LearnerLearningPlanDate
+  endDate: LearnerLearningPlanDate
+  atomicGoalIds: string[]
+}
+
+export interface SaveLearnerLearningPlanBufferBlock {
+  id: string
+  kind: 'buffer'
+  active?: boolean
+  title: string
+  startDate: LearnerLearningPlanDate
+  endDate: LearnerLearningPlanDate
+}
+
+export interface SaveLearnerLearningPlanMilestoneBlock {
+  id: string
+  kind: 'milestone'
+  active?: boolean
+  title: string
+  goalId?: string
+  /** Selected topic roots; when present (including []), replaces legacy goalId. */
+  goalIds?: string[]
+  date: LearnerLearningPlanDate
+}
+
+export type SaveLearnerLearningPlanBlock =
+  | SaveLearnerLearningPlanLearningBlock
+  | SaveLearnerLearningPlanBufferBlock
+  | SaveLearnerLearningPlanMilestoneBlock
+
+export interface SaveLearnerLearningPlanRequest {
+  /** Zero creates a plan; later writes must match the current revision. */
+  expectedRevision: number
+  planLabel?: string
+  blocks: SaveLearnerLearningPlanBlock[]
+}
+
+export interface ContinueLearnerLearningPlanRequest {
+  expectedRevision: number
+  /** Optional test/reconciliation guard. Normal Cockpit actions use the server's current Europe/Berlin date. */
+  asOf?: LearnerLearningPlanDate
+}
+
+export interface ContinueLearnerLearningPlanResponse {
+  planId: string
+  revision: number
+  landscapeId: string
+  focusGoalId: string
+  activeGoalId: string
+  state: Record<string, unknown>
+}
+
+export interface ReconcileLearnerLearningPlansRequest {
+  /** The server-provided Europe/Berlin day from the current plans read model. */
+  asOf: LearnerLearningPlanDate
+}
+
+export interface SwitchLearnerLearningPlanRequest {
+  expectedRevision: number
+  /** The server-provided Europe/Berlin day from the current plans read model. */
+  asOf: LearnerLearningPlanDate
+}
+
+/**
+ * Reconcile may return no selected target when nothing is due or when it only
+ * clears a completed active pointer. `changed` describes canonical state, so
+ * it may still be true while all target fields are null.
+ */
+export interface LearnerLearningPlanTransitionResponse {
+  planId: string | null
+  revision: number | null
+  landscapeId: string | null
+  focusGoalId: string | null
+  activeGoalId: string | null
+  changed: boolean
+  state: Record<string, unknown>
+}
+
+export interface ActivateLearnerLearningPlanEntry {
+  landscapeId: string
+  expectedRevision: number
+  planLabel?: string
+  blocks: SaveLearnerLearningPlanBlock[]
+}
+
+export interface ActivateLearnerLearningPlansRequest {
+  /** The server-provided Europe/Berlin day used for the atomic activation. */
+  asOf: LearnerLearningPlanDate
+  plans: ActivateLearnerLearningPlanEntry[]
+}
+
+export interface ActivateLearnerLearningPlansResponse {
+  asOf: LearnerLearningPlanDate
+  followLearningPlans: true
+  plans: LearnerLearningPlanDetail[]
+  selectedPlanId: string | null
+  selectedLandscapeId: string | null
+  focusGoalId: string | null
+  activeGoalId: string | null
+  state: Record<string, unknown>
+}
+
+/** Same status calculation as the cockpit; future dates assume no future completions. */
+export interface PreviewLearnerLearningPlansResponse {
+  asOf: LearnerLearningPlanDate
+  days: Array<{
+    date: LearnerLearningPlanDate
+    status: LearnerPlanStatus
+  }>
+}

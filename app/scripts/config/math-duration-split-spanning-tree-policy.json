@@ -5,7 +5,7 @@
   "inputs": {
     "canonical": {
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
-      "sha256": "e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1"
+      "sha256": "5f23d314ed1b31caae2e5994921c5fa2599ca7e7f718a5b9fc9d61334713bf37"
     },
     "parentDerivativeReceipt": {
       "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-split-composition-view-follow-up-2026-08-16.receipt.json",
@@ -74,11 +74,47 @@
       {
         "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-09-29/he-g9-j8-body-placements-decision.md",
         "sha256": "0abfeb3a4321709bb27df059121c09b0e08ce41c0ef935c0968cf3bf8eb2ef60"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/sh-sine-derivative-stage-decision.json",
+        "sha256": "1329d00c8928ba414fc24bad04429668400f4f5deba203b0da16431381599044"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stage-scope-source-decisions.review.json",
+        "sha256": "3fdbc346042a7e0556a0eaeac05478fe928e1689ddac03dc571c6ebf0d663838"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-he-source-decisions.review.json",
+        "sha256": "3f9f7bcadb445ff3602258d5cc835c7051689b6ddb855b3e2abd9655af685704"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-rp-source-decisions.review.json",
+        "sha256": "2adb6b4b3448341de127a64ba95c908e69e49e22030febaf99557d5fc83dd3fc"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stable-target-sh-source-decisions.review.json",
+        "sha256": "f1249bc205a60db9ff7b0c0426fa69e8028fb66ff6912deb8083e878379f8172"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-02/g8-three-existing-tasks-selected-optional-he/author-source-decision-and-exact24.json",
+        "sha256": "1a6f3041d397a5fe84c010b974c82dce38cb0a501934b826eaa6c6710401a5c2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/he5-cuboid48-probability-two-edge/author-source-decision-and-exact-operations.json",
+        "sha256": "b6f7891a84d837583ce6f748d64ba419df3f39d8e0e057ac9b294d3a3e78fa45"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/matrix-three-geometric-transformations-2026-11-03-v1/author-materialization-and-exact-operations.json",
+        "sha256": "aa2811a3ba70f813c41847d9ab4ba809a71ecf18077de91e7b66e2cd7e2e3e9f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/he5-cuboid48-probability-two-edge/joint-closed-scope-author-decision.json",
+        "sha256": "cedf65795487c204b95233299301d75f660b4e209040ba6a82d0239896a2cf29"
       }
     ]
   },
   "policy": {
-    "sourceOfLayoutTruth": "The reviewed duration-specific Sek-I layouts and bound additive structural adjudications are authoritative for the 83 split placements. Mapping buckets remain authoritative for the ordinary atomic target set.",
+    "sourceOfLayoutTruth": "The reviewed duration-specific Sek-I layouts and bound additive structural adjudications are authoritative for the 84 split placements. Mapping buckets remain authoritative for the ordinary atomic target set.",
     "transform": [
       "Generate the flat mapping-derived Sek-I view exactly as before, with atomic-asserted goalEntry nodes.",
       "For each placement, remove removeAtomicGoalIds from every direct reference occurrence in the generated Sek-I node.",
@@ -87,8 +123,10 @@
       "Sort the placement parent children by canonical title using the existing de locale comparator and oldClusterGoalId as the tie-break key for the replacement.",
       "Assert actualAfter equals (flatBefore minus the union of removeAtomicGoalIds) union the atomic closure of every filtered replacementNode; additionally assert each non-excluded preservedReusedGoalId was visible before, is never removed, and remains visible after. Then compile and reject CPV-004/005/006/007/009.",
       "Use the transformed Sek-I node as the standalone output and as the authoritative replacement node for both GK and LK cross-stage outputs.",
-      "Apply each template's explicitly reviewed prerequisiteOnlyOverrideGoalIds to direct target references after Sek-I assembly, adding a direct override for inherited references; block route-closure promotion and derive assessment visibility from the resulting curricular target set.",
-      "Seed each template's reviewed additionalTargetGoalIds as ordinary canonical-year bucket targets before prerequisite closure, independently of assessment visibility; retain explicit prerequisite-only overrides."
+      "Apply each template's explicitly reviewed prerequisiteOnlyOverrideGoalIds to direct target references after Sek-I assembly, adding a direct override for inherited references; never enroll preparation as targets and derive assessment visibility from the resulting curricular target set.",
+      "Seed each template's reviewed additionalTargetGoalIds as ordinary canonical-year bucket targets independently of preparation and assessment visibility; retain explicit prerequisite-only overrides.",
+      "Materialize the independently reviewed duration-specific positive target selection only at the Sek-I stage anchor; canonical years and requirements never enroll additional targets. Existing independent Sek-II targets keep their authored placement unless explicitly relocated.",
+      "The HE/RP G9 templates explicitly preserve f242a3e8/d1352ce0 as support-only across the whole view; relocating the existing generic-source G8 spatial targets to Sek II must not enroll them into previously unselected G9 CrossStage targets."
     ],
     "j6StructuralSplitContract": {
       "adjudicationPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-26/batch-003b-j6-structural-splits/source-edge-adjudication.json",
@@ -134,11 +172,18 @@
         ],
         "humanApproval": false
       }
+    },
+    "stageScopeCorrection20261101": {
+      "sourceReview": {
+        "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stage-scope-source-decisions.review.json",
+        "sha256": "3fdbc346042a7e0556a0eaeac05478fe928e1689ddac03dc571c6ebf0d663838"
+      },
+      "decision": "The common explicit stage policy supersedes unsupported additional-target seeds only. Canonical definitions and every direct/indirect/inherited requirement remain intact as support; no stage-denied atom is promoted as a target by prerequisite closure. CrossStage retains independent upper-stage targets and uses exact stage-parent corrections."
     }
   },
   "counts": {
     "sek1TemplateCount": 6,
-    "splitPlacementCount": 83,
+    "splitPlacementCount": 84,
     "crossStageOutputCount": 12,
     "totalOutputCount": 18
   },
@@ -147,7 +192,7 @@
       "fileName": "de-he-seki-g8.view.json",
       "viewId": "de-he-gym-seki-math-g8",
       "fileSha256": "cc43190b9cfc54dcbbf150ddf83781bbe3b73c509128c9222ef79e51d2746277",
-      "placementCount": 16,
+      "placementCount": 17,
       "placements": [
         {
           "parentStructureId": "j8-g8-kompetenzen",
@@ -437,27 +482,50 @@
             "kind": "canonicalSubtree",
             "goalId": "1bc118c3-1f05-5f2a-b125-418017180d75"
           }
+        },
+        {
+          "parentStructureId": "j9-g8-kompetenzen",
+          "splitCode": "HE-G8-selected-optional-substitution",
+          "oldClusterGoalId": "2bd88d66-5daf-53bb-aa02-4c010963679d",
+          "renderKind": "structure",
+          "removeAtomicGoalIds": [
+            "2bd88d66-5daf-53bb-aa02-4c010963679d"
+          ],
+          "replacementNode": {
+            "kind": "structure",
+            "id": "he-g8-selected-optional-substitution",
+            "label": "Zusatzkompetenz (HE-G8-Lehrplan: fakultativ)",
+            "children": [
+              {
+                "kind": "goalEntry",
+                "goalId": "2bd88d66-5daf-53bb-aa02-4c010963679d",
+                "displayLabel": "Substitution zum Lösen von Gleichungen anwenden (HE-G8: fakultativ)"
+              }
+            ]
+          }
         }
       ],
       "prerequisiteOnlyOverrideGoalIds": [
         "3a69dab2-3fe8-5076-a980-5b7ac1bd1127",
         "bea0e5a0-4833-5337-b6f1-7251b8cf8089"
       ],
-      "additionalTargetGoalIds": [
-        "f242a3e8-55a3-492e-8354-b81b24cdbb78",
-        "d1352ce0-9502-5039-9af6-318fe385b6fd"
-      ],
+      "additionalTargetGoalIds": [],
       "excludedGoalIds": [
         "5518ceb3-f668-5b52-a9b1-57653b16ca98",
         "2850e8f6-2330-50d3-a577-d519540d9924",
         "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
         "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
         "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
-        "baea3966-5d10-53bf-8193-3fcda7b1e73f"
+        "baea3966-5d10-53bf-8193-3fcda7b1e73f",
+        "da30a5ab-6609-533f-b6f1-c717fee3a795"
       ],
       "primaryYearOverrides": {
         "f65ab452-1884-57b0-9be3-c7d9e4944891": "8"
-      }
+      },
+      "sourceCorrectedAdditionalTargetGoalIds": [
+        "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+        "d1352ce0-9502-5039-9af6-318fe385b6fd"
+      ]
     },
     {
       "fileName": "de-he-seki-g9.view.json",
@@ -785,10 +853,11 @@
       ],
       "prerequisiteOnlyOverrideGoalIds": [
         "3a69dab2-3fe8-5076-a980-5b7ac1bd1127",
-        "bea0e5a0-4833-5337-b6f1-7251b8cf8089"
+        "bea0e5a0-4833-5337-b6f1-7251b8cf8089",
+        "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+        "d1352ce0-9502-5039-9af6-318fe385b6fd"
       ],
       "additionalTargetGoalIds": [
-        "f76d00dc-6b31-59cd-b01a-3610eadc9908",
         "6a4716bd-8038-46bb-b647-0db4a254fee7"
       ],
       "excludedGoalIds": [
@@ -797,11 +866,15 @@
         "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
         "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
         "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
-        "baea3966-5d10-53bf-8193-3fcda7b1e73f"
+        "baea3966-5d10-53bf-8193-3fcda7b1e73f",
+        "da30a5ab-6609-533f-b6f1-c717fee3a795"
       ],
       "primaryYearOverrides": {
         "f65ab452-1884-57b0-9be3-c7d9e4944891": "9"
-      }
+      },
+      "sourceCorrectedAdditionalTargetGoalIds": [
+        "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+      ]
     },
     {
       "fileName": "de-rp-seki-g8.view.json",
@@ -948,10 +1021,7 @@
         "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
         "bea0e5a0-4833-5337-b6f1-7251b8cf8089"
       ],
-      "additionalTargetGoalIds": [
-        "f242a3e8-55a3-492e-8354-b81b24cdbb78",
-        "d1352ce0-9502-5039-9af6-318fe385b6fd"
-      ],
+      "additionalTargetGoalIds": [],
       "excludedGoalIds": [
         "5518ceb3-f668-5b52-a9b1-57653b16ca98",
         "2850e8f6-2330-50d3-a577-d519540d9924",
@@ -959,6 +1029,10 @@
         "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
         "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
         "baea3966-5d10-53bf-8193-3fcda7b1e73f"
+      ],
+      "sourceCorrectedAdditionalTargetGoalIds": [
+        "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+        "d1352ce0-9502-5039-9af6-318fe385b6fd"
       ]
     },
     {
@@ -1118,11 +1192,12 @@
         "3a69dab2-3fe8-5076-a980-5b7ac1bd1127",
         "6a3502ee-b616-5db7-88fc-8951f33c9f63",
         "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
-        "bea0e5a0-4833-5337-b6f1-7251b8cf8089"
+        "bea0e5a0-4833-5337-b6f1-7251b8cf8089",
+        "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+        "d1352ce0-9502-5039-9af6-318fe385b6fd"
       ],
       "additionalTargetGoalIds": [
         "0190e463-51a7-4860-9b35-d875530a85ba",
-        "f76d00dc-6b31-59cd-b01a-3610eadc9908",
         "15ce2a7e-a5dc-44f7-8a5e-6d04dd81db12",
         "6a4716bd-8038-46bb-b647-0db4a254fee7"
       ],
@@ -1133,6 +1208,9 @@
         "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
         "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
         "baea3966-5d10-53bf-8193-3fcda7b1e73f"
+      ],
+      "sourceCorrectedAdditionalTargetGoalIds": [
+        "f76d00dc-6b31-59cd-b01a-3610eadc9908"
       ]
     },
     {
@@ -1147,7 +1225,8 @@
         "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
         "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
         "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
-        "baea3966-5d10-53bf-8193-3fcda7b1e73f"
+        "baea3966-5d10-53bf-8193-3fcda7b1e73f",
+        "f9fdb733-5838-4983-888a-05624eabbe17"
       ],
       "prerequisiteOnlyGoalIds": [
         "dcda6fdf-108f-5ea1-bce7-6f30d6443517"
@@ -1392,7 +1471,8 @@
       ],
       "prerequisiteOnlyOverrideGoalIds": [
         "3a69dab2-3fe8-5076-a980-5b7ac1bd1127"
-      ]
+      ],
+      "additionalTargetGoalIds": []
     },
     {
       "fileName": "de-sh-seki-g9.view.json",
@@ -1406,7 +1486,8 @@
         "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
         "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
         "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
-        "baea3966-5d10-53bf-8193-3fcda7b1e73f"
+        "baea3966-5d10-53bf-8193-3fcda7b1e73f",
+        "f9fdb733-5838-4983-888a-05624eabbe17"
       ],
       "prerequisiteOnlyGoalIds": [
         "dcda6fdf-108f-5ea1-bce7-6f30d6443517"
@@ -1651,7 +1732,8 @@
       ],
       "prerequisiteOnlyOverrideGoalIds": [
         "3a69dab2-3fe8-5076-a980-5b7ac1bd1127"
-      ]
+      ],
+      "additionalTargetGoalIds": []
     }
   ],
   "crossStageTemplates": [

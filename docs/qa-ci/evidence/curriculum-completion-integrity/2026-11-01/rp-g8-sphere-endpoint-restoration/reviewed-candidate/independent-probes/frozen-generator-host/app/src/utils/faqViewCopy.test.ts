@@ -1,0 +1,90 @@
+import { getFaqViewCopy } from './faqViewCopy'
+import { de as germanLabels } from '../locales/de'
+import { en as englishLabels } from '../locales/en'
+
+function assert(condition: unknown, message: string): asserts condition {
+  if (!condition) throw new Error(message)
+}
+
+const de = getFaqViewCopy('de')
+const en = getFaqViewCopy('en')
+const ids = <T extends { id: string }>(items: T[]) => items.map(item => item.id)
+const section = (copy: typeof de, id: string) => {
+  const found = copy.sections.find(item => item.id === id)
+  assert(found, `FAQ section ${id} exists`)
+  return found
+}
+const question = (copy: typeof de, sectionId: string, id: string) => {
+  const found = section(copy, sectionId).questions.find(item => item.id === id)
+  assert(found, `FAQ question ${id} belongs to ${sectionId}`)
+  return found
+}
+const paragraphs = (copy: typeof de, sectionId: string, id: string) => question(copy, sectionId, id).paragraphs.join(' ')
+
+for (const copy of [de, en]) {
+  assert(JSON.stringify(ids(copy.sections)) === JSON.stringify(['claude', 'chatgpt', 'gemini', 'learning']), 'separate Claude, ChatGPT, Gemini and shared-learning sections in that order')
+  const allQuestions = copy.sections.flatMap(item => item.questions)
+  assert(new Set(ids(allQuestions)).size === allQuestions.length, 'FAQ question IDs are unique across all sections')
+  assert(!('warning' in copy) && !('compatibility' in copy), 'no global ChatGPT warning or compatibility matrix can be applied to Claude')
+  assert(copy.recommendation.title.includes('Claude'), 'current recommendation names Claude')
+  assert(copy.recommendation.actionLabel.includes('SkillPilot'), 'recommendation returns learners to SkillPilot')
+  assert(question(copy, 'learning', 'provider-options').link?.href === '/faq/coach-setup', 'setup question links to access details')
+  assert(Boolean(question(copy, 'learning', 'provider-options').link?.label), 'setup detail link is labeled')
+  assert(question(copy, 'learning', 'ask-to-improve').bullets?.length, 'shared learning help keeps concrete examples')
+  assert(question(copy, 'learning', 'disagree-with-coach').bullets?.length, 'shared learning help encourages reasoned disagreement')
+  const serialized = JSON.stringify(copy).toLowerCase()
+  for (const forbidden of ['skillpilot-id', 'skillpilotid', 'session id', 'session-id', 'stateversion', 'oauth', 'mcp', 'connector', 'workspace', 'provider account', 'embedded']) {
+    assert(!serialized.includes(forbidden), `learner FAQ does not expose ${forbidden}`)
+  }
+}
+for (const deSection of de.sections) {
+  assert(JSON.stringify(ids(deSection.questions)) === JSON.stringify(ids(section(en, deSection.id).questions)), `${deSection.id}: DE and EN questions have identical IDs and order`)
+}
+assert(paragraphs(de, 'claude', 'claude-app').includes('funktioniert') && paragraphs(en, 'claude', 'claude-app').includes('works'), 'Claude app works in the current beta')
+assert(paragraphs(de, 'claude', 'claude-app').includes('nicht eine vollständige Prüfung') && paragraphs(en, 'claude', 'claude-app').includes('not complete testing'), 'beta experience does not imply universal device acceptance')
+assert(paragraphs(de, 'claude', 'claude-voice').includes('warte dann kurz') && paragraphs(en, 'claude', 'claude-voice').includes('wait briefly'), 'Claude voice guidance advises waiting through occasional pauses')
+assert(paragraphs(de, 'claude', 'claude-voice').includes('anschließend weiter') && paragraphs(en, 'claude', 'claude-voice').includes('resumes speaking'), 'Claude voice guidance explains observed recovery')
+for (const [copy, image, flashcard, voiceOff, reload, voiceOn] of [
+  [de, 'Bild', 'Lernkarte', 'Voice Mode kurz aus', 'denselben Chat neu', 'Voice Mode wieder einschalten'],
+  [en, 'image', 'flashcard', 'voice mode off', 'same chat', 'voice mode back on'],
+] as const) {
+  const guidance = paragraphs(copy, 'claude', 'claude-voice')
+  assert(guidance.includes(image) && guidance.includes(flashcard), 'Claude voice FAQ covers missing images and flashcards')
+  const positions = [voiceOff, reload, voiceOn].map(step => guidance.indexOf(step))
+  assert(positions.every(position => position >= 0) && positions[0] < positions[1] && positions[1] < positions[2], 'Claude voice workaround keeps the off, reload, on sequence')
+}
+assert(paragraphs(de, 'claude', 'continue-on-phone').includes('denselben bestehenden Chat') && paragraphs(en, 'claude', 'continue-on-phone').includes('same existing chat'), 'device switching keeps the existing Claude chat')
+assert(paragraphs(de, 'claude', 'continue-on-phone').includes('24 Stunden') && paragraphs(en, 'claude', 'continue-on-phone').includes('24 hours'), 'cross-device continuation respects session validity')
+assert(de.recommendation.paragraphs.some(item => item.includes('Git-Marketplace')) && en.recommendation.paragraphs.some(item => item.includes('Git marketplace')), 'the authorized ChatGPT desktop beta is visible alongside Claude')
+assert(question(de, 'chatgpt', 'chatgpt-availability').link?.href === '/plugins#chatgpt-desktop' && question(en, 'chatgpt', 'chatgpt-availability').link?.href === '/plugins#chatgpt-desktop', 'ChatGPT setup links directly to the maintained desktop plugin guide')
+assert(paragraphs(de, 'chatgpt', 'chatgpt-availability').includes('ausdrücklich „ChatGPT Desktop“ als Coach') && paragraphs(en, 'chatgpt', 'chatgpt-availability').includes('explicitly select “ChatGPT Desktop” as your coach'), 'ChatGPT learners choose the matching provider before generating their start message')
+assert(paragraphs(de, 'chatgpt', 'chatgpt-availability').includes(germanLabels.startPage.login.chatGptDesktop.prepare) && paragraphs(en, 'chatgpt', 'chatgpt-availability').includes(englishLabels.startPage.login.chatGptDesktop.prepare), 'ChatGPT instructions name the actual localized preparation button')
+assert(paragraphs(de, 'chatgpt', 'chatgpt-availability').includes('für Claude vorbereitete Startnachricht funktioniert nicht') && paragraphs(en, 'chatgpt', 'chatgpt-availability').includes('start message prepared for Claude does not work'), 'provider-specific start messages cannot be reused with another provider')
+assert(paragraphs(de, 'chatgpt', 'chatgpt-availability').includes('noch nicht im öffentlichen ChatGPT-App-Verzeichnis veröffentlicht') && paragraphs(en, 'chatgpt', 'chatgpt-availability').includes('not been published in the public ChatGPT app directory'), 'desktop beta availability does not claim public directory publication')
+assert(paragraphs(de, 'chatgpt', 'chatgpt-availability').includes('Installation und Lernstart in ChatGPT Desktop unter Windows funktionieren') && paragraphs(en, 'chatgpt', 'chatgpt-availability').includes('Installation and learning start in ChatGPT Desktop on Windows work'), 'ChatGPT Windows installation and learning start reflect the confirmed beta experience')
+assert(paragraphs(de, 'chatgpt', 'chatgpt-app-voice').includes('Weitere Lernfunktionen und das Fortsetzen einer Lernsession') && paragraphs(en, 'chatgpt', 'chatgpt-app-voice').includes('further learning features and session continuation'), 'a working learning start is not generalized to all learning flows or session continuation')
+assert(paragraphs(de, 'chatgpt', 'chatgpt-availability').includes('Veröffentlichungstermin können wir noch nicht nennen') && paragraphs(en, 'chatgpt', 'chatgpt-availability').includes('cannot give a release date'), 'no publication date is promised')
+assert(paragraphs(de, 'chatgpt', 'chatgpt-app-voice').includes('gesondert') && paragraphs(en, 'chatgpt', 'chatgpt-app-voice').includes('separately'), 'Claude app and voice experience does not prove ChatGPT behavior')
+assert(paragraphs(de, 'chatgpt', 'chatgpt-app-voice').includes('Lernen mit Voice Mode') && paragraphs(en, 'chatgpt', 'chatgpt-app-voice').includes('Learning with voice mode'), 'ChatGPT voice guidance includes the reported Windows Work experience')
+assert(paragraphs(de, 'chatgpt', 'chatgpt-app-voice').includes('die Bildfolge prüfen wir weiter') && paragraphs(en, 'chatgpt', 'chatgpt-app-voice').includes('still checking the image sequence'), 'the first displayed ChatGPT image does not certify subsequent images')
+assert(paragraphs(de, 'learning', 'session-duration').includes('24 Stunden') && paragraphs(en, 'learning', 'session-duration').includes('24 hours'), 'shared FAQ preserves session duration')
+assert(paragraphs(de, 'learning', 'session-duration').includes('nicht mit anderen') && paragraphs(en, 'learning', 'session-duration').includes('not share'), 'shared FAQ preserves private start-message caution')
+assert(paragraphs(de, 'learning', 'saved-progress').includes('kein Beleg') && paragraphs(en, 'learning', 'saved-progress').includes('not evidence'), 'coach praise is not proof of saved progress')
+for (const [copy, goalContext, action, opinion, privacy] of [
+  [de, 'aktuelles Lernziel automatisch', 'Feedback zu diesem Lernziel', 'deiner Meinung nach', 'keine Chattexte'],
+  [en, 'automatically shows your current learning goal', 'Give feedback on this learning goal', 'in your opinion', 'Do not copy chat text'],
+] as const) {
+  const feedback = paragraphs(copy, 'learning', 'disagree-with-coach')
+  assert(feedback.includes(goalContext) && feedback.includes(action), 'coach feedback points to the automatically selected goal and actual cockpit action')
+  assert(feedback.includes(opinion), 'learners can report coach behavior they consider inappropriate')
+  assert(feedback.includes(privacy), 'manual feedback must not copy chat content')
+  assert(!feedback.includes('support@skillpilot.com'), 'goal-specific coach feedback uses the cockpit rather than email')
+}
+assert(paragraphs(de, 'learning', 'photo-upload').includes('persönliche Angaben') && paragraphs(en, 'learning', 'photo-upload').includes('personal information'), 'photo guidance preserves personal-data caution')
+assert(paragraphs(de, 'learning', 'photo-upload').includes('Kamera in der Claude-App') && paragraphs(en, 'learning', 'photo-upload').includes('camera directly in the Claude app'), 'photo FAQ explicitly supports the Claude app camera')
+assert(paragraphs(de, 'learning', 'photo-upload').includes('Handy') && paragraphs(en, 'learning', 'photo-upload').includes('phone'), 'photo FAQ recommends using a phone')
+assert(!paragraphs(de, 'learning', 'photo-upload').includes('Wenn dein Chat') && !paragraphs(en, 'learning', 'photo-upload').includes('If your chat'), 'confirmed Claude photo support is not described as conditional')
+assert(paragraphs(de, 'learning', 'photo-upload').includes('keine Chattexte oder Fotos') && paragraphs(en, 'learning', 'photo-upload').includes('does not receive chat text or photos'), 'privacy copy preserves the no-chat-prose-to-Core boundary')
+assert(!JSON.stringify(de).includes('Der Inhalt ist dadurch nicht falsch') && !JSON.stringify(en).includes('The content is not wrong'), 'display guidance never guarantees correct mathematics')
+
+console.log('FAQ view copy tests passed')

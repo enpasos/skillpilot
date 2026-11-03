@@ -10,7 +10,7 @@ Layering, migration strategy, and canonical rollout policy are specified separat
 
 Related planning scope: [Curriculum Levels](curriculum-levels.md) explains how bounded learning stages, including school years, organize canonical goals. The optional formal profile in §12 checks a resolved plan without changing base graph validity.
 
-Related completion contract: [Implicit Completion and Direct Assessment Access](assessment-gated-completion.md) derives remaining work from direct normalised requirements and existing mastery. Any mastered goal ends its own prerequisite demand; unused non-assessment goals become implicitly completed. Mastery remains the sole stored goal result. The 31 October 2026 decision replaces manual waiver profiles and changes prerequisite availability to stop at mastered intermediate goals.
+Related completion contract: [Implicit Completion and Direct Assessment Access](assessment-gated-completion.md) derives remaining work from direct normalised requirements and existing mastery. Any mastered goal ends its own prerequisite demand; unused ordinary goals become implicitly completed. Assessments and memory goals remain protected until mastered. Complete authoritative curricula and supported projections must have every target reachable from these protected roots at zero mastery; uncovered ordinary endpoints are authoring defects. Mastery remains the sole stored goal result. The 31 October 2026 decision, corrected 1 November 2026, replaces manual waiver profiles and stops prerequisite demand at mastered intermediate goals.
 
 > **Normative definition.** This document defines the skill graph’s semantics and validity requirements.
 >
@@ -563,6 +563,8 @@ graded 0/50/100 mastery control. See the full
 
 Memory goals are optional support, not mandatory checkpoints. They are selected through the separate memory-review contract and may support a route where justified, but the hard route profile must not make every terminal performance depend on an SRS deck. In this rule, `curricularAtomic` denotes the ordinary reviewed subject goals: understanding, explaining, reasoning, applying, problem solving, and construction as appropriate. It does not claim that each route needs an additional node with a separately inferred "understanding" type. Such a type would require its own authored and reviewed semantic role rather than title-based inference. The runtime corollary is separate but consistent: at a genuine zero-progress entry into a projected scope, unresolved `orientation` goals are the only selectable frontier goals; existing learners with established subject progress are not reset to that entry gate.
 
+This optionality concerns whether a route should contain a reviewed memory goal. Its mastery remains protected under the [completion contract](assessment-gated-completion.md): it cannot be implicitly completed or replaced by examination success. A selected memory target is an independent completion obligation; a supporting memory goal outside the targets carries demand only while an open selected obligation still needs it. Protection alone never enlarges the selected completion contract.
+
 The canonical inventory rule and a learner-facing projection rule are both
 necessary. `GVR-012` proves that the authored canonical graph has complete
 routes; it cannot prove that a narrower composition view retained every direct
@@ -852,10 +854,38 @@ This means:
 
 Optimistic evaluation uses the restricted relation (§11.3). Strict evaluation uses the full relation (§11.4). Filtering changes the evaluation scope, not the stored mastery set.
 
+When course profiles are combined, resolve each component's authored target
+roles and course availability together before taking the target union:
+
+$$
+T_{\mathrm{GK+LK}}=(B_{\mathrm{GK}}\cap U_{\mathrm{GK}})\cup(B_{\mathrm{LK}}\cap U_{\mathrm{LK}}).
+$$
+
+Here $B_i$ contains the atomic target-role goals of source view $i$ after its
+local specificity rules, and $U_i$ is its available set under the applicable
+course policy. Keep the remaining requested scope dimensions fixed. A target
+role in an unavailable component cannot be combined with availability in a
+different component to create a new target. The compiled navigation and
+learner projection use this same union; supporting goals and global mastery
+remain separate. Calculate demand and implicit completion only afterwards in
+the full Personal Curriculum. See the [composition-view contract](view-projection-and-goal-placement.md#combining-course-profiles).
+
 A Level 3 focus may contain one or several selected roots. Its evaluation set
-is the union of those roots and their `contains` descendants, restricted to
-the committed Personal Curriculum's targets. The same restriction applies to
-ordinary topic focus and exam preparation. An explicitly authored
+is the union of their actual learner-facing members, restricted to the
+committed Personal Curriculum's targets. In a composition view, membership
+follows the selected reference and its compiled descendant paths. A direct
+atomic `goalEntry` denotes only itself, even if its raw canonical definition
+contains children. An explicitly offered subject-root alias denotes that
+subject's selected targets. An unrelated raw canonical ancestor does not
+supply an additional focus path.
+
+Resolve and combine these member sets before checking prerequisites. Do not
+expand them again or remove independently chosen roots using raw canonical
+containment. A stored reference whose authored program branch disappeared
+remains stored and requires an explicit new selection; it must not fall back
+to the full curriculum. Already chosen valid atomic work may finish under its
+existing workflow. The same restriction applies to ordinary topic focus and
+exam preparation. An explicitly authored
 `prerequisiteOnly` goal remains available for lookup and global strict checks;
 it is not added to the focus or counted as a learning target.
 
@@ -1072,26 +1102,34 @@ B_\pi\cup L_{<i}\cup\{a_1,\ldots,a_{j-1}\}
 \qquad(1\leq j\leq m).
 $$
 
-This completion witness uses the global satisfaction and frontier definitions of §9.1. It includes inherited requirements, transitive prerequisite chains, and the atomic descendants needed to satisfy required clusters. It introduces no additional authored dependency relation.
+This completion witness uses the global satisfaction and frontier definitions of §9.1. It includes inherited requirements, prerequisite chains pursued until the assumed entry competencies, and the atomic descendants needed to satisfy required clusters. It introduces no additional authored dependency relation.
 
 Prerequisites within the same level are allowed; their acquisition must follow a feasible order. A target MUST NOT depend on an unplanned competency or on a target first assigned to a later level. A prerequisite outside the current level is permitted when supplied by the entry basis or earlier levels.
 
-For diagnostics, define the atomic requirements of a target:
+For diagnostics, expand each direct effective requirement into the atoms needed to satisfy it, and stop further traversal at the declared entry basis:
 
 $$
-RequiredAtoms(g)=
-\bigcup_{\substack{p\in G\\(g,p)\in R_{\mathrm{effective}}^+}}
-Atoms(p).
+R_{\pi,\mathrm{prep}}=
+\{(a,b)\in A\times A\mid
+ a\notin B_\pi\ \land\
+ \exists p\in G:\ (a,p)\in R_{\mathrm{effective}}\ \land\ b\in Atoms(p)\}.
+$$
+
+This is a derived planning relation, not another authored edge type. Required clusters are expanded before reachability is computed; inherited requirements are already included in $R_{\mathrm{effective}}$. An entry atom can occur as a reached prerequisite, but traversal does not continue through its outgoing requirements. Define
+
+$$
+RequiredAtoms_\pi(g)=
+\{b\in A\mid (g,b)\in R_{\pi,\mathrm{prep}}^+\}.
 $$
 
 Structural feasibility implies the following prerequisite-closure condition:
 
 $$
 \forall g\in T_\pi:\quad
-RequiredAtoms(g)\subseteq B_\pi\cup L_{\leq\ell_\pi(g)}.
+RequiredAtoms_\pi(g)\subseteq B_\pi\cup L_{\leq\ell_\pi(g)}.
 $$
 
-Equivalently, the requirements of the planned targets in each cumulative level prefix stay within that prefix and the entry basis. This does not require reconstructing an acquisition history for the assumed entry competencies themselves.
+Equivalently, prerequisite traversal from each cumulative level prefix remains within that prefix and the entry basis, stopping at the entry competencies. This does not reconstruct their acquisition history. For example, with $g\to b\to d$, $T_\pi=\{g\}$ and $B_\pi=\{b\}$, the witness may acquire $g$ directly: the diagnostic reaches $b$ and stops, without requiring $d$ in this plan.
 
 The closure diagnostic identifies two different failures:
 

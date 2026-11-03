@@ -51,15 +51,16 @@ class LearningPlanDailyProgressTest {
     }
 
     @Test
-    void advanceWorkCoversQuotaWithoutShrinkingTheOriginalPlannedPensum() {
+    void earlierMasteryDoesNotCoverQuotaWhileTodaysExplicitCompletionDoes() {
         var before = progress(BLOCKS, TODAY,
                 Map.of("a", 1.0, "b", 1.0, "c", 1.0, "d", 1.0, "e", 1.0), Set.of());
         var after = progress(BLOCKS, TODAY,
                 Map.of("a", 1.0, "b", 1.0, "c", 1.0, "d", 1.0, "e", 1.0, "f", 1.0), Set.of("f"));
-        assertThat(before.erfuelltesPeriodenziel()).isEqualTo(1);
-        assertThat(before.offenesPeriodenpensum()).isEqualTo(1);
-        assertThat(after.erfuelltesPeriodenziel()).isEqualTo(2);
-        assertThat(after.offenesPeriodenpensum()).isZero();
+        assertThat(before.erfuelltesPeriodenziel()).isZero();
+        assertThat(before.offenesPeriodenpensum()).isEqualTo(2);
+        assertThat(after.erfuelltesPeriodenziel()).isEqualTo(1);
+        assertThat(after.offenesPeriodenpensum()).isEqualTo(1);
+        assertThat(after.rohsaldo()).isZero();
     }
 
     @Test
@@ -75,9 +76,10 @@ class LearningPlanDailyProgressTest {
         var blocks = List.of(block("due", "2026-09-11", List.of("a")),
                 block("future", "2026-09-14", List.of("b")));
         var result = progress(blocks, TODAY, Map.of("b", 1.0), Set.of());
-        assertThat(result.erfuelltesPeriodenziel()).isEqualTo(1);
-        assertThat(result.offenesPeriodenpensum()).isZero();
+        assertThat(result.erfuelltesPeriodenziel()).isZero();
+        assertThat(result.offenesPeriodenpensum()).isEqualTo(1);
         assertThat(result.rueckstand()).isZero();
+        assertThat(result.rohsaldo()).isZero();
     }
 
     @Test
@@ -118,12 +120,12 @@ class LearningPlanDailyProgressTest {
     }
 
     @Test
-    void periodGaugeUsesCreditedPlanGoalsAndKeepsAnEmptyQuotaDistinct() {
+    void periodGaugeUsesOnlyExplicitPeriodCompletionsAndKeepsAnEmptyQuotaDistinct() {
         var stillOnTrack = UnifiedLearningPlanStatusCalculator.calculate(
                 new PlanBalanceInputs(13, 3, 10, 0));
         var fulfilledWithBacklog = UnifiedLearningPlanStatusCalculator.calculate(
                 new PlanBalanceInputs(13, 3, 12, 4));
-        var coveredByAdvanceWork = UnifiedLearningPlanStatusCalculator.calculate(
+        var totalCoveredByAdvanceWork = UnifiedLearningPlanStatusCalculator.calculate(
                 new PlanBalanceInputs(13, 3, 13, 0));
         var noQuota = UnifiedLearningPlanStatusCalculator.calculate(
                 new PlanBalanceInputs(10, 0, 8, 0));
@@ -138,9 +140,9 @@ class LearningPlanDailyProgressTest {
                 .containsExactly(3, 3, 1.0);
         assertThat(LearnerLearningPlanService.balanceGauge(fulfilledWithBacklog,
                 Map.of("a", TODAY), PeriodBasis.DAY).net()).isEqualTo(-1);
-        assertThat(LearnerLearningPlanService.periodGauge(coveredByAdvanceWork))
+        assertThat(LearnerLearningPlanService.periodGauge(totalCoveredByAdvanceWork))
                 .extracting("completed", "target", "needlePosition")
-                .containsExactly(3, 3, 1.0);
+                .containsExactly(0, 3, 0.0);
         assertThat(LearnerLearningPlanService.periodGauge(noQuota))
                 .extracting("completed", "target", "needlePosition")
                 .containsExactly(0, 0, null);

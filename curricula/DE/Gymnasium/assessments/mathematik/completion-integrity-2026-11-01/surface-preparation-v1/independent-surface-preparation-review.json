@@ -1,0 +1,115 @@
+{
+  "reviewType": "INDEPENDENT_BOUNDED_SURFACE_PREPARATION_CONTENT_REVIEW",
+  "reviewedAt": "2026-11-01",
+  "reviewerAgent": "/root/astra_math_model_review",
+  "decision": "PASS_LOCAL_PREPARATION_DELTA_WITH_NO_ADDITIONAL_GENERAL_COVERAGE",
+  "baseCanonicalSha256": "3a3792d14057854c79a3d8c4d38cd98dd6e28e936865ebd3447107404b58474c",
+  "reviewedFileSha256": {
+    "README.md": "1007b6499e8366096b8f5cb7899a7869be79e498180c98495ed6495e21679bf8",
+    "9f9c7ece.before.goal.json": "1ae56326b763cc3c79609c264d287a25a36943283c7ec95fa84b4e3305a70a07",
+    "9f9c7ece.after.goal.json": "ca2f618a3937ee464eba7d21c82d46bb8e1485f688b7e9d746a0df4ee357cf53",
+    "e5494c67.before.goal.json": "959972b76da00129c136fda46eb864ca41c6faa6cb3f539f727c3bcce08e0c2f",
+    "e5494c67.after.goal.json": "c84bbe5d2b97fc7a902bd442849f1f8108ca41cd2319bbc0ab4a7116a8a1436b",
+    "0dded9c1.unchanged-variant.goal.json": "56c10f08cebad75946664cebfbe1b76368f8110da2f40a178c8ddb70a7ff25ab",
+    "read-only-reference-contracts.json": "7fbc149c840c97f05725dd3e3f4a5184d7b3bf65b2ab786135ef0b4be3bf438a",
+    "author-proposal.json": "b4144719837b84e7dc8ffccd4b5cc7477d316d9499bf9b8d79638f4764db68ab",
+    "author-validation.json": "15aab5113694c737cde9583ef722e652f77278c2207a98de8403053498b56fdd",
+    "native-validation.json": "83baa8aae56349f087474b225205b607360b3a21915cdab6d67a2f4e7edebf2e",
+    "existing-prism-task.md": "e859af09d696af07fb163078acb04da17a4e6c156bd3097e9b1e9fff8447f527"
+  },
+  "priorCohortBinding": {
+    "path": "tmp/approach-review-20261101/endpoint-route-cohort30-review.json",
+    "sha256": "80f0cceb1c04c87efd1a2714b818f0b5e828f0663cd917c1ae5c24ecefdfc49f",
+    "case": 1,
+    "earlierDecision": "UNRESOLVED",
+    "earlierBoundary": "Prism action is a real candidate, not a task gap; the complete surface-support contract was too broad. Historical decision remains unchanged."
+  },
+  "surfaceSupport": {
+    "goalId": "9f9c7ece-b81c-55fa-8073-dd816d7d4778",
+    "decision": "PASS",
+    "unchangedWholeContract": "Use properties of simple solids to calculate lateral and total surface areas in suitable situations. No restriction to right prisms or a single formula/body instance.",
+    "removedWholeContracts": [
+      {
+        "id": "5f548596-9bc3-532e-88a0-81d5029809e9",
+        "reason": "Volume and cubic measurement are distinct from exterior area and are not a universal preparation requirement for an appropriately dimensioned surface task."
+      },
+      {
+        "id": "50eb5156-5046-5887-80dc-3128c5f8cbd6",
+        "reason": "The complete length/angle contract includes oblique prisms/pyramids and vector representations. These are not needed before every suitable surface calculation; some applications may still need them explicitly."
+      },
+      {
+        "id": "eb070ed2-7ef4-5afe-b203-190ebb0116af",
+        "reason": "Analyzing all edge/face/spatial-direction relations is a broader independent competence. Elementary parallel/right-angle recognition remains in the retained foundation."
+      },
+      {
+        "id": "b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2",
+        "reason": "Identifying all axes/planes of symmetry is not necessary for summing or otherwise calculating exterior surface areas. Symmetry can be useful without being a universal prerequisite."
+      }
+    ],
+    "newWholeContracts": [
+      {
+        "id": "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+        "reason": "Identifying/naming elementary solids supplies general geometric orientation; the body list remains broader than prisms. Assigning lateral/base/exterior surface parts remains content of the consumer goal."
+      },
+      {
+        "id": "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+        "reason": "Area measurement, appropriate decomposition and units supply the general plane-area foundation. The complete parallelogram/triangle/trapezoid/composite-figure contract is read and retained."
+      }
+    ],
+    "retainedViaNewSupport": [
+      "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+      "f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
+    ],
+    "scopeOfMinimality": "A justified local direct prerequisite set; no claim that the inherited elementary arithmetic/geometry graph is globally minimal. Specific circle/sector or vector methods remain available when a concrete body task needs them, without becoming universal entry gates."
+  },
+  "examPreparation": {
+    "goalId": "e5494c67-aed6-5710-8ae3-51ae147c10e9",
+    "decision": "PASS_FOR_BOUNDED_REQUIRES_LINK",
+    "newRequiresId": "9f9c7ece-b81c-55fa-8073-dd816d7d4778",
+    "reason": "The actual scored action uses body properties to identify and compute exterior face areas. This is a real application of the general surface method after removal of unrelated compulsory support. It is not justified merely by a desired route-count improvement.",
+    "overlapWithExistingPrismSkill": "The existing specific f1348d40 contract already describes this prism instance fully; the overlap is real. Adding the general preparation edge adds no mathematical task action and no separate learner result. This review approves didactic preparation, not a claim that the narrower instance proves every application of the broader goal.",
+    "retainedRequires": [
+      "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+      "f1348d40-3872-5e44-8892-3600c811796f"
+    ],
+    "unchangedTaskSolutionRubricAndCoverage": true,
+    "newCoverageDecision": "HOLD_NO_ADDITIONAL_9F9_COVERAGE_CLAIM",
+    "coverageReason": "The existing assessment is bound to a right triangular prism. Its rubric directly secures the narrower whole prism-area contract. A separate lateral-area result or transfer to broader body cases is not explicitly demanded. The solution summing lateral faces is not itself an extra learner obligation or a reviewed full-generalization claim.",
+    "coverageBoundary": "This does not impose a general rule that every broad skill always requires two body types, nor does it assert a new task gap. A separate future broad-coverage decision would need an explicit assessment-sampling justification or actual changed task/rubric evidence. Neither is silently invented here."
+  },
+  "independentChecks": {
+    "beforeGoalsAndReferenceContractsEqualCurrentRoot": true,
+    "surfaceOnlyRequiresChanged": true,
+    "examOnlyRequiresReviewStatusAndReviewNoteChanged": true,
+    "math": {
+      "G_cm2": 24,
+      "M_cm2": 480,
+      "O_cm2": 528,
+      "V_cm3": 480
+    },
+    "localRawRequiresClosureMatchesNativeReportedContexts": true,
+    "surfaceContextCountAfter": 29,
+    "examContextCountAfter": 33,
+    "examAddedContextIds": [
+      "9f9c7ece-b81c-55fa-8073-dd816d7d4778",
+      "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6"
+    ],
+    "removedFourBroadContractsAbsentFromBothLocalClosures": true,
+    "nativeGlobalChecks": "Read as author evidence only; no independent global native/compiler acceptance claimed."
+  },
+  "preserved": [
+    "General surface DE/EN semantic contract and stable ID",
+    "Specific prism DE task/solution/rubric and old two coveredGoalIds",
+    "Original density variant unchanged",
+    "All existing learner mastery and historical cohort decisions",
+    "Exam and memory protection semantics"
+  ],
+  "notApproved": [
+    "Canonical-root integration",
+    "Real offered-source/stage/course/target enrollment",
+    "New broad surface coverage",
+    "M7 or CI acceptance",
+    "Human or learner trial"
+  ],
+  "followUp": "No content correction required for the exact bounded prerequisite proposal. Preserve draft/pending status until the separate integration/source/scope process is resolved."
+}

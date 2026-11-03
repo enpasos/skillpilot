@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "independent-existing632a-exact15-placement",
+  "reviewDate": "2026-11-02",
+  "reviewerAgent": "/root/astra_reviews_resume_v20",
+  "authorIndependent": true,
+  "verdict": "PASS_BOUNDED_EXACT_PLACEMENT_DESIGN",
+  "taskId": "632a3837-7381-5701-9cfa-4ae15ccae8ba",
+  "wholeTaskSha256": "e5046093d676f49ec7c67c347b6c4e7fc4bca27b581943d448dd3965eb1b4dcd",
+  "wholeTargetSha256": "e74757d2503694c2a1d7615b2d47cc84a53bc66fe8746e74a6b8de9025926360",
+  "exactScopeAllowlist": [
+    "DE-BW/SekII/G9/GK",
+    "DE-BW/SekII/G9/GK+LK",
+    "DE-BW/SekII/G9/LK",
+    "DE-HB/SekII/G8/GK",
+    "DE-HB/SekII/G8/GK+LK",
+    "DE-HB/SekII/G8/LK",
+    "DE-SH/CrossStage/G8/GK",
+    "DE-SH/CrossStage/G8/GK+LK",
+    "DE-SH/CrossStage/G8/LK",
+    "DE-SH/SekII/G8/GK",
+    "DE-SH/SekII/G8/GK+LK",
+    "DE-SH/SekII/G8/LK",
+    "DE-SH/SekII/G9/GK",
+    "DE-SH/SekII/G9/GK+LK",
+    "DE-SH/SekII/G9/LK"
+  ],
+  "physicalViewIds": [
+    "de-bw-gym-sekii-math-gk-g9",
+    "de-bw-gym-sekii-math-lk-g9",
+    "de-hb-gym-sekii-math-gk",
+    "de-hb-gym-sekii-math-lk",
+    "de-sh-gym-math-gk-g8",
+    "de-sh-gym-math-lk-g8",
+    "de-sh-gym-sekii-math-gk",
+    "de-sh-gym-sekii-math-lk"
+  ],
+  "evidence": [
+    {
+      "path": "tmp/approach-review-20261101/astra-remaining-material-scope/existing-632a-placement15-review-20261102-v1/placement-evidence.json",
+      "sha256": "094fccae342a4092b2b7e35a59c84f65eb5b44a3d7bce200935968ed8e0efef6",
+      "bytes": 29194
+    },
+    {
+      "path": "tmp/approach-review-20261101/astra-remaining-material-scope/existing-632a-placement15-review-20261102-v1/full-current-preparation-context.json",
+      "sha256": "85a21b8f9197b7afaa4b02d46e1118642ab69e72d7b1a50e43f098d43bba61ed",
+      "bytes": 204767
+    },
+    {
+      "path": "tmp/approach-review-20261101/astra-remaining-material-scope/existing-632a-placement15-review-20261102-v1/verify_placement.py",
+      "sha256": "0b962fd1b99706e4419aa28c456da02100fdadbd56c4297232d21c7ca28521ef",
+      "bytes": 7371
+    },
+    {
+      "path": "tmp/approach-review-20261101/astra-remaining-material-scope/existing-632a-placement15-review-20261102-v1/verify_context.mts",
+      "sha256": "ffd58161d2757ef074f6a1020a002f879105996e1e3dcc71c2db789972acb4c2",
+      "bytes": 1733
+    },
+    {
+      "path": "tmp/approach-review-20261101/astra-remaining-material-scope/existing-632a-placement15-review-20261102-v1/review.md",
+      "sha256": "8195dc1a056209bb189a6ba148a4fa1947a27ddc93826184be82c1f1a2a9e682",
+      "bytes": 4453
+    }
+  ],
+  "boundedDelta": "Exactly fifteen additional targets for the unchanged existing assessment across eight authored upper-stage views. Preserve seventy-one existing task occurrences; no canonical/content/requires/coverage/applicability/ledger changes.",
+  "pending": [
+    "Materialization on latest actual Root basis",
+    "Normal producer reproducibility",
+    "Full 161-offer native delta and 46 true course unions",
+    "Independent final stage and actual Root post-check"
+  ],
+  "holdsPreserved": [
+    "BBB28",
+    "c34",
+    "BW/G9 SekI",
+    "HB SekI",
+    "SH SekI"
+  ],
+  "newOfficialTaskOrSourceCoverageClaim": false,
+  "rootMutation": false,
+  "jvmRun": false
+}

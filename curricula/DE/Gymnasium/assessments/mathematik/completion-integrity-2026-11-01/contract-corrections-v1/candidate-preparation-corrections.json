@@ -1,0 +1,716 @@
+{
+  "schemaVersion": 1,
+  "status": "DRAFT_PREPARATION_CANDIDATE_NOT_ACTIVATED",
+  "date": "2026-11-01",
+  "reviewBoundary": "Neun von Astra beanstandete Altkanten an fünf Consumern plus der gezielt belegte sqrt-Rückweg (zwei weitere Kanten) und genau drei unabhängig begründete lokale Folgedeltas. Keine fachliche Vollprüfung aller transitiven Anforderungen. Neun akzeptierte Aufgaben-/Lösungs-/Rubrikfassungen und der freigegebene Prisma-Titel bleiben bytegleich.",
+  "basis": {
+    "contentCandidatePath": "tmp/approach-review-20261101/candidate-corrections.json",
+    "contentCandidateSha256": "4815ad824e7d08a7e59b93300cd6c385c9e74f9afe64f216232bb4d9c1c0dc4a",
+    "independentContentDecisionPath": "tmp/approach-review-20261101/independent-endpoint-candidate-decisions.json",
+    "independentContentDecisionSha256": "ffba33fea2e19acc17874ac52f347d110b635fc3117b84e9d562c8c906b536ad",
+    "prismTitleDecisionPath": "tmp/math-stage-view-candidate-20261101/independent-supplement-source-dispositions.json",
+    "prismTitleDecisionSha256": "4fcf324749c0f44ee2e76f1ac7ae956f064de6681d5e0bb93a8cd0c27793d27a",
+    "localFollowupDecisionPath": "tmp/approach-review-20261101/independent-preparation-candidate-followup.json",
+    "localFollowupDecisionSha256": "9c70e65306ab239e9f67e2cdfd111f06bab8873c2edbadff2a19202c37fba839"
+  },
+  "preparationCorrections": [
+    {
+      "goalId": "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+      "title": "Verschiebungen von Funktionsgraphen beschreiben",
+      "preservedDescription": "Die lernende Person kann Verschiebungen von Funktionsgraphen in x- und y-Richtung anhand von Parametern im Funktionsterm beschreiben und grafisch darstellen.",
+      "expectedGoalSha256": "c770dfd11f767bef3ddce16730f05e448246f54b5867cfcc328473b650ab479d",
+      "removedPrerequisiteDecisions": [
+        {
+          "goalId": "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+          "title": "Hauptsatz der Differential- und Integralrechnung nutzen",
+          "fullGoalDescription": "Die lernende Person kann den Zusammenhang zwischen Ableitung und Integral beschreiben, mit einer passenden Stammfunktion das bestimmte Integral über $F(b) - F(a)$ berechnen und das Ergebnis als orientierte Flächenbilanz deuten.",
+          "rationale": "Graph translation follows input/output coordinate changes; integral evaluation and oriented area are not prerequisites."
+        },
+        {
+          "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+          "title": "Ableitungen elementarer Funktionen berechnen",
+          "fullGoalDescription": "Die lernende Person kann bei ganzrationalen Funktionen bis Grad 3 sowie einfachen Exponential- und Potenzfunktionen aus dem Aufbau des Funktionsterms die passende Ableitungsregel auswählen und damit die Ableitung schrittweise berechnen.",
+          "rationale": "Translation applies also to nondifferentiable graphs and requires no derivative calculation."
+        }
+      ],
+      "addedPrerequisiteDecisions": [
+        {
+          "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "title": "Funktionsbegriff und Darstellungen verstehen",
+          "fullGoalDescription": "Die lernende Person kann eine reellwertige Funktion als Zuordnung erklären, die jedem zulässigen Eingabewert genau einen Funktionswert zuweist, und Term, Wertetabelle und Graph einer gegebenen Funktion als zusammengehörige Darstellungen verwenden.",
+          "rationale": "Verschobene Zuordnungen müssen in Term, Tabelle und Graph als dieselbe Funktion erkannt werden; Eingabe- und Ausgabekoordinaten sind die fachliche Basis."
+        },
+        {
+          "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+          "title": "Funktionswerte berechnen",
+          "fullGoalDescription": "Die lernende Person kann zu gegebenen Funktionstermen $f(x)$ Funktionswerte für konkrete x-Werte korrekt berechnen und als die zu diesen Eingaben gehörigen Ausgabewerte deuten.",
+          "rationale": "Markante Punkte der verschobenen Funktion werden durch konkrete Funktionswerte berechnet und korrekt als Ausgaben gedeutet."
+        }
+      ],
+      "retainedPrerequisiteGoalIds": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "5dabf0b3-89b1-59a6-ae57-014f92becd3b"
+      ],
+      "replacementRequires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+        "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+      ],
+      "counterexample": "f(x)=|x| und g(x)=|x−2|+3: (−1,1) wird zu (1,4). Die Verschiebung gilt trotz fehlender Differenzierbarkeit am Knick.",
+      "immediateConsumers": [
+        {
+          "goalId": "993a14e8-60f0-5764-9340-b2447a5fa84b",
+          "title": "Parameter in Funktionenscharen deuten"
+        },
+        {
+          "goalId": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+          "title": "Allgemeinen Transformationsterm interpretieren"
+        },
+        {
+          "goalId": "bd2c5e29-31c6-58bf-9858-d08e9c8a32ad",
+          "title": "Funktionsverknüpfungen und Transformationen untersuchen"
+        },
+        {
+          "goalId": "e45a39e5-cc9b-577e-a28d-691319410b9a",
+          "title": "Aussagen präzise begründen und prüfen"
+        },
+        {
+          "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "title": "Einen unbekannten Graphen gezielt umformen"
+        }
+      ],
+      "immediateConsumerBasis": "Neun inhaltlich geprüfte Aufgabenfassungen vor diesen Vorbereitungskorrekturen; keine Ganzkontext-Freigabe dieser Verbraucher."
+    },
+    {
+      "goalId": "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+      "title": "Streckungen und Stauchungen von Funktionsgraphen beschreiben",
+      "preservedDescription": "Die lernende Person kann Streckungen und Stauchungen in x- oder y-Richtung über Faktoren im Funktionsterm beschreiben und die Auswirkungen auf den Graphen darstellen.",
+      "expectedGoalSha256": "6a6e229549d5fa74c798361706869171655494c9ec2a7f708a529891b30b7046",
+      "removedPrerequisiteDecisions": [
+        {
+          "goalId": "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+          "title": "Hauptsatz der Differential- und Integralrechnung nutzen",
+          "fullGoalDescription": "Die lernende Person kann den Zusammenhang zwischen Ableitung und Integral beschreiben, mit einer passenden Stammfunktion das bestimmte Integral über $F(b) - F(a)$ berechnen und das Ergebnis als orientierte Flächenbilanz deuten.",
+          "rationale": "Input/output scaling does not require the fundamental theorem of calculus."
+        },
+        {
+          "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+          "title": "Ableitungen elementarer Funktionen berechnen",
+          "fullGoalDescription": "Die lernende Person kann bei ganzrationalen Funktionen bis Grad 3 sowie einfachen Exponential- und Potenzfunktionen aus dem Aufbau des Funktionsterms die passende Ableitungsregel auswählen und damit die Ableitung schrittweise berechnen.",
+          "rationale": "Graph stretching/compression can be described and drawn without derivatives."
+        }
+      ],
+      "addedPrerequisiteDecisions": [
+        {
+          "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "title": "Funktionsbegriff und Darstellungen verstehen",
+          "fullGoalDescription": "Die lernende Person kann eine reellwertige Funktion als Zuordnung erklären, die jedem zulässigen Eingabewert genau einen Funktionswert zuweist, und Term, Wertetabelle und Graph einer gegebenen Funktion als zusammengehörige Darstellungen verwenden.",
+          "rationale": "Skalierte Eingaben und Ausgaben müssen als zugehörige Term-/Tabellen-/Graphdarstellungen verstanden werden."
+        },
+        {
+          "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+          "title": "Funktionswerte berechnen",
+          "fullGoalDescription": "Die lernende Person kann zu gegebenen Funktionstermen $f(x)$ Funktionswerte für konkrete x-Werte korrekt berechnen und als die zu diesen Eingaben gehörigen Ausgabewerte deuten.",
+          "rationale": "Skalierte Funktionswerte und passende Punkte werden vor dem Darstellen rechnerisch bestimmt."
+        }
+      ],
+      "retainedPrerequisiteGoalIds": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "5dabf0b3-89b1-59a6-ae57-014f92becd3b"
+      ],
+      "replacementRequires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+        "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+      ],
+      "counterexample": "f(x)=|x| und h(x)=2|x/3|: (±1,1) wird zu (±3,2), ohne Ableitung oder Integration.",
+      "immediateConsumers": [
+        {
+          "goalId": "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+          "title": "Allgemeinen Transformationsterm interpretieren"
+        },
+        {
+          "goalId": "bd2c5e29-31c6-58bf-9858-d08e9c8a32ad",
+          "title": "Funktionsverknüpfungen und Transformationen untersuchen"
+        },
+        {
+          "goalId": "e45a39e5-cc9b-577e-a28d-691319410b9a",
+          "title": "Aussagen präzise begründen und prüfen"
+        },
+        {
+          "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+          "title": "Einen unbekannten Graphen gezielt umformen"
+        }
+      ],
+      "immediateConsumerBasis": "Neun inhaltlich geprüfte Aufgabenfassungen vor diesen Vorbereitungskorrekturen; keine Ganzkontext-Freigabe dieser Verbraucher."
+    },
+    {
+      "goalId": "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+      "title": "Verkettete Exponential- und Logarithmusfunktionen analysieren (LK)",
+      "preservedDescription": "Die lernende Person kann eine verkettete Funktion mit Exponential- oder Logarithmusanteil untersuchen und ihr Verhalten argumentativ begründen.",
+      "expectedGoalSha256": "e733edcb33033447c39e4efd90e63dc64a095ae3f8200bbcaf0c319128975131",
+      "removedPrerequisiteDecisions": [
+        {
+          "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+          "title": "Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK)",
+          "fullGoalDescription": "Die lernende Person kann für $x>0$ die natürliche Logarithmusfunktion als Stammfunktion von $1/x$ verwenden und diese Beziehung in einfachen Integralrechnungen und Begründungen sicher nutzen.",
+          "rationale": "Analyzing exp/ln composition through domain, inverse relationships and term simplification does not require ln as an antiderivative or integration."
+        }
+      ],
+      "addedPrerequisiteDecisions": [
+        {
+          "goalId": "04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8",
+          "title": "Grundlegende Eigenschaften der natürlichen Logarithmusfunktion erläutern (LK)",
+          "fullGoalDescription": "Die lernende Person kann Definitions- und Wertemenge, Nullstelle, Monotonie und Randverhalten der natürlichen Logarithmusfunktion aus ihrer Umkehrbeziehung zur e-Funktion begründen.",
+          "rationale": "Definitions-/Wertemenge, Monotonie und Randverhalten von ln liefern die echte Grundlage für Definitionsbereich und Verhalten der exp/ln-Verkettung. Der vollständige Eigenschaftenvertrag bleibt erhalten, nicht auf bloßes Logarithmieren verkürzt."
+        }
+      ],
+      "retainedPrerequisiteGoalIds": [
+        "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "replacementRequires": [
+        "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8"
+      ],
+      "counterexample": "ln(2 exp(x/2))=ln2+x/2, auf R streng steigend; Domain und Verlauf folgen aus exp>0 und ln als Umkehrung, keine Stammfunktion wird benutzt.",
+      "immediateConsumers": [
+        {
+          "goalId": "bd2c5e29-31c6-58bf-9858-d08e9c8a32ad",
+          "title": "Funktionsverknüpfungen und Transformationen untersuchen"
+        }
+      ],
+      "immediateConsumerBasis": "Neun inhaltlich geprüfte Aufgabenfassungen vor diesen Vorbereitungskorrekturen; keine Ganzkontext-Freigabe dieser Verbraucher."
+    },
+    {
+      "goalId": "d4f2d4e2-a831-5ee2-b9c6-bb9e79986aeb",
+      "title": "Sachzusammenhänge mit Extremstellen modellieren",
+      "preservedDescription": "Die lernende Person kann Sachzusammenhänge mit Extremstellen durch geeignete ganzrationale Funktionen modellieren und die Bedingungen fachlich deuten.",
+      "expectedGoalSha256": "3ee79ff597fa832b794f1fa090f6facae369b865bf17110ba3709de08dddc976",
+      "removedPrerequisiteDecisions": [
+        {
+          "goalId": "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941",
+          "title": "Ganzrationale Funktionen aus Eigenschaften rekonstruieren",
+          "fullGoalDescription": "Die lernende Person kann aus vorgegebenen Eigenschaften eines Graphen oder Sachzusammenhangs ein lineares Gleichungssystem für einen ganzrationalen Funktionsterm aufstellen, lösen und die entstehende Funktionsgleichung prüfen.",
+          "rationale": "An extremum model may follow directly from a contextual constraint; reconstructing a polynomial from graph conditions via a linear system is not universally needed."
+        },
+        {
+          "goalId": "b3604df4-15a8-41c8-a8b0-50dadd698bd3",
+          "title": "Krümmung und Wendestellen mit der zweiten Ableitung untersuchen",
+          "fullGoalDescription": "Die lernende Person kann das Krümmungsverhalten von Funktionsgraphen mit Hilfe der zweiten Ableitung untersuchen, Wendestellen bestimmen und die zugehörige Änderungsrate im Kontext deuten.",
+          "rationale": "Extremum modeling does not require inflection points and their context-specific rate."
+        },
+        {
+          "goalId": "f042385e-f772-42db-9c96-f21a792ac5ea",
+          "title": "Tangenten- und Normalengleichungen bestimmen",
+          "fullGoalDescription": "Die lernende Person kann mit Hilfe der Ableitung Gleichungen von Tangenten und Normalen an Funktionsgraphen bestimmen und diese in einfachen Kontexten verwenden.",
+          "rationale": "Tangent and particularly normal equations are not a general preparation requirement for modeling extrema."
+        }
+      ],
+      "addedPrerequisiteDecisions": [
+        {
+          "goalId": "07196e72-ba47-54bf-a096-3a79bbb67e23",
+          "title": "Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren",
+          "fullGoalDescription": "Die lernende Person kann Beziehungen zwischen Größen als Gleichungen, Funktionen oder Ungleichungen formulieren und die Modellwahl begründen.",
+          "rationale": "Die Sachbedingung muss als Gleichung/Funktion formuliert und die Modellwahl begründet werden; Rekonstruktion aus Graphbedingungen ist dafür keine allgemeine Voraussetzung."
+        },
+        {
+          "goalId": "350fc8b1-ead0-4239-b28a-217cbd3bd1c3",
+          "title": "Monotonie und Extremstellen mit der ersten Ableitung untersuchen",
+          "fullGoalDescription": "Die lernende Person kann aus der ersten Ableitung Rückschlüsse auf Monotonieverhalten und Extremstellen ziehen und diese Zusammenhänge bei der Untersuchung ganzrationaler Funktionen nutzen.",
+          "rationale": "Zur fachlichen Deutung der Extrembedingung werden Monotonie und Extremstelle mit erster Ableitung gebraucht. Diese echte Differentialrechnung bleibt einschließlich ihrer bestehenden Vorbereitung erhalten."
+        }
+      ],
+      "retainedPrerequisiteGoalIds": [],
+      "replacementRequires": [
+        "07196e72-ba47-54bf-a096-3a79bbb67e23",
+        "350fc8b1-ead0-4239-b28a-217cbd3bd1c3"
+      ],
+      "counterexample": "Zaunmodell 2x+y=40 liefert A(x)=40x−2x² und A′=40−4x; kein LGS zur Polynomrekonstruktion, keine Wendestelle und keine Tangenten-/Normalengleichung nötig.",
+      "immediateConsumers": [
+        {
+          "goalId": "450a77d6-2814-571a-af1e-78c9fa61ed2c",
+          "title": "Extremwertprobleme modellieren"
+        },
+        {
+          "goalId": "b88cbf71-5e3e-55e3-ba94-6789408d38d6",
+          "title": "Sachzusammenhänge mit Wendestellen modellieren"
+        }
+      ],
+      "immediateConsumerBasis": "Neun inhaltlich geprüfte Aufgabenfassungen vor diesen Vorbereitungskorrekturen; keine Ganzkontext-Freigabe dieser Verbraucher."
+    },
+    {
+      "goalId": "baf7276f-60a0-4d96-b959-d63acfb929de",
+      "title": "Schnittpunkte von Geraden mit Ebenen berechnen",
+      "preservedDescription": "Die lernende Person kann Schnittpunkte von Geraden mit Ebenen mithilfe von Parametergleichungen und Ebenengleichungen berechnen und die Ergebnisse geometrisch deuten.",
+      "expectedGoalSha256": "b2596ca6fa4593f1e50bdb9fe2232d7d85a7a18b0507eea00abbb10f64da1ebb",
+      "removedPrerequisiteDecisions": [
+        {
+          "goalId": "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
+          "title": "Normalenform und Hessesche Normalenform einer Ebene anwenden (LK)",
+          "fullGoalDescription": "Die lernende Person kann die Normalenform einer Ebene, einschließlich Hessescher Normalenform, aufstellen, interpretieren und für Abstandsberechnungen nutzen.",
+          "rationale": "Line substitution into a plane equation requires neither unit-normal normalization nor distance calculation."
+        }
+      ],
+      "addedPrerequisiteDecisions": [
+        {
+          "goalId": "27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6",
+          "title": "Lineare Gleichungssysteme in der Analytischen Geometrie systematisch lösen",
+          "fullGoalDescription": "Die lernende Person kann lineare Gleichungssysteme, auch über- und unterbestimmte, aus konkreten Problemstellungen der Analytischen Geometrie systematisch aufstellen und lösen.",
+          "rationale": "Das Einsetzen einer parametrischen Geraden in eine Ebenengleichung führt auf lineare Parameterbedingungen. Systematisches Aufstellen/Lösen solcher LGS ist echte Vorbereitung; Hesse-Normierung und Abstandsrechnung sind es nicht."
+        }
+      ],
+      "retainedPrerequisiteGoalIds": [
+        "effe43eb-cabe-56cb-a228-35887d7915c1",
+        "fa02cf14-0411-4fe3-8be7-a62c69743e26",
+        "d76766a5-ce07-5c7a-987b-157f2998b05e",
+        "ce491ec0-c558-5872-86fd-289e60a38403",
+        "ea4bd128-17ab-5a8b-ae98-29552d774fb0"
+      ],
+      "replacementRequires": [
+        "effe43eb-cabe-56cb-a228-35887d7915c1",
+        "fa02cf14-0411-4fe3-8be7-a62c69743e26",
+        "d76766a5-ce07-5c7a-987b-157f2998b05e",
+        "ce491ec0-c558-5872-86fd-289e60a38403",
+        "ea4bd128-17ab-5a8b-ae98-29552d774fb0",
+        "27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6"
+      ],
+      "counterexample": "g(t)=(1+2t,2−t,3+t) und E:x+y+z=9 führen direkt auf 6+2t=9 und S=(4,1/2,9/2); keine Normierung oder Abstandsberechnung.",
+      "immediateConsumers": [
+        {
+          "goalId": "2f8a3a90-717d-5ac1-b54e-facca26e9008",
+          "title": "Geraden, Ebenen und Schnittfiguren analysieren"
+        },
+        {
+          "goalId": "bc244d82-bac0-5b13-8a33-d7b101835480",
+          "title": "Geradenschnitt mit einer Ebene deuten"
+        }
+      ],
+      "immediateConsumerBasis": "Neun inhaltlich geprüfte Aufgabenfassungen vor diesen Vorbereitungskorrekturen; keine Ganzkontext-Freigabe dieser Verbraucher."
+    },
+    {
+      "goalId": "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+      "title": "Wurzelfunktionen beschreiben und darstellen",
+      "preservedDescription": "Die lernende Person kann die einfache Wurzelfunktion $f(x)=\\sqrt{x}$ in Definitions- und Wertebereich beschreiben, charakteristische Punkte angeben und den Graphen skizzieren.",
+      "expectedGoalSha256": "8afb09421bb529f87138823009b62a88beea5f1eddd16353f6a84b1b3a1ff029",
+      "removedPrerequisiteDecisions": [
+        {
+          "goalId": "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+          "title": "Hauptsatz der Differential- und Integralrechnung nutzen",
+          "fullGoalDescription": "Die lernende Person kann den Zusammenhang zwischen Ableitung und Integral beschreiben, mit einer passenden Stammfunktion das bestimmte Integral über $F(b) - F(a)$ berechnen und das Ergebnis als orientierte Flächenbilanz deuten.",
+          "rationale": "Gezielt nachgewiesener Rückimport: der vollständige sqrt(x)-Vertrag beschreibt Domain/Range, Punkte und Skizze. Weder Hauptsatz/Integralrechnung noch Ableitung sind dafür notwendig; etwa aus (0,0),(1,1),(4,2),(9,3) wird der Graph ohne Kalkül aufgebaut."
+        },
+        {
+          "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+          "title": "Ableitungen elementarer Funktionen berechnen",
+          "fullGoalDescription": "Die lernende Person kann bei ganzrationalen Funktionen bis Grad 3 sowie einfachen Exponential- und Potenzfunktionen aus dem Aufbau des Funktionsterms die passende Ableitungsregel auswählen und damit die Ableitung schrittweise berechnen.",
+          "rationale": "Gezielt nachgewiesener Rückimport: der vollständige sqrt(x)-Vertrag beschreibt Domain/Range, Punkte und Skizze. Weder Hauptsatz/Integralrechnung noch Ableitung sind dafür notwendig; etwa aus (0,0),(1,1),(4,2),(9,3) wird der Graph ohne Kalkül aufgebaut."
+        }
+      ],
+      "addedPrerequisiteDecisions": [
+        {
+          "goalId": "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+          "title": "Quadratwurzeln definieren und schätzen",
+          "fullGoalDescription": "Die lernende Person kann die Quadratwurzel einer nichtnegativen Zahl als die nichtnegative Zahl erklären, deren Quadrat die Ausgangszahl ergibt, und Quadratwurzeln aus Quadratzahlen exakt sowie andere Quadratwurzeln näherungsweise bestimmen.",
+          "rationale": "Die Definition der nichtnegativen Quadratwurzel begründet x≥0 und y≥0; exakte und geschätzte Wurzelwerte liefern markante Graphpunkte."
+        },
+        {
+          "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+          "title": "Funktionswerte berechnen",
+          "fullGoalDescription": "Die lernende Person kann zu gegebenen Funktionstermen $f(x)$ Funktionswerte für konkrete x-Werte korrekt berechnen und als die zu diesen Eingaben gehörigen Ausgabewerte deuten.",
+          "rationale": "Die Funktion sqrt(x) wird an zulässigen konkreten Eingaben ausgewertet und die Punkte werden als Ein-/Ausgabepaare gedeutet. Keine Umkehrfunktions- oder Analysis-Kompetenz wird hierfür vorausgesetzt."
+        }
+      ],
+      "retainedPrerequisiteGoalIds": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "replacementRequires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+      ],
+      "counterexample": "Aus der Quadratwurzeldefinition folgen D=[0,∞), W=[0,∞) und die Punkte (0,0),(1,1),(4,2),(9,3). Die Graphskizze benötigt keinen Hauptsatz und keine Ableitung.",
+      "immediateConsumers": [
+        {
+          "goalId": "6517427b-cf4e-5ebf-9a76-e1035617687c",
+          "title": "Einfache gebrochen rationale und Wurzelfunktionen ableiten"
+        },
+        {
+          "goalId": "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+          "title": "Verschiebungen von Funktionsgraphen beschreiben"
+        },
+        {
+          "goalId": "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+          "title": "Streckungen und Stauchungen von Funktionsgraphen beschreiben"
+        },
+        {
+          "goalId": "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+          "title": "Spiegelungen von Funktionsgraphen beschreiben"
+        },
+        {
+          "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+          "title": "Kehrwertpotenzen und Quadratwurzel vergleichen"
+        }
+      ],
+      "immediateConsumerBasis": "Neun inhaltlich geprüfte Aufgabenfassungen vor diesen Vorbereitungskorrekturen; keine Ganzkontext-Freigabe dieser Verbraucher."
+    }
+  ],
+  "titleOnlyCorrections": [
+    {
+      "goalId": "e5494c67-aed6-5710-8ae3-51ae147c10e9",
+      "expectedGoalSha256": "99ef5621705317c56ef37a26b219bf9113445f24f96570bbe8c96b75d3621662",
+      "replacementTitle": "Prismenvolumen und Beschichtungsfläche bestimmen",
+      "independentlyApprovedAfterGoalSha256": "492f5894972acf0623fbefd4171d502488b320353a61467bbebb34c079604653",
+      "allowedChangedFields": [
+        "title"
+      ],
+      "reviewDecision": "PASS_EXACT_TITLE_ONLY_CHANGE",
+      "historicalTaskAndReviewArtifactsUnchanged": true
+    }
+  ],
+  "scopeBoundary": {
+    "activationAllowed": false,
+    "newProfiles": false,
+    "additionalOrdinaryConsumer": "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+    "originalReviewedRemovedEdges": 9,
+    "additionalRemovedEdges": 2,
+    "other155TasksRemainUnreviewed": true,
+    "dynamicEndpoints": [
+      "4c319dfd-ebb1-504b-a036-c780e1915900",
+      "2f8a3a90-717d-5ac1-b54e-facca26e9008"
+    ],
+    "polyhedronRequirementRetained": "3aea4d33-4170-5ecc-82b0-3a3974cc2237 bleibt echte direkte Vorbereitung von 2f8; keine GK-/Landesgeltung folgt aus diesem Autorenpatch.",
+    "remainingCalculus": "Die spezielle Ableitungsanforderung wird aus der ln/e-Umkehrvorbereitung entfernt; der volle exp-Vertrag 628928 bleibt selbst unverändert. Für Extremwertmodellierung bleibt die echte Ableitungsrechnung über 350fc erhalten. Die breiten Verträge 07196 und bd357 bleiben ebenfalls unverändert, werden nur in den konkret beanstandeten Consumern nicht mehr verlangt.",
+    "localFollowupConsumerIds": [
+      "06ce2b1b-e888-5322-9ed9-dfc6d322956a",
+      "d4f2d4e2-a831-5ee2-b9c6-bb9e79986aeb",
+      "3aea4d33-4170-5ecc-82b0-3a3974cc2237"
+    ]
+  },
+  "allOpenPreparationContextDeltas": [
+    {
+      "goalId": "1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf",
+      "title": "Funktionenscharen und Ortskurven untersuchen",
+      "beforeAtomicContextCount": 80,
+      "afterAtomicContextCount": 80,
+      "removedGoalIds": [],
+      "addedGoalIds": [],
+      "meaning": "Struktureller Null-Mastery-Kontextdelta vom neunfachen Inhaltskandidaten zum finalen lokalen Vorbereitungskandidaten; keine Angebots- oder Ganzkontextfreigabe."
+    },
+    {
+      "goalId": "2f8a3a90-717d-5ac1-b54e-facca26e9008",
+      "title": "Geraden, Ebenen und Schnittfiguren analysieren",
+      "beforeAtomicContextCount": 33,
+      "afterAtomicContextCount": 28,
+      "removedGoalIds": [
+        "24174bba-a654-5f81-8de3-ca5bd09d9b6f",
+        "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
+        "57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5",
+        "bd3576b8-f4e5-542a-a8a2-74524d9cee21",
+        "fac75b4a-4ec2-5d38-bbce-9b002c8a4904"
+      ],
+      "addedGoalIds": [],
+      "meaning": "Struktureller Null-Mastery-Kontextdelta vom neunfachen Inhaltskandidaten zum finalen lokalen Vorbereitungskandidaten; keine Angebots- oder Ganzkontextfreigabe."
+    },
+    {
+      "goalId": "450a77d6-2814-571a-af1e-78c9fa61ed2c",
+      "title": "Extremwertprobleme modellieren",
+      "beforeAtomicContextCount": 87,
+      "afterAtomicContextCount": 71,
+      "removedGoalIds": [
+        "0b23413e-a334-5dd3-98e5-de067208819e",
+        "29ce4053-b5c5-4a82-9ff0-3acc492284d8",
+        "2d75fd3f-c68b-4a11-89ae-19a30fefc47a",
+        "39fa30f2-e1ae-5c36-be56-793b77906abb",
+        "623cd47f-6f9e-58a7-911c-69e4a8609a27",
+        "6947245e-6bd7-52d7-9bc2-0c60cfa447c5",
+        "6c26a00a-ad1e-59cc-93e2-a38e1683665c",
+        "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941",
+        "959cc50b-6c81-4fa1-800f-4804a707b1ee",
+        "b3604df4-15a8-41c8-a8b0-50dadd698bd3",
+        "d5feba00-4336-4f26-8dba-0537a797eddb",
+        "d78946f9-1f5f-462c-a99c-fe01054042dd",
+        "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+        "e9445479-c188-5c09-842d-faa5e8678099",
+        "e9c401b1-144d-525f-a148-a1113b2e82a8",
+        "f042385e-f772-42db-9c96-f21a792ac5ea"
+      ],
+      "addedGoalIds": [],
+      "meaning": "Struktureller Null-Mastery-Kontextdelta vom neunfachen Inhaltskandidaten zum finalen lokalen Vorbereitungskandidaten; keine Angebots- oder Ganzkontextfreigabe."
+    },
+    {
+      "goalId": "4c319dfd-ebb1-504b-a036-c780e1915900",
+      "title": "Formale Verfahren und Werkzeuge reflektiert einsetzen",
+      "beforeAtomicContextCount": 131,
+      "afterAtomicContextCount": 131,
+      "removedGoalIds": [],
+      "addedGoalIds": [],
+      "meaning": "Struktureller Null-Mastery-Kontextdelta vom neunfachen Inhaltskandidaten zum finalen lokalen Vorbereitungskandidaten; keine Angebots- oder Ganzkontextfreigabe."
+    },
+    {
+      "goalId": "7337049a-c85c-5b94-adaa-81dc93528bf8",
+      "title": "Darstellungen sicher wechseln und bewerten",
+      "beforeAtomicContextCount": 111,
+      "afterAtomicContextCount": 111,
+      "removedGoalIds": [],
+      "addedGoalIds": [],
+      "meaning": "Struktureller Null-Mastery-Kontextdelta vom neunfachen Inhaltskandidaten zum finalen lokalen Vorbereitungskandidaten; keine Angebots- oder Ganzkontextfreigabe."
+    },
+    {
+      "goalId": "99b3435a-fdda-5d1b-9681-0ae6d7d5bfcd",
+      "title": "Problemlösestrategien reflektiert wählen",
+      "beforeAtomicContextCount": 79,
+      "afterAtomicContextCount": 79,
+      "removedGoalIds": [],
+      "addedGoalIds": [],
+      "meaning": "Struktureller Null-Mastery-Kontextdelta vom neunfachen Inhaltskandidaten zum finalen lokalen Vorbereitungskandidaten; keine Angebots- oder Ganzkontextfreigabe."
+    },
+    {
+      "goalId": "b9a501c4-9d74-5514-b77b-895980b89b1b",
+      "title": "Mathematische Ergebnisse adressatengerecht kommunizieren",
+      "beforeAtomicContextCount": 104,
+      "afterAtomicContextCount": 104,
+      "removedGoalIds": [],
+      "addedGoalIds": [],
+      "meaning": "Struktureller Null-Mastery-Kontextdelta vom neunfachen Inhaltskandidaten zum finalen lokalen Vorbereitungskandidaten; keine Angebots- oder Ganzkontextfreigabe."
+    },
+    {
+      "goalId": "bd2c5e29-31c6-58bf-9858-d08e9c8a32ad",
+      "title": "Funktionsverknüpfungen und Transformationen untersuchen",
+      "beforeAtomicContextCount": 94,
+      "afterAtomicContextCount": 76,
+      "removedGoalIds": [
+        "01acfcc8-7204-5c22-8774-13f6383f4fd4",
+        "0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+        "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+        "31be24f0-3ab1-54d2-856d-fa9b7f36552f",
+        "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+        "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+        "623cd47f-6f9e-58a7-911c-69e4a8609a27",
+        "628928a6-4f48-54dc-952d-dec0e69dc856",
+        "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+        "845440ce-f63f-5835-903f-739145ca27bd",
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+        "94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+        "a8c42ee9-2898-4247-819f-c235032ac78a",
+        "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+        "b1dcc191-d046-50de-984a-ee5c17157628",
+        "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+        "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+        "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+        "e9445479-c188-5c09-842d-faa5e8678099"
+      ],
+      "addedGoalIds": [
+        "78238608-aaaa-4d12-a9de-54f325e9cf6f"
+      ],
+      "meaning": "Struktureller Null-Mastery-Kontextdelta vom neunfachen Inhaltskandidaten zum finalen lokalen Vorbereitungskandidaten; keine Angebots- oder Ganzkontextfreigabe."
+    },
+    {
+      "goalId": "f77b9b40-6afc-5d9e-821e-79903bbbcb94",
+      "title": "Problemlösestrategien und Argumente entwickeln",
+      "beforeAtomicContextCount": 104,
+      "afterAtomicContextCount": 104,
+      "removedGoalIds": [],
+      "addedGoalIds": [],
+      "meaning": "Struktureller Null-Mastery-Kontextdelta vom neunfachen Inhaltskandidaten zum finalen lokalen Vorbereitungskandidaten; keine Angebots- oder Ganzkontextfreigabe."
+    }
+  ],
+  "localFollowupCorrections": [
+    {
+      "goalId": "06ce2b1b-e888-5322-9ed9-dfc6d322956a",
+      "title": "Den natürlichen Logarithmus als Umkehrfunktion der e-Funktion erklären (LK)",
+      "preservedDescription": "Die lernende Person kann $\\ln(x)$ als Umkehrfunktion von $e^x$ erklären und die gegenseitige Zuordnung der Graphen durch Spiegelung an der Geraden $y=x$ darstellen.",
+      "expectedGoalSha256": "4b78931a82ea208743741e436000cd6cac4891c06a189bdbf4656723b90e24d7",
+      "beforeRequires": [
+        "628928a6-4f48-54dc-952d-dec0e69dc856",
+        "dbc13bb0-963b-49a8-a441-2183f4b64c8e"
+      ],
+      "replacementRequires": [
+        "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+        "dbc13bb0-963b-49a8-a441-2183f4b64c8e"
+      ],
+      "independentlyApprovedAfterGoalSha256": "af1c5a754f99c1908dbbbcab04648037e2689a03f1939020d4555ce158880f9e",
+      "localSemanticDecision": "PASS_FOR_EXACT_LOCAL_RELATION_CORRECTION",
+      "rationale": "Die ln/e-Umkehrbeziehung und Spiegelung an y=x benötigt den Verlauf der Exponentialfunktion (Werte, Monotonie, Asymptote), nicht deren Ableitungsvertrag. Der engere vorhandene Graphverlaufsvertrag 78238608 deckt genau diese Vorbereitung. Die allgemeine Umkehrgraph-Kompetenz dbc13 bleibt erhalten.",
+      "removedPrerequisite": {
+        "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+        "title": "Eigenschaften der natürlichen Exponentialfunktion begründen",
+        "fullDescription": "Die lernende Person kann $e^x$ motivieren und wichtige Eigenschaften wie Werte, Ableitung und Verhalten im Unendlichen begründen.",
+        "currentWholeGoalNormalizedSha256": "a7be126a3a3dec6e4690123d25cf672ecacca979871628680fb8db779bdcfecb"
+      },
+      "addedPrerequisite": {
+        "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+        "title": "Graphverlauf exponentieller Funktionen der Form $b\\cdot a^x$ anhand von $a$ und $b$ beschreiben",
+        "fullDescription": "Die lernende Person kann für exponentielle Funktionen der Form $b\\cdot a^x$ den Verlauf des Graphen anhand der Parameter $a$ und $b$ beschreiben, insbesondere y-Achsenabschnitt, asymptotisches Verhalten und Monotonieverhalten begründen und passende Veranschaulichungen auch mit digitalen Werkzeugen nutzen.",
+        "currentWholeGoalNormalizedSha256": "412141b6faa57450af7fb5b10c61d654414b108e1733ca730dd6268b0bd2954d"
+      },
+      "immediateConsumers": [
+        {
+          "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+          "title": "Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK)",
+          "description": "Die lernende Person kann für $x>0$ die natürliche Logarithmusfunktion als Stammfunktion von $1/x$ verwenden und diese Beziehung in einfachen Integralrechnungen und Begründungen sicher nutzen."
+        },
+        {
+          "goalId": "04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8",
+          "title": "Grundlegende Eigenschaften der natürlichen Logarithmusfunktion erläutern (LK)",
+          "description": "Die lernende Person kann Definitions- und Wertemenge, Nullstelle, Monotonie und Randverhalten der natürlichen Logarithmusfunktion aus ihrer Umkehrbeziehung zur e-Funktion begründen."
+        }
+      ]
+    },
+    {
+      "goalId": "d4f2d4e2-a831-5ee2-b9c6-bb9e79986aeb",
+      "title": "Sachzusammenhänge mit Extremstellen modellieren",
+      "preservedDescription": "Die lernende Person kann Sachzusammenhänge mit Extremstellen durch geeignete ganzrationale Funktionen modellieren und die Bedingungen fachlich deuten.",
+      "expectedGoalSha256": "2f9235e038e522f648323c4940b4adf545aa5d25f919b18840db170330f6d923",
+      "beforeRequires": [
+        "07196e72-ba47-54bf-a096-3a79bbb67e23",
+        "350fc8b1-ead0-4239-b28a-217cbd3bd1c3"
+      ],
+      "replacementRequires": [
+        "fd860da9-73ba-47cd-a1a8-452424915a80",
+        "350fc8b1-ead0-4239-b28a-217cbd3bd1c3"
+      ],
+      "independentlyApprovedAfterGoalSha256": "eb4ee90971cb28136c3c90ec9c7f076bba791b55400a83195d3cc66fb0a99bd3",
+      "localSemanticDecision": "PASS_FOR_EXACT_LOCAL_RELATION_CORRECTION",
+      "rationale": "Für das Extremwertmodell genügt das Übersetzen einfacher Sachbedingungen in Terme mit Variablen. Der vorher hinzugefügte breite Prozessvertrag 07196 importiert über seine bestehende Vorbereitung sachfremde Stochastik. Der engere vorhandene Termvertrag fd860da9 ersetzt ihn; echte Monotonie-/Extremstellenrechnung 350fc bleibt.",
+      "removedPrerequisite": {
+        "goalId": "07196e72-ba47-54bf-a096-3a79bbb67e23",
+        "title": "Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren",
+        "fullDescription": "Die lernende Person kann Beziehungen zwischen Größen als Gleichungen, Funktionen oder Ungleichungen formulieren und die Modellwahl begründen.",
+        "currentWholeGoalNormalizedSha256": "4e83e91903cdbf4ac4e1ad544a37ced9bc3c4e81517245ee7b8b7d268c125f7f"
+      },
+      "addedPrerequisite": {
+        "goalId": "fd860da9-73ba-47cd-a1a8-452424915a80",
+        "title": "Sachsituationen in Terme mit Variablen übersetzen",
+        "fullDescription": "Die lernende Person kann zu einfachen Sachsituationen passende Terme mit Variablen aufstellen und die Bedeutung der verwendeten Variablen im Kontext erklären.",
+        "currentWholeGoalNormalizedSha256": "8f5c6264fadef5e7bf8ad8b8f97efafb9ca0c148a4913ec370a0364b4b76afed"
+      },
+      "immediateConsumers": [
+        {
+          "goalId": "450a77d6-2814-571a-af1e-78c9fa61ed2c",
+          "title": "Extremwertprobleme modellieren",
+          "description": "Die lernende Person kann eine materialgestützte E-Phasen-Aufgabe zu einfachen Extremwertproblemen modellieren, rechnen und die Lösung im Kontext bewerten."
+        },
+        {
+          "goalId": "b88cbf71-5e3e-55e3-ba94-6789408d38d6",
+          "title": "Sachzusammenhänge mit Wendestellen modellieren",
+          "description": "Die lernende Person kann Sachzusammenhänge mit Wendestellen durch geeignete ganzrationale Funktionen modellieren und die Bedingungen fachlich deuten."
+        }
+      ]
+    },
+    {
+      "goalId": "3aea4d33-4170-5ecc-82b0-3a3974cc2237",
+      "title": "Schnittfiguren von Ebenen mit Polyedern bestimmen (LK)",
+      "preservedDescription": "Die lernende Person kann die Schnittfigur einer Ebene mit einem Polyeder (z. B. Quader/Prisma) konstruieren, Eckpunkte bestimmen und die Figur beschreiben.",
+      "expectedGoalSha256": "abaab88759489fd0e01bdabc3928b639224d11ea218efd40c8c83d0446696f98",
+      "beforeRequires": [
+        "3def350a-c01c-51c3-be74-b3de20ee53e1",
+        "ea4bd128-17ab-5a8b-ae98-29552d774fb0",
+        "bd3576b8-f4e5-542a-a8a2-74524d9cee21"
+      ],
+      "replacementRequires": [
+        "3def350a-c01c-51c3-be74-b3de20ee53e1",
+        "ea4bd128-17ab-5a8b-ae98-29552d774fb0"
+      ],
+      "independentlyApprovedAfterGoalSha256": "be62dab31ad45e20ecec80f48552b755fa9bf0980b3dce04dbcbed9ee7b56e71",
+      "localSemanticDecision": "PASS_FOR_EXACT_LOCAL_RELATION_CORRECTION",
+      "rationale": "Die Schnittfigur eines bereits gegebenen Polyeders mit einer Ebene benötigt die Schnittpunktrechnung und Ebenenbeschreibung. Ein zusätzliches Realproblem erst als Geraden-/Ebenenmodell zu formulieren ist kein allgemeiner Vorbereitungsschritt; dessen Abstandsverträge werden nicht benötigt. 3def und ea4 bleiben unverändert echte Vorbereitung.",
+      "removedPrerequisite": {
+        "goalId": "bd3576b8-f4e5-542a-a8a2-74524d9cee21",
+        "title": "Sachprobleme mit Geraden und Ebenen modellieren",
+        "fullDescription": "Die lernende Person kann Realprobleme (z. B. Bewegungen, Sichtlinien, Schattenwürfe) mit Geraden- und Ebenenmodellen beschreiben, Gleichungen aufstellen und die Lösungen im Kontext interpretieren.",
+        "currentWholeGoalNormalizedSha256": "13a32aa1dcebeed4a2a4e1d88691a001c4e9f52208676df6059977bb8313ce39"
+      },
+      "addedPrerequisite": null,
+      "immediateConsumers": [
+        {
+          "goalId": "2f8a3a90-717d-5ac1-b54e-facca26e9008",
+          "title": "Geraden, Ebenen und Schnittfiguren analysieren",
+          "description": "Die lernende Person kann eine Q2-Klausuraufgabe zu Geraden, Ebenen, Lagebeziehungen und Schnittfiguren im Raum selbstständig bearbeiten und die Ergebnisse geometrisch interpretieren."
+        }
+      ]
+    }
+  ],
+  "localFollowupPreparationContextDeltas": [
+    {
+      "goalId": "bd2c5e29-31c6-58bf-9858-d08e9c8a32ad",
+      "title": "Funktionsverknüpfungen und Transformationen untersuchen",
+      "beforeAtomicContextCount": 82,
+      "afterAtomicContextCount": 76,
+      "removedGoalIds": [
+        "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+        "628928a6-4f48-54dc-952d-dec0e69dc856",
+        "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+        "a8c42ee9-2898-4247-819f-c235032ac78a",
+        "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+        "b42bdfcc-3db7-5697-8b3e-69e50962ca86"
+      ],
+      "addedGoalIds": [
+        "78238608-aaaa-4d12-a9de-54f325e9cf6f"
+      ],
+      "meaning": "Tatsächlicher Delta gegenüber dem vorherigen gemeinsamen Offline-Canon 3466c6cb; keine bloß hypothetische Änderung."
+    },
+    {
+      "goalId": "450a77d6-2814-571a-af1e-78c9fa61ed2c",
+      "title": "Extremwertprobleme modellieren",
+      "beforeAtomicContextCount": 105,
+      "afterAtomicContextCount": 71,
+      "removedGoalIds": [
+        "035b7fc6-830d-5f41-9c5d-2495808c09d4",
+        "04118376-6dd8-532e-ab38-be22017ba93d",
+        "07196e72-ba47-54bf-a096-3a79bbb67e23",
+        "09e85220-afc3-5357-b5bc-c4b2c17e85aa",
+        "122ab909-04ed-572b-a499-754f3bcc8ef0",
+        "14173f5e-d3ba-51e5-b510-49ecd0abad90",
+        "1b67aeb4-2a55-531f-94da-283b4e3df5f1",
+        "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+        "28d098ab-f33f-5baf-8261-f1c0c0f711fa",
+        "2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+        "3019e775-1420-510f-850b-5a29acc47a64",
+        "3de1d5b0-0a26-5124-b066-92b65a882c5e",
+        "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+        "52e57eb5-7cd1-5df0-a8c6-7b090f097d9f",
+        "591cb948-f313-5b1c-a9cb-3df8162eeb8b",
+        "670286aa-c29d-560c-8fca-755e35f5d437",
+        "70efdec0-110c-5564-849b-bc05cfff0f6a",
+        "70f37fda-545f-51dc-a002-c8e435e5c4a5",
+        "71d1fd4d-8471-5f25-94a0-4c531a74783c",
+        "7e1b43e2-40f9-5751-9735-d97763eb4ea2",
+        "8d126397-a8b0-528c-8986-614d56fa0749",
+        "935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e",
+        "a288231e-e4bb-5c65-b018-b79a51ca87d8",
+        "a41761f2-8ba8-5af4-87c1-eb5e4ab1d020",
+        "bb4569bc-01ac-5bf9-8c85-05df42d70698",
+        "bd637a72-6609-54f5-bb33-8a9e898bf7a0",
+        "bfbaedb9-b138-590a-87e8-4d87784dda0e",
+        "c1a23239-08c5-5fe2-a68f-f2075fdeb454",
+        "c3b9c561-dd83-5903-9ec6-49c7f51bafd5",
+        "cedbd525-fefb-52d3-9bdd-947543ee3f2f",
+        "d21a1303-50fc-5e38-aeda-eeae3392c74b",
+        "e2d56885-a204-54b4-8717-a46d029ef416",
+        "e8d810de-95ed-52d6-ab1f-0560398e35c0",
+        "fde351a8-98b1-5d75-b4df-813beb2bbe3c"
+      ],
+      "addedGoalIds": [],
+      "meaning": "Tatsächlicher Delta gegenüber dem vorherigen gemeinsamen Offline-Canon 3466c6cb; keine bloß hypothetische Änderung."
+    },
+    {
+      "goalId": "2f8a3a90-717d-5ac1-b54e-facca26e9008",
+      "title": "Geraden, Ebenen und Schnittfiguren analysieren",
+      "beforeAtomicContextCount": 32,
+      "afterAtomicContextCount": 28,
+      "removedGoalIds": [
+        "24174bba-a654-5f81-8de3-ca5bd09d9b6f",
+        "57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5",
+        "bd3576b8-f4e5-542a-a8a2-74524d9cee21",
+        "fac75b4a-4ec2-5d38-bbce-9b002c8a4904"
+      ],
+      "addedGoalIds": [],
+      "meaning": "Tatsächlicher Delta gegenüber dem vorherigen gemeinsamen Offline-Canon 3466c6cb; keine bloß hypothetische Änderung."
+    }
+  ]
+}

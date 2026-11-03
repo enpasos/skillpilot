@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "status": "PASS-isolated-existing-21-task-219-reference-regression",
+  "checks": [
+    {
+      "case": "fresh-default-preserves-required-write-exit",
+      "result": "42 reviewed source views need materialization; use --write."
+    },
+    {
+      "case": "fresh-default-dry-run",
+      "result": "Existing Math completion routes DRY-RUN: 42 reviewed source views; 219 selected refs; 21 tasks unchanged; no files written."
+    },
+    {
+      "case": "fresh-default-write",
+      "result": "Existing Math completion routes WRITE: 42 source views; 219 selected refs; 21 tasks unchanged."
+    },
+    {
+      "case": "default-idempotence",
+      "result": "Existing Math completion routes CHECK: 219 selected references already materialized; 21 tasks unchanged."
+    }
+  ],
+  "allCanonicalBytesUnchanged": true,
+  "scopeReviewReceiptSha256": "bd51126f07965a470e5b0ad9b2a485dcc43c043492dec791e9cccf1be284a1e4",
+  "scriptSha256": "2aee2d11927846ee7efe1bf58eba17237f9390ff7956081b0497e8625f76a88c",
+  "historicalReportHandling": "The full b2ce raw report is explicitly recorded as historical, unretained and not rechecked. Every retained operative file verifies; no blanket missing-evidence skip remains.",
+  "liveSourceWrites": false
+}

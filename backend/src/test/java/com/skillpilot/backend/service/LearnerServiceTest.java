@@ -1287,7 +1287,7 @@ public class LearnerServiceTest {
     }
 
     @Test
-    void earlierWorkOnFutureGoalsCoversQuotaAndStopsAutomaticExtraWork() {
+    void earlierExplicitAndImplicitCreditPreserveTheBalanceWithoutFillingThePeriod() {
         prepareRepresentationLearningPlan();
         LocalDate today = LocalDate.parse("2026-09-02");
         replaceRepresentationLearningPlanSchedule(today, today.plusDays(1),
@@ -1308,20 +1308,19 @@ public class LearnerServiceTest {
                 .getOrDefault(CANONICAL_CREATE_REPRESENTATION_ID, 0.0)).isZero();
         assertThat(learnerService.getGoalCompletionsOnDate(learnerId, today)).isEmpty();
         var before = subjectBalance(today, CANONICAL_MATH_LANDSCAPE_ID);
-        assertThat(before.erfuelltesPeriodenziel()).isEqualTo(2);
-        assertThat(before.offenesPeriodenpensum()).isZero();
+        assertThat(before.erfuelltesPeriodenziel()).isZero();
+        assertThat(before.offenesPeriodenpensum()).isEqualTo(2);
         assertThat(before.rohsaldo()).isZero();
         learnerService.setPreferences(learnerId, "SEQUENTIAL", true, null, null, true);
-        // The learner may explicitly continue after covering today's quota;
-        // that extra work must not trigger another automatic task.
+        // An open period quota does not revive implicit preparation as required work.
         learnerService.setActiveGoal(learnerId, CANONICAL_CHOOSE_REPRESENTATION_ID);
 
         var completion = learnerService.setMastery(learnerId, new MasteryUpdateRequest(
                 Map.of(CANONICAL_CHOOSE_REPRESENTATION_ID, 1.0), CANONICAL_CHOOSE_REPRESENTATION_ID));
 
         var balance = subjectBalance(today, CANONICAL_MATH_LANDSCAPE_ID);
-        assertThat(balance.erfuelltesPeriodenziel()).isEqualTo(2);
-        assertThat(balance.offenesPeriodenpensum()).isZero();
+        assertThat(balance.erfuelltesPeriodenziel()).isEqualTo(1);
+        assertThat(balance.offenesPeriodenpensum()).isEqualTo(1);
         assertThat(balance.vorsprung()).isEqualTo(1);
         assertThat(completion.activeGoal()).isNull();
         assertThat(learnerService.getGoalCompletionsOnDate(learnerId, today))

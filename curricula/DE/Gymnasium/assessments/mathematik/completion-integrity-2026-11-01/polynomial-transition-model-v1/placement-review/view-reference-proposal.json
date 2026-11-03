@@ -1,0 +1,588 @@
+{
+  "status": "FOUR_AUTHORING_ADDITIONS_PROPOSED_NO_VIEW_WRITES",
+  "onlyParentInsertionTransports": 126,
+  "expectedOfferings": 132,
+  "missingOfferIdsBeforeFourEntries": [
+    "DE-BY/SekII/G9/GK",
+    "DE-BY/SekII/G9/LK",
+    "DE-BY/SekII/G9/GK+LK",
+    "DE-BY/CrossStage/G9/GK",
+    "DE-BY/CrossStage/G9/LK",
+    "DE-BY/CrossStage/G9/GK+LK"
+  ],
+  "operations": [
+    {
+      "viewId": "de-by-gym-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json",
+      "beforeSha256": "fed9534afc0007823de7fef2d3c67c7b86d0ab408d72561202cac9f486b10727",
+      "operation": "appendAuthoredNode",
+      "childrenPath": [
+        "rootNodes",
+        8,
+        "children",
+        1,
+        "children",
+        1,
+        "children",
+        0,
+        "children"
+      ],
+      "anchorStructureId": "gk-sek-ii-e-weitere-kompetenzen",
+      "anchorStructurePath": [
+        {
+          "id": "math-root",
+          "label": "Mathematik"
+        },
+        {
+          "id": "sek-ii",
+          "label": "Sekundarstufe II (GK)"
+        },
+        {
+          "id": "gk-sek-ii-e",
+          "label": "Jahrgangsstufe 11"
+        },
+        {
+          "id": "gk-sek-ii-e-weitere-kompetenzen",
+          "label": "Weitere Kompetenzen"
+        }
+      ],
+      "beforeChildCount": 102,
+      "afterNode": {
+        "kind": "goalEntry",
+        "goalId": "4293cf40-06fb-51e3-9799-6fde0bf2771b",
+        "projectionRole": "target"
+      },
+      "existingThreeSkillPlacements": [
+        {
+          "goalId": "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941",
+          "nodePath": [
+            "rootNodes",
+            8,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            0,
+            "children",
+            46
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek-ii",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "gk-sek-ii-e",
+              "label": "Jahrgangsstufe 11"
+            },
+            {
+              "id": "gk-sek-ii-e-weitere-kompetenzen",
+              "label": "Weitere Kompetenzen"
+            }
+          ],
+          "reference": {
+            "kind": "goalEntry",
+            "goalId": "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941"
+          },
+          "canonicalPath": [
+            "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941"
+          ]
+        },
+        {
+          "goalId": "4b16fce6-84cc-52ae-98ca-f88cc518cc28",
+          "nodePath": [
+            "rootNodes",
+            8,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            0,
+            "children",
+            78
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek-ii",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "gk-sek-ii-e",
+              "label": "Jahrgangsstufe 11"
+            },
+            {
+              "id": "gk-sek-ii-e-weitere-kompetenzen",
+              "label": "Weitere Kompetenzen"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "e681c0f9-a69b-541c-bf64-a2b49556c1a6"
+          },
+          "canonicalPath": [
+            "e681c0f9-a69b-541c-bf64-a2b49556c1a6",
+            "4b16fce6-84cc-52ae-98ca-f88cc518cc28"
+          ]
+        },
+        {
+          "goalId": "b88cbf71-5e3e-55e3-ba94-6789408d38d6",
+          "nodePath": [
+            "rootNodes",
+            8,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            0,
+            "children",
+            78
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek-ii",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "gk-sek-ii-e",
+              "label": "Jahrgangsstufe 11"
+            },
+            {
+              "id": "gk-sek-ii-e-weitere-kompetenzen",
+              "label": "Weitere Kompetenzen"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "e681c0f9-a69b-541c-bf64-a2b49556c1a6"
+          },
+          "canonicalPath": [
+            "e681c0f9-a69b-541c-bf64-a2b49556c1a6",
+            "b88cbf71-5e3e-55e3-ba94-6789408d38d6"
+          ]
+        }
+      ],
+      "reason": "All three assessed goals are already placed in this same actualJ11/WeitereKompetenzen branch. This is a proposal based on those concrete placements, never inferred from phaseE. Official source/year acceptance remains pending."
+    },
+    {
+      "viewId": "de-by-gym-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
+      "beforeSha256": "921bfb2c76b4689eb3c04431c60766fd2e6ae8a69a083603d28183a5e1ca3910",
+      "operation": "appendAuthoredNode",
+      "childrenPath": [
+        "rootNodes",
+        6,
+        "children",
+        1,
+        "children",
+        1,
+        "children",
+        0,
+        "children"
+      ],
+      "anchorStructureId": "lk-sek-ii-e-weitere-kompetenzen",
+      "anchorStructurePath": [
+        {
+          "id": "math-root",
+          "label": "Mathematik"
+        },
+        {
+          "id": "sek-ii",
+          "label": "Sekundarstufe II (LK)"
+        },
+        {
+          "id": "lk-sek-ii-e",
+          "label": "Jahrgangsstufe 11"
+        },
+        {
+          "id": "lk-sek-ii-e-weitere-kompetenzen",
+          "label": "Weitere Kompetenzen"
+        }
+      ],
+      "beforeChildCount": 102,
+      "afterNode": {
+        "kind": "goalEntry",
+        "goalId": "4293cf40-06fb-51e3-9799-6fde0bf2771b",
+        "projectionRole": "target"
+      },
+      "existingThreeSkillPlacements": [
+        {
+          "goalId": "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941",
+          "nodePath": [
+            "rootNodes",
+            6,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            0,
+            "children",
+            46
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek-ii",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "lk-sek-ii-e",
+              "label": "Jahrgangsstufe 11"
+            },
+            {
+              "id": "lk-sek-ii-e-weitere-kompetenzen",
+              "label": "Weitere Kompetenzen"
+            }
+          ],
+          "reference": {
+            "kind": "goalEntry",
+            "goalId": "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941"
+          },
+          "canonicalPath": [
+            "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941"
+          ]
+        },
+        {
+          "goalId": "4b16fce6-84cc-52ae-98ca-f88cc518cc28",
+          "nodePath": [
+            "rootNodes",
+            6,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            0,
+            "children",
+            78
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek-ii",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "lk-sek-ii-e",
+              "label": "Jahrgangsstufe 11"
+            },
+            {
+              "id": "lk-sek-ii-e-weitere-kompetenzen",
+              "label": "Weitere Kompetenzen"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "e681c0f9-a69b-541c-bf64-a2b49556c1a6"
+          },
+          "canonicalPath": [
+            "e681c0f9-a69b-541c-bf64-a2b49556c1a6",
+            "4b16fce6-84cc-52ae-98ca-f88cc518cc28"
+          ]
+        },
+        {
+          "goalId": "b88cbf71-5e3e-55e3-ba94-6789408d38d6",
+          "nodePath": [
+            "rootNodes",
+            6,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            0,
+            "children",
+            78
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek-ii",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "lk-sek-ii-e",
+              "label": "Jahrgangsstufe 11"
+            },
+            {
+              "id": "lk-sek-ii-e-weitere-kompetenzen",
+              "label": "Weitere Kompetenzen"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "e681c0f9-a69b-541c-bf64-a2b49556c1a6"
+          },
+          "canonicalPath": [
+            "e681c0f9-a69b-541c-bf64-a2b49556c1a6",
+            "b88cbf71-5e3e-55e3-ba94-6789408d38d6"
+          ]
+        }
+      ],
+      "reason": "All three assessed goals are already placed in this same actualJ11/WeitereKompetenzen branch. This is a proposal based on those concrete placements, never inferred from phaseE. Official source/year acceptance remains pending."
+    },
+    {
+      "viewId": "de-by-gym-sekii-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+      "beforeSha256": "ebb96f847731935cbb75f957546b29be0afbc2a485c70c5e6017e77209ca522f",
+      "operation": "appendAuthoredNode",
+      "childrenPath": [
+        "rootNodes",
+        6,
+        "children",
+        0,
+        "children"
+      ],
+      "anchorStructureId": "gk-sek-ii-only-e-weitere-kompetenzen",
+      "anchorStructurePath": [
+        {
+          "id": "gk-sek-ii-only-e",
+          "label": "Jahrgangsstufe 11"
+        },
+        {
+          "id": "gk-sek-ii-only-e-weitere-kompetenzen",
+          "label": "Weitere Kompetenzen"
+        }
+      ],
+      "beforeChildCount": 102,
+      "afterNode": {
+        "kind": "goalEntry",
+        "goalId": "4293cf40-06fb-51e3-9799-6fde0bf2771b",
+        "projectionRole": "target"
+      },
+      "existingThreeSkillPlacements": [
+        {
+          "goalId": "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941",
+          "nodePath": [
+            "rootNodes",
+            6,
+            "children",
+            0,
+            "children",
+            46
+          ],
+          "structurePath": [
+            {
+              "id": "gk-sek-ii-only-e",
+              "label": "Jahrgangsstufe 11"
+            },
+            {
+              "id": "gk-sek-ii-only-e-weitere-kompetenzen",
+              "label": "Weitere Kompetenzen"
+            }
+          ],
+          "reference": {
+            "kind": "goalEntry",
+            "goalId": "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941"
+          },
+          "canonicalPath": [
+            "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941"
+          ]
+        },
+        {
+          "goalId": "4b16fce6-84cc-52ae-98ca-f88cc518cc28",
+          "nodePath": [
+            "rootNodes",
+            6,
+            "children",
+            0,
+            "children",
+            78
+          ],
+          "structurePath": [
+            {
+              "id": "gk-sek-ii-only-e",
+              "label": "Jahrgangsstufe 11"
+            },
+            {
+              "id": "gk-sek-ii-only-e-weitere-kompetenzen",
+              "label": "Weitere Kompetenzen"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "e681c0f9-a69b-541c-bf64-a2b49556c1a6"
+          },
+          "canonicalPath": [
+            "e681c0f9-a69b-541c-bf64-a2b49556c1a6",
+            "4b16fce6-84cc-52ae-98ca-f88cc518cc28"
+          ]
+        },
+        {
+          "goalId": "b88cbf71-5e3e-55e3-ba94-6789408d38d6",
+          "nodePath": [
+            "rootNodes",
+            6,
+            "children",
+            0,
+            "children",
+            78
+          ],
+          "structurePath": [
+            {
+              "id": "gk-sek-ii-only-e",
+              "label": "Jahrgangsstufe 11"
+            },
+            {
+              "id": "gk-sek-ii-only-e-weitere-kompetenzen",
+              "label": "Weitere Kompetenzen"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "e681c0f9-a69b-541c-bf64-a2b49556c1a6"
+          },
+          "canonicalPath": [
+            "e681c0f9-a69b-541c-bf64-a2b49556c1a6",
+            "b88cbf71-5e3e-55e3-ba94-6789408d38d6"
+          ]
+        }
+      ],
+      "reason": "All three assessed goals are already placed in this same actualJ11/WeitereKompetenzen branch. This is a proposal based on those concrete placements, never inferred from phaseE. Official source/year acceptance remains pending."
+    },
+    {
+      "viewId": "de-by-gym-sekii-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+      "beforeSha256": "c8f1f59fd97336c4cfd08b096ddee5b94a5ea331f6d4eefc37987d7e18a6a4ab",
+      "operation": "appendAuthoredNode",
+      "childrenPath": [
+        "rootNodes",
+        4,
+        "children",
+        0,
+        "children"
+      ],
+      "anchorStructureId": "lk-sek-ii-only-e-weitere-kompetenzen",
+      "anchorStructurePath": [
+        {
+          "id": "lk-sek-ii-only-e",
+          "label": "Jahrgangsstufe 11"
+        },
+        {
+          "id": "lk-sek-ii-only-e-weitere-kompetenzen",
+          "label": "Weitere Kompetenzen"
+        }
+      ],
+      "beforeChildCount": 102,
+      "afterNode": {
+        "kind": "goalEntry",
+        "goalId": "4293cf40-06fb-51e3-9799-6fde0bf2771b",
+        "projectionRole": "target"
+      },
+      "existingThreeSkillPlacements": [
+        {
+          "goalId": "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941",
+          "nodePath": [
+            "rootNodes",
+            4,
+            "children",
+            0,
+            "children",
+            46
+          ],
+          "structurePath": [
+            {
+              "id": "lk-sek-ii-only-e",
+              "label": "Jahrgangsstufe 11"
+            },
+            {
+              "id": "lk-sek-ii-only-e-weitere-kompetenzen",
+              "label": "Weitere Kompetenzen"
+            }
+          ],
+          "reference": {
+            "kind": "goalEntry",
+            "goalId": "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941"
+          },
+          "canonicalPath": [
+            "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941"
+          ]
+        },
+        {
+          "goalId": "4b16fce6-84cc-52ae-98ca-f88cc518cc28",
+          "nodePath": [
+            "rootNodes",
+            4,
+            "children",
+            0,
+            "children",
+            78
+          ],
+          "structurePath": [
+            {
+              "id": "lk-sek-ii-only-e",
+              "label": "Jahrgangsstufe 11"
+            },
+            {
+              "id": "lk-sek-ii-only-e-weitere-kompetenzen",
+              "label": "Weitere Kompetenzen"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "e681c0f9-a69b-541c-bf64-a2b49556c1a6"
+          },
+          "canonicalPath": [
+            "e681c0f9-a69b-541c-bf64-a2b49556c1a6",
+            "4b16fce6-84cc-52ae-98ca-f88cc518cc28"
+          ]
+        },
+        {
+          "goalId": "b88cbf71-5e3e-55e3-ba94-6789408d38d6",
+          "nodePath": [
+            "rootNodes",
+            4,
+            "children",
+            0,
+            "children",
+            78
+          ],
+          "structurePath": [
+            {
+              "id": "lk-sek-ii-only-e",
+              "label": "Jahrgangsstufe 11"
+            },
+            {
+              "id": "lk-sek-ii-only-e-weitere-kompetenzen",
+              "label": "Weitere Kompetenzen"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "e681c0f9-a69b-541c-bf64-a2b49556c1a6"
+          },
+          "canonicalPath": [
+            "e681c0f9-a69b-541c-bf64-a2b49556c1a6",
+            "b88cbf71-5e3e-55e3-ba94-6789408d38d6"
+          ]
+        }
+      ],
+      "reason": "All three assessed goals are already placed in this same actualJ11/WeitereKompetenzen branch. This is a proposal based on those concrete placements, never inferred from phaseE. Official source/year acceptance remains pending."
+    }
+  ],
+  "scopeBoundary": "No new subtree references, no other goal role changes, no132 profiles and no prerequisite-only promotion."
+}

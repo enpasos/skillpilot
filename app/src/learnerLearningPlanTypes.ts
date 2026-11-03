@@ -36,6 +36,7 @@ export interface LearnerLearningPlanBuffer {
 export type LearnerLearningPlanContinueReason =
   | 'learning-plan-following-disabled'
   | 'personal-curriculum-changed'
+  | 'assessment-coverage-unavailable'
   | 'no-open-due-frontier-goal'
   | 'active-goal-in-progress'
   | null

@@ -3,7 +3,7 @@
 \section{Statusabgleich und Grenzen der Aussagen}
 \label{sec:implementation}
 Diese Fassung berücksichtigt die Produktentscheidung und den lokalen
-Implementierungsstand vom 31. Oktober 2026. Die Aussagen über laufenden Code
+Implementierungsstand vom 2. November 2026. Die Aussagen über laufenden Code
 sind keine Behauptung über eine verifizierte Produktivinstallation oder eine
 vollständige Konformitätsprüfung. Frühere Dokumentationsbefunde werden nur
 fortgeführt, soweit sie weiterhin zutreffen.
@@ -38,7 +38,9 @@ Levelresolver oder Budgetvalidator behauptet.\\
 Prüfungsabschluss & Automatische Bedarfsrechnung, allgemeiner direkter
 Prüfungszugang und inklusive Plananrechnung sind lokal implementiert.
 Die drei Produktregeln ersetzen die manuelle Profilpflege. Terminale
-Test-, CI- und Deploymentnachweise sind getrennt zu prüfen.\\
+Prüfungs- und Gedächtnisziele bleiben geschützt. Die Target-Routenprüfung
+sperrt ungültige implizite Auswertungen; Abschnittsansichten maskieren den
+vollständigen Lehrplan. Test-, CI- und Deploymentnachweise sind getrennt zu prüfen.\\
 \bottomrule
 \end{longtable}
 
@@ -58,6 +60,7 @@ unveränderte historische Abweichungen beschrieben werden.
 \srcref{app/src/hooks/useSrsMastery.ts}{useSrsMastery.ts};
 \srcref{app/scripts/validateGraph.ts}{validateGraph.ts};
 \srcref{backend/src/main/java/com/skillpilot/backend/domain/Mastery.java}{Mastery.java};
+\srcref{backend/src/main/java/com/skillpilot/backend/completion/AutomaticCompletionIntegrity.java}{AutomaticCompletionIntegrity.java};
 \srcref{app/src/components/GoalCard.tsx}{GoalCard.tsx};
 \srcref{docs/qa-ci/graph-validation-rules.md}{Graph Validation Rules}.
 Die Links zeigen auf die weiterentwickelte Hauptlinie; für eine historische
@@ -76,13 +79,15 @@ systematische endliche Gegenbeispielsuche.
 Prüfbereich & Geprüfte Aussage\\
 \midrule
 Konkrete Fälle & Mastery-Barriere, zusätzliche unabhängige direkte Kante,
-geteilte Grundlagen, gewöhnliche Endziele und offene Prüfungen.\\
-Mastery als einzige Eingabe & Keine impliziten Prüfungserfolge;
+geteilte Grundlagen, ungeschützte Endzielfehler, offene Prüfungs-/Gedächtnisziele
+und geschützte Unterstützung ohne unabhängige Abschlussverpflichtung.\\
+Mastery als einzige Eingabe & Keine impliziten Prüfungs- oder Gedächtniserfolge;
 Mastery bleibt Teil der erledigten Menge. Mehr Mastery öffnet bei
 unverändertem Kontext keine Arbeit erneut.\\
 DAGs bis vier Knoten in topologischer Ordnung & Alle Kantenmengen und
-jede Mastery-/Prüfungsbelegung: insgesamt 16\,932 Fälle. Gleichheit von
-lokalem Verbraucherfixpunkt und Traversierung ab offenen Prüfungen.\\
+jede Target-/Support-, Mastery- und Schutzbelegung: insgesamt 266\,376 Fälle.
+Gleichheit des Bedarfsfixpunkts ab ausgewählten geschützten Wurzeln mit dem
+unabhängigen wiederholten Entfernen nicht benötigter Verbraucher.\\
 Ungültige Eingaben & Zyklen und unbekannte Referenzen bleiben Fehler,
 keine leere und damit vermeintlich abgeschlossene Arbeitsmenge.\\
 \bottomrule
@@ -160,6 +165,7 @@ Zieltypen und Evidenz &
 Curriculare Planung &
 \srcref{docs/concept/skill-graph/graph-definition.md}{Graph Definition, Abschnitt 12};
 \srcref{docs/concept/skill-graph/curriculum-levels.md}{Curriculum Levels};
+\srcref{docs/concept/skill-graph/curriculum-level-gates.md}{Optionaler Kursmodus mit Level-Gates};
 \srcref{docs/concept/didactic/curriculum-time-axis-and-pacing.md}{Curriculum Time Axis and Pacing}.\\
 Impliziter Abschluss &
 \srcref{docs/concept/skill-graph/assessment-gated-completion.md}{Assessment-Gated Completion};

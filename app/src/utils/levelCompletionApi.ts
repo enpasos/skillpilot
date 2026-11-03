@@ -77,11 +77,18 @@ export const hasActiveCompletionRoute = (completion: LevelCompletion | null): bo
     || completion.navigationIntent || completion.directAssessmentRunning),
 )
 
+/** A target-route defect blocks completion claims, but keeps the backend's structural exam choices usable. */
+export const canDiscoverCompletionAssessments = (completion: LevelCompletion | null): boolean => Boolean(
+  completion && completion.calculationStatus !== 'unavailable'
+    && (completion.calculationStatus !== 'invalid'
+      || (isAutomaticCompletion(completion) && completion.notice === 'completion_target_routes_uncovered')),
+)
+
 /** Exact backend assessment choices only; the UI never derives them from prerequisites. */
 export const completionAssessmentsForGoal = (completion: LevelCompletion | null, goalId: string) => {
-  if (!completion || completion.calculationStatus === 'invalid' || completion.calculationStatus === 'unavailable') return []
+  if (!completion || !canDiscoverCompletionAssessments(completion)) return []
   const profiles = completion.profileId
-    ? (completion.calculationStatus === 'valid'
+    ? (completion.calculationStatus === 'valid' || completion.calculationStatus === 'invalid'
       ? [{ profileId: completion.profileId, title: completion.title, assessments: completion.assessments }] : [])
     : completion.profileOptions
   return profiles.flatMap(profile => (profile.assessments ?? [])
@@ -254,6 +261,7 @@ export const completionNotice = (code: string, language: string): string => {
     completion_coach_contract_unsupported: ['Diese Coach-Verbindung unterstützt den gewählten Abschlussweg noch nicht. Nutze dafür eine unterstützte Verbindung oder kehre bewusst zum regulären Lernweg zurück.', 'This coach connection does not yet support the selected completion route. Use a supported connection or deliberately return to the regular learning route.'],
     completion_assessment_owned_elsewhere: ['Die Prüfung läuft in einer anderen Coach-Sitzung. Setze sie dort fort oder beende sie bewusst im Cockpit.', 'The assessment is running in another coach session. Continue there or deliberately end it in the Cockpit.'],
     completion_profile_invalid: ['Dieser Lernabschnitt ist gerade nicht verfügbar. Du kannst zum regulären Lernweg zurückkehren.', 'This learning section is currently unavailable. You can return to the regular learning route.'],
+    completion_target_routes_uncovered: ['Welche Lernziele ohne weitere Bearbeitung erledigt sind, kann gerade nicht zuverlässig berechnet werden. Du kannst weiterlernen und verfügbare Prüfungen direkt versuchen. Dein gespeicherter Lernfortschritt bleibt erhalten.', 'We cannot currently calculate which learning goals no longer need separate work. You can keep learning and try available assessments directly. Your saved progress is retained.'],
     completion_mastery_unavailable: ['Dein Lernstand kann gerade nicht zuverlässig geladen werden. Bitte versuche es erneut.', 'Your progress cannot currently be loaded reliably. Please try again.'],
   }
   return messages[code]?.[en ? 1 : 0] ?? (en ? 'This learning section is currently unavailable.' : 'Dieser Lernabschnitt ist gerade nicht verfügbar.')

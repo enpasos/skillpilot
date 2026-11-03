@@ -1,0 +1,1016 @@
+{
+  "status": "SOURCE_DECISION_PASS; NATIVE_INTEGRATION_DELTA_PENDING",
+  "auditPath": "tmp/approach-review-20261101/post-hb-symmetry-native-154-audit.json",
+  "auditSha256": "672157680f5cc763fbc7212ca207a72b2c00c8f30b5ca45381a065bb864bd3ec",
+  "wholeTargetListCopyAvoided": true,
+  "hashSerialization": "SHA-256 UTF-8 JSON ensure_ascii=False, sort_keys=True, separators=(comma,colon); order of the target ID list retained.",
+  "counts": {
+    "HB": {
+      "actualOfferedProfiles": 7,
+      "affectedActualOfferedProfiles": 6,
+      "ordinaryTargetOccurrencesToRemove": 52,
+      "wholeProtectedTargetOccurrencesToRemove": 16,
+      "pureGKProfileCountAffected": 2,
+      "LKOrMergedProfileCountAffected": 4
+    },
+    "HH": {
+      "actualOfferedProfiles": 7,
+      "affectedActualOfferedProfiles": 6,
+      "ordinaryTargetOccurrencesToRemove": 52,
+      "wholeProtectedTargetOccurrencesToRemove": 16,
+      "pureGKProfileCountAffected": 2,
+      "LKOrMergedProfileCountAffected": 4
+    },
+    "MV": {
+      "actualOfferedProfiles": 7,
+      "affectedActualOfferedProfiles": 6,
+      "ordinaryTargetOccurrencesToRemove": 52,
+      "wholeProtectedTargetOccurrencesToRemove": 8,
+      "pureGKProfileCountAffected": 2,
+      "LKOrMergedProfileCountAffected": 4
+    },
+    "SH": {
+      "actualOfferedProfiles": 14,
+      "affectedActualOfferedProfiles": 0,
+      "ordinaryTargetOccurrencesToRemove": 0,
+      "wholeProtectedTargetOccurrencesToRemove": 0,
+      "pureGKProfileCountAffected": 0,
+      "LKOrMergedProfileCountAffected": 0
+    }
+  },
+  "profiles": [
+    {
+      "scope": "DE-HB/SekI/G8/GK+LK",
+      "compositionViewIds": [
+        "de-hb-gym-seki-math"
+      ],
+      "v17WholeTargetCount": 194,
+      "v17WholeOrderedTargetIdsSha256": "dc00f72f25a342ee20a25d17eeb30e96c61c15b8986f63eec93c3d212548ec34",
+      "ordinaryTargetIdsToRemove": [],
+      "wholeProtectedTargetIdsToRemove": [],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 194,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "dc00f72f25a342ee20a25d17eeb30e96c61c15b8986f63eec93c3d212548ec34",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-HB/SekII/G8/GK",
+      "compositionViewIds": [
+        "de-hb-gym-sekii-math-gk"
+      ],
+      "v17WholeTargetCount": 446,
+      "v17WholeOrderedTargetIdsSha256": "1a3df86a1f0b5ef27723fe8ca2f95929c4b667f022bf69ebd96a30a93102829f",
+      "ordinaryTargetIdsToRemove": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc"
+      ],
+      "wholeProtectedTargetIdsToRemove": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 438,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "d3a632005e5fa0e708f1e187f75d3019e1a3c69bc1a64caf3f2a73f1fa90bbae",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-HB/SekII/G8/LK",
+      "compositionViewIds": [
+        "de-hb-gym-sekii-math-lk"
+      ],
+      "v17WholeTargetCount": 561,
+      "v17WholeOrderedTargetIdsSha256": "1eb62771bc52ef74b068a245e4483873eae9c2a83e60925db406bd2a99e50e89",
+      "ordinaryTargetIdsToRemove": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "wholeProtectedTargetIdsToRemove": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 548,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "7abc117cce1e7c9b8d5fa52628858528d798b156f73d1fb9fc3b667019a6bc35",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-HB/SekII/G8/GK+LK",
+      "compositionViewIds": [
+        "merged:de-hb-gym-sekii-math-lk+de-hb-gym-sekii-math-gk"
+      ],
+      "v17WholeTargetCount": 562,
+      "v17WholeOrderedTargetIdsSha256": "21fbf1f3fe2fa97d02396ff7988a505a56a80bdb8cd1aa44d813a1483cd68fd0",
+      "ordinaryTargetIdsToRemove": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "wholeProtectedTargetIdsToRemove": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 549,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "78b2ffd321e951a0fcd829c51fd6e336f6c96a2cb33d7af16ffefd527b7cc8a0",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-HB/CrossStage/G8/GK",
+      "compositionViewIds": [
+        "de-hb-gym-math-gk"
+      ],
+      "v17WholeTargetCount": 637,
+      "v17WholeOrderedTargetIdsSha256": "9e536646d1c3bf1cec0f145443be98c933c04f4346de71ab2db558d6c12de190",
+      "ordinaryTargetIdsToRemove": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc"
+      ],
+      "wholeProtectedTargetIdsToRemove": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 629,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "4eec833225ce1b12a243144d0fec699a0b1a27c9e4071a297bf2110b9e2c61ad",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-HB/CrossStage/G8/LK",
+      "compositionViewIds": [
+        "de-hb-gym-math-lk"
+      ],
+      "v17WholeTargetCount": 752,
+      "v17WholeOrderedTargetIdsSha256": "81e78493f3f6afe23c16999f332f57baf7a1e53c7f8fa74318a75e4fce788886",
+      "ordinaryTargetIdsToRemove": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "wholeProtectedTargetIdsToRemove": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 739,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "8637f1008f95653e90854c87326c78b4ec510557787aae07ca3c6a5a4a43eb64",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-HB/CrossStage/G8/GK+LK",
+      "compositionViewIds": [
+        "merged:de-hb-gym-math-lk+de-hb-gym-math-gk"
+      ],
+      "v17WholeTargetCount": 753,
+      "v17WholeOrderedTargetIdsSha256": "32d654d70cbdae98755bf0630dd22c3de3e51a493f3aaa27a04b8e660c18f926",
+      "ordinaryTargetIdsToRemove": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "wholeProtectedTargetIdsToRemove": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 740,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "0763e802b7b6604dc1665dcdd11b181dd84e4b6f6561855d5d2ca1095b81dc01",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-HH/SekI/G8/GK+LK",
+      "compositionViewIds": [
+        "de-hh-gym-seki-math"
+      ],
+      "v17WholeTargetCount": 241,
+      "v17WholeOrderedTargetIdsSha256": "9aa740987342db5a5450f940459fee9fa377bbb88ec19fb5090913af855b5039",
+      "ordinaryTargetIdsToRemove": [],
+      "wholeProtectedTargetIdsToRemove": [],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 241,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "9aa740987342db5a5450f940459fee9fa377bbb88ec19fb5090913af855b5039",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-HH/SekII/G8/GK",
+      "compositionViewIds": [
+        "de-hh-gym-sekii-math-gk"
+      ],
+      "v17WholeTargetCount": 457,
+      "v17WholeOrderedTargetIdsSha256": "30cc3c75f1ae6f2b05342b9567e72139db29eb2ccfd4590c6559bb5ba1770c43",
+      "ordinaryTargetIdsToRemove": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc"
+      ],
+      "wholeProtectedTargetIdsToRemove": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 449,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "f69f397f04f6744b8530924bfd6335061e176c0c732b2d95eae896460ba6953f",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-HH/SekII/G8/LK",
+      "compositionViewIds": [
+        "de-hh-gym-sekii-math-lk"
+      ],
+      "v17WholeTargetCount": 571,
+      "v17WholeOrderedTargetIdsSha256": "f216781ffc0b70a38cf59ea890233f84daed1514fbc73e2a0178085c89e73e43",
+      "ordinaryTargetIdsToRemove": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "wholeProtectedTargetIdsToRemove": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 558,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "c8eb0f4ec0ff95f203708a9ff38f5d1b5bcc77dd8faffb4145c1e51e1c44056c",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-HH/SekII/G8/GK+LK",
+      "compositionViewIds": [
+        "merged:de-hh-gym-sekii-math-lk+de-hh-gym-sekii-math-gk"
+      ],
+      "v17WholeTargetCount": 585,
+      "v17WholeOrderedTargetIdsSha256": "0b3790a687e91f5e3e1b8df830acc70eed8ffa647a412430d19474f9dc3960c8",
+      "ordinaryTargetIdsToRemove": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "wholeProtectedTargetIdsToRemove": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 572,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "ae6aa12034b86097c0fce4cc341eea55b3c86c8d154c8a8f6ac3d9d654e52584",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-HH/CrossStage/G8/GK",
+      "compositionViewIds": [
+        "de-hh-gym-math-gk"
+      ],
+      "v17WholeTargetCount": 693,
+      "v17WholeOrderedTargetIdsSha256": "04017746cca1ecd1c3b7d921a1df6cc0fb6ad27e4ef36317acd66820d3d19eac",
+      "ordinaryTargetIdsToRemove": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc"
+      ],
+      "wholeProtectedTargetIdsToRemove": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 685,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "f4260fde6718ba8bf2ce74a0e5e290dea89e262f27f1b05cbd47a5af5a43a79a",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-HH/CrossStage/G8/LK",
+      "compositionViewIds": [
+        "de-hh-gym-math-lk"
+      ],
+      "v17WholeTargetCount": 807,
+      "v17WholeOrderedTargetIdsSha256": "e18e931856ac4557e0a717a8595e12091101056738754becdaa6b19737d2cf54",
+      "ordinaryTargetIdsToRemove": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "wholeProtectedTargetIdsToRemove": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 794,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "042777ac8bbffddac04a1b89d7ea2872262d16faf9a5508f7a6abfed52430b79",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-HH/CrossStage/G8/GK+LK",
+      "compositionViewIds": [
+        "merged:de-hh-gym-math-lk+de-hh-gym-math-gk"
+      ],
+      "v17WholeTargetCount": 821,
+      "v17WholeOrderedTargetIdsSha256": "3c8479b81ea26e6e666de4fe3d87ddea230ea211b61fe805efeb543794ff2ec6",
+      "ordinaryTargetIdsToRemove": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "wholeProtectedTargetIdsToRemove": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [
+        "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 808,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "f5073a64126a5304f16591e3760c5eae1f9950bdabe001904e2fc1ed5405a616",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-MV/SekI/G8/GK+LK",
+      "compositionViewIds": [
+        "de-mv-gym-seki-math"
+      ],
+      "v17WholeTargetCount": 187,
+      "v17WholeOrderedTargetIdsSha256": "ab9b376118cbc7c519325c5d63e6ccb448e2f405a6741537140c7db6da5c8113",
+      "ordinaryTargetIdsToRemove": [],
+      "wholeProtectedTargetIdsToRemove": [],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 187,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "ab9b376118cbc7c519325c5d63e6ccb448e2f405a6741537140c7db6da5c8113",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-MV/SekII/G8/GK",
+      "compositionViewIds": [
+        "de-mv-gym-sekii-math-gk"
+      ],
+      "v17WholeTargetCount": 437,
+      "v17WholeOrderedTargetIdsSha256": "170d51e65fd045e9be09b41173b5fd0de836465bd4f9cc4c29837f8b8f4c60ba",
+      "ordinaryTargetIdsToRemove": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc"
+      ],
+      "wholeProtectedTargetIdsToRemove": [],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc"
+      ],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 431,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "528b4f8132ffc116577c15482383de447f49ba947a20a0f7ce6d51ba56b097ab",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-MV/SekII/G8/LK",
+      "compositionViewIds": [
+        "de-mv-gym-sekii-math-lk"
+      ],
+      "v17WholeTargetCount": 556,
+      "v17WholeOrderedTargetIdsSha256": "3906f066127b135da5a4a531796291b36e2e69799dcaa732cf08e8de3ca9ee4a",
+      "ordinaryTargetIdsToRemove": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "wholeProtectedTargetIdsToRemove": [
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 544,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "c63541305291f77c5692ce91f9c04d8075a746728f0679b1f2f4ee1d5b0ce13a",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-MV/SekII/G8/GK+LK",
+      "compositionViewIds": [
+        "merged:de-mv-gym-sekii-math-lk+de-mv-gym-sekii-math-gk"
+      ],
+      "v17WholeTargetCount": 558,
+      "v17WholeOrderedTargetIdsSha256": "1343faacb989cf979248a28b654fc4fec5648fb9b8e276ce7d3b06446608a2d5",
+      "ordinaryTargetIdsToRemove": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "wholeProtectedTargetIdsToRemove": [
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 546,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "557ab091998ca04f4ebc16c174d4948cbd43e11df831b41dcada1d77eb752a85",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-MV/CrossStage/G8/GK",
+      "compositionViewIds": [
+        "de-mv-gym-math-gk"
+      ],
+      "v17WholeTargetCount": 622,
+      "v17WholeOrderedTargetIdsSha256": "b74d656a938ebd0d4215c89262d18acc09d1ed924749bd07765f87e3a42a50b3",
+      "ordinaryTargetIdsToRemove": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc"
+      ],
+      "wholeProtectedTargetIdsToRemove": [],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc"
+      ],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 616,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "922205fea5ab088e2d87255264e7963f870cb0ce4e47d00aa149f080fa51d1f2",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-MV/CrossStage/G8/LK",
+      "compositionViewIds": [
+        "de-mv-gym-math-lk"
+      ],
+      "v17WholeTargetCount": 738,
+      "v17WholeOrderedTargetIdsSha256": "fa9df9418789231882cbb904658607458d724b6f9240c6a142b2fbfa993ebbf7",
+      "ordinaryTargetIdsToRemove": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "wholeProtectedTargetIdsToRemove": [
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 726,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "5aa10e9f4e2bb16805a4ef35447e09607e97415564570db4d163c45629479024",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-MV/CrossStage/G8/GK+LK",
+      "compositionViewIds": [
+        "merged:de-mv-gym-math-lk+de-mv-gym-math-gk"
+      ],
+      "v17WholeTargetCount": 740,
+      "v17WholeOrderedTargetIdsSha256": "c5ed53e6c6e1c4b8787e0031fea8bee07899b5fddb1a03a41e323434572e8b4c",
+      "ordinaryTargetIdsToRemove": [
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "wholeProtectedTargetIdsToRemove": [
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8"
+      ],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [
+        "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+        "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+        "a8525adc-fad3-53f5-953f-213bd37b09e8",
+        "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+        "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+        "eda8580e-1f10-5dbd-9aaf-92367f40a6bd"
+      ],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 728,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "3b8438e94b47c2b0d0e521b850aaccc2bf5df1e8ef1b3aa28f0ae644d0d8c19f",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-SH/SekI/G8/GK+LK",
+      "compositionViewIds": [
+        "de-sh-gym-seki-math-g8"
+      ],
+      "v17WholeTargetCount": 242,
+      "v17WholeOrderedTargetIdsSha256": "2031d8341f393bf024edfe0a37466976f2e29f23f689583e56f64f46c2b852d4",
+      "ordinaryTargetIdsToRemove": [],
+      "wholeProtectedTargetIdsToRemove": [],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 242,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "2031d8341f393bf024edfe0a37466976f2e29f23f689583e56f64f46c2b852d4",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-SH/SekI/G9/GK+LK",
+      "compositionViewIds": [
+        "de-sh-gym-seki-math-g9"
+      ],
+      "v17WholeTargetCount": 247,
+      "v17WholeOrderedTargetIdsSha256": "42dea056778b0a72acc444d0785483bc5c5e39f7f79fdabf88da781f45ce3987",
+      "ordinaryTargetIdsToRemove": [],
+      "wholeProtectedTargetIdsToRemove": [],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 247,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "42dea056778b0a72acc444d0785483bc5c5e39f7f79fdabf88da781f45ce3987",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-SH/SekII/G8/GK",
+      "compositionViewIds": [
+        "de-sh-gym-sekii-math-gk"
+      ],
+      "v17WholeTargetCount": 412,
+      "v17WholeOrderedTargetIdsSha256": "65671fa25a3c78ca5f3e9af54ce39444bac12df0ee8b5384382b5e5af581c64d",
+      "ordinaryTargetIdsToRemove": [],
+      "wholeProtectedTargetIdsToRemove": [],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 412,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "65671fa25a3c78ca5f3e9af54ce39444bac12df0ee8b5384382b5e5af581c64d",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-SH/SekII/G8/LK",
+      "compositionViewIds": [
+        "de-sh-gym-sekii-math-lk"
+      ],
+      "v17WholeTargetCount": 530,
+      "v17WholeOrderedTargetIdsSha256": "6705ae2079bd05d8f2c21064848299d15450eceafe13d073a16efe710304017f",
+      "ordinaryTargetIdsToRemove": [],
+      "wholeProtectedTargetIdsToRemove": [],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 530,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "6705ae2079bd05d8f2c21064848299d15450eceafe13d073a16efe710304017f",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-SH/SekII/G8/GK+LK",
+      "compositionViewIds": [
+        "merged:de-sh-gym-sekii-math-lk+de-sh-gym-sekii-math-gk"
+      ],
+      "v17WholeTargetCount": 533,
+      "v17WholeOrderedTargetIdsSha256": "7654f6c7d398f41cfce551bffc85c14c03a7eb87ba521338eafd367995cade52",
+      "ordinaryTargetIdsToRemove": [],
+      "wholeProtectedTargetIdsToRemove": [],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 533,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "7654f6c7d398f41cfce551bffc85c14c03a7eb87ba521338eafd367995cade52",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-SH/SekII/G9/GK",
+      "compositionViewIds": [
+        "de-sh-gym-sekii-math-gk"
+      ],
+      "v17WholeTargetCount": 412,
+      "v17WholeOrderedTargetIdsSha256": "65671fa25a3c78ca5f3e9af54ce39444bac12df0ee8b5384382b5e5af581c64d",
+      "ordinaryTargetIdsToRemove": [],
+      "wholeProtectedTargetIdsToRemove": [],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 412,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "65671fa25a3c78ca5f3e9af54ce39444bac12df0ee8b5384382b5e5af581c64d",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-SH/SekII/G9/LK",
+      "compositionViewIds": [
+        "de-sh-gym-sekii-math-lk"
+      ],
+      "v17WholeTargetCount": 530,
+      "v17WholeOrderedTargetIdsSha256": "6705ae2079bd05d8f2c21064848299d15450eceafe13d073a16efe710304017f",
+      "ordinaryTargetIdsToRemove": [],
+      "wholeProtectedTargetIdsToRemove": [],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 530,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "6705ae2079bd05d8f2c21064848299d15450eceafe13d073a16efe710304017f",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-SH/SekII/G9/GK+LK",
+      "compositionViewIds": [
+        "merged:de-sh-gym-sekii-math-lk+de-sh-gym-sekii-math-gk"
+      ],
+      "v17WholeTargetCount": 533,
+      "v17WholeOrderedTargetIdsSha256": "7654f6c7d398f41cfce551bffc85c14c03a7eb87ba521338eafd367995cade52",
+      "ordinaryTargetIdsToRemove": [],
+      "wholeProtectedTargetIdsToRemove": [],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 533,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "7654f6c7d398f41cfce551bffc85c14c03a7eb87ba521338eafd367995cade52",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-SH/CrossStage/G8/GK",
+      "compositionViewIds": [
+        "de-sh-gym-math-gk-g8"
+      ],
+      "v17WholeTargetCount": 645,
+      "v17WholeOrderedTargetIdsSha256": "5ac97f46795462191fadb3f699f77683da264a0217bb79f8bf367c31f680ce5d",
+      "ordinaryTargetIdsToRemove": [],
+      "wholeProtectedTargetIdsToRemove": [],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 645,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "5ac97f46795462191fadb3f699f77683da264a0217bb79f8bf367c31f680ce5d",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-SH/CrossStage/G8/LK",
+      "compositionViewIds": [
+        "de-sh-gym-math-lk-g8"
+      ],
+      "v17WholeTargetCount": 763,
+      "v17WholeOrderedTargetIdsSha256": "3ecd45c06eea4073f45386e0dd7c13b578ef758210ffeada099f895a5cd25d82",
+      "ordinaryTargetIdsToRemove": [],
+      "wholeProtectedTargetIdsToRemove": [],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 763,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "3ecd45c06eea4073f45386e0dd7c13b578ef758210ffeada099f895a5cd25d82",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-SH/CrossStage/G8/GK+LK",
+      "compositionViewIds": [
+        "merged:de-sh-gym-math-lk-g8+de-sh-gym-math-gk-g8"
+      ],
+      "v17WholeTargetCount": 766,
+      "v17WholeOrderedTargetIdsSha256": "3a347b1ee318b40bbe4a729ccf7a040570fa2bc34d9ebc7907a833fc05ea8e67",
+      "ordinaryTargetIdsToRemove": [],
+      "wholeProtectedTargetIdsToRemove": [],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 766,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "3a347b1ee318b40bbe4a729ccf7a040570fa2bc34d9ebc7907a833fc05ea8e67",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-SH/CrossStage/G9/GK",
+      "compositionViewIds": [
+        "de-sh-gym-math-gk-g9"
+      ],
+      "v17WholeTargetCount": 652,
+      "v17WholeOrderedTargetIdsSha256": "b505f84a48cd6aadb71a48baac5703726b2c994d3148c8c5a3555fe72796d19f",
+      "ordinaryTargetIdsToRemove": [],
+      "wholeProtectedTargetIdsToRemove": [],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 652,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "b505f84a48cd6aadb71a48baac5703726b2c994d3148c8c5a3555fe72796d19f",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-SH/CrossStage/G9/LK",
+      "compositionViewIds": [
+        "de-sh-gym-math-lk-g9"
+      ],
+      "v17WholeTargetCount": 770,
+      "v17WholeOrderedTargetIdsSha256": "79eca4fcbca87550d5959666e3ff5e6cc56c6b7195ab73e70edfd1f64ba62ad8",
+      "ordinaryTargetIdsToRemove": [],
+      "wholeProtectedTargetIdsToRemove": [],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 770,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "79eca4fcbca87550d5959666e3ff5e6cc56c6b7195ab73e70edfd1f64ba62ad8",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    },
+    {
+      "scope": "DE-SH/CrossStage/G9/GK+LK",
+      "compositionViewIds": [
+        "merged:de-sh-gym-math-lk-g9+de-sh-gym-math-gk-g9"
+      ],
+      "v17WholeTargetCount": 773,
+      "v17WholeOrderedTargetIdsSha256": "bd5529a67497bbba26fef193c94791de22f4ee62bcab43cbcca5f4ed708ea6a0",
+      "ordinaryTargetIdsToRemove": [],
+      "wholeProtectedTargetIdsToRemove": [],
+      "allAndOnlyTargetIdsToRemoveFromThisComplexPackage": [],
+      "expectedTargetAdditions": [],
+      "v17MinusOnlyThisPackageCount": 773,
+      "v17MinusOnlyThisPackageOrderedTargetIdsSha256": "bd5529a67497bbba26fef193c94791de22f4ee62bcab43cbcca5f4ed708ea6a0",
+      "bindingLimit": "V17 comparison reference only. Existing V17 HB symmetry and MV/NI masks; subsequent V18/V19 changes are preserved and must be rebased before the actual native-154 delta. This is a frozen actual V17 reference, not a future V18/V19 whole-target count."
+    }
+  ],
+  "allOtherOfferedProfilesUnchangedByThisProposal": 119,
+  "unaffectedSekIProfilesInTheseFourCountries": 5,
+  "allFourteenSHProfilesUnchanged": true,
+  "native154IntegrationClaim": false
+}

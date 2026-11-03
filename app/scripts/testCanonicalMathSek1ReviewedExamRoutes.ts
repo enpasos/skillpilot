@@ -3,7 +3,9 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
 import { normalizeCanonicalLandscape } from '../src/utils/authoring/canonicalAuthoring'
+import { collectCompositionProjectionRoleGoalIds, compileCompositionView, normalizeCompositionView } from '../src/utils/authoring/compositionViewAuthoring'
 import {
+  collectCanonicalMathSek1ExamVisibilityFindings,
   collectCanonicalMathSek1ReviewedExamRouteFindings,
   hasUnavailableCurricularAtomicAssessmentPrerequisite,
   isAssessmentExplicitlyOutsideJurisdiction,
@@ -122,6 +124,24 @@ assert.equal(shouldRequireCanonicalMathSek1AssessmentEndpoint(
   { ...terminal, extendedData: {} }, curricularAtomicGoalIds, new Set(), new Set(),
 ), true, 'An absent exam without applicabilityFromRequires must remain required.')
 
+for (const [file, requiredTaskId, excludedVariantId] of [
+  ['de-he-seki-g8.view.json', '0dded9c1-043e-57cb-82fc-792b391e9cb0', 'e5494c67-aed6-5710-8ae3-51ae147c10e9'],
+  ['de-he-seki-g9.view.json', 'e5494c67-aed6-5710-8ae3-51ae147c10e9', '0dded9c1-043e-57cb-82fc-792b391e9cb0'],
+] as const) {
+  const view = normalizeCompositionView(JSON.parse(readFileSync(resolve(process.cwd(),
+    '../curricula/DE/Gymnasium/composition-views/mathematik', file), 'utf8')))
+  const goalById = new Map(landscape.goals.map(goal => [goal.id, goal]))
+  const roles = collectCompositionProjectionRoleGoalIds(view.rootNodes, goalById)
+  const referenced = new Set([...roles.targetGoalIds, ...roles.prerequisiteOnlyGoalIds])
+  assert(roles.targetGoalIds.has(requiredTaskId), `${file}: the selected prism task remains required`)
+  assert(roles.prerequisiteOnlyGoalIds.has(excludedVariantId), `${file}: the alternative is explicitly outside the target`)
+  assert.equal(shouldRequireCanonicalMathSek1AssessmentEndpoint(goalById.get(requiredTaskId)!,
+    new Set(), referenced, roles.targetGoalIds), true)
+  assert.equal(shouldRequireCanonicalMathSek1AssessmentEndpoint(goalById.get(excludedVariantId)!,
+    new Set(), referenced, roles.targetGoalIds), false,
+  `${file}: exclusivity must not require both versions of the same assessment`)
+}
+
 for (const [goalId, homeJurisdiction] of [
   ['5f6496ef-e4d2-5341-8a2c-3293b2e4e25a', 'DE-BW'],
   ['79f5f4cc-10e1-56a5-8ed3-8cd51688db41', 'DE-SL'],
@@ -145,4 +165,70 @@ assert.equal(isAssessmentExplicitlyOutsideJurisdiction(
   { applicability: { jurisdiction: ['DE-BW', 'DE-SL'] } }, 'DE-SL',
 ), false, 'Every explicitly included land retains its assessment requirement.')
 
-console.log('Canonical Mathematics Sek-I reviewed exam-route regression tests passed, including exact assessment target and jurisdiction applicability.')
+// Exercise the production collector with actual compiler output. Authored
+// headings may replace a canonical folder; required tasks must remain visible.
+const fixtureId = 'exam-visibility-fixture'
+const visibilityPolicy = {
+  landscapeId: fixtureId,
+  motivationGoalId: 'motivation',
+  legacyPracticeClusterId: 'legacy-practice',
+  expectedYears: ['8'],
+  examFolderIdsByYear: { '8': 'exam-folder' },
+}
+const visibilityLandscape = normalizeCanonicalLandscape({
+  landscapeId: fixtureId,
+  goals: [
+    { id: 'motivation', title: 'Motivation', requires: [], contains: [] },
+    { id: 'preparation', title: 'Preparation', requires: [], contains: [], semanticKind: 'curricularAtomic' },
+    { id: 'exam-folder', title: 'Canonical exam family', type: 'cluster', requires: [], contains: ['exam-a', 'exam-b'] },
+    ...['exam-a', 'exam-b'].map(id => ({ id, title: id, nodeKind: 'exam', contains: [],
+      requires: ['preparation'], extendedData: { applicabilityFromRequires: true } })),
+  ],
+})
+const visiblePrerequisites = [
+  { kind: 'goalEntry', goalId: 'motivation' },
+  { kind: 'goalEntry', goalId: 'preparation' },
+]
+const inspectVisibility = (nodes: unknown[], canonical = visibilityLandscape) => {
+  const before = JSON.stringify(canonical)
+  const view = normalizeCompositionView({ viewId: 'visibility', landscapeId: fixtureId,
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'SekI' }, rootNodes: nodes })
+  const compiled = compileCompositionView(view, canonical)
+  const result = collectCanonicalMathSek1ExamVisibilityFindings(
+    view, canonical, compiled.compiledRootNodes, visibilityPolicy,
+  )
+  assert.equal(JSON.stringify(canonical), before, 'Visibility checks never mutate authored goals or learner outcomes.')
+  return result
+}
+assert.deepEqual(inspectVisibility([...visiblePrerequisites, {
+  kind: 'structure', id: 'reviewed-neutral-heading', label: 'Reviewed assessments', children: [
+    { kind: 'goalEntry', goalId: 'exam-a' }, { kind: 'goalEntry', goalId: 'exam-b' },
+  ],
+}]), [], 'Visible exact tasks satisfy their family without requiring its canonical navigation container.')
+const missingTaskWithoutFolder = inspectVisibility([...visiblePrerequisites, { kind: 'goalEntry', goalId: 'exam-a' }])
+assert.equal(missingTaskWithoutFolder.length, 1)
+assert.equal(missingTaskWithoutFolder[0].code, 'CPV-211')
+assert.equal(missingTaskWithoutFolder[0].severity, 'error')
+assert.match(missingTaskWithoutFolder[0].message, /1 Aufgabenknoten/u,
+  'A missing folder must not hide another missing required task when preparation remains a target.')
+const folderWithoutTasks = inspectVisibility([...visiblePrerequisites, { kind: 'goalEntry', goalId: 'exam-folder' }])
+assert.equal(folderWithoutTasks.length, 1)
+assert.equal(folderWithoutTasks[0].code, 'CPV-211')
+assert.match(folderWithoutTasks[0].message, /2 Aufgabenknoten/u,
+  'An opaque container alone does not replace its required assessment tasks.')
+assert.deepEqual(inspectVisibility([...visiblePrerequisites,
+  { kind: 'goalEntry', goalId: 'exam-a', projectionRole: 'prerequisiteOnly' },
+  { kind: 'goalEntry', goalId: 'exam-b', projectionRole: 'prerequisiteOnly' },
+]), [], 'Existing explicit support-only exclusions stay effective even without a visible folder.')
+assert.deepEqual(inspectVisibility([{ kind: 'goalEntry', goalId: 'motivation' }]), [],
+  'Existing applicabilityFromRequires exclusions remain effective when curricular preparation is outside the target.')
+const foreignTask = { ...visibilityLandscape, goals: visibilityLandscape.goals.map(goal => goal.id === 'exam-b'
+  ? { ...goal, applicability: { jurisdiction: ['DE-BE'] } } : goal) }
+assert.deepEqual(inspectVisibility([...visiblePrerequisites, { kind: 'goalEntry', goalId: 'exam-a' }], foreignTask), [],
+  'Existing explicit foreign-jurisdiction exclusions remain effective.')
+const unknownPreparation = { ...visibilityLandscape, goals: visibilityLandscape.goals.map(goal => goal.id === 'exam-b'
+  ? { ...goal, requires: ['unknown-preparation'] } : goal) }
+assert.equal(inspectVisibility([...visiblePrerequisites, { kind: 'goalEntry', goalId: 'exam-a' }], unknownPreparation)[0]?.code,
+  'CPV-211', 'Unknown preparation must not silently waive a missing assessment.')
+
+console.log('Canonical Mathematics Sek-I reviewed exam-route and production assessment-visibility regressions passed.')

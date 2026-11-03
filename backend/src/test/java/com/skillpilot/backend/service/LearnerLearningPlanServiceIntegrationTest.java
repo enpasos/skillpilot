@@ -301,8 +301,8 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(edited.blocks().getFirst().atomicGoalIds()).containsExactly("atom-a");
         assertThat(edited.blocks().get(1).atomicGoalIds()).containsExactly("atom-b");
         var status = service.getTodayStatus(LEARNER_ID, "de");
-        assertThat(status.statusText()).isEqualTo("Mathematik: Tagesziel erreicht · im Plan");
-        assertThat(status.subjects().getFirst().balance().erfuelltesPeriodenziel()).isEqualTo(1);
+        assertThat(status.statusText()).isEqualTo("Mathematik: Tagesziel 0 von 1 · im Plan");
+        assertThat(status.subjects().getFirst().balance().erfuelltesPeriodenziel()).isZero();
         assertThat(learnerService.getMastery(LEARNER_ID)).containsEntry("atom-a", 1.0).containsEntry("atom-c", 1.0);
         assertThat(service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY).blocks()).isEqualTo(edited.blocks());
     }
@@ -400,7 +400,7 @@ class LearnerLearningPlanServiceIntegrationTest {
     }
 
     @Test
-    void mergedSubjectAdvanceWorkPreventsAutomaticExtraWorkFromAnIncompletePartPlan() {
+    void mergedSubjectAdvanceWorkChangesTheBalanceWithoutFillingThePeriodQuota() {
         String extension = "math-extension";
         when(landscapeService.getById(extension)).thenReturn(landscape(extension, "Mathematik"));
         when(learnerService.getPlanningScope(LEARNER_ID, extension))
@@ -416,8 +416,8 @@ class LearnerLearningPlanServiceIntegrationTest {
         when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-b", 1.0));
         learner.setFollowLearningPlans(true);
         var status = service.getTodayStatus(LEARNER_ID, "de");
-        assertThat(status.statusText()).isEqualTo("Mathematik: Tagesziel erreicht · im Plan");
-        assertThat(status.automaticResumeAvailable()).isFalse();
+        assertThat(status.statusText()).isEqualTo("Mathematik: Tagesziel 0 von 1 · im Plan");
+        assertThat(status.automaticResumeAvailable()).isTrue();
         assertThat(status.resumeAvailable()).isTrue();
         verify(learnerService, never()).applyLearningPlanTransition(any(), anyBoolean(), anyBoolean(), any(), any(), anyBoolean(), any());
     }
@@ -632,6 +632,36 @@ class LearnerLearningPlanServiceIntegrationTest {
         verify(learnerService, never()).applyLearningPlanTransition(
                 any(), any(Boolean.class), any(Boolean.class), any(), any(), any(Boolean.class), any());
         verify(eventPublisher, never()).publishEvent(any());
+    }
+
+    @Test
+    void compatiblePlanWithUnavailableCompletionStillRejectsDetailWithoutCreditingOrRewritingIt() {
+        var created = service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Current plan", List.of(
+                        learning("block", "2026-09-01", "2026-09-04", "atom-a", "atom-b"))), TODAY);
+        var stored = planRepository.findById(created.planId()).orElseThrow();
+        String originalBlocks = stored.getBlocksJson();
+        String originalFingerprint = stored.getScopeFingerprint();
+        Instant originalUpdatedAt = stored.getUpdatedAt();
+        when(learnerService.getLearningPlanCompletionContext(eq(LEARNER_ID), any()))
+                .thenThrow(new IllegalStateException("Completion context unavailable"));
+
+        assertThat(learnerService.isLearningPlanCompatible(
+                LEARNER_ID, CURRICULUM_ID, LANDSCAPE_ID, created.blocks())).isTrue();
+        assertStatus(() -> service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY), HttpStatus.CONFLICT);
+        var status = service.getTodayStatus(LEARNER_ID, "de");
+        assertThat(status.evaluable()).isFalse();
+        assertThat(status.unavailablePlanCount()).isEqualTo(1);
+        assertThat(status.subjects()).singleElement().satisfies(subject -> {
+            assertThat(subject.periodGauge()).isNull();
+            assertThat(subject.balanceGauge()).isNull();
+            assertThat(subject.planCreditText()).isNull();
+        });
+        planRepository.flush();
+        assertThat(stored.getBlocksJson()).isEqualTo(originalBlocks);
+        assertThat(stored.getScopeFingerprint()).isEqualTo(originalFingerprint);
+        assertThat(stored.getRevision()).isEqualTo(created.revision());
+        assertThat(stored.getUpdatedAt()).isEqualTo(originalUpdatedAt);
     }
 
     @Test

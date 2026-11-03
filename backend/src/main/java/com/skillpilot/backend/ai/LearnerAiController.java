@@ -19,6 +19,7 @@ import com.skillpilot.backend.api.VerifiedRecallResultResponse;
 import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import com.skillpilot.backend.config.RequestLoggingFilter;
 import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.landscape.ExamTaskReadiness;
 import com.skillpilot.backend.service.ChatSessionService;
 import com.skillpilot.backend.service.LearnerService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -37,7 +38,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.extensions.Extension;
 import io.swagger.v3.oas.annotations.extensions.ExtensionProperty;
-import java.util.Locale;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -51,7 +51,6 @@ public class LearnerAiController {
 
     private final LearnerService learnerService;
     private final CoachToolFacade coachToolFacade;
-    private static final String IMAGE_PATH_PREFIX = "IMAGE_PATH: ";
 
     @Value("${skillpilot.public-base-url:https://skillpilot.com}")
     private String publicBaseUrl;
@@ -683,72 +682,7 @@ public class LearnerAiController {
     }
 
     private boolean isExamDataReadyForHardCheck(com.skillpilot.backend.landscape.ExamData exam) {
-        if (exam == null) {
-            return false;
-        }
-        if (hasBlockingReviewStatus(exam.getReviewStatus())) {
-            return false;
-        }
-        if (containsPlaceholderExamText(exam)) {
-            return false;
-        }
-        return hasScoringStructure(exam)
-                && exam.getTaskContent() != null
-                && !exam.getTaskContent().isBlank()
-                && exam.getSolutionContent() != null
-                && !exam.getSolutionContent().isBlank();
-    }
-
-    private boolean hasBlockingReviewStatus(String reviewStatus) {
-        if (reviewStatus == null || reviewStatus.isBlank()) {
-            return false;
-        }
-        String normalized = reviewStatus.trim().toLowerCase(Locale.ROOT);
-        return !"released".equals(normalized);
-    }
-
-    private boolean containsPlaceholderExamText(com.skillpilot.backend.landscape.ExamData exam) {
-        String task = normalizeForInspection(exam.getTaskContent());
-        String solution = normalizeForInspection(exam.getSolutionContent());
-        if (task.matches("^eine materialgestuetzte j\\d+[- ]uebungsaufgabe\\b.*")) {
-            return true;
-        }
-        if (task.matches("^eine integrative sek[- ]i[- ]abschlussaufgabe\\b.*")) {
-            return true;
-        }
-        if (task.contains("uebungsaufgabe verbindet") && !hasSubtaskMarkers(task)) {
-            return true;
-        }
-        return solution.startsWith("die loesung zeigt ")
-                && !hasSubtaskMarkers(task)
-                && !task.matches(".*\\b\\d+[,.]?\\d*\\b.*");
-    }
-
-    private boolean hasSubtaskMarkers(String normalizedTask) {
-        return normalizedTask.matches("(?s).*(?:\\b1\\.|\\ba\\)|\\baufgabe\\s+1\\b|\\bteilaufgabe\\b).*");
-    }
-
-    private String normalizeForInspection(String value) {
-        if (value == null) {
-            return "";
-        }
-        return value
-                .toLowerCase(Locale.ROOT)
-                .replace("ü", "ue")
-                .replace("ä", "ae")
-                .replace("ö", "oe")
-                .replace("ß", "ss")
-                .replaceAll("\\s+", " ")
-                .trim();
-    }
-
-    private boolean hasScoringStructure(com.skillpilot.backend.landscape.ExamData exam) {
-        com.skillpilot.backend.landscape.ExamData.Scoring scoring = exam.getScoring();
-        return scoring != null
-                && scoring.getMaxPoints() > 0
-                && scoring.getPassingPoints() > 0
-                && scoring.getSteps() != null
-                && !scoring.getSteps().isEmpty();
+        return ExamTaskReadiness.isReady(exam);
     }
 
     private String rewriteAssetLinks(String content, String assetBase) {
@@ -768,51 +702,7 @@ public class LearnerAiController {
     }
 
     private String normalizeTaskContentForAi(String goalId, String content) {
-        if (content == null || content.isBlank()) {
-            return content;
-        }
-        Pattern imagePattern = Pattern.compile("!\\[[^\\]]*\\]\\(([^)]+)\\)");
-        Matcher matcher = imagePattern.matcher(content);
-        String firstUrl = null;
-        StringBuffer sb = new StringBuffer();
-        while (matcher.find()) {
-            if (firstUrl == null) {
-                firstUrl = matcher.group(1);
-            }
-            matcher.appendReplacement(sb, "");
-        }
-        matcher.appendTail(sb);
-        String stripped = normalizeMathDelimitersForChat(sb.toString().replaceAll("(?m)^\\s*$\\n?", "").trim());
-        if (firstUrl == null || firstUrl.isBlank()) {
-            return stripped;
-        }
-        String relativePath = toRelativeAssetPath(firstUrl);
-        if (relativePath == null || relativePath.isBlank()) {
-            return stripped;
-        }
-        String normalized = IMAGE_PATH_PREFIX + relativePath + "\n\n" + stripped;
-        if ("bc60e300-96be-599a-89b6-8fcca380803d".equals(goalId)
-                || "68a262fc-43f4-5d23-af30-853870bfd45b".equals(goalId)) {
-            normalized = buildExamPackagedContent(relativePath, stripped);
-        }
-        return normalized;
-    }
-
-    private String buildExamPackagedContent(String imagePath, String body) {
-        String safeBody = body == null ? "" : body.trim();
-        String imageLine = (imagePath == null || imagePath.isBlank())
-                ? ""
-                : IMAGE_PATH_PREFIX + imagePath + "\n\n";
-        return imageLine
-                + "**Prüfungsmodus – Mathematik LK (Analysis)**\n\n"
-                + "Hinweis: Du bearbeitest jetzt eine prüfungsnahe Abituraufgabe.\n\n"
-                + "Arbeite selbstständig, strukturiert und rechne sauber.\n"
-                + "Ich gebe keine Hinweise während der Bearbeitung.\n\n"
-                + "---\n\n"
-                + safeBody + "\n\n"
-                + "---\n\n"
-                + "Bitte reiche deine vollständige Lösung in einer Nachricht ein (Text reicht, Skizze gern beschrieben).\n"
-                + "Wenn du abbrechen möchtest, sag einfach Bescheid.";
+        return TaskImageTransport.normalize(goalId, content, this::normalizeMathDelimitersForChat);
     }
 
     private String normalizeMathDelimitersForChat(String content) {
@@ -855,26 +745,6 @@ public class LearnerAiController {
         return sb.toString();
     }
 
-    private String toRelativeAssetPath(String url) {
-        if (url == null || url.isBlank()) {
-            return null;
-        }
-        String trimmed = url.trim();
-        if (trimmed.startsWith("/")) {
-            return trimmed;
-        }
-        try {
-            java.net.URI uri = java.net.URI.create(trimmed);
-            String path = uri.getPath();
-            if (path == null || path.isBlank()) {
-                return null;
-            }
-            String query = uri.getQuery();
-            return query == null || query.isBlank() ? path : path + "?" + query;
-        } catch (IllegalArgumentException ex) {
-            return null;
-        }
-    }
 
     private String resolveBaseUrl() {
         String baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();

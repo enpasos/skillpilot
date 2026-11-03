@@ -17,6 +17,7 @@ on:
       - 'scripts/*curriculum_package*'
       - 'scripts/*completion*'
       - 'docs/dev/assessment-gated-completion-implementation-plan.md'
+      - 'docs/qa-ci/status/curriculum-quality-status.json'
       - '.github/workflows/assessment-completion.yml'
       - '.github/actions/postgres-service/**'
       - '.github/actions/ubuntu-apt/**'
@@ -34,6 +35,7 @@ on:
       - 'scripts/*curriculum_package*'
       - 'scripts/*completion*'
       - 'docs/dev/assessment-gated-completion-implementation-plan.md'
+      - 'docs/qa-ci/status/curriculum-quality-status.json'
       - '.github/workflows/assessment-completion.yml'
       - '.github/actions/postgres-service/**'
       - '.github/actions/ubuntu-apt/**'
@@ -68,6 +70,8 @@ jobs:
             /.github/
             /app/
             /contracts/
+            /scripts/
+            /curricula/DE/Gymnasium/provenance/source-landscape-registry.json
             /LICENSES/
             /curricula/
             !/curricula/DE/Gymnasium/quality/
@@ -114,6 +118,115 @@ jobs:
           path: tmp/level-completion-browser/
           if-no-files-found: warn
           retention-days: 14
+
+  mathematics-integrity:
+    name: Mathematics curriculum integrity
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /.github/
+            /ai/
+            /app/
+            /backend/
+            /content/
+            /contracts/
+            /curricula/
+            !/curricula/DE/Gymnasium/quality/
+            !/curricula/DE/Gymnasium/visualizations/
+            /docs/qa-ci/status/curriculum-quality-status.json
+            /scripts/
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+      - uses: actions/setup-java@v5
+        with:
+          distribution: corretto
+          java-version-file: .java-version
+      - name: Use exact production Corretto build
+        run: |
+          set -euo pipefail
+          corretto_version="$(tr -d '[:space:]' < .corretto-version)"
+          install_dir="${RUNNER_TEMP}/amazon-corretto-${corretto_version}"
+          archive="${RUNNER_TEMP}/amazon-corretto-${corretto_version}-linux-x64.tar.gz"
+          curl -fsSL "https://corretto.aws/downloads/resources/${corretto_version}/amazon-corretto-${corretto_version}-linux-x64.tar.gz" -o "${archive}"
+          mkdir -p "${install_dir}"
+          tar -xzf "${archive}" --strip-components=1 -C "${install_dir}"
+          echo "JAVA_HOME=${install_dir}" >> "${GITHUB_ENV}"
+          echo "${install_dir}/bin" >> "${GITHUB_PATH}"
+          "${install_dir}/bin/java" -version
+      - uses: gradle/actions/setup-gradle@v4
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Restore every indexed corpus input omitted by sparse checkout
+        run: |
+          set -euo pipefail
+          python3 scripts/curriculum_completion_inputs.py --sparse-patterns | git sparse-checkout add --stdin
+      - name: Verify strict report evidence contracts
+        run: python3 scripts/test_curriculum_completion_integrity_report.py
+      - name: Audit every offered Mathematics scope with the full prerequisite context
+        working-directory: backend
+        # This tagged data method constructs backend objects without a Spring
+        # server, browser or database. Other protected subjects are unexamined.
+        run: >-
+          ./gradlew curriculumCompletionIntegrity --console=plain --rerun-tasks
+          -PcompletionIntegritySubject=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced
+          -x processResources -x generateClaudePluginPublication
+      - name: Require one executed corpus method and complete passing Mathematics evidence
+        if: always()
+        run: >-
+          python3 scripts/check_curriculum_completion_integrity_report.py
+          --subject=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced
+          --commit=${{ github.sha }}
+          --report=backend/build/reports/curriculum-completion-integrity/68a8ac50-f5f5-4e24-8aa9-5e408ca01ced/audit.json
+          --junit=backend/build/test-results/curriculumCompletionIntegrity/68a8ac50-f5f5-4e24-8aa9-5e408ca01ced/TEST-com.skillpilot.backend.completion.CurriculumCompletionIntegrityTest.xml
+      - name: Exercise the real full-Mathematics MCP assessment transaction
+        if: always()
+        working-directory: backend
+        # This positive flow is mandatory alongside the strict corpus. Known M0
+        # defects remain red; synthetic transport fixtures cannot replace it.
+        run: >-
+          ./gradlew test --console=plain --rerun-tasks
+          --tests 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1MathematicsCompletionIntegrationTest'
+          -x processResources -x generateClaudePluginPublication
+      - name: Require the executed positive real-Mathematics MCP flow
+        if: always()
+        run: |
+          python3 - <<'PY_MATH'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          name = 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1MathematicsCompletionIntegrationTest'
+          path = Path('backend/build/test-results/test') / f'TEST-{name}.xml'
+          if not path.is_file():
+              raise SystemExit('Missing mandatory real-Mathematics MCP report')
+          suite = ET.parse(path).getroot()
+          cases = suite.findall('testcase')
+          expected = {'failedAssessmentRetryAndConfirmedMasteryUseFreshCapabilitiesAndOneBinaryResult()'}
+          if (suite.get('name') != name or len(cases) != 1 or int(suite.get('tests', '0')) != 1
+                  or {case.get('name') for case in cases} != expected
+                  or any(int(suite.get(field, '0')) for field in ('skipped', 'failures', 'errors'))
+                  or any(suite.findall(f'.//{tag}') for tag in ('skipped', 'failure', 'error'))):
+              raise SystemExit('Real-Mathematics MCP flow must execute and pass without skips')
+          print('Real-Mathematics MCP assessment, persisted binary result and capability guards: executed')
+          PY_MATH
+      - name: Retain subject-scoped corpus and input evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: assessment-completion-mathematics-${{ github.sha }}-${{ github.run_id }}
+          path: |
+            backend/build/reports/curriculum-completion-integrity/68a8ac50-f5f5-4e24-8aa9-5e408ca01ced/
+            backend/build/test-results/curriculumCompletionIntegrity/68a8ac50-f5f5-4e24-8aa9-5e408ca01ced/
+            backend/build/reports/tests/curriculumCompletionIntegrity/68a8ac50-f5f5-4e24-8aa9-5e408ca01ced/
+            backend/build/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1MathematicsCompletionIntegrationTest.xml
+          if-no-files-found: error
+          retention-days: 30
 
   backend-and-postgres:
     name: Completion core, HTTP browser, sessions and PostgreSQL snapshots
@@ -172,6 +285,10 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
+      - name: Restore every indexed corpus input omitted by sparse checkout
+        run: |
+          set -euo pipefail
+          python3 scripts/curriculum_completion_inputs.py --sparse-patterns | git sparse-checkout add --stdin
       - name: Start digest-pinned disposable PostgreSQL 15
         timeout-minutes: 10
         uses: ./.github/actions/postgres-service
@@ -201,9 +318,12 @@ jobs:
           --tests 'com.skillpilot.backend.completion.CompletionWarmupRunnerTest'
           --tests 'com.skillpilot.backend.completion.LearningPlanCompletionProjectionTest'
           --tests 'com.skillpilot.backend.completion.AutomaticCompletionTest'
+          --tests 'com.skillpilot.backend.completion.CurriculumCompletionIntegrityTest'
+          --tests 'com.skillpilot.backend.completion.CurriculumCompletionSubjectSelectionTest'
           --tests 'com.skillpilot.backend.completion.AutomaticLearningPlanCompletionProjectionTest'
           --tests 'com.skillpilot.backend.completion.AutomaticCompletionApplicationServiceTest'
           --tests 'com.skillpilot.backend.ai.AssessmentShortcutDiscoveryTest'
+          --tests 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionChoicesTest'
           --tests 'com.skillpilot.backend.ai.CoachToolFacadeTest.automaticOverviewDoesNotPauseUnsupportedProvidersOrOptedOutOrdinaryLearning'
           --tests 'com.skillpilot.backend.ai.CoachToolFacadeTest.selectedAutomaticAndHistoricalRoutesStillRequireASupportedCoachSession'
           --tests 'com.skillpilot.backend.curriculumpackage.CompletionPackageLoaderTest'
@@ -252,9 +372,12 @@ jobs:
               'com.skillpilot.backend.completion.CompletionWarmupRunnerTest': 8,
               'com.skillpilot.backend.completion.LearningPlanCompletionProjectionTest': 8,
               'com.skillpilot.backend.completion.AutomaticCompletionTest': 12,
+              'com.skillpilot.backend.completion.CurriculumCompletionIntegrityTest': 9,
+              'com.skillpilot.backend.completion.CurriculumCompletionSubjectSelectionTest': 27,
               'com.skillpilot.backend.completion.AutomaticLearningPlanCompletionProjectionTest': 7,
               'com.skillpilot.backend.completion.AutomaticCompletionApplicationServiceTest': 6,
               'com.skillpilot.backend.ai.AssessmentShortcutDiscoveryTest': 6,
+              'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionChoicesTest': 2,
               'com.skillpilot.backend.ai.CoachToolFacadeTest': 2,
               'com.skillpilot.backend.curriculumpackage.CompletionPackageLoaderTest': 6,
               'com.skillpilot.backend.service.AssessmentCompletionIntegrationTest': 35,
@@ -271,7 +394,7 @@ jobs:
               'com.skillpilot.backend.service.AssessmentCompletionRestartIntegrationTest': 1,
               'com.skillpilot.backend.service.AssessmentCompletionBackendBrowserIntegrationTest': 4,
               'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionProjectionTest': 7,
-              'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest': 1,
+              'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest': 7,
               'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionContractRegistryTest': 5,
               'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionReceiptCapabilityTest': 2,
               'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CapabilityServiceTest': 16,
@@ -293,6 +416,20 @@ jobs:
                   raise SystemExit(f'Skipped or failed suite: {name}')
               if any(suite.findall(f'.//{tag}') for tag in ('skipped', 'failure', 'error')):
                   raise SystemExit(f'Skipped or failed test case: {name}')
+              if name == 'com.skillpilot.backend.completion.CurriculumCompletionIntegrityTest':
+                  expected = {
+                      'visibleHierarchyCheckRetainsDistinctPathsAndIgnoresHiddenAndOpaqueReferences()',
+                      'duplicateStructureIdentityFailsWithoutDuplicateGoalsIncludingHiddenAndEmptyWrappers()',
+                      'distinctStructureIdsMayShareLabelsAndIndependentViewsMayReuseIds()',
+                      'failedScopeCountCountsEachOfferedRowOnceAndKeepsRawDiagnosticsSeparate()',
+                      'ordinaryTerminalGoalIsADefectEvenWhenAnAssessmentExistsElsewhere()',
+                      'memoryEndpointProtectsItsWholeRequiredRouteWithoutAnExam()',
+                      'hiddenMemorySupportIsProtectedWithoutCreatingAnIndependentObligation()',
+                      'targetMembershipDoesNotMakeAnAssessmentTaskStartable()',
+                      'semanticAssessmentWithDraftTaskFailsTheSameReadinessContract()',
+                  }
+                  if {case.get('name') for case in cases} != expected:
+                      raise SystemExit('All nine semantic integrity fixtures must execute in the ordinary unit job')
               print(f'{name}: {len(cases)} executed tests, no skips or failures')
           PY
       - name: Stop disposable PostgreSQL

@@ -147,3 +147,15 @@ export function getNextVisibleLearnerGoalSelection({
 
   return null
 }
+
+/** Required explicit choices take precedence over a concurrent raw frontier. */
+export function getRequiredGoalSelectionOptions<T>(state: {
+  frontier?: T[] | null
+  stateMachine?: { requiredAction?: string | null; goalOptions?: T[] | null } | null
+}): T[] {
+  if (state.stateMachine?.requiredAction === 'setActiveGoal' && Array.isArray(state.stateMachine.goalOptions)) {
+    return state.stateMachine.goalOptions
+  }
+  if (Array.isArray(state.frontier)) return state.frontier
+  return state.stateMachine?.goalOptions ?? []
+}

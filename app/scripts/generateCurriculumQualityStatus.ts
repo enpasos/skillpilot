@@ -197,7 +197,59 @@ function normalizeMappingPipelineStep(value: unknown): MappingPipelineStep | nul
   }
 }
 
-function normalizeSourceExtractionPipelineSteps(
+/** Only final mapping dispositions count as a source-goal review. */
+export function summarizeSourceMappingReviewCoverage(
+  sourceGoalIds: ReadonlySet<string>,
+  mappedSourceGoalIds: ReadonlySet<string>,
+  decisions: readonly SourceMappingReviewDecision[],
+): {
+  reviewedMappedSourceGoals: number
+  explicitNeedsCanonicalGoal: number
+  unreviewedSourceGoals: number
+} {
+  const mappedDecisions = new Set<string>()
+  const canonicalGaps = new Set<string>()
+  const unreviewedDecisions = new Set<string>()
+  for (const decision of decisions) {
+    const sourceGoalId = decision.sourceGoalId
+    if (!sourceGoalId || !sourceGoalIds.has(sourceGoalId)) continue
+    const disposition = typeof decision.decision === 'string' ? decision.decision.trim() : ''
+    if (disposition === 'mapped') mappedDecisions.add(sourceGoalId)
+    else if (disposition === 'needsCanonicalGoal' || disposition === 'needs_canonical_goal') canonicalGaps.add(sourceGoalId)
+    else unreviewedDecisions.add(sourceGoalId)
+  }
+  const reviewedMapped = [...mappedDecisions].filter((sourceGoalId) =>
+    mappedSourceGoalIds.has(sourceGoalId)
+    && !canonicalGaps.has(sourceGoalId)
+    && !unreviewedDecisions.has(sourceGoalId))
+  const unreviewed = [...sourceGoalIds].filter((sourceGoalId) =>
+    unreviewedDecisions.has(sourceGoalId)
+    || (!mappedDecisions.has(sourceGoalId) && !canonicalGaps.has(sourceGoalId)))
+  return {
+    reviewedMappedSourceGoals: reviewedMapped.length,
+    explicitNeedsCanonicalGoal: canonicalGaps.size,
+    unreviewedSourceGoals: unreviewed.length,
+  }
+}
+
+export function summarizeSourceMappingReferenceIssues(
+  sourceGoalIds: ReadonlySet<string>,
+  knownCanonicalGoalIds: ReadonlySet<string>,
+  mappings: readonly GoalMappingEntry[],
+  decisions: readonly SourceMappingReviewDecision[],
+): { extraMappedGoals: number; extraDecisionGoals: number; invalidMappedTargetGoals: number } {
+  return {
+    extraMappedGoals: new Set(mappings
+      .map(({ legacyGoalId }) => legacyGoalId)
+      .filter((id) => typeof id === 'string' && !sourceGoalIds.has(id))).size,
+    extraDecisionGoals: decisions.filter(({ sourceGoalId }) =>
+      typeof sourceGoalId === 'string' && !sourceGoalIds.has(sourceGoalId)).length,
+    invalidMappedTargetGoals: mappings.filter(({ canonicalGoalId }) =>
+      typeof canonicalGoalId !== 'string' || !knownCanonicalGoalIds.has(canonicalGoalId)).length,
+  }
+}
+
+export function normalizeSourceExtractionPipelineSteps(
   steps: MappingPipelineStep[],
   coverage: {
     totalSourceGoals: number
@@ -208,6 +260,7 @@ function normalizeSourceExtractionPipelineSteps(
     unreviewedSourceGoals: number
     hasM3ReviewFile: boolean
     extraDecisionGoals: number
+    extraMappedGoals: number
     invalidMappedTargetGoals: number
   },
 ): MappingPipelineStep[] {
@@ -220,6 +273,7 @@ function normalizeSourceExtractionPipelineSteps(
     unreviewedSourceGoals,
     hasM3ReviewFile,
     extraDecisionGoals,
+    extraMappedGoals,
     invalidMappedTargetGoals,
   } = coverage
 
@@ -232,6 +286,9 @@ function normalizeSourceExtractionPipelineSteps(
       && fullyReviewed
       && fullyCovered
       && explicitNeedsCanonicalGoal <= 0
+      && extraDecisionGoals === 0
+      && extraMappedGoals === 0
+      && invalidMappedTargetGoals === 0
     const m3Complete = fachlichCovered
 
     const checks = step.checks
@@ -250,9 +307,10 @@ function normalizeSourceExtractionPipelineSteps(
         if (check.id === 'm3-review-decisions-reference-source-goals') {
           return {
             ...check,
-            passed: hasM3ReviewFile && extraDecisionGoals === 0,
+            label: 'Mapping- und Review-Referenzen verwenden bekannte Source-Ziele',
+            passed: hasM3ReviewFile && extraDecisionGoals === 0 && extraMappedGoals === 0,
             details: hasM3ReviewFile
-              ? `Review-Entscheidungen mit unbekannter Source-ID: ${extraDecisionGoals}.`
+              ? `Unbekannte Source-IDs: ${extraDecisionGoals} Review-Entscheidungen, ${extraMappedGoals} Mapping-Referenzen.`
               : check.details,
           }
         }
@@ -4893,21 +4951,12 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
           typeof mapping.legacyGoalId === 'string' && mapping.legacyGoalId.trim().length > 0)
       const decisionEntries = mappingFilesForExtraction
         .flatMap((mappingFile) => mappingFile.decisions ?? [])
-        .filter((decision): decision is SourceMappingReviewDecision & { sourceGoalId: string; decision: string } =>
+        .filter((decision): decision is SourceMappingReviewDecision & { sourceGoalId: string } =>
           typeof decision.sourceGoalId === 'string'
-          && decision.sourceGoalId.trim().length > 0
-          && typeof decision.decision === 'string'
-          && decision.decision.trim().length > 0)
+          && decision.sourceGoalId.trim().length > 0)
       const mappedSourceGoalIds = new Set(mappingEntries.map((mapping) => mapping.legacyGoalId))
       const validMappedSourceGoalIds = new Set(Array.from(mappedSourceGoalIds).filter((sourceGoalId) => sourceGoalIds.has(sourceGoalId)))
-      const extraMappedGoalIds = Array.from(mappedSourceGoalIds).filter((sourceGoalId) => !sourceGoalIds.has(sourceGoalId))
-      const extraDecisionGoalIds = decisionEntries
-        .map((decision) => decision.sourceGoalId)
-        .filter((sourceGoalId) => !sourceGoalIds.has(sourceGoalId))
-      const invalidMappedTargetGoalIds = mappingEntries
-        .map((mapping) => mapping.canonicalGoalId)
-        .filter((canonicalGoalId): canonicalGoalId is string => typeof canonicalGoalId === 'string' && canonicalGoalId.trim().length > 0)
-        .filter((canonicalGoalId) => !knownCanonicalGoalIds.has(canonicalGoalId))
+      const referenceIssues = summarizeSourceMappingReferenceIssues(sourceGoalIds, knownCanonicalGoalIds, mappingEntries, decisionEntries)
       const matchTypesBySourceGoalId = new Map<string, Set<string>>()
       mappingEntries.forEach((mapping) => {
         if (!sourceGoalIds.has(mapping.legacyGoalId)) return
@@ -4925,29 +4974,14 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
       }).length
       const otherMappings = Math.max(0, validMappedSourceGoalIds.size - exactMappings - partialMappings)
       const unmappedSourceGoals = Math.max(0, sourceGoalIds.size - validMappedSourceGoalIds.size)
-      const reviewedSourceGoalIds = new Set(
-        decisionEntries
-          .map((decision) => decision.sourceGoalId)
-          .filter((sourceGoalId) => sourceGoalIds.has(sourceGoalId)),
-      )
-      const reviewedMappedSourceGoalIds = new Set(
-        Array.from(reviewedSourceGoalIds).filter((sourceGoalId) => validMappedSourceGoalIds.has(sourceGoalId)),
-      )
-      const explicitNeedsCanonicalGoal = decisionEntries.filter((decision) =>
-        sourceGoalIds.has(decision.sourceGoalId)
-        && decision.decision === 'needsCanonicalGoal'
-        && !validMappedSourceGoalIds.has(decision.sourceGoalId)).length
-      const unreviewedSourceGoals = Math.max(0, sourceGoalIds.size - reviewedSourceGoalIds.size)
+      const reviewCoverage = summarizeSourceMappingReviewCoverage(sourceGoalIds, validMappedSourceGoalIds, decisionEntries)
       const normalizedSteps = normalizeSourceExtractionPipelineSteps(steps, {
         totalSourceGoals: sourceGoalIds.size,
         mappedSourceGoals: validMappedSourceGoalIds.size,
-        reviewedMappedSourceGoals: reviewedMappedSourceGoalIds.size,
+        ...reviewCoverage,
         unmappedSourceGoals,
-        explicitNeedsCanonicalGoal,
-        unreviewedSourceGoals,
         hasM3ReviewFile: mappingFilesForExtraction.length > 0,
-        extraDecisionGoals: extraDecisionGoalIds.length,
-        invalidMappedTargetGoals: invalidMappedTargetGoalIds.length,
+        ...referenceIssues,
       })
       const completedSteps = normalizedSteps.filter((step) => step.status === 'complete').length
       const currentStep = completedSteps === normalizedSteps.length
@@ -4972,7 +5006,7 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
         passages: Array.isArray(extraction.passages) ? extraction.passages.length : 0,
         mappedSourceGoals: validMappedSourceGoalIds.size,
         unmappedSourceGoals,
-        extraMappedGoals: extraMappedGoalIds.length,
+        extraMappedGoals: referenceIssues.extraMappedGoals,
         exactMappings,
         partialMappings,
         otherMappings,

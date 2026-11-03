@@ -54,6 +54,86 @@ This is the single source of truth for algorithmic graph validation in CI.
 | `GVR-015` | Reviewed orientation outlooks have bounded bilingual paths with in-stage `curricularArea` roots plus atomic `curricularAtomic` entry goals and milestones. Every entry directly requires the `orientation` anchor; `contains` proves path membership, while a direct, stage-scoped atomic `requires` route proves downstream sequencing. | Canonical DE Gymnasium mathematics, independently for Sek I and Sek II | unconditional `error` |
 | `GVR-016` | Table-like blocks in learner-facing exam Markdown must use a valid GFM delimiter row and a consistent column count. | All `examData.taskContent*` and `examData.solutionContent*` fields | unconditional `error` |
 
+GVR-002 uses the `reference-phase-metadata` profile only for landscape
+`68a8ac50-f5f5-4e24-8aa9-5e408ca01ced` together with framework
+`canonical-gymnasium-math`. Its mixed jurisdiction phase labels are reference
+metadata and do not establish a global first-acquisition order. Every other
+ID/framework combination retains the strict direct and inherited legacy phase
+comparison. Allowed phase values, reference integrity, all DAG checks and
+GVR-012 remain enforced. This profile grants no source, stage, target-selection
+or workload-feasibility approval.
+
+## Complete-curriculum completion integrity (backend)
+
+`backend/src/test/java/com/skillpilot/backend/completion/CurriculumCompletionIntegrityTest.java`
+checks the actual backend target projections in addition to the graph-only
+rules above. From `backend/`, run `./gradlew curriculumCompletionIntegrity`
+for the entire protected inventory, or add
+`-PcompletionIntegritySubject=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced`
+for the complete Mathematics offering. The same strict rules apply in either
+mode; only the outer subject selection changes. The ordinary `test` task
+retains the five semantic fixtures and the selector regressions, while the
+dedicated task executes the actual curriculum corpus method.
+
+The independent structural oracle starts at selected protected targets and
+retains the full prerequisite context. Protected support is classified and
+reported, but is not an additional independent completion obligation. Selected
+assessment endpoints must also satisfy the shared runtime task/solution/rubric
+readiness contract; membership in the target set alone is insufficient.
+Schema-3 reports distinguish uncovered targets, unavailable assessment tasks and
+informative protected support. A static authoring fault never creates implicit
+credit, while explicitly mastered known targets retain their explicit result.
+
+The assessment-completion workflow has a required Mathematics data job. It
+requires complete current offering coverage, exact input and commit bindings,
+one executed corpus method with zero skips, and zero subject-data failures.
+Each subsequently corrected subject receives the same mandatory check. Existing
+software, security and maturity gates remain in place. Open defects in later
+subjects remain visible in the full audit and do not imply acceptance of them.
+
+Reports are separate under
+`backend/build/reports/curriculum-completion-integrity/{subject-ID|all}/`,
+with `audit.json` and `input-manifest.json`; matching JUnit evidence is under
+`backend/build/test-results/curriculumCompletionIntegrity/{subject-ID|all}/`.
+A selected-subject report explicitly identifies unexamined protected subjects
+and never overwrites the historical root-level report. The strict report
+validator is `scripts/check_curriculum_completion_integrity_report.py`.
+
+The binding 1 November 2026 correction protects both assessment and memory
+endpoints. With empty mastery, every offered atomic target must be reachable
+by following effective direct `requires` from an assessment or memory goal.
+An ordinary open endpoint, or an entire disconnected preparation branch, is
+an authoring defect. Adding an unrelated exam does not repair it. The test
+uses the real backend scope and prerequisite compiler, then computes
+reachability independently of the completion evaluator.
+
+The complete audit inventory includes current M7 subjects and the durable M7 maturity
+floors. A subject selector is validated against that complete inventory before
+any data is filtered; unknown or explicitly empty selectors fail. Every offered
+jurisdiction, stage (including `CrossStage`), duration
+model and course profile (including `GK+LK`) participates. Authoritative
+`goalEntry` projections that make a canonical cluster an atomic target are
+included. Hidden and cross-subject requirements remain in the complete
+context. Raw canonical unions are reported separately, because nonoffered
+historical or technical nodes alone do not establish a defect in an offered
+curriculum.
+
+A separate liveness check rejects protected context goals outside the
+startable target projection. Such a hidden exam or memory goal cannot be
+satisfied by a fresh learner under the current authorization rules. Existing
+individual mastery does not prove that an offering is generally usable, and
+there is no implemented entry-basis contract that supplies these outcomes.
+Repairs must correct the authored scope or requirements; they must not infer
+mastery or widen enrollment during evaluation.
+
+This gate complements `GVR-012` and the configured CQR route profiles: passing
+a selected phase/route subset does not prove complete offering coverage.
+Neither a fixed failure allowance nor an ordinary-goal fallback anchor can
+satisfy it. Runtime evaluation suppresses implicit credit when the structural
+coverage check fails, while authorized learning and exam starts remain
+available. Content, source, assessment and M7 evidence remain separate required
+checks; a reachability pass does not certify the task or its grading rubric.
+
 ## Core validator checks (always active, fail CI)
 
 These checks are already implemented and treated as `error`:
@@ -175,7 +255,7 @@ Current stable finding families:
 | `CPV-101` | A structure node label is still too generic to be review-safe. | `warning` |
 | `CPV-102` | A referenced canonical subtree root still looks phase- or state-specific by title. | `warning` |
 | `CPV-210` | A canonical Gymnasium mathematics Sek-I learner-facing view does not expose the reviewed motivation anchor. | `error` |
-| `CPV-211` | A canonical Gymnasium mathematics Sek-I learner-facing view does not expose the required year exam folders or their individual task nodes. | `error` |
+| `CPV-211` | A canonical Gymnasium mathematics Sek-I learner-facing view omits required individual tasks from an expected exam family. Exact tasks may appear under authored headings; their canonical navigation folder is not an additional obligation. Explicit scope and support-only exclusions remain checked. | `error` |
 | `CPV-212` | The canonical Gymnasium mathematics Sek-I exam folder structure is malformed: missing year folder, non-atomic task, missing exam data, cluster prerequisite, duplicate task, or stale aggregate terminal endpoint. | `error` |
 | `CPV-213` | A canonical Gymnasium mathematics Sek-I learner-facing view still exposes the legacy `Übungen Sekundarstufe I` aggregate branch. | `error` |
 | `CPV-214` | A canonical Gymnasium mathematics Sek-II or cross-stage learner-facing view does not expose the reviewed Sek-II motivation anchor. | `error` |
@@ -281,7 +361,7 @@ Interpretation:
 - It proves route coverage on the direct atomic prerequisite layer. Effective cluster inheritance is deliberately insufficient.
 - The proof graph is stage-local. Cross-stage prerequisites may remain explicit support requirements, but they cannot be used to manufacture the stage's motivation-to-terminal proof.
 - Memory nodes are optional support nodes, not mandatory route checkpoints. They remain governed by the separate memory-card review. Making every exam depend on a memory deck would incorrectly make memorization compulsory.
-- A reviewed memory node may occur inside a direct route and then counts as part of that route. Memory nodes that are not route prerequisites remain optional side support and are traced by `CQR-302`, rather than being forced into every assessment chain.
+- A reviewed memory node may occur inside a direct route and then counts as part of that route. Memory nodes that are not prerequisites of other goals need not be inserted into every assessment chain. If a memory goal is itself selected as a Personal Curriculum target, it remains an explicit completion obligation under the 1 November 2026 rule and its recall contract; `CQR-302` traces its separate content review.
 - Canonical route coverage alone does not certify a narrower learner-facing composition view. Every direct prerequisite of a visible target must also be present in that projection as `target` or explicitly authored `prerequisiteOnly`; the runtime blocks a target when a direct canonical prerequisite is absent. The reviewed Hessen Sek-II mathematics LK view has a complete-closure regression for this contract.
 - For canonical Gymnasium mathematics Sek I, the terminal autonomy endpoints are the individual year-level exam tasks. Do not reintroduce a separate `Sek-I-Abschlussaufgaben Mathematik` capstone or expose an aggregate `Übungen Sekundarstufe I` learner-facing branch as the ordinary route endpoint.
 - Sek-I mathematics exam tasks should use coherent, age-appropriate contexts that carry the mathematics. Avoid copied umbrella scenarios and keep each task's `requires` / `examData.coveredGoalIds` aligned with the goals actually assessed.

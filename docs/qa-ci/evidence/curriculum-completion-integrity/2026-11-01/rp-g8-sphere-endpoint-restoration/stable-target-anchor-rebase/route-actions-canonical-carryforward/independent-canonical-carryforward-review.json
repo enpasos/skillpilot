@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 2,
+  "reviewType": "INDEPENDENT_RP_EXISTING_V2_CANONICAL_BINDING_CARRYFORWARD",
+  "verdict": "PASS",
+  "contentVerdict": "PASS",
+  "placementVerdict": "PASS_EXACT_UNCHANGED_RP_TASK_OPERATIONS_AND_SUPPORT_CANONICAL_BINDING_CARRYFORWARD",
+  "verdictScope": "Only the canonical-file and native-evidence binding of the already independently approved RP V2 selection. Existing content and placement approval carried forward by exact equality, not reauthored. No final V4 integration approval.",
+  "reviewerAgent": "/root/astra_fundamental_approach_recheck",
+  "authorAgent": "/root/sol_stable_math_targets",
+  "authorIndependent": true,
+  "humanApproval": false,
+  "reviewDate": "2026-11-01",
+  "approvedViewIds": [
+    "de-rp-gym-math-gk-g8",
+    "de-rp-gym-math-lk-g8",
+    "de-rp-gym-seki-math-g8"
+  ],
+  "approvedTaskGoalIds": [
+    "64f37348-20f7-55b1-82a8-8fc388087577",
+    "926d0551-4537-569e-b6ad-fc33bb17546e"
+  ],
+  "approvedReferenceCount": 6,
+  "inputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "6c65ba8929bbc56dc2880201ec052674680f9a6f33a9c0e4afe57f83cfc5b348"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/route-actions-canonical-carryforward/candidate-operations.json",
+      "sha256": "c5552e49041b91c7a3b06ebc3c950e9e325ae8d3955cfcc42c8461ab28e5446e"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/route-actions-canonical-carryforward/native-task-support-context.json",
+      "sha256": "b0c7638d093d4b45d02f3ce7078ae6fe07f8be1ebd16833b4f6a0b83c4a8299a"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/independent-anchor-rebase-review.json",
+      "sha256": "714382a3cf96db04681b18e207b78e20f5de827702d3c77ff1e5fbb3f4ab14f0"
+    }
+  ],
+  "historicalReviewReceipt": {
+    "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/independent-anchor-rebase-review.json",
+    "sha256": "714382a3cf96db04681b18e207b78e20f5de827702d3c77ff1e5fbb3f4ab14f0"
+  },
+  "reviewedPendingSelection": {
+    "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/rp-g8-sphere-routes-v1/composition-selection.route-actions-carryforward.json",
+    "sha256": "a55b98d77a4b1b077e900641764c257f1da8ee0d47c123c63262025d3d1ba53a"
+  },
+  "independentChecks": {
+    "twoWholeTaskObjectsEqualRoot": true,
+    "threeOperationsScopesYearsSlotsWrappersBeforeAndAfterAnchorsEqualRoot": true,
+    "directRequiresCoverageAndNewTargetIdsUnchanged": true,
+    "expandedSupportComputedIndependentlyFromRequiresContainsAndAllCanonicalAncestors": true,
+    "eachTaskSupportCount": 42,
+    "supportUnionCount": 43,
+    "allSupportWholeGoalsEqualRoot": true,
+    "changedWholeGoalsInRPSupportContext": 0,
+    "nativeFreshRevalidationMatchesExactSupportSets": true,
+    "historicalRPFilesByteEqual": 11,
+    "supportOnly1a25NotPromotedByThisChange": true,
+    "unknownOrUnreachableContextNotAccepted": "Existing unchanged V2 loader recomputes exact support equality; this review changes no guard."
+  },
+  "allowedFinalBindingOnly": [
+    "selection.status: pending-independent-review -> independent-ai-reviewed",
+    "selection.reviewReceipt.sha256 -> SHA256 of this receipt",
+    "registry.selections[matched] path/hash -> this reviewed carryforward selection",
+    "stage policy sourceBindings entry for the existing RP registry -> its finalized hash"
+  ],
+  "boundaries": [
+    "No change of task objects, sources, target selection, prerequisites, coverage, presentation parents, mastery or learner data.",
+    "The previous native receipt remains immutable historical evidence; fresh author-native support is separately identified, and the support sets were independently recomputed here.",
+    "Actual producer materialization and byte freeze are still required before the separate V4 integration receipt.",
+    "No actual154, M7, CI, release, host or deployment acceptance."
+  ]
+}
