@@ -1,6 +1,7 @@
 package com.skillpilot.backend.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -39,6 +40,8 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -60,13 +63,13 @@ import java.nio.file.attribute.PosixFilePermissions;
 @EnabledIfEnvironmentVariable(named = "SKILLPILOT_COMPLETION_BACKEND_BROWSER", matches = "true")
 class AssessmentCompletionBackendBrowserIntegrationTest {
     private static final String PROFILE = "automatic:personal-curriculum";
-    // The real 916-target / 139-assessment scope measured 175,890 bytes on
-    // 2026-10-31. 256 KiB leaves about 49% reserve while retaining a fixed gate.
+    // This synthetic 916-target / 139-assessment load fixture retains the fixed
+    // 256 KiB transport budget; its measurements do not describe real Mathematics.
     private static final int COMPLETION_PAYLOAD_BUDGET = 256 * 1024;
-    private static final String ROOT = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
-    private static final String MATH = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
-    private static final String PREPARATION = "3016ec37-1c2e-47db-83f5-e767923bc97e";
-    private static final String EXAM = "e98672c6-871a-5d0b-889c-5afc51040f0d";
+    private static final String ROOT = CompletionTransportTestCurriculum.ROOT;
+    private static final String MATH = ROOT;
+    private static final String PREPARATION = CompletionTransportTestCurriculum.PREPARATION;
+    private static final String EXAM = CompletionTransportTestCurriculum.EXAM;
     @LocalServerPort int port;
     @Autowired LearnerRepository learners;
     @Autowired PlannedGoalRepository focus;
@@ -76,6 +79,11 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
     @Autowired ClaudeV1CompletionContractRegistry completionContract;
     @Autowired ClaudeV1McpContractAdapter adapter;
     @Autowired LearnerService learnerService;
+
+    @DynamicPropertySource
+    static void isolatedCurriculum(DynamicPropertyRegistry properties) {
+        properties.add("skillpilot.landscapes.directory", () -> CompletionTransportTestCurriculum.directory().toString());
+    }
 
     @Test void directHttpLaunchUsesThePublishedAssessmentWithoutAProfileSelectionWrite() throws Exception {
         String id = createSyntheticLearner();
@@ -90,7 +98,8 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
             assertThat(preview.hasNonNull("navigationIntent")).isFalse();
             JsonNode option = java.util.stream.StreamSupport.stream(preview.path("profileOptions").spliterator(), false)
                     .filter(entry -> PROFILE.equals(entry.path("profileId").asText())).findFirst().orElseThrow();
-            assertThat(option.path("assessments").size()).isGreaterThan(24);
+            assertThat(preview.path("targetCount").asInt()).isEqualTo(CompletionTransportTestCurriculum.TARGET_COUNT);
+            assertThat(option.path("assessments").size()).isEqualTo(CompletionTransportTestCurriculum.ASSESSMENT_COUNT).isGreaterThan(24);
             JsonNode assessment = java.util.stream.StreamSupport.stream(option.path("assessments").spliterator(), false)
                     .filter(entry -> EXAM.equals(entry.path("goalId").asText())).findFirst().orElseThrow();
             assertThat(assessment.path("startAvailable").asBoolean()).isTrue();
@@ -247,9 +256,9 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
             report.put("transport", "real-loopback-http");
             report.put("database", "isolated H2, ordinary production repositories; PostgreSQL snapshot semantics tested separately");
             report.put("method", "3 warmups then 30 sequential GET /state requests per condition, automatic overview then explicit full-curriculum route, same learner/focus, autoPilot=false, strictMode=true; no network TLS");
-            report.put("limitations", "One local process and one full canonical Mathematics Personal Curriculum; order/JIT/GC effects remain. Difference of p95 values is observational, not a paired causal estimate. No host acceptance or production capacity claim.");
-            report.put("learnerSetup", Map.of("root", ROOT, "subject", MATH, "region", "DE-HE", "stage", "CrossStage",
-                    "durationModel", "G9", "courseProfile", "GK+LK", "focus", List.of(PREPARATION), "masteryRows", 0));
+            report.put("limitations", "One local process and a synthetic 916-target / 139-assessment Personal Curriculum; order/JIT/GC effects remain. Difference of p95 values is observational, not a paired causal estimate. No host acceptance or production capacity claim.");
+            report.put("learnerSetup", Map.of("root", ROOT, "subject", MATH, "syntheticCurriculum", true, "stage", "CrossStage",
+                    "targetFixtureSize", CompletionTransportTestCurriculum.TARGET_COUNT, "assessmentFixtureSize", CompletionTransportTestCurriculum.ASSESSMENT_COUNT, "focus", List.of(PREPARATION), "masteryRows", 0));
             report.put("profileId", last.path("levelCompletion").path("profileId").asText());
             report.put("profileRevision", last.path("levelCompletion").path("profileRevision").asText());
             report.put("curriculumGeneration", last.path("levelCompletion").path("curriculumGeneration").asText());
@@ -287,6 +296,167 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
         assertThat(mastery.findByLearner_SkillpilotId(id)).isEmpty();
         assertThat(focus.findByLearner_SkillpilotId(id)).extracting(PlannedGoal::getGoalId).containsExactly(PREPARATION);
         assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM claude_v1_learning_session WHERE learner_id = ?", Integer.class, id)).isZero();
+    }
+
+    @Test void aKnownUncoveredTargetInARealCurriculumCopyKeepsOrdinaryAndBoundAssessmentAccess(
+            @org.junit.jupiter.api.io.TempDir Path temporary) throws Exception {
+        String realRoot = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
+        String realMath = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
+        String preparation = "3016ec37-1c2e-47db-83f5-e767923bc97e";
+        String exam = "e98672c6-871a-5d0b-889c-5afc51040f0d";
+        Path original = Path.of("../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json");
+        byte[] originalBytes = Files.readAllBytes(original);
+        Path copy = CompletionTransportTestCurriculum.writeFaultedRealCopy(Path.of("../curricula"), temporary.resolve("curricula"));
+        var application = new org.springframework.boot.SpringApplication(com.skillpilot.backend.SkillpilotApplication.class);
+        application.setAdditionalProfiles("test"); application.setRegisterShutdownHook(false);
+        try (var context = application.run("--server.address=127.0.0.1", "--server.port=0",
+                "--skillpilot.landscapes.directory=" + copy.toAbsolutePath(), "--skillpilot.curriculum.source=repository",
+                "--" + ClaudeV1TestProperties.ENABLED, "--" + ClaudeV1TestProperties.SIGNING_SECRET,
+                "--" + ClaudeV1TestProperties.CAPABILITY_SECRET, "--" + ClaudeV1TestProperties.BETA_DISABLED,
+                "--spring.datasource.url=jdbc:h2:mem:completion-invalid-copy-" + UUID.randomUUID()
+                        + ";DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=VALUE",
+                "--spring.jpa.show-sql=false", "--spring.main.banner-mode=off", "--logging.level.root=WARN")) {
+            var service = context.getBean(LearnerService.class);
+            var repository = context.getBean(LearnerRepository.class);
+            var resultRows = context.getBean(MasteryRepository.class);
+            var planned = context.getBean(PlannedGoalRepository.class);
+            var sessionService = context.getBean(com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionService.class);
+            var sessionRows = context.getBean(com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1LearningSessionRepository.class);
+            var tokens = context.getBean(com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1SessionTokenCodec.class);
+            String config = mapper.writeValueAsString(Map.of(
+                    realRoot, Map.of("selected", true, "filterId", "DE-HE", "stage", "CrossStage", "durationModel", "G9"),
+                    realMath, Map.of("selected", true, "filterId", "GK+LK"),
+                    "__skillpilot_stage_scope_sek1__", Map.of("selected", true),
+                    "__skillpilot_stage_scope_sek2__", Map.of("selected", true),
+                    CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY, Map.of(
+                            CurriculumPersonalizationPlanner.ROOT_LANDSCAPE_ID_KEY, realRoot,
+                            CurriculumPersonalizationPlanner.COMPLETED_OPTION_IDS_KEY, List.of(),
+                            CurriculumPersonalizationPlanner.MIGRATION_COMPLETED_KEY, true)));
+            List<String> learnerIds = new ArrayList<>();
+            for (int index = 0; index < 2; index++) {
+                Learner learner = new Learner(); String id = "completion-browser-" + UUID.randomUUID();
+                learner.setSkillpilotId(id); learner.setSelectedCurriculum(realRoot); learner.setPersonalCurriculum(config);
+                learner.setAutoPilot(false); learner.setStrictMode(false); learner.setFollowLearningPlans(false);
+                learner = repository.saveAndFlush(learner); planned.saveAndFlush(new PlannedGoal(learner, preparation));
+                learnerIds.add(id);
+            }
+            String id = learnerIds.getFirst(), peer = learnerIds.getLast();
+            var inputs = service.getLearningPlanCompletionContext(id);
+            assertThat(inputs.level2TargetGoalIds()).contains(CompletionTransportTestCurriculum.UNCOVERED);
+            var atoms = inputs.level2TargetGoalIds().stream().filter(goal -> {
+                var definition = inputs.canonicalGoals().get(goal);
+                return definition.getContains() == null || definition.getContains().isEmpty();
+            }).collect(java.util.stream.Collectors.toSet());
+            var graph = new com.skillpilot.backend.completion.CompletionProfileCompiler().compileAutomatic(
+                    inputs.canonicalGoals(), atoms, inputs.level2TargetGoalIds(), inputs.generation());
+            assertThat(com.skillpilot.backend.completion.AutomaticCompletionIntegrity.uncoveredTargets(graph))
+                    .contains(CompletionTransportTestCurriculum.UNCOVERED);
+            assertThatThrownBy(() -> new com.skillpilot.backend.completion.CompletionEvaluator().evaluateAutomatic(graph, java.util.Set.of()))
+                    .isInstanceOfSatisfying(com.skillpilot.backend.completion.CompletionCompilationException.class,
+                            failure -> assertThat(failure.code()).isEqualTo("UNCOVERED_COMPLETION_TARGETS"));
+            assertInvalidCompletion(service.getLearnerState(id).levelCompletion());
+            assertThat(service.getFrontier(id)).contains(preparation);
+            service.setActiveGoal(id, preparation);
+            assertThat(repository.findById(id).orElseThrow().getActiveGoalId()).isEqualTo(preparation);
+            long revision = repository.findById(id).orElseThrow().getCoachStateRevision();
+            assertThatThrownBy(() -> service.chooseLevelCompletion(id, new com.skillpilot.backend.api.LevelCompletionActionRequest(
+                    "selectProfile", PROFILE, null, null, revision))).isInstanceOfSatisfying(
+                    org.springframework.web.server.ResponseStatusException.class,
+                    failure -> assertThat(failure.getStatusCode().value()).isEqualTo(409));
+            for (String provider : List.of("gemini", "openai")) assertThatThrownBy(() -> service.startCompletionAssessment(id,
+                    new com.skillpilot.backend.api.CompletionAssessmentStart(PROFILE, exam, revision), provider,
+                    "synthetic-untrusted-owner", Instant.now().plusSeconds(60)))
+                    .isInstanceOfSatisfying(org.springframework.web.server.ResponseStatusException.class,
+                            failure -> assertThat(failure.getStatusCode().value()).isEqualTo(409));
+            int invalidPort = context.getEnvironment().getProperty("local.server.port", Integer.class);
+            URI base = URI.create("http://127.0.0.1:" + invalidPort + "/api/ui/learners/" + id + "/");
+            String session;
+            try (HttpClient client = HttpClient.newHttpClient()) {
+                var state = client.send(HttpRequest.newBuilder(base.resolve("state")).GET().build(), HttpResponse.BodyHandlers.ofString());
+                assertThat(state.statusCode()).isEqualTo(200);
+                assertThat(mapper.readTree(state.body()).path("levelCompletion").hasNonNull("complete")).isFalse();
+                for (var rejected : List.of(Map.of("profileId", "automatic:forged", "goalId", exam, "expectedRevision", revision),
+                        Map.of("profileId", PROFILE, "goalId", preparation, "expectedRevision", revision),
+                        Map.of("profileId", PROFILE, "goalId", exam, "expectedRevision", revision - 1))) {
+                    var request = HttpRequest.newBuilder(base.resolve("claude/v1/launch")).header("Content-Type", "application/json")
+                            .POST(HttpRequest.BodyPublishers.ofString(mapper.writeValueAsString(Map.of(
+                                    "client", "web-start", "communicationLocale", "de", "completionAssessment", rejected)))).build();
+                    assertThat(client.send(request, HttpResponse.BodyHandlers.ofString()).statusCode()).isEqualTo(409);
+                    assertThat(repository.findById(id).orElseThrow().getCoachStateRevision()).isEqualTo(revision);
+                    assertThat(resultRows.findByLearner_SkillpilotId(id)).isEmpty();
+                }
+                var request = HttpRequest.newBuilder(base.resolve("claude/v1/launch")).header("Content-Type", "application/json")
+                        .POST(HttpRequest.BodyPublishers.ofString(mapper.writeValueAsString(Map.of("client", "web-start", "communicationLocale", "de",
+                                "completionAssessment", Map.of("profileId", PROFILE, "goalId", exam, "expectedRevision", revision))))).build();
+                var started = client.send(request, HttpResponse.BodyHandlers.ofString());
+                assertThat(started.statusCode()).isEqualTo(200);
+                session = mapper.readTree(started.body()).path("learningSessionId").asText();
+            }
+            var stored = mapper.readValue(repository.findById(id).orElseThrow().getCompletionWorkflow(), CompletionWorkflowState.class);
+            var sessionRow = sessionRows.findByTokenHash(tokens.hash(session)).orElseThrow();
+            assertThat(stored.directAssessment().provider()).isEqualTo("claude");
+            assertThat(stored.directAssessment().sessionBinding()).isEqualTo(sessionRow.tokenHash());
+            assertThat(stored.directAssessment().expiresAt()).isEqualTo(sessionRow.expiresAt());
+            assertThat(stored.directAssessment().goalId()).isEqualTo(exam);
+            assertThat(sessionRow.learnerId()).isEqualTo(id);
+            assertThat(repository.findById(id).orElseThrow().getCoachStateRevision()).isEqualTo(revision + 1);
+            String peerSession = sessionService.createFirstPartyLaunch(peer,
+                    new com.skillpilot.backend.connectors.claude.v1.web.ClaudeV1CoachStartRequest("de", "web-start",
+                            new com.skillpilot.backend.api.CompletionAssessmentStart(PROFILE, exam,
+                                    repository.findById(peer).orElseThrow().getCoachStateRevision()))).learningSessionId();
+            String receipt = invalidMcp(context, session, ClaudeV1Contract.TOOL_GET_COACH_CONTEXT, Map.of())
+                    .path("completionContract").path("receiptCapability").asText();
+            String peerReceipt = invalidMcp(context, peerSession, ClaudeV1Contract.TOOL_GET_COACH_CONTEXT, Map.of())
+                    .path("completionContract").path("receiptCapability").asText();
+            assertThat(invalidMcpRaw(context, session, ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
+                    Map.of("receiptCapability", peerReceipt)).isError()).isTrue();
+            invalidMcp(context, session, ClaudeV1CompletionContractRegistry.TOOL_CONFIRM, Map.of("receiptCapability", receipt));
+            invalidMcp(context, peerSession, ClaudeV1CompletionContractRegistry.TOOL_CONFIRM, Map.of("receiptCapability", peerReceipt));
+            JsonNode evaluation = invalidMcp(context, session, ClaudeV1Contract.TOOL_GET_EXAM_EVALUATION, Map.of("goalId", exam));
+            var pass = new LinkedHashMap<String, Object>(); pass.put("goalId", exam); pass.put("earnedPoints", 10.0);
+            pass.put("evaluationCapability", evaluation.path("evaluationCapability").asText());
+            pass.put("clientRequestId", UUID.randomUUID().toString());
+            pass.put("expectedStateVersion", repository.findById(peer).orElseThrow().getCoachStateRevision());
+            assertThat(invalidMcpRaw(context, peerSession, ClaudeV1Contract.TOOL_SET_MASTERY, pass).isError()).isTrue();
+            assertThat(resultRows.findByLearner_SkillpilotId(peer)).isEmpty();
+            pass.put("clientRequestId", UUID.randomUUID().toString());
+            pass.put("expectedStateVersion", repository.findById(id).orElseThrow().getCoachStateRevision());
+            assertThat(invalidMcp(context, session, ClaudeV1Contract.TOOL_SET_MASTERY, pass).path("savedMastery").asDouble()).isEqualTo(1.0);
+            assertInvalidCompletion(service.getLearnerState(id).levelCompletion());
+            assertThat(resultRows.findByLearner_SkillpilotId(id)).singleElement().satisfies(result -> {
+                assertThat(result.getGoalKey()).isEqualTo(exam); assertThat(result.getValue()).isEqualTo(1.0);
+            });
+            assertThat(service.getMastery(id).getOrDefault(preparation, 0.0)).isZero();
+            assertThat(planned.findByLearner_SkillpilotId(id)).extracting(PlannedGoal::getGoalId).containsExactly(preparation);
+        } finally {
+            SecurityContextHolder.clearContext();
+            assertThat(Files.readAllBytes(original)).isEqualTo(originalBytes);
+        }
+    }
+
+    private static void assertInvalidCompletion(com.skillpilot.backend.api.LevelCompletionResponse completion) {
+        assertThat(completion.calculationStatus()).isEqualTo("invalid");
+        assertThat(completion.notice()).isEqualTo("completion_target_routes_uncovered");
+        assertThat(completion.complete()).isNull();
+        assertThat(completion.waivedTargetGoalIds()).isEmpty(); assertThat(completion.waiverDetails()).isEmpty();
+        assertThat(completion.targetCount()).isZero(); assertThat(completion.waivedTargetCount()).isZero();
+    }
+
+    private static McpSchema.CallToolResult invalidMcpRaw(org.springframework.context.ConfigurableApplicationContext context,
+            String session, String tool, Map<String, Object> extra) {
+        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(session, "unused", List.of(
+                new SimpleGrantedAuthority("SCOPE_" + ClaudeV1Contract.SCOPE_READ), new SimpleGrantedAuthority("SCOPE_" + ClaudeV1Contract.SCOPE_WRITE))));
+        var arguments = new LinkedHashMap<String, Object>(extra); arguments.put("learningSessionId", session); arguments.put("language", "de");
+        var definition = context.getBean(ClaudeV1McpContractAdapter.class).toolSpecifications().stream()
+                .filter(spec -> tool.equals(spec.tool().name())).findFirst().orElseThrow();
+        return definition.callHandler().apply(McpTransportContext.EMPTY, new McpSchema.CallToolRequest(tool, arguments));
+    }
+
+    private JsonNode invalidMcp(org.springframework.context.ConfigurableApplicationContext context,
+            String session, String tool, Map<String, Object> extra) throws Exception {
+        var result = invalidMcpRaw(context, session, tool, extra);
+        assertThat(result.isError()).as("Actual invalid-copy MCP handler %s: %s", tool, result.content()).isFalse();
+        return mapper.readTree(((McpSchema.TextContent) result.content().getFirst()).text());
     }
 
     private Map<String, Object> sampleState(HttpClient client, URI url, boolean profiled) throws Exception {
@@ -336,14 +506,7 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
         learner.setAutoPilot(false);
         learner.setFollowLearningPlans(true);
         learner.setPersonalCurriculum(mapper.writeValueAsString(Map.of(
-                ROOT, Map.of("selected", true, "filterId", "DE-HE", "stage", "CrossStage", "durationModel", "G9"),
-                MATH, Map.of("selected", true, "filterId", "GK+LK"),
-                "__skillpilot_stage_scope_sek1__", Map.of("selected", true),
-                "__skillpilot_stage_scope_sek2__", Map.of("selected", true),
-                CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY, Map.of(
-                        CurriculumPersonalizationPlanner.ROOT_LANDSCAPE_ID_KEY, ROOT,
-                        CurriculumPersonalizationPlanner.COMPLETED_OPTION_IDS_KEY, List.of(),
-                        CurriculumPersonalizationPlanner.MIGRATION_COMPLETED_KEY, true))));
+                ROOT, Map.of("selected", true, "stage", "CrossStage"))));
         learner = learners.saveAndFlush(learner);
         focus.saveAndFlush(new PlannedGoal(learner, PREPARATION));
 
