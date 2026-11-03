@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "kind": "AUTHORITATIVE_FOLLOWUP_IDENTITY_CLASSIFICATION_REVIEW_NOT_MATERIALIZATION_PASS",
+  "date": "2026-11-03",
+  "goalId": "5743b8f9-86cb-4e24-8859-351708d070ab",
+  "verdict": "PRESERVE_CURRICULAR_ATOMIC_WITH_REAL_ASSESSMENT_EXECUTION_FORM",
+  "supersedes": {
+    "source": {
+      "path": "tmp/approach-review-20261101/astra-quadratic-goal-identity-review-20261103-v1/decision.json",
+      "sha256": "dfeed5b220b5d43a065e3b7d101b9590dd49e7652e06e37f6b7e4f785b46ce56"
+    },
+    "invalidatedJsonPointers": [
+      "/preferredFutureEncoding/authoritativeSemanticKind",
+      "/preferredFutureEncoding/semanticReclassificationMustBeExplicitReviewedAndBound"
+    ],
+    "oldValue": "practiceAssessment",
+    "newValue": "curricularAtomic",
+    "instruction": "The older practiceAssessment recommendation is obsolete and MUST NOT be materialized. Preserve the earlier artifact unchanged as history. The same-ID, same-mastery, no-duplicate-obligation and approved-content conclusions remain valid."
+  },
+  "encoding": {
+    "stableGoalId": "5743b8f9-86cb-4e24-8859-351708d070ab",
+    "semanticKind": "curricularAtomic",
+    "nodeKind": "exam",
+    "examData": "Bind the already independently approved whole task and rubric to this existing goal.",
+    "coveredGoalIds": [
+      "5743b8f9-86cb-4e24-8859-351708d070ab"
+    ],
+    "coverageMeaning": "Description of the same assessed competency, no self-requires, prerequisite coverage or additional stored result.",
+    "newGoalIds": [],
+    "masteryRemainsOneBinaryResult": true,
+    "existingMasteryRemainsValid": true,
+    "preserveTitleDescriptionCoreWeight": true,
+    "preserveCurricularQaAndGoalbookMembership": true,
+    "semanticLedgerCountsMustNotDecrease": true,
+    "requires": "Current original preparation unless the separately reviewed exact R repair is implemented; never [5743]."
+  },
+  "evidence": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/CompletionProfileCompiler.java",
+      "lines": "252-255",
+      "finding": "Assessment execution/protection recognizes nodeKind=exam or real examData independently of curricularAtomic. No second result state is introduced."
+    },
+    {
+      "path": "app/scripts/validateGraph.ts",
+      "lines": "585-615",
+      "finding": "curricularAtomic must be atomic and in a stage route profile; examData/nodeKind=exam is not prohibited."
+    },
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "lines": "815-925,1974-2004",
+      "finding": "Ledger decisions/fingerprints are authoritative. Membership depends on curricularAtomic, not lack of examData. Preserve the goal in the existing denominator/navigation."
+    },
+    {
+      "path": "app/scripts/reportDeepUnderstandingRollout.ts",
+      "lines": "914-948",
+      "finding": "M7 atomic population derives from authoritative curricularAtomic decisions. A practiceAssessment retype would remove the goal from that population."
+    },
+    {
+      "path": "scripts/compile_curriculum_release_model.py",
+      "lines": "2940-3010",
+      "finding": "Compiler binds semantic kind from the authoritative ledger; it does not require an assessment execution form to become practiceAssessment."
+    },
+    {
+      "path": "contracts/curriculum-package/v1/curriculum-ontology-profile.schema.json",
+      "finding": "Existing kind vocabulary and source-fingerprint contract suffice; no new semantic kind is needed."
+    },
+    {
+      "path": "docs/concept/skill-graph/node-types.md",
+      "lines": "11-29",
+      "finding": "Existing pedagogical execution kinds and structural/program classifications are distinct; all atomic goals retain one mastered/not-mastered outcome."
+    }
+  ],
+  "requiredBoundedFollowupChanges": [
+    {
+      "id": "HARD_ROUTE_TERMINAL_ROLE",
+      "paths": [
+        "app/scripts/lib/hardLearningRouteValidation.ts",
+        "app/scripts/validateGraph.ts"
+      ],
+      "currentMismatch": "Terminal discovery only expands fixed exam/practice clusters; terminal acceptance requires semanticKind=practiceAssessment. ROUTE_ORDER also treats every curricularAtomic as ordinary, and zero-length self-reach could falsely count the terminal as its own ordinary preparation.",
+      "minimalCorrection": "Recognize actual in-scope assessment execution forms using the existing runtime encodings as a role independent of semantic membership. Allow a genuine curricularAtomic assessment to terminate its own competence path without duplicating its learner-facing parent or creating an extra ID. Preserve actual ordinary preparation, motivation reachability, atomicity, scope and directional route-order checks; exclude assessment-role nodes when checking for genuine ordinary preparation.",
+      "positiveCases": [
+        "5743 remains curricularAtomic, has the exact valid task, is accepted as an in-scope terminal and still has a real ordinary preparation path through546bf.",
+        "Existing practiceAssessment terminal behavior remains valid.",
+        "A scoped self-terminal does not require a fake self-edge or duplicate contains placement."
+      ],
+      "negativeCases": [
+        "An ordinary curricular atom with no assessment execution form is not a terminal merely because it is an endpoint or its title mentions a test.",
+        "An out-of-scope assessment cannot close another PC.",
+        "An assessment cannot satisfy the ordinary-preparation-path check merely by zero-length self-reach.",
+        "Missing motivation, non-atomic terminal, backward role ordering and invalid task metadata still fail."
+      ]
+    },
+    {
+      "id": "CURRICULAR_REVIEW_POPULATION",
+      "paths": [
+        "app/scripts/semanticAtomicityReview.ts",
+        "app/scripts/memoryCardReview.ts",
+        "app/scripts/reportMemoryCardReviewRollout.ts",
+        "app/scripts/reportMemoryCardPilotDossier.ts",
+        "app/scripts/generateCurriculumQualityStatus.ts",
+        "app/scripts/generateCurriculumSourceCoverageAudit.ts",
+        "scripts/compile_curriculum_release_model.py",
+        "scripts/validate_curriculum_release_model.py"
+      ],
+      "currentMismatch": "Legacy relevant-leaf/source-coverage helpers exclude examData or Assessment/Practice tags without respecting the authoritative curricular classification. This would drop5743 from some review/source populations despite preserving the ledger.",
+      "minimalCorrection": "Where the authoritative ledger is available, retain genuine curricularAtomic goals in curricular source/atomicity/memory-adequacy review populations even when they execute an assessment. Preserve existing non-curricular practice, orientation and memory exclusions; legacy fallback is for landscapes without an authoritative ledger. Do not add misleading Practice/Assessment tags solely to manipulate selectors. Bind updated task/nodeKind/requires fingerprints without changing the competent goal count.",
+      "positiveCases": [
+        "5743 remains present exactly once in Goalbook, M7, curricular source audit and applicable atomicity/memory-adequacy review scopes after examData is attached.",
+        "Its unchanged source limitations, including BW partial evidence, remain visible.",
+        "The applicable review record remains required and is rebound to the actual changed contract rather than silently discarded."
+      ],
+      "negativeCases": [
+        "A stale source/goal fingerprint still fails.",
+        "A genuine practiceAssessment-only task is not newly counted as curricularAtomic.",
+        "Orientation/memory exclusions and non-atomic constraints remain intact.",
+        "Missing source evidence is not filled by the task, its requires, tags, target membership or this own-authoring decision."
+      ]
+    }
+  ],
+  "requiredWorkflowChecks": [
+    "Existing mastery=1 for5743 remains sufficient across all existing targets and any future support-only occurrence; no new qualification.",
+    "Mastery=0 uses the actual complete-submission assessment workflow and existing16/12/cap11 rubric. No mid-task correctness hints or automatic mastery.",
+    "Normal preparation retains directional requires; direct exam selection uses its existing explicit workflow, not a fabricated preparedness pass.",
+    "Only selected protected targets seed independent work; a support-only occurrence remains support and never gains independent target demand or implicit mastery.",
+    "Stored active/focus references preserve stable IDs; no automatic reset or scope widening after program placement changes."
+  ],
+  "approvedContentUnchanged": {
+    "path": "tmp/approach-review-20261101/quadratic-three-conditions-own-task-candidate-20261103-v1/whole-content-draft.json",
+    "sha256": "a59a58d1099875f35cb6d9650ef90e2d0dfba2f5654103d50a9d5bc52becbaec"
+  },
+  "approvedTextFieldHashes": {
+    "taskContent": "18d26dd28484fb182781ee3902190b94545253f1689f446a7b0c0ab2605a4019",
+    "taskContentEn": "a5cc0dc7338dfc74559f42d209e28a7f476f55af1ca30c1a113fd3bdc71bb034",
+    "solutionContent": "ae984b39e181e27e1b14be30b0ff80612147afff7e706207747c0a5bd9835ead",
+    "solutionContentEn": "592770b418dbef71b358905007453ecd716620cde29cb93694ecc24ea1a16c24"
+  },
+  "scoringStableJsonSha256": "f569c2f88e87659a16124a3fb8c02d784dc0107eaee055640fad4d3555383e27",
+  "noRootJvmMasteryProductionWrites": true,
+  "noNewOntology": true,
+  "noM7CiNativeAfterClaim": true,
+  "noGlobalActivationPass": true
+}

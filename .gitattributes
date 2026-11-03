@@ -273,3 +273,28 @@ backend/src/main/resources/claude-connector-v1/mcp-apps/retained/sha256-*/*.html
 
 # Preserve the exact bytes of historical completion-integrity review inputs.
 docs/qa-ci/evidence/curriculum-completion-integrity/** -text -whitespace
+
+# Preserve the exact reviewed stochastic task/solution and plotter output bytes.
+# These finite files are bound by content hashes; do not normalize their spacing.
+app/public/assets/assessment-materials/mathematik/5dbf149c-d335-552c-a918-768a12e09201/fill-volume-observations.de.53aac12d641cdd1b72918e00f243203b89e8ac1491e23564d20fe6baa68e8c64.svg -text -whitespace
+app/public/assets/assessment-materials/mathematik/5dbf149c-d335-552c-a918-768a12e09201/fill-volume-observations.en.7b6ca626d7314a2dd16d86fffdfc322d0c94a813288947eb5f6e3bddffbb29b4.svg -text -whitespace
+app/public/assets/assessment-materials/mathematik/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/normal-density-comparison.de.bb54e2ddbbdac64fdaf4c1083a96cb3e3fcd6482430655efefde8e330fe156ac.svg -text -whitespace
+app/public/assets/assessment-materials/mathematik/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/normal-density-comparison.en.8040f4253d02123129c006fce40e4b3d590f46c8bb06129ca364740bc158ab9d.svg -text -whitespace
+app/public/assets/assessment-materials/mathematik/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/power-function-choices.de.e8be8de32be4afcab08a03a8c338f1f3d7c69a40409ee724c94d7953543b1559.svg -text -whitespace
+app/public/assets/assessment-materials/mathematik/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/power-function-choices.en.074044250894c559e72f3a9a9c3dd6078d09a7ef0a29771e5bcc8f129de7bb06.svg -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/03357e70-2280-532f-b629-5dfa31dc44eb/solution.de.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/03357e70-2280-532f-b629-5dfa31dc44eb/solution.en.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/03357e70-2280-532f-b629-5dfa31dc44eb/task.de.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/03357e70-2280-532f-b629-5dfa31dc44eb/task.en.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/5dbf149c-d335-552c-a918-768a12e09201/solution.de.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/5dbf149c-d335-552c-a918-768a12e09201/solution.en.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/5dbf149c-d335-552c-a918-768a12e09201/task.de.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/5dbf149c-d335-552c-a918-768a12e09201/task.en.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/solution.de.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/solution.en.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/task.de.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/task.en.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/solution.de.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/solution.en.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/task.de.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/task.en.md -text -whitespace

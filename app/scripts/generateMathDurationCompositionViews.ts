@@ -264,16 +264,6 @@ const compareGoalIdsByTitle = (
 const sortGoalIdsByTitle = (goalIds: Iterable<string>, goalById: Map<string, LearningGoal>) =>
   Array.from(goalIds).sort((left, right) => compareGoalIdsByTitle(left, right, goalById))
 
-const collectReferencedGoalIds = (node: CompositionNode, target: Set<string>) => {
-  if (node.kind === 'canonicalSubtree' || node.kind === 'goalEntry') {
-    target.add(node.goalId)
-    return
-  }
-  if (node.kind === 'structure') {
-    node.children.forEach((child) => collectReferencedGoalIds(child, target))
-  }
-}
-
 const collectGoalEntriesFromStructure = (rootNodes: CompositionNode[], structureId: string) => {
   const entries: string[] = []
   const visit = (node: CompositionNode): boolean => {
@@ -299,18 +289,6 @@ const collectGoalEntriesFromStructure = (rootNodes: CompositionNode[], structure
   }
   rootNodes.some(visit)
   return entries
-}
-
-const collectExpandedReferencedGoalIds = (nodes: CompositionNode[]) => {
-  const referencedGoalIds = new Set<string>()
-  nodes.forEach((node) => collectReferencedGoalIds(node, referencedGoalIds))
-
-  const expanded = new Set<string>()
-  referencedGoalIds.forEach((goalId) => {
-    expanded.add(goalId)
-    collectAtomicDescendantIds(goalId).forEach((atomicGoalId) => expanded.add(atomicGoalId))
-  })
-  return expanded
 }
 
 const removeStructureById = (nodes: CompositionNode[], structureId: string): CompositionNode[] =>
@@ -1002,9 +980,9 @@ const createCrossStageView = (
     'he-source-extraction-supplements',
     'Analytische Geometrie und Anwendungen',
   )
-  const crossStageReservedGoalIds = collectExpandedReferencedGoalIds(
-    removeStructureById(withoutLowerSupplements, `sek1-${durationModel.toLowerCase()}`),
-  )
+  const crossStageReservedGoalIds = collectCompositionProjectionRoleGoalIds(
+    removeStructureById(withoutLowerSupplements, `sek1-${durationModel.toLowerCase()}`), goalById,
+  ).targetGoalIds
   const scopedReplacement = createSek1Node(durationModel, crossStageReservedGoalIds)
   const scopedReplaced = replaceStructureById(withoutLowerSupplements, `sek1-${durationModel.toLowerCase()}`, scopedReplacement)
   if (!scopedReplaced.replaced) {
@@ -1197,9 +1175,9 @@ const createRpCrossStageView = (
   }
 
   const withoutLowerSupplements = removeStructureById(replaced.nodes, 'rp-source-extraction-supplements-seki')
-  const crossStageReservedGoalIds = collectExpandedReferencedGoalIds(
-    removeStructureById(withoutLowerSupplements, `rp-sek1-${durationModel.toLowerCase()}`),
-  )
+  const crossStageReservedGoalIds = collectCompositionProjectionRoleGoalIds(
+    removeStructureById(withoutLowerSupplements, `rp-sek1-${durationModel.toLowerCase()}`), goalById,
+  ).targetGoalIds
   const scopedReplacement = createRpSek1Node(durationModel, crossStageReservedGoalIds)
   const scopedReplaced = replaceStructureById(withoutLowerSupplements, `rp-sek1-${durationModel.toLowerCase()}`, scopedReplacement)
   if (!scopedReplaced.replaced) {
@@ -1394,9 +1372,9 @@ const createShCrossStageView = (
     throw new Error(`Could not replace Sek-I structure in ${baseView.viewId}`)
   }
 
-  const crossStageReservedGoalIds = collectExpandedReferencedGoalIds(
-    removeStructureById(replaced.nodes, `sh-sek1-${durationModel.toLowerCase()}`),
-  )
+  const crossStageReservedGoalIds = collectCompositionProjectionRoleGoalIds(
+    removeStructureById(replaced.nodes, `sh-sek1-${durationModel.toLowerCase()}`), goalById,
+  ).targetGoalIds
   const scopedReplacement = createShSek1Node(durationModel, crossStageReservedGoalIds)
   const scopedReplaced = replaceStructureById(replaced.nodes, `sh-sek1-${durationModel.toLowerCase()}`, scopedReplacement)
   if (!scopedReplaced.replaced) {

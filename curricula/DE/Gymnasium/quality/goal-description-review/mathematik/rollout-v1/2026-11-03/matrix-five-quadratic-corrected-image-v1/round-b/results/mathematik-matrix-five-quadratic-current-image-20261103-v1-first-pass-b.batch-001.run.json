@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-first-pass-b.batch-001.astra-ultra-20261103T195645Z",
+  "campaignId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-b",
+  "roundId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-first-pass-b",
+  "batchId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:9785f02838ab8c91ed1619ca1c564ec63e60fbf99ef22b37a049d9fcafc53987",
+  "bundleFingerprint": "sha256:a38e14bb8895e7aa364605ed9439cbf52ff40ea907e95e373158060bc04f12eb",
+  "bookDigest": "sha256:e7d4d6aadb4776a8c547a31474a8db52800e656976c421153225cff3db6592e3",
+  "provider": "openai",
+  "model": "gpt-6-astra",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:85a45f412051f538ba24279fa653c8d22eb1500e06a9ef7a21e3e4dfc12e9537",
+  "independenceGroupId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5743b8f9-86cb-4e24-8859-351708d070ab"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:9785f02838ab8c91ed1619ca1c564ec63e60fbf99ef22b37a049d9fcafc53987"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-11-03T19:56:45Z",
+  "completedAt": "2026-11-03T19:57:49.348Z",
+  "status": "completed",
+  "outputDigest": "sha256:efb0702c427d7a249a3de1557dfea59b759a58fc3e40c8212b4df86090f63995",
+  "toolchainVersion": "codex-collaboration+node-20.20.2+tsx-4.21.0"
+}

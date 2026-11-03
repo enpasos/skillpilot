@@ -1,0 +1,105 @@
+{
+  "status": "PASS_REMOVE_TWO_FACHLICH_FALSE_DIRECT_PREREQUISITE_EDGES_SEPARATE_FROM_STOCH_CONTENT",
+  "canonicalBinding": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "9cdb5af9778eba22d69d8d5105b5fffbc0cc60f3ec1a6487d9bcbc45fe1326b2"
+  },
+  "requiredGoalWholeContract": {
+    "id": "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+    "title": "Unbegrenztheit der natürlichen Zahlen mit dem Nachfolgerprinzip begründen",
+    "description": "Die lernende Person kann begründen, dass es keine größte natürliche Zahl gibt, indem sie zu jeder vorgegebenen natürlichen Zahl eine größere natürliche Zahl angibt und dieses Nachfolgerprinzip verallgemeinert.",
+    "requires": [
+      "624764d6-becd-5f9b-ada3-0d4f9d143073",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ]
+  },
+  "allActualDirectConsumers": [
+    {
+      "id": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+      "title": "Größen und Einheiten vergleichen und umrechnen",
+      "wholeDescription": "Die lernende Person kann für alltagsnahe Größen passende Einheiten auswählen, Größenangaben sicher in gleichartige Einheiten umrechnen, dabei anhand des Einheitenverhältnisses begründen, warum die dargestellte Größe unverändert bleibt, und Messergebnisse in einer gemeinsamen Einheit sinnvoll vergleichen.",
+      "requiresBefore": [
+        "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+        "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+        "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+        "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+        "191c67db-44a8-4f63-994a-d85e8e301194",
+        "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+        "54148506-c23f-41b8-959b-068dd194cf15",
+        "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+        "2ae76eae-799c-463e-9ec9-82327f8209a8",
+        "b5de0574-93ed-409c-80ee-312211420cd6",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "wholeGoalSnapshotSha256JsonSortedCompact": "c3e5d51dd85c78f126ef2ce58303f168b925ef3c8d7e688a53c14a7025aaf1c3"
+    },
+    {
+      "id": "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+      "title": "Multiplikation und ganzzahlige Division als Umkehroperationen nutzen",
+      "wholeDescription": "Die lernende Person kann natürliche und ganze Zahlen multiplizieren, eine zulässige ganzzahlige Division als zugehörige Umkehraufgabe deuten und berechnen, dabei Vorzeichen sowie die Bedingungen „Divisor ungleich null“ und „ganzzahliger Quotient“ begründen und das Ergebnis durch den Wechsel zur Umkehroperation prüfen.",
+      "requiresBefore": [
+        "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+        "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+        "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+        "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+        "191c67db-44a8-4f63-994a-d85e8e301194",
+        "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+        "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+        "65365dce-f33f-49d8-9516-42f75883aa86",
+        "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
+      ],
+      "wholeGoalSnapshotSha256JsonSortedCompact": "2e516ed90691d02b74ebe546ba454a087c3d8e2615e77a199bd44fb948af525d"
+    },
+    {
+      "id": "311ab2f2-3364-5166-ac22-3ef01419fee4",
+      "title": "Aufgabe 1 (Jahrgangsstufe 5, 6 BE)",
+      "wholeDescription": "Die lernende Person kann eine schulnahe Materialsituation mit natürlichen Zahlen berechnen, einen Rechenvorteil nutzen, Zahlen runden und ordnen sowie den Unterschied zwischen einer größten Zahl in einer endlichen Liste und der unbegrenzten Fortsetzbarkeit natürlicher Zahlen begründen.",
+      "requiresBefore": [
+        "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+        "191c67db-44a8-4f63-994a-d85e8e301194",
+        "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+        "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+        "d825f7ce-e19b-594a-8181-eff199c21d93"
+      ],
+      "wholeGoalSnapshotSha256JsonSortedCompact": "cffb2e2724f705e6016ef9673690e2b4272da72617c3815334710f1d99349331"
+    }
+  ],
+  "approvedExactRemovals": [
+    {
+      "consumerGoalId": "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+      "requiredGoalId": "1a25ef44-f310-4c23-9ba8-44baec60d3b0"
+    },
+    {
+      "consumerGoalId": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+      "requiredGoalId": "1a25ef44-f310-4c23-9ba8-44baec60d3b0"
+    }
+  ],
+  "rationale": {
+    "cafd": "Natural/integer multiplication and integer division, their signs, nonzero divisor and integer quotient, and inverse-operation checking do not require a universal proof that natural numbers have no maximum. Finite computation and local sign/domain reasoning suffice; the full successor-generalisation contract is a distinct proof competence.",
+    "f2e": "Choosing/converting units and explaining invariant physical quantity through unit ratios requires finite arithmetic and quantity/unit reasoning, not unboundedness of the naturals. Retaining this edge would continue to conceal the same unrelated proof goal.",
+    "311ab": "The existing complete school-festival task explicitly asks why900 is largest only in the finite list but not in all naturals, with solution n+1 for arbitrary n. This is the one actual direct preparation demand for the whole proof contract and remains unchanged."
+  },
+  "preserve": [
+    "Every other R edge unchanged by this decision; no replacement R.",
+    "All existing goal IDs, whole competence contracts, target sets, current mastery and807 curricularAtomic remain.",
+    "Task311ab whole task/solution/rubric/Coverage and own scope untouched.",
+    "No POnly insertion merely to hide either false edge."
+  ],
+  "currentTrueRouteInventory": {
+    "proofTargetScopeCount": 76,
+    "proofTargetScopesWith311abTarget": 72,
+    "proofTargetScopesWithout311abTarget": [
+      "DE-HB/SekI/G8/GK+LK",
+      "DE-HB/CrossStage/G8/GK",
+      "DE-HB/CrossStage/G8/LK",
+      "DE-HB/CrossStage/G8/GK+LK"
+    ],
+    "predictedConsequence": "The four named HB contexts currently have no uncovered/endpoint1a25 solely because ordinary false consumers connect it onward. Removing both false edges is predicted to expose exactly these four proof-target route gaps; this is not a new measured Native result.",
+    "nextFiniteAuthorOrder": "Review the whole existing311ab task and its complete preparation/source/program placement for exactly these four HB contexts. If whole eligibility fails, retain the explicit route gap and author a genuine standalone successor-proof form on the same1a25 identity; do not invent a numerical R chain."
+  },
+  "notClaims": [
+    "No Root edit, JVM, new Native, Stage/M7/CI approval.",
+    "No automatic approval of HB311ab placement or other arithmetic edges.",
+    "No new test/form bytes are approved here."
+  ]
+}

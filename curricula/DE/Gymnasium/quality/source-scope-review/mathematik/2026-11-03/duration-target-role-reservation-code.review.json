@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS_STATIC_SOURCE_AND_TEST_DELTA",
+  "reviewedAt": "2026-11-03T20:19:06Z",
+  "reviewerAgent": "/root/astra_cuboid_existing_scope",
+  "authorIndependent": true,
+  "reviewRequest": {
+    "path": "duration-target-role-fix-review-request.json",
+    "sha256": "5e67764cdba7c2e566d35be21b7a462adfeb767a568f4c728c8e3d8983fb4792"
+  },
+  "priorDesignDecision": {
+    "path": "duration-reservation-design-review.json",
+    "sha256": "4d4d22383ac687f2b4038378139fa25d192c4596749d4ead877fd7df94a78fcc"
+  },
+  "approvedFiles": [
+    {
+      "path": "app/scripts/generateMathDurationCompositionViews.ts",
+      "beforePrivateSha256": "f1f838a531fff6ed33c0babbef91237e761276e80f9d5f989baeae17f549e9e6",
+      "rootBeforeSha256": "f1f838a531fff6ed33c0babbef91237e761276e80f9d5f989baeae17f549e9e6",
+      "candidatePath": "tmp/approach-review-20261101/matrix-five-actual-source-authoring-20261103-v1/duration-target-role-fix-v1/app/scripts/generateMathDurationCompositionViews.ts",
+      "candidateSha256": "29239d708ce3a165e8696093a77f2b92cae2643881996f0223275bc32126620e"
+    },
+    {
+      "path": "app/scripts/testMathStageScopePolicy.ts",
+      "beforePrivateSha256": "cd6a7534c3225017286483297280a9df1bc0ffdb7714e47928d47548214861ef",
+      "rootBeforeSha256": "16e6cbb43e5e96330c727358a1a796805fa10dc0dfa8340dd6616a9d7b573f8b",
+      "candidatePath": "tmp/approach-review-20261101/matrix-five-actual-source-authoring-20261103-v1/duration-target-role-fix-v1/app/scripts/testMathStageScopePolicy.ts",
+      "candidateSha256": "9e05b49d65093b9f7f130e363322a104d1932fc682cb50192d923d72e82ad18b"
+    }
+  ],
+  "actualIndependentChecks": [
+    "Both full file deltas read and exact source hashes checked against the declared private base; old testcd6 bytes remain an exact prefix.",
+    "Generator changes exactly the three HE/RP/SH remaining-tree reservations to the existing specificity-aware targetGoalIds set and removes two unused raw-reference collectors. No other generator behavior changes.",
+    "No raw reexpansion, applicability shortcut, source enrollment, relocate-to-include conversion, or change to existing exclusions/overrides/relocation guards.",
+    "New tests use the productive role collector and selector, exercising surviving target plus outer POnly, POnly-only non-enrollment, outside-target deduplication, direct and nearer masks, equal-specificity target precedence, opaque cluster entries, template exclusions, blocked additions, denied scopes and input immutability.",
+    "Execution copies differ only in import locations and generator base directories. All previous test bodies and final new assertion/log tail are present in the executed copy."
+  ],
+  "newFindings": [],
+  "observedExecutionEvidence": {
+    "files": [
+      {
+        "path": "duration-role-test.stdout.log",
+        "sha256": "16d099c7afb360af7d577313297891faf2d7ac8095750d33480804c04b88fc90"
+      },
+      {
+        "path": "duration-role-test.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "duration-role-preview.stderr.log",
+        "sha256": "6d45112408f404cc6cb810ca75e626edb04a4a901b074b48a96b62f20393c55e"
+      }
+    ],
+    "testTailReached": true,
+    "testStderrEmpty": true,
+    "unitExitCodeReportedByExecutingAgent": 0,
+    "exitCodeIndependentlyReexecuted": false,
+    "wholeDurationPreview": "Not accepted: actual current preview stops at strict RP V4 year-anchor drift. New unit success is not a complete18-view result."
+  },
+  "rpAnchorDiagnosis": {
+    "path": "duration-fixed-rp-anchor-diagnostic.json",
+    "sha256": "bd44fab2d8f0709593d577d23ef11d3716b38dd4329bacad89aaf762d36df7aa",
+    "independentlyConfirmed": "The historical pre-RP SekI input already contains the two later approved5743 relocation wrappers. The real generated pre-RP input has5743 directly in the year competencies and546bf0b3 in reviewed-stage-additions-de-rp; both are still whole-scope targets. The two later unchanged relocate-existing-target operations create the approved year wrappers after the RP helper. The strict anchor failure is therefore a processing-stage mismatch, not authority to relax the hash guard.",
+    "boundedSuccessorDirection": "Bind the three actual pre-RP inputs from generatedViewsBeforeReviewedPlacements, preserving the existing2RPtasks/3slots/6refs,44-current-object context and all placement semantics. Keep all74 subsequent authoring operations and loader strictness. Recompute exact before/after anchor hashes from those states and compare final whole T/POnly and target placement against reviewed outputs. Preserve historical input/receipt bytes.",
+    "finalAnchorMetadataApproved": false
+  },
+  "remainingAcceptance": [
+    "The actual whole18 output and role comparison remains required after the finite RP anchor successor.",
+    "A future exact policy/receipt successor must bind the changed generator; prior Stage729 does not automatically approve new generator bytes."
+  ],
+  "limits": {
+    "wholeDuration18Pass": false,
+    "newSourceScopeApproval": false,
+    "newContentReview": false,
+    "newStageReceipt": false,
+    "rootActivationApproved": false,
+    "mathM7Accepted": false,
+    "rootOrFWritten": false,
+    "newJvmOrNodeExecutionByReviewer": false
+  }
+}

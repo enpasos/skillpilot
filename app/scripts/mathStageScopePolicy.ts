@@ -471,7 +471,11 @@ export function applyMathAssessmentScopeOperations<T extends View>(
     if (!operation.sourceDecision || !operation.goalIds.length) fail('assessment operation lacks its exact author decision')
     for (const id of operation.goalIds) {
       const goal = goals.get(id)
-      if (!goal || goal.contains?.length || goal.nodeKind === 'memory' || !(goal.nodeKind === 'exam' || goal.examData)) {
+      // The existing relocation helper also preserves reviewed ordinary preparation.
+      // Inclusion/exclusion continue to require a genuine assessment identity.
+      const assessment = goal?.nodeKind === 'exam' || !!goal?.examData
+      if (!goal || goal.contains?.length || goal.nodeKind === 'memory'
+          || !assessment && operation.action !== 'relocate-existing-target') {
         fail('assessment operation requires its exact separate source/scope decision for an existing assessment')
       }
     }
@@ -505,7 +509,10 @@ export function applyMathAssessmentScopeOperations<T extends View>(
       if (!same(sorted(expected), sorted(after.targetGoalIds))) fail('assessment exclusion changed another target contract')
     } else if (operation.action === 'relocate-existing-target') {
       result = relocateReviewedMathStageTargets(result, goals, operation.goalIds, operation.anchorStructureId,
-        operation.id, operation.label, operation.goalIds)
+        operation.id, operation.label, operation.goalIds.filter(id => {
+          const goal = goals.get(id)!
+          return goal.nodeKind === 'exam' || !!goal.examData
+        }))
     } else if (operation.action === 'include-target') {
       result = addReviewedMathStageTargets(result, goals, operation.goalIds, operation.anchorStructureId,
         operation.id, operation.label, operation.goalIds, operation.directReference === true)

@@ -1,0 +1,145 @@
+{
+  "reviewStatus": "released",
+  "coveredGoalIds": [
+    "03357e70-2280-532f-b629-5dfa31dc44eb"
+  ],
+  "coveredStrands": [
+    "L5"
+  ],
+  "demandLevels": [
+    "AB1",
+    "AB2",
+    "AB3"
+  ],
+  "taskContent": "# Zwei Testregeln für dieselbe Qualitätskontrolle\n\nEin Betrieb prüft Steckverbinder. Die unbekannte Fehlerquote einer stabilen Produktionsphase heißt $p$. Eine Stichprobe wird im Modell als $100$ unabhängige Prüfungen mit derselben Fehlerwahrscheinlichkeit $p$ betrachtet. $X$ zählt die fehlerhaften Steckverbinder, also $X\\sim B(100;p)$.\n\nUntersucht wird $H_0:p\\leq0{,}05$ gegen $H_1:p>0{,}05$. Das Verwerfen von $H_0$ löst eine zusätzliche Untersuchung der Produktionsphase aus. Zwei vorgegebene Regeln werden verglichen:\n\n| Regel | $H_0$ verwerfen | $H_0$ nicht verwerfen |\n|---|---|---|\n| A | $X\\geq10$ | $X\\leq9$ |\n| B | $X\\geq8$ | $X\\leq7$ |\n\nFehler 1. Art werden am Nullrand $p_0=0{,}05$ berechnet. Fehler 2. Art und Teststärke beziehen sich in dieser Aufgabe auf die feste Alternative $p_1=0{,}12$.\n\n1. Bestimme für **beide** Regeln die Wahrscheinlichkeit eines Fehlers 1. Art, die Wahrscheinlichkeit eines Fehlers 2. Art bei $p_1$ und die Teststärke bei $p_1$. Gib jeweils das berechnete Ereignis mit dem zugehörigen Parameter an. Erläutere beide Fehlerarten im Sachkontext und vergleiche die beiden Regeln hinsichtlich Fehlalarmen, übersehenen Abweichungen und Teststärke.\n2. In einer Stichprobe werden $9$ fehlerhafte Steckverbinder gefunden. Welche Entscheidung ergibt jede Regel? Erläutere auch, welche sichere Aussage über die wahre Fehlerquote daraus **nicht** folgt.\n3. Der Betrieb hat zwei unterschiedliche Einsatzziele. Wähle jeweils A oder B, oder begründe, warum keine der beiden Regeln geeignet ist. Prüfe für deine Empfehlung die genannten Anforderungen und begründe anhand der berechneten Werte, warum die andere Regel geeignet oder ungeeignet ist.\n\n   - **Routinekontrolle:** Fehlalarmwahrscheinlichkeit am Nullrand höchstens $5\\,\\%$ und Teststärke bei $p_1$ mindestens $75\\,\\%$.\n   - **Zeitweise gezielte Fehlersuche:** Fehlalarmwahrscheinlichkeit am Nullrand höchstens $15\\,\\%$ und Teststärke bei $p_1$ mindestens $90\\,\\%$.\n\nEin Taschenrechner, eine Binomialtabelle oder entsprechende Berechnungssoftware darf verwendet werden. Rechne im angegebenen Binomialmodell und gib Wahrscheinlichkeiten mindestens auf vier Nachkommastellen oder Prozentwerte mindestens auf zwei Nachkommastellen an. Ein mathematisch gleichwertiger Lösungsweg ist zulässig; eine eigene neue Testregel wird nicht verlangt.\n",
+  "taskContentEn": "# Two test rules for the same quality check\n\nA manufacturer checks connectors. Let $p$ be the unknown defect rate during a stable production phase. The model treats a sample as $100$ independent checks with the same defect probability $p$. Let $X$ count the defective connectors, so $X\\sim B(100;p)$.\n\nThe hypotheses are $H_0:p\\leq0.05$ versus $H_1:p>0.05$. Rejecting $H_0$ triggers an additional investigation of the production phase. Compare these two given rules:\n\n| Rule | Reject $H_0$ | Do not reject $H_0$ |\n|---|---|---|\n| A | $X\\geq10$ | $X\\leq9$ |\n| B | $X\\geq8$ | $X\\leq7$ |\n\nCalculate type I errors at the null boundary $p_0=0.05$. In this task, type II errors and test power refer to the fixed alternative $p_1=0.12$.\n\n1. For **both** rules, calculate the type I error probability, the type II error probability at $p_1$, and the test power at $p_1$. State each event and the parameter used. Explain both error types in context and compare the rules regarding false alarms, missed deviations, and test power.\n2. A sample contains $9$ defective connectors. What decision does each rule produce? Also explain which certain conclusion about the true defect rate does **not** follow.\n3. The manufacturer has two different operating objectives. Choose A or B for each objective, or explain why neither rule is suitable. Check the stated requirements for your recommendation and use your calculated values to explain why the other rule is suitable or unsuitable.\n\n   - **Routine checking:** a false-alarm probability at the null boundary of at most $5\\%$ and test power at $p_1$ of at least $75\\%$.\n   - **Temporary targeted fault investigation:** a false-alarm probability at the null boundary of at most $15\\%$ and test power at $p_1$ of at least $90\\%$.\n\nYou may use a calculator, a binomial table, or suitable calculation software. Use the stated binomial model and report probabilities to at least four decimal places or percentages to at least two decimal places. Mathematically equivalent methods are accepted; you are not asked to design a new test rule.\n",
+  "solutionContent": "# Musterlösung und normale Bewertungsrubrik\n\nDies ist ein möglicher Lösungsweg. Gleichwertige Binomialsummen, Verteilungsfunktionen, Komplementdarstellungen oder begründete digitale Berechnungen sind zulässig. Die folgenden Bezeichnungen sind keine vorgeschriebene Abgabeform.\n\n## Fehlerwahrscheinlichkeiten und Teststärke\n\nDie obere Binomial-Randwahrscheinlichkeit steigt mit $p$. Für die beiden rechtsseitigen Regeln wird die größte Verwerfungswahrscheinlichkeit unter $H_0:p\\leq0{,}05$ daher am Rand $p_0=0{,}05$ erreicht.\n\nFür Regel A gilt:\n\n$$\n\\alpha_A=P_{0{,}05}(X\\geq10)\n=1-\\sum_{k=0}^{9}\\binom{100}{k}0{,}05^k0{,}95^{100-k}\n\\approx0{,}0281883.\n$$\n\n$$\n\\beta_A(0{,}12)=P_{0{,}12}(X\\leq9)\n=\\sum_{k=0}^{9}\\binom{100}{k}0{,}12^k0{,}88^{100-k}\n\\approx0{,}2256519.\n$$\n\n$$\nG_A(0{,}12)=P_{0{,}12}(X\\geq10)\n=1-\\beta_A(0{,}12)\\approx0{,}7743481.\n$$\n\nFür Regel B entsprechend:\n\n$$\n\\alpha_B=P_{0{,}05}(X\\geq8)\\approx0{,}1279605,\n$$\n\n$$\n\\beta_B(0{,}12)=P_{0{,}12}(X\\leq7)\\approx0{,}0761361,\n\\qquad G_B(0{,}12)=1-\\beta_B(0{,}12)\\approx0{,}9238639.\n$$\n\n| Regel | Fehler 1. Art am Nullrand | Fehler 2. Art bei $p_1=0{,}12$ | Teststärke bei $p_1=0{,}12$ |\n|---|---:|---:|---:|\n| A | $2{,}8188\\,\\%$ | $22{,}5652\\,\\%$ | $77{,}4348\\,\\%$ |\n| B | $12{,}7960\\,\\%$ | $7{,}6136\\,\\%$ | $92{,}3864\\,\\%$ |\n\nEin **Fehler 1. Art** löst eine Untersuchung aus, obwohl die wahre Fehlerquote höchstens $5\\,\\%$ beträgt. Die berechneten Zahlen beziehen sich auf den ungünstigsten Nullrand; sie garantieren keine feste Anzahl von Fehlalarmen in einer endlichen Wiederholungsserie.\n\nEin **Fehler 2. Art bei $p_1$** liegt vor, wenn die Produktion trotz einer tatsächlichen Fehlerquote von $12\\,\\%$ durch die Regel nicht beanstandet wird. Die Teststärke ist die Wahrscheinlichkeit, diese konkrete Abweichung zu erkennen. $\\beta$ und Teststärke sind hier Aussagen **unter der benannten Alternative**, keine Wahrscheinlichkeiten dafür, dass die Alternative nach der Beobachtung wahr ist.\n\nB verwirft bereits bei kleineren Fehlerzahlen. Bei gleicher Stichprobengröße führt das zu mehr Fehlalarmen, aber bei $p_1$ zu weniger übersehenen Abweichungen und höherer Teststärke. Welche Regel vorzuziehen ist, hängt deshalb vom Einsatzziel ab.\n\n## Beobachtung und Kontextentscheidungen\n\nBei $X=9$ verwirft A die Nullhypothese nicht, B verwirft sie. Das Nichtverwerfen durch A beweist $p\\leq0{,}05$ nicht. Auch das Verwerfen durch B ist kein sicherer Beweis für $p>0{,}05$; die Fehlerwahrscheinlichkeiten beschreiben gerade die möglichen Fehlentscheidungen.\n\nFür die **Routinekontrolle ist A geeignet**: $\\alpha_A\\approx2{,}82\\,\\%\\leq5\\,\\%$ und $G_A(0{,}12)\\approx77{,}43\\,\\%\\geq75\\,\\%$. B erfüllt zwar das Stärkeziel, überschreitet aber die erlaubte Fehlalarmwahrscheinlichkeit.\n\nFür die **zeitweise gezielte Fehlersuche ist B geeignet**: $\\alpha_B\\approx12{,}80\\,\\%\\leq15\\,\\%$ und $G_B(0{,}12)\\approx92{,}39\\,\\%\\geq90\\,\\%$. A hält die Fehlalarmgrenze ein, erreicht aber die geforderte Teststärke nicht. Das ist eine Entscheidung für diese beiden vorgegebenen Regeln und Ziele, keine Aussage über ein weltweit optimales Verfahren.\n\n## Ein Gesamtscore: 20 BE, bestanden ab 15 BE\n\nJede der folgenden Zeilen zählt einen Punkt. Die Nachweise dürfen an jeder passenden Stelle der gesamten Abgabe stehen; dieselbe Leistung wird nur einmal gezählt.\n\n| ID | Bewertbare Leistung | BE |\n|---|---|---:|\n| alpha_a_event | Fehler-I-Ereignis für A mit $p_0$ korrekt angesetzt | 1 |\n| alpha_a_value | Zugehörige Wahrscheinlichkeit korrekt berechnet | 1 |\n| alpha_b_event | Fehler-I-Ereignis für B mit $p_0$ korrekt angesetzt | 1 |\n| alpha_b_value | Zugehörige Wahrscheinlichkeit korrekt berechnet | 1 |\n| beta_a_event | Nichtverwerfungsereignis für A bei $p_1$ korrekt angesetzt | 1 |\n| beta_a_value | Zugehörige Wahrscheinlichkeit korrekt berechnet | 1 |\n| beta_b_event | Nichtverwerfungsereignis für B bei $p_1$ korrekt angesetzt | 1 |\n| beta_b_value | Zugehörige Wahrscheinlichkeit korrekt berechnet | 1 |\n| type_i_context | Fehlalarm bei tatsächlich erfülltem $H_0$ im Kontext erklärt | 1 |\n| type_ii_context | Nichtentdeckung bei tatsächlich $p_1=0{,}12$ im Kontext erklärt | 1 |\n| power_a | Teststärke von A bei $p_1$ als Verwerfungswahrscheinlichkeit oder korrektes Komplement bestimmt | 1 |\n| power_b | Teststärke von B bei $p_1$ entsprechend bestimmt | 1 |\n| comparison | Beide Regeln anhand des Fehlalarm-/Nichtentdeckungs-/Stärke-Zielkonflikts ausdrücklich verglichen | 1 |\n| observed_a | A bei $X=9$ richtig angewendet | 1 |\n| observed_b | B bei $X=9$ richtig angewendet | 1 |\n| inference_limit | Testentscheidung als unsichere Entscheidung erläutert, nicht als Beweis oder nachträgliche Hypothesenwahrscheinlichkeit | 1 |\n| routine_choice | Für die Routinekontrolle eine tragfähige Auswahl getroffen | 1 |\n| routine_reason | Beide Routineanforderungen geprüft und die andere Regel anhand der verletzten/erfüllten Bedingung bewertet | 1 |\n| targeted_choice | Für die gezielte Fehlersuche eine tragfähige Auswahl getroffen | 1 |\n| targeted_reason | Beide Anforderungen der Fehlersuche geprüft und die andere Regel anhand der verletzten/erfüllten Bedingung bewertet | 1 |\n\n**Eine normale Gesamtkappung:** Der Gesamtscore beträgt höchstens **14 BE**, wenn eine ganze Kernleistung fehlt: Es wird nur eine der beiden Regeln inhaltlich untersucht; eine verwendbare Behandlung der Fehler-I-Seite beider Regeln fehlt vollständig; eine verwendbare Behandlung der Fehler-II-Seite unter der benannten Alternative fehlt vollständig; eine Aussage zur Teststärke unter dieser Alternative fehlt vollständig (auch eine korrekt interpretierte Komplementaussage ist zulässig); oder die Abgabe enthält insgesamt keinen tragfähigen Vergleich beider Regeln beziehungsweise keine begründete Kontextentscheidung. Ein Vergleich in den Kontextbegründungen zählt ebenso. Es gibt nur diese eine Gesamtkappung, keine Teilbestehen oder zusätzlichen Ergebniszustände.\n\n**Faire Folgearbeit:** Ein lokaler Rechen-, Rundungs-, Index- oder Bezeichnungsfehler ist für sich kein Kappungsgrund. Einen identischen Ausgangsfehler nur einmal an der verursachenden Zeile werten. Danach korrekte Berechnungen zum angegebenen eigenen Ereignis und folgerichtige Vergleiche/Entscheidungen zu den eigenen Zahlen erhalten die entsprechenden Verfahrenspunkte; voneinander unabhängige neue Fehler bleiben bewertbar. Beispielsweise kostet ein falsch ausgewerteter, aber richtig angesetzter $\\beta_A$-Term den Zahlenpunkt; korrekt fortgeführte Komplemente und daraus nachvollziehbar abgeleitete Konsequenzen werden nicht noch einmal wegen derselben Zahl abgewertet. Richtig begründete exakte oder hinreichend genaue alternative Berechnungen sind gleichwertig. Eine falsche Zahl ersetzt umgekehrt keinen vollständig fehlenden Kernnachweis.\n",
+  "solutionContentEn": "# Example solution and ordinary scoring rubric\n\nThis is one possible solution. Equivalent binomial sums, cumulative distribution functions, complement expressions, or justified digital calculations are accepted. The notation below is not a mandatory submission format.\n\n## Error probabilities and test power\n\nThe upper binomial tail probability increases with $p$. For these two right-sided rules, the largest rejection probability under $H_0:p\\leq0.05$ therefore occurs at the boundary $p_0=0.05$.\n\nFor rule A:\n\n$$\n\\alpha_A=P_{0.05}(X\\geq10)\n=1-\\sum_{k=0}^{9}\\binom{100}{k}0.05^k0.95^{100-k}\n\\approx0.0281883.\n$$\n\n$$\n\\beta_A(0.12)=P_{0.12}(X\\leq9)\n=\\sum_{k=0}^{9}\\binom{100}{k}0.12^k0.88^{100-k}\n\\approx0.2256519.\n$$\n\n$$\nG_A(0.12)=P_{0.12}(X\\geq10)\n=1-\\beta_A(0.12)\\approx0.7743481.\n$$\n\nFor rule B:\n\n$$\n\\alpha_B=P_{0.05}(X\\geq8)\\approx0.1279605,\n$$\n\n$$\n\\beta_B(0.12)=P_{0.12}(X\\leq7)\\approx0.0761361,\n\\qquad G_B(0.12)=1-\\beta_B(0.12)\\approx0.9238639.\n$$\n\n| Rule | Type I error at the null boundary | Type II error at $p_1=0.12$ | Test power at $p_1=0.12$ |\n|---|---:|---:|---:|\n| A | $2.8188\\%$ | $22.5652\\%$ | $77.4348\\%$ |\n| B | $12.7960\\%$ | $7.6136\\%$ | $92.3864\\%$ |\n\nA **type I error** triggers an investigation even though the true defect rate is at most $5\\%$. The calculated values concern the worst-case null boundary; they do not guarantee a fixed number of false alarms in a finite series of repetitions.\n\nA **type II error at $p_1$** occurs when the rule does not flag production despite a true defect rate of $12\\%$. Test power is the probability of detecting this particular deviation. Here, $\\beta$ and power are probabilities **under the named alternative**, not probabilities that the alternative is true after observing the data.\n\nB rejects for smaller defect counts. At the same sample size, this produces more false alarms but fewer missed deviations and higher power at $p_1$. The preferred rule therefore depends on the operating objective.\n\n## Observation and contextual decisions\n\nAt $X=9$, A does not reject the null hypothesis and B rejects it. A's non-rejection does not prove $p\\leq0.05$. B's rejection is not certain proof of $p>0.05$ either; the error probabilities describe possible incorrect decisions.\n\n**A is suitable for routine checking:** $\\alpha_A\\approx2.82\\%\\leq5\\%$ and $G_A(0.12)\\approx77.43\\%\\geq75\\%$. B meets the power objective but exceeds the permitted false-alarm probability.\n\n**B is suitable for temporary targeted fault investigation:** $\\alpha_B\\approx12.80\\%\\leq15\\%$ and $G_B(0.12)\\approx92.39\\%\\geq90\\%$. A meets the false-alarm limit but does not achieve the required power. This is a choice between the two given rules for the stated objectives, not a claim of global optimality.\n\n## One total score: 20 points, pass at 15 points\n\nEach row below is worth one point. Evidence may appear anywhere appropriate in the complete submission; the same achievement is counted only once.\n\n| ID | Assessable achievement | Points |\n|---|---|---:|\n| alpha_a_event | Correct type I event for A with $p_0$ | 1 |\n| alpha_a_value | Correct calculation of its probability | 1 |\n| alpha_b_event | Correct type I event for B with $p_0$ | 1 |\n| alpha_b_value | Correct calculation of its probability | 1 |\n| beta_a_event | Correct non-rejection event for A at $p_1$ | 1 |\n| beta_a_value | Correct calculation of its probability | 1 |\n| beta_b_event | Correct non-rejection event for B at $p_1$ | 1 |\n| beta_b_value | Correct calculation of its probability | 1 |\n| type_i_context | Explain a false alarm when $H_0$ is actually satisfied | 1 |\n| type_ii_context | Explain a missed deviation when the true value is $p_1=0.12$ | 1 |\n| power_a | Determine A's power at $p_1$ as a rejection probability or the correct complement | 1 |\n| power_b | Determine B's power at $p_1$ in the same way | 1 |\n| comparison | Explicitly compare both rules through the false-alarm/missed-deviation/power trade-off | 1 |\n| observed_a | Apply A correctly to $X=9$ | 1 |\n| observed_b | Apply B correctly to $X=9$ | 1 |\n| inference_limit | Explain the decision's uncertainty, without presenting it as proof or a posterior hypothesis probability | 1 |\n| routine_choice | Make a defensible choice for routine checking | 1 |\n| routine_reason | Check both routine requirements and evaluate the other rule using the condition it meets or violates | 1 |\n| targeted_choice | Make a defensible choice for targeted fault investigation | 1 |\n| targeted_reason | Check both fault-investigation requirements and evaluate the other rule using the condition it meets or violates | 1 |\n\n**One ordinary overall cap:** The total score is capped at **14 points** if a complete core achievement is missing: only one rule is substantively investigated; usable treatment of the type I side of both rules is entirely absent; usable treatment of the type II side under the named alternative is entirely absent; a statement about test power under that alternative is entirely absent (a correctly interpreted complement statement also counts); or the submission as a whole contains no defensible comparison of both rules or no reasoned contextual decision. Comparison within the contextual reasons counts equally. This is the sole overall cap; there are no separate component passes or additional result states.\n\n**Fair follow-through:** A local arithmetic, rounding, indexing, or labelling error alone does not trigger the cap. Penalize the same originating error only once at the row where it arises. Subsequent correct calculations for the learner's stated event and consistent comparisons/decisions using the learner's values earn the corresponding method points; independent new errors remain assessable. For example, incorrect evaluation of a correctly specified $\\beta_A$ expression loses its numerical point; correctly continued complements and clearly derived consequences are not penalized again for the same value. Correctly justified exact or sufficiently accurate alternative calculations are equivalent. Conversely, an incorrect value does not substitute for an entirely missing core achievement.\n",
+  "scoring": {
+    "maxPoints": 20,
+    "passingPoints": 15,
+    "steps": [
+      {
+        "id": "alpha_a_event",
+        "points": 1,
+        "description": "Fehler-I-Ereignis für A mit $p_0$ korrekt angesetzt",
+        "descriptionEn": "Correct type I event for A with $p_0$"
+      },
+      {
+        "id": "alpha_a_value",
+        "points": 1,
+        "description": "Zugehörige Wahrscheinlichkeit korrekt berechnet",
+        "descriptionEn": "Correct calculation of its probability"
+      },
+      {
+        "id": "alpha_b_event",
+        "points": 1,
+        "description": "Fehler-I-Ereignis für B mit $p_0$ korrekt angesetzt",
+        "descriptionEn": "Correct type I event for B with $p_0$"
+      },
+      {
+        "id": "alpha_b_value",
+        "points": 1,
+        "description": "Zugehörige Wahrscheinlichkeit korrekt berechnet",
+        "descriptionEn": "Correct calculation of its probability"
+      },
+      {
+        "id": "beta_a_event",
+        "points": 1,
+        "description": "Nichtverwerfungsereignis für A bei $p_1$ korrekt angesetzt",
+        "descriptionEn": "Correct non-rejection event for A at $p_1$"
+      },
+      {
+        "id": "beta_a_value",
+        "points": 1,
+        "description": "Zugehörige Wahrscheinlichkeit korrekt berechnet",
+        "descriptionEn": "Correct calculation of its probability"
+      },
+      {
+        "id": "beta_b_event",
+        "points": 1,
+        "description": "Nichtverwerfungsereignis für B bei $p_1$ korrekt angesetzt",
+        "descriptionEn": "Correct non-rejection event for B at $p_1$"
+      },
+      {
+        "id": "beta_b_value",
+        "points": 1,
+        "description": "Zugehörige Wahrscheinlichkeit korrekt berechnet",
+        "descriptionEn": "Correct calculation of its probability"
+      },
+      {
+        "id": "type_i_context",
+        "points": 1,
+        "description": "Fehlalarm bei tatsächlich erfülltem $H_0$ im Kontext erklärt",
+        "descriptionEn": "Explain a false alarm when $H_0$ is actually satisfied"
+      },
+      {
+        "id": "type_ii_context",
+        "points": 1,
+        "description": "Nichtentdeckung bei tatsächlich $p_1=0{,}12$ im Kontext erklärt",
+        "descriptionEn": "Explain a missed deviation when the true value is $p_1=0.12$"
+      },
+      {
+        "id": "power_a",
+        "points": 1,
+        "description": "Teststärke von A bei $p_1$ als Verwerfungswahrscheinlichkeit oder korrektes Komplement bestimmt",
+        "descriptionEn": "Determine A's power at $p_1$ as a rejection probability or the correct complement"
+      },
+      {
+        "id": "power_b",
+        "points": 1,
+        "description": "Teststärke von B bei $p_1$ entsprechend bestimmt",
+        "descriptionEn": "Determine B's power at $p_1$ in the same way"
+      },
+      {
+        "id": "comparison",
+        "points": 1,
+        "description": "Beide Regeln anhand des Fehlalarm-/Nichtentdeckungs-/Stärke-Zielkonflikts ausdrücklich verglichen",
+        "descriptionEn": "Explicitly compare both rules through the false-alarm/missed-deviation/power trade-off"
+      },
+      {
+        "id": "observed_a",
+        "points": 1,
+        "description": "A bei $X=9$ richtig angewendet",
+        "descriptionEn": "Apply A correctly to $X=9$"
+      },
+      {
+        "id": "observed_b",
+        "points": 1,
+        "description": "B bei $X=9$ richtig angewendet",
+        "descriptionEn": "Apply B correctly to $X=9$"
+      },
+      {
+        "id": "inference_limit",
+        "points": 1,
+        "description": "Testentscheidung als unsichere Entscheidung erläutert, nicht als Beweis oder nachträgliche Hypothesenwahrscheinlichkeit",
+        "descriptionEn": "Explain the decision's uncertainty, without presenting it as proof or a posterior hypothesis probability"
+      },
+      {
+        "id": "routine_choice",
+        "points": 1,
+        "description": "Für die Routinekontrolle eine tragfähige Auswahl getroffen",
+        "descriptionEn": "Make a defensible choice for routine checking"
+      },
+      {
+        "id": "routine_reason",
+        "points": 1,
+        "description": "Beide Routineanforderungen geprüft und die andere Regel anhand der verletzten/erfüllten Bedingung bewertet",
+        "descriptionEn": "Check both routine requirements and evaluate the other rule using the condition it meets or violates"
+      },
+      {
+        "id": "targeted_choice",
+        "points": 1,
+        "description": "Für die gezielte Fehlersuche eine tragfähige Auswahl getroffen",
+        "descriptionEn": "Make a defensible choice for targeted fault investigation"
+      },
+      {
+        "id": "targeted_reason",
+        "points": 1,
+        "description": "Beide Anforderungen der Fehlersuche geprüft und die andere Regel anhand der verletzten/erfüllten Bedingung bewertet",
+        "descriptionEn": "Check both fault-investigation requirements and evaluate the other rule using the condition it meets or violates"
+      }
+    ]
+  },
+  "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/03357e70-2280-532f-b629-5dfa31dc44eb/reviewed-execution-contract.json"
+}

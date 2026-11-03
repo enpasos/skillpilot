@@ -118,6 +118,15 @@ try {
 }
 assert.equal(cases, 13)
 
+const liveCanonical = canonical, liveGoals = goals
+{ // Historical V2/V3 fixtures retain only their two historical ordinary R edges.
+  const canonical = structuredClone(liveCanonical)
+  for (const id of ['f2e42af5-67a6-477e-82ea-e65b09cc6cb3', 'cafd6520-c4af-4109-9863-cc49ba6fad4d']) {
+    const goal = canonical.goals.find(goal => goal.id === id)!
+    if (!goal.requires!.includes('1a25ef44-f310-4c23-9ba8-44baec60d3b0')) goal.requires!.push('1a25ef44-f310-4c23-9ba8-44baec60d3b0')
+  }
+  const goals = new Map(canonical.goals.map(goal => [goal.id, goal]))
+
 type ContextSelection = {
   schemaVersion: number; status: string; reviewReceipt: BoundFile; reviewedPlan: BoundFile; taskGoalIds: string[]
   operations: Array<{ viewId: string; yearStructureId: string; expectedAfterYearStructureSha256: string }>
@@ -141,7 +150,7 @@ const readBound = <T>(binding: BoundFile): T => {
   return JSON.parse(bytes.toString('utf8')) as T
 }
 const activeSelection = readBound<ContextSelection>(registry.selections[0])
-assert([1, 2, 3].includes(activeSelection.schemaVersion), 'Only the explicit V1, V2 and V3 contracts are supported.')
+assert([1, 2, 3, 4].includes(activeSelection.schemaVersion), 'Only the explicit V1, V2, V3 and V4 contracts are supported.')
 const v2Selection = readBound<ContextSelection>({
   path: 'curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/rp-g8-sphere-routes-v1/composition-selection.markov-basis-image-v24-carryforward.json',
   sha256: 'aaa5523de863eb187c377488654a19903190d55255b7ed4e9620970762d7a4ba',
@@ -313,6 +322,7 @@ const planV3 = { schemaVersion: 3, canonicalProvenance: v2Plan.canonical, rpCont
 const selectionV3 = { ...structuredClone(v2Selection), schemaVersion: 3, kind: 'existing-assessment-placement' }
 const v3Fixture = mkdtempSync(join(tmpdir(), 'reviewed-rp-v3-placement-'))
 let v3Cases = 0
+let v4Cases = 0
 const v3Write = (path: string, value: unknown): BoundFile => {
   const absolute = resolve(v3Fixture, path)
   mkdirSync(dirname(absolute), { recursive: true })
@@ -491,6 +501,67 @@ try {
   changeYear(changedYear.rootNodes)
   assert.throws(() => applyV3(changedYear, goals), /year anchor/)
   v3Cases++
+
+  if (activeSelection.schemaVersion === 4) {
+    const activePlan = readBound<ContextPlan>(activeSelection.reviewedPlan)
+    const liveRp = collectMathAtomicSupportContext(v2Selection.taskGoalIds, liveGoals)
+    assert.equal(liveRp.supportUnionGoalIds.length, 42)
+    assert.deepEqual(liveRp.tasks.map(task => task.supportGoalIds.length), [41, 41])
+    const liveIds = Object.keys(liveRp.directPrerequisiteIdsByGoalId)
+    assert.equal(liveIds.length, 44)
+    assert(!liveIds.includes('1a25ef44-f310-4c23-9ba8-44baec60d3b0'))
+    const liveInputs = new Map(activePlan.anchorRebase.inputBindings.map(binding => [binding.viewId, readBound<View>(binding)]))
+    const installV4 = (mutate?: (c: FixtureContract, n: FixtureNative) => void) => installV3((c, n, p, s) => {
+      // Contract and native evidence must be independent: corrupting one side
+      // in a negative case must not also mutate the other or the live snapshot.
+      Object.assign(c, structuredClone(liveRp), { schemaVersion: 4, goalObjectSha256ById: Object.fromEntries(liveIds.map(id => [id, hashObject(liveGoals.get(id))])) })
+      Object.assign(n, structuredClone(liveRp), { schemaVersion: 4, goalObjectSha256ById: structuredClone(c.goalObjectSha256ById) })
+      p.schemaVersion = 4
+      p.operations = structuredClone(activePlan.operations)
+      Object.assign(s, structuredClone(activeSelection))
+      s.reviewedPlan = {} as BoundFile
+      s.reviewReceipt = {} as BoundFile
+      mutate?.(c, n)
+    }, receipt => { receipt.schemaVersion = 4 })
+    installV4()
+    for (const [id, input] of liveInputs) {
+      const before = structuredClone(input)
+      const actual = applyReviewedMathAssessmentPlacements(input, liveGoals, repositoryRoot)
+      assert.deepEqual(applyReviewedMathAssessmentPlacements(actual, liveGoals, repositoryRoot), actual)
+      assert.deepEqual(applyV3(input, liveGoals), actual)
+      assert.deepEqual(input, before)
+      const prior = collectCompositionProjectionRoleGoalIds(input.rootNodes, liveGoals)
+      const after = collectCompositionProjectionRoleGoalIds(actual.rootNodes, liveGoals)
+      assert.deepEqual([...after.targetGoalIds].filter(id => !prior.targetGoalIds.has(id)).sort(), liveRp.taskGoalIds)
+      assert.deepEqual([...prior.targetGoalIds].filter(id => !after.targetGoalIds.has(id)), [])
+      assert.deepEqual([...after.prerequisiteOnlyGoalIds].sort(), [...prior.prerequisiteOnlyGoalIds].sort())
+      v4Cases++
+    }
+    const input = liveInputs.values().next().value!
+    installV4((c, n) => { Object.assign(c, rp); Object.assign(n, rp) })
+    assert.throws(() => applyV3(input, liveGoals), /canonical atomic support|whole RP|context/i, 'The old45/43/42 context cannot masquerade as V4.')
+    v4Cases++
+    installV4((c, n) => { delete n.directPrerequisiteIdsByGoalId[liveIds[0]] })
+    assert.throws(() => applyV3(input, liveGoals), /full native direct-relation/)
+    v4Cases++
+    installV4()
+    const changed = new Map(liveGoals), wholeTask = structuredClone(liveGoals.get(liveRp.taskGoalIds[0])!)
+    Object.assign(wholeTask, { description: 'changed whole RP task' }); changed.set(wholeTask.id, wholeTask)
+    assert.throws(() => applyV3(input, changed), /whole RP|contract/i)
+    v4Cases++
+    const indirect = liveRp.tasks[0].supportGoalIds.find(id => !liveRp.tasks[0].effectiveDirectPrerequisiteIds.includes(id))!
+    const parent = new Map(liveGoals); parent.set('v4-extra-parent', { id: 'v4-extra-parent', contains: [liveRp.taskGoalIds[0]], requires: [indirect] })
+    assert.throws(() => applyV3(input, parent), /direct relation/)
+    v4Cases++
+    installV4(c => { c.contextProjectionRolesByViewId[input.viewId].targetGoalIds.pop() })
+    assert.throws(() => applyV3(input, liveGoals), /target\/support roles differ/)
+    v4Cases++
+    installV4(); v3Write('fixture/source.json', { changed: true })
+    assert.throws(() => applyV3(input, liveGoals), /stale bound file/)
+    v4Cases++
+    assert.equal(v4Cases, 9)
+  }
+
 } finally {
   rmSync(v3Fixture, { recursive: true, force: true })
 }
@@ -508,4 +579,6 @@ const aliases = new Map<string, Goal>([['t', { id: 't', requires: ['legacy:a', '
 assert.deepEqual(collectMathAtomicSupportContext(['t'], aliases).directPrerequisiteIdsByGoalId, { a: [], 'ns:b': [], t: ['a', 'ns:b'] })
 aliases.set('other:b', { id: 'other:b' })
 assert.throws(() => collectMathAtomicSupportContext(['t'], aliases), /ambiguous canonical reference/)
-console.log(`Reviewed Mathematics assessment placements passed: ${cases} historical V1 cases; ${contextCases} independent V2 cases; ${contextDriftCases} strict V2 whole-file drift case; ${v3Cases} V3 contract/placement cases; ${installedActiveV3Cases} installed active V3 placement cases; 4 inheritance/cycle/reference checks.`)
+console.log(`Reviewed Mathematics assessment placements passed: ${cases} historical V1 cases; ${contextCases} independent V2 cases; ${contextDriftCases} strict V2 whole-file drift case; ${v3Cases} V3 contract/placement cases; ${installedActiveV3Cases} installed active V3 placement cases; ${v4Cases} exact V4 current-context cases; 4 inheritance/cycle/reference checks.`)
+
+} // Historical V2/V3 fixtures and current installed V4 contract remain separate.

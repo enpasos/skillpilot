@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 4,
+  "verdict": "PASS",
+  "contentVerdict": "PASS",
+  "placementVerdict": "PASS_CURRENT_EXACT_RP_CONTEXT_AND_ANCHORS",
+  "authorIndependent": true,
+  "rpContextVerdict": "PASS",
+  "reviewDate": "2026-11-03",
+  "reviewerAgent": "/root/astra_cuboid_existing_scope",
+  "rpContextContract": {
+    "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-current-description-image/rp-atomic-context-contract.v4.json",
+    "sha256": "7d74d040b01b290f9434da7f00363cd9ec768ce9c3fbe851adc9eea546bb7172"
+  },
+  "approvedViewIds": [
+    "de-rp-gym-math-gk-g8",
+    "de-rp-gym-math-lk-g8",
+    "de-rp-gym-seki-math-g8"
+  ],
+  "approvedTaskGoalIds": [
+    "64f37348-20f7-55b1-82a8-8fc388087577",
+    "926d0551-4537-569e-b6ad-fc33bb17546e"
+  ],
+  "approvedReferenceCount": 6,
+  "inputBindings": [
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-current-description-image/candidate-operations.v4.json",
+      "sha256": "6cdd7f4c82de77b90cc48c62d0d9462b645951e03b30992d048b2d5ef5403464"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-current-description-image/rp-atomic-context-contract.v4.json",
+      "sha256": "7d74d040b01b290f9434da7f00363cd9ec768ce9c3fbe851adc9eea546bb7172"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-current-description-image/native-rp-direct-atomic-context.v4.json",
+      "sha256": "c45ff968f6618c437a3140c2c63a21e3d06a5963c899dd9e79432951d9778084"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_MATHEMATIK_SEKI_RAHMENLEHRPLAN_2007.source-extraction.json",
+      "sha256": "9b419872be53efe0da1f2feae08a0594ac66d10cfd56c36aad78daa3535055fd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_I.pdf",
+      "sha256": "005085fa940a3dfd7619ea274f5e16ee34c50ba452223774aca19fb4025abe61"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-current-description-image/actual-native-origin-and-r-delta.json",
+      "sha256": "3b0bba71ccd6e8e96e9238206759a3cd9cc96b13a680404e22ba973714b558d2"
+    }
+  ],
+  "priorIndependentReview": {
+    "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-after-prerequisite-correction/independent-rp-context-v4-adoption.review.json",
+    "sha256": "e1cf05aaa698eecb50cd3c978da0c84d9acb7854ebf28dd8180132d06410e719"
+  },
+  "approvalScope": "Only the four explicit current-description/image RP4 successor payloads. Reuse the unchanged whole-task and exact placement approval; independently verify the actual current44-object contract and real Native origin. No new source-scope, whole-task or image-quality approval is manufactured.",
+  "exactFourPayloads": [
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-current-description-image/actual-native-origin-and-r-delta.json",
+      "sha256": "3b0bba71ccd6e8e96e9238206759a3cd9cc96b13a680404e22ba973714b558d2"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-current-description-image/rp-atomic-context-contract.v4.json",
+      "sha256": "7d74d040b01b290f9434da7f00363cd9ec768ce9c3fbe851adc9eea546bb7172"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-current-description-image/native-rp-direct-atomic-context.v4.json",
+      "sha256": "c45ff968f6618c437a3140c2c63a21e3d06a5963c899dd9e79432951d9778084"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-current-description-image/candidate-operations.v4.json",
+      "sha256": "6cdd7f4c82de77b90cc48c62d0d9462b645951e03b30992d048b2d5ef5403464"
+    }
+  ],
+  "independentChecks": {
+    "wholeObjects": 44,
+    "unionSupport": 42,
+    "perTaskSupport": [
+      41,
+      41
+    ],
+    "onlyChangedWholeObject": {
+      "goalId": "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+      "oldSha256": "40c9a985d9d778f709af60f1d1b928c90c03c49ea9f1e2cbb2f14a271368068c",
+      "newSha256": "10deba0900467bfdd8b6bf5d83b7c1df5ef7fd9e992bb91a3b5d6772f75a7948",
+      "reason": "The admissibility clarification for inverse-operation checking and separately corrected image metadata do not alter the legitimate RP preparation demand. All44 current complete object hashes independently reproduced."
+    },
+    "unchanged": "Both entire task objects, all44 effective direct relations, both complete support sets, all three operation objects, all three role maps and the six references are unchanged from the approvedV4.",
+    "native": "Rehashed and streamed both actual archives; all161 T/POnly/context/protected/needed/uncovered/endpoint sets and all effective direct R maps are exactly equal. Separately verified all44 relations and exactT/POnly/context membership in each of four actual RP G8 rows.",
+    "execution": "Actual Nativev3 execution exit0,98.49 seconds,8732 inputs and1379 classes unchanged; bound input map confirms measured Canon3e9d6755d645bcd4e8d0e303de6e3529a88c8a8e070fc7a1ebaaaa2ac7e2fe8c.",
+    "provenance": "The raw canonicalProvenance remains the true measured3e9d origin. A later unrelated5743 image-only change outside these44 objects does not pretend to have been measured by that run; the existing loader still validates every currentRP object/relation exactly.",
+    "history": "PriorV3 andV4 contracts, evidence, review receipts and tests remain intact. No loader/test guard is weakened."
+  },
+  "historicalMeasuredEvidence": {
+    "execution": {
+      "path": "tmp/approach-review-20261101/matrix-five-final-native-20261103-v3/candidate.execution.json",
+      "sha256": "356345106289b0960dd86ee9fe4b0eebd56cbbdfd3b9f5d1b2ed0646b4f6be6f"
+    },
+    "archiveSha256": "970258ffc9d6f919cc45b9320fc172eba4f5fb576db639a2551b977ba332e90f",
+    "comparisonPath": "tmp/approach-review-20261101/matrix-five-final-native-20261103-v3/comparison-to-reviewed-graph.json"
+  },
+  "nextStep": "Mechanically bind this real receipt into the pending selection, rehash its registry and policy references, then run the existing targetedRP check and normal producers. This receipt does not assert those future executions.",
+  "claims": {
+    "actualNativeGraphEquivalenceReviewed": true,
+    "newJvmOrNativeRunByReviewer": false,
+    "newImageQualityApproval": false,
+    "rootActivationApproved": false,
+    "m7Accepted": false,
+    "remoteCIAccepted": false,
+    "productionAccepted": false
+  },
+  "remainingMathState": "All161 complete currentMath scopes remain M0-invalid:362 uncoveredIDs/8641 pairs and208 endpointIDs/4345 pairs. Native graph equality is not overall completion acceptance."
+}

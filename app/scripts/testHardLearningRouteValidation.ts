@@ -581,8 +581,12 @@ for (const durationModel of ['G8', 'G9']) {
   assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, cqsProfile as any, {durationModel}, cqsTerminals,
     new Set()), [], 'prerequisite-only or absent curricular assessment does not import a new obligation')
 }
-const ordinaryBound = bindCurricularReviewLandscape(raw, { ...freshLedger, decisions: freshLedger.decisions.map((d: any) =>
-  d.goalId === targetId ? { ...d, sourceFingerprint: fingerprintSemanticKindSourceGoal(raw.goals.find((g: any) => g.id === targetId)) } : d) }, canonicalPath)
+const ordinaryRaw = structuredClone(raw)
+const ordinaryGoal = ordinaryRaw.goals.find((g: any) => g.id === targetId)!
+delete ordinaryGoal.nodeKind
+delete ordinaryGoal.examData
+const ordinaryBound = bindCurricularReviewLandscape(ordinaryRaw, { ...freshLedger, decisions: freshLedger.decisions.map((d: any) =>
+  d.goalId === targetId ? { ...d, sourceFingerprint: fingerprintSemanticKindSourceGoal(ordinaryGoal) } : d) }, canonicalPath)
 assert.deepEqual(collectRouteTerminalAutonomyGoals(ordinaryBound, cqsProfile), [], 'an ordinary endpoint is not a CQS assessment terminal')
 const cqsTask = bound.goals.find(g => g.id === targetId)!
 assert.deepEqual(concreteExamReadinessIssues(cqsTask), [])

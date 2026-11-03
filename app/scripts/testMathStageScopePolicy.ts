@@ -340,3 +340,55 @@ assert.deepEqual(slotApply(g9, unrelated, g9op), g9after); slotGroups.add(15)
 slotGroups.add(16)
 assert.deepEqual([...slotGroups].sort((a, b) => a - b), Array.from({ length: 16 }, (_, i) => i + 1))
 console.log(JSON.stringify({ status: 'PASS', exactExamSlotFixtureGroups: slotGroups.size, checkedApplicationsIncludingRejectedCases: slotChecks, neutralAllScopes: 2, hiddenSupportNodesNeverPromoted: 10, legacyFixturesExecuted: true }))
+
+// A separately reviewed existing ordinary preparation can move before its exam
+// using the same target-preserving placement mechanism, never enroll a target.
+const ordinaryRelocation: MathAssessmentScopeOperation = { id: 'reviewed-ordinary-preparation', viewId: view.viewId,
+  goalIds: ['rate'], action: 'relocate-existing-target', anchorStructureId: 'sek2', label: 'Reviewed preparation', sourceDecision: 'independent-whole-contract-program-decision' }
+const ordinaryMoved = applyMathAssessmentScopeOperations(view, goals, [ordinaryRelocation])
+const oldRoles = collectCompositionProjectionRoleGoalIds(view.rootNodes, goals)
+const newRoles = collectCompositionProjectionRoleGoalIds(ordinaryMoved.rootNodes, goals)
+const existingAtomic = (ids: Iterable<string>) => [...ids].filter(id => !goals.get(id)?.contains?.length).sort()
+assert.deepEqual(existingAtomic(newRoles.targetGoalIds), existingAtomic(oldRoles.targetGoalIds))
+assert.deepEqual(existingAtomic(newRoles.prerequisiteOnlyGoalIds), existingAtomic(oldRoles.prerequisiteOnlyGoalIds))
+assert.deepEqual(view, original)
+assert.deepEqual(applyMathAssessmentScopeOperations(ordinaryMoved, goals, [ordinaryRelocation]), ordinaryMoved)
+assert.throws(() => applyMathAssessmentScopeOperations(view, goals, [{ ...ordinaryRelocation, sourceDecision: '' }]), /author decision/)
+assert.throws(() => applyMathAssessmentScopeOperations(view, goals, [{ ...ordinaryRelocation, goalIds: ['context'] }]), /existing selected target/)
+assert.throws(() => applyMathAssessmentScopeOperations(view, goals, [{ ...ordinaryRelocation, action: 'exclude-target' }]), /separate source\/scope decision/)
+console.log('PASS: reviewed ordinary preparation relocation retains exact roles and refuses enrollment/masking')
+
+// Cross-stage reconstruction reserves resolved outside targets. A support mask
+// does not prove that a selected target is already placed elsewhere.
+const supportMask = { kind: 'goalEntry' as const, goalId: 'rate', projectionRole: 'prerequisiteOnly' as const }
+const explicitRate = { kind: 'goalEntry' as const, goalId: 'rate' }
+const sourceTargetRoles = collectCompositionProjectionRoleGoalIds([explicitRate, supportMask], goals)
+assert(sourceTargetRoles.targetGoalIds.has('rate'), 'Equal-specificity T wins in the actual source.')
+const outsideSupportRoles = collectCompositionProjectionRoleGoalIds([supportMask], goals)
+assert(!outsideSupportRoles.targetGoalIds.has('rate'))
+assert(outsideSupportRoles.prerequisiteOnlyGoalIds.has('rate'))
+const rebuildSelected = (outside: Parameters<typeof collectCompositionProjectionRoleGoalIds>[0], selected: string[], excluded = new Set<string>(), blocked = new Set<string>()) => {
+  const reserved = collectCompositionProjectionRoleGoalIds(outside, goals).targetGoalIds
+  return selectReviewedMathTargetBuckets({ goals, jurisdiction: 'DE-HE', durationModel: 'G8', buckets: { j9: [] as string[] },
+    additionalTargetGoalIds: selected, excludedGoalIds: new Set([...reserved, ...excluded]), blockedTargetGoalIds: blocked, bucketForGoal: () => 'j9' })
+}
+assert.deepEqual(rebuildSelected([supportMask], [...sourceTargetRoles.targetGoalIds]).j9, ['rate'], 'The actual selected source target survives reconstruction despite its outside support mask.')
+assert.deepEqual(rebuildSelected([supportMask], [...outsideSupportRoles.targetGoalIds]).j9, [], 'POnly alone never supplies an authored target or a slot.')
+const outsideTarget = { kind: 'goalEntry' as const, goalId: 'rule' }
+assert.deepEqual(rebuildSelected([supportMask, outsideTarget], ['rate', 'rule']).j9, ['rate'], 'A genuine outside target remains reserved and is not duplicated.')
+const directMask = collectCompositionProjectionRoleGoalIds([{ kind: 'canonicalSubtree', goalId: 'lower' }, supportMask], goals)
+assert(!directMask.targetGoalIds.has('rate') && directMask.prerequisiteOnlyGoalIds.has('rate'), 'A direct POnly mask overrides an inherited target.')
+const nearerMaskNodes = [{ kind: 'canonicalSubtree' as const, goalId: 'upper' }, { kind: 'canonicalSubtree' as const, goalId: 'other-cluster', projectionRole: 'prerequisiteOnly' as const }]
+const nearerMask = collectCompositionProjectionRoleGoalIds(nearerMaskNodes, goals)
+assert(!nearerMask.targetGoalIds.has('upper-only') && nearerMask.prerequisiteOnlyGoalIds.has('upper-only'), 'The nearer subtree mask remains authoritative.')
+const directRecovery = collectCompositionProjectionRoleGoalIds([...nearerMaskNodes, { kind: 'goalEntry', goalId: 'upper-only' }], goals)
+assert(directRecovery.targetGoalIds.has('upper-only'), 'An actual authored direct target keeps its greater specificity.')
+const opaqueCluster = collectCompositionProjectionRoleGoalIds([{ kind: 'goalEntry', goalId: 'lower' }], goals)
+assert.deepEqual([...opaqueCluster.targetGoalIds], ['lower'], 'A goalEntry on a cluster reserves only itself, without raw contains expansion.')
+assert.deepEqual(rebuildSelected([], ['rate'], new Set(['rate'])).j9, [], 'An explicit template exclusion remains excluded.')
+assert.throws(() => rebuildSelected([], ['rate'], new Set(), new Set(['rate'])), /blocked by the reviewed layout/, 'An explicit prerequisite-only override cannot be reenrolled by an additional-target request.')
+const deniedRebuild = applyMathStageScopeRule(view, goals, { ...rule, id: 'source-denied-remains', deniedGoalIds: ['rate'], retainedGoalIds: [], additionalTargetGoalIds: [], relocateGoalIds: [], sourceDecision: 'explicit-negative-template' }, 'sek1', false)
+const deniedRoles = collectCompositionProjectionRoleGoalIds(deniedRebuild.view.rootNodes, goals)
+assert(!deniedRoles.targetGoalIds.has('rate') && deniedRoles.prerequisiteOnlyGoalIds.has('rate'), 'An independently authored denied contract remains a negative scope boundary.')
+assert.deepEqual(view, original, 'Reservation checks do not mutate the authored source.')
+console.log('PASS: cross-stage target reservation retains source T, respects support-mask specificity and preserves explicit exclusions without enrollment')

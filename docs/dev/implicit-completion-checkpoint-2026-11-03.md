@@ -31,6 +31,13 @@ M7-, Deployment- oder vollständige CI-Freigabe.
 - Die SH-Zylinderkorrektur und die gemeinsame Prüfungsrolle sind integriert.
   Die Voraussetzungen der Q4-Prüfung und ihre tatsächlich bewertete Abdeckung
   werden im Lernzielbuchtest getrennt geprüft.
+- Fünf bestehende Kompetenzen zu quadratischen Funktionen und Stochastik haben
+  jetzt vollständige Prüfungsaufgaben mit Lösungen und Bewertungsregeln auf
+  Deutsch und Englisch. Ihre Lernziel-IDs bleiben gleich. Die bestehende
+  Matrixprüfung ist in weiteren fachlich geprüften Lehrplanangeboten platziert.
+  Sechs fachlich falsche Voraussetzungskanten sind entfernt; regulär benötigte
+  Grundlagen bleiben erhalten. Die normale Erzeugung der Länder- und
+  G8/G9-Ansichten bewahrt dabei die tatsächlichen Ziel- und Vorbereitungsrollen.
 
 Die Konzepte und das LaTeX/PDF sind Teil des PR. Der abschließende Abgleich mit
 allen weiteren fachlichen Korrekturen bleibt Bestandteil des Meilensteins.
@@ -52,32 +59,73 @@ Prüfungsstart-, Lernkarten-, Coach-, Projektions- und Plangrenzen.
 [Ausführungsnachweis](../qa-ci/evidence/curriculum-completion-integrity/2026-11-03/integrated-normal-frontier/execution.json).
 Dies ist ein gezielter Nachlauf, kein vollständiger Backend- oder CI-PASS.
 
-Die vollständige Mathematik-Datenmessung nach der SH-Korrektur schließt 56
-ungedeckte Ziel-Angebots-Paare und 16 Endpunktpaare, ohne neue hinzuzufügen.
-Es bleiben **378 unterschiedliche ungedeckte Ziel-IDs / 9.762
-Ziel-Angebots-Paare und 214 gewöhnliche Endpunkt-IDs**. Alle **161 Angebote**
+Nach der SH-Korrektur verblieben 378 ungedeckte Ziel-IDs und 9.762
+Ziel-Angebots-Paare. Das inzwischen übernommene Matrix-/Fünf-Aufgaben-Paket
+schließt davon weitere **1.121 Ziel-Angebots-Paare und 690 Endpunktpaare**,
+ohne neue Lücken oder Zielverluste hinzuzufügen. Aktuell verbleiben
+**362 unterschiedliche ungedeckte Ziel-IDs / 8.641 Ziel-Angebots-Paare und
+208 gewöhnliche Endpunkt-IDs / 4.345 Endpunktpaare**. Alle **161 Angebote**
 besitzen weiterhin ungedeckte Routen. Der Mathematik-Corpus ist deshalb rot.
 
-Die GitHub-CI für `d0877886a7` besteht die OpenAI-MCP-Apps-, Claude-, Gemini-
-und OAuth-Prüfungen. Im Completion-Kern bestehen 479 von 484 Tests. Die vier
-positiven vollständigen Mathematik-Browserfälle sind durch die ungültige
-Datenbasis blockiert. Der Restart-Fall scheitert bereits beim erstmaligen
-Auswählen des Profils in `Lane.createLearner`, ebenfalls vor seinem eigentlichen
-Neustartszenario. Dieser Lauf belegt keinen zusätzlichen Fehler beim neutralen
-Verlassen eines veralteten Workflows. Der Ressourcenfehler beim Start des realen Mathematik-
-MCP-Tests ist im Workflow korrigiert: Der zusätzliche reale Test besteht
-mit dem normalen Gradle-Ressourcen-/Buildprozess (ein Fall, keine Skips).
-Die neun Workflow-Kontrakttests bestehen ebenfalls. Keine dieser Grenzen ist durch einen
-lokalen Teilnachlauf oder private Aufgabenentwürfe erledigt.
+Die acht abschließenden Generator-, Quellen-, Rollen- und Populationstests
+bestehen. Nach dem Import der 363 geprüften Dateien stimmen alle 8.732
+Runtime-Eingaben mit dem tatsächlichen Native-Nachlauf über 161 Angebote und
+46 Kursvereinigungen überein. Das unabhängige Astra-Review und der normale
+Lernzielbuchtest sind ebenfalls abgeschlossen. Diese begrenzte Verbesserung
+ist keine M7- oder vollständige CI-Freigabe.
+[Messung und Importnachweis](../qa-ci/evidence/curriculum-completion-integrity/2026-11-03/matrix-and-five-forms/README.md).
+
+Im [GitHub-Lauf für `8899fb212c`](https://github.com/enpasos/skillpilot/actions/runs/41707073546)
+besteht der reale vollständige Mathematik-MCP-Prüfungsablauf einschließlich
+bestätigter binärer Mastery. Die strenge Prüfung aller 161 Mathematikangebote
+bleibt wegen der tatsächlichen Routenlücken rot. Der Mathematikjob erreicht
+diese Tests jetzt wieder: Die drei Completion-Jobs lassen beim Checkout
+den dort unbenötigten Spiegel der Lernbilder aus, rund 4,8 GiB pro Job.
+Alle funktionalen Corpusinputs und die Prüfanforderungen bleiben erhalten.
+Die lokalen neun Workflow- und 28 Corpusbericht-/Eingabetests bestehen.
+Der Cockpit-Job besteht einschließlich echter Browsernavigation. Im Kernjob
+laufen 484 Tests, davon scheitern fünf Browser-/Neustartfälle: Ihre bisherigen
+Voraussetzungen erwarten einen gültigen Mathematiklehrplan, den die neue
+Integritätsprüfung wegen der vorhandenen Routenlücken zurückweist. Die
+Transport-Testverträge werden getrennt von den fachlichen Datenlücken geprüft.
+Dies ist keine vollständige CI-Abnahme.
+
+Commit `93adc9f653` beschränkt zusätzlich die Edge- und Action-Checkouts auf
+ihre tatsächlich benötigten Eingaben. Alle bestehenden Jobkommandos wurden
+isoliert ausgeführt; die vorbestehende lokale Nginx-Syntaxprüfung bleibt ohne
+installiertes Nginx übersprungen. Keine Prüfanweisung wurde entfernt. Der
+zugehörige [GitHub-Lauf](https://github.com/enpasos/skillpilot/actions/runs/41711435675)
+bestätigt beide Jobs als erfolgreich; die übrigen Jobs sind damit nicht abgenommen.
+
+Commit `c63ea20e1e` beschränkt auch den OpenAI-MCP-Checkout. Alle 2.575
+versionierten Runtime-JSON-Eingaben einschließlich der 270 Bildmetadaten bleiben
+erhalten; ihr Revisionshash stimmt mit dem vollständigen Git-Bestand überein.
+Die 242 lokalen Tests bestehen ohne Skips. Der entsprechende OpenAI-MCP-Job
+im [GitHub-Lauf](https://github.com/enpasos/skillpilot/actions/runs/41712066230)
+ist ebenfalls erfolgreich. Veröffentlichte Pluginartefakte bleiben unverändert.
+
+Commit `d201101062` trennt die Ablaufprüfungen vom wechselnden fachlichen
+Corpuszustand. Browser und Neustart verwenden einen gültigen dateibasierten
+Testlehrplan mit 916 Targets und 139 Prüfungen; produktive Loader, Compiler,
+Controller, Datenbanken und MCP bleiben beteiligt. Ein zusätzlicher Test ergänzt
+eine isolierte Kopie der echten Mathematikdaten um ein bekanntes ungedecktes
+Ziel. Er prüft die fehlende implizite Gutschrift sowie normale Lernwege und
+gebundene Prüfungsstarts einschließlich der Besitz- und Revisionsgrenzen.
+Alle sechs Tests bestehen lokal ohne Skips; der Neustart verwendet zwei echte
+Boots mit PostgreSQL 18.1. PostgreSQL 15 bleibt der unveränderten GitHub-CI
+vorbehalten. Der Kernjob im [GitHub-Lauf für diesen Commit](https://github.com/enpasos/skillpilot/actions/runs/41715062053)
+ist inzwischen auch mit PostgreSQL 15 erfolgreich. Die strenge
+Mathematik-Corpusprüfung bleibt wegen der Datenlücken rot und wird dadurch
+nicht ersetzt.
 
 ## Nächste fachliche Pakete
 
-Die fünf vorbereiteten Aufgabenformen für quadratische Funktionen und
-Stochastik behalten ihre bestehenden Lernziel-IDs und unveränderten
-Inhaltsfreigaben. Ihre Programmplätze und Datenbindungen werden gemeinsam
-fertiggestellt. Parallel werden weitere fachlich legitime Plätze einer bereits
-vorhandenen Matrixprüfung geprüft. Mechanisch vorhandene Voraussetzungen sind
-Suchkandidaten und ersetzen keine Quellen- oder Erwerbsfolgeentscheidung.
+Als nächstes werden zwei bereits inhaltlich geprüfte Geometrieaufgaben und
+ihre tatsächlichen Erwerbswege zunächst für Thüringen Sekundarstufe I
+fertiggestellt. Fehlende Grundlagen dürfen nicht nur als unsichtbare
+Vorbereitung ergänzt werden, wenn der Lehrplan sie selbst als Lernziele
+vorsieht. Mechanisch vorhandene Voraussetzungen sind Suchkandidaten und
+ersetzen keine Quellen- oder Erwerbsfolgeentscheidung.
 
 Der Mathematik-Meilenstein verlangt gültige vollständige Angebote, die
 bestehenden M7-Grenzen und bestandene erforderliche GitHub-Checks des konkreten

@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:2bb218186a79d1ec6d88031f3d638bab71bec209fc2e81b60ddc48dee9c0d0fb",
+  "reviewInputFingerprint": "sha256:6181c7984ff1b7790c16616bded89204185c2c45fbe7be0a494e2f2c1d05e2cc",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-matrix-five-three-revised-context-20261103-v1-a",
+      "roundId": "mathematik-matrix-five-three-revised-context-20261103-v1-first-pass-a",
+      "independenceGroupId": "mathematik-matrix-five-three-revised-context-20261103-v1-independent-a",
+      "runIds": [
+        "mathematik-matrix-five-three-revised-context-20261103-v1-first-pass-a.batch-001.sol-ultra-review"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6.1-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-matrix-five-three-revised-context-20261103-v1-b",
+      "roundId": "mathematik-matrix-five-three-revised-context-20261103-v1-first-pass-b",
+      "independenceGroupId": "mathematik-matrix-five-three-revised-context-20261103-v1-independent-b",
+      "runIds": [
+        "mathematik-matrix-five-three-revised-context-20261103-v1-first-pass-b.batch-001.astra-ultra-20261103T194049Z"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6-astra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+      "firstRecordId": "mathematik-matrix-five-three-revised-context-20261103-v1-first-pass-a.batch-001.sol-ultra-review.record-001",
+      "secondRecordId": "mathematik-matrix-five-three-revised-context-20261103-v1-first-pass-b.batch-001.astra-ultra-20261103T194049Z.cafd6520-c4af-4109-9863-cc49ba6fad4d",
+      "firstRunId": "mathematik-matrix-five-three-revised-context-20261103-v1-first-pass-a.batch-001.sol-ultra-review",
+      "secondRunId": "mathematik-matrix-five-three-revised-context-20261103-v1-first-pass-b.batch-001.astra-ultra-20261103T194049Z",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "325771e1-602d-4bca-a199-a8f39a2d3dee",
+      "firstRecordId": "mathematik-matrix-five-three-revised-context-20261103-v1-first-pass-a.batch-001.sol-ultra-review.record-002",
+      "secondRecordId": "mathematik-matrix-five-three-revised-context-20261103-v1-first-pass-b.batch-001.astra-ultra-20261103T194049Z.325771e1-602d-4bca-a199-a8f39a2d3dee",
+      "firstRunId": "mathematik-matrix-five-three-revised-context-20261103-v1-first-pass-a.batch-001.sol-ultra-review",
+      "secondRunId": "mathematik-matrix-five-three-revised-context-20261103-v1-first-pass-b.batch-001.astra-ultra-20261103T194049Z",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5743b8f9-86cb-4e24-8859-351708d070ab",
+      "firstRecordId": "mathematik-matrix-five-three-revised-context-20261103-v1-first-pass-a.batch-001.sol-ultra-review.record-003",
+      "secondRecordId": "mathematik-matrix-five-three-revised-context-20261103-v1-first-pass-b.batch-001.astra-ultra-20261103T194049Z.5743b8f9-86cb-4e24-8859-351708d070ab",
+      "firstRunId": "mathematik-matrix-five-three-revised-context-20261103-v1-first-pass-a.batch-001.sol-ultra-review",
+      "secondRunId": "mathematik-matrix-five-three-revised-context-20261103-v1-first-pass-b.batch-001.astra-ultra-20261103T194049Z",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

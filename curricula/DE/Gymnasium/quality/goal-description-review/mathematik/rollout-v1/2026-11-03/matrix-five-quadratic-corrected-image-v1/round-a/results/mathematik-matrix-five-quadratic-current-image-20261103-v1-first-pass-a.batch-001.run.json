@@ -1,0 +1,42 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-first-pass-a.batch-001.sol-ultra-review",
+  "campaignId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-a",
+  "roundId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-first-pass-a",
+  "batchId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:20afa393da7627c6b23707163b13074326ebd2e9c43cfa20ecae3e25c10052f6",
+  "bundleFingerprint": "sha256:a38e14bb8895e7aa364605ed9439cbf52ff40ea907e95e373158060bc04f12eb",
+  "bookDigest": "sha256:e7d4d6aadb4776a8c547a31474a8db52800e656976c421153225cff3db6592e3",
+  "provider": "openai",
+  "model": "gpt-6.1-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:de78f55b6de544cb2985d97d51417e3bd5273a80e5d5bed56b95967151532673",
+  "independenceGroupId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5743b8f9-86cb-4e24-8859-351708d070ab"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:20afa393da7627c6b23707163b13074326ebd2e9c43cfa20ecae3e25c10052f6"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-11-03T19:55:40.116309268Z",
+  "completedAt": "2026-11-03T19:56:17.009246Z",
+  "status": "completed",
+  "outputDigest": "sha256:e3b59d77c27ee726049bd635fbeff3d1fff093d5c5094763e4b82c71699ba254",
+  "toolchainVersion": "codex-goal-description-review-v2"
+}

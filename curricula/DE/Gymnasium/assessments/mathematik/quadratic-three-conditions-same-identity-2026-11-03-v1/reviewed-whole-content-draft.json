@@ -1,0 +1,121 @@
+{
+  "candidateKey": "quadratic-three-conditions",
+  "status": "PRIVATE_WHOLE_CONTENT_DRAFT_PENDING_INDEPENDENT_REVIEW_NO_MATERIALIZATION",
+  "title": "Eine quadratische Funktion aus drei Punkten mit einem LGS bestimmen",
+  "titleEn": "Determine a quadratic function from three points using a system",
+  "proposedRequires": [
+    "5743b8f9-86cb-4e24-8859-351708d070ab"
+  ],
+  "proposedCoveredGoalIds": [
+    "5743b8f9-86cb-4e24-8859-351708d070ab"
+  ],
+  "examData": {
+    "reviewStatus": "draft",
+    "taskContent": "Der Graph einer quadratischen Funktion verläuft durch die drei Punkte\n$$P=(0,1),\\qquad Q=(2,3),\\qquad R=(4,1).$$\nVerwende den Ansatz $f(x)=ax^2+bx+c$. Die Koeffizienten $a,b,c$ sind zunächst unbekannt.\n\n**1 · Aus den Punkten ein Gleichungssystem aufstellen (3 BE)**\n\nÜbersetze jede der drei Punktbedingungen in eine Gleichung für $a,b,c$. Gib das gesamte lineare Gleichungssystem an.\n\n**2 · Das System lösen (6 BE)**\n\nLöse dein Gleichungssystem systematisch und zeige die wesentlichen Rechenschritte. Gib die Koeffizienten und eine vollständige Funktionsgleichung an. Du kannst beispielsweise ein Einsetzungs- oder Additionsverfahren verwenden; jedes mathematisch passende Systemlösungsverfahren ist zulässig.\n\n**3 · Das Ergebnis kontrollieren (3 BE)**\n\nPrüfe deinen Funktionsterm an allen drei ursprünglichen Punkten, indem du einsetzt und mit dem jeweiligen gegebenen Funktionswert vergleichst.\n\n**4 · Das Vorgehen algorithmisch erklären (4 BE)**\n\nErläutere dein Vorgehen als wiederholbare Folge von Schritten, mit der eine andere Person aus drei geeigneten Punktbedingungen die Koeffizienten bestimmen und das Ergebnis kontrollieren kann. Eine kurze verständliche Erklärung oder entsprechende Kommentare direkt an deiner Rechnung genügen.",
+    "taskContentEn": "The graph of a quadratic function passes through the three points\n$$P=(0,1),\\qquad Q=(2,3),\\qquad R=(4,1).$$\nUse the form $f(x)=ax^2+bx+c$. The coefficients $a,b,c$ are initially unknown.\n\n**1 · Form a system from the points (3 points)**\n\nTranslate each of the three point conditions into an equation for $a,b,c$. State the complete system of linear equations.\n\n**2 · Solve the system (6 points)**\n\nSolve your system systematically and show the main calculation steps. State the coefficients and a complete equation for the function. For example, you may use substitution or elimination; any mathematically suitable method of solving the system is accepted.\n\n**3 · Check the result (3 points)**\n\nCheck your function at all three original points by substituting and comparing with the corresponding given function value.\n\n**4 · Explain the procedure algorithmically (4 points)**\n\nExplain your approach as a repeatable sequence of steps that another person could use to determine the coefficients from three suitable point conditions and check the result. A concise clear explanation or corresponding comments directly alongside your calculation suffice.",
+    "solutionContent": "**1 · Punktbedingungen**\n\nEin Punkt $(x,y)$ liegt auf dem Graphen, wenn $f(x)=y$ gilt. Einsetzen der drei gegebenen Koordinatenpaare liefert das LGS in den zunächst unbekannten Koeffizienten:\n$$\\begin{aligned}\n\\text{I:}\\quad &c=1,\\\\\n\\text{II:}\\quad &4a+2b+c=3,\\\\\n\\text{III:}\\quad &16a+4b+c=1.\n\\end{aligned}$$\nDie erste Punktbedingung bestimmt hier sofort $c$. Das ist eine zulässige erste Reduktion des selbst aufgestellten Dreivariablensystems. Die Form $0a+0b+c=1$ ist gleichwertig.\n\n**2 · Eine mögliche systematische Lösung**\n\nSetze $c=1$ in II und III ein. Es bleiben\n$$4a+2b=2,\\qquad 16a+4b=0.$$\nTeilen durch $2$ beziehungsweise $4$ ergibt\n$$2a+b=1,\\qquad 4a+b=0.$$\nSubtrahiere die erste dieser beiden Gleichungen von der zweiten. Damit verschwindet $b$:\n$$2a=-1,\\qquad a=-\\frac12.$$\nRückeinsetzen in $2a+b=1$ liefert $-1+b=1$, also $b=2$. Mit $c=1$ folgt\n$$f(x)=-\\frac12x^2+2x+1.$$\nGleichwertige Systemlösungen sind ausdrücklich zulässig, etwa aus $4a+2b=2$ zunächst $b=1-2a$ zu bestimmen und in die andere Gleichung einzusetzen. Auch die direkte Kombination der beiden reduzierten Gleichungen zu $8a=-4$ ist gleichwertig. Die abschließende Form $f(x)=-\\frac12(x-2)^2+3$ ist ebenfalls richtig, wenn die verlangte LGS-Herleitung zuvor erkennbar geleistet wurde. Ein Symmetriegedanke kann die Systemlösung kontrollieren, ersetzt aber deren ausdrücklich verlangte Durchführung nicht.\n\n**3 · Kontrolle an den ursprünglichen Punkten**\n\n$$\\begin{aligned}\nf(0)&=1,\\\\\nf(2)&=-\\frac12\\cdot4+2\\cdot2+1=-2+4+1=3,\\\\\nf(4)&=-\\frac12\\cdot16+2\\cdot4+1=-8+8+1=1.\n\\end{aligned}$$\nDamit erfüllt der Term alle drei gegebenen Punktbedingungen. Gleichwertig ist die numerische Kontrolle aller drei ursprünglichen LGS-Gleichungen nach Einsetzen der gefundenen Koeffizienten.\n\n**4 · Wiederholbares Verfahren**\n\nFür jeden Punkt setze ich seine $x$-Koordinate in $ax^2+bx+c$ ein und setze den Ausdruck gleich seiner $y$-Koordinate. So erhalte ich drei gleichzeitig zu erfüllende lineare Gleichungen für die Koeffizienten. Durch Einsetzen bereits bestimmter Größen oder durch passende Gleichungskombinationen entferne ich schrittweise Unbekannte. Sobald eine Unbekannte bestimmt ist, setze ich ihren Wert in frühere Gleichungen zurück und gewinne die übrigen Koeffizienten. Schließlich baue ich den Funktionsterm und prüfe durch Einsetzen, ob er die ursprünglichen Punktbedingungen erfüllt. Hier ist $c$ sofort bestimmt; danach werden $b$ eliminiert, $a$ berechnet und $b$ zurückgewonnen.\n\nDiese kurze Beschreibung ist eine mögliche Erklärung. Gleichwertige mathematische Kommentare an den tatsächlichen Umformungen, etwa „$c$ in die beiden übrigen Bedingungen einsetzen“, „Gleichungen subtrahieren, damit $b$ wegfällt“, „$a$ zurückeinsetzen“ und eine entsprechend erklärte Kontrolle, genügen. Es sind weder ein bestimmter Gaußalgorithmus noch Programmcode oder ein allgemeiner Eindeutigkeitsbeweis verlangt.\n\n**Normale Gesamtbewertung und Kappung:** Die Teilpunkte ergeben eine einzige Rohsumme von höchstens 16 BE. Die einzige Bestehensschwelle beträgt 12 BE. Vor diesem Vergleich wird die Gesamtpunktzahl auf höchstens 11 BE begrenzt, wenn über die gesamte eingereichte Arbeit eine der folgenden Kernhandlungen fehlt oder nur auf einem grundlegend ungeeigneten Modell beruht:\n\n- Es ist kein selbst aus den Punktbedingungen aufgestelltes LGS mit den zunächst drei unbekannten Koeffizienten erkennbar.\n- Dieses LGS wird nicht erkennbar systematisch zur Bestimmung der Koeffizienten verwendet; eine reine Ein-Parameter-Symmetrie- oder Scheitellösung ersetzt die verlangte LGS-Handlung nicht.\n- Es fehlt jede fachlich sinnvolle konkrete Kontrolle, bei der gefundene Koeffizienten beziehungsweise der gefundene Term in wenigstens eine der ursprünglichen Punktbedingungen zurückeingesetzt und mit dem gegebenen Wert verglichen werden.\n- Es fehlt jede nachvollziehbare algorithmische Erläuterung einer wiederholbaren Vorgehensweise; richtige Endwerte oder bloße Verfahrensnamen ohne erklärte Schritte genügen dafür nicht.\n\nDie Kappung verlangt keine fehlerfreie oder wortgleiche Musterlösung. Eine knappe richtige Erklärung, eine andere Reihenfolge der Unbekannten oder ein anderes geeignetes LGS-Verfahren zählen gleichwertig. Fachliche Leistungen zählen überall in der Abgabe, auch als Kommentare an der Rechnung; fehlende Teilnummern oder eine nicht wiederholte Erklärung lösen keine Kappung aus. Eine klar erkennbare Punktgleichung kann ebenso in den Lösungsschritten stehen. Die sofortige Bestimmung von $c$ aus der ersten selbst aufgestellten Gleichung bleibt eine Drei-Unbekannten-Systemlösung.\n\nEinen isolierten Rechen-, Vorzeichen- oder Abschreibfehler nur einmal abziehen. Richtig ausgeführte Folgeoperationen und eine zutreffende Feststellung, dass eine Probe nicht passt, erhalten den dafür vorgesehenen Kredit; falsche Gleichheiten werden nicht als richtig gewertet. Ein einzelner fehlender oder fehlerhafter Punktcheck ist ein Teilpunktverlust und keine pauschale Kappung, wenn eine echte Kontrolle vorhanden ist. Einzelne Lücken in einer erkennbar sinnvollen Verfahrensbeschreibung sind ebenfalls nach der Rubrik zu bewerten. Es gibt genau eine Gesamtpunktzahl und ein binäres Ergebnis, keine Teilpassfelder oder zusätzliche Voraussetzungsevidenz. Diese gewöhnliche Rubrik des neuen Auftrags ändert keine Graphregel und qualifiziert bestehende Mastery nicht nach. Nur verlässlich lesbare eingereichte Arbeit bewerten; keine nicht gezeigten Leistungen unterstellen.",
+    "solutionContentEn": "**1 · Point conditions**\n\nA point $(x,y)$ lies on the graph when $f(x)=y$. Substituting the three given coordinate pairs gives the system in the initially unknown coefficients:\n$$\\begin{aligned}\n\\text{I:}\\quad &c=1,\\\\\n\\text{II:}\\quad &4a+2b+c=3,\\\\\n\\text{III:}\\quad &16a+4b+c=1.\n\\end{aligned}$$\nThe first point condition immediately determines $c$ in this example. This is a valid first reduction of the independently formulated three-variable system. The form $0a+0b+c=1$ is equivalent.\n\n**2 · One possible systematic solution**\n\nSubstitute $c=1$ into II and III, leaving\n$$4a+2b=2,\\qquad 16a+4b=0.$$\nDivide by $2$ and $4$, respectively, to obtain\n$$2a+b=1,\\qquad 4a+b=0.$$\nSubtract the first of these equations from the second to eliminate $b$:\n$$2a=-1,\\qquad a=-\\frac12.$$\nSubstituting back into $2a+b=1$ gives $-1+b=1$, hence $b=2$. Together with $c=1$, this yields\n$$f(x)=-\\frac12x^2+2x+1.$$\nEquivalent ways of solving the system are accepted, such as first obtaining $b=1-2a$ from $4a+2b=2$ and substituting it into the other equation. Directly combining the two reduced equations to obtain $8a=-4$ is also equivalent. The final form $f(x)=-\\frac12(x-2)^2+3$ is equally correct when the required derivation using a system has been shown. Symmetry may check the system solution but does not replace the explicitly requested solution of the system.\n\n**3 · Check against the original points**\n\n$$\\begin{aligned}\nf(0)&=1,\\\\\nf(2)&=-\\frac12\\cdot4+2\\cdot2+1=-2+4+1=3,\\\\\nf(4)&=-\\frac12\\cdot16+2\\cdot4+1=-8+8+1=1.\n\\end{aligned}$$\nThe expression therefore satisfies all three given point conditions. Numerically checking all three original system equations after substituting the coefficients is equally acceptable.\n\n**4 · Repeatable procedure**\n\nFor each point, I substitute its $x$-coordinate into $ax^2+bx+c$ and set the expression equal to its $y$-coordinate. This gives three simultaneous linear equations for the coefficients. By substituting quantities already determined, or by taking suitable combinations of equations, I remove unknowns step by step. Once an unknown is determined, I substitute its value into earlier equations to recover the remaining coefficients. Finally, I construct the function expression and substitute to check that it satisfies the original point conditions. Here $c$ is determined immediately; then $b$ is eliminated, $a$ is calculated, and $b$ is recovered.\n\nThis short description is one possible explanation. Equivalent mathematical comments alongside the actual transformations suffice, such as “substitute $c$ into the other two conditions”, “subtract equations to eliminate $b$”, “substitute $a$ back”, and a correspondingly explained check. Neither a particular Gaussian algorithm, program code nor a general proof of uniqueness is required.\n\n**Ordinary total score and cap:** Partial credit adds up to one raw score out of 16. The single passing threshold is 12. Before this comparison, cap the total at 11 if any of the following core actions is absent across the entire submission or based only on a fundamentally unsuitable model:\n\n- No independently formulated system from the point conditions with the three initially unknown coefficients is evident.\n- The system is not visibly used in a systematic way to determine the coefficients; a purely one-parameter symmetry or vertex solution does not replace the required system-based work.\n- There is no mathematically meaningful concrete check substituting the obtained coefficients or expression back into at least one original point condition and comparing with its given value.\n- There is no understandable algorithmic explanation of a repeatable procedure; correct final values or merely naming methods without explaining steps is insufficient.\n\nThe cap does not require a flawless answer or wording matching the reference. A concise correct explanation, a different order of unknowns, or a different suitable system-solving method receive equal credit. Relevant work anywhere in the submission counts, including comments alongside calculations; missing part numbers or an explanation not repeated separately do not trigger the cap. A clearly identifiable point equation may appear within the solution steps. Immediately determining $c$ from the first independently formulated equation still belongs to solving the three-variable system.\n\nDeduct for an isolated arithmetic, sign or copying error only once. Correctly executed follow-through and correctly identifying that a check fails earn the relevant credit; do not treat false equalities as correct. A single missing or erroneous point check loses partial credit and does not automatically trigger the cap if a genuine check is present. Individual gaps within an otherwise meaningful procedure explanation are also graded by the rubric. There is one total score and one binary result, with no part-pass fields or additional prerequisite evidence. This ordinary rubric for the new task changes no graph rule and does not requalify existing mastery. Grade only reliably legible submitted work; do not assume work not shown.",
+    "coveredGoalIds": [
+      "5743b8f9-86cb-4e24-8859-351708d070ab"
+    ],
+    "scoring": {
+      "maxPoints": 16,
+      "passingPoints": 12,
+      "steps": [
+        {
+          "id": "point-P",
+          "points": 1,
+          "description": "P richtig in eine Koeffizientengleichung übersetzt: c=1; 0a+0b+c=1 ist gleichwertig.",
+          "descriptionEn": "Correctly translates P into the coefficient equation c=1; 0a+0b+c=1 is equivalent."
+        },
+        {
+          "id": "point-Q",
+          "points": 1,
+          "description": "Q richtig übersetzt: 4a+2b+c=3.",
+          "descriptionEn": "Correctly translates Q: 4a+2b+c=3."
+        },
+        {
+          "id": "point-R",
+          "points": 1,
+          "description": "R richtig übersetzt: 16a+4b+c=1. Die drei Bedingungen beziehen sich auf dieselben unbekannten Koeffizienten.",
+          "descriptionEn": "Correctly translates R: 16a+4b+c=1. The three conditions concern the same unknown coefficients."
+        },
+        {
+          "id": "substitute-c",
+          "points": 1,
+          "description": "Die durch die erste Bedingung bestimmte Größe c tatsächlich in die übrigen Gleichungen eingesetzt; ein gleichwertiger erster Eliminationsschritt zählt ebenfalls.",
+          "descriptionEn": "Actually substitutes c from the first condition into the remaining equations; accept an equivalent first elimination step."
+        },
+        {
+          "id": "reduced-system",
+          "points": 1,
+          "description": "Zwei geeignete verbleibende lineare Bedingungen nachvollziehbar erhalten, etwa 4a+2b=2 und 16a+4b=0 oder skalierte Äquivalente. Folgefehlerregel beachten.",
+          "descriptionEn": "Traceably obtains two suitable remaining linear conditions, such as 4a+2b=2 and 16a+4b=0 or scaled equivalents. Apply the follow-through rule."
+        },
+        {
+          "id": "eliminate-and-a",
+          "points": 2,
+          "description": "Gültiger nachvollziehbarer weiterer Einsetzungs-/Eliminationsschritt 1; a=-1/2 korrekt 1. Gleichwertige Reihenfolge und Verfahren anerkennen.",
+          "descriptionEn": "Valid traceable further substitution or elimination step 1; correct a=-1/2 1. Accept an equivalent order and method."
+        },
+        {
+          "id": "back-substitute-b",
+          "points": 1,
+          "description": "Die weitere Unbekannte durch Rückeinsetzen bestimmt: hier b=2. Gleichwertige umgekehrte Reihenfolge anerkennen.",
+          "descriptionEn": "Determines the further unknown by substitution back: here b=2. Accept an equivalent reversed order."
+        },
+        {
+          "id": "function-equation",
+          "points": 1,
+          "description": "Vollständigen Funktionsterm aus den bestimmten Koeffizienten zusammengestellt; bei fehlerfreier Vorarbeit -x^2/2+2x+1 oder eine äquivalente Form. Konsistente Folgearbeit nicht nochmals für denselben Fehler abwerten.",
+          "descriptionEn": "Constructs a complete function expression from the determined coefficients; with error-free earlier work, -x^2/2+2x+1 or an equivalent form. Do not penalise consistent follow-through again for the same error."
+        },
+        {
+          "id": "check-P",
+          "points": 1,
+          "description": "Term oder gefundene Koeffizienten in die ursprüngliche P-Bedingung eingesetzt und mit 1 verglichen. Eine richtig erkannte Abweichung bei Folgefehler zählt als Kontrolle.",
+          "descriptionEn": "Substitutes the expression or obtained coefficients into the original P condition and compares with 1. Correctly recognising a discrepancy after an earlier error counts as a check."
+        },
+        {
+          "id": "check-Q",
+          "points": 1,
+          "description": "Ursprüngliche Q-Bedingung durch tatsächliches Einsetzen und Vergleich mit 3 kontrolliert. Folgefehler und zutreffende Fehlererkennung fair bewerten.",
+          "descriptionEn": "Checks the original Q condition by actual substitution and comparison with 3. Credit sound follow-through and correctly identifying an error."
+        },
+        {
+          "id": "check-R",
+          "points": 1,
+          "description": "Ursprüngliche R-Bedingung durch tatsächliches Einsetzen und Vergleich mit 1 kontrolliert. Keine Wiederholung nötig, wenn diese Kontrolle anderswo bereits erkennbar steht.",
+          "descriptionEn": "Checks the original R condition by actual substitution and comparison with 1. No repetition is needed if that check is already clearly present elsewhere."
+        },
+        {
+          "id": "algorithm-translate",
+          "points": 1,
+          "description": "Erklärt, wie je ein Punkt durch Einsetzen von x und Zuordnen von y eine Gleichung für dieselben Koeffizienten liefert. Verständliche mathematische Kommentare zählen.",
+          "descriptionEn": "Explains how substituting x and equating to y turns each point into an equation for the same coefficients. Clear mathematical comments count."
+        },
+        {
+          "id": "algorithm-reduce",
+          "points": 1,
+          "description": "Erklärt das schrittweise Reduzieren der Unbekannten durch geeignete Einsetzungen oder Gleichungskombinationen, etwa warum b beim Subtrahieren entfällt.",
+          "descriptionEn": "Explains reducing unknowns step by step through suitable substitution or combinations of equations, for example why subtracting eliminates b."
+        },
+        {
+          "id": "algorithm-recover",
+          "points": 1,
+          "description": "Erklärt das Rückeinsetzen bekannter Werte, um die verbleibenden Koeffizienten und den Term zu erhalten.",
+          "descriptionEn": "Explains substituting known values back to recover the remaining coefficients and the expression."
+        },
+        {
+          "id": "algorithm-verify",
+          "points": 1,
+          "description": "Erklärt die Rückkontrolle am ursprünglichen Datenauftrag durch Einsetzen und Vergleich mit den gegebenen Funktionswerten. Kommentare zur echten Probe können dies leisten.",
+          "descriptionEn": "Explains checking against the original data by substitution and comparison with the given function values. Comments alongside actual checks may fulfil this."
+        }
+      ]
+    }
+  },
+  "noNewGoalIdOrPlacement": true,
+  "noOfficialTaskSourceCoverageClaim": true,
+  "noExistingMasteryOrGraphRuleChange": true
+}

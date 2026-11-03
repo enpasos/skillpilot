@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:a38e14bb8895e7aa364605ed9439cbf52ff40ea907e95e373158060bc04f12eb",
+  "reviewInputFingerprint": "sha256:01bbe587fccd6acc2342b93032122cf7f2c6c415f0143ec5e1b292c74e38d4dd",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-a",
+      "roundId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-first-pass-a",
+      "independenceGroupId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-independent-a",
+      "runIds": [
+        "mathematik-matrix-five-quadratic-current-image-20261103-v1-first-pass-a.batch-001.sol-ultra-review"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6.1-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-b",
+      "roundId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-first-pass-b",
+      "independenceGroupId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-independent-b",
+      "runIds": [
+        "mathematik-matrix-five-quadratic-current-image-20261103-v1-first-pass-b.batch-001.astra-ultra-20261103T195645Z"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6-astra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "openai"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "5743b8f9-86cb-4e24-8859-351708d070ab",
+      "firstRecordId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-first-pass-a.batch-001.sol-ultra-review.record-001",
+      "secondRecordId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-first-pass-b.batch-001.astra-ultra-20261103T195645Z.5743b8f9-86cb-4e24-8859-351708d070ab",
+      "firstRunId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-first-pass-a.batch-001.sol-ultra-review",
+      "secondRunId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-first-pass-b.batch-001.astra-ultra-20261103T195645Z",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

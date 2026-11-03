@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "reviewedAt": "2026-11-03T20:11:51Z",
+  "reviewerAgent": "/root/astra_cuboid_existing_scope",
+  "authorIndependent": true,
+  "reviewScope": "Exactly two neutral BW CrossStage source leaves, preserving already reviewed G8/G9 semantics. No repeated whole-content or country-scope review.",
+  "manifest": {
+    "path": "before-after-hash-manifest.json",
+    "sha256": "73741f22f914d1acd4ad3039e5b868959399b5c113a1538f8b37791fd8583bbd"
+  },
+  "exactPatch": {
+    "path": "exact-source-delta.patch",
+    "sha256": "dba7e065c3585b2380529f613180e42ff7810ab262a0e1bfed3df19531558db2"
+  },
+  "approvedLeaves": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+      "overlayPath": "overlay/curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+      "beforeSha256": "7b3c5dce120ea959e25eff5de3acbf706013dbfa83203f96b3fb08e45a46c8d9",
+      "afterSha256": "dcea001e2e567bff517d9673e807b873ed1d00257ead163e409096ba0a34538e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+      "overlayPath": "overlay/curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+      "beforeSha256": "70b4625326e47d25d85f7f52ce9e251c2204d127f6f8219e6d5388d4f3dbc8b0",
+      "afterSha256": "44150e05cb5389f5c3d04aa0d5f3ca0de9b28fbaf741641220ccb873f01cafb1"
+    }
+  ],
+  "actualIndependentChecks": [
+    "All seven input byte bindings, two overlay hashes, actual whole-role report, its summary, collector source and comparison script rehashed.",
+    "Both entire source objects reconstructed from the before objects using only four label edits per profile and four LK POnly prepends; exact after bytes and patch reproduced.",
+    "Each label equals its actual already reviewed G8 donor on the same canonical reference.",
+    "All four LK POnly entries already exist identically under the offered G8 upper stochastics structure. The additions stay there, outside the lower-stage crop.",
+    "The actual comparison script uses the productive specificity-aware role collector on complete source/output trees. Its complete recorded sets, counts and digests were independently checked; no fresh execution is claimed."
+  ],
+  "roleFindings": {
+    "GK": {
+      "rawTargetBefore": 921,
+      "rawTargetAfter": 921,
+      "prerequisiteOnlyBefore": 49,
+      "prerequisiteOnlyAfter": 49
+    },
+    "LK": {
+      "rawTargetBefore": 952,
+      "rawTargetAfter": 952,
+      "prerequisiteOnlyBefore": 40,
+      "prerequisiteOnlyAfter": 44,
+      "addedPrerequisiteOnlyIds": [
+        "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+        "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+        "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+        "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+      ]
+    },
+    "targetsAdded": [],
+    "targetsLost": [],
+    "prerequisiteOnlyLost": [],
+    "existingG8G9PrerequisiteOnlySetsEqualAfterSources": true,
+    "meaning": "These are complete authored projection-role sets, including referenced clusters, not new Native eligibility or M0 claims."
+  },
+  "existingActualRoleEvidence": {
+    "path": "role-comparison.actual.json",
+    "sha256": "809d7c6d537e80a3926a9283febeb09885c7c5f433bafb7f2dbdf8c68a4b7a69",
+    "scriptSha256": "1b8a76491fb8396a490dc8801a98581098b9290bffc1529ba301ff2c6fe5f716",
+    "collectorSha256": "d7ee9ab670d2d73a3ed82700c2bca2dee3f2da6c8e9517120c5c45acac0d84a7"
+  },
+  "decision": "Approve these source corrections as faithful anchoring of previously approved labels and LK support for normal reproduction. No new target, official curriculum claim or source-scope decision is introduced.",
+  "remainingVerification": "Parent must bind actual revised source hashes in the normal policy and compare actual normal outputs exactly; no successful generator reproduction or renewed Stage acceptance is inferred from this review.",
+  "limits": {
+    "newScopeApproval": false,
+    "taskCanonicalOrRequiresChange": false,
+    "normalGeneratorPass": false,
+    "nativeAcceptance": false,
+    "mathM7Accepted": false,
+    "rootActivationApproved": false,
+    "rootOrFWritten": false,
+    "newJvmOrNodeRunByReviewer": false
+  }
+}

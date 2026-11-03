@@ -1,0 +1,120 @@
+{
+  "status": "PASS_TWO_METADATA_FIELDS_AND_EXACT_TWO_REVIEW_ROW_RECOUPLING",
+  "request": {
+    "path": "tmp/approach-review-20261101/quadratic5743-same-identity-followup-candidate-20261103-v1/release-metadata-r4-review-request.json",
+    "sha256": "523f098a55a2f5f61d54b414cea785bdc3a0ff2073b7f7f49a9689f2733ff858"
+  },
+  "wholeActualGoal": {
+    "goalId": "5743b8f9-86cb-4e24-8859-351708d070ab",
+    "canonicalPath": "tmp/approach-review-20261101/quadratic5743-same-identity-followup-candidate-20261103-v1/data-r4/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "canonicalSha256": "7e5d553c838721cfcf7e4e119d945c99798ab24797dbd611dbdac6ca4cea5ef7",
+    "semanticSourceFingerprintIndependentlyRecomputed": "sha256:aa6cc854283235a9dcf4866a1dada3638a6d81fa007a4d76be7c394b23b9d082",
+    "semanticKind": "curricularAtomic",
+    "nodeKind": "exam"
+  },
+  "metadataDecision": {
+    "coveredStrands": [
+      "L1",
+      "L4"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2"
+    ],
+    "rationale": "Whole task demands constructing and solving the LGS in a,b,c, reconstructing the quadratic function from three points, checking the original data and explaining the algorithm. L1 captures algebraic/numerical calculation and L4 the functional reconstruction. AB1 captures routine substitutions/calculation/checks; AB2 connects conditions, system and procedure explanation. No open-ended novel transfer or general uniqueness proof supports AB3.",
+    "wholeCanonDifferenceExactlyTheseTwoLeaves": true,
+    "taskSolutionScoringUnchanged": true,
+    "contentHashes": {
+      "taskContent": "18d26dd28484fb182781ee3902190b94545253f1689f446a7b0c0ab2605a4019",
+      "taskContentEn": "a5cc0dc7338dfc74559f42d209e28a7f476f55af1ca30c1a113fd3bdc71bb034",
+      "solutionContent": "ae984b39e181e27e1b14be30b0ff80612147afff7e706207747c0a5bd9835ead",
+      "solutionContentEn": "592770b418dbef71b358905007453ecd716620cde29cb93694ecc24ea1a16c24",
+      "scoringCanonicalJson": "f569c2f88e87659a16124a3fb8c02d784dc0107eaee055640fad4d3555383e27"
+    }
+  },
+  "twoExactRows": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+      "beforeSha256": "1961b30115afcaf8cc83d965ff54e17ba6c88948e1d53c54522a6e61681b4c55",
+      "afterSha256": "808aadf9f10162b5d7e9378b035ab26b088faae3cb76e32054ce2504a03c1b5d",
+      "fingerprint": "sha256:61b2f12392c185a2fc13d63a4732417bd119ba1fc88a09df60ae33e853ac29c3",
+      "line": 277,
+      "goalId": "5743b8f9-86cb-4e24-8859-351708d070ab",
+      "independentlyRecomputedFingerprint": "sha256:61b2f12392c185a2fc13d63a4732417bd119ba1fc88a09df60ae33e853ac29c3",
+      "status": "atomic",
+      "decision": "PASS_EXACT_PREVIOUSLY_REVALIDATED_ROW_BOUND_TO_FINAL_METADATA_SNAPSHOT",
+      "allOtherRowsByteIdentical": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+      "beforeSha256": "48e7ce0988922b086e654eb534686b8fd705ad4b0a6226b3babe71d65639e0ad",
+      "afterSha256": "46b769dcd0a5a8f26e42e48b58e2838526e0cae1266e8ca0d18a05a1c18e7a05",
+      "fingerprint": "sha256:5cd743f308a98266bb12c636514b460759a81355582911639fc0affe7ddb22ea",
+      "line": 277,
+      "goalId": "5743b8f9-86cb-4e24-8859-351708d070ab",
+      "independentlyRecomputedFingerprint": "sha256:5cd743f308a98266bb12c636514b460759a81355582911639fc0affe7ddb22ea",
+      "status": "no_memory_needed",
+      "decision": "PASS_EXACT_PREVIOUSLY_REVALIDATED_ROW_BOUND_TO_FINAL_METADATA_SNAPSHOT",
+      "allOtherRowsByteIdentical": true
+    }
+  ],
+  "whyReviewFingerprintsRemainUnchanged": "The established atomicity and memory review normal forms include nodeKind but omit examData; therefore adding these two honest release metadata fields changes the semantic ledger goal fingerprint but not the two previously revalidated review fingerprints. Both fingerprints were recomputed independently against the final actual goal. No status or evidence for any other goal was rebound.",
+  "previousReviewRetained": {
+    "path": "tmp/approach-review-20261101/astra-quadratic5743-static-code-data-r2-review-20261103-v1/two-exact-review-revalidations.PASS.json",
+    "sha256": "395648e55d38092eb3a9dfceaa54032fd365394ee8fe9eed1c659631277c7894"
+  },
+  "releaseCheckEvidence": {
+    "metadataLogSha256": "a61d7ac2720a4dc1bb978241f2e300259fe0e9dfa5e3363fb2ce4711143723de",
+    "afterReleaseIssues": [],
+    "scope": "Author actual Node result inspected, consistent with whole task; no new JVM/Native/Root acceptance asserted."
+  },
+  "countsPreserved": {
+    "curricularAtomic": 807,
+    "curricularArea": 241,
+    "practiceAssessment": 191,
+    "programStructure": 7,
+    "memory": 6,
+    "runtimeSupport": 11,
+    "orientation": 2,
+    "total": 1265
+  },
+  "boundSixCandidateFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "candidatePath": "tmp/approach-review-20261101/quadratic5743-same-identity-followup-candidate-20261103-v1/data-r4/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "candidateSha256": "7e5d553c838721cfcf7e4e119d945c99798ab24797dbd611dbdac6ca4cea5ef7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "candidatePath": "tmp/approach-review-20261101/quadratic5743-same-identity-followup-candidate-20261103-v1/data-r4/curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "candidateSha256": "987feae3a99e1b1ae0e737789c866305f7b9a9302501b9f085b20db147d753b9"
+    },
+    {
+      "path": "app/scripts/config/math-country-seki-stage-policy.json",
+      "candidatePath": "tmp/approach-review-20261101/quadratic5743-same-identity-followup-candidate-20261103-v1/data-r4/app/scripts/config/math-country-seki-stage-policy.json",
+      "candidateSha256": "44b4aeafbd74d1650f1031bef32f8d305791965fbf9b8039e710d258944fcf03"
+    },
+    {
+      "path": "app/scripts/config/math-duration-split-spanning-tree-policy.json",
+      "candidatePath": "tmp/approach-review-20261101/quadratic5743-same-identity-followup-candidate-20261103-v1/data-r4/app/scripts/config/math-duration-split-spanning-tree-policy.json",
+      "candidateSha256": "22b0583faa052daab2bfa93ba6b2a6cd8ad912711bc4a462d62ea485448211c9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+      "candidatePath": "tmp/approach-review-20261101/quadratic5743-same-identity-followup-candidate-20261103-v1/data-r4/curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+      "candidateSha256": "808aadf9f10162b5d7e9378b035ab26b088faae3cb76e32054ce2504a03c1b5d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+      "candidatePath": "tmp/approach-review-20261101/quadratic5743-same-identity-followup-candidate-20261103-v1/data-r4/curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+      "candidateSha256": "46b769dcd0a5a8f26e42e48b58e2838526e0cae1266e8ca0d18a05a1c18e7a05"
+    }
+  ],
+  "notClaimed": [
+    "Same-ID workflow implementation acceptance",
+    "Root import",
+    "new source scope approval",
+    "M7/CI pass",
+    "global evidence revalidation"
+  ]
+}

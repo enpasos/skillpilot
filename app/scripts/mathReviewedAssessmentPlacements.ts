@@ -18,7 +18,7 @@ type Selection = {
   supportContextGoalIdsByViewId?: Record<string, string[]>
 }
 type RpContextContract = MathAtomicSupportContext & {
-  schemaVersion: 3; kind: 'reviewed-rp-atomic-context-contract'; canonicalProvenance: BoundFile
+  schemaVersion: 3 | 4; kind: 'reviewed-rp-atomic-context-contract'; canonicalProvenance: BoundFile
   goalObjectSha256ById: Record<string, string>; sourceBindings: BoundFile[]
   contextProjectionRolesByViewId: Record<string, { targetGoalIds: string[]; prerequisiteOnlyGoalIds: string[] }>
 }
@@ -81,7 +81,7 @@ export function applyReviewedMathAssessmentPlacements<T extends View>(input: T, 
       approvedTaskGoalIds: string[]; approvedReferenceCount: number; inputBindings: BoundFile[]; authorIndependent?: boolean
       schemaVersion?: number; rpContextVerdict?: string; rpContextContract?: BoundFile
     }>(repositoryRoot, selection.reviewReceipt)
-    if (![1, 2, 3].includes(selection.schemaVersion) || selection.kind !== 'existing-assessment-placement' || selection.status !== 'independent-ai-reviewed'
+    if (![1, 2, 3, 4].includes(selection.schemaVersion) || selection.kind !== 'existing-assessment-placement' || selection.status !== 'independent-ai-reviewed'
       || receipt.verdict !== 'PASS' || receipt.contentVerdict !== 'PASS' || !receipt.placementVerdict?.startsWith('PASS')) fail('missing independent content/placement PASS')
     if (!same([...new Set(selection.operations.map((op) => op.viewId))].sort(), [...receipt.approvedViewIds].sort())
       || !same([...new Set(selection.taskGoalIds)].sort(), [...receipt.approvedTaskGoalIds].sort())
@@ -92,7 +92,7 @@ export function applyReviewedMathAssessmentPlacements<T extends View>(input: T, 
       canonicalProvenance?: BoundFile; rpContextContract?: BoundFile;
       operations: Array<Operation & { actualBackendScopeChecks?: Array<{ tasks: Array<{ fullSupportGoalIds: string[] }> }>;
         canonicalTaskContextChecks?: TaskContext[] }> }>(repositoryRoot, selection.reviewedPlan)
-    const contextSemantics = selection.schemaVersion === 2 || selection.schemaVersion === 3
+    const contextSemantics = selection.schemaVersion === 2 || selection.schemaVersion === 3 || selection.schemaVersion === 4
     let nativeTasks: TaskContext[] = []
     let rpContract: RpContextContract | undefined
     if (selection.schemaVersion === 2) {
@@ -111,9 +111,9 @@ export function applyReviewedMathAssessmentPlacements<T extends View>(input: T, 
       if (!same(nativeEvidence.canonical, plan.canonical)) fail('native evidence belongs to another canonical source')
       nativeTasks = nativeEvidence.tasks
       if (!Array.isArray(nativeTasks) || !same(nativeTasks.map(task => task.taskGoalId).sort(), [...selection.taskGoalIds].sort())) fail('native task-context identity differs')
-    } else if (selection.schemaVersion === 3) {
-      if (receipt.authorIndependent !== true || receipt.schemaVersion !== 3 || receipt.rpContextVerdict !== 'PASS'
-        || plan.schemaVersion !== 3 || plan.canonical || !plan.canonicalProvenance || !plan.rpContextContract || !plan.nativeSupportEvidence
+    } else if (selection.schemaVersion === 3 || selection.schemaVersion === 4) {
+      if (receipt.authorIndependent !== true || receipt.schemaVersion !== selection.schemaVersion || receipt.rpContextVerdict !== 'PASS'
+        || plan.schemaVersion !== selection.schemaVersion || plan.canonical || !plan.canonicalProvenance || !plan.rpContextContract || !plan.nativeSupportEvidence
         || selection.supportTargetGoalIdsByViewId || !selection.supportContextGoalIdsByViewId
         || !same(receipt.rpContextContract, plan.rpContextContract)) fail('V3 needs its independent explicit RP context contract')
       if (!same(selection.taskGoalIds, rpTaskGoalIds) || !same(selection.operations.map(op => op.viewId).sort(), rpViewIds)
@@ -121,7 +121,7 @@ export function applyReviewedMathAssessmentPlacements<T extends View>(input: T, 
       const boundByReceipt = (binding: BoundFile) => receipt.inputBindings.some(input => same(input, binding))
       if (![selection.reviewedPlan, plan.rpContextContract!, plan.nativeSupportEvidence!].every(boundByReceipt)) fail('V3 RP contract/evidence is not receipt-bound')
       const contract = boundJson<RpContextContract>(repositoryRoot, plan.rpContextContract!)
-      if (contract.schemaVersion !== 3 || contract.kind !== 'reviewed-rp-atomic-context-contract'
+      if (contract.schemaVersion !== selection.schemaVersion || contract.kind !== 'reviewed-rp-atomic-context-contract'
         || !same(contract.canonicalProvenance, plan.canonicalProvenance)
         || !Array.isArray(contract.sourceBindings) || !contract.sourceBindings.length
         || !same(Object.keys(contract.contextProjectionRolesByViewId ?? {}).sort(), rpViewIds)
@@ -136,7 +136,7 @@ export function applyReviewedMathAssessmentPlacements<T extends View>(input: T, 
       const native = boundJson<MathAtomicSupportContext & {
         schemaVersion: number; kind: string; canonical: BoundFile; goalObjectSha256ById: Record<string, string>
       }>(repositoryRoot, plan.nativeSupportEvidence!)
-      if (native.schemaVersion !== 3 || native.kind !== 'native-rp-direct-atomic-context'
+      if (native.schemaVersion !== selection.schemaVersion || native.kind !== 'native-rp-direct-atomic-context'
         || !same(native.canonical, contract.canonicalProvenance)) fail('V3 native evidence belongs to another contract/version')
       const facts = (value: MathAtomicSupportContext) => ({ taskGoalIds: value.taskGoalIds,
         tasks: value.tasks.map(task => ({ taskGoalId: task.taskGoalId, supportGoalIds: task.supportGoalIds,
@@ -148,7 +148,10 @@ export function applyReviewedMathAssessmentPlacements<T extends View>(input: T, 
       if (!same(facts(contract), facts(current))) fail('V3 current canonical atomic support context/direct relation differs')
       const objectIds = Object.keys(current.directPrerequisiteIdsByGoalId)
       const currentHashes = Object.fromEntries(objectIds.map(id => [id, hashObject(universe.get(id))]))
-      if (objectIds.length !== 45 || current.supportUnionGoalIds.length !== 43 || current.tasks.some(task => task.supportGoalIds.length !== 42)
+      // V3 remains the exact historical45/43/42 contract. The independently
+      // reviewed false-R successor has its own version and exact44/42/41 shape.
+      const shape = selection.schemaVersion === 3 ? { objects: 45, support: 43, perTask: 42 } : { objects: 44, support: 42, perTask: 41 }
+      if (objectIds.length !== shape.objects || current.supportUnionGoalIds.length !== shape.support || current.tasks.some(task => task.supportGoalIds.length !== shape.perTask)
         || !same(contract.goalObjectSha256ById, currentHashes) || !same(native.goalObjectSha256ById, currentHashes)) fail('V3 whole RP task/support object contract differs')
       nativeTasks = contract.tasks
       rpContract = contract
