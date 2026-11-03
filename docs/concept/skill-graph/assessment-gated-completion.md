@@ -42,7 +42,9 @@ The Cockpit distinguishes explicit mastery, implicit completion and remaining
 work without creating three stored goal results. Its compact tree icon explains
 **"Für diesen Abschnitt nicht mehr erforderlich"** in a tooltip. It must not
 claim "passed examination" when an ordinary mastered goal ended the need.
-Mastery bars and mastered-goal counts retain their existing meaning.
+The tree's completion bars show explicit mastery in green, implicit completion
+in blue, and remaining work in grey. Their tooltip distinguishes the counts.
+A count explicitly labelled as mastery still includes only mastered goals.
 
 The calculation runs without selecting a special profile or starting a coach
 session. The demand context is always the complete committed Personal Curriculum.
@@ -60,7 +62,7 @@ and ordinary goals follow rule 2. Their **explicit** mastery workflows remain
 unchanged; implicit orientation does not fabricate a motivational interaction.
 
 The graph must support this calculation. In each complete authoritative
-curriculum and supported projection, **every target must be reachable from an
+curriculum and supported projection, **every target must be reachable from a
 selected assessment or memory target at zero mastery**, following the direct prerequisite
 edges. An ordinary unneeded endpoint, or a nonempty curriculum without any
 protected goal, is an authoring defect. Deterministic tests must report it;
@@ -119,6 +121,13 @@ selected obligation still needs it. It does not become an extra target or an
 independent obligation merely by belonging to the prerequisite closure.
 Memory goals do not become assessments, enter examination counts,
 or acquire direct examination-start actions.
+
+Curricular membership and assessment execution are separate roles. A reviewed
+whole assessment may be the execution form of an existing atomic curricular
+goal. Its ID, curricular quality checks and existing prerequisite relationships
+remain; its assessment role protects it from implicit completion. This does
+not create a second compulsory goal or remove the competence from curricular
+coverage checks. Alternative execution forms do not create separate mastery.
 
 ## 3. Mastery and active demand
 

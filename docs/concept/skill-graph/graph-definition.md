@@ -532,17 +532,25 @@ Its inverse learning-flow view should form teachable routes whose overall direct
 In the current validator rollout, `GVR-012` promotes this definition to a hard release invariant for canonical DE Gymnasium mathematics, independently for Sek I and Sek II:
 
 - `M` consists of the stage-specific goals authoritatively classified as `orientation`;
-- ordinary route goals are the stage-specific goals classified as `curricularAtomic`;
-- `T` consists of the configured atomic goals classified as `practiceAssessment`;
+- curricular route goals are the stage-specific goals classified as `curricularAtomic`, including competencies with their own assessment execution form;
+- `T` consists of the configured in-scope atomic assessment terminals: `practiceAssessment` goals or curricular goals with a usable released assessment execution form;
 - reachability is proved only through direct atomic-to-atomic `requires` facts, traversed in inverse direction for learning-flow routes;
 - every profile supplies an explicit stage-local proof-node predicate, so a route for one stage cannot be proved through nodes of another stage;
 - only `orientation`, `curricularAtomic`, optional `memory`, and `practiceAssessment` nodes may contribute to that proof;
 - every node that participates in the proof may not carry direct prerequisites outside those route kinds; inherited cluster prerequisites do not count;
-- route order is semantic: assessment cannot be a prerequisite before curricular learning, every terminal route passes through at least one ordinary curricular atom, and a memory node can participate only after curricular learning has begun;
+- route order follows semantic membership: a dedicated `practiceAssessment` terminal cannot precede curricular learning; every terminal route includes at least one curricular atom, and a memory node can participate only after curricular learning has begun. An assessment execution form does not change a `curricularAtomic` goal's position in this order;
 - semantic kind and graph shape must agree; in particular a `curricularAtomic` decision cannot silently stop being checked merely because the node acquired children;
 - the authoritative semantic-kind ledger must classify the complete canonical graph, so a newly added or stale unclassified goal cannot silently escape the rule;
 - every `curricularAtomic` goal must be assigned to at least one of the independently checked stage profiles;
 - the rule remains an error even when legacy graph rules are temporarily run in warning mode.
+
+Curricular membership and assessment execution are independent roles. An
+existing curricular competence can have a whole reviewed assessment under
+its same ID and still serve as a genuine prerequisite for later competencies.
+It remains in the curricular quality population. If selected as a terminal,
+that same competence can supply the curricular part and the assessment end
+of its route; no duplicate goal or artificial prerequisite edge is needed.
+Its execution form must satisfy the task and rubric readiness checks.
 
 An `orientation` node is a didactic entry marker, not an assessable subject
 competency. Its purpose is to make the following material attractive and
