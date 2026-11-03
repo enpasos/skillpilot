@@ -111,6 +111,16 @@ interface GrandfatheredOccurrence {
  * the check until the occurrence is reviewed again.
  */
 const grandfatheredOccurrences: GrandfatheredOccurrence[] = [
+  // Byte-exact archived copy of the already approved public mission wording below.
+  // Its frozen-generator-inputs manifest binds the historical source bytes.
+  {
+    ruleId: 'TRM-001',
+    path: 'docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/reviewed-candidate/independent-probes/frozen-generator-host/app/src/utils/skillPilotOverviewCopy.ts',
+    line: 97,
+    column: 47,
+    found: 'Wissenslandschaften',
+    lineSha256: '7bebb5107399a1b5f33a292f96816ed3694ef40ae3d4b5a8cf1b6dd9af8ef8c7',
+  },
   // Exact source/licensing and author-script wording in two sealed inactive
   // Chemistry packets from 2026-10-16. Preserve their reviewed historical bytes;
   // current prose and any changed line still have to use the glossary terms.

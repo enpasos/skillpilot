@@ -13,6 +13,8 @@ Use this page by role: start with the overview documents, then jump to a review 
   Local and GitHub Actions validation entry points.
 - [Automatische OpenAI-Dialogregression](openai-dialog-regression.md)
   Wiederholbare API-Dialoge, isolierte Fixtures, Kostenlimits und getrennte Host-Abnahme.
+- [Abschlussintegrität: Mathematik-Nachprüfung](curriculum-completion-integrity-2026-11-01.md)
+  Manuell geführter Nachweis der Korrekturen, Prüfstände und offenen Abschlussrouten.
 - [Graph Validation Rules](graph-validation-rules.md)
   Single source of truth for algorithmic graph validation in CI.
 - [Curriculum Package Readiness](curriculum-package-readiness.md)
