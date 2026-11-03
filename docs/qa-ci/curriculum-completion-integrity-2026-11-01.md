@@ -2,7 +2,43 @@
 
 Stand: 3. November 2026, lokale Prüfung. Die ergänzte deterministische Prüfung verwendet die tatsächliche Backend-Projektion der Länderangebote, einschließlich G8/G9, Stufe, GK, LK und Kurszusammenführung, sowie der tatsächlich auswählbaren kanonischen Personal Curricula unter „Alle Bundesländer“. Sie berücksichtigt auch direkte `goalEntry`-Referenzen, die einen kanonischen Cluster in der geprüften Projektion zu einem atomaren Ziel machen. Die im Grundreview gefundene ALL-Inventarlücke ist im tatsächlichen Mathematiknachlauf geschlossen: 154 Länderangebote und sieben ALL-Konfigurationen sind geprüft; die rohe kanonische Diagnose bleibt separat.
 
-## Aktueller integrierter Stand: Matrixprüfung und fünf bestehende Kompetenzen
+## Aktueller integrierter Stand: zwei Geometrieprüfungen und Thüringer Grundlagen
+
+Zwei bestehende Kompetenz-IDs besitzen jetzt ganze deutsche und englische
+Prüfungsformen mit Lösungen und einer Gesamtbewertung: kongruente und
+maßstäbliche Figuren tatsächlich mit Geometriesoftware konstruieren sowie
+einen zusammengesetzten Regenwassertank geometrisch modellieren. Ihre
+Kompetenzbeschreibungen und Voraussetzungen bleiben unverändert. Vier
+betroffene Atomicity-/Memory-Bewertungen sind tatsächlich unabhängig
+revalidiert; die früheren Bewertungsdateien bleiben erhalten.
+
+21 durch die Thüringer Originalquellen belegte Grundlagen werden als eigene
+Lernziele sichtbar. Der normale Generator übernimmt sie sowohl in die reine
+Sekundarstufe I als auch in die Angebote mit beiden Schulstufen. Die reinen
+Sekundarstufe-II-Ausgaben bleiben bytegleich. Es entsteht keine neue
+Generatorlogik, kein Schattenlehrplan und kein Konfigurationsschalter.
+
+Der tatsächliche Java-Nachlauf über **161 Angebote und 46 Kursvereinigungen**
+schließt weitere **324 ungedeckte Ziel-Angebots-Paare und 116 Endpunktpaare**,
+ohne neue Lücken oder Zielverluste. **Thüringen Sekundarstufe I / G8 / GK+LK
+besteht** die vollständige Abschlussintegritätsprüfung. In den übrigen
+**160 Angeboten** bleiben **353 ungedeckte Ziel-IDs / 8.317
+Ziel-Angebots-Paare sowie 206 gewöhnliche Endpunkt-IDs / 4.229 Endpunktpaare**.
+Die strenge Mathematik-Corpusprüfung bleibt daher insgesamt rot.
+
+Dieser Nachlauf bindet 2.654 tatsächliche Eingabedateien einer privaten Kopie
+der versionierten Runtime-Daten einschließlich der Korrektur. Ignorierte
+lokale Quellencaches sind ausgeschlossen; der Sampler und seine kompilierten
+Klassen bleiben unverändert. Später ergänzte reine Reviewmetadaten ändern
+keinen dieser Runtime-Eingänge. Die zuvor gemessenen 8.732 gebundenen
+Dateipfade waren eine historische Eingabemenge und kein vollständiges
+Inventar aller lokal vorhandenen Cachedateien.
+
+[Messung, Standardprüfungen und Import](evidence/curriculum-completion-integrity/2026-11-03/th-seki-geometry/README.md)
+trennen die nachgewiesene Verbesserung von der noch ausstehenden
+Mathematik-, M7-, Gesamt-CI- und Deployment-Abnahme.
+
+## Vorheriger integrierter Stand: Matrixprüfung und fünf bestehende Kompetenzen
 
 Die 363 unabhängig geprüften Dateien des Matrix-/Fünf-Aufgaben-Pakets sind
 übernommen. Fünf bestehende Lernziel-IDs besitzen vollständige deutsche und
@@ -22,7 +58,7 @@ Alle acht abschließenden normalen Prüfungen bestehen: 83 Länderansichten,
 18 Daueransichten, Stage-Policy, vollständige Stage-Länderprüfung,
 Quellenabdeckung, harte Routenvalidierung, Phasenkompatibilität und die drei
 Python-Populationstests. Der normale Lernzielbuchtest besteht mit allen
-807 curricularen Seiten. Nach dem Import stimmen alle 8.732 Runtime-Eingaben
+807 curricularen Seiten. Nach dem Import stimmen die 8.732 gebundenen Eingabedateien
 mit dem tatsächlich gemessenen Kandidaten überein. Die begrenzten
 Routentests ersetzen die rote Volllehrplanprüfung nicht.
 

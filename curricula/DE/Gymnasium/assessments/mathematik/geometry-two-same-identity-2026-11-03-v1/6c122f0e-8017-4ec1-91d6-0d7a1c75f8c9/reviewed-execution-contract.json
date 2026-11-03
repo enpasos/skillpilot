@@ -1,0 +1,138 @@
+{
+  "reviewStatus": "released",
+  "taskContent": "# Ein geschlossener Regenwassertank\n\n20 BE.\n\nEin Betrieb plant einen geschlossenen Tank. Die kreisförmige innere Bodenfläche\nhat einen Durchmesser von 4 m. Die senkrechte Seitenwand ist 3 m hoch.\nVom gesamten oberen Kreisrand läuft das Dach geradlinig zu einer Spitze,\ndie senkrecht über dem Kreismittelpunkt liegt und 1,5 m über dem Kreisrand\nsteht. An der Verbindung von Wand und Dach gibt es keine waagerechte\nTrennwand. Der Tank steht mit seiner gesamten Bodenfläche auf einem Fundament.\n\nFür das geometrische Modell werden Wandstärke, Anschlüsse und Einbauten\nvernachlässigt. Die idealisierten Innen- und Außenmaße stimmen deshalb\nüberein. Das theoretische Fassungsvermögen umfasst den Innenraum bis zur\nSpitze. Ein betrieblich nötiger Luftraum wird zunächst nicht abgezogen.\nEine Schutzbeschichtung soll nur die frei liegende Seitenwand und das Dach\nbedecken; die Kontaktfläche zum Fundament wird nicht beschichtet.\n\nEin Taschenrechner und eine übliche Formelsammlung sind erlaubt. Rechne mit\nungerundeten Zwischenwerten. Gib Längen, Flächen und Kubikmeter auf zwei\nDezimalstellen, Winkel auf 0,1° und Liter auf ganze Liter an.\n\n1. Wähle passende geometrische Körper für das Modell und begründe deine\n   Wahl. Skizziere einen senkrechten Schnitt durch die gemeinsame Achse.\n   Beschrifte die erforderlichen Längen und erkläre die Zerlegung. (3 BE)\n2. Bestimme die Länge einer geraden Dachlinie vom Kreisrand zur Spitze.\n   Begründe die geometrische Beziehung anhand deines Schnitts. (3 BE)\n3. Bestimme den Winkel, den diese Dachlinie mit der waagerechten Ebene des\n   oberen Kreisrands einschließt. Begründe deinen Ansatz und kennzeichne\n   den gesuchten Winkel. (3 BE)\n4. Berechne den gesamten äußeren Oberflächeninhalt des idealisierten Tanks\n   einschließlich seiner Bodenfläche und anschließend die zu beschichtende\n   Fläche. Begründe, welche Kreisflächen bei welcher Rechnung zählen und\n   welche nicht. (4 BE)\n5. Bestimme das theoretische Fassungsvermögen in Kubikmetern und Litern.\n   Entscheide mit nachvollziehbarem Vergleich, ob 45 000 Liter hineinpassten,\n   und gib gegebenenfalls den fehlenden Platz an. (5 BE)\n6. Nenne eine konkrete Grenze des Modells für die praktische Nutzung und\n   erkläre, wie sie das nutzbare Fassungsvermögen beeinflusst. (2 BE)\n\nZeige zusammenhängende Modellierungs-, Rechen- und Begründungsschritte.\nDie bloße Angabe von Formeln oder Endzahlen genügt nicht.\n",
+  "taskContentEn": "# A closed rainwater tank\n\n20 points.\n\nA business is planning a closed tank. Its circular internal base has a\ndiameter of 4 m. The vertical side wall is 3 m high. From the entire upper\ncircular rim, the roof runs along straight lines to an apex directly above\nthe circle's centre, 1.5 m above the rim. There is no horizontal partition\nwhere wall and roof meet. The tank rests on a foundation along its entire base.\n\nThe geometric model neglects wall thickness, connections, and fittings.\nThe idealised internal and external dimensions therefore coincide.\nThe theoretical capacity includes the internal space up to the apex.\nAny headspace needed in operation is initially not deducted.\nA protective coating will cover only the exposed side wall and roof;\nthe contact surface with the foundation is not coated.\n\nA calculator and a standard formula collection are allowed. Use unrounded\nintermediate values. Give lengths, areas, and cubic metres to two decimal\nplaces, angles to 0.1°, and litres to the nearest whole litre.\n\n1. Select suitable geometric solids for the model and justify your choice.\n   Sketch a vertical section through the common axis. Label the required\n   lengths and explain the decomposition. (3 points)\n2. Determine the length of a straight roof line from rim to apex. Justify\n   the geometric relationship using your section. (3 points)\n3. Determine the angle that this roof line makes with the horizontal plane\n   of the upper circular rim. Justify your approach and mark the required\n   angle. (3 points)\n4. Calculate the idealised tank's complete external surface area including\n   its base, then calculate the area to be coated. Explain which circular\n   surfaces count in each calculation and which do not. (4 points)\n5. Determine the theoretical capacity in cubic metres and litres.\n   Decide through a clear comparison whether 45,000 litres would fit and,\n   if necessary, state the shortfall in space. (5 points)\n6. Identify one concrete limitation of the model for practical use and\n   explain how it affects the usable capacity. (2 points)\n\nShow connected modelling, calculation, and reasoning steps. Formulas or\nfinal numbers alone are insufficient.\n",
+  "solutionContent": "# Erwartungshorizont: Regenwassertank\n\n1. Das Modell besteht aus einem geraden Kreiszylinder mit Radius r=2 m und\n   Höhe $h_Z=3\\,\\mathrm m$ und einem geraden Kreiskegel mit demselben\n   Radius und Höhe $h_K=1{,}5\\,\\mathrm m$. Die senkrechte Wand über dem\n   gleichbleibenden Kreisquerschnitt begründet den Zylinder; geradlinige\n   Dachlinien zur mittigen Spitze begründen den Kegel. Im Achsschnitt liegt\n   über einem Rechteck der Breite 4 m und Höhe 3 m ein gleichschenkliges\n   Dreieck mit Grundseite 4 m und Höhe 1,5 m. Die Gesamthöhe ist 4,5 m.\n   Beide Teilinnenräume schließen lückenlos aneinander an; sie überlappen\n   nicht mit einem positiven Volumen. Der gemeinsame Kreis ist keine\n   zusätzliche Innenwand.\n2. Das halbe Dachdreieck ist rechtwinklig: Radius und senkrechte Kegelhöhe\n   sind Katheten, die Dachlinie s ist die Hypotenuse. Daher\n   $$\n   s=\\sqrt{r^2+h_K^2}=\\sqrt{2^2+1{,}5^2}=2{,}50\\,\\mathrm m.\n   $$\n3. Der gesuchte Winkel liegt zwischen Dachlinie und waagerechter\n   Radiusstrecke. Es gilt\n   $$\n   \\tan\\alpha=\\frac{h_K}{r}=\\frac{1{,}5}{2}=0{,}75,\\qquad\n   \\alpha\\approx36{,}9^\\circ.\n   $$\n   Sinus oder Kosinus im selben rechtwinkligen Dreieck sind gleichwertig.\n   Der Winkel zur senkrechten Achse ist der Komplementwinkel, nicht die\n   geforderte Größe.\n4. Außen zählen Zylindermantel, Kegelmantel und die untere Bodenfläche:\n   $$\n   O=2\\pi rh_Z+\\pi rs+\\pi r^2\n    =12\\pi+5\\pi+4\\pi=21\\pi\n    \\approx65{,}97\\,\\mathrm{m}^2.\n   $$\n   Der gemeinsame Kreis zwischen Zylinder und Kegel liegt im Inneren der\n   Körpervereinigung. Er ist keine zusätzliche Außenfläche; ihn zweimal\n   zu addieren wäre falsch. Die gesamte äußere Bodenfläche zählt zu O,\n   wird aber gemäß Verwendungszweck nicht beschichtet. Somit\n   $$\n   A_{\\text{Beschichtung}}=2\\pi rh_Z+\\pi rs\n   =17\\pi\\approx53{,}41\\,\\mathrm{m}^2.\n   $$\n5. Die Innenvolumina werden addiert:\n   $$\n   V=\\pi r^2h_Z+\\frac13\\pi r^2h_K\n    =12\\pi+2\\pi=14\\pi\n    \\approx43{,}98\\,\\mathrm{m}^3.\n   $$\n   Der Faktor ein Drittel gehört nur zum Kegel; die senkrechte Höhe 1,5 m,\n   nicht die Dachlinie 2,5 m, geht dort ein. Mit den ungerundeten Werten:\n   $$\n   V=14\\pi\\cdot1000\\,\\mathrm L\n     \\approx43\\,982\\,\\mathrm L.\n   $$\n   45 000 Liter passen schon in das theoretische Modell nicht hinein.\n   Es fehlen ungefähr $45\\,000-14\\,000\\pi\\approx1\\,018$ Liter.\n   Aus dem bereits auf 43,98 m³ gerundeten Wert würden 43 980 Liter\n   entstehen; vorzeitiges Runden erklärt diese kleine Abweichung.\n6. Ein praktisch nötiger Luftraum unter der Spitze verringert das nutzbare\n   Fassungsvermögen. Auch Rohre oder andere Einbauten können einen Teil des\n   Innenraums beanspruchen. Eine konkrete andere Grenze mit richtiger\n   Wirkungsdeutung ist gleichwertig. Da Innenmaße vorgegeben sind, darf\n   eine außen hinzugefügte Wand nicht ohne Weiteres vom berechneten\n   Innenvolumen abgezogen werden.\n\nEine geeignete Zerlegung, andere gültige trigonometrische Ansätze und\nnachvollziehbare äquivalente Rechnungen sind anzuerkennen. Formeln für\nsachfremde Körper oder ein Addieren der inneren Nahtflächen liefern kein\ngeeignetes Gesamtmodell. Es sind keine Kugelrechnung, kein allgemeiner\nSinus-/Kosinussatz und keine neue Herleitung der Kegelvolumenformel verlangt:\ndiese weiter reichenden Vorbereitungen werden nicht mitgeprüft.\n\n\n# Eine Gesamtbewertung: Regenwassertank\n\nEine Rohsumme aus höchstens 20 BE; genau eine Bestehensgrenze von 15 BE.\n\n| Kriterium | BE |\n|---|---:|\n| Passende Körper gewählt und an den beschriebenen Eigenschaften begründet | 1 |\n| Achsschnitt mit Radius/Durchmesser und senkrechten Teilhöhen passend dargestellt | 1 |\n| Zusammenhängende, lückenlose Zerlegung ohne positives Überlappungsvolumen erklärt | 1 |\n| Rechtwinkliges Dachdreieck mit richtig zugeordneten Seiten identifiziert | 1 |\n| Geeignete geometrische Beziehung für die Dachlinie begründet | 1 |\n| Dachlinie 2,50 m bestimmt | 1 |\n| Winkel zur waagerechten Ebene richtig festgelegt | 1 |\n| Geeigneter trigonometrischer Ansatz begründet | 1 |\n| Winkel ungefähr 36,9° bestimmt | 1 |\n| Äußere Randflächen einschließlich Boden und ohne inneren Nahtkreis identifiziert | 1 |\n| Gesamte Oberfläche nachvollziehbar zu 21π m² bzw. 65,97 m² bestimmt | 1 |\n| Beschichtungsflächen unter Ausschluss der Fundamentkontaktfläche begründet gewählt | 1 |\n| Beschichtung nachvollziehbar zu 17π m² bzw. 53,41 m² bestimmt | 1 |\n| Zylinder- und Kegelvolumen mit richtigen Größen und Faktoren angesetzt | 2 |\n| Beide Teilvolumina konsistent zu 14π m³ bzw. 43,98 m³ zusammengeführt | 1 |\n| In Liter anhand ungerundeter Werte umgerechnet | 1 |\n| 45 000 Liter begründet verglichen und Fehlmenge ungefähr 1 018 Liter bestimmt | 1 |\n| Konkrete praktische Modellgrenze genannt | 1 |\n| Ihre Wirkung auf das nutzbare Fassungsvermögen richtig erklärt | 1 |\n\nHalbe Punkte sind bei sinnvoll teilbaren Leistungen möglich. Einheiten\ngehören zur sachlichen Deutung; ein einmaliges versehentliches Einheitenzeichen\nist kein pauschaler Modelltotalausfall. Unterschiedliche gültige\ntrigonometrische Wege sowie Erklärungen an der Rechnung zählen gleichwertig.\nKeine Pflicht zur wörtlichen Musterlösung oder zu einer bestimmten Teilnummer.\n\nDie eine Gesamtpunktzahl wird vor dem Vergleich mit 15 auf höchstens 14 BE\nbegrenzt, wenn über die gesamte Arbeit eine ganze zentrale Leistung fehlt oder\nnur auf einem grundlegend ungeeigneten Modell beruht: ein sinnvolles\nzusammengesetztes Körpermodell, begründete Längenbestimmung, begründete\nWinkelbestimmung, begründete Bestimmung der äußeren Flächen oder begründete\nBestimmung des Fassungsvermögens. Die Kappung verlangt keine perfekte\nBearbeitung sämtlicher Details. Ein isolierter Zahlen-, Vorzeichen-,\nÜbertragungs- oder Rundungsfehler löst sie nicht aus.\n\nDenselben Ausgangsfehler nicht mehrfach bestrafen. Richtige Folgeoperationen,\ntragfähige Ansätze und passende Begründungen erhalten Punkte, auch wenn ein\nzuvor falsch übertragener Radius den Ergebniswert verändert. Bei einer\nkleinen Rundungsabweichung in Litern bleiben korrekte Umrechnung und\nEntscheidung grundsätzlich anrechenbar. Ein falsches Grundmodell wie das\nVerwenden der Mantellinie als senkrechte Volumenhöhe ist fachlich zu bewerten;\nes ist keine bloße Rundungsfrage. Ein bloßer Formelsatz ohne Zuordnung zur\nSituation erhält keine Modellierungs- oder Begründungspunkte.\n\nNur lesbare gezeigte Leistungen bewerten.",
+  "solutionContentEn": "# Expected solution: rainwater tank\n\n1. The model consists of a right circular cylinder of radius r=2 m and\n   height $h_Z=3\\,\\mathrm m$, and a right circular cone of the same radius\n   and height $h_K=1.5\\,\\mathrm m$. The vertical wall above an unchanged\n   circular cross-section supports the cylinder model; straight roof lines\n   to a central apex support the cone model. The axial section has a rectangle\n   4 m wide and 3 m high below an isosceles triangle with base 4 m and height\n   1.5 m. Overall height is 4.5 m. The internal parts meet without a gap or\n   positive-volume overlap. Their common circle is not an additional\n   internal wall.\n2. Half of the roof section is a right triangle: radius and vertical cone\n   height are its legs, and the roof line s is its hypotenuse. Hence\n   $$\n   s=\\sqrt{r^2+h_K^2}=\\sqrt{2^2+1.5^2}=2.50\\,\\mathrm m.\n   $$\n3. The required angle lies between the roof line and the horizontal radius.\n   Thus\n   $$\n   \\tan\\alpha=\\frac{h_K}{r}=\\frac{1.5}{2}=0.75,\\qquad\n   \\alpha\\approx36.9^\\circ.\n   $$\n   Sine or cosine in the same right triangle is equally acceptable.\n   The angle to the vertical axis is the complementary angle, not the\n   required quantity.\n4. The external boundary comprises the cylinder's curved surface, the cone's\n   curved surface, and the bottom base:\n   $$\n   O=2\\pi rh_Z+\\pi rs+\\pi r^2\n    =12\\pi+5\\pi+4\\pi=21\\pi\n    \\approx65.97\\,\\mathrm{m}^2.\n   $$\n   The common circle lies inside the union of the solids. It is not another\n   external face; adding it twice would be wrong. The complete external base\n   counts towards O but is not coated under the stated purpose. Therefore\n   $$\n   A_{\\text{coating}}=2\\pi rh_Z+\\pi rs\n   =17\\pi\\approx53.41\\,\\mathrm{m}^2.\n   $$\n5. Add the two internal volumes:\n   $$\n   V=\\pi r^2h_Z+\\frac13\\pi r^2h_K\n    =12\\pi+2\\pi=14\\pi\n    \\approx43.98\\,\\mathrm{m}^3.\n   $$\n   The factor one third applies only to the cone; its vertical height 1.5 m,\n   not its slant length 2.5 m, enters that formula. Using unrounded values:\n   $$\n   V=14\\pi\\cdot1000\\,\\mathrm L\n     \\approx43,982\\,\\mathrm L.\n   $$\n   Even the theoretical model cannot hold 45,000 litres. The shortfall is\n   approximately $45,000-14,000\\pi\\approx1,018$ litres.\n   Converting an already rounded 43.98 m³ would give 43,980 litres; premature\n   rounding explains that small discrepancy.\n6. Operational headspace below the apex reduces usable capacity.\n   Pipes or other fittings can also occupy part of the internal space.\n   Another concrete limitation with a correct explanation of its effect\n   receives equal credit. Because the internal dimensions are given, a wall\n   added outside cannot simply be subtracted from the calculated internal\n   volume.\n\nAccept suitable decompositions, other valid trigonometric approaches,\nand transparent equivalent calculations. Formulas for unrelated solids or\nadding internal joining faces do not produce a suitable overall model.\nNo sphere calculation, general sine/cosine rule, or fresh derivation of\nthe cone-volume formula is required: those broader prerequisites are not\nadditionally assessed here.\n\n\n# One overall assessment: rainwater tank\n\nOne raw total out of 20 points; exactly one passing threshold of 15.\n\n| Criterion | Points |\n|---|---:|\n| Suitable solids selected and justified from the described properties | 1 |\n| Suitable axial section showing radius/diameter and vertical component heights | 1 |\n| Connected decomposition without gaps or positive-volume overlap explained | 1 |\n| Right roof triangle identified with correctly assigned sides | 1 |\n| Suitable geometric relationship for the roof line justified | 1 |\n| Roof line determined as 2.50 m | 1 |\n| Angle to the horizontal plane correctly identified | 1 |\n| Suitable trigonometric approach justified | 1 |\n| Angle determined as approximately 36.9° | 1 |\n| External boundary faces identified, including the base and excluding the internal join | 1 |\n| Complete surface transparently found as 21π m² or 65.97 m² | 1 |\n| Coated faces justified, excluding the foundation contact surface | 1 |\n| Coating transparently found as 17π m² or 53.41 m² | 1 |\n| Cylinder and cone volumes set up with correct quantities and factors | 2 |\n| Component volumes consistently combined to 14π m³ or 43.98 m³ | 1 |\n| Conversion to litres using unrounded values | 1 |\n| Reasoned comparison with 45,000 litres and shortfall of approximately 1,018 litres | 1 |\n| Concrete practical limitation identified | 1 |\n| Its effect on usable capacity correctly explained | 1 |\n\nHalf points are allowed for meaningfully separable partial performances.\nUnits belong to interpretation; one accidentally incorrect unit symbol does\nnot automatically invalidate the entire model. Different valid trigonometric\nmethods and explanations alongside calculations receive equal credit.\nNo particular wording or location under a given part number is required.\n\nBefore comparison with 15, cap the one total score at 14 if an entire central\nperformance is absent across the submission or rests only on a fundamentally\nunsuitable model: a meaningful composite-solid model, justified length\ndetermination, justified angle determination, justified external-area\ndetermination, or justified capacity determination. The cap does not require\nperfect work on every detail. An isolated numerical, sign, copying, or\nrounding slip does not trigger it.\n\nDo not penalise one initial error repeatedly. Correct follow-through,\nsound approaches, and suitable explanations earn credit even if an earlier\ncopied radius changes the final value. A small rounding discrepancy in litres\nstill allows credit for correct conversion and decision. A wrong basic model,\nsuch as using slant length as the vertical height in the volume calculation,\nmust be assessed mathematically; it is not merely a rounding issue. A list of\nformulas without assigning quantities to the situation earns no modelling\nor reasoning credit.\n\nGrade only legible demonstrated work.",
+  "coveredGoalIds": [
+    "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9"
+  ],
+  "coveredStrands": [
+    "L2"
+  ],
+  "demandLevels": [
+    "AB2"
+  ],
+  "scoring": {
+    "maxPoints": 20,
+    "passingPoints": 15,
+    "steps": [
+      {
+        "id": "space-criterion-1",
+        "points": 1,
+        "description": "Passende Körper gewählt und an den beschriebenen Eigenschaften begründet",
+        "descriptionEn": "Suitable solids selected and justified from the described properties"
+      },
+      {
+        "id": "space-criterion-2",
+        "points": 1,
+        "description": "Achsschnitt mit Radius/Durchmesser und senkrechten Teilhöhen passend dargestellt",
+        "descriptionEn": "Suitable axial section showing radius/diameter and vertical component heights"
+      },
+      {
+        "id": "space-criterion-3",
+        "points": 1,
+        "description": "Zusammenhängende, lückenlose Zerlegung ohne positives Überlappungsvolumen erklärt",
+        "descriptionEn": "Connected decomposition without gaps or positive-volume overlap explained"
+      },
+      {
+        "id": "space-criterion-4",
+        "points": 1,
+        "description": "Rechtwinkliges Dachdreieck mit richtig zugeordneten Seiten identifiziert",
+        "descriptionEn": "Right roof triangle identified with correctly assigned sides"
+      },
+      {
+        "id": "space-criterion-5",
+        "points": 1,
+        "description": "Geeignete geometrische Beziehung für die Dachlinie begründet",
+        "descriptionEn": "Suitable geometric relationship for the roof line justified"
+      },
+      {
+        "id": "space-criterion-6",
+        "points": 1,
+        "description": "Dachlinie 2,50 m bestimmt",
+        "descriptionEn": "Roof line determined as 2.50 m"
+      },
+      {
+        "id": "space-criterion-7",
+        "points": 1,
+        "description": "Winkel zur waagerechten Ebene richtig festgelegt",
+        "descriptionEn": "Angle to the horizontal plane correctly identified"
+      },
+      {
+        "id": "space-criterion-8",
+        "points": 1,
+        "description": "Geeigneter trigonometrischer Ansatz begründet",
+        "descriptionEn": "Suitable trigonometric approach justified"
+      },
+      {
+        "id": "space-criterion-9",
+        "points": 1,
+        "description": "Winkel ungefähr 36,9° bestimmt",
+        "descriptionEn": "Angle determined as approximately 36.9°"
+      },
+      {
+        "id": "space-criterion-10",
+        "points": 1,
+        "description": "Äußere Randflächen einschließlich Boden und ohne inneren Nahtkreis identifiziert",
+        "descriptionEn": "External boundary faces identified, including the base and excluding the internal join"
+      },
+      {
+        "id": "space-criterion-11",
+        "points": 1,
+        "description": "Gesamte Oberfläche nachvollziehbar zu 21π m² bzw. 65,97 m² bestimmt",
+        "descriptionEn": "Complete surface transparently found as 21π m² or 65.97 m²"
+      },
+      {
+        "id": "space-criterion-12",
+        "points": 1,
+        "description": "Beschichtungsflächen unter Ausschluss der Fundamentkontaktfläche begründet gewählt",
+        "descriptionEn": "Coated faces justified, excluding the foundation contact surface"
+      },
+      {
+        "id": "space-criterion-13",
+        "points": 1,
+        "description": "Beschichtung nachvollziehbar zu 17π m² bzw. 53,41 m² bestimmt",
+        "descriptionEn": "Coating transparently found as 17π m² or 53.41 m²"
+      },
+      {
+        "id": "space-criterion-14",
+        "points": 2,
+        "description": "Zylinder- und Kegelvolumen mit richtigen Größen und Faktoren angesetzt",
+        "descriptionEn": "Cylinder and cone volumes set up with correct quantities and factors"
+      },
+      {
+        "id": "space-criterion-15",
+        "points": 1,
+        "description": "Beide Teilvolumina konsistent zu 14π m³ bzw. 43,98 m³ zusammengeführt",
+        "descriptionEn": "Component volumes consistently combined to 14π m³ or 43.98 m³"
+      },
+      {
+        "id": "space-criterion-16",
+        "points": 1,
+        "description": "In Liter anhand ungerundeter Werte umgerechnet",
+        "descriptionEn": "Conversion to litres using unrounded values"
+      },
+      {
+        "id": "space-criterion-17",
+        "points": 1,
+        "description": "45 000 Liter begründet verglichen und Fehlmenge ungefähr 1 018 Liter bestimmt",
+        "descriptionEn": "Reasoned comparison with 45,000 litres and shortfall of approximately 1,018 litres"
+      },
+      {
+        "id": "space-criterion-18",
+        "points": 1,
+        "description": "Konkrete praktische Modellgrenze genannt",
+        "descriptionEn": "Concrete practical limitation identified"
+      },
+      {
+        "id": "space-criterion-19",
+        "points": 1,
+        "description": "Ihre Wirkung auf das nutzbare Fassungsvermögen richtig erklärt",
+        "descriptionEn": "Its effect on usable capacity correctly explained"
+      }
+    ]
+  },
+  "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/geometry-two-same-identity-2026-11-03-v1/6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9/reviewed-execution-contract.json",
+  "reviewNote": "Whole bilingual content independently reviewed in R1; similarity cap-only correction approved in R2. One ordinary total score and binary mastery result for this stable goal only. Source applicability and assessment readiness at existing placements are separately inventoried; this private overlay is not activation approval."
+}

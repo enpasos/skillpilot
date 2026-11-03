@@ -4,7 +4,7 @@
   "authorStatus": "PROPOSAL_REQUIRES_INDEPENDENT_SOURCE_FRAGMENT_REVIEW",
   "canonical": {
     "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
-    "sha256": "7c57d298140ac3a42eb5f4c90615a6472849ab44105ede77f1da461a6bc8eab9"
+    "sha256": "9194410383fd9b8b5a8661f765c81030197c524620690a73bebd9b1c086cc15b"
   },
   "nativeCompiler": {
     "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
@@ -285,7 +285,7 @@
     },
     {
       "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
-      "sha256": "db2a787de4ad8bd977e594d7635462f8ebfcb23caf9cb41c18e04fcec448a03a"
+      "sha256": "2b36c1542c4ed43557c233194f245365bd7e2a63d9567bb1d3e2cd960119a2c0"
     },
     {
       "path": "curricula/DE/Gymnasium/quality/release-model/mathematik-semantic-fingerprint-rebind-3a3792.json",
@@ -346,7 +346,7 @@
   },
   "sourceDecisions": {
     "path": "app/scripts/config/math-country-seki-source-decisions.json",
-    "sha256": "46818f4f7e5e8bd5f69c4fd2242043f72808743af2f236cb9feb0c16e552ea8d"
+    "sha256": "18778076ccb442123c892fb366f13b0dd17cff8312f067b23cad40237bb56c3d"
   },
   "variantSelections": [
     {
@@ -1414,7 +1414,7 @@
         {
           "view": {
             "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
-            "sha256": "650ae30a745f14fe5e720904519a94553c035e689bd1a6c79ef2359ea88af7d4"
+            "sha256": "38dc7c2d1eff4fba0da2bcbb446fb7da1ee7040d9849d5a90abaa610ef2614ce"
           },
           "viewId": "de-th-gym-math-gk",
           "courseProfile": "GK",
@@ -1428,14 +1428,289 @@
           ],
           "secondaryTargets": [],
           "corrections": [],
-          "addedSupplementReferences": [],
+          "addedSupplementReferences": [
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-cafd6520-c4af-4109-9863-cc49ba6fad4d"
+              ],
+              "relocationLabel": "Größen und Maßstab – Multiplikation und ganzzahlige Division als Umkehroperationen nutzen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
+              ],
+              "relocationLabel": "Größen und Maßstab – Größen und Einheiten vergleichen und umrechnen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "ca623958-c204-5d1b-bdd0-3f76765674cb",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-ca623958-c204-5d1b-bdd0-3f76765674cb"
+              ],
+              "relocationLabel": "Größen und Maßstab – Mit Größen einheitengerecht rechnen und Ergebnisse deuten"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-d6c3fb37-ece6-5b56-9221-1eeb21845877"
+              ],
+              "relocationLabel": "Größen und Maßstab – Umfang und Flächeninhalt unterscheiden und anwenden"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-57fbbf31-9b8c-5408-9af5-fbc73acd12bb"
+              ],
+              "relocationLabel": "Größen und Maßstab – Volumeneinheiten deuten und umrechnen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "b44f038c-fb1f-527e-b9ad-382214d0328a",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-b44f038c-fb1f-527e-b9ad-382214d0328a"
+              ],
+              "relocationLabel": "Größen und Maßstab – Volumenformel des Quaders mit Einheitswürfeln plausibilisieren"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "596345cd-679e-5c7b-955f-e8cb1ec81e96",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-596345cd-679e-5c7b-955f-e8cb1ec81e96"
+              ],
+              "relocationLabel": "Größen und Maßstab – Einfache proportionale Sachaufgaben mit Dreisatz lösen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "79dd11f0-ed20-5b92-a215-b061a2098c0c",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-79dd11f0-ed20-5b92-a215-b061a2098c0c"
+              ],
+              "relocationLabel": "Größen und Maßstab – Maßstabsaufgaben mit gleichartigen Längeneinheiten lösen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-1dd0266c-41b4-5481-b64b-7b718cfe799b"
+              ],
+              "relocationLabel": "Konstruktionen und Körperdarstellungen – Kreise aus Mittelpunkt und Radius zeichnen und begründen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "2331caf2-ccb2-5492-9fc6-48763b848bae",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-2331caf2-ccb2-5492-9fc6-48763b848bae"
+              ],
+              "relocationLabel": "Konstruktionen und Körperdarstellungen – Winkelzeichnungen und Gradmaße ineinander überführen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "3e53a39b-1c75-4034-a647-8de85719e1fb",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-3e53a39b-1c75-4034-a647-8de85719e1fb"
+              ],
+              "relocationLabel": "Konstruktionen und Körperdarstellungen – Lagebeziehungen geometrischer Objekte fachsprachlich beschreiben"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-c31d3a7a-778b-5ae3-9aa4-7b5674047f83"
+              ],
+              "relocationLabel": "Konstruktionen und Körperdarstellungen – Parallele und senkrechte Geraden konstruieren"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-c823b5a2-82e3-5e22-9c27-c0f41cc5eac6"
+              ],
+              "relocationLabel": "Konstruktionen und Körperdarstellungen – Elementare Körper erkennen und benennen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-f52e9d72-4995-5c80-91d2-7761ea0cbec0"
+              ],
+              "relocationLabel": "Konstruktionen und Körperdarstellungen – Netze von Quadern und Würfeln zeichnen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-6bb52f96-6320-5a34-afb0-db9b471dd4ac"
+              ],
+              "relocationLabel": "Konstruktionen und Körperdarstellungen – Schrägbilder von Quadern und Würfeln zeichnen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "11c88ea2-8502-5008-bec2-3e491c75ace4",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-11c88ea2-8502-5008-bec2-3e491c75ace4"
+              ],
+              "relocationLabel": "Konstruktionen und Körperdarstellungen – Darstellungsformen gerader Körper verknüpfen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "491e0858-e977-516e-a339-1cc2f9e9690f",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-491e0858-e977-516e-a339-1cc2f9e9690f"
+              ],
+              "relocationLabel": "Flächen und Zylinder – Flächenformeln ebener Figuren durch Zerlegen und Ergänzen herleiten"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-87c55be5-06a9-41e2-a0d4-c60f7c8b8078"
+              ],
+              "relocationLabel": "Flächen und Zylinder – Flächeninhalte ebener Figuren berechnen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "8a691345-3216-522c-a898-d65e8e94db28",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-8a691345-3216-522c-a898-d65e8e94db28"
+              ],
+              "relocationLabel": "Flächen und Zylinder – Zahl Pi als Verhältnis am Kreis erklären"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-415bd48b-8a76-4d4f-bfdd-d085573e7ac3"
+              ],
+              "relocationLabel": "Flächen und Zylinder – Volumen von Zylindern berechnen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "f65ab452-1884-57b0-9be3-c7d9e4944891",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-f65ab452-1884-57b0-9be3-c7d9e4944891"
+              ],
+              "relocationLabel": "Flächen und Zylinder – Zylindermantel aus dem Kreisumfang herleiten"
+            }
+          ],
           "expectedRemovedTargetGoalIds": [],
-          "expectedAddedTargetGoalIds": []
+          "expectedAddedTargetGoalIds": [
+            "11c88ea2-8502-5008-bec2-3e491c75ace4",
+            "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+            "2331caf2-ccb2-5492-9fc6-48763b848bae",
+            "3e53a39b-1c75-4034-a647-8de85719e1fb",
+            "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+            "491e0858-e977-516e-a339-1cc2f9e9690f",
+            "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+            "596345cd-679e-5c7b-955f-e8cb1ec81e96",
+            "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+            "79dd11f0-ed20-5b92-a215-b061a2098c0c",
+            "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+            "8a691345-3216-522c-a898-d65e8e94db28",
+            "b44f038c-fb1f-527e-b9ad-382214d0328a",
+            "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+            "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+            "ca623958-c204-5d1b-bdd0-3f76765674cb",
+            "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+            "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+            "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+            "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+            "f65ab452-1884-57b0-9be3-c7d9e4944891"
+          ]
         },
         {
           "view": {
             "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-lk.view.json",
-            "sha256": "4d73dbecd50c9691eb576c66baaf229239600a2c7dd14a4524209e82a6d04acf"
+            "sha256": "2d71c623be8dc3f6e4b41859fe8c8a065e7cf5053ce580e206a75c3744df2e7a"
           },
           "viewId": "de-th-gym-math-lk",
           "courseProfile": "LK",
@@ -1449,9 +1724,284 @@
           ],
           "secondaryTargets": [],
           "corrections": [],
-          "addedSupplementReferences": [],
+          "addedSupplementReferences": [
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-cafd6520-c4af-4109-9863-cc49ba6fad4d"
+              ],
+              "relocationLabel": "Größen und Maßstab – Multiplikation und ganzzahlige Division als Umkehroperationen nutzen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
+              ],
+              "relocationLabel": "Größen und Maßstab – Größen und Einheiten vergleichen und umrechnen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "ca623958-c204-5d1b-bdd0-3f76765674cb",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-ca623958-c204-5d1b-bdd0-3f76765674cb"
+              ],
+              "relocationLabel": "Größen und Maßstab – Mit Größen einheitengerecht rechnen und Ergebnisse deuten"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-d6c3fb37-ece6-5b56-9221-1eeb21845877"
+              ],
+              "relocationLabel": "Größen und Maßstab – Umfang und Flächeninhalt unterscheiden und anwenden"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-57fbbf31-9b8c-5408-9af5-fbc73acd12bb"
+              ],
+              "relocationLabel": "Größen und Maßstab – Volumeneinheiten deuten und umrechnen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "b44f038c-fb1f-527e-b9ad-382214d0328a",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-b44f038c-fb1f-527e-b9ad-382214d0328a"
+              ],
+              "relocationLabel": "Größen und Maßstab – Volumenformel des Quaders mit Einheitswürfeln plausibilisieren"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "596345cd-679e-5c7b-955f-e8cb1ec81e96",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-596345cd-679e-5c7b-955f-e8cb1ec81e96"
+              ],
+              "relocationLabel": "Größen und Maßstab – Einfache proportionale Sachaufgaben mit Dreisatz lösen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "79dd11f0-ed20-5b92-a215-b061a2098c0c",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-79dd11f0-ed20-5b92-a215-b061a2098c0c"
+              ],
+              "relocationLabel": "Größen und Maßstab – Maßstabsaufgaben mit gleichartigen Längeneinheiten lösen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-1dd0266c-41b4-5481-b64b-7b718cfe799b"
+              ],
+              "relocationLabel": "Konstruktionen und Körperdarstellungen – Kreise aus Mittelpunkt und Radius zeichnen und begründen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "2331caf2-ccb2-5492-9fc6-48763b848bae",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-2331caf2-ccb2-5492-9fc6-48763b848bae"
+              ],
+              "relocationLabel": "Konstruktionen und Körperdarstellungen – Winkelzeichnungen und Gradmaße ineinander überführen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "3e53a39b-1c75-4034-a647-8de85719e1fb",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-3e53a39b-1c75-4034-a647-8de85719e1fb"
+              ],
+              "relocationLabel": "Konstruktionen und Körperdarstellungen – Lagebeziehungen geometrischer Objekte fachsprachlich beschreiben"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-c31d3a7a-778b-5ae3-9aa4-7b5674047f83"
+              ],
+              "relocationLabel": "Konstruktionen und Körperdarstellungen – Parallele und senkrechte Geraden konstruieren"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-c823b5a2-82e3-5e22-9c27-c0f41cc5eac6"
+              ],
+              "relocationLabel": "Konstruktionen und Körperdarstellungen – Elementare Körper erkennen und benennen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-f52e9d72-4995-5c80-91d2-7761ea0cbec0"
+              ],
+              "relocationLabel": "Konstruktionen und Körperdarstellungen – Netze von Quadern und Würfeln zeichnen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-6bb52f96-6320-5a34-afb0-db9b471dd4ac"
+              ],
+              "relocationLabel": "Konstruktionen und Körperdarstellungen – Schrägbilder von Quadern und Würfeln zeichnen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "11c88ea2-8502-5008-bec2-3e491c75ace4",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-11c88ea2-8502-5008-bec2-3e491c75ace4"
+              ],
+              "relocationLabel": "Konstruktionen und Körperdarstellungen – Darstellungsformen gerader Körper verknüpfen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "491e0858-e977-516e-a339-1cc2f9e9690f",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-491e0858-e977-516e-a339-1cc2f9e9690f"
+              ],
+              "relocationLabel": "Flächen und Zylinder – Flächenformeln ebener Figuren durch Zerlegen und Ergänzen herleiten"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-87c55be5-06a9-41e2-a0d4-c60f7c8b8078"
+              ],
+              "relocationLabel": "Flächen und Zylinder – Flächeninhalte ebener Figuren berechnen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "8a691345-3216-522c-a898-d65e8e94db28",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-8a691345-3216-522c-a898-d65e8e94db28"
+              ],
+              "relocationLabel": "Flächen und Zylinder – Zahl Pi als Verhältnis am Kreis erklären"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-415bd48b-8a76-4d4f-bfdd-d085573e7ac3"
+              ],
+              "relocationLabel": "Flächen und Zylinder – Volumen von Zylindern berechnen"
+            },
+            {
+              "parentStructureId": "th-source-extraction-supplements-seki",
+              "node": {
+                "kind": "goalEntry",
+                "goalId": "f65ab452-1884-57b0-9be3-c7d9e4944891",
+                "projectionRole": "target"
+              },
+              "sourceDecisionIds": [
+                "de-th-f65ab452-1884-57b0-9be3-c7d9e4944891"
+              ],
+              "relocationLabel": "Flächen und Zylinder – Zylindermantel aus dem Kreisumfang herleiten"
+            }
+          ],
           "expectedRemovedTargetGoalIds": [],
-          "expectedAddedTargetGoalIds": []
+          "expectedAddedTargetGoalIds": [
+            "11c88ea2-8502-5008-bec2-3e491c75ace4",
+            "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+            "2331caf2-ccb2-5492-9fc6-48763b848bae",
+            "3e53a39b-1c75-4034-a647-8de85719e1fb",
+            "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+            "491e0858-e977-516e-a339-1cc2f9e9690f",
+            "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+            "596345cd-679e-5c7b-955f-e8cb1ec81e96",
+            "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+            "79dd11f0-ed20-5b92-a215-b061a2098c0c",
+            "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+            "8a691345-3216-522c-a898-d65e8e94db28",
+            "b44f038c-fb1f-527e-b9ad-382214d0328a",
+            "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+            "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+            "ca623958-c204-5d1b-bdd0-3f76765674cb",
+            "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+            "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+            "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+            "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+            "f65ab452-1884-57b0-9be3-c7d9e4944891"
+          ]
         }
       ]
     }
@@ -3127,6 +3677,14 @@
     {
       "path": "curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/author-source-and-exact-operations.json",
       "sha256": "d21141d9f6942d7796e8971d13c7fc198ea8e9147f3b18a1220906a2dd7593f2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/geometry-two-same-identity-2026-11-03-v1/author-exact-integration-and-th-source-operations.json",
+      "sha256": "bc620f640c8ec7015f5d2d1ec5781e764527006e9f3cfcef93c8053cf95272ac"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/geometry-two-same-identity-2026-11-03-v1/reviews/th-seki-and-cross-stage-acquisition.review.json",
+      "sha256": "0fd20be0263d3ef17449492de21ec8b8c7a09646ab466a10567ac9f6c8fb1910"
     }
   ],
   "existingStageViews": [
@@ -3673,7 +4231,7 @@
     {
       "source": {
         "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
-        "sha256": "650ae30a745f14fe5e720904519a94553c035e689bd1a6c79ef2359ea88af7d4"
+        "sha256": "38dc7c2d1eff4fba0da2bcbb446fb7da1ee7040d9849d5a90abaa610ef2614ce"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
       "outputViewId": "de-th-gym-math-gk",
@@ -3691,7 +4249,7 @@
     {
       "source": {
         "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-lk.view.json",
-        "sha256": "4d73dbecd50c9691eb576c66baaf229239600a2c7dd14a4524209e82a6d04acf"
+        "sha256": "2d71c623be8dc3f6e4b41859fe8c8a065e7cf5053ce580e206a75c3744df2e7a"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-lk.view.json",
       "outputViewId": "de-th-gym-math-lk",
@@ -4509,7 +5067,7 @@
     "de-sh-gym-math-gk-g9",
     "de-sh-gym-math-lk-g9"
   ],
-  "reviewReceiptPath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/stage-scope-implementation-matrix-five-normal-producer-source-fix.review.json",
+  "reviewReceiptPath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/stage-scope-implementation-th-seki-two-same-identity-geometry.review.json",
   "assessmentScopeOperations": [
     {
       "id": "mv-seki-material-exclude",
@@ -12658,7 +13216,7 @@
       "sourceDecision": "curricula/DE/Gymnasium/assessments/mathematik/quadratic-three-conditions-same-identity-2026-11-03-v1/author-exact-scope-and-program-operations.json"
     }
   ],
-  "revision": "bbb-existing-reference-v2",
+  "revision": "th-seki-source21-two-existing-geometry-forms-20261103-v1",
   "priorImplementationReview": {
     "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/stage-scope-implementation-he5-cuboid48-matrix18-bbbe72-probability-drug.review.json",
     "sha256": "7883ba04a93494d2614dec55900eb1e55dc73510e57f9ab915d52fb614992b8b"

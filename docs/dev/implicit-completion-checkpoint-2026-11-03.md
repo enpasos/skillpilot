@@ -38,6 +38,14 @@ M7-, Deployment- oder vollständige CI-Freigabe.
   Sechs fachlich falsche Voraussetzungskanten sind entfernt; regulär benötigte
   Grundlagen bleiben erhalten. Die normale Erzeugung der Länder- und
   G8/G9-Ansichten bewahrt dabei die tatsächlichen Ziel- und Vorbereitungsrollen.
+- Zwei weitere bestehende Geometriekompetenzen erhalten vollständige deutsche
+  und englische Prüfungsformen: kongruente und maßstäbliche Dreiecksbilder mit
+  Geometriesoftware sowie die begründete Modellierung eines Regenwassertanks.
+  Die Aufgaben haben jeweils eine Gesamtbewertung und ein binäres Ergebnis;
+  bestehende IDs, Kompetenzbeschreibungen und Voraussetzungen bleiben gleich.
+  In Thüringen werden außerdem 21 durch Originalquellen belegte Grundlagen
+  als eigene Lernziele angeboten, auch bei gemeinsamer Auswahl beider
+  Schulstufen. Die reine Oberstufenansicht bleibt unverändert.
 
 Die Konzepte und das LaTeX/PDF sind Teil des PR. Der abschließende Abgleich mit
 allen weiteren fachlichen Korrekturen bleibt Bestandteil des Meilensteins.
@@ -64,16 +72,28 @@ Ziel-Angebots-Paare. Das inzwischen übernommene Matrix-/Fünf-Aufgaben-Paket
 schließt davon weitere **1.121 Ziel-Angebots-Paare und 690 Endpunktpaare**,
 ohne neue Lücken oder Zielverluste hinzuzufügen. Aktuell verbleiben
 **362 unterschiedliche ungedeckte Ziel-IDs / 8.641 Ziel-Angebots-Paare und
-208 gewöhnliche Endpunkt-IDs / 4.345 Endpunktpaare**. Alle **161 Angebote**
-besitzen weiterhin ungedeckte Routen. Der Mathematik-Corpus ist deshalb rot.
+208 gewöhnliche Endpunkt-IDs / 4.345 Endpunktpaare** auf diesem Zwischenstand.
+Alle **161 Angebote** besaßen dort weiterhin ungedeckte Routen.
 
 Die acht abschließenden Generator-, Quellen-, Rollen- und Populationstests
-bestehen. Nach dem Import der 363 geprüften Dateien stimmen alle 8.732
-Runtime-Eingaben mit dem tatsächlichen Native-Nachlauf über 161 Angebote und
+bestehen. Nach dem Import der 363 geprüften Dateien stimmen die 8.732
+gebundenen Eingabedateien mit dem tatsächlichen Native-Nachlauf über 161 Angebote und
 46 Kursvereinigungen überein. Das unabhängige Astra-Review und der normale
 Lernzielbuchtest sind ebenfalls abgeschlossen. Diese begrenzte Verbesserung
 ist keine M7- oder vollständige CI-Freigabe.
 [Messung und Importnachweis](../qa-ci/evidence/curriculum-completion-integrity/2026-11-03/matrix-and-five-forms/README.md).
+
+Das anschließende Geometrie-/Thüringen-Paket schließt weitere **324
+Ziel-Angebots-Paare und 116 Endpunktpaare**, ohne neue Lücken oder Zielverluste.
+**Thüringen Sekundarstufe I / G8 / GK+LK besteht** jetzt die vollständige
+Abschlussintegritätsprüfung. Es verbleiben **353 ungedeckte Ziel-IDs / 8.317
+Ziel-Angebots-Paare sowie 206 gewöhnliche Endpunkt-IDs / 4.229 Endpunktpaare**
+in den übrigen **160 Angeboten**. Der gesamte Mathematik-Corpus bleibt rot.
+Der tatsächliche Java-Nachlauf verwendet ausschließlich versionierte
+Runtime-Eingaben und die geprüfte Korrektur; ignorierte lokale Quellencaches
+sind nicht Teil dieses Nachweises. Die 807 curricularen Ziele bleiben in der
+Qualitätsprüfung.
+[Messung und Standardprüfungen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-03/th-seki-geometry/README.md).
 
 Im [GitHub-Lauf für `8899fb212c`](https://github.com/enpasos/skillpilot/actions/runs/41707073546)
 besteht der reale vollständige Mathematik-MCP-Prüfungsablauf einschließlich
@@ -120,12 +140,14 @@ nicht ersetzt.
 
 ## Nächste fachliche Pakete
 
-Als nächstes werden zwei bereits inhaltlich geprüfte Geometrieaufgaben und
-ihre tatsächlichen Erwerbswege zunächst für Thüringen Sekundarstufe I
-fertiggestellt. Fehlende Grundlagen dürfen nicht nur als unsichtbare
-Vorbereitung ergänzt werden, wenn der Lehrplan sie selbst als Lernziele
-vorsieht. Mechanisch vorhandene Voraussetzungen sind Suchkandidaten und
-ersetzen keine Quellen- oder Erwerbsfolgeentscheidung.
+Die verbleibenden Mathematiklücken werden anhand der tatsächlich angebotenen
+Lehrpläne in fachlich zusammenhängenden Paketen repariert. Bereits geeignete
+Prüfungsformen und fehlerhafte Platzierungen werden zuerst geprüft. Fehlende
+Grundlagen dürfen nicht nur als unsichtbare Vorbereitung ergänzt werden,
+wenn der Lehrplan sie selbst als Lernziele vorsieht. Mechanisch vorhandene
+Voraussetzungen sind Suchkandidaten und ersetzen keine Quellen- oder
+Erwerbsfolgeentscheidung. Das optionale curriculare Level-Thema ist kein
+Bestandteil dieses Meilensteins.
 
 Der Mathematik-Meilenstein verlangt gültige vollständige Angebote, die
 bestehenden M7-Grenzen und bestandene erforderliche GitHub-Checks des konkreten

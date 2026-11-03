@@ -1,0 +1,19 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: biology: mandatory source-atlas input must be Git-tracked: app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json
+    at testGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/geometry-two-form-integration-20261103-v1/final-bound-check-host/app/scripts/testGoalBookSourceAtlasInputs.ts:629:16)
+    at testGoalBookInputIsolation (/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/geometry-two-form-integration-20261103-v1/final-bound-check-host/app/scripts/testGoalBookInputIsolation.ts:41:3)
+    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/geometry-two-form-integration-20261103-v1/final-bound-check-host/app/scripts/testGoalBookModel.ts:34:7)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+
+Node.js v20.20.2

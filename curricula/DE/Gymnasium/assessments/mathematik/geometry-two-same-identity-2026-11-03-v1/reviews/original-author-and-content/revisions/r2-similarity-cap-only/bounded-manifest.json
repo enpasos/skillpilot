@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "status": "author_bounded_revision_candidate_for_astra_delta_review",
+  "revisionId": "geometry-similarity-cap-r2-20261103",
+  "authoredAt": "2026-11-03T20:00:58.167694Z",
+  "author": {
+    "provider": "openai",
+    "model": "gpt-6.1-sol",
+    "reasoningEffort": "ultra"
+  },
+  "findingId": "SIM-RUBRIC-1",
+  "goalId": "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+  "baseAuthorPackage": {
+    "path": "author-package.json",
+    "sha256": "47db2e7f1ceb30bc9d4b1cc1ff5b7ec716b21af915b8e898ae9b3b03b03d028a"
+  },
+  "independentR1Receipt": {
+    "path": "independent-whole-content-review.r1.json",
+    "sha256": "8940b91ac0ff27152d00031d39adb1323b22b9ae51771ae57d9915ad0dfa05c1",
+    "preservedUnchanged": true
+  },
+  "effectiveRevision": "Apply exactly the two replacement-file overlays to the unchanged base author package; original R1 files and receipt remain historical inputs.",
+  "changes": [
+    {
+      "effectivePath": "drafts/similarity/rubric.de.md",
+      "baseSha256": "1498173aaa5ec59c3211f1933e8ddbdf8d7591863d1c32acaa97c23503e4cf2d",
+      "replacementPath": "revisions/r2-similarity-cap-only/drafts/similarity/rubric.de.md",
+      "replacementSha256": "5e470208418a5e13b82cc6fbc8e4f196d3321694bbb0b5533330aa1871bf811a",
+      "onlyChangedRegion": "single existing cap paragraph",
+      "oldParagraph": "Vor dem Vergleich mit der einen Bestehensgrenze wird die Gesamtpunktzahl auf\nhöchstens 14 BE begrenzt, wenn über die gesamte Abgabe eine ganze Kernhandlung\nfehlt oder nur durch ein grundlegend ungeeignetes Vorgehen ersetzt wird:\nreale Softwarekonstruktion, kongruentes Bild, Vergrößerung, Verkleinerung oder\neine fachlich nachvollziehbare Begründung durch Kongruenz und Ähnlichkeit.\nEin einzelner falscher Bildpunkt, eine lokale Rechenabweichung oder eine nicht\nwörtlich wiederholte Erklärung ist kein solcher Totalausfall. Messungen allein\nersetzen die Abbildungsbegründung nicht.",
+      "newParagraph": "Vor dem Vergleich mit der einen Bestehensgrenze wird die Gesamtpunktzahl auf\nhöchstens 14 BE begrenzt, wenn über die gesamte Abgabe eine ganze Kernhandlung\nfehlt oder nur durch ein grundlegend ungeeignetes Vorgehen ersetzt wird:\nreale Softwarekonstruktion, kongruentes Bild, Vergrößerung oder Verkleinerung.\nDieselbe Begrenzung auf höchstens 14 BE gilt, wenn über die gesamte Abgabe\neine fachlich tragfähige Kongruenzbegründung für das Drehbild ODER eine\nfachlich tragfähige Ähnlichkeitsbegründung für die Streckbilder vollständig\nfehlt. Bereits das vollständige Fehlen nur einer dieser beiden Begründungen\nlöst die Kappung aus; fehlen beide, gilt weiterhin dieselbe Obergrenze.\nEine an anderer Stelle gezeigte gleichwertige Begründung zählt; bestimmte\nSchlüsselwörter oder Teilnummern sind nicht erforderlich.\nEin einzelner falscher Bildpunkt, eine lokale Rechenabweichung oder eine nicht\nwörtlich wiederholte Erklärung ist kein solcher Totalausfall. Messungen allein\nersetzen die Abbildungsbegründung nicht.",
+      "outsideParagraphBytesUnchanged": true
+    },
+    {
+      "effectivePath": "drafts/similarity/rubric.en.md",
+      "baseSha256": "2c7f86f3fa17df010379313fa561a240fed755656e928ad7905f5d6eaa88a35a",
+      "replacementPath": "revisions/r2-similarity-cap-only/drafts/similarity/rubric.en.md",
+      "replacementSha256": "be4bb2d9f5edcfc4d778a7db1807da3ed54edd0f73095ea5263db4c81694d9d7",
+      "onlyChangedRegion": "single existing cap paragraph",
+      "oldParagraph": "Before comparison with the single passing threshold, cap the total at 14 if\none entire central action is absent across the submission or replaced only\nby a fundamentally unsuitable approach: actual software construction,\na congruent image, enlargement, reduction, or understandable justification\nthrough congruence and similarity. One incorrect image point, a local\ncalculation slip, or an explanation not repeated verbatim is not such a\ncomplete failure. Measurements alone do not replace transformation-based\nreasoning.",
+      "newParagraph": "Before comparison with the single passing threshold, cap the total at 14 if\none entire central action is absent across the submission or replaced only\nby a fundamentally unsuitable approach: actual software construction,\na congruent image, enlargement, or reduction. The same cap of 14 applies if,\nacross the submission, a mathematically sound justification of the rotated\nimage's congruence OR a mathematically sound justification of the dilated\nimages' similarity is entirely absent. The complete absence of either one\nalone triggers the cap; if both are absent, the same upper limit still applies.\nEquivalent reasoning shown elsewhere counts; no particular keywords or part\nnumbers are required. One incorrect image point, a local calculation slip,\nor an explanation not repeated verbatim is not such a complete failure.\nMeasurements alone do not replace transformation-based reasoning.",
+      "outsideParagraphBytesUnchanged": true
+    }
+  ],
+  "exactDelta": {
+    "path": "revisions/r2-similarity-cap-only/exact-delta.patch",
+    "sha256": "0693d6990f1b95f5fd9eb64a32580ca725c14f89783ac0a706e3643fd8b31de5"
+  },
+  "unchangedContentBindings": [
+    {
+      "path": "drafts/similarity/solution.de.md",
+      "sha256": "75e2e88f2ad52742ee19392dad4ac27b6b1bd776a32e0bab066589d0ffd197c5"
+    },
+    {
+      "path": "drafts/similarity/solution.en.md",
+      "sha256": "27378195497f9b1eb7d4da334d963fb918d9f2ff5866c595f7c897090a58d30f"
+    },
+    {
+      "path": "drafts/similarity/task.de.md",
+      "sha256": "2bcb561e5269004d975934890f6fd598c115816214b4810a2a2e5c8701ad3136"
+    },
+    {
+      "path": "drafts/similarity/task.en.md",
+      "sha256": "ccbc911a4c361692ff66777b64e81574b7b5f1e8c0256fdea2b73547083bca66"
+    },
+    {
+      "path": "drafts/space/rubric.de.md",
+      "sha256": "a6cb3a2d603521a499d0c1a5ee616214c77ff07c3af8ba1a55e8185f15015a75"
+    },
+    {
+      "path": "drafts/space/rubric.en.md",
+      "sha256": "c7134ccb73fcd9555f4b04d086f60f1d202b278a5962fca4664ef49ee4ce7222"
+    },
+    {
+      "path": "drafts/space/solution.de.md",
+      "sha256": "3d92df3f2c04b0973e4e657203589077df24528639bbde6f9fce8442bb4dd36c"
+    },
+    {
+      "path": "drafts/space/solution.en.md",
+      "sha256": "e993b91eeec34a9bd9091b901fb3e923f53ae54f1de21f1da8f3d8bd46e5739f"
+    },
+    {
+      "path": "drafts/space/task.de.md",
+      "sha256": "eed494e9b0378f458a87ba85ff6d16a74014cfb189e053a32a597b95a5cfcb64"
+    },
+    {
+      "path": "drafts/space/task.en.md",
+      "sha256": "6dc1264c299e7e0d941c5a97256551ecf396ea744fd26432c76bd6ed65fc8aea"
+    }
+  ],
+  "boundedChecks": {
+    "replacementFiles": 2,
+    "singleCapParagraphChangedPerFile": true,
+    "outsideEachParagraphByteIdentical": true,
+    "all12OriginalContentFilesStillMatchR1": true,
+    "rubricPointsRemain20": true,
+    "singlePassingThresholdRemains15": true,
+    "singleTotalCapRemains14": true,
+    "missingCongruenceAloneTriggersCap14": true,
+    "missingSimilarityAloneTriggersCap14": true,
+    "bothMissingUseSameCap14": true,
+    "equivalentReasoningElsewhereAccepted": true,
+    "localErrorAndFollowThroughRulesPreserved": true
+  },
+  "authority": {
+    "independentDeltaReviewPerformed": false,
+    "scopeReevaluationPerformed": false,
+    "scopeApprovalGranted": false,
+    "activationGranted": false,
+    "canonViewsFOrRootFilesWritten": false,
+    "taskOrSolutionChanges": false,
+    "tankRubricChanges": false
+  }
+}
