@@ -58,11 +58,13 @@ Es bleiben **378 unterschiedliche ungedeckte Ziel-IDs / 9.762
 Ziel-Angebots-Paare und 214 gewöhnliche Endpunkt-IDs**. Alle **161 Angebote**
 besitzen weiterhin ungedeckte Routen. Der Mathematik-Corpus ist deshalb rot.
 
-Die tatsächliche GitHub-CI des vorherigen PR-Heads meldet erfolgreiche
-Completion-Profile-/Cockpit-Prüfungen. Die vier positiven vollständigen
-Mathematik-Browserfälle sind durch die ungültige Datenbasis blockiert; der
-Restart-Fall benötigt zusätzlich eine Prüfung des neutralen Verlassens eines
-ungültigen Workflows. Der Ressourcenfehler beim Start des realen Mathematik-
+Die GitHub-CI für `d0877886a7` besteht die OpenAI-MCP-Apps-, Claude-, Gemini-
+und OAuth-Prüfungen. Im Completion-Kern bestehen 479 von 484 Tests. Die vier
+positiven vollständigen Mathematik-Browserfälle sind durch die ungültige
+Datenbasis blockiert. Der Restart-Fall scheitert bereits beim erstmaligen
+Auswählen des Profils in `Lane.createLearner`, ebenfalls vor seinem eigentlichen
+Neustartszenario. Dieser Lauf belegt keinen zusätzlichen Fehler beim neutralen
+Verlassen eines veralteten Workflows. Der Ressourcenfehler beim Start des realen Mathematik-
 MCP-Tests ist im Workflow korrigiert: Der zusätzliche reale Test besteht
 mit dem normalen Gradle-Ressourcen-/Buildprozess (ein Fall, keine Skips).
 Die neun Workflow-Kontrakttests bestehen ebenfalls. Keine dieser Grenzen ist durch einen
@@ -84,7 +86,7 @@ Wirtschaftswissenschaften. Produktionsdaten des Beta-Testers bleiben außerhalb
 dieses Checkpoints.
 
 Der ausführliche Prüfstand steht in
-[Abschlussintegrität](../qa-ci/status/curriculum-completion-integrity-2026-11-01.md),
+[Abschlussintegrität](../qa-ci/curriculum-completion-integrity-2026-11-01.md),
 der fachliche Vertrag in
 [Assessment-gated Completion](../concept/skill-graph/assessment-gated-completion.md).
 Die ursprüngliche [Quellensicherung](checkpoints/2026-11-03/README.md) enthält

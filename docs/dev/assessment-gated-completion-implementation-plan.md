@@ -543,5 +543,5 @@ abhängt. Die allgemeinen semantischen Regressionen bleiben Pflichtprüfungen.
 Ein fertiges Fach erhält einen eigenen verbindlichen Datenjob; weitere Fächer
 kommen nach ihrer jeweiligen Korrektur mit identischem Prüfmaßstab hinzu.
 Die bestehenden fachübergreifenden Qualitäts- und Sicherheitsgates bleiben
-erhalten. Der aktuelle [Gesamtbefund](../qa-ci/status/curriculum-completion-integrity-2026-11-01.md)
+erhalten. Der aktuelle [Gesamtbefund](../qa-ci/curriculum-completion-integrity-2026-11-01.md)
 kennzeichnet weiterhin die offenen Fächer und die noch fehlende Gesamtfreigabe.
