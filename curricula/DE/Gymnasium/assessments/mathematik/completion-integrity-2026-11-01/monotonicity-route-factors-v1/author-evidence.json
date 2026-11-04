@@ -1,0 +1,1235 @@
+{
+  "date": "2026-11-01",
+  "status": "author-candidates-independent-content-and-placement-review-pending",
+  "originalGoalId": "2f626446-4b32-5674-a687-9cd754bdfede",
+  "originalGoalSha256": "719e5d7aee0e9bb84bf459f26582e3440ba02aa165ad006ba91b99814ad64ba6",
+  "originalSourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/derivative-split-2026-09-28/j10-task3-draft_v2.md",
+  "originalSourceArtifactSha256": "521f311c46b51e3e18a9ebcdc6d78fb9954809bad8059c88da1d1bac8ddf62b0",
+  "backendReportSha256": "b2ce7e8bd94000a7ced80d052b8f7ec39cad2394d2335b5039f72c2a84ee8b98",
+  "variantCandidates": [
+    {
+      "name": "monotonicity-extrema",
+      "goalId": "010c133c-dcf1-5530-8305-61bc638017bc",
+      "coveredGoalIds": [
+        "2850e8f6-2330-50d3-a577-d519540d9924"
+      ],
+      "candidatePath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/monotonicity-route-factors-v1/monotonicity-extrema.candidate.goal.json",
+      "candidateSha256": "055c70ccf7ed3ac0424394e3a3806433b6ebb8f69f6a26ae9eefbd1169c7ad1c",
+      "draftPath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/monotonicity-route-factors-v1/monotonicity-extrema-draft_v1.md",
+      "draftSha256": "0351c732308d5fbb9992b2001ea0c013ceaca6b3b16b4659b3bc68a2f36eac37"
+    },
+    {
+      "name": "monotonicity-theorem",
+      "goalId": "dcdf1e2d-fb3a-5132-807e-00a0d6f46e33",
+      "coveredGoalIds": [
+        "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+      ],
+      "candidatePath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/monotonicity-route-factors-v1/monotonicity-theorem.candidate.goal.json",
+      "candidateSha256": "5468603bcf4a6c0a9b4726193950e6d91fc842c9aa34af55496fb11d9e535b7b",
+      "draftPath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/monotonicity-route-factors-v1/monotonicity-theorem-draft_v1.md",
+      "draftSha256": "7f83c089c6b42e51bdf7169b17236773e432008300825cc6bd5b716c6c7a5f7d"
+    },
+    {
+      "name": "monotonicity-combined",
+      "goalId": "ecc39d0e-5cf8-50ec-8917-41a322b50921",
+      "coveredGoalIds": [
+        "2850e8f6-2330-50d3-a577-d519540d9924",
+        "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+      ],
+      "candidatePath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/monotonicity-route-factors-v1/monotonicity-combined.candidate.goal.json",
+      "candidateSha256": "e3442d1fbdbb92ea58d918f26c4655bea680a43d39b8dbf2ad90967af9f6dc85",
+      "draftPath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/monotonicity-route-factors-v1/monotonicity-combined-draft_v1.md",
+      "draftSha256": "b4bc271e88fa025e8e67cbf2693122d2cc025425925f466537dc7df5f743c519"
+    }
+  ],
+  "actualRequirementSignatures": [
+    {
+      "monotonicityAndExtremaTarget": true,
+      "theoremAndNonconverseTarget": true,
+      "profiles": [
+        {
+          "scope": "DE-BB/SekI/G8/GK+LK",
+          "views": [
+            "de-de-gym-seki-math"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-BB/SekI/G9/GK+LK",
+          "views": [
+            "de-de-gym-seki-math"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-BB/CrossStage/G8/GK",
+          "views": [
+            "de-bb-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-BB/CrossStage/G8/LK",
+          "views": [
+            "de-bb-gym-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-BB/CrossStage/G8/GK+LK",
+          "views": [
+            "merged:de-bb-gym-math-lk+de-bb-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-BB/CrossStage/G9/GK",
+          "views": [
+            "de-bb-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-BB/CrossStage/G9/LK",
+          "views": [
+            "de-bb-gym-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-BB/CrossStage/G9/GK+LK",
+          "views": [
+            "merged:de-bb-gym-math-lk+de-bb-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-BW/SekI/G8/GK+LK",
+          "views": [
+            "de-bw-gym-seki-math"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-BW/SekI/G9/GK+LK",
+          "views": [
+            "de-bw-gym-seki-math"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-BW/CrossStage/G8/GK",
+          "views": [
+            "de-bw-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-BW/CrossStage/G8/LK",
+          "views": [
+            "de-bw-gym-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-BW/CrossStage/G8/GK+LK",
+          "views": [
+            "merged:de-bw-gym-math-lk+de-bw-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-BW/CrossStage/G9/GK",
+          "views": [
+            "de-bw-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-BW/CrossStage/G9/LK",
+          "views": [
+            "de-bw-gym-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-BW/CrossStage/G9/GK+LK",
+          "views": [
+            "merged:de-bw-gym-math-lk+de-bw-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-HB/SekI/G8/GK+LK",
+          "views": [
+            "de-de-gym-seki-math"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-HB/CrossStage/G8/GK",
+          "views": [
+            "de-hb-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-HB/CrossStage/G8/LK",
+          "views": [
+            "de-hb-gym-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-HB/CrossStage/G8/GK+LK",
+          "views": [
+            "merged:de-hb-gym-math-lk+de-hb-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-HE/CrossStage/G9/GK",
+          "views": [
+            "de-he-gym-math-gk-g9"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-HE/CrossStage/G9/LK",
+          "views": [
+            "de-he-gym-math-lk-g9"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-HE/CrossStage/G9/GK+LK",
+          "views": [
+            "merged:de-he-gym-math-lk-g9+de-he-gym-math-gk-g9"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-MV/SekI/G8/GK+LK",
+          "views": [
+            "de-de-gym-seki-math"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-MV/CrossStage/G8/GK",
+          "views": [
+            "de-mv-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-MV/CrossStage/G8/LK",
+          "views": [
+            "de-mv-gym-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-MV/CrossStage/G8/GK+LK",
+          "views": [
+            "merged:de-mv-gym-math-lk+de-mv-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-NI/SekI/G9/GK+LK",
+          "views": [
+            "de-de-gym-seki-math"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-NI/CrossStage/G9/GK",
+          "views": [
+            "de-ni-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-NI/CrossStage/G9/LK",
+          "views": [
+            "de-ni-gym-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-NI/CrossStage/G9/GK+LK",
+          "views": [
+            "merged:de-ni-gym-math-lk+de-ni-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-NW/SekI/G9/GK+LK",
+          "views": [
+            "de-de-gym-seki-math"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-NW/CrossStage/G9/GK",
+          "views": [
+            "de-nw-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-NW/CrossStage/G9/LK",
+          "views": [
+            "de-nw-gym-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-NW/CrossStage/G9/GK+LK",
+          "views": [
+            "merged:de-nw-gym-math-lk+de-nw-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-RP/CrossStage/G9/GK",
+          "views": [
+            "de-rp-gym-math-gk-g9"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-RP/CrossStage/G9/LK",
+          "views": [
+            "de-rp-gym-math-lk-g9"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-RP/CrossStage/G9/GK+LK",
+          "views": [
+            "merged:de-rp-gym-math-lk-g9+de-rp-gym-math-gk-g9"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-SH/CrossStage/G8/GK",
+          "views": [
+            "de-sh-gym-math-gk-g8"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-SH/CrossStage/G8/LK",
+          "views": [
+            "de-sh-gym-math-lk-g8"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-SH/CrossStage/G8/GK+LK",
+          "views": [
+            "merged:de-sh-gym-math-lk-g8+de-sh-gym-math-gk-g8"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-SH/CrossStage/G9/GK",
+          "views": [
+            "de-sh-gym-math-gk-g9"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-SL/SekI/G9/GK+LK",
+          "views": [
+            "de-de-gym-seki-math"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-SL/CrossStage/G9/GK",
+          "views": [
+            "de-sl-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-SL/CrossStage/G9/LK",
+          "views": [
+            "de-sl-gym-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-SL/CrossStage/G9/GK+LK",
+          "views": [
+            "merged:de-sl-gym-math-lk+de-sl-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-SN/SekI/G8/GK+LK",
+          "views": [
+            "de-de-gym-seki-math"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-SN/CrossStage/G8/GK",
+          "views": [
+            "de-sn-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-SN/CrossStage/G8/LK",
+          "views": [
+            "de-sn-gym-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-SN/CrossStage/G8/GK+LK",
+          "views": [
+            "merged:de-sn-gym-math-lk+de-sn-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-ST/SekI/G8/GK+LK",
+          "views": [
+            "de-de-gym-seki-math"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-ST/CrossStage/G8/GK",
+          "views": [
+            "de-st-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-ST/CrossStage/G8/LK",
+          "views": [
+            "de-st-gym-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-ST/CrossStage/G8/GK+LK",
+          "views": [
+            "merged:de-st-gym-math-lk+de-st-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-TH/SekI/G8/GK+LK",
+          "views": [
+            "de-de-gym-seki-math"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-TH/CrossStage/G8/GK",
+          "views": [
+            "de-th-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-TH/CrossStage/G8/LK",
+          "views": [
+            "de-th-gym-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-TH/CrossStage/G8/GK+LK",
+          "views": [
+            "merged:de-th-gym-math-lk+de-th-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        }
+      ]
+    },
+    {
+      "monotonicityAndExtremaTarget": true,
+      "theoremAndNonconverseTarget": false,
+      "profiles": [
+        {
+          "scope": "DE-BB/SekII/G8/GK",
+          "views": [
+            "de-bb-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-BB/SekII/G8/LK",
+          "views": [
+            "de-bb-gym-sekii-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-BB/SekII/G8/GK+LK",
+          "views": [
+            "merged:de-bb-gym-sekii-math-lk+de-bb-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-BB/SekII/G9/GK",
+          "views": [
+            "de-bb-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-BB/SekII/G9/LK",
+          "views": [
+            "de-bb-gym-sekii-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-BB/SekII/G9/GK+LK",
+          "views": [
+            "merged:de-bb-gym-sekii-math-lk+de-bb-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-HB/SekII/G8/GK",
+          "views": [
+            "de-hb-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-HB/SekII/G8/LK",
+          "views": [
+            "de-hb-gym-sekii-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-HB/SekII/G8/GK+LK",
+          "views": [
+            "merged:de-hb-gym-sekii-math-lk+de-hb-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-HE/SekII/G8/GK",
+          "views": [
+            "de-he-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-HE/SekII/G8/LK",
+          "views": [
+            "de-he-gym-sekii-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-HE/SekII/G8/GK+LK",
+          "views": [
+            "merged:de-he-gym-sekii-math-lk+de-he-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-HE/SekII/G9/GK",
+          "views": [
+            "de-he-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-HE/SekII/G9/LK",
+          "views": [
+            "de-he-gym-sekii-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-HE/SekII/G9/GK+LK",
+          "views": [
+            "merged:de-he-gym-sekii-math-lk+de-he-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-HE/CrossStage/G8/GK",
+          "views": [
+            "de-he-gym-math-gk-g8"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-HE/CrossStage/G8/LK",
+          "views": [
+            "de-he-gym-math-lk-g8"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-HE/CrossStage/G8/GK+LK",
+          "views": [
+            "merged:de-he-gym-math-lk-g8+de-he-gym-math-gk-g8"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-MV/SekII/G8/GK",
+          "views": [
+            "de-mv-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-MV/SekII/G8/LK",
+          "views": [
+            "de-mv-gym-sekii-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-MV/SekII/G8/GK+LK",
+          "views": [
+            "merged:de-mv-gym-sekii-math-lk+de-mv-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-NI/SekII/G9/GK",
+          "views": [
+            "de-ni-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-NI/SekII/G9/LK",
+          "views": [
+            "de-ni-gym-sekii-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-NI/SekII/G9/GK+LK",
+          "views": [
+            "merged:de-ni-gym-sekii-math-lk+de-ni-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-NW/SekII/G9/GK",
+          "views": [
+            "de-nw-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-NW/SekII/G9/LK",
+          "views": [
+            "de-nw-gym-sekii-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-NW/SekII/G9/GK+LK",
+          "views": [
+            "merged:de-nw-gym-sekii-math-lk+de-nw-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-RP/SekII/G8/GK",
+          "views": [
+            "de-rp-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-RP/SekII/G8/LK",
+          "views": [
+            "de-rp-gym-sekii-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-RP/SekII/G8/GK+LK",
+          "views": [
+            "merged:de-rp-gym-sekii-math-lk+de-rp-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-RP/SekII/G9/GK",
+          "views": [
+            "de-rp-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-RP/SekII/G9/LK",
+          "views": [
+            "de-rp-gym-sekii-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-RP/SekII/G9/GK+LK",
+          "views": [
+            "merged:de-rp-gym-sekii-math-lk+de-rp-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-RP/CrossStage/G8/GK",
+          "views": [
+            "de-rp-gym-math-gk-g8"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-RP/CrossStage/G8/LK",
+          "views": [
+            "de-rp-gym-math-lk-g8"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-RP/CrossStage/G8/GK+LK",
+          "views": [
+            "merged:de-rp-gym-math-lk-g8+de-rp-gym-math-gk-g8"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-SH/SekII/G8/GK",
+          "views": [
+            "de-sh-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-SH/SekII/G8/LK",
+          "views": [
+            "de-sh-gym-sekii-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-SH/SekII/G8/GK+LK",
+          "views": [
+            "merged:de-sh-gym-sekii-math-lk+de-sh-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-SH/SekII/G9/GK",
+          "views": [
+            "de-sh-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-SH/SekII/G9/LK",
+          "views": [
+            "de-sh-gym-sekii-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-SH/SekII/G9/GK+LK",
+          "views": [
+            "merged:de-sh-gym-sekii-math-lk+de-sh-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-SL/SekII/G9/GK",
+          "views": [
+            "de-sl-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-SL/SekII/G9/LK",
+          "views": [
+            "de-sl-gym-sekii-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-SL/SekII/G9/GK+LK",
+          "views": [
+            "merged:de-sl-gym-sekii-math-lk+de-sl-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-SN/SekII/G8/GK",
+          "views": [
+            "de-sn-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-SN/SekII/G8/LK",
+          "views": [
+            "de-sn-gym-sekii-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-SN/SekII/G8/GK+LK",
+          "views": [
+            "merged:de-sn-gym-sekii-math-lk+de-sn-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-ST/SekII/G8/GK",
+          "views": [
+            "de-st-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-ST/SekII/G8/LK",
+          "views": [
+            "de-st-gym-sekii-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-ST/SekII/G8/GK+LK",
+          "views": [
+            "merged:de-st-gym-sekii-math-lk+de-st-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-TH/SekII/G8/GK",
+          "views": [
+            "de-th-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-TH/SekII/G8/LK",
+          "views": [
+            "de-th-gym-sekii-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        },
+        {
+          "scope": "DE-TH/SekII/G8/GK+LK",
+          "views": [
+            "merged:de-th-gym-sekii-math-lk+de-th-gym-sekii-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        }
+      ]
+    },
+    {
+      "monotonicityAndExtremaTarget": false,
+      "theoremAndNonconverseTarget": true,
+      "profiles": [
+        {
+          "scope": "DE-BE/SekI/G8/GK+LK",
+          "views": [
+            "de-de-gym-seki-math"
+          ],
+          "uncoveredGoalIds": [
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-BE/SekI/G9/GK+LK",
+          "views": [
+            "de-de-gym-seki-math"
+          ],
+          "uncoveredGoalIds": [
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-BY/SekI/G9/GK+LK",
+          "views": [
+            "de-de-gym-seki-math"
+          ],
+          "uncoveredGoalIds": [
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-HE/SekI/G9/GK+LK",
+          "views": [
+            "de-he-gym-seki-math-g9"
+          ],
+          "uncoveredGoalIds": [
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-HH/SekI/G8/GK+LK",
+          "views": [
+            "de-de-gym-seki-math"
+          ],
+          "uncoveredGoalIds": [
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-HH/CrossStage/G8/GK",
+          "views": [
+            "de-hh-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-HH/CrossStage/G8/LK",
+          "views": [
+            "de-hh-gym-math-lk"
+          ],
+          "uncoveredGoalIds": [
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-HH/CrossStage/G8/GK+LK",
+          "views": [
+            "merged:de-hh-gym-math-lk+de-hh-gym-math-gk"
+          ],
+          "uncoveredGoalIds": [
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-RP/SekI/G9/GK+LK",
+          "views": [
+            "de-rp-gym-seki-math-g9"
+          ],
+          "uncoveredGoalIds": [
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-SH/SekI/G8/GK+LK",
+          "views": [
+            "de-sh-gym-seki-math-g8"
+          ],
+          "uncoveredGoalIds": [
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        },
+        {
+          "scope": "DE-SH/SekI/G9/GK+LK",
+          "views": [
+            "de-sh-gym-seki-math-g9"
+          ],
+          "uncoveredGoalIds": [
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+          ]
+        }
+      ]
+    }
+  ],
+  "placementRisks": [
+    "Generic de-de-gym-seki-math serves different country requirement signatures after jurisdiction filtering; viewId-only selection is insufficient.",
+    "Derivatives are real targets in both SekI and SekII; year-local or explicit stage-local autonomy placement needs separate review.",
+    "No variant may become an additional obligation in a profile already selecting the unchanged original assessment or another variant of this task."
+  ]
+}

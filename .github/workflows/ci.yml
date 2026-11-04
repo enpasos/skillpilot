@@ -39,6 +39,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          # Keep all package-license manifests and Action/Gemini contract inputs.
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /.github/
+            /ai/
+            /app/package.json
+            /app/package-lock.json
+            /deploy/gemini-v1/
+            /scripts/
+            /tools/demo-video/
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
@@ -118,6 +131,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          # Keep release/history inputs and every JSON used by the runtime revision.
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /.github/
+            /ai/
+            /app/src/utils/
+            /app/public/favicon/
+            /backend/
+            /contracts/
+            /curricula/**/*.json
+            /curricula/**/*.json.snapshot
+            !/curricula/**/quality/**
+            /docs/concept/runtime-workflows/
+            /docs/deploy/
+            /docs/security/
+            /scripts/
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
@@ -221,6 +253,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          # Edge contracts read scripts, pinned CA material and Nginx sources.
+          sparse-checkout: |
+            .github/workflows
+            deploy/nginx
+            deploy/openai-mtls
+            scripts
       - name: Validate public edge script
         run: |
           bash -n scripts/verify_openai_v1_public_edge.sh
@@ -237,6 +276,52 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          # Preserve source rasters, book QA and source-atlas evidence directories.
+          # Runtime preparation restores byte-identical public raster mirrors.
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /.github/
+            /ai/
+            /app/
+            !/app/public/assets/goal-visualizations/
+            /content/
+            /contracts/
+            /docs/
+            /scripts/
+            /curricula/DE/BW/
+            /curricula/DE/BY/
+            /curricula/DE/Gymnasium/archive/
+            /curricula/DE/Gymnasium/assessments/
+            /curricula/DE/Gymnasium/canonical/
+            /curricula/DE/Gymnasium/completion-profiles/
+            /curricula/DE/Gymnasium/completion-scopes/
+            /curricula/DE/Gymnasium/composition-views/
+            /curricula/DE/Gymnasium/input/
+            /curricula/DE/Gymnasium/mapping/
+            /curricula/DE/Gymnasium/memory-decks/
+            /curricula/DE/Gymnasium/provenance/
+            /curricula/DE/Gymnasium/visualizations/
+            /curricula/DE/HE/
+            /curricula/EU/
+            /curricula/INTERNATIONAL_GITHUB/
+            /curricula/QA/
+            /curricula/US/
+            /curricula/curriculum_manifest.json
+            /curricula/DE/Gymnasium/quality/goal-book-publication/
+            /curricula/DE/Gymnasium/quality/goal-visualization-qa/
+            /curricula/DE/Gymnasium/quality/release-model/
+            /curricula/DE/Gymnasium/quality/goal-evidence/**/primary/
+            /curricula/DE/Gymnasium/quality/goal-evidence/**/sources/
+            /curricula/DE/Gymnasium/quality/goal-evidence/**/source-components/
+            /curricula/DE/Gymnasium/quality/goal-evidence/**/source-extraction*/
+            /curricula/DE/Gymnasium/quality/goal-evidence/**/lower-secondary/
+            /curricula/DE/Gymnasium/quality/goal-evidence/**/upper-secondary/
+            /curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/
+            /curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-first-M7-D9-and14-qualified-integration-root-v1/
+            /curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-two-P-terminology-followup-to-current-D-recommendations-AUTHOR-INERT-root-v1/
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
@@ -295,8 +380,57 @@ jobs:
       run:
         working-directory: app
     steps:
+      # Full checkouts include the immutable curriculum QA archives. Keep all
+      # repository inputs; remove only unused SDKs from this disposable runner.
+      - name: Reserve disk space for the complete repository
+        working-directory: ${{ runner.temp }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${RUNNER_ENVIRONMENT:-}" = github-hosted
+          test "${RUNNER_OS:-}" = Linux
+          df -h "${GITHUB_WORKSPACE}"
+          df -i "${GITHUB_WORKSPACE}"
+          # Keep Python, Java/JDK caches and system build tools; set up Node below.
+          sudo rm -rf -- \
+            /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup \
+            /usr/share/swift /usr/local/julia* /usr/share/miniconda \
+            /opt/az /opt/microsoft/powershell /usr/local/share/powershell \
+            /usr/local/share/boost /usr/local/share/vcpkg \
+            /home/linuxbrew "${HOME}/.rustup" "${HOME}/.cargo"
+          if [ -d /opt/hostedtoolcache ]; then
+            sudo find /opt/hostedtoolcache -mindepth 1 -maxdepth 1 \
+              ! -name Python ! -name 'Java*' -exec rm -rf -- {} +
+          fi
+          if ! sudo docker image prune --all --force; then
+            echo "::warning::Docker image cleanup unavailable; the disk budget is still required."
+          fi
+          sudo apt-get clean
+          df -h "${GITHUB_WORKSPACE}"
+          df -i "${GITHUB_WORKSPACE}"
+          # 43 GiB worktree + 15 GiB shallow Git reserve + 8 GiB dependencies/builds.
+          required_bytes=$((66 * 1024 * 1024 * 1024))
+          available_bytes="$(df -B1 --output=avail "${GITHUB_WORKSPACE}" | tail -n 1)"
+          if [ "${available_bytes}" -lt "${required_bytes}" ]; then
+            echo "::error::Full checkout needs ${required_bytes} free bytes; only ${available_bytes} are available after cleanup."
+            exit 1
+          fi
       - name: Checkout
         uses: actions/checkout@v6
+      - name: Verify disk reserve after the complete checkout
+        working-directory: ${{ github.workspace }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          df -h .
+          df -i .
+          du -sh .git
+          required_bytes=$((8 * 1024 * 1024 * 1024))
+          available_bytes="$(df -B1 --output=avail . | tail -n 1)"
+          if [ "${available_bytes}" -lt "${required_bytes}" ]; then
+            echo "::error::Dependencies and builds need ${required_bytes} free bytes after checkout; only ${available_bytes} remain."
+            exit 1
+          fi
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
@@ -435,8 +569,57 @@ jobs:
       run:
         working-directory: app
     steps:
+      # Full checkouts include the immutable curriculum QA archives. Keep all
+      # repository inputs; remove only unused SDKs from this disposable runner.
+      - name: Reserve disk space for the complete repository
+        working-directory: ${{ runner.temp }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${RUNNER_ENVIRONMENT:-}" = github-hosted
+          test "${RUNNER_OS:-}" = Linux
+          df -h "${GITHUB_WORKSPACE}"
+          df -i "${GITHUB_WORKSPACE}"
+          # Keep Python, Java/JDK caches and system build tools; set up Node below.
+          sudo rm -rf -- \
+            /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup \
+            /usr/share/swift /usr/local/julia* /usr/share/miniconda \
+            /opt/az /opt/microsoft/powershell /usr/local/share/powershell \
+            /usr/local/share/boost /usr/local/share/vcpkg \
+            /home/linuxbrew "${HOME}/.rustup" "${HOME}/.cargo"
+          if [ -d /opt/hostedtoolcache ]; then
+            sudo find /opt/hostedtoolcache -mindepth 1 -maxdepth 1 \
+              ! -name Python ! -name 'Java*' -exec rm -rf -- {} +
+          fi
+          if ! sudo docker image prune --all --force; then
+            echo "::warning::Docker image cleanup unavailable; the disk budget is still required."
+          fi
+          sudo apt-get clean
+          df -h "${GITHUB_WORKSPACE}"
+          df -i "${GITHUB_WORKSPACE}"
+          # 43 GiB worktree + 15 GiB shallow Git reserve + 8 GiB dependencies/builds.
+          required_bytes=$((66 * 1024 * 1024 * 1024))
+          available_bytes="$(df -B1 --output=avail "${GITHUB_WORKSPACE}" | tail -n 1)"
+          if [ "${available_bytes}" -lt "${required_bytes}" ]; then
+            echo "::error::Full checkout needs ${required_bytes} free bytes; only ${available_bytes} are available after cleanup."
+            exit 1
+          fi
       - name: Checkout
         uses: actions/checkout@v6
+      - name: Verify disk reserve after the complete checkout
+        working-directory: ${{ github.workspace }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          df -h .
+          df -i .
+          du -sh .git
+          required_bytes=$((8 * 1024 * 1024 * 1024))
+          available_bytes="$(df -B1 --output=avail . | tail -n 1)"
+          if [ "${available_bytes}" -lt "${required_bytes}" ]; then
+            echo "::error::Dependencies and builds need ${required_bytes} free bytes after checkout; only ${available_bytes} remain."
+            exit 1
+          fi
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
@@ -474,6 +657,10 @@ jobs:
         run: npm run test:hard-learning-routes
       - name: Test reviewed canonical Mathematics Sek-I exam routes
         run: npm run test:canonical-math-sek1-reviewed-exam-routes
+      - name: Test reviewed Mathematics assessment placements
+        run: npm run test:math-reviewed-assessment-placements
+      - name: Test Mathematics country and stage composition rules
+        run: npm run test:math-country-seki-composition-views
       - name: Test Q4 Caterer exam coverage and scope
         run: npm run test:math-q4-caterer-exam-scope
       - name: Test learner-facing composition labels
@@ -496,6 +683,8 @@ jobs:
         run: npm run check:he-math-duration-projection
       - name: Check generated Math G8/G9 Composition Views
         run: npm run check:math-duration-composition-views
+      - name: Check generated Mathematics country and stage Composition Views
+        run: npm run check:math-country-seki-composition-views
       - name: Check generated German Sek-I Composition Views
         run: npm run check:german-seki-composition-views
       - name: Check generated History Sek-I Composition Views
@@ -654,8 +843,57 @@ jobs:
       run:
         working-directory: backend
     steps:
+      # Full checkouts include the immutable curriculum QA archives. Keep all
+      # repository inputs; remove only unused SDKs from this disposable runner.
+      - name: Reserve disk space for the complete repository
+        working-directory: ${{ runner.temp }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${RUNNER_ENVIRONMENT:-}" = github-hosted
+          test "${RUNNER_OS:-}" = Linux
+          df -h "${GITHUB_WORKSPACE}"
+          df -i "${GITHUB_WORKSPACE}"
+          # Keep Python, Java/JDK caches and system build tools; set up Node below.
+          sudo rm -rf -- \
+            /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup \
+            /usr/share/swift /usr/local/julia* /usr/share/miniconda \
+            /opt/az /opt/microsoft/powershell /usr/local/share/powershell \
+            /usr/local/share/boost /usr/local/share/vcpkg \
+            /home/linuxbrew "${HOME}/.rustup" "${HOME}/.cargo"
+          if [ -d /opt/hostedtoolcache ]; then
+            sudo find /opt/hostedtoolcache -mindepth 1 -maxdepth 1 \
+              ! -name Python ! -name 'Java*' -exec rm -rf -- {} +
+          fi
+          if ! sudo docker image prune --all --force; then
+            echo "::warning::Docker image cleanup unavailable; the disk budget is still required."
+          fi
+          sudo apt-get clean
+          df -h "${GITHUB_WORKSPACE}"
+          df -i "${GITHUB_WORKSPACE}"
+          # 43 GiB worktree + 15 GiB shallow Git reserve + 8 GiB dependencies/builds.
+          required_bytes=$((66 * 1024 * 1024 * 1024))
+          available_bytes="$(df -B1 --output=avail "${GITHUB_WORKSPACE}" | tail -n 1)"
+          if [ "${available_bytes}" -lt "${required_bytes}" ]; then
+            echo "::error::Full checkout needs ${required_bytes} free bytes; only ${available_bytes} are available after cleanup."
+            exit 1
+          fi
       - name: Checkout
         uses: actions/checkout@v6
+      - name: Verify disk reserve after the complete checkout
+        working-directory: ${{ github.workspace }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          df -h .
+          df -i .
+          du -sh .git
+          required_bytes=$((8 * 1024 * 1024 * 1024))
+          available_bytes="$(df -B1 --output=avail . | tail -n 1)"
+          if [ "${available_bytes}" -lt "${required_bytes}" ]; then
+            echo "::error::Dependencies and builds need ${required_bytes} free bytes after checkout; only ${available_bytes} remain."
+            exit 1
+          fi
       - name: Restore same-run verified goal-book catalog and models
         uses: actions/download-artifact@v7
         with:

@@ -1,0 +1,1223 @@
+{
+  "status": "PASS_AUTHOR_COUNTERCASE_REASONING_AND_TOTAL_ARITHMETIC_NOT_INDEPENDENT_REVIEW",
+  "caseCount": 32,
+  "cases": [
+    {
+      "goalId": "50612a57-7b9d-45fd-bc08-e95556444760",
+      "case": "complete reference",
+      "concreteSubmittedWork": "Common apex and fixed h=9, inner/outer inclusion, all eight V=3G calculations, geometric area convergence to 16pi, shared volume limit48pi and correct cylinder refutation.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "cone-family",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "cone-table",
+          "credit": 4,
+          "max": 4
+        },
+        {
+          "criterion": "cone-limit",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "cone-apply",
+          "credit": 2,
+          "max": 2
+        },
+        {
+          "criterion": "cone-distinguish",
+          "credit": 2,
+          "max": 2
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "All central actions are present.",
+      "rawPoints": 20,
+      "ordinaryFinalPoints": 20,
+      "oneBinaryPass": true,
+      "boundContentSha256": "e24a1b8e414a2f112149a31cf60f1fe06807db5953eb9b840ebdd84b4aadc6ca"
+    },
+    {
+      "goalId": "50612a57-7b9d-45fd-bc08-e95556444760",
+      "case": "numbers and copied formula only",
+      "concreteSubmittedWork": "Computes all table volumes and 48pi correctly but gives no description of a pyramid family, no circle-area approach and no reason why the limiting body has that volume.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "cone-family",
+          "credit": 0,
+          "max": 6
+        },
+        {
+          "criterion": "cone-table",
+          "credit": 4,
+          "max": 4
+        },
+        {
+          "criterion": "cone-limit",
+          "credit": 0,
+          "max": 6
+        },
+        {
+          "criterion": "cone-apply",
+          "credit": 2,
+          "max": 2
+        },
+        {
+          "criterion": "cone-distinguish",
+          "credit": 0,
+          "max": 2
+        }
+      ],
+      "authorJudgmentCapApplies": true,
+      "authorJudgmentReason": "Numerical volume calculation cannot replace the absent geometric limiting competence.",
+      "rawPoints": 6,
+      "ordinaryFinalPoints": 6,
+      "oneBinaryPass": false,
+      "boundContentSha256": "e24a1b8e414a2f112149a31cf60f1fe06807db5953eb9b840ebdd84b4aadc6ca"
+    },
+    {
+      "goalId": "50612a57-7b9d-45fd-bc08-e95556444760",
+      "case": "changes height instead of refining the fixed cone",
+      "concreteSubmittedWork": "Claims h_n=9/n and base polygons approach the circle, so V_n tends0; still computes a few given-height values and quotes48pi. No valid approximation of the fixed-height cone appears.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "cone-family",
+          "credit": 1,
+          "max": 6
+        },
+        {
+          "criterion": "cone-table",
+          "credit": 1,
+          "max": 4
+        },
+        {
+          "criterion": "cone-limit",
+          "credit": 1,
+          "max": 6
+        },
+        {
+          "criterion": "cone-apply",
+          "credit": 2,
+          "max": 2
+        },
+        {
+          "criterion": "cone-distinguish",
+          "credit": 1,
+          "max": 2
+        }
+      ],
+      "authorJudgmentCapApplies": true,
+      "authorJudgmentReason": "The claimed family tends to a flattened body, not the specified cone.",
+      "rawPoints": 6,
+      "ordinaryFinalPoints": 6,
+      "oneBinaryPass": false,
+      "boundContentSha256": "e24a1b8e414a2f112149a31cf60f1fe06807db5953eb9b840ebdd84b4aadc6ca"
+    },
+    {
+      "goalId": "50612a57-7b9d-45fd-bc08-e95556444760",
+      "case": "inner approximation suffices for a plausible limit",
+      "concreteSubmittedWork": "Gives a sound fixed-apex inner-pyramid approximation with areas tending16pi and volumes48pi, computes the full table, but leaves the outer containment and full two-sided explanation incomplete.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "cone-family",
+          "credit": 5,
+          "max": 6
+        },
+        {
+          "criterion": "cone-table",
+          "credit": 4,
+          "max": 4
+        },
+        {
+          "criterion": "cone-limit",
+          "credit": 5,
+          "max": 6
+        },
+        {
+          "criterion": "cone-apply",
+          "credit": 2,
+          "max": 2
+        },
+        {
+          "criterion": "cone-distinguish",
+          "credit": 2,
+          "max": 2
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "The central limiting argument is sound; omitted requested details lose points without a global cap.",
+      "rawPoints": 18,
+      "ordinaryFinalPoints": 18,
+      "oneBinaryPass": true,
+      "boundContentSha256": "e24a1b8e414a2f112149a31cf60f1fe06807db5953eb9b840ebdd84b4aadc6ca"
+    },
+    {
+      "goalId": "50612a57-7b9d-45fd-bc08-e95556444760",
+      "case": "local table transcription slip",
+      "concreteSubmittedWork": "Everything is complete, but writes135.756 instead of135.765 once. Other comparisons and the limiting argument are correct.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "cone-family",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "cone-table",
+          "credit": 3.5,
+          "max": 4
+        },
+        {
+          "criterion": "cone-limit",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "cone-apply",
+          "credit": 2,
+          "max": 2
+        },
+        {
+          "criterion": "cone-distinguish",
+          "credit": 2,
+          "max": 2
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "A local transcription error is penalised once.",
+      "rawPoints": 19.5,
+      "ordinaryFinalPoints": 19.5,
+      "oneBinaryPass": true,
+      "boundContentSha256": "e24a1b8e414a2f112149a31cf60f1fe06807db5953eb9b840ebdd84b4aadc6ca"
+    },
+    {
+      "goalId": "50612a57-7b9d-45fd-bc08-e95556444760",
+      "case": "concise integrated justification",
+      "concreteSubmittedWork": "Explains in one equation chain with a short geometric sentence: inscribed/circumscribed bases tend to the disc, fixed height9, hence both pyramid volumes tend48pi and enclose the cone; other work complete.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "cone-family",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "cone-table",
+          "credit": 4,
+          "max": 4
+        },
+        {
+          "criterion": "cone-limit",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "cone-apply",
+          "credit": 2,
+          "max": 2
+        },
+        {
+          "criterion": "cone-distinguish",
+          "credit": 2,
+          "max": 2
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "Concise correct evidence counts wherever it appears.",
+      "rawPoints": 20,
+      "ordinaryFinalPoints": 20,
+      "oneBinaryPass": true,
+      "boundContentSha256": "e24a1b8e414a2f112149a31cf60f1fe06807db5953eb9b840ebdd84b4aadc6ca"
+    },
+    {
+      "goalId": "50612a57-7b9d-45fd-bc08-e95556444760",
+      "case": "fourteen with core actions present",
+      "concreteSubmittedWork": "Appropriate family and a real area/volume limiting explanation are present; numerical and detail credits are partial as listed.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "cone-family",
+          "credit": 4,
+          "max": 6
+        },
+        {
+          "criterion": "cone-table",
+          "credit": 3,
+          "max": 4
+        },
+        {
+          "criterion": "cone-limit",
+          "credit": 4,
+          "max": 6
+        },
+        {
+          "criterion": "cone-apply",
+          "credit": 1,
+          "max": 2
+        },
+        {
+          "criterion": "cone-distinguish",
+          "credit": 2,
+          "max": 2
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "Only one ordinary total;14 is below15.",
+      "rawPoints": 14,
+      "ordinaryFinalPoints": 14,
+      "oneBinaryPass": false,
+      "boundContentSha256": "e24a1b8e414a2f112149a31cf60f1fe06807db5953eb9b840ebdd84b4aadc6ca"
+    },
+    {
+      "goalId": "50612a57-7b9d-45fd-bc08-e95556444760",
+      "case": "fifteen with core actions present",
+      "concreteSubmittedWork": "Same valid core argument, with a fuller correct explanation of common apex and unchanged height.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "cone-family",
+          "credit": 5,
+          "max": 6
+        },
+        {
+          "criterion": "cone-table",
+          "credit": 3,
+          "max": 4
+        },
+        {
+          "criterion": "cone-limit",
+          "credit": 4,
+          "max": 6
+        },
+        {
+          "criterion": "cone-apply",
+          "credit": 1,
+          "max": 2
+        },
+        {
+          "criterion": "cone-distinguish",
+          "credit": 2,
+          "max": 2
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "The single total reaches15.",
+      "rawPoints": 15,
+      "ordinaryFinalPoints": 15,
+      "oneBinaryPass": true,
+      "boundContentSha256": "e24a1b8e414a2f112149a31cf60f1fe06807db5953eb9b840ebdd84b4aadc6ca"
+    },
+    {
+      "goalId": "49f9059a-876c-5051-8146-d008b5cc691c",
+      "case": "complete reference",
+      "concreteSubmittedWork": "Uses m=4 and24/x, general m=n+1, reciprocal divergence, both signed substitutions u=−x, both transfer limits and the e4<64 counterexample.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "asym-finite",
+          "credit": 4,
+          "max": 4
+        },
+        {
+          "criterion": "asym-positive",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "asym-negative",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "asym-transfer",
+          "credit": 4,
+          "max": 4
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "Both infinity directions have real justifications.",
+      "rawPoints": 20,
+      "ordinaryFinalPoints": 20,
+      "oneBinaryPass": true,
+      "boundContentSha256": "dc86d9c41a40509542f3f6efb89967709613c8d7329d138006174a4a5b395d82"
+    },
+    {
+      "goalId": "49f9059a-876c-5051-8146-d008b5cc691c",
+      "case": "negative limits guessed without any argument",
+      "concreteSubmittedWork": "All finite, positive-direction and transfer work is correct. For negative infinity writes only two zeros, without substitution, growth comparison or even approach signs anywhere.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "asym-finite",
+          "credit": 4,
+          "max": 4
+        },
+        {
+          "criterion": "asym-positive",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "asym-negative",
+          "credit": 1,
+          "max": 6
+        },
+        {
+          "criterion": "asym-transfer",
+          "credit": 4,
+          "max": 4
+        }
+      ],
+      "authorJudgmentCapApplies": true,
+      "authorJudgmentReason": "Bare correct values earn limited value credit but do not replace the entirely absent negative-direction justification. Raw15 becomes14.",
+      "rawPoints": 15,
+      "ordinaryFinalPoints": 14,
+      "oneBinaryPass": false,
+      "boundContentSha256": "dc86d9c41a40509542f3f6efb89967709613c8d7329d138006174a4a5b395d82"
+    },
+    {
+      "goalId": "49f9059a-876c-5051-8146-d008b5cc691c",
+      "case": "limits and slogans only",
+      "concreteSubmittedWork": "The numerical table is right. Lists the requested limits and says only e wins, with no actual comparison, bound or direction transfer.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "asym-finite",
+          "credit": 4,
+          "max": 4
+        },
+        {
+          "criterion": "asym-positive",
+          "credit": 2,
+          "max": 6
+        },
+        {
+          "criterion": "asym-negative",
+          "credit": 1,
+          "max": 6
+        },
+        {
+          "criterion": "asym-transfer",
+          "credit": 2,
+          "max": 4
+        }
+      ],
+      "authorJudgmentCapApplies": true,
+      "authorJudgmentReason": "Neither required growth justification is present.",
+      "rawPoints": 9,
+      "ordinaryFinalPoints": 9,
+      "oneBinaryPass": false,
+      "boundContentSha256": "dc86d9c41a40509542f3f6efb89967709613c8d7329d138006174a4a5b395d82"
+    },
+    {
+      "goalId": "49f9059a-876c-5051-8146-d008b5cc691c",
+      "case": "local odd sign error",
+      "concreteSubmittedWork": "Correct u=−x and positive-quotient comparison, but loses the minus sign once in the cubic transfer and consequently says from above. The even case and all other work are correct.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "asym-finite",
+          "credit": 4,
+          "max": 4
+        },
+        {
+          "criterion": "asym-positive",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "asym-negative",
+          "credit": 5,
+          "max": 6
+        },
+        {
+          "criterion": "asym-transfer",
+          "credit": 4,
+          "max": 4
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "A local sign error in a sound transfer is not total absence.",
+      "rawPoints": 19,
+      "ordinaryFinalPoints": 19,
+      "oneBinaryPass": true,
+      "boundContentSha256": "dc86d9c41a40509542f3f6efb89967709613c8d7329d138006174a4a5b395d82"
+    },
+    {
+      "goalId": "49f9059a-876c-5051-8146-d008b5cc691c",
+      "case": "equivalent logarithmic comparison",
+      "concreteSubmittedWork": "Proves ln x≤sqrt(x) for x≥4 by value/derivative comparison, then n ln x−x≤n sqrt(x)−x tends−infinity; transfers with u=−x and completes all requested results.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "asym-finite",
+          "credit": 4,
+          "max": 4
+        },
+        {
+          "criterion": "asym-positive",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "asym-negative",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "asym-transfer",
+          "credit": 4,
+          "max": 4
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "A sound alternative argument receives equal credit; the supplied inequality is optional.",
+      "rawPoints": 20,
+      "ordinaryFinalPoints": 20,
+      "oneBinaryPass": true,
+      "boundContentSha256": "dc86d9c41a40509542f3f6efb89967709613c8d7329d138006174a4a5b395d82"
+    },
+    {
+      "goalId": "49f9059a-876c-5051-8146-d008b5cc691c",
+      "case": "proof appears in later work",
+      "concreteSubmittedWork": "Both growth arguments are given under the transfer part, while the earlier parts contain correct answers and pointers. The later reasoning explicitly treats positive ratios, reciprocal and signed u substitutions.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "asym-finite",
+          "credit": 4,
+          "max": 4
+        },
+        {
+          "criterion": "asym-positive",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "asym-negative",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "asym-transfer",
+          "credit": 4,
+          "max": 4
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "No paragraph order or named theorem is required.",
+      "rawPoints": 20,
+      "ordinaryFinalPoints": 20,
+      "oneBinaryPass": true,
+      "boundContentSha256": "dc86d9c41a40509542f3f6efb89967709613c8d7329d138006174a4a5b395d82"
+    },
+    {
+      "goalId": "49f9059a-876c-5051-8146-d008b5cc691c",
+      "case": "fourteen with both directions justified",
+      "concreteSubmittedWork": "Both central comparisons are substantive; some table and application details receive partial credits.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "asym-finite",
+          "credit": 3,
+          "max": 4
+        },
+        {
+          "criterion": "asym-positive",
+          "credit": 4,
+          "max": 6
+        },
+        {
+          "criterion": "asym-negative",
+          "credit": 4,
+          "max": 6
+        },
+        {
+          "criterion": "asym-transfer",
+          "credit": 3,
+          "max": 4
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "No section minimum;14 does not pass.",
+      "rawPoints": 14,
+      "ordinaryFinalPoints": 14,
+      "oneBinaryPass": false,
+      "boundContentSha256": "dc86d9c41a40509542f3f6efb89967709613c8d7329d138006174a4a5b395d82"
+    },
+    {
+      "goalId": "49f9059a-876c-5051-8146-d008b5cc691c",
+      "case": "fifteen with both directions justified",
+      "concreteSubmittedWork": "Same central reasoning with a fully correct finite-value comparison and explanation of the universal-claim counterexample.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "asym-finite",
+          "credit": 4,
+          "max": 4
+        },
+        {
+          "criterion": "asym-positive",
+          "credit": 4,
+          "max": 6
+        },
+        {
+          "criterion": "asym-negative",
+          "credit": 4,
+          "max": 6
+        },
+        {
+          "criterion": "asym-transfer",
+          "credit": 3,
+          "max": 4
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "15 passes under the one threshold.",
+      "rawPoints": 15,
+      "ordinaryFinalPoints": 15,
+      "oneBinaryPass": true,
+      "boundContentSha256": "dc86d9c41a40509542f3f6efb89967709613c8d7329d138006174a4a5b395d82"
+    },
+    {
+      "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+      "case": "complete reference",
+      "concreteSubmittedWork": "Derives modulus/argument conditions, lists six exact roots, draws and explains the hexagon/rotation, gives four roots and the correct cubic subset.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "unity-solve",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "unity-algebra",
+          "credit": 3,
+          "max": 3
+        },
+        {
+          "criterion": "unity-geometry",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "unity-fourth",
+          "credit": 3,
+          "max": 3
+        },
+        {
+          "criterion": "unity-subset",
+          "credit": 2,
+          "max": 2
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "Both solution method and geometric interpretation are present.",
+      "rawPoints": 20,
+      "ordinaryFinalPoints": 20,
+      "oneBinaryPass": true,
+      "boundContentSha256": "57ba684c3690716d9dc8631acf1efb8e91a778b4e17c50d9f24862ef0af2c205"
+    },
+    {
+      "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+      "case": "bare memorised lists",
+      "concreteSubmittedWork": "Writes the six and four correct algebraic values and an unreasoned subset, but has no modulus/argument method, diagram or geometric interpretation.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "unity-solve",
+          "credit": 0,
+          "max": 6
+        },
+        {
+          "criterion": "unity-algebra",
+          "credit": 3,
+          "max": 3
+        },
+        {
+          "criterion": "unity-geometry",
+          "credit": 0,
+          "max": 6
+        },
+        {
+          "criterion": "unity-fourth",
+          "credit": 2,
+          "max": 3
+        },
+        {
+          "criterion": "unity-subset",
+          "credit": 1,
+          "max": 2
+        }
+      ],
+      "authorJudgmentCapApplies": true,
+      "authorJudgmentReason": "Lists alone omit both central actions.",
+      "rawPoints": 6,
+      "ordinaryFinalPoints": 6,
+      "oneBinaryPass": false,
+      "boundContentSha256": "57ba684c3690716d9dc8631acf1efb8e91a778b4e17c50d9f24862ef0af2c205"
+    },
+    {
+      "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+      "case": "algebra only without any geometry",
+      "concreteSubmittedWork": "Gives a complete factorisation/solution method and all six exact values, only the four algebraic fourth roots, and the cubic subset; no circle, distances, angles, regular figure or sketch anywhere.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "unity-solve",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "unity-algebra",
+          "credit": 3,
+          "max": 3
+        },
+        {
+          "criterion": "unity-geometry",
+          "credit": 0,
+          "max": 6
+        },
+        {
+          "criterion": "unity-fourth",
+          "credit": 2,
+          "max": 3
+        },
+        {
+          "criterion": "unity-subset",
+          "credit": 2,
+          "max": 2
+        }
+      ],
+      "authorJudgmentCapApplies": true,
+      "authorJudgmentReason": "Correct algebra does not supply the wholly absent geometric interpretation.",
+      "rawPoints": 13,
+      "ordinaryFinalPoints": 13,
+      "oneBinaryPass": false,
+      "boundContentSha256": "57ba684c3690716d9dc8631acf1efb8e91a778b4e17c50d9f24862ef0af2c205"
+    },
+    {
+      "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+      "case": "sketch omitted but geometry fully explained",
+      "concreteSubmittedWork": "Everything else is complete and the text gives coordinates, unit radius,60-degree spacing, regular hexagon and rotation. No own sketch is supplied.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "unity-solve",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "unity-algebra",
+          "credit": 3,
+          "max": 3
+        },
+        {
+          "criterion": "unity-geometry",
+          "credit": 4,
+          "max": 6
+        },
+        {
+          "criterion": "unity-fourth",
+          "credit": 3,
+          "max": 3
+        },
+        {
+          "criterion": "unity-subset",
+          "credit": 2,
+          "max": 2
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "Only the stated two drawing points are lost; actual geometric interpretation is present, so no extra qualifying sketch gate.",
+      "rawPoints": 18,
+      "ordinaryFinalPoints": 18,
+      "oneBinaryPass": true,
+      "boundContentSha256": "57ba684c3690716d9dc8631acf1efb8e91a778b4e17c50d9f24862ef0af2c205"
+    },
+    {
+      "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+      "case": "one algebraic sign copied incorrectly",
+      "concreteSubmittedWork": "Polar list and geometric drawing are correct. One algebraic entry is copied with the wrong real-part sign, duplicating a neighbour, while all other work remains sound.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "unity-solve",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "unity-algebra",
+          "credit": 2.5,
+          "max": 3
+        },
+        {
+          "criterion": "unity-geometry",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "unity-fourth",
+          "credit": 3,
+          "max": 3
+        },
+        {
+          "criterion": "unity-subset",
+          "credit": 2,
+          "max": 2
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "One local copying error is not total failure of the method.",
+      "rawPoints": 19.5,
+      "ordinaryFinalPoints": 19.5,
+      "oneBinaryPass": true,
+      "boundContentSha256": "57ba684c3690716d9dc8631acf1efb8e91a778b4e17c50d9f24862ef0af2c205"
+    },
+    {
+      "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+      "case": "negative angle representatives",
+      "concreteSubmittedWork": "Uses angles0,pi/3,2pi/3,pi,−2pi/3,−pi/3 with consistent labels; gives the same six points and the correct rotations and cubic subset.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "unity-solve",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "unity-algebra",
+          "credit": 3,
+          "max": 3
+        },
+        {
+          "criterion": "unity-geometry",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "unity-fourth",
+          "credit": 3,
+          "max": 3
+        },
+        {
+          "criterion": "unity-subset",
+          "credit": 2,
+          "max": 2
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "Equivalent angle representatives and ordering count fully.",
+      "rawPoints": 20,
+      "ordinaryFinalPoints": 20,
+      "oneBinaryPass": true,
+      "boundContentSha256": "57ba684c3690716d9dc8631acf1efb8e91a778b4e17c50d9f24862ef0af2c205"
+    },
+    {
+      "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+      "case": "fourteen with both core actions present",
+      "concreteSubmittedWork": "Has a real solution method and geometric interpretation, but some derivation and exact-value details earn partial credit.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "unity-solve",
+          "credit": 4,
+          "max": 6
+        },
+        {
+          "criterion": "unity-algebra",
+          "credit": 2,
+          "max": 3
+        },
+        {
+          "criterion": "unity-geometry",
+          "credit": 4,
+          "max": 6
+        },
+        {
+          "criterion": "unity-fourth",
+          "credit": 2,
+          "max": 3
+        },
+        {
+          "criterion": "unity-subset",
+          "credit": 2,
+          "max": 2
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "14 is below the single threshold.",
+      "rawPoints": 14,
+      "ordinaryFinalPoints": 14,
+      "oneBinaryPass": false,
+      "boundContentSha256": "57ba684c3690716d9dc8631acf1efb8e91a778b4e17c50d9f24862ef0af2c205"
+    },
+    {
+      "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+      "case": "fifteen with both core actions present",
+      "concreteSubmittedWork": "As preceding case, with an additional correct completeness/argument step.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "unity-solve",
+          "credit": 5,
+          "max": 6
+        },
+        {
+          "criterion": "unity-algebra",
+          "credit": 2,
+          "max": 3
+        },
+        {
+          "criterion": "unity-geometry",
+          "credit": 4,
+          "max": 6
+        },
+        {
+          "criterion": "unity-fourth",
+          "credit": 2,
+          "max": 3
+        },
+        {
+          "criterion": "unity-subset",
+          "credit": 2,
+          "max": 2
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "15 passes; full marks in a given part are not required.",
+      "rawPoints": 15,
+      "ordinaryFinalPoints": 15,
+      "oneBinaryPass": true,
+      "boundContentSha256": "57ba684c3690716d9dc8631acf1efb8e91a778b4e17c50d9f24862ef0af2c205"
+    },
+    {
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "case": "complete reference",
+      "concreteSubmittedWork": "Conjugate division is actually performed and explained, all four quotients are correct, and both product checks explain why component division fails.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "division-conjugate",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "division-q1",
+          "credit": 3,
+          "max": 3
+        },
+        {
+          "criterion": "division-q2",
+          "credit": 3,
+          "max": 3
+        },
+        {
+          "criterion": "division-q3",
+          "credit": 2,
+          "max": 2
+        },
+        {
+          "criterion": "division-q4",
+          "credit": 2,
+          "max": 2
+        },
+        {
+          "criterion": "division-check",
+          "credit": 4,
+          "max": 4
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "All requested core actions are present.",
+      "rawPoints": 20,
+      "ordinaryFinalPoints": 20,
+      "oneBinaryPass": true,
+      "boundContentSha256": "3bbf010892b7df4ba806d8018fd62b6b74ed7e6b66809cd6d916361faa0e2982"
+    },
+    {
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "case": "correct results only",
+      "concreteSubmittedWork": "Lists −1+2i,−4/5−7i/5,−1−2i,2/5−i/5, without calculation or method, and leaves the error analysis blank.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "division-conjugate",
+          "credit": 0,
+          "max": 6
+        },
+        {
+          "criterion": "division-q1",
+          "credit": 1,
+          "max": 3
+        },
+        {
+          "criterion": "division-q2",
+          "credit": 1,
+          "max": 3
+        },
+        {
+          "criterion": "division-q3",
+          "credit": 1,
+          "max": 2
+        },
+        {
+          "criterion": "division-q4",
+          "credit": 1,
+          "max": 2
+        },
+        {
+          "criterion": "division-check",
+          "credit": 0,
+          "max": 4
+        }
+      ],
+      "authorJudgmentCapApplies": true,
+      "authorJudgmentReason": "Bare numerical answers do not demonstrate the required conjugate use.",
+      "rawPoints": 4,
+      "ordinaryFinalPoints": 4,
+      "oneBinaryPass": false,
+      "boundContentSha256": "3bbf010892b7df4ba806d8018fd62b6b74ed7e6b66809cd6d916361faa0e2982"
+    },
+    {
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "case": "all quotients by systems plus unused conjugate theory",
+      "concreteSubmittedWork": "Solves all quotients correctly by real coefficient systems and gives both product checks. Separately explains multiplying both fraction parts by a common number and why z*conjugate(z) is real, but never applies conjugation to any quotient.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "division-conjugate",
+          "credit": 4,
+          "max": 6
+        },
+        {
+          "criterion": "division-q1",
+          "credit": 3,
+          "max": 3
+        },
+        {
+          "criterion": "division-q2",
+          "credit": 3,
+          "max": 3
+        },
+        {
+          "criterion": "division-q3",
+          "credit": 2,
+          "max": 2
+        },
+        {
+          "criterion": "division-q4",
+          "credit": 2,
+          "max": 2
+        },
+        {
+          "criterion": "division-check",
+          "credit": 4,
+          "max": 4
+        }
+      ],
+      "authorJudgmentCapApplies": true,
+      "authorJudgmentReason": "Detached correct theory is not actual use in a quotient; the explicit task allows another quotient but still requires an application. Raw18 becomes14.",
+      "rawPoints": 18,
+      "ordinaryFinalPoints": 14,
+      "oneBinaryPass": false,
+      "boundContentSha256": "3bbf010892b7df4ba806d8018fd62b6b74ed7e6b66809cd6d916361faa0e2982"
+    },
+    {
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "case": "conjugate method shown on q2 instead",
+      "concreteSubmittedWork": "Calculates q1 by a correct coefficient system, then actually uses and explains conjugation for q2 as explicitly permitted. Other computations and checks are complete.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "division-conjugate",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "division-q1",
+          "credit": 3,
+          "max": 3
+        },
+        {
+          "criterion": "division-q2",
+          "credit": 3,
+          "max": 3
+        },
+        {
+          "criterion": "division-q3",
+          "credit": 2,
+          "max": 2
+        },
+        {
+          "criterion": "division-q4",
+          "credit": 2,
+          "max": 2
+        },
+        {
+          "criterion": "division-check",
+          "credit": 4,
+          "max": 4
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "The task explicitly permits showing the required conjugate action on another given quotient; no fixed location is required.",
+      "rawPoints": 20,
+      "ordinaryFinalPoints": 20,
+      "oneBinaryPass": true,
+      "boundContentSha256": "3bbf010892b7df4ba806d8018fd62b6b74ed7e6b66809cd6d916361faa0e2982"
+    },
+    {
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "case": "one sign transcription slip",
+      "concreteSubmittedWork": "Correct conjugate procedure for q1 and q2, but copies the q2 numerator as−4+7i once; the other results and product checks are correct.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "division-conjugate",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "division-q1",
+          "credit": 3,
+          "max": 3
+        },
+        {
+          "criterion": "division-q2",
+          "credit": 2,
+          "max": 3
+        },
+        {
+          "criterion": "division-q3",
+          "credit": 2,
+          "max": 2
+        },
+        {
+          "criterion": "division-q4",
+          "credit": 2,
+          "max": 2
+        },
+        {
+          "criterion": "division-check",
+          "credit": 4,
+          "max": 4
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "One local sign slip does not erase the demonstrated method.",
+      "rawPoints": 19,
+      "ordinaryFinalPoints": 19,
+      "oneBinaryPass": true,
+      "boundContentSha256": "3bbf010892b7df4ba806d8018fd62b6b74ed7e6b66809cd6d916361faa0e2982"
+    },
+    {
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "case": "pure imaginary alternative",
+      "concreteSubmittedWork": "Shows the full explained conjugate method for q1 and uses1/i=−i to compute q3 directly. All results and checks are correct.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "division-conjugate",
+          "credit": 6,
+          "max": 6
+        },
+        {
+          "criterion": "division-q1",
+          "credit": 3,
+          "max": 3
+        },
+        {
+          "criterion": "division-q2",
+          "credit": 3,
+          "max": 3
+        },
+        {
+          "criterion": "division-q3",
+          "credit": 2,
+          "max": 2
+        },
+        {
+          "criterion": "division-q4",
+          "credit": 2,
+          "max": 2
+        },
+        {
+          "criterion": "division-check",
+          "credit": 4,
+          "max": 4
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "A suitable alternative in a transfer case is fully accepted.",
+      "rawPoints": 20,
+      "ordinaryFinalPoints": 20,
+      "oneBinaryPass": true,
+      "boundContentSha256": "3bbf010892b7df4ba806d8018fd62b6b74ed7e6b66809cd6d916361faa0e2982"
+    },
+    {
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "case": "fourteen with actual conjugation present",
+      "concreteSubmittedWork": "Actual conjugate quotient work is present with a sound explanation, but calculations/details earn these partial credits.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "division-conjugate",
+          "credit": 4,
+          "max": 6
+        },
+        {
+          "criterion": "division-q1",
+          "credit": 2,
+          "max": 3
+        },
+        {
+          "criterion": "division-q2",
+          "credit": 2,
+          "max": 3
+        },
+        {
+          "criterion": "division-q3",
+          "credit": 1,
+          "max": 2
+        },
+        {
+          "criterion": "division-q4",
+          "credit": 1,
+          "max": 2
+        },
+        {
+          "criterion": "division-check",
+          "credit": 4,
+          "max": 4
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "One total14 remains below15.",
+      "rawPoints": 14,
+      "ordinaryFinalPoints": 14,
+      "oneBinaryPass": false,
+      "boundContentSha256": "3bbf010892b7df4ba806d8018fd62b6b74ed7e6b66809cd6d916361faa0e2982"
+    },
+    {
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "case": "fifteen with actual conjugation present",
+      "concreteSubmittedWork": "Same work with a fuller correct method explanation.",
+      "authorCriterionCredits": [
+        {
+          "criterion": "division-conjugate",
+          "credit": 5,
+          "max": 6
+        },
+        {
+          "criterion": "division-q1",
+          "credit": 2,
+          "max": 3
+        },
+        {
+          "criterion": "division-q2",
+          "credit": 2,
+          "max": 3
+        },
+        {
+          "criterion": "division-q3",
+          "credit": 1,
+          "max": 2
+        },
+        {
+          "criterion": "division-q4",
+          "credit": 1,
+          "max": 2
+        },
+        {
+          "criterion": "division-check",
+          "credit": 4,
+          "max": 4
+        }
+      ],
+      "authorJudgmentCapApplies": false,
+      "authorJudgmentReason": "One total15 passes; no separate method-part threshold.",
+      "rawPoints": 15,
+      "ordinaryFinalPoints": 15,
+      "oneBinaryPass": true,
+      "boundContentSha256": "3bbf010892b7df4ba806d8018fd62b6b74ed7e6b66809cd6d916361faa0e2982"
+    }
+  ],
+  "limits": "Criterion credits and cap applicability are explicit author judgments about concrete described work. This script validates their arithmetic/bounds; it does not execute a production semantic grader or establish independent approval. Caps affect the normal one total only, with no qualifying mastery evidence."
+}

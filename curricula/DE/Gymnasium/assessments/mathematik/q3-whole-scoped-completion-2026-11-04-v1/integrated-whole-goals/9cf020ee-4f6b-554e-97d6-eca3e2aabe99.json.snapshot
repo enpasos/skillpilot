@@ -1,0 +1,108 @@
+{
+  "id": "9cf020ee-4f6b-554e-97d6-eca3e2aabe99",
+  "title": "Verteilungen in Kontexten nutzen",
+  "description": "Die lernende Person kann eine materialgestützte Q3-Klausuraufgabe zu Binomial-, Normal- oder verwandten Verteilungen selbstständig bearbeiten und Ergebnisse im Kontext interpretieren.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment"
+  ],
+  "dimensionTags": {
+    "framework": "hessen-kc-2024",
+    "demandLevel": "AB2",
+    "processCompetencies": [
+      "K2",
+      "K3",
+      "K4",
+      "K6"
+    ],
+    "guidingIdeas": [
+      "L4",
+      "L5"
+    ],
+    "phase": "Q3"
+  },
+  "requires": [
+    "42d300e3-e982-5889-98d7-fc297f10eff1",
+    "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+    "66f432e9-22d3-51a9-8787-35f91db30616",
+    "8c32d941-b51c-5663-951c-a610f8900f76",
+    "d81bc960-4eff-5c87-90b8-fec8e1cb8b3a",
+    "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+    "d711bc18-c27c-4739-8289-edac53dc8ba3",
+    "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+    "f7879354-1a82-4195-8e3c-a339a820439c",
+    "b431148b-526c-4bde-b04b-48d23101d0d3",
+    "44dba16e-2e86-56be-974b-a62093ef9211"
+  ],
+  "contains": [],
+  "examples": [],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "8c32d941-b51c-5663-951c-a610f8900f76",
+      "f7879354-1a82-4195-8e3c-a339a820439c"
+    ],
+    "coveredStrands": [
+      "L4",
+      "L5"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2"
+    ],
+    "taskContent": "In einem Versandzentrum kommen erfahrungsgemäß $6\\,$% aller Sendungen verspätet an. An einem Tag werden $250$ Sendungen betrachtet. Die Zufallsvariable $X$ beschreibt die Anzahl der verspäteten Sendungen.\n\n1. Begründen Sie ein geeignetes Modell für $X$ und bestimmen Sie Erwartungswert und Standardabweichung.\n2. Berechnen Sie mit der Normalapproximation und Stetigkeitskorrektur die Wahrscheinlichkeit, dass zwischen $10$ und $20$ Sendungen verspätet ankommen.\n3. Bestimmen Sie näherungsweise die Wahrscheinlichkeit, dass mehr als $25$ Sendungen verspätet sind.\n4. Beurteilen Sie, ob ein Tageswert von mehr als $25$ verspäteten Sendungen als auffällig gelten kann.",
+    "solutionContent": "1. Es ist ein Binomialmodell mit\n$$\nX\\sim B(250;0{,}06)\n$$\nunter den zusätzlichen Modellannahmen angemessen, dass die betrachteten Sendungen annähernd unabhängig sind und für jede dieselbe Verspätungswahrscheinlichkeit p=0,06 gilt. Gemeinsame Lieferketten, Wetter oder gebündelte Transporte können Abhängigkeiten bzw. unterschiedliche Wahrscheinlichkeiten verursachen; dann ist das Binomialmodell nur eingeschränkt passend. Es gilt\n$$\n\\mu=np=250\\cdot 0{,}06=15,\n$$\n$$\n\\sigma=\\sqrt{np(1-p)}=\\sqrt{250\\cdot 0{,}06\\cdot 0{,}94}=\\sqrt{14{,}1}\\approx 3{,}76.\n$$\n\n2. Mit Stetigkeitskorrektur wird\n$$\nP(10\\le X\\le 20)\\approx P(9{,}5\\le Y\\le 20{,}5)\n$$\nmit $Y\\sim N(15;14{,}1)$, wobei der zweite Parameter die Varianz bezeichnet: $\\mu_Y=15$, $\\operatorname{Var}(Y)=14{,}1$ und $\\sigma_Y=\\sqrt{14{,}1}\\approx 3{,}76$. Standardisiert ergibt sich\n$$\nz_1=\\frac{9{,}5-15}{3{,}76}\\approx -1{,}46,\\qquad z_2=\\frac{20{,}5-15}{3{,}76}\\approx 1{,}46.\n$$\nDamit folgt\n$$\nP(10\\le X\\le 20)\\approx \\Phi(1{,}46)-\\Phi(-1{,}46)\\approx 0{,}857.\n$$\n\n3. Für mehr als $25$ verspätete Sendungen gilt mit Stetigkeitskorrektur\n$$\nP(X>25)\\approx P(Y>25{,}5).\n$$\nStandardisieren liefert\n$$\nz=\\frac{25{,}5-15}{3{,}76}\\approx 2{,}79.\n$$\nAlso\n$$\nP(X>25)\\approx 1-\\Phi(2{,}79)\\approx 0{,}0026.\n$$\n\n4. Ein Tageswert von mehr als $25$ verspäteten Sendungen ist sehr unwahrscheinlich. Mit einer Wahrscheinlichkeit von nur etwa $0{,}26\\,$% kann ein solcher Wert als deutlich auffällig beurteilt werden.",
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 10,
+      "steps": [
+        {
+          "id": "q3b_1",
+          "points": 4,
+          "description": "Binomialmodell mit annähernder Unabhängigkeit und konstantem p begründet; Erwartungswert und Standardabweichung korrekt bestimmt"
+        },
+        {
+          "id": "q3b_2",
+          "points": 7,
+          "description": "Intervallwahrscheinlichkeit mit Normalapproximation korrekt berechnet"
+        },
+        {
+          "id": "q3b_3",
+          "points": 4,
+          "description": "Randwahrscheinlichkeit für mehr als 25 korrekt bestimmt"
+        },
+        {
+          "id": "q3b_4",
+          "points": 5,
+          "description": "Auffälligkeit im Kontext fachlich sinnvoll bewertet"
+        }
+      ]
+    },
+    "reviewNote": "Begrenzte Inhaltskorrektur vom 01.11.2026 unabhängig mit Astra Ultra fachlich geprüft; exakte Nachkorrekturen berücksichtigt. Nachweis: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-upper-candidate-review.json. Historische Quellen und bestehende gültige Mastery bleiben unverändert."
+  },
+  "phase": "Q3",
+  "type": "atomic"
+}

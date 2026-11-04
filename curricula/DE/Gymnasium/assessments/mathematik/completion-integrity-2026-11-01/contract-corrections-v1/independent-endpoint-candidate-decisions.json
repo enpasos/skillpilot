@@ -1,0 +1,919 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "reviewerAgent": "/root/astra_math_endpoint_review",
+  "authorIndependent": true,
+  "reviewType": "Bounded independent nine-endpoint content/direct-relation review with explicit final-scope holds",
+  "overallContentDecision": "PASS",
+  "overallActivationDecision": "CHANGES_REQUIRED",
+  "decisionMeaning": "Per-case PASS is limited to the exact content and direct relation contract. It is not an activation or whole-context PASS.",
+  "summary": {
+    "reviewedCorrectionCount": 9,
+    "contentPassCount": 9,
+    "currentActivationPassCount": 0,
+    "negativeExistingPreparationEdges": 9,
+    "affectedOrdinaryPreparationConsumers": 5,
+    "otherEndpointsStillInventoryOnly": 155
+  },
+  "hashNormalization": {
+    "file": "SHA-256 of exact file bytes",
+    "textFields": "SHA-256 of exact UTF-8 field text; no JSON quoting or newline normalization",
+    "normalizedJson": "SHA-256 of UTF-8 JSON ensure_ascii=false,sort_keys=true,separators=(comma,colon); no final newline"
+  },
+  "inputBindings": [
+    {
+      "path": "tmp/approach-review-20261101/candidate-corrections.json",
+      "sha256": "4815ad824e7d08a7e59b93300cd6c385c9e74f9afe64f216232bb4d9c1c0dc4a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "2888d646a6730203a56cfb8f41fa3bad1388ba3e303b0c8f04f9df9142066986"
+    },
+    {
+      "path": "tmp/approach-review-20261101/endpoint-audit.json",
+      "sha256": "d010a359b96bf0e15397712a95625165b2636db22c3bbad098272362b2f8971c"
+    },
+    {
+      "path": "tmp/approach-review-20261101/overall-review.md",
+      "sha256": "eaea5c155831f3c78db44513d7e6a97e1bb7bda0e7ab99f510e0ae180adb22ee"
+    },
+    {
+      "path": "tmp/approach-review-20261101/independent-offline-candidate.json",
+      "sha256": "f56f5e2ce2f76050366e86b109e378ae6dc53603aa647da49576c31c9d47bf29"
+    },
+    {
+      "path": "scripts/apply_math_assessment_contract_candidates.py",
+      "sha256": "ba44161444a87eb68447eaab6c98dc3f869e4c2cc65a3c5acf6e3b06e55c23d3"
+    },
+    {
+      "path": "scripts/test_math_assessment_contract_candidates.py",
+      "sha256": "85c4f58fd6e7b25c325e1bba768483f8489f3599dee02c1bc3963abd83af668c"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "0e2103e9d388154abda03f42cfddf1c03ceb625d50d0cd140888a35dc3d2d00d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/mathematik/q2-exam-pair-repair-candidate-20260929-v1/TASKS.md",
+      "sha256": "ae3fd8ed6bbad70d595d0018a7368508e61956dd6a8040640a66eab0493107c8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/mathematik/q2-exam-pair-repair-candidate-20260929-v1/README.md",
+      "sha256": "e5512b9bc361e3adacb49f0e024b708bc0a478d3891cc5549e9c64c238dca6d6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/mathematik/q2-exam-pair-repair-candidate-20260929-v1/coverage-spec.json",
+      "sha256": "d36cfafd2e3fcc0983df04c890ff1aa374461f2577e0e2a5ae992f2b6b708158"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_M.pdf",
+      "sha256": "b085465143648b3f44c894f8eb0a5ee5d1928cbb1c4c60b3b249559709d26014"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+      "sha256": "d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sha256": "41462123c671854fbab3e38619158f46b0d21bf02a548b1a5fa41d32628928e4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sha256": "b6601c25e6f0639765a457719b8e7e604e1c8a2542c0d06e73500a0d4fd7d405"
+    },
+    {
+      "path": "tmp/math-stage-view-candidate-20261101/independent-supplement-source-review.md",
+      "sha256": "3d3af417d875574f894bb4d08003bcc593331d725a4d4274986443287d4e3618"
+    }
+  ],
+  "validation": {
+    "offlineApply": "PASS",
+    "existingRegressionTests": {
+      "count": 8,
+      "passed": 8,
+      "command": "python3 scripts/test_math_assessment_contract_candidates.py"
+    },
+    "activeCanonicalSha256BeforeAndAfter": "2888d646a6730203a56cfb8f41fa3bad1388ba3e303b0c8f04f9df9142066986",
+    "activeCanonicalWritten": false,
+    "backendGradleOrLiveReads": false,
+    "learnerDataAccess": false,
+    "englishTaskSolutionRubricFieldsPreviouslyAbsent": true,
+    "unrelatedCatererGoalUnchanged": true,
+    "ancestorRequiresOfNineEndpoints": "All contains ancestors inspected; none add requirements"
+  },
+  "cases": [
+    {
+      "goalId": "4c319dfd-ebb1-504b-a036-c780e1915900",
+      "title": "Formale Verfahren und Werkzeuge reflektiert einsetzen",
+      "description": "Die lernende Person kann formale Verfahren und technische Werkzeuge in einer selbstständigen Aufgabe sicher einsetzen, Grenzen benennen und Entscheidungen dokumentieren.",
+      "decision": "PASS",
+      "decisionScope": "Exact candidate task, solution, rubric, same-ID contract, direct preparation references and separately assessed coverage only",
+      "mathematicsDecision": "PASS",
+      "pedagogyAndRubricDecision": "PASS",
+      "directPreparationDecision": "PASS",
+      "coverageDecision": "PASS",
+      "sameIdentityDecision": "PASS",
+      "rationale": "Correct unique root, Newton correction and rounding enclosure; four process contracts explicitly elicited and scored. Seven genuine direct preparation goals differ from four coverage goals. Dynamic applicability unresolved.",
+      "binding": {
+        "sourceGoalNormalizedSha256": "fcfe15f2e0da4ae50d7f8da15dfc28205976f4bc0ed10a35d99db908c4f41361",
+        "sourceTitleDescriptionNormalizedSha256": "5d1dc82eda986e005977425992084518f318353b29092b8ca071daa2222fd9fd",
+        "taskContentUtf8Sha256": "109084f562f22dcca4ef9b3eeb4134665516281cefe2d68be7ca2e40d1b14e32",
+        "solutionContentUtf8Sha256": "5105322d6df9d1094d825d6f8b2dab136be464c73fbae563a28418537bb92682",
+        "scoringNormalizedJsonSha256": "3add7413320c35f626763432ad683d7e6c5ff3f03ba44ee9a528dee910f59c29",
+        "requiresNormalizedJsonSha256": "af109bad8161a6ff53d95faec09664e245f602dbac445b7c55bcfd8ba5b16eb0",
+        "coveredGoalIdsNormalizedJsonSha256": "0ac5d55626169b63ca4ddbe13f1c565437edba49d4d9c4240f0b94bf128491de",
+        "replacementNormalizedJsonSha256": "712650d6a91a65e5b0b9404be289584b8bae22185a9cf603a0d66da896d5ff59",
+        "reviewedContractNormalizedJsonSha256": "871ac0f651aa695a5e740bbb16c1f31e7609d44ff6f8d3bdb2624ab3f4432316"
+      },
+      "directPreparationGoalIds": [
+        "647ec09d-68ae-57db-9ca4-aeb2da4218f1",
+        "07be4b71-b7e0-5dd1-be0c-9f590f3db3f3",
+        "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
+        "fbcb4ad3-786d-5365-94ba-b105660694a5",
+        "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+        "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76",
+        "27bdc580-ba17-5399-bf02-48f354846d1d"
+      ],
+      "assessedCoverageGoalIds": [
+        "647ec09d-68ae-57db-9ca4-aeb2da4218f1",
+        "07be4b71-b7e0-5dd1-be0c-9f590f3db3f3",
+        "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
+        "fbcb4ad3-786d-5365-94ba-b105660694a5"
+      ],
+      "referencedFullContractsNormalizedSha256": "0362956601b9e402ca207eb166d08ffa8b455c5c1cfcc5994ea1dae33a5b1552",
+      "existingMasteryRequalification": false,
+      "masteryTransferToCoverageGoals": false,
+      "newLearnerResultState": false,
+      "scoreContract": {
+        "maxPoints": 20,
+        "passingPoints": 10,
+        "meaning": "Binary result of this assessment only; no individual certification of every covered goal"
+      },
+      "applicabilityFromRequires": true,
+      "existingHistoricalOfferingCountNotFreshAcceptance": 81,
+      "activationDecision": "CHANGES_REQUIRED",
+      "activationHolds": [
+        "DYNAMIC_APPLICABILITY_FINAL_SOURCE_ROLE_DECISION",
+        "FINAL_CANONICAL_VIEW_CONTEXT_DELTA_AND_SELECTED_READINESS_NOT_YET_REVIEWED"
+      ],
+      "wholePreparationContextDecision": "NOT_A_WHOLE_CONTEXT_REVIEW",
+      "newExamStatusRemains": "draft"
+    },
+    {
+      "goalId": "f77b9b40-6afc-5d9e-821e-79903bbbcb94",
+      "title": "Problemlösestrategien und Argumente entwickeln",
+      "description": "Die lernende Person kann eine Q4-Klausuraufgabe mit offenem Problemlösecharakter selbstständig strukturieren, Lösungsstrategien vergleichen und ihre Entscheidung fachlich begründen.",
+      "decision": "PASS",
+      "decisionScope": "Exact candidate task, solution, rubric, same-ID contract, direct preparation references and separately assessed coverage only",
+      "mathematicsDecision": "PASS",
+      "pedagogyAndRubricDecision": "PASS",
+      "directPreparationDecision": "PASS",
+      "coverageDecision": "PASS",
+      "sameIdentityDecision": "PASS",
+      "rationale": "Global minimum 24 at x=y=6; derivative and provided AM-GM methods valid. Comparative decision explicitly scored. No invented inequality goal.",
+      "binding": {
+        "sourceGoalNormalizedSha256": "6c88656cfd13251c89575f30083bf18fa36a268896f55eaa05d5ec656467501d",
+        "sourceTitleDescriptionNormalizedSha256": "a9b862c70948213f63637bc97dde3333ba00397ce3598a6e0da1bb2ea0cb1e34",
+        "taskContentUtf8Sha256": "b8837534c4802e3a25b02ee786d50ac11839241235725937d4cd62561e9a1771",
+        "solutionContentUtf8Sha256": "1a690c38bf281ffd816fb47e15c3e313a8c66fe452c345ff7cf83f3361c7bafc",
+        "scoringNormalizedJsonSha256": "194c8631a1472d2f450a2f2993e258ee8fb748079b8e287e1665121344a0f5da",
+        "requiresNormalizedJsonSha256": "81c9ab233953646d7b1d7a3c2bca78680b4b1d81af2e45431a1f5eb02d8283f4",
+        "coveredGoalIdsNormalizedJsonSha256": "a76a94507141b373187d2aee4220d405ddfcc28df85562ed09aea0d755b8084a",
+        "replacementNormalizedJsonSha256": "0de93a991948131a97fc6ec876aef0e806c5eb9f2e9de0510682d8188a6ca021",
+        "reviewedContractNormalizedJsonSha256": "6ce2621c9d8281d132d19f1c5488bbf8941d9eab3cb6c035a3cd96f8f8444202"
+      },
+      "directPreparationGoalIds": [
+        "1511b39a-4094-5450-a755-4a3ad3339733",
+        "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+        "f9c24dd8-eaa5-5395-8679-820c1a74e7b7",
+        "07196e72-ba47-54bf-a096-3a79bbb67e23"
+      ],
+      "assessedCoverageGoalIds": [
+        "1511b39a-4094-5450-a755-4a3ad3339733",
+        "f9c24dd8-eaa5-5395-8679-820c1a74e7b7"
+      ],
+      "referencedFullContractsNormalizedSha256": "1c4ea534b4055acf9aea9b8dcea80665d12383ddbf536ca55eb2372977c6d575",
+      "existingMasteryRequalification": false,
+      "masteryTransferToCoverageGoals": false,
+      "newLearnerResultState": false,
+      "scoreContract": {
+        "maxPoints": 20,
+        "passingPoints": 10,
+        "meaning": "Binary result of this assessment only; no individual certification of every covered goal"
+      },
+      "applicabilityFromRequires": false,
+      "existingHistoricalOfferingCountNotFreshAcceptance": 92,
+      "activationDecision": "CHANGES_REQUIRED",
+      "activationHolds": [
+        "FINAL_CANONICAL_VIEW_CONTEXT_DELTA_AND_SELECTED_READINESS_NOT_YET_REVIEWED"
+      ],
+      "wholePreparationContextDecision": "NOT_A_WHOLE_CONTEXT_REVIEW",
+      "newExamStatusRemains": "draft"
+    },
+    {
+      "goalId": "1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf",
+      "title": "Funktionenscharen und Ortskurven untersuchen",
+      "description": "Die lernende Person kann eine materialgestützte Q4-Klausuraufgabe zu Funktionenscharen, Parameteruntersuchungen und Ortskurven selbstständig bearbeiten und die Ergebnisse begründen.",
+      "decision": "PASS",
+      "decisionScope": "Exact candidate task, solution, rubric, same-ID contract, direct preparation references and separately assessed coverage only",
+      "mathematicsDecision": "PASS",
+      "pedagogyAndRubricDecision": "PASS",
+      "directPreparationDecision": "PASS",
+      "coverageDecision": "PASS",
+      "sameIdentityDecision": "PASS",
+      "rationale": "Vertex, locus, 0<a<2 and area 4sqrt(3) correct. Fixed a=3 integral does not assess integration of a parameter family.",
+      "binding": {
+        "sourceGoalNormalizedSha256": "2e5d6fa6bea13674701e8b27c7bd2cab61b4656d61ce03b49ae5cbd5bdf64b2d",
+        "sourceTitleDescriptionNormalizedSha256": "1a4dc9bb10de7e9772576e8a5170728c59712de9c7d3b8d19cbdb78a7df840e1",
+        "taskContentUtf8Sha256": "99fd3d98d66df7d8e7d98de8bc48435dc65f15f7c62f4145132cd11ea6de66c1",
+        "solutionContentUtf8Sha256": "47a0c8f8c504747065c25abbe9deb6d99bb022d58fda998b8286a73fc4072267",
+        "scoringNormalizedJsonSha256": "067e4f7809e0fabd7e132ea34c230b1ad78d9fe977605bb6d655b4bb8c75d4f7",
+        "requiresNormalizedJsonSha256": "248cba623fbb75d2c76b1b5579988062cfed2854ae51246c8bc18943bc7a5b53",
+        "coveredGoalIdsNormalizedJsonSha256": "320d7b0eb5daf29748b6f2600c1b809488053a5e46d1c3355c56682efc35422b",
+        "replacementNormalizedJsonSha256": "730c1e415b2a9fbcd0a855d5d052d9df9fa92b9a711cebe19c3708012b1c403c",
+        "reviewedContractNormalizedJsonSha256": "d200639b84793a0cc1dc0ed1e13862601fd624a0ed1b586ba9140d919ce02b71"
+      },
+      "directPreparationGoalIds": [
+        "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ],
+      "assessedCoverageGoalIds": [
+        "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd"
+      ],
+      "referencedFullContractsNormalizedSha256": "cc6ee353e21e8d033529083eeb36bf3c93b94910a844a2332322770174846ab4",
+      "existingMasteryRequalification": false,
+      "masteryTransferToCoverageGoals": false,
+      "newLearnerResultState": false,
+      "scoreContract": {
+        "maxPoints": 20,
+        "passingPoints": 10,
+        "meaning": "Binary result of this assessment only; no individual certification of every covered goal"
+      },
+      "applicabilityFromRequires": false,
+      "existingHistoricalOfferingCountNotFreshAcceptance": 92,
+      "activationDecision": "CHANGES_REQUIRED",
+      "activationHolds": [
+        "FINAL_CANONICAL_VIEW_CONTEXT_DELTA_AND_SELECTED_READINESS_NOT_YET_REVIEWED"
+      ],
+      "wholePreparationContextDecision": "NOT_A_WHOLE_CONTEXT_REVIEW",
+      "newExamStatusRemains": "draft"
+    },
+    {
+      "goalId": "bd2c5e29-31c6-58bf-9858-d08e9c8a32ad",
+      "title": "Funktionsverknüpfungen und Transformationen untersuchen",
+      "description": "Die lernende Person kann eine Q2-Klausuraufgabe zu Transformationen, Verknüpfungen sowie Exponential- und Logarithmusfunktionen selbstständig bearbeiten und fachlich deuten.",
+      "decision": "PASS",
+      "decisionScope": "Exact candidate task, solution, rubric, same-ID contract, direct preparation references and separately assessed coverage only",
+      "mathematicsDecision": "PASS",
+      "pedagogyAndRubricDecision": "PASS",
+      "directPreparationDecision": "PASS",
+      "coverageDecision": "PASS",
+      "sameIdentityDecision": "PASS",
+      "rationale": "Both transformation sketches, ln domain/range and exp/ln composition now support exactly three coverage contracts. Old indirect calculus requirements remain invalid.",
+      "binding": {
+        "sourceGoalNormalizedSha256": "ebcebe250f8bccf7720cb14d67eaa04d2ee844d9be10b32f681e225c7f6dce46",
+        "sourceTitleDescriptionNormalizedSha256": "2a7eee739d715429c7654e970fde1ccdc97c77d947b6214a6b0748c86f135caa",
+        "taskContentUtf8Sha256": "1400aabf453763820edefccc617179197b1da5010c59ed9cfd4d4feb14db1fbd",
+        "solutionContentUtf8Sha256": "3df0592991a89a4aae87f62279c8a8f19300cea5fbde08177b019543da92293a",
+        "scoringNormalizedJsonSha256": "7addc6bcda625458612d4a8f355c0117b0bc9ff0b27bd58377d334cd7a0b6594",
+        "requiresNormalizedJsonSha256": "3e4364d78a18dd438e6801da3d05d2fb9ce0962e3c02a7b3b2437d1199f374bc",
+        "coveredGoalIdsNormalizedJsonSha256": "83b972ef5c70d9f6c04914765610b2d63a85731382b0566c32bafcb2dde165bd",
+        "replacementNormalizedJsonSha256": "6913b998ecd92f463f2c74b4343d192e563c6b10e90b2b97f0d64e90a63b607f",
+        "reviewedContractNormalizedJsonSha256": "2182d15807a523b488629e2fdf993bd0de7297a2791256fe09060250a2644e1f"
+      },
+      "directPreparationGoalIds": [
+        "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+        "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+        "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+        "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+        "c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+        "04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8"
+      ],
+      "assessedCoverageGoalIds": [
+        "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+        "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+        "c72a8032-71f6-56ed-a896-06ae435ff2ec"
+      ],
+      "referencedFullContractsNormalizedSha256": "19055e4cee31d89a781dec1f8a3e81131b3763267dccf91892e405c29e7cfff1",
+      "existingMasteryRequalification": false,
+      "masteryTransferToCoverageGoals": false,
+      "newLearnerResultState": false,
+      "scoreContract": {
+        "maxPoints": 20,
+        "passingPoints": 10,
+        "meaning": "Binary result of this assessment only; no individual certification of every covered goal"
+      },
+      "applicabilityFromRequires": false,
+      "existingHistoricalOfferingCountNotFreshAcceptance": 110,
+      "activationDecision": "CHANGES_REQUIRED",
+      "activationHolds": [
+        "INVALID_INDIRECT_PREPARATION_DD6_772_C72",
+        "FINAL_CANONICAL_VIEW_CONTEXT_DELTA_AND_SELECTED_READINESS_NOT_YET_REVIEWED"
+      ],
+      "wholePreparationContextDecision": "CHANGES_REQUIRED",
+      "newExamStatusRemains": "draft"
+    },
+    {
+      "goalId": "450a77d6-2814-571a-af1e-78c9fa61ed2c",
+      "title": "Extremwertprobleme modellieren",
+      "description": "Die lernende Person kann eine materialgestützte E-Phasen-Aufgabe zu einfachen Extremwertproblemen modellieren, rechnen und die Lösung im Kontext bewerten.",
+      "decision": "PASS",
+      "decisionScope": "Exact candidate task, solution, rubric, same-ID contract, direct preparation references and separately assessed coverage only",
+      "mathematicsDecision": "PASS",
+      "pedagogyAndRubricDecision": "PASS",
+      "directPreparationDecision": "PASS",
+      "coverageDecision": "PASS",
+      "sameIdentityDecision": "PASS",
+      "rationale": "Derivative sign analysis is now explicitly required and scored, with correct 10m by20m,200m2 result. Existing d4f prerequisite chain remains overbroad.",
+      "binding": {
+        "sourceGoalNormalizedSha256": "36204a633b5cf34deeb337070d81ba1a601cfc357fd9f91ad315d03e3b1f7ed9",
+        "sourceTitleDescriptionNormalizedSha256": "977c1d48fa8d4f2c84fa58b75ce39fc15b84d344bde4e8e797df04a6664c85e7",
+        "taskContentUtf8Sha256": "4deb27807270dabffeaf409e14f89f4bf2233917b4dcc601c5e5ce9787f171bd",
+        "solutionContentUtf8Sha256": "be049f078f44db63bb165ab7c0d5fb3c5909990204574831befceaf64b30bce2",
+        "scoringNormalizedJsonSha256": "c0496ec4664adacc2387e024cbbee523584293a3fa1f2f896a25c7603408f49b",
+        "requiresNormalizedJsonSha256": "f0f81e1e7215389455062d47ff642940de46f7ca1a55af5f3e75e2e41d420267",
+        "coveredGoalIdsNormalizedJsonSha256": "e84c08c88010e0a645055c67e3ae439ebe912729eaa68bc54d920e8e8308a8a1",
+        "replacementNormalizedJsonSha256": "2840b22cc17906749c3a50a34866de5567bb65658cca5b2d38469e38aeed7e63",
+        "reviewedContractNormalizedJsonSha256": "c9a87e52b3cacea1fb7482f29678b8e42544700ee88607c548b4e2c748a5ceb6"
+      },
+      "directPreparationGoalIds": [
+        "1511b39a-4094-5450-a755-4a3ad3339733",
+        "d4f2d4e2-a831-5ee2-b9c6-bb9e79986aeb",
+        "350fc8b1-ead0-4239-b28a-217cbd3bd1c3",
+        "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+        "f17935b0-189f-5e0c-988d-ce508b710097"
+      ],
+      "assessedCoverageGoalIds": [
+        "1511b39a-4094-5450-a755-4a3ad3339733",
+        "d4f2d4e2-a831-5ee2-b9c6-bb9e79986aeb",
+        "350fc8b1-ead0-4239-b28a-217cbd3bd1c3"
+      ],
+      "referencedFullContractsNormalizedSha256": "617c59a63221eeb7746161bba72d69f72e6fc04d64fb0a74796392fd52f9d5d9",
+      "existingMasteryRequalification": false,
+      "masteryTransferToCoverageGoals": false,
+      "newLearnerResultState": false,
+      "scoreContract": {
+        "maxPoints": 20,
+        "passingPoints": 10,
+        "meaning": "Binary result of this assessment only; no individual certification of every covered goal"
+      },
+      "applicabilityFromRequires": false,
+      "existingHistoricalOfferingCountNotFreshAcceptance": 132,
+      "activationDecision": "CHANGES_REQUIRED",
+      "activationHolds": [
+        "INVALID_INDIRECT_PREPARATION_D4F",
+        "FINAL_CANONICAL_VIEW_CONTEXT_DELTA_AND_SELECTED_READINESS_NOT_YET_REVIEWED"
+      ],
+      "wholePreparationContextDecision": "CHANGES_REQUIRED",
+      "newExamStatusRemains": "draft"
+    },
+    {
+      "goalId": "2f8a3a90-717d-5ac1-b54e-facca26e9008",
+      "title": "Geraden, Ebenen und Schnittfiguren analysieren",
+      "description": "Die lernende Person kann eine Q2-Klausuraufgabe zu Geraden, Ebenen, Lagebeziehungen und Schnittfiguren im Raum selbstständig bearbeiten und die Ergebnisse geometrisch interpretieren.",
+      "decision": "PASS",
+      "decisionScope": "Exact candidate task, solution, rubric, same-ID contract, direct preparation references and separately assessed coverage only",
+      "mathematicsDecision": "PASS",
+      "pedagogyAndRubricDecision": "PASS",
+      "directPreparationDecision": "PASS",
+      "coverageDecision": "PASS",
+      "sameIdentityDecision": "PASS",
+      "rationale": "Exact historical proposed task/solution reused; four cuboid vertices and boundary order checked. Two narrow coverage contracts supported. Indirect Hesse prerequisite and final applicability remain unresolved.",
+      "binding": {
+        "sourceGoalNormalizedSha256": "c18fdb7d0c5f9880a361ec98fa91216a45b88b9474248b9585f9679ecb1e492e",
+        "sourceTitleDescriptionNormalizedSha256": "2489230beb4cfbd63f5687088046253e5175805549f9d7fe54e3dc1d89e776d3",
+        "taskContentUtf8Sha256": "d78132b07637f71f329af1f24239d6d9e2790005738e4b890d3bb0799c2f34f2",
+        "solutionContentUtf8Sha256": "32834ce38ca1d42aa1ba93ee52a56c3baa4ef4d0b2b27d0f7818f5c1bc33e931",
+        "scoringNormalizedJsonSha256": "b011868466d635a67a7da615af885aae3e6e598ec03976650352c4423cf094c8",
+        "requiresNormalizedJsonSha256": "de4b76ff269f4c1df72d4c84bc8cff2254f3b773414b537929252dd334086993",
+        "coveredGoalIdsNormalizedJsonSha256": "a9ada7cdc0bff552ef998dbc4c9d64cd71903c13e9cf6e3be588d2575c465857",
+        "replacementNormalizedJsonSha256": "84698f909b0ea0d8305fda7e954d615aa7ea31af12cbd864418518371586fa4c",
+        "reviewedContractNormalizedJsonSha256": "f74d5554088ef605482ede4772230e4ad03ddfab3aa4505da48daa645aee9818"
+      },
+      "directPreparationGoalIds": [
+        "7aa1abee-d6ec-528a-b110-f2260b0cda51",
+        "06de364f-9b63-4044-8229-a975621dc6df",
+        "baf7276f-60a0-4d96-b959-d63acfb929de",
+        "3aea4d33-4170-5ecc-82b0-3a3974cc2237",
+        "27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6"
+      ],
+      "assessedCoverageGoalIds": [
+        "7aa1abee-d6ec-528a-b110-f2260b0cda51",
+        "06de364f-9b63-4044-8229-a975621dc6df"
+      ],
+      "referencedFullContractsNormalizedSha256": "2294d8e52d19998f76e7d6a7ce138bc226db3b124551fa52ebb73f140e3b2bd8",
+      "existingMasteryRequalification": false,
+      "masteryTransferToCoverageGoals": false,
+      "newLearnerResultState": false,
+      "scoreContract": {
+        "maxPoints": 20,
+        "passingPoints": 10,
+        "meaning": "Binary result of this assessment only; no individual certification of every covered goal"
+      },
+      "applicabilityFromRequires": true,
+      "existingHistoricalOfferingCountNotFreshAcceptance": 130,
+      "activationDecision": "CHANGES_REQUIRED",
+      "activationHolds": [
+        "INVALID_INDIRECT_PREPARATION_BAF727_HESSE",
+        "DYNAMIC_APPLICABILITY_FINAL_SOURCE_ROLE_DECISION",
+        "FINAL_CANONICAL_VIEW_CONTEXT_DELTA_AND_SELECTED_READINESS_NOT_YET_REVIEWED"
+      ],
+      "wholePreparationContextDecision": "CHANGES_REQUIRED",
+      "newExamStatusRemains": "draft"
+    },
+    {
+      "goalId": "b9a501c4-9d74-5514-b77b-895980b89b1b",
+      "title": "Mathematische Ergebnisse adressatengerecht kommunizieren",
+      "description": "Die lernende Person kann mathematische Ergebnisse in einer selbstständigen Aufgabe klar, präzise und adressatengerecht kommunizieren und auf fachliche Rückfragen reagieren.",
+      "decision": "PASS",
+      "decisionScope": "Exact candidate task, solution, rubric, same-ID contract, direct preparation references and separately assessed coverage only",
+      "mathematicsDecision": "PASS",
+      "pedagogyAndRubricDecision": "PASS",
+      "directPreparationDecision": "PASS",
+      "coverageDecision": "PASS",
+      "sameIdentityDecision": "PASS",
+      "rationale": "Sampling assumptions, confidence interval and frequentist interpretation correct; actual reflection on own communication replaces unsupported cooperation claim.",
+      "binding": {
+        "sourceGoalNormalizedSha256": "bc67e5afd9601c5176df5d52dade927825b9b4679a5b8194c2778c39382b90f4",
+        "sourceTitleDescriptionNormalizedSha256": "ab65bcf7ee3923c888f15e3eab461024b4f2b82419b076eb8aac02e111ae6739",
+        "taskContentUtf8Sha256": "bb9241c321160fa1230baaaca0607c47120c95b2378e859d63c34c8f479ff24c",
+        "solutionContentUtf8Sha256": "6a35775c14c627ebb509604a90f6e492d3ab7b2c914dffd1416b306105743912",
+        "scoringNormalizedJsonSha256": "ca59d8ee02b6d52d4d724e754c5593e2980affd8d617bf73e32d559d370c9cae",
+        "requiresNormalizedJsonSha256": "0f04bf498e9720f60e40e7da684351174c9d0a956ad43236f34431c77ec74894",
+        "coveredGoalIdsNormalizedJsonSha256": "69a79889e8b4a92889cffbbe82c5189d0563bc7c2fcbe747757c1f95a12b77a6",
+        "replacementNormalizedJsonSha256": "357d00fc14a955a09f1c85cc55eb19b2f0b99374122c7234f53588638760c43c",
+        "reviewedContractNormalizedJsonSha256": "5b815fbca61a7e3863734701845644b88cb968716af56cd8a3ecf33b9752523f"
+      },
+      "directPreparationGoalIds": [
+        "aeae526e-b3a4-5a17-b177-351df0307cb9",
+        "83a6ccb1-576e-59e1-8a97-8a332ec7dda8",
+        "8b635349-abc3-59e7-af93-ec28940bf690",
+        "b35f8254-dfcc-5d4d-b77f-7b182999617f",
+        "5f328147-619c-568d-9a0d-e1787ca0c01b",
+        "aa14d9e4-5790-5d94-a245-2ff9a70bf633"
+      ],
+      "assessedCoverageGoalIds": [
+        "aeae526e-b3a4-5a17-b177-351df0307cb9",
+        "83a6ccb1-576e-59e1-8a97-8a332ec7dda8",
+        "8b635349-abc3-59e7-af93-ec28940bf690",
+        "b35f8254-dfcc-5d4d-b77f-7b182999617f"
+      ],
+      "referencedFullContractsNormalizedSha256": "fd5fc852421ba03bf45a1cf96d7d290b28f0bdc9495d890c5164357bf64b780e",
+      "existingMasteryRequalification": false,
+      "masteryTransferToCoverageGoals": false,
+      "newLearnerResultState": false,
+      "scoreContract": {
+        "maxPoints": 20,
+        "passingPoints": 10,
+        "meaning": "Binary result of this assessment only; no individual certification of every covered goal"
+      },
+      "applicabilityFromRequires": false,
+      "existingHistoricalOfferingCountNotFreshAcceptance": 117,
+      "activationDecision": "CHANGES_REQUIRED",
+      "activationHolds": [
+        "FINAL_CANONICAL_VIEW_CONTEXT_DELTA_AND_SELECTED_READINESS_NOT_YET_REVIEWED"
+      ],
+      "wholePreparationContextDecision": "NOT_A_WHOLE_CONTEXT_REVIEW",
+      "newExamStatusRemains": "draft"
+    },
+    {
+      "goalId": "7337049a-c85c-5b94-adaa-81dc93528bf8",
+      "title": "Darstellungen sicher wechseln und bewerten",
+      "description": "Die lernende Person kann eine Aufgabe zu verschiedenen Darstellungen selbstständig bearbeiten, zwischen ihnen sicher wechseln und ihre Aussagekraft bewerten.",
+      "decision": "PASS",
+      "decisionScope": "Exact candidate task, solution, rubric, same-ID contract, direct preparation references and separately assessed coverage only",
+      "mathematicsDecision": "PASS",
+      "pedagogyAndRubricDecision": "PASS",
+      "directPreparationDecision": "PASS",
+      "coverageDecision": "PASS",
+      "sameIdentityDecision": "PASS",
+      "rationale": "Actual digital checks and representation evaluation requested/scored; maximum secant error18 correctly violates tolerance5.",
+      "binding": {
+        "sourceGoalNormalizedSha256": "e66ed864dead49b5230edfaeb84a7cdd1950ec2398e78815861f823c220e32af",
+        "sourceTitleDescriptionNormalizedSha256": "13af556edde3cc14439844ca11ff8041247dcdf0e104a11a61a19dcc08dad785",
+        "taskContentUtf8Sha256": "02e28cf33f92b17a1a94c309e2bd9d1c3259ba8a9ba8caae62e7d87dbf20008e",
+        "solutionContentUtf8Sha256": "b6bd1d53ee2d81668f5ac464b4b419f117baa6cc91365ce76362c1696fe97846",
+        "scoringNormalizedJsonSha256": "9929a9373aaf2010cc9b3a71f5cb40d91ab925c3a79eeca63a12c31a80143048",
+        "requiresNormalizedJsonSha256": "58c80aa4ef74fdf8920542f33abc8a29d9a6a1e5aed6faa8494be05839c4fabb",
+        "coveredGoalIdsNormalizedJsonSha256": "34c269641f329772aa363e6c493b3210884ac3c11f8eaf3bb1a81659b3ddbb02",
+        "replacementNormalizedJsonSha256": "70fbbf8efc925c622e688878f92e11877f555f2883877d45b18eb99711fc1f06",
+        "reviewedContractNormalizedJsonSha256": "889058ecff651bdbc92daaf49db208624bbdff4b2f6d041af8de7336e17740ef"
+      },
+      "directPreparationGoalIds": [
+        "cf4fe700-dec2-502f-888b-90acefa307bb",
+        "42b57670-d2be-5da2-be2f-d58055901813",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "7c4e8d59-4acb-5f62-a387-c804c6fa23e0",
+        "d0475ed5-cb6f-5694-9501-a1c94288d65a",
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+        "96c55cb6-d2c7-5145-8567-b5f570f55a8a"
+      ],
+      "assessedCoverageGoalIds": [
+        "cf4fe700-dec2-502f-888b-90acefa307bb",
+        "42b57670-d2be-5da2-be2f-d58055901813",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "7c4e8d59-4acb-5f62-a387-c804c6fa23e0",
+        "d0475ed5-cb6f-5694-9501-a1c94288d65a"
+      ],
+      "referencedFullContractsNormalizedSha256": "fb0cd34be0c20cb126377b6d828a1a66594bcba839f898da5cbd5f6310794980",
+      "existingMasteryRequalification": false,
+      "masteryTransferToCoverageGoals": false,
+      "newLearnerResultState": false,
+      "scoreContract": {
+        "maxPoints": 20,
+        "passingPoints": 10,
+        "meaning": "Binary result of this assessment only; no individual certification of every covered goal"
+      },
+      "applicabilityFromRequires": false,
+      "existingHistoricalOfferingCountNotFreshAcceptance": 111,
+      "activationDecision": "CHANGES_REQUIRED",
+      "activationHolds": [
+        "FINAL_CANONICAL_VIEW_CONTEXT_DELTA_AND_SELECTED_READINESS_NOT_YET_REVIEWED"
+      ],
+      "wholePreparationContextDecision": "NOT_A_WHOLE_CONTEXT_REVIEW",
+      "newExamStatusRemains": "draft"
+    },
+    {
+      "goalId": "99b3435a-fdda-5d1b-9681-0ae6d7d5bfcd",
+      "title": "Problemlösestrategien reflektiert wählen",
+      "description": "Die lernende Person kann eine offene Problemlöseaufgabe strukturieren, Strategien gezielt auswählen und die gewählte Vorgehensweise reflektiert begründen.",
+      "decision": "PASS",
+      "decisionScope": "Exact candidate task, solution, rubric, same-ID contract, direct preparation references and separately assessed coverage only",
+      "mathematicsDecision": "PASS",
+      "pedagogyAndRubricDecision": "PASS",
+      "directPreparationDecision": "PASS",
+      "coverageDecision": "PASS",
+      "sameIdentityDecision": "PASS",
+      "rationale": "Positivity follows from original equation; bounded search and factor method complete for coefficients2 and3; model adjustment and constrained strategy choice elicited.",
+      "binding": {
+        "sourceGoalNormalizedSha256": "395d3db0cbb898e8822741aa8ff816cd4bb0da2e6f847ae0a879d27e4c349300",
+        "sourceTitleDescriptionNormalizedSha256": "3b154b17734db2e46756b9a44412f9e6204299c76aba8b02b2e0c64d06335118",
+        "taskContentUtf8Sha256": "ba31ef0c8d50232ceb29067638c1e9ed5d5878c1798bb0f94bf182337dfe9cca",
+        "solutionContentUtf8Sha256": "2be4050693bb2bfab068b382acabbe1617f2dc83cb017bd067e0f111eb7c76b0",
+        "scoringNormalizedJsonSha256": "1e5b15f9d29b34ea48fb9bba63972b7f2443a3e56e55cadc1e69bded1d42f505",
+        "requiresNormalizedJsonSha256": "aa79937cf91c7f3cf50ff3f62fc12e8e11818ca74706adba2285778aca8748e7",
+        "coveredGoalIdsNormalizedJsonSha256": "f19b65efb93b030cd005375cb830b6dbd73a9b52b0273235d08195daa59f1da6",
+        "replacementNormalizedJsonSha256": "009b9e1056e28d0d16bb17c3e6e5c416686ad54ad4d6f1282d1ea0babe24e890",
+        "reviewedContractNormalizedJsonSha256": "e7aa4d55bf56aa98d0f1e37f98d82f0dffa69fb6005fc2371d6b78adb5ad8116"
+      },
+      "directPreparationGoalIds": [
+        "86022c15-9847-5864-b84f-9ffe5d71556e",
+        "22fb19c1-9b26-5090-a8ae-6cea79ee581a",
+        "909d8b16-5156-528b-a300-d9aee5405ba0",
+        "8b885220-9985-52f1-a236-449d2f897acc",
+        "959cc50b-6c81-4fa1-800f-4804a707b1ee",
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+      ],
+      "assessedCoverageGoalIds": [
+        "86022c15-9847-5864-b84f-9ffe5d71556e",
+        "22fb19c1-9b26-5090-a8ae-6cea79ee581a",
+        "909d8b16-5156-528b-a300-d9aee5405ba0",
+        "8b885220-9985-52f1-a236-449d2f897acc"
+      ],
+      "referencedFullContractsNormalizedSha256": "02d966df15ef766a4b07d08ac732304d8f2b810e3ec3b17dc3f8fb1c4af32839",
+      "existingMasteryRequalification": false,
+      "masteryTransferToCoverageGoals": false,
+      "newLearnerResultState": false,
+      "scoreContract": {
+        "maxPoints": 20,
+        "passingPoints": 10,
+        "meaning": "Binary result of this assessment only; no individual certification of every covered goal"
+      },
+      "applicabilityFromRequires": false,
+      "existingHistoricalOfferingCountNotFreshAcceptance": 117,
+      "activationDecision": "CHANGES_REQUIRED",
+      "activationHolds": [
+        "FINAL_CANONICAL_VIEW_CONTEXT_DELTA_AND_SELECTED_READINESS_NOT_YET_REVIEWED"
+      ],
+      "wholePreparationContextDecision": "NOT_A_WHOLE_CONTEXT_REVIEW",
+      "newExamStatusRemains": "draft"
+    }
+  ],
+  "preparationEdgeFindings": [
+    {
+      "consumer": {
+        "goalId": "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+        "title": "Verschiebungen von Funktionsgraphen beschreiben",
+        "fullDescription": "Die lernende Person kann Verschiebungen von Funktionsgraphen in x- und y-Richtung anhand von Parametern im Funktionsterm beschreiben und grafisch darstellen.",
+        "goalNormalizedSha256": "c770dfd11f767bef3ddce16730f05e448246f54b5867cfcc328473b650ab479d"
+      },
+      "prerequisite": {
+        "goalId": "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+        "title": "Hauptsatz der Differential- und Integralrechnung nutzen",
+        "fullDescription": "Die lernende Person kann den Zusammenhang zwischen Ableitung und Integral beschreiben, mit einer passenden Stammfunktion das bestimmte Integral über $F(b) - F(a)$ berechnen und das Ergebnis als orientierte Flächenbilanz deuten.",
+        "goalNormalizedSha256": "1ec10b91d47fc25bd37be7217b585c7667ca4274e6a223775266c19bba2b0b36"
+      },
+      "decision": "CHANGES_REQUIRED",
+      "reason": "Graph translation follows input/output coordinate changes; integral evaluation and oriented area are not prerequisites.",
+      "narrowerExistingAuthorOptions": [
+        {
+          "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "title": "Funktionsbegriff und Darstellungen verstehen",
+          "fullDescription": "Die lernende Person kann eine reellwertige Funktion als Zuordnung erklären, die jedem zulässigen Eingabewert genau einen Funktionswert zuweist, und Term, Wertetabelle und Graph einer gegebenen Funktion als zusammengehörige Darstellungen verwenden.",
+          "goalNormalizedSha256": "828d6154572163ff56499456608c3eaae0702e20591842ea95882e918b5ef978"
+        },
+        {
+          "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+          "title": "Funktionswerte berechnen",
+          "fullDescription": "Die lernende Person kann zu gegebenen Funktionstermen $f(x)$ Funktionswerte für konkrete x-Werte korrekt berechnen und als die zu diesen Eingaben gehörigen Ausgabewerte deuten.",
+          "goalNormalizedSha256": "e7267c729e6fc7c155365a3742ac13f6cd62043a04b4737846ee0cf34629007e"
+        }
+      ],
+      "replacementDecisionBoundary": "Author options, not an accepted replacement patch; inspect the exact final relations, immediate affected consumers and DAG. Do not automatically add all alternatives or remove all existing requirements."
+    },
+    {
+      "consumer": {
+        "goalId": "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+        "title": "Verschiebungen von Funktionsgraphen beschreiben",
+        "fullDescription": "Die lernende Person kann Verschiebungen von Funktionsgraphen in x- und y-Richtung anhand von Parametern im Funktionsterm beschreiben und grafisch darstellen.",
+        "goalNormalizedSha256": "c770dfd11f767bef3ddce16730f05e448246f54b5867cfcc328473b650ab479d"
+      },
+      "prerequisite": {
+        "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+        "title": "Ableitungen elementarer Funktionen berechnen",
+        "fullDescription": "Die lernende Person kann bei ganzrationalen Funktionen bis Grad 3 sowie einfachen Exponential- und Potenzfunktionen aus dem Aufbau des Funktionsterms die passende Ableitungsregel auswählen und damit die Ableitung schrittweise berechnen.",
+        "goalNormalizedSha256": "20d5b3287a81be5eae6466fa2003b0a03da860260d078af1df07ac3db110ee61"
+      },
+      "decision": "CHANGES_REQUIRED",
+      "reason": "Translation applies also to nondifferentiable graphs and requires no derivative calculation.",
+      "narrowerExistingAuthorOptions": [
+        {
+          "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "title": "Funktionsbegriff und Darstellungen verstehen",
+          "fullDescription": "Die lernende Person kann eine reellwertige Funktion als Zuordnung erklären, die jedem zulässigen Eingabewert genau einen Funktionswert zuweist, und Term, Wertetabelle und Graph einer gegebenen Funktion als zusammengehörige Darstellungen verwenden.",
+          "goalNormalizedSha256": "828d6154572163ff56499456608c3eaae0702e20591842ea95882e918b5ef978"
+        },
+        {
+          "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+          "title": "Funktionswerte berechnen",
+          "fullDescription": "Die lernende Person kann zu gegebenen Funktionstermen $f(x)$ Funktionswerte für konkrete x-Werte korrekt berechnen und als die zu diesen Eingaben gehörigen Ausgabewerte deuten.",
+          "goalNormalizedSha256": "e7267c729e6fc7c155365a3742ac13f6cd62043a04b4737846ee0cf34629007e"
+        }
+      ],
+      "replacementDecisionBoundary": "Author options, not an accepted replacement patch; inspect the exact final relations, immediate affected consumers and DAG. Do not automatically add all alternatives or remove all existing requirements."
+    },
+    {
+      "consumer": {
+        "goalId": "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+        "title": "Streckungen und Stauchungen von Funktionsgraphen beschreiben",
+        "fullDescription": "Die lernende Person kann Streckungen und Stauchungen in x- oder y-Richtung über Faktoren im Funktionsterm beschreiben und die Auswirkungen auf den Graphen darstellen.",
+        "goalNormalizedSha256": "6a6e229549d5fa74c798361706869171655494c9ec2a7f708a529891b30b7046"
+      },
+      "prerequisite": {
+        "goalId": "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+        "title": "Hauptsatz der Differential- und Integralrechnung nutzen",
+        "fullDescription": "Die lernende Person kann den Zusammenhang zwischen Ableitung und Integral beschreiben, mit einer passenden Stammfunktion das bestimmte Integral über $F(b) - F(a)$ berechnen und das Ergebnis als orientierte Flächenbilanz deuten.",
+        "goalNormalizedSha256": "1ec10b91d47fc25bd37be7217b585c7667ca4274e6a223775266c19bba2b0b36"
+      },
+      "decision": "CHANGES_REQUIRED",
+      "reason": "Input/output scaling does not require the fundamental theorem of calculus.",
+      "narrowerExistingAuthorOptions": [
+        {
+          "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "title": "Funktionsbegriff und Darstellungen verstehen",
+          "fullDescription": "Die lernende Person kann eine reellwertige Funktion als Zuordnung erklären, die jedem zulässigen Eingabewert genau einen Funktionswert zuweist, und Term, Wertetabelle und Graph einer gegebenen Funktion als zusammengehörige Darstellungen verwenden.",
+          "goalNormalizedSha256": "828d6154572163ff56499456608c3eaae0702e20591842ea95882e918b5ef978"
+        },
+        {
+          "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+          "title": "Funktionswerte berechnen",
+          "fullDescription": "Die lernende Person kann zu gegebenen Funktionstermen $f(x)$ Funktionswerte für konkrete x-Werte korrekt berechnen und als die zu diesen Eingaben gehörigen Ausgabewerte deuten.",
+          "goalNormalizedSha256": "e7267c729e6fc7c155365a3742ac13f6cd62043a04b4737846ee0cf34629007e"
+        }
+      ],
+      "replacementDecisionBoundary": "Author options, not an accepted replacement patch; inspect the exact final relations, immediate affected consumers and DAG. Do not automatically add all alternatives or remove all existing requirements."
+    },
+    {
+      "consumer": {
+        "goalId": "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+        "title": "Streckungen und Stauchungen von Funktionsgraphen beschreiben",
+        "fullDescription": "Die lernende Person kann Streckungen und Stauchungen in x- oder y-Richtung über Faktoren im Funktionsterm beschreiben und die Auswirkungen auf den Graphen darstellen.",
+        "goalNormalizedSha256": "6a6e229549d5fa74c798361706869171655494c9ec2a7f708a529891b30b7046"
+      },
+      "prerequisite": {
+        "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+        "title": "Ableitungen elementarer Funktionen berechnen",
+        "fullDescription": "Die lernende Person kann bei ganzrationalen Funktionen bis Grad 3 sowie einfachen Exponential- und Potenzfunktionen aus dem Aufbau des Funktionsterms die passende Ableitungsregel auswählen und damit die Ableitung schrittweise berechnen.",
+        "goalNormalizedSha256": "20d5b3287a81be5eae6466fa2003b0a03da860260d078af1df07ac3db110ee61"
+      },
+      "decision": "CHANGES_REQUIRED",
+      "reason": "Graph stretching/compression can be described and drawn without derivatives.",
+      "narrowerExistingAuthorOptions": [
+        {
+          "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "title": "Funktionsbegriff und Darstellungen verstehen",
+          "fullDescription": "Die lernende Person kann eine reellwertige Funktion als Zuordnung erklären, die jedem zulässigen Eingabewert genau einen Funktionswert zuweist, und Term, Wertetabelle und Graph einer gegebenen Funktion als zusammengehörige Darstellungen verwenden.",
+          "goalNormalizedSha256": "828d6154572163ff56499456608c3eaae0702e20591842ea95882e918b5ef978"
+        },
+        {
+          "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+          "title": "Funktionswerte berechnen",
+          "fullDescription": "Die lernende Person kann zu gegebenen Funktionstermen $f(x)$ Funktionswerte für konkrete x-Werte korrekt berechnen und als die zu diesen Eingaben gehörigen Ausgabewerte deuten.",
+          "goalNormalizedSha256": "e7267c729e6fc7c155365a3742ac13f6cd62043a04b4737846ee0cf34629007e"
+        }
+      ],
+      "replacementDecisionBoundary": "Author options, not an accepted replacement patch; inspect the exact final relations, immediate affected consumers and DAG. Do not automatically add all alternatives or remove all existing requirements."
+    },
+    {
+      "consumer": {
+        "goalId": "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+        "title": "Verkettete Exponential- und Logarithmusfunktionen analysieren (LK)",
+        "fullDescription": "Die lernende Person kann eine verkettete Funktion mit Exponential- oder Logarithmusanteil untersuchen und ihr Verhalten argumentativ begründen.",
+        "goalNormalizedSha256": "e733edcb33033447c39e4efd90e63dc64a095ae3f8200bbcaf0c319128975131"
+      },
+      "prerequisite": {
+        "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+        "title": "Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK)",
+        "fullDescription": "Die lernende Person kann für $x>0$ die natürliche Logarithmusfunktion als Stammfunktion von $1/x$ verwenden und diese Beziehung in einfachen Integralrechnungen und Begründungen sicher nutzen.",
+        "goalNormalizedSha256": "332f08e17a6394e3ae25902b17e88d01c70196957eb3c1555ff0f997861b9774"
+      },
+      "decision": "CHANGES_REQUIRED",
+      "reason": "Analyzing exp/ln composition through domain, inverse relationships and term simplification does not require ln as an antiderivative or integration.",
+      "narrowerExistingAuthorOptions": [
+        {
+          "goalId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+          "title": "Logarithmus definieren und einfache Werte bestimmen",
+          "fullDescription": "Die lernende Person kann den Logarithmus für eine positive Basis ungleich 1 und ein positives Argument als Umkehroperation des Potenzierens erläutern und in einfachen Fällen Werte mithilfe der Definition, sonst mit digitalen Werkzeugen bestimmen.",
+          "goalNormalizedSha256": "e5e7c99ed62fdf35f1058cffbad8ab185ca3e617590967042bcc975196d89c42"
+        },
+        {
+          "goalId": "06ce2b1b-e888-5322-9ed9-dfc6d322956a",
+          "title": "Den natürlichen Logarithmus als Umkehrfunktion der e-Funktion erklären (LK)",
+          "fullDescription": "Die lernende Person kann $\\ln(x)$ als Umkehrfunktion von $e^x$ erklären und die gegenseitige Zuordnung der Graphen durch Spiegelung an der Geraden $y=x$ darstellen.",
+          "goalNormalizedSha256": "4b78931a82ea208743741e436000cd6cac4891c06a189bdbf4656723b90e24d7"
+        },
+        {
+          "goalId": "04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8",
+          "title": "Grundlegende Eigenschaften der natürlichen Logarithmusfunktion erläutern (LK)",
+          "fullDescription": "Die lernende Person kann Definitions- und Wertemenge, Nullstelle, Monotonie und Randverhalten der natürlichen Logarithmusfunktion aus ihrer Umkehrbeziehung zur e-Funktion begründen.",
+          "goalNormalizedSha256": "1238617a6f9761b4ea30c5c181d038433e591240b75f98de9a54c4b5d63ea966"
+        }
+      ],
+      "replacementDecisionBoundary": "Author options, not an accepted replacement patch; inspect the exact final relations, immediate affected consumers and DAG. Do not automatically add all alternatives or remove all existing requirements."
+    },
+    {
+      "consumer": {
+        "goalId": "d4f2d4e2-a831-5ee2-b9c6-bb9e79986aeb",
+        "title": "Sachzusammenhänge mit Extremstellen modellieren",
+        "fullDescription": "Die lernende Person kann Sachzusammenhänge mit Extremstellen durch geeignete ganzrationale Funktionen modellieren und die Bedingungen fachlich deuten.",
+        "goalNormalizedSha256": "3ee79ff597fa832b794f1fa090f6facae369b865bf17110ba3709de08dddc976"
+      },
+      "prerequisite": {
+        "goalId": "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941",
+        "title": "Ganzrationale Funktionen aus Eigenschaften rekonstruieren",
+        "fullDescription": "Die lernende Person kann aus vorgegebenen Eigenschaften eines Graphen oder Sachzusammenhangs ein lineares Gleichungssystem für einen ganzrationalen Funktionsterm aufstellen, lösen und die entstehende Funktionsgleichung prüfen.",
+        "goalNormalizedSha256": "d02ce6c954fad7541dd62e084cf3001dce371de1f4d6e3b6f0e51a732bb1b6ee"
+      },
+      "decision": "CHANGES_REQUIRED",
+      "reason": "An extremum model may follow directly from a contextual constraint; reconstructing a polynomial from graph conditions via a linear system is not universally needed.",
+      "narrowerExistingAuthorOptions": [
+        {
+          "goalId": "07196e72-ba47-54bf-a096-3a79bbb67e23",
+          "title": "Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren",
+          "fullDescription": "Die lernende Person kann Beziehungen zwischen Größen als Gleichungen, Funktionen oder Ungleichungen formulieren und die Modellwahl begründen.",
+          "goalNormalizedSha256": "4e83e91903cdbf4ac4e1ad544a37ced9bc3c4e81517245ee7b8b7d268c125f7f"
+        },
+        {
+          "goalId": "350fc8b1-ead0-4239-b28a-217cbd3bd1c3",
+          "title": "Monotonie und Extremstellen mit der ersten Ableitung untersuchen",
+          "fullDescription": "Die lernende Person kann aus der ersten Ableitung Rückschlüsse auf Monotonieverhalten und Extremstellen ziehen und diese Zusammenhänge bei der Untersuchung ganzrationaler Funktionen nutzen.",
+          "goalNormalizedSha256": "e12915ade82882ff5f13329a7bdcf6829935531f886fc358845188ebdc5f58e4"
+        }
+      ],
+      "replacementDecisionBoundary": "Author options, not an accepted replacement patch; inspect the exact final relations, immediate affected consumers and DAG. Do not automatically add all alternatives or remove all existing requirements."
+    },
+    {
+      "consumer": {
+        "goalId": "d4f2d4e2-a831-5ee2-b9c6-bb9e79986aeb",
+        "title": "Sachzusammenhänge mit Extremstellen modellieren",
+        "fullDescription": "Die lernende Person kann Sachzusammenhänge mit Extremstellen durch geeignete ganzrationale Funktionen modellieren und die Bedingungen fachlich deuten.",
+        "goalNormalizedSha256": "3ee79ff597fa832b794f1fa090f6facae369b865bf17110ba3709de08dddc976"
+      },
+      "prerequisite": {
+        "goalId": "b3604df4-15a8-41c8-a8b0-50dadd698bd3",
+        "title": "Krümmung und Wendestellen mit der zweiten Ableitung untersuchen",
+        "fullDescription": "Die lernende Person kann das Krümmungsverhalten von Funktionsgraphen mit Hilfe der zweiten Ableitung untersuchen, Wendestellen bestimmen und die zugehörige Änderungsrate im Kontext deuten.",
+        "goalNormalizedSha256": "a581d786684f12dd705aac3af7b856ee7fc019cd6bf147f7b8d190169018858e"
+      },
+      "decision": "CHANGES_REQUIRED",
+      "reason": "Extremum modeling does not require inflection points and their context-specific rate.",
+      "narrowerExistingAuthorOptions": [
+        {
+          "goalId": "07196e72-ba47-54bf-a096-3a79bbb67e23",
+          "title": "Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren",
+          "fullDescription": "Die lernende Person kann Beziehungen zwischen Größen als Gleichungen, Funktionen oder Ungleichungen formulieren und die Modellwahl begründen.",
+          "goalNormalizedSha256": "4e83e91903cdbf4ac4e1ad544a37ced9bc3c4e81517245ee7b8b7d268c125f7f"
+        },
+        {
+          "goalId": "350fc8b1-ead0-4239-b28a-217cbd3bd1c3",
+          "title": "Monotonie und Extremstellen mit der ersten Ableitung untersuchen",
+          "fullDescription": "Die lernende Person kann aus der ersten Ableitung Rückschlüsse auf Monotonieverhalten und Extremstellen ziehen und diese Zusammenhänge bei der Untersuchung ganzrationaler Funktionen nutzen.",
+          "goalNormalizedSha256": "e12915ade82882ff5f13329a7bdcf6829935531f886fc358845188ebdc5f58e4"
+        }
+      ],
+      "replacementDecisionBoundary": "Author options, not an accepted replacement patch; inspect the exact final relations, immediate affected consumers and DAG. Do not automatically add all alternatives or remove all existing requirements."
+    },
+    {
+      "consumer": {
+        "goalId": "d4f2d4e2-a831-5ee2-b9c6-bb9e79986aeb",
+        "title": "Sachzusammenhänge mit Extremstellen modellieren",
+        "fullDescription": "Die lernende Person kann Sachzusammenhänge mit Extremstellen durch geeignete ganzrationale Funktionen modellieren und die Bedingungen fachlich deuten.",
+        "goalNormalizedSha256": "3ee79ff597fa832b794f1fa090f6facae369b865bf17110ba3709de08dddc976"
+      },
+      "prerequisite": {
+        "goalId": "f042385e-f772-42db-9c96-f21a792ac5ea",
+        "title": "Tangenten- und Normalengleichungen bestimmen",
+        "fullDescription": "Die lernende Person kann mit Hilfe der Ableitung Gleichungen von Tangenten und Normalen an Funktionsgraphen bestimmen und diese in einfachen Kontexten verwenden.",
+        "goalNormalizedSha256": "8b10956b54b5a6f718ad3bf30e5a19e3f66e15c8368e9ef98f8a2262335e681d"
+      },
+      "decision": "CHANGES_REQUIRED",
+      "reason": "Tangent and particularly normal equations are not a general preparation requirement for modeling extrema.",
+      "narrowerExistingAuthorOptions": [
+        {
+          "goalId": "07196e72-ba47-54bf-a096-3a79bbb67e23",
+          "title": "Beziehungen als Gleichungen, Funktionen oder Ungleichungen formulieren",
+          "fullDescription": "Die lernende Person kann Beziehungen zwischen Größen als Gleichungen, Funktionen oder Ungleichungen formulieren und die Modellwahl begründen.",
+          "goalNormalizedSha256": "4e83e91903cdbf4ac4e1ad544a37ced9bc3c4e81517245ee7b8b7d268c125f7f"
+        },
+        {
+          "goalId": "350fc8b1-ead0-4239-b28a-217cbd3bd1c3",
+          "title": "Monotonie und Extremstellen mit der ersten Ableitung untersuchen",
+          "fullDescription": "Die lernende Person kann aus der ersten Ableitung Rückschlüsse auf Monotonieverhalten und Extremstellen ziehen und diese Zusammenhänge bei der Untersuchung ganzrationaler Funktionen nutzen.",
+          "goalNormalizedSha256": "e12915ade82882ff5f13329a7bdcf6829935531f886fc358845188ebdc5f58e4"
+        }
+      ],
+      "replacementDecisionBoundary": "Author options, not an accepted replacement patch; inspect the exact final relations, immediate affected consumers and DAG. Do not automatically add all alternatives or remove all existing requirements."
+    },
+    {
+      "consumer": {
+        "goalId": "baf7276f-60a0-4d96-b959-d63acfb929de",
+        "title": "Schnittpunkte von Geraden mit Ebenen berechnen",
+        "fullDescription": "Die lernende Person kann Schnittpunkte von Geraden mit Ebenen mithilfe von Parametergleichungen und Ebenengleichungen berechnen und die Ergebnisse geometrisch deuten.",
+        "goalNormalizedSha256": "b2596ca6fa4593f1e50bdb9fe2232d7d85a7a18b0507eea00abbb10f64da1ebb"
+      },
+      "prerequisite": {
+        "goalId": "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
+        "title": "Normalenform und Hessesche Normalenform einer Ebene anwenden (LK)",
+        "fullDescription": "Die lernende Person kann die Normalenform einer Ebene, einschließlich Hessescher Normalenform, aufstellen, interpretieren und für Abstandsberechnungen nutzen.",
+        "goalNormalizedSha256": "f4c690cdd383770f31a0eef4a93c25809c2e1389448257a3db2b8de92d7fb45b"
+      },
+      "decision": "CHANGES_REQUIRED",
+      "reason": "Line substitution into a plane equation requires neither unit-normal normalization nor distance calculation.",
+      "narrowerExistingAuthorOptions": [
+        {
+          "goalId": "525b1da9-7fdd-4a70-9f30-ff01d7511b04",
+          "title": "Geraden und Strecken im Raum in Parameterform darstellen und Parameter deuten",
+          "fullDescription": "Die lernende Person kann Geraden und Strecken im Raum aus zwei verschiedenen Punkten parametrisch darstellen, dabei für Geraden den gesamten reellen Parameterbereich und für Strecken einen passenden begrenzten Parameterbereich festlegen sowie Parameterwerte im Kontext deuten.",
+          "goalNormalizedSha256": "f2eb18c1905d8a59bfb60e62d1dc0901de9a3a2d286902fc962fa8ecd7e977d0"
+        },
+        {
+          "goalId": "9cc650e0-100d-5ae1-a83b-2b854ab7c5c8",
+          "title": "Koordinatenform einer Ebene aufstellen und interpretieren",
+          "fullDescription": "Die lernende Person kann die Koordinatenform einer Ebene aufstellen, den Normalenvektor ablesen und die Gleichung interpretieren.",
+          "goalNormalizedSha256": "711936c84773d2414af144485b5dd8d94b948bcf863e1815f657f611846d08a6"
+        },
+        {
+          "goalId": "27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6",
+          "title": "Lineare Gleichungssysteme in der Analytischen Geometrie systematisch lösen",
+          "fullDescription": "Die lernende Person kann lineare Gleichungssysteme, auch über- und unterbestimmte, aus konkreten Problemstellungen der Analytischen Geometrie systematisch aufstellen und lösen.",
+          "goalNormalizedSha256": "67e39f4dc4efdeba173d78ad565c03877b162d52576bda5b2af3fc774b7e31ca"
+        }
+      ],
+      "replacementDecisionBoundary": "Author options, not an accepted replacement patch; inspect the exact final relations, immediate affected consumers and DAG. Do not automatically add all alternatives or remove all existing requirements."
+    }
+  ],
+  "sourceRoleBoundary": {
+    "4c319": {
+      "decision": "CHANGES_REQUIRED",
+      "primaryEvidence": {
+        "HE": "KC2024 printed31(E1-E5 obligatory),34(E6 Newton); not universal obligatory selection",
+        "BW_BP2016": "3.4.1(2), printed39, Leistungsfach; no equivalent basis-course grant from3.5.1"
+      },
+      "requiredNextDecision": "Final explicit course/stage/jurisdiction placements, especially historical BW-SekI entries; no applicability expansion inferred from process or Newton requirements"
+    },
+    "2f8": {
+      "decision": "CHANGES_REQUIRED",
+      "primaryEvidence": {
+        "HE": "KC2024 printed41-43: Q2.3 general level supports parameter lines/segments, coordinate planes, normal vectors and line-plane intersection; normal form separately elevated",
+        "BW_BP2016": "3.4.3 and3.5.3 support coordinate plane and line-plane work in their distinct profiles"
+      },
+      "boundedInference": "The exact finite cuboid edge-intersection task is a plausible transfer of basic methods; this is not source acceptance of full3aea construction contract or arbitrary national scope.",
+      "historicalOnly": "Old atlas restricted3aea target toBW-LK; no current placement claim from that historical count.",
+      "requiredNextDecision": "Repair baf727 Hesse demand and decide exact final5-requirement endpoint source/role placement independently of coverage."
+    },
+    "allNine": "Final Stage policy/projection and selected endpoint readiness not accepted here. Do not transfer source approval from requirement visibility."
+  },
+  "stageCoordination": {
+    "canonicalBase": "2888d646a6730203a56cfb8f41fa3bad1388ba3e303b0c8f04f9df9142066986",
+    "finalStageCandidateNotYetBound": true,
+    "separatePrismaTitleOnlyChangeNotice": "e5494c67 title-only change reported by stage reviewer; outside these9 and not applied by this reviewer; endpoint field hashes remain the bounded acceptance key."
+  },
+  "masteryBoundary": "Preserve all valid existing mastery; no requalification, no additional learner outcome, no coverage-to-mastery writeback. Future graph changes only alter derived unneeded-work demand."
+}

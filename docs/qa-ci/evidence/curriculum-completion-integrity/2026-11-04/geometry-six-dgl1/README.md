@@ -1,0 +1,13 @@
+# Räumliche Geometrie und Differenzialgleichungen: geprüfter Nachlauf
+
+Vier bestehende curriculare Lernziele erhalten ganze Prüfungsformen. Zwei weitere Prüfungsziele schließen genau begrenzte Lücken zu Ebenenabständen und Differenzialgleichungen; die gewöhnlichen Kompetenzen bleiben erhalten. Bestehende Prüfungen zu Verhältnisgleichungen, Exponentialfunktionen und Analysis werden an zusätzlich geprüften Stellen wiederverwendet. Fachlich unzutreffende Voraussetzungen sind korrigiert. Die 807 bisherigen curricularen Lernziel-IDs bleiben erhalten.
+
+Die tatsächliche Backendmessung untersucht wieder alle **161 vollständigen Mathematikangebote einschließlich 46 Kursvereinigungen**. Gegenüber dem vorherigen Geometriestand entfallen 243 ungedeckte Ziel-Angebots-Paare und 215 offene Endpunktpaare. Es entstehen keine neuen Lücken. **21 Angebote bestehen, 140 bleiben unvollständig.** Noch offen sind 240 unterschiedliche Ziele in 2.399 Paaren und 149 gewöhnliche Endpunkte in 1.536 Paaren.
+
+Die unabhängige Astra-Prüfung und die eigene Rekonstruktion stimmen mit allen Zielmengen, Vorbereitungsbeziehungen, geschützten Prüfungen/Lernkarten und M0-Bedarfsberechnungen überein. Alle elf regulären Autorenprüfungen bestehen. Zwei echte Befunde wurden gezielt korrigiert und nur ihre betroffenen Prüfungen wiederholt: ein fehlender partieller Quellenbeleg für ein schleswig-holsteinisches Vergleichsziel sowie ein bislang unvollständiges Ansichts-Inventar im Stage-Test. Die ursprünglichen Fehlversuche bleiben dokumentiert; die bestehenden Assertions gelten auch für die ergänzte Ansicht.
+
+**733 geprüfte Dateien sind übernommen. Alle 11.118 Eingaben der tatsächlichen Backendmessung bleiben dabei bytegleich.** Die spät ergänzten unabhängigen Quellen- und Qualitätsbelege liegen außerhalb dieser Eingabemenge. Historische JSON-Snapshots tragen eine eigene Dateiendung, damit der produktive Loader sie nicht als neue Landschaft oder Zuordnung lädt. Die ursprünglichen Fehlmessungen und eingefrorenen Quellstände bleiben als Verlauf erhalten.
+
+[Import und genaue Bytes](root-import.json), [finales Manifest](reviewed-final-manifest.json), [unabhängiges Review](independent-review-handoff.json), [tatsächlicher Backendvergleich](finite-native-delta.json), [elf reguläre Prüfungen mit ihren Versuchen](normal-eleven.json), [abschließender Handoff](final-handoff.json).
+
+Die [GitHub-Jobs des vorherigen Commits](prior-head-ci-jobs.json) bestätigen vollständige Backend- und Frontend-CI. Sie gelten nicht als GitHub-Nachweis für diesen neuen Datenstand. Dieser Zwischenstand ist keine vollständige Mathematik-, M7-, CI- oder Deploymentfreigabe. Produktionsdaten wurden nicht verändert.

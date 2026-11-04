@@ -1,0 +1,3403 @@
+{
+  "assessment": {
+    "id": "1878f680-095c-511d-aaed-e98393f7fde9",
+    "title": "Pyramidenvolumen und Volumenänderung bei Streckung untersuchen",
+    "titleEn": "Investigate pyramid volume and volume changes under scaling",
+    "description": "Die lernende Person kann in einer Q2-Klausuraufgabe aus gegebenen Raumkoordinaten Rechtwinkligkeit, Grundfläche und Pyramidenvolumen bestimmen, den Faktor 1/3 gegenüber einem Prisma gleicher Grundfläche und Höhe deuten und die Volumenänderung bei einer Streckung begründen.",
+    "descriptionEn": "The learner can use given three-dimensional coordinates in a Q2 exam task to establish perpendicularity, calculate the base area and pyramid volume, interpret the factor 1/3 in comparison with a prism of the same base area and height, and explain how scaling changes the volume.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024",
+      "demandLevel": "AB3",
+      "processCompetencies": [
+        "K1",
+        "K2",
+        "K3",
+        "K4",
+        "K5"
+      ],
+      "guidingIdeas": [
+        "L1",
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "phase": "Q2"
+    },
+    "requires": [
+      "288633c1-f61c-5b48-af7e-a80357f96cad",
+      "9460c3ff-e72d-4107-bc73-087d217200aa",
+      "5f548596-9bc3-532e-88a0-81d5029809e9",
+      "5390691d-1b7c-5572-9589-a69c2bba9a27"
+    ],
+    "contains": [],
+    "examples": [],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "coveredGoalIds": [
+        "288633c1-f61c-5b48-af7e-a80357f96cad",
+        "9460c3ff-e72d-4107-bc73-087d217200aa",
+        "5f548596-9bc3-532e-88a0-81d5029809e9",
+        "5390691d-1b7c-5572-9589-a69c2bba9a27"
+      ],
+      "coveredStrands": [
+        "L1",
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "taskContent": "Gegeben sind die Punkte\n$$\nA(0\\mid0\\mid0),\\ B(6\\mid0\\mid0),\\ C(0\\mid4\\mid0),\\ D(0\\mid0\\mid3).\n$$\nSie bilden die Eckpunkte einer Pyramide mit Grunddreieck $ABC$ und Spitze $D$.\n\n1. Zeigen Sie, dass das Dreieck $ABC$ rechtwinklig ist.\n2. Berechnen Sie den Flächeninhalt des Grunddreiecks $ABC$.\n3. Bestimmen Sie das Volumen der Pyramide $ABCD$ und deuten Sie den Faktor $1/3$ im Vergleich zu einem Prisma mit derselben Grundfläche und Höhe.\n4. Die Koordinaten aller Punkte werden mit dem Faktor $1.5$ multipliziert. Bestimmen Sie das neue Volumen und erläutern Sie, warum sich das Volumen gerade so ändert.",
+      "solutionContent": "1. Es gilt\n$$\n\\overrightarrow{AB} = \\begin{pmatrix}6\\\\0\\\\0\\end{pmatrix},\\qquad \\overrightarrow{AC}=\\begin{pmatrix}0\\\\4\\\\0\\end{pmatrix}.\n$$\nDas Skalarprodukt ist\n$$\n\\overrightarrow{AB}\\cdot\\overrightarrow{AC}=6\\cdot 0+0\\cdot 4+0\\cdot 0=0.\n$$\nAlso stehen $\\overrightarrow{AB}$ und $\\overrightarrow{AC}$ senkrecht aufeinander; das Dreieck $ABC$ ist rechtwinklig bei $A$.\n\n2. Der Flächeninhalt des rechtwinkligen Dreiecks ist\n$$\nA_{ABC}=\\frac12\\cdot 6\\cdot 4 = 12.\n$$\n\n3. Die Höhe der Pyramide ist die Entfernung des Punktes $D$ von der Ebene $z=0$, also $h=3$.\nDamit ergibt sich\n$$\nV = \\frac13\\cdot A_{ABC}\\cdot h = \\frac13\\cdot 12\\cdot 3 = 12.\n$$\nDas Volumen beträgt $12\\,\\text{LE}^3$.\nDer Faktor $1/3$ bedeutet: Im Vergleich zu einem Prisma mit derselben Grundfläche und Höhe ist das Pyramidenvolumen ein Drittel; hier hätte das Prisma $G\\cdot h=36\\,\\text{LE}^3$.\n\n4. Bei einer Streckung aller Längen mit dem Faktor $1.5$ werden Flächen mit dem Faktor $1.5^2=2.25$ und Volumina mit dem Faktor $1.5^3=3.375$ multipliziert. Also gilt\n$$\nV_{\\text{neu}} = 12\\cdot 1.5^3 = 12\\cdot 3.375 = 40.5.\n$$\nDas neue Volumen beträgt $40.5\\,\\text{LE}^3$.",
+      "scoring": {
+        "maxPoints": 20,
+        "passingPoints": 10,
+        "steps": [
+          {
+            "id": "q2_geo_1",
+            "points": 4,
+            "description": "Rechtwinkligkeit des Grunddreiecks korrekt nachgewiesen"
+          },
+          {
+            "id": "q2_geo_2",
+            "points": 4,
+            "description": "Flächeninhalt des Grunddreiecks korrekt berechnet"
+          },
+          {
+            "id": "q2_geo_3",
+            "points": 6,
+            "description": "Volumen der Pyramide korrekt bestimmt und Drittelfaktor im Vergleich zum Prisma gedeutet"
+          },
+          {
+            "id": "q2_geo_4",
+            "points": 6,
+            "description": "Volumenänderung unter Streckung korrekt berechnet und begründet"
+          }
+        ]
+      }
+    },
+    "phase": "Q2",
+    "type": "atomic"
+  },
+  "normalizedPreparation": {
+    "075f1ef2-6860-4b20-9df2-878157eb395e": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "f242a3e8-55a3-492e-8354-b81b24cdbb78"
+      ]
+    },
+    "1878f680-095c-511d-aaed-e98393f7fde9": {
+      "assessment": true,
+      "memory": false,
+      "requires": [
+        "288633c1-f61c-5b48-af7e-a80357f96cad",
+        "5390691d-1b7c-5572-9589-a69c2bba9a27",
+        "5f548596-9bc3-532e-88a0-81d5029809e9",
+        "9460c3ff-e72d-4107-bc73-087d217200aa"
+      ]
+    },
+    "19f170e4-b88f-4c06-b72a-ce6923748bb4": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "25593605-5e13-55cc-9a05-8f3d737e15e9",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ]
+    },
+    "1e77bb2f-0cd6-5961-b0fb-230317c73fce": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+        "d8e56cfc-a58d-5529-ab9f-e5187e31dd34"
+      ]
+    },
+    "24174bba-a654-5f81-8de3-ca5bd09d9b6f": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "9cc650e0-100d-5ae1-a83b-2b854ab7c5c8",
+        "effe43eb-cabe-56cb-a228-35887d7915c1"
+      ]
+    },
+    "25593605-5e13-55cc-9a05-8f3d737e15e9": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ]
+    },
+    "288633c1-f61c-5b48-af7e-a80357f96cad": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "1e77bb2f-0cd6-5961-b0fb-230317c73fce"
+      ]
+    },
+    "36e0de23-1e3b-5c69-888f-e5e19e79cbbe": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "66a96282-340d-5220-91a6-cc97e2ec2220",
+        "fac75b4a-4ec2-5d38-bbce-9b002c8a4904"
+      ]
+    },
+    "4af3dfb9-7e15-5da5-8b86-0aac6c80e266": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ]
+    },
+    "50eb5156-5046-5887-80dc-3128c5f8cbd6": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "69eda7f9-1898-5220-932d-e7bec839b7af",
+        "9460c3ff-e72d-4107-bc73-087d217200aa",
+        "d379e28b-d9d5-5cab-b383-318e0499c0c7"
+      ]
+    },
+    "5390691d-1b7c-5572-9589-a69c2bba9a27": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "4af3dfb9-7e15-5da5-8b86-0aac6c80e266"
+      ]
+    },
+    "57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "ec6447d1-97da-5b77-94ae-4973b43f094e",
+        "effe43eb-cabe-56cb-a228-35887d7915c1"
+      ]
+    },
+    "5f548596-9bc3-532e-88a0-81d5029809e9": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "50eb5156-5046-5887-80dc-3128c5f8cbd6",
+        "636b3e2d-c687-5469-8850-e085df06878d",
+        "b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2",
+        "eb070ed2-7ef4-5afe-b203-190ebb0116af"
+      ]
+    },
+    "636b3e2d-c687-5469-8850-e085df06878d": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "50eb5156-5046-5887-80dc-3128c5f8cbd6",
+        "b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2",
+        "eb070ed2-7ef4-5afe-b203-190ebb0116af"
+      ]
+    },
+    "65365dce-f33f-49d8-9516-42f75883aa86": {
+      "assessment": false,
+      "memory": false,
+      "requires": []
+    },
+    "66a96282-340d-5220-91a6-cc97e2ec2220": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "ec6447d1-97da-5b77-94ae-4973b43f094e"
+      ]
+    },
+    "68d4faef-1a56-5898-9c31-80b7d5d2e430": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "7680701b-35e3-519e-beaa-09753e733756",
+        "aae119f2-925f-5fc1-b795-b52c9e980863",
+        "d81d888c-6ffa-5751-8a4b-ce2ff3085071",
+        "fb7a4fa0-03b5-53b4-bd86-608480b748a1"
+      ]
+    },
+    "69eda7f9-1898-5220-932d-e7bec839b7af": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+      ]
+    },
+    "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2": {
+      "assessment": false,
+      "memory": false,
+      "requires": []
+    },
+    "7680701b-35e3-519e-beaa-09753e733756": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "075f1ef2-6860-4b20-9df2-878157eb395e",
+        "aae119f2-925f-5fc1-b795-b52c9e980863"
+      ]
+    },
+    "79c4cd21-af64-5925-968e-9bc1f74cd0ad": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
+        "8cb5c712-9c58-5910-8c63-8c3736369b80"
+      ]
+    },
+    "8cb5c712-9c58-5910-8c63-8c3736369b80": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "ec6447d1-97da-5b77-94ae-4973b43f094e",
+        "fac75b4a-4ec2-5d38-bbce-9b002c8a4904"
+      ]
+    },
+    "9460c3ff-e72d-4107-bc73-087d217200aa": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+      ]
+    },
+    "9cc650e0-100d-5ae1-a83b-2b854ab7c5c8": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "66a96282-340d-5220-91a6-cc97e2ec2220"
+      ]
+    },
+    "aae119f2-925f-5fc1-b795-b52c9e980863": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "075f1ef2-6860-4b20-9df2-878157eb395e"
+      ]
+    },
+    "b04bd2d6-21d4-5ac5-9a77-b5f950a41c24": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+        "5390691d-1b7c-5572-9589-a69c2bba9a27"
+      ]
+    },
+    "b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "69eda7f9-1898-5220-932d-e7bec839b7af",
+        "9460c3ff-e72d-4107-bc73-087d217200aa",
+        "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+        "eb070ed2-7ef4-5afe-b203-190ebb0116af"
+      ]
+    },
+    "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "075f1ef2-6860-4b20-9df2-878157eb395e",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ]
+    },
+    "d379e28b-d9d5-5cab-b383-318e0499c0c7": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "7680701b-35e3-519e-beaa-09753e733756",
+        "aae119f2-925f-5fc1-b795-b52c9e980863",
+        "d81d888c-6ffa-5751-8a4b-ce2ff3085071"
+      ]
+    },
+    "d6b74b15-1cbc-512b-a160-0f40aecafe8c": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+        "b04bd2d6-21d4-5ac5-9a77-b5f950a41c24"
+      ]
+    },
+    "d785943c-d61b-51a1-a9c2-c36a9e0cc97d": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+      ]
+    },
+    "d81d888c-6ffa-5751-8a4b-ce2ff3085071": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "075f1ef2-6860-4b20-9df2-878157eb395e",
+        "7680701b-35e3-519e-beaa-09753e733756"
+      ]
+    },
+    "d8e56cfc-a58d-5529-ab9f-e5187e31dd34": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "5390691d-1b7c-5572-9589-a69c2bba9a27",
+        "b04bd2d6-21d4-5ac5-9a77-b5f950a41c24",
+        "d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+        "f613634b-39fb-5021-9970-790ef34c9932"
+      ]
+    },
+    "eb070ed2-7ef4-5afe-b203-190ebb0116af": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "50eb5156-5046-5887-80dc-3128c5f8cbd6",
+        "69eda7f9-1898-5220-932d-e7bec839b7af",
+        "9460c3ff-e72d-4107-bc73-087d217200aa",
+        "d379e28b-d9d5-5cab-b383-318e0499c0c7"
+      ]
+    },
+    "ec6447d1-97da-5b77-94ae-4973b43f094e": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "9460c3ff-e72d-4107-bc73-087d217200aa"
+      ]
+    },
+    "effe43eb-cabe-56cb-a228-35887d7915c1": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+      ]
+    },
+    "f242a3e8-55a3-492e-8354-b81b24cdbb78": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "25593605-5e13-55cc-9a05-8f3d737e15e9",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ]
+    },
+    "f613634b-39fb-5021-9970-790ef34c9932": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "d785943c-d61b-51a1-a9c2-c36a9e0cc97d",
+        "effe43eb-cabe-56cb-a228-35887d7915c1"
+      ]
+    },
+    "fac75b4a-4ec2-5d38-bbce-9b002c8a4904": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "24174bba-a654-5f81-8de3-ca5bd09d9b6f",
+        "57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5"
+      ]
+    },
+    "fb7a4fa0-03b5-53b4-bd86-608480b748a1": {
+      "assessment": false,
+      "memory": false,
+      "requires": [
+        "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+      ]
+    }
+  },
+  "wholePrerequisiteGoals": [
+    {
+      "id": "075f1ef2-6860-4b20-9df2-878157eb395e",
+      "title": "Punkte und Vektoren im Raum koordinatisieren",
+      "titleEn": "Coordinate points and vectors in space",
+      "description": "Die lernende Person kann Punkte und Vektoren im dreidimensionalen Koordinatensystem eintragen, ablesen und als Orts- bzw. Richtungsvektoren deuten.",
+      "descriptionEn": "The learner can plot and read points and vectors in a three-dimensional coordinate system and interpret them as position or direction vectors.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+        "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.2",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.SPACE.POINTS_AND_VECTORS.BASICS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "075f1ef2-6860-4b20-9df2-878157eb395e",
+          "title": "Visualisierung: Punkte und Vektoren im Raum koordinatisieren",
+          "url": "/assets/goal-visualizations/mathematik/075f1ef2-6860-4b20-9df2-878157eb395e/075f1ef2-6860-4b20-9df2-878157eb395e.png",
+          "provider": "ChatGPT image generation (user-provided via Astra)",
+          "description": "Visualisierung zum Lernziel: Punkte und Vektoren im Raum koordinatisieren.",
+          "altText": "Illustration zum Lernziel: Punkte und Vektoren im Raum koordinatisieren",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+      "shortKey": "canonical_math_sek1_j9_spatial_vector_tuples_interpret",
+      "title": "Vektoren im räumlichen Koordinatensystem als Tupel angeben und deuten",
+      "titleEn": "Express and interpret vectors in the spatial coordinate system as tuples",
+      "description": "Die lernende Person kann Vektoren im räumlichen Koordinatensystem als Tupel darstellen, Koordinateneinträge fachsprachlich deuten und die Bedeutung einfacher Richtungsangaben im Kontext erklären.",
+      "descriptionEn": "The learner can represent vectors in the spatial coordinate system as tuples, interpret coordinate entries using correct terminology, and explain the meaning of simple directional information in context.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L3"
+        ],
+        "phase": "J9",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.8E"
+      },
+      "contains": [],
+      "requires": [
+        "25593605-5e13-55cc-9a05-8f3d737e15e9",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "title": "Visualisierung: Vektoren im räumlichen Koordinatensystem als Tupel angeben und deuten",
+          "url": "/assets/goal-visualizations/mathematik/19f170e4-b88f-4c06-b72a-ce6923748bb4/19f170e4-b88f-4c06-b72a-ce6923748bb4.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Vektoren im räumlichen Koordinatensystem als Tupel angeben und deuten.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Vektoren im räumlichen Koordinatensystem als Tupel angeben und deuten\". Die lernende Person kann Vektoren im räumlichen Koordinatensystem als Tupel darstellen, Koordinateneinträge fachsprachlich deuten und die Bedeutung einfacher Richtungsangaben im Kontext erklären.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "1e77bb2f-0cd6-5961-b0fb-230317c73fce",
+      "title": "Volumen von Prismen aus Grundfläche und Höhe bestimmen",
+      "titleEn": "Determine prism volumes from base area and height",
+      "description": "Die lernende Person kann den Zusammenhang V = G · h geometrisch erklären und nutzen, um Volumina von Prismen aus Skizzen oder Koordinaten zu bestimmen und Einheiten korrekt anzugeben.",
+      "descriptionEn": "The learner can explain the geometric relationship V = G · h and use it to determine prism volumes from sketches or coordinates and state units correctly.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "d8e56cfc-a58d-5529-ab9f-e5187e31dd34",
+        "79c4cd21-af64-5925-968e-9bc1f74cd0ad"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "1e77bb2f-0cd6-5961-b0fb-230317c73fce",
+          "title": "Visualisierung: Volumen von Prismen aus Grundfläche und Höhe bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/1e77bb2f-0cd6-5961-b0fb-230317c73fce/1e77bb2f-0cd6-5961-b0fb-230317c73fce.png",
+          "provider": "OpenAI/ChatGPT-Codex image generation",
+          "description": "Comic zum Prismenvolumen aus gleicher Grundfläche und senkrechter Höhe.",
+          "altText": "Ein Quaderprisma hat die orange Grundfläche G = 20 cm² mit Seiten 5 cm und 4 cm sowie die senkrechte Höhe h = 7 cm. Gleiche Querschnitte verdeutlichen V = G · h = 140 cm³.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "24174bba-a654-5f81-8de3-ca5bd09d9b6f",
+      "title": "Lagebeziehung zwischen Gerade und Ebene untersuchen",
+      "titleEn": "Investigate the positional relationship between a line and a plane",
+      "description": "Die lernende Person kann die Lagebeziehung zwischen einer Geraden und einer Ebene mithilfe vektorieller und koordinatenmäßiger Darstellungen begründet klassifizieren.",
+      "descriptionEn": "The learner can classify the positional relationship between a line and a plane using vector and coordinate representations with justification.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "effe43eb-cabe-56cb-a228-35887d7915c1",
+        "9cc650e0-100d-5ae1-a83b-2b854ab7c5c8"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 7",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "24174bba-a654-5f81-8de3-ca5bd09d9b6f",
+          "title": "Visualisierung: Lagebeziehung zwischen Gerade und Ebene untersuchen",
+          "url": "/assets/goal-visualizations/mathematik/24174bba-a654-5f81-8de3-ca5bd09d9b6f/24174bba-a654-5f81-8de3-ca5bd09d9b6f.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Lagebeziehung zwischen Gerade und Ebene untersuchen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Lagebeziehung zwischen Gerade und Ebene untersuchen\". Die lernende Person kann die Lagebeziehung zwischen einer Geraden und einer Ebene mithilfe vektorieller und koordinatenmäßiger Darstellungen begründet klassifizieren.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "25593605-5e13-55cc-9a05-8f3d737e15e9",
+      "shortKey": "canonical_math_draw_basic_objects_in_coordinate_system",
+      "title": "Punktlagen und daraus bestimmte lineare Objekte im Koordinatensystem darstellen",
+      "titleEn": "Represent point locations and the linear objects they determine in the coordinate plane",
+      "description": "Die lernende Person kann in einem passend skalierten kartesischen Koordinatensystem Punktlagen aus Koordinaten darstellen und daraus vorgegebene Strecken oder Geraden erzeugen, wobei sie die begrenzte beziehungsweise unbegrenzte Ausdehnung begründet.",
+      "descriptionEn": "The learner can plot points from coordinates in an appropriately scaled Cartesian coordinate plane and use them to construct specified line segments or lines, explaining their finite or infinite extent.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2"
+        ],
+        "phase": "J5",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J5.2A"
+      },
+      "contains": [],
+      "requires": [
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "25593605-5e13-55cc-9a05-8f3d737e15e9",
+          "title": "Visualisierung: Punktlagen und daraus bestimmte lineare Objekte im Koordinatensystem darstellen",
+          "url": "/assets/goal-visualizations/mathematik/25593605-5e13-55cc-9a05-8f3d737e15e9/25593605-5e13-55cc-9a05-8f3d737e15e9.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Punktlagen und daraus bestimmte lineare Objekte im Koordinatensystem darstellen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Punktlagen und daraus bestimmte lineare Objekte im Koordinatensystem darstellen\". Die lernende Person kann in einem passend skalierten kartesischen Koordinatensystem Punktlagen aus Koordinaten darstellen und daraus vorgegebene Strecken oder Geraden erzeugen, wobei sie die begrenzte beziehungsweise unbegrenzte Ausdehnung begründet.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "288633c1-f61c-5b48-af7e-a80357f96cad",
+      "title": "Volumen von Pyramiden aus Grundfläche und Höhe bestimmen",
+      "titleEn": "Determine pyramid volumes from base area and height",
+      "description": "Die lernende Person kann den Faktor 1/3 als Verhältnis zum entsprechenden Prisma deuten und den Zusammenhang V = (G · h)/3 nutzen, um Volumina von Pyramiden aus Skizzen oder Koordinaten zu bestimmen.",
+      "descriptionEn": "The learner can interpret the factor 1/3 as the volume ratio to the corresponding prism and use V = (G · h)/3 to determine pyramid volumes from sketches or coordinates.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "1e77bb2f-0cd6-5961-b0fb-230317c73fce"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "288633c1-f61c-5b48-af7e-a80357f96cad",
+          "title": "Visualisierung: Volumen von Pyramiden aus Grundfläche und Höhe bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/288633c1-f61c-5b48-af7e-a80357f96cad/288633c1-f61c-5b48-af7e-a80357f96cad.png",
+          "provider": "OpenAI/ChatGPT-Codex image generation",
+          "description": "Comicvergleich einer quadratischen Pyramide mit einem entsprechenden Prisma.",
+          "altText": "Quadratische Pyramide und Prisma besitzen dieselbe Grundfläche 6 cm mal 6 cm und die senkrechte Höhe 9 cm. G = 36 cm²; das Prisma hat 324 cm³, die Pyramide 108 cm³ und damit ein Drittel des Volumens.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
+      "title": "Normalenform und Hessesche Normalenform einer Ebene anwenden (LK)",
+      "titleEn": "Apply normal form and Hesse normal form of a plane (advanced course)",
+      "description": "Die lernende Person kann die Normalenform einer Ebene, einschließlich Hessescher Normalenform, aufstellen, interpretieren und für Abstandsberechnungen nutzen.",
+      "descriptionEn": "The learner can set up, interpret, and use the normal form of a plane, including Hesse normal form, for distance calculations.",
+      "weight": 1,
+      "tags": [
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "66a96282-340d-5220-91a6-cc97e2ec2220",
+        "fac75b4a-4ec2-5d38-bbce-9b002c8a4904"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 43, Spiegelstrich 12",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
+          "title": "Visualisierung: Normalenform und Hessesche Normalenform einer Ebene anwenden (LK)",
+          "url": "/assets/goal-visualizations/mathematik/36e0de23-1e3b-5c69-888f-e5e19e79cbbe/36e0de23-1e3b-5c69-888f-e5e19e79cbbe.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Normalenform und Hessesche Normalenform einer Ebene anwenden (LK).",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Normalenform und Hessesche Normalenform einer Ebene anwenden (LK)\". Die lernende Person kann die Normalenform einer Ebene, einschließlich Hessescher Normalenform, aufstellen, interpretieren und für Abstandsberechnungen nutzen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+      "shortKey": "canonical_math_q2_describe_simple_plane_figures",
+      "title": "Einfache geometrische Figuren beschreiben",
+      "titleEn": "Describe simple plane figures",
+      "description": "Die lernende Person kann einfache geometrische Figuren, insbesondere gleichschenklige, gleichseitige und rechtwinklige Dreiecke sowie Quadrat, Rechteck, Raute, Parallelogramm, Trapez und Drachenviereck, fachsprachlich beschreiben.",
+      "descriptionEn": "The learner can describe simple plane figures, especially isosceles, equilateral, and right triangles as well as squares, rectangles, rhombi, parallelograms, trapezia, and kites, using correct terminology.",
+      "requires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.2.DESCRIBE_SIMPLE_PLANE_FIGURES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 4",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+          "title": "Visualisierung: Einfache geometrische Figuren beschreiben",
+          "url": "/assets/goal-visualizations/mathematik/4af3dfb9-7e15-5da5-8b86-0aac6c80e266/4af3dfb9-7e15-5da5-8b86-0aac6c80e266.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Einfache geometrische Figuren beschreiben.",
+          "altText": "Übersicht besonderer Dreiecke und Vierecke. Gleiche Seiten und parallele Seitenfamilien sind konsistent markiert; Raute und Drachenviereck erhalten keine falschen Gleichheitsbehauptungen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "50eb5156-5046-5887-80dc-3128c5f8cbd6",
+      "shortKey": "canonical_math_q2_analyze_properties_of_simple_solid_bodies_lengths_angles",
+      "title": "Längen- und Winkelbeziehungen einfacher Körper untersuchen",
+      "titleEn": "Analyze length and angle relations in simple solids",
+      "description": "Die lernende Person kann an Würfeln, Quadern, geraden und schiefen Prismen sowie geraden und schiefen Pyramiden Längen- und Winkelbeziehungen aus geometrischen Eigenschaften und geeigneten Vektordarstellungen bestimmen, begründen und deuten.",
+      "descriptionEn": "The learner can determine, justify, and interpret length and angle relationships in cubes, cuboids, right and oblique prisms, and right and oblique pyramids using geometric properties and suitable vector representations.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.2.ANALYZE_SIMPLE_SOLID_BODY_PROPERTIES.LENGTHS_ANGLES"
+      },
+      "contains": [],
+      "requires": [
+        "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+        "69eda7f9-1898-5220-932d-e7bec839b7af",
+        "9460c3ff-e72d-4107-bc73-087d217200aa"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 4",
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "50eb5156-5046-5887-80dc-3128c5f8cbd6",
+          "title": "Visualisierung: Längen- und Winkelbeziehungen einfacher Körper untersuchen",
+          "url": "/assets/goal-visualizations/mathematik/50eb5156-5046-5887-80dc-3128c5f8cbd6/50eb5156-5046-5887-80dc-3128c5f8cbd6.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Längen- und Winkelbeziehungen einfacher Körper untersuchen.",
+          "altText": "Die lernende Person kann an Würfeln, Quadern, geraden und schiefen Prismen sowie geraden und schiefen Pyramiden Längen- und Winkelbeziehungen aus geometrischen Eigenschaften und geeigneten Vektordarstellungen bestimmen, begründen und deuten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "5390691d-1b7c-5572-9589-a69c2bba9a27",
+      "shortKey": "canonical_math_q2_analyze_plane_figures_area_congruence_similarity_area_properties",
+      "title": "Eigenschaften ebener Figuren für Flächenberechnungen nutzen",
+      "titleEn": "Use plane-figure properties for area calculations",
+      "description": "Die lernende Person kann Eigenschaften einfacher ebener Figuren untersuchen und für geeignete Flächenberechnungen nutzen.",
+      "descriptionEn": "The learner can analyze properties of simple plane figures and use them for suitable area calculations.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY.AREA_PROPERTIES"
+      },
+      "contains": [],
+      "requires": [
+        "4af3dfb9-7e15-5da5-8b86-0aac6c80e266"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 4",
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "5390691d-1b7c-5572-9589-a69c2bba9a27",
+          "title": "Visualisierung: Eigenschaften ebener Figuren für Flächenberechnungen nutzen",
+          "url": "/assets/goal-visualizations/mathematik/5390691d-1b7c-5572-9589-a69c2bba9a27/5390691d-1b7c-5572-9589-a69c2bba9a27.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Eigenschaften ebener Figuren für Flächenberechnungen nutzen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Eigenschaften ebener Figuren für Flächenberechnungen nutzen\". Die lernende Person kann Eigenschaften einfacher ebener Figuren untersuchen und für geeignete Flächenberechnungen nutzen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5",
+      "title": "Schnittwinkel über Richtungs- und Normalenvektoren bestimmen",
+      "titleEn": "Determine angles of intersection using direction and normal vectors",
+      "description": "Die lernende Person kann den nichtstumpfen Schnittwinkel α zwischen einer Geraden mit Richtungsvektor u und einer Ebene mit Normalenvektor n orientierungsunabhängig über sin α = |u · n|/(‖u‖ · ‖n‖) bestimmen, als Ergänzungswinkel zum nichtstumpfen Winkel zwischen Geraden- und Normalenrichtung deuten und geometrisch prüfen.",
+      "descriptionEn": "The learner can determine the non-obtuse angle α between a line with direction vector u and a plane with normal vector n independently of vector orientation using sin α = |u · n|/(‖u‖ · ‖n‖), interpret it as the complement of the non-obtuse angle between the line and normal directions, and check it geometrically.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "effe43eb-cabe-56cb-a228-35887d7915c1",
+        "ec6447d1-97da-5b77-94ae-4973b43f094e"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 8",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5",
+          "title": "Visualisierung: Schnittwinkel über Richtungs- und Normalenvektoren bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5/57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Schnittwinkel über Richtungs- und Normalenvektoren bestimmen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Schnittwinkel über Richtungs- und Normalenvektoren bestimmen\". Die lernende Person kann den nichtstumpfen Schnittwinkel α zwischen einer Geraden mit Richtungsvektor u und einer Ebene mit Normalenvektor n orientierungsunabhängig über sin α = |u · n|/(‖u‖ · ‖n‖) bestimmen, als Ergänzungswinkel zum nichtstumpfen Winkel zwischen Geraden- und Normalenrichtung deuten und geometrisch prüfen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "5f548596-9bc3-532e-88a0-81d5029809e9",
+      "shortKey": "canonical_math_q2_justify_body_properties_and_compute_volume_surface_volume",
+      "title": "Volumeninhalte von Körpern berechnen",
+      "titleEn": "Calculate volumes of solids",
+      "description": "Die lernende Person kann Eigenschaften einfacher Körper nutzen, um Volumeninhalte in passenden Situationen zu berechnen.",
+      "descriptionEn": "The learner can use properties of simple solids to calculate volumes in suitable situations.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K1.3",
+          "K2.3",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.2.JUSTIFY_BODY_PROPERTIES_VOLUME_SURFACE.VOLUME"
+      },
+      "contains": [],
+      "requires": [
+        "636b3e2d-c687-5469-8850-e085df06878d",
+        "50eb5156-5046-5887-80dc-3128c5f8cbd6",
+        "eb070ed2-7ef4-5afe-b203-190ebb0116af",
+        "b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 4",
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "5f548596-9bc3-532e-88a0-81d5029809e9",
+          "title": "Visualisierung: Volumeninhalte von Körpern berechnen",
+          "url": "/assets/goal-visualizations/mathematik/5f548596-9bc3-532e-88a0-81d5029809e9/5f548596-9bc3-532e-88a0-81d5029809e9.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Volumeninhalte von Körpern berechnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Volumeninhalte von Körpern berechnen\". Die lernende Person kann Eigenschaften einfacher Körper nutzen, um Volumeninhalte in passenden Situationen zu berechnen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "636b3e2d-c687-5469-8850-e085df06878d",
+      "shortKey": "canonical_math_q2_justify_body_properties_and_compute_volume_surface_justify_properties",
+      "title": "Körpereigenschaften fachlich begründen",
+      "titleEn": "Justify properties of solids",
+      "description": "Die lernende Person kann Eigenschaften einfacher Körper fachlich begründen und die verwendeten geometrischen Argumente nachvollziehbar darstellen.",
+      "descriptionEn": "The learner can justify properties of simple solids and present the geometric arguments used.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K1.3",
+          "K2.3",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.2.JUSTIFY_BODY_PROPERTIES_VOLUME_SURFACE.JUSTIFY_PROPERTIES"
+      },
+      "contains": [],
+      "requires": [
+        "50eb5156-5046-5887-80dc-3128c5f8cbd6",
+        "eb070ed2-7ef4-5afe-b203-190ebb0116af",
+        "b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 4",
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "636b3e2d-c687-5469-8850-e085df06878d",
+          "title": "Visualisierung: Körpereigenschaften fachlich begründen",
+          "url": "/assets/goal-visualizations/mathematik/636b3e2d-c687-5469-8850-e085df06878d/636b3e2d-c687-5469-8850-e085df06878d.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Körpereigenschaften fachlich begründen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Körpereigenschaften fachlich begründen\". Die lernende Person kann Eigenschaften einfacher Körper fachlich begründen und die verwendeten geometrischen Argumente nachvollziehbar darstellen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "65365dce-f33f-49d8-9516-42f75883aa86",
+      "semanticKind": "orientation",
+      "title": "Warum Mathematik? – Entdecken, Muster & Alltag",
+      "titleEn": "Why Mathematics? – Discovery, Patterns & Everyday Life",
+      "description": "Der Sek-I-Einstieg: Wie Mathematik beim Messen, Vergleichen, Bauen, Planen und in Spielen hilft, wie Muster, Daten und Formen im Alltag auftauchen und warum mathematisches Denken beim Begründen und Problemlösen unterstützt. Überblick über Zahlen, Größen, Geometrie, Daten und erste funktionale Zusammenhänge. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+      "descriptionEn": "The lower-secondary entry point: how mathematics helps with measuring, comparing, building, planning and games, how patterns, data and shapes appear in everyday life, and why mathematical thinking supports reasoning and problem solving. Overview of numbers, quantities, geometry, data and first functional relationships.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Motivation",
+        "Orientation",
+        "canonical",
+        "phase:SekI"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "Canonical lower-secondary orientation anchor for Gymnasium mathematics in Germany",
+      "extendedData": {
+        "treeOrder": 1,
+        "orientationOutlook": {
+          "paths": [
+            {
+              "id": "numbers-and-quantities",
+              "title": "Zahlen, Größen und faire Entscheidungen",
+              "titleEn": "Numbers, quantities and fair decisions",
+              "learningOutlook": "Du lernst, Zahlen, Terme, Prozente, Größen und Einheiten sicher zu nutzen und reale Situationen damit nachvollziehbar zu planen und zu beurteilen.",
+              "learningOutlookEn": "You learn to use numbers, expressions, percentages, quantities and units confidently and to plan and assess real situations transparently.",
+              "practicalContexts": [
+                "Einkaufen, Rabatte und Verträge vergleichen",
+                "Zeit, Wege, Flächen und Mengen planen",
+                "Rechnungen und Behauptungen auf Plausibilität prüfen"
+              ],
+              "practicalContextsEn": [
+                "Comparing purchases, discounts and contracts",
+                "Planning time, routes, areas and quantities",
+                "Checking calculations and claims for plausibility"
+              ],
+              "subtreeRootIds": [
+                "6e28d5ad-5f18-4a26-8a9e-9ea7e50b0fbb",
+                "8034d078-facf-450c-bed6-b00b9a94f07d"
+              ],
+              "entryGoalIds": [
+                "d825f7ce-e19b-594a-8181-eff199c21d93"
+              ],
+              "milestoneGoalIds": [
+                "d825f7ce-e19b-594a-8181-eff199c21d93",
+                "72b6bfa5-8e34-4029-8f85-0277207c485e",
+                "093397e0-eec8-45bb-9a5a-a24827876df5"
+              ]
+            },
+            {
+              "id": "geometry-and-space",
+              "title": "Formen, Räume und Bauen",
+              "titleEn": "Shapes, space and building",
+              "learningOutlook": "Du lernst, Figuren und Körper zu beschreiben, zu konstruieren und zu berechnen und räumliche Beziehungen mit Zeichnungen und Koordinaten zu erklären.",
+              "learningOutlookEn": "You learn to describe, construct and calculate shapes and solids and to explain spatial relationships with drawings and coordinates.",
+              "practicalContexts": [
+                "Bauen, Einrichten und technische Zeichnungen",
+                "Karten, Koordinaten und räumliche Orientierung",
+                "Design, Symmetrie und 3D-Modelle"
+              ],
+              "practicalContextsEn": [
+                "Building, furnishing and technical drawings",
+                "Maps, coordinates and spatial orientation",
+                "Design, symmetry and 3D models"
+              ],
+              "subtreeRootIds": [
+                "ed631938-ad77-405e-ac25-b06d750b9c05",
+                "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+                "9710e996-f6d0-4b8b-b893-592213c91767"
+              ],
+              "entryGoalIds": [
+                "25593605-5e13-55cc-9a05-8f3d737e15e9"
+              ],
+              "milestoneGoalIds": [
+                "25593605-5e13-55cc-9a05-8f3d737e15e9",
+                "2331caf2-ccb2-5492-9fc6-48763b848bae",
+                "b44f038c-fb1f-527e-b9ad-382214d0328a"
+              ]
+            },
+            {
+              "id": "patterns-and-functions",
+              "title": "Muster, Funktionen und digitale Welt",
+              "titleEn": "Patterns, functions and the digital world",
+              "learningOutlook": "Du lernst, veränderliche Größen in Tabellen, Graphen und Termen zu erkennen, Zusammenhänge zu beschreiben und Entwicklungen mit Funktionen vorherzusagen.",
+              "learningOutlookEn": "You learn to recognise changing quantities in tables, graphs and expressions, describe relationships and predict developments with functions.",
+              "practicalContexts": [
+                "Apps, Sensoren und digitale Darstellungen verstehen",
+                "Wachstum, Bewegung und regelmäßige Vorgänge beschreiben",
+                "Aus Daten passende Modelle und Vorhersagen entwickeln"
+              ],
+              "practicalContextsEn": [
+                "Understanding apps, sensors and digital representations",
+                "Describing growth, motion and recurring processes",
+                "Developing suitable models and predictions from data"
+              ],
+              "subtreeRootIds": [
+                "5c6b7342-0f67-4b4c-894d-fd83a6df64b3",
+                "88f8e185-a89b-4a34-869d-766042977f38",
+                "0756b198-0074-49d5-becd-9bb9f161a291"
+              ],
+              "entryGoalIds": [
+                "2bb4bb91-7929-483a-b735-44275f6b5cdc"
+              ],
+              "milestoneGoalIds": [
+                "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+                "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+                "3e4032bd-4d8c-4e72-bfdd-64a34df053c9"
+              ]
+            },
+            {
+              "id": "data-and-chance",
+              "title": "Daten, Zufall und Risiken",
+              "titleEn": "Data, chance and risk",
+              "learningOutlook": "Du lernst, Daten und Diagramme kritisch zu lesen, Zufall zu modellieren und Wahrscheinlichkeiten für begründete Entscheidungen zu nutzen.",
+              "learningOutlookEn": "You learn to read data and charts critically, model chance and use probabilities for well-founded decisions.",
+              "practicalContexts": [
+                "Umfragen, Statistiken und Medienberichte beurteilen",
+                "Chancen und Risiken in Spielen und Alltag einschätzen",
+                "Simulationen nutzen, wenn exakte Vorhersagen unmöglich sind"
+              ],
+              "practicalContextsEn": [
+                "Assessing surveys, statistics and media reports",
+                "Estimating chances and risks in games and everyday life",
+                "Using simulations when exact predictions are impossible"
+              ],
+              "subtreeRootIds": [
+                "728db43c-cf11-4fb6-b1dc-27e76573bcfc",
+                "a66c8d6d-8f3c-4e15-855a-019186e5eee4",
+                "3823e90d-a34b-46d2-a0f8-3168138d3a95"
+              ],
+              "entryGoalIds": [
+                "91571d3f-3651-4477-ba21-320fc4077453"
+              ],
+              "milestoneGoalIds": [
+                "91571d3f-3651-4477-ba21-320fc4077453",
+                "acbb7e26-f85f-405b-a3e5-affa6add6711",
+                "5ab17678-bba7-4e6b-9aff-5a909e24d40e"
+              ]
+            }
+          ]
+        }
+      },
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2",
+          "K3",
+          "K4"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.MATH.SEK1.ORIENTATION"
+      },
+      "shortKey": "canonical_math_why_sek1",
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "65365dce-f33f-49d8-9516-42f75883aa86",
+          "title": "Visualisierung: Warum Mathematik? – Entdecken, Muster & Alltag",
+          "url": "/assets/goal-visualizations/mathematik/65365dce-f33f-49d8-9516-42f75883aa86/65365dce-f33f-49d8-9516-42f75883aa86.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Warum Mathematik? – Entdecken, Muster & Alltag.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Warum Mathematik? – Entdecken, Muster & Alltag\". Der Sek-I-Einstieg: Wie Mathematik beim Messen, Vergleichen, Bauen, Planen und in Spielen hilft, wie Muster, Daten und Formen im Alltag auftauchen und warum mathematisches Denken beim Begründen und Problemlösen unterstützt. Überblick über Zahlen, Größen, Geometrie, Daten und erste funktionale Zusammenhänge.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "66a96282-340d-5220-91a6-cc97e2ec2220",
+      "title": "Punkt-Normalen-Form einer Ebene aufstellen",
+      "titleEn": "Set up the point-normal form of a plane",
+      "description": "Die lernende Person kann aus dem Ortsvektor p eines Ebenenpunkts und einem von null verschiedenen Normalenvektor n die Punkt-Normalen-Form n · (x − p) = 0 aufstellen und als Orthogonalitätsbedingung deuten.",
+      "descriptionEn": "The learner can set up the point-normal form n · (x − p) = 0 from the position vector p of a point on the plane and a nonzero normal vector n and interpret it as an orthogonality condition.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "ec6447d1-97da-5b77-94ae-4973b43f094e"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.2",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "66a96282-340d-5220-91a6-cc97e2ec2220",
+          "title": "Visualisierung: Punkt-Normalen-Form einer Ebene aufstellen",
+          "url": "/assets/goal-visualizations/mathematik/66a96282-340d-5220-91a6-cc97e2ec2220/66a96282-340d-5220-91a6-cc97e2ec2220.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Punkt-Normalen-Form einer Ebene aufstellen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Punkt-Normalen-Form einer Ebene aufstellen\". Die lernende Person kann aus dem Ortsvektor p eines Ebenenpunkts und einem von null verschiedenen Normalenvektor n die Punkt-Normalen-Form n · (x − p) = 0 aufstellen und als Orthogonalitätsbedingung deuten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+      "shortKey": "canonical_math_q2_compute_distance_between_two_points_in_space",
+      "title": "Abstand zweier Punkte im Raum berechnen",
+      "titleEn": "Calculate the distance between two points in space",
+      "description": "Die lernende Person kann aus den Koordinaten zweier Punkte im Raum den Verbindungsvektor bilden, dessen Betrag berechnen und den Abstand geometrisch deuten.",
+      "descriptionEn": "The learner can form the connecting vector from the coordinates of two points in space, calculate its magnitude, and interpret the distance geometrically.",
+      "requires": [
+        "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+        "aae119f2-925f-5fc1-b795-b52c9e980863",
+        "7680701b-35e3-519e-beaa-09753e733756",
+        "d81d888c-6ffa-5751-8a4b-ce2ff3085071"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.2.POINT_DISTANCE_SPACE"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 2",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+          "title": "Visualisierung: Abstand zweier Punkte im Raum berechnen",
+          "url": "/assets/goal-visualizations/mathematik/68d4faef-1a56-5898-9c31-80b7d5d2e430/68d4faef-1a56-5898-9c31-80b7d5d2e430.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Abstand zweier Punkte im Raum berechnen.",
+          "altText": "Abstand von A=(1|2|0) und B=(4|6|12): AB=(3,4,12) und |AB|=13. Ein ausdrücklich schematisches rechtwinkliges Schnittdreieck mit C=(4|6|0) verbindet Grundabstand 5, Höhe 12 und Abstand 13.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "69eda7f9-1898-5220-932d-e7bec839b7af",
+      "shortKey": "canonical_math_q2_determine_segment_lengths_in_space",
+      "title": "Streckenlängen im Raum bestimmen",
+      "titleEn": "Determine segment lengths in space",
+      "description": "Die lernende Person kann Streckenlängen in räumlichen Figuren aus Punktkoordinaten oder geeigneten Verbindungsvektoren bestimmen und in geometrischen Kontexten verwenden.",
+      "descriptionEn": "The learner can determine segment lengths in spatial figures from point coordinates or suitable connecting vectors and use them in geometric contexts.",
+      "requires": [
+        "68d4faef-1a56-5898-9c31-80b7d5d2e430"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.2.SEGMENT_LENGTHS_SPACE"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 2",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "69eda7f9-1898-5220-932d-e7bec839b7af",
+          "title": "Visualisierung: Streckenlängen im Raum bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/69eda7f9-1898-5220-932d-e7bec839b7af/69eda7f9-1898-5220-932d-e7bec839b7af.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Streckenlängen im Raum bestimmen.",
+          "altText": "Quader mit Kanten 6,4,3: Grundflächendiagonale AC=(6,4,0) hat Länge √52≈7,21; Raumdiagonale AG=(6,4,3) hat Länge √61≈7,81. Alle Eckkoordinaten und farbigen Strecken stimmen mit den Achsen überein.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+      "semanticKind": "orientation",
+      "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+      "titleEn": "Why Mathematics? – Thinking, Patterns & Future",
+      "description": "Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+      "descriptionEn": "The 'Big Picture' intro: How algorithms power your smartphone, how data becomes decisions (medicine, climate), why models make growth and risks visible, and why mathematical thinking structures problem solving. Overview of the relevance of topics from calculus to stochastics for your life.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Motivation",
+        "Orientation",
+        "canonical"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "treeOrder": 1,
+        "orientationOutlook": {
+          "paths": [
+            {
+              "id": "change-and-models",
+              "title": "Veränderung, Wachstum und Modelle",
+              "titleEn": "Change, growth and models",
+              "learningOutlook": "Du lernst, Funktionen in verschiedenen Darstellungen zu lesen, Änderungsraten und Integrale zu deuten und mit Differenzialgleichungen sowie Parametern reale Entwicklungen zu modellieren.",
+              "learningOutlookEn": "You learn to read functions in different representations, interpret rates of change and integrals, and model real developments with differential equations and parameters.",
+              "practicalContexts": [
+                "Wachstum, Klima, Epidemien und wirtschaftliche Entwicklungen modellieren",
+                "Bewegungen, Verbräuche und optimale Entscheidungen untersuchen",
+                "Algorithmen, Datenmodelle und Vorhersagen in Smartphone und KI besser verstehen"
+              ],
+              "practicalContextsEn": [
+                "Modelling growth, climate, epidemics and economic developments",
+                "Investigating motion, consumption and optimal decisions",
+                "Understanding algorithms, data models and predictions in smartphones and AI"
+              ],
+              "subtreeRootIds": [
+                "a668ea17-9226-4074-8f8e-051acbe839eb",
+                "c8951a07-a3e7-59d2-8a23-dce545dd811a",
+                "6c8a677b-ede8-5c2c-86d8-0ef0be8ace28"
+              ],
+              "entryGoalIds": [
+                "8dd9f210-2683-5902-acab-e3be22725232",
+                "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+                "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+              ],
+              "milestoneGoalIds": [
+                "8dd9f210-2683-5902-acab-e3be22725232",
+                "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+                "5fe4218e-4fb0-5339-8764-c989befa244e",
+                "993a14e8-60f0-5764-9340-b2447a5fa84b"
+              ]
+            },
+            {
+              "id": "space-and-linear-algebra",
+              "title": "Räume, Vektoren und lineare Abbildungen",
+              "titleEn": "Space, vectors and linear transformations",
+              "learningOutlook": "Du lernst, Punkte, Geraden und Ebenen mit Vektoren zu beschreiben, Winkel und Abstände zu bestimmen und geometrische Veränderungen mit Matrizen und Projektionen zu verstehen.",
+              "learningOutlookEn": "You learn to describe points, lines and planes with vectors, determine angles and distances, and understand geometric change with matrices and projections.",
+              "practicalContexts": [
+                "Navigation, Robotik und Bewegungen im Raum",
+                "3D-Grafik, Bildverarbeitung und technische Konstruktion",
+                "Architektur, Vermessung und räumliche Modellierung"
+              ],
+              "practicalContextsEn": [
+                "Navigation, robotics and motion in space",
+                "3D graphics, image processing and technical construction",
+                "Architecture, surveying and spatial modelling"
+              ],
+              "subtreeRootIds": [
+                "98dcf9bd-d119-5eb1-835c-7d719f67b485"
+              ],
+              "entryGoalIds": [
+                "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+              ],
+              "milestoneGoalIds": [
+                "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+                "9460c3ff-e72d-4107-bc73-087d217200aa",
+                "bd3576b8-f4e5-542a-a8a2-74524d9cee21"
+              ]
+            },
+            {
+              "id": "data-and-decisions",
+              "title": "Daten, Zufall und begründete Entscheidungen",
+              "titleEn": "Data, chance and evidence-based decisions",
+              "learningOutlook": "Du lernst, Daten aufzubereiten, Zufallsmodelle und Verteilungen zu nutzen und mit Hypothesentests sowie Konfidenzintervallen die Aussagekraft von Ergebnissen kritisch einzuschätzen.",
+              "learningOutlookEn": "You learn to prepare data, use random models and distributions, and critically assess evidence with hypothesis tests and confidence intervals.",
+              "practicalContexts": [
+                "Medizinische Tests und Studienergebnisse beurteilen",
+                "Risiken, Qualitätskontrollen und Prognosen einordnen",
+                "Umfragen, A/B-Tests und datenbasierte Entscheidungen kritisch prüfen"
+              ],
+              "practicalContextsEn": [
+                "Assessing medical tests and study results",
+                "Interpreting risks, quality controls and forecasts",
+                "Critically checking surveys, A/B tests and data-driven decisions"
+              ],
+              "subtreeRootIds": [
+                "3e937f39-1187-58b3-96c3-ec39278c0e3c"
+              ],
+              "entryGoalIds": [
+                "508292f2-671b-4fd3-acbf-53d705e44693"
+              ],
+              "milestoneGoalIds": [
+                "83a5546e-0ea6-576e-83e2-3387b30872bb",
+                "e495fa38-b198-5280-a405-9e41cafd6d17",
+                "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+                "5c9ac68c-3928-518c-bbe0-e044667035a6"
+              ]
+            }
+          ]
+        }
+      },
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        "phase": "E"
+      },
+      "shortKey": "canonical_math_why",
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "title": "Visualisierung: Warum Mathematik? – Denken, Muster & Zukunft",
+          "url": "/assets/goal-visualizations/mathematik/71cec9fb-3751-4d61-8b34-c5adbbf6e5f2/71cec9fb-3751-4d61-8b34-c5adbbf6e5f2.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Warum Mathematik? – Denken, Muster & Zukunft.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Warum Mathematik? – Denken, Muster & Zukunft\". Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "7680701b-35e3-519e-beaa-09753e733756",
+      "shortKey": "canonical_math_q2_represent_spatial_objects_in_3d_coordinates_oblique_sketches",
+      "title": "Schrägbilder räumlicher Objekte zeichnen",
+      "titleEn": "Draw oblique sketches of spatial objects",
+      "description": "Die lernende Person kann geeignete Schrägbilder räumlicher Objekte zeichnen und die Darstellung fachsprachlich erläutern.",
+      "descriptionEn": "The learner can draw suitable oblique sketches of spatial objects and explain the representation.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.2.SPATIAL_OBJECTS_3D_COORDINATES.OBLIQUE_SKETCHES"
+      },
+      "contains": [],
+      "requires": [
+        "aae119f2-925f-5fc1-b795-b52c9e980863",
+        "075f1ef2-6860-4b20-9df2-878157eb395e"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 1",
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "7680701b-35e3-519e-beaa-09753e733756",
+          "title": "Visualisierung: Schrägbilder räumlicher Objekte zeichnen",
+          "url": "/assets/goal-visualizations/mathematik/7680701b-35e3-519e-beaa-09753e733756/7680701b-35e3-519e-beaa-09753e733756.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Schrägbilder räumlicher Objekte zeichnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Schrägbilder räumlicher Objekte zeichnen\". Die lernende Person kann geeignete Schrägbilder räumlicher Objekte zeichnen und die Darstellung fachsprachlich erläutern.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+      "shortKey": "canonical_math_q2_apply_foot_point_method_for_point_plane_distance",
+      "title": "Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden",
+      "titleEn": "Apply the foot-of-perpendicular method for point-plane distance",
+      "description": "Die lernende Person kann ein Lotfußpunktverfahren erarbeiten und anwenden, um den Abstand eines Punktes von einer Ebene zu bestimmen und geometrisch zu begründen.",
+      "descriptionEn": "The learner can develop and apply a foot-of-perpendicular method to determine the distance from a point to a plane and justify it geometrically.",
+      "requires": [
+        "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
+        "8cb5c712-9c58-5910-8c63-8c3736369b80"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.3.POINT_PLANE_DISTANCE_FOOT_POINT"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 10",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+          "title": "Visualisierung: Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden",
+          "url": "/assets/goal-visualizations/mathematik/79c4cd21-af64-5925-968e-9bc1f74cd0ad/79c4cd21-af64-5925-968e-9bc1f74cd0ad.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden\". Die lernende Person kann ein Lotfußpunktverfahren erarbeiten und anwenden, um den Abstand eines Punktes von einer Ebene zu bestimmen und geometrisch zu begründen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "8cb5c712-9c58-5910-8c63-8c3736369b80",
+      "title": "Punkte an Ebenen spiegeln",
+      "titleEn": "Reflect points across planes",
+      "description": "Die lernende Person kann zu einem Punkt und einer Ebene den Spiegelpunkt bestimmen und rechnerisch sowie geometrisch begründen, dass beide Punkte auf derselben Ebenennormalen liegen und der Lotfußpunkt ihr Mittelpunkt ist.",
+      "descriptionEn": "The learner can determine the reflection of a point across a plane and justify computationally and geometrically that both points lie on the same normal to the plane and that their perpendicular foot is the midpoint.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "ec6447d1-97da-5b77-94ae-4973b43f094e",
+        "fac75b4a-4ec2-5d38-bbce-9b002c8a4904"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.SPACE.PLANE.REFLECTION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 10",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "8cb5c712-9c58-5910-8c63-8c3736369b80",
+          "title": "Visualisierung: Punkte an Ebenen spiegeln",
+          "url": "/assets/goal-visualizations/mathematik/8cb5c712-9c58-5910-8c63-8c3736369b80/8cb5c712-9c58-5910-8c63-8c3736369b80.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Punkte an Ebenen spiegeln.",
+          "altText": "Punkt P wird an der Ebene z = 0 zu P' gespiegelt; die Verbindungsstrecke steht senkrecht auf der Ebene und wird im Lotfußpunkt F halbiert.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "9460c3ff-e72d-4107-bc73-087d217200aa",
+      "title": "Skalarprodukt als Orthogonalitätskriterium nutzen",
+      "titleEn": "Use the dot product as an orthogonality criterion",
+      "description": "Die lernende Person kann das Skalarprodukt zweier Vektoren berechnen und den Wert 0 als Kriterium für Orthogonalität deuten.",
+      "descriptionEn": "The learner can calculate the dot product of two vectors and interpret the value 0 as a criterion for orthogonality.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.SPACE.DOT_PRODUCT.GEOMETRIC"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 3",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "9460c3ff-e72d-4107-bc73-087d217200aa",
+          "title": "Visualisierung: Skalarprodukt als Orthogonalitätskriterium nutzen",
+          "url": "/assets/goal-visualizations/mathematik/9460c3ff-e72d-4107-bc73-087d217200aa/9460c3ff-e72d-4107-bc73-087d217200aa.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Skalarprodukt als Orthogonalitätskriterium nutzen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Skalarprodukt als Orthogonalitätskriterium nutzen\". Die lernende Person kann das Skalarprodukt zweier Vektoren berechnen und den Wert 0 als Kriterium für Orthogonalität deuten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "9cc650e0-100d-5ae1-a83b-2b854ab7c5c8",
+      "title": "Koordinatenform einer Ebene aufstellen und interpretieren",
+      "titleEn": "Set up and interpret the coordinate form of a plane",
+      "description": "Die lernende Person kann die Koordinatenform einer Ebene aufstellen, den Normalenvektor ablesen und die Gleichung interpretieren.",
+      "descriptionEn": "The learner can set up the coordinate form of a plane, read off the normal vector, and interpret the equation.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "66a96282-340d-5220-91a6-cc97e2ec2220"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.2",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 5",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "9cc650e0-100d-5ae1-a83b-2b854ab7c5c8",
+          "title": "Visualisierung: Koordinatenform einer Ebene aufstellen und interpretieren",
+          "url": "/assets/goal-visualizations/mathematik/9cc650e0-100d-5ae1-a83b-2b854ab7c5c8/9cc650e0-100d-5ae1-a83b-2b854ab7c5c8.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Koordinatenform einer Ebene aufstellen und interpretieren.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Koordinatenform einer Ebene aufstellen und interpretieren\". Die lernende Person kann die Koordinatenform einer Ebene aufstellen, den Normalenvektor ablesen und die Gleichung interpretieren.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "aae119f2-925f-5fc1-b795-b52c9e980863",
+      "shortKey": "canonical_math_q2_represent_spatial_objects_in_3d_coordinates_coordinate_representation",
+      "title": "Räumliche Objekte im Koordinatensystem verorten",
+      "titleEn": "Locate spatial objects in three-dimensional coordinate systems",
+      "description": "Die lernende Person kann räumliche Objekte im dreidimensionalen Koordinatensystem verorten und geeignete Koordinatenbezüge wählen.",
+      "descriptionEn": "The learner can locate spatial objects in a three-dimensional coordinate system and choose suitable coordinate references.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.2.SPATIAL_OBJECTS_3D_COORDINATES.COORDINATE_REPRESENTATION"
+      },
+      "contains": [],
+      "requires": [
+        "075f1ef2-6860-4b20-9df2-878157eb395e"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 1",
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "aae119f2-925f-5fc1-b795-b52c9e980863",
+          "title": "Visualisierung: Räumliche Objekte im Koordinatensystem verorten",
+          "url": "/assets/goal-visualizations/mathematik/aae119f2-925f-5fc1-b795-b52c9e980863/aae119f2-925f-5fc1-b795-b52c9e980863.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Räumliche Objekte im Koordinatensystem verorten.",
+          "altText": "Quader mit A=(0|0|0), B=(4|0|0), C=(4|3|0), D=(0|3|0) und den zugehörigen oberen Ecken bei z=2. Maßpfeile ordnen AB=4 der x-Richtung, BC=3 der y-Richtung und die Höhe 2 der z-Richtung zu.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "b04bd2d6-21d4-5ac5-9a77-b5f950a41c24",
+      "shortKey": "canonical_math_q2_analyze_plane_figures_area_congruence_similarity_congruence",
+      "title": "Kongruenzbeziehungen ebener Figuren untersuchen",
+      "titleEn": "Analyze congruence relations of plane figures",
+      "description": "Die lernende Person kann Kongruenzbeziehungen einfacher ebener Figuren untersuchen und die verwendeten Kriterien fachsprachlich begründen.",
+      "descriptionEn": "The learner can analyze congruence relations of simple plane figures and justify the criteria used.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY.CONGRUENCE"
+      },
+      "contains": [],
+      "requires": [
+        "5390691d-1b7c-5572-9589-a69c2bba9a27",
+        "4af3dfb9-7e15-5da5-8b86-0aac6c80e266"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 4",
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "b04bd2d6-21d4-5ac5-9a77-b5f950a41c24",
+          "title": "Visualisierung: Kongruenzbeziehungen ebener Figuren untersuchen",
+          "url": "/assets/goal-visualizations/mathematik/b04bd2d6-21d4-5ac5-9a77-b5f950a41c24/b04bd2d6-21d4-5ac5-9a77-b5f950a41c24.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Kongruenzbeziehungen ebener Figuren untersuchen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Kongruenzbeziehungen ebener Figuren untersuchen\". Die lernende Person kann Kongruenzbeziehungen einfacher ebener Figuren untersuchen und die verwendeten Kriterien fachsprachlich begründen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2",
+      "shortKey": "canonical_math_q2_analyze_properties_of_simple_solid_bodies_symmetry",
+      "title": "Symmetrien einfacher Körper untersuchen",
+      "titleEn": "Analyze symmetries of simple solids",
+      "description": "Die lernende Person kann Symmetrieachsen und Symmetrieebenen einfacher geometrischer Körper bestimmen und fachsprachlich beschreiben.",
+      "descriptionEn": "The learner can determine and describe axes and planes of symmetry of simple geometric solids.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.2.ANALYZE_SIMPLE_SOLID_BODY_PROPERTIES.SYMMETRY"
+      },
+      "contains": [],
+      "requires": [
+        "eb070ed2-7ef4-5afe-b203-190ebb0116af",
+        "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+        "69eda7f9-1898-5220-932d-e7bec839b7af",
+        "9460c3ff-e72d-4107-bc73-087d217200aa"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 4",
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2",
+          "title": "Visualisierung: Symmetrien einfacher Körper untersuchen",
+          "url": "/assets/goal-visualizations/mathematik/b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2/b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2.png",
+          "provider": "OpenAI / Codex built-in image generation (reference-conditioned)",
+          "description": "Visualisierung zum Lernziel: Symmetrien einfacher Körper untersuchen.",
+          "altText": "Ein transparent gezeichneter Würfel zeigt eine blaue senkrechte Spiegelebene durch seine Mitte. Eine orange gestrichelte Symmetrieachse führt durch die Mitten von Ober- und Unterseite; ein Pfeil kennzeichnet die 90-Grad-Drehung um diese Achse.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+      "title": "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben",
+      "titleEn": "Describe vectors as position, direction, and displacement vectors in space",
+      "description": "Die lernende Person kann Vektoren im Raum als Verschiebungs-, Orts- oder Richtungsvektoren darstellen, ihre Komponenten in kartesischen Koordinatensystemen angeben und ihre geometrische Bedeutung fachsprachlich deuten.",
+      "descriptionEn": "The learner can represent vectors in space as displacement, position, or direction vectors, state their components in Cartesian coordinate systems, and interpret their geometric meaning using correct terminology.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "075f1ef2-6860-4b20-9df2-878157eb395e",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.2",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 2",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+          "title": "Visualisierung: Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben",
+          "url": "/assets/goal-visualizations/mathematik/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben.",
+          "altText": "Orts-, Verschiebungs- und Richtungsvektor: OA=(1,2,1), OB=(4,3,3), AB=(3,1,2). Eine konsistente schematische Pfeilkette verbindet O,A,B. Der Richtungsvektor beschreibt eine Geradenrichtung, keine Geradenlänge.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+      "shortKey": "canonical_math_q2_describe_simple_solid_bodies",
+      "title": "Einfache geometrische Körper im Raum beschreiben",
+      "titleEn": "Describe simple geometric solids in space",
+      "description": "Die lernende Person kann einfache geometrische Körper wie Würfel, Quader, gerade und schiefe Prismen sowie gerade und schiefe Pyramiden fachsprachlich beschreiben und in räumlichen Darstellungen identifizieren.",
+      "descriptionEn": "The learner can describe simple geometric solids such as cubes, cuboids, right and oblique prisms, and right and oblique pyramids using correct terminology and identify them in spatial representations.",
+      "requires": [
+        "aae119f2-925f-5fc1-b795-b52c9e980863",
+        "7680701b-35e3-519e-beaa-09753e733756",
+        "d81d888c-6ffa-5751-8a4b-ce2ff3085071"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.2.DESCRIBE_SIMPLE_SOLID_BODIES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 4",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+          "title": "Visualisierung: Einfache geometrische Körper im Raum beschreiben",
+          "url": "/assets/goal-visualizations/mathematik/d379e28b-d9d5-5cab-b383-318e0499c0c7/d379e28b-d9d5-5cab-b383-318e0499c0c7.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Einfache geometrische Körper im Raum beschreiben.",
+          "altText": "Sechs beschriftete Körper: Würfel, Quader, gerades und schiefes Prisma sowie gerade und schiefe Pyramide. Die drei Kantenfamilien des Quaders sind konsistent mit a, b und c bezeichnet.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+      "shortKey": "canonical_math_q2_analyze_plane_figures_area_congruence_similarity_similarity",
+      "title": "Ähnlichkeitsbeziehungen ebener Figuren untersuchen",
+      "titleEn": "Analyze similarity relations of plane figures",
+      "description": "Die lernende Person kann Ähnlichkeitsbeziehungen einfacher ebener Figuren untersuchen und daraus passende Längen- oder Flächenbeziehungen ableiten.",
+      "descriptionEn": "The learner can analyze similarity relations of simple plane figures and derive suitable length or area relations.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.2.ANALYZE_PLANE_FIGURES_AREA_CONGRUENCE_SIMILARITY.SIMILARITY"
+      },
+      "contains": [],
+      "requires": [
+        "b04bd2d6-21d4-5ac5-9a77-b5f950a41c24",
+        "4af3dfb9-7e15-5da5-8b86-0aac6c80e266"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 4",
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+          "title": "Visualisierung: Ähnlichkeitsbeziehungen ebener Figuren untersuchen",
+          "url": "/assets/goal-visualizations/mathematik/d6b74b15-1cbc-512b-a160-0f40aecafe8c/d6b74b15-1cbc-512b-a160-0f40aecafe8c.png",
+          "provider": "Repository-native SVG / Playwright Chromium (reviewed Nano fallback)",
+          "description": "Visualisierung zum Lernziel: Ähnlichkeitsbeziehungen ebener Figuren untersuchen.",
+          "altText": "Maßstäbliche rechtwinklige Dreiecke mit Seiten 3, 4, 5 cm und 6, 8, 10 cm. Der Längenfaktor 2 führt vom Flächeninhalt 6 cm² zu 24 cm², also zum Flächenfaktor 4.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "d785943c-d61b-51a1-a9c2-c36a9e0cc97d",
+      "title": "Ebenen in Parameterform angeben und interpretieren",
+      "titleEn": "State and interpret planes in parametric form",
+      "description": "Die lernende Person kann eine Ebene durch einen Stützpunkt und zwei linear unabhängige Spannvektoren in Parameterform angeben, den Stützpunkt und die Spannvektoren geometrisch deuten und die Zugehörigkeit von Punkten prüfen.",
+      "descriptionEn": "The learner can represent a plane parametrically using a base point and two linearly independent spanning vectors, interpret the base point and spanning vectors geometrically, and test whether points lie on the plane.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.2",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 5 und 6",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "d785943c-d61b-51a1-a9c2-c36a9e0cc97d",
+          "title": "Visualisierung: Ebenen in Parameterform angeben und interpretieren",
+          "url": "/assets/goal-visualizations/mathematik/d785943c-d61b-51a1-a9c2-c36a9e0cc97d/d785943c-d61b-51a1-a9c2-c36a9e0cc97d.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Ebenen in Parameterform angeben und interpretieren.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Ebenen in Parameterform angeben und interpretieren\". Die lernende Person kann eine Ebene durch einen Stützpunkt und zwei linear unabhängige Spannvektoren in Parameterform angeben, den Stützpunkt und die Spannvektoren geometrisch deuten und die Zugehörigkeit von Punkten prüfen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "d81d888c-6ffa-5751-8a4b-ce2ff3085071",
+      "shortKey": "canonical_math_q2_represent_spatial_objects_in_3d_coordinates_point_coordinates",
+      "title": "Punkte im Raum mit Koordinaten beschreiben",
+      "titleEn": "Describe points in space using coordinates",
+      "description": "Die lernende Person kann Punkte im Raum mithilfe von Koordinaten fachsprachlich beschreiben und in Darstellungen verorten.",
+      "descriptionEn": "The learner can describe points in space using coordinates and locate them in representations.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.2.SPATIAL_OBJECTS_3D_COORDINATES.POINT_COORDINATES"
+      },
+      "contains": [],
+      "requires": [
+        "7680701b-35e3-519e-beaa-09753e733756",
+        "075f1ef2-6860-4b20-9df2-878157eb395e"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 1",
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "d81d888c-6ffa-5751-8a4b-ce2ff3085071",
+          "title": "Visualisierung: Punkte im Raum mit Koordinaten beschreiben",
+          "url": "/assets/goal-visualizations/mathematik/d81d888c-6ffa-5751-8a4b-ce2ff3085071/d81d888c-6ffa-5751-8a4b-ce2ff3085071.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Punkte im Raum mit Koordinaten beschreiben.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Punkte im Raum mit Koordinaten beschreiben\". Die lernende Person kann Punkte im Raum mithilfe von Koordinaten fachsprachlich beschreiben und in Darstellungen verorten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "d8e56cfc-a58d-5529-ab9f-e5187e31dd34",
+      "shortKey": "canonical_math_q2_calculate_areas_in_spatial_applications",
+      "title": "Flächeninhalte in räumlichen Sachzusammenhängen berechnen",
+      "titleEn": "Calculate areas in spatial applications",
+      "description": "Die lernende Person kann Flächeninhalte in räumlichen Sachzusammenhängen bestimmen, dazu geeignete Dreiecks-, Parallelogramm- oder Zerlegungsmodelle wählen und die Ergebnisse im Kontext deuten.",
+      "descriptionEn": "The learner can determine areas in spatial contexts, choose suitable triangle, parallelogram, or decomposition models, and interpret the results in context.",
+      "requires": [
+        "f613634b-39fb-5021-9970-790ef34c9932",
+        "5390691d-1b7c-5572-9589-a69c2bba9a27",
+        "b04bd2d6-21d4-5ac5-9a77-b5f950a41c24",
+        "d6b74b15-1cbc-512b-a160-0f40aecafe8c"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.3.SPATIAL_AREA_APPLICATIONS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 11",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "d8e56cfc-a58d-5529-ab9f-e5187e31dd34",
+          "title": "Visualisierung: Flächeninhalte in räumlichen Sachzusammenhängen berechnen",
+          "url": "/assets/goal-visualizations/mathematik/d8e56cfc-a58d-5529-ab9f-e5187e31dd34/d8e56cfc-a58d-5529-ab9f-e5187e31dd34.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Flächeninhalte in räumlichen Sachzusammenhängen berechnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Flächeninhalte in räumlichen Sachzusammenhängen berechnen\". Die lernende Person kann Flächeninhalte in räumlichen Sachzusammenhängen bestimmen, dazu geeignete Dreiecks-, Parallelogramm- oder Zerlegungsmodelle wählen und die Ergebnisse im Kontext deuten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "eb070ed2-7ef4-5afe-b203-190ebb0116af",
+      "shortKey": "canonical_math_q2_analyze_properties_of_simple_solid_bodies_parallel_orthogonal",
+      "title": "Parallelität und Orthogonalität einfacher Körper untersuchen",
+      "titleEn": "Analyze parallelism and orthogonality in simple solids",
+      "description": "Die lernende Person kann an einfachen geometrischen Körpern Parallelität und Orthogonalität von Kanten, Flächen oder Raumrichtungen untersuchen.",
+      "descriptionEn": "The learner can analyze parallelism and orthogonality of edges, faces, or spatial directions in simple geometric solids.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.2.ANALYZE_SIMPLE_SOLID_BODY_PROPERTIES.PARALLEL_ORTHOGONAL"
+      },
+      "contains": [],
+      "requires": [
+        "50eb5156-5046-5887-80dc-3128c5f8cbd6",
+        "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+        "69eda7f9-1898-5220-932d-e7bec839b7af",
+        "9460c3ff-e72d-4107-bc73-087d217200aa"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 4",
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "eb070ed2-7ef4-5afe-b203-190ebb0116af",
+          "title": "Visualisierung: Parallelität und Orthogonalität einfacher Körper untersuchen",
+          "url": "/assets/goal-visualizations/mathematik/eb070ed2-7ef4-5afe-b203-190ebb0116af/eb070ed2-7ef4-5afe-b203-190ebb0116af.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation (built-in image_gen; model not exposed)",
+          "description": "Visualisierung zum Lernziel: Parallelität und Orthogonalität einfacher Körper untersuchen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Parallelität und Orthogonalität einfacher Körper untersuchen\". Die lernende Person kann an einfachen geometrischen Körpern Parallelität und Orthogonalität von Kanten, Flächen oder Raumrichtungen untersuchen.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "ec6447d1-97da-5b77-94ae-4973b43f094e",
+      "title": "Normalenvektor einer Ebene bestimmen und nutzen",
+      "titleEn": "Determine and use a normal vector of a plane",
+      "description": "Die lernende Person kann einen von null verschiedenen Normalenvektor zu einer Ebene bestimmen, ihn als zu allen Richtungsvektoren der Ebene orthogonalen Vektor deuten und für die Beschreibung ihrer Orientierung nutzen.",
+      "descriptionEn": "The learner can determine a nonzero normal vector of a plane, interpret it as a vector orthogonal to every direction vector in the plane, and use it to describe the plane's orientation.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "9460c3ff-e72d-4107-bc73-087d217200aa"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.2",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 5",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "ec6447d1-97da-5b77-94ae-4973b43f094e",
+          "title": "Visualisierung: Normalenvektor einer Ebene bestimmen und nutzen",
+          "url": "/assets/goal-visualizations/mathematik/ec6447d1-97da-5b77-94ae-4973b43f094e/ec6447d1-97da-5b77-94ae-4973b43f094e.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Normalenvektor einer Ebene bestimmen und nutzen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Normalenvektor einer Ebene bestimmen und nutzen\". Die lernende Person kann einen von null verschiedenen Normalenvektor zu einer Ebene bestimmen, ihn als zu allen Richtungsvektoren der Ebene orthogonalen Vektor deuten und für die Beschreibung ihrer Orientierung nutzen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "effe43eb-cabe-56cb-a228-35887d7915c1",
+      "title": "Geraden im Raum parametrisch darstellen",
+      "titleEn": "Represent lines in space parametrically",
+      "description": "Die lernende Person kann Geraden im Raum mithilfe eines Stützvektors und eines Richtungsvektors in Parameterform angeben und aus punktweisen Beschreibungen geeignete Vektorgleichungen aufstellen.",
+      "descriptionEn": "The learner can state lines in space using a position vector and a direction vector in parametric form and set up suitable vector equations from point-wise descriptions.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.2",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "effe43eb-cabe-56cb-a228-35887d7915c1",
+          "title": "Visualisierung: Geraden im Raum parametrisch darstellen",
+          "url": "/assets/goal-visualizations/mathematik/effe43eb-cabe-56cb-a228-35887d7915c1/effe43eb-cabe-56cb-a228-35887d7915c1.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Geraden im Raum parametrisch darstellen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Geraden im Raum parametrisch darstellen\". Die lernende Person kann Geraden im Raum mithilfe eines Stützvektors und eines Richtungsvektors in Parameterform angeben und aus punktweisen Beschreibungen geeignete Vektorgleichungen aufstellen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+      "shortKey": "canonical_math_sek1_j9_spatial_point_tuples_interpret",
+      "title": "Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten",
+      "titleEn": "Express and interpret points in the spatial coordinate system as tuples",
+      "description": "Die lernende Person kann Punkte im räumlichen Koordinatensystem als Tupel darstellen, Koordinateneinträge fachsprachlich deuten und die Bedeutung einfacher Ortsangaben im Kontext erklären.",
+      "descriptionEn": "The learner can represent points in the spatial coordinate system as tuples, interpret coordinate entries using correct terminology, and explain the meaning of simple location data in context.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K3.1",
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L3"
+        ],
+        "phase": "J9",
+        "area": "Geometry",
+        "topicCode": "CANONICAL.MATH.SEK1.J9.8D"
+      },
+      "contains": [],
+      "requires": [
+        "25593605-5e13-55cc-9a05-8f3d737e15e9",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "title": "Visualisierung: Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten",
+          "url": "/assets/goal-visualizations/mathematik/f242a3e8-55a3-492e-8354-b81b24cdbb78/f242a3e8-55a3-492e-8354-b81b24cdbb78.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten\". Die lernende Person kann Punkte im räumlichen Koordinatensystem als Tupel darstellen, Koordinateneinträge fachsprachlich deuten und die Bedeutung einfacher Ortsangaben im Kontext erklären.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "f613634b-39fb-5021-9970-790ef34c9932",
+      "title": "Parallelogramme und Dreiecke in Parameterform darstellen",
+      "titleEn": "Represent Parallelograms and Triangles in Parametric Form",
+      "description": "Die lernende Person kann aus den Eckpunkten passende Spannvektoren bestimmen, Parallelogramme durch x = a + su + tv mit 0 ≤ s,t ≤ 1 und Dreiecke mit s,t ≥ 0 und s + t ≤ 1 parametrisch darstellen und die begrenzten Punktmengen geometrisch deuten.",
+      "descriptionEn": "The learner can determine suitable spanning vectors from the vertices, parametrically represent parallelograms by x = a + su + tv with 0 ≤ s,t ≤ 1 and triangles with s,t ≥ 0 and s + t ≤ 1, and interpret the bounded point sets geometrically.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "effe43eb-cabe-56cb-a228-35887d7915c1",
+        "d785943c-d61b-51a1-a9c2-c36a9e0cc97d"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.SPACE.PARAMETRIC.FIGURES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 6",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "f613634b-39fb-5021-9970-790ef34c9932",
+          "title": "Visualisierung: Parallelogramme und Dreiecke in Parameterform darstellen",
+          "url": "/assets/goal-visualizations/mathematik/f613634b-39fb-5021-9970-790ef34c9932/f613634b-39fb-5021-9970-790ef34c9932.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Parallelogramme und Dreiecke in Parameterform darstellen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Parallelogramme und Dreiecke in Parameterform darstellen\". Die lernende Person kann aus den Eckpunkten passende Spannvektoren bestimmen, Parallelogramme durch x = a + su + tv mit 0 ≤ s,t ≤ 1 und Dreiecke mit s,t ≥ 0 und s + t ≤ 1 parametrisch darstellen und die begrenzten Punktmengen geometrisch deuten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "fac75b4a-4ec2-5d38-bbce-9b002c8a4904",
+      "title": "Abstandsverfahren im Raum auswählen und anwenden",
+      "titleEn": "Choose and apply a distance method in space",
+      "description": "Die lernende Person kann für eine gegebene Punkt-, Geraden- oder Ebenenkonfiguration ein passendes analytisches Abstandsverfahren auswählen und anwenden.",
+      "descriptionEn": "The learner can choose and apply a suitable analytic distance method for a given point, line, or plane configuration.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "24174bba-a654-5f81-8de3-ca5bd09d9b6f",
+        "57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "fac75b4a-4ec2-5d38-bbce-9b002c8a4904",
+          "title": "Visualisierung: Abstandsverfahren im Raum auswählen und anwenden",
+          "url": "/assets/goal-visualizations/mathematik/fac75b4a-4ec2-5d38-bbce-9b002c8a4904/fac75b4a-4ec2-5d38-bbce-9b002c8a4904.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Abstandsverfahren im Raum auswählen und anwenden.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Abstandsverfahren im Raum auswählen und anwenden\". Die lernende Person kann für eine gegebene Punkt-, Geraden- oder Ebenenkonfiguration ein passendes analytisches Abstandsverfahren auswählen und anwenden.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+      "shortKey": "canonical_math_q2_compute_vector_magnitude_in_space",
+      "title": "Betrag eines Vektors im Raum bestimmen",
+      "titleEn": "Determine the magnitude of a vector in space",
+      "description": "Die lernende Person kann den Betrag eines Vektors im Raum aus seinen Komponenten berechnen und als Länge der zugehörigen Verschiebung deuten.",
+      "descriptionEn": "The learner can calculate the magnitude of a vector in space from its components and interpret it as the length of the corresponding displacement.",
+      "requires": [
+        "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K4.1"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.2.VECTOR_MAGNITUDE_SPACE"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 2",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+          "title": "Visualisierung: Betrag eines Vektors im Raum bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/fb7a4fa0-03b5-53b4-bd86-608480b748a1/fb7a4fa0-03b5-53b4-bd86-608480b748a1.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Betrag eines Vektors im Raum bestimmen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Betrag eines Vektors im Raum bestimmen\". Die lernende Person kann den Betrag eines Vektors im Raum aus seinen Komponenten berechnen und als Länge der zugehörigen Verschiebung deuten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    }
+  ]
+}

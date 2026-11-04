@@ -1,0 +1,1211 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent Astra reviewer /root/astra_scope_and_approach_final",
+  "reviewDate": "2026-11-01",
+  "status": "CHANGES_REQUIRED_WITH_EXACT_NARROW_DELTA_APPROVED",
+  "scope": "All 28 previously CR endpoints, five concrete support consumers, preserved 67 PASS objects; intrinsic mathematical task/solution/rubric, actual preparation, whole-contract coverage and existing language fields. No new source/corpus audit.",
+  "bindings": {
+    "previousReview": {
+      "path": "tmp/approach-review-20261101/upper-endpoint-review.json",
+      "sha256": "c230a92d32205438e59d82277f6c97995fe1755a58225f182f4e574df22e89b9"
+    },
+    "base": {
+      "path": "tmp/approach-review-20261101/common-offline-canonical-math.seki-candidate.json",
+      "sha256": "138574f9e007ac03217a1c418167e4b6b9975cd927e7cdd279524f897a404f4d"
+    },
+    "patch": {
+      "path": "tmp/approach-review-20261101/candidate-upper-corrections.json",
+      "sha256": "5e99c85c26eacacfb66bfe6cccd7fe2467d38665ad4c1b11f6d4366a3aa5277a"
+    },
+    "candidate": {
+      "path": "tmp/approach-review-20261101/common-offline-canonical-math.upper-candidate.json",
+      "sha256": "d2f7bc965edc0703122162cb8c19139831d333d6035ebbf58cc6f0122ebe3c09"
+    }
+  },
+  "counts": {
+    "reviewedEndpoints": 28,
+    "currentPass": 17,
+    "currentChangesRequired": 11,
+    "passAfterExactlyApprovedDelta": 28,
+    "approvedCoverageRemovals": 16,
+    "approvedWordingCorrections": 1,
+    "supportConsumersPass": 5,
+    "unchangedPriorPassObjectsRaw": 67,
+    "changedEndpointObjectsInInputCandidate": 24,
+    "changedSupportObjectsInInputCandidate": 5,
+    "changedExamDataDraftsInInputCandidate": 22
+  },
+  "reviewStandard": "Representative examples need not exhaust every numerical instance of a skill. But explicit additional operations, representations or model classes in a whole goal cannot be claimed by a task that only demonstrates a narrower part. Preparation may be broader than the observed coverage; the reviewed prerequisites retain actual methodological preparation, not automatic coverage or mastery.",
+  "cases": [
+    {
+      "caseIndex": 0,
+      "goalId": "57c6506d-5412-5dc9-9d41-32d860f02a08",
+      "title": "A1 (Analysis, Niveau 1, 5 BE) (LK)",
+      "currentVerdict": "PASS",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "PASS",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Nur englisches Niveau korrigiert; Grenzwerte, Extremum und Skizze stimmen.",
+      "remainingFindings": [],
+      "candidateGoalSha256": "17232813c3ee04153fef27f289c296e1570096cad315bc7bcbae89c4987e967d",
+      "approvedGoalSha256": "17232813c3ee04153fef27f289c296e1570096cad315bc7bcbae89c4987e967d",
+      "fieldSha256": {
+        "taskContent": "d50e10ab503821965c01c0f5c6a919d6c21d72c5f78d2cf339ad98c56380ba3e",
+        "solutionContent": "1a0b06b427a6a2a5673c528ffd6702888d6d8128186c879eb535934b2831b65b",
+        "taskContentEn": "2f033eeb15fc57a3c47497caefde1a9747fe87f94eaea4f50032e117a69ec1cd",
+        "solutionContentEn": "50a1c7cb086c617a3cef097702f376bbcae458d0af5a8e0df4f749b7d15d7a67",
+        "scoring": "441258927214d24e5eabd2a3f7d0dd9ea5cbc7fa4293073fd3e1eb8ded7bdffb",
+        "coveredGoalIds": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      "requiresSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "caseIndex": 7,
+      "goalId": "4a906a0c-44eb-559a-99a7-9fc01b90409a",
+      "title": "A8 (Lineare Algebra, Niveau 2, 5 BE) (LK)",
+      "currentVerdict": "PASS",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "PASS",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Gemeinsamer Diagonalenmittelpunkt jetzt nichtzirkulär aus der Parallelogrammrelation bewiesen; beide Sprachfassungen stimmen.",
+      "remainingFindings": [],
+      "candidateGoalSha256": "a1d560f3a609683693dd6e33c8fb2b8a4f671ecb1f797b5499c133f221ffdf3b",
+      "approvedGoalSha256": "a1d560f3a609683693dd6e33c8fb2b8a4f671ecb1f797b5499c133f221ffdf3b",
+      "fieldSha256": {
+        "taskContent": "257e2135aabffec0ec7576e7df03f06ceeb50ed0d43695edfb3bccbac00b1057",
+        "solutionContent": "9b0442d2e53f6e967c0da1c20bd5c2f7415eea9a9f9030ed5ae23b0545eb7e2d",
+        "taskContentEn": "c32fa1a15c38ae46fbe5ef1b125c7549d3e64bf7e36ca898308d84e6fd1ab846",
+        "solutionContentEn": "b4ccd63d6289f2baddd0e003c92c719ce2237ed0e5d6f31b538f6d5150aa267c",
+        "scoring": "7640a6613b6848050e361490dd9c25e35d6e620840d4d9cf9f430488f07a090e",
+        "coveredGoalIds": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      "requiresSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "caseIndex": 12,
+      "goalId": "000b2764-c5d9-5521-b39e-fc15a4aa72e2",
+      "title": "C1 (Lineare Algebra – \"Populationsdynamik\", 20 BE) (LK)",
+      "currentVerdict": "PASS",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "PASS",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Strikt positives M² rechtfertigt Konvergenz; Fixvektor, Zehnwochenverteilung und Rekonstruktion korrekt, DE/EN konsistent.",
+      "remainingFindings": [],
+      "candidateGoalSha256": "8f133814c005f76a2d7313afecd92c6cf9cb4e1889dadf2f87ab7861b6131eb5",
+      "approvedGoalSha256": "8f133814c005f76a2d7313afecd92c6cf9cb4e1889dadf2f87ab7861b6131eb5",
+      "fieldSha256": {
+        "taskContent": "22ab2fe24b6f38d968bc5bec5bc3b1bb6b77399e54cfc57560cfb1e60f12e76b",
+        "solutionContent": "0eafbf1e6a6fa7c7f1a60f2a9565fe308c41683a3cd8cf811f77e776fac5f28a",
+        "taskContentEn": "ad8f60fd2238fdedb629327d7631c2831dd9dfd2fa36ef094d18988d6282c92f",
+        "solutionContentEn": "b67703361ee14aabc6b208d249c08fbe70c20d6708231038cb96b4c4c257eced",
+        "scoring": "893982e199b8a0c980493891a7b5132805c03bb00a2cbdb35978c6aaa8fa7e7c",
+        "coveredGoalIds": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      "requiresSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "caseIndex": 13,
+      "goalId": "6eb917e6-a204-5150-833f-a4455c8a05b0",
+      "title": "D1 (Stochastik – \"Viren-Screening & Testgüte\", 20 BE) (LK)",
+      "currentVerdict": "PASS",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "PASS",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Nichtinfizierte unabhängige Proben tragen B(2000;0,02); bedingte Wiederholung und Quantil 51 stimmen in beiden Sprachen.",
+      "remainingFindings": [],
+      "candidateGoalSha256": "c5fb28bdf9a6ba7af1d02180c54081e710a22f7bc38c2b9657e84ba612b129e6",
+      "approvedGoalSha256": "c5fb28bdf9a6ba7af1d02180c54081e710a22f7bc38c2b9657e84ba612b129e6",
+      "fieldSha256": {
+        "taskContent": "a5764beaa53c0f1713796e57d8e17beebf859c6a3eb5f41b73c10a10e61e7be2",
+        "solutionContent": "63fb8793e546d401b98138d66e65901ea7b3bd39586f64e995f2920a36ce27f4",
+        "taskContentEn": "efedcf5ffa51af0627ec659090cb79dc244450a7b12be328d190c88faa36d519",
+        "solutionContentEn": "dc89f7aae0d08680d63b422befcdf5059669b347883f3dae6f8cda2ed3585c5a",
+        "scoring": "f15edc77f4a7f69143afb0de97196b059b243b2295f72fed59ee342a072d2118",
+        "coveredGoalIds": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      "requiresSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "caseIndex": 19,
+      "goalId": "87ce54e8-8d6d-5ebb-bae4-018bfb079b39",
+      "title": "A6 (Analysis, Niveau 1, 5 BE)",
+      "currentVerdict": "PASS",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "PASS",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Nur bestimmbares negatives Vorzeichen statt unbestimmtem Zahlenwert verlangt; Extremtypen richtig.",
+      "remainingFindings": [],
+      "candidateGoalSha256": "63f28b8a5c26a818170499f22087a466be0feb98f68909ca4c47fc10b0adc6b5",
+      "approvedGoalSha256": "63f28b8a5c26a818170499f22087a466be0feb98f68909ca4c47fc10b0adc6b5",
+      "fieldSha256": {
+        "taskContent": "66f68c53682aab2a87d40984789ffa1ed19f82987b402619af3303f0fe1b1f74",
+        "solutionContent": "db2eabea9d9c9ab8ecd6aa6ca9dac415b56da4010b61e926658327fed85ac520",
+        "taskContentEn": "7382013478cdaa55e078a0efdcf6e77a94836e7208a8c52c0f38ac7b0e57f572",
+        "solutionContentEn": "04bd7babfcdf89644437b98b0604dd0947869104cef17d9aea2be251e64fd4fc",
+        "scoring": "9ac5849059316f69062c9323e3a65d72131d777d142f7a26271c718f67516c89",
+        "coveredGoalIds": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      "requiresSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "caseIndex": 26,
+      "goalId": "c2f6b981-f832-52ab-aa20-5e816eb33e64",
+      "title": "D1 (Stochastik – \"Viren-Screening\", 15 BE)",
+      "currentVerdict": "PASS",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "PASS",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Beschreibung nennt jetzt tatsächlich geprüfte totale/bedingte Wahrscheinlichkeit und Binomialquantil; DE/EN und Aufgabe korrekt.",
+      "remainingFindings": [],
+      "candidateGoalSha256": "a8c4a936b5ebe46acf51e919edb9a22a395af1610ec20516bbe97e1436451c04",
+      "approvedGoalSha256": "a8c4a936b5ebe46acf51e919edb9a22a395af1610ec20516bbe97e1436451c04",
+      "fieldSha256": {
+        "taskContent": "f5ffc44151e1f515a6e605c442445ca466d18fb4b19cd5131167ce2f4e3e83fe",
+        "solutionContent": "9af5671d921cffec65ed3172279e90e893c7b7860171851626378e41d8239c3b",
+        "taskContentEn": "d03701bbbad8e0d3be2fafdd15824a1f609588b99f2650d4c22fc770542426e0",
+        "solutionContentEn": "9e0b8e5308998f051822268588a5c15f2f270e27a116a871614eb68f24866902",
+        "scoring": "814b620549e8a6bca419b3b243c46cb4f5bb8b038ad380aa9d12dcd453c95e2c",
+        "coveredGoalIds": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      "requiresSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "caseIndex": 29,
+      "goalId": "e7013f6e-6051-5c88-8b4b-e054dc8db4cc",
+      "title": "Funktionen und Darstellungen analysieren",
+      "currentVerdict": "CHANGES_REQUIRED",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "CHANGES_REQUIRED",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Domänensymmetrie, Scheitel, Bodentreffer, Höhenintervall und lineare Änderungsrate fachlich richtig; frühere fünf sachfremde Voraussetzungen entfernt.",
+      "remainingFindings": [
+        {
+          "kind": "coverage",
+          "goalId": "0b23413e-a334-5dd3-98e5-de067208819e",
+          "fullContract": "Die lernende Person kann Achsenschnittpunkte und Schnittpunkte zweier Graphen, insbesondere bei linearen und quadratischen Funktionen, grafisch und rechnerisch bestimmen.",
+          "reason": "Achsenschnittpunkte werden bestimmt, aber weder Schnittpunkte zweier Graphen noch deren grafische Bestimmung werden verlangt. Der ganze kombinierte Vertrag ist nicht beobachtet."
+        }
+      ],
+      "candidateGoalSha256": "14d3c53ef0978df0c8ca0e3f442da4e734b02a71b11bbf13b815d117318b0c42",
+      "approvedGoalSha256": "60868dac1297806a9d051592eb617326b2217ba38d1c2c602a5fb62b53559537",
+      "fieldSha256": {
+        "taskContent": "62b6f04e09b97ab1d6a735ec99f3c5262a60b46de08b2865fb3221c7aaa36370",
+        "solutionContent": "dab1582ceffbf0c44716eed915d2fce7bbeda027913d2180a22045360eb9272d",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "fff65b5fa5d85e27fdec6fdfc67da8ee7f799c04e4c6b270ddd5039e0e5daecc",
+        "coveredGoalIds": "c1124509111e02600a898f0b5477d2e0a2d1a387495bf982ba3273cd291b0291"
+      },
+      "requiresSha256": "f021d4efb0d6c33459fae10da1eeaa37c3b5394a835959d07a5131c8584b8007"
+    },
+    {
+      "caseIndex": 30,
+      "goalId": "296fdd9f-59a4-5d3d-9512-cfc78c8ac3e0",
+      "title": "Ableitung, Monotonie und Tangente rechnerisch untersuchen",
+      "currentVerdict": "CHANGES_REQUIRED",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "CHANGES_REQUIRED",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Ableitung, Monotonie und Tangente richtig; Titel passt nun zur rechnerischen Aufgabe; Stammfunktion und Nichtdifferenzierbarkeit entfernt.",
+      "remainingFindings": [
+        {
+          "kind": "coverage",
+          "goalId": "845440ce-f63f-5835-903f-739145ca27bd",
+          "fullContract": "Die lernende Person kann aus dem Graphen von f Aussagen über Vorzeichen und Verlauf von f′ ableiten und umgekehrt, insbesondere bezüglich Monotonie und Extremstellen.",
+          "reason": "Die Aufgabe ist ausdrücklich termbasiert; die beidseitige Deutung eines gegebenen Funktions- und Ableitungsgraphen wird nicht geprüft."
+        },
+        {
+          "kind": "coverage",
+          "goalId": "0264591c-fdd7-41c6-9fb9-7cb3a03f7658",
+          "fullContract": "Die lernende Person kann mit Hilfe der Ableitung Tangentengleichungen an Funktionsgraphen aufstellen und den Steigungswinkel der Tangente berechnen.",
+          "reason": "Die Tangentengleichung wird bestimmt; der im selben Vertrag ausdrücklich verlangte Steigungswinkel wird weder gefragt noch bewertet."
+        }
+      ],
+      "candidateGoalSha256": "6353644a14155cba4f656e0a41bf397c437d3bf9547651594c5f713b7df684bb",
+      "approvedGoalSha256": "fd13476e303c7a628d47c8cf26cedbaafded295d075e22c1ffe49fe4572d3c83",
+      "fieldSha256": {
+        "taskContent": "8dc53f0fe597a3aceeb8777853365fb7e3ba347d2610330578a482a79e6862dd",
+        "solutionContent": "86f60eaa2d33ba0091a1fb23e94cf6fd0ab1e6be0080a2096db0bc8a7e2a08a6",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "1aa9e5e02cd6893ca40ad00bedc03f1e420179d9bba2094bd71c7d18d25faf13",
+        "coveredGoalIds": "fda224aa4b2512146828188671f05d7b163ed741d07b8bd4fa85442300c6a9de"
+      },
+      "requiresSha256": "485dcce1d9a63e33a49ecaeab19474b986e531bdeb90108d19a1462133f0708f"
+    },
+    {
+      "caseIndex": 31,
+      "goalId": "c87597fd-4d54-5e9a-a3d0-9a2943d8153c",
+      "title": "Exponentielle Modelle auswerten",
+      "currentVerdict": "CHANGES_REQUIRED",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "CHANGES_REQUIRED",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "CHANGES_REQUIRED",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Ungerundeter Faktor, Schwelle und Verdopplung richtig; Aufgabenwortlaut und Rubrik müssen die bereits richtig erklärte offene Ungleichung übernehmen.",
+      "remainingFindings": [
+        {
+          "kind": "coverage",
+          "goalId": "fec30a5a-835a-4932-a436-d83549029486",
+          "fullContract": "Die lernende Person kann Exponentialfunktionen zur Beschreibung begrenzter und unbegrenzter Wachstums- und Zerfallsvorgänge verwenden und Ergebnisse im Kontext deuten.",
+          "reason": "Geprüft wird ausschließlich unbegrenztes Wachstum. Der ganze Vertrag umfasst zusätzlich begrenztes Wachstum beziehungsweise begrenzten Zerfall."
+        },
+        {
+          "kind": "wording",
+          "reason": "Bei stetigem strengem Wachstum hat die offene Überschreitungsmenge keinen ersten reellen Zeitpunkt. Die Lösung sagt dies schon richtig; Aufgabenaufforderung und Rubrik müssen Schwelle und Überschreitung unterscheiden."
+        }
+      ],
+      "candidateGoalSha256": "007edffdd7519c383c9f4a48de40524b9a647c34630c3c67e22315c58ff9733c",
+      "approvedGoalSha256": "3b10673e563a6824bd70a09b73f03d209ebaccba6f60e0b8d0964579e6e3e3b2",
+      "fieldSha256": {
+        "taskContent": "00abafe87d4a056c7657c07af0f0a750560feed75c61d31bd6e48aad48a78c9f",
+        "solutionContent": "c50bcd22b217898c6694f0d45d255a48fa3d19790fd2a34f75969c6b8ea11af8",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "91b7dad85c38121d8bddc64543311c41e1553a4bcf17c572599a6fe548a1e953",
+        "coveredGoalIds": "e5c2f88cafdac8e987ddcb7c7811888711f233b771c8715e5a26fa07b97933bf"
+      },
+      "requiresSha256": "e5c2f88cafdac8e987ddcb7c7811888711f233b771c8715e5a26fa07b97933bf"
+    },
+    {
+      "caseIndex": 32,
+      "goalId": "9634bfe1-39ea-5428-a042-c3f970f811a3",
+      "title": "Exponentialfunktionen und Ableitungsregeln anwenden",
+      "currentVerdict": "CHANGES_REQUIRED",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "CHANGES_REQUIRED",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Parameter, Halbwertszeit, e-Schreibweise, Modellvergleich und Produkt-/Kettenregel korrekt; ungedeckte e-Motivation und Regelprüfung entfernt.",
+      "remainingFindings": [
+        {
+          "kind": "coverage",
+          "goalId": "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+          "fullContract": "Die lernende Person kann exponentielle Wachstums- und Zerfallsprozesse in Tabellen, Graphen und Kontextbeschreibungen am gleichbleibenden Faktor in gleichen Zeitabständen erkennen und passende Exponentialfunktionen zuordnen.",
+          "reason": "Faktor und Kontext werden gedeutet; das Erkennen und Zuordnen über Tabellen und Graphen wird nicht geprüft."
+        },
+        {
+          "kind": "coverage",
+          "goalId": "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+          "fullContract": "Die lernende Person kann Verdopplungs- und Halbwertszeiten bestimmen, den Einfluss des Parameters a in $f(t)=b\\cdot a^t$ beschreiben und unterschiedliche Darstellungsmöglichkeiten (Term, Tabelle, Graph) verknüpfen.",
+          "reason": "Halbwertszeit und Parameter werden bestimmt; die zusätzlich verlangte Verknüpfung von Term, Tabelle und Graph fehlt."
+        }
+      ],
+      "candidateGoalSha256": "7fa457281c2635fa0a4438d0530c08e4e0a5c124b712e5908d4710eeeb93b390",
+      "approvedGoalSha256": "688c29e1d59dceae67a1a2796300d8529663e4b04c63782edbe18ee3093561c4",
+      "fieldSha256": {
+        "taskContent": "e2fbc83f594a9bbe6a6f6a144342e1985f1d971b681b3b7a66772a12dbf74b22",
+        "solutionContent": "d2c58ae7e4959e80ae875e395549df1229e158a0047f84b7e9c3dc70e8256bec",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "1eebe6d8459d904d9651f16c5b0a5ddb49a5efd30ec60310eeac94542adae52b",
+        "coveredGoalIds": "28c1de178d9537c03d6b223a536f6e9c687ee812b497b5f6a6357c2a20ea6380"
+      },
+      "requiresSha256": "4b5cbb796641313fae366df276cd6ee55a143515000dba82449e50021e6c6df1"
+    },
+    {
+      "caseIndex": 33,
+      "goalId": "3b1f0646-fd0e-5d9d-b515-a5a45417a005",
+      "title": "Trigonometrische Modelle bearbeiten",
+      "currentVerdict": "CHANGES_REQUIRED",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "CHANGES_REQUIRED",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Intervall endet korrekt bei etwa 19,10 Sekunden; restliche Rechnung stimmt.",
+      "remainingFindings": [
+        {
+          "kind": "coverage",
+          "goalId": "ecd13e54-ab0e-550f-9400-66e13306635d",
+          "fullContract": "Die lernende Person kann einfache trigonometrische Gleichungen wie $\\sin(x)=k$ oder $\\cos(x)=k$ lösen, ihre vollständigen Lösungsmengen mithilfe von Periodizität und Symmetrie formulieren und am Einheitskreis darstellen.",
+          "reason": "Bestimmt wird ein Zeitintervall innerhalb eines Umlaufs. Eine vollständige periodische Lösungsmenge und ihre Darstellung am Einheitskreis fehlen."
+        }
+      ],
+      "candidateGoalSha256": "f356f1c6df88d72dfbb1a0efb770bf182dbe6b0a79647e9e983b8bbf506a490d",
+      "approvedGoalSha256": "3e2940dadb54f754020320c9bded2870914527aadeea6d8e25efe675800d7fb8",
+      "fieldSha256": {
+        "taskContent": "82a4bcdef6d9cf4d7576d40b78fb593193a4003c1d9dc7bfea22b7f6ec2ac5ec",
+        "solutionContent": "cd72615c09cf8812e569365774d64eeb0f5a4110ced68e134e63558770549bd6",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "aa910b9f66aff455001fd5e6d7664468450aa5a39fecabd7b12b5375b2db6a1e",
+        "coveredGoalIds": "e347a88176952b5cc18f6124c52cd66a31bff43e737c9feb5f5001877ad2e65d"
+      },
+      "requiresSha256": "e347a88176952b5cc18f6124c52cd66a31bff43e737c9feb5f5001877ad2e65d"
+    },
+    {
+      "caseIndex": 36,
+      "goalId": "78f5003e-9578-545c-b6b3-4b02f31ffcd4",
+      "title": "Polynomdivision und numerische Gleichungsverfahren anwenden",
+      "currentVerdict": "CHANGES_REQUIRED",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "CHANGES_REQUIRED",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Newtonwerte 31/23 und 71749/54142 exakt richtig; Bisektion, Regula falsi und Vergleich stimmen.",
+      "remainingFindings": [
+        {
+          "kind": "coverage",
+          "goalId": "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76",
+          "fullContract": "Die lernende Person kann beim Newton-Verfahren die Nullstelle der Tangente im aktuellen Graphpunkt als nächsten Näherungswert bestimmen, die Iteration bei geeigneten Funktionen und Startwerten anwenden und Grenzen anhand von Ableitung und Näherungsverlauf begründen.",
+          "reason": "Iteration und Verfahrensgrenzen werden geprüft, aber die geometrische Bestimmung des nächsten Werts als Tangentennullstelle wird nicht verlangt oder bewertet. Diese Vorbereitung bleibt fachlich sinnvoll; volle Coverage folgt daraus nicht."
+        }
+      ],
+      "candidateGoalSha256": "aa74698f6875c4ceabe417d30062f5b540e057e76b63256ac218fab2d035103f",
+      "approvedGoalSha256": "eea266cfea3db87d61706edac29ed9baabc6033b1d178ab23d762551f94b5d58",
+      "fieldSha256": {
+        "taskContent": "87b8f0b4b5eecc93e5bfe6dbcfc4fb877db436d8fa1599d47f614e3a37aab9da",
+        "solutionContent": "f6fda7e7933fd6c3a172d8c4c98c7a221072ba426d52166c103d392348372254",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "d874d1a93d646b3faa4017f65affeae29e6952b138647b7361dec058a0675c16",
+        "coveredGoalIds": "7454ca04f470f860425b8fcca4eca8cd4b76b964fbe45b5427628c1330f46fe9"
+      },
+      "requiresSha256": "bd536b3b3e765bfc39ea213af8409a9f2af15afcd8a4b271ed331330c02fe992"
+    },
+    {
+      "caseIndex": 38,
+      "goalId": "c4cf4273-cadc-5eca-9b35-b3edd6de26ce",
+      "title": "Digitale Analysewerkzeuge einsetzen",
+      "currentVerdict": "PASS",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "PASS",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Eigene dokumentierte Werkzeughandlung jetzt ausdrücklich verlangt und bepunktet; Extremtypen mit hinreichendem Test begründet.",
+      "remainingFindings": [],
+      "candidateGoalSha256": "9ef4e73c081ae4460fa988ae0d64c826b0cea1c89a7d0242a6a2d11ac0011832",
+      "approvedGoalSha256": "9ef4e73c081ae4460fa988ae0d64c826b0cea1c89a7d0242a6a2d11ac0011832",
+      "fieldSha256": {
+        "taskContent": "4bc2653ec70108e1e0144f0265193f8653761c884589742eec7bdf5e026305b7",
+        "solutionContent": "f19ab4277a3ad745aa0989d34a7e3693b0c4b783007e803f6129bef140bb13bc",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "16daa0200c09dc27906821e9ec5117f44b3071abd8b233b613e827eec88fd168",
+        "coveredGoalIds": "be6cd280914e5a0acbd018c53a25fd88a875043eb36150e155fa1844a417fb0b"
+      },
+      "requiresSha256": "be6cd280914e5a0acbd018c53a25fd88a875043eb36150e155fa1844a417fb0b"
+    },
+    {
+      "caseIndex": 40,
+      "goalId": "6420e4be-fcb1-537a-8367-206431e5b14e",
+      "title": "Integralmodelle in Sachkontexten anwenden",
+      "currentVerdict": "CHANGES_REQUIRED",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "CHANGES_REQUIRED",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Rotationsvolumen 112π, mittlere Fläche 28π/3 und Litervergleich richtig; sachfremde inverse/uneigentliche Integrale und Zeitbestand entfernt.",
+      "remainingFindings": [
+        {
+          "kind": "coverage",
+          "goalId": "269675a9-13cd-4a3a-ab75-63794f5c9710",
+          "fullContract": "Die lernende Person kann Produktsummen und Inhalte orientierter Flächen in Sachsituationen deuten und ihre Bedeutung für Gesamtwirkungen qualitativ erläutern.",
+          "reason": "Kreisquerschnitte werden summiert; eine Interpretation orientierter Flächen einschließlich ihrer Vorzeichenbedeutung wird nicht verlangt."
+        },
+        {
+          "kind": "coverage",
+          "goalId": "19481f5d-94de-4a74-b765-cbebd1525994",
+          "fullContract": "Die lernende Person kann Volumina von Körpern berechnen, die durch Rotation von Flächen um die Abszissenachse entstehen, auch wenn Wurzelfunktionen als Randfunktionen auftreten.",
+          "reason": "Der lineare Radius wird integriert. Die ausdrückliche Vertragserweiterung auf Wurzelfunktionen als Randfunktionen wird nicht geprüft; der allgemeinere konkret passende Rotationsvertrag 0f180645 bleibt enthalten."
+        }
+      ],
+      "candidateGoalSha256": "5254bd1581d7ec1d4cbb6c39d862e9f7a404bef94cee9e46ee957a85676913cb",
+      "approvedGoalSha256": "225bc0abe455f1f586a9e19d0eb03a2ae914a4ce975925d3299285a075f09e74",
+      "fieldSha256": {
+        "taskContent": "2c85ec86faa2ee4d686c80d1693b8c8c7193fc506798f5a28f7c6275299cc675",
+        "solutionContent": "8ddc210fb3b72a850b154c83aa2d662d53e530bcf23b9c689119041862bf17c4",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "e8d9df4e5cf40691a050446d7abaea8b376708795728495d9e2fb348c457e262",
+        "coveredGoalIds": "427ebd12863df50464410193f800cae6ae41a3f2826c2d4573ed7885a6f780c4"
+      },
+      "requiresSha256": "95ee74b30cb2ff51630d599c46a5dadf87d1f2d7df968466108681fae50d5478"
+    },
+    {
+      "caseIndex": 41,
+      "goalId": "5886c6e8-2bea-5401-a834-9bd621b04bda",
+      "title": "Wachstums- und Bestandsmodelle vertiefen",
+      "currentVerdict": "CHANGES_REQUIRED",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "CHANGES_REQUIRED",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Qualitative logistische Untersuchung einschließlich Gleichgewicht und Stabilisierung richtig; keine unbenötigte Stammfunktion oder Exponential-Polynom-Familie mehr.",
+      "remainingFindings": [
+        {
+          "kind": "coverage",
+          "goalId": "848af536-c7e5-4df0-a4e9-d5d0ff15244c",
+          "fullContract": "Die lernende Person kann exponentielle, begrenzte und logistische Wachstumsmodelle vergleichen, Unterschiede im Verlauf fachlich herausarbeiten und die zugrunde liegenden Modellannahmen begründet einordnen.",
+          "reason": "Verglichen werden logistisches und einfaches exponentielles Wachstum. Das dritte ausdrücklich genannte begrenzte Wachstumsmodell wird nicht in den Vergleich einbezogen."
+        }
+      ],
+      "candidateGoalSha256": "7511030c6fa10837cc64d6a6063110f9171db4fa10cde0e46a9ac1e51beda515",
+      "approvedGoalSha256": "c2cb675a12d426bf78ecf1345214e80ae5711cff417c07217fa30dcd7df44e7e",
+      "fieldSha256": {
+        "taskContent": "59580170e83614f4ca5ea11b0c09c00ec1b49800314a4a453f22abd511f4d20b",
+        "solutionContent": "ea97224e35ee46da6a460ccef53e72ebd8c27539bc9952f2cd777aace908ddd6",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "f55cae853dad3c2230e3eb1565abd89154ea463da8f99409642a5bba12951240",
+        "coveredGoalIds": "6018bfda03e5d3c7d5906a65d8c1a3f3b841f32269b09dc8fd70d48640a15996"
+      },
+      "requiresSha256": "6018bfda03e5d3c7d5906a65d8c1a3f3b841f32269b09dc8fd70d48640a15996"
+    },
+    {
+      "caseIndex": 42,
+      "goalId": "226e5c66-b5ce-5b58-a11c-7ed64feadcc1",
+      "title": "Integrationsmethoden gezielt auswählen",
+      "currentVerdict": "PASS",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "PASS",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Alle drei Integrale stimmen; gleichwertige partielle Integration in Teil 2 wird anerkannt; tatsächlich geprüfte Methoden bleiben als Coverage.",
+      "remainingFindings": [],
+      "candidateGoalSha256": "d7e2383621a40e004ee94b6bac7542e2d3f4aa92c98ca4b04d47defe59746fba",
+      "approvedGoalSha256": "d7e2383621a40e004ee94b6bac7542e2d3f4aa92c98ca4b04d47defe59746fba",
+      "fieldSha256": {
+        "taskContent": "3a94683f0b4a4117fc2de1fa50fc2ff82ef3699ed676ee79e520a7fd966e5569",
+        "solutionContent": "28e62e0f2c3115dcda6ee8fca4cd07b97e94a6058f4d9f6d55a9153122437067",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "462dfe3091d08ae78cc217192bec5002bb36cf773245d109029fa6d3ce963766",
+        "coveredGoalIds": "a7148d771b22459028cf6547a5648795a736764e0be4c7a6876f6e21b61fea7e"
+      },
+      "requiresSha256": "0cd84b9af845b4e6683e7cc19f7028d3dfd1475119bf9a669454b4bac02a4be5"
+    },
+    {
+      "caseIndex": 43,
+      "goalId": "97fb270f-9ede-5fe0-9a1f-600ffbd65610",
+      "title": "Differenzialgleichungen im Kontext interpretieren",
+      "currentVerdict": "PASS",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "PASS",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Tatsächliches Richtungsfeld an zwölf Punkten, Lösungskurve und Langzeitverhalten verlangt und bepunktet; zweite Ordnung entfernt.",
+      "remainingFindings": [],
+      "candidateGoalSha256": "608887d5fad0baad2f8f67a031c5204398109c8368e041ddc499c221d7c2166a",
+      "approvedGoalSha256": "608887d5fad0baad2f8f67a031c5204398109c8368e041ddc499c221d7c2166a",
+      "fieldSha256": {
+        "taskContent": "904c654c2d23a39ecf5aac65c724504c918fc56ed89fc0aa5b65a8d04e229125",
+        "solutionContent": "cb5b976f360c45a76ef0843a339e089d1e5156344becc454cf556e1164f18de6",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "1c0d014c266d82744414587cb8d1b3bff0043baf126b3d315176a8f916ed8712",
+        "coveredGoalIds": "eb1e5f045f4f0b7c246ed565d6f85cebce91c04cd64bccafc8c8a2c0a8d86714"
+      },
+      "requiresSha256": "eb1e5f045f4f0b7c246ed565d6f85cebce91c04cd64bccafc8c8a2c0a8d86714"
+    },
+    {
+      "caseIndex": 51,
+      "goalId": "81823f27-0c92-5444-ac4e-32b83169f318",
+      "title": "Lineare Abbildungen mit Matrizen beschreiben",
+      "currentVerdict": "PASS",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "PASS",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Bilddreieck ist korrekt rechtwinklig mit Flächenfaktor 2; 2D-Projektion und Eigenvektor stimmen; dreidimensionale Scheinbeziehungen entfernt.",
+      "remainingFindings": [],
+      "candidateGoalSha256": "bafb5e21ba5f5699f76dfef1e474beac195897ea1559e1e6445128d8d06310f3",
+      "approvedGoalSha256": "bafb5e21ba5f5699f76dfef1e474beac195897ea1559e1e6445128d8d06310f3",
+      "fieldSha256": {
+        "taskContent": "71f4d5d5acef1537b27c837be0e0e04bde6cd2fa1dc9d838c2c5207592293109",
+        "solutionContent": "a05cd6341e7e2d532978c9f158aa17736136e71d6c92d525b4f8a4ad892d8700",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "5974db98e3d03fc910d0bd13fd003d6d46cde247469c1ceed675b4f3e40a5f29",
+        "coveredGoalIds": "2377b1a4cc6e758ead67990c7bc5031d4f638eff23596c003b0c122a38dfd03e"
+      },
+      "requiresSha256": "52c43f63df51d079574479a618fe6cba3cc1b0951cb607db4e3749eef9a54010"
+    },
+    {
+      "caseIndex": 52,
+      "goalId": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "title": "Zufallsexperimente und Modelle vergleichen",
+      "currentVerdict": "PASS",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "PASS",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Hypergeometrischer und binomialer Vergleich stimmt; keine unbewiesene Baum-/Tafel-Coverage mehr.",
+      "remainingFindings": [],
+      "candidateGoalSha256": "2dac36defd4be6d24f7c1db102b7ad4ccd33088bdb132e05c32c2d819b2ce65f",
+      "approvedGoalSha256": "2dac36defd4be6d24f7c1db102b7ad4ccd33088bdb132e05c32c2d819b2ce65f",
+      "fieldSha256": {
+        "taskContent": "ed3a490898c6972fae65b363dabc646c114eb67e523bf85d1c094230ed506823",
+        "solutionContent": "ec67bb2dce2badf19569bf70b95dd09f67a82ac911fe946767353a4e69141eea",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "a4cbfce38cbdff909c62c49630bfbba6c7d8b00000c1b4752ab7c2f7fb0a26c9",
+        "coveredGoalIds": "34a0473fd31acad373f18c4a441e4b8cd4041b07cf6dd7d82dfea4a26da335dd"
+      },
+      "requiresSha256": "a3184a46dec167ec7e0e30cb1194559f71f33bb96810ec547c5e23e935c9eb05"
+    },
+    {
+      "caseIndex": 53,
+      "goalId": "9cf020ee-4f6b-554e-97d6-eca3e2aabe99",
+      "title": "Verteilungen in Kontexten nutzen",
+      "currentVerdict": "CHANGES_REQUIRED",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "CHANGES_REQUIRED",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Binomialannahmen explizit, Normalapproximation mit Stetigkeitskorrektur und Einordnung korrekt.",
+      "remainingFindings": [
+        {
+          "kind": "coverage",
+          "goalId": "66f432e9-22d3-51a9-8787-35f91db30616",
+          "fullContract": "Die lernende Person kann geeignete Situationen als binomialverteilte Zufallsgrößen modellieren, anhand von Histogrammen typische Eigenschaften erkennen und die Eignung des Modells kritisch beurteilen.",
+          "reason": "Modellierung und Eignung werden behandelt, die im ganzen Vertrag verlangte Histogrammuntersuchung jedoch nicht."
+        },
+        {
+          "kind": "coverage",
+          "goalId": "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+          "fullContract": "Die lernende Person kann für einfache diskrete Zufallsgrößen Erwartungswert, Varianz und Standardabweichung bestimmen, diese im Kontext deuten und damit einfache Glücksspiele untersuchen.",
+          "reason": "Berechnet werden binomialer Erwartungswert und Standardabweichung. Der breitere Vertrag zu einfachen diskreten Verteilungen einschließlich Varianzdeutung und Glücksspieluntersuchung wird nicht vollständig geprüft; der passende binomiale Vertrag f7879354 bleibt."
+        }
+      ],
+      "candidateGoalSha256": "45a7d6681008105357229af16559e0fd3af50187dc55e7448054a4d9654f13bd",
+      "approvedGoalSha256": "ee200cd905d127e7b1fe23d005c339b6db70836cd03a2d125d90d1fa2e4e9be9",
+      "fieldSha256": {
+        "taskContent": "d8eabeb922162c991934ec2f31d32aa5232bbdce60ca8d96245c72857f34fb1f",
+        "solutionContent": "189610dcc26d1d6b8856222d27981e24423ad6e4061df22e0b8528ecb798e3ec",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "09789bf2cb28f614b0f9369d9f8548ba5802f5efd55a3e23ff215ba09d6ce3c7",
+        "coveredGoalIds": "2880ae2f134f799863c257a1fe28f3ff4c3aa469ac2057b3ed9f627da28f6a4b"
+      },
+      "requiresSha256": "b3ef0b6947318d81df251ad3db08f5fb0d7c39760ba98320268edbdf9624d998"
+    },
+    {
+      "caseIndex": 54,
+      "goalId": "99e45593-8509-5f51-832e-39ed2a9c10d9",
+      "title": "Hypothesentests durchführen und bewerten",
+      "currentVerdict": "PASS",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "PASS",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Verwerfungsbeginn 14 ist richtig; exakte obere Wahrscheinlichkeit 0,0326978543 kontrolliert das Niveau. Hypothesen und Typ-I-Fehler richtig.",
+      "remainingFindings": [],
+      "candidateGoalSha256": "59c82b68472a6f1796d538cf5cd09ecb2ba0946526be2f4bd2998304ea1a1125",
+      "approvedGoalSha256": "59c82b68472a6f1796d538cf5cd09ecb2ba0946526be2f4bd2998304ea1a1125",
+      "fieldSha256": {
+        "taskContent": "944f8187e6ce1ff37c5be84d94e8387be15bd2a8d1298d7058e16d64563b8f46",
+        "solutionContent": "ce659a504bc9a8ec7e9223b97de2cf72a04591965dcee185298edfd18ce5dfe0",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "d442c358f6b857b20ff31cb44a7aabfcc8b38a05fda092b4cbb8ac1c7ec1b0a1",
+        "coveredGoalIds": "8ca4ee0a30df37325f013f202a4299c6a3fedc6af1fb0c99b7a7b7a7d5ec73c6"
+      },
+      "requiresSha256": "44f54f7a49c2d2bf646f3b3ddb36b204b5d9cabb6215c73be7fcb63054c2434a"
+    },
+    {
+      "caseIndex": 56,
+      "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+      "title": "Statistische Daten und Verteilungen abgleichen",
+      "currentVerdict": "CHANGES_REQUIRED",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "CHANGES_REQUIRED",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Intervallunabhängigkeit jetzt ausdrückliche Modellannahme; Summe Pois(6), Randwahrscheinlichkeit und Grenzen der Simulation stimmen.",
+      "remainingFindings": [
+        {
+          "kind": "coverage",
+          "goalId": "84069c5e-5526-57c1-9417-a886ccfd3f66",
+          "fullContract": "Die lernende Person kann Histogramme und Kennwerte von Datensätzen mit einfachen theoretischen Verteilungen vergleichen, Abweichungen beschreiben und die Eignung eines Modells beurteilen.",
+          "reason": "Die Aufgabe vergleicht Klassenhäufigkeiten mit erwarteten Häufigkeiten. Histogramme und Kennwerte eines Datensatzes werden nicht ausgewertet; die betreffende Gesamtkompetenz ist deshalb zu breit."
+        },
+        {
+          "kind": "coverage",
+          "goalId": "c9a897ca-a0a2-5895-bbc4-23b20840c548",
+          "fullContract": "Die lernende Person kann die Poisson-Verteilung als Näherung der Binomialverteilung für seltene Ereignisse motivieren, Situationen pro Zeit- oder Flächeneinheit modellieren, Parameter bestimmen und zugehörige Wahrscheinlichkeiten in konkreten Beispielen berechnen.",
+          "reason": "Das Poisson-Modell und lambda=2 sind vorgegeben. Weder seine Motivation als Binomialnäherung noch eine eigene Parameterbestimmung werden verlangt. Die konkrete Poissonaufgabe bleibt gültig, erhält aber keinen unzutreffenden ganzen Coverage-Vertrag."
+        }
+      ],
+      "candidateGoalSha256": "5abe67d0853c95ad237daf601127e0846b7545f04f6e67a7876f57a08e8ec119",
+      "approvedGoalSha256": "3b683cd17e9e1a3efdf25737d583325bb35f3328e4dbc330e29bc7ed6f5f1db1",
+      "fieldSha256": {
+        "taskContent": "730660cc9b1941c01120f9039dc60dda93dcecf2476ae7e73b589907d8d153b9",
+        "solutionContent": "e0ece711ac2c1d059368e5abf01db705ddf9d8a0a5f0d3be5dbfb740680ac06f",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "3044f61b08585db115044a90a27dd8635becd16f27a2d2af3bf3a66c6b0e9af0",
+        "coveredGoalIds": "c59f8161224a613c5384ce15a1d7b2a497015e44059966e0979e966d13510c87"
+      },
+      "requiresSha256": "c64f9f79fb4a84899a2dd922f8a86ffa114792aa2a78203943d3cc4444a4a49d"
+    },
+    {
+      "caseIndex": 57,
+      "goalId": "34dc8c9b-f61b-50ca-8daa-0d46277c7b32",
+      "title": "Mandelbrot-Parameterebene softwaregestützt untersuchen",
+      "currentVerdict": "PASS",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "PASS",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Unveränderte vollständige Software-/Bahnenaufgabe korrekt; komplexe Multiplikation ersetzt sachfremde allgemeine Einheitswurzeln in der Vorbereitung.",
+      "remainingFindings": [],
+      "candidateGoalSha256": "d9a3292f913cd9e1bb889ae7e321b662aef12c6014b0f8172a5a47112ef171ce",
+      "approvedGoalSha256": "d9a3292f913cd9e1bb889ae7e321b662aef12c6014b0f8172a5a47112ef171ce",
+      "fieldSha256": {
+        "taskContent": "b9a7eef2333c0377cccecf85bede8eb77ced2a0b457938a6c62e0dc3d85b6fc4",
+        "solutionContent": "f0792ce7d2cd77357716c4d9cf8d6ad52124ba5f0266a0ce5503de4a0ecda064",
+        "taskContentEn": "93ed4c139553ba74df098bc336e867ebc2b9d1dc24ad40fb2e79a9764e9f3f1b",
+        "solutionContentEn": "d38ea497ba695ebf3282eefa42082afa15e3c57ce8253812ef1ab93bc5b5b083",
+        "scoring": "88aa2f0ce2dd4ad77c4c810f42bddd53647b07f04f4a4b74e9a23c2b00670025",
+        "coveredGoalIds": "85133098372fbaa9fe45459ebfe3924a64775e329460aacc0fddf266f65fd681"
+      },
+      "requiresSha256": "85133098372fbaa9fe45459ebfe3924a64775e329460aacc0fddf266f65fd681"
+    },
+    {
+      "caseIndex": 58,
+      "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
+      "title": "Komplexe Zahlen sicher anwenden",
+      "currentVerdict": "CHANGES_REQUIRED",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "CHANGES_REQUIRED",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Quadratische Gleichung, Zahlenebene, Betrag/Argument und i-Matrix korrekt; algebraische Division und Einheitswurzeln entfernt.",
+      "remainingFindings": [
+        {
+          "kind": "coverage",
+          "goalId": "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+          "fullContract": "Die lernende Person kann Addition, Subtraktion und Multiplikation komplexer Zahlen sowie deren Division durch eine von null verschiedene komplexe Zahl in der Gaußschen Zahlenebene geometrisch deuten, insbesondere als Verschiebung, Streckung oder Drehung.",
+          "reason": "Geometrisch geprüft wird die Multiplikation mit i. Der ganze Vertrag verlangt zusätzlich Addition, Subtraktion und insbesondere Division in der Gaußschen Ebene; diese Leistungen fehlen."
+        }
+      ],
+      "candidateGoalSha256": "345ccf12283e22718bd3fdc499a568bc27ffc4b0e7ada8f449688279d6f931b8",
+      "approvedGoalSha256": "505ce07e35451e2799cdf4b1ea64f1332c22acde375550cc5d766e547561832b",
+      "fieldSha256": {
+        "taskContent": "c2bbe28b1a46f60410d7ca3509c264a080c23b325066701c12997777d14654b6",
+        "solutionContent": "818b306ffbdb352f5bf1e875f097599cf4effbb7ccfaa935c031b583707bb11d",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "ce8193a6d49f0c82ddf0d1ddbbe190fbeedae45cd7c192bc2377d00e7ac8c14d",
+        "coveredGoalIds": "088ab47a25407bc2e44bf7845ab6fae4e21b8164d050d707f53a2cdf80f81cdf"
+      },
+      "requiresSha256": "088ab47a25407bc2e44bf7845ab6fae4e21b8164d050d707f53a2cdf80f81cdf"
+    },
+    {
+      "caseIndex": 59,
+      "goalId": "e45a39e5-cc9b-577e-a28d-691319410b9a",
+      "title": "Aussagen präzise begründen und prüfen",
+      "currentVerdict": "PASS",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "PASS",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Identitätsbeweis, Gegenbeispiel und allgemeine Ersatz-Aussage korrekt; Rubrik präzisiert, sachfremde Beweisverfahren entfernt.",
+      "remainingFindings": [],
+      "candidateGoalSha256": "5b350d0856907e46139b43d8822505735398adb2a19ffbbbcba16b95c219f8da",
+      "approvedGoalSha256": "5b350d0856907e46139b43d8822505735398adb2a19ffbbbcba16b95c219f8da",
+      "fieldSha256": {
+        "taskContent": "2126da7955804910b1dcf704369ce54be39e5e2701d699cb482813c813970b02",
+        "solutionContent": "7d0fbf8a83716bee0b18ab9e1695b0413dcc67a84d3a995261b4b9245f3f7fe1",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "45416e7f8e1b595ee5031360ee9180a20d24afdc6228be37378499210ebde4e8",
+        "coveredGoalIds": "8289286fb178b38a2e8b55d86c50a34abbfe6f37d60aeae6f858c85e0c29ad30"
+      },
+      "requiresSha256": "64b5aa28c89ae2ef294c6c5d276aff6d9e5981a82b45cedbf1d5dd47f4d68c7e"
+    },
+    {
+      "caseIndex": 69,
+      "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+      "title": "Kehrwertpotenzen und Quadratwurzel vergleichen",
+      "currentVerdict": "PASS",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "PASS",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Aufgabe und vollständige Coverage bleiben tragfähig; falscher Hauptsatz/Ableitungsbedarf des Eigenschaftenziels entfernt, echte Ableitungsvorbereitung bleibt.",
+      "remainingFindings": [],
+      "candidateGoalSha256": "866b08ae667d4b03e6d223e678223147f1a0ed1a77d2d5302e694060eb8d1338",
+      "approvedGoalSha256": "866b08ae667d4b03e6d223e678223147f1a0ed1a77d2d5302e694060eb8d1338",
+      "fieldSha256": {
+        "taskContent": "f43f4ce7c386486357e8e768b6ca2d16247e479044f3f239c800a66008b4349b",
+        "solutionContent": "d055debf26e9b70836c307e1cc8d0a0206f58d9e9ccc3a0fecb007d0c3f3146f",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "afbc4a999bf383a31b2499661d4a7ed8877049cafc5a66c329e20c76aa03a405",
+        "coveredGoalIds": "0f515fa4cc7ded7e7f9fac81157cf4d4e92bc6bb1799e408a14eb34c10e8e347"
+      },
+      "requiresSha256": "0f515fa4cc7ded7e7f9fac81157cf4d4e92bc6bb1799e408a14eb34c10e8e347"
+    },
+    {
+      "caseIndex": 70,
+      "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+      "title": "Einen unbekannten Graphen gezielt umformen",
+      "currentVerdict": "PASS",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "PASS",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Allgemeine Punktabbildung und Transformationen einschließlich Ableitungssymmetrie vollständig; echte Ableitungsvorbereitung bleibt.",
+      "remainingFindings": [],
+      "candidateGoalSha256": "54c98d823f0ba0ad43fca99d83eeeb63afe2bd081625840662583824183fea86",
+      "approvedGoalSha256": "54c98d823f0ba0ad43fca99d83eeeb63afe2bd081625840662583824183fea86",
+      "fieldSha256": {
+        "taskContent": "2cc23d62c9af5b5fdcd6e896b875e4b47bd13df9b0e726b65bd9d69c181e67c0",
+        "solutionContent": "05418046d5d7be176e8bcc9bf5c45d7f0e092388c5f7d297a16f3ff7c9e1c0e8",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "0263e1dab901f81667fdc4c427f7b4e6f3a6d62d586f190b6e3643e074edc0c8",
+        "coveredGoalIds": "e3a6f8764930b972525ac99709f044afc8710bde06c9585dd0fccf4d68ba427a"
+      },
+      "requiresSha256": "e3a6f8764930b972525ac99709f044afc8710bde06c9585dd0fccf4d68ba427a"
+    },
+    {
+      "caseIndex": 84,
+      "goalId": "d110ab96-275e-5ccb-8851-e02725baf31c",
+      "title": "Zylinder-, Kegel- und Kugelvolumen vergleichen",
+      "currentVerdict": "PASS",
+      "afterExactlyApprovedDelta": "PASS",
+      "taskSolutionRubricVerdict": "PASS",
+      "preparationVerdict": "PASS",
+      "coverageVerdict": "PASS",
+      "languageAndMetadataVerdict": "PASS",
+      "reason": "Vollständiger Zylinder-/Kegel-/Kugelvergleich korrekt; Reparatur 415bd→f0a49 bereits in Basis enthalten und unverändert.",
+      "remainingFindings": [],
+      "candidateGoalSha256": "1911c356f00a7fb68369baa3930538dbdd0abefb0390801bf472bc8834436960",
+      "approvedGoalSha256": "1911c356f00a7fb68369baa3930538dbdd0abefb0390801bf472bc8834436960",
+      "fieldSha256": {
+        "taskContent": "c15d3495626c3294a91e763f3c1cf3bb4a21a590404cadc220abe77b2d0a13d4",
+        "solutionContent": "b4ae115e962893571d34fb9918b0448ad5bf887dd07a032a633919834bf4a82d",
+        "taskContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "solutionContentEn": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "scoring": "c6eca4f563bbebc751aaafbbbe2cbcb17c6be9ceb38033e90ddeefc63f24b4e6",
+        "coveredGoalIds": "fc273dd3cc46b132e52d91ed883997933012e7be156306538c4808b519297840"
+      },
+      "requiresSha256": "fc273dd3cc46b132e52d91ed883997933012e7be156306538c4808b519297840"
+    }
+  ],
+  "supportReviews": [
+    {
+      "goalId": "8fa32a68-46eb-414e-8292-a4c4052b2522",
+      "verdict": "PASS",
+      "candidateGoalSha256": "4a7624910b3e72d3b8cfa8871fc3f923b7055a49dfd7d88ea64a939e4158798f",
+      "requires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+      ],
+      "reason": "Eigenschaften von a^x und Darstellungszuordnung brauchen Funktionsbegriff und Werte, keine Ableitung."
+    },
+    {
+      "goalId": "5fe4218e-4fb0-5339-8764-c989befa244e",
+      "verdict": "PASS",
+      "candidateGoalSha256": "572b4355cd27807c00eb9b9dc02118c47ebe4b9e0d3bf01913a62b716922012e",
+      "requires": [
+        "ab720928-9dbc-53c2-a1f8-865dda92122d",
+        "4ae9e316-509f-517d-bd94-a165817af24f",
+        "2143e9e8-b176-545b-b2fa-91bbb6c8cf5c"
+      ],
+      "reason": "Qualitative DGL-Modellbildung braucht Änderungsratenverständnis, keinen Hauptsatz; der separate Lösungsvertrag 28cdee bleibt unverändert."
+    },
+    {
+      "goalId": "9b339361-7719-573d-a913-432246c502ee",
+      "verdict": "PASS",
+      "candidateGoalSha256": "980624b1d255842360b196b418b9e6241ffaa420ebc6d494c7441567f0482a09",
+      "requires": [
+        "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "9a0987cd-1e6e-5c09-a602-9fda43b8f655"
+      ],
+      "reason": "Quadratische Mandelbrot-Iteration braucht komplexe Multiplikation und den erhaltenen Betrag/Polarform-Vertrag, keine allgemeinen Einheitswurzeln."
+    },
+    {
+      "goalId": "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+      "verdict": "PASS",
+      "candidateGoalSha256": "8f725f2f8702ba15f04a65068766576c6a087f458d225a2d137cf6dc4e74643c",
+      "requires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+        "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+      ],
+      "reason": "Graphspiegelungen sind Funktionsdarstellungen; weder Integration noch Ableitung wird benötigt. Echte Ableitungsbedarfe von 62a1c6 bleiben erhalten."
+    },
+    {
+      "goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce",
+      "verdict": "PASS",
+      "candidateGoalSha256": "5485770a11ab0a7b758613f8aca36a32a308107e46b595463e58ae009edfdc1d",
+      "requires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+        "26f668a0-6425-5466-9cf7-6295dd189005"
+      ],
+      "reason": "Eigenschaften von Kehrwertpotenzen brauchen Funktions- und negative-Potenzen-Grundlagen; die echte Ableitung über 651742→858113 bleibt erhalten."
+    }
+  ],
+  "alreadyAppliedSupportConfirmed": {
+    "goalId": "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+    "absentPrerequisite": "f0a49da2-018b-4cda-adbd-27047b610a0f",
+    "expectedGoalSha256": "6eb6ba7a6c88984c129317f18c877ae548c2dfbe2e0d612dda3df1d09d028cde"
+  },
+  "approvedNarrowFollowup": [
+    {
+      "goalId": "e7013f6e-6051-5c88-8b4b-e054dc8db4cc",
+      "caseIndex": 29,
+      "expectedGoalSha256": "14d3c53ef0978df0c8ca0e3f442da4e734b02a71b11bbf13b815d117318b0c42",
+      "approvedGoalSha256": "60868dac1297806a9d051592eb617326b2217ba38d1c2c602a5fb62b53559537",
+      "changes": [
+        {
+          "field": "examData.coveredGoalIds",
+          "expected": [
+            "d8c9eb57-1614-4c1d-829a-618134def352",
+            "502ecaa7-cca6-5c51-a1cc-da09a7b2382c",
+            "0b23413e-a334-5dd3-98e5-de067208819e",
+            "1b70498a-62a0-5a84-99dd-476b8af68da6",
+            "2d75fd3f-c68b-4a11-89ae-19a30fefc47a",
+            "29ce4053-b5c5-4a82-9ff0-3acc492284d8"
+          ],
+          "replacement": [
+            "d8c9eb57-1614-4c1d-829a-618134def352",
+            "502ecaa7-cca6-5c51-a1cc-da09a7b2382c",
+            "1b70498a-62a0-5a84-99dd-476b8af68da6",
+            "2d75fd3f-c68b-4a11-89ae-19a30fefc47a",
+            "29ce4053-b5c5-4a82-9ff0-3acc492284d8"
+          ]
+        }
+      ],
+      "independentDecision": "APPROVED_EXACT_DELTA",
+      "requiresAndOtherFieldsPreserved": true
+    },
+    {
+      "goalId": "296fdd9f-59a4-5d3d-9512-cfc78c8ac3e0",
+      "caseIndex": 30,
+      "expectedGoalSha256": "6353644a14155cba4f656e0a41bf397c437d3bf9547651594c5f713b7df684bb",
+      "approvedGoalSha256": "fd13476e303c7a628d47c8cf26cedbaafded295d075e22c1ffe49fe4572d3c83",
+      "changes": [
+        {
+          "field": "examData.coveredGoalIds",
+          "expected": [
+            "623cd47f-6f9e-58a7-911c-69e4a8609a27",
+            "845440ce-f63f-5835-903f-739145ca27bd",
+            "0264591c-fdd7-41c6-9fb9-7cb3a03f7658"
+          ],
+          "replacement": [
+            "623cd47f-6f9e-58a7-911c-69e4a8609a27"
+          ]
+        }
+      ],
+      "independentDecision": "APPROVED_EXACT_DELTA",
+      "requiresAndOtherFieldsPreserved": true
+    },
+    {
+      "goalId": "c87597fd-4d54-5e9a-a3d0-9a2943d8153c",
+      "caseIndex": 31,
+      "expectedGoalSha256": "007edffdd7519c383c9f4a48de40524b9a647c34630c3c67e22315c58ff9733c",
+      "approvedGoalSha256": "3b10673e563a6824bd70a09b73f03d209ebaccba6f60e0b8d0964579e6e3e3b2",
+      "changes": [
+        {
+          "field": "examData.coveredGoalIds",
+          "expected": [
+            "ab720928-9dbc-53c2-a1f8-865dda92122d",
+            "fec30a5a-835a-4932-a436-d83549029486"
+          ],
+          "replacement": [
+            "ab720928-9dbc-53c2-a1f8-865dda92122d"
+          ]
+        },
+        {
+          "field": "examData.taskContent",
+          "expected": "Eine Bakterienkultur wird zu Beginn mit $500$ Bakterien angesetzt. Nach $4$ Stunden sind $980$ Bakterien vorhanden. Die Entwicklung soll mit einer Exponentialfunktion\n$$\nN(t)=N_0\\cdot a^t\n$$\nmodelliert werden.\n\n1. Bestimmen Sie $N_0$ und den Wachstumsfaktor $a$.\n2. Geben Sie die Funktionsgleichung an.\n3. Berechnen Sie, nach wie vielen Stunden die Anzahl $2000$ erstmals überschritten wird.\n4. Bestimmen Sie die Verdopplungszeit und deuten Sie das Ergebnis.",
+          "replacement": "Eine Bakterienkultur wird zu Beginn mit $500$ Bakterien angesetzt. Nach $4$ Stunden sind $980$ Bakterien vorhanden. Die Entwicklung soll mit einer Exponentialfunktion\n$$\nN(t)=N_0\\cdot a^t\n$$\nmodelliert werden.\n\n1. Bestimmen Sie $N_0$ und den Wachstumsfaktor $a$.\n2. Geben Sie die Funktionsgleichung an.\n3. Bestimmen Sie die Schwellenzeit $t_*$ mit $N(t_*)=2000$ und geben Sie an, für welche Zeiten $t$ die Anzahl $2000$ überschritten wird.\n4. Bestimmen Sie die Verdopplungszeit und deuten Sie das Ergebnis."
+        },
+        {
+          "field": "examData.scoring.steps[2].description",
+          "expected": "Zeitpunkt für das Überschreiten von 2000 korrekt berechnet",
+          "replacement": "Schwellenzeit für N(t)=2000 korrekt berechnet und Überschreitung für t>t_* angegeben"
+        }
+      ],
+      "independentDecision": "APPROVED_EXACT_DELTA",
+      "requiresAndOtherFieldsPreserved": true
+    },
+    {
+      "goalId": "9634bfe1-39ea-5428-a042-c3f970f811a3",
+      "caseIndex": 32,
+      "expectedGoalSha256": "7fa457281c2635fa0a4438d0530c08e4e0a5c124b712e5908d4710eeeb93b390",
+      "approvedGoalSha256": "688c29e1d59dceae67a1a2796300d8529663e4b04c63782edbe18ee3093561c4",
+      "changes": [
+        {
+          "field": "examData.coveredGoalIds",
+          "expected": [
+            "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+            "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+            "c3c057a3-caf9-44a5-ae60-639e3119e94a",
+            "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+            "dc69a261-31c9-5c6b-af71-ae27877a3dc1",
+            "adcac2a7-e763-5442-abf2-866532fedcda",
+            "9db266a2-1889-5792-82b0-a7463f0832f1",
+            "1341c20b-87ab-51e7-bd4a-50166c27806e",
+            "d0a9e407-e654-5940-958f-6f608bf3d654"
+          ],
+          "replacement": [
+            "c3c057a3-caf9-44a5-ae60-639e3119e94a",
+            "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+            "dc69a261-31c9-5c6b-af71-ae27877a3dc1",
+            "adcac2a7-e763-5442-abf2-866532fedcda",
+            "9db266a2-1889-5792-82b0-a7463f0832f1",
+            "1341c20b-87ab-51e7-bd4a-50166c27806e",
+            "d0a9e407-e654-5940-958f-6f608bf3d654"
+          ]
+        }
+      ],
+      "independentDecision": "APPROVED_EXACT_DELTA",
+      "requiresAndOtherFieldsPreserved": true
+    },
+    {
+      "goalId": "3b1f0646-fd0e-5d9d-b515-a5a45417a005",
+      "caseIndex": 33,
+      "expectedGoalSha256": "f356f1c6df88d72dfbb1a0efb770bf182dbe6b0a79647e9e983b8bbf506a490d",
+      "approvedGoalSha256": "3e2940dadb54f754020320c9bded2870914527aadeea6d8e25efe675800d7fb8",
+      "changes": [
+        {
+          "field": "examData.coveredGoalIds",
+          "expected": [
+            "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+            "ecd13e54-ab0e-550f-9400-66e13306635d"
+          ],
+          "replacement": [
+            "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464"
+          ]
+        }
+      ],
+      "independentDecision": "APPROVED_EXACT_DELTA",
+      "requiresAndOtherFieldsPreserved": true
+    },
+    {
+      "goalId": "78f5003e-9578-545c-b6b3-4b02f31ffcd4",
+      "caseIndex": 36,
+      "expectedGoalSha256": "aa74698f6875c4ceabe417d30062f5b540e057e76b63256ac218fab2d035103f",
+      "approvedGoalSha256": "eea266cfea3db87d61706edac29ed9baabc6033b1d178ab23d762551f94b5d58",
+      "changes": [
+        {
+          "field": "examData.coveredGoalIds",
+          "expected": [
+            "46166788-4a8f-53d5-9fe9-77b0a018d7ee",
+            "51e80e7b-df31-5d97-97f9-4c6e26eb7416",
+            "f40fcaf7-c630-589c-9f48-6c9e69da0b9d",
+            "47400de4-b0e4-5bb6-a1bd-bd2beee616bb",
+            "70a21623-6c87-55ae-b534-ab45a3b9b1d2",
+            "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76"
+          ],
+          "replacement": [
+            "46166788-4a8f-53d5-9fe9-77b0a018d7ee",
+            "51e80e7b-df31-5d97-97f9-4c6e26eb7416",
+            "f40fcaf7-c630-589c-9f48-6c9e69da0b9d",
+            "47400de4-b0e4-5bb6-a1bd-bd2beee616bb",
+            "70a21623-6c87-55ae-b534-ab45a3b9b1d2"
+          ]
+        }
+      ],
+      "independentDecision": "APPROVED_EXACT_DELTA",
+      "requiresAndOtherFieldsPreserved": true
+    },
+    {
+      "goalId": "6420e4be-fcb1-537a-8367-206431e5b14e",
+      "caseIndex": 40,
+      "expectedGoalSha256": "5254bd1581d7ec1d4cbb6c39d862e9f7a404bef94cee9e46ee957a85676913cb",
+      "approvedGoalSha256": "225bc0abe455f1f586a9e19d0eb03a2ae914a4ce975925d3299285a075f09e74",
+      "changes": [
+        {
+          "field": "examData.coveredGoalIds",
+          "expected": [
+            "34604a97-0c64-5b06-81e2-6ac818732d60",
+            "0f180645-37ce-5b6b-8a36-ad7b31168b1a",
+            "269675a9-13cd-4a3a-ab75-63794f5c9710",
+            "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+            "19481f5d-94de-4a74-b765-cbebd1525994"
+          ],
+          "replacement": [
+            "34604a97-0c64-5b06-81e2-6ac818732d60",
+            "0f180645-37ce-5b6b-8a36-ad7b31168b1a",
+            "23c8b5f9-ab35-4071-a3d4-b76a669a0995"
+          ]
+        }
+      ],
+      "independentDecision": "APPROVED_EXACT_DELTA",
+      "requiresAndOtherFieldsPreserved": true
+    },
+    {
+      "goalId": "5886c6e8-2bea-5401-a834-9bd621b04bda",
+      "caseIndex": 41,
+      "expectedGoalSha256": "7511030c6fa10837cc64d6a6063110f9171db4fa10cde0e46a9ac1e51beda515",
+      "approvedGoalSha256": "c2cb675a12d426bf78ecf1345214e80ae5711cff417c07217fa30dcd7df44e7e",
+      "changes": [
+        {
+          "field": "examData.coveredGoalIds",
+          "expected": [
+            "df7338ef-65ba-5ece-8aec-7f520dfe5710",
+            "ccd83f05-a0ae-4cd1-8917-24793a219fee",
+            "886caebc-a042-4a94-91f9-6dc184203c42",
+            "848af536-c7e5-4df0-a4e9-d5d0ff15244c"
+          ],
+          "replacement": [
+            "df7338ef-65ba-5ece-8aec-7f520dfe5710",
+            "ccd83f05-a0ae-4cd1-8917-24793a219fee",
+            "886caebc-a042-4a94-91f9-6dc184203c42"
+          ]
+        }
+      ],
+      "independentDecision": "APPROVED_EXACT_DELTA",
+      "requiresAndOtherFieldsPreserved": true
+    },
+    {
+      "goalId": "9cf020ee-4f6b-554e-97d6-eca3e2aabe99",
+      "caseIndex": 53,
+      "expectedGoalSha256": "45a7d6681008105357229af16559e0fd3af50187dc55e7448054a4d9654f13bd",
+      "approvedGoalSha256": "ee200cd905d127e7b1fe23d005c339b6db70836cd03a2d125d90d1fa2e4e9be9",
+      "changes": [
+        {
+          "field": "examData.coveredGoalIds",
+          "expected": [
+            "66f432e9-22d3-51a9-8787-35f91db30616",
+            "8c32d941-b51c-5663-951c-a610f8900f76",
+            "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+            "f7879354-1a82-4195-8e3c-a339a820439c"
+          ],
+          "replacement": [
+            "8c32d941-b51c-5663-951c-a610f8900f76",
+            "f7879354-1a82-4195-8e3c-a339a820439c"
+          ]
+        }
+      ],
+      "independentDecision": "APPROVED_EXACT_DELTA",
+      "requiresAndOtherFieldsPreserved": true
+    },
+    {
+      "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+      "caseIndex": 56,
+      "expectedGoalSha256": "5abe67d0853c95ad237daf601127e0846b7545f04f6e67a7876f57a08e8ec119",
+      "approvedGoalSha256": "3b683cd17e9e1a3efdf25737d583325bb35f3328e4dbc330e29bc7ed6f5f1db1",
+      "changes": [
+        {
+          "field": "examData.coveredGoalIds",
+          "expected": [
+            "84069c5e-5526-57c1-9417-a886ccfd3f66",
+            "c9a897ca-a0a2-5895-bbc4-23b20840c548"
+          ],
+          "replacement": []
+        }
+      ],
+      "independentDecision": "APPROVED_EXACT_DELTA",
+      "requiresAndOtherFieldsPreserved": true
+    },
+    {
+      "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
+      "caseIndex": 58,
+      "expectedGoalSha256": "345ccf12283e22718bd3fdc499a568bc27ffc4b0e7ada8f449688279d6f931b8",
+      "approvedGoalSha256": "505ce07e35451e2799cdf4b1ea64f1332c22acde375550cc5d766e547561832b",
+      "changes": [
+        {
+          "field": "examData.coveredGoalIds",
+          "expected": [
+            "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+            "eda8580e-1f10-5dbd-9aaf-92367f40a6bd",
+            "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+            "a7fb1a7a-8315-5bcb-842e-48293293dfcc"
+          ],
+          "replacement": [
+            "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+            "eda8580e-1f10-5dbd-9aaf-92367f40a6bd",
+            "9a0987cd-1e6e-5c09-a602-9fda43b8f655"
+          ]
+        }
+      ],
+      "independentDecision": "APPROVED_EXACT_DELTA",
+      "requiresAndOtherFieldsPreserved": true
+    }
+  ],
+  "assetsInspected": [
+    {
+      "path": "app/public/assets/abi/2026_1/image5.png",
+      "sha256": "beac6202cd11f6aee8770be78d9713543bb8d51154fc1504f79b4f8b9c18e980",
+      "visualReview": "PASS: unchanged, no contradictory mathematical data; placeholder diagram or correctly labeled tree"
+    },
+    {
+      "path": "app/public/assets/abi/2026_1/image6.de.png",
+      "sha256": "4add94ba459b445c9331500cd8e6de9e012fd6f1b1f5eadebea57cb077297a08",
+      "visualReview": "PASS: unchanged, no contradictory mathematical data; placeholder diagram or correctly labeled tree"
+    },
+    {
+      "path": "app/public/assets/abi/2026_1/image6.en.png",
+      "sha256": "3c274b25a42ab0b782fdc8010190b03c7520281a5a9aa564c90724858bdc4d2c",
+      "visualReview": "PASS: unchanged, no contradictory mathematical data; placeholder diagram or correctly labeled tree"
+    }
+  ],
+  "verification": {
+    "regressionCommand": "python3 scripts/test_math_upper_assessment_candidates.py -v",
+    "regressionResult": "22 tests PASS, exit 0, independently run in this review",
+    "regressionScriptSha256": "8fc9260b7bd0d0b2c7c2a8504fac9f7e554fb65b631ecf92fe9212e58828ceae",
+    "fullGraphValidation": "PASS for input candidate and in-memory exact approved followup, includes inherited requirements",
+    "raw67Preservation": "PASS comparing actual base and actual candidate raw goal substrings",
+    "independentNumericalChecks": "Exact Fraction Markov iteration/fixed point/reconstruction and Newton; independent binomial sums for n=2000/200/400; trig interval, exponential thresholds and Poisson tail all agree.",
+    "originalCandidateContextDelta": {
+      "changedEndpointContexts": 19,
+      "newlyUnreachableOrdinaryGoals": 37,
+      "applicabilityFromRequiresContextChanges": 4
+    },
+    "followupGraphDelta": "None: the exact approved followup changes no requires, contains, applicability, scope roles, IDs, thresholds or point allocations."
+  },
+  "releaseBoundary": {
+    "intrinsicAfterExactDelta": "APPROVED for these 28 endpoints and five reviewed support changes only",
+    "sourceOrScopeApproval": false,
+    "m7OverallApproval": false,
+    "liveActivationApproval": false,
+    "existingMasteryRemainsValid": true,
+    "newLearnerQualificationState": false,
+    "releaseMetadataMayChangeOnly": [
+      "examData.reviewStatus",
+      "examData.reviewNote"
+    ],
+    "requiredIntegrationEvidence": "Apply only exact bound replacements, confirm approved goal/field hashes before release metadata updates, retain historical receipts, re-run real complete PC projection/inventory and readiness against the final shared canon. Existing 37 route losses, 19 contexts and four applicability-context changes remain visible for integration.",
+    "separateRootCorrectionsExcluded": [
+      "c9d0500 coverage removal",
+      "4c319dfd 0c7bbd3f to f76d00dc preparation replacement"
+    ]
+  }
+}

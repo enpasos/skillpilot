@@ -1,0 +1,419 @@
+{
+  "97fb270f-9ede-5fe0-9a1f-600ffbd65610": {
+    "id": "97fb270f-9ede-5fe0-9a1f-600ffbd65610",
+    "title": "Differenzialgleichungen im Kontext interpretieren",
+    "description": "Die lernende Person kann eine Q1-Klausuraufgabe zu Richtungsfeldern oder Differenzialgleichungen selbstständig bearbeiten und das Modell fachlich interpretieren.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "K1",
+        "K2",
+        "K3",
+        "K4",
+        "K5"
+      ],
+      "guidingIdeas": [
+        "L1",
+        "L2",
+        "L4"
+      ],
+      "phase": "Q1"
+    },
+    "requires": [
+      "963907f9-8d4c-5e1c-945d-10b7be07e1b9"
+    ],
+    "contains": [],
+    "examples": [],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "coveredGoalIds": [
+        "963907f9-8d4c-5e1c-945d-10b7be07e1b9"
+      ],
+      "coveredStrands": [
+        "L1",
+        "L2",
+        "L4"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2"
+      ],
+      "taskContent": "Die Temperatur $T(t)$ eines heißen Getränks in einem Raum mit konstanter Umgebungstemperatur $20^\\circ\\text{C}$ wird näherungsweise durch die Differentialgleichung\n$$\nT'(t) = -0{,}25\\,(T(t)-20)\n$$\nbeschrieben. Zu Beginn gilt $T(0)=80$.\n\n1. Erläutern Sie die Bedeutung des Terms $(T(t)-20)$ im Modell.\n2. Begründen Sie, warum $T(t)=20$ eine Gleichgewichtslösung ist.\n3. Geben Sie an, ob die Temperatur steigt oder fällt, solange $T(t)>20$ gilt. Begründen Sie dies mithilfe der Differentialgleichung.\n4. Erarbeiten Sie ein kleines Richtungsfeld zur gegebenen DGL: Berechnen Sie für alle Kombinationen $t\\in\\{0,2,4\\}$ und $T\\in\\{0,20,40,80\\}$ die jeweilige Steigung und zeichnen Sie an den zwölf Punkten kurze passende Richtungsstücke. Skizzieren Sie darin qualitativ die Lösungskurve durch $(0,80)$ und erläutern Sie ihr langfristiges Verhalten sowie das Verhalten einer Lösung unterhalb von $20^\\circ\\mathrm C$.",
+      "solutionContent": "1. Der Term $(T(t)-20)$ beschreibt die Abweichung der Getränketemperatur von der Umgebungstemperatur. Je größer diese Abweichung ist, desto stärker ist die Änderungsrate im Modell.\n\n2. Für $T(t)=20$ gilt\n$$\nT'(t) = -0{,}25\\,(20-20)=0.\n$$\nAlso ändert sich die Temperatur nicht mehr; $20^\\circ\\text{C}$ ist eine Gleichgewichtslösung.\n\n3. Gilt $T(t)>20$, dann ist\n$$\nT(t)-20 > 0.\n$$\nWegen des negativen Vorfaktors folgt\n$$\nT'(t)<0.\n$$\nDie Temperatur fällt also, solange das Getränk wärmer als die Umgebung ist.\n\n4. Die Steigung $m=-0{,}25(T-20)$ hängt nicht von $t$ ab. In jeder der drei Spalten $t=0,2,4$ gilt daher dieselbe Tabelle:\n\n| T | 0 | 20 | 40 | 80 |\n|---|---|---|---|---|\n| m | 5 | 0 | −5 | −15 |\n\nDie zwölf Richtungsstücke werden mit diesen Steigungen eingezeichnet. Auf der Geraden $T=20$ sind sie horizontal; darunter weisen sie auf steigende, darüber auf fallende Lösungen. Die Lösung durch $(0,80)$ fällt, flacht zunehmend ab und nähert sich langfristig $T=20$ von oben. Eine Lösung mit Anfangstemperatur unter 20 steigt und nähert sich dieser Gleichgewichtstemperatur von unten. Die Richtungstücke, qualitative Lösungskurve und Langzeitdeutung müssen zusammenpassen; ein bloßer Kurvenumriss ohne Feld genügt nicht.",
+      "scoring": {
+        "maxPoints": 20,
+        "passingPoints": 10,
+        "steps": [
+          {
+            "id": "q1_diff_1",
+            "points": 4,
+            "description": "Term in der Differentialgleichung korrekt gedeutet"
+          },
+          {
+            "id": "q1_diff_2",
+            "points": 4,
+            "description": "Gleichgewichtslösung korrekt begründet"
+          },
+          {
+            "id": "q1_diff_3",
+            "points": 6,
+            "description": "Änderungsverhalten für T(t)>20 korrekt untersucht"
+          },
+          {
+            "id": "q1_diff_4",
+            "points": 6,
+            "description": "Richtungsfeld mit zwölf korrekten Steigungen/Richtungsstücken erarbeitet (2 BE), passende Lösungskurve durch (0,80) skizziert (2 BE), Annäherung an 20 von oben bzw. unten qualitativ erklärt (2 BE)"
+          }
+        ]
+      },
+      "reviewNote": "Begrenzte Inhaltskorrektur vom 01.11.2026 unabhängig mit Astra Ultra fachlich geprüft; exakte Nachkorrekturen berücksichtigt. Nachweis: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-upper-candidate-review.json. Historische Quellen und bestehende gültige Mastery bleiben unverändert."
+    },
+    "phase": "Q1",
+    "type": "atomic"
+  },
+  "af7905d0-e684-5ea3-99ac-8a045455370e": {
+    "id": "af7905d0-e684-5ea3-99ac-8a045455370e",
+    "title": "Aufgabe 1 (Jahrgangsstufe 10, 10 BE)",
+    "description": "Die lernende Person kann eine freigegebene Prüfungsaufgabe der Jahrgangsstufe 10 bearbeiten: Exponentialmodelle, Logarithmen, Halbwertszeit, Asymptotik und Zinseszins im Kontext deuten.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment",
+      "canonical",
+      "phase:SekI",
+      "ExamTask"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v2.md#task-1",
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-math",
+      "demandLevel": "AB3",
+      "processCompetencies": [
+        "K1",
+        "K2",
+        "K3",
+        "K4"
+      ],
+      "guidingIdeas": [
+        "L1",
+        "L4"
+      ],
+      "phase": "J10",
+      "area": "Mathematik",
+      "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J10.TASK.1"
+    },
+    "shortKey": "canonical_math_sek1_practice_j10_task_1",
+    "contains": [],
+    "requires": [
+      "31207307-0cf9-4a56-bf14-90196dc2b3d4",
+      "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+      "c19d1f8f-b297-5a58-b1d4-26d811e4aff4",
+      "308f19e2-e202-5300-a2fa-1eaa717f4e73",
+      "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+      "aed3ca99-815b-40b8-ae91-e11bf92f51da",
+      "367a59ce-a388-5c93-b6f9-a3b0c6c3b45e"
+    ],
+    "phase": "J10",
+    "type": "atomic",
+    "nodeKind": "exam",
+    "examData": {
+      "reviewStatus": "released",
+      "reviewNote": "Begrenzte Inhaltskorrektur vom 01.11.2026 unabhängig mit Astra Ultra fachlich geprüft; exakte Nachkorrekturen berücksichtigt. Nachweis: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-seki-candidate-review.json. Feste vorgegebene Modelle verlangen keine eigene Modellwahl/Annahmenvariation/Grenzenentscheidung. Dieser breite Claim entfällt aus Coverage und direkter Vorbereitung; Parameter-/Exponential-/Logarithmuskompetenzen bleiben. Korrekte Rundung und die fehlende Jahresdefinition werden redaktionell ergänzt.",
+      "coveredGoalIds": [
+        "31207307-0cf9-4a56-bf14-90196dc2b3d4",
+        "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+        "c19d1f8f-b297-5a58-b1d4-26d811e4aff4",
+        "308f19e2-e202-5300-a2fa-1eaa717f4e73",
+        "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+        "c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+        "aed3ca99-815b-40b8-ae91-e11bf92f51da",
+        "367a59ce-a388-5c93-b6f9-a3b0c6c3b45e"
+      ],
+      "coveredStrands": [
+        "L1",
+        "L4"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v2.md",
+      "taskContent": "Der Akkustand eines Sensors wird durch $B(t)=1200\\cdot 0{,}82^t$ modelliert. $t$ ist die Zeit in Stunden nach Beginn einer Nachtmessung. Für Ersatzteile wird ein Konto mit $K(n)=2500\\cdot 1{,}035^n$ modelliert; $n$ zählt die Jahre seit Kontoeröffnung.\n\n1. Beschreibe den Verlauf des Graphen von $B$ anhand der Parameter und nenne die Asymptote. (2 BE)\n2. Berechne $B(0)$ und $B(3)$. (1 BE)\n3. Bestimme die Zeit, ab der der Akkustand unter $500 Wh$ fällt, und berechne die Halbwertszeit. Erkläre, warum Logarithmen nötig sind. (4 BE)\n4. Berechne $K(5)$ und erläutere Anfangskapital, Zinssatz, Laufzeit, Endkapital und Zinseszins im Modell. (3 BE)",
+      "solutionContent": "$B$ hat Anfangswert $1200$, Wachstumsfaktor $0{,}82<1$, ist streng fallend und hat die waagerechte Asymptote $y=0$.\n\n$B(0)=1200$, $B(3)=1200\\cdot 0{,}82^3≈661{,}6\\,Wh$.\n\n$1200\\cdot 0{,}82^t<500$ ergibt $t>\\log(500/1200)/\\log(0{,}82)≈4{,}41$. Die Halbwertszeit erfüllt $0{,}82^t=0{,}5$, also $t=\\log(0{,}5)/\\log(0{,}82)≈3{,}49$. Logarithmen sind nötig, weil die gesuchte Zeit im Exponenten steht.\n\n$K(5)=2500\\cdot 1{,}035^5≈2969{,}22$. Anfangskapital $2500\\,\\mathrm{EUR}$, Zinssatz $3{,}5\\,\\%$, Laufzeit $5$ Jahre, Endkapital etwa $2969{,}22\\,\\mathrm{EUR}$; Zinseszins bedeutet, dass Zinsen in Folgejahren mitverzinst werden.\n\nDer exakte Wert B(3)=661,6416 Wh wird auf eine Nachkommastelle zu 661,6 Wh gerundet; andere fachlich sinnvolle Genauigkeiten sind gleichwertig.",
+      "scoring": {
+        "maxPoints": 10,
+        "passingPoints": 5,
+        "steps": [
+          {
+            "id": "j10_released_v2_1",
+            "points": 10,
+            "description": "Exponentialmodelle, Logarithmen, Halbwertszeit, Asymptotik und Zinseszins im Kontext deuten."
+          }
+        ]
+      }
+    },
+    "extendedData": {
+      "applicabilityMappingInheritance": "boundary",
+      "applicabilityFromRequires": true
+    }
+  },
+  "c87597fd-4d54-5e9a-a3d0-9a2943d8153c": {
+    "id": "c87597fd-4d54-5e9a-a3d0-9a2943d8153c",
+    "title": "Exponentielle Modelle auswerten",
+    "description": "Die lernende Person kann eine Klausuraufgabe zu Wachstum und Zerfall mit exponentiellen Funktionen selbstständig bearbeiten und Parameter im Kontext deuten.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "K1",
+        "K2",
+        "K3",
+        "K4",
+        "K5"
+      ],
+      "guidingIdeas": [
+        "L1",
+        "L4"
+      ],
+      "phase": "E"
+    },
+    "requires": [
+      "ab720928-9dbc-53c2-a1f8-865dda92122d",
+      "fec30a5a-835a-4932-a436-d83549029486"
+    ],
+    "contains": [],
+    "examples": [],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "coveredGoalIds": [
+        "ab720928-9dbc-53c2-a1f8-865dda92122d"
+      ],
+      "coveredStrands": [
+        "L1",
+        "L4"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2"
+      ],
+      "taskContent": "Eine Bakterienkultur wird zu Beginn mit $500$ Bakterien angesetzt. Nach $4$ Stunden sind $980$ Bakterien vorhanden. Die Entwicklung soll mit einer Exponentialfunktion\n$$\nN(t)=N_0\\cdot a^t\n$$\nmodelliert werden.\n\n1. Bestimmen Sie $N_0$ und den Wachstumsfaktor $a$.\n2. Geben Sie die Funktionsgleichung an.\n3. Bestimmen Sie die Schwellenzeit $t_*$ mit $N(t_*)=2000$ und geben Sie an, für welche Zeiten $t$ die Anzahl $2000$ überschritten wird.\n4. Bestimmen Sie die Verdopplungszeit und deuten Sie das Ergebnis.",
+      "solutionContent": "1. Es gilt $N_0=500$. Aus $N(4)=980$ folgt\n$$\na^4=1{,}96,\\qquad a=1{,}96^{1/4}\\approx1{,}1832159566.\n$$\n2. Mit dem ungerundeten Faktor lautet das Modell $N(t)=500\\cdot(1{,}96^{1/4})^t$.\n\n3. Für die Schwelle $N(t_*)=2000$ gilt\n$$\nt_*=\\frac{\\ln4}{\\ln(1{,}96^{1/4})}=\\frac{4\\ln4}{\\ln1{,}96}\\approx8{,}2401708684.\n$$\nBei $t=t_*$ ist der Bestand genau $2000$; überschritten wird er für $t>t_*$, also nach der Schwellenzeit von rund $8{,}24$ Stunden. Die offene Ungleichung hat keinen kleinsten reellen Überschreitungszeitpunkt; gemeint ist die Schwelle.\n\n4. Aus $a^T=2$ folgt\n$$\nT=\\frac{\\ln2}{\\ln(1{,}96^{1/4})}=\\frac{4\\ln2}{\\ln1{,}96}\\approx4{,}1200854342.\n$$\nDie Kultur verdoppelt sich im Modell etwa alle $4{,}12$ Stunden. Für die Rechnung wurde $a$ nicht vorzeitig gerundet.",
+      "scoring": {
+        "maxPoints": 20,
+        "passingPoints": 10,
+        "steps": [
+          {
+            "id": "e_exp_1",
+            "points": 5,
+            "description": "Anfangsbestand und Wachstumsfaktor korrekt bestimmt"
+          },
+          {
+            "id": "e_exp_2",
+            "points": 4,
+            "description": "Funktionsgleichung korrekt angegeben"
+          },
+          {
+            "id": "e_exp_3",
+            "points": 6,
+            "description": "Schwellenzeit für N(t)=2000 korrekt berechnet und Überschreitung für t>t_* angegeben"
+          },
+          {
+            "id": "e_exp_4",
+            "points": 5,
+            "description": "Verdopplungszeit korrekt bestimmt und passend gedeutet"
+          }
+        ]
+      },
+      "reviewNote": "Begrenzte Inhaltskorrektur vom 01.11.2026 unabhängig mit Astra Ultra fachlich geprüft; exakte Nachkorrekturen berücksichtigt. Nachweis: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-upper-candidate-review.json. Historische Quellen und bestehende gültige Mastery bleiben unverändert."
+    },
+    "phase": "E",
+    "type": "atomic"
+  },
+  "1fcb56db-5e3f-57da-862d-f3bdf9984af2": {
+    "id": "1fcb56db-5e3f-57da-862d-f3bdf9984af2",
+    "shortKey": "canonical_math_sek2_q4_assessment_lk_compare_algae_growth_models",
+    "title": "Wachstumsmodelle für eine Algenkultur vergleichen",
+    "titleEn": "Compare growth models for an algae culture",
+    "description": "Die lernende Person kann in einer selbstständigen Aufgabe zwei Wachstumsmodelle entwickeln, nach erklärten Kriterien vergleichen und eine Modellentscheidung unter Datenunsicherheit begründen.",
+    "descriptionEn": "The learner can construct two growth models, compare them against explicit criteria and justify a model decision under data uncertainty in a self-contained task.",
+    "core": false,
+    "weight": 1,
+    "tags": [
+      "LK",
+      "Practice",
+      "Assessment",
+      "ExamTask",
+      "canonical",
+      "phase:Q4"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "applicabilityFromRequires": true,
+      "applicabilityMappingInheritance": "boundary"
+    },
+    "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q4/m7-route-repair-20260923-v1/algae-model-choice.md",
+    "dimensionTags": {
+      "framework": "hessen-kc-2024",
+      "demandLevel": "AB3",
+      "processCompetencies": [
+        "K3.4"
+      ],
+      "guidingIdeas": [
+        "L2",
+        "L4",
+        "L5"
+      ],
+      "phase": "Q4",
+      "area": "Prozesskompetenzen",
+      "topicCode": "CANONICAL.MATH.SEK2.Q4.PRACTICE.LK_ALGAE_MODEL_CHOICE"
+    },
+    "requires": [
+      "74f28ce7-e568-5d6e-b946-17445b344fcc",
+      "163dd583-8308-53f0-b60d-34588787988d",
+      "519660d0-85e5-57a6-a219-d0a253336649"
+    ],
+    "contains": [],
+    "examples": [],
+    "resourceLinks": [],
+    "examData": {
+      "reviewStatus": "released",
+      "reviewNote": "Machine-only Q4 route assessment after independent draft audit, explicit corrections and current calculation/scoring check on 2026-09-23; no human approval claimed.",
+      "coveredGoalIds": [
+        "74f28ce7-e568-5d6e-b946-17445b344fcc",
+        "163dd583-8308-53f0-b60d-34588787988d",
+        "519660d0-85e5-57a6-a219-d0a253336649"
+      ],
+      "coveredStrands": [
+        "L2",
+        "L4",
+        "L5"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q4/m7-route-repair-20260923-v1/algae-model-choice.md",
+      "taskContent": "Die Masse einer Algenkultur wird einmal täglich gemessen. Für die Tage $t=0,1,2,3$ ergeben sich in Gramm die Werte $100,120,144,173$. Jeder Messwert hat eine Unsicherheit von höchstens $\\pm5$ g. Für eine kurzfristige Schätzung der Masse an Tag 4 stehen ein lineares und ein exponentielles Modell zur Diskussion.\n\n1. Entwickle ein lineares Modell durch die Messwerte an Tag 0 und Tag 3 und ein exponentielles Modell durch die Messwerte an Tag 0 und Tag 2. Gib jeweils die Modellannahme an, die über die gemessenen Werte hinausgeht. (6 BE)\n2. Vergleiche die beiden Modelle anhand ihrer Abweichungen an den übrigen Messtagen, ihrer Einfachheit und ihrer Interpretierbarkeit. Berechne die beiden Vorhersagen für Tag 4. (7 BE)\n3. Entscheide begründet, welches Modell du für eine vorsichtige Schätzung an Tag 4 verwenden würdest, oder begründe, warum die Daten noch keine eindeutige Entscheidung tragen. Erkläre qualitativ **sowohl** den Einfluss der Messunsicherheit **als auch** den einer geänderten Wachstumsannahme auf deine Entscheidung, und benenne eine zusätzliche Information, die helfen würde. (7 BE)",
+      "solutionContent": "1. Das lineare Modell ist $L(t)=100+\\frac{73}{3}t$: Es setzt einen konstanten absoluten Zuwachs von etwa $24{,}33$ g pro Tag voraus. Das exponentielle Modell ist $E(t)=100\\cdot1{,}2^t$, denn $1{,}2^2=144/100$; es setzt einen konstanten relativen Zuwachs von 20 % pro Tag voraus. 2 BE je korrekt konstruiertem Modell und 1 BE je explizit formulierter Annahme.\n2. $L(1)\\approx124{,}33$ g und $L(2)\\approx148{,}67$ g, also Abweichungen von etwa $4{,}33$ g und $4{,}67$ g. $E(1)=120$ g und $E(3)=172{,}8$ g, also Abweichungen von 0 g und $0{,}2$ g. Beide Modelle stimmen im betrachteten Messbereich mit der Unsicherheit von $\\pm5$ g überein. Das lineare Modell hat einen konstanten Zuwachs und ist rechnerisch einfach; das exponentielle passt hier den Zentralwerten enger, setzt aber einen dauerhaft konstanten prozentualen Zuwachs voraus. Für Tag 4 ergeben sich $L(4)=197{,}33\\ldots$ g und $E(4)=207{,}36$ g. 1 BE je linearem Restwert, 1 BE für die exponentiellen Restwerte, 2 BE für den begründeten Vergleich der drei Kriterien und 1 BE je Tages-4-Prognose.\n3. Keine Modellwahl ist allein aus diesen vier unsicheren Messungen zwingend. Eine Wahl von $E$ wegen der kleineren Restabweichungen ist ebenso vertretbar wie eine vorsichtige Wahl von $L$ unter einer begründeten Annahme abnehmenden relativen Wachstums; auch das Zurückstellen der Entscheidung ist vertretbar. Wichtig ist, dass die Annahme zur kurzfristigen Extrapolation genannt wird. Schon kleine Änderungen der Eingangswerte ändern die geschätzten Parameter und Tag-4-Werte; der Abstand der beiden Prognosen beträgt etwa 10 g, während die Messunsicherheit die Datenunterscheidung erschwert. Aus $\\pm5$ g Messunsicherheit folgt **kein** fertiges $\\pm5$-g-Prognoseintervall. Weitere Messungen nach Tag 3 oder unabhängige Informationen über Nährstoffgrenzen würden helfen. 2 BE für eine kriteriensensible Entscheidung oder begründete Offenheit, 2 BE für die korrekte Rolle der Messunsicherheit, 2 BE für die Sensitivität gegenüber einer veränderten Annahme und 1 BE für hilfreiche zusätzliche Information. Eine andere fachlich stimmige Modellwahl erhält dieselben Punkte.\n\nGesamt: 20 BE. Gute Antworten dürfen die Modelle anders, aber mathematisch äquivalent parametrisieren. Der beobachtete bessere Fit des exponentiellen Modells beweist kein unbegrenztes exponentielles Wachstum.",
+      "scoring": {
+        "maxPoints": 20,
+        "passingPoints": 10,
+        "steps": [
+          {
+            "id": "q4_algae_1",
+            "points": 6,
+            "description": "Lineares und exponentielles Modell samt Annahmen korrekt entwickelt"
+          },
+          {
+            "id": "q4_algae_2",
+            "points": 7,
+            "description": "Restabweichungen, Kriterien und Tages-4-Prognosen fachlich verglichen"
+          },
+          {
+            "id": "q4_algae_3",
+            "points": 7,
+            "description": "Modellwahl oder Offenheit unter Messunsicherheit und veränderten Annahmen begründet"
+          }
+        ]
+      }
+    },
+    "phase": "Q4",
+    "type": "atomic",
+    "nodeKind": "exam"
+  }
+}

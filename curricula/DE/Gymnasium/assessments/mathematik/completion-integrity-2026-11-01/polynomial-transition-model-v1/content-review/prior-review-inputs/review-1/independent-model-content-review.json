@@ -1,0 +1,147 @@
+{
+  "reviewType": "INDEPENDENT_BOUNDED_CONTENT_AND_MATH_REVIEW",
+  "reviewedAt": "2026-11-01",
+  "reviewerAgent": "/root/astra_math_model_review",
+  "decision": "REVISE_BOUNDED_RUBRIC_BEFORE_CONTENT_ACCEPTANCE",
+  "baseCanonicalSha256": "3a3792d14057854c79a3d8c4d38cd98dd6e28e936865ebd3447107404b58474c",
+  "candidateId": "4293cf40-06fb-51e3-9799-6fde0bf2771b",
+  "reviewedFileSha256": {
+    "manifest.json": "3ea20a32fe71687788462bc2263a0792d9ce8faafc43ac8d5f19d45c0485406f",
+    "candidate.new-goal.json": "46f9a38d9455f6585c7f0ed6baddd278cdccf0e4c4dc5d5454364a1af69d57ff",
+    "candidate.delta.json": "025db5644853641b0779cb66b070530206cf20231c4102b29682b6e51aaaf3ab",
+    "candidate.de.md": "5f29b62ff654086593a5f30106482ea9f804049eefb5d0f533e79a2c1b140846",
+    "candidate.en.md": "0c305bac3f89407e87a6df56df82e810917c94e09dc341eb67c9622096ae8e81",
+    "before.contracts.json": "c006894686f6343078e745cf08d34954cc5a63c7cae6b6453e10c6ddc34dbdda",
+    "symbolic-proof.json": "b48aba4d625a79ae379c60c74866653e800a7bf7a636e56b7efa3a3425b56532",
+    "native-candidate-structure.json": "9cc5103bb257a8b20364900b9ee2b13dc8d0144afc2db68f59cf4411a27d3453"
+  },
+  "verifiedCurrentRootAndPins": true,
+  "allBeforeContractsEqualCurrentCanonicalObjects": true,
+  "embeddedDeEnTaskAndSolutionEqualMarkdown": true,
+  "math": {
+    "decision": "PASS",
+    "coefficientMatrixRank": 5,
+    "coefficientMatrixDeterminant": -64000000,
+    "coefficients": [
+      "1/80000",
+      "-3/8000",
+      "3/800",
+      "-1/10",
+      "5"
+    ],
+    "allFiveResiduals": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "actualInflectionAbscissae": [
+      5,
+      10
+    ],
+    "thirdDerivativeAt10": "3/4000",
+    "secondDerivativesAtJoins": [
+      "3/400",
+      "9/400"
+    ],
+    "bothJoinsC1": true,
+    "joinsC2": false,
+    "heightRange": "[7/2,5]",
+    "monotonicity": "strictly decreasing on [0,20]; derivative zero only at right endpoint",
+    "independentCalculation": "Fresh SymPy derivation from the five conditions; no execution of author verify_math.py"
+  },
+  "coverage": [
+    {
+      "goalId": "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941",
+      "decision": "TASK_SOLUTION_RUBRIC_COVER_FULL_CONTRACT",
+      "evidence": "Own formulation of coefficient equations from properties, solution of complete system, and checking obtained polynomial; chiefly task3 with conditions from1/2 and checks in4/5."
+    },
+    {
+      "goalId": "4b16fce6-84cc-52ae-98ca-f88cc518cc28",
+      "decision": "TASK_SOLUTION_RUBRIC_COVER_FULL_CONTRACT",
+      "evidence": "Both value and slope matches are formulated from context, solved jointly and interpreted/checked at both joins; task1/3/4."
+    },
+    {
+      "goalId": "b88cbf71-5e3e-55e3-ba94-6789408d38d6",
+      "decision": "TASK_SOLUTION_RUBRIC_COVER_FULL_CONTRACT",
+      "evidence": "Inflection is a condition of model construction, not just analysis of a supplied term; necessary condition, actual change and contextual slope interpretation are demanded, solved and scored in2/3/5."
+    }
+  ],
+  "requires": {
+    "decision": "PASS_AS_PREPARATION_NOT_COVERAGE",
+    "directIds": [
+      "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941",
+      "b88cbf71-5e3e-55e3-ba94-6789408d38d6",
+      "4b16fce6-84cc-52ae-98ca-f88cc518cc28",
+      "546bf0b3-6921-416b-a2ef-8fd37d429dc7"
+    ],
+    "note": "All three content skills and algebraic linear-system solving are genuine preparation. Existing complete canonical prerequisite chains remain intact. No geometry-specific Q2 LGS goal is needed. Graphical LGS solving and the full range of the broad LGS contract are unassessed; do not add 546bf0b3 to coverage or infer coverage of transitive prerequisites."
+  },
+  "requiredCorrections": [
+    {
+      "id": "R1",
+      "severity": "BLOCKS_CONTENT_ACCEPTANCE",
+      "finding": "13/13 makes any uncorrected numerical slip or ancillary omission fail despite all three core competences being demonstrated. The draft itself leaves fairness unresolved.",
+      "correction": "Set ordinary maxPoints=13, passingPoints=11. Define an explicit normal overall-score cap of10 if any of the three essential action groups below is absent or conceptually wrong. Apply only one binary mastery result; no stored sub-results, supplementary qualification, waiver or second acceptance decision. Update both languages, embedded task/solution/scoring, README, delta, symbolic/native author evidence and manifest consistently."
+    },
+    {
+      "id": "R2",
+      "severity": "BLOCKS_CONTENT_ACCEPTANCE",
+      "finding": "Task2 requests an explanation but scoring requires a counterexample; task3 scoring literally privileges a particular reduction method.",
+      "correction": "Accept a mathematically sufficient explanation of necessity versus sufficiency, with counterexample optional; accept equivalent systematic elimination/solution methods for all4 reconstruction points. Assess evidence anywhere in the complete solution and allow cross-references between3/4/5, without requiring duplicated writing."
+    },
+    {
+      "id": "R3",
+      "severity": "MINOR",
+      "finding": "English scoring says 1 points.",
+      "correction": "Use 1 point."
+    }
+  ],
+  "recommendedOrdinaryRubric": {
+    "maxPoints": 13,
+    "passingPoints": 11,
+    "overallCapWhenEssentialActionMissingOrConceptuallyWrong": 10,
+    "essentialActionGroups": [
+      "Reconstruction: formulate the complete coefficient LGS from all five requirements, execute a recognizably valid solution method, and actually check the resulting polynomial against the requirements.",
+      "C1 modelling: formulate and interpret both value and slope equality at each of the two joins and perform a valid check of both joins.",
+      "Inflection modelling: formulate q_second(10)=0 from context, distinguish necessity from sufficiency, apply a valid actual-inflection test and interpret the slope/concavity change in context."
+    ],
+    "ancillaryPointsNotAdditionalCoreObligations": [
+      "Additional inflection at5 and non-uniqueness judgement",
+      "Height-bound proof and one geometric-model limitation"
+    ],
+    "arithmeticAndFollowThrough": "Accept an isolated identifiable computational slip without treating it as an absent modelling action; do not repeatedly deduct for the same source error. Award consistent valid reasoning on the own term, including a correct explicit finding that the own term fails an original condition. Unsupported claims that conditions hold, incorrect inflection criteria, or absent modelling/verification remain conceptual deficits. A raw11-or-more score cannot override an essential-action deficit. No blanket entitlement to pass multiple independent errors.",
+    "interpretation": "These are transparent ordinary scoring instructions that produce one total score and one binary mastery decision, not new persisted evidence or pass states."
+  },
+  "phaseAndMetadata": {
+    "decision": "CANONICAL_E_COMPATIBLE_BUT_CURRICULAR_PLACEMENT_UNREVIEWED",
+    "evidence": "All three current canonical contracts and the current curvature/second-derivative prerequisite carry dimensionTags.phase=E. Thus E is internally consistent with these bytes; this is not independent proof of an official E-phase allocation.",
+    "recommendation": "Describe contentLevel neutrally as upper-secondary polynomial reconstruction with first and second derivatives. Keep provisional E only as current canonical compatibility metadata, or use the phase established by the separate source/scope review. Do not assign Q1 solely from a general expectation about inflection teaching; no phase value authorizes enrollment.",
+    "notApproved": [
+      "official E-phase allocation",
+      "source fidelity",
+      "jurisdiction/stage/course applicability",
+      "actual target selection"
+    ]
+  },
+  "singleAdditionalAssessment": {
+    "decision": "COHERENT_AS_ONE_CONTENT_UNIT",
+    "reason": "All three missing actions are needed for one transition polynomial. A single assessment is justified; splitting into one ID per gap or modifying historic tasks would be worse contract design. Thirteen marks are a scoring scale, not a validated time/workload estimate. Actual additional selected obligation still needs the separate scope decision."
+  },
+  "preservation": {
+    "existingGoalObjectsChangedByCandidate": 0,
+    "historicalTaskExtensionsApproved": false,
+    "existingMasteryRemainsValid": true,
+    "newOrdinaryGoalsRequired": 0,
+    "newAssessmentIdsNeeded": 1
+  },
+  "notCovered": [
+    "No integration into canonical root or offered scopes",
+    "No whole165-task audit",
+    "No source/stage/course enrollment approval",
+    "No M7 or actual scope acceptance from native author checks",
+    "No human trial, effectiveness or real learner acceptance"
+  ],
+  "followUp": "Re-review only corrected candidate bytes and the bounded grading changes; mathematics and unchanged contracts need no corpus-wide rerun."
+}

@@ -1,0 +1,230 @@
+{
+  "status": "PASS_BOUNDED_CONTEXT_DATABASE_ISOLATION_AND_CORRECTED_CONTROLLER_CLOSURE",
+  "sourceCI": {
+    "path": "tmp/approach-review-20261101/ci-36a-backend-context-failures-20261104.json",
+    "sha256": "94edc086c8693f4deee07b276cd2eaa096db27232a8f0d40fdb5cf348e310e57",
+    "bytes": 18370
+  },
+  "unchangedRuntime": {
+    "freshMain948Classes": 948,
+    "root1379Classes": 1379,
+    "cache": 2,
+    "heapBytes": 3221225472,
+    "ddl": "create-drop",
+    "assertionsNotRelaxed": true,
+    "productionSourcesUnchanged": true
+  },
+  "main12ClassCycle": {
+    "selection": {
+      "path": "tmp/approach-review-20261101/general-context-database-isolation-20261104-v1/selected-ci-context-cycle.json",
+      "sha256": "69e2a51060164f595b7c2799ca7e3539d643619520a592e6d751a88b95df0cfc",
+      "bytes": 5046
+    },
+    "before": {
+      "execution": {
+        "path": "tmp/approach-review-20261101/general-context-database-isolation-20261104-v1/before-all170.execution.json",
+        "sha256": "50ad88cb22bb8b2ac97f3aaf1535ac98623d376b1b42e009469e98691aaababb",
+        "bytes": 36429
+      },
+      "found": 245,
+      "successful": 100,
+      "failed": 145,
+      "byClass": {
+        "ClaudeV1ActiveGoalContractTest": {
+          "SUCCESSFUL": 11
+        },
+        "ClaudeV1ExamContractTest": {
+          "SUCCESSFUL": 7
+        },
+        "ClaudeV1MasteryBackendIntegrationTest": {
+          "SUCCESSFUL": 3
+        },
+        "ClaudeV1MasteryContractTest": {
+          "SUCCESSFUL": 19
+        },
+        "ClaudeV1OAuthFlowIntegrationTest": {
+          "SUCCESSFUL": 6
+        },
+        "ClaudeV1PublicRefreshFamilyIntegrationTest": {
+          "SUCCESSFUL": 8
+        },
+        "ClaudeV1LearningSessionLaunchTest": {
+          "SUCCESSFUL": 1,
+          "FAILED": 3
+        },
+        "LearnerControllerIntegrationTest": {
+          "SUCCESSFUL": 36,
+          "FAILED": 2
+        },
+        "LearnerPlanningScopeServiceTest": {
+          "SUCCESSFUL": 7
+        },
+        "LearnerRetentionLiquibaseIntegrationTest": {
+          "SUCCESSFUL": 2
+        },
+        "LearnerServiceTest": {
+          "FAILED": 124
+        },
+        "ShMathematicsExistingLearnerScopeRegressionTest": {
+          "FAILED": 16
+        }
+      },
+      "database": {
+        "contexts": 9,
+        "jdbcUrlContextCounts": {
+          "jdbc:h2:mem:claude-v1-core": 4,
+          "jdbc:h2:mem:claude-v1-mastery-backend-integration": 1,
+          "jdbc:h2:mem:claude-public-families": 1,
+          "jdbc:h2:mem:testdb": 2,
+          "jdbc:h2:mem:learner-retention-liquibase": 1
+        },
+        "stableUrlWithinEveryContext": true,
+        "missingLearnerObservations": 195
+      }
+    },
+    "after": {
+      "execution": {
+        "path": "tmp/approach-review-20261101/general-context-database-isolation-20261104-v1/after-all170.execution.json",
+        "sha256": "9447b24c034e205dfe946ee7a6fa3296d733924f107a40996083e049d7bffc78",
+        "bytes": 36423
+      },
+      "found": 245,
+      "successful": 243,
+      "failed": 2,
+      "byClass": {
+        "ClaudeV1ActiveGoalContractTest": {
+          "SUCCESSFUL": 11
+        },
+        "ClaudeV1ExamContractTest": {
+          "SUCCESSFUL": 7
+        },
+        "ClaudeV1MasteryBackendIntegrationTest": {
+          "SUCCESSFUL": 3
+        },
+        "ClaudeV1MasteryContractTest": {
+          "SUCCESSFUL": 19
+        },
+        "ClaudeV1OAuthFlowIntegrationTest": {
+          "SUCCESSFUL": 6
+        },
+        "ClaudeV1PublicRefreshFamilyIntegrationTest": {
+          "SUCCESSFUL": 8
+        },
+        "ClaudeV1LearningSessionLaunchTest": {
+          "SUCCESSFUL": 4
+        },
+        "LearnerControllerIntegrationTest": {
+          "SUCCESSFUL": 36,
+          "FAILED": 2
+        },
+        "LearnerPlanningScopeServiceTest": {
+          "SUCCESSFUL": 7
+        },
+        "LearnerRetentionLiquibaseIntegrationTest": {
+          "SUCCESSFUL": 2
+        },
+        "LearnerServiceTest": {
+          "SUCCESSFUL": 124
+        },
+        "ShMathematicsExistingLearnerScopeRegressionTest": {
+          "SUCCESSFUL": 16
+        }
+      },
+      "database": {
+        "contexts": 9,
+        "jdbcUrlContextCounts": {
+          "jdbc:h2:mem:claude-v1-core-bddec6df-14a2-4cba-b8c4-324f0213efe7": 1,
+          "jdbc:h2:mem:claude-v1-core-b7564476-9a24-45c3-a10b-c38db0ab744c": 1,
+          "jdbc:h2:mem:claude-v1-mastery-backend-integration": 1,
+          "jdbc:h2:mem:claude-v1-core-7bf24294-da2b-420e-9422-08410e08e5ef": 1,
+          "jdbc:h2:mem:claude-v1-core-fc261271-e4da-43ab-9dd7-8871afd03936": 1,
+          "jdbc:h2:mem:claude-public-families": 1,
+          "jdbc:h2:mem:testdb-ccd10fb2-9375-47a0-aceb-0dadc96414a2": 1,
+          "jdbc:h2:mem:testdb-0b10cf84-dc8e-45ad-8054-6ca295435983": 1,
+          "jdbc:h2:mem:learner-retention-liquibase": 1
+        },
+        "stableUrlWithinEveryContext": true,
+        "missingLearnerObservations": 0
+      }
+    },
+    "all163TestsOfFourRemoteAffectedWholeClassesPassAfter": true,
+    "schemaFailuresRemoved": 143,
+    "twoNonSchemaControllerFindingsNotMislabelledAsDatabaseErrors": true
+  },
+  "specificCoreMasteryLRUCycle": {
+    "selection": {
+      "path": "tmp/approach-review-20261101/general-context-database-isolation-20261104-v1/mastery-lru.selection.json",
+      "sha256": "e6948cb70630b9acd248eacd281c27b4d0f054c2cd9f1484f60523178e0a82cd",
+      "bytes": 1020
+    },
+    "before": {
+      "execution": {
+        "path": "tmp/approach-review-20261101/general-context-database-isolation-20261104-v1/before-mastery-lru.execution.json",
+        "sha256": "42984d0c960b636dde1a30dd9aee8632fbc08e81188ff1d5cf6f28f0fe4110b3",
+        "bytes": 35593
+      },
+      "found": 50,
+      "failed": 19,
+      "database": {
+        "contexts": 3,
+        "jdbcUrlContextCounts": {
+          "jdbc:h2:mem:claude-v1-core": 2,
+          "jdbc:h2:mem:claude-v1-mastery-backend-integration": 1
+        },
+        "stableUrlWithinEveryContext": true,
+        "missingLearnerObservations": 22
+      }
+    },
+    "after": {
+      "execution": {
+        "path": "tmp/approach-review-20261101/general-context-database-isolation-20261104-v1/after-mastery-lru.execution.json",
+        "sha256": "840aac95e277f794e04b351383c711931f3834773e739440a460117024634c39",
+        "bytes": 35588
+      },
+      "found": 50,
+      "failed": 0,
+      "database": {
+        "contexts": 3,
+        "jdbcUrlContextCounts": {
+          "jdbc:h2:mem:claude-v1-core-0385bb52-0ea9-4001-b358-40367e38d630": 1,
+          "jdbc:h2:mem:claude-v1-core-df483580-e79f-49d3-b9e3-573f07d3173d": 1,
+          "jdbc:h2:mem:claude-v1-mastery-backend-integration": 1
+        },
+        "stableUrlWithinEveryContext": true,
+        "missingLearnerObservations": 0
+      }
+    },
+    "realInterveningClass": "ClaudeV1LearningPlanContractTest",
+    "contextHitMakesDestructiveOldContextEvictionVisible": true
+  },
+  "all162RemoteSchemaFailuresActuallyReproduced": {
+    "coreMastery": 19,
+    "coreLaunch": 3,
+    "LearnerService": 124,
+    "SHRegression": 16
+  },
+  "controllerHostCorrection": {
+    "evidence": {
+      "path": "tmp/approach-review-20261101/general-context-database-isolation-20261104-v1/corrected-host-and-sh-counts.actual.json",
+      "sha256": "7211863da9150819302155424f7195fa6436734c6c3ca92966ddf630babf7cb9",
+      "bytes": 18973
+    },
+    "originalHostPreserved": true,
+    "missingTrackedSourceSnapshots": 72,
+    "championValue288Preserved": true,
+    "SHCountsFromExactApprovedMarkovNativeTargetAdditions": true,
+    "onlyControllerClassRerun": true,
+    "execution": {
+      "path": "tmp/approach-review-20261101/general-context-database-isolation-20261104-v1/controller-corrected.execution.json",
+      "sha256": "628ef63a4268684c279a5d46b96889bd60af4f2e6942c558dd29624bc8b9c734",
+      "bytes": 35408
+    },
+    "found": 38,
+    "successful": 38,
+    "failed": 0
+  },
+  "fixBoundary": "Two existing named test datasource URLs gain ${random.uuid}; no production schema, DDL, heap, cache, assertion or unrelated explicit database URL changes. Third file updates only four strict SH totals by the actual reviewed Markov task addition; champion288 is unchanged.",
+  "honestHistory": "The inherited all170 log names contain245 tests. Both12-class runs preserve the same incomplete JSON-only host and two non-database Controller failures. The independent corrected host supplies all72 tracked .json.snapshot inputs and reruns only Controller38. No passing whole12-class or245-test rerun is claimed.",
+  "noOverallBackendCIM7OrDeploymentPassClaimed": true,
+  "rootOrRootGitMutation": false
+}

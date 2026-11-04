@@ -1,0 +1,155 @@
+{
+  "reviewType": "INDEPENDENT_BOUNDED_BC244_HE_SH_LK_SCOPE_AND_MASK_REVIEW",
+  "reviewDate": "2026-11-01",
+  "reviewerAgent": "/root/astra_fundamental_approach_recheck",
+  "authorIndependent": true,
+  "decision": "PASS_FOR_EXACT_FOUR_MASK_REMOVALS_AND_BOUNDED_OWN_ASSESSMENT_OBLIGATION",
+  "canonicalSha256": "e7f2fbbf64692bd1928ad1751a918f3f7fbdb9980f2ae2aa6b0406ac178d157e",
+  "actualAuditSha256": "a14048bdcccec1dbcb7fcad213cbdb38433cf57c125915ce8986db6f5e4d3a27",
+  "assessmentGoalId": "bc244d82-bac0-5b13-8a33-d7b101835480",
+  "wholeGoalNormalizedSha256": "6a1dafacb564d8e2911ea8687bf73d4a81c56fddbe73b1625da06743320c69a6",
+  "normalization": "SHA256 JSON UTF-8 ensure_ascii=False sort_keys=True separators=(comma,colon)",
+  "reviewedProposal": {
+    "path": "tmp/approach-review-20261101/post-route-actions9-selection/scope-review-preparation.json",
+    "sha256": "f369a167f05a3023f5c63bf518a4a6997145a9121623e1e4bbcd5c76d580c9a7",
+    "oldCanonicalAndAuditBindings": "Proposal was prepared on6c65/fc7b; its affected contracts, four source-view pins and16scope target facts were independently rechecked on current e7f2/a140."
+  },
+  "approvedOperations": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk.view.json",
+      "viewId": "de-he-gym-math-lk",
+      "expectedSha256": "71428a731de2226adeb7ebe15a618d2e467dd036d02d514b2ad6641f5acc77cc",
+      "proposedOperations": [
+        {
+          "operation": "remove-only-exact-mask",
+          "jsonPointer": "/rootNodes/0",
+          "expectedNode": {
+            "kind": "goalEntry",
+            "goalId": "bc244d82-bac0-5b13-8a33-d7b101835480",
+            "projectionRole": "prerequisiteOnly"
+          }
+        }
+      ],
+      "writePerformed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json",
+      "viewId": "de-he-gym-sekii-math-lk",
+      "expectedSha256": "08cf90f46b75140407365bdfb7eb27f853f31ffa61bd6c1c49f7e729e51806e3",
+      "proposedOperations": [
+        {
+          "operation": "remove-only-exact-mask",
+          "jsonPointer": "/rootNodes/0",
+          "expectedNode": {
+            "kind": "goalEntry",
+            "goalId": "bc244d82-bac0-5b13-8a33-d7b101835480",
+            "projectionRole": "prerequisiteOnly"
+          }
+        }
+      ],
+      "writePerformed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+      "viewId": "de-sh-gym-math-lk",
+      "expectedSha256": "ddd0ee62fe9d0ce39d2036abc1ae5fba9b7c1a5253687f152ce3a9c1cbbc8d8a",
+      "proposedOperations": [
+        {
+          "operation": "remove-only-exact-mask",
+          "jsonPointer": "/rootNodes/2",
+          "expectedNode": {
+            "kind": "goalEntry",
+            "goalId": "bc244d82-bac0-5b13-8a33-d7b101835480",
+            "projectionRole": "prerequisiteOnly"
+          }
+        }
+      ],
+      "writePerformed": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+      "viewId": "de-sh-gym-sekii-math-lk",
+      "expectedSha256": "4574b1f28289371d94685648692a091a10523c9fdb9faeb9acef40a1d56ec572",
+      "proposedOperations": [
+        {
+          "operation": "remove-only-exact-mask",
+          "jsonPointer": "/rootNodes/2",
+          "expectedNode": {
+            "kind": "goalEntry",
+            "goalId": "bc244d82-bac0-5b13-8a33-d7b101835480",
+            "projectionRole": "prerequisiteOnly"
+          }
+        }
+      ],
+      "writePerformed": false
+    }
+  ],
+  "approvedOfferScopes": [
+    "DE-HE/SekII/G8/LK",
+    "DE-HE/SekII/G8/GK+LK",
+    "DE-HE/SekII/G9/LK",
+    "DE-HE/SekII/G9/GK+LK",
+    "DE-HE/CrossStage/G8/LK",
+    "DE-HE/CrossStage/G8/GK+LK",
+    "DE-HE/CrossStage/G9/LK",
+    "DE-HE/CrossStage/G9/GK+LK",
+    "DE-SH/SekII/G8/LK",
+    "DE-SH/SekII/G8/GK+LK",
+    "DE-SH/SekII/G9/LK",
+    "DE-SH/SekII/G9/GK+LK",
+    "DE-SH/CrossStage/G8/LK",
+    "DE-SH/CrossStage/G8/GK+LK",
+    "DE-SH/CrossStage/G9/LK",
+    "DE-SH/CrossStage/G9/GK+LK"
+  ],
+  "scopeRationale": [
+    "All16 offers already target whole3def350a line-plane intersection and a9fde754 coordinate-plane trace contracts.",
+    "All six full prerequisites of the alternative baf7276f contract are selected in all16, including parametric lines, coordinate/normal plane forms, plane conversion, point checks, plane construction and geometry linear systems.",
+    "The whole assessed work includes general-plane calculation and both checks, geometric uniqueness with normal/direction, correct parameter interpretation, and coordinate-plane trace calculations/checks/interpretation. It is not approved merely from the newly added trace subtask.",
+    "3def plus the selected representation/normal-vector foundations provides a positive full-action scope connection for the existing baf-based task; this is not a runtime alias, mastery transfer, coverage change or requirement to promote baf itself to target.",
+    "One additional own protected assessment is proportionate connecting practice for already selected work. It is not declared an official18-point exam or a measured workload-capacity result."
+  ],
+  "sourceBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+      "sha256": "ce941f094b4b83fa02a9eacc9a2067e7d564111558a05e3c274ca38ed767ef34"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+      "sha256": "71b9b16473d16ae6d526bfdc56a7c39b03a1ad0512f4dfd19a007213e583ac87"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sha256": "c9ae6c5429890600eaaaf3c808ad5d9c071f303f96704307b07a54eccebe17fb"
+    }
+  ],
+  "boundedSourceSupport": {
+    "HE": "Existing KC2024 extraction Q2.3 p42 bullet2 aspects1-3 and bullet7 aspects1-2: parameter lines/checks/coordinate-plane traces, plane representations and line-plane intersections, including coordinate equations.",
+    "SH": "Existing2024 extraction L3 p65: K008 geometric scalar product, K009 representations, K010 relative positions, K011 intersections and K012 linear systems; binding parameter/coordinate/normal plane forms. Mapping decision95 maps K011 partially across distinct intersection skills including3def; partial denotes source-row decomposition, not an exclusion.",
+    "boundary": "Existing primary extraction and mapping contents were read; no new broad source audit, GK authorization, new official task provenance, source cache or whole curriculum acceptance."
+  },
+  "independentMechanicalChecks": {
+    "current16ScopesContain3defAndA9fde": true,
+    "bafSixDirectPreparationContractsTargetInAll16": true,
+    "assessmentCurrentlyTargetInTheseScopes": 0,
+    "allFourMaskSourceHashesAndExactNodesCurrent": true,
+    "fourInMemoryNativeCompilations": "PASS; only bc244 target added, bc244 removed from prerequisiteOnly, every old target and other support role retained,0errors and exactly1visible bc244 under existing14b19ee4 parent.",
+    "canonicalOrRootViewWrites": false
+  },
+  "implementationConditions": [
+    "Remove only the four exact nodes with pinned before hashes; preserve every GK mask, task, tag, jurisdiction, coverage, prerequisite, canonical ID and all other ordinary/support targets.",
+    "Regenerate applicable duration outputs and refresh only necessary existing reviewed-source/policy bindings under the normal review guard.",
+    "Use actual CompositionViewService/LearnerService offerings to verify target and visible-tree deltas; count expected16 is not yet an implementation claim.",
+    "In particular SH GK retains a direct bc244 prerequisiteOnly mask; prove the actual GK+LK unions. If they remain masked, report the real subset instead of changing GK masks/tags or the merger under this approval.",
+    "No added targets outside the approved16, no old-target loss/support promotion, readiness/hierarchy/fatal remain clean; Root owns activation.",
+    "Prior mastery remains valid, the selected exam is protected and requires its own normal explicit mastery; no second result status."
+  ],
+  "notApproved": [
+    "Other four selection cases",
+    "GK or other-country task enrollment",
+    "New coverage or curriculum goal equivalence",
+    "Runtime merger/type/profile changes",
+    "Actual16-target transport already proven",
+    "Mathematics/M7/CI acceptance"
+  ]
+}

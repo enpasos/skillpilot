@@ -64,17 +64,39 @@ public final class CourseProfileCompositionViewMerger {
             List<List<Map<String, Object>>> sourceRoots,
             Map<String, List<String>> canonicalChildren,
             boolean removeRedundantSubtrees) {
+        return mergeViews(sourceRoots, canonicalChildren, removeRedundantSubtrees, null);
+    }
+
+    /** Resolves each source role against its own course availability before unioning targets. */
+    public static List<Map<String, Object>> mergeViews(
+            List<List<Map<String, Object>>> sourceRoots,
+            Map<String, List<String>> canonicalChildren,
+            boolean removeRedundantSubtrees,
+            List<Set<String>> unavailableGoalsBySource) {
         if (sourceRoots == null || canonicalChildren == null) {
             throw new IllegalArgumentException("Source views and canonical graph are required");
         }
+        if (unavailableGoalsBySource != null && unavailableGoalsBySource.size() != sourceRoots.size()) {
+            throw new IllegalArgumentException("Every source needs its own course availability");
+        }
         ProjectionGraph graph = new ProjectionGraph(canonicalChildren);
         Set<String> expectedTargets = new LinkedHashSet<>();
-        for (List<Map<String, Object>> source : sourceRoots) {
-            expectedTargets.addAll(graph.targets(source));
+        Set<String> roleTargets = new LinkedHashSet<>();
+        for (int index = 0; index < sourceRoots.size(); index++) {
+            Set<String> targets = graph.targets(sourceRoots.get(index));
+            roleTargets.addAll(targets);
+            if (unavailableGoalsBySource != null) targets.removeAll(unavailableGoalsBySource.get(index));
+            expectedTargets.addAll(targets);
         }
         List<Map<String, Object>> merged = mergeSiblings(
                 sourceRoots.stream().flatMap(List::stream).toList(), new MergeState());
         merged = preserveCommonExclusions(merged, expectedTargets, graph);
+        // Canonical subtrees can contain a goal unavailable to the source that
+        // gives it a target role. Compile that availability into the result tree,
+        // so every tree consumer observes the same resolved target entitlement.
+        // These are runtime references to existing IDs, never authored data edits.
+        roleTargets.removeAll(expectedTargets);
+        merged = preserveCourseAvailability(merged, roleTargets);
         Set<String> actualTargets = graph.targets(merged);
         boolean changed;
         do {
@@ -111,6 +133,27 @@ public final class CourseProfileCompositionViewMerger {
             throw new IllegalStateException("Subtree deduplication changes resolved course-profile target union");
         }
         return freeze(result);
+    }
+
+    private static List<Map<String, Object>> preserveCourseAvailability(
+            List<Map<String, Object>> nodes, Set<String> unavailableTargets) {
+        if (unavailableTargets.isEmpty()) return nodes;
+        Set<String> directExclusions = new HashSet<>();
+        collectDirectExclusions(nodes, directExclusions);
+        List<Map<String, Object>> result = new ArrayList<>(nodes);
+        unavailableTargets.stream().sorted().filter(id -> !directExclusions.contains(id)).forEach(id ->
+                result.add(Map.of("kind", "goalEntry", "goalId", id, "projectionRole", "prerequisiteOnly")));
+        return result;
+    }
+
+    private static void collectDirectExclusions(List<Map<String, Object>> nodes, Set<String> ids) {
+        for (Map<String, Object> node : nodes) {
+            if ("structure".equals(node.get("kind"))) {
+                collectDirectExclusions(nodeMaps(node.get("children")), ids);
+            } else if ("goalEntry".equals(node.get("kind")) && !isTarget(node)) {
+                ids.add(ProjectionGraph.localId(text(node.get("goalId"))));
+            }
+        }
     }
 
     private static List<Map<String, Object>> preserveCommonExclusions(
@@ -161,6 +204,12 @@ public final class CourseProfileCompositionViewMerger {
             }
         }
         return result;
+    }
+
+    /** Internal buildtime guard access to the exact production role precedence. */
+    static Set<String> projectionTargetGoalIds(
+            List<Map<String, Object>> nodes, Map<String, List<String>> canonicalChildren) {
+        return Set.copyOf(new ProjectionGraph(canonicalChildren).targets(nodes));
     }
 
     private record RoleAssignment(boolean target, boolean direct, int distance) {

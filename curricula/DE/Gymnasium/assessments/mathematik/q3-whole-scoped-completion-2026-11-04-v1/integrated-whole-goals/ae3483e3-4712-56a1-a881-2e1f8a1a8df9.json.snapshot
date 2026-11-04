@@ -1,0 +1,126 @@
+{
+  "id": "ae3483e3-4712-56a1-a881-2e1f8a1a8df9",
+  "title": "Entscheidungsregel oder Stichprobenumfang aus Gütefunktionsgraphen bestimmen (LK)",
+  "titleEn": "Determine decision rule or sample size from power-function graphs",
+  "description": "Die lernende Person kann für vorgegebene Kandidaten von Entscheidungsregeln oder Stichprobenumfängen eindeutig gekennzeichnete Graphen der Operationscharakteristik oder Gütefunktion auswerten, die jeweiligen Nichtverwerfungs- beziehungsweise Verwerfungswahrscheinlichkeiten mit vorgegebenen Anforderungen vergleichen und eine passende Entscheidungsregel oder einen geeigneten Stichprobenumfang auswählen und fachlich begründen.",
+  "descriptionEn": "The learner can evaluate clearly labeled operating-characteristic or power-function graphs for given candidate decision rules or sample sizes, compare the corresponding probabilities of not rejecting or rejecting the null hypothesis with specified requirements, and select and justify a suitable decision rule or sample size.",
+  "weight": 1,
+  "tags": [
+    "LK"
+  ],
+  "contains": [],
+  "requires": [
+    "82bce6e8-7dc7-501a-a4f6-df8a3b905e3c",
+    "677be619-5f0a-59bf-9730-0071c7d3f150",
+    "ae483d98-54e0-5985-96d2-fc1351d22e4f"
+  ],
+  "dimensionTags": {
+    "framework": "hessen-kc-2024",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K2.3",
+      "K3.3",
+      "K5.2"
+    ],
+    "guidingIdeas": [
+      "L5"
+    ],
+    "phase": "Q4",
+    "topicCode": "CANONICAL.MATH.SEK2.Q4.2.READ_DECISION_RULE_FROM_POWER_GRAPH"
+  },
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "type": "atomic",
+  "semanticAtomic": true,
+  "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Ausgabe2024, Q4.2, S.52, erhöhtes Niveau (Leistungskurs), Stochastik, zweiter Spiegelstrich (optionales Themenfeld)",
+  "resourceLinks": [
+    {
+      "type": "goal-visualization",
+      "resourceType": "image",
+      "role": "primary",
+      "skillpilotId": "ae3483e3-4712-56a1-a881-2e1f8a1a8df9",
+      "title": "Visualisierung: Entscheidungsregel oder Stichprobenumfang aus Gütefunktionsgraphen bestimmen (LK)",
+      "url": "/assets/goal-visualizations/mathematik/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/ae3483e3-4712-56a1-a881-2e1f8a1a8df9.png",
+      "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+      "description": "Zwei Gütefunktionen G(p) als Verwerfungswahrscheinlichkeit im Vergleich.",
+      "altText": "G von p ist die Verwerfungswahrscheinlichkeit P bei Parameter p für X größer gleich Schwelle. Die blaue Regel A hat n gleich 40 und Schwelle 13, die rote Regel B n gleich 80 und Schwelle 23. Bei p gleich 0,2 sind A ungefähr 0,043 und B ungefähr 0,039; bei p gleich 0,4 sind A ungefähr 0,871 und B ungefähr 0,986. Nur B erfüllt die Anforderungen höchstens 0,05 beziehungsweise mindestens 0,90.",
+      "lang": "de",
+      "license": "CC-BY-4.0",
+      "reviewStatus": "pilot"
+    }
+  ],
+  "nodeKind": "exam",
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "ae3483e3-4712-56a1-a881-2e1f8a1a8df9"
+    ],
+    "coveredStrands": [
+      "L4",
+      "L5"
+    ],
+    "demandLevels": [
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "Eine Qualitätskontrolle soll einen erhöhten Anteil fehlerhafter Bauteile erkennen. Für jede unabhängig und zufällig gezogene Stichprobe sei $X$ die Anzahl fehlerhafter Teile und $X\\sim B(n,p)$. Es wird $H_0:p\\le0{,}10$ gegen $H_1:p>0{,}10$ geprüft. Alle drei Kandidaten verwerfen $H_0$, wenn $X\\ge k$ gilt:\n\n| Kandidat | Stichprobenumfang $n$ | Verwerfungsbeginn $k$ |\n|---|---:|---:|\n| A | 80 | 14 |\n| B | 160 | 24 |\n| C | 160 | 22 |\n\nDie Grafik zeigt die **Gütefunktion** $G(p)=P_p(X\\ge k)$ jedes Kandidaten. Rechts ist derselbe kleine Ausschnitt vergrößert; es sind keine weiteren Tests.\n\n![Gütefunktionen A, B und C mit vergrößertem Ausschnitt](/assets/assessment-materials/mathematik/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/power-function-choices.de.75c5ecf71cbeecef9de162653da527b778ca64f492e60abcb2307b6b6b1dd3fd.png)\n\nDie Kontrolle soll beide Anforderungen erfüllen:\n\n- Bei $p=0{,}10$ soll $H_0$ mit Wahrscheinlichkeit höchstens $0{,}05$ verworfen werden.\n- Bei $p=0{,}20$ soll die Wahrscheinlichkeit des Nichtverwerfens höchstens $0{,}10$ betragen.\n\n**1 · Bedeutung der Kurven (2 BE)**\n\nErkläre, welches Ereignis eine Höhe $G(p)$ beschreibt und was die Höhe an $p=0{,}10$ in dieser Kontrolle bedeutet.\n\n**2 · Die Graphen auswerten (6 BE)**\n\nLies für A, B und C jeweils $G(0{,}10)$ und $G(0{,}20)$ ungefähr ab. Zwei Dezimalstellen beziehungsweise hinreichend genaue graphisch belegte Schranken genügen. Eine rechnerische Kontrolle ist erlaubt; ordne deine Werte oder Schranken den konkreten Kurven zu.\n\n**3 · Anforderungen übersetzen und entscheiden (6 BE)**\n\nDrücke beide Anforderungen durch $G$ aus. Wähle einen passenden Kandidaten und begründe anhand der Graphen beziehungsweise ihrer zugeordneten Werte, warum er beide Anforderungen erfüllt und warum die anderen ausscheiden. Formuliere die gewählte Entscheidungsregel mit $n$ und $k$. Du sollst aus den gegebenen Kandidaten auswählen, keine neue Testregel entwickeln.\n",
+    "taskContentEn": "A quality-control test should detect an increased proportion of defective components. For each independent random sample, let $X$ be the number of defective items, with $X\\sim B(n,p)$. Test $H_0:p\\le0.10$ against $H_1:p>0.10$. Each candidate rejects $H_0$ when $X\\ge k$:\n\n| Candidate | Sample size $n$ | Rejection threshold $k$ |\n|---|---:|---:|\n| A | 80 | 14 |\n| B | 160 | 24 |\n| C | 160 | 22 |\n\nThe figure shows each candidate's **power function** $G(p)=P_p(X\\ge k)$. The right-hand plot enlarges the same small region; it does not show additional tests.\n\n![Power functions A, B and C with an enlarged detail](/assets/assessment-materials/mathematik/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/power-function-choices.en.c5d8f8660df55e098e9515948d89e892f3b786731e814ec8cf311cd81f33dbb0.png)\n\nThe control must satisfy both requirements:\n\n- At $p=0.10$, the probability of rejecting $H_0$ must be at most $0.05$.\n- At $p=0.20$, the probability of not rejecting $H_0$ must be at most $0.10$.\n\n**1 · Meaning of the curves (2 points)**\n\nExplain the event described by a height $G(p)$ and the meaning of the height at $p=0.10$ in this control procedure.\n\n**2 · Evaluate the graphs (6 points)**\n\nFor A, B and C, read approximate values of $G(0.10)$ and $G(0.20)$. Two decimal places or sufficiently precise graph-supported bounds suffice. Numerical checking is allowed; associate your values or bounds with the actual curves.\n\n**3 · Translate the requirements and decide (6 points)**\n\nExpress both requirements in terms of $G$. Select a suitable candidate and use the graphs or their associated values to justify why it satisfies both requirements and why the others fail. State the selected decision rule using $n$ and $k$. Select from the given candidates; do not design a new test rule.\n",
+    "solutionContent": "**1.** $G(p)$ ist die Wahrscheinlichkeit, die Nullhypothese zu verwerfen, wenn der wahre Fehleranteil $p$ beträgt. Da die Verwerfungswahrscheinlichkeit dieser rechtsseitigen Binomialregeln mit $p$ wächst, ist $G(0{,}10)$ das größte Fehler-1-Risiko unter der angegebenen Nullhypothese: Ein tatsächlich bei $10\\%$ liegender Fehleranteil wird als erhöht eingestuft.\n\n**2.** Aus der Grafik sind etwa folgende Werte lesbar:\n\n| Kandidat | $G(0{,}10)$ | $G(0{,}20)$ | $1-G(0{,}20)$ |\n|---|---:|---:|---:|\n| A | 0,03 | 0,75 | 0,25 |\n| B | 0,03 | 0,96 | 0,04 |\n| C | 0,08 | 0,98 | 0,02 |\n\nDie letzte Spalte ist eine ergänzende Darstellung derselben Information, keine zusätzliche gegebene Datenreihe. Als rechnerische Kontrolle liefert die Binomialverteilung genauer $(0{,}0267488;0{,}7529855)$ für A, $(0{,}0291257;0{,}9575071)$ für B und $(0{,}0781078;0{,}9844063)$ für C. Solche Genauigkeit wird nicht verlangt. Ableseabweichungen von ungefähr $0{,}01$ sind akzeptabel, sofern die maßgeblichen Seiten der Grenzlinien richtig erkannt werden.\n\n**3.** Gefordert sind\n$$G(0{,}10)\\le0{,}05,\\qquad 1-G(0{,}20)\\le0{,}10,$$\nalso gleichwertig $G(0{,}20)\\ge0{,}90$. Nur **B** erfüllt beides. A hält zwar die Fehlergrenze bei $p=0{,}10$ ein, seine Teststärke bei $p=0{,}20$ liegt aber nur bei etwa $0{,}75$. C erkennt den erhöhten Anteil sehr häufig, verwirft bei $p=0{,}10$ jedoch zu häufig. Die Regel lautet: $160$ Teile zufällig prüfen und $H_0$ bei mindestens $24$ fehlerhaften Teilen verwerfen. Die verbleibende Nichtverwerfungswahrscheinlichkeit bei $p=0{,}20$ beträgt etwa $4\\%$.\n\n**Teilpunkte:** je 1 BE für Verwerfungswahrscheinlichkeit und Fehler-1-Deutung; je 1 BE für die sechs korrekt zugeordneten Werte. Eine korrekt zugeordnete und graphisch begründete Schranke, die die jeweils erforderliche Seite der Grenzlinie hinreichend belegt, erhält ebenfalls den vollen 1 BE. Unvollständige, nicht hinreichende oder nur teilweise richtig zugeordnete Ablesungen werden weiter anteilig bewertet; zum Beispiel kann eine richtige, aber für die maßgebliche Grenze noch zu grobe graphische Schranke 0,5 BE erhalten. Je 1 BE für jede übersetzte Anforderung; 1 BE für B samt $n,k$, je 1 BE für die begründete Ablehnung von A und C, 1 BE für die begründete gemeinsame Erfüllung durch B. Korrekte Schranken und Begründungen dürfen vollständig in einer Tabelle stehen.\n\n\n\n**Gewöhnliche Gesamtbewertung:** Die Teilpunkte ergeben genau einen Gesamtwert. Vergleiche diesen nach der unten genannten gewöhnlichen Kappung mit der einen Bestehensschwelle. Es gibt keine Teil-PASS-Felder oder zusätzliche Voraussetzungsevidenz.\n\nFachlich passende Leistungen zählen überall in der Abgabe, auch in Tabellen, Skizzen, Rechenschritten oder knappen Kommentaren. Es ist keine wortgleiche Musterlösung und keine doppelte Begründung in mehreren Teilaufgaben nötig. Gleichwertige mathematische Verfahren sind zulässig. Lokale Rechen-, Ablese-, Vorzeichen- oder Übertragungsfehler werden gezielt und nur einmal abgezogen; richtig ausgeführte Folgearbeit erhält ihre Punkte. Ein einzelner falscher Wert bedeutet nicht, dass eine ganze Kernhandlung fehlt. Nicht gezeigte Arbeit darf nicht unterstellt werden. Die Rubrik bewertet nur diesen neuen Aufgabenauftrag; sie ändert weder die Graphregeln noch bereits bestehende Mastery.\n\nDer Rohwert liegt zwischen 0 und 14; die eine Bestehensschwelle ist 11. Kappe den Gesamtwert vor dem Schwellenvergleich auf höchstens 10, wenn über die gesamte Abgabe entweder jede erkennbare fachliche Auswertung der konkret gegebenen Kurven fehlt oder eine der beiden Anforderungen überhaupt nicht berücksichtigt wird oder keine begründete Kandidatenwahl erkennbar ist. Auch ausgerechnete und den konkreten Kurven zugeordnete Werte, passende Schranken, Komplementwahrscheinlichkeiten und knappe Tabellenbegründungen zählen als Auswertung. Kein Cap allein wegen fehlender Dezimalzahlen, eines einzelnen falsch gelesenen Werts oder einer anders platzierten Begründung.\n",
+    "solutionContentEn": "**1.** $G(p)$ is the probability of rejecting the null hypothesis when the true defect proportion is $p$. Because the rejection probability of these right-sided binomial rules increases with $p$, $G(0.10)$ is the maximum type-I error probability under the stated null: a defect proportion actually equal to $10\\%$ is classified as elevated.\n\n**2.** Approximate graph readings are:\n\n| Candidate | $G(0.10)$ | $G(0.20)$ | $1-G(0.20)$ |\n|---|---:|---:|---:|\n| A | 0.03 | 0.75 | 0.25 |\n| B | 0.03 | 0.96 | 0.04 |\n| C | 0.08 | 0.98 | 0.02 |\n\nThe last column is an additional presentation of the same information, not another given dataset. A binomial calculation gives the more precise pairs $(0.0267488;0.7529855)$ for A, $(0.0291257;0.9575071)$ for B and $(0.0781078;0.9844063)$ for C. This precision is not required. Reading deviations of about $0.01$ are acceptable provided the correct sides of the relevant boundary lines are identified.\n\n**3.** The requirements are\n$$G(0.10)\\le0.05,\\qquad 1-G(0.20)\\le0.10,$$\nequivalently $G(0.20)\\ge0.90$. Only **B** meets both. A satisfies the error limit at $p=0.10$, but its power at $p=0.20$ is only about $0.75$. C frequently detects the increased proportion, but rejects too frequently at $p=0.10$. The selected rule is to sample $160$ items randomly and reject $H_0$ when at least $24$ are defective. Its remaining probability of not rejecting at $p=0.20$ is about $4\\%$.\n\n**Partial credit:** 1 point each for rejection probability and type-I interpretation; 1 point for each of the six correctly associated values. A correctly associated, graph-supported bound that sufficiently establishes the required side of the relevant boundary also receives the full 1 point. Incomplete or insufficient readings, or readings only partly associated with the correct curve, still receive proportional credit; for example, a correct graph-based bound that remains too coarse for the relevant limit may receive 0.5 points. Award 1 point for each translated requirement; 1 for B with $n,k$, 1 each for rejecting A and C with reasons, and 1 for explaining that B satisfies both requirements. Correct bounds and reasons may appear entirely in a table.\n\n\n\n**Ordinary overall grading:** Partial credit yields exactly one total score. After the ordinary cap stated below, compare it with the single passing threshold. There are no part-pass fields or additional prerequisite-evidence requirements.\n\nCredit relevant work wherever it appears in the submission, including tables, sketches, calculations and concise comments. Wording matching the reference and duplicate explanations in separate parts are unnecessary. Mathematically equivalent methods are accepted. Deduct for a local arithmetic, graph-reading, sign or copying error specifically and only once; award correctly executed follow-through. One incorrect value does not mean an entire core action is absent. Do not assume work not shown. This rubric grades only the new task; it changes neither graph rules nor existing mastery.\n\nThe raw total ranges from 0 to 14; the single passing threshold is 11. Before comparing with the threshold, cap the total at 10 if the entire submission contains no identifiable mathematical interpretation of the actual given curves, entirely ignores either requirement, or contains no reasoned candidate selection. Calculated values associated with the actual curves, suitable bounds, complementary probabilities and concise table explanations all count. Missing decimal values, one reading error or an explanation placed elsewhere do not by themselves trigger the cap.\n",
+    "scoring": {
+      "maxPoints": 14,
+      "passingPoints": 11,
+      "steps": [
+        {
+          "id": "meaning",
+          "points": 2,
+          "description": "G(p) als Verwerfungswahrscheinlichkeit und G(0,10) als Fehler erster Art im Kontext erklärt.",
+          "descriptionEn": "Explains G(p) as rejection probability and G(0.10) as the contextual type-I error."
+        },
+        {
+          "id": "p0-readings",
+          "points": 3,
+          "description": "Die drei Kurvenwerte bei p=0,10 korrekt zugeordnet; korrekt zugeordnete hinreichende graphische Schranken erhalten volle Punkte, unvollständige Ablesungen weiter anteilige Punkte.",
+          "descriptionEn": "Correctly associates the three curve values at p=0.10; correctly associated sufficient graph-based bounds receive full credit; incomplete readings retain proportional credit."
+        },
+        {
+          "id": "p1-readings",
+          "points": 3,
+          "description": "Die drei Kurvenwerte bei p=0,20 korrekt zugeordnet; korrekt zugeordnete hinreichende graphische Schranken erhalten volle Punkte, unvollständige Ablesungen weiter anteilige Punkte.",
+          "descriptionEn": "Correctly associates the three curve values at p=0.20; correctly associated sufficient graph-based bounds receive full credit; incomplete readings retain proportional credit."
+        },
+        {
+          "id": "requirements",
+          "points": 2,
+          "description": "Beide Anforderungen als G(0,10)≤0,05 und G(0,20)≥0,90 oder gleichwertig übersetzt.",
+          "descriptionEn": "Translates both requirements as G(0.10)≤0.05 and G(0.20)≥0.90 or equivalently."
+        },
+        {
+          "id": "choice",
+          "points": 4,
+          "description": "B mit n=160,k=24 begründet ausgewählt; beide anderen Kandidaten anhand ihrer verletzten Anforderung ausgeschlossen.",
+          "descriptionEn": "Selects B with n=160,k=24 with reasons and excludes the other candidates using their violated requirement."
+        }
+      ]
+    },
+    "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/reviewed-execution-contract.json"
+  }
+}

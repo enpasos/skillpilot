@@ -1,0 +1,273 @@
+{
+  "status": "AUTHOR_SYMBOLIC_NUMERIC_CHECKS_AND_REASONED_BOUNDARIES_PASS_NOT_INDEPENDENT_APPROVAL",
+  "checks": [
+    {
+      "check": "Family antiderivative exact",
+      "result": "PASS",
+      "evidence": "a is held constant when integrating/differentiating in x.",
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "Family both definite integrals exact",
+      "result": "PASS",
+      "evidence": {
+        "I": "a + 1/3",
+        "J": "8/3",
+        "zeroParameter": "-1/3"
+      },
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "Family zero integral does not mean zero area",
+      "result": "PASS",
+      "evidence": "Continuous function has negative and positive regions; signed cancellation is distinct from positive geometric area.",
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "Family cancelled parameter contribution",
+      "result": "PASS",
+      "evidence": "Parameter-dependent part has zero integral on [0,2], while f_a(0)=2a varies.",
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "Periodic observed values and phase",
+      "result": "PASS",
+      "evidence": "t counts hours after6am; max at6=noon, min at18=midnight; given observations all match.",
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "Periodic period24 and variation",
+      "result": "PASS",
+      "evidence": "Variation raises midline by2 and reduces amplitude8->6, keeps maximum18 and raises minimum2->6.",
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "Periodic midnight and next day",
+      "result": "PASS",
+      "evidence": "Both original model midnight values coincide, but data/model assumptions do not prove real-world exact repetition.",
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "Exponential models fit all observations",
+      "result": "PASS",
+      "evidence": "Factors are2 per2hours and1/2 per3hours, rather than additive linear differences.",
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "Exponential predicted values",
+      "result": "PASS",
+      "evidence": "N6=800 cells; M9=10mg.",
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "Exponential varied growth has correct anchor and rate",
+      "result": "PASS",
+      "evidence": "Nv(8)=585.64; exponent t-4 preserves the400-cell value at change time4.",
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "Decay positive for finite nonnegative times",
+      "result": "PASS",
+      "evidence": "Exact reasoning:80>0 and every finite real power of positive base1/2 is positive; zero is approached, not reached.",
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "Interest trial bracket and permitted candidates",
+      "result": "PASS",
+      "evidence": [
+        {
+          "rate": "0.04",
+          "balances": [
+            "2080.00",
+            "2163.2000",
+            "2249.728000"
+          ],
+          "difference": "-70.272000"
+        },
+        {
+          "rate": "0.05",
+          "balances": [
+            "2100.00",
+            "2205.0000",
+            "2315.250000"
+          ],
+          "difference": "-4.750000"
+        },
+        {
+          "rate": "0.06",
+          "balances": [
+            "2120.00",
+            "2247.2000",
+            "2382.032000"
+          ],
+          "difference": "62.032000"
+        },
+        {
+          "rate": "0.0506",
+          "balances": [
+            "2101.2000",
+            "2207.52072000",
+            "2319.221268432000"
+          ],
+          "difference": "-0.778731568000"
+        },
+        {
+          "rate": "0.0507",
+          "balances": [
+            "2101.4000",
+            "2207.94098000",
+            "2319.883587686000"
+          ],
+          "difference": "-0.116412314000"
+        },
+        {
+          "rate": "0.0508",
+          "balances": [
+            "2101.6000",
+            "2208.36128000",
+            "2320.546033024000"
+          ],
+          "difference": "0.546033024000"
+        }
+      ],
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "Interest annual compound-vs-simple counterexample",
+      "result": "PASS",
+      "evidence": "Simple2300 differs from compound2315.25 at5% per year.",
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "Savings exact479 minimal whole-euro rate",
+      "result": "PASS",
+      "evidence": [
+        {
+          "annualRate": 450,
+          "balances": [
+            "450.00",
+            "913.5000",
+            "1390.905000",
+            "1882.63215000"
+          ]
+        },
+        {
+          "annualRate": 475,
+          "balances": [
+            "475.00",
+            "964.2500",
+            "1468.177500",
+            "1987.22282500"
+          ]
+        },
+        {
+          "annualRate": 500,
+          "balances": [
+            "500.00",
+            "1015.0000",
+            "1545.450000",
+            "2091.81350000"
+          ]
+        },
+        {
+          "annualRate": 478,
+          "balances": [
+            "478.00",
+            "970.3400",
+            "1477.450200",
+            "1999.77370600"
+          ]
+        },
+        {
+          "annualRate": 479,
+          "balances": [
+            "479.00",
+            "972.3700",
+            "1480.541100",
+            "2003.95733300"
+          ]
+        }
+      ],
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "Savings payment timing and no hidden extra period",
+      "result": "PASS",
+      "evidence": "At year1 the deposit has just arrived; starting-year contributions would gain exactly one additional interest year each.",
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "Savings original OR kept",
+      "result": "PASS",
+      "evidence": "The single savings example satisfies original repayment OR savings method; no required second loan example added.",
+      "verificationKind": "author_reasoned_boundary_not_executable_test"
+    },
+    {
+      "check": "Duration first target period with2percent",
+      "result": "PASS",
+      "evidence": [
+        "1000",
+        "1220.00",
+        "1444.4000",
+        "1673.288000",
+        "1906.75376000",
+        "2144.8888352000",
+        "2387.786611904000",
+        "2635.54234414208000"
+      ],
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "Duration first target period zero interest",
+      "result": "PASS",
+      "evidence": [
+        "1000",
+        "1200",
+        "1400",
+        "1600",
+        "1800",
+        "2000",
+        "2200",
+        "2400",
+        "2600"
+      ],
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "Duration discrete-year counterexample",
+      "result": "PASS",
+      "evidence": "No intermediate credit or deposit is defined; between years6and7 the account stays at prior credited balance, so linear interpolation is not an actual event time under the stated model.",
+      "verificationKind": "author_reasoned_boundary_not_executable_test"
+    },
+    {
+      "check": "Workbook exact recurrence comparison Rates",
+      "result": "PASS",
+      "evidence": {
+        "rows": 6,
+        "balanceCells": 18
+      },
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "Workbook exact recurrence comparison Savings",
+      "result": "PASS",
+      "evidence": {
+        "rows": 5,
+        "balanceCells": 20
+      },
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "Duration workbook matches exact decimals in both scenarios",
+      "result": "PASS",
+      "evidence": "All period balances independently checked against Decimal recurrence, including year0 and first target years.",
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    },
+    {
+      "check": "All bilingual displayed monetary tables exact",
+      "result": "PASS",
+      "evidence": "Every displayed DE/EN balance/interest/difference cell checked against independently calculated exact-decimal reference rounded only for display.",
+      "verificationKind": "executed_symbolic_numeric_or_table_assertion"
+    }
+  ]
+}

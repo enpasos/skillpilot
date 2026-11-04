@@ -1,6 +1,6 @@
 # Umsetzungsplan: Assessment-gated Completion
 
-Stand: 31. Oktober 2026. Dieser Plan beschreibt den **aktuellen lokalen
+Stand: 3. November 2026. Dieser Plan beschreibt den **aktuellen lokalen
 Implementierungsstand** nach der verbindlichen Produktkorrektur: allgemeine
 Bedarfsberechnung aus Graph und Mastery statt manueller Erlassprofile.
 Abschließende Gesamtprüfung, entfernter CI-Lauf, Deployment und tatsächliche
@@ -23,7 +23,7 @@ Drei Regeln bestimmen die Umsetzung:
 
 1. Jedes gemeisterte Ziel beendet seinen eigenen `requires`-Bedarf.
 2. Ein noch nicht gemeistertes Ziel ohne verbleibenden Verbraucher ist implizit
-   erledigt, sofern es keine Abschlussprüfung ist. Auch sein Bedarf entfällt;
+   erledigt, sofern es weder Prüfungs- noch Gedächtnisziel ist. Auch sein Bedarf entfällt;
    die Berechnung wird bis zum stabilen Zustand fortgesetzt.
 3. Jede Abschlussprüfung im anwendbaren Umfang ist direkt ansteuerbar.
    Fehlende Vorbereitungsmastery verhindert den bewussten Versuch nicht.
@@ -31,8 +31,13 @@ Drei Regeln bestimmen die Umsetzung:
 Pro atomarem Ziel bleibt ausschließlich `mastery ∈ {0,1}` gespeichert. Implizite
 Erledigung ist eine berechnete Aussage über einen benannten Umfang, keine
 Mastery und kein zweites Ergebnis. Sie ist auch ohne zuvor bestandene Prüfung
-möglich. Orientierung, Karten und gewöhnliche Endziele erhalten keine neue
-Schutzrolle; ihre ausdrücklichen Abschlussabläufe bleiben unverändert.
+möglich. Prüfungs- und Gedächtnisziele bleiben bis zur Mastery geschützt,
+auch innerhalb versteckter Unterstützung. Schutz bedeutet jedoch nicht, dass
+ein Unterstützungsziel außerhalb der ausgewählten Targets eine eigenständige
+Abschlusspflicht erhält. Es bleibt unmastered, trägt aber nur solange Bedarf,
+wie eine offene ausgewählte Pflicht es tatsächlich benötigt. Seine ausdrücklichen Abschlussabläufe
+bleiben unverändert; Karten erhalten keine direkten Prüfungsaktionen und
+werden nicht in Prüfungszahlen aufgenommen.
 
 Das Versprechen lautet: **Was du schon geschafft hast, muss nicht erneut
 vorbereitet werden. Was für die verbleibende Arbeit nicht mehr nötig ist,
@@ -40,11 +45,26 @@ musst du nicht gesondert erledigen. Prüfungen kannst du bewusst direkt versuche
 Eine ausführliche KI-Prüfungsbewertung mit Punkten, Fehlererklärung und
 Rückmeldung bleibt Teil des normalen Bewertungsablaufs.
 
+Es gelten die normalen Bewertungsregeln der Prüfung.
+`coveredGoalIds` beschreibt die bewerteten Aufgabenhandlungen, keine eigenen
+Bestehensentscheidungen pro Voraussetzung. Für die Bedarfsrechnung zählt allein
+Mastery, unabhängig von Punktverteilungen oder Einzelnachweisen.
+Aufgabenspezifische Punktekappungen bleiben Teil der normalen Bewertungsrubrik.
+
+Jedes ausgewählte geschützte Target ist eine eigenständige Abschlusspflicht.
+Eine spätere bestandene Prüfung erledigt deshalb keine frühere Prüfungs-ID
+implizit. Jede zusätzliche Prüfungsreferenz muss auch hinsichtlich dieser
+Pflichtwirkung begründet sein. Bloße Aufgabenalternativen dürfen nicht
+versehentlich als weitere verpflichtende Lernziele aufgenommen werden.
+
 ## 2. Autoritativer Umfang und Graph
 
 Der Standardumfang ist der vollständige gespeicherte Persönliche Lehrplan.
-Weitere Umfänge stammen aus dessen autoritativer Program-/Composition-Struktur,
-etwa einem sichtbaren Stufen- oder Fachabschnitt. Der Backenddienst verwendet
+Abschnittsmasken stammen aus dessen autoritativer Program-/Composition-Struktur,
+etwa einem sichtbaren Stufen- oder Fachabschnitt. Die Bedarfsrechnung läuft immer
+über den vollständigen Persönlichen Lehrplan, danach werden die ausgewählten
+Targets gezählt. Ein reiner Vorbereitungsabschnitt entfernt seinen außerhalb
+der Maske liegenden Verbraucher nicht. Der Backenddienst verwendet
 `GoalProjection`, `targetGoalIds` und die projizierten Unterbäume; er erfindet
 keine Stufenzuordnung aus Titeln, `phase`, Fokus oder `requires`.
 
@@ -54,14 +74,57 @@ mit versteckten und fachübergreifenden Zielen ein. Unterstützende Ziele werden
 dadurch nicht automatisch zu Zielen des gewählten Umfangs. Fehlende Referenzen,
 Zyklen und widersprüchliche Projektionen sind Fehler, keine leere Zielmenge.
 
+Diese Grenze gilt auch für die Autorengeneratoren. Eine korrigierte
+`requires`-Kante darf die Menge fachlicher Inhaltsziele nicht automatisch
+erweitern. Zusätzlich ausgewählte Inhaltsziele benötigen eine ausdrückliche
+Quellen-/Scopeentscheidung; kanonische Phasenlabels allein tragen sie nicht.
+Bereits zusätzlich aufgenommene Ziele werden anhand dieser Entscheidung
+erhalten oder korrigiert. Nicht jedes im tatsächlichen Unterstützungskontext
+erreichbare Ziel benötigt außerdem eine eigene `prerequisiteOnly`-Referenz.
+Die bestehende ausdrücklich festgelegte Anwendbarkeitsregel
+`applicabilityFromRequires` für lokale Prüfungsendpunkte bleibt davon getrennt:
+Sie prüft die Passung einer gewählten Aufgabe, liefert aber keinen Quellenbeleg
+und erweitert keine Inhaltszielmenge.
+
+Im bestehenden Backend muss die abgeleitete Länderzuordnung außerdem im
+ausgelieferten `applicability`-Feld materialisiert sein. Ein korrekter
+Compilerbericht allein verändert diese Runtime-Daten nicht. Autorenwerkzeuge
+und CI müssen deshalb fehlende Materialisierung erkennen und die tatsächliche
+Backend-Auswahl gegen die freigegebenen vollständigen Lehrpläne prüfen.
+Bewusst enger geprüfte Platzierungen werden dadurch nicht automatisch auf die
+gesamte rechnerische Länder-Schnittmenge ausgeweitet. Dies ist eine Ableitung
+der bestehenden Anwendbarkeitsregel, keine zusätzliche Freigabe- oder
+Masteryentscheidung.
+
 Die bestehende autoritative Assessment-/Exam-Klassifikation bestimmt die
 Abschlussprüfungen. Die Funktion führt keine neue Unterscheidung zwischen
 Übungsprüfung und Abschlussprüfung aus Anzeigenamen ein. Aufgabenqualität und
 Bewertungsrubrik bestimmen weiterhin die explizite Mastery.
 
-Ein endlicher gültiger Kontext ohne Abschlussprüfungen ist vollständig explizit
-oder implizit erledigt. `requiredAssessmentCount=0` ist deshalb ein gültiger
-allgemeiner Fall, auch bei null gespeicherter Mastery.
+In vollständigen autoritativen Curricula und unterstützten Projektionen muss
+jedes Target bei Mastery null über direkte Voraussetzungen von einem
+ausgewählten geschützten Prüfungs- oder Gedächtnisziel erreichbar sein. Ein gewöhnliches
+Endziel ohne solchen Bedarf ist ein Modellierungsfehler. Ein nichtleerer
+Lehrplan ohne geschützte Ziele fällt ebenfalls durch diese Prüfung. Die
+deterministische Prüfung darf weder den Mangel ausblenden noch durch erfundene
+Mastery, unbegründete neue Kanten oder bloße Umtypisierung repariert werden.
+`requiredAssessmentCount=0` bleibt für einen vollständig durch Gedächtnisziele
+verankerten Umfang möglich; es bedeutet keine automatische Erledigung.
+
+Eine eigene Abschlussaufgabe darf die fehlende Route zu bereits ausgewählten
+ganzen Lernzielverträgen herstellen. Der vollständige Aufgaben-/Rubrikvertrag
+und seine echten Vorbereitungen müssen zum bestehenden Programm und seiner
+Eingangsbasis passen. Daraus folgt keine Behauptung, das amtliche Curriculum
+verlange genau diese Aufgabe, und keine neue Quellen-Coverage. Ein fehlendes
+direktes Einzelmapping allein begrenzt die eigene Aufgabe deshalb nicht auf
+das zuerst geprüfte Bundesland. Bekannte falsche Targetzuordnungen oder
+zusätzliche unpassende Anforderungen bleiben dagegen offen.
+Die geprüfte Program-/Composition-Zuordnung entscheidet weiterhin über das
+Prüfungs-Target. `applicabilityFromRequires` kann ausdrücklich die Passung
+einer lokalen Prüfung ableiten; Unterstützungsziele werden dadurch nicht
+zu Abschlusszielen. Jede neue Pflicht ist gegen alle tatsächlich angebotenen
+Konfigurationen abzugleichen; alternative Aufgabenformen erzeugen keine
+zusätzlichen Pflichten ohne eigene Begründung.
 
 ## 3. UX: vorhandene Lernansicht, klare Handlungen
 
@@ -134,19 +197,43 @@ für diese Funktion zurückgestellt; es wird kein nativer Direktstart oder
 ersetzender Cockpit-Handoff für diese Anbieter behauptet. Ihre spätere
 Integration benötigt passende Adapter und eine eigene Host-Abnahme.
 
+### 3.4 Bewusstes Weiterlernen bei einem Routenfehler
+
+Bei einem positiv erkannten reinen `UNCOVERED`-Fehler bleiben Pflichtbedarf,
+implizite Anrechnung und automatische Fortsetzung unbekannt. Davon getrennt
+bleibt ausdrücklich gewählte gewöhnliche Arbeit möglich, wenn der vollständige
+Lehrplan, Fokus, Mastery-/Recall-Stand und die veröffentlichten Handlungen
+verlässlich sind. Eine laufende gültig gebundene gewöhnliche Arbeit bleibt
+lesbar und abschließbar. Andere Berechnungs-, Eigentums- oder Fokusfehler
+erhalten keine pauschale Ausnahme. Ein neuer gewöhnlicher Abschnittsworkflow
+wird aus diesem Ersatzpfad nicht erzeugt.
+
+Gültige Planmetadaten bleiben auch bei ausgeschaltetem Planmodus lesbar.
+Eine zulässige bestätigte Aktivierung darf das ganze Planpaket übernehmen
+und den Planmodus einschalten, ohne ein neues Lernziel auszuwählen. Dabei
+müssen der ganze künftig gespeicherte Plansatz und der tatsächlich wirksame
+Fokus geprüft werden. Bestehende Prüfungs-, Workflow- und Pausengrenzen gelten
+weiter. Erst eine spätere ausdrückliche veröffentlichte Resume- oder
+Fachwechselhandlung wählt freiwillige Arbeit. Der Trainerdialog meldet bei
+Nullauswahl, dass kein neues Ziel ausgewählt wurde; unbekannter Bedarf wird
+nicht als fehlendes startbares Ziel dargestellt.
+
 ## 4. Fachlicher Kern und Wartbarkeit
 
 `CompletionProfileCompiler` löst den statischen Kontext auf;
 `CompiledAutomaticCompletion` und die automatische Variante des bestehenden
-kompilierten Kontexts enthalten IDs, direkte Adjazenz und Ziel-/Prüfungsmengen.
+kompilierten Kontexts enthalten IDs, direkte Adjazenz sowie Ziel-, Prüfungs-
+und Schutzmengen. Die Schutzmenge ist die Vereinigung der bestehenden Prüfungs-
+und Gedächtnisklassifikation, nicht eine Liste manuell freigegebener Erlässe.
 `CompletionEvaluator` berechnet den Lernerzustand ohne Datenbankzugriff.
 `CompletionApplicationService` bündelt Kompilierung, begrenzten Cache und
 Generationsbindung. Historische Profile bleiben als Kompatibilitäts- und
 Testpfad getrennt; ihre Ein-Profil-/Ein-Prüfung-Grenze gilt nicht allgemein.
 
-Der produktive Algorithmus startet bei allen offenen Abschlussprüfungen im
-vollständigen Kontext und verfolgt deren **direkte** Voraussetzungen. Er stoppt
-an jedem gemeisterten Ziel. Die verbleibenden unmastered Nicht-Prüfungsziele
+Der produktive Algorithmus startet bei allen offenen Prüfungs- und Gedächtnis-
+**Targets** des vollständigen Persönlichen Lehrplans und verfolgt deren
+**direkte** Voraussetzungen einschließlich der fremden Unterstützung. Er stoppt
+an jedem gemeisterten Ziel. Die übrigen unmastered gewöhnlichen Ziele
 sind implizit erledigt. Das ist äquivalent zur im Konzept definierten
 Fixpunktberechnung und benötigt `O(|V|+|E|)` Zeit und linearen Arbeitsspeicher.
 Eine vorab transitive Verbraucherrelation wäre falsch: Sie würde den
@@ -155,8 +242,11 @@ Bedarfsstopp an einem gemeisterten Zwischenziel umgehen.
 Der gemeinsame Mastery-Resolver bleibt zuständig für kanonische Projektion und
 bestehende Zieltypabläufe, einschließlich Karten. Neue Ergebnisse sind binär;
 bestehende numerische Kompatibilitätsregeln werden nicht in Frontend oder
-Evaluator dupliziert. Ein implizites Kartenziel erzeugt keine Recall-Ergebnisse,
-ein implizites Orientierungsziel keine erfundene Interaktion.
+Evaluator dupliziert. Ein Kartenziel kann nicht implizit erledigt werden;
+ein implizites Orientierungsziel erzeugt keine erfundene Interaktion.
+Nicht mehr benötigte geschützte Unterstützung wird weder als implizit erledigt
+ausgegeben noch als zusätzliche Abschlusspflicht behandelt. Die Schutzmenge
+des Kontexts und die ausgewählten geschützten Wurzeln sind getrennte Mengen.
 
 ## 5. Konsistenz und Fehlerbehandlung
 
@@ -172,6 +262,12 @@ werden vor Aufgaben-, Bewertungs- und Wiederholungsaktionen geprüft.
 Gespeicherte Mastery bleibt erhalten. Unauswertbare Zustände werden kenntlich
 gemacht; weder „alles erledigt“ noch eine Nullanrechnung darf als stiller
 Fehlerersatz erscheinen.
+
+Bei statisch fehlerhaften Target-Routen bleibt die bekannte explizite Mastery
+auswertbar. Sind alle Targets des vollständigen Umfangs oder einer gewählten
+Abschnittsmaske ausdrücklich gemeistert, wird genau dieser explizite Abschluss
+ohne implizite Gutschrift neben der Qualitätswarnung angezeigt. Das repariert
+weder den Graphfehler noch eine unbekannte oder ungültige Targetdefinition.
 
 Das Frontend übernimmt die Backendwerte. Es berechnet weder Scope aus
 Baumdarstellung noch Mastery aus impliziten Markern. SSE, Reload und
@@ -208,6 +304,8 @@ als Pflicht empfohlen. Freiwilliges Lernen bleibt möglich und folgt dem
 normalen Zielvertrag. Die Wahl eines Abschnitts darf keine fremden unabhängigen
 Fokuswurzeln oder gespeicherte Planpräferenzen still entfernen.
 
+<a id="plan-ist"></a>
+
 ### 7.1 Plan-IST einschließlich impliziter Erledigung
 
 Für die feste, fachweise zusammengeführte Planmenge G, explizite Mastery M und
@@ -228,11 +326,12 @@ bestimmen den Bedarf; die Quote wird weiterhin ausschließlich je Fach gezählt.
 Beispiel: G enthält nur Vorbereitung A, eine offene Prüfung Q benötigt A und
 liegt im Persönlichen Lehrplan außerhalb G. A bleibt erforderlich und I=0.
 Getrennte Fachplanauswertungen oder die Voraussetzungshülle von G allein würden
-Q übersehen. Eine explizit gewählte Abschnittsansicht zeigt ihr W_section,
+Q übersehen. Eine explizit gewählte Abschnittsansicht zeigt nur die Schnittmenge
+ihres Targetumfangs mit W_PC,
 ändert aber weder W_PC noch Plan-I. Gemeisterte Zwischenziele stoppen ihren
-Bedarf auch bei noch offenen späteren Prüfungen. Nur ein vollständiger
-Persönlicher Lehrplan ohne Abschlussprüfung in seinem gesamten Kontext ist
-vollständig explizit oder implizit erledigt; ein prüfungsfreier Plan reicht nicht.
+Bedarf auch bei noch offenen späteren Prüfungen. Alle ausgewählten geschützten Prüfungs-
+und Gedächtnis-Targets müssen gemeistert sein, bevor der vollständige Lehrplan
+abgeschlossen sein kann; ein prüfungsfreier Plan reicht nicht.
 
 Die Planbasis bleibt fest: vor Planbeginn explizit gemeisterte Ziele werden
 bereinigt, implizite Ziele nicht zusätzlich aus G gestrichen. Jede ID zählt
@@ -240,6 +339,17 @@ höchstens einmal. Ein späterer expliziter Abschluss eines bereits angerechnete
 Ziels erhöht I nicht nochmals. Tatsächliche Periodenabschlüsse H bleiben an
 wirkliche Abschlussereignisse gebunden; implizite Erledigung erzeugt kein
 solches Ereignis und keinen rückdatierten Abschluss.
+
+**Bestätigte Periodenentscheidung vom 1. November 2026:** Gesamt-IST und
+Gesamtsaldo berücksichtigen weiterhin implizite Beiträge. Das Tages-/Wochenziel
+zählt ausschließlich gültige explizite Abschlüsse H innerhalb seiner Periode:
+`erfüllt = min(P,H)`, `offen = max(0,P-H)`. Frühere Vorarbeit erfüllt kein
+aktuelles Kontingent. Der Rohsaldo I−S sowie Rückstand und Vorsprung bleiben
+unverändert; Rückstand wird weiterhin nicht negativ. Die Checkbox verändert
+I, niemals H oder diese Periodenregel. Cockpit, Coach und automatische
+Fortsetzung verwenden denselben zentralen Rechner. Ein offenes Kontingent
+aktiviert keine implizite Vorbereitung als Pflicht und erzeugt keine neuen
+Abschlussereignisse für bereits früher gemeisterte Ziele.
 
 Die Checkbox **„Nur explizit erreichte Lernziele zählen“** steht neben der
 Planperiodenwahl und ist standardmäßig aus. Erst Speichern wirkt. Sie verändert
@@ -305,9 +415,13 @@ Die Abnahme prüft die Regeln unabhängig von der Implementierung:
 
 - Ketten, Verzweigungen, geteilte Vorbereitung und mehrere offene Prüfungen;
   direkter Bedarf stoppt an jedem gemeisterten Zwischenziel.
-- Gewöhnliches Endziel, Orientierung und Karten ohne Verbraucher sind implizit
-  erledigt. Ein gültiger Kontext ohne Prüfungen schließt bei Mastery null ab.
-- Offene Prüfungen bleiben offen. Externe Voraussetzungen werden berücksichtigt,
+- In vollständigen Curricula und unterstützten Projektionen sind gewöhnliche
+  Targets ohne Bedarf von geschützten Wurzeln bei Mastery null Fehler. Tests
+  enthalten auch Lehrpläne ohne geschützte Ziele und fehlende projizierte Routen.
+- Offene Prüfungen und Gedächtnisziele bleiben offen. Alle kompatiblen
+  Gedächtniskodierungen, versteckte geschützte Unterstützung ohne unabhängige
+  Pflicht, Recall-Rücknahme und
+  getrennte Prüfungszählung werden geprüft. Externe Voraussetzungen werden berücksichtigt,
   ohne als zusätzliche sichtbare Targets oder Mastery zu erscheinen.
 - Vollständiger Persönlicher Lehrplan und bewusst gewählte Unterabschnitte;
   Fokus, eingeklappte Knoten und Suchfilter verändern die Scopeberechnung nicht.
@@ -331,3 +445,103 @@ Aktuelle lokale Prüfbefehle stehen im
 [Implementierungsdokument](assessment-gated-completion-pilot.md#reproduzierbare-prufung).
 Ein grüner lokaler Lauf ist weder entfernter CI-Erfolg noch Deployment,
 Claude-Host-Abnahme, menschlicher Verständlichkeitstest oder Wirksamkeitsnachweis.
+
+## 10. Fachweise Korrektur und GitHub-Meilensteine
+
+Verbindliche Arbeitsfolge vom 1. November 2026: **Mathematik → Physik →
+Biologie → Chemie → Wirtschaftswissenschaften.** Die Fächer müssen getrennt
+prüfbar und freigabefähig sein. Befunde im jeweils späteren Fach bleiben im
+Gesamtaudit sichtbar und verhindern dessen fachliche Freigabe. Sie blockieren
+den ausdrücklich auf ein anderes Fach begrenzten Korrekturmeilenstein nicht.
+Die gleichen fachlichen Kriterien gelten für jedes Fach; es gibt keine
+akzeptierte Fehlerbasis und keine Anrechnung ungeprüfter Restfälle.
+
+Das erneute Astra-Ultra-Grundreview bestätigt den Bedarfsrechner und korrigiert
+die Arbeitsreihenfolge: **zuerst einen einzigen reproduzierbaren Mathematik-
+Targetstand stabilisieren, danach die verbleibenden Endpunktrouten bearbeiten.**
+Insbesondere die bisherige Targetpromotion aus Voraussetzungen in
+`completeSek1RouteBuckets`, bekannte Stufenfehler und Doppelplatzierungen in
+echten Kursunionen müssen auf diesem gemeinsamen Stand geklärt werden.
+Einzelne grüne Ansichtsdateien ersetzen nicht die tatsächlichen Backendangebote.
+
+Die Restlücken werden in fachlich zusammengehörigen Endpunktgruppen bearbeitet.
+Vorhandene passende Prüfungen haben Vorrang; neue Aufgabenhandlungen werden nur
+für echte Inhaltslücken ergänzt. Die Zahl betroffener Ziel-IDs ist keine Zahl
+benötigter neuer Prüfungen. Bestehende unabhängige Inhaltsurteile bleiben für
+unveränderte Verträge verwendbar. Geänderte Felder und ihr integriertes Delta
+werden gezielt geprüft; eine neue Dateibindung verlangt nicht automatisch eine
+erneute vollständige Begutachtung aller unveränderten Inhalte. Ein gemeinsamer
+Kandidat und sein nachvollziehbarer Diff ersetzen parallele Abschlusskandidaten
+und weitere Nachweisplattformen.
+
+Die integrierten Laufzeitfälle umfassen ausdrücklich den tatsächlichen
+Mastery-Schreibpfad mit anschließender automatischer Planfortsetzung sowie alle
+unterstützten Memory-Typkodierungen im autoritativen Recallresolver. Der reine
+Evaluatornachweis deckt diese Aufrufstellen nicht ab.
+
+Der erste Meilenstein liegt **nach Fertigstellung sämtlicher Mathematik-
+Korrekturen**. Gemeint ist der Abschluss dieser Entwicklungsarbeiten. Dafür
+müssen alle folgenden Bedingungen erfüllt sein:
+
+1. Die Prüfung über den kanonischen Mathematikgraphen und sämtliche tatsächlich
+   angebotenen Mathematik-Lehrpläne ist vollständig. Aktuell betrifft das 154
+   Angebote; der Umfang wird weiter aus dem autoritativen Angebotsinventar
+   bestimmt. Kein fehlerhaftes Angebot darf durch Änderung von Reifegrad,
+   Fokus, Kurszusammenführung oder Prüfauswahl aus dieser Menge verschwinden.
+2. Die Mathematikangebote haben keine gewöhnlichen Targets ohne ausgewählten
+   geschützten Endpunkt. Die ausgewählten Prüfungen sind unter dem bestehenden
+   Aufgaben-/Rubrik- und Freigabevertrag tatsächlich direkt startbar; bloße
+   Target-Mitgliedschaft beweist dies nicht. Geschützte Unterstützung wird nicht
+   zu einer zusätzlichen unabhängigen Abschlusspflicht. Prüfungen und Lernkarten werden weiterhin ausschließlich durch
+   ihren jeweiligen expliziten Abschluss erfüllt. Mastery bleibt binär.
+3. Quellen-, Stufen-, Dauer- und Platzierungsfehler, die tatsächlich angebotene
+   Targets, ihre Verträge oder eine neue/reparierte Route betreffen, sind
+   fachlich korrigiert. Aufgaben, Lösungen, Rubriken und tatsächliche Abdeckung
+   tragen ihre Prüfungsverknüpfungen. Ein weiterer Prüfungsrand darf keine
+   falsche Quellgeltung, ungeprüfte Aufgabenvariante oder ungeklärte
+   Stufenzuordnung verdecken. Echte Vorbereitung und geprüfte Coverage sind
+   getrennt begründet. Bestehende passende Fachreviews werden wiederverwendet;
+   nur tatsächliche Restlücken erfordern neue Aufgaben. Unabhängige Fragen zu
+   späteren Quellenrevisionen bleiben sichtbar, erweitern diesen Meilenstein
+   aber nicht automatisch zu einer vollständigen neuen Quellenmigration.
+   Bestätigte Defekte in ohnehin verpflichtenden Qualitätsgates bleiben
+   blockierend; Kriterien und Reifegraduntergrenzen werden nicht abgesenkt.
+4. Die relevanten Laufzeit-, Cockpit-, Coach- und Planprüfungen sowie die
+   bestehenden strengen Mathematik-Qualitätsgates bestehen. Autorenskripte und
+   erzeugte Ansichten sind reproduzierbar. Die gemeinsame Software wird auch
+   auf Auswirkungen auf andere Fächer geprüft.
+5. Die endgültigen Änderungen und gebundenen Nachweise sind unabhängig mit
+   Astra Ultra geprüft; daraus folgende Korrekturen sind umgesetzt und erneut
+   validiert. Konzept, Umsetzungsstand sowie LaTeX-Dokument und PDF stimmen
+   mit dem tatsächlich geprüften Stand überein.
+6. Der überprüfte Mathematikstand ist committed und nach GitHub gepusht.
+   Sämtliche für diesen Commit erforderlichen CI-Jobs, einschließlich des
+   fachlich vollständigen Mathematik-Integritätsgates, sind terminal grün.
+   Fehler werden iterativ am jeweils neuesten Commit behoben. Lokale Tests,
+   ein älterer grüner Commit oder noch laufende Jobs erfüllen dies nicht.
+
+Erst anschließend beginnen die fachlichen Korrekturen für Physik. Für die
+weiteren Fächer gilt dasselbe Verfahren. Unfertige Befunde anderer Fächer
+werden nicht als bestanden ausgegeben. Die bisherige Gesamtprüfung bleibt als
+vollständiger Audit ausführbar; fachweise Aufrufe verwenden dieselbe reale
+Backend-Projektion, dieselben Integritätsregeln und sämtliche betreffenden
+Angebote einschließlich ihres fachübergreifenden Voraussetzungskontexts.
+Ein Fachfilter darf diesen Kontext nicht abschneiden.
+
+Die fachweise Entwicklungsabnahme ist von fachweise unabhängiger automatischer
+Produktverfügbarkeit zu unterscheiden. Der aktuelle konservative Fehlerfall
+sperrt implizite Anrechnung im vollständigen defekten Persönlichen Lehrplan.
+Explizite Erfolge und vollständig explizit erreichte bekannte Targetmengen
+bleiben auch dann wahr und werden mit Qualitätswarnung angezeigt. Eine feinere
+Fehlerbehandlung darf fremdfachliche Verbraucher nicht entfernen; sie benötigt
+einen eigenen Nachweis, bevor eine gemischte defekte Konfiguration als unabhängig
+automatisch benutzbar bezeichnet wird.
+
+Die CI-Trennung wird als eigener Datenprüfpfad umgesetzt, damit ein gewöhnlicher
+Softwaretestlauf nicht von sämtlichen noch unbearbeiteten Curriculumdaten
+abhängt. Die allgemeinen semantischen Regressionen bleiben Pflichtprüfungen.
+Ein fertiges Fach erhält einen eigenen verbindlichen Datenjob; weitere Fächer
+kommen nach ihrer jeweiligen Korrektur mit identischem Prüfmaßstab hinzu.
+Die bestehenden fachübergreifenden Qualitäts- und Sicherheitsgates bleiben
+erhalten. Der aktuelle [Gesamtbefund](../qa-ci/curriculum-completion-integrity-2026-11-01.md)
+kennzeichnet weiterhin die offenen Fächer und die noch fehlende Gesamtfreigabe.

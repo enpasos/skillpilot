@@ -1,0 +1,28 @@
+{
+  "status": "PASS_ACTUAL_PRIVATE_JAVAC_AND_TWO_CANONICAL_IDENTITY_NEGATIVE_PROBES",
+  "implementation": {
+    "path": "backend/src/test/java/com/skillpilot/backend/composition/MaterializeMathContextualCombinedViews.java",
+    "sha256": "d0d769f3b13ebba0c606f1c9cfc17cd849978f7a3121aeb6ab6cd11a2261d890"
+  },
+  "javacExitCode": 0,
+  "privateClassCount": 2,
+  "twoCases": [
+    {
+      "case": "different-path",
+      "exitCode": 1,
+      "seconds": 0.51,
+      "exactDirectGuardObserved": true,
+      "noOutputWrites": true
+    },
+    {
+      "case": "different-sha",
+      "exitCode": 1,
+      "seconds": 0.55,
+      "exactDirectGuardObserved": true,
+      "noOutputWrites": true
+    }
+  ],
+  "originalAstraFindingPreserved": "tmp/approach-review-20261101/astra-context-he-three-joint-stage-20261104-v1/java-canonical-binding-negative-probe.actual.json",
+  "noRuntimeMainClassOrFrontendJavaRequirementChanged": true,
+  "rootOrRootClassesWritten": false
+}

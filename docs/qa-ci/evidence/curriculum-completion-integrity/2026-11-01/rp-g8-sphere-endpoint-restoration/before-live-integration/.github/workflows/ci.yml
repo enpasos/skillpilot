@@ -1,0 +1,718 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches: [ main ]
+    paths:
+      - '**'
+      - '!README.md'
+      - '!AGENTS.md'
+      - '!docs/**'
+      - 'docs/qa-ci/status/**'
+      - 'docs/legal/ai-transparency-inventory.json'
+      - '!sandbox/**'
+      - '!tmp/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '**'
+      - '!README.md'
+      - '!AGENTS.md'
+      - '!docs/**'
+      - 'docs/qa-ci/status/**'
+      - 'docs/legal/ai-transparency-inventory.json'
+      - '!sandbox/**'
+      - '!tmp/**'
+     
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  action-regression-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: 'ai/openai custom gpt/action-regression/package-lock.json'
+      - name: Install dependencies
+        run: npm --prefix "ai/openai custom gpt/action-regression" ci
+      - name: Verify own-project license declarations
+        run: node --test scripts/own_npm_licenses.test.mjs scripts/goal_visualization_license.test.mjs
+      - name: Test Spring-hosted Custom GPT Action control client
+        run: npm --prefix "ai/openai custom gpt/action-regression" test
+      - name: Validate current Custom GPT Action Session contract
+        run: npm --prefix "ai/openai custom gpt" test
+      - name: Validate production deployment entrypoint
+        run: |
+          bash -n \
+            deploy_skillpilot.sh \
+            scripts/deploy.sh \
+            scripts/lib/openai_v1_service_environment.sh \
+            scripts/lib/openai_v1_mtls_mode.sh \
+            scripts/install_openai_v1_mtls_edge.sh \
+            scripts/verify_openai_v1_mtls_edge.sh
+          ./deploy_skillpilot.sh --help | grep -Fq 'openai-mcp coach'
+          ln -s "${GITHUB_WORKSPACE}/deploy_skillpilot.sh" \
+            "${RUNNER_TEMP}/deploy_skillpilot.sh"
+          "${RUNNER_TEMP}/deploy_skillpilot.sh" --help | grep -Fq 'openai-mcp coach'
+          if ./deploy_skillpilot.sh --coach-variant invalid >/dev/null 2>&1; then
+            echo 'Invalid coach variant was accepted.' >&2
+            exit 1
+          fi
+          if grep -Eq 'sudo[[:space:]]+-v|sudo[[:space:]]+-n[[:space:]]+true' scripts/deploy.sh; then
+            echo 'Deployment must not use a general sudo credential check.' >&2
+            exit 1
+          fi
+          grep -Fq 'sudo -k -n -l -- "${SYSTEMCTL_BIN}" restart "${SERVICE_NAME}"' scripts/deploy.sh
+          grep -Fq 'sudo -n -- "${SYSTEMCTL_BIN}" restart "${SERVICE_NAME}"' scripts/deploy.sh
+          python3 - <<'PY'
+          from pathlib import Path
+
+          source = Path('scripts/deploy.sh').read_text(encoding='utf-8')
+          preflight = source.index('require_goal_book_pdf_tools\n')
+          git_update = source.index('git stash\n')
+          if preflight >= git_update:
+              raise SystemExit('PDF tool preflight must run before the Git update')
+          for command in ('pdfinfo', 'pdftohtml', 'fc-list', 'fc-match'):
+              if command not in source:
+                  raise SystemExit(f'Deployment PDF tool preflight omits {command}')
+          install = source.index('./node_modules/.bin/playwright install chromium')
+          browser_preflight = source.index('require_goal_book_browser\n')
+          application_build = source.index('npm run build\n')
+          if not install < browser_preflight < application_build:
+              raise SystemExit('Pinned Chromium install and launch check must precede the application build')
+          if 'npm ci\n' not in source:
+              raise SystemExit('Deployment must install the locked application dependencies')
+          if 'SKILLPILOT_BACKEND_BUILD_DIR="${DEPLOY_BACKEND_BUILD_DIR}"' not in source:
+              raise SystemExit('Deployment backend build is not isolated from the live bootRun build directory')
+          PY
+          for generated_shell_file in \
+            backend/src/main/resources/static/index.html \
+            backend/src/main/resources/static/sw.js \
+            backend/src/main/resources/static/version.json; do
+            if git ls-files --error-unmatch "${generated_shell_file}" >/dev/null 2>&1; then
+              echo "Generated frontend shell file must not be tracked: ${generated_shell_file}" >&2
+              exit 1
+            fi
+          done
+
+      - name: Verify Gemini gateway deployment and exact skill download guards
+        run: |
+          python3 -m unittest discover -s scripts -p test_gemini_v1_deployment.py
+          node --test scripts/verify_gemini_skill_download.test.mjs
+
+  openai-mcp-app-ci:
+    name: OpenAI MCP Apps CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: 'ai/openai app/package-lock.json'
+      - name: Install dependencies
+        run: npm --prefix "ai/openai app" ci
+      - name: Test DE and EN MCP App contracts and workflows
+        run: npm --prefix "ai/openai app" test
+      - name: Test plugin release and CI configuration
+        run: |
+          node --test scripts/openai_plugin_release.test.mjs scripts/plugin_ci_workflows.test.mjs scripts/compute_curriculum_revision.test.mjs scripts/check_skillpilot_coach_behavior.test.mjs scripts/audit_npm_dependencies.test.mjs
+      - name: Validate SkillPilot Coach source and current submission contract
+        run: node scripts/check_openai_plugin_versioning.mjs
+      - name: Validate current OpenAI daily-plan contract
+        run: node --test scripts/check_openai_coach_v11_candidate.test.mjs
+      - name: Test submission generation, export audit and trace validation
+        run: |
+          node --test scripts/openai_plugin_submission.test.mjs scripts/reproducible_plugin_zip.test.mjs
+          node --test scripts/openai_dialog_eval.test.mjs scripts/openai_dialog_assertions.test.mjs
+          node scripts/openai_plugin_submission.mjs check
+      - name: Build current OpenAI submission ZIP
+        run: |
+          node scripts/openai_plugin_submission.mjs package --out-dir tmp/openai-submission-package
+          for archive in tmp/openai-submission-package/*-submission.zip; do
+            node scripts/openai_plugin_submission.mjs audit-zip --zip "$archive"
+          done
+      - name: Test OpenAI V1 runtime configuration guard
+        run: node --test scripts/validate_openai_v1_runtime_config.test.mjs
+      - name: Validate exact V1 production boundary configuration
+        run: node scripts/validate_openai_v1_runtime_config.mjs
+      - name: Audit MCP App dependencies
+        run: node scripts/audit_npm_dependencies.mjs "ai/openai app"
+      - name: Retain checked OpenAI submission worksheets
+        uses: actions/upload-artifact@v6
+        with:
+          name: openai-submission-worksheet-${{ github.sha }}
+          path: |
+            ai/openai plugin/skillpilot-coach/submission/generated/portal-draft.json
+            ai/openai plugin/skillpilot-coach/submission/generated/preparation.json
+            ai/openai plugin/skillpilot-coach/submission/generated/acceptance-guide.md
+            ai/openai plugin/skillpilot-coach/submission/generated/trace-template.json
+            ai/openai plugin/skillpilot-coach/submission/generated/submission-plugin.json
+            ai/openai plugin/skillpilot-coach/submission/generated/submission-package.json
+          if-no-files-found: error
+      - name: Retain checked OpenAI submission ZIP
+        uses: actions/upload-artifact@v6
+        with:
+          name: openai-submission-package-${{ github.sha }}
+          path: |
+            tmp/openai-submission-package/*-submission.zip
+            tmp/openai-submission-package/submission-package.json
+          if-no-files-found: error
+          retention-days: 14
+
+  claude-connector-v1-ci:
+    name: Claude Connector V1 CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          # Claude validation needs its complete release history and backend
+          # resources, but not the multi-gigabyte curriculum/media checkout.
+          sparse-checkout: |
+            .github/workflows
+            ai/claude
+            backend
+            scripts
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: ai/claude/app/package-lock.json
+      - name: Install Claude MCP App dependencies
+        run: npm --prefix ai/claude/app ci
+      - name: Test and rebuild Claude MCP Apps
+        run: npm --prefix ai/claude/app test
+      - name: Verify committed Claude MCP App resources
+        run: |
+          git diff --exit-code -- \
+            ai/claude/app/dist \
+            backend/src/main/resources/claude-connector-v1/mcp-apps
+      - name: Audit Claude MCP App dependencies
+        run: npm --prefix ai/claude/app audit --audit-level=moderate
+      - name: Validate Claude plugin package
+        run: |
+          node ai/claude/plugin/skillpilot-coach-v1/check-package.mjs
+          node --test ai/claude/plugin/skillpilot-coach-v1/check-package.test.mjs
+          node --test ai/claude/plugin/skillpilot-coach-v1/build-package.test.mjs
+      - name: Verify Claude direct-install beta publication
+        run: |
+          node --test scripts/claude_direct_install_beta_release.test.mjs
+          node scripts/claude_direct_install_beta_release.mjs verify
+
+  openai-v1-public-edge-ci:
+    name: OpenAI MCP V1 public edge CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Validate public edge script
+        run: |
+          bash -n scripts/verify_openai_v1_public_edge.sh
+          PYTHONDONTWRITEBYTECODE=1 python3 -B scripts/test_openai_v1_public_edge.py
+      - name: Validate OpenAI V1 mTLS edge verifier
+        run: ./scripts/verify_openai_v1_mtls_edge.sh --static
+
+  goal-book-publication:
+    name: Learning-goal book build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Use Ubuntu package sources
+        uses: ./.github/actions/ubuntu-apt
+      - name: Test CI package source isolation
+        run: node --test ../scripts/ci_ubuntu_apt.test.mjs
+      - name: Install PDF and font tools
+        timeout-minutes: 10
+        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils fontconfig fonts-liberation
+      - name: Install pinned Playwright Chromium
+        timeout-minutes: 10
+        run: npx --no-install playwright install --with-deps chromium
+      - name: Prepare generated curriculum runtime assets
+        run: npm run prepare:runtime-assets
+      - name: Reject tracked generated goal-book publications
+        run: |
+          if [ -n "$(git ls-files -- public/lernzielbuch)" ]; then
+            echo 'Learning-goal books are generated build artifacts and must not be committed.' >&2
+            git ls-files -- public/lernzielbuch
+            exit 1
+          fi
+      - name: Build and validate all registered goal-book publications from source
+        run: npm run build:goal-books -- --force
+      - name: Verify generated publication bindings
+        run: npm run check:goal-book-publication
+      - name: Share verified goal-book publications with the application checks
+        uses: actions/upload-artifact@v6
+        with:
+          name: goal-book-publication-${{ github.sha }}
+          path: app/public/lernzielbuch/
+          include-hidden-files: true
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 3
+      - name: Share only the catalog and models required by backend tests
+        uses: actions/upload-artifact@v6
+        with:
+          name: goal-book-catalog-${{ github.sha }}
+          path: |
+            app/public/lernzielbuch/index.json
+            app/public/lernzielbuch/*.book-model.json
+          if-no-files-found: error
+          retention-days: 3
+
+  frontend-ci:
+    name: Application frontend CI
+    needs: goal-book-publication
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Use Ubuntu package sources
+        uses: ./.github/actions/ubuntu-apt
+      - name: Install FFmpeg and PDF validation tools
+        timeout-minutes: 10
+        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends ffmpeg poppler-utils fontconfig fonts-liberation
+      - name: Install pinned Playwright Chromium
+        timeout-minutes: 10
+        run: npx --no-install playwright install --with-deps chromium
+      - name: Restore same-run verified goal-book publications
+        uses: actions/download-artifact@v7
+        with:
+          name: goal-book-publication-${{ github.sha }}
+          path: app/public/lernzielbuch/
+      - name: Test deterministic ZIP32 writer
+        run: npm run test:deterministic-zip32
+      - name: Test package landscape model parity
+        run: npm run test:package-landscape-model
+      - name: Test runtime curriculum catalog consumer
+        run: npm run test:runtime-curriculum-catalog
+      - name: Test root route policy
+        run: npm run test:root-route-policy
+      - name: Test Claude v1 first-party start flow
+        run: npm run test:claude-v1-start
+      - name: Test Claude plugin publication consumer
+        run: npm run test:claude-plugin-publication
+      - name: Test service-worker navigation policy
+        run: npm run test:service-worker-navigation-policy
+      - name: Test learning-goal book contracts and publication
+        run: npm run test:goal-book-pipeline
+      - name: Test curriculum offering sources
+        run: npm run test:curriculum-offering-source
+      - name: Test package goal source evidence consumer
+        run: npm run test:package-goal-source-evidence
+      - name: Test goal source-rationale deployment smoke modes
+        run: npm run test:goal-source-rationale-deployment-smoke
+      - name: Test goal visualization QA approval model
+        run: |
+          npm run test:goal-visualization-qa-status
+          npm run test:goal-visualization-qa-model
+          npm run test:goal-visualization-scope
+          npm run test:goal-visualization-rollout-status
+          npm run test:goal-visualization-approval-coverage
+      - name: Test learner goal selection
+        run: npm run validate:learner-goal-selection
+      - name: Check GPT system instruction lengths
+        run: npm run check:gpt-system-instruction-lengths
+      - name: Test coach variant selection
+        run: npm run test:coach-variants
+      - name: Test optional learner content materials
+        run: npm run test:content-materials
+      - name: Test contextual AI transparency
+        run: npm run test:ai-transparency-ui
+      - name: Test Terms of Use and versioned acceptance
+        run: npm run test:legal-terms
+      - name: Test remote AI transparency artifact crawler
+        run: npm run test:ai-transparency-artifact
+      - name: Test frontend shell asset verifier
+        run: npm run test:frontend-shell-assets
+      - name: Test SkillPilot ID encryption
+        run: npm run test:skillpilot-id-file
+      - name: Test session setup
+        run: npm run test:session-setup
+      - name: Test public FAQ copy
+        run: npm run test:faq
+      - name: Test public landing page and overview
+        run: |
+          npm run test:public-landing
+          npm run test:public-overview
+      - name: Test existing learner linking
+        run: npm run test:existing-learner-linking
+      - name: Test trainer course planning
+        run: npm run test:trainer-course-plan
+      - name: Test learner-owned subject plans and Cockpit status
+        run: npm run test:learner-learning-plans
+      - name: Test quiet and bounded learner cockpit startup
+        run: npm run test:learner-cockpit-startup
+      - name: Test read-only learning-goal book UI
+        run: npm run test:goal-book-ui
+      - name: Test compact completed session setup
+        run: npm run test:session-setup-ui
+      - name: Test trainer navigation history
+        run: npm run test:trainer-navigation-ui
+      - name: Test trainer Gymnasium scope
+        run: npm run test:trainer-gymnasium-scope-ui
+      - name: Test learner data and SkillPilot ID management
+        run: npm run test:learner-data-management
+      - name: Test curriculum quality traffic-light interactions
+        run: npm run test:curriculum-quality-ui
+      - name: Test personal curriculum editor
+        run: npm run test:personal-curriculum-editor
+      - name: Lint
+        run: npm run lint
+      - name: Build application without regenerating curriculum assets
+        run: npm run build:application
+      - name: Test service-worker update lifecycle
+        run: npm run test:service-worker-update-lifecycle
+      - name: Check AI transparency inventory
+        run: npm run check:ai-transparency-inventory
+      - name: Check frontend shell assets in the built application
+        run: npm run check:frontend-shell-assets
+      - name: Check AI transparency in the built application
+        run: npm run check:ai-transparency-artifact
+      # The demo tool has its own Playwright version. Install its OS/font
+      # dependencies only after consuming the books, keeping the publication
+      # producer's pinned browser/font fingerprint valid for cache reuse.
+      - name: Install browser demo-video tool dependencies
+        working-directory: tools/demo-video
+        timeout-minutes: 10
+        run: |
+          npm ci --ignore-scripts
+          npx --no-install playwright install --with-deps chromium
+      - name: Validate reproducible browser demo-video tool
+        working-directory: tools/demo-video
+        run: |
+          npm run check
+          npm run demo -- validate --scenario scenarios/example.yaml
+          npm run demo -- validate --scenario scenarios/skillpilot-openai-review.template.yaml
+          DEMO_VIDEO_FIXTURE_SECRET=DEMO_SECRET_ci \
+            npm run demo -- record --scenario scenarios/example.yaml
+          DEMO_VIDEO_FIXTURE_SECRET=DEMO_SECRET_ci \
+            npm run demo -- verify-recording --scenario scenarios/example.yaml
+
+  graph-validation:
+    name: Curriculum CI
+    needs: goal-book-publication
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Use Ubuntu package sources
+        uses: ./.github/actions/ubuntu-apt
+      - name: Install PDF validation tools
+        timeout-minutes: 10
+        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils fontconfig fonts-liberation
+      - name: Install pinned Playwright Chromium
+        timeout-minutes: 10
+        run: npx --no-install playwright install --with-deps chromium
+      - name: Restore same-run verified goal-book publications
+        uses: actions/download-artifact@v7
+        with:
+          name: goal-book-publication-${{ github.sha }}
+          path: app/public/lernzielbuch/
+      - name: Validate Graph
+        run: npm run validate:graph
+      - name: Test exam Markdown conventions
+        run: npm run test:exam-markdown
+      - name: Test reviewed Mathematics checkpoint assessments
+        run: npm run test:math-checkpoint-exams
+      - name: Test HE Q2.5 central-dilation assessment scope
+        run: npm run test:math-q25-central-dilation-scope
+      - name: Test Mathematics Q2 assessment projection and scoring
+        run: npm run test:math-q2-m7-assessment-projection
+      - name: Test Physics practice and Abitur assessment projection
+        run: npm run test:physics-assessment-projection
+      - name: Test hard Sek-I/Sek-II learning routes
+        run: npm run test:hard-learning-routes
+      - name: Test reviewed canonical Mathematics Sek-I exam routes
+        run: npm run test:canonical-math-sek1-reviewed-exam-routes
+      - name: Test Q4 Caterer exam coverage and scope
+        run: npm run test:math-q4-caterer-exam-scope
+      - name: Test learner-facing composition labels
+        run: npm run test:learner-facing-composition-labels
+      - name: Validate Competency Wording
+        run: |
+          python -B ../scripts/validate_competency_wording.py
+          node --test ../scripts/check_curriculum_spelling.test.mjs
+          node ../scripts/check_curriculum_spelling.mjs
+      - name: Validate optional content packages and migration evidence
+        run: |
+          node ../scripts/validate_content_packages.mjs
+          node --test ../scripts/validate_content_packages.test.mjs
+          node ../scripts/check_content_link_migration.mjs
+      - name: Validate View Filters
+        run: npm run validate:view-filters
+      - name: Check Source Landscape Registry
+        run: npm run check:source-landscape-registry
+      - name: Check Hessen Math G8/G9 Projection
+        run: npm run check:he-math-duration-projection
+      - name: Check generated Math G8/G9 Composition Views
+        run: npm run check:math-duration-composition-views
+      - name: Check generated German Sek-I Composition Views
+        run: npm run check:german-seki-composition-views
+      - name: Check generated History Sek-I Composition Views
+        run: npm run check:history-seki-composition-views
+      - name: Check Canonical Math Scope Coverage
+        run: npm run check:canonical-math-scope-coverage
+      - name: Check Gymnasium G8/G9 Duration Readiness Report
+        run: npm run check:gymnasium-duration-readiness
+      - name: Check Mathematics G8/G9 Duration Policy Readiness
+        run: npm run check:math-duration-policy-readiness
+      - name: Check M6 G8/G9 Duration Policy Readiness
+        run: npm run check:m6-duration-policy-readiness
+      - name: Check Gymnasium Duration Offerings
+        run: npm run check:gymnasium-duration-offerings
+      - name: Check Curriculum Source Coverage
+        run: npm run quality:source-coverage-audit:check
+      - name: Check Goal Source Rationale Runtime Index
+        run: npm run check:goal-source-rationales:math-public
+      - name: Check Goal Source Rationale All-Relevant Report
+        run: npm run check:goal-source-rationales:math-all-relevant
+      - name: Check Goal Source Rationale Coverage Report
+        run: npm run check:goal-source-rationale-coverage
+      - name: Check Goal Source Rationale Gap Issues
+        run: npm run check:goal-source-rationale-gap-issues
+      - name: Check Goal Source Rationale Mapping Batch 01
+        run: npm run check:goal-source-rationale-mapping-batch-01
+      - name: Check Generated Documentation Notices
+        run: npm run check:generated-doc-notices
+      - name: Check Generated Status Registry
+        run: npm run check:generated-status-registry
+      - name: Check Documentation Links
+        run: npm run check:docs-links
+      - name: Check Documentation Index Coverage
+        run: npm run check:docs-indexes
+      - name: Check Terminology
+        run: npm run check:terminology
+      - name: Validate Composition Views
+        run: npm run validate:composition-views
+      - name: Test Composition Projection Roles
+        run: npm run test:composition-projection-roles
+      - name: Test Course-Level Mapping Consistency
+        run: npm run test:course-level-mapping-consistency
+      - name: Test Physics Source Method Routes
+        run: npm run test:physics-source-method-routes
+      - name: Check Memory-Card Reviews
+        run: npm run quality:memory-card-review:check:all
+      - name: Test strict deep curriculum QA and M7 transitions
+        run: npm run test:deep-understanding-rollout
+      - name: Test repository source availability
+        run: npm run test:repository-source-availability
+      - name: Test source extraction inventory
+        run: npm run test:source-extraction-inventory
+      - name: Verify committed curriculum quality status
+        run: |
+          npm run quality:curriculum-status
+          npm run check:curriculum-maturity-floors
+          git diff --exit-code -- ../docs/qa-ci/status
+          test -z "$(git ls-files --others --exclude-standard -- ../docs/qa-ci/status)"
+      - name: Prepare generated curriculum runtime assets
+        run: npm run prepare:runtime-assets
+      - name: Check goal visualization runtime assets
+        run: npm run check:goal-visualization-assets
+      - name: Check goal visualization QA freshness
+        run: npm run check:goal-visualization-qa -- --subjects=mathematik,physik,chemie
+      - name: Check goal visualization approval coverage
+        run: npm run check:goal-visualization-approval-coverage
+      - name: Check goal visualization rollout coverage
+        run: |
+          npm run check:goal-visualization-rollout-coverage
+          npm run check:goal-visualization-rollout-coverage:physik
+          npm run check:goal-visualization-rollout-coverage:chemie
+          npm run check:goal-visualization-qa-coverage-parity
+      - name: Test full standalone curriculum package builder
+        run: npm run test:full-standalone-package-builder
+      - name: Build integrated application artifact
+        run: npm run build:application
+      - name: Build package-only consumer frontend
+        run: npm run build:package-consumer -- --out-dir ../tmp/package-consumer-ci/frontend
+      - name: Check Goal Source Rationale Build Artifact
+        run: npm run check:goal-source-rationales:build-artifact
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.10'
+      - name: Set up Java for package-consumer smoke
+        uses: actions/setup-java@v5
+        with:
+          distribution: corretto
+          java-version-file: .java-version
+          cache: gradle
+      - name: Use exact production Corretto build
+        run: |
+          set -euo pipefail
+          corretto_version="$(tr -d '[:space:]' < ../.corretto-version)"
+          install_dir="${RUNNER_TEMP}/amazon-corretto-${corretto_version}"
+          archive="${RUNNER_TEMP}/amazon-corretto-${corretto_version}-linux-x64.tar.gz"
+          curl -fsSL "https://corretto.aws/downloads/resources/${corretto_version}/amazon-corretto-${corretto_version}-linux-x64.tar.gz" -o "${archive}"
+          mkdir -p "${install_dir}"
+          tar -xzf "${archive}" --strip-components=1 -C "${install_dir}"
+          echo "JAVA_HOME=${install_dir}" >> "${GITHUB_ENV}"
+          echo "${install_dir}/bin" >> "${GITHUB_PATH}"
+          "${install_dir}/bin/java" -version
+      - name: Install package-consumer isolation tools
+        timeout-minutes: 10
+        run: sudo apt-get update && sudo apt-get install -y bubblewrap strace
+      - name: Enable and verify bubblewrap isolation
+        run: bash ../scripts/configure_github_bubblewrap.sh
+      - name: Install Python dependencies
+        run: python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt
+      - name: Verify curriculum JSON conformance scripts
+        run: |
+          cd ..
+          bash -n \
+            scripts/provision_pinned_fwu_ontology.sh \
+            scripts/run_curriculum_release_model_conformance.sh
+      - name: Validate Curriculum Package Contracts
+        env:
+          SKILLPILOT_SOURCE_PDF_MODE: committed-bindings
+        run: |
+          cd ..
+          python -B scripts/validate_curriculum_package_contracts.py
+          python -B scripts/validate_curriculum_runtime_catalog_contract.py
+          python -B scripts/validate_curriculum_schema_catalog_contract.py
+          python -B scripts/evaluate_curriculum_package_readiness.py --self-test
+          python -B scripts/validate_full_standalone_curriculum_package.py --self-test
+          python -B scripts/provision_curriculum_package.py self-test
+          python -B scripts/run_package_consumer_smoke.py --self-test
+          SKILLPILOT_FULL_PACKAGE_CONFORMANCE=false \
+            bash scripts/run_curriculum_release_model_conformance.sh
+      - name: Test portable curriculum symlinks
+        working-directory: .
+        run: python -B scripts/test_validate_schemas_symlinks.py -v
+      - name: Validate Schemas
+        run: cd .. && python scripts/validate_schemas.py
+      - name: Validate Curriculum Goal IDs (UUIDs)
+        run: cd .. && python scripts/validate_goal_ids_uuid.py
+      - name: Validate Hessen Upper-Secondary Archive Paths
+        run: cd .. && python scripts/validate_hessen_upper_secondary_archive_paths.py
+      - name: Validate Hessen Upper-Secondary Legacy References
+        run: cd .. && python scripts/validate_hessen_upper_secondary_legacy_refs.py
+      - name: Validate Hessen Chemistry Exam Pipeline
+        run: cd .. && python scripts/validate_chemistry_exam_pipeline.py
+      - name: Validate Hessen Lower-Secondary Archive Paths
+        run: cd .. && python scripts/validate_hessen_lower_secondary_archive_paths.py
+      - name: Validate Hessen Lower-Secondary Legacy References
+        run: cd .. && python scripts/validate_hessen_lower_secondary_legacy_refs.py
+      - name: Validate Bavaria Gymnasium Archive Paths
+        run: cd .. && python scripts/validate_bavaria_gymnasium_archive_paths.py
+      - name: Validate Bavaria Gymnasium Legacy References
+        run: cd .. && python scripts/validate_bavaria_gymnasium_legacy_refs.py
+
+  backend-ci:
+    needs: goal-book-publication
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Restore same-run verified goal-book catalog and models
+        uses: actions/download-artifact@v7
+        with:
+          name: goal-book-catalog-${{ github.sha }}
+          path: app/public/lernzielbuch/
+      - name: Use Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: corretto
+          java-version-file: .java-version
+          cache: gradle
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+      - name: Use production Corretto build
+        run: |
+          set -euo pipefail
+          corretto_version="$(tr -d '[:space:]' < ../.corretto-version)"
+          install_dir="${RUNNER_TEMP}/amazon-corretto-${corretto_version}"
+          archive="${RUNNER_TEMP}/amazon-corretto-${corretto_version}-linux-x64.tar.gz"
+          curl -fsSL "https://corretto.aws/downloads/resources/${corretto_version}/amazon-corretto-${corretto_version}-linux-x64.tar.gz" -o "${archive}"
+          mkdir -p "${install_dir}"
+          tar -xzf "${archive}" --strip-components=1 -C "${install_dir}"
+          echo "JAVA_HOME=${install_dir}" >> "${GITHUB_ENV}"
+          echo "${install_dir}/bin" >> "${GITHUB_PATH}"
+          "${install_dir}/bin/java" -version
+      - name: Ensure Gradle wrapper is executable
+        run: chmod +x ./gradlew
+      - name: Verify OpenAI V1 release or draft snapshot
+        working-directory: .
+        run: node scripts/openai_plugin_release.mjs verify
+      - name: Test backend CI failure prioritization
+        run: python3 -B -m unittest discover -s ../scripts -p test_run_backend_ci.py
+      - name: Restore previous backend failure selectors
+        id: backend-failures-cache
+        uses: actions/cache/restore@v4
+        continue-on-error: true
+        with:
+          path: ${{ runner.temp }}/skillpilot-backend-ci/failed-test-selectors.json
+          key: backend-failures-v1-${{ runner.os }}-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            backend-failures-v1-${{ runner.os }}-${{ github.ref }}-
+      - name: Run backend tests
+        id: backend-tests
+        env:
+          BACKEND_FAILURE_MANIFEST: ${{ runner.temp }}/skillpilot-backend-ci/failed-test-selectors.json
+        run: python3 -B ../scripts/run_backend_ci.py --manifest "${BACKEND_FAILURE_MANIFEST}"
+      - name: Save current backend failure selectors
+        if: ${{ always() && !cancelled() && (steps.backend-tests.outcome == 'success' || steps.backend-tests.outcome == 'failure') }}
+        uses: actions/cache/save@v4
+        continue-on-error: true
+        with:
+          path: ${{ runner.temp }}/skillpilot-backend-ci/failed-test-selectors.json
+          key: backend-failures-v1-${{ runner.os }}-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Verify Claude direct-install beta publication
+        working-directory: .
+        run: |
+          node scripts/claude_direct_install_beta_release.mjs verify
+          node scripts/claude_direct_install_beta_release.mjs verify --publication-root backend/build/resources/main/claude-plugin-publication

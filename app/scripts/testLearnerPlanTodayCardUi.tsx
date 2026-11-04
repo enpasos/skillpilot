@@ -4,6 +4,7 @@ import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 
 import { LearnerPlanTodayOverview } from '../src/components/LearnerPlanTodayOverview'
+import { getPersonalCurriculumSetupCopy } from '../src/utils/curriculumSetupCopy'
 import type {
   LearnerLearningPlanSummary,
   LearnerPlanStatus,
@@ -384,6 +385,49 @@ assert.match(reachedMarkup, /2 Lernziele vorgearbeitet/u)
 assert.match(reachedMarkup, /data-status-direction="ahead"/u)
 assert.match(reachedMarkup, /data-testid="learner-plan-switch"/u)
 
+// A backend total balance can improve through implicit work while explicit
+// period progress stays at zero or one. The UI must render both independently.
+for (const periodBasis of ['DAY', 'WEEK'] as const) {
+  for (const completed of [0, 1]) {
+    for (const net of [0, 3]) {
+      const periodText = `${periodBasis === 'DAY' ? 'Tagesziel' : 'Wochenziel'} ${completed} von 3`
+      const planStatusText = net === 0 ? 'im Plan' : '3 Lernziele vorgearbeitet'
+      const backendCreditText = net === 0
+        ? 'Im Plan angerechnet: 6 Ziele, davon 5 implizit erledigt.'
+        : 'Im Plan angerechnet: 9 Ziele, davon 8 implizit erledigt.'
+      const independentSubject = subject('mathematik', 'Mathematik', periodText, planStatusText,
+        net === 0 ? 'on_track' : 'ahead', {
+          periodGauge: { completed, target: 3, needlePosition: completed === 0 ? 0 : 1 / 3 },
+          balanceGauge: { net, typicalAmount: 3, scaleLimit: 6, needlePosition: net / 6, severeBehind: false, strongAhead: false },
+          achievedGoalCount: 1, targetGoalCount: 12,
+          planCreditText: backendCreditText,
+        })
+      const markup = renderToStaticMarkup(<LearnerPlanTodayOverview
+        status={status([independentSubject], {
+          periodBasis,
+          periodStart: periodBasis === 'DAY' ? '2026-09-04' : '2026-08-31',
+          periodEnd: periodBasis === 'DAY' ? '2026-09-04' : '2026-09-06',
+        })}
+        plans={[math]} language="de" planModeEnabled
+        subjectLabel={() => 'Mathematik'} goalLabel={() => undefined}
+        onSwitch={() => undefined}
+      />)
+      const periodDial = markup.match(/<div data-testid="learner-plan-period-gauge"[\s\S]*?<\/svg>/u)?.[0] ?? ''
+      const balanceDial = markup.match(/<div data-testid="learner-plan-balance-gauge"[\s\S]*?<\/svg>/u)?.[0] ?? ''
+      assert.ok(periodDial.includes(`data-needle-position="${completed === 0 ? 0 : 1 / 3}"`),
+        `${periodBasis}: increasing implicit credit never fills the explicit period dial`)
+      assert.ok(balanceDial.includes(`data-needle-position="${net / 6}"`),
+        `${periodBasis}: the independently delivered total balance still moves`)
+      assert.ok(markup.includes(`>${completed} von 3<`))
+      assert.match(markup, /GESAMT: <span[^>]*>1 von 12<\/span>/u,
+        'implicit plan credit does not become global mastery')
+      assert.ok(markup.includes(backendCreditText))
+      assert.ok(markup.includes(planStatusText))
+      assert.doesNotMatch(markup, /Tagesziel erreicht|Wochenziel erreicht/u)
+    }
+  }
+}
+
 const noTargetMarkup = renderToStaticMarkup(<LearnerPlanTodayOverview
   status={status([subject('mathematik', 'Mathematik', 'Heute kein Tagesziel', 'im Plan', 'on_track', {
     periodGauge: { completed: 0, target: 0, needlePosition: null },
@@ -642,4 +686,15 @@ const mergedPlansMarkup = renderToStaticMarkup(<LearnerPlanTodayOverview
 assert.match(mergedPlansMarkup, /Mathematik A/u)
 assert.match(mergedPlansMarkup, /Mathematik B/u)
 assert.doesNotMatch(mergedPlansMarkup, /data-testid="learner-plan-switch"/u, 'merged plans expose details without guessing a navigation target')
+for (const language of ['de', 'en'] as const) {
+  const copy = getPersonalCurriculumSetupCopy(language)
+  const label = language === 'de' ? 'Nur explizit erreichte Lernziele zählen'
+    : 'Count only explicitly achieved learning goals'
+  assert.equal(copy.countOnlyExplicitGoalsTitle, label, `${language}: the accessible checkbox label stays stable`)
+  const description = copy.countOnlyExplicitGoalsDescription
+  assert.match(description, language === 'de' ? /Gesamtstand deines Lernplans/u : /overall progress/u)
+  assert.match(description, language === 'de'
+    ? /Für dein Tages- oder Wochenziel zählen immer nur die im aktuellen Zeitraum direkt abgeschlossenen Ziele\./u
+    : /Your daily or weekly target always counts only goals explicitly completed in the current period\./u)
+}
 console.log('Learner plan overview and shared weekly preview UI tests passed')

@@ -1253,6 +1253,74 @@ try {
     await h.context.close()
   }
   {
+    const blocked: LevelCompletion = {
+      ...selected(185), calculationStatus: 'invalid', complete: undefined,
+      profileId: 'automatic:personal-curriculum', navigationIntent: undefined,
+      title: { de: 'Persönlicher Lehrplan', en: 'Personal Curriculum' },
+      notice: 'completion_target_routes_uncovered', masteredTargetCount: 0, waivedTargetCount: 0,
+      pendingTargetCount: 0, targetCount: 0, masteredAssessmentCount: 0, requiredAssessmentCount: 0,
+      waivedTargetGoalIds: [], actions: [],
+      assessments: [...Array.from({ length: 9 }, (_, i) => ({ goalId: `structural-exam-${i + 1}`,
+        title: { de: `Prüfung ${i + 1}`, en: `Assessment ${i + 1}` }, mastered: false, startAvailable: true })),
+      selected(185).assessments[0]],
+      profileOptions: [{ profileId: 'automatic:math-section', title: { de: 'Mathematik', en: 'Mathematics' },
+        targetCount: 2, requiredAssessmentCount: 1, assessments: selected(185).assessments }],
+    }
+    const h = await open(blocked, false, true, { language: 'en', entryGoal: 'math-exam', examMastered: false })
+    const card = h.page.getByTestId('level-completion-card')
+    await card.getByText('You can keep learning and try available assessments directly.', { exact: false }).waitFor()
+    assert.equal(await card.getByTestId('completion-default-overview').count(), 0)
+    assert.equal(await card.getByText('Learning section completed.', { exact: true }).count(), 0)
+    assert.equal(await h.page.getByTestId('completion-tree-waiver').count(), 0,
+      'a target-route authoring defect cannot provide implicit tree credit')
+    assert.equal(await card.getByRole('button', { name: 'Choose section as learning route: Mathematics', exact: true }).isDisabled(), true)
+    assert.equal(await h.page.getByTestId('learner-coach-start-link').getAttribute('href'), '/?start=coach',
+      'ordinary learning remains independent of the invalid read-only completion overview')
+    const contextual = h.page.getByTestId('selected-goal-assessment-shortcuts')
+    await contextual.getByRole('link', { name: 'Try assessment directly', exact: true }).waitFor()
+    const assessmentBrowser = card.getByTestId('completion-assessment-browser')
+    assert.equal(await assessmentBrowser.getByRole('listitem').count(), 8)
+    await assessmentBrowser.getByRole('searchbox', { name: 'Find an assessment', exact: true }).fill('Assess dot product')
+    const launch = assessmentBrowser.getByRole('link', { name: 'Try assessment directly', exact: true })
+    await launch.waitFor()
+    const update = async (next: LevelCompletion) => {
+      h.update(next)
+      const refreshed = h.page.waitForEvent('console', { predicate: message => message.text().includes('[SSE] ✅ Refresh complete') })
+      await h.page.evaluate(learnerId => window.dispatchEvent(new CustomEvent('learner-startup-fixture-sse', {
+        detail: { learnerId, type: 'ACTIVE_GOAL_UPDATE' },
+      })), learner)
+      await refreshed
+    }
+    for (const next of [
+      { ...blocked, learnerRevision: 186, notice: 'completion_profile_invalid' },
+      { ...blocked, learnerRevision: 187, calculationStatus: 'unavailable' as const },
+    ]) {
+      await update(next)
+      assert.equal(await h.page.getByRole('link', { name: 'Try assessment directly', exact: true }).count(), 0,
+        'unrelated invalid and unavailable states still remove every assessment entry')
+      assert.equal(await contextual.count(), 0)
+    }
+    await update({ ...blocked, learnerRevision: 188 })
+    await assessmentBrowser.getByRole('searchbox', { name: 'Find an assessment', exact: true }).fill('Assess dot product')
+    await launch.waitFor()
+    await contextual.getByRole('link', { name: 'Try assessment directly', exact: true }).waitFor()
+    assert.equal(h.writes.length, 0, 'search and state updates never select a route or create a coach session')
+    await launch.click()
+    await h.page.getByTestId('coach-provider-choice').waitFor()
+    assert.equal(h.writes.length, 0, 'an assessment still waits for deliberate provider launch')
+    await h.page.evaluate(() => { window.open = (() => ({ opener: null, location: { href: '' }, close() {} })) as unknown as typeof window.open })
+    await Promise.all([
+      h.page.waitForResponse(response => new URL(response.url()).pathname.endsWith('/claude/v1/launch')),
+      h.page.getByTestId('claude-plugin-start').click(),
+    ])
+    assert.deepEqual(h.writes[0].body.completionAssessment, {
+      profileId: 'automatic:personal-curriculum', goalId: 'math-exam', expectedRevision: 188,
+    }, 'the available structural exam uses the existing authenticated launch with the refreshed revision')
+    assert.equal(h.writes.length, 1)
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+  {
     const scope: LevelCompletion = { ...selected(180), profileId: 'automatic:math-section', navigationIntent: 'required',
       title: { de: 'Sekundarstufe I', en: 'Lower secondary' } }
     const h = await open(scope, true, false, { language: 'en' })

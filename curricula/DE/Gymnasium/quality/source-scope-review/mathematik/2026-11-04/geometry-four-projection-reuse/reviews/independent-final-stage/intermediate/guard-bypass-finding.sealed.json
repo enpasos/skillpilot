@@ -1,0 +1,57 @@
+{
+  "status": "BLOCKER_REPRODUCED_REQUIRES_SEPARATE_IMMUTABLE_GUARD_AMENDMENT",
+  "reviewer": "/root/astra_statistics_pyramid_review",
+  "frozenManifestSha256": "87fde7140ce84ad173fe0bddc3bff04d8092faabc638a7b9ecca7da0116dcb34",
+  "guardSha256": "b42c4749b56460f2c5a7ca189735a71128b111549f3d142d615b84bb960a3cfa",
+  "codeLocation": "GeometryPlacement.preflight: if(!plan.containsKey(\"geometryFourAssessmentPlacement\"))return;",
+  "reproduction": "In private negative-check-host, remove only geometryFourAssessmentPlacement from the finite plan, update its policy SHA exactly as the author negative tests permit. Generation succeeds. Independently repeat after removing dd from de-by-sekii-lk, and after shortening dd requires to [574] with canonical policy SHA rebind. Both invalid cases still generate39 output documents at exit0. All original candidate/host/freeze files remain untouched.",
+  "expected": "Fail before the first output write whenever the active new G4 identity/placement requires this bound contract. Preserve genuine G3 compatibility when no G4 ID/placement exists.",
+  "scope": "Build-time finite-contract guard omission, not a claim that immutable-file verification or independent Stage acceptance was bypassed.",
+  "priorChecks": "Reviewer freshly compiled both exact production merger and guard; normal39/46 and21 specified negatives passed.",
+  "files": [
+    {
+      "path": "fresh-javac.actual.json",
+      "sha256": "fd99003ae85bba377664fab3ad8aeb8d5cd62434f6206ef3eabdf96c882cd311"
+    },
+    {
+      "path": "independent-regression-harness.py",
+      "sha256": "46e04b62ca0d9f7932f81f49a092a2f317b1313f6e4188ff67714cb431e9a5a6"
+    },
+    {
+      "path": "guard-negatives.actual.json",
+      "sha256": "117cdd0f5659134360e7235f7194f2aca7c7b68fc0640a681f775656551f538a"
+    },
+    {
+      "path": "independent-additional-guard-probe.actual.json",
+      "sha256": "3baeeb5241e74ff00df66e739f3a39048d2e7ab396b16ce54cd446e8ff8c2a64"
+    },
+    {
+      "path": "independent-g4-preflight-bypass.actual.json",
+      "sha256": "92e561d81e05c89f3666d5ca453b8842d6d27058d3f3ac6667128d3c5fd20be3"
+    },
+    {
+      "path": "probe-missing-g4-contract.stdout.txt",
+      "sha256": "9b89fefaa7c7fb911cdc68d2be01c2beb2ff417445ded0e6dc4179b68eed544e"
+    },
+    {
+      "path": "probe-missing-g4-contract.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "missing-contract-and-required-reference.stdout.txt",
+      "sha256": "8a731cde719640b898e5100a70aaa3c6d23450c6e16f7bf95f8f03e81e674743"
+    },
+    {
+      "path": "missing-contract-and-required-reference.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "missing-contract-and-form-preparation.stdout.txt",
+      "sha256": "c3685272183a5606c68f5994d55add0395a38a9a5ce30b83cfaaeef95e3d3030"
+    },
+    {
+      "path": "missing-contract-and-form-preparation.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

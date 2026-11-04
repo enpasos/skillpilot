@@ -1,0 +1,363 @@
+{
+  "decision": "THREE_INDIVIDUAL_CONTENT_PASSES_AND_ONE_FINITE_RUBRIC_HOLD",
+  "request": {
+    "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/whole-content-review-request.json",
+    "sha256": "bf5461036760f9fe87a5fe9ff021de06a25f18c2525e2f8a5dfbfcb7e959914b"
+  },
+  "sourceSnapshot": {
+    "all21CanonicalFilesAndCurrentLedgerFreshExact": true,
+    "canonicalMathSha256": "5f23d314ed1b31caae2e5994921c5fa2599ca7e7f718a5b9fc9d61334713bf37",
+    "ledger": {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "sha256": "1a4cdb4df95d99d4ab378966f80374c35462ce4660a5423b1292bff73df16bca",
+      "curricularAtomicCount": 807
+    }
+  },
+  "independentBindings": {
+    "all53TopLevelRequestReferencedFileHashesAndLengths": true,
+    "all58WholeTargetAndPreparationObjectsEqualCurrentCanon": true,
+    "all40AncestorObjectsEqualCurrentMathAndOverviewCanon": true,
+    "directRequiresOfAllFourMatchCurrentCanon": true,
+    "threeEmbeddedTaskAndSolutionDEENStringsEqualBoundMarkdown": true,
+    "fourPointTotalsChecked": true,
+    "all12MediaHashesChecked": true
+  },
+  "forms": [
+    {
+      "goalId": "03357e70-2280-532f-b629-5dfa31dc44eb",
+      "decision": "PASS_CONTENT",
+      "title": "Two test rules for the same quality check",
+      "wholeContractAndMathematics": [
+        "The whole existing contract is tested: both type-I and type-II risks and power are computed, both procedures compared, observed outcomes interpreted, and justified choices made for two different operating objectives.",
+        "The same n=100 and distinct rejection thresholds are legitimate parameter settings; the contract does not require varying every parameter or freely designing a new rule.",
+        "H0 is composite, and the maximal type-I risk correctly occurs at p0=.05 by monotonicity. Beta and power are explicitly conditional on p1=.12, not posterior hypothesis probabilities. X=9 yields non-rejection for A and rejection for B.",
+        "Exact rational checks confirm alphaA=.02818829416, betaA=.22565189509, powerA=.77434810491 and alphaB=.12796047862, betaB=.07613609843, powerB=.92386390157. A alone meets routine bounds; B alone meets targeted bounds.",
+        "One 20-point rubric, pass15, ordinary cap14 prevents whole-core omissions; local index/arithmetic slips receive fair follow-through. Required numerical reporting is sufficient for the margins. No graph is claimed or needed for this different contract."
+      ],
+      "preparationDecision": [
+        "The two direct prerequisites are substantive: power/error calculus and contextual interpretation. Their current full indirect preparation is read; no new direct-edge gap is introduced by this task.",
+        "No scored coverage of613871f6 or the full ae483 sample-size-variation contract is claimed."
+      ],
+      "directRequiresUnchanged": [
+        "82bce6e8-7dc7-501a-a4f6-df8a3b905e3c",
+        "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8"
+      ],
+      "boundContentFiles": [
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/test-comparison-033-draft-by-sol-child/task.de.md",
+          "sha256": "8435ecd2323399c9811c2b25ab040a51c6e1d02b0c96c8ecf8f0114b810fea78",
+          "bytes": 2350
+        },
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/test-comparison-033-draft-by-sol-child/task.en.md",
+          "sha256": "c2ee81d1f8167324126f8751f0c9a100c107736d0c14ca8cb6e36239dd308992",
+          "bytes": 2069
+        },
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/test-comparison-033-draft-by-sol-child/solution-and-rubric.de.md",
+          "sha256": "e111a31331b2b60eaa4ee84b7988ace4f72c32385bcb998ba12c6bafeec7350e",
+          "bytes": 6829
+        },
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/test-comparison-033-draft-by-sol-child/solution-and-rubric.en.md",
+          "sha256": "14cebb5185569ad55a912aed4fc5a19c1f4684c6987018d27f7e7f6526359931",
+          "bytes": 6100
+        },
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/test-comparison-033-draft-by-sol-child/ordinary-rubric-contract.json",
+          "sha256": "2f58b3df917c83cf31851fa4d4f9ac1b1548d331067b4ce0c470b19cfccc957b",
+          "bytes": 2101
+        }
+      ],
+      "singleScore": {
+        "maxPoints": 20,
+        "passingPoints": 15,
+        "ordinaryWholeOmissionCap": 14
+      },
+      "sameIdentity": {
+        "newGoalId": false,
+        "semanticKindMustRemain": "curricularAtomic",
+        "existingMasteryRemainsValid": true,
+        "newQualificationOrCoverageOfPrerequisites": false
+      },
+      "scopeApproved": false
+    },
+    {
+      "goalId": "ae3483e3-4712-56a1-a881-2e1f8a1a8df9",
+      "decision": "HOLD_RUBRIC_ONLY",
+      "title": "Choose among actual power-function graphs",
+      "wholeContractAndMathematics": [
+        "The mathematical task and actual diagrams correctly instantiate the whole candidate-selection contract. Clearly labeled G=P(reject) curves for (80,14),(160,24),(160,22), an inset, and both rejection/non-rejection constraints require real curve interpretation and reasoned inverse selection.",
+        "Independent exact sums confirm A(.02674880882,.75298553624), B(.02912566304,.95750706253), C(.07810777963,.98440633993); only B meets alpha<=.05 and1-G(.20)<=.10. No universal monotonic superiority of larger n is asserted.",
+        "All six PNG/SVG figure bindings are real task givens, and the DE/EN power plots were visually inspected. Readings around±.01 preserve the relevant sides of the thresholds; enlarged low-p detail is sufficient. Candidate labels and guide lines do not give a completed winner or explanatory solution.",
+        "A concrete scoring inconsistency remains: the task explicitly accepts sufficiently precise graph-supported bounds, but the solution/scoring descriptions give them only half credit. The author profile valid-graph-bounds confirms a whole correct bounds solution is assigned11/14 rather than14/14."
+      ],
+      "preparationDecision": [
+        "The direct power/decision-rule/sample-variation preparations are retained as genuine preparation, not claimed scored coverage. This task selects among supplied alternatives; it does not assess the whole free-construction or full sample-size-variation competencies.",
+        "HE Q4.2 source/placement and optional status remain separate HOLDs. No content defect requires an R edit."
+      ],
+      "directRequiresUnchanged": [
+        "82bce6e8-7dc7-501a-a4f6-df8a3b905e3c",
+        "677be619-5f0a-59bf-9730-0071c7d3f150",
+        "ae483d98-54e0-5985-96d2-fc1351d22e4f"
+      ],
+      "boundContentFiles": [
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/power-graph-ae348/task.de.md",
+          "sha256": "b04fe46aec0e22b76546267301439a15d43f23b9bf0ea8257e3988987204634c",
+          "bytes": 1960
+        },
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/power-graph-ae348/task.en.md",
+          "sha256": "1d34519785046b4a19c1309a9e74fcf9f2e3c7bfeea4ad4af5bfc7cdaddef190",
+          "bytes": 1780
+        },
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/power-graph-ae348/solution-and-rubric.de.md",
+          "sha256": "4662ec3f7fa5fde3a2a560503730117fcd9fbf253b6873eb03dd06dc8dfcc7f4",
+          "bytes": 3761
+        },
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/power-graph-ae348/solution-and-rubric.en.md",
+          "sha256": "5d9487bafeea48e29c6f168e894562b4cfd2a74709687f12d2313c87c9d5b418",
+          "bytes": 3319
+        },
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/power-graph-ae348/whole-content-draft.json",
+          "sha256": "50a17696af1de32e41b4db2efd51ec48ff8be9e9c1291c993377addff99c43f5",
+          "bytes": 18227
+        }
+      ],
+      "singleScore": {
+        "maxPoints": 14,
+        "passingPoints": 11,
+        "ordinaryWholeOmissionCap": 10
+      },
+      "sameIdentity": {
+        "newGoalId": false,
+        "semanticKindMustRemain": "curricularAtomic",
+        "existingMasteryRemainsValid": true,
+        "newQualificationOrCoverageOfPrerequisites": false
+      },
+      "scopeApproved": false
+    },
+    {
+      "goalId": "5dbf149c-d335-552c-a918-768a12e09201",
+      "decision": "PASS_CONTENT",
+      "title": "Fit and evaluate a normal model for measured fill volumes",
+      "wholeContractAndMathematics": [
+        "The task tests actual data-based fitting, range probabilities and model criticism. The constructed dataset is honestly labeled own synthetic data. The frequency chart shows observations only, not fitted parameters or a normal curve.",
+        "Independent exact weighted calculation gives count40, weighted sum4000, mean100, squared deviation sum140, variance3.5 and SD1.87082869339. The normal convention explicitly uses variance as the second parameter.",
+        "Independent erfc calculations give interval probability .81855079228, upper tail .01625472232 and observed fraction32/40=.8. X is explicitly continuous unrounded volume, so no binomial continuity correction is required. Rounded sample values and physical/nonstationary/tail limitations are honestly discussed.",
+        "The whole contract does not require a formal goodness-of-fit test. Close agreement for one interval is correctly not treated as proof. The model probability is a conditional prediction under a comparable process, not a guaranteed sample count.",
+        "The 20-point/pass15/cap14 rubric appropriately requires fitting, normal probability work and reasoned limited-evidence/model criticism while crediting work anywhere. m-1 convention follow-through is explicit; its independent values are variance3.58974358974, interval .81299687309 and tail .01737779218. No additional numeric precision beyond a defensible approximation is silently required."
+      ],
+      "preparationDecision": [
+        "Normal probability tools, sigma/shape interpretation, empirical spread and the indirect weighted-mean prerequisites support the actual task. No new integration, inference-test or binomial-approximation prerequisite is needed.",
+        "The supplied hypothetical limitation-already-in-comparison profile must be corrected as evidence, without changing this already suitable task/rubric."
+      ],
+      "directRequiresUnchanged": [
+        "8c32d941-b51c-5663-951c-a610f8900f76",
+        "8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+        "e402f330-8ac6-525f-b3ff-bc4be229d131"
+      ],
+      "boundContentFiles": [
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/normal-model-5dbf/task.de.md",
+          "sha256": "21f29e851b715ae268584c09a373529d0a3c6171b5e350000217a7a2d7745ac3",
+          "bytes": 2282
+        },
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/normal-model-5dbf/task.en.md",
+          "sha256": "a391aabbb1cf27f0b8db9242c487ed038b409b4c073fc1d087850a4f5a264263",
+          "bytes": 2126
+        },
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/normal-model-5dbf/solution-and-rubric.de.md",
+          "sha256": "edac59f0bb2bf63a5e550018d0e87286a549cfeb00bb3d1403392cbaddaf0ba4",
+          "bytes": 4938
+        },
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/normal-model-5dbf/solution-and-rubric.en.md",
+          "sha256": "a6f5701353ca7efdaf168e19b76f7a60f84bc7a78a8ca0fbe00cac16fbd91901",
+          "bytes": 4261
+        },
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/normal-model-5dbf/whole-content-draft.json",
+          "sha256": "45927038f79b628fa7322a294c37d3a2ac583ad49565767f320bca1ba3a03e8c",
+          "bytes": 22717
+        }
+      ],
+      "singleScore": {
+        "maxPoints": 20,
+        "passingPoints": 15,
+        "ordinaryWholeOmissionCap": 14
+      },
+      "sameIdentity": {
+        "newGoalId": false,
+        "semanticKindMustRemain": "curricularAtomic",
+        "existingMasteryRemainsValid": true,
+        "newQualificationOrCoverageOfPrerequisites": false
+      },
+      "scopeApproved": false
+    },
+    {
+      "goalId": "7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+      "decision": "PASS_CONTENT",
+      "title": "Read normal-density parameters and graph properties",
+      "wholeContractAndMathematics": [
+        "The whole existing contract is present: infer mean/SD from term or graph, distinguish variance, match a density, locate maximum and both inflections, and separately explain both parameter effects using three actual curves.",
+        "The supplied f has mu10,sigma2,variance4 and is A. Maximum x10 and inflections x8,12 are correct; optional heights .19947114020 and .12098536226 are correct. B=(14,2), C=(10,1). Horizontal sigma compression by1/2 is paired with doubled height; total area stays1.",
+        "Normalization follows substitution u=(x-mu)/sigma. Analytic derivative factors confirm the three x-locations. Neither differentiation nor exact heights is demanded, so those techniques must not become implicit prerequisite requirements.",
+        "DE/EN graph images have labeled axes with density units1/mm, distinct line styles and no premarked inflections, parameter pairs or answer assignment. The task cannot be replaced by a value table; the actual graphs are supplied.",
+        "The 16-point/pass12/cap11 rubric protects the whole main actions yet treats one local inflection or variance error as a point loss, not a new failed qualification. Short correct symbolic/general explanations count; y-heights or derivations are not extra mandatory evidence."
+      ],
+      "preparationDecision": [
+        "The current da95 discrete model framework and function/number preparation is limited but does not create a new task-specific prerequisite omission: this identity itself is where the normal-density parameter/shape facts are being assessed. Do not manufacture a calculus edge from the optional solution proof.",
+        "No additional R edge or inferred coverage of another density/inference goal is approved."
+      ],
+      "directRequiresUnchanged": [
+        "da95ab35-bac2-54f2-b38f-8b612cde8b54"
+      ],
+      "boundContentFiles": [
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/normal-density-7d9c/task.de.md",
+          "sha256": "c50aeb2c4e303e4b34a330dcd8a0fd6ef40fbfbf5ef6f5b623eb0e3b802f7bbd",
+          "bytes": 1502
+        },
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/normal-density-7d9c/task.en.md",
+          "sha256": "7125da9c9dabc80ae05983a07975815e8fe0517fc66301f21c3d5831fa50bde2",
+          "bytes": 1466
+        },
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/normal-density-7d9c/solution-and-rubric.de.md",
+          "sha256": "530721219db4ce7da54e45765468546a8865235edd287e33634692bf0e815876",
+          "bytes": 3929
+        },
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/normal-density-7d9c/solution-and-rubric.en.md",
+          "sha256": "bff53160d7c96c55fcd42e8549c7cefe5fec33d254b2ba9ac31a383413ef7447",
+          "bytes": 3496
+        },
+        {
+          "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/normal-density-7d9c/whole-content-draft.json",
+          "sha256": "28561ad07dd741282d7356925149f873885ec327f84704fa7891d6e221663895",
+          "bytes": 19184
+        }
+      ],
+      "singleScore": {
+        "maxPoints": 16,
+        "passingPoints": 12,
+        "ordinaryWholeOmissionCap": 11
+      },
+      "sameIdentity": {
+        "newGoalId": false,
+        "semanticKindMustRemain": "curricularAtomic",
+        "existingMasteryRemainsValid": true,
+        "newQualificationOrCoverageOfPrerequisites": false
+      },
+      "scopeApproved": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "RUBRIC-AE348-01",
+      "appliesToGoalId": "ae3483e3-4712-56a1-a881-2e1f8a1a8df9",
+      "severity": "HOLD_FOR_EXACT_CURRENT_RUBRIC",
+      "locations": [
+        "power-graph-ae348/task.de.md part2",
+        "power-graph-ae348/task.en.md part2",
+        "power-graph-ae348/solution-and-rubric.de.md Teilpunkte",
+        "power-graph-ae348/solution-and-rubric.en.md Partial credit",
+        "power-graph-ae348/whole-content-draft.json scoring p0-readings/p1-readings",
+        "author-omission-and-follow-through-checks.json valid-graph-bounds"
+      ],
+      "reason": "A graph-supported sufficient bound is a valid route to the stated whole inverse-selection competency and is explicitly accepted by the task. Systematically withholding0.5 per value for that route is an additional precision requirement, not an error deduction. It spends all three permitted points before any actual local error.",
+      "finiteCounterexample": {
+        "work": "Correctly linked bounds A:G(.10)<.05,G(.20)<.90; B:G(.10)<.05,G(.20)>.90; C:G(.10)>.05,G(.20)>.90, all graph-supported, plus correct G meaning, both complement constraints and exclusions.",
+        "currentScore": 11,
+        "correctSameWorkWithDecimalsScore": 14,
+        "oneIndependentLocalTranscriptionSlip": "If only the final k in the otherwise correctly selected B rule is transcribed incorrectly, any positive deduction makes the bounds route fail while the decimal route still passes; no whole core action has vanished."
+      },
+      "minimalCorrection": "Give each correctly associated sufficiently informative graph-bound the same1BE as the corresponding adequate numerical reading. Keep partial credit for genuinely incomplete/insufficient bounds and ordinary local errors. Preserve max14/pass11/cap10, tasks, all calculations and all graph bytes. Synchronize both solution/rubric languages, embedded scoring descriptions and only the affected author profiles. No new task series, R edit, scope claim or second qualification.",
+      "scope": "Current mathematical task/solution numbers/media are approved in substance; approval of the frozen rubric is withheld until this finite correction."
+    },
+    {
+      "id": "EVIDENCE-5DBF-01",
+      "appliesToGoalId": "5dbf149c-d335-552c-a918-768a12e09201",
+      "severity": "AUTHOR_PROFILE_CORRECTION_ONLY_CONTENT_PASS_UNAFFECTED",
+      "location": "author-omission-and-follow-through-checks.json limitation-already-in-comparison",
+      "finding": "Its own summary supplies a concrete finite-sample/single-interval limitation in the comparison. The actual rubric expressly credits a suitable limitation wherever it appears and does not require a repeated later paragraph. Yet the profile awards limitation=0 and total18.",
+      "minimalCorrection": "Award the demonstrated limitation its2BE and total20 if the recorded summary really includes the stated concrete explanation; otherwise make the hypothetical work description narrower. Do not change the correct content rubric or count a generic unexplained warning as a full limitation."
+    }
+  ],
+  "independentMathematics": {
+    "path": "tmp/approach-review-20261101/astra-stochastic-four-same-identity-content-review-20261103-v1/independent-mathematics.json",
+    "sha256": "1a778490d8bf3ab5fac727af6638ab4c3a078cec513e64790ebf69f25519da38"
+  },
+  "visualInspection": {
+    "actualPngsViewed": [
+      {
+        "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/task-media/app/public/assets/assessment-materials/mathematik/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/power-function-choices.de.75c5ecf71cbeecef9de162653da527b778ca64f492e60abcb2307b6b6b1dd3fd.png",
+        "sha256": "75c5ecf71cbeecef9de162653da527b778ca64f492e60abcb2307b6b6b1dd3fd",
+        "bytes": 191928
+      },
+      {
+        "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/task-media/app/public/assets/assessment-materials/mathematik/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/normal-density-comparison.de.fe737746eab32d4aa709123f1e2ab0f42c2f26066bf68d645d936b72d145cdfc.png",
+        "sha256": "fe737746eab32d4aa709123f1e2ab0f42c2f26066bf68d645d936b72d145cdfc",
+        "bytes": 120873
+      },
+      {
+        "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/task-media/app/public/assets/assessment-materials/mathematik/5dbf149c-d335-552c-a918-768a12e09201/fill-volume-observations.de.27bd7bd857dd3616e40cd51d14a09f4633036824a743efd95759d793ba87f6f4.png",
+        "sha256": "27bd7bd857dd3616e40cd51d14a09f4633036824a743efd95759d793ba87f6f4",
+        "bytes": 43247
+      },
+      {
+        "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/task-media/app/public/assets/assessment-materials/mathematik/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/power-function-choices.en.c5d8f8660df55e098e9515948d89e892f3b786731e814ec8cf311cd81f33dbb0.png",
+        "sha256": "c5d8f8660df55e098e9515948d89e892f3b786731e814ec8cf311cd81f33dbb0",
+        "bytes": 191366
+      },
+      {
+        "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/task-media/app/public/assets/assessment-materials/mathematik/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/normal-density-comparison.en.cfe10fbea79c457b9505b6e5b58c5792b308452fd980d9209ea1a72fe4194ba9.png",
+        "sha256": "cfe10fbea79c457b9505b6e5b58c5792b308452fd980d9209ea1a72fe4194ba9",
+        "bytes": 122279
+      },
+      {
+        "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/task-media/app/public/assets/assessment-materials/mathematik/5dbf149c-d335-552c-a918-768a12e09201/fill-volume-observations.en.7b891e7d3d3270b7fa90b2712db677d134534ddfd60812d42b5905465bf09f09.png",
+        "sha256": "7b891e7d3d3270b7fa90b2712db677d134534ddfd60812d42b5905465bf09f09",
+        "bytes": 44916
+      }
+    ],
+    "all6SvgXmlAndTextInspected": true,
+    "plotSourceRead": {
+      "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/plot_task_media.py",
+      "sha256": "702a77b3d83521b113122330a190a2ea94772c44cc233c115f1b9156a02b1cb8",
+      "bytes": 8241
+    },
+    "findings": "Curves have correct orientation/scales, actual low-p detail and labels; density units and shape changes correct; empirical counts exactly match the table. No task figure gives the completed choice/fit/parameter mapping. Curves versus empirical bars are not confused. Existing teaching visualizations are not included as task givens.",
+    "limitation": "This is a content/media inspection, not acceptance of a host renderer or mobile zoom workflow. Author16 browser views/365 formula checks remain author evidence, not an independent runtime/host pass."
+  },
+  "rubricReview": "All caps are ordinary caps of one total score. Whole omissions are assessed across the response; a local error alone is not a cap. Alternative methods and follow-through remain accepted.36 hypothetical profiles were read as author judgments, not actual learner grades or a semantic grader proof. The two concrete inconsistencies above are not erased by their positive threshold arithmetic.",
+  "preparationLimits": "No new R edge, removal, transitive shortcut, preparation coverage claim or target change is approved. Current full direct contracts and58-atom union read; no content-specific blocking prerequisite omission found. Abstract program phase/target membership does not prove actual acquisition readiness in any PC.",
+  "scopeHolds": [
+    "No automatic activation in any existing Target-PC from these content passes. Whole effective preparation, actual authored program placement and existing learner scopes still need their own finite decision.",
+    "HE ae348 Q4.2 optional/additional treatment remains explicit; the old S51 locator is not revalidated as current—the earlier source review located the relevant content on printedS52.",
+    "No BW-SekI or other lower-stage activation inferred from unrelated four endpoint pairs, LK tags, existing targets or applicability.",
+    "No claim of whole613871f6 free decision-rule design or ae483 sample-size variations.",
+    "Existing807 curricularAtomic population and stable goal identities/mastery remain unchanged."
+  ],
+  "nextAction": "Accept03357e70,5dbf149c,7d9c565c exact content bytes as content-only; prepare the narrow ae348 rubric successor and correct the separate5dbf author profile. Leave all scope/materialization/quality-fingerprint/runtime decisions separate.",
+  "boundaries": {
+    "rootWrites": false,
+    "jvm": false,
+    "newNative": false,
+    "scopePass": false,
+    "materializationPass": false,
+    "runtimePass": false,
+    "m7Pass": false,
+    "ciPass": false,
+    "learnerGrading": false,
+    "newGoalIdentity": false
+  }
+}

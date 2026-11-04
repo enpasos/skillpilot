@@ -42,7 +42,12 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+// This class tests canonical projection, legacy migration and ordinary API access,
+// independently of the real corpus's still-incomplete assessment routes. Enabled
+// automatic recommendations and voluntary access on an invalid graph are tested
+// together in AutomaticCompletionFrontierTest; keep those guards active there.
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+        properties = "skillpilot.completion.enabled=false")
 @ActiveProfiles("test")
 public class LearnerControllerIntegrationTest {
 
@@ -50,9 +55,9 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_MATH_ROOT_ID = "c01b1ce9-a667-4a46-b251-ec33ae602b15";
     // Champion totals count current HE-GK targets with exact legacy equivalence.
-    // The reviewed 809ef split and the HE-GK prerequisite-only Q2 Spatprodukt
-    // leave 289 such atoms; new Q2 assessment endpoints have no legacy equivalent.
-    private static final long HESSEN_GK_MATH_CHAMPION_TOPIC_GOALS = 289;
+    // The reviewed HE-GK complex-assessment exclusion removes a8525adc from
+    // that legacy-equivalent set. New own assessments have no legacy equivalent.
+    private static final long HESSEN_GK_MATH_CHAMPION_TOPIC_GOALS = 288;
     private static final String CANONICAL_PHYSICS_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
     private static final String CANONICAL_PHYSICS_ROOT_ID = "bf980fff-b62b-4ea4-a20d-31681a7ad785";
     private static final String CANONICAL_CHEMISTRY_ID = "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0";
@@ -468,7 +473,11 @@ public class LearnerControllerIntegrationTest {
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learnerRepository.save(learner);
         completeCanonicalSekTwoPersonalization(CANONICAL_MATH_ID);
-        assertHessenGkQ21Projection(learnerRepository.findById(learnerId).orElseThrow());
+        Learner configuredLearner = learnerRepository.findById(learnerId).orElseThrow();
+        assertHessenGkQ21Projection(configuredLearner);
+        assertThat(learnerService.getFilteredAtomicGoalIds(
+                CANONICAL_GYMNASIUM_ROOT_ID, configuredLearner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false))
+                .doesNotContain("a8525adc-fad3-53f5-953f-213bd37b09e8"); // reviewed whole HE-GK complex assessment
 
         masteryRepository.saveAll(List.of(
                 new Mastery(learner, LEGACY_MATH_ASSUMPTIONS_ID, 1.0),
@@ -785,23 +794,55 @@ public class LearnerControllerIntegrationTest {
                 Set.of(CANONICAL_PHYSICS_DIAGRAMS_ID),
                 CANONICAL_PHYSICS_CROSS_STAGE_GK_PERSONAL_CONFIG);
 
-        JsonNode root = objectMapper.readTree(responseBody);
-        JsonNode planned = root.path("goals").path("planned");
-        JsonNode goalOptions = root.path("stateMachine").path("goalOptions");
-        JsonNode frontier = root.path("frontier");
+        List<String> storedReferences = List.of(
+                LEGACY_PHYSICS_CLUSTER_ID,
+                LEGACY_BAYERN_PHYSICS_MOTION_CLUSTER_ID,
+                LEGACY_BAYERN_PHYSICS_MOTION_MODELING_ID);
+        Map<String, Double> storedMastery = masteryRepository.findByLearner_SkillpilotId(learnerId).stream()
+                .collect(java.util.stream.Collectors.toMap(Mastery::getGoalKey, Mastery::getValue));
+        for (int read = 0; read < 2; read++) {
+            JsonNode mixed = objectMapper.readTree(read == 0 ? responseBody : fetchLearnerStateBody());
+            assertThat(jsonIds(mixed.path("goals").path("planned")))
+                    .containsExactly("d6dc0e02-831d-4894-a61a-852bcc74f147");
+            assertThat(learnerService.getPlannedGoals(learnerId))
+                    .containsExactly("d6dc0e02-831d-4894-a61a-852bcc74f147");
+            assertThat(jsonIds(mixed.path("frontier"))).doesNotContain(CANONICAL_PHYSICS_UNIFORM_MOTION_ID);
+            assertThat(jsonIds(mixed.path("stateMachine").path("goalOptions")))
+                    .doesNotContain(CANONICAL_PHYSICS_UNIFORM_MOTION_ID,
+                            LEGACY_PHYSICS_CLUSTER_ID,
+                            LEGACY_BAYERN_PHYSICS_MOTION_CLUSTER_ID,
+                            LEGACY_BAYERN_PHYSICS_MOTION_MODELING_ID);
+            assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                    .extracting(PlannedGoal::getGoalId).containsExactlyInAnyOrderElementsOf(storedReferences);
+            assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId).stream()
+                    .collect(java.util.stream.Collectors.toMap(Mastery::getGoalKey, Mastery::getValue)))
+                    .isEqualTo(storedMastery);
+        }
 
-        assertThat(planned).hasSize(1);
-        assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_PHYSICS_CLUSTER_ID);
+        // The old raw parent does not authorize replacing it by this broader
+        // offered seven-atom structure. The positive choice is explicit.
+        String explicitMotionFocus = "composition:de-de-gym-physics-gk:structure:physics-e1-motion";
+        learnerService.setScope(learnerId, List.of(explicitMotionFocus));
+        assertExactPhysicsFocusMembers(explicitMotionFocus, Set.of(
+                "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+                "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+                "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+                "bf8517a9-142b-5789-826a-767f3b277998",
+                "ce431132-dfc4-42c2-aff6-bd72035190f8",
+                "d6dc0e02-831d-4894-a61a-852bcc74f147",
+                "e4b38061-1f28-43ad-8371-a3e7c0e81856"));
+        JsonNode root = objectMapper.readTree(fetchLearnerStateBody());
+        assertThat(jsonIds(root.path("goals").path("planned"))).containsExactly(explicitMotionFocus);
         assertThat(root.path("stateMachine").path("requiredAction").asText()).isEqualTo("setActiveGoal");
-        assertThat(jsonIds(goalOptions))
+        assertThat(jsonIds(root.path("stateMachine").path("goalOptions")))
                 .contains(CANONICAL_PHYSICS_UNIFORM_MOTION_ID)
-                .doesNotContain(
-                        LEGACY_BAYERN_PHYSICS_DIAGRAMS_ID,
-                        LEGACY_SEK1_LINEAR_FUNCTIONS_ID,
-                        LEGACY_PHYSICS_CLUSTER_ID,
-                        LEGACY_BAYERN_PHYSICS_MOTION_CLUSTER_ID,
+                .doesNotContain(LEGACY_BAYERN_PHYSICS_DIAGRAMS_ID, LEGACY_SEK1_LINEAR_FUNCTIONS_ID,
+                        LEGACY_PHYSICS_CLUSTER_ID, LEGACY_BAYERN_PHYSICS_MOTION_CLUSTER_ID,
                         LEGACY_BAYERN_PHYSICS_MOTION_MODELING_ID);
-        assertThat(jsonIds(frontier)).contains(CANONICAL_PHYSICS_UNIFORM_MOTION_ID);
+        assertThat(jsonIds(root.path("frontier"))).contains(CANONICAL_PHYSICS_UNIFORM_MOTION_ID);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId).stream()
+                .collect(java.util.stream.Collectors.toMap(Mastery::getGoalKey, Mastery::getValue)))
+                .isEqualTo(storedMastery);
     }
 
     @Test
@@ -859,8 +900,9 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void getLearnerStateHttpExposesAuthoredNewtonAtomsInsteadOfCurricularAreaCluster() throws Exception {
+        String explicitNewtonFocus = "composition:de-de-gym-physics-gk:structure:physics-e2-newton-and-conservation";
         String responseBody = getPreparedLearnerStateBody(
-                List.of(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID),
+                List.of(explicitNewtonFocus),
                 List.of(LEGACY_PHYSICS_ACCELERATED_ID),
                 List.of(CANONICAL_PHYSICS_FIRST_LAW_ID),
                 Set.of(),
@@ -872,7 +914,23 @@ public class LearnerControllerIntegrationTest {
         JsonNode frontier = root.path("frontier");
 
         assertThat(jsonIds(planned))
-                .containsExactly(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID);
+                .containsExactly(explicitNewtonFocus);
+        assertExactPhysicsFocusMembers(explicitNewtonFocus, Set.of(
+                "00245a43-eb89-47d2-92d7-21799dbec9f3",
+                "1232febe-868a-4dac-b4c2-e35789434601",
+                "253a71d2-e751-4c63-acbe-238b71463cd8",
+                "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+                "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+                "5f289cdc-fda1-4058-b44f-041ba1398e79",
+                "839ecc8f-3a60-418b-bc92-64bfeef33824",
+                "91c49019-ea51-4ce5-a919-c91c45b25e83",
+                "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+                "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+                "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+                "ad984bb6-e225-432a-952d-d83cda40b7f8",
+                "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+                "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+                "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"));
         assertThat(root.path("stateMachine").path("requiredAction").asText()).isEqualTo("setActiveGoal");
         assertThat(jsonIds(goalOptions))
                 .contains(CANONICAL_PHYSICS_FIRST_LAW_ID)
@@ -904,6 +962,36 @@ public class LearnerControllerIntegrationTest {
                 .extracting(Mastery::getValue)
                 .isEqualTo(1.0);
     }
+
+    @Test
+    void storedRawNewtonAreaRequiresAnExplicitCurrentFocusWithoutChangingStoredData() throws Exception {
+        getLearnerStateBody(List.of(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID),
+                List.of(LEGACY_PHYSICS_ACCELERATED_ID), CANONICAL_PHYSICS_CROSS_STAGE_GK_PERSONAL_CONFIG);
+        Map<String, Double> storedMastery = masteryRepository.findByLearner_SkillpilotId(learnerId).stream()
+                .collect(java.util.stream.Collectors.toMap(Mastery::getGoalKey, Mastery::getValue));
+        for (int read = 0; read < 2; read++) {
+            JsonNode state = objectMapper.readTree(fetchLearnerStateBody());
+            assertThat(jsonIds(state.path("goals").path("planned"))).isEmpty();
+            assertThat(state.path("stateMachine").path("requiredAction").asText()).isEqualTo("setScope");
+            assertThat(jsonTextValues(state.path("nextAllowedActions")))
+                    .contains("setScope").doesNotContain("setActiveGoal");
+            assertThat(state.path("activeGoal").isNull() || state.path("activeGoal").isMissingNode()).isTrue();
+            assertThat(state.path("frontier")).allSatisfy(goal ->
+                    assertThat(goal.path("type").asText()).isNotEqualTo("atomic"));
+            assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                    .extracting(PlannedGoal::getGoalId).containsExactly(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID);
+            assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId).stream()
+                    .collect(java.util.stream.Collectors.toMap(Mastery::getGoalKey, Mastery::getValue)))
+                    .isEqualTo(storedMastery);
+        }
+        assertThatThrownBy(() -> learnerService.setScope(
+                learnerId, List.of(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID)))
+                .isInstanceOfSatisfying(org.springframework.web.server.ResponseStatusException.class,
+                        exception -> assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.CONFLICT));
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId).containsExactly(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID);
+    }
+
 
     @Test
     void compatibilitySessionRejectsUiLearningWrites() throws Exception {
@@ -1448,14 +1536,43 @@ public class LearnerControllerIntegrationTest {
                 .contains(sekOneDiodeTask, radioactivityTask);
         assertThat(learnerService.getFilteredAtomicGoalIds(
                 CANONICAL_GYMNASIUM_ROOT_ID, personalCurriculum, q4Root, false))
-                .as("saved canonical Q4 focus still resolves its applicable tasks")
+                .as("catalog topic query intersects raw descendants; it does not validate a saved composition focus")
                 .contains(radioactivityTask);
-        HttpResponse<String> response = getRequest("/api/ui/learners/" + learnerId + "/state");
-        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
-        JsonNode planned = objectMapper.readTree(response.body()).path("goals").path("planned");
-        assertThat(planned).anySatisfy(goal -> assertThat(goal.path("id").asText()).isEqualTo(q4Root));
+        for (int read = 0; read < 2; read++) {
+            JsonNode state = objectMapper.readTree(fetchLearnerStateBody());
+            assertThat(jsonIds(state.path("goals").path("planned"))).isEmpty();
+            assertThat(state.path("stateMachine").path("requiredAction").asText()).isEqualTo("setScope");
+            assertThat(jsonTextValues(state.path("nextAllowedActions")))
+                    .contains("setScope").doesNotContain("setActiveGoal");
+            assertThat(state.path("activeGoal").isNull() || state.path("activeGoal").isMissingNode()).isTrue();
+            assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                    .extracting(PlannedGoal::getGoalId).containsExactly(q4Root);
+            assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId))
+                    .singleElement().satisfies(mastery -> {
+                        assertThat(mastery.getGoalKey()).isEqualTo(sekOneDiodeTask);
+                        assertThat(mastery.getValue()).isEqualTo(1.0);
+                    });
+        }
+
+        String explicitPracticeFocus = "composition:de-bb-gym-physics-gk:structure:physics-q4-practice";
+        assertExactPhysicsFocusMembers(explicitPracticeFocus, Set.of(
+                "0f5346d6-de1b-5e38-aaba-68db205e594b",
+                "15cb40f1-e2d3-5754-9e7b-e8888fe78340",
+                "4a58df57-f791-502f-8b8d-9ba155e46035",
+                "4daef009-6425-526a-8574-4fa75f28f946",
+                "5a5bc118-4420-5bb7-94c3-67837f2ce0dd",
+                "a3e22e70-6629-5c74-a8ae-a8c4f55c72a0",
+                "b3b365f4-4988-57d5-97cd-5d8446483ef7",
+                "b585ff81-6332-5d11-ae63-ee6a9928c00d",
+                "f532c772-7b6e-59aa-ad65-e0eeafc3767f"));
+        // Deliberately choose the smallest current positive; no raw Q4 alias
+        // or automatic broader practice focus is reconstructed by the read.
+        learnerService.setScope(learnerId, List.of(radioactivityTask));
+        assertExactPhysicsFocusMembers(radioactivityTask, Set.of(radioactivityTask));
+        JsonNode selected = objectMapper.readTree(fetchLearnerStateBody());
+        assertThat(jsonIds(selected.path("goals").path("planned"))).containsExactly(radioactivityTask);
         assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
-                .extracting(PlannedGoal::getGoalId).containsExactly(q4Root);
+                .extracting(PlannedGoal::getGoalId).containsExactly(radioactivityTask);
         assertThat(masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(learnerId, sekOneDiodeTask)))
                 .get().satisfies(mastery -> assertThat(mastery.getValue()).isEqualTo(1.0));
     }
@@ -1465,24 +1582,25 @@ public class LearnerControllerIntegrationTest {
         // Current canonical leaves were enumerated from each matched Sek-I view,
         // applying projection-role precedence and jurisdiction applicability.
         // Totals include local assessments; excluded and prerequisite-only goals
-        // do not count. The view-specific HE/RP/SH G8/G9 split remains explicit.
+        // do not count. Reviewed additional local assessment placements are
+        // included; the view-specific HE/RP/SH G8/G9 split remains explicit.
         String[][] scopes = {
-                { "DE-BB", "241", "241" },
-                { "DE-BE", "237", "237" },
-                { "DE-BW", "267", "267" },
-                { "DE-BY", "227", "227" },
-                { "DE-HB", "215", "215" },
-                { "DE-HE", "325", "352" },
-                { "DE-HH", "237", "237" },
-                { "DE-MV", "236", "236" },
-                { "DE-NI", "236", "236" },
-                { "DE-NW", "236", "236" },
-                { "DE-RP", "267", "279" },
-                { "DE-SH", "260", "266" },
-                { "DE-SL", "239", "239" },
-                { "DE-SN", "236", "236" },
-                { "DE-ST", "236", "236" },
-                { "DE-TH", "237", "237" }
+                { "DE-BB", "238", "238" },
+                { "DE-BE", "230", "230" },
+                { "DE-BW", "269", "258" },
+                { "DE-BY", "252", "252" },
+                { "DE-HB", "198", "198" },
+                { "DE-HE", "321", "349" },
+                { "DE-HH", "244", "244" },
+                { "DE-MV", "188", "188" },
+                { "DE-NI", "246", "246" },
+                { "DE-NW", "242", "242" },
+                { "DE-RP", "258", "264" },
+                { "DE-SH", "249", "251" },
+                { "DE-SL", "256", "256" },
+                { "DE-SN", "246", "246" },
+                { "DE-ST", "240", "240" },
+                { "DE-TH", "199", "199" }
         };
         SoftAssertions softly = new SoftAssertions();
 
@@ -1513,17 +1631,33 @@ public class LearnerControllerIntegrationTest {
                 Set<String> g9Targets = learnerService.getFilteredAtomicGoalIds(
                         CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false);
                 if ("DE-BW".equals(jurisdiction)) {
-                    assertThat(g9Targets).contains(
-                            "ad66009f-55fb-563f-ace0-dbfeae7c76c3", // BW Sek-I derivative target
-                            "5f6496ef-e4d2-5341-8a2c-3293b2e4e25a", // BW J9 assessment
-                            "ea664a30-98be-508e-90ac-5304679814ee"); // BW J10 assessment
+                    assertThat(g9Targets)
+                            .contains("5f6496ef-e4d2-5341-8a2c-3293b2e4e25a") // retained BW J9 assessment
+                            .doesNotContain(
+                                    "ad66009f-55fb-563f-ace0-dbfeae7c76c3", // V3 class-11 calculus
+                                    "ea664a30-98be-508e-90ac-5304679814ee"); // whole spatial-motion assessment
+                    assertThat(learnerService.getFilteredAtomicGoalIds(
+                            CANONICAL_GYMNASIUM_ROOT_ID,
+                            canonicalGymnasiumSubjectPersonalCurriculum(CANONICAL_MATH_ID, jurisdiction, "G8", "GK", true, false),
+                            CANONICAL_MATH_ROOT_ID, false))
+                            .contains(
+                                    "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+                                    "5f6496ef-e4d2-5341-8a2c-3293b2e4e25a",
+                                    "ea664a30-98be-508e-90ac-5304679814ee"); // reviewed G8 countercase
+                    assertThat(learnerService.getFilteredAtomicGoalIds(
+                            CANONICAL_GYMNASIUM_ROOT_ID,
+                            canonicalGymnasiumSubjectPersonalCurriculum(CANONICAL_MATH_ID, jurisdiction, "G9", "GK", false, true),
+                            CANONICAL_MATH_ROOT_ID, false))
+                            .contains(
+                                    "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+                                    "ea664a30-98be-508e-90ac-5304679814ee"); // supported G9 upper-stage placement
                 } else if ("DE-HE".equals(jurisdiction)) {
                     assertThat(g9Targets).doesNotContain(
                             "5f6496ef-e4d2-5341-8a2c-3293b2e4e25a",
                             "ea664a30-98be-508e-90ac-5304679814ee");
                 } else {
-                    assertThat(g9Targets).doesNotContain(
-                            "baea3966-5d10-53bf-8193-3fcda7b1e73f"); // SL prerequisite-only atom
+                    assertThat(g9Targets).contains(
+                            "baea3966-5d10-53bf-8193-3fcda7b1e73f"); // SL J10: selected sphere-volume derivation alternative
                 }
             }
             softly.assertThat(g8Total).as(jurisdiction + " G8 total").isEqualTo(Integer.parseInt(scope[1]));
@@ -1538,12 +1672,12 @@ public class LearnerControllerIntegrationTest {
         // with projection roles, jurisdiction, course tags and G8/G9 applicability.
         // Keep exact counts and selected membership checks to catch scope drift.
         String[][] scopes = {
-                { "DE-HE", "GK", "751", "761" },
-                { "DE-HE", "LK", "889", "899" },
-                { "DE-RP", "GK", "688", "699" },
-                { "DE-RP", "LK", "802", "813" },
-                { "DE-SH", "GK", "667", "674" },
-                { "DE-SH", "LK", "764", "772" }
+                { "DE-HE", "GK", "763", "771" },
+                { "DE-HE", "LK", "900", "908" },
+                { "DE-RP", "GK", "699", "703" },
+                { "DE-RP", "LK", "810", "814" },
+                { "DE-SH", "GK", "668", "670" },
+                { "DE-SH", "LK", "783", "785" }
         };
         SoftAssertions softly = new SoftAssertions();
 
@@ -1563,6 +1697,7 @@ public class LearnerControllerIntegrationTest {
             assertThat(g8Response.statusCode()).isEqualTo(HttpStatus.OK.value());
             JsonNode g8State = objectMapper.readTree(g8Response.body());
             int g8Total = g8State.path("goals").path("personalized").path("total_atomic").asInt();
+            assertReviewedCrossStageOwnAssessmentTargets(learner, jurisdiction);
             if ("DE-RP".equals(jurisdiction) && "LK".equals(courseProfile)) {
                 assertThat(learnerService.getFilteredAtomicGoalIds(
                         CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false))
@@ -1584,6 +1719,7 @@ public class LearnerControllerIntegrationTest {
             assertThat(g9Response.statusCode()).isEqualTo(HttpStatus.OK.value());
             JsonNode g9State = objectMapper.readTree(g9Response.body());
             int g9Total = g9State.path("goals").path("personalized").path("total_atomic").asInt();
+            assertReviewedCrossStageOwnAssessmentTargets(learner, jurisdiction);
             if ("DE-RP".equals(jurisdiction) && "LK".equals(courseProfile)) {
                 assertThat(learnerService.getFilteredAtomicGoalIds(
                         CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false))
@@ -1604,6 +1740,17 @@ public class LearnerControllerIntegrationTest {
                     .isEqualTo(Integer.parseInt(scope[3]));
         }
         softly.assertAll();
+    }
+
+    private void assertReviewedCrossStageOwnAssessmentTargets(Learner learner, String jurisdiction) {
+        Set<String> targets = learnerService.getFilteredAtomicGoalIds(
+                CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false);
+        assertThat(targets).contains("7a6f1e6d-a9b9-5a70-836b-8718648d3904"); // reviewed own statistics route
+        if (Set.of("DE-HE", "DE-RP").contains(jurisdiction)) {
+            assertThat(targets).contains("002dae37-e209-531c-b87c-719124b6bb4a"); // reviewed whole geometry route
+        } else {
+            assertThat(targets).doesNotContain("002dae37-e209-531c-b87c-719124b6bb4a"); // no SH placement approval
+        }
     }
 
     @Test
@@ -2021,6 +2168,12 @@ public class LearnerControllerIntegrationTest {
                         .GET()
                         .build(),
                 HttpResponse.BodyHandlers.ofString());
+    }
+
+    private void assertExactPhysicsFocusMembers(String focusId, Set<String> expectedAtomicMembers) {
+        assertThat(learnerService.resolveLearningPlanGoalIds(learnerId, CANONICAL_PHYSICS_ID, List.of(focusId)))
+                .as("whole actual composition focus members for %s", focusId)
+                .containsExactlyInAnyOrderElementsOf(expectedAtomicMembers);
     }
 
     private String canonicalGymnasiumSubjectPersonalCurriculum(

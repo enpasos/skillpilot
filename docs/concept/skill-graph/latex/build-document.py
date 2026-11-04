@@ -15,10 +15,30 @@ import re
 import shutil
 import subprocess
 import sys
+import tempfile
 
 
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def atomic_write(path, data):
+    """Replace an output inode, preserving any hardlinked historical copies."""
+    if path.is_symlink() or (path.exists() and not path.is_file()):
+        raise ValueError(f"Refusing non-regular output: {path}")
+    mode = path.stat().st_mode & 0o777 if path.exists() else 0o644
+    descriptor, name = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
+    temporary = Path(name)
+    try:
+        with os.fdopen(descriptor, "wb") as stream:
+            os.fchmod(stream.fileno(), mode)
+            stream.write(data)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary, path)
+    finally:
+        if temporary.exists():
+            temporary.unlink()
 
 
 def log_problems(log):
@@ -49,7 +69,7 @@ def main():
     build_dir.mkdir(parents=True, exist_ok=True)
     env = os.environ.copy()
     # A fixed document timestamp makes same-toolchain rebuilds comparable.
-    env["SOURCE_DATE_EPOCH"] = "1793404800"  # 2026-10-31 00:00:00 UTC
+    env["SOURCE_DATE_EPOCH"] = "1793750400"  # 2026-11-04 00:00:00 UTC
     env["FORCE_SOURCE_DATE"] = "1"
     if args.texmf:
         tree = args.texmf.resolve()
@@ -85,7 +105,7 @@ def main():
         print("\n".join(problems), file=sys.stderr)
         raise SystemExit(f"Document needs review; see {build_dir / (name + '.log')}")
     target = source_dir / f"{name}.pdf"
-    shutil.copy2(build_dir / target.name, target)
+    atomic_write(target, (build_dir / target.name).read_bytes())
     inputs = sorted({source_dir / f"{name}.tex",
                      *source_dir.glob("latex/*.tex"),
                      *source_dir.glob("assets/graph-definition/*.png"),
@@ -117,7 +137,7 @@ def main():
         raise SystemExit(f"Unresolved cited sources: {missing}")
     version = subprocess.check_output(["lualatex", "--version"], text=True).splitlines()[0]
     manifest = {
-        "documentDate": "2026-10-31",
+        "documentDate": "2026-11-04",
         "engine": version,
         "sourceDateEpoch": env["SOURCE_DATE_EPOCH"],
         "pdf": {"path": str(target.relative_to(root)), "sha256": digest(target)},
@@ -125,8 +145,8 @@ def main():
         "conceptSources": {p: digest(root / p) for p in sources},
         "scope": "Technical documentation build; no runtime, publication or learner validation.",
     }
-    (source_dir / f"{name}.build.json").write_text(
-        json.dumps(manifest, indent=2, ensure_ascii=False) + "\n")
+    atomic_write(source_dir / f"{name}.build.json",
+                 (json.dumps(manifest, indent=2, ensure_ascii=False) + "\n").encode("utf-8"))
     print(f"Built {target.relative_to(root)}")
     print("Three LaTeX passes; no overflow, missing glyphs or unresolved references.")
     print(f"Build logs: {build_dir.relative_to(root)}")

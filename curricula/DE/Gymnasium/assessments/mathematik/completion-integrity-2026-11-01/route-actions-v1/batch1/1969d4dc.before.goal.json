@@ -1,0 +1,105 @@
+{
+  "id": "1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf",
+  "title": "Funktionenscharen und Ortskurven untersuchen",
+  "description": "Die lernende Person kann eine materialgestützte Q4-Klausuraufgabe zu Funktionenscharen, Parameteruntersuchungen und Ortskurven selbstständig bearbeiten und die Ergebnisse begründen.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment"
+  ],
+  "dimensionTags": {
+    "framework": "hessen-kc-2024",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K1",
+      "K2",
+      "K3"
+    ],
+    "guidingIdeas": [
+      "L1",
+      "L2",
+      "L4"
+    ],
+    "phase": "Q4"
+  },
+  "requires": [
+    "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+    "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+    "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+    "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+    "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+    "9023226b-fc17-412b-807c-2bb45cd551d5"
+  ],
+  "contains": [],
+  "examples": [],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+      "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+      "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+      "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd"
+    ],
+    "coveredStrands": [
+      "L1",
+      "L2",
+      "L4"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "Gegeben ist für $a \\in \\mathbb R$ die Funktionenschar\n$$\nf_a(x)=x^2-2ax+2a.\n$$\n\n1. Bestimmen Sie den Scheitelpunkt $S_a$ des Graphen von $f_a$ in Abhängigkeit von $a$.\n2. Weisen Sie nach, dass die Scheitelpunkte aller Graphen auf einer gemeinsamen Ortskurve liegen, und geben Sie deren Gleichung an.\n3. Untersuchen Sie in Abhängigkeit von $a$, für welche Werte die Parabel keine reellen Nullstellen besitzt.\n4. Berechnen Sie für $a=3$ den Flächeninhalt der von dem Graphen von $f_3$, der $x$-Achse und den Nullstellen eingeschlossenen Fläche.",
+    "solutionContent": "1. Durch quadratische Ergänzung erhält man\n$$\nf_a(x)=x^2-2ax+2a=(x-a)^2-a^2+2a.\n$$\nDamit ist der Scheitelpunkt\n$$\nS_a=(a\\mid -a^2+2a).\n$$\n\n2. Für die Scheitelpunkte gilt $x=a$. Einsetzen in die $y$-Koordinate liefert\n$$\ny=-a^2+2a=-x^2+2x.\n$$\nDie Ortskurve der Scheitelpunkte ist also\n$$\ny=-x^2+2x.\n$$\n\n3. Die Funktion $f_a$ besitzt genau dann keine reellen Nullstellen, wenn die Diskriminante negativ ist:\n$$\n\\Delta=(-2a)^2-4\\cdot 1\\cdot 2a=4a^2-8a=4a(a-2).\n$$\nGesucht ist\n$$\n4a(a-2)<0.\n$$\nDas gilt für\n$$\n0<a<2.\n$$\n\n4. Für $a=3$ ist\n$$\nf_3(x)=x^2-6x+6=(x-3)^2-3.\n$$\nDie Nullstellen sind\n$$\nx_{1,2}=3\\pm \\sqrt{3}.\n$$\nZwischen diesen Nullstellen liegt der Graph unter der $x$-Achse. Der Flächeninhalt ist daher\n$$\nA=\\int_{3-\\sqrt{3}}^{3+\\sqrt{3}} -f_3(x)\\,dx.\n$$\nMit $u=x-3$ wird\n$$\nA=\\int_{-\\sqrt{3}}^{\\sqrt{3}} (3-u^2)\\,du = \\left[3u-\\frac{u^3}{3}\\right]_{-\\sqrt{3}}^{\\sqrt{3}} = 4\\sqrt{3}.\n$$\nAlso gilt\n$$\nA=4\\sqrt{3}.\n$$",
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 10,
+      "steps": [
+        {
+          "id": "q4a_1",
+          "points": 5,
+          "description": "Scheitelpunkt der Funktionenschar korrekt bestimmt"
+        },
+        {
+          "id": "q4a_2",
+          "points": 5,
+          "description": "Ortskurve korrekt hergeleitet"
+        },
+        {
+          "id": "q4a_3",
+          "points": 4,
+          "description": "Parameterbereich ohne reelle Nullstellen korrekt bestimmt"
+        },
+        {
+          "id": "q4a_4",
+          "points": 6,
+          "description": "Flächeninhalt für a=3 korrekt berechnet"
+        }
+      ]
+    },
+    "reviewNote": "Nicht aktivierter Korrekturkandidat 2026-11-01. Neues Aufgaben-/Rubrikreview erforderlich; bestehendes released gilt nicht für diese Bytes. Aufgaben- und Lösungswortlaut bleiben mathematisch unverändert. Die Scharintegral-Coverage d144 entfällt, da a in Teil 4 fest auf 3 steht. Keine sachfremden Exponential-, Folgen-, Reihen- oder Taylorclaims."
+  },
+  "phase": "Q4",
+  "type": "atomic"
+}

@@ -4,6 +4,7 @@ import { getGoalNavigationSearch, getSessionStartSearch } from './learnerProfile
 import {
   buildCompletionAssessmentStartHref,
   buildCompletionRouteStartHref,
+  canDiscoverCompletionAssessments,
   completionNotice,
   completionAssessmentsForGoal,
   completionWaiversForTree,
@@ -68,6 +69,30 @@ assert.equal(completionAssessmentsForGoal(discovery, 'A').length, 0, 'a preparat
 assert.equal(completionAssessmentsForGoal({ ...discovery, calculationStatus: 'unavailable' }, 'next-exam').length, 0)
 assert.equal(completionAssessmentsForGoal({ ...parseLevelCompletion(valid)!, profileOptions: discovery.profileOptions }, 'next-exam').length, 0,
   'an existing route only exposes its own published assessments')
+const targetRouteDefect = parseLevelCompletion({ ...valid, calculationStatus: 'invalid', complete: undefined,
+  profileId: 'automatic:personal-curriculum', notice: 'completion_target_routes_uncovered',
+  assessments: [availableAssessment], profileOptions: discovery.profileOptions })!
+assert.equal(canDiscoverCompletionAssessments(targetRouteDefect), true)
+assert.equal(completionAssessmentsForGoal(targetRouteDefect, 'next-exam')[0].profileId, 'automatic:personal-curriculum',
+  'a target-route authoring defect preserves the exact backend assessment choice and scope')
+assert.equal(completionAssessmentsForGoal(targetRouteDefect, 'A').length, 0,
+  'invalid completion never turns an ordinary target into a direct assessment')
+assert.equal(targetRouteDefect.complete, undefined)
+assert.equal(completionWaiversForTree(targetRouteDefect, false).size, 0,
+  'structural assessment availability never restores implicit completion credit')
+for (const changes of [
+  { notice: 'completion_profile_invalid' }, { notice: undefined },
+  { profileId: 'legacy-profile' }, { profileId: undefined },
+  { calculationStatus: 'unavailable' as const },
+]) {
+  const blocked = { ...targetRouteDefect, ...changes }
+  assert.equal(canDiscoverCompletionAssessments(blocked), false)
+  assert.equal(completionAssessmentsForGoal(blocked, 'next-exam').length, 0,
+    'other invalid or unavailable states must remain closed even if an assessment list is present')
+}
+assert.equal(canDiscoverCompletionAssessments(null), false)
+assert.throws(() => parseLevelCompletion({ ...targetRouteDefect, complete: true }),
+  'the recoverable assessment choices never permit a completion claim in an invalid projection')
 for (const assessments of [
   [availableAssessment, availableAssessment],
   [{ ...availableAssessment, mastered: true }],
@@ -164,6 +189,8 @@ for (const code of ['completion_generation_changed', 'completion_profile_changed
 }
 assert.match(completionNotice('completion_scope_changed', 'en'), /Personal Curriculum/u)
 assert.match(completionNotice('completion_mastery_unavailable', 'de'), /Lernstand/u)
+assert.match(completionNotice('completion_target_routes_uncovered', 'de'), /weiterlernen und verfügbare Prüfungen direkt versuchen/u)
+assert.match(completionNotice('completion_target_routes_uncovered', 'en'), /keep learning and try available assessments directly/u)
 assert.doesNotMatch(completionNotice('internal-secret-or-new-code', 'de'), /internal|secret/u)
 assert.match(completionUnavailableReason('assessment_running', 'en'), /already running/u)
 assert.doesNotMatch(completionUnavailableReason('internal-secret-or-new-code', 'en'), /internal|secret/u)

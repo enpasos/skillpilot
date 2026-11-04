@@ -1,0 +1,40 @@
+{
+  "status": "PASS_REAL_STAGE_CONSUMER_ACCEPTS_EXACT_GENUINE_RECEIPT_AND_REJECTS_TASK_DRIFT_WITH_REBOUND_CANONICAL_POLICY_HASH",
+  "consumer": "assertMathStageMaterializationAllowed",
+  "consumerSourceSha256": "d15d4a90e82881335dd452b2d6bdb2e1ddd6dbe68fab11cd6b8310e0dd34c6de",
+  "receiptSha256": "aad952551ac28fdc4dcb87e7dd138658ac10846e40d6a75c1118291c67f9792d",
+  "cases": [
+    {
+      "case": "exact-final-genuine-receipt-positive",
+      "accepted": true,
+      "expectedAccepted": true,
+      "error": "",
+      "seconds": 1.885,
+      "canonicalSha256": "e46cb60b2a4e590d80875a120b9fc036eaf6c739c1e7dbcce5702fbb94f4d3ae",
+      "policySha256": "ca93ec172dbc0c69bc36ae1ed68b7b7d5fc183ff65aafa4859267f77847db569"
+    },
+    {
+      "case": "task-drift-with-rebound-canonical-policy-hash",
+      "accepted": false,
+      "expectedAccepted": false,
+      "error": "Error: Semantic-kind ledger: stale semantic-kind decision for goal f0894721-49e1-5860-a3a6-afba2d2cc08b; expected sha256:e7b3fd80e327daa49ca61333d010e61df2e75f112bb89736ab6b9358ef44d0d2.",
+      "seconds": 1.707,
+      "canonicalSha256": "05bdf487fde0519380c200e12e91a96f09478437d542cd114b13f029b91a7dbf",
+      "policySha256": "9d4960884a23dd04ac4f8a5eeb24dff7ac34837b66711ee26ad39e05d59327ca"
+    },
+    {
+      "case": "otherwise-valid-policy-byte-drift-against-original-genuine-receipt",
+      "accepted": false,
+      "expectedAccepted": false,
+      "error": "Error: Mathematics SekI stage policy: HOLD: exact independent policy/source/generator approval required",
+      "seconds": 1.818,
+      "canonicalSha256": "e46cb60b2a4e590d80875a120b9fc036eaf6c739c1e7dbcce5702fbb94f4d3ae",
+      "policySha256": "e6ec95a0f755acd1c6d3a7b2833657c27804a962421c5644f817a1a3f237ece5"
+    }
+  ],
+  "taskDriftRejectedAt": "actual semantic-kind input validation before exact independent receipt check",
+  "separateReceiptPolicyBindingNegative": true,
+  "standaloneMergerIsNotTaskValidator": true,
+  "frozenSourceBytesChanged": false,
+  "rootOrProductWrites": false
+}

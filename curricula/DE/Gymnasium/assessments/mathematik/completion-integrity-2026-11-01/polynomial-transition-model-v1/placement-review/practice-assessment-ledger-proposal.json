@@ -1,0 +1,39 @@
+{
+  "status": "PROPOSED_ONLY_PENDING_PLACEMENT_DECISION_NOT_AUTHORITATIVE_WRITTEN_STATE",
+  "targetPath": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+  "beforeSha256": "50376d2db47596939635553dd78691b4a7fe8e9a891462f55064f68d3f1b4302",
+  "newDecisionBefore": null,
+  "newDecisionAfter": {
+    "goalId": "4293cf40-06fb-51e3-9799-6fde0bf2771b",
+    "sourceFingerprint": "sha256:bd23f2145807afa15f7acc6d4d51b0fcf69d9023e9c70e2f72ea0c1fdb60e847",
+    "semanticKind": "practiceAssessment",
+    "decisionStatus": "authoritative",
+    "decisionBasis": "reviewed-current-pilot-practice-assessment"
+  },
+  "parentDecisionBefore": {
+    "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+    "sourceFingerprint": "sha256:599fc974ea7ed07f193ef93e785977f304604d620a70510b1e62aeee8697376b",
+    "semanticKind": "practiceAssessment",
+    "decisionStatus": "authoritative",
+    "decisionBasis": "reviewed-current-pilot-practice-assessment"
+  },
+  "parentDecisionAfter": {
+    "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+    "sourceFingerprint": "sha256:f7e4d5576eeff61b92a69e027964550c6dab343cb3523f7b5ee1440e6bb264cb",
+    "semanticKind": "practiceAssessment",
+    "decisionStatus": "authoritative",
+    "decisionBasis": "reviewed-current-pilot-practice-assessment"
+  },
+  "countDeltas": {
+    "practiceAssessment": {
+      "before": 180,
+      "after": 181
+    },
+    "total": {
+      "before": 1254,
+      "after": 1255
+    }
+  },
+  "unchangedExistingDecisionCount": 1253,
+  "note": "One new practiceAssessment classification; preserve every existing classification. Only parent contains changes its fingerprint. Ancestor weight is excluded by the pinned source-fingerprint contract. The proposed authoritative row remains inert pending independent placement decision."
+}

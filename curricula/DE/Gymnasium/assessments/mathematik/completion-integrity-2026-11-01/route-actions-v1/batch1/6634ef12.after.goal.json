@@ -1,0 +1,137 @@
+{
+  "id": "6634ef12-0e88-584e-8e45-9e60eafc0951",
+  "title": "Trigonometrische Ableitungen anwenden",
+  "description": "Die lernende Person kann eine E-Phasen-Klausuraufgabe zu trigonometrischen Funktionen, grafischem Differenzieren, Kettenregel, Kontextdeutung sowie Tangenten und Normalen selbstständig bearbeiten.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment"
+  ],
+  "dimensionTags": {
+    "framework": "hessen-kc-2024",
+    "demandLevel": "AB2",
+    "processCompetencies": [
+      "K1",
+      "K2",
+      "K3",
+      "K4",
+      "K5",
+      "K6"
+    ],
+    "guidingIdeas": [
+      "L1",
+      "L2",
+      "L4"
+    ],
+    "phase": "E"
+  },
+  "requires": [
+    "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+    "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+    "eda3a298-4965-525e-878d-f05b9e2d4503",
+    "ecd13e54-ab0e-550f-9400-66e13306635d",
+    "2919b3f3-aca2-5add-beeb-de1b9e0eafd8",
+    "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
+    "58d2f963-4fb9-550d-a832-f5ac60808900",
+    "6acd79f5-9447-5ea1-8127-6dbb72bd057d",
+    "f042385e-f772-42db-9c96-f21a792ac5ea",
+    "08b80080-4895-55df-8ca6-4e8c5eb0f9f5"
+  ],
+  "contains": [],
+  "examples": [],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "examData": {
+    "reviewStatus": "pending",
+    "coveredGoalIds": [
+      "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+      "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+      "eda3a298-4965-525e-878d-f05b9e2d4503",
+      "ecd13e54-ab0e-550f-9400-66e13306635d",
+      "2919b3f3-aca2-5add-beeb-de1b9e0eafd8",
+      "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
+      "58d2f963-4fb9-550d-a832-f5ac60808900",
+      "6acd79f5-9447-5ea1-8127-6dbb72bd057d",
+      "f042385e-f772-42db-9c96-f21a792ac5ea",
+      "08b80080-4895-55df-8ca6-4e8c5eb0f9f5"
+    ],
+    "coveredStrands": [
+      "L1",
+      "L2",
+      "L4"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2"
+    ],
+    "taskContent": "Die Auslenkung eines Federpendels aus der Ruhelage wird modelliert durch\n$$\ns(t)=1{,}5\\sin\\left(\\frac{\\pi}{6}(t-1)\\right)\n$$\nmit $t$ in Sekunden und $s(t)$ in Zentimetern.\n\n1. Deuten Sie die Parameter des Modells, bestimmen Sie Amplitude und Periodenlänge und erläutern Sie, warum der Faktor $\\frac{\\pi}{6}$ im Bogenmaß auftritt.\n2. Bestimmen Sie im Intervall $0\\le t\\le 13$ ohne Differenzialrechnung die Nullstellen, Extrempunkte und Wendepunkte des Graphen. Nutzen Sie dabei Symmetrie- und Periodizitätsargumente.\n3. Für ein kurzes Zeitfenster um $t=1$ wird als ganzrationale Näherung desselben Pendels vorgeschlagen:\n$$\nu=t-1,\\qquad p(t)=\\frac\\pi{108}u(27-u^2).\n$$\nBeide Modelle haben bei $t=1$ denselben Wert $0$ und dieselbe Steigung $\\frac\\pi4$. Zum Vergleich dürfen Sie\n$$\np'(t)=\\frac\\pi{36}(9-u^2),\\qquad p''(t)=-\\frac\\pi{18}u\n$$\nverwenden. Untersuchen Sie die mathematischen Fortsetzungen beider Modelle auf ganz $\\mathbb R$; negative Zeiten sind hier Teil des mathematischen Vergleichs, kein behaupteter Messbereich.\n\na) Vergleichen und begründen Sie das Verhalten für $t\\to\\pm\\infty$, Beschränktheit, Periodizität und die Symmetrie beider Graphen bezüglich $(1\\mid0)$.\nb) Vergleichen Sie die Anzahl der Extrem- und Wendestellen. Begründen Sie die Anzahl bei $p$ anhand der Ableitungen einschließlich der nötigen Vorzeichenwechsel und beim Sinusmodell anhand seiner Periodizität. Geben Sie die jeweiligen Stellen oder Stellenfamilien an; neue Punktkoordinaten sind hier nicht verlangt.\nc) Bestimmen Sie die Nullstellen beider Fortsetzungen und vergleichen Sie die hier geeigneten Lösungsstrategien. Erläutern Sie, warum die Periodizität des Sinus nicht auf ein nichtkonstantes Polynom übertragbar ist.\nd) Entscheiden Sie begründet, welche Modellklasse die dauerhafte Schwingung beschreibt. Ordnen Sie die Übereinstimmung von Wert und Steigung bei $t=1$ als lokale Näherungsinformation ein und erklären Sie, weshalb sie allein keine langfristige Eignung oder Fehlergrenze garantiert.\n\n4. Begründen Sie anhand der Graphen von Sinus und Kosinus durch grafisches Differenzieren den Zusammenhang zwischen $s$ und $s'$. Bestimmen Sie anschließend $s'(t)$ mit der Kettenregel, deuten Sie $s'(2)$ im Sachzusammenhang und bestimmen Sie Tangente und Normale an den Graphen im Punkt mit $t=2$.\n\nBewertung: 1: 5 BE, 2: 6 BE, 3: 10 BE, 4: 9 BE; insgesamt 30 BE, bestanden ab 15 BE. Für Teil 3 müssen die drei Kernaspekte Endverhalten, Extrem-/Wendestellen und Nullstellenstrategien jeweils fachlich begründet verglichen werden. Fehlt ein solcher Vergleich zu einem Kernaspekt, höchstens 14 BE insgesamt. Einzelne Rechenfehler bei substantiv begründeter Gegenüberstellung lösen die Kappung nicht automatisch aus.",
+    "solutionContent": "1. Die Amplitude beträgt $1{,}5$, die Mittellinie ist $s=0$ und die Schwingung ist um $1$ Sekunde nach rechts verschoben. Wegen\n$$\n\\frac{\\pi}{6}(t-1)\n$$\nist der Winkel im Sinusargument im Bogenmaß angegeben. Die Periodenlänge ist\n$$\nT=\\frac{2\\pi}{\\pi/6}=12.\n$$\n\n2. Nullstellen liegen bei\n$$\n\\frac{\\pi}{6}(t-1)=k\\pi \\Rightarrow t=1+6k.\n$$\nIm Intervall folgen $t=1$, $t=7$ und $t=13$. Maxima liegen bei Argument $\\frac\\pi2+2k\\pi$, also bei $t=4$ mit $s(4)=1{,}5$. Minima liegen bei Argument $\\frac{3\\pi}{2}+2k\\pi$, also bei $t=10$ mit $s(10)=-1{,}5$. Die Wendepunkte des Sinusmodells liegen an den Nullstellen, hier also bei $(1\\mid0)$, $(7\\mid0)$ und $(13\\mid0)$.\n\n3a. $s$ ist nichtkonstant, $12$-periodisch und durch $-1{,}5\\le s(t)\\le1{,}5$ beschränkt. Für $t\\to\\pm\\infty$ hat $s$ keinen Grenzwert, weil zum Beispiel die immer wiederkehrenden Hoch- und Tiefpunkte unterschiedliche Werte haben. Bei $p$ dominiert der kubische Term $-\\frac\\pi{108}(t-1)^3$. Daher gilt $p(t)\\to-\\infty$ für $t\\to+\\infty$ und $p(t)\\to+\\infty$ für $t\\to-\\infty$. $p$ ist unbeschränkt und nicht periodisch. Allgemein ist ein nichtkonstantes reelles Polynom aufgrund seines führenden Terms auf $\\mathbb R$ unbeschränkt; eine stetige periodische Funktion ist dagegen durch ihre Werte auf einer Periode beschränkt. Beide Graphen sind punktsymmetrisch zu $(1\\mid0)$: In der Variablen $u=t-1$ sind sowohl der Sinusausdruck als auch das Polynom ungerade, also $s(1-u)=-s(1+u)$ und $p(1-u)=-p(1+u)$. Die gemeinsame Symmetrie macht das Polynom jedoch nicht periodisch.\n\n3b. Für $p$ gilt $p'=0$ genau bei $u=\\pm3$, also $t=-2$ und $t=4$. Die Vorzeichenfolge von $p'$ ist $-,+,-$; es gibt genau einen Tiefpunkt und einen Hochpunkt. $p''$ wechselt nur bei $u=0$, also $t=1$, von positiv zu negativ: genau eine Wendestelle. Das Sinusmodell hat dagegen unendlich viele Hochstellen $t=4+12k$, Tiefstellen $t=10+12k$ und Wendestellen $t=1+6k$, $k\\in\\mathbb Z$, weil die Form in jeder Periode wiederkehrt. Die Ableitungen eines Polynoms dritten Grades haben Grad zwei bzw. eins; dadurch ist hier die endliche Anzahl begründet, nicht durch eine bloße Zeichnung.\n\n3c. Für $s(t)=0$ muss $\\frac\\pi6(t-1)=k\\pi$ gelten; also $t=1+6k$, $k\\in\\mathbb Z$. Hier liefern die trigonometrische Grundgleichung und die Periodizität alle unendlich vielen Lösungen. Für $p(t)=0$ liefert der Satz vom Nullprodukt aus der Faktorform $u=0$ oder $u^2=27$, also $t=1$ oder $t=1\\pm3\\sqrt3$. Dies sind genau drei verschiedene Nullstellen. Hier ist algebraisches Faktorisieren günstiger als eine periodische Fortschreibung, die es bei einem nichtkonstanten Polynom nicht gibt. Ein von null verschiedenes Polynom dritten Grades besitzt höchstens drei verschiedene reelle Nullstellen; es kann daher nicht die unendliche Nullstellenfamilie des Sinusmodells haben.\n\n3d. Für eine ideale dauerhafte Schwingung ist $s$ geeigneter: periodische Wiederholung und feste Amplitude bleiben erhalten, während $p$ schließlich unbegrenzt abfällt. Bei $t=1$ sind $p(1)=s(1)=0$ und $p'(1)=s'(1)=\\frac\\pi4$. Das ist eine Übereinstimmung des Werts und der Tangente und macht eine lokale Annäherung plausibel. Es ist weder ein Nachweis einer bestimmten Näherungsgenauigkeit noch eine Garantie auf einem festgelegten Zeitintervall. Eine Taylor-Entwicklung ist hierfür nicht vorausgesetzt oder behauptet.\n\n4. Beim grafischen Differenzieren erkennt man: Die Steigung des Sinusgraphen ist an Nulldurchgängen betragsgroß und an Hoch- beziehungsweise Tiefpunkten null. Der Ableitungsgraph hat daher Kosinusform. Mit der Kettenregel gilt\n$$\ns'(t)=1{,}5\\cdot\\frac{\\pi}{6}\\cos\\left(\\frac{\\pi}{6}(t-1)\\right)=\\frac\\pi4\\cos\\left(\\frac{\\pi}{6}(t-1)\\right).\n$$\nFür $t=2$ folgt\n$$\ns(2)=1{,}5\\sin\\left(\\frac\\pi6\\right)=0{,}75\n$$\nund\n$$\ns'(2)=\\frac\\pi4\\cos\\left(\\frac\\pi6\\right)=\\frac{\\pi\\sqrt3}{8}\\approx0{,}68.\n$$\nDas Pendel bewegt sich zu diesem Zeitpunkt mit einer momentanen Änderungsrate von etwa $0{,}68\\,\\text{cm/s}$ nach oben. Die Tangente lautet\n$$\ny=0{,}75+\\frac{\\pi\\sqrt3}{8}(t-2).\n$$\nDie Normale hat die Steigung $-\\frac{8}{\\pi\\sqrt3}$ und damit die Gleichung\n$$\ny=0{,}75-\\frac{8}{\\pi\\sqrt3}(t-2).\n$$",
+    "scoring": {
+      "maxPoints": 30,
+      "passingPoints": 15,
+      "steps": [
+        {
+          "id": "e5_trig_deriv_1",
+          "points": 5,
+          "description": "Parameter, Bogenmaß, Amplitude und Periodenlänge korrekt gedeutet"
+        },
+        {
+          "id": "e5_trig_deriv_2",
+          "points": 6,
+          "description": "Charakteristische Punkte ohne Differenzialrechnung aus Periodizität und Symmetrie bestimmt"
+        },
+        {
+          "id": "e5_trig_deriv_3",
+          "points": 2,
+          "description": "3a: Führenden kubischen Term mit beidseitigem Endverhalten von p und Beschränktheit/Periodizität sowie fehlendem Grenzwert von s fachlich verglichen; gemeinsame Punktsymmetrie zu (1|0) aus ungeraden Termen begründet. Kernkappung insgesamt: Fehlt ein begründeter Vergleich zu Endverhalten, Extrem-/Wendestellen ODER Nullstellenstrategien, höchstens 14/30 BE, unter Passgrenze 15. Einzelne Rechenfehler bei substantiv begründeter Gegenüberstellung lösen die Kappung nicht automatisch aus."
+        },
+        {
+          "id": "e5_trig_deriv_3_extrema_inflection",
+          "points": 4,
+          "description": "3b: p hat genau zwei Extremstellen (t=−2,4; 1 BE), durch Vorzeichenwechsel von p′ begründet (1 BE); genau eine Wendestelle bei t=1 mit Vorzeichenwechsel von p″ (1 BE); unendlich viele Sinus-Extrem-/Wendestellen als Familien und durch Periodizität vergleichend begründet (1 BE)"
+        },
+        {
+          "id": "e5_trig_deriv_3_root_strategies",
+          "points": 2,
+          "description": "3c: Nullstellen t=1+6k versus t=1,1±3√3 korrekt (1 BE); Trigonometrie/Periodizität versus Faktorform/Nullprodukt als passende Strategien begründet und endliche/unendliche Lösungsanzahl unterschieden (1 BE)"
+        },
+        {
+          "id": "e5_trig_deriv_3_model_choice",
+          "points": 2,
+          "description": "3d: Dauerhafte Schwingung durch periodisches beschränktes Sinusmodell begründet (1 BE); übereinstimmenden Wert und Tangente als lokale Information ohne garantierte Langzeiteignung oder Fehlergrenze eingeordnet (1 BE)"
+        },
+        {
+          "id": "e5_trig_deriv_4",
+          "points": 9,
+          "description": "Grafisches Differenzieren, Kettenregel, Kontextdeutung sowie Tangente und Normale korrekt bearbeitet"
+        }
+      ]
+    },
+    "sourceArtifactPath": "tmp/approach-review-20261101/route-actions-batch1/6634ef12.task.md",
+    "reviewNote": "Nicht aktivierter Aufgabenkandidat 2026-11-01, Routenblock 1. Die neue Handlung, Lösung, Coverage und Rubrik benötigen unabhängiges Inhaltsreview; frühere Freigaben gelten nicht für diese neuen Aufgabenbytes. Die Rubrik-Kappung gehört zur normalen Aufgabenbewertung; der Server prüft nur Gesamtpunkte. Keine neue Prüfung, keine Scope-/Quellenfreigabe, keine Änderung bestehender Mastery.",
+    "taskContentEn": "The displacement of a spring oscillator is modelled by\n$$\ns(t)=1.5\\sin\\left(\\frac\\pi6(t-1)\\right),\n$$\nwhere $t$ is measured in seconds and $s(t)$ in centimetres.\n\n1. Interpret the parameters, determine the amplitude and period, and explain why the factor $\\frac\\pi6$ uses radian measure.\n2. Without calculus, determine the roots, extrema and inflection points on $0\\le t\\le13$, using symmetry and periodicity.\n3. A polynomial approximation of the same oscillator near $t=1$ is proposed:\n$$\nu=t-1,\\qquad p(t)=\\frac\\pi{108}u(27-u^2).\n$$\nBoth models have value $0$ and slope $\\frac\\pi4$ at $t=1$. You may use\n$$\np'(t)=\\frac\\pi{36}(9-u^2),\\qquad p''(t)=-\\frac\\pi{18}u.\n$$\nCompare their mathematical continuations on all of $\\mathbb R$. Negative times belong to this mathematical comparison, not to a claimed measurement interval.\n\na) Compare and justify their end behaviour as $t\\to\\pm\\infty$, boundedness, periodicity and the symmetry of both graphs about $(1,0)$.\nb) Compare the number of extrema and inflection points. For $p$, justify the count using its derivatives and the necessary sign changes; for $s$, use periodicity. State the locations or families of locations; new point coordinates are not required here.\nc) Find the roots of both continuations and compare the appropriate solution strategies. Explain why sine's periodicity cannot be transferred to a nonconstant polynomial.\nd) Justify which function class describes sustained oscillation. Explain the local information supplied by matching value and slope at $t=1$ and why this alone guarantees neither long-term suitability nor an error bound.\n\n4. Use the sine and cosine graphs to justify the relationship between $s$ and $s'$ by graphical differentiation. Then use the chain rule to find $s'(t)$, interpret $s'(2)$ in context and find the tangent and normal at $t=2$.\n\nScoring: 1: 5 points, 2: 6, 3: 10, 4: 9; total 30, pass at 15. Part 3 must substantively justify comparisons for all three core aspects: end behaviour, extrema/inflection points and root-finding strategies. If a justified comparison for any core aspect is absent, the total is capped at 14. Isolated calculation errors do not automatically trigger this cap when the comparative reasoning is substantively present.",
+    "solutionContentEn": "1. The amplitude is $1.5$ cm, the midline is zero and the shift is one second to the right. The sine argument is an angle in radians; $T=2\\pi/(\\pi/6)=12$ seconds.\n\n2. Roots satisfy $t=1+6k$, giving $1,7,13$ in the interval. The maximum is $(4,1.5)$ and the minimum $(10,-1.5)$. The inflection points are $(1,0),(7,0),(13,0)$, inherited from the standard sine graph by translation and scaling.\n\n3a. The nonconstant sine model is 12-periodic and bounded between $-1.5$ and $1.5$. It has no limit at either end because its distinct maximum and minimum values recur. The leading term of $p$ is $-\\frac\\pi{108}(t-1)^3$, so $p(t)\\to-\\infty$ as $t\\to+\\infty$ and $p(t)\\to+\\infty$ as $t\\to-\\infty$. It is unbounded and nonperiodic. Every nonconstant real polynomial is unbounded on $\\mathbb R$ by its leading term, whereas a continuous periodic function is bounded by its values on one period. Both graphs are centrally symmetric about $(1,0)$: their expressions are odd in $u=t-1$, so $s(1-u)=-s(1+u)$ and $p(1-u)=-p(1+u)$. This shared symmetry does not make the polynomial periodic.\n\n3b. The only zeros of $p'$ are $u=\\pm3$, hence $t=-2,4$. Its signs are $-,+,-$, giving exactly one minimum and one maximum. The only sign change of $p''$ is from positive to negative at $u=0$, hence one inflection at $t=1$. The sine model has infinitely many maxima at $4+12k$, minima at $10+12k$ and inflections at $1+6k$, $k\\in\\mathbb Z$. Periodicity repeats them. The degrees two and one of the polynomial's derivatives explain the finite counts here.\n\n3c. Solving the sine equation gives $\\frac\\pi6(t-1)=k\\pi$, hence $t=1+6k$ for every integer $k$. Trigonometric equations and periodicity describe all infinitely many roots. The factored polynomial instead gives $u=0$ or $u^2=27$, hence $t=1,1\\pm3\\sqrt3$: exactly three distinct roots. Factoring and algebra are the suitable strategy here. A nonzero cubic has at most three distinct real roots; its roots cannot be repeated periodically like sine's.\n\n3d. The sine class is suitable for ideal sustained oscillation because its amplitude stays fixed and its motion repeats, while $p$ eventually decreases without bound. At $t=1$ both value and tangent agree: $p(1)=s(1)=0$ and $p'(1)=s'(1)=\\pi/4$. This makes local approximation plausible but proves no particular error bound or validity interval. No Taylor expansion is required or claimed.\n\n4. Graphical differentiation shows zero slope at sine's extrema and greatest absolute slope at its axis crossings, producing a cosine-shaped derivative. By the chain rule,\n$$\ns'(t)=\\frac\\pi4\\cos\\left(\\frac\\pi6(t-1)\\right).\n$$\nAt $t=2$, $s(2)=0.75$ and $s'(2)=\\pi\\sqrt3/8\\approx0.68$ cm/s: the oscillator is moving upward. The tangent and normal in the given coordinate scales are\n$$\ny=0.75+\\frac{\\pi\\sqrt3}{8}(t-2),\\qquad\ny=0.75-\\frac8{\\pi\\sqrt3}(t-2).\n$$"
+  },
+  "phase": "E",
+  "type": "atomic"
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-matrix-five-quadratic-current-image-20261103-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-11-03/matrix-five-quadratic-corrected-image-v1.config.json",
+  "configDigest": "sha256:7b33a0aacac57732b145c169b8189c67083fdfaa2ce0c82caef7b4b6cca60f03",
+  "goalIds": [
+    "5743b8f9-86cb-4e24-8859-351708d070ab"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 807,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-11-03/matrix-five-quadratic-corrected-image-v1.book-config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:d3f63750ef34ec7a2110cffd16382c8e00dc99117e163fdb028cc19dc84d5ccd"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:e7d4d6aadb4776a8c547a31474a8db52800e656976c421153225cff3db6592e3",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:a38e14bb8895e7aa364605ed9439cbf52ff40ea907e95e373158060bc04f12eb",
+    "reviewInputFingerprint": "sha256:01bbe587fccd6acc2342b93032122cf7f2c6c415f0143ec5e1b292c74e38d4dd",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-a",
+        "campaignDigest": "sha256:6a29f5842a14f34247782ab868c5809b6bedfd08df4ac6f313711c6c0bfb7cb2",
+        "roundId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-first-pass-a",
+        "independenceGroupId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-independent-a",
+        "batchId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:20afa393da7627c6b23707163b13074326ebd2e9c43cfa20ecae3e25c10052f6"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-b",
+        "campaignDigest": "sha256:77e488f5a0841626ee4f8e4ad50ff75b6c65eb8f31f9585cd397768e6a68e519",
+        "roundId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-first-pass-b",
+        "independenceGroupId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-independent-b",
+        "batchId": "mathematik-matrix-five-quadratic-current-image-20261103-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:9785f02838ab8c91ed1619ca1c564ec63e60fbf99ef22b37a049d9fcafc53987"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

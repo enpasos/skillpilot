@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_EXACT_BB_SEKI_PRODUCER_MIRROR_AND_HISTORICAL_BW_PREVIEW_IMPLEMENTATION_ADDENDUM_ONLY",
+  "reviewerAgent": "/root/astra_math_material_scope_resume",
+  "date": "2026-11-02",
+  "inputBindings": [
+    {
+      "path": "tmp/approach-review-20261101/four-country-complex-materialization-20261102/mechanical-v16-handoff.json",
+      "sha256": "4ffcd3ca42c18ede1eb165d0d35e63a8708273ac5a6e7adadaa9cfdaa220b874"
+    },
+    {
+      "path": "tmp/approach-review-20261101/four-country-complex-materialization-20261102/candidate-preparation.json",
+      "sha256": "e2e4f100a01f6f67f18ea2c15aa8931467f7a5ed653dacc22e8ced88b18902c8"
+    },
+    {
+      "path": "tmp/approach-review-20261101/four-country-complex-materialization-20261102/bb-seki-producer-mirror-proposal.json",
+      "sha256": "fd176102f6e56c52e01330b17a4877cce59c1d828af6bd2ed1d7c4f74d3cd923"
+    },
+    {
+      "path": "tmp/approach-review-20261101/four-country-complex-materialization-20261102/producer-preview.json",
+      "sha256": "3130081795554fa4f44f9646f4aa92407cedfe15b571f77cece8d9f20a99cebc"
+    },
+    {
+      "path": "tmp/approach-review-20261101/astra-remaining-material-scope/bw-complex-two-inactive-base-implementation-addendum.PASS.json",
+      "sha256": "d0dd91cc157f784f32f5d2d02e1edb6eec5b5ca93175e2588dc3bb92293c964b"
+    },
+    {
+      "path": "tmp/approach-review-20261101/post-source-course-native-154-audit.json",
+      "sha256": "e870d683748ded49176912d1688bbdb28bd4cf55e743702ffe0794b30a7bb2d0"
+    },
+    {
+      "path": "app/scripts/generateMathCountrySekICompositionViews.ts",
+      "sha256": "3772e4969cf0ba6419075ed2bbdba5eb4d3e81d95147f7cadddf6bab3efb7cda"
+    }
+  ],
+  "approvedBbSekIMirror": {
+    "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-seki.view.json",
+    "beforeSha256": "c507b3b3dc7e416dce6cab7a9a4e959e63cece7e645e51f02aefe392583534fa",
+    "afterSha256": "3feec0823fe04b09ceb9d2a958102a1dc292d68a274d56144d2dd0b63c926119",
+    "operation": {
+      "op": "add",
+      "path": "/rootNodes/45",
+      "value": {
+        "kind": "goalEntry",
+        "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
+        "projectionRole": "prerequisiteOnly"
+      }
+    },
+    "sourceView": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+    "sourceReferenceExactlyEqual": true,
+    "unchangedNormalProducerMechanism": "deriveMathCountrySekIViews preserves whole outer prerequisiteOnly references (lines276–279) and emits the GK-derived view after asserting exact GK/LK visible-target equality (lines338–341).",
+    "wholeViewReplayExact": true
+  },
+  "independentPreviewChecks": {
+    "historicalV16BasisOnly": true,
+    "producerExitCodes": [
+      0,
+      0
+    ],
+    "allProducedFiles": 101,
+    "exactlyChanged": 23,
+    "unchanged": 78,
+    "allOriginal20ActiveOutputsEqualApprovedCandidateBytes": true,
+    "bothBwBaseOutputsEqualSeparateApprovedBaseBytes": true,
+    "onlyAdditionalOutputDeltaIsSingleBbSekIReference": true,
+    "all210OwnedHandoffFileHashesRechecked": true,
+    "bothExistingBbSekIOffersPreviouslyExcludeWholeA852FromTargetsAndProtectedSupport": true
+  },
+  "approvedImplementation": "Accept only the normal producer result with this one BB-SekI prerequisiteOnly insertion, plus the separately approved two BW source-base changes. Rebind any existing input pin only if the ordinary producer consumes that exact changed file; no new source rule or policy exception.",
+  "scopeBoundary": "The original four-country decision remains exactly36 offers and376 removals. This mirror adds no selected target, no new offer and no source entitlement. It is availability metadata, not enrollment or a separate protected demand root.",
+  "requiredFinalChecks": [
+    "Preserve all historical V16 bytes and this review; rebase onto the actual verified V18 Root before final validation.",
+    "Run the unchanged normal83+18 producers and compare every101 output; preserve HB-V17 and the three Analysis preparations.",
+    "Measure all154 target/ordinary-context/protected-context/obligation sets and actual task eligibility. Require both BB SekI whole rows unchanged; do not infer context neutrality from prerequisiteOnly alone.",
+    "Verify exact36-offer/376-target original delta and all true GK+LK unions; no added target or extra deletion.",
+    "Global mastery/recall and fixed dated plans remain unchanged. Stale focus requires explicit reselection; no automatic widening.",
+    "Final Stage receipt and Root activation remain separate; no native, source, M7 or CI acceptance is claimed here."
+  ],
+  "noRootMutationNoJvm": true
+}

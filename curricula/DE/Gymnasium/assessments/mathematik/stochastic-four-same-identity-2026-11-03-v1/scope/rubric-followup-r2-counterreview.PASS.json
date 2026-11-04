@@ -1,0 +1,149 @@
+{
+  "decision": "PASS_CONTENT_FOLLOWUP_R2_AE348_HOLD_CLOSED",
+  "request": {
+    "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/rubric-followup-r2/source-review-request.json",
+    "sha256": "c461b9762969defd64d45c183083237de69ec0518bb0560b7b38a8955458901f",
+    "bytes": 4435
+  },
+  "priorWholeContentDecision": {
+    "path": "tmp/approach-review-20261101/astra-stochastic-four-same-identity-content-review-20261103-v1/four-content-decisions.json",
+    "sha256": "75ee9ee4c7ae012b2a633f9aad4799037d86bdd61f7e531cf3231dd4902ecb11",
+    "bytes": 25847
+  },
+  "priorDecisionPreserved": true,
+  "successorFiles": [
+    {
+      "before": {
+        "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/power-graph-ae348/solution-and-rubric.de.md",
+        "sha256": "4662ec3f7fa5fde3a2a560503730117fcd9fbf253b6873eb03dd06dc8dfcc7f4",
+        "bytes": 3761
+      },
+      "after": {
+        "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/rubric-followup-r2/power-graph-ae348/solution-and-rubric.de.md",
+        "sha256": "02d8e64e8a6b1339b60df241d96053e02ad708a6454fdb009376e7a7a6eb0821",
+        "bytes": 4018
+      }
+    },
+    {
+      "before": {
+        "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/power-graph-ae348/solution-and-rubric.en.md",
+        "sha256": "5d9487bafeea48e29c6f168e894562b4cfd2a74709687f12d2313c87c9d5b418",
+        "bytes": 3319
+      },
+      "after": {
+        "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/rubric-followup-r2/power-graph-ae348/solution-and-rubric.en.md",
+        "sha256": "2ccd9bd4705408de86151c31f0887640a6d1f1eaaae0564584d5ccc1723ea6f2",
+        "bytes": 3585
+      }
+    },
+    {
+      "before": {
+        "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/power-graph-ae348/whole-content-draft.json",
+        "sha256": "50a17696af1de32e41b4db2efd51ec48ff8be9e9c1291c993377addff99c43f5",
+        "bytes": 18227
+      },
+      "after": {
+        "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/rubric-followup-r2/power-graph-ae348/whole-content-draft.json",
+        "sha256": "78dbe2bc41ede65400a172f4f9a41d3afd6a728e2038534a19b37120805c6588",
+        "bytes": 19086
+      }
+    },
+    {
+      "before": {
+        "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/author-omission-and-follow-through-checks.json",
+        "sha256": "4ff6e01acd3f8d30c06521017679d6666600c17d9a02aff50eabc286bb85718d",
+        "bytes": 19056
+      },
+      "after": {
+        "path": "tmp/approach-review-20261101/stochastic-models-test-decisions-own-content-candidates-20261103-v1/rubric-followup-r2/author-omission-and-follow-through-checks.json",
+        "sha256": "2d5aba800d7f0131f5185eff833a95970cc95264bac8830b00c78472a9d3c9c4",
+        "bytes": 19907
+      }
+    }
+  ],
+  "closedFindings": [
+    {
+      "id": "RUBRIC-AE348-01",
+      "decision": "CLOSED",
+      "basis": "Both languages and the exact embedded rubric now award 1 BE for each correctly assigned graph-supported sufficient bound, just as for a correct sufficiently accurate numerical reading. Partial or insufficient readings retain proportional credit. Six adequate bounds earn 6 reading points and the complete valid profile earns 14; no representation penalty remains."
+    },
+    {
+      "id": "EVIDENCE-5DBF-01",
+      "decision": "CLOSED_AUTHOR_EVIDENCE_ONLY",
+      "basis": "The limitation already expressed in the empirical/model comparison receives the existing 2 BE, giving 20 rather than 18. No content or rubric change to this already passed form."
+    }
+  ],
+  "independentChecks": {
+    "all12RequestBindingsExact": true,
+    "all53OriginalWholeContentBindingsStillExact": true,
+    "all12PngSvgMediaBytesUnchanged": true,
+    "draftScalarChangesOnly": [
+      "solutionContent",
+      "solutionContentEn",
+      "p0 reading scoring description DE",
+      "p0 reading scoring description EN",
+      "p1 reading scoring description DE",
+      "p1 reading scoring description EN"
+    ],
+    "taskAndSolutionMathematicsUnchanged": true,
+    "ae348TotalPassCap": [
+      14,
+      11,
+      10
+    ],
+    "profileCountBefore": 24,
+    "profileCountAfter": 25,
+    "unchangedPriorProfiles": 22,
+    "changedProfiles": {
+      "power-graph-ae348/valid-graph-bounds": 14,
+      "normal-model-5dbf/limitation-already-in-comparison": 20
+    },
+    "newPartialNegative": {
+      "profile": "partially-sufficient-one-graph-reading",
+      "score": 13.5,
+      "basis": "G_A(.10)<.10 is correct but insufficient to establish the .05 boundary and earns only .5. The other five readings and both requirements are complete; A is independently excluded by low power. No whole-core cap applies."
+    },
+    "all25IndependentPointSumsAndThresholdComparisonsExact": true,
+    "previousIndependentMathematicsAndVisualInspectionCarriedForward": true
+  },
+  "finalIndividualContentDecisions": [
+    {
+      "goalId": "03357e70-2280-532f-b629-5dfa31dc44eb",
+      "decision": "PASS",
+      "basis": "unchanged exact original content and prior whole-content review"
+    },
+    {
+      "goalId": "ae3483e3-4712-56a1-a881-2e1f8a1a8df9",
+      "decision": "PASS",
+      "basis": "original full task, mathematics and media plus precisely these R2 rubric/draft successor bytes"
+    },
+    {
+      "goalId": "5dbf149c-d335-552c-a918-768a12e09201",
+      "decision": "PASS",
+      "basis": "unchanged exact original content; separate hypothetical author profile corrected"
+    },
+    {
+      "goalId": "7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+      "decision": "PASS",
+      "basis": "unchanged exact original content and prior whole-content review"
+    }
+  ],
+  "scopeHoldsRetained": [
+    "No automatic activation in any existing Target-PC from these content passes. Whole effective preparation, actual authored program placement and existing learner scopes still need their own finite decision.",
+    "HE ae348 Q4.2 optional/additional treatment remains explicit; the old S51 locator is not revalidated as current—the earlier source review located the relevant content on printedS52.",
+    "No BW-SekI or other lower-stage activation inferred from unrelated four endpoint pairs, LK tags, existing targets or applicability.",
+    "No claim of whole613871f6 free decision-rule design or ae483 sample-size variations.",
+    "Existing807 curricularAtomic population and stable goal identities/mastery remain unchanged."
+  ],
+  "boundaries": {
+    "sameIdsAndCurricularAtomicPreserved": true,
+    "requiresAndTargetsChanged": false,
+    "additionalMasteryQualification": false,
+    "rootWrites": false,
+    "jvmOrHostRun": false,
+    "newRendererOrMedia": false,
+    "scopeOrMaterializationApproval": false,
+    "runtimeOrCiOrM7Pass": false
+  },
+  "nextAction": "Use this exact combined content snapshot for later separately reviewed placement/materialization; retain the old four-form decision and its HOLD as history. No new whole-content authoring is required for these four forms."
+}

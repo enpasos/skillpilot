@@ -1,5 +1,9 @@
 package com.skillpilot.backend.service;
 
+import com.skillpilot.backend.testsupport.OwnedMockitoMocks;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.AfterAll;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
@@ -30,7 +34,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationEventPublisher;
 
+@ExtendWith(OwnedMockitoMocks.class)
 class MitOcwFrontierWalkthroughTest {
+
+    @AfterAll
+    static void releaseClassFixtures() {
+        objectMapper = null;
+        landscapeService = null;
+        goalMappingService = null;
+    }
+
 
     private static final String LEARNER_ID = "mit-ocw-frontier-learner";
     private static final String MIT_OCW_FOUNDATIONS_CURRICULUM_ID = "25df82ae-f6ab-518b-98f2-dc72bcdf2fcf";

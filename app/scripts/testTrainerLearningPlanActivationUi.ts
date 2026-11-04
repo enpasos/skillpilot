@@ -107,6 +107,7 @@ try {
   let failNextActivation = false
   let failNextActivationWithScheduleConflict = false
   let returnIncoherentActivation = false
+  let returnConfigurationOnly = false
   let failPhysicsRead = false
   const serverPlans = new Map<string, ReturnType<typeof planDetail> | null>([
     [mathLandscapeId, planDetail({
@@ -227,11 +228,11 @@ try {
           asOf: berlinDateKey(),
           followLearningPlans: true,
           plans: [mathPlan, physicsPlan],
-          selectedPlanId: mathPlan.planId,
-          selectedLandscapeId: mathLandscapeId,
-          focusGoalId: mathGoalId,
-          activeGoalId,
-          state: {},
+          selectedPlanId: returnConfigurationOnly ? null : mathPlan.planId,
+          selectedLandscapeId: returnConfigurationOnly ? null : mathLandscapeId,
+          focusGoalId: returnConfigurationOnly ? null : mathGoalId,
+          activeGoalId: returnConfigurationOnly ? null : activeGoalId,
+          state: returnConfigurationOnly ? { activeGoal: { id: mathGoalId } } : {},
         }),
       })
       return
@@ -449,6 +450,21 @@ try {
     await page.getByText('Curriculum geändert – Plan prüfen', { exact: true }).count() === 1,
     'an incoherent success response does not produce a partial or verified-success status',
   )
+
+  // A full no-selection response can preserve old active work in state. It
+  // must not be presented as a newly selected goal or a lack of voluntary options.
+  followLearningPlans = false
+  returnConfigurationOnly = true
+  await page.getByRole('button', { name: 'Erneut prüfen', exact: true }).click()
+  await subjectOverview.getByText('Bereit zur Aktivierung', { exact: true }).first().waitFor()
+  await activateButton.click()
+  await confirmation.waitFor()
+  await confirmation.getByText(/Eine erfolgreiche Übernahme muss kein neues Lernziel starten/u).waitFor()
+  await confirmation.getByRole('button', { name: 'Planung jetzt übernehmen', exact: true }).click()
+  await page.getByText('2 Fachpläne sind gemeinsam wirksam. Es wurde kein neues Lernziel ausgewählt.', { exact: true }).waitFor()
+  assert(await page.getByText('Aktuell ist kein startbares Planziel verfügbar.', { exact: false }).count() === 0,
+    'no selection does not assert that voluntary learning is unavailable')
+  returnConfigurationOnly = false
 
   failPhysicsRead = true
   await page.getByRole('button', { name: 'Erneut prüfen', exact: true }).click()

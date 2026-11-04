@@ -1,0 +1,293 @@
+{
+  "currentCanonicalPath": "tmp/approach-review-20261101/math-context-he-three-joint-integration-20261104-v1/check-host/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "currentCanonicalSha256": "916f309dd5bc1d8cb66dba6fc204c29c5dfb9b54c935ce5968f27e2404cb7c2d",
+  "wholeExam": {
+    "id": "5d3fd2c4-7c7e-569e-ae02-75486573f3cc",
+    "title": "B2 (Analysis – \"Wirkstoffkonzentration\", 30 BE) (LK)",
+    "titleEn": "B2 (Analysis – \"Drug Concentration\", 30 BE)",
+    "description": "Funktionenschar, Extremwerte und Integral (AUC).",
+    "descriptionEn": "Function family, extrema and integral (AUC).",
+    "weight": 1,
+    "tags": [
+      "LK",
+      "phase:SekII"
+    ],
+    "contains": [],
+    "requires": [
+      "0e8417d7-effb-5314-93ba-a571b01726ce",
+      "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+      "49f9059a-876c-5051-8146-d008b5cc691c"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024",
+      "phase": "Abitur",
+      "demandLevel": "AB3"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "examData": {
+      "taskContent": "Die Konzentration eines Medikaments im Blut wird modelliert durch die Funktionenschar:\n\n$$\nc_k(t) = 10 \\cdot t \\cdot e^{1 - k \\cdot t} \\quad (t \\ge 0, k > 0)\n$$\n\n($t$ in Stunden, $c_k(t)$ in mg/l).\n\n1. **Verlauf:** Untersuchen Sie das Verhalten für $t \\to \\infty$. Begründen Sie, dass die Konzentration für $t>0$ stets positiv ist. (4 BE)\n2. **Wirkungsmaximum:** Bestimmen Sie in Abhängigkeit von $k$ den Zeitpunkt der maximalen Konzentration und die Höhe der maximalen Konzentration.\n   Für welchen Parameter $k$ wird das Maximum genau nach 2 Stunden erreicht? (9 BE)\n3. **Abbaugeschwindigkeit:** Zeigen Sie, dass die Wendestelle der Funktion bei $t_W = \\frac{2}{k}$ liegt.\n   Interpretieren Sie die Bedeutung der Wendestelle im Kontext des Abbaus des Medikaments. (6 BE)\n4. **Gesamtmenge:** Das Integral $\\int_0^{\\infty} c_k(t) \\, dt$ ist ein Maß für die \"totale Exposition\" des Körpers (AUC = Area Under Curve).\n   Bestimmen Sie diesen Wert in Abhängigkeit von $k$.\n   Ein Arzt möchte die Exposition verdoppeln. Untersuchen Sie, wie er dafür den Parameter $k$ ändern muss. (11 BE)",
+      "solutionContent": "**1. Verlauf (4 BE)**\n$\\lim_{t \\to \\infty} c_k(t) = 0$ (e-Funktion dominiert). $t, k, e^x > 0 \\Rightarrow c_k(t) > 0$.\n\n**2. Maximum (9 BE)**\n$c_k'(t) = 10e^{1-kt}(1-kt) = 0 \\Rightarrow t = 1/k$. $c(1/k) = 10/k$. $t=2 \\Rightarrow k=0,5$.\n\n**3. Wendepunkt (6 BE)**\n$c_k''(t) = 10e^{1-kt}(-k(1-kt) - k) = 10k e^{1-kt}(kt-2) = 0 \\Rightarrow t=2/k$. Stärkste Abnahme.\n\n**4. Gesamtmenge (11 BE)**\nPartielle Integration. $\\int_0^{\\infty} c_k(t) dt = \\frac{10e}{k^2}$. Verdopplung: $k$ durch $k/\\sqrt{2}$ ersetzen.",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 15,
+        "steps": [
+          {
+            "id": "s1",
+            "points": 4,
+            "description": "Grenzverhalten"
+          },
+          {
+            "id": "s2",
+            "points": 9,
+            "description": "Extrema berechnet"
+          },
+          {
+            "id": "s3",
+            "points": 6,
+            "description": "Wendepunkt"
+          },
+          {
+            "id": "s4",
+            "points": 11,
+            "description": "Integral und Parameter"
+          }
+        ]
+      },
+      "taskContentEn": "The concentration of a medication in the blood is modeled by the family of functions:\n\n$$\nc_k(t) = 10 \\cdot t \\cdot e^{1 - k \\cdot t} \\quad (t \\ge 0, k > 0)\n$$\n\n($t$ in hours, $c_k(t)$ in mg/l).\n\n1. **Behavior:** Investigate the behavior as $t \\to \\infty$. Justify that the concentration is always positive for $t>0$. (4 BE)\n2. **Maximum effect:** Determine, as a function of $k$, the time of maximum concentration and the maximum concentration value.\n   For which parameter $k$ is the maximum reached exactly after 2 hours? (9 BE)\n3. **Decay rate:** Show that the inflection point of the function is at $t_W = \\frac{2}{k}$.\n   Interpret the meaning of the inflection point in the context of the drug's decay. (6 BE)\n4. **Total exposure:** The integral $\\int_0^{\\infty} c_k(t) \\, dt$ is a measure of the body's \"total exposure\" (AUC = Area Under Curve).\n   Determine this value as a function of $k$.\n   A doctor wants to double the exposure. Investigate how the parameter $k$ must be changed. (11 BE)",
+      "solutionContentEn": "**1. Behavior (4 BE)**\n$\\lim_{t \\to \\infty} c_k(t) = 0$ (exponential dominates). $t, k, e^x > 0 \\Rightarrow c_k(t) > 0$.\n\n**2. Maximum (9 BE)**\n$c_k'(t) = 10e^{1-kt}(1-kt) = 0 \\Rightarrow t = 1/k$. $c(1/k) = 10/k$. $t=2 \\Rightarrow k=0.5$.\n\n**3. Inflection point (6 BE)**\n$c_k''(t) = 10e^{1-kt}(-k(1-kt) - k) = 10k e^{1-kt}(kt-2) = 0 \\Rightarrow t=2/k$. Strongest decrease.\n\n**4. Total exposure (11 BE)**\nIntegration by parts. $\\int_0^{\\infty} c_k(t) dt = \\frac{10e}{k^2}$. Doubling: replace $k$ by $k/\\sqrt{2}$."
+    },
+    "phase": "Abitur",
+    "type": "atomic"
+  },
+  "wholeOriginalGoalContracts": [
+    {
+      "id": "0e8417d7-effb-5314-93ba-a571b01726ce",
+      "title": "Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen",
+      "titleEn": "Compute integrals of linked exponential and polynomial functions",
+      "description": "Die lernende Person kann Integrale geeigneter Verknüpfungen von Exponential- und ganzrationalen Funktionen berechnen und die verwendeten Stammfunktionen durch Ableiten nachweisen.",
+      "descriptionEn": "The learner can compute integrals of suitable combinations of exponential and polynomial functions and verify the antiderivatives used by differentiating them.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "93fcf49d-a08c-5aa5-a5b2-cb4ee56fdae4",
+        "ccfd4e60-5728-568f-adb7-0b932d8e5aac"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K3.2",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "phase": "Q4",
+        "topicCode": "CANONICAL.MATH.SEK2.Q4.1.COMPUTE_INTEGRALS_OF_LINKED_EXPONENTIAL_AND_POLYNOMIAL_FUNCTIONS"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true,
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 2",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+          "title": "Visualisierung: Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen",
+          "url": "/assets/goal-visualizations/mathematik/0e8417d7-effb-5314-93ba-a571b01726ce/0e8417d7-effb-5314-93ba-a571b01726ce.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen\". Die lernende Person kann Integrale geeigneter Verknüpfungen von Exponential- und ganzrationalen Funktionen berechnen und die verwendeten Stammfunktionen durch Ableiten nachweisen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+      "title": "Uneigentliche Integrale berechnen (LK)",
+      "titleEn": "Compute improper integrals (advanced course)",
+      "description": "Die lernende Person kann uneigentliche Integrale mit unendlichen Integrationsgrenzen oder Singularitäten als Grenzwerte formulieren, ihre Konvergenz untersuchen, im konvergenten Fall ihren Wert berechnen und geometrische Flächeninhalte mithilfe des Betrags des Integranden beurteilen.",
+      "descriptionEn": "The learner can formulate improper integrals with infinite bounds or singularities as limits, investigate their convergence, calculate their value when convergent, and assess geometric areas using the absolute value of the integrand.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+        "a9ed219d-d497-55e5-a4e0-4d45d2554f6b"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K3.2"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L4"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q1.2, S. 37, Spiegelstrich 5",
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+          "title": "Visualisierung: Uneigentliche Integrale berechnen (LK)",
+          "url": "/assets/goal-visualizations/mathematik/f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d/f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d.png",
+          "provider": "Repository-native SVG / Playwright Chromium (reviewed Nano fallback)",
+          "description": "Visualisierung zum Lernziel: Uneigentliche Integrale berechnen (LK).",
+          "altText": "Auf linearen Achsen ist f(x)=1/√x für 0<x≤1 dargestellt. Kontrollpunkte (1/16,4), (1/4,2), (1/2,√2) und (1,1) stimmen mit der berechneten Kurve überein. Die Singularität bei x=0 ist ausgeschlossen; die Kurve setzt sich oberhalb des sichtbaren Fensters fort. Der Grenzwert des Integrals von a bis 1 für a→0⁺ ist 2. Wegen f>0 entspricht er hier dem Flächeninhalt.",
+          "lang": "de",
+          "license": "AI-assisted repository-native visualization; redistribution review required",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "49f9059a-876c-5051-8146-d008b5cc691c",
+      "shortKey": "canonical_math_sek2_q4_exp_power_asymptotic_comparison_by",
+      "title": "Exponential- und Potenzfunktionen asymptotisch vergleichen",
+      "titleEn": "Compare exponential and power functions asymptotically",
+      "description": "Die lernende Person kann das Wachstum der natürlichen Exponentialfunktion mit Potenzfunktionen vergleichen und Grenzwertverhalten im Unendlichen plausibel begründen.",
+      "descriptionEn": "The learner can compare the growth of the natural exponential function with power functions and justify limiting behavior at infinity plausibly.",
+      "core": false,
+      "weight": 1,
+      "tags": [
+        "LK",
+        "canonical"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K3.2",
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L1"
+        ],
+        "phase": "Q4",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK2.Q4.EXP_POWER_ASYMPTOTIC_BY"
+      },
+      "contains": [],
+      "requires": [
+        "628928a6-4f48-54dc-952d-dec0e69dc856"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.1.2",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "49f9059a-876c-5051-8146-d008b5cc691c",
+          "title": "Visualisierung: Exponential- und Potenzfunktionen asymptotisch vergleichen",
+          "url": "/assets/goal-visualizations/mathematik/49f9059a-876c-5051-8146-d008b5cc691c/49f9059a-876c-5051-8146-d008b5cc691c.png",
+          "provider": "OpenAI imagegen",
+          "description": "Kursneutrales Diagramm: Die Kurve von e^x wächst langfristig schneller als die von x²; der Quotient e^x/x² strebt für x gegen unendlich gegen unendlich.",
+          "altText": "Zwei Kurven vergleichen e^x und x². Die rote Exponentialkurve wächst für große x deutlich schneller als die blaue Potenzkurve; darunter steht der Grenzwert e^x/x² gegen unendlich für x gegen unendlich.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    }
+  ],
+  "unchangedExamDataAndRequiresAgainstPriorWholeReview": true
+}

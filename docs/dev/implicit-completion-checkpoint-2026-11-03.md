@@ -1,0 +1,449 @@
+# Arbeitsstand: implizite Erledigung und Mathematik-Nachprüfung
+
+Der Zwischenstand liegt im [Draft-PR #79](https://github.com/enpasos/skillpilot/pull/79)
+auf `wip/implicit-completion-math-checkpoint-20261103`. Er ist keine Merge-,
+M7-, Deployment- oder vollständige CI-Freigabe.
+
+## Aktueller Messstand: 4. November 2026
+
+Der Stand enthält **35 vollständige Prüfungsformen unter bestehenden
+curricularen Lernziel-IDs und 26 gezielt platzierte eigenständige
+Prüfungsziele**. Die 807 curricularen Mathematikziele bleiben erhalten.
+Sechs zuvor zu breit eingeführte Prüfungsrollen sind korrigiert: Die
+Kompetenz bleibt dort ein gewöhnliches Lernziel, wo bereits ein anderer
+Abschlussweg besteht. Eine zusätzliche Prüfung wird nur in tatsächlich
+unversorgten Angeboten ausgewählt.
+
+| Vollständige Mathematikangebote | Aktueller Befund |
+| --- | --- |
+| Tatsächlich geprüfte Angebote | 161, einschließlich 46 Kursvereinigungen |
+| Abschlussintegrität bestanden | 21 Angebote |
+| Angebote mit verbleibenden Datenlücken | 140 |
+| Ungedeckte Ziele | 189 unterschiedliche IDs / 2.012 Ziel-Angebots-Paare |
+| Gewöhnliche offene Endpunkte | 122 unterschiedliche IDs / 1.303 Endpunktpaare |
+
+Die jüngste gemeinsame Korrektur schließt weitere **791 Ziel-Angebots-Paare
+und 404 Endpunktpaare**, ohne neue Lücken zu erzeugen. Sie begrenzt zehn
+Prüfungsidentitäten auf 532 tatsächlich fehlende Prüfungsplätze, verwendet
+eine vorhandene Analysisprüfung in weiteren 36 Angeboten und ergänzt drei
+vollständige Prüfungsformen an bisher isolierten Kompetenzen. Eine echte
+Matrixvoraussetzung ist ergänzt; eine sachfremde Dichtevoraussetzung ist
+entfernt. Vier hessische Ziel-Angebots-Paare zum Bogenmaß sind quellenbelegt
+sichtbar, ohne neue unversorgte Arbeit zu erzeugen.
+
+Vier anschließende Formen schließen weitere **164 Ziel-Angebots-Paare und
+100 Endpunktpaare**. Kegel und Asymptotik erhalten zusammen 62 begrenzte neue
+Prüfungsplätze; Einheitswurzeln und komplexes Dividieren behalten ihre IDs
+und bestehenden Speicherpflichten. Die anschließende tatsächliche Messung
+verwendet 3.254 Eingaben, deren Bytes nach dem Import vollständig stimmen.
+Auch dieser Nachlauf besteht alle elf Autorenprüfungen.
+
+Zwei bereits vorhandene Statistik- und Pyramidenprüfungen schließen anschließend
+weitere **100 Ziel-Angebots-Paare und 68 Endpunktpaare**. Sie erhalten zusammen
+16 zusätzliche Plätze, ohne Aufgaben, Voraussetzungen, Lernstände oder die
+807 curricularen IDs zu ändern. Der tatsächliche Backendvergleich und das
+unabhängige Astra-Review bestätigen die genaue Begrenzung. Alle elf regulären
+Autorenprüfungen bestehen; 127 geprüfte Dateien sind bytegenau übernommen.
+Die spätere reine Generator-/Hashkorrektur ist getrennt nachgewiesen:
+3.284 ursprüngliche Messungseingaben bleiben gleich, eine Autorenbindung
+ändert sich mit eigener Prüfung. Das ist kein neuer Lauf der ursprünglichen
+Backendmessung.
+
+Drei weitere vollständige Geometrieformen, ein vorhandener Projektionsweg und
+eine auf vier bayerische Kursangebote begrenzte eigene Prüfung schließen
+anschließend **76 Ziel-Angebots-Paare und 68 Endpunktpaare**. Alle gewöhnlichen
+Targets bleiben erhalten. Das unabhängige Astra-Review und alle elf normalen
+Autorenprüfungen bestehen; 546 geprüfte Dateien sind bytegenau übernommen.
+Die ursprüngliche Backendmessung bleibt mit ihren tatsächlichen Eingaben
+erhalten. Zwei später ergänzte echte A/M-Reviewverweise sind als reine
+Qualitätsänderungen ausdrücklich abgegrenzt. Die Korrektur stellt außerdem
+die vier versehentlich verlorenen amtlichen Quellenflags samt KC-Alias im
+hessischen Generator wieder her, ohne Quellziele oder Passagen zu verändern.
+
+Der anschließende Nachlauf zur räumlichen Geometrie und zu Differenzialgleichungen
+schließt weitere **243 Ziel-Angebots-Paare und 215 Endpunktpaare**, ohne neue
+Lücken zu erzeugen. Vier bestehende IDs erhalten ganze Prüfungsformen; zwei
+zusätzliche Prüfungsziele werden nur an den geprüften Stellen angeboten.
+Unzutreffende Vorbereitungsbeziehungen sind korrigiert, vorhandene ganze
+Prüfungen werden in weiteren passenden Angeboten verwendet. Alle elf normalen
+Autorenprüfungen bestehen nach zwei gezielten Nachkorrekturen. 733 geprüfte
+Dateien sind übernommen; alle **11.118 tatsächlichen Backend-Eingaben bleiben
+bytegleich**. 21 vollständige Angebote bestehen nun, 140 bleiben unvollständig.
+
+Der folgende Q3-Nachlauf ergänzt zwölf vollständige Formen und verwendet sechs
+vorhandene ganze Formen an genau geprüften Stellen. Er schließt weitere
+**387 Ziel-Angebots-Paare und 233 Endpunktpaare**, ohne neue Lücken zu erzeugen.
+Die unabhängige Inhalts-, Quellen- und tatsächliche Backendprüfung sowie alle
+elf normalen Autorenprüfungen bestehen. 397 geprüfte Dateien sind übernommen.
+Der ursprüngliche Backendlauf bleibt unverändert; der spätere reine
+Reviewverweis und zwei separat geprüfte Testquellen sind ausdrücklich als
+Abweichungen ausgewiesen. Gesamtgraph, Mathematik- und GitHub-Freigabe bleiben
+eigene offene Grenzen.
+[Nachweise des Q3-Nachlaufs](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/q3-whole-forms/README.md).
+
+41 veraltete feste API-Zielzahlen sind anhand der tatsächlichen Zielmengen
+und HTTP-Antworten korrigiert. Alle Mitgliedschaftsprüfungen bleiben erhalten;
+die vollständige Controllerklasse besteht danach mit 38/38 Tests ohne Skips.
+
+Der GitHub-Nachlauf auf `c608f2e032` zeigt außerdem eine fehlende deklarierte
+Generator-Eingabe im schlanken Checkout. Die Ermittlung dieser Eingaben ist
+korrigiert: 30 Vertragsprüfungen und eine tatsächliche Sparse-Reproduktion
+bestätigen die Wiederherstellung der benötigten Dateien und den unveränderten
+Generator-PASS für 39 Dokumente und 46 Kursvereinigungen. Die Mathematik-Datenlücken
+bleiben davon unabhängig offen.
+
+Veraltete Backend-Testannahmen zu den expliziten Kursvereinigungen sind
+korrigiert. Die Paketfixture erzeugt keine zusätzlichen virtuellen Angebote,
+die aktuellen Ansichts-IDs werden aufgelöst und die vier bewusst entfallenden
+GK-Vorbereitungsprüfungen werden exakt abgegrenzt. Alle übrigen Zielmengen,
+Vorbereitungsbeziehungen und Eindeutigkeitsprüfungen bleiben erhalten.
+Die gezielte Wiederholung besteht mit **104/104 Tests ohne Skips**; die
+vollständige Backend-CI bleibt ein eigener ausstehender Nachweis.
+
+Der anschließende vollständige Backendjob auf `1a63656071` bestätigt den
+Stored-Focus-Fix und zeigt weitere zurückgehaltene Test-Fixtures vor dem
+SRS-Kontextaufbau. Deren gezielte Eigentums- und Lebensdauerkorrektur besteht
+mit **250/250 Tests** und demselben wiederverwendeten Spring-Kontext. Der Heap
+bleibt bei unverändertem Limit über die Sequenz stabil; Produktionscode,
+SRS und Assertions bleiben unverändert. Auch dieser Nachweis ersetzt den
+vollständigen GitHub-Nachlauf nicht.
+
+Der gepushte Geometrie-Zwischenstand `ffc69cd4f5` besteht inzwischen die
+vollständige reguläre Backend-Suite: **3.201 Tests, keine Fehler, 20 vorgesehene
+Skips**. Sowohl der PR-Backendjob als auch der unabhängig gestartete
+GitHub-Backendjob sind erfolgreich. Die separate Mathematikprüfung und
+übrige CI-Grenzen bleiben davon unabhängig.
+
+Der anschließende CI-Nachlauf ergänzt die Eingabeermittlung um die ausdrücklich
+gebundenen Policy-Dateien. Die tatsächliche Sparse-Reproduktion besteht wieder
+39 Dokumente und 46 Kursanfragen bei unveränderten 147 Ansichten. 32
+Vertragsprüfungen bestehen. Der erzeugte Memory-Report und die fünf gemessenen
+Medienbestandsfelder sind aktualisiert; Prüfgrenzen und Herkunftsaussagen
+bleiben unverändert.
+
+Der letzte gepushte Commit `e9f318a5d8` besteht nun ebenfalls die vollständige
+Backend- und Frontend-CI. Die Curriculum- und Mathematikjobs bleiben wegen der
+bekannten Datenlücken rot. Dieser GitHub-Nachweis gilt für den damaligen
+Commit; der neue räumliche Geometrie-/DGL-Nachlauf braucht einen eigenen Lauf.
+
+Eine lokale Cockpit-Vorschau mit eigener PostgreSQL-Testdatenbank zeigt den
+aktuellen importierten Datenstand. Ein synthetisch bestandenes Ebenen-Prüfungsziel
+führt dort zu einem expliziten und zwei impliziten Abschlüssen. Beide
+Vorher-/Nachher-Ansichten wurden im Browser geöffnet; das ersetzt keinen echten
+Coach-Hosttest und keine vollständige Mathematikfreigabe.
+
+Die lokale Ansicht deckte außerdem einen nachgeschalteten Legacy-Filter auf,
+der zwölf gültig platzierte Ziele aus dem Baumfortschritt entfernte. Die
+Normalisierung erhält jetzt die autoritative Kompositionsmitgliedschaft;
+Legacy-Bäume bleiben geprüft. Vollständige ID-Gleichheit, alle zwölf Ziele,
+der echte Vorherfehler und die Browseranzeige 0/641 beziehungsweise 3/641
+sind nachgewiesen. Die Graph-Referenz ist mit dem aktuellen Profilvertrag
+abgeglichen und als PDF vom 4. November neu erzeugt; 266.376 Modellfälle
+und drei saubere LaTeX-Durchgänge bestehen.
+
+
+Die anschließend vollständig ausgeführte Compositionsuite besteht ebenfalls.
+Ihre alten BBB-/Prüfungs-Allowlists werden um exakt die später unabhängig
+freigegebenen Einzelkursstellen und deklarierten Kursvereinigungen ergänzt.
+Vier direkte G5-Vorbereitungsmengen und drei verworfene alte Kanten bleiben
+explizit geprüft. Alle 147 Mathematikansichten, 39 deklarierten Vereinigungen
+und 441 Ziel-/Ansichtsrollen sind ohne Änderung der Graphdaten bestätigt.
+
+Ein weiterer echter G5-CI-Nachlauf korrigiert die LK-/Kursunionserwartung des
+Q2.5-Tests und die zwei notwendigen sichtbaren J8-Fokusmarker. Die vollständigen
+Target-/Markermengen und reinen GK-Ausschlüsse bleiben geprüft. Ein gemeinsamer
+Hilfsvertrag vermeidet doppelte Quellpaarlogik. Der zusätzliche Gemini-Race
+ist mit dem echten Cleanup reproduziert und durch eine rein testinterne
+Transaktion beseitigt; beide EXPIRED-Assertions und 21 normale Tests bestehen.
+Keine Produktions- oder Graphlogik wurde dafür geändert.
+
+Der gemeinsame vorherige Backendvergleich und das unabhängige Astra-Review prüfen
+alle 161 Angebote. Alle 502 übernommenen Dateien und die 3.187 Eingaben des
+Backendlaufs stimmen bytegenau. Die elf normalen Autorenprüfungen bestehen;
+auch die reguläre Erzeugung der 39 kombinierten Ansichten besteht mit den
+46 tatsächlichen Kursvereinigungen. Die ältere Nachweischronik unten nennt
+jeweils den damaligen Zwischenstand.
+
+Bei alten gespeicherten Fokusreferenzen auf ersetzte virtuelle kombinierte
+Ansichten ist eine neue bewusste Auswahl nötig. Der öffentliche Lesetest
+bestätigt, dass die Referenz erhalten bleibt, keine automatische Erweiterung
+erfolgt und ein bereits gültiges aktives atomares Lernziel fortgesetzt
+werden kann. Die fehlenden Freigabe- und Inhaltsmetadaten des älteren B2-Datensatzes
+sind inzwischen mit einem gesonderten fachlichen Review ergänzt. Die
+Zuordnung bewerteter Handlungen behauptet keine vollständige Prüfung
+aller Varianten seiner Voraussetzungen.
+
+Der Coach zeigt verfügbare Prüfungen auch bei ausschließlich ungedeckten
+Abschlussrouten als ausdrückliche Auswahl. Daraus entstehen weder automatischer
+Prüfungsstart noch implizite Gutschrift. Die gezielte integrierte Backendprüfung
+besteht mit 179 Tests; alle Produktionsklassen wurden zusätzlich frisch
+kompiliert. Die Graphvalidierung unterscheidet die curriculare Kompetenz von
+ihrer Prüfungsform und prüft gerichtete Vorbereitungswege. Sie meldet noch
+sechs offene direkte atomare Abschlussrouten.
+
+Der GitHub-Stand `427723ecdf` bestätigt Dokumentation, Lernzielbuch,
+Completion-Kern, Cockpit, OpenAI-/Claude-Adapter und alle drei Gemini-Jobs.
+Die Platzkorrektur ist dort in allen vier vollständigen Checkoutjobs
+bestätigt. Die vollständige Mathematik- und Curriculum-Prüfung bleibt wegen
+der Datenlücken rot. Der Frontendjob meldete 17 Lintfehler; die Korrekturen
+und die betroffenen Regressionen sind lokal geprüft und in Git gesichert.
+Der vollständige Backendjob brach nach 2.963 erfolgreichen Testereignissen
+mit einem Java-Heapüberlauf ab. Eine kontrollierte Untersuchung identifiziert
+zurückgehaltene testinterne Mockito-Ereignisgraphen; die gezielte Bereinigung
+besteht lokal 68/68 Testaufrufe in zwei vollständigen Klassendurchläufen
+mit 768 MiB Heap. Der vollständige GitHub-Nachlauf bleibt erforderlich.
+Dieser GitHub-Stand enthält die jüngste gemeinsame Datenkorrektur noch nicht.
+
+Der veraltete Hinweistext im Trainer-Plan-Test ist korrigiert; der vollständige
+lokale UI-Test besteht. Ein gemeinsamer Datenbankname in unterschiedlichen
+Gemini-Testkontexten verursachte zudem Tabellenverluste. Mit getrennten
+Testdatenbanken bestehen lokal alle 170 Tests des betroffenen CI-Verbunds;
+vorher wurden dieselben 17 Fehler reproduziert. Der anschließende erfolgreiche
+GitHub-Gemini-Lauf bestätigt diese Korrektur. Für den gesamten PR wird weiterhin
+kein vollständiger CI-PASS behauptet.
+
+Die gleiche Datenbankkollision ist auch für Claude und die allgemeine
+Backend-Testkonfiguration reproduziert und korrigiert. Nach der Korrektur
+bestehen alle 163 Tests der vier betroffenen Klassen sowie der konkrete
+Claude-Cachezyklus mit 50 Tests. Die ergänzende Controllerprüfung besteht mit
+38 Tests; dabei wurden fehlende archivierte Eingaben im privaten Testaufbau
+ergänzt und vier Schleswig-Holstein-Zielzahlen an die geprüfte
+Markov-Ergänzung angepasst. Dieser begrenzte Nachweis ersetzt keinen
+vollständigen Backendlauf.
+
+[Analysisformen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/analysis-eight/README.md)
+· [Neun weitere Formen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/nine-whole-forms/README.md)
+· [Gemeinsame Rollen- und Pfadkorrektur](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/context-he-three/README.md)
+· [Kegel und komplexe Zahlen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/cone-complex-four/README.md)
+· [Statistik und Pyramiden](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/statistics-pyramid/README.md)
+· [Geometrie und Projektionsweg](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/geometry-four/README.md)
+· [Räumliche Geometrie und Differenzialgleichungen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/geometry-six-dgl1/README.md)
+· [Baummitgliedschaft und Graph-Referenz](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/cockpit-authored-membership/README.md)
+· [Composition-QA-Nachlauf](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/cockpit-composition-qa-followup/README.md)
+· [Kursunion, Fokusmarker und Ablauf-Race](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/ci-scope-selection-expiry-followup/README.md)
+· [Deklarierte CI-Eingaben](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/sparse-declared-inputs/README.md)
+· [Markov-Platzierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/sh-markov-twelve/README.md)
+· [Graphvalidierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/directed-prior-stage-validation/README.md)
+· [Coach und Plan](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-explicit-assessment-choices/README.md)
+· [Backend-Testdatenbanken](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/general-context-isolation/README.md)
+· [CI-Platzkorrektur](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/ci-checkout-space/README.md)
+· [Backend-Testheap](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-test-heap/README.md)
+· [Eigentum großer Test-Fixtures](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-fixture-ownership/README.md)
+· [Vollständiger Backend-PASS](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/full-backend-g4/README.md)
+· [G4-CI-Nachlauf](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/g4-declared-inputs/README.md)
+· [Backend-Kursvereinigungen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-authored-course-unions/README.md)
+
+## Integrierter Stand
+
+- Ein binäres Mastery-Ergebnis pro atomarem Lernziel. Implizite Erledigung ist
+  abgeleitet und erzeugt keine Mastery-Einträge. Prüfungen und Lernkarten bleiben
+  bis zum expliziten Abschluss geschützt.
+- Die Bedarfsberechnung beginnt bei den offenen geschützten Targets des
+  vollständigen persönlichen Lehrplans und endet an bereits gemeisterten Zielen.
+  Deterministische Tests prüfen alle tatsächlich angebotenen vollständigen
+  Lehrpläne einschließlich Kursvereinigungen und ALL-Angeboten.
+- Tages-/Wochenkontingente zählen explizite Abschlüsse. Gesamtfortschritt und
+  Gesamtsaldo können implizite Erledigung einschließen.
+- Eine konkrete Prüfungsform kann zur bestehenden curricularen Kompetenz gehören.
+  Prüfungsrolle und curriculare Zugehörigkeit werden getrennt ausgewertet;
+  die 807 curricularen Mathematikziele bleiben Teil der Qualitätsprüfung.
+- Gespeicherte gültige aktive Ziele können nach Baumkorrekturen weiterbearbeitet
+  werden, auch wenn ihre bisherige Fokuswurzel entfällt oder sich verkleinert.
+  Explizite Neuauswahl und Konfigurationsänderungen prüfen den aktuellen Baum.
+- Ein reiner Fehler `UNCOVERED_COMPLETION_TARGETS` unterbindet implizite
+  Gutschriften und abgeleitete Abschlüsse. Sichere normale Lernangebote und der
+  bereits aktivierte normale Autopilot bleiben im gültigen gespeicherten Fokus
+  nutzbar. Sie verwenden denselben strikt geprüften Mastery-/Lernkartensnapshot.
+  Ein fehlgeschlagener Snapshot bleibt für den ganzen Lesevorgang gesperrt.
+  Prüfungsstart, Sitzungsbesitz, Planmodus und Fokusgrenzen bleiben gesondert
+  geprüft; daraus entstehen keine automatischen Prüfungsstarts.
+- Die SH-Zylinderkorrektur und die gemeinsame Prüfungsrolle sind integriert.
+  Die Voraussetzungen der Q4-Prüfung und ihre tatsächlich bewertete Abdeckung
+  werden im Lernzielbuchtest getrennt geprüft.
+- Fünf bestehende Kompetenzen zu quadratischen Funktionen und Stochastik haben
+  jetzt vollständige Prüfungsaufgaben mit Lösungen und Bewertungsregeln auf
+  Deutsch und Englisch. Ihre Lernziel-IDs bleiben gleich. Die bestehende
+  Matrixprüfung ist in weiteren fachlich geprüften Lehrplanangeboten platziert.
+  Sechs fachlich falsche Voraussetzungskanten sind entfernt; regulär benötigte
+  Grundlagen bleiben erhalten. Die normale Erzeugung der Länder- und
+  G8/G9-Ansichten bewahrt dabei die tatsächlichen Ziel- und Vorbereitungsrollen.
+- Zwei weitere bestehende Geometriekompetenzen erhalten vollständige deutsche
+  und englische Prüfungsformen: kongruente und maßstäbliche Dreiecksbilder mit
+  Geometriesoftware sowie die begründete Modellierung eines Regenwassertanks.
+  Die Aufgaben haben jeweils eine Gesamtbewertung und ein binäres Ergebnis;
+  bestehende IDs, Kompetenzbeschreibungen und Voraussetzungen bleiben gleich.
+  In Thüringen werden außerdem 21 durch Originalquellen belegte Grundlagen
+  als eigene Lernziele angeboten, auch bei gemeinsamer Auswahl beider
+  Schulstufen. Die reine Oberstufenansicht bleibt unverändert.
+- Die bestehende Modellierungsprüfung zur Medikamentenkonzentration ist in
+  20 weiteren fachlich geprüften Oberstufenangeboten erreichbar. Die Aufgabe
+  und ihre Voraussetzungen bleiben unverändert. Bei zusätzlichem Stoff wird
+  keine offizielle Pflichtstoffabdeckung behauptet.
+- Die bestehende Prüfung zu räumlichen Koordinaten und Vektoroperationen ist
+  in 36 weiteren geprüften Angeboten erreichbar. Ein veraltetes Länderfeld
+  wird mit dem Ergebnis des vorhandenen Compilers synchronisiert. Die Aufgabe
+  und ihre bewertete Abdeckung bleiben unverändert. Die tatsächlichen Bäume
+  bestätigen alle neuen Plätze auch bei gemeinsamer Auswahl von GK und LK.
+- Vier weitere bestehende Raumgeometriekompetenzen besitzen vollständige
+  Prüfungsformen: geradlinige Bewegungen mit Vektoren, Spurpunkte, Geraden-
+  und Ebenenscharen. Die Gesamtbewertung schützt die wesentlichen Leistungen;
+  insbesondere darf der zentrale Spezialfall der Ebenenschar nicht vollständig
+  fehlen und trotzdem zum Bestehen führen.
+
+Die Konzepte und das LaTeX/PDF sind Teil des PR. Der abschließende Abgleich mit
+allen weiteren fachlichen Korrekturen bleibt Bestandteil des Meilensteins.
+
+## Nachweisverlauf mit den jeweiligen Zwischenständen
+
+Der Quellen-/Autoren-Nachlauf nach dem 40-Dateien-Import besteht alle zehn
+normalen Kommandos: Source21, Lernzielbuch, Länderansichten83, Daueransichten18,
+Source-Coverage, Stage, RP, Hard Routes, Phase und Python-Populationstests.
+Ein zusätzlicher Rohvergleich gespeicherter gegen kompilierte Applicability
+bleibt mit 66 Unterschieden rot. Diese ganzen Datensätze und die 21
+APV203-Warnungen sind vor und nach dem Import identisch; sie wurden weder
+überschrieben noch zu erfolgreichen Prüfungen umdeklariert.
+
+Der frisch kompilierte integrierte Java-Stand besteht **337/337 Tests** in zwölf
+vollständigen Suiten ohne Skips oder Abbrüche. Darunter sind alle drei realen
+Gemini-Lernflüsse, 85 Frontierfälle, die 34 historischen Fokusfälle sowie
+Prüfungsstart-, Lernkarten-, Coach-, Projektions- und Plangrenzen.
+[Ausführungsnachweis](../qa-ci/evidence/curriculum-completion-integrity/2026-11-03/integrated-normal-frontier/execution.json).
+Dies ist ein gezielter Nachlauf, kein vollständiger Backend- oder CI-PASS.
+
+Nach der SH-Korrektur verblieben 378 ungedeckte Ziel-IDs und 9.762
+Ziel-Angebots-Paare. Das inzwischen übernommene Matrix-/Fünf-Aufgaben-Paket
+schließt davon weitere **1.121 Ziel-Angebots-Paare und 690 Endpunktpaare**,
+ohne neue Lücken oder Zielverluste hinzuzufügen. Aktuell verbleiben
+**362 unterschiedliche ungedeckte Ziel-IDs / 8.641 Ziel-Angebots-Paare und
+208 gewöhnliche Endpunkt-IDs / 4.345 Endpunktpaare** auf diesem Zwischenstand.
+Alle **161 Angebote** besaßen dort weiterhin ungedeckte Routen.
+
+Die acht abschließenden Generator-, Quellen-, Rollen- und Populationstests
+bestehen. Nach dem Import der 363 geprüften Dateien stimmen die 8.732
+gebundenen Eingabedateien mit dem tatsächlichen Native-Nachlauf über 161 Angebote und
+46 Kursvereinigungen überein. Das unabhängige Astra-Review und der normale
+Lernzielbuchtest sind ebenfalls abgeschlossen. Diese begrenzte Verbesserung
+ist keine M7- oder vollständige CI-Freigabe.
+[Messung und Importnachweis](../qa-ci/evidence/curriculum-completion-integrity/2026-11-03/matrix-and-five-forms/README.md).
+
+Das anschließende Geometrie-/Thüringen-Paket schließt weitere **324
+Ziel-Angebots-Paare und 116 Endpunktpaare**, ohne neue Lücken oder Zielverluste.
+**Thüringen Sekundarstufe I / G8 / GK+LK besteht** jetzt die vollständige
+Abschlussintegritätsprüfung. Es verbleiben **353 ungedeckte Ziel-IDs / 8.317
+Ziel-Angebots-Paare sowie 206 gewöhnliche Endpunkt-IDs / 4.229 Endpunktpaare**
+in den übrigen **160 Angeboten**. Der gesamte Mathematik-Corpus bleibt rot.
+Der tatsächliche Java-Nachlauf verwendet ausschließlich versionierte
+Runtime-Eingaben und die geprüfte Korrektur; ignorierte lokale Quellencaches
+sind nicht Teil dieses Nachweises. Die 807 curricularen Ziele bleiben in der
+Qualitätsprüfung.
+[Messung und Standardprüfungen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-03/th-seki-geometry/README.md).
+
+Die anschließende Platzierung der bestehenden Medikamentenkonzentrationsprüfung
+schließt weitere **100 Ziel-Angebots-Paare und 60 Endpunktpaare**. Aktuell
+bleiben **353 ungedeckte Ziel-IDs / 8.217 Ziel-Angebots-Paare sowie 206
+gewöhnliche Endpunkt-IDs / 4.169 Endpunktpaare**. Thüringen Sekundarstufe I
+bleibt gültig, die übrigen 160 Angebote enthalten weiterhin Lücken. Die sieben
+relevanten Autorenchecks bestehen; alle 2.607 tatsächlich gemessenen
+Runtime-Eingänge stimmen nach dem Import überein. Sämtliche bisherigen
+sichtbaren Zielpfade und wirksamen Voraussetzungen bleiben erhalten.
+[Messung und Import](../qa-ci/evidence/curriculum-completion-integrity/2026-11-03/drug-twenty/README.md).
+
+Die anschließende Vektorplatzierung schließt weitere **81 Ziel-Angebots-Paare
+und 18 Endpunktpaare**. Es verbleiben **348 ungedeckte Ziel-IDs / 8.136
+Ziel-Angebots-Paare sowie 204 gewöhnliche Endpunkt-IDs / 4.151 Endpunktpaare**.
+Alle 125 übrigen Angebotsobjekte bleiben vollständig gleich. Die sieben
+Autorenchecks bestehen; nach dem Import aller 49 Dateien stimmen sämtliche
+2.636 gemessenen Runtime-Eingaben überein. Die 807 curricularen Ziele bleiben
+in der Qualitätsprüfung. Der gesamte Mathematik-Corpus bleibt rot.
+[Messung, Review und Import](../qa-ci/evidence/curriculum-completion-integrity/2026-11-03/vector-thirtysix/README.md).
+
+Die vier zusätzlichen Raumgeometrie-Prüfungsformen schließen weitere
+**426 Ziel-Angebots-Paare und 406 Endpunktpaare**. Aktuell bleiben **343
+ungedeckte Ziel-IDs / 7.710 Ziel-Angebots-Paare sowie 200 gewöhnliche
+Endpunkt-IDs / 3.745 Endpunktpaare**. Zielumfang, sichtbare Pfade und wirksame
+Voraussetzungen bleiben unverändert. Alle elf normalen Autorenchecks bestehen;
+nach dem Import der 82 Dateien stimmen die 2.655 gemessenen Runtime-Eingänge.
+Die acht betroffenen A/M-Zeilen sind tatsächlich unabhängig neu bewertet.
+Thüringen Sekundarstufe I bleibt gültig, die anderen 160 Angebote bleiben rot.
+[Messung, unabhängiges Review und Import](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/space-geometry-four/README.md).
+
+Der GitHub-Nachlauf von `4aba8e0c33` bestätigt alle dort gemessenen Lückenpaare
+exakt. Lernzielbuch, Completion-Kern und Cockpit bestehen. Die allgemeine
+Graphprüfung meldet 114 Fehler; ihre Routen- und Typdiagnosen werden gesondert
+geprüft. Dies ist keine vollständige CI-Freigabe.
+
+Der anschließende geprüfte CI-Fix entfernt genau 39 falsche Meldungen zu
+nichtatomaren Prüfungsordnern und erhält alle echten Routenprüfungen. Der
+Physics-Eingabetest trennt seine feste Algorithmus-Testeingabe von der Bindung
+an lebende Mathematikdaten. Beide vollständigen Testbefehle bestehen nach
+dem Import; der aktuelle Gesamtgraph mit den vier Raumgeometrieformen
+bleibt mit **72 Datenbefunden** rot.
+[Unabhängiges Review und aktueller Nachlauf](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/ci-validation-fixes/README.md).
+
+Im [GitHub-Lauf für `8899fb212c`](https://github.com/enpasos/skillpilot/actions/runs/41707073546)
+besteht der reale vollständige Mathematik-MCP-Prüfungsablauf einschließlich
+bestätigter binärer Mastery. Die strenge Prüfung aller 161 Mathematikangebote
+bleibt wegen der tatsächlichen Routenlücken rot. Der Mathematikjob erreicht
+diese Tests jetzt wieder: Die drei Completion-Jobs lassen beim Checkout
+den dort unbenötigten Spiegel der Lernbilder aus, rund 4,8 GiB pro Job.
+Alle funktionalen Corpusinputs und die Prüfanforderungen bleiben erhalten.
+Die lokalen neun Workflow- und 28 Corpusbericht-/Eingabetests bestehen.
+Der Cockpit-Job besteht einschließlich echter Browsernavigation. Im Kernjob
+laufen 484 Tests, davon scheitern fünf Browser-/Neustartfälle: Ihre bisherigen
+Voraussetzungen erwarten einen gültigen Mathematiklehrplan, den die neue
+Integritätsprüfung wegen der vorhandenen Routenlücken zurückweist. Die
+Transport-Testverträge werden getrennt von den fachlichen Datenlücken geprüft.
+Dies ist keine vollständige CI-Abnahme.
+
+Commit `93adc9f653` beschränkt zusätzlich die Edge- und Action-Checkouts auf
+ihre tatsächlich benötigten Eingaben. Alle bestehenden Jobkommandos wurden
+isoliert ausgeführt; die vorbestehende lokale Nginx-Syntaxprüfung bleibt ohne
+installiertes Nginx übersprungen. Keine Prüfanweisung wurde entfernt. Der
+zugehörige [GitHub-Lauf](https://github.com/enpasos/skillpilot/actions/runs/41711435675)
+bestätigt beide Jobs als erfolgreich; die übrigen Jobs sind damit nicht abgenommen.
+
+Commit `c63ea20e1e` beschränkt auch den OpenAI-MCP-Checkout. Alle 2.575
+versionierten Runtime-JSON-Eingaben einschließlich der 270 Bildmetadaten bleiben
+erhalten; ihr Revisionshash stimmt mit dem vollständigen Git-Bestand überein.
+Die 242 lokalen Tests bestehen ohne Skips. Der entsprechende OpenAI-MCP-Job
+im [GitHub-Lauf](https://github.com/enpasos/skillpilot/actions/runs/41712066230)
+ist ebenfalls erfolgreich. Veröffentlichte Pluginartefakte bleiben unverändert.
+
+Commit `d201101062` trennt die Ablaufprüfungen vom wechselnden fachlichen
+Corpuszustand. Browser und Neustart verwenden einen gültigen dateibasierten
+Testlehrplan mit 916 Targets und 139 Prüfungen; produktive Loader, Compiler,
+Controller, Datenbanken und MCP bleiben beteiligt. Ein zusätzlicher Test ergänzt
+eine isolierte Kopie der echten Mathematikdaten um ein bekanntes ungedecktes
+Ziel. Er prüft die fehlende implizite Gutschrift sowie normale Lernwege und
+gebundene Prüfungsstarts einschließlich der Besitz- und Revisionsgrenzen.
+Alle sechs Tests bestehen lokal ohne Skips; der Neustart verwendet zwei echte
+Boots mit PostgreSQL 18.1. PostgreSQL 15 bleibt der unveränderten GitHub-CI
+vorbehalten. Der Kernjob im [GitHub-Lauf für diesen Commit](https://github.com/enpasos/skillpilot/actions/runs/41715062053)
+ist inzwischen auch mit PostgreSQL 15 erfolgreich. Die strenge
+Mathematik-Corpusprüfung bleibt wegen der Datenlücken rot und wird dadurch
+nicht ersetzt.
+
+## Nächste fachliche Pakete
+
+Die verbleibenden Mathematiklücken werden anhand der tatsächlich angebotenen
+Lehrpläne in fachlich zusammenhängenden Paketen repariert. Bereits geeignete
+Prüfungsformen und fehlerhafte Platzierungen werden zuerst geprüft. Fehlende
+Grundlagen dürfen nicht nur als unsichtbare Vorbereitung ergänzt werden,
+wenn der Lehrplan sie selbst als Lernziele vorsieht. Mechanisch vorhandene
+Voraussetzungen sind Suchkandidaten und ersetzen keine Quellen- oder
+Erwerbsfolgeentscheidung. Das optionale curriculare Level-Thema ist kein
+Bestandteil dieses Meilensteins.
+
+Der Mathematik-Meilenstein verlangt gültige vollständige Angebote, die
+bestehenden M7-Grenzen und bestandene erforderliche GitHub-Checks des konkreten
+PR-Commits. Danach folgen separat Physik, Biologie, Chemie und
+Wirtschaftswissenschaften. Produktionsdaten des Beta-Testers bleiben außerhalb
+dieses Checkpoints.
+
+Der ausführliche Prüfstand steht in
+[Abschlussintegrität](../qa-ci/curriculum-completion-integrity-2026-11-01.md),
+der fachliche Vertrag in
+[Assessment-gated Completion](../concept/skill-graph/assessment-gated-completion.md).
+Die ursprüngliche [Quellensicherung](checkpoints/2026-11-03/README.md) enthält
+351 ausgewählte Kandidatendateien mit SHA-256-Manifest. Sie ist ein historischer
+Recovery-Snapshot und aktiviert keine noch offenen Kandidaten.

@@ -1,0 +1,156 @@
+{
+  "status": "MEASURED_TWO_OFFER_WHOLE_GOAL_SCOPE_DELTA_PENDING_INDEPENDENT_STAGE",
+  "baselineAudit": {
+    "path": "tmp/approach-review-20261101/post-source-course-native-154-audit.json",
+    "sha256": "e870d683748ded49176912d1688bbdb28bd4cf55e743702ffe0794b30a7bb2d0"
+  },
+  "nativeInputBindings": {
+    "path": "tmp/approach-review-20261101/hb-two-gk-whole-symmetry-candidate-20261102/native154-bindings.json",
+    "sha256": "299fd5f23d2152a8c3ae71701f9adf370b913ce7661a9217b7d977e049b689aa"
+  },
+  "scopes": 154,
+  "changedTargetSets": 2,
+  "unchangedTargetSets": 152,
+  "unchangedWholeNativeRows": 152,
+  "delta": [
+    {
+      "scope": "DE-HB/CrossStage/G8/GK",
+      "setDelta": {
+        "targetGoalIds": {
+          "added": [],
+          "removed": [
+            "62a1c6f2-1775-5a19-98e0-ed3dd722039f"
+          ]
+        },
+        "contextGoalIds": {
+          "added": [],
+          "removed": [
+            "62a1c6f2-1775-5a19-98e0-ed3dd722039f"
+          ]
+        },
+        "uncoveredTargetGoalIds": {
+          "added": [],
+          "removed": [
+            "62a1c6f2-1775-5a19-98e0-ed3dd722039f"
+          ]
+        }
+      },
+      "wholeSymmetryBefore": {
+        "visiblePaths": [
+          "de-hb-gym-math-gk/24/1/3/0/bf922603-bfb7-5107-9aa9-e270b519d239/62a1c6f2-1775-5a19-98e0-ed3dd722039f"
+        ],
+        "isContext": true,
+        "isSelectedProtectedObligation": false,
+        "isTarget": true,
+        "isHiddenProtectedSupport": false,
+        "effectiveImmediateContextConsumers": []
+      },
+      "wholeSymmetryAfter": {
+        "isTarget": false,
+        "isSelectedProtectedObligation": false,
+        "isContext": false,
+        "visiblePaths": [],
+        "effectiveImmediateContextConsumers": [],
+        "isHiddenProtectedSupport": false
+      },
+      "selectedConsumersAfter": {}
+    },
+    {
+      "scope": "DE-HB/SekII/G8/GK",
+      "setDelta": {
+        "targetGoalIds": {
+          "added": [],
+          "removed": [
+            "62a1c6f2-1775-5a19-98e0-ed3dd722039f"
+          ]
+        },
+        "contextGoalIds": {
+          "added": [],
+          "removed": [
+            "62a1c6f2-1775-5a19-98e0-ed3dd722039f"
+          ]
+        },
+        "uncoveredTargetGoalIds": {
+          "added": [],
+          "removed": [
+            "62a1c6f2-1775-5a19-98e0-ed3dd722039f"
+          ]
+        }
+      },
+      "wholeSymmetryBefore": {
+        "visiblePaths": [
+          "de-hb-gym-sekii-math-gk/22/3/0/bf922603-bfb7-5107-9aa9-e270b519d239/62a1c6f2-1775-5a19-98e0-ed3dd722039f"
+        ],
+        "isContext": true,
+        "isSelectedProtectedObligation": false,
+        "isTarget": true,
+        "isHiddenProtectedSupport": false,
+        "effectiveImmediateContextConsumers": []
+      },
+      "wholeSymmetryAfter": {
+        "isTarget": false,
+        "isSelectedProtectedObligation": false,
+        "isContext": false,
+        "visiblePaths": [],
+        "effectiveImmediateContextConsumers": [],
+        "isHiddenProtectedSupport": false
+      },
+      "selectedConsumersAfter": {}
+    }
+  ],
+  "totals": {
+    "targetGoalIds": {
+      "baseline": 89368,
+      "candidate": 89366,
+      "delta": -2
+    },
+    "contextGoalIds": {
+      "baseline": 106065,
+      "candidate": 106063,
+      "delta": -2
+    },
+    "uncoveredTargetGoalIds": {
+      "baseline": 12759,
+      "candidate": 12757,
+      "delta": -2
+    },
+    "selectedProtectedTargetGoalIds": {
+      "baseline": 12599,
+      "candidate": 12599,
+      "delta": 0
+    },
+    "protectedSupportContextGoalIds": {
+      "baseline": 0,
+      "candidate": 0,
+      "delta": 0
+    }
+  },
+  "all1256WholeGoalsUnchanged": true,
+  "all167WholeAssessmentContractsUnchanged": true,
+  "allFourElementaryTransformationTargetsContextsProtectedStatusAndVisiblePathsUnchanged": true,
+  "elementaryConsumerDelta": [
+    {
+      "scope": "DE-HB/CrossStage/G8/GK",
+      "elementaryGoalId": "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+      "removedContextConsumers": [
+        "62a1c6f2-1775-5a19-98e0-ed3dd722039f"
+      ],
+      "addedContextConsumers": []
+    },
+    {
+      "scope": "DE-HB/SekII/G8/GK",
+      "elementaryGoalId": "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+      "removedContextConsumers": [
+        "62a1c6f2-1775-5a19-98e0-ed3dd722039f"
+      ],
+      "addedContextConsumers": []
+    }
+  ],
+  "allHbLkAndTrueUnionTargetsPreserved": true,
+  "allProtectedTargetsAndSupportContextsUnchanged": true,
+  "noRemainingSelectedWholeSymmetryConsumersInTheTwoPureGkOffers": true,
+  "hbSekIMirrorTargetAndContextNeutral": true,
+  "allHierarchyErrorsRemainAbsent": true,
+  "noStagePassClaim": true,
+  "noRootWritesNoGradleNoCommitNoPush": true
+}

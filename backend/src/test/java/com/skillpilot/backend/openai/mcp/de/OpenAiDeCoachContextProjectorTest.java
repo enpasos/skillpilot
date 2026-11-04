@@ -21,10 +21,56 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class OpenAiDeCoachContextProjectorTest {
 
+    @ParameterizedTest
+    @ValueSource(strings = {"de", "en-US"})
+    void oneVoluntaryOptionIsNotConsentAndKeepsTheWarningAheadOfALongDescription(String language) {
+        String description = "Complete goal description. ".repeat(100);
+        var raw = com.skillpilot.backend.ai.VoluntaryLearningChoiceTestFixture.choice(description);
+        var state = new CoachStateProjection("https://skillpilot.test").project(raw);
+        var context = new OpenAiDeCoachContextProjector(new CoachStateProjection("https://skillpilot.test"),
+                "https://skillpilot.test", "current")
+                .project(state, PersonalizationPlan.complete(List.of()), true, language);
+        assertThat(context.requiredAction()).isEqualTo("setActiveGoal");
+        assertThat(context.options()).singleElement().satisfies(option -> {
+            assertThat(option.id()).isEqualTo("A");
+            assertThat(option.label()).isEqualTo("Goal A");
+            assertThat(option.description()).startsWith(language.startsWith("en")
+                    ? "Optional learning choice" : "Freiwillige Lernwahl");
+        });
+        assertThat(context.activeGoal()).isNull();
+        assertThat(context.instruction()).contains(language.startsWith("en") ? "wait" : "warte");
+        assertThat(context.instruction()).contains(language.startsWith("en") ? "first or unique" : "die einzige Option");
+        assertThat(context.instruction()).doesNotContain("Apply an unambiguous subject match directly",
+                "Wende einen fachlich eindeutigen Treffer direkt an");
+        assertThat(context.instruction()).contains(language.startsWith("en") ? "already stated request" : "bereits ausdrücklich genannter Wunsch");
+        assertThat(raw.stateMachine().goalOptions().getFirst().description()).isEqualTo(description);
+    }
+
     private static final String SERVER_BUILD = "0123456789abcdef0123456789abcdef01234567";
+
+    @ParameterizedTest
+    @ValueSource(strings = {"IMAGE_PATH: /private/one.svg\nIMAGE_PATH: /private/two.png\n\nSichtbare Aufgabe\nTeil 2.",
+            "![eins](/assets/one.svg)\n![zwei](/assets/two.png)\nSichtbare Aufgabe\nTeil 2."})
+    void imageExamConsumesEveryHeaderLineAndKeepsTheWholeTaskBody(String task) throws Exception {
+        var source = imageExamState();
+        source.activeGoal().examData().setTaskContent(task);
+        var projector = new OpenAiDeCoachContextProjector(new CoachStateProjection("https://skillpilot.test"),
+                "https://skillpilot.test");
+
+        var context = projectGerman(projector, source);
+
+        assertThat(context.activeGoal().exam().hasImage()).isTrue();
+        assertThat(context.activeGoal().exam().taskContent()).isEqualTo("Sichtbare Aufgabe\nTeil 2.");
+        assertThat(context.activeGoal().exam().maxPoints()).isEqualTo(4.0);
+        assertThat(new ObjectMapper().writeValueAsString(context)).doesNotContain(
+                "IMAGE_PATH:", "/private/one.svg", "/private/two.png", "NICHT IM KONTEXT", "passingPoints");
+        assertThat(source.activeGoal().examData().getTaskContent()).isEqualTo(task);
+    }
 
     @Test
     void exposesTrustedVisualizationForMatchingActiveAtomicGoal() {
@@ -506,6 +552,39 @@ class OpenAiDeCoachContextProjectorTest {
                         .contains("erfinde"));
         assertThat(new ObjectMapper().writeValueAsString(context))
                 .doesNotContain("/private/exam-image.png", "IMAGE_PATH");
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void authoredSvgUsesTheExistingCockpitHandoffWithoutExposingEvaluation(boolean withImage) throws Exception {
+        var projector = new OpenAiDeCoachContextProjector(
+                new CoachStateProjection("https://skillpilot.test"), "https://skillpilot.test");
+        var source = imageExamState();
+        String body = "1. Bestimme die Funktionsgleichung.\n2. Begründe den Verlauf.";
+        String task = (withImage
+                ? "![Hyperbel](/assets/assessment-materials/mathematik/hyperbola.svg)\n"
+                : "") + body;
+        source.activeGoal().examData().setTaskContent(task);
+
+        var context = projectGerman(projector, source);
+
+        assertThat(context.activeGoal().exam().hasImage()).isEqualTo(withImage);
+        assertThat(context.activeGoal().exam().taskContent()).isEqualTo(body);
+        assertThat(context.activeGoal().exam().maxPoints()).isEqualTo(4);
+        assertThat(context.activeGoal().cockpitUrl())
+                .isEqualTo("https://skillpilot.test/?l=curriculum-public-id&goal=exam-public-id");
+        if (withImage) {
+            assertThat(context.instruction()).contains("notwendige Aufgabenabbildung", "activeGoal.cockpitUrl");
+            assertThat(context.policies()).anySatisfy(policy -> assertThat(policy)
+                    .contains("benötigt eine Abbildung", "activeGoal.cockpitUrl"));
+        } else {
+            assertThat(context.instruction()).doesNotContain("notwendige Aufgabenabbildung");
+            assertThat(context.policies()).noneSatisfy(policy -> assertThat(policy).contains("benötigt eine Abbildung"));
+        }
+        assertThat(new ObjectMapper().writeValueAsString(context))
+                .doesNotContain("NICHT IM KONTEXT", "solutionContent", "passingPoints", "image-task", "IMAGE_PATH");
+        assertThat(source.activeGoal().examData().getTaskContent()).isEqualTo(task);
+        assertThat(source.activeGoal().examData().getSolutionContent()).isEqualTo("NICHT IM KONTEXT");
     }
 
     @Test

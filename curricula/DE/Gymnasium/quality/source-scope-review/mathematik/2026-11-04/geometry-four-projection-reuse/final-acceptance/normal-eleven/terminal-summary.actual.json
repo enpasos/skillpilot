@@ -1,0 +1,159 @@
+{
+  "status": "PASS_ALL_ELEVEN_AGREED_NORMAL_CHECKS_ON_GENUINE_FINAL_G4_STAGE_AND_AM_BINDINGS",
+  "genuineStageReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/stage-scope-implementation-geometry-four-projection-reuse.review.json",
+    "sha256": "97f7dba1cf0a36af2ad911a310b5991ba2516181b280d27f691ccbaf1d72749b"
+  },
+  "execution": {
+    "path": "tmp/approach-review-20261101/geometry-four-final-handoff-20261104-v1/final-bound-checks/execution.json",
+    "sha256": "a76963b34213f1a222bfc3a4bf3821700225c2383eff5bd7162ccf6de18b48cd"
+  },
+  "commands": [
+    {
+      "name": "stage-policy",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 0.81
+    },
+    {
+      "name": "duration18",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 23.56
+    },
+    {
+      "name": "source-coverage",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 27.36
+    },
+    {
+      "name": "hard-routes",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 2.25
+    },
+    {
+      "name": "phase-compatibility",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 3.02
+    },
+    {
+      "name": "python-population",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 0.36
+    },
+    {
+      "name": "country88",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 58.3
+    },
+    {
+      "name": "atomicity-current-config",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 1.12
+    },
+    {
+      "name": "goalbook-model",
+      "attempt": 1,
+      "exitCode": 1,
+      "seconds": 3.85
+    },
+    {
+      "name": "memory-current-config",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 1.04
+    },
+    {
+      "name": "stage-country",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 286.65
+    },
+    {
+      "name": "goalbook-model",
+      "attempt": 2,
+      "exitCode": 143,
+      "seconds": null
+    },
+    {
+      "name": "goalbook-model",
+      "attempt": 3,
+      "exitCode": 0,
+      "seconds": 148.93
+    }
+  ],
+  "exactAgreedCommandSetUnchanged": true,
+  "repeatedPassedChecks": false,
+  "totalCommandAttempts": 13,
+  "initialFailedAttempt": {
+    "name": "goalbook-model",
+    "attempt": 1,
+    "cause": "Private host had no .git index; source-atlas tracked-input guard failed before model checks.",
+    "sourceOrPayloadChanges": false,
+    "setupProofPath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/geometry-four-projection-reuse/final-acceptance/normal-eleven/private-check-index.actual.json",
+    "initialStdoutAndStderrPreserved": true,
+    "secondAttemptInterruptedBySignal": {
+      "attempt": 2,
+      "exitCode": 143,
+      "reason": "Foreground exec SIGTERM; original logs preserved; unfinished whole command was not passed"
+    },
+    "terminalAttemptRunsDetached": 3
+  },
+  "onlyFailedCheckRetried": {
+    "name": "goalbook-model",
+    "finalAttempt": 3,
+    "finalExitCode": 0
+  },
+  "guardedAdoptedPayloadLeavesByteUnchanged": 506,
+  "rootOwnedCheckSourcesByteIdentical": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "e31ca62a9bf3aba948384c5d66f967d77acfcc96acab04c4477403421a0f8001",
+      "ownedByThisPayload": false
+    },
+    {
+      "path": "app/scripts/testHardLearningRouteValidation.ts",
+      "sha256": "2395ef11f0e9b70b03063f5d5a1350f3f303aa90cf192821ce229484e6688b9e",
+      "ownedByThisPayload": false
+    },
+    {
+      "path": "app/scripts/markdownSourceArchives.ts",
+      "sha256": "70eb89d322be038928612052a91e595de2bde72149ca42cbdfa9ee69f11b8399",
+      "ownedByThisPayload": false
+    },
+    {
+      "path": "app/scripts/testMathReviewedAssessmentPlacements.ts",
+      "sha256": "948800671024f26878decef18f28faa6765bd02a51d1239c3a2d82dd9d981178",
+      "ownedByThisPayload": false
+    },
+    {
+      "path": "app/scripts/testMathCountrySekICompositionViews.ts",
+      "sha256": "cb1b410ae8d3ac5a47dd044a7df0000020541df87b94aa634367a8e2244e99bd",
+      "ownedByThisPayload": false
+    },
+    {
+      "path": "app/scripts/testMathDistanceReflectionStructure.ts",
+      "sha256": "3361f179f19e5a79bbea550a773d7e96b32a3fd2dd1157569268afbab8a33be5",
+      "ownedByThisPayload": false
+    }
+  ],
+  "rootHeadBeforeFinalImport": "3cd0ce2c88a99dd4907b621339fd1b4169be2d7b",
+  "actualNative4": {
+    "path": "tmp/approach-review-20261101/geometry-four-projection-reuse-native-20261104-v1/candidate.json.gz",
+    "sha256": "2017f30338bdc5efea5124241c937d9cb2b60d4fbded84b35ad83aed6491d4d2"
+  },
+  "nativeRootComparator": {
+    "path": "tmp/approach-review-20261101/geometry-four-projection-reuse-native-20261104-v1/finite-delta.root-verified.actual.json",
+    "sha256": "8fca3e47d56e4e82c2ce4ea53f9b318e23462060f11f00bb89591a0c311b0c17"
+  },
+  "independentFixedPointsVerifiedByRoot": 322,
+  "noFreshNativeRunAfterReviewerQualityAdoption": true,
+  "noRootGitWrites": true,
+  "doesNotClaimGlobalM7FullCurriculumCompletionOrRemoteCI": true
+}

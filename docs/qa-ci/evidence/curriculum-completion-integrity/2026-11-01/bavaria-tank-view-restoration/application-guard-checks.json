@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "status": "PASS-isolated-application-guard-checks",
+  "checks": [
+    {
+      "case": "optimized-python-valid-dry-run",
+      "result": "Existing Math completion routes DRY-RUN: 2 reviewed source views; 2 selected refs; 1 task unchanged; no files written."
+    },
+    {
+      "case": "isolated-exact-reviewed-write",
+      "result": "Existing Math completion routes WRITE: 2 source views; 2 selected refs; 1 task unchanged."
+    },
+    {
+      "case": "isolated-write-idempotence",
+      "result": "Existing Math completion routes CHECK: 2 selected references already materialized; 1 task unchanged."
+    },
+    {
+      "case": "optimized-python-tampered-nested-after-view",
+      "result": "REJECTED"
+    },
+    {
+      "case": "optimized-python-missing-nested-after-view",
+      "result": "REJECTED"
+    },
+    {
+      "case": "optimized-python-changed-current-goal",
+      "result": "REJECTED"
+    },
+    {
+      "case": "optimized-python-changed-released-task-source",
+      "result": "REJECTED"
+    },
+    {
+      "case": "optimized-python-stale-live-source-view",
+      "result": "REJECTED"
+    },
+    {
+      "case": "optimized-python-forged-missing-evidence-exception",
+      "result": "REJECTED"
+    }
+  ],
+  "liveInputHashesUnchanged": {
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "59e46903674d89295c84ab6a149601c3e1c27ce6c3428d2c883a881eca51c81c",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json": "8df0a1a8f7c665a944e4c35878740ee2c5fb3b7b0025cbc2c0d155d8f364171e",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json": "0b1532d50ed05c495e85d4427916c9f76ae219552a93764eeb14677606862f1a"
+  },
+  "scriptSha256": "2aee2d11927846ee7efe1bf58eba17237f9390ff7956081b0497e8625f76a88c",
+  "scopeReviewReceiptSha256": "4daa84b09042df078fdfff5e3a4032c375e8ab2ceb5ab7281474ce3d53f47ce6",
+  "limitations": "Technical transport/application verification only. Live view changes remain unmaterialized during lead QA freeze; approved generator persistence and fresh native backend/source/M7 validation remain required."
+}

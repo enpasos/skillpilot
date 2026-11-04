@@ -1,0 +1,61 @@
+{
+  "reviewStatus": "released",
+  "taskContent": "# Innere lineare Faktoren beim Integrieren berücksichtigen\n\nGegeben sind\n\n$$\nf(x)=e^{-2x+1},\\quad g(x)=\\sin\\bigl(3(x-\\pi/6)\\bigr),\\quad\nh(x)=\\cos\\bigl(-2(x-\\pi/4)\\bigr).\n$$\n\nTrigonometrische Argumente sind im Bogenmaß angegeben. Zeige die\nRechenschritte. Insgesamt sind **20 BE** erreichbar.\n\n**1. Drei Stammfunktionen bestimmen und nachweisen (12 BE)**\n\nBestimme zu jeder Funktion eine Stammfunktion und prüfe sie durch\nAbleiten. Mache dabei jeweils sichtbar, wie der innere lineare Faktor\nausgeglichen wird. Jede der drei Funktionen zählt 4 BE.\n\n**2. Ein bestimmtes Integral auswerten (4 BE)**\n\nBerechne $\\int_{\\pi/6}^{\\pi/2}g(x)\\,dx$ exakt. Zeige die Argumente,\ndie beim Einsetzen der beiden Grenzen in die trigonometrische Funktion\nentstehen.\n\n**3. Die gemeinsame Idee erklären (2 BE)**\n\nErkläre mit der Kettenregel, weshalb beim Integrieren der Kehrwert der\nvon null verschiedenen inneren Steigung benötigt wird. Beziehe deine\nErklärung auf mindestens eines deiner Beispiele.\n\n**4. Einen fehlenden Faktor korrigieren (2 BE)**\n\nEine Schülerin schlägt $K(x)=\\sin(-2(x-\\pi/4))$ als Stammfunktion von\n$h$ vor. Zeige durch Ableiten, was daran nicht stimmt, und korrigiere\nden Vorfaktor.\n",
+  "taskContentEn": "# Account for inner linear factors when integrating\n\nConsider\n\n$$\nf(x)=e^{-2x+1},\\quad g(x)=\\sin\\bigl(3(x-\\pi/6)\\bigr),\\quad\nh(x)=\\cos\\bigl(-2(x-\\pi/4)\\bigr).\n$$\n\nTrigonometric arguments are in radians. Show your calculations.\nA total of **20 points** is available.\n\n**1. Find and verify three antiderivatives (12 points)**\n\nFind an antiderivative of each function and check it by differentiation.\nFor each one, show how the inner linear factor is compensated.\nEach function is worth 4 points.\n\n**2. Evaluate a definite integral (4 points)**\n\nCalculate $\\int_{\\pi/6}^{\\pi/2}g(x)\\,dx$ exactly. Show the trigonometric\narguments obtained when substituting the two bounds.\n\n**3. Explain the shared idea (2 points)**\n\nUse the chain rule to explain why integration requires the reciprocal\nof the nonzero inner slope. Relate your explanation to at least one\nof your examples.\n\n**4. Correct a missing factor (2 points)**\n\nA student proposes $K(x)=\\sin(-2(x-\\pi/4))$ as an antiderivative of $h$.\nDifferentiate to show what is wrong and correct the prefactor.\n",
+  "solutionContent": "# Musterlösung: transformierte Funktionen\n\n**1. Stammfunktionen und Proben**\n\n$$\nF(x)=-\\frac12e^{-2x+1},\\qquad\nF'(x)=-\\frac12(-2)e^{-2x+1}=f(x).\n$$\n\n$$\nG(x)=-\\frac13\\cos\\bigl(3(x-\\pi/6)\\bigr),\\qquad\nG'(x)=-\\frac13(-\\sin(3(x-\\pi/6)))\\cdot3=g(x).\n$$\n\n$$\nH(x)=-\\frac12\\sin\\bigl(-2(x-\\pi/4)\\bigr),\\qquad\nH'(x)=-\\frac12\\cos(-2(x-\\pi/4))\\cdot(-2)=h(x).\n$$\n\nBeliebige additive Konstanten sind erlaubt. Gleichwertige Terme mit\ntrigonometrischen Symmetrien sind ebenfalls richtig.\n\n**2. Integral**\n\nDie obere Grenze liefert $3(\\pi/2-\\pi/6)=\\pi$, die untere\n$3(\\pi/6-\\pi/6)=0$. Deshalb\n\n$$\n\\int_{\\pi/6}^{\\pi/2}g(x)\\,dx\n=-\\frac13\\cos\\pi-\\left(-\\frac13\\cos0\\right)=\\frac23.\n$$\n\n**3. Erklärung**\n\nBeim Ableiten einer verketteten Funktion entsteht zusätzlich die\ninnere Steigung. Der Kehrwert davor kompensiert diesen Faktor, sodass\ndie Ableitung wieder die Ausgangsfunktion ist. Zum Beispiel gilt bei\n$F$ genau $(-\\frac12)\\cdot(-2)=1$. Das negative Vorzeichen ist hier\nwesentlich. Die Beispiele haben alle eine von null verschiedene innere Steigung.\n\n**4. Korrektur**\n\n$K'(x)=-2\\cos(-2(x-\\pi/4))=-2h(x)$ statt $h(x)$.\nDer Vorfaktor muss deshalb $-\\frac12$ sein; damit erhält man $H$ aus Teil 1.\n\n# Eine Gesamtbewertung\n\nEs gibt genau eine Gesamtpunktzahl aus 20 BE und ein binäres Gesamtergebnis:\n**bestanden ab 15 BE**, sonst nicht bestanden. Teilpunkte sind keine eigenen\nBestehensgrenzen.\n\nBewerte mathematisch gleichwertige Verfahren und nachvollziehbare Leistungen\nunabhängig vom Ort in der Abgabe. Identische Leistungen zählen nur einmal.\nTeilpunkte wie angegeben, sonst 0,5 BE für eine fachlich sinnvolle, aber\nunvollständige Teilleistung. Bei Kriterien mit 2 oder mehr BE sind entsprechende\nTeilpunkte für richtig gezeigte Schritte möglich. Ein lokaler Rechen- oder\nÜbertragungsfehler wird nicht mehrfach bestraft; richtige nachvollziehbare\nFolgearbeit bleibt anrechenbar. Ein solcher lokaler Fehler allein löst keine\nGesamtpunktkappung aus. Knappe richtige Erklärungen und äquivalente Schreibweisen\ngenügen; bestimmte Schlüsselwörter oder eine feste Reihenfolge sind nicht nötig.\n\n| Kriterium | BE |\n|---|---:|\n| Passende Exponential-Stammfunktion samt innerem Faktor (2); vollständige Ableitungsprobe (2). | 4 |\n| Passende Sinus-Stammfunktion samt innerem Faktor (2); vollständige Ableitungsprobe (2). | 4 |\n| Passende Kosinus-Stammfunktion samt innerem Faktor (2); vollständige Ableitungsprobe (2). | 4 |\n| Randwertdifferenz richtig (1); Argumente π und 0 (je 1); Ergebnis 2/3 (1). | 4 |\n| Inneren Ableitungsfaktor und seinen Ausgleich durch den Kehrwert an einem Beispiel erklärt. | 2 |\n| Ableitung von K als -2h nachgewiesen (1); Vorfaktor -1/2 begründet korrigiert (1). | 2 |\n\nBegrenze die Gesamtpunktzahl vor dem Vergleich mit der Bestehensgrenze auf höchstens 14 BE, wenn über die ganze Abgabe die Integration einer der drei ausdrücklich geforderten Funktionsarten vollständig fehlt oder nirgends ein fachlich geeigneter Ausgleich der inneren linearen Steigung erkennbar ist. Eine an anderer Stelle richtig berechnete Stammfunktion oder Korrektur zählt; das Auslassen einer Teilnummer allein ist keine fehlende Funktionsart. Lokale Vorzeichen- oder Rechenfehler sind von einem vollständig fehlenden Verfahren zu unterscheiden.\n\nMehrere zutreffende Kappungsgründe führen weiterhin nur zur selben Obergrenze von 14 BE. Es bleibt bei einer Gesamtbewertung ohne zusätzliche Teilbestehensbedingungen.\n",
+  "solutionContentEn": "# Worked solution: transformed functions\n\n**1. Antiderivatives and checks**\n\n$$\nF(x)=-\\frac12e^{-2x+1},\\qquad\nF'(x)=-\\frac12(-2)e^{-2x+1}=f(x).\n$$\n\n$$\nG(x)=-\\frac13\\cos\\bigl(3(x-\\pi/6)\\bigr),\\qquad\nG'(x)=-\\frac13(-\\sin(3(x-\\pi/6)))\\cdot3=g(x).\n$$\n\n$$\nH(x)=-\\frac12\\sin\\bigl(-2(x-\\pi/4)\\bigr),\\qquad\nH'(x)=-\\frac12\\cos(-2(x-\\pi/4))\\cdot(-2)=h(x).\n$$\n\nArbitrary additive constants are allowed. Equivalent expressions using\ntrigonometric symmetries are also correct.\n\n**2. Integral**\n\nThe upper bound gives $3(\\pi/2-\\pi/6)=\\pi$, and the lower bound gives\n$3(\\pi/6-\\pi/6)=0$. Hence\n\n$$\n\\int_{\\pi/6}^{\\pi/2}g(x)\\,dx\n=-\\frac13\\cos\\pi-\\left(-\\frac13\\cos0\\right)=\\frac23.\n$$\n\n**3. Explanation**\n\nDifferentiating a composition introduces the inner slope as an extra\nfactor. Its reciprocal compensates for that factor so the derivative\nis the original function. For example, $F$ uses\n$(-\\frac12)\\cdot(-2)=1$. The negative sign matters here.\nAll examples have nonzero inner slopes.\n\n**4. Correction**\n\n$K'(x)=-2\\cos(-2(x-\\pi/4))=-2h(x)$, rather than $h(x)$.\nThe required prefactor is $-\\frac12$, giving $H$ from part 1.\n\n# One overall assessment\n\nThere is one total score out of 20 points and one binary overall result:\n**pass at 15 points or more**, otherwise not passed. Part allocations are\nnot separate pass thresholds.\n\nCredit mathematically equivalent methods and traceable work wherever they\nappear in the submission. Count the same performance only once. Award partial\ncredit as specified, otherwise 0.5 points for meaningful incomplete work.\nFor criteria worth 2 or more points, proportionate credit for correct steps\nis available. Do not repeatedly penalise one local arithmetic or copying error;\ncredit correct traceable follow-through. Such a local error alone does not\ntrigger a total-score cap. Concise correct explanations and equivalent notation\nare sufficient; no prescribed keywords or fixed order are required.\n\n| Criterion | Points |\n|---|---:|\n| Suitable exponential antiderivative with inner factor (2); complete differentiation check (2). | 4 |\n| Suitable sine antiderivative with inner factor (2); complete differentiation check (2). | 4 |\n| Suitable cosine antiderivative with inner factor (2); complete differentiation check (2). | 4 |\n| Correct endpoint difference (1); arguments π and 0 (1 each); result 2/3 (1). | 4 |\n| Explains the inner derivative factor and its compensation by the reciprocal using an example. | 2 |\n| Shows that K has derivative -2h (1); justifies correcting the prefactor to -1/2 (1). | 2 |\n\nBefore comparison with the passing threshold, cap the total at 14 points if integration of one of the three explicitly required function types is entirely absent across the submission, or if a suitable compensation for the inner linear slope is nowhere evident. A correct antiderivative or correction elsewhere counts; omitting a numbered part alone does not mean a function type is absent. Distinguish local sign or arithmetic errors from a completely absent method.\n\nMultiple applicable cap reasons still give the same upper limit of 14 points. There is one overall assessment without additional part pass conditions.\n",
+  "coveredGoalIds": [
+    "23589682-2028-54cb-9034-b468b42688f1"
+  ],
+  "coveredStrands": [
+    "L1",
+    "L2"
+  ],
+  "demandLevels": [
+    "AB2"
+  ],
+  "scoring": {
+    "maxPoints": 20,
+    "passingPoints": 15,
+    "steps": [
+      {
+        "id": "exponential",
+        "points": 4,
+        "description": "Passende Exponential-Stammfunktion samt innerem Faktor (2); vollständige Ableitungsprobe (2).",
+        "descriptionEn": "Suitable exponential antiderivative with inner factor (2); complete differentiation check (2)."
+      },
+      {
+        "id": "sine",
+        "points": 4,
+        "description": "Passende Sinus-Stammfunktion samt innerem Faktor (2); vollständige Ableitungsprobe (2).",
+        "descriptionEn": "Suitable sine antiderivative with inner factor (2); complete differentiation check (2)."
+      },
+      {
+        "id": "cosine",
+        "points": 4,
+        "description": "Passende Kosinus-Stammfunktion samt innerem Faktor (2); vollständige Ableitungsprobe (2).",
+        "descriptionEn": "Suitable cosine antiderivative with inner factor (2); complete differentiation check (2)."
+      },
+      {
+        "id": "definite",
+        "points": 4,
+        "description": "Randwertdifferenz richtig (1); Argumente π und 0 (je 1); Ergebnis 2/3 (1).",
+        "descriptionEn": "Correct endpoint difference (1); arguments π and 0 (1 each); result 2/3 (1)."
+      },
+      {
+        "id": "chain-meaning",
+        "points": 2,
+        "description": "Inneren Ableitungsfaktor und seinen Ausgleich durch den Kehrwert an einem Beispiel erklärt.",
+        "descriptionEn": "Explains the inner derivative factor and its compensation by the reciprocal using an example."
+      },
+      {
+        "id": "correction",
+        "points": 2,
+        "description": "Ableitung von K als -2h nachgewiesen (1); Vorfaktor -1/2 begründet korrigiert (1).",
+        "descriptionEn": "Shows that K has derivative -2h (1); justifies correcting the prefactor to -1/2 (1)."
+      }
+    ]
+  },
+  "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/23589682-2028-54cb-9034-b468b42688f1/reviewed-execution-contract.json",
+  "reviewNote": "The complete bilingual same-identity form and its ordinary overall rubric were independently approved. One 20-point total, pass at 15, with the reviewed overall caps. Only this stable goal ID is assessed. Existing curricular identity, preparation and any existing Memorygoal/deck bindings are retained."
+}

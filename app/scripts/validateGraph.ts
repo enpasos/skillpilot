@@ -4,12 +4,15 @@ import type { SkillLandscape } from '../src/landscapeTypes'
 import { convertLearningGoal, type UiGoal } from '../src/goalTypes'
 import {
   validateHardDirectAtomicRoutes,
+  buildHardRouteProofGraph,
+  hasHardRouteAssessmentRole,
   validateOrientationMotivationStructure,
   type HardRouteSemanticKind,
   type HardRouteProfile,
 } from './lib/hardLearningRouteValidation'
 import { validateOrientationOutlooks } from './lib/orientationOutlookValidation'
 import { findExamMarkdownTableIssues } from './lib/examMarkdownValidation'
+import { validatePhaseCompatibility } from './lib/phaseCompatibilityValidation'
 
 type Issue = { level: 'error' | 'warn'; message: string }
 
@@ -152,13 +155,6 @@ interface ParsedLandscape {
   title: string
   frameworkId?: string
   goals: UiGoal[]
-}
-
-interface ScopedMotivationConnectivityProfile {
-  landscapeId: string
-  anchorGoalIds: string[]
-  goalSelector: (goal: UiGoal) => boolean
-  scopeLabel: string
 }
 
 interface ScopedFullRouteCoverageProfile extends HardRouteProfile<UiGoal> {
@@ -436,35 +432,6 @@ function isAllowedPhase(phase: string): boolean {
   return allowedPhases.has(phase) || isYearLevelPhase(phase)
 }
 
-function getComparablePhaseRank(phase: string): number | null {
-  const upper = phase.toUpperCase()
-  const sMatch = upper.match(/^S(\d{1,2})$/)
-  if (sMatch) return 100 + Number(sMatch[1])
-
-  const jMatch = upper.match(/^J(\d{1,2})$/)
-  if (jMatch) return 200 + Number(jMatch[1])
-
-  const yearLevelMatch = upper.match(/^(\d{1,2})(?:\.(\d{1,2}))?$/)
-  if (yearLevelMatch) {
-    const year = Number(yearLevelMatch[1])
-    if (year >= 5 && year <= 13) {
-      const part = yearLevelMatch[2] ? Number(yearLevelMatch[2]) / 100 : 0
-      return 200 + year + part
-    }
-  }
-
-  // In mixed school landscapes, late Sek-I year buckets must come before
-  // upper-secondary phases so J8/J9/J10 -> E/Q/Abitur bridge edges stay valid.
-  if (upper === 'E') return 300
-  if (upper === 'Q1') return 310
-  if (upper === 'Q2') return 320
-  if (upper === 'Q3') return 330
-  if (upper === 'Q4') return 340
-  if (upper === 'ABITUR') return 350
-
-  return null
-}
-
 function isAtomicGoal(goal: UiGoal): boolean {
   return (goal.contains?.length ?? 0) === 0
 }
@@ -517,27 +484,13 @@ function isCanonicalGymMathAtomicGoal(goal: UiGoal): boolean {
   return isAtomicGoal(goal) && !isMemoryGoal(goal)
 }
 
-const scopedMotivationConnectivityProfiles: ScopedMotivationConnectivityProfile[] = [
-  {
-    landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
-    anchorGoalIds: [CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID],
-    goalSelector: isCanonicalGymMathSek1CurricularGoal,
-    scopeLabel: 'canonical DE Gymnasium mathematics / Sek I curricular atomic goals',
-  },
-  {
-    landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
-    anchorGoalIds: [CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID],
-    goalSelector: isCanonicalGymMathSek2CurricularGoal,
-    scopeLabel: 'canonical DE Gymnasium mathematics / Sek II curricular atomic goals',
-  },
-]
-
 const scopedFullRouteCoverageProfiles: ScopedFullRouteCoverageProfile[] = [
   {
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
     motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID],
     terminalGoalClusterIds: CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS,
-    routeGoalSelector: isCanonicalGymMathSek1Goal,
+    terminalGoalSelector: (goal) => hasHardRouteAssessmentRole(goal, canonicalMathSemanticKindByGoalId.get(goal.id)),
+    routeGoalSelector: (goal) => isCanonicalGymMathSek1Goal(goal) && !isCanonicalGymMathSek2Goal(goal),
     goalSelector: isCanonicalGymMathSek1CurricularGoal,
     scopeLabel: 'canonical DE Gymnasium mathematics / Sek I curricular atomic goals',
   },
@@ -545,7 +498,12 @@ const scopedFullRouteCoverageProfiles: ScopedFullRouteCoverageProfile[] = [
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
     motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID],
     terminalGoalClusterIds: CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS,
+    terminalGoalSelector: (goal) => hasHardRouteAssessmentRole(goal, canonicalMathSemanticKindByGoalId.get(goal.id)),
     routeGoalSelector: isCanonicalGymMathSek2Goal,
+    priorStagePreparation: {
+      motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID],
+      routeGoalSelector: isCanonicalGymMathSek1Goal,
+    },
     goalSelector: isCanonicalGymMathSek2CurricularGoal,
     scopeLabel: 'canonical DE Gymnasium mathematics / Sek II curricular atomic goals',
   },
@@ -937,38 +895,9 @@ function validateLandscape(landscape: ParsedLandscape) {
   }
   detectCycles(effectiveEdges, 'effective_requires (with inheritance)')
 
-  // GVR-002:
-  // For comparable phase systems (E/Q*/Abitur, S*, J*), prerequisites must not point to later phases.
-  const reportedPhaseViolations = new Set<string>()
-  landscape.goals.forEach((goal) => {
-    const goalRank = getComparablePhaseRank(goal.phase)
-    if (goalRank === null) return
-
-    computeEffectiveRequires(goal.id).forEach((rawReq) => {
-      const parsed = parseReference(rawReq, landscape.landscapeId)
-      if (parsed.landscapeId !== landscape.landscapeId || !localMap.has(parsed.goalId)) return
-      const reqGoal = localMap.get(parsed.goalId)
-      if (!reqGoal) return
-
-      const reqRank = getComparablePhaseRank(reqGoal.phase)
-      if (reqRank === null || reqRank <= goalRank) return
-
-      const dedupeKey = `${goal.id}->${reqGoal.id}`
-      if (reportedPhaseViolations.has(dedupeKey)) return
-      reportedPhaseViolations.add(dedupeKey)
-
-      const isDirect = goal.requires.some((rawDirectReq) => {
-        const parsedDirect = parseReference(rawDirectReq, landscape.landscapeId)
-        return parsedDirect.landscapeId === landscape.landscapeId && parsedDirect.goalId === reqGoal.id
-      })
-      const edgeType = isDirect ? 'direct' : 'inherited/effective'
-
-      addIssue(
-        graphRuleIssueLevel,
-        landscape.landscapeId,
-        `[${RULE_PHASE_MONOTONIC}] Goal ${goal.id} (${goal.title}, phase ${goal.phase}) has ${edgeType} prerequisite ${reqGoal.id} (${reqGoal.title}, phase ${reqGoal.phase}), which points to a later phase.`,
-      )
-    })
+  // GVR-002 uses an explicit reference-metadata profile only for the reviewed Math canon.
+  validatePhaseCompatibility(landscape, computeEffectiveRequires).forEach((message) => {
+    addIssue(graphRuleIssueLevel, landscape.landscapeId, `[${RULE_PHASE_MONOTONIC}] ${message}`)
   })
 
   // GVR-004 / GVR-005:
@@ -1013,12 +942,13 @@ function validateLandscape(landscape: ParsedLandscape) {
     }
   }
 
-  for (const profile of scopedMotivationConnectivityProfiles) {
+  for (const profile of scopedFullRouteCoverageProfiles) {
     if (profile.landscapeId !== landscape.landscapeId) continue
 
+    const proof = buildHardRouteProofGraph(landscape.goals, canonicalMathSemanticKindByGoalId, profile)
     const scopedGoals = landscape.goals.filter(profile.goalSelector)
-    const missingAnchorIds = profile.anchorGoalIds.filter((goalId) => !localMap.has(goalId))
-    const anchorLabels = profile.anchorGoalIds
+    const missingAnchorIds = profile.motivationAnchorGoalIds.filter((goalId) => !localMap.has(goalId))
+    const anchorLabels = profile.motivationAnchorGoalIds
       .map((goalId) => {
         const goal = localMap.get(goalId)
         return goal ? `${goal.id} (${goal.title})` : goalId
@@ -1035,8 +965,8 @@ function validateLandscape(landscape: ParsedLandscape) {
     }
 
     scopedGoals.forEach((goal) => {
-      if (profile.anchorGoalIds.includes(goal.id)) return
-      if (profile.anchorGoalIds.some((anchorGoalId) => hasPathToTarget(goal.id, anchorGoalId, effectiveEdges))) return
+      if (profile.motivationAnchorGoalIds.includes(goal.id)) return
+      if (proof.hasEffectiveMotivationPath(goal.id, effectiveEdges)) return
 
       addIssue(
         graphRuleIssueLevel,

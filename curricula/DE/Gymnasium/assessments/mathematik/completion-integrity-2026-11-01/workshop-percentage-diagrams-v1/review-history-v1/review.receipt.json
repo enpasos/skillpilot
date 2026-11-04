@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "reviewType": "independent-machine-content-review",
+  "reviewerAgent": "/root/astra_completion_foundations",
+  "authorIndependent": true,
+  "verdict": "CHANGES_REQUIRED",
+  "candidateGoalId": "8f964887-e699-5d3d-9bc3-84a1b9982bdd",
+  "reviewedScope": "Exact task, solution, rubric and claimed four-goal coverage; no placement acceptance",
+  "files": [
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/workshop-percentage-diagrams-v1/candidate.goal.json",
+      "sha256": "65fddb5c7e154f0eb268437e74b22396a22f5d99f24d1d3ee0e7079cf2ac764b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/workshop-percentage-diagrams-v1/draft_v1.md",
+      "sha256": "2591e5676260314770b3f649855ee2a380f82def47c19b9c50020cf0a5983d3d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/workshop-percentage-diagrams-v1/author-evidence.json",
+      "sha256": "d34184fb2674725d6652da49c3a1ee42770f36035476f7d70162a35f4f621985"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/workshop-percentage-diagrams-v1/composition-selection.json",
+      "sha256": "cf4d83cedb851dd03fff6621d4ce751398bd2e1480dadbf70c383756dcec9c18"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/workshop-percentage-diagrams-v1/review.md",
+      "sha256": "f4c26b47aeca28f62f1366fca938e2f58eb05478048feeda37647be969edfbe4"
+    }
+  ],
+  "embeddedContentSha256": {
+    "taskContent": "1ba6a66601f27795e6a0baae69ec34527a72fd87682d3bb8fa6b6ff734465a3f",
+    "solutionContent": "35330a32ec379c9cfe5cd2a2c6345b7b94e3947f96b03f8b29f7b926836c8524"
+  },
+  "sourceArtifact": {
+    "path": "curricula/DE/Gymnasium/assessments/mathematik/seki/j6/draft_v3.md",
+    "sha256": "52b9d0047765103c86a8d3d0e8b17600142ef3a1b68062a50f7655a9513fcff4",
+    "locator": "Task 6, subtask 2"
+  },
+  "canonicalGoalBindings": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "normalization": "Python json.dumps ensure_ascii=False sort_keys=True separators=(comma,colon), UTF-8",
+    "goals": [
+      {
+        "id": "47c515c9-2174-58c7-a844-6865fc67c243",
+        "normalizedSha256": "de611a9444f2bfb32f2c7bfc7ffada54fa1dcedcb94edc7ea163a67125aa42a7"
+      },
+      {
+        "id": "71d43fcc-d787-4874-ae4a-2336364e9c0a",
+        "normalizedSha256": "fd0d2889af7d5209be29bbdcd07dbdecfed08ba42fedafc70f5778afc6fc0676"
+      },
+      {
+        "id": "72b6bfa5-8e34-4029-8f85-0277207c485e",
+        "normalizedSha256": "e96aad07e6973e1a468741ae9f2dc68578da616522d88ee197afc31e8844adf8"
+      },
+      {
+        "id": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+        "normalizedSha256": "31ef7b817b843faf388a94b8390d7b6ed5e69b2f7a610c8ed10c3d08288999cd"
+      },
+      {
+        "id": "acbb7e26-f85f-405b-a3e5-affa6add6711",
+        "normalizedSha256": "18ed7e76e24a3e26f34ab78078c5d45ec04821ed29d9b8d24e8796889a025681"
+      }
+    ]
+  },
+  "passedChecks": {
+    "registered": 60,
+    "attended": 50,
+    "fraction": "5/6",
+    "roundedPercent": 83,
+    "attendedAtClaimed90Percent": 54,
+    "visibleBarHeights": [
+      20,
+      10
+    ],
+    "visibleRatio": 2,
+    "actualRatio": "6/5",
+    "absoluteDifference": 10,
+    "sameTimeCategoriesDoNotEstablishTemporalTrend": true,
+    "pointsSum": 9,
+    "passingPoints": 9,
+    "markdownJsonParity": true,
+    "katexFormulaCount": 9,
+    "katexStrictParse": true
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "changes-required",
+      "goalId": "72b6bfa5-8e34-4029-8f85-0277207c485e",
+      "finding": "Percentage points and alternative expressions in the explicit goal contract are not assessed."
+    },
+    {
+      "id": "C2",
+      "severity": "changes-required",
+      "goalId": "acbb7e26-f85f-405b-a3e5-affa6add6711",
+      "finding": "Learner is not asked to formulate a meaningful diagram question."
+    },
+    {
+      "id": "C3",
+      "severity": "changes-required",
+      "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+      "finding": "Correctly rejecting an unsupported temporal trend does not demonstrate describing a present simple trend."
+    },
+    {
+      "id": "T1",
+      "severity": "minor",
+      "finding": "Specify original Task 6, subtask 2 rather than ambiguous task reference."
+    },
+    {
+      "id": "T2",
+      "severity": "minor",
+      "finding": "Replace doppelten Mengenunterschied with a precise ratio claim; absolute difference remains 10."
+    }
+  ],
+  "placementVerdict": "NOT_REVIEWED",
+  "humanApproval": false,
+  "hostAcceptance": false,
+  "m7Acceptance": false,
+  "productFilesChanged": false,
+  "nextStep": "Author revises task, solution and mandatory rubric evidence; independent review of new exact hashes before content acceptance."
+}

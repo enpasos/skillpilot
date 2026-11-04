@@ -319,6 +319,9 @@ def is_review_relevant_leaf(goal: Mapping[str, Any]) -> bool:
     contains = goal.get("contains")
     if isinstance(contains, list) and contains:
         return False
+    # Compiled goals already carry the fingerprint-validated ledger decision.
+    if goal.get("semanticKind") is not None:
+        return goal["semanticKind"] == "curricularAtomic"
     tags = goal.get("tags")
     normalized_tags = {tag for tag in tags if isinstance(tag, str)} if isinstance(tags, list) else set()
     if normalized_tags & {"Practice", "Assessment", "Motivation", "Orientation"}:

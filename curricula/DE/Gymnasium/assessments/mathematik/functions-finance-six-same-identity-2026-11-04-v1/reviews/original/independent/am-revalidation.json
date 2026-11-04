@@ -1,0 +1,657 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "astra-functions-finance-six-twelve-AM-revalidation-20261104-v1",
+  "status": "PASS",
+  "reviewer": "OpenAI gpt-6-astra (ultra); independent whole-goal review agent /root/astra_six_math_whole_forms",
+  "reviewerIdentity": {
+    "model": "gpt-6-astra",
+    "reasoningEffort": "ultra",
+    "agent": "/root/astra_six_math_whole_forms",
+    "rootThreadId": "01a1880f-4ee1-72c2-a81a-cf98380ee05d",
+    "identityEvidence": "Actual invocation confirmed by parent /root in this session; independent of the Sol author.",
+    "humanApproval": false
+  },
+  "reviewedAt": "2026-11-04",
+  "scope": "Exactly twelve new judgments, six in each lane, tied to complete proposed objects. Preserve all other registered raw rows byte exactly.",
+  "bindings": {
+    "path": "tmp/approach-review-20261101/astra-functions-finance-six-20261104-v1/reader-and-rendering.actual.json",
+    "sha256": "51bead1e139dc9944c53682366abe00b776934079a4a434e3b6750a271bc7648",
+    "bytes": 41512
+  },
+  "contentReview": {
+    "path": "tmp/approach-review-20261101/astra-functions-finance-six-20261104-v1/review.json",
+    "sha256": "4f1c896d0710d316a0a929a2bb388dc2e639cf677c0c28edb232b140f8da269f",
+    "bytes": 51391
+  },
+  "curricularAtomicPopulationRetained": 807,
+  "otherRowsPerLaneToPreserveByteExactly": 801,
+  "memoryGoalsDecksCardsChanged": false,
+  "rows": [
+    {
+      "lane": "A",
+      "goalId": "d144a855-9139-55c7-a801-e8b85dab5f01",
+      "lineNumber": 653,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+        "sha256": "aa45925c21f65177cddd51f4108c2da7e5b633b81fb8054cf5fc2e91609cf5fa"
+      },
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-analysis-eight-current-20261104.review.jsonl",
+        "sha256": "3fee48327c121ad1d9d3ae5de581e8c5e7c2d4917c48e8597d92fe6c3bc3ddd5"
+      },
+      "actualReader": {
+        "path": "app/scripts/semanticAtomicityReview.ts",
+        "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"d144a855-9139-55c7-a801-e8b85dab5f01\",\"fingerprint\":\"sha256:9278d0e5b7a84d5e7a1b03ae8880ee47437bf711697e020f387930e492fe390a\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-09\",\"reviewer\":\"codex\",\"reason\":\"Bulk-Review 2026-05-09: Ein zusammenhängendes, einzeln prüfbares Inhaltsziel; ggf. sind Berechnen/Deuten/Begründen Ausführungsschritte derselben Kompetenz.\",\"suggestedSplit\":[]}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "d144a855-9139-55c7-a801-e8b85dab5f01",
+        "fingerprint": "sha256:9278d0e5b7a84d5e7a1b03ae8880ee47437bf711697e020f387930e492fe390a",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-09",
+        "reviewer": "codex",
+        "reason": "Bulk-Review 2026-05-09: Ein zusammenhängendes, einzeln prüfbares Inhaltsziel; ggf. sind Berechnen/Deuten/Begründen Ausführungsschritte derselben Kompetenz.",
+        "suggestedSplit": []
+      },
+      "beforeFingerprint": "sha256:9278d0e5b7a84d5e7a1b03ae8880ee47437bf711697e020f387930e492fe390a",
+      "proposedFingerprint": "sha256:c6defdff696460991645c6b3d74fd5f0f604af4beae79b2cb34ca240c38967be",
+      "onlyFingerprintFieldChanged": "nodeKind",
+      "wholeCurrentObjectSha256": "8fa78838475263b62e206e83f4b182d3198f01d1993163efeb705c2c859db993",
+      "wholeProposedObjectSha256": "b53cbba8cf5d71a37a746bffb29655a7e0a34bb93172b89899c3201bf9dcc9d6",
+      "decision": "PASS",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "d144a855-9139-55c7-a801-e8b85dab5f01",
+        "fingerprint": "sha256:c6defdff696460991645c6b3d74fd5f0f604af4beae79b2cb34ca240c38967be",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI gpt-6-astra (ultra); independent whole-goal review agent /root/astra_six_math_whole_forms",
+        "reason": "Computing an antiderivative, using it for definite integrals and interpreting parameter dependence are connected stages of one integration-of-families competence. The two intervals test the same operation and interpretation under different bounds; they do not add a separate locus or parameter-existence goal. The complete unchanged curricular goal remains atomic with an own-ID assessment form. Actual independent AI review of the complete DE/EN form; no human, source/scope, Native or M7 approval claimed.",
+        "suggestedSplit": []
+      },
+      "wholeCompetenceRationale": "Computing an antiderivative, using it for definite integrals and interpreting parameter dependence are connected stages of one integration-of-families competence. The two intervals test the same operation and interpretation under different bounds; they do not add a separate locus or parameter-existence goal. The complete unchanged curricular goal remains atomic with an own-ID assessment form."
+    },
+    {
+      "lane": "A",
+      "goalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+      "lineNumber": 417,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+        "sha256": "aa45925c21f65177cddd51f4108c2da7e5b633b81fb8054cf5fc2e91609cf5fa"
+      },
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-analysis-eight-current-20261104.review.jsonl",
+        "sha256": "3fee48327c121ad1d9d3ae5de581e8c5e7c2d4917c48e8597d92fe6c3bc3ddd5"
+      },
+      "actualReader": {
+        "path": "app/scripts/semanticAtomicityReview.ts",
+        "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"7f11ffe0-7c43-4507-9101-50374a60b0e8\",\"fingerprint\":\"sha256:eccfb413bc18b7552d0883fd421f1f6cfa1443e1cadcad365fd4bdb2949f049e\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-05\",\"reviewer\":\"codex\",\"reason\":\"J10-Review: als eine zusammenhängende, prüfbare Inhaltsroutine bewertet.\",\"suggestedSplit\":[]}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+        "fingerprint": "sha256:eccfb413bc18b7552d0883fd421f1f6cfa1443e1cadcad365fd4bdb2949f049e",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-05",
+        "reviewer": "codex",
+        "reason": "J10-Review: als eine zusammenhängende, prüfbare Inhaltsroutine bewertet.",
+        "suggestedSplit": []
+      },
+      "beforeFingerprint": "sha256:eccfb413bc18b7552d0883fd421f1f6cfa1443e1cadcad365fd4bdb2949f049e",
+      "proposedFingerprint": "sha256:d3ea9e01d6d47ae0fd9296372c5500f9bdec27c6a31e216079d7ebb4bd1e3a25",
+      "onlyFingerprintFieldChanged": "nodeKind",
+      "wholeCurrentObjectSha256": "879262a3c284bc667dd0da2b95164470f92ad15d259ff4968176c0fd7ab8d8d2",
+      "wholeProposedObjectSha256": "bf2898adc390c065f0f22a6494f07e18ee98c46600665bb8a72fd6fef64de049",
+      "decision": "PASS",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+        "fingerprint": "sha256:d3ea9e01d6d47ae0fd9296372c5500f9bdec27c6a31e216079d7ebb4bd1e3a25",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI gpt-6-astra (ultra); independent whole-goal review agent /root/astra_six_math_whole_forms",
+        "reason": "Constructing, graphing, varying and interpreting a periodic context model are interdependent actions within one coherent modeling competency. The second model changes assumptions of the same situation instead of introducing an unrelated routine. Both graphical and numerical expressions belong to this one atomic goal, which remains in curricular review despite exam execution. Actual independent AI review of the complete DE/EN form; no human, source/scope, Native or M7 approval claimed.",
+        "suggestedSplit": []
+      },
+      "wholeCompetenceRationale": "Constructing, graphing, varying and interpreting a periodic context model are interdependent actions within one coherent modeling competency. The second model changes assumptions of the same situation instead of introducing an unrelated routine. Both graphical and numerical expressions belong to this one atomic goal, which remains in curricular review despite exam execution."
+    },
+    {
+      "lane": "A",
+      "goalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+      "lineNumber": 122,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+        "sha256": "aa45925c21f65177cddd51f4108c2da7e5b633b81fb8054cf5fc2e91609cf5fa"
+      },
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-analysis-eight-current-20261104.review.jsonl",
+        "sha256": "3fee48327c121ad1d9d3ae5de581e8c5e7c2d4917c48e8597d92fe6c3bc3ddd5"
+      },
+      "actualReader": {
+        "path": "app/scripts/semanticAtomicityReview.ts",
+        "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"27b63e2e-6a34-483e-8e5a-fe0f49670d1d\",\"fingerprint\":\"sha256:c35addd995b996433d362eb106e8bcb7064c4f2c9b6b9d16ed70c5eb2ae872dd\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-05\",\"reviewer\":\"codex\",\"reason\":\"J10-Review: als eine zusammenhängende, prüfbare Inhaltsroutine bewertet.\",\"suggestedSplit\":[]}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+        "fingerprint": "sha256:c35addd995b996433d362eb106e8bcb7064c4f2c9b6b9d16ed70c5eb2ae872dd",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-05",
+        "reviewer": "codex",
+        "reason": "J10-Review: als eine zusammenhängende, prüfbare Inhaltsroutine bewertet.",
+        "suggestedSplit": []
+      },
+      "beforeFingerprint": "sha256:c35addd995b996433d362eb106e8bcb7064c4f2c9b6b9d16ed70c5eb2ae872dd",
+      "proposedFingerprint": "sha256:da787928b53efcacf4f408b46bac0fb01cda99c809684aaf216931aea5ec028b",
+      "onlyFingerprintFieldChanged": "nodeKind",
+      "wholeCurrentObjectSha256": "bfb9b4b28d93f94660e7d6e2e300049ff1439595070f63cc6f5948f8c57c6233",
+      "wholeProposedObjectSha256": "95127a924562559c5ea995becf3b7fc6867bb8cc8d56c7bf58e17d4b857a62ca",
+      "decision": "PASS",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+        "fingerprint": "sha256:da787928b53efcacf4f408b46bac0fb01cda99c809684aaf216931aea5ec028b",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI gpt-6-astra (ultra); independent whole-goal review agent /root/astra_six_math_whole_forms",
+        "reason": "Growth and decay are two parameter regimes of the same exponential context-modeling routine. The task compares them and tests the common constant-factor assumption, its variation and limits. Numerical and graphical work supports that single modeling objective. The unchanged complete goal remains atomic; it is not reclassified as practice-only. Actual independent AI review of the complete DE/EN form; no human, source/scope, Native or M7 approval claimed.",
+        "suggestedSplit": []
+      },
+      "wholeCompetenceRationale": "Growth and decay are two parameter regimes of the same exponential context-modeling routine. The task compares them and tests the common constant-factor assumption, its variation and limits. Numerical and graphical work supports that single modeling objective. The unchanged complete goal remains atomic; it is not reclassified as practice-only."
+    },
+    {
+      "lane": "A",
+      "goalId": "1842da92-ca2c-5fed-a946-e6413a6285bb",
+      "lineNumber": 75,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+        "sha256": "aa45925c21f65177cddd51f4108c2da7e5b633b81fb8054cf5fc2e91609cf5fa"
+      },
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-analysis-eight-current-20261104.review.jsonl",
+        "sha256": "3fee48327c121ad1d9d3ae5de581e8c5e7c2d4917c48e8597d92fe6c3bc3ddd5"
+      },
+      "actualReader": {
+        "path": "app/scripts/semanticAtomicityReview.ts",
+        "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"1842da92-ca2c-5fed-a946-e6413a6285bb\",\"fingerprint\":\"sha256:284c90973d23a8bc8c311fb088c3db58e53bdf201acbad50081f325f55f4f8e6\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-09\",\"reviewer\":\"codex\",\"reason\":\"Split-Review 2026-05-09: Aus einem nicht-atomaren Blattziel herausgelöstes, einzeln prüfbares kanonisches Teilziel.\",\"suggestedSplit\":[]}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "1842da92-ca2c-5fed-a946-e6413a6285bb",
+        "fingerprint": "sha256:284c90973d23a8bc8c311fb088c3db58e53bdf201acbad50081f325f55f4f8e6",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-09",
+        "reviewer": "codex",
+        "reason": "Split-Review 2026-05-09: Aus einem nicht-atomaren Blattziel herausgelöstes, einzeln prüfbares kanonisches Teilziel.",
+        "suggestedSplit": []
+      },
+      "beforeFingerprint": "sha256:284c90973d23a8bc8c311fb088c3db58e53bdf201acbad50081f325f55f4f8e6",
+      "proposedFingerprint": "sha256:9ec6dceaf03716b011f97d1ae02ce9acd73b4f6fc12969b58686c69c9862fee3",
+      "onlyFingerprintFieldChanged": "nodeKind",
+      "wholeCurrentObjectSha256": "1c841fd5823123e644808b259275eac5f12bab761e4297d12789fbd12b933ce8",
+      "wholeProposedObjectSha256": "a146d4cae53050d2f976ad502bb7e0a2a563ace63fa36547b6d88ed7f76ad8d1",
+      "decision": "PASS",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "1842da92-ca2c-5fed-a946-e6413a6285bb",
+        "fingerprint": "sha256:9ec6dceaf03716b011f97d1ae02ce9acd73b4f6fc12969b58686c69c9862fee3",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI gpt-6-astra (ultra); independent whole-goal review agent /root/astra_six_math_whole_forms",
+        "reason": "Estimating an annual interest parameter by tabular trials and checking the resulting balance are solution and verification stages of one spreadsheet-finance competency. Explaining compounding and the contractual assumptions justifies the same calculation, rather than adding an unrelated financial task. The original whole goal remains atomic. Actual independent AI review of the complete DE/EN form; no human, source/scope, Native or M7 approval claimed.",
+        "suggestedSplit": []
+      },
+      "wholeCompetenceRationale": "Estimating an annual interest parameter by tabular trials and checking the resulting balance are solution and verification stages of one spreadsheet-finance competency. Explaining compounding and the contractual assumptions justifies the same calculation, rather than adding an unrelated financial task. The original whole goal remains atomic."
+    },
+    {
+      "lane": "A",
+      "goalId": "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+      "lineNumber": 771,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+        "sha256": "aa45925c21f65177cddd51f4108c2da7e5b633b81fb8054cf5fc2e91609cf5fa"
+      },
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-analysis-eight-current-20261104.review.jsonl",
+        "sha256": "3fee48327c121ad1d9d3ae5de581e8c5e7c2d4917c48e8597d92fe6c3bc3ddd5"
+      },
+      "actualReader": {
+        "path": "app/scripts/semanticAtomicityReview.ts",
+        "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"f6574cdc-e29c-5a8f-a009-9f28b3bcf9be\",\"fingerprint\":\"sha256:b560115ed11436fc4bbbefafdf044e9ea33b1cb4798826d71b76bec1b04685ee\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-09-02\",\"reviewer\":\"codex-mathematics-b029-payment-amount-adjudication-2026-09-02\",\"reason\":\"Der regelmäßige Tilgungsbetrag beziehungsweise Sparbeitrag ist in beiden Finanzvarianten dieselbe gesuchte periodische Zahlungsgröße; Finanzziel, Tabellenverlauf und Kontextprüfung operationalisieren gemeinsam genau diese inverse Parameterbestimmung.\",\"suggestedSplit\":[]}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+        "fingerprint": "sha256:b560115ed11436fc4bbbefafdf044e9ea33b1cb4798826d71b76bec1b04685ee",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-09-02",
+        "reviewer": "codex-mathematics-b029-payment-amount-adjudication-2026-09-02",
+        "reason": "Der regelmäßige Tilgungsbetrag beziehungsweise Sparbeitrag ist in beiden Finanzvarianten dieselbe gesuchte periodische Zahlungsgröße; Finanzziel, Tabellenverlauf und Kontextprüfung operationalisieren gemeinsam genau diese inverse Parameterbestimmung.",
+        "suggestedSplit": []
+      },
+      "beforeFingerprint": "sha256:b560115ed11436fc4bbbefafdf044e9ea33b1cb4798826d71b76bec1b04685ee",
+      "proposedFingerprint": "sha256:c5fd050dd69b59616ebe46b7d85232ac51e4c23405329066eb3eeeb40786f111",
+      "onlyFingerprintFieldChanged": "nodeKind",
+      "wholeCurrentObjectSha256": "c67bac4dc4a49e28e189c0284589fcdf44d5c4384efe2df581d8e6ea216a9f3e",
+      "wholeProposedObjectSha256": "589486207540a4aabbe1e0cb9e0c628a4ce621adc39e27be5152f23398cb6623",
+      "decision": "PASS",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+        "fingerprint": "sha256:c5fd050dd69b59616ebe46b7d85232ac51e4c23405329066eb3eeeb40786f111",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI gpt-6-astra (ultra); independent whole-goal review agent /root/astra_six_math_whole_forms",
+        "reason": "Estimating one regular contribution for a target and verifying the balance development are connected steps of one financial-parameter competency. Repayment and saving are alternative contexts already joined by OR in the unchanged goal; choosing saving does not split or widen it. The task remains a whole atomic competency assessment. Actual independent AI review of the complete DE/EN form; no human, source/scope, Native or M7 approval claimed.",
+        "suggestedSplit": []
+      },
+      "wholeCompetenceRationale": "Estimating one regular contribution for a target and verifying the balance development are connected steps of one financial-parameter competency. Repayment and saving are alternative contexts already joined by OR in the unchanged goal; choosing saving does not split or widen it. The task remains a whole atomic competency assessment."
+    },
+    {
+      "lane": "A",
+      "goalId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+      "lineNumber": 795,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+        "sha256": "aa45925c21f65177cddd51f4108c2da7e5b633b81fb8054cf5fc2e91609cf5fa"
+      },
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-analysis-eight-current-20261104.review.jsonl",
+        "sha256": "3fee48327c121ad1d9d3ae5de581e8c5e7c2d4917c48e8597d92fe6c3bc3ddd5"
+      },
+      "actualReader": {
+        "path": "app/scripts/semanticAtomicityReview.ts",
+        "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"fc34449a-fbf4-574c-884f-ecdf48b42d2e\",\"fingerprint\":\"sha256:77783fd3edf9833dc7e4cdc2ac8375ed7499b34fd6fe325a18cb164e9b744167\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-09-02\",\"reviewer\":\"codex-mathematics-b029-interest-duration-adjudication-2026-09-02\",\"reason\":\"Die Laufzeit als Zahl der Zins- oder Zahlungsperioden und ihre kontextbezogene Prüfung bilden dieselbe tabellarische inverse Parameterbestimmung; kein unabhängiges Teilziel wird mitgeführt.\",\"suggestedSplit\":[]}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+        "fingerprint": "sha256:77783fd3edf9833dc7e4cdc2ac8375ed7499b34fd6fe325a18cb164e9b744167",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-09-02",
+        "reviewer": "codex-mathematics-b029-interest-duration-adjudication-2026-09-02",
+        "reason": "Die Laufzeit als Zahl der Zins- oder Zahlungsperioden und ihre kontextbezogene Prüfung bilden dieselbe tabellarische inverse Parameterbestimmung; kein unabhängiges Teilziel wird mitgeführt.",
+        "suggestedSplit": []
+      },
+      "beforeFingerprint": "sha256:77783fd3edf9833dc7e4cdc2ac8375ed7499b34fd6fe325a18cb164e9b744167",
+      "proposedFingerprint": "sha256:56905dba226d0c1541e93196b7e29d38ce68dae4d4bb728860abb0856e8b82d8",
+      "onlyFingerprintFieldChanged": "nodeKind",
+      "wholeCurrentObjectSha256": "633c3de80cbbeed9cbf666a6c7b9999a39a6d1f04acee43da87c0531ac13f29c",
+      "wholeProposedObjectSha256": "61315f9f281f241e31ef519fb906faa3543b5c1b5fc05b60278c8541f7b38703",
+      "decision": "PASS",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+        "fingerprint": "sha256:56905dba226d0c1541e93196b7e29d38ce68dae4d4bb728860abb0856e8b82d8",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI gpt-6-astra (ultra); independent whole-goal review agent /root/astra_six_math_whole_forms",
+        "reason": "Finding the first target-reaching period and verifying it from the computed balance development form one duration-estimation routine. The zero-interest comparison changes one parameter of the same model and deepens its interpretation, rather than introducing a separate competence. The complete stable goal remains atomic. Actual independent AI review of the complete DE/EN form; no human, source/scope, Native or M7 approval claimed.",
+        "suggestedSplit": []
+      },
+      "wholeCompetenceRationale": "Finding the first target-reaching period and verifying it from the computed balance development form one duration-estimation routine. The zero-interest comparison changes one parameter of the same model and deepens its interpretation, rather than introducing a separate competence. The complete stable goal remains atomic."
+    },
+    {
+      "lane": "M",
+      "goalId": "d144a855-9139-55c7-a801-e8b85dab5f01",
+      "lineNumber": 653,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+        "sha256": "acc3932dd86a3a66122dfa82745e25dad1e5c1bcb54f0cd2b45083306d02483a"
+      },
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-analysis-eight-current-20261104.review.jsonl",
+        "sha256": "74e8259f260cb65c3d96865cbd577b2fa2430940c8f3e46fc676f75aac7e3f0b"
+      },
+      "actualReader": {
+        "path": "app/scripts/memoryCardReview.ts",
+        "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"d144a855-9139-55c7-a801-e8b85dab5f01\",\"fingerprint\":\"sha256:75ea0cf18eb8b6704ec70c516faa21485b4a05686c8d294b9c789d0bd356c37e\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "d144a855-9139-55c7-a801-e8b85dab5f01",
+        "fingerprint": "sha256:75ea0cf18eb8b6704ec70c516faa21485b4a05686c8d294b9c789d0bd356c37e",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-memory-pilot",
+        "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+      },
+      "beforeFingerprint": "sha256:75ea0cf18eb8b6704ec70c516faa21485b4a05686c8d294b9c789d0bd356c37e",
+      "proposedFingerprint": "sha256:c7d537cbe5f55cd24f0436e32aa49fea48e7c51b8d0c83848f9743036ec258c6",
+      "onlyFingerprintFieldChanged": "nodeKind",
+      "wholeCurrentObjectSha256": "8fa78838475263b62e206e83f4b182d3198f01d1993163efeb705c2c859db993",
+      "wholeProposedObjectSha256": "b53cbba8cf5d71a37a746bffb29655a7e0a34bb93172b89899c3201bf9dcc9d6",
+      "decision": "PASS",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "d144a855-9139-55c7-a801-e8b85dab5f01",
+        "fingerprint": "sha256:c7d537cbe5f55cd24f0436e32aa49fea48e7c51b8d0c83848f9743036ec258c6",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI gpt-6-astra (ultra); independent whole-goal review agent /root/astra_six_math_whole_forms",
+        "reason": "The whole goal is symbolic integration and contextual interpretation, supported by the existing polynomial-antiderivative preparation. A dedicated new fact-recall obligation is not introduced; correct integration constants and cancellations are reasoned from the family. Retain no_memory_needed, without changing upstream memory judgments, decks or cards. Actual independent AI review of the complete DE/EN form; no human, source/scope, Native or M7 approval claimed."
+      },
+      "wholeCompetenceRationale": "The whole goal is symbolic integration and contextual interpretation, supported by the existing polynomial-antiderivative preparation. A dedicated new fact-recall obligation is not introduced; correct integration constants and cancellations are reasoned from the family. Retain no_memory_needed, without changing upstream memory judgments, decks or cards."
+    },
+    {
+      "lane": "M",
+      "goalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+      "lineNumber": 417,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+        "sha256": "acc3932dd86a3a66122dfa82745e25dad1e5c1bcb54f0cd2b45083306d02483a"
+      },
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-analysis-eight-current-20261104.review.jsonl",
+        "sha256": "74e8259f260cb65c3d96865cbd577b2fa2430940c8f3e46fc676f75aac7e3f0b"
+      },
+      "actualReader": {
+        "path": "app/scripts/memoryCardReview.ts",
+        "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"7f11ffe0-7c43-4507-9101-50374a60b0e8\",\"fingerprint\":\"sha256:f7a13a27fc88748b77ac658d844902480269b251a614d7cf069ea9c135db9a6a\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+        "fingerprint": "sha256:f7a13a27fc88748b77ac658d844902480269b251a614d7cf069ea9c135db9a6a",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-memory-pilot",
+        "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+      },
+      "beforeFingerprint": "sha256:f7a13a27fc88748b77ac658d844902480269b251a614d7cf069ea9c135db9a6a",
+      "proposedFingerprint": "sha256:f70a18fc94b4ae3572edf85410c0ba7e888727b836103ba56d67611628a3cca4",
+      "onlyFingerprintFieldChanged": "nodeKind",
+      "wholeCurrentObjectSha256": "879262a3c284bc667dd0da2b95164470f92ad15d259ff4968176c0fd7ab8d8d2",
+      "wholeProposedObjectSha256": "bf2898adc390c065f0f22a6494f07e18ee98c46600665bb8a72fd6fef64de049",
+      "decision": "PASS",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+        "fingerprint": "sha256:f70a18fc94b4ae3572edf85410c0ba7e888727b836103ba56d67611628a3cca4",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI gpt-6-astra (ultra); independent whole-goal review agent /root/astra_six_math_whole_forms",
+        "reason": "The assessed work is constructing and evaluating a model from given observations, not recalling a prescribed formula from memory. Phase, amplitude and period are inferred and interpreted, with existing trigonometric preparation retained. No additional mandatory isolated recall item or new deck is justified; retain no_memory_needed. Actual independent AI review of the complete DE/EN form; no human, source/scope, Native or M7 approval claimed."
+      },
+      "wholeCompetenceRationale": "The assessed work is constructing and evaluating a model from given observations, not recalling a prescribed formula from memory. Phase, amplitude and period are inferred and interpreted, with existing trigonometric preparation retained. No additional mandatory isolated recall item or new deck is justified; retain no_memory_needed."
+    },
+    {
+      "lane": "M",
+      "goalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+      "lineNumber": 122,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+        "sha256": "acc3932dd86a3a66122dfa82745e25dad1e5c1bcb54f0cd2b45083306d02483a"
+      },
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-analysis-eight-current-20261104.review.jsonl",
+        "sha256": "74e8259f260cb65c3d96865cbd577b2fa2430940c8f3e46fc676f75aac7e3f0b"
+      },
+      "actualReader": {
+        "path": "app/scripts/memoryCardReview.ts",
+        "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"27b63e2e-6a34-483e-8e5a-fe0f49670d1d\",\"fingerprint\":\"sha256:13af2db68cffa14726b12874425adf8800d198ffc6ead63993293d6c27a0812f\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+        "fingerprint": "sha256:13af2db68cffa14726b12874425adf8800d198ffc6ead63993293d6c27a0812f",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-memory-pilot",
+        "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+      },
+      "beforeFingerprint": "sha256:13af2db68cffa14726b12874425adf8800d198ffc6ead63993293d6c27a0812f",
+      "proposedFingerprint": "sha256:e99d223e25a481bae0ca8071a640f5c1811c0792faa2161a749342c2781f7eaa",
+      "onlyFingerprintFieldChanged": "nodeKind",
+      "wholeCurrentObjectSha256": "bfb9b4b28d93f94660e7d6e2e300049ff1439595070f63cc6f5948f8c57c6233",
+      "wholeProposedObjectSha256": "95127a924562559c5ea995becf3b7fc6867bb8cc8d56c7bf58e17d4b857a62ca",
+      "decision": "PASS",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+        "fingerprint": "sha256:e99d223e25a481bae0ca8071a640f5c1811c0792faa2161a749342c2781f7eaa",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI gpt-6-astra (ultra); independent whole-goal review agent /root/astra_six_math_whole_forms",
+        "reason": "Model terms and properties are inferred from measurements and the constant-factor assumptions, then checked graphically and contextually. There is no new mandatory isolated formula-recall target or logarithm recipe. Existing exponent/logarithm preparation is preserved, while this modeling goal still warrants no_memory_needed. Actual independent AI review of the complete DE/EN form; no human, source/scope, Native or M7 approval claimed."
+      },
+      "wholeCompetenceRationale": "Model terms and properties are inferred from measurements and the constant-factor assumptions, then checked graphically and contextually. There is no new mandatory isolated formula-recall target or logarithm recipe. Existing exponent/logarithm preparation is preserved, while this modeling goal still warrants no_memory_needed."
+    },
+    {
+      "lane": "M",
+      "goalId": "1842da92-ca2c-5fed-a946-e6413a6285bb",
+      "lineNumber": 75,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+        "sha256": "acc3932dd86a3a66122dfa82745e25dad1e5c1bcb54f0cd2b45083306d02483a"
+      },
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-analysis-eight-current-20261104.review.jsonl",
+        "sha256": "74e8259f260cb65c3d96865cbd577b2fa2430940c8f3e46fc676f75aac7e3f0b"
+      },
+      "actualReader": {
+        "path": "app/scripts/memoryCardReview.ts",
+        "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"1842da92-ca2c-5fed-a946-e6413a6285bb\",\"fingerprint\":\"sha256:4cdc82001798eb5f5e81f9e82b09df78d124744ce815b7fca7d6e4994ba574fc\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "1842da92-ca2c-5fed-a946-e6413a6285bb",
+        "fingerprint": "sha256:4cdc82001798eb5f5e81f9e82b09df78d124744ce815b7fca7d6e4994ba574fc",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-memory-pilot",
+        "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+      },
+      "beforeFingerprint": "sha256:4cdc82001798eb5f5e81f9e82b09df78d124744ce815b7fca7d6e4994ba574fc",
+      "proposedFingerprint": "sha256:5004685589919772c4dd5fc8da4c07c510191d80aeba10a67179c9d5e7674be3",
+      "onlyFingerprintFieldChanged": "nodeKind",
+      "wholeCurrentObjectSha256": "1c841fd5823123e644808b259275eac5f12bab761e4297d12789fbd12b933ce8",
+      "wholeProposedObjectSha256": "a146d4cae53050d2f976ad502bb7e0a2a563ace63fa36547b6d88ed7f76ad8d1",
+      "decision": "PASS",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "1842da92-ca2c-5fed-a946-e6413a6285bb",
+        "fingerprint": "sha256:5004685589919772c4dd5fc8da4c07c510191d80aeba10a67179c9d5e7674be3",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI gpt-6-astra (ultra); independent whole-goal review agent /root/astra_six_math_whole_forms",
+        "reason": "The competence is constructing and using a reproducible spreadsheet search and interpreting its result. A memorized compound-interest inverse, root or logarithm is expressly unnecessary. Percent and basic-interest preparation remain separate. No additional compact recall obligation justifies a deck for this goal; retain no_memory_needed. Actual independent AI review of the complete DE/EN form; no human, source/scope, Native or M7 approval claimed."
+      },
+      "wholeCompetenceRationale": "The competence is constructing and using a reproducible spreadsheet search and interpreting its result. A memorized compound-interest inverse, root or logarithm is expressly unnecessary. Percent and basic-interest preparation remain separate. No additional compact recall obligation justifies a deck for this goal; retain no_memory_needed."
+    },
+    {
+      "lane": "M",
+      "goalId": "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+      "lineNumber": 771,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+        "sha256": "acc3932dd86a3a66122dfa82745e25dad1e5c1bcb54f0cd2b45083306d02483a"
+      },
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-analysis-eight-current-20261104.review.jsonl",
+        "sha256": "74e8259f260cb65c3d96865cbd577b2fa2430940c8f3e46fc676f75aac7e3f0b"
+      },
+      "actualReader": {
+        "path": "app/scripts/memoryCardReview.ts",
+        "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"f6574cdc-e29c-5a8f-a009-9f28b3bcf9be\",\"fingerprint\":\"sha256:6e52ce2be161852a88d981b5d9dc212419bf63e0cd913963931c4bc9ed6d0b6a\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-09-02\",\"reviewer\":\"codex-mathematics-b029-payment-amount-adjudication-2026-09-02\",\"reason\":\"Die regelmäßige Zahlung wird aus Finanzziel und fortgeschriebenem Restschuld- oder Guthabenverlauf näherungsweise bestimmt und kontextbezogen geprüft; diese Modellierungsleistung braucht Aufgabenpraxis statt einer eigenen Memorycard.\"}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+        "fingerprint": "sha256:6e52ce2be161852a88d981b5d9dc212419bf63e0cd913963931c4bc9ed6d0b6a",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-09-02",
+        "reviewer": "codex-mathematics-b029-payment-amount-adjudication-2026-09-02",
+        "reason": "Die regelmäßige Zahlung wird aus Finanzziel und fortgeschriebenem Restschuld- oder Guthabenverlauf näherungsweise bestimmt und kontextbezogen geprüft; diese Modellierungsleistung braucht Aufgabenpraxis statt einer eigenen Memorycard."
+      },
+      "beforeFingerprint": "sha256:6e52ce2be161852a88d981b5d9dc212419bf63e0cd913963931c4bc9ed6d0b6a",
+      "proposedFingerprint": "sha256:43b8e778626e1eeeedfaf3ea384cf273ba5c4a4c85c0ff045300de4a0056634c",
+      "onlyFingerprintFieldChanged": "nodeKind",
+      "wholeCurrentObjectSha256": "c67bac4dc4a49e28e189c0284589fcdf44d5c4384efe2df581d8e6ea216a9f3e",
+      "wholeProposedObjectSha256": "589486207540a4aabbe1e0cb9e0c628a4ce621adc39e27be5152f23398cb6623",
+      "decision": "PASS",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+        "fingerprint": "sha256:43b8e778626e1eeeedfaf3ea384cf273ba5c4a4c85c0ff045300de4a0056634c",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI gpt-6-astra (ultra); independent whole-goal review agent /root/astra_six_math_whole_forms",
+        "reason": "The required skill is building the recurrence in a spreadsheet, searching and interpreting timing, not recalling a closed annuity formula or a stock payment answer. No separate mandatory memory item or deck is needed. Retain no_memory_needed for the whole goal without changing the preparation goal's own memory policy. Actual independent AI review of the complete DE/EN form; no human, source/scope, Native or M7 approval claimed."
+      },
+      "wholeCompetenceRationale": "The required skill is building the recurrence in a spreadsheet, searching and interpreting timing, not recalling a closed annuity formula or a stock payment answer. No separate mandatory memory item or deck is needed. Retain no_memory_needed for the whole goal without changing the preparation goal's own memory policy."
+    },
+    {
+      "lane": "M",
+      "goalId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+      "lineNumber": 795,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+        "sha256": "acc3932dd86a3a66122dfa82745e25dad1e5c1bcb54f0cd2b45083306d02483a"
+      },
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-analysis-eight-current-20261104.review.jsonl",
+        "sha256": "74e8259f260cb65c3d96865cbd577b2fa2430940c8f3e46fc676f75aac7e3f0b"
+      },
+      "actualReader": {
+        "path": "app/scripts/memoryCardReview.ts",
+        "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"fc34449a-fbf4-574c-884f-ecdf48b42d2e\",\"fingerprint\":\"sha256:2e5d544aabb1f6b54601328b6e93377cbb38e91e063f5ec5a2360bdcc1d352ad\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-09-02\",\"reviewer\":\"codex-mathematics-b029-interest-duration-adjudication-2026-09-02\",\"reason\":\"Die Laufzeit muss aus dem periodischen Tabellenverlauf eingegrenzt, mit einer Zeiteinheit verbunden und im Finanzkontext gedeutet werden; diese Modellierungsleistung wird durch Aufgabenpraxis statt durch eine eigene Memorycard aufgebaut.\"}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+        "fingerprint": "sha256:2e5d544aabb1f6b54601328b6e93377cbb38e91e063f5ec5a2360bdcc1d352ad",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-09-02",
+        "reviewer": "codex-mathematics-b029-interest-duration-adjudication-2026-09-02",
+        "reason": "Die Laufzeit muss aus dem periodischen Tabellenverlauf eingegrenzt, mit einer Zeiteinheit verbunden und im Finanzkontext gedeutet werden; diese Modellierungsleistung wird durch Aufgabenpraxis statt durch eine eigene Memorycard aufgebaut."
+      },
+      "beforeFingerprint": "sha256:2e5d544aabb1f6b54601328b6e93377cbb38e91e063f5ec5a2360bdcc1d352ad",
+      "proposedFingerprint": "sha256:ad9069020f78be2d578d54d7edc55f94f49b76445c9ce0392c5f3ae4b7a22022",
+      "onlyFingerprintFieldChanged": "nodeKind",
+      "wholeCurrentObjectSha256": "633c3de80cbbeed9cbf666a6c7b9999a39a6d1f04acee43da87c0531ac13f29c",
+      "wholeProposedObjectSha256": "61315f9f281f241e31ef519fb906faa3543b5c1b5fc05b60278c8541f7b38703",
+      "decision": "PASS",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+        "fingerprint": "sha256:ad9069020f78be2d578d54d7edc55f94f49b76445c9ce0392c5f3ae4b7a22022",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI gpt-6-astra (ultra); independent whole-goal review agent /root/astra_six_math_whole_forms",
+        "reason": "The task requires constructing a period table and reasoning from its values. A memorized logarithmic inversion or finance formula is not part of the demand; the needed recurrence follows from the stated contract. No new isolated recall objective warrants memory cards, so retain no_memory_needed. Actual independent AI review of the complete DE/EN form; no human, source/scope, Native or M7 approval claimed."
+      },
+      "wholeCompetenceRationale": "The task requires constructing a period table and reasoning from its values. A memorized logarithmic inversion or finance formula is not part of the demand; the needed recurrence follows from the stated contract. No new isolated recall objective warrants memory cards, so retain no_memory_needed."
+    }
+  ],
+  "noRootOrGitMutation": true,
+  "integrationAndCurrentGatesNotClaimed": true
+}

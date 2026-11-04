@@ -1,0 +1,316 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-matrix-five-eleven-20261103-reviewed-synthesis-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "sol-current-matrix-five-synthesis-20261103",
+  "synthesizedAt": "2026-11-03T19:19:04.335Z",
+  "batch": {
+    "batchId": "mathematik-matrix-five-current-context-eleven-20261103-v1",
+    "batchManifestDigest": "sha256:5bd9cf41c765d09cfee717533d07e152359cd894455afb3523fc6b283d928245",
+    "configDigest": "sha256:67821f4c9c760edff05330f631e76d2ab644a5ba3c187ccf6e9c62e005111081",
+    "bundleFingerprint": "sha256:0fb90ca13a17b568ebd16dc5217a224c892f2661cf826316270467cb12399c76",
+    "bookDigest": "sha256:f9b34ae501af05a48ae6cee2401be2ccb660a4bba34bea747e167abb4d41e79d",
+    "reviewInputFingerprint": "sha256:a46d9a0eabd555cba327e3accf77237b126601c426551e290b8cb02eafd39f0c",
+    "dualSummaryDigest": "sha256:d19779b3ab03d155d6ca5f9364657e561c5c56b60c195e293889c558f61c1e55",
+    "canonicalLandscapeDigest": "sha256:393fa2d9e41f19cd329fbb0b4f716986607614e4c710d043a80a32856d5e82dd"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-matrix-five-current-context-eleven-20261103-v1-a",
+      "campaignDigest": "sha256:c83b86f4c002d115252c3ce5ce81c5e9e9c5ddb821b3b33403827ac5cc5d58c3",
+      "roundId": "mathematik-matrix-five-current-context-eleven-20261103-v1-first-pass-a",
+      "independenceGroupId": "mathematik-matrix-five-current-context-eleven-20261103-v1-independent-a",
+      "reviewInputFingerprint": "sha256:a46d9a0eabd555cba327e3accf77237b126601c426551e290b8cb02eafd39f0c",
+      "batchId": "mathematik-matrix-five-current-context-eleven-20261103-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:7af240350886d8d90fa8214b9730f64c519a147cc6bba113a6da828c2b41a00d",
+      "runId": "mathematik-matrix-five-current-context-eleven-20261103-v1-a-sol-20261103T191148Z",
+      "runManifestDigest": "sha256:a31513ac168bbf2f4b1ae27bbc94ce641d0b81aec88e3363357a037db0154b5d",
+      "resultsDigest": "sha256:ede6cb3b81718d67deff6465e44257a5fd4691533ed5fc703628e6b90f474c76"
+    },
+    "second": {
+      "campaignId": "mathematik-matrix-five-current-context-eleven-20261103-v1-b",
+      "campaignDigest": "sha256:301bf37bcd35790b17b2aed688d3f0c17292efc33c7ad0940934ae5025701f84",
+      "roundId": "mathematik-matrix-five-current-context-eleven-20261103-v1-first-pass-b",
+      "independenceGroupId": "mathematik-matrix-five-current-context-eleven-20261103-v1-independent-b",
+      "reviewInputFingerprint": "sha256:a46d9a0eabd555cba327e3accf77237b126601c426551e290b8cb02eafd39f0c",
+      "batchId": "mathematik-matrix-five-current-context-eleven-20261103-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:076fc3c9baf1bf7aa1bfc5768672b170c177af9506774452584d16153b919c12",
+      "runId": "mathematik-current-eleven-20261103-astra-blind-b-191311",
+      "runManifestDigest": "sha256:b0a4b9472ad58f1ce96d303a8aa711934b10dc579aad73462b0da7ca6181c3e4",
+      "resultsDigest": "sha256:2c11a2783f8bcd726815c2b2408c9d3b55ee9618bd11a8af270e60974862a8f7"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-matrix-five-eleven-20261103-reviewed-synthesis-v1-decision-001",
+      "goalId": "ae3483e3-4712-56a1-a881-2e1f8a1a8df9",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:44d24428ccf1dac383ef7c200b4dacd3f079457a225c54d0d9a806b3b78fc66f",
+      "pageFingerprint": "sha256:e2d684aaea9b8578f99fe73ed46fe8181a17c6dee7989634ea71935e6c179667",
+      "goalReviewContextFingerprint": "sha256:2313a8dc79a82e21a596c13c7003e89fb5b04cf6fdeb2967181548cdef507ee0",
+      "finalText": {
+        "titleDe": "Entscheidungsregel oder Stichprobenumfang aus Gütefunktionsgraphen bestimmen (LK)",
+        "titleEn": "Determine decision rule or sample size from power-function graphs",
+        "descriptionDe": "Die lernende Person kann für vorgegebene Kandidaten von Entscheidungsregeln oder Stichprobenumfängen eindeutig gekennzeichnete Graphen der Operationscharakteristik oder Gütefunktion auswerten, die jeweiligen Nichtverwerfungs- beziehungsweise Verwerfungswahrscheinlichkeiten mit vorgegebenen Anforderungen vergleichen und eine passende Entscheidungsregel oder einen geeigneten Stichprobenumfang auswählen und fachlich begründen.",
+        "descriptionEn": "The learner can evaluate clearly labeled operating-characteristic or power-function graphs for given candidate decision rules or sample sizes, compare the corresponding probabilities of not rejecting or rejecting the null hypothesis with specified requirements, and select and justify a suitable decision rule or sample size."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-matrix-five-current-context-eleven-20261103-v1-a-sol-20261103T191148Z.goal-02",
+          "recordDigest": "sha256:8c42c91fe1d1824949020fdc075f359dd80cebae61ae120807f3939451858162"
+        },
+        "second": {
+          "recordId": "mathematik-current-eleven-20261103-astra-blind-b-191311.record-002",
+          "recordDigest": "sha256:d6bc355e7185fa969a0eb59e31b60715bf839b40a87d72326e857885cd448012"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten den aktuellen vollständigen DE/EN-Beschreibungsvertrag unverändert für tragfähig. Der Text löst die entscheidende Konventionsfrage bereits ausdrücklich durch eindeutig gekennzeichnete Graphen und die Zuordnung von Nichtverwerfen beziehungsweise Verwerfen. Vorgegebene Kandidaten und Anforderungen begrenzen das Ziel auf begründetes Auswählen; ein freier Entwurf oder eine rechnerische Optimierung wird nicht hinzugefügt. Deutsch und Englisch sind inhaltlich gleichwertig. Das aktuelle Profil enthält OC- und Gütefälle mit unterschiedlichem Auswahlgegenstand und reicht deshalb aus. Die gesichtete Visualisierung zeigt passende Kandidatenwerte; die vier angegebenen Binomialwahrscheinlichkeiten wurden zusätzlich rechnerisch bestätigt. Der bloße sourceRef wurde nicht als vollständiger Quellennachweis gewertet. Die Beschreibung begrenzt die Auswahl ausdrücklich auf vorgegebene, eindeutig beschriftete Kandidaten und unterscheidet die beiden komplementären Kurvenkonventionen. Sie verlangt eine mathematisch begründete Auswahl, ohne aus einem beliebigen Graphen eine ungebundene eindeutige Rekonstruktion von n oder Verwerfungsbereich zu behaupten. Das V2-Profil operationalisiert den Wechsel von OC-Regelauswahl zu Güte-Stichprobenauswahl als echten Darstellungs- und Entscheidungswechsel; die angegebenen Binomialwerte sind konsistent. Die betrachtete Visualisierung zeigt ein passendes Gütebeispiel und ersetzt keine eigenständige Ableseleistung. Die breite Seiten-Applicability und der Quellenverweis wurden als gebundener Kontext gelesen; effektive GK/LK-Projektion und vollständige Quellenabbildung sind damit nicht extern verifiziert.",
+      "rationaleEn": "Both independent rounds retain the current complete bilingual description without changing its competence boundary. Their exact records remain the sources of this synthesis."
+    },
+    {
+      "decisionId": "math-matrix-five-eleven-20261103-reviewed-synthesis-v1-decision-002",
+      "goalId": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:23041be80ac0e2a1a6e140e7c061e62fd364e856734c0cb0872bbb93c6c7192c",
+      "pageFingerprint": "sha256:36826e8b0287bc4cb89bd85af29f203dcd4538c90a6a281ebe9e2fc8c29dc2c4",
+      "goalReviewContextFingerprint": "sha256:9b9dd3357d54a4706de95c691c0efbce3da47cde9e76127868eba93549052863",
+      "finalText": {
+        "titleDe": "Größen und Einheiten vergleichen und umrechnen",
+        "titleEn": "Compare and convert quantities and units",
+        "descriptionDe": "Die lernende Person kann für alltagsnahe Größen passende Einheiten auswählen, Größenangaben sicher in gleichartige Einheiten umrechnen, dabei anhand des Einheitenverhältnisses begründen, warum die dargestellte Größe unverändert bleibt, und Messergebnisse in einer gemeinsamen Einheit sinnvoll vergleichen.",
+        "descriptionEn": "The learner can choose suitable units for everyday quantities, reliably convert measurements into equivalent units, justify the unchanged quantity from the relationship between the units, and compare measurement results meaningfully in a common unit."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-matrix-five-current-context-eleven-20261103-v1-a-sol-20261103T191148Z.goal-03",
+          "recordDigest": "sha256:2a78ad9809dcf4c9e8e173f1cf94a4fc088de3d566f7bb2a941c79313ada0902"
+        },
+        "second": {
+          "recordId": "mathematik-current-eleven-20261103-astra-blind-b-191311.record-003",
+          "recordDigest": "sha256:ecea7eb1318b3149c5c96550cd643ce4a0f4cfcaa0a7a1f07dd906d315bbce2a"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten den aktuellen vollständigen DE/EN-Beschreibungsvertrag unverändert für tragfähig. Auswahl der Einheit, Umrechnung mit Werterhaltung und Vergleich bilden hier eine zusammenhängende Messkompetenz. Die Beschreibung benennt bereits den mathematischen Grund der Umrechnung und bleibt bei alltagsnahen gleichartigen Größen, ohne die gesonderten Folgeziele zu Flächen- und Volumeneinheiten vorwegzunehmen. Die beiden Sprachfassungen sind ausreichend klar. Das vorhandene Profil prüft sowohl gemeinsamen Maßstab als auch den nichtdezimalen Zeittransfer. Die gesichtete Bandvisualisierung stellt 1,2 m, 120 cm und 0,12 dam korrekt als dieselbe Länge dar; ihre Musterwerte ersetzen keine unabhängige Leistung. Einheitenwahl, Werterhaltung beim Umrechnen und anschließender Vergleich ergeben eine zusammenhängende Messkompetenz. Die Beschreibung benennt ausdrücklich den begründenden Einheitenzusammenhang; sie fordert weder nur Kommaschieben noch das Rechnen mit zusammengesetzten Größen aus Nachfolgezielen. DE und EN tragen denselben Anspruch. Das V2-Profil verbindet eigenständige Auswahl und Vergleich mit einem strukturell anderen 60er-Zeitfall. Die gesichtete Bandlängen-Visualisierung ist dafür ein korrektes Lehrbeispiel, aber der unabhängige Zeittransfer muss gesondert erbracht werden.",
+      "rationaleEn": "Both independent rounds retain the current complete bilingual description without changing its competence boundary. Their exact records remain the sources of this synthesis."
+    },
+    {
+      "decisionId": "math-matrix-five-eleven-20261103-reviewed-synthesis-v1-decision-003",
+      "goalId": "5dbf149c-d335-552c-a918-768a12e09201",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:596d9ea6bfe31f2d2f6f368304a751ffa016ff2a450eb449fd2b0413ff9ef4f8",
+      "pageFingerprint": "sha256:6ff097d50e87397810215800fbfea07f650135a47d95bf52c68d439d09177e1b",
+      "goalReviewContextFingerprint": "sha256:abcae831c35111a3d783ca1a74eac0d44941479d97061e1aea677f914f45929b",
+      "finalText": {
+        "titleDe": "Normalverteilung zur Modellierung von Messdaten verwenden (LK)",
+        "titleEn": "Use normal distribution to model measurement data (advanced course)",
+        "descriptionDe": "Die lernende Person kann annähernd normalverteilte Messdaten mithilfe der Normalverteilung modellieren, aus Mittelwert und Standardabweichung Wahrscheinlichkeiten für Bereiche bestimmen und die Angemessenheit des Modells diskutieren.",
+        "descriptionEn": "The learner can model approximately normally distributed measurement data using the normal distribution, determine probabilities for ranges from mean and standard deviation, and discuss the appropriateness of the model."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-matrix-five-current-context-eleven-20261103-v1-a-sol-20261103T191148Z.goal-04",
+          "recordDigest": "sha256:a07c8cb112d1cbd3c3dc17cf66c22134495f14efcd07f19a94dc7150718ad148"
+        },
+        "second": {
+          "recordId": "mathematik-current-eleven-20261103-astra-blind-b-191311.record-004",
+          "recordDigest": "sha256:6564d9624b5d6f57717a8524795d17978ed5f8578134a81a2b6e0e9c201e7226"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten den aktuellen vollständigen DE/EN-Beschreibungsvertrag unverändert für tragfähig. Die Beschreibung benennt die vollständige zusammenhängende Modellierungskette aus Messdaten, Parametern, Bereichswahrscheinlichkeit und Angemessenheitsdiskussion. Das Bestimmen von Wahrscheinlichkeiten ist laut gebundenem Kontext bereits vorbereitet; hier erhält es seine Modellbedeutung. Deutsch und Englisch stimmen überein, und eine Festlegung auf Standardisierung statt eines gleichwertigen Hilfsmittels ist nicht nötig. Das aktuelle Profil enthält ausdrücklich die Unterscheidung von Modell und Beobachtung sowie einen beidseitigen Randtransfer. Die gesichtete Visualisierung kennzeichnet Modellprüfung und den zentralen 68-Prozent-Bereich korrekt. Die Beschreibung verbindet Modellansatz, Bereichswahrscheinlichkeit und Eignungsdiskussion sinnvoll zu einem Modellierungsgang. Sie geht über die reine Normalwahrscheinlichkeitsrechnung des direkten Vorwissens hinaus, ohne einen formalen Anpassungstest zu verlangen. Das V2-Profil trennt geschätzte Parameter, Modellanteile und tatsächliche Häufigkeiten und bietet mit der Randdatenkritik einen passenden eigenständigen Transfer. Die gesichtete Grafik erklärt das zentrale Höhenintervall und weist auf datenbezogene Modellprüfung hin; sie belegt selbst keine solche Prüfung durch Lernende. Kein lokaler Beschreibungs- oder Profilmangel festgestellt.",
+      "rationaleEn": "Both independent rounds retain the current complete bilingual description without changing its competence boundary. Their exact records remain the sources of this synthesis."
+    },
+    {
+      "decisionId": "math-matrix-five-eleven-20261103-reviewed-synthesis-v1-decision-004",
+      "goalId": "03357e70-2280-532f-b629-5dfa31dc44eb",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b46078388344c2ac7029f3e4b787610412d45213f908d9fbe3ef17099918ac7e",
+      "pageFingerprint": "sha256:490651a82792ede1fd61f7636c38af77a2399b5be5a2180141f3c6e009f4f6ad",
+      "goalReviewContextFingerprint": "sha256:170511928576e4184ca2239f6c074a7ecd5bea49c0751cff377d8e9f19fd2db4",
+      "finalText": {
+        "titleDe": "Tests vergleichen und bewerten (LK)",
+        "titleEn": "Compare and evaluate tests (advanced course)",
+        "descriptionDe": "Die lernende Person kann unterschiedliche Testverfahren oder Parametereinstellungen hinsichtlich Fehlerwahrscheinlichkeiten und Teststärke vergleichen und begründete Entscheidungen treffen.",
+        "descriptionEn": "The learner can compare different test procedures or parameter settings regarding error probabilities and test power and make reasoned decisions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-matrix-five-current-context-eleven-20261103-v1-a-sol-20261103T191148Z.goal-05",
+          "recordDigest": "sha256:4d62367dbde60178d1027895785b9e5fecb3292ec787146244545ef15cb39a41"
+        },
+        "second": {
+          "recordId": "mathematik-current-eleven-20261103-astra-blind-b-191311.record-005",
+          "recordDigest": "sha256:71daf2e38cd752fa002f68a3a7c0efecec352227929daddd21f1a422a2da3710"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten den aktuellen vollständigen DE/EN-Beschreibungsvertrag unverändert für tragfähig. Mit Fehlerwahrscheinlichkeiten, Teststärke und begründeter Entscheidung benennt der Text die passenden Größen einer Bewertung auf dem angegebenen AB3-Niveau. Die Kombination aus Vergleich und Wahl ist ein kohärenter Bewertungsprozess. Die Beschreibung bleibt hinreichend kurz und schreibt weder einen universell besten Test noch einen bestimmten Testtyp vor. Das vorhandene Profil konkretisiert Hypothesenbezug, Zielkonflikt und einen sachlich veränderten Kostenfall bereits vollständig. Die gesichtete Grafik kennzeichnet ihre Verteilungen als schematisch und die einseitige Regel X≥k ausdrücklich; diese Illustration begrenzt das allgemeiner formulierte Lernziel nicht. Vergleichen und begründet Entscheiden beziehen sich bereits ausdrücklich auf Fehlerwahrscheinlichkeiten und Stärke; die knappe Beschreibung benötigt keinen fest eingebauten Optimierungsmaßstab. Das V2-Profil liefert diesen situationsbezogen, hält Alternativparameter vergleichbar und trennt die Gewichte des ausdrücklich vorgegebenen Kostenmodells von der Bedeutung von α und β. Der Kriterienwechsel ist echter Transfer. Die gesichtete Grafik veranschaulicht den Schwellenkonflikt für X≥k und kennzeichnet die Verteilungen als schematisch. Daraus wird weder eine universelle Überlegenheit eines Tests noch eine extern geprüfte curriculare Zuordnung abgeleitet.",
+      "rationaleEn": "Both independent rounds retain the current complete bilingual description without changing its competence boundary. Their exact records remain the sources of this synthesis."
+    },
+    {
+      "decisionId": "math-matrix-five-eleven-20261103-reviewed-synthesis-v1-decision-005",
+      "goalId": "7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0b719c855cc8557f1e200e1b31e2e4523af208389f87fc26d94c315498dbd70d",
+      "pageFingerprint": "sha256:4afe8edd1689dd3b1790debb0163579a0c425fa5a2def2a98420392014ca1e37",
+      "goalReviewContextFingerprint": "sha256:a27b5e852a457eacd8c97f6b385273a4325bf6e9bcf1d8912256935b6bbc3801",
+      "finalText": {
+        "titleDe": "Normalverteilungsdichte über μ, σ und Grapheneigenschaften beschreiben (LK)",
+        "titleEn": "Describe the normal density via mu, sigma, and graph properties (advanced course)",
+        "descriptionDe": "Die lernende Person kann den Einfluss der Parameter $\\mu$ und $\\sigma$ auf die Normalverteilung und ihre Glockenkurve beschreiben, Erwartungswert und Standardabweichung aus Term oder Graph entnehmen sowie Hochpunkt und Wendepunkte der Dichtefunktion lokalisieren.",
+        "descriptionEn": "The learner can describe the influence of the parameters $\\mu$ and $\\sigma$ on the normal distribution and its bell curve, read expected value and standard deviation from the term or graph, and locate the maximum and inflection points of the density function."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-matrix-five-current-context-eleven-20261103-v1-a-sol-20261103T191148Z.goal-06",
+          "recordDigest": "sha256:d87b70fa838eca0c2660ddcec06e537bbfd63fc4af0d2bf1a1b19d15b316ecdc"
+        },
+        "second": {
+          "recordId": "mathematik-current-eleven-20261103-astra-blind-b-191311.record-006",
+          "recordDigest": "sha256:96f8c75e89b25d056a53afe33aea262c03aee9f601e5459b26047b4a1e555b25"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten den aktuellen vollständigen DE/EN-Beschreibungsvertrag unverändert für tragfähig. Parameterwirkung, Parameterentnahme und besondere Punkte beschreiben hier dieselbe Darstellungsbeziehung einer Normaldichte. Die Beschreibung ist bilingual konsistent und fordert keine zusätzliche Ableitungsherleitung oder Flächenberechnung. Der übliche Bereich σ>0 wird im aktuellen Profil fachlich explizit, ohne den kurzen Beschreibungstext mit Detailfällen zu belasten. Das Profil deckt auch die umgekehrte Inferenz von Wendestellen auf Parameter ab. Die gesichtete Grafik verdeutlicht Verschiebung und Breitenänderung; ihr schematischer Graph ist kein maßstäblicher Nachweis für die vom Lernenden zu bestimmenden Punkte. Parameterdeutung, Ablesen und Lokalisieren sind hier Teile derselben Darstellungsbeziehung. Die Beschreibung bleibt bei der Dichtegeometrie und erweitert das Ziel nicht um Intervallwahrscheinlichkeiten, Messdatenmodellierung oder eine zwingende Ableitungsrechnung. Das V2-Profil macht σ>0, Normierung, Höhen und die inverse Rekonstruktion aus Wendestellen konkret. Die gesichtete Grafik unterstützt genau die Lage-Breite-Beziehung; ihre schematische Form ersetzt keinen eigenständigen Parameterbezug. DE/EN und das AB2-Ziel bleiben konsistent; keine Revision erforderlich.",
+      "rationaleEn": "Both independent rounds retain the current complete bilingual description without changing its competence boundary. Their exact records remain the sources of this synthesis."
+    },
+    {
+      "decisionId": "math-matrix-five-eleven-20261103-reviewed-synthesis-v1-decision-006",
+      "goalId": "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a8ca2aac0efa1ae69d787f71b7e72892ed7221fa213fe2b40e8018716be4f370",
+      "pageFingerprint": "sha256:a8f995388a335b78c31003bdcce065df13ce8400f6d4e878f78cc9bfe5896bd6",
+      "goalReviewContextFingerprint": "sha256:3844c5059d5e2d8ea2ff88a2088988a293ec76fad48409950460bb8e427dde7d",
+      "finalText": {
+        "titleDe": "Variablen in Termen, Gleichungen und Formeln verwenden und deuten",
+        "titleEn": "Use and interpret variables in expressions, equations, and formulae",
+        "descriptionDe": "Die lernende Person kann Variablen in Termen, Gleichungen und Formeln als Unbekannte, Veränderliche oder Parameter verwenden, ihre jeweilige Rolle fachsprachlich erklären und passenden Situationen zuordnen.",
+        "descriptionEn": "The learner can use variables in expressions, equations, and formulae as unknowns, varying quantities, or parameters, explain each role using correct terminology, and relate it to suitable situations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-matrix-five-current-context-eleven-20261103-v1-a-sol-20261103T191148Z.goal-07",
+          "recordDigest": "sha256:e686781fbb4c3949e1d83bea2b8802a8dcabcf182686c2c82550ff60438681cc"
+        },
+        "second": {
+          "recordId": "mathematik-current-eleven-20261103-astra-blind-b-191311.record-007",
+          "recordDigest": "sha256:67357e55e98ba57b24c7c5e1ca39a6bfbb786c789e87f5fbfc635eea35b0c68c"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten den aktuellen vollständigen DE/EN-Beschreibungsvertrag unverändert für tragfähig. Der Text unterscheidet die drei verlangten Variablenrollen bereits ausdrücklich und verknüpft Verwendung mit fachsprachlicher Erklärung und Situationszuordnung. Das ist eine zusammenhängende Begriffskompetenz und kein Anlass, nach Term, Gleichung und Formel aufzuspalten. Die nachfolgenden Ziele zum Einsetzen und Umformen werden nicht vorweggenommen. Das aktuelle Profil prüft alle drei Rollen einschließlich eines Rollenwechsels desselben Symbols. Die gesichtete Visualisierung illustriert Term, Gleichung und Formel; sie zeigt keinen ausdrücklich festgelegten Parameterfall und reicht allein daher nicht als vollständiger Rollen- oder Verstehensnachweis. Die Beschreibung benennt die drei Rollen und verlangt ihre begründete Verwendung in passenden Situationen; sie behauptet keine starre Zuordnung Term=Veränderliche oder Gleichung=Unbekannte. Das V2-Profil macht die Kontextabhängigkeit sowie den Rollenwechsel desselben p explizit und ergänzt damit das Verständnis über bloßes Etikettieren hinaus. Die gesehene Visualisierung illustriert Term, Gleichung und Formel, enthält aber kein ausgearbeitetes Parameterbeispiel; das vollständige Rollenverständnis muss daher durch die gebundenen unabhängigen Aufgaben sichtbar werden. Die Kompetenz bleibt von Termumformung und Einsetzrechnung getrennt.",
+      "rationaleEn": "Both independent rounds retain the current complete bilingual description without changing its competence boundary. Their exact records remain the sources of this synthesis."
+    },
+    {
+      "decisionId": "math-matrix-five-eleven-20261103-reviewed-synthesis-v1-decision-007",
+      "goalId": "5bba4ec2-3781-4624-8b62-e24b38f7f76e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6e93bacdb8c1fabd2a7e85dd621d744a737fa1a20149e5ed726b66f7beebaa88",
+      "pageFingerprint": "sha256:ec1aae0f7532dff450382b61a0b0b2fc93c0e4c2bdb650356fd0098587ccddcc",
+      "goalReviewContextFingerprint": "sha256:7aae5b10f63e1674312fafb4954deabfdf3c6b6b8a79bf10bffb9007abddfb32",
+      "finalText": {
+        "titleDe": "Variablen in Sachsituationen einführen und deuten",
+        "titleEn": "Introduce and Interpret Variables in Real-World Situations",
+        "descriptionDe": "Die lernende Person kann in Sachsituationen passende Variablen festlegen, ihre Bedeutung erklären und einfache Abhängigkeiten mit Variablen sprachlich und symbolisch beschreiben.",
+        "descriptionEn": "The learner can choose suitable variables in real-world situations, explain their meaning, and describe simple relationships with variables in words and symbols."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-matrix-five-current-context-eleven-20261103-v1-a-sol-20261103T191148Z.goal-08",
+          "recordDigest": "sha256:d29530f93294c25b7fcfc2728580918ba4fc8ac1f4be3158d6482c82a93039e2"
+        },
+        "second": {
+          "recordId": "mathematik-current-eleven-20261103-astra-blind-b-191311.record-008",
+          "recordDigest": "sha256:1125dbe5c6a7aa61f1921d5393a7c31e46cb3c73e68cb53cb01a1fc083ef4a74"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten den aktuellen vollständigen DE/EN-Beschreibungsvertrag unverändert für tragfähig. Variablenwahl, Bedeutungsfestlegung und einfache Abhängigkeit sind als ein erster Modellierungsschritt verständlich verbunden. Die Beschreibung verlangt ausdrücklich beide Darstellungen und bleibt für Jahrgang 7 angemessen; eine Ergänzung um Lösungsverfahren würde den Umfang verändern. Gegenüber dem ebenfalls gebundenen Termübersetzungsziel liegt der Akzent hier auf der Einführung und stabilen Bindung der Größen. Das vorhandene Profil liefert dazu unterschiedliche Beziehungsstrukturen und unabhängigen Transfer. Die gesichtete Ticketvisualisierung unterstützt diesen Einstieg, ist aber ein vorgerechneter proportionaler Einzelfall. Die Beschreibung fordert ausdrücklich das eigenständige Festlegen und Deuten der Variablen sowie die Koordination von Sprache und Symbolen. Das ist eine zusammenhängende Einführungskompetenz und keine versteckte Forderung nach Gleichungslösen. Das V2-Profil enthält verschiedene Beziehungsstrukturen und hält die Symbolbedeutungen stabil; die Fahrrad-, Alters- und Taxifälle prüfen mehr als einen Zahlenwechsel. Die gesichtete Ticketgrafik ist ein einzelnes Lehrbeispiel. Der allgemeinere Begriff der symbolischen Beschreibung bleibt sinnvoll neben dem gezielteren Termübersetzungsziel bestehen.",
+      "rationaleEn": "Both independent rounds retain the current complete bilingual description without changing its competence boundary. Their exact records remain the sources of this synthesis."
+    },
+    {
+      "decisionId": "math-matrix-five-eleven-20261103-reviewed-synthesis-v1-decision-008",
+      "goalId": "fd860da9-73ba-47cd-a1a8-452424915a80",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c879cbf33ce95d66c37a022f6e5a24a21019c4267a6c64400a045f2395e62f3a",
+      "pageFingerprint": "sha256:17935f8028ff62907702c81571401a4e46c6d4cc2584d8a4033817cd376f42e6",
+      "goalReviewContextFingerprint": "sha256:0afdac7e383a7f08847b05de1a5b2deef4be9d54c85191e37cbf94eb335d07b9",
+      "finalText": {
+        "titleDe": "Sachsituationen in Terme mit Variablen übersetzen",
+        "titleEn": "Translate real contexts into expressions with variables",
+        "descriptionDe": "Die lernende Person kann zu einfachen Sachsituationen passende Terme mit Variablen aufstellen und die Bedeutung der verwendeten Variablen im Kontext erklären.",
+        "descriptionEn": "The learner can set up suitable expressions with variables for simple real contexts and explain the meaning of the variables used in context."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-matrix-five-current-context-eleven-20261103-v1-a-sol-20261103T191148Z.goal-09",
+          "recordDigest": "sha256:edb84d33a84059b8d61c9296266f61f239299dafbc55921c2bfb53a01914336d"
+        },
+        "second": {
+          "recordId": "mathematik-current-eleven-20261103-astra-blind-b-191311.record-009",
+          "recordDigest": "sha256:804bb5a6d40c491166f1fc1d2cf18a8e67a7afca3fe0d45e9beac6b7af810dcc"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten den aktuellen vollständigen DE/EN-Beschreibungsvertrag unverändert für tragfähig. Die kurze Beschreibung bindet die Leistung eindeutig an passende Terme aus einfachen Sachsituationen und an die Bedeutung der Variablen. Die fachliche Passung eines Terms umfasst seine Operationsstruktur; die genauere Beobachtung dieser Struktur gehört in das Evidenzprofil, nicht zwingend als weitere Aufzählung in die Beschreibung. Die Sprachfassungen sind deckungsgleich und verlangen weder Gleichungslösen noch eine bestimmte algebraische Form. Das aktuelle Profil konkretisiert feste Anteile, mehrere Variablen und begründete Klammerung bereits ausreichend. Die gesichtete Visualisierung übersetzt unterschiedliche Beziehungen in x+y und v·t; ihr Kopieren wäre keine unabhängige Übersetzungsleistung. Die knappe Beschreibung bindet das Aufstellen an passende Sachterme und die Bedeutung der Variablen; eine Aufzählung der Operationsfälle gehört in das Profil. Dieses fordert die Erklärung der Modellbestandteile und bietet mit zweiter Variable sowie gruppenbezogenem gegenüber einmaligem Zusatz echte Strukturvariation. Gleichwertige Formen bleiben zugelassen. Die gesichtete Visualisierung erklärt Summe und Wegterm als Lehrbeispiele; die überprüfbare Leistung ist die eigenständige neue Übersetzung. Es werden weder das Lösen der nachfolgenden linearen Gleichungen noch ein allgemeiner formaler Modellvalidierungsgang hinzugefügt.",
+      "rationaleEn": "Both independent rounds retain the current complete bilingual description without changing its competence boundary. Their exact records remain the sources of this synthesis."
+    },
+    {
+      "decisionId": "math-matrix-five-eleven-20261103-reviewed-synthesis-v1-decision-009",
+      "goalId": "325771e1-602d-4bca-a199-a8f39a2d3dee",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:88d34b69f1855f319672c01a36c2ac631a027b23e9853e6263a21aab3c83d7b9",
+      "pageFingerprint": "sha256:848fd6494b5c376f556c1e0a10295323ab4099b58175394e273e19fdaa9fcd78",
+      "goalReviewContextFingerprint": "sha256:d8bf14815a740d9ce7ad6dc05350a439b0839848ca59a1cf5f076fb8a5254204",
+      "finalText": {
+        "titleDe": "Lineare Gleichungen systematisch lösen",
+        "titleEn": "Solve linear equations systematically",
+        "descriptionDe": "Die lernende Person kann lineare Gleichungen mit Äquivalenzumformungen systematisch lösen, Lösungswege begründen und Ergebnisse durch Einsetzen prüfen.",
+        "descriptionEn": "The learner can solve linear equations systematically using equivalent transformations, justify solution paths, and check results by substitution."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-matrix-five-current-context-eleven-20261103-v1-a-sol-20261103T191148Z.goal-10",
+          "recordDigest": "sha256:47291d7fed25bd515660799fe303f0602d47a8ff07b18d47068b7aece5a7eee5"
+        },
+        "second": {
+          "recordId": "mathematik-current-eleven-20261103-astra-blind-b-191311.record-010",
+          "recordDigest": "sha256:0191e200fa6d44118bb38f090187da8cd0d8d3952816a034b031eb4332850ad3"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Runden halten den aktuellen vollständigen DE/EN-Beschreibungsvertrag unverändert für tragfähig. Die Beschreibung fordert bereits Verfahren, Begründung und Rückprüfung in klarer bilingualer Form. Diese drei Schritte gehören zum selben Lösungsprozess. Der explizite Äquivalenzbezug verhindert ein rein mechanisches Verschieben von Zeichen und lässt verschiedene gültige Reihenfolgen zu. Die gesonderten Nachfolger zu Lösbarkeit, Gleichungssystemen, Ungleichungen und variablen Nennern werden nicht in den Nachweis importiert. Das aktuelle Profil enthält verschiedene Gleichungsstrukturen und eine Fehleranalyse; es ist ausreichend. Die gesichtete Visualisierung zeigt eine korrekte Äquivalenzkette und Einsetzprobe für 2x+3=11, bleibt aber ein Lehrbeispiel. Die Beschreibung unterscheidet korrekt das begründete Lösen vom Prüfen des Ergebnisses und bleibt unverändert. Das V2-Profil enthält dagegen in substitution-checks-original-equality die Behauptung, die Probe überprüfe damit die gesamte Umformungskette. Eine erfolgreiche Probe bestätigt die gefundene Lösung, legitimiert aber keine fehlerhaften oder nicht äquivalenten Zwischenschritte; zwei Fehler können sich beispielsweise bis zum richtigen Endwert aufheben. Diese Aussage ist lokal zu korrigieren, während die guten Strukturvariationen und die eigenständige Fehleranalyse erhalten bleiben. Das Nachfolgeziel behandelt Lösbarkeit und Lösungsvielfalt, weshalb hier keine zusätzliche allgemeine Fallklassifikation verlangt wird. Die gesichtete Grafik stellt den üblichen korrekten Lösungsweg mit anschließender Ergebnisprobe dar. Die gesonderte berechtigte Präzisierung des P-Profils wird dadurch nicht als erledigt ausgegeben; dessen neuer Seitenkontext erhält einen separaten aktuellen Nachreview.",
+      "rationaleEn": "Both independent rounds retain the current complete bilingual description without changing its competence boundary. Their exact records remain the sources of this synthesis. The separate justified P-profile correction is not claimed resolved here; its new page context will receive a separate current follow-up review."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "rationaleDe": "Die unabhängigen aktuellen Reviewbefunde erfordern eine lokale Beschreibungskorrektur. Der vorgeschlagene Nachfolger wird nicht als KEEP des bisherigen Texts ausgegeben; aktuelle Folgereviews müssen den korrigierten Text binden.",
+      "rationaleEn": "The independent current findings require a local description correction. The proposed successor is not reported as KEEP of the previous text; current follow-up reviews must bind the corrected text."
+    },
+    {
+      "goalId": "5743b8f9-86cb-4e24-8859-351708d070ab",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "Die unabhängigen aktuellen Reviewbefunde erfordern eine lokale Beschreibungskorrektur. Der vorgeschlagene Nachfolger wird nicht als KEEP des bisherigen Texts ausgegeben; aktuelle Folgereviews müssen den korrigierten Text binden.",
+      "rationaleEn": "The independent current findings require a local description correction. The proposed successor is not reported as KEEP of the previous text; current follow-up reviews must bind the corrected text."
+    }
+  ],
+  "manifestFingerprint": "sha256:8ceb9def0127494609775943a888eb88f7039a47011a8979e55c679d0976b0c5"
+}

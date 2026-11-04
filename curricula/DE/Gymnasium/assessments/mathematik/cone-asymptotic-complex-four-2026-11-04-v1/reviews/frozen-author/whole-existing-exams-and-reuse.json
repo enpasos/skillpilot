@@ -1,0 +1,1980 @@
+{
+  "status": "ACTUAL_CURRENT_WHOLE_EXAMS_AND_R_INSPECTED_BOUNDED_CONTENT_DECISIONS_ONLY",
+  "canonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "3c3ca7bdbe110061e263b7e37173e5bb365f325384e8cc0cde0713108a2b438a"
+  },
+  "matches": [
+    {
+      "wholeExistingExamGoal": {
+        "id": "af7905d0-e684-5ea3-99ac-8a045455370e",
+        "title": "Aufgabe 1 (Jahrgangsstufe 10, 10 BE)",
+        "description": "Die lernende Person kann eine freigegebene Prüfungsaufgabe der Jahrgangsstufe 10 bearbeiten: Exponentialmodelle, Logarithmen, Halbwertszeit, Asymptotik und Zinseszins im Kontext deuten.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical",
+          "phase:SekI",
+          "ExamTask"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v2.md#task-1",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1",
+            "K2",
+            "K3",
+            "K4"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "J10",
+          "area": "Mathematik",
+          "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J10.TASK.1"
+        },
+        "shortKey": "canonical_math_sek1_practice_j10_task_1",
+        "contains": [],
+        "requires": [
+          "31207307-0cf9-4a56-bf14-90196dc2b3d4",
+          "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+          "c19d1f8f-b297-5a58-b1d4-26d811e4aff4",
+          "308f19e2-e202-5300-a2fa-1eaa717f4e73",
+          "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+          "c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+          "aed3ca99-815b-40b8-ae91-e11bf92f51da",
+          "367a59ce-a388-5c93-b6f9-a3b0c6c3b45e"
+        ],
+        "phase": "J10",
+        "type": "atomic",
+        "nodeKind": "exam",
+        "examData": {
+          "reviewStatus": "released",
+          "reviewNote": "Begrenzte Inhaltskorrektur vom 01.11.2026 unabhängig mit Astra Ultra fachlich geprüft; exakte Nachkorrekturen berücksichtigt. Nachweis: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-seki-candidate-review.json. Feste vorgegebene Modelle verlangen keine eigene Modellwahl/Annahmenvariation/Grenzenentscheidung. Dieser breite Claim entfällt aus Coverage und direkter Vorbereitung; Parameter-/Exponential-/Logarithmuskompetenzen bleiben. Korrekte Rundung und die fehlende Jahresdefinition werden redaktionell ergänzt.",
+          "coveredGoalIds": [
+            "31207307-0cf9-4a56-bf14-90196dc2b3d4",
+            "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+            "c19d1f8f-b297-5a58-b1d4-26d811e4aff4",
+            "308f19e2-e202-5300-a2fa-1eaa717f4e73",
+            "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+            "c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+            "aed3ca99-815b-40b8-ae91-e11bf92f51da",
+            "367a59ce-a388-5c93-b6f9-a3b0c6c3b45e"
+          ],
+          "coveredStrands": [
+            "L1",
+            "L4"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v2.md",
+          "taskContent": "Der Akkustand eines Sensors wird durch $B(t)=1200\\cdot 0{,}82^t$ modelliert. $t$ ist die Zeit in Stunden nach Beginn einer Nachtmessung. Für Ersatzteile wird ein Konto mit $K(n)=2500\\cdot 1{,}035^n$ modelliert; $n$ zählt die Jahre seit Kontoeröffnung.\n\n1. Beschreibe den Verlauf des Graphen von $B$ anhand der Parameter und nenne die Asymptote. (2 BE)\n2. Berechne $B(0)$ und $B(3)$. (1 BE)\n3. Bestimme die Zeit, ab der der Akkustand unter $500 Wh$ fällt, und berechne die Halbwertszeit. Erkläre, warum Logarithmen nötig sind. (4 BE)\n4. Berechne $K(5)$ und erläutere Anfangskapital, Zinssatz, Laufzeit, Endkapital und Zinseszins im Modell. (3 BE)",
+          "solutionContent": "$B$ hat Anfangswert $1200$, Wachstumsfaktor $0{,}82<1$, ist streng fallend und hat die waagerechte Asymptote $y=0$.\n\n$B(0)=1200$, $B(3)=1200\\cdot 0{,}82^3≈661{,}6\\,Wh$.\n\n$1200\\cdot 0{,}82^t<500$ ergibt $t>\\log(500/1200)/\\log(0{,}82)≈4{,}41$. Die Halbwertszeit erfüllt $0{,}82^t=0{,}5$, also $t=\\log(0{,}5)/\\log(0{,}82)≈3{,}49$. Logarithmen sind nötig, weil die gesuchte Zeit im Exponenten steht.\n\n$K(5)=2500\\cdot 1{,}035^5≈2969{,}22$. Anfangskapital $2500\\,\\mathrm{EUR}$, Zinssatz $3{,}5\\,\\%$, Laufzeit $5$ Jahre, Endkapital etwa $2969{,}22\\,\\mathrm{EUR}$; Zinseszins bedeutet, dass Zinsen in Folgejahren mitverzinst werden.\n\nDer exakte Wert B(3)=661,6416 Wh wird auf eine Nachkommastelle zu 661,6 Wh gerundet; andere fachlich sinnvolle Genauigkeiten sind gleichwertig.",
+          "scoring": {
+            "maxPoints": 10,
+            "passingPoints": 5,
+            "steps": [
+              {
+                "id": "j10_released_v2_1",
+                "points": 10,
+                "description": "Exponentialmodelle, Logarithmen, Halbwertszeit, Asymptotik und Zinseszins im Kontext deuten."
+              }
+            ]
+          }
+        },
+        "extendedData": {
+          "applicabilityMappingInheritance": "boundary",
+          "applicabilityFromRequires": true
+        }
+      },
+      "requestedIdsInAuthoredR": [],
+      "requestedIdsInCoverageMetadata": []
+    },
+    {
+      "wholeExistingExamGoal": {
+        "id": "ea664a30-98be-508e-90ac-5304679814ee",
+        "title": "Aufgabe 5 (Jahrgangsstufe 10, 10 BE)",
+        "description": "Die lernende Person kann eine freigegebene Prüfungsaufgabe der Jahrgangsstufe 10 bearbeiten: Geraden im Raum, vektorielle Bewegungen, Lagebeziehungen und Kegelvolumen in einer technischen Anwendung bearbeiten.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical",
+          "phase:SekI",
+          "ExamTask"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BW"
+          ],
+          "stage": [
+            "SekI"
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v3.md#task-5",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1",
+            "K2",
+            "K3",
+            "K4"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L3"
+          ],
+          "phase": "J10",
+          "area": "Mathematik",
+          "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J10.TASK.5"
+        },
+        "shortKey": "canonical_math_sek1_practice_j10_task_5",
+        "contains": [],
+        "requires": [
+          "b025df0c-994c-4807-9c5f-2d548905b73f",
+          "ba343971-10e5-4b05-b005-405b9c1ce447",
+          "50612a57-7b9d-45fd-bc08-e95556444760",
+          "7b860649-373e-5523-9843-ec96b3537f1f",
+          "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+        ],
+        "phase": "J10",
+        "type": "atomic",
+        "nodeKind": "exam",
+        "examData": {
+          "reviewStatus": "released",
+          "reviewNote": "Begrenzte Inhaltskorrektur vom 01.11.2026 unabhängig mit Astra Ultra fachlich geprüft; exakte Nachkorrekturen berücksichtigt. Nachweis: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-seki-candidate-review.json. Der bereits bemaßte Kegel verlangt keine flexible Kombination verschiedener Körpermodelle. Die breite Körpermodellierung entfällt aus Coverage und direkter Vorbereitung; Kegelvolumen und Pyramiden-Plausibilisierung bleiben. Keine künstliche Verbindung zur unabhängigen Drohnenrechnung.",
+          "coveredGoalIds": [
+            "b025df0c-994c-4807-9c5f-2d548905b73f",
+            "ba343971-10e5-4b05-b005-405b9c1ce447",
+            "50612a57-7b9d-45fd-bc08-e95556444760",
+            "7b860649-373e-5523-9843-ec96b3537f1f"
+          ],
+          "coveredStrands": [
+            "L2",
+            "L3"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v3.md",
+          "taskContent": "Die Position einer Drohne wird durch $r(t)=(1|2|0)+t\\cdot (2|1|1)$ beschrieben. Dabei gibt $t$ die Zeit in Sekunden an; $t=0$ ist der gewählte Referenzzeitpunkt. Alle Ortskoordinaten sind in Metern angegeben. Für die geometrischen Lagevergleiche wird die gesamte Trägergerade $r$ der Flugbahn betrachtet. Eine Kontrollgerade ist $s(u)=(5|4|2)+u\\cdot (1|-1|0)$. Ein Regenwassertank ist ein gerader Kreiskegel mit Radius $2.4 m$ und Höhe $6 m$.\n\n1. Deute den Anfangsort und die konstante Ortsänderung pro Sekunde im Modell $r(t)$ und berechne die Drohnenposition nach zwei Sekunden. (2 BE)\n2. Untersuche, ob $r$ und $s$ sich schneiden. (3 BE)\n3. Vergleiche $r$ mit $k(v)=(0|0|1)+v\\cdot (2|1|1)$ und entscheide die Lagebeziehung. (2 BE)\n4. Berechne das Volumen des kegelförmigen Tanks und plausibilisiere die Formel als Grenzfall von Pyramiden. (3 BE)",
+          "solutionContent": "Zum Referenzzeitpunkt $t=0$ befindet sich die Drohne am Anfangsort $(1|2|0)$ mit Ortskoordinaten in Metern. Ihr konstanter Geschwindigkeitsvektor ist $(2|1|1)\\,\\mathrm{m/s}$: Pro Sekunde ändern sich die drei Ortskoordinaten um $2 m$, $1 m$ und $1 m$. Für $t=2$, also nach zwei Sekunden, gilt $r(2)=(5|4|2)$; auch diese Ortskoordinaten sind in Metern angegeben.\n\nFür einen Schnitt der Trägergerade $r$ mit $s$ löst man $(1+2t,2+t,t)=(5+u,4-u,2)$. Aus der dritten Koordinate folgt $t=2$, dann aus der ersten $u=0$ und aus der zweiten ebenfalls $u=0$; Schnittpunkt ist $(5|4|2)$.\n\n$k$ hat denselben Richtungsvektor wie $r$; der Verbindungsvektor der Stützpunkte $(1|2|-1)$ ist kein Vielfaches von $(2|1|1)$, also sind die Geraden echt parallel.\n\n$V=(1/3)\\cdot \\pi\\cdot r^2\\cdot h=(1/3)\\cdot \\pi\\cdot 2.4^2\\cdot 6=11.52\\pi≈36.2 m^3$. Die Formel ist plausibel, weil ein Kegel als Grenzfall von Pyramiden mit immer mehr Ecken in der Grundfläche verstanden werden kann.",
+          "scoring": {
+            "maxPoints": 10,
+            "passingPoints": 5,
+            "steps": [
+              {
+                "id": "j10_released_v1_5",
+                "points": 10,
+                "description": "Geraden im Raum, vektorielle Bewegungen, Lagebeziehungen und Kegelvolumen in einer technischen Anwendung bearbeiten."
+              }
+            ]
+          }
+        },
+        "extendedData": {
+          "applicabilityMappingInheritance": "boundary",
+          "applicabilityFromRequires": true
+        }
+      },
+      "requestedIdsInAuthoredR": [
+        "50612a57-7b9d-45fd-bc08-e95556444760"
+      ],
+      "requestedIdsInCoverageMetadata": [
+        "50612a57-7b9d-45fd-bc08-e95556444760"
+      ]
+    },
+    {
+      "wholeExistingExamGoal": {
+        "id": "57c6506d-5412-5dc9-9d41-32d860f02a08",
+        "title": "A1 (Analysis, Niveau 1, 5 BE) (LK)",
+        "titleEn": "A1 (Analysis, Level 1, 5 BE)",
+        "description": "Untersuchung von $f(x) = \\frac{e^x}{x}$ (Grenzwerte für $x \\to 0$ und $x \\to \\infty$, Extremum, Skizze).",
+        "descriptionEn": "Investigation of $f(x) = \\frac{e^x}{x}$ (limits as $x \\to 0$ and $x \\to \\infty$, extremum, sketch).",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "phase": "Abitur",
+          "demandLevel": "AB2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "taskContent": "Gegeben ist die Funktion $f(x) = \\frac{e^x}{x}$ für $x > 0$.\nBestimmen Sie das Verhalten von $f$ für $x \\to 0$ und $x \\to \\infty$.\nBerechnen Sie das Extremum und skizzieren Sie den Graphen.",
+          "solutionContent": "**Grenzwerte:**\n$\\lim_{x \\to 0} f(x) = \\infty$ (Polstelle).\n$\\lim_{x \\to \\infty} f(x) = \\infty$ (da $e^x$ schneller wächst als $x$).\n\n**Extrempunkt:**\n$f'(x) = \\frac{e^x x - e^x}{x^2} = \\frac{e^x(x-1)}{x^2}$.\nNullstelle $x=1$. $f(1)=e$. VZW $- \\to +$ (Tiefpunkt).\n\n**Skizze:**\nVerlauf von oben kommend zum TP $(1|e)$, dann steil ansteigend.",
+          "scoring": {
+            "maxPoints": 5,
+            "passingPoints": 3,
+            "steps": [
+              {
+                "id": "s1",
+                "points": 2,
+                "description": "Grenzwerte für $x \\to 0$ und $x \\to \\infty$ bestimmt"
+              },
+              {
+                "id": "s2",
+                "points": 2,
+                "description": "Extrempunkt berechnet"
+              },
+              {
+                "id": "s3",
+                "points": 1,
+                "description": "Skizze erstellt"
+              }
+            ]
+          },
+          "taskContentEn": "Given the function $f(x) = \\frac{e^x}{x}$ for $x > 0$.\nDetermine the behavior of $f$ as $x \\to 0$ and $x \\to \\infty$.\nCompute the extremum and sketch the graph.",
+          "solutionContentEn": "**Limits:**\n$\\lim_{x \\to 0} f(x) = \\infty$ (vertical asymptote).\n$\\lim_{x \\to \\infty} f(x) = \\infty$ (since $e^x$ grows faster than $x$).\n\n**Extremum:**\n$f'(x) = \\frac{e^x x - e^x}{x^2} = \\frac{e^x(x-1)}{x^2}$.\nZero at $x=1$. $f(1)=e$. Sign change $- \\to +$ (minimum).\n\n**Sketch:**\nFrom above down to the minimum at $(1|e)$, then rising steeply."
+        },
+        "phase": "Abitur",
+        "type": "atomic"
+      },
+      "requestedIdsInAuthoredR": [],
+      "requestedIdsInCoverageMetadata": []
+    },
+    {
+      "wholeExistingExamGoal": {
+        "id": "5d3fd2c4-7c7e-569e-ae02-75486573f3cc",
+        "title": "B2 (Analysis – \"Wirkstoffkonzentration\", 30 BE) (LK)",
+        "titleEn": "B2 (Analysis – \"Drug Concentration\", 30 BE)",
+        "description": "Funktionenschar, Extremwerte und Integral (AUC).",
+        "descriptionEn": "Function family, extrema and integral (AUC).",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "0e8417d7-effb-5314-93ba-a571b01726ce",
+          "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+          "49f9059a-876c-5051-8146-d008b5cc691c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "phase": "Abitur",
+          "demandLevel": "AB3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "taskContent": "Die Konzentration eines Medikaments im Blut wird modelliert durch die Funktionenschar:\n\n$$\nc_k(t) = 10 \\cdot t \\cdot e^{1 - k \\cdot t} \\quad (t \\ge 0, k > 0)\n$$\n\n($t$ in Stunden, $c_k(t)$ in mg/l).\n\n1. **Verlauf:** Untersuchen Sie das Verhalten für $t \\to \\infty$. Begründen Sie, dass die Konzentration für $t>0$ stets positiv ist. (4 BE)\n2. **Wirkungsmaximum:** Bestimmen Sie in Abhängigkeit von $k$ den Zeitpunkt der maximalen Konzentration und die Höhe der maximalen Konzentration.\n   Für welchen Parameter $k$ wird das Maximum genau nach 2 Stunden erreicht? (9 BE)\n3. **Abbaugeschwindigkeit:** Zeigen Sie, dass die Wendestelle der Funktion bei $t_W = \\frac{2}{k}$ liegt.\n   Interpretieren Sie die Bedeutung der Wendestelle im Kontext des Abbaus des Medikaments. (6 BE)\n4. **Gesamtmenge:** Das Integral $\\int_0^{\\infty} c_k(t) \\, dt$ ist ein Maß für die \"totale Exposition\" des Körpers (AUC = Area Under Curve).\n   Bestimmen Sie diesen Wert in Abhängigkeit von $k$.\n   Ein Arzt möchte die Exposition verdoppeln. Untersuchen Sie, wie er dafür den Parameter $k$ ändern muss. (11 BE)",
+          "solutionContent": "**1. Verlauf (4 BE)**\n$\\lim_{t \\to \\infty} c_k(t) = 0$ (e-Funktion dominiert). $t, k, e^x > 0 \\Rightarrow c_k(t) > 0$.\n\n**2. Maximum (9 BE)**\n$c_k'(t) = 10e^{1-kt}(1-kt) = 0 \\Rightarrow t = 1/k$. $c(1/k) = 10/k$. $t=2 \\Rightarrow k=0,5$.\n\n**3. Wendepunkt (6 BE)**\n$c_k''(t) = 10e^{1-kt}(-k(1-kt) - k) = 10k e^{1-kt}(kt-2) = 0 \\Rightarrow t=2/k$. Stärkste Abnahme.\n\n**4. Gesamtmenge (11 BE)**\nPartielle Integration. $\\int_0^{\\infty} c_k(t) dt = \\frac{10e}{k^2}$. Verdopplung: $k$ durch $k/\\sqrt{2}$ ersetzen.",
+          "scoring": {
+            "maxPoints": 30,
+            "passingPoints": 15,
+            "steps": [
+              {
+                "id": "s1",
+                "points": 4,
+                "description": "Grenzverhalten"
+              },
+              {
+                "id": "s2",
+                "points": 9,
+                "description": "Extrema berechnet"
+              },
+              {
+                "id": "s3",
+                "points": 6,
+                "description": "Wendepunkt"
+              },
+              {
+                "id": "s4",
+                "points": 11,
+                "description": "Integral und Parameter"
+              }
+            ]
+          },
+          "taskContentEn": "The concentration of a medication in the blood is modeled by the family of functions:\n\n$$\nc_k(t) = 10 \\cdot t \\cdot e^{1 - k \\cdot t} \\quad (t \\ge 0, k > 0)\n$$\n\n($t$ in hours, $c_k(t)$ in mg/l).\n\n1. **Behavior:** Investigate the behavior as $t \\to \\infty$. Justify that the concentration is always positive for $t>0$. (4 BE)\n2. **Maximum effect:** Determine, as a function of $k$, the time of maximum concentration and the maximum concentration value.\n   For which parameter $k$ is the maximum reached exactly after 2 hours? (9 BE)\n3. **Decay rate:** Show that the inflection point of the function is at $t_W = \\frac{2}{k}$.\n   Interpret the meaning of the inflection point in the context of the drug's decay. (6 BE)\n4. **Total exposure:** The integral $\\int_0^{\\infty} c_k(t) \\, dt$ is a measure of the body's \"total exposure\" (AUC = Area Under Curve).\n   Determine this value as a function of $k$.\n   A doctor wants to double the exposure. Investigate how the parameter $k$ must be changed. (11 BE)",
+          "solutionContentEn": "**1. Behavior (4 BE)**\n$\\lim_{t \\to \\infty} c_k(t) = 0$ (exponential dominates). $t, k, e^x > 0 \\Rightarrow c_k(t) > 0$.\n\n**2. Maximum (9 BE)**\n$c_k'(t) = 10e^{1-kt}(1-kt) = 0 \\Rightarrow t = 1/k$. $c(1/k) = 10/k$. $t=2 \\Rightarrow k=0.5$.\n\n**3. Inflection point (6 BE)**\n$c_k''(t) = 10e^{1-kt}(-k(1-kt) - k) = 10k e^{1-kt}(kt-2) = 0 \\Rightarrow t=2/k$. Strongest decrease.\n\n**4. Total exposure (11 BE)**\nIntegration by parts. $\\int_0^{\\infty} c_k(t) dt = \\frac{10e}{k^2}$. Doubling: replace $k$ by $k/\\sqrt{2}$."
+        },
+        "phase": "Abitur",
+        "type": "atomic"
+      },
+      "requestedIdsInAuthoredR": [
+        "49f9059a-876c-5051-8146-d008b5cc691c"
+      ],
+      "requestedIdsInCoverageMetadata": []
+    },
+    {
+      "wholeExistingExamGoal": {
+        "id": "9634bfe1-39ea-5428-a042-c3f970f811a3",
+        "title": "Exponentialfunktionen und Ableitungsregeln anwenden",
+        "description": "Die lernende Person kann eine E-Phasen-Klausuraufgabe zu exponentiellen Modellen, e-Schreibweise sowie Produkt- und Kettenregel bei Exponentialverknüpfungen selbstständig bearbeiten.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1",
+            "K2",
+            "K3",
+            "K4",
+            "K5"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2",
+            "L4"
+          ],
+          "phase": "E"
+        },
+        "requires": [
+          "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+          "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+          "3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb",
+          "c3c057a3-caf9-44a5-ae60-639e3119e94a",
+          "628928a6-4f48-54dc-952d-dec0e69dc856",
+          "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+          "ab720928-9dbc-53c2-a1f8-865dda92122d",
+          "dc69a261-31c9-5c6b-af71-ae27877a3dc1",
+          "adcac2a7-e763-5442-abf2-866532fedcda",
+          "9db266a2-1889-5792-82b0-a7463f0832f1",
+          "1341c20b-87ab-51e7-bd4a-50166c27806e",
+          "864f9a45-badf-5a31-88d3-da4525808c2d",
+          "d0a9e407-e654-5940-958f-6f608bf3d654",
+          "f05acdc5-4949-54c7-b8cd-56ddd1fbdbad"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "c3c057a3-caf9-44a5-ae60-639e3119e94a",
+            "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+            "dc69a261-31c9-5c6b-af71-ae27877a3dc1",
+            "adcac2a7-e763-5442-abf2-866532fedcda",
+            "9db266a2-1889-5792-82b0-a7463f0832f1",
+            "1341c20b-87ab-51e7-bd4a-50166c27806e",
+            "d0a9e407-e654-5940-958f-6f608bf3d654"
+          ],
+          "coveredStrands": [
+            "L1",
+            "L2",
+            "L4"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "taskContent": "Die Temperatur eines Werkstücks nach dem Erhitzen wird durch\n$$\nT(t)=20+60\\cdot 0{,}8^t \\quad (t\\ge 0)\n$$\nmodelliert. Dabei ist $t$ die Zeit in Minuten und $T(t)$ die Temperatur in Grad Celsius.\n\n1. Deuten Sie die Parameter $20$, $60$ und $0{,}8$ im Sachzusammenhang. Bestimmen Sie die Halbwertszeit der Temperaturdifferenz zur Umgebungstemperatur.\n2. Schreiben Sie das Modell in der Form $T(t)=20+60e^{kt}$ und bestimmen Sie $k$. Berechnen Sie, wann erstmals $T(t)=35$ gilt.\n3. Vergleichen Sie das Temperaturmodell qualitativ mit einem linearen und einem quadratischen Modell für dieselbe Anfangssituation.\n4. Gegeben ist zusätzlich $g(x)=(2x+1)e^{0{,}4x}$. Zerlegen Sie $g$ in Produkt und Verkettung geeigneter Teilfunktionen und bestimmen Sie $g'(x)$ mit Produkt- und Kettenregel. Erläutern Sie an diesem Beispiel, woran man die beiden Regeln erkennt.",
+          "solutionContent": "1. $20$ ist die Umgebungstemperatur beziehungsweise langfristige Grenztemperatur. $60$ ist die anfängliche Temperaturdifferenz zur Umgebung. Der Faktor $0{,}8$ bedeutet, dass pro Minute noch $80\\,$% der vorherigen Differenz zur Umgebung bestehen bleiben. Die Halbwertszeit $H$ erfüllt\n$$\n0{,}8^H=0{,}5.\n$$\nAlso\n$$\nH=\\frac{\\ln(0{,}5)}{\\ln(0{,}8)}\\approx 3{,}11.\n$$\nDie Temperaturdifferenz halbiert sich nach etwa $3{,}1$ Minuten.\n\n2. Wegen $0{,}8^t=e^{t\\ln(0{,}8)}$ gilt\n$$\nT(t)=20+60e^{\\ln(0{,}8)t}.\n$$\nDamit ist $k=\\ln(0{,}8)\\approx -0{,}2231$. Für $T(t)=35$ gilt\n$$\n20+60\\cdot0{,}8^t=35 \\Rightarrow 0{,}8^t=0{,}25.\n$$\nAlso\n$$\nt=\\frac{\\ln(0{,}25)}{\\ln(0{,}8)}\\approx 6{,}21.\n$$\n\n3. Ein lineares Modell hätte eine konstante Abnahme und könnte langfristig unter die Umgebungstemperatur fallen. Ein quadratisches Modell kann je nach Öffnung und Scheitelpunkt eine unpassende Umkehr oder unbegrenztes Wachstum bzw. Fallen erzeugen. Das Exponentialmodell beschreibt dagegen eine prozentuale Abnahme der Differenz und nähert sich der Umgebungstemperatur asymptotisch.\n\n4. $g$ ist ein Produkt aus $u(x)=2x+1$ und $v(x)=e^{0{,}4x}$; in $v$ ist die lineare innere Funktion $0{,}4x$ verkettet mit $e^x$. Mit Produkt- und Kettenregel folgt\n$$\ng'(x)=2e^{0{,}4x}+(2x+1)\\cdot0{,}4e^{0{,}4x}.\n$$\nZusammengefasst:\n$$\ng'(x)=e^{0{,}4x}(0{,}8x+2{,}4).\n$$\nDie Produktregel ist nötig, weil ein linearer Faktor mit einer Exponentialfunktion multipliziert wird. Die Kettenregel ist nötig, weil im Exponenten die innere Funktion $0{,}4x$ steht.",
+          "scoring": {
+            "maxPoints": 24,
+            "passingPoints": 12,
+            "steps": [
+              {
+                "id": "e4_exp_rule_1",
+                "points": 6,
+                "description": "Parameter und Halbwertszeit korrekt gedeutet und berechnet"
+              },
+              {
+                "id": "e4_exp_rule_2",
+                "points": 6,
+                "description": "e-Schreibweise, Wachstumsparameter und Exponentialgleichung korrekt bearbeitet"
+              },
+              {
+                "id": "e4_exp_rule_3",
+                "points": 4,
+                "description": "Exponentialmodell sachgerecht mit linearem und quadratischem Modell verglichen"
+              },
+              {
+                "id": "e4_exp_rule_4",
+                "points": 8,
+                "description": "Produkt- und Kettenregel strukturiert erkannt, angewandt und erklärt"
+              }
+            ]
+          },
+          "reviewNote": "Begrenzte Inhaltskorrektur vom 01.11.2026 unabhängig mit Astra Ultra fachlich geprüft; exakte Nachkorrekturen berücksichtigt. Nachweis: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-upper-candidate-review.json. Historische Quellen und bestehende gültige Mastery bleiben unverändert."
+        },
+        "phase": "E",
+        "type": "atomic"
+      },
+      "requestedIdsInAuthoredR": [],
+      "requestedIdsInCoverageMetadata": []
+    },
+    {
+      "wholeExistingExamGoal": {
+        "id": "bd2c5e29-31c6-58bf-9858-d08e9c8a32ad",
+        "title": "Funktionsverknüpfungen und Transformationen untersuchen",
+        "description": "Die lernende Person kann eine Q2-Klausuraufgabe zu Transformationen, Verknüpfungen sowie Exponential- und Logarithmusfunktionen selbstständig bearbeiten und fachlich deuten.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1",
+            "K2",
+            "K3",
+            "K4",
+            "K5"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2",
+            "L3",
+            "L4"
+          ],
+          "phase": "Q2"
+        },
+        "requires": [
+          "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+          "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+          "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+          "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+          "c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+          "04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+            "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+            "c72a8032-71f6-56ed-a896-06ae435ff2ec"
+          ],
+          "coveredStrands": [
+            "L1",
+            "L4"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "Gegeben ist die Funktion\n$$\nf(x) = 2\\,e^{0.5x}-3.\n$$\nAußerdem wird die Funktion\n$$\ng(x) = \\ln(x+3)\n$$\nbetrachtet.\n\n1. Beschreiben Sie, wie der Graph von $f$ aus dem Graphen von $y=e^x$ hervorgeht und wie der Graph von $g$ aus $y=\\ln(x)$ entsteht. Skizzieren Sie beide transformierten Graphen mit geeigneten Bezugspunkten und Asymptoten; erläutern Sie die Verschiebungen sowie die Streckung in x- und y-Richtung.\n2. Bestimmen Sie die Nullstelle von $f$.\n3. Geben Sie Definitionsmenge und Wertemenge von $g$ an.\n4. Untersuchen Sie die Verknüpfung\n$$\n(g\\circ f)(x)=g(f(x))\n$$\nauf ihre Definitionsmenge und vereinfachen Sie den Funktionsterm so weit wie möglich.\n\nDeuten Sie in Teil 4 außerdem die Steigung, die Wertemenge und das Monotonieverhalten der vereinfachten verketteten Funktion.",
+          "solutionContent": "1. Der Faktor $2$ bewirkt eine Streckung in $y$-Richtung um den Faktor $2$. Der Term $-3$ verschiebt den Graphen anschließend um $3$ Einheiten nach unten.\n\n2. Nullstelle von $f$:\n$$\n2e^{0.5x}-3=0 \\Rightarrow e^{0.5x}=\\frac32.\n$$\nLogarithmieren liefert\n$$\n0.5x = \\ln\\left(\\frac32\\right) \\Rightarrow x = 2\\ln\\left(\\frac32\\right).\n$$\n\n3. Für $g(x)=\\ln(x+3)$ muss gelten\n$$\nx+3>0 \\Rightarrow x>-3.\n$$\nAlso ist die Definitionsmenge\n$$\nD_g = (-3,\\infty).\n$$\nDa der Logarithmus alle reellen Werte annimmt, ist die Wertemenge\n$$\nW_g = \\mathbb R.\n$$\n\n4. Es gilt\n$$\n(g\\circ f)(x)=\\ln(f(x)+3)=\\ln(2e^{0.5x}).\n$$\nMit Logarithmusregeln folgt\n$$\n(g\\circ f)(x)=\\ln 2 + 0.5x.\n$$\nFür die Definitionsmenge muss $f(x)+3>0$ gelten. Wegen\n$$\nf(x)+3 = 2e^{0.5x}>0\n$$\nfür alle $x\\in\\mathbb R$ ist die Definitionsmenge von $g\\circ f$ gleich $\\mathbb R$.\n\nErgänzung zu 1: Gegenüber e^x bewirkt 0,5x eine Streckung in x-Richtung um 2; zusätzlich erfolgen die y-Streckung um 2 und die Verschiebung um 3 nach unten. Die horizontale Asymptote ist y=-3, f(0)=-1. g entsteht aus ln(x) durch Verschiebung um 3 nach links, mit Asymptote x=-3 und Nullstelle x=-2. Diese Angaben begründen die Skizzen. Zu 4: Die Verkettung ist eine Gerade mit Steigung 0,5, Wertemenge R und streng steigendem Verlauf.",
+          "scoring": {
+            "maxPoints": 20,
+            "passingPoints": 10,
+            "steps": [
+              {
+                "id": "q2_fun_1",
+                "points": 6,
+                "description": "x-/y-Transformationen von f und g korrekt erläutert (3); passende Skizzen mit Asymptoten und Bezugspunkten (3)."
+              },
+              {
+                "id": "q2_fun_2",
+                "points": 4,
+                "description": "Exponentialgleichung korrekt logarithmiert und x=2 ln(3/2) bestimmt (4)."
+              },
+              {
+                "id": "q2_fun_3",
+                "points": 4,
+                "description": "Definitionsmenge (-3,∞) und Wertemenge R von g begründet (4)."
+              },
+              {
+                "id": "q2_fun_4",
+                "points": 6,
+                "description": "Definitionsmenge der Verkettung (2), Term ln 2+0,5x (2), Steigung/Wertemenge/Monotonie begründet (2)."
+              }
+            ]
+          },
+          "reviewNote": "Nicht aktivierter Korrekturkandidat 2026-11-01. Neues Aufgaben-/Rubrikreview erforderlich; bestehendes released gilt nicht für diese Bytes. Keine Integral-, Ableitungs-, Spiegelungs-, Umkehrgraph- oder graphische Summen-/Produkt-/Verkettungscoverage. Die minimale Skizzenpräzisierung operationalisiert die bereits behaupteten Transformationsziele; keine Rettung der sachfremden Liste durch neue Großaufgaben."
+        },
+        "phase": "Q2",
+        "type": "atomic"
+      },
+      "requestedIdsInAuthoredR": [],
+      "requestedIdsInCoverageMetadata": []
+    },
+    {
+      "wholeExistingExamGoal": {
+        "id": "1878f680-095c-511d-aaed-e98393f7fde9",
+        "title": "Pyramidenvolumen und Volumenänderung bei Streckung untersuchen",
+        "titleEn": "Investigate pyramid volume and volume changes under scaling",
+        "description": "Die lernende Person kann in einer Q2-Klausuraufgabe aus gegebenen Raumkoordinaten Rechtwinkligkeit, Grundfläche und Pyramidenvolumen bestimmen, den Faktor 1/3 gegenüber einem Prisma gleicher Grundfläche und Höhe deuten und die Volumenänderung bei einer Streckung begründen.",
+        "descriptionEn": "The learner can use given three-dimensional coordinates in a Q2 exam task to establish perpendicularity, calculate the base area and pyramid volume, interpret the factor 1/3 in comparison with a prism of the same base area and height, and explain how scaling changes the volume.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1",
+            "K2",
+            "K3",
+            "K4",
+            "K5"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2",
+            "L3",
+            "L4"
+          ],
+          "phase": "Q2"
+        },
+        "requires": [
+          "288633c1-f61c-5b48-af7e-a80357f96cad",
+          "9460c3ff-e72d-4107-bc73-087d217200aa",
+          "5f548596-9bc3-532e-88a0-81d5029809e9",
+          "5390691d-1b7c-5572-9589-a69c2bba9a27"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "288633c1-f61c-5b48-af7e-a80357f96cad",
+            "9460c3ff-e72d-4107-bc73-087d217200aa",
+            "5f548596-9bc3-532e-88a0-81d5029809e9",
+            "5390691d-1b7c-5572-9589-a69c2bba9a27"
+          ],
+          "coveredStrands": [
+            "L1",
+            "L2",
+            "L3",
+            "L4"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "Gegeben sind die Punkte\n$$\nA(0\\mid0\\mid0),\\ B(6\\mid0\\mid0),\\ C(0\\mid4\\mid0),\\ D(0\\mid0\\mid3).\n$$\nSie bilden die Eckpunkte einer Pyramide mit Grunddreieck $ABC$ und Spitze $D$.\n\n1. Zeigen Sie, dass das Dreieck $ABC$ rechtwinklig ist.\n2. Berechnen Sie den Flächeninhalt des Grunddreiecks $ABC$.\n3. Bestimmen Sie das Volumen der Pyramide $ABCD$ und deuten Sie den Faktor $1/3$ im Vergleich zu einem Prisma mit derselben Grundfläche und Höhe.\n4. Die Koordinaten aller Punkte werden mit dem Faktor $1.5$ multipliziert. Bestimmen Sie das neue Volumen und erläutern Sie, warum sich das Volumen gerade so ändert.",
+          "solutionContent": "1. Es gilt\n$$\n\\overrightarrow{AB} = \\begin{pmatrix}6\\\\0\\\\0\\end{pmatrix},\\qquad \\overrightarrow{AC}=\\begin{pmatrix}0\\\\4\\\\0\\end{pmatrix}.\n$$\nDas Skalarprodukt ist\n$$\n\\overrightarrow{AB}\\cdot\\overrightarrow{AC}=6\\cdot 0+0\\cdot 4+0\\cdot 0=0.\n$$\nAlso stehen $\\overrightarrow{AB}$ und $\\overrightarrow{AC}$ senkrecht aufeinander; das Dreieck $ABC$ ist rechtwinklig bei $A$.\n\n2. Der Flächeninhalt des rechtwinkligen Dreiecks ist\n$$\nA_{ABC}=\\frac12\\cdot 6\\cdot 4 = 12.\n$$\n\n3. Die Höhe der Pyramide ist die Entfernung des Punktes $D$ von der Ebene $z=0$, also $h=3$.\nDamit ergibt sich\n$$\nV = \\frac13\\cdot A_{ABC}\\cdot h = \\frac13\\cdot 12\\cdot 3 = 12.\n$$\nDas Volumen beträgt $12\\,\\text{LE}^3$.\nDer Faktor $1/3$ bedeutet: Im Vergleich zu einem Prisma mit derselben Grundfläche und Höhe ist das Pyramidenvolumen ein Drittel; hier hätte das Prisma $G\\cdot h=36\\,\\text{LE}^3$.\n\n4. Bei einer Streckung aller Längen mit dem Faktor $1.5$ werden Flächen mit dem Faktor $1.5^2=2.25$ und Volumina mit dem Faktor $1.5^3=3.375$ multipliziert. Also gilt\n$$\nV_{\\text{neu}} = 12\\cdot 1.5^3 = 12\\cdot 3.375 = 40.5.\n$$\nDas neue Volumen beträgt $40.5\\,\\text{LE}^3$.",
+          "scoring": {
+            "maxPoints": 20,
+            "passingPoints": 10,
+            "steps": [
+              {
+                "id": "q2_geo_1",
+                "points": 4,
+                "description": "Rechtwinkligkeit des Grunddreiecks korrekt nachgewiesen"
+              },
+              {
+                "id": "q2_geo_2",
+                "points": 4,
+                "description": "Flächeninhalt des Grunddreiecks korrekt berechnet"
+              },
+              {
+                "id": "q2_geo_3",
+                "points": 6,
+                "description": "Volumen der Pyramide korrekt bestimmt und Drittelfaktor im Vergleich zum Prisma gedeutet"
+              },
+              {
+                "id": "q2_geo_4",
+                "points": 6,
+                "description": "Volumenänderung unter Streckung korrekt berechnet und begründet"
+              }
+            ]
+          }
+        },
+        "phase": "Q2",
+        "type": "atomic"
+      },
+      "requestedIdsInAuthoredR": [],
+      "requestedIdsInCoverageMetadata": []
+    },
+    {
+      "wholeExistingExamGoal": {
+        "id": "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+        "shortKey": "canonical_math_sek1_j10_space_geometry_applications",
+        "title": "Raumgeometrische Anwendungen mit Körpern modellieren und lösen",
+        "titleEn": "Model and solve spatial-geometry applications with solids",
+        "description": "Die lernende Person kann Raumgeometrie-Situationen mit verschiedenen Körpern modellieren, Formeln und geometrische Beziehungen flexibel kombinieren sowie Längen, Winkel, Oberflächen und Volumina in Sachsituationen begründet bestimmen.",
+        "descriptionEn": "The learner can model spatial-geometry situations using different solids, combine formulas and geometric relationships flexibly, and determine lengths, angles, surface areas, and volumes in applications with justification.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.2",
+            "K2.1",
+            "K3.1",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L2"
+          ],
+          "phase": "J10",
+          "area": "Geometry",
+          "topicCode": "CANONICAL.MATH.SEK1.J10.5F"
+        },
+        "contains": [],
+        "requires": [
+          "a4f6f5e4-f790-48d1-8b49-c9dc048c9d83",
+          "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5",
+          "7b860649-373e-5523-9843-ec96b3537f1f",
+          "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+          "bb227e31-0b0b-544a-b5e0-548256a70dec",
+          "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
+          "71a483ba-9680-4654-bb5e-5ab5427f0919",
+          "e663cc67-5249-55db-b103-357b58a1ca91",
+          "65365dce-f33f-49d8-9516-42f75883aa86",
+          "415bd48b-8a76-4d4f-bfdd-d085573e7ac3"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+            "title": "Visualisierung: Raumgeometrische Anwendungen mit Körpern modellieren und lösen",
+            "url": "/assets/goal-visualizations/mathematik/6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9/6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9.png",
+            "provider": "OpenAI / Codex built-in image generation (edited SkillPilot asset; model not exposed)",
+            "description": "Futtersilo aus Zylinder und Kegel; korrekte Volumen- und Mantelflächenrechnung ohne irreführende Kegel-Zeiger.",
+            "altText": "Futtersilo mit grauem Zylinder (r=2 m, h=5 m) und rotem Kegel (h=3 m, Mantellinie √13 m): Zylindervolumen 20π m³, Kegelvolumen 4π m³, zusammen 24π m³. Für den Anstrich zählen nur Zylindermantel 20π m² und Kegelmantel 2π√13 m², zusammen etwa 85,5 m²; Boden und Nahtkreis bleiben außen unberücksichtigt.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ],
+        "nodeKind": "exam",
+        "examData": {
+          "reviewStatus": "released",
+          "taskContent": "# Ein geschlossener Regenwassertank\n\n20 BE.\n\nEin Betrieb plant einen geschlossenen Tank. Die kreisförmige innere Bodenfläche\nhat einen Durchmesser von 4 m. Die senkrechte Seitenwand ist 3 m hoch.\nVom gesamten oberen Kreisrand läuft das Dach geradlinig zu einer Spitze,\ndie senkrecht über dem Kreismittelpunkt liegt und 1,5 m über dem Kreisrand\nsteht. An der Verbindung von Wand und Dach gibt es keine waagerechte\nTrennwand. Der Tank steht mit seiner gesamten Bodenfläche auf einem Fundament.\n\nFür das geometrische Modell werden Wandstärke, Anschlüsse und Einbauten\nvernachlässigt. Die idealisierten Innen- und Außenmaße stimmen deshalb\nüberein. Das theoretische Fassungsvermögen umfasst den Innenraum bis zur\nSpitze. Ein betrieblich nötiger Luftraum wird zunächst nicht abgezogen.\nEine Schutzbeschichtung soll nur die frei liegende Seitenwand und das Dach\nbedecken; die Kontaktfläche zum Fundament wird nicht beschichtet.\n\nEin Taschenrechner und eine übliche Formelsammlung sind erlaubt. Rechne mit\nungerundeten Zwischenwerten. Gib Längen, Flächen und Kubikmeter auf zwei\nDezimalstellen, Winkel auf 0,1° und Liter auf ganze Liter an.\n\n1. Wähle passende geometrische Körper für das Modell und begründe deine\n   Wahl. Skizziere einen senkrechten Schnitt durch die gemeinsame Achse.\n   Beschrifte die erforderlichen Längen und erkläre die Zerlegung. (3 BE)\n2. Bestimme die Länge einer geraden Dachlinie vom Kreisrand zur Spitze.\n   Begründe die geometrische Beziehung anhand deines Schnitts. (3 BE)\n3. Bestimme den Winkel, den diese Dachlinie mit der waagerechten Ebene des\n   oberen Kreisrands einschließt. Begründe deinen Ansatz und kennzeichne\n   den gesuchten Winkel. (3 BE)\n4. Berechne den gesamten äußeren Oberflächeninhalt des idealisierten Tanks\n   einschließlich seiner Bodenfläche und anschließend die zu beschichtende\n   Fläche. Begründe, welche Kreisflächen bei welcher Rechnung zählen und\n   welche nicht. (4 BE)\n5. Bestimme das theoretische Fassungsvermögen in Kubikmetern und Litern.\n   Entscheide mit nachvollziehbarem Vergleich, ob 45 000 Liter hineinpassten,\n   und gib gegebenenfalls den fehlenden Platz an. (5 BE)\n6. Nenne eine konkrete Grenze des Modells für die praktische Nutzung und\n   erkläre, wie sie das nutzbare Fassungsvermögen beeinflusst. (2 BE)\n\nZeige zusammenhängende Modellierungs-, Rechen- und Begründungsschritte.\nDie bloße Angabe von Formeln oder Endzahlen genügt nicht.\n",
+          "taskContentEn": "# A closed rainwater tank\n\n20 points.\n\nA business is planning a closed tank. Its circular internal base has a\ndiameter of 4 m. The vertical side wall is 3 m high. From the entire upper\ncircular rim, the roof runs along straight lines to an apex directly above\nthe circle's centre, 1.5 m above the rim. There is no horizontal partition\nwhere wall and roof meet. The tank rests on a foundation along its entire base.\n\nThe geometric model neglects wall thickness, connections, and fittings.\nThe idealised internal and external dimensions therefore coincide.\nThe theoretical capacity includes the internal space up to the apex.\nAny headspace needed in operation is initially not deducted.\nA protective coating will cover only the exposed side wall and roof;\nthe contact surface with the foundation is not coated.\n\nA calculator and a standard formula collection are allowed. Use unrounded\nintermediate values. Give lengths, areas, and cubic metres to two decimal\nplaces, angles to 0.1°, and litres to the nearest whole litre.\n\n1. Select suitable geometric solids for the model and justify your choice.\n   Sketch a vertical section through the common axis. Label the required\n   lengths and explain the decomposition. (3 points)\n2. Determine the length of a straight roof line from rim to apex. Justify\n   the geometric relationship using your section. (3 points)\n3. Determine the angle that this roof line makes with the horizontal plane\n   of the upper circular rim. Justify your approach and mark the required\n   angle. (3 points)\n4. Calculate the idealised tank's complete external surface area including\n   its base, then calculate the area to be coated. Explain which circular\n   surfaces count in each calculation and which do not. (4 points)\n5. Determine the theoretical capacity in cubic metres and litres.\n   Decide through a clear comparison whether 45,000 litres would fit and,\n   if necessary, state the shortfall in space. (5 points)\n6. Identify one concrete limitation of the model for practical use and\n   explain how it affects the usable capacity. (2 points)\n\nShow connected modelling, calculation, and reasoning steps. Formulas or\nfinal numbers alone are insufficient.\n",
+          "solutionContent": "# Erwartungshorizont: Regenwassertank\n\n1. Das Modell besteht aus einem geraden Kreiszylinder mit Radius r=2 m und\n   Höhe $h_Z=3\\,\\mathrm m$ und einem geraden Kreiskegel mit demselben\n   Radius und Höhe $h_K=1{,}5\\,\\mathrm m$. Die senkrechte Wand über dem\n   gleichbleibenden Kreisquerschnitt begründet den Zylinder; geradlinige\n   Dachlinien zur mittigen Spitze begründen den Kegel. Im Achsschnitt liegt\n   über einem Rechteck der Breite 4 m und Höhe 3 m ein gleichschenkliges\n   Dreieck mit Grundseite 4 m und Höhe 1,5 m. Die Gesamthöhe ist 4,5 m.\n   Beide Teilinnenräume schließen lückenlos aneinander an; sie überlappen\n   nicht mit einem positiven Volumen. Der gemeinsame Kreis ist keine\n   zusätzliche Innenwand.\n2. Das halbe Dachdreieck ist rechtwinklig: Radius und senkrechte Kegelhöhe\n   sind Katheten, die Dachlinie s ist die Hypotenuse. Daher\n   $$\n   s=\\sqrt{r^2+h_K^2}=\\sqrt{2^2+1{,}5^2}=2{,}50\\,\\mathrm m.\n   $$\n3. Der gesuchte Winkel liegt zwischen Dachlinie und waagerechter\n   Radiusstrecke. Es gilt\n   $$\n   \\tan\\alpha=\\frac{h_K}{r}=\\frac{1{,}5}{2}=0{,}75,\\qquad\n   \\alpha\\approx36{,}9^\\circ.\n   $$\n   Sinus oder Kosinus im selben rechtwinkligen Dreieck sind gleichwertig.\n   Der Winkel zur senkrechten Achse ist der Komplementwinkel, nicht die\n   geforderte Größe.\n4. Außen zählen Zylindermantel, Kegelmantel und die untere Bodenfläche:\n   $$\n   O=2\\pi rh_Z+\\pi rs+\\pi r^2\n    =12\\pi+5\\pi+4\\pi=21\\pi\n    \\approx65{,}97\\,\\mathrm{m}^2.\n   $$\n   Der gemeinsame Kreis zwischen Zylinder und Kegel liegt im Inneren der\n   Körpervereinigung. Er ist keine zusätzliche Außenfläche; ihn zweimal\n   zu addieren wäre falsch. Die gesamte äußere Bodenfläche zählt zu O,\n   wird aber gemäß Verwendungszweck nicht beschichtet. Somit\n   $$\n   A_{\\text{Beschichtung}}=2\\pi rh_Z+\\pi rs\n   =17\\pi\\approx53{,}41\\,\\mathrm{m}^2.\n   $$\n5. Die Innenvolumina werden addiert:\n   $$\n   V=\\pi r^2h_Z+\\frac13\\pi r^2h_K\n    =12\\pi+2\\pi=14\\pi\n    \\approx43{,}98\\,\\mathrm{m}^3.\n   $$\n   Der Faktor ein Drittel gehört nur zum Kegel; die senkrechte Höhe 1,5 m,\n   nicht die Dachlinie 2,5 m, geht dort ein. Mit den ungerundeten Werten:\n   $$\n   V=14\\pi\\cdot1000\\,\\mathrm L\n     \\approx43\\,982\\,\\mathrm L.\n   $$\n   45 000 Liter passen schon in das theoretische Modell nicht hinein.\n   Es fehlen ungefähr $45\\,000-14\\,000\\pi\\approx1\\,018$ Liter.\n   Aus dem bereits auf 43,98 m³ gerundeten Wert würden 43 980 Liter\n   entstehen; vorzeitiges Runden erklärt diese kleine Abweichung.\n6. Ein praktisch nötiger Luftraum unter der Spitze verringert das nutzbare\n   Fassungsvermögen. Auch Rohre oder andere Einbauten können einen Teil des\n   Innenraums beanspruchen. Eine konkrete andere Grenze mit richtiger\n   Wirkungsdeutung ist gleichwertig. Da Innenmaße vorgegeben sind, darf\n   eine außen hinzugefügte Wand nicht ohne Weiteres vom berechneten\n   Innenvolumen abgezogen werden.\n\nEine geeignete Zerlegung, andere gültige trigonometrische Ansätze und\nnachvollziehbare äquivalente Rechnungen sind anzuerkennen. Formeln für\nsachfremde Körper oder ein Addieren der inneren Nahtflächen liefern kein\ngeeignetes Gesamtmodell. Es sind keine Kugelrechnung, kein allgemeiner\nSinus-/Kosinussatz und keine neue Herleitung der Kegelvolumenformel verlangt:\ndiese weiter reichenden Vorbereitungen werden nicht mitgeprüft.\n\n\n# Eine Gesamtbewertung: Regenwassertank\n\nEine Rohsumme aus höchstens 20 BE; genau eine Bestehensgrenze von 15 BE.\n\n| Kriterium | BE |\n|---|---:|\n| Passende Körper gewählt und an den beschriebenen Eigenschaften begründet | 1 |\n| Achsschnitt mit Radius/Durchmesser und senkrechten Teilhöhen passend dargestellt | 1 |\n| Zusammenhängende, lückenlose Zerlegung ohne positives Überlappungsvolumen erklärt | 1 |\n| Rechtwinkliges Dachdreieck mit richtig zugeordneten Seiten identifiziert | 1 |\n| Geeignete geometrische Beziehung für die Dachlinie begründet | 1 |\n| Dachlinie 2,50 m bestimmt | 1 |\n| Winkel zur waagerechten Ebene richtig festgelegt | 1 |\n| Geeigneter trigonometrischer Ansatz begründet | 1 |\n| Winkel ungefähr 36,9° bestimmt | 1 |\n| Äußere Randflächen einschließlich Boden und ohne inneren Nahtkreis identifiziert | 1 |\n| Gesamte Oberfläche nachvollziehbar zu 21π m² bzw. 65,97 m² bestimmt | 1 |\n| Beschichtungsflächen unter Ausschluss der Fundamentkontaktfläche begründet gewählt | 1 |\n| Beschichtung nachvollziehbar zu 17π m² bzw. 53,41 m² bestimmt | 1 |\n| Zylinder- und Kegelvolumen mit richtigen Größen und Faktoren angesetzt | 2 |\n| Beide Teilvolumina konsistent zu 14π m³ bzw. 43,98 m³ zusammengeführt | 1 |\n| In Liter anhand ungerundeter Werte umgerechnet | 1 |\n| 45 000 Liter begründet verglichen und Fehlmenge ungefähr 1 018 Liter bestimmt | 1 |\n| Konkrete praktische Modellgrenze genannt | 1 |\n| Ihre Wirkung auf das nutzbare Fassungsvermögen richtig erklärt | 1 |\n\nHalbe Punkte sind bei sinnvoll teilbaren Leistungen möglich. Einheiten\ngehören zur sachlichen Deutung; ein einmaliges versehentliches Einheitenzeichen\nist kein pauschaler Modelltotalausfall. Unterschiedliche gültige\ntrigonometrische Wege sowie Erklärungen an der Rechnung zählen gleichwertig.\nKeine Pflicht zur wörtlichen Musterlösung oder zu einer bestimmten Teilnummer.\n\nDie eine Gesamtpunktzahl wird vor dem Vergleich mit 15 auf höchstens 14 BE\nbegrenzt, wenn über die gesamte Arbeit eine ganze zentrale Leistung fehlt oder\nnur auf einem grundlegend ungeeigneten Modell beruht: ein sinnvolles\nzusammengesetztes Körpermodell, begründete Längenbestimmung, begründete\nWinkelbestimmung, begründete Bestimmung der äußeren Flächen oder begründete\nBestimmung des Fassungsvermögens. Die Kappung verlangt keine perfekte\nBearbeitung sämtlicher Details. Ein isolierter Zahlen-, Vorzeichen-,\nÜbertragungs- oder Rundungsfehler löst sie nicht aus.\n\nDenselben Ausgangsfehler nicht mehrfach bestrafen. Richtige Folgeoperationen,\ntragfähige Ansätze und passende Begründungen erhalten Punkte, auch wenn ein\nzuvor falsch übertragener Radius den Ergebniswert verändert. Bei einer\nkleinen Rundungsabweichung in Litern bleiben korrekte Umrechnung und\nEntscheidung grundsätzlich anrechenbar. Ein falsches Grundmodell wie das\nVerwenden der Mantellinie als senkrechte Volumenhöhe ist fachlich zu bewerten;\nes ist keine bloße Rundungsfrage. Ein bloßer Formelsatz ohne Zuordnung zur\nSituation erhält keine Modellierungs- oder Begründungspunkte.\n\nNur lesbare gezeigte Leistungen bewerten.",
+          "solutionContentEn": "# Expected solution: rainwater tank\n\n1. The model consists of a right circular cylinder of radius r=2 m and\n   height $h_Z=3\\,\\mathrm m$, and a right circular cone of the same radius\n   and height $h_K=1.5\\,\\mathrm m$. The vertical wall above an unchanged\n   circular cross-section supports the cylinder model; straight roof lines\n   to a central apex support the cone model. The axial section has a rectangle\n   4 m wide and 3 m high below an isosceles triangle with base 4 m and height\n   1.5 m. Overall height is 4.5 m. The internal parts meet without a gap or\n   positive-volume overlap. Their common circle is not an additional\n   internal wall.\n2. Half of the roof section is a right triangle: radius and vertical cone\n   height are its legs, and the roof line s is its hypotenuse. Hence\n   $$\n   s=\\sqrt{r^2+h_K^2}=\\sqrt{2^2+1.5^2}=2.50\\,\\mathrm m.\n   $$\n3. The required angle lies between the roof line and the horizontal radius.\n   Thus\n   $$\n   \\tan\\alpha=\\frac{h_K}{r}=\\frac{1.5}{2}=0.75,\\qquad\n   \\alpha\\approx36.9^\\circ.\n   $$\n   Sine or cosine in the same right triangle is equally acceptable.\n   The angle to the vertical axis is the complementary angle, not the\n   required quantity.\n4. The external boundary comprises the cylinder's curved surface, the cone's\n   curved surface, and the bottom base:\n   $$\n   O=2\\pi rh_Z+\\pi rs+\\pi r^2\n    =12\\pi+5\\pi+4\\pi=21\\pi\n    \\approx65.97\\,\\mathrm{m}^2.\n   $$\n   The common circle lies inside the union of the solids. It is not another\n   external face; adding it twice would be wrong. The complete external base\n   counts towards O but is not coated under the stated purpose. Therefore\n   $$\n   A_{\\text{coating}}=2\\pi rh_Z+\\pi rs\n   =17\\pi\\approx53.41\\,\\mathrm{m}^2.\n   $$\n5. Add the two internal volumes:\n   $$\n   V=\\pi r^2h_Z+\\frac13\\pi r^2h_K\n    =12\\pi+2\\pi=14\\pi\n    \\approx43.98\\,\\mathrm{m}^3.\n   $$\n   The factor one third applies only to the cone; its vertical height 1.5 m,\n   not its slant length 2.5 m, enters that formula. Using unrounded values:\n   $$\n   V=14\\pi\\cdot1000\\,\\mathrm L\n     \\approx43,982\\,\\mathrm L.\n   $$\n   Even the theoretical model cannot hold 45,000 litres. The shortfall is\n   approximately $45,000-14,000\\pi\\approx1,018$ litres.\n   Converting an already rounded 43.98 m³ would give 43,980 litres; premature\n   rounding explains that small discrepancy.\n6. Operational headspace below the apex reduces usable capacity.\n   Pipes or other fittings can also occupy part of the internal space.\n   Another concrete limitation with a correct explanation of its effect\n   receives equal credit. Because the internal dimensions are given, a wall\n   added outside cannot simply be subtracted from the calculated internal\n   volume.\n\nAccept suitable decompositions, other valid trigonometric approaches,\nand transparent equivalent calculations. Formulas for unrelated solids or\nadding internal joining faces do not produce a suitable overall model.\nNo sphere calculation, general sine/cosine rule, or fresh derivation of\nthe cone-volume formula is required: those broader prerequisites are not\nadditionally assessed here.\n\n\n# One overall assessment: rainwater tank\n\nOne raw total out of 20 points; exactly one passing threshold of 15.\n\n| Criterion | Points |\n|---|---:|\n| Suitable solids selected and justified from the described properties | 1 |\n| Suitable axial section showing radius/diameter and vertical component heights | 1 |\n| Connected decomposition without gaps or positive-volume overlap explained | 1 |\n| Right roof triangle identified with correctly assigned sides | 1 |\n| Suitable geometric relationship for the roof line justified | 1 |\n| Roof line determined as 2.50 m | 1 |\n| Angle to the horizontal plane correctly identified | 1 |\n| Suitable trigonometric approach justified | 1 |\n| Angle determined as approximately 36.9° | 1 |\n| External boundary faces identified, including the base and excluding the internal join | 1 |\n| Complete surface transparently found as 21π m² or 65.97 m² | 1 |\n| Coated faces justified, excluding the foundation contact surface | 1 |\n| Coating transparently found as 17π m² or 53.41 m² | 1 |\n| Cylinder and cone volumes set up with correct quantities and factors | 2 |\n| Component volumes consistently combined to 14π m³ or 43.98 m³ | 1 |\n| Conversion to litres using unrounded values | 1 |\n| Reasoned comparison with 45,000 litres and shortfall of approximately 1,018 litres | 1 |\n| Concrete practical limitation identified | 1 |\n| Its effect on usable capacity correctly explained | 1 |\n\nHalf points are allowed for meaningfully separable partial performances.\nUnits belong to interpretation; one accidentally incorrect unit symbol does\nnot automatically invalidate the entire model. Different valid trigonometric\nmethods and explanations alongside calculations receive equal credit.\nNo particular wording or location under a given part number is required.\n\nBefore comparison with 15, cap the one total score at 14 if an entire central\nperformance is absent across the submission or rests only on a fundamentally\nunsuitable model: a meaningful composite-solid model, justified length\ndetermination, justified angle determination, justified external-area\ndetermination, or justified capacity determination. The cap does not require\nperfect work on every detail. An isolated numerical, sign, copying, or\nrounding slip does not trigger it.\n\nDo not penalise one initial error repeatedly. Correct follow-through,\nsound approaches, and suitable explanations earn credit even if an earlier\ncopied radius changes the final value. A small rounding discrepancy in litres\nstill allows credit for correct conversion and decision. A wrong basic model,\nsuch as using slant length as the vertical height in the volume calculation,\nmust be assessed mathematically; it is not merely a rounding issue. A list of\nformulas without assigning quantities to the situation earns no modelling\nor reasoning credit.\n\nGrade only legible demonstrated work.",
+          "coveredGoalIds": [
+            "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9"
+          ],
+          "coveredStrands": [
+            "L2"
+          ],
+          "demandLevels": [
+            "AB2"
+          ],
+          "scoring": {
+            "maxPoints": 20,
+            "passingPoints": 15,
+            "steps": [
+              {
+                "id": "space-criterion-1",
+                "points": 1,
+                "description": "Passende Körper gewählt und an den beschriebenen Eigenschaften begründet",
+                "descriptionEn": "Suitable solids selected and justified from the described properties"
+              },
+              {
+                "id": "space-criterion-2",
+                "points": 1,
+                "description": "Achsschnitt mit Radius/Durchmesser und senkrechten Teilhöhen passend dargestellt",
+                "descriptionEn": "Suitable axial section showing radius/diameter and vertical component heights"
+              },
+              {
+                "id": "space-criterion-3",
+                "points": 1,
+                "description": "Zusammenhängende, lückenlose Zerlegung ohne positives Überlappungsvolumen erklärt",
+                "descriptionEn": "Connected decomposition without gaps or positive-volume overlap explained"
+              },
+              {
+                "id": "space-criterion-4",
+                "points": 1,
+                "description": "Rechtwinkliges Dachdreieck mit richtig zugeordneten Seiten identifiziert",
+                "descriptionEn": "Right roof triangle identified with correctly assigned sides"
+              },
+              {
+                "id": "space-criterion-5",
+                "points": 1,
+                "description": "Geeignete geometrische Beziehung für die Dachlinie begründet",
+                "descriptionEn": "Suitable geometric relationship for the roof line justified"
+              },
+              {
+                "id": "space-criterion-6",
+                "points": 1,
+                "description": "Dachlinie 2,50 m bestimmt",
+                "descriptionEn": "Roof line determined as 2.50 m"
+              },
+              {
+                "id": "space-criterion-7",
+                "points": 1,
+                "description": "Winkel zur waagerechten Ebene richtig festgelegt",
+                "descriptionEn": "Angle to the horizontal plane correctly identified"
+              },
+              {
+                "id": "space-criterion-8",
+                "points": 1,
+                "description": "Geeigneter trigonometrischer Ansatz begründet",
+                "descriptionEn": "Suitable trigonometric approach justified"
+              },
+              {
+                "id": "space-criterion-9",
+                "points": 1,
+                "description": "Winkel ungefähr 36,9° bestimmt",
+                "descriptionEn": "Angle determined as approximately 36.9°"
+              },
+              {
+                "id": "space-criterion-10",
+                "points": 1,
+                "description": "Äußere Randflächen einschließlich Boden und ohne inneren Nahtkreis identifiziert",
+                "descriptionEn": "External boundary faces identified, including the base and excluding the internal join"
+              },
+              {
+                "id": "space-criterion-11",
+                "points": 1,
+                "description": "Gesamte Oberfläche nachvollziehbar zu 21π m² bzw. 65,97 m² bestimmt",
+                "descriptionEn": "Complete surface transparently found as 21π m² or 65.97 m²"
+              },
+              {
+                "id": "space-criterion-12",
+                "points": 1,
+                "description": "Beschichtungsflächen unter Ausschluss der Fundamentkontaktfläche begründet gewählt",
+                "descriptionEn": "Coated faces justified, excluding the foundation contact surface"
+              },
+              {
+                "id": "space-criterion-13",
+                "points": 1,
+                "description": "Beschichtung nachvollziehbar zu 17π m² bzw. 53,41 m² bestimmt",
+                "descriptionEn": "Coating transparently found as 17π m² or 53.41 m²"
+              },
+              {
+                "id": "space-criterion-14",
+                "points": 2,
+                "description": "Zylinder- und Kegelvolumen mit richtigen Größen und Faktoren angesetzt",
+                "descriptionEn": "Cylinder and cone volumes set up with correct quantities and factors"
+              },
+              {
+                "id": "space-criterion-15",
+                "points": 1,
+                "description": "Beide Teilvolumina konsistent zu 14π m³ bzw. 43,98 m³ zusammengeführt",
+                "descriptionEn": "Component volumes consistently combined to 14π m³ or 43.98 m³"
+              },
+              {
+                "id": "space-criterion-16",
+                "points": 1,
+                "description": "In Liter anhand ungerundeter Werte umgerechnet",
+                "descriptionEn": "Conversion to litres using unrounded values"
+              },
+              {
+                "id": "space-criterion-17",
+                "points": 1,
+                "description": "45 000 Liter begründet verglichen und Fehlmenge ungefähr 1 018 Liter bestimmt",
+                "descriptionEn": "Reasoned comparison with 45,000 litres and shortfall of approximately 1,018 litres"
+              },
+              {
+                "id": "space-criterion-18",
+                "points": 1,
+                "description": "Konkrete praktische Modellgrenze genannt",
+                "descriptionEn": "Concrete practical limitation identified"
+              },
+              {
+                "id": "space-criterion-19",
+                "points": 1,
+                "description": "Ihre Wirkung auf das nutzbare Fassungsvermögen richtig erklärt",
+                "descriptionEn": "Its effect on usable capacity correctly explained"
+              }
+            ]
+          },
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/geometry-two-same-identity-2026-11-03-v1/6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9/reviewed-execution-contract.json",
+          "reviewNote": "Whole bilingual content independently reviewed in R1; similarity cap-only correction approved in R2. One ordinary total score and binary mastery result for this stable goal only. Source applicability and assessment readiness at existing placements are separately inventoried; this private overlay is not activation approval."
+        }
+      },
+      "requestedIdsInAuthoredR": [],
+      "requestedIdsInCoverageMetadata": []
+    },
+    {
+      "wholeExistingExamGoal": {
+        "id": "0d2cfddc-7af6-5709-819f-929e6cf9c192",
+        "shortKey": "canonical_math_j8_structural_split_follow_up_j8_rational_terms_from_graphs",
+        "title": "Parameter einer Hyperbel aus Asymptoten und einem Punkt bestimmen",
+        "titleEn": "Determine hyperbola parameters from asymptotes and one point",
+        "description": "Die lernende Person kann eine jahrgangsnahe Ergänzungsaufgabe bearbeiten, in der sie bei einem gegebenen Hyperbelgraphen die Parameter d und e aus den Asymptoten sowie a aus einem weiteren Graphenpunkt bestimmt und den rekonstruierten Funktionsterm durch Einsetzen des Punkts prüft.",
+        "descriptionEn": "The learner can solve an age-appropriate supplemental task by determining the parameters d and e from the asymptotes of a given hyperbola graph, determining a from one additional point on the graph, and checking the reconstructed function expression by substituting the point.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical",
+          "phase:SekI",
+          "ExamTask"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-09-02/j8/j8-rational-terms-from-graphs/draft_v1.md#aufgabe",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K3.1",
+            "K4.1",
+            "K5.1"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "J8",
+          "area": "Mathematik",
+          "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J8.STRUCTURAL_SPLIT.RATIONAL_TERMS_FROM_GRAPHS"
+        },
+        "contains": [],
+        "requires": [
+          "3f1a97d2-7de6-5799-81f2-39782c3e54d7"
+        ],
+        "phase": "J8",
+        "type": "atomic",
+        "nodeKind": "exam",
+        "extendedData": {
+          "applicabilityFromRequires": true,
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "reviewNote": "Begrenzte Inhaltskorrektur vom 01.11.2026 unabhängig mit Astra Ultra fachlich geprüft; exakte Nachkorrekturen berücksichtigt. Nachweis: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-seki-candidate-review.json. Der eigene Prüfungsvertrag verlangt einen gegebenen Graphen. Der fehlende lesbare Graph wird als gebundene SVG bereitgestellt; Ablesen und graphische Kontrolle werden tatsächlich verlangt. Keine Verengung der Kompetenzidentität auf bloße Algebra.",
+          "coveredGoalIds": [
+            "3f1a97d2-7de6-5799-81f2-39782c3e54d7"
+          ],
+          "coveredStrands": [
+            "L1",
+            "L4"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-09-02/j8/j8-rational-terms-from-graphs/draft_v1.md",
+          "taskContent": "Der folgende gebundene Graph gehört zu einer Funktion der Form $f(x)=a/(x-d)+e$ mit $a\\ne0$. Die gestrichelten Geraden sind seine Asymptoten; der schwarze Punkt $P$ liegt auf dem Graphen.\n\n![Hyperbelgraph mit Koordinatengitter, zwei Asymptoten und Punkt P](/assets/assessment-materials/mathematik/0d2cfddc-7af6-5709-819f-929e6cf9c192/hyperbola.svg)\n\n1. Lies beide Asymptoten am Graphen ab und bestimme daraus $d$ und $e$. (1 BE)\n2. Lies die Koordinaten von $P$ ab. Bestimme damit $a$ und den vollständigen Funktionsterm. (1 BE)\n3. Prüfe den Term durch Einsetzen von $P$. Vergleiche außerdem den Wert bei $x=5$ mit dem abgebildeten Graphen und formuliere das Ergebnis der graphischen Probe. (1 BE)",
+          "solutionContent": "Aus der senkrechten Asymptote $x=2$ folgt $d=2$. Aus der waagerechten Asymptote $y=-1$ folgt $e=-1$.\n\nMit $P(4|2)$ gilt $2=a/(4-2)-1$. Daraus folgen $3=a/2$ und $a=6$. Der vollständige Funktionsterm lautet $f(x)=6/(x-2)-1$.\n\nDie Probe ergibt $f(4)=6/(4-2)-1=3-1=2$. Der berechnete Funktionswert stimmt mit der y-Koordinate von $P$ überein; $P$ liegt daher auf dem rekonstruierten Graphen.\n\nDie Daten werden aus dem tatsächlich beigefügten Graphen abgelesen: senkrechte Asymptote x=2, waagerechte Asymptote y=−1, P=(4,2). Die zusätzliche Graphkontrolle liefert f(5)=6/3−1=1; der dargestellte rechte Ast verläuft durch (5,1). Ablesegenauigkeit und eindeutige Gitterbezüge berücksichtigen.",
+          "scoring": {
+            "maxPoints": 3,
+            "passingPoints": 2,
+            "steps": [
+              {
+                "id": "hyperbola-asymptotes",
+                "points": 1,
+                "description": "Asymptoten am tatsächlichen Graphen abgelesen und d=2,e=−1 bestimmt (1)."
+              },
+              {
+                "id": "hyperbola-parameter",
+                "points": 1,
+                "description": "P=(4,2) abgelesen und a=6 sowie vollständigen Term bestimmt (1)."
+              },
+              {
+                "id": "hyperbola-check",
+                "points": 1,
+                "description": "P rechnerisch geprüft und f(5)=1 mit dem Graphen verglichen (1)."
+              }
+            ]
+          }
+        },
+        "resourceLinks": []
+      },
+      "requestedIdsInAuthoredR": [],
+      "requestedIdsInCoverageMetadata": []
+    },
+    {
+      "wholeExistingExamGoal": {
+        "id": "66d75e35-bcbc-5ec9-95f9-8e0558e75f14",
+        "shortKey": "canonical_math_q2_structural_split_follow_up_q2_ln_properties_transformations",
+        "title": "Eigenschaften und Transformationen der natürlichen Logarithmusfunktion erläutern (LK)",
+        "titleEn": "Explain properties and transformations of the natural logarithm (advanced course)",
+        "description": "Die lernende Person kann grundlegende Eigenschaften der natürlichen Logarithmusfunktion aus der Umkehrbeziehung zur Exponentialfunktion begründen und vertikale sowie horizontale Transformationen fachlich deuten.",
+        "descriptionEn": "The learner can justify fundamental properties of the natural logarithm from its inverse relationship with the exponential function and interpret vertical and horizontal transformations.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical",
+          "phase:Q2",
+          "ExamTask"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-08-16/q2/q2-ln-properties-transformations/draft_v1.md#aufgabe",
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "Q2",
+          "area": "Mathematik",
+          "topicCode": "CANONICAL.MATH.SEK2.PRACTICE.Q2.Q2_LN_PROPERTIES_TRANSFORMATIONS"
+        },
+        "contains": [],
+        "requires": [
+          "04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8",
+          "8b3ce429-e6bb-5d33-b6aa-6ded41afc74c"
+        ],
+        "phase": "Q2",
+        "type": "atomic",
+        "nodeKind": "exam",
+        "extendedData": {
+          "applicabilityFromRequires": true,
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "04fe49bf-8c3e-5986-ae83-3c69c0c3e4c8",
+            "8b3ce429-e6bb-5d33-b6aa-6ded41afc74c"
+          ],
+          "coveredStrands": [
+            "L1",
+            "L2"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-08-16/q2/q2-ln-properties-transformations/draft_v1.md",
+          "taskContent": "### Teil A — Grundlegende Eigenschaften (9 BE)\n\nNutze, dass $\\ln$ die Umkehrfunktion von $x\\mapsto e^x$ ist.\n\n1. Begründe Definitionsmenge und Wertemenge von $\\ln$. (2 BE)\n2. Begründe Nullstelle und Monotonie. (3 BE)\n3. Erläutere das Randverhalten für $x\\to0^+$ und $x\\to\\infty$. (4 BE)\n\n### Teil B — Transformation (7 BE)\n\nGegeben ist $h(x)=2\\ln(x-3)+1$.\n\n1. Beschreibe alle Transformationen gegenüber dem Graphen von $\\ln x$. (3 BE)\n2. Bestimme Definitionsmenge, senkrechte Asymptote und Nullstelle von $h$. (3 BE)\n3. Erläutere, warum die Wertemenge weiterhin $\\mathbb R$ ist. (1 BE)\n\n### Teil C — Horizontale Transformation (3 BE)\n\nGegeben ist $k(x)=\\ln\\!\\left(\\frac{x}{2}\\right)$.\n\nBeschreibe $k$ zunächst mit der üblichen Schablone $f(x/a)$ als horizontale Streckung des Graphen von $f(x)=\\ln x$. Zeige anschließend mit einem Logarithmusgesetz, dass derselbe Graph auch als Verschiebung in y-Richtung beschrieben werden kann, und erkläre, warum beide Transformationsbeschreibungen hier gleichwertig sind. (3 BE)",
+          "solutionContent": "### Teil A (9 BE)\n\n1. Die Exponentialfunktion bildet $\\mathbb R$ bijektiv auf $(0,\\infty)$ ab. Daher besitzt ihre Umkehrfunktion $\\ln$ die Definitionsmenge $(0,\\infty)$ und die Wertemenge $\\mathbb R$. (2 BE)\n2. Aus $e^0=1$ folgt $\\ln 1=0$. Da $e^x$ streng monoton wächst, ist auch ihre Umkehrfunktion streng monoton wachsend. (1 BE für die Nullstelle, 2 BE für Monotonie und Umkehrargument)\n3. Aus $e^y\\to0^+$ für $y\\to-\\infty$ folgt $\\ln x\\to-\\infty$ für $x\\to0^+$. Aus $e^y\\to\\infty$ für $y\\to\\infty$ folgt $\\ln x\\to\\infty$ für $x\\to\\infty$. (je 2 BE)\n\n### Teil B (7 BE)\n\n1. Der Graph wird um drei Einheiten nach rechts verschoben, in y-Richtung mit dem Faktor zwei gestreckt und um eine Einheit nach oben verschoben. (je 1 BE)\n2. Definitionsmenge: $x>3$; senkrechte Asymptote: $x=3$; aus $2\\ln(x-3)+1=0$ folgt für die Nullstelle $x=3+e^{-1/2}$. (je 1 BE)\n3. $\\ln(x-3)$ nimmt weiterhin jeden reellen Wert an. Multiplikation mit einem von null verschiedenen Faktor und eine Verschiebung in y-Richtung erhalten die Wertemenge $\\mathbb R$. (1 BE)\n\n### Teil C (3 BE)\n\nMit der Transformationsschablone $f(x/a)$ und $a=2$ entsteht der Graph von $k(x)=f(x/2)$ aus dem Graphen von $f(x)=\\ln x$ durch eine horizontale Streckung mit Faktor $2$. Zugleich gilt für $x>0$\n$$k(x)=\\ln\\!\\left(\\frac{x}{2}\\right)=\\ln x-\\ln2.$$\nDer identische Graph lässt sich daher auch als Verschiebung um $\\ln2$ nach unten beschreiben. Beide Aussagen sind gleichwertig, weil das Logarithmusgesetz die beiden Funktionsterme auf ihrer gemeinsamen Definitionsmenge exakt ineinander überführt. (1 BE für die horizontale Streckung, 1 BE für die Identität, 1 BE für die Äquivalenzbegründung)",
+          "scoring": {
+            "maxPoints": 19,
+            "passingPoints": 10,
+            "steps": [
+              {
+                "id": "ln_1",
+                "points": 9,
+                "description": "Grundlegende Eigenschaften vollständig aus der Umkehrbeziehung zur e-Funktion begründet"
+              },
+              {
+                "id": "ln_2",
+                "points": 7,
+                "description": "Vertikale Streckung und Verschiebungen erkannt sowie Definitionsmenge, Asymptote, Nullstelle und Wertemenge bestimmt"
+              },
+              {
+                "id": "ln_3",
+                "points": 3,
+                "description": "Horizontale Streckung erkannt und ihre gleichwertige logarithmische Verschiebungssicht begründet"
+              }
+            ]
+          }
+        },
+        "resourceLinks": []
+      },
+      "requestedIdsInAuthoredR": [],
+      "requestedIdsInCoverageMetadata": []
+    },
+    {
+      "wholeExistingExamGoal": {
+        "id": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+        "shortKey": "canonical_math_q4_structural_split_follow_up_q4_complex_history",
+        "title": "Mathematische Notwendigkeit und Fachgeschichte komplexer Zahlen erklären (LK)",
+        "titleEn": "Explain the mathematical need and history of complex numbers (advanced course)",
+        "description": "Die lernende Person kann die mathematische Notwendigkeit der Zahlbereichserweiterung zu komplexen Zahlen und wesentliche fachhistorische Entwicklungsschritte materialgestützt erklären.",
+        "descriptionEn": "The learner can use source material to explain the mathematical need to extend the number system to complex numbers and key steps in their disciplinary history.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical",
+          "phase:Q4",
+          "ExamTask"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-08-16/q4/q4-complex-history/draft_v1.md#aufgabe",
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2",
+            "K4.2"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "Q4",
+          "area": "Mathematik",
+          "topicCode": "CANONICAL.MATH.SEK2.PRACTICE.Q4.Q4_COMPLEX_HISTORY"
+        },
+        "contains": [],
+        "requires": [
+          "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+          "e105bad8-b4e5-53fc-b02e-604f1df5b503"
+        ],
+        "phase": "Q4",
+        "type": "atomic",
+        "nodeKind": "exam",
+        "extendedData": {
+          "applicabilityFromRequires": true,
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+            "e105bad8-b4e5-53fc-b02e-604f1df5b503"
+          ],
+          "coveredStrands": [
+            "L1"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-08-16/q4/q4-complex-history/draft_v1.md",
+          "taskContent": "### Material A\n\nBei der Bearbeitung kubischer Gleichungen im 16. Jahrhundert traten in Zwischenrechnungen Quadratwurzeln negativer Zahlen auf, sogar wenn am Ende reelle Lösungen vorlagen. Rafael Bombelli entwickelte nachvollziehbare Rechenregeln für solche Ausdrücke. Damit wurden sie von einem zunächst formalen Hilfsmittel zu systematisch verwendbaren Rechenobjekten.\n\n### Material B\n\nIn der weiteren Entwicklung wurden komplexe Zahlen geometrisch als Punkte beziehungsweise gerichtete Größen in einer Ebene dargestellt. Arbeiten, die heute unter anderem mit Argand und Gauß verbunden werden, machten algebraische Operationen anschaulicher und halfen, komplexe Zahlen als eigenständigen Zahlbereich zu etablieren. Die Entwicklung war ein längerer Prozess und keine einzelne „Erfindung“.\n\nQuellenbasis für die Materialparaphrasen:\n\n- Encyclopedia of Mathematics, „Complex number“, https://encyclopediaofmath.org/wiki/Complex_number\n- Queen's University, *A Brief History of Complex Numbers*, https://mast.queensu.ca/~math211/M211OH/M211OH33.pdf\n\n### Aufgaben\n\n1. Zeige, dass $x^2+1=0$ keine Lösung in $\\mathbb R$ besitzt. Erkläre, welches mathematische Problem durch die Einführung einer Zahl $i$ mit $i^2=-1$ gelöst wird. (5 BE)\n2. Erläutere mit Material A einen fachhistorisch belegten Schritt vom formalen Rechenausdruck zum systematisch nutzbaren Rechenobjekt. (3 BE)\n3. Erläutere mit Material B, wie die geometrische Darstellung die Anerkennung komplexer Zahlen als Zahlbereich unterstützte. (3 BE)\n4. Beurteile die Aussage „Komplexe Zahlen wurden von einer Person an einem Tag erfunden“ mithilfe beider Materialien. (3 BE)",
+          "solutionContent": "1. Für reelle $x$ gilt $x^2\\ge0$, also $x^2+1\\ge1$; der Term kann nicht null werden. Die Einführung von $i$ mit $i^2=-1$ liefert die Lösungen $x=\\pm i$ und erweitert den Zahlbereich so, dass Gleichungen dieser Art lösbar werden. (3 BE für den Nachweis, 2 BE für das durch die Erweiterung gelöste Problem)\n2. Material A belegt, dass Quadratwurzeln negativer Zahlen zunächst als formale Zwischenausdrücke beim Lösen kubischer Gleichungen auftraten und Bombellis ausdrückliche Rechenregeln konsistente Operationen mit ihnen ermöglichten. Die Antwort muss diese Evidenz nutzen und darf nicht lediglich eine Person nennen. (3 BE)\n3. Material B belegt, dass die Darstellung komplexer Zahlen in einer Ebene algebraische Operationen mit Geometrie verband und dazu beitrug, komplexe Zahlen als Elemente eines zusammenhängenden Zahlbereichs zu behandeln. (3 BE)\n4. Die Aussage wird verworfen: Die Materialien beschreiben verschiedene Entwicklungen über Jahrhunderte — formale Vorkommen, Rechenregeln sowie geometrische und systematische Deutungen — mit Beiträgen mehrerer Mathematiker. Belegt ist ein Entwicklungsprozess, keine Erfindung an einem einzigen Tag. (3 BE)\n\nQuellenhinweis: Alle historischen Aussagen bleiben auf die paraphrasierten Materialien beschränkt und vermeiden die Prioritätsbehauptung, eine einzelne benannte Person habe die komplexen Zahlen allein erfunden.",
+          "scoring": {
+            "maxPoints": 14,
+            "passingPoints": 7,
+            "steps": [
+              {
+                "id": "complex_history_1",
+                "points": 5,
+                "description": "Unlösbarkeit in ℝ und mathematischen Zweck der Erweiterung zu ℂ erklärt"
+              },
+              {
+                "id": "complex_history_2",
+                "points": 3,
+                "description": "Fachhistorischen Schritt zu systematischen Rechenregeln materialgestützt erläutert"
+              },
+              {
+                "id": "complex_history_3",
+                "points": 3,
+                "description": "Bedeutung geometrischer Darstellung materialgestützt erläutert"
+              },
+              {
+                "id": "complex_history_4",
+                "points": 3,
+                "description": "Ein-Person-ein-Tag-Behauptung anhand beider Materialien begründet verworfen"
+              }
+            ]
+          }
+        },
+        "resourceLinks": []
+      },
+      "requestedIdsInAuthoredR": [],
+      "requestedIdsInCoverageMetadata": []
+    },
+    {
+      "wholeExistingExamGoal": {
+        "id": "bbb340ed-1009-4966-ae96-bfea4437505a",
+        "shortKey": "canonical_math_q2_reciprocal_root_assessment",
+        "title": "Kehrwertpotenzen und Quadratwurzel vergleichen",
+        "titleEn": "Compare reciprocal powers and the square-root function",
+        "description": "Die lernende Person kann die Eigenschaften von Kehrwertpotenzen und der Quadratwurzelfunktion in einer zusammenhängenden Aufgabe untersuchen, grafisch darstellen und die Ableitungen begründen.",
+        "descriptionEn": "The learner can investigate and sketch reciprocal powers and the square-root function in one coherent task and justify their derivatives.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "ExamTask"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "phase": "Q2",
+          "area": "Analysis",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1",
+            "K4",
+            "K5"
+          ],
+          "guidingIdeas": [
+            "L4"
+          ]
+        },
+        "contains": [],
+        "requires": [
+          "61686d85-0301-550e-bab9-bd9411c3e7ce",
+          "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+          "6517427b-cf4e-5ebf-9a76-e1035617687c"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "applicabilityFromRequires": true,
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe 2024, Q2.1, S. 40, gemeinsames Niveau, Spiegelstrich 1; eigenständig verfasste Übungsaufgabe, keine amtliche Prüfungsaufgabe",
+        "phase": "Q2",
+        "type": "atomic",
+        "nodeKind": "exam",
+        "examData": {
+          "reviewStatus": "released",
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/he-q21-common-2026-09-20/candidate.md",
+          "coveredGoalIds": [
+            "61686d85-0301-550e-bab9-bd9411c3e7ce",
+            "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+            "6517427b-cf4e-5ebf-9a76-e1035617687c"
+          ],
+          "coveredStrands": [
+            "L4"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "Vergleiche die Funktionen $r_1(x)=1/x$, $r_2(x)=1/x^2$ und $w(x)=\\sqrt{x}$.\n\n1. Gib Definitions- und Wertemenge an. Skizziere die Graphen mit charakteristischen Punkten und begründe vorhandene Symmetrien. Beschreibe bei den Kehrwertfunktionen das Verhalten beiderseits von $x=0$ und für große positive bzw. negative $x$. Erläutere, warum $x=0$ für $w$ keine Polstelle ist. (8 BE)\n2. Übertrage deine Aussagen auf $r_n(x)=1/x^n$ mit positiver ganzer Zahl $n$. Welche Eigenschaften hängen davon ab, ob $n$ gerade oder ungerade ist? (4 BE)\n3. Bestimme die Ableitungen von $r_n$ und $w$ auf den zulässigen Bereichen. Begründe die Schritte durch Potenzschreibweise und Potenzregel. Erkläre mit dem rechtsseitigen Differenzenquotienten, weshalb $w$ bei $x=0$ keinen endlichen Ableitungswert besitzt. (6 BE)",
+          "solutionContent": "1. Für $r_1$ gilt $D=W=\\mathbb R\\setminus\\{0\\}$; der Graph ist punktsymmetrisch zum Ursprung. Für $r_2$ gilt $D=\\mathbb R\\setminus\\{0\\}$ und $W=(0,\\infty)$; der Graph ist y-achsensymmetrisch. Punkte $(1|1)$ sowie $(-1|-1)$ bzw. $(-1|1)$ sichern die Skizzen. Bei $x\\to0^+$ wachsen beide Funktionen unbegrenzt; bei $x\\to0^-$ fällt $r_1$ gegen $-\\infty$, während $r_2$ gegen $+\\infty$ wächst. Bei $|x|\\to\\infty$ nähern sich die Werte null. Asymptoten sind $x=0$ und $y=0$. Für $w$ gilt $D=W=[0,\\infty)$; der Graph wächst und enthält $(0|0)$, $(1|1)$ und $(4|2)$. Er ist weder y-achsen- noch ursprungssymmetrisch. Für $x\\to0^+$ gilt $w(x)\\to0$; deshalb liegt keine Polstelle vor.\n\n2. Für jedes positive ganze $n$ gilt $D(r_n)=\\mathbb R\\setminus\\{0\\}$. Bei ungeradem $n$ gelten die Symmetrie, Wertemenge und einseitigen Grenzwerte von $r_1$, bei geradem $n$ diejenigen von $r_2$. Bei $|x|\\to\\infty$ gilt stets $r_n(x)\\to0$.\n\n3. Aus $r_n(x)=x^{-n}$ folgt $r_n'(x)=-n x^{-n-1}$ für $x\\ne0$. Aus $w(x)=x^{1/2}$ folgt $w'(x)=1/(2\\sqrt{x})$ für $x>0$. Am Rand $0$ ist der rechtsseitige Differenzenquotient $\\sqrt{h}/h=1/\\sqrt{h}$ für $h>0$ nach oben unbeschränkt; ein endlicher Ableitungswert existiert dort nicht.\n\nBewertung: Teil 1: D/W der Kehrwertfunktionen 2 BE, deren Skizzen/Symmetrien 2 BE, Polstellen und Verhalten im Unendlichen 2 BE, Wurzelfunktion einschließlich Skizze und Abgrenzung der Polstelle 2 BE. Teil 2: Definitionsbereich 1 BE, Unterscheidung gerade/ungerade einschließlich W/Symmetrie/Polverhalten 2 BE, gemeinsames Fernverhalten 1 BE. Teil 3: Ableitung r_n mit Begründung und Bereich 2 BE, Ableitung w mit Begründung und Bereich 2 BE, Randargument bei null 2 BE. Fachlich gleichwertige Darstellungen sind zulässig.",
+          "scoring": {
+            "maxPoints": 18,
+            "passingPoints": 9,
+            "steps": [
+              {
+                "id": "q21_reciprocal_root_1",
+                "points": 8,
+                "description": "Definitions- und Wertemengen, Graphen, Symmetrien und Randverhalten konkret verglichen"
+              },
+              {
+                "id": "q21_reciprocal_root_2",
+                "points": 4,
+                "description": "Eigenschaften auf gerade und ungerade positive Exponenten übertragen"
+              },
+              {
+                "id": "q21_reciprocal_root_3",
+                "points": 6,
+                "description": "Ableitungen begründet und deren zulässige Bereiche einschließlich Randfall erklärt"
+              }
+            ]
+          },
+          "reviewNote": "Local machine-only acceptance on 2026-09-20 after author check, independent content review math_m7_current_scope and informed Root integration check; exact pre-release goal hashes and calculations are bound in he-q21-scope-repair/assessment-release-root.json. No human review, learner performance, publication or deployment is claimed. Equivalent fully justified solutions receive equivalent credit."
+        },
+        "resourceLinks": []
+      },
+      "requestedIdsInAuthoredR": [],
+      "requestedIdsInCoverageMetadata": []
+    },
+    {
+      "wholeExistingExamGoal": {
+        "id": "79f5f4cc-10e1-56a5-8ed3-8cd51688db41",
+        "shortKey": "canonical_math_sek1_sl_j10_assessment_sphere_cavalieri",
+        "title": "Kugelvolumen durch Querschnittsvergleich herleiten (Jahrgangsstufe 10, 12 BE)",
+        "titleEn": "Derive sphere volume by comparing cross sections (Year 10, 12 points)",
+        "description": "Die lernende Person kann in einer eigenständigen Prüfungsaufgabe die Querschnitte einer Kugel mit denen eines Zylinders ohne zwei Kegel vergleichen, die Voraussetzungen von Cavalieri begründen und daraus die Kugelvolumenformel herleiten.",
+        "descriptionEn": "The learner can independently compare the cross sections of a sphere with those of a cylinder minus two cones, justify the conditions of Cavalieri’s principle, and derive the sphere-volume formula.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical",
+          "phase:SekI",
+          "ExamTask"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-SL"
+          ],
+          "stage": [
+            "SekI"
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/sl-sphere-cavalieri-20260929/reviewed-v1.md#aufgabe",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1.1",
+            "K2.1",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L3"
+          ],
+          "phase": "J10",
+          "area": "Mathematik",
+          "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.SL.J10.SPHERE_CAVALIERI"
+        },
+        "contains": [],
+        "requires": [
+          "baea3966-5d10-53bf-8193-3fcda7b1e73f"
+        ],
+        "phase": "J10",
+        "type": "atomic",
+        "nodeKind": "exam",
+        "extendedData": {
+          "applicabilityFromRequires": true,
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "reviewNote": "Nach unabhängiger KI-Aufgabenprüfung 2026-09-29 mathematisch und gegen SL J10 S.34–36 geprüft. Die bisherige Grenze 10/12 erlaubte Bestehen ohne volle Volumenherleitung; 12/12 erzwingt bei korrekter Bewertung alle ausgewiesenen Leistungen, solange das Backend nur Gesamtpunkte prüft. Maschinelle Aufgabenfreigabe; keine menschliche Freigabe oder Erprobung.",
+          "coveredGoalIds": [
+            "baea3966-5d10-53bf-8193-3fcda7b1e73f"
+          ],
+          "coveredStrands": [
+            "L2",
+            "L3"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/sl-sphere-cavalieri-20260929/reviewed-v1.md",
+          "taskContent": "Für ein Modell aus waagerechten Schichten werden zwei Körper verglichen. Eine Kugel mit Radius $r>0$ liegt mit ihrem Mittelpunkt in der Höhe $z=0$. Ein gerader Zylinder mit demselben Radius reicht von $z=-r$ bis $z=r$. Aus dem Zylinder werden zwei gerade Kegel herausgenommen: Beide Spitzen liegen im Zylindermittelpunkt; die Grundkreise sind die obere und die untere Zylindergrundfläche. Jeder Kegel hat also Radius und Höhe $r$. Mit „Restkörper“ ist der Zylinder ohne diese beiden Kegel gemeint.\n\n1. Beginne mit $r=3\\,\\mathrm{cm}$. Bestimme für Kugel und Restkörper die Querschnittsflächen in den Höhen $z=0$ und $z=1{,}5\\,\\mathrm{cm}$. Skizziere dazu einen senkrechten Schnitt durch die gemeinsame Achse. (2 BE)\n2. Betrachte nun einen beliebigen Radius $r$ und eine beliebige Höhe $-r\\le z\\le r$. Leite mit Pythagoras den Flächeninhalt des Kugelquerschnitts her. Begründe über ähnliche Dreiecke den Radius des herausgenommenen Kegelquerschnitts und bestimme damit den Flächeninhalt des Restkörperquerschnitts. Vergleiche beide Ausdrücke. (4 BE)\n3. Begründe, warum der Satz von Cavalieri auf die Kugel und den Restkörper anwendbar ist. Leite daraus mit den bekannten Zylinder- und Kegelvolumenformeln eine Formel für das Kugelvolumen her. Bestimme anschließend das Volumen für $r=3\\,\\mathrm{cm}$. Die Kugelvolumenformel darfst du hier nicht voraussetzen. (4 BE)\n4. Jemand meint: „Es reicht, dass beide Körper gleich hoch sind und ihre Schnitte bei $z=0$ dieselbe Fläche haben.“ Beurteile diese Begründung und erläutere, welche Aussage stattdessen benötigt wird. (2 BE)",
+          "solutionContent": "1. Bei $r=3$ gilt für beide Körper: In der Mitte $z=0$ beträgt der Schnittinhalt $9\\pi\\,\\mathrm{cm}^2$; bei $z=1{,}5$ beträgt er $(9-2{,}25)\\pi=6{,}75\\pi\\,\\mathrm{cm}^2$. Im Achsenschnitt erscheint die Kugel als Kreis und der Restkörper als Rechteck nach Herausnahme zweier Dreiecke mit gemeinsamer Spitze im Mittelpunkt.\n\n2. Für den Kugelschnittradius $\\rho$ gilt $\\rho^2+z^2=r^2$, daher $A_K(z)=\\pi(r^2-z^2)$. Im jeweiligen Kegel gilt wegen ähnlicher Dreiecke $q/r=|z|/r$, also $q=|z|$. Der Restkörper hat einen Kreisringquerschnitt mit $A_R(z)=\\pi r^2-\\pi|z|^2=\\pi(r^2-z^2)$. Bei $z=0$ ist der herausgenommene Kreis entartet; bei $z=\\pm r$ ist die Restfläche null. Die Flächeninhalte stimmen in jeder Höhe überein, obwohl Kreis und Kreisring verschiedene Formen besitzen.\n\n3. Beide Körper reichen von $-r$ bis $r$, haben also dieselbe Höhe $2r$. Alle Schnitte parallel zu den Grundebenen haben in gleicher Höhe denselben Flächeninhalt. Cavalieri liefert daher gleiche Volumina. Der Restkörper hat $V_R=\\pi r^2\\cdot2r-2\\cdot\\frac13\\pi r^2r=(2-\\frac23)\\pi r^3=\\frac43\\pi r^3$. Somit ist dies auch das Kugelvolumen. Für $r=3\\,\\mathrm{cm}$ ergibt sich $V=36\\pi\\,\\mathrm{cm}^3\\approx113{,}1\\,\\mathrm{cm}^3$.\n\n4. Die Behauptung reicht nicht: Gleiche Gesamthöhe und nur ein gleicher Querschnitt schließen unterschiedliche übrige Schichtflächen und somit verschiedene Volumina nicht aus. Erforderlich ist die Gleichheit der Querschnittsflächen in jeder gleichen Höhe. Die allgemeine Rechnung in Teilaufgabe 2 liefert genau diese Aussage; zwei numerische Probeschnitte allein liefern sie nicht.",
+          "scoring": {
+            "maxPoints": 12,
+            "passingPoints": 12,
+            "steps": [
+              {
+                "id": "sphere_cavalieri_examples",
+                "points": 2,
+                "description": "Achsenbild und beide numerischen Querschnittsvergleiche stimmen."
+              },
+              {
+                "id": "sphere_cavalieri_general_sections",
+                "points": 4,
+                "description": "Kugelschnitt aus Pythagoras (2 BE), Kegelschnittradius aus Ähnlichkeit und Restfläche (2 BE) allgemein hergeleitet; bloße Angabe der Gleichheit ersetzt keine Herleitung."
+              },
+              {
+                "id": "sphere_cavalieri_volume_derivation",
+                "points": 4,
+                "description": "Gleiche Höhen und alle höhengleichen Querschnittsflächen begründet (1 BE), Zylinder minus zwei Kegel zur Kugelformel umgeformt (2 BE), Zahlenwert und Volumeneinheit (1 BE). Voraussetzen der Kugelformel erhält keine Herleitungs-BE."
+              },
+              {
+                "id": "sphere_cavalieri_condition_check",
+                "points": 2,
+                "description": "Ein einzelner Querschnitt reicht nicht; notwendige Bedingung für jede gleiche Höhe erläutert."
+              }
+            ]
+          }
+        },
+        "resourceLinks": []
+      },
+      "requestedIdsInAuthoredR": [],
+      "requestedIdsInCoverageMetadata": []
+    },
+    {
+      "wholeExistingExamGoal": {
+        "id": "b321e32c-1dff-5529-8200-6879ee8fb10b",
+        "shortKey": "canonical_math_sek2_q2_m7_route_spat_volume",
+        "title": "Spatprodukt, Orientierung und Tetraedervolumen prüfen",
+        "titleEn": "Assess scalar triple product, orientation and tetrahedron volume",
+        "description": "Die lernende Person kann in einer Q2-Prüfungsaufgabe das Spatprodukt aus selbst gewählten Kantenvektoren berechnen, sein Vorzeichen deuten und daraus Spat- und Tetraedervolumen begründen.",
+        "descriptionEn": "The learner can independently assess scalar triple product, orientation and tetrahedron volume in a Q2 assessment and justify the results.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "ExamTask",
+          "canonical",
+          "phase:Q2"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "applicabilityFromRequires": true,
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/m7-route-repair-20260929-v1/tasks.md",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "Geometry",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.PRACTICE.SPAT_VOLUME"
+        },
+        "requires": [
+          "944dd479-9f30-5acb-ab32-3ea0b6dc8e06",
+          "a594dec0-3977-5c43-9432-d4254a7f6130"
+        ],
+        "contains": [],
+        "examples": [],
+        "resourceLinks": [],
+        "examData": {
+          "reviewStatus": "released",
+          "reviewNote": "Machine-only focused content and calculation review, 2026-09-29; source section SHA-256 53766e9161a17b85dd75621c3b99765b85b09696b3b7a3ce3d3afe798cec5c75. All scored parts are required because the backend currently enforces only total points; no human review, learner trial or publication claimed.",
+          "coveredGoalIds": [
+            "944dd479-9f30-5acb-ab32-3ea0b6dc8e06",
+            "a594dec0-3977-5c43-9432-d4254a7f6130"
+          ],
+          "coveredStrands": [
+            "L3"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/m7-route-repair-20260929-v1/tasks.md",
+          "taskContent": "Ein Spat und ein Tetraeder haben den gemeinsamen Eckpunkt $O=(0|0|0)$ sowie die von $O$ ausgehenden Kantenendpunkte $A=(2|0|0)$, $B=(0|3|0)$ und $C=(1|0|4)$; alle Koordinaten sind in cm angegeben.\n\n1. Wähle selbst drei Kantenvektoren ab $O$. Gib das Spatprodukt als Skalarprodukt mit einem Kreuzprodukt an und berechne seinen Wert. (4 BE)\n2. Vertausche zwei der drei Vektoren. Erkläre das geänderte Vorzeichen und warum das Volumen des Spats trotzdem gleich bleibt. (4 BE)\n3. Bestimme aus denselben Koordinaten die Volumina des Spats und des Tetraeders. Begründe den Sechstelfaktor für das Tetraeder. (4 BE)",
+          "solutionContent": "Die Kanten sind $a=(2,0,0)$, $b=(0,3,0)$ und $c=(1,0,4)$. Es gilt $b\\times c=(12,0,-3)$ und damit $[a,b,c]=a\\cdot(b\\times c)=24\\,\\mathrm{cm}^3$. Bei Vertauschung von $b$ und $c$ ergibt sich $[a,c,b]=-24\\,\\mathrm{cm}^3$: Das Vorzeichen kennzeichnet die Orientierung der geordneten Vektoren, der Betrag das geometrische Volumen. Die Spat-Grundfläche aus $a$ und $b$ misst $6\\,\\mathrm{cm}^2$, ihre senkrechte Höhe ist $4\\,\\mathrm{cm}$, also $V_{\\mathrm{Spat}}=24\\,\\mathrm{cm}^3$. Beim konkreten Tetraeder $OABC$ ist das Dreieck $OAB$ die halbe Spat-Grundfläche mit $3\\,\\mathrm{cm}^2$; bei derselben senkrechten Höhe $4\\,\\mathrm{cm}$ gilt wegen des Pyramidenfaktors $1/3$ daher $V_{\\mathrm{Tet}}=3\\cdot4/3=4\\,\\mathrm{cm}^3=V_{\\mathrm{Spat}}/6$.",
+          "scoring": {
+            "maxPoints": 12,
+            "passingPoints": 12,
+            "steps": [
+              {
+                "id": "q2_m7_spat_volume_1",
+                "points": 4,
+                "description": "Kantenvektoren gewählt und Spatprodukt berechnet"
+              },
+              {
+                "id": "q2_m7_spat_volume_2",
+                "points": 4,
+                "description": "Vorzeichenwechsel und Volumenbetrag erklärt"
+              },
+              {
+                "id": "q2_m7_spat_volume_3",
+                "points": 4,
+                "description": "Spat- und Tetraedervolumen samt Sechstelfaktor begründet"
+              }
+            ]
+          }
+        },
+        "phase": "Q2",
+        "type": "atomic",
+        "nodeKind": "exam"
+      },
+      "requestedIdsInAuthoredR": [],
+      "requestedIdsInCoverageMetadata": []
+    },
+    {
+      "wholeExistingExamGoal": {
+        "id": "d110ab96-275e-5ccb-8851-e02725baf31c",
+        "shortKey": "canonical_math_sek2_q2_m7_route_round_solids",
+        "title": "Zylinder-, Kegel- und Kugelvolumen vergleichen",
+        "titleEn": "Compare cylinder, cone and sphere volumes",
+        "description": "Die lernende Person kann in einer Q2-Prüfungsaufgabe Radien und Höhen aus Koordinaten erschließen, die Volumina von Zylinder, Kegel und Kugel bestimmen und die Drittel- bzw. Kubikfaktoren erklären.",
+        "descriptionEn": "The learner can independently compare cylinder, cone and sphere volumes in a Q2 assessment and justify the results.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "ExamTask",
+          "canonical",
+          "phase:Q2"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "applicabilityFromRequires": true,
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/m7-route-repair-20260929-v1/tasks.md",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "Geometry",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.PRACTICE.ROUND_SOLIDS"
+        },
+        "requires": [
+          "c71ae268-f28e-59f0-982d-91db8f963378",
+          "e8237315-654e-5150-97de-49c4cb49b3d1",
+          "2f2c9f1a-07f0-59e4-b84a-60648c3b0bda"
+        ],
+        "contains": [],
+        "examples": [],
+        "resourceLinks": [],
+        "examData": {
+          "reviewStatus": "released",
+          "reviewNote": "Machine-only focused content and calculation review, 2026-09-29; source section SHA-256 c10addd203683196473f13318956a50e6cc695dacd0fc329adbebc1b06c1282e. All scored parts are required because the backend currently enforces only total points; no human review, learner trial or publication claimed.",
+          "coveredGoalIds": [
+            "c71ae268-f28e-59f0-982d-91db8f963378",
+            "e8237315-654e-5150-97de-49c4cb49b3d1",
+            "2f2c9f1a-07f0-59e4-b84a-60648c3b0bda"
+          ],
+          "coveredStrands": [
+            "L3"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/m7-route-repair-20260929-v1/tasks.md",
+          "taskContent": "Die Grundfläche eines geraden Zylinders liegt in $z=0$. Ihr Mittelpunkt ist $O=(0|0|0)$, der Punkt $R=(3|0|0)$ liegt auf dem Grundkreis und der Mittelpunkt des Deckkreises ist $T=(0|0|8)$. Ein gerader Kegel hat denselben Grundkreis und $T$ als Spitze. Eine Kugel hat Mittelpunkt $O$ und Oberflächenpunkt $R$. Alle Koordinaten sind in cm angegeben.\n\n1. Ermittle Radius und senkrechte Höhe aus den Koordinaten. Berechne das Zylindervolumen und erkläre die Kreisfläche als konstante Grundfläche. (4 BE)\n2. Berechne das Kegelvolumen. Deute den Faktor $1/3$ anhand des Zylinders mit derselben Grundfläche und derselben senkrechten Höhe. (4 BE)\n3. Berechne das Kugelvolumen. Eine zweite Kugel hat den doppelten Radius: Bestimme auch ihr Volumen und begründe den Änderungsfaktor. (4 BE)",
+          "solutionContent": "$r=|OR|=3\\,\\mathrm{cm}$ und $h=|OT|=8\\,\\mathrm{cm}$. Die kreisförmige Grundfläche hat $G=\\pi r^2=9\\pi\\,\\mathrm{cm}^2$; beim Zylinder sind parallele Querschnitte gleich groß, also $V_Z=Gh=72\\pi\\,\\mathrm{cm}^3$. Für den Kegel gilt bei gleicher Grundfläche und Höhe $V_K=Gh/3=24\\pi\\,\\mathrm{cm}^3=V_Z/3$. Die Kugel hat $V(3)=4\\pi\\cdot3^3/3=36\\pi\\,\\mathrm{cm}^3$. Bei $r=6$ gilt $V(6)=4\\pi\\cdot6^3/3=288\\pi\\,\\mathrm{cm}^3$ und $V(6)/V(3)=2^3=8$.",
+          "scoring": {
+            "maxPoints": 12,
+            "passingPoints": 12,
+            "steps": [
+              {
+                "id": "q2_m7_round_solids_1",
+                "points": 4,
+                "description": "Zylindervolumen aus Radius und Höhe erschlossen"
+              },
+              {
+                "id": "q2_m7_round_solids_2",
+                "points": 4,
+                "description": "Kegelvolumen und Drittelvergleich begründet"
+              },
+              {
+                "id": "q2_m7_round_solids_3",
+                "points": 4,
+                "description": "Kugelvolumina und kubischen Radiusfaktor erklärt"
+              }
+            ]
+          }
+        },
+        "phase": "Q2",
+        "type": "atomic",
+        "nodeKind": "exam"
+      },
+      "requestedIdsInAuthoredR": [],
+      "requestedIdsInCoverageMetadata": []
+    },
+    {
+      "wholeExistingExamGoal": {
+        "id": "938d47a2-5d7c-52d6-8644-5cc6060d76a1",
+        "shortKey": "canonical_math_sek2_q2_m7_route_volume_derivation_lk",
+        "title": "Pyramidenvolumen aus Querschnitten herleiten (LK)",
+        "titleEn": "Derive pyramid volume from cross sections (advanced course)",
+        "description": "Die lernende Person kann in einer Q2-Prüfungsaufgabe die Pyramidenvolumenformel aus ähnlichen Parallelquerschnitten mit einem Integral herleiten und den Drittelfaktor geometrisch deuten.",
+        "descriptionEn": "The learner can independently derive pyramid volume from cross sections (advanced course) in a Q2 assessment and justify the results.",
+        "core": false,
+        "weight": 1,
+        "tags": [
+          "LK",
+          "Practice",
+          "Assessment",
+          "ExamTask",
+          "canonical",
+          "phase:Q2"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "applicabilityFromRequires": true,
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/m7-route-repair-20260929-v1/tasks.md",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "Geometry",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.PRACTICE.VOLUME_DERIVATION_LK"
+        },
+        "requires": [
+          "e9181209-1506-59df-9053-17f36b91bb06"
+        ],
+        "contains": [],
+        "examples": [],
+        "resourceLinks": [],
+        "examData": {
+          "reviewStatus": "released",
+          "reviewNote": "Machine-only focused content and calculation review, 2026-09-29; source section SHA-256 e34215a1d6b66a590e59dd56e0bad0a8e195e3074859770266acc690717bd207. All scored parts are required because the backend currently enforces only total points; no human review, learner trial or publication claimed.",
+          "coveredGoalIds": [
+            "e9181209-1506-59df-9053-17f36b91bb06"
+          ],
+          "coveredStrands": [
+            "L3"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/m7-route-repair-20260929-v1/tasks.md",
+          "taskContent": "Eine Pyramide hat Grundflächeninhalt $G>0$ und senkrechte Höhe $h>0$. Ein Schnitt parallel zur Grundfläche in Höhe $z$ über ihr ist ähnlich zur Grundfläche. Leite die Volumenformel $V=Gh/3$ aus den Querschnittsflächen mit einem geeigneten Integral her. Begründe dabei den quadratischen Faktor für die Schnittfläche und die Grenzen des Integrals. (12 BE)",
+          "solutionContent": "Bei $z=0$ ist der Schnitt die Grundfläche, bei $z=h$ schrumpft er zur Spitze. Entsprechende Längen skalieren daher mit $1-z/h$, die Flächen mit dessen Quadrat: $A(z)=G(1-z/h)^2$ für $0\\le z\\le h$. Das Volumen ist\n$$V=\\int_0^h A(z)\\,dz=G\\int_0^h(1-2z/h+z^2/h^2)\\,dz=G[z-z^2/h+z^3/(3h^2)]_0^h=Gh/3.$$\nDie Grenzen sind Grundfläche und Spitze; das Ergebnis ist ein Drittel des Prismas gleicher Grundfläche und Höhe. Die Herleitung gilt auch ohne numerische Maße für eine beliebige Pyramide mit zueinander ähnlichen Parallelquerschnitten.",
+          "scoring": {
+            "maxPoints": 12,
+            "passingPoints": 12,
+            "steps": [
+              {
+                "id": "q2_m7_volume_derivation_lk_1",
+                "points": 12,
+                "description": "Ähnlichkeit, Querschnittsfläche und Integral bis zur Pyramidenformel hergeleitet"
+              }
+            ]
+          }
+        },
+        "phase": "Q2",
+        "type": "atomic",
+        "nodeKind": "exam"
+      },
+      "requestedIdsInAuthoredR": [],
+      "requestedIdsInCoverageMetadata": []
+    },
+    {
+      "wholeExistingExamGoal": {
+        "id": "002dae37-e209-531c-b87c-719124b6bb4a",
+        "title": "Geradenlagen und Volumenteilung am Tetraeder begründen",
+        "titleEn": "Justify line positions and volume division in a tetrahedron",
+        "description": "Die lernende Person kann in einer räumlichen Prüfungsaufgabe die Lagen gegebener Geraden und Ebenen rechnerisch untersuchen, fachlich begründen und geometrisch deuten sowie die durch einen ebenen Schnitt entstehenden Volumina und ihr Teilungsverhältnis bestimmen, vergleichen und begründen.",
+        "descriptionEn": "In a spatial assessment, the learner can investigate given line and plane positions computationally, justify and interpret them geometrically, and determine, compare and justify the volumes and division ratio produced by a plane cut.",
+        "type": "atomic",
+        "weight": 1,
+        "contains": [],
+        "requires": [
+          "e75ec65a-9692-5871-b90b-fbebe38ae0c3",
+          "f2a12269-6bcb-564a-9fdb-45cfdbd704fc"
+        ],
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "ExamTask",
+          "canonical"
+        ],
+        "examData": {
+          "reviewStatus": "released",
+          "reviewNote": "Eigene SkillPilot-Prüfung; unveränderter ganzer DE/EN-Inhalt und normale24/16-Rubrik mit15er-Gesamtkappung unabhängig geprüft(b7c03c7c), konkrete120er-Platzierung geprüft(33f439ba). Private Materialisierung; tatsächliche Native-/SourceCoverage-/Rootabnahme bleibt offen.",
+          "coveredGoalIds": [
+            "e75ec65a-9692-5871-b90b-fbebe38ae0c3",
+            "f2a12269-6bcb-564a-9fdb-45cfdbd704fc"
+          ],
+          "coveredStrands": [
+            "L3"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "# Ein Tetraeder wird geteilt\n\nDie Punkte\n$$\n\\begin{gathered}\nO(0\\mid0\\mid0),\\quad A(12\\mid0\\mid0),\\\\\nB(0\\mid8\\mid0),\\quad C(0\\mid0\\mid6)\n\\end{gathered}\n$$\nbilden einen Tetraeder mit Grunddreieck $OAB$ und Spitze $C$. Eine Koordinateneinheit entspricht einer Längeneinheit (LE). Die Ebene $E:\\ z=3$ schneidet den Tetraeder. Mit $F$ wird die Ebene durch $O$, $A$ und $B$ bezeichnet.\n\nAußerdem sind die Geraden gegeben:\n$$\n\\begin{aligned}\ng:\\quad\\vec{x}&=\\begin{pmatrix}0\\\\0\\\\6\\end{pmatrix}\n+t\\begin{pmatrix}2\\\\0\\\\-1\\end{pmatrix},\\quad t\\in\\mathbb R,\\\\\nh:\\quad\\vec{x}&=\\begin{pmatrix}12\\\\0\\\\0\\end{pmatrix}\n+s\\begin{pmatrix}-3\\\\2\\\\0\\end{pmatrix},\\quad s\\in\\mathbb R,\\\\\nk:\\quad\\vec{x}&=\\begin{pmatrix}0\\\\0\\\\3\\end{pmatrix}\n+r\\begin{pmatrix}-3\\\\2\\\\0\\end{pmatrix},\\quad r\\in\\mathbb R.\n\\end{aligned}\n$$\n\nBearbeiten Sie die folgenden Teile mit nachvollziehbaren Rechnungen und Begründungen. Eine Skizze kann helfen, ist aber nicht erforderlich.\n\n**a) Lagen zur Schnittebene (8 Punkte).** Untersuchen Sie die Lage von $E$ zu $F$ sowie die Lage jeder der Geraden $g$, $h$ und $k$ zu $E$. Berechnen Sie gegebenenfalls den Schnittpunkt. Begründen Sie Ihre Entscheidungen rechnerisch und deuten Sie die Ergebnisse geometrisch.\n\n**b) Zwei Geradenvergleiche (4 Punkte).** Untersuchen und begründen Sie die Lage von $h$ zu $k$. Beurteilen Sie anschließend die Aussage: „Weil $g$ die Ebene $E$ schneidet und $k$ in $E$ liegt, müssen sich auch $g$ und $k$ schneiden.“ Bestimmen und begründen Sie die tatsächliche Lage von $g$ zu $k$.\n\n**c) Die Schnittfigur (4 Punkte).** Bestimmen Sie die Schnittpunkte $U$, $V$ und $W$ von $E$ mit den Strecken $CO$, $CA$ beziehungsweise $CB$. Begründen Sie, welche Figur der gesamte Schnitt des Tetraeders mit $E$ ist.\n\n**d) Die beiden Teilkörper (6 Punkte).** Bestimmen Sie das Volumen des gesamten Tetraeders und die Volumina der beiden durch $E$ entstehenden Teilkörper. Geben Sie das Verhältnis „Teil mit Spitze $C$ : übriger Teil“ in möglichst einfachen ganzen Zahlen an und begründen Sie Ihre Berechnung.\n\n**e) Eine Behauptung prüfen (2 Punkte).** „Die Ebene halbiert die Höhe des Tetraeders. Deshalb haben die beiden Teilkörper dasselbe Volumen.“ Beurteilen Sie diese Behauptung. Erklären Sie anhand der Geometrie, warum aus dem Höhenverhältnis das ermittelte Volumenverhältnis entsteht.",
+          "taskContentEn": "# Dividing a tetrahedron\n\nThe points\n$$\n\\begin{gathered}\nO(0\\mid0\\mid0),\\quad A(12\\mid0\\mid0),\\\\\nB(0\\mid8\\mid0),\\quad C(0\\mid0\\mid6)\n\\end{gathered}\n$$\nform a tetrahedron with base triangle $OAB$ and apex $C$. Coordinates are measured in length units (LU). The plane $E:\\ z=3$ cuts the tetrahedron. Let $F$ be the plane through $O$, $A$ and $B$.\n\nThe following lines are also given:\n$$\n\\begin{aligned}\ng:\\quad\\vec{x}&=\\begin{pmatrix}0\\\\0\\\\6\\end{pmatrix}\n+t\\begin{pmatrix}2\\\\0\\\\-1\\end{pmatrix},\\quad t\\in\\mathbb R,\\\\\nh:\\quad\\vec{x}&=\\begin{pmatrix}12\\\\0\\\\0\\end{pmatrix}\n+s\\begin{pmatrix}-3\\\\2\\\\0\\end{pmatrix},\\quad s\\in\\mathbb R,\\\\\nk:\\quad\\vec{x}&=\\begin{pmatrix}0\\\\0\\\\3\\end{pmatrix}\n+r\\begin{pmatrix}-3\\\\2\\\\0\\end{pmatrix},\\quad r\\in\\mathbb R.\n\\end{aligned}\n$$\n\nShow your calculations and reasoning in the following parts. You may draw a sketch, but one is not required.\n\n**a) Positions relative to the cutting plane (8 points).** Investigate the position of $E$ relative to $F$ and the position of each line $g$, $h$ and $k$ relative to $E$. Calculate any unique intersection point. Justify your decisions by calculation and interpret the results geometrically.\n\n**b) Comparing two pairs of lines (4 points).** Determine and justify the position of $h$ relative to $k$. Then assess this statement: “Since $g$ intersects plane $E$ and $k$ lies in $E$, the lines $g$ and $k$ must also intersect.” Determine and justify the actual position of $g$ relative to $k$.\n\n**c) The cross-section (4 points).** Find the intersection points $U$, $V$ and $W$ of $E$ with the segments $CO$, $CA$ and $CB$, respectively. Explain what shape forms the entire cross-section of the tetrahedron by $E$.\n\n**d) The two solids (6 points).** Calculate the volume of the whole tetrahedron and the volumes of the two solids formed by the cut. Give the ratio “part containing apex $C$ : remaining part” in the simplest possible whole numbers, and justify your calculation.\n\n**e) Assessing a claim (2 points).** “The plane halves the height of the tetrahedron. Therefore, the two solids have equal volume.” Assess this claim. Use the geometry to explain how the height ratio leads to the volume ratio you found.",
+          "solutionContent": "# Referenzlösung: Ein Tetraeder wird geteilt\n\nDie folgende Lösung ist ein möglicher vollständiger Weg. Fachlich gleichwertige Wege und Darstellungen sind ebenso richtig.\n\n**a) Ebenen und Geraden.** Die drei Punkte $O$, $A$ und $B$ haben die dritte Koordinate $0$ und sind nicht kollinear. Daher ist $F:\\ z=0$. Die Ebenen $E$ und $F$ haben dieselbe Normalenrichtung, etwa $\\vec n=\\begin{pmatrix}0\\\\0\\\\1\\end{pmatrix}$, aber unterschiedliche konstante $z$-Werte. Sie sind echt parallel; sie haben keinen gemeinsamen Punkt. Geometrisch verläuft $E$ parallel zur Grundfläche in halber Höhe des Tetraeders.\n\nAuf $g$ gilt $z=6-t$. Einsetzen in $E$ liefert\n$$\n6-t=3\\quad\\Longrightarrow\\quad t=3,\\qquad P(6\\mid0\\mid3).\n$$\nDa der $z$-Anteil des Richtungsvektors $-1$ ist, gibt es genau einen passenden Parameter. Die Gerade $g$ durchstößt $E$ im Punkt $P$; sie ist weder enthalten noch parallel zu $E$.\n\nAuf $h$ gilt für jeden Parameter $z=0$. Die Gleichung $0=3$ hat keine Lösung. Die Gerade hat keinen Punkt mit $E$ gemeinsam und ihre Richtung verläuft parallel zur Ebene: $h$ ist echt parallel zu $E$.\n\nAuf $k$ gilt für jeden Parameter $z=3$. Die Ebenengleichung ist für alle $r$ erfüllt. Daher liegt die gesamte Gerade $k$ in $E$. Der konstante $z$-Wert allein bedeutet also nicht automatisch „echt parallel“: Entscheidend ist, ob er zur Ebenengleichung passt.\n\n**b) Geradenpaare.** Die Geraden $h$ und $k$ haben denselben Richtungsvektor. Sie sind verschieden, weil auf $h$ stets $z=0$ und auf $k$ stets $z=3$ gilt. Also sind sie echt parallel.\n\nDie Behauptung über $g$ und $k$ ist falsch. Ein gemeinsamer Punkt müsste in $E$ liegen und wäre deshalb der bereits berechnete einzige Schnittpunkt $P$ von $g$ mit $E$. Für einen Punkt von $k$ mit zweiter Koordinate $0$ folgt aus $2r=0$ jedoch $r=0$; dieser Punkt ist $(0\\mid0\\mid3)$ und nicht $P(6\\mid0\\mid3)$. Somit ist $P$ kein Punkt von $k$, und $g$ und $k$ haben keinen Schnittpunkt. Ihre Richtungsvektoren $\\begin{pmatrix}2\\\\0\\\\-1\\end{pmatrix}$ und $\\begin{pmatrix}-3\\\\2\\\\0\\end{pmatrix}$ sind keine Vielfachen voneinander. Sie sind also auch nicht parallel: $g$ und $k$ sind **windschief**. Eine Gerade kann eine Ebene in einem Punkt treffen, der nicht auf einer bestimmten Geraden dieser Ebene liegt.\n\n**c) Schnittfigur.** Auf den drei Strecken von $C$ zur Grundfläche verwenden wir jeweils einen Parameter $\\lambda\\in[0,1]$:\n$$\n\\begin{aligned}\n\\overrightarrow{CX}&=\\lambda\\overrightarrow{CO},&X&=(0\\mid0\\mid6-6\\lambda),\\\\\n\\overrightarrow{CY}&=\\lambda\\overrightarrow{CA},&Y&=(12\\lambda\\mid0\\mid6-6\\lambda),\\\\\n\\overrightarrow{CZ}&=\\lambda\\overrightarrow{CB},&Z&=(0\\mid8\\lambda\\mid6-6\\lambda).\n\\end{aligned}\n$$\nFür $z=3$ folgt jeweils $\\lambda=\\frac12$. Daher sind\n$$\nU(0\\mid0\\mid3),\\qquad V(6\\mid0\\mid3),\\qquad W(0\\mid4\\mid3).\n$$\nDie Parameter liegen im Streckenintervall. Die übrigen drei Kanten $OA$, $OB$ und $AB$ liegen vollständig in $z=0$ und werden von $E$ nicht geschnitten. Der Schnitt durch den konvexen Tetraeder verbindet die drei gefundenen Kantenpunkte: Die gesamte Schnittfigur ist die Dreiecksfläche $UVW$. Sie ist rechtwinklig bei $U$, weil $\\overrightarrow{UV}=(6,0,0)^{\\mathsf T}$ und $\\overrightarrow{UW}=(0,4,0)^{\\mathsf T}$ senkrecht sind. Auch die Beschreibung als zur Grundfläche paralleles Dreieck mit halbierten Seitenlängen begründet die Form.\n\n**d) Teilvolumina.** Die Grundfläche $OAB$ ist ein rechtwinkliges Dreieck mit Kathetenlängen $12$ und $8$; die Tetraederhöhe beträgt $6$. Somit gilt\n$$\n\\begin{aligned}\nG&=\\frac12\\cdot12\\cdot8=48\\,\\mathrm{LE}^2,\\\\\nV_{\\mathrm{gesamt}}&=\\frac13\\cdot48\\cdot6=96\\,\\mathrm{LE}^3.\n\\end{aligned}\n$$\nDer Teilkörper mit Spitze $C$ ist die Pyramide $CUVW$. Ihre Grundfläche ist $UVW$ mit Kathetenlängen $6$ und $4$; ihre Höhe ist der Abstand von $C$ zu $E$, also $3$. Daher\n$$\n\\begin{aligned}\nG_{UVW}&=\\frac12\\cdot6\\cdot4=12\\,\\mathrm{LE}^2,\\\\\nV_{\\mathrm{oben}}&=\\frac13\\cdot12\\cdot3=12\\,\\mathrm{LE}^3.\n\\end{aligned}\n$$\nDer übrige Teil ist ein Pyramidenstumpf; sein Volumen ergibt sich durch Subtraktion:\n$$\n\\begin{aligned}\nV_{\\mathrm{unten}}&=96-12=84\\,\\mathrm{LE}^3,\\\\\nV_{\\mathrm{oben}}:V_{\\mathrm{unten}}&=12:84=1:7.\n\\end{aligned}\n$$\nDamit entfallen $\\frac18$ des Gesamtvolumens auf den Teil mit Spitze $C$ und $\\frac78$ auf den übrigen Teil. Der übrige Teil hat das siebenfache Volumen.\n\n**e) Höhenhälften sind keine Volumenhälften.** Die Behauptung ist falsch. Alle drei Strecken von $C$ zur Grundfläche werden im selben Verhältnis halbiert. Der obere Teil ist deshalb eine zum ganzen Tetraeder ähnliche Pyramide mit Längenfaktor $\\frac12$, Grundflächenfaktor $\\frac14$ und Höhenfaktor $\\frac12$. Aus $V=\\frac13Gh$ folgt\n$$\n\\frac{V_{\\mathrm{oben}}}{V_{\\mathrm{gesamt}}}\n=\\frac14\\cdot\\frac12=\\frac18.\n$$\nDie unteren und oberen Höhen sind zwar gleich groß, aber die Querschnitte werden zur Spitze hin kleiner. Gleiche Höhen liefern hier keine gleichen Volumina; auf die übrigen $\\frac78$ folgt gerade das Teilungsverhältnis $1:7$.\n\nAlternativ kann der Längenfaktor direkt mit der bekannten Volumenskalierung $\\left(\\frac12\\right)^3$ begründet werden, wenn die Ähnlichkeit des oberen Teilkörpers zum gesamten Tetraeder erklärt wird. Ein Vektorprodukt, Spatprodukt, Integral oder eine spezielle Pyramidenstumpfformel wird nicht benötigt.\n\n---\n\n# Bewertungsrubrik: Ein Tetraeder wird geteilt\n\nEs gibt **24 Gesamtpunkte** und genau eine Bestehensgrenze: **16 Punkte**. Zuerst werden die fachlich gezeigten Leistungen mit den folgenden Kriterien bewertet. Anschließend werden gegebenenfalls die unten beschriebenen Kappungen auf diese Gesamtpunktzahl angewendet. Maßgeblich ist allein die so bestimmte Gesamtpunktzahl. Die Prüfung speichert wie andere Prüfungen ausschließlich gemeistert/nicht gemeistert; Punkte und Detailfeedback dienen der KI-Bewertung. Es gibt keinen zweiten Bestehensstatus und keinen zusätzlichen Qualifikationsbeleg.\n\n1. **a: Ebenen (2 Punkte).** $F:z=0$ aus den Punkten bestimmt (1); $E$ und $F$ als verschiedene parallele Ebenen begründet und räumlich gedeutet (1). Eine Argumentation über die konstante Höhe ersetzt den Normalenvektor.\n2. **a: Gerade $g$ (2 Punkte).** $6-t=3$, $t=3$ und $P(6\\mid0\\mid3)$ bestimmt (1); daraus den eindeutigen Durchstoß begründet und gedeutet (1).\n3. **a: Gerade $h$ (2 Punkte).** Unmöglichkeit $0=3$ beziehungsweise konstante falsche Höhe untersucht (1); echt parallele Lage mit fehlendem gemeinsamen Punkt erklärt (1).\n4. **a: Gerade $k$ (2 Punkte).** $z=3$ für alle Parameter nachgewiesen (1); enthaltene Gerade gedeutet und von echt paralleler Lage unterschieden (1).\n5. **b: $h$ und $k$ (2 Punkte).** Parallele Richtungen nachgewiesen (1); verschiedene Geraden begründet, daher echt parallel (1).\n6. **b: $g$ und $k$ (2 Punkte).** Fehlenden gemeinsamen Punkt rechnerisch begründet, zum Beispiel $P\\notin k$ (1); zusätzlich nicht parallele Richtungen gezeigt und die Aussage mit der tatsächlichen windschiefen Lage erklärt (1).\n7. **c: Schnittfigur (4 Punkte).** $U$, $V$, $W$ jeweils mit nachvollziehbarer Bestimmung erhalten (je 1); gesamte Schnittfigur als Dreiecksfläche begründet, etwa über die drei geschnittenen Kanten und die Parallelität zur Grundfläche (1). Der bereits in a berechnete Punkt $V=P$ darf mit klarem Bezug übernommen werden.\n8. **d: Gesamtvolumen (2 Punkte).** Geeignete Grundfläche $48$ und senkrechte Höhe $6$ bestimmt (1); $V_{\\mathrm{gesamt}}=96\\,\\mathrm{LE}^3$ nachvollziehbar berechnet (1).\n9. **d: oberer Teil (2 Punkte).** Oberen Teil als Pyramide mit Grundfläche $12$ und Höhe $3$ begründet oder seine Ähnlichkeit mit Längenfaktor $\\frac12$ hergeleitet (1); Volumen $12\\,\\mathrm{LE}^3$ daraus bestimmt (1).\n10. **d: Rest und Verhältnis (2 Punkte).** Restvolumen $84\\,\\mathrm{LE}^3$ durch korrekte Zerlegung/Subtraktion bestimmt (1); geordnetes Verhältnis $12:84=1:7$ angegeben und als Vergleich der beiden Teilkörper gedeutet (1).\n11. **e: Behauptung (2 Punkte).** Behauptung verworfen und erklärt, warum neben der Höhe auch die Querschnitts-/Grundflächen kleiner werden (1); Faktoren $\\frac14\\cdot\\frac12=\\frac18$ beziehungsweise begründete kubische Skalierung mit den Anteilen $\\frac18$ und $\\frac78$ verknüpft (1). Die Begründung darf bereits in d stehen.\n\n**Kappung zum Schutz der ganzen Kompetenzen.** Die Gesamtpunktzahl beträgt höchstens **15**, wenn eine der folgenden ganzen Leistungen in der gesamten Abgabe fehlt:\n\n- Eine rechnerisch gestützte, fachlich begründete und geometrisch gedeutete Untersuchung **unterschiedlicher** Lagebeziehungen von Geraden und Ebenen. In dieser Aufgabe zeigen insbesondere die Unterscheidung „enthalten/echt parallel“, der eindeutige Schnitt und die begründeten Geradenvergleiche diese Leistung. Nur ein benannter Fall, ein isoliert berechneter Schnittpunkt oder eine Liste unbegründeter Fallnamen zeigt die ganze Kompetenz noch nicht.\n- Eine selbständige Untersuchung der **tatsächlichen Volumenteilung**, die die beiden Teilkörper korrekt identifiziert, ihr Volumenverhältnis durch eine tragfähige Rechnung bestimmt und dieses Verhältnis geometrisch begründet/vergleicht. Nur das Gesamtvolumen, eine unverbundene Skalierungsformel oder ein geratenes Verhältnis zeigt die ganze Kompetenz noch nicht.\n\nDiese Kappung ist eine Regel zur normalen Gesamtpunktzahl. Fehlt beides, bleibt dieselbe Höchstpunktzahl 15; die Kappungen werden nicht addiert. Die abschließende Entscheidung verwendet ausschließlich die eine Grenze 16. Die Kappung verlangt keine perfekte Bearbeitung aller Einzelteile: Maßgeblich ist der gezeigte Zusammenhang aus Untersuchung, Begründung und Deutung für beide ganzen Kompetenzen.\n\n**Faire Bewertung.** Ein lokaler Rechen-, Vorzeichen- oder Übertragungsfehler kostet die betroffenen Ergebnis-/Genauigkeitspunkte. Tragfähiger Ansatz, richtige Begründungen und fachlich sinnvolle Folgearbeit erhalten ihre Punkte; derselbe Ausgangsfehler wird nicht mehrfach als neuer Fehler abgezogen. Wenn zum Beispiel ein falsch übertragener Zahlenwert bei sonst richtiger Identifikation beider Teilkörper konsistent weiterverwendet wird, löst dies allein die Kappung nicht aus. Ein grundlegendes falsches Modell wie „halbe Höhe genügt für halbes Volumen“ ist dagegen kein bloßer Rechenfehler. Ergebnisangaben ohne Rechnung erhalten nur die nach den Kriterien erkennbar belegten Leistungen. Punkte für eine Leistung werden bei ausdrücklichen Verweisen auch in einem anderen Teil vergeben, insgesamt jedoch nur einmal. Teilpunkte von 0,5 sind zulässig, wenn ein zusammengesetztes Kriterium teilweise nachvollziehbar erfüllt ist.\n\nGleichwertige korrekte Wege erhalten dieselbe Punktzahl, beispielsweise Punkt-/Richtungsproben statt Einsetzen, ein vollständiger Geradenvergleich mittels Koordinatengleichungen, Schnittpunkte über Mittelpunkte, Ähnlichkeit statt erneuter Flächenrechnung oder eine korrekte räumliche Zerlegung. Keine zusätzliche Methode ist vorgeschrieben. Eine bloße Skizze ersetzt geforderte rechnerische Begründungen nicht; eine korrekt begründete Lösung braucht keine Skizze. Nur sicher lesbare fachliche Evidenz wird bewertet; aus unleserlichen Stellen wird kein bestimmter Fehler erfunden. Die Gesamtbewertung erfolgt abschließend anhand der vorliegenden Abgabe ohne Nachfragen.",
+          "solutionContentEn": "# Reference solution: Dividing a tetrahedron\n\nThis is one complete solution. Mathematically equivalent methods and representations are equally valid.\n\n**a) Planes and lines.** The three non-collinear points $O$, $A$ and $B$ have third coordinate $0$. Thus $F:\\ z=0$. Planes $E$ and $F$ have the same normal direction, for example $\\vec n=\\begin{pmatrix}0\\\\0\\\\1\\end{pmatrix}$, but different constant $z$-coordinates. They are distinct parallel planes and have no common point. Geometrically, $E$ runs parallel to the base halfway up the tetrahedron.\n\nOn $g$, the third coordinate is $z=6-t$. Substituting into $E$ gives\n$$\n6-t=3\\quad\\Longrightarrow\\quad t=3,\\qquad P(6\\mid0\\mid3).\n$$\nThe direction vector has third component $-1$, so exactly one parameter satisfies the equation. Line $g$ intersects $E$ at the unique point $P$; it is neither contained in nor parallel to $E$.\n\nOn $h$, the third coordinate is $z=0$ for every parameter. The equation $0=3$ has no solution. The line shares no point with $E$ and its direction is parallel to the plane: $h$ is parallel to $E$ and lies outside it.\n\nOn $k$, the third coordinate is $z=3$ for every parameter. The plane equation holds for all $r$, so the entire line $k$ lies in $E$. A constant $z$-coordinate alone does not distinguish a line contained in the plane from a parallel line outside it: the value must be checked against the plane equation.\n\n**b) Pairs of lines.** Lines $h$ and $k$ have the same direction vector. They are distinct because every point on $h$ has $z=0$, whereas every point on $k$ has $z=3$. They are therefore distinct parallel lines.\n\nThe claim about $g$ and $k$ is false. Any common point would lie in $E$, so it would have to be the previously calculated unique intersection $P$ of $g$ with $E$. However, a point of $k$ with second coordinate $0$ must satisfy $2r=0$, hence $r=0$. This gives $(0\\mid0\\mid3)$ rather than $P(6\\mid0\\mid3)$. Thus $P$ does not lie on $k$, and $g$ and $k$ do not intersect. Their direction vectors $\\begin{pmatrix}2\\\\0\\\\-1\\end{pmatrix}$ and $\\begin{pmatrix}-3\\\\2\\\\0\\end{pmatrix}$ are not scalar multiples, so the lines are not parallel either. They are **skew**. A line may meet a plane at a point that does not belong to a particular line within that plane.\n\n**c) Cross-section.** Use a parameter $\\lambda\\in[0,1]$ on each segment from $C$ to the base:\n$$\n\\begin{aligned}\n\\overrightarrow{CX}&=\\lambda\\overrightarrow{CO},&X&=(0\\mid0\\mid6-6\\lambda),\\\\\n\\overrightarrow{CY}&=\\lambda\\overrightarrow{CA},&Y&=(12\\lambda\\mid0\\mid6-6\\lambda),\\\\\n\\overrightarrow{CZ}&=\\lambda\\overrightarrow{CB},&Z&=(0\\mid8\\lambda\\mid6-6\\lambda).\n\\end{aligned}\n$$\nSetting $z=3$ gives $\\lambda=\\frac12$ in each case. Therefore\n$$\nU(0\\mid0\\mid3),\\qquad V(6\\mid0\\mid3),\\qquad W(0\\mid4\\mid3).\n$$\nThese parameters belong to the segment interval. The other three edges, $OA$, $OB$ and $AB$, lie entirely in $z=0$ and do not meet $E$. The cross-section of the convex tetrahedron connects the three identified edge points: the entire cross-section is the filled triangle $UVW$. It is right-angled at $U$, since $\\overrightarrow{UV}=(6,0,0)^{\\mathsf T}$ and $\\overrightarrow{UW}=(0,4,0)^{\\mathsf T}$ are perpendicular. Describing it as a triangle parallel to the base with half the side lengths also justifies the shape.\n\n**d) Volumes.** Base $OAB$ is a right triangle with perpendicular side lengths $12$ and $8$; the tetrahedron has height $6$. Hence\n$$\n\\begin{aligned}\nG&=\\frac12\\cdot12\\cdot8=48\\,\\mathrm{LU}^2,\\\\\nV_{\\mathrm{whole}}&=\\frac13\\cdot48\\cdot6=96\\,\\mathrm{LU}^3.\n\\end{aligned}\n$$\nThe solid containing apex $C$ is pyramid $CUVW$. Its base $UVW$ has perpendicular side lengths $6$ and $4$, and its height is the distance from $C$ to $E$, namely $3$. Thus\n$$\n\\begin{aligned}\nG_{UVW}&=\\frac12\\cdot6\\cdot4=12\\,\\mathrm{LU}^2,\\\\\nV_{\\mathrm{upper}}&=\\frac13\\cdot12\\cdot3=12\\,\\mathrm{LU}^3.\n\\end{aligned}\n$$\nThe remaining solid is a truncated pyramid. Subtraction gives its volume:\n$$\n\\begin{aligned}\nV_{\\mathrm{lower}}&=96-12=84\\,\\mathrm{LU}^3,\\\\\nV_{\\mathrm{upper}}:V_{\\mathrm{lower}}&=12:84=1:7.\n\\end{aligned}\n$$\nThe part containing $C$ occupies $\\frac18$ of the whole volume, and the remainder occupies $\\frac78$. The remainder has seven times the volume of the upper part.\n\n**e) Half the height does not mean half the volume.** The claim is false. Each of the three segments from $C$ to the base is halved in the same ratio. The upper part is therefore a pyramid similar to the whole tetrahedron, with length factor $\\frac12$, base-area factor $\\frac14$ and height factor $\\frac12$. From $V=\\frac13Gh$,\n$$\n\\frac{V_{\\mathrm{upper}}}{V_{\\mathrm{whole}}}\n=\\frac14\\cdot\\frac12=\\frac18.\n$$\nThe lower and upper parts have equal heights, but cross-sections become smaller towards the apex. Equal heights therefore do not give equal volumes here. The remaining $\\frac78$ produces the division ratio $1:7$.\n\nAlternatively, the known volume-scaling rule $\\left(\\frac12\\right)^3$ can be used directly if the similarity of the upper pyramid to the whole tetrahedron is explained. No cross product, scalar triple product, integral or special formula for a truncated pyramid is needed.\n\n---\n\n# Scoring rubric: Dividing a tetrahedron\n\nThere are **24 total points** and exactly one passing threshold: **16 points**. First award points for the mathematical work shown using the criteria below. Then apply the caps to that total if necessary. Only the resulting total determines the outcome. As with other assessments, the only persisted result is mastered/not mastered; points and detailed feedback support AI grading. There is no second passing status or additional qualification record.\n\n1. **a: planes (2 points).** Derives $F:z=0$ from the points (1); justifies and geometrically interprets $E$ and $F$ as distinct parallel planes (1). Reasoning from constant height is as valid as a normal-vector argument.\n2. **a: line $g$ (2 points).** Finds $6-t=3$, $t=3$ and $P(6\\mid0\\mid3)$ (1); justifies and interprets the unique intersection (1).\n3. **a: line $h$ (2 points).** Examines the impossible equation $0=3$ or the constant height outside the plane (1); explains the parallel position with no common point (1).\n4. **a: line $k$ (2 points).** Shows that $z=3$ holds for every parameter (1); interprets containment and distinguishes it from a parallel line outside the plane (1).\n5. **b: $h$ and $k$ (2 points).** Establishes parallel directions (1); justifies that the lines are distinct, hence distinct parallel lines (1).\n6. **b: $g$ and $k$ (2 points).** Uses calculation to justify that no common point exists, for example $P\\notin k$ (1); also establishes non-parallel directions and explains the false statement using the actual skew position (1).\n7. **c: cross-section (4 points).** Finds $U$, $V$ and $W$ with supporting work (1 each); justifies the entire cross-section as the filled triangle, for example using the three intersected edges and parallelism to the base (1). The point $V=P$ already found in a may be reused with a clear reference.\n8. **d: whole volume (2 points).** Establishes a suitable base area $48$ and perpendicular height $6$ (1); calculates $V_{\\mathrm{whole}}=96\\,\\mathrm{LU}^3$ with supporting work (1).\n9. **d: upper part (2 points).** Justifies the upper solid as a pyramid with base area $12$ and height $3$, or establishes similarity with length factor $\\frac12$ (1); uses this to find volume $12\\,\\mathrm{LU}^3$ (1).\n10. **d: remainder and ratio (2 points).** Finds remaining volume $84\\,\\mathrm{LU}^3$ by a valid partition/subtraction (1); gives the ordered ratio $12:84=1:7$ and interprets it as a comparison of the two solids (1).\n11. **e: claim (2 points).** Rejects the claim and explains that cross-sectional/base areas decrease as well as height (1); connects factors $\\frac14\\cdot\\frac12=\\frac18$, or justified cubic scaling, to the shares $\\frac18$ and $\\frac78$ (1). This reasoning may already appear in d.\n\n**Cap protecting the whole competencies.** The total score is capped at **15** if either of the following whole performances is absent from the submission as a whole:\n\n- A calculation-supported, mathematically justified and geometrically interpreted investigation of **different** positional relationships of lines and planes. In this task, distinguishing containment from a parallel line outside the plane, finding the unique intersection and justifying the line comparisons demonstrate this performance. One named case, an isolated intersection calculation or a list of unsupported classifications does not yet demonstrate the whole competency.\n- An independent investigation of the **actual volume partition**, correctly identifying the two solids, calculating their volume ratio by a sound method and geometrically explaining/comparing that ratio. The whole volume alone, an unrelated scaling formula or a guessed ratio does not yet demonstrate the whole competency.\n\nThis cap is a rule for the ordinary total score. If both performances are absent, the same maximum of 15 applies; caps are not added. The final decision uses only the single threshold of 16. The cap does not require perfect answers to every subpart: what matters is the demonstrated connection between investigation, justification and interpretation for both whole competencies.\n\n**Fair grading.** A local arithmetic, sign or copying error loses the relevant result/accuracy points. Sound setup, correct reasoning and mathematically coherent subsequent work retain credit; one initial error is not repeatedly penalised as new errors. For example, consistently carrying forward a miscopied value does not by itself trigger the cap when both solids have been correctly identified and the underlying method is sound. A fundamentally wrong model such as “half the height is enough to halve the volume” is not merely an arithmetic error. Unsupported answers receive only the credit evidenced under the criteria. Credit may be earned in another subpart through explicit references, but each performance is counted once. Half-points may be awarded when a compound criterion is demonstrably partly met.\n\nEquivalent correct approaches earn equal credit: point/direction checks instead of substitution, complete coordinate-equation comparisons of lines, midpoint reasoning for the section points, similarity instead of recalculating areas, or a correct spatial partition. No extra method is prescribed. A sketch alone does not replace requested computational justification; a correctly justified solution needs no sketch. Grade only reliably legible mathematical evidence, and do not invent a particular error from illegible work. Grade the submitted work conclusively without follow-up questions.",
+          "scoring": {
+            "maxPoints": 24,
+            "passingPoints": 16,
+            "steps": [
+              {
+                "id": "tetra-planes",
+                "points": 2,
+                "description": "Ebenenlage begründen",
+                "descriptionEn": "Justify the plane positions"
+              },
+              {
+                "id": "tetra-line-g",
+                "points": 2,
+                "description": "Eindeutigen Schnitt untersuchen und deuten",
+                "descriptionEn": "Investigate and interpret the unique intersection"
+              },
+              {
+                "id": "tetra-line-h",
+                "points": 2,
+                "description": "Echt parallele Gerade begründen",
+                "descriptionEn": "Justify the parallel line outside the plane"
+              },
+              {
+                "id": "tetra-line-k",
+                "points": 2,
+                "description": "Enthaltene Gerade begründen",
+                "descriptionEn": "Justify line containment"
+              },
+              {
+                "id": "tetra-h-k",
+                "points": 2,
+                "description": "Verschiedene parallele Geraden begründen",
+                "descriptionEn": "Justify distinct parallel lines"
+              },
+              {
+                "id": "tetra-g-k",
+                "points": 2,
+                "description": "Windschiefe Lage untersuchen und Aussage widerlegen",
+                "descriptionEn": "Investigate skew lines and refute the claim"
+              },
+              {
+                "id": "tetra-section",
+                "points": 4,
+                "description": "Drei Streckenpunkte und ganze Schnittfigur bestimmen und begründen",
+                "descriptionEn": "Find and justify the three segment points and the entire cross-section"
+              },
+              {
+                "id": "tetra-whole-volume",
+                "points": 2,
+                "description": "Gesamtvolumen begründet berechnen",
+                "descriptionEn": "Calculate and justify the whole volume"
+              },
+              {
+                "id": "tetra-upper-volume",
+                "points": 2,
+                "description": "Oberen Teilkörper und sein Volumen begründen",
+                "descriptionEn": "Justify the upper solid and its volume"
+              },
+              {
+                "id": "tetra-remainder-ratio",
+                "points": 2,
+                "description": "Restvolumen und geordnetes Teilungsverhältnis bestimmen und deuten",
+                "descriptionEn": "Determine and interpret the remaining volume and ordered ratio"
+              },
+              {
+                "id": "tetra-height-claim",
+                "points": 2,
+                "description": "Höhenbehauptung geometrisch beurteilen",
+                "descriptionEn": "Assess the height claim geometrically"
+              }
+            ]
+          },
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/geometry-two-whole-goals-2026-11-02/task.de.md"
+        },
+        "nodeKind": "exam",
+        "resourceLinks": [],
+        "extendedData": {
+          "applicabilityFromRequires": true,
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "sourceRef": "Eigene SkillPilot-Tetraederprüfung für zwei bereits ausgewählte ganze Kompetenzverträge; keine amtliche Prüfungsaufgabe und keine zusätzliche amtliche Source-Coverage-Behauptung.",
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.2",
+            "K3.2",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q4",
+          "topicCode": "CANONICAL.MATH.SEK2.GEOMETRY.TETRAHEDRON.TERMINAL_ASSESSMENT"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      },
+      "requestedIdsInAuthoredR": [],
+      "requestedIdsInCoverageMetadata": []
+    }
+  ],
+  "authorConclusions": {
+    "cone": "Keep existing BW drone/space-line exam intact. It has foreign substantive preparation and a 5/10 threshold; broad whole-exam reuse is not a clean cone-limit form. Pure cone-volume/composite-solid/pyramid-integration tasks in the lexical matches do not establish the polygonal-pyramid limiting explanation. New isolated cone-limit content is justified, with no scope/role decision here.",
+    "asymptotic": "B2 5d3fd2c4 is actual whole reuse candidate in the separately proposed 36 compatible scopes. This new content is only for the remaining BY gap; no global extra obligation. A1 57c6506d covers a linear-power quotient plus extrema/sketch under 3/5 scoring, not the whole two-direction comparison contract. No metadata/threshold is changed.",
+    "unity": "No actual whole exam for determining and geometrically interpreting roots of unity was found. The complex-number history task is not such a task.",
+    "division": "No actual whole algebraic complex-division/conjugate task was found. The historical complex-number task does not assess the operation."
+  },
+  "priorityRecommendation": {
+    "path": "tmp/approach-review-20261101/astra-next-math-route-priorities-20261104-v1/report.md",
+    "sha256": "26b3387582585089eb4162d2879a1304699f8ab2bd84ec792f56337e6eaa4e18"
+  },
+  "priorityIsStaticPlanningNotCurrentNativeAcceptance": true,
+  "noExistingExamChanged": true
+}

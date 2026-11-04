@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 2,
+  "verdict": "PASS",
+  "contentVerdict": "PASS",
+  "placementVerdict": "PASS_EXACT_STABLE_TARGET_ANCHOR_AND_CANONICAL_SUPPORT_CONTEXT_REBASE",
+  "verdictScope": "Only the exact three V2 authoring operations, unchanged whole sphere tasks, and explicit support-context semantics. Existing historical content acceptance is preserved; no new source, whole-corpus, runtime, M7, CI or release acceptance.",
+  "reviewerAgent": "/root/astra_fundamental_approach_recheck",
+  "authorAgent": "/root/sol_stable_math_targets",
+  "authorIndependent": true,
+  "humanApproval": false,
+  "reviewDate": "2026-11-01",
+  "reviewMarkdown": {
+    "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/independent-anchor-rebase-review.md",
+    "sha256": "7e7e0788ff46d0c9f6828bb32c7941b3553bbdcebee3aa962486bf3e367dcc9b"
+  },
+  "approvedViewIds": [
+    "de-rp-gym-math-gk-g8",
+    "de-rp-gym-math-lk-g8",
+    "de-rp-gym-seki-math-g8"
+  ],
+  "approvedTaskGoalIds": [
+    "64f37348-20f7-55b1-82a8-8fc388087577",
+    "926d0551-4537-569e-b6ad-fc33bb17546e"
+  ],
+  "approvedReferenceCount": 6,
+  "inputBindings": [
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/candidate-operations.json",
+      "sha256": "9e756e119fc80f051f46ec809bb1f365031aff9c894493eda805de48b3f51688"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/anchor-rebase.proof.json",
+      "sha256": "141a57cc4574d0b28397dc713e9f16dbc63c61a945b5ec71a9bb97d2b65cbe07"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/native-task-support-context.json",
+      "sha256": "8825be39979dea7afd7da0c149061007a460f49b61c3b4ab9447f345990094a6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "3a3792d14057854c79a3d8c4d38cd98dd6e28e936865ebd3447107404b58474c"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/input-views/de-rp-gk-g8.view.json",
+      "sha256": "a4d9c6117a70ca053d35554479ddf31a1b7fda86ae10757ff5519abd067483e0",
+      "viewId": "de-rp-gym-math-gk-g8"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/input-views/de-rp-lk-g8.view.json",
+      "sha256": "230f3d8dac56179db74c805efe866e08240308ce521f5e8a89bba5ca7c19d479",
+      "viewId": "de-rp-gym-math-lk-g8"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/input-views/de-rp-seki-g8.view.json",
+      "sha256": "284d5044f046bb1c37d4e4f820958a23f7c0fa888c5110c9577c062df0f4b996",
+      "viewId": "de-rp-gym-seki-math-g8"
+    }
+  ],
+  "historicalReviewReceipt": {
+    "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/reviewed-candidate/review.receipt.json",
+    "sha256": "2dee4037a559887df5295fabb798796d559fd1753ad333c1cd02ce41ae535faf"
+  },
+  "preservedPendingAuthorReceipt": {
+    "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/review.receipt.json",
+    "sha256": "32744cb64258329d8be7034ca3ad5ea2e48960c993d9a0c1623aa1cc49d4105d",
+    "verdict": "PENDING_INDEPENDENT_REVIEW"
+  },
+  "reviewedImplementation": [
+    {
+      "path": "app/scripts/mathReviewedAssessmentPlacements.ts",
+      "sha256": "5d1e127d4e9cca9cc07091c3be009e5fa2e077e5fa638c1a3321a3c37e5e8255"
+    },
+    {
+      "path": "app/scripts/mathStageScopePolicy.ts",
+      "sha256": "feaac1c5ff25d0db44a9516e43382107939cdd72e50277b8972be4f9eb1b0282"
+    }
+  ],
+  "independentMechanicalCheck": {
+    "path": "tmp/approach-review-20261101/check-rp-stable-anchor-rebase.ts",
+    "sha256": "59d39aee6efc5002e74c42d0a35e9f4a008b5f492594875605098bb388e93307",
+    "verdict": "PASS_EXACT_DATA_AND_ROLE_REBASE",
+    "historicalOverlayFilesCompared": 3,
+    "historicalFilesRetainedFromRoot": 463,
+    "wholeTasksUnchanged": 2,
+    "changedOperationFieldsOnly": [
+      "expectedYearStructureSha256",
+      "expectedAfterYearStructureSha256"
+    ],
+    "perViewNewExamTargets": 2,
+    "otherTargetDelta": 0,
+    "prerequisiteOnlyRoleDelta": 0,
+    "currentSupportPerTask": 42,
+    "currentSupportUnion": 43,
+    "historicalSupportUnion": 48,
+    "unsupportedOrdinaryTargetNotPromoted": "1a25ef44-f310-4c23-9ba8-44baec60d3b0"
+  },
+  "authorFocusedValidationReviewed": {
+    "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/anchor-rebase.validation.json",
+    "sha256": "154e55eb29e30ee53c7c81b55da660b5b4cc07522882e5adfec7c154f0ac3a86",
+    "cases": 9,
+    "actualTestCodeRead": true,
+    "currentImplementationHashesVerified": true,
+    "independentRerunClaim": false,
+    "historicalV1Cases": 13,
+    "activeV2RegistryAtRun": false,
+    "syntheticTestProducer": {
+      "path": "tmp/math-stable-target-candidate-20261101/test-rp-anchor-rebase.ts",
+      "sha256": "cf5ca6aa6f6e5cdabe0b458582c7bd09a1ea2ce00f85890f58854be821d3e5ad"
+    },
+    "permanentTestProducer": {
+      "path": "app/scripts/testMathReviewedAssessmentPlacements.ts",
+      "sha256": "2b7ea5c8c4426865a85956bd0231075b9505be7d4f57ab4f8fd01544226f607f"
+    }
+  },
+  "allowedFinalBindingOnly": [
+    "Point the V2 selection reviewReceipt to this independent JSON and set its status to independent-ai-reviewed.",
+    "Update the registry selection SHA after that exact metadata binding.",
+    "Leave the historical V1 files and pending author receipt unchanged."
+  ],
+  "boundaries": [
+    "No provider/outcome/runtime API schema or second learner-result state.",
+    "No promotion of transitive support into targets.",
+    "No removal of held/existing assessment by ordinary-target exclusion.",
+    "Permanent CI regression integration and native final support/actual-offer checks remain separate.",
+    "No product, view, ledger or canonical mutation by reviewer."
+  ],
+  "finalLoaderDeltaReviewed": [
+    "V2 requires authorIndependent true; historical V1 behavior unchanged.",
+    "Native evidence canonical identity equals exact plan canonical binding.",
+    "V2 expectedAfterYearStructureSha256 is also bound to the reviewed plan; V1 retains its historical absence.",
+    "Error helper function declaration returns never; type narrowing only."
+  ]
+}

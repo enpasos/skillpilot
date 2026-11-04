@@ -10,7 +10,7 @@ Layering, migration strategy, and canonical rollout policy are specified separat
 
 Related planning scope: [Curriculum Levels](curriculum-levels.md) explains how bounded learning stages, including school years, organize canonical goals. The optional formal profile in §12 checks a resolved plan without changing base graph validity.
 
-Related completion contract: [Implicit Completion and Direct Assessment Access](assessment-gated-completion.md) derives remaining work from direct normalised requirements and existing mastery. Any mastered goal ends its own prerequisite demand; unused non-assessment goals become implicitly completed. Mastery remains the sole stored goal result. The 31 October 2026 decision replaces manual waiver profiles and changes prerequisite availability to stop at mastered intermediate goals.
+Related completion contract: [Implicit Completion and Direct Assessment Access](assessment-gated-completion.md) derives remaining work from direct normalised requirements and existing mastery. Any mastered goal ends its own prerequisite demand; unused ordinary goals become implicitly completed. Assessments and memory goals remain protected until mastered. Complete authoritative curricula and supported projections must have every target reachable from these protected roots at zero mastery; uncovered ordinary endpoints are authoring defects. Mastery remains the sole stored goal result. The 31 October 2026 decision, corrected 1 November 2026, replaces manual waiver profiles and stops prerequisite demand at mastered intermediate goals.
 
 > **Normative definition.** This document defines the skill graph’s semantics and validity requirements.
 >
@@ -532,17 +532,25 @@ Its inverse learning-flow view should form teachable routes whose overall direct
 In the current validator rollout, `GVR-012` promotes this definition to a hard release invariant for canonical DE Gymnasium mathematics, independently for Sek I and Sek II:
 
 - `M` consists of the stage-specific goals authoritatively classified as `orientation`;
-- ordinary route goals are the stage-specific goals classified as `curricularAtomic`;
-- `T` consists of the configured atomic goals classified as `practiceAssessment`;
+- curricular route goals are the stage-specific goals classified as `curricularAtomic`, including competencies with their own assessment execution form;
+- `T` consists of the configured in-scope atomic assessment terminals: `practiceAssessment` goals or curricular goals with a usable released assessment execution form;
 - reachability is proved only through direct atomic-to-atomic `requires` facts, traversed in inverse direction for learning-flow routes;
 - every profile supplies an explicit stage-local proof-node predicate, so a route for one stage cannot be proved through nodes of another stage;
 - only `orientation`, `curricularAtomic`, optional `memory`, and `practiceAssessment` nodes may contribute to that proof;
 - every node that participates in the proof may not carry direct prerequisites outside those route kinds; inherited cluster prerequisites do not count;
-- route order is semantic: assessment cannot be a prerequisite before curricular learning, every terminal route passes through at least one ordinary curricular atom, and a memory node can participate only after curricular learning has begun;
+- route order follows semantic membership: a dedicated `practiceAssessment` terminal cannot precede curricular learning; every terminal route includes at least one curricular atom, and a memory node can participate only after curricular learning has begun. An assessment execution form does not change a `curricularAtomic` goal's position in this order;
 - semantic kind and graph shape must agree; in particular a `curricularAtomic` decision cannot silently stop being checked merely because the node acquired children;
 - the authoritative semantic-kind ledger must classify the complete canonical graph, so a newly added or stale unclassified goal cannot silently escape the rule;
 - every `curricularAtomic` goal must be assigned to at least one of the independently checked stage profiles;
 - the rule remains an error even when legacy graph rules are temporarily run in warning mode.
+
+Curricular membership and assessment execution are independent roles. An
+existing curricular competence can have a whole reviewed assessment under
+its same ID and still serve as a genuine prerequisite for later competencies.
+It remains in the curricular quality population. If selected as a terminal,
+that same competence can supply the curricular part and the assessment end
+of its route; no duplicate goal or artificial prerequisite edge is needed.
+Its execution form must satisfy the task and rubric readiness checks.
 
 An `orientation` node is a didactic entry marker, not an assessable subject
 competency. Its purpose is to make the following material attractive and
@@ -562,6 +570,8 @@ graded 0/50/100 mastery control. See the full
 [orientation contract](node-types.md#orientation).
 
 Memory goals are optional support, not mandatory checkpoints. They are selected through the separate memory-review contract and may support a route where justified, but the hard route profile must not make every terminal performance depend on an SRS deck. In this rule, `curricularAtomic` denotes the ordinary reviewed subject goals: understanding, explaining, reasoning, applying, problem solving, and construction as appropriate. It does not claim that each route needs an additional node with a separately inferred "understanding" type. Such a type would require its own authored and reviewed semantic role rather than title-based inference. The runtime corollary is separate but consistent: at a genuine zero-progress entry into a projected scope, unresolved `orientation` goals are the only selectable frontier goals; existing learners with established subject progress are not reset to that entry gate.
+
+This optionality concerns whether a route should contain a reviewed memory goal. Its mastery remains protected under the [completion contract](assessment-gated-completion.md): it cannot be implicitly completed or replaced by examination success. A selected memory target is an independent completion obligation; a supporting memory goal outside the targets carries demand only while an open selected obligation still needs it. Protection alone never enlarges the selected completion contract.
 
 The canonical inventory rule and a learner-facing projection rule are both
 necessary. `GVR-012` proves that the authored canonical graph has complete
@@ -852,10 +862,38 @@ This means:
 
 Optimistic evaluation uses the restricted relation (§11.3). Strict evaluation uses the full relation (§11.4). Filtering changes the evaluation scope, not the stored mastery set.
 
+When course profiles are combined, resolve each component's authored target
+roles and course availability together before taking the target union:
+
+$$
+T_{\mathrm{GK+LK}}=(B_{\mathrm{GK}}\cap U_{\mathrm{GK}})\cup(B_{\mathrm{LK}}\cap U_{\mathrm{LK}}).
+$$
+
+Here $B_i$ contains the atomic target-role goals of source view $i$ after its
+local specificity rules, and $U_i$ is its available set under the applicable
+course policy. Keep the remaining requested scope dimensions fixed. A target
+role in an unavailable component cannot be combined with availability in a
+different component to create a new target. The compiled navigation and
+learner projection use this same union; supporting goals and global mastery
+remain separate. Calculate demand and implicit completion only afterwards in
+the full Personal Curriculum. See the [composition-view contract](view-projection-and-goal-placement.md#combining-course-profiles).
+
 A Level 3 focus may contain one or several selected roots. Its evaluation set
-is the union of those roots and their `contains` descendants, restricted to
-the committed Personal Curriculum's targets. The same restriction applies to
-ordinary topic focus and exam preparation. An explicitly authored
+is the union of their actual learner-facing members, restricted to the
+committed Personal Curriculum's targets. In a composition view, membership
+follows the selected reference and its compiled descendant paths. A direct
+atomic `goalEntry` denotes only itself, even if its raw canonical definition
+contains children. An explicitly offered subject-root alias denotes that
+subject's selected targets. An unrelated raw canonical ancestor does not
+supply an additional focus path.
+
+Resolve and combine these member sets before checking prerequisites. Do not
+expand them again or remove independently chosen roots using raw canonical
+containment. A stored reference whose authored program branch disappeared
+remains stored and requires an explicit new selection; it must not fall back
+to the full curriculum. Already chosen valid atomic work may finish under its
+existing workflow. The same restriction applies to ordinary topic focus and
+exam preparation. An explicitly authored
 `prerequisiteOnly` goal remains available for lookup and global strict checks;
 it is not added to the focus or counted as a learning target.
 
@@ -1072,26 +1110,34 @@ B_\pi\cup L_{<i}\cup\{a_1,\ldots,a_{j-1}\}
 \qquad(1\leq j\leq m).
 $$
 
-This completion witness uses the global satisfaction and frontier definitions of §9.1. It includes inherited requirements, transitive prerequisite chains, and the atomic descendants needed to satisfy required clusters. It introduces no additional authored dependency relation.
+This completion witness uses the global satisfaction and frontier definitions of §9.1. It includes inherited requirements, prerequisite chains pursued until the assumed entry competencies, and the atomic descendants needed to satisfy required clusters. It introduces no additional authored dependency relation.
 
 Prerequisites within the same level are allowed; their acquisition must follow a feasible order. A target MUST NOT depend on an unplanned competency or on a target first assigned to a later level. A prerequisite outside the current level is permitted when supplied by the entry basis or earlier levels.
 
-For diagnostics, define the atomic requirements of a target:
+For diagnostics, expand each direct effective requirement into the atoms needed to satisfy it, and stop further traversal at the declared entry basis:
 
 $$
-RequiredAtoms(g)=
-\bigcup_{\substack{p\in G\\(g,p)\in R_{\mathrm{effective}}^+}}
-Atoms(p).
+R_{\pi,\mathrm{prep}}=
+\{(a,b)\in A\times A\mid
+ a\notin B_\pi\ \land\
+ \exists p\in G:\ (a,p)\in R_{\mathrm{effective}}\ \land\ b\in Atoms(p)\}.
+$$
+
+This is a derived planning relation, not another authored edge type. Required clusters are expanded before reachability is computed; inherited requirements are already included in $R_{\mathrm{effective}}$. An entry atom can occur as a reached prerequisite, but traversal does not continue through its outgoing requirements. Define
+
+$$
+RequiredAtoms_\pi(g)=
+\{b\in A\mid (g,b)\in R_{\pi,\mathrm{prep}}^+\}.
 $$
 
 Structural feasibility implies the following prerequisite-closure condition:
 
 $$
 \forall g\in T_\pi:\quad
-RequiredAtoms(g)\subseteq B_\pi\cup L_{\leq\ell_\pi(g)}.
+RequiredAtoms_\pi(g)\subseteq B_\pi\cup L_{\leq\ell_\pi(g)}.
 $$
 
-Equivalently, the requirements of the planned targets in each cumulative level prefix stay within that prefix and the entry basis. This does not require reconstructing an acquisition history for the assumed entry competencies themselves.
+Equivalently, prerequisite traversal from each cumulative level prefix remains within that prefix and the entry basis, stopping at the entry competencies. This does not reconstruct their acquisition history. For example, with $g\to b\to d$, $T_\pi=\{g\}$ and $B_\pi=\{b\}$, the witness may acquire $g$ directly: the diagnostic reaches $b$ and stops, without requiring $d$ in this plan.
 
 The closure diagnostic identifies two different failures:
 

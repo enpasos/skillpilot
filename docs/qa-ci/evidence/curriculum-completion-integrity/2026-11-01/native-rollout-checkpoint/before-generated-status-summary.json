@@ -1,0 +1,2001 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-11-01T06:57:40.858282+00:00",
+  "statusFiles": [
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.json",
+      "sha256": "51725a31b335ac7a2cb12da5f2ca6700ff4c5542280ada92d03dbcd8eaa91740"
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.md",
+      "sha256": "4235570a69969d373f26b14227cc102eb948c0a8154edb47ac1ecc2d446fe41a"
+    }
+  ],
+  "protectedCurricula": [
+    {
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "subject": "Biologie",
+      "maturity": "M7",
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 484,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-000",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "completeSourceJurisdictions": 16,
+            "emptySourceJurisdictions": 0,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "originalSourceUrlIssues": 0,
+            "sourceExtractedGoals": 1024,
+            "sourceOriginalGoals": 1024,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 1024,
+            "sourceUnregisteredAtomicGoals": 0
+          }
+        },
+        {
+          "id": "CQR-003",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "coveredJurisdictions": 16,
+            "sourceBackedJurisdictions": 16,
+            "sourceCompleteJurisdictions": 16,
+            "fullCoverageJurisdictions": 16,
+            "uncoveredJurisdictions": 0,
+            "incompleteJurisdictions": 0,
+            "unsupportedAssignmentJurisdictions": 0,
+            "sourceUnmappedJurisdictions": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceAtomicGoals": 1024,
+            "sourceMappedToViewAtomicGoals": 1024,
+            "sourceOriginalGoals": 1024,
+            "sourceFullyCoveredOriginalGoals": 1024,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "surrogateBackedAtomicGoals": 4,
+            "partialSourceLinkedAtomicGoals": 0,
+            "warningedJurisdictions": 0,
+            "cleanJurisdictions": 16,
+            "partialJurisdictions": 0,
+            "errorJurisdictions": 0,
+            "minSourceBackedAtomicGoals": 62,
+            "maxVisibleAtomicGoals": 365,
+            "maxSourceBackedAtomicGoals": 365,
+            "totalAtomicGoals": 399
+          }
+        },
+        {
+          "id": "CQR-004",
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 1249 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 65,
+            "sourceGoals": 1049,
+            "sourceGoalsWithCourseLevel": 1049,
+            "gkLkSourceGoals": 490,
+            "lkSourceGoals": 559,
+            "unspecifiedSourceGoals": 6,
+            "checkedMappingEdges": 1249,
+            "defaultedUnspecifiedMappingEdges": 0,
+            "reviewedCourseLevelExceptions": 0,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
+        },
+        {
+          "id": "CQR-005",
+          "status": "pass",
+          "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+          "metrics": {
+            "sourceExtractionSources": 23,
+            "peerBaselineChecks": 14,
+            "failedPeerBaselineChecks": 0,
+            "granularityChecks": 0,
+            "failedGranularityChecks": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "pass",
+          "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+          "metrics": {
+            "configs": 1,
+            "leafGoals": 397,
+            "atomic": 397,
+            "needsDeveloperReview": 0,
+            "nonAtomic": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0
+          }
+        },
+        {
+          "id": "CQR-302",
+          "status": "pass",
+          "summary": "Memory-card review is current: 10/397 ordinary atomic goals intentionally use memorization support, 27/27 primary cards are kept with origin traces, all 3 memory goals are traced, and 37 view-visible memory-required goals resolve to visible memory nodes.",
+          "metrics": {
+            "configs": 1,
+            "reviewedGoals": 397,
+            "noMemoryNeeded": 387,
+            "memoryRequired": 10,
+            "needsDeveloperReview": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0,
+            "duplicateRecords": 0,
+            "invalidRecords": 0,
+            "primaryCards": 27,
+            "keptCards": 27,
+            "cardsMarkedRemove": 0,
+            "cardNeedsDeveloperReview": 0,
+            "missingCardReviews": 0,
+            "staleCardReviews": 0,
+            "obsoleteCardReviews": 0,
+            "duplicateCardReviewRecords": 0,
+            "invalidCardReviewRecords": 0,
+            "untracedMemoryRequiredGoals": 0,
+            "visibilityScopes": 8,
+            "visibilityCheckedMemoryRequiredGoals": 37,
+            "visibilityMissingVisibleMemoryGoals": 0,
+            "visibilityErrors": 0,
+            "memoryGoals": 3,
+            "tracedMemoryGoals": 3,
+            "untracedMemoryGoals": 0,
+            "deckIds": 3,
+            "deckFiles": 6,
+            "cardRows": 54
+          },
+          "details": [
+            "canonical-biology-full: audit report docs/qa-ci/status/memory-card-review-canonical-biology-full.md"
+          ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "pass",
+          "summary": "Deep curriculum QA is complete for all 397 current curricularAtomic goals.",
+          "metrics": {
+            "expectedGoals": 397,
+            "remaining": 0,
+            "strictComplete": 397,
+            "currentDescriptionResolutions": 397,
+            "currentPositiveEvidenceProfiles": 397,
+            "currentSemanticAtomicityDecisions": 397,
+            "currentMemoryReviewDecisions": 397,
+            "currentVisualizationQaRecords": 397,
+            "deferredVisualizations": 0,
+            "requiredChecksPassed": 6,
+            "requiredChecksTotal": 6,
+            "blockingIssues": 0
+          }
+        },
+        {
+          "id": "CQR-401",
+          "status": "pass",
+          "summary": "8 composition view(s) are registered.",
+          "metrics": {
+            "compositionViews": 8
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "No active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "rawActiveWarnings": 0,
+            "diagnosticPartialOnlyWarnings": 1380,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          },
+          "details": [
+            "non-blocking partial-only applicability diagnostics APV-202: 1380",
+            "diagnostic finding type APV-202: 1380"
+          ]
+        }
+      ]
+    },
+    {
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "subject": "Chemie",
+      "maturity": "M7",
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 742,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-000",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "completeSourceJurisdictions": 16,
+            "emptySourceJurisdictions": 0,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "originalSourceUrlIssues": 0,
+            "sourceExtractedGoals": 6134,
+            "sourceOriginalGoals": 6134,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 6134,
+            "sourceUnregisteredAtomicGoals": 0
+          }
+        },
+        {
+          "id": "CQR-003",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "coveredJurisdictions": 16,
+            "sourceBackedJurisdictions": 16,
+            "sourceCompleteJurisdictions": 16,
+            "fullCoverageJurisdictions": 16,
+            "uncoveredJurisdictions": 0,
+            "incompleteJurisdictions": 0,
+            "unsupportedAssignmentJurisdictions": 0,
+            "sourceUnmappedJurisdictions": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceAtomicGoals": 6134,
+            "sourceMappedToViewAtomicGoals": 6134,
+            "sourceOriginalGoals": 6134,
+            "sourceFullyCoveredOriginalGoals": 6134,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "surrogateBackedAtomicGoals": 56,
+            "partialSourceLinkedAtomicGoals": 0,
+            "warningedJurisdictions": 0,
+            "cleanJurisdictions": 16,
+            "partialJurisdictions": 0,
+            "errorJurisdictions": 0,
+            "minSourceBackedAtomicGoals": 147,
+            "maxVisibleAtomicGoals": 353,
+            "maxSourceBackedAtomicGoals": 353,
+            "totalAtomicGoals": 383
+          }
+        },
+        {
+          "id": "CQR-004",
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 1884 upper-secondary source-to-canonical mapping edge(s), including 32 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 50,
+            "sourceGoals": 4469,
+            "sourceGoalsWithCourseLevel": 4469,
+            "gkLkSourceGoals": 2533,
+            "lkSourceGoals": 1442,
+            "unspecifiedSourceGoals": 413,
+            "checkedMappingEdges": 1884,
+            "defaultedUnspecifiedMappingEdges": 172,
+            "reviewedCourseLevelExceptions": 32,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
+        },
+        {
+          "id": "CQR-005",
+          "status": "pass",
+          "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+          "metrics": {
+            "sourceExtractionSources": 32,
+            "peerBaselineChecks": 26,
+            "failedPeerBaselineChecks": 0,
+            "granularityChecks": 0,
+            "failedGranularityChecks": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "pass",
+          "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+          "metrics": {
+            "configs": 80,
+            "leafGoals": 455,
+            "atomic": 455,
+            "needsDeveloperReview": 0,
+            "nonAtomic": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0
+          }
+        },
+        {
+          "id": "CQR-302",
+          "status": "pass",
+          "summary": "Memory-card review is current: 66/455 ordinary atomic goals intentionally use memorization support, 759/759 primary cards are kept with origin traces, all 68 memory goals are traced, and 1715 view-visible memory-required goals resolve to visible memory nodes.",
+          "metrics": {
+            "configs": 1,
+            "reviewedGoals": 455,
+            "noMemoryNeeded": 389,
+            "memoryRequired": 66,
+            "needsDeveloperReview": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0,
+            "duplicateRecords": 0,
+            "invalidRecords": 0,
+            "primaryCards": 759,
+            "keptCards": 759,
+            "cardsMarkedRemove": 0,
+            "cardNeedsDeveloperReview": 0,
+            "missingCardReviews": 0,
+            "staleCardReviews": 0,
+            "obsoleteCardReviews": 0,
+            "duplicateCardReviewRecords": 0,
+            "invalidCardReviewRecords": 0,
+            "untracedMemoryRequiredGoals": 0,
+            "visibilityScopes": 41,
+            "visibilityCheckedMemoryRequiredGoals": 1715,
+            "visibilityMissingVisibleMemoryGoals": 0,
+            "visibilityErrors": 0,
+            "memoryGoals": 68,
+            "tracedMemoryGoals": 68,
+            "untracedMemoryGoals": 0,
+            "deckIds": 7,
+            "deckFiles": 69,
+            "cardRows": 777
+          },
+          "details": [
+            "canonical-chemistry-full: audit report curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-eight-P-three-text-AMV-binding-technical-20261019-v1/M/M455.report.md"
+          ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "pass",
+          "summary": "Deep curriculum QA is complete for all 455 current curricularAtomic goals.",
+          "metrics": {
+            "expectedGoals": 455,
+            "remaining": 0,
+            "strictComplete": 455,
+            "currentDescriptionResolutions": 455,
+            "currentPositiveEvidenceProfiles": 455,
+            "currentSemanticAtomicityDecisions": 455,
+            "currentMemoryReviewDecisions": 455,
+            "currentVisualizationQaRecords": 455,
+            "deferredVisualizations": 0,
+            "requiredChecksPassed": 6,
+            "requiredChecksTotal": 6,
+            "blockingIssues": 0
+          }
+        },
+        {
+          "id": "CQR-401",
+          "status": "pass",
+          "summary": "41 composition view(s) are registered.",
+          "metrics": {
+            "compositionViews": 41
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "88 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "rawActiveWarnings": 0,
+            "diagnosticPartialOnlyWarnings": 2750,
+            "acceptedWarnings": 88,
+            "obsoleteAcceptedWarnings": 0
+          },
+          "details": [
+            "non-blocking partial-only applicability diagnostics APV-202: 2750",
+            "diagnostic finding type APV-202: 2750",
+            "accepted current warning type APV-201: 88"
+          ]
+        }
+      ]
+    },
+    {
+      "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+      "subject": "Deutsch",
+      "maturity": "M6",
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 354,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-000",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "completeSourceJurisdictions": 16,
+            "emptySourceJurisdictions": 0,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "originalSourceUrlIssues": 0,
+            "sourceExtractedGoals": 6222,
+            "sourceOriginalGoals": 6222,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 6222,
+            "sourceUnregisteredAtomicGoals": 0
+          }
+        },
+        {
+          "id": "CQR-003",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "coveredJurisdictions": 16,
+            "sourceBackedJurisdictions": 16,
+            "sourceCompleteJurisdictions": 16,
+            "fullCoverageJurisdictions": 16,
+            "uncoveredJurisdictions": 0,
+            "incompleteJurisdictions": 0,
+            "unsupportedAssignmentJurisdictions": 0,
+            "sourceUnmappedJurisdictions": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceAtomicGoals": 6222,
+            "sourceMappedToViewAtomicGoals": 6222,
+            "sourceOriginalGoals": 6222,
+            "sourceFullyCoveredOriginalGoals": 6222,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "surrogateBackedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "warningedJurisdictions": 0,
+            "cleanJurisdictions": 16,
+            "partialJurisdictions": 0,
+            "errorJurisdictions": 0,
+            "minSourceBackedAtomicGoals": 11,
+            "maxVisibleAtomicGoals": 268,
+            "maxSourceBackedAtomicGoals": 268,
+            "totalAtomicGoals": 268
+          }
+        },
+        {
+          "id": "CQR-004",
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 171 upper-secondary source-to-canonical mapping edge(s), including 36 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 31,
+            "sourceGoals": 1944,
+            "sourceGoalsWithCourseLevel": 1944,
+            "gkLkSourceGoals": 1157,
+            "lkSourceGoals": 546,
+            "unspecifiedSourceGoals": 0,
+            "checkedMappingEdges": 171,
+            "defaultedUnspecifiedMappingEdges": 0,
+            "reviewedCourseLevelExceptions": 36,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
+        },
+        {
+          "id": "CQR-005",
+          "status": "pass",
+          "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+          "metrics": {
+            "sourceExtractionSources": 31,
+            "peerBaselineChecks": 27,
+            "failedPeerBaselineChecks": 0,
+            "granularityChecks": 0,
+            "failedGranularityChecks": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "pass",
+          "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+          "metrics": {
+            "configs": 1,
+            "leafGoals": 268,
+            "atomic": 268,
+            "needsDeveloperReview": 0,
+            "nonAtomic": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0
+          }
+        },
+        {
+          "id": "CQR-302",
+          "status": "pass",
+          "summary": "Memory-card review is current: 74/268 ordinary atomic goals intentionally use memorization support, 48/48 primary cards are kept with origin traces, all 5 memory goals are traced, and 188 view-visible memory-required goals resolve to visible memory nodes.",
+          "metrics": {
+            "configs": 1,
+            "reviewedGoals": 268,
+            "noMemoryNeeded": 194,
+            "memoryRequired": 74,
+            "needsDeveloperReview": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0,
+            "duplicateRecords": 0,
+            "invalidRecords": 0,
+            "primaryCards": 48,
+            "keptCards": 48,
+            "cardsMarkedRemove": 0,
+            "cardNeedsDeveloperReview": 0,
+            "missingCardReviews": 0,
+            "staleCardReviews": 0,
+            "obsoleteCardReviews": 0,
+            "duplicateCardReviewRecords": 0,
+            "invalidCardReviewRecords": 0,
+            "untracedMemoryRequiredGoals": 0,
+            "visibilityScopes": 9,
+            "visibilityCheckedMemoryRequiredGoals": 188,
+            "visibilityMissingVisibleMemoryGoals": 0,
+            "visibilityErrors": 0,
+            "memoryGoals": 5,
+            "tracedMemoryGoals": 5,
+            "untracedMemoryGoals": 0,
+            "deckIds": 5,
+            "deckFiles": 5,
+            "cardRows": 48
+          },
+          "details": [
+            "canonical-german-full: audit report docs/qa-ci/status/memory-card-review-canonical-german-full.md"
+          ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "pass",
+          "summary": "27 composition view(s) are registered.",
+          "metrics": {
+            "compositionViews": 27
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "No active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "rawActiveWarnings": 0,
+            "diagnosticPartialOnlyWarnings": 959,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          },
+          "details": [
+            "non-blocking partial-only applicability diagnostics APV-202: 959",
+            "diagnostic finding type APV-202: 959"
+          ]
+        }
+      ]
+    },
+    {
+      "landscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+      "subject": "Geschichte",
+      "maturity": "M6",
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 217,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-000",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "completeSourceJurisdictions": 16,
+            "emptySourceJurisdictions": 0,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "originalSourceUrlIssues": 0,
+            "sourceExtractedGoals": 4518,
+            "sourceOriginalGoals": 4518,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 4518,
+            "sourceUnregisteredAtomicGoals": 0
+          }
+        },
+        {
+          "id": "CQR-003",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "coveredJurisdictions": 16,
+            "sourceBackedJurisdictions": 16,
+            "sourceCompleteJurisdictions": 16,
+            "fullCoverageJurisdictions": 16,
+            "uncoveredJurisdictions": 0,
+            "incompleteJurisdictions": 0,
+            "unsupportedAssignmentJurisdictions": 0,
+            "sourceUnmappedJurisdictions": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceAtomicGoals": 4518,
+            "sourceMappedToViewAtomicGoals": 4518,
+            "sourceOriginalGoals": 4518,
+            "sourceFullyCoveredOriginalGoals": 4518,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "surrogateBackedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "warningedJurisdictions": 0,
+            "cleanJurisdictions": 16,
+            "partialJurisdictions": 0,
+            "errorJurisdictions": 0,
+            "minSourceBackedAtomicGoals": 62,
+            "maxVisibleAtomicGoals": 156,
+            "maxSourceBackedAtomicGoals": 156,
+            "totalAtomicGoals": 156
+          }
+        },
+        {
+          "id": "CQR-004",
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 182 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 31,
+            "sourceGoals": 2458,
+            "sourceGoalsWithCourseLevel": 2458,
+            "gkLkSourceGoals": 1895,
+            "lkSourceGoals": 369,
+            "unspecifiedSourceGoals": 118,
+            "checkedMappingEdges": 182,
+            "defaultedUnspecifiedMappingEdges": 0,
+            "reviewedCourseLevelExceptions": 0,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
+        },
+        {
+          "id": "CQR-005",
+          "status": "pass",
+          "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+          "metrics": {
+            "sourceExtractionSources": 31,
+            "peerBaselineChecks": 27,
+            "failedPeerBaselineChecks": 0,
+            "granularityChecks": 0,
+            "failedGranularityChecks": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "pass",
+          "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+          "metrics": {
+            "configs": 1,
+            "leafGoals": 156,
+            "atomic": 156,
+            "needsDeveloperReview": 0,
+            "nonAtomic": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0
+          }
+        },
+        {
+          "id": "CQR-302",
+          "status": "pass",
+          "summary": "Memory-card review is current: 56/156 ordinary atomic goals intentionally use memorization support, 57/57 primary cards are kept with origin traces, all 5 memory goals are traced, and 52 view-visible memory-required goals resolve to visible memory nodes.",
+          "metrics": {
+            "configs": 1,
+            "reviewedGoals": 156,
+            "noMemoryNeeded": 100,
+            "memoryRequired": 56,
+            "needsDeveloperReview": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0,
+            "duplicateRecords": 0,
+            "invalidRecords": 0,
+            "primaryCards": 57,
+            "keptCards": 57,
+            "cardsMarkedRemove": 0,
+            "cardNeedsDeveloperReview": 0,
+            "missingCardReviews": 0,
+            "staleCardReviews": 0,
+            "obsoleteCardReviews": 0,
+            "duplicateCardReviewRecords": 0,
+            "invalidCardReviewRecords": 0,
+            "untracedMemoryRequiredGoals": 0,
+            "visibilityScopes": 1,
+            "visibilityCheckedMemoryRequiredGoals": 52,
+            "visibilityMissingVisibleMemoryGoals": 0,
+            "visibilityErrors": 0,
+            "memoryGoals": 5,
+            "tracedMemoryGoals": 5,
+            "untracedMemoryGoals": 0,
+            "deckIds": 5,
+            "deckFiles": 5,
+            "cardRows": 57
+          },
+          "details": [
+            "canonical-history-full: audit report docs/qa-ci/status/memory-card-review-canonical-history-full.md"
+          ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "pass",
+          "summary": "19 composition view(s) are registered.",
+          "metrics": {
+            "compositionViews": 19
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "No active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "rawActiveWarnings": 0,
+            "diagnosticPartialOnlyWarnings": 2137,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          },
+          "details": [
+            "non-blocking partial-only applicability diagnostics APV-202: 2137",
+            "diagnostic finding type APV-202: 2137"
+          ]
+        }
+      ]
+    },
+    {
+      "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+      "subject": "Informatik",
+      "maturity": "M6",
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 282,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-000",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "completeSourceJurisdictions": 16,
+            "emptySourceJurisdictions": 0,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "originalSourceUrlIssues": 0,
+            "sourceExtractedGoals": 3505,
+            "sourceOriginalGoals": 3505,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 3505,
+            "sourceUnregisteredAtomicGoals": 0
+          }
+        },
+        {
+          "id": "CQR-003",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "coveredJurisdictions": 16,
+            "sourceBackedJurisdictions": 16,
+            "sourceCompleteJurisdictions": 16,
+            "fullCoverageJurisdictions": 16,
+            "uncoveredJurisdictions": 0,
+            "incompleteJurisdictions": 0,
+            "unsupportedAssignmentJurisdictions": 0,
+            "sourceUnmappedJurisdictions": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceAtomicGoals": 3505,
+            "sourceMappedToViewAtomicGoals": 3505,
+            "sourceOriginalGoals": 3505,
+            "sourceFullyCoveredOriginalGoals": 3505,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "surrogateBackedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "warningedJurisdictions": 0,
+            "cleanJurisdictions": 16,
+            "partialJurisdictions": 0,
+            "errorJurisdictions": 0,
+            "minSourceBackedAtomicGoals": 64,
+            "maxVisibleAtomicGoals": 207,
+            "maxSourceBackedAtomicGoals": 207,
+            "totalAtomicGoals": 209
+          }
+        },
+        {
+          "id": "CQR-004",
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 528 upper-secondary source-to-canonical mapping edge(s), including 90 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 29,
+            "sourceGoals": 2231,
+            "sourceGoalsWithCourseLevel": 2231,
+            "gkLkSourceGoals": 1135,
+            "lkSourceGoals": 798,
+            "unspecifiedSourceGoals": 163,
+            "checkedMappingEdges": 528,
+            "defaultedUnspecifiedMappingEdges": 46,
+            "reviewedCourseLevelExceptions": 90,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
+        },
+        {
+          "id": "CQR-005",
+          "status": "pass",
+          "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+          "metrics": {
+            "sourceExtractionSources": 29,
+            "peerBaselineChecks": 26,
+            "failedPeerBaselineChecks": 0,
+            "granularityChecks": 0,
+            "failedGranularityChecks": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "pass",
+          "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+          "metrics": {
+            "configs": 1,
+            "leafGoals": 207,
+            "atomic": 207,
+            "needsDeveloperReview": 0,
+            "nonAtomic": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0
+          }
+        },
+        {
+          "id": "CQR-302",
+          "status": "pass",
+          "summary": "Memory-card review is current: 9/207 ordinary atomic goals intentionally use memorization support, 28/28 primary cards are kept with origin traces, all 5 memory goals are traced, and 94 view-visible memory-required goals resolve to visible memory nodes.",
+          "metrics": {
+            "configs": 1,
+            "reviewedGoals": 207,
+            "noMemoryNeeded": 198,
+            "memoryRequired": 9,
+            "needsDeveloperReview": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0,
+            "duplicateRecords": 0,
+            "invalidRecords": 0,
+            "primaryCards": 28,
+            "keptCards": 28,
+            "cardsMarkedRemove": 0,
+            "cardNeedsDeveloperReview": 0,
+            "missingCardReviews": 0,
+            "staleCardReviews": 0,
+            "obsoleteCardReviews": 0,
+            "duplicateCardReviewRecords": 0,
+            "invalidCardReviewRecords": 0,
+            "untracedMemoryRequiredGoals": 0,
+            "visibilityScopes": 18,
+            "visibilityCheckedMemoryRequiredGoals": 94,
+            "visibilityMissingVisibleMemoryGoals": 0,
+            "visibilityErrors": 0,
+            "memoryGoals": 5,
+            "tracedMemoryGoals": 5,
+            "untracedMemoryGoals": 0,
+            "deckIds": 5,
+            "deckFiles": 5,
+            "cardRows": 28
+          },
+          "details": [
+            "canonical-informatics-full: audit report docs/qa-ci/status/memory-card-review-canonical-informatics-full.md"
+          ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "pass",
+          "summary": "19 composition view(s) are registered.",
+          "metrics": {
+            "compositionViews": 19
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "No active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "rawActiveWarnings": 0,
+            "diagnosticPartialOnlyWarnings": 1132,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          },
+          "details": [
+            "non-blocking partial-only applicability diagnostics APV-202: 1132",
+            "diagnostic finding type APV-202: 1132"
+          ]
+        }
+      ]
+    },
+    {
+      "landscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+      "subject": "Latein",
+      "maturity": "M6",
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 176,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-000",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "completeSourceJurisdictions": 16,
+            "emptySourceJurisdictions": 0,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "originalSourceUrlIssues": 0,
+            "sourceExtractedGoals": 8481,
+            "sourceOriginalGoals": 8481,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 8481,
+            "sourceUnregisteredAtomicGoals": 0
+          }
+        },
+        {
+          "id": "CQR-003",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "coveredJurisdictions": 16,
+            "sourceBackedJurisdictions": 16,
+            "sourceCompleteJurisdictions": 16,
+            "fullCoverageJurisdictions": 16,
+            "uncoveredJurisdictions": 0,
+            "incompleteJurisdictions": 0,
+            "unsupportedAssignmentJurisdictions": 0,
+            "sourceUnmappedJurisdictions": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceAtomicGoals": 8481,
+            "sourceMappedToViewAtomicGoals": 8481,
+            "sourceOriginalGoals": 8481,
+            "sourceFullyCoveredOriginalGoals": 8481,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "surrogateBackedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "warningedJurisdictions": 0,
+            "cleanJurisdictions": 16,
+            "partialJurisdictions": 0,
+            "errorJurisdictions": 0,
+            "minSourceBackedAtomicGoals": 75,
+            "maxVisibleAtomicGoals": 115,
+            "maxSourceBackedAtomicGoals": 115,
+            "totalAtomicGoals": 115
+          }
+        },
+        {
+          "id": "CQR-004",
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 2511 upper-secondary source-to-canonical mapping edge(s), including 36 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 26,
+            "sourceGoals": 3543,
+            "sourceGoalsWithCourseLevel": 3543,
+            "gkLkSourceGoals": 2939,
+            "lkSourceGoals": 561,
+            "unspecifiedSourceGoals": 311,
+            "checkedMappingEdges": 2511,
+            "defaultedUnspecifiedMappingEdges": 97,
+            "reviewedCourseLevelExceptions": 36,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
+        },
+        {
+          "id": "CQR-005",
+          "status": "pass",
+          "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+          "metrics": {
+            "sourceExtractionSources": 26,
+            "peerBaselineChecks": 11,
+            "failedPeerBaselineChecks": 0,
+            "granularityChecks": 0,
+            "failedGranularityChecks": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "pass",
+          "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+          "metrics": {
+            "configs": 1,
+            "leafGoals": 115,
+            "atomic": 115,
+            "needsDeveloperReview": 0,
+            "nonAtomic": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0
+          }
+        },
+        {
+          "id": "CQR-302",
+          "status": "pass",
+          "summary": "Memory-card review is current: 33/115 ordinary atomic goals intentionally use memorization support, 34/34 primary cards are kept with origin traces, all 5 memory goals are traced, and 33 view-visible memory-required goals resolve to visible memory nodes.",
+          "metrics": {
+            "configs": 1,
+            "reviewedGoals": 115,
+            "noMemoryNeeded": 82,
+            "memoryRequired": 33,
+            "needsDeveloperReview": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0,
+            "duplicateRecords": 0,
+            "invalidRecords": 0,
+            "primaryCards": 34,
+            "keptCards": 34,
+            "cardsMarkedRemove": 0,
+            "cardNeedsDeveloperReview": 0,
+            "missingCardReviews": 0,
+            "staleCardReviews": 0,
+            "obsoleteCardReviews": 0,
+            "duplicateCardReviewRecords": 0,
+            "invalidCardReviewRecords": 0,
+            "untracedMemoryRequiredGoals": 0,
+            "visibilityScopes": 1,
+            "visibilityCheckedMemoryRequiredGoals": 33,
+            "visibilityMissingVisibleMemoryGoals": 0,
+            "visibilityErrors": 0,
+            "memoryGoals": 5,
+            "tracedMemoryGoals": 5,
+            "untracedMemoryGoals": 0,
+            "deckIds": 5,
+            "deckFiles": 5,
+            "cardRows": 34
+          },
+          "details": [
+            "canonical-latin-full: audit report docs/qa-ci/status/memory-card-review-canonical-latin-full.md"
+          ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "pass",
+          "summary": "2 composition view(s) are registered.",
+          "metrics": {
+            "compositionViews": 2
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "No active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "rawActiveWarnings": 0,
+            "diagnosticPartialOnlyWarnings": 479,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          },
+          "details": [
+            "non-blocking partial-only applicability diagnostics APV-202: 479",
+            "diagnostic finding type APV-202: 479"
+          ]
+        }
+      ]
+    },
+    {
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "subject": "Mathematik",
+      "maturity": "M7",
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 1252,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-000",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "completeSourceJurisdictions": 16,
+            "emptySourceJurisdictions": 0,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "originalSourceUrlIssues": 0,
+            "sourceExtractedGoals": 9978,
+            "sourceOriginalGoals": 9978,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 9978,
+            "sourceUnregisteredAtomicGoals": 0
+          }
+        },
+        {
+          "id": "CQR-003",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "coveredJurisdictions": 16,
+            "sourceBackedJurisdictions": 16,
+            "sourceCompleteJurisdictions": 16,
+            "fullCoverageJurisdictions": 16,
+            "uncoveredJurisdictions": 0,
+            "incompleteJurisdictions": 0,
+            "unsupportedAssignmentJurisdictions": 0,
+            "sourceUnmappedJurisdictions": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceAtomicGoals": 9978,
+            "sourceMappedToViewAtomicGoals": 9978,
+            "sourceOriginalGoals": 9978,
+            "sourceFullyCoveredOriginalGoals": 9978,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "surrogateBackedAtomicGoals": 22,
+            "partialSourceLinkedAtomicGoals": 0,
+            "warningedJurisdictions": 0,
+            "cleanJurisdictions": 16,
+            "partialJurisdictions": 0,
+            "errorJurisdictions": 0,
+            "minSourceBackedAtomicGoals": 531,
+            "maxVisibleAtomicGoals": 707,
+            "maxSourceBackedAtomicGoals": 707,
+            "totalAtomicGoals": 717
+          }
+        },
+        {
+          "id": "CQR-004",
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 637 upper-secondary source-to-canonical mapping edge(s), including 10 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 40,
+            "sourceGoals": 4051,
+            "sourceGoalsWithCourseLevel": 4051,
+            "gkLkSourceGoals": 2328,
+            "lkSourceGoals": 1245,
+            "unspecifiedSourceGoals": 62,
+            "checkedMappingEdges": 637,
+            "defaultedUnspecifiedMappingEdges": 110,
+            "reviewedCourseLevelExceptions": 10,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
+        },
+        {
+          "id": "CQR-005",
+          "status": "pass",
+          "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+          "metrics": {
+            "sourceExtractionSources": 31,
+            "peerBaselineChecks": 27,
+            "failedPeerBaselineChecks": 0,
+            "granularityChecks": 0,
+            "failedGranularityChecks": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "pass",
+          "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+          "metrics": {
+            "configs": 1,
+            "leafGoals": 807,
+            "atomic": 807,
+            "needsDeveloperReview": 0,
+            "nonAtomic": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0
+          }
+        },
+        {
+          "id": "CQR-302",
+          "status": "pass",
+          "summary": "Memory-card review is current: 40/807 ordinary atomic goals intentionally use memorization support, 64/64 primary cards are kept with origin traces, all 6 memory goals are traced, and 17 view-visible memory-required goals resolve to visible memory nodes.",
+          "metrics": {
+            "configs": 1,
+            "reviewedGoals": 807,
+            "noMemoryNeeded": 767,
+            "memoryRequired": 40,
+            "needsDeveloperReview": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0,
+            "duplicateRecords": 0,
+            "invalidRecords": 0,
+            "primaryCards": 64,
+            "keptCards": 64,
+            "cardsMarkedRemove": 0,
+            "cardNeedsDeveloperReview": 0,
+            "missingCardReviews": 0,
+            "staleCardReviews": 0,
+            "obsoleteCardReviews": 0,
+            "duplicateCardReviewRecords": 0,
+            "invalidCardReviewRecords": 0,
+            "untracedMemoryRequiredGoals": 0,
+            "visibilityScopes": 2,
+            "visibilityCheckedMemoryRequiredGoals": 17,
+            "visibilityMissingVisibleMemoryGoals": 0,
+            "visibilityErrors": 0,
+            "memoryGoals": 6,
+            "tracedMemoryGoals": 6,
+            "untracedMemoryGoals": 0,
+            "deckIds": 6,
+            "deckFiles": 12,
+            "cardRows": 128
+          },
+          "details": [
+            "canonical-math-full: audit report docs/qa-ci/status/memory-card-review-canonical-math-full.md"
+          ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "pass",
+          "summary": "Deep curriculum QA is complete for all 807 current curricularAtomic goals.",
+          "metrics": {
+            "expectedGoals": 807,
+            "remaining": 0,
+            "strictComplete": 807,
+            "currentDescriptionResolutions": 807,
+            "currentPositiveEvidenceProfiles": 807,
+            "currentSemanticAtomicityDecisions": 807,
+            "currentMemoryReviewDecisions": 807,
+            "currentVisualizationQaRecords": 807,
+            "deferredVisualizations": 0,
+            "requiredChecksPassed": 6,
+            "requiredChecksTotal": 6,
+            "blockingIssues": 0
+          }
+        },
+        {
+          "id": "CQR-401",
+          "status": "pass",
+          "summary": "88 composition view(s) are registered.",
+          "metrics": {
+            "compositionViews": 88
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "11 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "rawActiveWarnings": 0,
+            "diagnosticPartialOnlyWarnings": 9415,
+            "acceptedWarnings": 11,
+            "obsoleteAcceptedWarnings": 0
+          },
+          "details": [
+            "non-blocking partial-only applicability diagnostics APV-202: 9415",
+            "diagnostic finding type APV-202: 9415",
+            "accepted current warning type APV-203: 10",
+            "accepted current warning type APV-201: 1"
+          ]
+        }
+      ]
+    },
+    {
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "subject": "Physik",
+      "maturity": "M7",
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 766,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-000",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "completeSourceJurisdictions": 16,
+            "emptySourceJurisdictions": 0,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "originalSourceUrlIssues": 0,
+            "sourceExtractedGoals": 6289,
+            "sourceOriginalGoals": 6289,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 6289,
+            "sourceUnregisteredAtomicGoals": 0
+          }
+        },
+        {
+          "id": "CQR-003",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "coveredJurisdictions": 16,
+            "sourceBackedJurisdictions": 16,
+            "sourceCompleteJurisdictions": 16,
+            "fullCoverageJurisdictions": 16,
+            "uncoveredJurisdictions": 0,
+            "incompleteJurisdictions": 0,
+            "unsupportedAssignmentJurisdictions": 0,
+            "sourceUnmappedJurisdictions": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceAtomicGoals": 6289,
+            "sourceMappedToViewAtomicGoals": 6289,
+            "sourceOriginalGoals": 6289,
+            "sourceFullyCoveredOriginalGoals": 6289,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "surrogateBackedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "warningedJurisdictions": 0,
+            "cleanJurisdictions": 16,
+            "partialJurisdictions": 0,
+            "errorJurisdictions": 0,
+            "minSourceBackedAtomicGoals": 219,
+            "maxVisibleAtomicGoals": 426,
+            "maxSourceBackedAtomicGoals": 426,
+            "totalAtomicGoals": 438
+          }
+        },
+        {
+          "id": "CQR-004",
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 742 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 25,
+            "sourceGoals": 3989,
+            "sourceGoalsWithCourseLevel": 3989,
+            "gkLkSourceGoals": 1769,
+            "lkSourceGoals": 1427,
+            "unspecifiedSourceGoals": 0,
+            "checkedMappingEdges": 742,
+            "defaultedUnspecifiedMappingEdges": 0,
+            "reviewedCourseLevelExceptions": 0,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
+        },
+        {
+          "id": "CQR-005",
+          "status": "pass",
+          "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+          "metrics": {
+            "sourceExtractionSources": 25,
+            "peerBaselineChecks": 21,
+            "failedPeerBaselineChecks": 0,
+            "granularityChecks": 0,
+            "failedGranularityChecks": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "pass",
+          "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+          "metrics": {
+            "configs": 1,
+            "leafGoals": 478,
+            "atomic": 478,
+            "needsDeveloperReview": 0,
+            "nonAtomic": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0
+          }
+        },
+        {
+          "id": "CQR-302",
+          "status": "pass",
+          "summary": "Memory-card review is current: 129/478 ordinary atomic goals intentionally use memorization support, 146/146 primary cards are kept with origin traces, all 5 memory goals are traced, and 237 view-visible memory-required goals resolve to visible memory nodes.",
+          "metrics": {
+            "configs": 1,
+            "reviewedGoals": 478,
+            "noMemoryNeeded": 349,
+            "memoryRequired": 129,
+            "needsDeveloperReview": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0,
+            "duplicateRecords": 0,
+            "invalidRecords": 0,
+            "primaryCards": 146,
+            "keptCards": 146,
+            "cardsMarkedRemove": 0,
+            "cardNeedsDeveloperReview": 0,
+            "missingCardReviews": 0,
+            "staleCardReviews": 0,
+            "obsoleteCardReviews": 0,
+            "duplicateCardReviewRecords": 0,
+            "invalidCardReviewRecords": 0,
+            "untracedMemoryRequiredGoals": 0,
+            "visibilityScopes": 2,
+            "visibilityCheckedMemoryRequiredGoals": 237,
+            "visibilityMissingVisibleMemoryGoals": 0,
+            "visibilityErrors": 0,
+            "memoryGoals": 5,
+            "tracedMemoryGoals": 5,
+            "untracedMemoryGoals": 0,
+            "deckIds": 5,
+            "deckFiles": 6,
+            "cardRows": 233
+          },
+          "details": [
+            "canonical-physics-full: audit report docs/qa-ci/status/memory-card-review-canonical-physics-full.md"
+          ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "pass",
+          "summary": "Deep curriculum QA is complete for all 478 current curricularAtomic goals.",
+          "metrics": {
+            "expectedGoals": 478,
+            "remaining": 0,
+            "strictComplete": 478,
+            "currentDescriptionResolutions": 478,
+            "currentPositiveEvidenceProfiles": 478,
+            "currentSemanticAtomicityDecisions": 478,
+            "currentMemoryReviewDecisions": 478,
+            "currentVisualizationQaRecords": 478,
+            "deferredVisualizations": 0,
+            "requiredChecksPassed": 6,
+            "requiredChecksTotal": 6,
+            "blockingIssues": 0
+          }
+        },
+        {
+          "id": "CQR-401",
+          "status": "pass",
+          "summary": "69 composition view(s) are registered.",
+          "metrics": {
+            "compositionViews": 69
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "1 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "rawActiveWarnings": 0,
+            "diagnosticPartialOnlyWarnings": 6341,
+            "acceptedWarnings": 1,
+            "obsoleteAcceptedWarnings": 0
+          },
+          "details": [
+            "non-blocking partial-only applicability diagnostics APV-202: 6341",
+            "diagnostic finding type APV-202: 6341",
+            "accepted current warning type APV-201: 1"
+          ]
+        }
+      ]
+    },
+    {
+      "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+      "subject": "Politik und Wirtschaft",
+      "maturity": "M6",
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 512,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-000",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "completeSourceJurisdictions": 16,
+            "emptySourceJurisdictions": 0,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "originalSourceUrlIssues": 0,
+            "sourceExtractedGoals": 4169,
+            "sourceOriginalGoals": 4169,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 4169,
+            "sourceUnregisteredAtomicGoals": 0
+          }
+        },
+        {
+          "id": "CQR-003",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "coveredJurisdictions": 16,
+            "sourceBackedJurisdictions": 16,
+            "sourceCompleteJurisdictions": 16,
+            "fullCoverageJurisdictions": 16,
+            "uncoveredJurisdictions": 0,
+            "incompleteJurisdictions": 0,
+            "unsupportedAssignmentJurisdictions": 0,
+            "sourceUnmappedJurisdictions": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceAtomicGoals": 4169,
+            "sourceMappedToViewAtomicGoals": 4169,
+            "sourceOriginalGoals": 4169,
+            "sourceFullyCoveredOriginalGoals": 4169,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "surrogateBackedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "warningedJurisdictions": 0,
+            "cleanJurisdictions": 16,
+            "partialJurisdictions": 0,
+            "errorJurisdictions": 0,
+            "minSourceBackedAtomicGoals": 53,
+            "maxVisibleAtomicGoals": 308,
+            "maxSourceBackedAtomicGoals": 308,
+            "totalAtomicGoals": 413
+          }
+        },
+        {
+          "id": "CQR-004",
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 399 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 33,
+            "sourceGoals": 2440,
+            "sourceGoalsWithCourseLevel": 2272,
+            "gkLkSourceGoals": 1405,
+            "lkSourceGoals": 775,
+            "unspecifiedSourceGoals": 216,
+            "checkedMappingEdges": 399,
+            "defaultedUnspecifiedMappingEdges": 215,
+            "reviewedCourseLevelExceptions": 0,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
+        },
+        {
+          "id": "CQR-005",
+          "status": "pass",
+          "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+          "metrics": {
+            "sourceExtractionSources": 33,
+            "peerBaselineChecks": 25,
+            "failedPeerBaselineChecks": 0,
+            "granularityChecks": 0,
+            "failedGranularityChecks": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "pass",
+          "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+          "metrics": {
+            "configs": 1,
+            "leafGoals": 413,
+            "atomic": 413,
+            "needsDeveloperReview": 0,
+            "nonAtomic": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0
+          }
+        },
+        {
+          "id": "CQR-302",
+          "status": "pass",
+          "summary": "Memory-card review is current: 107/413 ordinary atomic goals intentionally use memorization support, 62/62 primary cards are kept with origin traces, all 5 memory goals are traced, and 672 view-visible memory-required goals resolve to visible memory nodes.",
+          "metrics": {
+            "configs": 1,
+            "reviewedGoals": 413,
+            "noMemoryNeeded": 306,
+            "memoryRequired": 107,
+            "needsDeveloperReview": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0,
+            "duplicateRecords": 0,
+            "invalidRecords": 0,
+            "primaryCards": 62,
+            "keptCards": 62,
+            "cardsMarkedRemove": 0,
+            "cardNeedsDeveloperReview": 0,
+            "missingCardReviews": 0,
+            "staleCardReviews": 0,
+            "obsoleteCardReviews": 0,
+            "duplicateCardReviewRecords": 0,
+            "invalidCardReviewRecords": 0,
+            "untracedMemoryRequiredGoals": 0,
+            "visibilityScopes": 15,
+            "visibilityCheckedMemoryRequiredGoals": 672,
+            "visibilityMissingVisibleMemoryGoals": 0,
+            "visibilityErrors": 0,
+            "memoryGoals": 5,
+            "tracedMemoryGoals": 5,
+            "untracedMemoryGoals": 0,
+            "deckIds": 5,
+            "deckFiles": 5,
+            "cardRows": 62
+          },
+          "details": [
+            "canonical-politics-economics-full: audit report docs/qa-ci/status/memory-card-review-canonical-politics-economics-full.md"
+          ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No central deep-understanding QA scope is configured for this curriculum."
+        },
+        {
+          "id": "CQR-401",
+          "status": "pass",
+          "summary": "28 composition view(s) are registered.",
+          "metrics": {
+            "compositionViews": 28
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "No active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "rawActiveWarnings": 0,
+            "diagnosticPartialOnlyWarnings": 1572,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          },
+          "details": [
+            "non-blocking partial-only applicability diagnostics APV-202: 1572",
+            "diagnostic finding type APV-202: 1572"
+          ]
+        }
+      ]
+    },
+    {
+      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "subject": "Wirtschaftswissenschaften",
+      "maturity": "M7",
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 702,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-000",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "completeSourceJurisdictions": 16,
+            "emptySourceJurisdictions": 0,
+            "missingReadableSourceInventoryJurisdictions": 0,
+            "originalSourceUrlIssues": 0,
+            "sourceExtractedGoals": 2136,
+            "sourceOriginalGoals": 2136,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 2136,
+            "sourceUnregisteredAtomicGoals": 0
+          }
+        },
+        {
+          "id": "CQR-003",
+          "status": "pass",
+          "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "coveredJurisdictions": 16,
+            "sourceBackedJurisdictions": 16,
+            "sourceCompleteJurisdictions": 16,
+            "fullCoverageJurisdictions": 16,
+            "uncoveredJurisdictions": 0,
+            "incompleteJurisdictions": 0,
+            "unsupportedAssignmentJurisdictions": 0,
+            "sourceUnmappedJurisdictions": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceAtomicGoals": 2136,
+            "sourceMappedToViewAtomicGoals": 2136,
+            "sourceOriginalGoals": 2136,
+            "sourceFullyCoveredOriginalGoals": 2136,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "surrogateBackedAtomicGoals": 63,
+            "partialSourceLinkedAtomicGoals": 0,
+            "warningedJurisdictions": 0,
+            "cleanJurisdictions": 16,
+            "partialJurisdictions": 0,
+            "errorJurisdictions": 0,
+            "minSourceBackedAtomicGoals": 71,
+            "maxVisibleAtomicGoals": 302,
+            "maxSourceBackedAtomicGoals": 302,
+            "totalAtomicGoals": 344
+          }
+        },
+        {
+          "id": "CQR-004",
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 309 upper-secondary source-to-canonical mapping edge(s), including 1 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 32,
+            "sourceGoals": 1385,
+            "sourceGoalsWithCourseLevel": 1385,
+            "gkLkSourceGoals": 808,
+            "lkSourceGoals": 420,
+            "unspecifiedSourceGoals": 117,
+            "checkedMappingEdges": 309,
+            "defaultedUnspecifiedMappingEdges": 105,
+            "reviewedCourseLevelExceptions": 1,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
+        },
+        {
+          "id": "CQR-005",
+          "status": "pass",
+          "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+          "metrics": {
+            "sourceExtractionSources": 30,
+            "peerBaselineChecks": 27,
+            "failedPeerBaselineChecks": 0,
+            "granularityChecks": 0,
+            "failedGranularityChecks": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "pass",
+          "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+          "metrics": {
+            "configs": 1,
+            "leafGoals": 346,
+            "atomic": 346,
+            "needsDeveloperReview": 0,
+            "nonAtomic": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0
+          }
+        },
+        {
+          "id": "CQR-302",
+          "status": "pass",
+          "summary": "Memory-card review is current: 66/346 ordinary atomic goals intentionally use memorization support, 67/67 primary cards are kept with origin traces, all 10 memory goals are traced, and 1192 view-visible memory-required goals resolve to visible memory nodes.",
+          "metrics": {
+            "configs": 1,
+            "reviewedGoals": 346,
+            "noMemoryNeeded": 280,
+            "memoryRequired": 66,
+            "needsDeveloperReview": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0,
+            "duplicateRecords": 0,
+            "invalidRecords": 0,
+            "primaryCards": 67,
+            "keptCards": 67,
+            "cardsMarkedRemove": 0,
+            "cardNeedsDeveloperReview": 0,
+            "missingCardReviews": 0,
+            "staleCardReviews": 0,
+            "obsoleteCardReviews": 0,
+            "duplicateCardReviewRecords": 0,
+            "invalidCardReviewRecords": 0,
+            "untracedMemoryRequiredGoals": 0,
+            "visibilityScopes": 48,
+            "visibilityCheckedMemoryRequiredGoals": 1192,
+            "visibilityMissingVisibleMemoryGoals": 0,
+            "visibilityErrors": 0,
+            "memoryGoals": 10,
+            "tracedMemoryGoals": 10,
+            "untracedMemoryGoals": 0,
+            "deckIds": 10,
+            "deckFiles": 10,
+            "cardRows": 67
+          },
+          "details": [
+            "canonical-economics-full: audit report docs/qa-ci/status/memory-card-review-canonical-economics-current.md"
+          ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "pass",
+          "summary": "Deep curriculum QA is complete for all 346 current curricularAtomic goals.",
+          "metrics": {
+            "expectedGoals": 346,
+            "remaining": 0,
+            "strictComplete": 346,
+            "currentDescriptionResolutions": 346,
+            "currentPositiveEvidenceProfiles": 346,
+            "currentSemanticAtomicityDecisions": 346,
+            "currentMemoryReviewDecisions": 346,
+            "currentVisualizationQaRecords": 346,
+            "deferredVisualizations": 0,
+            "requiredChecksPassed": 6,
+            "requiredChecksTotal": 6,
+            "blockingIssues": 0
+          }
+        },
+        {
+          "id": "CQR-401",
+          "status": "pass",
+          "summary": "48 composition view(s) are registered.",
+          "metrics": {
+            "compositionViews": 48
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "11 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "rawActiveWarnings": 0,
+            "diagnosticPartialOnlyWarnings": 1485,
+            "acceptedWarnings": 11,
+            "obsoleteAcceptedWarnings": 0
+          },
+          "details": [
+            "non-blocking partial-only applicability diagnostics APV-202: 1485",
+            "diagnostic finding type APV-202: 1485",
+            "accepted current warning type APV-201: 11"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "status": "WHOLE_EXISTING_E3_REVIEWED_NO_REGISTERED_AM_REPLACEMENT_REQUIRED",
+  "wholeOriginalGoal": {
+    "id": "e3c70a12-7886-51f7-8bcd-ed54865415d6",
+    "shortKey": "canonical_math_sek2_q2_m7_route_linear_projection",
+    "title": "Orthogonale Projektion als lineare Abbildung prüfen",
+    "titleEn": "Check orthogonal projection as a linear mapping",
+    "description": "Die lernende Person kann in einer Q2-Prüfungsaufgabe eine orthogonale Projektion in Ebenenanteil und senkrechten Rest zerlegen und die Linearität der Zuordnung begründen.",
+    "descriptionEn": "The learner can independently check orthogonal projection as a linear mapping in a Q2 assessment and justify the results.",
+    "core": true,
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment",
+      "ExamTask",
+      "canonical",
+      "phase:Q2"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "applicabilityFromRequires": true,
+      "applicabilityMappingInheritance": "boundary"
+    },
+    "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/m7-route-repair-20260929-v1/tasks.md",
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-math",
+      "demandLevel": "AB3",
+      "processCompetencies": [
+        "K2.3",
+        "K3.3"
+      ],
+      "guidingIdeas": [
+        "L3"
+      ],
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "topicCode": "CANONICAL.MATH.SEK2.Q2.PRACTICE.LINEAR_PROJECTION"
+    },
+    "requires": [
+      "ed5d869b-af4e-4b80-b34d-a2338e16ce34"
+    ],
+    "contains": [],
+    "examples": [],
+    "resourceLinks": [],
+    "examData": {
+      "reviewStatus": "released",
+      "reviewNote": "Machine-only focused content and calculation review, 2026-09-29; source section SHA-256 b997d1fc24b762279bf3133b7355940f1bfc28299a27fb57810900a297311ce0. All scored parts are required because the backend currently enforces only total points; no human review, learner trial or publication claimed.",
+      "coveredGoalIds": [
+        "ed5d869b-af4e-4b80-b34d-a2338e16ce34"
+      ],
+      "coveredStrands": [
+        "L3"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/m7-route-repair-20260929-v1/tasks.md",
+      "taskContent": "Die orthogonale Projektion $P$ auf die Ebene $z=0$ ist durch $P(x,y,z)=(x,y,0)$ gegeben.\n\n1. Zerlege $v=(2,-1,3)$ in seinen Anteil in der Ebene und seinen dazu senkrechten Rest. (4 BE)\n2. Zeige für beliebige Vektoren $u,w$ und jeden Skalar $\\lambda$, dass $P(u+w)=P(u)+P(w)$ und $P(\\lambda u)=\\lambda P(u)$. Deute die Ebene als Bildraum und die $z$-Achse als Kern. (6 BE)",
+      "solutionContent": "$P(v)=(2,-1,0)$ und $v-P(v)=(0,0,3)$; der Rest ist zu allen Vektoren der Ebene senkrecht. Für $u=(u_1,u_2,u_3)$ und $w=(w_1,w_2,w_3)$ gilt $P(u+w)=(u_1+w_1,u_2+w_2,0)=P(u)+P(w)$ und $P(\\lambda u)=(\\lambda u_1,\\lambda u_2,0)=\\lambda P(u)$. Jedem Vektor werden linear ein Ebenenanteil und ein senkrechter Rest zugeordnet. Alle Ebenenvektoren sind Bildwerte, und genau die Vektoren $(0,0,z)$ werden auf null abgebildet.",
+      "scoring": {
+        "maxPoints": 10,
+        "passingPoints": 10,
+        "steps": [
+          {
+            "id": "q2_m7_linear_projection_1",
+            "points": 4,
+            "description": "Ebenenanteil und senkrechten Rest angegeben"
+          },
+          {
+            "id": "q2_m7_linear_projection_2",
+            "points": 6,
+            "description": "Additivität, Homogenität, Bild und Kern der Projektion begründet"
+          }
+        ]
+      }
+    },
+    "phase": "Q2",
+    "type": "atomic",
+    "nodeKind": "exam"
+  },
+  "originalSemanticKindRow": {
+    "goalId": "e3c70a12-7886-51f7-8bcd-ed54865415d6",
+    "sourceFingerprint": "sha256:feeeb21b1721c718f1535b20606d7d821a44fa1c8cbe88704ac7fb13ffa608c0",
+    "semanticKind": "practiceAssessment",
+    "decisionStatus": "authoritative",
+    "decisionBasis": "reviewed-current-pilot-practice-assessment"
+  },
+  "fingerprintBindings": [
+    {
+      "lane": "semantic-atomicity",
+      "ruleVersion": "semantic-atomicity-v1",
+      "currentFingerprint": "sha256:7b86b1d7fc1cc6643b42d832d7bffb2f3eaf324db459914cf645207ba9254f26",
+      "proposedRequiresAndCoverageFingerprint": "sha256:7b86b1d7fc1cc6643b42d832d7bffb2f3eaf324db459914cf645207ba9254f26",
+      "existingRegisteredRows": 0,
+      "necessaryReplacementRows": 0,
+      "explanation": "These fingerprints exclude requires and examData.coveredGoalIds. Existing e3 is a practice assessment, outside the registered 807 curricular-atomic population."
+    },
+    {
+      "lane": "memory-card-review",
+      "ruleVersion": "memory-card-review-v1",
+      "currentFingerprint": "sha256:ad67374ccf8ddfa7ab9cf6aad3da06d6daba4c247962e1e8fbb9cda49bb4a941",
+      "proposedRequiresAndCoverageFingerprint": "sha256:ad67374ccf8ddfa7ab9cf6aad3da06d6daba4c247962e1e8fbb9cda49bb4a941",
+      "existingRegisteredRows": 0,
+      "necessaryReplacementRows": 0,
+      "explanation": "These fingerprints exclude requires and examData.coveredGoalIds. Existing e3 is a practice assessment, outside the registered 807 curricular-atomic population."
+    }
+  ],
+  "independentAtomicityJudgment": "Kohärente Prüfungsleistung an einer einzigen orthogonalen Projektion: Ebenenanteil und Rest bestimmen und dieselbe Zuordnung als lineare Abbildung mit Bild/Kern begründen. Die zusätzliche 574-Abdeckungsangabe beschreibt bereits bewertete Punktprojektionshandlungen; sie fügt der Aufgabe keinen zweiten unabhängigen Themenkern hinzu.",
+  "independentMemoryJudgment": "Die vollständige 10/10-Leistung verlangt angewandte Zerlegung und Begründung für beliebige Vektoren. Kein eigener Gedächtnisabrufgegenstand und kein Anlass, einen Prüfungsendpunkt als Gedächtniskartenziel zu behandeln.",
+  "assessmentContentStatus": "CONTENT_CONDITIONAL_REUSE_ACCEPTED_FOR_POINT_VARIANT_OF_574",
+  "proposedCoverageAppend": "5748633c-113f-5ea8-9041-24da55919de7",
+  "automaticMasteryOfCoveredGoals": false,
+  "futureSemanticKindOrOtherFingerprintBindings": "Not waived by unchanged A/M hashes; verify the actual integrated candidate and its authoritative ledgers."
+}

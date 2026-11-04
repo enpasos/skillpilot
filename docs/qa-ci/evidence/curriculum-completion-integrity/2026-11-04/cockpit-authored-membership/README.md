@@ -1,0 +1,13 @@
+# Autoritative Baumziele und gleicher Fortschrittsnenner
+
+Die Backendprojektion enthielt 641 Ziele, während der Baumfortschritt nur 629 zählte. Ein nachgeschalteter Legacy-Phasenfilter entfernte zwölf gültig platzierte Ziele: Ihr kanonisches Metadatum `phase=Q4` wich von der geprüften hessischen Platzierung in der E-Phase ab. Zielumfang und Lernstände waren im Backend vorhanden; die Darstellung verlor Mitglieder.
+
+Die Normalisierung erhält nun die bereits aufgelöste Mitgliedschaft einer gekennzeichneten Kompositionssicht. Nicht komponierte Legacy-Bäume behalten ihren bisherigen Phasenfilter. Die Regression prüft die vollständige ID-Gleichheit zur aufgelösten Projektion, alle zwölf betroffenen IDs, unveränderte Quellobjekte und die Legacy-Darstellung. Sie enthält keine starre Zielzahl für den veränderlichen Live-Lehrplan. Derselbe neue Test scheitert am unveränderten vorherigen Produktionscode und besteht nach der Korrektur.
+
+Der echte Browser zeigt mit zwei synthetischen lokalen Profilen 0 von 641 beziehungsweise 3 von 641: ein expliziter und zwei implizite Abschlüsse. Alle zwölf Ziele sind genau einmal sichtbar; Zu- und Aufklappen ändert die Summen nicht. Schreibende Browseranfragen waren während dieser Probe blockiert. Es wurden keine Produktionsdaten gelesen oder geändert. Das ist keine externe Coach-Abnahme.
+
+[Handoff und Quellhashes](handoff.json), [Fehler am vorherigen Code](regression-before-fix.json), [ursprüngliche Mengenanalyse](diagnosis-before-fix.json), [tatsächliche Browserantworten](browser-after-fix.json), [Fortschrittstest](progress-regression.log), [UI-Vertragstest](ui-contract.log).
+
+Die breitere Compositionsuite meldete vorher und nachher dieselbe veraltete BBB-Ansichts-Allowlist. Diese ursprüngliche Grenze ist im Handoff ausdrücklich festgehalten. Der [separate QA-Nachlauf](../cockpit-composition-qa-followup/README.md) korrigiert inzwischen die veralteten, später unabhängig erweiterten Freigabeerwartungen; die vollständige Compositionsuite besteht. Ein vollständiger CI-PASS wird dadurch nicht behauptet.
+
+Die [aktuelle deutsche Graph-Referenz](../../../../../concept/skill-graph/skillpilot-graph-definition.pdf) erläutert jetzt auch die bereits geltende Trennung von eingehendem Vorbereitungsweg und stufenlokalem Abschlussweg. Der Stand vom 4. November besteht 266.376 Modellfälle und drei LaTeX-Durchgänge ohne Überlauf, fehlende Zeichen oder offene Referenzen. Titelseite und geänderte Profilseite wurden visuell geprüft; sämtliche Quellenbindungen stimmen mit dem aktuellen Bestand überein. [Dokumentprüfung](graph-reference-validation.json).

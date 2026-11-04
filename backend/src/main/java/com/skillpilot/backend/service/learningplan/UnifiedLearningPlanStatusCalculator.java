@@ -7,10 +7,10 @@ package com.skillpilot.backend.service.learningplan;
  * <pre>{@code
  * Rohsaldo               = I - S
  * Noch zu deckendes Soll = max(0, -Rohsaldo)
- * Offenes Periodenpensum = min(Noch zu deckendes Soll, max(0, P - H))
- * Rückstand              = Noch zu deckendes Soll - Offenes Periodenpensum
+ * Offenes Periodenpensum = max(0, P - H)
+ * Rückstand              = max(0, Noch zu deckendes Soll - Offenes Periodenpensum)
  * Vorsprung              = max(0, Rohsaldo)
- * Erfülltes Periodenziel = P - Offenes Periodenpensum
+ * Erfülltes Periodenziel = min(P, H)
  *
  * Statusrichtung:
  *   behind   bei Rückstand > 0
@@ -33,10 +33,10 @@ public final class UnifiedLearningPlanStatusCalculator {
 
         int rohsaldo = i - s;
         int nochZuDeckendesSoll = Math.max(0, -rohsaldo);
-        int offenesPeriodenpensum = Math.min(nochZuDeckendesSoll, Math.max(0, p - h));
-        int rueckstand = nochZuDeckendesSoll - offenesPeriodenpensum;
+        int offenesPeriodenpensum = Math.max(0, p - h);
+        int rueckstand = Math.max(0, nochZuDeckendesSoll - offenesPeriodenpensum);
         int vorsprung = Math.max(0, rohsaldo);
-        int erfuelltesPeriodenziel = p - offenesPeriodenpensum;
+        int erfuelltesPeriodenziel = Math.min(p, h);
 
         StatusDirection direction;
         if (rueckstand > 0) {

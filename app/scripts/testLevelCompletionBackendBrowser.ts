@@ -19,15 +19,15 @@ assert.equal(backend.username + backend.password + backend.search + backend.hash
 const learner = process.env.SKILLPILOT_COMPLETION_BROWSER_LEARNER ?? ''
 assert.match(learner, /^completion-browser-[a-f0-9-]{36}$/u)
 const profileId = 'automatic:personal-curriculum'
-const rootId = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
-const examId = 'e98672c6-871a-5d0b-889c-5afc51040f0d'
+const rootId = 'e6110c42-b4cb-5d40-94d3-d26a70736055'
+const examId = '91e9f31d-4195-59ee-93a8-fd0d94b549e1'
 const learnerPath = `/api/ui/learners/${learner}`
 const state = async () => {
   const response = await fetch(new URL(`${learnerPath}/state`, backend), { redirect: 'error' })
   assert.equal(response.status, 200)
   const snapshot = await response.json()
-  // Real 916-target / 139-assessment scope: 175,890 bytes measured 2026-10-31.
-  // Match the Java transport gate, with about 49% reserve for the full scope.
+  // The file-backed synthetic 916-target / 139-assessment load fixture uses
+  // the same fixed Java transport budget; it is not a real-Mathematics measurement.
   assert.ok(Buffer.byteLength(JSON.stringify(snapshot.levelCompletion), 'utf8') <= 256 * 1024,
     'every exercised full-curriculum state must keep the projection within 256 KiB')
   return snapshot
@@ -38,7 +38,9 @@ assert.equal(initial.levelCompletion.profileId, profileId)
 assert.equal(initial.levelCompletion.navigationIntent ?? null, null, 'the initial evaluation is read-only, not a selected route')
 const option = initial.levelCompletion.profileOptions.find((entry: { profileId: string }) => entry.profileId === profileId)
 assert.ok(option, 'The real automatic Personal Curriculum scope must be available')
-assert.ok(initial.levelCompletion.assessments.length > 24, 'the real scope exposes its complete assessment list')
+assert.equal(initial.levelCompletion.targetCount, 916, 'the synthetic load retains the original target-scale workload')
+assert.equal(initial.levelCompletion.assessments.length, 139, 'the complete synthetic load retains 139 assessments')
+assert.ok(initial.levelCompletion.assessments.length > 24, 'the synthetic load scope exceeds the bounded coach choice list')
 const exam = initial.levelCompletion.assessments.find((entry: { goalId: string }) => entry.goalId === examId)
 assert.ok(exam?.startAvailable, 'the intended authored assessment must be directly available')
 const examTitle: string = exam.title.de
@@ -161,6 +163,15 @@ try {
   const selectedResponse = mobile.page.waitForResponse((response) => response.url().endsWith('/level-completion/actions'))
   await mobile.page.keyboard.press('Enter')
   assert.equal((await selectedResponse).status(), 200)
+  const assessmentPages = card.getByRole('navigation', { name: 'Prüfungsseiten', exact: true })
+  await assessmentPages.waitFor()
+  const assessmentList = card.getByRole('list', { name: 'Prüfungen in diesem Abschnitt', exact: true })
+  assert.equal(await assessmentList.getByRole('listitem').count(), 8, 'the complete synthetic load is paginated')
+  const firstPage = await assessmentList.innerText()
+  await assessmentPages.getByRole('button', { name: 'Weiter', exact: true }).click()
+  assert.notEqual(await assessmentList.innerText(), firstPage, 'page two contains different real backend assessments')
+  await assessmentPages.getByRole('button', { name: 'Zurück', exact: true }).click()
+  assert.equal(await assessmentList.innerText(), firstPage, 'page navigation preserves the original assessment order')
   const selectedExam = await findExamRow(card)
   await selectedExam.getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).waitFor()
   const selected = await state()
@@ -298,7 +309,7 @@ try {
     // Explain an actually derived goal, not a presumed waiver for the former
     // two-goal pilot: other open assessments may still need that preparation.
     const waived = beforePause.levelCompletion.waiverDetails.find((detail: { ruleId: string }) => detail.ruleId === 'no_remaining_demand')
-    assert.ok(waived, 'the real canonical scope must expose a generic explanation for an actual implicit goal')
+    assert.ok(waived, 'the synthetic load scope must expose a generic explanation for an actual implicit goal')
     assert.ok(beforePause.levelCompletion.waivedTargetGoalIds.includes(waived.goalId))
     assert.deepEqual(waived.assessments, [])
     await reloadedCard.getByText('Warum sind diese Ziele implizit erledigt?', { exact: true }).click()
@@ -329,9 +340,10 @@ try {
   assert.deepEqual(errors, [])
   assert.equal(requests.filter((r) => r.status >= 500).length, 0)
   await writeFile(`${output}/${resultMode ? 'evidence-result' : 'evidence'}.json`, JSON.stringify({
-    transport: 'real-loopback-http', viewport: { width: 390, height: 844 },
+    transport: 'real-loopback-http', syntheticCurriculum: true, targetFixtureSize: 916, assessmentFixtureSize: 139, viewport: { width: 390, height: 844 },
     checks: ['keyboard-profile-choice', 'mobile-card', 'stale-parallel-choice-409', 'provider-session-start',
       'cockpit-reload-preserves-assessment', 'keyboard-exit-cancel-preserves-assessment'],
+    paginationChecked: true,
     resultChecks: resultMode ? ['real-delayed-state-read', 'real-aborted-state-read', 'reload-recovers-authoritative-state',
       'actual-mcp-write-passes-assessment-with-section-still-open', 'accessible-confirmed-status', 'scoped-waiver-explanation',
       'keyboard-pause-retains-profile-and-results-after-reload'] : [],

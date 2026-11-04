@@ -40,7 +40,7 @@ class CompositionViewServiceTest {
     }
 
     @Test
-    void findMatchingView_fallsBackFromCombinedCourseProfileToLkCrossStageView() {
+    void findMatchingView_prefersAuthoredCombinedCrossStageView() {
         CompositionViewService service = createService();
 
         Map<String, Object> match = service.findMatchingView(
@@ -51,8 +51,8 @@ class CompositionViewServiceTest {
                         "courseProfile", "GK+LK"));
 
         assertThat(match).isNotNull();
-        assertThat(match.get("viewId")).isEqualTo("merged:de-de-gym-math-lk+de-de-gym-math-gk");
-        assertThat(match.get("mergedFromViewIds")).isEqualTo(List.of("de-de-gym-math-lk", "de-de-gym-math-gk"));
+        assertThat(match.get("viewId")).isEqualTo("de-de-gym-math-gk-lk");
+        assertThat(match.get("mergedFromViewIds")).isNull();
         @SuppressWarnings("unchecked")
         List<Map<String, Object>> roots = (List<Map<String, Object>>) match.get("rootNodes");
         assertThat(roots).filteredOn(root -> "structure".equals(root.get("kind"))).singleElement().satisfies(root -> {
@@ -395,7 +395,7 @@ class CompositionViewServiceTest {
     }
 
     @Test
-    void findMatchingView_fallsBackFromCombinedCourseProfileToLkSekTwoView() {
+    void findMatchingView_prefersAuthoredCombinedSekTwoView() {
         CompositionViewService service = createService();
 
         Map<String, Object> match = service.findMatchingView(
@@ -406,8 +406,8 @@ class CompositionViewServiceTest {
                         "courseProfile", "GK+LK"));
 
         assertThat(match).isNotNull();
-        assertThat(match.get("viewId")).isEqualTo("merged:de-de-gym-sekii-math-lk+de-de-gym-sekii-math-gk");
-        assertThat(match.get("mergedFromViewIds")).isEqualTo(List.of("de-de-gym-sekii-math-lk", "de-de-gym-sekii-math-gk"));
+        assertThat(match.get("viewId")).isEqualTo("de-de-gym-sekii-math-gk-lk");
+        assertThat(match.get("mergedFromViewIds")).isNull();
     }
 
     @Test
@@ -490,7 +490,7 @@ class CompositionViewServiceTest {
     }
 
     @Test
-    void findMatchingView_mergesHessianSekTwoGkAndLkWithoutDuplicateQuarterStructures() {
+    void findMatchingView_usesAuthoredHessianCourseUnionWithoutDuplicateQuarterStructures() {
         CompositionViewService service = createService();
 
         Map<String, Object> match = service.findMatchingView(
@@ -503,7 +503,7 @@ class CompositionViewServiceTest {
 
         assertThat(match).isNotNull();
         assertThat(match.get("viewId"))
-                .isEqualTo("merged:de-he-gym-sekii-math-lk+de-he-gym-sekii-math-gk");
+                .isEqualTo("de-he-gym-sekii-math-gk-lk");
         @SuppressWarnings("unchecked")
         List<Map<String, Object>> roots = (List<Map<String, Object>>) match.get("rootNodes");
         assertThat(roots).filteredOn(root -> "structure".equals(root.get("kind"))).singleElement().satisfies(root -> {
@@ -522,13 +522,14 @@ class CompositionViewServiceTest {
     }
 
     @Test
-    void findMatchingView_mergesEveryAuthoredExactMathematicsGkLkPair() throws IOException {
+    void findMatchingView_prefersAuthoredCourseUnionsAndOtherwiseMergesExactPairs() throws IOException {
         Path viewDirectory = resolveCurriculaDir()
-                .resolve("DE/Gymnasium/composition-views/mathematik");
+                .resolve("DE/Gymnasium/composition-views");
         ObjectMapper mapper = new ObjectMapper();
         Map<String, List<AuthoredProfileView>> viewsByExactScope = new LinkedHashMap<>();
+        Map<String, String> authoredCombinedViews = new LinkedHashMap<>();
         List<Path> viewPaths;
-        try (var paths = Files.list(viewDirectory)) {
+        try (var paths = Files.walk(viewDirectory)) {
             viewPaths = paths
                     .filter(path -> path.getFileName().toString().endsWith(".view.json"))
                     .sorted()
@@ -540,13 +541,20 @@ class CompositionViewServiceTest {
             @SuppressWarnings("unchecked")
             Map<String, String> scope = (Map<String, String>) document.get("scope");
             String courseProfile = scope.get("courseProfile");
-            if (!"GK".equals(courseProfile) && !"LK".equals(courseProfile)) {
+            if (!"GK".equals(courseProfile)
+                    && !"LK".equals(courseProfile)
+                    && !"GK+LK".equals(courseProfile)) {
                 continue;
             }
             Map<String, String> exactScope = new TreeMap<>(scope);
             exactScope.remove("courseProfile");
             String landscapeId = String.valueOf(document.get("landscapeId"));
             String key = landscapeId + "|" + exactScope;
+            if ("GK+LK".equals(courseProfile)) {
+                assertThat(authoredCombinedViews.put(key, String.valueOf(document.get("viewId"))))
+                        .as(key + " unique authored composite").isNull();
+                continue;
+            }
             viewsByExactScope.computeIfAbsent(key, ignored -> new ArrayList<>())
                     .add(new AuthoredProfileView(
                             landscapeId,
@@ -558,6 +566,7 @@ class CompositionViewServiceTest {
         assertThat(viewsByExactScope).isNotEmpty();
         CompositionViewService service = createService();
         viewsByExactScope.forEach((scopeKey, authoredViews) -> {
+            if (authoredViews.size() != 2) return;
             assertThat(authoredViews)
                     .as(scopeKey + " exact GK/LK pair")
                     .extracting(AuthoredProfileView::courseProfile)
@@ -570,17 +579,24 @@ class CompositionViewServiceTest {
                     requestedScope);
 
             assertThat(match).as(scopeKey + " combined match").isNotNull();
-            assertThat(match.get("mergedFromViewIds"))
-                    .as(scopeKey + " merged sources")
-                    .isInstanceOf(List.class);
-            List<String> sourceViewIds = ((List<?>) match.get("mergedFromViewIds")).stream()
-                    .map(String::valueOf)
-                    .toList();
-            assertThat(sourceViewIds)
-                    .as(scopeKey + " merged sources")
-                    .containsExactlyInAnyOrderElementsOf(authoredViews.stream()
-                            .map(AuthoredProfileView::viewId)
-                            .toList());
+            String authoredCombined = authoredCombinedViews.get(scopeKey);
+            if (authoredCombined != null) {
+                assertThat(match.get("viewId")).as(scopeKey + " authored composite")
+                        .isEqualTo(authoredCombined);
+                assertThat(match).isEqualTo(service.findViewById(authoredCombined));
+            } else {
+                assertThat(match.get("mergedFromViewIds"))
+                        .as(scopeKey + " merged sources")
+                        .isInstanceOf(List.class);
+                List<String> sourceViewIds = ((List<?>) match.get("mergedFromViewIds")).stream()
+                        .map(String::valueOf)
+                        .toList();
+                assertThat(sourceViewIds)
+                        .as(scopeKey + " merged sources")
+                        .containsExactlyInAnyOrderElementsOf(authoredViews.stream()
+                                .map(AuthoredProfileView::viewId)
+                                .toList());
+            }
             @SuppressWarnings("unchecked")
             List<Map<String, Object>> roots = (List<Map<String, Object>>) match.get("rootNodes");
             List<String> goalReferences = new ArrayList<>();
@@ -679,7 +695,7 @@ class CompositionViewServiceTest {
     }
 
     @Test
-    void learnerScopeAcceptsReviewedGenericSekOneViewForCommittedJurisdictionAndDuration() {
+    void learnerScopeAcceptsReviewedBrandenburgSekOneViewForCommittedJurisdictionAndDuration() {
         CompositionViewService service = createService();
 
         assertThat(service.findLearnerScopeView(
@@ -689,7 +705,8 @@ class CompositionViewServiceTest {
                                 "jurisdiction", "DE-BB",
                                 "stage", "SekI",
                                 "durationModel", "G8")))
-                .containsEntry("viewId", "de-de-gym-seki-math");
+                // Source-V3 authors Brandenburg's explicit stage-wide view.
+                .containsEntry("viewId", "de-bb-gym-seki-math");
     }
 
     @Test
@@ -718,7 +735,8 @@ class CompositionViewServiceTest {
                                 "jurisdiction", "DE-BW",
                                 "stage", "SekI",
                                 "durationModel", "G9")))
-                .containsEntry("viewId", "de-bw-gym-seki-math");
+                // Source-V3 preserves the reviewed exact G9 stage selection.
+                .containsEntry("viewId", "de-bw-gym-seki-math-g9");
         assertThat(service.findLearnerScopeView(
                         CANONICAL_MATH_ID,
                         Map.of(
@@ -1666,7 +1684,28 @@ class CompositionViewServiceTest {
     private static CompositionViewService createService() {
         LandscapeProperties properties = new LandscapeProperties();
         properties.setDirectory(resolveCurriculaDir().toString());
-        return new CompositionViewService(properties, new ObjectMapper());
+        return new CompositionViewService(properties, new ObjectMapper(), () -> CanonicalGraphHolder.CHILDREN);
+    }
+
+    private static final class CanonicalGraphHolder {
+        private static final Map<String, List<String>> CHILDREN = load();
+
+        private static Map<String, List<String>> load() {
+            Map<String, List<String>> result = new LinkedHashMap<>();
+            ObjectMapper mapper = new ObjectMapper();
+            try (var files = Files.list(resolveCurriculaDir().resolve("DE/Gymnasium/canonical"))) {
+                for (Path file : files.filter(path -> path.toString().endsWith(".json")).toList()) {
+                    for (var goal : mapper.readTree(file.toFile()).path("goals")) {
+                        List<String> children = new ArrayList<>();
+                        goal.path("contains").forEach(child -> children.add(child.asText()));
+                        result.put(goal.path("id").asText(), List.copyOf(children));
+                    }
+                }
+            } catch (IOException exception) {
+                throw new java.io.UncheckedIOException(exception);
+            }
+            return Map.copyOf(result);
+        }
     }
 
     @SuppressWarnings("unchecked")

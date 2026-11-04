@@ -1,0 +1,1700 @@
+import React, { useEffect, useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
+import {
+  AlertTriangle,
+  ArrowLeft,
+  CheckCircle2,
+  CircleDashed,
+  Gauge,
+  Home,
+  ListChecks,
+  MapPinned,
+  RefreshCw,
+  Search,
+  XCircle,
+} from 'lucide-react'
+import { LanguageToggle } from '../components/LanguageToggle'
+import { useLanguage } from '../contexts/LanguageContext'
+import { MaturityBadge, QualityLegend, QualityStatusBadge } from '../components/CurriculumQualityBadge'
+import { CurriculumDeepQualityProgress } from '../components/CurriculumDeepQualityProgress'
+import { maturityOrder, maturityCopy, type MaturityLevel, type CurriculumQualityProjection } from '../utils/curriculumQualityPresentation'
+import { getCurriculumQualityStatus } from '../utils/curriculumQualityTrafficLight'
+
+type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
+
+interface RuleResult {
+  id: string
+  status: RuleStatus
+  summary: string
+  metrics?: Record<string, number>
+  details?: string[]
+}
+
+interface RuleCatalogEntry {
+  id: string
+  label: string
+  category: string
+  maturityTarget: MaturityLevel
+  description: string
+}
+
+interface ScopeStatus {
+  scopeId: string
+  label: string
+  maturity: MaturityLevel
+  selectedAtomicGoals: number
+  rules: RuleResult[]
+}
+
+type JurisdictionCoverageStatus = 'covered' | 'partial' | 'error' | 'none'
+
+interface JurisdictionCoverageEntry {
+  jurisdiction: string
+  labelDe: string
+  labelEn: string
+  visibleGoals: number
+  visibleAtomicGoals: number
+  visibleClusterGoals: number
+  viewAtomicGoals?: number
+  sourceBackedAtomicGoals: number
+  surrogateBackedAtomicGoals: number
+  unsupportedAssignedAtomicGoals: number
+  partialSourceLinkedAtomicGoals: number
+  sourceAtomicGoals?: number
+  sourceMappedToViewAtomicGoals?: number
+  unmappedSourceAtomicGoals?: number
+  sourceExtractedGoals?: number
+  sourceUnregisteredGoals?: number
+  sourceExtractedAtomicGoals?: number
+  sourceUnregisteredAtomicGoals?: number
+  sourceOriginalGoals?: number
+  sourceFullyCoveredOriginalGoals?: number
+  sourcePartiallyCoveredOriginalGoals?: number
+  sourceUncoveredOriginalGoals?: number
+  errors: number
+  warnings: number
+  diagnosticPartialOnlyWarnings?: number
+  atomicCoveragePercent: number
+  sourceBackedCoveragePercent: number
+  sourceReverseCoveragePercent?: number
+  status: JurisdictionCoverageStatus
+}
+
+interface JurisdictionCoverage {
+  dimension: 'jurisdiction'
+  totalJurisdictions: number
+  totalAtomicGoals: number
+  rawAtomicGoals?: number
+  coveredJurisdictions: number
+  sourceBackedJurisdictions: number
+  sourceCompleteJurisdictions?: number
+  cleanJurisdictions: number
+  partialJurisdictions: number
+  errorJurisdictions: number
+  maxVisibleAtomicGoals: number
+  maxSourceBackedAtomicGoals: number
+  maxAtomicCoveragePercent: number
+  maxSourceBackedCoveragePercent: number
+  unsupportedAssignedAtomicGoals: number
+  surrogateBackedAtomicGoals: number
+  partialSourceLinkedAtomicGoals: number
+  sourceAtomicGoals?: number
+  sourceMappedToViewAtomicGoals?: number
+  unmappedSourceAtomicGoals?: number
+  sourceExtractedGoals?: number
+  sourceUnregisteredGoals?: number
+  sourceExtractedAtomicGoals?: number
+  sourceUnregisteredAtomicGoals?: number
+  sourceOriginalGoals?: number
+  sourceFullyCoveredOriginalGoals?: number
+  sourcePartiallyCoveredOriginalGoals?: number
+  sourceUncoveredOriginalGoals?: number
+  jurisdictions: JurisdictionCoverageEntry[]
+}
+
+type MappingPipelineStepState = 'complete' | 'incomplete' | 'blocked'
+
+interface MappingPipelineCheck {
+  id: string
+  label: string
+  passed: boolean
+  details: string
+}
+
+interface MappingPipelineStep {
+  id: string
+  label: string
+  status: MappingPipelineStepState
+  dependsOn: string[]
+  checks: MappingPipelineCheck[]
+}
+
+interface DurationProjectionAudit {
+  evidenceLinks: number
+  evidenceByDuration?: Record<string, number>
+  canonicalGoalsWithDurationEvidence?: number
+  canonicalGoalsWithDifferentG8G9Evidence?: number
+  coveredEvidenceLinks: number
+  uncoveredEvidenceLinks: number
+}
+
+interface MappingPipelineSourceDocument {
+  key?: string
+  title: string
+  path?: string
+  url?: string
+  official?: boolean
+  available: boolean
+  hasUsableUrl?: boolean
+}
+
+interface MappingPipelineSourceStatus {
+  sourceLandscapeId: string
+  title: string
+  jurisdiction: string
+  path: string
+  sourceKind?: 'source-extraction' | 'legacy-snapshot' | 'missing-extraction'
+  sourceDocuments?: MappingPipelineSourceDocument[]
+  currentStep: string
+  completedSteps: number
+  totalSteps: number
+  sourceGoals: number
+  passages: number
+  mappedSourceGoals?: number
+  unmappedSourceGoals?: number
+  extraMappedGoals?: number
+  exactMappings?: number
+  partialMappings?: number
+  otherMappings?: number
+  durationProjectionAudit?: DurationProjectionAudit
+  steps: MappingPipelineStep[]
+}
+
+interface MappingPipelineStatus {
+  totalSources: number
+  completeSources: number
+  incompleteSources: number
+  blockedSources: number
+  maxCompletedSteps: number
+  totalSteps: number
+  currentStep: string
+  sources: MappingPipelineSourceStatus[]
+}
+
+interface CurriculumStatus {
+  landscapeId: string
+  title: string
+  subject?: string
+  frameworkId?: string
+  path: string
+  maturity: MaturityLevel
+  goals: number
+  atomicGoals: number
+  clusterGoals: number
+  jurisdictionCoverage?: JurisdictionCoverage
+  mappingPipeline?: MappingPipelineStatus
+  scopes: ScopeStatus[]
+  rules: RuleResult[]
+}
+
+interface QualityStatusDocument {
+  schemaVersion: 1
+  rulesVersion: string
+  generatedAt: string
+  generatedBy: string
+  ruleCatalog: RuleCatalogEntry[]
+  summary: {
+    curricula: number
+    maturity: Record<MaturityLevel, number>
+    ruleStatus: Record<RuleStatus, number>
+  }
+  curricula: CurriculumStatus[]
+}
+
+interface QualityStatusResponse {
+  path: string
+  status: QualityStatusDocument
+}
+
+interface PublicQualityCurriculum extends CurriculumQualityProjection {
+  curriculumId: string
+  subjectQuality?: Array<CurriculumQualityProjection & { landscapeId?: string }>
+}
+
+const COPY = {
+  de: {
+    title: 'Curriculum Quality',
+    subtitle: 'Statussicht auf generierte Qualitäts-Snapshots für kanonische Curricula.',
+    badge: 'QA Dashboard',
+    workbench: 'Workbench',
+    home: 'Startseite',
+    refresh: 'Aktualisieren',
+    search: 'Curriculum suchen',
+    maturity: 'Reifegrad',
+    maturityLegendTitle: 'Reifegrade',
+    maturityLegend: maturityCopy.de.legend,
+    all: 'Alle',
+    generated: 'Generiert',
+    source: 'Statusdatei',
+    curricula: 'Curricula',
+    warnings: 'Warnungen',
+    failures: 'Fehler',
+    notConfigured: 'Nicht konfiguriert',
+    goals: 'Ziele',
+    atomic: 'Atomar',
+    sourceBacked: 'belegt',
+    surrogateBacked: 'Ersatzbeleg',
+    unsupported: 'ohne Lehrplanbeleg',
+    partialSource: 'partiell',
+    diagnosticPartialOnly: '1:n-Zuordnungen',
+    visibleAssigned: 'sichtbar',
+    sourceReverse: 'Lehrplan -> Sicht',
+    unmappedSource: 'inhaltlich offen',
+    sourceOriginal: 'Originalziele',
+    sourceIngestionComplete: 'Originalziele vollständig erfasst',
+    sourceExtractionMissing: 'Source-Extraction fehlt',
+    sourceInventoryEmpty: 'kein Source-Inventar',
+    sourceOriginalRegistered: 'Originalziele registriert',
+    sourceOriginalCovered: 'Originalziele voll abgedeckt',
+    sourceOriginalExtracted: 'Source-Ziele extrahiert',
+    sourceExtractedGoals: 'Source-Ziele lesbar',
+    sourceUnregisteredGoals: 'Snapshot-Ziele unregistriert',
+    sourceExtracted: 'Source-Atome extrahiert',
+    sourceUnregistered: 'Source-Atome unregistriert',
+    yes: 'ja',
+    no: 'nein',
+    rawAtomic: 'Roh-Atomar',
+    deViewAtomic: 'DE-Quellen-Atome',
+    jurisdictionCoverage: 'Bundesland-Sichten',
+    jurisdictionCoverageDeferred: 'Bundesland-Abdeckung ausgeblendet',
+    jurisdictionCoverageDeferredDetail: 'Erst sinnvoll, wenn alle Quellen dieselbe Mapping-Stufe haben. Aktueller TODO ist die Umstellung der übrigen Quellen auf Passage-Extraction.',
+    mappingPipeline: 'Passage-Extraction',
+    memoryReview: 'Memory-Review',
+    nextMaturityGate: 'Nächster Meilenstein',
+    blockedBy: 'Blockiert durch',
+    openBlockers: 'offen',
+    gateClearShort: 'bereit',
+    gateNoNext: 'M7 erreicht',
+    gateHint: 'Der Reifegrad steigt erst, wenn alle Regeln der nächsten Stufe bestanden sind. Grüne Regeln aus späteren Stufen zählen erst nach den offenen Vorstufen.',
+    gateReady: 'Für die nächste Stufe ist kein offener Blocker sichtbar.',
+    pipelineProgress: 'Passage-Extraction bereit',
+    sourceExtractionProgress: 'Passage-Extraktion',
+    legacySnapshotProgress: 'Snapshot-Diagnosen',
+    missingExtractionProgress: 'keine Extraction',
+    currentPipelineStep: 'Nächster offener Schritt',
+    originalSourcesProvided: 'Originalquellen verlinkt',
+    originalSourcesMissing: 'Originalquellen-Link fehlt',
+    originalSources: 'Originalquellen',
+    passages: 'Passagen',
+    sourceGoals: 'Source-Ziele',
+    sourceKindExtraction: 'Passage-Extraktion',
+    sourceKindLegacySnapshot: 'Snapshot-Diagnose',
+    sourceKindMissing: 'keine Extraction',
+    noPassageEvidence: 'nicht pipelinefähig: keine Passage-Extraktion',
+    mappingInventory: 'Source-Inventar gemappt',
+    exactMappings: '1:1-Zuordnungen',
+    partialMappings: '1:n-Zuordnungen',
+    otherMappings: 'sonstige',
+    qualitySeals: 'Qualitätssiegel',
+    inventoryCompleteSeal: 'Source-Inventar vollständig',
+    passageBackedSeal: 'Passagenbelegt',
+    exactMappingSeal: 'Zuordnungsform geprüft',
+    durationProjectionSeal: 'G8/G9-Projektion geprüft',
+    nonExactMappingsNote: 'Alle Source-Ziele sind inhaltlich abgedeckt; 1:1 und 1:n beschreiben nur die Zuordnungsform, nicht eine offene Lücke.',
+    durationProjection: 'G8/G9-Projektion',
+    durationProjectionCovered: 'Belege abgedeckt',
+    durationProjectionEvidence: 'Lehrplanbelege',
+    durationProjectionDifferences: 'abweichende G8/G9-Ziele',
+    durationProjectionOpen: 'offen',
+    complete: 'abgeschlossen',
+    incomplete: 'offen',
+    blocked: 'blockiert',
+    jurisdictions: 'Lehrplan -> Sicht komplett',
+    cleanJurisdictions: 'Vollständig',
+    partialJurisdictions: 'Mit offenen Hinweisen',
+    errorJurisdictions: 'Mit TODO',
+    maxAtomicCoverage: 'Max. belegte Atomabdeckung',
+    routeScopes: 'QA-Scopes',
+    rules: 'Regeln',
+    details: 'Details',
+    reviewGates: {
+      title: 'M5-M7-Review-Gates',
+      hint: 'CQR-301, CQR-401 und CQR-501 tragen die Kern-QS M5; CQR-302 ergänzt den Memory-Layer M6. CQR-303 prüft für M7 den strengen Abschluss aller aktuellen Ziele in den fünf Gates D, P, A, M und V. Menschliche Erprobung ist ein eigener Nachweis.',
+      total: 'gesamt',
+      configured: 'bewertet',
+      passed: 'bestanden',
+      open: 'offen',
+    },
+    memoryTrace: {
+      title: 'Memory-Review',
+      auditReport: 'Audit-Report',
+      notConfigured: 'M6 offen',
+      goalDecisions: 'Zielentscheidungen',
+      requiredGoals: 'Memory-Ziele',
+      noMemoryNeeded: 'ohne Memory',
+      required: 'erforderlich',
+      activeCards: 'aktive Karten',
+      keptWithOriginTraces: 'mit Herkunftsspur behalten',
+      openCardIssues: 'offene Kartenpunkte',
+      tracedDecks: 'Decks getraced',
+      noOpenIssues: 'Keine offenen Karten- oder Herkunftspunkte.',
+      openIssues: 'Offene Punkte in Karten- oder Herkunftsprüfung.',
+    },
+    noData: 'Kein Status geladen.',
+    generateHint: 'Status mit npm run quality:curriculum-status erzeugen.',
+    labels: {
+      pass: 'Bestanden',
+      warn: 'Warnung',
+      fail: 'Fehler',
+      not_configured: 'Nicht konfiguriert',
+    },
+  },
+  en: {
+    title: 'Curriculum Quality',
+    subtitle: 'Status view over generated quality snapshots for canonical curricula.',
+    badge: 'QA Dashboard',
+    workbench: 'Workbench',
+    home: 'Home',
+    refresh: 'Refresh',
+    search: 'Search curriculum',
+    maturity: 'Maturity',
+    maturityLegendTitle: 'Maturity levels',
+    maturityLegend: maturityCopy.en.legend,
+    all: 'All',
+    generated: 'Generated',
+    source: 'Status file',
+    curricula: 'Curricula',
+    warnings: 'Warnings',
+    failures: 'Failures',
+    notConfigured: 'Not configured',
+    goals: 'Goals',
+    atomic: 'Atomic',
+    sourceBacked: 'source-backed',
+    surrogateBacked: 'surrogate',
+    unsupported: 'without curriculum evidence',
+    partialSource: 'partial',
+    diagnosticPartialOnly: '1:n mappings',
+    visibleAssigned: 'visible',
+    sourceReverse: 'source -> view',
+    unmappedSource: 'content open',
+    sourceOriginal: 'source originals',
+    sourceIngestionComplete: 'source originals fully captured',
+    sourceExtractionMissing: 'source extraction missing',
+    sourceInventoryEmpty: 'no source inventory',
+    sourceOriginalRegistered: 'source originals registered',
+    sourceOriginalCovered: 'source originals fully covered',
+    sourceOriginalExtracted: 'source goals extracted',
+    sourceExtractedGoals: 'source goals readable',
+    sourceUnregisteredGoals: 'snapshot goals unregistered',
+    sourceExtracted: 'extracted source atoms',
+    sourceUnregistered: 'unregistered source atoms',
+    yes: 'yes',
+    no: 'no',
+    rawAtomic: 'Raw atomic',
+    deViewAtomic: 'DE source-view atoms',
+    jurisdictionCoverage: 'Jurisdiction views',
+    jurisdictionCoverageDeferred: 'Jurisdiction coverage hidden',
+    jurisdictionCoverageDeferredDetail: 'Useful only once all sources are on the same mapping stage. The current TODO is moving the remaining sources to passage extraction.',
+    mappingPipeline: 'Passage extraction',
+    memoryReview: 'Memory review',
+    nextMaturityGate: 'Next milestone',
+    blockedBy: 'Blocked by',
+    openBlockers: 'open',
+    gateClearShort: 'ready',
+    gateNoNext: 'M7 reached',
+    gateHint: 'Maturity only advances when every rule in the next level passes. Green rules from later levels count after open earlier gates are closed.',
+    gateReady: 'No open blocker is visible for the next level.',
+    pipelineProgress: 'passage extraction ready',
+    sourceExtractionProgress: 'Passage extraction',
+    legacySnapshotProgress: 'Snapshot diagnostics',
+    missingExtractionProgress: 'no extraction',
+    currentPipelineStep: 'Next open step',
+    originalSourcesProvided: 'Original sources linked',
+    originalSourcesMissing: 'Original source link missing',
+    originalSources: 'Original sources',
+    passages: 'Passages',
+    sourceGoals: 'Source goals',
+    sourceKindExtraction: 'Passage extraction',
+    sourceKindLegacySnapshot: 'Snapshot diagnostic',
+    sourceKindMissing: 'no extraction',
+    noPassageEvidence: 'not pipeline-capable: no passage extraction',
+    mappingInventory: 'source inventory mapped',
+    exactMappings: '1:1 mappings',
+    partialMappings: '1:n mappings',
+    otherMappings: 'other',
+    qualitySeals: 'quality seals',
+    inventoryCompleteSeal: 'source inventory complete',
+    passageBackedSeal: 'passage-backed',
+    exactMappingSeal: 'mapping shape reviewed',
+    durationProjectionSeal: 'G8/G9 projection reviewed',
+    nonExactMappingsNote: 'All source goals are content-covered; 1:1 and 1:n describe mapping shape, not an open gap.',
+    durationProjection: 'G8/G9 projection',
+    durationProjectionCovered: 'evidence covered',
+    durationProjectionEvidence: 'curriculum evidence',
+    durationProjectionDifferences: 'different G8/G9 goals',
+    durationProjectionOpen: 'open',
+    complete: 'complete',
+    incomplete: 'open',
+    blocked: 'blocked',
+    jurisdictions: 'source -> view complete',
+    cleanJurisdictions: 'Complete',
+    partialJurisdictions: 'With open findings',
+    errorJurisdictions: 'With TODO',
+    maxAtomicCoverage: 'Max source-backed atomic coverage',
+    routeScopes: 'QA scopes',
+    rules: 'Rules',
+    details: 'Details',
+    reviewGates: {
+      title: 'M5-M7 review gates',
+      hint: 'CQR-301, CQR-401 and CQR-501 support core QA M5; CQR-302 adds the M6 memory layer. For M7, CQR-303 checks strict completion of every current goal across gates D, P, A, M and V. Human trial is separate evidence.',
+      total: 'total',
+      configured: 'evaluated',
+      passed: 'passed',
+      open: 'open',
+    },
+    memoryTrace: {
+      title: 'Memory review',
+      auditReport: 'Audit report',
+      notConfigured: 'M6 open',
+      goalDecisions: 'goal decisions',
+      requiredGoals: 'memory goals',
+      noMemoryNeeded: 'no memory',
+      required: 'required',
+      activeCards: 'active cards',
+      keptWithOriginTraces: 'kept with origin traces',
+      openCardIssues: 'open card issues',
+      tracedDecks: 'decks traced',
+      noOpenIssues: 'No open card or origin-trace issues.',
+      openIssues: 'Open issues in card or origin-trace review.',
+    },
+    noData: 'No status loaded.',
+    generateHint: 'Generate status with npm run quality:curriculum-status.',
+    labels: {
+      pass: 'Passed',
+      warn: 'Warning',
+      fail: 'Failed',
+      not_configured: 'Not configured',
+    },
+  },
+} as const
+
+const statusIcon: Record<RuleStatus, React.ComponentType<{ size?: number; className?: string }>> = {
+  pass: CheckCircle2,
+  warn: AlertTriangle,
+  fail: XCircle,
+  not_configured: CircleDashed,
+}
+
+const statusClass: Record<RuleStatus, string> = {
+  pass: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
+  warn: 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300',
+  fail: 'border-red-200 bg-red-50 text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-300',
+  not_configured: 'border-slate-200 bg-slate-100 text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300',
+}
+
+const maturityLevels: Array<'all' | MaturityLevel> = ['all', ...maturityOrder]
+const reviewGateRuleIds = ['CQR-301', 'CQR-401', 'CQR-501', 'CQR-302', 'CQR-303']
+
+const coverageStatusClass: Record<JurisdictionCoverageStatus, string> = {
+  covered: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
+  partial: 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300',
+  error: 'border-red-200 bg-red-50 text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-300',
+  none: 'border-slate-200 bg-slate-100 text-slate-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400',
+}
+
+const pipelineStatusClass: Record<MappingPipelineStepState, string> = {
+  complete: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
+  incomplete: 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300',
+  blocked: 'border-red-200 bg-red-50 text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-300',
+}
+
+const pipelineSourceKindCounts = (pipeline: MappingPipelineStatus) => {
+  const counts = {
+    sourceExtractionReady: 0,
+    sourceExtractionComplete: 0,
+    sourceExtractionTotal: 0,
+    legacySnapshotComplete: 0,
+    legacySnapshotTotal: 0,
+    missingExtractionComplete: 0,
+    missingExtractionTotal: 0,
+  }
+
+  pipeline.sources.forEach((source) => {
+    const isComplete = source.completedSteps === source.totalSteps
+    if (source.sourceKind === 'source-extraction') {
+      counts.sourceExtractionTotal += 1
+      const hasReadyPassageExtraction = source.steps.some((step) => step.id === 'MAPPING-1' && step.status === 'complete')
+      if (hasReadyPassageExtraction) counts.sourceExtractionReady += 1
+      if (isComplete) counts.sourceExtractionComplete += 1
+    } else if (source.sourceKind === 'legacy-snapshot') {
+      counts.legacySnapshotTotal += 1
+      if (isComplete) counts.legacySnapshotComplete += 1
+    } else {
+      counts.missingExtractionTotal += 1
+      if (isComplete) counts.missingExtractionComplete += 1
+    }
+  })
+
+  return counts
+}
+
+function collectRules(curriculum: CurriculumStatus): RuleResult[] {
+  return [
+    ...curriculum.rules,
+    ...curriculum.scopes.flatMap((scope) => scope.rules),
+  ]
+}
+
+function countStatus(curriculum: CurriculumStatus, status: RuleStatus): number {
+  return collectRules(curriculum).filter((rule) => rule.status === status).length
+}
+
+function memoryReviewRule(curriculum: CurriculumStatus): RuleResult | null {
+  return collectRules(curriculum).find((rule) => rule.id === 'CQR-302') ?? null
+}
+
+function memoryReviewOpenIssues(rule: RuleResult): number {
+  return [
+    'needsDeveloperReview',
+    'missing',
+    'stale',
+    'obsolete',
+    'duplicateRecords',
+    'invalidRecords',
+    'untracedMemoryRequiredGoals',
+    'cardsMarkedRemove',
+    'cardNeedsDeveloperReview',
+    'missingCardReviews',
+    'staleCardReviews',
+    'obsoleteCardReviews',
+    'duplicateCardReviewRecords',
+    'invalidCardReviewRecords',
+    'untracedMemoryGoals',
+  ].reduce((sum, key) => sum + metricValue(rule, key), 0)
+}
+
+function qualityStatusFileHref(repoPath: string): string {
+  return `/__quality-dashboard/file?path=${encodeURIComponent(repoPath)}`
+}
+
+function memoryAuditReportPath(rule: RuleResult): string | null {
+  for (const detail of rule.details ?? []) {
+    const match = detail.match(/\baudit report (docs\/qa-ci\/status\/[^\s]+\.md)\b/)
+    if (match?.[1]) return match[1]
+  }
+  return null
+}
+
+function reviewGateStats(status: QualityStatusDocument) {
+  const catalogById = new Map(status.ruleCatalog.map((rule) => [rule.id, rule]))
+  const allRules = status.curricula.flatMap(collectRules)
+
+  return reviewGateRuleIds.map((ruleId) => {
+    const catalogEntry = catalogById.get(ruleId)
+    const rules = allRules.filter((rule) => rule.id === ruleId)
+    const counts: Record<RuleStatus, number> = {
+      pass: 0,
+      warn: 0,
+      fail: 0,
+      not_configured: 0,
+    }
+    rules.forEach((rule) => {
+      counts[rule.status] += 1
+    })
+    const open = counts.warn + counts.fail + counts.not_configured
+    return {
+      id: ruleId,
+      label: catalogEntry?.label ?? ruleId,
+      target: catalogEntry?.maturityTarget ?? 'M5',
+      total: rules.length,
+      evaluated: rules.length - counts.not_configured,
+      pass: counts.pass,
+      open,
+      status: rules.length > 0 && open === 0 ? 'pass' as const : open > 0 ? 'warn' as const : 'not_configured' as const,
+    }
+  })
+}
+
+function getMaturityGate(curriculum: CurriculumStatus, ruleCatalog: RuleCatalogEntry[]) {
+  const currentIndex = maturityOrder.indexOf(curriculum.maturity)
+  if (currentIndex < 0 || currentIndex >= maturityOrder.length - 1) return null
+
+  const catalogById = new Map(ruleCatalog.map((rule) => [rule.id, rule]))
+  const ruleResults = collectRules(curriculum)
+
+  for (let index = currentIndex + 1; index < maturityOrder.length; index += 1) {
+    const nextLevel = maturityOrder[index]
+    const blockers = ruleResults.filter((rule) => {
+      const catalogEntry = catalogById.get(rule.id)
+      return catalogEntry?.maturityTarget === nextLevel && rule.status !== 'pass'
+    })
+
+    if (blockers.length > 0 || index === currentIndex + 1) {
+      return { nextLevel, blockers }
+    }
+  }
+
+  return null
+}
+
+function formatDate(value: string, language: 'de' | 'en'): string {
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime())) return value
+  return new Intl.DateTimeFormat(language === 'de' ? 'de-DE' : 'en-US', {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+  }).format(date)
+}
+
+const StatusBadge: React.FC<{ status: RuleStatus; label: string }> = ({ status, label }) => {
+  const Icon = statusIcon[status]
+  return (
+    <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold ${statusClass[status]}`}>
+      <Icon size={14} />
+      <span>{label}</span>
+    </span>
+  )
+}
+
+
+type DashboardCopy = (typeof COPY)[keyof typeof COPY]
+
+function metricValue(rule: RuleResult, key: string): number {
+  return rule.metrics?.[key] ?? 0
+}
+
+function percent(value: number, total: number): number {
+  return total > 0 ? Math.round((value / total) * 100) : 0
+}
+
+export const CurriculumQualityDashboardView: React.FC = () => {
+  const { language } = useLanguage()
+  const copy = COPY[language]
+  const [payload, setPayload] = useState<QualityStatusResponse | null>(null)
+  const [publicQuality, setPublicQuality] = useState<Map<string, CurriculumQualityProjection>>(new Map())
+  const [error, setError] = useState<string | null>(null)
+  const [loading, setLoading] = useState(false)
+  const [query, setQuery] = useState('')
+  const [maturityFilter, setMaturityFilter] = useState<'all' | MaturityLevel>('all')
+  const [selectedId, setSelectedId] = useState<string | null>(null)
+
+  const loadStatus = async () => {
+    setLoading(true)
+    setError(null)
+    setPublicQuality(new Map())
+    try {
+      const [snapshotResult, publicResult] = await Promise.allSettled([
+        fetch('/__quality-dashboard/status'),
+        fetch('/api/ui/curricula').then(async (response) => {
+          if (!response.ok) throw new Error('Public quality status unavailable')
+          return await response.json() as { curricula?: PublicQualityCurriculum[] }
+        }),
+      ])
+      if (snapshotResult.status === 'rejected') throw snapshotResult.reason
+      const response = snapshotResult.value
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({})) as { error?: string; command?: string }
+        throw new Error(body.command ? `${body.error ?? response.statusText} ${body.command}` : body.error ?? response.statusText)
+      }
+      const nextPayload = await response.json() as QualityStatusResponse
+      setPayload(nextPayload)
+      if (publicResult.status === 'fulfilled' && Array.isArray(publicResult.value.curricula)) {
+        const byLandscape = new Map<string, CurriculumQualityProjection>()
+        for (const curriculum of publicResult.value.curricula) {
+          byLandscape.set(curriculum.curriculumId, curriculum)
+          for (const subject of curriculum.subjectQuality ?? []) {
+            if (subject.landscapeId) byLandscape.set(subject.landscapeId, subject)
+          }
+        }
+        setPublicQuality(byLandscape)
+      }
+      setSelectedId((current) => current ?? nextPayload.status.curricula[0]?.landscapeId ?? null)
+    } catch (nextError) {
+      setError(nextError instanceof Error ? nextError.message : String(nextError))
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    void loadStatus()
+  }, [])
+
+  const filteredCurricula = useMemo(() => {
+    const normalizedQuery = query.trim().toLocaleLowerCase(language === 'de' ? 'de-DE' : 'en-US')
+    return (payload?.status.curricula ?? []).filter((curriculum) => {
+      const matchesQuery = !normalizedQuery
+        || curriculum.title.toLocaleLowerCase(language === 'de' ? 'de-DE' : 'en-US').includes(normalizedQuery)
+        || curriculum.path.toLocaleLowerCase('en-US').includes(normalizedQuery)
+      const matchesMaturity = maturityFilter === 'all' || curriculum.maturity === maturityFilter
+      return matchesQuery && matchesMaturity
+    })
+  }, [language, maturityFilter, payload, query])
+
+  const selectedCurriculum = useMemo(() => {
+    if (!payload) return null
+    return payload.status.curricula.find((curriculum) => curriculum.landscapeId === selectedId)
+      ?? filteredCurricula[0]
+      ?? payload.status.curricula[0]
+      ?? null
+  }, [filteredCurricula, payload, selectedId])
+  const selectedPipelineCounts = selectedCurriculum?.mappingPipeline
+    ? pipelineSourceKindCounts(selectedCurriculum.mappingPipeline)
+    : null
+  const selectedMappingSourcesTotal = selectedCurriculum?.mappingPipeline?.totalSources ?? 0
+  const selectedPassageExtractionReady = selectedPipelineCounts?.sourceExtractionReady ?? 0
+  const selectedJurisdictionCoverageReady = !selectedCurriculum?.mappingPipeline
+    || (selectedMappingSourcesTotal > 0 && selectedPassageExtractionReady === selectedMappingSourcesTotal)
+  const selectedMaturityGate = useMemo(() => {
+    if (!payload || !selectedCurriculum) return null
+    return getMaturityGate(selectedCurriculum, payload.status.ruleCatalog)
+  }, [payload, selectedCurriculum])
+  const selectedMemoryReviewRule = selectedCurriculum ? memoryReviewRule(selectedCurriculum) : null
+  const gateStats = useMemo(() => payload ? reviewGateStats(payload.status) : [], [payload])
+
+  const summary = payload?.status.summary
+  const pipelineStatusLabel = (status: MappingPipelineStepState) => ({
+    complete: copy.complete,
+    incomplete: copy.incomplete,
+    blocked: copy.blocked,
+  }[status])
+
+  return (
+    <div className="min-h-screen bg-chat-bg p-4 text-text-primary md:p-6">
+      <div className="mx-auto flex max-w-[1500px] flex-col gap-4">
+        <header className="rounded-2xl border border-border-color bg-white/70 p-4 backdrop-blur-sm dark:bg-slate-900/70 md:p-6">
+          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+            <div className="max-w-3xl">
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-sky-700 dark:border-sky-900/50 dark:bg-sky-950/30 dark:text-sky-300">
+                <Gauge size={14} />
+                <span>{copy.badge}</span>
+              </div>
+              <h1 className="text-3xl font-bold text-sky-600 dark:text-sky-400">{copy.title}</h1>
+              <p className="mt-2 text-sm text-text-secondary md:text-base">{copy.subtitle}</p>
+              {payload ? (
+                <div className="mt-3 flex flex-wrap gap-2 text-xs text-text-secondary">
+                  <span>{copy.generated}: {formatDate(payload.status.generatedAt, language)}</span>
+                  <span>{copy.source}: {payload.path}</span>
+                </div>
+              ) : null}
+              <div className="mt-4"><QualityLegend language={language} /></div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2 self-start">
+              <button
+                type="button"
+                onClick={() => void loadStatus()}
+                className="inline-flex items-center gap-2 rounded-lg border border-border-color px-3 py-2 text-sm font-semibold transition-colors hover:bg-slate-100 disabled:opacity-60 dark:hover:bg-slate-800"
+                disabled={loading}
+              >
+                <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
+                <span>{copy.refresh}</span>
+              </button>
+              <Link
+                to="/workbench"
+                className="inline-flex items-center gap-2 rounded-lg border border-border-color px-3 py-2 text-sm font-semibold transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
+              >
+                <ArrowLeft size={16} />
+                <span>{copy.workbench}</span>
+              </Link>
+              <Link
+                to="/"
+                className="inline-flex items-center gap-2 rounded-lg border border-border-color px-3 py-2 text-sm font-semibold transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
+              >
+                <Home size={16} />
+                <span>{copy.home}</span>
+              </Link>
+              <LanguageToggle />
+            </div>
+          </div>
+        </header>
+
+        {error ? (
+          <section className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-200">
+            <p>{error}</p>
+            <p className="mt-1 font-mono text-xs">{copy.generateHint}</p>
+          </section>
+        ) : null}
+
+        {summary ? (
+          <section className="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-[repeat(12,minmax(0,1fr))]">
+            <div className="rounded-2xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/70">
+              <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.curricula}</div>
+              <div className="mt-2 text-2xl font-bold">{summary.curricula}</div>
+            </div>
+            <div className="rounded-2xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/70">
+              <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.warnings}</div>
+              <div className="mt-2 text-2xl font-bold text-amber-600 dark:text-amber-300">{summary.ruleStatus.warn}</div>
+            </div>
+            <div className="rounded-2xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/70">
+              <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.failures}</div>
+              <div className="mt-2 text-2xl font-bold text-red-600 dark:text-red-300">{summary.ruleStatus.fail}</div>
+            </div>
+            <div className="rounded-2xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/70">
+              <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.notConfigured}</div>
+              <div className="mt-2 text-2xl font-bold text-slate-600 dark:text-slate-300">{summary.ruleStatus.not_configured}</div>
+            </div>
+            {maturityOrder.map((level) => (
+              <div key={level} className="rounded-2xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/70">
+                <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{level}</div>
+                <div className="mt-2 text-2xl font-bold">{summary.maturity[level] ?? 0}</div>
+              </div>
+            ))}
+          </section>
+        ) : null}
+
+        {gateStats.length > 0 ? (
+          <section className="rounded-2xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/70 md:p-5">
+            <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+              <div>
+                <h2 className="text-sm font-semibold uppercase tracking-wide text-text-secondary">{copy.reviewGates.title}</h2>
+                <p className="mt-1 max-w-3xl text-xs text-text-secondary">{copy.reviewGates.hint}</p>
+              </div>
+            </div>
+            <div className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
+              {gateStats.map((gate) => (
+                <div
+                  key={gate.id}
+                  className={`rounded-xl border p-3 ${
+                    gate.status === 'pass'
+                      ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300'
+                      : gate.status === 'warn'
+                        ? 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300'
+                        : 'border-slate-200 bg-slate-100 text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300'
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2 font-mono text-xs font-semibold">
+                        <span>{gate.id}</span>
+                        <span className="rounded-full border border-current/20 px-1.5 py-0 text-[10px]">{gate.target}</span>
+                      </div>
+                      <div className="mt-1 truncate text-sm font-semibold" title={gate.label}>{gate.label}</div>
+                    </div>
+                    <span className="shrink-0 rounded-full border border-current/20 px-2 py-0.5 text-xs font-semibold tabular-nums">
+                      {gate.pass}/{gate.total}
+                    </span>
+                  </div>
+                  <div className="mt-2 flex flex-wrap gap-2 text-xs">
+                    <span>{gate.total} {copy.reviewGates.total}</span>
+                    <span>{gate.evaluated} {copy.reviewGates.configured}</span>
+                    <span>{gate.pass} {copy.reviewGates.passed}</span>
+                    <span>{gate.open} {copy.reviewGates.open}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        <section className="grid grid-cols-1 gap-4 xl:grid-cols-[1.45fr_1fr]">
+          <div className="rounded-2xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/70 md:p-5">
+            <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+              <div className="flex min-w-0 items-center gap-2 rounded-lg border border-border-color px-3 py-2">
+                <Search size={16} className="shrink-0 text-text-secondary" />
+                <input
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder={copy.search}
+                  className="min-w-0 flex-1 bg-transparent text-sm outline-none"
+                />
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {maturityLevels.map((level) => (
+                  <button
+                    key={level}
+                    type="button"
+                    onClick={() => setMaturityFilter(level)}
+                    className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${
+                      maturityFilter === level
+                        ? 'border-sky-400 bg-sky-50 text-sky-700 dark:border-sky-700 dark:bg-sky-950/40 dark:text-sky-300'
+                        : 'border-border-color text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-800'
+                    }`}
+                  >
+                    {level === 'all' ? copy.all : level}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[1200px] text-left text-sm">
+                <thead className="border-b border-border-color text-xs uppercase tracking-wide text-text-secondary">
+                  <tr>
+                    <th className="py-2 pr-3">{copy.curricula}</th>
+                    <th className="py-2 pr-3">{copy.maturity}</th>
+                    <th className="py-2 pr-3">{copy.nextMaturityGate}</th>
+                    <th className="py-2 pr-3 text-right">{copy.goals}</th>
+                    <th className="py-2 pr-3 text-right">{copy.atomic}</th>
+                    <th className="py-2 pr-3 text-right">{copy.memoryReview}</th>
+                    <th className="py-2 pr-3 text-right">{copy.mappingPipeline}</th>
+                    <th className="py-2 pr-3 text-right">{copy.jurisdictions}</th>
+                    <th className="py-2 pr-3 text-right">{copy.routeScopes}</th>
+                    <th className="py-2 pr-3 text-right">{copy.warnings}</th>
+                    <th className="py-2 text-right">{copy.failures}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredCurricula.map((curriculum) => {
+                    const rowMaturityGate = payload ? getMaturityGate(curriculum, payload.status.ruleCatalog) : null
+                    const blockerIds = rowMaturityGate?.blockers.map((rule) => rule.id) ?? []
+                    const visibleBlockerIds = blockerIds.slice(0, 3)
+                    const rowMemoryReviewRule = memoryReviewRule(curriculum)
+                    const rowMemoryOpenIssues = rowMemoryReviewRule ? memoryReviewOpenIssues(rowMemoryReviewRule) : 0
+
+                    return (
+                      <tr
+                        key={curriculum.landscapeId}
+                        className={`cursor-pointer border-b border-border-color/70 transition-colors hover:bg-slate-100/70 dark:hover:bg-slate-800/60 ${
+                          selectedCurriculum?.landscapeId === curriculum.landscapeId ? 'bg-sky-50/70 dark:bg-sky-950/20' : ''
+                        }`}
+                        onClick={() => setSelectedId(curriculum.landscapeId)}
+                      >
+                        <td className="max-w-[280px] py-3 pr-3">
+                          <div className="truncate font-semibold">{curriculum.title}</div>
+                          <div className="truncate text-xs text-text-secondary">{curriculum.path}</div>
+                        </td>
+                        <td className="py-3 pr-3">
+                          <div className="flex flex-wrap items-center gap-1.5">
+                            <MaturityBadge level={curriculum.maturity} language={language} />
+                            <QualityStatusBadge status={getCurriculumQualityStatus(publicQuality.get(curriculum.landscapeId))} language={language} />
+                          </div>
+                        </td>
+                        <td className="py-3 pr-3">
+                          {rowMaturityGate ? (
+                            <div className="flex min-w-[185px] flex-col gap-1.5">
+                              <div className="flex items-center gap-1.5">
+                                <span className="text-xs font-semibold text-text-secondary">{curriculum.maturity} -&gt;</span>
+                                <MaturityBadge level={rowMaturityGate.nextLevel} language={language} />
+                              </div>
+                              {blockerIds.length > 0 ? (
+                                <div
+                                  className="flex items-center gap-1 text-xs font-semibold text-amber-700 dark:text-amber-300"
+                                  title={blockerIds.join(', ')}
+                                >
+                                  <AlertTriangle size={13} className="shrink-0" />
+                                  <span className="truncate">
+                                    {blockerIds.length} {copy.openBlockers}: {visibleBlockerIds.join(', ')}
+                                    {blockerIds.length > visibleBlockerIds.length ? ` +${blockerIds.length - visibleBlockerIds.length}` : ''}
+                                  </span>
+                                </div>
+                              ) : (
+                                <div className="flex items-center gap-1 text-xs font-semibold text-emerald-700 dark:text-emerald-300">
+                                  <CheckCircle2 size={13} className="shrink-0" />
+                                  <span>{copy.gateClearShort}</span>
+                                </div>
+                              )}
+                            </div>
+                          ) : (
+                            <span className="text-xs font-semibold text-text-secondary">{copy.gateNoNext}</span>
+                          )}
+                        </td>
+                        <td className="py-3 pr-3 text-right tabular-nums">{curriculum.goals}</td>
+                        <td className="py-3 pr-3 text-right tabular-nums">{curriculum.atomicGoals}</td>
+                        <td className="py-3 pr-3 text-right tabular-nums">
+                          {rowMemoryReviewRule ? (
+                            <span
+                              className={`inline-flex rounded-full border px-2 py-0.5 text-xs font-semibold ${
+                                rowMemoryReviewRule.status === 'pass' && rowMemoryOpenIssues === 0
+                                  ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300'
+                                  : rowMemoryReviewRule.status === 'fail'
+                                    ? 'border-red-200 bg-red-50 text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-300'
+                                    : 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300'
+                              }`}
+                              title={rowMemoryReviewRule.summary}
+                            >
+                              {rowMemoryReviewRule.metrics
+                                ? `${metricValue(rowMemoryReviewRule, 'keptCards')}/${metricValue(rowMemoryReviewRule, 'primaryCards')}`
+                                : rowMemoryReviewRule.status === 'not_configured'
+                                  ? copy.memoryTrace.notConfigured
+                                  : copy.labels[rowMemoryReviewRule.status]}
+                            </span>
+                          ) : '—'}
+                        </td>
+                        <td className="py-3 pr-3 text-right tabular-nums">
+                          {curriculum.mappingPipeline
+                            ? (() => {
+                              const counts = pipelineSourceKindCounts(curriculum.mappingPipeline)
+                              return `${counts.sourceExtractionReady}/${curriculum.mappingPipeline.totalSources}`
+                            })()
+                            : '—'}
+                        </td>
+                        <td className="py-3 pr-3 text-right tabular-nums">
+                          {curriculum.jurisdictionCoverage
+                            ? (() => {
+                              const completeJurisdictions = curriculum.jurisdictionCoverage.sourceCompleteJurisdictions
+                                ?? curriculum.jurisdictionCoverage.cleanJurisdictions
+                              return (
+                                <span
+                                  className={
+                                    completeJurisdictions === curriculum.jurisdictionCoverage.totalJurisdictions
+                                      ? 'font-semibold text-emerald-600 dark:text-emerald-300'
+                                      : completeJurisdictions > 0
+                                        ? 'font-semibold text-amber-600 dark:text-amber-300'
+                                        : 'font-semibold text-red-600 dark:text-red-300'
+                                  }
+                                >
+                                  {completeJurisdictions}/{curriculum.jurisdictionCoverage.totalJurisdictions}
+                                </span>
+                              )
+                            })()
+                            : '—'}
+                        </td>
+                        <td className="py-3 pr-3 text-right tabular-nums">{curriculum.scopes.length}</td>
+                        <td className="py-3 pr-3 text-right tabular-nums text-amber-600 dark:text-amber-300">{countStatus(curriculum, 'warn')}</td>
+                        <td className="py-3 text-right tabular-nums text-red-600 dark:text-red-300">{countStatus(curriculum, 'fail')}</td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <aside className="rounded-2xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/70 md:p-5">
+            {selectedCurriculum ? (
+              <div className="flex flex-col gap-4">
+                <div>
+                  <div className="mb-2 flex items-center justify-between gap-3">
+                    <h2 className="text-xl font-semibold">{selectedCurriculum.title}</h2>
+                    <MaturityBadge level={selectedCurriculum.maturity} language={language} />
+                  </div>
+                  <div className="font-mono text-xs text-text-secondary">{selectedCurriculum.path}</div>
+                  <div className="mt-2 flex flex-wrap items-center gap-2">
+                    <QualityStatusBadge status={getCurriculumQualityStatus(publicQuality.get(selectedCurriculum.landscapeId))} language={language} />
+                    {publicQuality.get(selectedCurriculum.landscapeId)?.humanTrial?.scopeLabel && (
+                      <span className="text-xs text-text-secondary">
+                        {publicQuality.get(selectedCurriculum.landscapeId)?.humanTrial?.scopeLabel}
+                        {publicQuality.get(selectedCurriculum.landscapeId)?.humanTrial?.scopeCoverage === 'partial'
+                          ? language === 'de' ? ' · Teilumfang' : ' · Partial scope' : ''}
+                      </span>
+                    )}
+                  </div>
+                  <div className="mt-2">
+                    <CurriculumDeepQualityProgress
+                      metrics={selectedCurriculum.rules.find((rule) => rule.id === 'CQR-303')?.metrics}
+                      language={language} />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-3 gap-2 text-sm">
+                  <div className="rounded-xl border border-border-color p-3">
+                    <div className="text-xs text-text-secondary">{copy.goals}</div>
+                    <div className="mt-1 text-lg font-semibold">{selectedCurriculum.goals}</div>
+                  </div>
+                  <div className="rounded-xl border border-border-color p-3">
+                    <div className="text-xs text-text-secondary">{copy.atomic}</div>
+                    <div className="mt-1 text-lg font-semibold">{selectedCurriculum.atomicGoals}</div>
+                  </div>
+                  <div className="rounded-xl border border-border-color p-3">
+                    <div className="text-xs text-text-secondary">{copy.routeScopes}</div>
+                    <div className="mt-1 text-lg font-semibold">{selectedCurriculum.scopes.length}</div>
+                  </div>
+                </div>
+
+                {selectedMaturityGate ? (
+                  <div
+                    className={`rounded-xl border p-3 text-sm ${
+                      selectedMaturityGate.blockers.length > 0
+                        ? 'border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-200'
+                        : 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300'
+                    }`}
+                  >
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                      <div>
+                        <h3 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide">
+                          <Gauge size={15} />
+                          <span>{copy.nextMaturityGate}</span>
+                        </h3>
+                        <div className="mt-2 flex items-center gap-2">
+                          <MaturityBadge level={selectedCurriculum.maturity} language={language} />
+                          <span className="text-xs font-semibold text-current/70">→</span>
+                          <MaturityBadge level={selectedMaturityGate.nextLevel} language={language} />
+                        </div>
+                      </div>
+                      {selectedMaturityGate.blockers.length > 0 ? (
+                        <span className="rounded-full border border-current/20 px-2.5 py-1 text-xs font-semibold">
+                          {selectedMaturityGate.blockers.length} {copy.openBlockers}
+                        </span>
+                      ) : null}
+                    </div>
+                    <p className="mt-2 text-xs text-current/80">{copy.gateHint}</p>
+                    {selectedMaturityGate.blockers.length > 0 ? (
+                      <div className="mt-3 space-y-2">
+                        <div className="text-xs font-semibold uppercase tracking-wide">{copy.blockedBy}</div>
+                        {selectedMaturityGate.blockers.map((rule) => (
+                          <RuleRow key={`maturity-gate-${rule.id}`} rule={rule} labels={copy.labels} copy={copy} />
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="mt-3 text-xs font-semibold">{copy.gateReady}</div>
+                    )}
+                  </div>
+                ) : null}
+
+                {selectedMemoryReviewRule?.metrics ? (
+                  <div className="rounded-xl border border-border-color p-3">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <h3 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-text-secondary">
+                          <ListChecks size={15} />
+                          <span>{copy.memoryReview}</span>
+                        </h3>
+                        <p className="mt-1 text-xs text-text-secondary">{selectedMemoryReviewRule.summary}</p>
+                      </div>
+                      <StatusBadge status={selectedMemoryReviewRule.status} label={copy.labels[selectedMemoryReviewRule.status]} />
+                    </div>
+                    <MemoryCardTrace rule={selectedMemoryReviewRule} copy={copy} />
+                  </div>
+                ) : null}
+
+                {selectedCurriculum.mappingPipeline ? (
+                  <div>
+                    <h3 className="mb-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-text-secondary">
+                      <ListChecks size={15} />
+                      <span>{copy.mappingPipeline}</span>
+                    </h3>
+                    <div className="mb-3 grid grid-cols-2 gap-2 text-sm">
+                      <div className="rounded-xl border border-border-color p-3">
+                        <div className="text-xs text-text-secondary">{copy.pipelineProgress}</div>
+                        <div className="mt-1 text-lg font-semibold">
+                          {selectedPipelineCounts
+                            ? `${selectedPassageExtractionReady}/${selectedMappingSourcesTotal}`
+                            : '—'}
+                        </div>
+                      </div>
+                      <div className="rounded-xl border border-border-color p-3">
+                        <div className="text-xs text-text-secondary">{copy.currentPipelineStep}</div>
+                        <div className="mt-1 text-lg font-semibold">{selectedCurriculum.mappingPipeline.currentStep || '—'}</div>
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      {selectedCurriculum.mappingPipeline.sources.map((source) => (
+                        <div key={source.sourceLandscapeId} className="rounded-xl border border-border-color p-3">
+                          {(() => {
+                            const mappedSourceGoals = source.mappedSourceGoals ?? source.sourceGoals - (source.unmappedSourceGoals ?? 0)
+                            const hasMappingMetrics = source.mappedSourceGoals !== undefined
+                              || source.exactMappings !== undefined
+                              || source.partialMappings !== undefined
+                              || source.unmappedSourceGoals !== undefined
+                            const hasPartialMappings = (source.partialMappings ?? 0) > 0
+                            const isSourceExtraction = source.sourceKind === 'source-extraction'
+                            const sourceDocuments = source.sourceDocuments ?? []
+                            const linkedSourceDocuments = sourceDocuments.filter((document) => document.hasUsableUrl).length
+                            const sourceDocumentsReady = sourceDocuments.length > 0 && linkedSourceDocuments === sourceDocuments.length
+                            const sourceDocumentsTitle = sourceDocuments
+                              .map((document) => [
+                                document.title,
+                                document.path
+                                  ? `local: ${document.path}${document.available ? '' : ' (not versioned)'}`
+                                  : null,
+                                document.url ? `url: ${document.url}` : null,
+                              ].filter(Boolean).join('\n'))
+                              .join('\n')
+                            const inventoryComplete = isSourceExtraction
+                              && source.sourceGoals > 0
+                              && mappedSourceGoals === source.sourceGoals
+                              && (source.unmappedSourceGoals ?? 0) === 0
+                              && (source.extraMappedGoals ?? 0) === 0
+                            const exactOnly = inventoryComplete
+                              && mappedSourceGoals > 0
+                              && (source.exactMappings ?? 0) === mappedSourceGoals
+                              && (source.partialMappings ?? 0) === 0
+                              && (source.otherMappings ?? 0) === 0
+                            const passageBacked = isSourceExtraction
+                              && source.passages > 0
+                              && source.completedSteps === source.totalSteps
+                            const exactShare = mappedSourceGoals > 0
+                              ? Math.round(((source.exactMappings ?? 0) / mappedSourceGoals) * 100)
+                              : 0
+                            const partialShare = mappedSourceGoals > 0
+                              ? Math.round(((source.partialMappings ?? 0) / mappedSourceGoals) * 100)
+                              : 0
+                            const durationAudit = source.durationProjectionAudit
+                            const durationProjectionComplete = Boolean(
+                              durationAudit
+                              && durationAudit.evidenceLinks > 0
+                              && durationAudit.uncoveredEvidenceLinks === 0,
+                            )
+                            const seals = [
+                              inventoryComplete ? copy.inventoryCompleteSeal : null,
+                              passageBacked ? copy.passageBackedSeal : null,
+                              exactOnly ? copy.exactMappingSeal : null,
+                              durationProjectionComplete ? copy.durationProjectionSeal : null,
+                            ].filter(Boolean) as string[]
+
+                            return (
+                              <>
+                                <div className="flex items-start justify-between gap-2">
+                                  <div className="min-w-0">
+                                    <div className="font-semibold">{source.jurisdiction || '—'} · {source.title}</div>
+                                    <div className="mt-1 truncate font-mono text-[11px] text-text-secondary">{source.path}</div>
+                                  </div>
+                                  <span className="shrink-0 rounded-full border border-border-color px-2 py-0.5 text-xs font-semibold tabular-nums">
+                                    {source.completedSteps}/{source.totalSteps}
+                                  </span>
+                                </div>
+                                <div className="mt-2 flex flex-wrap gap-1.5">
+                                  {isSourceExtraction ? (
+                                    <span
+                                      className={`rounded-full border px-2 py-0.5 text-[11px] font-semibold ${
+                                        sourceDocumentsReady
+                                          ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300'
+                                          : 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300'
+                                      }`}
+                                      title={sourceDocumentsTitle || undefined}
+                                    >
+                                      {sourceDocumentsReady ? copy.originalSourcesProvided : copy.originalSourcesMissing}
+                                      {sourceDocuments.length > 0 ? ` · ${linkedSourceDocuments}/${sourceDocuments.length} URL` : ''}
+                                    </span>
+                                  ) : (
+                                    <span className="rounded-full border border-border-color bg-gray-100 px-2 py-0.5 text-[11px] font-semibold text-text-secondary dark:bg-slate-800">
+                                      {source.sourceKind === 'legacy-snapshot'
+                                        ? copy.sourceKindLegacySnapshot
+                                        : source.sourceKind === 'missing-extraction'
+                                          ? copy.sourceKindMissing
+                                          : copy.sourceKindExtraction}
+                                    </span>
+                                  )}
+                                  {source.steps.map((step) => (
+                                    <span
+                                      key={`${source.sourceLandscapeId}-${step.id}`}
+                                      className={`rounded-full border px-2 py-0.5 text-[11px] font-semibold ${pipelineStatusClass[step.status]}`}
+                                      title={`${step.label}: ${pipelineStatusLabel(step.status)}`}
+                                    >
+                                      {step.id} · {step.label} {pipelineStatusLabel(step.status)}
+                                    </span>
+                                  ))}
+                                </div>
+                                {seals.length > 0 ? (
+                                  <div className="mt-2">
+                                    <div className="text-[11px] font-semibold uppercase tracking-wide text-text-secondary">{copy.qualitySeals}</div>
+                                    <div className="mt-1 flex flex-wrap gap-1.5">
+                                      {seals.map((seal) => (
+                                        <span
+                                          key={`${source.sourceLandscapeId}-${seal}`}
+                                          className="rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300"
+                                        >
+                                          {seal}
+                                        </span>
+                                      ))}
+                                    </div>
+                                  </div>
+                                ) : null}
+                                {isSourceExtraction && sourceDocuments.length > 0 ? (
+                                  <div className="mt-2 rounded-lg border border-border-color px-2 py-1 text-[11px] text-text-secondary">
+                                    <div className="font-semibold uppercase tracking-wide">{copy.originalSources}</div>
+                                    <div className="mt-1 space-y-0.5">
+                                      {sourceDocuments.map((document) => (
+                                        <div key={`${source.sourceLandscapeId}-${document.path ?? document.title}`} className="truncate font-mono">
+                                          {document.path ?? document.title}
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                ) : null}
+                                {hasMappingMetrics ? (
+                                  <div className="mt-2 grid grid-cols-2 gap-1.5 text-xs sm:grid-cols-4">
+                                    <div className="rounded-lg border border-border-color px-2 py-1">
+                                      <div className="text-text-secondary">{copy.mappingInventory}</div>
+                                      <div className="font-semibold tabular-nums">{mappedSourceGoals}/{source.sourceGoals}</div>
+                                    </div>
+                                    <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-2 py-1 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300">
+                                      <div>{copy.exactMappings}</div>
+                                      <div className="font-semibold tabular-nums">{source.exactMappings ?? 0} ({exactShare}%)</div>
+                                    </div>
+                                    <div className={`rounded-lg border px-2 py-1 ${
+                                      hasPartialMappings
+                                        ? 'border-sky-200 bg-sky-50 text-sky-700 dark:border-sky-900/60 dark:bg-sky-950/30 dark:text-sky-300'
+                                        : 'border-border-color text-text-secondary'
+                                    }`}>
+                                      <div>{copy.partialMappings}</div>
+                                      <div className="font-semibold tabular-nums">{source.partialMappings ?? 0} ({partialShare}%)</div>
+                                    </div>
+                                    <div className="rounded-lg border border-border-color px-2 py-1">
+                                      <div className="text-text-secondary">{copy.unmappedSource}</div>
+                                      <div className="font-semibold tabular-nums">{source.unmappedSourceGoals ?? 0}</div>
+                                    </div>
+                                  </div>
+                                ) : null}
+                                {durationAudit ? (
+                                  <div className={`mt-2 rounded-lg border px-2 py-1 text-xs ${
+                                    durationProjectionComplete
+                                      ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300'
+                                      : 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300'
+                                  }`}>
+                                    <div className="font-semibold">{copy.durationProjection}</div>
+                                    <div className="mt-1 grid grid-cols-2 gap-1.5 sm:grid-cols-4">
+                                      <div>
+                                        <div className="opacity-75">{copy.durationProjectionCovered}</div>
+                                        <div className="font-semibold tabular-nums">{durationAudit.coveredEvidenceLinks}/{durationAudit.evidenceLinks}</div>
+                                      </div>
+                                      <div>
+                                        <div className="opacity-75">{copy.durationProjectionEvidence}</div>
+                                        <div className="font-semibold tabular-nums">
+                                          G8 {durationAudit.evidenceByDuration?.G8 ?? 0} · G9 {durationAudit.evidenceByDuration?.G9 ?? 0}
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <div className="opacity-75">{copy.durationProjectionDifferences}</div>
+                                        <div className="font-semibold tabular-nums">{durationAudit.canonicalGoalsWithDifferentG8G9Evidence ?? 0}</div>
+                                      </div>
+                                      <div>
+                                        <div className="opacity-75">{copy.durationProjectionOpen}</div>
+                                        <div className="font-semibold tabular-nums">{durationAudit.uncoveredEvidenceLinks}</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                ) : null}
+                                {inventoryComplete && hasPartialMappings ? (
+                                  <div className="mt-2 rounded-lg border border-sky-200 bg-sky-50 px-2 py-1 text-xs text-sky-700 dark:border-sky-900/60 dark:bg-sky-950/30 dark:text-sky-300">
+                                    {copy.nonExactMappingsNote}
+                                  </div>
+                                ) : null}
+                                <div className="mt-2 flex flex-wrap gap-2 text-xs text-text-secondary">
+                                  <span>{source.passages} {copy.passages}</span>
+                                  <span>{source.sourceGoals} {copy.sourceGoals}</span>
+                                  {source.sourceKind === 'legacy-snapshot' ? <span>{copy.noPassageEvidence}</span> : null}
+                                  {(source.otherMappings ?? 0) > 0 ? <span>{source.otherMappings} {copy.otherMappings}</span> : null}
+                                  {(source.extraMappedGoals ?? 0) > 0 ? <span>{source.extraMappedGoals} extra</span> : null}
+                                </div>
+                              </>
+                            )
+                          })()}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+
+                {selectedCurriculum.jurisdictionCoverage && !selectedJurisdictionCoverageReady && selectedPipelineCounts ? (
+                  <div>
+                    <h3 className="mb-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-text-secondary">
+                      <MapPinned size={15} />
+                      <span>{copy.jurisdictionCoverage}</span>
+                    </h3>
+                    <div className="rounded-xl border border-sky-200 bg-sky-50 p-3 text-sm text-sky-700 dark:border-sky-900/60 dark:bg-sky-950/30 dark:text-sky-300">
+                      <div className="font-semibold">{copy.jurisdictionCoverageDeferred}</div>
+                      <div className="mt-1 text-xs">{copy.jurisdictionCoverageDeferredDetail}</div>
+                      <div className="mt-2 flex flex-wrap gap-2 text-xs tabular-nums">
+                        <span>{selectedPipelineCounts.sourceExtractionReady}/{selectedMappingSourcesTotal} {copy.sourceExtractionProgress}</span>
+                        <span>{selectedPipelineCounts.legacySnapshotTotal} {copy.sourceKindLegacySnapshot}</span>
+                        <span>{selectedPipelineCounts.missingExtractionTotal} {copy.sourceKindMissing}</span>
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+
+                {selectedCurriculum.jurisdictionCoverage && selectedJurisdictionCoverageReady ? (
+                  <div>
+                    <h3 className="mb-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-text-secondary">
+                      <MapPinned size={15} />
+                      <span>{copy.jurisdictionCoverage}</span>
+                    </h3>
+                    <div className="mb-3 grid grid-cols-2 gap-2 text-sm">
+                      <div className="rounded-xl border border-border-color p-3">
+                        <div className="text-xs text-text-secondary">{copy.jurisdictions}</div>
+                        <div className="mt-1 text-lg font-semibold">
+                          {selectedCurriculum.jurisdictionCoverage.sourceCompleteJurisdictions
+                            ?? selectedCurriculum.jurisdictionCoverage.cleanJurisdictions}/{selectedCurriculum.jurisdictionCoverage.totalJurisdictions}
+                        </div>
+                      </div>
+                      <div className="rounded-xl border border-border-color p-3">
+                        <div className="text-xs text-text-secondary">{copy.deViewAtomic}</div>
+                        <div className="mt-1 text-lg font-semibold">
+                          {selectedCurriculum.jurisdictionCoverage.totalAtomicGoals}
+                          {selectedCurriculum.jurisdictionCoverage.rawAtomicGoals ? (
+                            <span className="ml-1 text-xs text-text-secondary">
+                              ({selectedCurriculum.jurisdictionCoverage.rawAtomicGoals} {copy.rawAtomic})
+                            </span>
+                          ) : null}
+                        </div>
+                      </div>
+                      <div className="rounded-xl border border-border-color p-3">
+                        <div className="text-xs text-text-secondary">{copy.cleanJurisdictions}</div>
+                        <div className="mt-1 text-lg font-semibold text-emerald-600 dark:text-emerald-300">
+                          {selectedCurriculum.jurisdictionCoverage.cleanJurisdictions}
+                        </div>
+                      </div>
+                      <div className="rounded-xl border border-border-color p-3">
+                        <div className="text-xs text-text-secondary">{copy.partialJurisdictions}</div>
+                        <div className="mt-1 text-lg font-semibold text-amber-600 dark:text-amber-300">
+                          {selectedCurriculum.jurisdictionCoverage.partialJurisdictions}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                      {selectedCurriculum.jurisdictionCoverage.jurisdictions.map((entry) => {
+                        const hasRegisteredOriginals = (entry.sourceOriginalGoals ?? 0) > 0
+                        const hasReadableSourceExtraction = (entry.sourceExtractedAtomicGoals ?? 0) > 0
+                          || (entry.sourceExtractedGoals ?? 0) > 0
+                        const sourceIngestionComplete = (entry.sourceExtractedAtomicGoals ?? 0) > 0
+                          && (entry.sourceUnregisteredAtomicGoals ?? 0) === 0
+                        const sourceExtractionMissing = hasRegisteredOriginals && !hasReadableSourceExtraction
+                        const sourceInventoryEmpty = !hasRegisteredOriginals && !hasReadableSourceExtraction
+                        return (
+                        <div
+                          key={entry.jurisdiction}
+                          className={`rounded-lg border px-2.5 py-2 text-xs ${coverageStatusClass[entry.status]}`}
+                          title={language === 'de' ? entry.labelDe : entry.labelEn}
+                        >
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="font-semibold">{entry.jurisdiction}</span>
+                            <span className={`font-semibold tabular-nums ${sourceIngestionComplete ? 'text-emerald-700 dark:text-emerald-300' : 'text-red-700 dark:text-red-300'}`}>
+                              {sourceIngestionComplete ? copy.yes : copy.no}
+                            </span>
+                          </div>
+                          <div className="mt-1 font-semibold">
+                            {copy.sourceIngestionComplete}: {sourceIngestionComplete ? copy.yes : copy.no}
+                          </div>
+                          {sourceExtractionMissing ? (
+                            <div className="mt-1 font-semibold text-amber-700 dark:text-amber-300">
+                              {copy.sourceExtractionMissing}
+                            </div>
+                          ) : null}
+                          {sourceInventoryEmpty ? (
+                            <div className="mt-1 font-semibold text-red-700 dark:text-red-300">
+                              {copy.sourceInventoryEmpty}
+                            </div>
+                          ) : null}
+                          {((entry.sourceExtractedAtomicGoals ?? 0) > 0 || (entry.sourceOriginalGoals ?? 0) > 0) ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.sourceExtractedAtomicGoals ?? 0} {copy.sourceOriginalExtracted}
+                            </div>
+                          ) : null}
+                          {(entry.sourceOriginalGoals ?? 0) > 0 ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.sourceOriginalGoals} {copy.sourceOriginalRegistered}
+                            </div>
+                          ) : null}
+                          {sourceIngestionComplete && (entry.sourceOriginalGoals ?? 0) > 0 ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.sourceFullyCoveredOriginalGoals ?? 0}/{entry.sourceOriginalGoals} {copy.sourceOriginalCovered}
+                            </div>
+                          ) : null}
+                          {(entry.sourceUnregisteredAtomicGoals ?? 0) > 0 ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.sourceUnregisteredAtomicGoals} {copy.sourceUnregistered}
+                            </div>
+                          ) : null}
+                          {(entry.sourceAtomicGoals ?? 0) > 0 ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.sourceMappedToViewAtomicGoals ?? 0}/{entry.sourceAtomicGoals} {copy.sourceReverse}
+                            </div>
+                          ) : null}
+                          <div className="mt-1 tabular-nums">
+                            {entry.sourceBackedAtomicGoals ?? entry.visibleAtomicGoals}/{entry.viewAtomicGoals ?? entry.visibleAtomicGoals} {copy.sourceBacked}
+                          </div>
+                          <div className="mt-1 tabular-nums text-current/80">
+                            {entry.viewAtomicGoals ?? entry.visibleAtomicGoals} {copy.visibleAssigned}
+                          </div>
+                          {(entry.unsupportedAssignedAtomicGoals ?? 0) > 0 ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.unsupportedAssignedAtomicGoals} {copy.unsupported}
+                            </div>
+                          ) : null}
+                          {(entry.unmappedSourceAtomicGoals ?? 0) > 0 ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.unmappedSourceAtomicGoals} {copy.unmappedSource}
+                            </div>
+                          ) : null}
+                          {(entry.surrogateBackedAtomicGoals ?? 0) > 0 ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.surrogateBackedAtomicGoals} {copy.surrogateBacked}
+                            </div>
+                          ) : null}
+                          {(entry.partialSourceLinkedAtomicGoals ?? 0) > 0 ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.partialSourceLinkedAtomicGoals} {copy.partialSource}
+                            </div>
+                          ) : null}
+                          {entry.errors > 0 || entry.warnings > 0 ? (
+                            <div className="mt-1 tabular-nums">
+                              {entry.errors > 0 ? `${entry.errors} ${copy.failures}` : ''}
+                              {entry.errors > 0 && entry.warnings > 0 ? ' · ' : ''}
+                              {entry.warnings > 0 ? `${entry.warnings} ${copy.warnings}` : ''}
+                            </div>
+                          ) : null}
+                          {(entry.diagnosticPartialOnlyWarnings ?? 0) > 0 ? (
+                            <div className="mt-1 tabular-nums text-current/80">
+                              {entry.diagnosticPartialOnlyWarnings} {copy.diagnosticPartialOnly}
+                            </div>
+                          ) : null}
+                        </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+                ) : null}
+
+                {selectedCurriculum.scopes.length > 0 ? (
+                  <div>
+                    <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-text-secondary">{copy.routeScopes}</h3>
+                    <div className="space-y-3">
+                      {selectedCurriculum.scopes.map((scope) => (
+                        <div key={scope.scopeId} className="rounded-xl border border-border-color p-3">
+                          <div className="mb-2 flex items-center justify-between gap-2">
+                            <div className="font-semibold">{scope.label}</div>
+                            <MaturityBadge level={scope.maturity} language={language} scope="route" />
+                          </div>
+                          <div className="space-y-2">
+                            {scope.rules.map((rule) => (
+                              <RuleRow key={`${scope.scopeId}-${rule.id}`} rule={rule} labels={copy.labels} copy={copy} />
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+
+                <div>
+                  <h3 className="mb-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-text-secondary">
+                    <ListChecks size={15} />
+                    <span>{copy.rules}</span>
+                  </h3>
+                  <div className="space-y-2">
+                    {selectedCurriculum.rules.map((rule) => (
+                      <RuleRow key={rule.id} rule={rule} labels={copy.labels} copy={copy} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="text-sm text-text-secondary">{copy.noData}</div>
+            )}
+          </aside>
+        </section>
+      </div>
+    </div>
+  )
+}
+
+const RuleRow: React.FC<{ rule: RuleResult; labels: Record<RuleStatus, string>; copy: DashboardCopy }> = ({ rule, labels, copy }) => {
+  const [expanded, setExpanded] = useState(false)
+  const metricEntries = Object.entries(rule.metrics ?? {})
+
+  return (
+    <div className="rounded-xl border border-border-color p-3">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+        <div className="min-w-0">
+          <div className="font-mono text-xs font-semibold text-text-secondary">{rule.id}</div>
+          <div className="mt-1 text-sm">{rule.summary}</div>
+        </div>
+        <StatusBadge status={rule.status} label={labels[rule.status]} />
+      </div>
+      {metricEntries.length > 0 ? (
+        <div className="mt-3 flex flex-wrap gap-2">
+          {metricEntries.map(([key, value]) => (
+            <span key={key} className="rounded-full border border-border-color px-2 py-1 text-xs text-text-secondary">
+              {key}: <span className="font-semibold text-text-primary">{value}</span>
+            </span>
+          ))}
+        </div>
+      ) : null}
+      {rule.id === 'CQR-302' && rule.metrics ? <MemoryCardTrace rule={rule} copy={copy} /> : null}
+      {rule.details && rule.details.length > 0 ? (
+        <div className="mt-3">
+          <button
+            type="button"
+            onClick={() => setExpanded((current) => !current)}
+            className="text-xs font-semibold text-sky-700 hover:text-sky-500 dark:text-sky-300"
+          >
+            Details
+          </button>
+          {expanded ? (
+            <ul className="mt-2 space-y-1 text-xs text-text-secondary">
+              {rule.details.map((detail) => (
+                <li key={detail}>{detail}</li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      ) : null}
+    </div>
+  )
+}
+
+const MemoryCardTrace: React.FC<{ rule: RuleResult; copy: DashboardCopy }> = ({ rule, copy }) => {
+  const auditReportPath = memoryAuditReportPath(rule)
+  const reviewedGoals = metricValue(rule, 'reviewedGoals')
+  const noMemoryNeeded = metricValue(rule, 'noMemoryNeeded')
+  const memoryRequired = metricValue(rule, 'memoryRequired')
+  const primaryCards = metricValue(rule, 'primaryCards')
+  const keptCards = metricValue(rule, 'keptCards')
+  const memoryGoals = metricValue(rule, 'memoryGoals')
+  const tracedMemoryGoals = metricValue(rule, 'tracedMemoryGoals')
+  const openGoalIssues = [
+    'needsDeveloperReview',
+    'missing',
+    'stale',
+    'obsolete',
+    'duplicateRecords',
+    'invalidRecords',
+    'untracedMemoryRequiredGoals',
+  ].reduce((sum, key) => sum + metricValue(rule, key), 0)
+  const openCardIssues = [
+    'cardsMarkedRemove',
+    'cardNeedsDeveloperReview',
+    'missingCardReviews',
+    'staleCardReviews',
+    'obsoleteCardReviews',
+    'duplicateCardReviewRecords',
+    'invalidCardReviewRecords',
+  ].reduce((sum, key) => sum + metricValue(rule, key), 0)
+  const openIssues = openGoalIssues + openCardIssues + metricValue(rule, 'untracedMemoryGoals')
+
+  const rows = [
+    {
+      label: copy.memoryTrace.goalDecisions,
+      value: `${reviewedGoals}`,
+      detail: `${noMemoryNeeded} ${copy.memoryTrace.noMemoryNeeded} · ${memoryRequired} ${copy.memoryTrace.required} (${percent(memoryRequired, reviewedGoals)}%)`,
+    },
+    {
+      label: copy.memoryTrace.activeCards,
+      value: `${keptCards}/${primaryCards}`,
+      detail: `${percent(keptCards, primaryCards)}% ${copy.memoryTrace.keptWithOriginTraces}`,
+    },
+    {
+      label: copy.memoryTrace.tracedDecks,
+      value: `${tracedMemoryGoals}/${memoryGoals}`,
+      detail: copy.memoryTrace.requiredGoals,
+    },
+    {
+      label: copy.memoryTrace.openCardIssues,
+      value: `${openIssues}`,
+      detail: openIssues === 0 ? copy.memoryTrace.noOpenIssues : copy.memoryTrace.openIssues,
+    },
+  ]
+
+  return (
+    <div className="mt-3 border-t border-border-color pt-3">
+      <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+        <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">
+          {copy.memoryTrace.title}
+        </div>
+        {auditReportPath ? (
+          <a
+            href={qualityStatusFileHref(auditReportPath)}
+            target="_blank"
+            rel="noreferrer"
+            className="text-xs font-semibold text-sky-700 hover:text-sky-500 dark:text-sky-300"
+          >
+            {copy.memoryTrace.auditReport}
+          </a>
+        ) : null}
+      </div>
+      <div className="grid grid-cols-2 gap-x-4 gap-y-3 text-xs sm:grid-cols-4">
+        {rows.map((row) => (
+          <div key={row.label} className="min-w-0">
+            <div className="text-text-secondary">{row.label}</div>
+            <div className={`mt-0.5 text-base font-semibold tabular-nums ${row.label === copy.memoryTrace.openCardIssues && openIssues > 0 ? 'text-amber-600 dark:text-amber-300' : 'text-text-primary'}`}>
+              {row.value}
+            </div>
+            <div className="mt-0.5 text-text-secondary">{row.detail}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}

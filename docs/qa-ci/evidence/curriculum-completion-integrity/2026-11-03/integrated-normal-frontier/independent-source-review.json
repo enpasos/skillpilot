@@ -1,0 +1,13 @@
+{
+  "status": "STATIC_PASS_RUNTIME_PENDING",
+  "requestFreezeSha256": "49de9c1300129d845d6833db1b21a528e099cd21155c3376303dabc6526e4c5f",
+  "mainSha256": "b7d9490220f16225388c638bfe2d15cad170c1558758292d32a90a54f8854bc5",
+  "testSha256": "13d74de6d90543ff8b2a2d6f145e9677f1739a48e3a917b8a01a6d80f354d489",
+  "deltaFromR1Sha256": "e9c90cd4bfbde7287dd1f8893bae02e8bffef5d806d0c4af7176640a71481e99",
+  "findingResolution": "The sole R1 blocking finding is closed: a known failed automatic enabled full-PC state snapshot with compiled=null now supplies a closed shared FrontierInputProof, preventing an independent frontier retry within that state operation. Nonautomatic/disabled behavior is preserved.",
+  "targetedTest": "failedStrictStateReadDoesNotRetryAfterTolerantMasteryButTheNextReadCanRecover: first strict SRS failure and tolerant stored-M1 preservation cause exactly two reads, unavailable completion, no frontier/options/active pointer/revision change. The next independent read may recover, but strict M0 controls prerequisites, scope counters and ordinary A autopilot; stored memory remains unchanged and no credit or assessment start is invented.",
+  "reviewScope": "All five R2 payload hashes/lengths checked. R2 delta read against the whole R1 two-file patch and its actual completionSnapshot, normal/raw frontier, state/autopilot, focus, owner, plan and strict SRS consumers. Other R1 source conclusions in r1-counterreview.HOLD.json carry forward; historical R1 HOLD is retained.",
+  "outstandingSourceFindings": [],
+  "nextValidation": "Root-coordinated fresh compilation and actual whole AutomaticCompletionFrontierTest plus unchanged real Gemini positives and relevant existing focus/owner/SRS boundaries. No new fixture shrink or curriculum-validity claim.",
+  "limits": "No reviewer Root mutation, compile, JVM or tests. This source PASS is not runtime, CI, M0, M7, source-scope or host acceptance."
+}

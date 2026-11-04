@@ -11,6 +11,7 @@
   ],
   "sourceDocument": {
     "key": "KC",
+    "official": true,
     "title": "Kerncurriculum Mathematik - Sekundarstufe I (Gymnasium)",
     "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
     "role": "binding-core",
@@ -19,42 +20,42 @@
   "sourceDocuments": [
     {
       "key": "KC",
+      "official": true,
       "title": "Kerncurriculum Mathematik - Sekundarstufe I (Gymnasium)",
       "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
       "role": "binding-core",
-      "official": true,
       "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-07/kerncurriculum_mathematik_gymnasium.pdf"
     },
     {
       "key": "G8",
+      "official": true,
       "title": "Lehrplan Gymnasium G8 Mathematik",
       "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/g8-mathematik.pdf",
       "role": "legacy-grade-sequencing-reference",
       "durationModel": "G8",
-      "official": true,
       "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g8-mathematik.pdf"
     },
     {
       "key": "G9",
+      "official": true,
       "title": "Lehrplan Gymnasium G9 Mathematik",
       "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf",
       "role": "legacy-grade-sequencing-reference",
       "durationModel": "G9",
-      "official": true,
       "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-mathematik.pdf"
     },
     {
       "key": "LEITFADEN",
+      "official": true,
       "title": "Leitfaden Mathematik - Sekundarstufe I",
       "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/leitfaden_mathematik_sekundarstufe_i.pdf",
       "role": "implementation-guide",
-      "official": true,
       "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-07/leitfaden_mathematik_sekundarstufe_i.pdf"
     }
   ],
   "method": {
-    "passageExtraction": "pdftotext -layout; KC 7.3 content-field cells are persisted as goal-bearing original passages; G8 topic blocks 5G.1-9G.3 and G9 topic blocks 5.1-10.5 are extracted from verbindliche Unterrichtsinhalte; Leitfaden passages document the processing policy.",
-    "sourceGoalExtraction": "extracts one source goal per literal KC 7.3 content focus, one source goal per KC 7.1/7.2/6 competency expectation bullet, and granular source goals from the verbindliche G8/G9 topic lines.",
+    "passageExtraction": "pdftotext -layout; KC 7.3 content-field cells are persisted as goal-bearing original passages; G8 topic blocks 5G.1-9G.3 and G9 topic blocks 5.1-10.5 are extracted from verbindliche Unterrichtsinhalte; separately reviewed G9 J10 introduction/transition radian passages retain their own context and do not promote optional J9 content; Leitfaden passages document the processing policy.",
+    "sourceGoalExtraction": "extracts one source goal per literal KC 7.3 content focus, one source goal per KC 7.1/7.2/6 competency expectation bullet, and granular source goals from the verbindliche G8/G9 topic lines; one separately reviewed radian expectation from the G9 end-of-J10 transition profile.",
     "projectionAudit": "derives canonical-duration-grade evidence from G8/G9 source goals and M3 mappings, then checks that each evidence link is represented by authored year structure or duration-specific goalPlacements."
   },
   "expectedTopicCodes": [
@@ -144,17 +145,18 @@
     "G9-10.2",
     "G9-10.3",
     "G9-10.4",
-    "G9-10.5"
+    "G9-10.5",
+    "G9-UEBERGANG.J10.BOGENMASS"
   ],
   "durationProjectionAudit": {
-    "evidenceLinks": 598,
+    "evidenceLinks": 618,
     "evidenceByDuration": {
-      "G8": 262,
-      "G9": 336
+      "G8": 274,
+      "G9": 344
     },
-    "canonicalGoalsWithDurationEvidence": 251,
-    "canonicalGoalsWithDifferentG8G9Evidence": 118,
-    "coveredEvidenceLinks": 598,
+    "canonicalGoalsWithDurationEvidence": 271,
+    "canonicalGoalsWithDifferentG8G9Evidence": 126,
+    "coveredEvidenceLinks": 618,
     "uncoveredEvidenceLinks": 0,
     "uncoveredSamples": []
   },
@@ -197,6 +199,12 @@
             "label": "G9-Jahrgangsthemen 5.1 bis 10.5 sind als Originalpassagen erfasst",
             "passed": true,
             "details": "Erfasst: 25/25; fehlend: -"
+          },
+          {
+            "id": "g9-reviewed-j10-radian-context-present",
+            "label": "Begrenzt geprüfte G9-J10-/Übergangspassagen zum Bogenmaß sind getrennt erhalten",
+            "passed": true,
+            "details": "J10-Einleitung S.36 und Übergangsprofil S.43/45; keine Aufwertung fakultativer J9-Inhalte, keine G8-Aussage."
           },
           {
             "id": "leitfaden-processing-policy-present",
@@ -258,9 +266,9 @@
           },
           {
             "id": "g9-source-goals-created",
-            "label": "Aus G9-Jahrgangspassagen wurden granulare Source-Ziele erzeugt",
+            "label": "Aus G9-Jahrgangspassagen und dem begrenzt geprüften J10-Übergangsprofil wurden Source-Ziele erzeugt",
             "passed": true,
-            "details": "G9-Source-Ziele: 241; Passagen ohne Source-Ziele: -"
+            "details": "G9-Source-Ziele: 242; Passagen ohne Source-Ziele: -"
           },
           {
             "id": "competency-source-goals-created",
@@ -313,13 +321,13 @@
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
             "passed": true,
-            "details": "601/601 Source-Ziele reviewed; gemappt: 601; Canonical-Lücken: 0; Placement-Review: 0"
+            "details": "602/602 Source-Ziele reviewed; gemappt: 602; Canonical-Lücken: 0; Placement-Review: 0"
           },
           {
             "id": "m3-all-source-goals-covered-by-canonical",
             "label": "Alle akzeptierten Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
             "passed": true,
-            "details": "Abgedeckt: 601/601; offene Canonical-Lücken: -; Placement-Review: -"
+            "details": "Abgedeckt: 602/602; offene Canonical-Lücken: -; Placement-Review: -"
           }
         ]
       },
@@ -343,19 +351,19 @@
             "id": "m4-duration-projection-evidence-present",
             "label": "G8/G9-Jahrgangsevidenz wurde aus Lehrplan-Mapping abgeleitet",
             "passed": true,
-            "details": "Evidence: 598; G8: 262; G9: 336; Canonical-Ziele: 251"
+            "details": "Evidence: 618; G8: 274; G9: 344; Canonical-Ziele: 271"
           },
           {
             "id": "m4-g8-g9-differences-detected",
             "label": "G8/G9 erzeugt unterschiedliche Jahrgangsprojektionen",
             "passed": true,
-            "details": "Unterschiedliche G8/G9-Jahrgangsevidenz bei 118 Canonical-Zielen"
+            "details": "Unterschiedliche G8/G9-Jahrgangsevidenz bei 126 Canonical-Zielen"
           },
           {
             "id": "m4-duration-projection-covered",
             "label": "G8/G9-Jahrgangsevidenz ist durch Jahrgangsstruktur oder goalPlacements abgedeckt",
             "passed": true,
-            "details": "Abgedeckt: 598/598; offen: -"
+            "details": "Abgedeckt: 618/618; offen: -"
           }
         ]
       }
@@ -1251,6 +1259,44 @@
       "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/leitfaden_mathematik_sekundarstufe_i.pdf",
       "sourceDocumentKey": "LEITFADEN",
       "goalBearing": false
+    },
+    {
+      "id": "g9-introduction-j10-bogenmass-context",
+      "topicCode": "G9-J10.INTRODUCTION.BOGENMASS",
+      "title": "G9 Jahrgang 10: Einleitung zum Bogenmaß (gedruckte Seite 36)",
+      "text": "Die mathematischen Begriffe Sinus, Kosinus und Tangens eines Winkels sowie der Sinusund Kosinussatz sind in der ebenen und räumlichen Geometrie sowie in vielen Realitätsbezügen (z.B. Technik, Physik, Vermessung) unentbehrlich. Trigonometrische Funktionen sind Beispiele für periodische Funktionen. Nicht exakt bestimmbaren Funktionswerte werden zunächst näherungsweise mittels Einheitskreis ermittelt. Die Bedeutung der allgemeinen Sinusund Kosinusfunktion im Bogenmaß wird bei wichtigen Anwendungen (periodische Vorgänge in Natur, Technik etc.) deutlich. Die Werte der trigonometrischer Funktionen werden dann in der Regel mit dem Taschenrechner (näherungsweise) bestimmt. Für spezielle Winkel (0o, 30o, 45o, 60o, 90o,...) müssen die Werte von sinα und cosα aufgrund von Betrachtungen im gleichseitigen und gleichschenklig rechtwinkligem Dreieck bekannt sein. Die weitergehende Untersuchung der jeweiligen Umkehrfunktionen soll nicht Unterrichtsgegenstand sein, jedoch muss die Grundidee der Umkehrung im Hinblick auf die Nutzung elektronischer Hilfsmittel behandelt werden.",
+      "page": 37,
+      "printedPage": 36,
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf",
+      "sourceDocumentKey": "G9",
+      "goalBearing": false
+    },
+    {
+      "id": "g9-transition-j10-context",
+      "topicCode": "G9-UEBERGANG.J10.CONTEXT",
+      "title": "G9 Übergangsprofil: Geltung und Unterrichtsorganisation (gedruckte Seite 43)",
+      "text": "Voraussetzung und Grundlage für eine erfolgreiche Mitarbeit im Fach Mathematik in der gymnasialen Oberstufe sind die in der Sekundarstufe I erworbenen Qualifikationen und Kenntnisse. Diese sollten für einen kontinuierlich aufeinanderaufbauenden Unterricht als mathematische Werkzeuge zur Verfügung stehen oder - falls notwendig - durch eine in den laufenden Unterricht integrierte, dennoch weitgehend selbstständige Wiederholung wieder verfügbar gemacht werden können. Hierdurch werden keine Aussagen darüber getroffen, in welcher Weise diese Inhalte im Unterricht der Sekundarstufe I erarbeitet werden.",
+      "page": 44,
+      "printedPage": 43,
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf",
+      "sourceDocumentKey": "G9",
+      "goalBearing": false
+    },
+    {
+      "id": "g9-transition-j10-bogenmass",
+      "topicCode": "G9-UEBERGANG.J10.BOGENMASS",
+      "title": "G9 Übergangsprofil: Winkel im Bogenmaß (gedruckte Seite 45)",
+      "text": "Kreis und Kreisteile Bestimmung von π Flächeninhalt und Umfang von Kreis und Kreisteilen Winkel im Bogenmaß",
+      "page": 46,
+      "printedPage": 45,
+      "supportingPrintedPages": [
+        36,
+        41,
+        43
+      ],
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf",
+      "sourceDocumentKey": "G9",
+      "goalBearing": true
     }
   ],
   "sourceGoals": [
@@ -15664,6 +15710,30 @@
       "sourceSpan": "Häufigkeiten als Schätzwerte für Wahrscheinlichkeiten, Pfadmultiplikationsregel, Additionsregel Abzählstrategien",
       "parentBulletText": "Häufigkeiten als Schätzwerte für Wahrscheinlichkeiten, Pfadmultiplikationsregel, Additionsregel Abzählstrategien",
       "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 10.5 Stochastik",
+      "granularity": "legacyGradeTopicFocus",
+      "tags": [
+        "source:DE-HE",
+        "sourceDocument:G9",
+        "subject:Mathematik",
+        "stage:SekI",
+        "legacy:G9",
+        "durationModel:G9",
+        "grade:10"
+      ],
+      "requires": [],
+      "contains": [],
+      "type": "atomic"
+    },
+    {
+      "id": "he-math-seki-g9-transition-j10-bogenmass",
+      "passageId": "g9-transition-j10-bogenmass",
+      "topicCode": "G9-UEBERGANG.J10.BOGENMASS",
+      "title": "Winkel im Bogenmaß (Übergangsprofil Jahrgang 10)",
+      "description": "Die lernende Person kann den im G9-Übergangsprofil von Jahrgangsstufe 10 in die gymnasiale Oberstufe ausgewiesenen Schwerpunkt \"Winkel im Bogenmaß\" fachgerecht bearbeiten.",
+      "sourceText": "Winkel im Bogenmaß",
+      "sourceSpan": "Winkel im Bogenmaß",
+      "parentBulletText": "Winkel im Bogenmaß",
+      "sourceRef": "Lehrplan Gymnasium G9 Mathematik, Übergangsprofil von Jahrgangsstufe 10 in die gymnasiale Oberstufe, gedruckte Seiten 43–45; konkret Seite 45, ergänzend Jahrgang-10-Einleitung Seite 36 und 10.4 Seite 41",
       "granularity": "legacyGradeTopicFocus",
       "tags": [
         "source:DE-HE",

@@ -32,7 +32,7 @@ import org.springframework.test.context.TestPropertySource;
 /**
  * Real canonical-data regression for loading the cuboid exam reported in the Claude beta.
  * No facade, learner service, projection, repository, or curriculum loader is mocked.
- * The synthetic learner starts with a persisted active exam; this tests retrieval, not grading
+ * The synthetic learner explicitly confirms the active exam; this tests retrieval, not grading
  * or proof that a submission took place in the external Claude conversation.
  */
 @SpringBootTest
@@ -85,6 +85,7 @@ class ClaudeV1CanonicalExamIntegrationTest {
     void canonicalCuboidTaskAndEvaluationLoadThroughMcpWithoutLeakingIntoNormalContext()
             throws Exception {
         var bound = createLearnerWithActiveExam();
+        learnerService.setActiveGoal(bound.learnerId(), EXAM_ID);
         long revision = learnerRepository.findById(bound.learnerId()).orElseThrow().getCoachStateRevision();
 
         Map<String, Object> context = successfulCall(
@@ -139,6 +140,22 @@ class ClaudeV1CanonicalExamIntegrationTest {
         String deniedPayload = ((McpSchema.TextContent) denied.content().getFirst()).text();
         assertThat(deniedPayload).contains("CONFLICT")
                 .doesNotContain("solutionContent", "passingPoints", "evaluationCapability");
+    }
+
+    @Test
+    void persistedExamPointerAloneDoesNotReleaseEvaluationOrWriteMastery() throws Exception {
+        var bound = createLearnerWithActiveExam();
+        long revision = learnerRepository.findById(bound.learnerId()).orElseThrow().getCoachStateRevision();
+
+        McpSchema.CallToolResult result = call(
+                bound.connectionId(), ClaudeV1Contract.TOOL_GET_EXAM_EVALUATION, Map.of("goalId", EXAM_ID));
+
+        assertThat(result.isError()).isTrue();
+        assertThat(((McpSchema.TextContent) result.content().getFirst()).text())
+                .contains("CONFLICT").doesNotContain("solutionContent", "passingPoints", "evaluationCapability");
+        assertThat(learnerRepository.findById(bound.learnerId()).orElseThrow().getCoachStateRevision())
+                .isEqualTo(revision);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(bound.learnerId())).isEmpty();
     }
 
     private ClaudeV1TestFixtures.BoundLearner createLearnerWithActiveExam() {

@@ -87,7 +87,7 @@ class AutomaticCompletionIntegrationTest {
         long revision = learner.getCoachStateRevision();
         var response = preview();
         assertThat(automatic.catalog().profiles()).isEmpty();
-        assertThat(response.calculationStatus()).isEqualTo("valid");
+        assertValidOrExplicitlyUncovered(response);
         assertThat(response.profileId()).isEqualTo(DEFAULT_SCOPE);
         assertThat(response.assessments()).hasSizeGreaterThan(24)
                 .extracting(LevelCompletionResponse.Assessment::goalId).contains(SEK1_EXAM, PILOT_EXAM);
@@ -144,7 +144,8 @@ class AutomaticCompletionIntegrationTest {
         var enabled = preview();
         learner.setUseAssessmentShortcuts(false);
         var disabled = preview();
-        assertThat(disabled.calculationStatus()).isEqualTo("valid");
+        assertValidOrExplicitlyUncovered(disabled);
+        assertThat(disabled.calculationStatus()).isEqualTo(enabled.calculationStatus());
         assertThat(disabled.profileId()).isEqualTo(DEFAULT_SCOPE);
         assertThat(disabled.waivedTargetGoalIds()).isEqualTo(enabled.waivedTargetGoalIds());
         assertThat(disabled.masteredTargetCount()).isEqualTo(enabled.masteredTargetCount());
@@ -195,6 +196,31 @@ class AutomaticCompletionIntegrationTest {
         assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
     }
 
+    @org.junit.jupiter.params.ParameterizedTest
+    @org.junit.jupiter.params.provider.ValueSource(booleans = {false, true})
+    void actualStartedAndRetriedAssessmentRemainsVisibleToItsSupportedOwner(boolean retry) {
+        start(SEK1_EXAM);
+        if (retry) learners.startCompletionAssessment(learner.getSkillpilotId(),
+                new CompletionAssessmentStart(DEFAULT_SCOPE, SEK1_EXAM, learner.getCoachStateRevision(), true),
+                "claude", "owner", Instant.now().plusSeconds(600));
+        long revision = learner.getCoachStateRevision();
+        String workflow = learner.getCompletionWorkflow();
+        var owner = new CompletionCallContext("claude", "owner", Instant.now().plusSeconds(600), true);
+        var state = CompletionCallContext.with(owner,
+                () -> learners.getCoachLearnerState(learner.getSkillpilotId()));
+        assertThat(state.activeGoal().id()).isEqualTo(SEK1_EXAM);
+        assertThat(state.activeGoal().examData().getTaskContent()).isNotBlank();
+        assertThat(state.stateMachine().requiredAction()).isEqualTo("teachActiveGoal");
+        assertThat(state.nextAllowedActions()).contains("setMastery");
+        assertValidOrExplicitlyUncovered(state.levelCompletion());
+        assertThat(state.levelCompletion().directAssessmentRunning()).isTrue();
+        assertThat(learner.getCompletionWorkflow()).isEqualTo(workflow);
+        assertThat(learner.getCoachStateRevision()).isEqualTo(revision);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
+        assertThat(focus.findByLearner_SkillpilotId(learner.getSkillpilotId()))
+                .extracting(PlannedGoal::getGoalId).containsExactly(PREPARATION);
+    }
+
     @Test void planCompletionReceivesAutomaticInputsIndependentlyOfRouteAndShortcutOptOut() {
         learner.setUseAssessmentShortcuts(false);
         long revision = learner.getCoachStateRevision();
@@ -204,6 +230,65 @@ class AutomaticCompletionIntegrationTest {
         assertThat(context.reviewedProfiles()).isEmpty();
         assertThat(context.canonicalGoals()).containsKey(PREPARATION);
         assertUnchanged(revision);
+    }
+
+    @Test void anAuthorizedRunningExamCanRetryWhenImplicitCompletionIsUnavailable() {
+        start(SEK1_EXAM);
+        var current = preview();
+        assertThat(current.directAssessmentRunning()).isTrue();
+        assertThat(current.actions()).anySatisfy(action -> {
+            assertThat(action.action()).isEqualTo("retryAssessment");
+            assertThat(action.goalId()).isEqualTo(SEK1_EXAM);
+        });
+        long before = learner.getCoachStateRevision();
+        String previousWorkflow = learner.getCompletionWorkflow();
+        learners.startCompletionAssessment(learner.getSkillpilotId(),
+                new CompletionAssessmentStart(DEFAULT_SCOPE, SEK1_EXAM, before, true),
+                "claude", "owner", Instant.now().plusSeconds(600));
+        // The test's outer transaction deliberately coalesces both mutations
+        // into one learner revision; the retry must still refresh its binding.
+        assertThat(learner.getCoachStateRevision()).isEqualTo(before);
+        assertThat(learner.getCompletionWorkflow()).isNotEqualTo(previousWorkflow);
+        assertThat(learner.getActiveGoalId()).isEqualTo(SEK1_EXAM);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
+    }
+
+    @Test void automaticProfileSelectionMustRespectTheRealCurriculumsIntegrityResult() {
+        long revision = learner.getCoachStateRevision();
+        var before = preview();
+        assertValidOrExplicitlyUncovered(before);
+        var select = new LevelCompletionActionRequest("selectProfile", DEFAULT_SCOPE, null, null, revision);
+        if ("invalid".equals(before.calculationStatus())) {
+            assertThat(before.notice()).isEqualTo("completion_target_routes_uncovered");
+            assertThatThrownBy(() -> learners.chooseLevelCompletion(learner.getSkillpilotId(), select))
+                    .isInstanceOfSatisfying(ResponseStatusException.class, failure -> {
+                        assertThat(failure.getStatusCode().value()).isEqualTo(409);
+                        assertThat(failure.getReason()).isEqualTo("Refresh the completion choices.");
+                    });
+            assertUnchanged(revision);
+            assertThat(learner.getActiveGoalId()).isNull();
+            assertThat(preview()).isEqualTo(before);
+        } else {
+            // A repaired real curriculum must remain selectable; a permanent red expectation
+            // would turn this safety regression into a stale data-count assertion.
+            assertThat(before.notice()).isNull();
+            assertThat(before.profileOptions()).extracting(option -> option.profileId()).contains(DEFAULT_SCOPE);
+            assertThat(learners.chooseLevelCompletion(learner.getSkillpilotId(), select)
+                    .levelCompletion().profileId()).isEqualTo(DEFAULT_SCOPE);
+        }
+    }
+
+    private void assertValidOrExplicitlyUncovered(LevelCompletionResponse response) {
+        // This real curriculum is independently held to the strict authoring
+        // gate. An uncovered route must degrade completion without blocking an
+        // otherwise authorized exam; fixing content must retain that access.
+        assertThat(response.calculationStatus()).isIn("valid", "invalid");
+        if ("invalid".equals(response.calculationStatus())) {
+            assertThat(response.notice()).isEqualTo("completion_target_routes_uncovered");
+            assertThat(response.complete()).isNull();
+            assertThat(response.waivedTargetGoalIds()).isEmpty();
+            assertThat(response.targetCount()).isZero();
+        }
     }
 
     private LevelCompletionResponse preview() {

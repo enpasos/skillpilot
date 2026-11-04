@@ -1,0 +1,183 @@
+{
+  "status": "UNREVIEWED_V2_EXACT_TWO_REVIEW_FINDINGS_CORRECTED_IN_DE_AND_EN",
+  "originalPreserved": {
+    "path": "tmp/approach-review-20261101/sh-gk-binomial-histogram-sigma-authoring-20261101/whole-task-unreviewed-draft.json",
+    "sha256": "aa9851bad88e0658a8549c7fd2a3e3e6d4552a97c0d294f824dd2d4f1e69318a"
+  },
+  "wholeTask": {
+    "path": "tmp/approach-review-20261101/sh-gk-binomial-histogram-sigma-authoring-20261101/whole-task-unreviewed-draft-v2.json",
+    "sha256": "691fe4be09bc4c495401c5a96f021d8bba671531bf310773a97df068fd7e4331"
+  },
+  "fourExactSolutionSentenceEdits": [
+    {
+      "pointer": "/examData/solutionContent",
+      "beforeText": "Mit wachsendem Abstand um den Mittelwert werden mehr Werte eingeschlossen; dies",
+      "afterText": "Mit wachsendem Abstand können weitere Werte eingeschlossen werden; der enthaltene Anteil nimmt nicht ab. Dies"
+    },
+    {
+      "pointer": "/examData/solutionContentEn",
+      "beforeText": "Wider central intervals include more values.",
+      "afterText": "As the central interval widens, additional values may be included; the contained probability does not decrease."
+    },
+    {
+      "pointer": "/examData/solutionContent",
+      "beforeText": "Markierungen bei $15$ sowie etwa $11{,}245$ und $18{,}755$ zeigen Lage und Streuung.",
+      "afterText": "Markierungen bei $15$ sowie etwa $11{,}245$ und $18{,}755$ zeigen Lage und Streuung. Die Histogrammbreite wird durch $\\sigma\\approx3{,}755$ beschrieben; die Varianz $14{,}1$ ist das Quadrat dieser Streuungskennzahl."
+    },
+    {
+      "pointer": "/examData/solutionContentEn",
+      "beforeText": "Mark 15 and approximately 11.245 and 18.755.",
+      "afterText": "Mark 15 and approximately 11.245 and 18.755. The histogram width is described by $\\sigma\\approx3.755$; the variance $14.1$ is the square of this measure of spread."
+    }
+  ],
+  "taskRubricIdScopeRequiresCoverageAndAllOtherFieldsUnchanged": true,
+  "independentCheckOfDiscreteNonStrictMonotonicity": [
+    {
+      "sigmaFactor": 1,
+      "realBounds": [
+        11.245003328896283,
+        18.75499667110372
+      ],
+      "integerCentres": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    },
+    {
+      "sigmaFactor": 1.64,
+      "realBounds": [
+        8.841805459389903,
+        21.158194540610097
+      ],
+      "integerCentres": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "sigmaFactor": 1.96,
+      "realBounds": [
+        7.640206524636715,
+        22.359793475363286
+      ],
+      "integerCentres": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ]
+    },
+    {
+      "sigmaFactor": 2,
+      "realBounds": [
+        7.4900066577925655,
+        22.509993342207434
+      ],
+      "integerCentres": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ]
+    },
+    {
+      "sigmaFactor": 2.58,
+      "realBounds": [
+        5.312108588552409,
+        24.68789141144759
+      ],
+      "integerCentres": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    },
+    {
+      "sigmaFactor": 3,
+      "realBounds": [
+        3.7350099866888478,
+        26.264990013311152
+      ],
+      "integerCentres": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ]
+    }
+  ],
+  "reviewBoundary": "Content-only follow-up to independent Astra findings; no source scope, canonical placement, materialization, release, mastery or Root changes."
+}

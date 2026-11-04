@@ -1,0 +1,694 @@
+{
+  "status": "EIGHT_INPUT_BINDINGS_INDEPENDENTLY_VERIFIED_NOT_A_SEMANTIC_VERDICT",
+  "preparation": {
+    "path": "tmp/approach-review-20261101/space-geometry-four-integration-preparation-20261103-v1/eight-exact-am-row-bindings.actual.json",
+    "sha256": "10a2fc12ff7efed67bf18098053eb8e94e2748989cd1b7246e73b465e5a327da"
+  },
+  "execution": "Actual current reader function declarations selected with the TypeScript AST and executed without invoking reader main or any write mode.",
+  "rows": [
+    {
+      "lane": "A",
+      "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
+      "lineNumber": 219,
+      "originalRowBinding": {
+        "lane": "A",
+        "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
+        "registeredConfig": {
+          "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+          "sha256": "f1df5f5ceae5ac378f5fff3a3d3dd015b801b17ad983842660ce1576594a8e5d"
+        },
+        "registeredReview": {
+          "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-geometry-two-current-20261103.review.jsonl",
+          "sha256": "25b972333c0516016862ea7b3ad18fcc5ed996112932af8748d306b94a6996d4"
+        },
+        "lineNumber": 219,
+        "originalWholeRow": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
+          "fingerprint": "sha256:310492d74258b36545aaab0786160626b6d10631e85c32ea570a646b7c84f5b7",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex",
+          "reason": "Q2-Review: Als eine zusammenhaengende, pruefbare Analysis- oder Lineare-Algebra-Routine bewertet; auffaellige Sammelziele wurden vor dem Review textlich geschaerft.",
+          "suggestedSplit": []
+        },
+        "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"492463cf-6cb2-5a5a-98e0-c1d77c36c256\",\"fingerprint\":\"sha256:310492d74258b36545aaab0786160626b6d10631e85c32ea570a646b7c84f5b7\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-05\",\"reviewer\":\"codex\",\"reason\":\"Q2-Review: Als eine zusammenhaengende, pruefbare Analysis- oder Lineare-Algebra-Routine bewertet; auffaellige Sammelziele wurden vor dem Review textlich geschaerft.\",\"suggestedSplit\":[]}",
+        "actualReader": {
+          "path": "app/scripts/semanticAtomicityReview.ts",
+          "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee"
+        },
+        "fingerprintMethod": "Exact existing reader function source transpiled and executed, current registered fingerprint checked equal.",
+        "beforeFingerprint": "sha256:310492d74258b36545aaab0786160626b6d10631e85c32ea570a646b7c84f5b7",
+        "afterNodeKindExamFingerprint": "sha256:d648429cd043f9ec7b790ef85f4bcd7702b5e099b79a7a39641c0593b07cadcd",
+        "changeCause": "nodeKind changes from missing to exam; descriptions and all other A/M semantic payload fields are unchanged. examData contents are outside these two A/M fingerprint payloads.",
+        "independentRevalidationRequired": true,
+        "newReviewRowWritten": false
+      },
+      "originalWholeGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/current-whole-goal.json",
+        "sha256": "d1f9c841b40d7bfb775bf5131348d1d169cbbe73984790ff6b9ecb6ddeac3317"
+      },
+      "reviewedWholeGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/proposed-whole-goal.draft.json",
+        "sha256": "42061684d708d45b5854dfccaee9174de6848d83da13c97b662b1c0a3b9928cb"
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:310492d74258b36545aaab0786160626b6d10631e85c32ea570a646b7c84f5b7",
+        "semanticPayload": {
+          "area": "",
+          "description": "Die lernende Person kann geradlinige Bewegungen im Raum mit $\\vec{x}(t)=\\vec{x}_0+t\\vec{v}$ beschreiben und untersuchen sowie $\\vec{v}$ als Geschwindigkeitsvektor deuten.",
+          "descriptionEn": "The learner can describe and analyze rectilinear motion in space using $\\vec{x}(t)=\\vec{x}_0+t\\vec{v}$ and interpret $\\vec{v}$ as the velocity vector.",
+          "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
+          "nodeKind": "",
+          "phase": "Q2",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "",
+          "title": "Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen",
+          "titleEn": "Analyze rectilinear motion using position and velocity vectors",
+          "topicCode": ""
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:d648429cd043f9ec7b790ef85f4bcd7702b5e099b79a7a39641c0593b07cadcd",
+        "semanticPayload": {
+          "area": "",
+          "description": "Die lernende Person kann geradlinige Bewegungen im Raum mit $\\vec{x}(t)=\\vec{x}_0+t\\vec{v}$ beschreiben und untersuchen sowie $\\vec{v}$ als Geschwindigkeitsvektor deuten.",
+          "descriptionEn": "The learner can describe and analyze rectilinear motion in space using $\\vec{x}(t)=\\vec{x}_0+t\\vec{v}$ and interpret $\\vec{v}$ as the velocity vector.",
+          "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
+          "nodeKind": "exam",
+          "phase": "Q2",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "",
+          "title": "Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen",
+          "titleEn": "Analyze rectilinear motion using position and velocity vectors",
+          "topicCode": ""
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "A",
+      "goalId": "a9fde754-51b4-58d7-85e5-5e36160581e6",
+      "lineNumber": 528,
+      "originalRowBinding": {
+        "lane": "A",
+        "goalId": "a9fde754-51b4-58d7-85e5-5e36160581e6",
+        "registeredConfig": {
+          "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+          "sha256": "f1df5f5ceae5ac378f5fff3a3d3dd015b801b17ad983842660ce1576594a8e5d"
+        },
+        "registeredReview": {
+          "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-geometry-two-current-20261103.review.jsonl",
+          "sha256": "25b972333c0516016862ea7b3ad18fcc5ed996112932af8748d306b94a6996d4"
+        },
+        "lineNumber": 528,
+        "originalWholeRow": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "a9fde754-51b4-58d7-85e5-5e36160581e6",
+          "fingerprint": "sha256:94fc47f81c076a16236a7ada0c2edc715b859b91dd7e8e05d00853bf0724befd",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-09",
+          "reviewer": "codex",
+          "reason": "Bulk-Review 2026-05-09: Ein zusammenhängendes, einzeln prüfbares Inhaltsziel; ggf. sind Berechnen/Deuten/Begründen Ausführungsschritte derselben Kompetenz.",
+          "suggestedSplit": []
+        },
+        "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"a9fde754-51b4-58d7-85e5-5e36160581e6\",\"fingerprint\":\"sha256:94fc47f81c076a16236a7ada0c2edc715b859b91dd7e8e05d00853bf0724befd\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-09\",\"reviewer\":\"codex\",\"reason\":\"Bulk-Review 2026-05-09: Ein zusammenhängendes, einzeln prüfbares Inhaltsziel; ggf. sind Berechnen/Deuten/Begründen Ausführungsschritte derselben Kompetenz.\",\"suggestedSplit\":[]}",
+        "actualReader": {
+          "path": "app/scripts/semanticAtomicityReview.ts",
+          "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee"
+        },
+        "fingerprintMethod": "Exact existing reader function source transpiled and executed, current registered fingerprint checked equal.",
+        "beforeFingerprint": "sha256:94fc47f81c076a16236a7ada0c2edc715b859b91dd7e8e05d00853bf0724befd",
+        "afterNodeKindExamFingerprint": "sha256:bb615c30b2cb871871c4caacb140a2f9d8a512d27727eae90273ecca5d7eddc1",
+        "changeCause": "nodeKind changes from missing to exam; descriptions and all other A/M semantic payload fields are unchanged. examData contents are outside these two A/M fingerprint payloads.",
+        "independentRevalidationRequired": true,
+        "newReviewRowWritten": false
+      },
+      "originalWholeGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/current-whole-goal.json",
+        "sha256": "06109333178e51c3fc20c0c507b2ec757eb9bb0d21add037485b2c13877ee1ff"
+      },
+      "reviewedWholeGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/proposed-whole-goal.draft.json",
+        "sha256": "25d98482a34eb5e315517c6bf68d3377dd4876978d4d0bc7c1abc8bdd417de8f"
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:94fc47f81c076a16236a7ada0c2edc715b859b91dd7e8e05d00853bf0724befd",
+        "semanticPayload": {
+          "area": "LinearAlgebra",
+          "description": "Die lernende Person kann Schnittpunkte einer Geraden mit Koordinatenebenen bestimmen, diese als Durchstoßpunkte bzw. Spurpunkte deuten und rechnerisch prüfen.",
+          "descriptionEn": "The learner can determine intersections of a line with coordinate planes, interpret them as trace points, and check them algebraically.",
+          "goalId": "a9fde754-51b4-58d7-85e5-5e36160581e6",
+          "nodeKind": "",
+          "phase": "Q2",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "canonical_math_q2_find_line_coordinate_plane_intersections_spur_points",
+          "title": "Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen",
+          "titleEn": "Determine intersections of a line with coordinate planes",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.3.LINE_COORDINATE_PLANE_SPUR_POINTS"
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:bb615c30b2cb871871c4caacb140a2f9d8a512d27727eae90273ecca5d7eddc1",
+        "semanticPayload": {
+          "area": "LinearAlgebra",
+          "description": "Die lernende Person kann Schnittpunkte einer Geraden mit Koordinatenebenen bestimmen, diese als Durchstoßpunkte bzw. Spurpunkte deuten und rechnerisch prüfen.",
+          "descriptionEn": "The learner can determine intersections of a line with coordinate planes, interpret them as trace points, and check them algebraically.",
+          "goalId": "a9fde754-51b4-58d7-85e5-5e36160581e6",
+          "nodeKind": "exam",
+          "phase": "Q2",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "canonical_math_q2_find_line_coordinate_plane_intersections_spur_points",
+          "title": "Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen",
+          "titleEn": "Determine intersections of a line with coordinate planes",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.3.LINE_COORDINATE_PLANE_SPUR_POINTS"
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "A",
+      "goalId": "edaf0bb4-e12e-5a6c-b484-91124ba209f3",
+      "lineNumber": 743,
+      "originalRowBinding": {
+        "lane": "A",
+        "goalId": "edaf0bb4-e12e-5a6c-b484-91124ba209f3",
+        "registeredConfig": {
+          "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+          "sha256": "f1df5f5ceae5ac378f5fff3a3d3dd015b801b17ad983842660ce1576594a8e5d"
+        },
+        "registeredReview": {
+          "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-geometry-two-current-20261103.review.jsonl",
+          "sha256": "25b972333c0516016862ea7b3ad18fcc5ed996112932af8748d306b94a6996d4"
+        },
+        "lineNumber": 743,
+        "originalWholeRow": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "edaf0bb4-e12e-5a6c-b484-91124ba209f3",
+          "fingerprint": "sha256:06177fe2dfce1d5dc816e3906760ce6429134a2060b76ee1398fd845ecc32923",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-09",
+          "reviewer": "codex",
+          "reason": "Bulk-Review 2026-05-09: Ein zusammenhängendes, einzeln prüfbares Inhaltsziel; ggf. sind Berechnen/Deuten/Begründen Ausführungsschritte derselben Kompetenz.",
+          "suggestedSplit": []
+        },
+        "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"edaf0bb4-e12e-5a6c-b484-91124ba209f3\",\"fingerprint\":\"sha256:06177fe2dfce1d5dc816e3906760ce6429134a2060b76ee1398fd845ecc32923\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-09\",\"reviewer\":\"codex\",\"reason\":\"Bulk-Review 2026-05-09: Ein zusammenhängendes, einzeln prüfbares Inhaltsziel; ggf. sind Berechnen/Deuten/Begründen Ausführungsschritte derselben Kompetenz.\",\"suggestedSplit\":[]}",
+        "actualReader": {
+          "path": "app/scripts/semanticAtomicityReview.ts",
+          "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee"
+        },
+        "fingerprintMethod": "Exact existing reader function source transpiled and executed, current registered fingerprint checked equal.",
+        "beforeFingerprint": "sha256:06177fe2dfce1d5dc816e3906760ce6429134a2060b76ee1398fd845ecc32923",
+        "afterNodeKindExamFingerprint": "sha256:c9c795fdbb172f686f124f6567e7a73261092f22b46f4ffb5dc227fd91909d0c",
+        "changeCause": "nodeKind changes from missing to exam; descriptions and all other A/M semantic payload fields are unchanged. examData contents are outside these two A/M fingerprint payloads.",
+        "independentRevalidationRequired": true,
+        "newReviewRowWritten": false
+      },
+      "originalWholeGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/current-whole-goal.json",
+        "sha256": "253cdfbd0ba0f95dbfab19f6578c94fa580b8d58edcf2ae03dfe4c197b741795"
+      },
+      "reviewedWholeGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/proposed-whole-goal.draft.json",
+        "sha256": "dccae37455144cb8f409d4abdd5afc362f6fce80725ee9e8625798899d31f509"
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:06177fe2dfce1d5dc816e3906760ce6429134a2060b76ee1398fd845ecc32923",
+        "semanticPayload": {
+          "area": "LinearAlgebra",
+          "description": "Die lernende Person kann Geradenscharen mit einem Parameter untersuchen, Parameterwerte für vorgegebene Lage- oder Schnittbedingungen bestimmen und die zugehörigen Geradenkonfigurationen geometrisch deuten.",
+          "descriptionEn": "The learner can analyze one-parameter families of lines, determine parameter values for specified positional or intersection conditions, and interpret the corresponding line configurations geometrically.",
+          "goalId": "edaf0bb4-e12e-5a6c-b484-91124ba209f3",
+          "nodeKind": "",
+          "phase": "Q2",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "canonical_math_q2_analyze_families_of_lines_lk",
+          "title": "Geradenscharen untersuchen (LK)",
+          "titleEn": "Analyze families of lines (advanced course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.3.FAMILIES_OF_LINES_LK"
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:c9c795fdbb172f686f124f6567e7a73261092f22b46f4ffb5dc227fd91909d0c",
+        "semanticPayload": {
+          "area": "LinearAlgebra",
+          "description": "Die lernende Person kann Geradenscharen mit einem Parameter untersuchen, Parameterwerte für vorgegebene Lage- oder Schnittbedingungen bestimmen und die zugehörigen Geradenkonfigurationen geometrisch deuten.",
+          "descriptionEn": "The learner can analyze one-parameter families of lines, determine parameter values for specified positional or intersection conditions, and interpret the corresponding line configurations geometrically.",
+          "goalId": "edaf0bb4-e12e-5a6c-b484-91124ba209f3",
+          "nodeKind": "exam",
+          "phase": "Q2",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "canonical_math_q2_analyze_families_of_lines_lk",
+          "title": "Geradenscharen untersuchen (LK)",
+          "titleEn": "Analyze families of lines (advanced course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.3.FAMILIES_OF_LINES_LK"
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "A",
+      "goalId": "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+      "lineNumber": 801,
+      "originalRowBinding": {
+        "lane": "A",
+        "goalId": "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+        "registeredConfig": {
+          "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+          "sha256": "f1df5f5ceae5ac378f5fff3a3d3dd015b801b17ad983842660ce1576594a8e5d"
+        },
+        "registeredReview": {
+          "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-geometry-two-current-20261103.review.jsonl",
+          "sha256": "25b972333c0516016862ea7b3ad18fcc5ed996112932af8748d306b94a6996d4"
+        },
+        "lineNumber": 801,
+        "originalWholeRow": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "semantic-atomicity-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+          "fingerprint": "sha256:b3702cb49ce63090d24c6d7c321709402e07cd4d1dcaca2edcd061eba61594a8",
+          "status": "atomic",
+          "semanticAtomic": true,
+          "reviewedAt": "2026-05-09",
+          "reviewer": "codex",
+          "reason": "Bulk-Review 2026-05-09: Ein zusammenhängendes, einzeln prüfbares Inhaltsziel; ggf. sind Berechnen/Deuten/Begründen Ausführungsschritte derselben Kompetenz.",
+          "suggestedSplit": []
+        },
+        "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc\",\"fingerprint\":\"sha256:b3702cb49ce63090d24c6d7c321709402e07cd4d1dcaca2edcd061eba61594a8\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-09\",\"reviewer\":\"codex\",\"reason\":\"Bulk-Review 2026-05-09: Ein zusammenhängendes, einzeln prüfbares Inhaltsziel; ggf. sind Berechnen/Deuten/Begründen Ausführungsschritte derselben Kompetenz.\",\"suggestedSplit\":[]}",
+        "actualReader": {
+          "path": "app/scripts/semanticAtomicityReview.ts",
+          "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee"
+        },
+        "fingerprintMethod": "Exact existing reader function source transpiled and executed, current registered fingerprint checked equal.",
+        "beforeFingerprint": "sha256:b3702cb49ce63090d24c6d7c321709402e07cd4d1dcaca2edcd061eba61594a8",
+        "afterNodeKindExamFingerprint": "sha256:0305f4a890ef80572e6277b7067f8eb604de39538b659130612a95b65d5b08d4",
+        "changeCause": "nodeKind changes from missing to exam; descriptions and all other A/M semantic payload fields are unchanged. examData contents are outside these two A/M fingerprint payloads.",
+        "independentRevalidationRequired": true,
+        "newReviewRowWritten": false
+      },
+      "originalWholeGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/current-whole-goal.json",
+        "sha256": "059364bd92dcffae79cde285a6f8a62151d180cf4e5b5b2a4098046166cabb79"
+      },
+      "reviewedWholeGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v2-plane-cap-only/replacements/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/proposed-whole-goal.draft.json",
+        "sha256": "a30fc1bc912cb327d6734880c0335c1cc9a9b912b8b85c1d78cadff05e81d5db"
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:b3702cb49ce63090d24c6d7c321709402e07cd4d1dcaca2edcd061eba61594a8",
+        "semanticPayload": {
+          "area": "LinearAlgebra",
+          "description": "Die lernende Person kann Ebenenscharen, insbesondere in Koordinatengleichungsform, parameterabhängig untersuchen, Parameterwerte für vorgegebene Lage- oder Schnittbedingungen bestimmen und die zugehörigen Ebenenkonfigurationen geometrisch deuten.",
+          "descriptionEn": "The learner can analyze one-parameter families of planes, especially in coordinate-equation form, determine parameter values for specified positional or intersection conditions, and interpret the corresponding plane configurations geometrically.",
+          "goalId": "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+          "nodeKind": "",
+          "phase": "Q2",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "canonical_math_q2_analyze_families_of_planes_coordinate_equation_lk",
+          "title": "Ebenenscharen in Koordinatengleichung untersuchen (LK)",
+          "titleEn": "Analyze families of planes in coordinate-equation form (advanced course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.3.FAMILIES_OF_PLANES_COORDINATE_EQUATION_LK"
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:0305f4a890ef80572e6277b7067f8eb604de39538b659130612a95b65d5b08d4",
+        "semanticPayload": {
+          "area": "LinearAlgebra",
+          "description": "Die lernende Person kann Ebenenscharen, insbesondere in Koordinatengleichungsform, parameterabhängig untersuchen, Parameterwerte für vorgegebene Lage- oder Schnittbedingungen bestimmen und die zugehörigen Ebenenkonfigurationen geometrisch deuten.",
+          "descriptionEn": "The learner can analyze one-parameter families of planes, especially in coordinate-equation form, determine parameter values for specified positional or intersection conditions, and interpret the corresponding plane configurations geometrically.",
+          "goalId": "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+          "nodeKind": "exam",
+          "phase": "Q2",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "canonical_math_q2_analyze_families_of_planes_coordinate_equation_lk",
+          "title": "Ebenenscharen in Koordinatengleichung untersuchen (LK)",
+          "titleEn": "Analyze families of planes in coordinate-equation form (advanced course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.3.FAMILIES_OF_PLANES_COORDINATE_EQUATION_LK"
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "M",
+      "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
+      "lineNumber": 219,
+      "originalRowBinding": {
+        "lane": "M",
+        "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
+        "registeredConfig": {
+          "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+          "sha256": "1d8ea0f5f8918db4764edaabcd44fe997c12abfa062f0c677dcd1d83e9b7df84"
+        },
+        "registeredReview": {
+          "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-geometry-two-current-20261103.review.jsonl",
+          "sha256": "b4eca055fb21c9da40734b015ba3e3eae4d1d5491426e99935b452cdcda8a2e1"
+        },
+        "lineNumber": 219,
+        "originalWholeRow": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
+          "fingerprint": "sha256:900d6a4345a8d918ee4ff125d35eaa70db5243c64777f959cea5bd3869cffbc0",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"492463cf-6cb2-5a5a-98e0-c1d77c36c256\",\"fingerprint\":\"sha256:900d6a4345a8d918ee4ff125d35eaa70db5243c64777f959cea5bd3869cffbc0\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+        "actualReader": {
+          "path": "app/scripts/memoryCardReview.ts",
+          "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181"
+        },
+        "fingerprintMethod": "Exact existing reader function source transpiled and executed, current registered fingerprint checked equal.",
+        "beforeFingerprint": "sha256:900d6a4345a8d918ee4ff125d35eaa70db5243c64777f959cea5bd3869cffbc0",
+        "afterNodeKindExamFingerprint": "sha256:4c7b41d935a83e61662c5063732433ea747102ab60ddf7fd69945d96da2b0238",
+        "changeCause": "nodeKind changes from missing to exam; descriptions and all other A/M semantic payload fields are unchanged. examData contents are outside these two A/M fingerprint payloads.",
+        "independentRevalidationRequired": true,
+        "newReviewRowWritten": false
+      },
+      "originalWholeGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/current-whole-goal.json",
+        "sha256": "d1f9c841b40d7bfb775bf5131348d1d169cbbe73984790ff6b9ecb6ddeac3317"
+      },
+      "reviewedWholeGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/proposed-whole-goal.draft.json",
+        "sha256": "42061684d708d45b5854dfccaee9174de6848d83da13c97b662b1c0a3b9928cb"
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:900d6a4345a8d918ee4ff125d35eaa70db5243c64777f959cea5bd3869cffbc0",
+        "semanticPayload": {
+          "area": "",
+          "description": "Die lernende Person kann geradlinige Bewegungen im Raum mit $\\vec{x}(t)=\\vec{x}_0+t\\vec{v}$ beschreiben und untersuchen sowie $\\vec{v}$ als Geschwindigkeitsvektor deuten.",
+          "descriptionEn": "The learner can describe and analyze rectilinear motion in space using $\\vec{x}(t)=\\vec{x}_0+t\\vec{v}$ and interpret $\\vec{v}$ as the velocity vector.",
+          "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
+          "nodeKind": "",
+          "phase": "Q2",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "",
+          "title": "Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen",
+          "titleEn": "Analyze rectilinear motion using position and velocity vectors",
+          "topicCode": ""
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:4c7b41d935a83e61662c5063732433ea747102ab60ddf7fd69945d96da2b0238",
+        "semanticPayload": {
+          "area": "",
+          "description": "Die lernende Person kann geradlinige Bewegungen im Raum mit $\\vec{x}(t)=\\vec{x}_0+t\\vec{v}$ beschreiben und untersuchen sowie $\\vec{v}$ als Geschwindigkeitsvektor deuten.",
+          "descriptionEn": "The learner can describe and analyze rectilinear motion in space using $\\vec{x}(t)=\\vec{x}_0+t\\vec{v}$ and interpret $\\vec{v}$ as the velocity vector.",
+          "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
+          "nodeKind": "exam",
+          "phase": "Q2",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "",
+          "title": "Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen",
+          "titleEn": "Analyze rectilinear motion using position and velocity vectors",
+          "topicCode": ""
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "M",
+      "goalId": "a9fde754-51b4-58d7-85e5-5e36160581e6",
+      "lineNumber": 528,
+      "originalRowBinding": {
+        "lane": "M",
+        "goalId": "a9fde754-51b4-58d7-85e5-5e36160581e6",
+        "registeredConfig": {
+          "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+          "sha256": "1d8ea0f5f8918db4764edaabcd44fe997c12abfa062f0c677dcd1d83e9b7df84"
+        },
+        "registeredReview": {
+          "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-geometry-two-current-20261103.review.jsonl",
+          "sha256": "b4eca055fb21c9da40734b015ba3e3eae4d1d5491426e99935b452cdcda8a2e1"
+        },
+        "lineNumber": 528,
+        "originalWholeRow": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "a9fde754-51b4-58d7-85e5-5e36160581e6",
+          "fingerprint": "sha256:1cbbee1bb9592d3638a2b9475ceaceb3c859b3991e333d3eaf96b52ff48fc75c",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"a9fde754-51b4-58d7-85e5-5e36160581e6\",\"fingerprint\":\"sha256:1cbbee1bb9592d3638a2b9475ceaceb3c859b3991e333d3eaf96b52ff48fc75c\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+        "actualReader": {
+          "path": "app/scripts/memoryCardReview.ts",
+          "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181"
+        },
+        "fingerprintMethod": "Exact existing reader function source transpiled and executed, current registered fingerprint checked equal.",
+        "beforeFingerprint": "sha256:1cbbee1bb9592d3638a2b9475ceaceb3c859b3991e333d3eaf96b52ff48fc75c",
+        "afterNodeKindExamFingerprint": "sha256:70656422c266386fbeb1f4a6271e5c61e84394ead2455ff735e6530ce569d5bb",
+        "changeCause": "nodeKind changes from missing to exam; descriptions and all other A/M semantic payload fields are unchanged. examData contents are outside these two A/M fingerprint payloads.",
+        "independentRevalidationRequired": true,
+        "newReviewRowWritten": false
+      },
+      "originalWholeGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/current-whole-goal.json",
+        "sha256": "06109333178e51c3fc20c0c507b2ec757eb9bb0d21add037485b2c13877ee1ff"
+      },
+      "reviewedWholeGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/proposed-whole-goal.draft.json",
+        "sha256": "25d98482a34eb5e315517c6bf68d3377dd4876978d4d0bc7c1abc8bdd417de8f"
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:1cbbee1bb9592d3638a2b9475ceaceb3c859b3991e333d3eaf96b52ff48fc75c",
+        "semanticPayload": {
+          "area": "LinearAlgebra",
+          "description": "Die lernende Person kann Schnittpunkte einer Geraden mit Koordinatenebenen bestimmen, diese als Durchstoßpunkte bzw. Spurpunkte deuten und rechnerisch prüfen.",
+          "descriptionEn": "The learner can determine intersections of a line with coordinate planes, interpret them as trace points, and check them algebraically.",
+          "goalId": "a9fde754-51b4-58d7-85e5-5e36160581e6",
+          "nodeKind": "",
+          "phase": "Q2",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "canonical_math_q2_find_line_coordinate_plane_intersections_spur_points",
+          "title": "Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen",
+          "titleEn": "Determine intersections of a line with coordinate planes",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.3.LINE_COORDINATE_PLANE_SPUR_POINTS"
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:70656422c266386fbeb1f4a6271e5c61e84394ead2455ff735e6530ce569d5bb",
+        "semanticPayload": {
+          "area": "LinearAlgebra",
+          "description": "Die lernende Person kann Schnittpunkte einer Geraden mit Koordinatenebenen bestimmen, diese als Durchstoßpunkte bzw. Spurpunkte deuten und rechnerisch prüfen.",
+          "descriptionEn": "The learner can determine intersections of a line with coordinate planes, interpret them as trace points, and check them algebraically.",
+          "goalId": "a9fde754-51b4-58d7-85e5-5e36160581e6",
+          "nodeKind": "exam",
+          "phase": "Q2",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "canonical_math_q2_find_line_coordinate_plane_intersections_spur_points",
+          "title": "Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen",
+          "titleEn": "Determine intersections of a line with coordinate planes",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.3.LINE_COORDINATE_PLANE_SPUR_POINTS"
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "M",
+      "goalId": "edaf0bb4-e12e-5a6c-b484-91124ba209f3",
+      "lineNumber": 743,
+      "originalRowBinding": {
+        "lane": "M",
+        "goalId": "edaf0bb4-e12e-5a6c-b484-91124ba209f3",
+        "registeredConfig": {
+          "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+          "sha256": "1d8ea0f5f8918db4764edaabcd44fe997c12abfa062f0c677dcd1d83e9b7df84"
+        },
+        "registeredReview": {
+          "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-geometry-two-current-20261103.review.jsonl",
+          "sha256": "b4eca055fb21c9da40734b015ba3e3eae4d1d5491426e99935b452cdcda8a2e1"
+        },
+        "lineNumber": 743,
+        "originalWholeRow": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "edaf0bb4-e12e-5a6c-b484-91124ba209f3",
+          "fingerprint": "sha256:a6c584af04501b3fd2fde29d0d85eaaf2c0afd21ce9196b3edde532e4b4ac658",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"edaf0bb4-e12e-5a6c-b484-91124ba209f3\",\"fingerprint\":\"sha256:a6c584af04501b3fd2fde29d0d85eaaf2c0afd21ce9196b3edde532e4b4ac658\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+        "actualReader": {
+          "path": "app/scripts/memoryCardReview.ts",
+          "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181"
+        },
+        "fingerprintMethod": "Exact existing reader function source transpiled and executed, current registered fingerprint checked equal.",
+        "beforeFingerprint": "sha256:a6c584af04501b3fd2fde29d0d85eaaf2c0afd21ce9196b3edde532e4b4ac658",
+        "afterNodeKindExamFingerprint": "sha256:0bb80919f434d25a0646a983c25cd17ff4ce40bde69ef32276bfa07eb8a40e46",
+        "changeCause": "nodeKind changes from missing to exam; descriptions and all other A/M semantic payload fields are unchanged. examData contents are outside these two A/M fingerprint payloads.",
+        "independentRevalidationRequired": true,
+        "newReviewRowWritten": false
+      },
+      "originalWholeGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/current-whole-goal.json",
+        "sha256": "253cdfbd0ba0f95dbfab19f6578c94fa580b8d58edcf2ae03dfe4c197b741795"
+      },
+      "reviewedWholeGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/proposed-whole-goal.draft.json",
+        "sha256": "dccae37455144cb8f409d4abdd5afc362f6fce80725ee9e8625798899d31f509"
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:a6c584af04501b3fd2fde29d0d85eaaf2c0afd21ce9196b3edde532e4b4ac658",
+        "semanticPayload": {
+          "area": "LinearAlgebra",
+          "description": "Die lernende Person kann Geradenscharen mit einem Parameter untersuchen, Parameterwerte für vorgegebene Lage- oder Schnittbedingungen bestimmen und die zugehörigen Geradenkonfigurationen geometrisch deuten.",
+          "descriptionEn": "The learner can analyze one-parameter families of lines, determine parameter values for specified positional or intersection conditions, and interpret the corresponding line configurations geometrically.",
+          "goalId": "edaf0bb4-e12e-5a6c-b484-91124ba209f3",
+          "nodeKind": "",
+          "phase": "Q2",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "canonical_math_q2_analyze_families_of_lines_lk",
+          "title": "Geradenscharen untersuchen (LK)",
+          "titleEn": "Analyze families of lines (advanced course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.3.FAMILIES_OF_LINES_LK"
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:0bb80919f434d25a0646a983c25cd17ff4ce40bde69ef32276bfa07eb8a40e46",
+        "semanticPayload": {
+          "area": "LinearAlgebra",
+          "description": "Die lernende Person kann Geradenscharen mit einem Parameter untersuchen, Parameterwerte für vorgegebene Lage- oder Schnittbedingungen bestimmen und die zugehörigen Geradenkonfigurationen geometrisch deuten.",
+          "descriptionEn": "The learner can analyze one-parameter families of lines, determine parameter values for specified positional or intersection conditions, and interpret the corresponding line configurations geometrically.",
+          "goalId": "edaf0bb4-e12e-5a6c-b484-91124ba209f3",
+          "nodeKind": "exam",
+          "phase": "Q2",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "canonical_math_q2_analyze_families_of_lines_lk",
+          "title": "Geradenscharen untersuchen (LK)",
+          "titleEn": "Analyze families of lines (advanced course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.3.FAMILIES_OF_LINES_LK"
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "M",
+      "goalId": "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+      "lineNumber": 801,
+      "originalRowBinding": {
+        "lane": "M",
+        "goalId": "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+        "registeredConfig": {
+          "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+          "sha256": "1d8ea0f5f8918db4764edaabcd44fe997c12abfa062f0c677dcd1d83e9b7df84"
+        },
+        "registeredReview": {
+          "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-geometry-two-current-20261103.review.jsonl",
+          "sha256": "b4eca055fb21c9da40734b015ba3e3eae4d1d5491426e99935b452cdcda8a2e1"
+        },
+        "lineNumber": 801,
+        "originalWholeRow": {
+          "schemaVersion": 1,
+          "reviewId": "canonical-math-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+          "fingerprint": "sha256:74dfcead107a0a008274ff7722e2ca9a2ba30197e4584d9e1ea9b84c1f04e243",
+          "status": "no_memory_needed",
+          "memoryUseful": false,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-memory-pilot",
+          "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+        },
+        "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc\",\"fingerprint\":\"sha256:74dfcead107a0a008274ff7722e2ca9a2ba30197e4584d9e1ea9b84c1f04e243\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+        "actualReader": {
+          "path": "app/scripts/memoryCardReview.ts",
+          "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181"
+        },
+        "fingerprintMethod": "Exact existing reader function source transpiled and executed, current registered fingerprint checked equal.",
+        "beforeFingerprint": "sha256:74dfcead107a0a008274ff7722e2ca9a2ba30197e4584d9e1ea9b84c1f04e243",
+        "afterNodeKindExamFingerprint": "sha256:9b09c897bc98cd7c5e997bd1b7755c6b62200a9d3e919ffbc8ed8363085fa33b",
+        "changeCause": "nodeKind changes from missing to exam; descriptions and all other A/M semantic payload fields are unchanged. examData contents are outside these two A/M fingerprint payloads.",
+        "independentRevalidationRequired": true,
+        "newReviewRowWritten": false
+      },
+      "originalWholeGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/current-whole-goal.json",
+        "sha256": "059364bd92dcffae79cde285a6f8a62151d180cf4e5b5b2a4098046166cabb79"
+      },
+      "reviewedWholeGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v2-plane-cap-only/replacements/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/proposed-whole-goal.draft.json",
+        "sha256": "a30fc1bc912cb327d6734880c0335c1cc9a9b912b8b85c1d78cadff05e81d5db"
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:74dfcead107a0a008274ff7722e2ca9a2ba30197e4584d9e1ea9b84c1f04e243",
+        "semanticPayload": {
+          "area": "LinearAlgebra",
+          "description": "Die lernende Person kann Ebenenscharen, insbesondere in Koordinatengleichungsform, parameterabhängig untersuchen, Parameterwerte für vorgegebene Lage- oder Schnittbedingungen bestimmen und die zugehörigen Ebenenkonfigurationen geometrisch deuten.",
+          "descriptionEn": "The learner can analyze one-parameter families of planes, especially in coordinate-equation form, determine parameter values for specified positional or intersection conditions, and interpret the corresponding plane configurations geometrically.",
+          "goalId": "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+          "nodeKind": "",
+          "phase": "Q2",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "canonical_math_q2_analyze_families_of_planes_coordinate_equation_lk",
+          "title": "Ebenenscharen in Koordinatengleichung untersuchen (LK)",
+          "titleEn": "Analyze families of planes in coordinate-equation form (advanced course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.3.FAMILIES_OF_PLANES_COORDINATE_EQUATION_LK"
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:9b09c897bc98cd7c5e997bd1b7755c6b62200a9d3e919ffbc8ed8363085fa33b",
+        "semanticPayload": {
+          "area": "LinearAlgebra",
+          "description": "Die lernende Person kann Ebenenscharen, insbesondere in Koordinatengleichungsform, parameterabhängig untersuchen, Parameterwerte für vorgegebene Lage- oder Schnittbedingungen bestimmen und die zugehörigen Ebenenkonfigurationen geometrisch deuten.",
+          "descriptionEn": "The learner can analyze one-parameter families of planes, especially in coordinate-equation form, determine parameter values for specified positional or intersection conditions, and interpret the corresponding plane configurations geometrically.",
+          "goalId": "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+          "nodeKind": "exam",
+          "phase": "Q2",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "canonical_math_q2_analyze_families_of_planes_coordinate_equation_lk",
+          "title": "Ebenenscharen in Koordinatengleichung untersuchen (LK)",
+          "titleEn": "Analyze families of planes in coordinate-equation form (advanced course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.3.FAMILIES_OF_PLANES_COORDINATE_EQUATION_LK"
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    }
+  ]
+}

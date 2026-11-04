@@ -1,0 +1,79 @@
+{
+  "status": "READY_TWO_NARROW_CI_FIXES_NORMAL_TESTS_PASS_REAL_GRAPH_DATA_DEBT_PRESERVED",
+  "baseCodeHead": "4d358d6495f4931bd5d3e5d60c9f0f83f15b0138",
+  "currentRootHead": "bd04246a8be27373955ba8a175677d36ed023e93",
+  "files": [
+    {
+      "path": "app/scripts/lib/hardLearningRouteValidation.ts",
+      "candidatePath": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/overlay/app/scripts/lib/hardLearningRouteValidation.ts",
+      "beforeSha256": "2984f6d0f1d0b2a14aea0305553cc9646d23df135a73797b35b99fddd84ff46b",
+      "candidateSha256": "352b53c99cd007ed69b32dd50aaae3f97b1c0e36e5e7f3310f11bfd05654412a",
+      "bytes": 15075
+    },
+    {
+      "path": "app/scripts/testHardLearningRouteValidation.ts",
+      "candidatePath": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/overlay/app/scripts/testHardLearningRouteValidation.ts",
+      "beforeSha256": "2754ad6bcd04dbef88352ee6a081312ab6a753ceee345e00a14d05b1a2abc297",
+      "candidateSha256": "103c219cdcb6c62e3ee6a531546ebaad29bdfca1c14ce0b950ec6cba521854f6",
+      "bytes": 32472
+    },
+    {
+      "path": "app/scripts/testPhysicsGoalBookInputs.ts",
+      "candidatePath": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/overlay/app/scripts/testPhysicsGoalBookInputs.ts",
+      "beforeSha256": "eb3f809e41f10a3a2e4a7ca25d2ca6252e4bb4816ebefe16a79ef01f6e9c61a1",
+      "candidateSha256": "25811383198f2256c8d50bbfaa71e638afcd4df50209fc38f46df52e571d9bdd",
+      "bytes": 112522
+    }
+  ],
+  "graphComparison": {
+    "path": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/graph-comparison.actual.json",
+    "sha256": "22491762b82ba6b057473e3b2d8936883b3fe31e46ec87cc4f620667917ba3a9",
+    "beforeErrors": 114,
+    "afterErrors": 75,
+    "removedFalseFolderFindings": 39,
+    "newErrors": 0,
+    "dataBaseline": "Actual before/after snapshot before the later four-form Root import; not a claim about the newer overall data error count.",
+    "validateGraphExitRemains": 1
+  },
+  "physicsNormalTest": {
+    "status": "PASS_PHYSICS_GOLDEN_AND_LIVE_LEDGER_BINDING",
+    "argv": [
+      "node",
+      "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/host/app/node_modules/tsx/dist/cli.mjs",
+      "scripts/testPhysicsGoalBookInputs.ts"
+    ],
+    "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/host/app",
+    "exitCode": 0,
+    "seconds": 87.52,
+    "stdout": {
+      "path": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/checks/physics-golden-after.stdout.txt",
+      "sha256": "01de63797c5da2769ed9433f15b2170a9dc63139e2e57c5296568e15e90333c4"
+    },
+    "stderr": {
+      "path": "tmp/approach-review-20261101/graph-terminal-atomic-selector-fix-20261104-v1/checks/physics-golden-after.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "firstInputInfrastructureAttemptRetained": true,
+    "currentRootDataReadOnly": true
+  },
+  "goldenFixBasis": {
+    "reviewedLivingMathDataChange": {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik-semantic-fingerprint-rebind-3a3792.json",
+      "sha256": "735d4bdd44296b26fe9976818a6e3cdcab2d612eedbeb996040db511a3eb9ac0",
+      "goalId": "000b2764-c5d9-5521-b39e-fc15a4aa72e2",
+      "changedFields": [
+        "examData"
+      ],
+      "historicalFingerprint": "sha256:3f3ae251b2b2d66a0dc22eb0ec76584c9c3b5902a0ea9376aae5f3accc5a1d0a",
+      "currentBoundFingerprint": "sha256:7ab9e9bbc8e78fc94d7bc7f3efba531e6f1911bed6ea74ef802320d50f124616"
+    },
+    "fixedLocalGoldenFingerprint": "sha256:0ab92bcec472da55677e85d096fb6c12bf609cefbe4ab5b7efea1d90aead3028",
+    "liveMathGoalStillBoundToCurrentProfileLedger": true,
+    "noAlgorithmOrProfileChange": true
+  },
+  "physics162CrossR54IdsAndAllQaAssertionsUnchanged": true,
+  "hardRoutePositiveAndNegativeRegressionsPass": true,
+  "onlyCodeAndTestsNoGoalRequiresScopeContentLedgerOrQaWrites": true,
+  "rootOrGitMutation": false,
+  "initialInfrastructureAttemptsPreservedAndNotCountedAsGraphEvidence": true
+}

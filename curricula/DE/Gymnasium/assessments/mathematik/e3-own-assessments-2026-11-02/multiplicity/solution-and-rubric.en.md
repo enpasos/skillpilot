@@ -1,0 +1,9 @@
+The zero $x=-2$ has multiplicity $2$, and $x=1$ has multiplicity $3$. There are no other zeros: the constant factor $2$ is nonzero and only the two displayed linear factors can vanish.
+
+At $x=-2$, the vanishing factor is squared and has the same sign on both sides. The other factors remain nonzero with unchanged sign in a sufficiently small neighbourhood. The graph therefore touches the axis without a sign change. More specifically, q is negative on both sides close to -2 and touches from below; this extra side description is not required.
+
+At $x=1$, the vanishing factor has an odd exponent and changes sign, while $2(x+2)^2$ stays positive nearby. The graph crosses the axis and changes from negative to positive. A concise even/odd multiplicity rule correctly applied to the two zeros is also a valid justification. Expansion, differentiation and a complete sketch are not additional scored requirements.
+
+**Ordinary total-score cap:** If neither zero has any traceable link between multiplicity/factor signs and graph behaviour, cap the total at 7 out of 10 before comparing with the threshold 8. A correct concise even/odd explanation suffices; no extra proof format is required.
+
+**Grading note:** The reference solution is not exclusive. Accept equivalent correct expressions, valid alternative methods and permitted approximations. Award partial credit by step. Do not penalise one arithmetic or copying error repeatedly as the same error; credit traceable correct follow-through without treating false statements as true. Grade reliably legible submitted work. There is one total score and one threshold, after any explicitly stated ordinary total-score cap; no additional part-pass fields.

@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 4,
+  "verdict": "PASS",
+  "contentVerdict": "PASS",
+  "authorIndependent": true,
+  "rpContextVerdict": "PASS",
+  "rpContextContract": {
+    "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-current-description-image/rp-atomic-context-contract.v4.json",
+    "sha256": "7d74d040b01b290f9434da7f00363cd9ec768ce9c3fbe851adc9eea546bb7172"
+  },
+  "approvedViewIds": [
+    "de-rp-gym-math-gk-g8",
+    "de-rp-gym-math-lk-g8",
+    "de-rp-gym-seki-math-g8"
+  ],
+  "approvedTaskGoalIds": [
+    "64f37348-20f7-55b1-82a8-8fc388087577",
+    "926d0551-4537-569e-b6ad-fc33bb17546e"
+  ],
+  "approvedReferenceCount": 6,
+  "placementVerdict": "PASS_EXACT_UPPER_SOURCE_SUPPORT_AND_TWO_PRE_RP_INPUT_BINDINGS",
+  "reviewDate": "2026-11-03",
+  "reviewedAt": "2026-11-03T20:45:08.735872+00:00",
+  "reviewerAgent": "/root/astra_cuboid_existing_scope",
+  "inputBindings": [
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-current-description-image/rp-atomic-context-contract.v4.json",
+      "sha256": "7d74d040b01b290f9434da7f00363cd9ec768ce9c3fbe851adc9eea546bb7172"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-current-description-image/native-rp-direct-atomic-context.v4.json",
+      "sha256": "c45ff968f6618c437a3140c2c63a21e3d06a5963c899dd9e79432951d9778084"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_MATHEMATIK_SEKI_RAHMENLEHRPLAN_2007.source-extraction.json",
+      "sha256": "9b419872be53efe0da1f2feae08a0594ac66d10cfd56c36aad78daa3535055fd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_I.pdf",
+      "sha256": "005085fa940a3dfd7619ea274f5e16ee34c50ba452223774aca19fb4025abe61"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-current-description-image/actual-native-origin-and-r-delta.json",
+      "sha256": "3b0bba71ccd6e8e96e9238206759a3cd9cc96b13a680404e22ba973714b558d2"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-upper-source-support-inputs/candidate-operations.v4.json",
+      "sha256": "a8cfe8d3f6895fe38979267f790b37280fc09f2d6726655506929707f53409f2"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-upper-source-support-inputs/input-views/de-rp-gk-g8.view.json",
+      "sha256": "6b53ee5f0c6c2537643a050cd9c1ecdc562eb30a6003bf861651ab8b76669f62"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-upper-source-support-inputs/input-views/de-rp-lk-g8.view.json",
+      "sha256": "59646973ca764d5a19c22ce41f267239bb0b4efb8571c3bf5b1990295637ea84"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-normal-producer-inputs/input-views/de-rp-seki-g8.view.json",
+      "sha256": "284d5044f046bb1c37d4e4f820958a23f7c0fa888c5110c9577c062df0f4b996"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json",
+      "sha256": "28edab70e01e3518a4c0c314d648771601db03799006c9280cca76a01adc9f45"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk.view.json",
+      "sha256": "c9088ffe76287de18ef3f4dd42bba8606637283b7d96870c81915b06b8eb674a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+      "sha256": "4da42dc6d9f0597de86ce9ca99443aecb138b21694ec4eeedfb33d4e8153639e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+      "sha256": "842fe53b20f01c7f3627a6a634255b1bc519530a64acf95145879179a61691b7"
+    }
+  ],
+  "priorIndependentReview": {
+    "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-normal-producer-inputs/independent-normal-producer-anchor-adoption.review.json",
+    "sha256": "59871531930759d540883e5ac195c1c718ea0705c1e42eb3b20fd262ee83a095"
+  },
+  "approvalScope": "Exactly six authored canonicalSubtree/prerequisiteOnly references in four existing upper source corridors, plus the two resulting pre-RP whole-input bindings and plan hash. Reuses previously approved content, 44/42/41 contract, tasks, three slots and six placement references; no renewed content or source-scope review.",
+  "exactPayloads": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json",
+      "beforeSha256": "78ce1f50c4f61a6fb6d048e94e4af41ad4c8754279364f71309db6b7a0c6f4a9",
+      "sha256": "28edab70e01e3518a4c0c314d648771601db03799006c9280cca76a01adc9f45"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk.view.json",
+      "beforeSha256": "c9ebaf271ed38187c23b272cc0dfe75f7656e2a37cfc826f16a7669641867a3f",
+      "sha256": "c9088ffe76287de18ef3f4dd42bba8606637283b7d96870c81915b06b8eb674a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+      "beforeSha256": "53009a3587930efb9581882950a31c10520d6083a23314f8892909767fc8c41b",
+      "sha256": "4da42dc6d9f0597de86ce9ca99443aecb138b21694ec4eeedfb33d4e8153639e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+      "beforeSha256": "029c4e5da2fac110e4127577ee89412cd14ce68c5ed22b501a7f3ae6e09dd641",
+      "sha256": "842fe53b20f01c7f3627a6a634255b1bc519530a64acf95145879179a61691b7"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-upper-source-support-inputs/input-views/de-rp-gk-g8.view.json",
+      "sha256": "6b53ee5f0c6c2537643a050cd9c1ecdc562eb30a6003bf861651ab8b76669f62"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-upper-source-support-inputs/input-views/de-rp-lk-g8.view.json",
+      "sha256": "59646973ca764d5a19c22ce41f267239bb0b4efb8571c3bf5b1990295637ea84"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-upper-source-support-inputs/candidate-operations.v4.json",
+      "sha256": "a8cfe8d3f6895fe38979267f790b37280fc09f2d6726655506929707f53409f2"
+    }
+  ],
+  "independentChecks": {
+    "wholeSourceDelta": "Rehashed all four before/after files and reconstructed each entire after object by prepending only the declared one or two refs to existing geometry-and-advanced-analysis. All other fields, original lower target refs and child order remain equal.",
+    "roleSemantics": "Both referenced canonical goals are atomic. New upper and unchanged lower references are canonicalSubtree at distance zero, so target wins at equal specificity in the full neutral source. There is no direct goalEntry override, new target, demotion, canonical change, or requires inference. Upper prerequisiteOnly refs remain authored support after replacement of the lower source tree.",
+    "actualWholeSourceRoleCheck": {
+      "method": "Independent read-only invocation of the existing production collectCompositionProjectionRoleGoalIds on all four entire before/after source trees; exact equality of both sorted sets.",
+      "canonicalSha256": "7c57d298140ac3a42eb5f4c90615a6472849ab44105ede77f1da461a6bc8eab9",
+      "collectorSha256": "d7ee9ab670d2d73a3ed82700c2bca2dee3f2da6c8e9517120c5c45acac0d84a7",
+      "rows": [
+        {
+          "view": "de-rp-gk",
+          "targetCount": 947,
+          "prerequisiteOnlyCount": 59,
+          "wholeSetsIdentical": true
+        },
+        {
+          "view": "de-rp-lk",
+          "targetCount": 957,
+          "prerequisiteOnlyCount": 57,
+          "wholeSetsIdentical": true
+        },
+        {
+          "view": "de-sh-gk",
+          "targetCount": 904,
+          "prerequisiteOnlyCount": 57,
+          "wholeSetsIdentical": true
+        },
+        {
+          "view": "de-sh-lk",
+          "targetCount": 955,
+          "prerequisiteOnlyCount": 36,
+          "wholeSetsIdentical": true
+        }
+      ]
+    },
+    "wholeInputDelta": "GK and LK captured inputs each differ from the approved prior input by exactly the same one upper POnly ref; SekI bytes remain284d5044. New candidate bytes equal the actual capture files.",
+    "wholePlanDelta": "After substituting exactly the two GK/LK input path/hash bindings, the complete old plan equals the new plan. Ordered bindings, all six year hashes, all operations, context and native/source bindings remain unchanged.",
+    "captureSource": "Compared the actual new capture executable to prior reviewed capture: only the output-directory string differs. Both capture at generatedViewsBeforeReviewedPlacements and exit explicitly before placement and scope operations; this is not a full generator success claim."
+  },
+  "historicalEvidencePreserved": "Prior598715 and219ce receipts, all old snapshots and actual3e9d Native provenance remain unchanged.",
+  "captureDiagnostics": {
+    "captureManifestSha256": "138b7a5ca048b79b6037f3b0a7b27a6e9dd5babeb686ec4573a14ae3be3405b7",
+    "captureScriptSha256": "b65f1716c5bf81c2495e60520771ce74e558a093cbddc0bd3384075d52364529",
+    "authorReportedRun": "96299; stdout explicitly AUTHORING_CAPTURE_ONLY_NOT_GENERATOR_CHECK, stderr empty",
+    "stdoutSha256": "7cccfdfb3b12f9face5d0441bea193b4058e7d1aba7dda1a3856842d462b3bba",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "nextStep": "Bind this receipt into selection/registry and run normal83/18. Compare complete final target and prerequisiteOnly sets plus actual target placement paths to the approved candidate: RP G8/G9 GK/LK retain19f170; SH G8/G9 GK/LK retain19f170 andf242a3e8; all six later RP stage tasks return. Atomic POnly references may use canonicalSubtree instead of goalEntry provided exact roles and visible target paths remain preserved.",
+  "claims": {
+    "newWholeContentReviewPerformed": false,
+    "newSourceScopeApproval": false,
+    "readOnlyProductiveRoleCheckPerformed": true,
+    "newJvmOrNativeRunByReviewer": false,
+    "whole18GeneratorPass": false,
+    "whole83GeneratorPass": false,
+    "finalOutputRoleEquivalence": false,
+    "stageReceiptIssued": false,
+    "rootActivationApproved": false,
+    "m7Accepted": false,
+    "rootOrFWritten": false
+  }
+}

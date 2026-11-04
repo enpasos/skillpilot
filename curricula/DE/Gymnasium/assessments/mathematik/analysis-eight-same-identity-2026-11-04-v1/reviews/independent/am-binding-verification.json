@@ -1,0 +1,1120 @@
+{
+  "status": "SIXTEEN_CURRENT_INPUTS_AND_ACTUAL_READER_FINGERPRINTS_VERIFIED_NOT_SEMANTIC_VERDICTS",
+  "execution": "Actual current function declarations extracted through TypeScript AST; no main or write mode invoked.",
+  "context": {
+    "path": "tmp/approach-review-20261101/analysis-eight-whole-forms-20261104-v1/registered-sixteen-am-and-existing-log-memory-context.json",
+    "sha256": "aa6abe5bd4bc58ff58741eea8e8e5dee5d13cadd9f6b5df4b38175bc416550d6"
+  },
+  "contracts": {
+    "path": "tmp/approach-review-20261101/analysis-eight-whole-forms-20261104-v1/whole-current-and-proposed-contracts.json",
+    "sha256": "44aa770c2c97617f492d245d937308f87712575e8a3bbf530db4c62b0299dc88"
+  },
+  "populationReader": {
+    "path": "app/scripts/lib/curricularReviewPopulation.ts",
+    "sha256": "55701b65d79363babb5acbf18c092c6ab4543eded9b79243a8820aee8d795f1a"
+  },
+  "rows": [
+    {
+      "lane": "A",
+      "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+      "lineNumber": 45,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+        "sha256": "577d0d48bb3ce145cd2dc92747bee49c7928fe826a4c7d4e6185c955b1e5c48c",
+        "bytes": 540
+      },
+      "reviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "1f14a45bbb8e6ddbca725c724d09087b227960085a90c4171190eaf82b77550d",
+        "bytes": 473076
+      },
+      "actualReader": {
+        "path": "app/scripts/semanticAtomicityReview.ts",
+        "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"0e8417d7-effb-5314-93ba-a571b01726ce\",\"fingerprint\":\"sha256:9bb47572047ce96f121bca5bb2e2be09540fefc6dc62ad1a9d0bb5f7ea362692\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-09-27\",\"reviewer\":\"OpenAI Codex; AI candidate recheck\",\"reason\":\"Der aktuelle Text begrenzt auf geeignete verknüpfte Funktionen: eine Stammfunktion bestimmen und sie durch Ableiten kontrollieren sind Lösungs- und Prüfschritt derselben Integralaufgabe. Nicht-elementare Fälle wie e^(x²) werden nicht als allgemein lösbar versprochen. Die Parameter-Schar-Analyse bleibt im direkten Vorgängerziel. Keine menschliche Freigabe.\",\"suggestedSplit\":[]}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+        "fingerprint": "sha256:9bb47572047ce96f121bca5bb2e2be09540fefc6dc62ad1a9d0bb5f7ea362692",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-09-27",
+        "reviewer": "OpenAI Codex; AI candidate recheck",
+        "reason": "Der aktuelle Text begrenzt auf geeignete verknüpfte Funktionen: eine Stammfunktion bestimmen und sie durch Ableiten kontrollieren sind Lösungs- und Prüfschritt derselben Integralaufgabe. Nicht-elementare Fälle wie e^(x²) werden nicht als allgemein lösbar versprochen. Die Parameter-Schar-Analyse bleibt im direkten Vorgängerziel. Keine menschliche Freigabe.",
+        "suggestedSplit": []
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:9bb47572047ce96f121bca5bb2e2be09540fefc6dc62ad1a9d0bb5f7ea362692",
+        "semanticPayload": {
+          "area": "",
+          "description": "Die lernende Person kann Integrale geeigneter Verknüpfungen von Exponential- und ganzrationalen Funktionen berechnen und die verwendeten Stammfunktionen durch Ableiten nachweisen.",
+          "descriptionEn": "The learner can compute integrals of suitable combinations of exponential and polynomial functions and verify the antiderivatives used by differentiating them.",
+          "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+          "nodeKind": "",
+          "phase": "Q4",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "",
+          "title": "Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen",
+          "titleEn": "Compute integrals of linked exponential and polynomial functions",
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.1.COMPUTE_INTEGRALS_OF_LINKED_EXPONENTIAL_AND_POLYNOMIAL_FUNCTIONS"
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:839a1562cbbcc8a46d5f3eb3eeec86bddc8c6b8aaf41e083f1a292a9d9ea729d",
+        "semanticPayload": {
+          "area": "",
+          "description": "Die lernende Person kann Integrale geeigneter Verknüpfungen von Exponential- und ganzrationalen Funktionen berechnen und die verwendeten Stammfunktionen durch Ableiten nachweisen.",
+          "descriptionEn": "The learner can compute integrals of suitable combinations of exponential and polynomial functions and verify the antiderivatives used by differentiating them.",
+          "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+          "nodeKind": "exam",
+          "phase": "Q4",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "",
+          "title": "Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen",
+          "titleEn": "Compute integrals of linked exponential and polynomial functions",
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.1.COMPUTE_INTEGRALS_OF_LINKED_EXPONENTIAL_AND_POLYNOMIAL_FUNCTIONS"
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "A",
+      "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+      "lineNumber": 108,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+        "sha256": "577d0d48bb3ce145cd2dc92747bee49c7928fe826a4c7d4e6185c955b1e5c48c",
+        "bytes": 540
+      },
+      "reviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "1f14a45bbb8e6ddbca725c724d09087b227960085a90c4171190eaf82b77550d",
+        "bytes": 473076
+      },
+      "actualReader": {
+        "path": "app/scripts/semanticAtomicityReview.ts",
+        "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"23589682-2028-54cb-9034-b468b42688f1\",\"fingerprint\":\"sha256:db3892f798666e9f7d6dad8f17fd6d3fa4093c136ea1c449f5484229c678292d\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-09\",\"reviewer\":\"codex\",\"reason\":\"Bulk-Review 2026-05-09: Ein zusammenhängendes, einzeln prüfbares Inhaltsziel; ggf. sind Berechnen/Deuten/Begründen Ausführungsschritte derselben Kompetenz.\",\"suggestedSplit\":[]}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+        "fingerprint": "sha256:db3892f798666e9f7d6dad8f17fd6d3fa4093c136ea1c449f5484229c678292d",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-09",
+        "reviewer": "codex",
+        "reason": "Bulk-Review 2026-05-09: Ein zusammenhängendes, einzeln prüfbares Inhaltsziel; ggf. sind Berechnen/Deuten/Begründen Ausführungsschritte derselben Kompetenz.",
+        "suggestedSplit": []
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:db3892f798666e9f7d6dad8f17fd6d3fa4093c136ea1c449f5484229c678292d",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann Funktionen der Form $e^{ax+b}$, $\\sin(b\\cdot(x-c))$ und $\\cos(b\\cdot(x-c))$ mithilfe der linearen inneren Transformation beziehungsweise der rückwärtigen Kettenregel integrieren.",
+          "descriptionEn": "The learner can integrate functions of the form $e^{ax+b}$, $\\sin(b\\cdot(x-c))$, and $\\cos(b\\cdot(x-c))$ using the linear inner transformation or reverse chain rule.",
+          "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+          "nodeKind": "",
+          "phase": "Q1",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "canonical_math_q1_integrate_transformed_exponential_trig_functions",
+          "title": "Transformierte Exponential- und trigonometrische Funktionen integrieren",
+          "titleEn": "Integrate transformed exponential and trigonometric functions",
+          "topicCode": "CANONICAL.MATH.SEK2.Q1.1.TRANSFORMED_EXPONENTIAL_TRIG_INTEGRALS"
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:ee7a5053cdda5aad1bc7adaf801efcce746d8fce5a60e68d4f7f8e8121229e98",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann Funktionen der Form $e^{ax+b}$, $\\sin(b\\cdot(x-c))$ und $\\cos(b\\cdot(x-c))$ mithilfe der linearen inneren Transformation beziehungsweise der rückwärtigen Kettenregel integrieren.",
+          "descriptionEn": "The learner can integrate functions of the form $e^{ax+b}$, $\\sin(b\\cdot(x-c))$, and $\\cos(b\\cdot(x-c))$ using the linear inner transformation or reverse chain rule.",
+          "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+          "nodeKind": "exam",
+          "phase": "Q1",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "canonical_math_q1_integrate_transformed_exponential_trig_functions",
+          "title": "Transformierte Exponential- und trigonometrische Funktionen integrieren",
+          "titleEn": "Integrate transformed exponential and trigonometric functions",
+          "topicCode": "CANONICAL.MATH.SEK2.Q1.1.TRANSFORMED_EXPONENTIAL_TRIG_INTEGRALS"
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "A",
+      "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+      "lineNumber": 161,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+        "sha256": "577d0d48bb3ce145cd2dc92747bee49c7928fe826a4c7d4e6185c955b1e5c48c",
+        "bytes": 540
+      },
+      "reviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "1f14a45bbb8e6ddbca725c724d09087b227960085a90c4171190eaf82b77550d",
+        "bytes": 473076
+      },
+      "actualReader": {
+        "path": "app/scripts/semanticAtomicityReview.ts",
+        "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"315093d4-515a-542c-b776-d72a12763d1a\",\"fingerprint\":\"sha256:e057138de771109593ceb6ac98a843e2890743b3305ac770b066762dc3096264\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-09\",\"reviewer\":\"codex\",\"reason\":\"Split-Review 2026-05-09: Aus einem nicht-atomaren Blattziel herausgelöstes, einzeln prüfbares kanonisches Teilziel.\",\"suggestedSplit\":[]}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+        "fingerprint": "sha256:e057138de771109593ceb6ac98a843e2890743b3305ac770b066762dc3096264",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-09",
+        "reviewer": "codex",
+        "reason": "Split-Review 2026-05-09: Aus einem nicht-atomaren Blattziel herausgelöstes, einzeln prüfbares kanonisches Teilziel.",
+        "suggestedSplit": []
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:e057138de771109593ceb6ac98a843e2890743b3305ac770b066762dc3096264",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann die Reihendarstellung der eulerschen Zahl $e$ angeben und in den Taylorpolynom-Kontext einordnen.",
+          "descriptionEn": "The learner can state the series representation of Euler’s number $e$ and relate it to Taylor polynomials.",
+          "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+          "nodeKind": "",
+          "phase": "Q4",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "canonical_math_sek2_q4_taylor_polynomials_exp_by_e_series",
+          "title": "Reihendarstellung der eulerschen Zahl angeben (LK)",
+          "titleEn": "State the series representation of Euler’s number (advanced course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.TAYLOR_EXP_BY.E_SERIES"
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:9082140dfd7c51a171b988918e27392ad80e7c49fe0b8e13f882e22cbdd97b41",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann die Reihendarstellung der eulerschen Zahl $e$ angeben und in den Taylorpolynom-Kontext einordnen.",
+          "descriptionEn": "The learner can state the series representation of Euler’s number $e$ and relate it to Taylor polynomials.",
+          "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+          "nodeKind": "exam",
+          "phase": "Q4",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "canonical_math_sek2_q4_taylor_polynomials_exp_by_e_series",
+          "title": "Reihendarstellung der eulerschen Zahl angeben (LK)",
+          "titleEn": "State the series representation of Euler’s number (advanced course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.TAYLOR_EXP_BY.E_SERIES"
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "A",
+      "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+      "lineNumber": 187,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+        "sha256": "577d0d48bb3ce145cd2dc92747bee49c7928fe826a4c7d4e6185c955b1e5c48c",
+        "bytes": 540
+      },
+      "reviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "1f14a45bbb8e6ddbca725c724d09087b227960085a90c4171190eaf82b77550d",
+        "bytes": 473076
+      },
+      "actualReader": {
+        "path": "app/scripts/semanticAtomicityReview.ts",
+        "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4\",\"fingerprint\":\"sha256:9bf0717cf4a8fbcd36d5eef1c566857dd6ffd60258286824427680f20ace1957\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-09-20\",\"reviewer\":\"codex-informed-post-revision-five-20260920\",\"reason\":\"Einzelprüfung 2026-09-20 nach ausdrücklicher Einschränkung auf x>0: Ein Inhalt, ln(x) als Stammfunktion von 1/x zu erkennen und anzuwenden. Einfache Integralrechnung und Begründung durch Ableiten sind Prüfung und Anwendung derselben Beziehung, keine unabhängigen zusätzlichen Integrationsmethoden.\",\"suggestedSplit\":[]}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+        "fingerprint": "sha256:9bf0717cf4a8fbcd36d5eef1c566857dd6ffd60258286824427680f20ace1957",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-09-20",
+        "reviewer": "codex-informed-post-revision-five-20260920",
+        "reason": "Einzelprüfung 2026-09-20 nach ausdrücklicher Einschränkung auf x>0: Ein Inhalt, ln(x) als Stammfunktion von 1/x zu erkennen und anzuwenden. Einfache Integralrechnung und Begründung durch Ableiten sind Prüfung und Anwendung derselben Beziehung, keine unabhängigen zusätzlichen Integrationsmethoden.",
+        "suggestedSplit": []
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:9bf0717cf4a8fbcd36d5eef1c566857dd6ffd60258286824427680f20ace1957",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann für $x>0$ die natürliche Logarithmusfunktion als Stammfunktion von $1/x$ verwenden und diese Beziehung in einfachen Integralrechnungen und Begründungen sicher nutzen.",
+          "descriptionEn": "The learner can use the natural logarithm as an antiderivative of $1/x$ for $x>0$ and apply this relationship reliably in simple integral calculations and justifications.",
+          "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+          "nodeKind": "",
+          "phase": "Q2",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "",
+          "title": "Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK)",
+          "titleEn": "Use the Natural Logarithm as an Antiderivative of 1/x (Advanced Course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.1.NATURAL_LOG_AS_ANTIDERIVATIVE"
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:17e0ba8e6ba8dc7a304591965a6669e513242b57e2fd62c4432f544d015f2421",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann für $x>0$ die natürliche Logarithmusfunktion als Stammfunktion von $1/x$ verwenden und diese Beziehung in einfachen Integralrechnungen und Begründungen sicher nutzen.",
+          "descriptionEn": "The learner can use the natural logarithm as an antiderivative of $1/x$ for $x>0$ and apply this relationship reliably in simple integral calculations and justifications.",
+          "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+          "nodeKind": "exam",
+          "phase": "Q2",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "",
+          "title": "Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK)",
+          "titleEn": "Use the Natural Logarithm as an Antiderivative of 1/x (Advanced Course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.1.NATURAL_LOG_AS_ANTIDERIVATIVE"
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "A",
+      "goalId": "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+      "lineNumber": 593,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+        "sha256": "577d0d48bb3ce145cd2dc92747bee49c7928fe826a4c7d4e6185c955b1e5c48c",
+        "bytes": 540
+      },
+      "reviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "1f14a45bbb8e6ddbca725c724d09087b227960085a90c4171190eaf82b77550d",
+        "bytes": 473076
+      },
+      "actualReader": {
+        "path": "app/scripts/semanticAtomicityReview.ts",
+        "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"bfc2bf06-9b37-4912-a8eb-25fb5d489d72\",\"fingerprint\":\"sha256:aa481dc531e54c10e5d4955e250bce28515aeae5893583b98ebd613471efdf81\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-08-27\",\"reviewer\":\"codex-math-batch-011-wording-adjudication-2026-08-27\",\"reason\":\"Grenzwertdarstellung, vorzeichengerechte Flächenzerlegung und Endlichkeitsdeutung sind notwendige Teile einer einzelnen geometrischen Flächenbestimmung mit uneigentlichen Integralen.\",\"suggestedSplit\":[]}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+        "fingerprint": "sha256:aa481dc531e54c10e5d4955e250bce28515aeae5893583b98ebd613471efdf81",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-08-27",
+        "reviewer": "codex-math-batch-011-wording-adjudication-2026-08-27",
+        "reason": "Grenzwertdarstellung, vorzeichengerechte Flächenzerlegung und Endlichkeitsdeutung sind notwendige Teile einer einzelnen geometrischen Flächenbestimmung mit uneigentlichen Integralen.",
+        "suggestedSplit": []
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:aa481dc531e54c10e5d4955e250bce28515aeae5893583b98ebd613471efdf81",
+        "semanticPayload": {
+          "area": "",
+          "description": "Die lernende Person kann den Inhalt einer unendlich ausgedehnten Fläche durch passende uneigentliche Integrale als Grenzwerte bestimmen, die Fläche vorzeichengerecht in nichtnegative Teilflächen zerlegen und das Ergebnis nur dann als endlich deuten, wenn alle dafür erforderlichen Grenzwerte existieren und endlich sind.",
+          "descriptionEn": "The learner can determine the area of an unbounded region using suitable improper integrals expressed as limits, split the region by sign into nonnegative subregions, and interpret the area as finite only when all required limits exist and are finite.",
+          "goalId": "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+          "nodeKind": "",
+          "phase": "Q1",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "",
+          "title": "Flächeninhalte mithilfe uneigentlicher Integrale ermitteln (LK)",
+          "titleEn": "Determine areas using improper integrals (advanced course)",
+          "topicCode": ""
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:1b62406f2d4c0d27ae857b924ffafc3b22b2cca0397d99bce0021c6a5e7af880",
+        "semanticPayload": {
+          "area": "",
+          "description": "Die lernende Person kann den Inhalt einer unendlich ausgedehnten Fläche durch passende uneigentliche Integrale als Grenzwerte bestimmen, die Fläche vorzeichengerecht in nichtnegative Teilflächen zerlegen und das Ergebnis nur dann als endlich deuten, wenn alle dafür erforderlichen Grenzwerte existieren und endlich sind.",
+          "descriptionEn": "The learner can determine the area of an unbounded region using suitable improper integrals expressed as limits, split the region by sign into nonnegative subregions, and interpret the area as finite only when all required limits exist and are finite.",
+          "goalId": "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+          "nodeKind": "exam",
+          "phase": "Q1",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "",
+          "title": "Flächeninhalte mithilfe uneigentlicher Integrale ermitteln (LK)",
+          "titleEn": "Determine areas using improper integrals (advanced course)",
+          "topicCode": ""
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "A",
+      "goalId": "ccd47872-4d9d-44db-8c8d-eda24019b502",
+      "lineNumber": 632,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+        "sha256": "577d0d48bb3ce145cd2dc92747bee49c7928fe826a4c7d4e6185c955b1e5c48c",
+        "bytes": 540
+      },
+      "reviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "1f14a45bbb8e6ddbca725c724d09087b227960085a90c4171190eaf82b77550d",
+        "bytes": 473076
+      },
+      "actualReader": {
+        "path": "app/scripts/semanticAtomicityReview.ts",
+        "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"ccd47872-4d9d-44db-8c8d-eda24019b502\",\"fingerprint\":\"sha256:dcd37af526d4759155c561005cb3fa622a54f7faead429a8a37820653ae27cf4\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-05\",\"reviewer\":\"codex\",\"reason\":\"E-Phasen-Review: als eine zusammenhängende, prüfbare Inhaltsroutine bewertet.\",\"suggestedSplit\":[]}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "ccd47872-4d9d-44db-8c8d-eda24019b502",
+        "fingerprint": "sha256:dcd37af526d4759155c561005cb3fa622a54f7faead429a8a37820653ae27cf4",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-05",
+        "reviewer": "codex",
+        "reason": "E-Phasen-Review: als eine zusammenhängende, prüfbare Inhaltsroutine bewertet.",
+        "suggestedSplit": []
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:dcd37af526d4759155c561005cb3fa622a54f7faead429a8a37820653ae27cf4",
+        "semanticPayload": {
+          "area": "",
+          "description": "Die lernende Person kann die eulersche Zahl e in einfachen Kontexten näherungsweise bestimmen und den Näherungswert als charakteristische Konstante der natürlichen Exponentialfunktion einordnen.",
+          "descriptionEn": "The learner can approximate Euler's number e in simple contexts and classify the value as a characteristic constant of the natural exponential function.",
+          "goalId": "ccd47872-4d9d-44db-8c8d-eda24019b502",
+          "nodeKind": "",
+          "phase": "E",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "",
+          "title": "Eulersche Zahl e näherungsweise bestimmen",
+          "titleEn": "Approximate Euler's number e",
+          "topicCode": ""
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:c93405b88a27f73a0fe83f4a6e2d9944c9014bbddb0298e23c9dc4ff10fb59ba",
+        "semanticPayload": {
+          "area": "",
+          "description": "Die lernende Person kann die eulersche Zahl e in einfachen Kontexten näherungsweise bestimmen und den Näherungswert als charakteristische Konstante der natürlichen Exponentialfunktion einordnen.",
+          "descriptionEn": "The learner can approximate Euler's number e in simple contexts and classify the value as a characteristic constant of the natural exponential function.",
+          "goalId": "ccd47872-4d9d-44db-8c8d-eda24019b502",
+          "nodeKind": "exam",
+          "phase": "E",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "",
+          "title": "Eulersche Zahl e näherungsweise bestimmen",
+          "titleEn": "Approximate Euler's number e",
+          "topicCode": ""
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "A",
+      "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+      "lineNumber": 739,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+        "sha256": "577d0d48bb3ce145cd2dc92747bee49c7928fe826a4c7d4e6185c955b1e5c48c",
+        "bytes": 540
+      },
+      "reviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "1f14a45bbb8e6ddbca725c724d09087b227960085a90c4171190eaf82b77550d",
+        "bytes": 473076
+      },
+      "actualReader": {
+        "path": "app/scripts/semanticAtomicityReview.ts",
+        "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"ece68088-71a8-466b-874c-09e6baac19fc\",\"fingerprint\":\"sha256:58fb43900c5e3d4bc7b3040ac0684885b3c7c65fd22be0421168f0572b181f3d\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-05\",\"reviewer\":\"codex\",\"reason\":\"Q1-Review: Eine zusammenhaengende Integral- oder Stammfunktionsroutine; Berechnen, Deuten und Begruenden sind hier Ausfuehrungsschritte einer pruefbaren Kompetenz.\",\"suggestedSplit\":[]}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+        "fingerprint": "sha256:58fb43900c5e3d4bc7b3040ac0684885b3c7c65fd22be0421168f0572b181f3d",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-05",
+        "reviewer": "codex",
+        "reason": "Q1-Review: Eine zusammenhaengende Integral- oder Stammfunktionsroutine; Berechnen, Deuten und Begruenden sind hier Ausfuehrungsschritte einer pruefbaren Kompetenz.",
+        "suggestedSplit": []
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:58fb43900c5e3d4bc7b3040ac0684885b3c7c65fd22be0421168f0572b181f3d",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann Bestände aus Änderungsraten und einem Anfangsbestand berechnen sowie die Rekonstruktion in inner- und außermathematischen Kontexten deuten.",
+          "descriptionEn": "The learner can calculate quantities from rates of change and an initial value and interpret the reconstruction in mathematical and real-world contexts.",
+          "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+          "nodeKind": "",
+          "phase": "Q1",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "",
+          "title": "Bestände aus Änderungsraten und Anfangsbestand rekonstruieren und deuten",
+          "titleEn": "Reconstruct and interpret quantities from rates of change and an initial value",
+          "topicCode": "CANONICAL.MATH.SEK2.CALCULUS.INTEGRAL.APPLICATIONS.STOCK_RECONSTRUCTION"
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:fa572f5fa9fd894e9aa6776b80536de81ad1c884a0142f8f0e7e911228736eab",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann Bestände aus Änderungsraten und einem Anfangsbestand berechnen sowie die Rekonstruktion in inner- und außermathematischen Kontexten deuten.",
+          "descriptionEn": "The learner can calculate quantities from rates of change and an initial value and interpret the reconstruction in mathematical and real-world contexts.",
+          "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+          "nodeKind": "exam",
+          "phase": "Q1",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "",
+          "title": "Bestände aus Änderungsraten und Anfangsbestand rekonstruieren und deuten",
+          "titleEn": "Reconstruct and interpret quantities from rates of change and an initial value",
+          "topicCode": "CANONICAL.MATH.SEK2.CALCULUS.INTEGRAL.APPLICATIONS.STOCK_RECONSTRUCTION"
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "A",
+      "goalId": "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+      "lineNumber": 756,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+        "sha256": "577d0d48bb3ce145cd2dc92747bee49c7928fe826a4c7d4e6185c955b1e5c48c",
+        "bytes": 540
+      },
+      "reviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "1f14a45bbb8e6ddbca725c724d09087b227960085a90c4171190eaf82b77550d",
+        "bytes": 473076
+      },
+      "actualReader": {
+        "path": "app/scripts/semanticAtomicityReview.ts",
+        "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"f1eee698-04c6-5d60-bcc6-a3c67129eea2\",\"fingerprint\":\"sha256:134c416ef716729791825e8d9109fe11f77dc34de7808570948b84a24e7f197d\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-09\",\"reviewer\":\"codex\",\"reason\":\"Split-Review 2026-05-09: Aus einem nicht-atomaren Blattziel herausgelöstes, einzeln prüfbares kanonisches Teilziel.\",\"suggestedSplit\":[]}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+        "fingerprint": "sha256:134c416ef716729791825e8d9109fe11f77dc34de7808570948b84a24e7f197d",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-09",
+        "reviewer": "codex",
+        "reason": "Split-Review 2026-05-09: Aus einem nicht-atomaren Blattziel herausgelöstes, einzeln prüfbares kanonisches Teilziel.",
+        "suggestedSplit": []
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:134c416ef716729791825e8d9109fe11f77dc34de7808570948b84a24e7f197d",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann zu gegebenen Folgengliedern ein passendes Bildungsgesetz aufstellen und die Wahl begründen.",
+          "descriptionEn": "The learner can infer a suitable formation rule from given sequence terms and justify the choice.",
+          "goalId": "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+          "nodeKind": "",
+          "phase": "Q4",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "canonical_math_sek2_q4_explicit_recursive_sequences_by_formation_rules",
+          "title": "Bildungsgesetze zu Folgengliedern aufstellen (LK)",
+          "titleEn": "Infer formation rules from sequence terms (advanced course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.SEQUENCES_EXPLICIT_RECURSIVE_BY.FORMATION_RULES"
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:f62b1b262b5a5c485bf01dbe0d988193f36316ad2fddcc4abf8fb51df0b4947f",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann zu gegebenen Folgengliedern ein passendes Bildungsgesetz aufstellen und die Wahl begründen.",
+          "descriptionEn": "The learner can infer a suitable formation rule from given sequence terms and justify the choice.",
+          "goalId": "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+          "nodeKind": "exam",
+          "phase": "Q4",
+          "ruleVersion": "semantic-atomicity-v1",
+          "shortKey": "canonical_math_sek2_q4_explicit_recursive_sequences_by_formation_rules",
+          "title": "Bildungsgesetze zu Folgengliedern aufstellen (LK)",
+          "titleEn": "Infer formation rules from sequence terms (advanced course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.SEQUENCES_EXPLICIT_RECURSIVE_BY.FORMATION_RULES"
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "M",
+      "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+      "lineNumber": 45,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+        "sha256": "af8f71ae130ee8cc1bf1fc404caa1e3b6e2f97da08816f40c4de633ff0da8691",
+        "bytes": 1054
+      },
+      "reviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "e03a5d4ddddf449fcf7fe607d90454c1d4aa16a44b8594cf9705ef43cffd67e9",
+        "bytes": 499812
+      },
+      "actualReader": {
+        "path": "app/scripts/memoryCardReview.ts",
+        "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"0e8417d7-effb-5314-93ba-a571b01726ce\",\"fingerprint\":\"sha256:4f64266580eb08bf3cb77013dbd34f28ddf55b40adda317a30d5682b29518319\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-09-27\",\"reviewer\":\"OpenAI Codex; AI candidate recheck\",\"reason\":\"Das Auswählen einer geeigneten Integrationsmethode und das Ableiten zur Kontrolle verlangen begründete Anwendung an neuen Termen. Kompakte elementare Regeln sind durch Voraussetzungen beziehungsweise bestehende Lernwege abgedeckt; dieses verknüpfte Integralziel braucht kein eigenes isoliertes Memory-Deck. Keine menschliche Freigabe.\"}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+        "fingerprint": "sha256:4f64266580eb08bf3cb77013dbd34f28ddf55b40adda317a30d5682b29518319",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-09-27",
+        "reviewer": "OpenAI Codex; AI candidate recheck",
+        "reason": "Das Auswählen einer geeigneten Integrationsmethode und das Ableiten zur Kontrolle verlangen begründete Anwendung an neuen Termen. Kompakte elementare Regeln sind durch Voraussetzungen beziehungsweise bestehende Lernwege abgedeckt; dieses verknüpfte Integralziel braucht kein eigenes isoliertes Memory-Deck. Keine menschliche Freigabe."
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:4f64266580eb08bf3cb77013dbd34f28ddf55b40adda317a30d5682b29518319",
+        "semanticPayload": {
+          "area": "",
+          "description": "Die lernende Person kann Integrale geeigneter Verknüpfungen von Exponential- und ganzrationalen Funktionen berechnen und die verwendeten Stammfunktionen durch Ableiten nachweisen.",
+          "descriptionEn": "The learner can compute integrals of suitable combinations of exponential and polynomial functions and verify the antiderivatives used by differentiating them.",
+          "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+          "nodeKind": "",
+          "phase": "Q4",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "",
+          "title": "Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen",
+          "titleEn": "Compute integrals of linked exponential and polynomial functions",
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.1.COMPUTE_INTEGRALS_OF_LINKED_EXPONENTIAL_AND_POLYNOMIAL_FUNCTIONS"
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:f8fb956d6b77471d58a1a0039779f2e7d835a85b43f7ea1a57ac63b8973c8874",
+        "semanticPayload": {
+          "area": "",
+          "description": "Die lernende Person kann Integrale geeigneter Verknüpfungen von Exponential- und ganzrationalen Funktionen berechnen und die verwendeten Stammfunktionen durch Ableiten nachweisen.",
+          "descriptionEn": "The learner can compute integrals of suitable combinations of exponential and polynomial functions and verify the antiderivatives used by differentiating them.",
+          "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+          "nodeKind": "exam",
+          "phase": "Q4",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "",
+          "title": "Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen",
+          "titleEn": "Compute integrals of linked exponential and polynomial functions",
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.1.COMPUTE_INTEGRALS_OF_LINKED_EXPONENTIAL_AND_POLYNOMIAL_FUNCTIONS"
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "M",
+      "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+      "lineNumber": 108,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+        "sha256": "af8f71ae130ee8cc1bf1fc404caa1e3b6e2f97da08816f40c4de633ff0da8691",
+        "bytes": 1054
+      },
+      "reviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "e03a5d4ddddf449fcf7fe607d90454c1d4aa16a44b8594cf9705ef43cffd67e9",
+        "bytes": 499812
+      },
+      "actualReader": {
+        "path": "app/scripts/memoryCardReview.ts",
+        "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"23589682-2028-54cb-9034-b468b42688f1\",\"fingerprint\":\"sha256:c01bb7748f22a35351cc496d3d0dbf100bf4fe71676782849a1f91ffa8be385f\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+        "fingerprint": "sha256:c01bb7748f22a35351cc496d3d0dbf100bf4fe71676782849a1f91ffa8be385f",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-memory-pilot",
+        "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:c01bb7748f22a35351cc496d3d0dbf100bf4fe71676782849a1f91ffa8be385f",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann Funktionen der Form $e^{ax+b}$, $\\sin(b\\cdot(x-c))$ und $\\cos(b\\cdot(x-c))$ mithilfe der linearen inneren Transformation beziehungsweise der rückwärtigen Kettenregel integrieren.",
+          "descriptionEn": "The learner can integrate functions of the form $e^{ax+b}$, $\\sin(b\\cdot(x-c))$, and $\\cos(b\\cdot(x-c))$ using the linear inner transformation or reverse chain rule.",
+          "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+          "nodeKind": "",
+          "phase": "Q1",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "canonical_math_q1_integrate_transformed_exponential_trig_functions",
+          "title": "Transformierte Exponential- und trigonometrische Funktionen integrieren",
+          "titleEn": "Integrate transformed exponential and trigonometric functions",
+          "topicCode": "CANONICAL.MATH.SEK2.Q1.1.TRANSFORMED_EXPONENTIAL_TRIG_INTEGRALS"
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:62b3ce0e71d1f6bf08c98634d4bfb1c1bb3ca8346594867c0fd0be7f429d46db",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann Funktionen der Form $e^{ax+b}$, $\\sin(b\\cdot(x-c))$ und $\\cos(b\\cdot(x-c))$ mithilfe der linearen inneren Transformation beziehungsweise der rückwärtigen Kettenregel integrieren.",
+          "descriptionEn": "The learner can integrate functions of the form $e^{ax+b}$, $\\sin(b\\cdot(x-c))$, and $\\cos(b\\cdot(x-c))$ using the linear inner transformation or reverse chain rule.",
+          "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+          "nodeKind": "exam",
+          "phase": "Q1",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "canonical_math_q1_integrate_transformed_exponential_trig_functions",
+          "title": "Transformierte Exponential- und trigonometrische Funktionen integrieren",
+          "titleEn": "Integrate transformed exponential and trigonometric functions",
+          "topicCode": "CANONICAL.MATH.SEK2.Q1.1.TRANSFORMED_EXPONENTIAL_TRIG_INTEGRALS"
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "M",
+      "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+      "lineNumber": 161,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+        "sha256": "af8f71ae130ee8cc1bf1fc404caa1e3b6e2f97da08816f40c4de633ff0da8691",
+        "bytes": 1054
+      },
+      "reviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "e03a5d4ddddf449fcf7fe607d90454c1d4aa16a44b8594cf9705ef43cffd67e9",
+        "bytes": 499812
+      },
+      "actualReader": {
+        "path": "app/scripts/memoryCardReview.ts",
+        "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"315093d4-515a-542c-b776-d72a12763d1a\",\"fingerprint\":\"sha256:eeb9297f938a730ffed4319d3011fe560580db19e5876e8dcd066fe2da75101f\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+        "fingerprint": "sha256:eeb9297f938a730ffed4319d3011fe560580db19e5876e8dcd066fe2da75101f",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-memory-pilot",
+        "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:eeb9297f938a730ffed4319d3011fe560580db19e5876e8dcd066fe2da75101f",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann die Reihendarstellung der eulerschen Zahl $e$ angeben und in den Taylorpolynom-Kontext einordnen.",
+          "descriptionEn": "The learner can state the series representation of Euler’s number $e$ and relate it to Taylor polynomials.",
+          "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+          "nodeKind": "",
+          "phase": "Q4",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "canonical_math_sek2_q4_taylor_polynomials_exp_by_e_series",
+          "title": "Reihendarstellung der eulerschen Zahl angeben (LK)",
+          "titleEn": "State the series representation of Euler’s number (advanced course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.TAYLOR_EXP_BY.E_SERIES"
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:667464ea9e471e4733b7226b456e920160db54ee6f4b716b2ffb70476c69f84d",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann die Reihendarstellung der eulerschen Zahl $e$ angeben und in den Taylorpolynom-Kontext einordnen.",
+          "descriptionEn": "The learner can state the series representation of Euler’s number $e$ and relate it to Taylor polynomials.",
+          "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+          "nodeKind": "exam",
+          "phase": "Q4",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "canonical_math_sek2_q4_taylor_polynomials_exp_by_e_series",
+          "title": "Reihendarstellung der eulerschen Zahl angeben (LK)",
+          "titleEn": "State the series representation of Euler’s number (advanced course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.TAYLOR_EXP_BY.E_SERIES"
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "M",
+      "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+      "lineNumber": 187,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+        "sha256": "af8f71ae130ee8cc1bf1fc404caa1e3b6e2f97da08816f40c4de633ff0da8691",
+        "bytes": 1054
+      },
+      "reviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "e03a5d4ddddf449fcf7fe607d90454c1d4aa16a44b8594cf9705ef43cffd67e9",
+        "bytes": 499812
+      },
+      "actualReader": {
+        "path": "app/scripts/memoryCardReview.ts",
+        "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4\",\"fingerprint\":\"sha256:2f979686b4c5fa1102ffcb6dd2b1c9841bc0db8b3cb9051f9bfdf27c0f1e14f9\",\"status\":\"memory_required\",\"memoryUseful\":true,\"reviewedAt\":\"2026-09-20\",\"reviewer\":\"codex-informed-post-revision-five-20260920\",\"reason\":\"Einzelprüfung 2026-09-20: memory_required bleibt auf den kompakten Zusammenhang (ln x)′=1/x und seine Umkehrung als Stammfunktion begrenzt. Die bestehenden Karten math_analysis_c05 und math_analysis_c14 im Deck de_gymnasium_math_analysis_core bleiben passend: Für x>0 gilt ln|x|=ln x. Die neue positive Definitionsmenge erweitert den Kartenumfang nicht; Verstehen und Integralaufgaben bleiben führend.\",\"memoryGoalIds\":[\"ca708087-71f8-5fae-91c5-b80721a4208f\"],\"deckIds\":[\"de_gymnasium_math_analysis_core\"]}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+        "fingerprint": "sha256:2f979686b4c5fa1102ffcb6dd2b1c9841bc0db8b3cb9051f9bfdf27c0f1e14f9",
+        "status": "memory_required",
+        "memoryUseful": true,
+        "reviewedAt": "2026-09-20",
+        "reviewer": "codex-informed-post-revision-five-20260920",
+        "reason": "Einzelprüfung 2026-09-20: memory_required bleibt auf den kompakten Zusammenhang (ln x)′=1/x und seine Umkehrung als Stammfunktion begrenzt. Die bestehenden Karten math_analysis_c05 und math_analysis_c14 im Deck de_gymnasium_math_analysis_core bleiben passend: Für x>0 gilt ln|x|=ln x. Die neue positive Definitionsmenge erweitert den Kartenumfang nicht; Verstehen und Integralaufgaben bleiben führend.",
+        "memoryGoalIds": [
+          "ca708087-71f8-5fae-91c5-b80721a4208f"
+        ],
+        "deckIds": [
+          "de_gymnasium_math_analysis_core"
+        ]
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:2f979686b4c5fa1102ffcb6dd2b1c9841bc0db8b3cb9051f9bfdf27c0f1e14f9",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann für $x>0$ die natürliche Logarithmusfunktion als Stammfunktion von $1/x$ verwenden und diese Beziehung in einfachen Integralrechnungen und Begründungen sicher nutzen.",
+          "descriptionEn": "The learner can use the natural logarithm as an antiderivative of $1/x$ for $x>0$ and apply this relationship reliably in simple integral calculations and justifications.",
+          "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+          "nodeKind": "",
+          "phase": "Q2",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "",
+          "title": "Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK)",
+          "titleEn": "Use the Natural Logarithm as an Antiderivative of 1/x (Advanced Course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.1.NATURAL_LOG_AS_ANTIDERIVATIVE"
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:8d224a6fbcc01cb020b51a1d2373e46855402241d2795dab207ec2b62c02d460",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann für $x>0$ die natürliche Logarithmusfunktion als Stammfunktion von $1/x$ verwenden und diese Beziehung in einfachen Integralrechnungen und Begründungen sicher nutzen.",
+          "descriptionEn": "The learner can use the natural logarithm as an antiderivative of $1/x$ for $x>0$ and apply this relationship reliably in simple integral calculations and justifications.",
+          "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+          "nodeKind": "exam",
+          "phase": "Q2",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "",
+          "title": "Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK)",
+          "titleEn": "Use the Natural Logarithm as an Antiderivative of 1/x (Advanced Course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.1.NATURAL_LOG_AS_ANTIDERIVATIVE"
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "M",
+      "goalId": "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+      "lineNumber": 593,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+        "sha256": "af8f71ae130ee8cc1bf1fc404caa1e3b6e2f97da08816f40c4de633ff0da8691",
+        "bytes": 1054
+      },
+      "reviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "e03a5d4ddddf449fcf7fe607d90454c1d4aa16a44b8594cf9705ef43cffd67e9",
+        "bytes": 499812
+      },
+      "actualReader": {
+        "path": "app/scripts/memoryCardReview.ts",
+        "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"bfc2bf06-9b37-4912-a8eb-25fb5d489d72\",\"fingerprint\":\"sha256:3f1689c0f851c4eb23d0f3bf81459660e2488306eaddfa098339831ff789434b\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-08-27\",\"reviewer\":\"codex-math-batch-011-wording-adjudication-2026-08-27\",\"reason\":\"Uneigentliche Integrale müssen über Grenzprozesse, Konvergenz und geometrische Deutung in variierenden Fällen verstanden werden; ein separates Memory-Deck ist dafür nicht erforderlich.\"}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+        "fingerprint": "sha256:3f1689c0f851c4eb23d0f3bf81459660e2488306eaddfa098339831ff789434b",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-08-27",
+        "reviewer": "codex-math-batch-011-wording-adjudication-2026-08-27",
+        "reason": "Uneigentliche Integrale müssen über Grenzprozesse, Konvergenz und geometrische Deutung in variierenden Fällen verstanden werden; ein separates Memory-Deck ist dafür nicht erforderlich."
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:3f1689c0f851c4eb23d0f3bf81459660e2488306eaddfa098339831ff789434b",
+        "semanticPayload": {
+          "area": "",
+          "description": "Die lernende Person kann den Inhalt einer unendlich ausgedehnten Fläche durch passende uneigentliche Integrale als Grenzwerte bestimmen, die Fläche vorzeichengerecht in nichtnegative Teilflächen zerlegen und das Ergebnis nur dann als endlich deuten, wenn alle dafür erforderlichen Grenzwerte existieren und endlich sind.",
+          "descriptionEn": "The learner can determine the area of an unbounded region using suitable improper integrals expressed as limits, split the region by sign into nonnegative subregions, and interpret the area as finite only when all required limits exist and are finite.",
+          "goalId": "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+          "nodeKind": "",
+          "phase": "Q1",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "",
+          "title": "Flächeninhalte mithilfe uneigentlicher Integrale ermitteln (LK)",
+          "titleEn": "Determine areas using improper integrals (advanced course)",
+          "topicCode": ""
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:a767f80f1003a69ae01b545939e68ea178d965824147e8cb2fbcbf112a8dc7c1",
+        "semanticPayload": {
+          "area": "",
+          "description": "Die lernende Person kann den Inhalt einer unendlich ausgedehnten Fläche durch passende uneigentliche Integrale als Grenzwerte bestimmen, die Fläche vorzeichengerecht in nichtnegative Teilflächen zerlegen und das Ergebnis nur dann als endlich deuten, wenn alle dafür erforderlichen Grenzwerte existieren und endlich sind.",
+          "descriptionEn": "The learner can determine the area of an unbounded region using suitable improper integrals expressed as limits, split the region by sign into nonnegative subregions, and interpret the area as finite only when all required limits exist and are finite.",
+          "goalId": "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+          "nodeKind": "exam",
+          "phase": "Q1",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "",
+          "title": "Flächeninhalte mithilfe uneigentlicher Integrale ermitteln (LK)",
+          "titleEn": "Determine areas using improper integrals (advanced course)",
+          "topicCode": ""
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "M",
+      "goalId": "ccd47872-4d9d-44db-8c8d-eda24019b502",
+      "lineNumber": 632,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+        "sha256": "af8f71ae130ee8cc1bf1fc404caa1e3b6e2f97da08816f40c4de633ff0da8691",
+        "bytes": 1054
+      },
+      "reviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "e03a5d4ddddf449fcf7fe607d90454c1d4aa16a44b8594cf9705ef43cffd67e9",
+        "bytes": 499812
+      },
+      "actualReader": {
+        "path": "app/scripts/memoryCardReview.ts",
+        "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"ccd47872-4d9d-44db-8c8d-eda24019b502\",\"fingerprint\":\"sha256:0ca6cf033f8cf2fd044a0dab30d417c1512fc9ff4de9bbef2b591a8a7ddbe05b\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "ccd47872-4d9d-44db-8c8d-eda24019b502",
+        "fingerprint": "sha256:0ca6cf033f8cf2fd044a0dab30d417c1512fc9ff4de9bbef2b591a8a7ddbe05b",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-memory-pilot",
+        "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:0ca6cf033f8cf2fd044a0dab30d417c1512fc9ff4de9bbef2b591a8a7ddbe05b",
+        "semanticPayload": {
+          "area": "",
+          "description": "Die lernende Person kann die eulersche Zahl e in einfachen Kontexten näherungsweise bestimmen und den Näherungswert als charakteristische Konstante der natürlichen Exponentialfunktion einordnen.",
+          "descriptionEn": "The learner can approximate Euler's number e in simple contexts and classify the value as a characteristic constant of the natural exponential function.",
+          "goalId": "ccd47872-4d9d-44db-8c8d-eda24019b502",
+          "nodeKind": "",
+          "phase": "E",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "",
+          "title": "Eulersche Zahl e näherungsweise bestimmen",
+          "titleEn": "Approximate Euler's number e",
+          "topicCode": ""
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:9ef41e17de8afb18da4d53db4738c8966ab0318ab02e404293111ed95008cb71",
+        "semanticPayload": {
+          "area": "",
+          "description": "Die lernende Person kann die eulersche Zahl e in einfachen Kontexten näherungsweise bestimmen und den Näherungswert als charakteristische Konstante der natürlichen Exponentialfunktion einordnen.",
+          "descriptionEn": "The learner can approximate Euler's number e in simple contexts and classify the value as a characteristic constant of the natural exponential function.",
+          "goalId": "ccd47872-4d9d-44db-8c8d-eda24019b502",
+          "nodeKind": "exam",
+          "phase": "E",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "",
+          "title": "Eulersche Zahl e näherungsweise bestimmen",
+          "titleEn": "Approximate Euler's number e",
+          "topicCode": ""
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "M",
+      "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+      "lineNumber": 739,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+        "sha256": "af8f71ae130ee8cc1bf1fc404caa1e3b6e2f97da08816f40c4de633ff0da8691",
+        "bytes": 1054
+      },
+      "reviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "e03a5d4ddddf449fcf7fe607d90454c1d4aa16a44b8594cf9705ef43cffd67e9",
+        "bytes": 499812
+      },
+      "actualReader": {
+        "path": "app/scripts/memoryCardReview.ts",
+        "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"ece68088-71a8-466b-874c-09e6baac19fc\",\"fingerprint\":\"sha256:75509bf1351ae625340bc77f2154c2c24ac64d241a1eeeb43f2f9e1f3476f935\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+        "fingerprint": "sha256:75509bf1351ae625340bc77f2154c2c24ac64d241a1eeeb43f2f9e1f3476f935",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-memory-pilot",
+        "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:75509bf1351ae625340bc77f2154c2c24ac64d241a1eeeb43f2f9e1f3476f935",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann Bestände aus Änderungsraten und einem Anfangsbestand berechnen sowie die Rekonstruktion in inner- und außermathematischen Kontexten deuten.",
+          "descriptionEn": "The learner can calculate quantities from rates of change and an initial value and interpret the reconstruction in mathematical and real-world contexts.",
+          "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+          "nodeKind": "",
+          "phase": "Q1",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "",
+          "title": "Bestände aus Änderungsraten und Anfangsbestand rekonstruieren und deuten",
+          "titleEn": "Reconstruct and interpret quantities from rates of change and an initial value",
+          "topicCode": "CANONICAL.MATH.SEK2.CALCULUS.INTEGRAL.APPLICATIONS.STOCK_RECONSTRUCTION"
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:e6ec22a385ba78d2363a8e33861edce050c3e1182f8db432fca4702e8a322f3c",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann Bestände aus Änderungsraten und einem Anfangsbestand berechnen sowie die Rekonstruktion in inner- und außermathematischen Kontexten deuten.",
+          "descriptionEn": "The learner can calculate quantities from rates of change and an initial value and interpret the reconstruction in mathematical and real-world contexts.",
+          "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+          "nodeKind": "exam",
+          "phase": "Q1",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "",
+          "title": "Bestände aus Änderungsraten und Anfangsbestand rekonstruieren und deuten",
+          "titleEn": "Reconstruct and interpret quantities from rates of change and an initial value",
+          "topicCode": "CANONICAL.MATH.SEK2.CALCULUS.INTEGRAL.APPLICATIONS.STOCK_RECONSTRUCTION"
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    },
+    {
+      "lane": "M",
+      "goalId": "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+      "lineNumber": 756,
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+        "sha256": "af8f71ae130ee8cc1bf1fc404caa1e3b6e2f97da08816f40c4de633ff0da8691",
+        "bytes": 1054
+      },
+      "reviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "e03a5d4ddddf449fcf7fe607d90454c1d4aa16a44b8594cf9705ef43cffd67e9",
+        "bytes": 499812
+      },
+      "actualReader": {
+        "path": "app/scripts/memoryCardReview.ts",
+        "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181"
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"f1eee698-04c6-5d60-bcc6-a3c67129eea2\",\"fingerprint\":\"sha256:5787363d5f8454cb69a2561a5623b2e17803f9619bd1107d8ab66004660cff68\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+        "fingerprint": "sha256:5787363d5f8454cb69a2561a5623b2e17803f9619bd1107d8ab66004660cff68",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-memory-pilot",
+        "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+      },
+      "independentlyComputedBefore": {
+        "fingerprint": "sha256:5787363d5f8454cb69a2561a5623b2e17803f9619bd1107d8ab66004660cff68",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann zu gegebenen Folgengliedern ein passendes Bildungsgesetz aufstellen und die Wahl begründen.",
+          "descriptionEn": "The learner can infer a suitable formation rule from given sequence terms and justify the choice.",
+          "goalId": "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+          "nodeKind": "",
+          "phase": "Q4",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "canonical_math_sek2_q4_explicit_recursive_sequences_by_formation_rules",
+          "title": "Bildungsgesetze zu Folgengliedern aufstellen (LK)",
+          "titleEn": "Infer formation rules from sequence terms (advanced course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.SEQUENCES_EXPLICIT_RECURSIVE_BY.FORMATION_RULES"
+        }
+      },
+      "independentlyComputedAfter": {
+        "fingerprint": "sha256:7cd97876cdc4d7057b13051e4d01aca4307449ff148179be05bd745edf33836b",
+        "semanticPayload": {
+          "area": "Analysis",
+          "description": "Die lernende Person kann zu gegebenen Folgengliedern ein passendes Bildungsgesetz aufstellen und die Wahl begründen.",
+          "descriptionEn": "The learner can infer a suitable formation rule from given sequence terms and justify the choice.",
+          "goalId": "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+          "nodeKind": "exam",
+          "phase": "Q4",
+          "ruleVersion": "memory-card-review-v1",
+          "shortKey": "canonical_math_sek2_q4_explicit_recursive_sequences_by_formation_rules",
+          "title": "Bildungsgesetze zu Folgengliedern aufstellen (LK)",
+          "titleEn": "Infer formation rules from sequence terms (advanced course)",
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.SEQUENCES_EXPLICIT_RECURSIVE_BY.FORMATION_RULES"
+        }
+      },
+      "changedSemanticPayloadFields": [
+        "nodeKind"
+      ]
+    }
+  ]
+}

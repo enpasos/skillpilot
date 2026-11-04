@@ -1,0 +1,30 @@
+{
+  "status": "OPEN_UNTIL_BOUND_GUARD_ONLY_SUCCESSOR_VERIFIED",
+  "findingId": "STAT-PYR-GUARD-EXTRA-POSITIVE-PONLY",
+  "severity": "blocking-for-exact-implementation-approval",
+  "affectedCode": "backend/src/test/java/com/skillpilot/backend/composition/MaterializeMathContextualCombinedViews.java",
+  "affectedCodeSha256": "c9a88f37a6947743c374323584c5351c99d4717dcbd129c7375e0e8fa3d3e555",
+  "trigger": {
+    "sourceView": "de-by-gym-sekii-math-lk",
+    "addedRootNode": {
+      "kind": "goalEntry",
+      "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+      "projectionRole": "prerequisiteOnly"
+    }
+  },
+  "observed": "The unchanged-candidate read-only check rejects the resulting stale union, but ordinary materialization accepts this unreviewed extra reference and writes all 39 private outputs. Therefore generated-output freshness alone is not the promised exact source permission check.",
+  "cause": "Positive source membership and target occurrence count pass; withoutNew erases every exact reference to the permitted ID, including the unreviewed direct POnly reference.",
+  "repair": "For new BY positives require exactly one direct goalEntry inside the approved exact wrapper and no extra exact references. For retained SH positives preserve the original exact-reference inventory. Exercise this mutation through ordinary generation, not merely stale-output checking.",
+  "currentCandidateContainsTrigger": false,
+  "rootOrFrozenInputsMutated": false,
+  "evidence": [
+    {
+      "path": "additional-plain-positive-mask.actual.json",
+      "sha256": "f5a84ea4d1eb676c4ecf7a247f93eec5950141fab97fada171bba97cc201b975"
+    },
+    {
+      "path": "additional-plain-positive-mask-materialization.actual.json",
+      "sha256": "fab98b9b63aca6bd1dadc413f444a8f6296a83856527588572d9384f3c9012b3"
+    }
+  ]
+}

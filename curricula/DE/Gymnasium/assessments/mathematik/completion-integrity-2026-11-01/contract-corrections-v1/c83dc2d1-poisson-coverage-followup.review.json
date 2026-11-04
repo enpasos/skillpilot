@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-11-01",
+  "reviewer": "independent Astra /root/astra_scope_and_approach_final",
+  "status": "APPROVED_EXACT_NARROW_CONTENT_DELTA",
+  "base": {
+    "path": "tmp/approach-review-20261101/common-offline-canonical-math.content-reviewed.json",
+    "sha256": "87bed8c1c27e10e1a0f92b26448cc18c9abf5a3c742e84a11de94ad55b155002"
+  },
+  "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+  "expectedGoalSha256": "aca12da02de0a2d6b9d34f151b781bfc2c74f5461c8a51012ab9307218e27b85",
+  "approvedGoalSha256": "383e54fc8c47e5c7d35499bf9328d556ed52fcd0b8a0ce569e87e718c795e2a5",
+  "reason": "The existing mandatory release gate requires a nonempty coveredGoalIds list. The previous empty list truthfully avoided overclaim but was not releasable under that gate. The present delta adds actual scored observation of every part of the existing c9a897ca Poisson contract instead of weakening a gate or restoring unsupported metadata.",
+  "previousReview": {
+    "path": "tmp/approach-review-20261101/independent-upper-candidate-review.json",
+    "sha256": "af2c9ec8700fa8a86644288e2f5152dadf8f32a15719b493a3ac753a9f1a2d48",
+    "supersededStatement": "Only the operational claim that c83dc2d1 may be released with empty coverage. The earlier finding that the original task did not fully show 84069c5e or c9a897ca remains correct."
+  },
+  "gate": {
+    "path": "app/scripts/generateCurriculumQualityStatus.ts",
+    "function": "examReleaseCoverageIssues",
+    "condition": "stringArray(goal.examData.coveredGoalIds).length === 0",
+    "issue": "missing coveredGoalIds",
+    "modified": false
+  },
+  "fullContract": {
+    "goalId": "c9a897ca-a0a2-5895-bbc4-23b20840c548",
+    "title": "Poisson-Verteilung als Modell seltener Ereignisse nutzen",
+    "description": "Die lernende Person kann die Poisson-Verteilung als Näherung der Binomialverteilung für seltene Ereignisse motivieren, Situationen pro Zeit- oder Flächeneinheit modellieren, Parameter bestimmen und zugehörige Wahrscheinlichkeiten in konkreten Beispielen berechnen.",
+    "goalSha256": "ee18626d89c7da659112332496daa9b2da8e17debd9461e1d5577d49b9ca59ef"
+  },
+  "coverageJustification": [
+    {
+      "contractPart": "Poisson-Verteilung als Binomialnäherung für seltene Ereignisse motivieren",
+      "taskEvidence": "Part 1 explicitly requires a Binomial model justification and a Poisson approximation motivation for n=1000, p=0.002.",
+      "solutionEvidence": "Independent equal Bernoulli opportunities, large n/small p, nonidentity of exact Binomial and Poisson approximation.",
+      "scoringEvidence": "q3d_1: 1 BE Binomial justification and 1 BE Poisson motivation."
+    },
+    {
+      "contractPart": "Situation pro Zeiteinheit modellieren",
+      "taskEvidence": "Define the random count per one recorded time interval and model the given calling mechanism.",
+      "solutionEvidence": "Z is the sum of 1000 Bernoulli indicators, Z~B(1000;0.002); X~Pois(2) is its approximation.",
+      "scoringEvidence": "q3d_1: time-unit count/model definition included in the first BE."
+    },
+    {
+      "contractPart": "Parameter bestimmen",
+      "taskEvidence": "lambda is no longer supplied; calculate it from the model.",
+      "solutionEvidence": "lambda=np=2, interpreted as mean calls per interval.",
+      "scoringEvidence": "q3d_1: 1 BE for parameter and time-unit interpretation."
+    },
+    {
+      "contractPart": "Zugehörige Wahrscheinlichkeiten in konkreten Beispielen berechnen",
+      "taskEvidence": "Five expected frequencies in part 1 and the three-interval upper-tail probability in part 3.",
+      "solutionEvidence": "13.5,27.1,27.1,18.0,14.3 expected counts; Pois(6) tail 0.2560202395.",
+      "scoringEvidence": "q3d_1: 4 BE for expected frequencies; unchanged q3d_3: 4 BE."
+    }
+  ],
+  "changes": [
+    {
+      "field": "examData.coveredGoalIds",
+      "expected": [],
+      "replacement": [
+        "c9a897ca-a0a2-5895-bbc4-23b20840c548"
+      ]
+    },
+    {
+      "field": "examData.taskContent",
+      "expected": "In einem Callcenter wird in $100$ gleich langen Zeitintervallen erfasst, wie viele Anrufe eingehen. Die beobachteten Häufigkeiten lauten:\n\n- $0$ Anrufe: $12$\n- $1$ Anruf: $29$\n- $2$ Anrufe: $31$\n- $3$ Anrufe: $17$\n- mindestens $4$ Anrufe: $11$\n\nDie Leitung vermutet, dass die Anzahl der Anrufe pro Intervall durch eine Poisson-Verteilung mit dem Parameter $\\lambda=2$ beschrieben werden kann. Für das Modell werden die Anzahlen in verschiedenen Zeitintervallen zusätzlich als unabhängig angenommen.\n\n1. Berechnen Sie die erwarteten Häufigkeiten für $0$, $1$, $2$, $3$ und mindestens $4$ Anrufe in $100$ Intervallen.\n2. Vergleichen Sie Beobachtung und Modell und beurteilen Sie, ob die Poisson-Verteilung hier als sinnvolles Modell gelten kann.\n3. Bestimmen Sie die Wahrscheinlichkeit, dass in drei aufeinanderfolgenden Intervallen zusammen mindestens $8$ Anrufe eingehen.\n4. Erläutern Sie, wie eine Simulation helfen kann, die Modellannahme weiter zu überprüfen.",
+      "replacement": "In einem Callcenter wird in $100$ gleich langen Zeitintervallen erfasst, wie viele Anrufe eingehen. Die beobachteten Häufigkeiten lauten:\n\n- $0$ Anrufe: $12$\n- $1$ Anruf: $29$\n- $2$ Anrufe: $31$\n- $3$ Anrufe: $17$\n- mindestens $4$ Anrufe: $11$\n\nAls vereinfachtes Modell für ein Zeitintervall werden $1000$ potentielle Anrufende betrachtet. Jede Person ruft in diesem Intervall entweder genau einmal oder gar nicht an; die Wahrscheinlichkeit für einen Anruf beträgt $p=0{,}002$. Die Anrufentscheidungen der Personen werden als unabhängig angenommen. Zur weiteren Rechnung soll geprüft werden, ob sich die Anzahl der Anrufe pro Intervall näherungsweise durch eine Poisson-Verteilung beschreiben lässt. Für das Modell werden die Anzahlen in verschiedenen Zeitintervallen zusätzlich als unabhängig angenommen.\n\n1. Definieren Sie die Zufallsvariable für die Anzahl der Anrufe in einem Zeitintervall und begründen Sie mit den Modellannahmen eine Binomialverteilung. Motivieren Sie die Poisson-Verteilung als Näherung für diese seltenen Einzelereignisse und bestimmen Sie ihren Parameter $\\lambda$. Berechnen Sie mit dieser Näherung die erwarteten Häufigkeiten für $0$, $1$, $2$, $3$ und mindestens $4$ Anrufe in $100$ Intervallen.\n2. Vergleichen Sie Beobachtung und Modell und beurteilen Sie, ob die Poisson-Verteilung hier als sinnvolles Modell gelten kann.\n3. Bestimmen Sie die Wahrscheinlichkeit, dass in drei aufeinanderfolgenden Intervallen zusammen mindestens $8$ Anrufe eingehen.\n4. Erläutern Sie, wie eine Simulation helfen kann, die Modellannahme weiter zu überprüfen."
+    },
+    {
+      "field": "examData.solutionContent",
+      "expected": "1. Für $X\\sim \\operatorname{Pois}(2)$ gilt\n$$\nP(X=k)=\\frac{2^k\\mathrm e^{-2}}{k!}.\n$$\nDaraus folgen näherungsweise\n$$\nP(X=0)=\\mathrm e^{-2}\\approx 0{,}1353,\\quad P(X=1)=2\\mathrm e^{-2}\\approx 0{,}2707,\n$$\n$$\nP(X=2)=\\frac{2^2}{2!}\\mathrm e^{-2}\\approx 0{,}2707,\\quad P(X=3)=\\frac{2^3}{3!}\\mathrm e^{-2}\\approx 0{,}1804.\n$$\nSomit ist\n$$\nP(X\\ge 4)=1-(0{,}1353+0{,}2707+0{,}2707+0{,}1804)\\approx 0{,}1429.\n$$\nFür $100$ Intervalle ergeben sich die erwarteten Häufigkeiten:\n$$\n13{,}5;\\ 27{,}1;\\ 27{,}1;\\ 18{,}0;\\ 14{,}3.\n$$\n\n2. Die beobachteten Werte $12,29,31,17,11$ liegen insgesamt recht nah an den erwarteten Häufigkeiten. Es gibt kleinere Abweichungen, aber keine deutliche systematische Verletzung. Die beobachteten Häufigkeiten sind damit mit dem Modell vereinbar, beweisen es aber nicht. Insbesondere kann eine solche Häufigkeitstabelle ohne zeitliche Reihenfolge weder die angenommene Unabhängigkeit verschiedener Intervalle noch zeitlich konstante Raten überprüfen.\n\n3. Die Summe von drei unabhängigen Poisson-verteilten Zufallsvariablen mit Parameter $2$ ist wieder poissonverteilt mit Parameter $6$. Für $Y\\sim \\operatorname{Pois}(6)$ gilt daher\n$$\nP(Y\\ge 8)=1-P(Y\\le 7)\\approx 0{,}256.\n$$\nDie Wahrscheinlichkeit beträgt also etwa $25{,}6\\,$%.\n\n4. Man kann sehr viele Serien von je $100$ Intervallen mit dem Poisson-Modell simulieren und dabei vergleichen, wie stark die simulierten Häufigkeiten typischerweise streuen. Liegen die realen Daten im Bereich dieser typischen Schwankungen, stützt das die Vereinbarkeit der Häufigkeiten mit dem Modell. Eine Simulation unabhängiger Poisson-Anzahlen beweist jedoch nicht die Unabhängigkeit der realen Intervalle; dafür wären zeitlich zugeordnete Daten und weitere Untersuchungen nötig.",
+      "replacement": "1. Sei $Z$ die Anzahl der Anrufe in einem Zeitintervall. Im vereinfachten Modell ist $Z$ die Summe von $1000$ unabhängigen Bernoulli-Zufallsvariablen mit derselben Erfolgswahrscheinlichkeit $p=0{,}002$: Eine Person ruft entweder genau einmal oder nicht an. Daher gilt $Z\\sim B(1000;0{,}002)$. Es gibt viele unabhängige Gelegenheiten mit jeweils kleiner Anrufwahrscheinlichkeit. Für solche seltenen Einzelereignisse ist eine Poisson-Verteilung mit demselben Erwartungswert eine geeignete Näherung. Ihr Parameter ist\n$$\n\\lambda=np=1000\\cdot0{,}002=2\n$$\nund bedeutet im Modell durchschnittlich zwei Anrufe pro Zeitintervall. Die Seltenheit betrifft den Anruf einer einzelnen Person, nicht zwingend die Gesamtzahl aller Anrufe. Die Binomialverteilung des vereinfachten Modells und ihre Poisson-Näherung werden nicht als exakt identisch behauptet. Für die Näherungsvariable $X\\sim \\operatorname{Pois}(2)$ gilt\n$$\nP(X=k)=\\frac{2^k\\mathrm e^{-2}}{k!}.\n$$\nDaraus folgen näherungsweise\n$$\nP(X=0)=\\mathrm e^{-2}\\approx 0{,}1353,\\quad P(X=1)=2\\mathrm e^{-2}\\approx 0{,}2707,\n$$\n$$\nP(X=2)=\\frac{2^2}{2!}\\mathrm e^{-2}\\approx 0{,}2707,\\quad P(X=3)=\\frac{2^3}{3!}\\mathrm e^{-2}\\approx 0{,}1804.\n$$\nSomit ist\n$$\nP(X\\ge 4)=1-(0{,}1353+0{,}2707+0{,}2707+0{,}1804)\\approx 0{,}1429.\n$$\nFür $100$ Intervalle ergeben sich die erwarteten Häufigkeiten:\n$$\n13{,}5;\\ 27{,}1;\\ 27{,}1;\\ 18{,}0;\\ 14{,}3.\n$$\n\n2. Die beobachteten Werte $12,29,31,17,11$ liegen insgesamt recht nah an den erwarteten Häufigkeiten. Es gibt kleinere Abweichungen, aber keine deutliche systematische Verletzung. Die beobachteten Häufigkeiten sind damit mit dem Modell vereinbar, beweisen es aber nicht. Insbesondere kann eine solche Häufigkeitstabelle ohne zeitliche Reihenfolge weder die angenommene Unabhängigkeit verschiedener Intervalle noch zeitlich konstante Raten überprüfen.\n\n3. Die Summe von drei unabhängigen Poisson-verteilten Zufallsvariablen mit Parameter $2$ ist wieder poissonverteilt mit Parameter $6$. Für $Y\\sim \\operatorname{Pois}(6)$ gilt daher\n$$\nP(Y\\ge 8)=1-P(Y\\le 7)\\approx 0{,}256.\n$$\nDie Wahrscheinlichkeit beträgt also etwa $25{,}6\\,$%.\n\n4. Man kann sehr viele Serien von je $100$ Intervallen mit dem Poisson-Modell simulieren und dabei vergleichen, wie stark die simulierten Häufigkeiten typischerweise streuen. Liegen die realen Daten im Bereich dieser typischen Schwankungen, stützt das die Vereinbarkeit der Häufigkeiten mit dem Modell. Eine Simulation unabhängiger Poisson-Anzahlen beweist jedoch nicht die Unabhängigkeit der realen Intervalle; dafür wären zeitlich zugeordnete Daten und weitere Untersuchungen nötig."
+    },
+    {
+      "field": "examData.scoring.steps[0].description",
+      "expected": "Erwartete Häufigkeiten unter dem Poisson-Modell korrekt berechnet",
+      "replacement": "Zufallsvariable als Anzahl pro Zeitintervall definiert und Binomialmodell aus gleichen unabhängigen Bernoulli-Versuchen begründet (1 BE); Poisson-Näherung mit vielen Gelegenheiten und seltenen Einzelereignissen motiviert (1 BE); Parameter lambda=np=2 bestimmt und als mittlere Anrufzahl je Intervall gedeutet (1 BE); alle fünf erwarteten Häufigkeiten mit dem Poisson-Modell korrekt berechnet (4 BE)."
+    }
+  ],
+  "verification": {
+    "onlyFourSpecifiedFieldChanges": true,
+    "fullGraphInMemory": "PASS",
+    "unchangedRequiresAndApplicability": true,
+    "unchangedScoringIdsAndPoints": [
+      7,
+      4,
+      4,
+      5
+    ],
+    "maxPoints": 20,
+    "passingPoints": 10,
+    "poissonParameter": 2.0,
+    "expectedFrequencies": [
+      13.53352832366127,
+      27.06705664732254,
+      27.06705664732254,
+      18.04470443154836,
+      14.287653950145284
+    ],
+    "threeIntervalUpperTail": 0.25602023954628306,
+    "rareEventApproximationCheck": {
+      "binomialZeroProbability": 0.13506452244668338,
+      "poissonZeroProbability": 0.1353352832366127
+    },
+    "languageFields": "Original task has no English task/solution fields; none added.",
+    "otherTaskParts": "Original parts 2,3,4 and their solution/rubric paragraphs preserved exactly."
+  },
+  "boundaries": {
+    "coveredGoalIdsExactly": [
+      "c9a897ca-a0a2-5895-bbc4-23b20840c548"
+    ],
+    "unsupported84069c5eNotRestored": true,
+    "newAssessmentOrGoal": false,
+    "selfCoverage": false,
+    "newRequires": false,
+    "pointsOrThresholdChange": false,
+    "existingMasteryRemainsValid": true,
+    "sourceOrScopeApproval": false,
+    "m7OverallApproval": false,
+    "liveWritesPerformed": false,
+    "releaseMetadataHandling": "The four exact replacements are intrinsically approved here. Root may update only reviewStatus/reviewNote to cite this followup after confirming the expected and approved object hashes; previous receipts stay historical.",
+    "integration": "Rerun the existing release gate/readiness on the final shared candidate. Graph/routes and applicability are unchanged by this delta; no separate source enrollment follows."
+  }
+}

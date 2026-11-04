@@ -1,0 +1,72 @@
+export const claudeV1StartCopy = {
+  de: {
+    back: 'Zurück zu SkillPilot',
+    title: 'Mit Claude lernen',
+    subtitle: 'Starte deinen aktuellen SkillPilot-Lernweg in einem neuen Claude-Chat.',
+    privacyTitle: 'Deine dauerhafte SkillPilot-ID bleibt bei SkillPilot.',
+    privacyBody: 'Claude erhält nur einen temporären Startschlüssel. Er gilt genau 24 Stunden und wird danach unbrauchbar.',
+    setupTitle: 'Einmalig einrichten',
+    setupBody: 'Installiere das SkillPilot-Plugin einmalig in Claude Web. Beim ersten Zugriff führt Claude dich bei Bedarf durch die SkillPilot-Anmeldung.',
+    setupLink: 'Einrichtung ansehen',
+    startTitle: 'Lernsession starten',
+    startBody: 'SkillPilot erstellt einen neuen Schlüssel für genau 24 Stunden und öffnet Claude Web mit der bereits eingetragenen Startnachricht. Prüfe sie und sende sie ab.',
+    start: 'Mit Claude lernen',
+    starting: 'Lernsession wird vorbereitet …',
+    missingTitle: 'Noch kein Lernprofil in diesem Browser',
+    missingBody: 'Lege zuerst auf SkillPilot ein Lernprofil an oder lade dein vorhandenes Profil. Kehre danach hierher zurück.',
+    missingAction: 'Lernen starten',
+    readyTitle: 'Deine Lernsession ist bereit.',
+    copiedAndOpened: 'Claude Web wurde mit der bereits eingetragenen Startnachricht geöffnet. Prüfe sie und sende sie ab.',
+    copiedOnly: 'Claude Web konnte nicht geöffnet werden. Erlaube Pop-ups für SkillPilot und starte erneut.',
+    openOnly: 'Claude Web wurde mit der bereits eingetragenen Startnachricht geöffnet. Prüfe sie und sende sie ab.',
+    manualReady: 'Claude Web konnte nicht geöffnet werden. Erlaube Pop-ups für SkillPilot und starte erneut.',
+    fallback: 'Das Öffnen wurde vom Browser blockiert. Erlaube Pop-ups für SkillPilot und starte erneut.',
+    copyPrompt: 'Starttext kopieren',
+    copied: 'Starttext kopiert',
+    openClaude: 'Claude Web öffnen',
+    expires: 'Diese Lernsession endet genau 24 Stunden nach ihrem Start, am',
+    errorTitle: 'Der Start hat noch nicht geklappt.',
+    errorBody: 'Bitte versuche es erneut. Dein SkillPilot-Lernstand wurde dabei nicht verändert.',
+  },
+  en: {
+    back: 'Back to SkillPilot',
+    title: 'Learn with Claude',
+    subtitle: 'Continue your current SkillPilot learning path in a new Claude chat.',
+    privacyTitle: 'Your permanent SkillPilot ID stays with SkillPilot.',
+    privacyBody: 'Claude receives only a temporary start key. It is valid for exactly 24 hours and cannot be used afterwards.',
+    setupTitle: 'Set up once',
+    setupBody: 'Install the SkillPilot plugin once in Claude Web. On first access, Claude will guide you through the SkillPilot sign-in if needed.',
+    setupLink: 'View setup guide',
+    startTitle: 'Start a learning session',
+    startBody: 'SkillPilot creates a new key valid for exactly 24 hours and opens Claude Web with the start message already filled in. Review and send it.',
+    start: 'Learn with Claude',
+    starting: 'Preparing your learning session …',
+    missingTitle: 'No learning profile is loaded in this browser',
+    missingBody: 'First create a SkillPilot learning profile or load your existing profile. Then return to this page.',
+    missingAction: 'Start learning',
+    readyTitle: 'Your learning session is ready.',
+    copiedAndOpened: 'Claude Web opened with the start message already filled in. Review and send it.',
+    copiedOnly: 'Claude Web could not be opened. Allow pop-ups for SkillPilot and start again.',
+    openOnly: 'Claude Web opened with the start message already filled in. Review and send it.',
+    manualReady: 'Claude Web could not be opened. Allow pop-ups for SkillPilot and start again.',
+    fallback: 'The browser blocked the new window. Allow pop-ups for SkillPilot and start again.',
+    copyPrompt: 'Copy start text',
+    copied: 'Start text copied',
+    openClaude: 'Open Claude Web',
+    expires: 'This learning session ends exactly 24 hours after it starts, at',
+    errorTitle: 'The session has not started yet.',
+    errorBody: 'Please try again. Your SkillPilot learning progress was not changed.',
+  },
+} as const
+
+export const getClaudeV1ReadyMessage = (
+  language: keyof typeof claudeV1StartCopy,
+  copied: boolean,
+  opened: boolean,
+) => {
+  const copy = claudeV1StartCopy[language]
+  if (copied && opened) return copy.copiedAndOpened
+  if (copied) return copy.copiedOnly
+  if (opened) return copy.openOnly
+  return copy.manualReady
+}

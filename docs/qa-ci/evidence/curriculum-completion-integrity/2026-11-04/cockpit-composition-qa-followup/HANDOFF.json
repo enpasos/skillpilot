@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_BOUNDED_QA_BASELINE_CORRECTIONS",
+  "sealedAtUtc": "2026-11-04T11:06:15.539591+00:00",
+  "currentHead": "e36cf00879a681ab8c4266cb3ae105e4a3370a10",
+  "changedRootFiles": [
+    {
+      "path": "app/scripts/testHessenMathQ21Scope.ts",
+      "beforeSnapshot": "tmp/local-preview-20261104/count-diagnosis/scope-allowlist-followup/testHessenMathQ21Scope.before.ts",
+      "beforeSha256": "c8145cb37471c390b1664b7e1bcb5abd80659db834aa892df0ef14bead4e51e0",
+      "afterSha256": "6db12a692711dd03ea09b1c5149b14a6c053c3cba7863a9f4521ec946571d615",
+      "bytes": 20038
+    },
+    {
+      "path": "app/scripts/testCompositionProjectionRoles.ts",
+      "beforeSnapshot": "tmp/local-preview-20261104/count-diagnosis/scope-allowlist-followup/testCompositionProjectionRoles.before.ts",
+      "beforeSha256": "387606feb5d83ca7908322b8df12443767f86cc8c93b04148e4bc6b41586dda8",
+      "afterSha256": "cb8bf8b5a0ca6f344739bac39e681a4bfd21e87f11b3061f0681022aea1b3608",
+      "bytes": 38651
+    }
+  ],
+  "patch": {
+    "path": "tmp/local-preview-20261104/count-diagnosis/scope-allowlist-followup/scope-and-g5-regressions.patch",
+    "sha256": "e402b3a511c85fbb64a53f2f25bd78c3e69f011a17c1989a1a4370a639d48074"
+  },
+  "sourceBindings": [
+    {
+      "path": "app/scripts/config/math-country-seki-stage-policy.json",
+      "sha256": "ca93ec172dbc0c69bc36ae1ed68b7b7d5fc183ff65aafa4859267f77847db569"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "e46cb60b2a4e590d80875a120b9fc036eaf6c739c1e7dbcce5702fbb94f4d3ae"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/finite-scope-operations.json",
+      "sha256": "ed0c849d2633b42863982c74dd6801a7462cececcb4df328cb9b167a5b080edd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/bbb-existing-route-scope.review.json",
+      "sha256": "0b9239380c05a8a147132c812f28e7d93abbeb97b75f58d81c17443ca644fada"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/existing-endpoint-restoration/scope-review.receipt.json",
+      "sha256": "bd51126f07965a470e5b0ad9b2a485dcc43c043492dec791e9cccf1be284a1e4"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/existing-endpoint-restoration/candidate-operations.json",
+      "sha256": "e46aadfd95da260c1f56ac7a66e1af68d7d0c0eaa557b312bf116be4f1356118"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/46bb-remaining-gk-source-matrix-scope.review.json",
+      "sha256": "4d8bf5936422f505ad14716a009470feca573e6f6fbf1eacbd30965643f9b17b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/ni-46bb-four-offers-union-addendum.review.json",
+      "sha256": "3e76685fed44c0cb3b039b2afb9e42521d9ddb8b9bd07643babf30e292a85bba"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/he5-cuboid48-probability-two-edge/he-five-source-sequence-placement.review.json",
+      "sha256": "559baf2ad82b2c0a358e28b2057a53c13ed972bc534801a9a11ff845d2cebb39"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/geometry-six-dgl1-existing-routes-2026-11-04-v1/reviews/geometry-six/content-review-handoff.json",
+      "sha256": "6c177360d2082360037bc6dbb1f50a473d4446e3124af9845af685f94ea42f77"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/geometry-six-dgl1-existing-routes-2026-11-04-v1/whole-source/geometry-six/README.md",
+      "sha256": "8c2a8e79b9e8c69dd05fb40ff61ff55271f616799ac88c0bab1adf53f0264aaf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/geometry-six-dgl1-existing-routes/independent-final-review/source-content-independent.actual.json",
+      "sha256": "e204ee2973b2293ff1c4203006971f970cdb2ccaf6cad610b3c3c54f9f7ae6cb"
+    }
+  ],
+  "scopeExplanation": {
+    "originalSingleCourseBBBAllowlistRetained": 68,
+    "originalOtherEndpointAllowlistRetainedPerTask": 8,
+    "laterGraphTransformationExactGKOffers": "Bound 46bb matrix plus byte-identical durable NI addendum. Matching jurisdiction, stage, course and explicit duration; no all-GK admission. Existing HB/HH holds and pure-LK exclusions remain negative.",
+    "laterInverseFunctionReferences": "Only the two exact HE5 approvedNormalOperations for 1429363f.",
+    "combinedMembership": "Each current-policy-hash-bound finite-plan output is bound to its exact filename, full scope, two source IDs/paths and GK/LK profiles. Contribution requires the independently permitted source view, its actual target role and production course availability. Every other view/goal pair remains negatively checked.",
+    "actualRoleCounts": [
+      {
+        "goalId": "bbb340ed-1009-4966-ae96-bfea4437505a",
+        "singlePositive": 68,
+        "combinedPositive": 32,
+        "combinedNegative": 7
+      },
+      {
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a",
+        "singlePositive": 35,
+        "combinedPositive": 31,
+        "combinedNegative": 8
+      },
+      {
+        "goalId": "1429363f-628f-4f42-80e5-8a9a935147cc",
+        "singlePositive": 10,
+        "combinedPositive": 6,
+        "combinedNegative": 33
+      }
+    ],
+    "unexplainedRoleDeltas": [],
+    "checkedViewCount": 147,
+    "checkedDeclaredCourseUnions": 39
+  },
+  "g5PreparationCorrection": {
+    "justification": "Read genuine geometry-six independent content handoff and full package README. Exact direct R sets of BD, 857, F5 and unchanged 8d3 are asserted in both canonical and learner-facing HE LK lookup. Three rejected edges have explicit negative regressions. The old BD->distance assertion is replaced by BD->line-plane intersection.",
+    "reviewedDirectRSource": "reviews/geometry-six/content-review-handoff.json exactGlobalRProposal",
+    "canonicalTaskSourceChanges": false
+  },
+  "validation": {
+    "firstScopeCorrectedAttempt": {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testCompositionProjectionRoles.ts"
+      ],
+      "exitCode": 1,
+      "durationSeconds": 17.504353345022537,
+      "logPath": "tmp/local-preview-20261104/count-diagnosis/scope-allowlist-followup/testCompositionProjectionRoles.actual.log"
+    },
+    "preservedFirstFailure": "Scope regression passed, followed by pre-existing main-script stale BD->distance assertion; no assertion skipped.",
+    "finalCompleteRun": {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testCompositionProjectionRoles.ts"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 19.66241791000357,
+      "logPath": "tmp/local-preview-20261104/count-diagnosis/scope-allowlist-followup/testCompositionProjectionRoles.g5-regression.actual.log"
+    },
+    "diffCheck": {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "--",
+        "app/scripts/testHessenMathQ21Scope.ts",
+        "app/scripts/testCompositionProjectionRoles.ts"
+      ],
+      "exitCode": 0
+    },
+    "broadAdditionalSuitesRun": false
+  },
+  "boundaries": {
+    "rootEditsOnlyTwoRequestedQaScripts": true,
+    "noCanonicalPolicyViewTaskCodeDbOrServiceMutation": true,
+    "noGitMutation": true,
+    "previewServicesLeftRunning": true,
+    "initialProbeCaveat": "probe.actual.json deliberately uses only the pre-followup endpoint baseline, so its discrepancies are preliminary expected-set discrepancies, not confirmed leaks. probe-reviewed.actual.json adds exact subsequent independent decisions and has zero unexplained deltas."
+  }
+}

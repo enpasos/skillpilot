@@ -1,0 +1,3760 @@
+{
+  "canonicalParentChain": [
+    {
+      "id": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+      "title": "Übungen E-Phase"
+    },
+    {
+      "id": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "title": "Grundlagen der Analysis und mathematische Modelle"
+    },
+    {
+      "id": "c01b1ce9-a667-4a46-b251-ec33ae602b15",
+      "title": "Mathematik"
+    }
+  ],
+  "existingProgramUnits": [
+    {
+      "id": "de-gym-math-program",
+      "kind": "program",
+      "label": "Gymnasium Mathematik (DE)",
+      "shortLabel": "Gymnasium"
+    },
+    {
+      "id": "de-gym-math-sek2",
+      "kind": "stage",
+      "label": "Sekundarstufe II",
+      "shortLabel": "Sek II",
+      "order": 20,
+      "parentUnitId": "de-gym-math-program"
+    },
+    {
+      "id": "de-gym-math-e",
+      "kind": "phase",
+      "label": "E-Phase",
+      "shortLabel": "E",
+      "order": 11,
+      "parentUnitId": "de-gym-math-sek2"
+    }
+  ],
+  "existingAncestorPlacements": [
+    {
+      "goalId": "a668ea17-9226-4074-8f8e-051acbe839eb",
+      "unitId": "de-gym-math-sek2",
+      "relation": "primary"
+    }
+  ],
+  "existingParentDirectPlacements": [],
+  "existingThirteenTasksDirectPlacements": [],
+  "proposedNewGoalPlacements": [],
+  "interpretation": "Existing E-analysis ancestor has a primary SekII program placement. Parent and its13 own tasks have no direct program placements. E-phase unit exists but has no placement for these objects; do not manufacture an official year allocation from titles/phase.",
+  "physicalViewAnchors": [
+    {
+      "viewId": "de-bb-gym-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+      "sha256": "63cbd497ca320b692037e05256bac8fbf1f0cdfb9372d02cc8864552fe2b6572",
+      "scope": {
+        "jurisdiction": "DE-BB",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            27,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-bb-gym-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-lk.view.json",
+      "sha256": "bf19190a7a6b05e553d722a2c15c4e940c6ceb95bc44c12b682860aadab50d91",
+      "scope": {
+        "jurisdiction": "DE-BB",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            22,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-bb-gym-seki-math",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-seki.view.json",
+      "sha256": "c507b3b3dc7e416dce6cab7a9a4e959e63cece7e645e51f02aefe392583534fa",
+      "scope": {
+        "jurisdiction": "DE-BB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-bb-gym-sekii-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json",
+      "sha256": "7c1a405553f410dc16daa6b646c421152f97fad1e0cbd6648bcd63fbe8e6266a",
+      "scope": {
+        "jurisdiction": "DE-BB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            23,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-bb-gym-sekii-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-lk.view.json",
+      "sha256": "76bc2687f7a2261fbfa872c3811998dfab2b66ef151677a772d32be4a4d90fc4",
+      "scope": {
+        "jurisdiction": "DE-BB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            18,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-be-gym-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json",
+      "sha256": "ce1f16032cc82408685bfe011b7266f6a6b5705dcf3e9b521cc81d5bc1c891e8",
+      "scope": {
+        "jurisdiction": "DE-BE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            25,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-be-gym-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-lk.view.json",
+      "sha256": "12f4c2d2a9163bfb15431d4d52d7b736915e4539bcf9318a41a90f5e2e740b66",
+      "scope": {
+        "jurisdiction": "DE-BE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            20,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            8
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-be-gym-seki-math",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-seki.view.json",
+      "sha256": "8cf2cf3e30b3efad0951a4bd8752526920dcafbfc8071277020da5c1f074abd6",
+      "scope": {
+        "jurisdiction": "DE-BE",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-be-gym-sekii-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-gk.view.json",
+      "sha256": "975eb7e95a6cacd33fd4886674de81fd1f05691e3573d826506ed3f5b683ce6b",
+      "scope": {
+        "jurisdiction": "DE-BE",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            23,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-be-gym-sekii-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-lk.view.json",
+      "sha256": "8a936e3ba7effb4c070217b05a1fe808fff4db926ab5b69cccb4a8ea3e260b44",
+      "scope": {
+        "jurisdiction": "DE-BE",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            18,
+            "children",
+            1,
+            "children",
+            8
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-bw-gym-math-gk-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk-g8.view.json",
+      "sha256": "aa57a48b0cf9492756c2c91205062494a93b87abb37a0bb15b0089decbf9f3fd",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G8"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            17,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root-gk",
+              "label": "Mathematik"
+            },
+            {
+              "id": "kursstufe-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-bw-gym-math-gk-g9",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk-g9.view.json",
+      "sha256": "056e789e06360ffa7a42416ab4d6b0266d5c5b4305393e0634433a8db49c510d",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G9"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            17,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root-gk",
+              "label": "Mathematik"
+            },
+            {
+              "id": "kursstufe-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-bw-gym-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+      "sha256": "76c8bb0f0b7ce5851a6eb6c17a94a8084d342eda5f33835530f28fbdceb9c78a",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            17,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root-gk",
+              "label": "Mathematik"
+            },
+            {
+              "id": "kursstufe-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-bw-gym-math-lk-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk-g8.view.json",
+      "sha256": "4143f7320540fcde43fdf9b4e4cc7492eed84f9832786cd669f043d18aef0191",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G8"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            10,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root-lk",
+              "label": "Mathematik"
+            },
+            {
+              "id": "kursstufe-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-bw-gym-math-lk-g9",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk-g9.view.json",
+      "sha256": "88f9077d6dd59872891ef32718f84800d888f19aed7fa43baf2f07860d253106",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G9"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            10,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root-lk",
+              "label": "Mathematik"
+            },
+            {
+              "id": "kursstufe-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-bw-gym-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+      "sha256": "643437c728a022d9cf383462636ae6ff0dcd1b63288510c5bd3efe3c902353b8",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            10,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root-lk",
+              "label": "Mathematik"
+            },
+            {
+              "id": "kursstufe-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-bw-gym-seki-math-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki-g8.view.json",
+      "sha256": "57006151229c0e189fdbc09d6dd0ad5316ebfa2f852e8b8b70f8351a4790ff8d",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G8"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-bw-gym-seki-math-g9",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki-g9.view.json",
+      "sha256": "65f5a0a86f6724b0334e36a631d51dbc1a084336ae5532ba93b1d25631aaf996",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G9"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-bw-gym-seki-math",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json",
+      "sha256": "775a6aa73043bf1283253d9497bc308f46ff949c9bd712edf1b1963bf1f7af67",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-bw-gym-sekii-math-gk-g9",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk-g9.view.json",
+      "sha256": "03563eb420130c6678ba4448db3d7c3f65ecc199dacf5e260f7f86b3953f4d62",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK",
+        "durationModel": "G9"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            16,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-bw-gym-sekii-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json",
+      "sha256": "ed7acf324f5d08a69893eb52a837d9a25f4f999031609b8707d74ff9c7a621d1",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            16,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-bw-gym-sekii-math-lk-g9",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk-g9.view.json",
+      "sha256": "ebef9b439bf26b63718e0d304f796bff2deaf9fd89e0125671d6b75417db8225",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK",
+        "durationModel": "G9"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            9,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-bw-gym-sekii-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk.view.json",
+      "sha256": "09b7ed5a5b412fd14baf8479d522af7efdaaf9a832710acde5fd4c8b9a3d4f3e",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            9,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-by-gym-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json",
+      "sha256": "fed9534afc0007823de7fef2d3c67c7b86d0ab408d72561202cac9f486b10727",
+      "scope": {
+        "jurisdiction": "DE-BY",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-by-gym-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
+      "sha256": "921bfb2c76b4689eb3c04431c60766fd2e6ae8a69a083603d28183a5e1ca3910",
+      "scope": {
+        "jurisdiction": "DE-BY",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-by-gym-seki-math",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-seki.view.json",
+      "sha256": "0148c97b2cdce21e75064702fd1a7f09cff03169806e3f7ed18c5154be2bf14a",
+      "scope": {
+        "jurisdiction": "DE-BY",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-by-gym-sekii-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+      "sha256": "ebb96f847731935cbb75f957546b29be0afbc2a485c70c5e6017e77209ca522f",
+      "scope": {
+        "jurisdiction": "DE-BY",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-by-gym-sekii-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+      "sha256": "c8f1f59fd97336c4cfd08b096ddee5b94a5ea331f6d4eefc37987d7e18a6a4ab",
+      "scope": {
+        "jurisdiction": "DE-BY",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-de-gym-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-gk.view.json",
+      "sha256": "b357bf8d996d0c1b1c1bcd2c0fb7a5b96c167ccf6caecfabad61d2685ea20598",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            19,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-de-gym-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-lk.view.json",
+      "sha256": "077fbed0750116123a857c33b756015cb38eb491140073dc776fd691faac13b3",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            12,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-de-gym-seki-math",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json",
+      "sha256": "c0010dc1c28b9bbfa4c3086f488ee52e4c2f716669054abe67c21a793494e444",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-de-gym-sekii-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-sekii-gk.view.json",
+      "sha256": "f7d0967233c90968fb115705232d2a70ef72ad22e0f62ae52dc0f6f8a228baac",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            19,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-de-gym-sekii-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-sekii-lk.view.json",
+      "sha256": "f2d1e6d3a7282f47ccfe407facd1fd4e49dd977e1faa900061c2081995e29b2a",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            12,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-hb-gym-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-gk.view.json",
+      "sha256": "73f8d6e0261c2e3f563a4d43cdb620f2ce3c31e1d23d6faed0a0dbfbfc5952be",
+      "scope": {
+        "jurisdiction": "DE-HB",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            24,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-hb-gym-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-lk.view.json",
+      "sha256": "c0337950bd2685f7cc5c0740de7161b29235c8ab1e99fd3cafb294254b148491",
+      "scope": {
+        "jurisdiction": "DE-HB",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            21,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-hb-gym-seki-math",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-seki.view.json",
+      "sha256": "9dffbd4e4c0067d39c6e08c686bd7b20a6c28a886710c90744d0c917e9ad37a2",
+      "scope": {
+        "jurisdiction": "DE-HB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-hb-gym-sekii-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
+      "sha256": "1e6c8fd29673a8825c29b25a20002bc00dfddf5218094b5b6c5195ae8f35f5c0",
+      "scope": {
+        "jurisdiction": "DE-HB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            22,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-hb-gym-sekii-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-lk.view.json",
+      "sha256": "fc3d0bd3cbcb94b2a09bf1c4c86a035497b827e9a87c41633cc66dbb2c34e8c5",
+      "scope": {
+        "jurisdiction": "DE-HB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            19,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-he-gym-math-gk-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+      "sha256": "310c9736dbfa2c527133c61e9de8a1489954dc18eebe72188710f3770008f5e1",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G8"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            12,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            9
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "e-phase",
+              "label": "E-Phase: Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-he-gym-math-gk-g9",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+      "sha256": "50dbec245bab781fc6fd4aa8cad46709e1cf0b1496b52f396549a70e8bb5890e",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G9"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            12,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            9
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "e-phase",
+              "label": "E-Phase: Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-he-gym-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk.view.json",
+      "sha256": "15aac0cc2c82f126eba20fd4ac1a83601b7f163eba78dbdf4705183563e05738",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            12,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            9
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "e-phase",
+              "label": "E-Phase: Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-he-gym-math-lk-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+      "sha256": "20a036c6a59fe19ef8de5dc31c92c999ca15d5f63b643f968a7ee85ae713edab",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G8"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            13,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            9
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "e-phase",
+              "label": "E-Phase: Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-he-gym-math-lk-g9",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+      "sha256": "f049d0bd86f5c0d03ce028dc222991bfc6cd919f15d63eb39e69b65da4aca347",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G9"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            13,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            9
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "e-phase",
+              "label": "E-Phase: Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-he-gym-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk.view.json",
+      "sha256": "71428a731de2226adeb7ebe15a618d2e467dd036d02d514b2ad6641f5acc77cc",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            13,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            9
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "e-phase",
+              "label": "E-Phase: Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-he-gym-seki-math-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g8.view.json",
+      "sha256": "3eb72a0f968ebe3b4bb3a78d9b6a786d17300ff7a81ca292c5af7e872c24fe5f",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G8"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-he-gym-seki-math-g9",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g9.view.json",
+      "sha256": "b26b4bf14b169b27324166d532a915d7086432745a2ba4fda71062a4801a6f80",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G9"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-he-gym-sekii-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-gk.view.json",
+      "sha256": "77af14ff10af1ca9b7667da66b61745729a58a6d5e7806cf1d3fcf8d3457ba11",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            8,
+            "children",
+            1,
+            "children",
+            9
+          ],
+          "structurePath": [
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "e-phase",
+              "label": "E-Phase: Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-he-gym-sekii-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json",
+      "sha256": "08cf90f46b75140407365bdfb7eb27f853f31ffa61bd6c1c49f7e729e51806e3",
+      "scope": {
+        "jurisdiction": "DE-HE",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            10,
+            "children",
+            23,
+            "children",
+            9
+          ],
+          "structurePath": [
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "e-phase",
+              "label": "E-Phase: Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-hh-gym-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-gk.view.json",
+      "sha256": "3aebe93f33c624ec6ef785d155e489989491e5cfae10a1dd6335bea055b38a70",
+      "scope": {
+        "jurisdiction": "DE-HH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            25,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-hh-gym-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-lk.view.json",
+      "sha256": "1dafda0650fbbcd4be0465f5112b582caa8538f25fe903695d78bbe39641df89",
+      "scope": {
+        "jurisdiction": "DE-HH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            23,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-hh-gym-seki-math",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-seki.view.json",
+      "sha256": "dd1c33e0dd02ba40fd65917d98aa7fd6e9b5735347e881be3b831e914c21d87f",
+      "scope": {
+        "jurisdiction": "DE-HH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-hh-gym-sekii-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-gk.view.json",
+      "sha256": "3df93c3e61a0f5af0bb86b2632e55142c025f15534c6193a320ffdc0dc79459c",
+      "scope": {
+        "jurisdiction": "DE-HH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            21,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-hh-gym-sekii-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-lk.view.json",
+      "sha256": "021b94118deb85bbae5216d99b37bec37d71b3c9be5965813ea4f3aa15bbad00",
+      "scope": {
+        "jurisdiction": "DE-HH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            19,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-mv-gym-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
+      "sha256": "fdd7a1a27353e1bafbf680cfaf428619e91688781eae4684bbf06bc77d4eecb7",
+      "scope": {
+        "jurisdiction": "DE-MV",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            23,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-mv-gym-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-lk.view.json",
+      "sha256": "3f1440cc2aa58c4e42bec6ae4669bd1d6f66b9162a03f0bbb892b024a8162457",
+      "scope": {
+        "jurisdiction": "DE-MV",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            21,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-mv-gym-seki-math",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-seki.view.json",
+      "sha256": "8cfe8576a7b16f50a136013bcc563b675f5f899a6c02fbd47b2bed67a9ea42f1",
+      "scope": {
+        "jurisdiction": "DE-MV",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-mv-gym-sekii-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json",
+      "sha256": "e7cafa6ce6eadcb7d691e1de501d1fe32932db8a8bae47a020c37483bc2f093e",
+      "scope": {
+        "jurisdiction": "DE-MV",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            21,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-mv-gym-sekii-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-lk.view.json",
+      "sha256": "ceadd91b585feb6866f4b508e24a8960fa49b6deffd3dd99f51c60ff4f1e579b",
+      "scope": {
+        "jurisdiction": "DE-MV",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            19,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-ni-gym-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+      "sha256": "13a09db2c3b2aa8f21c5cc815ab02872f4d46f0aaf75e2585f3ce9019a0cfda3",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            25,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root-gk",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-ni-gym-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-lk.view.json",
+      "sha256": "8dc406240a2c67e6e7c259f013c9f3a2ce130bc63cfacd9adb027ba9c03b29db",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            23,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root-lk",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-ni-gym-seki-math",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-seki.view.json",
+      "sha256": "a35a6870fc27bb163dc5faa97b578097896b9ff9291a9af957db498f4930bb86",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-ni-gym-sekii-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+      "sha256": "fe0fa001c1e089a3256c6e84872d33744df2819babe885acba01dc3aa37097b0",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            21,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-ni-gym-sekii-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-lk.view.json",
+      "sha256": "69b3b6d95b0c1fafacd4f1901bbffbcf774bc6213df33b74e69f7eb316a040f7",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            19,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-nw-gym-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+      "sha256": "2c94662819ec878f3b923e3823a493458d69da38ec60278038347c0aeabc6e0a",
+      "scope": {
+        "jurisdiction": "DE-NW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            25,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root-gk",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "nw-e-phase-functions-analysis",
+              "label": "E-Phase: Funktionen und Analysis"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-nw-gym-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-lk.view.json",
+      "sha256": "dd2fb893ae51a6ba64a5e35ed96b13f25ac88f5947f57fb877a5102cbc829679",
+      "scope": {
+        "jurisdiction": "DE-NW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            23,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root-lk",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "nw-e-phase-functions-analysis",
+              "label": "E-Phase: Funktionen und Analysis"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-nw-gym-seki-math",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-seki.view.json",
+      "sha256": "9ebe4f0b89246aebc2251d919f67992d3b4de996783fcad9fa57cb7815d6cf9c",
+      "scope": {
+        "jurisdiction": "DE-NW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-nw-gym-sekii-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json",
+      "sha256": "521b5708d525c1fde31ff20e646af416ec477d94b90775bb6240b1e4179dcb04",
+      "scope": {
+        "jurisdiction": "DE-NW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            21,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root-gk",
+              "label": "Mathematik"
+            },
+            {
+              "id": "nw-e-phase-functions-analysis",
+              "label": "E-Phase: Funktionen und Analysis"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-nw-gym-sekii-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-lk.view.json",
+      "sha256": "bb57f2cf968c5c2a3988759fbe570dce3b9133137eac86bcd441982e5d94519a",
+      "scope": {
+        "jurisdiction": "DE-NW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            19,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root-lk",
+              "label": "Mathematik"
+            },
+            {
+              "id": "nw-e-phase-functions-analysis",
+              "label": "E-Phase: Funktionen und Analysis"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-rp-gym-math-gk-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+      "sha256": "6684cb9c71805bdb6f628a189705955dbcacedbe6ef53d9a17e03aa9cc99ba7e",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G8"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            26,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-rp-gym-math-gk-g9",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+      "sha256": "921386691187366249576b502c5067011003171e20c5ba267b407fe14c675df4",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G9"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            26,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-rp-gym-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json",
+      "sha256": "d9f4e9d97018fd91c471c746fecc2417479fd5b5765a0bcd19e9dac9610fe76d",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            26,
+            "children",
+            2,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-rp-gym-math-lk-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+      "sha256": "d1552fd6478a391373ddddbda72918760edf89254674277f908b632ba316eacb",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G8"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            23,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-rp-gym-math-lk-g9",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g9.view.json",
+      "sha256": "423ce528147de4f73450ae069086a2e6704c65ccffcd1189de4d4f54b2520644",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G9"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            23,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-rp-gym-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk.view.json",
+      "sha256": "7a02b016de30cd44b48616947312d3b631ae750e3cdaa7919283dfa3e8a1e48a",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            23,
+            "children",
+            2,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-rp-gym-seki-math-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g8.view.json",
+      "sha256": "f93d6fa0f109f2c920e0dc5f33618ee53f023c01ca193e797961aa7663e985fe",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G8"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-rp-gym-seki-math-g9",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g9.view.json",
+      "sha256": "668a92675568cbd3a582bfdcce786ac35eaf653650a99274c03a1affd60d7a3b",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G9"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-rp-gym-sekii-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-gk.view.json",
+      "sha256": "687bab0d8904b74d1c7dac7de26f904c4f02fdb6a4984d41890b5a3cf233091c",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            22,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-rp-gym-sekii-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-lk.view.json",
+      "sha256": "51239466d539f0651f281fd239f9a6410df46ca306c428a8d9d57d9d8dcb8053",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            19,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-sh-gym-math-gk-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "sha256": "3128947f1c09178f31eb3551a39a3a4fcea88b9525579c4816e903ef8e09f3f0",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G8"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            24,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-sh-gym-math-gk-g9",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "sha256": "d8ea08eabbd3c016393e1def3f126c0b2fbd3169944b279fb384d3737523c596",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G9"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            24,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-sh-gym-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+      "sha256": "e852d54b1a506971b66772a92fae7311f49a8fd5dd3068c0c5a059a6fc0048b0",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            24,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-sh-gym-math-lk-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "sha256": "4c1c64f48bb29945b44dc884edb34a5ec893199d2a927a6018711dd25f5ea562",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G8"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            22,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-sh-gym-math-lk-g9",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "sha256": "6ab3a020b393fa86fec06de9b97d76291c8b8f03e2787300a324dc00169c25fe",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G9"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            22,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-sh-gym-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+      "sha256": "ddd0ee62fe9d0ce39d2036abc1ae5fba9b7c1a5253687f152ce3a9c1cbbc8d8a",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            22,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-sh-gym-seki-math-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+      "sha256": "55ea10981c264c093cb1e8b680dc5296db50cc09a418018827893e3008ea42f0",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G8"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-sh-gym-seki-math-g9",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+      "sha256": "8c759e986439e3db62ef359872642fa71416fde981b96b3cad5bfd47b44ba19a",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "durationModel": "G9"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-sh-gym-sekii-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+      "sha256": "aa0b0d01ce3af41335f5d73bdffac8cdbd296eaf3551c8ccae2e772c23568657",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            20,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-sh-gym-sekii-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+      "sha256": "4574b1f28289371d94685648692a091a10523c9fdb9faeb9acef40a1d56ec572",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            18,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-sl-gym-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
+      "sha256": "235b1b5242232d3cdf7f95b5e99f5c3b6dd0dabdbb5f3308e02d19626fb6af61",
+      "scope": {
+        "jurisdiction": "DE-SL",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            25,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-sl-gym-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-lk.view.json",
+      "sha256": "8769cccb47beaba431de5b42c3e71296e6d8bda828d33094e12e3937e73ad54d",
+      "scope": {
+        "jurisdiction": "DE-SL",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            21,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-sl-gym-seki-math",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-seki.view.json",
+      "sha256": "51e8a8808b89ce8875cc13bea1adacdeb131a588fdf1c891bbdc25e51b871969",
+      "scope": {
+        "jurisdiction": "DE-SL",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-sl-gym-sekii-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json",
+      "sha256": "979afd805e4b21edfa92f5fd95ecc066e824f49d0b23702d73ab7984e036e8ee",
+      "scope": {
+        "jurisdiction": "DE-SL",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            22,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-sl-gym-sekii-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-lk.view.json",
+      "sha256": "df6546097405cdc5ff9b4a19635a8daabaaf5615229314c51db8f8e76a2ec9e8",
+      "scope": {
+        "jurisdiction": "DE-SL",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            18,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-sn-gym-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
+      "sha256": "b6f810f491ace636dc2c8ee453449cab3a30914f35d0dc4d5e1276ecedf536bc",
+      "scope": {
+        "jurisdiction": "DE-SN",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            25,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-sn-gym-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-lk.view.json",
+      "sha256": "ccee5fa4e1bb52eab32efec63401e11abcd4fd316cd8134e39816dfefece3085",
+      "scope": {
+        "jurisdiction": "DE-SN",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            23,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-sn-gym-seki-math",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-seki.view.json",
+      "sha256": "fa0dfbfc79bea803d19f78033821c76e5ba4e6068640aa45920b75932486b210",
+      "scope": {
+        "jurisdiction": "DE-SN",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-sn-gym-sekii-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json",
+      "sha256": "7ac923aa0ab5a6c1e1984060a0702c5010b0324b7587d7e052b0bd8eab31101c",
+      "scope": {
+        "jurisdiction": "DE-SN",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            21,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-sn-gym-sekii-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-lk.view.json",
+      "sha256": "b73055fc0d3de10a4a2faf30c5cb54040866a7f8e887866707694ab7abf4cd2e",
+      "scope": {
+        "jurisdiction": "DE-SN",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            19,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-st-gym-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json",
+      "sha256": "f0213cc56db9a2d5f20978e6d1d40341615c703cf874b88fb547dcfb9a016c6c",
+      "scope": {
+        "jurisdiction": "DE-ST",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            26,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-st-gym-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-lk.view.json",
+      "sha256": "febe60a18cbee780ef19396b42e47ac79e991d4997faf7aec68784b4f51d0d53",
+      "scope": {
+        "jurisdiction": "DE-ST",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            23,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-st-gym-seki-math",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-seki.view.json",
+      "sha256": "fa747a3429de2ca782f59a4a88c7b8015007ebb0f4b90ccb4b4bd63d04be8b16",
+      "scope": {
+        "jurisdiction": "DE-ST",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-st-gym-sekii-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json",
+      "sha256": "9f29ac73af59a3a2ef5b50b64c4f6387e164096c8a6affdb7107bf1a94f6375b",
+      "scope": {
+        "jurisdiction": "DE-ST",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            22,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-st-gym-sekii-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-lk.view.json",
+      "sha256": "83066db175e7d87c509c9c31b72bb9c9669eda148c40025df5ce550ccbaf8f29",
+      "scope": {
+        "jurisdiction": "DE-ST",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            19,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-th-gym-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
+      "sha256": "3b18182bafd74f121d174abc23c0ea8f58bfc7f88607005a32bc177f9e98acd3",
+      "scope": {
+        "jurisdiction": "DE-TH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            24,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-gk",
+              "label": "Sekundarstufe II (GK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-th-gym-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-lk.view.json",
+      "sha256": "d3eb70568b8845aa8d84eb1f3a65b8b77a9345460edb93968abbdb4141512d82",
+      "scope": {
+        "jurisdiction": "DE-TH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            21,
+            "children",
+            1,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "sek2-lk",
+              "label": "Sekundarstufe II (LK)"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-th-gym-seki-math",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-seki.view.json",
+      "sha256": "a268c216c8bbb87a0c1bfbc324e793b31ed2a13f97a540dcb2a11e250fb7d038",
+      "scope": {
+        "jurisdiction": "DE-TH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "parentTransportReferences": []
+    },
+    {
+      "viewId": "de-th-gym-sekii-math-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json",
+      "sha256": "0e3bddfdb7ba9afdb210239bb5b2ef13a95f91d022efcfe671931dd588e0b321",
+      "scope": {
+        "jurisdiction": "DE-TH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            22,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    },
+    {
+      "viewId": "de-th-gym-sekii-math-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-lk.view.json",
+      "sha256": "43b0727d8e873b6fea45dbc7a9e882976d635789ebec8d0e0d3d96d23090d22e",
+      "scope": {
+        "jurisdiction": "DE-TH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "parentTransportReferences": [
+        {
+          "nodePath": [
+            "rootNodes",
+            19,
+            "children",
+            1,
+            "children",
+            7
+          ],
+          "structurePath": [
+            {
+              "id": "math-root",
+              "label": "Mathematik"
+            },
+            {
+              "id": "analysis-basics",
+              "label": "Grundlagen der Analysis und mathematische Modelle"
+            }
+          ],
+          "reference": {
+            "kind": "canonicalSubtree",
+            "goalId": "28b45b93-11e1-5a96-97a1-4cfee171802b",
+            "displayLabel": "Übungen"
+          }
+        }
+      ]
+    }
+  ]
+}

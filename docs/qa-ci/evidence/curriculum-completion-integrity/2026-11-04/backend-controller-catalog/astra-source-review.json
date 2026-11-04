@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "astra-backend-controller-catalog-five-20261104-v1",
+  "reviewer": "OpenAI Astra independent review /root/astra_space_geometry_four_forms",
+  "reviewedAt": "2026-11-04",
+  "status": "PASS_SOURCE_REVIEW_EXACT_CURRENT_ADAPTER_RERUN_PENDING",
+  "findingCount": 0,
+  "scope": "Exactly five requested Root diffs; no source or Root mutation.",
+  "headAtReview": "a5209dfbfcc6c2a7c4132971ce4979f3e5403b51",
+  "sources": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractAdapter.java",
+      "sha256": "2c9166ca35308970070369440348c25952c62d1a15ff9e4c895c13411fcaaf5d",
+      "initial48TestRunSha256": "d221c26e2c709dc7ee8e4e297e117a41a8eebd12e41b366222276acadd16e3fd",
+      "exactInitialTestBinding": false
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/ai/LearnerAiControllerTest.java",
+      "sha256": "341cf966f8c5f54da673e67ed09467dbd289b8f310e41b8a564a5db20de95051",
+      "initial48TestRunSha256": "341cf966f8c5f54da673e67ed09467dbd289b8f310e41b8a564a5db20de95051",
+      "exactInitialTestBinding": true
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+      "sha256": "1024abc810bb86318d51a086dc109d3bcaf90ac4089162007e113a666f4e90c0",
+      "initial48TestRunSha256": "1024abc810bb86318d51a086dc109d3bcaf90ac4089162007e113a666f4e90c0",
+      "exactInitialTestBinding": true
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/curriculumpackage/PackageCompositionViewStateTest.java",
+      "sha256": "5c97c3f4e03bd46ee53cc863b671ab50f0725f1860f23511fa6185c005bd631e",
+      "initial48TestRunSha256": "5c97c3f4e03bd46ee53cc863b671ab50f0725f1860f23511fa6185c005bd631e",
+      "exactInitialTestBinding": true
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CanonicalExamIntegrationTest.java",
+      "sha256": "765d90f67c29b31f67ac9cd1b533460cc6ed3bf37e4d2426df4faef08bff7277",
+      "initial48TestRunSha256": "765d90f67c29b31f67ac9cd1b533460cc6ed3bf37e4d2426df4faef08bff7277",
+      "exactInitialTestBinding": true
+    }
+  ],
+  "diff": {
+    "path": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-backend-controller-catalog-review-20261104-v1/reviewed-five-files.diff",
+    "sha256": "85fba292b8edb8201e289e75f1a124b9f4924714961f0781145a49b4a9577c09"
+  },
+  "currentReadContext": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/ai/CoachToolFacade.java",
+      "sha256": "7c30060f30619f36446b7202ae9fea43d0bfc0c6fad2aef3eb55735cbd79b555"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "sha256": "b7d9490220f16225388c638bfe2d15cad170c1558758292d32a90a54f8854bc5"
+    }
+  ],
+  "decisions": [
+    {
+      "file": "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractAdapter.java",
+      "decision": "PASS",
+      "reason": "Only getExamEvaluation catches facade ResponseStatusException with status409 and translates it to ToolConflictException. Other status codes are rethrown; normal adapter error mapping remains. Active-goal check, facade access/owner/start/released-evaluation guards and requireValidExamEvaluation remain before material/capability release. Fixed recovery text exposes no exception reason or private state; no catch returns evaluation data."
+    },
+    {
+      "file": "backend/src/test/java/com/skillpilot/backend/ai/LearnerAiControllerTest.java",
+      "decision": "PASS",
+      "reason": "Mock stubbing/verifications now match automatic cursor selection and assertCurrentAssessmentStarted. Ordered start guard precedes mastery; verifyNoMoreInteractions is retained. No guard bypass or permissive wildcard replaces a former assertion."
+    },
+    {
+      "file": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+      "decision": "PASS",
+      "reason": "Only exact current target totals change. Existing membership, excluded-target, scope-role and duration counterexamples remain. Directly sampled scopes match Native target sets; unrepresented compatibility inputs are separately labelled and rely on the actual controller test, not invented Native evidence."
+    },
+    {
+      "file": "backend/src/test/java/com/skillpilot/backend/curriculumpackage/PackageCompositionViewStateTest.java",
+      "decision": "PASS",
+      "reason": "Expected catalog size now108views and151offerings; keyset equality adds identity preservation beyond counts. Existing offering resolution, exact sourceViewIds and complete authored view equality checks remain. Authored108uniqueIDs plus43GK/LKmerged offerings independently confirmed."
+    },
+    {
+      "file": "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CanonicalExamIntegrationTest.java",
+      "decision": "PASS",
+      "reason": "Positive real canonical test confirms exam through the normal setActiveGoal service, which binds the complete task contract. New negative fixture keeps only persisted active pointer; expects CONFLICT and no evaluation fields/capability, unchanged revision and no mastery. Existing task-only context, version-input rejection and wrong-exam denial tests remain. This is retrieval/start-guard evidence, not external-host submission or grading acceptance."
+    }
+  ],
+  "validation": {
+    "independentReview": "Five actual source diffs and relevant existing callers/guards inspected; no independent rerun of long backend suite.",
+    "independentCounts": {
+      "path": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-backend-controller-catalog-review-20261104-v1/independent-count-and-catalog-check.json",
+      "sha256": "94dcbac292fbd3b734fe0861c3207dbea108614589e4fbeaee679c29b7e17463"
+    },
+    "rootOwnedInitialExecution": {
+      "path": "tmp/approach-review-20261101/backend-ci-controller-and-catalog-20261104-v1/tests.execution.json",
+      "sha256": "242f0b63f0fa84fe1948ea14d0e7aa08a9fb5f16868a7b0c22af661583dc19c5"
+    },
+    "rootOwnedInitialLog": {
+      "path": "tmp/approach-review-20261101/backend-ci-controller-and-catalog-20261104-v1/tests.log.gz",
+      "sha256": "f12cc40b4959b16af3351b5e8df1574ef7b357f6076554f6215ed5a22e7cea71"
+    },
+    "rootOwnedInitialSummary": {
+      "path": "tmp/approach-review-20261101/backend-ci-controller-and-catalog-20261104-v1/initial-48-test-summary.json",
+      "sha256": "3360027ddc4f8d821082778a88098bbf59c98e70b3c6ac8b26009495e3bb019b"
+    },
+    "initialTests": 48,
+    "initialPassed": 48,
+    "initialFailed": 0,
+    "initialSkipped": 0,
+    "initialSeconds": 82.39,
+    "currentAdapterExactTestBinding": false,
+    "limit": "The adapter recovery message was subsequently neutralized. Four tests still hash-match the initial run; current adapter does not. Source judgment is PASS, but exact-current runtime/test PASS remains for the pending Root follow-up."
+  },
+  "unreviewedParallelChanges": "Any other Root files or later plan-scope CI package are outside this five-file decision.",
+  "noRootGitMutation": true
+}

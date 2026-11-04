@@ -1,0 +1,70 @@
+{
+  "status": "OPEN_EXISTING_B2_RELEASE_COVERAGE_METADATA_DEBT_NOT_EXEMPTED",
+  "goalId": "5d3fd2c4-7c7e-569e-ae02-75486573f3cc",
+  "exactMissingFields": [
+    "examData.reviewStatus",
+    "examData.coveredGoalIds",
+    "examData.coveredStrands",
+    "examData.demandLevels"
+  ],
+  "observedIssues": [
+    "reviewStatus is not released",
+    "missing coveredGoalIds",
+    "missing coveredStrands",
+    "missing demandLevels"
+  ],
+  "beforeAndCandidate": [
+    {
+      "basis": "Root427",
+      "absentFields": [
+        "reviewStatus",
+        "coveredGoalIds",
+        "coveredStrands",
+        "demandLevels"
+      ],
+      "examDataFields": [
+        "taskContent",
+        "solutionContent",
+        "scoring",
+        "taskContentEn",
+        "solutionContentEn"
+      ]
+    },
+    {
+      "basis": "FrozenCandidate",
+      "absentFields": [
+        "reviewStatus",
+        "coveredGoalIds",
+        "coveredStrands",
+        "demandLevels"
+      ],
+      "examDataFields": [
+        "taskContent",
+        "solutionContent",
+        "scoring",
+        "taskContentEn",
+        "solutionContentEn"
+      ]
+    }
+  ],
+  "gate": {
+    "implementation": "app/scripts/generateCurriculumQualityStatus.ts",
+    "function": "examReleaseCoverageIssues",
+    "rule": "CQR-203",
+    "label": "Exam release and coverage metadata",
+    "category": "assessment",
+    "maturityTarget": "M4",
+    "actualRuleSeverityWithIncompleteTerminal": "warn",
+    "profile": "canonical-math-sek2"
+  },
+  "otherChecks": {
+    "concreteExamReadinessIssues": "empty for B2",
+    "CQR-202ConcreteTaskCriterion": "no B2 concrete-task issue",
+    "isUsableCoursePlanTask": true
+  },
+  "noFutureScopeSourceOrM7GatePassClaim": true,
+  "noReleaseOrCoverageFieldsAddedToMakeThisPass": true,
+  "requiresMustNeverBeConvertedAutomaticallyIntoCoverage": true,
+  "futureClosureNeedsActualTaskRubricCoverageEvidence": true,
+  "frozenRuntimePayloadUnchanged": true
+}

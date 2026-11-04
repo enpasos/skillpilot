@@ -1,0 +1,116 @@
+{
+  "id": "6634ef12-0e88-584e-8e45-9e60eafc0951",
+  "title": "Trigonometrische Ableitungen anwenden",
+  "description": "Die lernende Person kann eine E-Phasen-Klausuraufgabe zu trigonometrischen Funktionen, grafischem Differenzieren, Kettenregel, Kontextdeutung sowie Tangenten und Normalen selbstständig bearbeiten.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment"
+  ],
+  "dimensionTags": {
+    "framework": "hessen-kc-2024",
+    "demandLevel": "AB2",
+    "processCompetencies": [
+      "K1",
+      "K2",
+      "K3",
+      "K4",
+      "K5",
+      "K6"
+    ],
+    "guidingIdeas": [
+      "L1",
+      "L2",
+      "L4"
+    ],
+    "phase": "E"
+  },
+  "requires": [
+    "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+    "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+    "eda3a298-4965-525e-878d-f05b9e2d4503",
+    "ecd13e54-ab0e-550f-9400-66e13306635d",
+    "2919b3f3-aca2-5add-beeb-de1b9e0eafd8",
+    "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
+    "58d2f963-4fb9-550d-a832-f5ac60808900",
+    "6acd79f5-9447-5ea1-8127-6dbb72bd057d",
+    "f042385e-f772-42db-9c96-f21a792ac5ea"
+  ],
+  "contains": [],
+  "examples": [],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+      "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+      "eda3a298-4965-525e-878d-f05b9e2d4503",
+      "ecd13e54-ab0e-550f-9400-66e13306635d",
+      "2919b3f3-aca2-5add-beeb-de1b9e0eafd8",
+      "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
+      "58d2f963-4fb9-550d-a832-f5ac60808900",
+      "6acd79f5-9447-5ea1-8127-6dbb72bd057d",
+      "f042385e-f772-42db-9c96-f21a792ac5ea"
+    ],
+    "coveredStrands": [
+      "L1",
+      "L2",
+      "L4"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2"
+    ],
+    "taskContent": "Die Auslenkung eines Federpendels aus der Ruhelage wird modelliert durch\n$$\ns(t)=1{,}5\\sin\\left(\\frac{\\pi}{6}(t-1)\\right)\n$$\nmit $t$ in Sekunden und $s(t)$ in Zentimetern.\n\n1. Deuten Sie die Parameter des Modells, bestimmen Sie Amplitude und Periodenlänge und erläutern Sie, warum der Faktor $\\frac{\\pi}{6}$ im Bogenmaß auftritt.\n2. Bestimmen Sie im Intervall $0\\le t\\le 13$ ohne Differenzialrechnung die Nullstellen, Extrempunkte und Wendepunkte des Graphen. Nutzen Sie dabei Symmetrie- und Periodizitätsargumente.\n3. Vergleichen Sie das trigonometrische Modell für eine langfristige Fortsetzung mit einer ganzrationalen Näherungsfunktion. Begründen Sie, welche Modellklasse für dauerhafte Schwingungen besser geeignet ist.\n4. Begründen Sie anhand der Graphen von Sinus und Kosinus durch grafisches Differenzieren den Zusammenhang zwischen $s$ und $s'$. Bestimmen Sie anschließend $s'(t)$ mit der Kettenregel, deuten Sie $s'(2)$ im Sachzusammenhang und bestimmen Sie Tangente und Normale an den Graphen im Punkt mit $t=2$.",
+    "solutionContent": "1. Die Amplitude beträgt $1{,}5$, die Mittellinie ist $s=0$ und die Schwingung ist um $1$ Sekunde nach rechts verschoben. Wegen\n$$\n\\frac{\\pi}{6}(t-1)\n$$\nist der Winkel im Sinusargument im Bogenmaß angegeben. Die Periodenlänge ist\n$$\nT=\\frac{2\\pi}{\\pi/6}=12.\n$$\n\n2. Nullstellen liegen bei\n$$\n\\frac{\\pi}{6}(t-1)=k\\pi \\Rightarrow t=1+6k.\n$$\nIm Intervall folgen $t=1$, $t=7$ und $t=13$. Maxima liegen bei Argument $\\frac\\pi2+2k\\pi$, also bei $t=4$ mit $s(4)=1{,}5$. Minima liegen bei Argument $\\frac{3\\pi}{2}+2k\\pi$, also bei $t=10$ mit $s(10)=-1{,}5$. Die Wendepunkte des Sinusmodells liegen an den Nullstellen, hier also bei $(1\\mid0)$, $(7\\mid0)$ und $(13\\mid0)$.\n\n3. Eine ganzrationale Funktion kann auf einem kurzen Zeitfenster eine Schwingung näherungsweise beschreiben, ist aber langfristig nicht periodisch und im Allgemeinen unbeschränkt. Das Sinusmodell bleibt periodisch und beschränkt zwischen $-1{,}5$ und $1{,}5$ und ist daher für eine dauerhafte Schwingung die passendere Modellklasse.\n\n4. Beim grafischen Differenzieren erkennt man: Die Steigung des Sinusgraphen ist an Nulldurchgängen betragsgroß und an Hoch- beziehungsweise Tiefpunkten null. Der Ableitungsgraph hat daher Kosinusform. Mit der Kettenregel gilt\n$$\ns'(t)=1{,}5\\cdot\\frac{\\pi}{6}\\cos\\left(\\frac{\\pi}{6}(t-1)\\right)=\\frac\\pi4\\cos\\left(\\frac{\\pi}{6}(t-1)\\right).\n$$\nFür $t=2$ folgt\n$$\ns(2)=1{,}5\\sin\\left(\\frac\\pi6\\right)=0{,}75\n$$\nund\n$$\ns'(2)=\\frac\\pi4\\cos\\left(\\frac\\pi6\\right)=\\frac{\\pi\\sqrt3}{8}\\approx0{,}68.\n$$\nDas Pendel bewegt sich zu diesem Zeitpunkt mit einer momentanen Änderungsrate von etwa $0{,}68\\,\\text{cm/s}$ nach oben. Die Tangente lautet\n$$\ny=0{,}75+\\frac{\\pi\\sqrt3}{8}(t-2).\n$$\nDie Normale hat die Steigung $-\\frac{8}{\\pi\\sqrt3}$ und damit die Gleichung\n$$\ny=0{,}75-\\frac{8}{\\pi\\sqrt3}(t-2).\n$$",
+    "scoring": {
+      "maxPoints": 24,
+      "passingPoints": 12,
+      "steps": [
+        {
+          "id": "e5_trig_deriv_1",
+          "points": 5,
+          "description": "Parameter, Bogenmaß, Amplitude und Periodenlänge korrekt gedeutet"
+        },
+        {
+          "id": "e5_trig_deriv_2",
+          "points": 6,
+          "description": "Charakteristische Punkte ohne Differenzialrechnung aus Periodizität und Symmetrie bestimmt"
+        },
+        {
+          "id": "e5_trig_deriv_3",
+          "points": 4,
+          "description": "Trigonometrisches Modell fachlich mit einer ganzrationalen Näherung verglichen"
+        },
+        {
+          "id": "e5_trig_deriv_4",
+          "points": 9,
+          "description": "Grafisches Differenzieren, Kettenregel, Kontextdeutung sowie Tangente und Normale korrekt bearbeitet"
+        }
+      ]
+    }
+  },
+  "phase": "E",
+  "type": "atomic"
+}

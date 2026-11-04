@@ -1,0 +1,32 @@
+{
+  "status": "EXACT_SYMBOLIC_AND_ARTIFACT_CHECK_NOT_CONTENT_OR_SCOPE_ACCEPTANCE",
+  "candidateGoalSha256": "5924e6184fc405d7e2fa2c0a8e06b969e23b03e1c55590c2a91893a03d71645b",
+  "solution": {
+    "a": "1/80000",
+    "b": "-3/8000",
+    "c": "3/800",
+    "d": "-1/10",
+    "e": "5"
+  },
+  "uniqueCoefficientSystemRank": 5,
+  "polynomial": "t**4/80000 - 3*t**3/8000 + 3*t**2/800 - t/10 + 5",
+  "firstDerivativeFactorization": "(t - 20)*(2*t**2 - 5*t + 200)/40000",
+  "secondDerivativeFactorization": "3*(t - 10)*(t - 5)/20000",
+  "actualInflectionPoints": [
+    5,
+    10
+  ],
+  "thirdDerivativeAt10": "3/4000",
+  "allFiveBoundaryAndInflectionConditionsChecked": true,
+  "bothC1JoinsChecked": true,
+  "heightBounds": "7/2 <= q(t) <= 5 for 0 <= t <= 20; derivative negative before20",
+  "noC2JoinClaim": true,
+  "points": 13,
+  "passPoints": 11,
+  "ordinaryRubricCapInExistingTextFields": 10,
+  "noNewScoringOrResultFields": true,
+  "embeddedDeEnTaskAndSolutionEqualMarkdown": true,
+  "deltaAfterEqualsGoal": true,
+  "coveredGoalCount": 3,
+  "existingGoalsChanged": 0
+}

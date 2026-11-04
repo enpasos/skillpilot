@@ -8,8 +8,9 @@ package com.skillpilot.backend.service.learningplan;
  *
  * @param s Total plan goals scheduled through the end of the current period.
  * @param p Plan goals due within the current period (the daily or weekly quota).
- * @param i Currently mastered plan goals, independent of scheduled date.
- * @param h Distinct plan goals reliably completed within the current period and
+ * @param i Currently fulfilled plan goals (explicit mastery plus configured implicit credit),
+ *          independent of scheduled date.
+ * @param h Distinct plan goals reliably explicitly completed within the current period and
  *          still currently mastered.
  */
 public record PlanBalanceInputs(int s, int p, int i, int h) {

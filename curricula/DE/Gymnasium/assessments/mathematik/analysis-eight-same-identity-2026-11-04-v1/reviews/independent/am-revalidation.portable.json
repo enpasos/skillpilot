@@ -1,0 +1,824 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "astra-analysis-eight-sixteen-am-revalidation-20261104-v1",
+  "status": "PASS",
+  "reviewer": "OpenAI Astra independent review agent /root/astra_space_geometry_four_forms",
+  "reviewedAt": "2026-11-04",
+  "scope": "Exactly16 rows for8 unchanged whole curricular competencies with added same-ID exam execution. These are actual semantic judgments followed by hash bookkeeping, not a mass fingerprint rewrite.",
+  "bindings": {
+    "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/independent/am-binding-verification.portable.json",
+    "sha256": "7f1310908de73c550eaf5400f3df204d475fb379b89e33e14d0ac9764cdf56ff",
+    "bytes": 74366
+  },
+  "contentReview": {
+    "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/independent/content-review.portable.json",
+    "sha256": "127432c1f1a475087263085e26db5afbac24c4f7e4bcb90bbecc5609992414a7",
+    "bytes": 39204
+  },
+  "rules": [
+    {
+      "path": "docs/qa-ci/semantic-atomicity-review.md",
+      "sha256": "23e9a886da0caf995ecbef555e4aaa9da216278c15cbefd52d4b707fe6088022",
+      "bytes": 4405
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-rollout.md",
+      "sha256": "e2449e9e73f36466710f099a167627cf980a49c20f8b7b6689e070a4e16a1a81",
+      "bytes": 5994
+    },
+    {
+      "path": "app/scripts/semanticAtomicityReview.ts",
+      "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee",
+      "bytes": 12335
+    },
+    {
+      "path": "app/scripts/memoryCardReview.ts",
+      "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181",
+      "bytes": 49697
+    },
+    {
+      "path": "app/scripts/lib/curricularReviewPopulation.ts",
+      "sha256": "55701b65d79363babb5acbf18c092c6ab4543eded9b79243a8820aee8d795f1a",
+      "bytes": 2062
+    }
+  ],
+  "curricularAtomicPopulationRetained": 807,
+  "otherRowsPerLaneToPreserveByteExactly": 799,
+  "existingMemoryContext": {
+    "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/frozen-author/registered-sixteen-am-and-existing-log-memory-context.json",
+    "sha256": "5d78633fa09d84d9e458cada67cd9f7a7130f2731351af1573145a97c80e375b",
+    "bytes": 26261
+  },
+  "memoryBindingPreserved": {
+    "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+    "status": "memory_required",
+    "memoryGoalIds": [
+      "ca708087-71f8-5fae-91c5-b80721a4208f"
+    ],
+    "deckIds": [
+      "de_gymnasium_math_analysis_core"
+    ],
+    "cardIds": [
+      "math_analysis_c05",
+      "math_analysis_c14"
+    ],
+    "noCardDeckOrMemoryGoalChanges": true
+  },
+  "rows": [
+    {
+      "lane": "A",
+      "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+      "lineNumber": 45,
+      "decision": "PASS",
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "1f14a45bbb8e6ddbca725c724d09087b227960085a90c4171190eaf82b77550d",
+        "bytes": 473076
+      },
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+        "fingerprint": "sha256:9bb47572047ce96f121bca5bb2e2be09540fefc6dc62ad1a9d0bb5f7ea362692",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-09-27",
+        "reviewer": "OpenAI Codex; AI candidate recheck",
+        "reason": "Der aktuelle Text begrenzt auf geeignete verknüpfte Funktionen: eine Stammfunktion bestimmen und sie durch Ableiten kontrollieren sind Lösungs- und Prüfschritt derselben Integralaufgabe. Nicht-elementare Fälle wie e^(x²) werden nicht als allgemein lösbar versprochen. Die Parameter-Schar-Analyse bleibt im direkten Vorgängerziel. Keine menschliche Freigabe.",
+        "suggestedSplit": []
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"0e8417d7-effb-5314-93ba-a571b01726ce\",\"fingerprint\":\"sha256:9bb47572047ce96f121bca5bb2e2be09540fefc6dc62ad1a9d0bb5f7ea362692\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-09-27\",\"reviewer\":\"OpenAI Codex; AI candidate recheck\",\"reason\":\"Der aktuelle Text begrenzt auf geeignete verknüpfte Funktionen: eine Stammfunktion bestimmen und sie durch Ableiten kontrollieren sind Lösungs- und Prüfschritt derselben Integralaufgabe. Nicht-elementare Fälle wie e^(x²) werden nicht als allgemein lösbar versprochen. Die Parameter-Schar-Analyse bleibt im direkten Vorgängerziel. Keine menschliche Freigabe.\",\"suggestedSplit\":[]}",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+        "fingerprint": "sha256:839a1562cbbcc8a46d5f3eb3eeec86bddc8c6b8aaf41e083f1a292a9d9ea729d",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI Astra independent whole-goal review; /root/astra_space_geometry_four_forms",
+        "reason": "Computing an integral through a suitable primitive and checking that primitive are solution and verification stages of the same integration competency, with three representative combinations. Same stable curricular goal retained with an own-ID exam role; this is an AI review, not human approval.",
+        "suggestedSplit": []
+      },
+      "wholeCompetenceRationale": "Computing an integral through a suitable primitive and checking that primitive are solution and verification stages of the same integration competency, with three representative combinations.",
+      "contentDecision": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/independent/content-review.portable.json",
+        "sha256": "127432c1f1a475087263085e26db5afbac24c4f7e4bcb90bbecc5609992414a7",
+        "bytes": 39204
+      }
+    },
+    {
+      "lane": "A",
+      "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+      "lineNumber": 108,
+      "decision": "PASS",
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "1f14a45bbb8e6ddbca725c724d09087b227960085a90c4171190eaf82b77550d",
+        "bytes": 473076
+      },
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+        "fingerprint": "sha256:db3892f798666e9f7d6dad8f17fd6d3fa4093c136ea1c449f5484229c678292d",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-09",
+        "reviewer": "codex",
+        "reason": "Bulk-Review 2026-05-09: Ein zusammenhängendes, einzeln prüfbares Inhaltsziel; ggf. sind Berechnen/Deuten/Begründen Ausführungsschritte derselben Kompetenz.",
+        "suggestedSplit": []
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"23589682-2028-54cb-9034-b468b42688f1\",\"fingerprint\":\"sha256:db3892f798666e9f7d6dad8f17fd6d3fa4093c136ea1c449f5484229c678292d\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-09\",\"reviewer\":\"codex\",\"reason\":\"Bulk-Review 2026-05-09: Ein zusammenhängendes, einzeln prüfbares Inhaltsziel; ggf. sind Berechnen/Deuten/Begründen Ausführungsschritte derselben Kompetenz.\",\"suggestedSplit\":[]}",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+        "fingerprint": "sha256:ee7a5053cdda5aad1bc7adaf801efcce746d8fce5a60e68d4f7f8e8121229e98",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI Astra independent whole-goal review; /root/astra_space_geometry_four_forms",
+        "reason": "These three function types instantiate the one linear-inner-transformation integration procedure; detecting and compensating the inner slope is the common assessable competence. Same stable curricular goal retained with an own-ID exam role; this is an AI review, not human approval.",
+        "suggestedSplit": []
+      },
+      "wholeCompetenceRationale": "These three function types instantiate the one linear-inner-transformation integration procedure; detecting and compensating the inner slope is the common assessable competence.",
+      "contentDecision": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/independent/content-review.portable.json",
+        "sha256": "127432c1f1a475087263085e26db5afbac24c4f7e4bcb90bbecc5609992414a7",
+        "bytes": 39204
+      }
+    },
+    {
+      "lane": "A",
+      "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+      "lineNumber": 161,
+      "decision": "PASS",
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "1f14a45bbb8e6ddbca725c724d09087b227960085a90c4171190eaf82b77550d",
+        "bytes": 473076
+      },
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+        "fingerprint": "sha256:e057138de771109593ceb6ac98a843e2890743b3305ac770b066762dc3096264",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-09",
+        "reviewer": "codex",
+        "reason": "Split-Review 2026-05-09: Aus einem nicht-atomaren Blattziel herausgelöstes, einzeln prüfbares kanonisches Teilziel.",
+        "suggestedSplit": []
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"315093d4-515a-542c-b776-d72a12763d1a\",\"fingerprint\":\"sha256:e057138de771109593ceb6ac98a843e2890743b3305ac770b066762dc3096264\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-09\",\"reviewer\":\"codex\",\"reason\":\"Split-Review 2026-05-09: Aus einem nicht-atomaren Blattziel herausgelöstes, einzeln prüfbares kanonisches Teilziel.\",\"suggestedSplit\":[]}",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+        "fingerprint": "sha256:9082140dfd7c51a171b988918e27392ad80e7c49fe0b8e13f882e22cbdd97b41",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI Astra independent whole-goal review; /root/astra_space_geometry_four_forms",
+        "reason": "Stating the e-series with its Taylor origin is one coherent representation competency; factorial notation, finite approximations and convergence explain that representation rather than independent routines. Same stable curricular goal retained with an own-ID exam role; this is an AI review, not human approval.",
+        "suggestedSplit": []
+      },
+      "wholeCompetenceRationale": "Stating the e-series with its Taylor origin is one coherent representation competency; factorial notation, finite approximations and convergence explain that representation rather than independent routines.",
+      "contentDecision": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/independent/content-review.portable.json",
+        "sha256": "127432c1f1a475087263085e26db5afbac24c4f7e4bcb90bbecc5609992414a7",
+        "bytes": 39204
+      }
+    },
+    {
+      "lane": "A",
+      "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+      "lineNumber": 187,
+      "decision": "PASS",
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "1f14a45bbb8e6ddbca725c724d09087b227960085a90c4171190eaf82b77550d",
+        "bytes": 473076
+      },
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+        "fingerprint": "sha256:9bf0717cf4a8fbcd36d5eef1c566857dd6ffd60258286824427680f20ace1957",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-09-20",
+        "reviewer": "codex-informed-post-revision-five-20260920",
+        "reason": "Einzelprüfung 2026-09-20 nach ausdrücklicher Einschränkung auf x>0: Ein Inhalt, ln(x) als Stammfunktion von 1/x zu erkennen und anzuwenden. Einfache Integralrechnung und Begründung durch Ableiten sind Prüfung und Anwendung derselben Beziehung, keine unabhängigen zusätzlichen Integrationsmethoden.",
+        "suggestedSplit": []
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4\",\"fingerprint\":\"sha256:9bf0717cf4a8fbcd36d5eef1c566857dd6ffd60258286824427680f20ace1957\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-09-20\",\"reviewer\":\"codex-informed-post-revision-five-20260920\",\"reason\":\"Einzelprüfung 2026-09-20 nach ausdrücklicher Einschränkung auf x>0: Ein Inhalt, ln(x) als Stammfunktion von 1/x zu erkennen und anzuwenden. Einfache Integralrechnung und Begründung durch Ableiten sind Prüfung und Anwendung derselben Beziehung, keine unabhängigen zusätzlichen Integrationsmethoden.\",\"suggestedSplit\":[]}",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+        "fingerprint": "sha256:17e0ba8e6ba8dc7a304591965a6669e513242b57e2fd62c4432f544d015f2421",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI Astra independent whole-goal review; /root/astra_space_geometry_four_forms",
+        "reason": "The one competence is reliable use of ln as a primitive of1/x on x>0; differentiation, integration and domain justification are operational aspects of that relation. Same stable curricular goal retained with an own-ID exam role; this is an AI review, not human approval.",
+        "suggestedSplit": []
+      },
+      "wholeCompetenceRationale": "The one competence is reliable use of ln as a primitive of1/x on x>0; differentiation, integration and domain justification are operational aspects of that relation.",
+      "contentDecision": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/independent/content-review.portable.json",
+        "sha256": "127432c1f1a475087263085e26db5afbac24c4f7e4bcb90bbecc5609992414a7",
+        "bytes": 39204
+      }
+    },
+    {
+      "lane": "A",
+      "goalId": "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+      "lineNumber": 593,
+      "decision": "PASS",
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "1f14a45bbb8e6ddbca725c724d09087b227960085a90c4171190eaf82b77550d",
+        "bytes": 473076
+      },
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+        "fingerprint": "sha256:aa481dc531e54c10e5d4955e250bce28515aeae5893583b98ebd613471efdf81",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-08-27",
+        "reviewer": "codex-math-batch-011-wording-adjudication-2026-08-27",
+        "reason": "Grenzwertdarstellung, vorzeichengerechte Flächenzerlegung und Endlichkeitsdeutung sind notwendige Teile einer einzelnen geometrischen Flächenbestimmung mit uneigentlichen Integralen.",
+        "suggestedSplit": []
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"bfc2bf06-9b37-4912-a8eb-25fb5d489d72\",\"fingerprint\":\"sha256:aa481dc531e54c10e5d4955e250bce28515aeae5893583b98ebd613471efdf81\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-08-27\",\"reviewer\":\"codex-math-batch-011-wording-adjudication-2026-08-27\",\"reason\":\"Grenzwertdarstellung, vorzeichengerechte Flächenzerlegung und Endlichkeitsdeutung sind notwendige Teile einer einzelnen geometrischen Flächenbestimmung mit uneigentlichen Integralen.\",\"suggestedSplit\":[]}",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+        "fingerprint": "sha256:1b62406f2d4c0d27ae857b924ffafc3b22b2cca0397d99bce0021c6a5e7af880",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI Astra independent whole-goal review; /root/astra_space_geometry_four_forms",
+        "reason": "Determining one geometric area by improper integration is one competence: sign decomposition and all required limits are necessary stages of that determination, not independent curricular goals. Same stable curricular goal retained with an own-ID exam role; this is an AI review, not human approval.",
+        "suggestedSplit": []
+      },
+      "wholeCompetenceRationale": "Determining one geometric area by improper integration is one competence: sign decomposition and all required limits are necessary stages of that determination, not independent curricular goals.",
+      "contentDecision": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/independent/content-review.portable.json",
+        "sha256": "127432c1f1a475087263085e26db5afbac24c4f7e4bcb90bbecc5609992414a7",
+        "bytes": 39204
+      }
+    },
+    {
+      "lane": "A",
+      "goalId": "ccd47872-4d9d-44db-8c8d-eda24019b502",
+      "lineNumber": 632,
+      "decision": "PASS",
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "1f14a45bbb8e6ddbca725c724d09087b227960085a90c4171190eaf82b77550d",
+        "bytes": 473076
+      },
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "ccd47872-4d9d-44db-8c8d-eda24019b502",
+        "fingerprint": "sha256:dcd37af526d4759155c561005cb3fa622a54f7faead429a8a37820653ae27cf4",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-05",
+        "reviewer": "codex",
+        "reason": "E-Phasen-Review: als eine zusammenhängende, prüfbare Inhaltsroutine bewertet.",
+        "suggestedSplit": []
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"ccd47872-4d9d-44db-8c8d-eda24019b502\",\"fingerprint\":\"sha256:dcd37af526d4759155c561005cb3fa622a54f7faead429a8a37820653ae27cf4\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-05\",\"reviewer\":\"codex\",\"reason\":\"E-Phasen-Review: als eine zusammenhängende, prüfbare Inhaltsroutine bewertet.\",\"suggestedSplit\":[]}",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "ccd47872-4d9d-44db-8c8d-eda24019b502",
+        "fingerprint": "sha256:c93405b88a27f73a0fe83f4a6e2d9944c9014bbddb0298e23c9dc4ff10fb59ba",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI Astra independent whole-goal review; /root/astra_space_geometry_four_forms",
+        "reason": "Obtaining a meaningful approximation to this particular constant includes identifying what the value approximates; numerical procedure and constant interpretation form one assessable competence. Same stable curricular goal retained with an own-ID exam role; this is an AI review, not human approval.",
+        "suggestedSplit": []
+      },
+      "wholeCompetenceRationale": "Obtaining a meaningful approximation to this particular constant includes identifying what the value approximates; numerical procedure and constant interpretation form one assessable competence.",
+      "contentDecision": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/independent/content-review.portable.json",
+        "sha256": "127432c1f1a475087263085e26db5afbac24c4f7e4bcb90bbecc5609992414a7",
+        "bytes": 39204
+      }
+    },
+    {
+      "lane": "A",
+      "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+      "lineNumber": 739,
+      "decision": "PASS",
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "1f14a45bbb8e6ddbca725c724d09087b227960085a90c4171190eaf82b77550d",
+        "bytes": 473076
+      },
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+        "fingerprint": "sha256:58fb43900c5e3d4bc7b3040ac0684885b3c7c65fd22be0421168f0572b181f3d",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-05",
+        "reviewer": "codex",
+        "reason": "Q1-Review: Eine zusammenhaengende Integral- oder Stammfunktionsroutine; Berechnen, Deuten und Begruenden sind hier Ausfuehrungsschritte einer pruefbaren Kompetenz.",
+        "suggestedSplit": []
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"ece68088-71a8-466b-874c-09e6baac19fc\",\"fingerprint\":\"sha256:58fb43900c5e3d4bc7b3040ac0684885b3c7c65fd22be0421168f0572b181f3d\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-05\",\"reviewer\":\"codex\",\"reason\":\"Q1-Review: Eine zusammenhaengende Integral- oder Stammfunktionsroutine; Berechnen, Deuten und Begruenden sind hier Ausfuehrungsschritte einer pruefbaren Kompetenz.\",\"suggestedSplit\":[]}",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+        "fingerprint": "sha256:fa572f5fa9fd894e9aa6776b80536de81ad1c884a0142f8f0e7e911228736eab",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI Astra independent whole-goal review; /root/astra_space_geometry_four_forms",
+        "reason": "Reconstruction and interpretation concern the same quantity determined by one rate and one reference; two contexts are applications of that one assessable skill. Same stable curricular goal retained with an own-ID exam role; this is an AI review, not human approval.",
+        "suggestedSplit": []
+      },
+      "wholeCompetenceRationale": "Reconstruction and interpretation concern the same quantity determined by one rate and one reference; two contexts are applications of that one assessable skill.",
+      "contentDecision": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/independent/content-review.portable.json",
+        "sha256": "127432c1f1a475087263085e26db5afbac24c4f7e4bcb90bbecc5609992414a7",
+        "bytes": 39204
+      }
+    },
+    {
+      "lane": "A",
+      "goalId": "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+      "lineNumber": 756,
+      "decision": "PASS",
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "1f14a45bbb8e6ddbca725c724d09087b227960085a90c4171190eaf82b77550d",
+        "bytes": 473076
+      },
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+        "fingerprint": "sha256:134c416ef716729791825e8d9109fe11f77dc34de7808570948b84a24e7f197d",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-09",
+        "reviewer": "codex",
+        "reason": "Split-Review 2026-05-09: Aus einem nicht-atomaren Blattziel herausgelöstes, einzeln prüfbares kanonisches Teilziel.",
+        "suggestedSplit": []
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"semantic-atomicity-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"f1eee698-04c6-5d60-bcc6-a3c67129eea2\",\"fingerprint\":\"sha256:134c416ef716729791825e8d9109fe11f77dc34de7808570948b84a24e7f197d\",\"status\":\"atomic\",\"semanticAtomic\":true,\"reviewedAt\":\"2026-05-09\",\"reviewer\":\"codex\",\"reason\":\"Split-Review 2026-05-09: Aus einem nicht-atomaren Blattziel herausgelöstes, einzeln prüfbares kanonisches Teilziel.\",\"suggestedSplit\":[]}",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+        "fingerprint": "sha256:f62b1b262b5a5c485bf01dbe0d988193f36316ad2fddcc4abf8fb51df0b4947f",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI Astra independent whole-goal review; /root/astra_space_geometry_four_forms",
+        "reason": "Finding a fitting rule and justifying the inference are inseparable parts of the one formation-law competency; explicit and recursive notation are alternative representations, not two mandatory independent goals. Same stable curricular goal retained with an own-ID exam role; this is an AI review, not human approval.",
+        "suggestedSplit": []
+      },
+      "wholeCompetenceRationale": "Finding a fitting rule and justifying the inference are inseparable parts of the one formation-law competency; explicit and recursive notation are alternative representations, not two mandatory independent goals.",
+      "contentDecision": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/independent/content-review.portable.json",
+        "sha256": "127432c1f1a475087263085e26db5afbac24c4f7e4bcb90bbecc5609992414a7",
+        "bytes": 39204
+      }
+    },
+    {
+      "lane": "M",
+      "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+      "lineNumber": 45,
+      "decision": "PASS",
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "e03a5d4ddddf449fcf7fe607d90454c1d4aa16a44b8594cf9705ef43cffd67e9",
+        "bytes": 499812
+      },
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+        "fingerprint": "sha256:4f64266580eb08bf3cb77013dbd34f28ddf55b40adda317a30d5682b29518319",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-09-27",
+        "reviewer": "OpenAI Codex; AI candidate recheck",
+        "reason": "Das Auswählen einer geeigneten Integrationsmethode und das Ableiten zur Kontrolle verlangen begründete Anwendung an neuen Termen. Kompakte elementare Regeln sind durch Voraussetzungen beziehungsweise bestehende Lernwege abgedeckt; dieses verknüpfte Integralziel braucht kein eigenes isoliertes Memory-Deck. Keine menschliche Freigabe."
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"0e8417d7-effb-5314-93ba-a571b01726ce\",\"fingerprint\":\"sha256:4f64266580eb08bf3cb77013dbd34f28ddf55b40adda317a30d5682b29518319\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-09-27\",\"reviewer\":\"OpenAI Codex; AI candidate recheck\",\"reason\":\"Das Auswählen einer geeigneten Integrationsmethode und das Ableiten zur Kontrolle verlangen begründete Anwendung an neuen Termen. Kompakte elementare Regeln sind durch Voraussetzungen beziehungsweise bestehende Lernwege abgedeckt; dieses verknüpfte Integralziel braucht kein eigenes isoliertes Memory-Deck. Keine menschliche Freigabe.\"}",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+        "fingerprint": "sha256:f8fb956d6b77471d58a1a0039779f2e7d835a85b43f7ea1a57ac63b8973c8874",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI Astra independent whole-goal review; /root/astra_space_geometry_four_forms",
+        "reason": "The task varies expressions and requires method selection and verification. Elemental differentiation/integration rules belong to preparation; no additional standalone recall item requires a new deck for this application goal. Same stable curricular goal retained with an own-ID exam role; this is an AI review, not human approval."
+      },
+      "wholeCompetenceRationale": "The task varies expressions and requires method selection and verification. Elemental differentiation/integration rules belong to preparation; no additional standalone recall item requires a new deck for this application goal.",
+      "contentDecision": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/independent/content-review.portable.json",
+        "sha256": "127432c1f1a475087263085e26db5afbac24c4f7e4bcb90bbecc5609992414a7",
+        "bytes": 39204
+      }
+    },
+    {
+      "lane": "M",
+      "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+      "lineNumber": 108,
+      "decision": "PASS",
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "e03a5d4ddddf449fcf7fe607d90454c1d4aa16a44b8594cf9705ef43cffd67e9",
+        "bytes": 499812
+      },
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+        "fingerprint": "sha256:c01bb7748f22a35351cc496d3d0dbf100bf4fe71676782849a1f91ffa8be385f",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-memory-pilot",
+        "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"23589682-2028-54cb-9034-b468b42688f1\",\"fingerprint\":\"sha256:c01bb7748f22a35351cc496d3d0dbf100bf4fe71676782849a1f91ffa8be385f\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+        "fingerprint": "sha256:62b3ce0e71d1f6bf08c98634d4bfb1c1bb3ca8346594867c0fd0be7f429d46db",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI Astra independent whole-goal review; /root/astra_space_geometry_four_forms",
+        "reason": "Reverse-chain compensation follows from the previously learned derivative rule, and must be applied to signs and transformed arguments. No own deck is needed for an additional isolated recall corpus; existing basic-rule preparation is retained. Same stable curricular goal retained with an own-ID exam role; this is an AI review, not human approval."
+      },
+      "wholeCompetenceRationale": "Reverse-chain compensation follows from the previously learned derivative rule, and must be applied to signs and transformed arguments. No own deck is needed for an additional isolated recall corpus; existing basic-rule preparation is retained.",
+      "contentDecision": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/independent/content-review.portable.json",
+        "sha256": "127432c1f1a475087263085e26db5afbac24c4f7e4bcb90bbecc5609992414a7",
+        "bytes": 39204
+      }
+    },
+    {
+      "lane": "M",
+      "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+      "lineNumber": 161,
+      "decision": "PASS",
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "e03a5d4ddddf449fcf7fe607d90454c1d4aa16a44b8594cf9705ef43cffd67e9",
+        "bytes": 499812
+      },
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+        "fingerprint": "sha256:eeb9297f938a730ffed4319d3011fe560580db19e5876e8dcd066fe2da75101f",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-memory-pilot",
+        "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"315093d4-515a-542c-b776-d72a12763d1a\",\"fingerprint\":\"sha256:eeb9297f938a730ffed4319d3011fe560580db19e5876e8dcd066fe2da75101f\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+        "fingerprint": "sha256:667464ea9e471e4733b7226b456e920160db54ee6f4b716b2ffb70476c69f84d",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI Astra independent whole-goal review; /root/astra_space_geometry_four_forms",
+        "reason": "The series can be reconstructed directly by evaluating the established exponential Taylor expansion at1. This goal needs meaning and transfer between polynomial and series, not an additional isolated deck. Retaining no_memory_needed follows that specific derivation, not the nodeKind exam. Same stable curricular goal retained with an own-ID exam role; this is an AI review, not human approval."
+      },
+      "wholeCompetenceRationale": "The series can be reconstructed directly by evaluating the established exponential Taylor expansion at1. This goal needs meaning and transfer between polynomial and series, not an additional isolated deck. Retaining no_memory_needed follows that specific derivation, not the nodeKind exam.",
+      "contentDecision": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/independent/content-review.portable.json",
+        "sha256": "127432c1f1a475087263085e26db5afbac24c4f7e4bcb90bbecc5609992414a7",
+        "bytes": 39204
+      }
+    },
+    {
+      "lane": "M",
+      "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+      "lineNumber": 187,
+      "decision": "PASS",
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "e03a5d4ddddf449fcf7fe607d90454c1d4aa16a44b8594cf9705ef43cffd67e9",
+        "bytes": 499812
+      },
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+        "fingerprint": "sha256:2f979686b4c5fa1102ffcb6dd2b1c9841bc0db8b3cb9051f9bfdf27c0f1e14f9",
+        "status": "memory_required",
+        "memoryUseful": true,
+        "reviewedAt": "2026-09-20",
+        "reviewer": "codex-informed-post-revision-five-20260920",
+        "reason": "Einzelprüfung 2026-09-20: memory_required bleibt auf den kompakten Zusammenhang (ln x)′=1/x und seine Umkehrung als Stammfunktion begrenzt. Die bestehenden Karten math_analysis_c05 und math_analysis_c14 im Deck de_gymnasium_math_analysis_core bleiben passend: Für x>0 gilt ln|x|=ln x. Die neue positive Definitionsmenge erweitert den Kartenumfang nicht; Verstehen und Integralaufgaben bleiben führend.",
+        "memoryGoalIds": [
+          "ca708087-71f8-5fae-91c5-b80721a4208f"
+        ],
+        "deckIds": [
+          "de_gymnasium_math_analysis_core"
+        ]
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4\",\"fingerprint\":\"sha256:2f979686b4c5fa1102ffcb6dd2b1c9841bc0db8b3cb9051f9bfdf27c0f1e14f9\",\"status\":\"memory_required\",\"memoryUseful\":true,\"reviewedAt\":\"2026-09-20\",\"reviewer\":\"codex-informed-post-revision-five-20260920\",\"reason\":\"Einzelprüfung 2026-09-20: memory_required bleibt auf den kompakten Zusammenhang (ln x)′=1/x und seine Umkehrung als Stammfunktion begrenzt. Die bestehenden Karten math_analysis_c05 und math_analysis_c14 im Deck de_gymnasium_math_analysis_core bleiben passend: Für x>0 gilt ln|x|=ln x. Die neue positive Definitionsmenge erweitert den Kartenumfang nicht; Verstehen und Integralaufgaben bleiben führend.\",\"memoryGoalIds\":[\"ca708087-71f8-5fae-91c5-b80721a4208f\"],\"deckIds\":[\"de_gymnasium_math_analysis_core\"]}",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+        "fingerprint": "sha256:8d224a6fbcc01cb020b51a1d2373e46855402241d2795dab207ec2b62c02d460",
+        "status": "memory_required",
+        "memoryUseful": true,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI Astra independent whole-goal review; /root/astra_space_geometry_four_forms",
+        "reason": "The compact relation (ln x) prime=1/x and its reversal remain useful recall items. Retain memory_required and ca708087/de_gymnasium_math_analysis_core, cards c05 and c14 in both languages. On x>0, ln|x|=ln x; existing cards remain adequate. The exam adds application, not permission to remove recall support. Same stable curricular goal retained with an own-ID exam role; this is an AI review, not human approval.",
+        "memoryGoalIds": [
+          "ca708087-71f8-5fae-91c5-b80721a4208f"
+        ],
+        "deckIds": [
+          "de_gymnasium_math_analysis_core"
+        ]
+      },
+      "wholeCompetenceRationale": "The compact relation (ln x) prime=1/x and its reversal remain useful recall items. Retain memory_required and ca708087/de_gymnasium_math_analysis_core, cards c05 and c14 in both languages. On x>0, ln|x|=ln x; existing cards remain adequate. The exam adds application, not permission to remove recall support.",
+      "contentDecision": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/independent/content-review.portable.json",
+        "sha256": "127432c1f1a475087263085e26db5afbac24c4f7e4bcb90bbecc5609992414a7",
+        "bytes": 39204
+      }
+    },
+    {
+      "lane": "M",
+      "goalId": "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+      "lineNumber": 593,
+      "decision": "PASS",
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "e03a5d4ddddf449fcf7fe607d90454c1d4aa16a44b8594cf9705ef43cffd67e9",
+        "bytes": 499812
+      },
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+        "fingerprint": "sha256:3f1689c0f851c4eb23d0f3bf81459660e2488306eaddfa098339831ff789434b",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-08-27",
+        "reviewer": "codex-math-batch-011-wording-adjudication-2026-08-27",
+        "reason": "Uneigentliche Integrale müssen über Grenzprozesse, Konvergenz und geometrische Deutung in variierenden Fällen verstanden werden; ein separates Memory-Deck ist dafür nicht erforderlich."
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"bfc2bf06-9b37-4912-a8eb-25fb5d489d72\",\"fingerprint\":\"sha256:3f1689c0f851c4eb23d0f3bf81459660e2488306eaddfa098339831ff789434b\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-08-27\",\"reviewer\":\"codex-math-batch-011-wording-adjudication-2026-08-27\",\"reason\":\"Uneigentliche Integrale müssen über Grenzprozesse, Konvergenz und geometrische Deutung in variierenden Fällen verstanden werden; ein separates Memory-Deck ist dafür nicht erforderlich.\"}",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+        "fingerprint": "sha256:a767f80f1003a69ae01b545939e68ea178d965824147e8cb2fbcbf112a8dc7c1",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI Astra independent whole-goal review; /root/astra_space_geometry_four_forms",
+        "reason": "No separate recall deck is required: choosing the correct splitting and interpreting each limit needs case-based reasoning. Memorising a cancellation slogan would not demonstrate the competency; elementary primitive rules remain preparation. Same stable curricular goal retained with an own-ID exam role; this is an AI review, not human approval."
+      },
+      "wholeCompetenceRationale": "No separate recall deck is required: choosing the correct splitting and interpreting each limit needs case-based reasoning. Memorising a cancellation slogan would not demonstrate the competency; elementary primitive rules remain preparation.",
+      "contentDecision": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/independent/content-review.portable.json",
+        "sha256": "127432c1f1a475087263085e26db5afbac24c4f7e4bcb90bbecc5609992414a7",
+        "bytes": 39204
+      }
+    },
+    {
+      "lane": "M",
+      "goalId": "ccd47872-4d9d-44db-8c8d-eda24019b502",
+      "lineNumber": 632,
+      "decision": "PASS",
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "e03a5d4ddddf449fcf7fe607d90454c1d4aa16a44b8594cf9705ef43cffd67e9",
+        "bytes": 499812
+      },
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "ccd47872-4d9d-44db-8c8d-eda24019b502",
+        "fingerprint": "sha256:0ca6cf033f8cf2fd044a0dab30d417c1512fc9ff4de9bbef2b591a8a7ddbe05b",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-memory-pilot",
+        "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"ccd47872-4d9d-44db-8c8d-eda24019b502\",\"fingerprint\":\"sha256:0ca6cf033f8cf2fd044a0dab30d417c1512fc9ff4de9bbef2b591a8a7ddbe05b\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "ccd47872-4d9d-44db-8c8d-eda24019b502",
+        "fingerprint": "sha256:9ef41e17de8afb18da4d53db4738c8966ab0318ab02e404293111ed95008cb71",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI Astra independent whole-goal review; /root/astra_space_geometry_four_forms",
+        "reason": "Memorising decimal digits would bypass the required numerical approximation and cannot establish the constant meaning. A dedicated deck is unnecessary; models, table comparison and interpretation are the relevant practice. Same stable curricular goal retained with an own-ID exam role; this is an AI review, not human approval."
+      },
+      "wholeCompetenceRationale": "Memorising decimal digits would bypass the required numerical approximation and cannot establish the constant meaning. A dedicated deck is unnecessary; models, table comparison and interpretation are the relevant practice.",
+      "contentDecision": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/independent/content-review.portable.json",
+        "sha256": "127432c1f1a475087263085e26db5afbac24c4f7e4bcb90bbecc5609992414a7",
+        "bytes": 39204
+      }
+    },
+    {
+      "lane": "M",
+      "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+      "lineNumber": 739,
+      "decision": "PASS",
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "e03a5d4ddddf449fcf7fe607d90454c1d4aa16a44b8594cf9705ef43cffd67e9",
+        "bytes": 499812
+      },
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+        "fingerprint": "sha256:75509bf1351ae625340bc77f2154c2c24ac64d241a1eeeb43f2f9e1f3476f935",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-memory-pilot",
+        "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"ece68088-71a8-466b-874c-09e6baac19fc\",\"fingerprint\":\"sha256:75509bf1351ae625340bc77f2154c2c24ac64d241a1eeeb43f2f9e1f3476f935\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+        "fingerprint": "sha256:e6ec22a385ba78d2363a8e33861edce050c3e1182f8db432fca4702e8a322f3c",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI Astra independent whole-goal review; /root/astra_space_geometry_four_forms",
+        "reason": "This is contextual reconstruction and distinction of stock versus change, not a new isolated factual corpus. A dedicated deck is unnecessary; varying reference points, signs and units require worked practice. Same stable curricular goal retained with an own-ID exam role; this is an AI review, not human approval."
+      },
+      "wholeCompetenceRationale": "This is contextual reconstruction and distinction of stock versus change, not a new isolated factual corpus. A dedicated deck is unnecessary; varying reference points, signs and units require worked practice.",
+      "contentDecision": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/independent/content-review.portable.json",
+        "sha256": "127432c1f1a475087263085e26db5afbac24c4f7e4bcb90bbecc5609992414a7",
+        "bytes": 39204
+      }
+    },
+    {
+      "lane": "M",
+      "goalId": "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+      "lineNumber": 756,
+      "decision": "PASS",
+      "originalReviewFile": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-space-geometry-four-current-20261104.review.jsonl",
+        "sha256": "e03a5d4ddddf449fcf7fe607d90454c1d4aa16a44b8594cf9705ef43cffd67e9",
+        "bytes": 499812
+      },
+      "originalWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+        "fingerprint": "sha256:5787363d5f8454cb69a2561a5623b2e17803f9619bd1107d8ab66004660cff68",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-memory-pilot",
+        "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+      },
+      "originalRawLine": "{\"schemaVersion\":1,\"reviewId\":\"canonical-math-full\",\"ruleVersion\":\"memory-card-review-v1\",\"landscapeId\":\"68a8ac50-f5f5-4e24-8aa9-5e408ca01ced\",\"goalId\":\"f1eee698-04c6-5d60-bcc6-a3c67129eea2\",\"fingerprint\":\"sha256:5787363d5f8454cb69a2561a5623b2e17803f9619bd1107d8ab66004660cff68\",\"status\":\"no_memory_needed\",\"memoryUseful\":false,\"reviewedAt\":\"2026-05-17\",\"reviewer\":\"codex-memory-pilot\",\"reason\":\"Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt.\"}",
+      "replacementWholeRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+        "fingerprint": "sha256:7cd97876cdc4d7057b13051e4d01aca4307449ff148179be05bd745edf33836b",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "OpenAI Astra independent whole-goal review; /root/astra_space_geometry_four_forms",
+        "reason": "Rules must be inferred from changing data and checked against them. A fixed recalled next-term answer is inadequate, and the finite-data ambiguity is reasoned through a counterexample. No separate deck is needed. Same stable curricular goal retained with an own-ID exam role; this is an AI review, not human approval."
+      },
+      "wholeCompetenceRationale": "Rules must be inferred from changing data and checked against them. A fixed recalled next-term answer is inadequate, and the finite-data ambiguity is reasoned through a counterexample. No separate deck is needed.",
+      "contentDecision": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/independent/content-review.portable.json",
+        "sha256": "127432c1f1a475087263085e26db5afbac24c4f7e4bcb90bbecc5609992414a7",
+        "bytes": 39204
+      }
+    }
+  ],
+  "noRootOrGitMutation": true,
+  "integrationAndCurrentGatesNotClaimed": true,
+  "mechanicalPortability": {
+    "reviewer": "Independent review agent /root/astra_review_current_integration",
+    "reviewedAt": "2026-11-04",
+    "status": "PASS",
+    "scope": "Finite locator-only successor adopting the existing genuine review; no renewed content, source/scope or A/M decision.",
+    "originalReview": {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/reviews/independent/am-revalidation.original.json",
+      "sha256": "91301c35cfaad32f8e752f50119d1b9a039fd9db89653e1d789596cad2cbf05d",
+      "bytes": 57703
+    },
+    "originalReviewIsHistoricalReceiptNotCurrentOperationalClosure": true,
+    "allOriginalJudgmentsPreserved": true,
+    "exactTextCopies": 48,
+    "exactWholeForms": 8,
+    "exactReplacementRows": 16,
+    "populationRetained": 807,
+    "unchangedRawRowsPerLane": 799,
+    "existingLogMemoryRequiredAndDeckBindingsPreserved": true,
+    "historicalManifestHandoffCanonicalBindingsRemainProvenance": true,
+    "technicalIntegrationStageAndRuntimeAcceptanceNotClaimed": true
+  }
+}

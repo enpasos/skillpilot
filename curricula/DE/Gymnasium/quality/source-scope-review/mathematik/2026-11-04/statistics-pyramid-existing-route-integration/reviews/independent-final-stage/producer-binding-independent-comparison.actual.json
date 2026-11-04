@@ -1,0 +1,42 @@
+{
+  "status": "PASS_INDEPENDENT_EXACT_PRODUCER_SUCCESSOR_CONTENT_COMPARISON",
+  "effectiveHost": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/statistics-pyramid-existing-route-producer-bindings-20261104-v1/check-host",
+  "comparedOriginalRegularSourceFiles": 13570,
+  "changedExistingPaths": [
+    "app/scripts/config/math-country-seki-stage-policy.json",
+    "app/scripts/config/math-duration-split-spanning-tree-policy.json",
+    "backend/src/test/java/com/skillpilot/backend/composition/MaterializeMathContextualCombinedViews.java"
+  ],
+  "newMetadataPaths": [
+    "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/author-producer-binding-amendment.json",
+    "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/guard-amendment.manifest.json",
+    "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/producer-binding-deltas.actual.json"
+  ],
+  "exactPolicyDelta": "Only guard sourceBindings hash and one new author binding appended.",
+  "exactLayoutDelta": "Only the same author binding appended to inputs.sourceScopeDecisions.",
+  "originalAuthorAndOtherWholeFilesUnchanged": true,
+  "nativeRecordedInputDelta": {
+    "originalInputCount": 3285,
+    "unchangedOriginalInputs": 3284,
+    "changedOriginalInputs": [
+      {
+        "path": "app/scripts/config/math-country-seki-stage-policy.json",
+        "native3Sha256": "b537c7455fa0ce9c946341fcaa898228d9d6d2054426af90f40d58af4fffdb61",
+        "finalProducerBindingSha256": "795a97e647d335c3a9edf341f067131b16318163992dec0d84f622f8e69f3587"
+      }
+    ],
+    "additionalMetadataPathsNotInOriginalInputMap": [
+      "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/author-producer-binding-amendment.json",
+      "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/guard-amendment.manifest.json",
+      "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/producer-binding-deltas.actual.json"
+    ],
+    "guardAndLayoutNotInOriginalInputMap": true
+  },
+  "nonRuntimeJudgment": {
+    "guard": "Test-source buildtime producer, not invoked by Native sampler.",
+    "policyAndLayout": "Only authoring hash bindings change; no view, stage, scope, operation or source curriculum decisions change.",
+    "newMetadata": "All three files reside under reserved DE/Gymnasium/quality, excluded by actual runtime LandscapeService and GoalMappingService; CompositionViewService reads composition-views.",
+    "scopeInventory": "Actual sampler support reads gymnasiumDurationOfferings.ts, whose bytes are unchanged."
+  },
+  "rootOrFrozenInputsWritten": false
+}

@@ -1,0 +1,506 @@
+export const de = {
+    startPage: {
+        subtitle: "So startest du in 5 Minuten.",
+        cards: {
+            whitepaper: {
+                title: "Konzept",
+                description: "Warum SkillPilot Lernen anders begleitet."
+            },
+            gpt: {
+                title: "Lernen starten",
+                badge: "Start",
+                description: "Wähle dein Curriculum und deinen Lerncoach für die Beta. Dein Fortschritt bleibt erhalten.",
+                cta: "Jetzt starten"
+            },
+            explorer: {
+                title: "Cockpit",
+                description: "Sieh deinen Fortschritt und wähle nächste Lernziele.",
+                cta: "Cockpit öffnen"
+            },
+            curricula: {
+                title: "Curriculum-Champions",
+                description: "Mitmachen und Curricula praxistauglich machen."
+            }
+        },
+        login: {
+            back: "Zurück",
+            roles: {
+                learner: "Lernen",
+                trainer: "Lehrkräfte",
+                explorer: "Erkunden"
+            },
+            loginTitle: "SkillPilot-ID festlegen",
+            loginText: "Mit ihr öffnest du deinen persönlichen Lernstand.",
+            newLoginTitle: "Noch keine SkillPilot-ID?",
+            directIdTitle: "Deine SkillPilot-ID",
+            idFieldHint: "Gib eine vorhandene ID ein oder fülle das Feld über eine der Optionen darunter.",
+            idLabel: "Vorhandene SkillPilot-ID eingeben",
+            idSourceExisting: "Vorhandene ID",
+            idSourceGenerated: "Neu generierte ID",
+            idSourceFile: "Aus Datei geladen",
+            idConfirmed: "SkillPilot-ID bestätigt",
+            fileLoginTitle: "Geschützte ID-Datei vorhanden?",
+            loadIdFromFile: "Geschützte Datei auswählen",
+            loadingIdFromFile: "ID-Datei wird geladen …",
+            saveIdToFile: "SkillPilot-ID geschützt speichern",
+            idFileHint: "Die Datei wird mit einem Passwort verschlüsselt. SkillPilot speichert dieses Passwort nicht.",
+            idFileLoaded: "SkillPilot-ID aus geschützter Datei übernommen.",
+            idFileSaved: "Geschützte ID-Datei gespeichert.",
+            idFileLoadFailed: "Die Datei ist beschädigt oder hat ein nicht unterstütztes Format.",
+            idFileSaveFailed: "Die ID-Datei konnte nicht gespeichert werden.",
+            idFileDecryptFailed: "Die Datei konnte nicht geöffnet werden. Prüfe das Passwort und ob die Datei vollständig ist.",
+            idFileEncryptionUnavailable: "Dein Browser unterstützt die benötigte Verschlüsselung nicht.",
+            idFileDialog: {
+                saveTitle: "SkillPilot-ID-Datei schützen",
+                saveDescription: "Lege ein Passwort fest. Du brauchst es später zum Laden der Datei.",
+                loadTitle: "Geschützte SkillPilot-ID laden",
+                loadDescription: "Gib das Passwort für „{{fileName}}“ ein.",
+                passwordLabel: "Passwort",
+                confirmPasswordLabel: "Passwort bestätigen",
+                passwordHint: "Mindestens 4 Zeichen.",
+                passwordNotRecoverable: "SkillPilot speichert dieses Passwort nicht und kann es nicht wiederherstellen.",
+                showPassword: "Passwort anzeigen",
+                hidePassword: "Passwort ausblenden",
+                passwordTooShort: "Das Passwort muss mindestens 4 Zeichen lang sein.",
+                passwordsMismatch: "Die Passwörter stimmen nicht überein.",
+                cancel: "Abbrechen",
+                saveAction: "Geschützte Datei herunterladen",
+                loadAction: "SkillPilot-ID laden",
+                encrypting: "Datei wird verschlüsselt …",
+                decrypting: "Datei wird geöffnet …",
+                close: "Dialog schließen"
+            },
+            requestNewId: "Neue SkillPilot-ID erstellen",
+            creatingNewId: "SkillPilot-ID wird erstellt …",
+            idWarning: "Bewahre diese neu generierte SkillPilot-ID gut auf.",
+            checkButton: "Weiter zu Schritt 2: Curriculum wählen",
+            checking: "SkillPilot-ID wird geprüft …",
+            idNotFound: "Diese SkillPilot-ID wurde nicht gefunden. Sie wurde möglicherweise gelöscht oder ist nicht korrekt.",
+            resumeFailed: "SkillPilot konnte nicht bestätigen, dass die Aktivität für diese ID gespeichert wurde. Bitte versuche es erneut.",
+            learnerCheckFailed: "Die SkillPilot-ID konnte gerade nicht geprüft werden. Bitte versuche es erneut.",
+            startButton: "Starten",
+            cockpitButton: "Cockpit öffnen",
+            coachProviderLabel: "Lerncoach wählen",
+            chatGptDesktop: {
+                versionLabel: "Unterstützt ab Plugin-Version",
+                versionHint: "Prüfe, dass „SkillPilot Coach“ mindestens Version {version} hat und aktiviert ist.",
+                archiveUpdateHint: "Eine Marketplace-Aktualisierung bestätigt kein Update einer bisherigen Archivinstallation. Prüfe nach dem Wechsel die tatsächlich installierte Version.",
+                catalogTitle: "ChatGPT Desktop: SkillPilot Coach",
+                catalogStatus: "Desktop-Beta für den Bereich „Work“. Das Plugin wird direkt über diesen Marketplace installiert.",
+                returnToStart: "In SkillPilot mit ChatGPT starten",
+                catalogStartHint: "Kehre zu SkillPilot zurück, prüfe dein Lernprofil und Curriculum und wähle „ChatGPT Desktop“. Bereite dort die Startnachricht für eine neue Unterhaltung in „Work“ vor.",
+                title: "ChatGPT Desktop",
+                hint: "Verwende das SkillPilot-Plugin in ChatGPT Desktop im Bereich „Work“. Browser und Mobil-App sind dafür noch nicht bestätigt.",
+                setupTitle: "Plugin einrichten oder aktualisieren",
+                installMarketplace: "Öffne in ChatGPT Desktop „Plugins“ → „Hinzufügen“ → „Marketplace hinzufügen“.",
+                repositoryLabel: "GitHub-Adresse des SkillPilot-Marketplace",
+                copyRepository: "Marketplace-Adresse kopieren",
+                repositoryCopied: "Marketplace-Adresse kopiert",
+                installPlugin: "Füge diese Adresse hinzu und installiere „SkillPilot Coach“ aus dem Marketplace.",
+                connectPlugin: "Öffne die Verbindung im neuen „SkillPilot Coach“ und melde dich an. Eine Verbindung zu „SkillPilot Coach v1“ muss neu eingerichtet werden.",
+                updateHint: "Für Korrekturen aktualisiere den Marketplace und das installierte SkillPilot-Plugin in ChatGPT Desktop. Bereite danach hier eine neue Lernsession vor.",
+                installedHint: "Sobald das neue Plugin „SkillPilot Coach“ installiert, aktiviert und verbunden ist, bereite hier deine Startnachricht vor und beginne einen neuen Chat.",
+                prepare: "Lernen mit ChatGPT vorbereiten",
+                preparing: "Startnachricht wird vorbereitet …",
+                failed: "Die Lernsession konnte nicht vorbereitet werden. Bitte versuche es erneut.",
+                promptLabel: "Startnachricht für ChatGPT Desktop",
+                copyPrompt: "ChatGPT-Startnachricht kopieren",
+                promptCopied: "ChatGPT-Startnachricht kopiert",
+                pasteHint: "Wechsle in ChatGPT Desktop zu „Work“ und beginne dort eine neue Unterhaltung mit ausgewähltem „SkillPilot Coach“. Füge diese Startnachricht ein und sende sie ab. Verwende für Claude oder Gemini jeweils die eigene Startoption in SkillPilot.",
+            },
+            claudeBetaTitle: "Claude-Lerncoach",
+            claudeBetaBadge: "Beta",
+            claudeBetaHint: "Mit Claude Pro kannst du jetzt an der Lern-Beta teilnehmen – im Browser oder in der Claude-App, auch mit Voice-Mode.",
+            claudeVoiceHint: "Wenn der Sprecher im Voice-Mode kurz hängen bleibt, warte einen Moment. Im laufenden Betatest setzt die Sprachausgabe danach wieder ein.",
+            claudeAdultsOnly: "Claude.ai ist laut Anbieter erst ab 18 Jahren nutzbar.",
+            claudeSetupTitle: "So gehst du vor",
+            claudeSetupStepOne: "Öffne die aktuelle Installationsanleitung und richte das SkillPilot-Coach-Plugin in Claude ein. Die Anleitung zeigt dir den verfügbaren Installationsweg.",
+            claudeSetupStepTwo: "Kehre danach zu SkillPilot zurück und starte hier deine Lernsession. Falls das Plugin bereits installiert ist, kannst du direkt mit Schritt 2 fortfahren.",
+            claudeConnect: "Schritt 1: Plugin einrichten",
+            claudeConnecting: "Installationsseite wird geöffnet …",
+            claudeInstallOpened: "Die Installationsseite ist in einem neuen Tab geöffnet. Kehre nach der Installation hierher zurück und fahre mit Schritt 2 fort.",
+            claudeStart: "Schritt 2: Mit Claude starten",
+            claudeStarting: "Claude wird vorbereitet …",
+            claudeLaunched: "Claude ist geöffnet und die Startnachricht ist bereits eingetragen. Prüfe sie und sende sie ab. Beim ersten SkillPilot-Zugriff führt Claude dich bei Bedarf durch die einmalige Anmeldung.",
+            claudeLaunchedCopyFailed: "Claude ist geöffnet und die Startnachricht ist bereits eingetragen. Prüfe sie und sende sie ab. Beim ersten SkillPilot-Zugriff führt Claude dich bei Bedarf durch die einmalige Anmeldung.",
+            claudeFallbackHint: "Das neue Fenster wurde blockiert. Erlaube Pop-ups für SkillPilot und starte erneut.",
+            claudeClipboardFallbackHint: "Die Startnachricht ist im geöffneten Claude-Tab bereits eingetragen. Prüfe sie und sende sie ab.",
+            claudeCopyPrompt: "Startnachricht kopieren",
+            claudePromptCopied: "Startnachricht kopiert.",
+            claudeOpenWeb: "Claude im Browser öffnen",
+            claudeOpenApp: "Claude Web öffnen",
+            claudeInstallFallback: "Installationsseite öffnen",
+            claudeFailed: "Claude konnte gerade nicht vorbereitet werden. Bitte versuche den Webstart erneut.",
+            dashboardButton: "Cockpit öffnen",
+            curriculumStepTitle: "Curriculum wählen",
+            curriculumStepText: "Wähle, womit du lernen möchtest.",
+            curriculumSaving: "Curriculum wird gespeichert …",
+            curriculumSaveFailed: "Das Curriculum konnte nicht gespeichert werden. Bitte versuche es erneut.",
+            personalCurriculumStepTitle: "Persönliches Curriculum festlegen",
+            personalCurriculumStepText: "Lege deinen dauerhaften Lernrahmen fest. Den konkreten Fokus kannst du später jederzeit ändern.",
+            completedSetup: {
+                step: "Schritt",
+                selected: "Ausgewählt",
+                configured: "Eingerichtet",
+                change: "Ändern",
+                close: "Einklappen",
+                noAdditionalChoices: "Keine weiteren Angaben erforderlich.",
+                moreOne: "weitere Angabe",
+                moreMany: "weitere Angaben"
+            },
+            trainerCurriculumStepTitle: "Kurs vorbereiten",
+            trainerCurriculumStepText: "Wähle das Curriculum für deine Kursansicht.",
+            trainerDashboardButton: "Kursorganisation öffnen",
+            explorerCurriculumStepTitle: "Curriculum erkunden",
+            explorerCurriculumStepText: "Wähle ein Curriculum und sieh dir Lernziele und Zusammenhänge an.",
+            explorerDashboardButton: "Explorer öffnen",
+            startStepTitle: "Los geht’s",
+            startStepText: "Lerne mit Claude oder ChatGPT Desktop. Gemini wird in kontrollierten Tests erprobt und benötigt eine separat eingerichtete Testverbindung; ein öffentlicher Zugang ist noch nicht eingerichtet. Oder arbeite im Cockpit weiter.",
+            aiCoachNotice: "Der Lerncoach ist ein KI-Assistent und kann Fehler machen. Prüfe wichtige Antworten.",
+            curriculumLabel: {
+                select: "Curriculum wählen",
+                yours: "Dein Curriculum"
+            },
+            trainerInfo: {
+                title: "Lokal gespeichert",
+                text: "Kursdaten bleiben auf diesem Gerät. Das Curriculum wählst du beim Anlegen des jeweiligen Kurses."
+            }
+        },
+        banner: {
+            text: "**SkillPilot ist kostenlos.** Die Lern-Beta läuft mit Claude Pro im Browser und in der Claude-App, auch mit Voice-Mode. Das SkillPilot-Plugin für ChatGPT Desktop steht ebenfalls als Beta bereit. Gemini erproben wir in kontrollierten Tests mit separat eingerichteter Testverbindung; ein öffentlicher Zugang ist noch nicht eingerichtet.",
+            linkLabel: "Zugänge vergleichen"
+        },
+        links: {
+            faq: "FAQ",
+            goalBook: "Lernzielbuch",
+            statistics: "Statistiken",
+            workbench: "Workbench",
+            whitepaper: "Konzept"
+        },
+        footer: {
+            privacy: "Datenschutz",
+            imprint: "Impressum",
+            legal: "Nutzungsbedingungen"
+        }
+    },
+    statsHub: {
+        title: "Statistiken",
+        subtitle: "Entdecke das Wachstum unserer Lern-Community.",
+        back: "Zurück zur Startseite",
+        cards: {
+            users: {
+                title: "SkillPilot-IDs",
+                description: "Überblick über generierte SkillPilot-IDs und Community-Wachstum."
+            },
+            successes: {
+                title: "Erfolge",
+                description: "Gesamtanzahl gemeisterter Lernziele auf der Plattform."
+            }
+        }
+    },
+    explorer: {
+        requires: "Voraussetzungen (requires)",
+        inheritedRequires: "Vererbte Voraussetzungen (aus übergeordneten Clustern)",
+        externalRequires: "Externe Voraussetzungen",
+        contains: "Unterziele (contains)",
+        nextSteps: "Nächste Schritte (Ziele, die dieses benötigen)",
+        nextStepsDirect: "Nächste Schritte (direkt)",
+        nextStepsInherited: "Nächste Schritte (vererbt)",
+        requiresFlowToggleLabel: "Requires-Flow",
+        requiresFlowStateOn: "an",
+        requiresFlowStateOff: "aus",
+        containsChildPickerLabel: "Unterziel wählen",
+        containsChildPickerPlaceholder: "Unterziel auswählen",
+        containsChildPickerTitle: "Unterziel aus contains-Kindern wählen",
+        shareContext: "Kontext-Link kopieren",
+        navigationHelp: "Navigation: Breadcrumb-Dropdowns wechseln zwischen Geschwistern, links siehst du direkte und vererbte Voraussetzungen, rechts Unterziele und Nächste Schritte. So bleibt der komplette Kontext des aktuellen Lernziels sichtbar.",
+        emptyRequires: "Keine direkten Voraussetzungen",
+        emptyInherited: "Keine vererbten Voraussetzungen",
+        emptyContains: "Keine Unterziele",
+        emptyNextSteps: "Keine direkten Folgeziele",
+        emptyNextStepsInherited: "Keine vererbten Folgeziele"
+    },
+    tooltips: {
+        progress: "Fortschritt",
+        removeFromList: "Von Lernliste entfernen",
+        addToList: "Als Lernziel setzen",
+        currentLearningFocus: "Aktueller Lernfokus",
+        setLearningFocus: "Als Lernfokus setzen",
+        legacyReadOnly: "In der Legacy-Ansicht schreibgeschützt",
+        projectedStructureBadge: "Struktur",
+        projectedStructureReadOnly: "Projizierter Strukturknoten; nicht direkt als Lernziel planbar",
+        exportData: "Daten exportieren",
+        importData: "Daten importieren",
+        refresh: "Aktualisieren",
+        adjustCurriculum: "Lehrplan anpassen"
+    },
+    notifications: {
+        shareContextCopied: "Kontext-Link kopiert.",
+        shareContextFailed: "Kontext-Link konnte nicht kopiert werden.",
+        compatibilityArchiveExported: "Kompatibilitätsarchiv exportiert.",
+        compatibilityArchiveExportFailed: "Kompatibilitätsarchiv konnte nicht exportiert werden.",
+        learnerImported: "Lernstand importiert.",
+        learnerImportPartial: "Die signierten serverseitigen Lerndaten wurden importiert, aber der lokale Lernkartenstand konnte nicht vollständig wiederhergestellt werden.",
+        learnerImportFailed: "Lernstand konnte nicht importiert werden.",
+        learnerImportValidationFailed: "Import fehlgeschlagen: Die Exportdatei ist nicht unverändert oder die Signatur ist ungültig.",
+        learnerImportSystemFailed: "Import fehlgeschlagen: Netzwerk- oder Systemfehler.",
+        learnerExported: "Lernstand exportiert.",
+        learnerExportFailed: "Lernstand konnte nicht exportiert werden.",
+        learnerInitialLoadFailed: "Ein Teil deines Lernstands konnte nicht geladen werden. Bitte aktualisiere die Seite später erneut.",
+        activeGoalSetFailed: "Aktives Lernziel konnte nicht gesetzt werden.",
+        activeGoalSetSystemFailed: "Aktives Lernziel konnte wegen eines Netzwerk- oder Systemfehlers nicht gesetzt werden.",
+        plannedGoalSaveFailed: "Lernfokus konnte nicht gespeichert werden.",
+        personalCurriculumSaveFailed: "Persönliches Curriculum konnte nicht gespeichert werden.",
+        preferencesSaveFailed: "Lernpräferenzen konnten nicht gespeichert werden.",
+        trainerClassSaveFailed: "Klassendaten konnten lokal nicht gespeichert werden.",
+        trainerPlannedGoalSaveFailed: "Der Lernplan dieses Schülers konnte nicht gespeichert werden.",
+        trainerBulkPlannedGoalSaveFailed: "Die Lernzielzuweisung für die Klasse konnte nicht gespeichert werden.",
+        trainerInitialLoadFailed: "Trainerdaten konnten nicht vollständig geladen werden. Bitte aktualisiere die Seite später erneut.",
+        trainerClassDataLoadFailed: "Die Lernstände oder Lernpläne der Klasse konnten nicht vollständig geladen werden.",
+        classExported: "Klasse exportiert.",
+        classImported: "Klasse importiert.",
+        classImportFailed: "Klasse konnte nicht importiert werden."
+    },
+    learner: {
+        myGoals: "Meine Lernziele",
+        structureMode: "Struktur",
+        structureAll: "Alle",
+        structureContent: "Inhalte",
+        structureCompetencies: "Kompetenzen",
+        loadingGoals: "Lernziele werden vorbereitet...",
+        shareContext: "Kontext-Link kopieren",
+        marked: "markiert",
+        completed: "abgeschlossen",
+        totalInContext: "Ziele im Kontext",
+        of: "von",
+        nextSteps: "Als nächste Lernziele stehen dir offen:",
+        chooseNext: "Welches möchtest du als Nächstes angehen?",
+        velocity: {
+            title: "Lerngeschwindigkeit",
+            chartLabel: "Erfasste Abschlüsse / Woche (letzte 8 Wochen)",
+            historyNote: "Die Grafik zählt erfasste Abschlüsse. Ältere Einträge zeigen nur die letzte Aktualisierung und werden hier nicht mitgezählt.",
+            completedOn: "Abgeschlossen am",
+            lastUpdatedOn: "Letzte Aktualisierung",
+            recent: "Letzte Erfolge",
+            loading: "Lade Historie...",
+            none: "Noch keine Ziele gemeistert. Bleib dran!"
+        }
+    },
+    trainer: {
+        dashboard: "Kursorganisation",
+        structureMode: "Struktur",
+        structureAll: "Alle",
+        structureContent: "Inhalte",
+        structureCompetencies: "Kompetenzen",
+        shareContext: "Kontext-Link kopieren",
+        import: "Importieren",
+        newClass: "Neue Klasse",
+        students: "Schüler",
+        allClasses: "Alle Klassen",
+        studentList: "Schülerliste",
+        currentContext: "Aktueller Lernkontext",
+        assigning: "Wird zugewiesen...",
+        removing: "Wird entfernt...",
+        removeFromPlan: "Vom Plan von {{count}} Schülern entfernen",
+        assignToAll: "Allen {{count}} Schülern als Lernziel setzen",
+        selectedGoal: "Gewähltes Lernziel",
+        goalOnPlan: "Dieses Ziel ist auf dem Lernplan von {{name}}.",
+        allStudents: "Alle",
+        emptyClasses: "Noch keine Klassen angelegt. Starte jetzt!",
+        classExportTooltip: "Klasse lokal speichern (JSON)",
+        classDeleteTooltip: "Klasse löschen",
+        bulkAddDialogTitle: "Lernziel hinzufügen",
+        bulkAddDialogMessage: "Möchten Sie das Ziel \"{{goal}}\" auf den Lernplan aller {{count}} Schüler setzen?",
+        bulkAddDialogConfirm: "Hinzufügen",
+        bulkRemoveDialogTitle: "Lernziel entfernen",
+        bulkRemoveDialogMessage: "Möchten Sie das Ziel \"{{goal}}\" vom Lernplan aller Schüler entfernen, bei denen es aktuell geplant ist ({{count}} Schüler)?",
+        bulkRemoveDialogConfirm: "Entfernen",
+        deleteClassDialogTitle: "Klasse löschen",
+        deleteClassDialogMessage: "Möchten Sie die Klasse \"{{name}}\" wirklich unwiderruflich löschen?",
+        deleteClassDialogConfirm: "Löschen",
+        importClassDialogTitle: "Klasse importieren",
+        importClassDialogMessage: "Klasse \"{{name}}\" existiert bereits. Möchten Sie sie überschreiben?",
+        importClassDialogConfirm: "Überschreiben",
+        invalidImportFormat: "Ungültiges Dateiformat",
+        emptyState: {
+            title: "Wähle einen Kontext",
+            text: "Wähle links 'Alle' aus, um Ziele für die ganze Klasse zu planen.\nOder wähle einen einzelnen Schüler aus, um dessen Lernstand einzusehen oder zu bewerten."
+        }
+    },
+    curriculaPage: {
+        subtitle: "Champions bringen Curricula in die Praxis und treiben sie voran.",
+        noData: {
+            title: "Noch keine Curricula verfügbar.",
+            button: "Zurück zur Startseite"
+        },
+        intro: {
+            title: "Was ist ein Curriculum-Champion?",
+            description: "Champions übernehmen Verantwortung für ein Curriculum und sorgen dafür, dass es in der Praxis funktioniert.",
+            comicAlt: "Curriculum-Champion-Comic",
+            panels: [
+                {
+                    title: "Engagement",
+                    text: "Mach das Curriculum in deinem Kontext praktisch nutzbar."
+                },
+                {
+                    title: "Durchlernen",
+                    text: "Lerne das Curriculum selbst durch und sammle Punkte."
+                },
+                {
+                    title: "Verbessern",
+                    text: "Eröffne Issues und Pull Requests für Inhalte und Tools."
+                },
+                {
+                    title: "Vernetzen",
+                    text: "Verbinde Lehrende, Lernende und Curriculum-Verantwortliche."
+                }
+            ]
+        },
+        registration: {
+            title: "Champion-Registrierung & Verwaltung",
+            description: "Wähle ein Curriculum, um dich als Champion anzumelden, oder verwalte deine bestehenden Champion-Rollen.",
+            curriculumLabel: "Curriculum",
+            skillpilotLabel: "SkillPilot-ID",
+            skillpilotPlaceholder: "Deine SkillPilot-ID",
+            githubLabel: "GitHub-ID",
+            githubPlaceholder: "Dein GitHub-Handle",
+            publicNote: "GitHub-ID ist erforderlich und öffentlich sichtbar. SkillPilot-ID wird maskiert angezeigt.",
+            scopeLabel: "Bereich / Thema",
+            entireCurriculum: "Gesamtes Curriculum",
+            connectPrompt: "Um dich als Champion zu registrieren, benötigst du eine GitHub-ID und eine SkillPilot-ID.",
+            createGithub: "Noch kein GitHub-Konto? Hier erstellen.",
+            noSkillpilotId: "Keine SkillPilot-ID? Erstelle eine auf der Startseite.",
+            generateId: "ID Generieren",
+            generated: "ID generiert",
+            toggleShow: "Champion-Registrierung / Verwaltung",
+            toggleHide: "Bereich ausblenden",
+            submit: "Registrieren",
+            submitting: "Registriere...",
+            success: "Danke für dein Engagement als Champion!",
+            validation: {
+                skillpilotChecking: "SkillPilot-ID wird geprüft...",
+                skillpilotValid: "SkillPilot-ID bestätigt.",
+                githubValid: "GitHub-ID bestätigt."
+            },
+            errors: {
+                required: "Bitte alle Felder ausfüllen.",
+                failed: "Registrierung fehlgeschlagen.",
+                invalidGithub: "Ungültige GitHub-ID.",
+                unknownSkillpilot: "SkillPilot-ID nicht gefunden.",
+                validationRequired: "Bitte SkillPilot- und GitHub-ID vor der Registrierung prüfen."
+            }
+        },
+        directory: {
+            title: "Curriculum-Verzeichnis",
+            description: "Alle Curricula mit aktuellen Fortschritts-Snapshots.",
+            noDescription: "Keine Beschreibung verfügbar.",
+            championsLabel: "Champions",
+            noChampions: "Noch keine Champions registriert.",
+            filters: {
+                championsLabel: "Champions",
+                categoryLabel: "Kategorie",
+                champions: {
+                    with: "Mit Champions",
+                    without: "Ohne Champions",
+                    all: "Alle"
+                },
+                categories: {
+                    all: "Alle",
+                    school: "Schule",
+                    uni: "Uni",
+                    other: "Weiterbildung"
+                },
+                scopeLabel: "Themen",
+                empty: "Keine Curricula passen zu diesen Filtern."
+            }
+        },
+        stats: {
+            mastered: "Insgesamt gemeisterte Erfolge in diesem Curriculum:",
+            masteredShort: "Gemeistert",
+            goals: "Ziele gesamt"
+        },
+        leaderboard: {
+            title: "Champion-Übersicht",
+            description: "Champions, die dieses Curriculum voranbringen.",
+            empty: "Noch keine Champions für dieses Curriculum registriert."
+        },
+        table: {
+            skillpilotId: "SkillPilot-ID",
+            achievements: "Erfolge",
+            issues: "Issues",
+            prs: "PRs"
+        },
+        back: "Zurück zu SkillPilot",
+        loading: "Lade Curricula..."
+    },
+    usersPage: {
+        title: "SkillPilot-IDs",
+        subtitle: "Überblick über generierte SkillPilot-IDs.",
+        loading: "Lade ID-Statistiken...",
+        empty: "Noch keine ID-Daten vorhanden.",
+        error: "ID-Statistiken konnten nicht geladen werden.",
+        back: "Zurück zu SkillPilot",
+        stats: {
+            total: "IDs gesamt",
+            totalHint: "Alle registrierten IDs",
+            achievements: "IDs mit Erfolgen",
+            achievementsHint: "Mindestens ein Ziel gemeistert (>= 0.9)",
+            rate: "Erfolgsquote"
+        },
+        filters: {
+            all: "Alle",
+            withAchievements: "Mit Erfolgen",
+            activeLastWeek: "Aktiv letzte Woche"
+        },
+        chart: {
+            title: "Anzahl über Zeit",
+            subtitle: "Kumulierte Anzahl",
+            totalLabel: "Alle IDs",
+            achievementsLabel: "Mit Erfolgen",
+            empty: "Noch keine Zeitreihendaten.",
+            lastUpdated: "Aktualisiert"
+        },
+        operator: {
+            title: "Gymnasium-DE Cutover",
+            description: "Explizite SkillPilot-IDs aus eingefrorenen Hessen-Oberstufenansichten gesammelt auf Gymnasium (DE) umstellen. Es werden nur die eingegebenen IDs verarbeitet.",
+            inputLabel: "SkillPilot-IDs",
+            inputPlaceholder: "Eine ID pro Zeile oder durch Komma getrennt",
+            idCountLabel: "Erkannte IDs",
+            validationRequired: "Bitte gib mindestens eine SkillPilot-ID ein.",
+            previewAction: "Dry run prüfen",
+            previewPending: "Prüfe...",
+            executeAction: "Migration ausführen",
+            executePending: "Migriere...",
+            confirmation: "Willst du die angegebenen Lernenden wirklich auf Gymnasium (DE) umstellen?",
+            runFailed: "Bulk-Cutover fehlgeschlagen.",
+            requested: "Angefragt",
+            eligible: "Migrierbar",
+            migrated: "Migriert",
+            alreadyCanonical: "Schon DE",
+            unsupported: "Nicht unterstützt",
+            noCurriculum: "Ohne Curriculum",
+            notFound: "Nicht gefunden",
+            errors: "Fehler",
+            resultsPreview: "Testlauf-Ergebnisse",
+            resultsExecution: "Migrationsergebnisse",
+            useEligibleIds: "Nur migrierbare IDs übernehmen",
+            exportCsv: "CSV herunterladen",
+            tableSkillpilotId: "SkillPilot-ID",
+            tableStatus: "Status",
+            tablePlannedGoals: "Zielbäume",
+            tableMessage: "Hinweis",
+            statusLabels: {
+                eligible: "Migrierbar",
+                migrated: "Migriert",
+                already_canonical: "Bereits DE",
+                unsupported_curriculum: "Nicht unterstützt",
+                no_curriculum: "Kein Curriculum",
+                not_found: "Nicht gefunden",
+                error: "Fehler"
+            }
+        }
+    },
+    common: {
+        more: "weitere"
+    }
+}

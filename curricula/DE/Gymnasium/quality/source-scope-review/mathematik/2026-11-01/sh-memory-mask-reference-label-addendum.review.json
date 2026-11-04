@@ -1,0 +1,42 @@
+{
+  "verdict": "PASS_EXACT_REFERENCE_LABEL_ALIGNMENT_PENDING_NATIVE_RECHECK",
+  "reviewer": "/root/astra_math_material_scope_resume",
+  "authorIndependent": true,
+  "priorMechanicalReview": {
+    "path": "tmp/approach-review-20261101/astra-remaining-material-scope/sh-source-memory-mechanical-review.json",
+    "sha256": "e74be2674d489bc4a76a1ffd7c2bb2e822086ec01fd7893a1368787d9b8d0c56",
+    "preservedUnchanged": true
+  },
+  "finding": "The new direct GK prerequisiteOnly references lacked displayLabel, while every existing SH reference for this memory goal has displayLabel Lernkarten. The merger intentionally ignores kind and projectionRole in leafMetadata but compares displayLabel.",
+  "exactAuthorizedReferenceNode": {
+    "kind": "goalEntry",
+    "goalId": "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+    "projectionRole": "prerequisiteOnly",
+    "displayLabel": "Lernkarten"
+  },
+  "exactAuthorViews": [
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json"
+  ],
+  "unchangedExistingReferenceViews": [
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json"
+  ],
+  "bindings": {
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json": "4e604ffc356adefb1e87ec501240014f0ed0ec09c4083483b233eac53d5b97e1",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json": "d9f9176cab9d51152239819fba01357fa7b3ef2aeb2f9e0bccbccbe2bc7987bd",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json": "a4c295fd07be03d18d44f86cc67b6feb34651cfe71ba09b227377765d922d162",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json": "dbebdd2d56fe75a5e54f7ae2004e63b5a257e57e0ff33d5f2d93c66a7251f79a",
+    "backend/src/main/java/com/skillpilot/backend/composition/CourseProfileCompositionViewMerger.java": "245218a667c732abe8cfac7642ba23c13626f04dcd3d067a4879d3e1a821a62b"
+  },
+  "constraints": [
+    "Only add the identical existing displayLabel to the two newly appended GK masks.",
+    "Existing four subtree references and all unrelated nodes remain unchanged.",
+    "Same whole-memory nonselection in exactly four pure GK offers; LK and real GK+LK unions retain whole target once.",
+    "No runtime merger edits, no union exception, no partial card contract or mastery change.",
+    "Fresh all154 native proof, candidate hashes, previews and freeze remain mandatory."
+  ],
+  "noRootMutationByReviewer": true
+}

@@ -21,7 +21,7 @@ const completed: LevelCompletion = {
     { action: 'leaveProfile', title: { de: 'Zur regulären Lernansicht', en: 'Return to regular learning' } },
   ],
 }
-const render = (completion: LevelCompletion, extra: { stale?: boolean; language?: string; learningPlanPaused?: boolean } = {}) => renderToStaticMarkup(
+const render = (completion: LevelCompletion, extra: { stale?: boolean; busy?: boolean; language?: string; learningPlanPaused?: boolean } = {}) => renderToStaticMarkup(
   <MemoryRouter><LevelCompletionCard completion={completion} language="de" onAction={() => undefined} onRetry={() => undefined} {...extra} /></MemoryRouter>,
 )
 const done = render(completed, { learningPlanPaused: true })
@@ -75,6 +75,32 @@ const unavailable: LevelCompletion = { ...open, calculationStatus: 'unavailable'
 assert.match(render(unavailable), /kann gerade nicht berechnet werden/u)
 assert.doesNotMatch(render(unavailable), /completion_mastery_unavailable|0 von 2/u)
 assert.doesNotMatch(render({ ...unavailable, notice: 'backend-secret' }), /backend-secret/u)
+const targetRouteDefect: LevelCompletion = { ...completed, calculationStatus: 'invalid', complete: undefined,
+  profileId: 'automatic:personal-curriculum', notice: 'completion_target_routes_uncovered',
+  assessments: open.assessments, profileOptions: discovery.profileOptions }
+for (const navigationIntent of [undefined, 'required'] as const) {
+  const invalidScope = { ...targetRouteDefect, navigationIntent }
+  const html = render(invalidScope)
+  assert.match(html, /completionProfile=automatic%3Apersonal-curriculum/u,
+    'structural direct exams remain available in both the automatic overview and a selected route')
+  assert.match(html, /weiterlernen und verfügbare Prüfungen direkt versuchen/u)
+  assert.doesNotMatch(html, /Lernabschnitt abgeschlossen|1 von 2|implizit erledigt|Vorbereitung für 1|completion-default-overview/u,
+    'invalid calculations never expose old counts, implicit credit or a completion claim')
+  assert.doesNotMatch(render(invalidScope, { stale: true }), /completionProfile=/u)
+  assert.doesNotMatch(render(invalidScope, { busy: true }), /completionProfile=/u)
+  assert.doesNotMatch(render({ ...invalidScope, directAssessmentRunning: true }), /completionProfile=/u)
+  assert.doesNotMatch(render({ ...invalidScope, assessments: [{ ...open.assessments[0], startAvailable: false }] }), /completionProfile=/u,
+    'the exception never overrides the backend assessment startability')
+  for (const changes of [
+    { notice: 'completion_profile_invalid' }, { notice: undefined },
+    { calculationStatus: 'unavailable' as const }, { calculationStatus: 'unresolved' as const },
+    { profileId: 'legacy-profile' },
+  ]) assert.doesNotMatch(render({ ...invalidScope, ...changes }), /completionProfile=/u,
+    'the new exception must never expose active assessment links for other invalid or unresolved calculations')
+}
+assert.match(render(targetRouteDefect), /<button[^>]*disabled=""[^>]*aria-label="Abschnitt als Lernweg wählen/u,
+  'a target-route defect only enables structural assessment choices, not ordinary route selection')
+assert.match(render(targetRouteDefect, { language: 'en' }), /keep learning and try available assessments directly/u)
 assert.match(render({ ...open, assessments: [{ ...open.assessments[0], startAvailable: false, unavailableReason: 'assessment_task_unavailable' }] }), /kann gerade nicht gestartet werden/u)
 
 const running = { ...open, directAssessmentRunning: true }

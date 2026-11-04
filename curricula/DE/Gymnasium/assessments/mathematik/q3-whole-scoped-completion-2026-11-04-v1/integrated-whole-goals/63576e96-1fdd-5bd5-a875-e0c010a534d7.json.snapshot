@@ -1,0 +1,105 @@
+{
+  "id": "63576e96-1fdd-5bd5-a875-e0c010a534d7",
+  "title": "Prüfung: Stichprobengröße bei einem Binomialtest verändern",
+  "titleEn": "Assessment: Vary sample size in a binomial test",
+  "description": "Die lernende Person kann die vollständige Prüfung selbstständig bearbeiten und ihre Ergebnisse fachlich begründen.",
+  "descriptionEn": "The learner can complete the whole assessment independently and justify the results.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment"
+  ],
+  "contains": [],
+  "requires": [
+    "ae483d98-54e0-5985-96d2-fc1351d22e4f"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K2",
+      "K3",
+      "K4",
+      "K6"
+    ],
+    "guidingIdeas": [
+      "L5"
+    ],
+    "phase": "Q3"
+  },
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "type": "atomic",
+  "nodeKind": "exam",
+  "sourceRef": "SkillPilot: eigene vollständige Abschlussaufgabe für die unveränderten vorbereitenden Lernzielverträge; keine amtliche Prüfungsaufgabe.",
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "ae483d98-54e0-5985-96d2-fc1351d22e4f"
+    ],
+    "coveredStrands": [
+      "L5"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "# Gleiche Fehlerquote, unterschiedliche Stichprobengröße\n\nEin eigener fiktiver Betrieb modelliert Fehler in zufälligen Stichproben als unabhängige Bernoulli-Versuche mit konstanter unbekannter Fehlerquote $p$. Getestet wird $H_0:p\\leq0{,}05$ gegen $H_1:p>0{,}05$. Verwerfen führt zu einer zusätzlichen Untersuchung. Vergleiche zwei Stichprobenumfänge $n=40$ und $n=80$ mit demselben Signifikanzziel $\\alpha\\leq0{,}05$.\n\nDigitale **exakte Binomialwerkzeuge** sind erlaubt. Für $X_n\\sim B(n;p)$ kann die rechte Schwanzwahrscheinlichkeit als\n\n$$\nP_p(X_n\\geq k)=\\sum_{j=k}^{n}\\binom njp^j(1-p)^{n-j}\n$$\n\nberechnet werden. Ein Gütefunktionsgraph oder eine Normalapproximation ist nicht erforderlich. Unter $p\\leq0{,}05$ ist die rechte Schwanzwahrscheinlichkeit am Rand $p_0=0{,}05$ maximal; diese Tatsache darf verwendet werden.\n\n\n1. Bestimme für **jeden** Umfang die kleinste ganze kritische Zahl $k_n$, sodass die Regel „verwirf bei $X_n\\geq k_n$“ das Signifikanzziel erfüllt. Berechne jeweils die Randwahrscheinlichkeiten für $k_n$ und $k_n-1$ und begründe Minimalität.\n\n2. Gib die beiden Entscheidungsregeln vollständig an. In getrennten Stichproben werden $4$ von $40$ bzw. $8$ von $80$ fehlerhafte Teile beobachtet. Triff die Entscheidungen. Erkläre, warum dieselbe beobachtete relative Häufigkeit unterschiedliche Entscheidungen zulassen kann.\n\n3. Berechne für beide Regeln die tatsächliche Fehler-1-Wahrscheinlichkeit am Nullrand und die Fehler-2-Wahrscheinlichkeit bei der festen Alternative $p_1=0{,}12$; vergleiche auch die Wahrscheinlichkeit, diese Alternative zu entdecken. Erläutere Fehlerarten im Kontext.\n\n4. Beurteile Vorteile und Grenzen der Vergrößerung von 40 auf 80. Beziehe Empfindlichkeit, Aufwand und die diskreten Randfehler ein. Erkläre, warum Nichtverwerfen kein Beweis für $H_0$ und $\\alpha$ keine nachträgliche Wahrscheinlichkeit für $H_0$ ist.\n",
+    "taskContentEn": "# Same defect probability, different sample sizes\n\nA fictional manufacturer models randomly sampled parts as independent Bernoulli trials with a constant unknown defect probability $p$. Test $H_0:p\\leq0.05$ against $H_1:p>0.05$. Rejection triggers further investigation. Compare $n=40$ and $n=80$ using the same significance target $\\alpha\\leq0.05$.\n\nDigital **exact binomial tools** are allowed. For $X_n\\sim B(n;p)$ use\n\n$$\nP_p(X_n\\geq k)=\\sum_{j=k}^{n}\\binom njp^j(1-p)^{n-j}.\n$$\n\nNo power-function graph or normal approximation is needed. You may use that this right-tail probability is maximal over $p\\leq0.05$ at the boundary $p_0=0.05$.\n\n\n1. For **each** sample size find the smallest integer critical count $k_n$ for which “reject if $X_n\\geq k_n$” meets the target. Calculate boundary tail probabilities at $k_n$ and $k_n-1$ and justify minimality.\n\n2. State both complete decision rules. Separate samples contain 4 defects out of 40 and 8 out of 80. Decide in each case. Explain why equal observed proportions can lead to different decisions.\n\n3. For each rule calculate actual type-I error probability at the null boundary and type-II probability at the fixed alternative $p_1=0.12$. Compare probabilities of detecting this alternative and interpret both errors contextually.\n\n4. Assess benefits and limits of increasing 40 to 80: sensitivity, cost and discrete actual null errors. Explain why non-rejection is not proof of $H_0$, and why $\\alpha$ is not a posterior probability of $H_0$.\n",
+    "solutionContent": "# Musterlösung\n\n| Umfang | kritisches $k_n$ | $P_{0,05}(X_n\\geq k_n)$ | $P_{0,05}(X_n\\geq k_n-1)$ |\n|---|---:|---:|---:|\n|40|5|0,0480282603|0,1381497755|\n|80|8|0,0465915275|0,1052852509|\n\nBeide ersten Werte liegen höchstens bei 0,05, die jeweils vorherige Grenze aber darüber. Schwanzwahrscheinlichkeiten fallen beim Erhöhen der Grenze; damit sind 5 und 8 minimal. Auf ausreichend vielen Dezimalstellen prüfen; nicht aus auf ganze Prozent gerundeten Zahlen entscheiden.\n\nRegeln: Bei 40 verwerfen ab 5, nicht verwerfen bis 4; bei 80 verwerfen ab 8, nicht verwerfen bis 7. Vier von 40 führen also zum Nichtverwerfen, acht von 80 zum Verwerfen. Beide Quoten sind 10 %, doch ihre Zufallsschwankung und die diskreten Grenzen hängen von $n$ ab. Mehr Daten können eine gleich große relative Abweichung deutlicher nachweisen; es ist keine logische Unvereinbarkeit.\n\nDie tatsächlichen Randfehler erster Art sind die erste Spalte der Wahrscheinlichkeiten: etwa 4,803 % bzw.4,659 %. Bei $p_1=0{,}12$ gilt\n\n$$\n\\beta_{40}=P_{0{,}12}(X_{40}\\leq4)\\approx0{,}4669109648,\\qquad\n\\beta_{80}=P_{0{,}12}(X_{80}\\leq7)\\approx0{,}2416472614.\n$$\n\nDie Entdeckungswahrscheinlichkeiten sind $1-\\beta\\approx0{,}5330890352$ bzw. $0{,}7583527386$. Falsch beanstanden heißt eine nicht über 5 % liegende Phase unnötig untersuchen; Fehler 2 bedeutet eine tatsächlich über 5 % liegende Phase nicht untersuchen. Die angegebenen $\\beta$ gelten spezifisch bei 12 %, nicht für alle Alternativen.\n\nHier verbessert 80 die Entdeckung bei 12 % erheblich, kostet aber doppelt so viele Prüfungen. Die exakten Nullrandfehler sind wegen diskreter Anzahlen nicht genau gleich 5 % und müssen nicht allgemein mit jeder Erhöhung von $n$ monoton sinken. Diese konkrete Sensitivitätsverbesserung ist kein Beweis für jede beliebige Teständerung. Nichtverwerfen kann einen Fehler 2 enthalten. $\\alpha$ ist eine Wahrscheinlichkeit von Stichprobenentscheidungen unter einem Nullparameter, keine Wahrscheinlichkeit des Parameters oder von $H_0$ nach Beobachtung. Abhängigkeit, driftendes $p$ oder selektive Auswahl begrenzen das Modell.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 7 | beide kritischen Zahlen je 1; vier exakte Randtails insgesamt 3; Grenzvergleich und Minimalitätsbegründung 2 |\n| 2 | 4 | vollständige Regeln 1; beide Entscheidungen je 1; gleiche Quote bei anderer Stichprobenlage erklärt 1 |\n| 3 | 6 | beide Alpha-Werte 1; zwei Beta-Werte je 1; Entdeckungswerte 1; beide Fehlerarten samt Parametergrenze 2 |\n| 4 | 3 | Sensitivität gegen Aufwand 1; diskrete Fehlergrenze sachgerecht 1; keine Nullgewissheit/kein Posterior mit Begründung 1 |\n| **Gesamt** | **20** | **Bestanden ab 12** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+    "solutionContentEn": "# Reference solution\n\nFor 40 the minimum critical count is 5: null-boundary tails are $P(X\\geq5)=0.0480282603$ and $P(X\\geq4)=0.1381497755$. For 80 it is 8: tails at 8 and 7 are $0.0465915275$ and $0.1052852509$. Each chosen tail meets 0.05 and its immediate predecessor fails; monotonic decrease with threshold proves minimality. Retain sufficient numerical precision.\n\nFor 40 reject at 5 or more and otherwise do not reject; for 80 reject at 8 or more and otherwise do not reject. Hence 4/40 does not reject, whereas 8/80 does. Both proportions are 10%, but variability and discrete thresholds depend on sample size. More data can make the same relative deviation more detectable.\n\nActual boundary type-I probabilities are approximately 4.803% and 4.659%. At the specified alternative 0.12,\n\n$$\n\\beta_{40}=P_{0.12}(X_{40}\\leq4)=0.4669109648,\\qquad\n\\beta_{80}=P_{0.12}(X_{80}\\leq7)=0.2416472614.\n$$\n\nDetection probabilities are $0.5330890352$ and $0.7583527386$. Type I triggers unnecessary investigation of an acceptable phase; type II misses an excessive rate. These type-II values are specific to 12%.\n\nThe larger sample improves detection here but doubles inspection count. Discreteness prevents actual null errors from equalling exactly 5% and does not imply monotone decrease under every size change. Non-rejection may be a type-II error, not proof of the null. $\\alpha$ describes decision probabilities under a null parameter and is not a posterior hypothesis probability. Dependence, rate drift or selective sampling can invalidate the model.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 7 | two critical counts 1 each; four exact boundary tails 3 total; boundary comparisons and minimality 2 |\n| 2 | 4 | complete rules 1; two decisions 1 each; explains same proportion with different sample evidence 1 |\n| 3 | 6 | two alpha values 1; two beta values 1 each; detection values 1; contextual errors and parameter limit 2 |\n| 4 | 3 | sensitivity versus cost 1; sound discreteness limit 1; no null certainty/no posterior with reason 1 |\n| **Total** | **20** | **Pass at 12** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 12,
+      "steps": [
+        {
+          "id": "new_gk_binomial_test_variation_1",
+          "points": 7,
+          "description": "beide kritischen Zahlen je 1; vier exakte Randtails insgesamt 3; Grenzvergleich und Minimalitätsbegründung 2",
+          "descriptionEn": "two critical counts 1 each; four exact boundary tails 3 total; boundary comparisons and minimality 2"
+        },
+        {
+          "id": "new_gk_binomial_test_variation_2",
+          "points": 4,
+          "description": "vollständige Regeln 1; beide Entscheidungen je 1; gleiche Quote bei anderer Stichprobenlage erklärt 1",
+          "descriptionEn": "complete rules 1; two decisions 1 each; explains same proportion with different sample evidence 1"
+        },
+        {
+          "id": "new_gk_binomial_test_variation_3",
+          "points": 6,
+          "description": "beide Alpha-Werte 1; zwei Beta-Werte je 1; Entdeckungswerte 1; beide Fehlerarten samt Parametergrenze 2",
+          "descriptionEn": "two alpha values 1; two beta values 1 each; detection values 1; contextual errors and parameter limit 2"
+        },
+        {
+          "id": "new_gk_binomial_test_variation_4",
+          "points": 3,
+          "description": "Sensitivität gegen Aufwand 1; diskrete Fehlergrenze sachgerecht 1; keine Nullgewissheit/kein Posterior mit Begründung 1",
+          "descriptionEn": "sensitivity versus cost 1; sound discreteness limit 1; no null certainty/no posterior with reason 1"
+        }
+      ]
+    },
+    "reviewNote": "Independently reviewed whole content; integrated scope and current fingerprints require separate implementation review. curricula/DE/Gymnasium/assessments/mathematik/q3-whole-scoped-completion-2026-11-04-v1/reviews/independent-final-content-decision.json"
+  },
+  "extendedData": {
+    "applicabilityMappingInheritance": "boundary"
+  }
+}

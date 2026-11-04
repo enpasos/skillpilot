@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS_BOUNDED_AUTHORING_AND_FIRST_SCOPE",
+  "authorIndependent": true,
+  "authoringApproved": true,
+  "wholeTaskContentApprovalPending": true,
+  "materializationNativeSourceStagePending": true,
+  "reviewer": "Astra Ultra /root/astra_reviews_resume_v20",
+  "currentCanonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "a772d544fc3bf91047c887bb1017ff83b32b2f62bdd8ff0cc263d041917d9482"
+  },
+  "currentLedger": {
+    "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+    "sha256": "c44ea335e761fc25e41bc1f9f76d02589cfd14d0169fbf274c0b1d4cbc039709"
+  },
+  "proposedWholeRequiresAndCoverage": [
+    "168d8879-0412-5524-94c5-c1d8169dbd65",
+    "55039f9c-4ebc-5115-add5-fae95b915e46",
+    "35558905-753d-5fcb-b25e-7f85ffdbff56"
+  ],
+  "scopeAllowlist": [
+    "DE-HE/SekII/G8/GK",
+    "DE-HE/SekII/G8/LK",
+    "DE-HE/SekII/G8/GK+LK",
+    "DE-HE/SekII/G9/GK",
+    "DE-HE/SekII/G9/LK",
+    "DE-HE/SekII/G9/GK+LK",
+    "DE-HE/CrossStage/G8/GK",
+    "DE-HE/CrossStage/G8/LK",
+    "DE-HE/CrossStage/G8/GK+LK",
+    "DE-HE/CrossStage/G9/GK",
+    "DE-HE/CrossStage/G9/LK",
+    "DE-HE/CrossStage/G9/GK+LK",
+    "ALL/SekII//GK",
+    "ALL/SekII//LK",
+    "ALL/SekII//GK+LK",
+    "ALL/CrossStage//GK",
+    "ALL/CrossStage//LK",
+    "ALL/CrossStage//GK+LK"
+  ],
+  "notApproved": [
+    "Broad132 scope task placement",
+    "HB/HH/SN additions or removals",
+    "Retagging or new R/coverage for an existing neighbor task",
+    "New eigenvalue/inversion/general arbitrary-transfer prerequisite",
+    "Automatic scope widening or mastery writes"
+  ],
+  "independentEvidence": [
+    {
+      "path": "tmp/approach-review-20261101/astra-remaining-material-scope/matrix-three-goal-authoring-scope-v29-20261103-v1/authoring-and-first-scope-decision.md",
+      "sha256": "36b873740287534e216194a2e3dbde68b49f5e560f75b8d27685601a5e717a89",
+      "bytes": 11660
+    },
+    {
+      "path": "tmp/approach-review-20261101/astra-remaining-material-scope/matrix-three-goal-authoring-scope-v29-20261103-v1/bind_contexts.mts",
+      "sha256": "15d74545ef09a95ef3c4ad47f0551108157eb663cee0b2b52b8b2bc9ff1b6347",
+      "bytes": 2452
+    },
+    {
+      "path": "tmp/approach-review-20261101/astra-remaining-material-scope/matrix-three-goal-authoring-scope-v29-20261103-v1/bind_current_offers.py",
+      "sha256": "78148275b8326a65e827199a8e4934657a29c6015b93d64bf51a2581952f1938",
+      "bytes": 4633
+    },
+    {
+      "path": "tmp/approach-review-20261101/astra-remaining-material-scope/matrix-three-goal-authoring-scope-v29-20261103-v1/current-offers-and-preparation-bindings.json",
+      "sha256": "1bb00920258ee149c74ba5520b0cee38a5a027136a82ff43cf3ea6ce9bf6935c",
+      "bytes": 138376
+    },
+    {
+      "path": "tmp/approach-review-20261101/astra-remaining-material-scope/matrix-three-goal-authoring-scope-v29-20261103-v1/source-program-and-preserved-boundaries.json",
+      "sha256": "0173ba6e32af1e4caceaada8597f541a31a3ba7a3eca3d1c3af582bf5bc7c453",
+      "bytes": 46601
+    },
+    {
+      "path": "tmp/approach-review-20261101/astra-remaining-material-scope/matrix-three-goal-authoring-scope-v29-20261103-v1/whole-contracts-and-effective-direct-relations.json",
+      "sha256": "ea25ed0ac3a02d4e411720d5fd57b293e6d604da8f0c86c3e56a8a8c5b025f6d",
+      "bytes": 278443
+    }
+  ],
+  "reviewLimits": "Only private small analysis files plus fresh productive read-only support calculation. No JVM, Root/code/data edits, new task bytes, full source rerun, or Stage receipt. Existing native archive was fully rawhash/size verified in memory; no raw file written."
+}

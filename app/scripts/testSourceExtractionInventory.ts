@@ -5,7 +5,10 @@ import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
   createMissingSourceExtractionPipeline,
+  normalizeSourceExtractionPipelineSteps,
   readSourceExtractionGoalIdsByLandscapeId,
+  summarizeSourceMappingReferenceIssues,
+  summarizeSourceMappingReviewCoverage,
 } from './generateCurriculumQualityStatus'
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
@@ -37,6 +40,79 @@ const assertUnreviewed = (pipeline: ReturnType<typeof createMissingSourceExtract
   assert.equal(pipeline.totalSteps, 3)
   assert.deepEqual(pipeline.steps.map(({ status }) => status), ['incomplete', 'blocked', 'blocked'])
   assert(pipeline.steps.every(({ status }) => status !== 'complete'))
+}
+
+const reviewSteps: Parameters<typeof normalizeSourceExtractionPipelineSteps>[0] = [{
+  id: 'MAPPING-3', label: 'Source mapping review', status: 'complete', dependsOn: [],
+  checks: [
+    'm3-review-file-present', 'm3-review-decisions-reference-source-goals', 'm3-review-targets-exist',
+    'm3-all-source-goals-reviewed', 'm3-all-source-goals-covered-by-canonical',
+  ].map((id) => ({ id, label: id, passed: true, details: '' })),
+}]
+const normalizedReview = (
+  decisions: Parameters<typeof summarizeSourceMappingReviewCoverage>[2],
+  overrides: Partial<Parameters<typeof normalizeSourceExtractionPipelineSteps>[1]> = {},
+) => {
+  const coverage = summarizeSourceMappingReviewCoverage(new Set(['source-goal']), new Set(['source-goal']), decisions)
+  const [step] = normalizeSourceExtractionPipelineSteps(reviewSteps, {
+    totalSourceGoals: 1, mappedSourceGoals: 1, unmappedSourceGoals: 0,
+    ...coverage, hasM3ReviewFile: true, extraDecisionGoals: 0, extraMappedGoals: 0, invalidMappedTargetGoals: 0, ...overrides,
+  })
+  return { coverage, step }
+}
+
+// A real mapping edge does not turn a pending or unknown decision into a final review.
+for (const disposition of ['pendingReview', 'needs_current_primary_clause_review', 'futureDisposition', '']) {
+  const { coverage, step } = normalizedReview([{ sourceGoalId: 'source-goal', decision: disposition }])
+  assert.equal(coverage.reviewedMappedSourceGoals, 0, `${disposition}: an edge cannot manufacture final review.`)
+  assert.equal(coverage.unreviewedSourceGoals, 1)
+  assert.equal(step.status, 'incomplete')
+  assert.equal(step.checks.find(({ id }) => id === 'm3-all-source-goals-reviewed')?.passed, false)
+  assert.equal(step.checks.find(({ id }) => id === 'm3-all-source-goals-covered-by-canonical')?.passed, false)
+}
+assert.equal(normalizedReview([{ sourceGoalId: 'source-goal' }]).step.status, 'incomplete')
+assert.equal(normalizedReview([]).step.status, 'incomplete', 'Missing decisions stay unreviewed even with an edge.')
+
+// Legacy final mapped rows do not need a new per-row reviewer field.
+const mappedDecision = { sourceGoalId: 'source-goal', decision: 'mapped' }
+const mappedReview = normalizedReview([mappedDecision])
+assert.deepEqual(mappedReview.coverage, {
+  reviewedMappedSourceGoals: 1, explicitNeedsCanonicalGoal: 0, unreviewedSourceGoals: 0,
+})
+assert.equal(mappedReview.step.status, 'complete')
+assert(mappedReview.step.checks.every(({ passed }) => passed))
+for (const alias of ['needsCanonicalGoal', 'needs_canonical_goal']) {
+  const unresolved = { sourceGoalId: 'source-goal', decision: alias }
+  for (const decisions of [[unresolved], [mappedDecision, unresolved], [unresolved, mappedDecision]]) {
+    const { coverage, step } = normalizedReview(decisions)
+    assert.equal(coverage.explicitNeedsCanonicalGoal, 1, 'A retained partial edge cannot resolve a final canonical gap.')
+    assert.equal(coverage.reviewedMappedSourceGoals, 0)
+    assert.equal(coverage.unreviewedSourceGoals, 0, 'A final gap decision is reviewed, but not covered.')
+    assert.equal(step.status, 'incomplete', 'Conflicting final decisions cannot be resolved by load order.')
+  }
+}
+for (const decisions of [
+  [mappedDecision, { sourceGoalId: 'source-goal', decision: 'pendingReview' }],
+  [{ sourceGoalId: 'source-goal', decision: 'pendingReview' }, mappedDecision],
+]) {
+  assert.equal(normalizedReview(decisions).step.status, 'incomplete', 'A conflicting pending review remains open.')
+}
+const validEdge = { legacyGoalId: 'source-goal', canonicalGoalId: 'target-goal' }
+const sourceIds = new Set(['source-goal'])
+const targetIds = new Set(['target-goal'])
+assert.deepEqual(summarizeSourceMappingReferenceIssues(sourceIds, targetIds, [validEdge], [mappedDecision]), {
+  extraMappedGoals: 0, extraDecisionGoals: 0, invalidMappedTargetGoals: 0,
+})
+for (const [mappings, decisions, failedCheckId] of [
+  [[validEdge], [mappedDecision, { sourceGoalId: 'unknown-source', decision: 'mapped' }], 'm3-review-decisions-reference-source-goals'],
+  [[validEdge, { legacyGoalId: 'unknown-source', canonicalGoalId: 'target-goal' }], [mappedDecision], 'm3-review-decisions-reference-source-goals'],
+  [[{ ...validEdge, canonicalGoalId: 'missing-target' }], [mappedDecision], 'm3-review-targets-exist'],
+  [[{ legacyGoalId: 'source-goal' }], [mappedDecision], 'm3-review-targets-exist'],
+] as const) {
+  const referenceIssues = summarizeSourceMappingReferenceIssues(sourceIds, targetIds, mappings, decisions)
+  const { step } = normalizedReview(decisions, referenceIssues)
+  assert.equal(step.status, 'incomplete', `${failedCheckId}: an existing failed validity check must prevent M3 completion.`)
+  assert.equal(step.checks.find(({ id }) => id === failedCheckId)?.passed, false)
 }
 
 try {
@@ -191,4 +267,4 @@ try {
   rmSync(temporaryRoot, { recursive: true, force: true })
 }
 
-console.log('Source-extraction component inventory and conservative explicit-reference regressions passed.')
+console.log('Source-extraction inventory, explicit-reference, and final mapping-review regressions passed.')

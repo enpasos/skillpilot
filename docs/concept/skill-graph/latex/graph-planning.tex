@@ -69,17 +69,32 @@ clusterbezogene und nach Referenzauflösung fachübergreifende Anforderungen
 bleiben erhalten. Ein Normalmodusfilter würde gerade jene Anforderungen
 ausblenden können, deren Einhaltung die Levelprüfung nachweisen soll.
 
-Zur Diagnose dienen die benötigten Atome
+Zur Diagnose werden direkte effektive Voraussetzungen zunächst in die zu ihrer
+Erfüllung benötigten Atome aufgelöst. An der angenommenen Eintrittsbasis endet
+die weitere Verfolgung:
 \begin{equation}
- \ReqAtoms(g)=\bigcup_{\substack{p\in G\\(g,p)\in\Reff^+}}\Atoms(p).
+ R_{\pi,\mathrm{prep}}=
+ \{(a,b)\in A\times A\mid a\notin B_\pi,\
+   \exists p\in G:\ (a,p)\in\Reff,\ b\in\Atoms(p)\}.
+\end{equation}
+Diese abgeleitete Planungsrelation ist keine neue Autorenkante. Vererbung ist
+bereits in $\Reff$ enthalten; erforderliche Cluster werden vor der
+Erreichbarkeitsberechnung atomar expandiert. Eintrittsatome zählen als
+erreichte Voraussetzungen, ihre ausgehenden Anforderungen werden jedoch
+nicht weiter verfolgt. Damit gilt
+\begin{equation}
+ \ReqAtoms_\pi(g)=\{b\in A\mid(g,b)\in R_{\pi,\mathrm{prep}}^+\}.
  \label{eq:reqatoms}
 \end{equation}
 Aus einem Abschlusszeugen folgt notwendig
 \begin{equation}
  \forall g\in T_\pi:\quad
- \ReqAtoms(g)\subseteq B_\pi\cup L_{\leq\ell_\pi(g)}.
+ \ReqAtoms_\pi(g)\subseteq B_\pi\cup L_{\leq\ell_\pi(g)}.
  \label{eq:level-closure}
 \end{equation}
+Die Erwerbsgeschichte der Eintrittsbasis wird nicht rekonstruiert. Bei
+$g\to b\to d$, $T_\pi=\{g\}$ und $B_\pi=\{b\}$ ist $g$ bereits verfügbar:
+Die Diagnose erreicht $b$ und endet dort; $d$ muss nicht erneut eingeplant sein.
 Eine benötigte Kompetenz außerhalb $B_\pi\cup T_\pi$ ist ungeplant;
 ein benötigtes Ziel mit höherem Erwerbslevel ist ein Reihenfolgefehler.
 Voraussetzungen innerhalb desselben Levels sind erlaubt. Die Mengenbedingung
@@ -161,11 +176,60 @@ und Schätzannahmen. Er garantiert keine identische Lerngeschwindigkeit
 für jede Person.
 
 Der Abschluss eines Levels wird aus seiner vollständigen Zielmenge und den
-Zieltypverträgen abgeleitet. Er ist keine pauschale Voraussetzung für alle
-Ziele des nächsten Levels. Soll ein Teil der Arbeit durch Prüfungsnachweise
-ersetzt werden, benötigt das den folgenden gesonderten Abschlussvertrag.
+Zieltypverträgen abgeleitet. Im bisherigen Planungsprofil ist er keine
+pauschale Voraussetzung für alle Ziele des nächsten Levels. Ob
+Vorbereitungsarbeit noch benötigt wird, bestimmt der Abschlussvertrag in
+Abschnitt~\ref{sec:assessment} aus dem vollständigen Personal Curriculum und
+vorhandener Mastery.
+
+% Keep the optional gate policy and its three related equations together.
+\clearpage
+\subsection{Optionaler Kursmodus mit Level-Gates}
+Das gesonderte
+\srcref{docs/concept/skill-graph/curriculum-level-gates.md}{Gate-Entwurfsprofil}
+ordnet Levelrollen autoritativen Clusterplatzierungen eines versionierten
+Kurses zu. Seine Targetmengen $T_L\subseteq T$ besitzen eindeutige
+Ersterwerbszuständigkeit. Jedes spielbare Level benötigt gewöhnliche
+Fachziele und passende lokale Abschlussprüfungen; eine Prüfung oder ein
+Kartensatz allein bildet kein solches Level. Im endlichen lokalen
+Lernrichtungs-DAG muss jeder maximale Fachpfad an einer lokalen Prüfung
+enden. Dieser Autorentest ersetzt weder den globalen Voraussetzungenzeugen
+noch Aufgabenreview, Karteninventar und Zeitbudget.
+
+Nach der Produktentscheidung vom 1. November 2026 bleibt die Freigabe an
+den vollständigen Levelabschluss gebunden. Mit dem \emph{vollen}
+Personal-Curriculum-Ergebnis $E,I_H$ aus Abschnitt~\ref{sec:assessment}
+und den ausdrücklich deklarierten Vorgängerlevels $P_L$ gilt
+\begin{align}
+ \operatorname{Completed}(L)&\iff T_L\subseteq E\cup I_H,\\
+ \operatorname{Open}(L)&\iff
+      \bigwedge_{A\in P_L}\operatorname{Cleared}(A),\\
+ \operatorname{Cleared}(L)&\iff
+      \operatorname{Open}(L)\land\operatorname{Completed}(L).
+\end{align}
+Der Levelgraph muss azyklisch sein; vorhandene gültige Mastery zählt auch
+in einem gesperrten Level sofort für dessen Zielabschluss. Eine eigene
+Relation \code{requiresLevel} gehört zum Kursplan, nicht zu $C$ oder $R$.
+
+Prüfungs- und Gedächtnistargets bleiben bis zur normalen Mastery offen.
+Kartenbindungen erläutern den bestehenden Recall-Vertrag und schaffen
+keinen zweiten Kurspass. Verborgene geschützte Unterstützung wird weder
+implizit erledigt noch automatisch zur Zusatzpflicht. Benötigt eine
+spätere gewählte, noch offene Prüfung weiterhin eine unmasterte Grundlage aus dem
+Vorgängerlevel, bleibt auch dieser Vorgänger unvollständig. Ein lokaler
+Fixpunkt ohne diesen Verbraucher wäre falsch.
+
+Der vorgeschlagene Modus würde neue Starts in gesperrten Levels auch für
+direkte Prüfungen sperren. Er ist nicht implementiert und ändert den
+allgemeinen Prüfungszugang nicht. Ein weiterhin gültiger, bereits aktiv
+gebundener Versuch dürfte abschließen und fortgesetzt werden; neue Versuche
+würden die aktuellen Gates prüfen. Curriculum, ganzer persönlicher Umfang,
+Kurs-/Viewrevision und Lernzustand binden denselben Auswertungssnapshot.
+Alle Gatewerte werden daraus abgeleitet; sie speichern keine zusätzlichen
+Ergebnisse und qualifizieren gültige Mastery nicht nachträglich neu.
 
 \paragraph{Quellen.}
 \srcref{docs/concept/skill-graph/curriculum-levels.md}{Curriculum Levels};
+\srcref{docs/concept/skill-graph/curriculum-level-gates.md}{Curriculum Levels with Completion Gates};
 \srcref{docs/concept/skill-graph/graph-definition.md}{Graph Definition, Abschnitt 12};
 \srcref{docs/concept/didactic/curriculum-time-axis-and-pacing.md}{Zeitachse und Kapazität}.

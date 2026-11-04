@@ -1,0 +1,977 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-11-01",
+  "reviewerAgent": "/root/astra_fundamental_approach_recheck/he_stable_target_scope",
+  "status": "BOUNDED_SOURCE_DECISIONS_NOT_TECHNICAL_ACCEPTANCE",
+  "scope": "Exactly the 23 distinct HE ordinary-goal contracts absent from stable direct selection: G8 16, G9 18, repeated in pure S1 and CrossStage GK/LK. No removedOther decisions.",
+  "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "canonicalSha256": "3a3792d14057854c79a3d8c4d38cd98dd6e28e936865ebd3447107404b58474c",
+  "deltaPath": "tmp/math-stable-target-candidate-20261101/target-selection-delta.json",
+  "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+  "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+  "sourcePolicy": "KC is binding-core. G8/G9 are transparently retained legacy-grade-sequencing-reference documents whose extracted verbindliche topic lines provide existing duration-specific detail; this review does not relabel them as a current independent legal mandate. Page numbers are the existing extraction.page values. No new PDF extraction or outside source search.",
+  "priorBoundedReview": {
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/duration-rebase-source-decisions.review.json",
+    "exactDecisions": 11,
+    "intersectionWithThisDelta": [],
+    "disposition": "All previous nine ordinary/two assessment decisions stay independent and unchanged; none proves these 23 new contracts. Reused the positive whole-contract content-plus-process method and explicit boundary against requires/phase inference."
+  },
+  "summary": {
+    "distinctOrdinaryContracts": 23,
+    "keepExplicitS1Target": 16,
+    "supportOnly": 5,
+    "sourceConflict": 2,
+    "byDuration": {
+      "G8": {
+        "removed": 16,
+        "keepExplicitS1Target": 9,
+        "supportOnly": 5,
+        "sourceConflict": 2
+      },
+      "G9": {
+        "removed": 18,
+        "keepExplicitS1Target": 12,
+        "supportOnly": 4,
+        "sourceConflict": 2
+      }
+    }
+  },
+  "decisions": [
+    {
+      "goalId": "14d0e697-3fb0-5074-a08c-7e01ca9bbda8",
+      "title": "Wurzelgleichungen durch einmaliges Quadrieren lösen",
+      "description": "Die lernende Person kann Wurzelgleichungen lösen, bei denen einmaliges Quadrieren zielführend ist, und mögliche Scheinlösungen durch Einsetzen prüfen.",
+      "affectedDurationModels": [
+        "G9"
+      ],
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "wholeContractReason": "G9 9.3 ausdrücklich einfache Wurzelgleichungen; einmaliges Quadrieren ist eine begrenzte konkrete Realisierung. Einsetzen als Kontrolle ist durch die KC-Prozesskompetenz Lösungs-/Kontrollverfahren gedeckt. Keine Gleichungen mit mehrfacher Radikalelimination oder neuer allgemeiner Lösungstheorie.",
+      "sourceEvidence": [
+        "g9-9-3",
+        "kc-7-2-umgehen-mit-symbolischen-formalen-und-technischen-elementen"
+      ],
+      "placement": "Stage-only: assertStage=SekI, no new exact-year claim.",
+      "existingDirectSourceMappingCount": 0,
+      "boundary": "G9 9.3 ist die ausgewiesene historische Dauer-/Detailquelle, keine Behauptung eines im aktuellen KC separat benannten Pflichtkapitels."
+    },
+    {
+      "goalId": "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+      "title": "Vektoren im räumlichen Koordinatensystem als Tupel angeben und deuten",
+      "description": "Die lernende Person kann Vektoren im räumlichen Koordinatensystem als Tupel darstellen, Koordinateneinträge fachsprachlich deuten und die Bedeutung einfacher Richtungsangaben im Kontext erklären.",
+      "affectedDurationModels": [
+        "G8",
+        "G9"
+      ],
+      "decision": "SOURCE_CONFLICT",
+      "wholeContractReason": "HE-S1 belegt zweidimensionale Koordinaten und geometrische Verschiebungen. Das belegt weder Tupelvektoren als Orts-/Verschiebungsvektoren noch räumliche Vektordarstellung. Beide alten Promotionen kommen von dem weiterhin ausgewählten Consumer c63bbffd-8d1c-5fe2-a428-db194e6fe592, dessen eigener voller Vertrag komponentenweise Vektoraddition/-subtraktion in Ebene UND Raum verlangt. Somit muss dessen HE-S1-Auswahl eigenständig geprüft werden; bloß die beiden promoted Targets zu entfernen würde diesen vorhandenen Sourcekonflikt verdecken.",
+      "sourceEvidence": [
+        "kc-7-3-zahlen-j7_8",
+        "kc-7-3-beziehungen-geometrischer-objekte-j5_6",
+        "kc-7-3-ebene-figuren-j7_8"
+      ],
+      "placement": "HOLD der expliziten HE-S1-Targetfreigabe; außerhalb dieser engen Deltafreigabe Auswahlursprung von c63bbffd klären. Keine automatische Consumerlöschung.",
+      "existingDirectSourceMappingCount": 0,
+      "boundary": "Kein Urteil über HE-SII-Zulässigkeit. Keine Umtypisierung und keine Fake-edge-Reparatur empfohlen."
+    },
+    {
+      "goalId": "26f668a0-6425-5466-9cf7-6295dd189005",
+      "title": "Potenzen mit rationalen Basen und negativen Exponenten deuten und berechnen",
+      "description": "Die lernende Person kann Potenzen mit rationalen Basen berechnen, negative ganzzahlige Exponenten als Kehrwertschreibweisen deuten und Darstellungen sehr kleiner Größen mit negativen Zehnerpotenzen in Sachzusammenhängen interpretieren.",
+      "affectedDurationModels": [
+        "G8"
+      ],
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "wholeContractReason": "KC nennt Potenzen mit rationalen Exponenten; G8 9G.1 konkretisiert ganzzahlige Exponenten, Potenzgesetze sowie wissenschaftliche und technische Zahlendarstellung. Der ganze Vertrag beschränkt sich auf rationale Basen, negative ganze Exponenten als Kehrwerte und kleine Größen mit Zehnerpotenzen.",
+      "sourceEvidence": [
+        "kc-7-3-operationen-j7_8",
+        "g8-9g-1"
+      ],
+      "placement": "Stage-only: assertStage=SekI, no new exact-year claim.",
+      "existingDirectSourceMappingCount": 7
+    },
+    {
+      "goalId": "2bd88d66-5daf-53bb-aa02-4c010963679d",
+      "title": "Substitution zum Lösen von Gleichungen anwenden",
+      "description": "Die lernende Person kann Gleichungen durch eine geeignete Substitution auf eine bekannte Gleichungsform zurückführen, die Rücksubstitution durchführen und die Lösungen prüfen.",
+      "affectedDurationModels": [
+        "G9"
+      ],
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "wholeContractReason": "G9 9.3 nennt ausdrücklich auf bekannte Gleichungen zurückführbare spezielle Gleichungen und biquadratische Gleichungen mit der Idee der Substitution. Rücksubstitution und Kontrolle vollenden genau dieses Verfahren; der Vertrag verlangt keine beliebige symbolische Substitutionstheorie.",
+      "sourceEvidence": [
+        "g9-9-3",
+        "kc-7-2-umgehen-mit-symbolischen-formalen-und-technischen-elementen"
+      ],
+      "placement": "Stage-only: assertStage=SekI, no new exact-year claim.",
+      "existingDirectSourceMappingCount": 0,
+      "boundary": "Bewertet wird die endliche schulische Methode, wie sie im Vertrag formuliert ist; keine Freigabe für zusätzliche Gleichungsklassen. Legacy-Detailquelle offen gekennzeichnet."
+    },
+    {
+      "goalId": "36728db8-da44-4add-97b8-0fdd7cfd9c41",
+      "title": "Satz des Thales begründen und anwenden",
+      "description": "Die lernende Person kann den Satz des Thales an Zeichnungen und Dreiecken begründen, rechtwinklige Dreiecke im Halbkreis erkennen und den Satz in einfachen Konstruktionen und Aufgaben anwenden.",
+      "affectedDurationModels": [
+        "G8",
+        "G9"
+      ],
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "wholeContractReason": "KC nennt Thales ausdrücklich; Konstruieren mit Zeichengeräten/DGS und Begründen mathematischer Sachverhalte liefern den geforderten Darstellungs-, Begründungs- und einfachen Anwendungsanteil. Keine zusätzliche Satzfamilie.",
+      "sourceEvidence": [
+        "kc-7-3-beziehungen-geometrischer-objekte-j7_8",
+        "kc-7-3-ebene-figuren-j7_8",
+        "kc-7-2-argumentieren"
+      ],
+      "placement": "Stage-only: assertStage=SekI, no new exact-year claim.",
+      "existingDirectSourceMappingCount": 1
+    },
+    {
+      "goalId": "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+      "title": "Dynamische Zusammenhänge zwischen Größen erläutern",
+      "description": "Die lernende Person kann in einfachen Situationen mithilfe geeigneter Darstellungen erläutern, wie sich Umfang, Flächeninhalt oder Volumen verändern, wenn die betreffenden Längen in vorgegebener Weise verändert werden.",
+      "affectedDurationModels": [
+        "G8",
+        "G9"
+      ],
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "wholeContractReason": "Umfang, Flächeninhalt und Volumen einfacher Grundfiguren/-körper sowie funktionale Größenbeziehungen sind ausdrücklich KC-Inhalt. Der Vertrag verlangt nur, vorgegebene Längenänderungen in einfachen Fällen mit Darstellungen zu erläutern: z.B. eine Rechteckseite bzw. Quaderkante ändern und anhand der bestehenden Maßformeln vergleichen. Keine allgemeine n-dimensionale Skalierungstheorie und kein Differentialkalkül.",
+      "sourceEvidence": [
+        "kc-7-3-messvorgaenge-j5_6",
+        "kc-7-3-messvorgaenge-j7_8",
+        "kc-7-3-koerper-j5_6",
+        "kc-7-3-zuordnungen-j7_8",
+        "kc-7-2-umgehen-mit-symbolischen-formalen-und-technischen-elementen"
+      ],
+      "placement": "Stage-only: assertStage=SekI, no new exact-year claim.",
+      "existingDirectSourceMappingCount": 0,
+      "boundary": "Inhalts-plus-Prozess-Operationalisierung über mehrere Primärstellen; keine einzelne wörtliche Source-Goal-Entsprechung behauptet."
+    },
+    {
+      "goalId": "44cb7404-114e-5b14-b33a-ddee41952d46",
+      "title": "Betrag einer Zahl angeben",
+      "description": "Die lernende Person kann den Betrag einer Zahl bestimmen und ihn als Abstand der Zahl von 0 auf der Zahlengeraden deuten.",
+      "affectedDurationModels": [
+        "G8",
+        "G9"
+      ],
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "wholeContractReason": "Beide Dauerquellen nennen den Betrag ausdrücklich im Zusammenhang mit Zahl/Gegenzahl und Zahlengerade. Der Abstand von Null ist die geometrische Bedeutung dieses Begriffs; keine Betragsgleichungen oder -ungleichungen im Vertrag.",
+      "sourceEvidence": [
+        "g8-7g-2",
+        "g9-7-2",
+        "kc-7-3-zahlen-j7_8"
+      ],
+      "placement": "Stage-only: assertStage=SekI, no new exact-year claim.",
+      "existingDirectSourceMappingCount": 0
+    },
+    {
+      "goalId": "53b47494-ec60-4128-840d-2a4c4bab6d32",
+      "title": "Sinus- und Kosinuswerte für Winkel größer als 2π und für negative Winkel auf den Grundbereich zurückführen",
+      "description": "Die lernende Person kann mithilfe des Einheitskreises Sinus- und Kosinuswerte für Winkelgrößen größer als 2π sowie für negative Winkelgrößen auf entsprechende Werte im Grundbereich zwischen 0 und 2π zurückführen und die Reduktionsschritte erläutern.",
+      "affectedDurationModels": [
+        "G8",
+        "G9"
+      ],
+      "decision": "SUPPORT_ONLY",
+      "wholeContractReason": "Symmetrie und Periodizität sind ausdrücklich belegt, aber die vorhandenen Kreisquellen beschränken die Winkelangabe auf 0–360°. Der volle Vertrag verlangt eigenständige Reduktionsschritte für negative und übervolle Winkel im Bogenmaß. Das ist mehr als die vorhandene allgemeine Eigenschaftsaussage; requires von Graphableitung beweist die zusätzliche Methodenpflicht nicht.",
+      "sourceEvidence": [
+        "g8-9g-2",
+        "g9-10-4",
+        "g9-9-6"
+      ],
+      "placement": "Keine neue HE-S1-Targetauswahl; Supportbedarf getrennt behandeln.",
+      "existingDirectSourceMappingCount": 0
+    },
+    {
+      "goalId": "596345cd-679e-5c7b-955f-e8cb1ec81e96",
+      "title": "Einfache proportionale Sachaufgaben mit Dreisatz lösen",
+      "description": "Die lernende Person kann in einfachen Sachsituationen eine proportionale Zuordnung an einem gleichbleibenden Verhältnis erkennen, einen gesuchten Wert durch Zurückführen auf 1 und Vervielfachen bestimmen und diesen Rechenweg begründen.",
+      "affectedDurationModels": [
+        "G8"
+      ],
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "wholeContractReason": "KC nennt Dreisatzmethoden und proportionale Zuordnungen mit Eigenschaften. Gleichbleibendes Verhältnis, Zurückführen auf 1 und Vervielfachen operationalisieren exakt diese Methode; Begründung wird durch KC Argumentieren getragen.",
+      "sourceEvidence": [
+        "kc-7-3-zuordnungen-j7_8",
+        "kc-7-2-argumentieren"
+      ],
+      "placement": "Stage-only: assertStage=SekI, no new exact-year claim.",
+      "existingDirectSourceMappingCount": 1
+    },
+    {
+      "goalId": "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+      "title": "Schrägbilder von Quadern und Würfeln zeichnen",
+      "description": "Die lernende Person kann zu einem Quader oder Würfel nach einer vorgegebenen Schrägbildkonvention ein räumlich konsistentes Schrägbild zeichnen, dabei zusammengehörige Körperkanten parallel sowie sichtbare Kanten durchgezogen und verdeckte Kanten gegebenenfalls gestrichelt darstellen.",
+      "affectedDurationModels": [
+        "G9"
+      ],
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "wholeContractReason": "KC verlangt ausdrücklich Schrägbilder von Quadern und Würfeln; G9 5.2 konkretisiert deren Zeichnen. Eine vorgegebene Zeichenkonvention mit konsistenten parallelen Kanten und sichtbaren/verdeckten Kanten präzisiert eine korrekte solche Darstellung, ohne Perspektivkonstruktion hinzuzufügen.",
+      "sourceEvidence": [
+        "kc-7-3-koerper-j5_6",
+        "g9-5-2"
+      ],
+      "placement": "Stage-only: assertStage=SekI, no new exact-year claim.",
+      "existingDirectSourceMappingCount": 2
+    },
+    {
+      "goalId": "79dd11f0-ed20-5b92-a215-b061a2098c0c",
+      "title": "Maßstabsaufgaben mit gleichartigen Längeneinheiten lösen",
+      "description": "Die lernende Person kann in Karten-, Plan- oder Modellsituationen einen Maßstab als Verhältnis von dargestellter zu realer Länge deuten, beide Längen in eine gemeinsame Einheit umrechnen und eine gesuchte dargestellte oder reale Länge bestimmen.",
+      "affectedDurationModels": [
+        "G8"
+      ],
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "wholeContractReason": "Proportionale Zuordnungen/Dreisatz, Umrechnung von Größen und Ähnlichkeit sind KC-Inhalt. Eine vorgegebene Karten-/Plan-/Modellmaßstabszahl als Verhältnis zweier gleichartiger Längen zu verwenden ist deren begrenzte Sachanwendung. Der G8-Vertrag verlangt weder Flächen-/Volumenmaßstab noch eine neue Kartografie-Methode; G9 9.4 nennt Kartografie/Baupläne zusätzlich, wird aber nicht als G8-Jahresbeleg importiert.",
+      "sourceEvidence": [
+        "kc-7-3-zuordnungen-j7_8",
+        "kc-7-3-umgang-mit-groessen-j5_6",
+        "kc-7-3-beziehungen-geometrischer-objekte-j7_8"
+      ],
+      "placement": "Stage-only: assertStage=SekI, no new exact-year claim.",
+      "existingDirectSourceMappingCount": 1,
+      "boundary": "Keine Übernahme der kanonischen J5 oder des G9-Jahres 9 nach G8; nur S1-Scopefreigabe."
+    },
+    {
+      "goalId": "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+      "title": "Funktionen als eindeutige Zuordnungen charakterisieren",
+      "description": "Die lernende Person kann Funktionen als Zuordnungen charakterisieren, bei denen jedem zulässigen Eingabewert genau ein Ausgabewert zugeordnet ist, und sie anhand dieser Eigenschaft von allgemeineren Zuordnungen abgrenzen.",
+      "affectedDurationModels": [
+        "G8",
+        "G9"
+      ],
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "wholeContractReason": "KC verlangt Grundvorstellungen funktionaler Zusammenhänge und lineare/einfache weitere Funktionen. Eindeutige Ausgabe pro zulässiger Eingabe ist der definierende Kern von Funktion; diesen von einer nichtfunktionalen Zuordnung abzugrenzen konkretisiert den Begriff. Der Vertrag verlangt keine formale Relationentheorie, Bijektivität oder allgemeine Umkehrbarkeit.",
+      "sourceEvidence": [
+        "kc-7-3-zuordnungen-j9_10",
+        "kc-7-3-funktionen-gleichungen-j7_8",
+        "kc-7-3-funktionen-gleichungen-j9_10"
+      ],
+      "placement": "Stage-only: assertStage=SekI, no new exact-year claim.",
+      "existingDirectSourceMappingCount": 0,
+      "boundary": "Begriffliche Operationalisierung aus dem verbindlichen Funktionsinhalt, nicht voraussetzungsbasierte Targetableitung."
+    },
+    {
+      "goalId": "8a691345-3216-522c-a898-d65e8e94db28",
+      "title": "Zahl Pi als Verhältnis am Kreis erklären",
+      "description": "Die lernende Person kann die Zahl Pi als Verhältnis von Umfang und Durchmesser eines Kreises erklären und dieses Verhältnis an Kreisbeispielen deuten.",
+      "affectedDurationModels": [
+        "G9"
+      ],
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "wholeContractReason": "KC benennt π als Proportionalitätsfaktor und Umfang/Flächeninhalt des Kreises. G9 9.6 verbindet Kreisumfang mit Radius und π-Näherungen. Umfang/Durchmesser und Deutung an Kreisbeispielen ist genau dieser konstante Faktor; keine Irrationalitätsbeweise.",
+      "sourceEvidence": [
+        "kc-7-3-zahlen-j7_8",
+        "kc-7-3-messvorgaenge-j7_8",
+        "g9-9-6"
+      ],
+      "placement": "Stage-only: assertStage=SekI, no new exact-year claim.",
+      "existingDirectSourceMappingCount": 2
+    },
+    {
+      "goalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
+      "title": "Bogenmass am Einheitskreis veranschaulichen und sicher zwischen Grad- und Bogenmass wechseln",
+      "description": "Die lernende Person kann das Bogenmass als alternative Beschreibung von Winkelgrößen am Einheitskreis veranschaulichen und sicher zwischen Gradmass und Bogenmass wechseln.",
+      "affectedDurationModels": [
+        "G8",
+        "G9"
+      ],
+      "decision": "SUPPORT_ONLY",
+      "wholeContractReason": "G8 9G.2 und G9 10.4 nennen Einheitskreis im Gradmaß 0–360°. G9 9.6 enthält lediglich Hinweis zum Bogenmaß. Das trägt nicht den vollständigen Vertrag der sicheren Grad-/Bogenmaßumrechnung und Veranschaulichung am Einheitskreis als eigenständige Pflicht; für G8 fehlt auch dieser ausdrückliche Hinweis.",
+      "sourceEvidence": [
+        "g8-9g-2",
+        "g9-10-4",
+        "g9-9-6"
+      ],
+      "placement": "Keine neue HE-S1-Targetauswahl; vorhandene kanonische Supportreferenz darf durch wirklichen Bedarf erhalten bleiben.",
+      "existingDirectSourceMappingCount": 0,
+      "boundary": "SUPPORT_ONLY bedeutet fehlende volle positive Pflichtbegründung in den vorhandenen Quellen; keine Behauptung eines offiziellen Verbots von Bogenmaß."
+    },
+    {
+      "goalId": "94b48b93-473f-4bc5-8c93-8c1a5e2cd1a6",
+      "title": "Vektoren als Orts- und Verschiebungsvektoren deuten",
+      "description": "Die lernende Person kann Vektoren in Tupeldarstellung als Orts- oder Verschiebungsvektoren deuten und ihre geometrische Bedeutung in einfachen Situationen erklären.",
+      "affectedDurationModels": [
+        "G8",
+        "G9"
+      ],
+      "decision": "SOURCE_CONFLICT",
+      "wholeContractReason": "HE-S1 belegt zweidimensionale Koordinaten und geometrische Verschiebungen. Das belegt weder Tupelvektoren als Orts-/Verschiebungsvektoren noch räumliche Vektordarstellung. Beide alten Promotionen kommen von dem weiterhin ausgewählten Consumer c63bbffd-8d1c-5fe2-a428-db194e6fe592, dessen eigener voller Vertrag komponentenweise Vektoraddition/-subtraktion in Ebene UND Raum verlangt. Somit muss dessen HE-S1-Auswahl eigenständig geprüft werden; bloß die beiden promoted Targets zu entfernen würde diesen vorhandenen Sourcekonflikt verdecken.",
+      "sourceEvidence": [
+        "kc-7-3-zahlen-j7_8",
+        "kc-7-3-beziehungen-geometrischer-objekte-j5_6",
+        "kc-7-3-ebene-figuren-j7_8"
+      ],
+      "placement": "HOLD der expliziten HE-S1-Targetfreigabe; außerhalb dieser engen Deltafreigabe Auswahlursprung von c63bbffd klären. Keine automatische Consumerlöschung.",
+      "existingDirectSourceMappingCount": 0,
+      "boundary": "Kein Urteil über HE-SII-Zulässigkeit. Keine Umtypisierung und keine Fake-edge-Reparatur empfohlen."
+    },
+    {
+      "goalId": "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+      "title": "Trigonometrische Graphen aus Funktionstermen zeichnen",
+      "description": "Die lernende Person kann für Funktionsterme der Form $a\\cdot\\sin(b\\cdot(x+c))+d$ den zugehörigen Graphen aus dem Sinusgrundgraphen mithilfe von Amplitude, Periodenlänge, horizontaler und vertikaler Verschiebung sowie gegebenenfalls Spiegelung zeichnen.",
+      "affectedDurationModels": [
+        "G8",
+        "G9"
+      ],
+      "decision": "SUPPORT_ONLY",
+      "wholeContractReason": "Belegt sind Sinusfunktion, wesentliche Eigenschaften und Modelle einfacher zyklischer Prozesse. Der ganze Zielvertrag verlangt jedoch die kombinierte vierparametrige Familie a*sin(b*(x+c))+d samt horizontaler/vertikaler Verschiebung, Periodenänderung, Amplitude und Spiegelung. Die vorhandenen HE-S1-Stellen formulieren diese gesamte Graphkonstruktionsmethode nicht. Quadratische Graphtransformationen oder einfache periodische Modelle dürfen diese zusätzliche Aussage nicht pauschal ersetzen.",
+      "sourceEvidence": [
+        "kc-7-3-funktionen-gleichungen-j9_10",
+        "g8-9g-2",
+        "g9-10-4"
+      ],
+      "placement": "Keine neue HE-S1-Targetauswahl; der eigenständig belegte periodische Modellierungsconsumer 7f11ffe0 bleibt davon unberührt.",
+      "existingDirectSourceMappingCount": 0,
+      "boundary": "Die Notwendigkeit dieser maximalen gemeinsamen kanonischen Vorbereitung für jedes einfache HE-Sinusmodell ist eine getrennte didaktische requires-Frage, hier nicht geändert."
+    },
+    {
+      "goalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+      "title": "Sinus- und Kosinuswerte am Einheitskreis im Bogenmass deuten und Winkel bestimmen",
+      "description": "Die lernende Person kann Sinus- und Kosinuswerte von Winkelgrößen zwischen 0 und 2π am Einheitskreis veranschaulichen, Vorzeichen sicher bestimmen und zu vorgegebenen Sinus- oder Kosinuswerten passende Winkelgrößen angeben.",
+      "affectedDurationModels": [
+        "G8"
+      ],
+      "decision": "SUPPORT_ONLY",
+      "wholeContractReason": "Im betroffenen G8 ist der Einheitskreis ausdrücklich in 0–360° belegt. Vorzeichen und Winkelbestimmung sind inhaltlich anschlussfähig, aber der unveränderte ganze Vertrag verlangt 0–2π. Ein G9-Hinweis zum Bogenmaß darf weder die vollständige Methodenpflicht noch eine G8-Scopeaussage ersetzen.",
+      "sourceEvidence": [
+        "g8-9g-2",
+        "kc-7-3-funktionen-gleichungen-j9_10"
+      ],
+      "placement": "Keine neue G8-S1-Targetauswahl; nur supportbezogen erhalten. Bestehende G9-Targetauswahl wird in dieser Deltafreigabe nicht mitfreigegeben.",
+      "existingDirectSourceMappingCount": 1
+    },
+    {
+      "goalId": "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+      "title": "Geometrische Probleme mit Ortslinien konstruieren",
+      "description": "Die lernende Person kann geometrische Probleme mithilfe geeigneter Ortslinien wie Kreislinie, Mittelsenkrechte, Winkelhalbierende, Mittelparallele und Thaleskreis zeichnerisch lösen, optional mit dynamischer Geometriesoftware, und die Wahl der Ortslinien sowie die aus ihren Schnittpunkten gewonnene Lösung begründen.",
+      "affectedDurationModels": [
+        "G8",
+        "G9"
+      ],
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "wholeContractReason": "KC fordert geometrische Konstruktionen, Abstand/parallel/senkrecht, Thales und mathematisches Begründen. G8 7G.3 bzw. G9 7.3/8.2 konkretisieren Kreis, Mittel- und Winkelhalbierende samt Konstruktionsaufgaben. Der Vertrag fordert die geeignete Auswahl solcher Ortslinien und Begründung der Schnittlösung. Die beispielhaft genannte Mittelparallele ist der gleiche bereits geforderte Abstand zweier paralleler Geraden, keine neue Kurvenart oder räumliche Methode. DGS bleibt optional.",
+      "sourceEvidence": [
+        "kc-7-3-ebene-figuren-j7_8",
+        "kc-7-3-beziehungen-geometrischer-objekte-j5_6",
+        "kc-7-3-beziehungen-geometrischer-objekte-j7_8",
+        "g8-7g-3",
+        "g9-7-3",
+        "kc-7-2-argumentieren"
+      ],
+      "placement": "Stage-only: assertStage=SekI, no new exact-year claim.",
+      "existingDirectSourceMappingCount": 0,
+      "boundary": "Mittelparallele ist nicht wörtlich als eigener Source-Goal-Titel enthalten; Freigabe beruht ausdrücklich auf der begrenzten Standard-Abstandskonstruktion. Keine Bestätigung des Inhalts der aufrufenden Aufgabe 3045f00d."
+    },
+    {
+      "goalId": "d0db87c4-36f5-5ac6-8428-da96d31b253a",
+      "title": "Potenzgleichungen lösen",
+      "description": "Die lernende Person kann einfache Potenzgleichungen mit geeigneten Umkehroperationen, Wurzel- oder Potenzschreibweisen lösen und die Lösungen prüfen.",
+      "affectedDurationModels": [
+        "G9"
+      ],
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "wholeContractReason": "G9 10.1 nennt einfache Potenzgleichungen, die sich auf x^n=a zurückführen lassen, Radizieren als Umkehrung und Potenz-/Wurzelschreibweisen. Die KC-Kontrollkompetenz deckt Prüfen der Lösungen. Genau dieser einfache Vertrag wird ausgewählt.",
+      "sourceEvidence": [
+        "g9-10-1",
+        "kc-7-2-umgehen-mit-symbolischen-formalen-und-technischen-elementen"
+      ],
+      "placement": "Stage-only: assertStage=SekI, no new exact-year claim.",
+      "existingDirectSourceMappingCount": 2
+    },
+    {
+      "goalId": "e02c58a2-2a32-49bd-b110-7b307e0317fb",
+      "title": "Funktionsbegriff und Darstellungen verstehen",
+      "description": "Die lernende Person kann Funktionen als Zuordnungen beschreiben, abhängige und unabhängige Größen unterscheiden und einfache Funktionsdarstellungen in Tabelle, Graph und Term deuten.",
+      "affectedDurationModels": [
+        "G8"
+      ],
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "wholeContractReason": "KC nennt funktionale Zusammenhänge sowie sprachliche, tabellarische, graphische und Gleichungsdarstellungen. Die Unterscheidung abhängiger/unabhängiger Größen ist die Grundbedeutung dieser einfachen Zuordnungen. Kein zusätzlicher Funktionskalkül.",
+      "sourceEvidence": [
+        "kc-7-3-zuordnungen-j7_8",
+        "kc-7-3-zuordnungen-j9_10",
+        "kc-7-3-funktionen-gleichungen-j9_10"
+      ],
+      "placement": "Stage-only: assertStage=SekI, no new exact-year claim.",
+      "existingDirectSourceMappingCount": 4
+    },
+    {
+      "goalId": "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+      "title": "Dichtheit der rationalen Zahlen erläutern",
+      "description": "Die lernende Person kann erläutern, dass zwischen zwei verschiedenen rationalen Zahlen stets weitere rationale Zahlen liegen, durch wiederholte Mittelwertbildung beliebig viele davon konstruieren und damit die Dichtheit begründen.",
+      "affectedDurationModels": [
+        "G8",
+        "G9"
+      ],
+      "decision": "SUPPORT_ONLY",
+      "wholeContractReason": "Rationale Zahlen, Zahlengerade und Ordnen sind belegt. Der volle Vertrag fügt jedoch die Dichtheitsaussage, beliebig oft wiederholte Mittelwertkonstruktion und deren Begründung hinzu. Keine gelesene HE-S1-Passage trägt dieses eigene Methodenpaket. Eine requires-Kante von Termübersetzung bzw. linearem Gleichungslösen ist kein Targetbeleg.",
+      "sourceEvidence": [
+        "kc-7-3-zahlen-j7_8",
+        "g8-6g-1",
+        "g9-6-1"
+      ],
+      "placement": "Keine explizite HE-S1-Targetauswahl aus diesem Review. Als kanonische Supportreferenz nur erhalten, solange der unabhängig geprüfte Bedarf dies verlangt.",
+      "existingDirectSourceMappingCount": 0,
+      "boundary": "Kein Urteil, dass das Thema pädagogisch ungeeignet wäre; keine Freigabe der bestehenden didaktischen requires-Kante."
+    },
+    {
+      "goalId": "f39c49c7-003b-471a-a33e-6cfea1d7b7b1",
+      "title": "Tabellen erstellen und beschriften",
+      "description": "Die lernende Person kann in einfachen Zuordnungs- und Sachkontexten Tabellen erstellen, Zeilen und Spalten passend beschriften und Einheiten korrekt angeben.",
+      "affectedDurationModels": [
+        "G9"
+      ],
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "wholeContractReason": "KC verlangt die Darstellung von Zuordnungen in Tabellen, den sachgerechten Umgang mit Größen/Einheiten sowie klare mathematische Darstellungen. Zeilen-/Spaltenbeschriftung und korrekte Einheiten sind Bestandteil einer brauchbaren einfachen Sach-/Zuordnungstabelle, keine neue Datenanalysekompetenz.",
+      "sourceEvidence": [
+        "kc-7-3-zuordnungen-j5_6",
+        "kc-7-3-umgang-mit-groessen-j5_6",
+        "kc-7-1-darstellen",
+        "kc-7-1-kommunizieren"
+      ],
+      "placement": "Stage-only: assertStage=SekI, no new exact-year claim.",
+      "existingDirectSourceMappingCount": 2
+    },
+    {
+      "goalId": "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+      "title": "Netze von Quadern und Würfeln zeichnen",
+      "description": "Die lernende Person kann aus den sechs Seitenflächen eines Quaders oder Würfels ein vollständiges, zusammenhängendes Netz zeichnen und prüfen, ob es sich ohne Überlappung zum Körper falten lässt.",
+      "affectedDurationModels": [
+        "G9"
+      ],
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "wholeContractReason": "KC verlangt ausdrücklich Netze von Quadern und Würfeln. Ein vollständiges zusammenhängendes Netz aus sechs passenden Flächen und seine Faltbarkeit ohne Überlappung zu prüfen ist die konkrete Richtigkeitsbedingung dieses Inhalts; keine Klassifikation aller Netze.",
+      "sourceEvidence": [
+        "kc-7-3-koerper-j5_6",
+        "g9-5-2",
+        "kc-7-1-problemlosen"
+      ],
+      "placement": "Stage-only: assertStage=SekI, no new exact-year claim.",
+      "existingDirectSourceMappingCount": 1
+    }
+  ],
+  "boundaries": [
+    "No product, canonical text, requires, assessment, placement or curriculum file edited.",
+    "Positive decisions authorize only the listed actually removed duration scopes, equally pure S1 and S1 part of CrossStage GK/LK. They are not a blanket source approval of retained targets.",
+    "Exact year placement is intentionally not newly certified. Canonical phase, automatic-promotion bucket, requires and mapping status are not grade evidence.",
+    "SUPPORT_ONLY preserves the conceptual difference between necessary preparation and selected curriculum content; it is not approval of every current prerequisite or a permanent statement that the topic may never be taught.",
+    "Source-conflict consumers must be decided explicitly, not silently removed to reduce route-error counts.",
+    "No technical union/projection/route gate, assessment placement, source coverage completeness, remote CI or Mathematics milestone approved."
+  ],
+  "sourceReferences": {
+    "g9-9-3": {
+      "passageId": "g9-9-3",
+      "extractionPage": 32,
+      "sourceDocumentKey": "G9",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-g9-9-3-06-dd75af4f",
+        "he-math-seki-g9-9-3-05-02aae967"
+      ]
+    },
+    "kc-7-2-umgehen-mit-symbolischen-formalen-und-technischen-elementen": {
+      "passageId": "kc-7-2-umgehen-mit-symbolischen-formalen-und-technischen-elementen",
+      "extractionPage": 25,
+      "sourceDocumentKey": "KC",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-kc-7-2-umgehen-mit-symbolischen-formalen-u-01-55e5cfc2",
+        "he-math-seki-kc-7-2-umgehen-mit-symbolischen-formalen-u-02-85d4935e",
+        "he-math-seki-kc-7-2-umgehen-mit-symbolischen-formalen-u-03-3cd89271",
+        "he-math-seki-kc-7-2-umgehen-mit-symbolischen-formalen-u-04-d266ba9b",
+        "he-math-seki-kc-7-2-umgehen-mit-symbolischen-formalen-u-05-4d47e954"
+      ]
+    },
+    "kc-7-3-zahlen-j7_8": {
+      "passageId": "kc-7-3-zahlen-j7_8",
+      "extractionPage": 26,
+      "sourceDocumentKey": "KC",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-kc-7-3-zahlen-j7-8-05-13092ac1",
+        "he-math-seki-kc-7-3-zahlen-j7-8-03-dbe12b24",
+        "he-math-seki-kc-7-3-zahlen-j7-8-02-1e930168",
+        "he-math-seki-kc-7-3-zahlen-j7-8-01-3670397a",
+        "he-math-seki-kc-7-3-zahlen-j7-8-04-6d560183"
+      ]
+    },
+    "kc-7-3-beziehungen-geometrischer-objekte-j5_6": {
+      "passageId": "kc-7-3-beziehungen-geometrischer-objekte-j5_6",
+      "extractionPage": 27,
+      "sourceDocumentKey": "KC",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-kc-7-3-beziehungen-geometrischer-objekte-j-01-3a38430c",
+        "he-math-seki-kc-7-3-beziehungen-geometrischer-objekte-j-02-da73afb3"
+      ]
+    },
+    "kc-7-3-ebene-figuren-j7_8": {
+      "passageId": "kc-7-3-ebene-figuren-j7_8",
+      "extractionPage": 27,
+      "sourceDocumentKey": "KC",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-kc-7-3-ebene-figuren-j7-8-01-d8e75ef6",
+        "he-math-seki-kc-7-3-ebene-figuren-j7-8-02-2976feaa",
+        "he-math-seki-kc-7-3-ebene-figuren-j7-8-03-cba6b3ff",
+        "he-math-seki-kc-7-3-ebene-figuren-j7-8-04-aa8f50df",
+        "he-math-seki-kc-7-3-ebene-figuren-j7-8-05-662f644f"
+      ]
+    },
+    "kc-7-3-operationen-j7_8": {
+      "passageId": "kc-7-3-operationen-j7_8",
+      "extractionPage": 27,
+      "sourceDocumentKey": "KC",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-kc-7-3-operationen-j7-8-03-943a8e96"
+      ]
+    },
+    "g8-9g-1": {
+      "passageId": "g8-9g-1",
+      "extractionPage": 34,
+      "sourceDocumentKey": "G8",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g8-mathematik.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-g8-9g-1-12-e6483136",
+        "he-math-seki-g8-9g-1-13-5f81c019",
+        "he-math-seki-g8-9g-1-15-0946e251"
+      ]
+    },
+    "kc-7-3-beziehungen-geometrischer-objekte-j7_8": {
+      "passageId": "kc-7-3-beziehungen-geometrischer-objekte-j7_8",
+      "extractionPage": 27,
+      "sourceDocumentKey": "KC",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-kc-7-3-beziehungen-geometrischer-objekte-j-03-3e187648",
+        "he-math-seki-kc-7-3-beziehungen-geometrischer-objekte-j-04-dc69b4bf"
+      ]
+    },
+    "kc-7-2-argumentieren": {
+      "passageId": "kc-7-2-argumentieren",
+      "extractionPage": 24,
+      "sourceDocumentKey": "KC",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-kc-7-2-argumentieren-01-75d31cf7",
+        "he-math-seki-kc-7-2-argumentieren-02-bc7ed0ca",
+        "he-math-seki-kc-7-2-argumentieren-03-759e65b8",
+        "he-math-seki-kc-7-2-argumentieren-04-c0f3dd7f"
+      ]
+    },
+    "kc-7-3-messvorgaenge-j5_6": {
+      "passageId": "kc-7-3-messvorgaenge-j5_6",
+      "extractionPage": 28,
+      "sourceDocumentKey": "KC",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-kc-7-3-messvorgaenge-j5-6-01-9155dc8b",
+        "he-math-seki-kc-7-3-messvorgaenge-j5-6-02-3720bfb0",
+        "he-math-seki-kc-7-3-messvorgaenge-j5-6-03-dfe71e54",
+        "he-math-seki-kc-7-3-messvorgaenge-j5-6-04-1bdfebc4",
+        "he-math-seki-kc-7-3-messvorgaenge-j5-6-05-c5ab4587",
+        "he-math-seki-kc-7-3-messvorgaenge-j5-6-06-5288a48b",
+        "he-math-seki-kc-7-3-messvorgaenge-j5-6-07-2a6dd82a"
+      ]
+    },
+    "kc-7-3-messvorgaenge-j7_8": {
+      "passageId": "kc-7-3-messvorgaenge-j7_8",
+      "extractionPage": 28,
+      "sourceDocumentKey": "KC",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-kc-7-3-messvorgaenge-j7-8-01-ba17d03c",
+        "he-math-seki-kc-7-3-messvorgaenge-j7-8-02-c4e78487"
+      ]
+    },
+    "kc-7-3-koerper-j5_6": {
+      "passageId": "kc-7-3-koerper-j5_6",
+      "extractionPage": 27,
+      "sourceDocumentKey": "KC",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-kc-7-3-koerper-j5-6-01-2572c928",
+        "he-math-seki-kc-7-3-koerper-j5-6-02-15d6870b",
+        "he-math-seki-kc-7-3-koerper-j5-6-03-4a02dd0e"
+      ]
+    },
+    "kc-7-3-zuordnungen-j7_8": {
+      "passageId": "kc-7-3-zuordnungen-j7_8",
+      "extractionPage": 28,
+      "sourceDocumentKey": "KC",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-kc-7-3-zuordnungen-j7-8-01-622238c9",
+        "he-math-seki-kc-7-3-zuordnungen-j7-8-02-b5609f24",
+        "he-math-seki-kc-7-3-zuordnungen-j7-8-03-d378647f"
+      ]
+    },
+    "g8-7g-2": {
+      "passageId": "g8-7g-2",
+      "extractionPage": 23,
+      "sourceDocumentKey": "G8",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g8-mathematik.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-g8-7g-2-02-7a4026ee"
+      ]
+    },
+    "g9-7-2": {
+      "passageId": "g9-7-2",
+      "extractionPage": 21,
+      "sourceDocumentKey": "G9",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-g9-7-2-02-1c643493"
+      ]
+    },
+    "g8-9g-2": {
+      "passageId": "g8-9g-2",
+      "extractionPage": 36,
+      "sourceDocumentKey": "G8",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g8-mathematik.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-g8-9g-2-01-16189eff",
+        "he-math-seki-g8-9g-2-02-0a3ec297",
+        "he-math-seki-g8-9g-2-03-b9e18ec8",
+        "he-math-seki-g8-9g-2-04-a418a888",
+        "he-math-seki-g8-9g-2-05-4d994380",
+        "he-math-seki-g8-9g-2-06-fd00332f",
+        "he-math-seki-g8-9g-2-07-f22bd3e7",
+        "he-math-seki-g8-9g-2-08-8a3afde5",
+        "he-math-seki-g8-9g-2-09-6497cd24",
+        "he-math-seki-g8-9g-2-10-270bfc21",
+        "he-math-seki-g8-9g-2-11-1610bc53",
+        "he-math-seki-g8-9g-2-12-a64c3fff"
+      ]
+    },
+    "g9-10-4": {
+      "passageId": "g9-10-4",
+      "extractionPage": 42,
+      "sourceDocumentKey": "G9",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-g9-10-4-01-7e67f8b5",
+        "he-math-seki-g9-10-4-02-afaa1272",
+        "he-math-seki-g9-10-4-03-d9c84956",
+        "he-math-seki-g9-10-4-04-f9c928d7",
+        "he-math-seki-g9-10-4-05-88d10835",
+        "he-math-seki-g9-10-4-06-9d2412fd",
+        "he-math-seki-g9-10-4-07-c5b073f4",
+        "he-math-seki-g9-10-4-08-79b4f19c",
+        "he-math-seki-g9-10-4-09-c95938b0"
+      ]
+    },
+    "g9-9-6": {
+      "passageId": "g9-9-6",
+      "extractionPage": 35,
+      "sourceDocumentKey": "G9",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-g9-9-6-02-b1797ce5",
+        "he-math-seki-g9-9-6-01-d66a67da",
+        "he-math-seki-g9-9-6-03-807af2e4",
+        "he-math-seki-g9-9-6-04-b52071b1"
+      ]
+    },
+    "g9-5-2": {
+      "passageId": "g9-5-2",
+      "extractionPage": 13,
+      "sourceDocumentKey": "G9",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-g9-5-2-01-140a34d9",
+        "he-math-seki-g9-5-2-02-b88a25bc",
+        "he-math-seki-g9-5-2-03-de977c1c",
+        "he-math-seki-g9-5-2-04-9901881d",
+        "he-math-seki-g9-5-2-05-15e168a4",
+        "he-math-seki-g9-5-2-06-1ef99853",
+        "he-math-seki-g9-5-2-07-6cf21ffc",
+        "he-math-seki-g9-5-2-08-e2fddf57",
+        "he-math-seki-g9-5-2-09-8dda95bc",
+        "he-math-seki-g9-5-2-10-3c8bb8c8",
+        "he-math-seki-g9-5-2-11-4d08b83c",
+        "he-math-seki-g9-5-2-12-eaa68c0c",
+        "he-math-seki-g9-5-2-13-cb858f35",
+        "he-math-seki-g9-5-2-14-b512c4ba",
+        "he-math-seki-g9-5-2-15-d6179342",
+        "he-math-seki-g9-5-2-16-0107f826",
+        "he-math-seki-g9-5-2-17-1532c6ce"
+      ]
+    },
+    "kc-7-3-umgang-mit-groessen-j5_6": {
+      "passageId": "kc-7-3-umgang-mit-groessen-j5_6",
+      "extractionPage": 28,
+      "sourceDocumentKey": "KC",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-kc-7-3-umgang-mit-groessen-j5-6-05-d0d5db40",
+        "he-math-seki-kc-7-3-umgang-mit-groessen-j5-6-01-3d29e2ed",
+        "he-math-seki-kc-7-3-umgang-mit-groessen-j5-6-02-b118d270",
+        "he-math-seki-kc-7-3-umgang-mit-groessen-j5-6-03-a6eaa22a",
+        "he-math-seki-kc-7-3-umgang-mit-groessen-j5-6-04-1b166654",
+        "he-math-seki-kc-7-3-umgang-mit-groessen-j5-6-06-1b9e122f"
+      ]
+    },
+    "kc-7-3-zuordnungen-j9_10": {
+      "passageId": "kc-7-3-zuordnungen-j9_10",
+      "extractionPage": 28,
+      "sourceDocumentKey": "KC",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-kc-7-3-zuordnungen-j9-10-01-db531715",
+        "he-math-seki-kc-7-3-zuordnungen-j9-10-02-4fb13450"
+      ]
+    },
+    "kc-7-3-funktionen-gleichungen-j7_8": {
+      "passageId": "kc-7-3-funktionen-gleichungen-j7_8",
+      "extractionPage": 29,
+      "sourceDocumentKey": "KC",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-kc-7-3-funktionen-gleichungen-j7-8-01-32591b6d",
+        "he-math-seki-kc-7-3-funktionen-gleichungen-j7-8-02-48964817",
+        "he-math-seki-kc-7-3-funktionen-gleichungen-j7-8-03-e32958c4",
+        "he-math-seki-kc-7-3-funktionen-gleichungen-j7-8-04-14f6de51"
+      ]
+    },
+    "kc-7-3-funktionen-gleichungen-j9_10": {
+      "passageId": "kc-7-3-funktionen-gleichungen-j9_10",
+      "extractionPage": 29,
+      "sourceDocumentKey": "KC",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-kc-7-3-funktionen-gleichungen-j9-10-01-a4af5fc5",
+        "he-math-seki-kc-7-3-funktionen-gleichungen-j9-10-02-81143a24",
+        "he-math-seki-kc-7-3-funktionen-gleichungen-j9-10-03-02b0b90a",
+        "he-math-seki-kc-7-3-funktionen-gleichungen-j9-10-04-ef89ce97",
+        "he-math-seki-kc-7-3-funktionen-gleichungen-j9-10-05-2d3b9eb3",
+        "he-math-seki-kc-7-3-funktionen-gleichungen-j9-10-06-a1c86e7c"
+      ]
+    },
+    "g8-7g-3": {
+      "passageId": "g8-7g-3",
+      "extractionPage": 24,
+      "sourceDocumentKey": "G8",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g8-mathematik.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-g8-7g-3-03-e3252808"
+      ]
+    },
+    "g9-7-3": {
+      "passageId": "g9-7-3",
+      "extractionPage": 22,
+      "sourceDocumentKey": "G9",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-g9-7-3-04-d59c6e51"
+      ]
+    },
+    "g9-10-1": {
+      "passageId": "g9-10-1",
+      "extractionPage": 38,
+      "sourceDocumentKey": "G9",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-g9-10-1-08-7a650f93",
+        "he-math-seki-g9-10-1-05-0c2aa536"
+      ]
+    },
+    "g8-6g-1": {
+      "passageId": "g8-6g-1",
+      "extractionPage": 17,
+      "sourceDocumentKey": "G8",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g8-mathematik.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-g8-6g-1-01-4c19a781",
+        "he-math-seki-g8-6g-1-02-d98b41ec",
+        "he-math-seki-g8-6g-1-03-b9aebde2",
+        "he-math-seki-g8-6g-1-04-c933a636",
+        "he-math-seki-g8-6g-1-05-fcb3c93b",
+        "he-math-seki-g8-6g-1-06-845dfbf2",
+        "he-math-seki-g8-6g-1-07-1e463806",
+        "he-math-seki-g8-6g-1-08-1888b573",
+        "he-math-seki-g8-6g-1-09-680fba21",
+        "he-math-seki-g8-6g-1-10-712354f7",
+        "he-math-seki-g8-6g-1-11-d8f27e66",
+        "he-math-seki-g8-6g-1-12-aae525c8",
+        "he-math-seki-g8-6g-1-13-6c58945c",
+        "he-math-seki-g8-6g-1-14-0f96096f",
+        "he-math-seki-g8-6g-1-15-d59d2df5",
+        "he-math-seki-g8-6g-1-16-25dbdcf9",
+        "he-math-seki-g8-6g-1-17-550adeb9"
+      ]
+    },
+    "g9-6-1": {
+      "passageId": "g9-6-1",
+      "extractionPage": 15,
+      "sourceDocumentKey": "G9",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-g9-6-1-01-f25eef13",
+        "he-math-seki-g9-6-1-02-435d5f4d",
+        "he-math-seki-g9-6-1-03-f60b6581",
+        "he-math-seki-g9-6-1-04-7e8406db",
+        "he-math-seki-g9-6-1-05-2b704105",
+        "he-math-seki-g9-6-1-06-6e004138",
+        "he-math-seki-g9-6-1-07-1e94e9db",
+        "he-math-seki-g9-6-1-08-8986e1f2",
+        "he-math-seki-g9-6-1-09-2c19f0de",
+        "he-math-seki-g9-6-1-10-512706df",
+        "he-math-seki-g9-6-1-11-3f4e0b96",
+        "he-math-seki-g9-6-1-12-5350645b",
+        "he-math-seki-g9-6-1-13-fbd561b6",
+        "he-math-seki-g9-6-1-14-6df5c421",
+        "he-math-seki-g9-6-1-15-d4293cc1",
+        "he-math-seki-g9-6-1-16-2a3f78d9",
+        "he-math-seki-g9-6-1-17-89e7a50b",
+        "he-math-seki-g9-6-1-18-26426f3a",
+        "he-math-seki-g9-6-1-19-db71f010",
+        "he-math-seki-g9-6-1-20-4b467fb0",
+        "he-math-seki-g9-6-1-21-c09387a0"
+      ]
+    },
+    "kc-7-3-zuordnungen-j5_6": {
+      "passageId": "kc-7-3-zuordnungen-j5_6",
+      "extractionPage": 28,
+      "sourceDocumentKey": "KC",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-kc-7-3-zuordnungen-j5-6-02-118a1d42"
+      ]
+    },
+    "kc-7-1-darstellen": {
+      "passageId": "kc-7-1-darstellen",
+      "extractionPage": 22,
+      "sourceDocumentKey": "KC",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-kc-7-1-darstellen-01-95bf7bd5",
+        "he-math-seki-kc-7-1-darstellen-02-acc3098f",
+        "he-math-seki-kc-7-1-darstellen-03-9d310b41",
+        "he-math-seki-kc-7-1-darstellen-04-a74521ca"
+      ]
+    },
+    "kc-7-1-kommunizieren": {
+      "passageId": "kc-7-1-kommunizieren",
+      "extractionPage": 22,
+      "sourceDocumentKey": "KC",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-kc-7-1-kommunizieren-01-82e74b22",
+        "he-math-seki-kc-7-1-kommunizieren-02-363e8aef",
+        "he-math-seki-kc-7-1-kommunizieren-03-3b5fbd61",
+        "he-math-seki-kc-7-1-kommunizieren-04-b60b6bc6"
+      ]
+    },
+    "kc-7-1-problemlosen": {
+      "passageId": "kc-7-1-problemlosen",
+      "extractionPage": 23,
+      "sourceDocumentKey": "KC",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sourceGoalIds": [
+        "he-math-seki-kc-7-1-problemlosen-01-0ef3cdd7",
+        "he-math-seki-kc-7-1-problemlosen-02-636c4c17",
+        "he-math-seki-kc-7-1-problemlosen-03-d6c61fd7",
+        "he-math-seki-kc-7-1-problemlosen-04-760e218b",
+        "he-math-seki-kc-7-1-problemlosen-05-a80bd204"
+      ]
+    }
+  },
+  "boundedSpatialScopeAddendum": {
+    "date": "2026-11-01",
+    "decision": "FINAL_BOUNDED_S1_PLACEMENT_CORRECTION_APPROVED",
+    "additionalScopeBeyondLostIds": "Only the already identified retained spatial consumers and HE/RP G8 explicit f242a3e8/d1352ce0. No wider curriculum review.",
+    "corrections": [
+      {
+        "goalId": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+        "title": "Vektoren komponentenweise addieren und subtrahieren",
+        "description": "Die lernende Person kann Vektoren in Ebene und Raum komponentenweise addieren und subtrahieren und geometrisch erklären, dass Addition Verschiebungen verknüpft und Subtraktion die Addition des Gegenvektors ist.",
+        "decision": "REMOVE_UNSUPPORTED_S1_TARGET_PRESERVE_INDEPENDENT_EXISTING_SII_SELECTION",
+        "affectedDurationModels": [
+          "G8",
+          "G9"
+        ],
+        "observedAffectedViewIds": [
+          "de-he-gym-math-gk-g8",
+          "de-he-gym-math-gk-g9",
+          "de-he-gym-math-lk-g8",
+          "de-he-gym-math-lk-g9",
+          "de-he-gym-seki-math-g8",
+          "de-he-gym-seki-math-g9"
+        ],
+        "reason": "Whole consumer explicitly requires spatial component operations or parametric spatial lines; the reviewed S1 sources do not support that complete contract. Replacing a real 3D prerequisite with a 2D goal would not repair the consumer contract.",
+        "mutationBoundary": "Remove only unsupported S1 target selection. Retain already independently selected SII targets in CrossStage at an SII placement; do not invent a new SII target selection. Canonical ID, complete contract, mastery and real 3D requires unchanged."
+      },
+      {
+        "goalId": "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+        "title": "Vektoren mit Skalaren multiplizieren und geometrisch deuten",
+        "description": "Die lernende Person kann Vektoren in Ebene und Raum komponentenweise mit Skalaren multiplizieren und geometrisch erklären, dass der Betrag mit dem Betrag des Faktors skaliert, ein negativer Faktor die Richtung eines von null verschiedenen Vektors umkehrt und der Faktor null den Nullvektor ergibt.",
+        "decision": "REMOVE_UNSUPPORTED_S1_TARGET_PRESERVE_INDEPENDENT_EXISTING_SII_SELECTION",
+        "affectedDurationModels": [
+          "G8",
+          "G9"
+        ],
+        "observedAffectedViewIds": [
+          "de-he-gym-math-gk-g8",
+          "de-he-gym-math-gk-g9",
+          "de-he-gym-math-lk-g8",
+          "de-he-gym-math-lk-g9",
+          "de-he-gym-seki-math-g8",
+          "de-he-gym-seki-math-g9"
+        ],
+        "reason": "Whole consumer explicitly requires spatial component operations or parametric spatial lines; the reviewed S1 sources do not support that complete contract. Replacing a real 3D prerequisite with a 2D goal would not repair the consumer contract.",
+        "mutationBoundary": "Remove only unsupported S1 target selection. Retain already independently selected SII targets in CrossStage at an SII placement; do not invent a new SII target selection. Canonical ID, complete contract, mastery and real 3D requires unchanged."
+      },
+      {
+        "goalId": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+        "title": "Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten",
+        "description": "Die lernende Person kann Punkte im räumlichen Koordinatensystem als Tupel darstellen, Koordinateneinträge fachsprachlich deuten und die Bedeutung einfacher Ortsangaben im Kontext erklären.",
+        "decision": "REMOVE_UNSUPPORTED_S1_TARGET_PRESERVE_INDEPENDENT_EXISTING_SII_SELECTION",
+        "affectedDurationModels": [
+          "G8"
+        ],
+        "observedAffectedViewIds": [
+          "de-he-gym-math-gk-g8",
+          "de-he-gym-math-lk-g8",
+          "de-he-gym-seki-math-g8"
+        ],
+        "reason": "Original 2026-09-28 package preserves historical scope/prerequisite availability and expressly disclaims normative requires-based source evidence. HE S1 explicitly gives two-dimensional/four-quadrant coordinates; RP S1 gives coordinate work and expressly planar transformations. Body oblique drawings do not prove spatial coordinate tuples, nor scalar vector collinearity. No independent whole S1 contract was established by the original decision.",
+        "mutationBoundary": "Remove only unsupported S1 target selection. Retain already independently selected SII targets in CrossStage at an SII placement; do not invent a new SII target selection. Canonical ID, complete contract, mastery and real 3D requires unchanged."
+      },
+      {
+        "goalId": "d1352ce0-9502-5039-9af6-318fe385b6fd",
+        "title": "Kollinearität von Vektoren prüfen",
+        "description": "Die lernende Person kann in einfachen Fällen prüfen und begründen, ob zwei Vektoren kollinear sind: rechnerisch anhand eines einheitlichen Skalarfaktors für alle Komponenten oder bei Nichtnullvektoren geometrisch anhand gleicher oder entgegengesetzter Richtung.",
+        "decision": "REMOVE_UNSUPPORTED_S1_TARGET_PRESERVE_INDEPENDENT_EXISTING_SII_SELECTION",
+        "affectedDurationModels": [
+          "G8"
+        ],
+        "observedAffectedViewIds": [
+          "de-he-gym-math-gk-g8",
+          "de-he-gym-math-lk-g8",
+          "de-he-gym-seki-math-g8"
+        ],
+        "reason": "Original 2026-09-28 package preserves historical scope/prerequisite availability and expressly disclaims normative requires-based source evidence. HE S1 explicitly gives two-dimensional/four-quadrant coordinates; RP S1 gives coordinate work and expressly planar transformations. Body oblique drawings do not prove spatial coordinate tuples, nor scalar vector collinearity. No independent whole S1 contract was established by the original decision.",
+        "mutationBoundary": "Remove only unsupported S1 target selection. Retain already independently selected SII targets in CrossStage at an SII placement; do not invent a new SII target selection. Canonical ID, complete contract, mastery and real 3D requires unchanged."
+      }
+    ],
+    "originalReviewRead": [
+      "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-vector-shared-operations-20260928-v1/README.md",
+      "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-vector-shared-operations-20260928-v1/duration-layout-adjudication.json",
+      "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-vector-shared-operations-20260928-v1/prerequisite-routing.json",
+      "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-vector-shared-operations-20260928-v1/source-edge-routing-15.json",
+      "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-vector-shared-operations-20260928-v1/current-source-scope-report.json"
+    ],
+    "existingSiiSourceEvidence": "Existing HE upper-secondary extraction: KC Q2.2 S.41, spatial coordinate system and vector operations/collinearity.",
+    "nativeAssessmentImpact": {
+      "artifact": "tmp/math-stable-target-candidate-20261101/diagnostic-duration-native-support.json",
+      "producer": "/root/sol_stable_math_targets",
+      "reviewedRows": 18,
+      "method": "Actual CompletionProfileCompiler.compileAutomatic on full canonical context; reachability uses its directPrerequisites, including atomic/indirect/inherited expansion.",
+      "result": "No selected S1 assessment in these 18 diagnostic views reaches any of the five identified IDs. All per-view arrays inspected and empty.",
+      "requiredAssessmentMutation": "NONE for this bounded spatial correction. Do not remove an assessment by name, canonical phase, or an ordinary-role change.",
+      "boundary": "Pre-mutation diagnostic contexts; not post-integration acceptance, not 154-offer/full-corpus/M7/CI proof."
+    }
+  }
+}

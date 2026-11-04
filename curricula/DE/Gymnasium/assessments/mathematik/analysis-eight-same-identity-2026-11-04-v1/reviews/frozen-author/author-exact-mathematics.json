@@ -1,0 +1,863 @@
+{
+  "status": "AUTHOR_EXACT_MATHEMATICS_SELF_CHECK_PASS_NOT_INDEPENDENT_REVIEW",
+  "checkCount": 85,
+  "checks": [
+    {
+      "id": "area-primitive",
+      "actual": "x**(-2) - 1/x**3",
+      "expected": "(x - 1)/x**3",
+      "pass": true
+    },
+    {
+      "id": "area-zero",
+      "actual": "[1]",
+      "expected": "[1]",
+      "pass": true
+    },
+    {
+      "id": "area-negative-left",
+      "actual": "True",
+      "expected": "True",
+      "pass": true
+    },
+    {
+      "id": "area-positive-right",
+      "actual": "True",
+      "expected": "True",
+      "pass": true
+    },
+    {
+      "id": "area-sign-source-denominator-positive",
+      "actual": "True",
+      "expected": "True",
+      "pass": true
+    },
+    {
+      "id": "area-bounded-half",
+      "actual": "1/2",
+      "expected": "1/2",
+      "pass": true
+    },
+    {
+      "id": "area-tail-expression",
+      "actual": "1/2 - 1/T + 1/(2*T**2)",
+      "expected": "1/2 - 1/T + 1/(2*T**2)",
+      "pass": true
+    },
+    {
+      "id": "area-tail-limit",
+      "actual": "1/2",
+      "expected": "1/2",
+      "pass": true
+    },
+    {
+      "id": "area-total",
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    {
+      "id": "singular-primitive",
+      "actual": "x**(-3)",
+      "expected": "x**(-3)",
+      "pass": true
+    },
+    {
+      "id": "singular-left-area",
+      "actual": "-1/2 + 1/(2*eps**2)",
+      "expected": "-1/2 + 1/(2*eps**2)",
+      "pass": true
+    },
+    {
+      "id": "singular-right-area",
+      "actual": "-1/2 + 1/(2*eps**2)",
+      "expected": "-1/2 + 1/(2*eps**2)",
+      "pass": true
+    },
+    {
+      "id": "singular-left-limit",
+      "actual": "oo",
+      "expected": "oo",
+      "pass": true
+    },
+    {
+      "id": "singular-right-limit",
+      "actual": "oo",
+      "expected": "oo",
+      "pass": true
+    },
+    {
+      "id": "singular-oriented-symmetric-cancellation",
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    {
+      "id": "log-basic-derivative",
+      "actual": "1/x",
+      "expected": "1/x",
+      "pass": true
+    },
+    {
+      "id": "log-combined-derivative",
+      "actual": "2*x + 3/x",
+      "expected": "2*x + 3/x",
+      "pass": true
+    },
+    {
+      "id": "log-upper-evaluation",
+      "actual": "6 + exp(4)",
+      "expected": "6 + exp(4)",
+      "pass": true
+    },
+    {
+      "id": "log-lower-evaluation",
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    {
+      "id": "log-fixed-integral",
+      "actual": "5 + exp(4)",
+      "expected": "5 + exp(4)",
+      "pass": true
+    },
+    {
+      "id": "log-positive-parameter-interval",
+      "actual": "True",
+      "expected": "True",
+      "pass": true
+    },
+    {
+      "id": "log-variable-integral",
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    {
+      "id": "log-zero-not-finite-real",
+      "actual": "False",
+      "expected": "False",
+      "pass": true
+    },
+    {
+      "id": "stock-reconstruction-integral",
+      "actual": "-t**2 + 6*t + 20",
+      "expected": "-t**2 + 6*t + 20",
+      "pass": true
+    },
+    {
+      "id": "stock-reference",
+      "actual": "20",
+      "expected": "20",
+      "pass": true
+    },
+    {
+      "id": "stock-derivative",
+      "actual": "6 - 2*t",
+      "expected": "6 - 2*t",
+      "pass": true
+    },
+    {
+      "id": "stock-at-two",
+      "actual": "28",
+      "expected": "28",
+      "pass": true
+    },
+    {
+      "id": "stock-at-five",
+      "actual": "25",
+      "expected": "25",
+      "pass": true
+    },
+    {
+      "id": "stock-change-two-five",
+      "actual": "-3",
+      "expected": "-3",
+      "pass": true
+    },
+    {
+      "id": "stock-only-rate-zero",
+      "actual": "[3]",
+      "expected": "[3]",
+      "pass": true
+    },
+    {
+      "id": "stock-rate-sign-intervals",
+      "actual": "t < 3",
+      "expected": "t < 3",
+      "pass": true
+    },
+    {
+      "id": "stock-peak",
+      "actual": "29",
+      "expected": "29",
+      "pass": true
+    },
+    {
+      "id": "stock-endpoint-positive",
+      "actual": "20",
+      "expected": "20",
+      "pass": true,
+      "reason": "Concave quadratic: its minimum on [0,5] is at an endpoint."
+    },
+    {
+      "id": "inner-reconstruction",
+      "actual": "x**2 - 4*x + 6",
+      "expected": "x**2 - 4*x + 6",
+      "pass": true
+    },
+    {
+      "id": "inner-reference",
+      "actual": "3",
+      "expected": "3",
+      "pass": true
+    },
+    {
+      "id": "inner-derivative",
+      "actual": "2*x - 4",
+      "expected": "2*x - 4",
+      "pass": true
+    },
+    {
+      "id": "inner-net-zero",
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    {
+      "id": "inner-nonzero-equal-endpoints",
+      "actual": "(6, 6)",
+      "expected": "(6, 6)",
+      "pass": true
+    },
+    {
+      "id": "inner-not-constant-value",
+      "actual": "2",
+      "expected": "2",
+      "pass": true
+    },
+    {
+      "id": "linked-coefficient-solve",
+      "actual": "{aa: 2, bb: -1}",
+      "expected": "{aa: 2, bb: -1}",
+      "pass": true
+    },
+    {
+      "id": "linked-product-derivative",
+      "actual": "(2*x - 1)*exp(x) + 2*exp(x)",
+      "expected": "(2*x + 1)*exp(x)",
+      "pass": true
+    },
+    {
+      "id": "linked-product-integral",
+      "actual": "1 + E",
+      "expected": "1 + E",
+      "pass": true
+    },
+    {
+      "id": "linked-composition-derivative",
+      "actual": "2*x*exp(x**2 + 1)",
+      "expected": "2*x*exp(x**2 + 1)",
+      "pass": true
+    },
+    {
+      "id": "linked-composition-integral",
+      "actual": "-E + exp(2)",
+      "expected": "-E + exp(2)",
+      "pass": true
+    },
+    {
+      "id": "linked-sum-derivative",
+      "actual": "3*x**2 + exp(2*x)",
+      "expected": "3*x**2 + exp(2*x)",
+      "pass": true
+    },
+    {
+      "id": "linked-sum-integral",
+      "actual": "1/2 + exp(2)/2",
+      "expected": "1/2 + exp(2)/2",
+      "pass": true
+    },
+    {
+      "id": "transformed-exp-derivative",
+      "actual": "exp(1 - 2*x)",
+      "expected": "exp(1 - 2*x)",
+      "pass": true
+    },
+    {
+      "id": "transformed-sin-derivative",
+      "actual": "-cos(3*x)",
+      "expected": "-cos(3*x)",
+      "pass": true
+    },
+    {
+      "id": "transformed-cos-derivative",
+      "actual": "sin(2*x)",
+      "expected": "sin(2*x)",
+      "pass": true
+    },
+    {
+      "id": "transformed-upper-argument",
+      "actual": "pi",
+      "expected": "pi",
+      "pass": true
+    },
+    {
+      "id": "transformed-lower-argument",
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    {
+      "id": "transformed-definite",
+      "actual": "2/3",
+      "expected": "2/3",
+      "pass": true
+    },
+    {
+      "id": "transformed-wrong-prefactor",
+      "actual": "-2*sin(2*x)",
+      "expected": "-2*sin(2*x)",
+      "pass": true
+    },
+    {
+      "id": "taylor-four",
+      "actual": "x**4/24 + x**3/6 + x**2/2 + x + 1",
+      "expected": "x**4/24 + x**3/6 + x**2/2 + x + 1",
+      "pass": true
+    },
+    {
+      "id": "taylor-derivatives-at-zero",
+      "actual": "[1, 1, 1, 1, 1]",
+      "expected": "[1, 1, 1, 1, 1]",
+      "pass": true
+    },
+    {
+      "id": "e-series-S4",
+      "actual": "65/24",
+      "expected": "65/24",
+      "pass": true
+    },
+    {
+      "id": "e-series-S6",
+      "actual": "1957/720",
+      "expected": "1957/720",
+      "pass": true
+    },
+    {
+      "id": "e-series-added-terms",
+      "actual": "7/720",
+      "expected": "7/720",
+      "pass": true
+    },
+    {
+      "id": "e-series-P4-at-one",
+      "actual": "65/24",
+      "expected": "65/24",
+      "pass": true
+    },
+    {
+      "id": "e-series-P4-at-zero",
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    {
+      "id": "e-series-upper-fraction",
+      "actual": "11743/4320",
+      "expected": "11743/4320",
+      "pass": true
+    },
+    {
+      "id": "e-series-rounding-bin",
+      "actual": "True",
+      "expected": "True",
+      "pass": true
+    },
+    {
+      "id": "e-series-true-e-enclosed",
+      "actual": "True",
+      "expected": "True",
+      "pass": true
+    },
+    {
+      "id": "e-series-S4-six-decimals",
+      "actual": "2.708333",
+      "expected": "2.708333",
+      "pass": true
+    },
+    {
+      "id": "e-series-S6-six-decimals",
+      "actual": "2.718056",
+      "expected": "2.718056",
+      "pass": true
+    },
+    {
+      "id": "e-series-comparison-bound-limit",
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    {
+      "id": "e-growth-1-six-decimals",
+      "actual": "2.000000",
+      "expected": "2.000000",
+      "pass": true
+    },
+    {
+      "id": "e-growth-10-six-decimals",
+      "actual": "2.593742",
+      "expected": "2.593742",
+      "pass": true
+    },
+    {
+      "id": "e-growth-100-six-decimals",
+      "actual": "2.704814",
+      "expected": "2.704814",
+      "pass": true
+    },
+    {
+      "id": "e-growth-1000-six-decimals",
+      "actual": "2.716924",
+      "expected": "2.716924",
+      "pass": true
+    },
+    {
+      "id": "e-growth-10000-six-decimals",
+      "actual": "2.718146",
+      "expected": "2.718146",
+      "pass": true
+    },
+    {
+      "id": "e-growth-100000-six-decimals",
+      "actual": "2.718268",
+      "expected": "2.718268",
+      "pass": true
+    },
+    {
+      "id": "e-growth-final-two-three-decimals",
+      "actual": "['2.718', '2.718']",
+      "expected": "['2.718', '2.718']",
+      "pass": true
+    },
+    {
+      "id": "e-growth-changed-initial-rounded",
+      "actual": "2718/5",
+      "expected": "2718/5",
+      "pass": true
+    },
+    {
+      "id": "e-growth-natural-at-zero",
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    {
+      "id": "e-growth-natural-at-one",
+      "actual": "E",
+      "expected": "E",
+      "pass": true
+    },
+    {
+      "id": "sequence-A-five",
+      "actual": "[3, 7, 13, 21, 31]",
+      "expected": "[3, 7, 13, 21, 31]",
+      "pass": true
+    },
+    {
+      "id": "sequence-A-recurrence",
+      "actual": "2*n + 2",
+      "expected": "2*n + 2",
+      "pass": true
+    },
+    {
+      "id": "sequence-A-six",
+      "actual": "43",
+      "expected": "43",
+      "pass": true
+    },
+    {
+      "id": "sequence-B-five",
+      "actual": "[2, -1, 1/2, -1/4, 1/8]",
+      "expected": "[2, -1, 1/2, -1/4, 1/8]",
+      "pass": true
+    },
+    {
+      "id": "sequence-B-recurrence",
+      "actual": "-1/2",
+      "expected": "-1/2",
+      "pass": true
+    },
+    {
+      "id": "sequence-B-six",
+      "actual": "-1/16",
+      "expected": "-1/16",
+      "pass": true
+    },
+    {
+      "id": "sequence-alternative-five",
+      "actual": "[3, 7, 13, 21, 31]",
+      "expected": "[3, 7, 13, 21, 31]",
+      "pass": true
+    },
+    {
+      "id": "sequence-alternative-six",
+      "actual": "163",
+      "expected": "163",
+      "pass": true
+    },
+    {
+      "id": "sequence-alternative-increment-six",
+      "actual": "120",
+      "expected": "120",
+      "pass": true
+    }
+  ],
+  "growthNumerics": [
+    {
+      "n": 1,
+      "highPrecisionValue": "2.0",
+      "sixDecimals": "2.000000"
+    },
+    {
+      "n": 10,
+      "highPrecisionValue": "2.5937424601",
+      "sixDecimals": "2.593742"
+    },
+    {
+      "n": 100,
+      "highPrecisionValue": "2.704813829421526093267194710807530833677938382781002777",
+      "sixDecimals": "2.704814"
+    },
+    {
+      "n": 1000,
+      "highPrecisionValue": "2.716923932235892457383088121947577188964315018836572804",
+      "sixDecimals": "2.716924"
+    },
+    {
+      "n": 10000,
+      "highPrecisionValue": "2.718145926825224864037664674913146536113822649220720818",
+      "sixDecimals": "2.718146"
+    },
+    {
+      "n": 100000,
+      "highPrecisionValue": "2.718268237174489668035064824426046447974446932677822863",
+      "sixDecimals": "2.718268"
+    }
+  ],
+  "wholeContractChecks": [
+    {
+      "goalId": "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+      "wholeCurrentEqual": true,
+      "onlyNodeKindAndExamDataAdded": true,
+      "ownIdCoverageOnly": true,
+      "sourceRequiresDimensionsAndApplicabilityUnchanged": true
+    },
+    {
+      "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+      "wholeCurrentEqual": true,
+      "onlyNodeKindAndExamDataAdded": true,
+      "ownIdCoverageOnly": true,
+      "sourceRequiresDimensionsAndApplicabilityUnchanged": true
+    },
+    {
+      "goalId": "ece68088-71a8-466b-874c-09e6baac19fc",
+      "wholeCurrentEqual": true,
+      "onlyNodeKindAndExamDataAdded": true,
+      "ownIdCoverageOnly": true,
+      "sourceRequiresDimensionsAndApplicabilityUnchanged": true
+    },
+    {
+      "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+      "wholeCurrentEqual": true,
+      "onlyNodeKindAndExamDataAdded": true,
+      "ownIdCoverageOnly": true,
+      "sourceRequiresDimensionsAndApplicabilityUnchanged": true
+    },
+    {
+      "goalId": "23589682-2028-54cb-9034-b468b42688f1",
+      "wholeCurrentEqual": true,
+      "onlyNodeKindAndExamDataAdded": true,
+      "ownIdCoverageOnly": true,
+      "sourceRequiresDimensionsAndApplicabilityUnchanged": true
+    },
+    {
+      "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+      "wholeCurrentEqual": true,
+      "onlyNodeKindAndExamDataAdded": true,
+      "ownIdCoverageOnly": true,
+      "sourceRequiresDimensionsAndApplicabilityUnchanged": true
+    },
+    {
+      "goalId": "ccd47872-4d9d-44db-8c8d-eda24019b502",
+      "wholeCurrentEqual": true,
+      "onlyNodeKindAndExamDataAdded": true,
+      "ownIdCoverageOnly": true,
+      "sourceRequiresDimensionsAndApplicabilityUnchanged": true
+    },
+    {
+      "goalId": "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+      "wholeCurrentEqual": true,
+      "onlyNodeKindAndExamDataAdded": true,
+      "ownIdCoverageOnly": true,
+      "sourceRequiresDimensionsAndApplicabilityUnchanged": true
+    }
+  ],
+  "existingLogMemoryRequiredAndDeckBindingsPreserved": true,
+  "canonicalStillUnchanged": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "b68fbcb02247bad1b01e46be96ff0f8c73a833f8c13af7cd17b6e7b5a52ef363",
+    "bytes": 4286652
+  },
+  "textBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/bfc2bf06-9b37-4912-a8eb-25fb5d489d72/task.de.md",
+      "sha256": "ab6f9c0e0c2f7faa8f8169aeae44c240522af3361106ef75e75630ca43d3a575",
+      "bytes": 1738
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/bfc2bf06-9b37-4912-a8eb-25fb5d489d72/task.en.md",
+      "sha256": "989b72a79ef59aa3445603dea684fad5d1a78b8abe2832603e9e99155802b786",
+      "bytes": 1536
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/bfc2bf06-9b37-4912-a8eb-25fb5d489d72/solution.de.md",
+      "sha256": "62e0ec64e9ed77d73975718e1256294090a4368f528f0d0caaa3e518c0dde493",
+      "bytes": 1629
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/bfc2bf06-9b37-4912-a8eb-25fb5d489d72/solution.en.md",
+      "sha256": "b5f618a80f91836df899d86766f10782ef1316b6774300dc50a1daf83571e10e",
+      "bytes": 1461
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/bfc2bf06-9b37-4912-a8eb-25fb5d489d72/rubric.de.md",
+      "sha256": "7ff5308afd57b10a7aed195623ca31421a06578bd7eaa60858eba2408321c828",
+      "bytes": 2571
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/bfc2bf06-9b37-4912-a8eb-25fb5d489d72/rubric.en.md",
+      "sha256": "174bf0d00d683d8de5404891310544373e28b993d04811ebdece17f6c85b39cf",
+      "bytes": 2204
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4/task.de.md",
+      "sha256": "78e97b7621b5043987b098ebee274d0900921add62589011937f78e62f0d7e06",
+      "bytes": 1187
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4/task.en.md",
+      "sha256": "df66dcc1fee757d9fd04c28a212d6d15d34394fd53c1f83f00e85cede0f0e575",
+      "bytes": 1059
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4/solution.de.md",
+      "sha256": "bec9da8916b3e5cd07115c4788312fde8b1410948ef694af8f2fc51933f0068f",
+      "bytes": 1128
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4/solution.en.md",
+      "sha256": "25cefd0c6c483e8c1bf5f3c7d99d46afb62285f952a4ee5541daa79c02257598",
+      "bytes": 1021
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4/rubric.de.md",
+      "sha256": "5ac9ce05aec8b277f5794109b4d5549f195ac247b4f9b5df4ebadb76c86e2063",
+      "bytes": 2227
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4/rubric.en.md",
+      "sha256": "914d19011dc039059d5b3583352c234dd1de1bd093a49569515351b0ede47728",
+      "bytes": 2054
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/ece68088-71a8-466b-874c-09e6baac19fc/task.de.md",
+      "sha256": "f2f2469fa2635f5ead4bfe2d91660a92acaf24def5ed9d5f706f74d4f03939ba",
+      "bytes": 1444
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/ece68088-71a8-466b-874c-09e6baac19fc/task.en.md",
+      "sha256": "6837ac297b366450060d3b4f4a8c35c62b8b1c5a65a4122294ce3832b923b873",
+      "bytes": 1339
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/ece68088-71a8-466b-874c-09e6baac19fc/solution.de.md",
+      "sha256": "d0ede9711fe4a0f11d2ec20f5185042cdb762e9821af765f03e38e1258d99069",
+      "bytes": 1329
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/ece68088-71a8-466b-874c-09e6baac19fc/solution.en.md",
+      "sha256": "ecace18066468a7621ab78ff507c7853ad685d497c29f3ecd2553d6286559c7c",
+      "bytes": 1269
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/ece68088-71a8-466b-874c-09e6baac19fc/rubric.de.md",
+      "sha256": "b20551ab827c8357bd009fa23ad7c873f4aaf73ea91ccc698db1e9267f7b4a78",
+      "bytes": 2272
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/ece68088-71a8-466b-874c-09e6baac19fc/rubric.en.md",
+      "sha256": "099ff858b27d12b8c2a8636572aebe714030134c635be04dfca5c2bbaa4d6490",
+      "bytes": 2058
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/0e8417d7-effb-5314-93ba-a571b01726ce/task.de.md",
+      "sha256": "d55a3d9684b6aab77b6d6876219c578eb6ccc99b1c748aefd50def0fbe69259e",
+      "bytes": 863
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/0e8417d7-effb-5314-93ba-a571b01726ce/task.en.md",
+      "sha256": "9aabe65df137b0134bfa7831d6ce761a8c0ad05321c2980de3f9426ff3d52f50",
+      "bytes": 791
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/0e8417d7-effb-5314-93ba-a571b01726ce/solution.de.md",
+      "sha256": "c6eb4bf58b04d25165f81408402c9ea1793c6665d5050b44fb233306a76295ca",
+      "bytes": 827
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/0e8417d7-effb-5314-93ba-a571b01726ce/solution.en.md",
+      "sha256": "4dffdd05fa41f2f6f526ee55e7ec47205518bac47b97735cc2d7c4fda32ad848",
+      "bytes": 818
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/0e8417d7-effb-5314-93ba-a571b01726ce/rubric.de.md",
+      "sha256": "451383a27e1dcf1a5be5542f71a55ed324c3224cea531d76d0cb0f1a2b1209e0",
+      "bytes": 2260
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/0e8417d7-effb-5314-93ba-a571b01726ce/rubric.en.md",
+      "sha256": "35f652507bb6d31144cd95ddb36b24b85cefd7bf8a2dcc9c7199a8fa376acf27",
+      "bytes": 2067
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/23589682-2028-54cb-9034-b468b42688f1/task.de.md",
+      "sha256": "57403ae9075faa63df0db63e2b7ef20ece19e7e12d5eb91a980a72bd5a29e729",
+      "bytes": 1197
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/23589682-2028-54cb-9034-b468b42688f1/task.en.md",
+      "sha256": "667a8c108a3f235e6427ac8dfa2e6af28cfa01a828c0dae305b8aefacf235880",
+      "bytes": 1050
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/23589682-2028-54cb-9034-b468b42688f1/solution.de.md",
+      "sha256": "0cc12caafae4ab897e11d9d5ae9b846881bc1e6bd7b64e28d8a45200f470947f",
+      "bytes": 1186
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/23589682-2028-54cb-9034-b468b42688f1/solution.en.md",
+      "sha256": "f668f84891166cfc4120f3e922ffc05ba6e327fe037f824be16a6a7ca676a4d2",
+      "bytes": 1109
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/23589682-2028-54cb-9034-b468b42688f1/rubric.de.md",
+      "sha256": "c7b0c3c7757dd9c51500349bd8ec2192dd066024a55767c6275005e9b99e9f64",
+      "bytes": 2246
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/23589682-2028-54cb-9034-b468b42688f1/rubric.en.md",
+      "sha256": "728948f537e45d102d0af9f6e2a8e6266dc92f8346f61bc96a3987f149cae36b",
+      "bytes": 2043
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/315093d4-515a-542c-b776-d72a12763d1a/task.de.md",
+      "sha256": "afe5c87cf74e4790bc76d0cbab69c95b5b900e197f57d269bed5d9af1907cd97",
+      "bytes": 1481
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/315093d4-515a-542c-b776-d72a12763d1a/task.en.md",
+      "sha256": "a08ef76020fbe9136924a1302d8f687e533e409d89e58d52571ab6ffa560bc57",
+      "bytes": 1331
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/315093d4-515a-542c-b776-d72a12763d1a/solution.de.md",
+      "sha256": "05becbbec386fce0369e6b022c931644e73ddc35ce0fa40aaabf714c253f1ce2",
+      "bytes": 1603
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/315093d4-515a-542c-b776-d72a12763d1a/solution.en.md",
+      "sha256": "d3eab3123e61d91412cad852268bbd7398aa222e68341681c0f8f8303b2208cf",
+      "bytes": 1510
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/315093d4-515a-542c-b776-d72a12763d1a/rubric.de.md",
+      "sha256": "8f81089ba3f4952fd25ff4dafff4196dd9a1b6ce696919eb27248902a33a3509",
+      "bytes": 2380
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/315093d4-515a-542c-b776-d72a12763d1a/rubric.en.md",
+      "sha256": "7d3e17a55fa8c2fd143635329bf441df0936110799fe7c7f9c1e0aae79ed005e",
+      "bytes": 2124
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/ccd47872-4d9d-44db-8c8d-eda24019b502/task.de.md",
+      "sha256": "50f50b80ce2337c91dfb7c4a6f0b94ed08a537605c9b858041473992e64b1155",
+      "bytes": 1935
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/ccd47872-4d9d-44db-8c8d-eda24019b502/task.en.md",
+      "sha256": "f950c9a7beea06c66e863c7ae985eb066e6666b3a5c1ce574d9b637633b7f0dc",
+      "bytes": 1633
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/ccd47872-4d9d-44db-8c8d-eda24019b502/solution.de.md",
+      "sha256": "32e0629b98bcf27ee3d04bf0fccdda04e3e530ba7c74e9176062e241b82e7c4d",
+      "bytes": 1614
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/ccd47872-4d9d-44db-8c8d-eda24019b502/solution.en.md",
+      "sha256": "7a2334e1fd07a95228d719715ba85018baa721564b51f708a2f4178781d32556",
+      "bytes": 1486
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/ccd47872-4d9d-44db-8c8d-eda24019b502/rubric.de.md",
+      "sha256": "15ef201b3b3b252c8e105256f5b7f4bcdb240a881f0665cbd12f6f6d0bd7e24b",
+      "bytes": 2328
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/ccd47872-4d9d-44db-8c8d-eda24019b502/rubric.en.md",
+      "sha256": "3a9e8fb026371fa252e473a89c185076b71398949236436e49e2fcb914c6c814",
+      "bytes": 2127
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/f1eee698-04c6-5d60-bcc6-a3c67129eea2/task.de.md",
+      "sha256": "e9fd8eabcb586ea05b65126169098d2d6b4d4cf913a3e3b678c3903537134e3c",
+      "bytes": 1371
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/f1eee698-04c6-5d60-bcc6-a3c67129eea2/task.en.md",
+      "sha256": "21d2b561c616d7b6f27ce999911eb35396e5dc3e06d884eba3806db9c496df87",
+      "bytes": 1227
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/f1eee698-04c6-5d60-bcc6-a3c67129eea2/solution.de.md",
+      "sha256": "3d1986c66e7dc0ed337cb77c9c3a18d0e77615c81d19f0843c79915a365ee8d2",
+      "bytes": 1524
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/f1eee698-04c6-5d60-bcc6-a3c67129eea2/solution.en.md",
+      "sha256": "a7c828926fc42c371fa77b364a6ca33175537f95f9ec0980f8936d11c6e76aa1",
+      "bytes": 1406
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/f1eee698-04c6-5d60-bcc6-a3c67129eea2/rubric.de.md",
+      "sha256": "4a71f940185006951a0fc9fe33ed46d0e0ab8af018ff1491964248874707010a",
+      "bytes": 2706
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/f1eee698-04c6-5d60-bcc6-a3c67129eea2/rubric.en.md",
+      "sha256": "c928088bb4c852819763f4984dedb6168528ddae3d6a6ac308059a8f0328aab7",
+      "bytes": 2454
+    }
+  ],
+  "notClaimed": [
+    "independent content approval",
+    "new source/country/scope approval",
+    "A/M revalidation",
+    "runtime integration",
+    "Native",
+    "learner mastery"
+  ]
+}

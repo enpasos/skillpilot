@@ -45,12 +45,8 @@ import org.springframework.test.util.ReflectionTestUtils;
         "spring.datasource.url=jdbc:h2:mem:completion-mcp;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=VALUE"
 })
 @ActiveProfiles("test")
-class ClaudeV1CompletionContractReceiptIntegrationTest {
+class ClaudeV1CompletionContractReceiptIntegrationTest extends ClaudeV1CompletionTestCurriculum {
     private static final String PROFILE = "automatic:personal-curriculum";
-    private static final String ROOT = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
-    private static final String MATH = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
-    private static final String PREPARATION = "3016ec37-1c2e-47db-83f5-e767923bc97e";
-    private static final String EXAM = "e98672c6-871a-5d0b-889c-5afc51040f0d";
     @Autowired ClaudeV1McpContractAdapter adapter;
     @Autowired ClaudeV1CompletionContractRegistry contract;
     @Autowired ClaudeV1SessionCoordinator coordinator;
@@ -71,15 +67,17 @@ class ClaudeV1CompletionContractReceiptIntegrationTest {
         learnerId = "completion-receipt-" + UUID.randomUUID();
         learner.setSkillpilotId(learnerId); learner.setSelectedCurriculum(ROOT);
         learner.setStrictMode(true); learner.setAutoPilot(false);
-        learner.setPersonalCurriculum(mapper.writeValueAsString(Map.of(
-                ROOT, Map.of("selected", true, "filterId", "DE-HE", "stage", "CrossStage", "durationModel", "G9"),
-                MATH, Map.of("selected", true, "filterId", "GK+LK"),
-                "__skillpilot_stage_scope_sek1__", Map.of("selected", true),
-                "__skillpilot_stage_scope_sek2__", Map.of("selected", true),
-                "__skillpilotPersonalizationFlow", Map.of("rootLandscapeId", ROOT,
-                        "completedOptionIds", List.of(), "migrationCompleted", true))));
+        learner.setPersonalCurriculum(mapper.writeValueAsString(Map.of(ROOT, Map.of("selected", true, "stage", "CrossStage"))));
         learner = learnerRepository.saveAndFlush(learner);
         focus.saveAndFlush(new PlannedGoal(learner, PREPARATION));
+        var offered = learners.getLearnerState(learnerId).levelCompletion();
+        assertThat(offered.calculationStatus()).isEqualTo("valid");
+        assertThat(offered.notice()).isNull();
+        assertThat(offered.targetCount()).isEqualTo(3);
+        assertThat(offered.assessments()).extracting(assessment -> assessment.goalId())
+                .containsExactlyInAnyOrder(EXAM, OTHER_EXAM);
+        assertThat(offered.profileOptions()).hasSizeGreaterThan(1)
+                .extracting(option -> option.profileId()).contains(PROFILE);
         learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
                 "selectProfile", PROFILE, null, null, learner.getCoachStateRevision()));
         session = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();

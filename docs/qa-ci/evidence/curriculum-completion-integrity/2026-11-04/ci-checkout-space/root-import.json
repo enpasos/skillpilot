@@ -1,0 +1,33 @@
+{
+  "status": "TWO_WORKFLOW_BYTES_EXACTLY_IMPORTED",
+  "sourceManifestSha256": "1b8051092257df782b7ef68f8ff515e12ece08ef08fff02a4b07b2a6009ad9b2",
+  "productDelta": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "beforeSha256": "ed65cd3bbc4371738eafca6205a21747ff94305a32036198706138c1137c7c52",
+      "afterSha256": "4d6884f4313190b8fa2238663dedadbf618816c80705981326e6d23ccc4ed574",
+      "changedFullCheckoutJobs": 3
+    },
+    {
+      "path": ".github/workflows/docs_checks.yml",
+      "beforeSha256": "556e12668c506085e54818db368333faa8e64429c0c283abf33639061b4044df",
+      "afterSha256": "570ab663440bcd436fa44bdfca5871b1f5e3d2a705ad02c625d7b2f424581abe",
+      "changedFullCheckoutJobs": 1
+    }
+  ],
+  "readOnlyChecks": {
+    "status": "PASS_LOCAL_CANDIDATE_YAML_BASH_AND_EXISTING_WORKFLOW_REGRESSIONS_ONLY",
+    "existingWorkflowRegressionTests": 12,
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0,
+    "yamlWorkflowFiles": 2,
+    "targetJobs": 4,
+    "bashSyntaxFragments": 8,
+    "cleanupCommandsExecutedLocally": false,
+    "rootWorkflowBytesStillEqualBaseline": true,
+    "remoteCIPassClaimed": false
+  },
+  "noLocalCleanupExecuted": true,
+  "remotePassPending": true
+}

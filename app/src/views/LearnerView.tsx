@@ -81,6 +81,7 @@ import {
 import { navigateToLearnerLearningPlanGoal } from '../utils/learnerLearningPlanNavigation'
 import {
   getFocusMutationRevealTarget,
+  getRequiredGoalSelectionOptions,
   getInitialLearnerGoalReveal,
   getNextVisibleLearnerGoalSelection,
   isActiveGoalRevealEventType,
@@ -1510,6 +1511,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     [atomicFrontierOptions],
   )
 
+  const assessmentStartConfirmationWaiting = stateRequiredAction === 'setActiveGoal'
+    && Boolean(effectiveActiveGoalId)
+    && atomicFrontierOptions.some((goal) => goal.id === effectiveActiveGoalId
+      && (goal.nodeKind === 'exam' || ('examData' in goal && goal.examData != null)))
+
   const shouldShowNextSteps =
     nextStepOptions.length > 0 &&
     (stateRequiredAction
@@ -1622,13 +1628,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   ): LearnerStateRefreshResult => {
     const completion = parseLevelCompletion(data.levelCompletion)
     const backendActiveGoalId = data.activeGoal?.id ?? data.stateMachine?.activeGoal?.id ?? null
-    if (data.frontier && Array.isArray(data.frontier)) {
-      setFrontierOptions(data.frontier)
-    } else if (data.stateMachine && Array.isArray(data.stateMachine.goalOptions)) {
-      setFrontierOptions(data.stateMachine.goalOptions)
-    } else {
-      setFrontierOptions([])
-    }
+    setFrontierOptions(getRequiredGoalSelectionOptions<FrontierGoal>(data))
     const backendPlannedGoalIds = data.goals?.planned && Array.isArray(data.goals.planned)
       ? data.goals.planned
         .map((goal) => goal.id)
@@ -2155,11 +2155,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
       if (res.ok) {
         const data = await res.json()
-        if (data.frontier && Array.isArray(data.frontier)) {
-          setFrontierOptions(data.frontier)
-        } else if (data.stateMachine && Array.isArray(data.stateMachine.goalOptions)) {
-          setFrontierOptions(data.stateMachine.goalOptions)
-        }
+        setFrontierOptions(getRequiredGoalSelectionOptions<FrontierGoal>(data))
 
         const targetId = data.activeGoal?.id ?? goalId
         setLearnerData((prev) => (prev ? { ...prev, activeGoalId: targetId } : prev))
@@ -3845,10 +3841,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                       </div>
                       <div>
                         <h2 className="text-lg font-bold text-text-primary">
-                          {t.learner?.nextSteps || "Als nächste Lernziele stehen dir offen:"}
+                          {assessmentStartConfirmationWaiting
+                            ? (language === 'en' ? 'Continue the current complete assessment task?' : 'Die aktuelle ganze Prüfungsaufgabe fortsetzen?')
+                            : t.learner?.nextSteps || "Als nächste Lernziele stehen dir offen:"}
                         </h2>
                         <p className="text-sm text-text-secondary">
-                          {t.learner?.chooseNext || "Welches möchtest du als Nächstes angehen?"}
+                          {assessmentStartConfirmationWaiting
+                            ? (language === 'en' ? 'Your existing work remains. Confirm the current task before evaluation.' : 'Deine bisherige Arbeit bleibt erhalten. Bestätige die aktuelle Aufgabe vor der Bewertung.')
+                            : t.learner?.chooseNext || "Welches möchtest du als Nächstes angehen?"}
                         </p>
                       </div>
                     </div>

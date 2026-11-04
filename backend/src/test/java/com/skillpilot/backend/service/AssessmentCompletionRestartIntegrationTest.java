@@ -30,7 +30,6 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.MessageDigest;
-import java.util.ArrayList;
 import java.util.HexFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -54,15 +53,16 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.server.ResponseStatusException;
 
 /** Two real application lifecycles and immutable repository generations share only a disposable PG schema.
- * No bean replacement, synthetic catalog, direct generation-string mutation, or production schema is used. */
+ * A synthetic file-backed load curriculum uses the real catalog/compiler; no bean replacement,
+ * direct generation-string mutation, or production schema is used. */
 @EnabledIfEnvironmentVariable(named = "SKILLPILOT_TEST_POSTGRES_URL", matches = "jdbc:postgresql://.+")
 class AssessmentCompletionRestartIntegrationTest {
     private static final String PROFILE = "automatic:personal-curriculum";
-    private static final String MATH = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
-    private static final String PREPARATION = "3016ec37-1c2e-47db-83f5-e767923bc97e";
-    private static final String EXAM = "e98672c6-871a-5d0b-889c-5afc51040f0d";
+    private static final String MATH = CompletionTransportTestCurriculum.ROOT;
+    private static final String PREPARATION = CompletionTransportTestCurriculum.PREPARATION;
+    private static final String EXAM = CompletionTransportTestCurriculum.EXAM;
     private static final String CHOOSE = "choose_skillpilot_completion_route";
-    private static final Path CANONICAL = Path.of("DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json");
+    private static final Path CANONICAL = CompletionTransportTestCurriculum.LANDSCAPE;
     @TempDir Path temporary;
     private final ObjectMapper files = new ObjectMapper();
     private final Map<Path, String> sourceHashes = new LinkedHashMap<>();
@@ -74,7 +74,7 @@ class AssessmentCompletionRestartIntegrationTest {
         Path evidence = Path.of("../tmp/assessment-completion-restart/evidence.json");
         Files.deleteIfExists(evidence);
         Map<String, Object> evidenceResult;
-        Path curricula = copyRequiredRepositoryInputs();
+        Path curricula = writeIsolatedCurriculum();
         Database database = Database.isolated();
         String learnerId = "completion-restart-passed-" + UUID.randomUUID();
         String runningLearnerId = "completion-restart-running-" + UUID.randomUUID();
@@ -220,7 +220,7 @@ class AssessmentCompletionRestartIntegrationTest {
                 assertThat(b.call(oldSession, ClaudeV1Contract.TOOL_SET_MASTERY, passingArguments).isError()).isTrue();
                 assertThat(b.jdbc().queryForObject("SELECT COUNT(*) FROM databasechangelog WHERE id = ?",
                         Integer.class, "041-add-claude-completion-contract")).isEqualTo(1);
-                evidenceResult = Map.of(
+                evidenceResult = new LinkedHashMap<>(Map.of(
                         "passed", true, "applicationBoots", 2, "database", "isolated PostgreSQL schema",
                         "recordedAt", java.time.Instant.now().toString(),
                         "javaRuntime", System.getProperty("java.runtime.version"), "canonicalGoals", canonicalIds.size(),
@@ -229,7 +229,8 @@ class AssessmentCompletionRestartIntegrationTest {
                         "checks", List.of("real-mcp-success-before-restart", "no-hot-reload-under-old-hash",
                                 "old-receipt-action-evaluation-and-replay-rejected", "live-direct-binding-recovered",
                                 "existing-mastery-immediately-counts-in-new-generation", "new-session-and-receipt-work",
-                                "unchanged-focus", "private-workflow-not-exported", "original-input-bytes-unchanged"));
+                                "unchanged-focus", "private-workflow-not-exported", "synthetic-template-bytes-unchanged")));
+                evidenceResult.put("syntheticCurriculum", true);
             }
         } finally {
             database.close();
@@ -239,22 +240,11 @@ class AssessmentCompletionRestartIntegrationTest {
         files.writerWithDefaultPrettyPrinter().writeValue(evidence.toFile(), evidenceResult);
     }
 
-    private Path copyRequiredRepositoryInputs() throws Exception {
-        Path sourceRoot = Path.of("../curricula").toAbsolutePath().normalize();
-        Path targetRoot = temporary.resolve("curricula");
-        List<Path> inputs = new ArrayList<>(List.of(CANONICAL));
-        for (var goal : files.readTree(Files.readAllBytes(sourceRoot.resolve(CANONICAL))).path("goals")) {
-            String source = goal.path("extendedData").path("vocabularySource").asText();
-            if (!source.isBlank()) inputs.add(Path.of("DE/Gymnasium/memory-decks").resolve(Path.of(source).getFileName()));
-        }
-        for (Path relative : inputs.stream().distinct().toList()) {
-            Path source = sourceRoot.resolve(relative).normalize();
-            assertThat(source.startsWith(sourceRoot)).isTrue();
-            assertThat(Files.isRegularFile(source)).as("Required repository input %s", relative).isTrue();
-            sourceHashes.put(source, hash(source));
-            Path target = targetRoot.resolve(relative); Files.createDirectories(target.getParent()); Files.copy(source, target);
-        }
-        return targetRoot;
+    private Path writeIsolatedCurriculum() throws Exception {
+        Path template = Path.of(java.util.Objects.requireNonNull(getClass().getResource(
+                "/completion-mcp-curriculum/synthetic-completion.de.json")).toURI());
+        sourceHashes.put(template, hash(template));
+        return CompletionTransportTestCurriculum.write(temporary.resolve("curricula"));
     }
 
     private ConfigurableApplicationContext boot(Database database, Path curricula) {

@@ -18,11 +18,13 @@ public record AssessmentShortcutDiscovery(String notice, List<Option> options, S
         if (completion == null || completion.directAssessmentRunning() || completion.profileOptions() == null) return null;
         boolean automaticOverview = completion.profileId() != null && completion.profileId().startsWith("automatic:")
                 && completion.navigationIntent() == null;
-        boolean available = automaticOverview ? "valid".equals(completion.calculationStatus())
+        boolean integrityUnavailable = automaticOverview && "invalid".equals(completion.calculationStatus())
+                && "completion_target_routes_uncovered".equals(completion.notice());
+        boolean available = automaticOverview ? "valid".equals(completion.calculationStatus()) || integrityUnavailable
                 : completion.profileId() == null && "unresolved".equals(completion.calculationStatus());
         boolean unsupportedOverview = automaticOverview
                 && "completion_coach_contract_unsupported".equals(completion.notice());
-        if (!available || completion.notice() != null && !unsupportedOverview) return null;
+        if (!available || completion.notice() != null && !unsupportedOverview && !integrityUnavailable) return null;
         List<Option> options = new ArrayList<>();
         String base = publicBaseUrl == null || publicBaseUrl.isBlank() ? "https://skillpilot.com"
                 : publicBaseUrl.replaceAll("/+$", "");

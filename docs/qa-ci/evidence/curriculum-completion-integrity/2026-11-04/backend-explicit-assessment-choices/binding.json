@@ -1,0 +1,61 @@
+{
+  "status": "REVIEWED_BACKEND_SOURCES_IMPORTED_WITH_BOUNDED_TARGETED_PASS",
+  "files": [
+    {
+      "path": "reviewed-payload.manifest.json",
+      "sha256": "3125c44cf63c14d3c917fc70e5f87076454ff7824f826dcd6a3c3d068a7707eb"
+    },
+    {
+      "path": "targeted-proof.json",
+      "sha256": "ae722bb4aa3c91aacad3c7cd332ce24b3ff0f656b8e23e5db6924765c79dbee6"
+    },
+    {
+      "path": "astra-review.json",
+      "sha256": "e1ff0c95a05a1d9b6bb03c16ea796874ef3b1018e4ac99fab6e4ef9feab42344"
+    },
+    {
+      "path": "astra-trace-diagnosis.json",
+      "sha256": "7f053800df95ed5a07664c7dd05c65adbef0dcb92c9cd9214ea8a24c30555e89"
+    },
+    {
+      "path": "existing-data-reference-gaps.json",
+      "sha256": "92cdfc7c38ce376d07694a7a5339fd4fce54e75ffbdfc0b5d26eb1392e00f6bc"
+    },
+    {
+      "path": "synthetic-terminal.execution.json",
+      "sha256": "ef64052b589e26b980867814bd6274df42011d6ef2034a6a31da39a5ba0918a0"
+    },
+    {
+      "path": "synthetic-terminal.summary.txt",
+      "sha256": "50aa60182651567fa34626765ff058a95f31684773162fb5517fa5032a24d2d2"
+    },
+    {
+      "path": "actual-j8-terminal.execution.json",
+      "sha256": "c8039e9e90f561fb5ac88164303437d6aa3e713864a9c3a7b9377c31102cd235"
+    },
+    {
+      "path": "actual-j8-terminal.summary.txt",
+      "sha256": "eaf2c3973711e90756e4b989bfe9aa16519ec94c6011edf6a94ff6d7f76b5327"
+    },
+    {
+      "path": "automatic-regression-terminal-v2.execution.json",
+      "sha256": "24227da5437f4d08945125a927360593b00c6c00fb77f5aad8e157d4d22ff6f7"
+    },
+    {
+      "path": "automatic-regression-terminal-v2.summary.txt",
+      "sha256": "b12212b4c36c1364e517536d9d5e9797de2ca89d66eaa53bc897db8bec07df0c"
+    },
+    {
+      "path": "root-import.json",
+      "sha256": "fdb3d93373add9e0c506d0b34a67a47ee0aa80f40e35061ab370576a02f2d595"
+    }
+  ],
+  "fullMainCompilation": {
+    "command": "GRADLE_USER_HOME=/tmp/skillpilot-plan-gradle-20261022 SKILLPILOT_BACKEND_BUILD_DIR=/tmp/skillpilot-current-main-20261104-v1 ./gradlew compileJava --offline --no-daemon --console=plain -Dorg.gradle.workers.max=2",
+    "java": "Corretto 25.0.2.10.1",
+    "exitCode": 0,
+    "logSha256": "4ac061c8a2d8b8502091d8e1ef785a0ed0b67c2ebbe9da789d72ea180dc314d5",
+    "privateBuildDirectory": true
+  },
+  "fullSuiteOrRemoteCIClaim": false
+}

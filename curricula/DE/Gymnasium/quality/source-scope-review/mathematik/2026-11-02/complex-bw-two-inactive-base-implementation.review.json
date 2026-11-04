@@ -1,0 +1,414 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_EXACT_BW_TWO_INACTIVE_PRODUCER_BASES_SIX_OPERATIONS_IMPLEMENTATION_ADDENDUM_ONLY",
+  "reviewerAgent": "/root/astra_math_material_scope_resume",
+  "date": "2026-11-02",
+  "originalFourCountrySourceReviewManifest": {
+    "path": "tmp/approach-review-20261101/astra-complex-numbers-scope-review/v15-four-country-source-review/artifact-sha256-manifest.json",
+    "sha256": "008c1f73668f45c98e223462ed91f095a31dc79bca076298dac3ca9bf85b6480"
+  },
+  "originalActiveViewDelta": {
+    "path": "tmp/approach-review-20261101/astra-complex-numbers-scope-review/v15-four-country-source-review/view-deltas.EXACT-INERT.json",
+    "sha256": "ec08db23af64e2ea38aeb22bc1a92580c4238c87f490bbb6d3250807b5742edf"
+  },
+  "proposal": {
+    "path": "tmp/approach-review-20261101/four-country-complex-materialization-20261102/bw-inactive-base-input-proposal.json",
+    "sha256": "a7b03ba80df98e23277c729ea4ffdef1677d49a718296ebac6dd08bdc1079a49"
+  },
+  "producer": {
+    "path": "app/scripts/generateMathCountrySekICompositionViews.ts",
+    "sha256": "3772e4969cf0ba6419075ed2bbdba5eb4d3e81d95147f7cadddf6bab3efb7cda",
+    "relevantFunction": "deriveMathExistingStageViews lines62–94"
+  },
+  "actualBaselineForInactiveMembership": {
+    "path": "tmp/approach-review-20261101/post-source-course-native-154-audit.json",
+    "sha256": "e870d683748ded49176912d1688bbdb28bd4cf55e743702ffe0794b30a7bb2d0"
+  },
+  "approvedOperations": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+      "beforeSha256": "e42d924fcd7f8275a37c0c342330d2c0291301350cd4be7bd978953ab838cb78",
+      "afterSha256": "44a626808fae35b2565d2461f683f0b804219fc0b6b7dd078b5a3a61d5792f1e",
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/17/children/1/children/5/children/3/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/17/children/1/children/5/label",
+          "oldValue": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+          "value": "Funktionenscharen und Argumentieren",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "sameFullNodeAndOperationsAsOriginalActiveG8": true,
+      "existingDependenciesBefore": [
+        {
+          "source": {
+            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+            "sha256": "e42d924fcd7f8275a37c0c342330d2c0291301350cd4be7bd978953ab838cb78"
+          },
+          "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk-g8.view.json",
+          "outputViewId": "de-bw-gym-math-gk-g8",
+          "scope": {
+            "jurisdiction": "DE-BW",
+            "schoolForm": "Gymnasium",
+            "stage": "CrossStage",
+            "courseProfile": "GK",
+            "durationModel": "G8"
+          },
+          "ruleId": "de-bw-seki-g8",
+          "stageAnchorId": "sek1",
+          "relocations": [],
+          "upperPlacements": []
+        },
+        {
+          "source": {
+            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+            "sha256": "e42d924fcd7f8275a37c0c342330d2c0291301350cd4be7bd978953ab838cb78"
+          },
+          "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk-g9.view.json",
+          "outputViewId": "de-bw-gym-math-gk-g9",
+          "scope": {
+            "jurisdiction": "DE-BW",
+            "schoolForm": "Gymnasium",
+            "stage": "CrossStage",
+            "courseProfile": "GK",
+            "durationModel": "G9"
+          },
+          "ruleId": "de-bw-seki-g9",
+          "stageAnchorId": "sek1",
+          "relocations": [
+            {
+              "goalIds": [
+                "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+                "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+                "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+                "2850e8f6-2330-50d3-a577-d519540d9924",
+                "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+                "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+                "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+                "f9fdb733-5838-4983-888a-05624eabbe17",
+                "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+              ],
+              "anchorStructureId": "kursstufe-gk",
+              "sourceDecisionId": "bw-g9-class11-calculus",
+              "label": "Differentialrechnung (Jahrgang 11)"
+            }
+          ],
+          "upperPlacements": []
+        },
+        {
+          "source": {
+            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+            "sha256": "e42d924fcd7f8275a37c0c342330d2c0291301350cd4be7bd978953ab838cb78"
+          },
+          "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+          "outputViewId": "de-bw-gym-math-gk",
+          "scope": {
+            "jurisdiction": "DE-BW",
+            "schoolForm": "Gymnasium",
+            "stage": "CrossStage",
+            "courseProfile": "GK"
+          },
+          "relocations": [],
+          "upperPlacements": []
+        }
+      ],
+      "existingDependenciesAfter": [
+        {
+          "source": {
+            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+            "sha256": "44a626808fae35b2565d2461f683f0b804219fc0b6b7dd078b5a3a61d5792f1e"
+          },
+          "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk-g8.view.json",
+          "outputViewId": "de-bw-gym-math-gk-g8",
+          "scope": {
+            "jurisdiction": "DE-BW",
+            "schoolForm": "Gymnasium",
+            "stage": "CrossStage",
+            "courseProfile": "GK",
+            "durationModel": "G8"
+          },
+          "ruleId": "de-bw-seki-g8",
+          "stageAnchorId": "sek1",
+          "relocations": [],
+          "upperPlacements": []
+        },
+        {
+          "source": {
+            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+            "sha256": "44a626808fae35b2565d2461f683f0b804219fc0b6b7dd078b5a3a61d5792f1e"
+          },
+          "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk-g9.view.json",
+          "outputViewId": "de-bw-gym-math-gk-g9",
+          "scope": {
+            "jurisdiction": "DE-BW",
+            "schoolForm": "Gymnasium",
+            "stage": "CrossStage",
+            "courseProfile": "GK",
+            "durationModel": "G9"
+          },
+          "ruleId": "de-bw-seki-g9",
+          "stageAnchorId": "sek1",
+          "relocations": [
+            {
+              "goalIds": [
+                "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+                "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+                "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+                "2850e8f6-2330-50d3-a577-d519540d9924",
+                "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+                "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+                "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+                "f9fdb733-5838-4983-888a-05624eabbe17",
+                "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+              ],
+              "anchorStructureId": "kursstufe-gk",
+              "sourceDecisionId": "bw-g9-class11-calculus",
+              "label": "Differentialrechnung (Jahrgang 11)"
+            }
+          ],
+          "upperPlacements": []
+        },
+        {
+          "source": {
+            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+            "sha256": "44a626808fae35b2565d2461f683f0b804219fc0b6b7dd078b5a3a61d5792f1e"
+          },
+          "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+          "outputViewId": "de-bw-gym-math-gk",
+          "scope": {
+            "jurisdiction": "DE-BW",
+            "schoolForm": "Gymnasium",
+            "stage": "CrossStage",
+            "courseProfile": "GK"
+          },
+          "relocations": [],
+          "upperPlacements": []
+        }
+      ],
+      "inactiveInAllActual154Offers": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+      "beforeSha256": "643437c728a022d9cf383462636ae6ff0dcd1b63288510c5bd3efe3c902353b8",
+      "afterSha256": "5e0e84b2953ba04a9dd4205555b383349b4703ad25f92d8ef8b85fcdce50f38b",
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/10/children/1/children/5/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/10/children/1/children/5/children/4/children/4/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "goalEntry",
+            "goalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+          },
+          "wholeGoalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/10/children/1/children/5/children/4/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "goalEntry",
+            "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+          },
+          "wholeGoalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/10/children/1/children/5/label",
+          "oldValue": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+          "value": "Funktionenscharen und Argumentieren",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "sameFullNodeAndOperationsAsOriginalActiveG8": true,
+      "existingDependenciesBefore": [
+        {
+          "source": {
+            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+            "sha256": "643437c728a022d9cf383462636ae6ff0dcd1b63288510c5bd3efe3c902353b8"
+          },
+          "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk-g8.view.json",
+          "outputViewId": "de-bw-gym-math-lk-g8",
+          "scope": {
+            "jurisdiction": "DE-BW",
+            "schoolForm": "Gymnasium",
+            "stage": "CrossStage",
+            "courseProfile": "LK",
+            "durationModel": "G8"
+          },
+          "ruleId": "de-bw-seki-g8",
+          "stageAnchorId": "sek1",
+          "relocations": [],
+          "upperPlacements": []
+        },
+        {
+          "source": {
+            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+            "sha256": "643437c728a022d9cf383462636ae6ff0dcd1b63288510c5bd3efe3c902353b8"
+          },
+          "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk-g9.view.json",
+          "outputViewId": "de-bw-gym-math-lk-g9",
+          "scope": {
+            "jurisdiction": "DE-BW",
+            "schoolForm": "Gymnasium",
+            "stage": "CrossStage",
+            "courseProfile": "LK",
+            "durationModel": "G9"
+          },
+          "ruleId": "de-bw-seki-g9",
+          "stageAnchorId": "sek1",
+          "relocations": [
+            {
+              "goalIds": [
+                "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+                "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+                "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+                "2850e8f6-2330-50d3-a577-d519540d9924",
+                "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+                "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+                "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+                "f9fdb733-5838-4983-888a-05624eabbe17",
+                "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+              ],
+              "anchorStructureId": "kursstufe-lk",
+              "sourceDecisionId": "bw-g9-class11-calculus",
+              "label": "Differentialrechnung (Jahrgang 11)"
+            }
+          ],
+          "upperPlacements": []
+        },
+        {
+          "source": {
+            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+            "sha256": "643437c728a022d9cf383462636ae6ff0dcd1b63288510c5bd3efe3c902353b8"
+          },
+          "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+          "outputViewId": "de-bw-gym-math-lk",
+          "scope": {
+            "jurisdiction": "DE-BW",
+            "schoolForm": "Gymnasium",
+            "stage": "CrossStage",
+            "courseProfile": "LK"
+          },
+          "relocations": [],
+          "upperPlacements": []
+        }
+      ],
+      "existingDependenciesAfter": [
+        {
+          "source": {
+            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+            "sha256": "5e0e84b2953ba04a9dd4205555b383349b4703ad25f92d8ef8b85fcdce50f38b"
+          },
+          "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk-g8.view.json",
+          "outputViewId": "de-bw-gym-math-lk-g8",
+          "scope": {
+            "jurisdiction": "DE-BW",
+            "schoolForm": "Gymnasium",
+            "stage": "CrossStage",
+            "courseProfile": "LK",
+            "durationModel": "G8"
+          },
+          "ruleId": "de-bw-seki-g8",
+          "stageAnchorId": "sek1",
+          "relocations": [],
+          "upperPlacements": []
+        },
+        {
+          "source": {
+            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+            "sha256": "5e0e84b2953ba04a9dd4205555b383349b4703ad25f92d8ef8b85fcdce50f38b"
+          },
+          "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk-g9.view.json",
+          "outputViewId": "de-bw-gym-math-lk-g9",
+          "scope": {
+            "jurisdiction": "DE-BW",
+            "schoolForm": "Gymnasium",
+            "stage": "CrossStage",
+            "courseProfile": "LK",
+            "durationModel": "G9"
+          },
+          "ruleId": "de-bw-seki-g9",
+          "stageAnchorId": "sek1",
+          "relocations": [
+            {
+              "goalIds": [
+                "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+                "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+                "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+                "2850e8f6-2330-50d3-a577-d519540d9924",
+                "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+                "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+                "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+                "f9fdb733-5838-4983-888a-05624eabbe17",
+                "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+              ],
+              "anchorStructureId": "kursstufe-lk",
+              "sourceDecisionId": "bw-g9-class11-calculus",
+              "label": "Differentialrechnung (Jahrgang 11)"
+            }
+          ],
+          "upperPlacements": []
+        },
+        {
+          "source": {
+            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+            "sha256": "5e0e84b2953ba04a9dd4205555b383349b4703ad25f92d8ef8b85fcdce50f38b"
+          },
+          "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+          "outputViewId": "de-bw-gym-math-lk",
+          "scope": {
+            "jurisdiction": "DE-BW",
+            "schoolForm": "Gymnasium",
+            "stage": "CrossStage",
+            "courseProfile": "LK"
+          },
+          "relocations": [],
+          "upperPlacements": []
+        }
+      ],
+      "inactiveInAllActual154Offers": true
+    }
+  ],
+  "independentChecks": {
+    "allOriginalManifestFilesRehashed": 22,
+    "wholeBaseViewReplaysExact": 2,
+    "exactExistingActiveG8OperationCopies": 6,
+    "wholeBeforeNodesIncludingLabelsAndChildrenEqual": true,
+    "allExistingBaseNodesIncluding46bbAndScopeMasksRetained": true,
+    "originalActiveScopeDecisionsUnchanged": true,
+    "existingProducerDependenciesPerBase": 3,
+    "baseViewIdsAbsentFromAll154ActualOfferCompositions": true,
+    "noProducerCodeOrRuleOrOutputInventoryChange": true
+  },
+  "approvedImplementation": "Apply only these two inactive base-view modifications and rebind their existing six source-hash occurrences. Normal producers must regenerate the four active CrossStage G8/G9 outputs from these bases. Existing SekII G9 derivation continues from already reviewed SekII sources.",
+  "notAdditionalSourceOrTargetApproval": "The original four-country decision remains exactly36 offers/376 target removals, including its existing BW12. This addendum adds no selected offer, target removal, canonical applicability or family boundary. It is not an independent repeat of the four-country primary-source review.",
+  "requiredNextSteps": [
+    "Keep the original20-active-view proposal and this two-base addendum as separate immutable review artifacts.",
+    "Complete ordinary83+18 previews and prove the produced active BW outputs equal the original approved active-role/label edits. Measure every output and any SekI mirror.",
+    "Preserve the historicalV16 preview as historical; use the exact actualV18 Root after HB/Analysis for final native, eligibility and Stage bindings. No weakening of baseline guards.",
+    "Final all154 target/context/union/wholeprotected-contract checks remain required; no runtime or target-neutrality claim follows solely from the inactive base labels.",
+    "Do not mutate global mastery/recall or fixed dated plan baselines; no support enrollment or new task identity."
+  ],
+  "noRootMutationNoJvm": true
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "command": [
+    "./gradlew",
+    "test",
+    "--tests",
+    "com.skillpilot.backend.completion.CurriculumCompletionIntegrityTest",
+    "--max-workers=2"
+  ],
+  "cwd": "/home/enpasos/projects/skillpilot/backend",
+  "environment": {
+    "JAVA_HOME": "/tmp/skillpilot-curriculum-ci-corretto-25.0.2.10.1",
+    "GRADLE_USER_HOME": "/tmp/skillpilot-plan-gradle-20261022"
+  },
+  "startedAt": "2026-11-01T07:30:36.325873+00:00",
+  "completedAt": "2026-11-01T07:32:55.745197+00:00",
+  "elapsedSeconds": 139.428,
+  "exitCode": 1,
+  "logPath": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/sh-sine-derivative-stage-correction/actual-backend-matrix.log",
+  "logSha256": "339fc49eb1cdd561d8e8dfe4c5406e40351a7156c4e4f8ef8d8c831a20cef21e",
+  "reportPath": "backend/build/reports/curriculum-completion-integrity.json",
+  "reportSha256": "74a3c835be05364d3a437c83144778eb9b3df5cb3cd8ac20bf176f601a5f6e23",
+  "expectedNonZeroForUnrepairedCurricula": true,
+  "m7Acceptance": false
+}

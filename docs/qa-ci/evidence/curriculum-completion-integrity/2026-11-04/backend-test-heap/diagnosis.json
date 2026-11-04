@@ -1,0 +1,89 @@
+{
+  "finding": "A test-owned inline Mockito retention cycle retains each completed mutable fixture and its repository composition-view index.",
+  "observedChain": [
+    "Mockito inline mock registry strongly held handler/value",
+    "ApplicationEventPublisher invocation argument",
+    "LearnerStateChangedEvent.source",
+    "LearnerService",
+    "CompositionViewService.repositoryViewIndex"
+  ],
+  "causalSingleFixtureProbe": {
+    "initialMiB": 114.0,
+    "retainedMiB": 152.6,
+    "afterOnlyPublisherClearMiB": 115.4,
+    "viewsWeakReferenceCollected": true,
+    "otherOwnedMocksStillStrong": 7,
+    "log": "retention-chain-probe.log"
+  },
+  "controlledCompleteClassAB": {
+    "probe-cleanup-false": {
+      "passed": 34,
+      "failed": 0,
+      "testDurationSumSeconds": 377.699,
+      "postGcFinalHeapMiB": 624.8,
+      "finalPreviousMocksAlive": 306,
+      "createdMocks": 396,
+      "gcPauseDurationSeconds": 16.802,
+      "totalLine": "PROBE TOTAL tests=34 failed=0 counts={ApplicationEventPublisher=222, DeckResourceService=1138, GoalMappingService=29, LandscapeService=2992, LearnerClientStateRepository=578, LearnerRepository=2573, MasteryRepository=593, PlannedGoalRepository=1121}"
+    },
+    "probe-cleanup-true": {
+      "passed": 34,
+      "failed": 0,
+      "testDurationSumSeconds": 355.806,
+      "postGcFinalHeapMiB": 126.1,
+      "finalPreviousMocksAlive": 0,
+      "createdMocks": 396,
+      "gcPauseDurationSeconds": 9.168,
+      "totalLine": "PROBE TOTAL tests=34 failed=0 counts={ApplicationEventPublisher=222, DeckResourceService=1138, GoalMappingService=29, LandscapeService=2992, LearnerClientStateRepository=578, LearnerRepository=2573, MasteryRepository=593, PlannedGoalRepository=1121}"
+    }
+  },
+  "recommendedPatch": "candidate.patch",
+  "patchSemantics": [
+    "BeforeEach registers a class-owned MockCreationListener; all manually created mocks/spies are captured, including discarded fixture mocks.",
+    "AfterEach removes that listener and clears only those exact inline mock instances, then clears the owned list.",
+    "AfterAll releases this test class's static current and historical catalog references.",
+    "No production logic, test assertion, fixture source closure, heap limit, Spring context cache size, or fork policy changes."
+  ],
+  "whyNoMockitoSessionShortcut": "Mockito 5.23.0 session finish removes its listener and checks usage, but does not call clearInlineMock for these manually created mocks. Verified against pinned upstream sources listed in probe-bindings.json.",
+  "remainingValidation": "Full backend Gradle/remote CI at the final root head remains separate. The exact candidate class is validated twice in one 768 MiB JVM; all 68 invocations passed and the outside-scope sentinel survived every test.",
+  "fidelity": [
+    "Original test class hash equals failed CI head 427723ecdf825414185dac361c2757226820bdf5.",
+    "Production Java and historical composition-focus fixture resources are unchanged from that head.",
+    "Live curriculum data is current root reviewed integration data, not a checkout of the old failing CI data.",
+    "Existing freshly compiled production classes and pinned test runtime classpath were reused; the original and candidate test classes were freshly compiled into separate private directories.",
+    "Controlled AB adds explicit between-test GC solely to measure retained heap; candidate-repeat has no such between-test GC.",
+    "Concurrent local probe elapsed times are not a fair throughput benchmark.",
+    "This establishes a concrete test retention mechanism and eliminates roughly 499 MiB per full class; it does not identify every retained object in the failed remote JVM."
+  ],
+  "candidateRepeatValidation": {
+    "status": "PASS",
+    "exitCode": 0,
+    "maxHeapMiB": 768,
+    "junitIterations": 2,
+    "passed": 68,
+    "failed": 0,
+    "explicitGcBetweenTestMethods": false,
+    "outsideScopeSentinelCheckedAfterEveryTest": true,
+    "postClassHeapMiB": [
+      17.0,
+      16.8
+    ],
+    "iterations": [
+      {
+        "iteration": 1,
+        "cumulativeTests": 34,
+        "failures": 0,
+        "elapsedSeconds": 339.877
+      },
+      {
+        "iteration": 2,
+        "cumulativeTests": 68,
+        "failures": 0,
+        "elapsedSeconds": 257.018
+      }
+    ],
+    "log": "candidate-repeat-768m.log",
+    "gcLog": "candidate-repeat-768m.gc.log"
+  },
+  "rootSourceMatchesValidatedCandidate": true
+}

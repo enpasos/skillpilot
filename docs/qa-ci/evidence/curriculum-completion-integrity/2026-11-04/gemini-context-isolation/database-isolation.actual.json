@@ -1,0 +1,132 @@
+{
+  "status": "PASS_ACTUAL_SAME_170_CI_TESTS_FAIL_BEFORE_PASS_AFTER_WITH_CONTEXT_ISOLATED_DATABASES",
+  "remoteJob": {
+    "repository": "enpasos/skillpilot",
+    "jobId": 126297258239,
+    "log": {
+      "path": "tmp/approach-review-20261101/gemini-context-database-isolation-20261104-v1/github-job-126297258239.log",
+      "sha256": "e391e94ab25b3ff9eafd9949849cda88ddf3b47a2d8815fc515c9a363d77ab4c",
+      "bytes": 490602
+    },
+    "tests": 170,
+    "failed": 17,
+    "same17FailureMethodsReproduced": true
+  },
+  "before": {
+    "execution": {
+      "path": "tmp/approach-review-20261101/gemini-context-database-isolation-20261104-v1/before-all170.execution.json",
+      "sha256": "a4bc1b9f541a60dd8a2bb8dfef4421af1588035bcfc5a4a9873184ef819d9587",
+      "bytes": 37176
+    },
+    "summary": {
+      "path": "tmp/approach-review-20261101/gemini-context-database-isolation-20261104-v1/before.summary.txt",
+      "sha256": "e04b2107395d42ab93785fbd9eef4435878ad21876c5664cf793b5ef99922fd5",
+      "bytes": 107813
+    },
+    "observations": {
+      "path": "tmp/approach-review-20261101/gemini-context-database-isolation-20261104-v1/before.observations.json",
+      "sha256": "a1d589d0c34ceff10271af1aa3fae24ba92201aadc49181035288ddfc0ddcf7c",
+      "bytes": 108768
+    },
+    "found": 170,
+    "successful": 153,
+    "failed": 17,
+    "databaseObservation": {
+      "contexts": {
+        "5f172d4a": [
+          "jdbc:h2:mem:gemini-v1-disabled"
+        ],
+        "590fb210": [
+          "jdbc:h2:mem:gemini-v1-core"
+        ],
+        "4de9c81e": [
+          "jdbc:h2:mem:gemini-v1-core"
+        ],
+        "3422eca": [
+          "jdbc:h2:mem:gemini-v1-mastery-backend-integration"
+        ],
+        "5e582b00": [
+          "jdbc:h2:mem:gemini-v1-core"
+        ]
+      },
+      "urlsToContextCount": {
+        "jdbc:h2:mem:gemini-v1-disabled": 1,
+        "jdbc:h2:mem:gemini-v1-core": 3,
+        "jdbc:h2:mem:gemini-v1-mastery-backend-integration": 1
+      },
+      "actualUrlStableWithinEachContext": true,
+      "snapshotRowsWithoutLearnerTable": 36,
+      "observationErrors": []
+    }
+  },
+  "after": {
+    "execution": {
+      "path": "tmp/approach-review-20261101/gemini-context-database-isolation-20261104-v1/after-all170.execution.json",
+      "sha256": "47ceb154a1055a748aa88859ac77823c130bcfc917b1c946f2006419d8e99f49",
+      "bytes": 37171
+    },
+    "summary": {
+      "path": "tmp/approach-review-20261101/gemini-context-database-isolation-20261104-v1/after.summary.txt",
+      "sha256": "c7790b9c6e2d885bb7e877ba85818a109879d60943813916f36d42d6c4f42c50",
+      "bytes": 467
+    },
+    "observations": {
+      "path": "tmp/approach-review-20261101/gemini-context-database-isolation-20261104-v1/after.observations.json",
+      "sha256": "ba44cac74297318190b62042b6ccbb955d49a41e6ee80a9f8abd9bc28595da37",
+      "bytes": 118529
+    },
+    "found": 170,
+    "successful": 170,
+    "failed": 0,
+    "databaseObservation": {
+      "contexts": {
+        "25b52284": [
+          "jdbc:h2:mem:gemini-v1-disabled"
+        ],
+        "29ea8c1b": [
+          "jdbc:h2:mem:gemini-v1-core-848d466d-127c-46e1-9955-218caea6fed0"
+        ],
+        "4652d02f": [
+          "jdbc:h2:mem:gemini-v1-core-f260f989-1cb0-462a-a54a-741690e4d246"
+        ],
+        "79f9b21c": [
+          "jdbc:h2:mem:gemini-v1-mastery-backend-integration"
+        ],
+        "1017437f": [
+          "jdbc:h2:mem:gemini-v1-core-396d802d-da8e-4f4e-86ad-b328a04fb719"
+        ]
+      },
+      "urlsToContextCount": {
+        "jdbc:h2:mem:gemini-v1-disabled": 1,
+        "jdbc:h2:mem:gemini-v1-core-848d466d-127c-46e1-9955-218caea6fed0": 1,
+        "jdbc:h2:mem:gemini-v1-core-f260f989-1cb0-462a-a54a-741690e4d246": 1,
+        "jdbc:h2:mem:gemini-v1-mastery-backend-integration": 1,
+        "jdbc:h2:mem:gemini-v1-core-396d802d-da8e-4f4e-86ad-b328a04fb719": 1
+      },
+      "actualUrlStableWithinEachContext": true,
+      "snapshotRowsWithoutLearnerTable": 0,
+      "observationErrors": []
+    }
+  },
+  "both": {
+    "selectedClasses": 22,
+    "sameCIClassOrder": true,
+    "skipped": 0,
+    "aborted": 0,
+    "containerFailures": 0,
+    "cacheMaxSize": 2,
+    "contextCacheMisses": 5,
+    "heapMaxBytes": 3221225472,
+    "unchangedDdl": "create-drop",
+    "freshProductionMainClasses": 948,
+    "rootClassFilesNotMutated": 1379,
+    "samePrivateTrackedRuntimeJsonSnapshot": 2616
+  },
+  "cause": "Three distinct cached Gemini Spring contexts used one named H2 database. When LRU eviction closes an older EntityManagerFactory, its create-drop cleanup removes tables used by another still-active context. The unchanged current test methods reproduce all17 CI LEARNER-table failures.",
+  "fix": "Only the shared Gemini test JDBC name gains the existing Spring random.uuid placeholder. Each actual DataSource URL is stable for its owning context and unique across contexts; all3core-context URLs are distinct, learner schema present throughout after-run observations. Annotation constant users were all recompiled in both runs.",
+  "scope": "One test helper file only; primary testdb, production sources, all test assertions, transaction checks, DDL mode, cache2, heap3g and exact170-selector group unchanged. Local bounded proof, not a terminal rerun of remote CI.",
+  "frameworkReferences": [
+    "https://docs.spring.io/spring-framework/reference/data-access/jdbc/embedded-database-support.html",
+    "https://docs.spring.io/spring-boot/api/java/org/springframework/boot/env/RandomValuePropertySource.html"
+  ]
+}

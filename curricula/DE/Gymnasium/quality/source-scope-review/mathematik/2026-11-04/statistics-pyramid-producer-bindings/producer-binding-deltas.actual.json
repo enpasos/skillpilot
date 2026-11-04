@@ -1,0 +1,80 @@
+{
+  "status": "EXACT_FINITE_PRODUCER_BINDING_DELTAS_FROM_FROZEN_G3_AND_ORIGINAL_NATIVE3",
+  "changesAgainstG3": [
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/composition/MaterializeMathContextualCombinedViews.java",
+      "beforeSha256": "c9a88f37a6947743c374323584c5351c99d4717dcbd129c7375e0e8fa3d3e555",
+      "afterSha256": "c92ffeaeb59bffeb785b80196a7d9b271eb6df2e24743e905378e3d9a578c382",
+      "category": "previously separately frozen buildtime guard amendment; no new Java logic here"
+    },
+    {
+      "path": "app/scripts/config/math-country-seki-stage-policy.json",
+      "beforeSha256": "b537c7455fa0ce9c946341fcaa898228d9d6d2054426af90f40d58af4fffdb61",
+      "afterSha256": "795a97e647d335c3a9edf341f067131b16318163992dec0d84f622f8e69f3587",
+      "fieldChanges": [
+        "sourceBindings[MaterializeMathContextualCombinedViews.java].sha256",
+        "append stageDecisionBindings author-producer-binding-amendment.json"
+      ],
+      "category": "authoring producer/hash binding only"
+    },
+    {
+      "path": "app/scripts/config/math-duration-split-spanning-tree-policy.json",
+      "beforeSha256": "f083ac0abfe942dfc1d90af7c9163c180bb6f1aed59b3c46f8011f1900656588",
+      "afterSha256": "daa70c1b77ad9092982fe9ef304d02a1e5d38669e4ecf45ac971f46c3f55de86",
+      "fieldChanges": [
+        "append inputs.sourceScopeDecisions author-producer-binding-amendment.json"
+      ],
+      "category": "authoring producer/hash binding only"
+    }
+  ],
+  "newAuthoringMetadataPaths": [
+    "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/guard-amendment.manifest.json",
+    "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/author-producer-binding-amendment.json",
+    "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/producer-binding-deltas.actual.json"
+  ],
+  "allOriginalAuthorRecordsWholeUnchanged": true,
+  "acyclicNewAuthor": {
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/author-producer-binding-amendment.json",
+    "sha256": "780f5867bbfcbd61353cd1d23dda3dc3e3884bfa11e6fd2b0d2536e79ce95545"
+  },
+  "finalPolicy": {
+    "path": "app/scripts/config/math-country-seki-stage-policy.json",
+    "sha256": "795a97e647d335c3a9edf341f067131b16318163992dec0d84f622f8e69f3587"
+  },
+  "finalLayout": {
+    "path": "app/scripts/config/math-duration-split-spanning-tree-policy.json",
+    "sha256": "daa70c1b77ad9092982fe9ef304d02a1e5d38669e4ecf45ac971f46c3f55de86"
+  },
+  "native3ConservativeInputComparison": {
+    "originalArchive": {
+      "path": "tmp/approach-review-20261101/statistics-pyramid-existing-route-native-20261104-v1/candidate.json.gz",
+      "sha256": "e0b466350b58395c0440a8b1af837044ee143c6bbb36d5f8c5a3a6a2f65708ab"
+    },
+    "originalInputManifest": {
+      "path": "tmp/approach-review-20261101/statistics-pyramid-existing-route-native-20261104-v1/candidate-input-hashes.json",
+      "sha256": "0426d83ffaf6b87cbde6019d16a6ecf1d897b5871f2ecf534f5335d2ed270912"
+    },
+    "originalInputCount": 3285,
+    "unchangedOriginalInputs": 3284,
+    "changedOriginalInputs": [
+      {
+        "path": "app/scripts/config/math-country-seki-stage-policy.json",
+        "native3Sha256": "b537c7455fa0ce9c946341fcaa898228d9d6d2054426af90f40d58af4fffdb61",
+        "finalProducerBindingSha256": "795a97e647d335c3a9edf341f067131b16318163992dec0d84f622f8e69f3587",
+        "category": "authoring producer policy binding only"
+      }
+    ],
+    "guardSourceAndLayoutWereNotInOriginal3285List": true,
+    "newAuthoringMetadataOutsideOriginalInputInventory": [
+      "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/guard-amendment.manifest.json",
+      "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/author-producer-binding-amendment.json",
+      "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/producer-binding-deltas.actual.json"
+    ],
+    "freshFinalNativeRun": false,
+    "doesNotClaimAll3285HashesUnchanged": true
+  },
+  "runtimeGraphDataMainRRolesTaskRubricCoverageChanges": [],
+  "dataProducerMaterializationRuns": 0,
+  "requiredStageBinding": "Final genuine Stage must bind these final policy/layout bytes and the separate guard-amendment manifest. Prior b537/f083 hashes remain historical only.",
+  "rootGitNativeWrites": false
+}

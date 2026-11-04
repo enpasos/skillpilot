@@ -1,3 +1,4 @@
+import { isAuthoritativeCurricularReviewGoal, loadCurricularReviewLandscape } from './lib/curricularReviewPopulation'
 import { createHash } from 'node:crypto'
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
@@ -125,6 +126,8 @@ function isLeaf(goal: LearningGoal): boolean {
 }
 
 function isSemanticAtomicityRelevantGoal(goal: LearningGoal): boolean {
+  const authoritative = isAuthoritativeCurricularReviewGoal(goal)
+  if (authoritative !== undefined) return authoritative
   const tags = new Set(goal.tags ?? [])
   if (tags.has('Practice') || tags.has('Assessment')) return false
   if (tags.has('Motivation') || tags.has('Orientation')) return false
@@ -215,7 +218,7 @@ function serializeRecords(records: ReviewRecord[]): string {
 function main() {
   const args = parseArgs(process.argv.slice(2))
   const config = loadJson<ReviewConfig>(resolveRepoPath(args.configPath))
-  const landscape = loadJson<SkillLandscape>(resolveRepoPath(config.landscapePath))
+  const landscape = loadCurricularReviewLandscape(loadJson<SkillLandscape>(resolveRepoPath(config.landscapePath)), resolveRepoPath(config.landscapePath), repoRoot)
   if ((landscape.landscapeId ?? (landscape as { id?: string }).id) !== config.landscapeId) {
     throw new Error(`Configured landscapeId ${config.landscapeId} does not match ${config.landscapePath}`)
   }

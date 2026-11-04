@@ -1,0 +1,523 @@
+{
+  "status": "EXISTING_CURRENT_CONTEXT_ONLY_NO_NEW_SCOPE_OR_SOURCE_DECISION",
+  "sourceRows": {
+    "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_math_upper_secondary_source_extraction_to_canonical_math.review.json": {
+      "sourceFileSha256AtInspection": "41462123c671854fbab3e38619158f46b0d21bf02a548b1a5fa41d32628928e4",
+      "wholeExistingMatchedRows": [
+        {
+          "legacyGoalId": "he-math-sekii-q4-1-b01-a01-3f70fd46",
+          "canonicalGoalId": "d144a855-9139-55c7-a801-e8b85dab5f01",
+          "matchType": "exact",
+          "reviewDecisionId": "he-math-sekii-q4-1-b01-a01-3f70fd46"
+        },
+        {
+          "sourceGoalId": "he-math-sekii-q4-1-b01-a01-3f70fd46",
+          "topicCode": "Q4.1",
+          "sourceSpan": "Untersuchen und Integrieren von Funktionenscharen ganzrationaler Funktionen",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+            "d144a855-9139-55c7-a801-e8b85dab5f01"
+          ],
+          "rationale": "Die Abdeckung trennt die Untersuchung ganzrationaler Funktionenscharen von der parameterabhängigen Integralrechnung; beide neuen Q4.1-Atome sind direkt aus Spiegelstrich 1 abgeleitet.",
+          "reviewedAt": "2026-05-06",
+          "reviewer": "codex"
+        }
+      ]
+    },
+    "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_source_extraction_to_canonical_math.review.json": {
+      "sourceFileSha256AtInspection": "db31db7c784ed89aab452849206a54bfdc3aebb8216158a8ceb6018c34d33149",
+      "wholeExistingMatchedRows": [
+        {
+          "legacyGoalId": "bw-math-seki-bp2016-3-3-4-09-4c0c975c",
+          "canonicalGoalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+          "matchType": "partial",
+          "reviewDecisionId": "bw-math-seki-bp2016-3-3-4-09-4c0c975c"
+        },
+        {
+          "legacyGoalId": "bw-math-seki-bp2016-3-2-1-04-55cbdf8c",
+          "canonicalGoalId": "1842da92-ca2c-5fed-a946-e6413a6285bb",
+          "matchType": "exact",
+          "reviewDecisionId": "bw-math-seki-bp2016-3-2-1-04-55cbdf8c"
+        },
+        {
+          "legacyGoalId": "bw-math-seki-bp2016-3-2-1-04-55cbdf8c",
+          "canonicalGoalId": "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+          "matchType": "exact",
+          "reviewDecisionId": "bw-math-seki-bp2016-3-2-1-04-55cbdf8c"
+        },
+        {
+          "legacyGoalId": "bw-math-seki-bp2016-3-2-1-04-55cbdf8c",
+          "canonicalGoalId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+          "matchType": "exact",
+          "reviewDecisionId": "bw-math-seki-bp2016-3-2-1-04-55cbdf8c"
+        },
+        {
+          "sourceGoalId": "bw-math-seki-bp2016-3-2-1-04-55cbdf8c",
+          "topicCode": "BP2016-3.2.1",
+          "sourceSpan": "eine Tabellenkalkulation verwenden, um Zinssatz, Tilgung/Sparrate und Laufzeit näherungsweise zu bestimmen",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "5452659b-f262-5735-a5f9-5834cb079ab1",
+            "1842da92-ca2c-5fed-a946-e6413a6285bb",
+            "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+            "fc34449a-fbf4-574c-884f-ecdf48b42d2e"
+          ],
+          "rationale": "Gap-Resolution 4: Die BW-Kompetenz fordert explizit eine Tabellenkalkulation zur naeherungsweisen Bestimmung von Zinssatz, Tilgung/Sparrate und Laufzeit; das kanonische Buendelziel bildet genau diese Werkzeug- und Finanzmodellierungsroutine ab. Nach der Atomisierung werden die drei enthaltenen Ziele zu Zinssatz, Tilgung/Sparrate und Laufzeit zusaetzlich direkt exact gemappt, weil alle drei Parameter im Quellenwortlaut ausdrücklich genannt sind.",
+          "reviewedAt": "2026-06-03",
+          "reviewer": "codex",
+          "evidence": {
+            "method": "source-extraction-bp2016-3-2-1-gap-resolution",
+            "sourceTopicCode": "BP2016-3.2.1",
+            "sourceBulletIndex": 4
+          }
+        },
+        {
+          "sourceGoalId": "bw-math-seki-bp2016-3-3-4-09-4c0c975c",
+          "topicCode": "BP2016-3.3.4",
+          "sourceSpan": "periodische Vorgänge mithilfe der Sinusfunktion beschreiben und interpretieren",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "7f11ffe0-7c43-4507-9101-50374a60b0e8"
+          ],
+          "rationale": "M3-Slice 15: Periodische Realsituationen mit Sinus- und Kosinusfunktionen sind kanonisch modelliert; das BW-Ziel ist enger auf die Sinusfunktion formuliert, daher partial.",
+          "reviewedAt": "2026-05-06",
+          "reviewer": "codex",
+          "evidence": {
+            "method": "source-extraction-bp2016-3-3-4-content-alignment",
+            "sourceTopicCode": "BP2016-3.3.4",
+            "sourceBulletIndex": 9
+          }
+        }
+      ]
+    },
+    "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_math_lower_secondary_source_extraction_to_canonical_math.review.json": {
+      "sourceFileSha256AtInspection": "dd4dbf8d0cb351cf80f8422646763d76edfaafb75dfecc516658955a9da8f036",
+      "wholeExistingMatchedRows": [
+        {
+          "legacyGoalId": "de-ni-mathematik-seki-kerncurriculum-ni-seki-lernbereich-kern-entdeckungen-an-rechtwinkligen-dreiecken-und-ahnlichkeit-011-f6820b9c2c",
+          "canonicalGoalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+          "matchType": "partial",
+          "reviewDecisionId": "de-ni-mathematik-seki-kerncurriculum-ni-seki-lernbereich-kern-entdeckungen-an-rechtwinkligen-dreiecken-und-ahnlichkeit-011-f6820b9c2c"
+        },
+        {
+          "legacyGoalId": "de-ni-mathematik-seki-kerncurriculum-ni-seki-lernbereich-kern-entdeckungen-an-rechtwinkligen-dreiecken-und-ahnlichkeit-014-0511120bce",
+          "canonicalGoalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+          "matchType": "partial",
+          "reviewDecisionId": "de-ni-mathematik-seki-kerncurriculum-ni-seki-lernbereich-kern-entdeckungen-an-rechtwinkligen-dreiecken-und-ahnlichkeit-014-0511120bce"
+        },
+        {
+          "legacyGoalId": "de-ni-mathematik-seki-kerncurriculum-ni-seki-lernbereich-kern-periodische-zusammenhange-001-6d30870083",
+          "canonicalGoalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+          "matchType": "partial",
+          "reviewDecisionId": "de-ni-mathematik-seki-kerncurriculum-ni-seki-lernbereich-kern-periodische-zusammenhange-001-6d30870083"
+        },
+        {
+          "legacyGoalId": "de-ni-mathematik-seki-kerncurriculum-ni-seki-lernbereich-kern-periodische-zusammenhange-005-fb3d33dfef",
+          "canonicalGoalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+          "matchType": "partial",
+          "reviewDecisionId": "de-ni-mathematik-seki-kerncurriculum-ni-seki-lernbereich-kern-periodische-zusammenhange-005-fb3d33dfef"
+        },
+        {
+          "legacyGoalId": "de-ni-mathematik-seki-kerncurriculum-ni-seki-lernbereich-kern-periodische-zusammenhange-008-281e421fb7",
+          "canonicalGoalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+          "matchType": "partial",
+          "reviewDecisionId": "de-ni-mathematik-seki-kerncurriculum-ni-seki-lernbereich-kern-periodische-zusammenhange-008-281e421fb7"
+        },
+        {
+          "sourceGoalId": "de-ni-mathematik-seki-kerncurriculum-ni-seki-lernbereich-kern-entdeckungen-an-rechtwinkligen-dreiecken-und-ahnlichkeit-011-f6820b9c2c",
+          "topicCode": "NI-SEKI-LERNBEREICH-KERN-ENTDECKUNGEN-AN-RECHTWINKLIGEN-DREIECKEN-UND-AHNLICHKEIT",
+          "sourceSpan": "S. 52, Lernbereich-Kern: Entdeckungen an rechtwinkligen Dreiecken und Ähnlichkeit",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "879389a7-73de-45bb-a632-0d918c23a082",
+            "9710e996-f6d0-4b8b-b893-592213c91767",
+            "2032d24f-13bf-4aa1-81bf-8788e1099c62",
+            "7f11ffe0-7c43-4507-9101-50374a60b0e8"
+          ],
+          "rationale": "Berechnungen in rechtwinkligen Dreiecken mit Sinus, Kosinus, Tangens ist inhaltlich durch die referenzierten kanonischen Mathematikziele abgedeckt; partial beschreibt hier die Zuordnungsform ueber Teil- oder Sammelziele, nicht eine offene fachliche Luecke.",
+          "reviewedAt": "2026-05-07",
+          "reviewer": "codex",
+          "evidence": {
+            "method": "official-source-extraction-m3-review",
+            "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_MATHEMATIK_SEKI_KERNCURRICULUM.source-extraction.json"
+          },
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "de-ni-mathematik-seki-kerncurriculum-ni-seki-lernbereich-kern-entdeckungen-an-rechtwinkligen-dreiecken-und-ahnlichkeit-014-0511120bce",
+          "topicCode": "NI-SEKI-LERNBEREICH-KERN-ENTDECKUNGEN-AN-RECHTWINKLIGEN-DREIECKEN-UND-AHNLICHKEIT",
+          "sourceSpan": "S. 52, Lernbereich-Kern: Entdeckungen an rechtwinkligen Dreiecken und Ähnlichkeit",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "9710e996-f6d0-4b8b-b893-592213c91767",
+            "2032d24f-13bf-4aa1-81bf-8788e1099c62",
+            "7f11ffe0-7c43-4507-9101-50374a60b0e8"
+          ],
+          "rationale": "Sinussatz, Kosinussatz ist inhaltlich durch die referenzierten kanonischen Mathematikziele abgedeckt; partial beschreibt hier die Zuordnungsform ueber Teil- oder Sammelziele, nicht eine offene fachliche Luecke.",
+          "reviewedAt": "2026-05-07",
+          "reviewer": "codex",
+          "evidence": {
+            "method": "official-source-extraction-m3-review",
+            "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_MATHEMATIK_SEKI_KERNCURRICULUM.source-extraction.json"
+          },
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "de-ni-mathematik-seki-kerncurriculum-ni-seki-lernbereich-kern-periodische-zusammenhange-001-6d30870083",
+          "topicCode": "NI-SEKI-LERNBEREICH-KERN-PERIODISCHE-ZUSAMMENHANGE",
+          "sourceSpan": "S. 56, Lernbereich-Kern: Periodische Zusammenhänge",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "9710e996-f6d0-4b8b-b893-592213c91767",
+            "e02c58a2-2a32-49bd-b110-7b307e0317fb",
+            "f9d284a3-1a47-4aaa-bde2-3dac1c3bb0f0",
+            "2032d24f-13bf-4aa1-81bf-8788e1099c62",
+            "7f11ffe0-7c43-4507-9101-50374a60b0e8"
+          ],
+          "rationale": "Sinus- und Kosinusfunktion als periodische Funktion ist inhaltlich durch die referenzierten kanonischen Mathematikziele abgedeckt; partial beschreibt hier die Zuordnungsform ueber Teil- oder Sammelziele, nicht eine offene fachliche Luecke.",
+          "reviewedAt": "2026-05-07",
+          "reviewer": "codex",
+          "evidence": {
+            "method": "official-source-extraction-m3-review",
+            "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_MATHEMATIK_SEKI_KERNCURRICULUM.source-extraction.json"
+          },
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "de-ni-mathematik-seki-kerncurriculum-ni-seki-lernbereich-kern-periodische-zusammenhange-005-fb3d33dfef",
+          "topicCode": "NI-SEKI-LERNBEREICH-KERN-PERIODISCHE-ZUSAMMENHANGE",
+          "sourceSpan": "S. 56, Lernbereich-Kern: Periodische Zusammenhänge",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "9710e996-f6d0-4b8b-b893-592213c91767",
+            "e02c58a2-2a32-49bd-b110-7b307e0317fb",
+            "f9d284a3-1a47-4aaa-bde2-3dac1c3bb0f0",
+            "2032d24f-13bf-4aa1-81bf-8788e1099c62",
+            "7f11ffe0-7c43-4507-9101-50374a60b0e8"
+          ],
+          "rationale": "Sinusfunktion untersuchen - Parametervariation ist inhaltlich durch die referenzierten kanonischen Mathematikziele abgedeckt; partial beschreibt hier die Zuordnungsform ueber Teil- oder Sammelziele, nicht eine offene fachliche Luecke.",
+          "reviewedAt": "2026-05-07",
+          "reviewer": "codex",
+          "evidence": {
+            "method": "official-source-extraction-m3-review",
+            "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_MATHEMATIK_SEKI_KERNCURRICULUM.source-extraction.json"
+          },
+          "matchType": "partial"
+        },
+        {
+          "sourceGoalId": "de-ni-mathematik-seki-kerncurriculum-ni-seki-lernbereich-kern-periodische-zusammenhange-008-281e421fb7",
+          "topicCode": "NI-SEKI-LERNBEREICH-KERN-PERIODISCHE-ZUSAMMENHANGE",
+          "sourceSpan": "S. 56, Lernbereich-Kern: Periodische Zusammenhänge",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "99b3435a-fdda-5d1b-9681-0ae6d7d5bfcd",
+            "2032d24f-13bf-4aa1-81bf-8788e1099c62",
+            "7f11ffe0-7c43-4507-9101-50374a60b0e8"
+          ],
+          "rationale": "periodische Zusammenhänge modellieren ist inhaltlich durch die referenzierten kanonischen Mathematikziele abgedeckt; partial beschreibt hier die Zuordnungsform ueber Teil- oder Sammelziele, nicht eine offene fachliche Luecke.",
+          "reviewedAt": "2026-05-07",
+          "reviewer": "codex",
+          "evidence": {
+            "method": "official-source-extraction-m3-review",
+            "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_MATHEMATIK_SEKI_KERNCURRICULUM.source-extraction.json"
+          },
+          "matchType": "partial"
+        }
+      ]
+    },
+    "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json": {
+      "sourceFileSha256AtInspection": "167120e1f19f954ab90880f562f399324628a809ddb37b4b52513204a13e1026",
+      "wholeExistingMatchedRows": [
+        {
+          "legacyGoalId": "he-math-seki-g9-10-2-03-4efce4b0",
+          "canonicalGoalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+          "matchType": "exact",
+          "reviewDecisionId": "he-math-seki-g9-10-2-03-4efce4b0"
+        },
+        {
+          "legacyGoalId": "he-math-seki-g9-10-2-08-f88dcace",
+          "canonicalGoalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+          "matchType": "exact",
+          "reviewDecisionId": "he-math-seki-g9-10-2-08-f88dcace"
+        },
+        {
+          "legacyGoalId": "he-math-seki-g9-10-2-09-696d548a",
+          "canonicalGoalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+          "matchType": "exact",
+          "reviewDecisionId": "he-math-seki-g9-10-2-09-696d548a"
+        },
+        {
+          "legacyGoalId": "he-math-seki-g9-10-4-09-c95938b0",
+          "canonicalGoalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+          "matchType": "exact",
+          "reviewDecisionId": "he-math-seki-g9-10-4-09-c95938b0"
+        },
+        {
+          "legacyGoalId": "he-math-seki-g8-9g-2-06-fd00332f",
+          "canonicalGoalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+          "matchType": "exact",
+          "reviewDecisionId": "he-math-seki-g8-9g-2-06-fd00332f"
+        },
+        {
+          "sourceGoalId": "he-math-seki-g9-10-2-03-4efce4b0",
+          "topicCode": "G9-10.2",
+          "sourceSpan": "Zugang über realitätsbezogene Beispiele: Wachstumsund Zerfallsprozesse, Verzinsung",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "31207307-0cf9-4a56-bf14-90196dc2b3d4",
+            "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+            "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+            "fec30a5a-835a-4932-a436-d83549029486",
+            "bd8fd6d5-7155-45a5-96f0-008a4e9acb3a"
+          ],
+          "rationale": "Realitaetsbezogenes Wachstum, Zerfall und Verzinsung werden durch Exponentialwachstums-, Modellierungs- und Zinsziele abgedeckt.",
+          "reviewedAt": "2026-05-06",
+          "reviewer": "codex"
+        },
+        {
+          "sourceGoalId": "he-math-seki-g9-10-2-08-f88dcace",
+          "topicCode": "G9-10.2",
+          "sourceSpan": "Modellierung von Wachstums- und Prozess- Modellierung von Prozessen aus den Natur-, Sozialmodellen oder Wirtschaftswissenschaften anhand gegebenen Datenmaterials z. B. aus naturwissenschaftlichen oder demoskopischen Untersuchungen, mittels Exponentialoder anderer bekannter Funktionen, auch durch Nutzung von Rechnern, exemplarischer Vergleich verschiedener",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+            "31207307-0cf9-4a56-bf14-90196dc2b3d4",
+            "fec30a5a-835a-4932-a436-d83549029486",
+            "b8721377-e244-5545-87a8-6031d6aa295f",
+            "14af09c2-999f-52fa-8d42-1f2f6b23629b"
+          ],
+          "rationale": "Modellierung von Wachstums- und Prozessmodellen aus Daten mit Exponential- oder bekannten Funktionen wird durch Modellierungs-, Darstellungs- und Werkzeugziele abgedeckt.",
+          "reviewedAt": "2026-05-06",
+          "reviewer": "codex"
+        },
+        {
+          "sourceGoalId": "he-math-seki-g9-10-2-09-696d548a",
+          "topicCode": "G9-10.2",
+          "sourceSpan": "Modelle und Beurteilung deren Grenzen",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+            "a41761f2-8ba8-5af4-87c1-eb5e4ab1d020"
+          ],
+          "rationale": "Vergleich verschiedener Modelle und Beurteilung ihrer Grenzen werden durch kontextbezogene Exponentialmodellierung und Plausibilitaetspruefung abgedeckt.",
+          "reviewedAt": "2026-05-06",
+          "reviewer": "codex"
+        },
+        {
+          "sourceGoalId": "he-math-seki-g9-10-4-09-c95938b0",
+          "topicCode": "G9-10.4",
+          "sourceSpan": "Beispiele periodischer Zusammenhänge (z. B. Modelle einfacher zyklischer Prozesse aus den Natur-, Wirtschafts- oder Sozialwissenschaften), Nutzung des PC",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+            "46bdcc16-418f-417a-89cf-033d7ae6c8cc",
+            "895a60ea-606a-4e77-a5af-ecc13d68e8fb",
+            "b8721377-e244-5545-87a8-6031d6aa295f",
+            "14af09c2-999f-52fa-8d42-1f2f6b23629b"
+          ],
+          "rationale": "Periodische Realsituationen und PC-Nutzung werden durch trigonometrische Modellierungs-, Parameter-, Darstellungs- und Werkzeugziele abgedeckt.",
+          "reviewedAt": "2026-05-06",
+          "reviewer": "codex"
+        },
+        {
+          "sourceGoalId": "he-math-seki-g8-9g-2-06-fd00332f",
+          "topicCode": "G8-9G.2",
+          "sourceSpan": "Beispiele periodischer Zusammenhänge (z. B. Modelle einfacher zyklischer Prozesse aus den Natur-, Wirtschafts- oder Sozialwissenschaften)",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "2032d24f-13bf-4aa1-81bf-8788e1099c62",
+            "46bdcc16-418f-417a-89cf-033d7ae6c8cc",
+            "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+            "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11"
+          ],
+          "rationale": "Periodische Zusammenhaenge aus Realitaetskontexten werden durch trigonometrische Funktionen, Periodizitaet und periodische Modellierung abgedeckt.",
+          "reviewedAt": "2026-05-21",
+          "reviewer": "codex"
+        }
+      ]
+    },
+    "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_source_extraction_to_canonical_math.review.json": {
+      "sourceFileSha256AtInspection": "920edc960c8cb1a8dc3e50d009b615376e864fe17c49a418517aae85e7ef4c45",
+      "wholeExistingMatchedRows": [
+        {
+          "legacyGoalId": "2682b837-da8a-522a-ba32-94fa05d28846",
+          "canonicalGoalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+          "matchType": "exact",
+          "reviewDecisionId": "2682b837-da8a-522a-ba32-94fa05d28846"
+        },
+        {
+          "legacyGoalId": "135f52c8-f617-506d-95ac-d20f04f93950",
+          "canonicalGoalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+          "matchType": "exact",
+          "reviewDecisionId": "135f52c8-f617-506d-95ac-d20f04f93950"
+        },
+        {
+          "legacyGoalId": "by-math-m10-1-2682b837-s02-8d053d862a",
+          "canonicalGoalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+          "matchType": "exact",
+          "reviewDecisionId": "by-math-m10-1-2682b837-s02-8d053d862a"
+        },
+        {
+          "legacyGoalId": "by-math-m10-1-2682b837-s03-0096eac0fa",
+          "canonicalGoalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+          "matchType": "exact",
+          "reviewDecisionId": "by-math-m10-1-2682b837-s03-0096eac0fa"
+        },
+        {
+          "legacyGoalId": "by-math-m10-1-2682b837-s04-f79a4cb57f",
+          "canonicalGoalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+          "matchType": "exact",
+          "reviewDecisionId": "by-math-m10-1-2682b837-s04-f79a4cb57f"
+        },
+        {
+          "sourceGoalId": "2682b837-da8a-522a-ba32-94fa05d28846",
+          "topicCode": "M10.1",
+          "sourceSpan": "lösen realitätsnahe Aufgabenstellungen im Zusammenhang mit Wachstums- und Abklingvorgängen (z. B. Bevölkerungsentwicklung, radioaktiver Zerfall) graphisch und rechnerisch.",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "27b63e2e-6a34-483e-8e5a-fe0f49670d1d"
+          ],
+          "matchType": "exact",
+          "rationale": "Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLUS-Source-Extraction-ID geprueft; die Zuordnung ist damit Review-Entscheidung fuer MAPPING-3.",
+          "reviewedAt": "2026-05-07",
+          "reviewer": "codex",
+          "evidence": {
+            "method": "legacy-by-mapping-projected-to-source-extraction",
+            "sourceTopicCode": "M10.1",
+            "sourceDocumentKey": "JGST10",
+            "sourceSplitPolicy": "original-source-goal-id-retained-for-first-aspect"
+          }
+        },
+        {
+          "sourceGoalId": "135f52c8-f617-506d-95ac-d20f04f93950",
+          "topicCode": "M10.3",
+          "sourceSpan": "lösen realitätsbezogene Problemstellungen zu periodischen Vorgängen graphisch und rechnerisch, indem sie geeignete Modellierungen – v. a. mithilfe von Sinus- und Kosinusfunktionen – durchführen und bei Bedarf variieren.",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "7f11ffe0-7c43-4507-9101-50374a60b0e8"
+          ],
+          "matchType": "exact",
+          "rationale": "Aus der bestehenden BY-Pilotzuordnung uebernommen und gegen die neue LehrplanPLUS-Source-Extraction-ID geprueft; die Zuordnung ist damit Review-Entscheidung fuer MAPPING-3.",
+          "reviewedAt": "2026-05-07",
+          "reviewer": "codex",
+          "evidence": {
+            "method": "legacy-by-mapping-projected-to-source-extraction",
+            "sourceTopicCode": "M10.3",
+            "sourceDocumentKey": "JGST10"
+          }
+        },
+        {
+          "sourceGoalId": "by-math-m10-1-2682b837-s02-8d053d862a",
+          "topicCode": "M10.1",
+          "sourceSpan": "Dabei erstellen sie ein für die Realsituation geeignetes Modell, hinterfragen ihre Ergebnisse kritisch, variieren bei Bedarf ihre Modellierung und benennen Grenzen des jeweiligen Modells.",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "27b63e2e-6a34-483e-8e5a-fe0f49670d1d"
+          ],
+          "matchType": "exact",
+          "rationale": "Split-Aspekt aus dem bereits fachlich reviewten BY-LehrplanPLUS-Source-Ziel 2682b837-da8a-522a-ba32-94fa05d28846; die Parent-Entscheidung deckte den offiziellen Bullet inhaltlich ab und wurde fuer diesen fachlichen Teilaspekt uebernommen.",
+          "reviewedAt": "2026-05-08",
+          "reviewer": "codex",
+          "evidence": {
+            "method": "source-split-parent-review-inherited",
+            "parentSourceGoalId": "2682b837-da8a-522a-ba32-94fa05d28846",
+            "sourceSplitIndex": 2,
+            "sourceSplitPartCount": 4,
+            "sourceTopicCode": "M10.1",
+            "sourceDocumentKey": "JGST10"
+          }
+        },
+        {
+          "sourceGoalId": "by-math-m10-1-2682b837-s03-0096eac0fa",
+          "topicCode": "M10.1",
+          "sourceSpan": "Die Lösungswege anderer vollziehen sie nach und kommentieren sie hinsichtlich der Modellierung konstruktiv.",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "27b63e2e-6a34-483e-8e5a-fe0f49670d1d"
+          ],
+          "matchType": "exact",
+          "rationale": "Split-Aspekt aus dem bereits fachlich reviewten BY-LehrplanPLUS-Source-Ziel 2682b837-da8a-522a-ba32-94fa05d28846; die Parent-Entscheidung deckte den offiziellen Bullet inhaltlich ab und wurde fuer diesen fachlichen Teilaspekt uebernommen.",
+          "reviewedAt": "2026-05-08",
+          "reviewer": "codex",
+          "evidence": {
+            "method": "source-split-parent-review-inherited",
+            "parentSourceGoalId": "2682b837-da8a-522a-ba32-94fa05d28846",
+            "sourceSplitIndex": 3,
+            "sourceSplitPartCount": 4,
+            "sourceTopicCode": "M10.1",
+            "sourceDocumentKey": "JGST10"
+          }
+        },
+        {
+          "sourceGoalId": "by-math-m10-1-2682b837-s04-f79a4cb57f",
+          "topicCode": "M10.1",
+          "sourceSpan": "Sie bewerten Ergebnisse im Sachzusammenhang, z. B. hinsichtlich von Chancen und Risiken des technologischen Fortschritts.",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "27b63e2e-6a34-483e-8e5a-fe0f49670d1d"
+          ],
+          "matchType": "exact",
+          "rationale": "Split-Aspekt aus dem bereits fachlich reviewten BY-LehrplanPLUS-Source-Ziel 2682b837-da8a-522a-ba32-94fa05d28846; die Parent-Entscheidung deckte den offiziellen Bullet inhaltlich ab und wurde fuer diesen fachlichen Teilaspekt uebernommen.",
+          "reviewedAt": "2026-05-08",
+          "reviewer": "codex",
+          "evidence": {
+            "method": "source-split-parent-review-inherited",
+            "parentSourceGoalId": "2682b837-da8a-522a-ba32-94fa05d28846",
+            "sourceSplitIndex": 4,
+            "sourceSplitPartCount": 4,
+            "sourceTopicCode": "M10.1",
+            "sourceDocumentKey": "JGST10"
+          }
+        }
+      ]
+    }
+  },
+  "semanticKindLedgerPath": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+  "wholeCurrentSemanticKindRows": [
+    {
+      "goalId": "1842da92-ca2c-5fed-a946-e6413a6285bb",
+      "sourceFingerprint": "sha256:f5203a423f029368f227a8767f4994de56273f633278ed05197b025811a094c9",
+      "semanticKind": "curricularAtomic",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+    },
+    {
+      "goalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+      "sourceFingerprint": "sha256:7b6898c2f3c0a7bd2096040f385332ad12c5f02f2a0ae50f7d17ab9198bf2b89",
+      "semanticKind": "curricularAtomic",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+    },
+    {
+      "goalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+      "sourceFingerprint": "sha256:52e7747cf26fe825d5f6d2046dba94fe6be230265cac2e220895ba81ac5c3131",
+      "semanticKind": "curricularAtomic",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+    },
+    {
+      "goalId": "d144a855-9139-55c7-a801-e8b85dab5f01",
+      "sourceFingerprint": "sha256:a0373f46c933295b6f3493ff056b606ac2f8b0ceccd4826948910ae81a0fbcbf",
+      "semanticKind": "curricularAtomic",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+    },
+    {
+      "goalId": "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+      "sourceFingerprint": "sha256:b105828515c7f54c1f57faaf9e6b19dcf52a341de06c2e81d830ba447685adcb",
+      "semanticKind": "curricularAtomic",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+    },
+    {
+      "goalId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+      "sourceFingerprint": "sha256:d30b9fe0c85e16f16c61e172168b13fda7ec384d943acd033c6d83dfab24a7af",
+      "semanticKind": "curricularAtomic",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+    }
+  ],
+  "unchangedPopulation": "All807curricularAtomicIDs retained; these6 remain curricularAtomic despite proposed exam execution.",
+  "sourceDecision": "Existing texts/applicability/sourceRef/relationships retained exactly. No new source coverage, jurisdiction, kind, enrollment, level scope or required method introduced."
+}

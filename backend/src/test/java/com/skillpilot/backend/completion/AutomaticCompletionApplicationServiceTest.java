@@ -14,17 +14,98 @@ import org.junit.jupiter.api.Test;
 import org.springframework.test.util.ReflectionTestUtils;
 
 class AutomaticCompletionApplicationServiceTest {
-    @Test void automaticScopeNeedsNeitherAnAuthoredProfileNorAnAssessmentAnchor() {
+    @Test void structuralCompilationStaysAvailableButUnprotectedCurriculumCannotClaimCompletion() {
         var service = new CompletionApplicationService(new CompletionProfileCatalog(Map.of(), Map.of(), "generation"));
         var graph = graph();
         var compiled = service.compileAutomatic(definition("ordinary", "general-demand-v1"), "base", graph,
                 Set.of("A1"), graph.keySet());
         assertThat(compiled.automatic()).isTrue();
         assertThat(compiled.assessmentGoalIds()).isEmpty();
-        var result = service.evaluate(compiled, Map.of());
+        assertThatThrownBy(() -> service.evaluate(compiled, Map.of()))
+                .isInstanceOfSatisfying(CompletionCompilationException.class,
+                        error -> assertThat(error.code()).isEqualTo("UNCOVERED_COMPLETION_TARGETS"));
+        // Known explicit results stay true without granting implicit credit or
+        // converting the same red static diagnosis into an authoring approval.
+        var explicit = service.evaluate(compiled, Map.of("A1", 1.0));
+        assertThat(explicit.complete()).isTrue();
+        assertThat(explicit.masteredGoalIds()).containsExactly("A1");
+        assertThat(explicit.waivedGoalIds()).isEmpty();
+        assertThat(AutomaticCompletionIntegrity.uncoveredTargets(compiled)).containsExactly("A1");
+    }
+
+    @Test void preparationSectionMasksFullCurriculumDemandInsteadOfCompletingAtZero() {
+        var service = service(32, 100, 100);
+        var graph = graph();
+        var complete = service.compileAutomatic(definition("all", "v3"), "base", graph,
+                Set.of("A1", "Q1"), graph.keySet());
+        var section = service.compileAutomatic(definition("preparation", "v3"), "base", graph,
+                Set.of("A1"), graph.keySet());
+        var before = service.evaluateAutomaticSection(complete, section, Map.of());
+        assertThat(before.complete()).isFalse();
+        assertThat(before.targetCount()).isEqualTo(1);
+        assertThat(before.pendingTargetGoalIds()).containsExactly("A1");
+        assertThat(before.waivedGoalIds()).isEmpty();
+        assertThat(before.requiredAssessmentCount()).isZero();
+        var after = service.evaluateAutomaticSection(complete, section, Map.of("Q1", 1.0));
+        assertThat(after.complete()).isTrue();
+        assertThat(after.waivedGoalIds()).containsExactly("A1");
+        assertThat(after.targetCount()).isEqualTo(1);
+    }
+
+    @Test void structuralDefectOutsideASectionStillMakesItsImplicitEvaluationUnavailable() {
+        var service = service(32, 100, 100);
+        var graph = graph();
+        var complete = service.compileAutomatic(definition("all", "v3"), "base", graph,
+                Set.of("A1", "Q1", "A2"), graph.keySet());
+        var section = service.compileAutomatic(definition("section", "v3"), "base", graph,
+                Set.of("A1"), graph.keySet());
+        assertThatThrownBy(() -> service.evaluateAutomaticSection(complete, section, Map.of("Q1", 1.0)))
+                .isInstanceOf(CompletionCompilationException.class);
+        var explicit = service.evaluateAutomaticSection(complete, section, Map.of("A1", 1.0));
+        assertThat(explicit.complete()).isTrue();
+        assertThat(explicit.masteredTargetCount()).isEqualTo(1);
+        assertThat(explicit.waivedGoalIds()).isEmpty();
+        assertThat(explicit.requiredAssessmentCount()).isZero();
+        assertThat(AutomaticCompletionIntegrity.uncoveredTargets(complete)).containsExactly("A2");
+        assertThatThrownBy(() -> service.evaluateAutomaticSection(complete, section, Map.of("Q1", 1.0)))
+                .isInstanceOf(CompletionCompilationException.class);
+    }
+
+    @Test void explicitSectionFallbackCannotDischargeForeignConsumersOfItsPreparation() {
+        var service = service(32, 100, 100);
+        var graph = graph();
+        graph.get("A2").setRequires(List.of("A1"));
+        var complete = service.compileAutomatic(definition("all", "v4"), "base", graph,
+                Set.of("A1", "Q1", "A2"), graph.keySet());
+        var section = service.compileAutomatic(definition("section", "v4"), "base", graph,
+                Set.of("Q1"), graph.keySet());
+        var result = service.evaluateAutomaticSection(complete, section, Map.of("Q1", 1.0));
         assertThat(result.complete()).isTrue();
-        assertThat(result.waivedGoalIds()).containsExactly("A1");
-        assertThat(result.masteredGoalIds()).isEmpty();
+        assertThat(result.masteredAssessmentGoalIds()).containsExactly("Q1");
+        assertThat(result.waivedGoalIds()).isEmpty();
+        assertThat(result.masteredGoalIds()).doesNotContain("A1", "A2");
+        var preparation = service.compileAutomatic(definition("preparation", "v4"), "base", graph,
+                Set.of("A1"), graph.keySet());
+        assertThatThrownBy(() -> service.evaluateAutomaticSection(complete, preparation, Map.of("Q1", 1.0)))
+                .isInstanceOfSatisfying(CompletionCompilationException.class,
+                        error -> assertThat(error.code()).isEqualTo("UNCOVERED_COMPLETION_TARGETS"));
+    }
+
+    @Test void completedTargetMaskDoesNotCountOpenSupportingExamsAsItsOwnRequiredExams() {
+        var service = service(32, 100, 100);
+        var graph = graph();
+        graph.get("A2").setRequires(List.of("Q1"));
+        var complete = service.compileAutomatic(definition("all", "v3"), "base", graph,
+                graph.keySet(), graph.keySet());
+        var section = service.compileAutomatic(definition("section", "v3"), "base", graph,
+                Set.of("A2"), graph.keySet());
+        assertThat(section.assessmentGoalIds()).isEmpty();
+        assertThat(section.protectedGoalIds()).containsExactly("Q1");
+        var result = service.evaluateAutomaticSection(complete, section, Map.of("A2", 1.0));
+        assertThat(result.complete()).isTrue();
+        assertThat(result.requiredAssessmentCount()).isZero();
+        assertThat(result.masteredAssessmentGoalIds()).isEmpty();
+        assertThat(service.evaluate(complete, Map.of("A2", 1.0)).complete()).isFalse();
     }
 
     @Test void targetMembershipIsBoundOnEveryCacheReadAndOutcomesAreNeverCached() {

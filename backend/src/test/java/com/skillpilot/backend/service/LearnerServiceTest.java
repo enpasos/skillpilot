@@ -75,7 +75,6 @@ import org.springframework.test.context.ActiveProfiles;
 @ActiveProfiles("test")
 public class LearnerServiceTest {
 
-    private static final int SCOPE_COMPLETION_SAFETY_MARGIN = 5;
     // Allow full curriculum projections to finish on CI while keeping concurrency waits bounded.
     private static final int CONCURRENT_COMPLETION_TIMEOUT_SECONDS = 60;
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
@@ -115,9 +114,9 @@ public class LearnerServiceTest {
     private static final String COMPOSITION_J10_SCOPE_ID =
             "composition:de-he-gym-math-gk-g9:structure:j10-g9";
     private static final String COMPOSITION_MERGED_DE_J8_SCOPE_ID =
-            "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j8";
+            "composition:de-de-gym-math-gk-lk:structure:j8";
     private static final String COMPOSITION_MERGED_DE_J8_ADDITIONAL_SCOPE_ID =
-            "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j8-additional-competencies";
+            "composition:de-de-gym-math-gk-lk:structure:j8-additional-competencies";
     private static final String COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID =
             "composition:de-de-gym-math-lk:structure:math-root";
     private static final String COMPOSITION_DE_MATH_LK_ANALYSIS_BASICS_SCOPE_ID =
@@ -187,9 +186,12 @@ public class LearnerServiceTest {
 
     private String learnerId;
     private Clock originalPlanClock;
+    private Object originalCompletionApplication;
 
     @BeforeEach
     void setUp() {
+        originalCompletionApplication = ReflectionTestUtils.getField(learnerService, "completionApplicationService");
+        assertThat(originalCompletionApplication).isNotNull();
         originalPlanClock = (Clock) ReflectionTestUtils.getField(learnerLearningPlanService, "clock");
         Learner learner = new Learner();
         learner.setSkillpilotId("test-learner");
@@ -202,6 +204,7 @@ public class LearnerServiceTest {
 
     @AfterEach
     void tearDown() {
+        ReflectionTestUtils.setField(learnerService, "completionApplicationService", originalCompletionApplication);
         ReflectionTestUtils.setField(learnerLearningPlanService, "clock", originalPlanClock);
         ReflectionTestUtils.setField(learnerService, "verifiedRecallClock", Clock.systemUTC());
         ReflectionTestUtils.setField(
@@ -1189,6 +1192,7 @@ public class LearnerServiceTest {
 
     @Test
     void followedPlanStartsExplicitlyThenHandsOffAfterCompletionEvenWithAutopilotDisabled() {
+        useClassicalSchedulingFixture();
         prepareRepresentationLearningPlan();
         replaceRepresentationLearningPlanSchedule(
                 LocalDate.parse("2026-09-02"),
@@ -1219,6 +1223,7 @@ public class LearnerServiceTest {
 
     @Test
     void completingDailyQuotaStopsAutomaticHandoffDespiteEligibleOverdueGoals() {
+        useClassicalSchedulingFixture();
         prepareRepresentationLearningPlan();
         LocalDate today = LocalDate.parse("2026-09-02");
         replaceRepresentationLearningPlanSchedule(
@@ -1256,6 +1261,7 @@ public class LearnerServiceTest {
     @ParameterizedTest
     @ValueSource(strings = { "DAY", "WEEK" })
     void automaticHandoffUsesTheConfiguredPeriodForGoalsScheduledLaterThisWeek(String basisName) {
+        useClassicalSchedulingFixture();
         prepareRepresentationLearningPlan();
         LocalDate today = LocalDate.parse("2026-09-02");
         LocalDate friday = today.plusDays(2);
@@ -1287,7 +1293,7 @@ public class LearnerServiceTest {
     }
 
     @Test
-    void earlierWorkOnFutureGoalsCoversQuotaAndStopsAutomaticExtraWork() {
+    void uncoveredTargetsDoNotInventImplicitPlanCreditOrAutomaticQuota() {
         prepareRepresentationLearningPlan();
         LocalDate today = LocalDate.parse("2026-09-02");
         replaceRepresentationLearningPlanSchedule(today, today.plusDays(1),
@@ -1298,31 +1304,22 @@ public class LearnerServiceTest {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         var fixedPlan = learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, today);
         masteryRepository.saveAndFlush(new Mastery(learner, CANONICAL_READ_REPRESENTATION_ID, 1.0));
-        // READ is CREATE's only consumer. Mastering READ also ends CREATE's
-        // demand, so the default I now credits both without inventing an event
-        // or mastery for CREATE. CHOOSE still has other open consumers.
-        assertThat(learnerService.getCoachLearnerState(learnerId).levelCompletion().waivedTargetGoalIds())
-                .contains(CANONICAL_CREATE_REPRESENTATION_ID)
-                .doesNotContain(CANONICAL_CHOOSE_REPRESENTATION_ID);
+        var state = learnerService.getCoachLearnerState(learnerId);
+        assertThat(state.levelCompletion().calculationStatus()).isEqualTo("invalid");
+        assertThat(state.levelCompletion().notice()).isEqualTo("completion_target_routes_uncovered");
+        assertThat(state.levelCompletion().waivedTargetGoalIds()).isEmpty();
         assertThat(learnerService.getMastery(learnerId)
                 .getOrDefault(CANONICAL_CREATE_REPRESENTATION_ID, 0.0)).isZero();
         assertThat(learnerService.getGoalCompletionsOnDate(learnerId, today)).isEmpty();
-        var before = subjectBalance(today, CANONICAL_MATH_LANDSCAPE_ID);
-        assertThat(before.erfuelltesPeriodenziel()).isEqualTo(2);
-        assertThat(before.offenesPeriodenpensum()).isZero();
-        assertThat(before.rohsaldo()).isZero();
+        assertThat(subjectBalance(today, CANONICAL_MATH_LANDSCAPE_ID)).isNull();
         learnerService.setPreferences(learnerId, "SEQUENTIAL", true, null, null, true);
-        // The learner may explicitly continue after covering today's quota;
-        // that extra work must not trigger another automatic task.
+        // Explicit voluntary learning is available even while the quota is unknown.
         learnerService.setActiveGoal(learnerId, CANONICAL_CHOOSE_REPRESENTATION_ID);
 
         var completion = learnerService.setMastery(learnerId, new MasteryUpdateRequest(
                 Map.of(CANONICAL_CHOOSE_REPRESENTATION_ID, 1.0), CANONICAL_CHOOSE_REPRESENTATION_ID));
 
-        var balance = subjectBalance(today, CANONICAL_MATH_LANDSCAPE_ID);
-        assertThat(balance.erfuelltesPeriodenziel()).isEqualTo(2);
-        assertThat(balance.offenesPeriodenpensum()).isZero();
-        assertThat(balance.vorsprung()).isEqualTo(1);
+        assertThat(subjectBalance(today, CANONICAL_MATH_LANDSCAPE_ID)).isNull();
         assertThat(completion.activeGoal()).isNull();
         assertThat(learnerService.getGoalCompletionsOnDate(learnerId, today))
                 .containsOnlyKeys(CANONICAL_CHOOSE_REPRESENTATION_ID);
@@ -1338,6 +1335,7 @@ public class LearnerServiceTest {
 
     @Test
     void statusWaitsForConcurrentPeriodAndMasteryUpdateThenReadsOneCommittedState() throws Exception {
+        useClassicalSchedulingFixture();
         prepareRepresentationLearningPlan();
         LocalDate today = LocalDate.parse("2026-09-02");
         subjectBalance(today, CANONICAL_MATH_LANDSCAPE_ID); // Pin the status clock as well.
@@ -1416,6 +1414,7 @@ public class LearnerServiceTest {
 
     @Test
     void explicitFurtherLearningStartsFuturePlanAndKeepsPrerequisitesAndScopeIntact() {
+        useClassicalSchedulingFixture();
         prepareRepresentationLearningPlan();
         LocalDate today = learnerLearningPlanService.getTodayStatus(learnerId, "de").asOf();
         replaceRepresentationLearningPlanSchedule(today.plusDays(1), today.plusDays(7),
@@ -1506,6 +1505,7 @@ public class LearnerServiceTest {
 
     @Test
     void completingAnUnrelatedGoalDoesNotStartTheFirstGoalOfAStoredPlan() {
+        useClassicalSchedulingFixture();
         prepareRepresentationLearningPlan();
         learnerService.setPreferences(learnerId, "SEQUENTIAL", false, null, null, true);
         learnerService.setPlannedGoals(learnerId, Set.of(CANONICAL_MATH_ROOT_SCOPE_ID));
@@ -1548,6 +1548,7 @@ public class LearnerServiceTest {
 
     @Test
     void fulfilledMathQuotaHandsOffToIncompletePhysicsEvenWithEligibleMathBacklog() {
+        useClassicalSchedulingFixture();
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learner.setPersonalCurriculum(completedPersonalizationConfig("""
@@ -1652,6 +1653,7 @@ public class LearnerServiceTest {
 
     @Test
     void followingWithoutAStoredPlanSuppressesGenericAutopilotButLeavesManualFrontier() {
+        useClassicalSchedulingFixture();
         selectCompletedCanonicalMathCurriculum();
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         masteryRepository.saveAndFlush(new Mastery(learner, CANONICAL_MATH_ORIENTATION_ID, 1.0));
@@ -1696,6 +1698,7 @@ public class LearnerServiceTest {
 
     @Test
     void compatibleHistoricalFingerprintStillAllowsReadAndAutomaticHandoffWithoutRewrite() throws Exception {
+        useClassicalSchedulingFixture();
         prepareRepresentationLearningPlan();
         replaceRepresentationLearningPlanSchedule(
                 LocalDate.parse("2026-09-02"),
@@ -1826,6 +1829,7 @@ public class LearnerServiceTest {
 
     @Test
     void planPackageActivationEnablesFollowingAndSelectsTheFirstGoalWithoutAnotherAction() {
+        useClassicalSchedulingFixture();
         // The one goal must be due today, not on whichever Friday preceded the CI run.
         LocalDate friday = LocalDate.parse("2026-09-11");
         var activation = activateRepresentationPlan(friday, friday);
@@ -1848,6 +1852,7 @@ public class LearnerServiceTest {
             "2026-09-15", "2026-09-16", "2026-09-17"
     })
     void planPackageActivationWithoutTodaysQuotaLeavesBacklogForExplicitContinuation(String activationDate) {
+        useClassicalSchedulingFixture();
         LocalDate asOf = LocalDate.parse(activationDate);
         var activation = activateRepresentationPlan(asOf, LocalDate.parse("2026-09-11"));
 
@@ -2387,6 +2392,7 @@ public class LearnerServiceTest {
                 .map(canonicalGoals::get)
                 .flatMap(goal -> goal.getRequires().stream())
                 .forEach(directExamRequirementIds::add);
+        Set<String> deJ8Targets = new LinkedHashSet<>();
         for (String viewId : List.of(
                 "de-de-gym-math-gk",
                 "de-de-gym-math-lk",
@@ -2397,10 +2403,27 @@ public class LearnerServiceTest {
             Set<String> sourceJ8AtomicGoalIds = new LinkedHashSet<>();
             sourceJ8Scope.referencedGoalIds()
                     .forEach(goalId -> collectAtomicGoalIds(goalId, canonicalGoals, sourceJ8AtomicGoalIds));
-            assertThat(sourceJ8AtomicGoalIds)
-                    .as(viewId)
-                    .hasSize(55)
-                    .containsAll(directExamRequirementIds);
+            Set<String> earlierPreparationIds = Set.of(
+                    "325771e1-602d-4bca-a199-a8f39a2d3dee", // linear equations
+                    "71d43fcc-d787-4874-ae4a-2336364e9c0a"); // percentage problems
+            Set<String> outsideJ8 = new LinkedHashSet<>(directExamRequirementIds);
+            outsideJ8.removeAll(sourceJ8AtomicGoalIds);
+            assertThat(outsideJ8).as(viewId).containsExactlyInAnyOrderElementsOf(earlierPreparationIds);
+            if (deJ8Targets.isEmpty()) {
+                deJ8Targets.addAll(sourceJ8AtomicGoalIds);
+                assertThat(deJ8Targets).hasSize(55);
+            }
+            Set<String> expectedSourceTargets = new LinkedHashSet<>(deJ8Targets);
+            if (viewId.startsWith("de-he-")) {
+                // The current HE J8 offering excludes the DE tabular saving/repayment extension.
+                assertThat(expectedSourceTargets.remove("f6574cdc-e29c-5a8f-a009-9f28b3bcf9be")).isTrue();
+            }
+            assertThat(sourceJ8AtomicGoalIds).as(viewId).containsExactlyInAnyOrderElementsOf(expectedSourceTargets);
+            Set<String> sourceSekOneAtomicGoalIds = new LinkedHashSet<>();
+            compositionViewService.resolveStructureReference("composition:" + viewId + ":structure:sek1")
+                    .referencedGoalIds().forEach(goalId -> collectAtomicGoalIds(
+                            goalId, canonicalGoals, sourceSekOneAtomicGoalIds));
+            assertThat(sourceSekOneAtomicGoalIds).as(viewId).containsAll(directExamRequirementIds);
         }
         CompositionStructureResolution j8Scope = compositionViewService
                 .resolveStructureReference(COMPOSITION_MERGED_DE_J8_SCOPE_ID);
@@ -2452,12 +2475,15 @@ public class LearnerServiceTest {
                 .map(goalId -> new Mastery(learner, goalId, 1.0))
                 .toList());
 
-        // Task 5 -> cylinder mantle -> circle circumference is a real Main
-        // requirement chain. The earlier circumference skill is stored and
-        // explicitly supported by the view, without becoming a target here.
+        // Task 5 uses cylinder volume and tangent construction in its current
+        // reviewed contract. The distinct J8 mantle skill retains its earlier
+        // circumference preparation without enrolling that preparation as a target.
         String cylinderMantleId = "f65ab452-1884-57b0-9be3-c7d9e4944891";
         String circleCircumferenceId = "4dbb8e8e-c0b5-5d51-8897-0024d77e8602";
-        assertThat(canonicalGoals.get(J8_EXAM_TASK_5_ID).getRequires()).contains(cylinderMantleId);
+        assertThat(canonicalGoals.get(J8_EXAM_TASK_5_ID).getRequires()).containsExactly(
+                "415bd48b-8a76-4d4f-bfdd-d085573e7ac3", "36728db8-da44-4add-97b8-0fdd7cfd9c41",
+                "cf8c5677-f3c5-5563-8f0a-68443fbab7bf", "743e5470-ff39-551e-9aba-529656418c66")
+                .doesNotContain(cylinderMantleId);
         assertThat(canonicalGoals.get(cylinderMantleId).getRequires()).contains(circleCircumferenceId);
         assertThat(learnerService.getMastery(learnerId)).containsEntry(circleCircumferenceId, 1.0);
         assertThat(learnerService.getFilteredAtomicGoalIds(
@@ -2656,7 +2682,7 @@ public class LearnerServiceTest {
 
     @Test
     @Transactional
-    void masteredDependentDoesNotMasterPrerequisiteAfterFocusWidening() {
+    void masteredDependentDoesNotMasterPrerequisiteAfterExplicitFocusWideningWithUncoveredTargets() {
         selectCompletedHessenSekTwoLkCurriculum();
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         masteryRepository.saveAll(List.of(
@@ -2668,11 +2694,10 @@ public class LearnerServiceTest {
 
         var completedNarrowState = learnerService.getLearnerState(learnerId);
 
-        assertThat(completedNarrowState.goals().scope_completed()).isTrue();
-        assertThat(completedNarrowState.stateMachine().requiredAction()).isEqualTo("setScope");
-        assertThat(completedNarrowState.stateMachine().goalOptions())
-                .extracting(FrontierGoal::id)
-                .startsWith(CANONICAL_REPRESENTATION_CLUSTER_ID);
+        assertThat(completedNarrowState.levelCompletion().calculationStatus()).isEqualTo("invalid");
+        assertThat(completedNarrowState.levelCompletion().notice()).isEqualTo("completion_target_routes_uncovered");
+        assertThat(completedNarrowState.goals().scope_completed()).isFalse();
+        assertThat(completedNarrowState.stateMachine().requiredAction()).isNotEqualTo("setScope");
 
         var widenedState = learnerService.setScope(
                 learnerId,
@@ -2682,9 +2707,9 @@ public class LearnerServiceTest {
                 .containsEntry(CANONICAL_CREATE_REPRESENTATION_ID, 1.0)
                 .doesNotContainKey(CANONICAL_CHOOSE_REPRESENTATION_ID);
         assertThat(widenedState.goals().scope_completed()).isFalse();
-        assertThat(widenedState.frontier())
-                .extracting(FrontierGoal::id)
-                .contains(CANONICAL_CHOOSE_REPRESENTATION_ID);
+        assertThat(learnerService.getUncompactedRichFrontierForFocus(
+                learnerId, List.of(CANONICAL_REPRESENTATION_CLUSTER_ID)))
+                .extracting(FrontierGoal::id).contains(CANONICAL_CHOOSE_REPRESENTATION_ID);
     }
 
     @Test
@@ -2878,6 +2903,7 @@ public class LearnerServiceTest {
                 Map.class,
                 Set.class,
                 List.class,
+                Map.class,
                 boolean.class);
         constructor.setAccessible(true);
         Object projection = constructor.newInstance(
@@ -2887,6 +2913,7 @@ public class LearnerServiceTest {
                 visibleGoals,
                 Set.of(),
                 List.of(),
+                Map.of(CANONICAL_SPANISH_ROOT_SCOPE_ID, List.of(CANONICAL_SPANISH_ROOT_SCOPE_ID)),
                 true);
 
         List<FrontierGoal> options = (List<FrontierGoal>) ReflectionTestUtils.invokeMethod(
@@ -2932,6 +2959,7 @@ public class LearnerServiceTest {
     @Test
     @Transactional
     void getLearnerState_offersNearestCompositionAncestorWhenCurrentYearScopeIsComplete() {
+        useClassicalSchedulingFixture();
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learner.setPersonalCurriculum(completedPersonalizationConfig("""
@@ -2944,7 +2972,7 @@ public class LearnerServiceTest {
         masterMathematicsPrerequisitesOutsideScope(COMPOSITION_J8_SCOPE_ID);
         learnerService.setPlannedGoals(learnerId, Set.of(COMPOSITION_J8_SCOPE_ID));
 
-        completeCurrentScope();
+        storeCompletedCurrentScopeFixture();
 
         var state = learnerService.getLearnerState(learnerId);
 
@@ -3591,6 +3619,7 @@ public class LearnerServiceTest {
 
     @Test
     void verifiedRecallCompletionHandsOffToTheNextGoalInTheSameValidPlanWithOneRevision() {
+        useClassicalSchedulingFixture();
         prepareMemoryThenRepresentationLearningPlan();
 
         var prompt = learnerService.startVerifiedRecallBatch(
@@ -3630,6 +3659,7 @@ public class LearnerServiceTest {
 
     @Test
     void legacyVerifiedRecallCompletionAlsoHandsOffWithOneRevision() {
+        useClassicalSchedulingFixture();
         prepareMemoryThenRepresentationLearningPlan();
 
         var prompt = learnerService.startVerifiedRecall(
@@ -3668,6 +3698,7 @@ public class LearnerServiceTest {
 
     @Test
     void verifiedRecallCompletionFulfillsDailyQuotaWithoutAutomaticallyStartingRemainingPlanWork() {
+        useClassicalSchedulingFixture();
         prepareMemoryThenRepresentationLearningPlan();
         LocalDate today = LocalDate.parse("2026-09-01");
         LearnerLearningPlan stored = learnerLearningPlanRepository.findByLearner_SkillpilotIdAndLandscapeId(
@@ -4167,6 +4198,7 @@ public class LearnerServiceTest {
     @Test
     @Transactional
     void getLearnerState_doesNotOfferSeparateSekOneCapstoneAfterFinalCompositionYearScopeIsComplete() {
+        useClassicalSchedulingFixture();
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learner.setPersonalCurriculum(completedPersonalizationConfig("""
@@ -4179,7 +4211,7 @@ public class LearnerServiceTest {
         masterMathematicsPrerequisitesOutsideScope(COMPOSITION_J10_SCOPE_ID);
         learnerService.setPlannedGoals(learnerId, Set.of(COMPOSITION_J10_SCOPE_ID));
 
-        completeCurrentScope(200);
+        storeCompletedCurrentScopeFixture();
 
         var state = learnerService.getLearnerState(learnerId);
 
@@ -4309,42 +4341,17 @@ public class LearnerServiceTest {
         return goals;
     }
 
-    private void completeCurrentScope() {
-        var initialState = learnerService.getLearnerState(learnerId);
-        if (initialState.goals().scope() == null) {
-            throw new AssertionError("Expected a selected scope before completing it.");
-        }
-        int remainingAtomicGoals = Math.toIntExact(Math.max(
-                0L,
-                initialState.goals().scope().total_atomic()
-                        - initialState.goals().scope().mastered_atomic()));
-        completeCurrentScope(remainingAtomicGoals + SCOPE_COMPLETION_SAFETY_MARGIN);
-    }
-
-    private void completeCurrentScope(int maxIterations) {
-        Set<String> attemptedGoalIds = new LinkedHashSet<>();
-        for (int iteration = 0; iteration < maxIterations; iteration += 1) {
-            var state = learnerService.getLearnerState(learnerId);
-            if (Boolean.TRUE.equals(state.goals().scope_completed())) {
-                return;
-            }
-            var nextGoal = state.frontier().stream()
-                    .filter(goal -> "atomic".equals(goal.type()))
-                    .findFirst()
-                    .orElseThrow(() -> new AssertionError("Expected an atomic frontier goal before scope completion."));
-            if (!attemptedGoalIds.add(nextGoal.id())) {
-                throw new AssertionError(
-                        "Scope completion stalled on the already attempted frontier goal " + nextGoal.id() + ".");
-            }
-            learnerService.setMastery(
-                    learnerId,
-                    new MasteryUpdateRequest(Map.of(nextGoal.id(), 1.0), nextGoal.id()));
-        }
-        var finalState = learnerService.getLearnerState(learnerId);
-        if (Boolean.TRUE.equals(finalState.goals().scope_completed())) {
-            return;
-        }
-        throw new AssertionError("Scope did not complete within " + maxIterations + " mastery updates.");
+    /** Stored earlier results provide the exact completed-year state for navigation checks. */
+    private void storeCompletedCurrentScopeFixture() {
+        var targets = learnerService.resolveLearningPlanGoalIds(learnerId, CANONICAL_MATH_LANDSCAPE_ID,
+                learnerService.getPlannedGoals(learnerId));
+        assertThat(targets).isNotEmpty();
+        assertThat(targets).noneMatch(id -> "memory".equals(landscapeService.getGoalDefinition(id).getNodeKind()));
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        masteryRepository.saveAllAndFlush(targets.stream()
+                .map(id -> new Mastery(learner, id, 1.0)).toList());
+        assertThat(learnerService.getMastery(learnerId)).containsAllEntriesOf(targets.stream()
+                .collect(java.util.stream.Collectors.toMap(id -> id, id -> 1.0)));
     }
 
     private void activateSekOneCoreFormulaFlashcards() {
@@ -4425,6 +4432,11 @@ public class LearnerServiceTest {
         return learnerLearningPlanService.getTodayStatus(learnerId, "de").subjects().stream()
                 .filter(subject -> subject.landscapeIds().contains(landscapeId))
                 .findFirst().orElseThrow().balance();
+    }
+
+    /** Isolate the classic dated-quota contract from the full-PC automatic completion contract. */
+    private void useClassicalSchedulingFixture() {
+        ReflectionTestUtils.setField(learnerService, "completionApplicationService", null);
     }
 
     private void selectCompletedCanonicalMathCurriculum() {

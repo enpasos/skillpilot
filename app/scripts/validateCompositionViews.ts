@@ -17,8 +17,8 @@ import {
 } from './lib/learnerFacingCompositionLabels'
 import {
   collectCanonicalMathSek1ReviewedExamRouteFindings,
-  hasUnavailableCurricularAtomicAssessmentPrerequisite,
-  isAssessmentExplicitlyOutsideJurisdiction,
+  collectCanonicalMathSek1ExamVisibilityFindings,
+  collectSourceGoalIds,
 } from './lib/canonicalMathSek1ReviewedExamRoutes'
 
 interface CompositionViewValidationFinding extends CompositionViewFinding {
@@ -38,7 +38,7 @@ interface RequiredCanonicalMathScope {
   }
 }
 
-interface ApprovedCanonicalMathFallbackGroup {
+interface ApprovedCanonicalMathResolutionGroup {
   jurisdictions: string[]
   rationale?: string
   scopes: Array<RequiredCanonicalMathScope['scope'] & { expectedViewId: string }>
@@ -500,26 +500,11 @@ const collectGenericTreeFindings = (
   return findings
 }
 
-const collectSourceGoalIds = (rootNodes: CompiledCompositionPreviewNode[]): Set<string> => {
-  const sourceGoalIds = new Set<string>()
-  const visit = (node: CompiledCompositionPreviewNode) => {
-    if (node.sourceGoalId) {
-      sourceGoalIds.add(node.sourceGoalId)
-    }
-    node.children.forEach(visit)
-  }
-  rootNodes.forEach(visit)
-  return sourceGoalIds
-}
 
 const isRecord = (value: unknown): value is Record<string, unknown> => (
   typeof value === 'object' && value !== null && !Array.isArray(value)
 )
 
-const isCanonicalMathSek1LearnerScope = (view: ReturnType<typeof normalizeCompositionView>): boolean => (
-  view.landscapeId === CANONICAL_DE_MATH_ID
-  && (view.scope.stage === 'SekI' || view.scope.stage === 'CrossStage')
-)
 
 const isCanonicalMathSek2LearnerScope = (view: ReturnType<typeof normalizeCompositionView>): boolean => (
   view.landscapeId === CANONICAL_DE_MATH_ID
@@ -685,77 +670,6 @@ const collectCanonicalMathSek1ExamStructureFindings = (
   return findings
 }
 
-const collectCanonicalMathSek1ExamVisibilityFindings = (
-  view: ReturnType<typeof normalizeCompositionView>,
-  landscape: CanonicalAuthoringLandscape | null,
-  rootNodes: CompiledCompositionPreviewNode[],
-): CompositionViewFinding[] => {
-  if (!isCanonicalMathSek1LearnerScope(view)) return []
-  if (!landscape) return []
-
-  const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
-  const visibleGoalIds = collectSourceGoalIds(rootNodes)
-  const curricularAtomicGoalIds = new Set(landscape.goals
-    .filter((goal) => goal.semanticKind === 'curricularAtomic')
-    .map((goal) => goal.id))
-  const findings: CompositionViewFinding[] = []
-
-  if (!visibleGoalIds.has(CANONICAL_MATH_SEK1_MOTIVATION_GOAL_ID)) {
-    findings.push({
-      code: 'CPV-210',
-      severity: 'error',
-      goalId: CANONICAL_MATH_SEK1_MOTIVATION_GOAL_ID,
-      message: 'Sek-I-Route ist learner-facing nicht vollständig: Motivationsanker fehlt in der Composition View.',
-    })
-  }
-
-  if (visibleGoalIds.has(CANONICAL_MATH_SEK1_LEGACY_PRACTICE_CLUSTER_ID)) {
-    findings.push({
-      code: 'CPV-213',
-      severity: 'error',
-      goalId: CANONICAL_MATH_SEK1_LEGACY_PRACTICE_CLUSTER_ID,
-      message: 'Sek-I-Route verwendet noch den alten learner-facing Sammelzweig `Übungen Sekundarstufe I`.',
-    })
-  }
-
-  expectedCanonicalMathSek1ExamYears(view).forEach((year) => {
-    const folderId = CANONICAL_MATH_SEK1_EXAM_FOLDER_IDS_BY_YEAR[year]
-    const folder = goalById.get(folderId)
-    if (!visibleGoalIds.has(folderId)) {
-      findings.push({
-        code: 'CPV-211',
-        severity: 'error',
-        goalId: folderId,
-        message: `Sek-I-Route ist learner-facing nicht vollständig: Prüfungsordner für Jahrgangsstufe ${year} fehlt in der Composition View.`,
-      })
-      return
-    }
-
-    const missingTaskGoalIds = (folder?.contains ?? [])
-      .filter((taskId) => !visibleGoalIds.has(taskId))
-      // Shared year folders contain land-specific exams. A resolved land scope
-      // must still require every applicable task, but not another land's task.
-      // The national catalog (no jurisdiction) continues to require all tasks.
-      .filter((taskId) => !isAssessmentExplicitlyOutsideJurisdiction(
-        goalById.get(taskId), view.scope.jurisdiction,
-      ))
-      .filter((taskId) => !hasUnavailableCurricularAtomicAssessmentPrerequisite(
-        goalById.get(taskId),
-        curricularAtomicGoalIds,
-        visibleGoalIds,
-      ))
-    if (missingTaskGoalIds.length > 0) {
-      findings.push({
-        code: 'CPV-211',
-        severity: 'error',
-        goalId: folderId,
-        message: `Sek-I-Route ist learner-facing nicht vollständig: ${missingTaskGoalIds.length} Aufgabenknoten unter Prüfungen Jahrgangsstufe ${year} fehlen in der Composition View.`,
-      })
-    }
-  })
-
-  return findings
-}
 
 const collectCanonicalMathSek2RouteEndpointVisibilityFindings = (
   view: ReturnType<typeof normalizeCompositionView>,
@@ -800,7 +714,8 @@ const canonicalMathFallbackPolicy = JSON.parse(
   readFileSync(resolve(repoRoot, CANONICAL_MATH_FALLBACK_POLICY_PATH), 'utf8'),
 ) as {
   landscapeId?: string
-  approvedDeDefaultFallbackGroups?: ApprovedCanonicalMathFallbackGroup[]
+  approvedDeDefaultFallbackGroups?: ApprovedCanonicalMathResolutionGroup[]
+  approvedDedicatedCountryGroups?: ApprovedCanonicalMathResolutionGroup[]
 }
 
 const collectFiles = (directory: string, predicate: (fileName: string) => boolean, target: string[] = []): string[] => {
@@ -980,6 +895,13 @@ for (const viewPath of compositionViewFiles) {
         normalizedView,
         canonicalMatch?.landscape ?? null,
         result.compiledRootNodes,
+        {
+          landscapeId: CANONICAL_DE_MATH_ID,
+          motivationGoalId: CANONICAL_MATH_SEK1_MOTIVATION_GOAL_ID,
+          legacyPracticeClusterId: CANONICAL_MATH_SEK1_LEGACY_PRACTICE_CLUSTER_ID,
+          expectedYears: expectedCanonicalMathSek1ExamYears(normalizedView),
+          examFolderIdsByYear: CANONICAL_MATH_SEK1_EXAM_FOLDER_IDS_BY_YEAR,
+        },
       ),
       ...collectCanonicalMathSek2RouteEndpointVisibilityFindings(
         normalizedView,
@@ -1058,7 +980,10 @@ REQUIRED_CANONICAL_MATH_SCOPES.forEach(({ expectedViewId, scope }) => {
   }
 })
 
-const approvedCanonicalMathFallbackScopes = (canonicalMathFallbackPolicy.approvedDeDefaultFallbackGroups ?? [])
+const approvedCanonicalMathResolutionScopes = [
+  ...(canonicalMathFallbackPolicy.approvedDeDefaultFallbackGroups ?? []),
+  ...(canonicalMathFallbackPolicy.approvedDedicatedCountryGroups ?? []),
+]
   .flatMap((group) => group.jurisdictions.flatMap((jurisdiction) => (
     group.scopes.map(({ expectedViewId, ...scope }) => ({
       expectedViewId,
@@ -1067,7 +992,7 @@ const approvedCanonicalMathFallbackScopes = (canonicalMathFallbackPolicy.approve
     }))
   )));
 
-approvedCanonicalMathFallbackScopes.forEach(({ expectedViewId, rationale, scope }) => {
+approvedCanonicalMathResolutionScopes.forEach(({ expectedViewId, rationale, scope }) => {
   const requestedScope = normalizeScopeForMatching(scope)
   const matches = canonicalMathViews
     .map((view) => ({
@@ -1091,9 +1016,9 @@ approvedCanonicalMathFallbackScopes.forEach(({ expectedViewId, rationale, scope 
     findings.push({
       code: 'CPV-208',
       severity: 'error',
-      message: `Genehmigter DE-default-Fallback-Scope für kanonische Mathematik löst auf keine Composition View auf: ${composeScopeKey(scope)}`,
+      message: `Genehmigter Scope für kanonische Mathematik löst auf keine Composition View auf: ${composeScopeKey(scope)}`,
       viewId: expectedViewId,
-      viewPath: '(approved-canonical-math-default-fallback)',
+      viewPath: '(approved-canonical-math-scope-resolution)',
       landscapeId: CANONICAL_DE_MATH_ID,
     })
     return
@@ -1103,9 +1028,9 @@ approvedCanonicalMathFallbackScopes.forEach(({ expectedViewId, rationale, scope 
     findings.push({
       code: 'CPV-209',
       severity: 'error',
-      message: `Genehmigter DE-default-Fallback-Scope für kanonische Mathematik löst unerwartet auf: erwartet ${expectedViewId}, gefunden ${bestMatch.viewId}${rationale ? ` (${rationale})` : ''}`,
+      message: `Genehmigter Scope für kanonische Mathematik löst unerwartet auf: erwartet ${expectedViewId}, gefunden ${bestMatch.viewId}${rationale ? ` (${rationale})` : ''}`,
       viewId: expectedViewId,
-      viewPath: '(approved-canonical-math-default-fallback)',
+      viewPath: '(approved-canonical-math-scope-resolution)',
       landscapeId: CANONICAL_DE_MATH_ID,
     })
   }

@@ -1,15 +1,18 @@
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
 import { readFileSync, readdirSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 import { buildApplicabilityCompilation, intersectApplicabilityJurisdictions } from './applicabilityCompiler'
+import { isMathSourceCourseAvailable, loadDeclaredMathCourseUnions, readBoundMathStageDecision } from './mathDeclaredCourseUnionTestUtils'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import { normalizeCanonicalLandscape } from '../src/utils/authoring/canonicalAuthoring'
 import {
   collectCompositionProjectionRoleGoalIds,
   compileCompositionView,
   normalizeCompositionView,
+  type CompositionView,
 } from '../src/utils/authoring/compositionViewAuthoring'
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
@@ -56,7 +59,7 @@ assert.deepEqual(rawGoalById.get(assessmentClusterId)?.contains, tasks)
 // Applicability is a compiled eligibility cache, not a composition placement.
 // These original assessments have no independent source-goal mapping: derive
 // eligibility from all assessed prerequisites, while the views below retain
-// their deliberately HE-GK-only target placement.
+// their separately authored placement and exact independently reviewed allowlists.
 for (const id of tasks) {
   assert.equal(rawGoalById.get(id)?.extendedData?.applicabilityFromRequires, true, `${id}: assessment applicability must derive from all prerequisites`)
   assert.equal(rawGoalById.get(id)?.extendedData?.applicabilityMappingInheritance, 'boundary', `${id}: broad ancestor mappings must not supply assessment applicability`)
@@ -100,7 +103,9 @@ const heGkFiles = new Set(['de-he-sekii-gk.view.json', 'de-he-gk.view.json', 'de
 const ancestorClosure = (start: string) => {
   const visited = new Set<string>()
   const visit = (id: string) => {
-    for (const predecessor of goalById.get(id)?.requires ?? []) {
+    const goal = goalById.get(id)
+    assert(goal, `Unknown canonical prerequisite ${id}`)
+    for (const predecessor of goal.requires) {
       if (visited.has(predecessor)) continue
       visited.add(predecessor)
       visit(predecessor)
@@ -142,13 +147,92 @@ assert.deepEqual([...assessed].sort(), [...common].sort())
 const viewDir = 'curricula/DE/Gymnasium/composition-views/mathematik'
 const memory = readFileSync(resolve(repoRoot, 'curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl'), 'utf8')
   .trim().split('\n').map((line) => JSON.parse(line) as { goalId: string, status: string, memoryGoalIds?: string[] })
+const bbbScopeReview = readJson('curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/bbb-existing-route-scope.review.json') as { exactProposedReferenceOperations: Array<{ viewId: string }>; retainExistingReferences: Array<{ viewId: string }> }
+const bbbAllowedViews = new Set([...bbbScopeReview.exactProposedReferenceOperations, ...bbbScopeReview.retainExistingReferences].map(row => row.viewId))
+assert.equal(bbbAllowedViews.size, 68)
+const existingEndpointsDir = 'docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/existing-endpoint-restoration'
+const endpointScopeReceipt = readJson(`${existingEndpointsDir}/scope-review.receipt.json`)
+assert.equal(endpointScopeReceipt.verdict, 'PASS')
+assert.equal(endpointScopeReceipt.authorIndependent, true)
+const endpointOperationsBytes = readFileSync(resolve(repoRoot, `${existingEndpointsDir}/candidate-operations.json`))
+assert.equal(createHash('sha256').update(endpointOperationsBytes).digest('hex'),
+  endpointScopeReceipt.files['tmp/math-existing-endpoint-candidates-20261101/candidate-operations.json'], 'existing endpoint allowlist must remain independently receipt-bound')
+const endpointOperations = JSON.parse(endpointOperationsBytes.toString('utf8')) as {
+  operations: Array<{ goalId: string; viewId: string }>; sourceOperations: Array<{ goalId: string; viewId: string }>
+}
+const originalHeViewIds = [...heGkFiles].map(file => readJson(`${viewDir}/${file}`).viewId as string)
+const otherTaskAllowedViews = new Map(tasks.slice(1).map(taskId => [taskId, new Set([
+  ...originalHeViewIds,
+  ...[...endpointOperations.operations, ...endpointOperations.sourceOperations].filter(op => op.goalId === taskId).map(op => op.viewId),
+])]))
+for (const allowed of otherTaskAllowedViews.values()) assert.equal(allowed.size, 8, 'only four original HE-GK and four independently restored SH-GK views select each task')
+
+const views = readdirSync(resolve(repoRoot, viewDir)).filter(name => name.endsWith('.view.json')).map(name => ({
+  name, view: normalizeCompositionView(readJson(`${viewDir}/${name}`)),
+}))
+const viewById = new Map(views.map(({ view }) => [view.viewId, view]))
+assert.equal(viewById.size, views.length, 'Registered view identities must be unique')
+const rolesByViewId = new Map(views.map(({ view }) => [view.viewId,
+  collectCompositionProjectionRoleGoalIds(view.rootNodes, goalById)]))
+const readBoundDecision = (path: string) => readBoundMathStageDecision(repoRoot, path)
+
+// These later, independently reviewed deltas extend the original eight-view
+// endpoint baseline. Match their finite offered scopes, never all GK views.
+const graphTransformReview = readBoundDecision('curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/46bb-remaining-gk-source-matrix-scope.review.json')
+assert.equal(graphTransformReview.status, 'PASS_EXACT_56_ADDITIONAL_GK_UNION_OFFERS_AND_HOLD_HB_HH_NOT_MATERIALIZATION')
+const niReviewPath = 'curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/ni-46bb-four-offers-union-addendum.review.json'
+const niReviewBytes = readFileSync(resolve(repoRoot, niReviewPath))
+assert.equal(createHash('sha256').update(niReviewBytes).digest('hex'),
+  graphTransformReview.inputs['tmp/approach-review-20261101/astra-remaining-material-scope/ni-46bb-four-offers-union-addendum-PASS.json'], 'Durable NI decision must equal the matrix review\'s exact independent input')
+const niReview = JSON.parse(niReviewBytes.toString('utf8'))
+assert.equal(niReview.status, 'PASS_EXACT_NI_FOUR_OFFERS_GK_AND_TRUE_UNION_SOURCE_ADDENDUM_NOT_MATERIALIZATION')
+const matchesReviewedOffer = (view: CompositionView, offerId: string) => {
+  const [jurisdiction, stage, durationModel, courseProfile] = offerId.split('/')
+  assert(jurisdiction && stage && durationModel && courseProfile, `Malformed reviewed offer ${offerId}`)
+  return view.scope.jurisdiction === jurisdiction && view.scope.stage === stage
+    && view.scope.courseProfile === courseProfile
+    && (!view.scope.durationModel || view.scope.durationModel === durationModel)
+}
+for (const { view } of views) {
+  if (view.scope.courseProfile === 'GK'
+    && [...graphTransformReview.approvedNewOfferIds, ...niReview.exactOfferIds]
+      .some((offerId: string) => matchesReviewedOffer(view, offerId))) otherTaskAllowedViews.get(tasks[1])!.add(view.viewId)
+}
+const heFiveReview = readBoundDecision('curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/he5-cuboid48-probability-two-edge/he-five-source-sequence-placement.review.json')
+assert.equal(heFiveReview.verdict, 'PASS')
+assert.equal(heFiveReview.authorIndependent, true)
+for (const operation of heFiveReview.approvedNormalOperations) {
+  if (operation.action === 'include-target' && operation.goalIds.includes(tasks[2])) {
+    assert(viewById.has(operation.viewId), `Reviewed HE endpoint view missing: ${operation.viewId}`)
+    otherTaskAllowedViews.get(tasks[2])!.add(operation.viewId)
+  }
+}
+const allowedSourceViews = new Map([[tasks[0], bbbAllowedViews], ...otherTaskAllowedViews])
+
+// The production finite plan is the authority for each materialized course
+// union's two source identities. A filename suffix is not a union declaration.
+const combinedById = loadDeclaredMathCourseUnions(repoRoot, views)
+for (const pair of combinedById.values()) {
+  assert(tasks.every(id => !pair.excludedNewAssessmentIds.includes(id)), `${pair.outputViewId}: existing endpoint cannot be omitted as a new assessment`)
+}
+const sourceContributesTask = (sourceViewId: string, taskId: string) => {
+  const source = viewById.get(sourceViewId)!
+  if (!allowedSourceViews.get(taskId)!.has(sourceViewId)
+    || !rolesByViewId.get(sourceViewId)!.targetGoalIds.has(taskId)) return false
+  return isMathSourceCourseAvailable(rawGoalById.get(taskId)!, source)
+}
 let checkedHe = 0
 let checkedOther = 0
-for (const name of readdirSync(resolve(repoRoot, viewDir)).filter((name) => name.endsWith('.view.json'))) {
-  const view = normalizeCompositionView(readJson(`${viewDir}/${name}`))
-  const { targetGoalIds, prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(view.rootNodes, goalById)
+for (const { name, view } of views) {
+  const { targetGoalIds, prerequisiteOnlyGoalIds } = rolesByViewId.get(view.viewId)!
+  const combined = combinedById.get(view.viewId)
+  for (const id of tasks) {
+    const expected = combined
+      ? combined.sourceViewIds.some(sourceId => sourceContributesTask(sourceId, id))
+      : allowedSourceViews.get(id)!.has(view.viewId)
+    assert.equal(targetGoalIds.has(id), expected, `${name}: ${id} must follow its exact reviewed source allowlist or declared course union`)
+  }
   if (!heGkFiles.has(name)) {
-    for (const id of tasks) assert(!targetGoalIds.has(id), `${name}: HE-only assessment leaked into another existing view`)
     checkedOther += 1
     continue
   }
@@ -159,9 +243,11 @@ for (const name of readdirSync(resolve(repoRoot, viewDir)).filter((name) => name
     assert(!targetGoalIds.has(id), `${name}: LK-only Q2.1 content is a GK target`)
     assert(!prerequisiteOnlyGoalIds.has(id), `${name}: LK-only content hidden as a prerequisite`)
   }
+  // Canonical support (including 26f668a0 in pure HE-SII-GK) need not
+  // have an authoring reference. Native backend compilation checks its context.
   for (const id of [...common, ...tasks]) {
-    for (const predecessor of goalById.get(id)!.requires) {
-      assert(targetGoalIds.has(predecessor) || prerequisiteOnlyGoalIds.has(predecessor), `${name}: direct route prerequisite missing: ${predecessor}`)
+    for (const predecessor of ancestorClosure(id)) {
+      assert(!lkOnly.includes(predecessor), `${name}: forbidden LK prerequisite: ${predecessor}`)
     }
   }
   for (const decision of memory.filter((item) => item.status === 'memory_required' && targetGoalIds.has(item.goalId))) {
@@ -169,4 +255,4 @@ for (const name of readdirSync(resolve(repoRoot, viewDir)).filter((name) => name
   }
 }
 assert.equal(checkedHe, 4)
-console.log(`HE Q2.1 regression passed: ${checkedHe} GK views, 10 shared goals, 3 local assessments; ${checkedOther} other views exclude the new HE assessments; native requires-derived/child-union applicability, current caches, memory visibility and removed prerequisite coupling checked.`)
+console.log(`HE Q2.1 regression passed: ${checkedHe} GK views, 10 shared goals, 3 local assessments; ${checkedOther} other views follow exact independently reviewed endpoint scopes and ${combinedById.size} declared course unions; native requires-derived/child-union applicability, current caches, memory visibility and removed prerequisite coupling checked.`)

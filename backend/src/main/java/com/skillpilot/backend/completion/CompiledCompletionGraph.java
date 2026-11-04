@@ -16,6 +16,7 @@ class CompiledCompletionGraph {
     private final Set<String> targetGoalIds;
     private final Set<String> assessmentGoalIds;
     private final Set<String> protectedGoalIds;
+    private final Set<String> protectedTargetGoalIds;
     private final List<CompiledRule> rules;
     private final Set<String> demandGoalIds;
 
@@ -43,6 +44,9 @@ class CompiledCompletionGraph {
         this.targetGoalIds = immutableSet(targetGoalIds);
         this.assessmentGoalIds = immutableSet(assessmentGoalIds);
         this.protectedGoalIds = immutableSet(protectedGoalIds);
+        Set<String> protectedTargets = new LinkedHashSet<>(this.protectedGoalIds);
+        protectedTargets.retainAll(this.targetGoalIds);
+        this.protectedTargetGoalIds = immutableSet(protectedTargets);
         this.rules = List.copyOf(rules);
         Set<String> demand = new LinkedHashSet<>();
         java.util.ArrayDeque<String> pending = new java.util.ArrayDeque<>(
@@ -63,7 +67,10 @@ class CompiledCompletionGraph {
     public Set<String> targetGoalIds() { return targetGoalIds; }
     public Set<String> assessmentGoalIds() { return assessmentGoalIds; }
     public Set<String> requiredAssessmentGoalIds() { return assessmentGoalIds; }
+    /** Classification in the full context; protection alone does not create a target obligation. */
     public Set<String> protectedGoalIds() { return protectedGoalIds; }
+    /** Selected protected targets are the independent roots of automatic prerequisite demand. */
+    public Set<String> protectedTargetGoalIds() { return protectedTargetGoalIds; }
     public long expandedEdgeCount() {
         long count = 0;
         for (int[] row : prerequisites) count += row.length;

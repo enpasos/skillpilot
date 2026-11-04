@@ -1,0 +1,98 @@
+{
+  "id": "c849eeab-e88f-5e82-89d9-761a1e17d97b",
+  "shortKey": "canonical_math_sek2_q4_assessment_lk_validate_tank_inflow_analysis",
+  "title": "Zuflussmodell für einen Wassertank prüfen",
+  "titleEn": "Validate an inflow model for a water tank",
+  "description": "Die lernende Person kann in einer selbstständigen Tankmodell-Aufgabe Differential- und Integralrechnung kontextgerecht anwenden und die Modellprognose anhand einer unsicheren Messung kritisch prüfen.",
+  "descriptionEn": "The learner can apply differential and integral calculus in context and critically validate a tank-model prediction against an uncertain measurement.",
+  "core": false,
+  "weight": 1,
+  "tags": [
+    "LK",
+    "Practice",
+    "Assessment",
+    "ExamTask",
+    "canonical",
+    "phase:Q4"
+  ],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BY"
+    ]
+  },
+  "extendedData": {
+    "applicabilityFromRequires": true,
+    "applicabilityMappingInheritance": "boundary"
+  },
+  "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q4/m7-route-repair-20260923-v1/tank-rate-validation.md",
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K2.3",
+      "K3.2",
+      "K4.2",
+      "K6.2"
+    ],
+    "guidingIdeas": [
+      "L2",
+      "L4"
+    ],
+    "phase": "Q4",
+    "area": "Analysis",
+    "topicCode": "CANONICAL.MATH.SEK2.Q4.PRACTICE.LK_TANK_RATE_VALIDATION"
+  },
+  "requires": [
+    "dc12f281-f161-572b-a973-8405ae9b2498",
+    "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+    "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2"
+  ],
+  "contains": [],
+  "examples": [],
+  "resourceLinks": [],
+  "examData": {
+    "reviewStatus": "released",
+    "reviewNote": "Machine-only Q4 route assessment after independent draft audit, explicit corrections and current calculation/scoring check on 2026-09-23; no human approval claimed.",
+    "coveredGoalIds": [
+      "dc12f281-f161-572b-a973-8405ae9b2498",
+      "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+      "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2"
+    ],
+    "coveredStrands": [
+      "L2",
+      "L4"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q4/m7-route-repair-20260923-v1/tank-rate-validation.md",
+    "taskContent": "Ein Wassertank enthält zu Beginn 20 Liter. Für die folgenden sechs Stunden wird der Zufluss durch $r(t)=12t-2t^2$ in Litern pro Stunde modelliert; $t$ wird in Stunden seit Beginn gemessen. Das Modell gilt nur für $0\\le t\\le6$ und nimmt an, dass kein Wasser abfließt. Ein Sensor meldet nach sechs Stunden einen Tankinhalt von $86\\pm3$ Litern.\n\n1. Wähle eine Methode der Differentialrechnung, um den Zeitpunkt und die Größe des größten modellierten Zuflusses zu bestimmen. Erläutere die Bedeutung deines Ergebnisses mit Einheiten. (6 BE)\n2. Wähle eine Methode der Integralrechnung, um die gesamte modellierte Zuflussmenge und damit den prognostizierten Tankinhalt nach sechs Stunden zu bestimmen. Begründe, warum die Zuflussrate dazu integriert und nicht nur ihr Endwert eingesetzt wird. (7 BE)\n3. Prüfe die Modellprognose gegen die Sensormessung. Benenne mindestens zwei mögliche Ursachen einer Abweichung, die aus den vorliegenden Daten nicht auseinandergehalten werden können, und erkläre zwei Grenzen der Modellverwendung. (7 BE)",
+    "solutionContent": "1. Ein Maximum der Zuflussrate liegt bei $r'(t)=12-4t=0$, also $t=3$ h. Wegen $r''(t)=-4<0$ und $r(0)=r(6)=0$ ist dies das globale Maximum im angegebenen Intervall. $r(3)=18$ Liter pro Stunde: Nach drei Stunden ist der momentane Zufluss am größten, nicht der Tankinhalt. 1 BE für die passende Ableitungsmethode, 1 BE für $r'$, 1 BE für $t=3$, 1 BE für die Randwert-/Maximumsprüfung, 1 BE für $r(3)$ und 1 BE für die richtige Kontextdeutung mit Einheiten.\n2. Die insgesamt zugeflossene Menge ist $\\int_0^6 r(t)\\,dt=[6t^2-\\frac23t^3]_0^6=216-144=72$ Liter. Der prognostizierte Tankinhalt ist $20+72=92$ Liter. $r(6)=0$ Liter pro Stunde beschreibt nur den momentanen Zufluss am Ende; das Integral summiert die Beiträge über die Zeit. 1 BE für die Wahl des bestimmten Integrals, 1 BE für Grenzen und Einheit, 2 BE für die Stammfunktion, 1 BE für 72 Liter, 1 BE für 92 Liter und 1 BE für die begründete Abgrenzung vom Endwert der Rate.\n3. Der Messbereich ist $[83,89]$ Liter; die Modellprognose 92 Liter liegt außerhalb, nämlich 6 Liter über dem Messzentrum und mindestens 3 Liter über der oberen Grenze. Die Angabe $\\pm3$ ist hier ein Messintervall, **keine** Aussage über die Sicherheit aller Modellparameter. Mögliche Ursachen sind ein unberücksichtigter Abfluss/Leck, eine abweichende tatsächliche Zuflussrate, ein fehlerhafter Anfangsinhalt oder ein systematischer Sensorfehler. Eine Endmessung allein identifiziert keine dieser Ursachen. Grenzen: Das Modell setzt keinen Abfluss voraus; es ist nur für $0\\le t\\le6$ angegeben, sodass eine Fortschreibung auf spätere Zeiten unbegründet ist. Andere konkret begründete Modellgrenzen zählen. 2 BE für den korrekten Intervallvergleich, 2 BE für zwei plausible und nicht unterscheidbare Ursachen, 2 BE für zwei sachlich korrekte Grenzen, 1 BE für die Einsicht, dass der Endwert die Ursache nicht identifiziert.\n\nGesamt: 20 BE. Gleichwertige rechnerische und fachliche Argumentationen werden anerkannt. Ein Modellfehler kann hier vermutet, aber aus dieser Einzelmessung nicht lokalisiert werden.",
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 10,
+      "steps": [
+        {
+          "id": "q4_tank_1",
+          "points": 6,
+          "description": "Maximum der Zuflussrate mit Differentialrechnung bestimmt und interpretiert"
+        },
+        {
+          "id": "q4_tank_2",
+          "points": 7,
+          "description": "Gesamtzufluss integriert und Endinhalt mit Einheiten bestimmt"
+        },
+        {
+          "id": "q4_tank_3",
+          "points": 7,
+          "description": "Vorhersage gegen Messintervall geprüft und Modellgrenzen eingeordnet"
+        }
+      ]
+    }
+  },
+  "phase": "Q4",
+  "type": "atomic",
+  "nodeKind": "exam"
+}

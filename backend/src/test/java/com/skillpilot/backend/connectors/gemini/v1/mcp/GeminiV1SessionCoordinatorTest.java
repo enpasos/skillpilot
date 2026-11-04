@@ -26,6 +26,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -65,6 +67,9 @@ class GeminiV1SessionCoordinatorTest {
 
     @Autowired
     private GeminiV1Properties properties;
+
+    @Autowired
+    private PlatformTransactionManager transactionManager;
 
     private String learnerId;
     private String connectionId;
@@ -374,15 +379,21 @@ class GeminiV1SessionCoordinatorTest {
 
     @Test
     void anExpiredLearningSessionCanNeitherReadNorWrite() {
-        expireCurrentSession();
+        // Start after the normal committed fixture. Keep its artificial expiry
+        // uncommitted so scheduled cleanup cannot remove the row between the
+        // two EXPIRED assertions; restore the original expiry afterwards.
+        new TransactionTemplate(transactionManager).executeWithoutResult(status -> {
+            status.setRollbackOnly();
+            expireCurrentSession();
 
-        GeminiV1LearningSessionException readError = assertThrows(GeminiV1LearningSessionException.class, () ->
-                sessionCoordinator.read(connectionId, ctx -> Map.<String, Object>of()));
-        assertEquals(GeminiV1LearningSessionException.Reason.EXPIRED, readError.reason());
-        GeminiV1LearningSessionException writeError = assertThrows(GeminiV1LearningSessionException.class, () -> sessionCoordinator.mutate(
-                connectionId, "test_mutation", UUID.randomUUID().toString(), 10L, Map.of(),
-                ctx -> advanceRevision(ctx.skillpilotId(), "x")));
-        assertEquals(GeminiV1LearningSessionException.Reason.EXPIRED, writeError.reason());
+            GeminiV1LearningSessionException readError = assertThrows(GeminiV1LearningSessionException.class, () ->
+                    sessionCoordinator.read(connectionId, ctx -> Map.<String, Object>of()));
+            assertEquals(GeminiV1LearningSessionException.Reason.EXPIRED, readError.reason());
+            GeminiV1LearningSessionException writeError = assertThrows(GeminiV1LearningSessionException.class, () -> sessionCoordinator.mutate(
+                    connectionId, "test_mutation", UUID.randomUUID().toString(), 10L, Map.of(),
+                    ctx -> advanceRevision(ctx.skillpilotId(), "x")));
+            assertEquals(GeminiV1LearningSessionException.Reason.EXPIRED, writeError.reason());
+        });
     }
 
     @Test

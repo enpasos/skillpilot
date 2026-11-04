@@ -1,5 +1,9 @@
 package com.skillpilot.backend.service;
 
+import com.skillpilot.backend.testsupport.OwnedMockitoMocks;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.AfterAll;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
@@ -30,7 +34,17 @@ import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.transaction.support.TransactionSynchronization;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
+@ExtendWith(OwnedMockitoMocks.class)
 class LearnerProjectionMemoizationTest {
+
+    @AfterAll
+    static void releaseClassFixtures() {
+        mapper = null;
+        properties = null;
+        landscapes = null;
+        mappings = null;
+    }
+
     private static final String ROOT = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String MATH = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String PHYSICS = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
@@ -132,7 +146,15 @@ class LearnerProjectionMemoizationTest {
         assertThat(basicCourse).isNotSameAs(combined);
         assertThat(unfiltered).isNotSameAs(combined);
         assertThat(anotherRoot).isNotSameAs(combined);
-        assertThat(visibleGoals(combined).keySet()).containsAll(visibleGoals(basicCourse).keySet());
+        Set<String> basicOnly = new java.util.LinkedHashSet<>(visibleGoals(basicCourse).keySet());
+        basicOnly.removeAll(visibleGoals(combined).keySet());
+        // These additional preparation exams are deliberately absent from the
+        // reviewed union, where existing LK routes already require their skills.
+        assertThat(basicOnly).containsExactlyInAnyOrder(
+                "7b61db50-aaca-5be0-8830-e1d78279bfea",
+                "19c9f288-e9cb-5103-8ce0-01b75e18bd51",
+                "49bd46a0-818a-5304-8a5d-2e504629cba5",
+                "e724ac68-ccf8-5cf9-8a3d-fd05fb7a58e1");
         assertThat(visibleGoals(combined).size()).isGreaterThan(visibleGoals(basicCourse).size());
         assertThat(projection(ROOT, combinedConfig, false)).isSameAs(combined);
     }

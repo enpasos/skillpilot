@@ -76,6 +76,12 @@ cross-subject requirements. Resolve these before applying the level's display
 filter. An outside prerequisite must not disappear just because it is hidden
 from a learner-facing tree or absent from one subject's target list.
 
+For this planning check, traversal stops at competencies in the declared entry
+basis. Their acquisition history is assumed; prerequisites behind those already
+acquired competencies are not additional planned work. Required clusters are
+first resolved to their atomic contents, so only the entry atoms among those
+contents stop traversal.
+
 The entry basis states what the reference plan assumes at its start. It does
 not certify that a particular learner already possesses those competencies.
 Declaring entry requirements or simulating a valid learning order never writes

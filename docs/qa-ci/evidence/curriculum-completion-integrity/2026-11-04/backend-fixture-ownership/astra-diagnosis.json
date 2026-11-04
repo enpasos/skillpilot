@@ -1,0 +1,209 @@
+{
+  "status": "CAUSAL_DIAGNOSIS_AND_PRIVATE_LIFECYCLE_PATCH_VALIDATED",
+  "remoteCI": {
+    "head": "1a63656071",
+    "run": 41780718980,
+    "job": 126417022323,
+    "logSha256": "3f62ac2bda32e408de9cc908710a22004424836231f73bec9595005322db0a3d",
+    "firstOom": "SrsMasteryBatchQueryTest context startup -> CompletionProfileCatalog.verifyUnchanged -> Files.readAllBytes",
+    "storedFocusPassed": 34
+  },
+  "findings": {
+    "sharedSpy": {
+      "false": {
+        "tests": 72,
+        "failures": 0,
+        "heaps": {
+          "after-class": 895.6,
+          "after-only-shared-spy-history-clear": 211.6,
+          "after-owned-shared-spy-disable": 211.0
+        },
+        "maxRetainedSpyCalls": 660785
+      },
+      "true": {
+        "tests": 72,
+        "failures": 0,
+        "heaps": {
+          "after-class": 211.2,
+          "after-only-shared-spy-history-clear": 211.2,
+          "after-owned-shared-spy-disable": 210.6
+        },
+        "maxRetainedSpyCalls": 34122
+      }
+    },
+    "fiveStaticCatalogs": {
+      "loaded": {
+        "LearnerFrontierInvariantTest": 164.4,
+        "LearnerProjectionMemoizationTest": 316.2,
+        "LearnerServiceCanonicalProjectionTest": 467.9,
+        "LearnerServiceCrossSubjectPilotTest": 619.6,
+        "MitOcwFrontierWalkthroughTest": 771.5
+      },
+      "released": {
+        "LearnerFrontierInvariantTest": 619.9,
+        "LearnerProjectionMemoizationTest": 468.2,
+        "LearnerServiceCanonicalProjectionTest": 316.5,
+        "LearnerServiceCrossSubjectPilotTest": 164.9,
+        "MitOcwFrontierWalkthroughTest": 11.0
+      },
+      "scope": "Real BeforeAll setup and catalog loading only; this probe does not claim these classes test assertions ran."
+    },
+    "startupRuntimeInputs": {
+      "files": 9099,
+      "totalMiB": 405.39,
+      "interpretation": "Transient captured byte arrays in the existing immutable-generation startup protocol, not an observed permanent production cache leak."
+    }
+  },
+  "isolatedSrs": {
+    "heapMiB": 1536,
+    "tests": 6,
+    "passed": 6,
+    "skipped": 0,
+    "elapsedMs": 44528,
+    "summary": "srs-isolated-1536m.summary.txt"
+  },
+  "candidateSequence": {
+    "maxHeapMiB": 1536,
+    "processExitCode": 1,
+    "tests": 250,
+    "failed": 1,
+    "finishedAfterSuccessfulOwnershipGuards": 250,
+    "sameCachedSpringContextAndSpy": true,
+    "classes": [
+      {
+        "run": 1,
+        "class": "SrsMasteryBatchQueryTest",
+        "tests": 6,
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "containersFailed": 0
+      },
+      {
+        "run": 2,
+        "class": "CompositionBoundCanonicalFocusRegressionTest",
+        "tests": 72,
+        "passed": 72,
+        "failed": 0,
+        "skipped": 0,
+        "containersFailed": 0
+      },
+      {
+        "run": 3,
+        "class": "LearnerFrontierInvariantTest",
+        "tests": 7,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0,
+        "containersFailed": 0
+      },
+      {
+        "run": 4,
+        "class": "LearnerProjectionMemoizationTest",
+        "tests": 3,
+        "passed": 2,
+        "failed": 1,
+        "skipped": 0,
+        "containersFailed": 0
+      },
+      {
+        "run": 5,
+        "class": "LearnerServiceCanonicalProjectionTest",
+        "tests": 58,
+        "passed": 58,
+        "failed": 0,
+        "skipped": 0,
+        "containersFailed": 0
+      },
+      {
+        "run": 6,
+        "class": "LearnerServiceCrossSubjectPilotTest",
+        "tests": 95,
+        "passed": 95,
+        "failed": 0,
+        "skipped": 0,
+        "containersFailed": 0
+      },
+      {
+        "run": 7,
+        "class": "MitOcwFrontierWalkthroughTest",
+        "tests": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "containersFailed": 0
+      },
+      {
+        "run": 8,
+        "class": "SrsMasteryBatchQueryTest",
+        "tests": 6,
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "containersFailed": 0
+      }
+    ],
+    "heapAfterClassesMiB": {
+      "after-1-SrsMasteryBatchQueryTest": 362.3,
+      "after-2-CompositionBoundCanonicalFocusRegressionTest": 555.5,
+      "after-3-LearnerFrontierInvariantTest": 363.6,
+      "after-4-LearnerProjectionMemoizationTest": 375.8,
+      "after-5-LearnerServiceCanonicalProjectionTest": 364.0,
+      "after-6-LearnerServiceCrossSubjectPilotTest": 373.2,
+      "after-7-MitOcwFrontierWalkthroughTest": 375.2,
+      "after-8-SrsMasteryBatchQueryTest": 364.2
+    },
+    "failures": [
+      "LearnerProjectionMemoizationTest exactConfigurationAndFilterModeInvalidateWithinTheSameTransaction()"
+    ],
+    "outOfMemory": false,
+    "guardFailureOrListenerException": false,
+    "interpretation": "One old, source-frozen Memoization semantic assertion fails; all ownership guards and both real SRS runs pass. The corrected current-root Memoization plus lifecycle patch separately passes 3/3."
+  },
+  "ownershipMicroProbe": {
+    "status": "PASS",
+    "ownedMocksReleased": 5,
+    "parallelThreads": 2,
+    "foreignStubPreserved": true,
+    "testBodyFailureCleanupVerified": true,
+    "beforeEachFailureCleanupVerified": true,
+    "listenerReusableAfterFailures": true,
+    "log": "ownership-boundary-probe.log"
+  },
+  "correctedRootMemoizationMerge": {
+    "heapMiB": 768,
+    "tests": 3,
+    "passed": 3,
+    "summary": "memoization-v2-768m.summary.txt",
+    "bindings": "memoization-v2-bindings.json"
+  },
+  "implementation": {
+    "patch": "candidate.patch",
+    "rootApplyCheckPassed": true,
+    "optInPlainFixtures": [
+      "CompositionBoundCanonicalFocusRegressionTest",
+      "LearnerFrontierInvariantTest",
+      "LearnerProjectionMemoizationTest",
+      "LearnerServiceCanonicalProjectionTest",
+      "LearnerServiceCrossSubjectPilotTest",
+      "MitOcwFrontierWalkthroughTest"
+    ],
+    "helper": "backend/src/test/java/com/skillpilot/backend/testsupport/OwnedMockitoMocks.java",
+    "rules": [
+      "Scope only manually created per-method mocks in these explicit plain JUnit fixtures; no global autodetection and no Spring integration.",
+      "Preserve shared spy identity and stubs between cases; only clearInvocations after each case. Disable this specific spy only after its owning class completes.",
+      "Release explicit class-owned catalog fields in AfterAll; clear the Bound class committedConfigs map.",
+      "Serialize the shared mutable Bound fixture with ExecutionMode.SAME_THREAD. Other per-test trackers are stored separately in ExtensionContext and verified on two concurrent workers.",
+      "Apply patch hunks to current Root; do not replace Memoization with the old candidate source, as Root independently corrected one assertion.",
+      "Keep the already accepted StoredCompositionFocusTest implementation intact."
+    ]
+  },
+  "separateObservation": "The SRS MockitoBean CurriculaService returns null to a scheduled BackgroundMetricsTask while its context is retained for minutes, producing background NPE logs. This is separate from the OOM, ownership guards, SQL assertions, and known old Memoization assertion. No SRS or production change is included.",
+  "limits": [
+    "No replay of all 3201 backend tests was performed. Final-head full CI with the unchanged 3g heap and context cache limit 2 is still required.",
+    "Production sources were not changed. Tests and real runtime classpath were privately compiled/reused with source hashes preserved.",
+    "Shared-spy A/B explicitly forces GC between cases to measure retained heap; the candidate sequence forces GC only between classes.",
+    "The sequence intentionally retains one existing real Spring context to verify foreign mock preservation; it is not an exact reconstruction of every previous CI context.",
+    "No Root product files, Git index, commits, remote state, or backend/build outputs were modified by this agent."
+  ]
+}

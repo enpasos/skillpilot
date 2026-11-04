@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "independent-j8-actual-trace-contract-diagnosis-20261104-v1",
+  "reviewerAgent": "/root/astra_review_current_integration",
+  "status": "ACTUAL_COACH_DISCOVERABILITY_DEFECT_BOUNDED_CORRECTION_SUPPORTED_NOT_IMPLEMENTATION_APPROVAL",
+  "trace": {
+    "path": "tmp/approach-review-20261101/backend-plan-scope-ci-fix-20261104-v1/root-j8-diagnostic-trace.json",
+    "sha256": "1d8edba259a5acb537a4396aa923ab17157158ef843012857fe89c16ad696178"
+  },
+  "observed": {
+    "requiredAction": "getFrontier",
+    "goalOptions": [],
+    "nextAllowedActions": [
+      "setScope",
+      "getFrontier"
+    ],
+    "completionStatus": "invalid",
+    "notice": "completion_target_routes_uncovered",
+    "waivedTargetGoalIds": [],
+    "publishedAssessmentCount": 165,
+    "sixRemainingScopeAssessmentsStartAvailable": [
+      "3045f00d-a5b9-547c-b568-593aeac9ffa3",
+      "4553367f-6265-511b-8632-46d99109e69b",
+      "a70d4194-1f95-5dc4-884d-8ca856663601",
+      "df9ecf0f-f4c9-5859-b99e-11cb62f6bb35",
+      "e96bc8e4-463b-5e86-b0c4-2c87b74d68f5",
+      "fbf10244-9e55-597a-98d4-006d972a5c41"
+    ],
+    "rawFrontierAtomicIds": [
+      "3045f00d-a5b9-547c-b568-593aeac9ffa3",
+      "4553367f-6265-511b-8632-46d99109e69b",
+      "a70d4194-1f95-5dc4-884d-8ca856663601",
+      "df9ecf0f-f4c9-5859-b99e-11cb62f6bb35",
+      "e96bc8e4-463b-5e86-b0c4-2c87b74d68f5",
+      "fbf10244-9e55-597a-98d4-006d972a5c41"
+    ]
+  },
+  "diagnosis": "The required-recommendation coverage-failure fallback filters assessments through normalCoverageGoal, leaving a learner with six genuinely available in-focus released examinations and an empty ordinary Coach choice surface. The authoritative assessment discovery response already marks all six startAvailable. This is a Coach discoverability inconsistency, not evidence that the underlying explicit start operation fails.",
+  "codeLoci": [
+    "LearnerService.normalCoverageGoal excludes assessment and memory.",
+    "LearnerService.getRichFrontier applies that filter to requiredRecommendations under typed coverage failure.",
+    "LearnerService.assessmentStartFrontier explicitly permits UNCOVERED_COMPLETION_TARGETS with the complete strict mastery snapshot and retains ordinary prerequisite, focus and readiness checks."
+  ],
+  "boundedCorrectionContract": [
+    "Preserve the invalid full-PC calculation, empty implicit credit, unknown quota and no completion/focus widening.",
+    "Expose explicit normal prerequisite-ready in-focus assessments through a separate Coach display/selection path using the SAME strict input snapshot, including matching nextAllowedActions and sanitized goal options.",
+    "Do not broaden normalCoverageGoal globally or use display-only choices as generic autopilot, plan handoff, required work, quota or credit evidence.",
+    "Retain fresh generation/revision, personal curriculum, focus, prerequisite, released task/rubric, ownership/session and exact current task-start constraints.",
+    "Keep the original positive six-option/readiness/CoachProjection assertions; add bounded positive explicit start and negative input/readiness/automatic-activation controls."
+  ],
+  "noDirectStartCallObserved": true,
+  "noImplementationApprovalYet": true,
+  "rootOrGitMutation": false
+}

@@ -1,0 +1,354 @@
+{
+  "manualArguments": [
+    {
+      "name": "cone/finite-data-not-convergence-proof",
+      "result": "PASS",
+      "evidence": "Numerical checks are supporting checks only. The review uses geometric containment and shrinking polygon-circle difference; it does not derive an infinite limit solely from four rows."
+    },
+    {
+      "name": "asymptotic/inequality-transfer",
+      "result": "PASS",
+      "evidence": "For fixed positive integer n, choose m=n+1 in the provided inequality. Divide by positive e^x*x, giving 0 <= x^n/e^x <= (n+1)!/x. This proves the squeeze for every fixed n; m=n merely gives a constant bound and is insufficient."
+    }
+  ],
+  "manualArgumentCount": 2,
+  "status": "PASS_REVIEWER_INDEPENDENT_MATHEMATICS_AND_FIELD_CHECKS",
+  "independentOfAuthorScripts": true,
+  "semanticReviewIsSeparateFromExecutableAssertions": true,
+  "checks": [
+    {
+      "name": "cone/4/base-rounding",
+      "result": "PASS",
+      "evidence": "{'shoelaceInner': 32.0, 'shoelaceOuter': 63.999999999999986}"
+    },
+    {
+      "name": "cone/4/supplied-volume-arithmetic",
+      "result": "PASS",
+      "evidence": "('96.000', '192.000')"
+    },
+    {
+      "name": "cone/4/containment-and-gap",
+      "result": "PASS",
+      "evidence": "95.99999999999996"
+    },
+    {
+      "name": "cone/8/base-rounding",
+      "result": "PASS",
+      "evidence": "{'shoelaceInner': 45.254833995939045, 'shoelaceOuter': 53.01933598375618}"
+    },
+    {
+      "name": "cone/8/supplied-volume-arithmetic",
+      "result": "PASS",
+      "evidence": "('135.765', '159.057')"
+    },
+    {
+      "name": "cone/8/containment-and-gap",
+      "result": "PASS",
+      "evidence": "23.293505963451402"
+    },
+    {
+      "name": "cone/16/base-rounding",
+      "result": "PASS",
+      "evidence": "{'shoelaceInner': 48.98347934273149, 'shoelaceOuter': 50.92156604919245}"
+    },
+    {
+      "name": "cone/16/supplied-volume-arithmetic",
+      "result": "PASS",
+      "evidence": "('146.949', '152.766')"
+    },
+    {
+      "name": "cone/16/containment-and-gap",
+      "result": "PASS",
+      "evidence": "5.8142601193828725"
+    },
+    {
+      "name": "cone/32/base-rounding",
+      "result": "PASS",
+      "evidence": "{'shoelaceInner': 49.94312243612884, 'shoelaceOuter': 50.42759851886809}"
+    },
+    {
+      "name": "cone/32/supplied-volume-arithmetic",
+      "result": "PASS",
+      "evidence": "('149.829', '151.284')"
+    },
+    {
+      "name": "cone/32/containment-and-gap",
+      "result": "PASS",
+      "evidence": "1.4534282482177474"
+    },
+    {
+      "name": "cone/both-general-base-limits",
+      "result": "PASS",
+      "evidence": "Both tend to 16*pi; h/3=3 is fixed, so both volumes tend to 48*pi."
+    },
+    {
+      "name": "cone/volume-rounding",
+      "result": "PASS",
+      "evidence": "150.79644737231007"
+    },
+    {
+      "name": "asymptotic/positive-cubic",
+      "result": "PASS",
+      "evidence": "{'expression': 'x**3*exp(-x)', 'direction': 'oo', 'limit': '0'}"
+    },
+    {
+      "name": "asymptotic/positive-reciprocal",
+      "result": "PASS",
+      "evidence": "{'expression': 'exp(x)/x**3', 'direction': 'oo', 'limit': 'oo'}"
+    },
+    {
+      "name": "asymptotic/negative-odd",
+      "result": "PASS",
+      "evidence": "{'expression': 'x**3*exp(x)', 'direction': '-oo', 'limit': '0'}"
+    },
+    {
+      "name": "asymptotic/negative-even",
+      "result": "PASS",
+      "evidence": "{'expression': 'x**4*exp(x)', 'direction': '-oo', 'limit': '0'}"
+    },
+    {
+      "name": "asymptotic/transfer-polynomial",
+      "result": "PASS",
+      "evidence": "{'expression': '(3*x**2 - 4*x + 1)*exp(-x)', 'direction': 'oo', 'limit': '0'}"
+    },
+    {
+      "name": "asymptotic/transfer-denominator",
+      "result": "PASS",
+      "evidence": "{'expression': 'exp(x)/(x**3 + 1)', 'direction': 'oo', 'limit': 'oo'}"
+    },
+    {
+      "name": "asymptotic/finite-comparison",
+      "result": "PASS",
+      "evidence": "[2.718281828459045, 54.598150033144236, 485165195.4097903]"
+    },
+    {
+      "name": "asymptotic/negative-substitution",
+      "result": "PASS",
+      "evidence": "Odd negative / even positive for all u>0, and positive-direction limits apply."
+    },
+    {
+      "name": "asymptotic/alternate-valid-bound",
+      "result": "PASS",
+      "evidence": "Using m=5 for x^3/e^x gives 120/x^2; must receive the same method credit."
+    },
+    {
+      "name": "unity/0/equation-modulus",
+      "result": "PASS",
+      "evidence": "1"
+    },
+    {
+      "name": "unity/0/rotation",
+      "result": "PASS",
+      "evidence": "Multiply by 1/2+i*sqrt(3)/2 rotates to the next point, including wraparound."
+    },
+    {
+      "name": "unity/1/equation-modulus",
+      "result": "PASS",
+      "evidence": "1/2 + sqrt(3)*I/2"
+    },
+    {
+      "name": "unity/1/rotation",
+      "result": "PASS",
+      "evidence": "Multiply by 1/2+i*sqrt(3)/2 rotates to the next point, including wraparound."
+    },
+    {
+      "name": "unity/2/equation-modulus",
+      "result": "PASS",
+      "evidence": "-1/2 + sqrt(3)*I/2"
+    },
+    {
+      "name": "unity/2/rotation",
+      "result": "PASS",
+      "evidence": "Multiply by 1/2+i*sqrt(3)/2 rotates to the next point, including wraparound."
+    },
+    {
+      "name": "unity/3/equation-modulus",
+      "result": "PASS",
+      "evidence": "-1"
+    },
+    {
+      "name": "unity/3/rotation",
+      "result": "PASS",
+      "evidence": "Multiply by 1/2+i*sqrt(3)/2 rotates to the next point, including wraparound."
+    },
+    {
+      "name": "unity/4/equation-modulus",
+      "result": "PASS",
+      "evidence": "-1/2 - sqrt(3)*I/2"
+    },
+    {
+      "name": "unity/4/rotation",
+      "result": "PASS",
+      "evidence": "Multiply by 1/2+i*sqrt(3)/2 rotates to the next point, including wraparound."
+    },
+    {
+      "name": "unity/5/equation-modulus",
+      "result": "PASS",
+      "evidence": "1/2 - sqrt(3)*I/2"
+    },
+    {
+      "name": "unity/5/rotation",
+      "result": "PASS",
+      "evidence": "Multiply by 1/2+i*sqrt(3)/2 rotates to the next point, including wraparound."
+    },
+    {
+      "name": "unity/complete-factorisation",
+      "result": "PASS",
+      "evidence": "The six distinct listed roots exhaust z^6-1; no multiplicity or missing-root issue."
+    },
+    {
+      "name": "unity/cubic-subset",
+      "result": "PASS",
+      "evidence": "k=0,2,4; not all sixth roots are third roots."
+    },
+    {
+      "name": "unity/fourth-transfer",
+      "result": "PASS",
+      "evidence": "1, i, -1, -i; square on axes."
+    },
+    {
+      "name": "unity/hexagon-side-lengths",
+      "result": "PASS",
+      "evidence": "All six squared adjacent distances equal 1; each radius equals 1."
+    },
+    {
+      "name": "division/1/inverse-product",
+      "result": "PASS",
+      "evidence": "{'numerator': '3 + 4*I', 'denominator': '1 - 2*I', 'quotient': '-1 + 2*I'}"
+    },
+    {
+      "name": "division/1/conjugate-denominator",
+      "result": "PASS",
+      "evidence": "5"
+    },
+    {
+      "name": "division/2/inverse-product",
+      "result": "PASS",
+      "evidence": "{'numerator': '2 - 3*I', 'denominator': '1 + 2*I', 'quotient': '-4/5 - 7*I/5'}"
+    },
+    {
+      "name": "division/2/conjugate-denominator",
+      "result": "PASS",
+      "evidence": "5"
+    },
+    {
+      "name": "division/3/inverse-product",
+      "result": "PASS",
+      "evidence": "{'numerator': '4 - 2*I', 'denominator': '2*I', 'quotient': '-1 - 2*I'}"
+    },
+    {
+      "name": "division/3/conjugate-denominator",
+      "result": "PASS",
+      "evidence": "4"
+    },
+    {
+      "name": "division/4/inverse-product",
+      "result": "PASS",
+      "evidence": "{'numerator': '1', 'denominator': '2 + I', 'quotient': '2/5 - I/5'}"
+    },
+    {
+      "name": "division/4/conjugate-denominator",
+      "result": "PASS",
+      "evidence": "5"
+    },
+    {
+      "name": "division/false-component-rule",
+      "result": "PASS",
+      "evidence": "-1-8i differs from 3+4i, so the claimed quotient is false."
+    },
+    {
+      "name": "division/general-conjugate-identity",
+      "result": "PASS",
+      "evidence": "For c+di != 0, denominator c^2+d^2>0 and quotient is (ac+bd)/(c^2+d^2)+i(bc-ad)/(c^2+d^2)."
+    },
+    {
+      "name": "cone-limit/single-score",
+      "result": "PASS",
+      "evidence": "20 total, one threshold at 15, cap text embedded in both actual solutionContent fields."
+    },
+    {
+      "name": "cone-limit/no-prerequisite-coverage",
+      "result": "PASS",
+      "evidence": "['50612a57-7b9d-45fd-bc08-e95556444760']"
+    },
+    {
+      "name": "cone-limit/de/field-fidelity",
+      "result": "PASS",
+      "evidence": "Standalone task, full solution and cap rubric present in exact draft fields."
+    },
+    {
+      "name": "cone-limit/en/field-fidelity",
+      "result": "PASS",
+      "evidence": "Standalone task, full solution and cap rubric present in exact draft fields."
+    },
+    {
+      "name": "asymptotic-by-content/single-score",
+      "result": "PASS",
+      "evidence": "20 total, one threshold at 15, cap text embedded in both actual solutionContent fields."
+    },
+    {
+      "name": "asymptotic-by-content/no-prerequisite-coverage",
+      "result": "PASS",
+      "evidence": "['49f9059a-876c-5051-8146-d008b5cc691c']"
+    },
+    {
+      "name": "asymptotic-by-content/de/field-fidelity",
+      "result": "PASS",
+      "evidence": "Standalone task, full solution and cap rubric present in exact draft fields."
+    },
+    {
+      "name": "asymptotic-by-content/en/field-fidelity",
+      "result": "PASS",
+      "evidence": "Standalone task, full solution and cap rubric present in exact draft fields."
+    },
+    {
+      "name": "roots-of-unity/single-score",
+      "result": "PASS",
+      "evidence": "20 total, one threshold at 15, cap text embedded in both actual solutionContent fields."
+    },
+    {
+      "name": "roots-of-unity/no-prerequisite-coverage",
+      "result": "PASS",
+      "evidence": "['8e18154d-41d6-592e-ba98-537edad338e8']"
+    },
+    {
+      "name": "roots-of-unity/de/field-fidelity",
+      "result": "PASS",
+      "evidence": "Standalone task, full solution and cap rubric present in exact draft fields."
+    },
+    {
+      "name": "roots-of-unity/en/field-fidelity",
+      "result": "PASS",
+      "evidence": "Standalone task, full solution and cap rubric present in exact draft fields."
+    },
+    {
+      "name": "complex-division/single-score",
+      "result": "PASS",
+      "evidence": "20 total, one threshold at 15, cap text embedded in both actual solutionContent fields."
+    },
+    {
+      "name": "complex-division/no-prerequisite-coverage",
+      "result": "PASS",
+      "evidence": "['5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d']"
+    },
+    {
+      "name": "complex-division/de/field-fidelity",
+      "result": "PASS",
+      "evidence": "Standalone task, full solution and cap rubric present in exact draft fields."
+    },
+    {
+      "name": "complex-division/en/field-fidelity",
+      "result": "PASS",
+      "evidence": "Standalone task, full solution and cap rubric present in exact draft fields."
+    }
+  ],
+  "count": 65,
+  "doesNotProve": [
+    "runtime grader correctness",
+    "role or placement acceptance",
+    "Native",
+    "M7",
+    "CI",
+    "learner effectiveness"
+  ]
+}

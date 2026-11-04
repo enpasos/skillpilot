@@ -1,0 +1,60 @@
+{
+  "key": "new_he_g8_descriptive_statistics",
+  "goalId": "6e977ea1-0d38-54bb-82d7-12e6326845af",
+  "title": "Prüfung: Wartezeiten beschreiben und ihre Streuung vergleichen",
+  "titleEn": "Assessment: Describe waiting times and compare their spread",
+  "directRequires": [
+    "616c72a4-972d-5cc0-b903-e2a24bcb150c",
+    "83a5546e-0ea6-576e-83e2-3387b30872bb",
+    "e402f330-8ac6-525f-b3ff-bc4be229d131"
+  ],
+  "examDataContent": {
+    "reviewStatus": "draft",
+    "coveredGoalIds": [
+      "e402f330-8ac6-525f-b3ff-bc4be229d131"
+    ],
+    "coveredStrands": [
+      "L5"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "# Wartezeiten zweier Schalter\n\nEigene konstruierte Daten, jeweils acht Wartezeiten in Minuten:\n\n- Schalter A: $2,3,3,4,4,4,5,7$.\n- Schalter B: $3,3,4,4,4,4,5,5$.\n\nDie Aufgabe erweitert den bestehenden SkillPilot-Lernzielumfang bewusst um **empirische Varianz und Standardabweichung**. Im offiziellen hessischen G8-Plan, physische S. 25 / gedruckte S. 24, wird Streuung nur qualitativ verlangt; diese Rechnung wird hier nicht als offizielle G8-Pflicht ausgegeben. Taschenrechner oder Tabellenkalkulation sind erlaubt.\n\n\n1. Erstelle für beide Datensätze eine absolute und relative Häufigkeitstabelle und eine geeignete vergleichbare Grafik. Beschrifte Achsen, Einheit, Schalter und Skala; begründe die Darstellungswahl.\n\n2. Bestimme arithmetisches Mittel, Median und Modalwert beider Datensätze. Welchen Lagewert würdest du für eine typische Wartezeit gegenüber Kundinnen und Kunden nennen, welchen für die gesamte Wartezeit pro acht Personen? Begründe und erläutere, warum mehrere begründete Antworten möglich sein können.\n\n3. Verwende ausdrücklich den Divisor $m=8$:\n\n$$\nv=\\frac18\\sum_{i=1}^8(x_i-\\bar x)^2,\\qquad s=\\sqrt v.\n$$\n\nBerechne $v,s$ für A und B, zeige die Abweichungsquadratsummen und vergleiche die Streuung im Kontext samt Einheiten. Hier ist keine unverzerrte Populationsschätzung mit Divisor $7$ gefragt.\n\n4. Ersetze bei A die $7$ durch $23$ Minuten, alle übrigen Werte bleiben. Berechne die drei Lagewerte und $v,s$ erneut. Erläutere Ausreißerempfindlichkeit sowie Grenzen der Aussage „Schalter B verursacht kürzere Wartezeiten“. Die kleinen konstruierten Datensätze allein tragen keinen Ursachennachweis.\n",
+    "taskContentEn": "# Waiting times at two counters\n\nOwn constructed data, eight waits in minutes each:\n\n- Counter A: $2,3,3,4,4,4,5,7$.\n- Counter B: $3,3,4,4,4,4,5,5$.\n\nThis task deliberately supplements the existing SkillPilot target with **empirical variance and SD**. The official Hessian G8 plan, physical p25 / printed p24, requires spread only qualitatively; this computation is not presented as official compulsory G8 content. Calculator or spreadsheet use is allowed.\n\n\n1. Make absolute/relative frequency tables and a suitable comparable graphic for both datasets. Label axes, units, counters and scale; justify the display choice.\n\n2. Determine mean, median and mode for both. Which location measure would you report for a typical customer's wait, and which for total waiting time per eight people? Justify, allowing different defensible choices.\n\n3. Use divisor $m=8$ explicitly:\n\n$$\nv=\\frac18\\sum_{i=1}^8(x_i-\\bar x)^2,\\qquad s=\\sqrt v.\n$$\n\nCalculate $v,s$ for A/B, show sums of squared deviations, and compare spread with units. An unbiased population estimate using divisor $7$ is not requested.\n\n4. Replace A's $7$ by $23$ minutes and leave all other values fixed. Recompute all three location measures and $v,s$. Discuss outlier sensitivity and the limits of “Counter B causes shorter waits”. These small constructed datasets alone do not establish cause.\n",
+    "solutionContent": "# Musterlösung\n\n\n1. Für Werte $2,3,4,5,7$ hat A absolute Häufigkeiten $1,2,3,1,1$ und relative $1/8,2/8,3/8,1/8,1/8$; B hat $0,2,4,2,0$ bzw. $0,2/8,4/8,2/8,0$. Eine zusätzliche Nullhäufigkeitsstelle bei $6$ ist zulässig. Vergleichbare nebeneinanderliegende Balken mit gleicher Zahlenskala zeigen die Häufung und Streuung diskreter Minutenangaben; getrennte gleich skalierte Grafiken oder ein passend erklärter Punktplot sind ebenfalls geeignet. Ein Kreisdiagramm würde die geordnete Abstandsstruktur schlechter zeigen.\n\n2. Beide Summen sind $32$, also beide Mittelwerte $4$. Die mittleren Positionen sind jeweils $4,4$, Median $4$, und häufigster Wert ist $4$. Alle drei ergeben hier dieselbe typische Zahl. Median ist bei einzelnen sehr langen Wartezeiten robuster; Modalwert beschreibt die häufigste beobachtete Angabe. Für Gesamtwartezeit ist das Mittel passend, da $8\\bar x$ die Summe liefert. Eine sachlich begründete alternative Wahl für „typisch“ zählt.\n\n3. A: Quadratsumme um $4$ ist $4+1+1+0+0+0+1+9=16$, daher $v_A=2\\,\\mathrm{min}^2$, $s_A=\\sqrt2\\approx1{,}414\\,\\mathrm{min}$. B: $1+1+0+0+0+0+1+1=4$, also $v_B=0{,}5\\,\\mathrm{min}^2$, $s_B=\\sqrt{0{,}5}\\approx0{,}707\\,\\mathrm{min}$. Gleiche Mitte, aber A streut stärker; SD beschreibt die Größenordnung der Abstände, keine garantierte Grenze für jeden Wert.\n\n4. Neue A-Summe $48$, Mittel $6$, Median und Modus weiterhin $4$. Die Quadratsumme um $6$ ist $16+9+9+4+4+4+1+289=336$; $v=42\\,\\mathrm{min}^2$, $s=\\sqrt{42}\\approx6{,}481\\,\\mathrm{min}$. Der Ausreißer erhöht Mittel, Varianz und SD deutlich, aber nicht Median/Modus dieses Datensatzes. Die Mittelwerte der ursprünglichen A/B-Daten sind gleich, also ist „kürzer“ ohnehin nicht durch deren Mittel gestützt. Unterschiedliche Ankunftszeiten, Anliegen oder Bedienbedingungen können Unterschiede erklären; ohne passende Untersuchung ist keine kausale Aussage oder Verallgemeinerung gerechtfertigt.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 5 | zwei Häufigkeitstabellen einschließlich relativer Werte 2; passende vergleichbare Grafik 2; begründete Wahl/Beschriftung 1 |\n| 2 | 4 | sechs Lagewerte 2; typische Wartezeit begründet 1; Mittel für Gesamtsumme begründet 1 |\n| 3 | 6 | beide Quadratsummen 2; beide Varianzen 1; beide SD 1; Streuungsvergleich 1; richtige Einheiten/keine Garantie 1 |\n| 4 | 5 | neue Lagewerte 1; neue Quadratsumme/Varianz 1; neue SD 1; Ausreißerwirkung 1; sachliche Kausalitätsgrenze 1 |\n| **Gesamt** | **20** | **Bestanden ab 12** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+    "solutionContentEn": "# Reference solution\n\n\n1. At values $2,3,4,5,7$, A has counts $1,2,3,1,1$ and relative counts divided by $8$; B has $0,2,4,2,0$, likewise divided by $8$. Including a zero at $6$ is fine. Side-by-side bars on a common numeric scale, equally scaled separate charts, or an explained dot plot show the ordered waits and spread. Label minutes, frequency and counter. A pie chart makes the ordered distance structure less clear.\n\n2. Both sums are $32$, so both means are $4$. Both medians and modes are also $4$. Here they agree. Median resists an isolated long wait, whereas mode describes the most common recorded value. Mean suits total time because $8\\bar x$ gives the sum. Other reasoned choices for “typical” receive credit.\n\n3. Squared-deviation sums about $4$ are $16$ for A and $4$ for B. Thus $v_A=2\\,\\mathrm{min}^2$, $s_A=\\sqrt2\\approx1.414\\,\\mathrm{min}$; $v_B=0.5\\,\\mathrm{min}^2$, $s_B=\\sqrt{0.5}\\approx0.707\\,\\mathrm{min}$. A has greater spread despite the same centre. SD describes deviation scale, not a guaranteed bound.\n\n4. Replacing $7$ by $23$ gives sum $48$, mean $6$, median and mode still $4$. Squared deviations about $6$ sum to $336$, hence $v=42\\,\\mathrm{min}^2$ and $s=\\sqrt{42}\\approx6.481\\,\\mathrm{min}$. The outlier greatly raises mean, variance and SD but leaves median/mode unchanged here. Original means were equal, so they do not show shorter average waits at B. Timing, customer needs or operating conditions could matter; these small datasets do not establish causation or general population conclusions.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 5 | two absolute/relative tables 2; suitable comparable graphic 2; justified choice/labels 1 |\n| 2 | 4 | six location measures 2; typical wait justified 1; mean for total justified 1 |\n| 3 | 6 | two squared-deviation sums 2; two variances 1; two SDs 1; spread comparison 1; units/no guarantee 1 |\n| 4 | 5 | new location measures 1; new squared sum/variance 1; new SD 1; outlier effect 1; contextual causal limit 1 |\n| **Total** | **20** | **Pass at 12** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 12,
+      "steps": [
+        {
+          "id": "new_he_g8_descriptive_statistics_1",
+          "points": 5,
+          "description": "zwei Häufigkeitstabellen einschließlich relativer Werte 2; passende vergleichbare Grafik 2; begründete Wahl/Beschriftung 1",
+          "descriptionEn": "two absolute/relative tables 2; suitable comparable graphic 2; justified choice/labels 1"
+        },
+        {
+          "id": "new_he_g8_descriptive_statistics_2",
+          "points": 4,
+          "description": "sechs Lagewerte 2; typische Wartezeit begründet 1; Mittel für Gesamtsumme begründet 1",
+          "descriptionEn": "six location measures 2; typical wait justified 1; mean for total justified 1"
+        },
+        {
+          "id": "new_he_g8_descriptive_statistics_3",
+          "points": 6,
+          "description": "beide Quadratsummen 2; beide Varianzen 1; beide SD 1; Streuungsvergleich 1; richtige Einheiten/keine Garantie 1",
+          "descriptionEn": "two squared-deviation sums 2; two variances 1; two SDs 1; spread comparison 1; units/no guarantee 1"
+        },
+        {
+          "id": "new_he_g8_descriptive_statistics_4",
+          "points": 5,
+          "description": "neue Lagewerte 1; neue Quadratsumme/Varianz 1; neue SD 1; Ausreißerwirkung 1; sachliche Kausalitätsgrenze 1",
+          "descriptionEn": "new location measures 1; new squared sum/variance 1; new SD 1; outlier effect 1; contextual causal limit 1"
+        }
+      ]
+    },
+    "reviewNote": "Own bilingual whole form; author candidate pending genuine independent content, source, preparation and role/identity reviews. One ordinary total result; no learner mastery migration."
+  }
+}

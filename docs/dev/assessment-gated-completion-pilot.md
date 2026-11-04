@@ -1,6 +1,6 @@
 # Assessment-gated Completion: Implementierung und Prüfung
 
-Stand: 31. Oktober 2026. Der historische Dateiname bleibt bestehen. Dieses
+Stand: 1. November 2026. Der historische Dateiname bleibt bestehen. Dieses
 Dokument beschreibt jetzt die **allgemeine lokale Bedarfsberechnung**, die
 Cockpit-Bedienung und die Plan-IST-Integration. Grundlage sind der
 [aktuelle Umsetzungsplan](assessment-gated-completion-implementation-plan.md)
@@ -14,7 +14,8 @@ Die Funktion benötigt keine manuellen Erlassprofile. Im vollständigen,
 autoritativ bestimmten Umfang gelten drei Regeln:
 
 1. Jedes gemeisterte Lernziel beendet seinen eigenen Vorbereitungsbedarf.
-2. Jedes nicht mehr benötigte Nicht-Abschlussprüfungsziel ist implizit erledigt.
+2. Jedes nicht mehr benötigte gewöhnliche Ziel ist implizit erledigt. Prüfungs-
+   und Gedächtnisziele sind davon ausgenommen und bleiben bis zur Mastery offen.
    Auch sein Vorbereitungsbedarf entfällt; dies wird bis zum stabilen Zustand
    fortgesetzt.
 3. Jede Abschlussprüfung ist direkt ansteuerbar. Fehlende Vorbereitungsmastery
@@ -23,16 +24,24 @@ autoritativ bestimmten Umfang gelten drei Regeln:
 
 Eine bestandene Prüfung ist damit **keine Voraussetzung** für implizite
 Erledigung. Auch gewöhnliche gemeisterte Ziele stoppen Bedarf. Ein gewöhnliches
-Endziel ohne Verbraucher ist implizit erledigt, ebenso Orientierung oder Karten.
-Enthält der vollständige Kontext keine Abschlussprüfung, ist er bereits ohne
-Mastery vollständig implizit erledigt. Offene Abschlussprüfungen bleiben offen.
+Endziel ohne Verbraucher wäre rechnerisch implizit erledigt. In vollständigen
+autoritativen Curricula und unterstützten Projektionen ist das bei Mastery null
+ein Modellierungsfehler: Jedes Target muss über direkte Voraussetzungen von
+einem ausgewählten Prüfungs- oder Gedächtnis-Target aus erreichbar sein. Ein nichtleerer
+Lehrplan ohne solche geschützten Ziele ist nicht freigabefähig. Deterministische
+Tests prüfen diese Routen; sie ersetzen keine didaktische Aufgabenprüfung.
+Gedächtnisziele bleiben auch nach bestandenen Prüfungen offen, bis der vorhandene
+Recall-Resolver ihre Mastery bestätigt. Sie werden dadurch keine Prüfungsziele.
+Geschützte Unterstützung außerhalb der Targets wird nicht zur eigenständigen
+Abschlusspflicht. Nach Ende ihres Bedarfs bleibt sie unmastered, ohne den
+gewählten Abschluss zu blockieren; einen impliziten Marker erhält sie nie.
 
 Pro atomarem Lernziel bleibt nur `mastery ∈ {0,1}` gespeichert. Neue allgemeine
 Mastery-Writes akzeptieren nur diese Werte; historische Werte ab `0.9` werden
 weiter über den gemeinsamen Kompatibilitätsresolver gelesen. Ein abgeleiteter
 Arbeitsentfall verändert weder Einzelmastery noch globale Mastery-Statistik.
 Es entstehen keine zusätzlichen Prüfbelege, anerkannten Pass-Zustände oder
-Erlassdatensätze. Implizite Karten erzeugen keine Recall-Ergebnisse; implizite
+Erlassdatensätze. Gedächtnisziele werden nie implizit erledigt. Implizite
 Orientierung erzeugt keine erfundene Coach-Interaktion.
 
 **Die ausführliche Prüfungsbewertung durch die KI bleibt erhalten.** Nach der
@@ -53,7 +62,10 @@ Er erzeugt keine gespeicherte Route, pausiert keinen normalen Lernplan und
 Weitere Abschnitte stammen aus den autoritativen projizierten Unterbäumen.
 Eine bewusste Auswahl bindet `automatic:<Scope-ID>` als Lernweg. Ein- und
 Ausklappen des Baums, Suchfilter und ein engerer temporärer Fokus verkleinern
-den gewählten Abschlussumfang nicht. Der vollständige Bedarf umfasst auch
+den vollständigen Bedarf nicht. Der ausgewählte Abschnitt ist nur eine Anzeige-
+und Zählmaske über derselben Auswertung des vollständigen Persönlichen Lehrplans.
+Insbesondere entfernt ein reiner Vorbereitungsabschnitt keine außerhalb seiner
+Maske liegende Prüfung. Der vollständige Bedarf umfasst auch
 versteckte, indirekte und fachübergreifende Voraussetzungen; bei gemeisterten
 Zwischenzielen stoppt er. Das Backend berechnet und erklärt den Zustand gemeinsam
 für Cockpit und unterstützten Coach.
@@ -124,7 +136,7 @@ Persönlichen Lehrplan weiterhin A benötigt, bleibt A erforderlich: I=0.
 Auch noch nicht eingeplante oder fachübergreifende Verbraucher zählen zum
 Bedarf. Der anschließende IST-Beitrag bleibt auf G des jeweiligen Fachs
 beschränkt; zwischen Fächern wird kein Saldo verrechnet. Ein enger gewählter
-Abschlussabschnitt kann W_section anzeigen, ändert aber Plan-I nicht.
+Abschlussabschnitt zeigt nur W_PC innerhalb seiner Targetmaske, ändert aber Plan-I nicht.
 Jedes gemeisterte Zwischenziel stoppt seinen eigenen Bedarf; eine zusätzliche
 Prüfungsankerregel gibt es nicht.
 
@@ -142,6 +154,15 @@ partiellen Update unverändert. Tatsächliche Periodenabschlüsse stammen weiter
 aus echten Abschlussereignissen; implizite Erledigung erzeugt keine künstlichen
 Zeitpunkte oder Lernaktivitäten.
 
+Das Tages-/Wochenkontingent zählt nach der bestätigten Regel vom 1. November
+2026 ausschließlich gültige explizite Abschlüsse dieser Periode. Eine heute
+bestandene Prüfung und zwei dadurch implizit erledigte Ziele ergeben deshalb
+**1** Beitrag zum Periodenziel und standardmäßig **3** zum Gesamt-IST. Frühere
+Vorarbeit kann den Gesamtsaldo verbessern, aber nicht die aktuelle Periodennadel
+füllen. Die Checkbox ändert nur das Gesamt-IST; der Periodenzähler bleibt in
+beiden Modi explizit. Ein bereits abgeschlossener Gesamtplan und ein noch nicht
+erfülltes Periodenkontingent sind getrennte Aussagen.
+
 Die vorhandenen **Plandetails** zeigen bei Bedarf einmal pro Fach den
 backendlokalisierten Satz, etwa **„Im Plan angerechnet: 3 Ziele, davon
 2 implizit erledigt.“** Bei expliziter Zählung, fehlendem impliziten Beitrag oder
@@ -153,7 +174,7 @@ verlassen, Fokus ändern oder direkte Prüfungsangebote ausschalten entfernt
 keine weiterhin gültige implizite Plananrechnung. Fachliche oder Planänderungen
 werden dagegen neu ausgewertet. Details stehen im
 [Lernplanstatuskonzept](../concept/didactic/unified-learning-plan-status.md#34-implizite-erledigung-und-optionale-explizit-zahlung)
-und in [Abschnitt 7.1 des Umsetzungsplans](assessment-gated-completion-implementation-plan.md#71-plan-ist-einschließlich-impliziter-erledigung).
+und in [Abschnitt 7.1 des Umsetzungsplans](assessment-gated-completion-implementation-plan.md#plan-ist).
 
 ## Aktivierung und Betrieb
 
@@ -177,6 +198,13 @@ Statische Graphen sind an eine unveränderliche Curriculumgeneration gebunden
 und werden in begrenzten Caches wiederverwendet. Mastery wird pro konsistentem
 Lernerzustand ausgewertet. Nicht verfügbare oder ungültige Daten liefern eine
 erklärte Einschränkung; sie gelten nicht als leere, vollständig erledigte Arbeit.
+Bei fehlender Routenabdeckung lautet der Hinweis
+`completion_target_routes_uncovered`: implizite Anrechnung, positiver Abschluss
+und automatische Übergänge entfallen. Strukturell gültige direkte Prüfungen
+bleiben auffindbar und unter den bisherigen Sitzungsprüfungen startbar.
+Normales Lernen und gespeicherte Mastery bleiben verfügbar. Plananzeigen nennen
+die fehlende Auswertbarkeit, zeigen weiterhin explizite Zahlen und pausieren
+betroffene automatische Fortsetzungen.
 Historische Paket- und Reviewartefakte bleiben unverändert. Ein neuer
 Produktionsstand benötigt einen eigenen kontrollierten Rollout.
 
@@ -199,11 +227,54 @@ npm --prefix app run test:level-completion-browser
 npm --prefix app run test:learner-learning-plans
 cd backend
 ./gradlew test --tests '*AutomaticCompletion*Test' --tests '*LearningPlanCompletion*Test'
+./gradlew test --tests 'com.skillpilot.backend.completion.CurriculumCompletionIntegrityTest'
+./gradlew test --tests 'com.skillpilot.backend.completion.CurriculumCompletionSubjectSelectionTest'
+./gradlew curriculumCompletionIntegrity -PcompletionIntegritySubject=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced
 ```
 
+Die normalen `test`-Aufrufe prüfen die semantischen Regressionen und die
+Fachauswahl. Der Aufruf der Integritätsklasse in diesem Task umfasst ihre sechs
+Fixtures; er führt keinen vollständigen Curriculum-Datenlauf aus.
+Der gesonderte Task `curriculumCompletionIntegrity` prüft dagegen die tatsächlichen
+Angebote. Der oben angegebene Fachselektor wählt Mathematik mit derzeit 154
+Länderangeboten und sieben gültigen ALL-Konfigurationen, insgesamt 161 Angeboten.
+Die ALL-Konfigurationen entstehen aus den tatsächlich angebotenen Entscheidungen
+des Personalisierungsflows; fehlende Dauer- und Kursdimensionen bleiben abwesend.
+Der rohe kanonische Gesamtgraph bleibt eine gesonderte Diagnose und ersetzt
+keines dieser Personal-Curriculum-Angebote. Der vollständige kanonische Graph und fachfremde Voraussetzungen
+bleiben dabei erhalten. Ein leerer oder unbekannter Selektor scheitert.
+
+Ohne Fachselektor prüft derselbe Task sämtliche geschützten M7-Fächer:
+
+```sh
+./gradlew curriculumCompletionIntegrity
+```
+
+Fach- und Gesamtläufe erzeugen getrennte Berichte unter
+`backend/build/reports/curriculum-completion-integrity/{Fach-ID|all}/`:
+`audit.json` und `input-manifest.json`. Die JUnit-Ergebnisse liegen entsprechend
+unter `backend/build/test-results/curriculumCompletionIntegrity/{Fach-ID|all}/`.
+Ein Fachbericht nennt die ungeprüften Fächer ausdrücklich. Der frühere einzelne
+Bericht `backend/build/reports/curriculum-completion-integrity.json` bleibt als
+historischer Nachweis erhalten und wird durch Teilprüfungen nicht überschrieben.
+Die CI prüft zusätzlich vollständige Angebotsmengen, aktuelle Eingabebindungen,
+Commit und genau einen ausgeführten Corpusfall ohne übersprungene Tests.
+
+Ein roter Curriculumlauf ist ein offener Inhaltsbefund und darf nicht als
+erfolgreiche Abnahme ausgegeben werden. Reparaturen erfolgen fachlich begründet
+in der Reihenfolge Mathematik, Physik, Biologie, Chemie und Wirtschaft. Der
+[Mathematik-Meilenstein](assessment-gated-completion-implementation-plan.md#10-fachweise-korrektur-und-github-meilensteine)
+benötigt den vollständigen grünen Mathematiklauf und die übrigen dort genannten
+Prüfungen. Die offenen Befunde späterer Fächer bleiben im Gesamtaudit sichtbar.
+
 Die Kernfälle umfassen Mastery an gewöhnlichen Zwischenzielen, direkte statt
-transitive Bedarfsfortpflanzung, mehrere offene Prüfungen, Q=0, unbelegte
-Endziele, vollständigen Personal-Curriculum-Bedarf auch außerhalb G, Defaults,
+transitive Bedarfsfortpflanzung, mehrere offene Prüfungen, Gedächtnisziele in
+allen kompatiblen Kodierungen, geschützte Unterstützung ohne zusätzliche
+Abschlusspflicht, offene ausgewählte Karten
+nach bestandener Prüfung, getrennte Prüfungszählung und Mastery-Rücknahme.
+Curriculumtests prüfen Target-Routen bei Mastery null und melden ungeschützte
+gewöhnliche Endziele als Fehler. Weitere Fälle sind vollständiger
+Personal-Curriculum-Bedarf auch außerhalb G, Defaults,
 Optout, direkte Sitzungswahl,
 Stale-Zustände sowie Desktop/Mobil und Tastatur. Historische Profile behalten
 eigene Kompatibilitätsprüfungen; deren Erfolg ersetzt diese allgemeinen Fälle

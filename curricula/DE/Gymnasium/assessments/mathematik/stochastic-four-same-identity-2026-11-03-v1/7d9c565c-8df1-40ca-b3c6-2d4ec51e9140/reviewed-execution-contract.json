@@ -1,0 +1,103 @@
+{
+  "reviewStatus": "released",
+  "coveredGoalIds": [
+    "7d9c565c-8df1-40ca-b3c6-2d4ec51e9140"
+  ],
+  "coveredStrands": [
+    "L4",
+    "L5"
+  ],
+  "demandLevels": [
+    "AB1",
+    "AB2"
+  ],
+  "taskContent": "Die Grafik zeigt drei Normaldichten A, B und C. Die waagerechte Variable $x$ wird in Millimetern angegeben; die senkrechte Achse zeigt Dichte in $1/\\mathrm{mm}$. Zu genau einem Graphen gehört\n$$f(x)=\\frac1{2\\sqrt{2\\pi}}\\exp\\!\\left(-\\frac{(x-10)^2}{8}\\right).$$\n\n![Drei Normaldichten A, B und C](/assets/assessment-materials/mathematik/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/normal-density-comparison.de.fe737746eab32d4aa709123f1e2ab0f42c2f26066bf68d645d936b72d145cdfc.png)\n\n**1 · Parameter und Zuordnung (5 BE)**\n\nBestimme Erwartungswert $\\mu$ und Standardabweichung $\\sigma$ der Dichte $f$ aus Term oder Graph. Ordne $f$ einem der drei Graphen zu und begründe deine Zuordnung anhand von Lage und Streuung. Nenne auch die Varianz.\n\n**2 · Hoch- und Wendepunkte (5 BE)**\n\nGib die $x$-Lage des Hochpunkts und die $x$-Lagen beider Wendepunkte von $f$ an. Ordne diese Stellen an der passenden Glockenkurve ein, zum Beispiel durch eine kleine markierte Skizze oder eine eindeutige Beschreibung. Bekannte Eigenschaften der Normaldichte dürfen verwendet werden; Ableitungen und exakte Dichtehöhen sind nicht verlangt.\n\n**3 · Parameter ändern (6 BE)**\n\nWelche Parameter passen zu den beiden anderen Graphen? Erkläre getrennt, wie sich gegenüber $f$ eine Änderung von $\\mu$ bei gleichem $\\sigma$ und eine Änderung von $\\sigma$ bei gleichem $\\mu$ auswirken. Beziehe Lage, Breite und Höhe ein. Es genügt eine kurze mathematisch klare Erklärung; eine neue Wahrscheinlichkeitsrechnung ist nicht nötig.\n",
+  "taskContentEn": "The figure shows three normal densities A, B and C. The horizontal variable $x$ is measured in millimetres; the vertical axis shows density in $1/\\mathrm{mm}$. Exactly one graph represents\n$$f(x)=\\frac1{2\\sqrt{2\\pi}}\\exp\\!\\left(-\\frac{(x-10)^2}{8}\\right).$$\n\n![Three normal densities A, B and C](/assets/assessment-materials/mathematik/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/normal-density-comparison.en.cfe10fbea79c457b9505b6e5b58c5792b308452fd980d9209ea1a72fe4194ba9.png)\n\n**1 · Parameters and matching (5 points)**\n\nDetermine the expected value $\\mu$ and standard deviation $\\sigma$ of $f$ from the expression or graph. Match $f$ to one of the three graphs and justify the match using location and spread. Also state the variance.\n\n**2 · Maximum and inflection points (5 points)**\n\nState the $x$-location of the maximum and the $x$-locations of both inflection points of $f$. Identify these locations on the relevant bell curve, for example with a small annotated sketch or an unambiguous description. Known properties of the normal density may be used; derivatives and exact density heights are not required.\n\n**3 · Change the parameters (6 points)**\n\nWhich parameters fit the other two graphs? Explain separately how changing $\\mu$ with $\\sigma$ fixed and changing $\\sigma$ with $\\mu$ fixed affect the graph relative to $f$. Include location, width and height. A concise mathematically clear explanation suffices; no further probability calculation is needed.\n",
+  "solutionContent": "**1.** Im allgemeinen Dichteterm $\\frac1{\\sigma\\sqrt{2\\pi}}\\exp(-(x-\\mu)^2/(2\\sigma^2))$ entsprechen hier $\\mu=10\\,\\mathrm{mm}$ und $\\sigma=2\\,\\mathrm{mm}$; die Varianz ist $4\\,\\mathrm{mm}^2$. $f$ gehört zu **A**: Symmetriezentrum und Gipfel liegen bei $10$, und A ist breiter und niedriger als C mit demselben Zentrum. Die Parameter können ebenso durch sachgerechtes Auswerten der Glockenkurve erschlossen werden.\n\n**2.** Eine Normaldichte hat ihren Hochpunkt bei $x=\\mu$ und ihre Wendestellen bei $x=\\mu-\\sigma$ und $x=\\mu+\\sigma$. Somit liegt der Gipfel von A bei $x=10$; links und rechts davon liegen die Wendestellen bei $x=8$ und $x=12$. Dort wechselt die Glockenkurve die Krümmungsrichtung. Die $y$-Werte sind nicht verlangt; ergänzend wären sie am Gipfel ungefähr $0{,}1995\\,\\mathrm{mm}^{-1}$ und an beiden Wendepunkten ungefähr $0{,}1210\\,\\mathrm{mm}^{-1}$. Ein freiwilliger korrekter Ableitungsweg ist gleichwertig, aber keine Voraussetzung.\n\n**3.** B hat $\\mu=14\\,\\mathrm{mm}$ und $\\sigma=2\\,\\mathrm{mm}$. Bei gleicher Standardabweichung wird A um $4\\,\\mathrm{mm}$ nach rechts verschoben; Breite und Gipfelhöhe bleiben gleich. C hat $\\mu=10\\,\\mathrm{mm}$ und $\\sigma=1\\,\\mathrm{mm}$. Das Zentrum bleibt; die Kurve ist horizontal halb so breit und ihr Gipfel doppelt so hoch. Allgemein macht größeres $\\sigma$ die Glockenkurve bei gleichem Zentrum breiter und niedriger; kleineres $\\sigma$ macht sie schmaler und höher. Die Gesamtfläche bleibt $1$. Die Höhe ist eine Dichte, keine Punktwahrscheinlichkeit; eine solche zusätzliche Erläuterung ist richtig, aber keine neue Teilpflicht dieser Aufgabe.\n\n**Teilpunkte:** 1 BE je für $\\mu$ und $\\sigma$, 1 BE für die Varianz, 1 BE für A, 1 BE für die begründete Lage-/Streuungszuordnung. In Teil 2: 1 BE für den Gipfel, je 1 BE für beide Wendestellen, 2 BE für ihre sachgerechte Einordnung/Begründung an A (je 1 BE für Symmetrie/Gipfel und den beidseitigen Krümmungswechsel beziehungsweise die verwendete Normaldichte-Eigenschaft). In Teil 3: je 1 BE für die passenden Parameter von B und C; 2 BE für die reine Verschiebung bei gleicher Form/Höhe; 2 BE für geänderte Breite und Höhe bei festem Zentrum. Eine allgemeine richtige Aussage, die die konkreten Änderungen eindeutig umfasst, ist gleichwertig.\n\n\n\n**Gewöhnliche Gesamtbewertung:** Die Teilpunkte ergeben genau einen Gesamtwert. Vergleiche diesen nach der unten genannten gewöhnlichen Kappung mit der einen Bestehensschwelle. Es gibt keine Teil-PASS-Felder oder zusätzliche Voraussetzungsevidenz.\n\nFachlich passende Leistungen zählen überall in der Abgabe, auch in Tabellen, Skizzen, Rechenschritten oder knappen Kommentaren. Es ist keine wortgleiche Musterlösung und keine doppelte Begründung in mehreren Teilaufgaben nötig. Gleichwertige mathematische Verfahren sind zulässig. Lokale Rechen-, Ablese-, Vorzeichen- oder Übertragungsfehler werden gezielt und nur einmal abgezogen; richtig ausgeführte Folgearbeit erhält ihre Punkte. Ein einzelner falscher Wert bedeutet nicht, dass eine ganze Kernhandlung fehlt. Nicht gezeigte Arbeit darf nicht unterstellt werden. Die Rubrik bewertet nur diesen neuen Aufgabenauftrag; sie ändert weder die Graphregeln noch bereits bestehende Mastery.\n\nDer Rohwert liegt zwischen 0 und 16; die eine Bestehensschwelle ist 12. Kappe den Gesamtwert auf höchstens 11, wenn in der gesamten Abgabe jede sinnvolle Behandlung des Erwartungswerts oder der Standardabweichung fehlt, keinerlei Hochpunktlokalisierung oder keinerlei sinnvolle Wendepunktlokalisierung erkennbar ist oder der Einfluss eines der beiden Parameter vollständig unbehandelt bleibt. Eine einzelne fehlende/falsche Wendestelle führt nur zum entsprechenden Punktabzug, sofern eine echte Lokalisierung vorhanden ist. Eine knappe richtige allgemeine Parametererklärung zählt ebenso wie eine konkrete Skizze; exakte Höhen oder Ableitungen sind kein zusätzlicher Teil-PASS.\n",
+  "solutionContentEn": "**1.** Comparing with the general density $\\frac1{\\sigma\\sqrt{2\\pi}}\\exp(-(x-\\mu)^2/(2\\sigma^2))$ gives $\\mu=10\\,\\mathrm{mm}$ and $\\sigma=2\\,\\mathrm{mm}$; the variance is $4\\,\\mathrm{mm}^2$. The function is **A**: its centre and maximum are at $10$, and A is wider and lower than C with the same centre. Correct interpretation of the bell curve is an equally valid way to obtain the parameters.\n\n**2.** A normal density has its maximum at $x=\\mu$ and inflection points at $x=\\mu-\\sigma$ and $x=\\mu+\\sigma$. Thus A peaks at $x=10$, with inflection locations $x=8$ and $x=12$ on either side. The curve changes curvature there. No $y$-values are required; optionally, the height is about $0.1995\\,\\mathrm{mm}^{-1}$ at the maximum and $0.1210\\,\\mathrm{mm}^{-1}$ at either inflection. A voluntarily supplied valid differentiation method is equivalent, but is not a prerequisite.\n\n**3.** B has $\\mu=14\\,\\mathrm{mm}$ and $\\sigma=2\\,\\mathrm{mm}$. With standard deviation unchanged, A shifts $4\\,\\mathrm{mm}$ to the right while width and peak height stay the same. C has $\\mu=10\\,\\mathrm{mm}$ and $\\sigma=1\\,\\mathrm{mm}$. The centre stays fixed, the curve is horizontally half as wide and the peak twice as high. In general, increasing $\\sigma$ at fixed centre makes the bell curve wider and lower; decreasing it makes the curve narrower and higher. Total area stays $1$. Height is a density, not a point probability; this additional correct observation is not a new required subskill of this task.\n\n**Partial credit:** 1 point each for $\\mu$ and $\\sigma$, 1 for variance, 1 for A and 1 for the location/spread justification. In part 2, award 1 for the maximum, 1 for each inflection location and 2 for identifying/justifying their positions on A (1 for symmetry/maximum and 1 for the two-sided change of curvature or the normal-density property used). In part 3, award 1 each for B's and C's parameter pairs, 2 for pure translation with unchanged shape/height and 2 for changing width and height at fixed centre. A correct general statement unambiguously covering the concrete changes is equivalent.\n\n\n\n**Ordinary overall grading:** Partial credit yields exactly one total score. After the ordinary cap stated below, compare it with the single passing threshold. There are no part-pass fields or additional prerequisite-evidence requirements.\n\nCredit relevant work wherever it appears in the submission, including tables, sketches, calculations and concise comments. Wording matching the reference and duplicate explanations in separate parts are unnecessary. Mathematically equivalent methods are accepted. Deduct for a local arithmetic, graph-reading, sign or copying error specifically and only once; award correctly executed follow-through. One incorrect value does not mean an entire core action is absent. Do not assume work not shown. This rubric grades only the new task; it changes neither graph rules nor existing mastery.\n\nThe raw total ranges from 0 to 16; the single passing threshold is 12. Cap the total at 11 if the entire submission has no meaningful treatment of the mean or the standard deviation, no identifiable maximum localisation or no meaningful inflection localisation, or entirely omits the effect of either parameter. One missing or incorrect inflection receives the relevant partial deduction only when genuine localisation is present. A concise valid general explanation counts just like a concrete sketch; exact heights and differentiation are not an additional part-pass.\n",
+  "scoring": {
+    "maxPoints": 16,
+    "passingPoints": 12,
+    "steps": [
+      {
+        "id": "mu",
+        "points": 1,
+        "description": "Erwartungswert von f richtig aus Term oder Graph entnommen.",
+        "descriptionEn": "Reads the mean of f correctly from expression or graph."
+      },
+      {
+        "id": "sigma",
+        "points": 1,
+        "description": "Standardabweichung von f richtig entnommen.",
+        "descriptionEn": "Reads the standard deviation of f correctly."
+      },
+      {
+        "id": "variance",
+        "points": 1,
+        "description": "Varianz von Standardabweichung unterschieden.",
+        "descriptionEn": "Distinguishes variance from standard deviation."
+      },
+      {
+        "id": "match",
+        "points": 1,
+        "description": "f dem Graphen A zugeordnet.",
+        "descriptionEn": "Matches f to graph A."
+      },
+      {
+        "id": "match-reason",
+        "points": 1,
+        "description": "Zuordnung mit Lage und Streuung begründet.",
+        "descriptionEn": "Justifies the match using location and spread."
+      },
+      {
+        "id": "maximum",
+        "points": 1,
+        "description": "Gipfel bei x=10 lokalisiert.",
+        "descriptionEn": "Locates the maximum at x=10."
+      },
+      {
+        "id": "left-inflection",
+        "points": 1,
+        "description": "Linke Wendestelle bei x=8 lokalisiert.",
+        "descriptionEn": "Locates the left inflection at x=8."
+      },
+      {
+        "id": "right-inflection",
+        "points": 1,
+        "description": "Rechte Wendestelle bei x=12 lokalisiert.",
+        "descriptionEn": "Locates the right inflection at x=12."
+      },
+      {
+        "id": "point-meaning",
+        "points": 2,
+        "description": "Gipfel und Wendestellen an der Glockenkurve sachgerecht eingeordnet oder mit der Normaldichte-Eigenschaft begründet.",
+        "descriptionEn": "Identifies the maximum and inflections on the bell curve or justifies them with the normal-density property."
+      },
+      {
+        "id": "B-parameters",
+        "points": 1,
+        "description": "Parameter von B passend bestimmt.",
+        "descriptionEn": "Determines the parameters of B."
+      },
+      {
+        "id": "C-parameters",
+        "points": 1,
+        "description": "Parameter von C passend bestimmt.",
+        "descriptionEn": "Determines the parameters of C."
+      },
+      {
+        "id": "mu-effect",
+        "points": 2,
+        "description": "Mu-Änderung als Verschiebung bei gleicher Breite und Höhe erläutert.",
+        "descriptionEn": "Explains changing mu as translation at unchanged width and height."
+      },
+      {
+        "id": "sigma-effect",
+        "points": 2,
+        "description": "Sigma-Änderung bei festem Zentrum mit Breiten- und Höhenänderung erläutert.",
+        "descriptionEn": "Explains how changing sigma at fixed centre changes width and height."
+      }
+    ]
+  },
+  "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/reviewed-execution-contract.json"
+}

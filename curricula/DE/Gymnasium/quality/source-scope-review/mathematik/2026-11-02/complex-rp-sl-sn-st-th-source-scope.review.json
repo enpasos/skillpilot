@@ -1,0 +1,2580 @@
+{
+  "status": "PASS_FOR_EXACT_BOUNDED_SOURCE_SCOPE_DELTAS; ENUMERATED_HOLD_CONTRACTS_RETAINED",
+  "reviewer": "Astra complex-number source reviewer",
+  "actualDataBaseline": "V18",
+  "auditPath": "tmp/approach-review-20261101/post-three-analysis-native-154-audit.json",
+  "auditSha256": "5bd534442f13c9c30ee1c4f7ac348e62ec9e6d1b2f3c967a69d83391190f9e2c",
+  "canonicalSha256": "65f3bfe45468c5905cffa125d00ea5fa5a7e0c8a962c89dfdbf27ea78960a7f9",
+  "ledgerSha256ReportedByParent": "13b868f37fbbcb916b95a99cb7e203881c1a712f7e9d4a0090886f9c988b320b",
+  "nativeOrCurrentCodeAcceptance": false,
+  "counts": {
+    "RP": {
+      "actualOfferedProfiles": 14,
+      "affectedActualOfferedProfiles": 12,
+      "ordinaryTargetOccurrencesToRemove": 60,
+      "wholeProtectedTargetOccurrencesToRemove": 16,
+      "positiveAuthoredTargetOccurrencesRetained": 32,
+      "holdTargetOccurrencesRetained": 12
+    },
+    "SL": {
+      "actualOfferedProfiles": 7,
+      "affectedActualOfferedProfiles": 6,
+      "ordinaryTargetOccurrencesToRemove": 52,
+      "wholeProtectedTargetOccurrencesToRemove": 8,
+      "positiveAuthoredTargetOccurrencesRetained": 0,
+      "holdTargetOccurrencesRetained": 0
+    },
+    "SN": {
+      "actualOfferedProfiles": 7,
+      "affectedActualOfferedProfiles": 6,
+      "ordinaryTargetOccurrencesToRemove": 32,
+      "wholeProtectedTargetOccurrencesToRemove": 8,
+      "positiveAuthoredTargetOccurrencesRetained": 6,
+      "holdTargetOccurrencesRetained": 14
+    },
+    "ST": {
+      "actualOfferedProfiles": 7,
+      "affectedActualOfferedProfiles": 6,
+      "ordinaryTargetOccurrencesToRemove": 52,
+      "wholeProtectedTargetOccurrencesToRemove": 8,
+      "positiveAuthoredTargetOccurrencesRetained": 0,
+      "holdTargetOccurrencesRetained": 0
+    },
+    "TH": {
+      "actualOfferedProfiles": 7,
+      "affectedActualOfferedProfiles": 6,
+      "ordinaryTargetOccurrencesToRemove": 52,
+      "wholeProtectedTargetOccurrencesToRemove": 8,
+      "positiveAuthoredTargetOccurrencesRetained": 0,
+      "holdTargetOccurrencesRetained": 0
+    }
+  },
+  "countryClosedBasisDecisions": {
+    "RP": {
+      "refs": [
+        "RP-MSS pp. 12, 19–36, 38–56, 61, 64",
+        "RP-SI pp. 82–88, 106–108"
+      ],
+      "finding": "Standard course boundary is closed, but p. 64 positively permits complex iteration. Preserve an existing authored optional foundation; do not convert it to official universal obligation or automatically assign the full complex branch. No owner decision selects the full RP family.",
+      "profiles": "G8/G9, CrossStage/SekII, GK/LK/union; six active view definitions cover twelve affected offers."
+    },
+    "SN": {
+      "refs": [
+        "SN-2019 Roman IV–V, pp. 24–31, 32–38, 39–46"
+      ],
+      "finding": "Class 10 elective is a narrowly enumerated introduction. Existing upper/cross-stage target placements are preserved for supported/uncertain atoms; no promotion into the currently unselected SekI offer. Complete subsequent course lists and options do not expand it into full complex algebra.",
+      "profiles": "G8, CrossStage/SekII, GK/LK/union; four active views cover six affected offers."
+    },
+    "SL": {
+      "refs": [
+        "SL-E entire tables",
+        "SL-GK entire tables incl. area 9",
+        "SL-LK entire tables incl. area 9",
+        "SL-ADAPT-2024 all",
+        "SL-ADAPT-2025 all",
+        "SL-9 p. 8, pp. 15–20, 23–29",
+        "SL-10 pp. 8–9, 16–21"
+      ],
+      "finding": "Explicit school number-extension closure at R plus complete E/GK/LK binding and optional tables. Neither varying compulsory topics nor facultative matrices supply a C contract. Current technical G9 views use delivered legacy GOS upper sources; no assertion of a new G9 upper curriculum is made.",
+      "profiles": "G9, CrossStage/SekII, GK/LK/union; four active views cover six affected offers."
+    },
+    "ST": {
+      "refs": [
+        "ST-2019 pp. 52–67",
+        "ST-2022 pp. 30–34, 43–44, 50–70"
+      ],
+      "finding": "Delivered 2019 and corroborating 2022 full course lists close the real-number, function, real-vector and stochastic domains. Aufgabenpraktikum is methodological application, not positive C selection. The outdated extraction version is recorded separately and not silently rewritten.",
+      "profiles": "G8, CrossStage/SekII, GK/LK/union; four active views cover six affected offers."
+    },
+    "TH": {
+      "refs": [
+        "TH-2018 pp. 20, 27–46",
+        "TH-2025 pp. 21–27",
+        "TH-2026 pp. 2, 30, 38–55",
+        "TH-VALIDITY"
+      ],
+      "finding": "Both delivered transitional sources and actual 2026 upper course have a closed real subject basis. Own Wahlbereich projects are permitted, but no selected positive C source contract exists. This does not prohibit teachers from authoring a separately declared project.",
+      "profiles": "G8, CrossStage/SekII, GK/LK/union; four active views cover six affected offers."
+    }
+  },
+  "sources": [
+    {
+      "key": "RP-MSS",
+      "country": "RP",
+      "path": "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_II_MSS.pdf",
+      "sha256": "764a2f6160cda3dde2dc97914e2c0a361ef1461a0a5fced0b1c100e69762c3fb",
+      "primaryOfficial": true,
+      "readScope": "Printed 2, 5–14, 19–36 (entire GK), 38–56 (entire LK), 57–65 (entire cross-disciplinary proposal section).",
+      "pageScheme": "Physical PDF page = printed page + 1.",
+      "scopeFinding": "Left-column goals bind; right notes do not. Full GK/LK alternatives cover real analysis, real vector/matrix geometry and stochastics. Printed 61 makes project proposals nonbinding/nonexhaustive. Printed 64 explicitly proposes complex iteration with Julia/Mandelbrot examples; individual contributions may be chosen. Matrix IFS is a distinct affine-transformation contribution, not complex matrix representation.",
+      "officialUrl": "https://bildung.rlp.de/lehrplaene/?tx_rlpbase_download%5Baction%5D=download&tx_rlpbase_download%5Bcontroller%5D=Download&tx_rlpbase_download%5Bitem%5D=56486&type=432522&cHash=9d657e3ab0dc693de509d67c39f2a5b7",
+      "extractionReference": {
+        "path": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_MATHEMATIK_SEKII_MSS_2015.source-extraction.json",
+        "sha256": "670f1a958cbc4d4a2a5dd36aa9e5ae9f8fcd42920de3dbb693e73589a1217b00",
+        "authority": "Extraction is secondary to the pinned official PDF."
+      }
+    },
+    {
+      "key": "RP-SI",
+      "country": "RP",
+      "path": "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_I.pdf",
+      "sha256": "005085fa940a3dfd7619ea274f5e16ee34c50ba452223774aca19fb4025abe61",
+      "primaryOfficial": true,
+      "readScope": "Physical 3–5 (complete contents), 8 (binding structure), 86–92 (printed 82–88: full final number-domain block and B/E/V boundary), 110–112 (printed 106–108: full quadratic-equation ending).",
+      "pageScheme": "Physical PDF page = printed page + 4.",
+      "scopeFinding": "B/E/V separates compulsory, MSA and upper-preparatory depth. Printed 84 explicitly identifies x²=−1 as an equation unsolved over R; the source introduces R and does not by itself demand C algebra. Combined with the positive optional upper C context, NEC is retained as a bounded authored introductory bridge.",
+      "officialUrl": "https://bildung.rlp.de/lehrplaene/?tx_rlpbase_download%5Baction%5D=download&tx_rlpbase_download%5Bcontroller%5D=Download&tx_rlpbase_download%5Bitem%5D=56490&type=432522&cHash=a23c232416037e96006b9277a0170bfc",
+      "extractionReference": {
+        "path": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_MATHEMATIK_SEKI_RAHMENLEHRPLAN_2007.source-extraction.json",
+        "sha256": "9b419872be53efe0da1f2feae08a0594ac66d10cfd56c36aad78daa3535055fd",
+        "authority": "URL locator only; the complete relevant original PDF sections control the decision."
+      }
+    },
+    {
+      "key": "SN-2019",
+      "country": "SN",
+      "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-mathematik-sachsen-2019.pdf",
+      "sha256": "de48e13d404cfb4d155f056efdc1a6888857ccda58cc03cf81bcdabb2141f8ae",
+      "primaryOfficial": true,
+      "readScope": "Roman IV–V (physical 4–5), printed 5 overview; printed 23–31 (all class 9/10 and class 8 optional ending), 32–38 (entire GK), 39–46 (entire LK).",
+      "pageScheme": "Main printed page = physical PDF page − 12; Roman IV/V are physical 4/5.",
+      "scopeFinding": "Class 10 printed 31 optional C introduction explicitly enumerates arithmetic representation, Gauss plane, addition/subtraction, trig/exponential representation. Notes: fundamental theorem, appreciation of Gauss, physics LK 12 LB1. Einblick is orientation without deeper reflection. All upper obligatory and optional lists remain real calculus/geometry/stochastics; real matrix applications or geometric fractals are not a generic C curriculum.",
+      "officialUrl": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/121/galmOUYkLcTVJh8Sk6g9",
+      "extractionReference": {
+        "path": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+        "sha256": "70f65c212b5e036b20d4942aab26d3ba0f515ac5ffc834620a1b6f788c6048ff",
+        "authority": "Extraction is secondary to the pinned official PDF."
+      }
+    },
+    {
+      "key": "SL-E",
+      "country": "SL",
+      "path": "curricula/DE/Gymnasium/input/SL/LP_Ma_EP_GOS_2014.pdf",
+      "sha256": "0b23cf2551733db966d86e5ec5e349b17df5d50ad31cc9fa4e0680d015e54770",
+      "primaryOfficial": true,
+      "readScope": "Entire substantive curriculum: printed 4–30, including p. 8 binding instructions, all six topic tables and all facultative endings.",
+      "pageScheme": "Printed page equals physical PDF page (1-based).",
+      "scopeFinding": "Both content/competence columns bind, facultative content is explicitly separated. Sinus, stereometry, exponential functions, real-function continuity/differentiation and polynomials form the complete E course.",
+      "officialUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Mathematik/LP_Ma_EP_GOS_2014.pdf?__blob=publicationFile&v=3",
+      "extractionReference": {
+        "path": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_MATHEMATIK_SEKII_GOS_2014_2019.source-extraction.json",
+        "sha256": "8cbf125e9c938a37a58773eeae051ee3be5037dead129e24ea218f71fbc5dc4d",
+        "authority": "Extraction is secondary to the pinned official PDF."
+      }
+    },
+    {
+      "key": "SL-GK",
+      "country": "SL",
+      "path": "curricula/DE/Gymnasium/input/SL/LP_Ma_GOS_HP_G-Kurs_2016_Stand_2019.pdf",
+      "sha256": "ee77ed726ee6be38a66a1830f0f69fd672883a2fb558cd6ceed41894fd0a5086",
+      "primaryOfficial": true,
+      "readScope": "Entire substantive curriculum printed 4–49 including physical 14=13a, all eight core areas and changing compulsory area 9, all facultative notes.",
+      "pageScheme": "Physical=printed through 13; physical 14=13a; physical >=15 is printed+1.",
+      "scopeFinding": "Closed real calculus/vector geometry/stochastics course plus enumerated rational-function, circle/sphere and logarithm additions. General freedom and real matrix notation do not specify C.",
+      "officialUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Mathematik/LP_Ma_GOS_HP_G-Kurs_2016_Stand_2019.pdf?__blob=publicationFile&v=4",
+      "extractionReference": {
+        "path": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_MATHEMATIK_SEKII_GOS_2014_2019.source-extraction.json",
+        "sha256": "8cbf125e9c938a37a58773eeae051ee3be5037dead129e24ea218f71fbc5dc4d",
+        "authority": "Extraction is secondary to the pinned official PDF."
+      }
+    },
+    {
+      "key": "SL-LK",
+      "country": "SL",
+      "path": "curricula/DE/Gymnasium/input/SL/LP_Ma_LK_HP_2019.pdf",
+      "sha256": "9a4c674eab01edda713a9aef60f38f2d24df3031a7361dabeb6b0f9946f66134",
+      "primaryOfficial": true,
+      "readScope": "Entire substantive curriculum printed 4–61, all binding/facultative tables, complete changing area 9 on pp. 51–61.",
+      "pageScheme": "Printed page equals physical PDF page (1-based).",
+      "scopeFinding": "Full real calculus, vectors, probability/statistics; facultative abstract vector spaces/matrices, Koch curve and harmonic differential equations do not specify C. All four changing themes (circle/sphere, induction, rational functions, logarithm) read.",
+      "officialUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Mathematik/LP_Ma_LK_HP_2019.pdf?__blob=publicationFile&v=3",
+      "extractionReference": {
+        "path": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_MATHEMATIK_SEKII_GOS_2014_2019.source-extraction.json",
+        "sha256": "8cbf125e9c938a37a58773eeae051ee3be5037dead129e24ea218f71fbc5dc4d",
+        "authority": "Extraction is secondary to the pinned official PDF."
+      }
+    },
+    {
+      "key": "SL-ADAPT-2024",
+      "country": "SL",
+      "path": "curricula/DE/Gymnasium/input/SL/LP_Anpassung_G8_MA_SekII.pdf",
+      "sha256": "4e6134a5d570bc920d2800170a5ae1a7eb841199869801b3f93e114e9db111f2",
+      "primaryOfficial": true,
+      "readScope": "All five pages.",
+      "pageScheme": "Printed page equals physical PDF page (1-based).",
+      "scopeFinding": "Temporary E/Abitur 2025/26 changes explicitly preserve other content; changing themes lose examination obligation, which does not prohibit teaching them.",
+      "officialUrl": "https://www.saarland.de/mbk/DE/portale/bildungsserver/unterricht-und-bildungsthemen/lehrplaenehandreichungen/lehrplaeneallgemeinbildende/gymnasiale-oberstufe-GOS/lehrplaene_GOS_node"
+    },
+    {
+      "key": "SL-ADAPT-2025",
+      "country": "SL",
+      "path": "curricula/DE/Gymnasium/input/SL/LP_Anpassung_G8_MA_SekII_2025.pdf",
+      "sha256": "8cead66f60f0e4c1c01fabdd10992e4f45e51fa98fd910570cc537c104d9c615",
+      "primaryOfficial": true,
+      "readScope": "All five pages.",
+      "pageScheme": "Printed page equals physical PDF page (1-based).",
+      "scopeFinding": "E 2026/27 and Abitur 2027–2029 adjustments preserve other content. No replacement C module; changes to exam requirements do not silently remove positively authored optional content.",
+      "officialUrl": "https://www.saarland.de/mbk/DE/portale/bildungsserver/unterricht-und-bildungsthemen/lehrplaenehandreichungen/lehrplaeneallgemeinbildende/gymnasiale-oberstufe-GOS/lehrplaene_GOS_node"
+    },
+    {
+      "key": "SL-9",
+      "country": "SL",
+      "path": "curricula/DE/Gymnasium/input/SL/LP_MA_gym9_9_2025.pdf",
+      "sha256": "9589615f95f0728e6794abad3f85185a0ead8b69b63ba7dc96322aeca38571fd",
+      "primaryOfficial": true,
+      "readScope": "Printed 6, 8–9, 15–20 (whole R number block), 23–29 (whole quadratic-function/equation block), 30–32 (similarity context).",
+      "pageScheme": "Printed page equals physical PDF page (1-based).",
+      "scopeFinding": "Printed 8 expressly states that school number-domain extension is completed with square roots and real numbers. Quadratic functions map R to R; discriminant and graph determine zero/one/two real solutions. Facultative extensions remain within this stated domain.",
+      "officialUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_Gymnasium_neunjaehriges_23/Mathe/LP_MA_gym9_9_2025.pdf?__blob=publicationFile&v=3",
+      "extractionReference": {
+        "path": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+        "sha256": "1602c8d4043d3ec0489cafab91c6c2581f878173854bbbe817e0ce13f44bc021",
+        "authority": "URL locator only; the complete relevant original PDF sections control the decision."
+      }
+    },
+    {
+      "key": "SL-10",
+      "country": "SL",
+      "path": "curricula/DE/Gymnasium/input/SL/LP_MA_gym9_10_2026.pdf",
+      "sha256": "5790bb3c74fbb99ab00974d08785cf4cd4dc5b78a52aeddc0848e688021a1db0",
+      "primaryOfficial": true,
+      "readScope": "Printed 2–3, 6, 8–9 complete topic overview, 16–21 complete powers/roots including facultative endings.",
+      "pageScheme": "Printed page equals physical PDF page (1-based).",
+      "scopeFinding": "All six topics are explicitly enumerated. Powers extend to real exponents, functions use real domains/ranges, roots are real nonnegative roots with explicit treatment of negative odd-root equations.",
+      "officialUrl": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_Gymnasium_neunjaehriges_23/Mathe/LP_MA_gym9_10_2026.pdf?__blob=publicationFile&v=5",
+      "extractionReference": {
+        "path": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+        "sha256": "1602c8d4043d3ec0489cafab91c6c2581f878173854bbbe817e0ce13f44bc021",
+        "authority": "URL locator only; the complete relevant original PDF sections control the decision."
+      }
+    },
+    {
+      "key": "ST-2019",
+      "country": "ST",
+      "path": "curricula/DE/Gymnasium/input/ST/Mathematik_FLP_Gym_01_07_2019.pdf",
+      "sha256": "317e0b55339ca687bf5c0401f57cafdab4e911cb14e5d5bf65696eeeadc73622",
+      "primaryOfficial": true,
+      "readScope": "Contents; full printed 52–67 (physical 54–69): entire E phase, both complete upper-level course lists and differentiation statement.",
+      "pageScheme": "Physical PDF page = printed page + 2.",
+      "scopeFinding": "Delivered source closes E/Q through real function classes, real vectors, lines/planes/circles and discrete/continuous stochastics. All application clauses act on these named domains.",
+      "officialUrl": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung/Mathematik_FLP_Gym_01_07_2019.pdf",
+      "extractionReference": {
+        "path": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_MATHEMATIK_SEKII_FACHLEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+        "sha256": "045cf9f2becf5e49bf80c46069697aa69a141f1c8b4244d3f10e011e08e52fa0",
+        "authority": "Extraction is secondary to the pinned official PDF."
+      }
+    },
+    {
+      "key": "ST-2022",
+      "country": "ST",
+      "path": "tmp/approach-review-20261101/astra-complex-numbers-scope-review/v18-rp-sl-sn-st-th-source-review/ST-FLP-Mathe-Gym-2022.pdf",
+      "sha256": "14c4002cfc08e8208dfde784cc26f2b5450ea24db98566c9374b50b00cc0ffe0",
+      "primaryOfficial": true,
+      "readScope": "Printed 4–5; 23–24 domain outlines; 30–31 entire Aufgabenpraktikum; 33–34 entire course map; 43–44 Q→R; 50–70 entire class 9/E/gA/eA sections.",
+      "pageScheme": "Printed page equals physical PDF page (1-based).",
+      "scopeFinding": "Current corroborating 2022 revision also closes the relevant course basis in R and real vector geometry. Aufgabenpraktikum is a form of application of previously acquired competencies, not a separate unrestricted subject list.",
+      "officialUrl": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Mathe_Gym_010822_swd.pdf"
+    },
+    {
+      "key": "TH-2018",
+      "country": "TH",
+      "path": "curricula/DE/Gymnasium/input/TH/lp_gy_mathematik_10.04.2019_TSP.pdf",
+      "sha256": "ee1fca0285f1c9d72edd990073dc4909b0ab5b127ddef59fc46d2c54932179b2",
+      "primaryOfficial": true,
+      "readScope": "Printed 1, 3, 5, 20 Q→R, 27–37 entire 9/10 and 11S, 38–46 entire Q and assessment sections.",
+      "pageScheme": "Printed page equals physical PDF page (1-based).",
+      "scopeFinding": "Closed real-number entry and real function/vector/probability Q course. Continued transitional authority where newer revision has not yet replaced the grade.",
+      "officialUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/19980?dateiname=lp_gy_mathematik_10.04.2019_TSP.pdf",
+      "extractionReference": {
+        "path": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+        "sha256": "ec548aaeb6743fc5fc25d2e328dd2faa4c232295ed5fa24beedadea4e3f21fbd",
+        "authority": "Extraction is secondary to the pinned official PDF."
+      }
+    },
+    {
+      "key": "TH-2025",
+      "country": "TH",
+      "path": "curricula/DE/Gymnasium/input/TH/LP_GY_Mathematik_Entwurfsfassung2025.pdf",
+      "sha256": "992041c34dfd618bdb2b7621ee59fb577f036121e5ea2a55e2086c99e0a4817a",
+      "primaryOfficial": true,
+      "readScope": "Printed 1, 3–7; 21–27 entire Q and assessment sections.",
+      "pageScheme": "Printed page equals physical PDF page (1-based).",
+      "scopeFinding": "Delivered extraction also uses the 2025 draft; entire Q remains real calculus, real vector geometry and stochastics. Its extraction-level assertion of immediate 11/12 validity is not adopted as authority.",
+      "officialUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/65648?dateiname=LP_GY_Mathematik_Entwurfsfassung2025.pdf",
+      "extractionReference": {
+        "path": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+        "sha256": "ec548aaeb6743fc5fc25d2e328dd2faa4c232295ed5fa24beedadea4e3f21fbd",
+        "authority": "Extraction is secondary to the pinned official PDF."
+      }
+    },
+    {
+      "key": "TH-2026",
+      "country": "TH",
+      "path": "tmp/approach-review-20261101/astra-complex-numbers-scope-review/v18-rp-sl-sn-st-th-source-review/TH-LP-Mathematik-GY-Erprobung-2026-08-25.pdf",
+      "sha256": "91838d21bb7035a3e30890e837a47425b3766f3a38066af6559f167afc399d26",
+      "primaryOfficial": true,
+      "readScope": "Printed 1–3, 5–9, 30, 38–57: entire grade 10 including all five proposed Wahlbereiche, 11 entry bridge, Q gA/eA and assessment.",
+      "pageScheme": "Printed page equals physical PDF page (1-based).",
+      "scopeFinding": "Page 2: active 2026/27 for 5/6, 7 and 11/12; grade 8 in 2027/28, grade 9 in 2028/29, grade 10 in 2029/30. Pages 42–43 allow five named projects or own themes, outside BLF/Abitur; none constitutes a positive selected C program. Complete Q 50–55 is real analysis/vector geometry/stochastics. Teacher discretion alone does not justify every legacy-inherited C target.",
+      "officialUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/68204?dateiname=LP_Mathematik_GY_Erprobung_2026-08-25.pdf"
+    },
+    {
+      "key": "TH-VALIDITY",
+      "country": "TH",
+      "primaryOfficial": true,
+      "officialUrl": "https://www.schulportal-thueringen.de/media/detail?tspi=20558",
+      "path": "tmp/approach-review-20261101/astra-complex-numbers-scope-review/v18-rp-sl-sn-st-th-source-review/TH-math-2026-media.html",
+      "sha256": "cc821a4a2c18d47a17c8d24641c2814762195af482580fca50240c54af9b2a34",
+      "readScope": "Relevant official media record including full Inkraftsetzung and linked original PDF.",
+      "scopeFinding": "Confirms PDF page 2 dates. Companion subject page has a 2029/29 typo; authoritative PDF/media record says 2028/29 for grade 9.",
+      "companion": {
+        "url": "https://www.schulportal-thueringen.de/mint_unterricht/mathematik/lehrplan_gy",
+        "path": "tmp/approach-review-20261101/astra-complex-numbers-scope-review/v18-rp-sl-sn-st-th-source-review/TH-lehrplan-gy.html",
+        "sha256": "cc3f0a7d10cbe0ebcf007205d7c6a3ffbd6b669b6e038a31ca76fd7a865fd402"
+      }
+    }
+  ],
+  "goalCourseMatrix": [
+    {
+      "country": "RP",
+      "alias": "ADD",
+      "goalId": "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+      "wholeGoalTitle": "Komplexe Zahlen in algebraischer Form additiv nutzen",
+      "decision": "RETAIN_POSITIVE_AUTHORED_OPTIONAL",
+      "wholeContractRationale": "Complex Julia/Mandelbrot iteration needs a+bi and component addition; subtraction belongs to the authored elementary addition/subtraction foundation. This is an explicit didactic operationalization of a positive optional theme, not a quoted universal standard.",
+      "sourceReferences": [
+        "RP-MSS pp. 12, 19–36, 38–56, 61, 64",
+        "RP-SI pp. 82–88, 106–108"
+      ],
+      "selectedV18Offers": [
+        "DE-RP/SekII/G8/GK",
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/GK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/GK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/GK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [
+        "DE-RP/SekII/G8/GK",
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/GK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/GK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/GK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "RP",
+      "alias": "POL",
+      "goalId": "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+      "wholeGoalTitle": "Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen",
+      "decision": "HOLD_RETAIN_WHOLE_UNCHANGED",
+      "wholeContractRationale": "Gauss/complex-plane interpretation is a positive part of the iteration theme; the full polar/exponential change of form and phi=omega*t are not fully established by it. Missing: an official/course-specific positive whole polar-and-time-phase demand. Retention is conservative, not a whole-source PASS.",
+      "sourceReferences": [
+        "RP-MSS pp. 12, 19–36, 38–56, 61, 64",
+        "RP-SI pp. 82–88, 106–108"
+      ],
+      "selectedV18Offers": [
+        "DE-RP/SekII/G8/GK",
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/GK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/GK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/GK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [
+        "DE-RP/SekII/G8/GK",
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/GK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/GK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/GK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "RP",
+      "alias": "EQU",
+      "goalId": "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+      "wholeGoalTitle": "Gleichungen in der Menge der komplexen Zahlen lösen",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "General solving of complex equations, including nonreal quadratic solutions, is not demanded by the named introduction/iteration. Standard real quadratic/discriminant work is not this contract.",
+      "sourceReferences": [
+        "RP-MSS pp. 12, 19–36, 38–56, 61, 64",
+        "RP-SI pp. 82–88, 106–108"
+      ],
+      "selectedV18Offers": [
+        "DE-RP/SekII/G8/GK",
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/GK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/GK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/GK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-RP/SekII/G8/GK",
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/GK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/GK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/GK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "RP",
+      "alias": "DIV",
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "wholeGoalTitle": "Komplexe Zahlen algebraisch dividieren",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Conjugate-based algebraic complex division is not part of the closed standard/optional C lists. Mandelbrot iteration uses z²+c, no complex divisor; no task score/coverage can be fabricated.",
+      "sourceReferences": [
+        "RP-MSS pp. 12, 19–36, 38–56, 61, 64",
+        "RP-SI pp. 82–88, 106–108"
+      ],
+      "selectedV18Offers": [
+        "DE-RP/SekII/G8/GK",
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/GK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/GK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/GK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-RP/SekII/G8/GK",
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/GK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/GK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/GK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "RP",
+      "alias": "UNI",
+      "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+      "wholeGoalTitle": "Einheitswurzeln komplexer Zahlen am Einheitskreis deuten (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "All n-th complex unity roots and their geometry are an extra whole competency; real roots or polar representation alone do not establish it.",
+      "sourceReferences": [
+        "RP-MSS pp. 12, 19–36, 38–56, 61, 64",
+        "RP-SI pp. 82–88, 106–108"
+      ],
+      "selectedV18Offers": [
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "RP",
+      "alias": "MUL",
+      "goalId": "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+      "wholeGoalTitle": "Komplexe Zahlen algebraisch multiplizieren",
+      "decision": "RETAIN_POSITIVE_AUTHORED_OPTIONAL",
+      "wholeContractRationale": "The quadratic complex iteration uses complex multiplication and i²=−1. The existing general multiplication foundation is a reasonable authored realization; no newly invented requirement edge is added.",
+      "sourceReferences": [
+        "RP-MSS pp. 12, 19–36, 38–56, 61, 64",
+        "RP-SI pp. 82–88, 106–108"
+      ],
+      "selectedV18Offers": [
+        "DE-RP/SekII/G8/GK",
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/GK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/GK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/GK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [
+        "DE-RP/SekII/G8/GK",
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/GK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/GK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/GK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "RP",
+      "alias": "MAN",
+      "goalId": "9b339361-7719-573d-a913-432246c502ee",
+      "wholeGoalTitle": "Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)",
+      "decision": "PRESERVE_UNSELECTED_WHOLE_CONTRACT",
+      "wholeContractRationale": "Whole Mandelbrot ordinary contract is currently unselected here. RP has positive optional thematic evidence; this review neither promotes the target nor claims that every detailed software/finite-test clause is officially obligatory.",
+      "sourceReferences": [
+        "RP-MSS pp. 12, 19–36, 38–56, 61, 64",
+        "RP-SI pp. 82–88, 106–108"
+      ],
+      "selectedV18Offers": [],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "RP",
+      "alias": "GEO",
+      "goalId": "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+      "wholeGoalTitle": "Grundrechenarten in der Gaußschen Zahlenebene deuten",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Whole goal includes geometric interpretation of all four operations, including nonzero complex division. Positive geometric addition/subtraction or complex iteration is only a proper part; no partial mastering/slicing.",
+      "sourceReferences": [
+        "RP-MSS pp. 12, 19–36, 38–56, 61, 64",
+        "RP-SI pp. 82–88, 106–108"
+      ],
+      "selectedV18Offers": [
+        "DE-RP/SekII/G8/GK",
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/GK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/GK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/GK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-RP/SekII/G8/GK",
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/GK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/GK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/GK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "RP",
+      "alias": "NEC",
+      "goalId": "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+      "wholeGoalTitle": "Die Zahlbereichserweiterung zu komplexen Zahlen mathematisch begründen (LK)",
+      "decision": "RETAIN_POSITIVE_AUTHORED_INTRODUCTION",
+      "wholeContractRationale": "RP-SI p. 84 explicitly proposes x²=−1 as the unresolved real-domain example. Together with the optional C upper theme this supports the short explanation of why C solves a real-domain limitation; it does not demand general complex equation solving.",
+      "sourceReferences": [
+        "RP-MSS pp. 12, 19–36, 38–56, 61, 64",
+        "RP-SI pp. 82–88, 106–108"
+      ],
+      "selectedV18Offers": [
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "RP",
+      "alias": "HIS",
+      "goalId": "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+      "wholeGoalTitle": "Die kulturhistorische Bedeutung komplexer Zahlen einordnen (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Generic history of mathematics and irrational numbers is not the required historical transition of complex numbers.",
+      "sourceReferences": [
+        "RP-MSS pp. 12, 19–36, 38–56, 61, 64",
+        "RP-SI pp. 82–88, 106–108"
+      ],
+      "selectedV18Offers": [
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "RP",
+      "alias": "MAT",
+      "goalId": "eda8580e-1f10-5dbd-9aaf-92367f40a6bd",
+      "wholeGoalTitle": "Komplexe Zahlen als 2×2-Matrizen darstellen (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Real affine maps, real matrix notation or rotations do not assert representation of a complex number as a 2×2 matrix. Full C matrix contract is outside the enumerated basis.",
+      "sourceReferences": [
+        "RP-MSS pp. 12, 19–36, 38–56, 61, 64",
+        "RP-SI pp. 82–88, 106–108"
+      ],
+      "selectedV18Offers": [
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "RP",
+      "alias": "MEM",
+      "goalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+      "wholeGoalTitle": "Lernkarten - Komplexe Zahlen und Parameter",
+      "decision": "PRESERVE_UNSELECTED_WHOLE_CONTRACT",
+      "wholeContractRationale": "Whole eight-card deck includes conjugate division and unity roots. Never filter cards. It is currently unselected in every reviewed offer and stays unselected.",
+      "sourceReferences": [
+        "RP-MSS pp. 12, 19–36, 38–56, 61, 64",
+        "RP-SI pp. 82–88, 106–108"
+      ],
+      "selectedV18Offers": [],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "RP",
+      "alias": "EX",
+      "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
+      "wholeGoalTitle": "Komplexe Zahlen sicher anwenden",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Whole 20-BE task includes nonreal quadratic roots (6), plane plot (4), modulus/argument (5) and matrix representation of multiplication by i (5). The mandatory C-matrix part is not supported; remove the selected whole task, preserve payload and stable mastery. No division scoring/preparation inferred.",
+      "sourceReferences": [
+        "RP-MSS pp. 12, 19–36, 38–56, 61, 64",
+        "RP-SI pp. 82–88, 106–108"
+      ],
+      "selectedV18Offers": [
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "RP",
+      "alias": "HX",
+      "goalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+      "wholeGoalTitle": "Mathematische Notwendigkeit und Fachgeschichte komplexer Zahlen erklären (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Whole 14-BE task requires x²+1/R→C plus Bombelli, Argand/Gauss geometry history and rejection of a single inventor. A single Gauss note or introductory NEC atom does not warrant this full multi-part protected task.",
+      "sourceReferences": [
+        "RP-MSS pp. 12, 19–36, 38–56, 61, 64",
+        "RP-SI pp. 82–88, 106–108"
+      ],
+      "selectedV18Offers": [
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "RP",
+      "alias": "MX",
+      "goalId": "34dc8c9b-f61b-50ca-8daa-0d46277c7b32",
+      "wholeGoalTitle": "Mandelbrot-Parameterebene softwaregestützt untersuchen",
+      "decision": "PRESERVE_UNSELECTED_WHOLE_CONTRACT",
+      "wholeContractRationale": "Whole Mandelbrot assessment is currently unselected. RP optional theme is a positive lead for a separate full-task review, not permission to add the task. Keep whole payload and membership unchanged.",
+      "sourceReferences": [
+        "RP-MSS pp. 12, 19–36, 38–56, 61, 64",
+        "RP-SI pp. 82–88, 106–108"
+      ],
+      "selectedV18Offers": [],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SL",
+      "alias": "ADD",
+      "goalId": "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+      "wholeGoalTitle": "Komplexe Zahlen in algebraischer Form additiv nutzen",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Explicit school number-extension closure at R plus complete E/GK/LK binding and optional tables. Neither varying compulsory topics nor facultative matrices supply a C contract. Current technical G9 views use delivered legacy GOS upper sources; no assertion of a new G9 upper curriculum is made. Real arithmetic or vector component addition is not complex a+bi arithmetic.",
+      "sourceReferences": [
+        "SL-E entire tables",
+        "SL-GK entire tables incl. area 9",
+        "SL-LK entire tables incl. area 9",
+        "SL-ADAPT-2024 all",
+        "SL-ADAPT-2025 all",
+        "SL-9 p. 8, pp. 15–20, 23–29",
+        "SL-10 pp. 8–9, 16–21"
+      ],
+      "selectedV18Offers": [
+        "DE-SL/SekII/G9/GK",
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/GK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SL/SekII/G9/GK",
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/GK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SL",
+      "alias": "POL",
+      "goalId": "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+      "wholeGoalTitle": "Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Explicit school number-extension closure at R plus complete E/GK/LK binding and optional tables. Neither varying compulsory topics nor facultative matrices supply a C contract. Current technical G9 views use delivered legacy GOS upper sources; no assertion of a new G9 upper curriculum is made. Real trig functions, polar coordinates of curves or a sinusoidal time model are not the whole complex polar/exponential representation contract.",
+      "sourceReferences": [
+        "SL-E entire tables",
+        "SL-GK entire tables incl. area 9",
+        "SL-LK entire tables incl. area 9",
+        "SL-ADAPT-2024 all",
+        "SL-ADAPT-2025 all",
+        "SL-9 p. 8, pp. 15–20, 23–29",
+        "SL-10 pp. 8–9, 16–21"
+      ],
+      "selectedV18Offers": [
+        "DE-SL/SekII/G9/GK",
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/GK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SL/SekII/G9/GK",
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/GK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SL",
+      "alias": "EQU",
+      "goalId": "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+      "wholeGoalTitle": "Gleichungen in der Menge der komplexen Zahlen lösen",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Explicit school number-extension closure at R plus complete E/GK/LK binding and optional tables. Neither varying compulsory topics nor facultative matrices supply a C contract. Current technical G9 views use delivered legacy GOS upper sources; no assertion of a new G9 upper curriculum is made. General solving of complex equations, including nonreal quadratic solutions, is not demanded by the named introduction/iteration. Standard real quadratic/discriminant work is not this contract.",
+      "sourceReferences": [
+        "SL-E entire tables",
+        "SL-GK entire tables incl. area 9",
+        "SL-LK entire tables incl. area 9",
+        "SL-ADAPT-2024 all",
+        "SL-ADAPT-2025 all",
+        "SL-9 p. 8, pp. 15–20, 23–29",
+        "SL-10 pp. 8–9, 16–21"
+      ],
+      "selectedV18Offers": [
+        "DE-SL/SekII/G9/GK",
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/GK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SL/SekII/G9/GK",
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/GK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SL",
+      "alias": "DIV",
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "wholeGoalTitle": "Komplexe Zahlen algebraisch dividieren",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Explicit school number-extension closure at R plus complete E/GK/LK binding and optional tables. Neither varying compulsory topics nor facultative matrices supply a C contract. Current technical G9 views use delivered legacy GOS upper sources; no assertion of a new G9 upper curriculum is made. Conjugate-based algebraic complex division is not part of the closed standard/optional C lists. Mandelbrot iteration uses z²+c, no complex divisor; no task score/coverage can be fabricated.",
+      "sourceReferences": [
+        "SL-E entire tables",
+        "SL-GK entire tables incl. area 9",
+        "SL-LK entire tables incl. area 9",
+        "SL-ADAPT-2024 all",
+        "SL-ADAPT-2025 all",
+        "SL-9 p. 8, pp. 15–20, 23–29",
+        "SL-10 pp. 8–9, 16–21"
+      ],
+      "selectedV18Offers": [
+        "DE-SL/SekII/G9/GK",
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/GK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SL/SekII/G9/GK",
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/GK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SL",
+      "alias": "UNI",
+      "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+      "wholeGoalTitle": "Einheitswurzeln komplexer Zahlen am Einheitskreis deuten (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Explicit school number-extension closure at R plus complete E/GK/LK binding and optional tables. Neither varying compulsory topics nor facultative matrices supply a C contract. Current technical G9 views use delivered legacy GOS upper sources; no assertion of a new G9 upper curriculum is made. All n-th complex unity roots and their geometry are an extra whole competency; real roots or polar representation alone do not establish it.",
+      "sourceReferences": [
+        "SL-E entire tables",
+        "SL-GK entire tables incl. area 9",
+        "SL-LK entire tables incl. area 9",
+        "SL-ADAPT-2024 all",
+        "SL-ADAPT-2025 all",
+        "SL-9 p. 8, pp. 15–20, 23–29",
+        "SL-10 pp. 8–9, 16–21"
+      ],
+      "selectedV18Offers": [
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SL",
+      "alias": "MUL",
+      "goalId": "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+      "wholeGoalTitle": "Komplexe Zahlen algebraisch multiplizieren",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Explicit school number-extension closure at R plus complete E/GK/LK binding and optional tables. Neither varying compulsory topics nor facultative matrices supply a C contract. Current technical G9 views use delivered legacy GOS upper sources; no assertion of a new G9 upper curriculum is made. Real matrix multiplication does not constitute complex multiplication.",
+      "sourceReferences": [
+        "SL-E entire tables",
+        "SL-GK entire tables incl. area 9",
+        "SL-LK entire tables incl. area 9",
+        "SL-ADAPT-2024 all",
+        "SL-ADAPT-2025 all",
+        "SL-9 p. 8, pp. 15–20, 23–29",
+        "SL-10 pp. 8–9, 16–21"
+      ],
+      "selectedV18Offers": [
+        "DE-SL/SekII/G9/GK",
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/GK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SL/SekII/G9/GK",
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/GK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SL",
+      "alias": "MAN",
+      "goalId": "9b339361-7719-573d-a913-432246c502ee",
+      "wholeGoalTitle": "Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)",
+      "decision": "PRESERVE_UNSELECTED_WHOLE_CONTRACT",
+      "wholeContractRationale": "Whole Mandelbrot ordinary contract is currently unselected here. RP has positive optional thematic evidence; this review neither promotes the target nor claims that every detailed software/finite-test clause is officially obligatory.",
+      "sourceReferences": [
+        "SL-E entire tables",
+        "SL-GK entire tables incl. area 9",
+        "SL-LK entire tables incl. area 9",
+        "SL-ADAPT-2024 all",
+        "SL-ADAPT-2025 all",
+        "SL-9 p. 8, pp. 15–20, 23–29",
+        "SL-10 pp. 8–9, 16–21"
+      ],
+      "selectedV18Offers": [],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SL",
+      "alias": "GEO",
+      "goalId": "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+      "wholeGoalTitle": "Grundrechenarten in der Gaußschen Zahlenebene deuten",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Explicit school number-extension closure at R plus complete E/GK/LK binding and optional tables. Neither varying compulsory topics nor facultative matrices supply a C contract. Current technical G9 views use delivered legacy GOS upper sources; no assertion of a new G9 upper curriculum is made. Whole goal includes geometric interpretation of all four operations, including nonzero complex division. Positive geometric addition/subtraction or complex iteration is only a proper part; no partial mastering/slicing.",
+      "sourceReferences": [
+        "SL-E entire tables",
+        "SL-GK entire tables incl. area 9",
+        "SL-LK entire tables incl. area 9",
+        "SL-ADAPT-2024 all",
+        "SL-ADAPT-2025 all",
+        "SL-9 p. 8, pp. 15–20, 23–29",
+        "SL-10 pp. 8–9, 16–21"
+      ],
+      "selectedV18Offers": [
+        "DE-SL/SekII/G9/GK",
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/GK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SL/SekII/G9/GK",
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/GK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SL",
+      "alias": "NEC",
+      "goalId": "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+      "wholeGoalTitle": "Die Zahlbereichserweiterung zu komplexen Zahlen mathematisch begründen (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Explicit school number-extension closure at R plus complete E/GK/LK binding and optional tables. Neither varying compulsory topics nor facultative matrices supply a C contract. Current technical G9 views use delivered legacy GOS upper sources; no assertion of a new G9 upper curriculum is made. Generic Q→R extension and real unsolvability alone, without the RP-specific positive C bridge or SN optional context, do not require the R→C explanatory goal.",
+      "sourceReferences": [
+        "SL-E entire tables",
+        "SL-GK entire tables incl. area 9",
+        "SL-LK entire tables incl. area 9",
+        "SL-ADAPT-2024 all",
+        "SL-ADAPT-2025 all",
+        "SL-9 p. 8, pp. 15–20, 23–29",
+        "SL-10 pp. 8–9, 16–21"
+      ],
+      "selectedV18Offers": [
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SL",
+      "alias": "HIS",
+      "goalId": "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+      "wholeGoalTitle": "Die kulturhistorische Bedeutung komplexer Zahlen einordnen (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Explicit school number-extension closure at R plus complete E/GK/LK binding and optional tables. Neither varying compulsory topics nor facultative matrices supply a C contract. Current technical G9 views use delivered legacy GOS upper sources; no assertion of a new G9 upper curriculum is made. Generic history of mathematics and irrational numbers is not the required historical transition of complex numbers.",
+      "sourceReferences": [
+        "SL-E entire tables",
+        "SL-GK entire tables incl. area 9",
+        "SL-LK entire tables incl. area 9",
+        "SL-ADAPT-2024 all",
+        "SL-ADAPT-2025 all",
+        "SL-9 p. 8, pp. 15–20, 23–29",
+        "SL-10 pp. 8–9, 16–21"
+      ],
+      "selectedV18Offers": [
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SL",
+      "alias": "MAT",
+      "goalId": "eda8580e-1f10-5dbd-9aaf-92367f40a6bd",
+      "wholeGoalTitle": "Komplexe Zahlen als 2×2-Matrizen darstellen (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Explicit school number-extension closure at R plus complete E/GK/LK binding and optional tables. Neither varying compulsory topics nor facultative matrices supply a C contract. Current technical G9 views use delivered legacy GOS upper sources; no assertion of a new G9 upper curriculum is made. Real affine maps, real matrix notation or rotations do not assert representation of a complex number as a 2×2 matrix. Full C matrix contract is outside the enumerated basis.",
+      "sourceReferences": [
+        "SL-E entire tables",
+        "SL-GK entire tables incl. area 9",
+        "SL-LK entire tables incl. area 9",
+        "SL-ADAPT-2024 all",
+        "SL-ADAPT-2025 all",
+        "SL-9 p. 8, pp. 15–20, 23–29",
+        "SL-10 pp. 8–9, 16–21"
+      ],
+      "selectedV18Offers": [
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SL",
+      "alias": "MEM",
+      "goalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+      "wholeGoalTitle": "Lernkarten - Komplexe Zahlen und Parameter",
+      "decision": "PRESERVE_UNSELECTED_WHOLE_CONTRACT",
+      "wholeContractRationale": "Whole eight-card deck includes conjugate division and unity roots. Never filter cards. It is currently unselected in every reviewed offer and stays unselected.",
+      "sourceReferences": [
+        "SL-E entire tables",
+        "SL-GK entire tables incl. area 9",
+        "SL-LK entire tables incl. area 9",
+        "SL-ADAPT-2024 all",
+        "SL-ADAPT-2025 all",
+        "SL-9 p. 8, pp. 15–20, 23–29",
+        "SL-10 pp. 8–9, 16–21"
+      ],
+      "selectedV18Offers": [],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SL",
+      "alias": "EX",
+      "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
+      "wholeGoalTitle": "Komplexe Zahlen sicher anwenden",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Explicit school number-extension closure at R plus complete E/GK/LK binding and optional tables. Neither varying compulsory topics nor facultative matrices supply a C contract. Current technical G9 views use delivered legacy GOS upper sources; no assertion of a new G9 upper curriculum is made. Whole 20-BE task includes nonreal quadratic roots (6), plane plot (4), modulus/argument (5) and matrix representation of multiplication by i (5). The mandatory C-matrix part is not supported; remove the selected whole task, preserve payload and stable mastery. No division scoring/preparation inferred.",
+      "sourceReferences": [
+        "SL-E entire tables",
+        "SL-GK entire tables incl. area 9",
+        "SL-LK entire tables incl. area 9",
+        "SL-ADAPT-2024 all",
+        "SL-ADAPT-2025 all",
+        "SL-9 p. 8, pp. 15–20, 23–29",
+        "SL-10 pp. 8–9, 16–21"
+      ],
+      "selectedV18Offers": [
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SL",
+      "alias": "HX",
+      "goalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+      "wholeGoalTitle": "Mathematische Notwendigkeit und Fachgeschichte komplexer Zahlen erklären (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Explicit school number-extension closure at R plus complete E/GK/LK binding and optional tables. Neither varying compulsory topics nor facultative matrices supply a C contract. Current technical G9 views use delivered legacy GOS upper sources; no assertion of a new G9 upper curriculum is made. Whole 14-BE task requires x²+1/R→C plus Bombelli, Argand/Gauss geometry history and rejection of a single inventor. A single Gauss note or introductory NEC atom does not warrant this full multi-part protected task.",
+      "sourceReferences": [
+        "SL-E entire tables",
+        "SL-GK entire tables incl. area 9",
+        "SL-LK entire tables incl. area 9",
+        "SL-ADAPT-2024 all",
+        "SL-ADAPT-2025 all",
+        "SL-9 p. 8, pp. 15–20, 23–29",
+        "SL-10 pp. 8–9, 16–21"
+      ],
+      "selectedV18Offers": [
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SL",
+      "alias": "MX",
+      "goalId": "34dc8c9b-f61b-50ca-8daa-0d46277c7b32",
+      "wholeGoalTitle": "Mandelbrot-Parameterebene softwaregestützt untersuchen",
+      "decision": "PRESERVE_UNSELECTED_WHOLE_CONTRACT",
+      "wholeContractRationale": "Whole Mandelbrot assessment is currently unselected. RP optional theme is a positive lead for a separate full-task review, not permission to add the task. Keep whole payload and membership unchanged.",
+      "sourceReferences": [
+        "SL-E entire tables",
+        "SL-GK entire tables incl. area 9",
+        "SL-LK entire tables incl. area 9",
+        "SL-ADAPT-2024 all",
+        "SL-ADAPT-2025 all",
+        "SL-9 p. 8, pp. 15–20, 23–29",
+        "SL-10 pp. 8–9, 16–21"
+      ],
+      "selectedV18Offers": [],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SN",
+      "alias": "ADD",
+      "goalId": "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+      "wholeGoalTitle": "Komplexe Zahlen in algebraischer Form additiv nutzen",
+      "decision": "RETAIN_POSITIVE_AUTHORED_OPTIONAL",
+      "wholeContractRationale": "SN p. 31 expressly lists arithmetic representation and addition/subtraction. Existing assessable operationalization is preserved; official depth is Einblick, not a universal mastery claim or proof that the learner chose this module.",
+      "sourceReferences": [
+        "SN-2019 Roman IV–V, pp. 24–31, 32–38, 39–46"
+      ],
+      "selectedV18Offers": [
+        "DE-SN/SekII/G8/GK",
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/GK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [
+        "DE-SN/SekII/G8/GK",
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/GK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SN",
+      "alias": "POL",
+      "goalId": "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+      "wholeGoalTitle": "Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen",
+      "decision": "HOLD_RETAIN_WHOLE_UNCHANGED",
+      "wholeContractRationale": "Trig/exponential form and Gauss plane are explicit, with physics LK12 LB1 cross-reference; phi=omega*t and full mastery depth need the exact physics/course contract or an independently reviewed authorship rationale. No removal of the positively named representation core.",
+      "sourceReferences": [
+        "SN-2019 Roman IV–V, pp. 24–31, 32–38, 39–46"
+      ],
+      "selectedV18Offers": [
+        "DE-SN/SekII/G8/GK",
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/GK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [
+        "DE-SN/SekII/G8/GK",
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/GK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SN",
+      "alias": "EQU",
+      "goalId": "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+      "wholeGoalTitle": "Gleichungen in der Menge der komplexen Zahlen lösen",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "General solving of complex equations, including nonreal quadratic solutions, is not demanded by the named introduction/iteration. Standard real quadratic/discriminant work is not this contract.",
+      "sourceReferences": [
+        "SN-2019 Roman IV–V, pp. 24–31, 32–38, 39–46"
+      ],
+      "selectedV18Offers": [
+        "DE-SN/SekII/G8/GK",
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/GK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SN/SekII/G8/GK",
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/GK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SN",
+      "alias": "DIV",
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "wholeGoalTitle": "Komplexe Zahlen algebraisch dividieren",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Conjugate-based algebraic complex division is not part of the closed standard/optional C lists. Mandelbrot iteration uses z²+c, no complex divisor; no task score/coverage can be fabricated.",
+      "sourceReferences": [
+        "SN-2019 Roman IV–V, pp. 24–31, 32–38, 39–46"
+      ],
+      "selectedV18Offers": [
+        "DE-SN/SekII/G8/GK",
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/GK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SN/SekII/G8/GK",
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/GK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SN",
+      "alias": "UNI",
+      "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+      "wholeGoalTitle": "Einheitswurzeln komplexer Zahlen am Einheitskreis deuten (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "All n-th complex unity roots and their geometry are an extra whole competency; real roots or polar representation alone do not establish it.",
+      "sourceReferences": [
+        "SN-2019 Roman IV–V, pp. 24–31, 32–38, 39–46"
+      ],
+      "selectedV18Offers": [
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SN",
+      "alias": "MUL",
+      "goalId": "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+      "wholeGoalTitle": "Komplexe Zahlen algebraisch multiplizieren",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "SN lists arithmetic representation, addition/subtraction and trig/exponential representation, not complex multiplication. Real matrix multiplication does not constitute complex multiplication.",
+      "sourceReferences": [
+        "SN-2019 Roman IV–V, pp. 24–31, 32–38, 39–46"
+      ],
+      "selectedV18Offers": [
+        "DE-SN/SekII/G8/GK",
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/GK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SN/SekII/G8/GK",
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/GK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SN",
+      "alias": "MAN",
+      "goalId": "9b339361-7719-573d-a913-432246c502ee",
+      "wholeGoalTitle": "Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)",
+      "decision": "PRESERVE_UNSELECTED_WHOLE_CONTRACT",
+      "wholeContractRationale": "Whole Mandelbrot ordinary contract is currently unselected here. RP has positive optional thematic evidence; this review neither promotes the target nor claims that every detailed software/finite-test clause is officially obligatory.",
+      "sourceReferences": [
+        "SN-2019 Roman IV–V, pp. 24–31, 32–38, 39–46"
+      ],
+      "selectedV18Offers": [],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SN",
+      "alias": "GEO",
+      "goalId": "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+      "wholeGoalTitle": "Grundrechenarten in der Gaußschen Zahlenebene deuten",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Whole goal includes geometric interpretation of all four operations, including nonzero complex division. Positive geometric addition/subtraction or complex iteration is only a proper part; no partial mastering/slicing.",
+      "sourceReferences": [
+        "SN-2019 Roman IV–V, pp. 24–31, 32–38, 39–46"
+      ],
+      "selectedV18Offers": [
+        "DE-SN/SekII/G8/GK",
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/GK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SN/SekII/G8/GK",
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/GK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SN",
+      "alias": "NEC",
+      "goalId": "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+      "wholeGoalTitle": "Die Zahlbereichserweiterung zu komplexen Zahlen mathematisch begründen (LK)",
+      "decision": "HOLD_RETAIN_WHOLE_UNCHANGED",
+      "wholeContractRationale": "The number-domain introduction and fundamental-theorem note are positive introductory evidence, but the specified R-unsolvable-equation explanation is not explicitly operationalized at Einblick depth. Retain whole contract conservatively.",
+      "sourceReferences": [
+        "SN-2019 Roman IV–V, pp. 24–31, 32–38, 39–46"
+      ],
+      "selectedV18Offers": [
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SN",
+      "alias": "HIS",
+      "goalId": "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+      "wholeGoalTitle": "Die kulturhistorische Bedeutung komplexer Zahlen einordnen (LK)",
+      "decision": "HOLD_RETAIN_WHOLE_UNCHANGED",
+      "wholeContractRationale": "Gauss appreciation is expressly suggested. The atom asks one historically documented step, not the whole multi-era exam. Its specific formal-aid-to-number-domain historical explanation is still open; retain unchanged rather than infer an absent history duty.",
+      "sourceReferences": [
+        "SN-2019 Roman IV–V, pp. 24–31, 32–38, 39–46"
+      ],
+      "selectedV18Offers": [
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SN",
+      "alias": "MAT",
+      "goalId": "eda8580e-1f10-5dbd-9aaf-92367f40a6bd",
+      "wholeGoalTitle": "Komplexe Zahlen als 2×2-Matrizen darstellen (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Real affine maps, real matrix notation or rotations do not assert representation of a complex number as a 2×2 matrix. Full C matrix contract is outside the enumerated basis.",
+      "sourceReferences": [
+        "SN-2019 Roman IV–V, pp. 24–31, 32–38, 39–46"
+      ],
+      "selectedV18Offers": [
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SN",
+      "alias": "MEM",
+      "goalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+      "wholeGoalTitle": "Lernkarten - Komplexe Zahlen und Parameter",
+      "decision": "PRESERVE_UNSELECTED_WHOLE_CONTRACT",
+      "wholeContractRationale": "Whole eight-card deck includes conjugate division and unity roots. Never filter cards. It is currently unselected in every reviewed offer and stays unselected.",
+      "sourceReferences": [
+        "SN-2019 Roman IV–V, pp. 24–31, 32–38, 39–46"
+      ],
+      "selectedV18Offers": [],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SN",
+      "alias": "EX",
+      "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
+      "wholeGoalTitle": "Komplexe Zahlen sicher anwenden",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Whole 20-BE task includes nonreal quadratic roots (6), plane plot (4), modulus/argument (5) and matrix representation of multiplication by i (5). The mandatory C-matrix part is not supported; remove the selected whole task, preserve payload and stable mastery. No division scoring/preparation inferred.",
+      "sourceReferences": [
+        "SN-2019 Roman IV–V, pp. 24–31, 32–38, 39–46"
+      ],
+      "selectedV18Offers": [
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SN",
+      "alias": "HX",
+      "goalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+      "wholeGoalTitle": "Mathematische Notwendigkeit und Fachgeschichte komplexer Zahlen erklären (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Whole 14-BE task requires x²+1/R→C plus Bombelli, Argand/Gauss geometry history and rejection of a single inventor. A single Gauss note or introductory NEC atom does not warrant this full multi-part protected task.",
+      "sourceReferences": [
+        "SN-2019 Roman IV–V, pp. 24–31, 32–38, 39–46"
+      ],
+      "selectedV18Offers": [
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "SN",
+      "alias": "MX",
+      "goalId": "34dc8c9b-f61b-50ca-8daa-0d46277c7b32",
+      "wholeGoalTitle": "Mandelbrot-Parameterebene softwaregestützt untersuchen",
+      "decision": "PRESERVE_UNSELECTED_WHOLE_CONTRACT",
+      "wholeContractRationale": "Whole Mandelbrot assessment is currently unselected. RP optional theme is a positive lead for a separate full-task review, not permission to add the task. Keep whole payload and membership unchanged.",
+      "sourceReferences": [
+        "SN-2019 Roman IV–V, pp. 24–31, 32–38, 39–46"
+      ],
+      "selectedV18Offers": [],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "ST",
+      "alias": "ADD",
+      "goalId": "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+      "wholeGoalTitle": "Komplexe Zahlen in algebraischer Form additiv nutzen",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Delivered 2019 and corroborating 2022 full course lists close the real-number, function, real-vector and stochastic domains. Aufgabenpraktikum is methodological application, not positive C selection. The outdated extraction version is recorded separately and not silently rewritten. Real arithmetic or vector component addition is not complex a+bi arithmetic.",
+      "sourceReferences": [
+        "ST-2019 pp. 52–67",
+        "ST-2022 pp. 30–34, 43–44, 50–70"
+      ],
+      "selectedV18Offers": [
+        "DE-ST/SekII/G8/GK",
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/GK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-ST/SekII/G8/GK",
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/GK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "ST",
+      "alias": "POL",
+      "goalId": "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+      "wholeGoalTitle": "Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Delivered 2019 and corroborating 2022 full course lists close the real-number, function, real-vector and stochastic domains. Aufgabenpraktikum is methodological application, not positive C selection. The outdated extraction version is recorded separately and not silently rewritten. Real trig functions, polar coordinates of curves or a sinusoidal time model are not the whole complex polar/exponential representation contract.",
+      "sourceReferences": [
+        "ST-2019 pp. 52–67",
+        "ST-2022 pp. 30–34, 43–44, 50–70"
+      ],
+      "selectedV18Offers": [
+        "DE-ST/SekII/G8/GK",
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/GK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-ST/SekII/G8/GK",
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/GK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "ST",
+      "alias": "EQU",
+      "goalId": "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+      "wholeGoalTitle": "Gleichungen in der Menge der komplexen Zahlen lösen",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Delivered 2019 and corroborating 2022 full course lists close the real-number, function, real-vector and stochastic domains. Aufgabenpraktikum is methodological application, not positive C selection. The outdated extraction version is recorded separately and not silently rewritten. General solving of complex equations, including nonreal quadratic solutions, is not demanded by the named introduction/iteration. Standard real quadratic/discriminant work is not this contract.",
+      "sourceReferences": [
+        "ST-2019 pp. 52–67",
+        "ST-2022 pp. 30–34, 43–44, 50–70"
+      ],
+      "selectedV18Offers": [
+        "DE-ST/SekII/G8/GK",
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/GK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-ST/SekII/G8/GK",
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/GK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "ST",
+      "alias": "DIV",
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "wholeGoalTitle": "Komplexe Zahlen algebraisch dividieren",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Delivered 2019 and corroborating 2022 full course lists close the real-number, function, real-vector and stochastic domains. Aufgabenpraktikum is methodological application, not positive C selection. The outdated extraction version is recorded separately and not silently rewritten. Conjugate-based algebraic complex division is not part of the closed standard/optional C lists. Mandelbrot iteration uses z²+c, no complex divisor; no task score/coverage can be fabricated.",
+      "sourceReferences": [
+        "ST-2019 pp. 52–67",
+        "ST-2022 pp. 30–34, 43–44, 50–70"
+      ],
+      "selectedV18Offers": [
+        "DE-ST/SekII/G8/GK",
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/GK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-ST/SekII/G8/GK",
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/GK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "ST",
+      "alias": "UNI",
+      "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+      "wholeGoalTitle": "Einheitswurzeln komplexer Zahlen am Einheitskreis deuten (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Delivered 2019 and corroborating 2022 full course lists close the real-number, function, real-vector and stochastic domains. Aufgabenpraktikum is methodological application, not positive C selection. The outdated extraction version is recorded separately and not silently rewritten. All n-th complex unity roots and their geometry are an extra whole competency; real roots or polar representation alone do not establish it.",
+      "sourceReferences": [
+        "ST-2019 pp. 52–67",
+        "ST-2022 pp. 30–34, 43–44, 50–70"
+      ],
+      "selectedV18Offers": [
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "ST",
+      "alias": "MUL",
+      "goalId": "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+      "wholeGoalTitle": "Komplexe Zahlen algebraisch multiplizieren",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Delivered 2019 and corroborating 2022 full course lists close the real-number, function, real-vector and stochastic domains. Aufgabenpraktikum is methodological application, not positive C selection. The outdated extraction version is recorded separately and not silently rewritten. Real matrix multiplication does not constitute complex multiplication.",
+      "sourceReferences": [
+        "ST-2019 pp. 52–67",
+        "ST-2022 pp. 30–34, 43–44, 50–70"
+      ],
+      "selectedV18Offers": [
+        "DE-ST/SekII/G8/GK",
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/GK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-ST/SekII/G8/GK",
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/GK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "ST",
+      "alias": "MAN",
+      "goalId": "9b339361-7719-573d-a913-432246c502ee",
+      "wholeGoalTitle": "Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)",
+      "decision": "PRESERVE_UNSELECTED_WHOLE_CONTRACT",
+      "wholeContractRationale": "Whole Mandelbrot ordinary contract is currently unselected here. RP has positive optional thematic evidence; this review neither promotes the target nor claims that every detailed software/finite-test clause is officially obligatory.",
+      "sourceReferences": [
+        "ST-2019 pp. 52–67",
+        "ST-2022 pp. 30–34, 43–44, 50–70"
+      ],
+      "selectedV18Offers": [],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "ST",
+      "alias": "GEO",
+      "goalId": "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+      "wholeGoalTitle": "Grundrechenarten in der Gaußschen Zahlenebene deuten",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Delivered 2019 and corroborating 2022 full course lists close the real-number, function, real-vector and stochastic domains. Aufgabenpraktikum is methodological application, not positive C selection. The outdated extraction version is recorded separately and not silently rewritten. Whole goal includes geometric interpretation of all four operations, including nonzero complex division. Positive geometric addition/subtraction or complex iteration is only a proper part; no partial mastering/slicing.",
+      "sourceReferences": [
+        "ST-2019 pp. 52–67",
+        "ST-2022 pp. 30–34, 43–44, 50–70"
+      ],
+      "selectedV18Offers": [
+        "DE-ST/SekII/G8/GK",
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/GK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-ST/SekII/G8/GK",
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/GK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "ST",
+      "alias": "NEC",
+      "goalId": "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+      "wholeGoalTitle": "Die Zahlbereichserweiterung zu komplexen Zahlen mathematisch begründen (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Delivered 2019 and corroborating 2022 full course lists close the real-number, function, real-vector and stochastic domains. Aufgabenpraktikum is methodological application, not positive C selection. The outdated extraction version is recorded separately and not silently rewritten. Generic Q→R extension and real unsolvability alone, without the RP-specific positive C bridge or SN optional context, do not require the R→C explanatory goal.",
+      "sourceReferences": [
+        "ST-2019 pp. 52–67",
+        "ST-2022 pp. 30–34, 43–44, 50–70"
+      ],
+      "selectedV18Offers": [
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "ST",
+      "alias": "HIS",
+      "goalId": "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+      "wholeGoalTitle": "Die kulturhistorische Bedeutung komplexer Zahlen einordnen (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Delivered 2019 and corroborating 2022 full course lists close the real-number, function, real-vector and stochastic domains. Aufgabenpraktikum is methodological application, not positive C selection. The outdated extraction version is recorded separately and not silently rewritten. Generic history of mathematics and irrational numbers is not the required historical transition of complex numbers.",
+      "sourceReferences": [
+        "ST-2019 pp. 52–67",
+        "ST-2022 pp. 30–34, 43–44, 50–70"
+      ],
+      "selectedV18Offers": [
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "ST",
+      "alias": "MAT",
+      "goalId": "eda8580e-1f10-5dbd-9aaf-92367f40a6bd",
+      "wholeGoalTitle": "Komplexe Zahlen als 2×2-Matrizen darstellen (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Delivered 2019 and corroborating 2022 full course lists close the real-number, function, real-vector and stochastic domains. Aufgabenpraktikum is methodological application, not positive C selection. The outdated extraction version is recorded separately and not silently rewritten. Real affine maps, real matrix notation or rotations do not assert representation of a complex number as a 2×2 matrix. Full C matrix contract is outside the enumerated basis.",
+      "sourceReferences": [
+        "ST-2019 pp. 52–67",
+        "ST-2022 pp. 30–34, 43–44, 50–70"
+      ],
+      "selectedV18Offers": [
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "ST",
+      "alias": "MEM",
+      "goalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+      "wholeGoalTitle": "Lernkarten - Komplexe Zahlen und Parameter",
+      "decision": "PRESERVE_UNSELECTED_WHOLE_CONTRACT",
+      "wholeContractRationale": "Whole eight-card deck includes conjugate division and unity roots. Never filter cards. It is currently unselected in every reviewed offer and stays unselected.",
+      "sourceReferences": [
+        "ST-2019 pp. 52–67",
+        "ST-2022 pp. 30–34, 43–44, 50–70"
+      ],
+      "selectedV18Offers": [],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "ST",
+      "alias": "EX",
+      "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
+      "wholeGoalTitle": "Komplexe Zahlen sicher anwenden",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Delivered 2019 and corroborating 2022 full course lists close the real-number, function, real-vector and stochastic domains. Aufgabenpraktikum is methodological application, not positive C selection. The outdated extraction version is recorded separately and not silently rewritten. Whole 20-BE task includes nonreal quadratic roots (6), plane plot (4), modulus/argument (5) and matrix representation of multiplication by i (5). The mandatory C-matrix part is not supported; remove the selected whole task, preserve payload and stable mastery. No division scoring/preparation inferred.",
+      "sourceReferences": [
+        "ST-2019 pp. 52–67",
+        "ST-2022 pp. 30–34, 43–44, 50–70"
+      ],
+      "selectedV18Offers": [
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "ST",
+      "alias": "HX",
+      "goalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+      "wholeGoalTitle": "Mathematische Notwendigkeit und Fachgeschichte komplexer Zahlen erklären (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Delivered 2019 and corroborating 2022 full course lists close the real-number, function, real-vector and stochastic domains. Aufgabenpraktikum is methodological application, not positive C selection. The outdated extraction version is recorded separately and not silently rewritten. Whole 14-BE task requires x²+1/R→C plus Bombelli, Argand/Gauss geometry history and rejection of a single inventor. A single Gauss note or introductory NEC atom does not warrant this full multi-part protected task.",
+      "sourceReferences": [
+        "ST-2019 pp. 52–67",
+        "ST-2022 pp. 30–34, 43–44, 50–70"
+      ],
+      "selectedV18Offers": [
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "ST",
+      "alias": "MX",
+      "goalId": "34dc8c9b-f61b-50ca-8daa-0d46277c7b32",
+      "wholeGoalTitle": "Mandelbrot-Parameterebene softwaregestützt untersuchen",
+      "decision": "PRESERVE_UNSELECTED_WHOLE_CONTRACT",
+      "wholeContractRationale": "Whole Mandelbrot assessment is currently unselected. RP optional theme is a positive lead for a separate full-task review, not permission to add the task. Keep whole payload and membership unchanged.",
+      "sourceReferences": [
+        "ST-2019 pp. 52–67",
+        "ST-2022 pp. 30–34, 43–44, 50–70"
+      ],
+      "selectedV18Offers": [],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "TH",
+      "alias": "ADD",
+      "goalId": "22b66c1e-50b1-505f-a388-c39131a4e1c3",
+      "wholeGoalTitle": "Komplexe Zahlen in algebraischer Form additiv nutzen",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Both delivered transitional sources and actual 2026 upper course have a closed real subject basis. Own Wahlbereich projects are permitted, but no selected positive C source contract exists. This does not prohibit teachers from authoring a separately declared project. Real arithmetic or vector component addition is not complex a+bi arithmetic.",
+      "sourceReferences": [
+        "TH-2018 pp. 20, 27–46",
+        "TH-2025 pp. 21–27",
+        "TH-2026 pp. 2, 30, 38–55",
+        "TH-VALIDITY"
+      ],
+      "selectedV18Offers": [
+        "DE-TH/SekII/G8/GK",
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/GK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-TH/SekII/G8/GK",
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/GK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "TH",
+      "alias": "POL",
+      "goalId": "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+      "wholeGoalTitle": "Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Both delivered transitional sources and actual 2026 upper course have a closed real subject basis. Own Wahlbereich projects are permitted, but no selected positive C source contract exists. This does not prohibit teachers from authoring a separately declared project. Real trig functions, polar coordinates of curves or a sinusoidal time model are not the whole complex polar/exponential representation contract.",
+      "sourceReferences": [
+        "TH-2018 pp. 20, 27–46",
+        "TH-2025 pp. 21–27",
+        "TH-2026 pp. 2, 30, 38–55",
+        "TH-VALIDITY"
+      ],
+      "selectedV18Offers": [
+        "DE-TH/SekII/G8/GK",
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/GK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-TH/SekII/G8/GK",
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/GK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "TH",
+      "alias": "EQU",
+      "goalId": "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+      "wholeGoalTitle": "Gleichungen in der Menge der komplexen Zahlen lösen",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Both delivered transitional sources and actual 2026 upper course have a closed real subject basis. Own Wahlbereich projects are permitted, but no selected positive C source contract exists. This does not prohibit teachers from authoring a separately declared project. General solving of complex equations, including nonreal quadratic solutions, is not demanded by the named introduction/iteration. Standard real quadratic/discriminant work is not this contract.",
+      "sourceReferences": [
+        "TH-2018 pp. 20, 27–46",
+        "TH-2025 pp. 21–27",
+        "TH-2026 pp. 2, 30, 38–55",
+        "TH-VALIDITY"
+      ],
+      "selectedV18Offers": [
+        "DE-TH/SekII/G8/GK",
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/GK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-TH/SekII/G8/GK",
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/GK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "TH",
+      "alias": "DIV",
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "wholeGoalTitle": "Komplexe Zahlen algebraisch dividieren",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Both delivered transitional sources and actual 2026 upper course have a closed real subject basis. Own Wahlbereich projects are permitted, but no selected positive C source contract exists. This does not prohibit teachers from authoring a separately declared project. Conjugate-based algebraic complex division is not part of the closed standard/optional C lists. Mandelbrot iteration uses z²+c, no complex divisor; no task score/coverage can be fabricated.",
+      "sourceReferences": [
+        "TH-2018 pp. 20, 27–46",
+        "TH-2025 pp. 21–27",
+        "TH-2026 pp. 2, 30, 38–55",
+        "TH-VALIDITY"
+      ],
+      "selectedV18Offers": [
+        "DE-TH/SekII/G8/GK",
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/GK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-TH/SekII/G8/GK",
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/GK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "TH",
+      "alias": "UNI",
+      "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+      "wholeGoalTitle": "Einheitswurzeln komplexer Zahlen am Einheitskreis deuten (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Both delivered transitional sources and actual 2026 upper course have a closed real subject basis. Own Wahlbereich projects are permitted, but no selected positive C source contract exists. This does not prohibit teachers from authoring a separately declared project. All n-th complex unity roots and their geometry are an extra whole competency; real roots or polar representation alone do not establish it.",
+      "sourceReferences": [
+        "TH-2018 pp. 20, 27–46",
+        "TH-2025 pp. 21–27",
+        "TH-2026 pp. 2, 30, 38–55",
+        "TH-VALIDITY"
+      ],
+      "selectedV18Offers": [
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "TH",
+      "alias": "MUL",
+      "goalId": "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+      "wholeGoalTitle": "Komplexe Zahlen algebraisch multiplizieren",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Both delivered transitional sources and actual 2026 upper course have a closed real subject basis. Own Wahlbereich projects are permitted, but no selected positive C source contract exists. This does not prohibit teachers from authoring a separately declared project. Real matrix multiplication does not constitute complex multiplication.",
+      "sourceReferences": [
+        "TH-2018 pp. 20, 27–46",
+        "TH-2025 pp. 21–27",
+        "TH-2026 pp. 2, 30, 38–55",
+        "TH-VALIDITY"
+      ],
+      "selectedV18Offers": [
+        "DE-TH/SekII/G8/GK",
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/GK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-TH/SekII/G8/GK",
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/GK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "TH",
+      "alias": "MAN",
+      "goalId": "9b339361-7719-573d-a913-432246c502ee",
+      "wholeGoalTitle": "Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)",
+      "decision": "PRESERVE_UNSELECTED_WHOLE_CONTRACT",
+      "wholeContractRationale": "Whole Mandelbrot ordinary contract is currently unselected here. RP has positive optional thematic evidence; this review neither promotes the target nor claims that every detailed software/finite-test clause is officially obligatory.",
+      "sourceReferences": [
+        "TH-2018 pp. 20, 27–46",
+        "TH-2025 pp. 21–27",
+        "TH-2026 pp. 2, 30, 38–55",
+        "TH-VALIDITY"
+      ],
+      "selectedV18Offers": [],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "TH",
+      "alias": "GEO",
+      "goalId": "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+      "wholeGoalTitle": "Grundrechenarten in der Gaußschen Zahlenebene deuten",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Both delivered transitional sources and actual 2026 upper course have a closed real subject basis. Own Wahlbereich projects are permitted, but no selected positive C source contract exists. This does not prohibit teachers from authoring a separately declared project. Whole goal includes geometric interpretation of all four operations, including nonzero complex division. Positive geometric addition/subtraction or complex iteration is only a proper part; no partial mastering/slicing.",
+      "sourceReferences": [
+        "TH-2018 pp. 20, 27–46",
+        "TH-2025 pp. 21–27",
+        "TH-2026 pp. 2, 30, 38–55",
+        "TH-VALIDITY"
+      ],
+      "selectedV18Offers": [
+        "DE-TH/SekII/G8/GK",
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/GK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-TH/SekII/G8/GK",
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/GK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "TH",
+      "alias": "NEC",
+      "goalId": "a8fdbaeb-7c0a-58ff-aab5-2fb871ae2fb0",
+      "wholeGoalTitle": "Die Zahlbereichserweiterung zu komplexen Zahlen mathematisch begründen (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Both delivered transitional sources and actual 2026 upper course have a closed real subject basis. Own Wahlbereich projects are permitted, but no selected positive C source contract exists. This does not prohibit teachers from authoring a separately declared project. Generic Q→R extension and real unsolvability alone, without the RP-specific positive C bridge or SN optional context, do not require the R→C explanatory goal.",
+      "sourceReferences": [
+        "TH-2018 pp. 20, 27–46",
+        "TH-2025 pp. 21–27",
+        "TH-2026 pp. 2, 30, 38–55",
+        "TH-VALIDITY"
+      ],
+      "selectedV18Offers": [
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "TH",
+      "alias": "HIS",
+      "goalId": "e105bad8-b4e5-53fc-b02e-604f1df5b503",
+      "wholeGoalTitle": "Die kulturhistorische Bedeutung komplexer Zahlen einordnen (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Both delivered transitional sources and actual 2026 upper course have a closed real subject basis. Own Wahlbereich projects are permitted, but no selected positive C source contract exists. This does not prohibit teachers from authoring a separately declared project. Generic history of mathematics and irrational numbers is not the required historical transition of complex numbers.",
+      "sourceReferences": [
+        "TH-2018 pp. 20, 27–46",
+        "TH-2025 pp. 21–27",
+        "TH-2026 pp. 2, 30, 38–55",
+        "TH-VALIDITY"
+      ],
+      "selectedV18Offers": [
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "TH",
+      "alias": "MAT",
+      "goalId": "eda8580e-1f10-5dbd-9aaf-92367f40a6bd",
+      "wholeGoalTitle": "Komplexe Zahlen als 2×2-Matrizen darstellen (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Both delivered transitional sources and actual 2026 upper course have a closed real subject basis. Own Wahlbereich projects are permitted, but no selected positive C source contract exists. This does not prohibit teachers from authoring a separately declared project. Real affine maps, real matrix notation or rotations do not assert representation of a complex number as a 2×2 matrix. Full C matrix contract is outside the enumerated basis.",
+      "sourceReferences": [
+        "TH-2018 pp. 20, 27–46",
+        "TH-2025 pp. 21–27",
+        "TH-2026 pp. 2, 30, 38–55",
+        "TH-VALIDITY"
+      ],
+      "selectedV18Offers": [
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "TH",
+      "alias": "MEM",
+      "goalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+      "wholeGoalTitle": "Lernkarten - Komplexe Zahlen und Parameter",
+      "decision": "PRESERVE_UNSELECTED_WHOLE_CONTRACT",
+      "wholeContractRationale": "Whole eight-card deck includes conjugate division and unity roots. Never filter cards. It is currently unselected in every reviewed offer and stays unselected.",
+      "sourceReferences": [
+        "TH-2018 pp. 20, 27–46",
+        "TH-2025 pp. 21–27",
+        "TH-2026 pp. 2, 30, 38–55",
+        "TH-VALIDITY"
+      ],
+      "selectedV18Offers": [],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "TH",
+      "alias": "EX",
+      "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
+      "wholeGoalTitle": "Komplexe Zahlen sicher anwenden",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Both delivered transitional sources and actual 2026 upper course have a closed real subject basis. Own Wahlbereich projects are permitted, but no selected positive C source contract exists. This does not prohibit teachers from authoring a separately declared project. Whole 20-BE task includes nonreal quadratic roots (6), plane plot (4), modulus/argument (5) and matrix representation of multiplication by i (5). The mandatory C-matrix part is not supported; remove the selected whole task, preserve payload and stable mastery. No division scoring/preparation inferred.",
+      "sourceReferences": [
+        "TH-2018 pp. 20, 27–46",
+        "TH-2025 pp. 21–27",
+        "TH-2026 pp. 2, 30, 38–55",
+        "TH-VALIDITY"
+      ],
+      "selectedV18Offers": [
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "TH",
+      "alias": "HX",
+      "goalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+      "wholeGoalTitle": "Mathematische Notwendigkeit und Fachgeschichte komplexer Zahlen erklären (LK)",
+      "decision": "EXCLUDE_SELECTED_WHOLE_TARGET_SOURCE_SCOPE_PASS",
+      "wholeContractRationale": "Both delivered transitional sources and actual 2026 upper course have a closed real subject basis. Own Wahlbereich projects are permitted, but no selected positive C source contract exists. This does not prohibit teachers from authoring a separately declared project. Whole 14-BE task requires x²+1/R→C plus Bombelli, Argand/Gauss geometry history and rejection of a single inventor. A single Gauss note or introductory NEC atom does not warrant this full multi-part protected task.",
+      "sourceReferences": [
+        "TH-2018 pp. 20, 27–46",
+        "TH-2025 pp. 21–27",
+        "TH-2026 pp. 2, 30, 38–55",
+        "TH-VALIDITY"
+      ],
+      "selectedV18Offers": [
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRemovals": [
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    },
+    {
+      "country": "TH",
+      "alias": "MX",
+      "goalId": "34dc8c9b-f61b-50ca-8daa-0d46277c7b32",
+      "wholeGoalTitle": "Mandelbrot-Parameterebene softwaregestützt untersuchen",
+      "decision": "PRESERVE_UNSELECTED_WHOLE_CONTRACT",
+      "wholeContractRationale": "Whole Mandelbrot assessment is currently unselected. RP optional theme is a positive lead for a separate full-task review, not permission to add the task. Keep whole payload and membership unchanged.",
+      "sourceReferences": [
+        "TH-2018 pp. 20, 27–46",
+        "TH-2025 pp. 21–27",
+        "TH-2026 pp. 2, 30, 38–55",
+        "TH-VALIDITY"
+      ],
+      "selectedV18Offers": [],
+      "exactOfferRemovals": [],
+      "exactOfferRetentions": [],
+      "wholeContractModified": false,
+      "universalOfficialCompulsoryClaim": false
+    }
+  ],
+  "decisionSemantics": {
+    "positiveRetention": "Retain the existing authored scope on positive official topic evidence with the stated didactic operationalization. Optional status and official depth remain explicit. This is not an official universal duty and not a new mapping or source promotion.",
+    "HOLD": "Retain the whole unchanged goal while specific whole-contract evidence remains unresolved. Positive part evidence is not full-source approval.",
+    "exclusion": "Only the frozen actual selected target allowlist is removed from these normal offers after reading the closed relevant course basis, optional lists and entry domains. Voluntary future projects are not forbidden.",
+    "unselected": "Do not add, promote, partially filter or redesign a task/deck."
+  },
+  "mappingBoundary": {
+    "all28StructuralMappingsPreserved": true,
+    "noGlobalBoundary": true,
+    "noBlanketCompilerEvidencePass": true
+  },
+  "preserve": [
+    "All 18 whole goal/cluster/protected contracts and both full memory-deck files bound in current-contract-and-input-rebind.json",
+    "All HE/BY positive contracts and the prior BE/HE/MV/NI masks",
+    "Prior BB/BW/NI/NW and HB/HH/MV/SH packages, independent of this one",
+    "Global mastery and all IDs; all unrelated targets and preparation relationships"
+  ],
+  "implementation": {
+    "activeViewCount": 22,
+    "exactOperations": 93,
+    "targetOccurrencesToRemove": 296,
+    "ordinary": 248,
+    "wholeProtected": 48,
+    "affectedOffers": 36,
+    "positiveRetainedOccurrences": 38,
+    "holdRetainedOccurrences": 26,
+    "targetAdditions": 0,
+    "rootWrites": 0,
+    "operations": "view-deltas.EXACT-INERT.json",
+    "allowlists": "whole-profile-target-deltas.V18-reference.json",
+    "sequence": "Rebase only after runtime repair and earlier packages have a new actual 154-offer baseline. Apply exact active role/label operations with prior-mask preconditions; independently mirror legitimate producer bases; run producer checks and actual native154, enforce no additions and exact scoped whole-target differences. No current native release claim."
+  },
+  "revisionFollowups": [
+    "ST source extraction still pins 2019; corroborating 2022 PDF does not silently replace it. Any source-pipeline upgrade is separate.",
+    "TH extraction still combines 2018/2025. Actual 2026 binding and transition dates are recorded here; separate future source revision must preserve cohort validity."
+  ]
+}

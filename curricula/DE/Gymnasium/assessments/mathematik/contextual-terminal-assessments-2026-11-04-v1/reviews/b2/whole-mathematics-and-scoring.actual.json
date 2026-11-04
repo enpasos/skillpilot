@@ -1,0 +1,135 @@
+{
+  "status": "PASS_ACTUAL_WHOLE_BILINGUAL_TASK_AND_MATHEMATICS_REVIEW",
+  "wholeExam": {
+    "id": "5d3fd2c4-7c7e-569e-ae02-75486573f3cc",
+    "title": "B2 (Analysis – \"Wirkstoffkonzentration\", 30 BE) (LK)",
+    "titleEn": "B2 (Analysis – \"Drug Concentration\", 30 BE)",
+    "description": "Funktionenschar, Extremwerte und Integral (AUC).",
+    "descriptionEn": "Function family, extrema and integral (AUC).",
+    "weight": 1,
+    "tags": [
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "0e8417d7-effb-5314-93ba-a571b01726ce",
+      "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+      "49f9059a-876c-5051-8146-d008b5cc691c"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024",
+      "phase": "Abitur",
+      "demandLevel": "AB3"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "examData": {
+      "taskContent": "Die Konzentration eines Medikaments im Blut wird modelliert durch die Funktionenschar:\n\n$$\nc_k(t) = 10 \\cdot t \\cdot e^{1 - k \\cdot t} \\quad (t \\ge 0, k > 0)\n$$\n\n($t$ in Stunden, $c_k(t)$ in mg/l).\n\n1. **Verlauf:** Untersuchen Sie das Verhalten für $t \\to \\infty$. Begründen Sie, dass die Konzentration für $t>0$ stets positiv ist. (4 BE)\n2. **Wirkungsmaximum:** Bestimmen Sie in Abhängigkeit von $k$ den Zeitpunkt der maximalen Konzentration und die Höhe der maximalen Konzentration.\n   Für welchen Parameter $k$ wird das Maximum genau nach 2 Stunden erreicht? (9 BE)\n3. **Abbaugeschwindigkeit:** Zeigen Sie, dass die Wendestelle der Funktion bei $t_W = \\frac{2}{k}$ liegt.\n   Interpretieren Sie die Bedeutung der Wendestelle im Kontext des Abbaus des Medikaments. (6 BE)\n4. **Gesamtmenge:** Das Integral $\\int_0^{\\infty} c_k(t) \\, dt$ ist ein Maß für die \"totale Exposition\" des Körpers (AUC = Area Under Curve).\n   Bestimmen Sie diesen Wert in Abhängigkeit von $k$.\n   Ein Arzt möchte die Exposition verdoppeln. Untersuchen Sie, wie er dafür den Parameter $k$ ändern muss. (11 BE)",
+      "solutionContent": "**1. Verlauf (4 BE)**\n$\\lim_{t \\to \\infty} c_k(t) = 0$ (e-Funktion dominiert). $t, k, e^x > 0 \\Rightarrow c_k(t) > 0$.\n\n**2. Maximum (9 BE)**\n$c_k'(t) = 10e^{1-kt}(1-kt) = 0 \\Rightarrow t = 1/k$. $c(1/k) = 10/k$. $t=2 \\Rightarrow k=0,5$.\n\n**3. Wendepunkt (6 BE)**\n$c_k''(t) = 10e^{1-kt}(-k(1-kt) - k) = 10k e^{1-kt}(kt-2) = 0 \\Rightarrow t=2/k$. Stärkste Abnahme.\n\n**4. Gesamtmenge (11 BE)**\nPartielle Integration. $\\int_0^{\\infty} c_k(t) dt = \\frac{10e}{k^2}$. Verdopplung: $k$ durch $k/\\sqrt{2}$ ersetzen.",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 15,
+        "steps": [
+          {
+            "id": "s1",
+            "points": 4,
+            "description": "Grenzverhalten"
+          },
+          {
+            "id": "s2",
+            "points": 9,
+            "description": "Extrema berechnet"
+          },
+          {
+            "id": "s3",
+            "points": 6,
+            "description": "Wendepunkt"
+          },
+          {
+            "id": "s4",
+            "points": 11,
+            "description": "Integral und Parameter"
+          }
+        ]
+      },
+      "taskContentEn": "The concentration of a medication in the blood is modeled by the family of functions:\n\n$$\nc_k(t) = 10 \\cdot t \\cdot e^{1 - k \\cdot t} \\quad (t \\ge 0, k > 0)\n$$\n\n($t$ in hours, $c_k(t)$ in mg/l).\n\n1. **Behavior:** Investigate the behavior as $t \\to \\infty$. Justify that the concentration is always positive for $t>0$. (4 BE)\n2. **Maximum effect:** Determine, as a function of $k$, the time of maximum concentration and the maximum concentration value.\n   For which parameter $k$ is the maximum reached exactly after 2 hours? (9 BE)\n3. **Decay rate:** Show that the inflection point of the function is at $t_W = \\frac{2}{k}$.\n   Interpret the meaning of the inflection point in the context of the drug's decay. (6 BE)\n4. **Total exposure:** The integral $\\int_0^{\\infty} c_k(t) \\, dt$ is a measure of the body's \"total exposure\" (AUC = Area Under Curve).\n   Determine this value as a function of $k$.\n   A doctor wants to double the exposure. Investigate how the parameter $k$ must be changed. (11 BE)",
+      "solutionContentEn": "**1. Behavior (4 BE)**\n$\\lim_{t \\to \\infty} c_k(t) = 0$ (exponential dominates). $t, k, e^x > 0 \\Rightarrow c_k(t) > 0$.\n\n**2. Maximum (9 BE)**\n$c_k'(t) = 10e^{1-kt}(1-kt) = 0 \\Rightarrow t = 1/k$. $c(1/k) = 10/k$. $t=2 \\Rightarrow k=0.5$.\n\n**3. Inflection point (6 BE)**\n$c_k''(t) = 10e^{1-kt}(-k(1-kt) - k) = 10k e^{1-kt}(kt-2) = 0 \\Rightarrow t=2/k$. Strongest decrease.\n\n**4. Total exposure (11 BE)**\nIntegration by parts. $\\int_0^{\\infty} c_k(t) dt = \\frac{10e}{k^2}$. Doubling: replace $k$ by $k/\\sqrt{2}$."
+    },
+    "phase": "Abitur",
+    "type": "atomic"
+  },
+  "wholeExamObjectSha256": "e1ceb3636451cd336ddf6c8f74a4a0ef0e694cec465404b56bde5685148ac30e",
+  "originalHessianAuthoredTaskSnapshot": {
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_MATHEMATIK.de.json.snapshot",
+    "sha256": "d8200f80e8c28f2b93c3841bef59520fc77ffacbd8d9f321842e8b08f33eb12a"
+  },
+  "originalTaskBank": {
+    "path": "curricula/DE/Gymnasium/input/HE/abi/Mathe/task_bank.json",
+    "sha256": "7b7c7439436703e49ec11e4ee94b8c8d78bd789f640f53d0ac64707d7af63eb6"
+  },
+  "canonicalLegacyMapping": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_math_upper_secondary_to_canonical_math.json",
+    "sha256": "f561cd0aa1c4a453d2d5d9c47a352f3c224e856a52df335dcab2201a9de8114b"
+  },
+  "exactOriginalBilingualExamDataPreserved": true,
+  "independentlyRecomputed": {
+    "derivative": "10 exp(1-kt)(1-kt)",
+    "secondDerivative": "10k exp(1-kt)(kt-2)",
+    "positivity": "For k>0 and t>0 all factors in 10t exp(1-kt) are positive; c(0)=0.",
+    "globalMaximum": "The derivative changes from positive to negative at t=1/k; together with c(0)=0 and the zero limit, this is the global maximum, of height 10/k. t=2 gives k=1/2.",
+    "inflection": "The second derivative changes from negative to positive at 2/k. c prime attains its minimum there, -10/e, so this is the greatest instantaneous decline in modeled concentration.",
+    "asymptotic": "t exp(-kt) tends to zero for every fixed k>0; exponential decay dominates polynomial growth.",
+    "methodFreeAntiderivative": "F_k(t)=-10 exp(1-kt)(t/k+1/k^2). Direct differentiation gives c_k. A linear-polynomial times exponential Ansatz is sufficient; the task does not require partial integration as a separate method.",
+    "improperIntegral": "lim b→infinity [F_k(b)-F_k(0)] = 10e/k^2; replacing k by k/sqrt(2) doubles AUC.",
+    "units": "AUC has units mg*h/l; the task body explicitly defines exposure, not administered dose. The German heading Gesamtmenge must be read through that explicit definition; no clinical dosing recommendation is being made."
+  },
+  "directPreparationJudgments": [
+    {
+      "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+      "necessaryUse": "Part4 needs an exponential-polynomial antiderivative and its verification; parts2/3 need the already-contained function-family analysis foundation."
+    },
+    {
+      "goalId": "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+      "necessaryUse": "Part4 has an infinite upper bound, so convergence and the limit definition are actual preparation. Singularities and every sub-outcome of this broader existing goal are not newly claimed as assessed."
+    },
+    {
+      "goalId": "49f9059a-876c-5051-8146-d008b5cc691c",
+      "necessaryUse": "Part1 and the upper-limit evaluation use exponential-versus-power comparison."
+    }
+  ],
+  "scoreJudgment": {
+    "maxPoints": 30,
+    "passingPoints": 15,
+    "parts": [
+      4,
+      9,
+      6,
+      11
+    ],
+    "singleWholeBinaryOutcome": true,
+    "passingCounterexample": [
+      0,
+      9,
+      6,
+      0
+    ],
+    "counterexampleTotal": 15,
+    "conclusion": "Passing B2 is not proof of asymptotic comparison, improper integration, or each prerequisite individually. Its own mastered assessment stops its outgoing preparation demand; it creates no prerequisite mastery or coveredGoalIds."
+  },
+  "noTaskSolutionRubricRequiresCoverageChangesApproved": true
+}

@@ -1,0 +1,2072 @@
+{
+  "status": "PASS_SOURCE_AND_WHOLE_EXISTING_TASKS_EXACT_EIGHT_SH_LK_AND_UNION_OFFERS_NOT_ACTIVATION",
+  "date": "2026-11-01",
+  "reviewerAgent": "/root/astra_math_material_scope_resume",
+  "authorIndependent": true,
+  "assessmentIds": [
+    "9cf020ee-4f6b-554e-97d6-eca3e2aabe99",
+    "99e45593-8509-5f51-832e-39ed2a9c10d9"
+  ],
+  "exactOfferIds": [
+    "DE-SH/SekII/G8/LK",
+    "DE-SH/SekII/G8/GK+LK",
+    "DE-SH/SekII/G9/LK",
+    "DE-SH/SekII/G9/GK+LK",
+    "DE-SH/CrossStage/G8/LK",
+    "DE-SH/CrossStage/G8/GK+LK",
+    "DE-SH/CrossStage/G9/LK",
+    "DE-SH/CrossStage/G9/GK+LK"
+  ],
+  "expectedAddedProtectedTargetOccurrences": 16,
+  "explicitlyExcludedPureGKOffers": [
+    "DE-SH/SekII/G8/GK",
+    "DE-SH/SekII/G9/GK",
+    "DE-SH/CrossStage/G8/GK",
+    "DE-SH/CrossStage/G9/GK"
+  ],
+  "wholeCurrentTaskContracts": [
+    {
+      "id": "9cf020ee-4f6b-554e-97d6-eca3e2aabe99",
+      "title": "Verteilungen in Kontexten nutzen",
+      "description": "Die lernende Person kann eine materialgestützte Q3-Klausuraufgabe zu Binomial-, Normal- oder verwandten Verteilungen selbstständig bearbeiten und Ergebnisse im Kontext interpretieren.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2",
+          "K3",
+          "K4",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "requires": [
+        "42d300e3-e982-5889-98d7-fc297f10eff1",
+        "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+        "66f432e9-22d3-51a9-8787-35f91db30616",
+        "8c32d941-b51c-5663-951c-a610f8900f76",
+        "d81bc960-4eff-5c87-90b8-fec8e1cb8b3a",
+        "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+        "d711bc18-c27c-4739-8289-edac53dc8ba3",
+        "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+        "f7879354-1a82-4195-8e3c-a339a820439c",
+        "b431148b-526c-4bde-b04b-48d23101d0d3",
+        "44dba16e-2e86-56be-974b-a62093ef9211"
+      ],
+      "contains": [],
+      "examples": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "8c32d941-b51c-5663-951c-a610f8900f76",
+          "f7879354-1a82-4195-8e3c-a339a820439c"
+        ],
+        "coveredStrands": [
+          "L4",
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
+        "taskContent": "In einem Versandzentrum kommen erfahrungsgemäß $6\\,$% aller Sendungen verspätet an. An einem Tag werden $250$ Sendungen betrachtet. Die Zufallsvariable $X$ beschreibt die Anzahl der verspäteten Sendungen.\n\n1. Begründen Sie ein geeignetes Modell für $X$ und bestimmen Sie Erwartungswert und Standardabweichung.\n2. Berechnen Sie mit der Normalapproximation und Stetigkeitskorrektur die Wahrscheinlichkeit, dass zwischen $10$ und $20$ Sendungen verspätet ankommen.\n3. Bestimmen Sie näherungsweise die Wahrscheinlichkeit, dass mehr als $25$ Sendungen verspätet sind.\n4. Beurteilen Sie, ob ein Tageswert von mehr als $25$ verspäteten Sendungen als auffällig gelten kann.",
+        "solutionContent": "1. Es ist ein Binomialmodell mit\n$$\nX\\sim B(250;0{,}06)\n$$\nunter den zusätzlichen Modellannahmen angemessen, dass die betrachteten Sendungen annähernd unabhängig sind und für jede dieselbe Verspätungswahrscheinlichkeit p=0,06 gilt. Gemeinsame Lieferketten, Wetter oder gebündelte Transporte können Abhängigkeiten bzw. unterschiedliche Wahrscheinlichkeiten verursachen; dann ist das Binomialmodell nur eingeschränkt passend. Es gilt\n$$\n\\mu=np=250\\cdot 0{,}06=15,\n$$\n$$\n\\sigma=\\sqrt{np(1-p)}=\\sqrt{250\\cdot 0{,}06\\cdot 0{,}94}=\\sqrt{14{,}1}\\approx 3{,}76.\n$$\n\n2. Mit Stetigkeitskorrektur wird\n$$\nP(10\\le X\\le 20)\\approx P(9{,}5\\le Y\\le 20{,}5)\n$$\nmit $Y\\sim N(15;3{,}76)$. Standardisiert ergibt sich\n$$\nz_1=\\frac{9{,}5-15}{3{,}76}\\approx -1{,}46,\\qquad z_2=\\frac{20{,}5-15}{3{,}76}\\approx 1{,}46.\n$$\nDamit folgt\n$$\nP(10\\le X\\le 20)\\approx \\Phi(1{,}46)-\\Phi(-1{,}46)\\approx 0{,}857.\n$$\n\n3. Für mehr als $25$ verspätete Sendungen gilt mit Stetigkeitskorrektur\n$$\nP(X>25)\\approx P(Y>25{,}5).\n$$\nStandardisieren liefert\n$$\nz=\\frac{25{,}5-15}{3{,}76}\\approx 2{,}79.\n$$\nAlso\n$$\nP(X>25)\\approx 1-\\Phi(2{,}79)\\approx 0{,}0026.\n$$\n\n4. Ein Tageswert von mehr als $25$ verspäteten Sendungen ist sehr unwahrscheinlich. Mit einer Wahrscheinlichkeit von nur etwa $0{,}26\\,$% kann ein solcher Wert als deutlich auffällig beurteilt werden.",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 10,
+          "steps": [
+            {
+              "id": "q3b_1",
+              "points": 4,
+              "description": "Binomialmodell mit annähernder Unabhängigkeit und konstantem p begründet; Erwartungswert und Standardabweichung korrekt bestimmt"
+            },
+            {
+              "id": "q3b_2",
+              "points": 7,
+              "description": "Intervallwahrscheinlichkeit mit Normalapproximation korrekt berechnet"
+            },
+            {
+              "id": "q3b_3",
+              "points": 4,
+              "description": "Randwahrscheinlichkeit für mehr als 25 korrekt bestimmt"
+            },
+            {
+              "id": "q3b_4",
+              "points": 5,
+              "description": "Auffälligkeit im Kontext fachlich sinnvoll bewertet"
+            }
+          ]
+        },
+        "reviewNote": "Begrenzte Inhaltskorrektur vom 01.11.2026 unabhängig mit Astra Ultra fachlich geprüft; exakte Nachkorrekturen berücksichtigt. Nachweis: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-upper-candidate-review.json. Historische Quellen und bestehende gültige Mastery bleiben unverändert."
+      },
+      "phase": "Q3",
+      "type": "atomic"
+    },
+    {
+      "id": "99e45593-8509-5f51-832e-39ed2a9c10d9",
+      "title": "Hypothesentests durchführen und bewerten",
+      "description": "Die lernende Person kann eine Q3-Klausuraufgabe zu Hypothesentests selbstständig lösen, Testentscheidungen begründen und die Aussagekraft fachlich bewerten.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2",
+          "K3",
+          "K4",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "requires": [
+        "677be619-5f0a-59bf-9730-0071c7d3f150",
+        "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8",
+        "4b58b855-cd26-538c-8e6f-304f4cfd8ad6",
+        "44dba16e-2e86-56be-974b-a62093ef9211"
+      ],
+      "contains": [],
+      "examples": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "f14e1643-ad8d-5235-a832-97987fa18489",
+          "677be619-5f0a-59bf-9730-0071c7d3f150",
+          "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8"
+        ],
+        "coveredStrands": [
+          "L4",
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
+        "taskContent": "Ein Hersteller behauptet, dass höchstens $2\\,$% aller produzierten Sensoren fehlerhaft sind. Zur Überprüfung wird eine Stichprobe von $n=400$ Sensoren untersucht; dabei werden $14$ fehlerhafte Sensoren gefunden.\n\n1. Formulieren Sie eine passende Nullhypothese und eine geeignete Alternativhypothese.\n2. Bestimmen Sie für einen einseitigen Test zum Signifikanzniveau $5\\,$% mit der Normalapproximation eine Entscheidungsregel.\n3. Treffen Sie auf Grundlage der Stichprobe eine Testentscheidung.\n4. Erläutern Sie die Bedeutung eines Fehlers 1. Art im gegebenen Kontext.",
+        "solutionContent": "1. Geeignet ist\n$$\nH_0: p \\le 0{,}02, \\qquad H_1: p > 0{,}02.\n$$\nFür die Rechnung wird unter $H_0$ mit $p_0=0{,}02$ gearbeitet.\n\n2. Unter $H_0$ gilt näherungsweise\n$$\n\\mu = np_0 = 8, \\qquad \\sigma = \\sqrt{np_0(1-p_0)} = \\sqrt{7{,}84} \\approx 2{,}8.\n$$\nFür einen einseitigen Test mit $\\alpha=0{,}05$ wird der kritische $z$-Wert $1{,}645$ verwendet:\n$$\nk \\approx \\mu + 1{,}645\\sigma \\approx 8 + 1{,}645\\cdot 2{,}8 \\approx 12{,}6.\n$$\nFür einen ganzzahligen Verwerfungsbeginn $c$ wird mit Stetigkeitskorrektur $P(X\\ge c)\\approx P(Y\\ge c-0{,}5)$ angesetzt. Deshalb muss\n$$\nc-0{,}5\\ge8+1{,}645\\cdot2{,}8\\approx12{,}606\n$$\ngelten. Der kleinste ganzzahlige Wert ist $c=14$, denn $13{,}5\\ge12{,}606$, während $12{,}5<12{,}606$. Die Entscheidungsregel lautet\n$$\n\\text{Verwerfe }H_0\\text{ für }X\\ge14.\n$$\nDie Normalrechnung ist eine Näherung. Zur Niveaukontrolle liefert die exakte Binomialverteilung bei $p_0=0{,}02$ die Wahrscheinlichkeit $P(X\\ge14)\\approx0{,}0326979\\le0{,}05$; für $X\\ge13$ wäre sie etwa $0{,}0618585$ und damit zu groß. Für $p<0{,}02$ ist die obere Randwahrscheinlichkeit noch kleiner.\n\n3. Beobachtet wurde $X=14$. Da $14 \\ge 14$, wird $H_0$ verworfen. Die Stichprobe spricht also dafür, dass die Fehlerquote größer als $2\\,$% ist.\n\n4. Ein Fehler 1. Art liegt vor, wenn $H_0$ verworfen wird, obwohl die wahre Fehlerquote tatsächlich höchstens $2\\,$% beträgt. Im Kontext würde der Hersteller also zu Unrecht als qualitativ schlechter eingestuft.",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 10,
+          "steps": [
+            {
+              "id": "q3_1",
+              "points": 4,
+              "description": "Hypothesen passend formuliert"
+            },
+            {
+              "id": "q3_2",
+              "points": 7,
+              "description": "Entscheidungsregel X≥14 mit Normalapproximation und korrekter Stetigkeitskorrektur c−0,5 hergeleitet; Näherungscharakter erkannt"
+            },
+            {
+              "id": "q3_3",
+              "points": 4,
+              "description": "Stichprobe korrekt beurteilt und Testentscheidung getroffen"
+            },
+            {
+              "id": "q3_4",
+              "points": 5,
+              "description": "Fehler 1. Art im Kontext korrekt erklärt"
+            }
+          ]
+        },
+        "reviewNote": "Begrenzte Inhaltskorrektur vom 01.11.2026 unabhängig mit Astra Ultra fachlich geprüft; exakte Nachkorrekturen berücksichtigt. Nachweis: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-upper-candidate-review.json. Historische Quellen und bestehende gültige Mastery bleiben unverändert."
+      },
+      "phase": "Q3",
+      "type": "atomic"
+    }
+  ],
+  "wholeSelectedPreparationAndCoverageGoalContracts": [
+    {
+      "id": "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8",
+      "title": "Testergebnisse im Kontext interpretieren",
+      "titleEn": "Interpret test results in context",
+      "description": "Die lernende Person kann entscheiden, ob die Nullhypothese verworfen oder nicht verworfen wird, das Ergebnis verständlich im Sachkontext formulieren und erläutern, welche Aussage der Test erlaubt und welche nicht.",
+      "descriptionEn": "The learner can decide whether the null hypothesis is rejected or not rejected, state the result clearly in context, and explain what the test result does and does not support.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "4b58b855-cd26-538c-8e6f-304f4cfd8ad6"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K6.2"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8",
+          "title": "Visualisierung: Testergebnisse im Kontext interpretieren",
+          "url": "/assets/goal-visualizations/mathematik/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8/0a7ff229-bf90-523c-a6b4-dad2ecd54ed8.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Testergebnisse im Kontext interpretieren.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Testergebnisse im Kontext interpretieren\". Die lernende Person kann entscheiden, ob die Nullhypothese verworfen oder nicht verworfen wird, das Ergebnis verständlich im Sachkontext formulieren und erläutern, welche Aussage der Test erlaubt und welche nicht.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "42d300e3-e982-5889-98d7-fc297f10eff1",
+      "title": "Einfluss von n und p auf Binomialverteilungen analysieren",
+      "titleEn": "Analyze the influence of n and p on binomial distributions",
+      "description": "Die lernende Person kann anhand von Histogrammen untersuchen, wie sich die Parameter n und p auf Lage, Streuung und Symmetrie binomialverteilter Zufallsgrößen auswirken, und entsprechende Vergleiche an Beispielen begründen.",
+      "descriptionEn": "The learner can use histograms to analyze how parameters n and p affect location, spread, and symmetry of binomial distributions and justify comparisons with examples.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0",
+        "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47, Spiegelstrich 3",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "42d300e3-e982-5889-98d7-fc297f10eff1",
+          "title": "Visualisierung: Einfluss von n und p auf Binomialverteilungen analysieren",
+          "url": "/assets/goal-visualizations/mathematik/42d300e3-e982-5889-98d7-fc297f10eff1/42d300e3-e982-5889-98d7-fc297f10eff1.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Einfluss von n und p auf Binomialverteilungen analysieren.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Einfluss von n und p auf Binomialverteilungen analysieren\". Die lernende Person kann anhand von Histogrammen untersuchen, wie sich die Parameter n und p auf Lage, Streuung und Symmetrie binomialverteilter Zufallsgrößen auswirken, und entsprechende Vergleiche an Beispielen begründen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "44dba16e-2e86-56be-974b-a62093ef9211",
+      "title": "Normalverteilung als Approximation binomialer Modelle (LK)",
+      "titleEn": "Normal Distribution as Approximation of Binomial Models (Advanced Course)",
+      "description": "Die lernende Person kann Histogramme binomialverteilter Zufallsgrößen bei hinreichend großer Standardabweichung durch eine Normalverteilung approximieren, die Näherung fachlich begründen und den Bezug zu den Sigma-Regeln deuten.",
+      "descriptionEn": "The learner can approximate histograms of binomial random variables by a normal distribution for suitable parameters and a sufficiently large standard deviation, justify the approximation mathematically, and interpret its relation to sigma rules.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "66f432e9-22d3-51a9-8787-35f91db30616",
+        "8c32d941-b51c-5663-951c-a610f8900f76",
+        "da95ab35-bac2-54f2-b38f-8b612cde8b54"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true,
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.5, S. 48, Spiegelstrich 4",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "44dba16e-2e86-56be-974b-a62093ef9211",
+          "title": "Visualisierung: Normalverteilung als Approximation binomialer Modelle (LK)",
+          "url": "/assets/goal-visualizations/mathematik/44dba16e-2e86-56be-974b-a62093ef9211/44dba16e-2e86-56be-974b-a62093ef9211.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Normalverteilung als Approximation binomialer Modelle (LK).",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Normalverteilung als Approximation binomialer Modelle (LK)\". Die lernende Person kann Histogramme binomialverteilter Zufallsgrößen bei hinreichend großer Standardabweichung durch eine Normalverteilung approximieren, die Näherung fachlich begründen und den Bezug zu den Sigma-Regeln deuten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "4b58b855-cd26-538c-8e6f-304f4cfd8ad6",
+      "title": "Fehler 1. und 2. Art deuten",
+      "titleEn": "Interpret Type 1 and Type 2 errors",
+      "description": "Die lernende Person kann Fehler 1. und 2. Art unterscheiden, ihre Bedeutung in Anwendungen (z. B. medizinische Tests, Qualitätskontrolle) erklären und Beispiele zuordnen.",
+      "descriptionEn": "The learner can distinguish type 1 and type 2 errors, explain their meaning in applications (e.g., medical tests, quality control), and assign examples.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "78bfbde4-8e16-529e-bd53-4e29d960b2b2"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K6.2"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true,
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.3, S. 47, Spiegelstrich 1",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "4b58b855-cd26-538c-8e6f-304f4cfd8ad6",
+          "title": "Visualisierung: Fehler 1. und 2. Art deuten",
+          "url": "/assets/goal-visualizations/mathematik/4b58b855-cd26-538c-8e6f-304f4cfd8ad6/4b58b855-cd26-538c-8e6f-304f4cfd8ad6.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Fehler 1. und 2. Art deuten.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Fehler 1. und 2. Art deuten\". Die lernende Person kann Fehler 1. und 2. Art unterscheiden, ihre Bedeutung in Anwendungen (z. B. medizinische Tests, Qualitätskontrolle) erklären und Beispiele zuordnen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+      "title": "Zufallsgrößen beschreiben und Wahrscheinlichkeitsverteilungen in Tabellen und Diagrammen nutzen",
+      "titleEn": "Describe random variables and use probability distributions in tables and diagrams",
+      "description": "Die lernende Person kann Zufallsgrößen als Zuordnungen von Ergebnissen beschreiben und diskrete Wahrscheinlichkeitsverteilungen in Tabellen oder Diagrammen zur Beschreibung stochastischer Situationen nutzen.",
+      "descriptionEn": "The learner can describe random variables as assignments of outcomes and use discrete probability distributions in tables or diagrams to describe stochastic situations.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.2",
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47, Spiegelstrich 1",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+          "title": "Visualisierung: Zufallsgrößen beschreiben und Wahrscheinlichkeitsverteilungen in Tabellen und Diagrammen nutzen",
+          "url": "/assets/goal-visualizations/mathematik/5927ca6a-91d5-4541-84e9-833bbb2cd7df/5927ca6a-91d5-4541-84e9-833bbb2cd7df.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Zufallsgrößen beschreiben und Wahrscheinlichkeitsverteilungen in Tabellen und Diagrammen nutzen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Zufallsgrößen beschreiben und Wahrscheinlichkeitsverteilungen in Tabellen und Diagrammen nutzen\". Die lernende Person kann Zufallsgrößen als Zuordnungen von Ergebnissen beschreiben und diskrete Wahrscheinlichkeitsverteilungen in Tabellen oder Diagrammen zur Beschreibung stochastischer Situationen nutzen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+      "title": "Erwartungswert, Varianz und Standardabweichung einfacher diskreter Zufallsgrößen bestimmen",
+      "titleEn": "Determine Expected Value, Variance, and Standard Deviation of Simple Discrete Random Variables",
+      "description": "Die lernende Person kann für einfache diskrete Zufallsgrößen Erwartungswert, Varianz und Standardabweichung bestimmen, diese im Kontext deuten und damit einfache Glücksspiele untersuchen.",
+      "descriptionEn": "The learner can determine expected value, variance, and standard deviation for simple discrete random variables, interpret them in context, and use them to analyze simple games of chance.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "d711bc18-c27c-4739-8289-edac53dc8ba3"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.2",
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47, Spiegelstrich 1",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+          "title": "Visualisierung: Erwartungswert, Varianz und Standardabweichung einfacher diskreter Zufallsgrößen bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/6053aeda-84f7-4c2c-98d7-1753a7e26dcc/6053aeda-84f7-4c2c-98d7-1753a7e26dcc.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Erwartungswert, Varianz und Standardabweichung einfacher diskreter Zufallsgrößen bestimmen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Erwartungswert, Varianz und Standardabweichung einfacher diskreter Zufallsgrößen bestimmen\". Die lernende Person kann für einfache diskrete Zufallsgrößen Erwartungswert, Varianz und Standardabweichung bestimmen, diese im Kontext deuten und damit einfache Glücksspiele untersuchen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "66f432e9-22d3-51a9-8787-35f91db30616",
+      "title": "Binomialverteilungen in Kontexten nutzen",
+      "titleEn": "Use binomial distributions in contexts",
+      "description": "Die lernende Person kann geeignete Situationen als binomialverteilte Zufallsgrößen modellieren, anhand von Histogrammen typische Eigenschaften erkennen und die Eignung des Modells kritisch beurteilen.",
+      "descriptionEn": "The learner can model suitable situations as binomial distributed random variables, recognize typical properties based on histograms, and critically assess the suitability of the model.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+        "9dfd0e4a-d7ea-5ce2-906e-678f0cf978b0"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "66f432e9-22d3-51a9-8787-35f91db30616",
+          "title": "Visualisierung: Binomialverteilungen in Kontexten nutzen",
+          "url": "/assets/goal-visualizations/mathematik/66f432e9-22d3-51a9-8787-35f91db30616/66f432e9-22d3-51a9-8787-35f91db30616.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Binomialverteilungen in Kontexten nutzen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Binomialverteilungen in Kontexten nutzen\". Die lernende Person kann geeignete Situationen als binomialverteilte Zufallsgrößen modellieren, anhand von Histogrammen typische Eigenschaften erkennen und die Eignung des Modells kritisch beurteilen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "677be619-5f0a-59bf-9730-0071c7d3f150",
+      "title": "Entscheidungsregeln und Verwerfungsbereiche bestimmen",
+      "titleEn": "Determine decision rules and rejection regions",
+      "description": "Die lernende Person kann zu vorgegebenen Signifikanzniveaus Entscheidungsregeln sowie kritische Werte beziehungsweise Verwerfungsbereiche für ein- oder zweiseitige binomiale Tests bestimmen und Sigma-Regeln als mögliches Näherungshilfsmittel einordnen.",
+      "descriptionEn": "The learner can determine decision rules and critical values or rejection regions for one- or two-sided binomial tests at given significance levels and assess sigma rules as a possible approximation aid.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "eb2cecd6-5dca-5a2e-988b-a29b24c20345",
+        "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+        "8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d",
+        "9de07e13-6a5f-5b49-a6d4-0decefb95784"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true,
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.3, S. 47, Spiegelstrich 1",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "677be619-5f0a-59bf-9730-0071c7d3f150",
+          "title": "Visualisierung: Entscheidungsregeln und Verwerfungsbereiche bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/677be619-5f0a-59bf-9730-0071c7d3f150/677be619-5f0a-59bf-9730-0071c7d3f150.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Entscheidungsregeln und Verwerfungsbereiche bestimmen.",
+          "altText": "Die lernende Person kann zu vorgegebenen Signifikanzniveaus Entscheidungsregeln sowie kritische Werte beziehungsweise Verwerfungsbereiche für ein- oder zweiseitige binomiale Tests bestimmen und Sigma-Regeln als mögliches Näherungshilfsmittel einordnen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+      "title": "Wahrscheinlichkeiten in Bernoulli-Ketten berechnen",
+      "titleEn": "Calculate probabilities in Bernoulli chains",
+      "description": "Die lernende Person kann Bernoulli-Ketten in Sachzusammenhängen modellieren, mit der Binomialformel Wahrscheinlichkeiten berechnen und die Grenzen solcher Modelle reflektieren.",
+      "descriptionEn": "The learner can model Bernoulli chains in real-world contexts, calculate probabilities with the binomial formula, and reflect on the limits of such models.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "e495fa38-b198-5280-a405-9e41cafd6d17"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47, Spiegelstrich 2",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+          "title": "Visualisierung: Wahrscheinlichkeiten in Bernoulli-Ketten berechnen",
+          "url": "/assets/goal-visualizations/mathematik/837b015a-c2a2-5f31-831c-ae16ee2ee6ce/837b015a-c2a2-5f31-831c-ae16ee2ee6ce.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Wahrscheinlichkeiten in Bernoulli-Ketten berechnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Wahrscheinlichkeiten in Bernoulli-Ketten berechnen\". Die lernende Person kann Bernoulli-Ketten in Sachzusammenhängen modellieren, mit der Binomialformel Wahrscheinlichkeiten berechnen und die Grenzen solcher Modelle reflektieren.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "8c32d941-b51c-5663-951c-a610f8900f76",
+      "shortKey": "canonical_math_q3_determine_normal_probabilities_lk",
+      "title": "Wahrscheinlichkeiten normalverteilter Zufallsgrößen bestimmen (LK)",
+      "titleEn": "Determine probabilities for normally distributed random variables (advanced course)",
+      "description": "Die lernende Person kann Wahrscheinlichkeiten normalverteilter Zufallsgrößen in Sachzusammenhängen mit digitalen Werkzeugen oder als Flächen unter dem Dichtegraphen bestimmen und im Kontext deuten.",
+      "descriptionEn": "The learner can determine probabilities for normally distributed random variables in context using digital tools or areas under the density graph and interpret the results.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47, Spiegelstrich 5",
+      "requires": [
+        "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+        "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+        "fd13605e-21d9-523f-bcf4-6824b6cc09e5"
+      ],
+      "contains": [],
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "8c32d941-b51c-5663-951c-a610f8900f76",
+          "title": "Visualisierung: Wahrscheinlichkeiten normalverteilter Zufallsgrößen bestimmen (LK)",
+          "url": "/assets/goal-visualizations/mathematik/8c32d941-b51c-5663-951c-a610f8900f76/8c32d941-b51c-5663-951c-a610f8900f76.png",
+          "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+          "description": "Wahrscheinlichkeit als Fläche unter der Normaldichte zwischen a und b.",
+          "altText": "Unter einer symmetrischen Glockenkurve ist nur die Fläche zwischen den Grenzen a und b eingefärbt. Sie steht für P(a ≤ X ≤ b).",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "b431148b-526c-4bde-b04b-48d23101d0d3",
+      "title": "Annähernd normalverteilte Zufallsgrößen in Situationen erkennen",
+      "titleEn": "Recognize approximately normally distributed random variables in situations",
+      "description": "Die lernende Person kann in stochastischen Situationen begründet einschätzen, ob eine Zufallsgröße annähernd normalverteilt sein kann.",
+      "descriptionEn": "The learner can give reasons for judging whether a random variable in a stochastic situation may be approximately normally distributed.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "da95ab35-bac2-54f2-b38f-8b612cde8b54"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "b431148b-526c-4bde-b04b-48d23101d0d3",
+          "title": "Visualisierung: Annähernd normalverteilte Zufallsgrößen in Situationen erkennen",
+          "url": "/assets/goal-visualizations/mathematik/b431148b-526c-4bde-b04b-48d23101d0d3/b431148b-526c-4bde-b04b-48d23101d0d3.png",
+          "provider": "OpenAI/ChatGPT-Codex image generation",
+          "description": "Comicvergleich zur begründeten Einschätzung, wann ein Binomialmodell annähernd normalverteilt sein kann.",
+          "altText": "Zwei schematische Histogramme: 100 faire Münzwürfe mit p=0,5 sind annähernd glockenförmig; bei 100 unabhängigen Versuchen mit Trefferchance 1 Prozent ist die Trefferzahl rechtsschief und ein Normalmodell unpassend.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "d711bc18-c27c-4739-8289-edac53dc8ba3",
+      "title": "Zufallsgrößen als Zuordnungen einführen und beschreiben",
+      "titleEn": "Introduce and Describe Random Variables as Assignments",
+      "description": "Die lernende Person kann Zufallsgrößen als Zuordnungen von Ergebnissen auf Zahlen einführen und sie in einfachen diskreten Kontexten fachsprachlich beschreiben.",
+      "descriptionEn": "The learner can introduce random variables as assignments from outcomes to numbers and describe them in simple discrete contexts using appropriate mathematical language.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.2",
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47, Spiegelstrich 1",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "d711bc18-c27c-4739-8289-edac53dc8ba3",
+          "title": "Visualisierung: Zufallsgrößen als Zuordnungen einführen und beschreiben",
+          "url": "/assets/goal-visualizations/mathematik/d711bc18-c27c-4739-8289-edac53dc8ba3/d711bc18-c27c-4739-8289-edac53dc8ba3.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Zufallsgrößen als Zuordnungen einführen und beschreiben.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Zufallsgrößen als Zuordnungen einführen und beschreiben\". Die lernende Person kann Zufallsgrößen als Zuordnungen von Ergebnissen auf Zahlen einführen und sie in einfachen diskreten Kontexten fachsprachlich beschreiben.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "d81bc960-4eff-5c87-90b8-fec8e1cb8b3a",
+      "title": "Binomialkoeffizienten kombinatorisch deuten und in einfachen Fällen berechnen",
+      "titleEn": "Interpret binomial coefficients combinatorially and calculate them in simple cases",
+      "description": "Die lernende Person kann die kombinatorische Bedeutung von Binomialkoeffizienten erklären und sie in einfachen Fällen ohne Hilfsmittel berechnen.",
+      "descriptionEn": "The learner can explain the combinatorial meaning of binomial coefficients and calculate them in simple cases without aids.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "70efdec0-110c-5564-849b-bc05cfff0f6a"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.1, S. 46, Spiegelstrich 6",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "d81bc960-4eff-5c87-90b8-fec8e1cb8b3a",
+          "title": "Visualisierung: Binomialkoeffizienten kombinatorisch deuten und in einfachen Fällen berechnen",
+          "url": "/assets/goal-visualizations/mathematik/d81bc960-4eff-5c87-90b8-fec8e1cb8b3a/d81bc960-4eff-5c87-90b8-fec8e1cb8b3a.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Binomialkoeffizienten kombinatorisch deuten und in einfachen Fällen berechnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Binomialkoeffizienten kombinatorisch deuten und in einfachen Fällen berechnen\". Die lernende Person kann die kombinatorische Bedeutung von Binomialkoeffizienten erklären und sie in einfachen Fällen ohne Hilfsmittel berechnen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "f14e1643-ad8d-5235-a832-97987fa18489",
+      "title": "Null- und Alternativhypothesen formulieren",
+      "titleEn": "Formulate null and alternative hypotheses",
+      "description": "Die lernende Person kann zu Anteilsfragestellungen eine Nullhypothese und eine passende rechts-, links- oder zweiseitige Alternativhypothese für einen binomialen Signifikanztest formulieren und den Parameter p identifizieren.",
+      "descriptionEn": "The learner can formulate a null hypothesis and a suitable right-, left-, or two-sided alternative hypothesis for a binomial significance test on proportions and identify the parameter p.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+        "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.2",
+          "K6.2"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true,
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.3, S. 47, Spiegelstrich 1",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "f14e1643-ad8d-5235-a832-97987fa18489",
+          "title": "Visualisierung: Null- und Alternativhypothesen formulieren",
+          "url": "/assets/goal-visualizations/mathematik/f14e1643-ad8d-5235-a832-97987fa18489/f14e1643-ad8d-5235-a832-97987fa18489.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Null- und Alternativhypothesen formulieren.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Null- und Alternativhypothesen formulieren\". Die lernende Person kann zu Anteilsfragestellungen eine Nullhypothese und eine passende rechts-, links- oder zweiseitige Alternativhypothese für einen binomialen Signifikanztest formulieren und den Parameter p identifizieren.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "f7879354-1a82-4195-8e3c-a339a820439c",
+      "title": "Erwartungswert und Standardabweichung binomialverteilter Zufallsgrößen bestimmen und deuten",
+      "titleEn": "Determine and interpret expected value and standard deviation of binomial random variables",
+      "description": "Die lernende Person kann für binomialverteilte Zufallsgrößen Erwartungswert und Standardabweichung berechnen und beide Kenngrößen mit der zugrunde liegenden Situation in Beziehung setzen.",
+      "descriptionEn": "The learner can calculate expected value and standard deviation for binomial random variables and relate both measures to the underlying situation.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "e495fa38-b198-5280-a405-9e41cafd6d17"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.2",
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "f7879354-1a82-4195-8e3c-a339a820439c",
+          "title": "Visualisierung: Erwartungswert und Standardabweichung binomialverteilter Zufallsgrößen bestimmen und deuten",
+          "url": "/assets/goal-visualizations/mathematik/f7879354-1a82-4195-8e3c-a339a820439c/f7879354-1a82-4195-8e3c-a339a820439c.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Erwartungswert und Standardabweichung binomialverteilter Zufallsgrößen bestimmen und deuten.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Erwartungswert und Standardabweichung binomialverteilter Zufallsgrößen bestimmen und deuten\". Die lernende Person kann für binomialverteilte Zufallsgrößen Erwartungswert und Standardabweichung berechnen und beide Kenngrößen mit der zugrunde liegenden Situation in Beziehung setzen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "document": "SH Fachanforderungen Mathematik Sekundarstufe2024",
+    "originalPdfPath": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+    "printedPages": [
+      60,
+      71,
+      72,
+      73
+    ],
+    "sourceRows": [
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-K005-238348c4cd",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-K005",
+        "rowIndex": 5,
+        "title": "nutzen Zufallsgrößen",
+        "description": "Die lernende Person kann nutzen Zufallsgrößen und deren Verteilungen zur Modellierung von realen Situationen.",
+        "sourceText": "nutzen Zufallsgrößen und deren Verteilungen zur Modellierung von realen Situationen",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3766",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71",
+        "sourcePage": 71,
+        "sourceLine": 3766,
+        "category": "content-competency-standard",
+        "granularity": "officialCompetencyExpectation",
+        "phase": "E-Q",
+        "courseLevel": "GK_LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:content-competency"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-K007-33d613a0c8",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-K007",
+        "rowIndex": 7,
+        "title": "interpretieren Kenngrößen von Zufallsgrößen in Bezug auf die vorliegende Situation",
+        "description": "Die lernende Person kann interpretieren Kenngrößen von Zufallsgrößen in Bezug auf die vorliegende Situation.",
+        "sourceText": "interpretieren Kenngrößen von Zufallsgrößen in Bezug auf die vorliegende Situation",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3775",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71",
+        "sourcePage": 71,
+        "sourceLine": 3775,
+        "category": "content-competency-standard",
+        "granularity": "officialCompetencyExpectation",
+        "phase": "E-Q",
+        "courseLevel": "GK_LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:content-competency"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-K009-1c6235d796",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-K009",
+        "rowIndex": 9,
+        "title": "bearbeiten reale Problemstellungen",
+        "description": "Die lernende Person kann bearbeiten reale Problemstellungen.",
+        "sourceText": "bearbeiten reale Problemstellungen",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3798",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71",
+        "sourcePage": 71,
+        "sourceLine": 3798,
+        "category": "content-competency-standard",
+        "granularity": "officialCompetencyExpectation",
+        "phase": "E-Q",
+        "courseLevel": "GK_LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:content-competency"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-K010-fd0ce20294",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-K010",
+        "rowIndex": 10,
+        "title": "indem sie mit diskreten Zufallsgrößen modellieren",
+        "description": "Die lernende Person kann indem sie mit diskreten Zufallsgrößen modellieren.",
+        "sourceText": "indem sie mit diskreten Zufallsgrößen modellieren",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3799",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71",
+        "sourcePage": 71,
+        "sourceLine": 3799,
+        "category": "content-competency-standard",
+        "granularity": "officialCompetencyExpectation",
+        "phase": "E-Q",
+        "courseLevel": "GK_LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:content-competency"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-K012-8885ca403a",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-K012",
+        "rowIndex": 12,
+        "title": "beurteilen, wann eine binomial verteilte Zufallsgröße durch eine Normalverteilung angenähert ...",
+        "description": "Die lernende Person kann beurteilen, wann eine binomial verteilte Zufallsgröße durch eine Normalverteilung angenähert werden kann.",
+        "sourceText": "beurteilen, wann eine binomial verteilte Zufallsgröße durch eine Normalverteilung angenähert werden kann",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3841",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 72",
+        "sourcePage": 72,
+        "sourceLine": 3841,
+        "category": "content-competency-standard",
+        "granularity": "officialCompetencyExpectation",
+        "phase": "E-Q",
+        "courseLevel": "LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:content-competency"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-K013-654ab33339",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-K013",
+        "rowIndex": 13,
+        "title": "berechnen Näherungswerte von Wahrscheinlichkeiten binomialverteilter Zufallsgrößen",
+        "description": "Die lernende Person kann berechnen Näherungswerte von Wahrscheinlichkeiten binomialverteilter Zufallsgrößen und nutzen dazu die Normalverteilungsfunktion des modularen Mathematiksystems.",
+        "sourceText": "berechnen Näherungswerte von Wahrscheinlichkeiten binomialverteilter Zufallsgrößen und nutzen dazu die Normalverteilungsfunktion des modularen Mathematiksystems",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3851",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 72",
+        "sourcePage": 72,
+        "sourceLine": 3851,
+        "category": "content-competency-standard",
+        "granularity": "officialCompetencyExpectation",
+        "phase": "E-Q",
+        "courseLevel": "LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:content-competency"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-K016-06f1860089",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-K016",
+        "rowIndex": 16,
+        "title": "Hypothesentests konzipieren und Fehlerarten interpretieren",
+        "description": "Die lernende Person kann Hypothesentests konzipieren und Fehler 1. und 2. Art interpretieren.",
+        "sourceText": "konzipieren Hypothesentests und interpretieren die Fehler 1. und 2. Art",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3888",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 73",
+        "sourcePage": 73,
+        "sourceLine": 3888,
+        "category": "content-competency-standard",
+        "granularity": "officialCompetencyExpectation",
+        "phase": "E-Q",
+        "courseLevel": "LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:content-competency"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T035-a5be6e5dc4",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T035",
+        "rowIndex": 35,
+        "title": "Wahrscheinlichkeitsverteilung",
+        "description": "Die lernende Person kann fachlich mit wahrscheinlichkeitsverteilung arbeiten.",
+        "sourceText": "Wahrscheinlichkeitsverteilung",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3769",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71",
+        "sourcePage": 71,
+        "sourceLine": 3769,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "GK_LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T037-10e98792f8",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T037",
+        "rowIndex": 37,
+        "title": "Histogramm",
+        "description": "Die lernende Person kann fachlich mit histogramm arbeiten.",
+        "sourceText": "Histogramm",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3773",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71",
+        "sourcePage": 71,
+        "sourceLine": 3773,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "GK_LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T038-febf7fac16",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T038",
+        "rowIndex": 38,
+        "title": "Berechnung von Wahrscheinlichkeiten P(X=k) und P(k1 <= X <= k2)",
+        "description": "Die lernende Person kann fachlich mit Wahrscheinlichkeiten der Form P(X=k) und P(k1 <= X <= k2) arbeiten.",
+        "sourceText": "Berechnung von Wahrscheinlichkeiten der Form P(X=k) und P(k1 <= X <= k2)",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3775",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71",
+        "sourcePage": 71,
+        "sourceLine": 3775,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "GK_LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T040-765420474c",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T040",
+        "rowIndex": 40,
+        "title": "Erwartungswert",
+        "description": "Die lernende Person kann fachlich mit erwartungswert arbeiten.",
+        "sourceText": "Erwartungswert",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3780",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71",
+        "sourcePage": 71,
+        "sourceLine": 3780,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "GK_LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T041-159e99e66f",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T041",
+        "rowIndex": 41,
+        "title": "Varianz und Standardabweichung als Streuungsmaße",
+        "description": "Die lernende Person kann fachlich mit Varianz und Standardabweichung als Streuungsmaßen arbeiten.",
+        "sourceText": "Varianz und Standardabweichung als Streuungsmaße",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3781",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71",
+        "sourcePage": 71,
+        "sourceLine": 3781,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "GK_LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T046-bf5541268e",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T046",
+        "rowIndex": 46,
+        "title": "Bernoulli-Experiment",
+        "description": "Die lernende Person kann fachlich mit bernoulli-Experiment arbeiten.",
+        "sourceText": "Bernoulli-Experiment",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3802",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71",
+        "sourcePage": 71,
+        "sourceLine": 3802,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "GK_LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T047-10aa2ff6c6",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T047",
+        "rowIndex": 47,
+        "title": "Bernoulli-Kette",
+        "description": "Die lernende Person kann fachlich mit bernoulli-Kette arbeiten.",
+        "sourceText": "Bernoulli-Kette",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3803",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71",
+        "sourcePage": 71,
+        "sourceLine": 3803,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "GK_LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T048-08caf53ecf",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T048",
+        "rowIndex": 48,
+        "title": "Fakultät, Binomialkoeffizient",
+        "description": "Die lernende Person kann fachlich mit fakultät, Binomialkoeffizient arbeiten.",
+        "sourceText": "Fakultät, Binomialkoeffizient",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3805",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71",
+        "sourcePage": 71,
+        "sourceLine": 3805,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "GK_LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T049-b9363e223a",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T049",
+        "rowIndex": 49,
+        "title": "Binomialverteilungen mit Erwartungswert und Standardabweichung",
+        "description": "Die lernende Person kann fachlich mit Binomialverteilungen samt Erwartungswert und Standardabweichung arbeiten.",
+        "sourceText": "Binomialverteilungen mit Erwartungswert und Standardabweichung",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3807",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71",
+        "sourcePage": 71,
+        "sourceLine": 3807,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "GK_LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T052-076c459a05",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T052",
+        "rowIndex": 52,
+        "title": "Normalverteilung",
+        "description": "Die lernende Person kann fachlich mit normalverteilung arbeiten.",
+        "sourceText": "Normalverteilung",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3829",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 72",
+        "sourcePage": 72,
+        "sourceLine": 3829,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T053-1eac40da83",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T053",
+        "rowIndex": 53,
+        "title": "Standardnormalverteilung",
+        "description": "Die lernende Person kann fachlich mit standardnormalverteilung arbeiten.",
+        "sourceText": "Standardnormalverteilung",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3839",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 72",
+        "sourcePage": 72,
+        "sourceLine": 3839,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T054-57ea91c906",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T054",
+        "rowIndex": 54,
+        "title": "Gaußsche Integralfunktion Phi_0;1",
+        "description": "Die lernende Person kann fachlich mit der Gaußschen Integralfunktion Phi_0;1 arbeiten.",
+        "sourceText": "die Gaußsche Integralfunktion Phi_0;1",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3851",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 72",
+        "sourcePage": 72,
+        "sourceLine": 3851,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T055-81e8173da7",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T055",
+        "rowIndex": 55,
+        "title": "Bedingung und Näherungsformel von Moivre und Laplace",
+        "description": "Die lernende Person kann fachlich mit der Bedingung und Näherungsformel von Moivre und Laplace arbeiten.",
+        "sourceText": "Bedingung und Näherungsformel von Moivre und Laplace",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3852",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 72",
+        "sourcePage": 72,
+        "sourceLine": 3852,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T056-18532d5990",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T056",
+        "rowIndex": 56,
+        "title": "zweiseitiger Hypothesentest",
+        "description": "Die lernende Person kann fachlich mit zweiseitiger Hypothesentest arbeiten.",
+        "sourceText": "zweiseitiger Hypothesentest",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3888",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 73",
+        "sourcePage": 73,
+        "sourceLine": 3888,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T057-3f4a59238e",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T057",
+        "rowIndex": 57,
+        "title": "Nullhypothese",
+        "description": "Die lernende Person kann fachlich mit nullhypothese arbeiten.",
+        "sourceText": "Nullhypothese",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3890",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 73",
+        "sourcePage": 73,
+        "sourceLine": 3890,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T058-c5a58651a8",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T058",
+        "rowIndex": 58,
+        "title": "Fehler 1. und 2. Art",
+        "description": "Die lernende Person kann fachlich mit Fehler 1. und 2. Art arbeiten.",
+        "sourceText": "Fehler 1. und 2. Art",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3892",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 73",
+        "sourcePage": 73,
+        "sourceLine": 3892,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T059-b0b181af1f",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T059",
+        "rowIndex": 59,
+        "title": "Signifikanzniveau",
+        "description": "Die lernende Person kann fachlich mit signifikanzniveau arbeiten.",
+        "sourceText": "Signifikanzniveau",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3894",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 73",
+        "sourcePage": 73,
+        "sourceLine": 3894,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T060-344f5e8fb1",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T060",
+        "rowIndex": 60,
+        "title": "Verwerfungsbereich",
+        "description": "Die lernende Person kann fachlich mit verwerfungsbereich arbeiten.",
+        "sourceText": "Verwerfungsbereich",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3897",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 73",
+        "sourcePage": 73,
+        "sourceLine": 3897,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      },
+      {
+        "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T062-6d38cbd6d4",
+        "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T062",
+        "rowIndex": 62,
+        "title": "rechtsseitiger und linksseitiger Hypothesentest",
+        "description": "Die lernende Person kann fachlich mit rechtsseitigen und linksseitigen Hypothesentests arbeiten.",
+        "sourceText": "rechtsseitiger und linksseitiger Hypothesentest",
+        "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3905",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 73",
+        "sourcePage": 73,
+        "sourceLine": 3905,
+        "category": "binding-topic-standard",
+        "granularity": "officialBindingTopic",
+        "phase": "E-Q",
+        "courseLevel": "LK",
+        "tags": [
+          "source:DE-SH",
+          "stage:SekII",
+          "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+          "section:L5",
+          "area:Daten und Zufall",
+          "sourceMode:binding-topic"
+        ]
+      }
+    ],
+    "level": "p71 common binomial foundations; p72 normal approximation includingMoivre/Laplace and p73 one-sided hypothesis tests are positively marked higher-level. This decision applies only toLK andGK+LK."
+  },
+  "wholeTaskFindings": [
+    {
+      "goalId": "9cf020ee-4f6b-554e-97d6-eca3e2aabe99",
+      "finding": "The parcel task defines a Bernoulli count, requests model assumptions and mean/spread, uses normal approximation with continuity correction for central and upper-tail probabilities, and interprets an unusual count. Every demanded action is withinp71+72; no added software/density proof beyond the curriculum or task.",
+      "numericCheck": {
+        "mean": 15,
+        "variance": 14.1,
+        "sd": 3.7549966711037173,
+        "normalApproxP10to20": 0.8570013129632064,
+        "normalApproxPOver25": 0.0025847766837583386
+      }
+    },
+    {
+      "goalId": "99e45593-8509-5f51-832e-39ed2a9c10d9",
+      "finding": "The sensor task sets compositeH0:p<=0.02 versusright-sidedH1, constructs a critical threshold using continuity correction, decides the observedcount14, and explains typeI error. p73 explicitly includesright/left-sided tests, null hypotheses, significance and rejection region; p72 supplies the approximation method.",
+      "numericCheck": {
+        "sigma": 2.8,
+        "criticalThreshold": 14,
+        "exactBinomialPAtLeast14": 0.032697854304424775,
+        "exactBinomialPAtLeast13": 0.0618585041628482
+      },
+      "limitation": "sigma2.8 does not meet a sigma>=3 heuristic. Retain the task solution approximation caveat and exact binomial level verification; do not claim a universal valid-approximation condition or whole44dba coverage."
+    }
+  ],
+  "preparationPrecondition": {
+    "completedIndependentChange": "V10 exacttwo44dba requires edges independently source/mechanically/native reviewed and Root integrated; both tasks now genuinely reach44dba and8c32.",
+    "currentCanonicalSha256": "bd14a4e87cf57d5fe9e7da6519508ef3ef9998c45a95bf95aa36012471cf8cb1",
+    "independentV10MaterializationReview": {
+      "path": "tmp/approach-review-20261101/astra-remaining-material-scope/normal-preparation-freeze-review.json",
+      "sha256": "bbfde3061f81b326fc20a2b960931640dec5b3d3ad4881cc697d4bc118b93652"
+    },
+    "executionBoundary": "The current Root V10 actual audit was pending when this source decision was written. Offer membership is checked against actualV9 plus the independently verified V10 all154 invariant targetsets; final materialization must bind actual currentRoot audit."
+  },
+  "minimalCandidateDirection": {
+    "canonicalOperations": [
+      {
+        "goalId": "9cf020ee-4f6b-554e-97d6-eca3e2aabe99",
+        "operation": "append DE-SH only to existing applicability.jurisdiction; preserve every otherfield including currentrequires44dba"
+      },
+      {
+        "goalId": "99e45593-8509-5f51-832e-39ed2a9c10d9",
+        "operation": "append DE-SH only to existing applicability.jurisdiction; preserve every otherfield including currentrequires44dba"
+      }
+    ],
+    "pureGKViewOperations": [
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+        "operation": "append exact two direct goalEntry prerequisiteOnly masks",
+        "nodes": [
+          {
+            "kind": "goalEntry",
+            "goalId": "9cf020ee-4f6b-554e-97d6-eca3e2aabe99",
+            "projectionRole": "prerequisiteOnly"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "99e45593-8509-5f51-832e-39ed2a9c10d9",
+            "projectionRole": "prerequisiteOnly"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+        "operation": "append exact two direct goalEntry prerequisiteOnly masks",
+        "nodes": [
+          {
+            "kind": "goalEntry",
+            "goalId": "9cf020ee-4f6b-554e-97d6-eca3e2aabe99",
+            "projectionRole": "prerequisiteOnly"
+          },
+          {
+            "kind": "goalEntry",
+            "goalId": "99e45593-8509-5f51-832e-39ed2a9c10d9",
+            "projectionRole": "prerequisiteOnly"
+          }
+        ]
+      }
+    ],
+    "existingQ3References": [
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+        "sha256": "66cead7e2c7b00acc772d0b73693171a25388a6b51899b16aa4a5bfc27c35dd8",
+        "existingQ3ReferencePointer": "/rootNodes/24/children/1/children/4/children/5",
+        "existingQ3Reference": {
+          "kind": "canonicalSubtree",
+          "goalId": "f24096c6-6ca0-5c15-a2f5-7bdaec789a8d",
+          "displayLabel": "Übungen"
+        }
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+        "sha256": "242321c690bbad8188cd04db3b0c80403a1c7ced7c6b86fb4f04a71d9ca1e444",
+        "existingQ3ReferencePointer": "/rootNodes/20/children/4/children/5",
+        "existingQ3Reference": {
+          "kind": "canonicalSubtree",
+          "goalId": "f24096c6-6ca0-5c15-a2f5-7bdaec789a8d",
+          "displayLabel": "Übungen"
+        }
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+        "sha256": "a4c295fd07be03d18d44f86cc67b6feb34651cfe71ba09b227377765d922d162",
+        "existingQ3ReferencePointer": "/rootNodes/21/children/1/children/4/children/5",
+        "existingQ3Reference": {
+          "kind": "canonicalSubtree",
+          "goalId": "f24096c6-6ca0-5c15-a2f5-7bdaec789a8d",
+          "displayLabel": "Übungen"
+        }
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+        "sha256": "dbebdd2d56fe75a5e54f7ae2004e63b5a257e57e0ff33d5f2d93c66a7251f79a",
+        "existingQ3ReferencePointer": "/rootNodes/17/children/4/children/5",
+        "existingQ3Reference": {
+          "kind": "canonicalSubtree",
+          "goalId": "f24096c6-6ca0-5c15-a2f5-7bdaec789a8d",
+          "displayLabel": "Übungen"
+        }
+      }
+    ],
+    "expectedLKMechanism": "Both current tasks already belong to existing canonicalQ3 exercise rootf24096c6, referenced exactly once in bothSHLK views. The new jurisdiction eligibility should expose them there without adding duplicate direct task references.",
+    "nativeCondition": "Require exactly+{9cf,99e} in each of eightLK/GK+LK targetsets and no other targetchange. Explicitly test that pureGK masks prevent the jurisdiction addition from exposing advanced tasks there and that GK+LK union retains the newLK obligations exactly once. Any implementation deviation needs separate exact-delta review."
+  },
+  "distinctOutcomeBoundary": "9cf assesses binomial-to-normal approximation with continuity correction;99e assesses a hypothesis-test decision. Existing6644 prognosis intervals and14e40 continuousCDF/inverse questions are different whole task outcomes. Do not add another duplicate task or reinterpret existingIDs/mastery.",
+  "unchanged": [
+    "pureSH-GK selectedtargets includingfive legitimateSigma foundations",
+    "all ordinarytargets and hiddenprotectedSupport enrollment",
+    "all task/solution/rubric/coverage bytes and scoring",
+    "all previousvalid globalmastery and binarygoalstate",
+    "all nonSH offerings and actualBYe465 correction"
+  ],
+  "notApproved": [
+    "BY9cf/99e enrollment from normal-distribution labels alone",
+    "SHpureGK9cf/99e enrollment",
+    "Poisson c83 enrollment",
+    "whole44dba coverage claim from preparation",
+    "bulk newtasks or blanket course retagging"
+  ],
+  "inputs": {
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "bd14a4e87cf57d5fe9e7da6519508ef3ef9998c45a95bf95aa36012471cf8cb1",
+    "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json": "4e57a316c0964bbfeaf0b04e782af4d83f06b9edec66d6440209d582fc0e7755",
+    "tmp/approach-review-20261101/post-sh-course-native-154-audit.json": "84e92fbbf6d77af4f21c3568b89bfeae783b1c828bc92325ab7b69aefcc5a3d3",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/SH-page-71.png": "8707c336a4dd4505202dc156fcad31673ce1a8e89a657620cd2441990790f908",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/SH-page-72.png": "3021fc78629b23fc083d7f46cab4d6e98d0dc44b348d9353b9ffcfefdfa73ef1",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/SH-page-73.png": "9261fa5fb21d8ca5c7fbb28248bd7e8d1a2ad784f2827bf48b2990b14449ccc1",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/normal-approximation-preparation-PASS.json": "5940d2c0e9f1bb61543c2c27c763d1c1a8a27b5c4927e91ab4e5bb115c1c39c6",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/normal-preparation-freeze-review.json": "bbfde3061f81b326fc20a2b960931640dec5b3d3ad4881cc697d4bc118b93652"
+  },
+  "noRootMutation": true
+}

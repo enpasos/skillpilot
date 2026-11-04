@@ -1,0 +1,13 @@
+# CI-Nachlauf: Kursunion, Fokusmarker und Sitzungsablauf
+
+Zwei reale G5-CI-Fehler betrafen veraltete Testannahmen. Das LK-spezifische Q2.5-Ziel bleibt im reinen GK ausgeschlossen; eine ausdrücklich deklarierte GK+LK-Ansicht darf es über ihre echte LK-Quelle enthalten. Ein kleiner gemeinsamer Testhelfer prüft die exakten policygebundenen Quellpaare, Kontexte, Targetrollen und Kursverfügbarkeit. Die bestehende Hessenregression verwendet denselben Vertrag ohne doppelte Implementierung.
+
+Ein gespeicherter kanonischer J8-Fokus enthält außerdem die bereits unabhängig freigegebene Verhältnisgleichungsprüfung auf einem eigenen sichtbaren Pfad. Seine beiden Marker müssen genau die aktuelle authored J8-Mitgliedschaft und dieses eine gebundene Ziel repräsentieren. Vollständige markierte Atommengen, keine zusätzlichen Geschwister und der unveränderte gespeicherte Fokus bleiben geprüft. Die Zielauswahl und der vollständige Compositionstest bestehen.
+
+Ein sporadischer Gemini-Testfehler wurde durch den echten Aufräumdienst reproduziert: Der bisherige Test veröffentlichte seine künstlich abgelaufene Zeile vor den Assertions. Der konkurrierende Cleanup konnte sie löschen; der Koordinator meldete dann korrekt REQUIRED statt EXPIRED. Der Test hält die künstliche Ablaufzeit nun innerhalb einer eigenen rollback-only Transaktion nach dem normalen Fixture. Die beiden strikten EXPIRED-Assertions bleiben erhalten. Produktionscode, Uhr und Scheduler sind unverändert.
+
+Der gezielt dazwischen ausgeführte echte Cleanup erzeugt am alten Test genau den beobachteten Fehler und löscht eine Zeile. Am reparierten Test löscht er keine Zeile; beide Assertions bestehen. Anschließend bestehen die normalen Coordinator-/Cleanup-/Launch-Klassen mit 21/21 Tests ohne Skips. Frisch kompilierte Testklassen verwenden den bytegeprüften unveränderten Main-Laufzeitbestand. Ein Unterschied zwischen file:/ und file:/// wurde als privater Provenienzprüfungsfehler erhalten und vor Fortsetzung normalisiert; kein echter JVM-Testlauf wurde dafür wiederholt.
+
+[Handoff, Befehle und Quellenhashes](HANDOFF.json), [Q2.5-Fehler](dilation-before.log), [Q2.5-PASS](dilation-final.log), [Fokusmarker-Fehler](selection-before.log), [Fokusmarker-PASS](selection-final.log), [vollständige Compositionsuite](composition-shared-helper-after.log), [echter alter Race](gemini-before-forced-cleanup.result.json), [echter reparierter Race](gemini-after-forced-cleanup.result.json), [normale 21 Tests](gemini-normal-after.result.json).
+
+Das sind begrenzte lokale Reparaturnachweise; ein vollständiger GitHub-CI-PASS am abschließenden Commit bleibt erforderlich. Produktionsdaten, Graphdaten und die laufende lokale Vorschau wurden nicht verändert.

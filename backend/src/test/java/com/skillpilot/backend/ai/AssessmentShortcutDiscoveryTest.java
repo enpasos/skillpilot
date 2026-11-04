@@ -81,6 +81,18 @@ class AssessmentShortcutDiscoveryTest {
     }
 
     @Test
+    void uncoveredRoutesPreserveOnlyStructurallyOfferedExamDiscovery() {
+        var completion = offer("invalid", "automatic:personal-curriculum", "completion_target_routes_uncovered",
+                List.of(assessment("exam", false, true)));
+        var discovery = AssessmentShortcutDiscovery.project(completion, null, "de");
+        assertThat(discovery).isNotNull();
+        assertThat(discovery.options()).hasSize(1);
+        assertThat(discovery.instruction()).contains("never starts an assessment");
+        assertThat(AssessmentShortcutDiscovery.project(offer("invalid", "automatic:personal-curriculum",
+                "completion_profile_invalid", List.of(assessment("exam", false, true))), null, "de")).isNull();
+    }
+
+    @Test
     void automaticOptOutKeepsTheCalculationButPublishesNoRecoveryChoices() {
         var overview = offer("valid", "automatic:personal-curriculum", null,
                 List.of(assessment("exam", false, false)));

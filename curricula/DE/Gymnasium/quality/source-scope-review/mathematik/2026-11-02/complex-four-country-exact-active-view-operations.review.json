@@ -1,0 +1,1006 @@
+{
+  "status": "INERT_MINIMAL_REVIEWED_PROPOSAL; ROOT_MATERIALIZATION_NOT_PERFORMED",
+  "sourceDecisionReference": "four-country-source-scope-review.json",
+  "currentReadBaseline": "V16 views, canonical identical to V16; future V17/HB/analysis edits must be retained on rebase.",
+  "viewCount": 20,
+  "views": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+      "viewId": "de-bb-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-BB",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "currentV16ReadSha256": "9c8ead7b603ce6a4622dafc00b90cef3b66afc5bcfa1996da02c1d0cdab5ed52",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/27/children/1/children/5/children/3/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/27/children/1/children/5/children/4/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+            "displayLabel": "Lernkarten"
+          },
+          "wholeGoalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/-",
+          "value": {
+            "kind": "goalEntry",
+            "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
+            "projectionRole": "prerequisiteOnly"
+          },
+          "precondition": "No direct reference to this goal exists; target was inherited through Q4 practice.",
+          "wholeGoalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/27/children/1/children/5/label",
+          "oldValue": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+          "value": "Funktionenscharen und Argumentieren",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "afterParsedObjectSha256": "8eb7f409bc09d714bb345856233b2d6f91794aa87fd74ea1d7a4956100baa808",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [],
+      "requiresRebaseOnIntegration": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-lk.view.json",
+      "viewId": "de-bb-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-BB",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "currentV16ReadSha256": "bf19190a7a6b05e553d722a2c15c4e940c6ceb95bc44c12b682860aadab50d91",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/22/children/1/children/5/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/22/children/1/children/5/children/3/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+            "displayLabel": "Lernkarten"
+          },
+          "wholeGoalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/-",
+          "value": {
+            "kind": "goalEntry",
+            "goalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+            "projectionRole": "prerequisiteOnly"
+          },
+          "precondition": "No direct reference to this goal exists; target was inherited through Q4 practice.",
+          "wholeGoalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/-",
+          "value": {
+            "kind": "goalEntry",
+            "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
+            "projectionRole": "prerequisiteOnly"
+          },
+          "precondition": "No direct reference to this goal exists; target was inherited through Q4 practice.",
+          "wholeGoalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/22/children/1/children/5/label",
+          "oldValue": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+          "value": "Funktionenscharen und Argumentieren",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "afterParsedObjectSha256": "13d0283f84aa91c321310dbf732e9a52a5dbad6b96cae14fed3c131787e57ea4",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [],
+      "requiresRebaseOnIntegration": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json",
+      "viewId": "de-bb-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-BB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "currentV16ReadSha256": "2e7847f249a1432cd68726148ed20e0cb32b3e22e587cfa30a424cda5a1883b2",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/23/children/5/children/3/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/23/children/5/children/4/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+            "displayLabel": "Lernkarten"
+          },
+          "wholeGoalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/-",
+          "value": {
+            "kind": "goalEntry",
+            "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
+            "projectionRole": "prerequisiteOnly"
+          },
+          "precondition": "No direct reference to this goal exists; target was inherited through Q4 practice.",
+          "wholeGoalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/23/children/5/label",
+          "oldValue": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+          "value": "Funktionenscharen und Argumentieren",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "afterParsedObjectSha256": "c59597531fa5e4ddd86f9c16a3a1cf39b0e6bfd581976e877ca7862fe4a0de8a",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [],
+      "requiresRebaseOnIntegration": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-lk.view.json",
+      "viewId": "de-bb-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-BB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "currentV16ReadSha256": "76bc2687f7a2261fbfa872c3811998dfab2b66ef151677a772d32be4a4d90fc4",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/18/children/5/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/18/children/5/children/3/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+            "displayLabel": "Lernkarten"
+          },
+          "wholeGoalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/-",
+          "value": {
+            "kind": "goalEntry",
+            "goalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a",
+            "projectionRole": "prerequisiteOnly"
+          },
+          "precondition": "No direct reference to this goal exists; target was inherited through Q4 practice.",
+          "wholeGoalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/-",
+          "value": {
+            "kind": "goalEntry",
+            "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
+            "projectionRole": "prerequisiteOnly"
+          },
+          "precondition": "No direct reference to this goal exists; target was inherited through Q4 practice.",
+          "wholeGoalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/18/children/5/label",
+          "oldValue": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+          "value": "Funktionenscharen und Argumentieren",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "afterParsedObjectSha256": "277264af75a4e6c9b7d5500d87959e3c523e071512ba3e714f3cff3f8b605b43",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [],
+      "requiresRebaseOnIntegration": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk-g8.view.json",
+      "viewId": "de-bw-gym-math-gk-g8",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G8"
+      },
+      "currentV16ReadSha256": "a270667bd04c3fa28066f75e029c162ff8fef9ffb109a42e0b6038d43438f24d",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/17/children/1/children/5/children/3/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/17/children/1/children/5/label",
+          "oldValue": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+          "value": "Funktionenscharen und Argumentieren",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "afterParsedObjectSha256": "3872f96dd2064c5bc4d577543faf526b5ae34dc21c7e08aabb077e0053bee57a",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [],
+      "requiresRebaseOnIntegration": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk-g9.view.json",
+      "viewId": "de-bw-gym-math-gk-g9",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G9"
+      },
+      "currentV16ReadSha256": "5fa4cd6ce1ef8bab49824f8c9686dd5476c7a7eefcc8fd6853bae31a44cf15fd",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/17/children/1/children/5/children/3/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/17/children/1/children/5/label",
+          "oldValue": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+          "value": "Funktionenscharen und Argumentieren",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "afterParsedObjectSha256": "03a93e507fd4ce2fd425e942dcba2b34762039da37c574220cf7a7e37531b6db",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [],
+      "requiresRebaseOnIntegration": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk-g8.view.json",
+      "viewId": "de-bw-gym-math-lk-g8",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G8"
+      },
+      "currentV16ReadSha256": "4143f7320540fcde43fdf9b4e4cc7492eed84f9832786cd669f043d18aef0191",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/10/children/1/children/5/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/10/children/1/children/5/children/4/children/4/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "goalEntry",
+            "goalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+          },
+          "wholeGoalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/10/children/1/children/5/children/4/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "goalEntry",
+            "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+          },
+          "wholeGoalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/10/children/1/children/5/label",
+          "oldValue": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+          "value": "Funktionenscharen und Argumentieren",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "afterParsedObjectSha256": "289c90d9740061c269135402cb5ff70f4882f28117c0ede1abfedd8355e80af2",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [],
+      "requiresRebaseOnIntegration": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk-g9.view.json",
+      "viewId": "de-bw-gym-math-lk-g9",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G9"
+      },
+      "currentV16ReadSha256": "88f9077d6dd59872891ef32718f84800d888f19aed7fa43baf2f07860d253106",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/10/children/1/children/5/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/10/children/1/children/5/children/4/children/4/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "goalEntry",
+            "goalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+          },
+          "wholeGoalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/10/children/1/children/5/children/4/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "goalEntry",
+            "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+          },
+          "wholeGoalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/10/children/1/children/5/label",
+          "oldValue": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+          "value": "Funktionenscharen und Argumentieren",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "afterParsedObjectSha256": "ee33d09dd8136932350b4178121c81b5f290b3aa98a21e19a511322dbd6c93c3",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [],
+      "requiresRebaseOnIntegration": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json",
+      "viewId": "de-bw-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "currentV16ReadSha256": "fe6aebcba42c0ae57575ff99aaf8216c43be11ce2e445226161e216f5b47a3d0",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/16/children/5/children/3/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/16/children/5/label",
+          "oldValue": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+          "value": "Funktionenscharen und Argumentieren",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "afterParsedObjectSha256": "bef4502c7a3686037074ff67fd02590fe4f627a66bd3152c7487af1ba917b2a0",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [],
+      "requiresRebaseOnIntegration": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk-g9.view.json",
+      "viewId": "de-bw-gym-sekii-math-gk-g9",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK",
+        "durationModel": "G9"
+      },
+      "currentV16ReadSha256": "50aeb9d0a8df6a60bd0fc4cd88051dc03105b47a110b4facfb3782f30136d00b",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/16/children/5/children/3/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/16/children/5/label",
+          "oldValue": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+          "value": "Funktionenscharen und Argumentieren",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "afterParsedObjectSha256": "7838726c8cc8d20cabf65a58a6ddc32952ed0daa50adaac8ad36b34604152c82",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [],
+      "requiresRebaseOnIntegration": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk.view.json",
+      "viewId": "de-bw-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "currentV16ReadSha256": "09b7ed5a5b412fd14baf8479d522af7efdaaf9a832710acde5fd4c8b9a3d4f3e",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/9/children/5/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/9/children/5/children/4/children/4/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "goalEntry",
+            "goalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+          },
+          "wholeGoalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/9/children/5/children/4/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "goalEntry",
+            "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+          },
+          "wholeGoalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/9/children/5/label",
+          "oldValue": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+          "value": "Funktionenscharen und Argumentieren",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "afterParsedObjectSha256": "a4c3baae5b4da0f8593b47432c87168784ee6b8a97c7fa47b0eb3147162985b1",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [],
+      "requiresRebaseOnIntegration": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk-g9.view.json",
+      "viewId": "de-bw-gym-sekii-math-lk-g9",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK",
+        "durationModel": "G9"
+      },
+      "currentV16ReadSha256": "ebef9b439bf26b63718e0d304f796bff2deaf9fd89e0125671d6b75417db8225",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/9/children/5/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/9/children/5/children/4/children/4/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "goalEntry",
+            "goalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+          },
+          "wholeGoalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/9/children/5/children/4/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "goalEntry",
+            "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+          },
+          "wholeGoalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/9/children/5/label",
+          "oldValue": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+          "value": "Funktionenscharen und Argumentieren",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "afterParsedObjectSha256": "5ac4dd097e0b4e3a92a833ff1275818d2f537945fb3c2137aaafa72309621f92",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [],
+      "requiresRebaseOnIntegration": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+      "viewId": "de-ni-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "currentV16ReadSha256": "134c36ca9d047cc954ac1ff0e3501630d9dc265c596fa6b584bd17223ef7bb93",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/25/children/1/children/5/children/3/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/25/children/1/children/5/label",
+          "oldValue": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+          "value": "Funktionenscharen und Argumentieren",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "afterParsedObjectSha256": "448f131bcf95b9933529ab43329108d38f6b0dd53fe2baf5108090e52424177e",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [
+        [
+          "/rootNodes/55",
+          {
+            "kind": "goalEntry",
+            "goalId": "55039f9c-4ebc-5115-add5-fae95b915e46",
+            "projectionRole": "prerequisiteOnly"
+          }
+        ]
+      ],
+      "requiresRebaseOnIntegration": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-lk.view.json",
+      "viewId": "de-ni-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "currentV16ReadSha256": "8dc406240a2c67e6e7c259f013c9f3a2ce130bc63cfacd9adb027ba9c03b29db",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/23/children/1/children/5/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/23/children/1/children/5/children/4/children/4/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "goalEntry",
+            "goalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+          },
+          "wholeGoalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/23/children/1/children/5/children/4/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "goalEntry",
+            "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+          },
+          "wholeGoalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/23/children/1/children/5/label",
+          "oldValue": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+          "value": "Funktionenscharen und Argumentieren",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "afterParsedObjectSha256": "ab76dfc46dc9681773270a62cc68425d298267d8d499243934870f4663472508",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [],
+      "requiresRebaseOnIntegration": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+      "viewId": "de-ni-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "currentV16ReadSha256": "4b0856b5e6ccc660eb8eca1c3e8f8e1b4f87788e75fa431c437599c909070b22",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/21/children/5/children/3/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/21/children/5/label",
+          "oldValue": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+          "value": "Funktionenscharen und Argumentieren",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "afterParsedObjectSha256": "7d59d76ece4dd4ad7f5b049e10923c788a2cc6d2633cfc1c0bbd2a479fffc63e",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [
+        [
+          "/rootNodes/25",
+          {
+            "kind": "goalEntry",
+            "goalId": "55039f9c-4ebc-5115-add5-fae95b915e46",
+            "projectionRole": "prerequisiteOnly"
+          }
+        ]
+      ],
+      "requiresRebaseOnIntegration": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-lk.view.json",
+      "viewId": "de-ni-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-NI",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "currentV16ReadSha256": "69b3b6d95b0c1fafacd4f1901bbffbcf774bc6213df33b74e69f7eb316a040f7",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/19/children/5/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/19/children/5/children/4/children/4/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "goalEntry",
+            "goalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+          },
+          "wholeGoalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/19/children/5/children/4/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "goalEntry",
+            "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+          },
+          "wholeGoalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/19/children/5/label",
+          "oldValue": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+          "value": "Funktionenscharen und Argumentieren",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "afterParsedObjectSha256": "320c8825c99187acf1dede81db85ce02d6d298682acc7a7651e616376043cc7a",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [],
+      "requiresRebaseOnIntegration": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+      "viewId": "de-nw-gym-math-gk",
+      "scope": {
+        "jurisdiction": "DE-NW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "currentV16ReadSha256": "0a34b55d6f809bfb6993fa93bea0425b3196960b99a84eda1d3723f9e198b82e",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/25/children/1/children/5/children/3/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        }
+      ],
+      "afterParsedObjectSha256": "32458cca955d7ea52410d94384c85684bc9761e070fb71f8e653683a49596df8",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [],
+      "requiresRebaseOnIntegration": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-lk.view.json",
+      "viewId": "de-nw-gym-math-lk",
+      "scope": {
+        "jurisdiction": "DE-NW",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "currentV16ReadSha256": "dd2fb893ae51a6ba64a5e35ed96b13f25ac88f5947f57fb877a5102cbc829679",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/23/children/1/children/5/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/23/children/1/children/5/children/4/children/4/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "goalEntry",
+            "goalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+          },
+          "wholeGoalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/23/children/1/children/5/children/4/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "goalEntry",
+            "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+          },
+          "wholeGoalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/23/children/1/children/5/label",
+          "oldValue": "Q-Phase (LK): Vertiefungen, Funktionenscharen und komplexe Zahlen",
+          "value": "Q-Phase (LK): Vertiefungen und Funktionenscharen",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "afterParsedObjectSha256": "3d91bab6def320c84b824775cf26fded32931edeec95a53cda3b682ac4683eab",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [],
+      "requiresRebaseOnIntegration": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json",
+      "viewId": "de-nw-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-NW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "currentV16ReadSha256": "37b4feb46aa93f4d36b2fd10850bb64190c5ffa63e15f9a5bc889727e59c2f23",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/21/children/5/children/3/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        }
+      ],
+      "afterParsedObjectSha256": "d28a95f5bd71a26400030181f479a6c2dda54ba969b13e76a9c84ed91c4f53ff",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [],
+      "requiresRebaseOnIntegration": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-lk.view.json",
+      "viewId": "de-nw-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-NW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "currentV16ReadSha256": "bb57f2cf968c5c2a3988759fbe570dce3b9133137eac86bcd441982e5d94519a",
+      "matchesV16AuditFileHash": true,
+      "operations": [
+        {
+          "op": "add",
+          "path": "/rootNodes/19/children/5/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "canonicalSubtree",
+            "goalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+          },
+          "wholeGoalId": "248d7dc3-6d85-55b3-8859-584c79869d75"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/19/children/5/children/4/children/4/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "goalEntry",
+            "goalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+          },
+          "wholeGoalId": "1ff9d055-70cd-52d7-98b1-4338bc1ee59a"
+        },
+        {
+          "op": "add",
+          "path": "/rootNodes/19/children/5/children/4/children/2/projectionRole",
+          "value": "prerequisiteOnly",
+          "preconditionNode": {
+            "kind": "goalEntry",
+            "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+          },
+          "wholeGoalId": "a8525adc-fad3-53f5-953f-213bd37b09e8"
+        },
+        {
+          "op": "replace",
+          "path": "/rootNodes/19/children/5/label",
+          "oldValue": "Q-Phase (LK): Vertiefungen, Funktionenscharen und komplexe Zahlen",
+          "value": "Q-Phase (LK): Vertiefungen und Funktionenscharen",
+          "reason": "Visible heading must match the retained content."
+        }
+      ],
+      "afterParsedObjectSha256": "a9d1e14b6855ab9049814b3fc0bcd5a3303feb554ca15062f12ed9ad10a6f2b7",
+      "allRootDataWritesPerformed": false,
+      "v16Existing5503ReferencesPreserved": [],
+      "requiresRebaseOnIntegration": true
+    }
+  ],
+  "verification": {
+    "method": "In-memory authored-role precedence check on each complete frozen V16 target list and GK+LK union. Not the native compiler/runtime.",
+    "all36ExpectedFamilyAndWholeProtectedChangesMatch": true,
+    "unrelatedV16TargetsLostByAuthoredRoles": [],
+    "v16Existing5503MasksPreserved": true,
+    "canonicalOrTaskMutation": false,
+    "rootFilesWritten": false,
+    "native154AfterIntegrationStillRequired": true
+  },
+  "preservation": [
+    "All stable IDs and global mastery",
+    "All whole task and deck payloads",
+    "All direct HE/BY positive complex source evidence",
+    "Unrelated Q4 exercises and functions/process content",
+    "Current V16 NI 5503 GK masks",
+    "All other jurisdictions and the six unaffected SekI offers"
+  ],
+  "remainingCompilerEvidenceIssue": "47 broad legacy mappings still over-inherit C source applicability. The explicit course masks correct selected target scope only; no global applicability boundary or source-coverage PASS is claimed."
+}

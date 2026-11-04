@@ -1,0 +1,72 @@
+{
+  "status": "ROOT_IMPORTED_EXACT_REVIEWED_G3_PLUS_SEPARATE_AUTHORING_BINDINGS_NOT_FULL_ACCEPTANCE",
+  "reviewedManifestSha256": "a9dc13539a66e124b7ebb21e29211ad6382bbba189899460c8c296e4269af307",
+  "fileCount": 127,
+  "canonicalSha256": "30c95213b0a6b7debc6b9a470c924c31cc7b733612bc11cf3e559d394dcdc891",
+  "policySha256": "795a97e647d335c3a9edf341f067131b16318163992dec0d84f622f8e69f3587",
+  "layoutSha256": "daa70c1b77ad9092982fe9ef304d02a1e5d38669e4ecf45ac971f46c3f55de86",
+  "ledgerSha256": "dda509e859d9a936d30b7f5dd9e0470e81efec8b7290850359f732f6f75a8c7d",
+  "genuineStageReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/stage-scope-implementation-statistics-pyramid.review.json",
+    "sha256": "a43e4577980b6b8619a671954bf761bd483661aeabeb10beadc63dd899131ae9"
+  },
+  "layers": [
+    {
+      "kind": "original-G3-runtime46",
+      "path": "tmp/approach-review-20261101/statistics-pyramid-existing-route-integration-20261104-v1/manifest.json",
+      "sha256": "e038e6419305dbb9986d37c163f4c63b27282e2d1a1bc059dbd5542cb85da0e9"
+    },
+    {
+      "kind": "separate-guard-only-amendment",
+      "path": "tmp/approach-review-20261101/statistics-pyramid-existing-route-guard-amendment-20261104-v1/amendment-manifest.json",
+      "sha256": "e975231d01a7c16a973278badbc120490d2503d80084657ee3ebc9552c2ffe47"
+    },
+    {
+      "kind": "separate-producer-binding-only-amendment",
+      "path": "tmp/approach-review-20261101/statistics-pyramid-existing-route-producer-bindings-20261104-v1/binding-amendment-manifest.json",
+      "sha256": "e55d9a4c12e6c62c00e556fb2f6d117175988cefd4d4fcb7d34b1d25e2f9349e"
+    }
+  ],
+  "originalNative3": {
+    "path": "tmp/approach-review-20261101/statistics-pyramid-existing-route-native-20261104-v1/candidate.json.gz",
+    "sha256": "e0b466350b58395c0440a8b1af837044ee143c6bbb36d5f8c5a3a6a2f65708ab"
+  },
+  "originalNativeInputMapSha256": "0426d83ffaf6b87cbde6019d16a6ecf1d897b5871f2ecf534f5335d2ed270912",
+  "native3ConservativeInputComparison": {
+    "originalArchive": {
+      "path": "tmp/approach-review-20261101/statistics-pyramid-existing-route-native-20261104-v1/candidate.json.gz",
+      "sha256": "e0b466350b58395c0440a8b1af837044ee143c6bbb36d5f8c5a3a6a2f65708ab"
+    },
+    "originalInputManifest": {
+      "path": "tmp/approach-review-20261101/statistics-pyramid-existing-route-native-20261104-v1/candidate-input-hashes.json",
+      "sha256": "0426d83ffaf6b87cbde6019d16a6ecf1d897b5871f2ecf534f5335d2ed270912"
+    },
+    "originalInputCount": 3285,
+    "unchangedOriginalInputs": 3284,
+    "changedOriginalInputs": [
+      {
+        "path": "app/scripts/config/math-country-seki-stage-policy.json",
+        "native3Sha256": "b537c7455fa0ce9c946341fcaa898228d9d6d2054426af90f40d58af4fffdb61",
+        "finalProducerBindingSha256": "795a97e647d335c3a9edf341f067131b16318163992dec0d84f622f8e69f3587",
+        "category": "authoring producer policy binding only"
+      }
+    ],
+    "guardSourceAndLayoutWereNotInOriginal3285List": true,
+    "newAuthoringMetadataOutsideOriginalInputInventory": [
+      "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/guard-amendment.manifest.json",
+      "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/author-producer-binding-amendment.json",
+      "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/producer-binding-deltas.actual.json"
+    ],
+    "freshFinalNativeRun": false,
+    "doesNotClaimAll3285HashesUnchanged": true
+  },
+  "normalChecks": {
+    "count": 11,
+    "allTerminalExitCodesZero": true,
+    "executionSha256": "bcc4e7ed4d8d9706a376a1b92c873db65873ffefb3bad99fe6c97130de0fd048"
+  },
+  "newOrdinaryTargets": 0,
+  "lostOrdinaryTargets": 0,
+  "newMasteryWrites": 0,
+  "noM7OrFullCiClaim": true
+}

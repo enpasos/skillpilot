@@ -1,0 +1,385 @@
+{
+  "goals": [
+    {
+      "id": "bc244d82-bac0-5b13-8a33-d7b101835480",
+      "shortKey": "canonical_math_sek2_q2_m7_route_line_plane_intersection",
+      "title": "Geradenschnitt mit einer Ebene deuten",
+      "titleEn": "Interpret a line–plane intersection",
+      "description": "Die lernende Person kann in einer Q2-Prüfungsaufgabe den Schnittpunkt einer Geraden mit einer Ebene berechnen, prüfen und geometrisch deuten.",
+      "descriptionEn": "The learner can independently interpret a line–plane intersection in a Q2 assessment and justify the results.",
+      "core": false,
+      "weight": 1,
+      "tags": [
+        "LK",
+        "Practice",
+        "Assessment",
+        "ExamTask",
+        "canonical",
+        "phase:Q2"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/m7-route-repair-20260929-v1/tasks.md",
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L3"
+        ],
+        "phase": "Q2",
+        "area": "LinearAlgebra",
+        "topicCode": "CANONICAL.MATH.SEK2.Q2.PRACTICE.LINE_PLANE_INTERSECTION"
+      },
+      "requires": [
+        "baf7276f-60a0-4d96-b959-d63acfb929de"
+      ],
+      "contains": [],
+      "examples": [],
+      "resourceLinks": [],
+      "examData": {
+        "reviewStatus": "released",
+        "reviewNote": "Machine-only focused content and calculation review, 2026-09-29; source section SHA-256 d3d58dae1793e6d1b22528f2ab40af64afa6737e0a5255f01441c7aa6a77d3f5. All scored parts are required because the backend currently enforces only total points; no human review, learner trial or publication claimed.",
+        "coveredGoalIds": [
+          "baf7276f-60a0-4d96-b959-d63acfb929de"
+        ],
+        "coveredStrands": [
+          "L3"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/m7-route-repair-20260929-v1/tasks.md",
+        "taskContent": "Eine Flugbahn wird durch $g:X=(1,0,2)+t(1,2,-1)$ beschrieben. Eine Messfläche liegt in $E:x+y+z=6$.\n\n1. Bestimme den Schnittpunkt von $g$ und $E$ durch Einsetzen. Prüfe ihn in beiden Gleichungen. (6 BE)\n2. Begründe geometrisch mit Richtungsvektor und Ebenennormale, warum es genau einen Schnittpunkt gibt. Deute den Parameterwert auf der Flugbahn. (4 BE)",
+        "solutionContent": "Einsetzen ergibt $(1+t)+2t+(2-t)=3+2t=6$, also $t=3/2$ und $S=(5/2,3,1/2)$. In der Ebene gilt $5/2+3+1/2=6$; in der Geraden entsteht genau dieser Punkt bei $t=3/2$. Der Richtungsvektor $v=(1,2,-1)$ hat mit $n=(1,1,1)$ das Skalarprodukt $n\\cdot v=2\\ne0$, daher verläuft die Bahn nicht parallel zur Messfläche und durchstößt sie genau einmal. $t=3/2$ bezeichnet die Lage dieses Punkts auf der parametrierten Flugbahn; ohne Zeiteinheit ist es keine physikalische Flugzeit.",
+        "scoring": {
+          "maxPoints": 10,
+          "passingPoints": 10,
+          "steps": [
+            {
+              "id": "q2_m7_line_plane_intersection_1",
+              "points": 6,
+              "description": "Schnittpunkt berechnet und in beiden Gleichungen geprüft"
+            },
+            {
+              "id": "q2_m7_line_plane_intersection_2",
+              "points": 4,
+              "description": "Eindeutigkeit geometrisch begründet und Parameter gedeutet"
+            }
+          ]
+        }
+      },
+      "phase": "Q2",
+      "type": "atomic",
+      "nodeKind": "exam"
+    },
+    {
+      "id": "77940875-ad1e-5272-9002-3ca9db810a18",
+      "title": "Zufallsexperimente und Modelle vergleichen",
+      "description": "Die lernende Person kann das Ziehen mit und ohne Zurücklegen passend modellieren, die zugehörigen Wahrscheinlichkeiten berechnen und die Modelle im Sachkontext vergleichen und begründen.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2",
+          "K3",
+          "K4",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "requires": [
+        "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+        "508292f2-671b-4fd3-acbf-53d705e44693",
+        "c2831918-26f1-421e-90fb-ce707689594e",
+        "dabff49b-d40a-4c81-a584-21408b2d4219"
+      ],
+      "contains": [],
+      "examples": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "bd63c0fc-50ef-55aa-ae6c-25cf73d02636"
+        ],
+        "coveredStrands": [
+          "L4",
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
+        "taskContent": "Für ein Forschungscamp werden $3$ Plätze unter $20$ Bewerberinnen und Bewerbern verlost. Darunter sind $8$ Personen aus dem Leistungskurs Mathematik und $12$ aus anderen Kursen.\n\n1. Beschreiben Sie das Ziehen ohne Zurücklegen mit einem geeigneten Modell und berechnen Sie die Wahrscheinlichkeit, dass genau zwei der drei ausgewählten Personen aus dem Leistungskurs Mathematik stammen.\n2. Eine Schülerin vereinfacht das Experiment zu drei Ziehungen mit Zurücklegen und verwendet ein Binomialmodell mit $p=0{,}4$. Berechnen Sie in diesem Modell ebenfalls die Wahrscheinlichkeit für genau zwei Leistungskurs-Personen.\n3. Vergleichen Sie beide Ergebnisse und beurteilen Sie, welches Modell die reale Situation besser beschreibt.\n4. Erläutern Sie, warum die Binomialmodellierung bei einer sehr grossen Grundgesamtheit mit demselben Anteil von $40\\,$% deutlich besser geeignet ist.",
+        "solutionContent": "1. Da ohne Zurücklegen gezogen wird, ist die hypergeometrische Modellierung passend. Für genau zwei Leistungskurs-Personen gilt\n$$\nP(X=2)=\\frac{\\binom{8}{2}\\binom{12}{1}}{\\binom{20}{3}}=\\frac{28\\cdot 12}{1140}\\approx 0{,}2947.\n$$\n\n2. Im Binomialmodell mit $n=3$ und $p=0{,}4$ ergibt sich\n$$\nP(Y=2)=\\binom{3}{2}\\cdot 0{,}4^2\\cdot 0{,}6=3\\cdot 0{,}16\\cdot 0{,}6=0{,}288.\n$$\n\n3. Beide Werte liegen nah beieinander, unterscheiden sich aber leicht. Das reale Ziehen ohne Zurücklegen wird durch das hypergeometrische Modell besser beschrieben, weil sich die Wahrscheinlichkeiten nach jeder Ziehung verändern.\n\n4. Bei einer sehr grossen Grundgesamtheit ändert sich der Anteil von Leistungskurs-Personen durch eine einzelne Ziehung kaum. Dann sind die Ziehungen nahezu unabhängig, sodass die Binomialverteilung eine gute Approximation liefert.",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 10,
+          "steps": [
+            {
+              "id": "q3a_1",
+              "points": 6,
+              "description": "Passendes Modell erkannt und Wahrscheinlichkeit für genau zwei Treffer korrekt berechnet"
+            },
+            {
+              "id": "q3a_2",
+              "points": 4,
+              "description": "Binomialmodell korrekt angewendet"
+            },
+            {
+              "id": "q3a_3",
+              "points": 5,
+              "description": "Modelle fachlich sinnvoll verglichen"
+            },
+            {
+              "id": "q3a_4",
+              "points": 5,
+              "description": "Eignung der Approximation bei grosser Grundgesamtheit korrekt begründet"
+            }
+          ]
+        },
+        "reviewNote": "Begrenzte Inhaltskorrektur vom 01.11.2026 unabhängig mit Astra Ultra fachlich geprüft; exakte Nachkorrekturen berücksichtigt. Nachweis: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-upper-candidate-review.json. Historische Quellen und bestehende gültige Mastery bleiben unverändert."
+      },
+      "phase": "Q3",
+      "type": "atomic"
+    },
+    {
+      "id": "7337049a-c85c-5b94-adaa-81dc93528bf8",
+      "title": "Darstellungen sicher wechseln und bewerten",
+      "description": "Die lernende Person kann eine Aufgabe zu verschiedenen Darstellungen selbstständig bearbeiten, zwischen ihnen sicher wechseln und ihre Aussagekraft bewerten.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        "phase": "Q4"
+      },
+      "requires": [
+        "cf4fe700-dec2-502f-888b-90acefa307bb",
+        "42b57670-d2be-5da2-be2f-d58055901813",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "7c4e8d59-4acb-5f62-a387-c804c6fa23e0",
+        "d0475ed5-cb6f-5694-9501-a1c94288d65a",
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+        "96c55cb6-d2c7-5145-8567-b5f570f55a8a"
+      ],
+      "contains": [],
+      "examples": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "cf4fe700-dec2-502f-888b-90acefa307bb",
+          "42b57670-d2be-5da2-be2f-d58055901813",
+          "d668c22d-caeb-5e91-8980-721c931a2bcf",
+          "7c4e8d59-4acb-5f62-a387-c804c6fa23e0",
+          "d0475ed5-cb6f-5694-9501-a1c94288d65a"
+        ],
+        "coveredStrands": [
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "Gegeben ist p(x)=−0,5x²+12x. Ein digitales Rechen- oder Graphikwerkzeug steht zur Verfügung; dokumentieren Sie die verwendeten Eingaben und Ergebnisse.\n\n1. Erstellen Sie zunächst von Hand eine Wertetabelle für x=0,4,8,12,16,20,24. Kontrollieren Sie danach mindestens die Werte p(8) und p(12) mit dem digitalen Werkzeug. Vergleichen Sie die Ergebnisse, erklären Sie gegebenenfalls eine Abweichung und beschreiben Sie bei Übereinstimmung eine typische Eingabe- oder Rundungsfehlerquelle samt geeigneter Kontrolle.\n2. Bestimmen Sie mit dem Term die Nullstellen und den Scheitelpunkt und skizzieren Sie den Graphen auf 0≤x≤24 mit einer geeigneten Achsenskalierung.\n3. Erläutern Sie, was Term, Tabelle und Schaubild jeweils zeigen. Begründen und prüfen Sie ausdrücklich, warum Nullstellen, Scheitel und die kontrollierten Tabellenpunkte in allen drei Darstellungen zusammenpassen.\n4. Ein Diagramm zeigt nur die Endpunkte x=0 und x=24 und benutzt die y-Skala 0 bis 10000. Eine Schülerin bezeichnet den Graphen als „fast linear“. Beurteilen Sie diese Aussage für [6,18] nach dem überprüfbaren Kriterium: Die Verbindungsgerade der beiden Intervallendpunkte darf vom Funktionswert höchstens 5 Einheiten abweichen. Berechnen Sie die maximale Abweichung. Erklären Sie den Einfluss der Skalierung und der fehlenden Zwischenwerte; schlagen Sie eine konkrete klarere Darstellung vor und prüfen Sie diese mit dem digitalen Werkzeug.",
+        "solutionContent": "1. Die Werte sind 0,40,64,72,64,40,0. Digitale Eingaben beispielsweise p(8)=−0,5·8²+12·8=64 und p(12)=72 werden mit den eigenen Handwerten verglichen. Ein typischer Fehler ist falsche Klammerung oder ein falsches Vorzeichen; erneutes Einsetzen und Vergleich mit p(x)=−0,5(x−12)²+72 sichern die Rechnung. Tatsächliche eigene Abweichungen sind passend zu erklären; eine erfundene Abweichung ist nicht nötig.\n\n2. p(x)=x(−0,5x+12) hat Nullstellen 0 und 24. Quadratische Ergänzung liefert p(x)=−0,5(x−12)²+72, also S=(12,72). Ein sinnvoller Graph zeigt x von 0 bis 24 und y etwa von 0 bis 80 mit beschrifteten Achsen und Zwischenpunkten.\n\n3. Der Term erlaubt exakte allgemeine Rechnungen; die Tabelle zeigt ausgewählte Werte, aber keine gesicherte Aussage über alle Zwischenwerte. Der Graph verdeutlicht den Verlauf abhängig von Skalierung/Auflösung. Tabelle und Term liefern dieselben Nullstellen, die Symmetrie um x=12 und den Maximalwert 72. Die kontrollierten Punkte (8,64) und (12,72) müssen auf dem skizzierten Graphen liegen; diese Konsistenzprüfungen begründen die Übertragung.\n\n4. p(6)=p(18)=54, daher ist die Verbindungsgerade l(x)=54. Auf [6,18] ist p(x)−54=18−0,5(x−12)²≥0, maximal 18 bei x=12. Die Toleranz von 5 wird verletzt; nach dem angegebenen Kriterium ist diese Näherung nicht hinreichend linear. Das widerlegt keine beliebige andere Toleranzdefinition. Eine y-Skala bis 10000 lässt die Höhe 72 nahezu verschwinden. Zwei Endpunkte allein erfassen den Scheitel/Innenverlauf nicht. Konkrete Verbesserung: geeignete y-Skala etwa 0 bis 80, zusätzlich Werte bei x=6,12,18, beide Kurven p und l im selben Fenster darstellen und die 18-Einheiten-Differenz markieren. Dokumentierte digitale Kontrolle muss diese Werte und den deutlich gekrümmten Verlauf bestätigen.",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 10,
+          "steps": [
+            {
+              "id": "pk_4_1",
+              "points": 5,
+              "description": "Handtabelle richtig (3); wirkliche digitale Eingaben/Ergebnisse und Vergleich samt Fehlerkontrolle dokumentiert (2)."
+            },
+            {
+              "id": "pk_4_2",
+              "points": 4,
+              "description": "Nullstellen und Scheitel korrekt hergeleitet (3), passende beschriftete Skizze (1)."
+            },
+            {
+              "id": "pk_4_3",
+              "points": 4,
+              "description": "Stärken/Grenzen der drei Darstellungen erklärt (2), Übertragung und konkrete Konsistenzprüfungen begründet (2)."
+            },
+            {
+              "id": "pk_4_4",
+              "points": 7,
+              "description": "Verbindungsgerade 54 und maximale Abweichung 18 mit Toleranzentscheid (3); Einfluss von Skala und Datenlage erläutert (2); konkrete verbesserte Darstellung digital geprüft/dokumentiert (2)."
+            }
+          ]
+        },
+        "reviewNote": "Nicht aktivierter Korrekturkandidat 2026-11-01. Neues Aufgaben-/Rubrikreview erforderlich; bestehendes released gilt nicht für diese Bytes. Die fünf bisherigen Prozessziele bleiben nur durch ausdrücklich verlangte und bepunktete Handlungen erhalten. „Fast linear“ wird über eine feste Fehlertoleranz prüfbar; exakte Nichtlinearität allein gilt nicht als Widerlegung jeder Näherung."
+      },
+      "phase": "Q4",
+      "type": "atomic"
+    },
+    {
+      "id": "1675fdde-cba7-5456-ae70-a846e1924a68",
+      "title": "Anzahl von Graph-Schnittpunkten anschaulich begründen",
+      "titleEn": "Justify the number of graph-line intersections visually",
+      "description": "Die lernende Person kann anhand eines vorgegebenen Graphen anschaulich begründen, wie viele Schnittpunkte mit einer Geraden, insbesondere einer Tangente, möglich sind.",
+      "descriptionEn": "The learner can visually justify from a given graph how many intersections with a line, especially a tangent, are possible.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "0b23413e-a334-5dd3-98e5-de067208819e",
+        "0264591c-fdd7-41c6-9fb9-7cb3a03f7658",
+        "f042385e-f772-42db-9c96-f21a792ac5ea",
+        "6aed5be9-f62f-482a-9b98-4253c3275e6e",
+        "56b4acb5-6024-573f-9890-35fbd21ee343",
+        "cf4fe700-dec2-502f-888b-90acefa307bb"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.2",
+          "K3.2",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "Q4",
+        "topicCode": "CANONICAL.MATH.SEK2.Q4.2.JUSTIFY_GRAPH_LINE_INTERSECTION_COUNT"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true,
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 6",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "1675fdde-cba7-5456-ae70-a846e1924a68",
+          "title": "Visualisierung: Anzahl von Graph-Schnittpunkten anschaulich begründen",
+          "url": "/assets/goal-visualizations/mathematik/1675fdde-cba7-5456-ae70-a846e1924a68/1675fdde-cba7-5456-ae70-a846e1924a68.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Anzahl von Graph-Schnittpunkten anschaulich begründen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Anzahl von Graph-Schnittpunkten anschaulich begründen\". Die lernende Person kann anhand eines vorgegebenen Graphen anschaulich begründen, wie viele Schnittpunkte mit einer Geraden, insbesondere einer Tangente, möglich sind.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    }
+  ]
+}

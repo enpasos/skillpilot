@@ -7,6 +7,7 @@ import { LanguageProvider } from '../src/contexts/LanguageContext'
 import type { UiGoal } from '../src/goalTypes'
 import {
   getFocusMutationRevealTarget,
+  getRequiredGoalSelectionOptions,
   getInitialLearnerGoalReveal,
   getNextVisibleLearnerGoalSelection,
   isActiveGoalRevealEventType,
@@ -38,6 +39,12 @@ import {
   buildAbi26PersonalCurriculumConfig,
 } from '../src/utils/abi26MatheCampaign'
 import { GLOBAL_STAGE_SCOPE_CONFIG_IDS } from '../src/utils/personalCurriculumStageScope'
+import {
+  collectCompositionProjectionRoleGoalIds,
+  type CompositionView,
+} from '../src/utils/authoring/compositionViewAuthoring'
+import { readBoundMathStageDecision } from './mathDeclaredCourseUnionTestUtils'
+import { resolve } from 'node:path'
 import {
   beginLatestRequest,
   invalidateLatestRequest,
@@ -590,6 +597,7 @@ for (const prismChildId of [canonicalMathPrismVolumeGoalId, canonicalMathPrismSu
 const genericVisibleJ8StructureId = 'composition:de-de-gym-seki-math:structure:j8'
 const genericJ8FractionsStructureId = 'composition:de-de-gym-seki-math:structure:j8-fractions'
 const genericJ8ScopeGoalIds = buildGoalContainsClosure([canonicalMathJ8GoalId], mathGoalById)
+const genericJ8ScopeSnapshot = new Set(genericJ8ScopeGoalIds)
 const genericJ8ScopeMarkerGoalIds = buildRenderedScopeMarkerGoalIds(
   mathGoalById,
   mathChildrenByParent,
@@ -597,11 +605,52 @@ const genericJ8ScopeMarkerGoalIds = buildRenderedScopeMarkerGoalIds(
   [canonicalMathJ8GoalId],
 )
 
-assert.deepStrictEqual(
-  Array.from(genericJ8ScopeMarkerGoalIds),
-  [genericVisibleJ8StructureId],
-  'A hidden canonical J8 planned scope must mark the visible generic Sek-I Jahrgangsstufe 8 structure, not a partial child cluster.',
-)
+// G5 placed the whole ratio-equation form on a separately authored root path.
+// It still belongs to this persisted canonical J8 scope; represent both exact
+// visible branches without enrolling any unrelated sibling or replacing focus.
+const ratioEquationGoalId = 'fa0b6b69-ce54-4711-90e6-26f27249cd71'
+const finiteMathPlan = readBoundMathStageDecision(resolve('..'),
+  'curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/finite-scope-operations.json') as {
+    assessmentScopeOperations: Array<{ id: string; viewId: string; goalIds: string[]; action: string; anchorStructureId: string }>
+  }
+const ratioOperations = finiteMathPlan.assessmentScopeOperations.filter(operation =>
+  operation.viewId === genericMathSekIView.viewId && operation.goalIds.includes(ratioEquationGoalId))
+assert.equal(ratioOperations.length, 1, 'The extra representative must have one exact reviewed G5 placement.')
+const ratioOperation = ratioOperations[0]
+assert.equal(ratioOperation.action, 'include-target')
+assert.equal(ratioOperation.anchorStructureId, 'math-root')
+assert.deepStrictEqual(ratioOperation.goalIds, [ratioEquationGoalId])
+const authoredMathRoot = (genericMathSekIView as CompositionView).rootNodes.find(node =>
+  node.kind === 'structure' && node.id === ratioOperation.anchorStructureId)
+assert.ok(authoredMathRoot?.kind === 'structure')
+const authoredJ8 = authoredMathRoot.children.find(node => node.kind === 'structure' && node.id === 'j8')
+assert.ok(authoredJ8?.kind === 'structure')
+const ratioWrapperId = `reviewed-stage-positive-${ratioOperation.id}`
+const authoredRatioWrapper = authoredMathRoot.children.find(node => node.kind === 'structure' && node.id === ratioWrapperId)
+assert.ok(authoredRatioWrapper?.kind === 'structure')
+assert.deepStrictEqual(authoredRatioWrapper.children, [{ kind: 'goalEntry', goalId: ratioEquationGoalId }])
+const genericRatioMarkerId = `composition:${genericMathSekIView.viewId}:structure:${ratioWrapperId}`
+assert.deepStrictEqual([...genericJ8ScopeMarkerGoalIds].sort(), [genericVisibleJ8StructureId, genericRatioMarkerId].sort(),
+  'The hidden canonical J8 scope must mark its authored J8 branch and the exact separately placed G5 member.')
+const canonicalMathGoalById = new Map<string, { contains?: string[] }>(canonicalMathLandscape.goals.map(
+  (goal: { id: string; contains?: string[] }) => [goal.id, goal],
+))
+const authoredJ8Targets = collectCompositionProjectionRoleGoalIds([authoredJ8], canonicalMathGoalById).targetGoalIds
+const expectedJ8AtomicIds = new Set([...authoredJ8Targets].filter(id => mathGoalById.get(id)?.type === 'atomic'))
+assert.ok(expectedJ8AtomicIds.size > 0)
+assert.equal(expectedJ8AtomicIds.has(ratioEquationGoalId), false, 'The ratio task really has its independent root path.')
+expectedJ8AtomicIds.add(ratioEquationGoalId)
+const visibleMathAtomicIds = [...buildGoalContainsClosure([mathRootGoal!.id], mathGoalById)]
+  .filter(id => mathGoalById.get(id)?.type === 'atomic')
+const focusedJ8AtomicIds = visibleMathAtomicIds.filter(id => genericJ8ScopeGoalIds.has(id))
+for (const id of expectedJ8AtomicIds) {
+  assert.ok(focusedJ8AtomicIds.includes(id), `The authored J8 representative must not enroll a goal outside the stored focus: ${id}`)
+}
+const markedJ8AtomicIds = [...genericJ8ScopeMarkerGoalIds].flatMap(markerId =>
+  [...buildGoalContainsClosure([markerId], mathGoalById)].filter(id => mathGoalById.get(id)?.type === 'atomic'))
+assert.deepStrictEqual(markedJ8AtomicIds.sort(), [...expectedJ8AtomicIds].sort(),
+  'Visible markers must cover every J8 member exactly once and no unselected sibling.')
+assert.deepStrictEqual(genericJ8ScopeGoalIds, genericJ8ScopeSnapshot, 'Marker projection must not rewrite or widen the stored focus.')
 assert.ok(
   !genericJ8ScopeMarkerGoalIds.has(genericJ8FractionsStructureId),
   'A hidden canonical J8 planned scope must not collapse to the Bruchterme child cluster in the generic Sek-I view.',
@@ -925,5 +974,18 @@ const emptyAliasChildren = new Map(genericSubjectChildren)
 emptyAliasChildren.set('subject-alias', [])
 assert.equal(collapseLearnerSubjectRoots(genericSubjectGoals, emptyAliasChildren).subjectRootIdByAlias.size, 0,
   'A filtered-empty alias must not become an invented replacement branch.')
+
+
+const retainedAssessmentChoice = { id: 'current-exam', nodeKind: 'exam' }
+const unrelatedFrontierChoice = { id: 'ordinary-next' }
+assert.deepEqual(getRequiredGoalSelectionOptions({ frontier: [unrelatedFrontierChoice],
+  stateMachine: { requiredAction: 'setActiveGoal', goalOptions: [retainedAssessmentChoice] } }), [retainedAssessmentChoice],
+  'A retained same-ID exam confirmation must not be hidden by the raw frontier.')
+assert.deepEqual(getRequiredGoalSelectionOptions({ frontier: [unrelatedFrontierChoice],
+  stateMachine: { requiredAction: 'setActiveGoal', goalOptions: [] } }), [],
+  'An unavailable current-task confirmation must not invent a replacement choice.')
+assert.deepEqual(getRequiredGoalSelectionOptions({ frontier: [unrelatedFrontierChoice],
+  stateMachine: { requiredAction: 'teachActiveGoal', goalOptions: [retainedAssessmentChoice] } }), [unrelatedFrontierChoice],
+  'Ordinary non-selection frontier behavior remains unchanged.')
 
 console.log('✅ Learner goal selection regression checks passed.')

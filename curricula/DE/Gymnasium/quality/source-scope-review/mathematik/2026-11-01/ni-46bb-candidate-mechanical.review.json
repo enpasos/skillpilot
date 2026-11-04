@@ -1,0 +1,54 @@
+{
+  "status": "PASS_EXACT_TWO_NI_REFERENCE_MECHANICS_ONLY_PENDING_NATIVE154_UNION_AND_FROZEN_MATERIALIZATION",
+  "reviewerAgent": "/root/astra_math_material_scope_resume",
+  "authorIndependent": true,
+  "canonicalObservedSha256": "aee7e86f84814967022e12190f34dcbdeef0d2430f0b1a5fd89f11d93bd243f4",
+  "sourceReview": {
+    "path": "tmp/approach-review-20261101/astra-remaining-material-scope/ni-46bb-two-offers-PASS.json",
+    "sha256": "2b6526c99cb685d6ea9860aa5163dddb94de966e94b8c8ff1db54024174ed04b"
+  },
+  "checks": {
+    "wholeTaskAndAllFiveOrdinaryContractsMatchSourceReview": true,
+    "exactTwoGoalEntryInsertionsAtReviewedAnchors": true,
+    "entireTwoAuthorViewsOtherwiseUnchanged": true
+  },
+  "operations": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+      "expectedRootSha256": "13a09db2c3b2aa8f21c5cc815ab02872f4d46f0aaf75e2585f3ce9019a0cfda3",
+      "candidateSha256": "c663aaef47aaa20bcbe636cd01648836ab793da106cca8ef00450bf4c321928a",
+      "operation": "append-single-goalEntry",
+      "pointer": "/rootNodes/25/children/1/children/3/children/8",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+      "expectedRootSha256": "12a0b431fa13d2c875508deebf7d4b620d22d1123acc4d8c7db85e9e9841fd11",
+      "candidateSha256": "423f6bb332343cd1fd5c25ee9b1f9f0115e63b1e5aa2af286bd62729e6966cc7",
+      "operation": "append-single-goalEntry",
+      "pointer": "/rootNodes/21/children/3/children/8",
+      "anchorStructureId": "geometry-and-advanced-analysis",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "46bb8422-a822-46e1-8bcc-8b6475994b3a"
+      }
+    }
+  ],
+  "expectedNewTargetOffers": [
+    "DE-NI/SekII/G9/GK",
+    "DE-NI/CrossStage/G9/GK"
+  ],
+  "pending": [
+    "Current actual Root baseline and all154 native comparisons",
+    "Existing NI LK and GK+LK target sets unchanged; task appears once in merged view",
+    "Frozen producer policy/source pin/materialization review; no support or ordinary target enrollment"
+  ],
+  "inputs": {
+    "tmp/approach-review-20261101/ni-46bb-two-offers-candidate-20261101/candidate-preparation.mechanical.json": "284c37667684afd3ff604bf677b65471dcfbcef99e9d7550d70746d3380587b9"
+  },
+  "noRootMutation": true
+}

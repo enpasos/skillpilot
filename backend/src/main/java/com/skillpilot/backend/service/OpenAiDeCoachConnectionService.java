@@ -184,7 +184,7 @@ public class OpenAiDeCoachConnectionService {
         } else if (launch.type() == LaunchIntentType.VERIFIED_RECALL) {
             if (!launch.goalId().equals(learner.getActiveGoalId())) {
                 learnerService.assertWritableLearningSession(skillpilotId);
-                learnerService.setActiveGoal(skillpilotId, launch.goalId());
+                learnerService.setActiveGoalAutomatically(skillpilotId, launch.goalId());
                 learner = learnerService.getLearner(skillpilotId);
             }
             validateVerifiedRecallGoal(skillpilotId, launch.goalId());
@@ -192,7 +192,7 @@ public class OpenAiDeCoachConnectionService {
             validateAbi26TargetPair(launch.goalId(), launch.courseLevel());
             if (!launch.goalId().equals(learner.getActiveGoalId())) {
                 learnerService.assertWritableLearningSession(skillpilotId);
-                learnerService.setActiveGoal(skillpilotId, launch.goalId());
+                learnerService.setActiveGoalAutomatically(skillpilotId, launch.goalId());
                 learner = learnerService.getLearner(skillpilotId);
             }
             validateAbi26Goal(skillpilotId, launch.goalId(), launch.courseLevel());

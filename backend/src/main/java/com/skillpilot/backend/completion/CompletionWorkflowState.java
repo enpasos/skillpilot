@@ -11,7 +11,33 @@ public record CompletionWorkflowState(
         String personalCurriculumDigest,
         String navigationIntent,
         String currentGoalId,
-        DirectAssessmentContext directAssessment) {
+        DirectAssessmentContext directAssessment,
+        AssessmentStart assessmentStart) {
+
+    /** Existing routes remain readable; unbound historical exams need deliberate confirmation. */
+    public CompletionWorkflowState(String profileId, String profileRevision, String curriculumGeneration,
+            String curriculumId, String personalCurriculumDigest, String navigationIntent,
+            String currentGoalId, DirectAssessmentContext directAssessment) {
+        this(profileId, profileRevision, curriculumGeneration, curriculumId, personalCurriculumDigest,
+                navigationIntent, currentGoalId, directAssessment, null);
+    }
+
+    /** One current task association, never a result, score, history or submission receipt. */
+    public record AssessmentStart(String goalId, String taskFingerprint) {
+        public boolean valid() {
+            return goalId != null && !goalId.isBlank() && taskFingerprint != null
+                    && taskFingerprint.matches("sha256:[0-9a-f]{64}");
+        }
+    }
+
+    public static CompletionWorkflowState normalAssessmentStart(AssessmentStart start) {
+        return new CompletionWorkflowState(null, null, null, null, null, null, null, null, start);
+    }
+
+    public CompletionWorkflowState withAssessmentStart(AssessmentStart start) {
+        return new CompletionWorkflowState(profileId, profileRevision, curriculumGeneration,
+                curriculumId, personalCurriculumDigest, navigationIntent, currentGoalId, directAssessment, start);
+    }
 
     public record DirectAssessmentContext(
             String provider,

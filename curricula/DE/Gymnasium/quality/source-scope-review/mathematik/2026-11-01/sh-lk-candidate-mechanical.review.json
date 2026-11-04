@@ -1,0 +1,73 @@
+{
+  "status": "PASS_EXACT_SH_METADATA_AND_TWO_GK_MASKS_MECHANICS_ONLY_PENDING_COMBINED_NATIVE_AND_FREEZE",
+  "reviewer": "/root/astra_math_material_scope_resume",
+  "independentSourceReview": {
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/sh-lk-two-stochastic-tasks-scope.review.json",
+    "sha256": "caeed269216f730fc81fee543d441f4ddb4a322be7b0595de25676e59c7fa41f"
+  },
+  "checks": {
+    "onlyTwoDESHApplicabilityInsertionsPreservingPriorRelativeOrder": true,
+    "allWholeTaskPayloadsRequiresCoverageScoringAndOtherGoalsUnchanged": true,
+    "twoDirectMasksEachInTwoExistingGkAuthorViewsOnly": true,
+    "allPriorV9MasksPreserved": true,
+    "noNewLkTaskReferences": true,
+    "semanticLedgerByteIdentical": true
+  },
+  "canonicalBefore": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "bd14a4e87cf57d5fe9e7da6519508ef3ef9998c45a95bf95aa36012471cf8cb1"
+  },
+  "canonicalAfter": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "f59348ea39998471a4252de114a115e46bcf2abc1034219f058ce3a27ea425e9"
+  },
+  "operations": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+      "expectedRootSha256": "66cead7e2c7b00acc772d0b73693171a25388a6b51899b16aa4a5bfc27c35dd8",
+      "candidateSha256": "4e604ffc356adefb1e87ec501240014f0ed0ec09c4083483b233eac53d5b97e1",
+      "operation": "append-exact-two-prerequisiteOnly-root-masks",
+      "pointer": "/rootNodes/51",
+      "nodes": [
+        {
+          "kind": "goalEntry",
+          "goalId": "9cf020ee-4f6b-554e-97d6-eca3e2aabe99",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "99e45593-8509-5f51-832e-39ed2a9c10d9",
+          "projectionRole": "prerequisiteOnly"
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+      "expectedRootSha256": "242321c690bbad8188cd04db3b0c80403a1c7ced7c6b86fb4f04a71d9ca1e444",
+      "candidateSha256": "d9f9176cab9d51152239819fba01357fa7b3ef2aeb2f9e0bccbccbe2bc7987bd",
+      "operation": "append-exact-two-prerequisiteOnly-root-masks",
+      "pointer": "/rootNodes/35",
+      "nodes": [
+        {
+          "kind": "goalEntry",
+          "goalId": "9cf020ee-4f6b-554e-97d6-eca3e2aabe99",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "99e45593-8509-5f51-832e-39ed2a9c10d9",
+          "projectionRole": "prerequisiteOnly"
+        }
+      ]
+    }
+  ],
+  "noRootMutation": true,
+  "inputs": {
+    "tmp/approach-review-20261101/sh-lk-stochastic-tasks-candidate-20261101/candidate-preparation.mechanical.json": "e7d1a25ca1af57737894dea247a73e6781c6c647badf449a16fa485363de1e8d",
+    "tmp/approach-review-20261101/astra-remaining-material-scope/sh-lk-two-stochastic-tasks-eight-offers-PASS.json": "caeed269216f730fc81fee543d441f4ddb4a322be7b0595de25676e59c7fa41f",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "bd14a4e87cf57d5fe9e7da6519508ef3ef9998c45a95bf95aa36012471cf8cb1",
+    "tmp/math-sh-lk-stochastic-tasks-candidate-20261101/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "f59348ea39998471a4252de114a115e46bcf2abc1034219f058ce3a27ea425e9",
+    "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json": "07d37a57049fe42aacf2078a575452e704dc73cb1e389fca0a73efe8d678610d",
+    "tmp/math-sh-lk-stochastic-tasks-candidate-20261101/curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json": "07d37a57049fe42aacf2078a575452e704dc73cb1e389fca0a73efe8d678610d"
+  }
+}

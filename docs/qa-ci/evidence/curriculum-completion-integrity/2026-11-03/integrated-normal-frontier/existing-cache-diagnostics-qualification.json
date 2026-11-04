@@ -1,0 +1,63 @@
+{
+  "status": "EXISTING_BASELINE_APPLICABILITY_DIAGNOSTICS_QUALIFIED_WITHOUT_ERASING_RAW_FAILURE",
+  "normalCommands": {
+    "count": 10,
+    "allActualExitZero": true,
+    "execution": {
+      "path": "tmp/approach-review-20261101/common-focus-sh40-actual-source-authoring-20261103-v1/execution.json",
+      "sha256": "8cd4472164cb2c3ae947750a52307fc9b9370ff523f6c5460c34a6105af49763",
+      "bytes": 10476
+    }
+  },
+  "rawStrictComparison": {
+    "exitCode": 1,
+    "beforeV30Count": 66,
+    "afterRoot40Count": 66,
+    "all66WholeRecordsExactlyEqual": true,
+    "resultNotOverwritten": {
+      "path": "tmp/approach-review-20261101/common-focus-sh40-actual-source-authoring-20261103-v1/full-scope-applicability-check.json",
+      "sha256": "02374211a1ba711fe9766941bde74c2b049206faaa3ec244e8427b5903f9eb4c",
+      "bytes": 36779
+    },
+    "byFile": {
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json": 1,
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json": 3,
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": 54,
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json": 7,
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json": 1
+    }
+  },
+  "actualCompilerContract": {
+    "source": {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd",
+      "bytes": 56784
+    },
+    "function": "currentApplicabilityForGoal",
+    "wholeFunction": "function currentApplicabilityForGoal(goal: LearningGoal): ApplicabilityMap {\n  const current = goal.applicability\n  if (!current || typeof current !== 'object') return {}\n  const jurisdictions = Array.isArray(current[SUPPORTED_DIMENSION]) ? current[SUPPORTED_DIMENSION] : []\n  const normalized = jurisdictions\n    .filter((value): value is string => typeof value === 'string')\n    .map((value) => normalizeJurisdictionCode(value))\n    .filter(isSupportedJurisdiction)\n  return normalizeCompiledApplicability(normalized)\n}\n",
+    "meaning": "Compiler validates the supported jurisdiction dimension after normalizing codes/order and ignores other stored dimensions. APV-203 only warns for explicitly present cache fields. A raw full-object comparison is stricter and is not a normal compiler error gate.",
+    "compilerErrors": 0,
+    "compilerWarnings": 227,
+    "APV203Before": 21,
+    "APV203After": 21,
+    "whole21ExistingWarningsExactlyEqual": true,
+    "allAPV203AreMath": true
+  },
+  "baseline": {
+    "existingFullV30SourceArchive": {
+      "path": "tmp/approach-review-20261101/he5-cuboid48-probability-two-edge-source-ref-v29-candidate-20261103-v1/fresh-final-source21.json.gz",
+      "sha256": "12444a562966838753a10841dd3a516637dca731d8d4f24cd787a076e70c1dab",
+      "bytes": 4665591
+    },
+    "actualPreImportMathCanonicalBackup": {
+      "path": "tmp/math-common-focus-sh40-root-integration-14yh7e9q/originals/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "5f23d314ed1b31caae2e5994921c5fa2599ca7e7f718a5b9fc9d61334713bf37",
+      "bytes": 4073965
+    },
+    "other20CanonicalStoredFieldsUnchangedByExact40Import": "The exact import changed only Math3045.applicability; all other canonical source files were outside the40 import set and were guarded before/after the actual commands.",
+    "newCompilerApplicabilityDelta": "The existing unchangedSource21 driver independently measured only3045.jurisdiction15to16; it now matches its stored cache."
+  },
+  "classification": "No new raw-cache or APV-203 regression from the40 import. The66 raw differences and21 authoritative APV-203 warnings remain existing findings, not corrected or declared complete.",
+  "noAdditionalCompilerRunOrSourceWrite": true,
+  "afterExecutionBoundary": "Parent subsequently transported four Stage receipt evidence locators and preserved originala9b in docs. These ten actual runs remain bound to their historicala9b state; no result is relabelled as a new run for the later locator-only receipt."
+}

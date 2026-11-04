@@ -1,0 +1,11 @@
+Exception in thread "main" java.nio.file.NoSuchFileException: /home/enpasos/projects/skillpilot/tmp/approach-review-20261101/sparse-math-declared-inputs-20261104-v1/checkout/curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route-integration/reviews/independent-source-scope.review.json
+	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:92)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:106)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.newFileChannel(UnixFileSystemProvider.java:213)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:244)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:357)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:399)
+	at java.base/java.nio.file.Files.readAllBytes(Files.java:2973)
+	at com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews.sha(MaterializeMathContextualCombinedViews.java:292)
+	at com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews.main(MaterializeMathContextualCombinedViews.java:53)

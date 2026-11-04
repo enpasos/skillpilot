@@ -1,0 +1,46 @@
+{
+  "status": "candidate-only-scope-review-pending",
+  "preparedBy": "sol_math_existing_routes",
+  "decision": "Restore selected existing released upper-secondary assessment references; preserve all task, solution, rubric, coverage, prerequisite, phase, course and jurisdiction bytes.",
+  "materiality": {
+    "newGoalIds": 0,
+    "changedGoalFields": 0,
+    "changedExistingProjectionRoles": 0,
+    "newSelectedExamReferencesInActualOfferedViews": 238,
+    "newSelectedExamReferencesInDeduplicatedSourceViews": 219,
+    "contentReviewClaim": "Reuses existing released authoritative task evidence; this package does not grant a new content review or human approval.",
+    "sourceClaim": "Uses each existing exact authored applicability.jurisdiction and explicit course tags without expanding them. Explicit examData.coveredGoalIds remain unchanged; prerequisite reachability is not an assessment coverage claim."
+  },
+  "evidence": {
+    "operations": "candidate-operations.json",
+    "exactTasksSolutionsRubricsCoverageAndSemanticDecisions": "task-and-coverage-evidence.json",
+    "exactOriginalOfferedTargets": "actual-backend-scope-evidence.json",
+    "exactInputViewsAndHashes": "view-input-evidence.json",
+    "sourceArtifactsAndHashes": "source-materials-sha256.json",
+    "copyOnlyProjectionCheck": "projection-delta-validation.json",
+    "isolatedNativeGeneratorCheck": "native-generator-validation.json",
+    "predictedStructuralReachabilityDelta": "predicted-reachability-impact.json"
+  },
+  "reviewPoints": [
+    "All 21 distinct task goals retain released examData and an authoritative practiceAssessment semantic-kind decision.",
+    "All 238 actual offered-view task additions are in an exact authored jurisdiction, an upper-secondary or CrossStage view, and an explicit permitted course. BY GK does not receive the LK-only tank task.",
+    "Every atomic direct effective requirement and every explicit covered goal is already a target in the corresponding real backend projection. Full transitive support is listed per scope; it adds no support context or hidden protected obligation.",
+    "Every task and its canonical exam parent folder are absent from the affected authored view. This package does not remove a reviewed prerequisiteOnly override.",
+    "Missing exercise folders are materialized as selected structure nodes with their canonical parent-folder label; the references inside are exact goalEntry atoms. Whole canonicalSubtree restoration would enroll unrelated tasks and is not proposed.",
+    "Nine J10 task IDs are held for exact G8 year/stage placement; no J10 folder is introduced into a G8 tree or SekII view by this package.",
+    "The copy-only compiler validates unchanged existing support roles, zero removed targets, zero new errors and exactly one display occurrence per added task.",
+    "The actual native duration generator ran twice in an isolated filesystem host. Its generated 18 views show precisely the 38 intended additions, no removed targets or support-role changes, and exact equality with the reviewed offered-view candidates."
+  ],
+  "integrationAfterIndependentScopeReview": [
+    "Recheck each source view byte hash against view-input-evidence.json. Treat a mismatch as a reviewable concurrent change; do not overwrite it with a stale full-file candidate.",
+    "Apply only sourceOperations to their exact existing anchor structures, grouping identical folderStructureId entries once per view. Source-copy candidate files are under candidate-source-views/. Their complete field delta is constrained by projection-delta-validation.json.",
+    "For DE-RP and DE-SH duration views, edit the undurationed source base view, then run app/scripts/generateMathDurationCompositionViews.ts --write. Do not patch generated outputs alone.",
+    "Run the real backend CurriculumCompletionIntegrityTest again, retain its complete matrix report, and compare Mathematics target sets and uncovered/hidden protected findings. All 154 current Mathematics offerings remain required even where this package does not repair a scope.",
+    "Run current composition-view validation, duration-generator --check, targeted learner-goal-selection checks and unchanged strict Mathematics M7 gates. Preserve maturity floors and classify any failure rather than rebinding content evidence to hide it."
+  ],
+  "limits": [
+    "This candidate is a bounded partial structural repair: it predicts restored reachability for 195 distinct existing target IDs across 82 offerings, and no fully repaired offering. The actual post-integration backend matrix remains authoritative.",
+    "No live canonical, live composition view or generator file was edited by this candidate-preparation agent. No commit, publication or production change is included.",
+    "The independent scope/placement review is still pending. Machine checks and pre-existing released review metadata do not prove human trials or effectiveness."
+  ]
+}

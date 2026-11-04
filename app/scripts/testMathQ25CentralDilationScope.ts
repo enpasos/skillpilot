@@ -11,6 +11,7 @@ import {
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 import { collectAuthoritativeTargetAtomicGoalIds } from './compositionViewSourceCoverage'
+import { isMathSourceCourseAvailable, loadDeclaredMathCourseUnions } from './mathDeclaredCourseUnionTestUtils'
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const readJson = (path: string) => JSON.parse(readFileSync(resolve(repoRoot, path), 'utf8'))
@@ -81,6 +82,21 @@ const root = landscape.goals.find((candidate) => candidate.tags?.includes('root'
 assert(root)
 const viewDir = 'curricula/DE/Gymnasium/composition-views/mathematik'
 const files = readdirSync(resolve(repoRoot, viewDir)).filter((name) => name.endsWith('.view.json'))
+const views = files.map(name => ({ name, view: normalizeCompositionView(readJson(`${viewDir}/${name}`)) }))
+const viewById = new Map(views.map(({ view }) => [view.viewId, view]))
+const rolesByViewId = new Map(views.map(({ view }) => [view.viewId,
+  collectCompositionProjectionRoleGoalIds(view.rootNodes, goals, new Map([[canonical.landscapeId, root.id]]))]))
+const combinedById = loadDeclaredMathCourseUnions(repoRoot, views)
+const hasReviewedLkRoute = (viewId: string, targetId: string) => {
+  const pair = combinedById.get(viewId)
+  if (!pair) return viewById.get(viewId)!.scope.courseProfile === 'LK'
+  return pair.sourceViewIds.some(sourceId => {
+    const source = viewById.get(sourceId)!
+    return source.scope.courseProfile === 'LK'
+      && rolesByViewId.get(sourceId)!.targetGoalIds.has(targetId)
+      && isMathSourceCourseAvailable(rawGoals.get(targetId)!, source)
+  })
+}
 let heLkTargets = 0
 let byGkM134Targets = 0
 let byLkM134Targets = 0
@@ -88,9 +104,15 @@ let national7dTargets = 0
 let heLkAssessmentTargets = 0
 let nationalAssessmentTargets = 0
 const bavarianM134GoalId = 'dc12f281-f161-572b-a973-8405ae9b2498'
-for (const name of files) {
-  const view = normalizeCompositionView(readJson(`${viewDir}/${name}`))
-  const { targetGoalIds } = collectCompositionProjectionRoleGoalIds(view.rootNodes, goals, new Map([[canonical.landscapeId, root.id]]))
+for (const { name, view } of views) {
+  const { targetGoalIds } = rolesByViewId.get(view.viewId)!
+  const pair = combinedById.get(view.viewId)
+  if (pair) for (const id of [goalId, localAssessmentId]) {
+    const expected = pair.sourceViewIds.some(sourceId =>
+      rolesByViewId.get(sourceId)!.targetGoalIds.has(id)
+      && isMathSourceCourseAvailable(rawGoals.get(id)!, viewById.get(sourceId)!))
+    assert.equal(targetGoalIds.has(id), expected, `${name}: target membership must equal the exact declared source-course union`)
+  }
   if (view.scope.jurisdiction === 'DE-BY' && targetGoalIds.has(bavarianM134GoalId)) {
     if (view.scope.courseProfile === 'GK') byGkM134Targets++
     if (view.scope.courseProfile === 'LK') byLkM134Targets++
@@ -99,16 +121,16 @@ for (const name of files) {
     assert(!targetGoalIds.has(bavarianM134GoalId), `${name}: BY-only M13.4 must not leak to another state`)
   }
   if (!view.scope.jurisdiction && targetGoalIds.has(goalId)) {
-    assert.equal(view.scope.courseProfile, 'LK', `${name}: the national GK aggregate must not contain the LK-only 7d goal`)
+    assert(hasReviewedLkRoute(view.viewId, goalId), `${name}: national 7d selection requires LK or its exact declared LK component`)
     national7dTargets++
   }
   if (targetGoalIds.has(localAssessmentId)) {
     if (!view.scope.jurisdiction) {
-      assert.equal(view.scope.courseProfile, 'LK', `${name}: national GK must not target the HE-LK assessment`)
+      assert(hasReviewedLkRoute(view.viewId, localAssessmentId), `${name}: national terminal selection requires LK or its exact declared LK component`)
       nationalAssessmentTargets++
     } else {
       assert.equal(view.scope.jurisdiction, 'DE-HE', `${name}: no non-HE target for the local Q2.5 assessment`)
-      assert.equal(view.scope.courseProfile, 'LK', `${name}: the local Q2.5 assessment is LK-only`)
+      assert(hasReviewedLkRoute(view.viewId, localAssessmentId), `${name}: the local Q2.5 assessment requires LK or its exact declared LK component`)
       heLkAssessmentTargets++
     }
     assert(targetGoalIds.has(goalId), `${name}: terminal assessment requires a target route through 7d`)
@@ -116,7 +138,7 @@ for (const name of files) {
   if (targetGoalIds.has(goalId)) {
     if (!view.scope.jurisdiction) continue // National LK intentionally shows the cross-state union.
     assert.equal(view.scope.jurisdiction, 'DE-HE', `${name}: no source-backed non-HE projection for 7d`)
-    assert.equal(view.scope.courseProfile, 'LK', `${name}: the derived extension is LK-only`)
+    assert(hasReviewedLkRoute(view.viewId, goalId), `${name}: the derived extension requires LK or its exact declared LK component`)
     heLkTargets++
   }
 }
@@ -127,11 +149,14 @@ assert.equal(heLkAssessmentTargets, heLkTargets, 'Every HE-LK route to 7d needs 
 assert.equal(nationalAssessmentTargets, national7dTargets, 'National LK union must retain the Q2 terminal')
 for (const [name, shouldHave7d, shouldHaveM134] of [
   ['de-he-lk.view.json', true, false],
+  ['de-he-gk.view.json', false, false],
+  ['de-he-gk-lk-g9.view.json', true, false],
   ['de-bb-gk.view.json', false, false],
   ['de-by-gk.view.json', false, true],
   ['de-by-lk.view.json', false, true],
   ['de-de-gk.view.json', false, true],
   ['de-de-lk.view.json', true, true],
+  ['de-de-gk-lk.view.json', true, true],
 ] as const) {
   const runtimeTargets = collectAuthoritativeTargetAtomicGoalIds(canonical, readJson(`${viewDir}/${name}`))
   assert.equal(runtimeTargets.has(goalId), shouldHave7d, `${name}: runtime tree differs from the effective 7d target role`)

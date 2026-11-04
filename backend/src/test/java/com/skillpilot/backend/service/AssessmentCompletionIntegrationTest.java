@@ -440,12 +440,14 @@ class AssessmentCompletionIntegrationTest {
         assertThat(defaultStatus.subjects()).singleElement().satisfies(subject -> {
             assertThat(subject.balance().rohsaldo()).isZero();
             assertThat(subject.periodGauge().target()).isEqualTo(2);
-            assertThat(subject.periodGauge().completed()).isEqualTo(2);
+            // Only EXAM has a dated event. Implicit preparation counts toward
+            // total plan balance, never toward this period's explicit activity.
+            assertThat(subject.periodGauge().completed()).isEqualTo(1);
         });
         mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get(
                 "/api/ui/learners/{id}/learning-plans/status", learner.getSkillpilotId()).queryParam("language", "de"))
                 .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.status().isOk())
-                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath("$.subjects[0].periodGauge.completed").value(2))
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath("$.subjects[0].periodGauge.completed").value(1))
                 .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath("$.subjects[0].planCreditText").isNotEmpty());
         mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put(
                 "/api/ui/learners/{id}/preferences", learner.getSkillpilotId())
@@ -458,6 +460,7 @@ class AssessmentCompletionIntegrationTest {
                 .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath("$.subjects[0].periodGauge.completed").value(1))
                 .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath("$.subjects[0].periodGauge.target").value(2))
                 .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath("$.subjects[0].planCreditText").doesNotExist());
+        assertThat(learningPlans.getTodayStatus(learner.getSkillpilotId(), "de").subjects().getFirst().periodGauge().completed()).isEqualTo(1);
         assertThat(learningPlans.getTodayStatus(learner.getSkillpilotId(), "de").subjects().getFirst().balance().rohsaldo()).isEqualTo(-1);
         assertThat(learningPlans.getPlan(learner.getSkillpilotId(), MATH, today).blocks()).isEqualTo(baseline);
         assertThat(learners.getGoalCompletionsBetween(learner.getSkillpilotId(), monday, monday.plusDays(6))).isEqualTo(events);

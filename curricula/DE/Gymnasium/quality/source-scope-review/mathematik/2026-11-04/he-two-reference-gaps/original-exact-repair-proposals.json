@@ -1,0 +1,114 @@
+{
+  "kind": "Exact bounded source and didactic repair decisions; not imported candidate acceptance",
+  "canonicalEdgeChange": {
+    "goalId": "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee",
+    "currentWholeGoalSha256": "5adf858687896642d815378cb28eeb39928e83e3b564ff5cba2a9d08a49ffc28",
+    "field": "requires",
+    "before": [
+      "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+      "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+      "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+      "44cb7404-114e-5b14-b33a-ddee41952d46",
+      "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    "after": [
+      "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+      "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+      "44cb7404-114e-5b14-b33a-ddee41952d46",
+      "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    "onlyRemovedEdge": "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+    "scope": "Canonical semantic correction wherever this exact goal is used; no scope-specific workaround. No other edge removal is authorized by this review.",
+    "basis": "Variable role is meaningful over natural/discrete and other domains; proving density by recursively constructing rational midpoints is unnecessary. Roles can be assessed using x+3=7, price times count, or y=m*x+b without a density argument.",
+    "noTargetOrMasteryChanges": true
+  },
+  "preservedNecessaryEdge": {
+    "goalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+    "requiresGoalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
+    "decision": "KEEP",
+    "reason": "This exact goal explicitly uses0..2pi and radian angle values. Radian interpretation/conversion is real preparation; removing it or hiding it would make the contract misleading."
+  },
+  "newSourcePassageProposal": {
+    "id": "g9-transition-j10-bogenmass",
+    "topicCode": "G9-UEBERGANG.J10.BOGENMASS",
+    "sourceDocumentKey": "G9",
+    "sourcePath": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf",
+    "page": 46,
+    "printedPage": 45,
+    "supportingPrintedPages": [
+      36,
+      41,
+      43
+    ],
+    "text": "Winkel im Bogenmaß",
+    "goalBearing": true,
+    "sourceRef": "Lehrplan Gymnasium G9 Mathematik, Übergangsprofil von Jahrgangsstufe10 in die gymnasiale Oberstufe, gedruckte Seiten43-45; konkret Seite45, ergänzend Jahrgang10-Einleitung Seite36 und10.4 Seite41"
+  },
+  "newSourceGoalProposal": {
+    "id": "he-math-seki-g9-transition-j10-bogenmass",
+    "passageId": "g9-transition-j10-bogenmass",
+    "topicCode": "G9-UEBERGANG.J10.BOGENMASS",
+    "sourceText": "Winkel im Bogenmaß",
+    "tags": [
+      "source:DE-HE",
+      "sourceDocument:G9",
+      "subject:Mathematik",
+      "stage:SekI",
+      "legacy:G9",
+      "durationModel:G9",
+      "grade:10"
+    ],
+    "canonicalGoalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
+    "mappingMatchType": "partial",
+    "mappingRationale": "The official end-of-J10 profile explicitly requires radian angles; the year10 introduction relates radians to sine/cosine and the unit circle. Representing radian measure and converting degrees/radians is the reviewed didactic operationalization of that expectation, not a verbatim official formulation. This approval is for J10 completion, not mandatory J9 conversion or a G8 claim."
+  },
+  "existingMappingQualification": {
+    "sourceGoalId": "he-math-seki-g9-10-4-05-88d10835",
+    "canonicalGoalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+    "oldMappingMatchType": "exact",
+    "newMappingMatchType": "partial",
+    "preserveCanonicalTargetAndWholeContract": true,
+    "rationale": "The isolated angle-inversion row does not specify radians and its surrounding diagram range uses degrees. The unchanged whole radian goal is supported jointly by this inversion expectation and the explicit J10/transition radian evidence. Preserve sibling mapping targets and decisions."
+  },
+  "newCanonicalTargets": {
+    "8d30d241-0247-48ac-83d3-4e0de61584d3": {
+      "projectionRole": "target",
+      "placeAt": "existing j10-g9 year structure, before the existing radian-values goal by requires/topological teaching order",
+      "exactFullPersonalCurriculumScopes": [
+        "DE-HE/SekI/G9/GK+LK",
+        "DE-HE/CrossStage/G9/GK",
+        "DE-HE/CrossStage/G9/LK",
+        "DE-HE/CrossStage/G9/GK+LK"
+      ],
+      "physicalGeneratedViews": [
+        "de-he-seki-g9.view.json",
+        "de-he-gk-g9.view.json",
+        "de-he-lk-g9.view.json"
+      ],
+      "existingSourceViewsAlreadyContainRadian": true,
+      "newGoalId": false,
+      "newNodeKind": false,
+      "newOfficialOrOwnOptionalChoice": false,
+      "newPrerequisiteOnly": false
+    }
+  },
+  "negativeScopeDecisions": {
+    "noNewG8RadianTargets": true,
+    "noNewPureSekIIG9Targets": true,
+    "noDensityTargetExpansion": true,
+    "noFullCommonKcSubtreeImport": true,
+    "noBlanketMissingRequiresClosure": true,
+    "noReferenceGuardOrMasteryBypass": true,
+    "noNewLevelSchemaOrYearRuntimeGate": true
+  },
+  "expectedBoundedEffect": {
+    "densityEdgeStaticNativeEffectAll161": [],
+    "newRadianTargetPairs": 4,
+    "newUncoveredTargetPairs": 4,
+    "newUncoveredEndpointPairs": 0,
+    "allFourRadianDirectPrerequisitesAlreadyTargetsInAffectedScopes": true,
+    "theseArePredictionsFromBoundCurrentDataNotFreshCandidateNative": true
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "status": "author-candidates-independent-content-and-placement-review-pending",
+  "authorship": {
+    "kind": "ai",
+    "model": "gpt-6.1-sol",
+    "reasoningEffort": "ultra",
+    "contentLicense": "CC-BY-4.0"
+  },
+  "sourceOrigin": "New coherent school problem, inspired only by the tank context of original mixed J10 task5 part4. New dimensions, modeling questions, geometric calculation and explicit pyramid argument; no exact-reuse or official-endorsement claim.",
+  "originalGoalId": "ea664a30-98be-508e-90ac-5304679814ee",
+  "originalGoalSha256": "c223e0053337ec7d605c2c10d94813ed72365f9c8a22348e09ed95891a62f9f7",
+  "originalSourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v3.md",
+  "originalSourceArtifactSha256": "1dacf435149490f65fb3eda53f485c62ecdb61b963025b115532852f78d37019",
+  "canonicalInputPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "canonicalInputSha256": "59e46903674d89295c84ab6a149601c3e1c27ce6c3428d2c883a881eca51c81c",
+  "backendReportSha256": "fb4f2d3e4881661220bb902049e971845b7124cc6f2603e2bb06b11a4ee9ecbe",
+  "targetContracts": {
+    "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9": {
+      "title": "Raumgeometrische Anwendungen mit Körpern modellieren und lösen",
+      "description": "Die lernende Person kann Raumgeometrie-Situationen mit verschiedenen Körpern modellieren, Formeln und geometrische Beziehungen flexibel kombinieren sowie Längen, Winkel, Oberflächen und Volumina in Sachsituationen begründet bestimmen.",
+      "requires": [
+        "a4f6f5e4-f790-48d1-8b49-c9dc048c9d83",
+        "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5",
+        "7b860649-373e-5523-9843-ec96b3537f1f",
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "bb227e31-0b0b-544a-b5e0-548256a70dec",
+        "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
+        "71a483ba-9680-4654-bb5e-5ab5427f0919",
+        "e663cc67-5249-55db-b103-357b58a1ca91",
+        "65365dce-f33f-49d8-9516-42f75883aa86",
+        "415bd48b-8a76-4d4f-bfdd-d085573e7ac3"
+      ],
+      "goalSha256": "446999787be7946ba6ecda451f871baca6da623925c45371add7d4f2e03b00e4"
+    },
+    "50612a57-7b9d-45fd-bc08-e95556444760": {
+      "title": "Volumenformel von Kreiskegeln als Grenzfall von Pyramiden plausibilisieren",
+      "description": "Die lernende Person kann die Volumenformel eines geraden Kreiskegels plausibilisieren, indem sie den Körper als Grenzfall geeigneter Pyramiden deutet und den Zusammenhang zur Formel V = 1/3 pi r^2 h erläutert.",
+      "requires": [
+        "5619ca5b-dc2a-504e-ad89-2e0ca0a83822",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "goalSha256": "71854c4b57c1763c4525d888057fa57fb2c1d89f5f44de2eebfa7910e9fe6608"
+    }
+  },
+  "variantCandidates": [
+    {
+      "name": "space-applications",
+      "goalId": "2189ca60-bce7-5cb7-9720-ffea24cc7f9d",
+      "coveredGoalIds": [
+        "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9"
+      ],
+      "candidatePath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/space-applications.candidate.goal.json",
+      "candidateSha256": "5d836606e228f2bdaa4ed40c2dd72345d398d2efc0c7ba4905064454ae76b8fd",
+      "draftPath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/space-applications-draft_v1.md",
+      "draftSha256": "201e1982f77baa471d8dcdcc9992a531527bffd9f37a7b9d74c243a06795e4f8",
+      "maxPoints": 11,
+      "passingPoints": 11
+    },
+    {
+      "name": "cone-pyramid-limit",
+      "goalId": "bc04599b-e498-53c8-96f5-850549bdde4f",
+      "coveredGoalIds": [
+        "50612a57-7b9d-45fd-bc08-e95556444760"
+      ],
+      "candidatePath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/cone-pyramid-limit.candidate.goal.json",
+      "candidateSha256": "ab7db8cfb75d90742856904841d6c7b5a2cb289feb90cba48162d76635a4b94c",
+      "draftPath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/cone-pyramid-limit-draft_v1.md",
+      "draftSha256": "68a778f63b30c8f10bd523dd07cdbf79a0ae9d58aadc90b864d28d302d3c7d94",
+      "maxPoints": 6,
+      "passingPoints": 6
+    },
+    {
+      "name": "geometry-combined",
+      "goalId": "74ece0b9-7ef3-55da-b803-c62df477a69d",
+      "coveredGoalIds": [
+        "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+        "50612a57-7b9d-45fd-bc08-e95556444760"
+      ],
+      "candidatePath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/geometry-combined.candidate.goal.json",
+      "candidateSha256": "d2d8e313b55fb30fc98f61ea3844b47d1161cbe95723d96f8a4d60acc73c88b2",
+      "draftPath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/geometry-combined-draft_v1.md",
+      "draftSha256": "a51e7ebd044fd5e991f52ba53bfc21cb0c6a602665b1ae93a766cc31cfa209d3",
+      "maxPoints": 16,
+      "passingPoints": 16
+    }
+  ],
+  "scopeSignatureEvidencePath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/scope-signature-evidence.json",
+  "scopeSignatureEvidenceSha256": "3120cbae28975d9998eabcf666bb0cd5eeed9663ef1b4ec978197db7424e3006",
+  "authorChecks": {
+    "radiusMetres": 2,
+    "cylinderHeightMetres": 3,
+    "coneHeightMetres": 1.5,
+    "slantLengthMetres": 2.5,
+    "roofAngleDegrees": 36.86989764584402,
+    "coatingAreaPiCoefficientSquareMetres": 17,
+    "coatingAreaSquareMetres": 53.40707511102649,
+    "cylinderVolumePiCoefficientCubicMetres": 12,
+    "coneVolumePiCoefficientCubicMetres": 2,
+    "totalVolumePiCoefficientCubicMetres": 14,
+    "capacityLitres": 43982.2971502571,
+    "missingLitresAt45000": 1017.7028497428983,
+    "fullScoreRequired": true,
+    "combinedRoofNumericCreditNotDuplicated": true,
+    "geometricApproximationWithoutFormalCalculus": true,
+    "noLiveCanonicalViewGeneratorOrRuntimeChanges": true,
+    "katexAndMarkdownCheck": "PASS-local-author-validation"
+  },
+  "reviewScope": "Independent AstraUltra content review requested. Placement, current official source proof, exact-head backend integration, all M7 gates, human trial and production deployment remain separate and unclaimed.",
+  "localValidationPath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/local-validation.json",
+  "localValidationSha256": "eb5391f52281d22c50fcfc63944bae895e3cee3c79fb1f794b8f8c832cabc838",
+  "reviewRefinements": [
+    "Geometric inner/outer circle-annulus reason for polygon-area convergence made explicit",
+    "Cone-only rubric requires exact and rounded numeric result",
+    "Provenance statements tailored to the content of each variant and original Task 5 subtask 4"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "status": "EXACT_SYMBOLIC_AND_ARTIFACT_CHECK_NOT_CONTENT_OR_SCOPE_ACCEPTANCE",
+  "candidateGoalSha256": "46f9a38d9455f6585c7f0ed6baddd278cdccf0e4c4dc5d5454364a1af69d57ff",
+  "solution": {
+    "a": "1/80000",
+    "b": "-3/8000",
+    "c": "3/800",
+    "d": "-1/10",
+    "e": "5"
+  },
+  "uniqueCoefficientSystemRank": 5,
+  "polynomial": "t**4/80000 - 3*t**3/8000 + 3*t**2/800 - t/10 + 5",
+  "firstDerivativeFactorization": "(t - 20)*(2*t**2 - 5*t + 200)/40000",
+  "secondDerivativeFactorization": "3*(t - 10)*(t - 5)/20000",
+  "actualInflectionPoints": [
+    5,
+    10
+  ],
+  "thirdDerivativeAt10": "3/4000",
+  "allFiveBoundaryAndInflectionConditionsChecked": true,
+  "bothC1JoinsChecked": true,
+  "heightBounds": "7/2 <= q(t) <= 5 for 0 <= t <= 20; derivative negative before20",
+  "noC2JoinClaim": true,
+  "points": 13,
+  "passPoints": 13,
+  "coveredGoalCount": 3,
+  "existingGoalsChanged": 0
+}

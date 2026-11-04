@@ -1,0 +1,44 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-matrix-five-three-revised-context-20261103-v1-first-pass-a.batch-001.sol-ultra-review",
+  "campaignId": "mathematik-matrix-five-three-revised-context-20261103-v1-a",
+  "roundId": "mathematik-matrix-five-three-revised-context-20261103-v1-first-pass-a",
+  "batchId": "mathematik-matrix-five-three-revised-context-20261103-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:5c320a1fdf624266d44d7ba556d7428ee6deabe5ff7cdcc6f467ef4fd74c5bed",
+  "bundleFingerprint": "sha256:2bb218186a79d1ec6d88031f3d638bab71bec209fc2e81b60ddc48dee9c0d0fb",
+  "bookDigest": "sha256:0da856f58605adb5461eb8d074bef7c80e4e5b7377e1885cd558caa1c92f0cf7",
+  "provider": "openai",
+  "model": "gpt-6.1-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:de78f55b6de544cb2985d97d51417e3bd5273a80e5d5bed56b95967151532673",
+  "independenceGroupId": "mathematik-matrix-five-three-revised-context-20261103-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+    "325771e1-602d-4bca-a199-a8f39a2d3dee",
+    "5743b8f9-86cb-4e24-8859-351708d070ab"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:5c320a1fdf624266d44d7ba556d7428ee6deabe5ff7cdcc6f467ef4fd74c5bed"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-11-03T19:34:03.580886Z",
+  "completedAt": "2026-11-03T19:36:45.826449Z",
+  "status": "completed",
+  "outputDigest": "sha256:203dce2f99ca3d52912da2438e638fee065fca7dc839c47320f5e9b3dd09a705",
+  "toolchainVersion": "codex-goal-description-review-v2"
+}

@@ -1,0 +1,417 @@
+{
+  "status": "PASS_REVIEWER_AUTHORED_MATHEMATICS",
+  "checkedAtUTC": "2026-11-04T01:08:15.974493+00:00",
+  "reviewerAgent": "/root/astra_six_math_whole_forms",
+  "independentOfAuthorCheckScripts": true,
+  "checks": [
+    {
+      "check": "RSA key and inverse",
+      "passed": true,
+      "detail": {
+        "n": 187,
+        "phi": 160,
+        "d": 23
+      }
+    },
+    {
+      "check": "RSA encryption 20",
+      "passed": true,
+      "detail": {
+        "message": 20,
+        "ciphertext": 147
+      }
+    },
+    {
+      "check": "RSA square table 147",
+      "passed": true,
+      "detail": [
+        104,
+        157,
+        152,
+        103
+      ]
+    },
+    {
+      "check": "RSA decryption 147",
+      "passed": true,
+      "detail": {
+        "ciphertext": 147,
+        "decrypted": 20
+      }
+    },
+    {
+      "check": "RSA encryption 11",
+      "passed": true,
+      "detail": {
+        "message": 11,
+        "ciphertext": 88
+      }
+    },
+    {
+      "check": "RSA square table 88",
+      "passed": true,
+      "detail": [
+        77,
+        132,
+        33,
+        154
+      ]
+    },
+    {
+      "check": "RSA decryption 88",
+      "passed": true,
+      "detail": {
+        "ciphertext": 88,
+        "decrypted": 11
+      }
+    },
+    {
+      "check": "RSA exhaustive full message domain",
+      "passed": true,
+      "detail": {
+        "messages": 187,
+        "nonunitsIncludingZero": 27,
+        "badMessages": []
+      }
+    },
+    {
+      "check": "RSA prime modulus proof conditions",
+      "passed": true,
+      "detail": {
+        "ed": 161,
+        "multiplesOfPrimeOrders": [
+          16,
+          10
+        ],
+        "zeroResiduesRemainZero": true
+      }
+    },
+    {
+      "check": "Euler blanket substitution counterexample",
+      "passed": true,
+      "detail": {
+        "m": 11,
+        "powerMod187": 154
+      }
+    },
+    {
+      "check": "Sieve exact table",
+      "passed": true,
+      "detail": [
+        {
+          "x": 41,
+          "Q": 32,
+          "exponents": [
+            5,
+            0
+          ],
+          "residual": 1
+        },
+        {
+          "x": 42,
+          "Q": 115,
+          "exponents": [
+            0,
+            1
+          ],
+          "residual": 23
+        },
+        {
+          "x": 43,
+          "Q": 200,
+          "exponents": [
+            3,
+            2
+          ],
+          "residual": 1
+        },
+        {
+          "x": 44,
+          "Q": 287,
+          "exponents": [
+            0,
+            0
+          ],
+          "residual": 287
+        },
+        {
+          "x": 45,
+          "Q": 376,
+          "exponents": [
+            3,
+            0
+          ],
+          "residual": 47
+        }
+      ]
+    },
+    {
+      "check": "Sieve residue classes",
+      "passed": true,
+      "detail": {
+        "mod2": [
+          1
+        ],
+        "mod5": [
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "check": "Sieve smooth parity combination",
+      "passed": true,
+      "detail": {
+        "X": 1763,
+        "XmodN": 114,
+        "Y": 80
+      }
+    },
+    {
+      "check": "Sieve congruence and factors",
+      "passed": true,
+      "detail": {
+        "factors": [
+          17,
+          97
+        ]
+      }
+    },
+    {
+      "check": "Sieve trivial congruence fails extraction",
+      "passed": true,
+      "detail": {
+        "X": 32,
+        "Y": 32,
+        "gcds": [
+          1649,
+          1
+        ]
+      }
+    },
+    {
+      "check": "Exponential probabilities",
+      "passed": true,
+      "detail": [
+        "0.134164106971618716",
+        "0.393469340287366576",
+        "0.383400499564203595",
+        "0.472366552741014707",
+        "0.367879441171442322"
+      ]
+    },
+    {
+      "check": "Exponential conditional identity",
+      "passed": true,
+      "detail": "S(8)/S(5)=S(3)"
+    },
+    {
+      "check": "Exponential quantile",
+      "passed": true,
+      "detail": "9.21034037197618274"
+    },
+    {
+      "check": "Exponential exact-value and tail distinction",
+      "passed": true,
+      "detail": "CDF continuous at 3; positive tail beyond 4"
+    },
+    {
+      "check": "Binomial quotient identity",
+      "passed": true,
+      "detail": "Squared ratio = (1-p)/(np), positive for 0<p<1"
+    },
+    {
+      "check": "Binomial comparison",
+      "passed": true,
+      "detail": {
+        "mu": [
+          20,
+          80
+        ],
+        "sigma": [
+          4,
+          8
+        ],
+        "relative": [
+          0.2,
+          0.1
+        ]
+      }
+    },
+    {
+      "check": "Binomial strict decrease and fourfold scaling",
+      "passed": true,
+      "detail": "v squared has negative derivative for 0<p<1; v(4n)=v(n)/2"
+    },
+    {
+      "check": "Binomial exact minimum",
+      "passed": true,
+      "detail": {
+        "minimum": 1600,
+        "predecessorV": 0.050015632328035534
+      }
+    },
+    {
+      "check": "Binomial changing-p counterexample",
+      "passed": true,
+      "detail": {
+        "vBefore": 0.1,
+        "vAfter": 0.49749371855331
+      }
+    },
+    {
+      "check": "DG2 suitable candidate",
+      "passed": true,
+      "detail": "2*cos(2*t)"
+    },
+    {
+      "check": "DG2 invalid candidates",
+      "passed": true,
+      "detail": {
+        "vResidual": "-24*cos(4*t)",
+        "wResidual": "16*exp(-2*t)"
+      }
+    },
+    {
+      "check": "DG2 displacement checkpoints",
+      "passed": true,
+      "detail": [
+        2,
+        0,
+        -2,
+        0,
+        2
+      ]
+    },
+    {
+      "check": "DG2 equilibrium and turning point",
+      "passed": true,
+      "detail": {
+        "turning": [
+          2,
+          0,
+          -8
+        ],
+        "crossing": [
+          0,
+          -4,
+          0
+        ]
+      }
+    },
+    {
+      "check": "DG2 second process and periods",
+      "passed": true,
+      "detail": {
+        "first": "pi",
+        "second": "2*pi/3",
+        "ratio": "2/3"
+      }
+    },
+    {
+      "check": "Numerical table supplied error bound",
+      "passed": true,
+      "detail": [
+        {
+          "x": "1",
+          "actual": "-0.28171817154095476463971252864733750224275290630004",
+          "given": "-.2817182",
+          "absoluteRoundingError": "2.8459045235360287471e-8"
+        },
+        {
+          "x": "2",
+          "actual": "5.3890560989306502272304274605750078131803155705518",
+          "given": "5.3890561",
+          "absoluteRoundingError": "1.0693497727695725394e-9"
+        },
+        {
+          "x": "1.5",
+          "actual": "1.9816890703380648226020554601192758190057498683697",
+          "given": "1.9816891",
+          "absoluteRoundingError": "2.9661935177397944540e-8"
+        },
+        {
+          "x": "1.25",
+          "actual": "0.74034295746184137613054602967226548265173439876235",
+          "given": ".7403430",
+          "absoluteRoundingError": "4.2538158623869453970e-8"
+        },
+        {
+          "x": "1.073",
+          "actual": "-0.0028612291862693773099810298976317607357549457098811",
+          "given": "-.0028612",
+          "absoluteRoundingError": "2.9186269377309981030e-8"
+        },
+        {
+          "x": "1.074",
+          "actual": "0.0010643721414080854676443175278072228526752262798381",
+          "given": ".0010644",
+          "absoluteRoundingError": "2.7858591914532355682e-8"
+        },
+        {
+          "x": "1.0737",
+          "actual": "-0.00011361546550839244431295839302802851061751856111662",
+          "given": "-.0001136",
+          "absoluteRoundingError": "1.5465508392444312958e-8"
+        },
+        {
+          "x": "1.0738",
+          "actual": "0.00027901780436468931234351851412587995496656351540758",
+          "given": ".0002790",
+          "absoluteRoundingError": "1.7804364689312343519e-8"
+        }
+      ]
+    },
+    {
+      "check": "Numerical initial bisections",
+      "passed": true,
+      "detail": {
+        "retainedIntervals": [
+          [
+            "1",
+            "1.5"
+          ],
+          [
+            "1",
+            "1.25"
+          ]
+        ]
+      }
+    },
+    {
+      "check": "Numerical certified bracket 1.073",
+      "passed": true,
+      "detail": {
+        "bracket": [
+          "1.073",
+          "1.074"
+        ],
+        "midpoint": "1.0735",
+        "absoluteErrorBound": ".0005",
+        "independentRoot": "1.07372893755649908709314411716209394548234672462534377610290"
+      }
+    },
+    {
+      "check": "Numerical certified bracket 1.0737",
+      "passed": true,
+      "detail": {
+        "bracket": [
+          "1.0737",
+          "1.0738"
+        ],
+        "midpoint": "1.07375",
+        "absoluteErrorBound": ".00005",
+        "independentRoot": "1.07372893755649908709314411716209394548234672462534377610290"
+      }
+    },
+    {
+      "check": "Numerical root uniqueness",
+      "passed": true,
+      "detail": "f prime = e^x+1 > 0 everywhere; signs bracket a root"
+    }
+  ],
+  "checkCount": 34,
+  "all187RSAResiduesChecked": true,
+  "noncoprimeResiduesIncludingZero": 27,
+  "limitations": "Finite/symbolic reviewer verification, not testing an LLM grader or classroom effectiveness."
+}

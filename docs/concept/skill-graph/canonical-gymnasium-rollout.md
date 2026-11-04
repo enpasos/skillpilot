@@ -156,6 +156,10 @@ For canonical Gymnasium, the initial reviewed scope vocabulary should be:
 `GK+LK` is the explicit combined learner scope for learning or testing the
 reviewed union of both course profiles. It reuses the canonical GK and LK goals
 and must not duplicate goal IDs or mastery state.
+Resolve the roles and course availability of each component first; then unite
+its actual targets. A role inherited from an unavailable GK branch cannot use
+LK availability to introduce a target rejected by both individual profiles.
+See the [course-union contract](view-projection-and-goal-placement.md#combining-course-profiles).
 
 `ALL` is a query sentinel only. It MUST NOT be serialized as a placement or applicability value.
 

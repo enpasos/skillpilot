@@ -1,0 +1,51 @@
+--- frozen-G3/backend/src/test/java/com/skillpilot/backend/composition/MaterializeMathContextualCombinedViews.java
++++ guard-amendment/backend/src/test/java/com/skillpilot/backend/composition/MaterializeMathContextualCombinedViews.java
+@@ -71,6 +71,7 @@
+         }
+         ReviewedExistingChanges existingChanges=ReviewedExistingChanges.load(root,plan,boundDecisions,canonical);
+         Map<String,Object> snapshots=map(plan.get("producerSourceSnapshots"));
++        existingChanges.preflightPositiveReferenceInventories(root,views,pairs,snapshots,children);
+         List<Map<String,Object>> reports=new ArrayList<>(); int requests=0, removedTotal=0;
+         for(Map<String,Object> pair:pairs) {
+             List<String> sourceIds=strings(pair.get("sourceViewIds"));
+@@ -212,6 +213,7 @@
+             Set<String> oldTargets=CourseProfileCompositionViewMerger.projectionTargetGoalIds(oldNodes,children),targets=CourseProfileCompositionViewMerger.projectionTargetGoalIds(nodes,children),expected=new LinkedHashSet<>(oldTargets),wrappers=new LinkedHashSet<>();
+             for(String id:strings(rule.get("positiveGoalIds"))) {
+                 expected.add(id);if(!targets.contains(id)||effectiveCount(nodes,id,children)!=1)throw new IllegalStateException("Existing positive source is missing or duplicated: "+vid+" "+id);
++                checkPositiveReferenceInventory(nodes,oldNodes,id,oldTargets.contains(id));
+                 for(String scope:strings(pair.get("scopeRows"))) {
+                     String ownScope=scope.substring(0,scope.lastIndexOf('/')+1)+text(map(current.get("scope")).get("courseProfile"));
+                     if(!allowances.get(id).positives().contains(vid)||!approvedScopes.get(id).contains(ownScope))throw new IllegalStateException("Existing source profile/scope pair differs");
+@@ -252,6 +254,32 @@
+         private static Set<String> uniqueStrings(Object value){var values=strings(value);var set=new LinkedHashSet<>(values);if(set.size()!=values.size()||set.stream().anyMatch(String::isBlank))throw new IllegalStateException("Duplicate/empty existing allowance identity");return set;}
+         private static void equal(Object a,Object b,String message){if(!JSON.valueToTree(a).equals(JSON.valueToTree(b)))throw new IllegalStateException(message);}
+         private static List<Map<String,Object>> structures(List<Map<String,Object>> nodes,String id){var out=new ArrayList<Map<String,Object>>();for(var n:nodes)if("structure".equals(n.get("kind"))){if(id.equals(n.get("id")))out.add(n);out.addAll(structures(maps(n.get("children")),id));}return out;}
++        private void preflightPositiveReferenceInventories(Path root,Path views,List<Map<String,Object>> pairs,Map<String,Object> snapshots,Map<String,List<String>> children)throws Exception {
++            Map<String,String> paths=new LinkedHashMap<>();
++            for(var pair:pairs){var ids=strings(pair.get("sourceViewIds"));var sourcePaths=strings(pair.get("baselineSourcePaths"));for(int i=0;i<ids.size();i++){String prior=paths.putIfAbsent(ids.get(i),sourcePaths.get(i));if(prior!=null&&!prior.equals(sourcePaths.get(i)))throw new IllegalStateException("Existing positive source path differs");}}
++            for(var rule:sources.values()) {
++                var positive=strings(rule.get("positiveGoalIds"));if(positive.isEmpty())continue;
++                String path=paths.get(text(rule.get("viewId")));if(path==null)throw new IllegalStateException("Existing positive source is absent");
++                var snapshot=map(snapshots.get(path));Path oldPath=root.resolve(text(snapshot.get("path")));
++                if(!sha(oldPath).equals(snapshot.get("sha256")))throw new IllegalStateException("Bound before-view drift: "+oldPath);
++                var before=read(oldPath);var current=read(views.resolve(Path.of(path).getFileName()));
++                var oldNodes=maps(before.get("rootNodes"));var nodes=maps(current.get("rootNodes"));var oldTargets=CourseProfileCompositionViewMerger.projectionTargetGoalIds(oldNodes,children);
++                for(String id:positive)checkPositiveReferenceInventory(nodes,oldNodes,id,oldTargets.contains(id));
++            }
++        }
++        private static void checkPositiveReferenceInventory(List<Map<String,Object>> nodes,List<Map<String,Object>> before,String id,boolean retained) {
++            if(retained)equal(referenceInventory(nodes,id,List.of()),referenceInventory(before,id,List.of()),"Existing retained source direct-reference inventory differs");
++            else {var refs=exactReferences(nodes,id);if(refs.size()!=1||!JSON.valueToTree(refs.get(0)).equals(JSON.valueToTree(Map.of("kind","goalEntry","goalId",id))))throw new IllegalStateException("Existing added source direct-reference inventory differs");}
++        }
++        private static List<Map<String,Object>> referenceInventory(List<Map<String,Object>> nodes,String id,List<Integer> parentPath) {
++            var out=new ArrayList<Map<String,Object>>();
++            for(int index=0;index<nodes.size();index++) {
++                var node=nodes.get(index);var path=new ArrayList<>(parentPath);path.add(index);
++                if("structure".equals(node.get("kind")))out.addAll(referenceInventory(maps(node.get("children")),id,path));
++                else if(id.equals(node.get("goalId")))out.add(Map.of("nodePath",List.copyOf(path),"reference",node));
++            }
++            return out;
++        }
+         private static List<Map<String,Object>> exactReferences(List<Map<String,Object>> nodes,String id){var out=new ArrayList<Map<String,Object>>();for(var n:nodes){if("structure".equals(n.get("kind")))out.addAll(exactReferences(maps(n.get("children")),id));else if(id.equals(n.get("goalId")))out.add(n);}return out;}
+     }
+ 

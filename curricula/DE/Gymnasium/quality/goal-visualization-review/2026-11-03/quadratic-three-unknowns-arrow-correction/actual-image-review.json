@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-03T19:52:05Z",
+  "verdict": "PASS",
+  "reviewKind": "actual-independent-ai-visual-review",
+  "reviewerAgent": "/root/astra_cuboid_existing_scope",
+  "reviewer": "astra-independent-visual-review-20261103",
+  "authorIndependent": true,
+  "goalId": "5743b8f9-86cb-4e24-8859-351708d070ab",
+  "assetSha256": "9e53898df86b782eef50fc8763ede02ac7519b5c51e66a8cabb2782b78b6fef5",
+  "priorAssetSha256": "ced28c593f651031bc556c75c5ce6f8605f7884500f0ffeaa220c48df10d45fb",
+  "requestSha256": "02a72bdb8bc0d710a2814fcff0da1ec1934948a6e48f0b840eefc9ee4c7ccbc9",
+  "approvedFiles": [
+    {
+      "path": "app/public/assets/goal-visualizations/mathematik/5743b8f9-86cb-4e24-8859-351708d070ab/5743b8f9-86cb-4e24-8859-351708d070ab-corrected-20261103.png",
+      "sha256": "9e53898df86b782eef50fc8763ede02ac7519b5c51e66a8cabb2782b78b6fef5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/mathematik/5743b8f9-86cb-4e24-8859-351708d070ab/5743b8f9-86cb-4e24-8859-351708d070ab-corrected-20261103.png",
+      "sha256": "9e53898df86b782eef50fc8763ede02ac7519b5c51e66a8cabb2782b78b6fef5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/2026-11-03/quadratic-three-unknowns-arrow-correction/prompt.txt",
+      "sha256": "0d755b979fa853520d1089d364211c96dc87bcff9f3256fe6effb474d65e5e74"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/2026-11-03/quadratic-three-unknowns-arrow-correction/prior-vqa-record.json",
+      "sha256": "6aac36c893d2dcd8f2893abc2d3fdfbb7bda37b18901668719292958b3b59eb8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/2026-11-03/quadratic-three-unknowns-arrow-correction/generation.json",
+      "sha256": "403e8ce7bf4ac057d7ccf4f0aa8bbc69f99d522042a04fa31bc8b97fff9a48a0"
+    }
+  ],
+  "actualInspection": {
+    "method": "Both original and corrected images were opened with view_image and visually examined by this reviewer.",
+    "findings": "Actual visual inspection of the original JPG and corrected PNG: the three misleading blue point-to-equation arrows are removed. C(0|1), A(1|2), B(2|5), their equations c=1, a+b+c=2, 4a+2b+c=5, the solution a=1,b=0,c=1 and f(x)=x²+1 agree. The schematic final parabola, process sequence, labels and German typography remain correct and legible.",
+    "independentArithmetic": "Subtract c=1: a+b=1 and 4a+2b=4. Their unique solution is a=1,b=0,c=1; all three displayed points lie on x²+1.",
+    "preservationLimit": "Mathematical content and the displayed process are preserved; this is a rerendered image, not a claim of pixel identity outside the removed arrows.",
+    "newFinding": null
+  },
+  "approvedQaFields": {
+    "aiApproved": "yes",
+    "aiApprovedAssetSha256": "sha256:9e53898df86b782eef50fc8763ede02ac7519b5c51e66a8cabb2782b78b6fef5",
+    "aiReviewedAt": "2026-11-03T19:52:05Z",
+    "aiReviewer": "astra-independent-visual-review-20261103",
+    "aiNotes": "Actual visual inspection of the original JPG and corrected PNG: the three misleading blue point-to-equation arrows are removed. C(0|1), A(1|2), B(2|5), their equations c=1, a+b+c=2, 4a+2b+c=5, the solution a=1,b=0,c=1 and f(x)=x²+1 agree. The schematic final parabola, process sequence, labels and German typography remain correct and legible.",
+    "umlautsCorrectChatGpt": "yes",
+    "contentApprovedChatGpt": "yes",
+    "chatGptReviewedAt": "2026-11-03T19:52:05Z",
+    "chatGptReviewer": "astra-independent-visual-review-20261103",
+    "chatGptNotes": "Actual visual inspection of the original JPG and corrected PNG: the three misleading blue point-to-equation arrows are removed. C(0|1), A(1|2), B(2|5), their equations c=1, a+b+c=2, 4a+2b+c=5, the solution a=1,b=0,c=1 and f(x)=x²+1 agree. The schematic final parabola, process sequence, labels and German typography remain correct and legible."
+  },
+  "history": {
+    "priorQaRecordPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/2026-11-03/quadratic-three-unknowns-arrow-correction/prior-vqa-record.json",
+    "priorQaRecordSha256": "6aac36c893d2dcd8f2893abc2d3fdfbb7bda37b18901668719292958b3b59eb8",
+    "originalImageAndHistoricalReviewsRemainUnchanged": true,
+    "historicalApprovalNotReusedForNewBytes": true
+  },
+  "limits": {
+    "humanReviewPerformed": false,
+    "humanApprovalGranted": false,
+    "mathM7Accepted": false,
+    "sourceOrScopeApprovalGranted": false,
+    "taskOrRubricReviewRepeated": false,
+    "rootOrFinalDataRootWritten": false,
+    "runtimeOrDeploymentAcceptance": false,
+    "humanQaFieldsRemainUnchanged": true
+  }
+}

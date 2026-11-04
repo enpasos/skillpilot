@@ -1,0 +1,231 @@
+{
+  "status": "PASS_13_CONCRETE_AUTHOR_MARKED_DGL1_COUNTERCASES_NOT_INDEPENDENT_REVIEW",
+  "boundContentSha256": "ec8a4c81dc2462328148561b216131b0f0b2e7f3844f74fc04af985335b72ccb",
+  "caseCount": 13,
+  "realCapEffects": 3,
+  "oneOrdinaryBinaryResultOnly": true,
+  "equivalentElementaryMethodsAccepted": true,
+  "cases": [
+    {
+      "case": "complete separation",
+      "concreteSubmission": "Derives y^-2dy=dt on y≠0, −1/y=t+K, family1/(C−t) on zero-free intervals; separately gets0; C1 from initial; intervalt<1 and pole explanation; exact derivative and initial checks; z=t²+L and L−2 onR.",
+      "authorMarks": {
+        "derive": 6,
+        "constant": 2,
+        "initial": 5,
+        "check": 3,
+        "direct": 4
+      },
+      "rawScore": 20,
+      "wholeCoreCapApplies": false,
+      "finalScore": 20,
+      "binaryOverallResult": "pass",
+      "expectedScore": 20,
+      "source": "Author marking judgment, not independent review or an automated semantic grader."
+    },
+    {
+      "case": "equivalent reciprocal method accepted",
+      "concreteSubmission": "Uses u=1/y on a nonzero interval, derives u′=−1 and integratesu=−t+C, then derives same family; all remaining work correct. No literal separation notation is required.",
+      "authorMarks": {
+        "derive": 6,
+        "constant": 2,
+        "initial": 5,
+        "check": 3,
+        "direct": 4
+      },
+      "rawScore": 20,
+      "wholeCoreCapApplies": false,
+      "finalScore": 20,
+      "binaryOverallResult": "pass",
+      "expectedScore": 20,
+      "source": "Author marking judgment, not independent review or an automated semantic grader."
+    },
+    {
+      "case": "different constant parameterisation accepted",
+      "concreteSubmission": "Keeps y=−1/(t+K), usesK=−1, explains intervalt<1 and zero solution; all work correct. Does not renameK toC.",
+      "authorMarks": {
+        "derive": 6,
+        "constant": 2,
+        "initial": 5,
+        "check": 3,
+        "direct": 4
+      },
+      "rawScore": 20,
+      "wholeCoreCapApplies": false,
+      "finalScore": 20,
+      "binaryOverallResult": "pass",
+      "expectedScore": 20,
+      "source": "Author marking judgment, not independent review or an automated semantic grader."
+    },
+    {
+      "case": "true core cap16to14 for guessed family only",
+      "concreteSubmission": "States correct family and denominator restriction with no equation solving or integration; correctly handles zero, choosesC1 using initial condition, verifies derivative and completes direct-integration case. The first equation has only been guessed and checked.",
+      "authorMarks": {
+        "derive": 2,
+        "constant": 2,
+        "initial": 5,
+        "check": 3,
+        "direct": 4
+      },
+      "rawScore": 16,
+      "wholeCoreCapApplies": true,
+      "finalScore": 14,
+      "binaryOverallResult": "not_passed",
+      "expectedScore": 14,
+      "source": "Author marking judgment, not independent review or an automated semantic grader."
+    },
+    {
+      "case": "method word alone is not derivation",
+      "concreteSubmission": "Writes “by separation” then states family without a separated equation or any actual integration; supplies all other work. The word alone adds no derivation credit.",
+      "authorMarks": {
+        "derive": 2,
+        "constant": 2,
+        "initial": 5,
+        "check": 3,
+        "direct": 4
+      },
+      "rawScore": 16,
+      "wholeCoreCapApplies": true,
+      "finalScore": 14,
+      "binaryOverallResult": "not_passed",
+      "expectedScore": 14,
+      "source": "Author marking judgment, not independent review or an automated semantic grader."
+    },
+    {
+      "case": "no extra method subpass",
+      "concreteSubmission": "Entire first-equation derivation, zero case, initial solution, elementary interval and real control correct; part5 blank. The one total is16, not a separate failure for direct integration.",
+      "authorMarks": {
+        "derive": 6,
+        "constant": 2,
+        "initial": 5,
+        "check": 3,
+        "direct": 0
+      },
+      "rawScore": 16,
+      "wholeCoreCapApplies": false,
+      "finalScore": 16,
+      "binaryOverallResult": "pass",
+      "expectedScore": 16,
+      "source": "Author marking judgment, not independent review or an automated semantic grader."
+    },
+    {
+      "case": "zero case omitted does not add a hidden gate",
+      "concreteSubmission": "Actual nonzero separation and all later work correct; leaves constant-case part blank. Loses its two points, no extra binary zero-solution pass is invented.",
+      "authorMarks": {
+        "derive": 6,
+        "constant": 0,
+        "initial": 5,
+        "check": 3,
+        "direct": 4
+      },
+      "rawScore": 18,
+      "wholeCoreCapApplies": false,
+      "finalScore": 18,
+      "binaryOverallResult": "pass",
+      "expectedScore": 18,
+      "source": "Author marking judgment, not independent review or an automated semantic grader."
+    },
+    {
+      "case": "disconnected-domain notation loses allocated points",
+      "concreteSubmission": "Derives family and C1 correctly, checks original equation off the pole, but gives R except1 as one initial-solution interval and supplies no branch/pole interpretation. Other work correct.",
+      "authorMarks": {
+        "derive": 6,
+        "constant": 2,
+        "initial": 3,
+        "check": 3,
+        "direct": 4
+      },
+      "rawScore": 18,
+      "wholeCoreCapApplies": false,
+      "finalScore": 18,
+      "binaryOverallResult": "pass",
+      "expectedScore": 18,
+      "source": "Author marking judgment, not independent review or an automated semantic grader."
+    },
+    {
+      "case": "local constant sign slip with followthrough",
+      "concreteSubmission": "Correct separation. In applying initial data, makes a local sign slip selectingC=−1; computes corresponding family member and its correct zero-free interval, checks DGL correctly and observes the initial value is−1 instead of1. B correctly determinesL=−2. Credit valid approach and followthrough without cap.",
+      "authorMarks": {
+        "derive": 6,
+        "constant": 2,
+        "initial": 3,
+        "check": 2,
+        "direct": 4
+      },
+      "rawScore": 17,
+      "wholeCoreCapApplies": false,
+      "finalScore": 17,
+      "binaryOverallResult": "pass",
+      "expectedScore": 17,
+      "source": "Author marking judgment, not independent review or an automated semantic grader."
+    },
+    {
+      "case": "valid15point ordinary pass",
+      "concreteSubmission": "Sound separation, general family and denominator restriction, zero identified but lost-case explanation incomplete; initial constant and particular solution sound with partial interval reasoning; derivative/DGL check correct but initial recheck omitted; B only general integral and constant reasoning partially completed.",
+      "authorMarks": {
+        "derive": 5,
+        "constant": 1,
+        "initial": 4,
+        "check": 2,
+        "direct": 3
+      },
+      "rawScore": 15,
+      "wholeCoreCapApplies": false,
+      "finalScore": 15,
+      "binaryOverallResult": "pass",
+      "expectedScore": 15,
+      "source": "Author marking judgment, not independent review or an automated semantic grader."
+    },
+    {
+      "case": "no initial determination anywhere protected",
+      "concreteSubmission": "Correct general derivations and constant test. For both equations simply supplies particular guesses while explicitly saying constants were not selected from either initial condition. Checks guesses, intervals and derivatives; no actual condition-to-constant reasoning exists. Family/point/check marks do not replace that core.",
+      "authorMarks": {
+        "derive": 6,
+        "constant": 2,
+        "initial": 3,
+        "check": 3,
+        "direct": 3
+      },
+      "rawScore": 17,
+      "wholeCoreCapApplies": true,
+      "finalScore": 14,
+      "binaryOverallResult": "not_passed",
+      "expectedScore": 14,
+      "source": "Author marking judgment, not independent review or an automated semantic grader."
+    },
+    {
+      "case": "concise valid elementary domain accepted",
+      "concreteSubmission": "Writes “C=1; t≠1; the largest interval containing0 is(−∞,1); there is no value at1, so no solution through1.” No existence, uniqueness or abstract maximality theorem is supplied. Rest correct.",
+      "authorMarks": {
+        "derive": 6,
+        "constant": 2,
+        "initial": 5,
+        "check": 3,
+        "direct": 4
+      },
+      "rawScore": 20,
+      "wholeCoreCapApplies": false,
+      "finalScore": 20,
+      "binaryOverallResult": "pass",
+      "expectedScore": 20,
+      "source": "Author marking judgment, not independent review or an automated semantic grader."
+    },
+    {
+      "case": "genuine elementary ansatz reasoning accepted",
+      "concreteSubmission": "Chooses y=1/(a+bt) with unknown constants and a nonzero denominator, derives y′=−b/(a+bt)² and the equation−b=1 from the original DGL, leavinga arbitrary; obtains family1/(a−t). This derives a parameter family rather than merely checking a supplied solution. All other work correct; no literal separation notation required.",
+      "authorMarks": {
+        "derive": 6,
+        "constant": 2,
+        "initial": 5,
+        "check": 3,
+        "direct": 4
+      },
+      "rawScore": 20,
+      "wholeCoreCapApplies": false,
+      "finalScore": 20,
+      "binaryOverallResult": "pass",
+      "expectedScore": 20,
+      "source": "Author marking judgment, not independent review or an automated semantic grader."
+    }
+  ]
+}

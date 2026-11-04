@@ -1,0 +1,93 @@
+{
+  "status": "PASS_ALL_ELEVEN_FINAL_NORMAL_CHECKS_WITH_ONLY_TWO_GENUINE_FINDINGS_RETRIED",
+  "exactAgreedCommands": 11,
+  "totalCommandAttempts": 13,
+  "passedFirstAndNeverRepeated": 9,
+  "allFinalExitCodesZero": true,
+  "allFirstAttempts": false,
+  "transparentFindings": [
+    {
+      "name": "source-coverage",
+      "firstAttempt": 1,
+      "firstExitCode": 1,
+      "cause": "SH fa0 lacked direct source coverage. Genuine independent four-part partial primary-source contribution added; active legacy mapping and Java mappings unchanged.",
+      "finalAttempt": 2,
+      "finalExitCode": 0
+    },
+    {
+      "name": "stage-country",
+      "firstAttempt": 1,
+      "firstExitCode": 1,
+      "cause": "Root-owned QA omitted already productive authoredAssessmentViews from allRows and synthetic receipt view inventory. Exact same visible-once and anchor assertions now cover these rows.",
+      "finalAttempt": 2,
+      "finalExitCode": 0
+    }
+  ],
+  "combinedExecution": {
+    "path": "tmp/approach-review-20261101/geometry-six-dgl1-final-handoff-20261104-v1/failed-check-retry-v1/combined-execution.json",
+    "sha256": "ae79f6022f681ef813c9f79104898b328ee0b063d7017c99622051c915780b5e"
+  },
+  "genuineStageReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/geometry-six-dgl1-existing-routes/stage-scope-implementation-g5.REVIEW-REQUIRED.json",
+    "sha256": "aad952551ac28fdc4dcb87e7dd138658ac10846e40d6a75c1118291c67f9792d"
+  },
+  "genuineIndependentSourceFollowupManifest": {
+    "path": "tmp/approach-review-20261101/astra-g5-sh-ratio-source-followup-20261104-v1/manifest.bounded-source-followup.json",
+    "sha256": "b71976573e91441713dbfc8e15474b42868f41693d50c1acb8792cee1fde8eef"
+  },
+  "effectiveRootOwnedCheckSources": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "e31ca62a9bf3aba948384c5d66f967d77acfcc96acab04c4477403421a0f8001"
+    },
+    {
+      "path": "app/scripts/testHardLearningRouteValidation.ts",
+      "sha256": "2395ef11f0e9b70b03063f5d5a1350f3f303aa90cf192821ce229484e6688b9e"
+    },
+    {
+      "path": "app/scripts/markdownSourceArchives.ts",
+      "sha256": "70eb89d322be038928612052a91e595de2bde72149ca42cbdfa9ee69f11b8399"
+    },
+    {
+      "path": "app/scripts/testMathReviewedAssessmentPlacements.ts",
+      "sha256": "948800671024f26878decef18f28faa6765bd02a51d1239c3a2d82dd9d981178"
+    },
+    {
+      "path": "app/scripts/testMathCountrySekICompositionViews.ts",
+      "sha256": "a4ccd4856e3a4a9d1b156b3b4e0a44e45697077d67434d5b0cff143aee496f9f"
+    },
+    {
+      "path": "app/scripts/testMathDistanceReflectionStructure.ts",
+      "sha256": "3361f179f19e5a79bbea550a773d7e96b32a3fd2dd1157569268afbab8a33be5"
+    },
+    {
+      "path": "scripts/curriculum_completion_inputs.py",
+      "sha256": "90dfbfacbf0527445d9b6b019653a2e59e6b7c421c456c1369719d67a7b9ff51"
+    },
+    {
+      "path": "scripts/test_curriculum_completion_integrity_report.py",
+      "sha256": "b06b7ae447570e96204569f476eda3c3be1513ddbcee966f82666613b8df3f6f"
+    }
+  ],
+  "all11118ActualNativeInputsUnchanged": true,
+  "actualNativeRootComparator": {
+    "path": "tmp/approach-review-20261101/geometry-six-dgl1-existing-routes-native-20261104-v2/finite-delta.root-verified.actual.json",
+    "sha256": "3bd22949f1f3ac65bb9086a4a16dec65233163deab04cc0f4edd6b2faa196efa"
+  },
+  "independentlyReconstructedM0FixedPoints": 322,
+  "partialMasterySourceSetCalculations": 201,
+  "partialMasteryTransactionsExecuted": false,
+  "remainingFailedNativeScopes": 140,
+  "uncoveredTargetUniquePairs": [
+    240,
+    2399
+  ],
+  "uncoveredEndpointUniquePairs": [
+    149,
+    1536
+  ],
+  "firstNative5PackagingFailurePreservedAndNotClaimedAsPass": true,
+  "privateGitIndexWasPreparedBeforeFirstNormalCheck": true,
+  "noRootGitWrites": true,
+  "noGlobalCompletionM7RemoteCiOrDeploymentClaim": true
+}

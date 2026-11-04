@@ -1,0 +1,510 @@
+{
+  "reviewId": "astra-space-geometry-four-content-review-20261103-v1",
+  "date": "2026-11-03",
+  "reviewerAgent": "/root/astra_space_geometry_four_forms",
+  "reviewType": "GENUINE_INDEPENDENT_MACHINE_CONTENT_REVIEW",
+  "status": "THREE_PASS_ONE_NEEDS_REVISION",
+  "blockingFindingCount": 1,
+  "inputBindings": {
+    "handoffSha256": "585943faa0c0d5aea502ee1895fc7edd9d13d57534f24257109c9fcfd5efe71c",
+    "manifestSha256": "b0f6fb93d4fe29ed7688aa750413177412280da114e4d84405762949b32430e1",
+    "boundFilesVerified": 52,
+    "wholeContractsRead": 4,
+    "bilingualTextFilesRead": 24
+  },
+  "independence": {
+    "authorProgramsImportedOrExecuted": false,
+    "authorChecksUsedAsApproval": false,
+    "parentReviewUsedAsApproval": false,
+    "ownExactMathChecks": 37
+  },
+  "goalDecisions": [
+    {
+      "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
+      "title": "Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen",
+      "decision": "PASS",
+      "decisionScope": "ENTIRE_FROZEN_BILINGUAL_FORM_AND_WHOLE_GOAL_CONTRACT",
+      "bindings": [
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/current-whole-goal.json",
+          "sha256": "d1f9c841b40d7bfb775bf5131348d1d169cbbe73984790ff6b9ecb6ddeac3317"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/proposed-whole-goal.draft.json",
+          "sha256": "42061684d708d45b5854dfccaee9174de6848d83da13c97b662b1c0a3b9928cb"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/whole-contract.before-after.json",
+          "sha256": "f71e37c39207433b2fb9a39dfd7aa4ef8ee384da8f415e6d3a144008035cfcd1"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/task.de.md",
+          "sha256": "4b74af62b258b28ebcdf319c3639b62c739dcc54cae648607bf8dcdba40ce3a2"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/task.en.md",
+          "sha256": "9dccbce7bc2edd2d2ab158ae061de5fea6b8bfea41aa5a3ea4afd382e6174e02"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/solution.de.md",
+          "sha256": "f4f0812893ae71403b6166a16dbe325280fbd64be869c8370a51e3b9f9f5c60d"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/solution.en.md",
+          "sha256": "66836434ea083dcafc01b84665ea3b89224d6ace177517013da74f3f07c7aed9"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/rubric.de.md",
+          "sha256": "9fb12846581f2e143b1243325f7e5cd287397fdbbd6943569f1ac91f1fea3082"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/rubric.en.md",
+          "sha256": "935d899dcac886da1b6ae03dd8f0e02fa6d5bfba784c5cdd64db9137de7ae6cb"
+        }
+      ],
+      "wholeContractIntegrity": {
+        "status": "PASS",
+        "onlyAddedFields": [
+          "nodeKind",
+          "examData"
+        ],
+        "liveOriginalObjectMatches": true,
+        "sourceRequiresClassificationUnchanged": true,
+        "ownGoalCoverageOnly": true,
+        "singleBinaryWholeAssessment": true,
+        "maxPoints": 20,
+        "passingPoints": 15,
+        "cap": 14
+      },
+      "criteria": {
+        "wholeOriginalCompetence": {
+          "status": "PASS",
+          "reason": "Zeitabhängiges Modell aus zwei zeitlich zugeordneten Messpunkten, Auswertung und Erreichbarkeit, Deutung des gerichteten Geschwindigkeitsvektors mit Einheiten. Alle Bestandteile der ursprünglichen Kompetenz werden geprüft."
+        },
+        "exactMathematicsAndExceptionalCases": {
+          "status": "PASS",
+          "reason": "v=(2,-1,-1), x0=(1,5,10), x(6)=(13,-1,4), Verschiebung=(6,-3,-3), R bei t=7 im Modellbereich, S zu keinem gemeinsamen Zeitpunkt."
+        },
+        "schoolLanguageAndVectorNotation": {
+          "status": "PASS",
+          "reason": "Verständliche Schulformulierungen; Vektorpfeile und Rollen von Punkten, Vektoren und Parametern sind konsistent."
+        },
+        "scopeAndDemandLevel": {
+          "status": "PASS",
+          "reason": "AB2/L3 angemessen: kontextgebundene Modellbildung, Anwendung, Kontrolle und Deutung; weder Ableitung noch Vektorbetrag verlangt."
+        },
+        "bilingualEquivalence": {
+          "status": "PASS",
+          "reason": "DE/EN-Aufgabe, Lösung und Rubrik inhaltlich, mathematisch und in Punkten/Kappungen äquivalent."
+        },
+        "preparation": {
+          "status": "PASS",
+          "reason": "Vorhandene Orts-/Richtungs-/Verschiebungsvektoren, Addition/Subtraktion und Skalarmultiplikation tragen die Aufgabe; keine unbeabsichtigte neue Voraussetzung."
+        },
+        "scoringThresholdAndCaps": {
+          "status": "PASS",
+          "reason": "20 BE, Schwelle 15; vollständig fehlender zeitabhängiger Ansatz, Untersuchung oder gerichtete Änderung pro Zeiteinheit führt zur Gesamtkappung 14. Bloße Zahlenvektoren ersetzen Deutung nicht. Folgefehler werden fair behandelt."
+        },
+        "followThroughFairness": {
+          "status": "PASS",
+          "reason": "Lokale Rechen-/Übertragungsfehler werden nicht mehrfach bestraft und lösen allein keine Kappung aus. Gleichwertige und andernorts gezeigte Leistungen zählen."
+        }
+      },
+      "counterexamplesReviewed": [
+        "Geschwindigkeitsdeutung vollständig weggelassen: rechnerisch höchstens 16 Rohpunkte, bestehende Kappung 14 verhindert Bestehen.",
+        "Nur eine passende Koordinate von S: keine begründete Erreichbarkeit; der gemeinsame Zeitparameter wird durch die Aufgabenstellung und Bewertung verlangt.",
+        "Tatsächlicher lokaler Vorzeichenfehler: richtige Folgearbeit bleibt anerkannt und löst allein keine Kappung aus."
+      ],
+      "findingIds": [],
+      "approvedForSubsequentTechnicalIntegration": true
+    },
+    {
+      "goalId": "a9fde754-51b4-58d7-85e5-5e36160581e6",
+      "title": "Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen",
+      "decision": "PASS",
+      "decisionScope": "ENTIRE_FROZEN_BILINGUAL_FORM_AND_WHOLE_GOAL_CONTRACT",
+      "bindings": [
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/current-whole-goal.json",
+          "sha256": "06109333178e51c3fc20c0c507b2ec757eb9bb0d21add037485b2c13877ee1ff"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/proposed-whole-goal.draft.json",
+          "sha256": "25d98482a34eb5e315517c6bf68d3377dd4876978d4d0bc7c1abc8bdd417de8f"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/whole-contract.before-after.json",
+          "sha256": "cbf651aaabdead69c51b4fd1a303b8066a2a2949342d6eb394c3d10e1489eaf5"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/task.de.md",
+          "sha256": "ede6c8580e36e0105fce2cbd6e597683113171db9a0963efaa743e2c034298dd"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/task.en.md",
+          "sha256": "b9007b955ef19d209bb0dd300caa667562605472798def59a82e2722d1f7d1fe"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/solution.de.md",
+          "sha256": "57537054c746325ece5296c2741a72fab43c6b18b420712995d1672fb7c1389b"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/solution.en.md",
+          "sha256": "754132327061b3dac31c18e47fa48e29eae83155b86c2bf2b61f0f19a7eb32bf"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/rubric.de.md",
+          "sha256": "f7990b15766b8a18a3ad4938ea5c67c054bf800c3b2e97a0880835297e4ddf44"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/rubric.en.md",
+          "sha256": "0e255202ebe3519955a191dc96201a28987e4b5bb137a1377b23306406b18bef"
+        }
+      ],
+      "wholeContractIntegrity": {
+        "status": "PASS",
+        "onlyAddedFields": [
+          "nodeKind",
+          "examData"
+        ],
+        "liveOriginalObjectMatches": true,
+        "sourceRequiresClassificationUnchanged": true,
+        "ownGoalCoverageOnly": true,
+        "singleBinaryWholeAssessment": true,
+        "maxPoints": 20,
+        "passingPoints": 15,
+        "cap": 14
+      },
+      "criteria": {
+        "wholeOriginalCompetence": {
+          "status": "PASS",
+          "reason": "Schnittberechnung für alle drei Koordinatenebenen, geometrische Deutung der gemeinsamen Zugehörigkeit und rechnerische Proben; enthaltene und außerhalb parallele Gerade vertiefen dieselbe Kompetenz."
+        },
+        "exactMathematicsAndExceptionalCases": {
+          "status": "PASS",
+          "reason": "Parameter 3, 3/2, -2; Punkte (5,3,0), (7/2,0,3), (0,-7,10). h liegt ganz in xy; k hat stets z=4 und keinen gemeinsamen Punkt."
+        },
+        "schoolLanguageAndVectorNotation": {
+          "status": "PASS",
+          "reason": "Verständliche Schulformulierungen; Vektorpfeile und Rollen von Punkten, Vektoren und Parametern sind konsistent."
+        },
+        "scopeAndDemandLevel": {
+          "status": "PASS",
+          "reason": "AB2/L3 angemessen: Verfahren mit drei Ebenen anwenden, kontrollieren und mit Sonderfällen interpretieren."
+        },
+        "bilingualEquivalence": {
+          "status": "PASS",
+          "reason": "DE/EN-Aufgabe, Lösung und Rubrik inhaltlich, mathematisch und in Punkten/Kappungen äquivalent."
+        },
+        "preparation": {
+          "status": "PASS",
+          "reason": "Vorhandene Geraden-/Streckenparameter und lineare Gleichungssysteme genügen; Koordinatenebenenbedingungen sind explizit gegeben."
+        },
+        "scoringThresholdAndCaps": {
+          "status": "PASS",
+          "reason": "20 BE, Schwelle 15; vollständiges Fehlen einer Ebene, geometrischer Deutung oder gemeinsamer Zugehörigkeitskontrollen führt zur Kappung 14. Gleichzeitige Bestimmung/Probe ist ausdrücklich erlaubt."
+        },
+        "followThroughFairness": {
+          "status": "PASS",
+          "reason": "Lokale Rechen-/Übertragungsfehler werden nicht mehrfach bestraft und lösen allein keine Kappung aus. Gleichwertige und andernorts gezeigte Leistungen zählen."
+        }
+      },
+      "counterexamplesReviewed": [
+        "Eine Ebene vollständig ausgelassen: maximal 16 Rohpunkte, Kappung 14.",
+        "Alle ausdrücklichen Geraden-/Ebenenproben fehlen: maximal 17 Rohpunkte, Kappung 14.",
+        "(2,-3,0) durch bloßes Nullsetzen erzeugt: liegt in xy, aber nicht auf g; Musterlösung widerlegt genau diesen Fehler.",
+        "Sonderfälle vollständig ausgelassen: höchstens 14 Punkte bereits ohne Kappung."
+      ],
+      "findingIds": [],
+      "approvedForSubsequentTechnicalIntegration": true
+    },
+    {
+      "goalId": "edaf0bb4-e12e-5a6c-b484-91124ba209f3",
+      "title": "Geradenscharen untersuchen (LK)",
+      "decision": "PASS",
+      "decisionScope": "ENTIRE_FROZEN_BILINGUAL_FORM_AND_WHOLE_GOAL_CONTRACT",
+      "bindings": [
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/current-whole-goal.json",
+          "sha256": "253cdfbd0ba0f95dbfab19f6578c94fa580b8d58edcf2ae03dfe4c197b741795"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/proposed-whole-goal.draft.json",
+          "sha256": "dccae37455144cb8f409d4abdd5afc362f6fce80725ee9e8625798899d31f509"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/whole-contract.before-after.json",
+          "sha256": "06ddad441107a129b40b8c1fb7744ba2cbc06cb487387df55d2037abdf921c02"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/task.de.md",
+          "sha256": "6675efcc9bdf3ec10a140a1fe336ea5089734b60689fdb13fbf9ec8f337ae770"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/task.en.md",
+          "sha256": "60c58ae8d16f6111d241022fb894e6258cbcdcb17ee8014be4107b8b757cf3e4"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/solution.de.md",
+          "sha256": "a3891a397b5de7b76a04d9f46e34be44e02b66fe881a4921ae744d44ef3270c3"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/solution.en.md",
+          "sha256": "ad2f32d9140ff03b39a271050b3eb1f80aa43fe8869f1743c513087ffb899379"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/rubric.de.md",
+          "sha256": "a54ad67c9e4250ea5e63adee45cca137f1a7aa2b781384d7007527474099ef21"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/rubric.en.md",
+          "sha256": "93b0801f53d0d8690438f7cc6780d8e078831b262a17dbd934f348d3d5573263"
+        }
+      ],
+      "wholeContractIntegrity": {
+        "status": "PASS",
+        "onlyAddedFields": [
+          "nodeKind",
+          "examData"
+        ],
+        "liveOriginalObjectMatches": true,
+        "sourceRequiresClassificationUnchanged": true,
+        "ownGoalCoverageOnly": true,
+        "singleBinaryWholeAssessment": true,
+        "maxPoints": 20,
+        "passingPoints": 15,
+        "cap": 14
+      },
+      "criteria": {
+        "wholeOriginalCompetence": {
+          "status": "PASS",
+          "reason": "Scharparameter von Laufparameter unterscheiden, allgemeine Lagebedingungen herleiten und vollständig klassifizieren, weitere Parameterwerte aus Schnittbedingungen bestimmen und Konfiguration geometrisch deuten."
+        },
+        "exactMathematicsAndExceptionalCases": {
+          "status": "PASS",
+          "reason": "Richtungsvektor nie null. Zu h: a=0 echt parallel, a=1 schneidend im Ursprung, alle anderen a windschief, niemals identisch. Zu k: genau a=-1 und a=2, Punkte (0,-2,2) und (0,1,2)."
+        },
+        "schoolLanguageAndVectorNotation": {
+          "status": "PASS",
+          "reason": "Verständliche Schulformulierungen; Vektorpfeile und Rollen von Punkten, Vektoren und Parametern sind konsistent."
+        },
+        "scopeAndDemandLevel": {
+          "status": "PASS",
+          "reason": "AB3/L3/LK angemessen: vollständige Parameterfallunterscheidung und zweite Bedingung statt Beispielrechnung; passende geometrische Reflexion."
+        },
+        "bilingualEquivalence": {
+          "status": "PASS",
+          "reason": "DE/EN-Aufgabe, Lösung und Rubrik inhaltlich, mathematisch und in Punkten/Kappungen äquivalent."
+        },
+        "preparation": {
+          "status": "PASS",
+          "reason": "Vorhandene Lagebeziehungen räumlicher Geraden einschließlich systematischer LGS genügen; die zusätzliche quadratische Faktorisierung ist angegeben."
+        },
+        "scoringThresholdAndCaps": {
+          "status": "PASS",
+          "reason": "20 BE, Schwelle 15; Beispiele statt allgemeiner Untersuchung, vollständig fehlende Herleitung aus Bedingungen oder geometrische Deutung werden mit 14 gekappt. Ein richtiger allgemeiner Beweis kann mehrere Fälle abdecken."
+        },
+        "followThroughFairness": {
+          "status": "PASS",
+          "reason": "Lokale Rechen-/Übertragungsfehler werden nicht mehrfach bestraft und lösen allein keine Kappung aus. Gleichwertige und andernorts gezeigte Leistungen zählen."
+        }
+      },
+      "counterexamplesReviewed": [
+        "Nur einzelne a-Werte statt einer allgemeinen h-Untersuchung: bestehende Kappung verhindert Bestehen trotz guter Beispiele und k-Rechnung.",
+        "Nichtschneiden als Parallelität gedeutet: für a außerhalb {0,1} widerlegt der nichtparallele Richtungsvektor dies; Lagekredit ist entsprechend begrenzt.",
+        "Teil 3 vollständig weggelassen: 15 Punkte sind möglich, aber sämtliche ursprünglichen Kernhandlungen werden schon in Teil 2 gezeigt; kein Bestehen über bloße Nebentätigkeiten."
+      ],
+      "findingIds": [],
+      "approvedForSubsequentTechnicalIntegration": true
+    },
+    {
+      "goalId": "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+      "title": "Ebenenscharen in Koordinatengleichung untersuchen (LK)",
+      "decision": "NEEDS_REVISION",
+      "decisionScope": "ENTIRE_FROZEN_BILINGUAL_FORM_AND_WHOLE_GOAL_CONTRACT",
+      "bindings": [
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/current-whole-goal.json",
+          "sha256": "059364bd92dcffae79cde285a6f8a62151d180cf4e5b5b2a4098046166cabb79"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/proposed-whole-goal.draft.json",
+          "sha256": "ef72126b913089dd14e415ccbc273743dffa61f3b9ef474c29337ff0e44f81d8"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/whole-contract.before-after.json",
+          "sha256": "b55fb7ac8f170c8f97050f72819763b4dff93d769a94f1b342c528e90b06df99"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/task.de.md",
+          "sha256": "b0fe394e5547ca8172c128298f1b71c5fa81afb78f36493c6c5dbd38637e4f7d"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/task.en.md",
+          "sha256": "8fa3eac5eb37449c4447aecdb69e44d76dfba4467e7122a089bb221b6565478a"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/solution.de.md",
+          "sha256": "8c6a54c4ee2d00b43e420f6dfc7cbd81e9f36ca2984ae87e5b6f2b09f47c80b5"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/solution.en.md",
+          "sha256": "88e1a65b51443ba8d750f258b4fe2b3be1fae9206f0514ecef29b0ad20808c44"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/rubric.de.md",
+          "sha256": "36b51876cc3c74326d91d06872fbcef8a5db6cb54b578e38f26266fc90e93b63"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/rubric.en.md",
+          "sha256": "9a83e99fd347ec8164199a96578d28fd122913a5f78ade9091abb2d268b639aa"
+        }
+      ],
+      "wholeContractIntegrity": {
+        "status": "PASS",
+        "onlyAddedFields": [
+          "nodeKind",
+          "examData"
+        ],
+        "liveOriginalObjectMatches": true,
+        "sourceRequiresClassificationUnchanged": true,
+        "ownGoalCoverageOnly": true,
+        "singleBinaryWholeAssessment": true,
+        "maxPoints": 20,
+        "passingPoints": 15,
+        "cap": 14
+      },
+      "criteria": {
+        "wholeOriginalCompetence": {
+          "status": "PASS",
+          "reason": "Normalen-/Koordinatenform, allgemeine Lage zu F einschließlich Identität, Schnittgerade und gemeinsame Achse mit Exaktheitsbeweis, Parameterwerte aus Punkt- und Parallelitätsbedingungen und geometrische Deutung decken die ganze Kompetenz ab."
+        },
+        "exactMathematicsAndExceptionalCases": {
+          "status": "PASS",
+          "reason": "n=(a-1,1,a) nie null; E1=F; für a ungleich 1 Schnitt in L=(0,1,1)+t(1,1,-1); L ist genau die gemeinsame Menge aller Ebenen; P verlangt a=3/2; nur a=1 echt parallel zu G."
+        },
+        "schoolLanguageAndVectorNotation": {
+          "status": "PASS",
+          "reason": "Verständliche Schulformulierungen; Vektorpfeile und Rollen von Punkten, Vektoren und Parametern sind konsistent."
+        },
+        "scopeAndDemandLevel": {
+          "status": "PASS",
+          "reason": "AB3/L3/LK angemessen: Ausnahmeparameter, allgemeine Parameterargumente und Beweis der exakten gemeinsamen Punktmenge."
+        },
+        "bilingualEquivalence": {
+          "status": "PASS",
+          "reason": "DE/EN-Aufgabe, Lösung und Rubrik inhaltlich, mathematisch und in Punkten/Kappungen äquivalent; Ebenen-Rubrikbefund betrifft beide Sprachen."
+        },
+        "preparation": {
+          "status": "PASS",
+          "reason": "Vorhandene Koordinatenform, Normalen und Lagebeziehung zweier Ebenen tragen alle Verfahren; kein Kreuzprodukt oder weiterführender Scharformalismus verlangt."
+        },
+        "scoringThresholdAndCaps": {
+          "status": "NEEDS_REVISION",
+          "reason": "20 BE und Schwelle 15 sind geeignet; allgemeine Kappungen und Folgefehlerregel sind sachgerecht. Die zusätzliche Sonderfallkappung ist aber zu eng an unzulässige Division gebunden; F-PLANE-01 blockiert die Inhaltsfreigabe dieser v1-Form."
+        },
+        "followThroughFairness": {
+          "status": "PASS",
+          "reason": "Lokale Rechen-/Übertragungsfehler werden nicht mehrfach bestraft und lösen allein keine Kappung aus. Gleichwertige und andernorts gezeigte Leistungen zählen."
+        }
+      },
+      "counterexamplesReviewed": [
+        "Vollständig ausgearbeitete 15-Punkte-Abgabe im gebundenen Gegenbeleg: a=1/F überall ausgelassen, Division nur für a ungleich 1; derzeit greift kein Kappungsgrund.",
+        "E0 und E2 können den Exaktheitsbeweis der gemeinsamen Achse vollständig tragen, ohne E1=F oder die ganze Ebene als Schnittmenge zu behandeln."
+      ],
+      "findingIds": [
+        "F-PLANE-01"
+      ],
+      "approvedForSubsequentTechnicalIntegration": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "F-PLANE-01",
+      "goalId": "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+      "severity": "BLOCKING_FOR_THIS_FORM_CONTENT_APPROVAL",
+      "category": "RUBRIC_MISSING_CENTRAL_ACTION_PASS_PATH",
+      "title": "Sonderfall a=1/F kann durch bloßes Auslassen ungekappt bleiben",
+      "affectedFrozenFiles": [
+        "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/proposed-whole-goal.draft.json",
+        "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/whole-contract.before-after.json",
+        "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/rubric.de.md",
+        "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/rubric.en.md"
+      ],
+      "observation": "Die Zusatzkappung nennt ausschließlich den Verlust des Sonderfalls durch unzulässige Division. Korrektes Dividieren unter a ungleich 1 mit völlig ausgelassenem a=1/F-Fall erfüllt diesen Trigger nicht.",
+      "counterexample": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/astra-space-geometry-four-content-review-20261103-v1/plane-cap-counterexample.de.md",
+        "sha256": "8a9051be6c53ea73b78f640bcde32856833d4df4f3f49ffc7faf774aad0d3211",
+        "rawScores": {
+          "normal": 1,
+          "genuine-plane": 1,
+          "examples": 1,
+          "elimination": 2,
+          "exception": 0,
+          "intersection": 2,
+          "position-meaning": 1,
+          "common-inclusion": 2,
+          "common-exact": 1,
+          "common-meaning": 1,
+          "point-condition": 2,
+          "parallel-condition": 1
+        },
+        "rawTotal": 15,
+        "currentCapTriggered": false,
+        "currentResult": "PASS",
+        "missingCentralAction": "Keine sachgerechte Untersuchung von E1=F bzw. der ganzen Ebene als Schnittmenge."
+      },
+      "requiredCorrection": "Die bestehende Gesamtkappung 14 auf vollständig fehlende sachgerechte Behandlung von a=1/F unabhängig von der Auslassungsursache erweitern. Eine knappe begründete Identitätsfeststellung irgendwo genügt; lokale Fehler und korrekte Folgearbeit weiterhin schützen. DE/EN, eingebettete Rubrik und capReasonKeys konsistent nachführen.",
+      "suggestedCapReasonKey": "missing-or-invalid-special-case-a1",
+      "exactBilingualSuggestedReplacement": "Siehe review.md, Abschnitt F-PLANE-01.",
+      "changesNotRequired": [
+        "task mathematics",
+        "worked solution mathematics",
+        "maxPoints",
+        "passingPoints",
+        "stable ID",
+        "description",
+        "requires",
+        "sourceRef",
+        "applicability",
+        "runtime"
+      ],
+      "followupReviewScope": [
+        "rubric DE/EN",
+        "embedded corrected rubric",
+        "cap metadata",
+        "counterexample omitted case",
+        "invalid division case",
+        "correct treatment elsewhere",
+        "local arithmetic error"
+      ]
+    }
+  ],
+  "separateUnclaimedWork": [
+    "A/M revalidation",
+    "technical integration",
+    "M7 completion",
+    "human approval or trial",
+    "actual host acceptance",
+    "source or country scope expansion"
+  ],
+  "mutationBoundary": "Only files in the named independent review output directory were created; frozen source drafts, canonical objects, ledgers and Git were not changed by this reviewer.",
+  "reviewArtifacts": [
+    {
+      "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/astra-space-geometry-four-content-review-20261103-v1/review.md",
+      "sha256": "1c261e281b7b4c19abb9885d22c8ad2b01b39bf5af958921624679d93e17e6f8"
+    },
+    {
+      "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/astra-space-geometry-four-content-review-20261103-v1/plane-cap-counterexample.de.md",
+      "sha256": "8a9051be6c53ea73b78f640bcde32856833d4df4f3f49ffc7faf774aad0d3211"
+    },
+    {
+      "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/astra-space-geometry-four-content-review-20261103-v1/independent_checks.py",
+      "sha256": "3677cedb1a217401f16550e34cc77a5b51d412394b67574cedc1c2ef06596987"
+    },
+    {
+      "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/astra-space-geometry-four-content-review-20261103-v1/independent-checks.json",
+      "sha256": "425e9fee7d62b19d1d6df10ea03918a40b8b0fe158552fa9f91c7d21600e2d24"
+    }
+  ]
+}

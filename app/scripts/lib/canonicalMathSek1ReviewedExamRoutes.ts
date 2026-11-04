@@ -1,4 +1,9 @@
-import type { CompositionViewFinding } from '../../src/utils/authoring/compositionViewAuthoring'
+import {
+  collectCompositionProjectionRoleGoalIds,
+  type CompiledCompositionPreviewNode,
+  type CompositionViewFinding,
+  type normalizeCompositionView,
+} from '../../src/utils/authoring/compositionViewAuthoring'
 import type { CanonicalAuthoringLandscape } from '../../src/utils/authoring/canonicalAuthoring'
 
 /** Only a nonempty, explicit jurisdiction list can waive another land's exam.
@@ -130,6 +135,97 @@ export const collectCanonicalMathSek1ReviewedExamRouteFindings = (
         severity: 'error',
         goalId: route.prerequisiteId,
         message: `Prerequisite ${route.prerequisiteId} der freigegebenen J${route.year}-Prüfungsaufgabe ${route.taskId} fehlt im kanonischen Jahrgangsbaum.`,
+      })
+    }
+  })
+
+  return findings
+}
+
+
+interface CanonicalMathExamVisibilityPolicy {
+  landscapeId: string
+  motivationGoalId: string
+  legacyPracticeClusterId: string
+  expectedYears: readonly string[]
+  examFolderIdsByYear: Readonly<Record<string, string>>
+}
+
+export const collectSourceGoalIds = (rootNodes: CompiledCompositionPreviewNode[]): Set<string> => {
+  const sourceGoalIds = new Set<string>()
+  const visit = (node: CompiledCompositionPreviewNode) => {
+    if (node.sourceGoalId) {
+      sourceGoalIds.add(node.sourceGoalId)
+    }
+    node.children.forEach(visit)
+  }
+  rootNodes.forEach(visit)
+  return sourceGoalIds
+}
+
+
+export const collectCanonicalMathSek1ExamVisibilityFindings = (
+  view: ReturnType<typeof normalizeCompositionView>,
+  landscape: CanonicalAuthoringLandscape | null,
+  rootNodes: CompiledCompositionPreviewNode[],
+  policy: CanonicalMathExamVisibilityPolicy,
+): CompositionViewFinding[] => {
+  if (view.landscapeId !== policy.landscapeId
+    || !['SekI', 'CrossStage'].includes(view.scope.stage ?? '')) return []
+  if (!landscape) return []
+
+  const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
+  const visibleGoalIds = collectSourceGoalIds(rootNodes)
+  const projectionRoles = collectCompositionProjectionRoleGoalIds(view.rootNodes, goalById)
+  const referencedGoalIds = new Set([...visibleGoalIds, ...projectionRoles.prerequisiteOnlyGoalIds])
+  const curricularAtomicGoalIds = new Set(landscape.goals
+    .filter((goal) => goal.semanticKind === 'curricularAtomic')
+    .map((goal) => goal.id))
+  const findings: CompositionViewFinding[] = []
+
+  if (!visibleGoalIds.has(policy.motivationGoalId)) {
+    findings.push({
+      code: 'CPV-210',
+      severity: 'error',
+      goalId: policy.motivationGoalId,
+      message: 'Sek-I-Route ist learner-facing nicht vollständig: Motivationsanker fehlt in der Composition View.',
+    })
+  }
+
+  if (visibleGoalIds.has(policy.legacyPracticeClusterId)) {
+    findings.push({
+      code: 'CPV-213',
+      severity: 'error',
+      goalId: policy.legacyPracticeClusterId,
+      message: 'Sek-I-Route verwendet noch den alten learner-facing Sammelzweig `Übungen Sekundarstufe I`.',
+    })
+  }
+
+  policy.expectedYears.forEach((year) => {
+    const folderId = policy.examFolderIdsByYear[year]
+    const folder = goalById.get(folderId)
+    // Composition views may place exact task references under authored headings.
+    // A navigation container is not an additional completion obligation.
+    const missingTaskGoalIds = (folder?.contains ?? [])
+      .filter((taskId) => !visibleGoalIds.has(taskId))
+      // Shared year folders contain land-specific exams. A resolved land scope
+      // must still require every applicable task, but not another land's task.
+      // The national catalog (no jurisdiction) continues to require all tasks.
+      .filter((taskId) => !isAssessmentExplicitlyOutsideJurisdiction(
+        goalById.get(taskId), view.scope.jurisdiction,
+      ))
+      .filter((taskId) => {
+        const task = goalById.get(taskId)
+        return !task || shouldRequireCanonicalMathSek1AssessmentEndpoint(
+          task, curricularAtomicGoalIds, referencedGoalIds, visibleGoalIds,
+        )
+      })
+    if (missingTaskGoalIds.length > 0) {
+      findings.push({
+        code: 'CPV-211',
+        severity: 'error',
+        goalId: folderId,
+        message: `Sek-I-Route ist learner-facing nicht vollständig: ${missingTaskGoalIds.length} Aufgabenknoten unter Prüfungen Jahrgangsstufe ${year} fehlen in der Composition View.`,
       })
     }
   })

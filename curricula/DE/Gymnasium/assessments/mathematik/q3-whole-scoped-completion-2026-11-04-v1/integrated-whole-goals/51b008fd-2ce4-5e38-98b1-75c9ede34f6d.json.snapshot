@@ -1,0 +1,92 @@
+{
+  "id": "51b008fd-2ce4-5e38-98b1-75c9ede34f6d",
+  "title": "Prüfung: Zwei Merkmale in einer Vierfeldertafel untersuchen",
+  "titleEn": "Assessment: Examine two attributes in a contingency table",
+  "description": "Die lernende Person kann die vollständige Prüfung selbstständig bearbeiten und ihre Ergebnisse fachlich begründen.",
+  "descriptionEn": "The learner can complete the whole assessment independently and justify the results.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment"
+  ],
+  "contains": [],
+  "requires": [
+    "dabff49b-d40a-4c81-a584-21408b2d4219"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K2",
+      "K3",
+      "K4",
+      "K6"
+    ],
+    "guidingIdeas": [
+      "L5"
+    ],
+    "phase": "SekI"
+  },
+  "applicability": {
+    "jurisdiction": [
+      "DE-BW"
+    ]
+  },
+  "type": "atomic",
+  "nodeKind": "exam",
+  "sourceRef": "SkillPilot: eigene vollständige Abschlussaufgabe für die unveränderten vorbereitenden Lernzielverträge; keine amtliche Prüfungsaufgabe.",
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "dabff49b-d40a-4c81-a584-21408b2d4219"
+    ],
+    "coveredStrands": [
+      "L5"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "# Pendelweg und Fahrrad\n\nEine eigene fiktive Erhebung erfasst genau $200$ Personen: $80$ haben einen kurzen Weg (K), davon fahren $48$ mit dem Fahrrad (F). Unter den $120$ mit längerem Weg fahren $24$ Fahrrad. Für diese Aufgabe wird eine Person gleichwahrscheinlich aus diesen $200$ ausgewählt.\n\n\n1. Erstelle die Vierfeldertafel einschließlich Randsummen und ein äquivalentes zweistufiges Wahrscheinlichkeitsbaumdiagramm (zuerst K/nicht K, dann F/nicht F).\n\n2. Berechne $P(F)$, $P(K\\cap F)$, $P(F\\mid K)$ und $P(K\\mid F)$; erläutere die beiden letzten Bezugsgruppen.\n\n3. Prüfe die Unabhängigkeit von K und F mit einem ausdrücklich genannten Kriterium. Deute das Ergebnis und beurteile die Aussage „Ein kurzer Weg verursacht Fahrradfahren“.\n\n4. In einer zweiten Gruppe von $200$ Personen gibt es wieder $80$ kurze Wege und $72$ Fahrradfahrende, davon $a$ mit kurzem Weg. Bestimme $a$ so, dass beide Merkmale in dieser zweiten Tafel unabhängig wären. Ist eine solche **exakte Personentafel** hier möglich? Begründe. Die Merkmale bleiben wohldefiniert, auch wenn perfekte Unabhängigkeit wegen ganzer Anzahlen nicht erreichbar ist.\n",
+    "taskContentEn": "# Journey length and cycling\n\nA fictional SkillPilot dataset records exactly $200$ people. Of $80$ with a short journey (K), $48$ cycle (F); of $120$ with a longer journey, $24$ cycle. A person is chosen uniformly from these $200$.\n\n\n1. Construct the contingency table with margins and an equivalent probability tree: K/not K first, F/not F second.\n\n2. Calculate $P(F)$, $P(K\\cap F)$, $P(F\\mid K)$ and $P(K\\mid F)$. Explain the reference groups of the last two quantities.\n\n3. Check independence using an explicit criterion. Interpret the result and assess “A short journey causes cycling”.\n\n4. A second group of $200$ again contains $80$ short journeys and $72$ cyclists, of whom $a$ have a short journey. Determine $a$ for independence in this second table. Is such an **exact person-count table** possible? Explain. The attributes remain meaningful even when integer counts prevent perfect independence.\n",
+    "solutionContent": "# Musterlösung\n\n| | F | nicht F | Summe |\n|---|---:|---:|---:|\n| K | 48 | 32 | 80 |\n| nicht K | 24 | 96 | 120 |\n| Summe | 72 | 128 | 200 |\n\nBaum: erster Ast $P(K)=0{,}4$, anderer $0{,}6$; nach K sind die F/nicht-F-Chancen $0{,}6/0{,}4$, nach nicht K $0{,}2/0{,}8$. Pfadprodukte geben $0{,}24,0{,}16,0{,}12,0{,}48$.\n\n$P(F)=72/200=0{,}36$, $P(K\\cap F)=48/200=0{,}24$, $P(F\\mid K)=48/80=0{,}6$, $P(K\\mid F)=48/72=2/3$. Die Bedingung begrenzt die Bezugsgruppe auf kurze Wege bzw. auf Fahrradfahrende; die Richtungen sind verschieden.\n\nUnabhängigkeit verlangte $P(K\\cap F)=P(K)P(F)=0{,}4\\cdot0{,}36=0{,}144$. Das ist nicht $0{,}24$; gleichwertig ist $P(F\\mid K)\\neq P(F)$. Die Merkmale sind in dieser Personenauswahl abhängig. Aus dem beobachteten Zusammenhang allein folgt keine Ursache; etwa Wohnlage oder verfügbare Verkehrsmittel können mitwirken.\n\nFür die zweite Tafel wäre $a/200=(80/200)(72/200)$, also $a=28{,}8$ nötig. Das ist keine ganze Personenanzahl, daher gibt es mit genau diesen Randsummen keine exakt unabhängige Personentafel. $a=29$ wäre nahe, aber nicht exakt unabhängig. Dies widerlegt weder das Unabhängigkeitskriterium noch die Möglichkeit unabhängiger Ereignisse in anderen Modellen.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 5 | vier Innenfelder/Randsummen 2; erste Baumstufe 1; bedingte zweite Stufe 1; korrekte Verbindung zur Tafel 1 |\n| 2 | 5 | vier Wahrscheinlichkeiten je 1; unterschiedliche Bezugsgruppen 1 |\n| 3 | 6 | gültiges Kriterium 2; Einsetzen und Abhängigkeit 2; Deutung 1; begründete Kausalitätsgrenze 1 |\n| 4 | 4 | Gleichung 1; 28,8 1; ganzzahlige Unmöglichkeit 1; Nähe ist keine exakte Unabhängigkeit 1 |\n| **Gesamt** | **20** | **Bestanden ab 12** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+    "solutionContentEn": "# Reference solution\n\nThe four cells K/F, K/not F, not K/F, not K/not F are $48,32,24,96$. Row totals are $80,120$, column totals $72,128$, total $200$. Tree first branches are $0.4,0.6$; conditional F/not-F branches are $0.6,0.4$ after K and $0.2,0.8$ after not K. Path probabilities are $0.24,0.16,0.12,0.48$.\n\n$P(F)=0.36$, $P(K\\cap F)=0.24$, $P(F\\mid K)=0.6$, $P(K\\mid F)=2/3$. The last two use short-journey people and cyclists as their respective reference groups.\n\nIndependence would require $P(K\\cap F)=P(K)P(F)=0.144$, unlike $0.24$. Equivalently, $P(F\\mid K)\\neq P(F)$. The attributes are dependent in this selection model. An observational association does not by itself establish causation; residential location or transport access could also matter.\n\nFor the second table independence requires $a/200=(80/200)(72/200)$, giving $a=28.8$. Person counts must be integers, so exact independence is impossible with these margins. $a=29$ is close but not exact. Independent events remain possible in other models.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 5 | cells/margins 2; first tree stage 1; conditional second stage 1; table-tree consistency 1 |\n| 2 | 5 | four probabilities 1 each; different reference groups 1 |\n| 3 | 6 | valid criterion 2; substitution and dependence 2; interpretation 1; reasoned causal limit 1 |\n| 4 | 4 | equation 1; 28.8 1; integer impossibility 1; closeness is not exact independence 1 |\n| **Total** | **20** | **Pass at 12** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 12,
+      "steps": [
+        {
+          "id": "new_bw_independence_1",
+          "points": 5,
+          "description": "vier Innenfelder/Randsummen 2; erste Baumstufe 1; bedingte zweite Stufe 1; korrekte Verbindung zur Tafel 1",
+          "descriptionEn": "cells/margins 2; first tree stage 1; conditional second stage 1; table-tree consistency 1"
+        },
+        {
+          "id": "new_bw_independence_2",
+          "points": 5,
+          "description": "vier Wahrscheinlichkeiten je 1; unterschiedliche Bezugsgruppen 1",
+          "descriptionEn": "four probabilities 1 each; different reference groups 1"
+        },
+        {
+          "id": "new_bw_independence_3",
+          "points": 6,
+          "description": "gültiges Kriterium 2; Einsetzen und Abhängigkeit 2; Deutung 1; begründete Kausalitätsgrenze 1",
+          "descriptionEn": "valid criterion 2; substitution and dependence 2; interpretation 1; reasoned causal limit 1"
+        },
+        {
+          "id": "new_bw_independence_4",
+          "points": 4,
+          "description": "Gleichung 1; 28,8 1; ganzzahlige Unmöglichkeit 1; Nähe ist keine exakte Unabhängigkeit 1",
+          "descriptionEn": "equation 1; 28.8 1; integer impossibility 1; closeness is not exact independence 1"
+        }
+      ]
+    },
+    "reviewNote": "Independently reviewed whole content; integrated scope and current fingerprints require separate implementation review. curricula/DE/Gymnasium/assessments/mathematik/q3-whole-scoped-completion-2026-11-04-v1/reviews/independent-final-content-decision.json"
+  },
+  "extendedData": {
+    "applicabilityMappingInheritance": "boundary"
+  }
+}

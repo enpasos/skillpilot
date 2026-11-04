@@ -1,3 +1,5 @@
+import { hasHardRouteAssessmentRole } from './lib/hardLearningRouteValidation'
+import { isAuthoritativeCurricularReviewGoal, loadCurricularReviewLandscape } from './lib/curricularReviewPopulation'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs'
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
@@ -197,7 +199,59 @@ function normalizeMappingPipelineStep(value: unknown): MappingPipelineStep | nul
   }
 }
 
-function normalizeSourceExtractionPipelineSteps(
+/** Only final mapping dispositions count as a source-goal review. */
+export function summarizeSourceMappingReviewCoverage(
+  sourceGoalIds: ReadonlySet<string>,
+  mappedSourceGoalIds: ReadonlySet<string>,
+  decisions: readonly SourceMappingReviewDecision[],
+): {
+  reviewedMappedSourceGoals: number
+  explicitNeedsCanonicalGoal: number
+  unreviewedSourceGoals: number
+} {
+  const mappedDecisions = new Set<string>()
+  const canonicalGaps = new Set<string>()
+  const unreviewedDecisions = new Set<string>()
+  for (const decision of decisions) {
+    const sourceGoalId = decision.sourceGoalId
+    if (!sourceGoalId || !sourceGoalIds.has(sourceGoalId)) continue
+    const disposition = typeof decision.decision === 'string' ? decision.decision.trim() : ''
+    if (disposition === 'mapped') mappedDecisions.add(sourceGoalId)
+    else if (disposition === 'needsCanonicalGoal' || disposition === 'needs_canonical_goal') canonicalGaps.add(sourceGoalId)
+    else unreviewedDecisions.add(sourceGoalId)
+  }
+  const reviewedMapped = [...mappedDecisions].filter((sourceGoalId) =>
+    mappedSourceGoalIds.has(sourceGoalId)
+    && !canonicalGaps.has(sourceGoalId)
+    && !unreviewedDecisions.has(sourceGoalId))
+  const unreviewed = [...sourceGoalIds].filter((sourceGoalId) =>
+    unreviewedDecisions.has(sourceGoalId)
+    || (!mappedDecisions.has(sourceGoalId) && !canonicalGaps.has(sourceGoalId)))
+  return {
+    reviewedMappedSourceGoals: reviewedMapped.length,
+    explicitNeedsCanonicalGoal: canonicalGaps.size,
+    unreviewedSourceGoals: unreviewed.length,
+  }
+}
+
+export function summarizeSourceMappingReferenceIssues(
+  sourceGoalIds: ReadonlySet<string>,
+  knownCanonicalGoalIds: ReadonlySet<string>,
+  mappings: readonly GoalMappingEntry[],
+  decisions: readonly SourceMappingReviewDecision[],
+): { extraMappedGoals: number; extraDecisionGoals: number; invalidMappedTargetGoals: number } {
+  return {
+    extraMappedGoals: new Set(mappings
+      .map(({ legacyGoalId }) => legacyGoalId)
+      .filter((id) => typeof id === 'string' && !sourceGoalIds.has(id))).size,
+    extraDecisionGoals: decisions.filter(({ sourceGoalId }) =>
+      typeof sourceGoalId === 'string' && !sourceGoalIds.has(sourceGoalId)).length,
+    invalidMappedTargetGoals: mappings.filter(({ canonicalGoalId }) =>
+      typeof canonicalGoalId !== 'string' || !knownCanonicalGoalIds.has(canonicalGoalId)).length,
+  }
+}
+
+export function normalizeSourceExtractionPipelineSteps(
   steps: MappingPipelineStep[],
   coverage: {
     totalSourceGoals: number
@@ -208,6 +262,7 @@ function normalizeSourceExtractionPipelineSteps(
     unreviewedSourceGoals: number
     hasM3ReviewFile: boolean
     extraDecisionGoals: number
+    extraMappedGoals: number
     invalidMappedTargetGoals: number
   },
 ): MappingPipelineStep[] {
@@ -220,6 +275,7 @@ function normalizeSourceExtractionPipelineSteps(
     unreviewedSourceGoals,
     hasM3ReviewFile,
     extraDecisionGoals,
+    extraMappedGoals,
     invalidMappedTargetGoals,
   } = coverage
 
@@ -232,6 +288,9 @@ function normalizeSourceExtractionPipelineSteps(
       && fullyReviewed
       && fullyCovered
       && explicitNeedsCanonicalGoal <= 0
+      && extraDecisionGoals === 0
+      && extraMappedGoals === 0
+      && invalidMappedTargetGoals === 0
     const m3Complete = fachlichCovered
 
     const checks = step.checks
@@ -250,9 +309,10 @@ function normalizeSourceExtractionPipelineSteps(
         if (check.id === 'm3-review-decisions-reference-source-goals') {
           return {
             ...check,
-            passed: hasM3ReviewFile && extraDecisionGoals === 0,
+            label: 'Mapping- und Review-Referenzen verwenden bekannte Source-Ziele',
+            passed: hasM3ReviewFile && extraDecisionGoals === 0 && extraMappedGoals === 0,
             details: hasM3ReviewFile
-              ? `Review-Entscheidungen mit unbekannter Source-ID: ${extraDecisionGoals}.`
+              ? `Unbekannte Source-IDs: ${extraDecisionGoals} Review-Entscheidungen, ${extraMappedGoals} Mapping-Referenzen.`
               : check.details,
           }
         }
@@ -878,6 +938,8 @@ interface RouteProfile {
   compositionViewApplicabilityMode?: 'compiled-jurisdiction'
   compositionViewRoutePathMode?: 'visible-atomic'
   goalSelector: (goal: LearningGoal) => boolean
+  /** Assessment execution may be outside the curricular population and legacy folders. */
+  terminalGoalSelector?: (goal: LearningGoal) => boolean
   clusterSelector: (goal: LearningGoal) => boolean
 }
 
@@ -1153,6 +1215,7 @@ const routeProfiles: RouteProfile[] = [
       G9: CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS,
     },
     compositionViewStage: 'SekI',
+    terminalGoalSelector: isCanonicalGymMathSek1Goal,
     goalSelector: (goal) => isAtomicGoal(goal)
       && isCanonicalGymMathSek1Goal(goal)
       && !isMemoryGoal(goal)
@@ -1165,6 +1228,7 @@ const routeProfiles: RouteProfile[] = [
     label: 'Sekundarstufe II',
     motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID],
     terminalAutonomyClusterIds: CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS,
+    terminalGoalSelector: isCanonicalGymMathSek2Goal,
     goalSelector: (goal) => isAtomicGoal(goal) && isCanonicalGymMathSek2Goal(goal) && !isMemoryGoal(goal),
     clusterSelector: isCanonicalGymMathSek2Goal,
   },
@@ -1458,6 +1522,8 @@ function isAtomicGoal(goal: LearningGoal): boolean {
 }
 
 function isSemanticAtomicityRelevantGoal(goal: LearningGoal): boolean {
+  const authoritative = isAuthoritativeCurricularReviewGoal(goal)
+  if (authoritative !== undefined) return authoritative
   const tags = new Set(goal.tags ?? [])
   if (tags.has('Practice') || tags.has('Assessment')) return false
   if (tags.has('Motivation') || tags.has('Orientation')) return false
@@ -1525,6 +1591,8 @@ function isProjectedRouteTargetGoal(goal: LearningGoal | undefined): goal is Lea
 
 function isCurriculumSourceCoverageGoal(goal: LearningGoal | undefined): boolean {
   if (!goal) return false
+  const authoritative = isAuthoritativeCurricularReviewGoal(goal)
+  if (authoritative !== undefined) return authoritative
   if (isMemoryGoal(goal) || isPracticeOrAssessmentGoal(goal)) return false
   const tags = goal.tags ?? []
   if (tags.includes('Motivation') || tags.includes('Orientation')) return false
@@ -1916,23 +1984,62 @@ function normalizeDurationModelForRouteScope(value: unknown): DurationModel | nu
   return value === 'G8' || value === 'G9' ? value : null
 }
 
-function terminalAutonomyGoalsForRouteScope(
+function isCurricularAssessmentTerminal(goal: LearningGoal): boolean {
+  return isAtomicGoal(goal)
+    && isAuthoritativeCurricularReviewGoal(goal) === true
+    && hasHardRouteAssessmentRole(goal, goal.semanticKind)
+}
+
+function isReviewedAssessmentTerminal(goal: LearningGoal): boolean {
+  return isAtomicGoal(goal)
+    && isAuthoritativeCurricularReviewGoal(goal) !== undefined
+    && (goal.semanticKind === 'curricularAtomic' || goal.semanticKind === 'practiceAssessment')
+    && hasHardRouteAssessmentRole(goal, goal.semanticKind)
+}
+
+/** Curricular membership and terminal execution are independent roles. */
+export function collectRouteTerminalAutonomyGoals(
+  landscape: SkillLandscape,
+  profile: Pick<RouteProfile, 'terminalAutonomyClusterIds' | 'goalSelector' | 'terminalGoalSelector'>,
+): LearningGoal[] {
+  const byId = new Map(landscape.goals.map(goal => [goal.id, goal]))
+  const configured = profile.terminalAutonomyClusterIds
+    .flatMap(clusterId => byId.get(clusterId)?.contains ?? [])
+    .map(id => byId.get(id))
+    .filter((goal): goal is LearningGoal => !!goal && isAtomicGoal(goal) && !isMemoryGoal(goal))
+  const reviewed = landscape.goals
+    .filter(profile.terminalGoalSelector ?? profile.goalSelector)
+    .filter(isReviewedAssessmentTerminal)
+  return [...new Map([...configured, ...reviewed].map(goal => [goal.id, goal])).values()]
+}
+
+export function terminalAutonomyGoalsForRouteScope(
   goalById: Map<string, LearningGoal>,
   profile: RouteProfile,
   scope: Record<string, unknown>,
   fallbackTerminalAutonomyGoals: LearningGoal[],
+  actualTargetGoalIds: ReadonlySet<string>,
 ): LearningGoal[] {
+  const legacyTerminalIds = new Set(profile.terminalAutonomyClusterIds
+    .flatMap(clusterId => goalById.get(clusterId)?.contains ?? []))
+  const additional = fallbackTerminalAutonomyGoals.filter(goal =>
+    isCurricularAssessmentTerminal(goal)
+      || (!legacyTerminalIds.has(goal.id) && isReviewedAssessmentTerminal(goal)))
+  const additionalIds = new Set(additional.map(goal => goal.id))
   const durationModel = normalizeDurationModelForRouteScope(scope.durationModel)
   const clusterIds = durationModel
     ? profile.terminalAutonomyClusterIdsByDurationModel?.[durationModel]
     : undefined
-  if (!clusterIds) return fallbackTerminalAutonomyGoals
-
-  return clusterIds
-    .flatMap((clusterId) => goalById.get(clusterId)?.contains ?? [])
-    .map((goalId) => goalById.get(goalId))
-    .filter((goal): goal is LearningGoal => !!goal)
-    .filter((goal) => isAtomicGoal(goal) && !isMemoryGoal(goal))
+  const configured = (clusterIds
+    ? clusterIds.flatMap(clusterId => goalById.get(clusterId)?.contains ?? [])
+      .map(goalId => goalById.get(goalId))
+      .filter((goal): goal is LearningGoal => !!goal && isAtomicGoal(goal) && !isMemoryGoal(goal))
+    : fallbackTerminalAutonomyGoals)
+    .filter(goal => !additionalIds.has(goal.id))
+  // Extra execution forms and protected curricular support atoms only create
+  // obligations when they belong to this actual target projection.
+  const selectedAdditional = additional.filter(goal => actualTargetGoalIds.has(goal.id))
+  return [...new Map([...configured, ...selectedAdditional].map(goal => [goal.id, goal])).values()]
 }
 
 /** Complete hard prerequisites of a whole assessment material. Cluster
@@ -2085,12 +2192,6 @@ function evaluateRouteEndpointCompositionVisibility(
         ? view.rootNodes.filter((node) => node.kind === 'structure')
         : collectCompositionStageStructures(view.rootNodes, profile.compositionViewStage!)
       : []
-    const scopedTerminalGoals = terminalAutonomyGoalsForRouteScope(
-      goalById,
-      profile,
-      view.scope,
-      terminalAutonomyGoals,
-    )
     const viewJurisdiction = typeof view.scope.jurisdiction === 'string'
       ? view.scope.jurisdiction
       : null
@@ -2233,6 +2334,9 @@ function evaluateRouteEndpointCompositionVisibility(
           }
         })
       }
+      const scopedTerminalGoals = terminalAutonomyGoalsForRouteScope(
+        goalById, profile, view.scope, terminalAutonomyGoals, visibleTargetAtomicGoalIds,
+      )
       const expectedTerminalGoalIds = scopedTerminalGoals
         // Whole Economics materials must also match the actual authored course
         // and duration. Compiled country applicability alone does not imply this.
@@ -2654,7 +2758,7 @@ function isPlaceholderExamData(goal: LearningGoal): boolean {
     && !/\b\d+[,.]?\d*\b/u.test(task)
 }
 
-function concreteExamReadinessIssues(goal: LearningGoal): string[] {
+export function concreteExamReadinessIssues(goal: LearningGoal): string[] {
   if (!goal.examData) return ['missing examData']
   const issues: string[] = []
   if (hasBlockingExamReviewStatus(goal)) {
@@ -2704,7 +2808,6 @@ function evaluateRouteProfile(
   profile: RouteProfile,
   applicabilityCompilation: ApplicabilityCompilationResult,
 ): ScopeStatus {
-  const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const selectedGoals = landscape.goals.filter(profile.goalSelector)
   const effectiveEdges = buildEffectiveRequiresEdges(landscape)
   const reverseEffectiveEdges = buildReverseEdges(effectiveEdges)
@@ -2714,11 +2817,7 @@ function evaluateRouteProfile(
   const hasReverseEffectivePath = createPathChecker(reverseEffectiveEdges)
   const hasAtomicDirectPath = createPathChecker(atomicDirectEdges)
   const hasReverseAtomicDirectPath = createPathChecker(reverseAtomicDirectEdges)
-  const terminalAutonomyGoals = profile.terminalAutonomyClusterIds
-    .flatMap((clusterId) => goalById.get(clusterId)?.contains ?? [])
-    .map((goalId) => goalById.get(goalId))
-    .filter((goal): goal is LearningGoal => !!goal)
-    .filter((goal) => isAtomicGoal(goal) && !isMemoryGoal(goal))
+  const terminalAutonomyGoals = collectRouteTerminalAutonomyGoals(landscape, profile)
   const terminalGoalIds = terminalAutonomyGoals.map((goal) => goal.id)
 
   const missingEffectiveMotivation = selectedGoals.filter((goal) =>
@@ -3490,7 +3589,7 @@ function readActiveDeepUnderstandingReviewConfigs(): Map<string, ActiveDeepUnder
   }>(deepUnderstandingRegistryPath)
   const activeByLandscapeId = new Map<string, ActiveDeepUnderstandingReviewConfigs>()
   for (const subject of registry.subjects) {
-    const landscape = loadJson<SkillLandscape>(resolve(repoRoot, subject.landscapePath))
+    const landscape = loadCurricularReviewLandscape(loadJson<SkillLandscape>(resolve(repoRoot, subject.landscapePath)), resolve(repoRoot, subject.landscapePath), repoRoot)
     const semanticAtomicityConfigPaths = [
       ...(subject.semanticAtomicityConfigPath ? [subject.semanticAtomicityConfigPath] : []),
       ...(subject.semanticAtomicityConfigPaths ?? []),
@@ -4124,7 +4223,7 @@ const compositionViewDirectoryByLandscapeId = new Map<string, string>([
 function readLandscapeForReport(report: CoverageReport): SkillLandscape | null {
   const absolutePath = resolve(repoRoot, report.file)
   if (!existsSync(absolutePath)) return null
-  return loadJson<SkillLandscape>(absolutePath)
+  return loadCurricularReviewLandscape(loadJson<SkillLandscape>(absolutePath), absolutePath, repoRoot)
 }
 
 function readCompositionViewFilesForLandscapeId(landscapeId: string): string[] {
@@ -4422,7 +4521,7 @@ function readExtractedSourceAtomicGoalIdsByLandscapeId(): Map<string, Set<string
     if (!sourcePath) continue
 
     try {
-      const sourceLandscape = loadJson<SkillLandscape>(sourcePath)
+      const sourceLandscape = loadCurricularReviewLandscape(loadJson<SkillLandscape>(sourcePath), sourcePath, repoRoot)
       const atomicGoalIds = new Set(
         (sourceLandscape.goals ?? [])
           .filter((goal) => allGoalIds.has(goal.id) && isAtomicGoal(goal))
@@ -4452,7 +4551,7 @@ function readExtractedSourceGoalIdsByLandscapeId(): Map<string, Set<string>> {
     if (!sourcePath) continue
 
     try {
-      const sourceLandscape = loadJson<SkillLandscape>(sourcePath)
+      const sourceLandscape = loadCurricularReviewLandscape(loadJson<SkillLandscape>(sourcePath), sourcePath, repoRoot)
       const goalIds = new Set(
         (sourceLandscape.goals ?? [])
           .map((goal) => goal.id),
@@ -4852,7 +4951,7 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
     collectFiles(canonicalRoot, (fileName) => /\.json$/i.test(fileName) && !/_deck/i.test(fileName))
       .flatMap((file) => {
         try {
-          const landscape = loadJson<SkillLandscape>(file)
+          const landscape = loadCurricularReviewLandscape(loadJson<SkillLandscape>(file), file, repoRoot)
           return landscape.goals.map((goal) => goal.id)
         } catch {
           return []
@@ -4893,21 +4992,12 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
           typeof mapping.legacyGoalId === 'string' && mapping.legacyGoalId.trim().length > 0)
       const decisionEntries = mappingFilesForExtraction
         .flatMap((mappingFile) => mappingFile.decisions ?? [])
-        .filter((decision): decision is SourceMappingReviewDecision & { sourceGoalId: string; decision: string } =>
+        .filter((decision): decision is SourceMappingReviewDecision & { sourceGoalId: string } =>
           typeof decision.sourceGoalId === 'string'
-          && decision.sourceGoalId.trim().length > 0
-          && typeof decision.decision === 'string'
-          && decision.decision.trim().length > 0)
+          && decision.sourceGoalId.trim().length > 0)
       const mappedSourceGoalIds = new Set(mappingEntries.map((mapping) => mapping.legacyGoalId))
       const validMappedSourceGoalIds = new Set(Array.from(mappedSourceGoalIds).filter((sourceGoalId) => sourceGoalIds.has(sourceGoalId)))
-      const extraMappedGoalIds = Array.from(mappedSourceGoalIds).filter((sourceGoalId) => !sourceGoalIds.has(sourceGoalId))
-      const extraDecisionGoalIds = decisionEntries
-        .map((decision) => decision.sourceGoalId)
-        .filter((sourceGoalId) => !sourceGoalIds.has(sourceGoalId))
-      const invalidMappedTargetGoalIds = mappingEntries
-        .map((mapping) => mapping.canonicalGoalId)
-        .filter((canonicalGoalId): canonicalGoalId is string => typeof canonicalGoalId === 'string' && canonicalGoalId.trim().length > 0)
-        .filter((canonicalGoalId) => !knownCanonicalGoalIds.has(canonicalGoalId))
+      const referenceIssues = summarizeSourceMappingReferenceIssues(sourceGoalIds, knownCanonicalGoalIds, mappingEntries, decisionEntries)
       const matchTypesBySourceGoalId = new Map<string, Set<string>>()
       mappingEntries.forEach((mapping) => {
         if (!sourceGoalIds.has(mapping.legacyGoalId)) return
@@ -4925,29 +5015,14 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
       }).length
       const otherMappings = Math.max(0, validMappedSourceGoalIds.size - exactMappings - partialMappings)
       const unmappedSourceGoals = Math.max(0, sourceGoalIds.size - validMappedSourceGoalIds.size)
-      const reviewedSourceGoalIds = new Set(
-        decisionEntries
-          .map((decision) => decision.sourceGoalId)
-          .filter((sourceGoalId) => sourceGoalIds.has(sourceGoalId)),
-      )
-      const reviewedMappedSourceGoalIds = new Set(
-        Array.from(reviewedSourceGoalIds).filter((sourceGoalId) => validMappedSourceGoalIds.has(sourceGoalId)),
-      )
-      const explicitNeedsCanonicalGoal = decisionEntries.filter((decision) =>
-        sourceGoalIds.has(decision.sourceGoalId)
-        && decision.decision === 'needsCanonicalGoal'
-        && !validMappedSourceGoalIds.has(decision.sourceGoalId)).length
-      const unreviewedSourceGoals = Math.max(0, sourceGoalIds.size - reviewedSourceGoalIds.size)
+      const reviewCoverage = summarizeSourceMappingReviewCoverage(sourceGoalIds, validMappedSourceGoalIds, decisionEntries)
       const normalizedSteps = normalizeSourceExtractionPipelineSteps(steps, {
         totalSourceGoals: sourceGoalIds.size,
         mappedSourceGoals: validMappedSourceGoalIds.size,
-        reviewedMappedSourceGoals: reviewedMappedSourceGoalIds.size,
+        ...reviewCoverage,
         unmappedSourceGoals,
-        explicitNeedsCanonicalGoal,
-        unreviewedSourceGoals,
         hasM3ReviewFile: mappingFilesForExtraction.length > 0,
-        extraDecisionGoals: extraDecisionGoalIds.length,
-        invalidMappedTargetGoals: invalidMappedTargetGoalIds.length,
+        ...referenceIssues,
       })
       const completedSteps = normalizedSteps.filter((step) => step.status === 'complete').length
       const currentStep = completedSteps === normalizedSteps.length
@@ -4972,7 +5047,7 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
         passages: Array.isArray(extraction.passages) ? extraction.passages.length : 0,
         mappedSourceGoals: validMappedSourceGoalIds.size,
         unmappedSourceGoals,
-        extraMappedGoals: extraMappedGoalIds.length,
+        extraMappedGoals: referenceIssues.extraMappedGoals,
         exactMappings,
         partialMappings,
         otherMappings,
@@ -5129,7 +5204,7 @@ function createSourceSnapshotMappingPipeline(
 
   let sourceLandscape: SkillLandscape
   try {
-    sourceLandscape = loadJson<SkillLandscape>(sourcePath)
+    sourceLandscape = loadCurricularReviewLandscape(loadJson<SkillLandscape>(sourcePath), sourcePath, repoRoot)
   } catch {
     return null
   }
@@ -6138,7 +6213,7 @@ async function main() {
   const canonicalFiles = collectFiles(canonicalRoot, (fileName) => /\.json$/i.test(fileName) && !/_deck/i.test(fileName))
   const loadedLandscapes = canonicalFiles.map((file) => ({
     file,
-    landscape: loadJson<SkillLandscape>(file),
+    landscape: loadCurricularReviewLandscape(loadJson<SkillLandscape>(file), file, repoRoot),
   }))
   const globalGoalIds = new Set(loadedLandscapes.flatMap(({ landscape }) => landscape.goals.map((goal) => goal.id)))
 

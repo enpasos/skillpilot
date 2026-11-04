@@ -1,0 +1,137 @@
+{
+  "status": "PASS_EXACT_SN_SEKI_NORMAL_PRODUCER_FOUR_ORDINARY_MIRRORS_ONLY",
+  "reviewer": "/root/astra_math_material_scope_resume",
+  "proposal": {
+    "path": "tmp/approach-review-20261101/complex-five-country-v22-candidate-20261102/sn-seki-four-ordinary-producer-mirror-proposal.json",
+    "sha256": "cc9c22fe5bd42c90aec5da64dc5490991b6ff76e8d7a3c8e558ee5e3e5a43cd5"
+  },
+  "preview": {
+    "path": "tmp/approach-review-20261101/complex-five-country-v22-candidate-20261102/producer-output-delta.v19-runtimefix.json",
+    "sha256": "7db76ac226d2a43976f95d8b3cd1e3a10090d7b887cb398c1470b68da619cc23"
+  },
+  "baselineAudit": {
+    "path": "tmp/approach-review-20261101/post-complex-four-country-native-154-audit.json",
+    "sha256": "77122b8c948a62102c11d755d0930be43e2672b1b4d9e4ecebc58a5a255c5381"
+  },
+  "sourceReviewManifest": {
+    "path": "tmp/approach-review-20261101/astra-complex-numbers-scope-review/v18-rp-sl-sn-st-th-source-review/manifest.json",
+    "sha256": "4a3237fc09a17cd65da564996fdf7487d1f7673f46775d41439ec11d8cb1b864"
+  },
+  "approvedOperation": {
+    "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-seki.view.json",
+    "beforeSha256": "fa0dfbfc79bea803d19f78033821c76e5ba4e6068640aa45920b75932486b210",
+    "candidateSha256": "b8378c98890076fc8beb27045645277a5830288f377a3ccc485153c9b11760ad",
+    "insertions": [
+      {
+        "index": 49,
+        "node": {
+          "kind": "goalEntry",
+          "goalId": "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+          "projectionRole": "prerequisiteOnly"
+        }
+      },
+      {
+        "index": 50,
+        "node": {
+          "kind": "goalEntry",
+          "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+          "projectionRole": "prerequisiteOnly"
+        }
+      },
+      {
+        "index": 51,
+        "node": {
+          "kind": "goalEntry",
+          "goalId": "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+          "projectionRole": "prerequisiteOnly"
+        }
+      },
+      {
+        "index": 52,
+        "node": {
+          "kind": "goalEntry",
+          "goalId": "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+          "projectionRole": "prerequisiteOnly"
+        }
+      }
+    ],
+    "operations": [
+      {
+        "op": "add",
+        "path": "/rootNodes/49",
+        "value": {
+          "kind": "goalEntry",
+          "goalId": "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+          "projectionRole": "prerequisiteOnly"
+        }
+      },
+      {
+        "op": "add",
+        "path": "/rootNodes/50",
+        "value": {
+          "kind": "goalEntry",
+          "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+          "projectionRole": "prerequisiteOnly"
+        }
+      },
+      {
+        "op": "add",
+        "path": "/rootNodes/51",
+        "value": {
+          "kind": "goalEntry",
+          "goalId": "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+          "projectionRole": "prerequisiteOnly"
+        }
+      },
+      {
+        "op": "add",
+        "path": "/rootNodes/52",
+        "value": {
+          "kind": "goalEntry",
+          "goalId": "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+          "projectionRole": "prerequisiteOnly"
+        }
+      }
+    ],
+    "sourceView": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
+    "sourceReferencesExactlyEqual": true,
+    "allPriorNodesOrderAndMetadataUnchanged": true,
+    "historicalActualV19WholeRow": {
+      "scope": "DE-SN/SekI/G8/GK+LK",
+      "wholeRowObjectSha256": "aa078bcc28e9a8859c24f32619cb4f2215fbe1192605b06da09c9c4394c83b3d",
+      "targetCount": 243,
+      "allFourGoalIdsAlreadyUnselected": true,
+      "protectedSupportContext": [],
+      "obligationCount": 52
+    }
+  },
+  "verified": {
+    "wholePriorViewPreserved": true,
+    "exactInsertionBeforeExistingLastMask": [
+      49,
+      50,
+      51,
+      52
+    ],
+    "original50NodesOtherwiseExact": true,
+    "fourNodesEqualReviewedSnGkReferences": true,
+    "all101PreviewHashesVerified": true,
+    "normalPreviewExitCodes": [
+      0,
+      0
+    ],
+    "changedPreviewFiles": 24,
+    "unchangedPreviewFiles": 77,
+    "historicalSnSekITargetCount": 243,
+    "historicalSnSekIObligationCount": 52,
+    "allFourPreviouslyOutsideTargets": true
+  },
+  "permission": "Adopt exactly the normal producer SN SekI output bytes and necessary existing hashpins in the isolated V22 candidate.",
+  "boundaries": [
+    "No new source entitlement or target removal. No generator exception.",
+    "Final binding is actual V21, not V20; the historical preview status text mentioning actualV20 does not authorize an earlier final rebase.",
+    "All154 native scope/context/protected/eligibility/union and whole SN SekI neutrality remain mandatory after actualV21.",
+    "Original296 removals/36 reference offers and positive38/HOLD26 retention remain the source contract; measured final effects must be independently checked.",
+    "No Root write, JVM, mastery/recall change or final StagePASS."
+  ]
+}

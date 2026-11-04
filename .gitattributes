@@ -270,3 +270,70 @@ contracts/drafts/openai/skillpilot-coach/*-SNAPSHOT/ui/** -text -whitespace
 # Previously advertised MCP resources keep their exact content-addressed bytes.
 backend/src/main/resources/openai/retained/skillpilot/coach/v1/sha256-*/*.html -text -whitespace
 backend/src/main/resources/claude-connector-v1/mcp-apps/retained/sha256-*/*.html -text -whitespace
+
+# Preserve the exact bytes of historical completion-integrity review inputs.
+docs/qa-ci/evidence/curriculum-completion-integrity/** -text -whitespace
+
+# Preserve the exact reviewed stochastic task/solution and plotter output bytes.
+# These finite files are bound by content hashes; do not normalize their spacing.
+app/public/assets/assessment-materials/mathematik/5dbf149c-d335-552c-a918-768a12e09201/fill-volume-observations.de.53aac12d641cdd1b72918e00f243203b89e8ac1491e23564d20fe6baa68e8c64.svg -text -whitespace
+app/public/assets/assessment-materials/mathematik/5dbf149c-d335-552c-a918-768a12e09201/fill-volume-observations.en.7b6ca626d7314a2dd16d86fffdfc322d0c94a813288947eb5f6e3bddffbb29b4.svg -text -whitespace
+app/public/assets/assessment-materials/mathematik/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/normal-density-comparison.de.bb54e2ddbbdac64fdaf4c1083a96cb3e3fcd6482430655efefde8e330fe156ac.svg -text -whitespace
+app/public/assets/assessment-materials/mathematik/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/normal-density-comparison.en.8040f4253d02123129c006fce40e4b3d590f46c8bb06129ca364740bc158ab9d.svg -text -whitespace
+app/public/assets/assessment-materials/mathematik/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/power-function-choices.de.e8be8de32be4afcab08a03a8c338f1f3d7c69a40409ee724c94d7953543b1559.svg -text -whitespace
+app/public/assets/assessment-materials/mathematik/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/power-function-choices.en.074044250894c559e72f3a9a9c3dd6078d09a7ef0a29771e5bcc8f129de7bb06.svg -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/03357e70-2280-532f-b629-5dfa31dc44eb/solution.de.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/03357e70-2280-532f-b629-5dfa31dc44eb/solution.en.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/03357e70-2280-532f-b629-5dfa31dc44eb/task.de.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/03357e70-2280-532f-b629-5dfa31dc44eb/task.en.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/5dbf149c-d335-552c-a918-768a12e09201/solution.de.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/5dbf149c-d335-552c-a918-768a12e09201/solution.en.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/5dbf149c-d335-552c-a918-768a12e09201/task.de.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/5dbf149c-d335-552c-a918-768a12e09201/task.en.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/solution.de.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/solution.en.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/task.de.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/task.en.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/solution.de.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/solution.en.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/task.de.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/stochastic-four-same-identity-2026-11-03-v1/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/task.en.md -text -whitespace
+
+# Preserve the exact reviewed geometry rubric and historical correction bytes.
+curricula/DE/Gymnasium/assessments/mathematik/geometry-two-same-identity-2026-11-03-v1/2041f4ec-620d-4a20-9922-6ebf16f8f8fa/rubric.de.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/geometry-two-same-identity-2026-11-03-v1/2041f4ec-620d-4a20-9922-6ebf16f8f8fa/rubric.en.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/geometry-two-same-identity-2026-11-03-v1/reviews/original-author-and-content/revisions/r2-similarity-cap-only/exact-delta.patch -text -whitespace
+# This bound review patch retains the required space prefixes on empty context lines.
+curricula/DE/Gymnasium/assessments/mathematik/space-geometry-four-same-identity-2026-11-04-v1/reviews/author-plane-cap-only-v2/exact-delta.patch -text -whitespace
+
+# Preserve the captured official formula SVG's hash-bound CRLF bytes.
+curricula/DE/Gymnasium/assessments/mathematik/cone-asymptotic-complex-four-2026-11-04-v1/reviews/frozen-author/source-pages/GYM_M_12-2.svg -text -whitespace
+
+# Bound review diffs retain empty context lines and exact captured patch bytes.
+curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route-integration/code-diffs/production-role-accessor.diff -text -whitespace
+curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route-integration/reviews/independent-final-stage/amendment-independent-code.diff -text -whitespace
+
+# Preserve exact captured G4 check output and the reviewed guard diff.
+curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/geometry-four-projection-reuse/final-acceptance/normal-eleven/goalbook-model.attempt1.stdout.txt -text -whitespace
+curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/geometry-four-projection-reuse/final-acceptance/normal-eleven/goalbook-model.attempt2.stdout.txt -text -whitespace
+curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/geometry-four-projection-reuse/producer-evidence/guard-code.diff -text -whitespace
+curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/geometry-four-projection-reuse/producer-evidence/logs/normal-combined39-check.stderr.txt -text -whitespace
+
+# Retain exact G5 primary excerpts, historical snapshot text, review patch and tool output.
+curricula/DE/Gymnasium/assessments/mathematik/geometry-six-dgl1-existing-routes-2026-11-04-v1/whole-source/af790-four-by/input/curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v2.md -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/geometry-six-dgl1-existing-routes-2026-11-04-v1/whole-source/dgl1/source-pages/HE-KC2024-page36.txt -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/geometry-six-dgl1-existing-routes-2026-11-04-v1/whole-source/dgl1/source-pages/HE-KC2024-page38.txt -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/geometry-six-dgl1-existing-routes-2026-11-04-v1/whole-source/geometry-six/source-pages/BW-BP2016-pdfpage42.txt -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/geometry-six-dgl1-existing-routes-2026-11-04-v1/whole-source/geometry-six/source-pages/BW-BP2016-pdfpage43.txt -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/geometry-six-dgl1-existing-routes-2026-11-04-v1/whole-source/geometry-six/source-pages/BW-BP2016-pdfpage44.txt -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/geometry-six-dgl1-existing-routes-2026-11-04-v1/whole-source/geometry-six/source-pages/BW-BP2016-pdfpage48.txt -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/geometry-six-dgl1-existing-routes-2026-11-04-v1/whole-source/geometry-six/source-pages/BW-BP2016-pdfpage49.txt -text -whitespace
+curricula/DE/Gymnasium/assessments/mathematik/geometry-six-dgl1-existing-routes-2026-11-04-v1/whole-source/geometry-six/source-pages/BY-M13-eA-Teil2-pdfpage2.txt -text -whitespace
+curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/geometry-six-dgl1-existing-routes/final-acceptance/normal-eleven/stage-country.patch -text -whitespace
+curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/geometry-six-dgl1-existing-routes/final-source/logs/normal-combined39-check.stderr.txt -text -whitespace
+curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/geometry-six-dgl1-existing-routes/final-source/logs/normal-combined39-generate.stderr.txt -text -whitespace
+
+# Preserve exact independently reviewed Q3 patch context bytes.
+curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/q3-whole-forms/final-acceptance/final-review/stage-country.final.patch -text -whitespace
+curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/q3-whole-forms/final-acceptance/normal-eleven/goalbook-model.attempt1.stdout.txt -text -whitespace
+curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/q3-whole-forms/final-acceptance/normal-eleven/goalbook-model.attempt2.stdout.txt -text -whitespace

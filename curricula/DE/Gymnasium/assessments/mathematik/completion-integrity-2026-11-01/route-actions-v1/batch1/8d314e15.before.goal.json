@@ -1,0 +1,129 @@
+{
+  "id": "8d314e15-69e9-5af1-a10a-be820b2f821d",
+  "shortKey": "canonical_math_sek2_q2_plane_plane_three_relations_assessment",
+  "title": "Zwei Ebenen: Schnittgerade, echte Parallelität oder Identität",
+  "titleEn": "Two planes: intersection line, distinct parallelism or coincidence",
+  "description": "Die lernende Person kann in einer eigenständigen Q2-Prüfungsaufgabe für drei Ebenenpaare jeweils das lineare Gleichungssystem lösen und aus seiner vollständigen Lösungsmenge die geometrische Lagebeziehung begründen.",
+  "descriptionEn": "The learner can independently solve the linear system for each of three pairs of planes in a Q2 assessment and justify their geometric relationship from the complete solution set.",
+  "weight": 1,
+  "tags": [
+    "LK",
+    "Practice",
+    "Assessment"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K2.3",
+      "K3.3"
+    ],
+    "guidingIdeas": [
+      "L3"
+    ],
+    "phase": "Q2",
+    "area": "LinearAlgebra"
+  },
+  "requires": [
+    "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
+    "436532fe-cee6-5a13-a4be-05522435937b"
+  ],
+  "contains": [],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "examples": [],
+  "extendedData": {
+    "applicabilityMappingInheritance": "boundary",
+    "applicabilityFromRequires": true
+  },
+  "examData": {
+    "reviewStatus": "released",
+    "reviewNote": "Machine-only independent content review 2026-09-28: all three LGS solution sets recalculated; 18/20 and incomplete-case caps of 5/8, 3/6, 3/6 require line, parallel and identical classifications. No human or real-host trial; server enforces only total points.",
+    "coveredGoalIds": [
+      "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd"
+    ],
+    "coveredStrands": [
+      "L3"
+    ],
+    "demandLevels": [
+      "AB2",
+      "AB3"
+    ],
+    "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/two-plane-lk-20260928/candidate.md",
+    "taskContent": "Untersuche die drei Ebenenpaare im Raum. Stelle jeweils das lineare Gleichungssystem auf, bestimme seine gesamte Lösungsmenge und begründe daraus, ob sich die Ebenen in einer Geraden schneiden, echt parallel oder identisch sind. Eine bloße Skizze oder Vermutung aus den Normalenvektoren genügt nicht.\n\nA (8 BE): E₁: x + y + z = 3 und E₂: x − y + z = 1. Bestimme alle gemeinsamen Punkte in Parameterform und prüfe durch Einsetzen, dass deine Gerade auf beiden Ebenen liegt.\n\nB (6 BE): E₃: x + 2y − z = 1 und E₄: 2x + 4y − 2z = 3. Untersuche das LGS und gib die genaue Lagebeziehung an.\n\nC (6 BE): Vergleiche E₃ aus B mit E₅: 2x + 4y − 2z = 2. Untersuche das LGS, beschreibe die gesamte gemeinsame Punktmenge mit zwei freien Parametern und erkläre, warum sie nicht nur eine Schnittgerade ist.",
+    "taskContentEn": "Investigate the three pairs of planes. Set up each linear system, determine its entire solution set, and use that set to justify whether the planes meet in a line, are distinct and parallel, or coincide. A sketch or a guess from the normal vectors alone is insufficient.\n\nA (8 points): E₁: x + y + z = 3 and E₂: x − y + z = 1. Give all common points in parametric form and check by substitution that your line lies on both planes.\n\nB (6 points): E₃: x + 2y − z = 1 and E₄: 2x + 4y − 2z = 3. Investigate the system and state the precise relationship.\n\nC (6 points): Compare E₃ from B with E₅: 2x + 4y − 2z = 2. Investigate the system, give the entire common point set with two free parameters, and explain why it is not merely an intersection line.",
+    "solutionContent": "A: Subtraktion der zweiten von der ersten Gleichung ergibt 2y = 2, also y = 1 und x + z = 2. Mit z = t ∈ ℝ ist die gesamte Lösungsmenge X = (2|1|0) + t(−1|0|1). Die Probe liefert (2 − t) + 1 + t = 3 und (2 − t) − 1 + t = 1 für jedes t: Die Ebenen schneiden sich in dieser Geraden.\n\nB: Die linke Seite von E₄ ist das Doppelte der linken Seite von E₃, die rechte Seite müsste dann aber 2 statt 3 sein. Das LGS liefert den Widerspruch 0 = 1 und hat keine Lösung. Die proportionalen Normalen bei unterschiedlichen Ebenengleichungen bedeuten echte Parallelität.\n\nC: E₅ ist einschließlich der rechten Seite genau 2E₃; die zweite LGS-Zeile ist redundant (0 = 0). Setze y = s und z = t, dann x = 1 − 2s + t. Die gesamte Lösungsmenge ist X = (1|0|0) + s(−2|1|0) + t(1|0|1), s,t ∈ ℝ. Die unabhängigen Richtungen spannen eine Ebene auf. Beide Ebenen sind identisch, nicht nur entlang einer Geraden gleich.",
+    "solutionContentEn": "A: Subtracting the second equation from the first gives 2y = 2, so y = 1 and x + z = 2. Letting z = t ∈ ℝ gives the entire solution set X = (2,1,0) + t(−1,0,1). Substitution gives (2 − t) + 1 + t = 3 and (2 − t) − 1 + t = 1 for every t: the planes intersect in this line.\n\nB: The left side of E₄ is twice that of E₃, but the right side would need to be 2 rather than 3. The system yields 0 = 1 and has no solution. Proportional normals with different plane equations mean the planes are distinct and parallel.\n\nC: E₅ is exactly 2E₃ including its right side, so the second system row is redundant (0 = 0). Let y = s and z = t; then x = 1 − 2s + t. The entire solution set is X = (1,0,0) + s(−2,1,0) + t(1,0,1), s,t ∈ ℝ. The independent directions span a plane. The two planes coincide, rather than meeting only in a line.",
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 18,
+      "steps": [
+        {
+          "id": "plane_plane_a_system",
+          "points": 2,
+          "description": "A: LGS richtig kombiniert und y = 1, x + z = 2 hergeleitet"
+        },
+        {
+          "id": "plane_plane_a_line",
+          "points": 3,
+          "description": "A: Vollständige Parametergerade mit freiem t ∈ ℝ angegeben; ohne Parametergerade samt begründeter Schnittgeraden-Einordnung insgesamt höchstens 5/8 für A"
+        },
+        {
+          "id": "plane_plane_a_meaning",
+          "points": 3,
+          "description": "A: Beide Gleichungen geprüft und geometrisch als Schnittgerade gedeutet"
+        },
+        {
+          "id": "plane_plane_b_normals",
+          "points": 1,
+          "description": "B: Proportionale Koeffizienten oder Normalen erkannt"
+        },
+        {
+          "id": "plane_plane_b_contradiction",
+          "points": 3,
+          "description": "B: Widerspruch 2 ≠ 3 bzw. 0 = 1 im LGS belegt; ohne Widerspruch samt begründeter echter Parallelität insgesamt höchstens 3/6 für B"
+        },
+        {
+          "id": "plane_plane_b_meaning",
+          "points": 2,
+          "description": "B: Echte Parallelität und leere Schnittmenge unterschieden"
+        },
+        {
+          "id": "plane_plane_c_redundancy",
+          "points": 2,
+          "description": "C: Ganze Gleichung E₅ = 2E₃ und Redundanz gezeigt"
+        },
+        {
+          "id": "plane_plane_c_plane",
+          "points": 2,
+          "description": "C: Vollständige Zweiparameterdarstellung der gemeinsamen Ebene angegeben; ohne diese samt begründeter Ebenenidentität insgesamt höchstens 3/6 für C"
+        },
+        {
+          "id": "plane_plane_c_meaning",
+          "points": 2,
+          "description": "C: Identität und zweidimensionale Lösungsmenge gegenüber Schnittgerade erklärt"
+        }
+      ]
+    }
+  },
+  "phase": "Q2",
+  "type": "atomic"
+}

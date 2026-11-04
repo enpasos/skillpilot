@@ -1,0 +1,91 @@
+{
+  "status": "EXISTING_BOUNDED_DATA_FINDINGS_NO_SCOPE_CHANGE",
+  "rootCanonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "b68fbcb02247bad1b01e46be96ff0f8c73a833f8c13af7cd17b6e7b5a52ef363"
+  },
+  "source": {
+    "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk.view.json",
+    "sha256": "ec179865b2c1f852364209107f260e0d00bd6e2d63ae84ce510646589f4c0abb"
+  },
+  "duration": {
+    "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+    "sha256": "282ba31d50d17c283e9e01e04142319ac2b061f4076944fa2b2d086a74cdde4d"
+  },
+  "examples": [
+    {
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "matchedViewId": "de-he-gym-math-gk-g9",
+      "subjectId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "focusId": "composition:de-he-gym-math-gk-g9:structure:j8-g9",
+      "dependentGoalId": "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee",
+      "dependentGoalTitle": "Variablen in Termen, Gleichungen und Formeln verwenden und deuten",
+      "directRequiresGoalId": "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+      "directRequiresTitle": "Dichtheit der rationalen Zahlen erläutern",
+      "edgeType": "requires",
+      "dependentGoalObjectSha256": "5adf858687896642d815378cb28eeb39928e83e3b564ff5cba2a9d08a49ffc28",
+      "commonSourceReferences": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "de39c9fe-5940-4320-aca8-2be85d6ada8f",
+          "projectionRole": "target",
+          "path": [
+            "math-root",
+            "sek1",
+            "reviewed-stage-split-8f7bb79b-f014-4bb6-8dce-7e3f1c92e893",
+            "de39c9fe-5940-4320-aca8-2be85d6ada8f"
+          ]
+        }
+      ],
+      "durationReferences": [],
+      "finding": "Current duration tree declares neither target nor prerequisiteOnly for this direct prerequisite. Existing Level-2 reference validation continues to block the goal, including when prior mastery is stored.",
+      "authoringFixProposed": false
+    },
+    {
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "durationModel": "G9",
+        "courseProfile": "GK"
+      },
+      "matchedViewId": "de-he-gym-math-gk-g9",
+      "subjectId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "focusId": "composition:de-he-gym-math-gk-g9:structure:j10-g9",
+      "dependentGoalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+      "dependentGoalTitle": "Sinus- und Kosinuswerte am Einheitskreis im Bogenmass deuten und Winkel bestimmen",
+      "directRequiresGoalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
+      "directRequiresTitle": "Bogenmass am Einheitskreis veranschaulichen und sicher zwischen Grad- und Bogenmass wechseln",
+      "edgeType": "requires",
+      "dependentGoalObjectSha256": "14547c945159bd68148aa544318f7f06c8603acb2dbbbb17648e17d741137662",
+      "commonSourceReferences": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
+          "projectionRole": "target",
+          "path": [
+            "math-root",
+            "sek1",
+            "j10",
+            "j10-trigonometric-functions",
+            "8d30d241-0247-48ac-83d3-4e0de61584d3"
+          ]
+        }
+      ],
+      "durationReferences": [],
+      "finding": "Current duration tree declares neither target nor prerequisiteOnly for this direct prerequisite. Existing Level-2 reference validation continues to block the goal, including when prior mastery is stored.",
+      "authoringFixProposed": false
+    }
+  ],
+  "actualRuntimeEvidence": "refinement-diagnostics/results/summary.txt",
+  "dataUnchanged": true,
+  "nativeNotRun": true,
+  "sourceOrPlacementApprovalNotClaimed": true,
+  "navigationFixtureContract": "Stored exact earlier completed-year results; graph traversal remains subject to its separate unchanged strict guards and data validation."
+}

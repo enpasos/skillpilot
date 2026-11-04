@@ -1,0 +1,86 @@
+{
+  "status": "ACTUAL_INTEGRATED_ROOT_TARGETED_PASS",
+  "testsFound": 337,
+  "testsSucceeded": 337,
+  "testsFailed": 0,
+  "testsSkipped": 0,
+  "testsAborted": 0,
+  "wholeSuites": 12,
+  "phases": [
+    {
+      "name": "critical",
+      "commandResult": {
+        "name": "critical",
+        "exitCode": 0,
+        "seconds": 125.04,
+        "log": "tmp/approach-review-20261101/common-root-normal-frontier-20261103-v1/critical.log.gz",
+        "logSha256": "6959c2e615677a5f5288d5d101f177356ca73d51725eb3468fd83149149945e5"
+      },
+      "summary": {
+        "testsFound": 158,
+        "testsStarted": 158,
+        "testsSucceeded": 158,
+        "testsFailed": 0,
+        "testsSkipped": 0,
+        "testsAborted": 0,
+        "containersFailed": 0
+      },
+      "wholeSuites": {
+        "com.skillpilot.backend.service.AutomaticCompletionFrontierTest": 85,
+        "com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1MasteryBackendIntegrationTest": 3,
+        "com.skillpilot.backend.completion.AssessmentTaskStartTest": 24,
+        "com.skillpilot.backend.service.srs.SrsPracticeStateGuardTest": 6,
+        "com.skillpilot.backend.service.SrsMasteryBatchQueryTest": 6,
+        "com.skillpilot.backend.service.AssessmentCompletionSrsIntegrationTest": 7,
+        "com.skillpilot.backend.service.LearningPlanAssessmentCreditTest": 16,
+        "com.skillpilot.backend.service.AutomaticCompletionIntegrationTest": 11
+      },
+      "junitSha256": "6f7b6f7b1c5e268db7396e104d4975e2d6f42b340f75debe05e75deeeffc4927"
+    },
+    {
+      "name": "focus",
+      "commandResult": {
+        "name": "focus",
+        "exitCode": 0,
+        "seconds": 579.88,
+        "log": "tmp/approach-review-20261101/common-root-normal-frontier-20261103-v1/focus.log.gz",
+        "logSha256": "a7786e2b1e3a6b17626facf6fcf8e2e3523937f3a8a7929627a0491c466c55bc"
+      },
+      "summary": {
+        "testsFound": 179,
+        "testsStarted": 179,
+        "testsSucceeded": 179,
+        "testsFailed": 0,
+        "testsSkipped": 0,
+        "testsAborted": 0,
+        "containersFailed": 0
+      },
+      "wholeSuites": {
+        "com.skillpilot.backend.service.StoredCompositionFocusTest": 34,
+        "com.skillpilot.backend.service.CompositionBoundCanonicalFocusRegressionTest": 72,
+        "com.skillpilot.backend.service.ProjectionRoleLearnerServiceTest": 51,
+        "com.skillpilot.backend.ai.CoachToolFacadeTest": 22
+      },
+      "junitSha256": "d180206973804ad712808311d85a15280c497eb79ce74c65e8d368d1e444b98c"
+    }
+  ],
+  "rootCompile": {
+    "name": "root-compile",
+    "exitCode": 0,
+    "seconds": 33.82,
+    "log": "tmp/approach-review-20261101/common-root-normal-frontier-20261103-v1/root-compile.log.gz",
+    "logSha256": "8ac1806c9b4be3fc5e37b91e8afd20db723db71edb19ba4a3172f68c1f5d6cb8"
+  },
+  "inputSourceCount": 9582,
+  "sourceMapSha256": "9641354796d25659280c00a2fe52ad13b74d65673fef0f55d8eb0fc2cf444a45",
+  "classMapSha256": "a01956bc39b3429a582617c2161d9e1f1be66830859ba361ff2c256bc87c3256",
+  "classCounts": {
+    "main": 948,
+    "test": 431
+  },
+  "runtimeSourceSha256": "b7d9490220f16225388c638bfe2d15cad170c1558758292d32a90a54f8854bc5",
+  "storedFocusTestSha256": "9fec66097b3042690bd37b3962aee902138872c030e2174905a03df3dd8c4dc5",
+  "frontierTestSha256": "13d74de6d90543ff8b2a2d6f145e9677f1739a48e3a917b8a01a6d80f354d489",
+  "allBoundSourcesAndFinalClassesUnchangedDuringRuns": true,
+  "wholeBackendMathM7RemoteCIOrProductionAccepted": false
+}

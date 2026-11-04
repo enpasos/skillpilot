@@ -394,13 +394,15 @@ class PackageCompositionViewStateTest {
                         key, ignored -> new LinkedHashSet<>()).add(value));
                 Map<String, String> commonScope = new LinkedHashMap<>(scope);
                 String profile = commonScope.remove("courseProfile");
-                if ("GK".equals(profile) || "LK".equals(profile)) {
+                if ("GK".equals(profile) || "LK".equals(profile) || "GK+LK".equals(profile)) {
                     assertThat(profilePairs.computeIfAbsent(Map.copyOf(commonScope), ignored -> new LinkedHashMap<>())
                             .put(profile, viewId)).as("Unique profile in %s", commonScope).isNull();
                 }
             }
         }
         for (var pair : profilePairs.entrySet()) {
+            // Match the release compiler: an authored composite already owns
+            // this exact scope; synthesize a union only for the remaining pairs.
             if (!pair.getValue().keySet().equals(Set.of("GK", "LK"))) {
                 continue;
             }
@@ -436,8 +438,11 @@ class PackageCompositionViewStateTest {
 
         PackageCompositionViewState state = PackageCompositionViewState.load(candidate, mapper);
 
-        assertThat(state.viewsById()).hasSize(88);
-        assertThat(state.offeringsById()).hasSize(128);
+        // Include all 39 reviewed explicit course unions alongside the prior
+        // G8/G9-specific compositions, without duplicate synthetic offerings.
+        assertThat(state.viewsById().keySet()).hasSize(147).containsExactlyInAnyOrderElementsOf(views.keySet());
+        assertThat(state.offeringsById().keySet()).hasSize(151)
+                .containsExactlyInAnyOrderElementsOf(offerings.keySet());
         for (var offering : offerings.values()) {
             var resolved = state.resolveOffering(offering.offeringId());
             assertThat(resolved).as(offering.offeringId())

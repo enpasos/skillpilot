@@ -2,6 +2,7 @@ package com.skillpilot.backend.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
@@ -37,6 +38,8 @@ import java.util.Set;
 import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.context.ApplicationEventPublisher;
 
 class LearningPlanAssessmentCreditTest {
@@ -110,12 +113,15 @@ class LearningPlanAssessmentCreditTest {
         assertThat(inclusive.learningScope().achievedGoalCount()).isEqualTo(3);
         assertThat(inclusive.achievedGoalCount()).isEqualTo(1); // Global Level-2 mastery stays separate.
         assertThat(inclusive.planCreditText()).contains("3 Ziele", "2 implizit erledigt");
+        assertThat(inclusive.periodGauge().completed()).isEqualTo(1);
+        assertThat(inclusive.periodGauge().target()).isEqualTo(3);
         learner.setLearningPlanCountOnlyExplicitGoals(true);
         var explicit = subject("mathematik");
         assertThat(explicit.balance().rohsaldo()).isEqualTo(-2);
         assertThat(explicit.learningScope().achievedGoalCount()).isEqualTo(1);
         assertThat(explicit.planCreditText()).isNull();
         assertThat(explicit.periodGauge().target()).isEqualTo(inclusive.periodGauge().target());
+        assertThat(explicit.periodGauge()).isEqualTo(inclusive.periodGauge());
         assertThat(storedPlans.getFirst().getBlocksJson()).isEqualTo(originalBlocks);
         assertThat(mastery).containsExactly(Map.entry("q", 1.0));
         assertThat(completions).containsOnlyKeys("q");
@@ -132,6 +138,46 @@ class LearningPlanAssessmentCreditTest {
         assertThat(subject("mathematik").balance()).isEqualTo(before);
         learner.setLearningPlanPeriodBasis(PeriodBasis.WEEK);
         assertThat(subject("mathematik").balance().rohsaldo()).isZero();
+    }
+
+    @ParameterizedTest
+    @CsvSource({"DAY,false", "DAY,true", "WEEK,false", "WEEK,true"})
+    void implicitAndEarlierExplicitCompletionNeverFillThePeriodOrBecomeAutomaticRequiredWork(
+            PeriodBasis basis, boolean onlyExplicit) {
+        learner.setLearningPlanPeriodBasis(basis);
+        learner.setLearningPlanCountOnlyExplicitGoals(onlyExplicit);
+        learner.setFollowLearningPlans(true);
+        when(learners.getUncompactedRichFrontierForFocus(eq(ID), any()))
+                .thenReturn(List.of(frontier("a"), frontier("b")));
+
+        var oneRealCompletion = subject("mathematik");
+        assertThat(oneRealCompletion.periodGauge().completed()).isEqualTo(1);
+        assertThat(oneRealCompletion.periodGauge().target()).isEqualTo(3);
+        assertThat(oneRealCompletion.balance().rohsaldo()).isEqualTo(onlyExplicit ? -2 : 0);
+
+        completions.clear(); // The same authoritative mastery was obtained before this period.
+        var status = service.getTodayStatus(ID, "de");
+        var subject = status.subjects().getFirst();
+        assertThat(subject.periodGauge().completed()).isZero();
+        assertThat(subject.periodGauge().target()).isEqualTo(3);
+        assertThat(subject.periodGauge().needlePosition()).isZero();
+        assertThat(subject.balance().rohsaldo()).isEqualTo(onlyExplicit ? -2 : 0);
+        assertThat(status.periodQuotaFulfilled()).isFalse();
+        assertThat(status.automaticResumeAvailable()).isFalse();
+        assertThat(service.reconcile(ID, new LearnerLearningPlanApi.ReconcileRequest(DATE)).changed()).isFalse();
+        verify(learners, never()).applyLearningPlanTransition(any(), anyBoolean(), anyBoolean(), any(), any(), anyBoolean(), any());
+        assertThat(mastery).containsExactly(Map.entry("q", 1.0));
+        assertThat(completions).isEmpty();
+
+        mastery.put("a", 1.0);
+        mastery.put("b", 1.0); // All G was explicitly completed earlier; no new event is invented.
+        var allExplicit = service.getTodayStatus(ID, "de");
+        assertThat(allExplicit.subjects().getFirst().periodGauge().completed()).isZero();
+        assertThat(allExplicit.subjects().getFirst().balance().rohsaldo()).isZero();
+        assertThat(allExplicit.subjects().getFirst().learningScope().achievedGoalCount()).isEqualTo(3);
+        assertThat(allExplicit.automaticResumeAvailable()).isFalse();
+        assertThat(service.reconcile(ID, new LearnerLearningPlanApi.ReconcileRequest(DATE)).changed()).isFalse();
+        assertThat(completions).isEmpty();
     }
 
     @Test void authoredConsumerExcludedFromCapturedGStillBlocksAfterItsMasteryIsRevoked() throws Exception {
@@ -193,6 +239,9 @@ class LearningPlanAssessmentCreditTest {
     }
 
     @Test void automaticPlansAcrossSubjectsShareOneFullCurriculumResultPerOperation() throws Exception {
+        // Every selected target needs a protected route at zero mastery. This
+        // synthetic exam intentionally anchors the whole cross-subject context.
+        context.canonicalGoals().get("q").setRequires(List.of("a", "b", "consumer", "extra", "physics"));
         context = LearningPlanCompletionContext.automatic("base", "generation",
                 context.canonicalGoals(), context.level2TargetGoalIds());
         addPlan("math-other", List.of("a", "consumer"), List.of("a", "consumer"));

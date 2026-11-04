@@ -317,6 +317,15 @@ Interpretation rules:
   never relaxes goal quality, source fidelity, independent reviews, or strict
   Mathematics M7 gates; it does not assert that Bavaria offers Mathematics as
   a selectable Leistungsfach.
+- For Hessian G8 Mathematics, the Product Owner confirmed retaining
+  biquadratic equations solved by substitution as an additional competence
+  in the SkillPilot target. Preserve its official facultative status in the
+  learner-facing labels and use a suitable reviewed assessment. The Product
+  Owner also authorized agents to decide comparable bounded authoring cases
+  autonomously. Record the source basis and rationale, preserve the official
+  compulsory/optional distinction, and apply the existing quality and review
+  gates. Inclusion in SkillPilot does not establish an individual learner's
+  elective choice.
 - For the Chemistry rollout, the Product Owner decided on **16 October 2026**
   to include all authored topics in the applicable target scope first and defer
   the preceding topic-selection flow, following the Bavarian Mathematics
@@ -333,8 +342,14 @@ Interpretation rules:
   learning goals; Level 3 focus is only a temporary narrowing of that target
   universe, and a learner who wants a permanently narrower plan sets that focus
   explicitly in the Cockpit
-- A Level 3 focus is the union of its selected roots and their `contains`
-  descendants, restricted to Personal Curriculum targets. Normal mode checks
+- A Level 3 focus is the union of the actual learner-facing members of its
+  selected roots, restricted to Personal Curriculum targets. In composition
+  views use the selected authored paths, not unrelated raw canonical ancestors.
+  Direct atomic goal entries denote only themselves; explicit subject-root
+  aliases denote their own selected subject targets. Do not reexpand resolved
+  members or discard independent roots using raw canonical containment.
+  Bounded recommendations keep the selected roots as their branch buckets.
+  Normal mode checks
   only the effective prerequisite relation inside this focus, including
   scope-relative atomic satisfaction of prerequisite clusters. Requirements
   outside the focus, including `prerequisiteOnly` goals, do not block entry or
@@ -348,10 +363,20 @@ Interpretation rules:
   and persists the published option only after learner acceptance. With
   multiple focus roots, widening replaces only the covered branch and the
   option's complete ordered `goalIds` payload retains every independent root
+- If a stored focus no longer resolves after a presentation-tree correction,
+  retain its references and request a new explicit selection. An invalid stored
+  focus is not a first start and must never trigger the full-curriculum default
+  or an automatic plan handoff. A valid already chosen atomic goal may finish;
+  mixed stored roots retain their valid subset without widening. Intentional
+  Level 2 changes still use the existing explicit revalidation path. Initial
+  scope options remain choices even when their IDs denote atomic goals; they
+  do not authorize teaching, mastery or autopilot before explicit selection.
+  A valid already active memory goal still uses its existing strict recall
+  contract, never a generic mastery-write exception.
 - `requires` is strictly directional for mastery: mastery of a dependent goal
   never creates mastery of its prerequisites. Under the 31 October 2026
   completion decision it ends that goal's outgoing preparation demand;
-  unneeded non-assessment goals become implicitly completed without changing
+  unneeded ordinary goals become implicitly completed without changing
   their mastery. Required-work recommendations and voluntary availability
   must be kept separate after focus widening as well
 - learner-facing default trees for resolved scopes should preferably be compiled from reviewed composition views early enough that validation can run before UI rendering
@@ -386,6 +411,9 @@ goal-difficulty field `level`.
   level, or the same level. Include inherited, indirect, cluster, and
   cross-subject requirements; hidden or `prerequisiteOnly` goals must not
   disappear from this structural check.
+  For this check, expand required clusters to their atoms and stop traversal at
+  declared entry competencies; their acquisition history is assumed, not
+  reconstructed.
 - Same-level dependencies are allowed, but the complete level must be traversable
   using the global frontier from the hypothetical entry state. This check does
   not write mastery or change the normal/strict runtime mode.
@@ -474,13 +502,25 @@ assessment goal uses the same authoritative mastered/not-mastered decision as
 other goals; existing mastery must not need a second profile-specific pass,
 qualification record, or evidence-acceptance decision. Assessment-gated
 completion is a derived calculation over the graph and that mastery state.
-The 31 October 2026 decision replaces manually maintained waiver profiles: any
-mastered goal ends its outgoing prerequisite demand; any non-assessment goal
-with no remaining unfinished consumer becomes implicitly complete and ends
-its own demand. Every assessment remains required until mastered and is directly
-selectable. Ordinary terminal goals, orientation and cards are not extra
-protected categories. A valid finite scope without assessments is entirely
-explicitly or implicitly completed. Use direct atomic/inherited requirements;
+An assessment's normal scoring rules determine its one outcome.
+`coveredGoalIds` records assessed task content, not separate pass decisions
+for prerequisite goals. Task-specific score caps belong to the normal rubric;
+the demand calculation uses mastery alone, without inspecting point scores.
+The 31 October 2026 decision, corrected on 1 November 2026, replaces manually
+maintained waiver profiles: any mastered goal ends its outgoing prerequisite
+demand; any ordinary goal with no remaining unfinished consumer becomes
+implicitly complete and ends its own demand. Assessments and memory goals
+remain protected until mastered, including when hidden in prerequisite support.
+Protection is not an independent completion obligation: only selected protected
+targets seed demand. Hidden protected support remains unmastered and is never
+implicitly completed, but ceases to carry demand when no open selected obligation
+needs it. It must not enlarge the selected target completion contract.
+Every assessment is directly selectable; memory retains its verified-recall
+workflow and does not enter examination counts. Complete authoritative curricula
+and supported projections must have every target reachable from selected protected
+assessment or memory roots at zero mastery. Unneeded ordinary endpoints and
+nonempty curricula without protected roots are authoring defects that
+deterministic tests must reject, not valid completion. Use direct atomic/inherited requirements;
 mastery stops demand traversal, so static transitive closure is incorrect. Work no longer required for a particular
 completion scope is calculated, never stored as a second goal result or written
 back as mastery. Assessment quality belongs to task/rubric authoring and the
@@ -754,7 +794,7 @@ Rule:
 * A content leaf goal is semantically atomic only if it contains exactly one content learning goal.
 * Broad titles/descriptions that combine independent routines such as “A, B und C bestimmen” should be split or sent to developer review.
 * Some combinations such as “berechnen und deuten” may still be one semantic goal; this must be judged from the content, not from keywords alone.
-* Non-content leaves such as motivation anchors, SRS/memorization decks, terminal practice nodes, and `examData` assessment nodes are out of scope for semantic content atomicity; they are covered by their own QA lanes.
+* Non-content leaves such as motivation anchors, SRS/memorization decks and independent terminal practice or assessment goals are covered by their own QA lanes. A curricular competence that also offers an assessment execution form remains in semantic atomicity and memory review. Use the authoritative semantic-kind ledger where available: `curricularAtomic` membership is not removed by `nodeKind: exam` or `examData`.
 
 Process:
 
@@ -1272,9 +1312,12 @@ or stale result data must be shown as unavailable, never as zero achievements.
 Learning-plan status is backend-owned on the learner's persisted **DAY or WEEK**
 basis (default WEEK; Europe/Berlin, Monday through Sunday). Each stable subject is
 balanced independently over the same fixed, deduplicated plan-goal set; prior
-knowledge is excluded and later mastery remains in that set. Current-period
-completion events cover the period quota first, and advance work can cover it
-as well. No cross-subject balance or overall direction is permitted. Cockpit
+knowledge is excluded and later mastery remains in that set. Under the binding
+1 November 2026 decision, only reliably dated explicit completions within the
+current period cover its quota: fulfilled `min(P,H)`, open `max(0,P-H)`.
+Earlier advance work and implicit completion still improve the overall balance
+but never fill the current-period counter. No cross-subject balance or overall
+direction is permitted. Cockpit
 renders the backend's exact localized per-subject status parts; chat and learner
 planning use the exact localized `status.text`; the active-goal announcement is
 separate and appears once when teaching begins.
@@ -1316,21 +1359,44 @@ completions. Never write implicit work completion back as mastery or substitute
 a selected section's implicit set for W_PC. The chosen navigation route does
 not determine plan credit. This preference changes counting only, not exam
 access or the existing shortcut preference.
+The later confirmed period rule keeps H and daily/weekly fulfillment explicit
+in both counting modes. Preserve the raw balance I−S and the existing
+nonnegative backlog/advance interpretation; the independent open period quota
+may exceed the remaining overall deficit. An open quota never creates a new
+completion event for an already mastered goal or makes implicit preparation
+compulsory. A completed overall plan remains recognizable alongside period
+activity.
 
 The same day's binding completion decision removes manual profile grants and
 assessment-only waiver anchors. Any mastered goal ends its own preparation
-demand; non-assessment goals with no unfinished consumer become implicitly
-complete. Final assessments remain required and directly selectable. Derive
-this by traversing direct requirements from open assessments and stopping at
+demand; ordinary goals with no unfinished consumer become implicitly complete.
+Selected assessment and memory targets remain required until mastered; assessments alone
+remain directly selectable through the examination workflow. Derive this by
+traversing direct requirements from open selected assessment and memory targets and stopping at
 every mastered node. Do not carry transitive demand through mastered nodes.
 The default scope is the complete Personal Curriculum. Automatic plan credit
 also evaluates that complete curriculum first, then intersects with the fixed
 plan baseline: a dated plan is not an independent assessment scope. Genuine
 cross-subject demands remain; quotas still balance separately by subject.
-Explicit structural section selection can show its own completion view but
-never silently redefines plan credit.
+Explicit structural section selection only masks targets of that same complete
+Personal Curriculum evaluation; it never creates its own demand graph or
+redefines plan credit. A section is complete when every selected target is
+explicitly or implicitly done in the full result. A stage-only contract is a
+Level-2 Personal Curriculum choice, not a display filter.
 Temporary focus only ranks suggestions. Existing exam/assessment classification
-supplies the endpoints; do not infer them from titles or coverage lists.
+supplies the exam endpoints; existing memory classification supplies the other
+protected classification. Only the protected targets are independent roots;
+hidden protected support is never implicitly completed and carries demand only
+while reached from an open selected root. Do not infer classifications from titles or coverage lists. Validate every
+complete authoritative curriculum and supported projection at zero mastery:
+every target must be reachable from a selected protected root. Uncovered ordinary
+endpoints are authoring defects, not accepted implicit curriculum completion.
+On failed coverage validation, publish no implicit credit or completion inferred
+from unused work. Known targets that are all explicitly mastered remain explicitly
+complete alongside the quality warning; this exception cannot repair an invalid
+scope definition. Preserve ordinary learning, stored mastery and structurally
+valid direct examination discovery/start; integrity evaluation must remain
+separate from structural compilation and authenticated examination binding.
 No implicit result creates mastery or card recall. Historical manual pilot
 artifacts remain evidence, not prerequisites for current graph completion.
 

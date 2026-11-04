@@ -274,8 +274,8 @@ The role is authored explicitly on `canonicalSubtree` and `goalEntry` references
 reference is a `target`. Descendants of a `canonicalSubtree` inherit its authored
 role.
 
-If overlapping references assign different roles to the same canonical goal,
-the more specific reference decides:
+Within each source view, if overlapping references assign different roles to
+the same canonical goal, the more specific reference decides:
 
 1. a direct `goalEntry` overrides a role inherited from any
    `canonicalSubtree`
@@ -325,6 +325,77 @@ Compilation must not:
 - replace stable goal IDs
 
 The role assignment is therefore projection metadata only. Canonical goal identity, the canonical DAG, and learner mastery remain global and unchanged across composition views.
+
+### Combining course profiles
+
+Resolve each component under its own course profile before combining the
+targets. The requested jurisdiction, school stage, duration and other common
+scope dimensions remain fixed. A broader source-view fallback must not widen
+them. Use the applicable reviewed course policy, including authored technical
+profile mappings such as Bavarian Mathematics.
+
+For component $i$, let $B_i$ be its unique atomic goals with an authored target
+role after the local specificity rules, and let $U_i$ be the goals available
+under that component's course policy. Then
+
+$$
+T_i=B_i\cap U_i,\qquad T_{\mathrm{GK+LK}}=T_{\mathrm{GK}}\cup T_{\mathrm{LK}}.
+$$
+
+It is incorrect to combine the roles and availability separately as
+$(B_{\mathrm{GK}}\cup B_{\mathrm{LK}})\cap(U_{\mathrm{GK}}\cup U_{\mathrm{LK}})$. That expression can use a target
+role from one course and availability from the other to select a goal that
+neither resolved course actually selected.
+
+For example, suppose an assessment is available only in LK. A broad GK
+subtree gives it an inherited target role, while the LK view explicitly marks
+it `prerequisiteOnly`. Neither component selects it, so their union must not
+select it either. Conversely, an actual LK target remains a union target even
+when the GK view marks it `prerequisiteOnly`. Role specificity is resolved
+within each source, before the resulting target sets are united.
+
+The compiled tree, learner projection, completion calculation and coach choices
+use this same target set. Navigation containers may organize its atoms, but
+the tree must not introduce another atomic target or duplicate a goal.
+Compilation may express course exclusions through derived non-target
+references; this does not edit authored data, create a supporting obligation
+or change mastery. Actual support still follows the canonical prerequisites.
+
+After combining the target sets, calculate implicit completion once in the
+full committed Personal Curriculum. Independently calculated course-local
+implicit sets must not be united: a consumer in the other course can still
+need the same preparation.
+
+Static composition caches must account for the requested scope, current
+course availability and canonical structure. A compiled view identifier must
+reconstruct the same resolved target entitlement and remain opaque to clients. Resolving
+it does not authorize changing the Personal Curriculum or bypassing the exact
+current-view check on a focus transition. A dimension that does not affect that
+entitlement need not be encoded in the identifier; the caller's current request
+still supplies its full scope envelope.
+
+## Focus membership follows the compiled placement
+
+A chosen focus denotes the targets under its actual learner-facing path.
+Resolve its membership using the same selected reference and role rules as
+ancestor navigation. A canonical subtree includes its visible descendants;
+a direct atomic `goalEntry` includes only that goal. A subject-root alias
+includes only the selected targets of its own matched subject view. A raw
+canonical ancestor outside those paths does not create another selectable
+program branch.
+
+Union the resolved members of independently chosen roots. Redundancy removal,
+prerequisite checks and bounded frontier recommendations use those same
+members; recommendations retain the chosen roots as their branch buckets.
+Neither a subsequent canonical expansion nor a raw parent relationship may
+silently add goals or drop an independently selected branch.
+
+If an authored program branch disappears, retain its stored focus reference
+and request a new explicit scope choice. A valid already active atomic goal
+may finish under its existing workflow; an unresolved stored focus does not
+become a first start or authorize an automatic wider focus. Navigation indexes
+may reuse immutable view/projection membership, but do not cache learner
+mastery, completion outcomes or authorization as catalog data.
 
 ## Curriculum levels in projected views
 

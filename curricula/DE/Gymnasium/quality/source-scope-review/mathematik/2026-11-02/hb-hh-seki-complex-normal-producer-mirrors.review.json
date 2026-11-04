@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/astra_math_material_scope_resume",
+  "status": "PASS_TWO_EXACT_NORMAL_PRODUCER_MIRRORS_ONLY_NATIVE_CONTEXT_PENDING",
+  "author": "/root/sol_hb_hh_mv_complex_materialization",
+  "proposal": {
+    "path": "tmp/approach-review-20261101/complex-hb-hh-mv-v21-candidate-20261102/hb-hh-seki-producer-mirror-proposal.json",
+    "sha256": "12f8d341578b074dcf21c431a0cd8976309524cfeb21fe48260ec1c7502ae8d2"
+  },
+  "baselineAudit": {
+    "path": "tmp/approach-review-20261101/post-course-union-runtime-native-154-audit.json",
+    "sha256": "31502250fc62fddf95a5e7fd458ba6d2fab10a19aa184e06844a5c6a30aabe3b"
+  },
+  "preparation": {
+    "path": "tmp/approach-review-20261101/complex-hb-hh-mv-v21-candidate-20261102/candidate-preparation.json",
+    "sha256": "4917fc314144fac2e8a295a988f1402b471331f4906110ecf2868585d9022237"
+  },
+  "preview": {
+    "path": "tmp/approach-review-20261101/complex-hb-hh-mv-v21-candidate-20261102/producer-output-delta.v18-runtimefix.json",
+    "sha256": "d191021fbbe8623f4ae4eb5ce84d58dbf5f5ba21ee08a82bb22ea5a85f9c9df5"
+  },
+  "normalGenerator": {
+    "path": "app/scripts/generateMathCountrySekICompositionViews.ts",
+    "sha256": "3772e4969cf0ba6419075ed2bbdba5eb4d3e81d95147f7cadddf6bab3efb7cda"
+  },
+  "approvedOperations": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-seki.view.json",
+      "beforeSha256": "8e08f8949134bd7eafdd6b5c8f0f100ba527a7291b395064f8175ea1f9c3068b",
+      "candidateSha256": "921ab28ab410eeebea1708ca98c2a1a6b5510dda10520baa3b29efddb4678e64",
+      "insertedRootNodeIndex": 45,
+      "insertedNode": {
+        "kind": "goalEntry",
+        "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
+        "projectionRole": "prerequisiteOnly"
+      },
+      "proposedOperation": {
+        "op": "add",
+        "path": "/rootNodes/45",
+        "value": {
+          "kind": "goalEntry",
+          "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
+          "projectionRole": "prerequisiteOnly"
+        }
+      },
+      "sourceView": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-gk.view.json",
+      "sourceReferenceExactlyEqual": true,
+      "existingNodesAndOrderRemainExact": true,
+      "historicalActualV18SekIRow": {
+        "scope": "DE-HB/SekI/G8/GK+LK",
+        "wholeRowObjectSha256": "38c8e5d7c6d06d67d0ba47f0e161a4bc412503d41b863e53404168ecb9132667",
+        "targetCount": 194,
+        "a852AlreadyNotSelected": true,
+        "protectedSupportContext": [],
+        "obligationCount": 33
+      },
+      "finalContextNeutrality": "Not yet measured. Require actual V20-based native whole-row comparison after rebase."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-seki.view.json",
+      "beforeSha256": "dd1c33e0dd02ba40fd65917d98aa7fd6e9b5735347e881be3b831e914c21d87f",
+      "candidateSha256": "0d18999b329ca41f495e9dd599f20703a39a4195c298ab60eb072272adc14a33",
+      "insertedRootNodeIndex": 45,
+      "insertedNode": {
+        "kind": "goalEntry",
+        "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
+        "projectionRole": "prerequisiteOnly"
+      },
+      "proposedOperation": {
+        "op": "add",
+        "path": "/rootNodes/45",
+        "value": {
+          "kind": "goalEntry",
+          "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
+          "projectionRole": "prerequisiteOnly"
+        }
+      },
+      "sourceView": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-gk.view.json",
+      "sourceReferenceExactlyEqual": true,
+      "existingNodesAndOrderRemainExact": true,
+      "historicalActualV18SekIRow": {
+        "scope": "DE-HH/SekI/G8/GK+LK",
+        "wholeRowObjectSha256": "4444f6f0a23062ce6ade1fc86cd1591fe93117fc3f947677bfa1ecd8aae86165",
+        "targetCount": 241,
+        "a852AlreadyNotSelected": true,
+        "protectedSupportContext": [],
+        "obligationCount": 47
+      },
+      "finalContextNeutrality": "Not yet measured. Require actual V20-based native whole-row comparison after rebase."
+    }
+  ],
+  "independentReplay": {
+    "all101PreviewOutputHashesVerified": true,
+    "normal83And18PreviewExitZero": true,
+    "exactChangedOutputs": 14,
+    "twelveReviewedAuthoredOutputsByteExact": true,
+    "unchangedOutputs": 87,
+    "bothWholeViewReplaysExact": true,
+    "sourceOuterReferencesWholeAndIdentical": true,
+    "allOriginalNodesOrderAndMetadataPreserved": true,
+    "bothActualBaselineSekITargetSetsAlreadyExcludeA852": true,
+    "bothActualBaselineProtectedSupportSetsEmpty": true
+  },
+  "scopeBoundary": "Only copy these two exact normal producer outputs into the isolated mechanical candidate. This does not enlarge the original18-offer196-removal source decision, approve a new course target or authorize a producer/policy exception. Any necessary existing input hash pin is bound separately.",
+  "requiredFinalAcceptance": [
+    "Rebase onto the actual integrated V20 state, retaining V19 and BE-triad bytes.",
+    "Measure all154 profiles under the reviewed productive CourseProfileAvailability wiring. Exact196 removals over18 offers; all14 SH offers and other target sets unchanged.",
+    "Both HB and HH SekI whole rows, including ordinary/protected context, selected obligations, readiness and hierarchy, must remain exactly unchanged.",
+    "Preserve HB62a1 and MV5503 GK masks; no canonical, requires, coverage, whole task/card, mapping/source or learner-state change."
+  ],
+  "notClaimed": [
+    "Native context neutrality before that measurement",
+    "Final V21 stage or Root activation",
+    "M7, CI or completion"
+  ],
+  "reviewerRootWrites": false,
+  "reviewerJvmOrProducerRun": false
+}

@@ -1,0 +1,65 @@
+{
+  "status": "ROOT_FRONTEND_FIX_VALIDATED_CURRENT_BROWSER_MATCHES_BACKEND_AND_LEGACY_FILTER_RETAINED",
+  "changedRootFiles": [
+    {
+      "path": "app/src/utils/learnerTreeProjection.ts",
+      "beforeSha256": "39f4856bd54ef7e02ef37d33583989629b01bcd390fb7d3481129c18cd759330",
+      "afterSha256": "7af439f278d067e718a7afd0a005fb00e71aec3da50bb53756d291cb2428caf7"
+    },
+    {
+      "path": "app/src/utils/treeCompletionProgress.test.ts",
+      "beforeSha256": "b448dbcf84957ff9cd66fa1a4ddd6adc53bf4585934a398fce716b12ffd3a67a",
+      "afterSha256": "aa0a133bf4de75079c111c08e75a1584b09e43158c85400ac3e6d29f1a6ea112"
+    }
+  ],
+  "cause": "Legacy phase-based child filtering ran after authoritative composition projection. Twelve Q4-tagged canonical targets placed in the authored HE E-phase became unreachable in the rendered tree.",
+  "solution": "Keep resolved composition membership when projection provenance compositionViewId is present; retain legacy phase filtering for uncomposed entries.",
+  "currentObservedTargetCount": 641,
+  "beforeUIProgressDenominator": 629,
+  "afterUIProgressDenominator": 641,
+  "all12FormerlyLostTargetsVisibleExactlyOnce": true,
+  "fullTargetIdEqualityCheckedAgainstIndependentlyResolvedRoles": true,
+  "liveCurriculumCountIsNotHardCodedInRegression": true,
+  "legacyPhaseFilteringAndSourceImmutabilityTested": true,
+  "actualRegressionCommands": [
+    {
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/src/utils/treeCompletionProgress.test.ts"
+      ],
+      "exitCode": 0,
+      "logSha256": "4b76e84221f539fdd6fb824e67f074ff31a7a00502497f98ba33f372d1b3a0c7"
+    },
+    {
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testLevelCompletionUi.tsx"
+      ],
+      "exitCode": 0,
+      "logSha256": "eacbc17bf09951b047be25231d0fca554e2d4950befe5275a3cda30d1812c4b4"
+    }
+  ],
+  "beforeFixDemonstration": {
+    "path": "tmp/local-preview-20261104/count-diagnosis/before-fix-regression.actual.json",
+    "sha256": "0d6c673bf1076c7130a30ca314bf0623b99545cd075001aa69f343ca315c4f6c",
+    "actualExpectedFailureExitCode": 1
+  },
+  "browserProof": {
+    "path": "tmp/local-preview-20261104/count-diagnosis/browser-after-fix.actual.json",
+    "sha256": "791511219f1fe0a5dc753a0d1d5d9f8992336d1aaf9b16b5a9ae5ac76d7df0d1",
+    "beforeAria": "Mathematik. 0 von 641 Lernzielen erledigt. 0 explizit geschafft. 0 implizit erledigt. 641 offen. Gewichteter Fortschritt: 0 %",
+    "afterAria": "Mathematik. 3 von 641 Lernzielen erledigt. 1 explizit geschafft. 2 implizit erledigt. 638 offen. Gewichteter Fortschritt: 0,5 %. Implizite Erledigung im Lernabschnitt: Dein Personal Curriculum"
+  },
+  "initialDiagnosticPreserved": {
+    "path": "tmp/local-preview-20261104/count-diagnosis/pure-production-functions.actual.json",
+    "sha256": "25f5600db23d981e45f8119be93bedeec90890863421c318ea1a5cec9e19cd87"
+  },
+  "existingBroaderSuiteLimitation": "testCompositionProjectionRoles imports testHessenMathQ21Scope, whose BBB allowlist assertion at line172 fails identically before and after this fix. No assertion was skipped or altered; that unrelated script was restored byte-exact.",
+  "noBackendCanonicalOrDatabaseChanges": true,
+  "noServiceRestartForCountFix": true,
+  "noGitMutationByThisAgent": true,
+  "otherRootDocumentationEditsUntouched": true,
+  "sectionCollapseExpandPreservesSubjectTotal": true
+}

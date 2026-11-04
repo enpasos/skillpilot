@@ -22,7 +22,7 @@ type ViewMatch = {
   score: MatchScore
 }
 
-type ApprovedDeDefaultFallbackGroup = {
+type ApprovedMathScopeResolutionGroup = {
   jurisdictions: string[]
   rationale?: string
   scopes: Array<Scope & { expectedViewId: string }>
@@ -40,7 +40,7 @@ const repoRoot = resolve(scriptDir, '../..')
 
 const normalizeValue = (value?: string) => value?.trim().toUpperCase() ?? ''
 
-const normalizeScope = (scope: Scope) => {
+const normalizeScope = (scope: Partial<Scope>) => {
   const normalized: Record<string, string> = {}
   Object.entries(scope).forEach(([key, value]) => {
     if (!value?.trim()) return
@@ -125,7 +125,8 @@ const fallbackPolicy = JSON.parse(
   readFileSync(resolve(repoRoot, CANONICAL_MATH_FALLBACK_POLICY_PATH), 'utf8'),
 ) as {
   landscapeId?: string
-  approvedDeDefaultFallbackGroups?: ApprovedDeDefaultFallbackGroup[]
+  approvedDeDefaultFallbackGroups?: ApprovedMathScopeResolutionGroup[]
+  approvedDedicatedCountryGroups?: ApprovedMathScopeResolutionGroup[]
 };
 
 const jurisdictions = [
@@ -181,11 +182,14 @@ const mathViews = readdirSync(compositionViewDirectory)
   .map((fileName) => normalizeCompositionView(JSON.parse(readFileSync(join(compositionViewDirectory, fileName), 'utf8'))))
   .filter((view) => view.landscapeId === CANONICAL_DE_MATH_ID);
 
-const approvedFallbacksByScopeKey = new Map<string, { expectedViewId: string; rationale?: string }>();
-for (const group of (fallbackPolicy.approvedDeDefaultFallbackGroups ?? [])) {
+const approvedResolutionsByScopeKey = new Map<string, { expectedViewId: string; rationale?: string }>();
+for (const group of [
+  ...(fallbackPolicy.approvedDeDefaultFallbackGroups ?? []),
+  ...(fallbackPolicy.approvedDedicatedCountryGroups ?? []),
+]) {
   group.jurisdictions.forEach((jurisdiction) => {
     group.scopes.forEach(({ expectedViewId, ...scope }) => {
-      approvedFallbacksByScopeKey.set(
+      approvedResolutionsByScopeKey.set(
         composeScopeKey({ ...scope, jurisdiction }),
         { expectedViewId, rationale: group.rationale },
       )
@@ -213,16 +217,18 @@ const results = requestedScopes.map((scope) => {
     })
 
   const bestMatch = matches[0]
-  const approvedFallback = scope.jurisdiction && !bestMatch?.scope.jurisdiction
-    ? approvedFallbacksByScopeKey.get(composeScopeKey(scope))
-      ?? (scope.durationModel
-        ? approvedFallbacksByScopeKey.get(composeScopeKey({ ...scope, durationModel: undefined }))
+  const approvedResolution = scope.jurisdiction
+    ? approvedResolutionsByScopeKey.get(composeScopeKey(scope))
+      ?? (scope.durationModel && !bestMatch?.scope.jurisdiction
+        ? approvedResolutionsByScopeKey.get(composeScopeKey({ ...scope, durationModel: undefined }))
         : undefined)
     : undefined
   const resolutionKind = !bestMatch
     ? 'missing'
+    : approvedResolution && approvedResolution.expectedViewId !== bestMatch.viewId
+      ? 'unexpected-approved-scope'
     : scope.jurisdiction && !bestMatch.scope.jurisdiction
-      ? approvedFallback?.expectedViewId === bestMatch.viewId
+      ? approvedResolution?.expectedViewId === bestMatch.viewId
         ? 'approved-de-default-fallback'
         : 'unapproved-de-default-fallback'
       : 'specific-or-default'
@@ -230,7 +236,7 @@ const results = requestedScopes.map((scope) => {
   return {
     scope,
     bestMatch,
-    approvedFallback,
+    approvedResolution,
     resolutionKind,
   }
 })
@@ -238,6 +244,7 @@ const results = requestedScopes.map((scope) => {
 const missing = results.filter((result) => result.resolutionKind === 'missing')
 const approvedFallbacks = results.filter((result) => result.resolutionKind === 'approved-de-default-fallback')
 const unapprovedFallbacks = results.filter((result) => result.resolutionKind === 'unapproved-de-default-fallback')
+const unexpectedResolutions = results.filter((result) => result.resolutionKind === 'unexpected-approved-scope')
 const exactOrDefault = results.filter((result) => result.resolutionKind === 'specific-or-default')
 
 console.log('Canonical Math Composition-View Scope Coverage')
@@ -247,6 +254,7 @@ console.log(`Requested scopes: ${results.length}`)
 console.log(`Covered by specific/default scope: ${exactOrDefault.length}`)
 console.log(`Covered by approved DE-default fallback: ${approvedFallbacks.length}`)
 console.log(`Covered by unapproved DE-default fallback: ${unapprovedFallbacks.length}`)
+console.log(`Unexpected approved scope resolution: ${unexpectedResolutions.length}`)
 console.log(`Missing: ${missing.length}`)
 console.log('')
 
@@ -260,12 +268,14 @@ results.forEach((result) => {
   const matchedScope = formatScope(result.bestMatch.scope)
   const prefix = result.resolutionKind === 'approved-de-default-fallback'
     ? '↪'
+    : result.resolutionKind === 'unexpected-approved-scope'
+      ? '❌'
     : result.resolutionKind === 'unapproved-de-default-fallback'
       ? '⚠️'
       : '✅'
   console.log(`${prefix} ${scopeLabel} -> ${result.bestMatch.viewId} [${matchedScope}]`)
 })
 
-if (missing.length > 0 || unapprovedFallbacks.length > 0) {
+if (missing.length > 0 || unapprovedFallbacks.length > 0 || unexpectedResolutions.length > 0) {
   process.exitCode = 1
 }

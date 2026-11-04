@@ -158,6 +158,11 @@ public class GeminiV1CoachContextProjector {
         }
 
         context.put("activeGoal", formatGoal(activeGoal));
+        if (CoachStateProjection.requiresAssessmentStartConfirmation(projectedState)) {
+            context.put("instruction", CoachStateProjection.assessmentStartConfirmationInstruction(language));
+            context.put("presentationInstruction", CoachStateProjection.assessmentStartConfirmationInstruction(language));
+            context.remove("toolPreparationInstruction");
+        }
 
         List<ContentMaterialResolver.ResolvedMaterial> additionalMaterials =
                 coachToolFacade.getAdditionalLearningMaterials(skillpilotId, activeGoal, language);

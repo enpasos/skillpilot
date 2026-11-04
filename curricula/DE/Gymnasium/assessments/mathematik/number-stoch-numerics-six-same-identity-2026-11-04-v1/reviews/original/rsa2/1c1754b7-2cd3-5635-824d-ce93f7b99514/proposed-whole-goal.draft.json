@@ -1,0 +1,155 @@
+{
+  "id": "1c1754b7-2cd3-5635-824d-ce93f7b99514",
+  "shortKey": "canonical_math_sek2_q4_primality_factorization_methods_by_factorization_methods",
+  "title": "Faktorisierungsverfahren erläutern (LK)",
+  "titleEn": "Explain factorization methods (advanced course)",
+  "description": "Die lernende Person kann die Funktionsweise eines Faktorisierungsverfahrens, zum Beispiel des quadratischen Siebs, fachsprachlich erläutern.",
+  "descriptionEn": "The learner can explain the workings of a factorization method, for example the quadratic sieve.",
+  "core": false,
+  "weight": 1,
+  "tags": [
+    "LK",
+    "canonical"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K1.4",
+      "K2.2"
+    ],
+    "guidingIdeas": [
+      "L1"
+    ],
+    "phase": "Q4",
+    "area": "Algebra",
+    "topicCode": "CANONICAL.MATH.SEK2.Q4.NUMBER_THEORY.PRIMALITY_FACTORING_BY.FACTORIZATION_METHODS"
+  },
+  "contains": [],
+  "requires": [
+    "d32f599e-3b38-5557-8ad3-565bcd99f4c6",
+    "d8cbf2bd-2512-5661-b431-4aea7e688912",
+    "e4eaff7f-1e3d-54ea-8a59-02864948b5eb"
+  ],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.4",
+  "type": "atomic",
+  "semanticAtomic": true,
+  "resourceLinks": [
+    {
+      "type": "goal-visualization",
+      "resourceType": "image",
+      "role": "primary",
+      "skillpilotId": "1c1754b7-2cd3-5635-824d-ce93f7b99514",
+      "title": "Visualisierung: Faktorisierungsverfahren erläutern (LK)",
+      "url": "/assets/goal-visualizations/mathematik/1c1754b7-2cd3-5635-824d-ce93f7b99514/1c1754b7-2cd3-5635-824d-ce93f7b99514.jpg",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "description": "Visualisierung zum Lernziel: Faktorisierungsverfahren erläutern (LK).",
+      "altText": "Didaktische Visualisierung zum Lernziel \"Faktorisierungsverfahren erläutern (LK)\". Die lernende Person kann die Funktionsweise eines Faktorisierungsverfahrens, zum Beispiel des quadratischen Siebs, fachsprachlich erläutern.",
+      "lang": "de",
+      "license": "AI-generated, SkillPilot-curated",
+      "reviewStatus": "pilot"
+    }
+  ],
+  "nodeKind": "exam",
+  "examData": {
+    "reviewStatus": "draft",
+    "taskContent": "# Das quadratische Sieb an einem kleinen Beispiel erklären\n\nDie natürliche Zahl $N=1649$ soll faktorisiert werden. Erläutere die\nFunktionsweise des **quadratischen Siebs** an dem folgenden kleinen Lauf.\nEs geht um einen mathematischen Verfahrensnachweis, nicht um ein Programm.\nZeige deine Überlegungen und Rechenschritte. Insgesamt sind **20 BE** erreichbar.\n\nWir verwenden $Q(x)=x^2-N$, die Faktorbasis $B=\\{2,5\\}$ und das Intervall\n$x=41,42,43,44,45$. Alle $Q(x)$ in diesem Intervall sind positiv.\n\n**1. Verfahrensidee erläutern (4 BE)**\n\nBeschreibe im Zusammenhang, welche Rolle Faktorbasis, Sieben,\nExponentenparitäten und ggT-Berechnung spielen. Begründe, warum man nach\neiner Kongruenz $X^2\\equiv Y^2\\pmod N$ sucht und wie sie zur\nFaktorgewinnung führen kann. Eine bloße Liste von Fachwörtern genügt nicht.\n\n**2. Beziehungen durch Sieben gewinnen (6 BE)**\n\nErläutere, warum $x$ nahe bei $\\sqrt N$ zweckmäßig ist. Bestimme die\nRestklassen von $x$ modulo $2$ beziehungsweise modulo $5$, für die\n$Q(x)$ durch den jeweiligen Faktorbasiseintrag teilbar ist. Erkläre,\nwarum man dadurch regelmäßig wiederkehrende Stellen im Intervall\nmarkieren kann. Teile dort alle auftretenden Potenzen von $2$ und $5$\naus den $Q(x)$ heraus und vervollständige die Tabelle.\n\n| $x$ | $Q(x)$ | Rest nach Entfernen aller Faktoren 2 und 5 | Vollständig über B zerlegbar? |\n|---:|---:|---:|---|\n| 41 | | | |\n| 42 | | | |\n| 43 | | | |\n| 44 | | | |\n| 45 | | | |\n\nWelche Beziehungen behältst du für den nächsten Schritt, und warum?\n\n**3. Eine Quadratkongruenz und Faktoren gewinnen (7 BE)**\n\nGib die Exponenten der Faktorbasiseinträge in den behaltenen Beziehungen\nan. Wähle eine Kombination, deren Exponentensummen alle gerade sind, und\nbegründe die Auswahl. Bestimme daraus $X$ und $Y$ mit\n$X^2\\equiv Y^2\\pmod N$; Restvertreter modulo $N$ sind zulässig.\nBerechne $\\operatorname{ggT}(X-Y,N)$ und\n$\\operatorname{ggT}(X+Y,N)$, prüfe die erhaltene Faktorisierung und\nverbinde deine Rechnung mit der Verfahrensidee aus Teil 1.\n\n**4. Einen scheinbaren Erfolg beurteilen (3 BE)**\n\nJemand legt stattdessen $X=Y=32$ vor: „Die Quadratkongruenz stimmt,\nalso haben wir einen nichttrivialen Faktor gefunden.“ Prüfe die Aussage\nmit beiden ggT-Werten. Erkläre, was ein erfolgloser ggT-Schritt für das\nweitere Vorgehen bedeutet. Unterscheide außerdem das Ziel eines\nPrimzahltests vom Ziel eines Faktorisierungsverfahrens. Verlangt ist kein\nzusätzlicher Primzahltest.\n",
+    "taskContentEn": "# Explain the quadratic sieve using a small example\n\nThe natural number $N=1649$ is to be factored. Explain how the\n**quadratic sieve** works using the following small run. This is a\nmathematical demonstration of the method, not a programming task.\nShow your reasoning and calculations. A total of **20 points** is available.\n\nUse $Q(x)=x^2-N$, the factor base $B=\\{2,5\\}$, and the interval\n$x=41,42,43,44,45$. Every $Q(x)$ in this interval is positive.\n\n**1. Explain the method (4 points)**\n\nGive a connected explanation of the roles of the factor base, sieving,\nexponent parities and gcd calculation. Explain why one seeks a congruence\n$X^2\\equiv Y^2\\pmod N$ and how it can yield factors. A list of technical\nterms alone is insufficient.\n\n**2. Obtain relations by sieving (6 points)**\n\nExplain why values of $x$ near $\\sqrt N$ are useful. Find the residue\nclasses of $x$ modulo $2$ and modulo $5$ for which $Q(x)$ is divisible by\nthe respective factor-base prime. Explain how this lets you mark regularly\nrecurring positions in the interval. Divide out all powers of $2$ and $5$\nfrom the corresponding $Q(x)$ and complete the table.\n\n| $x$ | $Q(x)$ | Remainder after removing all factors 2 and 5 | Factors completely over B? |\n|---:|---:|---:|---|\n| 41 | | | |\n| 42 | | | |\n| 43 | | | |\n| 44 | | | |\n| 45 | | | |\n\nWhich relations do you keep for the next step, and why?\n\n**3. Obtain a square congruence and factors (7 points)**\n\nState the exponents of the factor-base primes in the retained relations.\nChoose a combination whose exponent sums are all even and explain your\nchoice. Use it to obtain $X$ and $Y$ with $X^2\\equiv Y^2\\pmod N$;\nrepresentatives modulo $N$ are acceptable. Calculate $\\gcd(X-Y,N)$ and\n$\\gcd(X+Y,N)$, check the resulting factorization, and connect your\ncalculation to the method described in part 1.\n\n**4. Evaluate an apparent success (3 points)**\n\nSomeone instead proposes $X=Y=32$: “The square congruence holds, so we\nhave found a nontrivial factor.” Check this claim using both gcd values.\nExplain what an unsuccessful gcd step means for the next step of the\nmethod. Also distinguish the aim of a primality test from the aim of a\nfactorization method. You are not asked to carry out another primality test.\n",
+    "solutionContent": "# Musterlösung: quadratisches Sieb\n\n**1. Idee und mathematischer Grund**\n\nDas Verfahren sucht kleine Werte von $Q(x)=x^2-N$, deren Primfaktoren\nvollständig in einer kleinen Faktorbasis liegen. Solche Werte heißen\nüber der Basis glatt. Sieben markiert für jede Basisprimzahl regelmäßig\nwiederkehrende teilbare Werte und entfernt deren Primzahlpotenzen.\nExponentenvektoren halten die Zerlegungen fest. Wählt man Beziehungen so,\ndass alle Exponentensummen gerade sind, ist ihr Produkt ein Quadrat $Y^2$.\nWegen $Q(x)\\equiv x^2\\pmod N$ ist es gleichzeitig zum Quadrat des\nProdukts der zugehörigen $x$ kongruent, also zu $X^2$.\n\nAus $X^2\\equiv Y^2\\pmod N$ folgt\n\n$$\nN\\mid(X^2-Y^2)=(X-Y)(X+Y).\n$$\n\nDie Faktoren von $N$ können sich auf die beiden Klammern verteilen.\n$\\operatorname{ggT}(X-Y,N)$ oder $\\operatorname{ggT}(X+Y,N)$ kann dann\neinen Teiler $d$ mit $1<d<N$ liefern. Nicht jede Quadratkongruenz liefert\neinen solchen Teiler; die ggT-Werte müssen geprüft werden.\n\n**2. Sieben**\n\n$40^2<N<41^2$. Nahe bei $\\sqrt N$ sind die Differenzen $x^2-N$ klein;\ndas begünstigt vollständige Zerlegungen über der kleinen Basis, ohne sie\nfür jeden Wert zu garantieren. Da $N\\equiv1\\pmod2$, ist $Q(x)$ für\nungerade $x$ durch $2$ teilbar. Wegen $N\\equiv4\\pmod5$ sind modulo $5$\ndie Klassen $x\\equiv2$ und $x\\equiv3$ passend. Diese Klassen wiederholen\nsich im Abstand $2$ beziehungsweise $5$; so findet man die zu markierenden\nStellen ohne jedes Mal alle Teilbarkeiten neu zu suchen.\n\n| $x$ | $Q(x)$ | Entfernte Basisfaktoren | Rest | Behalten? |\n|---:|---:|---|---:|---|\n| 41 | 32 | $2^5$ | 1 | ja |\n| 42 | 115 | $5$ | 23 | nein |\n| 43 | 200 | $2^3\\cdot5^2$ | 1 | ja |\n| 44 | 287 | keine | 287 | nein |\n| 45 | 376 | $2^3$ | 47 | nein |\n\nNur die Beziehungen zu $41$ und $43$ sind vollständig über $B$ zerlegt:\nDer verbleibende Rest ist jeweils $1$. Ein Rest wie $23$ ist kein\nzulässiger neuer Faktorbasiseintrag in diesem festgelegten Lauf.\n\n**3. Kombination und Faktorgewinn**\n\nIn der Reihenfolge $(2,5)$ sind die Exponentenvektoren $(5,0)$ und $(3,2)$.\nIhre Paritäten sind beide $(1,0)$; ihre Summe modulo $2$ ist $(0,0)$.\nDaher kann man beide Beziehungen kombinieren:\n\n$$\nQ(41)Q(43)=32\\cdot200=2^8\\cdot5^2=80^2.\n$$\n\nMit $X=41\\cdot43=1763$ und $Y=80$ ist also $X^2\\equiv Y^2\\pmod{1649}$.\nDer kleinere Vertreter $X=114$ ist gleichwertig. Somit\n\n$$\n\\operatorname{ggT}(114-80,1649)=\\operatorname{ggT}(34,1649)=17,\n$$\n\n\n$$\n\\operatorname{ggT}(114+80,1649)=\\operatorname{ggT}(194,1649)=97.\n$$\n\nDie Probe $17\\cdot97=1649$ bestätigt die Faktorisierung. Beide Faktoren\nsind echt zwischen $1$ und $N$. Ihre Primzahleigenschaft kann bei Bedarf\nan den Primteilern bis zur jeweiligen Quadratwurzel geprüft werden; sie\nist für die hier verlangte nichttriviale Faktorgewinnung nicht zusätzlich\nnachzuweisen. Nicht die Zerlegung eines einzelnen $Q(x)$, sondern erst\ndie Kombination zum Quadrat und die anschließende ggT-Rechnung faktorisiert\nhier $N$.\n\n**4. Grenzen des einzelnen Schritts**\n\nBei $X=Y=32$ gilt zwar die Quadratkongruenz, aber\n\n$$\n\\operatorname{ggT}(0,1649)=1649,\\qquad\n\\operatorname{ggT}(64,1649)=1.\n$$\n\nBeide Teiler sind trivial. Das ist kein Nachweis, dass $N$ prim ist, und\nauch kein Widerspruch zum Verfahren. Man benötigt eine andere geeignete\nKombination beziehungsweise weitere glatte Beziehungen; reichen sie nicht,\nkann man das Siebintervall oder die Faktorbasis erweitern. Ein Primzahltest\nuntersucht, ob eine Zahl prim ist (je nach Test mit unterschiedlicher\nAussagestärke); ein Faktorisierungsverfahren sucht eine Zerlegung in\nnichttriviale Faktoren. Die Behauptung, beide lieferten stets dieselbe\nArt von Ergebnis, wäre falsch.\n\n# Eine Gesamtbewertung\n\nEs gibt eine Gesamtpunktzahl aus 20 BE und genau ein binäres Gesamtergebnis:\n**bestanden ab 15 BE**, sonst nicht bestanden. Teilpunkte haben keine eigenen\nBestehensgrenzen.\n\nBewerte mathematisch gleichwertige Verfahren und nachvollziehbare Leistungen\nunabhängig vom Ort in der Abgabe. Identische Leistungen zählen nur einmal.\nTeilpunkte wie angegeben, sonst 0,5 BE für eine fachlich sinnvolle, aber\nunvollständige Teilleistung. Ein lokaler Rechen- oder Übertragungsfehler wird\nnicht mehrfach bestraft; richtige nachvollziehbare Folgearbeit behält ihren\nKredit. Ein solcher lokaler Fehler allein löst keine Gesamtpunktkappung aus.\nKnappe richtige Erklärungen und äquivalente Schreibweisen genügen; bestimmte\nSchlüsselwörter oder eine feste Reihenfolge sind nicht erforderlich.\n\n| Kriterium | BE |\n|---|---:|\n| Zusammenhang von Faktorbasis und vollständiger Glattheit (1), Sieben (1), geraden Exponentensummen (1), Quadratkongruenz/Differenzprodukt und nichttrivialen ggT-Faktoren (1) fachsprachlich erläutert. | 4 |\n| Kleine Q-Werte nahe der Quadratwurzel als Suchidee begründet, ohne Glattheit zu garantieren. | 1 |\n| Ungerade x sowie x=2 oder 3 modulo 5 und ihr periodisches Wiederauftreten richtig. | 1 |\n| Fünf Q-Werte je 0,5; korrekte Restbildung nach Entfernen der Basisfaktoren zusammen 0,5. | 3 |\n| Genau 41 und 43 wegen Rest 1 behalten; fremde Restfaktoren ausgeschlossen. | 1 |\n| Beide Exponentenvektoren richtig (1); gerade Summen bzw. Null-Parität und Kombination begründet (1). | 2 |\n| Produkt der Q-Werte und Y=80 (1); X=1763 oder 114 (1); Herkunft der Quadratkongruenz aus den ausgewählten Beziehungen erklärt (1). | 3 |\n| Faktoren 17 und 97 aus ggT bestimmt (je 0,5); Produktprobe und Nichttrivialität erklärt (1). | 2 |\n| Beide ggT-Werte beim Gegenbeispiel als N und 1 mit passender Beurteilung bestimmt. | 1 |\n| Andere Kombination/weitere Beziehungen statt Primheitsbehauptung erläutert (1); Ziele von Primzahltest und Faktorisierung sachgerecht unterschieden (1). | 2 |\n\nDie Gesamtpunktzahl wird vor dem Vergleich mit der Bestehensgrenze auf höchstens 14 BE begrenzt, wenn über die gesamte Abgabe keine fachlich tragfähige Erklärung des Faktorisierungsverfahrens erkennbar ist. Das betrifft insbesondere eine vollständig fehlende Erklärung, wie aus vollständig über der Faktorbasis zerlegten Beziehungen durch gerade Exponentensummen eine Quadratkongruenz entsteht, oder eine vollständig fehlende Erklärung, wie daraus mittels ggT ein nichttrivialer Faktor gewonnen werden kann. Bloß die Endfaktoren zu nennen, fremde Primfaktoren in der festgelegten Basis stillschweigend zuzulassen oder jedes kongruente Quadratepaar ungeprüft als Faktorisierung auszugeben ersetzt diese Kernhandlungen nicht. Ein korrekt kommentierter Rechnungsgang oder eine knappe, gleichwertige allgemeine Begründung an beliebiger Stelle genügt; weder ein bestimmtes Fachwort noch eine zusätzliche Programmausführung oder ein weiterer Primzahltest ist verlangt. Ein lokaler Fehler bei einem Tabellenwert, einem Exponenten oder einem ggT löst bei sonst tragfähigem Verfahren allein keine Kappung aus.\n\nMehrere zutreffende Kappungsgründe führen weiterhin nur zur selben Obergrenze von 14 BE. Danach wird die einzige Gesamtpunktzahl mit 15 BE verglichen. Es gibt keine zusätzlichen Teilbestehensentscheidungen.\n",
+    "solutionContentEn": "# Worked solution: quadratic sieve\n\n**1. Idea and mathematical basis**\n\nThe method seeks small values of $Q(x)=x^2-N$ whose prime factors all\nbelong to a small factor base. Such values are smooth over that base.\nSieving marks periodically recurring values divisible by each base prime\nand removes their prime powers. Exponent vectors record the\nfactorizations. Choosing relations with all exponent sums even makes\ntheir product a square $Y^2$. Since $Q(x)\\equiv x^2\\pmod N$, it is also\ncongruent to the square of the product of the corresponding $x$ values,\nnamely $X^2$.\n\nFrom $X^2\\equiv Y^2\\pmod N$ it follows that\n\n$$\nN\\mid(X^2-Y^2)=(X-Y)(X+Y).\n$$\n\nThe factors of $N$ may be distributed between these two brackets. Then\n$\\gcd(X-Y,N)$ or $\\gcd(X+Y,N)$ can yield a divisor $d$ with $1<d<N$.\nNot every square congruence yields such a divisor; the gcd values must\nbe checked.\n\n**2. Sieving**\n\nWe have $40^2<N<41^2$. Near $\\sqrt N$, the differences $x^2-N$ are small,\nwhich favours complete factorizations over the small base without\nensuring this for every value. Since $N\\equiv1\\pmod2$, $Q(x)$ is divisible\nby $2$ when $x$ is odd. Since $N\\equiv4\\pmod5$, the suitable classes modulo\n$5$ are $x\\equiv2$ and $x\\equiv3$. These classes repeat at intervals of\n$2$ and $5$ respectively, identifying positions to mark without\nindependently searching all divisibility conditions again.\n\n| $x$ | $Q(x)$ | Removed base factors | Remainder | Keep? |\n|---:|---:|---|---:|---|\n| 41 | 32 | $2^5$ | 1 | yes |\n| 42 | 115 | $5$ | 23 | no |\n| 43 | 200 | $2^3\\cdot5^2$ | 1 | yes |\n| 44 | 287 | none | 287 | no |\n| 45 | 376 | $2^3$ | 47 | no |\n\nOnly the relations for $41$ and $43$ factor completely over $B$: each\nleaves remainder $1$. A remainder such as $23$ is not an admissible new\nfactor-base prime in this specified run.\n\n**3. Combination and factor extraction**\n\nIn the order $(2,5)$ the exponent vectors are $(5,0)$ and $(3,2)$.\nBoth have parity $(1,0)$; their sum modulo $2$ is $(0,0)$.\nThey can therefore be combined:\n\n$$\nQ(41)Q(43)=32\\cdot200=2^8\\cdot5^2=80^2.\n$$\n\nThus $X=41\\cdot43=1763$ and $Y=80$ satisfy\n$X^2\\equiv Y^2\\pmod{1649}$. The smaller representative $X=114$ is equivalent.\nConsequently,\n\n$$\n\\gcd(114-80,1649)=\\gcd(34,1649)=17,\n$$\n\n\n$$\n\\gcd(114+80,1649)=\\gcd(194,1649)=97.\n$$\n\nThe check $17\\cdot97=1649$ confirms the factorization. Both factors lie\nstrictly between $1$ and $N$. Their primality could, if needed, be checked\nusing primes up to their respective square roots; no additional primality\nproof is required for the nontrivial factor extraction asked for here.\nFactoring an individual $Q(x)$ alone does not factor $N$: the combination\ninto a square followed by gcd extraction does so in this example.\n\n**4. Limits of an individual step**\n\nFor $X=Y=32$, the square congruence does hold, but\n\n$$\n\\gcd(0,1649)=1649,\\qquad\\gcd(64,1649)=1.\n$$\n\nBoth divisors are trivial. This neither establishes that $N$ is prime nor\ncontradicts the method. One needs a different suitable combination or\nadditional smooth relations; if these are insufficient, the sieving\ninterval or factor base can be enlarged. A primality test investigates\nwhether a number is prime (with a strength of conclusion depending on\nthe test); a factorization method seeks a decomposition into nontrivial\nfactors. Claiming that they always return the same kind of result would\nbe false.\n\n# One overall result\n\nThere is one total score out of 20 points and exactly one binary overall\nresult: **pass at 15 points**, otherwise not passed. Partial marks have no\nseparate pass thresholds.\n\nCredit equivalent mathematical methods and traceable work wherever they\nappear in the submission. Count identical work only once. Award partial\nmarks as specified, otherwise 0.5 points for meaningful but incomplete work.\nDo not repeatedly penalise one local calculation or transcription error;\ncorrect traceable follow-through retains its credit. Such a local error alone\ndoes not trigger an overall cap. Concise correct explanations and equivalent\nnotation are sufficient; no particular wording or fixed order is required.\n\n| Criterion | Points |\n|---|---:|\n| Explains the connected roles of factor base/complete smoothness (1), sieving (1), even exponent sums (1), square congruence/difference product and nontrivial gcd factors (1). | 4 |\n| Explains the search for small Q values near the square root, without claiming guaranteed smoothness. | 1 |\n| Correct odd x, x=2 or 3 modulo 5, and periodic recurrence. | 1 |\n| Five Q values, 0.5 each; correct residuals after removing base factors, 0.5 together. | 3 |\n| Keeps exactly 41 and 43 because their residual is 1; excludes remaining factors outside the base. | 1 |\n| Both exponent vectors correct (1); explains even sums/zero parity and the combination (1). | 2 |\n| Product of Q values and Y=80 (1); X=1763 or 114 (1); explains how the selected relations produce the square congruence (1). | 3 |\n| Obtains 17 and 97 by gcd calculation (0.5 each); product check and nontriviality (1). | 2 |\n| Obtains N and 1 as the two gcd values in the counterexample and evaluates them correctly. | 1 |\n| Explains trying another combination/further relations rather than claiming primality (1); distinguishes aims of primality testing and factorization (1). | 2 |\n\nBefore comparison with the pass threshold, cap the total score at 14 points if the submission as a whole contains no sound explanation of the factorization method. This applies in particular when the explanation of how fully factor-base-smooth relations and even exponent sums yield a square congruence is entirely missing, or when the explanation of how gcd calculation can then extract a nontrivial factor is entirely missing. Merely naming the final factors, silently admitting primes outside the specified factor base, or treating every congruent pair of squares as an unchecked factorization does not replace these core actions. Correctly annotated calculations or a concise equivalent general justification anywhere in the submission are sufficient; no particular technical term, program execution or additional primality test is required. A local error in a table entry, exponent or gcd alone does not trigger the cap when the method is otherwise sound.\n\nMultiple applicable reasons still impose only the same cap of 14 points. Compare the one resulting total with 15 points. There are no additional part-pass decisions.\n",
+    "coveredGoalIds": [
+      "1c1754b7-2cd3-5635-824d-ce93f7b99514"
+    ],
+    "coveredStrands": [
+      "L1"
+    ],
+    "demandLevels": [
+      "AB3"
+    ],
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 15,
+      "steps": [
+        {
+          "id": "factor-method",
+          "points": 4,
+          "description": "Zusammenhang von Faktorbasis und vollständiger Glattheit (1), Sieben (1), geraden Exponentensummen (1), Quadratkongruenz/Differenzprodukt und nichttrivialen ggT-Faktoren (1) fachsprachlich erläutert.",
+          "descriptionEn": "Explains the connected roles of factor base/complete smoothness (1), sieving (1), even exponent sums (1), square congruence/difference product and nontrivial gcd factors (1)."
+        },
+        {
+          "id": "factor-near-root",
+          "points": 1,
+          "description": "Kleine Q-Werte nahe der Quadratwurzel als Suchidee begründet, ohne Glattheit zu garantieren.",
+          "descriptionEn": "Explains the search for small Q values near the square root, without claiming guaranteed smoothness."
+        },
+        {
+          "id": "factor-sieve-classes",
+          "points": 1,
+          "description": "Ungerade x sowie x=2 oder 3 modulo 5 und ihr periodisches Wiederauftreten richtig.",
+          "descriptionEn": "Correct odd x, x=2 or 3 modulo 5, and periodic recurrence."
+        },
+        {
+          "id": "factor-table",
+          "points": 3,
+          "description": "Fünf Q-Werte je 0,5; korrekte Restbildung nach Entfernen der Basisfaktoren zusammen 0,5.",
+          "descriptionEn": "Five Q values, 0.5 each; correct residuals after removing base factors, 0.5 together."
+        },
+        {
+          "id": "factor-smooth-choice",
+          "points": 1,
+          "description": "Genau 41 und 43 wegen Rest 1 behalten; fremde Restfaktoren ausgeschlossen.",
+          "descriptionEn": "Keeps exactly 41 and 43 because their residual is 1; excludes remaining factors outside the base."
+        },
+        {
+          "id": "factor-parity",
+          "points": 2,
+          "description": "Beide Exponentenvektoren richtig (1); gerade Summen bzw. Null-Parität und Kombination begründet (1).",
+          "descriptionEn": "Both exponent vectors correct (1); explains even sums/zero parity and the combination (1)."
+        },
+        {
+          "id": "factor-congruence",
+          "points": 3,
+          "description": "Produkt der Q-Werte und Y=80 (1); X=1763 oder 114 (1); Herkunft der Quadratkongruenz aus den ausgewählten Beziehungen erklärt (1).",
+          "descriptionEn": "Product of Q values and Y=80 (1); X=1763 or 114 (1); explains how the selected relations produce the square congruence (1)."
+        },
+        {
+          "id": "factor-gcd",
+          "points": 2,
+          "description": "Faktoren 17 und 97 aus ggT bestimmt (je 0,5); Produktprobe und Nichttrivialität erklärt (1).",
+          "descriptionEn": "Obtains 17 and 97 by gcd calculation (0.5 each); product check and nontriviality (1)."
+        },
+        {
+          "id": "factor-trivial",
+          "points": 1,
+          "description": "Beide ggT-Werte beim Gegenbeispiel als N und 1 mit passender Beurteilung bestimmt.",
+          "descriptionEn": "Obtains N and 1 as the two gcd values in the counterexample and evaluates them correctly."
+        },
+        {
+          "id": "factor-next-step",
+          "points": 2,
+          "description": "Andere Kombination/weitere Beziehungen statt Primheitsbehauptung erläutert (1); Ziele von Primzahltest und Faktorisierung sachgerecht unterschieden (1).",
+          "descriptionEn": "Explains trying another combination/further relations rather than claiming primality (1); distinguishes aims of primality testing and factorization (1)."
+        }
+      ]
+    }
+  }
+}

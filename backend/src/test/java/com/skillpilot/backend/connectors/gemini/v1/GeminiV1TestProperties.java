@@ -12,8 +12,9 @@ public final class GeminiV1TestProperties {
     public static final String CAPABILITY_SECRET = "skillpilot.gemini.connector.v1.capability-secret=" + CAPABILITY_SECRET_VALUE;
     public static final String GATEWAY_SECRET = "skillpilot.gemini.connector.v1.gateway-secret=" + GATEWAY_SECRET_VALUE;
     public static final String GATEWAY_AUDIENCE = "skillpilot.gemini.connector.v1.gateway-audience=https://mcp-gemini-v1.skillpilot.com/mcp";
+    // Each cached Spring context owns its create-drop schema, including after LRU eviction.
     public static final String CORE_DATASOURCE =
-            "spring.datasource.url=jdbc:h2:mem:gemini-v1-core;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=VALUE";
+            "spring.datasource.url=jdbc:h2:mem:gemini-v1-core-${random.uuid};DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=VALUE";
 
     public static GeminiV1Properties validProperties() {
         GeminiV1Properties properties = new GeminiV1Properties();

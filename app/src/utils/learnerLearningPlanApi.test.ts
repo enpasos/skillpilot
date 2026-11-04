@@ -236,6 +236,44 @@ for (const invalid of ['', '   ', 3, false, {}, []]) {
   assert.throws(() => parseSubjectUpdate({ planCreditText: invalid }), /planCreditText/u)
 }
 
+// These are independent backend fields: implicit credit changes total plan
+// balance without filling a daily or weekly quota based on explicit events.
+for (const periodBasis of ['DAY', 'WEEK'] as const) {
+  for (const completed of [0, 1]) {
+    const periodText = `${periodBasis === 'DAY' ? 'Tagesziel' : 'Wochenziel'} ${completed} von 3`
+    const periodGauge = { completed, target: 3, needlePosition: completed === 0 ? 0 : 1 / 3 }
+    for (const net of [0, 3]) {
+      const planStatusText = net === 0 ? 'im Plan' : '3 Lernziele vorgearbeitet'
+      const backendCreditText = net === 0
+        ? 'Im Plan angerechnet: 6 Ziele, davon 5 implizit erledigt.'
+        : 'Im Plan angerechnet: 9 Ziele, davon 8 implizit erledigt.'
+      const backendSubject = {
+        ...legacySubject,
+        periodText,
+        periodGauge,
+        planStatusText,
+        subjectLine: `Mathematik: ${periodText} · ${planStatusText}`,
+        statusDirection: net === 0 ? 'on_track' : 'ahead',
+        balanceGauge: { net, typicalAmount: 3, scaleLimit: 6, needlePosition: net / 6, severeBehind: false, strongAhead: false },
+        planCreditText: backendCreditText,
+      }
+      const parsedIndependentStatus = parseLearnerPlanStatus({
+        ...parsed.status,
+        periodBasis,
+        periodStart: periodBasis === 'DAY' ? parsed.status.asOf : '2026-09-07',
+        periodEnd: periodBasis === 'DAY' ? parsed.status.asOf : '2026-09-13',
+        statusText: backendSubject.subjectLine,
+        subjects: [backendSubject],
+      })
+      assert.deepEqual(parsedIndependentStatus.subjects[0].periodGauge, periodGauge,
+        `${periodBasis}: total and implicit credit do not replace explicit period progress`)
+      assert.equal(parsedIndependentStatus.subjects[0].balanceGauge?.net, net)
+      assert.equal(parsedIndependentStatus.subjects[0].planCreditText, backendCreditText)
+      assert.equal(parsedIndependentStatus.statusText, backendSubject.subjectLine)
+    }
+  }
+}
+
 const countedSubject = parseSubjectUpdate({
   achievedGoalCount: 10,
   targetGoalCount: 364,
@@ -688,5 +726,38 @@ assert.deepEqual(await previewLearnerLearningPlans('learner-42', previewRequest,
   }) as typeof fetch,
 }), previewResponse)
 assert.equal(previewRequestCount, 1, 'preview never invokes activation or other writes')
+
+
+// The backend already publishes this exact reason. Unknown completion must not
+// be represented as no-open work or a made-up learning-scope result.
+const coverageUnavailableDetail = {
+  ...planDetail,
+  canContinue: false,
+  continueReason: 'assessment-coverage-unavailable',
+  nextEligibleGoal: null,
+  learningScope: null,
+}
+const readableUnavailable = parseLearnerLearningPlanDetail(coverageUnavailableDetail)
+assert.equal(readableUnavailable.planId, planDetail.planId)
+assert.equal(readableUnavailable.revision, planDetail.revision)
+assert.deepEqual(readableUnavailable.blocks, planDetail.blocks)
+assert.equal(readableUnavailable.continueReason, 'assessment-coverage-unavailable')
+assert.equal(readableUnavailable.learningScope, null)
+assert.equal(readableUnavailable.canContinue, false)
+const voluntarilyContinuableDetail = parseLearnerLearningPlanDetail({
+  ...coverageUnavailableDetail,
+  canContinue: true,
+  continueReason: null,
+  nextEligibleGoal: { goalId: 'analysis-1' },
+})
+assert.equal(voluntarilyContinuableDetail.canContinue, true)
+assert.equal(voluntarilyContinuableDetail.learningScope, null)
+assert.deepEqual(voluntarilyContinuableDetail.nextEligibleGoal, { goalId: 'analysis-1' })
+assert.throws(() => parseLearnerLearningPlanDetail({
+  ...coverageUnavailableDetail, canContinue: true,
+}), /continueReason.state/u, 'coverage failure never authorizes continuation by itself')
+assert.throws(() => parseLearnerLearningPlanDetail({
+  ...coverageUnavailableDetail, continueReason: 'unreviewed-reason',
+}), /continueReason/u, 'unknown values remain rejected')
 
 console.log('Learner learning-plan API tests passed')

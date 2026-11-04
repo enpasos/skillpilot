@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "astra-statistics-polynomial-transform-four-20261104-v1",
+  "reviewedAt": "2026-11-04",
+  "reviewerAgent": "/root/astra_statistics_polynomial_content",
+  "reviewerRole": "AstraUltraReviewer",
+  "independentFromAuthor": "/root/sol_directed_prior_stage_qa",
+  "decision": "ACCEPT_FOUR_WHOLE_CONTENT_FORMS_ONLY_NO_GLOBAL_ROLE_PLACEMENT_OR_REQUIRES_APPROVAL",
+  "candidateFreeze": {
+    "handoff": {
+      "path": "tmp/approach-review-20261101/statistics-polynomial-transform-four-whole-forms-20261104-v1/content-review-handoff.json",
+      "sha256": "1269e4d4b366fc0bcdad3ca19e0f084406869fe3a2ac9cb4d2e7026e35623efb",
+      "bytes": 6427
+    },
+    "manifest": {
+      "path": "tmp/approach-review-20261101/statistics-polynomial-transform-four-whole-forms-20261104-v1/review-input-manifest.json",
+      "sha256": "19f39d2b8372947c03cdbae437a11a52d7d49a8ff1c05f8f549a8ae19f5fcaa5",
+      "bytes": 13483
+    },
+    "allManifestFiles": 73,
+    "allHashesVerified": true,
+    "pinnedCanonicalOriginal": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "e724d61189c243e074f5e2b5f038648a50f90488ec475b9a74022ab11fa95b7c",
+      "head": "047ec7fcb9c5c11c3d90c7524ad8fa4e2ab1eec5"
+    }
+  },
+  "scope": {
+    "accepted": "Vollständige eingefrorene Aufgaben, Lösungen und Bewertung in DE/EN, reale Graphik, fachlicher Kompetenzfit, vier eigenständige A- und vier M-Inhaltsentscheidungen für genau diese hypothetischen WholeGoalbytes.",
+    "notAccepted": [
+      "Globale ordinary-to-exam-Umstellung",
+      "Neue Prüfpflicht oder neue/verschobene Level-2-/Stage-/Native-Platzierung",
+      "Neue requires-Kante, auch nicht f5d06f11→6a4716bd",
+      "Automatische Coverage-, Waiver- oder Mastery-Schlüsse aus requires",
+      "807-Atome-Ausschluss oder QA-Erleichterung durch examData",
+      "M7-Gesamtstatus, CI, menschliche Erprobung, Provider-/Produktionsakzeptanz",
+      "Zukünftige Inhalte mit anderem WholeGoal-Hash"
+    ],
+    "denominator": {
+      "atAuthorFreeze": 807,
+      "fourRemainCurricularAtomic": true,
+      "denominatorChangeApproved": false
+    },
+    "currentMovingRootHeadUsedAsApprovalBasis": false
+  },
+  "forms": [
+    {
+      "goalId": "613871f6-ccb2-51fe-aba2-0dd17b86a89e",
+      "key": "decision",
+      "contentDecision": "ACCEPT",
+      "boundWholeCurrentGoal": {
+        "path": "tmp/approach-review-20261101/statistics-polynomial-transform-four-whole-forms-20261104-v1/613871f6-ccb2-51fe-aba2-0dd17b86a89e/current-whole-goal.json",
+        "sha256": "87157e1bb227287e8b46fe82d63119b4d2a6aa5d05c9c4e9dfebfb21368f6847",
+        "bytes": 2155
+      },
+      "boundWholeHypotheticalCandidate": {
+        "path": "tmp/approach-review-20261101/statistics-polynomial-transform-four-whole-forms-20261104-v1/613871f6-ccb2-51fe-aba2-0dd17b86a89e/proposed-whole-goal.draft.json",
+        "sha256": "11e1189131addacfe1d7323158337f07e3e0593dcfcd4768c8452f64bdddbc40",
+        "bytes": 22946
+      },
+      "boundRoleNeutralContent": {
+        "path": "tmp/approach-review-20261101/statistics-polynomial-transform-four-whole-forms-20261104-v1/613871f6-ccb2-51fe-aba2-0dd17b86a89e/role-neutral-whole-form-content.draft.json",
+        "sha256": "7f3025a863d6444b06d58a376a38a72c76173a74292c86db52e205f47104125d",
+        "bytes": 21193
+      },
+      "allSixMarkdownFilesRead": true,
+      "fullCandidateExamDataAndScoringRead": true,
+      "deEnParity": "PASS: same givens, commands, conclusions, weighting, cap and 15/20 threshold",
+      "mathematicsAndAssessmentConclusion": "Die disjunkten Stop-/Fortsetzungspfade wurden über sämtliche 441 Paare pro Parameterfall unabhängig ausgezählt. r=5 verfehlt alpha mit 0.063319; r=6 erfüllt 0.041711/0.927197 und E(N)=26.2364. Beide festen minimalen Schwellen und Vorgängerfälle stimmen. Beschränkung auf zwei Hypothesen und vorgegebene Pläne verhindert falsche globale Optimalitäts- oder Realbestandsbehauptungen. LK/AB3 ist durch verknüpfte Grenzen, adaptives Modell und Aufwand begründet, obwohl die Entwurfsfamilie bewusst vorgegeben ist.",
+      "atomicityDecision": "atomic",
+      "atomicityReason": "Eine zusammenhängende Entscheidungskompetenz: dieselbe Inspektionsregel aus Ereignismodell, zwei Fehlergrenzen und erwartetem Aufwand begründet auswählen. Feste und adaptive Entwürfe sind Vergleichsfälle derselben Kernhandlung; die Modellkritik kontrolliert deren Geltungsbereich. Keine unabhängigen neuen curricularen Ziele entstehen.",
+      "memoryDecision": "no_memory_needed",
+      "memoryReason": "Die zu prüfende Leistung ist kontextabhängige Modellbildung und begründete Regelentscheidung; Binomialwerte dürfen berechnet werden. Kein eigenes Deck für die konkreten Schwellen, Zahlen oder diese eine Inspektionsregel. Ein gegebenenfalls anderswo begründeter Formelabruf wird hier nicht neu als Memory-Pflicht eingeführt.",
+      "globalRolePlacementAndEdgeApproval": false
+    },
+    {
+      "goalId": "0190e463-51a7-4860-9b35-d875530a85ba",
+      "key": "symmetry",
+      "contentDecision": "ACCEPT",
+      "boundWholeCurrentGoal": {
+        "path": "tmp/approach-review-20261101/statistics-polynomial-transform-four-whole-forms-20261104-v1/0190e463-51a7-4860-9b35-d875530a85ba/current-whole-goal.json",
+        "sha256": "d49e431bd2c5a7ef3d47609bae349126efb8c7c46a327256d9c8bcb5bf5dc797",
+        "bytes": 2997
+      },
+      "boundWholeHypotheticalCandidate": {
+        "path": "tmp/approach-review-20261101/statistics-polynomial-transform-four-whole-forms-20261104-v1/0190e463-51a7-4860-9b35-d875530a85ba/proposed-whole-goal.draft.json",
+        "sha256": "d4363bddb807cde6ee536b0c86efb768d28dd2fcbb20586cbfc510b2fb86a5e4",
+        "bytes": 17415
+      },
+      "boundRoleNeutralContent": {
+        "path": "tmp/approach-review-20261101/statistics-polynomial-transform-four-whole-forms-20261104-v1/0190e463-51a7-4860-9b35-d875530a85ba/role-neutral-whole-form-content.draft.json",
+        "sha256": "c8f6456cc7a526d94eaddf58520d0fbd62dd7915d7c83ec75d4144f3b60320e3",
+        "bytes": 14820
+      },
+      "allSixMarkdownFilesRead": true,
+      "fullCandidateExamDataAndScoringRead": true,
+      "deEnParity": "PASS: same givens, commands, conclusions, weighting, cap and 15/20 threshold",
+      "mathematicsAndAssessmentConclusion": "Alle sechs Polynome und Sonderfälle sind korrekt eingeordnet; beide Identitäten gelten nur als Aussagen für alle x. Verdeckte lineare Aufhebung und die zwei Gegenbeispiele stimmen. Die Rubrik schützt beide im Vertrag verlangten Methoden und bestraft einen einzelnen Vorzeichen-/Sonderfallfehler nicht global.",
+      "atomicityDecision": "atomic",
+      "atomicityReason": "Eine zusammenhängende Symmetrieprüfung desselben Polynomvertrags. Identitätsrechnung und Koeffizientenstruktur sind zwei ausdrücklich verlangte Begründungsweisen derselben Eigenschaft, keine zu trennenden Lernziele. Konstanten, Nullpolynom und Gegenbeispiele prüfen die Reichweite derselben Regel.",
+      "memoryDecision": "no_memory_needed",
+      "memoryReason": "Die Identitäten und Exponentenregeln werden an Termauswertung und Gegenbeispielen verstanden und angewandt. Ein zusätzliches Deck ist für dieses Anwendungsziel nicht notwendig; bloßes Abrufen der Wörter gerade/ungerade wird ausdrücklich nicht als Kompetenznachweis gewertet.",
+      "globalRolePlacementAndEdgeApproval": false
+    },
+    {
+      "goalId": "6a4716bd-8038-46bb-b647-0db4a254fee7",
+      "key": "graph-inference",
+      "contentDecision": "ACCEPT",
+      "boundWholeCurrentGoal": {
+        "path": "tmp/approach-review-20261101/statistics-polynomial-transform-four-whole-forms-20261104-v1/6a4716bd-8038-46bb-b647-0db4a254fee7/current-whole-goal.json",
+        "sha256": "04533860b72f70e35ac21107e4acab4b4eff268d795f692acf6e097d4c022249",
+        "bytes": 3039
+      },
+      "boundWholeHypotheticalCandidate": {
+        "path": "tmp/approach-review-20261101/statistics-polynomial-transform-four-whole-forms-20261104-v1/6a4716bd-8038-46bb-b647-0db4a254fee7/proposed-whole-goal.draft.json",
+        "sha256": "242468ebc31120eda316f54f7868c34aa6774a6840ca9aa96dc1511a86aaf0a2",
+        "bytes": 19266
+      },
+      "boundRoleNeutralContent": {
+        "path": "tmp/approach-review-20261101/statistics-polynomial-transform-four-whole-forms-20261104-v1/6a4716bd-8038-46bb-b647-0db4a254fee7/role-neutral-whole-form-content.draft.json",
+        "sha256": "bfda7029fbf470f3568715ae51cfd8d1bd2c373eba3f8c9f38da1a8b30a73734",
+        "bytes": 16629
+      },
+      "allSixMarkdownFilesRead": true,
+      "fullCandidateExamDataAndScoringRead": true,
+      "deEnParity": "PASS: same givens, commands, conclusions, weighting, cap and 15/20 threshold",
+      "mathematicsAndAssessmentConclusion": "Der echte Graph passt zu 0.5(x+2)(x-1)^2. Nullstellen -2/1 mit Vielfachheiten 1/2, P=(0,1), Extrempunkte (-1,2)/(1,0), Vorzeichen und beide Enden stimmen. Ungerader Grad, Mindestgrad 3 und obere Grenze 4 begründen genau Grad 3. Der höhere Term mit 1+x² beweist die ausdrücklich auf reduzierte Informationen bezogene Nicht-Eindeutigkeit. Keine Ableitung nötig; graphische Randpfeile sind im Text als bekannt stipuliert.",
+      "atomicityDecision": "atomic",
+      "atomicityReason": "Eine inverse Graphinterpretation: aus beobachteten Merkmalen Grad oder passenden Term herleiten und die Informationsgrenzen prüfen. Ablesen, Vielfachheit, Gradschluss, Faktorbestimmung und Gegenkonstruktion sind Teilschritte dieser Kompetenz. Der Vertrag ist disjunktiv; kein zusätzliches getrenntes Grad- und Termbestehen.",
+      "memoryDecision": "no_memory_needed",
+      "memoryReason": "Die entscheidende Leistung ist Auswertung einer konkreten Grafik mit begründeter Modellwahl und Unsicherheitsgrenze. Weder Punktkoordinaten noch der Beispielterm sind dauerhafte Abrufgegenstände. Kein eigenes Memory-Deck gerechtfertigt.",
+      "globalRolePlacementAndEdgeApproval": false
+    },
+    {
+      "goalId": "e33e75e3-eae5-5a09-862f-d1a11176373f",
+      "key": "transformations",
+      "contentDecision": "ACCEPT",
+      "boundWholeCurrentGoal": {
+        "path": "tmp/approach-review-20261101/statistics-polynomial-transform-four-whole-forms-20261104-v1/e33e75e3-eae5-5a09-862f-d1a11176373f/current-whole-goal.json",
+        "sha256": "650f44e732ba4c85f44e268d9981d72b6a285bf15c3fe3fa7517d15b2f92f5de",
+        "bytes": 2684
+      },
+      "boundWholeHypotheticalCandidate": {
+        "path": "tmp/approach-review-20261101/statistics-polynomial-transform-four-whole-forms-20261104-v1/e33e75e3-eae5-5a09-862f-d1a11176373f/proposed-whole-goal.draft.json",
+        "sha256": "f11404b3e39bdb41bac72d33b4689b4450e6b204ca66740df62ed53e0c16a058",
+        "bytes": 17987
+      },
+      "boundRoleNeutralContent": {
+        "path": "tmp/approach-review-20261101/statistics-polynomial-transform-four-whole-forms-20261104-v1/e33e75e3-eae5-5a09-862f-d1a11176373f/role-neutral-whole-form-content.draft.json",
+        "sha256": "3be2d510982769cbb6327495186384ef081a8ba2eb23131ef9c35da836605f8b",
+        "bytes": 15705
+      },
+      "allSixMarkdownFilesRead": true,
+      "fullCandidateExamDataAndScoringRead": true,
+      "deEnParity": "PASS: same givens, commands, conclusions, weighting, cap and 15/20 threshold",
+      "mathematicsAndAssessmentConclusion": "Alle Punktabbildungen und allgemeinen/konkreten Merkmale stimmen: (u+t,u²+1), (u,a e^u), (u/b,sin u); bei b=2 bzw. 1/2 Perioden pi bzw. 4pi und erste Maxima pi/4 bzw. pi. Die Positivitätsannahmen verhindern unerwähnte Spiegelungsfälle. H_a kann auch als horizontal verschobene Exponentialfunktion beschrieben werden; die Referenz wählt korrekt die abgefragte vertikale Skalierung und beansprucht keine einzigartige Darstellung.",
+      "atomicityDecision": "atomic",
+      "atomicityReason": "Eine Transformationskompetenz über bekannte Funktionsklassen hinweg. Verschiebung sowie vertikale und horizontale Skalierung werden durch dieselbe Parameter-zu-Punktabbildung und ihre Graphmerkmale erklärt. Die drei Klassen sind Prüfbeispiele dieser gemeinsamen Operation, keine Erweiterung auf unabhängige Kurvendiskussion, Integration oder wechselnde Funktionstypen.",
+      "memoryDecision": "no_memory_needed",
+      "memoryReason": "Parameterwirkungen werden aus Punktkoordinaten algebraisch oder geometrisch hergeleitet. Ein Deck für diese exemplarischen Parameterwerte und Merkmalslisten würde die geprüfte Begründungsleistung nicht ersetzen. Keine eigenständige notwendige Abrufliste entsteht.",
+      "globalRolePlacementAndEdgeApproval": false
+    }
+  ],
+  "independentEvidence": {
+    "probeReport": {
+      "path": "tmp/approach-review-20261101/astra-statistics-polynomial-transform-four-20261104-v1/independent-probes.json",
+      "sha256": "5b14de38f899321253b9654ac3bcdb5b073bc4209dc7f4fc9a0458be5813efac",
+      "bytes": 26275
+    },
+    "checks": 123,
+    "rubricCases": {
+      "path": "tmp/approach-review-20261101/astra-statistics-polynomial-transform-four-20261104-v1/independent-rubric-cases.json",
+      "sha256": "fb34e47795fd874df8242140dcb25a6fdbb6c3a249187f6bf9cf9b40fe0fa808",
+      "bytes": 22309
+    },
+    "reviewerManualCaseCount": 16,
+    "renderingAndRealFingerprintFunctions": {
+      "path": "tmp/approach-review-20261101/astra-statistics-polynomial-transform-four-20261104-v1/independent-render-and-fingerprints.json",
+      "sha256": "bc69df1300f0cd8e4aa77aaedced55fc2adc49c648863b08a4be15ee106db5bd",
+      "bytes": 8527
+    },
+    "renderedFields": 16,
+    "katexExpressions": 476,
+    "katexErrors": 0,
+    "currentAmRowsVerifiedFromPinnedRegisteredFiles": 8,
+    "amRowsIndependentlyRecomputedAndComparedToActualFunctions": 8
+  },
+  "visualReview": {
+    "decision": "ACCEPT_EXACT_TASK_IMAGE_BYTES",
+    "png": {
+      "path": "tmp/approach-review-20261101/statistics-polynomial-transform-four-whole-forms-20261104-v1/6a4716bd-8038-46bb-b647-0db4a254fee7/assets/polynomial-graph-v1.png",
+      "sha256": "af8f22906e569ed1dd6dd39aaf4cdf439fcd7c750c7f51567bd936d559ecef76",
+      "bytes": 55832
+    },
+    "independentBrowserScreenshot": {
+      "path": "tmp/approach-review-20261101/astra-statistics-polynomial-transform-four-20261104-v1/independent-graph-browser.png",
+      "sha256": "e96037460f3f02c0f53b4f033291ffb69b26c9737c6b8a9aa70164bd8e036ca0",
+      "bytes": 31722
+    },
+    "actualImagesViewed": [
+      "original 1280x1280 task PNG",
+      "author actual browser image",
+      "reviewer actual Chromium image at width 780",
+      "existing f5d06f11 actual parabola image"
+    ],
+    "observations": "A/B/P, Einheitsschritte, -2/1/0, Wendung der Kurve und beide Endpfeile sind lesbar und korrekt; A liegt nahe am -2-Label, überdeckt die Angabe aber nicht. Die Pixelmaßstäbe beider Achsen sind unterschiedlich, die numerischen Schritte ausdrücklich je 1; keine Winkel-/Längentreue wird beansprucht. Alttext liefert eine gleichwertige barrierearme Bildbeschreibung. Der Term wird im Bild nicht verraten.",
+    "limits": "Eigene lokale Browserprüfung; kein Beweis tatsächlicher App-/Provideranzeige. Public-Materialisierung des exakten PNG bleibt Integrationsarbeit."
+  },
+  "sourceReview": {
+    "decision": "CONTENT_FIT_CONFIRMED_WITH_DOCUMENT_HEADER_FINDING",
+    "officialPdfContentActuallyRead": true,
+    "originalMappingsNotChanged": true,
+    "decisionRuleSourceBasis": "Die Entscheidungskompetenz ist über das tatsächlich eingefrorene HE-Altsourceziel f2f3c78f und dessen Mapping gebunden. Der allgemeine offizielle Q4.2-Text wurde zusätzlich gelesen; die konkrete adaptive Inspektionsaufgabe bleibt eine eigene SkillPilot-Aufgabe und keine amtlich vorgeschriebene Zweistufenprüfung.",
+    "correctDocumentBindings": "independent-probes.json/sourceDocumentResolution"
+  },
+  "existingExamReuse": {
+    "path": "tmp/approach-review-20261101/astra-statistics-polynomial-transform-four-20261104-v1/existing-whole-exam-reuse-and-preparation.json",
+    "sha256": "4847df5d2f7482ea67069d7dfb45e7602896c0311eb8a2cb89a9d6c88885f8db",
+    "bytes": 5490
+  },
+  "findings": [
+    {
+      "id": "SOURCE-DOCUMENT-HEADER",
+      "severity": "medium-evidence",
+      "blocksContentAcceptance": false,
+      "blocksUsingHeaderAsExactSourceAttribution": true,
+      "location": "existing-source-and-scope-context.json records[0].sourceDocument and records[2].sourceDocument",
+      "finding": "Die autorenseitigen Sammelheader nennen JGST5 für die beiden BY-J10-Polynomziele und den HE-KC für die tatsächlich aus G8/G9-Lehrplänen stammenden Symmetriezeilen. Die vollständigen SourceGoals/Passages nennen dagegen die richtigen Dokumente. Das ist ein unzutreffender dokumentbezogener Locator, kein Fehler der Mathematikaufgaben.",
+      "verification": "Die Original-Source-Extraction-/Mappingbytes stimmen. Die tatsächlichen lokalen PDFs JGST10, HE G8, HE G9 und HE Oberstufe wurden mit pdftotext gelesen. Die fachlichen Passagen wurden wiedergefunden. Die richtige Dokumentauflösung samt tatsächlichem PDF-SHA steht in independent-probes.json/sourceDocumentResolution.",
+      "requiredAction": "Vor Verwendung der Paketheader als Quellenbeleg die entsprechende Sammlung versioniert berichtigen oder ausdrücklich das korrekte Review-Supplement verwenden. Frozen v1 nicht überschreiben. Keine neue bundesweite Source-Coverage daraus ableiten."
+    },
+    {
+      "id": "AUTHOR-BOUNDARY-CASE-DETAIL",
+      "severity": "low-evidence",
+      "blocksContentAcceptance": false,
+      "location": "author-rubric-counterchecks.json cases named threshold fourteen/fifteen",
+      "finding": "Mehrere 14/15-Autorenfälle beschreiben nur unspezifizierte unvollständige Details mit einer vorgegebenen Punktliste. Das prüft Summenarithmetik, ist aber kein unabhängig nachvollziehbarer konkreter Antwortfall. Die Aussage 32 konkrete Gegenfälle ist daher zu weit.",
+      "requiredAction": "Für die Reviewaussage die 16 hier eigenständig formulierten Fälle verwenden. Keine automatische semantische Grader- oder Wirksamkeitsbehauptung."
+    }
+  ],
+  "roleAndPlacement": {
+    "decision": "NOT_APPROVED_SEPARATE_SCOPE_EFFECT_REVIEW_REQUIRED",
+    "reason": "Eine Inhaltsfreigabe rechtfertigt keine zusätzlichen Pflichtprüfungen in bereits versorgten Scopes. Insbesondere e33 darf aus diesem Paket nicht global zur verpflichtenden Prüfung werden. Neue Kubikinhalte allein rechtfertigen keinen weiteren obligatorischen Nachweis, wenn eine bereits ausgewählte Form einen geeigneten begrenzten Nachweis liefert.",
+    "rootReportedScopeNumbersIndependentlyValidated": false
+  },
+  "amEvidence": {
+    "bindingReport": {
+      "path": "tmp/approach-review-20261101/astra-statistics-polynomial-transform-four-20261104-v1/conditional-am-row-bindings.json",
+      "sha256": "a3f0e5d685a2621efc0f8f1a66c181546470c349cb53f07ea1e5bb73990e2597",
+      "bytes": 22096
+    },
+    "semanticAtomicityRows": {
+      "path": "tmp/approach-review-20261101/astra-statistics-polynomial-transform-four-20261104-v1/content-only-conditional-semantic-atomicity.review.jsonl",
+      "sha256": "2e3d3379252dd209570d741cd3e0bde6193864828a520c46c8df2873cbb9f3b3",
+      "bytes": 4469
+    },
+    "memoryRows": {
+      "path": "tmp/approach-review-20261101/astra-statistics-polynomial-transform-four-20261104-v1/content-only-conditional-memory-card-review.review.jsonl",
+      "sha256": "1524a73341fe8ac9289a3641a6580e0b28496389aed9795375969f51ea15ea61",
+      "bytes": 4200
+    },
+    "registeredLedgerWrites": false,
+    "activationApproved": false,
+    "revalidationRequiredIfIdentityOrSemanticsChanges": true
+  },
+  "actionsTaken": {
+    "rootFilesModified": false,
+    "authorFreezeModified": false,
+    "productionTouched": false,
+    "gitWrites": false,
+    "subagentsUsed": false
+  },
+  "limitations": [
+    "Das Urteil ist KI-Inhaltsreview, keine menschliche Prüfung oder Wirksamkeitsstudie.",
+    "Semantische Rubrikfälle wurden von der Reviewerinstanz beurteilt; Punktarithmetik ist maschinell geprüft, semantisches Benoten nicht automatisiert.",
+    "Die 73-File-Freeze und 047ec7-Basis sind maßgeblich. Parallele Root-Importe sind nicht Bestandteil dieses Inhaltsurteils."
+  ]
+}

@@ -111,6 +111,27 @@ interface GrandfatheredOccurrence {
  * the check until the occurrence is reviewed again.
  */
 const grandfatheredOccurrences: GrandfatheredOccurrence[] = [
+  // Byte-exact author attribution retained with the independently reviewed
+  // geometry forms. This historical source copy remains hash-bound; active prose
+  // and every other occurrence still follow the glossary.
+  {
+    ruleId: 'TRM-001',
+    path: 'curricula/DE/Gymnasium/assessments/mathematik/geometry-two-same-identity-2026-11-03-v1/reviews/original-author-and-content/ATTRIBUTION.md',
+    line: 4,
+    column: 12,
+    found: 'Wissenslandschaft',
+    lineSha256: '9a6761e39b215afb3d8647af653c3c939fc2636ee62a022f394542f983d92f38',
+  },
+  // Byte-exact archived copy of the already approved public mission wording below.
+  // Its frozen-generator-inputs manifest binds the historical source bytes.
+  {
+    ruleId: 'TRM-001',
+    path: 'docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/reviewed-candidate/independent-probes/frozen-generator-host/app/src/utils/skillPilotOverviewCopy.ts',
+    line: 97,
+    column: 47,
+    found: 'Wissenslandschaften',
+    lineSha256: '7bebb5107399a1b5f33a292f96816ed3694ef40ae3d4b5a8cf1b6dd9af8ef8c7',
+  },
   // Exact source/licensing and author-script wording in two sealed inactive
   // Chemistry packets from 2026-10-16. Preserve their reviewed historical bytes;
   // current prose and any changed line still have to use the glossary terms.

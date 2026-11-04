@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-bounded-preparation-correction",
+  "reviewerAgent": "/root/astra_scope_and_approach_final",
+  "independentContentCrossCheck": "/root/astra_math_endpoint_review",
+  "decision": "PASS_FOR_EXACT_REQUIREMENT_REPLACEMENT_ONLY",
+  "input": {
+    "path": "tmp/approach-review-20261101/common-offline-canonical-math.released.json",
+    "sha256": "9c9a273a6b320fbfeba72567094327f4236b58f354836203aac98d7d70050bce"
+  },
+  "goalId": "4c319dfd-ebb1-504b-a036-c780e1915900",
+  "beforeWholeGoalNormalizedSha256": "f5a585040ad65d3d6550692b31a93ddbaab448d88e212de6480a62c0809dc33e",
+  "expectedBeforeRequires": [
+    "647ec09d-68ae-57db-9ca4-aeb2da4218f1",
+    "07be4b71-b7e0-5dd1-be0c-9f590f3db3f3",
+    "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
+    "fbcb4ad3-786d-5365-94ba-b105660694a5",
+    "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+    "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76",
+    "27bdc580-ba17-5399-bf02-48f354846d1d"
+  ],
+  "replacementRequires": [
+    "647ec09d-68ae-57db-9ca4-aeb2da4218f1",
+    "07be4b71-b7e0-5dd1-be0c-9f590f3db3f3",
+    "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
+    "fbcb4ad3-786d-5365-94ba-b105660694a5",
+    "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+    "f76d00dc-6b31-59cd-b01a-3610eadc9908",
+    "27bdc580-ba17-5399-bf02-48f354846d1d"
+  ],
+  "unchangedExamDataNormalizedSha256": "3145173d7c1f2c06f28b72be9bdb491dd3d190de134af52ab5be96a1e49bb05f",
+  "unchangedTaskSha256": "109084f562f22dcca4ef9b3eeb4134665516281cefe2d68be7ca2e40d1b14e32",
+  "unchangedSolutionSha256": "5105322d6df9d1094d825d6f8b2dab136be464c73fbae563a28418537bb92682",
+  "unchangedScoringNormalizedSha256": "3add7413320c35f626763432ad683d7e6c5ff3f03ba44ee9a528dee910f59c29",
+  "unchangedCoveredGoalIds": [
+    "647ec09d-68ae-57db-9ca4-aeb2da4218f1",
+    "07be4b71-b7e0-5dd1-be0c-9f590f3db3f3",
+    "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
+    "fbcb4ad3-786d-5365-94ba-b105660694a5"
+  ],
+  "rationale": "Die Aufgabe liefert F-Ableitung und Newton-Iterationsformel; die volle Tangentennullstellen-Deutung und allgemeine Newtonkompetenz von 0c7 sind keine notwendige Vorbereitung. Teil1 fordert dagegen den Schluss aus positiver Ableitung auf strenge Monotonie und Eindeutigkeit. Der vorhandene f76-Vertrag ist dafür die engere wirkliche Vorbereitung. Sein Gegenbeispielteil ist Satzverständnis-Vorbereitung, kein neuer Coverageclaim.",
+  "invariants": [
+    "Only this requires-list replacement; other six requirements and all other goal fields unchanged.",
+    "No new goal, no task/solution/scoring/coverage changes.",
+    "Existing mastery remains valid; no requalification or coverage mastery transfer.",
+    "Earlier independent review receipts remain immutable; this is a narrowly scoped follow-up.",
+    "Final canonical bytes, complete inherited atomic DAG and actual projection deltas must be rechecked."
+  ]
+}

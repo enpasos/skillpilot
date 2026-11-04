@@ -1,0 +1,746 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "independent-bounded-duration-source-scope-review",
+  "reviewDate": "2026-11-01",
+  "reviewerAgent": "/root/astra_scope_and_approach_final",
+  "authorIndependent": true,
+  "verdict": "PASS_EXPLICIT_DISPOSITIONS_WITH_ONE_SOURCE_CORRECTION",
+  "scope": "Exactly nine ordinary goals and two assessments in HE/RP/SH affected by content-rebase duration behavior; corresponding combined-source consistency included.",
+  "fullSourceMigration": false,
+  "technicalAcceptance": false,
+  "m7Acceptance": false,
+  "canonical": {
+    "path": "tmp/approach-review-20261101/common-offline-canonical-math.integration-candidate.json",
+    "sha256": "3a3792d14057854c79a3d8c4d38cd98dd6e28e936865ebd3447107404b58474c"
+  },
+  "normalization": "Complete objects: UTF-8 Python json.dumps ensure_ascii=False sort_keys=True separators=(comma,colon).",
+  "primaryEvidence": [
+    {
+      "sourceId": "HE-KC",
+      "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+      "sha256": "e9f33cbf4a9c7839670a98ce4b4676abc12d76536c7b7a113782f8c4c1ec05bd",
+      "printedPages": [
+        16,
+        17,
+        19,
+        20,
+        21,
+        24,
+        25,
+        29
+      ],
+      "role": "Binding competency curriculum; process/content composition, no grade inferred from canonical phase"
+    },
+    {
+      "sourceId": "HE-G8",
+      "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/g8-mathematik.pdf",
+      "sha256": "3f9df43b8b7f3b11bae47016ecc4f778f08c7d6588237e46cf10d57fc40ca6e9",
+      "printedPages": [
+        20,
+        21,
+        26,
+        27,
+        33
+      ],
+      "role": "Existing official grade-sequencing reference; mandatory and optional entries distinguished"
+    },
+    {
+      "sourceId": "HE-G9",
+      "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf",
+      "sha256": "9325e34d90626faa5c42e800b74ef78c61a315da56e7fe20b368807448ad5749",
+      "printedPages": [
+        26,
+        31
+      ],
+      "role": "Existing official grade-sequencing reference; mandatory and optional entries distinguished"
+    },
+    {
+      "sourceId": "RP",
+      "path": "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_I.pdf",
+      "sha256": "005085fa940a3dfd7619ea274f5e16ee34c50ba452223774aca19fb4025abe61",
+      "printedPages": [
+        11,
+        35,
+        36,
+        43,
+        59,
+        60,
+        61,
+        62,
+        63,
+        90,
+        102,
+        103
+      ],
+      "role": "Existing primary framework; printed page labels"
+    },
+    {
+      "sourceId": "SH",
+      "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+      "sha256": "17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28",
+      "printedPages": [
+        24,
+        25,
+        35,
+        36
+      ],
+      "role": "Existing primary Fachanforderungen; printed page labels"
+    }
+  ],
+  "mappingContextBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sha256": "167120e1f19f954ab90880f562f399324628a809ddb37b4b52513204a13e1026"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sha256": "2c6c42f7eea284ffbcd8973b4e299ec0370b02c6c8199922111c207ef455daa6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sha256": "632e178911d6c8bbd6e0457da27a46544bc12ed1a5609d83b315eb694deae4b9"
+    }
+  ],
+  "intrinsicWholeGoalReviewContext": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-037a-diagrams-and-first-calculus-19-v1/resolutions-current-carryover-v1/80c232f1-8f72-5829-9dbe-5a610ccab3be.resolution.json",
+      "sha256": "c48cdb8b89843ee21cfa6e0d960a734684fe731e52106f6fca60c868a0ba4492",
+      "goalId": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+      "role": "Whole-goal contract and understanding/transfer context only; not country scope proof",
+      "finalText": {
+        "titleDe": "Achsen, Skalen und Einheiten lesen",
+        "titleEn": "Read axes, scales and units",
+        "descriptionDe": "Die lernende Person kann bei Diagrammen Achsenbeschriftung, Skalierung und Einheiten korrekt lesen und daraus Werte bzw. Aussagen ableiten.",
+        "descriptionEn": "The learner can read axis labels, scaling and units correctly and derive values or statements from them."
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-037a-diagrams-and-first-calculus-19-v1/resolutions-current-carryover-v1/fcfbff12-bd03-52ec-b242-a693212b3d2b.resolution.json",
+      "sha256": "572cdbfbdfb5af13b434f64bf7f22ed8bc8693934132a143b397d99cb91e3666",
+      "goalId": "fcfbff12-bd03-52ec-b242-a693212b3d2b",
+      "role": "Whole-goal contract and understanding/transfer context only; not country scope proof",
+      "finalText": {
+        "titleDe": "Aussagen anhand von Diagrammen prüfen",
+        "titleEn": "Check claims using diagrams",
+        "descriptionDe": "Die lernende Person kann Aussagen anhand von Diagrammen prüfen, Belege aus dem Diagramm anführen und irreführende Darstellungen (z. B. abgeschnittene Achsen) erkennen.",
+        "descriptionEn": "The learner can check claims using diagrams, cite evidence from the diagram and detect misleading representations (e.g. truncated axes)."
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-037a-diagrams-and-first-calculus-19-v1/resolutions-current-carryover-v1/496f16a0-c031-5753-b988-d6cd3cab595e.resolution.json",
+      "sha256": "2d86509f24c8867c0e2ab9b057c98e6ba8a5448aea28ef6985f236669b6be7d7",
+      "goalId": "496f16a0-c031-5753-b988-d6cd3cab595e",
+      "role": "Whole-goal contract and understanding/transfer context only; not country scope proof",
+      "finalText": {
+        "titleDe": "Kennwerte und Trends deuten",
+        "titleEn": "Interpret key values and trends",
+        "descriptionDe": "Die lernende Person kann aus Diagrammen typische Kennwerte bestimmen (z. B. Steigung, Maximum, Schnittpunkte) und Trends inhaltlich deuten.",
+        "descriptionEn": "The learner can determine typical key values from diagrams (e.g. slope, maximum, intersections) and interpret trends meaningfully."
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-037a-diagrams-and-first-calculus-19-v1/resolutions-current-carryover-v1/d668c22d-caeb-5e91-8980-721c931a2bcf.resolution.json",
+      "sha256": "e34252d0787d563447ec56691dbecde9b25387a276bdd2c5f4ce942ca6c9922f",
+      "goalId": "d668c22d-caeb-5e91-8980-721c931a2bcf",
+      "role": "Whole-goal contract and understanding/transfer context only; not country scope proof",
+      "finalText": {
+        "titleDe": "Missverständnisse erklären und korrigieren",
+        "titleEn": "Explain and correct misconceptions",
+        "descriptionDe": "Die lernende Person kann typische Fehlinterpretationen bei Diagrammen benennen, verständlich korrigieren und alternative, klarere Darstellungen vorschlagen.",
+        "descriptionEn": "The learner can name typical misinterpretations in diagrams, correct them clearly and propose alternative, clearer representations."
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-029r-j8-interest-duration-revised-1-v1/resolutions/fc34449a-fbf4-574c-884f-ecdf48b42d2e.resolution.json",
+      "sha256": "669e578c3c67ddbe02cae5e1db624ccf30621fd9d96e31bc61055da09d2dc0fb",
+      "goalId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+      "role": "Whole-goal contract and understanding/transfer context only; not country scope proof",
+      "finalText": {
+        "titleDe": "Laufzeit tabellarisch näherungsweise bestimmen",
+        "titleEn": "Estimate duration using a spreadsheet",
+        "descriptionDe": "Die lernende Person kann mit einer Tabellenkalkulation die Laufzeit in einfachen Finanzsituationen als Anzahl der Zins- oder Zahlungsperioden näherungsweise bestimmen und das Ergebnis im Kontext prüfen.",
+        "descriptionEn": "The learner can use a spreadsheet to estimate the term in simple financial situations as a number of interest or payment periods and check the result in context."
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-029dr-j8-interest-payment-amount-final-recheck-1-v1/resolutions/f6574cdc-e29c-5a8f-a009-9f28b3bcf9be.resolution.json",
+      "sha256": "c3a20657db666801626d3f1978e16fa2d5caba76eb2dfdbf6ef95606de795dd6",
+      "goalId": "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+      "role": "Whole-goal contract and understanding/transfer context only; not country scope proof",
+      "finalText": {
+        "titleDe": "Tilgung oder Sparrate tabellarisch näherungsweise bestimmen",
+        "titleEn": "Estimate repayment or savings rate using a spreadsheet",
+        "descriptionDe": "Die lernende Person kann mit einer Tabellenkalkulation einen regelmäßigen Tilgungsbetrag oder eine regelmäßige Sparrate für ein vorgegebenes Finanzziel näherungsweise bestimmen und anhand der berechneten Restschuld- oder Guthabenentwicklung im Kontext prüfen.",
+        "descriptionEn": "The learner can use a spreadsheet to estimate the regular repayment amount or savings contribution needed for a given financial target and check it in context using the calculated development of the remaining debt or balance."
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-029-j8-interest-spreadsheet-parameters-3-v1/resolutions-stable-current-carryover-1-v1/1842da92-ca2c-5fed-a946-e6413a6285bb.resolution.json",
+      "sha256": "9185011884065c58064e74d5ed02502bb01b255927f22db4d99c8d39a9f4f49d",
+      "goalId": "1842da92-ca2c-5fed-a946-e6413a6285bb",
+      "role": "Whole-goal contract and understanding/transfer context only; not country scope proof",
+      "finalText": {
+        "titleDe": "Zinssatz tabellarisch näherungsweise bestimmen",
+        "titleEn": "Estimate an interest rate using a spreadsheet",
+        "descriptionDe": "Die lernende Person kann mit einer Tabellenkalkulation den Zinssatz in einfachen Finanzsituationen näherungsweise bestimmen und das Ergebnis im Kontext prüfen.",
+        "descriptionEn": "The learner can use a spreadsheet to estimate the interest rate in simple financial situations and check the result in context."
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-27/batch-004-seki-repair-split-6-current-v3/resolutions/671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6.resolution.json",
+      "sha256": "8e0159b29f3e13e2369309f169b73b4122f6ca649f44edc254adbb3ce0c63b13",
+      "goalId": "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+      "role": "Whole-goal contract and understanding/transfer context only; not country scope proof",
+      "finalText": {
+        "titleDe": "Verhältnisgleichungen lösen und prüfen",
+        "titleEn": "Solve and check ratio equations",
+        "descriptionDe": "Die lernende Person kann Verhältnisgleichungen durch begründete Äquivalenzumformungen lösen, dabei notwendige Definitionsbedingungen beachten und gefundene Lösungen durch Einsetzen in die Ausgangsgleichung prüfen.",
+        "descriptionEn": "The learner can solve ratio equations using justified equivalent transformations, observe any necessary domain restrictions, and check the solutions found by substituting them into the original equation."
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-031s-final-corrections-and-dependent-context-5-v1/resolutions-stable-current-carryover-1-v1/fa0b6b69-ce54-4711-90e6-26f27249cd71.resolution.json",
+      "sha256": "f9a1146a0177987af101a6c231aa6c230f962ca84fd3f14969dd271f1e53bb4b",
+      "goalId": "fa0b6b69-ce54-4711-90e6-26f27249cd71",
+      "role": "Whole-goal contract and understanding/transfer context only; not country scope proof",
+      "finalText": {
+        "titleDe": "Lösungswege für Klammer- und Verhältnisgleichungen vergleichen",
+        "titleEn": "Compare solution methods for bracketed and ratio equations",
+        "descriptionDe": "Die lernende Person kann nach dem Lösen einer linearen Klammergleichung und einer Verhältnisgleichung die jeweils tragende Struktur – Distributivgesetz beziehungsweise Proportionalität mit zulässigen Nennern – erläutern, Gemeinsamkeiten und Unterschiede der zulässigen Umformungen vergleichen und die erhaltenen Lösungen durch Einsetzen in die jeweilige Ausgangsgleichung prüfen.",
+        "descriptionEn": "After solving a bracketed linear equation and a ratio equation, the learner can explain the governing structure in each case—the distributive law or proportionality with admissible denominators—compare similarities and differences in the admissible transformations, and check the obtained solutions by substituting them into the respective original equation."
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "goalId": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+      "title": "Achsen, Skalen und Einheiten lesen",
+      "description": "Die lernende Person kann bei Diagrammen Achsenbeschriftung, Skalierung und Einheiten korrekt lesen und daraus Werte bzw. Aussagen ableiten.",
+      "wholeGoalSha256": "f74c47e912342de6bc82090b6391f7110f0cf3f32773b24839a368324e331738",
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "scopes": {
+        "jurisdictions": [
+          "DE-HE",
+          "DE-RP",
+          "DE-SH"
+        ],
+        "durationModels": [
+          "G8",
+          "G9"
+        ],
+        "pureS1": true,
+        "combinedScopes": [
+          "GK",
+          "LK"
+        ]
+      },
+      "evidence": [
+        "HE-KC:16-17,20-21,24-25,29",
+        "RP:35-36,59,63",
+        "SH:24-25,35-36"
+      ],
+      "reason": "The complete diagram contract is supported by retrieving values/units, functional and statistical interpretation, comparing/evaluating representations, identifying misleading scaling and communicating a clearer correction. These are explicit content-plus-process competencies, not promotion by requires or canonical J7. Native placement only below SII was insufficient.",
+      "placement": "Place the existing IDs under actual S1 in the six HE/RP/SH generic combined source views; combined target sets unchanged. Preserve the independently existing pure-SII selections."
+    },
+    {
+      "goalId": "fcfbff12-bd03-52ec-b242-a693212b3d2b",
+      "title": "Aussagen anhand von Diagrammen prüfen",
+      "description": "Die lernende Person kann Aussagen anhand von Diagrammen prüfen, Belege aus dem Diagramm anführen und irreführende Darstellungen (z. B. abgeschnittene Achsen) erkennen.",
+      "wholeGoalSha256": "63e25ea504b95809c7c9d2694221af18230e4ecf6d9ff440e454064aac927fd3",
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "scopes": {
+        "jurisdictions": [
+          "DE-HE",
+          "DE-RP",
+          "DE-SH"
+        ],
+        "durationModels": [
+          "G8",
+          "G9"
+        ],
+        "pureS1": true,
+        "combinedScopes": [
+          "GK",
+          "LK"
+        ]
+      },
+      "evidence": [
+        "HE-KC:16-17,20-21,24-25,29",
+        "RP:35-36,59,63",
+        "SH:24-25,35-36"
+      ],
+      "reason": "The complete diagram contract is supported by retrieving values/units, functional and statistical interpretation, comparing/evaluating representations, identifying misleading scaling and communicating a clearer correction. These are explicit content-plus-process competencies, not promotion by requires or canonical J7. Native placement only below SII was insufficient.",
+      "placement": "Place the existing IDs under actual S1 in the six HE/RP/SH generic combined source views; combined target sets unchanged. Preserve the independently existing pure-SII selections."
+    },
+    {
+      "goalId": "496f16a0-c031-5753-b988-d6cd3cab595e",
+      "title": "Kennwerte und Trends deuten",
+      "description": "Die lernende Person kann aus Diagrammen typische Kennwerte bestimmen (z. B. Steigung, Maximum, Schnittpunkte) und Trends inhaltlich deuten.",
+      "wholeGoalSha256": "9bdc31faa8b81171530dd0fcff378678847f4321349d972a275c329a09c79a4b",
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "scopes": {
+        "jurisdictions": [
+          "DE-HE",
+          "DE-RP",
+          "DE-SH"
+        ],
+        "durationModels": [
+          "G8",
+          "G9"
+        ],
+        "pureS1": true,
+        "combinedScopes": [
+          "GK",
+          "LK"
+        ]
+      },
+      "evidence": [
+        "HE-KC:16-17,20-21,24-25,29",
+        "RP:35-36,59,63",
+        "SH:24-25,35-36"
+      ],
+      "reason": "The complete diagram contract is supported by retrieving values/units, functional and statistical interpretation, comparing/evaluating representations, identifying misleading scaling and communicating a clearer correction. These are explicit content-plus-process competencies, not promotion by requires or canonical J7. Native placement only below SII was insufficient.",
+      "placement": "Place the existing IDs under actual S1 in the six HE/RP/SH generic combined source views; combined target sets unchanged. Preserve the independently existing pure-SII selections."
+    },
+    {
+      "goalId": "d668c22d-caeb-5e91-8980-721c931a2bcf",
+      "title": "Missverständnisse erklären und korrigieren",
+      "description": "Die lernende Person kann typische Fehlinterpretationen bei Diagrammen benennen, verständlich korrigieren und alternative, klarere Darstellungen vorschlagen.",
+      "wholeGoalSha256": "c6e7b79cd881a1d9ce1da5adaa7420e0479973959a5fc9a5152d06d1e2f71723",
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "scopes": {
+        "jurisdictions": [
+          "DE-HE",
+          "DE-RP",
+          "DE-SH"
+        ],
+        "durationModels": [
+          "G8",
+          "G9"
+        ],
+        "pureS1": true,
+        "combinedScopes": [
+          "GK",
+          "LK"
+        ]
+      },
+      "evidence": [
+        "HE-KC:16-17,20-21,24-25,29",
+        "RP:35-36,59,63",
+        "SH:24-25,35-36"
+      ],
+      "reason": "The complete diagram contract is supported by retrieving values/units, functional and statistical interpretation, comparing/evaluating representations, identifying misleading scaling and communicating a clearer correction. These are explicit content-plus-process competencies, not promotion by requires or canonical J7. Native placement only below SII was insufficient.",
+      "placement": "Place the existing IDs under actual S1 in the six HE/RP/SH generic combined source views; combined target sets unchanged. Preserve the independently existing pure-SII selections."
+    },
+    {
+      "goalId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+      "title": "Laufzeit tabellarisch näherungsweise bestimmen",
+      "description": "Die lernende Person kann mit einer Tabellenkalkulation die Laufzeit in einfachen Finanzsituationen als Anzahl der Zins- oder Zahlungsperioden näherungsweise bestimmen und das Ergebnis im Kontext prüfen.",
+      "wholeGoalSha256": "633c3de80cbbeed9cbf666a6c7b9999a39a6d1f04acee43da87c0531ac13f29c",
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "scopes": {
+        "jurisdictions": [
+          "DE-HE",
+          "DE-RP"
+        ],
+        "durationModels": [
+          "G8",
+          "G9"
+        ],
+        "pureS1": true,
+        "combinedScopes": [
+          "GK",
+          "LK"
+        ]
+      },
+      "evidence": [
+        "HE-KC:19-20,25",
+        "HE-G8:20 (mandatory),21 (formula optional)",
+        "HE-G9:26 (stepwise capital growth mandatory)",
+        "RP:11,43"
+      ],
+      "reason": "Complete compositional support: interest, capital and rate with variable time/periods; periodic capital growth; spreadsheet cells/formulas and systematic parameter variation; solving by trial and context checking. For duration, enumerate successive periods and bracket first attainment. For rate, hold other inputs fixed and vary/bracket the percentage. Neither goal requires an annuity formula or an independent regular-payment model. Do not infer either target from the current prerequisite chain.",
+      "affectedRebaseLosses": "HE-G8 and RP-G8/G9; retain the same already-authored HE-G9 target disposition."
+    },
+    {
+      "goalId": "1842da92-ca2c-5fed-a946-e6413a6285bb",
+      "title": "Zinssatz tabellarisch näherungsweise bestimmen",
+      "description": "Die lernende Person kann mit einer Tabellenkalkulation den Zinssatz in einfachen Finanzsituationen näherungsweise bestimmen und das Ergebnis im Kontext prüfen.",
+      "wholeGoalSha256": "1c841fd5823123e644808b259275eac5f12bab761e4297d12789fbd12b933ce8",
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "scopes": {
+        "jurisdictions": [
+          "DE-HE",
+          "DE-RP"
+        ],
+        "durationModels": [
+          "G8",
+          "G9"
+        ],
+        "pureS1": true,
+        "combinedScopes": [
+          "GK",
+          "LK"
+        ]
+      },
+      "evidence": [
+        "HE-KC:19-20,25",
+        "HE-G8:20 (mandatory),21 (formula optional)",
+        "HE-G9:26 (stepwise capital growth mandatory)",
+        "RP:11,43"
+      ],
+      "reason": "Complete compositional support: interest, capital and rate with variable time/periods; periodic capital growth; spreadsheet cells/formulas and systematic parameter variation; solving by trial and context checking. For duration, enumerate successive periods and bracket first attainment. For rate, hold other inputs fixed and vary/bracket the percentage. Neither goal requires an annuity formula or an independent regular-payment model. Do not infer either target from the current prerequisite chain.",
+      "affectedRebaseLosses": "HE-G8 and RP-G8/G9; retain the same already-authored HE-G9 target disposition."
+    },
+    {
+      "goalId": "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+      "title": "Tilgung oder Sparrate tabellarisch näherungsweise bestimmen",
+      "description": "Die lernende Person kann mit einer Tabellenkalkulation einen regelmäßigen Tilgungsbetrag oder eine regelmäßige Sparrate für ein vorgegebenes Finanzziel näherungsweise bestimmen und anhand der berechneten Restschuld- oder Guthabenentwicklung im Kontext prüfen.",
+      "wholeGoalSha256": "c67bac4dc4a49e28e189c0284589fcdf44d5c4384efe2df581d8e6ea216a9f3e",
+      "decision": "REMOVE_UNSUPPORTED_S1_TARGET",
+      "scopes": {
+        "jurisdictions": [
+          "DE-HE",
+          "DE-RP"
+        ],
+        "durationModels": [
+          "G8",
+          "G9"
+        ],
+        "pureS1": true,
+        "combinedScopes": [
+          "GK",
+          "LK"
+        ]
+      },
+      "evidence": [
+        "HE-KC:19-20,25",
+        "HE-G8:20-21",
+        "HE-G9:26",
+        "RP:11,43",
+        "existing intrinsic resolution: batch-029dr-j8-interest-payment-amount-final-recheck-1-v1"
+      ],
+      "reason": "The entire contract requires constructing and varying a regular repayment/savings amount, interpreting the full debt/balance path, and transferring between differently structured repayment and saving contexts. Interest/percentages and general spreadsheet use show mathematical feasibility but do not establish that additional recurring-payment model as a required whole competency. RP mentions different saving forms as a teaching hint; it does not substantiate the complete repayment-to-saving transfer contract. No claim is made that the mathematics or canonical goal is invalid.",
+      "disposition": "Remove direct/inherited S1 target claims consistently in HE and RP combined and pure-S1 G8/G9 scopes, including the still-present HE-G9 occurrences and generic HE combined source branches. Preserve stable canonical definition, mastery and actual prerequisite support; do not move to SII without separate source support. Direct support-role masking may prevent broad branches from reintroducing it. No requires restoration or canonical goal change is authorized."
+    },
+    {
+      "goalId": "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+      "title": "Verhältnisgleichungen lösen und prüfen",
+      "description": "Die lernende Person kann Verhältnisgleichungen durch begründete Äquivalenzumformungen lösen, dabei notwendige Definitionsbedingungen beachten und gefundene Lösungen durch Einsetzen in die Ausgangsgleichung prüfen.",
+      "wholeGoalSha256": "6d14eb5fd001f606e9b809f586012008d72d05efa71f76305b45bc5384e4f37b",
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "scopes": {
+        "jurisdictions": [
+          "DE-RP"
+        ],
+        "durationModels": [
+          "G8",
+          "G9"
+        ],
+        "pureS1": true,
+        "combinedScopes": [
+          "GK",
+          "LK"
+        ]
+      },
+      "evidence": [
+        "RP:59-62,90"
+      ],
+      "reason": "The source explicitly combines distributive/equivalent transformations and justified comparison of solution strategies with simple fractional equations, valid denominators, clearing denominators and checking the original equation. This covers the whole ratio-equation contract and the comparison with a linear bracketed equation.",
+      "durationBoundary": "Preserve the existing authoring disposition of source band klasse9-10-msa as the S1 end block: G8 class 9, G9 classes 9/10. This bounded review does not independently re-audit that pre-existing duration compression or infer acquisition from canonical J7/J8 tags."
+    },
+    {
+      "goalId": "fa0b6b69-ce54-4711-90e6-26f27249cd71",
+      "title": "Lösungswege für Klammer- und Verhältnisgleichungen vergleichen",
+      "description": "Die lernende Person kann nach dem Lösen einer linearen Klammergleichung und einer Verhältnisgleichung die jeweils tragende Struktur – Distributivgesetz beziehungsweise Proportionalität mit zulässigen Nennern – erläutern, Gemeinsamkeiten und Unterschiede der zulässigen Umformungen vergleichen und die erhaltenen Lösungen durch Einsetzen in die jeweilige Ausgangsgleichung prüfen.",
+      "wholeGoalSha256": "3e556524ba77de8d9cffc46c15ce7081cb846bb82f5e5911210ac6b5866a0e4d",
+      "decision": "KEEP_EXPLICIT_S1_TARGET",
+      "scopes": {
+        "jurisdictions": [
+          "DE-RP"
+        ],
+        "durationModels": [
+          "G8",
+          "G9"
+        ],
+        "pureS1": true,
+        "combinedScopes": [
+          "GK",
+          "LK"
+        ]
+      },
+      "evidence": [
+        "RP:59-62,90"
+      ],
+      "reason": "The source explicitly combines distributive/equivalent transformations and justified comparison of solution strategies with simple fractional equations, valid denominators, clearing denominators and checking the original equation. This covers the whole ratio-equation contract and the comparison with a linear bracketed equation.",
+      "durationBoundary": "Preserve the existing authoring disposition of source band klasse9-10-msa as the S1 end block: G8 class 9, G9 classes 9/10. This bounded review does not independently re-audit that pre-existing duration compression or infer acquisition from canonical J7/J8 tags."
+    },
+    {
+      "goalId": "e96bc8e4-463b-5e86-b0c4-2c87b74d68f5",
+      "title": "Aufgabe 4 (Jahrgangsstufe 8, 6 BE)",
+      "description": "Die lernende Person kann eine freigegebene Prüfungsaufgabe der Jahrgangsstufe 8 bearbeiten: Bruchterme formal sauber umformen, Variableneinschränkungen angeben und eine Bruchformel nach einer Variablen auflösen.",
+      "wholeGoalSha256": "aed5efb6580c2f40d4c15f63f1052f8a8a8e0f15aca17a4900c7f63a81e4b23a",
+      "decision": "APPROVE_EXPLICIT_S1_ASSESSMENT_TARGET",
+      "scopes": {
+        "jurisdictions": [
+          "DE-HE"
+        ],
+        "durationModels": [
+          "G8",
+          "G9"
+        ],
+        "pureS1": true,
+        "combinedScopes": [
+          "GK",
+          "LK"
+        ]
+      },
+      "evidence": [
+        "HE-KC:17,19-20,25",
+        "HE-G8:26-27,33",
+        "HE-G9:31"
+      ],
+      "reason": "The supplied task demands same-denominator addition, elementary multiplication/division and cancellation with nonzero conditions, rearranging an explicitly positive physical formula, and a simple fractional equation. Each is within the supported formal term/equation and formula contract; no hidden external method is needed. The six HE additions are therefore authorized from task content and source, not from the shortened requires list.",
+      "yearBoundary": "Stage-level acceptance only. Canonical title J8 is not proof of compulsory Hessian J8 acquisition: the full mandatory simple-fractional-equation sequencing evidence occurs by J9; the older J8 material includes optional fraction entries. No new official J8 attainment claim is granted.",
+      "examDataSha256": "d8fd231f7361fc68fafd47429e46d972e7cc1e9110cd1790379ce9dd257d95ba"
+    },
+    {
+      "goalId": "af7905d0-e684-5ea3-99ac-8a045455370e",
+      "title": "Aufgabe 1 (Jahrgangsstufe 10, 10 BE)",
+      "description": "Die lernende Person kann eine freigegebene Prüfungsaufgabe der Jahrgangsstufe 10 bearbeiten: Exponentialmodelle, Logarithmen, Halbwertszeit, Asymptotik und Zinseszins im Kontext deuten.",
+      "wholeGoalSha256": "6f5242527eabfd36e3a3b78f75a68b93522c3904236dcf25e6b1e5d5316f09a7",
+      "decision": "APPROVE_EXPLICIT_S1_ASSESSMENT_TARGET",
+      "scopes": {
+        "jurisdictions": [
+          "DE-RP"
+        ],
+        "durationModels": [
+          "G9"
+        ],
+        "pureS1": true,
+        "combinedScopes": [
+          "GK",
+          "LK"
+        ]
+      },
+      "evidence": [
+        "RP:43,102-103"
+      ],
+      "reason": "The complete task uses given exponential models: parameter interpretation, decreasing graph and horizontal asymptote, function values, logarithmic threshold/half-life, and compound-interest terminology/value. The source explicitly includes capital growth/decay models, these graph properties and exponential equations by logarithms with half-life/doubling examples. All three RP-G9 additions are authorized; no new RP-G8 assessment selection follows.",
+      "examDataSha256": "c645ea8cdc403a4b7a8775e40d6033e8f759fc82509ad198bf40a713671ba1fa"
+    }
+  ],
+  "observedRebaseInput": {
+    "path": "tmp/math-duration-content-rebase-delta-20261101.json",
+    "sha256": "f014a87c307e14f3a0ecadc277c6eb2c848797fe1efca44adf83600ddf84019e"
+  },
+  "observedRebaseDisposition": [
+    {
+      "file": "de-he-gk-g8.view.json",
+      "retainAsExplicitTargets": [
+        "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+        "1842da92-ca2c-5fed-a946-e6413a6285bb"
+      ],
+      "removeUnsupportedTarget": [
+        "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be"
+      ],
+      "approveAssessmentAdditions": [
+        "e96bc8e4-463b-5e86-b0c4-2c87b74d68f5"
+      ]
+    },
+    {
+      "file": "de-he-gk-g9.view.json",
+      "retainAsExplicitTargets": [],
+      "removeUnsupportedTarget": [],
+      "approveAssessmentAdditions": [
+        "e96bc8e4-463b-5e86-b0c4-2c87b74d68f5"
+      ]
+    },
+    {
+      "file": "de-he-lk-g8.view.json",
+      "retainAsExplicitTargets": [
+        "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+        "1842da92-ca2c-5fed-a946-e6413a6285bb"
+      ],
+      "removeUnsupportedTarget": [
+        "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be"
+      ],
+      "approveAssessmentAdditions": [
+        "e96bc8e4-463b-5e86-b0c4-2c87b74d68f5"
+      ]
+    },
+    {
+      "file": "de-he-lk-g9.view.json",
+      "retainAsExplicitTargets": [],
+      "removeUnsupportedTarget": [],
+      "approveAssessmentAdditions": [
+        "e96bc8e4-463b-5e86-b0c4-2c87b74d68f5"
+      ]
+    },
+    {
+      "file": "de-he-seki-g8.view.json",
+      "retainAsExplicitTargets": [
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b",
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+        "1842da92-ca2c-5fed-a946-e6413a6285bb"
+      ],
+      "removeUnsupportedTarget": [
+        "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be"
+      ],
+      "approveAssessmentAdditions": [
+        "e96bc8e4-463b-5e86-b0c4-2c87b74d68f5"
+      ]
+    },
+    {
+      "file": "de-he-seki-g9.view.json",
+      "retainAsExplicitTargets": [
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b",
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf"
+      ],
+      "removeUnsupportedTarget": [],
+      "approveAssessmentAdditions": [
+        "e96bc8e4-463b-5e86-b0c4-2c87b74d68f5"
+      ]
+    },
+    {
+      "file": "de-rp-gk-g8.view.json",
+      "retainAsExplicitTargets": [
+        "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+        "fa0b6b69-ce54-4711-90e6-26f27249cd71",
+        "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+        "1842da92-ca2c-5fed-a946-e6413a6285bb"
+      ],
+      "removeUnsupportedTarget": [
+        "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be"
+      ],
+      "approveAssessmentAdditions": []
+    },
+    {
+      "file": "de-rp-gk-g9.view.json",
+      "retainAsExplicitTargets": [
+        "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+        "fa0b6b69-ce54-4711-90e6-26f27249cd71",
+        "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+        "1842da92-ca2c-5fed-a946-e6413a6285bb"
+      ],
+      "removeUnsupportedTarget": [
+        "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be"
+      ],
+      "approveAssessmentAdditions": [
+        "af7905d0-e684-5ea3-99ac-8a045455370e"
+      ]
+    },
+    {
+      "file": "de-rp-lk-g8.view.json",
+      "retainAsExplicitTargets": [
+        "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+        "fa0b6b69-ce54-4711-90e6-26f27249cd71",
+        "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+        "1842da92-ca2c-5fed-a946-e6413a6285bb"
+      ],
+      "removeUnsupportedTarget": [
+        "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be"
+      ],
+      "approveAssessmentAdditions": []
+    },
+    {
+      "file": "de-rp-lk-g9.view.json",
+      "retainAsExplicitTargets": [
+        "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+        "fa0b6b69-ce54-4711-90e6-26f27249cd71",
+        "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+        "1842da92-ca2c-5fed-a946-e6413a6285bb"
+      ],
+      "removeUnsupportedTarget": [
+        "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be"
+      ],
+      "approveAssessmentAdditions": [
+        "af7905d0-e684-5ea3-99ac-8a045455370e"
+      ]
+    },
+    {
+      "file": "de-rp-seki-g8.view.json",
+      "retainAsExplicitTargets": [
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b",
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+        "fa0b6b69-ce54-4711-90e6-26f27249cd71",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+        "1842da92-ca2c-5fed-a946-e6413a6285bb"
+      ],
+      "removeUnsupportedTarget": [
+        "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be"
+      ],
+      "approveAssessmentAdditions": []
+    },
+    {
+      "file": "de-rp-seki-g9.view.json",
+      "retainAsExplicitTargets": [
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b",
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+        "fa0b6b69-ce54-4711-90e6-26f27249cd71",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+        "1842da92-ca2c-5fed-a946-e6413a6285bb"
+      ],
+      "removeUnsupportedTarget": [
+        "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be"
+      ],
+      "approveAssessmentAdditions": [
+        "af7905d0-e684-5ea3-99ac-8a045455370e"
+      ]
+    },
+    {
+      "file": "de-sh-seki-g8.view.json",
+      "retainAsExplicitTargets": [
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b",
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf"
+      ],
+      "removeUnsupportedTarget": [],
+      "approveAssessmentAdditions": []
+    },
+    {
+      "file": "de-sh-seki-g9.view.json",
+      "retainAsExplicitTargets": [
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+        "fcfbff12-bd03-52ec-b242-a693212b3d2b",
+        "496f16a0-c031-5753-b988-d6cd3cab595e",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf"
+      ],
+      "removeUnsupportedTarget": [],
+      "approveAssessmentAdditions": []
+    }
+  ],
+  "additionalConsistencyCorrection": {
+    "goalId": "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+    "files": [
+      "de-he-gk-g9.view.json",
+      "de-he-lk-g9.view.json",
+      "de-he-seki-g9.view.json"
+    ],
+    "genericSourceViews": [
+      "de-he-gk.view.json",
+      "de-he-lk.view.json"
+    ],
+    "reason": "These HE-G9 target claims did not disappear automatically, but have the same unsupported whole S1 payment-model contract. Do not preserve them solely because the rebase delta omitted them."
+  },
+  "boundaries": [
+    "No canonical text/task/rubric/coverage/requires/mastery writes.",
+    "The eight ordinary retained targets must be authored explicitly, not reconstructed from requires closure.",
+    "Prior intrinsic assessment releases are preserved; this is a source-scope decision, not a second mastery qualification.",
+    "Pure SII selection of f657 is not adjudicated here; inventory it and do not infer approval from this S1 correction.",
+    "Technical PASS requires the final intended output inventory, rebase/idempotence and real target-projection checks.",
+    "Existing duration compression and legacy phase/requires heuristics are not globally certified by these exact dispositions."
+  ]
+}

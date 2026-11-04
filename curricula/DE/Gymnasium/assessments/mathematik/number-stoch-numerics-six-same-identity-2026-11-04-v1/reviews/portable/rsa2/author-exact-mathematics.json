@@ -1,0 +1,699 @@
+{
+  "status": "PASS_AUTHOR_EXACT_INTEGER_AND_INVARIANT_CHECKS_NOT_INDEPENDENT_REVIEW",
+  "checkCount": 66,
+  "checks": [
+    {
+      "check": "distinct prime factors",
+      "actual": [
+        true,
+        true
+      ],
+      "expected": [
+        true,
+        true
+      ],
+      "pass": true
+    },
+    {
+      "check": "RSA modulus",
+      "actual": 187,
+      "expected": 187,
+      "pass": true
+    },
+    {
+      "check": "totient by counting coprime residues",
+      "actual": 160,
+      "expected": 160,
+      "pass": true
+    },
+    {
+      "check": "public exponent inverse condition",
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    {
+      "check": "private exponent unique in selected interval",
+      "actual": [
+        23
+      ],
+      "expected": [
+        23
+      ],
+      "pass": true
+    },
+    {
+      "check": "exponent product",
+      "actual": 161,
+      "expected": 161,
+      "pass": true
+    },
+    {
+      "check": "encrypt 20",
+      "actual": 147,
+      "expected": 147,
+      "pass": true
+    },
+    {
+      "check": "decrypt 147",
+      "actual": 20,
+      "expected": 20,
+      "pass": true
+    },
+    {
+      "check": "encrypt 11",
+      "actual": 88,
+      "expected": 88,
+      "pass": true
+    },
+    {
+      "check": "decrypt 88",
+      "actual": 11,
+      "expected": 11,
+      "pass": true
+    },
+    {
+      "check": "encryption powers for 20",
+      "actual": [
+        26,
+        115
+      ],
+      "expected": [
+        26,
+        115
+      ],
+      "pass": true
+    },
+    {
+      "check": "encryption powers for 11",
+      "actual": [
+        121,
+        55
+      ],
+      "expected": [
+        121,
+        55
+      ],
+      "pass": true
+    },
+    {
+      "check": "decryption powers for 147",
+      "actual": [
+        104,
+        157,
+        152,
+        103
+      ],
+      "expected": [
+        104,
+        157,
+        152,
+        103
+      ],
+      "pass": true
+    },
+    {
+      "check": "decryption powers for 88",
+      "actual": [
+        77,
+        132,
+        33,
+        154
+      ],
+      "expected": [
+        77,
+        132,
+        33,
+        154
+      ],
+      "pass": true
+    },
+    {
+      "check": "traceable repeated-square products",
+      "actual": [
+        147,
+        88,
+        20,
+        11
+      ],
+      "expected": [
+        147,
+        88,
+        20,
+        11
+      ],
+      "pass": true
+    },
+    {
+      "check": "actual all-message RSA round-trip failures",
+      "actual": [],
+      "expected": [],
+      "pass": true
+    },
+    {
+      "check": "number of noncoprime messages including 0",
+      "actual": 27,
+      "expected": 27,
+      "pass": true
+    },
+    {
+      "check": "noncoprime round-trip failures",
+      "actual": [],
+      "expected": [],
+      "pass": true
+    },
+    {
+      "check": "zero/nonzero prime-modulus proof for every message",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "check": "Euler substitution fails on exactly the nonunits",
+      "actual": [
+        0,
+        11,
+        17,
+        22,
+        33,
+        34,
+        44,
+        51,
+        55,
+        66,
+        68,
+        77,
+        85,
+        88,
+        99,
+        102,
+        110,
+        119,
+        121,
+        132,
+        136,
+        143,
+        153,
+        154,
+        165,
+        170,
+        176
+      ],
+      "expected": [
+        0,
+        11,
+        17,
+        22,
+        33,
+        34,
+        44,
+        51,
+        55,
+        66,
+        68,
+        77,
+        85,
+        88,
+        99,
+        102,
+        110,
+        119,
+        121,
+        132,
+        136,
+        143,
+        153,
+        154,
+        165,
+        170,
+        176
+      ],
+      "pass": true
+    },
+    {
+      "check": "noncoprime example really is noncoprime",
+      "actual": 11,
+      "expected": 11,
+      "pass": true
+    },
+    {
+      "check": "invalid private exponent need not recover message",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "check": "noninvertible public exponent has no private inverse",
+      "actual": [],
+      "expected": [],
+      "pass": true
+    },
+    {
+      "check": "chosen interval above square root",
+      "actual": [
+        true,
+        true
+      ],
+      "expected": [
+        true,
+        true
+      ],
+      "pass": true
+    },
+    {
+      "check": "sieve divisibility classes modulo 2",
+      "actual": [
+        1
+      ],
+      "expected": [
+        1
+      ],
+      "pass": true
+    },
+    {
+      "check": "sieve divisibility classes modulo 5",
+      "actual": [
+        2,
+        3
+      ],
+      "expected": [
+        2,
+        3
+      ],
+      "pass": true
+    },
+    {
+      "check": "periodic marked interval positions by 2",
+      "actual": [
+        41,
+        43,
+        45
+      ],
+      "expected": [
+        41,
+        43,
+        45
+      ],
+      "pass": true
+    },
+    {
+      "check": "periodic marked interval positions by 5",
+      "actual": [
+        42,
+        43
+      ],
+      "expected": [
+        42,
+        43
+      ],
+      "pass": true
+    },
+    {
+      "check": "five Q values",
+      "actual": [
+        32,
+        115,
+        200,
+        287,
+        376
+      ],
+      "expected": [
+        32,
+        115,
+        200,
+        287,
+        376
+      ],
+      "pass": true
+    },
+    {
+      "check": "residuals after complete division by base primes",
+      "actual": [
+        1,
+        23,
+        1,
+        287,
+        47
+      ],
+      "expected": [
+        1,
+        23,
+        1,
+        287,
+        47
+      ],
+      "pass": true
+    },
+    {
+      "check": "retained smooth relations",
+      "actual": [
+        41,
+        43
+      ],
+      "expected": [
+        41,
+        43
+      ],
+      "pass": true
+    },
+    {
+      "check": "retained complete exponent vectors",
+      "actual": [
+        [
+          5,
+          0
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "expected": [
+        [
+          5,
+          0
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "pass": true
+    },
+    {
+      "check": "both retained values are individually nonsquares",
+      "actual": [
+        false,
+        false
+      ],
+      "expected": [
+        false,
+        false
+      ],
+      "pass": true
+    },
+    {
+      "check": "combined exponent parity",
+      "actual": [
+        0,
+        0
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "pass": true
+    },
+    {
+      "check": "combined right-hand square",
+      "actual": 6400,
+      "expected": 6400,
+      "pass": true
+    },
+    {
+      "check": "product representative",
+      "actual": [
+        1763,
+        114
+      ],
+      "expected": [
+        1763,
+        114
+      ],
+      "pass": true
+    },
+    {
+      "check": "actual square congruence",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "check": "nontrivial gcds for full representative",
+      "actual": [
+        17,
+        97
+      ],
+      "expected": [
+        17,
+        97
+      ],
+      "pass": true
+    },
+    {
+      "check": "nontrivial gcds for reduced representative",
+      "actual": [
+        17,
+        97
+      ],
+      "expected": [
+        17,
+        97
+      ],
+      "pass": true
+    },
+    {
+      "check": "factorization product",
+      "actual": 1649,
+      "expected": 1649,
+      "pass": true
+    },
+    {
+      "check": "factorization nontriviality",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "check": "trivial candidate really satisfies congruence",
+      "actual": 0,
+      "expected": 0,
+      "pass": true
+    },
+    {
+      "check": "trivial candidate yields no nontrivial divisor",
+      "actual": [
+        1649,
+        1
+      ],
+      "expected": [
+        1649,
+        1
+      ],
+      "pass": true
+    },
+    {
+      "check": "mixing an unsmooth relation need not make a square",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "check": "97b03cce-6641-5ec9-a6d2-f31838e2dbb9 whole current goal remains unchanged",
+      "actual": "Full value compared in memory; see the complete bound goal/text files.",
+      "expected": "Full value compared in memory; see the complete bound goal/text files.",
+      "pass": true
+    },
+    {
+      "check": "97b03cce-6641-5ec9-a6d2-f31838e2dbb9 all previous fields preserved",
+      "actual": "Full value compared in memory; see the complete bound goal/text files.",
+      "expected": "Full value compared in memory; see the complete bound goal/text files.",
+      "pass": true
+    },
+    {
+      "check": "97b03cce-6641-5ec9-a6d2-f31838e2dbb9 curricular text demand unchanged",
+      "actual": "AB3",
+      "expected": "AB3",
+      "pass": true
+    },
+    {
+      "check": "97b03cce-6641-5ec9-a6d2-f31838e2dbb9 draft only",
+      "actual": "draft",
+      "expected": "draft",
+      "pass": true
+    },
+    {
+      "check": "97b03cce-6641-5ec9-a6d2-f31838e2dbb9 only own existing coverage",
+      "actual": [
+        "97b03cce-6641-5ec9-a6d2-f31838e2dbb9"
+      ],
+      "expected": [
+        "97b03cce-6641-5ec9-a6d2-f31838e2dbb9"
+      ],
+      "pass": true
+    },
+    {
+      "check": "97b03cce-6641-5ec9-a6d2-f31838e2dbb9 single score",
+      "actual": [
+        20,
+        15
+      ],
+      "expected": [
+        20,
+        15
+      ],
+      "pass": true
+    },
+    {
+      "check": "97b03cce-6641-5ec9-a6d2-f31838e2dbb9 step sum",
+      "actual": 20,
+      "expected": 20,
+      "pass": true
+    },
+    {
+      "check": "97b03cce-6641-5ec9-a6d2-f31838e2dbb9 exact taskContent",
+      "actual": "Full value compared in memory; see the complete bound goal/text files.",
+      "expected": "Full value compared in memory; see the complete bound goal/text files.",
+      "pass": true
+    },
+    {
+      "check": "97b03cce-6641-5ec9-a6d2-f31838e2dbb9 exact taskContentEn",
+      "actual": "Full value compared in memory; see the complete bound goal/text files.",
+      "expected": "Full value compared in memory; see the complete bound goal/text files.",
+      "pass": true
+    },
+    {
+      "check": "97b03cce-6641-5ec9-a6d2-f31838e2dbb9 exact solutionContent",
+      "actual": "Full value compared in memory; see the complete bound goal/text files.",
+      "expected": "Full value compared in memory; see the complete bound goal/text files.",
+      "pass": true
+    },
+    {
+      "check": "97b03cce-6641-5ec9-a6d2-f31838e2dbb9 exact solutionContentEn",
+      "actual": "Full value compared in memory; see the complete bound goal/text files.",
+      "expected": "Full value compared in memory; see the complete bound goal/text files.",
+      "pass": true
+    },
+    {
+      "check": "1c1754b7-2cd3-5635-824d-ce93f7b99514 whole current goal remains unchanged",
+      "actual": "Full value compared in memory; see the complete bound goal/text files.",
+      "expected": "Full value compared in memory; see the complete bound goal/text files.",
+      "pass": true
+    },
+    {
+      "check": "1c1754b7-2cd3-5635-824d-ce93f7b99514 all previous fields preserved",
+      "actual": "Full value compared in memory; see the complete bound goal/text files.",
+      "expected": "Full value compared in memory; see the complete bound goal/text files.",
+      "pass": true
+    },
+    {
+      "check": "1c1754b7-2cd3-5635-824d-ce93f7b99514 curricular text demand unchanged",
+      "actual": "AB3",
+      "expected": "AB3",
+      "pass": true
+    },
+    {
+      "check": "1c1754b7-2cd3-5635-824d-ce93f7b99514 draft only",
+      "actual": "draft",
+      "expected": "draft",
+      "pass": true
+    },
+    {
+      "check": "1c1754b7-2cd3-5635-824d-ce93f7b99514 only own existing coverage",
+      "actual": [
+        "1c1754b7-2cd3-5635-824d-ce93f7b99514"
+      ],
+      "expected": [
+        "1c1754b7-2cd3-5635-824d-ce93f7b99514"
+      ],
+      "pass": true
+    },
+    {
+      "check": "1c1754b7-2cd3-5635-824d-ce93f7b99514 single score",
+      "actual": [
+        20,
+        15
+      ],
+      "expected": [
+        20,
+        15
+      ],
+      "pass": true
+    },
+    {
+      "check": "1c1754b7-2cd3-5635-824d-ce93f7b99514 step sum",
+      "actual": 20,
+      "expected": 20,
+      "pass": true
+    },
+    {
+      "check": "1c1754b7-2cd3-5635-824d-ce93f7b99514 exact taskContent",
+      "actual": "Full value compared in memory; see the complete bound goal/text files.",
+      "expected": "Full value compared in memory; see the complete bound goal/text files.",
+      "pass": true
+    },
+    {
+      "check": "1c1754b7-2cd3-5635-824d-ce93f7b99514 exact taskContentEn",
+      "actual": "Full value compared in memory; see the complete bound goal/text files.",
+      "expected": "Full value compared in memory; see the complete bound goal/text files.",
+      "pass": true
+    },
+    {
+      "check": "1c1754b7-2cd3-5635-824d-ce93f7b99514 exact solutionContent",
+      "actual": "Full value compared in memory; see the complete bound goal/text files.",
+      "expected": "Full value compared in memory; see the complete bound goal/text files.",
+      "pass": true
+    },
+    {
+      "check": "1c1754b7-2cd3-5635-824d-ce93f7b99514 exact solutionContentEn",
+      "actual": "Full value compared in memory; see the complete bound goal/text files.",
+      "expected": "Full value compared in memory; see the complete bound goal/text files.",
+      "pass": true
+    }
+  ],
+  "sieveRows": [
+    {
+      "x": 41,
+      "Q": 32,
+      "exponents": [
+        5,
+        0
+      ],
+      "remaining": 1,
+      "retain": true
+    },
+    {
+      "x": 42,
+      "Q": 115,
+      "exponents": [
+        0,
+        1
+      ],
+      "remaining": 23,
+      "retain": false
+    },
+    {
+      "x": 43,
+      "Q": 200,
+      "exponents": [
+        3,
+        2
+      ],
+      "remaining": 1,
+      "retain": true
+    },
+    {
+      "x": 44,
+      "Q": 287,
+      "exponents": [
+        0,
+        0
+      ],
+      "remaining": 287,
+      "retain": false
+    },
+    {
+      "x": 45,
+      "Q": 376,
+      "exponents": [
+        3,
+        0
+      ],
+      "remaining": 47,
+      "retain": false
+    }
+  ],
+  "all187RSAResiduesActuallyChecked": true,
+  "including27NoncoprimeMessages": true,
+  "mathReasoningInBilingualSolutionsStillRequiresIndependentReview": true
+}

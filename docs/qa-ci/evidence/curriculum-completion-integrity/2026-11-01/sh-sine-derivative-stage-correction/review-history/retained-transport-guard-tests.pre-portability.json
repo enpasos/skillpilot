@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "cases": [
+    {
+      "case": "valid reviewed after-state and complete 28-file transport",
+      "pythonAssertionsDisabled": true,
+      "expectedExit": "zero",
+      "actualExitCode": 0,
+      "passed": true,
+      "expectedRejection": null
+    },
+    {
+      "case": "removed relocation entry",
+      "pythonAssertionsDisabled": true,
+      "expectedExit": "nonzero",
+      "actualExitCode": 1,
+      "passed": true,
+      "expectedRejection": "relocation changed"
+    },
+    {
+      "case": "additional relocation entry",
+      "pythonAssertionsDisabled": true,
+      "expectedExit": "nonzero",
+      "actualExitCode": 1,
+      "passed": true,
+      "expectedRejection": "relocation changed"
+    },
+    {
+      "case": "renamed relocation destination",
+      "pythonAssertionsDisabled": true,
+      "expectedExit": "nonzero",
+      "actualExitCode": 1,
+      "passed": true,
+      "expectedRejection": "relocation changed"
+    },
+    {
+      "case": "manipulated relocation hash",
+      "pythonAssertionsDisabled": true,
+      "expectedExit": "nonzero",
+      "actualExitCode": 1,
+      "passed": true,
+      "expectedRejection": "relocation changed"
+    },
+    {
+      "case": "resealed transport still missing a review-bound file",
+      "pythonAssertionsDisabled": true,
+      "expectedExit": "nonzero",
+      "actualExitCode": 1,
+      "passed": true,
+      "expectedRejection": "exactly 28"
+    },
+    {
+      "case": "resealed count-preserving unexpected receipt transport member",
+      "pythonAssertionsDisabled": true,
+      "expectedExit": "nonzero",
+      "actualExitCode": 1,
+      "passed": true,
+      "expectedRejection": "membership differs"
+    },
+    {
+      "case": "resealed transport cannot replace the independent receipt hash",
+      "pythonAssertionsDisabled": true,
+      "expectedExit": "nonzero",
+      "actualExitCode": 1,
+      "passed": true,
+      "expectedRejection": "hash differs from review binding"
+    },
+    {
+      "case": "retained input content tampering",
+      "pythonAssertionsDisabled": true,
+      "expectedExit": "nonzero",
+      "actualExitCode": 1,
+      "passed": true,
+      "expectedRejection": "Retained evidence changed"
+    },
+    {
+      "case": "unreviewed live after-file tampering",
+      "pythonAssertionsDisabled": true,
+      "expectedExit": "nonzero",
+      "actualExitCode": 1,
+      "passed": true,
+      "expectedRejection": "Live inputs differ"
+    },
+    {
+      "case": "valid fixture remains idempotent after negative probes",
+      "pythonAssertionsDisabled": true,
+      "expectedExit": "zero",
+      "actualExitCode": 0,
+      "passed": true,
+      "expectedRejection": null
+    }
+  ],
+  "scriptPath": "scripts/apply_math_sh_sine_derivative_scope.py",
+  "scriptSha256": "d8c3ff19c28376c1b78a3e3833de625e2e23f27d34377a4489cb076a2df4dab5",
+  "manifestSha256": "3d580f956324418023ecd1e823c18405604dec37931e74431d9bec9c0503b748",
+  "relocationSha256": "6d8e9f3a4b52bbd061cfdbb21a2946ca5fa6ce71d0487c76b3e179525bc3940a",
+  "historicalReceiptChanged": false,
+  "liveProductFilesChangedByTests": false
+}

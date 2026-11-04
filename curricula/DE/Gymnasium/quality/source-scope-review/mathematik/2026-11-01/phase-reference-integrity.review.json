@@ -1,0 +1,1360 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "independent-bounded-phase-reference-integrity-review",
+  "reviewDate": "2026-11-01",
+  "reviewerAgent": "/root/astra_scope_and_approach_final",
+  "independentCodeReviewAgent": "/root/astra_scope_and_approach_final/gvr002_semantic_boundary",
+  "verdict": "GENUINE_FOUR_PREREQUISITES_REFERENCE_PHASE_PROFILE_MISMATCH_AND_TWO_SEPARATE_SOURCE_SCOPE_CORRECTIONS",
+  "canonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "3a3792d14057854c79a3d8c4d38cd98dd6e28e936865ebd3447107404b58474c"
+  },
+  "normalization": "Whole goals: UTF-8 JSON ensure_ascii=False sort_keys=True separators=(comma,colon).",
+  "caseCount": 4,
+  "cases": [
+    {
+      "consumerId": "2f626446-4b32-5674-a687-9cd754bdfede",
+      "prerequisiteId": "d5feba00-4336-4f26-8dba-0537a797eddb",
+      "consumerPhase": "J10",
+      "prerequisitePhase": "E",
+      "verdict": "KEEP_GENUINE_PREREQUISITE_UNCHANGED",
+      "consumerWholeGoalSha256": "95e3b964b921c0bb468a85acbf143a877a88a65b7cb9e389f753ea476c5b9114",
+      "prerequisiteWholeGoalSha256": "57c1f6afc769a6f777830b4c67c4475a393be086db61987400cdf2f67d250ad5",
+      "consumerContract": {
+        "id": "2f626446-4b32-5674-a687-9cd754bdfede",
+        "title": "Aufgabe 3 (Jahrgangsstufe 10, 18 BE)",
+        "description": "Die lernende Person kann eine freigegebene Prüfungsaufgabe der Jahrgangsstufe 10 bearbeiten: Ganzrationale Funktionen mit Ableitungen, Tangenten, Approximation, Krümmung, Symmetrie, Monotonie sowie lokale und globale Extrema untersuchen.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical",
+          "phase:SekI",
+          "ExamTask"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BW",
+            "DE-BY",
+            "DE-HE",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/derivative-split-2026-09-28/j10-task3-draft_v2.md",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1",
+            "K2",
+            "K3",
+            "K4"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "J10",
+          "area": "Mathematik",
+          "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J10.TASK.3"
+        },
+        "shortKey": "canonical_math_sek1_practice_j10_task_3",
+        "contains": [],
+        "requires": [
+          "6a4716bd-8038-46bb-b647-0db4a254fee7",
+          "0190e463-51a7-4860-9b35-d875530a85ba",
+          "1ce8af38-082a-477b-af48-b924c92761bf",
+          "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+          "283ec44e-747c-55e3-9a61-4a4cc70ebfab",
+          "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+          "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+          "f76d00dc-6b31-59cd-b01a-3610eadc9908",
+          "2850e8f6-2330-50d3-a577-d519540d9924",
+          "d5feba00-4336-4f26-8dba-0537a797eddb"
+        ],
+        "phase": "J10",
+        "type": "atomic",
+        "nodeKind": "exam",
+        "examData": {
+          "reviewStatus": "released",
+          "reviewNote": "Überarbeitete Teilaufgabe 4 durch KI fachlich geprüft am 2026-09-28; früherer v1-Stand bleibt erhalten. Keine menschliche Freigabe oder Host-Erprobung.",
+          "coveredGoalIds": [
+            "6a4716bd-8038-46bb-b647-0db4a254fee7",
+            "0190e463-51a7-4860-9b35-d875530a85ba",
+            "1ce8af38-082a-477b-af48-b924c92761bf",
+            "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+            "283ec44e-747c-55e3-9a61-4a4cc70ebfab",
+            "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+            "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+            "f76d00dc-6b31-59cd-b01a-3610eadc9908",
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ],
+          "coveredStrands": [
+            "L1",
+            "L4"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/derivative-split-2026-09-28/j10-task3-draft_v2.md",
+          "taskContent": "Eine Führungsschiene wird für $0 \\le x \\le 5$ modellhaft durch $f(x)=0.1x^3-0.6x^2+0.9x+2$ beschrieben.\n\n1. Bestimme Grad und Randverhalten des Polynoms auf $\\mathbb{R}$ (als mathematische Fortsetzung des Modells) sowie $f'(x)$ und $f''(x)$. (3 BE)\n2. Stelle Tangente und Normale im Punkt $x=0$ auf und nutze die Tangente als lineare Approximation für $f(0.2)$. (3 BE)\n3. Bestimme die Wendestelle und beschreibe das Krümmungsverhalten. (3 BE)\n4. Untersuche auf dem Modellbereich $[0;5]$ die Monotonie und begründe lokale Extremstellen im Inneren durch Vorzeichenwechsel von $f'$. Vergleiche die relevanten Funktionswerte einschließlich der Randwerte, bestimme alle globalen Maximum- und Minimumstellen auf $[0;5]$ und erläutere den Unterschied zu lokalen Extrema. Erkläre außerdem am Beispiel $x^3$, weshalb aus einer streng steigenden Funktion nicht an jeder Stelle $f'>0$ folgt. (7 BE)\n5. Prüfe die Symmetrie von $g(x)=x^4-3x^2+2$ und $h(x)=x^3-2x$; begründe, welchen minimalen Grad ein Graph mit beiden Enden nach oben und drei Extremstellen haben muss. (2 BE)",
+          "solutionContent": "$f$ ist kubisch mit positivem Leitkoeffizienten; für $x\\to\\infty$ gilt $f(x)\\to\\infty$, für $x\\to-\\infty$ gilt $f(x)\\to-\\infty$. $f'(x)=0.3x^2-1.2x+0.9=0.3(x-1)(x-3)$, $f''(x)=0.6x-1.2$.\n\n$f(0)=2$, $f'(0)=0.9$; Tangente $y=0.9x+2$, Normale $y=-(10/9)x+2$. Linear ergibt sich $f(0.2)≈2.18$.\n\n$f''(x)=0$ bei $x=2$, $f(2)=2.2$. Links davon ist $f''<0$, rechts davon $f''>0$; die Krümmung wechselt.\n\nAuf dem Modellbereich ist $f$ auf $[0;1]$ steigend, auf $[1;3]$ fallend und auf $[3;5]$ steigend. Bei $x=1$ wechselt $f'$ von positiv zu negativ: lokales Maximum $f(1)=2{,}4$. Bei $x=3$ wechselt es von negativ zu positiv: lokales Minimum $f(3)=2$. Für globale Aussagen sind zusätzlich die Randwerte $f(0)=2$ und $f(5)=4$ zu vergleichen. Das globale Maximum auf $[0;5]$ ist $4$ bei $x=5$, das globale Minimum $2$ wird bei $x=0$ und $x=3$ erreicht. Lokal vergleicht man in einer Umgebung, global auf dem gesamten angegebenen Bereich. Randwerte sind in diesem Vergleich keine ungeprüften inneren stationären Extremstellen. $x^3$ ist streng steigend, obwohl seine Ableitung bei $0$ gleich $0$ ist; die Nullstelle der Ableitung ohne Vorzeichenwechsel ist kein lokales Extremum.\n\n$g$ ist achsensymmetrisch zur y-Achse, weil nur gerade Potenzen vorkommen. $h$ ist punktsymmetrisch zum Ursprung, weil $h(-x)=-h(x)$. Drei Extremstellen bei beiden Enden nach oben erfordern mindestens Grad $4$ mit positivem Leitkoeffizienten.\n\nBestehen ab 17/18 BE. Eine vollständig fehlende Teilkompetenz mit mindestens 2 BE kann nicht durch andere Teilaufgaben ersetzt werden; die Teilfallgrenzen der Rubrik sind fachliche Bewertungsanweisungen, keine serverseitigen Teilminima.",
+          "scoring": {
+            "maxPoints": 18,
+            "passingPoints": 17,
+            "steps": [
+              {
+                "id": "j10-v2-polynomial-derivatives",
+                "points": 3,
+                "description": "Grad, mathematisches Randverhalten und beide Ableitungen korrekt."
+              },
+              {
+                "id": "j10-v2-tangent-normal-approximation",
+                "points": 3,
+                "description": "Tangente, Normale und lineare Approximation korrekt."
+              },
+              {
+                "id": "j10-v2-curvature",
+                "points": 3,
+                "description": "Wendestelle mit Vorzeichenwechsel und Krümmung."
+              },
+              {
+                "id": "j10-v2-monotonicity",
+                "points": 3,
+                "description": "Monotonie auf [0;5], Vorzeichenbegründung und Gegenbeispiel x³ zur behaupteten Umkehrung."
+              },
+              {
+                "id": "j10-v2-local-extrema",
+                "points": 2,
+                "description": "Beide inneren lokalen Extremstellen mit Vorzeichenwechsel; reine Ableitungsnullstellen ohne Begründung höchstens 0."
+              },
+              {
+                "id": "j10-v2-global-extrema",
+                "points": 2,
+                "description": "Alle globalen Extremstellen durch Vergleich einschließlich beider Ränder und lokal/global unterscheiden; ohne Randvergleich 0."
+              },
+              {
+                "id": "j10-v2-symmetry-degree",
+                "points": 2,
+                "description": "Symmetrie und minimalen Grad der beiden Enden und der Extrema begründen."
+              }
+            ]
+          }
+        },
+        "extendedData": {
+          "applicabilityFromRequires": true
+        }
+      },
+      "prerequisiteContract": {
+        "id": "d5feba00-4336-4f26-8dba-0537a797eddb",
+        "title": "Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden",
+        "titleEn": "Distinguish necessary and sufficient conditions for extrema and inflection points",
+        "description": "Die lernende Person kann bei Extrem- und Wendestellen zwischen notwendigen und hinreichenden Bedingungen unterscheiden und fachlich begründen, warum typische Fehlschlüsse unzulässig sind.",
+        "descriptionEn": "The learner can distinguish between necessary and sufficient conditions for extrema and inflection points and explain mathematically why typical invalid inferences are not justified.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "350fc8b1-ead0-4239-b28a-217cbd3bd1c3",
+          "b3604df4-15a8-41c8-a8b0-50dadd698bd3"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1.3",
+            "K2.3",
+            "K6.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "d5feba00-4336-4f26-8dba-0537a797eddb",
+            "title": "Visualisierung: Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden",
+            "url": "/assets/goal-visualizations/mathematik/d5feba00-4336-4f26-8dba-0537a797eddb/d5feba00-4336-4f26-8dba-0537a797eddb.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden\". Die lernende Person kann bei Extrem- und Wendestellen zwischen notwendigen und hinreichenden Bedingungen unterscheiden und fachlich begründen, warum typische Fehlschlüsse unzulässig sind.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "accepted"
+          }
+        ]
+      },
+      "taskContractRationale": "The task independently derives derivatives, curvature, monotonicity and extrema, requires sign-change arguments and the x^3 counterexample. Distinguishing necessary and sufficient extremum/inflection conditions is real preparation; the task does not supply that knowledge as worked material.",
+      "referenceScopeRationale": "BY M11.4.2 explicitly demands the necessary/sufficient distinction. Its actual placement is the already-reviewed upper stage, not the canonical J10 label. Current BY-G9 S1 selection is separately false and must be corrected; the canonical prerequisite is still mathematically valid.",
+      "observedTargetScopes": [
+        "DE-BY/SekI/G9/GK+LK",
+        "DE-BY/CrossStage/G9/GK",
+        "DE-BY/CrossStage/G9/LK",
+        "DE-BY/CrossStage/G9/GK+LK"
+      ]
+    },
+    {
+      "consumerId": "ea664a30-98be-508e-90ac-5304679814ee",
+      "prerequisiteId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
+      "consumerPhase": "J10",
+      "prerequisitePhase": "Q2",
+      "verdict": "KEEP_GENUINE_PREREQUISITE_UNCHANGED",
+      "consumerWholeGoalSha256": "32c6157fab3b63a0ac94dbac261ea029d0d108bd256dba2daade753c211a96e4",
+      "prerequisiteWholeGoalSha256": "197fdd388b271bc85462a2a2b0e391dfed64d6fe56bf5dd697f2d1700487f7bc",
+      "consumerContract": {
+        "id": "ea664a30-98be-508e-90ac-5304679814ee",
+        "title": "Aufgabe 5 (Jahrgangsstufe 10, 10 BE)",
+        "description": "Die lernende Person kann eine freigegebene Prüfungsaufgabe der Jahrgangsstufe 10 bearbeiten: Geraden im Raum, vektorielle Bewegungen, Lagebeziehungen und Kegelvolumen in einer technischen Anwendung bearbeiten.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical",
+          "phase:SekI",
+          "ExamTask"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BW"
+          ],
+          "stage": [
+            "SekI"
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v3.md#task-5",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1",
+            "K2",
+            "K3",
+            "K4"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L3"
+          ],
+          "phase": "J10",
+          "area": "Mathematik",
+          "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J10.TASK.5"
+        },
+        "shortKey": "canonical_math_sek1_practice_j10_task_5",
+        "contains": [],
+        "requires": [
+          "b025df0c-994c-4807-9c5f-2d548905b73f",
+          "ba343971-10e5-4b05-b005-405b9c1ce447",
+          "50612a57-7b9d-45fd-bc08-e95556444760",
+          "7b860649-373e-5523-9843-ec96b3537f1f",
+          "492463cf-6cb2-5a5a-98e0-c1d77c36c256"
+        ],
+        "phase": "J10",
+        "type": "atomic",
+        "nodeKind": "exam",
+        "examData": {
+          "reviewStatus": "released",
+          "reviewNote": "Begrenzte Inhaltskorrektur vom 01.11.2026 unabhängig mit Astra Ultra fachlich geprüft; exakte Nachkorrekturen berücksichtigt. Nachweis: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-seki-candidate-review.json. Der bereits bemaßte Kegel verlangt keine flexible Kombination verschiedener Körpermodelle. Die breite Körpermodellierung entfällt aus Coverage und direkter Vorbereitung; Kegelvolumen und Pyramiden-Plausibilisierung bleiben. Keine künstliche Verbindung zur unabhängigen Drohnenrechnung.",
+          "coveredGoalIds": [
+            "b025df0c-994c-4807-9c5f-2d548905b73f",
+            "ba343971-10e5-4b05-b005-405b9c1ce447",
+            "50612a57-7b9d-45fd-bc08-e95556444760",
+            "7b860649-373e-5523-9843-ec96b3537f1f"
+          ],
+          "coveredStrands": [
+            "L2",
+            "L3"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v3.md",
+          "taskContent": "Die Position einer Drohne wird durch $r(t)=(1|2|0)+t\\cdot (2|1|1)$ beschrieben. Dabei gibt $t$ die Zeit in Sekunden an; $t=0$ ist der gewählte Referenzzeitpunkt. Alle Ortskoordinaten sind in Metern angegeben. Für die geometrischen Lagevergleiche wird die gesamte Trägergerade $r$ der Flugbahn betrachtet. Eine Kontrollgerade ist $s(u)=(5|4|2)+u\\cdot (1|-1|0)$. Ein Regenwassertank ist ein gerader Kreiskegel mit Radius $2.4 m$ und Höhe $6 m$.\n\n1. Deute den Anfangsort und die konstante Ortsänderung pro Sekunde im Modell $r(t)$ und berechne die Drohnenposition nach zwei Sekunden. (2 BE)\n2. Untersuche, ob $r$ und $s$ sich schneiden. (3 BE)\n3. Vergleiche $r$ mit $k(v)=(0|0|1)+v\\cdot (2|1|1)$ und entscheide die Lagebeziehung. (2 BE)\n4. Berechne das Volumen des kegelförmigen Tanks und plausibilisiere die Formel als Grenzfall von Pyramiden. (3 BE)",
+          "solutionContent": "Zum Referenzzeitpunkt $t=0$ befindet sich die Drohne am Anfangsort $(1|2|0)$ mit Ortskoordinaten in Metern. Ihr konstanter Geschwindigkeitsvektor ist $(2|1|1)\\,\\mathrm{m/s}$: Pro Sekunde ändern sich die drei Ortskoordinaten um $2 m$, $1 m$ und $1 m$. Für $t=2$, also nach zwei Sekunden, gilt $r(2)=(5|4|2)$; auch diese Ortskoordinaten sind in Metern angegeben.\n\nFür einen Schnitt der Trägergerade $r$ mit $s$ löst man $(1+2t,2+t,t)=(5+u,4-u,2)$. Aus der dritten Koordinate folgt $t=2$, dann aus der ersten $u=0$ und aus der zweiten ebenfalls $u=0$; Schnittpunkt ist $(5|4|2)$.\n\n$k$ hat denselben Richtungsvektor wie $r$; der Verbindungsvektor der Stützpunkte $(1|2|-1)$ ist kein Vielfaches von $(2|1|1)$, also sind die Geraden echt parallel.\n\n$V=(1/3)\\cdot \\pi\\cdot r^2\\cdot h=(1/3)\\cdot \\pi\\cdot 2.4^2\\cdot 6=11.52\\pi≈36.2 m^3$. Die Formel ist plausibel, weil ein Kegel als Grenzfall von Pyramiden mit immer mehr Ecken in der Grundfläche verstanden werden kann.",
+          "scoring": {
+            "maxPoints": 10,
+            "passingPoints": 5,
+            "steps": [
+              {
+                "id": "j10_released_v1_5",
+                "points": 10,
+                "description": "Geraden im Raum, vektorielle Bewegungen, Lagebeziehungen und Kegelvolumen in einer technischen Anwendung bearbeiten."
+              }
+            ]
+          }
+        },
+        "extendedData": {
+          "applicabilityMappingInheritance": "boundary",
+          "applicabilityFromRequires": true
+        }
+      },
+      "prerequisiteContract": {
+        "id": "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
+        "title": "Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen",
+        "titleEn": "Analyze rectilinear motion using position and velocity vectors",
+        "description": "Die lernende Person kann geradlinige Bewegungen im Raum mit $\\vec{x}(t)=\\vec{x}_0+t\\vec{v}$ beschreiben und untersuchen sowie $\\vec{v}$ als Geschwindigkeitsvektor deuten.",
+        "descriptionEn": "The learner can describe and analyze rectilinear motion in space using $\\vec{x}(t)=\\vec{x}_0+t\\vec{v}$ and interpret $\\vec{v}$ as the velocity vector.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K3.3",
+            "K6.2"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 4",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
+            "title": "Visualisierung: Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen",
+            "url": "/assets/goal-visualizations/mathematik/492463cf-6cb2-5a5a-98e0-c1d77c36c256/492463cf-6cb2-5a5a-98e0-c1d77c36c256.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen.",
+            "altText": "Die lernende Person kann geradlinige Bewegungen im Raum mit $\\vec{x}(t)=\\vec{x}_0+t\\vec{v}$ beschreiben und untersuchen sowie $\\vec{v}$ als Geschwindigkeitsvektor deuten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "taskContractRationale": "Task 1 explicitly requires the initial position and velocity interpretation and the position after two seconds. The model is supplied, but its componentwise physical interpretation is a required performance. The corrected motion prerequisite contains no scalar-product/angle requirement.",
+      "referenceScopeRationale": "BW BP2016 classes9/10 explicitly includes spatial parametric lines and rectilinear motion; HE Q2.3 is a different reference context. Thus Q2 is no global acquisition floor. BW-G9 is separately wrong in S1: current V3 places the relevant geometry in class11 and motion in the course phase.",
+      "observedTargetScopes": [
+        "DE-BW/SekI/G8/GK+LK",
+        "DE-BW/SekI/G9/GK+LK",
+        "DE-BW/CrossStage/G8/GK",
+        "DE-BW/CrossStage/G8/LK",
+        "DE-BW/CrossStage/G8/GK+LK",
+        "DE-BW/CrossStage/G9/GK",
+        "DE-BW/CrossStage/G9/LK",
+        "DE-BW/CrossStage/G9/GK+LK"
+      ]
+    },
+    {
+      "consumerId": "990739f7-f17d-5199-bdec-0512eb846f14",
+      "prerequisiteId": "5d9c156b-e5a4-5e91-9da3-22e858eb1f8e",
+      "consumerPhase": "Q2",
+      "prerequisitePhase": "Q4",
+      "verdict": "KEEP_GENUINE_PREREQUISITE_UNCHANGED",
+      "consumerWholeGoalSha256": "47984639b7c23bfa030a04de425e7744b9246284e974d0cbf98205ac78a6ac42",
+      "prerequisiteWholeGoalSha256": "5b4c55b209f897277fe702ecfd273a8f8113212f70327bc32dafa1cc9d420fa0",
+      "consumerContract": {
+        "id": "990739f7-f17d-5199-bdec-0512eb846f14",
+        "shortKey": "canonical_math_sek2_sl_lk_q2_triangle_centroid_derivation_assessment",
+        "title": "Dreiecksschwerpunkt aus Seitenhalbierenden herleiten (LK)",
+        "titleEn": "Derive a triangle centroid from medians (advanced)",
+        "description": "Die lernende Person kann in einer eigenständigen LK-Prüfungsaufgabe den Dreiecksschwerpunkt aus Seitenmittelpunkten und Seitenhalbierenden allgemein herleiten, ein räumliches Koordinatenbeispiel berechnen und die Lage auf der dritten Seitenhalbierenden prüfen.",
+        "descriptionEn": "The learner can independently derive a triangle centroid from side midpoints and medians in an advanced assessment, calculate a spatial-coordinate example, and check its position on the third median.",
+        "weight": 1,
+        "tags": [
+          "LK",
+          "Practice",
+          "Assessment",
+          "ExamTask",
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1.1",
+            "K2.1",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.SL.LK.Q2.TRIANGLE_CENTROID_ASSESSMENT"
+        },
+        "requires": [
+          "f257b71b-0250-5b4b-86bb-f317f79c355a",
+          "5d9c156b-e5a4-5e91-9da3-22e858eb1f8e"
+        ],
+        "contains": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-SL"
+          ],
+          "stage": [
+            "SekII"
+          ],
+          "courseProfile": [
+            "LK"
+          ]
+        },
+        "extendedData": {
+          "applicabilityMappingInheritance": "boundary",
+          "applicabilityFromRequires": true
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "reviewNote": "Nach unabhängiger KI-Aufgabenprüfung 2026-09-29 mathematisch und gegen SL LK S.33 geprüft. Die bisherige Grenze 10/12 erlaubte Bestehen ohne Nachweis der dritten Seitenhalbierenden; 12/12 erzwingt bei korrekter Bewertung alle ausgewiesenen Leistungen, solange das Backend nur Gesamtpunkte prüft. Maschinelle Aufgabenfreigabe; keine menschliche Freigabe oder Erprobung.",
+          "coveredGoalIds": [
+            "f257b71b-0250-5b4b-86bb-f317f79c355a"
+          ],
+          "coveredStrands": [
+            "L3"
+          ],
+          "demandLevels": [
+            "AB2",
+            "AB3"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/sl-lk-centroid-derivation-20260929/reviewed-v1.md",
+          "taskContent": "Ein dreieckiger Messrahmen wird durch drei nicht kollineare Raumpunkte beschrieben. 1. Leite aus den Seitenmittelpunkten M_a von BC und M_b von AC sowie S=A+λ(M_a−A)=B+μ(M_b−B) mit Koeffizientenvergleich die Werte λ=μ=2/3 und die allgemeine Ortsvektorformel für S her. (6 BE) 2. Berechne für A=(0|0|0), B=(6|0|0), C=(0|6|3) den Schwerpunkt S und M_a. Zeige mit gerichteten Vektoren AS:SM_a=2:1. (4 BE) 3. Bestimme M_c von AB und prüfe unabhängig, dass S auf der dritten Seitenhalbierenden liegt. (2 BE)",
+          "taskContentEn": "A triangular measurement frame has three non-collinear spatial vertices. 1. From the midpoints M_a of BC and M_b of AC and S=A+λ(M_a−A)=B+μ(M_b−B), compare coefficients to derive λ=μ=2/3 and the general position-vector formula for S. (6 points) 2. For A=(0,0,0), B=(6,0,0), C=(0,6,3), calculate S and M_a. Use directed vectors to show AS:SM_a=2:1. (4 points) 3. Find M_c of AB and independently check that S lies on the third median. (2 points)",
+          "solutionContent": "Mit u=b−a und v=c−a gilt s−a=(λ/2)u+(λ/2)v=(1−μ)u+(μ/2)v. Aus der Unabhängigkeit von u,v folgen λ/2=1−μ und λ/2=μ/2, also λ=μ=2/3 und s=(a+b+c)/3. Numerisch S=(2|2|1), M_a=(3|3|1,5); AS=(2,2,1)=2(1,1,0,5)=2 SM_a. M_c=(3|0|0), CS=(2,−4,−2)=(2/3)(3,−6,−3)=(2/3) CM_c.",
+          "solutionContentEn": "With u=b−a and v=c−a, s−a=(λ/2)u+(λ/2)v=(1−μ)u+(μ/2)v. Independence gives λ/2=1−μ and λ/2=μ/2, hence λ=μ=2/3 and s=(a+b+c)/3. Numerically S=(2,2,1), M_a=(3,3,1.5); AS=(2,2,1)=2(1,1,0.5)=2 SM_a. M_c=(3,0,0), CS=(2,−4,−2)=(2/3)(3,−6,−3)=(2/3) CM_c.",
+          "scoring": {
+            "maxPoints": 12,
+            "passingPoints": 12,
+            "steps": [
+              {
+                "id": "centroid_general_midpoints",
+                "points": 2,
+                "description": "Beide Seitenmittelpunkte und Seitenhalbierenden allgemein korrekt angesetzt"
+              },
+              {
+                "id": "centroid_general_coefficients",
+                "points": 4,
+                "description": "Koeffizientenvergleich der unabhängigen Vektoren und Herleitung von λ=μ=2/3 sowie s=(a+b+c)/3; ohne Herleitung insgesamt höchstens 6/12 BE"
+              },
+              {
+                "id": "centroid_coordinates",
+                "points": 2,
+                "description": "S=(2|2|1) und M_a=(3|3|1,5) korrekt"
+              },
+              {
+                "id": "centroid_ratio",
+                "points": 2,
+                "description": "AS=2 SM_a mit gerichteten Vektoren nachgewiesen"
+              },
+              {
+                "id": "centroid_third_median",
+                "points": 2,
+                "description": "M_c und Lage von S auf CM_c unabhängig geprüft"
+              }
+            ]
+          }
+        },
+        "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/sl-lk-centroid-derivation-20260929/reviewed-v1.md#aufgabe",
+        "phase": "Q2",
+        "type": "atomic"
+      },
+      "prerequisiteContract": {
+        "id": "5d9c156b-e5a4-5e91-9da3-22e858eb1f8e",
+        "shortKey": "3a8ab786_b7e3_5c22_9eb3_1875103898e2_segments",
+        "title": "Teilungsverhältnisse bei Strecken untersuchen",
+        "titleEn": "Analyze division ratios in segments",
+        "description": "Die lernende Person kann Teilungsverhältnisse bei Strecken in räumlichen Konfigurationen bestimmen, vergleichen und fachlich begründen.",
+        "descriptionEn": "The learner can determine, compare, and justify division ratios in segments in spatial configurations.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K3.2",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q4",
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.2.ANALYZE_SEGMENT_AND_VOLUME_RATIOS.SEGMENTS"
+        },
+        "contains": [],
+        "requires": [
+          "69eda7f9-1898-5220-932d-e7bec839b7af",
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 10",
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "5d9c156b-e5a4-5e91-9da3-22e858eb1f8e",
+            "title": "Visualisierung: Teilungsverhältnisse bei Strecken untersuchen",
+            "url": "/assets/goal-visualizations/mathematik/5d9c156b-e5a4-5e91-9da3-22e858eb1f8e/5d9c156b-e5a4-5e91-9da3-22e858eb1f8e.png",
+            "provider": "OpenAI/Codex image_gen.imagegen (model version not exposed)",
+            "description": "Fachlich geprüfte Comic-Orientierung zum Lernziel.",
+            "altText": "Schematische Strecke AB in fünf Teilstücke gegliedert: P liegt nach dem zweiten Teilstück, sodass AP zu PB im Verhältnis 2 zu 3 steht; darunter P = A + 2/5 · (B − A).",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "taskContractRationale": "The centroid task derives lambda=mu=2/3, establishes the directed ratio AS:SM=2:1 and independently checks the third median. The complete spatial segment-ratio competence is appropriate preparation; the repaired prerequisite excludes unrelated surface/volume contracts.",
+      "referenceScopeRationale": "The existing SL task artifact expressly states that Q2 is a SkillPilot exercise structure, not an official SL semester allocation. SL LK main-phase source demands centroid derivation; HE Q4.2 is a different revisiting/argumentation context. No shared authoritative Q2<Q4 ordering exists for this edge.",
+      "observedTargetScopes": [
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK"
+      ]
+    },
+    {
+      "consumerId": "3da7863d-9784-5ea2-bb53-856021b32b18",
+      "prerequisiteId": "e33e75e3-eae5-5a09-862f-d1a11176373f",
+      "consumerPhase": "Q1",
+      "prerequisitePhase": "Q4",
+      "verdict": "KEEP_GENUINE_PREREQUISITE_UNCHANGED",
+      "consumerWholeGoalSha256": "fe787aec3fa7d9f8a251714c00435e6c7920a8c21f202bdc1c44ebd9ef8febbe",
+      "prerequisiteWholeGoalSha256": "612753e0b78f8e06650ce4e4dfad761ba80194db969921a5d78994737d6e2991",
+      "consumerContract": {
+        "id": "3da7863d-9784-5ea2-bb53-856021b32b18",
+        "shortKey": "canonical_math_q1_structural_split_follow_up_q1_catenary_bell_models",
+        "title": "Kettenlinie und Glockenkurve als Exponentialmodelle untersuchen (LK)",
+        "titleEn": "Analyse catenary and bell curves as exponential models (advanced course)",
+        "description": "Die lernende Person kann Kettenlinien- und Glockenkurvenmodelle hinsichtlich Funktionseigenschaften, Parametern, Eignung und Modellgrenzen untersuchen.",
+        "descriptionEn": "The learner can analyse catenary and bell-curve models with respect to function properties, parameters, suitability, and model limitations.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical",
+          "phase:Q1",
+          "ExamTask"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-08-16/q1/q1-catenary-bell-models/draft_v1.md#aufgabe",
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "Q1",
+          "area": "Mathematik",
+          "topicCode": "CANONICAL.MATH.SEK2.PRACTICE.Q1.Q1_CATENARY_BELL_MODELS"
+        },
+        "contains": [],
+        "requires": [
+          "164921f6-3bf7-5efc-a438-ea4759dca9ef",
+          "b71c332f-ef9d-5c27-983b-7103269ff419",
+          "250daae6-58fd-59e4-8a11-f994e789ee47",
+          "e33e75e3-eae5-5a09-862f-d1a11176373f"
+        ],
+        "phase": "Q1",
+        "type": "atomic",
+        "nodeKind": "exam",
+        "extendedData": {
+          "applicabilityFromRequires": true,
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "164921f6-3bf7-5efc-a438-ea4759dca9ef",
+            "b71c332f-ef9d-5c27-983b-7103269ff419"
+          ],
+          "coveredStrands": [
+            "L1",
+            "L2"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-08-16/q1/q1-catenary-bell-models/draft_v1.md",
+          "taskContent": "### Teil A — Kettenlinie (8 BE)\n\nEin symmetrisch aufgehängtes Kabel wird durch\n$$c_{a,h}(x)=h+a\\left(\\frac{e^{x/a}+e^{-x/a}}{2}-1\\right),\\qquad a>0,$$\nmodelliert. Der tiefste Punkt liegt bei $x=0$.\n\n1. Begründe aus dem Term die Symmetrie zur $y$-Achse und bestimme $c_{a,h}(0)$. (3 BE)\n2. Erläutere im Kabelkontext die Bedeutung von $h$. Beschreibe begründet, wie ein größeres $a$ die Form nahe dem Tiefpunkt verändert. (3 BE)\n3. Nenne eine Grenze des Modells für ein reales Kabel. (2 BE)\n\n### Teil B — Glockenkurve (8 BE)\n\nMesswerte werden durch\n$$g_{A,\\mu,\\sigma}(x)=A\\,e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}},\\qquad A>0,\\ \\sigma>0,$$\nmodelliert.\n\n1. Bestimme Lage und Höhe des Maximums und begründe die Symmetrie. (3 BE)\n2. Erläutere die Wirkung von $A$, $\\mu$ und $\\sigma$ auf den Graphen. (3 BE)\n3. Erkläre, warum eine Glockenkurve ein geeignetes Modell für Messwerte um einen typischen Wert sein kann, aber nicht automatisch für jeden Datensatz passt. (2 BE)",
+          "solutionContent": "### Teil A (8 BE)\n\n1. Das Ersetzen von $x$ durch $-x$ vertauscht die beiden Exponentialterme und lässt ihre Summe unverändert; daher gilt $c_{a,h}(-x)=c_{a,h}(x)$. Außerdem ist $c_{a,h}(0)=h+a((1+1)/2-1)=h$. (2 BE für die Symmetrie, 1 BE für den Wert)\n2. $h$ beschreibt die vertikale Lage des tiefsten Punkts. Ein größeres $a$ macht die Kurve in der Nähe von $x=0$ flacher. Dies kann durch den Vergleich der Funktionswerte bei festem kleinem $|x|$ oder über die lokale Krümmung $c''_{a,h}(0)=1/a$ begründet werden; eine Taylorreihe ist nicht erforderlich. (1 BE für $h$, 2 BE für Parameterwirkung und Begründung)\n3. Gültige Modellgrenzen sind beispielsweise eine nicht erfasste Massenverteilung oder Elastizität des Kabels, bewegliche Lasten, ungleichmäßige Dichte oder Rand- und Befestigungseffekte des idealisierten statischen Modells. (2 BE)\n\n### Teil B (8 BE)\n\n1. Der Exponent ist bei $x=\\mu$ am größten und dort gleich null; deshalb liegt das Maximum bei $g(\\mu)=A$. Da $(x-\\mu)^2$ für gleiche Abstände links und rechts von $\\mu$ denselben Wert besitzt, ist der Graph zur Geraden $x=\\mu$ symmetrisch. (2 BE für das Maximum, 1 BE für die Symmetrie)\n2. $A$ skaliert die Höhe, $\\mu$ verschiebt das Zentrum horizontal, und ein größeres $\\sigma$ macht die Glocke breiter und lässt sie mit wachsendem Abstand vom Zentrum langsamer abfallen. (je 1 BE)\n3. Das Modell ist für Werte plausibel, die sich symmetrisch um einen typischen Wert konzentrieren und mit zunehmendem Abstand seltener auftreten. Es passt nicht automatisch zu stark schiefen, multimodalen, beschränkten oder von Ausreißern dominierten Daten. (2 BE)",
+          "scoring": {
+            "maxPoints": 16,
+            "passingPoints": 8,
+            "steps": [
+              {
+                "id": "models_1",
+                "points": 8,
+                "description": "Kettenlinienmodell hinsichtlich Eigenschaften, Parametern und Modellgrenze untersucht"
+              },
+              {
+                "id": "models_2",
+                "points": 8,
+                "description": "Glockenkurvenmodell hinsichtlich Eigenschaften, Parametern und Eignung untersucht"
+              }
+            ]
+          }
+        },
+        "resourceLinks": []
+      },
+      "prerequisiteContract": {
+        "id": "e33e75e3-eae5-5a09-862f-d1a11176373f",
+        "title": "Transformationsscharen bekannter Funktionsklassen untersuchen",
+        "titleEn": "Analyze transformation families of known function classes",
+        "description": "Die lernende Person kann Funktionenscharen bekannter Funktionsklassen untersuchen, wenn der Parameter ausschließlich eine Streckung, Stauchung oder Verschiebung bewirkt, und die Parameterwirkung am Graphen begründen.",
+        "descriptionEn": "The learner can analyze families of known function classes when the parameter only causes a stretch, compression, or shift, and justify the parameter effect on the graph.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+          "993a14e8-60f0-5764-9340-b2447a5fa84b"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K3.2",
+            "K5.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2",
+            "L4"
+          ],
+          "phase": "Q4",
+          "topicCode": "CANONICAL.MATH.SEK2.Q4.1.ANALYZE_TRANSFORMATION_FAMILIES_OF_KNOWN_FUNCTION_CLASSES"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 3",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "e33e75e3-eae5-5a09-862f-d1a11176373f",
+            "title": "Visualisierung: Transformationsscharen bekannter Funktionsklassen untersuchen",
+            "url": "/assets/goal-visualizations/mathematik/e33e75e3-eae5-5a09-862f-d1a11176373f/e33e75e3-eae5-5a09-862f-d1a11176373f.png",
+            "provider": "OpenAI / ChatGPT-Codex image_gen",
+            "description": "Schematische Parabelbeispiele: gₐ(x)=(x−a)² verschiebt bei a>0 die unveränderte Normalparabel nach rechts; hₐ(x)=a·x² ist bei a>1 schmaler und bei 0<a<1 breiter, mit gemeinsamem Scheitel im Ursprung.",
+            "altText": "Zweiteilige Grafik: Oben wird eine blaue Parabel f(x)=x² als starre Schablone bei a>0 nach rechts verschoben; gₐ(x)=(x−a)² hat die gleiche Form. Unten haben drei Parabeln denselben Scheitel im Ursprung: grün für a>1 schmaler, blau f(x)=x², orange für 0<a<1 breiter; hₐ(x)=a·x².",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "taskContractRationale": "The bell family has exactly height scaling, horizontal shift and width scaling relative to a fixed known base shape. The task explicitly asks the effect of A, mu and sigma, so transformation-family competence is genuine preparation. The catenary h parameter also supplies a direct shift context.",
+      "referenceScopeRationale": "HE KC Q1.3 LK explicitly includes parameterized catenaries and bell curves. Q4 introduction says the term deepens and connects already acquired parameter knowledge; Q4.2 revisits prior content. The Q4 transformation reference does not establish a first-acquisition barrier after this Q1 task.",
+      "observedTargetScopes": [
+        "DE-BB/SekII/G8/LK",
+        "DE-BB/SekII/G8/GK+LK",
+        "DE-BB/SekII/G9/LK",
+        "DE-BB/SekII/G9/GK+LK",
+        "DE-BB/CrossStage/G8/LK",
+        "DE-BB/CrossStage/G8/GK+LK",
+        "DE-BB/CrossStage/G9/LK",
+        "DE-BB/CrossStage/G9/GK+LK",
+        "DE-BE/SekII/G8/LK",
+        "DE-BE/SekII/G8/GK+LK",
+        "DE-BE/SekII/G9/LK",
+        "DE-BE/SekII/G9/GK+LK",
+        "DE-BE/CrossStage/G8/LK",
+        "DE-BE/CrossStage/G8/GK+LK",
+        "DE-BE/CrossStage/G9/LK",
+        "DE-BE/CrossStage/G9/GK+LK",
+        "DE-BW/SekII/G8/LK",
+        "DE-BW/SekII/G8/GK+LK",
+        "DE-BW/SekII/G9/LK",
+        "DE-BW/SekII/G9/GK+LK",
+        "DE-BW/CrossStage/G8/LK",
+        "DE-BW/CrossStage/G8/GK+LK",
+        "DE-BW/CrossStage/G9/LK",
+        "DE-BW/CrossStage/G9/GK+LK",
+        "DE-HB/SekII/G8/LK",
+        "DE-HB/SekII/G8/GK+LK",
+        "DE-HB/CrossStage/G8/LK",
+        "DE-HB/CrossStage/G8/GK+LK",
+        "DE-HE/SekII/G8/LK",
+        "DE-HE/SekII/G8/GK+LK",
+        "DE-HE/SekII/G9/LK",
+        "DE-HE/SekII/G9/GK+LK",
+        "DE-HE/CrossStage/G8/LK",
+        "DE-HE/CrossStage/G8/GK+LK",
+        "DE-HE/CrossStage/G9/LK",
+        "DE-HE/CrossStage/G9/GK+LK",
+        "DE-HH/SekII/G8/LK",
+        "DE-HH/SekII/G8/GK+LK",
+        "DE-HH/CrossStage/G8/LK",
+        "DE-HH/CrossStage/G8/GK+LK",
+        "DE-MV/SekII/G8/LK",
+        "DE-MV/SekII/G8/GK+LK",
+        "DE-MV/CrossStage/G8/LK",
+        "DE-MV/CrossStage/G8/GK+LK",
+        "DE-NI/SekII/G9/LK",
+        "DE-NI/SekII/G9/GK+LK",
+        "DE-NI/CrossStage/G9/LK",
+        "DE-NI/CrossStage/G9/GK+LK",
+        "DE-NW/SekII/G9/LK",
+        "DE-NW/SekII/G9/GK+LK",
+        "DE-NW/CrossStage/G9/LK",
+        "DE-NW/CrossStage/G9/GK+LK",
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G9/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/CrossStage/G9/GK+LK",
+        "DE-SH/SekII/G8/LK",
+        "DE-SH/SekII/G8/GK+LK",
+        "DE-SH/SekII/G9/LK",
+        "DE-SH/SekII/G9/GK+LK",
+        "DE-SH/CrossStage/G8/LK",
+        "DE-SH/CrossStage/G8/GK+LK",
+        "DE-SH/CrossStage/G9/LK",
+        "DE-SH/CrossStage/G9/GK+LK",
+        "DE-SL/SekII/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK",
+        "DE-SN/SekII/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/CrossStage/G8/GK+LK",
+        "DE-ST/SekII/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK",
+        "DE-TH/SekII/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK"
+      ]
+    }
+  ],
+  "primaryEvidence": [
+    {
+      "sourceId": "BY11",
+      "path": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_11.pdf",
+      "sha256": "85a52559f39a7997ebc8e72292f97a1953331f68da234c8c769b4d2f95e49591",
+      "printedPages": [
+        4
+      ],
+      "sections": [
+        "M11.4.2; upper-stage placement from existing independent stage decision"
+      ]
+    },
+    {
+      "sourceId": "BW2016",
+      "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_M.pdf",
+      "sha256": "b085465143648b3f44c894f8eb0a5ee5d1928cbb1c4c60b3b249559709d26014",
+      "printedPages": [
+        34
+      ],
+      "sections": [
+        "3.3.3(12)-(14), classes9/10 G8"
+      ]
+    },
+    {
+      "sourceId": "HE",
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+      "sha256": "d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953",
+      "printedPages": [
+        37,
+        42,
+        50,
+        51,
+        52
+      ],
+      "sections": [
+        "Q1.3 LK catenary/bell parameter models",
+        "Q2.3 rectilinear motion reference",
+        "Q4 introduction: deepening, connecting and revisiting prior competencies",
+        "Q4.1 transformation families; Q4.2 spatial ratios"
+      ]
+    },
+    {
+      "sourceId": "SL",
+      "path": "curricula/DE/Gymnasium/input/SL/LP_Ma_LK_HP_2019.pdf",
+      "sha256": "9a4c674eab01edda713a9aef60f38f2d24df3031a7361dabeb6b0f9946f66134",
+      "printedPages": [
+        34
+      ],
+      "sections": [
+        "5. Vektorielle Untersuchung geometrischer Strukturen; midpoint and centroid derivation"
+      ]
+    },
+    {
+      "sourceId": "BW-V3",
+      "path": "tmp/bw-monotonicity-placement-candidate-20261101/independent-review/current-v3-math.html",
+      "sha256": "d5b39bc6f3fc3d2ad6f38e321c123fc52a71047197bcd92c7fe6e9471de2538b",
+      "officialUrl": "https://www.bildungsplaene-bw.de/,Lde/DE_BW_BILDUNGSPLAENE_GEN2X_BPBW_ALLG_GYM_M(V3.0)",
+      "retrievalStatus": "Existing audited 2026-11-01 local primary copy, read without new extraction or source migration",
+      "sections": [
+        "3.3.2(5)(7): cone-volume plausibility and calculation",
+        "3.4.3(1)(4)(5)(6): vectors, collinearity, spatial lines and their intersection in class11",
+        "3.5.3(7) / 3.6.3(8): rectilinear spatial motion in both upper course profiles"
+      ]
+    }
+  ],
+  "priorBoundedReviews": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stage-scope-source-decisions.review.json",
+      "sha256": "3fdbc346042a7e0556a0eaeac05478fe928e1689ddac03dc571c6ebf0d663838"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/mathematik-j10-analysis-source-stage-decisions-20260929.md",
+      "sha256": "cd2a7bd122f4e3560eb7a90238461e99aabe94124223d9150e6130d8b975e8fa"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/sl-lk-centroid-derivation-20260929/reviewed-v1.md",
+      "sha256": "d1e2dee9e81bee87e859176c5fc616569238f9ead2b53cb8f07f1ae9697db5af"
+    },
+    {
+      "path": "tmp/approach-review-20261101/endpoint-route-cohort30-review.json",
+      "sha256": "80f0cceb1c04c87efd1a2714b818f0b5e828f0663cd917c1ae5c24ecefdfc49f"
+    }
+  ],
+  "observedBackendProbe": {
+    "path": "tmp/approach-review-20261101/final-integration-scope-probe/common-candidate-all154.json",
+    "sha256": "e9d9274566c5d3a573bd6554c057e45b1153963e8f8f92286946bd498b939dde"
+  },
+  "implementationInputs": [
+    {
+      "path": "app/scripts/validateGraph.ts",
+      "sha256": "1b5f17e272492f58b686f165749351ba824c640c70fa76ac8fde406966724768"
+    },
+    {
+      "path": "app/src/goalTypes.ts",
+      "sha256": "39729848b30c743b52450c78bfc9158f7507abc2c4c80e325e1c9a9ae1e5c362"
+    },
+    {
+      "path": "docs/qa-ci/graph-validation-rules.md",
+      "sha256": "2afd114e2781662b3ecaf5be08d2d291aa6df8ff8bf180c783590ca2ae72ea47"
+    },
+    {
+      "path": "docs/concept/skill-graph/graph-definition.md",
+      "sha256": "f245559afc1e743e38d098844c48fbf5bfa58a94b5734380649b66207820fc1b"
+    },
+    {
+      "path": "docs/concept/skill-graph/curriculum-levels.md",
+      "sha256": "9733797859d1838606abf1b9cb2be0cee613c1a11a017d34b4c26d6107fe1a74"
+    }
+  ],
+  "codeFinding": {
+    "rankFunction": "app/scripts/validateGraph.ts:439-467",
+    "effectivePrerequisiteCheck": "app/scripts/validateGraph.ts:940-974",
+    "conversion": "app/src/goalTypes.ts:81",
+    "problem": "convertLearningGoal picks dimensionTags.phase before top-level phase and drops its framework context. GVR002 then orders all local S*, J*/year, E,Q1-Q4,Abitur labels on one total scale without any shared source/stage/duration/course authority.",
+    "ruleDocumentation": "docs/qa-ci/graph-validation-rules.md:41 already labels GVR002 a legacy compatibility/profile lint, not canonical graph validity. Graph definition lines82-93 explicitly excludes compatibility phase from canonical validity.",
+    "existingDedicatedRuleTestsFound": false
+  },
+  "recommendedMinimalImplementation": {
+    "scope": "GVR002 validator applicability only; no runtime, canonical data, program-unit or curriculum-level architecture change",
+    "profile": "Explicit reference-phase-metadata profile solely for landscapeId=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced AND frameworkId=canonical-gymnasium-math",
+    "behavior": "For this reviewed multi-jurisdiction reference graph, do not claim first-acquisition order from compatibility labels. Keep strict existing legacy monotonicity for all other landscapes. Wrong/missing expected framework must not silently obtain this profile.",
+    "notAnOverrideList": "No four-edge/goal-ID waiver table; no canonical-* wildcard; no GLOBAL retagging; no swapping real prerequisites for earlier-labelled ones.",
+    "continuedInvariants": [
+      "Allowed phase vocabulary remains validated.",
+      "Known references and direct/contains/effective dependency DAG remain hard requirements.",
+      "Direct/inherited and complete support remain unchanged.",
+      "Source/target role checks and the two explicit assessment-scope corrections remain independently mandatory.",
+      "GVR012 and its unconditional severity remain unchanged, including all112 existing findings/goal IDs.",
+      "No claim of chronological feasibility is made without a real authoritative acquisition plan; the conceptual CurriculumLevels profile is not implemented."
+    ],
+    "reviewBoundary": "The profile fix is not a substitute for the two discovered S1 source corrections and must not be reported as proving their validity. A source-aware chronological validator is outside this bounded correction."
+  },
+  "separateSourceScopeDecisions": [
+    {
+      "goalId": "2f626446-4b32-5674-a687-9cd754bdfede",
+      "decision": "REMOVE_FALSE_BY_G9_S1_SELECTION_AND_CORRESPONDING_COMBINED_SOURCE_CLAIM",
+      "excludeTargetFiles": [
+        "de-by-seki.view.json",
+        "de-by-gk.view.json",
+        "de-by-lk.view.json"
+      ],
+      "preserveCanonicalGoalAndRequires": true,
+      "preserveActualPrerequisiteSupport": true,
+      "noAutomaticSekIISelection": true,
+      "reason": "BY source M11.4.2 is upper stage under the already bound stage decision. The entire task requires that analytic work; formulas/criteria are not supplied. In addition, the prior whole-goal HOLD on 2850 (full local/global extremum comparison) remains unclosed, so relocating this complete task into BY SII would invent the missing whole-task source approval. Existing pure-SII nonselection remains.",
+      "currentAffectedOfferingScopes": [
+        "DE-BY/SekI/G9/GK+LK",
+        "DE-BY/CrossStage/G9/GK",
+        "DE-BY/CrossStage/G9/LK",
+        "DE-BY/CrossStage/G9/GK+LK"
+      ]
+    },
+    {
+      "goalId": "ea664a30-98be-508e-90ac-5304679814ee",
+      "decision": "REMOVE_FALSE_BW_G9_S1_SELECTION_RELOCATE_SUPPORTED_COMBINED_TASK_TO_SII_AND_INCLUDE_MATCHING_PURE_SII",
+      "excludeTargetFiles": [
+        "de-bw-seki-g9.view.json"
+      ],
+      "relocateExistingTargetFiles": [
+        "de-bw-gk-g9.view.json",
+        "de-bw-lk-g9.view.json"
+      ],
+      "relocationStage": "SekII; neutral geometry/body task branch, no invented compulsory semester",
+      "includeTargetFiles": [
+        "de-bw-sekii-gk-g9.view.json",
+        "de-bw-sekii-lk-g9.view.json"
+      ],
+      "retainUnchanged": "All existing BW-G8 selections",
+      "preserveCanonicalGoalAndRequires": true,
+      "preserveActualPrerequisiteSupport": true,
+      "reason": "V3 class11 spatial vector/line work and upper-course rectilinear-motion work are required by task parts1-3; the supplied vectors are input data, not a worked explanation of the tested methods. The full unchanged task including cone calculation/plausibility is supported in SII by V3 3.3.2(5)(7),3.4.3(5)(6),3.5.3(7)/3.6.3(8)."
+    }
+  ],
+  "negativeAndPositiveTests": [
+    {
+      "case": "Native HE E consumer requires Q1 goal directly",
+      "expected": "GVR002 error"
+    },
+    {
+      "case": "Same later requirement inherited through contains parent",
+      "expected": "GVR002 error"
+    },
+    {
+      "case": "Native J8->J10 or S1->S2 prerequisite",
+      "expected": "GVR002 error"
+    },
+    {
+      "case": "Native same/earlier comparable phase",
+      "expected": "No GVR002 finding"
+    },
+    {
+      "case": "Unknown landscape with canonical-* framework, or correct framework but wrong landscapeId",
+      "expected": "No reference-profile exemption; later-phase edge still errors"
+    },
+    {
+      "case": "Known Math canonical landscapeId with missing/wrong frameworkId",
+      "expected": "Does not obtain reference profile; reject mismatch or retain strict legacy validation"
+    },
+    {
+      "case": "Exact reviewed reference profile and all four current true requires",
+      "expected": "No invented GVR002 acquisition-order error; complete eight goal objects, phase values and requires arrays unchanged"
+    },
+    {
+      "case": "Unknown prerequisite or effective cycle in reference profile",
+      "expected": "Unconditional structural error remains"
+    },
+    {
+      "case": "Actual validate:graph after profile-only implementation",
+      "expected": "Same112 GVR012 goal IDs/messages and error severity; only four inappropriate GVR002 findings gone; command remains nonzero"
+    },
+    {
+      "case": "Restore2f626 into BY-G9 S1 or corresponding false CS branch",
+      "expected": "Explicit source-scope regression fails"
+    },
+    {
+      "case": "Restoreea664 into BW-G9 S1, lose BW-G8 legitimate target, or place new BW-G9 target outside reviewed SII branch",
+      "expected": "Explicit source-scope regression fails"
+    },
+    {
+      "case": "Automatically addBY2f626 to SII without closing existing whole-contract HOLD",
+      "expected": "Rejected by bounded source decision"
+    }
+  ],
+  "readOnlyBaseline": {
+    "command": "npm run validate:graph (cwd app)",
+    "exitCode": 1,
+    "log": {
+      "path": "tmp/approach-review-20261101/phase-reference-integrity-baseline.log",
+      "sha256": "18b4a73cca62862d18b201b7feb4c814880c57118d54da55a5200ce968a5dbd2"
+    },
+    "GVR002Count": 4,
+    "GVR012Count": 112,
+    "GVR002Findings": [
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-002] Goal 2f626446-4b32-5674-a687-9cd754bdfede (Aufgabe 3 (Jahrgangsstufe 10, 18 BE), phase J10) has direct prerequisite d5feba00-4336-4f26-8dba-0537a797eddb (Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden, phase E), which points to a later phase.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-002] Goal ea664a30-98be-508e-90ac-5304679814ee (Aufgabe 5 (Jahrgangsstufe 10, 10 BE), phase J10) has direct prerequisite 492463cf-6cb2-5a5a-98e0-c1d77c36c256 (Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen, phase Q2), which points to a later phase.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-002] Goal 990739f7-f17d-5199-bdec-0512eb846f14 (Dreiecksschwerpunkt aus Seitenhalbierenden herleiten (LK), phase Q2) has direct prerequisite 5d9c156b-e5a4-5e91-9da3-22e858eb1f8e (Teilungsverhältnisse bei Strecken untersuchen, phase Q4), which points to a later phase.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-002] Goal 3da7863d-9784-5ea2-bb53-856021b32b18 (Kettenlinie und Glockenkurve als Exponentialmodelle untersuchen (LK), phase Q1) has direct prerequisite e33e75e3-eae5-5a09-862f-d1a11176373f (Transformationsscharen bekannter Funktionsklassen untersuchen, phase Q4), which points to a later phase."
+    ],
+    "GVR012Findings": [
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 42e19186-6769-41ac-a7bf-ab39bdb50661 (Exponentielles Wachstum in Termen, Tabellen und Graphen beschreiben) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 27b63e2e-6a34-483e-8e5a-fe0f49670d1d (Wachstums- und Abklingvorgänge exponentiell modellieren und Ergebnisse im Kontext bewerten) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6 (Verhältnisgleichungen lösen und prüfen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 546bf0b3-6921-416b-a2ef-8fd37d429dc7 (Lineare Gleichungssysteme lösen und deuten) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] fa0b6b69-ce54-4711-90e6-26f27249cd71 (Lösungswege für Klammer- und Verhältnisgleichungen vergleichen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 2041f4ec-620d-4a20-9922-6ebf16f8f8fa (Kongruente sowie maßstäblich vergrößerte und verkleinerte Figuren zeichnen und begründen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 5743b8f9-86cb-4e24-8859-351708d070ab (Quadratische Funktionen aus Punkten oder Bedingungen bestimmen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 80c232f1-8f72-5829-9dbe-5a610ccab3be (Achsen, Skalen und Einheiten lesen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 496f16a0-c031-5753-b988-d6cd3cab595e (Kennwerte und Trends deuten) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] fcfbff12-bd03-52ec-b242-a693212b3d2b (Aussagen anhand von Diagrammen prüfen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] d668c22d-caeb-5e91-8980-721c931a2bcf (Missverständnisse erklären und korrigieren) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 96c55cb6-d2c7-5145-8567-b5f570f55a8a (Algebraische Terme faktorisieren) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 74dc4b0d-a167-564c-bdc1-5cf510aee280 (Algebraische Terme ausmultiplizieren) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 17c9e061-fe52-5553-be81-fec7a525fcbd (Algebraische Lösungswege auf Gültigkeit prüfen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 647ec09d-68ae-57db-9ca4-aeb2da4218f1 (Formale Schreibweisen situationsgerecht nutzen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] a4f6f5e4-f790-48d1-8b49-c9dc048c9d83 (Oberflächeninhalte von Kegeln begründen und berechnen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9 (Raumgeometrische Anwendungen mit Körpern modellieren und lösen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 1842da92-ca2c-5fed-a946-e6413a6285bb (Zinssatz tabellarisch näherungsweise bestimmen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] f6574cdc-e29c-5a8f-a009-9f28b3bcf9be (Tilgung oder Sparrate tabellarisch näherungsweise bestimmen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] fc34449a-fbf4-574c-884f-ecdf48b42d2e (Laufzeit tabellarisch näherungsweise bestimmen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek I curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 740ab443-776a-5c7a-8f1d-2b0b59a5ed32 (Umkehrung und Kontraposition bilden) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 81527aac-1abf-588d-acae-b82a86564b06 (Beweis durch Kontraposition) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 9ea981ed-8b78-502c-b316-01d8cb885814 (Beweis mit Fallunterscheidung) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] dd1d9f9c-0a4e-5d01-95d8-f6993163b20c (Beweislücken identifizieren (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 1801c759-d92d-5bfb-a44f-cfd2455d207b (Funktionsgleichungen aus Graphen bestimmen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 6fcd6a1a-88d3-59d2-9bf7-ee32babb773e (Aufwand und Genauigkeit vergleichen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] e0ed8bb3-bf1c-5ac7-9022-2080e1b74dda (Verfahren begründet auswählen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 619f29f5-7f44-5654-9692-01b250997d52 (Entscheidung dokumentieren und bewerten (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] fc2cf102-dcde-5565-884f-7c9e3e3b54b6 (Kooperativ Ergebnisse erarbeiten) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] ccd47872-4d9d-44db-8c8d-eda24019b502 (Eulersche Zahl e näherungsweise bestimmen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] f05acdc5-4949-54c7-b8cd-56ddd1fbdbad (Natürliche Exponentialfunktion für kontinuierliche Prozesse verwenden) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 71f62cfa-7cc2-5f60-9691-bcdc2ee910df (Vielfachheiten und Graphverhalten aus Linearfaktoren deuten) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 0b47fec8-33ec-5f29-8d3e-64941a7c8ac5 (Verhalten ganzrationaler Funktionen im Unendlichen beschreiben) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 7e613c02-b0e9-4eb3-8bc0-93c37c30bf44 (Lokale Differenzierbarkeit am Graphen beurteilen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 56b4acb5-6024-573f-9890-35fbd21ee343 (Schnittwinkel zwischen Funktionsgraphen deuten) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 8e1b0d9c-fa32-5ccd-9c11-77e788ae0941 (Ganzrationale Funktionen aus Eigenschaften rekonstruieren) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 3e974075-b2fd-43e6-88d9-5f596ad053ec (Datenaussagen mit bedingten Wahrscheinlichkeiten kritisch prüfen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 5b54f272-f588-5009-8b42-eb15f846d3e2 (Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 7d9c565c-8df1-40ca-b3c6-2d4ec51e9140 (Normalverteilungsdichte über μ, σ und Grapheneigenschaften beschreiben (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 44dba16e-2e86-56be-974b-a62093ef9211 (Normalverteilung als Approximation binomialer Modelle (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 455ef29a-7194-5c5a-b832-1c27fcbf2516 (Weitere stetige Verteilungen exemplarisch nutzen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] ae483d98-54e0-5985-96d2-fc1351d22e4f (Hypothesentests bei verändertem Stichprobenumfang variieren) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 82bce6e8-7dc7-501a-a4f6-df8a3b905e3c (Gütefunktion und Teststärke untersuchen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 03357e70-2280-532f-b629-5dfa31dc44eb (Tests vergleichen und bewerten (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 18293a33-a5ff-4a0f-9b6a-085f171cbffe (Statistische Erhebungen exemplarisch planen und dokumentieren) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 75efcc7c-3c96-47c6-a681-1e9337862a20 (Veröffentlichte Erhebungen kritisch beurteilen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 5dbf149c-d335-552c-a918-768a12e09201 (Normalverteilung zur Modellierung von Messdaten verwenden (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] d144a855-9139-55c7-a801-e8b85dab5f01 (Integrale ganzrationaler Funktionenscharen berechnen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] ccfd4e60-5728-568f-adb7-0b932d8e5aac (Funktionenscharen mit Exponential- und ganzrationalen Anteilen untersuchen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 0e8417d7-effb-5314-93ba-a571b01726ce (Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 613871f6-ccb2-51fe-aba2-0dd17b86a89e (Entscheidungsregel für eine komplexe Problemstellung entwickeln (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 08b80080-4895-55df-8ca6-4e8c5eb0f9f5 (Funktionsklassen argumentativ vergleichen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 1675fdde-cba7-5456-ae70-a846e1924a68 (Anzahl von Graph-Schnittpunkten anschaulich begründen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] e75ec65a-9692-5871-b90b-fbebe38ae0c3 (Besondere Lagen von Geraden und Ebenen begründen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] d8305a49-6d45-52aa-ab88-9163c3b9f198 (Wahrscheinlichkeiten anhand von Termen vergleichen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 21fa0c22-976e-59b3-a871-899f0c0177f3 (Zufallsexperimente und Ereignisse aus Termen formulieren) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] ae3483e3-4712-56a1-a881-2e1f8a1a8df9 (Entscheidungsregel oder Stichprobenumfang aus Gütefunktionsgraphen bestimmen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 647888d2-8e23-52b2-a2ec-fad3f31cb1a6 (Integrationsgrenzen und Parameter bestimmen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] bfc2bf06-9b37-4912-a8eb-25fb5d489d72 (Flächeninhalte mithilfe uneigentlicher Integrale ermitteln (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d (Uneigentliche Integrale berechnen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 93fcf49d-a08c-5aa5-a5b2-cb4ee56fdae4 (Stammfunktionen durch Ableiten nachweisen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4 (Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 28cdee95-3c8e-5760-a68a-405b7f9c6cbf (Differenzialgleichungen erster Ordnung elementar lösen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 58fda9b4-4336-5594-99ce-722c4a453372 (Differenzialgleichungen zweiter Ordnung untersuchen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 492463cf-6cb2-5a5a-98e0-c1d77c36c256 (Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] bd3576b8-f4e5-542a-a8a2-74524d9cee21 (Sachprobleme mit Geraden und Ebenen modellieren) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 857c1c46-5d94-5dfb-9697-9a9fd04103c3 (Schnittgerade zweier Ebenen bestimmen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] b72d87d4-763e-54aa-940d-31f195b51700 (Orthogonale Spiegelungen an Koordinatenebenen mit Matrizen darstellen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c (Zusammensetzungen als Matrixprodukt darstellen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 168d8879-0412-5524-94c5-c1d8169dbd65 (Eigene Abbildungen modellieren und interpretieren) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 803d910d-96d1-5118-b9ca-29e93d0da76d (Parallelprojektionen auf Ursprungsebenen mit Matrizen darstellen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 55039f9c-4ebc-5115-add5-fae95b915e46 (Parallelprojektionen auf Koordinatenebenen mit Matrizen darstellen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] d3c42193-f1b7-5c6d-a991-bf034d99359f (Fixpunkte linearer Abbildungen bestimmen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 6481fc23-d923-5ffc-ba49-f499328f43b8 (Geeignete Lösungsstrategien für lineare Gleichungssysteme auswählen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] a9fde754-51b4-58d7-85e5-5e36160581e6 (Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 58f613da-03be-5c6a-90a9-ff0958aa7849 (Besondere Lagen von Geraden zu Koordinatenachsen und Koordinatenebenen untersuchen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] bda6a659-9640-53a5-8be0-24705ab623ef (Winkel zwischen zwei Ebenen berechnen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 5f90df42-8a71-534d-b995-b8f7dcaf1661 (Parameterabhängige Winkel und Lagebeziehungen untersuchen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 5748633c-113f-5ea8-9041-24da55919de7 (Projektionen auf Koordinatenebenen untersuchen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 7bb3c312-f714-55e6-a31f-f31605a93760 (Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] edaf0bb4-e12e-5a6c-b484-91124ba209f3 (Geradenscharen untersuchen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc (Ebenenscharen in Koordinatengleichung untersuchen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] eb112b6f-4cc4-58af-975a-f1ea61b727f0 (Parabelbahnen mithilfe von Parametern darstellen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 49f9059a-876c-5051-8146-d008b5cc691c (Exponential- und Potenzfunktionen asymptotisch vergleichen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 8e18154d-41d6-592e-ba98-537edad338e8 (Einheitswurzeln komplexer Zahlen am Einheitskreis deuten (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] b66d13c5-187e-530b-b4d3-efc7506a7f34 (Folgen auf Monotonie, Beschränktheit und Konvergenz untersuchen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 474fe553-d868-50d9-a19b-761e64f21c0d (Kleinen Satz von Fermat beweisen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 97b03cce-6641-5ec9-a6d2-f31838e2dbb9 (RSA-Verfahren mathematisch erläutern und anwenden (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] c1f08d89-d65a-5041-8ff3-37538f771b8c (Euklidischen Algorithmus anwenden (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] c371b3f0-dd0e-5263-b616-de6c362f70db (Erweiterten euklidischen Algorithmus anwenden (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 16767f5e-5f21-5adb-8365-01b0d64c28f4 (Euklidische Algorithmen digital nachvollziehen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 6a66b4f5-d36e-5b53-91ad-cf25a849d66b (Explizit definierte Folgen darstellen und berechnen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 10efb267-9733-5db3-a807-03f4cf54e336 (Rekursiv definierte Folgen darstellen und berechnen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] f1eee698-04c6-5d60-bcc6-a3c67129eea2 (Bildungsgesetze zu Folgengliedern aufstellen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 4d55ba50-8d67-560c-a10f-cccff4728c40 (Reihen als Folgen von Partialsummen beschreiben (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 565fcd3f-52cd-5402-a0ac-a1069ed9c598 (Divergenz der harmonischen Reihe begründen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] c66cb27b-8199-58fb-95f4-6314c0c2d07b (Konvergenzbedingungen geometrischer Reihen erläutern (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 911f3200-1dbc-59a6-90df-c883c77de39c (Geometrische Reihen in Anwendungen nutzen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d (Komplexe Zahlen algebraisch dividieren) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 9f9c7ece-b81c-55fa-8073-dd816d7d4778 (Oberflächeninhalte von Körpern berechnen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] d8cbf2bd-2512-5661-b431-4aea7e688912 (Modulare Arithmetik nutzen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] a7c2aa01-4942-597f-a65f-ebb913d0019b (Chinesischen Restsatz formulieren und Voraussetzungen prüfen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 701b3942-9f70-548e-9d02-a34b7e64aa17 (Konstruktiven Beweis des chinesischen Restsatzes erläutern (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] e4eaff7f-1e3d-54ea-8a59-02864948b5eb (Chinesischen Restsatz nutzen (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] d32f599e-3b38-5557-8ad3-565bcd99f4c6 (Primzahltests erläutern (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 1c1754b7-2cd3-5635-824d-ce93f7b99514 (Faktorisierungsverfahren erläutern (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] b88cbf71-5e3e-55e3-ba94-6789408d38d6 (Sachzusammenhänge mit Wendestellen modellieren) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 4b16fce6-84cc-52ae-98ca-f88cc518cc28 (Anschlussbedingungen ohne Sprung und Knick modellieren) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 3773bd34-3631-5fd2-b9b7-dfa01adf5abd (Grundidee von Taylorpolynomen erläutern (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 1b664036-3c29-5d94-9f42-97069aaa2c53 (Exponentialfunktion durch Taylorpolynome annähern (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] 315093d4-515a-542c-b776-d72a12763d1a (Reihendarstellung der eulerschen Zahl angeben (LK)) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals.",
+      "❌ [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced] [GVR-012] f2a12269-6bcb-564a-9fdb-45cfdbd704fc (Teilungsverhältnisse bei Volumina untersuchen) Curricular atomic goal is missing direct atomic terminal route segment(s) for canonical DE Gymnasium mathematics / Sek II curricular atomic goals."
+    ],
+    "GVR012GoalIds": [
+      "03357e70-2280-532f-b629-5dfa31dc44eb",
+      "08b80080-4895-55df-8ca6-4e8c5eb0f9f5",
+      "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5",
+      "0e8417d7-effb-5314-93ba-a571b01726ce",
+      "10efb267-9733-5db3-a807-03f4cf54e336",
+      "1675fdde-cba7-5456-ae70-a846e1924a68",
+      "16767f5e-5f21-5adb-8365-01b0d64c28f4",
+      "168d8879-0412-5524-94c5-c1d8169dbd65",
+      "17c9e061-fe52-5553-be81-fec7a525fcbd",
+      "1801c759-d92d-5bfb-a44f-cfd2455d207b",
+      "18293a33-a5ff-4a0f-9b6a-085f171cbffe",
+      "1842da92-ca2c-5fed-a946-e6413a6285bb",
+      "1b664036-3c29-5d94-9f42-97069aaa2c53",
+      "1c1754b7-2cd3-5635-824d-ce93f7b99514",
+      "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+      "21fa0c22-976e-59b3-a871-899f0c0177f3",
+      "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+      "28cdee95-3c8e-5760-a68a-405b7f9c6cbf",
+      "315093d4-515a-542c-b776-d72a12763d1a",
+      "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+      "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+      "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+      "42e19186-6769-41ac-a7bf-ab39bdb50661",
+      "44dba16e-2e86-56be-974b-a62093ef9211",
+      "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+      "474fe553-d868-50d9-a19b-761e64f21c0d",
+      "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
+      "496f16a0-c031-5753-b988-d6cd3cab595e",
+      "49f9059a-876c-5051-8146-d008b5cc691c",
+      "4b16fce6-84cc-52ae-98ca-f88cc518cc28",
+      "4d55ba50-8d67-560c-a10f-cccff4728c40",
+      "546bf0b3-6921-416b-a2ef-8fd37d429dc7",
+      "55039f9c-4ebc-5115-add5-fae95b915e46",
+      "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+      "56b4acb5-6024-573f-9890-35fbd21ee343",
+      "5743b8f9-86cb-4e24-8859-351708d070ab",
+      "5748633c-113f-5ea8-9041-24da55919de7",
+      "58f613da-03be-5c6a-90a9-ff0958aa7849",
+      "58fda9b4-4336-5594-99ce-722c4a453372",
+      "5b54f272-f588-5009-8b42-eb15f846d3e2",
+      "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "5dbf149c-d335-552c-a918-768a12e09201",
+      "5f90df42-8a71-534d-b995-b8f7dcaf1661",
+      "613871f6-ccb2-51fe-aba2-0dd17b86a89e",
+      "619f29f5-7f44-5654-9692-01b250997d52",
+      "647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+      "647ec09d-68ae-57db-9ca4-aeb2da4218f1",
+      "6481fc23-d923-5ffc-ba49-f499328f43b8",
+      "671ef00a-034e-5c2b-85ef-c6fa6eb7f1f6",
+      "6a66b4f5-d36e-5b53-91ad-cf25a849d66b",
+      "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+      "6fcd6a1a-88d3-59d2-9bf7-ee32babb773e",
+      "701b3942-9f70-548e-9d02-a34b7e64aa17",
+      "71f62cfa-7cc2-5f60-9691-bcdc2ee910df",
+      "740ab443-776a-5c7a-8f1d-2b0b59a5ed32",
+      "74dc4b0d-a167-564c-bdc1-5cf510aee280",
+      "75efcc7c-3c96-47c6-a681-1e9337862a20",
+      "7bb3c312-f714-55e6-a31f-f31605a93760",
+      "7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+      "7e613c02-b0e9-4eb3-8bc0-93c37c30bf44",
+      "803d910d-96d1-5118-b9ca-29e93d0da76d",
+      "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+      "81527aac-1abf-588d-acae-b82a86564b06",
+      "82bce6e8-7dc7-501a-a4f6-df8a3b905e3c",
+      "857c1c46-5d94-5dfb-9697-9a9fd04103c3",
+      "8e18154d-41d6-592e-ba98-537edad338e8",
+      "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941",
+      "911f3200-1dbc-59a6-90df-c883c77de39c",
+      "93fcf49d-a08c-5aa5-a5b2-cb4ee56fdae4",
+      "96c55cb6-d2c7-5145-8567-b5f570f55a8a",
+      "97b03cce-6641-5ec9-a6d2-f31838e2dbb9",
+      "9ea981ed-8b78-502c-b316-01d8cb885814",
+      "9f9c7ece-b81c-55fa-8073-dd816d7d4778",
+      "a4f6f5e4-f790-48d1-8b49-c9dc048c9d83",
+      "a7c2aa01-4942-597f-a65f-ebb913d0019b",
+      "a9fde754-51b4-58d7-85e5-5e36160581e6",
+      "ae3483e3-4712-56a1-a881-2e1f8a1a8df9",
+      "ae483d98-54e0-5985-96d2-fc1351d22e4f",
+      "b66d13c5-187e-530b-b4d3-efc7506a7f34",
+      "b72d87d4-763e-54aa-940d-31f195b51700",
+      "b88cbf71-5e3e-55e3-ba94-6789408d38d6",
+      "bd3576b8-f4e5-542a-a8a2-74524d9cee21",
+      "bda6a659-9640-53a5-8be0-24705ab623ef",
+      "bfc2bf06-9b37-4912-a8eb-25fb5d489d72",
+      "c1f08d89-d65a-5041-8ff3-37538f771b8c",
+      "c371b3f0-dd0e-5263-b616-de6c362f70db",
+      "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+      "ccd1d108-5d9a-50dc-bfb8-6fa6e0bc503c",
+      "ccd47872-4d9d-44db-8c8d-eda24019b502",
+      "ccfd4e60-5728-568f-adb7-0b932d8e5aac",
+      "d144a855-9139-55c7-a801-e8b85dab5f01",
+      "d32f599e-3b38-5557-8ad3-565bcd99f4c6",
+      "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+      "d668c22d-caeb-5e91-8980-721c931a2bcf",
+      "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+      "d8cbf2bd-2512-5661-b431-4aea7e688912",
+      "dd1d9f9c-0a4e-5d01-95d8-f6993163b20c",
+      "e0ed8bb3-bf1c-5ac7-9022-2080e1b74dda",
+      "e4eaff7f-1e3d-54ea-8a59-02864948b5eb",
+      "e75ec65a-9692-5871-b90b-fbebe38ae0c3",
+      "eb112b6f-4cc4-58af-975a-f1ea61b727f0",
+      "edaf0bb4-e12e-5a6c-b484-91124ba209f3",
+      "f05acdc5-4949-54c7-b8cd-56ddd1fbdbad",
+      "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+      "f2a12269-6bcb-564a-9fdb-45cfdbd704fc",
+      "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+      "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+      "fa0b6b69-ce54-4711-90e6-26f27249cd71",
+      "fc2cf102-dcde-5565-884f-7c9e3e3b54b6",
+      "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+      "fcfbff12-bd03-52ec-b242-a693212b3d2b",
+      "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc"
+    ]
+  },
+  "limits": [
+    "No root/code/canonical/source-policy writes performed. Only this review and its read-only baseline log were written under tmp.",
+    "No new whole-country/source audit or source migration.",
+    "No amendment to tasks, scoring, coverage, IDs or stored mastery.",
+    "Earlier84-output materialization receipt remains exact historical evidence; it does not authorize these future changed view bytes. Rebind and rerun affected source/target checks after implementation.",
+    "SL existing task artifact cites printed33, while the actual loaded centroid source block is printed34; this review binds the primary page34 without modifying that historical artifact.",
+    "No M7, route-completeness or chronological-feasibility acceptance."
+  ]
+}

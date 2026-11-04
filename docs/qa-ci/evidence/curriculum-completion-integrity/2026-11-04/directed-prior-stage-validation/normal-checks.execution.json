@@ -1,0 +1,110 @@
+{
+  "status": "PASS_EXPECTED_COMMAND_EXITS",
+  "commands": [
+    {
+      "name": "hard-route-suite",
+      "argv": [
+        "npm",
+        "run",
+        "test:hard-learning-routes"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/sol-directed-prior-stage-qa-20261104-v3/host/app",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "seconds": 5.59,
+      "stdout": {
+        "path": "hard-route-suite.stdout.txt",
+        "sha256": "b6baf5dd49574033859f43c8e0e88148149e01c63433fabd1d827da6a2f49c10"
+      },
+      "stderr": {
+        "path": "hard-route-suite.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "full-graph.root-before",
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/validateGraph.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "seconds": 4.74,
+      "stdout": {
+        "path": "full-graph.root-before.stdout.txt",
+        "sha256": "d80480b77602c8b96316c07f86cb04c3f94f6715a887f33a7b71f62abee5da84"
+      },
+      "stderr": {
+        "path": "full-graph.root-before.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "full-graph.v2-current-data",
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/validateGraph.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/sol-directed-prior-stage-qa-20261104-v2/host/app",
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "seconds": 4.84,
+      "stdout": {
+        "path": "full-graph.v2-current-data.stdout.txt",
+        "sha256": "96d591a373f49f4ea002b8d5309014ec274f807d8432b8952acbef0d4c1ed2b2"
+      },
+      "stderr": {
+        "path": "full-graph.v2-current-data.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "full-graph.after",
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/validateGraph.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/sol-directed-prior-stage-qa-20261104-v3/host/app",
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "seconds": 4.5,
+      "stdout": {
+        "path": "full-graph.after.stdout.txt",
+        "sha256": "4f5378841ea1027e521f5eb80c8024194c765a897db24a50d75170e161aaa191"
+      },
+      "stderr": {
+        "path": "full-graph.after.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "helper-typecheck",
+      "argv": [
+        "./node_modules/.bin/tsc",
+        "--noEmit",
+        "--skipLibCheck",
+        "--target",
+        "es2022",
+        "--module",
+        "esnext",
+        "--moduleResolution",
+        "bundler",
+        "scripts/lib/hardLearningRouteValidation.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/sol-directed-prior-stage-qa-20261104-v3/host/app",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "seconds": 1.74,
+      "stdout": {
+        "path": "helper-typecheck.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "helper-typecheck.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "rootInputDrift": []
+}

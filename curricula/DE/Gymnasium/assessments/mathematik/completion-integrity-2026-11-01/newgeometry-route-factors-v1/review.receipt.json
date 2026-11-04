@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "reviewType": "independent-machine-content-review",
+  "reviewerAgent": "/root/astra_completion_foundations",
+  "authorIndependent": true,
+  "verdict": "PASS",
+  "variants": [
+    {
+      "name": "space-applications",
+      "goalId": "2189ca60-bce7-5cb7-9720-ffea24cc7f9d",
+      "verdict": "PASS",
+      "approvedScope": "Composite-cylinder/cone modeling, slant length, horizontal roof angle, exposed mantle area, capacity, units and model limits",
+      "candidateSha256": "5d836606e228f2bdaa4ed40c2dd72345d398d2efc0c7ba4905064454ae76b8fd",
+      "files": [
+        {
+          "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/space-applications.candidate.goal.json",
+          "sha256": "5d836606e228f2bdaa4ed40c2dd72345d398d2efc0c7ba4905064454ae76b8fd"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/space-applications-draft_v1.md",
+          "sha256": "201e1982f77baa471d8dcdcc9992a531527bffd9f37a7b9d74c243a06795e4f8"
+        }
+      ],
+      "embeddedContentSha256": {
+        "taskContent": "40b139de653653379a3af9fc9bef3c4cb59acf83d93d783f65a9c0a8d49641bd",
+        "solutionContent": "cee227a78709de3999acc3e17a399304786833268420f537aa2086b9b58f176c"
+      },
+      "requires": [
+        "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9"
+      ],
+      "coveredGoalIds": [
+        "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9"
+      ],
+      "maxPoints": 11,
+      "passingPoints": 11,
+      "markdownJsonParity": true,
+      "katex": {
+        "taskFormulas": 6,
+        "solutionFormulas": 18,
+        "throwOnError": true,
+        "strict": "error",
+        "passed": true
+      },
+      "placementVerdict": "NOT_REVIEWED"
+    },
+    {
+      "name": "cone-pyramid-limit",
+      "goalId": "bc04599b-e498-53c8-96f5-850549bdde4f",
+      "verdict": "PASS",
+      "approvedScope": "Geometric inner/outer fixed-height pyramid approximation, base-area convergence, noncircular cone-volume conclusion and exact plus rounded application",
+      "candidateSha256": "ab7db8cfb75d90742856904841d6c7b5a2cb289feb90cba48162d76635a4b94c",
+      "files": [
+        {
+          "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/cone-pyramid-limit.candidate.goal.json",
+          "sha256": "ab7db8cfb75d90742856904841d6c7b5a2cb289feb90cba48162d76635a4b94c"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/cone-pyramid-limit-draft_v1.md",
+          "sha256": "68a778f63b30c8f10bd523dd07cdbf79a0ae9d58aadc90b864d28d302d3c7d94"
+        }
+      ],
+      "embeddedContentSha256": {
+        "taskContent": "ba81b5b40d6375f8c5f8297245f27e9aa5717b0cf4a5f6b69d1ae448b9d250b7",
+        "solutionContent": "4f2c7d82e26ef4e627e769a397ee20b41ed5cbdb9293633168b97c7a755861cc"
+      },
+      "requires": [
+        "50612a57-7b9d-45fd-bc08-e95556444760"
+      ],
+      "coveredGoalIds": [
+        "50612a57-7b9d-45fd-bc08-e95556444760"
+      ],
+      "maxPoints": 6,
+      "passingPoints": 6,
+      "markdownJsonParity": true,
+      "katex": {
+        "taskFormulas": 6,
+        "solutionFormulas": 10,
+        "throwOnError": true,
+        "strict": "error",
+        "passed": true
+      },
+      "placementVerdict": "NOT_REVIEWED"
+    },
+    {
+      "name": "geometry-combined",
+      "goalId": "74ece0b9-7ef3-55da-b803-c62df477a69d",
+      "verdict": "PASS",
+      "approvedScope": "Both reviewed goal aspects with the shared cone-volume calculation credited once",
+      "candidateSha256": "d2d8e313b55fb30fc98f61ea3844b47d1161cbe95723d96f8a4d60acc73c88b2",
+      "files": [
+        {
+          "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/geometry-combined.candidate.goal.json",
+          "sha256": "d2d8e313b55fb30fc98f61ea3844b47d1161cbe95723d96f8a4d60acc73c88b2"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/geometry-combined-draft_v1.md",
+          "sha256": "a51e7ebd044fd5e991f52ba53bfc21cb0c6a602665b1ae93a766cc31cfa209d3"
+        }
+      ],
+      "embeddedContentSha256": {
+        "taskContent": "8883113b8e746ae02712aa3e3f85568a9f895e26068397f287e807dbdfc8a411",
+        "solutionContent": "23f0260933508bdcf2017dca2ba375a966874a2ef62eabe81b390a01cd1bd845"
+      },
+      "requires": [
+        "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+        "50612a57-7b9d-45fd-bc08-e95556444760"
+      ],
+      "coveredGoalIds": [
+        "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+        "50612a57-7b9d-45fd-bc08-e95556444760"
+      ],
+      "maxPoints": 16,
+      "passingPoints": 16,
+      "markdownJsonParity": true,
+      "katex": {
+        "taskFormulas": 8,
+        "solutionFormulas": 27,
+        "throwOnError": true,
+        "strict": "error",
+        "passed": true
+      },
+      "placementVerdict": "NOT_REVIEWED"
+    }
+  ],
+  "sharedFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/author-evidence.json",
+      "sha256": "a33cd293a8db3d2e6a18aca768af0d4e2c73fa6fe0e39c710357c0a052cd00af"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/local-validation.json",
+      "sha256": "eb5391f52281d22c50fcfc63944bae895e3cee3c79fb1f794b8f8c832cabc838"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/scope-signature-evidence.json",
+      "sha256": "3120cbae28975d9998eabcf666bb0cd5eeed9663ef1b4ec978197db7424e3006"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/newgeometry-route-factors-v1/review.md",
+      "sha256": "cbbadd735953ad0931d88cd9e48d7dd387340e4824e742955184c216b97f2fd0"
+    }
+  ],
+  "sourceArtifact": {
+    "path": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v3.md",
+    "sha256": "1dacf435149490f65fb3eda53f485c62ecdb61b963025b115532852f78d37019",
+    "locator": "Task 5, subtask 4",
+    "use": "Context inspiration only; not an exact excerpt or official assessment"
+  },
+  "canonicalGoalBindings": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "normalization": "Python json.dumps ensure_ascii=False sort_keys=True separators=(comma,colon), UTF-8",
+    "goals": [
+      {
+        "id": "ea664a30-98be-508e-90ac-5304679814ee",
+        "normalizedSha256": "c223e0053337ec7d605c2c10d94813ed72365f9c8a22348e09ed95891a62f9f7"
+      },
+      {
+        "id": "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+        "normalizedSha256": "446999787be7946ba6ecda451f871baca6da623925c45371add7d4f2e03b00e4"
+      },
+      {
+        "id": "50612a57-7b9d-45fd-bc08-e95556444760",
+        "normalizedSha256": "71854c4b57c1763c4525d888057fa57fb2c1d89f5f44de2eebfa7910e9fe6608"
+      }
+    ]
+  },
+  "mathematicalChecks": {
+    "slantLengthMetres": "5/2",
+    "roofAngleDegrees": 36.86989764584402,
+    "coatingAreaPiCoefficient": 17,
+    "cylinderVolumePiCoefficient": 12,
+    "coneVolumePiCoefficient": 2,
+    "totalVolumePiCoefficient": 14,
+    "capacityLitres": 43982.2971502571,
+    "shortfallTo45000Litres": 1017.7028497428983,
+    "fixedHeightPyramidSandwichValid": true,
+    "annulusBaseAreaJustificationValid": true,
+    "independentRadialBounds": [
+      "r cos(pi/n)",
+      "r / cos(pi/n)"
+    ],
+    "factorOneThirdDerivedFromKnownPyramidFormula": true,
+    "noCircularUseOfConeVolumeFormulaInDerivation": true,
+    "exactAndRoundedConeValueRequired": true,
+    "combinedNumericConeCreditCountedOnce": true,
+    "originalGoalAndSourceHashesMatchAuthorEvidence": true
+  },
+  "resolvedAuthoringFindings": [
+    "Explicit geometric annulus reason for convergence of polygon areas",
+    "Cone-only rubric requires exact and rounded value",
+    "Variant-specific new-authorship statements and exact original subtask locator"
+  ],
+  "placementVerdict": "NOT_REVIEWED",
+  "sourceAndJurisdictionPlacementAcceptance": false,
+  "schleswigHolsteinHoldsPreserved": true,
+  "humanApproval": false,
+  "hostAcceptance": false,
+  "m7Acceptance": false,
+  "productFilesChanged": false,
+  "limitations": [
+    "Representative assessed aspects only; no prerequisite mastery propagation",
+    "No independent offering matrix, official source mapping or variant-exclusivity acceptance",
+    "No real-host rubric or rendering acceptance",
+    "No publication or production approval"
+  ]
+}

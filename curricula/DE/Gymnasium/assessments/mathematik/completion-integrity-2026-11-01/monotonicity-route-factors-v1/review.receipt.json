@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "reviewType": "independent-machine-content-review",
+  "reviewerAgent": "/root/astra_completion_foundations",
+  "authorIndependent": true,
+  "verdict": "PASS",
+  "variants": [
+    {
+      "name": "monotonicity-extrema",
+      "goalId": "010c133c-dcf1-5530-8305-61bc638017bc",
+      "verdict": "PASS",
+      "approvedScope": "First-derivative sign analysis, monotonicity intervals, two interior extrema and complete global endpoint comparison on the stated closed model interval",
+      "candidateSha256": "055c70ccf7ed3ac0424394e3a3806433b6ebb8f69f6a26ae9eefbd1169c7ad1c",
+      "files": [
+        {
+          "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/monotonicity-route-factors-v1/monotonicity-extrema.candidate.goal.json",
+          "sha256": "055c70ccf7ed3ac0424394e3a3806433b6ebb8f69f6a26ae9eefbd1169c7ad1c"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/monotonicity-route-factors-v1/monotonicity-extrema-draft_v1.md",
+          "sha256": "0351c732308d5fbb9992b2001ea0c013ceaca6b3b16b4659b3bc68a2f36eac37"
+        }
+      ],
+      "embeddedContentSha256": {
+        "taskContent": "e200d8c7fc57e4022f03e9f0e28daca3b80c93dcbac21bc3038911ffe68a75d3",
+        "solutionContent": "e429e9a3d430f11fcb5dc738d518224faf51d67d08c4eac400bd0a7bc6c40806"
+      },
+      "requires": [
+        "2850e8f6-2330-50d3-a577-d519540d9924"
+      ],
+      "coveredGoalIds": [
+        "2850e8f6-2330-50d3-a577-d519540d9924"
+      ],
+      "maxPoints": 6,
+      "passingPoints": 6,
+      "markdownJsonParity": true,
+      "katex": {
+        "taskFormulas": 3,
+        "solutionFormulas": 19,
+        "throwOnError": true,
+        "strict": "error",
+        "passed": true
+      },
+      "placementVerdict": "NOT_REVIEWED"
+    },
+    {
+      "name": "monotonicity-theorem",
+      "goalId": "dcdf1e2d-fb3a-5132-807e-00a0d6f46e33",
+      "verdict": "PASS",
+      "approvedScope": "Positive/negative derivative sufficient conditions, independently proved strict monotonicity of positive/negative cubics, and valid refutation of the claimed converse",
+      "candidateSha256": "5468603bcf4a6c0a9b4726193950e6d91fc842c9aa34af55496fb11d9e535b7b",
+      "files": [
+        {
+          "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/monotonicity-route-factors-v1/monotonicity-theorem.candidate.goal.json",
+          "sha256": "5468603bcf4a6c0a9b4726193950e6d91fc842c9aa34af55496fb11d9e535b7b"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/monotonicity-route-factors-v1/monotonicity-theorem-draft_v1.md",
+          "sha256": "7f83c089c6b42e51bdf7169b17236773e432008300825cc6bd5b716c6c7a5f7d"
+        }
+      ],
+      "embeddedContentSha256": {
+        "taskContent": "1c4ad9c8144dcb0f46704ed98c3d2dc47de2a068254d68aa7c1c0a9ca3f4227e",
+        "solutionContent": "7f1ba9b61cf92c9a853780c2276e296f285bc42970c627f5c960cde84661ff25"
+      },
+      "requires": [
+        "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+      ],
+      "coveredGoalIds": [
+        "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+      ],
+      "maxPoints": 3,
+      "passingPoints": 3,
+      "markdownJsonParity": true,
+      "katex": {
+        "taskFormulas": 6,
+        "solutionFormulas": 12,
+        "throwOnError": true,
+        "strict": "error",
+        "passed": true
+      },
+      "placementVerdict": "NOT_REVIEWED"
+    },
+    {
+      "name": "monotonicity-combined",
+      "goalId": "ecc39d0e-5cf8-50ec-8917-41a322b50921",
+      "verdict": "PASS",
+      "approvedScope": "Both independently checked competency blocks, including endpoint/global comparison and the theorem/nonconverse distinction",
+      "candidateSha256": "e3442d1fbdbb92ea58d918f26c4655bea680a43d39b8dbf2ad90967af9f6dc85",
+      "files": [
+        {
+          "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/monotonicity-route-factors-v1/monotonicity-combined.candidate.goal.json",
+          "sha256": "e3442d1fbdbb92ea58d918f26c4655bea680a43d39b8dbf2ad90967af9f6dc85"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/monotonicity-route-factors-v1/monotonicity-combined-draft_v1.md",
+          "sha256": "b4bc271e88fa025e8e67cbf2693122d2cc025425925f466537dc7df5f743c519"
+        }
+      ],
+      "embeddedContentSha256": {
+        "taskContent": "1d5e509104a9668baae9fcaa69d5e3af012a1e14247b52d8657edd911b51a4dd",
+        "solutionContent": "6382a7b580d984203c05a8eaece62a3d862baef9349995dfc9356c95daeac74e"
+      },
+      "requires": [
+        "2850e8f6-2330-50d3-a577-d519540d9924",
+        "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+      ],
+      "coveredGoalIds": [
+        "2850e8f6-2330-50d3-a577-d519540d9924",
+        "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+      ],
+      "maxPoints": 9,
+      "passingPoints": 9,
+      "markdownJsonParity": true,
+      "katex": {
+        "taskFormulas": 7,
+        "solutionFormulas": 31,
+        "throwOnError": true,
+        "strict": "error",
+        "passed": true
+      },
+      "placementVerdict": "NOT_REVIEWED"
+    }
+  ],
+  "sharedFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/monotonicity-route-factors-v1/author-evidence.json",
+      "sha256": "f0d7d57aefbff0370df61a2e2764df511ccafe85f07cbbfe51dee1d5e9729f83"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/monotonicity-route-factors-v1/review.md",
+      "sha256": "1c64497bd45cfabdc124b9e18882eff7b23bd03204e1c32ecb7f7482fcd98826"
+    }
+  ],
+  "sourceArtifact": {
+    "path": "curricula/DE/Gymnasium/assessments/mathematik/derivative-split-2026-09-28/j10-task3-draft_v2.md",
+    "sha256": "521f311c46b51e3e18a9ebcdc6d78fb9954809bad8059c88da1d1bac8ddf62b0",
+    "locator": "Task 3, subtask 4"
+  },
+  "canonicalGoalBindings": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "normalization": "Python json.dumps ensure_ascii=False sort_keys=True separators=(comma,colon), UTF-8",
+    "goals": [
+      {
+        "id": "2f626446-4b32-5674-a687-9cd754bdfede",
+        "normalizedSha256": "719e5d7aee0e9bb84bf459f26582e3440ba02aa165ad006ba91b99814ad64ba6"
+      },
+      {
+        "id": "2850e8f6-2330-50d3-a577-d519540d9924",
+        "normalizedSha256": "e616632beed84d8ec0f2cb0a8dda24e669a90cbf10361b92e123f2252421aebb"
+      },
+      {
+        "id": "f76d00dc-6b31-59cd-b01a-3610eadc9908",
+        "normalizedSha256": "cee88b7ef8bb58476488737b6ce52014f730ad02fb3f062af8d6ccc2a34f7119"
+      }
+    ]
+  },
+  "mathematicalChecks": {
+    "derivativeFactorization": "3/10 (x-1)(x-3)",
+    "interiorStationaryPoints": [
+      1,
+      3
+    ],
+    "signsOnOpenSubintervals": [
+      "positive",
+      "negative",
+      "positive"
+    ],
+    "candidateValues": {
+      "0": "2",
+      "1": "12/5",
+      "3": "2",
+      "5": "4"
+    },
+    "globalMinimum": {
+      "value": "2",
+      "positions": [
+        0,
+        3
+      ]
+    },
+    "globalMaximum": {
+      "value": "4",
+      "positions": [
+        5
+      ]
+    },
+    "cubicDifferenceIdentity": "b^3-a^3=(b-a)(a^2+ab+b^2)",
+    "positiveDefiniteFactorIdentity": "a^2+ab+b^2=(a+b/2)^2+3b^2/4",
+    "counterexampleDerivativeValuesAtZero": [
+      0,
+      0
+    ],
+    "nonconverseIndependentlyJustified": true,
+    "closedIntervalEndpointHandling": true,
+    "originalGoalAndSourceHashesMatchAuthorEvidence": true
+  },
+  "resolvedAuthoringFindings": [
+    "Variant-specific provenance accurately distinguishes reused and new content",
+    "Strict cubic monotonicity proof explicitly justifies positive factor"
+  ],
+  "placementVerdict": "NOT_REVIEWED",
+  "humanApproval": false,
+  "hostAcceptance": false,
+  "m7Acceptance": false,
+  "productFilesChanged": false,
+  "limits": [
+    "No full offering-matrix or variant-exclusivity acceptance",
+    "No global mastery propagation or prerequisite certification",
+    "No official jurisdiction/year placement claim",
+    "No deployment or publication approval"
+  ]
+}

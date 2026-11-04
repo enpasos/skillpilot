@@ -1,0 +1,231 @@
+{
+  "status": "PASS_ACTUAL_COMPILED_G4_GUARD_POSITIVE39_46_AND21_NEGATIVES",
+  "guardSourceSha256": "b42c4749b56460f2c5a7ca189735a71128b111549f3d142d615b84bb960a3cfa",
+  "unchangedProductionMainSha256": "7bd872996af2e6178dde8baa729be8615b736c32baa5573e6f417e41e8f64758",
+  "originalActualGradleBuild": "normal-combined39-generate.actual.json",
+  "finalFreshJavac": "fresh-javac.actual.json",
+  "finalCanonicalSha256": "2fd2e68235ffb462dccebce5b5f35b76ba0ce0f092e52b4dce3ad21b7c20d753",
+  "finalPolicySha256": "4bc1a330878f211728bc1331210fea18aa203fb7e501838bfa7ce333fdf85360",
+  "positive": {
+    "exitCode": 0,
+    "stdout": "{\"omittedDocumentReferences\":147,\"requests\":46,\"mode\":\"check\",\"combinedViews\":39}\n",
+    "stderr": "",
+    "guardedInputsUnchanged": 233
+  },
+  "cases": [
+    {
+      "case": "unauthorized-existing-id",
+      "mode": "read-only --check",
+      "exitCode": 1,
+      "expectedRejection": "Unreviewed existing assessment allowance",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.16,
+      "stderrSha256": "2a33aa76bbef662c10269f6d9836e46974ee3b15642c00b110dd7cfc3ef6f539"
+    },
+    {
+      "case": "wrong-source-scope",
+      "mode": "read-only --check",
+      "exitCode": 1,
+      "expectedRejection": "Existing source current scope differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 3.82,
+      "stderrSha256": "13dad2776773be200025b7cf1820270af975520a5a28211d8da2eaa50ad0f038"
+    },
+    {
+      "case": "missing-SH-GK-mask",
+      "mode": "read-only --check",
+      "exitCode": 1,
+      "expectedRejection": "Existing excluded source role/mask inventory differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 3.84,
+      "stderrSha256": "6def44ed9b217b99bd2d9f43ca54b90c864d13d709d43db1841ecb398dff978e"
+    },
+    {
+      "case": "extra-mask-key",
+      "mode": "read-only --check",
+      "exitCode": 1,
+      "expectedRejection": "Existing excluded source exact root mask differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 3.86,
+      "stderrSha256": "87f2e2d64f3aab06ebc81768563a66dea273c7aee167fb31d1c97280414a64ee"
+    },
+    {
+      "case": "unrelated-source-tree-drift",
+      "mode": "read-only --check",
+      "exitCode": 1,
+      "expectedRejection": "Original source tree changed beyond reviewed task references",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 3.73,
+      "stderrSha256": "354f9b78757f7ec2c6f98a1e02ae005d3cf10d403b42d482d13db693ab311ee9"
+    },
+    {
+      "case": "original-snapshot-drift",
+      "mode": "read-only --check",
+      "exitCode": 1,
+      "expectedRejection": "Bound before-view drift",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.77,
+      "stderrSha256": "e01d5d3cdba9508bfc86ae8d937986193a9955ff2fda06eb511ba54393038518"
+    },
+    {
+      "case": "empty-SH-retained-wrapper",
+      "mode": "read-only --check",
+      "exitCode": 1,
+      "expectedRejection": "Original source tree changed beyond reviewed task references",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 3.62,
+      "stderrSha256": "038804c46e9c3063111a2cee9b5ae2f012da10a5ac167e07019c591e28c5d933"
+    },
+    {
+      "case": "check-with-report-rejected",
+      "mode": "read-only --check",
+      "exitCode": 1,
+      "expectedRejection": "--check is read-only; omit --report",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 0.52,
+      "stderrSha256": "d3cef5e94589a28bbe7ffdaf05f0bbee1254b160cc80a05cd061075b68be5d65"
+    },
+    {
+      "case": "G3-BY-statistics-plain-POnly-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "Existing added source direct-reference inventory differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.09,
+      "stderrSha256": "5691457e0c8fdc96d73b338162fa6c1e77b026f54b1c437e0d6b15bc8b455065"
+    },
+    {
+      "case": "G3-BY-pyramid-plain-POnly-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "Existing added source direct-reference inventory differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.11,
+      "stderrSha256": "5691457e0c8fdc96d73b338162fa6c1e77b026f54b1c437e0d6b15bc8b455065"
+    },
+    {
+      "case": "G3-SH-statistics-plain-POnly-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "Existing retained source direct-reference inventory differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.2,
+      "stderrSha256": "9932132f03b32e2adaa9640c60b1f654ee655764c71c8da4817c7483c94af417"
+    },
+    {
+      "case": "G4-BY-plain-POnly-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 exact positive direct-reference inventory differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.62,
+      "stderrSha256": "6971999f96988590f107454a1db3304396b0daf20422cb43017e7d5921f96618"
+    },
+    {
+      "case": "G4-unauthorized-source-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 unauthorized source reference",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.51,
+      "stderrSha256": "b254eafb943a528be81866792458626c9a5c2af955bf69f4c78d03f327b6016c"
+    },
+    {
+      "case": "G4-wrong-source-scope-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 source exact scope differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.55,
+      "stderrSha256": "5f6dd3f30337b87a03476f081e48f8d47a7d11ad96bdcf4996094c671caf325c"
+    },
+    {
+      "case": "G4-missing-positive-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 exact positive direct-reference inventory differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.63,
+      "stderrSha256": "6971999f96988590f107454a1db3304396b0daf20422cb43017e7d5921f96618"
+    },
+    {
+      "case": "G4-unauthorized-id-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 identity/schema differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.15,
+      "stderrSha256": "1569eac941772830344eb0987f1a662d6efec7a064ecc29705ee60f9627836a8"
+    },
+    {
+      "case": "G4-broadened-scope-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 exact four scope pairs differ",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.15,
+      "stderrSha256": "c8f5093bbe578538b2497f2982090ec108f3b3c80090ebee941d81697e70b5e2"
+    },
+    {
+      "case": "G4-bound-old-plan-drift-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 original finite plan drift",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.33,
+      "stderrSha256": "707752af8d4beb5324291fd57bc6bce9402690c375502cd0d90ec126fd38a6d2"
+    },
+    {
+      "case": "G4-broad-override-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 explicit own-content override/boundary differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.22,
+      "stderrSha256": "5eae7c35d454ca8d2cc7133169079195547b0cbac84976fa93037fb33364ec74"
+    },
+    {
+      "case": "G4-missing-form-preparation-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 canonical preparation differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.23,
+      "stderrSha256": "034cf375bf83d82dea644b94e012ff184a31b724ae782a72c99337c01d5ebcb7"
+    },
+    {
+      "case": "G4-fake-extra-coverage-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 scored coverage differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.12,
+      "stderrSha256": "953aae99854518f0b990fd331bcbe534863576281f3713b807d8f8b5ab1f97e2"
+    }
+  ],
+  "oldEightRetained": 8,
+  "G3PlainPOnlyGenerationRetained": 3,
+  "newG4GenerationNegatives": 10,
+  "rootGitNativeWrites": false
+}

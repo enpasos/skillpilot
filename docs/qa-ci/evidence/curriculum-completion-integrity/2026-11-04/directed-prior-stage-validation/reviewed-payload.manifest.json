@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "candidateId": "sol-directed-prior-stage-qa-20261104-v3",
+  "status": "PRIVATE_EXACT_SEMANTIC_ORDER_V3_READY_FOR_GENUINE_IMPLEMENTATION_REVIEW_NOT_IMPORTED",
+  "frozenAt": "2026-11-04T00:38:23.709372+00:00",
+  "baseHead": "e245f158355bb2703c74d6586b0c05398097926c",
+  "supersedes": {
+    "path": "tmp/approach-review-20261101/sol-directed-prior-stage-qa-20261104-v2/manifest.json",
+    "sha256": "53c71490bedadca0347c87b0cfc2917612a79a7132bda401d81048b0e025ac11"
+  },
+  "genuineSemanticOrderContract": {
+    "path": "tmp/approach-review-20261101/astra-current-integration-review-20261104-v1/gvr-semantic-order-contract-review.json",
+    "sha256": "da624ce90eda8cfd78afc95e5d76305243034c05c0c985c4cf2fd8d1f2082347"
+  },
+  "correction": "Only both ROUTE_ORDER lookups now use authoritative semanticKind. curricularAtomic keeps rank1 despite an assessment execution form; pure practiceAssessment keeps rank2. All v2 raw authored-edge checks and every other helper/validator semantic remain unchanged.",
+  "candidateFiles": [
+    {
+      "path": "app/scripts/lib/hardLearningRouteValidation.ts",
+      "candidatePath": "host/app/scripts/lib/hardLearningRouteValidation.ts",
+      "sha256": "e347cbeb629c2c3df815a9cad7f72ffe5646e432c0573d118ff56d1491bc50cb",
+      "baseSha256": "352b53c99cd007ed69b32dd50aaae3f97b1c0e36e5e7f3310f11bfd05654412a",
+      "v2Sha256": "be594e00e172b85d61b3ce107fdbe08e43de35350c71083ee0dc67eff4e39927",
+      "changedFromV2": true
+    },
+    {
+      "path": "app/scripts/validateGraph.ts",
+      "candidatePath": "host/app/scripts/validateGraph.ts",
+      "sha256": "6a90643c1af42b2f5cfb5ffd90a1bfa17b82f77ee06b1d9a7a76959e7afaadd7",
+      "baseSha256": "2010effe4a1f33bb5fec2d7e1d1419e077d9cde9d2e84f7eea8486a43186bc90",
+      "v2Sha256": "6a90643c1af42b2f5cfb5ffd90a1bfa17b82f77ee06b1d9a7a76959e7afaadd7",
+      "changedFromV2": false
+    },
+    {
+      "path": "app/scripts/testHardLearningRouteValidation.ts",
+      "candidatePath": "host/app/scripts/testHardLearningRouteValidation.ts",
+      "sha256": "95c9534622d8d2351e346f94786d956085aa3af1823e60732a30af32e8191509",
+      "baseSha256": "103c219cdcb6c62e3ee6a531546ebaad29bdfca1c14ce0b950ec6cba521854f6",
+      "v2Sha256": "78728330455688a1188116223c6943e081bb408ee9584b6b12cd9fd6f2e1485c",
+      "changedFromV2": true
+    },
+    {
+      "path": "docs/qa-ci/graph-validation-rules.md",
+      "candidatePath": "host/docs/qa-ci/graph-validation-rules.md",
+      "sha256": "4f631ee672cc1f5bdd81a2786882d3d9f78c97660b991d70599b5d40c0f4a10c",
+      "baseSha256": "5e9465b4b419ad8eb55f0262c351c86eb4806cdc692d88837e44f7cd8fdd0122",
+      "v2Sha256": "c1c8bc1264f969b3d2724e7927728f0d187c1f95e28c9ef931de79577e441cc4",
+      "changedFromV2": true
+    }
+  ],
+  "evidence": [
+    {
+      "path": "candidate.diff",
+      "sha256": "092269cc5b12756181ee547256205d558bb7407b2ef02b12a41da4920233eb71"
+    },
+    {
+      "path": "v3-order-only.diff",
+      "sha256": "a34f58fc311d8d18da4b2287cb489a5c8b3efee0a99cfef4a1fe21e71b6c61b3"
+    },
+    {
+      "path": "input-bindings.json",
+      "sha256": "1d3ab00308f5c849464171c022160a0259a98c404a36dbcb6b4f22643e2e94f8"
+    },
+    {
+      "path": "checks.execution.json",
+      "sha256": "5d66695b9136338845f9fcca1885f6d3f3ce94e4f3262799cd9d75465e3966b0"
+    },
+    {
+      "path": "full-graph-finding-multiset.json",
+      "sha256": "34724cb24832ed3c748df5b73a86cbae94f71c045b4fd370267c8eae14a0f801"
+    },
+    {
+      "path": "run-checks.py",
+      "sha256": "599101a2e7dd169541900eec1b6a75c5f6b72267d805873f584ee0d30745e967"
+    },
+    {
+      "path": "prepare-v3.py",
+      "sha256": "8bd1cd0aaaf3053881d41b806a3ec86423745ea29bccd65650e1a28c9c15f0c0"
+    },
+    {
+      "path": "freeze-candidate.py",
+      "sha256": "8d9a3c8d616966986aa4e5c86eba69b71816b08b09f72d78dbd084f74635620b"
+    },
+    {
+      "path": "hard-route-suite.execution.json",
+      "sha256": "a8b07285420fc109a7aaa20692b8c61df993fccfb6bd5a146119875eb328ffa0"
+    },
+    {
+      "path": "hard-route-suite.stdout.txt",
+      "sha256": "b6baf5dd49574033859f43c8e0e88148149e01c63433fabd1d827da6a2f49c10"
+    },
+    {
+      "path": "hard-route-suite.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "full-graph.root-before.execution.json",
+      "sha256": "510c9ae8d555e0063fbb6d28df289356ca9359152c43d916ab58182882de5aef"
+    },
+    {
+      "path": "full-graph.root-before.stdout.txt",
+      "sha256": "d80480b77602c8b96316c07f86cb04c3f94f6715a887f33a7b71f62abee5da84"
+    },
+    {
+      "path": "full-graph.root-before.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "full-graph.v2-current-data.execution.json",
+      "sha256": "8a098a5ebdf65e007cbcdc87889ec093aa54d8938a87109336bbe22290d41fd2"
+    },
+    {
+      "path": "full-graph.v2-current-data.stdout.txt",
+      "sha256": "96d591a373f49f4ea002b8d5309014ec274f807d8432b8952acbef0d4c1ed2b2"
+    },
+    {
+      "path": "full-graph.v2-current-data.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "full-graph.after.execution.json",
+      "sha256": "922a299be578d46eb81ddc4d50c836537257d4caa5cca9bdca6f04722dbb348e"
+    },
+    {
+      "path": "full-graph.after.stdout.txt",
+      "sha256": "4f5378841ea1027e521f5eb80c8024194c765a897db24a50d75170e161aaa191"
+    },
+    {
+      "path": "full-graph.after.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "helper-typecheck.execution.json",
+      "sha256": "ae2230669b58a6fc5ebdd95d788e68fcce02adfd01e702d65c72e2ce84d4d147"
+    },
+    {
+      "path": "helper-typecheck.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "helper-typecheck.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "validation": {
+    "hardRouteSuiteExitCode": 0,
+    "helperTypecheckExitCode": 0,
+    "all16TopologyCasesRetained": true,
+    "v2ReturningFutureAmbiguousPureAssessmentGuardsRetained": true,
+    "ordinaryAndWholeformRequiringWholeformOrderAllowed": true,
+    "ordinaryAndWholeformRequiringPureAssessmentOrderRejected": true,
+    "diffWhitespaceClean": true,
+    "rootGraphBeforeErrors": 58,
+    "v2OnCurrentDataErrors": 52,
+    "v3OnCurrentDataErrors": 49,
+    "rootAndCandidateFullGraphExitCodes": 1,
+    "exactSixPriorPreparationAndThreeReviewedOrderFindingsRemoved": true,
+    "newFindings": [],
+    "allOther49MessagesIdenticalAsAMultiset": true,
+    "dataSha256AtMeasurement": "3b993894edf7e167365f217dc1ea05205c1124f442dc04ae075d3fafe883856c",
+    "rootInputDrift": []
+  },
+  "scopeLimits": [
+    "No Root/Git/data/R/target/coverage/mastery changes.",
+    "Terminal selection, assessment protection/readiness and prior-stage proof are unchanged.",
+    "V1/v2 files and evidence remain intact.",
+    "The validator file is byteequal to v2; documentation adds one explicit semantic-order bullet.",
+    "49 graph findings remain; no M7, overall CI, deployment or source approval claim.",
+    "No repeated unrelated standalone validator typecheck or new framework."
+  ]
+}

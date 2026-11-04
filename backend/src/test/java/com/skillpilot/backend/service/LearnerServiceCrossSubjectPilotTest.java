@@ -1,5 +1,9 @@
 package com.skillpilot.backend.service;
 
+import com.skillpilot.backend.testsupport.OwnedMockitoMocks;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.AfterAll;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
@@ -41,7 +45,17 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.support.SimpleTransactionStatus;
 
+@ExtendWith(OwnedMockitoMocks.class)
 class LearnerServiceCrossSubjectPilotTest {
+
+    @AfterAll
+    static void releaseClassFixtures() {
+        objectMapper = null;
+        landscapeService = null;
+        goalMappingService = null;
+        compositionViewService = null;
+    }
+
 
     private static final String LEARNER_ID = "cross-subject-pilot-learner";
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
@@ -1071,6 +1085,9 @@ class LearnerServiceCrossSubjectPilotTest {
     void canonicalPhysicsPilotLearnerStateUnlocksDiagramGoalFromCanonicalMathAndProjectedPhysicsMastery() {
 
         learner.setPersonalCurriculum(CANONICAL_PHYSICS_GK_PERSONAL_CONFIG);
+        // Select the actual direct target before testing its migrated prerequisite availability.
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_PHYSICS_DIAGRAMS_ID)));
 
         prepareLegacyFrontierContext(compositionAwareLearnerService(), CANONICAL_PHYSICS_DIAGRAMS_ID,
                 List.of(LEGACY_PHYSICS_WHY_ID, CANONICAL_MATH_FUNCTION_CONCEPT_ID, CANONICAL_MATH_READ_VALUES_ID),

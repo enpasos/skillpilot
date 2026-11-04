@@ -1,0 +1,70 @@
+{
+  "key": "new_sh_discrete_binomial_context",
+  "goalId": "f59b0af8-b90a-5cdb-88d6-561323a4f763",
+  "title": "Prüfung: Versandtage mit Binomialverteilungen untersuchen",
+  "titleEn": "Assessment: Examine dispatch days with binomial distributions",
+  "directRequires": [
+    "42d300e3-e982-5889-98d7-fc297f10eff1",
+    "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+    "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+    "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+    "d81bc960-4eff-5c87-90b8-fec8e1cb8b3a",
+    "f7879354-1a82-4195-8e3c-a339a820439c",
+    "9de07e13-6a5f-5b49-a6d4-0decefb95784"
+  ],
+  "examDataContent": {
+    "reviewStatus": "draft",
+    "coveredGoalIds": [
+      "9de07e13-6a5f-5b49-a6d4-0decefb95784"
+    ],
+    "coveredStrands": [
+      "L5"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "# Eilige Sendungen an Versandtagen\n\nEin fiktiver Versand betrachtet jede Sendung unabhängig als „eilig“ mit derselben Wahrscheinlichkeit $p=0{,}2$. Ein Tag der Serie A umfasst genau $12$ Sendungen. $X$ zählt die eiligen Sendungen. Digitale Werkzeuge dürfen exakte Binomialwahrscheinlichkeiten, Tabellen und Grafiken erzeugen; zeige dabei Parameter und Ereignisse.\n\n\n1. Beschreibe $X$ als Zuordnung von zwölfteiligen Eilig/Nicht-eilig-Folgen zu einer Zahl. Gib Wertebereich und Modellannahmen an. Erstelle für $k=0,\\ldots,12$ eine vollständige Wahrscheinlichkeitstabelle und ein Histogramm, und deute den Balken bei $k=2$ sowie die Summe aller Wahrscheinlichkeiten.\n\n2. Berechne $P(X=2)$ und erkläre in diesem Kontext die Bedeutung und den Wert von $\\binom{12}{2}$. Erkläre, wie mögliche Positionen und eine feste Reihenfolge zusammenwirken.\n\n3. Berechne Erwartungswert, Varianz und Standardabweichung von $X$ und deute sie im Kontext einschließlich Einheiten und Aussagegrenzen.\n\n4. In einer neuen Serie darf die Zahl $n\\geq1$ der Sendungen gewählt werden, bei gleichem $p=0{,}2$. Bestimme die **kleinste ganze** Zahl $n$, für die die Wahrscheinlichkeit mindestens einer eiligen Sendung mindestens $0{,}95$ ist. Gib das Ereignis, deine Suche oder Rechnung sowie den Nachweis für $n$ und $n-1$ an. Logarithmen sind nicht erforderlich; systematisches Probieren ist erlaubt.\n\n5. Vergleiche die tatsächlich gezeichneten Histogramme A: $B(12;0{,}2)$, B: $B(24;0{,}2)$ und C: $B(12;0{,}5)$ hinsichtlich Lage, absoluter Streuung und Symmetrie. Begründe zwei getrennte Parametervergleiche A/B und A/C und nenne eine Grenze des Modells bei gemeinsam gebuchten Gruppen von Sendungen.\n\n![Drei Binomialhistogramme der Versandserien](assets/sh-binomial.png)\n",
+    "taskContentEn": "# Urgent parcels on dispatch days\n\nA fictional dispatch service models each parcel independently as urgent with the same probability $p=0.2$. Series A has exactly 12 parcels a day. $X$ counts urgent parcels. Digital tools may produce exact binomial probabilities, tables and charts; show parameters and events.\n\n\n1. Describe $X$ as a mapping from twelve-entry urgent/non-urgent sequences to a number. State range and assumptions. Produce the complete probability table for $k=0,\\ldots,12$ and a histogram. Interpret the bar at $k=2$ and the probability sum.\n\n2. Compute $P(X=2)$ and explain the contextual meaning and value of $\\binom{12}{2}$, connecting success placements with a fixed ordered sequence.\n\n3. Calculate expectation, variance and SD of $X$ and interpret them with units and limitations.\n\n4. In a new series choose an integer parcel count $n\\geq1$, keeping $p=0.2$. Find the **smallest integer** $n$ such that at least one urgent parcel has probability at least $0.95$. State the event, calculation/search and checks for $n$ and $n-1$. Systematic trial is allowed; logarithms are unnecessary.\n\n5. Compare the actually drawn histograms A: $B(12;0.2)$, B: $B(24;0.2)$ and C: $B(12;0.5)$ in location, absolute spread and symmetry. Justify separate A/B and A/C comparisons. Give a model limitation for parcels booked together in groups.\n\n![Three binomial histograms for dispatch series](assets/sh-binomial.png)\n",
+    "solutionContent": "# Musterlösung\n\n\n1. Einer Folge wird die Anzahl ihrer Eilig-Einträge zugeordnet; z.B. erhält eine Folge mit genau zwei Eilig-Einträgen den Wert 2. $X\\in\\{0,\\ldots,12\\}$, $X\\sim B(12;0{,}2)$ bei fester Versuchszahl, zwei Ausgängen, konstantem $p$ und Unabhängigkeit. Für alle $k$ gilt\n\n$$\nP(X=k)=\\binom{12}{k}0{,}2^k0{,}8^{12-k}.\n$$\n\nDie vollständige Referenztabelle mit gerundeten Werten:\n\n| $k$ | $P(X=k)$ |\n|---|---:|\n|0|0,068719476736|\n|1|0,206158430208|\n|2|0,283467841536|\n|3|0,236223201280|\n|4|0,132875550720|\n|5|0,053150220288|\n|6|0,015502147584|\n|7|0,003321888768|\n|8|0,000519045120|\n|9|0,000057671680|\n|10|0,000004325376|\n|11|0,000000196608|\n|12|0,000000004096|\n\nDas Histogramm hat ganzzahlige Mittelpunkte und Breite 1, mit diesen Höhen. Der Balken bei 2 gibt die Wahrscheinlichkeit für genau zwei eilige Sendungen an; die Summe ist 1, weil alle möglichen Anzahlen erfasst sind.\n\n2. $\\binom{12}2=12\\cdot11/2=66$ wählt zwei ungeordnete Eilig-Positionen aus zwölf. Jede feste Folge hat Wahrscheinlichkeit $0{,}2^2 0{,}8^{10}$; die 66 disjunkten Folgen ergeben $P(X=2)=0{,}283467841536$. Die Division durch 2 verhindert Doppelzählung der beiden ausgewählten Positionen.\n\n3. $E(X)=12\\cdot0{,}2=2{,}4$ Sendungen, $\\operatorname{Var}(X)=12\\cdot0{,}2\\cdot0{,}8=1{,}92$ in quadrierten Anzahleinheiten, $\\sigma_X=\\sqrt{1{,}92}\\approx1{,}3856$ Sendungen. Erwartungswert ist langfristige mittlere Anzahl, kein möglicher einzelner Wert 2,4; Varianz/SD beschreiben die Zufallsstreuung, keine garantierte Tagesgrenze.\n\n4. Für $Y\\sim B(n;0{,}2)$ ist $P(Y\\geq1)=1-0{,}8^n\\geq0{,}95$. Bei $n=13$ ergibt sich $0{,}9450244186112<0{,}95$, bei $n=14$ $0{,}95601953488896\\geq0{,}95$. Weil $0{,}8^n$ streng fällt, ist $14$ die kleinste Zahl. Eine dokumentierte Tabelle mit diesen Grenzchecks reicht.\n\n5. A/B: Mittel $2{,}4\\to4{,}8$, SD $\\sqrt{1{,}92}\\to\\sqrt{3{,}84}\\approx1{,}9596$, also nach rechts und absolut breiter; bei gleichem $p<0{,}5$ weniger stark rechtsschief, aber nicht exakt symmetrisch. A/C: Mittel $2{,}4\\to6$, SD $\\sqrt{1{,}92}\\to\\sqrt3\\approx1{,}7321$; C ist symmetrisch um 6 statt rechtsschief. Gemeinsam gebuchte Eilaufträge können abhängig sein oder zeitlich andere Chancen haben; dann passt die unabhängige gleichartige Bernoulli-Kette nicht.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 5 | Zuordnung/Wertebereich 1; Modellannahmen 1; vollständige Tabelle 1; Histogramm 1; Balken und Summe gedeutet 1 |\n| 2 | 4 | 66 mit Zählbedeutung 2; feste Folge 1; korrektes Ereignisergebnis 1 |\n| 3 | 4 | Mittel 1; Varianz/SD 1; sachliche Deutung 1; Einheiten/keine Garantie 1 |\n| 4 | 5 | Ereignis/Gegenereignis 1; nachvollziehbare Suche 1; n14 geprüft 1; n13 geprüft 1; Minimalität/Monotonie 1 |\n| 5 | 6 | A/B Lage, absolute Streuung, Schiefe je 1; A/C entsprechende begründete Vergleiche 2; Kontextgrenze 1 |\n| **Gesamt** | **24** | **Bestanden ab 15** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+    "solutionContentEn": "# Reference solution\n\n\n1. Map each twelve-entry outcome sequence to its number of urgent entries; possible values are 0 through 12. Fixed trials, two outcomes, independence and constant $p$ give $X\\sim B(12;0.2)$ and\n\n$$\nP(X=k)=\\binom{12}{k}0.2^k0.8^{12-k}.\n$$\n\nFor $k=0,\\ldots,12$ the complete probability list is\n$0.068719476736$, $0.206158430208$, $0.283467841536$, $0.236223201280$, $0.132875550720$, $0.053150220288$, $0.015502147584$, $0.003321888768$, $0.000519045120$, $0.000057671680$, $0.000004325376$, $0.000000196608$, $0.000000004096$. Unit-width histogram bars have these heights at integer counts. The bar at 2 represents exactly two urgent parcels, and probabilities sum to 1 because all counts are included.\n\n2. $\\binom{12}2=12(11)/2=66$ selects two unordered urgent positions. Each fixed sequence has probability $0.2^2 0.8^{10}$; adding the 66 disjoint sequences gives $0.283467841536$. Dividing by 2 removes duplicate orders of the chosen positions.\n\n3. Mean is 2.4 parcels, variance 1.92 squared count-units, and SD $\\sqrt{1.92}\\approx1.3856$ parcels. Mean describes a long-run average, not a possible daily count of 2.4. Variance/SD measure random spread and are not guaranteed bounds.\n\n4. For $Y\\sim B(n;0.2)$ require $1-0.8^n\\geq0.95$. At 13 the probability is $0.9450244186112$, below 0.95; at 14 it is $0.95601953488896$, sufficient. Since $0.8^n$ decreases strictly,14 is minimal. A documented systematic search with these boundary checks is enough.\n\n5. A/B: mean 2.4 to 4.8, SD $\\sqrt{1.92}$ to $\\sqrt{3.84}\\approx1.9596$; location shifts right, absolute spread grows, right skew becomes less pronounced but does not disappear exactly. A/C: mean 2.4 to 6, SD rises to $\\sqrt3\\approx1.7321$; C is symmetric about 6. Group bookings or changing urgency rates can violate independence or constant probability.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 5 | mapping/range 1; assumptions 1; complete table 1; histogram 1; bar and sum interpreted 1 |\n| 2 | 4 | 66 and counting meaning 2; fixed sequence 1; event probability 1 |\n| 3 | 4 | mean 1; variance/SD 1; interpretation 1; units/no guarantee 1 |\n| 4 | 5 | event/complement 1; traceable search 1; n14 check 1; n13 check 1; minimality/monotonicity 1 |\n| 5 | 6 | A/B location, absolute spread, skew 1 each; A/C reasoned comparisons 2; contextual limit 1 |\n| **Total** | **24** | **Pass at 15** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+    "scoring": {
+      "maxPoints": 24,
+      "passingPoints": 15,
+      "steps": [
+        {
+          "id": "new_sh_discrete_binomial_context_1",
+          "points": 5,
+          "description": "Zuordnung/Wertebereich 1; Modellannahmen 1; vollständige Tabelle 1; Histogramm 1; Balken und Summe gedeutet 1",
+          "descriptionEn": "mapping/range 1; assumptions 1; complete table 1; histogram 1; bar and sum interpreted 1"
+        },
+        {
+          "id": "new_sh_discrete_binomial_context_2",
+          "points": 4,
+          "description": "66 mit Zählbedeutung 2; feste Folge 1; korrektes Ereignisergebnis 1",
+          "descriptionEn": "66 and counting meaning 2; fixed sequence 1; event probability 1"
+        },
+        {
+          "id": "new_sh_discrete_binomial_context_3",
+          "points": 4,
+          "description": "Mittel 1; Varianz/SD 1; sachliche Deutung 1; Einheiten/keine Garantie 1",
+          "descriptionEn": "mean 1; variance/SD 1; interpretation 1; units/no guarantee 1"
+        },
+        {
+          "id": "new_sh_discrete_binomial_context_4",
+          "points": 5,
+          "description": "Ereignis/Gegenereignis 1; nachvollziehbare Suche 1; n14 geprüft 1; n13 geprüft 1; Minimalität/Monotonie 1",
+          "descriptionEn": "event/complement 1; traceable search 1; n14 check 1; n13 check 1; minimality/monotonicity 1"
+        },
+        {
+          "id": "new_sh_discrete_binomial_context_5",
+          "points": 6,
+          "description": "A/B Lage, absolute Streuung, Schiefe je 1; A/C entsprechende begründete Vergleiche 2; Kontextgrenze 1",
+          "descriptionEn": "A/B location, absolute spread, skew 1 each; A/C reasoned comparisons 2; contextual limit 1"
+        }
+      ]
+    },
+    "reviewNote": "Own bilingual whole form; author candidate pending genuine independent content, source, preparation and role/identity reviews. One ordinary total result; no learner mastery migration."
+  }
+}

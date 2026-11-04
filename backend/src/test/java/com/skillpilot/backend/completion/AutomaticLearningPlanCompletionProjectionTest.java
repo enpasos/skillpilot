@@ -14,16 +14,18 @@ import org.junit.jupiter.api.Test;
 class AutomaticLearningPlanCompletionProjectionTest {
     private final LearningPlanCompletionProjection projection = new LearningPlanCompletionProjection();
 
-    @Test void planWithoutAnyProfileOrAssessmentUsesOneSnapshotAndCreditsOrdinaryTargets() {
+    @Test void planWithoutProtectedCurriculumRootsCannotCreditItsOrdinaryTargets() {
         var context = context(atom("a"), atom("b", "a"));
         assertThat(context.reviewedProfiles()).isEmpty();
         var calls = new AtomicInteger();
-        assertThat(projection.waivedGoals(context, Set.of("b"), ids -> {
+        assertThatThrownBy(() -> projection.waivedGoals(context, Set.of("b"), ids -> {
             calls.incrementAndGet();
             assertThat(ids).containsExactlyInAnyOrder("a", "b");
             return Map.of();
-        })).containsExactly("b");
+        })).isInstanceOfSatisfying(CompletionCompilationException.class,
+                error -> assertThat(error.code()).isEqualTo("UNCOVERED_COMPLETION_TARGETS"));
         assertThat(calls).hasValue(1);
+        assertThat(waived(context, Set.of("b"), Map.of("a", 1.0, "b", 1.0))).isEmpty();
     }
 
     @Test void masteredIntermediateStopsDemandEvenWhenItsAssessmentIsOutsideTheDatedPlan() {
@@ -40,6 +42,29 @@ class AutomaticLearningPlanCompletionProjectionTest {
         assertThat(waived(context, Set.of("a"), Map.of())).isEmpty();
     }
 
+    @Test void plansNeverCreditUnmasteredMemoryAndRetainItsDemandOutsideTheSchedule() {
+        var cards = atom("cards", "a");
+        cards.setNodeKind("memory");
+        var context = context(atom("a"), cards, exam("q", "a"));
+        assertThat(waived(context, Set.of("a", "cards"), Map.of("q", 1.0))).isEmpty();
+        assertThat(waived(context, Set.of("a"), Map.of("q", 1.0))).isEmpty();
+        assertThat(waived(context, Set.of("a", "cards"), Map.of("q", 1.0, "cards", 1.0)))
+                .containsExactly("a");
+        // A later loss of verified recall restores demand on the next snapshot.
+        assertThat(waived(context, Set.of("a", "cards"), Map.of("q", 1.0))).isEmpty();
+    }
+
+    @Test void hiddenProtectedSupportDoesNotIndependentlyKeepPlanPreparationOpen() {
+        var cards = atom("hidden", "a");
+        cards.setNodeKind("memory");
+        var graph = new LinkedHashMap<String, LearningGoal>();
+        for (var goal : List.of(atom("a"), cards, exam("q", "hidden"))) graph.put(goal.getId(), goal);
+        var context = LearningPlanCompletionContext.automatic("base", "generation", graph, Set.of("a", "q"));
+        assertThat(waived(context, Set.of("a"), Map.of())).isEmpty();
+        assertThat(waived(context, Set.of("a"), Map.of("q", 1.0))).containsExactly("a");
+        assertThat(waived(context, Set.of("a"), Map.of())).isEmpty();
+    }
+
     @Test void independentSubjectGoalsDoNotBlockButGenuineCrossSubjectDemandRemains() {
         var independent = context(atom("a"), exam("math-exam", "a"), atom("physics"), exam("physics-exam", "physics"));
         assertThat(waived(independent, Set.of("a"), Map.of("math-exam", 1.0))).containsExactly("a");
@@ -51,15 +76,15 @@ class AutomaticLearningPlanCompletionProjectionTest {
 
     @Test void differentPlansShareOneFullCurriculumCompilationAndExcludeNavigationClusters() {
         var root = atom("root"); root.setContains(List.of("a", "b", "q"));
-        var context = context(root, atom("a"), atom("b"), exam("q", "a"));
+        var context = context(root, atom("a"), atom("b"), exam("q", "a", "b"));
         assertThat(waived(context, Set.of("a"), Map.of("q", 1.0))).containsExactly("a");
-        assertThat(waived(context, Set.of("b"), Map.of())).containsExactly("b");
+        assertThat(waived(context, Set.of("b"), Map.of())).isEmpty();
         assertThat((Map<?, ?>) org.springframework.test.util.ReflectionTestUtils.getField(projection, "cache"))
                 .hasSize(1);
     }
 
     @Test void automaticContextRetainsStrictMissingInputAndScopeValidation() {
-        var context = context(atom("a"));
+        var context = context(atom("a"), exam("q", "a"));
         assertThatThrownBy(() -> projection.waivedGoals(context, Set.of("a"), ids -> null))
                 .isInstanceOf(NullPointerException.class);
         assertThatThrownBy(() -> waived(context, Set.of("missing"), Map.of()))

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "verdict": "APPROVE",
+  "reviewedAt": "2026-11-03T20:03:34Z",
+  "reviewKind": "independent-bounded-rubric-delta-review",
+  "reviewerAgent": "/root/astra_cuboid_existing_scope",
+  "authorIndependent": true,
+  "goalId": "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+  "findingId": "SIM-RUBRIC-1",
+  "findingStatus": "CLOSED",
+  "manifest": {
+    "path": "revisions/r2-similarity-cap-only/bounded-manifest.json",
+    "sha256": "6b9f9349fe25acd3988113dd72808da9a5bd2c3e976592241b808c26b59f10a9"
+  },
+  "priorIndependentReview": {
+    "path": "independent-whole-content-review.r1.json",
+    "sha256": "8940b91ac0ff27152d00031d39adb1323b22b9ae51771ae57d9915ad0dfa05c1",
+    "preservedUnchanged": true
+  },
+  "exactDelta": {
+    "path": "revisions/r2-similarity-cap-only/exact-delta.patch",
+    "sha256": "0693d6990f1b95f5fd9eb64a32580ca725c14f89783ac0a706e3643fd8b31de5"
+  },
+  "approvedReplacementBindings": [
+    {
+      "effectivePath": "drafts/similarity/rubric.de.md",
+      "replacementPath": "revisions/r2-similarity-cap-only/drafts/similarity/rubric.de.md",
+      "sha256": "5e470208418a5e13b82cc6fbc8e4f196d3321694bbb0b5533330aa1871bf811a"
+    },
+    {
+      "effectivePath": "drafts/similarity/rubric.en.md",
+      "replacementPath": "revisions/r2-similarity-cap-only/drafts/similarity/rubric.en.md",
+      "sha256": "be4bb2d9f5edcfc4d778a7db1807da3ed54edd0f73095ea5263db4c81694d9d7"
+    }
+  ],
+  "actualChecks": {
+    "bothEntireReplacementRubricsRead": true,
+    "eachReplacementEqualsExactlyOneCapParagraphReplacement": true,
+    "generatedUnifiedDiffEqualsExactDeltaBytes": true,
+    "all12OriginalContentFileHashesUnchanged": true,
+    "originalAuthorPackageAndR1ReceiptUnchanged": true,
+    "criterionTotal20PassingThreshold15Cap14Unchanged": true,
+    "deEnSemanticsEquivalent": true
+  },
+  "decision": "The DE and EN wording now explicitly caps the total at14 when either sound congruence reasoning or sound similarity reasoning is wholly absent across the submission. Thus either omitted core independently prevents reaching15. Both missing use the same cap; no second result or qualification is introduced. Equivalent reasoning elsewhere, local-error tolerance, follow-through and all original construction caps remain intact. This closes the only R1 content/rubric revision for2041; unchanged whole-task/content findings remain those of R1.",
+  "semanticCountercasesNotRuntimeTests": [
+    {
+      "case": "Congruence reasoning wholly absent; other work would otherwise reach18",
+      "result": "Cap14; not passed."
+    },
+    {
+      "case": "Similarity reasoning wholly absent; other work would otherwise reach17",
+      "result": "Cap14; not passed."
+    },
+    {
+      "case": "Both kinds of reasoning wholly absent",
+      "result": "Same cap14, not two separate results."
+    },
+    {
+      "case": "Both sound reasons supplied elsewhere, all central constructions present, total15",
+      "result": "No cap merely for different wording or location; normal threshold applies."
+    },
+    {
+      "case": "A local copied-point or calculation error with otherwise sound whole reasoning",
+      "result": "No automatic cap; existing partial-credit and follow-through rules apply."
+    }
+  ],
+  "preservedBoundaries": {
+    "tankContentAndRubric": "Unchanged; retain existing R1 APPROVE, no repeated review claim.",
+    "scopeAndPrerequisiteOnly": "All R1 placement/preparation conditions and negative scopes remain unchanged; no additional scope approval or target promotion.",
+    "workflow": "One normal binary mastery result; prerequisites receive no mastery from this assessment.",
+    "rootFOrPipelineChanged": false,
+    "runtimeTestsOrJvmPerformed": false,
+    "newSourceReviewPerformed": false,
+    "activationGranted": false,
+    "mathM7Accepted": false
+  }
+}

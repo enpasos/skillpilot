@@ -1,0 +1,293 @@
+# Memory Card Review: canonical-math-full
+Scope: Canonical mathematics full landscape
+Rule: memory-card-review-v1
+Ordinary atomic goals in scope: 807
+Current no-memory decisions: 767
+Current memory-required decisions: 40
+Current needs developer review: 0
+Memory goals in scope: 6
+Traced memory goals: 6
+Known deck IDs: 6
+Deck files: 0
+Card rows: 0
+Primary cards in scope: 0
+Kept primary cards: 0
+Cards marked remove: 0
+Cards needing developer review: 0
+Missing review records: 0
+Stale review records: 0
+Obsolete review records: 0
+Missing card review records: 0
+Stale card review records: 0
+Obsolete card review records: 64
+Composition visibility scopes: 2
+Memory-required goals checked in views: 17
+Memory-required goals without visible memory node: 0
+
+Memory-required decisions
+- Ableitungen elementarer Funktionen berechnen [858113c5-e53b-57bb-b01f-ba95c3ddcb6f]: Der bestehende Memory-Anteil bleibt streng auf kompakte Ableitungsregeln im Deck de_gymnasium_math_analysis_core begrenzt; Regelauswahl und Anwendung werden weiterhin durch Verständnis und Aufgabenpraxis getragen.
+- Ableitungen von $e^x$ und $a^x$ verwenden [c3c057a3-caf9-44a5-ae60-639e3119e94a]: Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend.
+- Ableitungen von Sinus- und Kosinusfunktionen in einfachen Fällen nutzen [f9fdb733-5838-4983-888a-05624eabbe17]: Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend.
+- Argumentationsmuster von Hypothesentests erläutern [d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b]: Memory-Anteil streng begrenzt auf kompakte Formel, Definition oder Testbegriff der Stochastik.
+- Arithmetische und geometrische Folgen beschreiben [67c4d6f8-45fc-53d5-8c95-a4c423e421a6]: Memory-Anteil streng begrenzt auf kompakte Formel-, Definitions- oder Notationskarte; Verständnis und Übung bleiben führend.
+- Bedingte Wahrscheinlichkeiten berechnen [c3b9c561-dd83-5903-9ec6-49c7f51bafd5]: Memory-Anteil streng begrenzt auf kompakte Formel, Definition oder Testbegriff der Stochastik.
+- Betrag eines Vektors im Raum bestimmen [fb7a4fa0-03b5-53b4-bd86-608480b748a1]: Nur die vorhandenen kompakten Vektorbetrags-/Längenformeln; geometrische Deutung und Anwendung bleiben gesondert zu prüfen.
+- Binomialkoeffizienten als Abkürzung verwenden [e8d810de-95ed-52d6-ab1f-0560398e35c0]: Notation und kompakte Berechnungsform des Binomialkoeffizienten müssen sicher abrufbar sein; die kombinatorische Deutung und Abgrenzung werden weiterhin über Aufgaben aufgebaut.
+- Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK) [3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4]: Einzelprüfung 2026-09-20: memory_required bleibt auf den kompakten Zusammenhang (ln x)′=1/x und seine Umkehrung als Stammfunktion begrenzt. Die bestehenden Karten math_analysis_c05 und math_analysis_c14 im Deck de_gymnasium_math_analysis_core bleiben passend: Für x>0 gilt ln|x|=ln x. Die neue positive Definitionsmenge erweitert den Kartenumfang nicht; Verstehen und Integralaufgaben bleiben führend.
+- Einfache Integrale berechnen [a9ed219d-d497-55e5-a4e0-4d45d2554f6b]: Individuelle fachliche AI-Nachprüfung nach quellengebundener DE/EN-Präzisierung: Die tatsächlich gelesene DE/EN-Karte math_analysis_c13 sichert eng begrenzt die kompakte Potenzregel F=x^(n+1)/(n+1) mit n≠−1. Dieser verfügbare Regelbaustein bleibt für die flüssige Anwendung im erweiterten linearen Term notwendig; das neue Erschließen aus Ableitungsregeln, die Linearkombination, trigonometrische Vorzeichen und Intervallwahl müssen unabhängig erklärt werden und sind durch Kartenabruf nicht nachgewiesen. Die Karte nennt eine Stammfunktion, daher fehlt dort keine allgemeine Konstante. Vorhandener memory_required-Status samt echtem Deck-/Memoryziel-/Kartenbezug bleibt individuell bestätigt; es wird kein zusätzliches Deck angelegt. Keine menschliche Einzelabnahme behauptet.
+- Einheitswurzeln komplexer Zahlen am Einheitskreis deuten (LK) [8e18154d-41d6-592e-ba98-537edad338e8]: Memory-Anteil streng begrenzt auf kompakte Notation, Formel oder Definition zu komplexen Zahlen.
+- Entscheidungsregeln und Verwerfungsbereiche bestimmen [677be619-5f0a-59bf-9730-0071c7d3f150]: Memory-Anteil streng begrenzt auf kompakte Formel, Definition oder Testbegriff der Stochastik.
+- Erwartungswert, Varianz und Standardabweichung einfacher diskreter Zufallsgrößen bestimmen [6053aeda-84f7-4c2c-98d7-1753a7e26dcc]: DE und EN der aktiven Karte math_stoch_c04 verlangen die kompakte Erwartungswertformel μ = Σ x_i P(X=x_i). Ihr Abruf gehört unmittelbar zum Bestimmen statistischer Kenngrößen dieses Ziels; deshalb wird ausschließlich der bestehende Karteninhalt hierher zugeordnet. Deuten und Untersuchen von Glücksspielen bleiben Verstehens- und Anwendungsaufgaben.
+- Geraden und Strecken im Raum in Parameterform darstellen und Parameter deuten [525b1da9-7fdd-4a70-9f30-ff01d7511b04]: Der bestehende Memory-Anteil bleibt auf die kompakte Geradengleichung im Deck de_gymnasium_math_linalg_core begrenzt; begrenzte Parameterintervalle und Kontextdeutung bleiben Verständnis und Aufgabenpraxis.
+- Geradengleichungen linearer Funktionen aufstellen [ae772695-d55e-4cc5-81bc-6605272759b4]: B024-Nachprüfung: Der Memory-Anteil bleibt auf die kompakte Formel- und Notationssicherheit zur Geradengleichung begrenzt; die drei Datenlagen werden durch Verstehen und Aufgabenpraxis gesichert.
+- Grundrechenarten in der Gaußschen Zahlenebene deuten [a7fb1a7a-8315-5bcb-842e-48293293dfcc]: Der Ausschluss des Nulldivisors präzisiert die bestehende Division ohne die Merkeignung zu ändern. Memory-Anteil bleibt streng auf kompakte Notation, Formel oder Definition zu komplexen Zahlen begrenzt.
+- Hauptsatz der Differential- und Integralrechnung nutzen [b9bbd2a8-1379-5ffb-817f-41467d48abef]: Die knappe Hauptsatzregel F(b)-F(a) und die Vorzeichenbedeutung koennen im bestehenden Analysis-Kernregel-Deck wiederholt werden; eigenstaendiges Verstehen und Anwenden des Zusammenhangs werden durch das FTC-Lernziel und seine Aufgaben geprueft. KI-Fachpruefung, keine menschliche Einzelabnahme.
+- Kenngrößen binomialverteilter Zufallsgrößen [7d41b805-0fd8-5ac3-980d-79112a27c1b4]: Memory-Anteil streng begrenzt auf kompakte Formel, Definition oder Testbegriff der Stochastik.
+- Kettenregel beim Ableiten anwenden (LK) [ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75]: Die Kettenregel ist ein kompakter, notwendiger Abrufbaustein. Verständnis, Auswahl der Regel und Kontrolle der Ableitung bleiben im gewöhnlichen Lernziel und in Aufgaben verankert.
+- Komplexe Zahlen algebraisch dividieren [5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d]: Memory-Anteil streng begrenzt auf kompakte Notation, Formel oder Definition zu komplexen Zahlen.
+- Komplexe Zahlen in algebraischer Form additiv nutzen [22b66c1e-50b1-505f-a388-c39131a4e1c3]: Memory-Anteil streng begrenzt auf kompakte Notation, Formel oder Definition zu komplexen Zahlen.
+- Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen [4f64f771-20ba-581a-86ba-bcdb1759e4d2]: Memory-Anteil streng begrenzt auf kompakte Notation, Formel oder Definition zu komplexen Zahlen.
+- Laplace-Experimente auswerten [5ab17678-bba7-4e6b-9aff-5a909e24d40e]: Die Bedingung gleichwahrscheinlicher Elementarergebnisse und das Verhältnis günstig zu möglich sind ein enger Abrufbaustein; Modellwahl, Darstellung, Deutung und Transfer verbleiben im gewöhnlichen Lernziel und in Aufgaben.
+- Logarithmus definieren und einfache Werte bestimmen [3c1d6ce7-099e-4267-9ff2-3d1526209a89]: Die kompakte Logarithmusdefinition mit positiver Basis ungleich 1 und positivem Argument ist weiterhin ein begrenzter Memory-Anteil; die beiden aktiven Karten enthalten diese Bedingungen bereits, während Verständnis und Anwendung im Lernziel bleiben.
+- Matrizen multiplizieren [304111dd-426b-520b-a275-3fa37da1b0e0]: Memory-Anteil streng begrenzt auf kompakte Formel, Notation oder Prüfkriterium der linearen Algebra.
+- Mittelpunkte von Raumstrecken aus Koordinaten bestimmen [bea0e5a0-4833-5337-b6f1-7251b8cf8089]: Nur die kompakte Formel für den Ortsvektormittelpunkt ist Kartenstoff; Vorwärts-/Umkehrrechnung und gerichtete Halbvektorprüfung bleiben Verständnisleistungen. Karten math_seki_c10 und math_linalg_c02 in den bestehenden Decks inhaltlich geprüft. Sichtbarkeit am 2026-09-29 nativ in BW Sek I/GK/LK, BB und SL GK/LK CrossStage sowie ihren Sek-II-Views geprüft: BW Sek I erreicht Sek-I-Deck, BB/SL Sek II erreicht Linalg-Deck, CrossStage beide. Keine neue Karte; KI-Kandidat, keine menschliche Freigabe.
+- Mittelwerte von Funktionen mit Integralen bestimmen und deuten [c1c80b80-733f-599d-a2fc-f4dc50eabde2]: Die vorhandene Karte math_analysis_c16 enthält nur die kompakte Formel 1/(b−a) mal bestimmtes Integral und passt unverändert zum aktuellen Text. Gleicher Integralwert, Einheiten und Bestands-/Rateninterpretation bleiben Aufgabenverständnis und werden durch die Karte nicht ersetzt. Memory-Ziel ca708087 und Deck de_gymnasium_math_analysis_core bleiben erforderlich und sichtbarkeitsgeprüft.
+- Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden [d5feba00-4336-4f26-8dba-0537a797eddb]: Erneute individuelle fachliche AI-Prüfung der präzisierten DE/EN-Fassung: memory_required bleibt begründet und unverändert: Die drei tatsächlich gelesenen aktiven Karten math_analysis_c08, c09 und c10 enthalten kurze notwendige beziehungsweise hinreichende Kriterien, die im glatten inneren Kurvendiskussionskontext sicher abrufbar sein müssen. Ihre DE-Primärfingerprints und kept/necessary-Originverweise auf dieses Ziel sind aktuell. Memoryziel ca708087-71f8-5fae-91c5-b80721a4208f und Deck de_gymnasium_math_analysis_core bleiben bestehen. Die Karten ersetzen weder Gegenbeispiele noch Begründungen; diese Vorbereitung ist keine neue Kartenfreigabe oder vollständige Sichtbarkeitsprüfung. AI-Kandidatenprüfung; keine menschliche Einzelabnahme behauptet.
+- Potenzgesetze mit ganzzahligen Exponenten anwenden [6596405a-9728-41df-9163-53670ec2a937]: Memory-Anteil streng begrenzt auf kompakte Formel-, Definitions- oder Notationskarte; Verständnis und Übung bleiben führend.
+- Produkt- und Kettenregel an Beispielen überprüfen [864f9a45-badf-5a31-88d3-da4525808c2d]: Memory-Anteil streng begrenzt auf kompakte Ableitungs-, Kriterien- oder Integrationsregel; Verständnis und Übung bleiben führend.
+- Produktregel beim Ableiten anwenden (LK) [cf48c918-f6c1-5429-8da6-14df43f2f550]: Die Produktregel ist ein kompakter, notwendiger Abrufbaustein. Verständnis, Auswahl der Regel und Kontrolle der Ableitung bleiben im gewöhnlichen Lernziel und in Aufgaben verankert.
+- Quadratische Gleichungen lösen [9023226b-fc17-412b-807c-2bb45cd551d5]: Der Abruf kompakter quadratischer Lösungsformeln und Notation bleibt durch die bestehenden schmalen Decks sinnvoll. Die anspruchsvollere Wahl des Verfahrens, null/eins/zwei reelle Lösungen und deren Begründung werden durch Aufgaben geprüft und nicht durch Karten ersetzt; keine neue Karte abgeleitet.
+- Scheitelpunkte quadratischer Funktionen bestimmen [3e4032bd-4d8c-4e72-bfdd-64a34df053c9]: Memory-Anteil streng begrenzt auf kompakte Formel-, Definitions- oder Notationskarte; Verständnis und Übung bleiben führend.
+- Sigma-Regeln für Verteilungen anwenden [8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d]: Memory-Anteil streng begrenzt auf kompakte Formel, Definition oder Testbegriff der Stochastik.
+- Skalarprodukt als Orthogonalitätskriterium nutzen [9460c3ff-e72d-4107-bc73-087d217200aa]: Memory-Anteil streng begrenzt auf kompakte Formel, Notation oder Prüfkriterium der linearen Algebra.
+- Skalarprodukt zur Winkelberechnung nutzen [265af6af-8eac-5632-b730-800aafcde26a]: Memory-Anteil streng begrenzt auf kompakte Formel, Notation oder Prüfkriterium der linearen Algebra.
+- Stochastische Übergangsmatrizen für Markov-Ketten prüfen [9bf67cce-4c8f-5497-8e64-825b83c6aa40]: Der kompakte Kriterienkern aus quadratischer Form mit gemeinsamem Zustandsraum, Nichtnegativität und zur gewählten Konvention passender Summenbedingung muss sicher abrufbar sein; Begründung und Anwendung an neuen Matrizen bleiben führend.
+- Stochastische Unabhängigkeit an Baumdiagrammen und Vierfeldertafeln prüfen [dabff49b-d40a-4c81-a584-21408b2d4219]: Memory-Anteil streng begrenzt auf kompakte Formel, Definition oder Testbegriff der Stochastik.
+- Wahrscheinlichkeiten in Bernoulli-Ketten berechnen [837b015a-c2a2-5f31-831c-ae16ee2ee6ce]: Memory-Anteil streng begrenzt auf kompakte Formel, Definition oder Testbegriff der Stochastik.
+- Zwischen Koordinaten- und Normalenform von Ebenen wechseln [fa02cf14-0411-4fe3-8be7-a62c69743e26]: Memory-Anteil streng begrenzt auf kompakte Formel, Notation oder Prüfkriterium der linearen Algebra.
+
+Obsolete card review records
+- de_gymnasium_math_analysis_core/math_analysis_c01: Behalten: Potenzregel ist kompakte Ableitungsregel; Verständnis bleibt nötig, aber die Regel muss sicher abrufbar sein.
+- de_gymnasium_math_analysis_core/math_analysis_c02: Behalten: Die Produktregel-Karte ist ein enger Abrufbaustein sowohl für die vorhandene Kontrollkompetenz als auch für das neue atomare Produktregel-Anwendungsziel.
+- de_gymnasium_math_analysis_core/math_analysis_c03: Behalten: Die Kettenregel-Karte ist ein enger Abrufbaustein sowohl für die vorhandene Kontrollkompetenz als auch für das neue atomare Kettenregel-Anwendungsziel.
+- de_gymnasium_math_analysis_core/math_analysis_c04: Behalten: Ableitung von e^{kx} ist eine kompakte Regel und direkt auf Exponentialableitungen bezogen.
+- de_gymnasium_math_analysis_core/math_analysis_c05: Behalten: Ableitungs-/Stammfunktionsbezug von ln ist ein kurzer Regelzusammenhang, der sicher abrufbar sein muss.
+- de_gymnasium_math_analysis_core/math_analysis_c06: Behalten: Ableitung von sin ist eine elementare trigonometrische Regel, die korrekt abrufbar sein muss.
+- de_gymnasium_math_analysis_core/math_analysis_c07: Behalten: Ableitung von cos ist eine elementare trigonometrische Regel, die korrekt abrufbar sein muss.
+- de_gymnasium_math_analysis_core/math_analysis_c08: Behalten: Die notwendige Bedingung für Extremstellen ist ein kurzer Prüfbaustein und dem Lernziel zu Extrem-/Wendebedingungen zugeordnet.
+- de_gymnasium_math_analysis_core/math_analysis_c09: Behalten: Hinreichende Bedingung für Hochpunkte ist ein knapper Kriterienbaustein, der in Aufgaben sicher abrufbar sein muss.
+- de_gymnasium_math_analysis_core/math_analysis_c10: Behalten: Notwendige Bedingung für Wendestellen ist ein knapper Kriterienbaustein zum zugehörigen Lernziel.
+- de_gymnasium_math_analysis_core/math_analysis_c13: Behalten: Stammfunktion von x^n ist eine kompakte Integrationsregel und direkt auf einfache Integrale bezogen.
+- de_gymnasium_math_analysis_core/math_analysis_c14: Behalten: Stammfunktion von 1/x ist eine knappe Regel mit hohem Verwechslungsrisiko und klarer Lernzielherkunft.
+- de_gymnasium_math_analysis_core/math_analysis_c15: Behalten: Hauptsatzformel für bestimmte Integrale ist ein zentraler abrufbarer Zusammenhang.
+- de_gymnasium_math_analysis_core/math_analysis_c16: Die vorhandenen DE/EN-Karten enthalten exakt die Funktionsmittelwertformel 1/(b−a)·∫f. Nach dem Split ist c1c80b80 das fachlich passende gewöhnliche Atom; Gesamtwirkung und Bestandsrekonstruktion sind nicht Inhalt dieser Karte. Karteninhalt, Fingerprint, kept und necessary bleiben unverändert. Individuelle KI-Fachprüfung; keine menschliche Freigabe und kein D/P-Claim.
+- de_gymnasium_math_complex_parameter/math_complex_c01: Behalten: Definition i^2=-1 ist elementares Abrufwissen zu komplexen Zahlen.
+- de_gymnasium_math_complex_parameter/math_complex_c02: Behalten: Algebraische Form a+bi ist Grundnotation und klarer Memory-Anteil.
+- de_gymnasium_math_complex_parameter/math_complex_c03: Behalten: Konjugiert komplexe Zahl ist kompakte Notation für Multiplikation/Division komplexer Zahlen.
+- de_gymnasium_math_complex_parameter/math_complex_c04: Behalten: Betrag einer komplexen Zahl ist eine kurze Formel-/Deutungsbrücke zur Gaußschen Zahlenebene.
+- de_gymnasium_math_complex_parameter/math_complex_c05: Behalten: Eulersche Formel ist zentraler kompakter Zusammenhang zwischen Polarform und trigonometrischer Darstellung.
+- de_gymnasium_math_complex_parameter/math_complex_c06: Behalten: Geometrische Wirkung komplexer Multiplikation ist ein kurzer Merksatz zum zugehörigen Lernziel.
+- de_gymnasium_math_complex_parameter/math_complex_c07: Behalten: Division über konjugierte Zahl ist eine kompakte Standardtechnik mit klarem Formelcharakter.
+- de_gymnasium_math_complex_parameter/math_complex_c10: Behalten: Einheitswurzeln sind ein kompakter Formel-/Strukturzusammenhang im LK.
+- de_gymnasium_math_functions_basics/math_funbas_c01: Behalten: kompakte Steigungsformel; sie ist als Abrufwissen für Geradengleichungen sinnvoll und direkt auf das Lernziel zurückführbar.
+- de_gymnasium_math_functions_basics/math_funbas_c02: Behalten: Scheitelpunktform und Scheitelpunktablesung sind knappes Formel-/Notationwissen zum zugehörigen Lernziel.
+- de_gymnasium_math_functions_basics/math_funbas_c05: Behalten: Satz vom Nullprodukt ist ein kurzer abrufbarer Satz zum Lösen quadratischer Gleichungen.
+- de_gymnasium_math_functions_basics/math_funbas_c07: Behalten: Logarithmusdefinition ist kompakte Begriffs-/Notationserinnerung und klar auf das Lernziel zurückführbar.
+- de_gymnasium_math_functions_basics/math_funbas_c10: Behalten: Rekursives Bildungsgesetz arithmetischer Folgen ist eine kompakte Formelstruktur zum Lernziel.
+- de_gymnasium_math_functions_basics/math_funbas_c11: Behalten: Explizites Bildungsgesetz geometrischer Folgen ist eine kompakte Formelstruktur zum Lernziel.
+- de_gymnasium_math_functions_basics/math_funbas_c12: Behalten: Potenzgesetz ist kurzes, fehleranfälliges Abrufwissen und direkt auf das Lernziel bezogen.
+- de_gymnasium_math_functions_basics/math_funbas_c13: Behalten: p-q-Formel ist ein klarer Memory-Fall; sie muss korrekt abrufbar sein und stammt direkt aus dem Lernziel quadratische Gleichungen.
+- de_gymnasium_math_linalg_core/math_linalg_c01: Behalten: Vektorbetrag ist eine kompakte Formel zum Lernziel Abstände/Beträge/Mittelpunkte. Identitätsaudit 2026-09-28: kompakte Karte ihrem tatsächlich behandelten Atom zugeordnet; keine Erweiterung der Kartenaussage.
+- de_gymnasium_math_linalg_core/math_linalg_c02: Die Karte enthält genau die kompakte Formel m=(a+b)/2 und bleibt für das stabile 3D-Mittelpunktziel bea0e5a0 nötig. Das Linalg-Deck ist in BB/SL Sek-II-GK/LK- und CrossStage-Views als Target sichtbar; eigene Herleitungs-/Prüfaufgaben bleiben beim Inhaltsziel. Originalkarteninhalt und nativer Zielrollen-Check am 2026-09-29 geprüft; keine menschliche Freigabe.
+- de_gymnasium_math_linalg_core/math_linalg_c03: Behalten: Orthogonalitätskriterium über das Skalarprodukt ist ein kurzer abrufbarer Kriterienbaustein.
+- de_gymnasium_math_linalg_core/math_linalg_c04: Behalten: Winkelberechnungsformel über das Skalarprodukt ist kompakte Formelkenntnis.
+- de_gymnasium_math_linalg_core/math_linalg_c05: Behalten: Parameterform einer Geraden ist Notation/Formelstruktur und direkt auf das Lernziel bezogen.
+- de_gymnasium_math_linalg_core/math_linalg_c06: Behalten: Normalenvektor aus Koordinatenform ist ein kurzer Notationsbezug zwischen Ebenenformen.
+- de_gymnasium_math_linalg_core/math_linalg_c10: Behalten: Dimensionsbedingung der Matrizenmultiplikation ist kompakte Notations-/Regelkenntnis.
+- de_gymnasium_math_linalg_core/math_linalg_c12: Behalten: Eigenschaften stochastischer Matrizen sind kompakte Prüfkriterien für Markov-Ketten.
+- de_gymnasium_math_seki_core/math_seki_c01: Behalten: Die Steigungsformel ist kompakter, fehleranfälliger Abrufstoff zu Geradengleichungen in Sek I.
+- de_gymnasium_math_seki_core/math_seki_c02: Behalten: Scheitelpunktform und Scheitelpunktablesung sind knappes Formel-/Notationwissen zu quadratischen Funktionen.
+- de_gymnasium_math_seki_core/math_seki_c03: Behalten: Der Satz vom Nullprodukt ist ein kurzer Kriterienbaustein zum Lösen quadratischer Gleichungen.
+- de_gymnasium_math_seki_core/math_seki_c04: Behalten: Die p-q-Formel ist ein klarer Memory-Fall und muss korrekt abrufbar sein.
+- de_gymnasium_math_seki_core/math_seki_c05: Behalten: Das Produktgesetz für Potenzen ist notwendiges knappes Abrufwissen.
+- de_gymnasium_math_seki_core/math_seki_c06: Behalten: Das Quotientengesetz für Potenzen ist notwendiges knappes Abrufwissen.
+- de_gymnasium_math_seki_core/math_seki_c07: Behalten: Die Potenz-von-Potenz-Regel ist notwendiges knappes Abrufwissen.
+- de_gymnasium_math_seki_core/math_seki_c08: Behalten: Die Logarithmusdefinition ist kompakte Begriffs- und Notationserinnerung.
+- de_gymnasium_math_seki_core/math_seki_c09: Behalten: Die Längenformel für Koordinaten/Vektoren ist eine kompakte Formel zum Ziel Abstände/Beträge/Mittelpunkte. Identitätsaudit 2026-09-28: kompakte Karte ihrem tatsächlich behandelten Atom zugeordnet; keine Erweiterung der Kartenaussage.
+- de_gymnasium_math_seki_core/math_seki_c10: Die Karte enthält genau die kompakte Formel m=(a+b)/2 und bleibt für das BW-J9-Mittelpunktziel nötig. Das Sek-I-Deck ist in BW Sek-I/GK/LK-Views als Target sichtbar; in BB/SL Sek-II-Views deckt stattdessen das Linalg-Deck dieselbe Formel ab. Originalkarteninhalt und nativer Zielrollen-Check am 2026-09-29 geprüft; keine menschliche Freigabe.
+- de_gymnasium_math_seki_core/math_seki_c11: Behalten: Die Ableitungen von Sinus und Kosinus sind elementare Formeln, wenn dieser Sek-I-Scope sie sichtbar macht.
+- de_gymnasium_math_seki_core/math_seki_c12: Behalten: Das Unabhängigkeitskriterium ist ein kurzer abrufbarer Stochastik-Baustein.
+- de_gymnasium_math_seki_core/math_seki_c13: Behalten: Die Bernoulli-Formel ist zentraler kompakter Formelabruf.
+- de_gymnasium_math_seki_core/math_seki_c14: Behalten: Erwartungswert und Standardabweichung der Binomialverteilung sind kurze Kenngrößenformeln.
+- de_gymnasium_math_stochastics_core/math_stoch_c01: Behalten: Formel für bedingte Wahrscheinlichkeit ist kompakte Grundformel und direkt auf das Lernziel bezogen.
+- de_gymnasium_math_stochastics_core/math_stoch_c02: Behalten: Unabhängigkeitskriterium ist ein kurzer abrufbarer Kriterienbaustein.
+- de_gymnasium_math_stochastics_core/math_stoch_c03: Behalten und neu binden: Bedingung und Formel der Laplace-Wahrscheinlichkeit stammen fachlich exakt aus dem bestehenden atomaren Ziel „Laplace-Experimente auswerten“, nicht aus dem nun nicht-atomaren Sammelcluster.
+- de_gymnasium_math_stochastics_core/math_stoch_c04: DE/EN tatsächlich gelesen: Die Karte fragt E(X)=Σ x_i·P(X=x_i) ab, also eine kompakte notwendige Formelkenntnis zum Kenngrößen-Ziel 6053aeda. Verteilungstabellen/-diagramme in 5927ca6a verlangen diese Formel nicht. Nur der Herkunftsverweis wird korrigiert; Inhalt, Status kept, necessary true und Inhaltsfingerprint bleiben unverändert.
+- de_gymnasium_math_stochastics_core/math_stoch_c05: Behalten: Bedeutung des Binomialkoeffizienten ist eine kurze Notationsklärung.
+- de_gymnasium_math_stochastics_core/math_stoch_c06: Behalten: Bernoulli-Formel ist zentraler kompakter Formelabruf.
+- de_gymnasium_math_stochastics_core/math_stoch_c07: Behalten: Erwartungswert der Binomialverteilung ist eine kurze Kenngrößenformel.
+- de_gymnasium_math_stochastics_core/math_stoch_c08: Behalten: Standardabweichung der Binomialverteilung ist eine kurze Kenngrößenformel.
+- de_gymnasium_math_stochastics_core/math_stoch_c09: Behalten: 1-2-3-Sigma-Regel ist ein kompakter abrufbarer Näherungs-/Orientierungssatz.
+- de_gymnasium_math_stochastics_core/math_stoch_c10: Behalten: Fehler 1. Art ist ein kurzer Prüfbegriff im Hypothesentest.
+- de_gymnasium_math_stochastics_core/math_stoch_c11: Behalten: Fehler 2. Art ist ein kurzer Prüfbegriff im Hypothesentest.
+- de_gymnasium_math_stochastics_core/math_stoch_c12: Behalten: Aufbau der Nullhypothese für rechtsseitige Tests ist ein knapper Kriterienbaustein zu Entscheidungsregeln.
+
+Memory-required goals without kept card trace
+- Ableitungen elementarer Funktionen berechnen [858113c5-e53b-57bb-b01f-ba95c3ddcb6f]
+- Ableitungen von $e^x$ und $a^x$ verwenden [c3c057a3-caf9-44a5-ae60-639e3119e94a]
+- Ableitungen von Sinus- und Kosinusfunktionen in einfachen Fällen nutzen [f9fdb733-5838-4983-888a-05624eabbe17]
+- Argumentationsmuster von Hypothesentests erläutern [d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b]
+- Arithmetische und geometrische Folgen beschreiben [67c4d6f8-45fc-53d5-8c95-a4c423e421a6]
+- Bedingte Wahrscheinlichkeiten berechnen [c3b9c561-dd83-5903-9ec6-49c7f51bafd5]
+- Betrag eines Vektors im Raum bestimmen [fb7a4fa0-03b5-53b4-bd86-608480b748a1]
+- Binomialkoeffizienten als Abkürzung verwenden [e8d810de-95ed-52d6-ab1f-0560398e35c0]
+- Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK) [3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4]
+- Einfache Integrale berechnen [a9ed219d-d497-55e5-a4e0-4d45d2554f6b]
+- Einheitswurzeln komplexer Zahlen am Einheitskreis deuten (LK) [8e18154d-41d6-592e-ba98-537edad338e8]
+- Entscheidungsregeln und Verwerfungsbereiche bestimmen [677be619-5f0a-59bf-9730-0071c7d3f150]
+- Erwartungswert, Varianz und Standardabweichung einfacher diskreter Zufallsgrößen bestimmen [6053aeda-84f7-4c2c-98d7-1753a7e26dcc]
+- Geraden und Strecken im Raum in Parameterform darstellen und Parameter deuten [525b1da9-7fdd-4a70-9f30-ff01d7511b04]
+- Geradengleichungen linearer Funktionen aufstellen [ae772695-d55e-4cc5-81bc-6605272759b4]
+- Grundrechenarten in der Gaußschen Zahlenebene deuten [a7fb1a7a-8315-5bcb-842e-48293293dfcc]
+- Hauptsatz der Differential- und Integralrechnung nutzen [b9bbd2a8-1379-5ffb-817f-41467d48abef]
+- Kenngrößen binomialverteilter Zufallsgrößen [7d41b805-0fd8-5ac3-980d-79112a27c1b4]
+- Kettenregel beim Ableiten anwenden (LK) [ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75]
+- Komplexe Zahlen algebraisch dividieren [5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d]
+- Komplexe Zahlen in algebraischer Form additiv nutzen [22b66c1e-50b1-505f-a388-c39131a4e1c3]
+- Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen [4f64f771-20ba-581a-86ba-bcdb1759e4d2]
+- Laplace-Experimente auswerten [5ab17678-bba7-4e6b-9aff-5a909e24d40e]
+- Logarithmus definieren und einfache Werte bestimmen [3c1d6ce7-099e-4267-9ff2-3d1526209a89]
+- Matrizen multiplizieren [304111dd-426b-520b-a275-3fa37da1b0e0]
+- Mittelpunkte von Raumstrecken aus Koordinaten bestimmen [bea0e5a0-4833-5337-b6f1-7251b8cf8089]
+- Mittelwerte von Funktionen mit Integralen bestimmen und deuten [c1c80b80-733f-599d-a2fc-f4dc50eabde2]
+- Notwendige und hinreichende Bedingungen für Extrem- und Wendestellen unterscheiden [d5feba00-4336-4f26-8dba-0537a797eddb]
+- Potenzgesetze mit ganzzahligen Exponenten anwenden [6596405a-9728-41df-9163-53670ec2a937]
+- Produkt- und Kettenregel an Beispielen überprüfen [864f9a45-badf-5a31-88d3-da4525808c2d]
+- Produktregel beim Ableiten anwenden (LK) [cf48c918-f6c1-5429-8da6-14df43f2f550]
+- Quadratische Gleichungen lösen [9023226b-fc17-412b-807c-2bb45cd551d5]
+- Scheitelpunkte quadratischer Funktionen bestimmen [3e4032bd-4d8c-4e72-bfdd-64a34df053c9]
+- Sigma-Regeln für Verteilungen anwenden [8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d]
+- Skalarprodukt als Orthogonalitätskriterium nutzen [9460c3ff-e72d-4107-bc73-087d217200aa]
+- Skalarprodukt zur Winkelberechnung nutzen [265af6af-8eac-5632-b730-800aafcde26a]
+- Stochastische Übergangsmatrizen für Markov-Ketten prüfen [9bf67cce-4c8f-5497-8e64-825b83c6aa40]
+- Stochastische Unabhängigkeit an Baumdiagrammen und Vierfeldertafeln prüfen [dabff49b-d40a-4c81-a584-21408b2d4219]
+- Wahrscheinlichkeiten in Bernoulli-Ketten berechnen [837b015a-c2a2-5f31-831c-ae16ee2ee6ce]
+- Zwischen Koordinaten- und Normalenform von Ebenen wechseln [fa02cf14-0411-4fe3-8be7-a62c69743e26]
+
+Blocking issues
+- Lernkarten - Sek I Kernformeln [4eefbd04-9e49-41ea-a087-9ad6ac71ec5a]: missing deck file /data/de_gymnasium_math_flashcards_seki_core.de.json
+- Lernkarten - Sek I Kernformeln [4eefbd04-9e49-41ea-a087-9ad6ac71ec5a]: missing deck file /data/de_gymnasium_math_flashcards_seki_core.en.json
+- Lernkarten - Funktionen und Gleichungen [77259806-add7-5fcb-b89c-376e1b0c88d6]: missing deck file /data/de_gymnasium_math_flashcards_functions_basics.de.json
+- Lernkarten - Funktionen und Gleichungen [77259806-add7-5fcb-b89c-376e1b0c88d6]: missing deck file /data/de_gymnasium_math_flashcards_functions_basics.en.json
+- Lernkarten - Analysis-Kernregeln [ca708087-71f8-5fae-91c5-b80721a4208f]: missing deck file /data/de_gymnasium_math_flashcards_analysis_core.de.json
+- Lernkarten - Analysis-Kernregeln [ca708087-71f8-5fae-91c5-b80721a4208f]: missing deck file /data/de_gymnasium_math_flashcards_analysis_core.en.json
+- Lernkarten - Lineare Algebra und Analytische Geometrie [bd55594a-3e06-5097-8324-4f2f1349fd2a]: missing deck file /data/de_gymnasium_math_flashcards_linalg_core.de.json
+- Lernkarten - Lineare Algebra und Analytische Geometrie [bd55594a-3e06-5097-8324-4f2f1349fd2a]: missing deck file /data/de_gymnasium_math_flashcards_linalg_core.en.json
+- Lernkarten - Stochastik-Kernbegriffe [ffbdd7a9-45c6-54f1-988c-58256ca05eeb]: missing deck file /data/de_gymnasium_math_flashcards_stochastics_core.de.json
+- Lernkarten - Stochastik-Kernbegriffe [ffbdd7a9-45c6-54f1-988c-58256ca05eeb]: missing deck file /data/de_gymnasium_math_flashcards_stochastics_core.en.json
+- Lernkarten - Komplexe Zahlen und Parameter [1eb0b286-2dac-5164-8d39-cd36c5704bc4]: missing deck file /data/de_gymnasium_math_flashcards_complex_parameter.de.json
+- Lernkarten - Komplexe Zahlen und Parameter [1eb0b286-2dac-5164-8d39-cd36c5704bc4]: missing deck file /data/de_gymnasium_math_flashcards_complex_parameter.en.json
+- Obsolete card review record for de_gymnasium_math_analysis_core/math_analysis_c01
+- Obsolete card review record for de_gymnasium_math_analysis_core/math_analysis_c02
+- Obsolete card review record for de_gymnasium_math_analysis_core/math_analysis_c03
+- Obsolete card review record for de_gymnasium_math_analysis_core/math_analysis_c04
+- Obsolete card review record for de_gymnasium_math_analysis_core/math_analysis_c05
+- Obsolete card review record for de_gymnasium_math_analysis_core/math_analysis_c06
+- Obsolete card review record for de_gymnasium_math_analysis_core/math_analysis_c07
+- Obsolete card review record for de_gymnasium_math_analysis_core/math_analysis_c08
+- Obsolete card review record for de_gymnasium_math_analysis_core/math_analysis_c09
+- Obsolete card review record for de_gymnasium_math_analysis_core/math_analysis_c10
+- Obsolete card review record for de_gymnasium_math_analysis_core/math_analysis_c13
+- Obsolete card review record for de_gymnasium_math_analysis_core/math_analysis_c14
+- Obsolete card review record for de_gymnasium_math_analysis_core/math_analysis_c15
+- Obsolete card review record for de_gymnasium_math_analysis_core/math_analysis_c16
+- Obsolete card review record for de_gymnasium_math_complex_parameter/math_complex_c01
+- Obsolete card review record for de_gymnasium_math_complex_parameter/math_complex_c02
+- Obsolete card review record for de_gymnasium_math_complex_parameter/math_complex_c03
+- Obsolete card review record for de_gymnasium_math_complex_parameter/math_complex_c04
+- Obsolete card review record for de_gymnasium_math_complex_parameter/math_complex_c05
+- Obsolete card review record for de_gymnasium_math_complex_parameter/math_complex_c06
+- Obsolete card review record for de_gymnasium_math_complex_parameter/math_complex_c07
+- Obsolete card review record for de_gymnasium_math_complex_parameter/math_complex_c10
+- Obsolete card review record for de_gymnasium_math_functions_basics/math_funbas_c01
+- Obsolete card review record for de_gymnasium_math_functions_basics/math_funbas_c02
+- Obsolete card review record for de_gymnasium_math_functions_basics/math_funbas_c05
+- Obsolete card review record for de_gymnasium_math_functions_basics/math_funbas_c07
+- Obsolete card review record for de_gymnasium_math_functions_basics/math_funbas_c10
+- Obsolete card review record for de_gymnasium_math_functions_basics/math_funbas_c11
+- Obsolete card review record for de_gymnasium_math_functions_basics/math_funbas_c12
+- Obsolete card review record for de_gymnasium_math_functions_basics/math_funbas_c13
+- Obsolete card review record for de_gymnasium_math_linalg_core/math_linalg_c01
+- Obsolete card review record for de_gymnasium_math_linalg_core/math_linalg_c02
+- Obsolete card review record for de_gymnasium_math_linalg_core/math_linalg_c03
+- Obsolete card review record for de_gymnasium_math_linalg_core/math_linalg_c04
+- Obsolete card review record for de_gymnasium_math_linalg_core/math_linalg_c05
+- Obsolete card review record for de_gymnasium_math_linalg_core/math_linalg_c06
+- Obsolete card review record for de_gymnasium_math_linalg_core/math_linalg_c10
+- Obsolete card review record for de_gymnasium_math_linalg_core/math_linalg_c12
+- Obsolete card review record for de_gymnasium_math_seki_core/math_seki_c01
+- Obsolete card review record for de_gymnasium_math_seki_core/math_seki_c02
+- Obsolete card review record for de_gymnasium_math_seki_core/math_seki_c03
+- Obsolete card review record for de_gymnasium_math_seki_core/math_seki_c04
+- Obsolete card review record for de_gymnasium_math_seki_core/math_seki_c05
+- Obsolete card review record for de_gymnasium_math_seki_core/math_seki_c06
+- Obsolete card review record for de_gymnasium_math_seki_core/math_seki_c07
+- Obsolete card review record for de_gymnasium_math_seki_core/math_seki_c08
+- Obsolete card review record for de_gymnasium_math_seki_core/math_seki_c09
+- Obsolete card review record for de_gymnasium_math_seki_core/math_seki_c10
+- Obsolete card review record for de_gymnasium_math_seki_core/math_seki_c11
+- Obsolete card review record for de_gymnasium_math_seki_core/math_seki_c12
+- Obsolete card review record for de_gymnasium_math_seki_core/math_seki_c13
+- Obsolete card review record for de_gymnasium_math_seki_core/math_seki_c14
+- Obsolete card review record for de_gymnasium_math_stochastics_core/math_stoch_c01
+- Obsolete card review record for de_gymnasium_math_stochastics_core/math_stoch_c02
+- Obsolete card review record for de_gymnasium_math_stochastics_core/math_stoch_c03
+- Obsolete card review record for de_gymnasium_math_stochastics_core/math_stoch_c04
+- Obsolete card review record for de_gymnasium_math_stochastics_core/math_stoch_c05
+- Obsolete card review record for de_gymnasium_math_stochastics_core/math_stoch_c06
+- Obsolete card review record for de_gymnasium_math_stochastics_core/math_stoch_c07
+- Obsolete card review record for de_gymnasium_math_stochastics_core/math_stoch_c08
+- Obsolete card review record for de_gymnasium_math_stochastics_core/math_stoch_c09
+- Obsolete card review record for de_gymnasium_math_stochastics_core/math_stoch_c10
+- Obsolete card review record for de_gymnasium_math_stochastics_core/math_stoch_c11
+- Obsolete card review record for de_gymnasium_math_stochastics_core/math_stoch_c12
+- Memory-required goal has no kept card trace 858113c5-e53b-57bb-b01f-ba95c3ddcb6f
+- Memory-required goal has no kept card trace c3c057a3-caf9-44a5-ae60-639e3119e94a
+- Memory-required goal has no kept card trace f9fdb733-5838-4983-888a-05624eabbe17
+- Memory-required goal has no kept card trace d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b
+- Memory-required goal has no kept card trace 67c4d6f8-45fc-53d5-8c95-a4c423e421a6
+- Memory-required goal has no kept card trace c3b9c561-dd83-5903-9ec6-49c7f51bafd5
+- Memory-required goal has no kept card trace fb7a4fa0-03b5-53b4-bd86-608480b748a1
+- Memory-required goal has no kept card trace e8d810de-95ed-52d6-ab1f-0560398e35c0
+- Memory-required goal has no kept card trace 3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4
+- Memory-required goal has no kept card trace a9ed219d-d497-55e5-a4e0-4d45d2554f6b
+- Memory-required goal has no kept card trace 8e18154d-41d6-592e-ba98-537edad338e8
+- Memory-required goal has no kept card trace 677be619-5f0a-59bf-9730-0071c7d3f150
+- Memory-required goal has no kept card trace 6053aeda-84f7-4c2c-98d7-1753a7e26dcc
+- Memory-required goal has no kept card trace 525b1da9-7fdd-4a70-9f30-ff01d7511b04
+- Memory-required goal has no kept card trace ae772695-d55e-4cc5-81bc-6605272759b4
+- Memory-required goal has no kept card trace a7fb1a7a-8315-5bcb-842e-48293293dfcc
+- Memory-required goal has no kept card trace b9bbd2a8-1379-5ffb-817f-41467d48abef
+- Memory-required goal has no kept card trace 7d41b805-0fd8-5ac3-980d-79112a27c1b4
+- Memory-required goal has no kept card trace ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75
+- Memory-required goal has no kept card trace 5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d
+- Memory-required goal has no kept card trace 22b66c1e-50b1-505f-a388-c39131a4e1c3
+- Memory-required goal has no kept card trace 4f64f771-20ba-581a-86ba-bcdb1759e4d2
+- Memory-required goal has no kept card trace 5ab17678-bba7-4e6b-9aff-5a909e24d40e
+- Memory-required goal has no kept card trace 3c1d6ce7-099e-4267-9ff2-3d1526209a89
+- Memory-required goal has no kept card trace 304111dd-426b-520b-a275-3fa37da1b0e0
+- Memory-required goal has no kept card trace bea0e5a0-4833-5337-b6f1-7251b8cf8089
+- Memory-required goal has no kept card trace c1c80b80-733f-599d-a2fc-f4dc50eabde2
+- Memory-required goal has no kept card trace d5feba00-4336-4f26-8dba-0537a797eddb
+- Memory-required goal has no kept card trace 6596405a-9728-41df-9163-53670ec2a937
+- Memory-required goal has no kept card trace 864f9a45-badf-5a31-88d3-da4525808c2d
+- Memory-required goal has no kept card trace cf48c918-f6c1-5429-8da6-14df43f2f550
+- Memory-required goal has no kept card trace 9023226b-fc17-412b-807c-2bb45cd551d5
+- Memory-required goal has no kept card trace 3e4032bd-4d8c-4e72-bfdd-64a34df053c9
+- Memory-required goal has no kept card trace 8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d
+- Memory-required goal has no kept card trace 9460c3ff-e72d-4107-bc73-087d217200aa
+- Memory-required goal has no kept card trace 265af6af-8eac-5632-b730-800aafcde26a
+- Memory-required goal has no kept card trace 9bf67cce-4c8f-5497-8e64-825b83c6aa40
+- Memory-required goal has no kept card trace dabff49b-d40a-4c81-a584-21408b2d4219
+- Memory-required goal has no kept card trace 837b015a-c2a2-5f31-831c-ae16ee2ee6ce
+- Memory-required goal has no kept card trace fa02cf14-0411-4fe3-8be7-a62c69743e26

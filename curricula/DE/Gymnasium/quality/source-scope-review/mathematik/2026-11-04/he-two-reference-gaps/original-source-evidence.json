@@ -1,0 +1,84 @@
+{
+  "bindingCore": {
+    "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
+    "sha256": "e9f33cbf4a9c7839670a98ce4b4676abc12d76536c7b7a113782f8c4c1ec05bd",
+    "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-07/kerncurriculum_mathematik_gymnasium.pdf",
+    "role": "Binding competence framework; no literal radian or density proof requirement in the searched text; variable-as-placeholder expectation at end of J6, printed p23; terms and variables in p26 table."
+  },
+  "g8": {
+    "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/g8-mathematik.pdf",
+    "sha256": "3f9df43b8b7f3b11bae47016ecc4f778f08c7d6588237e46cf10d57fc40ca6e9",
+    "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g8-mathematik.pdf",
+    "role": "Legacy grade sequencing reference;9G.2 uses degree-based unit circle; no Bogenmass occurrence found. No G8 radian target expansion approved."
+  },
+  "g9": {
+    "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf",
+    "sha256": "9325e34d90626faa5c42e800b74ef78c61a315da56e7fe20b368807448ad5749",
+    "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-mathematik.pdf",
+    "role": "Legacy grade sequencing and end-of-SekI transition reference, not an assertion that old local grade schedules replace the binding KC.",
+    "reviewedPrintedPages": [
+      34,
+      36,
+      41,
+      43,
+      45
+    ],
+    "reviewedPdfPagesOneBased": [
+      35,
+      37,
+      42,
+      44,
+      46
+    ],
+    "findings": [
+      {
+        "printedPage": 34,
+        "part": "9.6 mandatory and optional table",
+        "finding": "Mandatory circle section contains only a radian hint; the degree/radian angular-measure row is below the facultative heading. This alone does not establish full conversion competence as compulsory J9 work."
+      },
+      {
+        "printedPage": 36,
+        "part": "Introduction to Jahrgang10",
+        "finding": "The introduction explicitly treats general sine and cosine functions in radians; its account links this to unit-circle determination and periodic applications. This passage was omitted by the extraction restricted to topic-level mandatory tables."
+      },
+      {
+        "printedPage": 41,
+        "part": "10.4 mandatory table",
+        "finding": "Unit-circle sine/cosine and determining angles from trigonometric values are stated; the displayed geometric angle range is in degrees. The isolated inverse-angle row alone is not exact evidence for the whole radian variant."
+      },
+      {
+        "printedPages": [
+          43,
+          45
+        ],
+        "part": "Transition profile from J10 to upper secondary",
+        "finding": "The profile identifies knowledge that should be available for entering upper secondary and explicitly lists Winkel im Bogenmass alongside circle measures and unit-circle trigonometry. It expressly avoids prescribing how the preceding instruction must be organized."
+      }
+    ],
+    "shortVerbatimExcerpt": "Winkel im Bogenmaß"
+  },
+  "extraction": {
+    "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+    "sha256": "3ec1451c515f4bc70d97690331ca66f922d933355c4326e1dc4100a95e3e664c"
+  },
+  "mapping": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+    "sha256": "167120e1f19f954ab90880f562f399324628a809ddb37b4b52513204a13e1026"
+  },
+  "primaryImages": [
+    {
+      "path": "tmp/approach-review-20261101/astra-he-two-reference-gaps-20261104-v1/g9-page-35.png",
+      "sha256": "268b8bde37bab242df6b9542848edd06beac61bbf494b608ce070e163c5a3a2e"
+    },
+    {
+      "path": "tmp/approach-review-20261101/astra-he-two-reference-gaps-20261104-v1/g9-page-37.png",
+      "sha256": "dd2979db2f37e67c76c2ce33004ad76bbe40b5ed2af6f979589a802203495e1a"
+    },
+    {
+      "path": "tmp/approach-review-20261101/astra-he-two-reference-gaps-20261104-v1/g9-page-46.png",
+      "sha256": "21d27a654ab59ac8a3c0815a0ffaed6b197125b7e37486e3832f53302f376222"
+    }
+  ],
+  "liveOfficialUrlsOpenedAt": "2026-11-04T01:19:50.361670+00:00",
+  "onlineMethod": "Official Hessen URLs opened; targeted term finds and PDF page reads. Local original PDF pages additionally visually inspected. No claim of a new official policy or live-byte equality."
+}

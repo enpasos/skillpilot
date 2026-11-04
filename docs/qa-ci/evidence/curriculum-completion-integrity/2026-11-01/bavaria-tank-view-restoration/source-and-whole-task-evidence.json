@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "status": "candidate-source-analysis-independent-review-pending",
+  "officialSource": {
+    "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/13/mathematik",
+    "checkedAt": "2026-11-01",
+    "pageHeading": "Mathematik 13 (erhöhtes Anforderungsniveau)",
+    "section": "M13 4 Anwendungen der Differential- und Integralrechnung",
+    "cachedPdfPath": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_13_eA_Teil2.pdf",
+    "cachedPdfPage": 3,
+    "cachedPdfSha256": "cfc0a9092188efb62a3064fe818df97324e06f6eed29e212bee32048c08121bb",
+    "sourceRole": "binding-core in reviewed extraction, not Vertiefungskurs"
+  },
+  "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+  "reviewedMappingPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_source_extraction_to_canonical_math.review.json",
+  "sourceReviewDecisions": [
+    {
+      "sourceGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+      "topicCode": "M13.4",
+      "sourceSpan": "wenden die Methoden der Differential- und Integralrechnung in Sachzusammenhängen flexibel und reflektiert an",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "ead1f5ce-fdf4-5591-8982-395001017848",
+        "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35"
+      ],
+      "matchType": "exact",
+      "rationale": "Der erste gesplittete M13.4-Aspekt verlangt die flexible und reflektierte Anwendung der Differential- und Integralrechnung. Der Elterncluster bleibt als Gesamtzuordnung exact; das Integralblatt 0b162cb0 deckt nur den Integralteil ab und bleibt partial. Die eigenständige Validierungsleistung 71fe4a39 ist am zweiten Source-Aspekt gebunden. M13.4 gehört zum regulären bayerischen Pflichtfach auf erhöhtem Anforderungsniveau; die technische GK/LK-Zuordnung wird getrennt durch die Composition-Views bestimmt.",
+      "reviewedAt": "2026-09-28",
+      "reviewer": "codex",
+      "evidence": {
+        "method": "source-extraction-by-m3-gap-resolution",
+        "sourceTopicCode": "M13.4",
+        "sourceDocumentKey": "JGST13_EA_TEIL2",
+        "sourceSplitPolicy": "original-source-goal-id-retained-for-first-aspect"
+      }
+    },
+    {
+      "sourceGoalId": "by-math-m13-4-9371884f-s02-bf45d4d2b4",
+      "topicCode": "M13.4",
+      "sourceSpan": "sie interpretieren und validieren ihre Ergebnisse. Es wird ihnen bewusst, dass die Differential- und Integralrechnung in unterschiedlichsten Bereichen Verwendung findet (z. B. Wirtschaftsmathematik, Statistik, Klimaforschung, Ingenieurwesen), was ihnen erneut verdeutlicht, dass mathematische Kenntnisse für viele Berufsfelder eine wesentliche Grundlage darstellen.",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "ead1f5ce-fdf4-5591-8982-395001017848",
+        "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2"
+      ],
+      "matchType": "exact",
+      "rationale": "Der zweite gesplittete M13.4-Aspekt nennt ausdrücklich das Interpretieren und Validieren von Ergebnissen. Das Validierungsblatt 71fe4a39 wird direkt diesem passenden Aspekt zugeordnet; die Kante bleibt partial, weil das Blatt zusätzlich Modellannahmen und Grenzen beurteilt und der Source-Aspekt darüber hinaus Berufsfeldorientierung enthält. Der Elterncluster bleibt als Gesamtzuordnung exact. Die erste Source-ID wird nicht mehr stellvertretend für den ungesplitteten Bullet verwendet.",
+      "reviewedAt": "2026-09-28",
+      "reviewer": "codex",
+      "evidence": {
+        "method": "current-split-source-aspect-revalidation",
+        "parentSourceGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+        "sourceSplitIndex": 2,
+        "sourceSplitPartCount": 2,
+        "sourceTopicCode": "M13.4",
+        "sourceDocumentKey": "JGST13_EA_TEIL2"
+      }
+    }
+  ],
+  "assessedGoalProvenance": [
+    {
+      "goalId": "dc12f281-f161-572b-a973-8405ae9b2498",
+      "title": "Differentialrechnung in Sachzusammenhängen auswählen und anwenden",
+      "description": "Die lernende Person kann in Sachzusammenhängen geeignete Methoden der Differentialrechnung auswählen, anwenden und die Ergebnisse im Kontext interpretieren.",
+      "goalSha256SortedCompactJson": "7dbe257c303234098987188c81c6642b1150e5e404278c0c4f707a3894c9b294",
+      "sourceGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+      "officialSourceLocation": "LehrplanPLUS M13.4, fourth competency bullet; cached PDF page 3",
+      "sourceAspectSummary": "Apply differential and integral methods flexibly and reflectively in contextual problems.",
+      "currentDirectReviewedMappings": [],
+      "reviewedContainingClusterId": "ead1f5ce-fdf4-5591-8982-395001017848",
+      "containsPath": [
+        "ead1f5ce-fdf4-5591-8982-395001017848",
+        "dc12f281-f161-572b-a973-8405ae9b2498"
+      ],
+      "reviewedParentMapping": [
+        {
+          "legacyGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+          "canonicalGoalId": "ead1f5ce-fdf4-5591-8982-395001017848",
+          "matchType": "exact",
+          "reviewDecisionId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3"
+        }
+      ],
+      "provenancePrecision": "No direct atomic mapping in the current reviewed source map. Reviewed parent mapping and explicit contains membership provide inherited provenance; independent reviewer must confirm this granularity rather than describe it as a direct atomic review."
+    },
+    {
+      "goalId": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+      "title": "Integralrechnung in Sachzusammenhängen auswählen und anwenden",
+      "description": "Die lernende Person kann in Sachzusammenhängen geeignete Methoden der Integralrechnung auswählen, anwenden und die Ergebnisse im Kontext interpretieren.",
+      "goalSha256SortedCompactJson": "5fb080668913c75da1c5a48b8a68edb1b5205029c3de5be700d6b8f331c6b18f",
+      "sourceGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+      "officialSourceLocation": "LehrplanPLUS M13.4, fourth competency bullet; cached PDF page 3",
+      "sourceAspectSummary": "Apply differential and integral methods flexibly and reflectively in contextual problems.",
+      "currentDirectReviewedMappings": [
+        {
+          "legacyGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+          "canonicalGoalId": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+          "matchType": "partial",
+          "reviewDecisionId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3"
+        }
+      ],
+      "reviewedContainingClusterId": "ead1f5ce-fdf4-5591-8982-395001017848",
+      "containsPath": [
+        "ead1f5ce-fdf4-5591-8982-395001017848",
+        "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35"
+      ],
+      "reviewedParentMapping": [
+        {
+          "legacyGoalId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3",
+          "canonicalGoalId": "ead1f5ce-fdf4-5591-8982-395001017848",
+          "matchType": "exact",
+          "reviewDecisionId": "9371884f-3c08-5f6f-b963-163f2ccc9cb3"
+        }
+      ],
+      "provenancePrecision": "Direct partial atomic mapping exists; no claim that this one task proves the entire broad source bullet."
+    },
+    {
+      "goalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+      "title": "Analysis-Modelle in Sachzusammenhängen validieren",
+      "description": "Die lernende Person kann Modellannahmen und Resultate in Sachzusammenhängen der Differential- und Integralrechnung fachlich prüfen und Grenzen des Modells benennen.",
+      "goalSha256SortedCompactJson": "0f31485fd7b3b056be5faabdf730c91e9f129777cdd92a7edf89bae9e1a247e7",
+      "sourceGoalId": "by-math-m13-4-9371884f-s02-bf45d4d2b4",
+      "officialSourceLocation": "LehrplanPLUS M13.4, fourth competency bullet; cached PDF page 3",
+      "sourceAspectSummary": "Interpret and validate results in contextual calculus applications; the full source aspect also includes vocational orientation.",
+      "currentDirectReviewedMappings": [
+        {
+          "legacyGoalId": "by-math-m13-4-9371884f-s02-bf45d4d2b4",
+          "canonicalGoalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+          "matchType": "partial",
+          "reviewDecisionId": "by-math-m13-4-9371884f-s02-bf45d4d2b4"
+        }
+      ],
+      "reviewedContainingClusterId": "ead1f5ce-fdf4-5591-8982-395001017848",
+      "containsPath": [
+        "ead1f5ce-fdf4-5591-8982-395001017848",
+        "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2"
+      ],
+      "reviewedParentMapping": [
+        {
+          "legacyGoalId": "by-math-m13-4-9371884f-s02-bf45d4d2b4",
+          "canonicalGoalId": "ead1f5ce-fdf4-5591-8982-395001017848",
+          "matchType": "exact",
+          "reviewDecisionId": "by-math-m13-4-9371884f-s02-bf45d4d2b4"
+        }
+      ],
+      "provenancePrecision": "Direct partial atomic mapping exists; no claim that this one task proves the entire broad source bullet."
+    }
+  ],
+  "technicalCourseScope": {
+    "authority": "AGENTS.md §2.3 binding Bavarian Mathematics interim decision",
+    "GK": "Complete compulsory four-hour regular Mathematics at elevated level",
+    "LK": "Same plus all five Mathematics Vertiefungskurs modules",
+    "courseLevelLKInExtraction": "Legacy technical source label; official primary source heading is elevated level. It does not by itself prove that the ordinary compulsory course excludes this competency."
+  },
+  "wholeTaskAnalysis": {
+    "part1": "Derivative of a quadratic rate; locate and check a global maximum on a closed given time interval; interpret rate and units.",
+    "part2": "Integrate the same polynomial rate over the given interval, add known initial volume, distinguish instantaneous rate from accumulated change.",
+    "part3": "Compare a prediction with a given measurement interval; discuss indistinguishable possible causes and explicit model assumptions/domain. No probability distribution, confidence inference, parameter-estimation technique or Vertiefungskurs content is required.",
+    "demandLevel": "AB3 retained: independent method choice and reflective model validation. AB3 is not a course-profile restriction.",
+    "arithmetic": {
+      "maxRateTimeHours": 3,
+      "maxRateLitresPerHour": 18,
+      "accumulatedLitres": 72,
+      "predictedFinalLitres": 92,
+      "measurementIntervalLitres": [
+        83,
+        89
+      ],
+      "gapToMeasurementUpperBoundLitres": 3
+    },
+    "rubricLimitation": "Existing 10/20 passing threshold remains unchanged. A pass is the existing whole-assessment outcome and does not separately certify mastery of every required/covered goal; no stronger qualification or per-goal mastery claim is introduced."
+  },
+  "historicalContext": {
+    "oldCandidateReadme": "2026-09-23 candidate README explicitly classifies this task as LK and warns against making an ordinary GK path depend on an LK endpoint. This was an intentional old contextual decision, not an unexplained typo.",
+    "laterSourceReview": "2026-09-28 reviewed mapping explicitly identifies M13.4 as regular compulsory Bavarian Mathematics at elevated level and delegates technical GK/LK selection to composition views.",
+    "currentRuntime": "LearnerService.computeGoalProjection removes legacy course filters for authored Bavarian Mathematics views; adding GK to this task alone is not the proposed fix.",
+    "proposal": "Keep the exact same goal and source artifacts; propose two explicit Bavarian GK view placements for independent review."
+  }
+}

@@ -1237,7 +1237,7 @@ atomicityRecords.forEach((record) => {
 })
 
 const mathProfile = readJson<{
-  semanticKindDecisions: { sourceFingerprint: SourceFingerprintContract }
+  semanticKindDecisions: { ledgerId: string; ledgerPath: string; sourceFingerprint: SourceFingerprintContract }
 }>(MATH_PROFILE_PATH)
 const fingerprintContract = mathProfile.semanticKindDecisions.sourceFingerprint
 assert.equal(fingerprintContract.contractId, 'semantic-kind-source-fingerprint-v1')
@@ -1281,10 +1281,32 @@ foreignRequiresEdges.forEach(({ goalId }) => {
 assert(!foreignRequiresEdges.some(({ goalId }) => goalId === '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'))
 const mathFixtureGoal = rawMathLandscape.goals.find(({ id }) => id === '000b2764-c5d9-5521-b39e-fc15a4aa72e2')
 assert(mathFixtureGoal, 'known mathematics source-fingerprint fixture is missing')
+// Keep the algorithm golden input independent of living curriculum content.
+const sourceFingerprintGoldenGoal = {
+  id: 'source-fingerprint-golden',
+  type: 'atomic',
+  tags: ['Practice', 'GK'],
+  requires: [],
+  contains: [],
+  examData: { taskContent: '1 + 1', solutionContent: '2' },
+}
+assert.equal(
+  sourceFingerprint(sourceFingerprintGoldenGoal, fingerprintContract),
+  'sha256:0ab92bcec472da55677e85d096fb6c12bf609cefbe4ab5b7efea1d90aead3028',
+  'semantic-kind source-fingerprint implementation drifted from its fixed golden input',
+)
+const boundMathLedger = readJson<SemanticKindLedger>(mathProfile.semanticKindDecisions.ledgerPath)
+assert.equal(boundMathLedger.ledgerId, mathProfile.semanticKindDecisions.ledgerId)
+assert.equal(boundMathLedger.sourceLandscapeId, rawMathLandscape.landscapeId)
+assert.equal(boundMathLedger.sourceLandscapePath, MATH_LANDSCAPE_PATH)
+assert.equal(boundMathLedger.sourceFingerprintContractId, fingerprintContract.contractId)
+const mathFixtureDecisions = boundMathLedger.decisions.filter(({ goalId }) => goalId === mathFixtureGoal.id)
+assert.equal(mathFixtureDecisions.length, 1, 'live mathematics fixture needs exactly one bound ledger decision')
+assert.equal(mathFixtureDecisions[0].decisionStatus, 'authoritative')
 assert.equal(
   sourceFingerprint(mathFixtureGoal, fingerprintContract),
-  'sha256:3f3ae251b2b2d66a0dc22eb0ec76584c9c3b5902a0ea9376aae5f3accc5a1d0a',
-  'semantic-kind source-fingerprint implementation drifted from the reviewed mathematics fixture',
+  mathFixtureDecisions[0].sourceFingerprint,
+  'live mathematics fixture must match its current bound semantic-kind ledger',
 )
 
 const ledger = readJson<SemanticKindLedger>(LEDGER_PATH)

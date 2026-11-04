@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "cafd-actual-image-review-r2-astra-20261103",
+  "asset": {
+    "path": "tmp/approach-review-20261101/cafd-image-correction-20261103-v1/cafd.corrected-r2.png",
+    "sha256": "cbb33b3a494f0351325c7dd14e611167ad844d66b65a8fdc81377a8b80c7a9ea"
+  },
+  "reviewer": {
+    "model": "gpt-6-astra",
+    "reasoningEffort": "ultra",
+    "reviewAuthority": "ai_candidate",
+    "human": false
+  },
+  "inspectionStartedAt": "2026-11-03T19:26:58Z",
+  "reviewedAt": "2026-11-03T19:27:46.369Z",
+  "actualImageViewed": true,
+  "decision": "pass",
+  "checks": [
+    {
+      "check": "left_multiplication_apples",
+      "result": "pass",
+      "observed": "Exactly three groups with four clearly distinguishable apples each, in 2-by-2 arrangements; total twelve. Matches 3 × 4 = 12 and 3 Gruppen von 4."
+    },
+    {
+      "check": "right_division_apples",
+      "result": "pass",
+      "observed": "Exactly three plates with four clearly distinguishable apples each, in 2-by-2 arrangements; total twelve. Matches 12 : 3 = 4 and 12 verteilt auf 3."
+    },
+    {
+      "check": "zero_case_box",
+      "result": "pass",
+      "observed": "The former number line is fully absent. The three actual lines read 0 · 5 = 0; 0 : 5 = 0; 0 : 0 ist nicht definiert. All are mathematically correct and readable; nicht definiert is emphasized in red."
+    },
+    {
+      "check": "signed_arithmetic",
+      "result": "pass",
+      "observed": "All four equations are correct: (−2) × 3 = −6; (−2) × (−3) = 6; (−6) : 3 = −2; (−6) : (−3) = 2."
+    },
+    {
+      "check": "sign_rules",
+      "result": "pass",
+      "observed": "The four multiplication sign rules read +·+=+, +·−=−, −·+=−, −·−=+ and are correct for the displayed positive/negative factors."
+    },
+    {
+      "check": "remaining_arithmetic_and_terms",
+      "result": "pass",
+      "observed": "Faktor × Faktor = Produkt and Dividend : Divisor = Quotient are correctly named. For the prompt 2 × 5 × 3 = ?, the commutative example 5 × 2 × 3 = 10 × 3 = 30 and associative example 2 × (5 × 3) = 2 × 15 = 30 are correct. The 30-euro plausibility label is illustrative, not a separately evidenced price calculation."
+    },
+    {
+      "check": "legibility_german_and_style",
+      "result": "pass",
+      "observed": "At the actual 1679-by-937 resolution all instructional text, signs, and the three new lines are legible. Natürliche, Überprüfung, überprüfen and the remaining German labels preserve correct spelling and umlauts. Landscape layout, four panels, friendly cartoon people, headings, and opaque background remain intact; no watermark is visible."
+    }
+  ],
+  "limitations": {
+    "humanApproval": false,
+    "m7Pass": false,
+    "approvedForPublication": false,
+    "scope": "Actual image content and readability only; AI review is not learner-understanding evidence or a release decision."
+  }
+}

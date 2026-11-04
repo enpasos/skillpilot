@@ -1,0 +1,646 @@
+{
+  "verdict": "PASS_BOUNDED_PLACEMENT_DESIGN_NOT_MATERIALIZATION",
+  "taskId": "632a3837-7381-5701-9cfa-4ae15ccae8ba",
+  "goalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+  "reviewedWholeTask": {
+    "id": "632a3837-7381-5701-9cfa-4ae15ccae8ba",
+    "shortKey": "canonical_math_sek1_j10_assessment_function_derivative_graph_relation",
+    "title": "Funktions- und Ableitungsgraphen wechselseitig deuten",
+    "titleEn": "Interpret function and derivative graphs in both directions",
+    "description": "Die lernende Person kann bei einfachen Funktionen vom Graphen der Funktion auf den Graphen ihrer Ableitungsfunktion und umgekehrt auf einen möglichen Funktionsgraphen qualitativ schließen und die Zuordnung anhand von Steigungen, Vorzeichen und Nullstellen der Ableitung begründen.",
+    "descriptionEn": "The learner can qualitatively infer the derivative graph from the graph of a simple function and, conversely, a possible function graph from its derivative graph, and justify the correspondence using slopes, signs, and zeros of the derivative.",
+    "core": true,
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment",
+      "canonical",
+      "phase:SekI",
+      "ExamTask"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/derivative-split-2026-09-28/graph-relation-draft_v1.md",
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-math",
+      "demandLevel": "AB3",
+      "processCompetencies": [
+        "K2.1",
+        "K3.1",
+        "K4.1"
+      ],
+      "guidingIdeas": [
+        "L4"
+      ],
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J10.DERIVATIVE_GRAPH_RELATION"
+    },
+    "contains": [],
+    "requires": [
+      "5518ceb3-f668-5b52-a9b1-57653b16ca98"
+    ],
+    "phase": "J10",
+    "type": "atomic",
+    "nodeKind": "exam",
+    "extendedData": {
+      "applicabilityFromRequires": true,
+      "applicabilityMappingInheritance": "boundary"
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "reviewNote": "KI-Inhaltsprüfung am 2026-09-28; keine menschliche Freigabe oder Host-Erprobung. Siehe derivative-split-2026-09-28/simulated_review_v1.md.",
+      "coveredGoalIds": [
+        "5518ceb3-f668-5b52-a9b1-57653b16ca98"
+      ],
+      "coveredStrands": [
+        "L4"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/derivative-split-2026-09-28/graph-relation-draft_v1.md",
+      "taskContent": "Die Graphen sind maßstäblich beschriftet. Du musst keine Funktionsterme rekonstruieren. Zeichne deine Antworten in eigene Koordinatensysteme.\n\n1. Gegeben ist der Funktionsgraph $f$ auf $[-2;2]$:\n\n![Gegebener Funktionsgraph f](/assets/assessment-materials/mathematik/632a3837-7381-5701-9cfa-4ae15ccae8ba/given-function.svg)\n\nSkizziere einen passenden Verlauf von $f'$. Begründe die Nullstellen und Vorzeichen von $f'$ mit den Tangentensteigungen von $f$ und beschreibe, wo $f'$ negative bzw. positive Werte hat. Achte auch auf die Größe der Steigungen. (5 BE)\n\n2. Unabhängig davon ist der Ableitungsgraph $q'$ auf $[-3;1]$ gegeben:\n\n![Gegebener Ableitungsgraph q Strich](/assets/assessment-materials/mathematik/632a3837-7381-5701-9cfa-4ae15ccae8ba/given-derivative.svg)\n\nSkizziere einen möglichen Funktionsgraphen $q$. Begründe seinen fallenden und steigenden Verlauf und die waagerechte Tangente mit dem gegebenen Ableitungsgraphen. (5 BE)\n\n3. Ein Mitschüler behauptet, der zweite Graph lege auch den Wert $q(0)$ eindeutig fest. Beurteile das und beschreibe, wie ein zweiter passender Funktionsgraph aus deiner Zeichnung entsteht. (2 BE)",
+      "solutionContent": "Nur zur unabhängigen Kontrolle: Die erste Vorlage wurde aus $f(x)=x^3/3-x$ erzeugt. Ein passender Ableitungsgraph ist $f'(x)=x^2-1$, eine nach oben geöffnete Parabel mit Nullstellen bei $-1$ und $1$, Minimum $(0|-1)$, positiven Werten außerhalb $[-1;1]$ und negativen Werten dazwischen. Lernende müssen diesen Term nicht angeben; verlangt ist eine qualitative Skizze, die Tangentensteigungen, Vorzeichen, Nullstellen und ungefähre Größen sinnvoll wiedergibt. Bloßes Nennen von Nullstellen ohne gezeichneten Verlauf genügt nicht.\n\nDie zweite Vorlage ist die Gerade $q'(x)=x+1$. Ein möglicher Funktionsgraph ist die Parabel $q(x)=\\tfrac12(x+1)^2$, deren Tiefpunkt bei $x=-1$ liegt. Links davon fällt q, rechts davon steigt q; am Tiefpunkt liegt eine waagerechte Tangente. Aus der linear zunehmenden Steigung folgt ein gleichmäßig nach oben gekrümmter Verlauf. Die genaue Termrekonstruktion oder Integration ist nicht verlangt.\n\nJede Verschiebung dieses q-Graphen parallel zur y-Achse besitzt denselben Ableitungsgraphen. Daher ist $q(0)$ ohne Zusatzinformation nicht eindeutig festgelegt. Zwei konkret verschieden hoch gezeichnete, sonst gleiche Kurven zeigen die fehlende Eindeutigkeit.\n\nBewertung: Je Zeichenschritt 5 BE (tragfähiger Kurvenverlauf mit Steigungsbezug 3, richtige Nullstellen/Vorzeichen bzw. waagerechte Tangente 2). Ohne Zeichnung 0 BE im betreffenden Schritt; bei fehlendem Steigungsbezug oder falscher Vorzeichenstruktur höchstens 3/5. Teil 3: 1 BE für fehlende Eindeutigkeit, 1 BE für die vertikale Verschiebung. Bestehen ab 11/12 erfordert damit beide Richtungen und mindestens einen tragfähigen Nicht-Eindeutigkeitsgedanken. Diese Teilfallgrenzen sind Bewertungsanweisungen; der Server erzwingt die Gesamtgrenze.",
+      "scoring": {
+        "maxPoints": 12,
+        "passingPoints": 11,
+        "steps": [
+          {
+            "id": "j10-derivative-forward-graph",
+            "points": 5,
+            "description": "Ableitungsgraph aus dem gegebenen Funktionsgraphen zeichnen und mit Tangentensteigungen begründen; ohne Zeichnung 0, bei fehlendem Kern höchstens 3."
+          },
+          {
+            "id": "j10-derivative-reverse-graph",
+            "points": 5,
+            "description": "Möglichen Funktionsgraphen aus Ableitungsgraphen zeichnen und mit Vorzeichen/Steigung begründen; ohne Zeichnung 0, bei fehlendem Kern höchstens 3."
+          },
+          {
+            "id": "j10-derivative-vertical-shift",
+            "points": 2,
+            "description": "Fehlende Eindeutigkeit und vertikale Verschiebung erklären."
+          }
+        ]
+      }
+    },
+    "resourceLinks": []
+  },
+  "reviewedWholeTarget": {
+    "id": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+    "shortKey": "canonical_math_sek1_j10_function_derivative_graph_relation",
+    "title": "Funktions- und Ableitungsgraphen in Beziehung setzen",
+    "titleEn": "Relate function and derivative graphs",
+    "description": "Die lernende Person kann bei einfachen Funktionen vom Graphen der Funktion auf den Graphen ihrer Ableitungsfunktion und umgekehrt auf einen möglichen Funktionsgraphen qualitativ schließen und die Zuordnung anhand von Steigungen, Vorzeichen und Nullstellen der Ableitung begründen.",
+    "descriptionEn": "The learner can qualitatively infer the derivative graph from the graph of a simple function and, conversely, a possible function graph from its derivative graph, and justify the correspondence using slopes, signs, and zeros of the derivative.",
+    "core": true,
+    "weight": 1,
+    "tags": [
+      "canonical",
+      "modality:visual",
+      "representation:graph",
+      "tool:geogebra"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-HB",
+        "DE-HH",
+        "DE-SH"
+      ]
+    },
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+        "title": "Visualisierung: Funktions- und Ableitungsgraphen in Beziehung setzen",
+        "url": "/assets/goal-visualizations/mathematik/5518ceb3-f668-5b52-a9b1-57653b16ca98/5518ceb3-f668-5b52-a9b1-57653b16ca98.png",
+        "provider": "OpenAI imagegen (edited from SkillPilot Gemini illustration)",
+        "description": "Korrigiertes gemeinsames Beispiel f(x)=−x²+4 und f′(x)=−2x; Zusammenhang von Graphen, Ableitungsvorzeichen und innerem Maximum.",
+        "altText": "Parabel f(x)=−x²+4 mit Scheitel (0,4) und Ableitungsgerade f′(x)=−2x. Vor x=0 ist die Ableitung positiv und der Funktionsgraph steigt, danach ist sie negativ und der Graph fällt. Die Grafik zeigt ein Beispiel; andere Funktionen und Randextrema sind separat zu prüfen.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      },
+      {
+        "type": "tool",
+        "title": "GeoGebra Graphing Calculator",
+        "url": "https://www.geogebra.org/graphing",
+        "resourceType": "graphing-calculator",
+        "provider": "GeoGebra",
+        "description": "Dynamischer Graphikrechner für Visualisierung und gemeinsame Arbeit an Koordinatensystemen, Graphen und Funktionsdarstellungen.",
+        "lang": "mul"
+      }
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-math",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "K1.1",
+        "K3.1",
+        "K4.1"
+      ],
+      "guidingIdeas": [
+        "L1",
+        "L4"
+      ],
+      "phase": "J10",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK1.J10.7C.GRAPH"
+    },
+    "contains": [],
+    "requires": [
+      "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    "type": "atomic",
+    "semanticAtomic": true,
+    "extendedData": {
+      "applicabilityMappingInheritance": "boundary"
+    }
+  },
+  "wholeObjectHashEncoding": "sorted compact JSON UTF8",
+  "taskWholeSha256": "e5046093d676f49ec7c67c347b6c4e7fc4bca27b581943d448dd3965eb1b4dcd",
+  "targetWholeSha256": "e74757d2503694c2a1d7615b2d47cc84a53bc66fe8746e74a6b8de9025926360",
+  "authorPacket": {
+    "path": "tmp/approach-review-20261101/next-existing-route-triage-v25-20261102/inputs-and-artifacts.json",
+    "sha256": "c5f61c830102b15094211eea1bfd5ff42b77dcaa4785915a81fd2d556e5773ac",
+    "bytes": 5634
+  },
+  "v25Audit": {
+    "path": "tmp/approach-review-20261101/tank-gk-rp-v3-v25-actual-root-20261102/audit.json",
+    "sha256": "474c01cf7252bdee243dd27d8436f466619c1ad341f9d0ab3443f2491dc31b47",
+    "bytes": 17240522
+  },
+  "same15AbsencesAndWholeContractsReconfirmedInJointC2": {
+    "path": "tmp/approach-review-20261101/joint-three-own-assessments-candidate-20261102/candidate-r2-native-archive.json",
+    "sha256": "97715ec6910ab36b341377eadbc52515be97eaa07ae7bb6a1ab37c4c1d750c4e",
+    "bytes": 1926
+  },
+  "whole99PacketObjectsAnd84ViewsVerifiedAgainstV25Backup": true,
+  "sourceStageDecision": {
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/stage-scope-source-decisions.review.json",
+    "sha256": "3fdbc346042a7e0556a0eaeac05478fe928e1689ddac03dc571c6ebf0d663838",
+    "bytes": 84844
+  },
+  "earlierExplicitGraphConclusionSourceDecision": {
+    "path": "curricula/DE/Gymnasium/mapping/mathematik-j10-analysis-source-stage-decisions-20260929.md",
+    "sha256": "cd2a7bd122f4e3560eb7a90238461e99aabe94124223d9150e6130d8b975e8fa",
+    "bytes": 11923
+  },
+  "primaryBoundaries": [
+    {
+      "binding": {
+        "path": "curricula/DE/Gymnasium/input/HB/GyO_Mathematik_2022.pdf",
+        "sha256": "758fe3dff58f8b99e51b0806b17ee2eea2a0a2882d20df5fff6fff1bbad17cee",
+        "bytes": 768213
+      },
+      "pagesFromExistingWholeSourceDecision": [
+        22
+      ]
+    },
+    {
+      "binding": {
+        "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+        "sha256": "17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28",
+        "bytes": 3422772
+      },
+      "pagesFromExistingWholeSourceDecision": [
+        67,
+        74
+      ]
+    }
+  ],
+  "exactScopeAllowlist": [
+    "DE-BW/SekII/G9/GK",
+    "DE-BW/SekII/G9/GK+LK",
+    "DE-BW/SekII/G9/LK",
+    "DE-HB/SekII/G8/GK",
+    "DE-HB/SekII/G8/GK+LK",
+    "DE-HB/SekII/G8/LK",
+    "DE-SH/CrossStage/G8/GK",
+    "DE-SH/CrossStage/G8/GK+LK",
+    "DE-SH/CrossStage/G8/LK",
+    "DE-SH/SekII/G8/GK",
+    "DE-SH/SekII/G8/GK+LK",
+    "DE-SH/SekII/G8/LK",
+    "DE-SH/SekII/G9/GK",
+    "DE-SH/SekII/G9/GK+LK",
+    "DE-SH/SekII/G9/LK"
+  ],
+  "exactEightViewPlacements": [
+    {
+      "viewId": "de-bw-gym-sekii-math-gk-g9",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK",
+        "durationModel": "G9"
+      },
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk-g9.view.json",
+      "v25BeforeBinding": {
+        "path": "tmp/math-own-routes-c2-root-integration-jx16x4r_/curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk-g9.view.json",
+        "sha256": "ad056afad8370d412e05ee301f6f63229d63f1600fe62180f0bc9c4a1802361c",
+        "bytes": 18213
+      },
+      "jointC2Binding": {
+        "path": "tmp/approach-review-20261101/joint-three-own-assessments-candidate-20261102/candidate-r2-capsule/curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk-g9.view.json",
+        "sha256": "d451aff15f7542eb08a90f4034e47c482bd1b979b6b85fbbd54747c703c48bf0",
+        "bytes": 18620
+      },
+      "targetGoalEntryPointer": "/rootNodes/16/children/7/children/2",
+      "anchorStructureId": "reviewed-stage-positive-bw-upper-calculus",
+      "anchorLabel": "Differentialrechnung (Jahrgang 11)",
+      "ancestorStructureIds": [
+        "sek2-gk",
+        "reviewed-stage-positive-bw-upper-calculus"
+      ],
+      "proposedAssessmentStructureId": "reviewed-own-graph-relation-de-bw-gym-sekii-math-gk-g9",
+      "proposedAssessmentLabel": "Prüfung: Funktions- und Ableitungsgraphen",
+      "singleTargetReference": {
+        "kind": "goalEntry",
+        "goalId": "632a3837-7381-5701-9cfa-4ae15ccae8ba",
+        "projectionRole": "target"
+      }
+    },
+    {
+      "viewId": "de-bw-gym-sekii-math-lk-g9",
+      "scope": {
+        "jurisdiction": "DE-BW",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK",
+        "durationModel": "G9"
+      },
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk-g9.view.json",
+      "v25BeforeBinding": {
+        "path": "tmp/math-own-routes-c2-root-integration-jx16x4r_/curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk-g9.view.json",
+        "sha256": "a418a916a9e964625ff111642beb02a823ba3e592f75579cb31180155527f740",
+        "bytes": 18721
+      },
+      "jointC2Binding": {
+        "path": "tmp/approach-review-20261101/joint-three-own-assessments-candidate-20261102/candidate-r2-capsule/curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk-g9.view.json",
+        "sha256": "55f0eaacc06fdb098b38df63629c19f88dee08ea0643f09d2f81ed75d0ca49dc",
+        "bytes": 19128
+      },
+      "targetGoalEntryPointer": "/rootNodes/9/children/7/children/2",
+      "anchorStructureId": "reviewed-stage-positive-bw-upper-calculus",
+      "anchorLabel": "Differentialrechnung (Jahrgang 11)",
+      "ancestorStructureIds": [
+        "sek2-lk",
+        "reviewed-stage-positive-bw-upper-calculus"
+      ],
+      "proposedAssessmentStructureId": "reviewed-own-graph-relation-de-bw-gym-sekii-math-lk-g9",
+      "proposedAssessmentLabel": "Prüfung: Funktions- und Ableitungsgraphen",
+      "singleTargetReference": {
+        "kind": "goalEntry",
+        "goalId": "632a3837-7381-5701-9cfa-4ae15ccae8ba",
+        "projectionRole": "target"
+      }
+    },
+    {
+      "viewId": "de-hb-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-HB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
+      "v25BeforeBinding": {
+        "path": "tmp/math-own-routes-c2-root-integration-jx16x4r_/curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
+        "sha256": "00b040af33c8ff2ff84d3750840560e639f8a38824047812e9d11196d3123beb",
+        "bytes": 14904
+      },
+      "jointC2Binding": {
+        "path": "tmp/approach-review-20261101/joint-three-own-assessments-candidate-20261102/candidate-r2-capsule/curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
+        "sha256": "27deb4e5487f1c0b2116b16fcfeb585093c0e8c0ba64509a02411599310a8d33",
+        "bytes": 15308
+      },
+      "targetGoalEntryPointer": "/rootNodes/22/children/7/children/0",
+      "anchorStructureId": "analysis-derivative-applications-sekii",
+      "anchorLabel": "Ableitungen und Funktionsuntersuchung",
+      "ancestorStructureIds": [
+        "math-root",
+        "analysis-derivative-applications-sekii"
+      ],
+      "proposedAssessmentStructureId": "reviewed-own-graph-relation-de-hb-gym-sekii-math-gk",
+      "proposedAssessmentLabel": "Prüfung: Funktions- und Ableitungsgraphen",
+      "singleTargetReference": {
+        "kind": "goalEntry",
+        "goalId": "632a3837-7381-5701-9cfa-4ae15ccae8ba",
+        "projectionRole": "target"
+      }
+    },
+    {
+      "viewId": "de-hb-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-HB",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-lk.view.json",
+      "v25BeforeBinding": {
+        "path": "tmp/math-own-routes-c2-root-integration-jx16x4r_/curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-lk.view.json",
+        "sha256": "036e0b133f31d268dcdd298907837e025a70230bbc7b4a391af0ca527d820bde",
+        "bytes": 14579
+      },
+      "jointC2Binding": {
+        "path": "tmp/approach-review-20261101/joint-three-own-assessments-candidate-20261102/candidate-r2-capsule/curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-lk.view.json",
+        "sha256": "fb8bed32e20965348858e108240fa42626d55f8e708efe18f19a731109e53835",
+        "bytes": 14983
+      },
+      "targetGoalEntryPointer": "/rootNodes/19/children/7/children/0",
+      "anchorStructureId": "analysis-derivative-applications-sekii",
+      "anchorLabel": "Ableitungen und Funktionsuntersuchung",
+      "ancestorStructureIds": [
+        "math-root",
+        "analysis-derivative-applications-sekii"
+      ],
+      "proposedAssessmentStructureId": "reviewed-own-graph-relation-de-hb-gym-sekii-math-lk",
+      "proposedAssessmentLabel": "Prüfung: Funktions- und Ableitungsgraphen",
+      "singleTargetReference": {
+        "kind": "goalEntry",
+        "goalId": "632a3837-7381-5701-9cfa-4ae15ccae8ba",
+        "projectionRole": "target"
+      }
+    },
+    {
+      "viewId": "de-sh-gym-math-gk-g8",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G8"
+      },
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "v25BeforeBinding": {
+        "path": "tmp/math-own-routes-c2-root-integration-jx16x4r_/curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+        "sha256": "935a7fd218d7dc618c65947633d7090ccfa14c27718778f86c026a19f5a79d49",
+        "bytes": 75465
+      },
+      "jointC2Binding": {
+        "path": "tmp/approach-review-20261101/joint-three-own-assessments-candidate-20261102/candidate-r2-capsule/curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+        "sha256": "d2e0614026871750b0bb8e75a5c50cb29f3f694cd836ca562403d2a984e508ca",
+        "bytes": 75910
+      },
+      "targetGoalEntryPointer": "/rootNodes/24/children/1/children/6/children/0",
+      "anchorStructureId": "analysis-derivative-applications-sekii",
+      "anchorLabel": "Ableitungen und Funktionsuntersuchung",
+      "ancestorStructureIds": [
+        "math-root",
+        "sek2-gk",
+        "analysis-derivative-applications-sekii"
+      ],
+      "proposedAssessmentStructureId": "reviewed-own-graph-relation-de-sh-gym-math-gk-g8",
+      "proposedAssessmentLabel": "Prüfung: Funktions- und Ableitungsgraphen",
+      "singleTargetReference": {
+        "kind": "goalEntry",
+        "goalId": "632a3837-7381-5701-9cfa-4ae15ccae8ba",
+        "projectionRole": "target"
+      }
+    },
+    {
+      "viewId": "de-sh-gym-math-lk-g8",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G8"
+      },
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "v25BeforeBinding": {
+        "path": "tmp/math-own-routes-c2-root-integration-jx16x4r_/curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+        "sha256": "36a7f0bea98d584ba653f51e7992722e72fa189eb9f43d3a3b535bc7677f8f39",
+        "bytes": 75073
+      },
+      "jointC2Binding": {
+        "path": "tmp/approach-review-20261101/joint-three-own-assessments-candidate-20261102/candidate-r2-capsule/curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+        "sha256": "822465324ce06b2fecc74884ffa68a5a4913ef727a75499fecc725bc5e3fbc38",
+        "bytes": 75518
+      },
+      "targetGoalEntryPointer": "/rootNodes/21/children/1/children/6/children/0",
+      "anchorStructureId": "analysis-derivative-applications-sekii",
+      "anchorLabel": "Ableitungen und Funktionsuntersuchung",
+      "ancestorStructureIds": [
+        "math-root",
+        "sek2-lk",
+        "analysis-derivative-applications-sekii"
+      ],
+      "proposedAssessmentStructureId": "reviewed-own-graph-relation-de-sh-gym-math-lk-g8",
+      "proposedAssessmentLabel": "Prüfung: Funktions- und Ableitungsgraphen",
+      "singleTargetReference": {
+        "kind": "goalEntry",
+        "goalId": "632a3837-7381-5701-9cfa-4ae15ccae8ba",
+        "projectionRole": "target"
+      }
+    },
+    {
+      "viewId": "de-sh-gym-sekii-math-gk",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+      "v25BeforeBinding": {
+        "path": "tmp/math-own-routes-c2-root-integration-jx16x4r_/curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+        "sha256": "1cc0ee67090a0cc74490c6ab134d61f9af38391cc0586e929fc4f3cfa08fc828",
+        "bytes": 23251
+      },
+      "jointC2Binding": {
+        "path": "tmp/approach-review-20261101/joint-three-own-assessments-candidate-20261102/candidate-r2-capsule/curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+        "sha256": "4ce9a43fba50491b656378a847ade2397d15be42e404fd14be194a99a00f1def",
+        "bytes": 23655
+      },
+      "targetGoalEntryPointer": "/rootNodes/20/children/6/children/0",
+      "anchorStructureId": "analysis-derivative-applications-sekii",
+      "anchorLabel": "Ableitungen und Funktionsuntersuchung",
+      "ancestorStructureIds": [
+        "math-root",
+        "analysis-derivative-applications-sekii"
+      ],
+      "proposedAssessmentStructureId": "reviewed-own-graph-relation-de-sh-gym-sekii-math-gk",
+      "proposedAssessmentLabel": "Prüfung: Funktions- und Ableitungsgraphen",
+      "singleTargetReference": {
+        "kind": "goalEntry",
+        "goalId": "632a3837-7381-5701-9cfa-4ae15ccae8ba",
+        "projectionRole": "target"
+      }
+    },
+    {
+      "viewId": "de-sh-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-SH",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+      "v25BeforeBinding": {
+        "path": "tmp/math-own-routes-c2-root-integration-jx16x4r_/curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+        "sha256": "dbebdd2d56fe75a5e54f7ae2004e63b5a257e57e0ff33d5f2d93c66a7251f79a",
+        "bytes": 22750
+      },
+      "jointC2Binding": {
+        "path": "tmp/approach-review-20261101/joint-three-own-assessments-candidate-20261102/candidate-r2-capsule/curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+        "sha256": "d1532da60870c33c58cb37d03c787aa27fa3ed5bc55446d2bd1cb9e3d8bd6f27",
+        "bytes": 23154
+      },
+      "targetGoalEntryPointer": "/rootNodes/17/children/6/children/0",
+      "anchorStructureId": "analysis-derivative-applications-sekii",
+      "anchorLabel": "Ableitungen und Funktionsuntersuchung",
+      "ancestorStructureIds": [
+        "math-root",
+        "analysis-derivative-applications-sekii"
+      ],
+      "proposedAssessmentStructureId": "reviewed-own-graph-relation-de-sh-gym-sekii-math-lk",
+      "proposedAssessmentLabel": "Prüfung: Funktions- und Ableitungsgraphen",
+      "singleTargetReference": {
+        "kind": "goalEntry",
+        "goalId": "632a3837-7381-5701-9cfa-4ae15ccae8ba",
+        "projectionRole": "target"
+      }
+    }
+  ],
+  "existingTaskTargetScopesPreserved": [
+    "ALL/CrossStage//GK",
+    "ALL/CrossStage//GK+LK",
+    "ALL/CrossStage//LK",
+    "ALL/SekI//",
+    "DE-BB/CrossStage/G8/GK",
+    "DE-BB/CrossStage/G8/GK+LK",
+    "DE-BB/CrossStage/G8/LK",
+    "DE-BB/CrossStage/G9/GK",
+    "DE-BB/CrossStage/G9/GK+LK",
+    "DE-BB/CrossStage/G9/LK",
+    "DE-BB/SekI/G8/GK+LK",
+    "DE-BB/SekI/G9/GK+LK",
+    "DE-BE/CrossStage/G8/GK",
+    "DE-BE/CrossStage/G8/GK+LK",
+    "DE-BE/CrossStage/G8/LK",
+    "DE-BE/CrossStage/G9/GK",
+    "DE-BE/CrossStage/G9/GK+LK",
+    "DE-BE/CrossStage/G9/LK",
+    "DE-BE/SekI/G8/GK+LK",
+    "DE-BE/SekI/G9/GK+LK",
+    "DE-BW/CrossStage/G8/GK",
+    "DE-BW/CrossStage/G8/GK+LK",
+    "DE-BW/CrossStage/G8/LK",
+    "DE-BW/CrossStage/G9/GK",
+    "DE-BW/CrossStage/G9/GK+LK",
+    "DE-BW/CrossStage/G9/LK",
+    "DE-BW/SekI/G8/GK+LK",
+    "DE-BW/SekI/G9/GK+LK",
+    "DE-BY/CrossStage/G9/GK",
+    "DE-BY/CrossStage/G9/GK+LK",
+    "DE-BY/CrossStage/G9/LK",
+    "DE-BY/SekI/G9/GK+LK",
+    "DE-HB/CrossStage/G8/GK",
+    "DE-HB/CrossStage/G8/GK+LK",
+    "DE-HB/CrossStage/G8/LK",
+    "DE-HB/SekI/G8/GK+LK",
+    "DE-HH/CrossStage/G8/GK",
+    "DE-HH/CrossStage/G8/GK+LK",
+    "DE-HH/CrossStage/G8/LK",
+    "DE-HH/SekI/G8/GK+LK",
+    "DE-MV/CrossStage/G8/GK",
+    "DE-MV/CrossStage/G8/GK+LK",
+    "DE-MV/CrossStage/G8/LK",
+    "DE-MV/SekI/G8/GK+LK",
+    "DE-NI/CrossStage/G9/GK",
+    "DE-NI/CrossStage/G9/GK+LK",
+    "DE-NI/CrossStage/G9/LK",
+    "DE-NI/SekI/G9/GK+LK",
+    "DE-NW/CrossStage/G9/GK",
+    "DE-NW/CrossStage/G9/GK+LK",
+    "DE-NW/CrossStage/G9/LK",
+    "DE-NW/SekI/G9/GK+LK",
+    "DE-SH/CrossStage/G9/GK",
+    "DE-SH/CrossStage/G9/GK+LK",
+    "DE-SH/CrossStage/G9/LK",
+    "DE-SL/CrossStage/G9/GK",
+    "DE-SL/CrossStage/G9/GK+LK",
+    "DE-SL/CrossStage/G9/LK",
+    "DE-SL/SekI/G9/GK+LK",
+    "DE-SN/CrossStage/G8/GK",
+    "DE-SN/CrossStage/G8/GK+LK",
+    "DE-SN/CrossStage/G8/LK",
+    "DE-SN/SekI/G8/GK+LK",
+    "DE-ST/CrossStage/G8/GK",
+    "DE-ST/CrossStage/G8/GK+LK",
+    "DE-ST/CrossStage/G8/LK",
+    "DE-ST/SekI/G8/GK+LK",
+    "DE-TH/CrossStage/G8/GK",
+    "DE-TH/CrossStage/G8/GK+LK",
+    "DE-TH/CrossStage/G8/LK",
+    "DE-TH/SekI/G8/GK+LK"
+  ],
+  "fullPreparationContext": {
+    "path": "tmp/approach-review-20261101/astra-remaining-material-scope/existing-632a-placement15-review-20261102-v1/full-current-preparation-context.json",
+    "sha256": "85a21b8f9197b7afaa4b02d46e1118642ab69e72d7b1a50e43f098d43bba61ed",
+    "bytes": 204767
+  },
+  "old56SupportContextNodesAlreadyPresentInAll15": true,
+  "noProtectedSupportPromotion": true,
+  "actualSvgGeometryChecks": [
+    {
+      "file": {
+        "path": "app/public/assets/assessment-materials/mathematik/632a3837-7381-5701-9cfa-4ae15ccae8ba/given-function.svg",
+        "sha256": "8c7a554ced407a942035d0a693e7bb2110689f9e687933d2b391a7e4bf10d647",
+        "bytes": 9880
+      },
+      "samplePoints": 501,
+      "maxFormulaResidual": 2.64533333355077e-06,
+      "formula": "x^3/3-x",
+      "formulaNotShownToLearner": true
+    },
+    {
+      "file": {
+        "path": "app/public/assets/assessment-materials/mathematik/632a3837-7381-5701-9cfa-4ae15ccae8ba/given-derivative.svg",
+        "sha256": "52905a8ffa7c47c3db7e9c84d40a2bd27856f8cf0770d8f46178376617706458",
+        "bytes": 10034
+      },
+      "samplePoints": 501,
+      "maxFormulaResidual": 6.661338147750939e-16,
+      "formula": "x+1",
+      "formulaNotShownToLearner": true
+    }
+  ],
+  "noCanonicalTaskOrGoalOrRequiresOrCoverageOrTagChange": true,
+  "oldBbb28AndC34HoldsUnaffected": true,
+  "noNewOfficialSpecificTaskOrSourceCoverageClaim": true,
+  "nativeDeltaAndNormalProducerChecksStillRequired": true,
+  "noRootMutationOrJvm": true
+}

@@ -1,5 +1,9 @@
 package com.skillpilot.backend.service;
 
+import com.skillpilot.backend.testsupport.OwnedMockitoMocks;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.AfterAll;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
@@ -43,7 +47,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationEventPublisher;
 
+@ExtendWith(OwnedMockitoMocks.class)
 public class LearnerFrontierInvariantTest {
+
+    @AfterAll
+    static void releaseClassFixtures() {
+        objectMapper = null;
+        landscapeService = null;
+        goalMappingService = null;
+    }
+
 
     private static final String LEARNER_ID = "test-learner";
     private static final String CURRICULUM_ID = "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da";

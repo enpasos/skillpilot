@@ -1,0 +1,124 @@
+{
+  "id": "3f884dbe-108c-57eb-80cc-836bc4c79c9e",
+  "shortKey": "canonical_math_q3_structural_split_follow_up_q3_laplace_empirical_comparison",
+  "title": "Laplace-Wahrscheinlichkeit und Versuchsdaten vergleichen",
+  "titleEn": "Compare a Laplace probability with experimental data",
+  "description": "Die lernende Person kann absolute und relative Häufigkeiten mit einer theoretischen Laplace-Wahrscheinlichkeit vergleichen, das empirische Gesetz der großen Zahlen sachgerecht erläutern und eine deterministische Fehlinterpretation korrigieren.",
+  "descriptionEn": "The learner can compare absolute and relative frequencies with a theoretical Laplace probability, appropriately explain the empirical law of large numbers, and correct a deterministic misinterpretation.",
+  "core": true,
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "canonical",
+    "phase:Q3",
+    "ExamTask"
+  ],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-08-16/q3/q3-laplace-empirical-comparison/draft_v1.md#aufgabe",
+  "dimensionTags": {
+    "framework": "hessen-kc-2024",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K2.1",
+      "K2.2",
+      "K4.2",
+      "K6.2"
+    ],
+    "guidingIdeas": [
+      "L4",
+      "L5"
+    ],
+    "phase": "Q3",
+    "area": "Mathematik",
+    "topicCode": "CANONICAL.MATH.SEK2.PRACTICE.Q3.Q3_LAPLACE_EMPIRICAL_COMPARISON"
+  },
+  "contains": [],
+  "requires": [
+    "8823e26e-694c-581b-9adf-4db7db6f43c9",
+    "ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c",
+    "b7cc2fc4-c695-5a97-93b0-3a619c632ca8",
+    "5a2371fd-74ce-5013-932e-35d3713aeaf7"
+  ],
+  "phase": "Q3",
+  "type": "atomic",
+  "nodeKind": "exam",
+  "extendedData": {
+    "applicabilityFromRequires": true,
+    "applicabilityMappingInheritance": "boundary"
+  },
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "8823e26e-694c-581b-9adf-4db7db6f43c9",
+      "ce2eb0a8-8f4e-5a94-b81d-8d7502dccf9c",
+      "b7cc2fc4-c695-5a97-93b0-3a619c632ca8",
+      "5a2371fd-74ce-5013-932e-35d3713aeaf7"
+    ],
+    "coveredStrands": [
+      "L4",
+      "L5"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-08-16/q3/q3-laplace-empirical-comparison/draft_v1.md",
+    "taskContent": "Ein fairer sechsseitiger Würfel wird mehrfach geworfen. Gezählt wird, wie oft eine Sechs fällt.\n\n| Versuchszahl $n$ | Anzahl der Sechsen |\n| ---: | ---: |\n| 24 | 2 |\n| 120 | 18 |\n| 600 | 96 |\n\n1. Bestimme für jede Versuchsreihe absolute und relative Häufigkeit der Sechs. (4 BE)\n2. Bestimme die theoretische Laplace-Wahrscheinlichkeit für eine Sechs. (2 BE)\n3. Vergleiche die drei empirischen Wahrscheinlichkeiten mit der theoretischen Wahrscheinlichkeit. (3 BE)\n4. Erläutere anhand der Daten das empirische Gesetz der großen Zahlen. Erkläre ausdrücklich, warum es keine Garantie für eine einzelne Versuchsreihe liefert. (3 BE)\n5. Beurteile die Aussage: „Nach genau 600 Würfen muss die relative Häufigkeit gleich $1/6$ sein.“ (2 BE)",
+    "solutionContent": "1. Die absoluten Häufigkeiten sind $2$, $18$ und $96$. Die relativen Häufigkeiten lauten $2/24=1/12\\approx0{,}0833$, $18/120=0{,}15$ und $96/600=0{,}16$. (je 1 BE für die relativen Werte sowie 1 BE für die korrekte Unterscheidung von den absoluten Häufigkeiten)\n2. Bei einem fairen Würfel sind die sechs Ergebnisse gleich wahrscheinlich; deshalb gilt $P(6)=1/6\\approx0{,}1667$. (2 BE)\n3. Alle drei beobachteten relativen Häufigkeiten unterscheiden sich von $1/6$; in diesen Daten werden die Abweichungen bei wachsender Versuchszahl kleiner. Die empirischen Werte sind Schätzungen, während $1/6$ durch das Modell bestimmt wird. (3 BE)\n4. Die Daten veranschaulichen die typische Stabilisierung relativer Häufigkeiten bei wachsender Versuchszahl. Das empirische Gesetz ist keine deterministische Zusage für eine einzelne Versuchsfolge; zufällige Schwankungen bleiben möglich. (3 BE)\n5. Die Aussage ist falsch. Auch nach 600 Würfen muss die Anzahl der Sechsen nicht genau $100$ betragen; deshalb muss die relative Häufigkeit nicht gleich $1/6$ sein. (2 BE)",
+    "scoring": {
+      "maxPoints": 14,
+      "passingPoints": 7,
+      "steps": [
+        {
+          "id": "laplace_1",
+          "points": 4,
+          "description": "Absolute und relative Häufigkeiten korrekt bestimmt"
+        },
+        {
+          "id": "laplace_2",
+          "points": 2,
+          "description": "Theoretische Laplace-Wahrscheinlichkeit korrekt bestimmt"
+        },
+        {
+          "id": "laplace_3",
+          "points": 3,
+          "description": "Empirische und theoretische Werte im Kontext verglichen"
+        },
+        {
+          "id": "laplace_4",
+          "points": 3,
+          "description": "Empirisches Gesetz großer Zahlen ohne Garantieüberdehnung erläutert"
+        },
+        {
+          "id": "laplace_5",
+          "points": 2,
+          "description": "Deterministische Fehlinterpretation fachlich korrigiert"
+        }
+      ]
+    }
+  },
+  "resourceLinks": []
+}

@@ -1,0 +1,682 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-03",
+  "reviewType": "independent whole-task scope decision",
+  "status": "PASS_EXACT_48_PC_ALLOWLIST_AUTHORING_NEXT",
+  "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+  "rootWasReadOnly": true,
+  "noNativeJvmProductionRuns": true,
+  "officialExamClaim": false,
+  "sourceCoverageClaim": false,
+  "humanAcceptanceClaim": false,
+  "M7Claim": false,
+  "inputs": {
+    "canonical": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "a772d544fc3bf91047c887bb1017ff83b32b2f62bdd8ff0cc263d041917d9482"
+    },
+    "ledger": {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "sha256": "c44ea335e761fc25e41bc1f9f76d02589cfd14d0169fbf274c0b1d4cbc039709"
+    },
+    "nativeArchive": {
+      "path": "tmp/approach-review-20261101/g8-existing-three-task-native-v3-20261103/candidate-g8-all161-native.json.gz",
+      "sha256": "1646a979de41dbf663350a4c2a4e25d668086905a1120253ef477fc34ae4d2a3"
+    },
+    "nov1ContentReview": {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-seki-candidate-review.json",
+      "sha256": "94900849f483c91679a828dbfcbf03aaf4e3a723191141b34e48b684ea0070a7"
+    }
+  },
+  "currentContentBinding": {
+    "taskRawUtf8Sha256": "49792a856c09424b3c29cb5066a6dd87c456d94d228da0f9d9c2213cda7b9d5f",
+    "solutionRawUtf8Sha256": "5ab82cc4e1a54b5ad071609bfdb70795415120529af7d166a08101bd99de9d21",
+    "rubricNormalizedSha256": "4afe7798ac17e73c60e3d59a338037b17b73bb972500c678caca6cd9b3d2ca64",
+    "taskSolutionRubricEqualNov1ApprovedCandidate": true,
+    "directRequiresAndCoverage": [
+      "f52e9d72-4995-5c80-91d2-7761ea0cbec0",
+      "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+      "bce2c2cb-5594-5c19-8ae7-bd8c5e1ada82",
+      "11c88ea2-8502-5008-bec2-3e491c75ace4"
+    ],
+    "allFourContractsUnchanged": true
+  },
+  "originalLimit": {
+    "reviewPath": "curricula/DE/Gymnasium/assessments/mathematik/structural-split-route-follow-up-2026-08-27/j6/j6-cuboid-representation-switching/simulated_review_v1.md",
+    "currentWarningPath": "docs/qa-ci/applicability-accepted-warnings.json",
+    "reason": "Year-specific BW J6 release; HE G8 task outcomes split J5/J9. Not a permanent product prohibition, rights limit or official-exam identity. Nov1 content review left scope unreviewed.",
+    "historicRecordMustRemain": true
+  },
+  "positivePairs": [
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-BB/SekI/G8/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "BB",
+      "actualCompositionViewIds": [
+        "de-bb-gym-seki-math"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-BB/SekI/G9/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "BB",
+      "actualCompositionViewIds": [
+        "de-bb-gym-seki-math"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-BB/CrossStage/G8/GK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "BB",
+      "actualCompositionViewIds": [
+        "de-bb-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-BB/CrossStage/G8/LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "BB",
+      "actualCompositionViewIds": [
+        "de-bb-gym-math-lk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-BB/CrossStage/G8/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "BB",
+      "actualCompositionViewIds": [
+        "merged:de-bb-gym-math-lk+de-bb-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-BB/CrossStage/G9/GK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "BB",
+      "actualCompositionViewIds": [
+        "de-bb-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-BB/CrossStage/G9/LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "BB",
+      "actualCompositionViewIds": [
+        "de-bb-gym-math-lk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-BB/CrossStage/G9/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "BB",
+      "actualCompositionViewIds": [
+        "merged:de-bb-gym-math-lk+de-bb-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-BE/SekI/G8/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "BE",
+      "actualCompositionViewIds": [
+        "de-be-gym-seki-math"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-BE/SekI/G9/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "BE",
+      "actualCompositionViewIds": [
+        "de-be-gym-seki-math"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-BE/CrossStage/G8/GK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "BE",
+      "actualCompositionViewIds": [
+        "de-be-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-BE/CrossStage/G8/LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "BE",
+      "actualCompositionViewIds": [
+        "de-be-gym-math-lk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-BE/CrossStage/G8/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "BE",
+      "actualCompositionViewIds": [
+        "merged:de-be-gym-math-lk+de-be-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-BE/CrossStage/G9/GK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "BE",
+      "actualCompositionViewIds": [
+        "de-be-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-BE/CrossStage/G9/LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "BE",
+      "actualCompositionViewIds": [
+        "de-be-gym-math-lk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-BE/CrossStage/G9/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "BE",
+      "actualCompositionViewIds": [
+        "merged:de-be-gym-math-lk+de-be-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-HB/SekI/G8/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "HB",
+      "actualCompositionViewIds": [
+        "de-hb-gym-seki-math"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-HB/CrossStage/G8/GK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "HB",
+      "actualCompositionViewIds": [
+        "de-hb-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-HB/CrossStage/G8/LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "HB",
+      "actualCompositionViewIds": [
+        "de-hb-gym-math-lk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-HB/CrossStage/G8/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "HB",
+      "actualCompositionViewIds": [
+        "merged:de-hb-gym-math-lk+de-hb-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-HE/SekI/G8/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 9,
+      "placementConstraint": "Move this existing task into the existing J9 program branch; preserve ordinary J5/J9 outcomes and G9 exclusion.",
+      "sourceBasis": "HE",
+      "actualCompositionViewIds": [
+        "de-he-gym-seki-math-g8"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-HE/CrossStage/G8/GK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 9,
+      "placementConstraint": "Move this existing task into the existing J9 program branch; preserve ordinary J5/J9 outcomes and G9 exclusion.",
+      "sourceBasis": "HE",
+      "actualCompositionViewIds": [
+        "de-he-gym-math-gk-g8"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-HE/CrossStage/G8/LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 9,
+      "placementConstraint": "Move this existing task into the existing J9 program branch; preserve ordinary J5/J9 outcomes and G9 exclusion.",
+      "sourceBasis": "HE",
+      "actualCompositionViewIds": [
+        "de-he-gym-math-lk-g8"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-HE/CrossStage/G8/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 9,
+      "placementConstraint": "Move this existing task into the existing J9 program branch; preserve ordinary J5/J9 outcomes and G9 exclusion.",
+      "sourceBasis": "HE",
+      "actualCompositionViewIds": [
+        "merged:de-he-gym-math-lk-g8+de-he-gym-math-gk-g8"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-HH/SekI/G8/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "HH",
+      "actualCompositionViewIds": [
+        "de-hh-gym-seki-math"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-HH/CrossStage/G8/GK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "HH",
+      "actualCompositionViewIds": [
+        "de-hh-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-HH/CrossStage/G8/LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "HH",
+      "actualCompositionViewIds": [
+        "de-hh-gym-math-lk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-HH/CrossStage/G8/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "HH",
+      "actualCompositionViewIds": [
+        "merged:de-hh-gym-math-lk+de-hh-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-NI/SekI/G9/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "NI",
+      "actualCompositionViewIds": [
+        "de-ni-gym-seki-math"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-NI/CrossStage/G9/GK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "NI",
+      "actualCompositionViewIds": [
+        "de-ni-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-NI/CrossStage/G9/LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "NI",
+      "actualCompositionViewIds": [
+        "de-ni-gym-math-lk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-NI/CrossStage/G9/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "NI",
+      "actualCompositionViewIds": [
+        "merged:de-ni-gym-math-lk+de-ni-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-NW/SekI/G9/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "NW",
+      "actualCompositionViewIds": [
+        "de-nw-gym-seki-math"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-NW/CrossStage/G9/GK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "NW",
+      "actualCompositionViewIds": [
+        "de-nw-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-NW/CrossStage/G9/LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "NW",
+      "actualCompositionViewIds": [
+        "de-nw-gym-math-lk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-NW/CrossStage/G9/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "NW",
+      "actualCompositionViewIds": [
+        "merged:de-nw-gym-math-lk+de-nw-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-SL/SekI/G9/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "SL",
+      "actualCompositionViewIds": [
+        "de-sl-gym-seki-math"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-SL/CrossStage/G9/GK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "SL",
+      "actualCompositionViewIds": [
+        "de-sl-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-SL/CrossStage/G9/LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "SL",
+      "actualCompositionViewIds": [
+        "de-sl-gym-math-lk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-SL/CrossStage/G9/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "SL",
+      "actualCompositionViewIds": [
+        "merged:de-sl-gym-math-lk+de-sl-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-SN/SekI/G8/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "SN",
+      "actualCompositionViewIds": [
+        "de-sn-gym-seki-math"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-SN/CrossStage/G8/GK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "SN",
+      "actualCompositionViewIds": [
+        "de-sn-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-SN/CrossStage/G8/LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "SN",
+      "actualCompositionViewIds": [
+        "de-sn-gym-math-lk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-SN/CrossStage/G8/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 6,
+      "placementConstraint": "Retain the existing J6 program branch and year-level examination folder.",
+      "sourceBasis": "SN",
+      "actualCompositionViewIds": [
+        "merged:de-sn-gym-math-lk+de-sn-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-ST/SekI/G8/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 8,
+      "placementConstraint": "Place this existing task under the existing J8 branch; exclude its inherited J6 occurrence.",
+      "sourceBasis": "ST",
+      "actualCompositionViewIds": [
+        "de-st-gym-seki-math"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-ST/CrossStage/G8/GK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 8,
+      "placementConstraint": "Place this existing task under the existing J8 branch; exclude its inherited J6 occurrence.",
+      "sourceBasis": "ST",
+      "actualCompositionViewIds": [
+        "de-st-gym-math-gk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-ST/CrossStage/G8/LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 8,
+      "placementConstraint": "Place this existing task under the existing J8 branch; exclude its inherited J6 occurrence.",
+      "sourceBasis": "ST",
+      "actualCompositionViewIds": [
+        "de-st-gym-math-lk"
+      ]
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-ST/CrossStage/G8/GK+LK",
+      "decision": "PASS_OWN_TASK_SCOPE_WITH_EXACT_PLACEMENT",
+      "placementYear": 8,
+      "placementConstraint": "Place this existing task under the existing J8 branch; exclude its inherited J6 occurrence.",
+      "sourceBasis": "ST",
+      "actualCompositionViewIds": [
+        "merged:de-st-gym-math-lk+de-st-gym-math-gk"
+      ]
+    }
+  ],
+  "negativePairs": [
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-HE/SekI/G9/GK+LK",
+      "decision": "NO_EXPANSION_UNDER_CURRENT_TARGET_CONTRACT",
+      "reason": "The whole orthographic outcome bce2c2cb is not a selected target. This review does not add competencies or infer a new HE G9 target from the G8 decision. Keep current exclusion; no claim of permanent inadmissibility."
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-HE/CrossStage/G9/GK",
+      "decision": "NO_EXPANSION_UNDER_CURRENT_TARGET_CONTRACT",
+      "reason": "The whole orthographic outcome bce2c2cb is not a selected target. This review does not add competencies or infer a new HE G9 target from the G8 decision. Keep current exclusion; no claim of permanent inadmissibility."
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-HE/CrossStage/G9/LK",
+      "decision": "NO_EXPANSION_UNDER_CURRENT_TARGET_CONTRACT",
+      "reason": "The whole orthographic outcome bce2c2cb is not a selected target. This review does not add competencies or infer a new HE G9 target from the G8 decision. Keep current exclusion; no claim of permanent inadmissibility."
+    },
+    {
+      "taskGoalId": "c34c6132-f85d-59be-8b95-032ddfc0d0de",
+      "personalCurriculum": "DE-HE/CrossStage/G9/GK+LK",
+      "decision": "NO_EXPANSION_UNDER_CURRENT_TARGET_CONTRACT",
+      "reason": "The whole orthographic outcome bce2c2cb is not a selected target. This review does not add competencies or infer a new HE G9 target from the G8 decision. Keep current exclusion; no claim of permanent inadmissibility."
+    }
+  ],
+  "negativePlacements": [
+    {
+      "personalCurriculum": "DE-HE/SekI/G8/GK+LK",
+      "placementYear": 6,
+      "reason": "HE G8 orthographic corridor is J9."
+    },
+    {
+      "personalCurriculum": "DE-HE/CrossStage/G8/GK",
+      "placementYear": 6,
+      "reason": "HE G8 orthographic corridor is J9."
+    },
+    {
+      "personalCurriculum": "DE-HE/CrossStage/G8/LK",
+      "placementYear": 6,
+      "reason": "HE G8 orthographic corridor is J9."
+    },
+    {
+      "personalCurriculum": "DE-HE/CrossStage/G8/GK+LK",
+      "placementYear": 6,
+      "reason": "HE G8 orthographic corridor is J9."
+    },
+    {
+      "personalCurriculum": "DE-ST/SekI/G8/GK+LK",
+      "placementYear": 6,
+      "reason": "ST orthographic drawing and corner-labelling corridor is J7/8."
+    },
+    {
+      "personalCurriculum": "DE-ST/CrossStage/G8/GK",
+      "placementYear": 6,
+      "reason": "ST orthographic drawing and corner-labelling corridor is J7/8."
+    },
+    {
+      "personalCurriculum": "DE-ST/CrossStage/G8/LK",
+      "placementYear": 6,
+      "reason": "ST orthographic drawing and corner-labelling corridor is J7/8."
+    },
+    {
+      "personalCurriculum": "DE-ST/CrossStage/G8/GK+LK",
+      "placementYear": 6,
+      "reason": "ST orthographic drawing and corner-labelling corridor is J7/8."
+    }
+  ],
+  "holdPairs": [],
+  "retainedExistingTaskTargetScopes": [
+    "DE-BW/SekI/G8/GK+LK",
+    "DE-BW/SekI/G9/GK+LK",
+    "DE-BW/CrossStage/G8/GK",
+    "DE-BW/CrossStage/G8/LK",
+    "DE-BW/CrossStage/G8/GK+LK",
+    "DE-BW/CrossStage/G9/GK",
+    "DE-BW/CrossStage/G9/LK",
+    "DE-BW/CrossStage/G9/GK+LK",
+    "ALL/SekI//",
+    "ALL/CrossStage//GK",
+    "ALL/CrossStage//LK",
+    "ALL/CrossStage//GK+LK"
+  ],
+  "otherScopes": "All other 97 current PCs are outside this approval. No automatic country/stage/profile widening; missing source rows are not a permanent exclusion decision.",
+  "counts": {
+    "actualScopesRead": 161,
+    "approvedNewPairs": 48,
+    "explicitCurrentHEG9NonExpansionPairs": 4,
+    "existingTaskTargetScopesRetained": 12,
+    "otherScopesNotApprovedHere": 97,
+    "newPreparationGoals": 0,
+    "newOrdinaryOutcomeGoals": 0,
+    "newAssessmentIDs": 0
+  },
+  "masteryBoundary": "Single existing binary assessment result; full current task/rubric including 10/5 scoring unchanged. No second pass, waiver, evidence-acceptance result or mastery propagation to four outcomes. Existing valid mastery remains valid.",
+  "finiteNextAuthoringAction": [
+    "Preserve the existing task identity, all four direct requires and coveredGoalIds, 45 degree/half-depth task/solution/rubric, and original review history.",
+    "Author an exact 48-PC placement allowance with current-source rationale: J6 in BB/BE/HB/HH/NI/NW/SL/SN; HE G8 J9; ST G8 J8. Add no ordinary targets.",
+    "Replace the current BW-only applicability decision only in tandem with those exact view/producer bounds. Update the current APV-201 rationale as superseded by this concrete decision, retaining the August history. Do not merely broaden the country cache.",
+    "Ensure the single whole task occurs once in each approved target tree, in its existing year-level exam folder or an explicit year-local folder. Preserve HE G9, all standalone SekII profiles, other countries, BW and ALL existing target sets except the explicitly approved new task.",
+    "Run the established targeted static/producer/native and strict QA checks on the authored candidate, including the 46 actual course unions, readiness, direct demand cuts and absence of hidden protected additions. This review does not preclaim those future results."
+  ]
+}

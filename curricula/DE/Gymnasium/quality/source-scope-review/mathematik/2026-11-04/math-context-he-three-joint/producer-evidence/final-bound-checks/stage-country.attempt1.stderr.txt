@@ -1,0 +1,35 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The input did not match the regular expression /GK\/LK stage targets differ/. Input:
+
+"Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/math-context-he-three-joint-integration-20261104-v1/check-host/tmp/math-stage-regression-HsabJp/app/scripts/config/math-country-seki-stage-policy.json'"
+
+    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/math-context-he-three-joint-integration-20261104-v1/check-host/app/scripts/testMathCountrySekICompositionViews.ts:187:10)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/math-context-he-three-joint-integration-20261104-v1/check-host/tmp/math-stage-regression-HsabJp/app/scripts/config/math-country-seki-stage-policy.json'
+      at Object.openSync (node:fs:573:18)
+      at readFileSync (node:fs:452:35)
+      at applyContextualTerminalPlacements (/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/math-context-he-three-joint-integration-20261104-v1/check-host/app/scripts/mathContextualTerminalPlacements.ts:20:51)
+      at <anonymous> (/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/math-context-he-three-joint-integration-20261104-v1/check-host/app/scripts/generateMathCountrySekICompositionViews.ts:351:18)
+      at Array.map (<anonymous>)
+      at deriveMathCountrySekIViews (/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/math-context-he-three-joint-integration-20261104-v1/check-host/app/scripts/generateMathCountrySekICompositionViews.ts:256:27)
+      at <anonymous> (/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/math-context-he-three-joint-integration-20261104-v1/check-host/app/scripts/testMathCountrySekICompositionViews.ts:187:23)
+      at getActual (node:assert:498:5)
+      at Function.throws (node:assert:644:24)
+      at <anonymous> (/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/math-context-he-three-joint-integration-20261104-v1/check-host/app/scripts/testMathCountrySekICompositionViews.ts:187:10) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/math-context-he-three-joint-integration-20261104-v1/check-host/tmp/math-stage-regression-HsabJp/app/scripts/config/math-country-seki-stage-policy.json'
+  },
+  expected: /GK\/LK stage targets differ/,
+  operator: 'throws'
+}
+
+Node.js v20.20.2

@@ -1,0 +1,101 @@
+{
+  "id": "dcdf1e2d-fb3a-5132-807e-00a0d6f46e33",
+  "shortKey": "canonical_math_local_assessment_monotonicity_theorem_nonconverse",
+  "title": "Monotoniesatz und behauptete Umkehrung prüfen",
+  "description": "Die lernende Person kann in einer selbstständigen Prüfungsaufgabe hinreichende Bedingungen des Monotoniesatzes formulieren und seine behauptete Umkehrung mit passenden Kubikfunktionen widerlegen.",
+  "core": true,
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "ExamTask",
+    "canonical"
+  ],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/monotonicity-route-factors-v1/monotonicity-theorem-draft_v1.md",
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K1",
+      "K3"
+    ],
+    "guidingIdeas": [
+      "L4"
+    ],
+    "phase": "J10",
+    "area": "Analysis",
+    "topicCode": "CANONICAL.MATH.LOCAL.ASSESSMENT.MONOTONICITY_THEOREM"
+  },
+  "contains": [],
+  "requires": [
+    "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+  ],
+  "phase": "J10",
+  "type": "atomic",
+  "nodeKind": "exam",
+  "extendedData": {
+    "applicabilityMappingInheritance": "boundary",
+    "applicabilityFromRequires": true
+  },
+  "examData": {
+    "reviewStatus": "draft",
+    "reviewNote": "Author candidate 2026-11-01. Based on the x³ non-converse example in original J10 task3 part4. The explicit positive/negative monotonicity theorem and decreasing cubic counterexample are new elaborations; the rail polynomial, model interval and extrema problem are not reused. Independent review pending. No placement, human review or host acceptance claimed.",
+    "coveredGoalIds": [
+      "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+    ],
+    "coveredStrands": [
+      "L4"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/monotonicity-route-factors-v1/monotonicity-theorem-draft_v1.md",
+    "taskContent": "1. Eine Funktion ist auf einem Intervall $I$ differenzierbar. Erläutere, was für ihre Monotonie folgt, wenn die erste Ableitung an jeder Stelle von $I$ strikt positiv ist, und was bei einer an jeder Stelle strikt negativen ersten Ableitung folgt. (1 BE)\n2. Prüfe die behauptete Umkehrung: „Eine streng monotone differenzierbare Funktion muss an jeder Stelle ihres Intervalls eine strikt positive beziehungsweise strikt negative Ableitung haben.“ Nutze $g(x)=x^3$ und $h(x)=-x^3$ auf $\\mathbb{R}$. Begründe ihre jeweilige strenge Monotonie, bestimme die Ableitungen und untersuche die Stelle $x=0$. Erkläre, weshalb dieses Ergebnis die behauptete Umkehrung widerlegt und dem Monotoniesatz nicht widerspricht. (2 BE)",
+    "solutionContent": "Ist die Ableitung an jeder Stelle des Intervalls strikt positiv, ist die Funktion dort streng steigend; ist sie an jeder Stelle strikt negativ, ist sie dort streng fallend. Die Differenzierbarkeit und die Aussage über das ganze Intervall sind Voraussetzungen dieser hinreichenden Folgerungen.\n\n$g(x)=x^3$ ist auf $\\mathbb{R}$ streng steigend, $h(x)=-x^3$ streng fallend. Zum Beispiel gilt für $a<b$: $b^3-a^3=(b-a)(a^2+ab+b^2)>0$; der zweite Faktor erfüllt $a^2+ab+b^2=(a+b/2)^2+3b^2/4>0$, weil bei $a<b$ nicht beide Zahlen null sein können. Für $h$ kehrt sich das Vorzeichen der Differenz um. Die Ableitungen sind $g'(x)=3x^2$ und $h'(x)=-3x^2$. Beide sind bei $x=0$ gleich $0$, also dort weder strikt positiv noch strikt negativ. Strenge Monotonie erzwingt deshalb nicht an jeder Stelle eine strikt von null verschiedene Ableitung. Der Monotoniesatz formuliert hinreichende Bedingungen; aus ihrer Nichterfüllung an einer Stelle folgt nicht, dass die Funktion ihre strenge Monotonie verliert.",
+    "scoring": {
+      "maxPoints": 3,
+      "passingPoints": 3,
+      "steps": [
+        {
+          "id": "theorem-sufficient-conditions",
+          "points": 1,
+          "description": "1 Punkt nur für beide korrekten hinreichenden Folgerungen: strikt positive Ableitung überall im Intervall ⇒ streng steigend; strikt negative überall ⇒ streng fallend, unter der genannten Differenzierbarkeit."
+        },
+        {
+          "id": "theorem-counterexamples",
+          "points": 1,
+          "description": "1 Punkt nur für begründete strenge Monotonie beider Kubikfunktionen sowie korrekte Ableitungen und deren Wert 0 bei x=0. Gleichwertige fachliche Begründungen sind zulässig; bloße Graphbehauptung ohne nachvollziehbaren Bezug reicht nicht."
+        },
+        {
+          "id": "theorem-nonconverse",
+          "points": 1,
+          "description": "1 Punkt nur für die logische Erklärung, warum die beiden Nullwerte der Ableitung die behauptete notwendige Vorzeichenbedingung widerlegen, aber die hinreichenden Bedingungen des Monotoniesatzes nicht verletzen."
+        }
+      ]
+    }
+  }
+}

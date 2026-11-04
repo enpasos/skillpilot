@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 4,
+  "verdict": "PASS",
+  "contentVerdict": "PASS",
+  "placementVerdict": "PASS_CURRENT_EXACT_RP_CONTEXT_AND_ANCHORS",
+  "authorIndependent": true,
+  "rpContextVerdict": "PASS",
+  "rpContextContract": {
+    "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-after-prerequisite-correction/rp-atomic-context-contract.v4.json",
+    "sha256": "94d77e28fa6259ace601cf417bc65b4992c2ef025ed5c5ec9be3e0949c7fa91a"
+  },
+  "approvedViewIds": [
+    "de-rp-gym-math-gk-g8",
+    "de-rp-gym-math-lk-g8",
+    "de-rp-gym-seki-math-g8"
+  ],
+  "approvedTaskGoalIds": [
+    "64f37348-20f7-55b1-82a8-8fc388087577",
+    "926d0551-4537-569e-b6ad-fc33bb17546e"
+  ],
+  "approvedReferenceCount": 6,
+  "inputBindings": [
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-after-prerequisite-correction/candidate-operations.v4.json",
+      "sha256": "b632767a2b9e056b3249ed75252a7120111cd2b0f8c58924d04cc0be6e89fec4"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-after-prerequisite-correction/rp-atomic-context-contract.v4.json",
+      "sha256": "94d77e28fa6259ace601cf417bc65b4992c2ef025ed5c5ec9be3e0949c7fa91a"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-after-prerequisite-correction/native-rp-direct-atomic-context.v4.json",
+      "sha256": "ea383326816624e45e4bb5bc07dbdd1f20c0a0cac18aa8092dea0157baa4c76d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_MATHEMATIK_SEKI_RAHMENLEHRPLAN_2007.source-extraction.json",
+      "sha256": "9b419872be53efe0da1f2feae08a0594ac66d10cfd56c36aad78daa3535055fd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_I.pdf",
+      "sha256": "005085fa940a3dfd7619ea274f5e16ee34c50ba452223774aca19fb4025abe61"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-after-prerequisite-correction/actual-native-origin-and-r-delta.json",
+      "sha256": "0d177270d011336397365303c2f9631b0cff6df766999a3236bd9d2833a1cb0d"
+    }
+  ],
+  "reviewedAt": "2026-11-03T19:11:19Z",
+  "reviewer": "astra-independent-rp-v4-source-and-context-review",
+  "reviewKind": "independent-static-code-and-materialization-review",
+  "scope": "Exact RP V4 successor after the already approved removal of two false prerequisite edges; unchanged two tasks, three views, six references. This is not a new whole-content review.",
+  "contentBasis": "The existing whole-task content decisions remain valid because both entire task objects are unchanged; PASS reuses those decisions and grants no new coverage claim.",
+  "currentCanonicalProvenance": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "393fa2d9e41f19cd329fbb0b4f716986607614e4c710d043a80a32856d5e82dd"
+  },
+  "approvedPayloadFiles": [
+    {
+      "path": "app/scripts/config/math-reviewed-assessment-placements.json",
+      "sha256": "a4d7bbfc379dfee00d41c4f0c5c15da913308bf111a99ce913e3cd7d176100fc",
+      "bytes": 311
+    },
+    {
+      "path": "app/scripts/mathReviewedAssessmentPlacements.ts",
+      "sha256": "f209b333a15c35baf27f6cf12fc2a0ec6346db51b51d44c1e4d4762e7c9d1618",
+      "bytes": 19216
+    },
+    {
+      "path": "app/scripts/testMathReviewedAssessmentPlacements.ts",
+      "sha256": "9b2d96fcca00afb1a5348ad5dd2e4143102a8c1bf2c8b5364458bb764c091548",
+      "bytes": 37341
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/rp-g8-sphere-routes-v1/composition-selection.rp-context-contract-v4.json",
+      "sha256": "1a182ea310ddb135cbc97f4eebc6afd06924620eb6d50bc3858afa44f511df2f",
+      "bytes": 12026
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-after-prerequisite-correction/actual-native-origin-and-r-delta.json",
+      "sha256": "0d177270d011336397365303c2f9631b0cff6df766999a3236bd9d2833a1cb0d",
+      "bytes": 36809
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-after-prerequisite-correction/candidate-operations.v4.json",
+      "sha256": "b632767a2b9e056b3249ed75252a7120111cd2b0f8c58924d04cc0be6e89fec4",
+      "bytes": 45631
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-after-prerequisite-correction/input-views/de-rp-gk-g8.view.json",
+      "sha256": "f11a0ccdd0ce2e33eb45a3a56ae17b95db4edd9df5dfc2bdd1700ab665cbe265",
+      "bytes": 71818
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-after-prerequisite-correction/input-views/de-rp-lk-g8.view.json",
+      "sha256": "79d78e0da3cc7c4a5642fba6bc6db98a50327fde9b64e23de9084adeb497c400",
+      "bytes": 72952
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-after-prerequisite-correction/input-views/de-rp-seki-g8.view.json",
+      "sha256": "16f905803b40cac713d04b968e9c9bbf435ee1ac38e811fc0dc6386fdd036c14",
+      "bytes": 40148
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-after-prerequisite-correction/native-rp-direct-atomic-context.v4.json",
+      "sha256": "ea383326816624e45e4bb5bc07dbdd1f20c0a0cac18aa8092dea0157baa4c76d",
+      "bytes": 21088
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-after-prerequisite-correction/rp-atomic-context-contract.v4.json",
+      "sha256": "94d77e28fa6259ace601cf417bc65b4992c2ef025ed5c5ec9be3e0949c7fa91a",
+      "bytes": 26630
+    }
+  ],
+  "historicalBindingsPreserved": [
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/rp-g8-sphere-routes-v1/composition-selection.rp-context-contract-v3.json",
+      "sha256": "9b6e9849d0bc46da2fcded49987a72df7f365521ea36ec3d174ab4facfb0f653"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/rp-context-contract-v3-adoption-20261102/candidate-operations.v3.json",
+      "sha256": "3e1a547d9b8aa42b0a5d9d7f94878ad28c4e5094ac2931a7ba0887b642d9877e"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/rp-context-contract-v3-adoption-20261102/rp-atomic-context-contract.v3.json",
+      "sha256": "fcb0b217190b92a46220bd1ad1c6be7250a5f9605bb30c5de40ecd96f4100569"
+    }
+  ],
+  "checks": {
+    "payloadSha256AndBytes": "All eleven frozen private payloads independently verified.",
+    "currentWholeObjects": 44,
+    "supportUnionCount": 42,
+    "perTaskSupportCounts": [
+      41,
+      41
+    ],
+    "nativeDirectRelations": "All 44 effective direct prerequisite relations were independently compared with each of the four actual RP G8 SekI/CrossStage rows in the bound existing Native archive; exact equality. No new Native run.",
+    "historicalVersions": "V1/V2/V3 guards remain; V3 requires its original exact 45/43/42 shape, V4 its own exact 44/42/41 shape. Historical V2/V3 tests explicitly restore only their two old R edges in a private clone.",
+    "loader": "Exact version agreement, independent receipt, complete task/support object hashes, source bindings, full direct R relation, roles, year anchors, readiness and applicability guards remain effective.",
+    "placements": "All three bound raw year inputs, expected original references, before hashes and after hashes independently reproduced. Replacement nodes are exactly the prior V3 two-task wrappers. Ordinary placements are preserved.",
+    "laterStageOperation": "The reconstructed three after-views equal the current shared candidate views after removing only their later af7905d0 stage-helper append. That separate existing operation must still run after RP; this receipt neither deletes nor replaces it.",
+    "preparedTests": "Nine added V4 cases cover current three-view application/idempotence/immutability/roles, stale historical shape, missing native relation, changed whole task, additional inherited R, role drift and stale source. Reviewed statically only."
+  },
+  "provenanceClarification": {
+    "field": "candidate-operations.v4.json#/anchorRebase/canonical",
+    "retainedHistoricalSha256": "3a3792d14057854c79a3d8c4d38cd98dd6e28e936865ebd3447107404b58474c",
+    "meaning": "Retained historical anchor provenance, not the current canonical snapshot. The loader does not consume this nested historical field; current operative canonicalProvenance, contract, native evidence and this receipt bind 393fa2d9e41f19cd329fbb0b4f716986607614e4c710d043a80a32856d5e82dd."
+  },
+  "executionClaims": {
+    "newTestsRunByReviewer": false,
+    "newJvmRun": false,
+    "newNativeRun": false,
+    "rootMutation": false,
+    "stageActivationPass": false,
+    "m7Pass": false,
+    "ciPass": false
+  },
+  "nextStep": "Mechanically bind this receipt SHA in selection V4, rehash selection and its registry/policy bindings, then run the existing targeted TS placement suite. Preserve the eleven reviewed frozen source files and old historical evidence; do not infer runtime or M7 acceptance."
+}

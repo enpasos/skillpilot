@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 2,
+  "reviewType": "INDEPENDENT_RP_V2_TRANSITION_MODEL_CANONICAL_BINDING_CARRYFORWARD",
+  "verdict": "PASS",
+  "contentVerdict": "PASS",
+  "placementVerdict": "PASS_EXACT_UNCHANGED_RP_TASK_OPERATIONS_AND_SUPPORT_CANONICAL_BINDING_CARRYFORWARD",
+  "verdictScope": "Only the canonical-file and native-evidence rebinding of the already approved RP selection. No V5 integration or new task/source/placement approval by this RP receipt.",
+  "reviewerAgent": "/root/astra_fundamental_approach_recheck",
+  "authorAgent": "/root/sol_he_union_diagnosis",
+  "authorIndependent": true,
+  "humanApproval": false,
+  "reviewDate": "2026-11-01",
+  "approvedViewIds": [
+    "de-rp-gym-math-gk-g8",
+    "de-rp-gym-math-lk-g8",
+    "de-rp-gym-seki-math-g8"
+  ],
+  "approvedTaskGoalIds": [
+    "64f37348-20f7-55b1-82a8-8fc388087577",
+    "926d0551-4537-569e-b6ad-fc33bb17546e"
+  ],
+  "approvedReferenceCount": 6,
+  "inputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "e7f2fbbf64692bd1928ad1751a918f3f7fbdb9980f2ae2aa6b0406ac178d157e"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/transition-model-canonical-carryforward/candidate-operations.json",
+      "sha256": "a835eae39f91b9a00dfdcdfad4011a36e2cec1e98952f472995e82926ca924a4"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/transition-model-canonical-carryforward/native-task-support-context.json",
+      "sha256": "0874c2f6e2d9cdc6b4d9d6ad19b8ae461188e69118bc1dc73ad68c3db72def77"
+    },
+    {
+      "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/route-actions-canonical-carryforward/independent-canonical-carryforward-review.json",
+      "sha256": "d28b81306a28ded52aaf9f7c3988fe397e0c4ce94cd4038712df4a304b6edf26"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/polynomial-transition-model-v1/integration-validation/combined-native-validation.json",
+      "sha256": "1a06d4026973116644b970905df99abf072851efe95faa7e03b6ff14e4bdea6c",
+      "taskObjectsAndAllSupportIdsUnchanged": true
+    }
+  ],
+  "historicalReviewReceipt": {
+    "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-01/rp-g8-sphere-endpoint-restoration/stable-target-anchor-rebase/route-actions-canonical-carryforward/independent-canonical-carryforward-review.json",
+    "sha256": "d28b81306a28ded52aaf9f7c3988fe397e0c4ce94cd4038712df4a304b6edf26"
+  },
+  "reviewedPendingSelection": {
+    "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/rp-g8-sphere-routes-v1/composition-selection.transition-model-carryforward.json",
+    "sha256": "29d7c0667febc4fe230605c738cb2734d06c02e9c9d46ed8e142e6fc8d2320bc"
+  },
+  "independentChecks": {
+    "twoWholeTaskObjectsUnchanged": true,
+    "threeCompleteOperationsAndScopeYearSlotWrapperBeforeAfterAnchorsUnchanged": true,
+    "allDirectRequiresCoverageAndTargetReferencesUnchanged": true,
+    "supportRecomputedFromRequiresContainsAndAllCanonicalAncestors": true,
+    "eachTaskAtomicSupportCount": 42,
+    "supportUnionCount": 43,
+    "allSupportWholeGoalsEqualCurrentRoot": true,
+    "newModelTaskAbsentFromRPSupport": true,
+    "newNativeAuthorResultMatchesIndependentSupportSets": true,
+    "historicalRPFilesByteEqual": 15,
+    "supportOnly1a25NotPromoted": true,
+    "staleFreshNativeHashFindingClosed": "The permanent native JSON is now byte-bound at 1a06d4026973116644b970905df99abf072851efe95faa7e03b6ff14e4bdea6c, and native/plan/selection pins were rechecked exactly. No mathematical or placement change."
+  },
+  "allowedFinalBindingOnly": [
+    "selection.status -> independent-ai-reviewed",
+    "selection.reviewReceipt.sha256 -> this receipt hash",
+    "existing registry selection path/hash -> this reviewed selection",
+    "stage policy existing RP-registry source binding -> final registry hash"
+  ],
+  "boundaries": [
+    "Existing strict V2 loader unchanged; no unknown/stale/unreachable support relaxation.",
+    "Previous independent receipts and historical author evidence remain immutable.",
+    "Actual producer outputs and frozen V5 manifest still require separate bounded integration approval.",
+    "No source/target enrollment or official exam/capacity assertion, no mastery or result-model change, no actual154/M7/CI/publication acceptance."
+  ]
+}

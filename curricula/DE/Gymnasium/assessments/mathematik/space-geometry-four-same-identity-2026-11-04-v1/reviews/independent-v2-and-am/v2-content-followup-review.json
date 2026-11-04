@@ -1,0 +1,288 @@
+{
+  "reviewId": "space-geometry-four-independent-plane-cap-v2-followup-20261104",
+  "reviewedAt": "2026-11-04",
+  "reviewerAgent": "/root/astra_space_geometry_four_forms",
+  "status": "PASS_ALL_FOUR_EFFECTIVE_CONTENT_FORMS",
+  "originalWholeContentReview": {
+    "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/astra-space-geometry-four-content-review-20261103-v1/review.json",
+    "sha256": "cce2626f0208d3a7a1e00a5c1147916f361ef16b35ff3fa18bfde81ebbbbe7a0"
+  },
+  "deltaManifest": {
+    "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v2-plane-cap-only/bounded-delta-manifest.json",
+    "sha256": "d835d64bc824157b2e45495ca724899bd229eec36805e0b6d2ddc1d4495a1430"
+  },
+  "findingDecision": {
+    "findingId": "F-PLANE-01",
+    "status": "RESOLVED",
+    "reason": "Die Kappung erfasst das vollständige Fehlen von a=1/F unabhängig von der Ursache. DE und EN entsprechen einander; knappe richtige Behandlung irgendwo sowie lokale Fehler und Folgearbeit bleiben geschützt."
+  },
+  "deltaIntegrity": {
+    "original52FrozenFilesUnchanged": true,
+    "replacementFileCount": 5,
+    "onlyOperativeContentDelta": "One exceptional-case cap paragraph in each language.",
+    "mirrors": "Two solutionContent fields and matching contract cap key.",
+    "taskMathematicsPointValuesAndThresholdUnchanged": true,
+    "unchangedThreePassFormsReused": true,
+    "unchangedAlgebraOrRenderingNotRerun": true
+  },
+  "replacementBindings": [
+    {
+      "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v2-plane-cap-only/replacements/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/rubric.de.md",
+      "sha256": "048a68cf70fee52abbb16017d47e4c01c159a0d81c486519f2ee15cc55ecb7e4",
+      "bytes": 3370
+    },
+    {
+      "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v2-plane-cap-only/replacements/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/rubric.en.md",
+      "sha256": "fbe058d36f3ac224b75ade8c5178aad84e9a55ee3b727a467174caa5e47ca6ea",
+      "bytes": 3159
+    },
+    {
+      "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v2-plane-cap-only/replacements/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/proposed-whole-goal.draft.json",
+      "sha256": "a30fc1bc912cb327d6734880c0335c1cc9a9b912b8b85c1d78cadff05e81d5db",
+      "bytes": 22171
+    },
+    {
+      "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v2-plane-cap-only/replacements/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/whole-contract.before-after.json",
+      "sha256": "f3eae3934ae139b49531357a62229fff040b0c16a5d4de11d114054c9a4a251f",
+      "bytes": 26264
+    },
+    {
+      "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v2-plane-cap-only/replacements/whole-current-and-proposed-contracts.json",
+      "sha256": "614a09c9c75d2e5ee42e2893f162c892707be8a39025e91ccf6fc6c532f8dbb4",
+      "bytes": 123961
+    }
+  ],
+  "independentCountercaseJudgments": [
+    {
+      "case": "bound_15_point_omission",
+      "independentJudgment": "PASS_CAP_CHECK",
+      "rawPoints": 15,
+      "capApplies": true,
+      "total": 14,
+      "binaryPass": false,
+      "reason": "Der vollständig fehlende a=1/F-Fall ist jetzt ohne Ursachenvoraussetzung erfasst."
+    },
+    {
+      "case": "omission_without_any_division",
+      "independentJudgment": "PASS_CAP_CHECK",
+      "rawPoints": 15,
+      "capApplies": true,
+      "total": 14,
+      "binaryPass": false,
+      "reason": "Die Ursache und das gewählte Verfahren ändern den Auslassungsbefund nicht."
+    },
+    {
+      "case": "invalid_division_loses_case",
+      "independentJudgment": "PASS_CAP_CHECK",
+      "capApplies": true,
+      "maximumFinalPoints": 14,
+      "binaryPass": false,
+      "reason": "Der bisherige ungültige Divisionsfall bleibt erfasst; eine korrekte Behandlung an anderer Stelle würde zählen."
+    },
+    {
+      "case": "concise_identity_elsewhere_added_to_counterexample",
+      "independentJudgment": "PASS_FAIRNESS_CHECK",
+      "rawPoints": 18,
+      "capApplies": false,
+      "total": 18,
+      "binaryPass": true,
+      "reason": "Das begründete E1=F bringt die fehlende Beispiel-/Sonderfallleistung; keine Wortformel ganze Ebene und kein bestimmter Ort verlangt."
+    },
+    {
+      "case": "local_copying_error_with_sound_exception_method",
+      "independentJudgment": "PASS_FAIRNESS_CHECK",
+      "capApplies": false,
+      "exactRawPointsAsserted": false,
+      "reason": "Ein nachweisbar lokaler Fehler allein löst keine Kappung aus. Den Ursprungsfehler nur einmal abziehen und richtige nachvollziehbare Folgearbeit erhalten; konkrete Punktabzüge setzen die konkrete Abgabe voraus."
+    },
+    {
+      "case": "local_regular_line_coordinate_error",
+      "independentJudgment": "PASS_FAIRNESS_CHECK",
+      "capApplies": false,
+      "reason": "Korrekte Sonderfallbehandlung bleibt erhalten; vorhandene Folgefehlerregel schützt die nachfolgende Arbeit."
+    },
+    {
+      "case": "general_proof_elsewhere_includes_E1_intersect_F_equals_F",
+      "independentJudgment": "PASS_EQUIVALENCE_CHECK",
+      "capApplies": false,
+      "reason": "Allgemeiner Beweis ist eine korrekte Behandlung, kein zusätzlicher separater Teilpass erforderlich."
+    },
+    {
+      "case": "unchanged_threshold_when_core_actions_present",
+      "independentJudgment": "PASS_THRESHOLD_CHECK",
+      "capApplies": false,
+      "outcomes": {
+        "14": "not_passed",
+        "15": "passed",
+        "20": "passed"
+      },
+      "reason": "Punktbudget, einzige Bestehensschwelle und binäres Gesamtergebnis sind unverändert."
+    }
+  ],
+  "authorCountercheckNumericProfilesAdoptedAsAuthority": false,
+  "goalDecisions": [
+    {
+      "goalId": "492463cf-6cb2-5a5a-98e0-c1d77c36c256",
+      "decision": "PASS",
+      "wholeProposedGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/proposed-whole-goal.draft.json",
+        "sha256": "42061684d708d45b5854dfccaee9174de6848d83da13c97b662b1c0a3b9928cb"
+      },
+      "wholeContract": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/whole-contract.before-after.json",
+        "sha256": "f71e37c39207433b2fb9a39dfd7aa4ef8ee384da8f415e6d3a144008035cfcd1"
+      },
+      "scope": "Whole form, reusing the independent v1 whole-content review for unchanged content and the present narrow v2 cap review for fd4b7145.",
+      "textBindings": [
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/task.de.md",
+          "sha256": "4b74af62b258b28ebcdf319c3639b62c739dcc54cae648607bf8dcdba40ce3a2"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/task.en.md",
+          "sha256": "9dccbce7bc2edd2d2ab158ae061de5fea6b8bfea41aa5a3ea4afd382e6174e02"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/solution.de.md",
+          "sha256": "f4f0812893ae71403b6166a16dbe325280fbd64be869c8370a51e3b9f9f5c60d"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/solution.en.md",
+          "sha256": "66836434ea083dcafc01b84665ea3b89224d6ace177517013da74f3f07c7aed9"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/rubric.de.md",
+          "sha256": "9fb12846581f2e143b1243325f7e5cd287397fdbbd6943569f1ac91f1fea3082"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/492463cf-6cb2-5a5a-98e0-c1d77c36c256/rubric.en.md",
+          "sha256": "935d899dcac886da1b6ae03dd8f0e02fa6d5bfba784c5cdd64db9137de7ae6cb"
+        }
+      ]
+    },
+    {
+      "goalId": "a9fde754-51b4-58d7-85e5-5e36160581e6",
+      "decision": "PASS",
+      "wholeProposedGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/proposed-whole-goal.draft.json",
+        "sha256": "25d98482a34eb5e315517c6bf68d3377dd4876978d4d0bc7c1abc8bdd417de8f"
+      },
+      "wholeContract": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/whole-contract.before-after.json",
+        "sha256": "cbf651aaabdead69c51b4fd1a303b8066a2a2949342d6eb394c3d10e1489eaf5"
+      },
+      "scope": "Whole form, reusing the independent v1 whole-content review for unchanged content and the present narrow v2 cap review for fd4b7145.",
+      "textBindings": [
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/task.de.md",
+          "sha256": "ede6c8580e36e0105fce2cbd6e597683113171db9a0963efaa743e2c034298dd"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/task.en.md",
+          "sha256": "b9007b955ef19d209bb0dd300caa667562605472798def59a82e2722d1f7d1fe"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/solution.de.md",
+          "sha256": "57537054c746325ece5296c2741a72fab43c6b18b420712995d1672fb7c1389b"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/solution.en.md",
+          "sha256": "754132327061b3dac31c18e47fa48e29eae83155b86c2bf2b61f0f19a7eb32bf"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/rubric.de.md",
+          "sha256": "f7990b15766b8a18a3ad4938ea5c67c054bf800c3b2e97a0880835297e4ddf44"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/a9fde754-51b4-58d7-85e5-5e36160581e6/rubric.en.md",
+          "sha256": "0e255202ebe3519955a191dc96201a28987e4b5bb137a1377b23306406b18bef"
+        }
+      ]
+    },
+    {
+      "goalId": "edaf0bb4-e12e-5a6c-b484-91124ba209f3",
+      "decision": "PASS",
+      "wholeProposedGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/proposed-whole-goal.draft.json",
+        "sha256": "dccae37455144cb8f409d4abdd5afc362f6fce80725ee9e8625798899d31f509"
+      },
+      "wholeContract": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/whole-contract.before-after.json",
+        "sha256": "06ddad441107a129b40b8c1fb7744ba2cbc06cb487387df55d2037abdf921c02"
+      },
+      "scope": "Whole form, reusing the independent v1 whole-content review for unchanged content and the present narrow v2 cap review for fd4b7145.",
+      "textBindings": [
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/task.de.md",
+          "sha256": "6675efcc9bdf3ec10a140a1fe336ea5089734b60689fdb13fbf9ec8f337ae770"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/task.en.md",
+          "sha256": "60c58ae8d16f6111d241022fb894e6258cbcdcb17ee8014be4107b8b757cf3e4"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/solution.de.md",
+          "sha256": "a3891a397b5de7b76a04d9f46e34be44e02b66fe881a4921ae744d44ef3270c3"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/solution.en.md",
+          "sha256": "ad2f32d9140ff03b39a271050b3eb1f80aa43fe8869f1743c513087ffb899379"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/rubric.de.md",
+          "sha256": "a54ad67c9e4250ea5e63adee45cca137f1a7aa2b781384d7007527474099ef21"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/edaf0bb4-e12e-5a6c-b484-91124ba209f3/rubric.en.md",
+          "sha256": "93b0801f53d0d8690438f7cc6780d8e078831b262a17dbd934f348d3d5573263"
+        }
+      ]
+    },
+    {
+      "goalId": "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+      "decision": "PASS",
+      "wholeProposedGoal": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v2-plane-cap-only/replacements/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/proposed-whole-goal.draft.json",
+        "sha256": "a30fc1bc912cb327d6734880c0335c1cc9a9b912b8b85c1d78cadff05e81d5db"
+      },
+      "wholeContract": {
+        "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v2-plane-cap-only/replacements/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/whole-contract.before-after.json",
+        "sha256": "f3eae3934ae139b49531357a62229fff040b0c16a5d4de11d114054c9a4a251f"
+      },
+      "scope": "Whole form, reusing the independent v1 whole-content review for unchanged content and the present narrow v2 cap review for fd4b7145.",
+      "textBindings": [
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/task.de.md",
+          "sha256": "b0fe394e5547ca8172c128298f1b71c5fa81afb78f36493c6c5dbd38637e4f7d"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/task.en.md",
+          "sha256": "8fa3eac5eb37449c4447aecdb69e44d76dfba4467e7122a089bb221b6565478a"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/solution.de.md",
+          "sha256": "8c6a54c4ee2d00b43e420f6dfc7cbd81e9f36ca2984ae87e5b6f2b09f47c80b5"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v1/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/solution.en.md",
+          "sha256": "88e1a65b51443ba8d750f258b4fe2b3be1fae9206f0514ecef29b0ad20808c44"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v2-plane-cap-only/replacements/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/rubric.de.md",
+          "sha256": "048a68cf70fee52abbb16017d47e4c01c159a0d81c486519f2ee15cc55ecb7e4"
+        },
+        {
+          "path": "tmp/approach-review-20261101/space-geometry-four-whole-forms-20261103-v2-plane-cap-only/replacements/fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc/rubric.en.md",
+          "sha256": "fbe058d36f3ac224b75ade8c5178aad84e9a55ee3b727a467174caa5e47ca6ea"
+        }
+      ]
+    }
+  ],
+  "openBlockingFindings": [],
+  "unclaimed": [
+    "technical integration",
+    "M7 closeout",
+    "human approval or trial",
+    "host acceptance"
+  ]
+}

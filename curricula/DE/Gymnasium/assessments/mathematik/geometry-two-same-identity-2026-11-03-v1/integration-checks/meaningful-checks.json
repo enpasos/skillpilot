@@ -1,0 +1,117 @@
+{
+  "status": "PASS_PRIVATE_LOCAL_TECHNICAL_CHECKS",
+  "currentRootUnchanged": true,
+  "renderContract": "ReactMarkdown with remarkGfm/remarkMath/rehypeKatex as in current GoalCard.tsx",
+  "renderChecks": [
+    {
+      "goalId": "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+      "field": "taskContent",
+      "renderedMathExpressions": 11,
+      "expectedMathExpressions": 11,
+      "katexErrors": 0,
+      "htmlSha256": "7a5acda919a631126c5763c37123cc21c007735f98ed06be7776b5f3c3b51e16"
+    },
+    {
+      "goalId": "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+      "field": "taskContentEn",
+      "renderedMathExpressions": 11,
+      "expectedMathExpressions": 11,
+      "katexErrors": 0,
+      "htmlSha256": "b61703b6ae3f70f9b30b8339053e0481e8970c2038552f6e4794a0dfc9d81c67"
+    },
+    {
+      "goalId": "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+      "field": "solutionContent",
+      "renderedMathExpressions": 3,
+      "expectedMathExpressions": 3,
+      "katexErrors": 0,
+      "htmlSha256": "7c4dc6c8ea26119213462eb6dbffe1c44f15109ea00439fef7f62748aca90200"
+    },
+    {
+      "goalId": "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+      "field": "solutionContentEn",
+      "renderedMathExpressions": 3,
+      "expectedMathExpressions": 3,
+      "katexErrors": 0,
+      "htmlSha256": "eac62b4bbe838ce697135a0e98c3ff563886db6566a1e09209a70dcc25588dc0"
+    },
+    {
+      "goalId": "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+      "field": "taskContent",
+      "renderedMathExpressions": 0,
+      "expectedMathExpressions": 0,
+      "katexErrors": 0,
+      "htmlSha256": "b6b80e33b2cfea967840a2d8fe01ea64afccaee5de7bee050e86fdcccea77bb3"
+    },
+    {
+      "goalId": "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+      "field": "taskContentEn",
+      "renderedMathExpressions": 0,
+      "expectedMathExpressions": 0,
+      "katexErrors": 0,
+      "htmlSha256": "087bd2d63d20da1e2eba73ebd63e62957c0e00966cd3d9c64fca320b97121c85"
+    },
+    {
+      "goalId": "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+      "field": "solutionContent",
+      "renderedMathExpressions": 9,
+      "expectedMathExpressions": 9,
+      "katexErrors": 0,
+      "htmlSha256": "80b53efc96ddd439d3cbafa8270e2d273d627fc872b4cdda3407170e2903c24a"
+    },
+    {
+      "goalId": "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+      "field": "solutionContentEn",
+      "renderedMathExpressions": 9,
+      "expectedMathExpressions": 9,
+      "katexErrors": 0,
+      "htmlSha256": "95eef5e420370f6a9f568a1b1b5937bac4d74daca2c5802371d46d2bda8d3b14"
+    }
+  ],
+  "releaseChecks": [
+    {
+      "goalId": "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+      "concreteExamReadinessIssues": [],
+      "examReleaseCoverageIssues": [],
+      "isUsableCoursePlanTask": true,
+      "bilingualTextAndCriteriaComplete": true,
+      "scoringPointsSum": 20,
+      "maxPoints": 20,
+      "passingPoints": 15,
+      "sourceArtifactExistsInOverlay": true
+    },
+    {
+      "goalId": "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+      "concreteExamReadinessIssues": [],
+      "examReleaseCoverageIssues": [],
+      "isUsableCoursePlanTask": true,
+      "bilingualTextAndCriteriaComplete": true,
+      "scoringPointsSum": 20,
+      "maxPoints": 20,
+      "passingPoints": 15,
+      "sourceArtifactExistsInOverlay": true
+    }
+  ],
+  "productiveReadinessExecution": {
+    "path": "app/scripts/generateCurriculumQualityStatus.ts",
+    "sourceSha256": "e84f13f12226d47a1ca3faaa611d2220d94a666d519dfd5f320d362619175766",
+    "exactSelectedFunctionSourceSha256": "cebf3f9758a8027745501c2865fbb9ac0a1e16a6f054486724e81bd6a39889e2",
+    "method": "Unchanged actual named function declarations selected with the TypeScript AST and transpiled; execute the two production validators without whole-generator side effects.",
+    "functions": [
+      "normalizeExamTextForInspection",
+      "hasExamSubtaskMarkers",
+      "hasScoringStructure",
+      "hasBlockingExamReviewStatus",
+      "isPlaceholderExamData",
+      "concreteExamReadinessIssues",
+      "stringArray",
+      "examReleaseCoverageIssues"
+    ]
+  },
+  "strictSemanticLedgerBindingPassed": true,
+  "curricularAtomicRetained": 807,
+  "wholeReviewedSourceHashesStillExact": true,
+  "existingFieldsPreserved": true,
+  "sourceAndPlacementAcceptanceNotClaimed": true,
+  "newJvmOrReviewerLoops": false
+}

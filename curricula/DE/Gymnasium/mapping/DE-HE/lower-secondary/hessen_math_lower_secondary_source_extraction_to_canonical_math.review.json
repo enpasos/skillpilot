@@ -6,12 +6,12 @@
   "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
   "status": {
     "scope": "HE Mathematik Sek I, M3-Slice: KC 7.3 plus KC 7.1/7.2/6 plus G8 Jahrgaenge 5G-9G und G9 Jahrgaenge 5-10",
-    "reviewedSourceGoals": 601,
-    "mappedSourceGoals": 601,
+    "reviewedSourceGoals": 602,
+    "mappedSourceGoals": 602,
     "needsViewPlacementReview": 0,
     "needsCanonicalGoal": 0,
-    "totalSourceGoals": 601,
-    "notes": "Zwoelfter fachlich gepruefter M3-Slice. Alle KC-7.3-Inhaltsfeld-Source-Ziele, KC-7.1/7.2/6-Kompetenzerwartungen sowie G9- und G8-Jahrgangslinien sind auf kanonische SkillPilot-Ziele gemappt. G8 wurde aus dem hessischen G8-Lehrplan als eigene Duration-Model-Quelle ergaenzt; 87 wortgleiche G8-Zeilen wurden sicher uebernommen, 88 weitere G8-Zeilen fachlich auf bestehende kanonische Ziele gemappt.",
+    "totalSourceGoals": 602,
+    "notes": "Zwoelfter fachlich gepruefter M3-Slice. Alle KC-7.3-Inhaltsfeld-Source-Ziele, KC-7.1/7.2/6-Kompetenzerwartungen sowie G9- und G8-Jahrgangslinien sind auf kanonische SkillPilot-Ziele gemappt. G8 wurde aus dem hessischen G8-Lehrplan als eigene Duration-Model-Quelle ergaenzt; 87 wortgleiche G8-Zeilen wurden sicher uebernommen, 88 weitere G8-Zeilen fachlich auf bestehende kanonische Ziele gemappt. Bounded addition 2026-11-04: one independently source-approved G9 J10/transition radian expectation, with partial mapping and preserved G8/optional-J9 boundaries. This is not a new binding-KC or mandatory-J9 claim.",
     "explicitNeedsCanonicalGoal": 0
   },
   "mappings": [
@@ -6048,7 +6048,7 @@
     {
       "legacyGoalId": "he-math-seki-g9-10-4-05-88d10835",
       "canonicalGoalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
-      "matchType": "exact",
+      "matchType": "partial",
       "reviewDecisionId": "he-math-seki-g9-10-4-05-88d10835"
     },
     {
@@ -9116,6 +9116,12 @@
       "canonicalGoalId": "f65ab452-1884-57b0-9be3-c7d9e4944891",
       "matchType": "partial",
       "reviewDecisionId": "he-math-seki-g8-8g-3-02-f0dbbfbf"
+    },
+    {
+      "legacyGoalId": "he-math-seki-g9-transition-j10-bogenmass",
+      "canonicalGoalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
+      "matchType": "partial",
+      "reviewDecisionId": "he-math-seki-g9-transition-j10-bogenmass"
     }
   ],
   "decisions": [
@@ -14891,7 +14897,7 @@
         "14af09c2-999f-52fa-8d42-1f2f6b23629b",
         "c15fe32d-1c83-4127-b1a4-9125af3d8f5d"
       ],
-      "rationale": "Winkelbestimmung aus Sinus-, Kosinus- und Tangenswerten samt Umkehridee und Taschenrechnergebrauch wird durch Einheitskreis-, Dreiecks-, Umkehrfunktions- und Werkzeugziele abgedeckt.",
+      "rationale": "Winkelbestimmung aus Sinus-, Kosinus- und Tangenswerten samt Umkehridee und Taschenrechnergebrauch wird durch Einheitskreis-, Dreiecks-, Umkehrfunktions- und Werkzeugziele abgedeckt. Qualification from the independently approved 2026-11-04 G9 source review: The isolated angle-inversion row does not specify radians and its surrounding diagram range uses degrees. The unchanged whole radian goal is supported jointly by this inversion expectation and the explicit J10/transition radian evidence. Preserve sibling mapping targets and decisions.",
       "reviewedAt": "2026-05-06",
       "reviewer": "codex"
     },
@@ -17429,6 +17435,18 @@
       "rationale": "Abzaehlstrategien, Permutationen und Fakultaet werden durch das Ziel zu Fakultaeten in kombinatorischen Zaehlproblemen abgedeckt.",
       "reviewedAt": "2026-05-21",
       "reviewer": "codex"
+    },
+    {
+      "sourceGoalId": "he-math-seki-g9-transition-j10-bogenmass",
+      "topicCode": "G9-UEBERGANG.J10.BOGENMASS",
+      "sourceSpan": "Winkel im Bogenmaß",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "8d30d241-0247-48ac-83d3-4e0de61584d3"
+      ],
+      "rationale": "The official end-of-J10 profile explicitly requires radian angles; the year10 introduction relates radians to sine/cosine and the unit circle. Representing radian measure and converting degrees/radians is the reviewed didactic operationalization of that expectation, not a verbatim official formulation. This approval is for J10 completion, not mandatory J9 conversion or a G8 claim. Source/didactic decision approved by he-two-reference-gaps-20261104-v1; implementation and final Stage adoption are separate.",
+      "reviewedAt": "2026-11-04T01:19:50.361670+00:00",
+      "reviewer": "/root/astra_markov_current_activation"
     }
   ]
 }

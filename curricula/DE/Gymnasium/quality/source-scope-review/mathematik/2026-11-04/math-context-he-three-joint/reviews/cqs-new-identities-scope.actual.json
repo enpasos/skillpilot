@@ -1,0 +1,224 @@
+{
+  "status": "PASS_INDEPENDENT_REAL_RELEASED_NEW_ID_CQS_SCOPE_CHECKS",
+  "canonicalSha256": "916f309dd5bc1d8cb66dba6fc204c29c5dfb9b54c935ce5968f27e2404cb7c2d",
+  "semanticLedgerSha256": "e9807b165ee7b4cc0050a0e7bea963092139a75bb7445c5705f92a5b71c3c936",
+  "actualCqsCodeSha256": "e31ca62a9bf3aba948384c5d66f967d77acfcc96acab04c4477403421a0f8001",
+  "actualStageSelectorSource": "function isCanonicalGymMathSek1Goal(goal: LearningGoal): boolean {\n  if (goal.id === CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID) return true\n  if (goal.tags?.includes('phase:SekI')) return true\n  const legacyPhase = (goal as { phase?: string }).phase\n  if (/^J\\d{1,2}$/.test(goal.dimensionTags?.phase ?? legacyPhase ?? '')) return true\n\n  const topicCode = goal.dimensionTags?.topicCode ?? goal.themenfeld ?? ''\n  return topicCode.includes('SEK1')\n}\n\nfunction isCanonicalGymMathSek2Goal(goal: LearningGoal): boolean {\n  if (goal.id === CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID) return true\n  if (goal.tags?.includes('phase:SekII')) return true\n\n  const legacyPhase = (goal as { phase?: string }).phase\n  if (['E', 'Q1', 'Q2', 'Q3', 'Q4'].includes(goal.dimensionTags?.phase ?? legacyPhase ?? '')) return true\n\n  const topicCode = goal.dimensionTags?.topicCode ?? goal.themenfeld ?? ''\n  return topicCode.includes('SEK2')\n}\n\n",
+  "actualBoundReader": true,
+  "rows": [
+    {
+      "id": "52890cc2-e685-5ad5-b53e-4c874048adf6",
+      "stage": "SekI",
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "readinessIssues": [],
+      "globalWithOrdinarySelectorFalse": [
+        "52890cc2-e685-5ad5-b53e-4c874048adf6"
+      ],
+      "scopeCases": [
+        {
+          "durationModel": "G8",
+          "role": "target",
+          "result": [
+            "52890cc2-e685-5ad5-b53e-4c874048adf6"
+          ]
+        },
+        {
+          "durationModel": "G8",
+          "role": "prerequisiteOnly",
+          "result": []
+        },
+        {
+          "durationModel": "G8",
+          "role": "absent",
+          "result": []
+        },
+        {
+          "durationModel": "G9",
+          "role": "target",
+          "result": [
+            "52890cc2-e685-5ad5-b53e-4c874048adf6"
+          ]
+        },
+        {
+          "durationModel": "G9",
+          "role": "prerequisiteOnly",
+          "result": []
+        },
+        {
+          "durationModel": "G9",
+          "role": "absent",
+          "result": []
+        }
+      ],
+      "explicitStageRejection": true,
+      "untrustedShallowCopyRejected": true
+    },
+    {
+      "id": "0e7de6a6-ef64-5618-b910-858be0551378",
+      "stage": "SekI",
+      "tags": [
+        "canonical",
+        "modality:visual",
+        "representation:graph",
+        "tool:geogebra",
+        "Practice",
+        "Assessment"
+      ],
+      "readinessIssues": [],
+      "globalWithOrdinarySelectorFalse": [
+        "0e7de6a6-ef64-5618-b910-858be0551378"
+      ],
+      "scopeCases": [
+        {
+          "durationModel": "G8",
+          "role": "target",
+          "result": [
+            "0e7de6a6-ef64-5618-b910-858be0551378"
+          ]
+        },
+        {
+          "durationModel": "G8",
+          "role": "prerequisiteOnly",
+          "result": []
+        },
+        {
+          "durationModel": "G8",
+          "role": "absent",
+          "result": []
+        },
+        {
+          "durationModel": "G9",
+          "role": "target",
+          "result": [
+            "0e7de6a6-ef64-5618-b910-858be0551378"
+          ]
+        },
+        {
+          "durationModel": "G9",
+          "role": "prerequisiteOnly",
+          "result": []
+        },
+        {
+          "durationModel": "G9",
+          "role": "absent",
+          "result": []
+        }
+      ],
+      "explicitStageRejection": true,
+      "untrustedShallowCopyRejected": true
+    },
+    {
+      "id": "ea424448-9977-569c-a75d-f2380239a67a",
+      "stage": "SekI",
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "readinessIssues": [],
+      "globalWithOrdinarySelectorFalse": [
+        "ea424448-9977-569c-a75d-f2380239a67a"
+      ],
+      "scopeCases": [
+        {
+          "durationModel": "G8",
+          "role": "target",
+          "result": [
+            "ea424448-9977-569c-a75d-f2380239a67a"
+          ]
+        },
+        {
+          "durationModel": "G8",
+          "role": "prerequisiteOnly",
+          "result": []
+        },
+        {
+          "durationModel": "G8",
+          "role": "absent",
+          "result": []
+        },
+        {
+          "durationModel": "G9",
+          "role": "target",
+          "result": [
+            "ea424448-9977-569c-a75d-f2380239a67a"
+          ]
+        },
+        {
+          "durationModel": "G9",
+          "role": "prerequisiteOnly",
+          "result": []
+        },
+        {
+          "durationModel": "G9",
+          "role": "absent",
+          "result": []
+        }
+      ],
+      "explicitStageRejection": true,
+      "untrustedShallowCopyRejected": true
+    },
+    {
+      "id": "7b61db50-aaca-5be0-8830-e1d78279bfea",
+      "stage": "SekII",
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "readinessIssues": [],
+      "globalWithOrdinarySelectorFalse": [
+        "7b61db50-aaca-5be0-8830-e1d78279bfea"
+      ],
+      "scopeCases": [
+        {
+          "durationModel": "G8",
+          "role": "target",
+          "result": [
+            "7b61db50-aaca-5be0-8830-e1d78279bfea"
+          ]
+        },
+        {
+          "durationModel": "G8",
+          "role": "prerequisiteOnly",
+          "result": []
+        },
+        {
+          "durationModel": "G8",
+          "role": "absent",
+          "result": []
+        },
+        {
+          "durationModel": "G9",
+          "role": "target",
+          "result": [
+            "7b61db50-aaca-5be0-8830-e1d78279bfea"
+          ]
+        },
+        {
+          "durationModel": "G9",
+          "role": "prerequisiteOnly",
+          "result": []
+        },
+        {
+          "durationModel": "G9",
+          "role": "absent",
+          "result": []
+        }
+      ],
+      "explicitStageRejection": true,
+      "untrustedShallowCopyRejected": true
+    }
+  ],
+  "scopeCases": 24,
+  "scopeProjectionUsesActualRoleCollector": true,
+  "rootAndLearnerWrites": false,
+  "notFullCqsOrM7Acceptance": true
+}
