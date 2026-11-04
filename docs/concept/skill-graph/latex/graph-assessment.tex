@@ -69,7 +69,7 @@ quadratische Speicherung der transitiven Hülle ist dafür nicht nötig.
 
 \begin{figure}[htbp]\centering
 \includegraphics[width=\linewidth]{assets/graph-definition/08-transitive-demand.png}
-\caption{Zwei unabhängige Ausgangslagen für $Q\to B\to A$: Mit
+\caption[Transitive Nachfrage trotz ausdrücklich bestandenem Zwischenziel]{Zwei unabhängige Ausgangslagen für $Q\to B\to A$: Mit
 $M=\{B\}$ bleibt A offen; mit $M=\{Q\}$ trägt Q die implizite
 Anwendung von A und B. Dies ist keine zeitliche Folge: Ein schon ausdrücklich
 bestandenes B bliebe beim späteren Bestehen von Q in M. Die direkte Kante
@@ -129,7 +129,7 @@ herausfallendes neu ausdrücklich bestandenes Ziel bleibt über $M$ enthalten.
 
 \begin{figure}[htbp]\centering
 \includegraphics[width=\linewidth]{assets/graph-definition/09-local-recognition.png}
-\caption{L1 erkennt A und B nach seinem eigenen gültigen Vertrag an.
+\caption[Lokale Anerkennung bleibt für spätere Level wirksam]{L1 erkennt A und B nach seinem eigenen gültigen Vertrag an.
 Die offene spätere Prüfung Q2 verhindert diese Anerkennung nicht.
 Eine neue Anzeige oder Planwahl löscht den weiter auswertbaren L1-Vertrag nicht.}
 \label{fig:local-recognition}\end{figure}
@@ -162,9 +162,23 @@ $k\to^* a$ hält dagegen A im lokalen Bedarf. Auch mehrere Prüfungen mit
 gemeinsamer Grundlage müssen in diesem lokalen Vertrag sämtlich aus dem
 Bedarf an der Grundlage herausgefallen sein.
 
+Dies unterscheidet Prüfungen im \emph{selben} Vertrag von einer späteren
+Prüfung in einem anderen Level (Abbildung~\ref{fig:local-recognition}).
+Abbildung~\ref{fig:shared-assessments} zeigt zwei aufeinanderfolgende
+Ergebnisse bei unverändertem lokalem Umfang und ohne weitere Abschlusspflichten.
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{assets/graph-definition/15-shared-local-assessments.png}
+\caption[Zwei lokale Prüfungen mit gemeinsamer Grundlage]{Q1 und Q2
+benötigen im selben gültigen Levelvertrag A. Nach Q1 bleibt A wegen der
+offenen Q2 im transitiven Bedarf. Erst nach beiden Prüfungen wird A
+implizit global beherrscht. Der ausdrückliche Erfolg von Q1 bleibt dabei
+erhalten; es gibt hier keine weiteren geschützten Ziele.}
+\label{fig:shared-assessments}\end{figure}
+\FloatBarrier
+
 \begin{figure}[htbp]\centering
 \includegraphics[width=\linewidth]{assets/graph-definition/10-protected-support.png}
-\caption{Q ist ausdrücklich bestanden und trägt die Anwendung A.
+\caption[Geschützte Memorierziele und externe Unterstützung]{Q ist ausdrücklich bestanden und trägt die Anwendung A.
 Das unabhängige Memorierziel K bleibt offen und blockiert den ganzen
 Levelabschluss. Unterstützung H außerhalb des Zielumfangs wird nicht anerkannt.}
 \label{fig:protected}\end{figure}
@@ -191,7 +205,7 @@ Anwendung, mitgebrachte Vorarbeit oder nachträglich erweiterte Plananzeige
 ist kein zusätzlicher tatsächlicher Abschluss in dieser Periode.
 \begin{figure}[htbp]\centering
 \includegraphics[width=\linewidth]{assets/graph-definition/11-plan-period.png}
-\caption{Gesamtstand und Periodenleistung haben verschiedene Zähler.
+\caption[Gesamtstand und datierte Periodenleistung]{Gesamtstand und Periodenleistung haben verschiedene Zähler.
 Die drei impliziten Beiträge erhöhen den Gesamt-IST, erzeugen aber keine
 datierten expliziten Abschlussereignisse in der laufenden Periode.}
 \label{fig:period}\end{figure}

@@ -54,6 +54,40 @@ def demand(vertices, targets, protected, edges, mastered, exams=None):
     return needed, implicit
 
 
+def closure(vertices, edges):
+    """Non-reflexive path closure; no mastery-dependent early stopping."""
+    assert all(a in vertices and b in vertices for a, b in edges)
+    result = set()
+    for source in vertices:
+        pending = [b for a, b in edges if a == source]
+        seen = set()
+        while pending:
+            target = pending.pop()
+            if target in seen:
+                continue
+            seen.add(target)
+            pending.extend(b for a, b in edges if a == target)
+        result.update((source, target) for target in seen)
+    return result
+
+
+def effective_requires(vertices, contains, requires):
+    """Recompute inherited direct requirements from the authored relations."""
+    descendants = closure(vertices, contains)
+    return requires | {(child, prerequisite)
+                       for ancestor, child in descendants
+                       for goal, prerequisite in requires if goal == ancestor}
+
+
+def atomic_requires(vertices, contains, requires):
+    descendants = closure(vertices, contains)
+    atoms = vertices - {parent for parent, _ in contains}
+    effective = effective_requires(vertices, contains, requires)
+    return {(goal, atom) for goal, prerequisite in effective if goal in atoms
+            for atom in atoms
+            if atom == prerequisite or (prerequisite, atom) in descendants}
+
+
 def canvas(height):
     fig, ax = plt.subplots(figsize=(7.2, height))
     fig.subplots_adjust(left=.025, right=.975, bottom=.035, top=.97)
@@ -76,10 +110,10 @@ def box(ax, x, y, title, detail, state="open", width=2.35, height=1.12,
     return patch
 
 
-def arrow(ax, start, end, *, active=False, bend=0, dashed=False):
+def arrow(ax, start, end, *, active=False, bend=0, dashed=False, color=None):
     ax.add_patch(FancyArrowPatch(start, end, arrowstyle="-|>", mutation_scale=13,
                                 connectionstyle=f"arc3,rad={bend}",
-                                color=ORANGE if active else MUTED,
+                                color=color or (ORANGE if active else MUTED),
                                 linewidth=2 if active else 1.2,
                                 linestyle="--" if dashed else "-", zorder=2))
 
@@ -229,6 +263,119 @@ def level_planning():
     return fig
 
 
+def compact_goal(ax, x, y, label, *, cluster=False):
+    """Structural diagram node; fill has no learner-state meaning."""
+    ax.add_patch(FancyBboxPatch((x-.55, y-.34), 1.1, .68,
+                               boxstyle="round,pad=.04,rounding_size=.09",
+                               facecolor="#EDF7F7" if cluster else "#FAFCFD",
+                               edgecolor=INK, linewidth=1.2, zorder=3))
+    ax.text(x, y, label, ha="center", va="center", weight="bold", fontsize=11, zorder=4)
+
+
+def atomic_expansion():
+    vertices = {"g", "K", "a", "b", "c"}
+    contains = {("K", "a"), ("K", "b")}
+    requires = {("g", "K"), ("a", "c")}
+    normalized = atomic_requires(vertices, contains, requires)
+    assert normalized == {("g", "a"), ("g", "b"), ("a", "c")}
+    assert {b for a, b in closure(vertices, normalized) if a == "g"} == {"a", "b", "c"}
+    assert ("g", "c") not in closure(vertices, requires)
+    fig, ax = canvas(5.25)
+    boundary(ax, .2, 2.1, 5.6, 6.1, "1 · Verfasster Graph")
+    boundary(ax, 6.2, 2.1, 5.6, 6.1, "2 · Atomare Relation Rₐₜ")
+    for x, y, name in [(1.25, 5.85, "g"), (3.5, 6.65, "K"),
+                       (2.65, 4.65, "a"), (4.85, 4.65, "b"), (2.65, 2.95, "c")]:
+        compact_goal(ax, x, y, name, cluster=name == "K")
+    arrow(ax, (1.82, 6.05), (2.9, 6.45), color=BLUE)
+    arrow(ax, (3.28, 6.25), (2.8, 5.05))
+    arrow(ax, (3.78, 6.25), (4.55, 5.05))
+    arrow(ax, (2.65, 4.25), (2.65, 3.35), color=BLUE)
+    ax.text(2.25, 6.55, "requires", ha="center", fontsize=9, color=BLUE)
+    ax.text(4.95, 5.65, "contains", ha="center", fontsize=9, color=MUTED)
+    ax.text(3.45, 3.75, "requires", va="center", fontsize=9, color=BLUE)
+    for x, y, name in [(9, 6.65, "g"), (7.7, 4.65, "a"),
+                       (10.3, 4.65, "b"), (7.7, 2.95, "c")]:
+        compact_goal(ax, x, y, name)
+    arrow(ax, (8.7, 6.25), (7.95, 5.05), color=BLUE)
+    arrow(ax, (9.3, 6.25), (10.05, 5.05), color=BLUE)
+    arrow(ax, (7.7, 4.25), (7.7, 3.35), color=BLUE)
+    ax.text(10, 3.1, "Zuerst K durch\nAtoms(K) = {a, b}\nersetzen.",
+            ha="center", va="center", fontsize=10, linespacing=1.55)
+    ax.text(6, 1.52, r"$R_{at}=\{(g,a),(g,b),(a,c)\}$", ha="center", fontsize=11)
+    ax.text(6, .96, r"Dann Hülle bilden: $\operatorname{Reach}^{+}_{R_{at}}(g)=\{a,b,c\}$",
+            ha="center", fontsize=11)
+    ax.text(6, .35, "Grau: contains · Blau: requires, rechts atomar normalisiert. Hüllenpaare sind keine neuen Autorenkanten.",
+            ha="center", fontsize=8.2)
+    return fig
+
+
+def inherited_redundancy():
+    vertices = {"k", "b", "a", "g"}
+    contains = {("k", "b")}
+    requires = {("k", "a"), ("g", "b"), ("g", "a")}
+    removed = requires - {("g", "a")}
+    recomputed = effective_requires(vertices, contains, removed)
+    assert recomputed == {("k", "a"), ("g", "b"), ("b", "a")}
+    assert ("g", "a") not in closure(vertices, removed)
+    assert ("g", "a") in closure(vertices, recomputed)
+    fig, ax = canvas(4.65)
+    boundary(ax, .2, 1.75, 5.6, 5.55, "1 · Vor der Kantenentfernung")
+    boundary(ax, 6.2, 1.75, 5.6, 5.55, "2 · Danach neu vererben")
+    for offset in (0, 6):
+        for x, y, name in [(1.4, 5.65, "k"), (1.4, 3, "b"),
+                           (4.55, 3, "a"), (4.55, 5.65, "g")]:
+            compact_goal(ax, x+offset, y, name, cluster=name == "k")
+        arrow(ax, (1.4+offset, 5.25), (1.4+offset, 3.4))
+        arrow(ax, (1.92+offset, 5.35), (4.02+offset, 3.35), color=BLUE)
+        arrow(ax, (4.02+offset, 5.35), (1.92+offset, 3.35), color=BLUE)
+        arrow(ax, (2+offset, 3), (3.95+offset, 3), color=BLUE, dashed=True)
+        ax.text(2.95+offset, 2.55, "b → a geerbt", ha="center", fontsize=9, color=BLUE)
+    arrow(ax, (4.55, 5.25), (4.55, 3.4), color=ORANGE)
+    ax.text(4.94, 4.35, "e", fontsize=11, color=ORANGE, weight="bold")
+    ax.text(9.9, 4.35, "e entfernt", ha="left", fontsize=9, color=ORANGE)
+    ax.text(6, 1.17, "e = g → a ist redundant: Nach Entfernung bleibt der effektive Pfad g → b → a.",
+            ha="center", fontsize=10)
+    ax.text(6, .62, "Nur die rohen R-Kanten zu prüfen würde diesen verbleibenden Pfad übersehen.",
+            ha="center", fontsize=9.5)
+    ax.text(6, .12, "Grau: contains · Blau: requires · Gestrichelt: geerbt · Orange: verfasste, zu entfernende Kante e",
+            ha="center", fontsize=8.6)
+    return fig
+
+
+def shared_local_assessments():
+    vertices = {"Q1", "Q2", "A"}
+    protected = {"Q1", "Q2"}
+    edges = {("Q1", "A"), ("Q2", "A")}
+    before = demand(vertices, vertices, protected, edges, {"Q1"})
+    after = demand(vertices, vertices, protected, edges, {"Q1", "Q2"})
+    assert before == ({"Q2", "A"}, set())
+    assert after == (set(), {"A"})
+    assert {"Q1"} | before[1] <= {"Q1", "Q2"} | after[1]
+    fig, ax = canvas(4.6)
+    for offset, label, both in [(0, "1 · Nur Q₁ bestanden", False),
+                                (6, "2 · Auch Q₂ bestanden", True)]:
+        boundary(ax, .2+offset, 1.6, 5.6, 5.65, label)
+        box(ax, 1.65+offset, 5.55, "Q₁ · Prüfung", "bestanden (m = 1)",
+            "explicit", width=2.15)
+        box(ax, 4.35+offset, 5.55, "Q₂ · Prüfung", "bestanden (m = 1)" if both else "noch offen",
+            "explicit" if both else "open", width=2.15)
+        box(ax, 3+offset, 3.65, "A · Grundlage", "implizit beherrscht" if both else "weiter offen",
+            "implicit" if both else "open", width=2.8)
+        arrow(ax, (1.95+offset, 4.9), (2.6+offset, 4.3), color=BLUE)
+        arrow(ax, (4.05+offset, 4.9), (3.4+offset, 4.3), color=BLUE)
+        ax.text(3+offset, 2.58, r"$M=\{Q_1,Q_2\}$" if both else r"$M=\{Q_1\}$",
+                ha="center", fontsize=10.5)
+        ax.text(3+offset, 1.98, r"$N_L=\varnothing;\ I_L=\{A\}$" if both else
+                r"$N_L=\{Q_2,A\};\ I_L=\varnothing$", ha="center", fontsize=10.5)
+    ax.text(6, 1.04, r"Derselbe gültige Levelvertrag: $T_L=\{Q_1,Q_2,A\}$, $P_L=\{Q_1,Q_2\}$.",
+            ha="center", fontsize=10)
+    ax.text(6, .49, "Beide Prüfungen benötigen A. Q₁ bleibt bestanden; erst die offene Nachfrage von Q₂ entfällt.",
+            ha="center", fontsize=9.1)
+    ax.text(6, .03, "Blau durchgezogen: requires · Grün: ausdrücklich bestanden · Hellblau: implizit global beherrscht",
+            ha="center", fontsize=8.6)
+    return fig
+
+
 FIGURES = {
     "00-title-skill-graph.png": title_graph,
     "08-transitive-demand.png": transitive_demand,
@@ -236,6 +383,9 @@ FIGURES = {
     "10-protected-support.png": protected_support,
     "11-plan-period.png": plan_period,
     "12-level-planning.png": level_planning,
+    "13-atomic-expansion.png": atomic_expansion,
+    "14-inherited-redundancy.png": inherited_redundancy,
+    "15-shared-local-assessments.png": shared_local_assessments,
 }
 
 
@@ -267,7 +417,7 @@ def main():
                 if os.path.exists(temporary):
                     os.unlink(temporary)
         print(name, hashlib.sha256(data).hexdigest())
-    print("PASS: six exact PNG illustrations; transitive demand, local recognition and counting verified.")
+    print("PASS: nine exact PNG illustrations; normalization, minimality, local recognition and counting verified.")
 
 
 if __name__ == "__main__":

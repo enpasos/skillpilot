@@ -177,6 +177,19 @@ gestrichelt heißt geerbt.}
 {fig:inheritance}
 \FloatBarrier
 
+Abbildung~\ref{fig:atomic-expansion} zeigt den zusätzlichen Schritt von
+einer Clusteranforderung zur vollständig atomaren Voraussetzungshülle.
+Die externe Grundlage c bleibt nach der Expansion von K über a erreichbar.
+\begin{figure}[H]\centering
+\includegraphics[width=\linewidth]{assets/graph-definition/13-atomic-expansion.png}
+\caption[Atomare Expansion vor der Hüllenbildung]{Aus $g\to K$ und
+$\Atoms(K)=\{a,b\}$ entstehen die atomaren Paare $(g,a)$ und $(g,b)$.
+Weil außerdem $a\to c$ gilt, enthält die erst danach gebildete Hülle auch
+$(g,c)$. Die rechte Darstellung zeigt die abgeleitete atomare Relation,
+keine zusätzlich verfassten Autorenkanten.}
+\label{fig:atomic-expansion}\end{figure}
+\FloatBarrier
+
 \section{Gültigkeit, Minimalität und Lernbarkeit}
 \label{sec:validity}
 \subsection{Verbindliche Bedingungen}
@@ -197,6 +210,19 @@ Die Kante ist redundant, wenn ihr Ziel nach ihrer Entfernung noch über
 einen effektiven Pfad erreichbar bleibt. In der Kette $Q\to B\to A$ ist
 $Q\to A$ deshalb redundant und unzulässig. Nur ohne Clustervererbung
 vereinfacht sich dies zur gewöhnlichen Minimalität der rohen Relation $R$.
+
+Abbildung~\ref{fig:inherited-redundancy} zeigt, weshalb nach einer
+Kantenentfernung die Vererbung erneut auszuwerten ist: Der verbleibende
+Pfad kann eine geerbte Kante enthalten, die im rohen $R$ fehlt.
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{assets/graph-definition/14-inherited-redundancy.png}
+\caption[Redundanz durch eine geerbte Voraussetzung]{Aus $k\mathbin{\code{contains}}b$
+und $k\to a$ wird $b\to a$ geerbt. Entfernt man die verfasste Kante
+$e=(g,a)$, bleibt nach erneuter Vererbung der effektive Pfad
+$g\to b\to a$. Deshalb ist e redundant, obwohl der alternative Pfad in
+der rohen Relation $R\setminus\{e\}$ fehlt. Nur die geerbte Kante ist gestrichelt.}
+\label{fig:inherited-redundancy}\end{figure}
+\FloatBarrier
 
 Die transitive Reduktion einer feststehenden normalisierten atomaren
 Relation erhält deren Hülle und damit Verfügbarkeit und Abschlussrechnung.
