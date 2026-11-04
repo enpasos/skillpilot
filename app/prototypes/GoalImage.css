@@ -1,0 +1,19 @@
+.cp-goal-image { display: block; position: relative; width: 100%; margin: 12px 0; padding: 0; border: 1px solid #e0e5e9; border-radius: 5px; background: #fff; overflow: hidden; cursor: zoom-in !important; }
+.cp-goal-image > img { display: block; width: 100%; height: auto; max-height: 140px; object-fit: contain; }
+.cp-goal-image > span { position: absolute; right: 5px; bottom: 5px; display: grid; place-items: center; width: 23px; height: 23px; border-radius: 4px; background: #fffffff0; color: #688194; }
+.cp-goal-image:hover { border-color: #9fbdcf; }
+.cp-goal-image:focus-visible { outline: 2px solid #6c9fc2; outline-offset: 2px; }
+.cp-image-dialog { width: min(1200px, calc(100vw - 28px)); max-height: 94dvh; padding: 0; border: 1px solid #d8e1e7; border-radius: 8px; background: #fff; color: #344d60; box-shadow: 0 15px 70px #18364d26; font: 13px/1.4 'Segoe UI', system-ui, sans-serif; }
+.cp-image-dialog::backdrop { background: #203b5159; }
+.cp-image-dialog > header { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 14px 17px; border-bottom: 1px solid #e3e9ed; }
+.cp-image-dialog h2 { margin: 0; font-size: 14px; font-weight: 550; }
+.cp-image-dialog > header > button { display: grid; place-items: center; width: 32px; height: 32px; padding: 0; flex-shrink: 0; border: 0; border-radius: 4px; background: none; color: #6f8392; cursor: pointer; }
+.cp-image-dialog > header > button:focus-visible { outline: 2px solid #6c9fc2; outline-offset: 1px; }
+.cp-image-dialog > img { display: block; width: 100%; height: auto; max-height: 80dvh; object-fit: contain; }
+.cp-image-dialog > p { padding: 25px; color: #8999a5; }
+@media (max-width: 760px) {
+  .cp-goal-image > img { max-height: 175px; }
+  .cp-image-dialog { width: calc(100vw - 16px); }
+  .cp-image-dialog > header { padding: 10px 12px; }
+  .cp-image-dialog h2 { font-size: 12px; }
+}

@@ -1,0 +1,132 @@
+.cp-app { height: 100dvh; min-height: 420px; display: flex; flex-direction: column; overflow: hidden; color: #243645; background: #f8fafb; font: 13px Inter, 'Segoe UI', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+.cp-app *, .cp-dialog *, .cp-app *::before, .cp-dialog *::before { box-sizing: border-box; }
+.cp-app button, .cp-app select, .cp-dialog button { font: inherit; }
+.cp-app button, .cp-dialog button { cursor: pointer; }
+.cp-app button:focus-visible, .cp-app select:focus-visible, .cp-dialog button:focus-visible, .cp-dialog summary:focus-visible { outline: 3px solid #8bb4d7; outline-offset: 3px; }
+.cp-header { min-height: 68px; display: flex; align-items: center; gap: 27px; padding: 12px 27px; border-bottom: 1px solid #dfe6ec; background: #fff; flex-shrink: 0; }
+.cp-brand { display: inline-flex; align-items: center; gap: 8px; color: #2c607f; flex-shrink: 0; }
+.cp-brand strong { color: #203a4c; font-size: 17px; letter-spacing: -.5px; }
+.cp-view-nav { display: flex; gap: 4px; }
+.cp-view-nav button { border: 0; border-radius: 5px; background: transparent; padding: 9px 13px; color: #8294a2; font-size: 12px; white-space: nowrap; }
+.cp-view-nav button:hover { color: #396f95; background: #f5f8fa; }
+.cp-view-nav button[aria-current] { color: #356d96; background: #edf4f9; font-weight: 600; }
+.cp-header-tools { display: flex; align-items: center; gap: 11px; flex-shrink: 0; }
+.cp-local-badge { color: #8d8065; background: #fcfaf4; border: 1px solid #e8e2d5; font-size: 9px; padding: 5px 8px; border-radius: 5px; white-space: nowrap; }
+.cp-about-button { display: grid; place-items: center; width: 26px; height: 28px; border: 0; padding: 0; background: none; color: #8a9aa6; }
+.cp-scenario-picker { display: flex; align-items: center; gap: 9px; min-width: 0; margin-left: auto; }
+.cp-scenario-picker label { color: #94a1aa; font-size: 9px; flex-shrink: 0; }
+.cp-scenario-picker select { width: 208px; height: 30px; padding: 3px 25px 3px 8px; color: #627d90; background: #fff; border: 1px solid #dee6eb; border-radius: 5px; font-size: 10px; min-width: 0; }
+.cp-view-stack { position: relative; flex: 1; min-height: 0; }
+.cp-view { position: absolute; inset: 0; min-width: 0; min-height: 0; overflow: auto; overscroll-behavior: contain; }
+.cp-view[hidden] { display: none !important; }
+.cp-view--map { overflow: hidden; }
+.cp-learning { max-width: 780px; margin: 48px auto; padding: 0 30px 36px; }
+.cp-learning-kicker { display: flex; align-items: center; gap: 8px; margin-bottom: 17px; color: #8c9da9; font-size: 10px; text-transform: uppercase; letter-spacing: .06em; }
+.cp-learning-kicker > .cp-icon-button { margin-left: auto; }
+.cp-learning h1 { margin: 0; color: #2c4c63; font-size: 27px; line-height: 1.4; font-weight: 550; letter-spacing: -.65px; }
+.cp-learning-image { max-width: 650px; margin-top: 23px; }
+.cp-learning-image .cp-goal-image { margin: 0; }
+.cp-learning-image .cp-goal-image > img { max-height: 320px; }
+.cp-learning-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.cp-active-icon { color: #c59a4b; }
+.cp-complete-icon { color: #5d987b; }
+.cp-implicit-icon { color: #5795bd; }
+.cp-open-icon { color: #c07c7c; }
+.cp-primary-button, .cp-secondary-button { display: inline-flex; justify-content: space-between; align-items: center; gap: 18px; min-height: 41px; padding: 10px 13px; border: 1px solid #c8dce9; border-radius: 6px; background: #f1f7fb; color: #356f96; font-size: 12px !important; }
+.cp-secondary-button { background: #fff; border-color: #e0e7ed; color: #7b91a1; font-size: 11px !important; }
+.cp-primary-button > svg, .cp-secondary-button > svg { flex-shrink: 0; }
+.cp-icon-button { display: inline-grid; place-items: center; width: 29px; height: 29px; border: 0; border-radius: 4px; padding: 0; background: none; color: #8298a8; flex-shrink: 0; }
+.cp-icon-button:hover { background: #f1f6f9; color: #45799e; }
+.cp-plan-view { max-width: 820px; margin: 38px auto; padding: 0 30px 40px; }
+.cp-plan-view > h1 { color: #34546b; font-size: 24px; font-weight: 550; letter-spacing: -.5px; margin: 0 0 25px; }
+.cp-plan-scope { padding: 23px 25px; border: 1px solid #e1e8ee; border-radius: 9px; background: #fff; }
+.cp-plan-scope-heading { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+.cp-plan-scope-heading > span { color: #93a2ad; font-size: 10px; text-transform: uppercase; letter-spacing: .07em; }
+.cp-plan-scope > h2 { margin: 8px 0 0; color: #3f5f75; font-size: 18px; font-weight: 550; line-height: 1.5; letter-spacing: -.3px; }
+.cp-gauges { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; max-width: 440px; margin: 24px 0; }
+.cp-dial { display: flex; flex-direction: column; align-items: center; min-width: 0; padding: 13px 10px 12px; border: 1px solid #e2e8ed; border-radius: 7px; background: #fcfdfe; text-align: center; }
+.cp-dial-title { display: flex; align-items: center; justify-content: center; min-height: 21px; color: #7a8d9c; font-size: 11px; font-weight: 600; }
+.cp-dial-title > button { display: flex; gap: 6px; align-items: center; border: 0; padding: 3px 0; color: inherit; background: none; font-weight: inherit; }
+.cp-dial > svg { display: block; width: 100%; max-width: 156px; height: auto; margin: 7px 0 9px; }
+.cp-dial-count { color: #3e607a; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cp-dial-count > span { font-size: 11px; font-weight: 400; color: #8b9ca9; }
+.cp-plan-goals { list-style: none; padding: 0; margin: 0; border-top: 1px solid #e6edf2; }
+.cp-plan-goals > li { display: flex; align-items: center; gap: 13px; padding: 16px 0; border-bottom: 1px solid #edf1f4; }
+.cp-plan-goals > li:last-child { border-bottom: 0; padding-bottom: 0; }
+.cp-plan-status { width: 21px; flex-shrink: 0; display: grid; place-items: center; }
+.cp-plan-goals button { border: 0; padding: 0; background: none; color: #4d6b80; text-align: left; }
+.cp-plan-goals button > span { display: block; color: #9aa9b4; font-size: 9px; margin-bottom: 4px; }
+.cp-plan-goals button > strong { font-size: 12px; line-height: 1.6; font-weight: 550; }
+.cp-plan-goals button:hover { color: #2d75a6; }
+.cp-map .lum-app { height: 100%; min-height: 0; }
+.cp-map .lum-inspector > p, .cp-map .lum-selected-progress, .cp-map .lum-map-hint > span { display: none; }
+.cp-selection-actions { padding-top: 11px; margin-top: 12px; border-top: 1px solid #e8eef2; display: flex; align-items: center; gap: 7px; }
+.cp-selection-actions > button:not(.cp-icon-button) { display: flex; align-items: center; justify-content: space-between; gap: 6px; flex: 1; min-width: 0; min-height: 34px; padding: 7px 9px; background: #f4f8fb; border: 1px solid #d7e5ee; color: #4c7f9f; border-radius: 5px; text-align: left; font-size: 10px; }
+.cp-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+.cp-dialog { width: min(790px, calc(100vw - 32px)); max-height: min(88dvh, 940px); padding: 0; border: 1px solid #dae3ea; border-radius: 11px; color: #334b5c; background: white; box-shadow: 0 16px 80px #142f4e25; font: 13px Inter, 'Segoe UI', system-ui, sans-serif; }
+.cp-dialog::backdrop { background: #21384e40; backdrop-filter: blur(3px); }
+.cp-dialog-top { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 15px; padding: 14px 22px; border-bottom: 1px solid #e7edf2; background: #fffffffa; }
+.cp-dialog-top > span { font-size: 10px; color: #95a2ad; }
+.cp-dialog-top button { display: grid; place-items: center; width: 28px; height: 28px; padding: 0; border: 0; background: none; color: #8da1b0; }
+.cp-dialog-body { padding: 23px 28px 28px; }
+.cp-dialog h1 { margin: 5px 0 16px; color: #27475d; font-size: 24px; line-height: 1.35; font-weight: 550; letter-spacing: -.6px; }
+.cp-dialog-description { color: #728796; font-size: 12px; line-height: 1.8; margin-bottom: 20px; }
+.cp-preview-image-action { float: right; margin: 0 0 8px 12px; }
+.cp-markdown { color: #536b7d; font-size: 12px; line-height: 1.85; overflow-wrap: anywhere; }
+.cp-markdown h2 { color: #385970; font-size: 17px; font-weight: 600; margin: 25px 0 10px; }
+.cp-markdown h3 { color: #4e6d82; font-size: 14px; margin: 22px 0 8px; }
+.cp-markdown p { margin: 9px 0; }
+.cp-markdown li { margin: 5px 0; }
+.cp-markdown table { border-collapse: collapse; display: block; max-width: 100%; overflow: auto; font-size: 11px; }
+.cp-markdown th, .cp-markdown td { border: 1px solid #e1e8ee; padding: 7px 10px; }
+.cp-markdown .katex-display { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding: 5px 0; }
+.cp-rubric, .cp-coach-preview { margin-top: 23px; border-top: 1px solid #e4ebf0; padding-top: 17px; }
+.cp-rubric summary, .cp-coach-preview summary { cursor: pointer; font-size: 11px; color: #577c98; padding: 5px 0; }
+.cp-dialog-source { margin-top: 20px; padding-top: 14px; border-top: 1px solid #edf1f5; color: #a0aeba; font-size: 9px; line-height: 1.7; overflow-wrap: anywhere; }
+.cp-card-preview > details { margin-top: 12px; padding: 12px; border: 1px solid #e1e9ef; border-radius: 6px; }
+.cp-card-preview summary { cursor: pointer; color: #5f8097; font-size: 11px; line-height: 1.7; }
+@media (max-width: 1100px) {
+  .cp-header { gap: 16px; padding-left: 20px; padding-right: 20px; }
+  .cp-view-nav button { padding-left: 10px; padding-right: 10px; }
+  .cp-scenario-picker select { width: 178px; }
+}
+@media (max-width: 900px) {
+  .cp-scenario-picker label { display: none; }
+}
+@media (max-width: 760px) {
+  .cp-header { display: grid; grid-template-columns: 1fr auto; gap: 10px 14px; padding: 12px 17px; }
+  .cp-brand { grid-column: 1; grid-row: 1; }
+  .cp-header-tools { grid-column: 2; grid-row: 1; justify-self: end; }
+  .cp-view-nav { grid-column: 1 / -1; grid-row: 2; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cp-view-nav button { padding: 8px 4px; font-size: 11px; }
+  .cp-scenario-picker { grid-column: 1 / -1; grid-row: 3; width: 100%; margin: 0; }
+  .cp-scenario-picker label { display: block; }
+  .cp-scenario-picker select { flex: 1; width: auto; height: 31px; }
+  .cp-local-badge { font-size: 8px; }
+  .cp-learning { margin: 28px auto; padding: 0 20px 32px; }
+  .cp-learning h1 { font-size: 23px; }
+  .cp-learning-image { margin-top: 20px; }
+  .cp-learning-image .cp-goal-image > img { max-height: 280px; }
+  .cp-learning-actions { align-items: stretch; gap: 9px; margin-top: 22px; }
+  .cp-primary-button, .cp-secondary-button { width: 100%; min-height: 42px; font-size: 11px !important; }
+  .cp-plan-view { margin: 26px auto; padding: 0 17px 32px; }
+  .cp-plan-view > h1 { font-size: 22px; margin-bottom: 20px; }
+  .cp-plan-scope { padding: 17px; }
+  .cp-plan-scope > h2 { font-size: 16px; }
+  .cp-gauges { gap: 9px; margin: 21px 0; }
+  .cp-dial { padding: 9px 7px; }
+  .cp-dial > svg { max-width: 125px; }
+  .cp-dial-title { font-size: 10px; }
+  .cp-dial-count { font-size: 13px; }
+  .cp-plan-goals > li { align-items: flex-start; gap: 10px; }
+  .cp-plan-status { margin-top: 12px; }
+  .cp-plan-goals button > strong { font-size: 11px; }
+  .cp-dialog { max-height: 92dvh; width: calc(100vw - 20px); }
+  .cp-dialog-top { padding: 12px 16px; }
+  .cp-dialog-body { padding: 18px; }
+  .cp-dialog h1 { font-size: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cp-app *, .cp-dialog * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}

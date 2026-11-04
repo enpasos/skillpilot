@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import './LearnerViewPresentation.css'
 import { useLearnerUpdates } from '../hooks/useLearnerUpdates'
 import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
@@ -48,7 +49,7 @@ import type { ToastKind } from '../hooks/useToast'
 import { queueToastForNextLoad } from '../hooks/useToast'
 import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
 import { createSynchronousInFlightGuard } from '../utils/synchronousInFlightGuard'
-import { buildCompletionAssessmentStartHref, buildCompletionRouteStartHref, completionAssessmentsForGoal, completionLabel, completionUnavailableReason, completionWaiversForTree, hasActiveCompletionRoute, parseLevelCompletion, requestLevelCompletionAction, type CompletionActionInput, type LevelCompletion } from '../utils/levelCompletionApi'
+import { buildCompletionAssessmentStartHref, buildCompletionRouteStartHref, completionAssessmentsForGoal, completionLabel, completionUnavailableReason, completionWaiversForTree, hasActiveCompletionRoute, parseLevelCompletion, requestLevelCompletionAction, type CompletionActionInput, type LevelCompletion, type CompletionTreeWaiver } from '../utils/levelCompletionApi'
 import {
   beginLatestRequest,
   invalidateLatestRequest,
@@ -114,7 +115,24 @@ import type { Learner, FrontierGoal } from '../learnerTypes'
 import type { LearnerLearningPlansResponse } from '../learnerLearningPlanTypes'
 import type { ResourceLink } from '../landscapeTypes'
 
-interface LearnerViewProps {
+export type LearnerGoalNavigationMode = 'tree' | 'map'
+
+/** The map reads exactly the scoped navigation projection used by the goal tree. */
+export interface LearnerGoalNavigationMapProps {
+  rootGoals: UiGoal[]
+  goalIndexAll: Map<string, UiGoal>
+  visibleGoalIds: ReadonlySet<string>
+  visibleChildrenByParent: ReadonlyMap<string, readonly string[]>
+  selectedGoalId: string
+  activeGoalId: string | null
+  getMastery: (goalId: string) => number
+  completionWaivers: ReadonlyMap<string, CompletionTreeWaiver>
+  revealRequest?: { entryId: string; nonce: number }
+  onSelectGoal: (goalId: string) => void
+  active: boolean
+}
+
+export interface LearnerViewProps {
   rootGoals: UiGoal[]
   goalIndexAll: Map<string, UiGoal>
   getMastery: (goalId: string) => number
@@ -135,6 +153,9 @@ interface LearnerViewProps {
   onScopeDataRefresh?: () => void
   parentMap?: Map<string, string[]>
   onLandscapeChange?: (landscapeId: string) => void
+  goalNavigationMode?: LearnerGoalNavigationMode
+  onGoalNavigationModeChange?: (mode: LearnerGoalNavigationMode) => void
+  renderGoalNavigationMap?: (props: LearnerGoalNavigationMapProps) => React.ReactNode
 }
 
 type PersonalCurriculumConfig = Record<string, {
@@ -380,7 +401,23 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   onScopeDataRefresh,
   parentMap,
   onLandscapeChange,
+  goalNavigationMode,
+  onGoalNavigationModeChange,
+  renderGoalNavigationMap,
 }) => {
+  const [localGoalNavigationMode, setLocalGoalNavigationMode] = useState<LearnerGoalNavigationMode>('tree')
+  const [navigationRevealRequest, setNavigationRevealRequest] = useState<{ entryId: string; nonce: number } | null>(null)
+  const navigationRevealSequence = useRef(0)
+  const hasNavigationMap = Boolean(renderGoalNavigationMap)
+  const requestNavigationReveal = useCallback((entryId: string) => {
+    if (!hasNavigationMap) return
+    setNavigationRevealRequest({ entryId, nonce: ++navigationRevealSequence.current })
+  }, [hasNavigationMap])
+  const navigationMode = renderGoalNavigationMap ? (goalNavigationMode ?? localGoalNavigationMode) : 'tree'
+  const selectNavigationMode = (mode: LearnerGoalNavigationMode) => {
+    setLocalGoalNavigationMode(mode)
+    onGoalNavigationModeChange?.(mode)
+  }
   const learnerStateScopeKey = `${skillpilotId}\u0000${rootLandscapeId ?? ''}`
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
   const [expandedGoalIds, setExpandedGoalIds] = useState<Set<string>>(new Set())
@@ -1255,6 +1292,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const revealActiveGoal = useCallback((): boolean => {
     if (!effectiveActiveGoalId || effectiveLearnerParentMap.size === 0) return false
     const targetId = effectiveActiveGoalId
+    requestNavigationReveal(targetId)
     setExpandedGoalIds(buildCollapsedFocusPath(targetId))
     if (targetId !== currentRouteGoalId) {
       const targetLandscapeId = goalIndexAll.get(targetId)?.landscapeId
@@ -1281,9 +1319,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     landscapeId,
     onSelectGoal,
     onSelectGoalInLandscape,
+    requestNavigationReveal,
   ])
 
   const focusLearnerGoalContent = useCallback((goalId: string) => {
+    requestNavigationReveal(goalId)
     pendingPlanGoalFocusRef.current = goalId
     if (currentGoal?.id !== goalId || currentRouteGoalId !== goalId) return
     window.requestAnimationFrame(() => {
@@ -1294,7 +1334,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       target.focus({ preventScroll: true })
       pendingPlanGoalFocusRef.current = null
     })
-  }, [currentGoal?.id, currentRouteGoalId])
+  }, [currentGoal?.id, currentRouteGoalId, requestNavigationReveal])
 
   useEffect(() => {
     const pendingGoalId = pendingPlanGoalFocusRef.current
@@ -1322,6 +1362,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           ?? Array.from(plannedScopeGoalIds).find((goalId) => visibleGoals.has(goalId))
           ?? Array.from(plannedGoals)[0]
     if (!targetId) return
+    requestNavigationReveal(targetId)
     setExpandedGoalIds(buildCollapsedFocusPath(targetId))
     if (targetId !== currentRouteGoalId) {
       onSelectGoal(targetId)
@@ -1333,6 +1374,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     effectiveLearnerParentMap,
     plannedGoals,
     plannedScopeGoalIds,
+    requestNavigationReveal,
     visibleGoals,
     onSelectGoal,
   ])
@@ -2612,28 +2654,33 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   // Sidebar state
   const [sidebarWidth, setSidebarWidth] = useState(320)
+  const [mapSidebarWidth, setMapSidebarWidth] = useState<number | null>(null)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [isDesktopSidebarOpen, setIsDesktopSidebarOpen] = useState(true)
   const [completionTreeRevealId, setCompletionTreeRevealId] = useState<string | null>(null)
   const showCompletionGoalInTree = useCallback((goalId: string) => {
     if (!visibleGoals.has(goalId)) return
+    requestNavigationReveal(goalId)
     setExpandedGoalIds((current) => new Set([...current, ...buildCollapsedFocusPath(goalId)]))
     onSelectGoal(goalId)
     setIsSidebarOpen(true)
     setIsDesktopSidebarOpen(true)
     setCompletionTreeRevealId(goalId)
-  }, [buildCollapsedFocusPath, onSelectGoal, visibleGoals])
+  }, [buildCollapsedFocusPath, onSelectGoal, requestNavigationReveal, visibleGoals])
   useEffect(() => {
     if (!completionTreeRevealId) return
     const frame = window.requestAnimationFrame(() => {
-      const row = document.getElementById('learner-goal-sidebar')
-        ?.querySelector<HTMLElement>(`[data-goal-id="${CSS.escape(completionTreeRevealId)}"]`)
+      const sidebar = document.getElementById('learner-goal-sidebar')
+      const mapPanel = sidebar?.querySelector<HTMLElement>('[data-testid="learner-goal-navigation-map-panel"]')
+      const row = navigationMode === 'map'
+        ? mapPanel?.querySelector<HTMLElement>(`[data-id="${CSS.escape(completionTreeRevealId)}"]`) ?? mapPanel
+        : sidebar?.querySelector<HTMLElement>(`[data-goal-id="${CSS.escape(completionTreeRevealId)}"]`)
       row?.scrollIntoView({ block: 'nearest', inline: 'nearest' })
       row?.focus({ preventScroll: true })
       setCompletionTreeRevealId(null)
     })
     return () => window.cancelAnimationFrame(frame)
-  }, [completionTreeRevealId])
+  }, [completionTreeRevealId, navigationMode])
   useEffect(() => {
     if (!completionDiscoveryRequest) {
       completedDiscoveryRevealRef.current = null
@@ -2685,9 +2732,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const resize = useCallback((e: MouseEvent) => {
     if (isResizing.current) {
-      setSidebarWidth(Math.max(240, Math.min(800, e.clientX)))
+      if (navigationMode === 'map') setMapSidebarWidth(Math.max(280, Math.min(900, e.clientX)))
+      else setSidebarWidth(Math.max(240, Math.min(800, e.clientX)))
     }
-  }, [])
+  }, [navigationMode])
 
   const stopResizing = useCallback(() => {
     isResizing.current = false
@@ -3319,6 +3367,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       ?? learningPlanSubjectLabels.get(activeLearningPlanLandscapeId)
     : undefined
 
+  const selectMapGoal = (goalId: string) => {
+    if (!visibleGoals.has(goalId)) return
+    onSelectGoal(goalId)
+    if (isMobile) setIsSidebarOpen(false)
+  }
+
   return (
     <div className="flex h-screen bg-chat-bg text-text-primary overflow-hidden transition-colors">
 
@@ -3332,6 +3386,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
       <aside
         id="learner-goal-sidebar"
+        data-goal-navigation-mode={navigationMode}
         className={`flex flex-col bg-sidebar-bg border-r border-border-color shrink-0
           fixed inset-y-0 left-0 z-50 shadow-2xl transition-transform duration-300
           ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
@@ -3339,8 +3394,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           ${isDesktopSidebarOpen ? 'md:flex md:translate-x-0' : 'md:hidden'}
         `}
         style={{
-          width: isMobile ? '85%' : sidebarWidth,
-          maxWidth: isMobile ? '320px' : 'none'
+          width: isMobile ? '85%' : navigationMode === 'map' ? (mapSidebarWidth ?? 'min(55vw, 900px)') : sidebarWidth,
+          maxWidth: isMobile ? '320px' : navigationMode === 'map' ? '900px' : 'none'
         }}
       >
         <div className="p-4 border-b border-border-color flex items-center justify-between shrink-0">
@@ -3420,7 +3475,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             )}
           </div>
         </div>
-        <div className="flex-1 overflow-y-auto p-2">
+        <nav className="learner-goal-navigation-switch" aria-label={localizedLanguage === 'en' ? 'Goal navigation' : 'Lernzielnavigation'} hidden={!renderGoalNavigationMap}>
+          {([
+            ['tree', localizedLanguage === 'en' ? 'Tree' : 'Baum'],
+            ['map', localizedLanguage === 'en' ? 'Learning map' : 'Lernkarte'],
+          ] as const).map(([mode, label]) => <button key={mode} type="button" data-testid={`learner-goal-navigation-${mode}`} aria-pressed={navigationMode === mode} onClick={() => selectNavigationMode(mode)}>{label}</button>)}
+        </nav>
+        <div className="learner-tree-navigation flex-1 overflow-y-auto p-2" hidden={navigationMode !== 'tree'} inert={navigationMode !== 'tree'}>
           {isPersonalConfigHydrating || guidedPersonalizationGateReason === 'scopeLoading' ? (
             <div className="space-y-4 p-8" aria-hidden="true" data-testid="learner-tree-loading">
               <div className="h-4 w-3/4 rounded bg-border-color" />
@@ -3466,6 +3527,22 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               useRawGoalTitles={currentLandscapeHasMatchedCompositionView}
             />
           )}
+        </div>
+        <div className="learner-map-navigation" data-testid="learner-goal-navigation-map-panel" tabIndex={-1} hidden={navigationMode !== 'map'} inert={navigationMode !== 'map'}>
+          {renderGoalNavigationMap?.({
+            rootGoals: visibleRootGoals,
+            goalIndexAll,
+            visibleGoalIds: visibleGoals,
+            visibleChildrenByParent: learnerVisibleChildrenByParent,
+            selectedGoalId: subjectRootIdByAlias.get(selectedId) ?? selectedId,
+            activeGoalId: effectiveActiveGoalId ?? null,
+            getMastery: getEffectiveMastery,
+            completionWaivers: completionTreeWaivers,
+            revealRequest: navigationRevealRequest ?? undefined,
+            onSelectGoal: selectMapGoal,
+            active: navigationMode === 'map' && (isMobile ? isSidebarOpen : isDesktopSidebarOpen)
+              && !isSetupOpen && !isDataManagementOpen && !isModalOpen,
+          })}
         </div>
         <div className="flex items-center justify-between gap-2 border-t border-border-color p-2">
           <button
