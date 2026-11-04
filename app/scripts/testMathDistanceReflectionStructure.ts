@@ -39,8 +39,10 @@ for (const file of readdirSync(resolve(root, dir)).filter(file => file.endsWith(
   const view = normalizeCompositionView(read(`${dir}/${file}`))
   const { targetGoalIds } = collectCompositionProjectionRoleGoalIds(view.rootNodes, byId)
   assert.ok(!targetGoalIds.has(legacy), `${file} exposes retired distance mastery as target`)
-  const heLk = view.scope.jurisdiction === 'DE-HE' && view.scope.courseProfile === 'LK' && view.scope.stage !== 'SekI'
-  const bwLk = view.scope.jurisdiction === 'DE-BW' && view.scope.courseProfile === 'LK' && view.scope.stage !== 'SekI'
+  // A combined course retains the LK material; GK-only remains excluded.
+  const includesLk = ['LK', 'GK+LK'].includes(view.scope.courseProfile ?? '')
+  const heLk = view.scope.jurisdiction === 'DE-HE' && includesLk && view.scope.stage !== 'SekI'
+  const bwLk = view.scope.jurisdiction === 'DE-BW' && includesLk && view.scope.stage !== 'SekI'
   for (const id of [...trio, heExam, bwLine, bwExam]) {
     if (targetGoalIds.has(id)) (actualScopes.get(id) ?? actualScopes.set(id, []).get(id)!).push(file)
     assert.equal(targetGoalIds.has(id), [bwLine, bwExam].includes(id) ? bwLk : heLk, `${file}: incorrect authored scope for ${id}`)
@@ -48,7 +50,7 @@ for (const file of readdirSync(resolve(root, dir)).filter(file => file.endsWith(
   if (heLk) for (const id of [pointLine, pointPlane, lineLine, parallelObjects]) assert.ok(targetGoalIds.has(id), `${file} lost a former c2 distance skill`)
   if (['DE-BB', 'DE-BE'].includes(view.scope.jurisdiction ?? '') && view.scope.stage !== 'SekI') {
     for (const id of [point, pointPlane, parallelObjects]) assert.ok(targetGoalIds.has(id), `${file} lost common distance content`)
-    for (const id of [pointLine, lineLine]) assert.equal(targetGoalIds.has(id), view.scope.courseProfile === 'LK', `${file} violates the official GK/LK object-pair boundary`)
+    for (const id of [pointLine, lineLine]) assert.equal(targetGoalIds.has(id), includesLk, `${file} violates the official GK/LK object-pair boundary`)
   }
   const errors = compileCompositionView(view, landscape).findings.filter(finding => finding.severity === 'error')
   assert.deepEqual(errors, [], `${file} duplicates goals or contains an invalid reference`)

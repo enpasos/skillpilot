@@ -149,7 +149,7 @@ const bindings: BoundStageFile[] = [policy.canonical, policy.nativeCompiler, pol
   ...JSON.parse(readFileSync(resolve(root, policy.sourceDecisions.path), 'utf8')).decisions.flatMap((decision: { primary: BoundStageFile[] }) => decision.primary),
 ]
 try {
-  for (const path of new Set(bindings.map(binding => binding.path))) {
+  for (const path of new Set([policyPath, ...bindings.map(binding => binding.path)])) {
     mkdirSync(dirname(resolve(fixture, path)), { recursive: true })
     symlinkSync(resolve(root, path), resolve(fixture, path))
   }
