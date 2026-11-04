@@ -1134,18 +1134,35 @@ class LearnerServiceCanonicalProjectionTest {
     }
 
     @Test
-    void getLearnerStateClearsActiveGoalWhenPlannedFocusExcludesIt() {
+    void explicitValidFocusChangeClearsTheExcludedActiveGoal() {
         learner.setActiveGoalId(CANONICAL_SEK1_COORDINATE_GEOMETRY_ID);
+        learner.setLearningState(LearningState.TEACHING);
+        var storedFocus = new java.util.ArrayList<>(List.of(
+                new PlannedGoal(learner, CANONICAL_SEK1_COORDINATE_GEOMETRY_ID)));
         when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
-                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_ANALYSIS_CLUSTER_ID)));
+                .thenAnswer(ignored -> List.copyOf(storedFocus));
+        org.mockito.Mockito.doAnswer(invocation -> {
+            Iterable<PlannedGoal> removed = invocation.getArgument(0);
+            removed.forEach(storedFocus::remove);
+            return null;
+        }).when(plannedGoalRepository).deleteAll(any());
+        when(plannedGoalRepository.saveAll(any())).thenAnswer(invocation -> {
+            Iterable<PlannedGoal> added = invocation.getArgument(0);
+            added.forEach(storedFocus::add);
+            return storedFocus;
+        });
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of());
 
+        // A new explicit choice, rather than a presentation read, invalidates
+        // ongoing work outside this current direct learner-facing target.
+        assertThat(learnerService.setPlannedGoals(LEARNER_ID, java.util.Set.of(CANONICAL_FUNCTION_CONCEPT_ID)))
+                .containsExactly(CANONICAL_FUNCTION_CONCEPT_ID);
         UnifiedLearnerStateResponse state = learnerService.getLearnerState(LEARNER_ID);
 
         assertThat(state.activeGoal()).isNull();
         assertThat(learner.getActiveGoalId()).isNull();
         assertThat(learner.getLearningState()).isEqualTo(LearningState.FRONTIER);
-        verify(learnerRepository).save(argThat(saved ->
+        verify(learnerRepository, org.mockito.Mockito.times(2)).save(argThat(saved ->
                 saved != null
                         && saved.getActiveGoalId() == null
                         && saved.getLearningState() == LearningState.FRONTIER));

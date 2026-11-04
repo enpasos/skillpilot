@@ -630,6 +630,8 @@ class LearnerPersonalizationMutationContractTest {
         }).when(plannedGoalRepository).deleteAll(any());
 
         CompositionViewService compositionViews = mock(CompositionViewService.class);
+        // Use the real pure authored-path resolver; unstubbed Mockito null means unresolved focus.
+        when(compositionViews.resolveCanonicalFocusReference(anyMap(), any(), anyMap())).thenCallRealMethod();
         when(compositionViews.findLearnerScopeView(
                         eq(ROOT_LANDSCAPE_ID),
                         anyMap()))

@@ -753,8 +753,13 @@ public class LearnerLearningPlanService {
             String skillpilotId, LearnerLearningPlan plan, LocalDate asOf,
             boolean enabled, String activeGoalId, Map<String, Double> mastery, PlanFulfillment fulfillment,
             LearnerService.OrdinaryLearningAvailability availability) {
-        if (availability == null && learners.requiresReliableAutomaticLearningAccess()) return null;
         try {
+            if (availability == null && learners.requiresReliableAutomaticLearningAccess()) {
+                List<LearnerLearningPlanApi.Block> blocks = readBlocks(plan);
+                boolean stale = isStoredPlanStale(skillpilotId, plan, blocks);
+                return stale || learners.hasUnresolvedLearningPlanFocus(skillpilotId)
+                        ? scheduleOnlySummary(plan, blocks, asOf, stale).summary() : null;
+            }
             PeriodBasis basis = learners.getLearner(skillpilotId).getLearningPlanPeriodBasis();
             return summarize(skillpilotId, plan, asOf, basis, periodStart(basis, asOf), periodEnd(basis, asOf),
                     enabled, activeGoalId, mastery, fulfillment, availability).summary();
@@ -1748,6 +1753,27 @@ public class LearnerLearningPlanService {
                 state);
     }
 
+    private boolean isStoredPlanStale(String skillpilotId, LearnerLearningPlan plan,
+            List<LearnerLearningPlanApi.Block> blocks) {
+        try {
+            return !learners.isLearningPlanCompatible(
+                    skillpilotId, plan.getCurriculumId(), plan.getLandscapeId(), blocks);
+        } catch (ResponseStatusException exception) {
+            if (exception.getStatusCode().is5xxServerError()) throw exception;
+            return true;
+        }
+    }
+
+    /** Read authored dates and revision only; never infer learning eligibility or credit. */
+    private Evaluation scheduleOnlySummary(LearnerLearningPlan plan,
+            List<LearnerLearningPlanApi.Block> blocks, LocalDate asOf, boolean stale) {
+        return new Evaluation(new LearnerLearningPlanApi.PlanSummary(
+                plan.getId(), plan.getRevision(), plan.getLandscapeId(), plan.getPlanLabel(), stale,
+                period(blocks), currentBlock(blocks, asOf).orElse(null),
+                nextMilestone(blocks, asOf).orElse(null), buffer(blocks, asOf), null,
+                stale ? "personal-curriculum-changed" : "assessment-coverage-unavailable", false, null), blocks);
+    }
+
     private Evaluation summarize(
             String skillpilotId,
             LearnerLearningPlan plan,
@@ -1778,12 +1804,16 @@ public class LearnerLearningPlanService {
             LocalDate periodEnd,
             boolean enabled,
             String activeGoalId) {
+        List<LearnerLearningPlanApi.Block> blocks = readBlocks(plan);
         LearnerService.OrdinaryLearningAvailability availability = learners.ordinaryLearningAvailability(skillpilotId);
         if (availability == null && learners.requiresReliableAutomaticLearningAccess()) {
+            boolean stale = isStoredPlanStale(skillpilotId, plan, blocks);
+            if (stale || learners.hasUnresolvedLearningPlanFocus(skillpilotId)) {
+                return scheduleOnlySummary(plan, blocks, asOf, stale);
+            }
             throw conflict("Explicit learning inputs are currently unavailable");
         }
         Map<String, Double> mastery = availability == null ? learners.getMastery(skillpilotId) : availability.masterySnapshot();
-        List<LearnerLearningPlanApi.Block> blocks = readBlocks(plan);
         return summarize(skillpilotId, plan, asOf, periodBasis, periodStart, periodEnd, enabled, activeGoalId,
                 mastery, planFulfillment(skillpilotId, plan.getLandscapeId(), blocks, mastery), availability);
     }
@@ -1802,16 +1832,7 @@ public class LearnerLearningPlanService {
         List<LearnerLearningPlanApi.Block> blocks = readBlocks(plan);
         boolean coverageUnavailable = fulfillment.unavailable().contains(plan.getLandscapeId());
         Set<String> waived = coverageUnavailable ? Set.of() : fulfillment.waived(plan.getLandscapeId());
-        boolean stale = true;
-        try {
-            stale = !learners.isLearningPlanCompatible(
-                    skillpilotId, plan.getCurriculumId(), plan.getLandscapeId(), blocks);
-        } catch (ResponseStatusException exception) {
-            if (exception.getStatusCode().is5xxServerError()) {
-                throw exception;
-            }
-            stale = true;
-        }
+        boolean stale = isStoredPlanStale(skillpilotId, plan, blocks);
         if (!stale && availability != null && availability.coverageFailure()) {
             // Read only the structurally reliable authored schedule. No I/W or
             // completion-scope substitute is derived from the invalid calculation.

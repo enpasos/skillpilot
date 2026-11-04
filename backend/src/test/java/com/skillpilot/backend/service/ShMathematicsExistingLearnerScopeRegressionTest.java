@@ -204,9 +204,13 @@ class ShMathematicsExistingLearnerScopeRegressionTest {
                 .sorted().findFirst().orElseThrow();
         var corrected = List.of(new LearnerLearningPlanApi.Block("corrected-stochastics", "learning", null,
                 "Explicitly corrected plan", TODAY, TODAY.plusDays(7), null, List.of(currentAssessment)));
-        new LearningPlanCompletionProjection().waivedGoals(context, Set.of(currentAssessment),
-                ids -> learners.resolveLearningPlanCompletionMastery(
-                        fixture.learnerId(), learners.getMastery(fixture.learnerId()), ids));
+        // Replacing a dated schedule needs no implicit-credit proof. The whole
+        // current PC still has uncovered routes, which must remain an explicit refusal.
+        assertThatThrownBy(() -> new LearningPlanCompletionProjection().waivedGoals(
+                context, Set.of(currentAssessment), ids -> learners.resolveLearningPlanCompletionMastery(
+                        fixture.learnerId(), learners.getMastery(fixture.learnerId()), ids)))
+                .isInstanceOfSatisfying(CompletionCompilationException.class,
+                        exception -> assertThat(exception.code()).isEqualTo("UNCOVERED_COMPLETION_TARGETS"));
 
         // The GUI reads the old detail to obtain expectedRevision before it can
         // offer an explicit replacement. A wrong revision must still be refused.
@@ -220,6 +224,10 @@ class ShMathematicsExistingLearnerScopeRegressionTest {
         assertThat(published.revision()).isEqualTo(old.revision() + 1);
         assertThat(published.stale()).isFalse();
         assertThat(published.blocks()).isEqualTo(corrected);
+        assertThat(published.canContinue()).isFalse();
+        assertThat(published.nextEligibleGoal()).isNull();
+        assertThat(published.learningScope()).isNull();
+        assertThat(published.continueReason()).isEqualTo("assessment-coverage-unavailable");
         var after = persistedState(fixture.learnerId());
         assertThat(after.mastery()).isEqualTo(before.mastery());
         assertThat(after.recall()).isEqualTo(before.recall());

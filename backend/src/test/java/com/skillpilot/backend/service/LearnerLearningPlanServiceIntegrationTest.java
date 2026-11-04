@@ -256,7 +256,8 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(created.nextEligibleGoal().goalId()).isEqualTo("atom-b");
         service.continuePlan(LEARNER_ID, created.planId(), new LearnerLearningPlanApi.ContinueRequest(created.revision(), TODAY));
         verify(learnerService).setPlannedGoalsAndGetState(LEARNER_ID, Set.of("atom-b"));
-        verify(learnerService).setActiveGoal(LEARNER_ID, "atom-b");
+        verify(learnerService).setActiveGoalAutomatically(LEARNER_ID, "atom-b");
+        verify(learnerService).assertLearningPlanMayActivateGoal(LEARNER_ID, "atom-b");
         assertThat(service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY).blocks()).isEqualTo(created.blocks());
     }
 
@@ -1377,7 +1378,8 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(response.activeGoalId()).isEqualTo("atom-b");
         assertThat(response.state()).isSameAs(state);
         verify(learnerService).setPlannedGoalsAndGetState(LEARNER_ID, Set.of("block-focus"));
-        verify(learnerService).setActiveGoal(LEARNER_ID, "atom-b");
+        verify(learnerService).setActiveGoalAutomatically(LEARNER_ID, "atom-b");
+        verify(learnerService).assertLearningPlanMayActivateGoal(LEARNER_ID, "atom-b");
         assertThat(planRepository.findById(created.planId()).orElseThrow().getScopeFingerprint())
                 .isEqualTo(legacyFingerprint);
 

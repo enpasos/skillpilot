@@ -4917,6 +4917,13 @@ public class LearnerService {
                 : List.of(defaultFocusId);
     }
 
+    /** Presentation repair blocks learning selection, not read-only schedule replacement. */
+    boolean hasUnresolvedLearningPlanFocus(String skillpilotId) {
+        Learner learner = getLearner(skillpilotId);
+        return hasUnresolvedStoredFocus(learner,
+                getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum()));
+    }
+
     private boolean hasUnresolvedStoredFocus(Learner learner, GoalProjection projection) {
         if (learner == null || projection == null || completionRouteOwnsNavigation(learner)) return false;
         List<String> stored = getStoredPlannedGoals(learner.getSkillpilotId());
@@ -8804,6 +8811,23 @@ public class LearnerService {
             frontierAtomic = List.of();
         }
         if (completionOwnsNavigation) nextAllowedActions.remove("setActiveGoal");
+
+        // Explicit assessment choices only repair a display dead end. Keep the
+        // required frontier above unchanged: it also feeds autopilot and plans.
+        List<FrontierGoal> coachGoalChoices = frontierAtomic;
+        if (!invalidDirect && !blockedCoach && !completionOwnsNavigation && !personalizationRequired
+                && !unresolvedStoredFocus && frontierAtomic.isEmpty()
+                && (activeGoal == null || activeGoalMastered)
+                && (learner.getCompletionWorkflow() == null || learner.getCompletionWorkflow().isBlank())
+                && hasCompletedPersonalCurriculum(learner)
+                && completion != null && "UNCOVERED_COMPLETION_TARGETS".equals(completion.failureCode())
+                && completion.compiled() != null && completion.compiled().automatic()
+                && completion.strictMasterySnapshot() != null) {
+            Map<String, LearningGoal> choiceGoals = allGoals;
+            coachGoalChoices = assessmentStartFrontier(skillpilotId, completion).stream()
+                    .filter(goal -> CompletionProfileCompiler.isAssessment(choiceGoals.get(goal.id()))).toList();
+            if (!coachGoalChoices.isEmpty()) nextAllowedActions.add("setActiveGoal");
+        }
         StateMachineInfo stateMachine = invalidDirect || blockedCoach
                 ? new StateMachineInfo("completionPaused", "completionUnavailable", List.of(), List.of(), null)
                 : completionOwnsNavigation && activeGoal == null
@@ -8811,7 +8835,7 @@ public class LearnerService {
                 : unresolvedStoredFocus && !personalizationRequired && activeGoal == null
                     ? new StateMachineInfo("FRONTIER", "setScope",
                             getInitialScopeOptions(curriculumId, goalProjection), List.of(), null)
-                : buildStateMachineInfo(curriculumId, frontierAtomic, activeGoal,
+                : buildStateMachineInfo(curriculumId, coachGoalChoices, activeGoal,
                 activeGoalMastered, learningState, personalizationRequired, scopeExpansionOptions);
 
         if (!invalidDirect && !blockedCoach && !completionOwnsNavigation && !personalizationRequired

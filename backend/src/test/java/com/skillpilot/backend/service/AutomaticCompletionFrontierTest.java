@@ -610,6 +610,56 @@ class AutomaticCompletionFrontierTest {
         verify(masteryRepository, never()).save(any());
     }
 
+    @Test void earlierExplicitAndImplicitPlanCreditDoNotInventAPeriodCompletion() throws Exception {
+        var plan = prepareAutomaticPlan(PeriodBasis.DAY, false, List.of("A", "B", "C"));
+        LocalDate day = LocalDate.parse("2026-11-02");
+        var mapper = new ObjectMapper().findAndRegisterModules();
+        plan.setBlocksJson(mapper.writeValueAsString(List.of(
+                new LearnerLearningPlanApi.Block("earlier", "learning", "ROOT", "Earlier",
+                        day.minusDays(3), day.minusDays(3), null, List.of("A", "B")),
+                new LearnerLearningPlanApi.Block("current", "learning", "ROOT", "Current",
+                        day, day, null, List.of("C")))));
+        mastery.put("B", 1.0); // Imported earlier achievement has no dated completion event.
+        var state = service.getLearnerState(LEARNER);
+        assertThat(state.levelCompletion().calculationStatus()).isEqualTo("valid");
+        assertThat(state.levelCompletion().waivedTargetGoalIds()).contains("A");
+        var planService = new LearnerLearningPlanService(
+                (LearnerLearningPlanRepository) ReflectionTestUtils.getField(service, "learnerLearningPlanRepository"),
+                service, mapper, mock(org.springframework.context.ApplicationEventPublisher.class),
+                (LandscapeService) ReflectionTestUtils.getField(service, "landscapeService"),
+                Clock.fixed(Instant.parse("2026-11-02T12:00:00Z"), ZoneId.of("Europe/Berlin")));
+        var status = planService.getTodayStatus(LEARNER, "en");
+        assertThat(status.subjects()).singleElement().satisfies(subject -> {
+            assertThat(subject.balance()).isNotNull();
+            assertThat(subject.balance().rohsaldo()).isEqualTo(-1); // S=3, I=2 (B explicit plus A implicit).
+            assertThat(subject.balance().erfuelltesPeriodenziel()).isZero(); // H=0.
+            assertThat(subject.balance().offenesPeriodenpensum()).isEqualTo(1);
+            assertThat(subject.balance().rueckstand()).isZero();
+        });
+        assertThat(service.getGoalCompletionsOnDate(LEARNER, day)).isEmpty();
+        assertThat(mastery).containsExactlyEntriesOf(Map.of("B", 1.0));
+        verify(masteryRepository, never()).save(any());
+    }
+
+    @Test void masteredDependentStillDoesNotMasterItsPreparationAfterExplicitFocusWidening() {
+        focus.clear();
+        focus.add("B");
+        mastery.put("B", 1.0);
+        var narrow = service.getLearnerState(LEARNER);
+        assertThat(narrow.levelCompletion().calculationStatus()).isEqualTo("valid");
+        assertThat(narrow.goals().scope_completed()).isTrue();
+        assertThat(narrow.stateMachine().requiredAction()).isEqualTo("setScope");
+
+        var widened = service.setScope(LEARNER, List.of("ROOT"));
+        assertThat(widened.levelCompletion().calculationStatus()).isEqualTo("valid");
+        assertThat(widened.levelCompletion().waivedTargetGoalIds()).contains("A");
+        assertThat(widened.goals().scope_completed()).isFalse();
+        assertThat(ids(widened.frontier())).contains("C").doesNotContain("A");
+        assertThat(ids(service.getUncompactedRichFrontier(LEARNER))).contains("A");
+        assertThat(mastery).containsExactlyEntriesOf(Map.of("B", 1.0));
+        verify(masteryRepository, never()).save(any());
+    }
+
     @Test void implicitFocusCompletionOffersTheNextScopeWithActualRemainingWork() {
         focus.clear();
         focus.add("A");

@@ -1071,6 +1071,9 @@ class LearnerServiceCrossSubjectPilotTest {
     void canonicalPhysicsPilotLearnerStateUnlocksDiagramGoalFromCanonicalMathAndProjectedPhysicsMastery() {
 
         learner.setPersonalCurriculum(CANONICAL_PHYSICS_GK_PERSONAL_CONFIG);
+        // Select the actual direct target before testing its migrated prerequisite availability.
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_PHYSICS_DIAGRAMS_ID)));
 
         prepareLegacyFrontierContext(compositionAwareLearnerService(), CANONICAL_PHYSICS_DIAGRAMS_ID,
                 List.of(LEGACY_PHYSICS_WHY_ID, CANONICAL_MATH_FUNCTION_CONCEPT_ID, CANONICAL_MATH_READ_VALUES_ID),

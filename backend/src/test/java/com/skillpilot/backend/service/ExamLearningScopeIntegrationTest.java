@@ -80,9 +80,12 @@ class ExamLearningScopeIntegrationTest {
     private Learner learner;
     private Clock oldPlanClock;
     private Clock oldLearnerClock;
+    private Object originalCompletionApplication;
 
     @BeforeEach
     void setUp() throws Exception {
+        originalCompletionApplication = ReflectionTestUtils.getField(learners, "completionApplicationService");
+        assertThat(originalCompletionApplication).isNotNull();
         oldPlanClock = (Clock) ReflectionTestUtils.getField(plans, "clock");
         oldLearnerClock = (Clock) ReflectionTestUtils.getField(learners, "learningPlanClock");
         setDate(TODAY);
@@ -113,12 +116,14 @@ class ExamLearningScopeIntegrationTest {
 
     @AfterEach
     void restoreClocks() {
+        ReflectionTestUtils.setField(learners, "completionApplicationService", originalCompletionApplication);
         ReflectionTestUtils.setField(plans, "clock", oldPlanClock);
         ReflectionTestUtils.setField(learners, "learningPlanClock", oldLearnerClock);
     }
 
     @Test
     void ordinaryExamFocusStartsInsideAllTwelveSelectedGoalsWithoutOutsideMastery() {
+        useClassicalSchedulingFixture();
         assertThat(storedMastery()).isEmpty();
         var activated = activate(List.of(inactiveGeneralCourse(), exam("exam", TODAY.plusDays(5), EXAM_ROOTS)));
 
@@ -150,6 +155,7 @@ class ExamLearningScopeIntegrationTest {
 
     @Test
     void strictExamFocusKeepsOutsidePrerequisitesAndAllNineTopicsAndThreeTasks() throws Exception {
+        useClassicalSchedulingFixture();
         learner.setStrictMode(true);
         learnerRepository.saveAndFlush(learner);
         List<String> selected = selected(EXAM_ROOTS);
@@ -208,6 +214,7 @@ class ExamLearningScopeIntegrationTest {
 
     @Test
     void milestoneWithoutPreparationStartsExplicitlyInsideItsSelectionWithoutCreatingDueWork() {
+        useClassicalSchedulingFixture();
         List<String> targets = selected(EXAM_ROOTS);
         assertThat(storedMastery()).isEmpty();
         plans.upsert(id(), PHYSICS, new LearnerLearningPlanApi.UpsertRequest(0L, "Kinematik",
@@ -240,6 +247,7 @@ class ExamLearningScopeIntegrationTest {
 
     @Test
     void futurePreparationHasRealScopeAndExplicitStartButNoPrematureAutomaticQuota() {
+        useClassicalSchedulingFixture();
         var targets = selected(EXAM_ROOTS);
         preparePrerequisites(targets);
         var prep = new LearnerLearningPlanApi.Block("prep", "learning", null, "Vorbereitung",
@@ -257,6 +265,7 @@ class ExamLearningScopeIntegrationTest {
 
     @Test
     void dateChangeAndGenericResumeRemainBoundToFirstExamAndNeverUnionTheSecond() {
+        useClassicalSchedulingFixture();
         List<String> first = List.of(DIAGRAMS, UNIFORM);
         preparePrerequisites(List.of(DIAGRAMS, UNIFORM, ACCELERATION));
         activate(List.of(inactiveGeneralCourse(), exam("first", TODAY.plusDays(1), first),
@@ -275,6 +284,7 @@ class ExamLearningScopeIntegrationTest {
 
     @Test
     void automaticHandoffKeepsCompleteMultiRootExamFocusAndStopsAtTheDatedQuota() {
+        useClassicalSchedulingFixture();
         List<String> targets = selected(EXAM_ROOTS);
         preparePrerequisites(targets);
         var prep = new LearnerLearningPlanApi.Block("prep", "learning", null, "Vorbereitung",
@@ -291,6 +301,7 @@ class ExamLearningScopeIntegrationTest {
 
     @Test
     void savingAndReadingANewExamPreserveTheCurrentGoalUntilExplicitActivation() {
+        useClassicalSchedulingFixture();
         preparePrerequisites(List.of(DIAGRAMS));
         learners.setPlannedGoals(id(), Set.of(DIAGRAMS));
         learners.setActiveGoal(id(), DIAGRAMS);
@@ -319,6 +330,7 @@ class ExamLearningScopeIntegrationTest {
 
     @Test
     void weeklyAutomaticHandoffAfterTheFirstExamDateKeepsItsCompleteBoundScope() {
+        useClassicalSchedulingFixture();
         List<String> first = List.of(DIAGRAMS, UNIFORM);
         List<String> scheduled = List.of(DIAGRAMS, UNIFORM, ACCELERATION);
         preparePrerequisites(scheduled);
@@ -350,6 +362,7 @@ class ExamLearningScopeIntegrationTest {
 
     @Test
     void reorderingTheSameFocusDoesNotWriteAnotherLearnerStateRevision() {
+        useClassicalSchedulingFixture();
         List<String> targets = List.of(DIAGRAMS, UNIFORM);
         preparePrerequisites(targets);
         var activated = activate(List.of(inactiveGeneralCourse(), exam("exam", TODAY.plusDays(5), targets)));
@@ -415,6 +428,7 @@ class ExamLearningScopeIntegrationTest {
 
     @Test
     void fullyInactivePlanHasNoExamScopeAndOffersNoUnselectedSubjectFallback() {
+        useClassicalSchedulingFixture();
         var inactiveExam = new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
                 null, null, TODAY.plusDays(5), null, EXAM_ROOTS, false);
         var inactiveMath = new LearnerLearningPlanApi.Block("math-general", "learning",
@@ -429,6 +443,32 @@ class ExamLearningScopeIntegrationTest {
         assertThat(physicsStatus().periodText()).isEqualTo("Keine Lernziele eingeplant");
         assertThat(learners.getCoachLearnerState(id()).frontier()).isEmpty();
         assertThat(plans.resumeExplicitly(id(), new LearnerLearningPlanApi.ReconcileRequest(TODAY)).activeGoalId()).isNull();
+    }
+
+    @Test
+    void uncoveredCompletionRequiresExplicitExamFocusBeforeConfigurationActivation() {
+        var blocks = List.of(inactiveGeneralCourse(), exam("exam", TODAY.plusDays(5), EXAM_ROOTS));
+        var before = storedFocus();
+        assertThat(learners.ordinaryLearningAvailability(id()).coverageFailure()).isTrue();
+        assertThatThrownBy(() -> activate(blocks))
+                .isInstanceOf(ResponseStatusException.class).hasMessageContaining("select that scope explicitly first");
+        assertThat(storedFocus()).isEqualTo(before);
+        assertThat(storedMastery()).isEmpty();
+        learners.setScope(id(), EXAM_ROOTS);
+        var activated = activate(blocks);
+        assertThat(activated.activeGoalId()).isNull();
+        assertThat(activated.state().levelCompletion().calculationStatus()).isEqualTo("invalid");
+        assertThat(storedFocus()).containsExactlyInAnyOrderElementsOf(EXAM_ROOTS);
+        assertThat(physicsStatus().balanceGauge()).isNull();
+        assertThat(physicsStatus().learningScope()).isNull();
+        learners.setActiveGoal(id(), DIAGRAMS);
+        assertThat(learners.getCoachLearnerState(id()).activeGoal().id()).isEqualTo(DIAGRAMS);
+        assertThat(storedMastery()).isEmpty();
+    }
+
+    /** Classic selected exam scopes and quota scheduling have their own independent contract. */
+    private void useClassicalSchedulingFixture() {
+        ReflectionTestUtils.setField(learners, "completionApplicationService", null);
     }
 
     private String id() { return learner.getSkillpilotId(); }

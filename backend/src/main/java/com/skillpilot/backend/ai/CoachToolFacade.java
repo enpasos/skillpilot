@@ -552,6 +552,14 @@ public class CoachToolFacade {
             // Recovery path for a conversation that selected a goal but did not persist
             // it before attempting the mastery write.
             if ("setActiveGoal".equals(requiredAction)) {
+                // Display-only assessment choices require explicit task consent;
+                // they must never enter automatic cursor recovery for mastery.
+                if (activeGoal(state) == null && state.frontier() != null && state.frontier().isEmpty()
+                        && state.stateMachine().goalOptions() != null
+                        && !state.stateMachine().goalOptions().isEmpty()
+                        && state.stateMachine().goalOptions().stream().allMatch(FrontierGoal::examReadyForSelection)) {
+                    return MasteryResult.conflict(state);
+                }
                 String selectedGoalId = extractGoalIdFromMasteryRequest(effectiveRequest);
                 if (selectedGoalId != null && !selectedGoalId.isBlank()) {
                     try {
