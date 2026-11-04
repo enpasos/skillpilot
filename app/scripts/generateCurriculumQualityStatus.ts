@@ -938,6 +938,8 @@ interface RouteProfile {
   compositionViewApplicabilityMode?: 'compiled-jurisdiction'
   compositionViewRoutePathMode?: 'visible-atomic'
   goalSelector: (goal: LearningGoal) => boolean
+  /** Assessment execution may be outside the curricular population and legacy folders. */
+  terminalGoalSelector?: (goal: LearningGoal) => boolean
   clusterSelector: (goal: LearningGoal) => boolean
 }
 
@@ -1213,6 +1215,7 @@ const routeProfiles: RouteProfile[] = [
       G9: CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS,
     },
     compositionViewStage: 'SekI',
+    terminalGoalSelector: isCanonicalGymMathSek1Goal,
     goalSelector: (goal) => isAtomicGoal(goal)
       && isCanonicalGymMathSek1Goal(goal)
       && !isMemoryGoal(goal)
@@ -1225,6 +1228,7 @@ const routeProfiles: RouteProfile[] = [
     label: 'Sekundarstufe II',
     motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID],
     terminalAutonomyClusterIds: CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS,
+    terminalGoalSelector: isCanonicalGymMathSek2Goal,
     goalSelector: (goal) => isAtomicGoal(goal) && isCanonicalGymMathSek2Goal(goal) && !isMemoryGoal(goal),
     clusterSelector: isCanonicalGymMathSek2Goal,
   },
@@ -1986,17 +1990,27 @@ function isCurricularAssessmentTerminal(goal: LearningGoal): boolean {
     && hasHardRouteAssessmentRole(goal, goal.semanticKind)
 }
 
+function isReviewedAssessmentTerminal(goal: LearningGoal): boolean {
+  return isAtomicGoal(goal)
+    && isAuthoritativeCurricularReviewGoal(goal) !== undefined
+    && (goal.semanticKind === 'curricularAtomic' || goal.semanticKind === 'practiceAssessment')
+    && hasHardRouteAssessmentRole(goal, goal.semanticKind)
+}
+
 /** Curricular membership and terminal execution are independent roles. */
 export function collectRouteTerminalAutonomyGoals(
-  landscape: SkillLandscape, profile: Pick<RouteProfile, 'terminalAutonomyClusterIds' | 'goalSelector'>,
+  landscape: SkillLandscape,
+  profile: Pick<RouteProfile, 'terminalAutonomyClusterIds' | 'goalSelector' | 'terminalGoalSelector'>,
 ): LearningGoal[] {
   const byId = new Map(landscape.goals.map(goal => [goal.id, goal]))
   const configured = profile.terminalAutonomyClusterIds
     .flatMap(clusterId => byId.get(clusterId)?.contains ?? [])
     .map(id => byId.get(id))
     .filter((goal): goal is LearningGoal => !!goal && isAtomicGoal(goal) && !isMemoryGoal(goal))
-  const curricular = landscape.goals.filter(profile.goalSelector).filter(isCurricularAssessmentTerminal)
-  return [...new Map([...configured, ...curricular].map(goal => [goal.id, goal])).values()]
+  const reviewed = landscape.goals
+    .filter(profile.terminalGoalSelector ?? profile.goalSelector)
+    .filter(isReviewedAssessmentTerminal)
+  return [...new Map([...configured, ...reviewed].map(goal => [goal.id, goal])).values()]
 }
 
 export function terminalAutonomyGoalsForRouteScope(
@@ -2006,6 +2020,12 @@ export function terminalAutonomyGoalsForRouteScope(
   fallbackTerminalAutonomyGoals: LearningGoal[],
   actualTargetGoalIds: ReadonlySet<string>,
 ): LearningGoal[] {
+  const legacyTerminalIds = new Set(profile.terminalAutonomyClusterIds
+    .flatMap(clusterId => goalById.get(clusterId)?.contains ?? []))
+  const additional = fallbackTerminalAutonomyGoals.filter(goal =>
+    isCurricularAssessmentTerminal(goal)
+      || (!legacyTerminalIds.has(goal.id) && isReviewedAssessmentTerminal(goal)))
+  const additionalIds = new Set(additional.map(goal => goal.id))
   const durationModel = normalizeDurationModelForRouteScope(scope.durationModel)
   const clusterIds = durationModel
     ? profile.terminalAutonomyClusterIdsByDurationModel?.[durationModel]
@@ -2015,11 +2035,11 @@ export function terminalAutonomyGoalsForRouteScope(
       .map(goalId => goalById.get(goalId))
       .filter((goal): goal is LearningGoal => !!goal && isAtomicGoal(goal) && !isMemoryGoal(goal))
     : fallbackTerminalAutonomyGoals)
-    .filter(goal => !isCurricularAssessmentTerminal(goal))
-  // A protected curricular support atom never creates an independent target.
-  const curricular = fallbackTerminalAutonomyGoals.filter(goal =>
-    isCurricularAssessmentTerminal(goal) && actualTargetGoalIds.has(goal.id))
-  return [...new Map([...configured, ...curricular].map(goal => [goal.id, goal])).values()]
+    .filter(goal => !additionalIds.has(goal.id))
+  // Extra execution forms and protected curricular support atoms only create
+  // obligations when they belong to this actual target projection.
+  const selectedAdditional = additional.filter(goal => actualTargetGoalIds.has(goal.id))
+  return [...new Map([...configured, ...selectedAdditional].map(goal => [goal.id, goal])).values()]
 }
 
 /** Complete hard prerequisites of a whole assessment material. Cluster

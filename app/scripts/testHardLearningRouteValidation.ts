@@ -669,6 +669,44 @@ for (const id of legacyIds) assert.ok(durationG8.includes(id), 'legacy G8 termin
 assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, durationProfile, {durationModel:'G9'}, mixedTerminals, new Set([targetId])).map(g=>g.id), [targetId], 'legacy per-duration narrowing stays exact')
 assert.deepEqual(collectRouteTerminalAutonomyGoals(bound, {...cqsProfile, goalSelector:()=>false}), [], 'no assessment crosses the selected global stage/profile')
 
+// Separate reviewed exams need not live inside the historical exam folders.
+// Their selection is independent of the ordinary curricular population.
+const standalonePractice = bound.goals.find(g => g.semanticKind === 'practiceAssessment' && g.examData)!
+const standaloneProfile = {
+  ...cqsProfile,
+  goalSelector: () => false,
+  terminalGoalSelector: (g: LearningGoal) => g.id === standalonePractice.id,
+}
+const standaloneTerminals = collectRouteTerminalAutonomyGoals(bound, standaloneProfile)
+assert.deepEqual(standaloneTerminals.map(g => g.id), [standalonePractice.id])
+for (const durationModel of ['G8', 'G9']) {
+  assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, standaloneProfile, { durationModel },
+    standaloneTerminals, new Set([standalonePractice.id])).map(g => g.id), [standalonePractice.id])
+  assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, standaloneProfile, { durationModel },
+    standaloneTerminals, new Set()), [], 'an absent separate exam creates no extra obligation')
+}
+const standaloneSupport = collectCompositionProjectionRoleGoalIds([
+  { kind: 'goalEntry', goalId: standalonePractice.id, projectionRole: 'prerequisiteOnly' },
+], cqsMap)
+assert(standaloneSupport.prerequisiteOnlyGoalIds.has(standalonePractice.id))
+assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, standaloneProfile, {}, standaloneTerminals,
+  standaloneSupport.targetGoalIds), [], 'hidden exam support does not become a selected terminal')
+assert.deepEqual(collectRouteTerminalAutonomyGoals(bound, { ...standaloneProfile,
+  goalSelector: () => true, terminalGoalSelector: () => false }), [], 'an explicit terminal stage boundary is respected')
+assert.deepEqual(collectRouteTerminalAutonomyGoals({ ...bound, goals: [{ ...standalonePractice }] }, standaloneProfile), [],
+  'an unverified raw practiceAssessment tag cannot create an authoritative terminal')
+const unreadyPracticeRaw = structuredClone(raw)
+const unreadyPractice = unreadyPracticeRaw.goals.find(g => g.id === standalonePractice.id)!
+unreadyPractice.examData!.solutionContent = ''
+const unreadyPracticeLedger = structuredClone(ledger)
+unreadyPracticeLedger.decisions.find(d => d.goalId === standalonePractice.id)!.sourceFingerprint
+  = fingerprintSemanticKindSourceGoal(unreadyPractice)
+const unreadyPracticeBound = bindCurricularReviewLandscape(unreadyPracticeRaw, unreadyPracticeLedger, canonicalPath)
+const checkedStandalone = collectRouteTerminalAutonomyGoals(unreadyPracticeBound, standaloneProfile)
+assert.deepEqual(checkedStandalone.map(g => g.id), [standalonePractice.id], 'an unready separate exam stays visible to QA')
+assert(concreteExamReadinessIssues(checkedStandalone[0]).includes('missing solutionContent'))
+console.log('CQS separate reviewed assessment selection, target roles and readiness regressions passed.')
+
 // Directed prior-stage preparation changes the incoming proof only. These are
 // the 16 independently proposed topology cases, with productive kind/role guards
 // exercised separately below. There is no goal-ID exception in the implementation.
