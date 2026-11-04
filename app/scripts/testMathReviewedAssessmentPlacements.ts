@@ -524,7 +524,7 @@ try {
       mutate?.(c, n)
     }, receipt => { receipt.schemaVersion = 4 })
     installV4()
-    for (const [id, input] of liveInputs) {
+    for (const input of liveInputs.values()) {
       const before = structuredClone(input)
       const actual = applyReviewedMathAssessmentPlacements(input, liveGoals, repositoryRoot)
       assert.deepEqual(applyReviewedMathAssessmentPlacements(actual, liveGoals, repositoryRoot), actual)

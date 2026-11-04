@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs'
 import { bindCurricularReviewLandscape, isAuthoritativeCurricularReviewGoal } from './lib/curricularReviewPopulation'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 import assert from 'node:assert/strict'
+import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import {
   validateHardDirectAtomicRoutes,
   buildHardRouteProofGraph,
@@ -569,21 +570,28 @@ assert.ok(validateHardDirectAtomicRoutes(wholeFormBeforePureAssessment, earlyAss
 // Test the existing strict schema+fingerprint ledger parser on whole real input,
 // with transient copies only. No stale evidence or changed counts are accepted.
 const canonicalPath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
-const raw = JSON.parse(readFileSync(new URL('../../'+canonicalPath, import.meta.url), 'utf8'))
-const ledger = JSON.parse(readFileSync(new URL('../../curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json', import.meta.url), 'utf8'))
+type RawLandscapeFixture = Omit<SkillLandscape, 'goals'> & {
+  goals: (LearningGoal & Record<string, unknown>)[]
+}
+type LedgerFixture = {
+  counts: Record<string, number>
+  decisions: { goalId: string; semanticKind: HardRouteSemanticKind; sourceFingerprint: string; decisionBasis: string }[]
+}
+const raw: RawLandscapeFixture = JSON.parse(readFileSync(new URL('../../'+canonicalPath, import.meta.url), 'utf8'))
+const ledger: LedgerFixture = JSON.parse(readFileSync(new URL('../../curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json', import.meta.url), 'utf8'))
 const targetId = '5743b8f9-86cb-4e24-8859-351708d070ab'
 const edited = structuredClone(raw)
-const goal = edited.goals.find((g: {id: string}) => g.id === targetId)
+const goal = edited.goals.find(g => g.id === targetId)!
 Object.assign(goal, { nodeKind: 'exam', examData: curricularExam.examData })
 // Use the actual current closed-schema ledger without rewriting decision bases.
 const freshLedger = structuredClone(ledger)
-freshLedger.decisions.find((d: {goalId: string}) => d.goalId === targetId).sourceFingerprint = fingerprintSemanticKindSourceGoal(goal)
+freshLedger.decisions.find(d => d.goalId === targetId)!.sourceFingerprint = fingerprintSemanticKindSourceGoal(goal)
 const bound = bindCurricularReviewLandscape(edited, freshLedger, canonicalPath)
 assert.equal(isAuthoritativeCurricularReviewGoal(bound.goals.find(g => g.id === targetId)!), true)
 assert.equal(bound.goals.filter(g => isAuthoritativeCurricularReviewGoal(g)).length, ledger.counts.curricularAtomic,
   'the complete curricular denominator is preserved exactly')
 const staleLedger = structuredClone(freshLedger)
-staleLedger.decisions.find((d: {goalId: string}) => d.goalId === targetId).sourceFingerprint = ledger.decisions.find((d: {goalId: string}) => d.goalId === targetId).sourceFingerprint
+staleLedger.decisions.find(d => d.goalId === targetId)!.sourceFingerprint = ledger.decisions.find(d => d.goalId === targetId)!.sourceFingerprint
 assert.throws(() => bindCurricularReviewLandscape(edited, staleLedger, canonicalPath), /stale semantic-kind decision/)
 assert.throws(() => bindCurricularReviewLandscape(edited, { ...freshLedger, counts: { ...freshLedger.counts, curricularAtomic: 0 } }, canonicalPath), /count/)
 assert.equal(isAuthoritativeCurricularReviewGoal(bound.goals.find(g => g.semanticKind === 'practiceAssessment')!), false)
@@ -605,7 +613,9 @@ assert.equal(isAuthoritativeCurricularReviewGoal({ ...goal, semanticKind: 'curri
 
 // The actual CQS global/scoped consumer sees the same competency as a terminal,
 // while retaining the old duration-folder contract and all curricular members.
-const cqsProfile = {
+const cqsProfile: Parameters<typeof terminalAutonomyGoalsForRouteScope>[1] = {
+  profileId: 'same-identity-fixture', landscapeId: raw.landscapeId, label: 'Same-identity fixture',
+  motivationAnchorGoalIds: [], clusterSelector: () => false,
   terminalAutonomyClusterIds: [],
   terminalAutonomyClusterIdsByDurationModel: { G8: [], G9: [] },
   goalSelector: (g: {id: string}) => g.id === targetId,
@@ -615,16 +625,16 @@ assert.deepEqual(cqsTerminals.map(g => g.id), [targetId])
 assert.equal(bound.goals.find(g => g.id === targetId)!.semanticKind, 'curricularAtomic')
 const cqsMap = new Map(bound.goals.map(g => [g.id, g]))
 for (const durationModel of ['G8', 'G9']) {
-  assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, cqsProfile as any, {durationModel}, cqsTerminals,
+  assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, cqsProfile, {durationModel}, cqsTerminals,
     new Set([targetId])).map(g => g.id), [targetId], 'a same-ID target remains an endpoint outside the old exam folders')
-  assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, cqsProfile as any, {durationModel}, cqsTerminals,
+  assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, cqsProfile, {durationModel}, cqsTerminals,
     new Set()), [], 'prerequisite-only or absent curricular assessment does not import a new obligation')
 }
 const ordinaryRaw = structuredClone(raw)
-const ordinaryGoal = ordinaryRaw.goals.find((g: any) => g.id === targetId)!
+const ordinaryGoal = ordinaryRaw.goals.find(g => g.id === targetId)!
 delete ordinaryGoal.nodeKind
 delete ordinaryGoal.examData
-const ordinaryBound = bindCurricularReviewLandscape(ordinaryRaw, { ...freshLedger, decisions: freshLedger.decisions.map((d: any) =>
+const ordinaryBound = bindCurricularReviewLandscape(ordinaryRaw, { ...freshLedger, decisions: freshLedger.decisions.map(d =>
   d.goalId === targetId ? { ...d, sourceFingerprint: fingerprintSemanticKindSourceGoal(ordinaryGoal) } : d) }, canonicalPath)
 assert.deepEqual(collectRouteTerminalAutonomyGoals(ordinaryBound, cqsProfile), [], 'an ordinary endpoint is not a CQS assessment terminal')
 const cqsTask = bound.goals.find(g => g.id === targetId)!
@@ -635,15 +645,15 @@ console.log('CQS same-ID global/scoped terminal and unready-task regressions pas
 
 const scopedPOnlyRoles = collectCompositionProjectionRoleGoalIds([{kind: 'goalEntry', goalId: targetId, projectionRole: 'prerequisiteOnly'}], cqsMap)
 assert.ok(scopedPOnlyRoles.prerequisiteOnlyGoalIds.has(targetId))
-assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, cqsProfile as any, {durationModel:'G8'}, cqsTerminals, scopedPOnlyRoles.targetGoalIds), [])
+assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, cqsProfile, {durationModel:'G8'}, cqsTerminals, scopedPOnlyRoles.targetGoalIds), [])
 const absentRoles = collectCompositionProjectionRoleGoalIds([{kind: 'goalEntry', goalId: '546bf0b3-6921-416b-a2ef-8fd37d429dc7'}], cqsMap)
-assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, cqsProfile as any, {durationModel:'G9'}, cqsTerminals, absentRoles.targetGoalIds), [])
+assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, cqsProfile, {durationModel:'G9'}, cqsTerminals, absentRoles.targetGoalIds), [])
 const actualParent = bound.goals.find(g => g.contains?.includes(targetId))!
 assert.equal(collectRouteTerminalAutonomyGoals(bound, {...cqsProfile, terminalAutonomyClusterIds:[actualParent.id]}).filter(g => g.id===targetId).length, 1)
 const unreadyRaw = structuredClone(edited)
-unreadyRaw.goals.find((g: any) => g.id===targetId).examData.solutionContent = ''
+unreadyRaw.goals.find(g => g.id===targetId)!.examData!.solutionContent = ''
 const unreadyLedger = structuredClone(freshLedger)
-unreadyLedger.decisions.find((d: any) => d.goalId===targetId).sourceFingerprint = fingerprintSemanticKindSourceGoal(unreadyRaw.goals.find((g: any) => g.id===targetId))
+unreadyLedger.decisions.find(d => d.goalId===targetId)!.sourceFingerprint = fingerprintSemanticKindSourceGoal(unreadyRaw.goals.find(g => g.id===targetId)!)
 const unreadyBound = bindCurricularReviewLandscape(unreadyRaw, unreadyLedger, canonicalPath)
 const stillChecked = collectRouteTerminalAutonomyGoals(unreadyBound, cqsProfile)
 assert.deepEqual(stillChecked.map(g => g.id), [targetId], 'an unready task stays in QA instead of disappearing')
@@ -653,10 +663,10 @@ const legacyParent = bound.goals.find(g => g.contains?.some(id => cqsMap.get(id)
 const legacyIds = (legacyParent.contains ?? []).filter(id => !cqsMap.get(id)?.contains?.length && cqsMap.get(id)?.nodeKind!=='memory')
 const durationProfile = {...cqsProfile, terminalAutonomyClusterIds:[legacyParent.id], terminalAutonomyClusterIdsByDurationModel:{G8:[legacyParent.id],G9:[]}}
 const mixedTerminals = collectRouteTerminalAutonomyGoals(bound, durationProfile)
-const durationG8 = terminalAutonomyGoalsForRouteScope(cqsMap, durationProfile as any, {durationModel:'G8'}, mixedTerminals, new Set([targetId])).map(g=>g.id)
+const durationG8 = terminalAutonomyGoalsForRouteScope(cqsMap, durationProfile, {durationModel:'G8'}, mixedTerminals, new Set([targetId])).map(g=>g.id)
 assert.ok(durationG8.includes(targetId))
 for (const id of legacyIds) assert.ok(durationG8.includes(id), 'legacy G8 terminal inventory retained '+id)
-assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, durationProfile as any, {durationModel:'G9'}, mixedTerminals, new Set([targetId])).map(g=>g.id), [targetId], 'legacy per-duration narrowing stays exact')
+assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, durationProfile, {durationModel:'G9'}, mixedTerminals, new Set([targetId])).map(g=>g.id), [targetId], 'legacy per-duration narrowing stays exact')
 assert.deepEqual(collectRouteTerminalAutonomyGoals(bound, {...cqsProfile, goalSelector:()=>false}), [], 'no assessment crosses the selected global stage/profile')
 
 // Directed prior-stage preparation changes the incoming proof only. These are
@@ -802,20 +812,20 @@ assert.ok(validateHardDirectAtomicRoutes(stageFixtures({ e2: ['p1'], p1: ['a1'] 
 
 // Real reviewed whole competencies retain their exact authored preparation;
 // terminal population remains entirely Sek II.
-const actualSek1 = (goal: any) => goal.id === '65365dce-f33f-49d8-9516-42f75883aa86'
+const actualSek1 = (goal: LearningGoal) => goal.id === '65365dce-f33f-49d8-9516-42f75883aa86'
   || goal.tags?.includes('phase:SekI') || /^J(?:[5-9]|10)$/.test(goal.dimensionTags?.phase ?? '')
   || (goal.dimensionTags?.topicCode ?? '').includes('SEK1')
-const actualSek2 = (goal: any) => goal.id === '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'
-  || goal.tags?.includes('phase:SekII') || ['E', 'Q1', 'Q2', 'Q3', 'Q4'].includes(goal.dimensionTags?.phase)
+const actualSek2 = (goal: LearningGoal) => goal.id === '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'
+  || goal.tags?.includes('phase:SekII') || ['E', 'Q1', 'Q2', 'Q3', 'Q4'].includes(goal.dimensionTags?.phase ?? '')
   || (goal.dimensionTags?.topicCode ?? '').includes('SEK2')
-const realPriorPreparationProfile: HardRouteProfile<HardRouteGoal> = {
+const realPriorPreparationProfile: HardRouteProfile<LearningGoal> = {
   scopeLabel: 'real unchanged Sek II competencies', motivationAnchorGoalIds: ['71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'],
   terminalGoalClusterIds: [], routeGoalSelector: actualSek2,
   priorStagePreparation: { motivationAnchorGoalIds: ['65365dce-f33f-49d8-9516-42f75883aa86'], routeGoalSelector: actualSek1 },
   goalSelector: (goal) => ['71f62cfa-7cc2-5f60-9691-bcdc2ee910df', '9f9c7ece-b81c-55fa-8073-dd816d7d4778'].includes(goal.id),
   terminalGoalSelector: (goal) => hasHardRouteAssessmentRole(goal, rawKinds.get(goal.id)),
 }
-const rawKinds = new Map<string, HardRouteSemanticKind>(ledger.decisions.map((decision: any) => [decision.goalId, decision.semanticKind]))
+const rawKinds = new Map<string, HardRouteSemanticKind>(ledger.decisions.map(decision => [decision.goalId, decision.semanticKind]))
 const realPreparationProof = buildHardRouteProofGraph(raw.goals, rawKinds, realPriorPreparationProfile)
 for (const goalId of ['71f62cfa-7cc2-5f60-9691-bcdc2ee910df', '9f9c7ece-b81c-55fa-8073-dd816d7d4778']) {
   assert.equal(realPreparationProof.hasPreparationPath(goalId), true, goalId)

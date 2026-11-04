@@ -19,7 +19,7 @@ export function loadMarkdownSourceArchives(repoRoot: string): Set<string> {
   for (const entry of inventory.archivedMarkdownSources) {
     if (typeof entry.path !== 'string' || !entry.path.startsWith('docs/qa-ci/evidence/')
       || !entry.path.endsWith('.md') || isAbsolute(entry.path) || posix.normalize(entry.path) !== entry.path
-      || /[\\*?!#\[\]]/.test(entry.path) || !/^[a-f0-9]{64}$/.test(entry.sha256)
+      || /[\\*?!#[\]]/.test(entry.path) || !/^[a-f0-9]{64}$/.test(entry.sha256)
       || typeof entry.reason !== 'string' || !entry.reason.trim() || paths.has(entry.path)) {
       throw new Error(`Invalid or duplicate Markdown source archive: ${entry.path}`)
     }

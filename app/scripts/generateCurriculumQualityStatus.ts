@@ -2788,7 +2788,6 @@ function evaluateRouteProfile(
   profile: RouteProfile,
   applicabilityCompilation: ApplicabilityCompilationResult,
 ): ScopeStatus {
-  const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const selectedGoals = landscape.goals.filter(profile.goalSelector)
   const effectiveEdges = buildEffectiveRequiresEdges(landscape)
   const reverseEffectiveEdges = buildReverseEdges(effectiveEdges)
