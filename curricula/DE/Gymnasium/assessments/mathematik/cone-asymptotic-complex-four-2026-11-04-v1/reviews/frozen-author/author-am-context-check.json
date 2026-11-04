@@ -1,0 +1,128 @@
+{
+  "status": "PASS_EIGHT_CURRENT_ORIGINAL_AM_BINDINGS_NO_ROLE_OR_REVIEW_CHANGE",
+  "records": [
+    {
+      "goalId": "49f9059a-876c-5051-8146-d008b5cc691c",
+      "lane": "semantic-atomicity",
+      "actualFingerprint": "sha256:d3b9757e854477872212daad1c0bf1b2496cf69895370c1b50f0c12ce93988ac",
+      "currentRegisteredRowMatches": true,
+      "status": "atomic",
+      "rowRewritten": false
+    },
+    {
+      "goalId": "50612a57-7b9d-45fd-bc08-e95556444760",
+      "lane": "semantic-atomicity",
+      "actualFingerprint": "sha256:aef133dbb01b155dc0ceb97b02d3b6ee2fa26d69143886a1d6c3ea5c63d7b2df",
+      "currentRegisteredRowMatches": true,
+      "status": "atomic",
+      "rowRewritten": false
+    },
+    {
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "lane": "semantic-atomicity",
+      "actualFingerprint": "sha256:c7a72d1512456ae0e44e7c59ead6122f5af6bb7c7a10820f88d7fea06d8fd768",
+      "currentRegisteredRowMatches": true,
+      "status": "atomic",
+      "rowRewritten": false
+    },
+    {
+      "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+      "lane": "semantic-atomicity",
+      "actualFingerprint": "sha256:efa4e2f2525f3a3e61314826d9f571c8ffa50d3bf24a15f7c929304896d6f201",
+      "currentRegisteredRowMatches": true,
+      "status": "atomic",
+      "rowRewritten": false
+    },
+    {
+      "goalId": "49f9059a-876c-5051-8146-d008b5cc691c",
+      "lane": "memory-card-review",
+      "actualFingerprint": "sha256:13403ac2bdd11fafab70a7c318116b278ec49a32efeec981c89068b7b1c3189d",
+      "currentRegisteredRowMatches": true,
+      "status": "no_memory_needed",
+      "rowRewritten": false
+    },
+    {
+      "goalId": "50612a57-7b9d-45fd-bc08-e95556444760",
+      "lane": "memory-card-review",
+      "actualFingerprint": "sha256:5c9678ca303c9a3a1ac1ce1d4b3ef6a1bd79197151850f20ccc3fc3c3691ceb7",
+      "currentRegisteredRowMatches": true,
+      "status": "no_memory_needed",
+      "rowRewritten": false
+    },
+    {
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "lane": "memory-card-review",
+      "actualFingerprint": "sha256:ef40e6ad1afcdd0c1f202fc035c93ae18871c2ba75efcf99138d5f4705da01cc",
+      "currentRegisteredRowMatches": true,
+      "status": "memory_required",
+      "rowRewritten": false
+    },
+    {
+      "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+      "lane": "memory-card-review",
+      "actualFingerprint": "sha256:e20cf5d66b51170991153ad26d13ef4e4a7c954d34ce6806aa86bc10f7e11779",
+      "currentRegisteredRowMatches": true,
+      "status": "memory_required",
+      "rowRewritten": false
+    }
+  ],
+  "executedActualSources": [
+    {
+      "path": "app/scripts/semanticAtomicityReview.ts",
+      "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee",
+      "actualSelectedFunctionSourceSha256": "4504e419242a200b4eb06fca8075999f72450dbe33659047754733aef60531ff"
+    },
+    {
+      "path": "app/scripts/memoryCardReview.ts",
+      "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181",
+      "actualSelectedFunctionSourceSha256": "dbf42124ae9e214aec84ea6e476a87848d9a3ac24c3461d5bc9a29d7778276c0"
+    }
+  ],
+  "wholeCurrentSemanticKindRows": [
+    {
+      "goalId": "50612a57-7b9d-45fd-bc08-e95556444760",
+      "sourceFingerprint": "sha256:8bfcf356cbc61fabfc10b294f852c4b3cb9b65ba2e9909308a4bb94dff329cae",
+      "semanticKind": "curricularAtomic",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-post-split-curricular-atomic"
+    },
+    {
+      "goalId": "49f9059a-876c-5051-8146-d008b5cc691c",
+      "sourceFingerprint": "sha256:14ae2400566ab81911211d9c031c29209ea089bb9bb2ab417e5c85e0d287b082",
+      "semanticKind": "curricularAtomic",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+    },
+    {
+      "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+      "sourceFingerprint": "sha256:347beaef68ef630f3efaeec52d14586237948c8f5999459c1ce9b0945c59f097",
+      "semanticKind": "curricularAtomic",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+    },
+    {
+      "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "sourceFingerprint": "sha256:dd5b7ce93267648e9129b921e64d2454ad1c838a55b007327921661ff8b7be58",
+      "semanticKind": "curricularAtomic",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+    }
+  ],
+  "ledger": {
+    "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+    "sha256": "683b7e6354e455da65deb609be7a27ac2ac3027478c95c7bc876d081829d8924",
+    "counts": {
+      "curricularAtomic": 807,
+      "curricularArea": 241,
+      "practiceAssessment": 191,
+      "programStructure": 7,
+      "memory": 6,
+      "runtimeSupport": 11,
+      "orientation": 2,
+      "total": 1265
+    }
+  },
+  "canonicalGoalChanges": false,
+  "newAMDecisions": false,
+  "contentReview": "PENDING_GENUINE_INDEPENDENT_REVIEW"
+}

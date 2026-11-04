@@ -6,8 +6,8 @@ M7-, Deployment- oder vollständige CI-Freigabe.
 
 ## Aktueller Messstand: 4. November 2026
 
-Der Stand enthält **25 vollständige Prüfungsformen unter bestehenden
-curricularen Lernziel-IDs und zehn gezielt platzierte eigenständige
+Der Stand enthält **27 vollständige Prüfungsformen unter bestehenden
+curricularen Lernziel-IDs und zwölf gezielt platzierte eigenständige
 Prüfungsziele**. Die 807 curricularen Mathematikziele bleiben erhalten.
 Sechs zuvor zu breit eingeführte Prüfungsrollen sind korrigiert: Die
 Kompetenz bleibt dort ein gewöhnliches Lernziel, wo bereits ein anderer
@@ -19,8 +19,8 @@ unversorgten Angeboten ausgewählt.
 | Tatsächlich geprüfte Angebote | 161, einschließlich 46 Kursvereinigungen |
 | Abschlussintegrität bestanden | 17 Angebote |
 | Angebote mit verbleibenden Datenlücken | 144 |
-| Ungedeckte Ziele | 261 unterschiedliche IDs / 2.982 Ziel-Angebots-Paare |
-| Gewöhnliche offene Endpunkte | 169 unterschiedliche IDs / 1.987 Endpunktpaare |
+| Ungedeckte Ziele | 257 unterschiedliche IDs / 2.818 Ziel-Angebots-Paare |
+| Gewöhnliche offene Endpunkte | 165 unterschiedliche IDs / 1.887 Endpunktpaare |
 
 Die jüngste gemeinsame Korrektur schließt weitere **791 Ziel-Angebots-Paare
 und 404 Endpunktpaare**, ohne neue Lücken zu erzeugen. Sie begrenzt zehn
@@ -31,7 +31,14 @@ Matrixvoraussetzung ist ergänzt; eine sachfremde Dichtevoraussetzung ist
 entfernt. Vier hessische Ziel-Angebots-Paare zum Bogenmaß sind quellenbelegt
 sichtbar, ohne neue unversorgte Arbeit zu erzeugen.
 
-Der tatsächliche Backendvergleich und das unabhängige Astra-Review prüfen
+Vier anschließende Formen schließen weitere **164 Ziel-Angebots-Paare und
+100 Endpunktpaare**. Kegel und Asymptotik erhalten zusammen 62 begrenzte neue
+Prüfungsplätze; Einheitswurzeln und komplexes Dividieren behalten ihre IDs
+und bestehenden Speicherpflichten. Die anschließende tatsächliche Messung
+verwendet 3.254 Eingaben, deren Bytes nach dem Import vollständig stimmen.
+Auch dieser Nachlauf besteht alle elf Autorenprüfungen.
+
+Der gemeinsame vorherige Backendvergleich und das unabhängige Astra-Review prüfen
 alle 161 Angebote. Alle 502 übernommenen Dateien und die 3.187 Eingaben des
 Backendlaufs stimmen bytegenau. Die elf normalen Autorenprüfungen bestehen;
 auch die reguläre Erzeugung der 39 kombinierten Ansichten besteht mit den
@@ -42,8 +49,10 @@ Bei alten gespeicherten Fokusreferenzen auf ersetzte virtuelle kombinierte
 Ansichten ist eine neue bewusste Auswahl nötig. Der öffentliche Lesetest
 bestätigt, dass die Referenz erhalten bleibt, keine automatische Erweiterung
 erfolgt und ein bereits gültiges aktives atomares Lernziel fortgesetzt
-werden kann. Ein älterer B2-Datensatz hat noch unvollständige Freigabe- und
-Abdeckungsmetadaten; dieser Befund ist ausgewiesen.
+werden kann. Die fehlenden Freigabe- und Inhaltsmetadaten des älteren B2-Datensatzes
+sind inzwischen mit einem gesonderten fachlichen Review ergänzt. Die
+Zuordnung bewerteter Handlungen behauptet keine vollständige Prüfung
+aller Varianten seiner Voraussetzungen.
 
 Der Coach zeigt verfügbare Prüfungen auch bei ausschließlich ungedeckten
 Abschlussrouten als ausdrückliche Auswahl. Daraus entstehen weder automatischer
@@ -51,7 +60,7 @@ Prüfungsstart noch implizite Gutschrift. Die gezielte integrierte Backendprüfu
 besteht mit 179 Tests; alle Produktionsklassen wurden zusätzlich frisch
 kompiliert. Die Graphvalidierung unterscheidet die curriculare Kompetenz von
 ihrer Prüfungsform und prüft gerichtete Vorbereitungswege. Sie meldet noch
-12 offene direkte atomare Abschlussrouten.
+10 offene direkte atomare Abschlussrouten.
 
 Der GitHub-Stand `427723ecdf` bestätigt Dokumentation, Lernzielbuch,
 Completion-Kern, Cockpit, OpenAI-/Claude-Adapter und alle drei Gemini-Jobs.
@@ -86,6 +95,7 @@ vollständigen Backendlauf.
 [Analysisformen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/analysis-eight/README.md)
 · [Neun weitere Formen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/nine-whole-forms/README.md)
 · [Gemeinsame Rollen- und Pfadkorrektur](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/context-he-three/README.md)
+· [Kegel und komplexe Zahlen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/cone-complex-four/README.md)
 · [Markov-Platzierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/sh-markov-twelve/README.md)
 · [Graphvalidierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/directed-prior-stage-validation/README.md)
 · [Coach und Plan](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-explicit-assessment-choices/README.md)

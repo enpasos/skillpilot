@@ -1,0 +1,124 @@
+{
+  "status": "PASS_BOUNDED_NATIVE_STAGE_AND_NORMAL11_WITH_TEN_OPEN_GRAPH_ROUTE_FINDINGS",
+  "frozenRuntimeManifest": {
+    "path": "tmp/approach-review-20261101/cone-complex-four-plus-b2-integration-20261104-v1/manifest.json",
+    "sha256": "6f0d1651726d5deabc7b307546b32a82807755397ae3147cd6e45fb2e82dcafc",
+    "bytes": 154152
+  },
+  "original245RuntimeCodeLeavesByteUnchanged": true,
+  "genuineStageReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/stage-scope-implementation-cone-complex-four-plus-b2.review.json",
+    "sha256": "e81333f6563249b52fc4d28c6e08e24f40db0e1c9960ab85313e754252618cf3"
+  },
+  "actualAfterNative": {
+    "path": "tmp/approach-review-20261101/cone-complex-four-plus-b2-native-20261104-v1/candidate.json.gz",
+    "sha256": "e6a30ae4dc4a2ca9853ba92e7a6ac267dc5e7b822a48be298e2df976c500c7e5",
+    "inputFiles": 3254
+  },
+  "actualFiniteDelta": {
+    "path": "tmp/approach-review-20261101/cone-complex-four-plus-b2-native-20261104-v1/finite-delta.actual.json",
+    "sha256": "3e3dda483d105df7365482d2ac7fad937d0c4879c11a99ce9a81e7fbef8a6fe1"
+  },
+  "normalChecks": {
+    "status": "PASS_FINAL_AGREED_ELEVEN_NORMAL_CHECKS",
+    "distinctCommands": 11,
+    "allExitCodesZero": true,
+    "allInputHashesStable": true,
+    "portableExecution": {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/cone-complex-four-plus-b2/checks/final-normal11/execution.json",
+      "sha256": "429591992ebe33ef2f0a2d8ccde4892ce452b02337a5c79b364419a6fa9f1c29"
+    }
+  },
+  "currentGraph": {
+    "exitCode": 1,
+    "errors": 10,
+    "warnings": 0,
+    "byCode": {
+      "GVR-012": 10
+    },
+    "priorErrors": 12,
+    "newFindingGoalIds": [],
+    "closedFindingGoalIds": [
+      "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+      "8e18154d-41d6-592e-ba98-537edad338e8"
+    ],
+    "fullGraphPass": false,
+    "evidencePath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/cone-complex-four-plus-b2/checks/current-graph-validation.actual.json"
+  },
+  "nativeDelta": {
+    "scopes": 161,
+    "unions": 46,
+    "newSeparateTargetPairs": 62,
+    "sameIdentityProtectedPairs": 38,
+    "before": {
+      "uncoveredUnique": 261,
+      "uncoveredPairs": 2982,
+      "endpointUnique": 169,
+      "endpointPairs": 1987,
+      "failedScopes": 144
+    },
+    "after": {
+      "uncoveredUnique": 257,
+      "uncoveredPairs": 2818,
+      "endpointUnique": 165,
+      "endpointPairs": 1887,
+      "failedScopes": 144
+    },
+    "delta": {
+      "closedUncovered": 164,
+      "newUncovered": 0,
+      "closedEndpoints": 100,
+      "newEndpoints": 0
+    },
+    "noMasteryWrites": true
+  },
+  "rootQASources": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "e31ca62a9bf3aba948384c5d66f967d77acfcc96acab04c4477403421a0f8001",
+      "ownedByThisPayload": false
+    },
+    {
+      "path": "app/scripts/testHardLearningRouteValidation.ts",
+      "sha256": "2395ef11f0e9b70b03063f5d5a1350f3f303aa90cf192821ce229484e6688b9e",
+      "ownedByThisPayload": false
+    },
+    {
+      "path": "app/scripts/markdownSourceArchives.ts",
+      "sha256": "70eb89d322be038928612052a91e595de2bde72149ca42cbdfa9ee69f11b8399",
+      "ownedByThisPayload": false
+    },
+    {
+      "path": "app/scripts/testMathReviewedAssessmentPlacements.ts",
+      "sha256": "948800671024f26878decef18f28faa6765bd02a51d1239c3a2d82dd9d981178",
+      "ownedByThisPayload": false
+    },
+    {
+      "path": "app/scripts/testMathCountrySekICompositionViews.ts",
+      "sha256": "cb1b410ae8d3ac5a47dd044a7df0000020541df87b94aa634367a8e2244e99bd",
+      "ownedByThisPayload": false
+    },
+    {
+      "path": "app/scripts/testMathDistanceReflectionStructure.ts",
+      "sha256": "3361f179f19e5a79bbea550a773d7e96b32a3fd2dd1157569268afbab8a33be5",
+      "ownedByThisPayload": false
+    }
+  ],
+  "productionJavaMainSource": {
+    "actualN2HashMap": {
+      "path": "tmp/approach-review-20261101/cone-complex-four-plus-b2-native-20261104-v1/main-source-hashes.json",
+      "sha256": "32d749d5e25bfb5956382936e8caabb0eaae257787f283d8eaa31db8e6cfe6bf",
+      "bytes": 94627
+    },
+    "verifiedSourceFiles": 482,
+    "currentRootAndPrivateHostByteEqual": true
+  },
+  "RootStoredCompositionFocusTestSeparate68Of68NotCopiedOrRerun": true,
+  "laterPackagePrivateRoleGuardNotImported": true,
+  "rootHeadAtCloseout": "6dc7d85bfdb85d2fe0a565f5e53110a2f660232b",
+  "allProbeAndCheckProcessesTerminal": true,
+  "noNewMathematicsNativeOrRenderingReviewRun": true,
+  "noFullCurriculumM7CIProductionOrHostAcceptance": true,
+  "noRootGitOrMasteryWrites": true,
+  "optionalLevelsDeferred": true
+}

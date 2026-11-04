@@ -1,0 +1,844 @@
+{
+  "status": "PASS_AUTHOR_MATHEMATICS_NOT_INDEPENDENT_REVIEW_OR_ACTIVATION",
+  "checkCount": 91,
+  "checks": [
+    {
+      "check": "polygon source table n=4",
+      "passed": true,
+      "actualEvidence": {
+        "n": 4,
+        "independentlyComputedAreas": [
+          32.0,
+          63.99999999999999
+        ],
+        "givenAreas": [
+          "32.000",
+          "64.000"
+        ]
+      }
+    },
+    {
+      "check": "exact supplied-data volumes n=4",
+      "passed": true,
+      "actualEvidence": {
+        "exactVolumes": [
+          "96",
+          "192"
+        ]
+      }
+    },
+    {
+      "check": "actual and displayed enclosure n=4",
+      "passed": true,
+      "actualEvidence": {
+        "coneVolume": 150.79644737231007,
+        "displayedVolumeBounds": [
+          96.0,
+          192.0
+        ]
+      }
+    },
+    {
+      "check": "polygon source table n=8",
+      "passed": true,
+      "actualEvidence": {
+        "n": 8,
+        "independentlyComputedAreas": [
+          45.25483399593904,
+          53.019335983756164
+        ],
+        "givenAreas": [
+          "45.255",
+          "53.019"
+        ]
+      }
+    },
+    {
+      "check": "exact supplied-data volumes n=8",
+      "passed": true,
+      "actualEvidence": {
+        "exactVolumes": [
+          "27153/200",
+          "159057/1000"
+        ]
+      }
+    },
+    {
+      "check": "actual and displayed enclosure n=8",
+      "passed": true,
+      "actualEvidence": {
+        "coneVolume": 150.79644737231007,
+        "displayedVolumeBounds": [
+          135.765,
+          159.057
+        ]
+      }
+    },
+    {
+      "check": "polygon source table n=16",
+      "passed": true,
+      "actualEvidence": {
+        "n": 16,
+        "independentlyComputedAreas": [
+          48.98347934273149,
+          50.92156604919245
+        ],
+        "givenAreas": [
+          "48.983",
+          "50.922"
+        ]
+      }
+    },
+    {
+      "check": "exact supplied-data volumes n=16",
+      "passed": true,
+      "actualEvidence": {
+        "exactVolumes": [
+          "146949/1000",
+          "76383/500"
+        ]
+      }
+    },
+    {
+      "check": "actual and displayed enclosure n=16",
+      "passed": true,
+      "actualEvidence": {
+        "coneVolume": 150.79644737231007,
+        "displayedVolumeBounds": [
+          146.949,
+          152.766
+        ]
+      }
+    },
+    {
+      "check": "polygon source table n=32",
+      "passed": true,
+      "actualEvidence": {
+        "n": 32,
+        "independentlyComputedAreas": [
+          49.94312243612883,
+          50.427598518868095
+        ],
+        "givenAreas": [
+          "49.943",
+          "50.428"
+        ]
+      }
+    },
+    {
+      "check": "exact supplied-data volumes n=32",
+      "passed": true,
+      "actualEvidence": {
+        "exactVolumes": [
+          "149829/1000",
+          "37821/250"
+        ]
+      }
+    },
+    {
+      "check": "actual and displayed enclosure n=32",
+      "passed": true,
+      "actualEvidence": {
+        "coneVolume": 150.79644737231007,
+        "displayedVolumeBounds": [
+          149.829,
+          151.284
+        ]
+      }
+    },
+    {
+      "check": "both base areas converge to the circle",
+      "passed": true,
+      "actualEvidence": {
+        "bothLimits": "16*pi cm^2"
+      }
+    },
+    {
+      "check": "fixed height yields same cone volume",
+      "passed": true,
+      "actualEvidence": {
+        "height": 9,
+        "factor": "1/3"
+      }
+    },
+    {
+      "check": "height variation counterexample",
+      "passed": true,
+      "actualEvidence": {
+        "wrongHeightSequence": "9/n",
+        "wrongVolumeLimit": 0,
+        "reason": "Changing the height destroys approximation of the fixed cone."
+      }
+    },
+    {
+      "check": "cone exact volume and rounding",
+      "passed": true,
+      "actualEvidence": {
+        "exact": "48*pi",
+        "rounded": 150.8,
+        "cylinder": "144*pi"
+      }
+    },
+    {
+      "check": "table enclosure gap",
+      "passed": true,
+      "actualEvidence": {
+        "lastDisplayedGap": "1.455 cm^3"
+      }
+    },
+    {
+      "check": "exponential table x=1",
+      "passed": true,
+      "actualEvidence": {
+        "ePower": 2.718281828459045,
+        "cube": 1
+      }
+    },
+    {
+      "check": "exponential table x=4",
+      "passed": true,
+      "actualEvidence": {
+        "ePower": 54.598150033144236,
+        "cube": 64
+      }
+    },
+    {
+      "check": "exponential table x=20",
+      "passed": true,
+      "actualEvidence": {
+        "ePower": 485165195.4097903,
+        "cube": 8000
+      }
+    },
+    {
+      "check": "finite all-x claim counterexample",
+      "passed": true,
+      "actualEvidence": {
+        "at4": [
+          54.598150033144236,
+          64
+        ]
+      }
+    },
+    {
+      "check": "positive bound algebra",
+      "passed": true,
+      "actualEvidence": {
+        "boundForPositiveX": "24/x"
+      }
+    },
+    {
+      "check": "comparison bound vanishes",
+      "passed": true,
+      "actualEvidence": {
+        "limit": 0
+      }
+    },
+    {
+      "check": "positive asymptotic power 1",
+      "passed": true,
+      "actualEvidence": {
+        "power": 1,
+        "quotientLimit": 0,
+        "reciprocalLimit": "+infinity"
+      }
+    },
+    {
+      "check": "negative asymptotic power 1",
+      "passed": true,
+      "actualEvidence": {
+        "power": 1,
+        "limit": 0,
+        "approachSign": -1
+      }
+    },
+    {
+      "check": "positive asymptotic power 2",
+      "passed": true,
+      "actualEvidence": {
+        "power": 2,
+        "quotientLimit": 0,
+        "reciprocalLimit": "+infinity"
+      }
+    },
+    {
+      "check": "negative asymptotic power 2",
+      "passed": true,
+      "actualEvidence": {
+        "power": 2,
+        "limit": 0,
+        "approachSign": 1
+      }
+    },
+    {
+      "check": "positive asymptotic power 3",
+      "passed": true,
+      "actualEvidence": {
+        "power": 3,
+        "quotientLimit": 0,
+        "reciprocalLimit": "+infinity"
+      }
+    },
+    {
+      "check": "negative asymptotic power 3",
+      "passed": true,
+      "actualEvidence": {
+        "power": 3,
+        "limit": 0,
+        "approachSign": -1
+      }
+    },
+    {
+      "check": "positive asymptotic power 4",
+      "passed": true,
+      "actualEvidence": {
+        "power": 4,
+        "quotientLimit": 0,
+        "reciprocalLimit": "+infinity"
+      }
+    },
+    {
+      "check": "negative asymptotic power 4",
+      "passed": true,
+      "actualEvidence": {
+        "power": 4,
+        "limit": 0,
+        "approachSign": 1
+      }
+    },
+    {
+      "check": "positive asymptotic power 5",
+      "passed": true,
+      "actualEvidence": {
+        "power": 5,
+        "quotientLimit": 0,
+        "reciprocalLimit": "+infinity"
+      }
+    },
+    {
+      "check": "negative asymptotic power 5",
+      "passed": true,
+      "actualEvidence": {
+        "power": 5,
+        "limit": 0,
+        "approachSign": -1
+      }
+    },
+    {
+      "check": "positive asymptotic power 6",
+      "passed": true,
+      "actualEvidence": {
+        "power": 6,
+        "quotientLimit": 0,
+        "reciprocalLimit": "+infinity"
+      }
+    },
+    {
+      "check": "negative asymptotic power 6",
+      "passed": true,
+      "actualEvidence": {
+        "power": 6,
+        "limit": 0,
+        "approachSign": 1
+      }
+    },
+    {
+      "check": "positive asymptotic power 7",
+      "passed": true,
+      "actualEvidence": {
+        "power": 7,
+        "quotientLimit": 0,
+        "reciprocalLimit": "+infinity"
+      }
+    },
+    {
+      "check": "negative asymptotic power 7",
+      "passed": true,
+      "actualEvidence": {
+        "power": 7,
+        "limit": 0,
+        "approachSign": -1
+      }
+    },
+    {
+      "check": "positive asymptotic power 8",
+      "passed": true,
+      "actualEvidence": {
+        "power": 8,
+        "quotientLimit": 0,
+        "reciprocalLimit": "+infinity"
+      }
+    },
+    {
+      "check": "negative asymptotic power 8",
+      "passed": true,
+      "actualEvidence": {
+        "power": 8,
+        "limit": 0,
+        "approachSign": 1
+      }
+    },
+    {
+      "check": "negative cubic substitution",
+      "passed": true,
+      "actualEvidence": {
+        "identity": "x^3 e^x = -u^3/e^u with u=-x"
+      }
+    },
+    {
+      "check": "negative fourth substitution",
+      "passed": true,
+      "actualEvidence": {
+        "identity": "x^4 e^x = u^4/e^u with u=-x"
+      }
+    },
+    {
+      "check": "transfer polynomial",
+      "passed": true,
+      "actualEvidence": {
+        "limit": 0
+      }
+    },
+    {
+      "check": "transfer denominator",
+      "passed": true,
+      "actualEvidence": {
+        "limit": "+infinity"
+      }
+    },
+    {
+      "check": "auxiliary inequality identity m=1",
+      "passed": true,
+      "actualEvidence": {
+        "exactRemainderIdentityVerified": true,
+        "positivityReason": "For x>=0 every Taylor term and the integral remainder are nonnegative, so e^x >= x^m/m!."
+      }
+    },
+    {
+      "check": "auxiliary inequality identity m=2",
+      "passed": true,
+      "actualEvidence": {
+        "exactRemainderIdentityVerified": true,
+        "positivityReason": "For x>=0 every Taylor term and the integral remainder are nonnegative, so e^x >= x^m/m!."
+      }
+    },
+    {
+      "check": "auxiliary inequality identity m=3",
+      "passed": true,
+      "actualEvidence": {
+        "exactRemainderIdentityVerified": true,
+        "positivityReason": "For x>=0 every Taylor term and the integral remainder are nonnegative, so e^x >= x^m/m!."
+      }
+    },
+    {
+      "check": "auxiliary inequality identity m=4",
+      "passed": true,
+      "actualEvidence": {
+        "exactRemainderIdentityVerified": true,
+        "positivityReason": "For x>=0 every Taylor term and the integral remainder are nonnegative, so e^x >= x^m/m!."
+      }
+    },
+    {
+      "check": "auxiliary inequality identity m=5",
+      "passed": true,
+      "actualEvidence": {
+        "exactRemainderIdentityVerified": true,
+        "positivityReason": "For x>=0 every Taylor term and the integral remainder are nonnegative, so e^x >= x^m/m!."
+      }
+    },
+    {
+      "check": "auxiliary inequality identity m=6",
+      "passed": true,
+      "actualEvidence": {
+        "exactRemainderIdentityVerified": true,
+        "positivityReason": "For x>=0 every Taylor term and the integral remainder are nonnegative, so e^x >= x^m/m!."
+      }
+    },
+    {
+      "check": "sixth root 0",
+      "passed": true,
+      "actualEvidence": {
+        "k": 0,
+        "exactAlgebraic": "1",
+        "sixthPower": 1,
+        "normSquared": 1
+      }
+    },
+    {
+      "check": "polar representative 0",
+      "passed": true,
+      "actualEvidence": {
+        "angle": "0"
+      }
+    },
+    {
+      "check": "rotation to next root 0",
+      "passed": true,
+      "actualEvidence": {
+        "from": 0,
+        "to": 1
+      }
+    },
+    {
+      "check": "regular hexagon chord 0",
+      "passed": true,
+      "actualEvidence": {
+        "chordLength": 1
+      }
+    },
+    {
+      "check": "sixth root 1",
+      "passed": true,
+      "actualEvidence": {
+        "k": 1,
+        "exactAlgebraic": "1/2 + sqrt(3)*I/2",
+        "sixthPower": 1,
+        "normSquared": 1
+      }
+    },
+    {
+      "check": "polar representative 1",
+      "passed": true,
+      "actualEvidence": {
+        "angle": "pi/3"
+      }
+    },
+    {
+      "check": "rotation to next root 1",
+      "passed": true,
+      "actualEvidence": {
+        "from": 1,
+        "to": 2
+      }
+    },
+    {
+      "check": "regular hexagon chord 1",
+      "passed": true,
+      "actualEvidence": {
+        "chordLength": 1
+      }
+    },
+    {
+      "check": "sixth root 2",
+      "passed": true,
+      "actualEvidence": {
+        "k": 2,
+        "exactAlgebraic": "-1/2 + sqrt(3)*I/2",
+        "sixthPower": 1,
+        "normSquared": 1
+      }
+    },
+    {
+      "check": "polar representative 2",
+      "passed": true,
+      "actualEvidence": {
+        "angle": "2*pi/3"
+      }
+    },
+    {
+      "check": "rotation to next root 2",
+      "passed": true,
+      "actualEvidence": {
+        "from": 2,
+        "to": 3
+      }
+    },
+    {
+      "check": "regular hexagon chord 2",
+      "passed": true,
+      "actualEvidence": {
+        "chordLength": 1
+      }
+    },
+    {
+      "check": "sixth root 3",
+      "passed": true,
+      "actualEvidence": {
+        "k": 3,
+        "exactAlgebraic": "-1",
+        "sixthPower": 1,
+        "normSquared": 1
+      }
+    },
+    {
+      "check": "polar representative 3",
+      "passed": true,
+      "actualEvidence": {
+        "angle": "pi"
+      }
+    },
+    {
+      "check": "rotation to next root 3",
+      "passed": true,
+      "actualEvidence": {
+        "from": 3,
+        "to": 4
+      }
+    },
+    {
+      "check": "regular hexagon chord 3",
+      "passed": true,
+      "actualEvidence": {
+        "chordLength": 1
+      }
+    },
+    {
+      "check": "sixth root 4",
+      "passed": true,
+      "actualEvidence": {
+        "k": 4,
+        "exactAlgebraic": "-1/2 - sqrt(3)*I/2",
+        "sixthPower": 1,
+        "normSquared": 1
+      }
+    },
+    {
+      "check": "polar representative 4",
+      "passed": true,
+      "actualEvidence": {
+        "angle": "4*pi/3"
+      }
+    },
+    {
+      "check": "rotation to next root 4",
+      "passed": true,
+      "actualEvidence": {
+        "from": 4,
+        "to": 5
+      }
+    },
+    {
+      "check": "regular hexagon chord 4",
+      "passed": true,
+      "actualEvidence": {
+        "chordLength": 1
+      }
+    },
+    {
+      "check": "sixth root 5",
+      "passed": true,
+      "actualEvidence": {
+        "k": 5,
+        "exactAlgebraic": "1/2 - sqrt(3)*I/2",
+        "sixthPower": 1,
+        "normSquared": 1
+      }
+    },
+    {
+      "check": "polar representative 5",
+      "passed": true,
+      "actualEvidence": {
+        "angle": "5*pi/3"
+      }
+    },
+    {
+      "check": "rotation to next root 5",
+      "passed": true,
+      "actualEvidence": {
+        "from": 5,
+        "to": 0
+      }
+    },
+    {
+      "check": "regular hexagon chord 5",
+      "passed": true,
+      "actualEvidence": {
+        "chordLength": 1
+      }
+    },
+    {
+      "check": "all sixth roots distinct and complete",
+      "passed": true,
+      "actualEvidence": {
+        "polynomialProduct": "z^6-1",
+        "distinctCount": 6
+      }
+    },
+    {
+      "check": "fourth roots complete",
+      "passed": true,
+      "actualEvidence": {
+        "roots": [
+          "1",
+          "I",
+          "-1",
+          "-I"
+        ]
+      }
+    },
+    {
+      "check": "common cubic roots exactly even indices",
+      "passed": true,
+      "actualEvidence": {
+        "selectedIndices": [
+          0,
+          2,
+          4
+        ]
+      }
+    },
+    {
+      "check": "first non-real sixth root is not cubic",
+      "passed": true,
+      "actualEvidence": {
+        "cube": -1
+      }
+    },
+    {
+      "check": "complex quotient q1",
+      "passed": true,
+      "actualEvidence": {
+        "conjugate": "1 + 2*I",
+        "newNumerator": "-5 + 10*I",
+        "newDenominator": "5",
+        "result": "-1 + 2*I",
+        "productRecovers": "3 + 4*I"
+      }
+    },
+    {
+      "check": "real denominator q1",
+      "passed": true,
+      "actualEvidence": {
+        "denominator": "5"
+      }
+    },
+    {
+      "check": "complex quotient q2",
+      "passed": true,
+      "actualEvidence": {
+        "conjugate": "1 - 2*I",
+        "newNumerator": "-4 - 7*I",
+        "newDenominator": "5",
+        "result": "-4/5 - 7*I/5",
+        "productRecovers": "2 - 3*I"
+      }
+    },
+    {
+      "check": "real denominator q2",
+      "passed": true,
+      "actualEvidence": {
+        "denominator": "5"
+      }
+    },
+    {
+      "check": "complex quotient q3",
+      "passed": true,
+      "actualEvidence": {
+        "conjugate": "-2*I",
+        "newNumerator": "-4 - 8*I",
+        "newDenominator": "4",
+        "result": "-1 - 2*I",
+        "productRecovers": "4 - 2*I"
+      }
+    },
+    {
+      "check": "real denominator q3",
+      "passed": true,
+      "actualEvidence": {
+        "denominator": "4"
+      }
+    },
+    {
+      "check": "complex quotient q4",
+      "passed": true,
+      "actualEvidence": {
+        "conjugate": "2 - I",
+        "newNumerator": "2 - I",
+        "newDenominator": "5",
+        "result": "2/5 - I/5",
+        "productRecovers": "1"
+      }
+    },
+    {
+      "check": "real denominator q4",
+      "passed": true,
+      "actualEvidence": {
+        "denominator": "5"
+      }
+    },
+    {
+      "check": "component-division counterexample",
+      "passed": true,
+      "actualEvidence": {
+        "wrongProduct": "-1-8i",
+        "requiredNumerator": "3+4i"
+      }
+    },
+    {
+      "check": "pure imaginary alternative",
+      "passed": true,
+      "actualEvidence": {
+        "identity": "1/i=-i"
+      }
+    },
+    {
+      "check": "one score/self contract cone-limit",
+      "passed": true,
+      "actualEvidence": {
+        "score": "20/15",
+        "coverage": [
+          "50612a57-7b9d-45fd-bc08-e95556444760"
+        ],
+        "canonicalRoleChanged": false
+      }
+    },
+    {
+      "check": "one score/self contract asymptotic-by-content",
+      "passed": true,
+      "actualEvidence": {
+        "score": "20/15",
+        "coverage": [
+          "49f9059a-876c-5051-8146-d008b5cc691c"
+        ],
+        "canonicalRoleChanged": false
+      }
+    },
+    {
+      "check": "one score/self contract roots-of-unity",
+      "passed": true,
+      "actualEvidence": {
+        "score": "20/15",
+        "coverage": [
+          "8e18154d-41d6-592e-ba98-537edad338e8"
+        ],
+        "canonicalRoleChanged": false
+      }
+    },
+    {
+      "check": "one score/self contract complex-division",
+      "passed": true,
+      "actualEvidence": {
+        "score": "20/15",
+        "coverage": [
+          "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d"
+        ],
+        "canonicalRoleChanged": false
+      }
+    }
+  ],
+  "inputBindings": [
+    {
+      "path": "50612a57-7b9d-45fd-bc08-e95556444760/whole-form-content.draft.json",
+      "sha256": "e24a1b8e414a2f112149a31cf60f1fe06807db5953eb9b840ebdd84b4aadc6ca"
+    },
+    {
+      "path": "49f9059a-876c-5051-8146-d008b5cc691c/whole-form-content.draft.json",
+      "sha256": "dc86d9c41a40509542f3f6efb89967709613c8d7329d138006174a4a5b395d82"
+    },
+    {
+      "path": "8e18154d-41d6-592e-ba98-537edad338e8/whole-form-content.draft.json",
+      "sha256": "57ba684c3690716d9dc8631acf1efb8e91a778b4e17c50d9f24862ef0af2c205"
+    },
+    {
+      "path": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d/whole-form-content.draft.json",
+      "sha256": "3bbf010892b7df4ba806d8018fd62b6b74ed7e6b66809cd6d916361faa0e2982"
+    }
+  ],
+  "auxiliaryInequalityGeneralAuthorJustification": "Taylor formula with nonnegative polynomial terms and integral remainder for x>=0 proves the supplied inequality for all positive integers m. A student may use the supplied inequality without proving or learning Taylor theory.",
+  "engines": {
+    "sympy": "1.14.0",
+    "exactGivenDecimals": "fractions.Fraction",
+    "numericalGeometry": "independent polygon area formulas, never required of pupils"
+  },
+  "limits": "Mathematical author verification, not a production grader, source adoption, scope/placement decision or learner performance."
+}

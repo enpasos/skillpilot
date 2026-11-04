@@ -1,0 +1,53 @@
+{
+  "status": "PASS_ACTUAL_ALL807_REGISTERED_ROWS_PER_LANE_AND_FOUR_GENUINE_RAW_REPLACEMENTS",
+  "snapshots": [
+    {
+      "lane": "semantic-atomicity",
+      "beforeReview": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-context-he-three-current-20261104.review.jsonl",
+        "sha256": "dc7bc21a9608d5ca2f67717e5aaad894938482dfe3501caf778ef30c7045cc49"
+      },
+      "afterReview": {
+        "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full-cone-complex-four-plus-b2-current-20261104.review.jsonl",
+        "sha256": "9bee83532c4caac5239ebee8543345cb431efefe6e35c5bf957da57b87df2fca"
+      },
+      "configPath": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+      "replacementGoalIds": [
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8"
+      ],
+      "other805RawLinesByteIdentical": true
+    },
+    {
+      "lane": "memory-card-review",
+      "beforeReview": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-context-he-three-current-20261104.review.jsonl",
+        "sha256": "8f9b3fb62b1d947b1887da7ca45f742cd5e96a01b4e224320f878958164ba75f"
+      },
+      "afterReview": {
+        "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full-cone-complex-four-plus-b2-current-20261104.review.jsonl",
+        "sha256": "c74ba796841562999e8a6a100ebeeea2be7c97f7dc7c4505b4d0dcc70bf1ff34"
+      },
+      "configPath": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+      "replacementGoalIds": [
+        "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "8e18154d-41d6-592e-ba98-537edad338e8"
+      ],
+      "other805RawLinesByteIdentical": true
+    }
+  ],
+  "fingerprintSources": [
+    {
+      "path": "app/scripts/semanticAtomicityReview.ts",
+      "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee"
+    },
+    {
+      "path": "app/scripts/memoryCardReview.ts",
+      "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181"
+    }
+  ],
+  "genuineReplacementRows": 4,
+  "otherRawLinesPerLaneByteIdentical": 805,
+  "actualCurrentFunctionFingerprintsVerified": 1614,
+  "newReviewerJudgmentsAuthored": 0
+}
