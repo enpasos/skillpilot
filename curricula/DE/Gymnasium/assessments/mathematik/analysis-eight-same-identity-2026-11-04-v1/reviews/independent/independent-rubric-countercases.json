@@ -1,0 +1,327 @@
+{
+  "status": "PASS",
+  "caseCount": 32,
+  "method": "Independent qualitative reading and explicit score consequences. Upper bounds are labelled; no runtime grading automation or learner trial claimed.",
+  "cases": [
+    {
+      "form": "improper-area",
+      "case": "interior omitted despite enough side credit",
+      "concreteSubmissionOrOmission": "All f work correct: 14. For g only says signed integral is not area: 1; no one-sided limit or sound divergence argument anywhere.",
+      "rawScoreOrConservativeUpperBound": 15,
+      "capApplies": true,
+      "scoreAfterCapOrUpperBound": 14,
+      "passes": false,
+      "reason": "missing-interior-singularity-limit-treatment blocks this actual 15-point omission."
+    },
+    {
+      "form": "improper-area",
+      "case": "invalid cancellation",
+      "concreteSubmissionOrOmission": "All f work correct:14; g claims symmetric signed cancellation proves finite area0; no correction.",
+      "rawScoreOrConservativeUpperBound": 14,
+      "capApplies": true,
+      "scoreAfterCapOrUpperBound": 14,
+      "passes": false,
+      "reason": "Invalid divergent cancellation is explicitly capped regardless of other work."
+    },
+    {
+      "form": "improper-area",
+      "case": "proof moved",
+      "concreteSubmissionOrOmission": "All correct; writes the common positive truncated-area formula and its divergence for both sides only in the rebuttal.",
+      "rawScoreOrConservativeUpperBound": 20,
+      "capApplies": false,
+      "scoreAfterCapOrUpperBound": 20,
+      "passes": true,
+      "reason": "Both sides are explicitly proved; location and use of a common formula do not trigger cap."
+    },
+    {
+      "form": "improper-area",
+      "case": "local sign slip",
+      "concreteSubmissionOrOmission": "Correct sign split and one-sided limits; one endpoint subtraction yields wrong left finite value, then total follows consistently.",
+      "rawScoreOrConservativeUpperBound": 18,
+      "capApplies": false,
+      "scoreAfterCapOrUpperBound": 18,
+      "passes": true,
+      "reason": "A local subtraction error does not erase the demonstrated nonnegative decomposition or limit method."
+    },
+    {
+      "form": "log-antiderivative",
+      "case": "fixed integral blank",
+      "concreteSubmissionOrOmission": "Omit the 3-point fixed integral; all other work including J(a)=1 is complete.",
+      "rawScoreOrConservativeUpperBound": 17,
+      "capApplies": false,
+      "scoreAfterCapOrUpperBound": 17,
+      "passes": true,
+      "reason": "The logarithmic integral action is demonstrated with positive variable bounds."
+    },
+    {
+      "form": "log-antiderivative",
+      "case": "no derivative justification",
+      "concreteSubmissionOrOmission": "At most14 points remain when the basic derivative/condition and entire derivative check are absent; all genuine derivative reasoning absent elsewhere.",
+      "rawScoreOrConservativeUpperBound": 14,
+      "capApplies": true,
+      "scoreAfterCapOrUpperBound": 14,
+      "passes": false,
+      "reason": "Missing derivative action cannot be replaced by values and domain remarks."
+    },
+    {
+      "form": "log-antiderivative",
+      "case": "no integral evaluation",
+      "concreteSubmissionOrOmission": "Both fixed and variable integrals blank; other parts correct.",
+      "rawScoreOrConservativeUpperBound": 13,
+      "capApplies": true,
+      "scoreAfterCapOrUpperBound": 13,
+      "passes": false,
+      "reason": "Both ordinary score and explicit integral cap reject the core omission."
+    },
+    {
+      "form": "log-antiderivative",
+      "case": "local endpoint arithmetic",
+      "concreteSubmissionOrOmission": "Correct H, H prime and positive bounds; final fixed endpoint subtraction has one copied constant wrong, J is correct.",
+      "rawScoreOrConservativeUpperBound": 19,
+      "capApplies": false,
+      "scoreAfterCapOrUpperBound": 19,
+      "passes": true,
+      "reason": "One local arithmetic error is charged once; logarithmic relation remains evidenced."
+    },
+    {
+      "form": "stock-reconstruction",
+      "case": "mathematical context omitted",
+      "concreteSubmissionOrOmission": "Tank parts1-3 complete; inner mathematical context part4 blank.",
+      "rawScoreOrConservativeUpperBound": 14,
+      "capApplies": false,
+      "scoreAfterCapOrUpperBound": 14,
+      "passes": false,
+      "reason": "The required inner/outer breadth cannot be omitted because it costs6 points."
+    },
+    {
+      "form": "stock-reconstruction",
+      "case": "reference values absent",
+      "concreteSubmissionOrOmission": "Integrates both rates but deliberately omits20 and F(1)=3; never combines rate with a given reference. Even granting all possible follow-through cannot bypass cap.",
+      "rawScoreOrConservativeUpperBound": 20,
+      "capApplies": true,
+      "scoreAfterCapOrUpperBound": 14,
+      "passes": false,
+      "reason": "20 is a conservative score upper bound, not awarded credit; missing-reference cap blocks even that bound."
+    },
+    {
+      "form": "stock-reconstruction",
+      "case": "local coefficient error",
+      "concreteSubmissionOrOmission": "Sets V=20+integral and F=3+integral correctly; one primitive coefficient is copied wrong, all subsequent arithmetic uses it consistently.",
+      "rawScoreOrConservativeUpperBound": 18,
+      "capApplies": false,
+      "scoreAfterCapOrUpperBound": 18,
+      "passes": true,
+      "reason": "Local error with reference/method preserved; follow-through allowed."
+    },
+    {
+      "form": "stock-reconstruction",
+      "case": "false zero net inference",
+      "concreteSubmissionOrOmission": "Both reconstructions and water interpretation correct; last assertion wrongly says integral0 makes F identically0.",
+      "rawScoreOrConservativeUpperBound": 18,
+      "capApplies": false,
+      "scoreAfterCapOrUpperBound": 18,
+      "passes": true,
+      "reason": "This2-point error does not delete correct stock/change interpretation already demonstrated; threshold is whole-form."
+    },
+    {
+      "form": "linked-exp-polynomial",
+      "case": "whole product omitted",
+      "concreteSubmissionOrOmission": "Parts2 and3 complete; product part1 blank.",
+      "rawScoreOrConservativeUpperBound": 12,
+      "capApplies": false,
+      "scoreAfterCapOrUpperBound": 12,
+      "passes": false,
+      "reason": "8-point product cannot be replaced by sum/composition alone."
+    },
+    {
+      "form": "linked-exp-polynomial",
+      "case": "whole composition omitted",
+      "concreteSubmissionOrOmission": "Product and sum complete; composition part2 blank.",
+      "rawScoreOrConservativeUpperBound": 14,
+      "capApplies": false,
+      "scoreAfterCapOrUpperBound": 14,
+      "passes": false,
+      "reason": "6-point family cannot be entirely skipped."
+    },
+    {
+      "form": "linked-exp-polynomial",
+      "case": "all checks omitted",
+      "concreteSubmissionOrOmission": "All primitives and integrals stated; no derivative verification anywhere.",
+      "rawScoreOrConservativeUpperBound": 14,
+      "capApplies": true,
+      "scoreAfterCapOrUpperBound": 14,
+      "passes": false,
+      "reason": "6 check points and explicit verification cap protect the stated whole competence."
+    },
+    {
+      "form": "linked-exp-polynomial",
+      "case": "alternative method and local error",
+      "concreteSubmissionOrOmission": "Uses integration by parts for product, reverse chain rule for g, correct derivative checks; one endpoint arithmetic slip.",
+      "rawScoreOrConservativeUpperBound": 19,
+      "capApplies": false,
+      "scoreAfterCapOrUpperBound": 19,
+      "passes": true,
+      "reason": "No prescribed technique; verification and correct follow-through count."
+    },
+    {
+      "form": "transformed-exp-trig",
+      "case": "exponential type entirely missing",
+      "concreteSubmissionOrOmission": "All sine/cosine/integral/explanation/correction work correct; exponential4 points blank.",
+      "rawScoreOrConservativeUpperBound": 16,
+      "capApplies": true,
+      "scoreAfterCapOrUpperBound": 14,
+      "passes": false,
+      "reason": "Explicit all-three-types cap rejects otherwise passing16."
+    },
+    {
+      "form": "transformed-exp-trig",
+      "case": "cosine action moved",
+      "concreteSubmissionOrOmission": "Cosine block in part1 blank, but part4 differentiates K and gives corrected H with justification; all other parts correct.",
+      "rawScoreOrConservativeUpperBound": 16,
+      "capApplies": false,
+      "scoreAfterCapOrUpperBound": 16,
+      "passes": true,
+      "reason": "Part4 demonstrates that type and factor compensation; same performance counted only once."
+    },
+    {
+      "form": "transformed-exp-trig",
+      "case": "no compensation anywhere",
+      "concreteSubmissionOrOmission": "Writes unscaled exp/sin/cos candidates, no reverse-chain correction or suitable factor anywhere. Even maximal side-credit is bounded.",
+      "rawScoreOrConservativeUpperBound": 20,
+      "capApplies": true,
+      "scoreAfterCapOrUpperBound": 14,
+      "passes": false,
+      "reason": "Conservative20 upper bound is capped; it is not a claim of earned20."
+    },
+    {
+      "form": "transformed-exp-trig",
+      "case": "one local sign slip",
+      "concreteSubmissionOrOmission": "Three methods and inner factors shown, one final primitive sign copied wrong while derivative derivation elsewhere is correct.",
+      "rawScoreOrConservativeUpperBound": 19,
+      "capApplies": false,
+      "scoreAfterCapOrUpperBound": 19,
+      "passes": true,
+      "reason": "Rubric explicitly distinguishes local sign error from absent method."
+    },
+    {
+      "form": "e-series-taylor",
+      "case": "infinite series absent",
+      "concreteSubmissionOrOmission": "Parts1,3,4,5 are otherwise complete but nowhere states a correct infinite series, only finite sums and decimal values.",
+      "rawScoreOrConservativeUpperBound": 16,
+      "capApplies": true,
+      "scoreAfterCapOrUpperBound": 14,
+      "passes": false,
+      "reason": "Finite approximation does not substitute for original series-representation action."
+    },
+    {
+      "form": "e-series-taylor",
+      "case": "Taylor evaluation connection absent",
+      "concreteSubmissionOrOmission": "P4, infinite series, fractions and bound correct; no relation between Taylor at1 and e anywhere; part4 blank.",
+      "rawScoreOrConservativeUpperBound": 16,
+      "capApplies": true,
+      "scoreAfterCapOrUpperBound": 14,
+      "passes": false,
+      "reason": "Explicit Taylor-at-one cap protects second inseparable part of the competence."
+    },
+    {
+      "form": "e-series-taylor",
+      "case": "concise connection elsewhere",
+      "concreteSubmissionOrOmission": "Writes P_n(1)=sum_(k=0)^n1/k!, tends to e, adjacent to series; all other required work complete.",
+      "rawScoreOrConservativeUpperBound": 20,
+      "capApplies": false,
+      "scoreAfterCapOrUpperBound": 20,
+      "passes": true,
+      "reason": "The complete mathematical connection suffices without a prescribed explanatory sentence."
+    },
+    {
+      "form": "e-series-taylor",
+      "case": "local sum error",
+      "concreteSubmissionOrOmission": "Correct Taylor/series/at1 relation; one rational addition wrong, uses own sum coherently for bound and rounding checks.",
+      "rawScoreOrConservativeUpperBound": 18,
+      "capApplies": false,
+      "scoreAfterCapOrUpperBound": 18,
+      "passes": true,
+      "reason": "Follows own calculation; does not confuse local arithmetic with missing infinite series."
+    },
+    {
+      "form": "approximate-e",
+      "case": "calculator e key only",
+      "concreteSubmissionOrOmission": "States memorised2.718 and e as base; table is values from e key without powers or step calculation anywhere.",
+      "rawScoreOrConservativeUpperBound": 20,
+      "capApplies": true,
+      "scoreAfterCapOrUpperBound": 14,
+      "passes": false,
+      "reason": "Even maximal hypothetical side-credit cannot replace numerical approximation procedure;20 is only an upper bound."
+    },
+    {
+      "form": "approximate-e",
+      "case": "interpretation moved",
+      "concreteSubmissionOrOmission": "Part4 blank but part5 explicitly distinguishes fixed base e from initial prefactor200; all remaining work complete.",
+      "rawScoreOrConservativeUpperBound": 16,
+      "capApplies": false,
+      "scoreAfterCapOrUpperBound": 16,
+      "passes": true,
+      "reason": "Original constant interpretation is shown elsewhere, so no mechanical part cap."
+    },
+    {
+      "form": "approximate-e",
+      "case": "no constant meaning",
+      "concreteSubmissionOrOmission": "Never identifies e as the natural exponential base/constant anywhere, even if all numerical table values correct.",
+      "rawScoreOrConservativeUpperBound": 20,
+      "capApplies": true,
+      "scoreAfterCapOrUpperBound": 14,
+      "passes": false,
+      "reason": "Conservative upper bound is blocked by meaning cap."
+    },
+    {
+      "form": "approximate-e",
+      "case": "calculator precision",
+      "concreteSubmissionOrOmission": "Correct power expressions; one final six-place entry differs in last digit because of limited precision; three-place approximation and interpretation correct.",
+      "rawScoreOrConservativeUpperBound": 19,
+      "capApplies": false,
+      "scoreAfterCapOrUpperBound": 19,
+      "passes": true,
+      "reason": "Limited precision is expressly accepted; even a one-point deduction still passes."
+    },
+    {
+      "form": "sequence-formation",
+      "case": "A absent",
+      "concreteSubmissionOrOmission": "All B and nonuniqueness work that does not supply a workable A law receives at most12; no A law anywhere.",
+      "rawScoreOrConservativeUpperBound": 12,
+      "capApplies": true,
+      "scoreAfterCapOrUpperBound": 12,
+      "passes": false,
+      "reason": "A cannot be omitted and compensated with B."
+    },
+    {
+      "form": "sequence-formation",
+      "case": "no justification anywhere",
+      "concreteSubmissionOrOmission": "A/B formulas and numeric checks but neither pattern nor alternative construction reason anywhere, including no explanation of why the second law agrees.",
+      "rawScoreOrConservativeUpperBound": 20,
+      "capApplies": true,
+      "scoreAfterCapOrUpperBound": 14,
+      "passes": false,
+      "reason": "The no-justification cap blocks even a conservative20 upper bound; numeric answers alone do not show reasoning."
+    },
+    {
+      "form": "sequence-formation",
+      "case": "different lawful continuation",
+      "concreteSubmissionOrOmission": "Uses q_n=n²+n+1+product(n-i) as the first A rule, checks first5 and gives163; uses simple n²+n+1 as second law giving43. B correct.",
+      "rawScoreOrConservativeUpperBound": 20,
+      "capApplies": false,
+      "scoreAfterCapOrUpperBound": 20,
+      "passes": true,
+      "reason": "Alternative construction reproduces all data; no unique sixth term is imposed."
+    },
+    {
+      "form": "sequence-formation",
+      "case": "local sixth-term arithmetic",
+      "concreteSubmissionOrOmission": "Both rules, initial values, first-five checks and pattern justifications correct; one arithmetic error only in A6.",
+      "rawScoreOrConservativeUpperBound": 19,
+      "capApplies": false,
+      "scoreAfterCapOrUpperBound": 19,
+      "passes": true,
+      "reason": "Local sixth-term mistake loses one point and does not trigger absent-law cap."
+    }
+  ]
+}

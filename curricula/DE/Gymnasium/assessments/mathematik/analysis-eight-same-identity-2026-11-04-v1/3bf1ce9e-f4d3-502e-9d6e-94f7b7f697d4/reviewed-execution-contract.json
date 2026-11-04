@@ -1,0 +1,61 @@
+{
+  "reviewStatus": "released",
+  "taskContent": "# Den natürlichen Logarithmus beim Integrieren nutzen\n\nArbeite bei allen folgenden Stammfunktionen auf dem Bereich $x>0$.\nZeige deine Ansätze und Begründungen. Insgesamt sind **20 BE** erreichbar.\n\n**1. Die grundlegende Beziehung begründen (4 BE)**\n\nErkläre durch eine Ableitungsbeziehung, warum $\\ln(x)$ eine Stammfunktion\nvon $1/x$ ist. Gib auch alle Stammfunktionen von $1/x$ auf diesem Bereich\nan und erkläre die Rolle der zusätzlichen Konstante.\n\n**2. Die Beziehung anwenden und kontrollieren (10 BE)**\n\nBestimme alle Stammfunktionen von $h(x)=3/x+2x$. Prüfe deinen Term\ndurch Ableiten. Berechne damit das bestimmte Integral\n$\\int_1^{e^2}(3/x+2x)\\,dx$ exakt.\n\n**3. Variable positive Grenzen auswerten (4 BE)**\n\nFür $a>0$ sei $J(a)=\\int_a^{ea}1/x\\,dx$.\nBerechne $J(a)$ und begründe, weshalb das Ergebnis von $a$ unabhängig\nist. Die Logarithmusregel $\\ln(uv)=\\ln(u)+\\ln(v)$ für $u,v>0$ darfst\ndu verwenden.\n\n**4. Eine unzulässige Einsetzung erklären (2 BE)**\n\nWarum darf man das Integral von $0$ bis $1$ nicht einfach durch\n$\\ln(1)-\\ln(0)$ als Differenz zweier reeller Funktionswerte auswerten?\nEine Untersuchung eines uneigentlichen Grenzwerts ist hier nicht verlangt.\n",
+  "taskContentEn": "# Use the natural logarithm in integration\n\nWork on the domain $x>0$ for all antiderivatives below.\nShow your setup and reasoning. A total of **20 points** is available.\n\n**1. Justify the basic relationship (4 points)**\n\nUse a differentiation relationship to explain why $\\ln(x)$ is an\nantiderivative of $1/x$. State all antiderivatives of $1/x$ on this\ndomain and explain the role of the additional constant.\n\n**2. Apply and check the relationship (10 points)**\n\nFind all antiderivatives of $h(x)=3/x+2x$. Check your expression by\ndifferentiation. Use it to calculate $\\int_1^{e^2}(3/x+2x)\\,dx$ exactly.\n\n**3. Evaluate variable positive bounds (4 points)**\n\nFor $a>0$, let $J(a)=\\int_a^{ea}1/x\\,dx$.\nCalculate $J(a)$ and justify why it is independent of $a$.\nYou may use the logarithm rule $\\ln(uv)=\\ln(u)+\\ln(v)$ for $u,v>0$.\n\n**4. Explain an invalid substitution (2 points)**\n\nWhy cannot the integral from $0$ to $1$ simply be evaluated as\n$\\ln(1)-\\ln(0)$, a difference of two real function values?\nYou are not asked to investigate an improper limit here.\n",
+  "solutionContent": "# Musterlösung: Logarithmus als Stammfunktion\n\n**1. Beziehung**\n\nFür $x>0$ gilt $(\\ln x)'=1/x$. Dies ist genau die Bedingung für eine\nStammfunktion. Alle Stammfunktionen auf dem Intervall $(0,\\infty)$ sind\n$\\ln x+C$ mit $C\\in\\mathbb R$: Eine additive Konstante hat Ableitung null.\n\n**2. Anwendung**\n\n$$\nH(x)=3\\ln x+x^2+C,\\qquad H'(x)=\\frac3x+2x=h(x).\n$$\n\nMit $\\ln(e^2)=2$ und $\\ln1=0$ ergibt sich\n\n$$\n\\int_1^{e^2}\\left(\\frac3x+2x\\right)\\,dx\n=(6+e^4)-(0+1)=e^4+5.\n$$\n\nDie Konstante hebt sich bei der Differenz auf.\n\n**3. Grenzen**\n\nBeide Grenzen sind positiv. Deshalb kann die Beziehung auf dem ganzen\nIntegrationsintervall verwendet werden:\n\n$$\nJ(a)=\\ln(ea)-\\ln a=\\ln e+\\ln a-\\ln a=1.\n$$\n\nDas Verhältnis der oberen zur unteren Grenze ist stets $e$; die\nLogarithmusdifferenz und damit das Integral sind unabhängig von $a$.\n\n**4. Bereichsgrenze**\n\n$0$ gehört nicht zum Definitionsbereich von $1/x$ oder des reellen\nnatürlichen Logarithmus. $\\ln(0)$ ist kein reeller Funktionswert.\nDie übliche Auswertung durch zwei endliche Stammfunktionswerte ist\ndeshalb nicht anwendbar. Daraus wird hier kein Grenzwerturteil behauptet.\n\n# Eine Gesamtbewertung\n\nEs gibt genau eine Gesamtpunktzahl aus 20 BE und ein binäres Gesamtergebnis:\n**bestanden ab 15 BE**, sonst nicht bestanden. Teilpunkte sind keine eigenen\nBestehensgrenzen.\n\nBewerte mathematisch gleichwertige Verfahren und nachvollziehbare Leistungen\nunabhängig vom Ort in der Abgabe. Identische Leistungen zählen nur einmal.\nTeilpunkte wie angegeben, sonst 0,5 BE für eine fachlich sinnvolle, aber\nunvollständige Teilleistung. Bei Kriterien mit 2 oder mehr BE sind entsprechende\nTeilpunkte für richtig gezeigte Schritte möglich. Ein lokaler Rechen- oder\nÜbertragungsfehler wird nicht mehrfach bestraft; richtige nachvollziehbare\nFolgearbeit bleibt anrechenbar. Ein solcher lokaler Fehler allein löst keine\nGesamtpunktkappung aus. Knappe richtige Erklärungen und äquivalente Schreibweisen\ngenügen; bestimmte Schlüsselwörter oder eine feste Reihenfolge sind nicht nötig.\n\n| Kriterium | BE |\n|---|---:|\n| Ableitung ln mit 1/x richtig zugeordnet (2); Stammfunktionsbegriff erläutert (1); additive Konstante samt Ableitung null erklärt (1). | 4 |\n| Logarithmischer Anteil 3ln(x) (2), polynomialer Anteil x² (1), Konstante (1) richtig. | 4 |\n| Beide Ableitungsanteile richtig (je 1); vollständige Zuordnung zu h (1). | 3 |\n| Obere und untere Auswertung richtig (je 1); Differenz e^4+5 (1). | 3 |\n| Positive Grenzen und Logarithmusdifferenz (2); Logarithmusregel richtig angewendet (1); Wert 1 und Unabhängigkeit von a erklärt (1). | 4 |\n| 0 als außerhalb des Definitionsbereichs erkannt (1); fehlenden reellen Wert ln(0) und damit unzulässige gewöhnliche Auswertung erklärt (1). | 2 |\n\nBegrenze die Gesamtpunktzahl vor dem Vergleich mit der Bestehensgrenze auf höchstens 14 BE, wenn über die gesamte Abgabe keine geeignete logarithmische Stammfunktion, keine tragfähige Ableitungsbegründung der Beziehung zu 1/x oder keine sachgerechte Integralrechnung mit dieser Beziehung erkennbar ist. Gleichwertige Leistungen in beliebigen Aufgabenteilen zählen; es ist keine Wiederholung derselben Begründung nötig.\n\nMehrere zutreffende Kappungsgründe führen weiterhin nur zur selben Obergrenze von 14 BE. Es bleibt bei einer Gesamtbewertung ohne zusätzliche Teilbestehensbedingungen.\n",
+  "solutionContentEn": "# Worked solution: logarithm as an antiderivative\n\n**1. Relationship**\n\nFor $x>0$, $(\\ln x)'=1/x$, exactly the defining condition for an\nantiderivative. All antiderivatives on $(0,\\infty)$ are $\\ln x+C$ with\n$C\\in\\mathbb R$: an additive constant has derivative zero.\n\n**2. Application**\n\n$$\nH(x)=3\\ln x+x^2+C,\\qquad H'(x)=\\frac3x+2x=h(x).\n$$\n\nUsing $\\ln(e^2)=2$ and $\\ln1=0$ gives\n\n$$\n\\int_1^{e^2}\\left(\\frac3x+2x\\right)\\,dx\n=(6+e^4)-(0+1)=e^4+5.\n$$\n\nThe constant cancels in the difference.\n\n**3. Bounds**\n\nBoth bounds are positive, so the relationship applies throughout the\nintegration interval:\n\n$$\nJ(a)=\\ln(ea)-\\ln a=\\ln e+\\ln a-\\ln a=1.\n$$\n\nThe ratio of upper to lower bound is always $e$; the logarithm difference,\nand hence the integral, is independent of $a$.\n\n**4. Domain boundary**\n\n$0$ is outside the domains of $1/x$ and the real natural logarithm.\n$\\ln(0)$ is not a real function value. The usual evaluation by two\nfinite antiderivative values therefore does not apply. No limit\nconclusion is asserted here.\n\n# One overall assessment\n\nThere is one total score out of 20 points and one binary overall result:\n**pass at 15 points or more**, otherwise not passed. Part allocations are\nnot separate pass thresholds.\n\nCredit mathematically equivalent methods and traceable work wherever they\nappear in the submission. Count the same performance only once. Award partial\ncredit as specified, otherwise 0.5 points for meaningful incomplete work.\nFor criteria worth 2 or more points, proportionate credit for correct steps\nis available. Do not repeatedly penalise one local arithmetic or copying error;\ncredit correct traceable follow-through. Such a local error alone does not\ntrigger a total-score cap. Concise correct explanations and equivalent notation\nare sufficient; no prescribed keywords or fixed order are required.\n\n| Criterion | Points |\n|---|---:|\n| Correctly relates the derivative of ln to 1/x (2); explains the antiderivative condition (1); explains the additive constant and its zero derivative (1). | 4 |\n| Correct logarithmic part 3ln(x) (2), polynomial part x² (1), and constant (1). | 4 |\n| Correct derivatives of both parts (1 each); complete identification with h (1). | 3 |\n| Correct upper and lower evaluations (1 each); difference e^4+5 (1). | 3 |\n| Positive bounds and logarithm difference (2); correct logarithm rule (1); value 1 and independence of a explained (1). | 4 |\n| Recognises 0 as outside the domain (1); explains the missing real value ln(0) and hence invalid ordinary endpoint evaluation (1). | 2 |\n\nBefore comparison with the passing threshold, cap the total at 14 points if the entire submission contains no suitable logarithmic antiderivative, no sound differentiation justification of the relationship to 1/x, or no appropriate integral calculation using that relationship. Equivalent work anywhere in the submission counts; repeating the same justification is unnecessary.\n\nMultiple applicable cap reasons still give the same upper limit of 14 points. There is one overall assessment without additional part pass conditions.\n",
+  "coveredGoalIds": [
+    "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4"
+  ],
+  "coveredStrands": [
+    "L1",
+    "L2"
+  ],
+  "demandLevels": [
+    "AB3"
+  ],
+  "scoring": {
+    "maxPoints": 20,
+    "passingPoints": 15,
+    "steps": [
+      {
+        "id": "basic-relation",
+        "points": 4,
+        "description": "Ableitung ln mit 1/x richtig zugeordnet (2); Stammfunktionsbegriff erläutert (1); additive Konstante samt Ableitung null erklärt (1).",
+        "descriptionEn": "Correctly relates the derivative of ln to 1/x (2); explains the antiderivative condition (1); explains the additive constant and its zero derivative (1)."
+      },
+      {
+        "id": "primitive",
+        "points": 4,
+        "description": "Logarithmischer Anteil 3ln(x) (2), polynomialer Anteil x² (1), Konstante (1) richtig.",
+        "descriptionEn": "Correct logarithmic part 3ln(x) (2), polynomial part x² (1), and constant (1)."
+      },
+      {
+        "id": "derivative-check",
+        "points": 3,
+        "description": "Beide Ableitungsanteile richtig (je 1); vollständige Zuordnung zu h (1).",
+        "descriptionEn": "Correct derivatives of both parts (1 each); complete identification with h (1)."
+      },
+      {
+        "id": "fixed-integral",
+        "points": 3,
+        "description": "Obere und untere Auswertung richtig (je 1); Differenz e^4+5 (1).",
+        "descriptionEn": "Correct upper and lower evaluations (1 each); difference e^4+5 (1)."
+      },
+      {
+        "id": "variable-bounds",
+        "points": 4,
+        "description": "Positive Grenzen und Logarithmusdifferenz (2); Logarithmusregel richtig angewendet (1); Wert 1 und Unabhängigkeit von a erklärt (1).",
+        "descriptionEn": "Positive bounds and logarithm difference (2); correct logarithm rule (1); value 1 and independence of a explained (1)."
+      },
+      {
+        "id": "domain",
+        "points": 2,
+        "description": "0 als außerhalb des Definitionsbereichs erkannt (1); fehlenden reellen Wert ln(0) und damit unzulässige gewöhnliche Auswertung erklärt (1).",
+        "descriptionEn": "Recognises 0 as outside the domain (1); explains the missing real value ln(0) and hence invalid ordinary endpoint evaluation (1)."
+      }
+    ]
+  },
+  "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/analysis-eight-same-identity-2026-11-04-v1/3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4/reviewed-execution-contract.json",
+  "reviewNote": "The complete bilingual same-identity form and its ordinary overall rubric were independently approved. One 20-point total, pass at 15, with the reviewed overall caps. Only this stable goal ID is assessed. Existing curricular identity, preparation and any existing Memorygoal/deck bindings are retained."
+}

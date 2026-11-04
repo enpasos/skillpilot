@@ -1,0 +1,631 @@
+{
+  "status": "PASS",
+  "reviewer": "/root/astra_space_geometry_four_forms",
+  "method": "Own symbolic equations, one-sided limits, exact fractions and 70-digit Decimal growth calculations; author check code not reused.",
+  "checkCount": 89,
+  "checks": [
+    {
+      "form": "improper-area",
+      "case": "primitive derivative",
+      "actual": "x**(-2) - 1/x**3",
+      "expected": "(x - 1)/x**3",
+      "passResult": true
+    },
+    {
+      "form": "improper-area",
+      "case": "sign left",
+      "actual": "True",
+      "expected": "True",
+      "passResult": true
+    },
+    {
+      "form": "improper-area",
+      "case": "sign right",
+      "actual": "True",
+      "expected": "True",
+      "passResult": true
+    },
+    {
+      "form": "improper-area",
+      "case": "zero",
+      "actual": "0",
+      "expected": "0",
+      "passResult": true
+    },
+    {
+      "form": "improper-area",
+      "case": "bounded nonnegative area",
+      "actual": "1/2",
+      "expected": "1/2",
+      "passResult": true
+    },
+    {
+      "form": "improper-area",
+      "case": "tail area limit",
+      "actual": "1/2",
+      "expected": "1/2",
+      "passResult": true
+    },
+    {
+      "form": "improper-area",
+      "case": "total",
+      "actual": "1",
+      "expected": "1",
+      "passResult": true
+    },
+    {
+      "form": "improper-area",
+      "case": "g primitive",
+      "actual": "x**(-3)",
+      "expected": "x**(-3)",
+      "passResult": true
+    },
+    {
+      "form": "improper-area",
+      "case": "left nonnegative truncated area",
+      "actual": "-1/2 + 1/(2*t**2)",
+      "expected": "-1/2 + 1/(2*t**2)",
+      "passResult": true
+    },
+    {
+      "form": "improper-area",
+      "case": "right nonnegative truncated area",
+      "actual": "-1/2 + 1/(2*t**2)",
+      "expected": "-1/2 + 1/(2*t**2)",
+      "passResult": true
+    },
+    {
+      "form": "improper-area",
+      "case": "left area divergent",
+      "actual": "True",
+      "expected": "True",
+      "passResult": true
+    },
+    {
+      "form": "improper-area",
+      "case": "right area divergent",
+      "actual": "True",
+      "expected": "True",
+      "passResult": true
+    },
+    {
+      "form": "improper-area",
+      "case": "symmetric signed cancellation counterexample",
+      "actual": "0",
+      "expected": "0",
+      "passResult": true
+    },
+    {
+      "form": "log-antiderivative",
+      "case": "log derivative",
+      "actual": "1/x",
+      "expected": "1/x",
+      "passResult": true
+    },
+    {
+      "form": "log-antiderivative",
+      "case": "H derivative",
+      "actual": "2*x + 3/x",
+      "expected": "2*x + 3/x",
+      "passResult": true
+    },
+    {
+      "form": "log-antiderivative",
+      "case": "definite",
+      "actual": "5 + exp(4)",
+      "expected": "5 + exp(4)",
+      "passResult": true
+    },
+    {
+      "form": "log-antiderivative",
+      "case": "variable bounds",
+      "actual": "1",
+      "expected": "1",
+      "passResult": true
+    },
+    {
+      "form": "log-antiderivative",
+      "case": "ln0 is not real endpoint",
+      "actual": "False",
+      "expected": "False",
+      "passResult": true
+    },
+    {
+      "form": "stock-reconstruction",
+      "case": "rate",
+      "actual": "6 - 2*x",
+      "expected": "6 - 2*x",
+      "passResult": true
+    },
+    {
+      "form": "stock-reconstruction",
+      "case": "initial",
+      "actual": "20",
+      "expected": "20",
+      "passResult": true
+    },
+    {
+      "form": "stock-reconstruction",
+      "case": "V2",
+      "actual": "28",
+      "expected": "28",
+      "passResult": true
+    },
+    {
+      "form": "stock-reconstruction",
+      "case": "V3",
+      "actual": "29",
+      "expected": "29",
+      "passResult": true
+    },
+    {
+      "form": "stock-reconstruction",
+      "case": "V5",
+      "actual": "25",
+      "expected": "25",
+      "passResult": true
+    },
+    {
+      "form": "stock-reconstruction",
+      "case": "net change 2 to 5",
+      "actual": "-3",
+      "expected": "-3",
+      "passResult": true
+    },
+    {
+      "form": "stock-reconstruction",
+      "case": "maximum derivative zero",
+      "actual": "[3]",
+      "expected": "[3]",
+      "passResult": true
+    },
+    {
+      "form": "stock-reconstruction",
+      "case": "strict concavity",
+      "actual": "True",
+      "expected": "True",
+      "passResult": true
+    },
+    {
+      "form": "stock-reconstruction",
+      "case": "math rate",
+      "actual": "2*x - 4",
+      "expected": "2*x - 4",
+      "passResult": true
+    },
+    {
+      "form": "stock-reconstruction",
+      "case": "reference at1",
+      "actual": "3",
+      "expected": "3",
+      "passResult": true
+    },
+    {
+      "form": "stock-reconstruction",
+      "case": "zero net change",
+      "actual": "0",
+      "expected": "0",
+      "passResult": true
+    },
+    {
+      "form": "stock-reconstruction",
+      "case": "equal nonzero endpoint",
+      "actual": "6",
+      "expected": "6",
+      "passResult": true
+    },
+    {
+      "form": "stock-reconstruction",
+      "case": "not constant",
+      "actual": "2",
+      "expected": "2",
+      "passResult": true
+    },
+    {
+      "form": "linked-exp-polynomial",
+      "case": "product derivative",
+      "actual": "(2*x - 1)*exp(x) + 2*exp(x)",
+      "expected": "(2*x + 1)*exp(x)",
+      "passResult": true
+    },
+    {
+      "form": "linked-exp-polynomial",
+      "case": "product integral",
+      "actual": "1 + E",
+      "expected": "1 + E",
+      "passResult": true
+    },
+    {
+      "form": "linked-exp-polynomial",
+      "case": "product endpoint",
+      "actual": "1 + E",
+      "expected": "1 + E",
+      "passResult": true
+    },
+    {
+      "form": "linked-exp-polynomial",
+      "case": "composition derivative",
+      "actual": "2*x*exp(x**2 + 1)",
+      "expected": "2*x*exp(x**2 + 1)",
+      "passResult": true
+    },
+    {
+      "form": "linked-exp-polynomial",
+      "case": "composition integral",
+      "actual": "-E + exp(2)",
+      "expected": "-E + exp(2)",
+      "passResult": true
+    },
+    {
+      "form": "linked-exp-polynomial",
+      "case": "composition endpoint",
+      "actual": "-E + exp(2)",
+      "expected": "-E + exp(2)",
+      "passResult": true
+    },
+    {
+      "form": "linked-exp-polynomial",
+      "case": "sum derivative",
+      "actual": "3*x**2 + exp(2*x)",
+      "expected": "3*x**2 + exp(2*x)",
+      "passResult": true
+    },
+    {
+      "form": "linked-exp-polynomial",
+      "case": "sum integral",
+      "actual": "1/2 + exp(2)/2",
+      "expected": "1/2 + exp(2)/2",
+      "passResult": true
+    },
+    {
+      "form": "linked-exp-polynomial",
+      "case": "sum endpoint",
+      "actual": "1/2 + exp(2)/2",
+      "expected": "1/2 + exp(2)/2",
+      "passResult": true
+    },
+    {
+      "form": "transformed-exp-trig",
+      "case": "exp chain check",
+      "actual": "exp(1 - 2*x)",
+      "expected": "exp(1 - 2*x)",
+      "passResult": true
+    },
+    {
+      "form": "transformed-exp-trig",
+      "case": "sin chain check",
+      "actual": "-cos(3*x)",
+      "expected": "-cos(3*x)",
+      "passResult": true
+    },
+    {
+      "form": "transformed-exp-trig",
+      "case": "cos chain check",
+      "actual": "sin(2*x)",
+      "expected": "sin(2*x)",
+      "passResult": true
+    },
+    {
+      "form": "transformed-exp-trig",
+      "case": "upper argument",
+      "actual": "pi",
+      "expected": "pi",
+      "passResult": true
+    },
+    {
+      "form": "transformed-exp-trig",
+      "case": "lower argument",
+      "actual": "0",
+      "expected": "0",
+      "passResult": true
+    },
+    {
+      "form": "transformed-exp-trig",
+      "case": "integral",
+      "actual": "2/3",
+      "expected": "2/3",
+      "passResult": true
+    },
+    {
+      "form": "transformed-exp-trig",
+      "case": "wrong K derivative",
+      "actual": "-2*sin(2*x)",
+      "expected": "-2*sin(2*x)",
+      "passResult": true
+    },
+    {
+      "form": "e-series-taylor",
+      "case": "Taylor4",
+      "actual": "x**4/24 + x**3/6 + x**2/2 + x + 1",
+      "expected": "x**4/24 + x**3/6 + x**2/2 + x + 1",
+      "passResult": true
+    },
+    {
+      "form": "e-series-taylor",
+      "case": "P4 at1",
+      "actual": "65/24",
+      "expected": "65/24",
+      "passResult": true
+    },
+    {
+      "form": "e-series-taylor",
+      "case": "P4 at0",
+      "actual": "1",
+      "expected": "1",
+      "passResult": true
+    },
+    {
+      "form": "e-series-taylor",
+      "case": "S4",
+      "actual": "65/24",
+      "expected": "65/24",
+      "passResult": true
+    },
+    {
+      "form": "e-series-taylor",
+      "case": "S6",
+      "actual": "1957/720",
+      "expected": "1957/720",
+      "passResult": true
+    },
+    {
+      "form": "e-series-taylor",
+      "case": "upper",
+      "actual": "11743/4320",
+      "expected": "11743/4320",
+      "passResult": true
+    },
+    {
+      "form": "e-series-taylor",
+      "case": "lower beyond rounding edge",
+      "actual": "True",
+      "expected": "True",
+      "passResult": true
+    },
+    {
+      "form": "e-series-taylor",
+      "case": "upper below rounding edge",
+      "actual": "True",
+      "expected": "True",
+      "passResult": true
+    },
+    {
+      "form": "e-series-taylor",
+      "case": "error bound vanishes",
+      "actual": "0",
+      "expected": "0",
+      "passResult": true
+    },
+    {
+      "form": "e-series-taylor",
+      "case": "bound concrete n1",
+      "actual": "True",
+      "expected": "True",
+      "passResult": true
+    },
+    {
+      "form": "e-series-taylor",
+      "case": "bound concrete n2",
+      "actual": "True",
+      "expected": "True",
+      "passResult": true
+    },
+    {
+      "form": "e-series-taylor",
+      "case": "bound concrete n4",
+      "actual": "True",
+      "expected": "True",
+      "passResult": true
+    },
+    {
+      "form": "e-series-taylor",
+      "case": "bound concrete n6",
+      "actual": "True",
+      "expected": "True",
+      "passResult": true
+    },
+    {
+      "form": "e-series-taylor",
+      "case": "bound concrete n10",
+      "actual": "True",
+      "expected": "True",
+      "passResult": true
+    },
+    {
+      "form": "approximate-e",
+      "case": "growth n1",
+      "actual": "2.000000",
+      "expected": "2.000000",
+      "passResult": true
+    },
+    {
+      "form": "approximate-e",
+      "case": "growth n10",
+      "actual": "2.593742",
+      "expected": "2.593742",
+      "passResult": true
+    },
+    {
+      "form": "approximate-e",
+      "case": "growth n100",
+      "actual": "2.704814",
+      "expected": "2.704814",
+      "passResult": true
+    },
+    {
+      "form": "approximate-e",
+      "case": "growth n1000",
+      "actual": "2.716924",
+      "expected": "2.716924",
+      "passResult": true
+    },
+    {
+      "form": "approximate-e",
+      "case": "growth n10000",
+      "actual": "2.718146",
+      "expected": "2.718146",
+      "passResult": true
+    },
+    {
+      "form": "approximate-e",
+      "case": "growth n100000",
+      "actual": "2.718268",
+      "expected": "2.718268",
+      "passResult": true
+    },
+    {
+      "form": "approximate-e",
+      "case": "three place scaled estimate",
+      "actual": "2718/5",
+      "expected": "2718/5",
+      "passResult": true
+    },
+    {
+      "form": "approximate-e",
+      "case": "natural start",
+      "actual": "200",
+      "expected": "200",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "A datum1",
+      "actual": "3",
+      "expected": "3",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "alternative A datum1",
+      "actual": "3",
+      "expected": "3",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "A datum2",
+      "actual": "7",
+      "expected": "7",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "alternative A datum2",
+      "actual": "7",
+      "expected": "7",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "A datum3",
+      "actual": "13",
+      "expected": "13",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "alternative A datum3",
+      "actual": "13",
+      "expected": "13",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "A datum4",
+      "actual": "21",
+      "expected": "21",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "alternative A datum4",
+      "actual": "21",
+      "expected": "21",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "A datum5",
+      "actual": "31",
+      "expected": "31",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "alternative A datum5",
+      "actual": "31",
+      "expected": "31",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "B datum1",
+      "actual": "2",
+      "expected": "2",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "B datum2",
+      "actual": "-1",
+      "expected": "-1",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "B datum3",
+      "actual": "1/2",
+      "expected": "1/2",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "B datum4",
+      "actual": "-1/4",
+      "expected": "-1/4",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "B datum5",
+      "actual": "1/8",
+      "expected": "1/8",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "A6",
+      "actual": "43",
+      "expected": "43",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "B6",
+      "actual": "-1/16",
+      "expected": "-1/16",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "different sixth",
+      "actual": "163",
+      "expected": "163",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "A recursion",
+      "actual": "2*x + 2",
+      "expected": "2*x + 2",
+      "passResult": true
+    },
+    {
+      "form": "sequence-formation",
+      "case": "B recursion",
+      "actual": "-1/2",
+      "expected": "-1/2",
+      "passResult": true
+    }
+  ]
+}
