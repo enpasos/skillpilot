@@ -1,0 +1,553 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_BOUNDED_ACTUAL_CI_QA_CORRECTIONS_WITH_DETERMINISTIC_RACE_PROOF",
+  "sealedAtUtc": "2026-11-04T11:48:35.466275+00:00",
+  "rootHead": "039c27015241b4e7583d62ff4f4e55af655ba5ae",
+  "changedRootFiles": [
+    {
+      "path": "app/scripts/testMathQ25CentralDilationScope.ts",
+      "beforeSha256": "d5966f2a13209eb02b98da4fa85752f75f40dc308d5d0ac65d025983fcabe557",
+      "afterSha256": "5fdd3fc50649a4eb2d9b6e3d1cdfdc2e14705e3a49a214845f7b9cd8249b8d61",
+      "bytes": 13952
+    },
+    {
+      "path": "app/scripts/validateLearnerGoalSelection.ts",
+      "beforeSha256": "ad1642cc2bfcad54fd8366e01719da951cab6efd859d81d6a551c01a1a3fe3ad",
+      "afterSha256": "82176aacde2983bdfb308743948015df5b07603cfc9ba2dff086f66353181069",
+      "bytes": 41639
+    },
+    {
+      "path": "app/scripts/testHessenMathQ21Scope.ts",
+      "beforeSha256": "6db12a692711dd03ea09b1c5149b14a6c053c3cba7863a9f4521ec946571d615",
+      "afterSha256": "3ea477cffdc532727e5c7880dfc788e7f902f12433304e7f40a8fcf81815856d",
+      "bytes": 17496
+    },
+    {
+      "path": "app/scripts/mathDeclaredCourseUnionTestUtils.ts",
+      "beforeSha256": null,
+      "afterSha256": "a2486636690034352cfca4672b67f1e9f6c146e8fd58661908460537d09dbef0",
+      "bytes": 4181
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/connectors/gemini/v1/mcp/GeminiV1SessionCoordinatorTest.java",
+      "beforeSha256": "ac280cd50cdf571203e04df4e8f96832296e80d138b7fa33088553b08a75a231",
+      "afterSha256": "de363d8275c11a3665775019d81c75514538a4f853dc6aa1a0997c9928f05751",
+      "bytes": 21041
+    }
+  ],
+  "patch": {
+    "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/bounded-qa-fixes.patch",
+    "sha256": "8820d8be1de79b5054e597a3bb20784aacc635f8161a71286d10a1f4487cbdbc"
+  },
+  "typescript": {
+    "completeRecordedExecutions": {
+      "dilation-before": {
+        "command": [
+          "node",
+          "node_modules/tsx/dist/cli.mjs",
+          "scripts/testMathQ25CentralDilationScope.ts"
+        ],
+        "cwd": "/home/enpasos/projects/skillpilot/app",
+        "exitCode": 1,
+        "seconds": 19.624265967984684
+      },
+      "selection-before": {
+        "command": [
+          "node",
+          "node_modules/tsx/dist/cli.mjs",
+          "scripts/validateLearnerGoalSelection.ts"
+        ],
+        "cwd": "/home/enpasos/projects/skillpilot/app",
+        "exitCode": 1,
+        "seconds": 0.9661681200377643
+      },
+      "dilation-after": {
+        "command": [
+          "node",
+          "node_modules/tsx/dist/cli.mjs",
+          "scripts/testMathQ25CentralDilationScope.ts"
+        ],
+        "cwd": "/home/enpasos/projects/skillpilot/app",
+        "exitCode": 1,
+        "seconds": 29.11305701697711
+      },
+      "selection-after": {
+        "command": [
+          "node",
+          "node_modules/tsx/dist/cli.mjs",
+          "scripts/validateLearnerGoalSelection.ts"
+        ],
+        "cwd": "/home/enpasos/projects/skillpilot/app",
+        "exitCode": 1,
+        "seconds": 1.8703301289933734
+      },
+      "composition-shared-helper-after": {
+        "command": [
+          "node",
+          "node_modules/tsx/dist/cli.mjs",
+          "scripts/testCompositionProjectionRoles.ts"
+        ],
+        "cwd": "/home/enpasos/projects/skillpilot/app",
+        "exitCode": 0,
+        "seconds": 32.90469060902251
+      },
+      "dilation-final": {
+        "command": [
+          "node",
+          "node_modules/tsx/dist/cli.mjs",
+          "scripts/testMathQ25CentralDilationScope.ts"
+        ],
+        "cwd": "/home/enpasos/projects/skillpilot/app",
+        "exitCode": 0,
+        "seconds": 21.509784012974706
+      },
+      "selection-final": {
+        "command": [
+          "node",
+          "node_modules/tsx/dist/cli.mjs",
+          "scripts/validateLearnerGoalSelection.ts"
+        ],
+        "cwd": "/home/enpasos/projects/skillpilot/app",
+        "exitCode": 0,
+        "seconds": 3.763885141001083
+      }
+    },
+    "finiteUnionHelper": "Exact current-policy hash-bound finite plan, unique output identity/file/fullscope, exact source IDs+paths, single GK/LK source profiles and actual source target roles with production course availability. No generic GK+LK permission.",
+    "retainedExclusions": "Pure GK remains negative for LK-only7d/localterminal. Non-HE membership still rejected except the original national union. All Hessen per-ID receipts/exclusions remain; only duplicated finite-union code was extracted.",
+    "j8Scope": "Exact separately reviewed fa0 root operation and actual J8 source structure independently resolved. Markers cover precisely all authored J8 atomic members plus fa0, every member is already in the stored focus; no duplication, sibling enrollment or focus rewrite. Original canonical phase preference and legacy prism-route semantics retained.",
+    "intermediateProbeCorrection": "dilation-after and selection-after preserve errors in my initial added fixture assumptions: nonexistent neutral HE union filename and an overstrong equivalence between raw canonical J8 closure and the authored phase. Corrected using the real declared G9 output and the documented phase-representative contract; neither original protection nor actual member assertion was skipped."
+  },
+  "gemini": {
+    "status": "PASS_DETERMINISTIC_REAL_CLEANUP_INTERLEAVING_AND_ORDINARY_TARGETED_CLASSES",
+    "beforeForcedInterleaving": {
+      "found": 1,
+      "started": 1,
+      "successful": 0,
+      "failed": 1,
+      "skipped": 0,
+      "aborted": 0,
+      "containersFailed": 0,
+      "failures": [
+        {
+          "test": "anExpiredLearningSessionCanNeitherReadNorWrite()",
+          "error": "org.opentest4j.AssertionFailedError: expected: <EXPIRED> but was: <REQUIRED>"
+        }
+      ],
+      "classOrigins": {
+        "com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1SessionCoordinatorTest": "file:/home/enpasos/projects/skillpilot/tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/before-forced-cleanup/classes/",
+        "com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1SessionCoordinator": "file:/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/backend-full-g4-ffc69-20261104-v1/backend-build/classes/java/main/",
+        "com.skillpilot.backend.connectors.gemini.v1.session.GeminiV1LearningSessionService": "file:/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/backend-full-g4-ffc69-20261104-v1/backend-build/classes/java/main/"
+      }
+    },
+    "beforeRealCleanupDeletedRows": 1,
+    "afterForcedInterleaving": {
+      "found": 1,
+      "started": 1,
+      "successful": 1,
+      "failed": 0,
+      "skipped": 0,
+      "aborted": 0,
+      "containersFailed": 0,
+      "failures": [],
+      "classOrigins": {
+        "com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1SessionCoordinatorTest": "file:/home/enpasos/projects/skillpilot/tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/after-forced-cleanup/classes/",
+        "com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1SessionCoordinator": "file:/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/backend-full-g4-ffc69-20261104-v1/backend-build/classes/java/main/",
+        "com.skillpilot.backend.connectors.gemini.v1.session.GeminiV1LearningSessionService": "file:/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/backend-full-g4-ffc69-20261104-v1/backend-build/classes/java/main/"
+      }
+    },
+    "afterRealCleanupDeletedRows": 0,
+    "ordinaryCoordinatorAndCleanupClasses": {
+      "found": 21,
+      "started": 21,
+      "successful": 21,
+      "failed": 0,
+      "skipped": 0,
+      "aborted": 0,
+      "containersFailed": 0,
+      "failures": [],
+      "classOrigins": {
+        "com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1SessionCoordinatorTest": "file:/home/enpasos/projects/skillpilot/tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/normal-after/classes/",
+        "com.skillpilot.backend.connectors.gemini.v1.session.GeminiV1LearningSessionLaunchTest": "file:/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/backend-full-g4-ffc69-20261104-v1/backend-build/classes/java/test/",
+        "com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1SessionCoordinator": "file:/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/backend-full-g4-ffc69-20261104-v1/backend-build/classes/java/main/",
+        "com.skillpilot.backend.connectors.gemini.v1.session.GeminiV1LearningSessionService": "file:/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/backend-full-g4-ffc69-20261104-v1/backend-build/classes/java/main/"
+      }
+    },
+    "allFrozenRuntimeAndMainHashesBeforeAfterPassed": true,
+    "rootTestSourceSha256": "de363d8275c11a3665775019d81c75514538a4f853dc6aa1a0997c9928f05751",
+    "rootMainChanges": false,
+    "noClockOrSchedulerDisableOrSleep": true,
+    "usesPrivateInMemoryH2Only": true,
+    "noFrozenRuntimeWritesOrResourceCopy": true,
+    "initialSupervisorUriSpellingFailurePreserved": true,
+    "noActualJvmPhaseRepeated": true
+  },
+  "preservedDiagnosticFailure": "gemini/failure.json retains the private supervisor file:/ versus file:/// URI-spelling assertion. continue.py normalizes the same file origin and executes only the previously unexecuted After and ordinary phases. No actual JVM test phase repeated.",
+  "validation": {
+    "diffCheck": {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "--",
+        "app/scripts/testMathQ25CentralDilationScope.ts",
+        "app/scripts/validateLearnerGoalSelection.ts",
+        "app/scripts/testHessenMathQ21Scope.ts",
+        "app/scripts/mathDeclaredCourseUnionTestUtils.ts",
+        "backend/src/test/java/com/skillpilot/backend/connectors/gemini/v1/mcp/GeminiV1SessionCoordinatorTest.java"
+      ],
+      "exitCode": 0
+    },
+    "newHelperWhitespaceCheckPassed": true,
+    "larger170TestBundleNotRun": "The ordinary targeted coordinator and actual cleanup classes plus deterministic real-service interleaving settled the bounded concern; no new Main or cross-class issue appeared."
+  },
+  "boundaries": {
+    "onlyFiveAuthorizedRootPathsChangedByThisTask": true,
+    "noProductionDataOrMainOrClockChange": true,
+    "noSchedulerDisableOrSleep": true,
+    "noExistingDbOrPreviewServiceChange": true,
+    "noFrozenNativeRuntimeOrSourceFreezeMutation": true,
+    "noGitCommitStagePush": true,
+    "previewProcesses": {
+      "postgres": {
+        "pid": 3038325,
+        "running": true
+      },
+      "backend": {
+        "pid": 3040118,
+        "running": true
+      },
+      "vite": {
+        "pid": 3052258,
+        "running": true
+      }
+    },
+    "localChecksNotRemoteCIPass": true
+  },
+  "proofFiles": [
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/GeminiV1SessionCoordinatorTest.java.before",
+      "sha256": "ac280cd50cdf571203e04df4e8f96832296e80d138b7fa33088553b08a75a231",
+      "bytes": 20431
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/bounded-qa-fixes.patch",
+      "sha256": "8820d8be1de79b5054e597a3bb20784aacc635f8161a71286d10a1f4487cbdbc",
+      "bytes": 24738
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/composition-shared-helper-after.json",
+      "sha256": "33a212ad48b35306e9b656d7d922ff40fc7c7a0c38121288b4a87a8c37566141",
+      "bytes": 219
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/composition-shared-helper-after.log",
+      "sha256": "c6dfc8333d04788d714f36b0f19aa0aca1db87ff520ea8e67629e2f670f7cb6c",
+      "bytes": 475
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/dilation-after.json",
+      "sha256": "cb68f07b025a5cedcb8a2b3463fdbbf30ce2b4cfea5a98590e0322ee834000ac",
+      "bytes": 220
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/dilation-after.log",
+      "sha256": "85a0bd4b91fde08b5382e51af83b10f67b9948d07ab0b9a5d372bc1010ee72ec",
+      "bytes": 926
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/dilation-before.json",
+      "sha256": "dbf71e09f0e2a6d075242ddd94adf943ee755ac67238f229f6ea544abd7ee9dd",
+      "bytes": 221
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/dilation-before.log",
+      "sha256": "b56659f8b1c0236c53e9819709959be8952cf94cbfa4ff7c17260a9414de8049",
+      "bytes": 681
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/dilation-final.json",
+      "sha256": "8052b87f4fab154dfda4a3d44cf8ec865f285b92d38065e903b97d75a932fd5a",
+      "bytes": 221
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/dilation-final.log",
+      "sha256": "f446d84d125d0a937d3197daa95261a539304ec694c45b0445dcd0411a92fecb",
+      "bytes": 100
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/FocusedJUnitRunner.java",
+      "sha256": "546b9189633a30884f94d885bdcf9110199a49faff0dc29d4a6312b0a8957230",
+      "bytes": 3386
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/after-forced-cleanup/GeminiV1SessionCoordinatorTest.java",
+      "sha256": "fa49b2b4a0e95f7779569145b54151344cca0644c766c6a39e8e1cac8c21bfdc",
+      "bytes": 21745
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/after-forced-cleanup/classes/com/skillpilot/backend/connectors/gemini/v1/mcp/GeminiV1SessionCoordinatorTest.class",
+      "sha256": "d94d7cb7a9dafd636a6faccf0c0c8b6454fc62f75632b09bcca45f6e1a523562",
+      "bytes": 27270
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/after-forced-cleanup.application.log",
+      "sha256": "c8ad78246088836dbd52c4bdfe62c209def9905e36dcb503abbce322eb7f8088",
+      "bytes": 314636
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/after-forced-cleanup.execution.json",
+      "sha256": "40646c3f3b8d34c764d333baecfeab6c69b83273fe00f01fcb14c0793180373c",
+      "bytes": 78
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/after-forced-cleanup.log",
+      "sha256": "6a6ba0e164b6465c65b6984de0a4bb61c68c72eed4c1b38b5ed00b06a4653145",
+      "bytes": 341824
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/after-forced-cleanup.result.json",
+      "sha256": "481ac6f9a2c03ac584979ebf2cf611e223f76d4d32363df75d2549c565a582c9",
+      "bytes": 845
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/after-forced-cleanup.started.json",
+      "sha256": "c5f4ff2bee940f9866242fdc7746e290e60bd1f2e892fa2b28637e68cd4e9458",
+      "bytes": 35310
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/before-forced-cleanup/GeminiV1SessionCoordinatorTest.java",
+      "sha256": "919990f350f3b5f2684aa2210a8f49ae77018763b1c6833f3142efd271efc3c6",
+      "bytes": 21131
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/before-forced-cleanup/classes/com/skillpilot/backend/connectors/gemini/v1/mcp/GeminiV1SessionCoordinatorTest.class",
+      "sha256": "297202fcfc374819ea82145eafa641d02403dd7c9aff5f9f141ddd4f14622dd3",
+      "bytes": 26489
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/before-forced-cleanup.application.log",
+      "sha256": "309525bf4d5ec2069d277b9de50904c938874ec77ae8fe373ac55933b75dbdee",
+      "bytes": 311795
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/before-forced-cleanup.execution.json",
+      "sha256": "0ff5a2c742f50f98c677a8245b4a70a847d310c00ee65cd49b95f8bafc7f22b3",
+      "bytes": 77
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/before-forced-cleanup.log",
+      "sha256": "0d2b9ba0e6d1714fa0852e2f952c3b11d40be0e87c5279b3eec045ac273746e2",
+      "bytes": 338740
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/before-forced-cleanup.result.json",
+      "sha256": "cd7a2292918dd1b959f19483cb4613aeea46b7eb4ade3e1f75ed4c262410d600",
+      "bytes": 1010
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/before-forced-cleanup.started.json",
+      "sha256": "b1ab60bcfbf7e9dd5704b124b5f60ca902c6662e127cd0d2487d830bc9796b19",
+      "bytes": 35313
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/compile-after-forced-cleanup.execution.json",
+      "sha256": "3d7198db2313740a692139727dc8d857df720bbbd612004752ce44738c7c3cad",
+      "bytes": 77
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/compile-after-forced-cleanup.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/compile-after-forced-cleanup.started.json",
+      "sha256": "56943c29be31f6b62fe377b2cb1023559388f86a747ec1a3bb35f0f5071b5300",
+      "bytes": 34860
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/compile-before-forced-cleanup.execution.json",
+      "sha256": "c13ec906e6afd4dc7d13f811d3ba220ec95671f0d8cb7baa0ba60381f40d86c2",
+      "bytes": 77
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/compile-before-forced-cleanup.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/compile-before-forced-cleanup.started.json",
+      "sha256": "9eb0ee795bcf04982031728f74206bae843aa9fa5a56acce068d14bc08155d02",
+      "bytes": 34862
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/compile-launcher.execution.json",
+      "sha256": "6596219958fb7c5a8d1991ab5b17362c704fab239dce7814b2e839ae4eae1119",
+      "bytes": 77
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/compile-launcher.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/compile-launcher.started.json",
+      "sha256": "cad26ccef3142492fd06581257ac12a6cbd3e9bb2d5848a1542cf251406b0119",
+      "bytes": 34815
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/compile-normal-after.execution.json",
+      "sha256": "a0da1994cbcf0e375cf057cfdb31b065bfe562743bd9744e014d8318b737078f",
+      "bytes": 78
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/compile-normal-after.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/compile-normal-after.started.json",
+      "sha256": "b3c50fda31902b26d03bab517d024ff05cc7991b39156095dfc07ca7ee0b72d0",
+      "bytes": 34844
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/continuation.pid.json",
+      "sha256": "81bb1e5d46cd4214b64204b721bf5ddc6c194a7c9da66ed2328a9246eeda3ec2",
+      "bytes": 35
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/continuation.started.json",
+      "sha256": "7f7ee9db7417b5a22d884704a77e0459251b6f6d5efcc00af4e519c8492e5661",
+      "bytes": 113
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/continuation.supervisor.log",
+      "sha256": "f29e1d6e49132ba60989ba574be6e5da316dd67976d266640ecb2f0610a0ca9e",
+      "bytes": 188
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/continue.py",
+      "sha256": "f5782cffe9ee17324d3a1f7ae8ca8bd2d61c554e908e6b7038ec372993ffeb99",
+      "bytes": 3913
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/failure.json",
+      "sha256": "7e5981cd20c1dfd58df032c402f224461661fb3abf5d1b069660aa0c69408b79",
+      "bytes": 84
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/launcher-classes/FocusedJUnitRunner.class",
+      "sha256": "e8feb617685f564770817bdd016aae3b6be0c3c6236eb4eacb6ee8cbc338fc80",
+      "bytes": 5329
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/normal-after/GeminiV1SessionCoordinatorTest.java",
+      "sha256": "de363d8275c11a3665775019d81c75514538a4f853dc6aa1a0997c9928f05751",
+      "bytes": 21041
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/normal-after/classes/com/skillpilot/backend/connectors/gemini/v1/mcp/GeminiV1SessionCoordinatorTest.class",
+      "sha256": "0a1eaa9f1ddfffe008b7add0865cfacd493616c23dda3c164c2a81184005c38b",
+      "bytes": 26075
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/normal-after.application.log",
+      "sha256": "f762e1e8ecd85cfd2775e0b7e3c3db3959f9e3fe4055093ecafbaf8d60dbcd06",
+      "bytes": 473401
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/normal-after.execution.json",
+      "sha256": "d9f72945c019dbe5a081833db4e75eb06dd50f52aedcf0bd402a372ef683ccd4",
+      "bytes": 78
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/normal-after.log",
+      "sha256": "cc12caf292db8385643044f36925ae00cd3a3c264478f0aa46cccd3bcfaf8e66",
+      "bytes": 566481
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/normal-after.result.json",
+      "sha256": "c201e11d3ba52428fa71b6e4a3ea47d63daf840b7f90b7af73332a1a701a8c93",
+      "bytes": 1072
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/normal-after.started.json",
+      "sha256": "f82e5a1dd7a3f60d6eba97b430ce06038c9b8714e11183f29ebe338473b16060",
+      "bytes": 35332
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/result.json",
+      "sha256": "5173e37efb8f0c29489ae37be490da294ef5aa2fb74be91237925379ae2f88bc",
+      "bytes": 3667
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/run.py",
+      "sha256": "376ed65ea9093e21c8e56f4642bf9fbf506e88134ba5d637a9b3608f82a7432a",
+      "bytes": 7703
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/runtime-reuse.json",
+      "sha256": "5cf2f91ddd097d05255571b42c2d71015c33930e4867622bad95cc9766acaa05",
+      "bytes": 509
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/started.json",
+      "sha256": "2bb2ab8b3040342b78d234d70ed2c35c941dfbcdefd0b41c7ac3d60f4a8c5b66",
+      "bytes": 75
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/supervisor.log",
+      "sha256": "8b2ba002a505ca18c971cd6c5dcd1a110682a7cd8dafc0367bf7ede6e469ccc4",
+      "bytes": 1187
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/gemini/supervisor.pid.json",
+      "sha256": "d5f5b6ebeecfae6e97533d415c7f78e26592febd1beb09dfa3545d670f708093",
+      "bytes": 35
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/selection-after.json",
+      "sha256": "e148d27e4d5f03c3cdb51461281d87dd7c06318c602d2f98bebc3b2b2f8e34e8",
+      "bytes": 218
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/selection-after.log",
+      "sha256": "1ed74669e088f3c91b9ce1558f046d589be5062b6cbb400b556f0d4b6c9a92e4",
+      "bytes": 4600
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/selection-before.json",
+      "sha256": "9816cb1584a56c3744777ab769c5587a59c02d3664134cdb11c7362bea4fa4c7",
+      "bytes": 218
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/selection-before.log",
+      "sha256": "ad95d8eae4f22ae23b735463f121e60b8b31719077620529695f1b671c1aff25",
+      "bytes": 1130
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/selection-final.json",
+      "sha256": "40e033b1a87f18d969752dea5cb2776c05de2b68dabe4829025b5d7e9913d8c3",
+      "bytes": 217
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/selection-final.log",
+      "sha256": "98250c67a7f27467d059bae903c6ab4a8522f64392b4997320d8774ae648a79f",
+      "bytes": 53
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/testHessenMathQ21Scope.ts.before",
+      "sha256": "6db12a692711dd03ea09b1c5149b14a6c053c3cba7863a9f4521ec946571d615",
+      "bytes": 20038
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/testMathQ25CentralDilationScope.ts.before",
+      "sha256": "d5966f2a13209eb02b98da4fa85752f75f40dc308d5d0ac65d025983fcabe557",
+      "bytes": 12395
+    },
+    {
+      "path": "tmp/local-preview-20261104/ci-qa-followup-20261104-v1/validateLearnerGoalSelection.ts.before",
+      "sha256": "ad1642cc2bfcad54fd8366e01719da951cab6efd859d81d6a551c01a1a3fe3ad",
+      "bytes": 37819
+    }
+  ]
+}

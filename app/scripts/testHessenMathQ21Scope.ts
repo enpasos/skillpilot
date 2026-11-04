@@ -5,6 +5,7 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 import { buildApplicabilityCompilation, intersectApplicabilityJurisdictions } from './applicabilityCompiler'
+import { isMathSourceCourseAvailable, loadDeclaredMathCourseUnions, readBoundMathStageDecision } from './mathDeclaredCourseUnionTestUtils'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import { normalizeCanonicalLandscape } from '../src/utils/authoring/canonicalAuthoring'
 import {
@@ -173,16 +174,7 @@ const viewById = new Map(views.map(({ view }) => [view.viewId, view]))
 assert.equal(viewById.size, views.length, 'Registered view identities must be unique')
 const rolesByViewId = new Map(views.map(({ view }) => [view.viewId,
   collectCompositionProjectionRoleGoalIds(view.rootNodes, goalById)]))
-const stagePolicy = readJson('app/scripts/config/math-country-seki-stage-policy.json') as {
-  stageDecisionBindings: Array<{ path: string; sha256: string }>
-}
-const readBoundDecision = (path: string) => {
-  const bindings = stagePolicy.stageDecisionBindings.filter(binding => binding.path === path)
-  assert.equal(bindings.length, 1, `${path}: expected one current policy binding`)
-  const bytes = readFileSync(resolve(repoRoot, path))
-  assert.equal(createHash('sha256').update(bytes).digest('hex'), bindings[0].sha256, `${path}: reviewed input drift`)
-  return JSON.parse(bytes.toString('utf8'))
-}
+const readBoundDecision = (path: string) => readBoundMathStageDecision(repoRoot, path)
 
 // These later, independently reviewed deltas extend the original eight-view
 // endpoint baseline. Match their finite offered scopes, never all GK views.
@@ -219,48 +211,15 @@ const allowedSourceViews = new Map([[tasks[0], bbbAllowedViews], ...otherTaskAll
 
 // The production finite plan is the authority for each materialized course
 // union's two source identities. A filename suffix is not a union declaration.
-const finitePlan = readBoundDecision('curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/finite-scope-operations.json') as {
-  counts: { combinedDocuments: number }
-  combinedMaterializations: Array<{
-    outputViewId: string; outputFileName: string; scope: CompositionView['scope']
-    sourceViewIds: string[]; baselineSourcePaths: string[]; excludedNewAssessmentIds: string[]
-  }>
-}
-const combinedById = new Map(finitePlan.combinedMaterializations.map(pair => [pair.outputViewId, pair]))
-assert.equal(combinedById.size, finitePlan.counts.combinedDocuments)
-const withoutCourse = ({ courseProfile: _courseProfile, ...scope }: CompositionView['scope']) => scope
+const combinedById = loadDeclaredMathCourseUnions(repoRoot, views)
 for (const pair of combinedById.values()) {
-  const output = viewById.get(pair.outputViewId)
-  assert(output, `Declared course union missing: ${pair.outputViewId}`)
-  assert.deepEqual(output.scope, pair.scope, `${pair.outputViewId}: exact combined scope changed`)
-  assert.equal(pair.scope.courseProfile, 'GK+LK')
-  assert.equal(views.find(({ name }) => name === pair.outputFileName)?.view.viewId, pair.outputViewId)
-  assert.equal(pair.sourceViewIds.length, 2)
-  assert.equal(pair.baselineSourcePaths.length, 2)
-  const sources = pair.sourceViewIds.map((id, index) => {
-    const source = viewById.get(id)
-    assert(source, `Declared union source missing: ${id}`)
-    assert.equal(readJson(pair.baselineSourcePaths[index]).viewId, id, `${id}: exact source path changed`)
-    assert.deepEqual(withoutCourse(source.scope), withoutCourse(pair.scope), `${id}: union source scope mismatch`)
-    assert(!combinedById.has(id), `${id}: union source must be a single-course view`)
-    return source
-  })
-  assert.deepEqual(sources.map(source => source.scope.courseProfile).sort(), ['GK', 'LK'])
   assert(tasks.every(id => !pair.excludedNewAssessmentIds.includes(id)), `${pair.outputViewId}: existing endpoint cannot be omitted as a new assessment`)
 }
 const sourceContributesTask = (sourceViewId: string, taskId: string) => {
   const source = viewById.get(sourceViewId)!
   if (!allowedSourceViews.get(taskId)!.has(sourceViewId)
     || !rolesByViewId.get(sourceViewId)!.targetGoalIds.has(taskId)) return false
-  // Same course availability as CourseProfileAvailability.matches; Bavaria
-  // takes its explicit authored course selection instead of canonical tags.
-  if (source.scope.jurisdiction === 'DE-BY') return true
-  const goal = rawGoalById.get(taskId)!
-  const tags = goal.tags ?? []
-  const profile = source.scope.courseProfile!
-  const releaseCourse = goal.release?.courseLevel?.trim().toUpperCase() ?? ''
-  return tags.length === 0 || tags.includes(profile) || releaseCourse === profile
-    || (!tags.includes('GK') && !tags.includes('LK') && !releaseCourse)
+  return isMathSourceCourseAvailable(rawGoalById.get(taskId)!, source)
 }
 let checkedHe = 0
 let checkedOther = 0
