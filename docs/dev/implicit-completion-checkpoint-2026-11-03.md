@@ -4,6 +4,51 @@ Der Zwischenstand liegt im [Draft-PR #79](https://github.com/enpasos/skillpilot/
 auf `wip/implicit-completion-math-checkpoint-20261103`. Er ist keine Merge-,
 M7-, Deployment- oder vollständige CI-Freigabe.
 
+## Aktueller Messstand: 4. November 2026
+
+Die integrierten Änderungen umfassen jetzt **19 vollständige Prüfungsformen
+unter bestehenden Lernziel-IDs** sowie geprüfte Plätze vorhandener Prüfungen.
+Der jüngste Datenimport macht zwei vorhandene Markov-Prüfungen in zwölf
+schleswig-holsteinischen Angeboten als zusätzliche SkillPilot-Vertiefung
+erreichbar. Die 807 curricularen Mathematikziele bleiben erhalten.
+
+| Vollständige Mathematikangebote | Aktueller Befund |
+| --- | --- |
+| Tatsächlich geprüfte Angebote | 161, einschließlich 46 Kursvereinigungen |
+| Abschlussintegrität bestanden | Thüringen / Sekundarstufe I / G8 / GK+LK |
+| Angebote mit verbleibenden Datenlücken | 160 |
+| Ungedeckte Ziele | 312 unterschiedliche IDs / 5.722 Ziel-Angebots-Paare |
+| Gewöhnliche offene Endpunkte | 186 unterschiedliche IDs / 3.041 Endpunktpaare |
+
+Die acht zusätzlichen Analysisformen schließen 1.824 Ziel-Angebots-Paare und
+624 Endpunktpaare. Der anschließende Markov-Import schließt weitere 164 bzw.
+80 Paare. Beide Verbesserungen sind mit tatsächlichen Backendprojektionen und
+unabhängigen Reviews belegt. Die ältere Nachweischronik unten nennt jeweils
+den damaligen Zwischenstand.
+
+Der Coach zeigt verfügbare Prüfungen auch bei ausschließlich ungedeckten
+Abschlussrouten als ausdrückliche Auswahl. Daraus entstehen weder automatischer
+Prüfungsstart noch implizite Gutschrift. Die gezielte integrierte Backendprüfung
+besteht mit 179 Tests; alle Produktionsklassen wurden zusätzlich frisch
+kompiliert. Die Graphvalidierung unterscheidet die curriculare Kompetenz von
+ihrer Prüfungsform und prüft gerichtete Vorbereitungswege. Sie meldet noch
+49 fachlich offene Routen.
+
+Der GitHub-Stand `36a1292e2f` bestätigt Dokumentation, Lernzielbuch,
+Completion-Kern, Cockpit, OpenAI-/Claude-Adapter und OAuth. Die vollständige
+Mathematik- und Graphprüfung bleibt wegen der Datenlücken rot. Der Frontendjob
+erreicht nach der Speicherbereinigung die Tests und findet einen veralteten
+Hinweistext; dessen Korrektur besteht inzwischen im vollständigen lokalen
+Trainer-Plan-UI-Test. Ein gemeinsamer Datenbankname in unterschiedlichen
+Gemini-Testkontexten verursacht zudem Tabellenverluste und wird separat
+korrigiert. Für den neuen Gesamtstand wird noch kein vollständiger CI-PASS
+behauptet.
+
+[Analysisformen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/analysis-eight/README.md)
+· [Markov-Platzierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/sh-markov-twelve/README.md)
+· [Graphvalidierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/directed-prior-stage-validation/README.md)
+· [Coach und Plan](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-explicit-assessment-choices/README.md)
+
 ## Integrierter Stand
 
 - Ein binäres Mastery-Ergebnis pro atomarem Lernziel. Implizite Erledigung ist
@@ -64,7 +109,7 @@ M7-, Deployment- oder vollständige CI-Freigabe.
 Die Konzepte und das LaTeX/PDF sind Teil des PR. Der abschließende Abgleich mit
 allen weiteren fachlichen Korrekturen bleibt Bestandteil des Meilensteins.
 
-## Tatsächliche Prüfungen und Grenzen
+## Nachweisverlauf mit den jeweiligen Zwischenständen
 
 Der Quellen-/Autoren-Nachlauf nach dem 40-Dateien-Import besteht alle zehn
 normalen Kommandos: Source21, Lernzielbuch, Länderansichten83, Daueransichten18,

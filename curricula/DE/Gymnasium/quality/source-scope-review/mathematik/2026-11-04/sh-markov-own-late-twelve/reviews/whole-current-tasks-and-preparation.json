@@ -1,0 +1,2628 @@
+{
+  "rootCanonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "50479471d27c2af77ba192e0a595d2c90e022ddeca86ff83cc12ac8cbf89834a"
+  },
+  "wholeTasks": [
+    {
+      "wholeGoal": {
+        "id": "57aff94e-91b8-5cc6-9f85-3f317ecf36ca",
+        "title": "Übergangsprozesse mit Matrizen modellieren (GK)",
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/markov-backward-v2/gk_task_v2.md#aufgabe",
+        "description": "Die lernende Person kann eine umfassende Q2-GK-Klausuraufgabe zu Matrixoperationen und Übergangsprozessen selbstständig bearbeiten, Matrixdarstellungen und Tabellenkalkulation fachgerecht nutzen, Zustände vorwärts und rückwärts untersuchen sowie Fixvektoren im Kontext deuten.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "Practice",
+          "Assessment"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1",
+            "K2",
+            "K3",
+            "K4",
+            "K5"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2",
+            "L4"
+          ],
+          "phase": "Q2"
+        },
+        "requires": [
+          "5e893892-393e-5df0-b705-fb3b3458122f",
+          "4fb40e58-58c1-5964-b58e-3347a8022b97",
+          "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+          "304111dd-426b-520b-a275-3fa37da1b0e0",
+          "ce198bc9-b014-52ba-814f-25cc3e020668",
+          "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+          "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "03685f87-7570-5bb3-b1c7-134124abb317",
+          "6aa593a3-6690-581d-9b7d-37cac78187a1",
+          "10a33d93-dc20-5edd-ae3b-32338d05407c",
+          "3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+          "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf",
+          "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7"
+        ],
+        "contains": [],
+        "examples": [],
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "5e893892-393e-5df0-b705-fb3b3458122f",
+            "4fb40e58-58c1-5964-b58e-3347a8022b97",
+            "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+            "304111dd-426b-520b-a275-3fa37da1b0e0",
+            "ce198bc9-b014-52ba-814f-25cc3e020668",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "03685f87-7570-5bb3-b1c7-134124abb317",
+            "6aa593a3-6690-581d-9b7d-37cac78187a1",
+            "10a33d93-dc20-5edd-ae3b-32338d05407c",
+            "3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+            "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf"
+          ],
+          "coveredStrands": [
+            "L1",
+            "L2",
+            "L4"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/markov-backward-v2/gk_task_v2.md",
+          "taskContent": "Alle Zustände werden als Spaltenvektoren in der Reihenfolge $(A,B)$ notiert; es gilt\n\n$$\n\\vec x_{n+1}=M\\vec x_n.\n$$\n\nGleichwertige mathematisch korrekte Verfahren sind in allen Teilaufgaben zulässig.\n\n## Ausgangssituation\n\nIn einer Region leben zu Beginn eines Jahres $10\\,000$ Personen in Stadt A und $8\\,000$ Personen in Stadt B. Von Jahr zu Jahr wechseln $8\\,\\%$ der in A lebenden Personen nach B; $5\\,\\%$ der in B lebenden Personen wechseln nach A. Die Übergangsraten bleiben zunächst konstant.\n\n## 1. Modellierung (10 BE)\n\na) Zeichnen Sie einen vollständigen Zustands-/Übergangsgraphen mit allen vier Übergängen und den zugehörigen Wahrscheinlichkeiten. (4 BE)\n\nb) Geben Sie den Anfangszustand $\\vec x_0$ und die Übergangsmatrix $M$ an. Machen Sie Zeilen-/Spaltenreihenfolge und Rechenkonvention kenntlich. (4 BE)\n\nc) Deuten Sie die Matrixeinträge $m_{12}$ und $m_{21}$ im Sachzusammenhang. (2 BE)\n\n## 2. Vorwärtsentwicklung und Matrixprodukt (10 BE)\n\na) Bestimmen Sie $\\vec x_1$ und $\\vec x_2$. (4 BE)\n\nb) Deuten Sie $\\vec x_2$ im Kontext und begründen Sie, weshalb die Gesamtzahl von $18\\,000$ Personen im Modell erhalten bleibt. (2 BE)\n\nc) Bestimmen Sie $M^2$. Begründen Sie, weshalb das Produkt in dieser Reihenfolge definiert und sachgerecht ist, und deuten Sie den Eintrag $(M^2)_{21}$. (4 BE)\n\n## 3. Vergleich eines zweiten Modells (10 BE)\n\nEin alternatives Szenario wird durch\n\n$$\nN=\\begin{pmatrix}\n0{,}88 & 0{,}10\\\\\n0{,}12 & 0{,}90\n\\end{pmatrix}\n$$\n\nbeschrieben. Es gilt dieselbe Konvention wie für $M$.\n\na) Berechnen Sie $D=N-M$ und deuten Sie $d_{21}$. (3 BE)\n\nb) Für eine Sensitivitätsanalyse wird\n\n$$\nP=\\frac34M+\\frac14N\n$$\n\nverwendet. Berechnen Sie $P$, prüfen Sie, ob $P$ eine stochastische Übergangsmatrix ist, und erläutern Sie die Bedeutung dieser gewichteten Modellmischung. (4 BE)\n\nc) In einer Tabellenkalkulation stehen $M$ in `B2:C3`, $N$ in `E2:F3`, $D$ in `H2:I3` und $P$ in `K2:L3`; Zeilen bezeichnen Zielstädte, Spalten Ausgangsstädte. Geben Sie je eine kopierbare Formel für `H2` und `K2` an und deuten Sie den Zellinhalt `F3` im Kontext. (3 BE)\n\n## 4. Rückwärtsrechnung (12 BE)\n\na) Bestimmen Sie $M^{-1}$ mit einem geeigneten Verfahren und prüfen Sie Ihr Ergebnis durch Multiplikation. (5 BE)\n\nb) Beobachtet wurden\n\n$$\n\\vec u_{n+1}=\\begin{pmatrix}11\\,340\\\\6\\,660\\end{pmatrix}\n\\qquad\\text{und}\\qquad\n\\vec w_{n+1}=\\begin{pmatrix}17\\,430\\\\570\\end{pmatrix}.\n$$\n\nBestimmen Sie jeweils den rechnerisch möglichen unmittelbaren Vorgänger. Beurteilen Sie Zulässigkeit und Eindeutigkeit beider Vorgänger und begründen Sie. (7 BE)\n\n## 5. Stabiler Zustand (8 BE)\n\nBestimmen Sie einen Fixvektor $\\vec v$ mit $M\\vec v=\\vec v$ und $v_A+v_B=18\\,000$. Geben Sie das Ergebnis exakt und auf ganze Personen gerundet an und erläutern Sie, was „stabil“ hier bedeutet. (8 BE)",
+          "solutionContent": "Gleichwertige mathematisch korrekte Lösungswege und sachlich gleichwertige Deutungen sind anzuerkennen.\n\n## 1. Modellierung (10 BE)\n\n### a) Zustands-/Übergangsgraph (4 BE)\n\nDer vollständige Graph besitzt die Zustände A und B sowie die vier gerichteten Übergänge\n\n- A $\\to$ A mit $0{,}92$,\n- A $\\to$ B mit $0{,}08$,\n- B $\\to$ A mit $0{,}05$,\n- B $\\to$ B mit $0{,}95$.\n\nBewertung: je ein korrekt gerichteter und beschrifteter Übergang 1 BE.\n\n### b) Anfangszustand und Übergangsmatrix (4 BE)\n\nMit Spalten als Ausgangsstädten, Zeilen als Zielstädten und der Reihenfolge $(A,B)$ gilt\n\n$$\n\\vec x_0=\\begin{pmatrix}10\\,000\\\\8\\,000\\end{pmatrix},\n\\qquad\nM=\\begin{pmatrix}\n0{,}92 & 0{,}05\\\\\n0{,}08 & 0{,}95\n\\end{pmatrix},\n\\qquad\n\\vec x_{n+1}=M\\vec x_n.\n$$\n\nBewertung: Anfangszustand 1 BE, Matrixeinträge 2 BE, Reihenfolge und Rechenkonvention 1 BE.\n\n### c) Eintragsdeutung (2 BE)\n\n- $m_{12}=0{,}05$ ist der Anteil der Personen aus B, die im Folgejahr in A leben.\n- $m_{21}=0{,}08$ ist der Anteil der Personen aus A, die im Folgejahr in B leben.\n\nBewertung: je korrekte Deutung 1 BE.\n\n## 2. Vorwärtsentwicklung und Matrixprodukt (10 BE)\n\n### a) Zustände nach einem und zwei Jahren (4 BE)\n\n$$\n\\vec x_1=M\\vec x_0\n=\\begin{pmatrix}\n0{,}92 & 0{,}05\\\\\n0{,}08 & 0{,}95\n\\end{pmatrix}\n\\begin{pmatrix}10\\,000\\\\8\\,000\\end{pmatrix}\n=\\begin{pmatrix}9\\,600\\\\8\\,400\\end{pmatrix}.\n$$\n\n$$\n\\vec x_2=M\\vec x_1\n=\\begin{pmatrix}\n0{,}92 & 0{,}05\\\\\n0{,}08 & 0{,}95\n\\end{pmatrix}\n\\begin{pmatrix}9\\,600\\\\8\\,400\\end{pmatrix}\n=\\begin{pmatrix}9\\,252\\\\8\\,748\\end{pmatrix}.\n$$\n\nBewertung: $\\vec x_1$ 2 BE, $\\vec x_2$ 2 BE.\n\n### b) Kontext und Erhaltung (2 BE)\n\nNach zwei Jahren leben dem Modell zufolge $9\\,252$ Personen in A und $8\\,748$ Personen in B. Beide Spaltensummen von $M$ sind 1. Daher gilt\n\n$$\n\\begin{pmatrix}1&1\\end{pmatrix}M=\\begin{pmatrix}1&1\\end{pmatrix},\n$$\n\nund die Komponentensumme bleibt bei jedem Übergang $18\\,000$.\n\nBewertung: Kontextdeutung 1 BE, tragfähige Erhaltungsbegründung 1 BE.\n\n### c) Zweischritt-Matrix (4 BE)\n\n$$\nM^2=M\\cdot M\n=\\begin{pmatrix}\n0{,}8504 & 0{,}0935\\\\\n0{,}1496 & 0{,}9065\n\\end{pmatrix}.\n$$\n\nDas Produkt ist definiert, weil beide Faktoren $2\\times2$-Matrizen sind. Der rechte Faktor wirkt zuerst; beide Faktoren bilden jeweils einen Jahresübergang ab. Deshalb beschreibt $M\\cdot M$ zwei aufeinanderfolgende Jahresübergänge.\n\nDer Eintrag $(M^2)_{21}=0{,}1496$ bedeutet: Eine zunächst in A lebende Person befindet sich nach zwei Übergängen mit Wahrscheinlichkeit $14{,}96\\,\\%$ in B.\n\nBewertung: Matrix $M^2$ 2 BE, Dimensions-/Reihenfolgebegründung 1 BE, Eintragsdeutung 1 BE.\n\n## 3. Vergleich eines zweiten Modells (10 BE)\n\n### a) Differenzmatrix (3 BE)\n\n$$\nD=N-M\n=\\begin{pmatrix}\n-0{,}04 & 0{,}05\\\\\n0{,}04 & -0{,}05\n\\end{pmatrix}.\n$$\n\n$d_{21}=0{,}04$ bedeutet: Im alternativen Modell ist die Übergangswahrscheinlichkeit A $\\to$ B um 4 Prozentpunkte höher.\n\nBewertung: Differenzmatrix 2 BE, Deutung 1 BE.\n\n### b) Gewichtete Modellmischung (4 BE)\n\n$$\nP=\\frac34M+\\frac14N\n=\\begin{pmatrix}\n0{,}91 & 0{,}0625\\\\\n0{,}09 & 0{,}9375\n\\end{pmatrix}.\n$$\n\nAlle Einträge sind nichtnegativ und beide Spaltensummen sind 1. Somit ist $P$ eine stochastische Übergangsmatrix. $P$ ist die eintragsweise gewichtete Kombination des Basismodells $M$ mit Gewicht $75\\,\\%$ und des Alternativmodells $N$ mit Gewicht $25\\,\\%$. Eine sachlich gleichwertige Beschreibung der Sensitivitätsmischung ist ebenfalls korrekt.\n\nBewertung: Matrix $P$ 2 BE, Stochastikprüfung 1 BE, Mischungsdeutung 1 BE.\n\n### c) Tabellenkalkulation (3 BE)\n\n- In `H2`: `=E2-B2`; die Formel ist nach `H2:I3` kopierbar.\n- In `K2`: `=0,75*B2+0,25*E2`; die Formel ist nach `K2:L3` kopierbar. Eine für die verwendete Tabellenkalkulation gültige Dezimalpunktschreibweise ist ebenfalls korrekt.\n- `F3` enthält $0{,}90$: Im alternativen Modell bleiben $90\\,\\%$ der aus B kommenden Personen im Folgejahr in B.\n\nBewertung: Formeln 2 BE, Deutung 1 BE.\n\n## 4. Rückwärtsrechnung (12 BE)\n\n### a) Inverse Matrix (5 BE)\n\n$$\n\\det(M)=0{,}92\\cdot0{,}95-0{,}05\\cdot0{,}08=0{,}87\\ne0.\n$$\n\nDamit ist $M$ invertierbar und\n\n$$\nM^{-1}\n=\\frac1{0{,}87}\n\\begin{pmatrix}\n0{,}95 & -0{,}05\\\\\n-0{,}08 & 0{,}92\n\\end{pmatrix}\n=\\begin{pmatrix}\n\\frac{95}{87} & -\\frac5{87}\\\\\n-\\frac8{87} & \\frac{92}{87}\n\\end{pmatrix}.\n$$\n\nDirekte Multiplikation ergibt\n\n$$\nMM^{-1}=M^{-1}M=I_2.\n$$\n\nBewertung: Determinante und Existenz 1 BE, Inverse 2 BE, Produktprüfung 2 BE.\n\n### b) Vorgänger, Zulässigkeit und Eindeutigkeit (7 BE)\n\nFür den ersten Zustand gilt\n\n$$\n\\vec u_n=M^{-1}\\vec u_{n+1}\n=\\begin{pmatrix}12\\,000\\\\6\\,000\\end{pmatrix}.\n$$\n\nBeide Komponenten sind nichtnegativ und ihre Summe ist $18\\,000$; der Vorgänger ist daher zulässig.\n\nFür den zweiten Zustand gilt\n\n$$\n\\vec w_n=M^{-1}\\vec w_{n+1}\n=\\begin{pmatrix}19\\,000\\\\-1\\,000\\end{pmatrix}.\n$$\n\nDie Summe ist zwar $18\\,000$, wegen der negativen B-Komponente ist dieser Vorgänger aber unzulässig. Weil $\\det(M)\\ne0$, ist die algebraische Lösung in beiden Fällen eindeutig. Zu $\\vec w_{n+1}$ existiert deshalb kein anderer zulässiger unmittelbarer Vorgänger.\n\nBewertung: $\\vec u_n$ 2 BE, Zulässigkeit von $\\vec u_n$ 1 BE, $\\vec w_n$ 2 BE, Unzulässigkeit von $\\vec w_n$ 1 BE, gemeinsame Eindeutigkeitsfolgerung 1 BE.\n\n## 5. Stabiler Zustand (8 BE)\n\nAus $M\\vec v=\\vec v$ folgt beispielsweise\n\n$$\n-0{,}08v_A+0{,}05v_B=0,\n$$\n\nalso\n\n$$\nv_B=1{,}6v_A=\\frac85v_A.\n$$\n\nZusammen mit $v_A+v_B=18\\,000$ erhält man\n\n$$\n\\vec v\n=\\begin{pmatrix}\\frac{90\\,000}{13}\\\\[2pt]\\frac{144\\,000}{13}\\end{pmatrix}\n\\approx\\begin{pmatrix}6\\,923\\\\11\\,077\\end{pmatrix}.\n$$\n\n„Stabil“ bedeutet: Startet das Modell in genau dieser Verteilung, bleibt die Verteilung nach jedem weiteren Jahresübergang unverändert. Eine darüber hinausgehende Langzeitkonvergenz ist für diese Deutung nicht vorausgesetzt.\n\nBewertung: Gleichungssystem und Normierung 1 BE, Verhältnis 2 BE, Lösung 2 BE, exakte und gerundete Angabe 1 BE, Stabilitätsdeutung 2 BE.\n\n## Gesamtbewertung\n\n| Aufgabe | BE |\n|---|---:|\n| 1. Modellierung | 10 |\n| 2. Vorwärtsentwicklung und Matrixprodukt | 10 |\n| 3. Vergleich eines zweiten Modells | 10 |\n| 4. Rückwärtsrechnung | 12 |\n| 5. Stabiler Zustand | 8 |\n| **Gesamt** | **50** |\n\nBestanden ab 25 BE.",
+          "scoring": {
+            "maxPoints": 50,
+            "passingPoints": 25,
+            "steps": [
+              {
+                "id": "q2_markov_gk_1a",
+                "points": 4,
+                "description": "Zustandsgraph mit allen vier Übergängen korrekt dargestellt"
+              },
+              {
+                "id": "q2_markov_gk_1b",
+                "points": 4,
+                "description": "Anfangszustand und Übergangsmatrix konventionsgerecht aufgestellt"
+              },
+              {
+                "id": "q2_markov_gk_1c",
+                "points": 2,
+                "description": "Zwei Matrixeinträge im Kontext korrekt gedeutet"
+              },
+              {
+                "id": "q2_markov_gk_2a",
+                "points": 4,
+                "description": "Zustände nach einem und zwei Jahren korrekt berechnet"
+              },
+              {
+                "id": "q2_markov_gk_2b",
+                "points": 2,
+                "description": "Zweijahreszustand und Erhaltung der Gesamtzahl korrekt gedeutet"
+              },
+              {
+                "id": "q2_markov_gk_2c",
+                "points": 4,
+                "description": "Matrixquadrat korrekt berechnet und einen Eintrag als Zweischrittübergang gedeutet"
+              },
+              {
+                "id": "q2_markov_gk_3a",
+                "points": 3,
+                "description": "Differenzmatrix korrekt berechnet und einen Eintrag als Änderung in Prozentpunkten gedeutet"
+              },
+              {
+                "id": "q2_markov_gk_3b",
+                "points": 4,
+                "description": "Gewichtete Matrixmischung korrekt berechnet, geprüft und gedeutet"
+              },
+              {
+                "id": "q2_markov_gk_3c",
+                "points": 3,
+                "description": "Matrixblöcke und übertragbare Tabellenkalkulationsformeln korrekt organisiert und einen Zellwert gedeutet"
+              },
+              {
+                "id": "q2_markov_gk_4a",
+                "points": 5,
+                "description": "Inverse Matrix methodenoffen korrekt bestimmt und durch Multiplikation geprüft"
+              },
+              {
+                "id": "q2_markov_gk_4b",
+                "points": 7,
+                "description": "Beide Vorgängerzustände korrekt bestimmt sowie Zulässigkeit und Eindeutigkeit begründet beurteilt"
+              },
+              {
+                "id": "q2_markov_gk_5",
+                "points": 8,
+                "description": "Stationäre Verteilung als Fixvektor korrekt bestimmt und im Kontext gedeutet"
+              }
+            ]
+          }
+        },
+        "phase": "Q2",
+        "type": "atomic"
+      },
+      "wholeGoalSha256": "f7158e0c58f02be5563a0f8ffd8ba87fa647fcd516aa948ff9a435b4a13f8293"
+    },
+    {
+      "wholeGoal": {
+        "id": "e4656e83-3f33-5bda-b0bc-d4b63ec4653e",
+        "title": "Übergangsprozesse und Grenzverhalten mit Matrizen untersuchen (LK)",
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/markov-backward-v2/lk_task_v2.md#aufgabe",
+        "description": "Die lernende Person kann eine umfassende Q2-LK-Klausuraufgabe zu Matrixoperationen und Übergangsprozessen selbstständig bearbeiten, Matrixdarstellungen und Tabellenkalkulation fachgerecht nutzen, Zustände vorwärts und rückwärts untersuchen sowie Fixvektoren, Matrixpotenzen und Grenzmatrizen im Kontext deuten.",
+        "weight": 1,
+        "tags": [
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1",
+            "K2",
+            "K3",
+            "K4",
+            "K5"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2",
+            "L4"
+          ],
+          "phase": "Q2"
+        },
+        "requires": [
+          "5e893892-393e-5df0-b705-fb3b3458122f",
+          "4fb40e58-58c1-5964-b58e-3347a8022b97",
+          "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+          "304111dd-426b-520b-a275-3fa37da1b0e0",
+          "ce198bc9-b014-52ba-814f-25cc3e020668",
+          "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+          "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "03685f87-7570-5bb3-b1c7-134124abb317",
+          "6aa593a3-6690-581d-9b7d-37cac78187a1",
+          "10a33d93-dc20-5edd-ae3b-32338d05407c",
+          "3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+          "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf",
+          "0de1e45c-aea9-5e53-932a-027dcf509efa",
+          "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+          "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+          "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7"
+        ],
+        "contains": [],
+        "examples": [],
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "5e893892-393e-5df0-b705-fb3b3458122f",
+            "4fb40e58-58c1-5964-b58e-3347a8022b97",
+            "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+            "304111dd-426b-520b-a275-3fa37da1b0e0",
+            "ce198bc9-b014-52ba-814f-25cc3e020668",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "03685f87-7570-5bb3-b1c7-134124abb317",
+            "6aa593a3-6690-581d-9b7d-37cac78187a1",
+            "10a33d93-dc20-5edd-ae3b-32338d05407c",
+            "3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+            "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf",
+            "0de1e45c-aea9-5e53-932a-027dcf509efa",
+            "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+            "4bc6cc77-3d20-5d27-a74a-8efb0a038d17"
+          ],
+          "coveredStrands": [
+            "L1",
+            "L2",
+            "L4"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/markov-backward-v2/lk_task_v2.md",
+          "taskContent": "Alle Zustände werden als Spaltenvektoren in der Reihenfolge $(A,B)$ notiert; es gilt\n\n$$\n\\vec x_{n+1}=M\\vec x_n.\n$$\n\nGleichwertige mathematisch korrekte Verfahren sind in allen Teilaufgaben zulässig.\n\n## Ausgangssituation\n\nIn einer Region leben zu Beginn eines Jahres $10\\,000$ Personen in Stadt A und $8\\,000$ Personen in Stadt B. Von Jahr zu Jahr wechseln $8\\,\\%$ der in A lebenden Personen nach B; $5\\,\\%$ der in B lebenden Personen wechseln nach A. Die Übergangsraten bleiben zunächst konstant.\n\n## 1. Modellierung (10 BE)\n\na) Zeichnen Sie einen vollständigen Zustands-/Übergangsgraphen mit allen vier Übergängen und den zugehörigen Wahrscheinlichkeiten. (4 BE)\n\nb) Geben Sie den Anfangszustand $\\vec x_0$ und die Übergangsmatrix $M$ an. Machen Sie Zeilen-/Spaltenreihenfolge und Rechenkonvention kenntlich. (4 BE)\n\nc) Deuten Sie die Matrixeinträge $m_{12}$ und $m_{21}$ im Sachzusammenhang. (2 BE)\n\n## 2. Vorwärtsentwicklung und Matrixprodukt (10 BE)\n\na) Bestimmen Sie $\\vec x_1$ und $\\vec x_2$. (4 BE)\n\nb) Deuten Sie $\\vec x_2$ im Kontext und begründen Sie, weshalb die Gesamtzahl von $18\\,000$ Personen im Modell erhalten bleibt. (2 BE)\n\nc) Bestimmen Sie $M^2$. Begründen Sie, weshalb das Produkt in dieser Reihenfolge definiert und sachgerecht ist, und deuten Sie den Eintrag $(M^2)_{21}$. (4 BE)\n\n## 3. Vergleich eines zweiten Modells (10 BE)\n\nEin alternatives Szenario wird durch\n\n$$\nN=\\begin{pmatrix}\n0{,}88 & 0{,}10\\\\\n0{,}12 & 0{,}90\n\\end{pmatrix}\n$$\n\nbeschrieben. Es gilt dieselbe Konvention wie für $M$.\n\na) Berechnen Sie $D=N-M$ und deuten Sie $d_{21}$. (3 BE)\n\nb) Für eine Sensitivitätsanalyse wird\n\n$$\nP=\\frac34M+\\frac14N\n$$\n\nverwendet. Berechnen Sie $P$, prüfen Sie, ob $P$ eine stochastische Übergangsmatrix ist, und erläutern Sie die Bedeutung dieser gewichteten Modellmischung. (4 BE)\n\nc) In einer Tabellenkalkulation stehen $M$ in `B2:C3`, $N$ in `E2:F3`, $D$ in `H2:I3` und $P$ in `K2:L3`; Zeilen bezeichnen Zielstädte, Spalten Ausgangsstädte. Geben Sie je eine kopierbare Formel für `H2` und `K2` an und deuten Sie den Zellinhalt `F3` im Kontext. (3 BE)\n\n## 4. Rückwärtsrechnung (12 BE)\n\na) Bestimmen Sie $M^{-1}$ mit einem geeigneten Verfahren und prüfen Sie Ihr Ergebnis durch Multiplikation. (5 BE)\n\nb) Beobachtet wurden\n\n$$\n\\vec u_{n+1}=\\begin{pmatrix}11\\,340\\\\6\\,660\\end{pmatrix}\n\\qquad\\text{und}\\qquad\n\\vec w_{n+1}=\\begin{pmatrix}17\\,430\\\\570\\end{pmatrix}.\n$$\n\nBestimmen Sie jeweils den rechnerisch möglichen unmittelbaren Vorgänger. Beurteilen Sie Zulässigkeit und Eindeutigkeit beider Vorgänger und begründen Sie. (7 BE)\n\n## 5. Stabiler Zustand (8 BE)\n\nBestimmen Sie einen Fixvektor $\\vec v$ mit $M\\vec v=\\vec v$ und $v_A+v_B=18\\,000$. Geben Sie das Ergebnis exakt und auf ganze Personen gerundet an und erläutern Sie, was „stabil“ hier bedeutet. (8 BE)\n\n## 6. Langfristige Entwicklung – nur LK (10 BE)\n\nUntersuchen Sie die langfristige Entwicklung von $M^n$. Entwickeln oder begründen Sie dazu eine Darstellung, die den Grenzübergang $n\\to\\infty$ erlaubt. Bestimmen und interpretieren Sie die Grenzmatrix\n\n$$\nL=\\lim_{n\\to\\infty}M^n.\n$$\n\nWenden Sie das Ergebnis auf einen beliebigen nichtnegativen Anfangszustand\n\n$$\n\\vec x_0=\\begin{pmatrix}a\\\\b\\end{pmatrix}\n\\quad\\text{mit}\\quad a+b=18\\,000\n$$\n\nan und beschreiben Sie auch, wie sich die Abweichung vom Grenzzustand von Jahr zu Jahr verändert. Geeignete Verfahren, beispielsweise Matrixpotenzen, Eigenwerte oder eine Zerlegung, sind gleichberechtigt. (10 BE)",
+          "solutionContent": "Gleichwertige mathematisch korrekte Lösungswege und sachlich gleichwertige Deutungen sind anzuerkennen.\n\n## 1. Modellierung (10 BE)\n\n### a) Zustands-/Übergangsgraph (4 BE)\n\nDer vollständige Graph besitzt die Zustände A und B sowie die vier gerichteten Übergänge\n\n- A $\\to$ A mit $0{,}92$,\n- A $\\to$ B mit $0{,}08$,\n- B $\\to$ A mit $0{,}05$,\n- B $\\to$ B mit $0{,}95$.\n\nBewertung: je ein korrekt gerichteter und beschrifteter Übergang 1 BE.\n\n### b) Anfangszustand und Übergangsmatrix (4 BE)\n\nMit Spalten als Ausgangsstädten, Zeilen als Zielstädten und der Reihenfolge $(A,B)$ gilt\n\n$$\n\\vec x_0=\\begin{pmatrix}10\\,000\\\\8\\,000\\end{pmatrix},\n\\qquad\nM=\\begin{pmatrix}\n0{,}92 & 0{,}05\\\\\n0{,}08 & 0{,}95\n\\end{pmatrix},\n\\qquad\n\\vec x_{n+1}=M\\vec x_n.\n$$\n\nBewertung: Anfangszustand 1 BE, Matrixeinträge 2 BE, Reihenfolge und Rechenkonvention 1 BE.\n\n### c) Eintragsdeutung (2 BE)\n\n- $m_{12}=0{,}05$ ist der Anteil der Personen aus B, die im Folgejahr in A leben.\n- $m_{21}=0{,}08$ ist der Anteil der Personen aus A, die im Folgejahr in B leben.\n\nBewertung: je korrekte Deutung 1 BE.\n\n## 2. Vorwärtsentwicklung und Matrixprodukt (10 BE)\n\n### a) Zustände nach einem und zwei Jahren (4 BE)\n\n$$\n\\vec x_1=M\\vec x_0\n=\\begin{pmatrix}\n0{,}92 & 0{,}05\\\\\n0{,}08 & 0{,}95\n\\end{pmatrix}\n\\begin{pmatrix}10\\,000\\\\8\\,000\\end{pmatrix}\n=\\begin{pmatrix}9\\,600\\\\8\\,400\\end{pmatrix}.\n$$\n\n$$\n\\vec x_2=M\\vec x_1\n=\\begin{pmatrix}\n0{,}92 & 0{,}05\\\\\n0{,}08 & 0{,}95\n\\end{pmatrix}\n\\begin{pmatrix}9\\,600\\\\8\\,400\\end{pmatrix}\n=\\begin{pmatrix}9\\,252\\\\8\\,748\\end{pmatrix}.\n$$\n\nBewertung: $\\vec x_1$ 2 BE, $\\vec x_2$ 2 BE.\n\n### b) Kontext und Erhaltung (2 BE)\n\nNach zwei Jahren leben dem Modell zufolge $9\\,252$ Personen in A und $8\\,748$ Personen in B. Beide Spaltensummen von $M$ sind 1. Daher gilt\n\n$$\n\\begin{pmatrix}1&1\\end{pmatrix}M=\\begin{pmatrix}1&1\\end{pmatrix},\n$$\n\nund die Komponentensumme bleibt bei jedem Übergang $18\\,000$.\n\nBewertung: Kontextdeutung 1 BE, tragfähige Erhaltungsbegründung 1 BE.\n\n### c) Zweischritt-Matrix (4 BE)\n\n$$\nM^2=M\\cdot M\n=\\begin{pmatrix}\n0{,}8504 & 0{,}0935\\\\\n0{,}1496 & 0{,}9065\n\\end{pmatrix}.\n$$\n\nDas Produkt ist definiert, weil beide Faktoren $2\\times2$-Matrizen sind. Der rechte Faktor wirkt zuerst; beide Faktoren bilden jeweils einen Jahresübergang ab. Deshalb beschreibt $M\\cdot M$ zwei aufeinanderfolgende Jahresübergänge.\n\nDer Eintrag $(M^2)_{21}=0{,}1496$ bedeutet: Eine zunächst in A lebende Person befindet sich nach zwei Übergängen mit Wahrscheinlichkeit $14{,}96\\,\\%$ in B.\n\nBewertung: Matrix $M^2$ 2 BE, Dimensions-/Reihenfolgebegründung 1 BE, Eintragsdeutung 1 BE.\n\n## 3. Vergleich eines zweiten Modells (10 BE)\n\n### a) Differenzmatrix (3 BE)\n\n$$\nD=N-M\n=\\begin{pmatrix}\n-0{,}04 & 0{,}05\\\\\n0{,}04 & -0{,}05\n\\end{pmatrix}.\n$$\n\n$d_{21}=0{,}04$ bedeutet: Im alternativen Modell ist die Übergangswahrscheinlichkeit A $\\to$ B um 4 Prozentpunkte höher.\n\nBewertung: Differenzmatrix 2 BE, Deutung 1 BE.\n\n### b) Gewichtete Modellmischung (4 BE)\n\n$$\nP=\\frac34M+\\frac14N\n=\\begin{pmatrix}\n0{,}91 & 0{,}0625\\\\\n0{,}09 & 0{,}9375\n\\end{pmatrix}.\n$$\n\nAlle Einträge sind nichtnegativ und beide Spaltensummen sind 1. Somit ist $P$ eine stochastische Übergangsmatrix. $P$ ist die eintragsweise gewichtete Kombination des Basismodells $M$ mit Gewicht $75\\,\\%$ und des Alternativmodells $N$ mit Gewicht $25\\,\\%$. Eine sachlich gleichwertige Beschreibung der Sensitivitätsmischung ist ebenfalls korrekt.\n\nBewertung: Matrix $P$ 2 BE, Stochastikprüfung 1 BE, Mischungsdeutung 1 BE.\n\n### c) Tabellenkalkulation (3 BE)\n\n- In `H2`: `=E2-B2`; die Formel ist nach `H2:I3` kopierbar.\n- In `K2`: `=0,75*B2+0,25*E2`; die Formel ist nach `K2:L3` kopierbar. Eine für die verwendete Tabellenkalkulation gültige Dezimalpunktschreibweise ist ebenfalls korrekt.\n- `F3` enthält $0{,}90$: Im alternativen Modell bleiben $90\\,\\%$ der aus B kommenden Personen im Folgejahr in B.\n\nBewertung: Formeln 2 BE, Deutung 1 BE.\n\n## 4. Rückwärtsrechnung (12 BE)\n\n### a) Inverse Matrix (5 BE)\n\n$$\n\\det(M)=0{,}92\\cdot0{,}95-0{,}05\\cdot0{,}08=0{,}87\\ne0.\n$$\n\nDamit ist $M$ invertierbar und\n\n$$\nM^{-1}\n=\\frac1{0{,}87}\n\\begin{pmatrix}\n0{,}95 & -0{,}05\\\\\n-0{,}08 & 0{,}92\n\\end{pmatrix}\n=\\begin{pmatrix}\n\\frac{95}{87} & -\\frac5{87}\\\\\n-\\frac8{87} & \\frac{92}{87}\n\\end{pmatrix}.\n$$\n\nDirekte Multiplikation ergibt\n\n$$\nMM^{-1}=M^{-1}M=I_2.\n$$\n\nBewertung: Determinante und Existenz 1 BE, Inverse 2 BE, Produktprüfung 2 BE.\n\n### b) Vorgänger, Zulässigkeit und Eindeutigkeit (7 BE)\n\nFür den ersten Zustand gilt\n\n$$\n\\vec u_n=M^{-1}\\vec u_{n+1}\n=\\begin{pmatrix}12\\,000\\\\6\\,000\\end{pmatrix}.\n$$\n\nBeide Komponenten sind nichtnegativ und ihre Summe ist $18\\,000$; der Vorgänger ist daher zulässig.\n\nFür den zweiten Zustand gilt\n\n$$\n\\vec w_n=M^{-1}\\vec w_{n+1}\n=\\begin{pmatrix}19\\,000\\\\-1\\,000\\end{pmatrix}.\n$$\n\nDie Summe ist zwar $18\\,000$, wegen der negativen B-Komponente ist dieser Vorgänger aber unzulässig. Weil $\\det(M)\\ne0$, ist die algebraische Lösung in beiden Fällen eindeutig. Zu $\\vec w_{n+1}$ existiert deshalb kein anderer zulässiger unmittelbarer Vorgänger.\n\nBewertung: $\\vec u_n$ 2 BE, Zulässigkeit von $\\vec u_n$ 1 BE, $\\vec w_n$ 2 BE, Unzulässigkeit von $\\vec w_n$ 1 BE, gemeinsame Eindeutigkeitsfolgerung 1 BE.\n\n## 5. Stabiler Zustand (8 BE)\n\nAus $M\\vec v=\\vec v$ folgt beispielsweise\n\n$$\n-0{,}08v_A+0{,}05v_B=0,\n$$\n\nalso\n\n$$\nv_B=1{,}6v_A=\\frac85v_A.\n$$\n\nZusammen mit $v_A+v_B=18\\,000$ erhält man\n\n$$\n\\vec v\n=\\begin{pmatrix}\\frac{90\\,000}{13}\\\\[2pt]\\frac{144\\,000}{13}\\end{pmatrix}\n\\approx\\begin{pmatrix}6\\,923\\\\11\\,077\\end{pmatrix}.\n$$\n\n„Stabil“ bedeutet: Startet das Modell in genau dieser Verteilung, bleibt die Verteilung nach jedem weiteren Jahresübergang unverändert. Eine darüber hinausgehende Langzeitkonvergenz ist für diese Deutung nicht vorausgesetzt.\n\nBewertung: Gleichungssystem und Normierung 1 BE, Verhältnis 2 BE, Lösung 2 BE, exakte und gerundete Angabe 1 BE, Stabilitätsdeutung 2 BE.\n\n## 6. Langfristige Entwicklung – nur LK (10 BE)\n\nEine mögliche, aber nicht vorgeschriebene Lösung verwendet\n\n$$\nL=\\frac1{13}\\begin{pmatrix}5&5\\\\8&8\\end{pmatrix}.\n$$\n\nEs gilt\n\n$$\nL^2=L,\n\\qquad\nL(I-L)=(I-L)L=0\n$$\n\nund\n\n$$\nM=L+0{,}87(I-L).\n$$\n\nDie beiden Summanden wirken somit auf komplementären invarianten Teilräumen. Daher folgt für $n\\in\\mathbb N$\n\n$$\nM^n=L+0{,}87^n(I-L).\n$$\n\nWeil $0{,}87^n\\to0$ für $n\\to\\infty$, gilt\n\n$$\n\\lim_{n\\to\\infty}M^n\n=L\n=\\frac1{13}\\begin{pmatrix}5&5\\\\8&8\\end{pmatrix}.\n$$\n\nFür einen beliebigen nichtnegativen Anfangszustand mit $a+b=18\\,000$ erhält man\n\n$$\nL\\vec x_0\n=\\frac1{13}\n\\begin{pmatrix}5&5\\\\8&8\\end{pmatrix}\n\\begin{pmatrix}a\\\\b\\end{pmatrix}\n=\\begin{pmatrix}\\frac5{13}(a+b)\\\\[2pt]\\frac8{13}(a+b)\\end{pmatrix}\n=\\begin{pmatrix}\\frac{90\\,000}{13}\\\\[2pt]\\frac{144\\,000}{13}\\end{pmatrix}.\n$$\n\nDie Grenzmatrix bildet jeden nichtnegativen Zustand mit derselben Gesamtzahl auf denselben stabilen Zustand ab. Außerdem gilt\n\n$$\nM^n\\vec x_0-L\\vec x_0\n=0{,}87^n(I-L)\\vec x_0.\n$$\n\nDie Abweichung vom Grenzzustand wird daher pro Jahr mit dem Faktor $0{,}87$ multipliziert; relativ zum vorangehenden Schritt nimmt sie um $13\\,\\%$ ab.\n\nBewertung: Grenzmatrix $L$ 2 BE, tragfähige Potenzdarstellung oder Herleitung 3 BE, Grenzübergang 1 BE, Anwendung auf beliebiges $\\vec x_0$ 2 BE, Kontextdeutung 1 BE, Faktor $0{,}87$ 1 BE.\n\n## Gesamtbewertung\n\n| Aufgabe | BE |\n|---|---:|\n| 1. Modellierung | 10 |\n| 2. Vorwärtsentwicklung und Matrixprodukt | 10 |\n| 3. Vergleich eines zweiten Modells | 10 |\n| 4. Rückwärtsrechnung | 12 |\n| 5. Stabiler Zustand | 8 |\n| 6. Langfristige Entwicklung | 10 |\n| **Gesamt** | **60** |\n\nBestanden ab 30 BE.",
+          "scoring": {
+            "maxPoints": 60,
+            "passingPoints": 30,
+            "steps": [
+              {
+                "id": "q2_markov_lk_1a",
+                "points": 4,
+                "description": "Zustandsgraph mit allen vier Übergängen korrekt dargestellt"
+              },
+              {
+                "id": "q2_markov_lk_1b",
+                "points": 4,
+                "description": "Anfangszustand und Übergangsmatrix konventionsgerecht aufgestellt"
+              },
+              {
+                "id": "q2_markov_lk_1c",
+                "points": 2,
+                "description": "Zwei Matrixeinträge im Kontext korrekt gedeutet"
+              },
+              {
+                "id": "q2_markov_lk_2a",
+                "points": 4,
+                "description": "Zustände nach einem und zwei Jahren korrekt berechnet"
+              },
+              {
+                "id": "q2_markov_lk_2b",
+                "points": 2,
+                "description": "Zweijahreszustand und Erhaltung der Gesamtzahl korrekt gedeutet"
+              },
+              {
+                "id": "q2_markov_lk_2c",
+                "points": 4,
+                "description": "Matrixquadrat korrekt berechnet und einen Eintrag als Zweischrittübergang gedeutet"
+              },
+              {
+                "id": "q2_markov_lk_3a",
+                "points": 3,
+                "description": "Differenzmatrix korrekt berechnet und einen Eintrag als Änderung in Prozentpunkten gedeutet"
+              },
+              {
+                "id": "q2_markov_lk_3b",
+                "points": 4,
+                "description": "Gewichtete Matrixmischung korrekt berechnet, geprüft und gedeutet"
+              },
+              {
+                "id": "q2_markov_lk_3c",
+                "points": 3,
+                "description": "Matrixblöcke und übertragbare Tabellenkalkulationsformeln korrekt organisiert und einen Zellwert gedeutet"
+              },
+              {
+                "id": "q2_markov_lk_4a",
+                "points": 5,
+                "description": "Inverse Matrix methodenoffen korrekt bestimmt und durch Multiplikation geprüft"
+              },
+              {
+                "id": "q2_markov_lk_4b",
+                "points": 7,
+                "description": "Beide Vorgängerzustände korrekt bestimmt sowie Zulässigkeit und Eindeutigkeit begründet beurteilt"
+              },
+              {
+                "id": "q2_markov_lk_5",
+                "points": 8,
+                "description": "Stationäre Verteilung als Fixvektor korrekt bestimmt und im Kontext gedeutet"
+              },
+              {
+                "id": "q2_markov_lk_6a",
+                "points": 6,
+                "description": "Potenzen der Übergangsmatrix und Grenzmatrix methodenoffen korrekt hergeleitet"
+              },
+              {
+                "id": "q2_markov_lk_6b",
+                "points": 4,
+                "description": "Grenzmatrix angewendet sowie Langzeitverhalten und Konvergenzrate im Kontext gedeutet"
+              }
+            ]
+          }
+        },
+        "phase": "Q2",
+        "type": "atomic"
+      },
+      "wholeGoalSha256": "0d97c540d1fe9d990ec5f6b39989e99642e7082e14d8c8d846249766e038d775"
+    }
+  ],
+  "wholeOrdinaryPreparation": [
+    {
+      "wholeGoal": {
+        "id": "03685f87-7570-5bb3-b1c7-134124abb317",
+        "shortKey": "canonical_math_q2_describe_transition_processes_with_state_vectors_and_transition_matrices",
+        "title": "Übergangsprozesse mit Zustandsvektoren und Übergangsmatrizen beschreiben",
+        "titleEn": "Describe transition processes using state vectors and transition matrices",
+        "description": "Die lernende Person kann Übergangsprozesse, zum Beispiel Populationsentwicklung, Wählerverhalten oder Kundenströme, mit Zustandsvektoren und Übergangsmatrizen beschreiben und die Einträge im Kontext deuten.",
+        "descriptionEn": "The learner can describe transition processes, for example population development, voter behavior, or customer flows, using state vectors and transition matrices and interpret the entries in context.",
+        "requires": [
+          "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "5e893892-393e-5df0-b705-fb3b3458122f"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.4.STATE_VECTORS_TRANSITION_MATRICES"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 1",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "03685f87-7570-5bb3-b1c7-134124abb317",
+            "title": "Visualisierung: Übergangsprozesse mit Zustandsvektoren und Übergangsmatrizen beschreiben",
+            "url": "/assets/goal-visualizations/mathematik/03685f87-7570-5bb3-b1c7-134124abb317/03685f87-7570-5bb3-b1c7-134124abb317.png",
+            "provider": "OpenAI / ChatGPT-Codex image_gen",
+            "description": "Visualisierung zum Lernziel: Übergangsprozesse mit Zustandsvektoren und Übergangsmatrizen beschreiben.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Übergangsprozesse mit Zustandsvektoren und Übergangsmatrizen beschreiben\". Die lernende Person kann Übergangsprozesse, zum Beispiel Populationsentwicklung, Wählerverhalten oder Kundenströme, mit Zustandsvektoren und Übergangsmatrizen beschreiben und die Einträge im Kontext deuten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "1faefd6922223c6dd872864e0d945304ad33dad0c4b192630fa35469ae8b0b5d"
+    },
+    {
+      "wholeGoal": {
+        "id": "075f1ef2-6860-4b20-9df2-878157eb395e",
+        "title": "Punkte und Vektoren im Raum koordinatisieren",
+        "titleEn": "Coordinate points and vectors in space",
+        "description": "Die lernende Person kann Punkte und Vektoren im dreidimensionalen Koordinatensystem eintragen, ablesen und als Orts- bzw. Richtungsvektoren deuten.",
+        "descriptionEn": "The learner can plot and read points and vectors in a three-dimensional coordinate system and interpret them as position or direction vectors.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.SPACE.POINTS_AND_VECTORS.BASICS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "075f1ef2-6860-4b20-9df2-878157eb395e",
+            "title": "Visualisierung: Punkte und Vektoren im Raum koordinatisieren",
+            "url": "/assets/goal-visualizations/mathematik/075f1ef2-6860-4b20-9df2-878157eb395e/075f1ef2-6860-4b20-9df2-878157eb395e.png",
+            "provider": "ChatGPT image generation (user-provided via Astra)",
+            "description": "Visualisierung zum Lernziel: Punkte und Vektoren im Raum koordinatisieren.",
+            "altText": "Illustration zum Lernziel: Punkte und Vektoren im Raum koordinatisieren",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "15ac44d7a26e311753ec4fd08ac695932e5a555ddcf4af08073c98c472c62528"
+    },
+    {
+      "wholeGoal": {
+        "id": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+        "shortKey": "canonical_math_q2_use_matrix_powers_for_long_term_transition_processes_lk",
+        "title": "Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
+        "titleEn": "Use matrix powers for long-term transition processes (advanced course)",
+        "description": "Die lernende Person kann Potenzen von Übergangsmatrizen nutzen, um langfristige Entwicklungen von Übergangsprozessen zu untersuchen und Zwischenergebnisse im Kontext zu deuten.",
+        "descriptionEn": "The learner can use powers of transition matrices to analyze long-term developments of transition processes and interpret intermediate results in context.",
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "requires": [
+          "33c6e64c-5955-5b07-85d4-74a97b19dd56",
+          "10a33d93-dc20-5edd-ae3b-32338d05407c"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.4.LONG_TERM_MATRIX_POWERS_LK"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 5",
+        "weight": 1,
+        "contains": [],
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+            "title": "Visualisierung: Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
+            "url": "/assets/goal-visualizations/mathematik/0de1e45c-aea9-5e53-932a-027dcf509efa/0de1e45c-aea9-5e53-932a-027dcf509efa.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK).",
+            "altText": "Matrixpotenzen bündeln wiederholte Übergänge. M=(0,8 0,3;0,2 0,7), Start (0,8;0,2), nach zwei Monaten (0,65;0,35). Numerische Zustandskarten unterscheiden Start, Zwischenzustand und langfristige Verteilung (0,6;0,4) in diesem Modell.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "c527e780d4e09abbdc0ae3ab11fb2786690f598de16489314b8a0ecd44be2f91"
+    },
+    {
+      "wholeGoal": {
+        "id": "10a33d93-dc20-5edd-ae3b-32338d05407c",
+        "shortKey": "canonical_math_q2_calculate_and_interpret_forward_markov_state_developments",
+        "title": "Zustände in Markov-Ketten vorwärts berechnen und deuten",
+        "titleEn": "Calculate and interpret forward state developments in Markov chains",
+        "description": "Die lernende Person kann Zustandsentwicklungen in Markov-Ketten mit Anfangsvektor und Übergangsmatrix vorwärts berechnen und die Ergebnisse als Verteilungen deuten.",
+        "descriptionEn": "The learner can calculate state developments in Markov chains forward using an initial vector and transition matrix and interpret the results as distributions.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "9bf67cce-4c8f-5497-8e64-825b83c6aa40"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 3",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "10a33d93-dc20-5edd-ae3b-32338d05407c",
+            "title": "Visualisierung: Zustände in Markov-Ketten vorwärts berechnen und deuten",
+            "url": "/assets/goal-visualizations/mathematik/10a33d93-dc20-5edd-ae3b-32338d05407c/10a33d93-dc20-5edd-ae3b-32338d05407c.png",
+            "provider": "OpenAI built-in image generation",
+            "description": "Vorwärtsrechnung von Zustands-Spaltenvektoren in einer Markov-Kette mit Übergangsmatrix und Deutung der resultierenden Verteilung.",
+            "altText": "Vierstufige Infografik zur Vorwärtsrechnung einer Markov-Kette mit Spaltenvektoren: Anfangszustand 60 Prozent A und 40 Prozent B, Übergangsmatrix, Zustände 50 zu 50 und 45 zu 55 sowie Deutung nach zwei Schritten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "565bd0930c4cb5b349d8e697e78305efcdc17772500f95d46619f48dc3e18d34"
+    },
+    {
+      "wholeGoal": {
+        "id": "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+        "shortKey": "canonical_math_sek1_j9_spatial_vector_tuples_interpret",
+        "title": "Vektoren im räumlichen Koordinatensystem als Tupel angeben und deuten",
+        "titleEn": "Express and interpret vectors in the spatial coordinate system as tuples",
+        "description": "Die lernende Person kann Vektoren im räumlichen Koordinatensystem als Tupel darstellen, Koordinateneinträge fachsprachlich deuten und die Bedeutung einfacher Richtungsangaben im Kontext erklären.",
+        "descriptionEn": "The learner can represent vectors in the spatial coordinate system as tuples, interpret coordinate entries using correct terminology, and explain the meaning of simple directional information in context.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.1",
+            "K3.1",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L3"
+          ],
+          "phase": "J9",
+          "area": "Geometry",
+          "topicCode": "CANONICAL.MATH.SEK1.J9.8E"
+        },
+        "contains": [],
+        "requires": [
+          "25593605-5e13-55cc-9a05-8f3d737e15e9",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+            "title": "Visualisierung: Vektoren im räumlichen Koordinatensystem als Tupel angeben und deuten",
+            "url": "/assets/goal-visualizations/mathematik/19f170e4-b88f-4c06-b72a-ce6923748bb4/19f170e4-b88f-4c06-b72a-ce6923748bb4.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Vektoren im räumlichen Koordinatensystem als Tupel angeben und deuten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Vektoren im räumlichen Koordinatensystem als Tupel angeben und deuten\". Die lernende Person kann Vektoren im räumlichen Koordinatensystem als Tupel darstellen, Koordinateneinträge fachsprachlich deuten und die Bedeutung einfacher Richtungsangaben im Kontext erklären.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "e908bcfdeefd7a3165bb1509f4aabfb351e2d39db0822dc27748f0807bd35fcc"
+    },
+    {
+      "wholeGoal": {
+        "id": "25593605-5e13-55cc-9a05-8f3d737e15e9",
+        "shortKey": "canonical_math_draw_basic_objects_in_coordinate_system",
+        "title": "Punktlagen und daraus bestimmte lineare Objekte im Koordinatensystem darstellen",
+        "titleEn": "Represent point locations and the linear objects they determine in the coordinate plane",
+        "description": "Die lernende Person kann in einem passend skalierten kartesischen Koordinatensystem Punktlagen aus Koordinaten darstellen und daraus vorgegebene Strecken oder Geraden erzeugen, wobei sie die begrenzte beziehungsweise unbegrenzte Ausdehnung begründet.",
+        "descriptionEn": "The learner can plot points from coordinates in an appropriately scaled Cartesian coordinate plane and use them to construct specified line segments or lines, explaining their finite or infinite extent.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K3.1",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L2"
+          ],
+          "phase": "J5",
+          "area": "Geometry",
+          "topicCode": "CANONICAL.MATH.SEK1.J5.2A"
+        },
+        "contains": [],
+        "requires": [
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "25593605-5e13-55cc-9a05-8f3d737e15e9",
+            "title": "Visualisierung: Punktlagen und daraus bestimmte lineare Objekte im Koordinatensystem darstellen",
+            "url": "/assets/goal-visualizations/mathematik/25593605-5e13-55cc-9a05-8f3d737e15e9/25593605-5e13-55cc-9a05-8f3d737e15e9.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Punktlagen und daraus bestimmte lineare Objekte im Koordinatensystem darstellen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Punktlagen und daraus bestimmte lineare Objekte im Koordinatensystem darstellen\". Die lernende Person kann in einem passend skalierten kartesischen Koordinatensystem Punktlagen aus Koordinaten darstellen und daraus vorgegebene Strecken oder Geraden erzeugen, wobei sie die begrenzte beziehungsweise unbegrenzte Ausdehnung begründet.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "05e2943e63f564261383a8399bbe6251a6c35f58dfbd360ad46938663bf706e3"
+    },
+    {
+      "wholeGoal": {
+        "id": "304111dd-426b-520b-a275-3fa37da1b0e0",
+        "title": "Matrizen multiplizieren",
+        "titleEn": "Multiply matrices",
+        "description": "Die lernende Person kann Matrizenprodukte berechnen, Dimensionsbedingungen prüfen und typische Fehlerquellen bei der Reihenfolge vermeiden.",
+        "descriptionEn": "The learner can compute matrix products, check dimension conditions, and avoid common order errors.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 2; Q2.5, S. 44, Spiegelstrich 2",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "304111dd-426b-520b-a275-3fa37da1b0e0",
+            "title": "Visualisierung: Matrizen multiplizieren",
+            "url": "/assets/goal-visualizations/mathematik/304111dd-426b-520b-a275-3fa37da1b0e0/304111dd-426b-520b-a275-3fa37da1b0e0.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation (image_gen)",
+            "description": "Visualisierung zum Lernziel: Matrizen multiplizieren.",
+            "altText": "A = [1, 2, 0; 3, 1, 2] hat Größe 2×3, B = [2, 1; 0, 3; 4, 2] Größe 3×2. Zeile mal Spalte liefert AB = [2, 7; 14, 10], etwa c12 = 1·1+2·3+0·2 = 7. Auch BA ist definiert, aber 3×3: [5, 5, 2; 9, 3, 6; 10, 10, 4].",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "c5be7d7e36a1bd1d264ef94bf6e1b54fb8195a5f662820f31689212927e09a59"
+    },
+    {
+      "wholeGoal": {
+        "id": "33c6e64c-5955-5b07-85d4-74a97b19dd56",
+        "title": "Matrixpotenzen in Übergangsprozessen deuten",
+        "titleEn": "Interpret matrix powers in transition processes",
+        "description": "Die lernende Person kann Matrixpotenzen berechnen, Matrixeinträge bei Potenzen wie $M^2$ bestimmen und interpretieren sowie erläutern, welche Aussagen daraus über mehrschrittige Übergangsprozesse folgen.",
+        "descriptionEn": "The learner can calculate powers of matrices, determine and interpret entries of powers such as $M^2$, and explain what they imply for multi-step transition processes.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "10a33d93-dc20-5edd-ae3b-32338d05407c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 4",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "33c6e64c-5955-5b07-85d4-74a97b19dd56",
+            "title": "Visualisierung: Matrixpotenzen in Übergangsprozessen deuten",
+            "url": "/assets/goal-visualizations/mathematik/33c6e64c-5955-5b07-85d4-74a97b19dd56/33c6e64c-5955-5b07-85d4-74a97b19dd56.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Matrixpotenzen in Übergangsprozessen deuten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Matrixpotenzen in Übergangsprozessen deuten\". Die lernende Person kann Matrixpotenzen berechnen, Matrixeinträge bei Potenzen wie $M^2$ bestimmen und interpretieren sowie erläutern, welche Aussagen daraus über mehrschrittige Übergangsprozesse folgen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "86bb2e6d528660bffbffa2bd10a34f369c2f54b4ddb6689508405c161ae04f28"
+    },
+    {
+      "wholeGoal": {
+        "id": "3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+        "shortKey": "canonical_math_q2_assess_backward_markov_calculations_for_validity_and_uniqueness",
+        "title": "Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen",
+        "titleEn": "Assess backward calculations in Markov chains for validity and uniqueness",
+        "description": "Die lernende Person kann beurteilen, ob aus einem späteren Zustand einer Markov-Kette ein zulässiger früherer Zustand sinnvoll und eindeutig bestimmt werden kann, und ihre Entscheidung begründen.",
+        "descriptionEn": "The learner can assess whether a valid earlier state of a Markov chain can be determined meaningfully and uniquely from a later state and justify the assessment.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "10a33d93-dc20-5edd-ae3b-32338d05407c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 3",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "3d4d510c-0fd7-55ea-9b79-1db8d640758f",
+            "title": "Visualisierung: Rückwärtsrechnen in Markov-Ketten auf Zulässigkeit und Eindeutigkeit prüfen",
+            "url": "/assets/goal-visualizations/mathematik/3d4d510c-0fd7-55ea-9b79-1db8d640758f/3d4d510c-0fd7-55ea-9b79-1db8d640758f.png",
+            "provider": "OpenAI built-in image generation",
+            "description": "Prüfschema für Rückwärtsrechnungen in Markov-Ketten: Vorgänger bestimmen und auf Zulässigkeit sowie Eindeutigkeit beurteilen.",
+            "altText": "Vierstufige Infografik zur Rückwärtsprüfung einer Markov-Kette mit Spaltenvektoren: späterer Zustand und Matrix, berechneter Vorgänger, Zulässigkeitsprüfung, Eindeutigkeitsprüfung und Warnhinweise zu negativen Anteilen und singulären Matrizen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "fdcb00b044a2f3dafddc0aab411927a9e1b7d81e82c949fc428e049d0cd73630"
+    },
+    {
+      "wholeGoal": {
+        "id": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+        "title": "Langfristige Entwicklung von Übergangsprozessen (LK)",
+        "titleEn": "Long-term development of transition processes (advanced course)",
+        "description": "Die lernende Person kann die langfristige Entwicklung von Übergangsprozessen mithilfe von Matrixpotenzen, Grenzprozessen und Grenzmatrizen untersuchen und die Ergebnisse im Kontext interpretieren.",
+        "descriptionEn": "The learner can analyze the long-term development of transition processes using matrix powers, limiting processes, and limiting matrices, and interpret the results in context.",
+        "weight": 1,
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf",
+          "33c6e64c-5955-5b07-85d4-74a97b19dd56"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K2.3",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 5",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+            "title": "Visualisierung: Langfristige Entwicklung von Übergangsprozessen (LK)",
+            "url": "/assets/goal-visualizations/mathematik/4bc6cc77-3d20-5d27-a74a-8efb0a038d17/4bc6cc77-3d20-5d27-a74a-8efb0a038d17.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Langfristige Entwicklung von Übergangsprozessen (LK).",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Langfristige Entwicklung von Übergangsprozessen (LK)\". Die lernende Person kann die langfristige Entwicklung von Übergangsprozessen mithilfe von Matrixpotenzen, Grenzprozessen und Grenzmatrizen untersuchen und die Ergebnisse im Kontext interpretieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "4f21f32a9852d14cefea180b92920930fc638c6f6d6b7104e73382f5b193b415"
+    },
+    {
+      "wholeGoal": {
+        "id": "4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+        "title": "Bildpunkte mit Matrizen berechnen",
+        "titleEn": "Calculate image points with matrices",
+        "description": "Die lernende Person kann zu einer gegebenen Abbildungsmatrix Bildpunkte berechnen, indem sie Vektoren mit der Matrix multipliziert.",
+        "descriptionEn": "The learner can calculate image points for a given mapping matrix by multiplying vectors with the matrix.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "69243680-c2c1-5661-80c0-c95a2be1dabf",
+          "6f09c97e-779b-500b-8092-3fb9696aa5bb"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.5, S. 44, Spiegelstrich 3",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "4d331ba0-56d6-5730-a51b-e3d1126b31ba",
+            "title": "Visualisierung: Bildpunkte mit Matrizen berechnen",
+            "url": "/assets/goal-visualizations/mathematik/4d331ba0-56d6-5730-a51b-e3d1126b31ba/4d331ba0-56d6-5730-a51b-e3d1126b31ba.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Bildpunkte mit Matrizen berechnen.",
+            "altText": "Matrix A=(1 1;0 1) bildet P=(2;1), Q=(0;2), R=(−1;1) auf P′=(3;1), Q′=(2;2), R′=(0;1) ab. Drei farbige Zuordnungspfeile verbinden Original- und Bildpunkte in getrennten Koordinatensystemen; die Spaltenvektorrechnungen stehen dazwischen.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "afbd8d8d01350ea7255770254a45f32ee7a235bca9fc485445166b9c8baeb9d2"
+    },
+    {
+      "wholeGoal": {
+        "id": "4fb40e58-58c1-5964-b58e-3347a8022b97",
+        "title": "Skalare Multiplikation von Matrizen durchführen",
+        "titleEn": "Perform scalar multiplication of matrices",
+        "description": "Die lernende Person kann Matrizen mit einem Skalar multiplizieren und die Wirkung auf alle Einträge korrekt anwenden.",
+        "descriptionEn": "The learner can multiply matrices by a scalar and correctly apply the effect to all entries.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 2; Q2.5, S. 44, Spiegelstrich 2",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "4fb40e58-58c1-5964-b58e-3347a8022b97",
+            "title": "Visualisierung: Skalare Multiplikation von Matrizen durchführen",
+            "url": "/assets/goal-visualizations/mathematik/4fb40e58-58c1-5964-b58e-3347a8022b97/4fb40e58-58c1-5964-b58e-3347a8022b97.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation (image_gen)",
+            "description": "Visualisierung zum Lernziel: Skalare Multiplikation von Matrizen durchführen.",
+            "altText": "Ein Skalar 3 multipliziert alle Einträge von A = [2, −1; 0, 4]. Die vier Produkte 3·2, 3·(−1), 3·0 und 3·4 ergeben [6, −3; 0, 12]; Form und Eintragspositionen bleiben erhalten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "dc07a0c0d32185ab7b2af97a6c526966a527ee8c3a439753c0e6489a657627d3"
+    },
+    {
+      "wholeGoal": {
+        "id": "5e893892-393e-5df0-b705-fb3b3458122f",
+        "title": "Übergangsprozesse mit Zustands- und Übergangsgraphen beschreiben",
+        "titleEn": "Describe transition processes using state and transition graphs",
+        "description": "Die lernende Person kann Übergangsprozesse mithilfe von Zustands- beziehungsweise Übergangsgraphen beschreiben, die Knoten und Übergänge im Kontext deuten und passende Graphdarstellungen erstellen.",
+        "descriptionEn": "The learner can describe transition processes using state or transition graphs, interpret nodes and transitions in context, and create suitable graph representations.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 1",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "5e893892-393e-5df0-b705-fb3b3458122f",
+            "title": "Visualisierung: Übergangsprozesse mit Zustands- und Übergangsgraphen beschreiben",
+            "url": "/assets/goal-visualizations/mathematik/5e893892-393e-5df0-b705-fb3b3458122f/5e893892-393e-5df0-b705-fb3b3458122f.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Übergangsprozesse mit Zustands- und Übergangsgraphen beschreiben.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Übergangsprozesse mit Zustands- und Übergangsgraphen beschreiben\". Die lernende Person kann Übergangsprozesse mithilfe von Zustands- beziehungsweise Übergangsgraphen beschreiben, die Knoten und Übergänge im Kontext deuten und passende Graphdarstellungen erstellen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "945234b679d82e140d0c351404fde4758c2b6ddf978a84945cecd69e79cbdd22"
+    },
+    {
+      "wholeGoal": {
+        "id": "65365dce-f33f-49d8-9516-42f75883aa86",
+        "semanticKind": "orientation",
+        "title": "Warum Mathematik? – Entdecken, Muster & Alltag",
+        "titleEn": "Why Mathematics? – Discovery, Patterns & Everyday Life",
+        "description": "Der Sek-I-Einstieg: Wie Mathematik beim Messen, Vergleichen, Bauen, Planen und in Spielen hilft, wie Muster, Daten und Formen im Alltag auftauchen und warum mathematisches Denken beim Begründen und Problemlösen unterstützt. Überblick über Zahlen, Größen, Geometrie, Daten und erste funktionale Zusammenhänge. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+        "descriptionEn": "The lower-secondary entry point: how mathematics helps with measuring, comparing, building, planning and games, how patterns, data and shapes appear in everyday life, and why mathematical thinking supports reasoning and problem solving. Overview of numbers, quantities, geometry, data and first functional relationships.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Motivation",
+          "Orientation",
+          "canonical",
+          "phase:SekI"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "Canonical lower-secondary orientation anchor for Gymnasium mathematics in Germany",
+        "extendedData": {
+          "treeOrder": 1,
+          "orientationOutlook": {
+            "paths": [
+              {
+                "id": "numbers-and-quantities",
+                "title": "Zahlen, Größen und faire Entscheidungen",
+                "titleEn": "Numbers, quantities and fair decisions",
+                "learningOutlook": "Du lernst, Zahlen, Terme, Prozente, Größen und Einheiten sicher zu nutzen und reale Situationen damit nachvollziehbar zu planen und zu beurteilen.",
+                "learningOutlookEn": "You learn to use numbers, expressions, percentages, quantities and units confidently and to plan and assess real situations transparently.",
+                "practicalContexts": [
+                  "Einkaufen, Rabatte und Verträge vergleichen",
+                  "Zeit, Wege, Flächen und Mengen planen",
+                  "Rechnungen und Behauptungen auf Plausibilität prüfen"
+                ],
+                "practicalContextsEn": [
+                  "Comparing purchases, discounts and contracts",
+                  "Planning time, routes, areas and quantities",
+                  "Checking calculations and claims for plausibility"
+                ],
+                "subtreeRootIds": [
+                  "6e28d5ad-5f18-4a26-8a9e-9ea7e50b0fbb",
+                  "8034d078-facf-450c-bed6-b00b9a94f07d"
+                ],
+                "entryGoalIds": [
+                  "d825f7ce-e19b-594a-8181-eff199c21d93"
+                ],
+                "milestoneGoalIds": [
+                  "d825f7ce-e19b-594a-8181-eff199c21d93",
+                  "72b6bfa5-8e34-4029-8f85-0277207c485e",
+                  "093397e0-eec8-45bb-9a5a-a24827876df5"
+                ]
+              },
+              {
+                "id": "geometry-and-space",
+                "title": "Formen, Räume und Bauen",
+                "titleEn": "Shapes, space and building",
+                "learningOutlook": "Du lernst, Figuren und Körper zu beschreiben, zu konstruieren und zu berechnen und räumliche Beziehungen mit Zeichnungen und Koordinaten zu erklären.",
+                "learningOutlookEn": "You learn to describe, construct and calculate shapes and solids and to explain spatial relationships with drawings and coordinates.",
+                "practicalContexts": [
+                  "Bauen, Einrichten und technische Zeichnungen",
+                  "Karten, Koordinaten und räumliche Orientierung",
+                  "Design, Symmetrie und 3D-Modelle"
+                ],
+                "practicalContextsEn": [
+                  "Building, furnishing and technical drawings",
+                  "Maps, coordinates and spatial orientation",
+                  "Design, symmetry and 3D models"
+                ],
+                "subtreeRootIds": [
+                  "ed631938-ad77-405e-ac25-b06d750b9c05",
+                  "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+                  "9710e996-f6d0-4b8b-b893-592213c91767"
+                ],
+                "entryGoalIds": [
+                  "25593605-5e13-55cc-9a05-8f3d737e15e9"
+                ],
+                "milestoneGoalIds": [
+                  "25593605-5e13-55cc-9a05-8f3d737e15e9",
+                  "2331caf2-ccb2-5492-9fc6-48763b848bae",
+                  "b44f038c-fb1f-527e-b9ad-382214d0328a"
+                ]
+              },
+              {
+                "id": "patterns-and-functions",
+                "title": "Muster, Funktionen und digitale Welt",
+                "titleEn": "Patterns, functions and the digital world",
+                "learningOutlook": "Du lernst, veränderliche Größen in Tabellen, Graphen und Termen zu erkennen, Zusammenhänge zu beschreiben und Entwicklungen mit Funktionen vorherzusagen.",
+                "learningOutlookEn": "You learn to recognise changing quantities in tables, graphs and expressions, describe relationships and predict developments with functions.",
+                "practicalContexts": [
+                  "Apps, Sensoren und digitale Darstellungen verstehen",
+                  "Wachstum, Bewegung und regelmäßige Vorgänge beschreiben",
+                  "Aus Daten passende Modelle und Vorhersagen entwickeln"
+                ],
+                "practicalContextsEn": [
+                  "Understanding apps, sensors and digital representations",
+                  "Describing growth, motion and recurring processes",
+                  "Developing suitable models and predictions from data"
+                ],
+                "subtreeRootIds": [
+                  "5c6b7342-0f67-4b4c-894d-fd83a6df64b3",
+                  "88f8e185-a89b-4a34-869d-766042977f38",
+                  "0756b198-0074-49d5-becd-9bb9f161a291"
+                ],
+                "entryGoalIds": [
+                  "2bb4bb91-7929-483a-b735-44275f6b5cdc"
+                ],
+                "milestoneGoalIds": [
+                  "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+                  "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+                  "3e4032bd-4d8c-4e72-bfdd-64a34df053c9"
+                ]
+              },
+              {
+                "id": "data-and-chance",
+                "title": "Daten, Zufall und Risiken",
+                "titleEn": "Data, chance and risk",
+                "learningOutlook": "Du lernst, Daten und Diagramme kritisch zu lesen, Zufall zu modellieren und Wahrscheinlichkeiten für begründete Entscheidungen zu nutzen.",
+                "learningOutlookEn": "You learn to read data and charts critically, model chance and use probabilities for well-founded decisions.",
+                "practicalContexts": [
+                  "Umfragen, Statistiken und Medienberichte beurteilen",
+                  "Chancen und Risiken in Spielen und Alltag einschätzen",
+                  "Simulationen nutzen, wenn exakte Vorhersagen unmöglich sind"
+                ],
+                "practicalContextsEn": [
+                  "Assessing surveys, statistics and media reports",
+                  "Estimating chances and risks in games and everyday life",
+                  "Using simulations when exact predictions are impossible"
+                ],
+                "subtreeRootIds": [
+                  "728db43c-cf11-4fb6-b1dc-27e76573bcfc",
+                  "a66c8d6d-8f3c-4e15-855a-019186e5eee4",
+                  "3823e90d-a34b-46d2-a0f8-3168138d3a95"
+                ],
+                "entryGoalIds": [
+                  "91571d3f-3651-4477-ba21-320fc4077453"
+                ],
+                "milestoneGoalIds": [
+                  "91571d3f-3651-4477-ba21-320fc4077453",
+                  "acbb7e26-f85f-405b-a3e5-affa6add6711",
+                  "5ab17678-bba7-4e6b-9aff-5a909e24d40e"
+                ]
+              }
+            ]
+          }
+        },
+        "contains": [],
+        "requires": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2",
+            "K3",
+            "K4"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2",
+            "L3",
+            "L4",
+            "L5"
+          ],
+          "phase": "GLOBAL",
+          "area": "Mathematik",
+          "topicCode": "CANONICAL.MATH.SEK1.ORIENTATION"
+        },
+        "shortKey": "canonical_math_why_sek1",
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "65365dce-f33f-49d8-9516-42f75883aa86",
+            "title": "Visualisierung: Warum Mathematik? – Entdecken, Muster & Alltag",
+            "url": "/assets/goal-visualizations/mathematik/65365dce-f33f-49d8-9516-42f75883aa86/65365dce-f33f-49d8-9516-42f75883aa86.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Warum Mathematik? – Entdecken, Muster & Alltag.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Warum Mathematik? – Entdecken, Muster & Alltag\". Der Sek-I-Einstieg: Wie Mathematik beim Messen, Vergleichen, Bauen, Planen und in Spielen hilft, wie Muster, Daten und Formen im Alltag auftauchen und warum mathematisches Denken beim Begründen und Problemlösen unterstützt. Überblick über Zahlen, Größen, Geometrie, Daten und erste funktionale Zusammenhänge.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "dcbb5b400558c2f57b054e04a3bbb8aab11bc8b475f75cf5e9e9299755035ee4"
+    },
+    {
+      "wholeGoal": {
+        "id": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+        "title": "Geometrische Abbildungen als linear erkennen",
+        "titleEn": "Recognize geometric mappings as linear",
+        "description": "Die lernende Person kann bei einer einfachen geometrischen Abbildung anhand der Verträglichkeit mit Vektoraddition und skalarer Multiplikation prüfen, ob sie linear ist.",
+        "descriptionEn": "The learner can determine whether a simple geometric mapping is linear by checking whether it preserves vector addition and scalar multiplication.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+            "title": "Visualisierung: Geometrische Abbildungen als linear erkennen",
+            "url": "/assets/goal-visualizations/mathematik/69243680-c2c1-5661-80c0-c95a2be1dabf/69243680-c2c1-5661-80c0-c95a2be1dabf.png",
+            "provider": "OpenAI image generation",
+            "description": "Visualisierung zum Lernziel: Geometrische Abbildungen als linear erkennen.",
+            "altText": "Die lernende Person kann bei einer einfachen geometrischen Abbildung anhand der Verträglichkeit mit Vektoraddition und skalarer Multiplikation prüfen, ob sie linear ist.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "ba5e7ffb1f325611ecb0924a6da628c794e7ae4f1eafa746bd93df844f739084"
+    },
+    {
+      "wholeGoal": {
+        "id": "6aa593a3-6690-581d-9b7d-37cac78187a1",
+        "shortKey": "canonical_math_q2_model_transition_processes_with_stochastic_matrices",
+        "title": "Übergangsprozesse mit stochastischen Matrizen modellieren",
+        "titleEn": "Model transition processes with stochastic matrices",
+        "description": "Die lernende Person kann Übergangsprozesse als Markov-Ketten mit stochastischen Matrizen modellieren, Übergangswahrscheinlichkeiten begründet festlegen und die Matrix im Kontext interpretieren.",
+        "descriptionEn": "The learner can model transition processes as Markov chains with stochastic matrices, choose transition probabilities with justification, and interpret the matrix in context.",
+        "requires": [
+          "03685f87-7570-5bb3-b1c7-134124abb317",
+          "9bf67cce-4c8f-5497-8e64-825b83c6aa40"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.4.STOCHASTIC_MATRIX_MODELING"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 3",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "6aa593a3-6690-581d-9b7d-37cac78187a1",
+            "title": "Visualisierung: Übergangsprozesse mit stochastischen Matrizen modellieren",
+            "url": "/assets/goal-visualizations/mathematik/6aa593a3-6690-581d-9b7d-37cac78187a1/6aa593a3-6690-581d-9b7d-37cac78187a1.png",
+            "provider": "OpenAI / ChatGPT-Codex image_gen",
+            "description": "Visualisierung zum Lernziel: Übergangsprozesse mit stochastischen Matrizen modellieren.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Übergangsprozesse mit stochastischen Matrizen modellieren\". Die lernende Person kann Übergangsprozesse als Markov-Ketten mit stochastischen Matrizen modellieren, Übergangswahrscheinlichkeiten begründet festlegen und die Matrix im Kontext interpretieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "4de856764f40a1eec0de8c48d7972739c71feaabe303b9d12e7a11674d79ddea"
+    },
+    {
+      "wholeGoal": {
+        "id": "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+        "title": "Matrizen addieren und subtrahieren",
+        "titleEn": "Add and subtract matrices",
+        "description": "Die lernende Person kann gleich große Matrizen addieren bzw. subtrahieren und die Ergebnisse korrekt berechnen.",
+        "descriptionEn": "The learner can add or subtract matrices of the same size and compute results correctly.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 2; Q2.5, S. 44, Spiegelstrich 2",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+            "title": "Visualisierung: Matrizen addieren und subtrahieren",
+            "url": "/assets/goal-visualizations/mathematik/6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8/6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation (image_gen)",
+            "description": "Visualisierung zum Lernziel: Matrizen addieren und subtrahieren.",
+            "altText": "Gleich große Matrizen werden positionsweise addiert oder subtrahiert. Für A = [2, −1; 0, 4] und B = [3, 5; −2, 1] entstehen A+B = [5, 4; −2, 5] und A−B = [−1, −6; 2, 3]. Farbfelder markieren gleiche Positionen; 0−(−2) ergibt 2.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "b67763468ade5f64d0996170c721e5322920e42fe0444bc7768ee644a1cd6276"
+    },
+    {
+      "wholeGoal": {
+        "id": "6f09c97e-779b-500b-8092-3fb9696aa5bb",
+        "title": "Matrix-Vektor-Produkte berechnen",
+        "titleEn": "Calculate matrix-vector products",
+        "description": "Die lernende Person kann das Produkt einer Matrix mit einem Vektor bestimmen und das Ergebnis als neuen Zustandsvektor interpretieren.",
+        "descriptionEn": "The learner can compute the product of a matrix with a vector and interpret the result as a new state vector.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 2; Q2.5, S. 44, Spiegelstrich 2",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "6f09c97e-779b-500b-8092-3fb9696aa5bb",
+            "title": "Visualisierung: Matrix-Vektor-Produkte berechnen",
+            "url": "/assets/goal-visualizations/mathematik/6f09c97e-779b-500b-8092-3fb9696aa5bb/6f09c97e-779b-500b-8092-3fb9696aa5bb.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Matrix-Vektor-Produkte berechnen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Matrix-Vektor-Produkte berechnen\". Die lernende Person kann das Produkt einer Matrix mit einem Vektor bestimmen und das Ergebnis als neuen Zustandsvektor interpretieren.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "a2826e5881da9cc4ce1a0f42a96651559451ef0f7f82ec514b339f75ab47356a"
+    },
+    {
+      "wholeGoal": {
+        "id": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "semanticKind": "orientation",
+        "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+        "titleEn": "Why Mathematics? – Thinking, Patterns & Future",
+        "description": "Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+        "descriptionEn": "The 'Big Picture' intro: How algorithms power your smartphone, how data becomes decisions (medicine, climate), why models make growth and risks visible, and why mathematical thinking structures problem solving. Overview of the relevance of topics from calculus to stochastics for your life.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Motivation",
+          "Orientation",
+          "canonical"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "treeOrder": 1,
+          "orientationOutlook": {
+            "paths": [
+              {
+                "id": "change-and-models",
+                "title": "Veränderung, Wachstum und Modelle",
+                "titleEn": "Change, growth and models",
+                "learningOutlook": "Du lernst, Funktionen in verschiedenen Darstellungen zu lesen, Änderungsraten und Integrale zu deuten und mit Differenzialgleichungen sowie Parametern reale Entwicklungen zu modellieren.",
+                "learningOutlookEn": "You learn to read functions in different representations, interpret rates of change and integrals, and model real developments with differential equations and parameters.",
+                "practicalContexts": [
+                  "Wachstum, Klima, Epidemien und wirtschaftliche Entwicklungen modellieren",
+                  "Bewegungen, Verbräuche und optimale Entscheidungen untersuchen",
+                  "Algorithmen, Datenmodelle und Vorhersagen in Smartphone und KI besser verstehen"
+                ],
+                "practicalContextsEn": [
+                  "Modelling growth, climate, epidemics and economic developments",
+                  "Investigating motion, consumption and optimal decisions",
+                  "Understanding algorithms, data models and predictions in smartphones and AI"
+                ],
+                "subtreeRootIds": [
+                  "a668ea17-9226-4074-8f8e-051acbe839eb",
+                  "c8951a07-a3e7-59d2-8a23-dce545dd811a",
+                  "6c8a677b-ede8-5c2c-86d8-0ef0be8ace28"
+                ],
+                "entryGoalIds": [
+                  "8dd9f210-2683-5902-acab-e3be22725232",
+                  "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+                  "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+                ],
+                "milestoneGoalIds": [
+                  "8dd9f210-2683-5902-acab-e3be22725232",
+                  "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+                  "5fe4218e-4fb0-5339-8764-c989befa244e",
+                  "993a14e8-60f0-5764-9340-b2447a5fa84b"
+                ]
+              },
+              {
+                "id": "space-and-linear-algebra",
+                "title": "Räume, Vektoren und lineare Abbildungen",
+                "titleEn": "Space, vectors and linear transformations",
+                "learningOutlook": "Du lernst, Punkte, Geraden und Ebenen mit Vektoren zu beschreiben, Winkel und Abstände zu bestimmen und geometrische Veränderungen mit Matrizen und Projektionen zu verstehen.",
+                "learningOutlookEn": "You learn to describe points, lines and planes with vectors, determine angles and distances, and understand geometric change with matrices and projections.",
+                "practicalContexts": [
+                  "Navigation, Robotik und Bewegungen im Raum",
+                  "3D-Grafik, Bildverarbeitung und technische Konstruktion",
+                  "Architektur, Vermessung und räumliche Modellierung"
+                ],
+                "practicalContextsEn": [
+                  "Navigation, robotics and motion in space",
+                  "3D graphics, image processing and technical construction",
+                  "Architecture, surveying and spatial modelling"
+                ],
+                "subtreeRootIds": [
+                  "98dcf9bd-d119-5eb1-835c-7d719f67b485"
+                ],
+                "entryGoalIds": [
+                  "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+                ],
+                "milestoneGoalIds": [
+                  "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+                  "9460c3ff-e72d-4107-bc73-087d217200aa",
+                  "bd3576b8-f4e5-542a-a8a2-74524d9cee21"
+                ]
+              },
+              {
+                "id": "data-and-decisions",
+                "title": "Daten, Zufall und begründete Entscheidungen",
+                "titleEn": "Data, chance and evidence-based decisions",
+                "learningOutlook": "Du lernst, Daten aufzubereiten, Zufallsmodelle und Verteilungen zu nutzen und mit Hypothesentests sowie Konfidenzintervallen die Aussagekraft von Ergebnissen kritisch einzuschätzen.",
+                "learningOutlookEn": "You learn to prepare data, use random models and distributions, and critically assess evidence with hypothesis tests and confidence intervals.",
+                "practicalContexts": [
+                  "Medizinische Tests und Studienergebnisse beurteilen",
+                  "Risiken, Qualitätskontrollen und Prognosen einordnen",
+                  "Umfragen, A/B-Tests und datenbasierte Entscheidungen kritisch prüfen"
+                ],
+                "practicalContextsEn": [
+                  "Assessing medical tests and study results",
+                  "Interpreting risks, quality controls and forecasts",
+                  "Critically checking surveys, A/B tests and data-driven decisions"
+                ],
+                "subtreeRootIds": [
+                  "3e937f39-1187-58b3-96c3-ec39278c0e3c"
+                ],
+                "entryGoalIds": [
+                  "508292f2-671b-4fd3-acbf-53d705e44693"
+                ],
+                "milestoneGoalIds": [
+                  "83a5546e-0ea6-576e-83e2-3387b30872bb",
+                  "e495fa38-b198-5280-a405-9e41cafd6d17",
+                  "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+                  "5c9ac68c-3928-518c-bbe0-e044667035a6"
+                ]
+              }
+            ]
+          }
+        },
+        "contains": [],
+        "requires": [],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K3"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2",
+            "L3",
+            "L4",
+            "L5"
+          ],
+          "phase": "E"
+        },
+        "shortKey": "canonical_math_why",
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "title": "Visualisierung: Warum Mathematik? – Denken, Muster & Zukunft",
+            "url": "/assets/goal-visualizations/mathematik/71cec9fb-3751-4d61-8b34-c5adbbf6e5f2/71cec9fb-3751-4d61-8b34-c5adbbf6e5f2.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Warum Mathematik? – Denken, Muster & Zukunft.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Warum Mathematik? – Denken, Muster & Zukunft\". Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "19b9edb33316386a1265614a33a88eef3b04ac711f57e2869a5b79481b1c0909"
+    },
+    {
+      "wholeGoal": {
+        "id": "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf",
+        "title": "Stabile Zustände mithilfe von Fixvektoren bestimmen",
+        "titleEn": "Determine stable states using fixed vectors",
+        "description": "Die lernende Person kann für eine Übergangsmatrix Fixvektoren bestimmen, sie als stabile Verteilungen interpretieren und im Kontext des zugrunde liegenden Prozesses deuten.",
+        "descriptionEn": "The learner can determine fixed vectors for a transition matrix, interpret them as stable distributions, and interpret them in the context of the underlying process.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "9bf67cce-4c8f-5497-8e64-825b83c6aa40"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 3",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf",
+            "title": "Visualisierung: Stabile Zustände mithilfe von Fixvektoren bestimmen",
+            "url": "/assets/goal-visualizations/mathematik/8d893e63-d7de-52d9-8bcb-f48f47d1ccbf/8d893e63-d7de-52d9-8bcb-f48f47d1ccbf.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Stabile Zustände mithilfe von Fixvektoren bestimmen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Stabile Zustände mithilfe von Fixvektoren bestimmen\". Die lernende Person kann für eine Übergangsmatrix Fixvektoren bestimmen, sie als stabile Verteilungen interpretieren und im Kontext des zugrunde liegenden Prozesses deuten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "ba5701a611456a224b87f133c4eae06f1f978d9c9ae63645b650881b97e7203f"
+    },
+    {
+      "wholeGoal": {
+        "id": "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7",
+        "title": "Abbildungsmatrix aus Basisbildern bestimmen",
+        "titleEn": "Determine mapping matrix from basis images",
+        "description": "Die lernende Person kann die Abbildungsmatrix einer linearen Abbildung bezüglich der Standardbasis bestimmen, indem sie die Koordinatenvektoren der Bilder der geordneten Standardbasis in derselben Reihenfolge als Spalten anordnet.",
+        "descriptionEn": "The learner can determine the matrix of a linear map with respect to the standard basis by placing the coordinate vectors of the images of the ordered standard-basis vectors as columns in the same order.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "4d331ba0-56d6-5730-a51b-e3d1126b31ba"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.5, S. 44, Spiegelstrich 3",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "8dc2c87a-cfc6-5f15-89e5-634107f5c9c7",
+            "title": "Visualisierung: Abbildungsmatrix aus Basisbildern bestimmen",
+            "url": "/assets/goal-visualizations/mathematik/8dc2c87a-cfc6-5f15-89e5-634107f5c9c7/8dc2c87a-cfc6-5f15-89e5-634107f5c9c7.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Abbildungsmatrix aus Basisbildern bestimmen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Abbildungsmatrix aus Basisbildern bestimmen\". Die lernende Person kann die Abbildungsmatrix einer linearen Abbildung bezüglich der Standardbasis bestimmen, indem sie die Koordinatenvektoren der Bilder der geordneten Standardbasis in derselben Reihenfolge als Spalten anordnet.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "07990a021476fe429880e6a0f9b5689b38c1b0ca078168ca210526c10dc078d6"
+    },
+    {
+      "wholeGoal": {
+        "id": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+        "shortKey": "canonical_math_q2_interpret_limit_processes_and_limit_matrices_lk",
+        "title": "Grenzprozesse und Grenzmatrizen interpretieren (LK)",
+        "titleEn": "Interpret limiting processes and limiting matrices (advanced course)",
+        "description": "Die lernende Person kann Grenzprozesse bei Potenzen von Übergangsmatrizen untersuchen, Grenzmatrizen interpretieren und ihre Bedeutung für stabile Langzeitentwicklungen erläutern.",
+        "descriptionEn": "The learner can analyze limiting processes of powers of transition matrices, interpret limiting matrices, and explain their meaning for stable long-term developments.",
+        "tags": [
+          "LK",
+          "canonical"
+        ],
+        "requires": [
+          "0de1e45c-aea9-5e53-932a-027dcf509efa",
+          "8d893e63-d7de-52d9-8bcb-f48f47d1ccbf"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1.3",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L4"
+          ],
+          "phase": "Q2",
+          "area": "LinearAlgebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.4.LIMIT_PROCESSES_LIMIT_MATRICES_LK"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 5",
+        "weight": 1,
+        "contains": [],
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+            "title": "Visualisierung: Grenzprozesse und Grenzmatrizen interpretieren (LK)",
+            "url": "/assets/goal-visualizations/mathematik/922d89fc-1cbd-56e9-ac5d-5cb59085de6c/922d89fc-1cbd-56e9-ac5d-5cb59085de6c.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Grenzprozesse und Grenzmatrizen interpretieren (LK).",
+            "altText": "Spaltenstochastische Übergangsmatrix mit Fixvektor (0,6; 0,4) und Grenzmatrix mit zwei gleichen Spalten. Zwei verschiedene normierte Starts erreichen in diesem Modell dieselben langfristigen Anteile. Senkrechte Vektoren ohne zusätzliches Transpositionszeichen.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "5f2bbc2b2a8b56245f04db75e60226e75189f4613e3b8c6373f57687147bd8c9"
+    },
+    {
+      "wholeGoal": {
+        "id": "9bf67cce-4c8f-5497-8e64-825b83c6aa40",
+        "title": "Stochastische Übergangsmatrizen für Markov-Ketten prüfen",
+        "titleEn": "Check stochastic transition matrices for Markov chains",
+        "description": "Die lernende Person kann unter Angabe der Zeilen- oder Spaltenkonvention begründen, ob eine Matrix eine stochastische Übergangsmatrix einer Markov-Kette ist: Die Matrix ist quadratisch und ihre Zeilen und Spalten beziehen sich auf denselben Zustandsraum, alle Einträge sind nichtnegativ, und die zu jedem Ausgangszustand gehörenden Einträge summieren sich zu 1.",
+        "descriptionEn": "The learner can state the row or column convention and justify whether a matrix is a stochastic transition matrix for a Markov chain: The matrix is square and its rows and columns refer to the same state space, all entries are nonnegative, and the entries belonging to each source state sum to 1.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "6f09c97e-779b-500b-8092-3fb9696aa5bb"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 3",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "9bf67cce-4c8f-5497-8e64-825b83c6aa40",
+            "title": "Visualisierung: Stochastische Übergangsmatrizen für Markov-Ketten prüfen",
+            "url": "/assets/goal-visualizations/mathematik/9bf67cce-4c8f-5497-8e64-825b83c6aa40/9bf67cce-4c8f-5497-8e64-825b83c6aa40.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Stochastische Übergangsmatrizen für Markov-Ketten prüfen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Stochastische Übergangsmatrizen für Markov-Ketten prüfen\". Die lernende Person kann unter Angabe der Zeilen- oder Spaltenkonvention begründen, ob eine Matrix eine stochastische Übergangsmatrix einer Markov-Kette ist: Die Matrix ist quadratisch und ihre Zeilen und Spalten beziehen sich auf denselben Zustandsraum, alle Einträge sind nichtnegativ, und die zu jedem Ausgangszustand gehörenden Einträge summieren sich zu 1.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "dbd8ba2462bde51f868314d93361654c1e8f286196065412d5c18948dbafc66a"
+    },
+    {
+      "wholeGoal": {
+        "id": "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+        "shortKey": "canonical_math_matrix_entries_read_and_interpret",
+        "title": "Matrixeinträge über Zeilen und Spalten lesen und deuten",
+        "titleEn": "Read and interpret matrix entries via rows and columns",
+        "description": "Die lernende Person kann Einträge in Matrizen oder vergleichbaren tabellarischen Darstellungen über Zeilen und Spalten sicher lokalisieren, ihre Position fachsprachlich beschreiben und die Bedeutung der Einträge im Kontext erläutern.",
+        "descriptionEn": "The learner can reliably locate entries in matrices or comparable tabular representations via rows and columns, describe their position using correct terminology, and explain the meaning of the entries in context.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "Q2",
+          "area": "Lineare Algebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.MATRICES.READ_ENTRIES"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "title": "Visualisierung: Matrixeinträge über Zeilen und Spalten lesen und deuten",
+            "url": "/assets/goal-visualizations/mathematik/b5062446-332f-4a67-aaf7-3bfa3e5aded9/b5062446-332f-4a67-aaf7-3bfa3e5aded9.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Matrixeinträge über Zeilen und Spalten lesen und deuten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Matrixeinträge über Zeilen und Spalten lesen und deuten\". Die lernende Person kann Einträge in Matrizen oder vergleichbaren tabellarischen Darstellungen über Zeilen und Spalten sicher lokalisieren, ihre Position fachsprachlich beschreiben und die Bedeutung der Einträge im Kontext erläutern.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "3a33a6f5f4508eb3607c4558932afa5451aeb1375cf8c49fb76ca0aad5fd49b1"
+    },
+    {
+      "wholeGoal": {
+        "id": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+        "title": "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben",
+        "titleEn": "Describe vectors as position, direction, and displacement vectors in space",
+        "description": "Die lernende Person kann Vektoren im Raum als Verschiebungs-, Orts- oder Richtungsvektoren darstellen, ihre Komponenten in kartesischen Koordinatensystemen angeben und ihre geometrische Bedeutung fachsprachlich deuten.",
+        "descriptionEn": "The learner can represent vectors in space as displacement, position, or direction vectors, state their components in Cartesian coordinate systems, and interpret their geometric meaning using correct terminology.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "075f1ef2-6860-4b20-9df2-878157eb395e",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L3"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 2",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+            "title": "Visualisierung: Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben",
+            "url": "/assets/goal-visualizations/mathematik/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Visualisierung zum Lernziel: Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben.",
+            "altText": "Orts-, Verschiebungs- und Richtungsvektor: OA=(1,2,1), OB=(4,3,3), AB=(3,1,2). Eine konsistente schematische Pfeilkette verbindet O,A,B. Der Richtungsvektor beschreibt eine Geradenrichtung, keine Geradenlänge.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "285c5dff8d337bf6c301528ea1579fb619271891458cd54a54f92c3e5a4488b9"
+    },
+    {
+      "wholeGoal": {
+        "id": "ce198bc9-b014-52ba-814f-25cc3e020668",
+        "title": "Einfache inverse Matrizen bestimmen",
+        "titleEn": "Determine simple inverse matrices",
+        "description": "Die lernende Person kann für einfache 2x2-Matrizen oder Diagonalmatrizen, sofern sie invertierbar sind, die Inverse bestimmen und durch Multiplikation mit der Ausgangsmatrix prüfen, ob die Einheitsmatrix entsteht.",
+        "descriptionEn": "The learner can determine the inverse of simple 2x2 matrices or diagonal matrices, provided they are invertible, and check by multiplication with the original matrix whether the identity matrix is obtained.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+          "304111dd-426b-520b-a275-3fa37da1b0e0"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L1"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 2; Q2.5, S. 44, Spiegelstrich 2",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+            "title": "Visualisierung: Einfache inverse Matrizen bestimmen",
+            "url": "/assets/goal-visualizations/mathematik/ce198bc9-b014-52ba-814f-25cc3e020668/ce198bc9-b014-52ba-814f-25cc3e020668.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Einfache inverse Matrizen bestimmen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Einfache inverse Matrizen bestimmen\". Die lernende Person kann für einfache 2x2-Matrizen oder Diagonalmatrizen die Inverse bestimmen und das Ergebnis durch Multiplikation prüfen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "371241ff02a4863442f3dabaf01d03c00cafccfe3fad172c3470a6e8b24f5220"
+    },
+    {
+      "wholeGoal": {
+        "id": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+        "shortKey": "canonical_math_sek1_j9_spatial_point_tuples_interpret",
+        "title": "Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten",
+        "titleEn": "Express and interpret points in the spatial coordinate system as tuples",
+        "description": "Die lernende Person kann Punkte im räumlichen Koordinatensystem als Tupel darstellen, Koordinateneinträge fachsprachlich deuten und die Bedeutung einfacher Ortsangaben im Kontext erklären.",
+        "descriptionEn": "The learner can represent points in the spatial coordinate system as tuples, interpret coordinate entries using correct terminology, and explain the meaning of simple location data in context.",
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K1.1",
+            "K3.1",
+            "K4.1"
+          ],
+          "guidingIdeas": [
+            "L2",
+            "L3"
+          ],
+          "phase": "J9",
+          "area": "Geometry",
+          "topicCode": "CANONICAL.MATH.SEK1.J9.8D"
+        },
+        "contains": [],
+        "requires": [
+          "25593605-5e13-55cc-9a05-8f3d737e15e9",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "semanticAtomic": true,
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+            "title": "Visualisierung: Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten",
+            "url": "/assets/goal-visualizations/mathematik/f242a3e8-55a3-492e-8354-b81b24cdbb78/f242a3e8-55a3-492e-8354-b81b24cdbb78.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten\". Die lernende Person kann Punkte im räumlichen Koordinatensystem als Tupel darstellen, Koordinateneinträge fachsprachlich deuten und die Bedeutung einfacher Ortsangaben im Kontext erklären.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "6b112a8e15a4844fcf8a51afd38f28d3df4c2ad2b7dc2127c0c2e3053adf65d5"
+    },
+    {
+      "wholeGoal": {
+        "id": "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+        "shortKey": "canonical_math_matrix_spreadsheet_tuples_organize_and_read",
+        "title": "Tupelsachverhalte in Tabellenkalkulation organisieren und Zellbezüge lesen",
+        "titleEn": "Organize tuple-based situations in spreadsheets and read cell references",
+        "description": "Die lernende Person kann einfache tupelbasierte Sachverhalte in einer Tabellenkalkulation tabellarisch anordnen, Zellbezüge im Kontext lesen und die tabellarische Struktur fachsprachlich erläutern.",
+        "descriptionEn": "The learner can organize simple tuple-based situations in a spreadsheet, read cell references in context, and explain the tabular structure using correct terminology.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.2",
+            "K3.3"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "Q2",
+          "area": "Lineare Algebra",
+          "topicCode": "CANONICAL.MATH.SEK2.Q2.MATRICES.SPREADSHEET_TUPLES_AND_CELL_REFERENCES"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+            "title": "Visualisierung: Tupelsachverhalte in Tabellenkalkulation organisieren und Zellbezüge lesen",
+            "url": "/assets/goal-visualizations/mathematik/f378917f-2ca7-4c68-bd66-3f9457095dd5/f378917f-2ca7-4c68-bd66-3f9457095dd5.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Tupelsachverhalte in Tabellenkalkulation organisieren und Zellbezüge lesen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Tupelsachverhalte in Tabellenkalkulation organisieren und Zellbezüge lesen\". Die lernende Person kann einfache tupelbasierte Sachverhalte in einer Tabellenkalkulation tabellarisch anordnen, Zellbezüge im Kontext lesen und die tabellarische Struktur fachsprachlich erläutern.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalSha256": "1ab5df5e8ce22b26b99100bf66db3e27ac16cfb7b37fa929306695a35b2e20e8"
+    }
+  ],
+  "ordinaryAndOtherTaskObjectsMustRemainUnchanged": true,
+  "noTaskContentRubricRScoredCoverageChange": true
+}
