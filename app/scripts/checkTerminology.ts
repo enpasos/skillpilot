@@ -111,6 +111,17 @@ interface GrandfatheredOccurrence {
  * the check until the occurrence is reviewed again.
  */
 const grandfatheredOccurrences: GrandfatheredOccurrence[] = [
+  // Byte-exact author attribution retained with the independently reviewed
+  // geometry forms. This historical source copy remains hash-bound; active prose
+  // and every other occurrence still follow the glossary.
+  {
+    ruleId: 'TRM-001',
+    path: 'curricula/DE/Gymnasium/assessments/mathematik/geometry-two-same-identity-2026-11-03-v1/reviews/original-author-and-content/ATTRIBUTION.md',
+    line: 4,
+    column: 12,
+    found: 'Wissenslandschaft',
+    lineSha256: '9a6761e39b215afb3d8647af653c3c939fc2636ee62a022f394542f983d92f38',
+  },
   // Byte-exact archived copy of the already approved public mission wording below.
   // Its frozen-generator-inputs manifest binds the historical source bytes.
   {
