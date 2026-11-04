@@ -3,6 +3,17 @@
 Diese Seite beschreibt die Bedeutung der Curriculum-Quality-Anzeige im Workbench-Dashboard `/quality-dashboard`.
 Sie ist die fachliche Lesart der generierten Statusdateien unter `docs/qa-ci/status/`.
 
+**Konzeptkorrektur vom 4. November 2026:** Eine bisherige M7-Freigabe oder
+bestandene Routenprüfung belegt nicht automatisch, dass die Prüfungsaufgaben
+die nun geforderte selbständige Anwendung aller implizit anerkannten
+Kompetenzen absichern. Diese zusätzliche Autorenpflicht verlangt ein
+unabhängiges Aufgaben-/Rubrikreview nach dem
+[korrigierten Abschlusskonzept](../concept/skill-graph/assessment-gated-completion.md).
+Transitive Minimalität und gültige lokale Abschlussverträge bleiben
+Strukturbedingungen, keine Ersatzbelege für Aufgabenqualität. Bestehende
+Statusdateien und historische Reviewnachweise werden hier nicht neu bewertet
+oder umgeschrieben; die konkrete neue Prüfung wird erst geplant.
+
 Normative Implementierung:
 
 - Generator: `app/scripts/generateCurriculumQualityStatus.ts`

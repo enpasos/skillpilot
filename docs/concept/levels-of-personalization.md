@@ -115,10 +115,11 @@ only after learner acceptance.
 
 All `target` goals in the Personal Curriculum remain intended learning goals.
 A narrower focus changes only the current corridor. In particular, `requires`
-is directional: mastery of a dependent goal does not imply mastery of an
-unmastered prerequisite. After widening, every newly included unmastered target
-participates in normal frontier calculation according to its own effective
-prerequisites.
+alone does not write mastery to prerequisites. Under the 4 November 2026
+recognition contract, valid passed application assessments derive effective
+mastery of ordinary goals. That recognition remains global and satisfies later
+prerequisites; widening a focus must not reopen those goals. Remaining targets
+participate in the applicable transitive prerequisite calculation.
 
 ## Level 4: Mastery
 
@@ -127,7 +128,15 @@ Mastery is the learner's single durable outcome on each stable atomic goal ID:
 Level 2 or Level 3 changes. There is no partly mastered state or additional
 profile-specific assessment qualification.
 
-Cluster and scope progress is the weighted share of mastered, unique atomic
+The corrected concept distinguishes the stored explicit set M from derived
+application recognition I. Effective mastery M_eff = M ∪ I is equally valid
+for subsequent prerequisites and total progress. I is reconstructed from fixed
+valid recognition contracts, never from a focus filter or a second learner
+outcome. Exam and memory goals themselves stay explicit. See
+[assessment-gated completion](skill-graph/assessment-gated-completion.md).
+Current runtime conformance still requires replanning and implementation.
+
+Cluster and scope progress is the weighted share of effectively mastered, unique atomic
 goals. A percentage describes that aggregate, not a degree of mastery for an
 individual goal. Clusters have no separately stored mastery record.
 Goal-type workflows determine the one outcome; card-level scheduling and

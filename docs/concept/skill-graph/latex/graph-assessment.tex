@@ -1,204 +1,204 @@
 % SPDX-License-Identifier: Apache-2.0
-\section{Implizite Erledigung und direkter Prüfungszugang}
+\section{Implizite Beherrschung durch gültige lokale Prüfungen}
 \label{sec:assessment}
-\begin{principle}{Verbindliche Produktentscheidung vom 31. Oktober 2026}
-Jedes gemeisterte Lernziel beendet seinen eigenen Vorbereitungsbedarf.
-Ein von keinem offenen Ziel mehr benötigtes Nicht-Prüfungsziel ist implizit
-erledigt und beendet ebenfalls seinen Bedarf. Jede Abschlussprüfung bleibt
-ohne Mastery offen und muss direkt ansteuerbar sein. Manuelle
-Freistellungsprofile und zusätzliche Prüfbelege sind dafür nicht erforderlich.
+\begin{principle}{Verbindliche Konzeptkorrektur vom 4. November 2026}
+Ein ausdrücklicher Erfolg an einem gewöhnlichen Lernziel belegt Verstehen.
+Eine gültige Abschlussprüfung kann selbstständige Anwendung der zugehörigen
+Kompetenzen belegen. Diese implizite Beherrschung ist global ebenso wirksam:
+Sie erfüllt künftige Voraussetzungen und zählt zum IST. Prüfungs- und
+Memorierziele selbst bleiben ausschließlich ausdrücklich zu bestehen.
 \end{principle}
 
-Mastery bleibt der einzige gespeicherte Ergebniszustand pro atomarem Lernziel.
-Implizite Erledigung wird abgeleitet und niemals als Mastery zurückgeschrieben.
-Grundlage ist die \srcref{docs/concept/skill-graph/assessment-gated-completion.md}{aktuelle
-Konzeptspezifikation}; der \srcref{docs/dev/assessment-gated-completion-pilot.md}{Implementierungsstand}
-trennt lokale Tests, Deployment und tatsächliche Coach-Abnahme.
+Der gespeicherte binäre Zustand $m$ bleibt unverändert das einzige
+Zielergebnis. Die neue Semantik leitet zusätzliche Erfüllung ab, ohne
+Rückwärtsschreiben von Mastery, zusätzliche Qualifikationsdatensätze,
+manuelle Freistellungsprofile oder zweite Teilprüfungen einzuführen.
+Auf der geprüften Hauptlinie ist dieses Konzept noch nicht implementiert.
+Maßgeblich ist die
+\srcref{docs/concept/skill-graph/assessment-gated-completion.md}{aktuelle Konzeptspezifikation}.
 
-\subsection{Fester Umfang und direkte Bedarfsrelation}
-Für eine Curriculumgeneration und das verbindliche Personal Curriculum sei
-$T$ die Menge der eindeutigen atomaren Ziele des gewählten Umfangs.
-Maßgeblich ist die aufgelöste Program-/Kompositionsstruktur. Ein temporärer
-Lernfokus oder eingeklappter Baumzweig verändert diesen Umfang nicht.
-Die Standardauswertung umfasst das Personal Curriculum; ein ausdrücklich
-gewählter Abschnitt erhält seine eigene vollständige Auswertung.
+\subsection{Vertrag, Zielumfang und geschützte Zieltypen}
+Ein lokaler Vertrag $L$ bindet einen begrenzten vollständigen curricularen
+Umfang $T_L\subseteq A$, die kanonischen Zielidentitäten, die
+Curriculumrevision und die fachlich geprüfte Bedeutung der Prüfungen.
+Er kann etwa ein Jahr oder einen abgeschlossenen Ausbildungsabschnitt
+beschreiben. Ein späteres Level erweitert diesen Vertrag nicht rückwirkend.
+Eine Anzeige, ein temporärer Fokus oder die aktuell ausgewählten Planwurzeln
+bestimmen $T_L$ nicht neu.
 
-Cluster-Voraussetzungen werden in atomare Pflichten expandiert;
-vererbte Anforderungen und autoritative atomare \code{goalEntry}-Projektionen
-werden berücksichtigt. Die vollständige Voraussetzungshülle $V_H$ enthält
-auch versteckte und fachübergreifende Unterstützung. Unterstützende Ziele
-werden dadurch nicht zu Zielen des Abschlussnenners.
+Seien $Q$ und $K$ die autoritativ bestimmten Prüfungs- beziehungsweise
+Memorierziele. In diesem Kapitel bezeichnet $K$ diesen pädagogischen Typ;
+die strukturellen Cluster aus dem Kernkapitel sind hier nicht gemeint.
+Dann gelten
+\[
+ Q_L=T_L\cap Q,\qquad K_L=T_L\cap K,\qquad P_L=Q_L\cup K_L.
+\]
+$P_L$ schützt \emph{alle} ausgewählten Prüfungs- und Memorierziele vor
+implizitem Bestehen. Ein Erfolg an einer anderen Prüfung ersetzt weder
+deren eigene Prüfung noch den verifizierten Abruf ihrer Karten.
+Orientierung bleibt ein eigener motivationaler Zieltyp, keine dritte
+Schutzklasse. Ein Orientierungsmarker darf in $I_L$ liegen; er ist dann
+abgeleitet erledigter Einstieg, kein fachlicher Kompetenznachweis und
+keine Behauptung einer tatsächlich geführten Motivationsinteraktion.
+Unterstützung außerhalb $T_L$ vergrößert den Abschlussnenner nicht und
+wird in diesem Vertrag nicht implizit anerkannt.
 
-Die Relation
-\begin{equation}
- F_H=\{(u,v)\mid u\text{ benötigt unmittelbar }v
-       \text{ nach atomarer Normalisierung}\}
-\end{equation}
-zeigt vom Verbraucher zur Voraussetzung. Fehlende Referenzen, Identitätsfehler
-sowie Zyklen in \code{contains}, \code{requires} oder der expandierten
-atomaren Relation sind Berechnungsfehler. Sie bedeuten nicht, dass keine
-Arbeit mehr erforderlich sei.
+Für die folgenden Formeln heißt die vollständig atomar expandierte und
+vererbte Voraussetzungrelation kurz $R$. Sie umfasst auch versteckte und
+fachübergreifende Unterstützung. Alle Referenzen müssen auflösbar und die
+normalisierte Relation muss azyklisch sein. Die Prüfung der gesamten
+Voraussetzungshülle geschieht vor einer bloßen Anzeigeeinschränkung.
 
-\textbf{Eine statische transitive Hülle ist hier falsch.}
-Bei $C\to B\to A$ beendet Mastery von B den Bedarf an A.
-Eine zusätzliche direkte Kante $C\to A$ wäre dagegen eine eigenständige
-Anforderung von C. Transitive Hülle und transitive Reduktion sind daher
-keine bedeutungserhaltenden Umformungen dieser Abschlusssemantik.
-
-Sei $Q_H\subseteq V_H$ die autoritativ bestimmte Menge der Abschlussprüfungen.
-Die aktuelle Abbildung nutzt die bestehenden Prüfungs-/Assessmenttypen,
-nicht Titel oder \code{coveredGoalIds}. Bereits im Kontext enthaltene
-Prüfungspflichten verschwinden nicht dadurch, dass sie nur als Unterstützung
-oder in einer anderen Ansicht sichtbar sind. Alternative Aufgabenformen
-und Wahlentscheidungen müssen bereits bei der Umfangsauflösung geklärt sein.
-
-\subsection{Mastery, Bedarf und kleinster Fixpunkt}
-Mit der aktuellen globalen Mastery-Menge $M$ sei $E=M\cap V_H$.
-Für eine Menge $X$ bereits ausdrücklich oder implizit erledigter Ziele gilt
+\subsection{Transitive offene Nachfrage und implizite Menge}
+Mit der globalen ausdrücklichen Mastery-Menge $M=\{a\mid m(a)=1\}$ sei
 \begin{align}
- \Consumers_H(v)&=\{u\mid(u,v)\in F_H\},\\
- \Active_H(X)&=\{(u,v)\in F_H\mid u\notin X\}.
+ N_L&=\operatorname{Reach}_{R}^{*}(P_L\setminus M),\label{eq:needed}\\
+ I_L&=T_L\setminus(M\cup P_L\cup N_L).\label{eq:implicit}
 \end{align}
-Mastery beendet die \emph{eigenen ausgehenden} Anforderungen. Ein eingehender
-Bedarf an einem bereits gemeisterten Ziel wird nicht durch dieses Ziel
-hindurch an dessen frühere Vorbereitung weitergereicht.
+Die reflexive Erreichbarkeit enthält die offenen Wurzeln selbst und
+\emph{alle} ihre transitiven Voraussetzungen. Die Traversierung stoppt
+\textbf{nicht} an einem gemeisterten Zwischenziel. Dadurch bleibt
+$I_L$ unverändert, wenn eine redundante Kante hinzugefügt oder für die
+vorgeschriebene transitive Minimalität wieder entfernt wird.
+Es gilt stets $I_L\cap M=\varnothing$ und $I_L\cap P_L=\varnothing$.
 
-Die drei Produktregeln ergeben unmittelbar
-\begin{align}
- X_0&=E,\\
- X_{n+1}&=X_n\cup\{v\in V_H\setminus Q_H\mid
-              \Consumers_H(v)\subseteq X_n\},\label{eq:waiver-step}\\
- X_*&=\bigcup_{n\geq0}X_n,\qquad I_H=X_*\setminus E.
- \label{eq:waiver-result}
-\end{align}
-Der Operator ist monoton und inflationär. Auf dem endlichen Graphen erreicht
-die Iteration ihren kleinsten Fixpunkt. Dabei gilt stets
-$I_H\cap E=\varnothing$ und $I_H\cap Q_H=\varnothing$.
-Es entsteht keine zusätzliche gespeicherte Ergebnisart.
+Ein direkter Algorithmus besucht von den offenen geschützten Zielwurzeln
+aus jeden erreichbaren Knoten und jede Kante höchstens einmal. Er benötigt
+$O(|V_L|+|R_L|)$ für die vollständige Voraussetzungshülle. Eine explizite
+quadratische Speicherung der transitiven Hülle ist dafür nicht nötig.
 
-Die leere Verbrauchermenge ist kein Sonderfall: Ein gewöhnliches Endziel
-ohne Verbraucher ist implizit erledigt. Dies gilt auch für Orientierung
-und Gedächtnisziele. Die ausdrücklichen Interaktions- und Recall-Verträge
-bleiben unverändert; weder ein Kartenerfolg noch eine motivational erfolgte
-Interaktion wird durch die Auswertung erfunden. Enthält ein gültiger endlicher
-Umfang keine Abschlussprüfung, wird seine gesamte nicht gemeisterte Arbeit
-implizit erledigt. Zusätzliche Ausnahmen für einzelne Zielarten sind in
-diesen drei Regeln nicht vorgesehen.
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{assets/graph-definition/08-transitive-demand.png}
+\caption{Zwei unabhängige Ausgangslagen für $Q\to B\to A$: Mit
+$M=\{B\}$ bleibt A offen; mit $M=\{Q\}$ trägt Q die implizite
+Anwendung von A und B. Dies ist keine zeitliche Folge: Ein schon ausdrücklich
+bestandenes B bliebe beim späteren Bestehen von Q in M. Die direkte Kante
+$Q\to A$ wäre redundant.}
+\label{fig:waivers}\end{figure}
 
-\paragraph{Äquivalenter linearer Algorithmus.}
-Starte bei allen noch nicht gemeisterten Abschlussprüfungen. Folge ihren direkten
-Voraussetzungskanten, besuche jedes Ziel höchstens einmal und stoppe an
-\emph{jedem} gemeisterten Ziel. Die erreichten nicht gemeisterten Ziele
-bleiben benötigt. Alle übrigen nicht gemeisterten Ziele sind implizit erledigt.
-Auf einem DAG entspricht dies genau dem Fixpunkt und benötigt
-$O(|V_H|+|F_H|)$ Zeit und Speicher. Eine quadratische Speicherung aller
-indirekten Beziehungen entfällt.
+\subsection{Warum der Graph allein noch keinen Anwendungsnachweis liefert}
+Die Mengenformel darf nur für einen gültigen fachlichen Vertrag ausgewertet
+werden. Jedes gewöhnliche Ziel des Vertrags braucht einen lokalen Pfad zu
+mindestens einer lokalen Abschlussprüfung aus $Q_L$. Ein Pfad allein
+zu einem Memorierziel genügt nicht: Verifizierter Abruf beweist noch keine
+selbstständige Anwendung. Ein bloß isoliertes
+Endziel ohne lokalen Assessmentpfad ist ein Vertragsfehler, kein automatisch
+beherrschtes Ziel. Das Fehlen eines späteren Verbrauchers ist allein
+kein Nachweis einer Kompetenz.
 
-\subsection{Beispiel: Mastery unterbricht den Bedarf}
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[node distance=12mm]
-\node[goal,fill=orange!12] (c) at (0,0) {C: Prüfung\\offen};
-\node[goal,fill=green!9] (b) at (4.5,0) {B: Mastery};
-\node[goal] (a) at (9,0) {A: implizit};
-\draw[req,draw=warm,dashed] (c)--node[above,info]{benötigt B}(b);
-\draw[req] (b)--node[above,info]{Bedarf endet}(a);
-\node[info,text width=115mm] at (4.5,-1.4)
- {C bleibt offen. B ist schon gemeistert und benötigt A nicht mehr.\\
- Ohne weiteren offenen Verbraucher ist A implizit erledigt.};
-\end{tikzpicture}
-\caption{Mastery beendet Vorbereitung unabhängig von einem Prüfungserfolg.
-Eine zusätzliche direkte Kante von C nach A würde A weiterhin erforderlich machen.}
-\label{fig:waivers}
-\end{figure}
-\FloatBarrier
+Für fachliche Kompetenzziele müssen die realen Aufgaben und
+Bewertungsraster jede beanspruchte höhere Anwendung tatsächlich tragen.
+Diese Anforderung macht einen Orientierungsmarker nicht nachträglich
+zu einer prüfbaren Fachkompetenz. Wesentliche Kompetenzen dürfen nicht vollständig
+fehlen und durch Punkte aus anderen Aufgabenteilen kompensiert werden.
+Der lokale \code{requires}-Pfad, Titel, \code{coveredGoalIds}, eine
+Bestehenspunktzahl oder die formale DAG-Gültigkeit beweisen das nicht.
+Ein unabhängiges fachliches Review prüft Aufgaben, Lösungen, Bewertungsraster
+und die behauptete Anwendungsabdeckung zusammen. Zu prüfen ist jede
+Bestehenskombination, die ein Ziel nach der Mengenformel freigibt; die
+vereinigten Inhalte aller Prüfungen allein genügen dafür nicht.
 
-\begin{table}[htbp]
-\centering
-\begin{tabularx}{\linewidth}{@{}lX@{}}
-\toprule
-Fall & Ergebnis\\
-\midrule
-$C\to B\to A$, nur B gemeistert & A implizit; Prüfung C bleibt offen.\\
-Zusätzlich $C\to A$ & A bleibt direkt für C erforderlich.\\
-Prüfungen B und C benötigen A & Ein einzelner Erfolg reicht nicht, solange der andere Verbraucher offen ist.\\
-Beide Prüfungen gemeistert & A und anschließend seine nicht mehr benötigte Vorbereitung werden implizit erledigt.\\
-Gewöhnliches Endziel ohne Verbraucher & Implizit erledigt, auch ohne bisherigen Erfolg.\\
-Prüfung ohne Verbraucher & Bleibt bis zu ihrer Mastery offen.\\
-\bottomrule
-\end{tabularx}
-\caption{Bedarfsrechnung ohne manuelle Freistellungsregeln.}
-\label{tab:waivers}
-\end{table}
+Der reguläre Prüfungserfolg bleibt derselbe binäre Erfolg der gesamten
+Prüfung. Die strengere Anwendungsbedeutung liegt im vorab geprüften
+Inhaltsvertrag, nicht in einem zusätzlichen pro Person zu speichernden
+Qualifikationsstatus oder einer zweiten Folgeprüfung.
+Ein ungeprüftes historisches Assessment erhält die stärkere Bedeutung
+nicht nachträglich allein durch ein neues Diagramm oder eine Softwareänderung.
 
-\subsection{Abschluss und direkte Prüfungsauswahl}
-Der Umfang ist abgeschlossen genau dann, wenn
-\begin{equation}
- \Complete(H)\iff T\subseteq X_*\ \land\ Q_H\subseteq E.
-\end{equation}
-Auf dem endlichen DAG sind alle Prüfungspflichten gemeistert auch hinreichend:
-Ohne offene Prüfung bleibt keine dauerhafte Nachfrage nach Nicht-Prüfungsarbeit.
-Der Nenner zählt trotzdem nur Ziele aus $T$, nicht zusätzliche Unterstützung.
-Eine in Sekundarstufe~I implizit erledigte Kompetenz kann im größeren
-stufenübergreifenden Umfang noch benötigt werden; ihre globale Mastery bleibt gleich.
+\subsection{Globale Wirkung und dauerhafte Vertragsbindung}
+Die Menge $\mathcal L_{\mathrm{valid}}$ umfasst die für diese Person
+dauerhaft anwendbaren autoritativen Anerkennungsverträge, nicht beliebige
+besuchte Ansichten oder sämtliche neuesten Inhaltsfassungen. Es gilt
+\[
+ M_{\mathrm{eff}}=M\cup
+       \bigcup_{L\in\mathcal L_{\mathrm{valid}}}I_L.
+\]
+Die Vereinigung umfasst nicht nur die gerade angezeigten Level oder den
+aktuellen Personal-Curriculum-Plan. Vertrag, Revision und Nachweisbedeutung
+müssen nach einem Auswahlwechsel weiter verfügbar sein. Die Ableitung wird
+immer aus den ausdrücklichen Ergebnissen und ihren gültigen Verträgen
+berechnet; frühere implizite Mengen werden nicht als neue Mastery-Eingaben
+zurückgespeist.
 
-Jede passende Abschlussprüfung ist ohne vorherige Voraussetzungsmastery direkt
-wählbar. Bewusste Auswahl, Authentifizierung, Lernendenrevision,
-Sitzungszuordnung und verfügbare Aufgaben bleiben erforderlich. Ein Fehlversuch
-erzeugt keinen negativen Ergebnisdatensatz und nimmt einen früheren Erfolg
-nicht zurück. Ausführliche KI-Bewertung mit Punkten, Begründungen und
-Verbesserungshinweisen bleibt im Gespräch erhalten.
+Ein späteres Level mit einer weiteren Prüfung Q2 darf eine bereits aus L1
+belegte Anwendung A nicht wieder öffnen. A erfüllt vielmehr die Voraussetzung
+von Q2. Bei festem Vertragsbestand kann zusätzliche ausdrückliche Mastery
+$M_{\mathrm{eff}}$ nur vergrößern: Die Menge offener geschützter Wurzeln
+wird kleiner, ihre transitive Nachfrage nimmt ab. Ein aus $I_L$
+herausfallendes neu ausdrücklich bestandenes Ziel bleibt über $M$ enthalten.
 
-Die lesende Übersicht schreibt keine Navigation. Suche und seitenweise
-Darstellung erschließen das gesamte Angebot; eine Seitengrenze darf keine
-Prüfung dauerhaft unzugänglich machen. Empfehlungen dürfen den aktuellen
-Abschnitt bevorzugen, ohne die verbindlichen Pflichten zu verkleinern.
-Normale Pflichtvorschläge lassen implizit erledigte Arbeit aus. Freiwilliges
-Lernen bleibt über die unveränderte fachliche Zugangsprüfung möglich.
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{assets/graph-definition/09-local-recognition.png}
+\caption{L1 erkennt A und B nach seinem eigenen gültigen Vertrag an.
+Die offene spätere Prüfung Q2 verhindert diese Anerkennung nicht.
+Eine neue Anzeige oder Planwahl löscht den weiter auswertbaren L1-Vertrag nicht.}
+\label{fig:local-recognition}\end{figure}
 
-\subsection{Cockpit, Lernplan und technische Grenzen}
-Der Baum verwendet ein kompaktes Icon mit dem Tooltip
-„Für diesen Abschnitt nicht mehr erforderlich“. Diese Aussage behauptet
-keinen Prüfungserfolg, wenn ein gewöhnliches Lernziel den Bedarf beendet hat.
-Mastery-Anzeigen und abgeleitete Erledigung bleiben unterscheidbar.
-Die Balken an Sammelknoten der Lernendenansicht sind grün für explizit
-geschaffte, blau für implizit erledigte und grau für offene Ziele. Grundlage
-sind die eindeutigen atomaren Nachfahren der dargestellten Projektion mit ihren
-atomaren Gewichten; das Zuklappen verändert diese Menge nicht. Der blaue Anteil
-verwendet denselben gültigen Abschnittskontext wie die Schildsymbole und entfällt
-bei veralteten Daten. Bei drei gleich gewichteten Zielen ergeben ein explizit
-geschafftes und zwei implizit erledigte Ziele einen vollen Balken, ohne Mastery
-umzuschreiben.
-Ein mit Maus, Tastatur und Touch erreichbarer Tooltip erläutert Zielanzahlen,
-gewichteten Fortschritt und den Bezug der impliziten Erledigung.
+Eine stabile Prüfungsziel-ID braucht eine stabile Anerkennungsbedeutung.
+Wechselnde Aufgabenvarianten müssen denselben qualifizierten Vertrag erfüllen.
+Neue fachliche Anerkennungsansprüche dürfen alte Prüfungs-Mastery nicht
+stillschweigend aufwerten. Sie brauchen eine neue Assessmentidentität oder
+eine ausdrücklich geprüfte Migration der vorhandenen Bedeutung. Dafür wird
+kein zusätzlicher Qualifikationsdatensatz pro Lernendem eingeführt.
+Ist die historische Nachweisbedeutung ungeklärt, bleibt der ausdrückliche
+Erfolg erhalten; die zusätzliche höhere Anwendung wird nicht erfunden.
+Berechtigte Ergebnis- oder Inhaltskorrekturen sind von einem bloßen späteren
+Verbraucher- oder Planwechsel zu unterscheiden.
 
-Für die feste, eindeutige Planbasis $G$ gilt standardmäßig
-\begin{equation}
- I_{\mathrm{plan}}=|G\cap(M\cup I_H)|.
-\end{equation}
-Die automatische Bedarfsrechnung verwendet das vollständige Personal Curriculum;
-erst anschließend wird mit der Planmenge $G$ geschnitten. Ein datierter Plan
-ist keine eigene abgeschlossene Prüfungswelt: Ein reiner Vorbereitungsplan
-darf nicht schon deshalb fertig sein, weil seine Prüfung außerhalb von $G$
-liegt. Auch echte fachübergreifende Anforderungen bleiben Bedarf, während
-Quoten und Fachbilanzen getrennt bleiben. Eine kleine Abschnittsauswertung
-ändert die Plananrechnung nicht.
-Die Cockpit-Einstellung „Nur explizit erreichte Lernziele zählen“ ist
-standardmäßig aus; bei Auswahl zählt nur $|G\cap M|$.
-Diese ausschließlich planbezogene Option verändert weder Baumbalken noch Schilde.
-Planbasis, Termine und Sollmengen ändern sich dadurch nicht. Der Periodenwert
-$H$ zählt weiterhin ausschließlich tatsächliche, zeitlich belegte Abschlüsse;
-aktuelle implizite Erledigung erzeugt keine historischen Lernerfolgsereignisse.
+\subsection{Geschützte Ziele und vollständiger Abschluss}
+Der lokale Umfang ist abgeschlossen, wenn
+\[
+ \Complete(L)\iff T_L\subseteq M_{\mathrm{eff}}.
+\]
+Da alle geschützten Ziele ausschließlich ausdrücklich bestehen, folgt
+$P_L\subseteq M$. Unter einem gültigen vollständigen lokalen Vertrag
+ist umgekehrt $P_L\subseteq M$ hinreichend: Dann ist $N_L=\varnothing$
+und jedes gewöhnliche Ziel gehört entweder zu $M$ oder $I_L$.
 
-„Prüfungsabkürzungen anbieten“ steuert direkte Einstiege. Die Einstellung
-verändert weder Mastery noch den berechneten Bedarf oder gültige Plananrechnung.
+Ein offenes unabhängiges Memorierziel verhindert den ganzen Levelabschluss,
+blockiert aber nicht die Ableitung einer anderen gewöhnlichen Kompetenz,
+solange es diese nicht transitiv benötigt. Ein offenes Memorierziel mit
+$k\to^* a$ hält dagegen A im lokalen Bedarf. Auch mehrere Prüfungen mit
+gemeinsamer Grundlage müssen in diesem lokalen Vertrag sämtlich aus dem
+Bedarf an der Grundlage herausgefallen sein.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{assets/graph-definition/10-protected-support.png}
+\caption{Q ist ausdrücklich bestanden und trägt die Anwendung A.
+Das unabhängige Memorierziel K bleibt offen und blockiert den ganzen
+Levelabschluss. Unterstützung H außerhalb des Zielumfangs wird nicht anerkannt.}
+\label{fig:protected}\end{figure}
+
+Jede passende Abschlussprüfung bleibt bewusst direkt wählbar, auch ohne
+vorherige Vorbereitungsmastery. Aufgabenverfügbarkeit, Authentifizierung,
+Sitzungszuordnung und ausdrückliche Auswahl bleiben erforderlich. Der neue
+Abschlussvertrag führt keine pauschalen Zugangssperren zwischen Leveln ein.
+Der normale Lernzugang verwendet $M_{\mathrm{eff}}$ und die transitive
+effektive Relation; die eigenständige Normal-/Strict-Fokusregel bleibt erhalten.
+
+\subsection{Gesamt-IST und datierte Periodenereignisse}
+Für eine fest benannte Plan-Zielmenge $T_{\mathrm{Plan}}$ zählt
+\[
+ H_{\mathrm{gesamt}}=|T_{\mathrm{Plan}}\cap M_{\mathrm{eff}}|.
+\]
+Die Vereinigung vor dem Schnitt verhindert Doppelzählung von expliziten und
+impliziten Beiträgen sowie überlappenden Verträgen. Eine gesonderte Ansicht
+nur ausdrücklicher Ergebnisse muss ihren abweichenden Zähler ausweisen.
+
+Eine laufende Periode zählt dagegen ausschließlich tatsächlich datierte
+explizite Abschlussereignisse nach ihrem Ereignisvertrag. Eine neu abgeleitete
+Anwendung, mitgebrachte Vorarbeit oder nachträglich erweiterte Plananzeige
+ist kein zusätzlicher tatsächlicher Abschluss in dieser Periode.
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{assets/graph-definition/11-plan-period.png}
+\caption{Gesamtstand und Periodenleistung haben verschiedene Zähler.
+Die drei impliziten Beiträge erhöhen den Gesamt-IST, erzeugen aber keine
+datierten expliziten Abschlussereignisse in der laufenden Periode.}
+\label{fig:period}\end{figure}
+
 Der \srcref{docs/concept/didactic/unified-learning-plan-status.md}{gemeinsame
-Lernplanstatusvertrag} gilt für Cockpit und Coach gleichermaßen.
-
-Statische Kompilierungen werden begrenzt nach Curriculumgeneration,
-Projektion, Zielumfang und Semantikrevision zwischengespeichert. Mastery und
-implizite Ergebnisse sind keine zweite Wahrheitsquelle. Nach Ergebnis- oder
-Umfangsänderungen wird neu gerechnet; alte implizite Mengen werden niemals
-zu Mastery-Eingaben. Ungültige Daten bleiben als Einschränkung sichtbar.
-Automatische Tests prüfen diese Verträge, ersetzen aber weder Aufgabenqualität
-noch menschliche Erprobung oder nachgewiesene Lernwirksamkeit.
+Lernplanstatusvertrag} beschreibt die Oberflächen. Statische Vertragsdaten
+können nach Revision zwischengespeichert werden; abgeleitete Ergebnisse sind
+keine zweite gespeicherte Wahrheit. Ungültige oder ungeklärte Verträge bleiben
+als Einschränkung erkennbar. Maschinenprüfungen der Formeln ersetzen weder
+unabhängiges Inhaltsreview noch menschliche Erprobung oder Lernwirksamkeit.

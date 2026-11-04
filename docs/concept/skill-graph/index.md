@@ -8,17 +8,18 @@ learning stages. This section explains both the graph and the contracts around i
 
 - [Die Graph-Definition von SkillPilot (PDF)](skillpilot-graph-definition.pdf):
   German technical compendium with the mathematics, diagrams, contextual
-  contracts, optional planning profiles and proposed assessment completion.
+  contracts, optional planning profiles and the corrected application-based recognition concept (implementation pending).
   [LaTeX source](skillpilot-graph-definition.tex) and
   [build manifest](skillpilot-graph-definition.build.json) accompany it.
 - [Graph Definition](graph-definition.md): formal goals, relations, prerequisites,
   frontier, and graph-validity conditions.
-- [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md):
-  direct access to final assessments and implicit completion of ordinary work
-  derived from existing mastery in the chosen scope.
+- [Assessment-Gated Completion and Global Mastery](assessment-gated-completion.md):
+  direct assessment access, transitive minimality and globally effective
+  recognition through independent application in valid local levels.
+  [Decision of 4 November 2026](completion-semantics-clarification-2026-11-04.md).
   [Umsetzungsplan](../../dev/assessment-gated-completion-implementation-plan.md):
-  implementation design for the backend, Cockpit and learning coach, including
-  performance, consistency and staged acceptance.
+  historical implementation design, superseded by the 4 November concept.
+  Replanning and review of reusable PR work follow concept reconciliation.
 - [Curriculum Levels](curriculum-levels.md): ordered learning stages with
   prerequisite-consistent targets and a feasible workload, including school
   years across subjects and the knowledge-building metaphor.
@@ -67,5 +68,5 @@ are in `latex/`; the existing graph illustrations remain under
 `assets/graph-definition/`.
 
 The [mathematical reference check](latex/check-assessment-model.py) exercises
-the proposed fixed point and its boundary cases. It does not implement the
+full transitive prerequisite demand, local recognition and their boundary cases. It does not implement the
 runtime feature or establish assessment quality or learner benefit.

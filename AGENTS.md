@@ -348,12 +348,13 @@ Interpretation rules:
   and persists the published option only after learner acceptance. With
   multiple focus roots, widening replaces only the covered branch and the
   option's complete ordered `goalIds` payload retains every independent root
-- `requires` is strictly directional for mastery: mastery of a dependent goal
-  never creates mastery of its prerequisites. Under the 31 October 2026
-  completion decision it ends that goal's outgoing preparation demand;
-  unneeded non-assessment goals become implicitly completed without changing
-  their mastery. Required-work recommendations and voluntary availability
-  must be kept separate after focus widening as well
+- `requires` alone never writes prerequisite mastery. Under the 4 November
+  2026 correction, independent application in valid local assessment contracts
+  derives globally effective mastery of ordinary prerequisites. Required-work
+  recommendations and ordinary prerequisite checks use that effective result;
+  focus widening must not reopen a recognized goal. Voluntary repetition remains
+  available. Transitive minimality is mandatory; a mastered intermediate goal
+  alone must not hide an open local assessment's transitive demand.
 - learner-facing default trees for resolved scopes should preferably be compiled from reviewed composition views early enough that validation can run before UI rendering
 - composition views should reference canonical subtree roots and should not inline authored atomic goals
 - composition-view references may explicitly use `projectionRole: "target"` or `projectionRole: "prerequisiteOnly"`; an omitted role means `target`
@@ -469,34 +470,57 @@ Semantics (the “meaning”) of those fields is:
 
 ## 4. Mastery model
 
-Mastery is the sole persisted learner-result state per learning goal. An
-assessment goal uses the same authoritative mastered/not-mastered decision as
-other goals; existing mastery must not need a second profile-specific pass,
-qualification record, or evidence-acceptance decision. Assessment-gated
-completion is a derived calculation over the graph and that mastery state.
-The 31 October 2026 decision replaces manually maintained waiver profiles: any
-mastered goal ends its outgoing prerequisite demand; any non-assessment goal
-with no remaining unfinished consumer becomes implicitly complete and ends
-its own demand. Every assessment remains required until mastered and is directly
-selectable. Ordinary terminal goals, orientation and cards are not extra
-protected categories. A valid finite scope without assessments is entirely
-explicitly or implicitly completed. Use direct atomic/inherited requirements;
-mastery stops demand traversal, so static transitive closure is incorrect. Work no longer required for a particular
-completion scope is calculated, never stored as a second goal result or written
-back as mastery. Assessment quality belongs to task/rubric authoring and the
-normal grading workflow. See
-`docs/concept/skill-graph/assessment-gated-completion.md`.
+The **4 November 2026 Product Owner decision** supersedes the 31 October
+preparation-discharge model. Transitive minimality remains mandatory. Direct
+ordinary mastery establishes understanding; implicit mastery establishes the
+competence through independent application in its relevant passed assessments.
+Both mean completed globally: effective mastery satisfies later prerequisites
+and counts toward total progress. Later consumers, focus changes and a different
+Personal Curriculum do not withdraw a valid recognition.
 
-The binding model has **one binary outcome per atomic goal**:
+Store only the existing binary result per atomic goal: `mastery[goalId] ∈ {0,1}`.
+Here `0` means no explicit completion; a goal may nevertheless be effectively
+mastered through derived recognition. Let M be explicit mastery and I the
+recognition derived from fixed authoritative level contracts; use M_eff = M ∪ I
+for competence, ordinary prerequisites and total progress. This is not a second
+stored outcome, partial mastery, a higher numeric tier or a separate pass.
+Assessment and memory goals themselves are never implicit: use their normal
+binary grading or verified-recall results.
 
-- `mastery[goalId] ∈ {0, 1}`
-  - `0` = not mastered; this does not distinguish not attempted from not passed,
-  - `1` = mastered under the goal's completion contract.
+Recognition considers every transitive consumer within the authoritative
+acquisition level. Traverse full effective prerequisite paths through mastered
+intermediate goals. In Q → B → A, ordinary B alone mastered does not discharge
+A while the local exam Q is open. Once all relevant local assessment/card
+obligations are met, A and B can be recognized and remain completed for later
+levels. A level can finish without waiting for later levels' exams. A temporary
+focus is not a recognition level. Uncovered ordinary endpoints are authoring
+faults, never zero-work recognition; a failed structural calculation gives no
+new implicit credit. Required card targets remain explicit independently.
 
-There is no partial mastery, confidence tier, or additional persisted pass
-status. A percentage describes progress over a set of goals: the weighted
-share of unique atomic goals that are mastered. Cluster progress is derived;
-it is not a separate learner result and must not create child mastery.
+The normal tasks and rubrics MUST require independent application of every
+competence recognized by the relevant assessment set. A missing essential
+competence must not be compensated by unrelated points while it is recognized.
+Independent review tests whether passing without a claimed competence is
+possible. A requires path supplies structure, not proof of task quality.
+No extra runtime qualifying evidence, manually curated waiver list, second
+per-part result or mastery backfill is permitted. Unreviewed legacy tasks do
+not automatically satisfy this stronger authoring contract.
+
+Keep recognition semantics stable for each assessment identity and retain the
+authoritative authorship context needed to reconstruct it outside today's
+selected plan. New graph edges or a broader new level must not grant additional
+competencies to old exam results. Equivalent task forms preserve that contract;
+a different recognition claim requires a distinct assessment identity or an
+explicitly reviewed migration. Do not invent a learner qualification registry.
+
+See `docs/concept/skill-graph/assessment-gated-completion.md` and the decision
+record `docs/concept/skill-graph/completion-semantics-clarification-2026-11-04.md`.
+This is the corrected concept, not a claim that current main implements it.
+Replan implementation only after concept reconciliation; review old PR work
+for reuse afterwards. Do not continue the old PR's runtime/curriculum rollout.
+
+Cluster progress aggregates effective mastery of unique atomic descendants;
+no cluster or level completion writes mastery to its children.
 
 For goals authoritatively classified as `semanticKind: "orientation"`, this
 numeric field is only a compatibility completion marker: `1` means that the
@@ -1302,37 +1326,24 @@ unevaluable. The binding calculation, data and presentation contract is
 `docs/concept/didactic/unified-learning-plan-status.md`; the former daily-quota
 contract is superseded.
 
-The Product Owner's **31 October 2026** plan-accounting decision extends that
-contract: first derive implicit completion W_PC from the complete Personal
-Curriculum and its full prerequisite context, including genuine cross-subject
-demand. Then count each unique goal in the fixed, subject-specific plan baseline
-G once: `I = |G ∩ (M ∪ W_PC)|`. G is a dated selection, not a second completion
-scope; an open assessment outside G can still require a goal inside G.
-A separate Cockpit preference, “Nur explizit erreichte Lernziele zählen”,
-defaults to off and limits IST to `|G ∩ M|` when selected. The local plan service
-and Cockpit implement this preference. Preserve the fixed baseline, dates and
-actual completion events; current-period H remains based on explicit goal
-completions. Never write implicit work completion back as mastery or substitute
-a selected section's implicit set for W_PC. The chosen navigation route does
-not determine plan credit. This preference changes counting only, not exam
-access or the existing shortcut preference.
+The **4 November 2026** completion correction also governs plan accounting:
+first reconstruct global effective mastery M_eff from explicit results and
+fixed valid recognition contracts, independent of today's plan/focus selection.
+Then intersect with the fixed, subject-specific plan baseline G:
+`I = |G ∩ M_eff|`. Each goal counts once. A later open exam does not remove an
+already recognized prerequisite. Local level recognition and global effect are
+separate from the plan's date mask; never calculate recognition just inside G.
 
-The same day's binding completion decision removes manual profile grants and
-assessment-only waiver anchors. Any mastered goal ends its own preparation
-demand; non-assessment goals with no unfinished consumer become implicitly
-complete. Final assessments remain required and directly selectable. Derive
-this by traversing direct requirements from open assessments and stopping at
-every mastered node. Do not carry transitive demand through mastered nodes.
-The default scope is the complete Personal Curriculum. Automatic plan credit
-also evaluates that complete curriculum first, then intersects with the fixed
-plan baseline: a dated plan is not an independent assessment scope. Genuine
-cross-subject demands remain; quotas still balance separately by subject.
-Explicit structural section selection can show its own completion view but
-never silently redefines plan credit.
-Temporary focus only ranks suggestions. Existing exam/assessment classification
-supplies the endpoints; do not infer them from titles or coverage lists.
-No implicit result creates mastery or card recall. Historical manual pilot
-artifacts remain evidence, not prerequisites for current graph completion.
+The Cockpit preference “Nur explizit erreichte Lernziele zählen” defaults to off
+and limits plan IST to `|G ∩ M|` when selected. It changes counting only, not
+competence, prerequisite satisfaction or exam access. Daily/weekly fulfillment
+H remains based exclusively on genuine dated explicit completion events in
+both modes. Implicit recognition creates neither fake events nor mastery rows.
+An explicit result later acquired for an already recognized goal cannot add a
+second goal to total IST; any period event still follows its ordinary contract.
+Missing recognition data must be reported, not interpreted as zero or restored
+from the retired preparation-discharge rules. Existing implementation evidence
+is historical and does not establish conformance to the new contract.
 
 ### 10.3 Layer C – LLM-/MCP-Integration
 

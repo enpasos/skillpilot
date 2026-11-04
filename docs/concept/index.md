@@ -24,8 +24,10 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
   Entry point for graph semantics, curriculum structure, and supporting contracts.
 - [SkillPilot Skill Graph Specification](skill-graph/graph-definition.md)
   Core graph model and formal vocabulary.
-- [Assessment-Gated Completion and Prerequisite Discharge](skill-graph/assessment-gated-completion.md)
-  Direct assessment access and implicit completion derived from the applicable scope and existing mastery.
+- [Assessment-Gated Completion and Global Mastery](skill-graph/assessment-gated-completion.md)
+  Direct assessment access and globally effective mastery through independent application in valid local level assessments.
+- [Produktentscheidung: Beherrschung durch Verständnis und selbständige Anwendung](skill-graph/completion-semantics-clarification-2026-11-04.md)
+  Verbindliche Konzeptkorrektur vom 4. November 2026; Umsetzung und Prüfung bestehender Prüfungsverträge folgen.
 - [Curriculum Levels](skill-graph/curriculum-levels.md)
   Contextual learning stages with prerequisite-consistent targets, feasible
   workload, and a connection to the knowledge-building metaphor.

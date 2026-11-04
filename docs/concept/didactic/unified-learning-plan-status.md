@@ -30,23 +30,20 @@ Vorhandene Planstrukturen, Lernzustände und Aktualisierungsmechanismen werden w
 
 Das Vorhaben schafft kein neues allgemeines Planungssystem. Es vereinheitlicht die Auswertung vorhandener Lernpläne und ersetzt verteilte Berechnungen durch einen gemeinsamen Backend-Baustein.
 
-**Verbindliche Produktentscheidung vom 31. Oktober 2026:** Das Plan-IST zählt
-standardmäßig auch im vollständigen Persönlichen Lehrplan **implizit erledigte
-Ziele**, soweit sie zur festen Planmenge gehören.
-Jedes gemeisterte Ziel beendet seinen eigenen Vorbereitungsbedarf. Jedes nicht
-mehr benötigte Nicht-Abschlussprüfungsziel ist implizit erledigt; dessen Bedarf
-entfällt ebenfalls, bis ein stabiler Zustand erreicht ist. Dafür sind weder eine
-bestandene Prüfung noch manuelle Zuordnungen zwischen Prüfung und Vorbereitung
-notwendig. Offene Abschlussprüfungen werden nicht implizit erledigt.
+**Verbindliche Produktkorrektur vom 4. November 2026:** Das Gesamt-IST zählt
+standardmäßig explizite und implizite Beherrschung. Implizit bedeutet den
+Nachweis selbständiger Anwendung durch fachlich geeignete Abschlussprüfungen;
+es bedeutet nicht bloß entfallene Vorbereitung. Ein gültiger Abschluss gilt
+auch für spätere Voraussetzungen und wird durch neue Verbraucher oder einen
+Planwechsel nicht aufgehoben. Die Anerkennung entsteht im verbindlichen
+Erwerbslevel und wirkt global. Tages- und Wochenkontingente zählen weiterhin
+nur tatsächliche explizite Abschlussereignisse.
 
-Die optionale Einstellung „Nur explizit erreichte Lernziele zählen“ schränkt
-allein die Plananrechnung ein. Die Erweiterung in Abschnitt 3.4 ist im lokalen
-Backend und Cockpit implementiert. Die abschließende Gesamtprüfung läuft;
-dieser Stand behauptet keinen entfernten CI-Erfolg, kein Deployment und keine
-Coach-Host-Abnahme. Der frühere manuelle Skalarprodukt-Pilot bleibt ein
-reproduzierbares Beispiel, ist aber keine Voraussetzung des allgemeinen Modells.
-Siehe [Abschlusskonzept](../skill-graph/assessment-gated-completion.md) und
-[Implementierungs- und Prüfhinweise](../../dev/assessment-gated-completion-pilot.md).
+Die Option „Nur explizit erreichte Lernziele zählen“ betrifft allein das
+Gesamt-IST des Plans. Der unten beschriebene korrigierte Vertrag ist noch nicht
+als vollständig implementiert oder deployed bestätigt. Die alte
+Bedarfsstopp-Implementierung und ihre Prüfergebnisse sind kein Nachweis dafür.
+Siehe [Abschlusskonzept](../skill-graph/assessment-gated-completion.md).
 
 ## 2. Fachliche Bedeutung des Status
 
@@ -87,18 +84,19 @@ Jedes Fach wird unabhängig ausgewertet. Vorarbeit in Mathematik gleicht keinen 
 Es gibt keinen fachübergreifenden Gesamtsaldo, keine Gesamtquote und keine daraus abgeleitete Gesamtampel.
 
 Diese Trennung der Zählung entfernt keine fachübergreifenden Abhängigkeiten:
-Ein offenes Ziel eines anderen Fachs im Persönlichen Lehrplan kann eine
-Vorbereitung weiterhin benötigen. Der Bedarf wird fachübergreifend geprüft,
-der anschließende IST-Beitrag nur im jeweiligen Fach gezählt.
+Eine anerkannte Kompetenz kann auch eine Voraussetzung eines anderen Fachs
+erfüllen. Ihre globale Beherrschung ändert nichts daran, dass jeder Fachplan
+nur seine eigenen Ziel-IDs zählt und jede ID innerhalb dieses Plans nur einmal
+vorkommt. Ein offener späterer Verbraucher entzieht keine bestehende Anerkennung.
 
 ## 3. Verbindliche Datengrundlage
 
 ### Gemeinsame Ergebnisquelle in der gesamten Anwendung
 
 Gespeicherte Lernzielergebnisse bleiben die einzige individuelle Ergebnisquelle.
-Die Planerfüllung wird daraus und aus dem vollständigen Bedarfsgraphen des
-Persönlichen Lehrplans abgeleitet; sie berücksichtigt standardmäßig auch implizit erledigte Ziele.
-Ein Erlass schreibt weder Mastery noch einen zweiten Zielergebniszustand.
+Die Planerfüllung wird aus expliziter Mastery und global wirksamer,
+prüfungsbasierter Anerkennung abgeleitet. Diese abgeleitete Beherrschung schreibt
+weder zusätzliche Mastery-Zeilen noch einen zweiten Zielergebniszustand.
 Cockpit, Lernzielbaum und Lehrkraftplanung dürfen dafür keinen abweichenden
 manuellen Unterrichtsstand führen. Die frühere
 Unterrichtsabdeckung samt Bestätigungs- und Attestierungsablauf ist als
@@ -109,10 +107,10 @@ Ergebnisse und verändert sie nicht.
 Die vollständige persönliche Zielmenge und die nachfolgend definierte Planmenge
 **G** sind nicht zwangsläufig identisch. Ein vor Planbeginn abgeschlossenes Ziel
 kann zur persönlichen Zielerreichung zählen, ohne in G enthalten zu sein.
-G ist eine zeitliche Auswahl, kein eigener Abschlussumfang. Für die implizite
-Plananrechnung gilt stets der vollständige Persönliche Lehrplan. Eine bewusst
-gewählte Abschnittsansicht kann einen eigenen Arbeitsentfall anzeigen, ohne
-den Planwert zu ändern; die Anzeige benennt ihren jeweiligen Bezug.
+G ist eine zeitliche Auswahl, kein eigener Anerkennungsvertrag. Die globale
+Anerkennung wird unabhängig von dieser Auswahl bestimmt; erst danach wird mit
+G geschnitten. Ein gültiger Erwerbslevel ist ebenfalls kein beliebiger
+Anzeigeausschnitt. Plan- und Fokuswechsel verändern nicht, was bereits gilt.
 Abgeschlossene Orientierungsziele werden innerhalb ihres jeweiligen Umfangs
 konsistent mitgezählt, ohne sie als fachlichen Beherrschungsnachweis auszugeben.
 Nicht verfügbare oder veraltete Ergebnisdaten werden als solche gezeigt, nicht
@@ -157,96 +155,70 @@ Bestandspläne werden unterstützt, soweit ihre Grundlage zuverlässig interpret
 
 ### 3.4 Implizite Erledigung und optionale Explizit-Zählung
 
-Für den Plan ist ein Ziel standardmäßig erfüllt, wenn es explizit erreicht
-wurde oder seine separate Bearbeitung nach den
-[Abschlussregeln](../skill-graph/assessment-gated-completion.md) im vollständigen
-Persönlichen Lehrplan nicht mehr benötigt wird. Beide Wege zählen gleich viel.
-Es entsteht keine zusätzliche Mastery und kein gespeicherter Erlass pro Lernziel.
+Seien M die explizit gemeisterten Ziele und W die nach dem
+[Abschlusskonzept](../skill-graph/assessment-gated-completion.md) global
+anerkannten, noch nicht explizit gemeisterten Ziele. Dann gilt:
 
-Für die feste, fachweise zusammengeführte Planmenge G seien M die aktuell
-explizit gemeisterten Ziele und W_PC die im vollständigen Persönlichen Lehrplan
-implizit erledigten Ziele. Dann gilt:
+$$
+M_{\mathrm{eff}}=M\cup W,\qquad I=|G\cap M_{\mathrm{eff}}|.
+$$
 
-```text
-Standard:                  I = |G ∩ (M ∪ W_PC)|
-Nur explizite Ziele zählen: I = |G ∩ M|
-```
+Mit „Nur explizit erreichte Lernziele zählen“ gilt stattdessen $I=|G\cap M|$.
+W wird aus den festen fachlichen Abschlussverträgen und vorhandenen expliziten
+Prüfungs-/Recall-Ergebnissen rekonstruiert, nicht nur aus aktuell angezeigten
+oder im Personal Curriculum gewählten Levels. Die für bestehende Ergebnisse
+maßgeblichen Autorenverträge bleiben erhalten. Ein später geänderter Graph
+darf alten Prüfungsergebnissen keine zusätzlichen Kompetenzen zuschreiben.
 
-Die Mengenvereinigung zählt jede Ziel-ID genau einmal. Wird ein bereits
-angerechnetes erlassenes Ziel später selbst gemeistert, wächst I dadurch nicht
-erneut. Cluster zählen nicht zusätzlich. Beispielsweise ergeben eine
-bestandene Prüfung und zwei dadurch im ganzen Persönlichen Lehrplan nicht
-mehr benötigte Vorbereitungsziele
-**IST = 3**; mit der optionalen Einstellung **IST = 1**, sofern alle drei in G
-liegen. Die Einzelmastery ist in beiden Fällen identisch.
+Die Prüfungen eines Levels müssen die selbständige Anwendung der anerkannten
+Kompetenzen absichern. Ein bloßes `requires` oder das Fehlen weiterer Verbraucher
+reicht nicht. Im Level wird transitiv gerechnet, auch durch gemeisterte
+Zwischenziele hindurch. Offene spätere Prüfungen anderer Levels verhindern
+weder diese Anerkennung noch ihren globalen Nutzen.
 
-**W_PC gehört zum vollständigen Persönlichen Lehrplan, nicht zur Planmenge G.**
-Die Berechnung umfasst seine vollständige Voraussetzungshülle einschließlich
-indirekter, versteckter und fachübergreifender Verbraucher. Sie verfolgt direkte
-Bedarfsbeziehungen und stoppt an jedem gemeisterten Ziel; eine transitive Kante
-darf diesen Stopp nicht umgehen. Erst das berechnete Ergebnis wird für die
-Fachbilanz mit G geschnitten. Plantermine und die Auswahl geplanter Ziele
-bestimmen keinen neuen Abschlussumfang.
+Beispiel: Q berechtigt als einzige relevante Abschlussprüfung zur Anerkennung
+von A und B. Alle drei liegen in G. Mit bestandener Q gilt **I = 3**; mit der
+Zähloption **I = 1**. Nur Q erhält einen expliziten Mastery-Eintrag. Eine spätere
+Prüfung Q2, die A benötigt, trifft auf eine bereits beherrschte Voraussetzung.
+Sie setzt I nicht zurück. Eine gewöhnliche B-Mastery allein genügt dagegen
+nicht zur Anerkennung von A, solange Q innerhalb desselben Levels offen ist.
 
-Beispiel: Im Persönlichen Lehrplan benötigt eine offene Prüfung Q die noch
-unmastered Vorbereitung A. Der aktuelle Plan enthält nur A; Q ist später oder
-noch gar nicht eingeplant. A bleibt trotzdem erforderlich und trägt **I=0**
-bei. Q aus G herauszulassen darf A nicht implizit erledigen. Das gilt ebenso
-für einen echten Verbraucher in einem anderen Fach. Eine Vereinigung kleiner
-Abschnittserlasse oder getrennte Auswertung nur der Fachpläne wäre falsch.
+Ein gewöhnliches Ziel ohne gültige Prüfungsanbindung ist ein Modellierungsfehler,
+kein automatischer Fortschritt. Prüfungs- und Lernkartenziele bleiben selbst
+explizite Pflichten. Fehlende oder nicht auflösbare Anerkennungsdaten werden
+als Einschränkung angezeigt; es gibt keinen Rückfall auf die alte Erlassrechnung.
 
-Ein Nicht-Abschlussprüfungsziel ohne verbleibenden Verbraucher ist auch ohne
-bestandene Prüfung implizit erledigt. Enthält der vollständige Persönliche
-Lehrplan samt Voraussetzungshülle keine Abschlussprüfung, entfällt dort jede
-noch nicht explizit erledigte Arbeit. Ein bloß prüfungsfreier Plan genügt dafür
-nicht. Nicht geplante Ziele erhöhen I nicht; sie können den Bedarf aber weiterhin
-bestimmen. Eine bewusst gewählte Abschnittsansicht zeigt W_section, ersetzt
-für die Planrechnung jedoch niemals W_PC.
+Jede ID zählt in G höchstens einmal, auch wenn sie sowohl explizit als auch
+über Anwendung belegt ist. Ziele außerhalb G erhöhen I nicht. Ein späterer
+expliziter Abschluss eines bereits anerkannten Ziels erhöht den Gesamtzähler
+nicht erneut. Der rohe Saldo I−S und seine bisherige Interpretation als
+Rückstand/Vorsprung bleiben erhalten. Die offene Periodenquote darf größer
+als der verbleibende Gesamtrückstand sein.
 
-Die Berechnung hängt nicht davon ab, welcher Baumzweig sichtbar ist, welcher
-Fokus gewählt wurde oder welche Abschlussroute gerade aktiv ist. Auch das
-Verlassen einer Route entfernt keine weiter gültige Plananrechnung. Geänderte
-Mastery, Graph oder Persönlicher Lehrplan führen dagegen zu einer frischen
-Bedarfsberechnung. Planänderungen passen den anschließenden Schnitt mit G an.
-Ein fachlich nicht mehr tragender Erlass zählt nicht weiter.
-Fehlende Berechnungsdaten werden als Einschränkung angezeigt, nicht still als
-null implizit erreichte Ziele behandelt.
-
-Unter **Konfiguration → Lerneinstellungen** steht die dauerhaft pro
+Unter **Konfiguration → Lerneinstellungen** bleibt die dauerhaft pro
 SkillPilot-ID gespeicherte Option **„Nur explizit erreichte Lernziele zählen“**.
-Sie steht neben der Wahl des Planzeitraums und ist standardmäßig **aus**, auch
-bei bestehenden IDs ohne ausdrückliche Auswahl. Erst Speichern wirkt; Abbrechen
-verwirft die Änderung. Hilfetext: „Für deinen Lernplan zählen normalerweise auch
-implizit erledigte Ziele, die dort nicht mehr eigens bearbeitet werden müssen.
-Mit dieser Einstellung zählen nur die direkt abgeschlossenen Ziele.“ Diese
-Zählpräferenz gilt gemeinsam für
-Cockpit, Coach und lernendenbezogene Planung. Sie ist getrennt von der
-Einstellung „Prüfungsabkürzungen anbieten“: Sie startet oder beendet keine
-Prüfung und ändert keine Zugangsberechtigung. Das Abschalten von neuen
-Abkürzungsstarts allein nimmt bereits fachlich gültige Plananrechnung nicht
-zurück. Bei einer fachlichen Rücknahme einer Regel wird hingegen neu bewertet.
+Sie ist standardmäßig aus. Hilfetext des korrigierten Konzepts:
+„Für deinen Gesamtplan zählen auch Kompetenzen, deren selbständige Anwendung
+in Prüfungen nachgewiesen wurde. Mit dieser Einstellung zählen nur direkt
+abgeschlossene Lernziele. Dein Tages- oder Wochenpensum zählt immer nur direkte
+Abschlüsse.“ Die Option wirkt in Cockpit, Coach und Planung gleich; sie ändert
+weder Voraussetzungen noch Lernstand, Prüfungsergebnisse oder Prüfungszugang.
 
-Ein Wechsel der Zählpräferenz berechnet den aktuellen Status neu, verändert
-aber weder G, Solltermine, S oder P noch Abschlussereignisse oder H. Auch eine
-bereits vor Planerstellung wirksame implizite Erledigung zählt, sofern das Ziel
-in G liegt, als vorhandene Planerfüllung und erzeugt keinen neuen Periodenabschluss.
-Die vorhandenen **Plandetails** zeigen den vom Backend gelieferten Text einmal
-je zusammengeführtem Fach, beispielsweise „Im Plan angerechnet: 3 Ziele, davon
-2 implizit erledigt.“ Er erscheint nur bei auswertbarer inklusiver
-Anrechnung mit mindestens einem noch nicht explizit gemeisterten,
-implizit angerechneten Planziel. Ohne solchen Beitrag oder bei der
-Einstellung „nur explizit“ entfällt er. Die kompakte Statuszeile bleibt
-unverändert; globale Mastery-Zähler zählen weiterhin ausschließlich explizite
-Ergebnisse.
+Die Plandetails können erklären: „Im Plan angerechnet: 3 Ziele, davon 2 durch
+selbständige Anwendung in Prüfungen.“ Kompakte Symbole/Farben dürfen den
+Nachweisweg unterscheiden; beide Gruppen sind erledigt. Ein ausdrücklich
+„direkt abgeschlossen“ benannter Zähler zählt nur M; allgemeiner Lernstand und
+Gesamtfortschritt verwenden M_eff, jeweils im bezeichneten Zielumfang.
 
-Der vorhandene Pilot umfasst eine Prüfung und ein Vorbereitungsziel. Werden
-beide vor dem Bestehen in G aufgenommen und benötigt kein weiterer offener
-Verbraucher im vollständigen Persönlichen Lehrplan die Vorbereitung, ergibt
-der erfolgreiche Versuch **I = 2**,
-mit „nur explizit“ **I = 1**. In beiden Fällen bleibt über diese beiden Ziele
-genau eine Mastery gespeichert. Der
-[manuelle Prüfpfad](../../dev/assessment-gated-completion-pilot.md#plananrechnung-und-zahloption-am-pilot-prufen)
-beschreibt Einrichtung, Umschalten und Reload.
+**Periodenkontingent H bleibt explizit.** Die Ableitung von W erzeugt kein
+zusätzliches Abschlussereignis und kein künstliches Abschlussdatum. Ein
+Planwechsel, Import oder erneutes Anzeigen erzeugt ebenfalls keine neuen
+Periodeneinheiten. Die datierten expliziten Ereignisse werden nach dem
+bestehenden Periodenvertrag gezählt. Die Anerkennung wirkt auf Gesamt-IST,
+Gesamtsaldo und bereits erfüllte Voraussetzungen.
+
+Diese Konzeptkorrektur ist keine Implementierungsfreigabe des bisherigen
+Umsetzungsplans und kein Nachweis für einen entsprechend korrigierten Runtime.
 
 ## 4. Tages- und Wochenbasis
 

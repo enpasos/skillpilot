@@ -31,6 +31,12 @@ When importing into a target profile:
   outcome; untouched topics remain as-is. Numeric legacy payloads are a
   compatibility concern, not a second outcome or a partial-mastery model.
   Imports add no separate assessment qualification or stored waiver state.
+  Under the corrected 4 November concept, effective mastery is reconstructed
+  from these explicit results and their fixed authoritative recognition
+  semantics. A different imported plan must not withdraw valid recognition;
+  new current graph edges must not enlarge what an old result establishes.
+  Retaining/resolving that authoring context is an implementation requirement,
+  not a claim that the current archive already supports the new model.
 - **Planned goals**: the planned goal list is replaced by the imported list.
 
 The current numeric storage/API discrepancies are listed in

@@ -137,14 +137,19 @@ Learning proceeds along the **frontier**: the set of sensible next goals.
   - the goal's direct `requires`
   - inherited `requires` from ancestor clusters via `contains`
 
-`requires` is directional. If A is required by B, mastery of B does not imply
-mastery of A. An unmastered A remains in normal frontier evaluation and appears
-once A's own effective prerequisites are satisfied. Focus widening never
-creates backward mastery or removes such targets from expected progress.
+**Corrected concept, 4 November 2026; runtime adaptation pending:** `requires`
+alone never writes prerequisite mastery. A valid application-assessment
+contract derives effective mastery M_eff = M ∪ I of ordinary prerequisites.
+Those recognized goals satisfy subsequent requirements and are not reopened by
+focus widening or later assessments. Ordinary B mastered in Q → B → A does
+not by itself recognize A while the relevant local Q remains open. The
+[completion contract](../skill-graph/assessment-gated-completion.md) defines the
+transitive calculation and the normal frontier on M_eff; no graph path alone
+proves task quality.
 
 SkillPilot supports two evaluation modes for filtered learning:
 
-- **Optimistic mode:** apply the filter first and check prerequisites only inside the filtered graph.
+- **Optimistic mode:** the corrected concept restricts applicable checks to the focus, but computes effective transitive reachability before masking targets; hidden intermediate nodes must not erase paths.
   - This lets learners start directly in the selected scope without being blocked by out-of-filter gaps.
 - **Strict mode:** candidates are still chosen from the filtered graph, but prerequisites are enforced globally.
   - This exposes missing foundations outside the current filter.
@@ -164,8 +169,11 @@ estimate or separate assessment qualification is not another goal state.
   the binary outcome; an intermediate value such as `0.5` is not a third outcome.
 - Mastery remains global when the Personal Curriculum, composition view, focus,
   or active goal changes.
+- In the corrected concept, global effective mastery includes recognition by
+  independent application without changing those stored binary entries.
+  Assessment and memory targets themselves require their explicit outcome.
 - Progress over a cluster or other selected scope is the weighted share of
-  mastered atomic goals in that scope, counting each atomic goal once. A 60%
+  effectively mastered atomic goals in that scope, counting each atomic goal once. A 60%
   progress display can mean six of ten equally weighted goals are mastered;
   it does not mean that one goal is 60% mastered. A cluster has no separately
   stored individual outcome.

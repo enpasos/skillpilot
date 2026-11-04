@@ -278,10 +278,39 @@ Follow the existing pattern: `field` (local language) and `fieldEn` (English). T
 
 ### Requires semantics
 
-- **Access control (current runtime):** `requires` is used to gate exam tasks until prerequisites are met.
+- **Direct assessment access:** the corrected concept permits an intentional
+  assessment attempt without first completing its preparation. Authentication,
+  session ownership and the ordinary assessment workflow remain required.
 - **Remediation:** If the user fails, `requires` drives targeted review suggestions.
 
-> **Proposed extension, not live:** [Assessment-Gated Completion and Prerequisite Discharge](assessment-gated-completion.md) specifies direct attempts at required level assessments and work waivers calculated from existing mastery and reviewed static rules. A passed assessment counts immediately through its mastery; there is no additional qualification record or profile-specific acceptance test. The proposal leaves this grading contract intact; its direct-access route and derived completion calculation require a separate runtime implementation.
+> **Corrected concept, 4 November 2026; implementation adaptation pending:**
+> [Assessment-gated completion](assessment-gated-completion.md) recognizes
+> independent application of ordinary competencies through valid local
+> assessment contracts. Effective mastery satisfies subsequent prerequisites
+> globally. This is not a work waiver. Exams and memory goals themselves stay
+> explicit; there is no extra pass qualification, per-competence learner result
+> or mastery backfill.
+
+### Authoring assessments that support recognition
+
+The normal tasks and rubrics must jointly require independent application of
+every competence recognized by their relevant passed assessment set. A
+`requires` path establishes prerequisite structure, not empirical coverage.
+Naming a competence or supplying the decisive steps is not independent application.
+
+Independent review must attempt passing answers that omit each essential
+recognized competence. If an omission can be compensated by unrelated points
+and still pass, correct the task, normal grading rule or level contract before
+it supports recognition. Different tasks may jointly cover a contract; duplicate
+examination of every competence in every task is not required. These checks
+qualify the authored task and its normal single outcome, not a learner's valid
+pass through a second procedure.
+
+The stable assessment identity must retain its recognition meaning across
+equivalent task variants. Broader later graph/level definitions cannot expand
+what an old pass establishes. Legacy tasks need review against this stronger
+requirement; the illustrative points object above supplies no such recognition
+guarantee by itself.
 
 ### Scoring and mastery
 

@@ -220,7 +220,7 @@ seine Lehrplanabdeckung.
 
 Ein Fokus besteht aus der Vereinigung der gewählten Wurzeln und ihrer
 sichtbaren Nachkommen, eingeschränkt auf das Personal Curriculum.
-Im Normalmodus werden die effektiven Voraussetzungen innerhalb dieses
+Im Normalmodus werden die transitiven effektiven Voraussetzungen innerhalb dieses
 Fokus geprüft; der explizite strenge Modus prüft global. Eine außerhalb
 liegende Voraussetzung wird im Normalmodus weder zum Hindernis noch
 dadurch gemeistert. Die formalen Unterschiede der Frontier-Berechnung
@@ -238,9 +238,9 @@ des aktuellen Fokus vorgeschlagen. Eine leere Frontier kann auch einen
 blockierten, unvollständigen Fokus bedeuten. Sie beweist keinen
 Abschluss. Nach der Ausweitung werden neu enthaltene, unbeherrschte
 Voraussetzungen regulär geprüft: Die Beherrschung eines abhängigen Ziels
-überträgt keine Mastery rückwärts. Ihre Erforderlichkeit wird aus dem
-vollständigen Bedarfskontext neu berechnet; rein implizit erledigte
-Erweiterungen begründen keinen neuen Pflichtvorschlag.
+überträgt keine Mastery rückwärts. Eine aus einem gültigen lokalen Vertrag bereits abgeleitete Anwendung
+bleibt dagegen global effektiv beherrscht. Spätere Verbraucher und neue
+Plan- oder Fokusauswahlen öffnen diese Kompetenz nicht erneut.
 
 \paragraph{Quellen.}
 \srcref{docs/concept/levels-of-personalization.md}{Personalisierungsstufen};
@@ -257,7 +257,8 @@ gehören zum jeweiligen Ergebnisvertrag.
 
 Das Ergebnis jedes Lernziels bleibt binär: geschafft oder noch nicht
 geschafft. Der Zieltyp bestimmt, wann es als geschafft gilt.
-Bei einem Inhaltsziel ist dies die fachlich festgestellte Beherrschung;
+Bei einem Inhaltsziel ist dies ausdrücklich festgestelltes Verstehen;
+eine gültige Prüfungsableitung belegt darüber hinaus selbstständige Anwendung.
 bei Orientierung der abgeschlossene motivierende Einstieg, kein
 fachliches Zertifikat. Bei Memorierung wird das eine Zielergebnis aus
 den Kartendaten abgeleitet. Unterschiede der Abschlussbedingungen
@@ -388,13 +389,12 @@ Die Punktevergabe folgt den einzelnen Rastervorgaben. Die
 Gesamtsummenformel allein legitimiert keine frei erfundenen
 Punkte, negativen Bewertungen oder Änderungen des Aufgabeninhalts.
 
-Der normale Lernzugang prüft direkte effektive Voraussetzungen einschließlich
+Der normale Lernzugang prüft transitive effektive Voraussetzungen einschließlich
 der atomaren Erfüllung erforderlicher Cluster. Für Prüfungen gilt zusätzlich
 der allgemeine direkte Zugang: Fehlende Vorbereitungsmastery sperrt einen
 bewusst gewählten Prüfungsversuch nicht. Aufgabenverfügbarkeit, persönlicher
-Geltungsbereich und autorisierte Sitzung bleiben erforderlich. Dieser Zugang
-ist lokal implementiert; tatsächliches Deployment und Coach-Abnahme sind
-getrennt nachzuweisen.
+Geltungsbereich und autorisierte Sitzung bleiben erforderlich. Der bestehende direkte Prüfungszugang ist von der neuen, noch
+nicht implementierten Ableitung globaler impliziter Beherrschung zu trennen.
 
 Im Prüfungsmodus erhält die Person die vollständige, unveränderte Aufgabe
 und bearbeitet sie ohne inhaltliche Hilfen. Ihre vollständige Einreichung
@@ -407,10 +407,11 @@ Nach der Bewertung erhält die Person Ergebnis, Punkte, Begründung und
 Lösung; neues Material beginnt nach ihrer weiteren Entscheidung. Die
 unbegrenzte Wiederholung derselben Aufgabe bleibt möglich. Bekannte Lösungen
 können die Aussagekraft eines Versuchs verringern, erzeugen aber keine zweite
-Anerkennungsstufe: Vorhandene Prüfungs-Mastery zählt unmittelbar in der
-allgemeinen Abschlussberechnung. Entfallende Arbeit wird aus dem vollständigen
-Bedarfsgraphen und der Mastery aller Zielarten abgeleitet, nicht ausschließlich
-aus bestandenen Prüfungen.
+Anerkennungsstufe: Vorhandene Prüfungs-Mastery bleibt ein ausdrücklicher Erfolg dieses
+Prüfungsziels. Weitergehende Anwendungsbeherrschung setzt den gültigen
+fachlich geprüften lokalen Vertrag voraus; ein alter ungeprüfter
+Punkteschlüssel genügt dafür nicht automatisch. Es gibt keine zusätzliche
+pro Lernendem zu speichernde Qualifikationsart oder zweite Teilprüfung.
 
 \paragraph{Quellen.}
 \srcref{docs/concept/skill-graph/node-types.md}{Zieltypen und Prüfungsablauf};
@@ -443,8 +444,8 @@ Budgetprüfung und ihre Anforderungen an kalibrierte
 Aufwandsschätzungen folgen in Abschnitt~\ref{sec:levels}.
 
 Plan-Soll und tatsächliche Zielerreichung verwenden denselben
-benannten Umfang. Gespeicherte Lernergebnisse sind die Quelle
-der Zielerreichung; eine zusätzliche manuelle
+benannten Umfang. Ausdrückliche Ergebnisse und gültig abgeleitete Anwendungsbeherrschung
+bilden gemeinsam den globalen IST; eine zusätzliche manuelle
 Unterrichtsabdeckung begründet oder verbirgt keinen Abschluss.
 Fehlende Ergebnisse bleiben als nicht verfügbar erkennbar.
 Neue Planrevisionen dürfen historische Ziele, Ergebnisse und

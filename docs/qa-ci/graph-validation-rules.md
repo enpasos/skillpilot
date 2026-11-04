@@ -1,5 +1,16 @@
 This is the single source of truth for algorithmic graph validation in CI.
 
+**Concept correction, 4 November 2026:** transitive minimality remains a
+mandatory [graph requirement](../concept/skill-graph/graph-definition.md#73-transitive-minimality).
+The corrected [recognition model](../concept/skill-graph/assessment-gated-completion.md)
+also requires complete local assessment routes, protected explicit exam/card
+targets and stable level contracts. These are requirements for the forthcoming
+validator adaptation; the existing emitted-rule table below does not establish
+that they are already fully checked. No existing CI result proves that a task
+requires every competence's independent application; that remains a distinct
+content/rubric review obligation. The old preparation-discharge tests do not
+prove the corrected model.
+
 - Validator implementation: `app/scripts/validateGraph.ts`
 - CI entrypoint: `npm run validate:graph` in `.github/workflows/ci.yml` (`graph-validation` job)
 - Filter-projection validator: `app/scripts/validateViewFilters.ts`

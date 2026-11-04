@@ -1,5 +1,16 @@
 # Umsetzungsplan: Assessment-gated Completion
 
+> **Überholt als Umsetzungsauftrag – 4. November 2026.** Die nachfolgenden
+> Beschreibungen halten den bisherigen Implementierungs-/Prüfstand fest.
+> Aussagen über Bedarfsstopp an Mastery, implizite Karten, bloßen Arbeitsentfall
+> und globale Verbraucherblockierung gelten nicht für das korrigierte Konzept.
+> Verbindlich sind [die neue Abschlusssemantik](../concept/skill-graph/assessment-gated-completion.md)
+> und [die Produktentscheidung](../concept/skill-graph/completion-semantics-clarification-2026-11-04.md).
+> Zuerst werden die Konzepte konsolidiert, anschließend wird die Umsetzung neu
+> geplant; erst danach werden wiederverwendbare Teile des alten PR geprüft.
+> Dieser Text darf nicht als Freigabe zur Fortsetzung des alten Rollouts dienen.
+
+
 Stand: 31. Oktober 2026. Dieser Plan beschreibt den **aktuellen lokalen
 Implementierungsstand** nach der verbindlichen Produktkorrektur: allgemeine
 Bedarfsberechnung aus Graph und Mastery statt manueller Erlassprofile.

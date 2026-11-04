@@ -520,7 +520,14 @@ Progress for:
 - modules
 - competency axes
 
-should be aggregated from goal mastery through placements and references.
+should be aggregated from effective goal mastery through placements and references.
+The 4 November 2026 [completion contract](assessment-gated-completion.md)
+combines explicit binary results with global recognition through independent
+application. This is a derived result over fixed authoring contracts, not stored
+mastery on a programme, level or cluster. Later use and scope changes do not
+reopen recognized competencies. Authoritative acquisition-level boundaries are
+needed for recognition; they are not arbitrary display cuts or per-exam waiver
+lists. Their concrete schema and migration belong to later implementation planning.
 
 This keeps the state model simple and avoids duplicated mastery semantics.
 

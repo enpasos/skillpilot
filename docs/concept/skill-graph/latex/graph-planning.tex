@@ -36,61 +36,61 @@ $B_\pi$ ist eine Planungsannahme; sie schreibt keine Lernergebnisse.
 Persönliche Lücken in dieser Basis brauchen eine eigene Diagnose und
 zusätzliche Lernzeit.
 
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[node distance=10mm]
-\node[goal,text width=24mm] (b) {Eintrittsbasis\\$B_\pi$};
-\node[goal,text width=24mm,right=12mm of b] (l1) {Level 1\\$L_1$};
-\node[goal,text width=24mm,right=12mm of l1] (l2) {Level 2\\$L_2$};
-\node[goal,text width=24mm,right=12mm of l2] (l3) {Level 3\\$L_3$};
-\draw[-{Stealth},draw=muted] (b)--(l1);
-\draw[-{Stealth},draw=muted] (l1)--(l2);
-\draw[-{Stealth},draw=muted] (l2)--(l3);
-\coordinate (levelscenter) at ($(b.south)!0.5!(l3.south)$);
-\node[info,anchor=north,text width=130mm] at ($(levelscenter)+(0,-7mm)$)
- {Jedes Level besitzt einen global gültigen Erwerbsweg\\und ein begründetes Zeitbudget.};
-\end{tikzpicture}
-\caption[Curriculare Erwerbsstufen]{Planungsreihenfolge, keine \code{requires}-Kanten zwischen
-Levelcontainern. Einzelziele werden über ihre eigenen Voraussetzungen verfügbar.}
-\label{fig:levels}
-\end{figure}
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{assets/graph-definition/12-level-planning.png}
+\caption[Curriculare Erwerbsstufen]{Planungsreihenfolge, keine \code{requires}-Kanten
+zwischen Levelcontainern. Der Abschluss eines Levels ist keine globale Zugangssperre.}
+\label{fig:levels}\end{figure}
 
 \subsection{Strukturelle Machbarkeit durch einen Abschlusszeugen}
+Die angenommene Eintrittsbasis setzt eine Planungsgrenze: Ihre frühere
+Erwerbsgeschichte wird nicht rekonstruiert. Nur für den hypothetischen
+Planungstest sei deshalb
+\[
+ R_{\mathrm{at}}^{\pi}=\{(a,b)\in R_{\mathrm{at}}\mid a\notin B_\pi\}.
+\]
+$\Frontier_\pi$ verwendet diese Relation mit vollständiger transitiver
+Hülle. Alle Ziele und früheren Level behalten ihre transitiven
+Anforderungen; nur an deklarierten Eintrittskompetenzen endet die
+Planungsrekonstruktion. Diese Ausnahme erlaubt keinen Stopp an
+Mastery-Zwischenzielen im wirklichen Lernzustand.
+
 Ein Level $L_i$ ist strukturell machbar, wenn sich seine Ziele als
 $a_1,\ldots,a_m$ aufzählen lassen, sodass
 \begin{equation}
- a_j\in\Frontier\!\left(B_\pi\cup L_{<i}\cup
+ a_j\in\Frontier_\pi\!\left(B_\pi\cup L_{<i}\cup
                          \{a_1,\ldots,a_{j-1}\}\right)
  \qquad(1\leq j\leq m).
  \label{eq:level-witness}
 \end{equation}
-Hier gilt die \emph{globale} Frontier. Vererbte und entlang offener Ziele verfolgte,
-clusterbezogene und nach Referenzauflösung fachübergreifende Anforderungen
-bleiben erhalten. Ein Normalmodusfilter würde gerade jene Anforderungen
-ausblenden können, deren Einhaltung die Levelprüfung nachweisen soll.
+Hier gilt der globale Prüfbereich. Vererbte, clusterbezogene und nach
+Referenzauflösung fachübergreifende Anforderungen bleiben erhalten.
+Ein Normalmodusfilter würde relevante Anforderungen ausblenden können.
+Der hypothetische Erwerbszeuge verwendet keine direkten Prüfungssprünge
+und nimmt keine implizite Anerkennung vorweg.
 
 Zur Diagnose dienen die benötigten Atome
 \begin{equation}
- \ReqAtoms(g)=\bigcup_{\substack{p\in G\\(g,p)\in\Reff^+}}\Atoms(p).
+ \ReqAtoms_\pi(g)=\{b\in A\mid(g,b)\in(R_{\mathrm{at}}^{\pi})^+\}.
  \label{eq:reqatoms}
 \end{equation}
 Aus einem Abschlusszeugen folgt notwendig
 \begin{equation}
  \forall g\in T_\pi:\quad
- \ReqAtoms(g)\subseteq B_\pi\cup L_{\leq\ell_\pi(g)}.
+ \ReqAtoms_\pi(g)\subseteq B_\pi\cup L_{\leq\ell_\pi(g)}.
  \label{eq:level-closure}
 \end{equation}
 Eine benötigte Kompetenz außerhalb $B_\pi\cup T_\pi$ ist ungeplant;
 ein benötigtes Ziel mit höherem Erwerbslevel ist ein Reihenfolgefehler.
-Voraussetzungen innerhalb desselben Levels sind erlaubt. Die Mengenbedingung
-allein genügt bei Clusteranforderungen noch nicht: Der Selbstblocker aus
-Abschnitt~\ref{sec:validity} erfüllt sie für $L_1=\{a\}$,
-besitzt aber keinen Abschlusszeugen.
+Voraussetzungen innerhalb desselben Levels sind erlaubt. Die
+Grundgraphgültigkeit einschließlich atomar expandierter Zyklen muss vor
+dieser Mengenprüfung bereits festgestellt sein. Der explizite Zeuge
+verbindet die Zuordnung mit einem tatsächlich möglichen Erwerbsweg.
 
 Ein endlicher Prüfalgorithmus startet für jedes Level mit
 $M^{(0)}=B_\pi\cup L_{<i}$ und wiederholt
 \begin{equation}
- M^{(r+1)}=M^{(r)}\cup\bigl(L_i\cap\Frontier(M^{(r)})\bigr).
+ M^{(r+1)}=M^{(r)}\cup\bigl(L_i\cap\Frontier_\pi(M^{(r)})\bigr).
 \end{equation}
 Er ist erfolgreich genau dann, wenn sein Fixpunkt ganz $L_i$ enthält.
 Die Verfügbarkeit eines noch offenen Ziels kann durch zusätzliche
@@ -162,8 +162,9 @@ für jede Person.
 
 Der Abschluss eines Levels wird aus seiner vollständigen Zielmenge und den
 Zieltypverträgen abgeleitet. Er ist keine pauschale Voraussetzung für alle
-Ziele des nächsten Levels. Soll ein Teil der Arbeit durch Prüfungsnachweise
-ersetzt werden, benötigt das den folgenden gesonderten Abschlussvertrag.
+Ziele des nächsten Levels. Gültige lokale Abschlussverträge leiten zusätzlich global wirksame
+Anwendungsbeherrschung ab. Das folgende Kapitel beschreibt diese Anerkennung,
+ohne zusätzliche Sperren zwischen Levelcontainern einzuführen.
 
 \paragraph{Quellen.}
 \srcref{docs/concept/skill-graph/curriculum-levels.md}{Curriculum Levels};

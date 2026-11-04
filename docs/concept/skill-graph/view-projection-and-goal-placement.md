@@ -298,8 +298,8 @@ The runtime contract is:
 - only targets may appear in learner navigation or as frontier candidates
 - only targets contribute to scope progress and scope completion
 - a prerequisite-only goal never becomes a frontier candidate in that view
-- strict mode uses the global mastery of prerequisite-only goals to check dependent targets through the unchanged canonical `requires` edges
-- normal mode restricts those checks to the selected Level 3 focus; an outside prerequisite-only goal does not block entry, become selectable, or acquire mastery
+- the corrected 4 November 2026 concept uses global effective mastery (explicit results plus valid application recognition) for prerequisite satisfaction; strict mode checks complete effective transitive paths through unchanged canonical `requires` edges
+- normal mode masks applicable checks to the selected Level 3 focus after effective transitive reachability is determined; it must not erase paths through outside intermediates. An outside prerequisite-only goal does not become selectable or acquire a stored mastery entry. A focus is not a recognition contract; valid effective mastery survives view and plan changes. Runtime adaptation to this corrected concept remains pending
 - targeted repetition of an earlier goal requires an explicit target reference or a separate reviewed repetition plan; it must not become selectable merely because it is an earlier-phase goal
 
 This distinction keeps bridge competencies available for sequencing while

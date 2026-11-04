@@ -497,7 +497,15 @@ Numeric `0` and `1` can encode it; intermediate mastery degrees and additional
 assessment qualifications are not part of the outcome model. Mastery belongs
 to stable goal IDs and stays global across composition views. Cluster or scope
 progress is the weighted share of mastered, unique atomic goals, not a second
-stored result or partial mastery of one goal. Memorization mastery is determined
+stored result or partial mastery of one goal. The 4 November 2026 concept adds
+**effective mastery** M_eff = M ∪ I: I is recognition through independent
+application in valid local assessment contracts. Both forms count as completed
+and satisfy subsequent prerequisites globally, irrespective of later plan or
+focus selection. I is derived, not another stored outcome; examinations and
+memory goals never enter I. A prerequisite path alone does not establish the
+required task quality. See [the completion contract](skill-graph/assessment-gated-completion.md).
+The current runtime still needs adaptation to that corrected contract.
+Memorization mastery is determined
 by its card workflow. The linked workflow documents remaining discrepancies
 in the current numeric implementation.
 

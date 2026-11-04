@@ -155,10 +155,15 @@ Dabei sind
 Mehrere Elternpfade addieren Anforderungen als Mengenvereinigung, ohne
 Mehrfachzählung. \emph{Vererbung} in \eqref{eq:effective} und
 \emph{transitive Hülle} $\Reff^+$ sind verschiedene Operationen.
-Die transitive Hülle beschreibt statische Pfaderreichbarkeit im Graphen.
-Laufzeitverfügbarkeit prüft dagegen direkte effektive Anforderungen;
-Cluster werden über ihre atomare Basis erfüllt. Mastery einer Voraussetzung
-beendet deren eigenen Bedarf, statt weitere Pfadglieder nachzufordern.
+Für die Laufzeit wird zuerst auf Atome normalisiert:
+\[
+ R_{\mathrm{at}}=\{(a,b)\in A\times A\mid
+       \exists p\in G:(a,p)\in\Reff\land b\in\Atoms(p)\}.
+\]
+Die transitive Hülle $R_{\mathrm{at}}^+$ enthält damit auch Pfade, die
+nach der Expansion einer Clusteranforderung weiterführen. Mastery eines
+Zwischenziels unterbricht diese Hülle nicht. Im Abschlusskapitel bezeichnet
+$R$ der Kürze halber diese vollständig normalisierte atomare Relation.
 
 Sind alle direkten Anforderungen atomar verfasst, gilt $\Reff=R$:
 Containment-Vorfahren sind Cluster und tragen dann keine ausgehenden
@@ -184,12 +189,23 @@ erfüllt sind:
  &(g,p)\in R\Longrightarrow
       \nexists a\in\Anc(g):(a,p)\in R.\label{eq:localmin}
 \end{align}
-Die frühere Pflicht zur \emph{transitiven Minimalität} entfällt mit der
-Abschlussentscheidung vom 31. Oktober 2026. In $C\to B\to A$ beendet Mastery
-von B den Bedarf an A; eine zusätzliche Kante $C\to A$ bleibt dagegen eine
-eigene Anforderung. Eine Kante darf deshalb nicht allein aufgrund unveränderter
-Erreichbarkeit entfernt werden. Identisch geerbte direkte Paare bleiben lokal
-redundant; Zyklen bleiben unzulässig.
+Zusätzlich gilt \textbf{transitive Minimalität}: Für jede verfasste
+Kante $e=(g,p)\in R$ werde $R'=R\setminus\{e\}$ gebildet und
+$R_{\mathrm{eff}}'$ mit unverändertem $C$ \emph{neu} berechnet.
+Dann muss $(g,p)\notin(R_{\mathrm{eff}}')^+$ gelten.
+Die Kante ist redundant, wenn ihr Ziel nach ihrer Entfernung noch über
+einen effektiven Pfad erreichbar bleibt. In der Kette $Q\to B\to A$ ist
+$Q\to A$ deshalb redundant und unzulässig. Nur ohne Clustervererbung
+vereinfacht sich dies zur gewöhnlichen Minimalität der rohen Relation $R$.
+
+Die transitive Reduktion einer feststehenden normalisierten atomaren
+Relation erhält deren Hülle und damit Verfügbarkeit und Abschlussrechnung.
+Eine Änderung verfasster Clusterkanten verlangt dagegen erneute Vererbung
+und atomare Expansion; die rohe Reduktion darf hier nicht ungeprüft als
+bedeutungserhaltend gelten. Die lokale Bedingung~\eqref{eq:localmin}
+bleibt zusätzlich bestehen.
+Ein durch atomare Expansion entstehender Selbstzyklus ist ebenfalls ein
+Modellfehler, auch wenn die unexpandierten Kanten azyklisch aussehen.
 
 Die DAG-Bedingung für $R$ folgt bereits aus derjenigen für $\Reff$, weil
 $R\subseteq\Reff$. Sie bleibt als verständliche eigenständige
@@ -220,8 +236,9 @@ Seien $G=\{k,a\}$, $C=\{(k,a)\}$ und $R=\{(a,k)\}$.
 Die direkten und effektiven Relationen sind azyklisch und minimal.
 Aber $\Atoms(k)=\{a\}$: Um $a$ zu beginnen, müsste $a$ schon erfüllt sein.
 Die globale Frontier aus leerem Lernzustand ist leer.
-Zusätzliche Verbote von Anforderungen an Vorfahren oder ein echter
-Abschlusszeuge decken diesen Fehler auf.
+Die vollständig atomar normalisierte Relation enthält hier eine
+Selbstabhängigkeit und verletzt den erweiterten Gültigkeitsvertrag. Ein
+Abschlusszeuge würde denselben Fehler sichtbar machen.
 \end{principle}
 
 Deshalb müssen drei Aussagen getrennt bleiben: Grundgraph gültig,
@@ -271,44 +288,52 @@ Solche Übersichten erzeugen keine neuen direkten Cluster-Anforderungen.
 \section{Lernzustand, Erfüllung und Fortschritt}
 \label{sec:state}
 \subsection{Erfüllung statt Rückschluss auf Voraussetzungen}
-Für die mathematische Progression sei $M_A\subseteq A$ die Menge der
-nach dem jeweiligen Zieltyp als erfüllt geltenden atomaren Ziele.
-Jedes atomare Lernziel hat genau einen binären Ergebniszustand:
-geschafft ($a\in M_A$) oder noch nicht geschafft ($a\notin M_A$).
-Teilweise Bearbeitung ist kein dritter Mastery-Zustand.
-Die Bezeichnung \glqq mastered set\grqq{} der Spezifikation ist eine
-Abstraktion: Bei Orientierung steht Mitgliedschaft für Abschluss, nicht
-für fachliche Beherrschung. Bei Gedächtnis- und Prüfungszielen gelten die
-jeweiligen besonderen Nachweisregeln.
+Es gibt genau einen gespeicherten binären Zustand $m:A\to\{0,1\}$,
+mit $M=\{a\mid m(a)=1\}$. Ein gewöhnlicher ausdrücklicher Erfolg belegt
+zielgerecht geprüftes Verstehen. Orientierung, Memorierung und Prüfungen
+verwenden ihren jeweils eigenen Abschlussvertrag. Keine Teilbewertung
+bildet einen dritten Mastery-Zustand.
+
+Zusätzlich wird die implizite Menge $I_L$ aus jedem für die Person
+gültigen dauerhaft anwendbaren lokalen Abschlussvertrag $L$ abgeleitet. Bei fachlichen Kompetenzzielen belegt sie selbstständige Anwendung,
+nicht bloß erlassene Vorbereitung. Ein abgeleiteter Orientierungsmarker
+behält ausschließlich die Bedeutung eines erledigten Einstiegs; er
+behauptet weder Fachkompetenz noch eine erfolgte Motivationsinteraktion. Die effektive globale Menge lautet
+\[
+ M_{\mathrm{eff}}=M\cup\bigcup_{L\in\mathcal L_{\mathrm{valid}}}I_L.
+\]
+Die beiden Begründungsarten sind in ihrem effektiven Ergebnis gleichwertig:
+Sie erfüllen künftige Voraussetzungen, zählen zum IST und bleiben bei
+Fokus- oder Planwechsel wirksam. $I_L$ erzeugt keinen synthetischen
+Mastery-Datensatz. Abschnitt~\ref{sec:assessment} definiert die Ableitung
+und die fachlichen Voraussetzungen des Vertrags.
+Für die folgenden allgemeinen Formeln sei $M_A=M_{\mathrm{eff}}$.
 \begin{equation}
  \Sat(g,M_A)\iff
  \Atoms(g)\ne\varnothing\ \land\ \Atoms(g)\subseteq M_A.
  \label{eq:sat}
 \end{equation}
-Eine bereits erfolgreiche Anwendung impliziert keine gespeicherte
-Beherrschung ihrer Voraussetzungen. $M_A$ wird nicht automatisch
-voraussetzungsabgeschlossen. Auch ein als erfüllt angezeigter Cluster
-berechtigt nicht zum pauschalen Schreiben von Nachweisen seiner Kinder.
+Ein bloß gemeistertes abhängiges Inhaltsziel beweist seine Voraussetzungen
+nicht. Nur ein gültiger lokaler Prüfungsvertrag trägt die zusätzliche
+Ableitung. Clusterfortschritt schreibt niemals Ergebnisse seiner Kinder.
 
 \subsection{Globale Frontier}
 Die Menge der nächsten verfügbaren atomaren Ziele lautet
 \begin{equation}
  \Frontier(M_A)=\left\{g\in A\setminus M_A\;\middle|\;
- \forall p\in G:\ (g,p)\in\Reff\Rightarrow\Sat(p,M_A)\right\}.
+ \forall p\in A:\ (g,p)\in R_{\mathrm{at}}^+\Rightarrow p\in M_A\right\}.
  \label{eq:frontier}
 \end{equation}
-Sie fordert die direkten effektiven Voraussetzungen. An gemeisterten
-Voraussetzungen endet die weitere Bedarfsverfolgung. Ein teilweise
+Sie fordert die transitiven effektiven atomaren Voraussetzungen. Ein
+gemeistertes Zwischenziel unterbricht diese Prüfung nicht. Ein teilweise
 bearbeitetes Ziel ist nicht schon deshalb erfüllt. Ein Cluster als
 Voraussetzung wird über seine atomare Basis geprüft.
 
-Für Navigation kann getrennt eine Clusterverfügbarkeit definiert werden:
+Für Navigation sei $B(k)=\bigcup_{(k,p)\in\Reff}\Atoms(p)$ und
+$D(k)=B(k)\cup\{b\mid\exists a\in B(k):(a,b)\in R_{\mathrm{at}}^+\}$.
+Dann ist die gesonderte Clusterverfügbarkeit
 \begin{equation}
- \begin{split}
- \Frontier_K(M_A)=\{k\in K\mid&\ \Atoms(k)\ne\varnothing,
- \ \neg\Sat(k,M_A),\\
- &\forall p\in G:\ (k,p)\in\Reff\Rightarrow\Sat(p,M_A)\}.
- \end{split}
+ \Frontier_K(M_A)=\{k\in K\mid\neg\Sat(k,M_A),\ D(k)\subseteq M_A\}.
 \end{equation}
 Sie ersetzt die atomare Lernfrontier nicht. Eine Oberfläche kann darüber
 hinaus verbindliche Zugangs- und Auswahlregeln anwenden, etwa den
@@ -316,7 +341,7 @@ Orientierungseinstieg. Die mathematische Frontier ist deshalb nicht
 automatisch identisch mit jedem angezeigten UI-Menü.
 
 \sourcefig{06-available-next-goals.png}
-{Mit $M_A=\{\text{Vectors},\text{Forces}\}$ ist nur \emph{Velocity} als
+{Mit $M_{\mathrm{eff}}=\{\text{Vectors},\text{Forces}\}$ ist nur \emph{Velocity} als
 nächstes verfügbar. \emph{Acceleration} wartet auf \emph{Velocity};
 \emph{Newton's Second Law} zusätzlich auf \emph{Acceleration}.
 Die Cluster sind keine direkt auszuwählenden atomaren Lernschritte.}
@@ -326,10 +351,10 @@ Die Cluster sind keine direkt auszuwählenden atomaren Lernschritte.}
 \subsection{Aggregation ohne Mehrfachzählung}
 Sei $S\subseteq A$ eine fest benannte Menge von Zielatomen,
 $w(a)>0$ ihr Fortschrittsgewicht und
-$m(a)=\mathbf{1}_{\{a\in M_A\}}\in\{0,1\}$ ihr binärer
-Mastery-Indikator. Der gewichtete Mastery-Fortschritt ist
+$e(a)=\mathbf{1}_{\{a\in M_A\}}\in\{0,1\}$ ihr effektiver binärer
+Erfüllungsindikator. Der gewichtete Gesamtfortschritt ist
 \begin{equation}
- P(S)=\frac{\sum_{a\in S}w(a)m(a)}{\sum_{a\in S}w(a)}\qquad(S\ne\varnothing).
+ P(S)=\frac{\sum_{a\in S}w(a)e(a)}{\sum_{a\in S}w(a)}\qquad(S\ne\varnothing).
 \end{equation}
 Für eine leere Zielmenge gibt es keinen solchen Quotienten; die Anzeige
 braucht \glqq keine Ziele im gewählten Umfang\grqq{} statt erfundener 100\,\%.
@@ -338,8 +363,10 @@ Cluster und Kinder dürfen nicht zusätzlich gemeinsam gezählt werden.
 Ein Fortschritt von beispielsweise 50\,\% bezeichnet einen Anteil
 geschaffter Ziele im Umfang, keine halbe Beherrschung eines einzelnen Ziels.
 Davon zu unterscheiden ist die segmentierte Erledigungsanzeige im Lernzielbaum:
-Sie weist explizite Mastery und abgeleitete implizite Erledigung getrennt aus.
-Ein vollständig gefüllter Erledigungsbalken behauptet daher nicht $P(S)=1$.
+Sie kann ausdrücklich gespeicherte und implizit abgeleitete Beiträge
+getrennt ausweisen. Beide zählen in $P(S)$; ein vollständig gefüllter
+Gesamtbalken bedeutet $P(S)=1$. Eine gesonderte Zahl nur für ausdrückliche
+Ergebnisse muss ihren abweichenden Zähler benennen.
 
 Bei der Konvention $w(a)=1$ entspricht das Clustergewicht der Zahl seiner
 eindeutigen atomaren Nachfahren. Das ist eine zulässige konkrete
@@ -406,33 +433,30 @@ Im Normalmodus (\emph{optimistic}) gilt die relative Basis
  \Sat_F(g,M_A)\iff\Atoms_F(g)\subseteq M_A.
 \]
 Die leere relative Basis blockiert hier nicht. Das bescheinigt keine globale
-Kompetenz und verändert keinen gespeicherten Lernzustand. Die Frontier ist
+Kompetenz und verändert keinen gespeicherten Lernzustand. Zuerst werden
+Vererbung, atomare Expansion und transitive Hülle global berechnet.
+Danach schränkt der Normalmodus die benötigten atomaren Endpunkte ein:
 \begin{equation}
- \begin{split}
  \Frontier_{\mathrm{opt}}(M_A,F)=\{g\in A_F\setminus M_A\mid
- \forall p\in G_F:\quad\\
- (g,p)\in(\Reff|_F)\Rightarrow\Sat_F(p,M_A)\}.
- \end{split}
+ \forall p\in A_F:\ (g,p)\in R_{\mathrm{at}}^+\Rightarrow p\in M_A\}.
 \end{equation}
 Im strikten Modus bleiben die Kandidaten im Fokus, die Anforderungen
 werden jedoch global geprüft:
 \begin{equation}
  \Frontier_{\mathrm{strict}}(M_A,F)=
  \{g\in A_F\setminus M_A\mid
- \forall p\in G:\ (g,p)\in\Reff\Rightarrow\Sat(p,M_A)\}.
+ \forall p\in A:\ (g,p)\in R_{\mathrm{at}}^+\Rightarrow p\in M_A\}.
 \end{equation}
 Somit gilt für dieselben Eingaben
 \[
  \Frontier_{\mathrm{strict}}(M_A,F)\subseteq
  \Frontier_{\mathrm{opt}}(M_A,F).
 \]
-Jede eingeschränkte direkte Anforderung ist auch eine globale Anforderung; globale Erfüllung impliziert
-die relative Erfüllung. Der umgekehrte Schluss gilt nicht.
-
-Bei $g\to x\to p$ und $G_F=\{g,p\}$ ignoriert der Normalmodus
-die außerhalb liegende direkte Voraussetzung x. Der strikte Modus prüft x
-global. Ist x gemeistert, verlangt auch er nicht zusätzlich p:
-Mastery beendet die weitere Bedarfsverfolgung in beiden Modi.
+Bei $g\to x\to p$ und $G_F=\{g,p\}$ bleibt p als transitive
+Voraussetzung im Normalmodus sichtbar erforderlich. Der strikte Modus
+prüft zusätzlich x. Auch eine Mastery von x entfernt p nicht aus
+der transitiven Prüfung. Die Umfangsregel ist eigenständig; sie
+verwandelt ausgeblendete Voraussetzungen nicht in Mastery.
 
 \sourcefig{07-filter-modes.png}
 {Identischer Fokus, unterschiedlicher Prüfbereich. \emph{Vectors} liegt
@@ -444,33 +468,16 @@ englischen Quellspezifikation.}
 \FloatBarrier
 
 \subsection{Fehlende Voraussetzungen und fehlende Atome}
-Die globale Diagnose trennt unmittelbar benötigte Knoten und deren noch offene Zielatome:
-\begin{align}
- \Missing(g,M_A)&=\{p\in G\mid(g,p)\in\Reff\land\neg\Sat(p,M_A)\},\\
- \MissingAtoms(g,M_A)&=
- \left(\bigcup_{p\in \Missing(g,M_A)}\Atoms(p)\right)\setminus M_A.
-\end{align}
-Für beide Mengen $U$ gelten
-$U_{\mathrm{in}}=U\cap G_F$ und $U_{\mathrm{out}}=U\setminus G_F$.
-Liegt ein benötigter Cluster im Fokus, sein einziges Atom $b$ aber außerhalb,
-kann $\Missing_{\mathrm{out}}=\varnothing$ und dennoch
-$\MissingAtoms_{\mathrm{out}}=\{b\}$ gelten. Die Clusterliste allein
-verschweigt diese externe Kompetenzlücke.
-
-Die Diagnose folgt der globalen Relation. Sie ist weder die Blockerliste
-des Normalmodus noch eine Frontier und erzeugt keine Kanten.
-
-Ein optionaler Prüfbereich $S\subseteq G$ ergibt
-\begin{equation}
- \Frontier_{S}(M_A,F)=\{g\in A_F\setminus M_A\mid
- \forall p\in S:\ (g,p)\in\Reff\Rightarrow\Sat(p,M_A)\}.
-\end{equation}
-$S=G$ ergibt den strikten Modus, $S=G_F$ im Allgemeinen \emph{nicht} den
-Normalmodus: Die Erfüllung erforderlicher Cluster verwendet weiterhin ihre
-globale atomare Basis statt der auf den Fokus eingeschränkten Basis.
-Es werden auch hier direkte effektive Anforderungen geprüft, keine zusätzliche
-transitive Hülle. Dieses abgeschwächte strikte Profil ist ein Modellvorschlag,
-keine aktivierte dritte Betriebsart.
+Für eine vollständige globale Diagnose gilt
+\[
+ \MissingAtoms(g,M_A)=\{a\in A\setminus M_A\mid(g,a)\in R_{\mathrm{at}}^+\}.
+\]
+Die Teilmengen $\MissingAtoms\cap G_F$ und
+$\MissingAtoms\setminus G_F$ unterscheiden interne und externe Lücken.
+Eine bloße Liste direkt benötigter Cluster kann dabei fehlende externe
+Atome oder hinter Zwischenknoten liegende Lücken verschweigen.
+Die Diagnose erzeugt weder neue Kanten noch neue Lernergebnisse und
+ist nicht mit der Blockerliste des Normalmodus gleichzusetzen.
 
 \noindent\small Quellen dieses Teils:
 \srcref{docs/concept/skill-graph/graph-definition.md}{Graph Definition};

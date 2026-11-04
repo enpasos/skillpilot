@@ -13,8 +13,9 @@ or a bounded continuing-education period can use the same concept.
 > quality claims. It does not announce an implemented level schema, validator,
 > badge, or 3D interface. The optional formal profile is specified in
 > [Graph Definition §12](graph-definition.md#12-optional-curriculum-level-assignments).
-> Existing graph validity, projection roles, learner state, and runtime modes
-> retain their own contracts.
+> The 4 November 2026 completion decision below is a revised concept; current
+> `main` still uses the earlier completion semantics. Projection roles and
+> normal/strict focus policies retain their separate responsibilities.
 
 ## Vocabulary and purpose
 
@@ -50,6 +51,9 @@ curriculum level is a planning contract over those structures, not another kind
 of assessable goal. Where a composition view is authoritative, derive the
 level's target membership from that view and validate any additional assignment
 against it; do not maintain a competing copy of the curriculum structure.
+The prerequisite graph alone does not uniquely determine these boundaries.
+An authoritative level is not a display filter, temporary focus, dated plan,
+or manually maintained waiver-profile list.
 
 Within one resolved learning path:
 
@@ -180,32 +184,74 @@ the reference curriculum's past definition.
 
 ## Level completion and individual availability
 
-[Assessment-gated completion](assessment-gated-completion.md) derives completion from the authoritative scope and existing mastery. A final assessment needs an explicit pass. When an ordinary preparation step becomes unnecessary, the waiver gives no evidence of mastery for that goal.
+The binding decision of **4 November 2026** distinguishes direct understanding
+from independent application. [Assessment-gated completion](assessment-gated-completion.md)
+derives ordinary implicit mastery from relevant passed local assessments.
+Both direct and implicit mastery have equivalent global credit: they satisfy
+future prerequisites, total progress and plan IST. Implicit mastery is not a
+scope-local waiver. A later open exam, wider focus or changed Personal Curriculum
+cannot undo a valid achievement.
 
-The optional [curriculum levels with completion gates](curriculum-level-gates.md) design adds an explicit course mode. Selected cluster placements have local assessment endpoints, required card recall and declared predecessor levels. Its entry gates apply only where the plan chooses this mode.
+For a bounded authoritative level with atomic targets $T_L$, protect every
+local assessment and memory target:
 
-A level declares its completion rule over an explicit required target set and
-any applicable, resolved selection rules. Completion is derived from the stored
-goal results using the appropriate goal-type semantics. A date, time spent, or
-number of consumed planning units does not establish completion. An orientation
-completion must not be described as evidence of subject-matter competence.
+$$
+P_L=T_L\cap(Q\cup K),\qquad
+N_L=Reach_R^*(P_L\setminus M),\qquad
+I_L=T_L\setminus(M\cup P_L\cup N_L).
+$$
 
-The level's required scope and the complete Personal Curriculum may differ.
-Name both scopes. This concept does not introduce a new selection flow or turn
-existing `target` goals into optional work. Any optional extension or choice
-must already be explicitly represented by the applicable scope contract.
+Here M contains explicit binary results and R is the normalized atomic
+prerequisite relation for that contract revision. Reachability is fully
+transitive and continues through mastered intermediates. For
+$Q\to B\to A$, ordinary mastery of B alone leaves A open while Q is open.
+Passing the relevant local Q can recognize A and B by application. Outside
+future consumers do not reopen a completed local level.
 
-A level-wide completion result is distinct from availability of an individual
-goal. Within the authorised learning scope, an available Mathematics goal in
-a later level may be pursued while an earlier level still has open targets
-in another subject. Do not introduce blanket `requires` edges between level
-containers or require all earlier-level targets before every later target.
+Every ordinary local target needs reviewed local assessment coverage. Actual
+tasks and the normal rubric must require independent application of each
+recognized competence. A fully missing essential competence cannot be
+compensated by other points while still being recognized. Dependency paths
+alone do not establish this content claim; independent review must reject a
+contract if a learner can pass without a competence it awards. This is authoring
+quality assurance, not an additional runtime result or per-part second pass.
+Existing legacy exams have not thereby been declared verified for this claim.
 
-The runtime's existing focus, normal/strict evaluation, and continuation rules
-remain authoritative. A global structural check of the reference plan does not
-silently change those runtime settings. Level progress is not a cross-subject
-pace score; the [per-subject plan-status contract](../didactic/unified-learning-plan-status.md)
-continues to govern pace and plan balances.
+The effective global set is $M_{\mathrm{eff}}=M\cup\bigcup_{L\in\mathcal D}I_L$
+over durably applicable authoritative contracts, including valid earlier
+versions after a Personal-Curriculum change. Its basis remains reconstructible
+outside the current tree. A stable assessment identity binds a stable
+recognition meaning; later revisions must not award newly added competencies
+on the basis of an old pass. No new stored goal state is introduced.
+
+Level completion means $T_L\subseteq M_{\mathrm{eff}}$. All local assessments
+still need their own normal positive outcome and all local memory goals their
+existing M1 verified recall. An unrelated open card obligation keeps the level
+incomplete without preventing recognition of ordinary targets it does not
+require. Orientation completion retains its motivational meaning and never
+certifies subject-matter competence. A date, elapsed time or consumed planning
+unit cannot establish completion.
+
+The optional [curriculum levels with completion gates](curriculum-level-gates.md)
+design adds an explicit course policy over these existing structures. Its
+whole-level entry gates remain a separate, unimplemented option. Without that
+policy, a later available Mathematics goal may be pursued while an earlier
+level has open work in another subject. Do not add blanket `requires` between
+level containers.
+
+Normal prerequisite evaluation uses effective mastery and full transitive
+requirements restricted by the existing focus policy; strict mode checks
+globally. Global recognition does not introduce a normal-mode blocker outside
+focus. All applicable assessments retain intentional direct access without
+first completing preparation. Structural checks of reference plans and
+hypothetical learning orders do not change real learner results or activate
+a course gate.
+
+Target scope controls progress denominators. Total achieved goals and IST
+count effective mastery once per target identity, whereas daily and weekly
+achievement histories use reliably dated explicit events only. Implicit
+recognition creates no fabricated event date. Per-subject pace and plan
+balances retain the [shared plan-status contract](../didactic/unified-learning-plan-status.md).
 
 ## The knowledge-building metaphor
 
@@ -215,7 +261,7 @@ stages to that picture:
 
 | Concept | Possible representation |
 | --- | --- |
-| Confirmed subject-matter competence | A completed building block |
+| Direct understanding or recognized independent application | A completed building block |
 | Topic or subject | A room or wing |
 | Actual prerequisite | A supporting connection to the required blocks |
 | Curriculum level | A construction stage, possibly visualised as a floor |
@@ -244,7 +290,7 @@ requirements, not a new serialised schema or a second source of target placement
 | Resolved prerequisite evidence and structural result | Expose later-level conflicts, gaps, and within-level deadlocks. |
 | Reference learner profile, learning conditions, and workload method | Explain the effort estimate and its limits. |
 | Available overall and binding sub-budgets, activity allocations, and reserve | Check capacity without double-counting. |
-| Completion rule and its required target scope | Derive an interpretable milestone from existing goal results. |
+| Required target scope, protected assessments/cards, and reviewed recognition meaning | Derive completion and retain valid global achievements from existing outcomes. |
 | Workload result and evidence status | Keep unassessed effort distinct from supported feasibility. |
 
 After a relevant change to goals, prerequisites, placements, entry assumptions,
