@@ -1,4 +1,12 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
+import { normalizeLandscape, type LandscapeEntry } from '../hooks/useLandscapes'
+import type { SkillLandscape } from '../landscapeTypes'
+import { collectCompositionProjectionRoleGoalIds, type CompositionView } from './authoring/compositionViewAuthoring'
+import { applyCompositionViewProjection } from './compositionViewRuntime'
+import { collapseLearnerSubjectRoots, normalizeLearnerProjectedEntries } from './learnerTreeProjection'
+import { buildDirectChildrenMap } from './treeProjectionRuntime'
+import { goalMatchesFilters } from './goalFilters'
 import type { UiGoal } from '../goalTypes'
 import { buildTreeCompletionProgressMap } from './treeCompletionProgress'
 
@@ -113,4 +121,98 @@ const children = (...entries: [string, string[]][]) => new Map(entries)
 }
 
 assert.equal(buildTreeCompletionProgressMap(new Map(), new Map(), () => 0).size, 0)
+
+
+// A resolved composition is the authoritative membership. Canonical phase
+// metadata can differ from the reviewed Hessen acquisition placement.
+{
+  const canonicalMath = JSON.parse(readFileSync(new URL(
+    '../../../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
+    import.meta.url,
+  ), 'utf8')) as SkillLandscape
+  const canonicalEntry = normalizeLandscape(canonicalMath)!
+  // The real learner closure already applies explicit scope availability. In
+  // particular, RP/BY-only own tasks cannot enter this HE fixture through a
+  // broad canonical subtree. Reuse the existing filter for that input step.
+  const canonicalMathEntry = {
+    ...canonicalEntry,
+    goals: canonicalEntry.goals.filter(goal => goalMatchesFilters(goal, ['DE-HE', 'GK+LK', 'G9'])),
+  }
+  const sourceView = JSON.parse(readFileSync(new URL(
+    '../../../curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-gk-lk.view.json',
+    import.meta.url,
+  ), 'utf8')) as CompositionView
+  // The shared Sek-II source serves both duration models. The actual runtime
+  // match adds the learner's committed G9 request to this scope envelope.
+  const view = { ...sourceView, scope: { ...sourceView.scope, durationModel: 'G9' } }
+  assert.deepEqual(view.scope, {
+    schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'SekII',
+    courseProfile: 'GK+LK', durationModel: 'G9',
+  })
+  const canonicalById = new Map(canonicalMathEntry.goals.map(goal => [goal.id, goal]))
+  const expectedTargets = new Set([...collectCompositionProjectionRoleGoalIds(
+    view.rootNodes, canonicalById,
+  ).targetGoalIds].filter(id => canonicalById.get(id)?.contains.length === 0))
+  assert(expectedTargets.size > 0, 'The actual reviewed Hessen G9 Sek-II GK+LK target scope must be nonempty.')
+
+  const [projected] = applyCompositionViewProjection([canonicalMathEntry], view)
+  const sourceBefore = JSON.stringify(projected)
+  const [normalized] = normalizeLearnerProjectedEntries([projected])
+  const goalsById = new Map(normalized.goals.map(goal => [goal.id, goal]))
+  const visible = collapseLearnerSubjectRoots(goalsById, buildDirectChildrenMap(goalsById)).childrenByParent
+  const root = normalized.goals.find(goal => goal.tags?.includes('root'))!
+  const reached = new Set<string>()
+  const walk = (id: string) => {
+    if (reached.has(id)) return
+    reached.add(id)
+    for (const child of visible.get(id) ?? []) walk(child)
+  }
+  walk(root.id)
+  const actualTargets = new Set([...reached].filter(id => {
+    const goal = goalsById.get(id)
+    return goal?.type !== 'cluster' && goal?.contains.length === 0
+  }))
+  assert.deepEqual([...actualTargets].sort(), [...expectedTargets].sort(),
+    'Presentation normalization must preserve every resolved target ID, not only the count.')
+  const previouslyLostQ4Members = [
+    '49f9059a-876c-5051-8146-d008b5cc691c', 'b66d13c5-187e-530b-b4d3-efc7506a7f34',
+    '6a66b4f5-d36e-5b53-91ad-cf25a849d66b', '10efb267-9733-5db3-a807-03f4cf54e336',
+    'f1eee698-04c6-5d60-bcc6-a3c67129eea2', '4d55ba50-8d67-560c-a10f-cccff4728c40',
+    '565fcd3f-52cd-5402-a0ac-a1069ed9c598', 'c66cb27b-8199-58fb-95f4-6314c0c2d07b',
+    '911f3200-1dbc-59a6-90df-c883c77de39c', '3773bd34-3631-5fd2-b9b7-dfa01adf5abd',
+    '1b664036-3c29-5d94-9f42-97069aaa2c53', '315093d4-515a-542c-b776-d72a12763d1a',
+  ]
+  for (const id of previouslyLostQ4Members) {
+    assert(actualTargets.has(id), `The authored E-phase must retain reviewed canonical-Q4 member ${id}.`)
+  }
+  const passed = '8d314e15-69e9-5af1-a10a-be820b2f821d'
+  const implicit = new Set(['6481fc23-d923-5ffc-ba49-f499328f43b8', '857c1c46-5d94-5dfb-9697-9a9fd04103c3'])
+  const initial = buildTreeCompletionProgressMap(goalsById, visible, () => 0).get(root.id)!
+  const after = buildTreeCompletionProgressMap(goalsById, visible, id => id === passed ? 1 : 0, implicit).get(root.id)!
+  assert.equal(initial.totalCount, expectedTargets.size)
+  assert.equal(initial.openCount, expectedTargets.size)
+  assert.equal(after.totalCount, expectedTargets.size)
+  assert.equal(after.explicitCount, 1)
+  assert.equal(after.implicitCount, 2)
+  assert.equal(after.openCount, expectedTargets.size - 3)
+  assert.equal(JSON.stringify(projected), sourceBefore, 'Presentation normalization does not mutate the resolved source tree.')
+}
+
+// Legacy placement trees still need their existing phase filter and flattening.
+{
+  const legacy: LandscapeEntry = {
+    meta: { landscapeId: 'LEGACY', locale: 'de', title: 'Legacy', description: '', goals: [] },
+    goals: [
+      goal('LEGACY_ROOT', { title: 'Legacy', contains: ['LEGACY_E'], tags: ['root'] }),
+      goal('LEGACY_E', { title: 'E-Phase', contains: ['LEGACY_E_ATOM', 'LEGACY_Q4_ATOM'], phase: 'E', tags: ['synthetic:program-unit'] }),
+      goal('LEGACY_E_ATOM', { phase: 'E' }),
+      goal('LEGACY_Q4_ATOM', { phase: 'Q4' }),
+    ],
+  }
+  const [normalized] = normalizeLearnerProjectedEntries([legacy])
+  assert.deepEqual(normalized.goals.find(goal => goal.id === 'LEGACY_ROOT')?.contains, ['LEGACY_E_ATOM'],
+    'An uncomposed legacy E-phase still flattens its program unit and excludes unrelated canonical Q4 content.')
+  assert.deepEqual(legacy.goals[0].contains, ['LEGACY_E'], 'Legacy source entries remain unchanged too.')
+}
+
 console.log('treeCompletionProgress tests passed')

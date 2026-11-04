@@ -121,6 +121,16 @@ führt dort zu einem expliziten und zwei impliziten Abschlüssen. Beide
 Vorher-/Nachher-Ansichten wurden im Browser geöffnet; das ersetzt keinen echten
 Coach-Hosttest und keine vollständige Mathematikfreigabe.
 
+Die lokale Ansicht deckte außerdem einen nachgeschalteten Legacy-Filter auf,
+der zwölf gültig platzierte Ziele aus dem Baumfortschritt entfernte. Die
+Normalisierung erhält jetzt die autoritative Kompositionsmitgliedschaft;
+Legacy-Bäume bleiben geprüft. Vollständige ID-Gleichheit, alle zwölf Ziele,
+der echte Vorherfehler und die Browseranzeige 0/641 beziehungsweise 3/641
+sind nachgewiesen. Die Graph-Referenz ist mit dem aktuellen Profilvertrag
+abgeglichen und als PDF vom 4. November neu erzeugt; 266.376 Modellfälle
+und drei saubere LaTeX-Durchgänge bestehen.
+
+
 Der gemeinsame vorherige Backendvergleich und das unabhängige Astra-Review prüfen
 alle 161 Angebote. Alle 502 übernommenen Dateien und die 3.187 Eingaben des
 Backendlaufs stimmen bytegenau. Die elf normalen Autorenprüfungen bestehen;
@@ -182,6 +192,7 @@ vollständigen Backendlauf.
 · [Statistik und Pyramiden](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/statistics-pyramid/README.md)
 · [Geometrie und Projektionsweg](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/geometry-four/README.md)
 · [Räumliche Geometrie und Differenzialgleichungen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/geometry-six-dgl1/README.md)
+· [Baummitgliedschaft und Graph-Referenz](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/cockpit-authored-membership/README.md)
 · [Deklarierte CI-Eingaben](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/sparse-declared-inputs/README.md)
 · [Markov-Platzierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/sh-markov-twelve/README.md)
 · [Graphvalidierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/directed-prior-stage-validation/README.md)

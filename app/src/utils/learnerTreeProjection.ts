@@ -382,6 +382,13 @@ export function normalizeLearnerProjectedEntries<T extends { goals: UiGoal[] }>(
       contains: Array.isArray(goal.contains) ? [...goal.contains] : [],
       tags: Array.isArray(goal.tags) ? [...goal.tags] : [],
     }))
+    // Composition projection has already resolved the authored target membership.
+    // Its acquisition placement can intentionally differ from canonical phase
+    // metadata; retain that membership instead of applying legacy phase guesses.
+    const hasAuthoredComposition = clonedGoals.some((goal) =>
+      typeof goal.extendedData?.compositionViewId === 'string'
+      && goal.extendedData.compositionViewId.length > 0,
+    )
     const goalById = new Map<string, UiGoal>(clonedGoals.map((goal) => [goal.id, goal]))
     const relevanceCache = new Map<string, boolean>()
     const normalizedChildrenCache = new Map<string, string[]>()
@@ -401,7 +408,7 @@ export function normalizeLearnerProjectedEntries<T extends { goals: UiGoal[] }>(
 
       const sortedChildren = goal.contains ?? []
       const phaseContext = detectExplicitPhaseContext(goal) ?? inheritedPhaseContext
-      const phaseFilteredChildIds = !phaseContext
+      const phaseFilteredChildIds = hasAuthoredComposition || !phaseContext
         ? sortedChildren
         : sortedChildren.filter((childId) =>
           isGoalRelevantInPhaseContext(childId, phaseContext, goalById, relevanceCache),
