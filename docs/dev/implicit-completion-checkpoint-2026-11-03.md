@@ -87,6 +87,19 @@ bleibt bei unverändertem Limit über die Sequenz stabil; Produktionscode,
 SRS und Assertions bleiben unverändert. Auch dieser Nachweis ersetzt den
 vollständigen GitHub-Nachlauf nicht.
 
+Der gepushte Geometrie-Zwischenstand `ffc69cd4f5` besteht inzwischen die
+vollständige reguläre Backend-Suite: **3.201 Tests, keine Fehler, 20 vorgesehene
+Skips**. Sowohl der PR-Backendjob als auch der unabhängig gestartete
+GitHub-Backendjob sind erfolgreich. Die separate Mathematikprüfung und
+übrige CI-Grenzen bleiben davon unabhängig.
+
+Der anschließende CI-Nachlauf ergänzt die Eingabeermittlung um die ausdrücklich
+gebundenen Policy-Dateien. Die tatsächliche Sparse-Reproduktion besteht wieder
+39 Dokumente und 46 Kursanfragen bei unveränderten 147 Ansichten. 32
+Vertragsprüfungen bestehen. Der erzeugte Memory-Report und die fünf gemessenen
+Medienbestandsfelder sind aktualisiert; Prüfgrenzen und Herkunftsaussagen
+bleiben unverändert.
+
 Der gemeinsame vorherige Backendvergleich und das unabhängige Astra-Review prüfen
 alle 161 Angebote. Alle 502 übernommenen Dateien und die 3.187 Eingaben des
 Backendlaufs stimmen bytegenau. Die elf normalen Autorenprüfungen bestehen;
@@ -155,6 +168,8 @@ vollständigen Backendlauf.
 · [CI-Platzkorrektur](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/ci-checkout-space/README.md)
 · [Backend-Testheap](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-test-heap/README.md)
 · [Eigentum großer Test-Fixtures](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-fixture-ownership/README.md)
+· [Vollständiger Backend-PASS](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/full-backend-g4/README.md)
+· [G4-CI-Nachlauf](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/g4-declared-inputs/README.md)
 · [Backend-Kursvereinigungen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-authored-course-unions/README.md)
 
 ## Integrierter Stand

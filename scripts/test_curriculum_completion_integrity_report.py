@@ -414,18 +414,34 @@ class ReportContractTest(unittest.TestCase):
         review = 'curricula/DE/Gymnasium/quality/review/independent.json'
         allowance = 'curricula/DE/Gymnasium/quality/review/allowance.json'
         snapshot = 'curricula/DE/Gymnasium/quality/review/source.view.json'
+        contract = 'curricula/DE/Gymnasium/quality/placement/exact.json'
+        baseline = 'curricula/DE/Gymnasium/quality/placement/before-finite-plan.json'
         offline = 'curricula/DE/Gymnasium/quality/unrelated/bulk.json'
         historical = 'tmp/unpublished-native-history.json'
+
+        def binding(relative):
+            return {'path': relative, 'sha256': hashlib.sha256(
+                (self.root / relative).read_bytes()).hexdigest()}
+
+        # Referenced JSON is deliberately opaque: only explicit policy/plan
+        # bindings are followed, including the contract's nested baseline pin.
+        self.write(review, json.dumps({'historicalInput': {'path': historical, 'sha256': 'a' * 64}}))
+        self.write(allowance, json.dumps({'review': binding(review)}))
+        self.write(snapshot, '{}')
+        self.write(baseline, json.dumps({'nativeInput': {'path': historical, 'sha256': 'a' * 64}}))
+        self.write(contract, json.dumps({'baseFinitePlan': binding(baseline), 'contentReview': binding(review)}))
+        self.write(offline, '{}')
         self.write(MATH_VIEW_PLAN, json.dumps({
-            'independentDecisionBindings': [{'path': review, 'sha256': 'review'}],
-            'producerSourceSnapshots': {'source': {'path': snapshot, 'sha256': 'snapshot'}},
-            'reviewedExistingAssessmentChanges': {'path': allowance, 'sha256': 'allowance'},
+            'independentDecisionBindings': [binding(review)],
+            'producerSourceSnapshots': {'source': binding(snapshot)},
+            'reviewedExistingAssessmentChanges': binding(allowance),
+            'futurePlacementContract': binding(contract),
+            'nativeInput': {'path': historical, 'sha256': 'a' * 64},
         }))
-        self.write(MATH_VIEW_POLICY, '{}')
-        self.write(review, json.dumps({'historicalInput': {'path': historical}}))
-        self.write(allowance, json.dumps({'review': {'path': review, 'sha256': 'review'}}))
-        for relative in [snapshot, offline]:
-            self.write(relative, '{}')
+        self.write(MATH_VIEW_POLICY, json.dumps({'stageDecisionBindings': [
+            binding(MATH_VIEW_PLAN), binding(review), binding(allowance),
+            binding(contract), binding(baseline),
+        ]}))
 
         def git(*arguments, **kwargs):
             return subprocess.run(['git', '-C', str(self.root), *arguments], check=True,
@@ -436,13 +452,14 @@ class ReportContractTest(unittest.TestCase):
         git('-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
             'commit', '-qm', 'fixture')
         expected = current_input_paths(self.root)
-        self.assertTrue({review, allowance, snapshot, MATH_VIEW_POLICY} <= expected)
+        self.assertTrue({review, allowance, snapshot, contract, baseline, MATH_VIEW_POLICY} <= expected)
         self.assertNotIn(offline, expected)
         self.assertNotIn(historical, expected)
-        # Neither the plan nor its quality dependencies are initially present.
-        git('sparse-checkout', 'set', '--no-cone', '/app/', '/docs/',
+        # Neither plan, policy nor quality dependencies are initially present.
+        git('sparse-checkout', 'set', '--no-cone', '/docs/',
             '/curricula/DE/Gymnasium/canonical/')
         self.assertFalse((self.root / MATH_VIEW_PLAN).exists())
+        self.assertFalse((self.root / MATH_VIEW_POLICY).exists())
         self.assertEqual(expected, current_input_paths(self.root))
         patterns = '\n'.join('/' + path for path in sorted(expected)) + '\n'
         git('sparse-checkout', 'add', '--stdin', input=patterns.encode())
@@ -452,9 +469,10 @@ class ReportContractTest(unittest.TestCase):
 
     def test_declared_view_dependencies_remain_hash_bound_and_cannot_escape(self):
         review = 'curricula/DE/Gymnasium/quality/review/independent.json'
+        digest = hashlib.sha256(b'{}').hexdigest()
         self.bind(MATH_VIEW_POLICY, '{}')
         self.bind(MATH_VIEW_PLAN, json.dumps({
-            'independentDecisionBindings': [{'path': review, 'sha256': 'review'}],
+            'independentDecisionBindings': [{'path': review, 'sha256': digest}],
         }))
         self.bind(review, '{}')
         self.assertIn('4 subjects unexamined', self.check())
@@ -467,10 +485,52 @@ class ReportContractTest(unittest.TestCase):
         for relative in ['../outside.json', '/outside.json', 'curricula/../../outside.json']:
             with self.subTest(relative=relative):
                 self.write(MATH_VIEW_PLAN, json.dumps({
-                    'independentDecisionBindings': [{'path': relative, 'sha256': 'x'}],
+                    'independentDecisionBindings': [{'path': relative, 'sha256': digest}],
                 }))
                 with self.assertRaisesRegex(ValueError, 'Invalid declared view-check input'):
                     current_input_paths(self.root)
+
+    def test_policy_declared_nested_sources_fail_closed_when_missing_or_changed(self):
+        source = 'curricula/DE/Gymnasium/quality/placement/before.json'
+        self.write(MATH_VIEW_PLAN, '{}')
+        self.write(MATH_VIEW_POLICY, json.dumps({'stageDecisionBindings': [
+            {'path': source, 'sha256': hashlib.sha256(b'{}').hexdigest()},
+        ]}))
+        with self.assertRaisesRegex(ValueError, 'Missing bound input'):
+            current_input_paths(self.root)
+        self.write(source, '{}')
+        self.assertIn(source, current_input_paths(self.root))
+        self.write(source, '{"changed":true}')
+        with self.assertRaisesRegex(ValueError, 'Changed bound input'):
+            current_input_paths(self.root)
+
+    def test_policy_declared_dependencies_reject_malformed_pins_and_paths(self):
+        self.write(MATH_VIEW_PLAN, '{}')
+        source = 'curricula/DE/Gymnasium/quality/placement/before.json'
+        digest = hashlib.sha256(b'{}').hexdigest()
+        self.write(source, '{}')
+        malformed = [None, 'source', {}, {'sha256': digest},
+                     *({'path': path, 'sha256': digest} for path in [
+                         '', '../outside.json', '/outside.json', 'C:/outside.json',
+                         'curricula/./source.json', 'curricula//source.json',
+                         'curricula\\source.json', 'curricula/quality/*.json',
+                         'curricula/source\n/other.json']),
+                     *({'path': source, 'sha256': value} for value in [None, '', 'x', 'a' * 63, 'A' * 64])]
+        for pin in malformed:
+            with self.subTest(pin=pin):
+                self.write(MATH_VIEW_POLICY, json.dumps({'stageDecisionBindings': [pin]}))
+                with self.assertRaisesRegex(ValueError, 'Invalid declared view-check'):
+                    current_input_paths(self.root)
+        outside = self.root.parent / (self.root.name + '-external.json')
+        outside.write_text('{}')
+        self.addCleanup(outside.unlink)
+        (self.root / source).unlink()
+        (self.root / source).symlink_to(outside)
+        self.write(MATH_VIEW_POLICY, json.dumps({'stageDecisionBindings': [
+            {'path': source, 'sha256': digest},
+        ]}))
+        with self.assertRaisesRegex(ValueError, 'Invalid declared view-check input'):
+            current_input_paths(self.root)
 
     def test_registry_fallback_extractions_are_bound_inside_reserved_roots(self):
         for route, source_present in [('archive/', True), ('', True), ('archive/', False), ('', False)]:

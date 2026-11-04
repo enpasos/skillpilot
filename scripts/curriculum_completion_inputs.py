@@ -10,9 +10,11 @@ functional inputs disappear. No source files or evidence copies are generated.
 """
 import argparse
 from bisect import bisect_left
+import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import subprocess
 
 SCOPE_INPUTS = {
@@ -83,35 +85,55 @@ def registered_path(root, relative, known, ordered):
     return fallback
 
 
-def math_view_check_inputs(root, known):
-    """Mirror the explicit file bindings read by the production-merger check.
+def view_check_source(root, relative, known):
+    """Read current bytes, including a not-yet-hydrated file in this index."""
+    if (root / relative).is_file():
+        return (root / relative).read_bytes()
+    if relative in known and (root / '.git').exists():
+        result = subprocess.run(['git', '-C', str(root), 'show', ':' + relative],
+                                capture_output=True)
+        if result.returncode == 0:
+            return result.stdout
+    raise ValueError(f'Missing bound input: {relative} (declared view-check source)')
 
-    Read a sparse plan from this repository's index before hydration. Review
-    contents are not traversed: their historical paths are not build inputs.
-    The allowance's review must already occur in independentDecisionBindings,
-    as enforced by MaterializeMathContextualCombinedViews.
+
+def declared_view_check_input(root, binding, known):
+    relative = binding.get('path') if isinstance(binding, dict) else None
+    if (not isinstance(relative, str) or not relative
+            or Path(relative).is_absolute() or '..' in Path(relative).parts
+            or any(character in relative for character in '\\:*?[]\n\r\0')
+            or relative != Path(relative).as_posix()
+            or not (root / relative).resolve().is_relative_to(root)):
+        raise ValueError(f'Invalid declared view-check input: {relative!r}')
+    expected = binding.get('sha256')
+    if not isinstance(expected, str) or not re.fullmatch('[0-9a-f]{64}', expected):
+        raise ValueError(f'Invalid declared view-check SHA-256: {relative}')
+    if hashlib.sha256(view_check_source(root, relative, known)).hexdigest() != expected:
+        raise ValueError(f'Changed bound input: {relative} (declared view-check SHA-256)')
+    return relative
+
+
+def math_view_check_inputs(root, known):
+    """Bind the finite plan and the producer's explicit policy dependencies.
+
+    The policy's stageDecisionBindings authorize contracts, their nested source
+    pins, and independent reviews used by MaterializeMathContextualCombinedViews.
+    Conservatively include this finite list without following referenced JSON:
+    historical paths in reviews and plan authoring evidence are not inputs.
+    Read sparse sources from this repository's own index before hydration.
     """
-    plan_path = root / MATH_VIEW_PLAN
-    if plan_path.is_file():
-        plan = json.loads(plan_path.read_text())
-    elif MATH_VIEW_PLAN in known:
-        result = subprocess.run(['git', '-C', str(root), 'show', ':' + MATH_VIEW_PLAN],
-                                capture_output=True, check=True)
-        plan = json.loads(result.stdout)
-    else:
+    if not (root / MATH_VIEW_PLAN).is_file() and MATH_VIEW_PLAN not in known:
         return set()
+    plan = json.loads(view_check_source(root, MATH_VIEW_PLAN, known))
+    policy = json.loads(view_check_source(root, MATH_VIEW_POLICY, known))
     result = {MATH_VIEW_PLAN, MATH_VIEW_POLICY}
-    bindings = [*plan.get('independentDecisionBindings', []),
+    bindings = [*policy.get('stageDecisionBindings', []),
+                *plan.get('independentDecisionBindings', []),
                 *plan.get('producerSourceSnapshots', {}).values()]
     if 'reviewedExistingAssessmentChanges' in plan:
         bindings.append(plan['reviewedExistingAssessmentChanges'])
     for binding in bindings:
-        relative = binding.get('path') if isinstance(binding, dict) else None
-        if (not isinstance(relative, str) or not relative
-                or Path(relative).is_absolute() or '..' in Path(relative).parts
-                or '\\' in relative or relative != Path(relative).as_posix()):
-            raise ValueError(f'Invalid declared view-check input: {relative!r}')
-        result.add(relative)
+        result.add(declared_view_check_input(root, binding, known))
     return result
 
 
