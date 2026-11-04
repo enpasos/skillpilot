@@ -695,7 +695,7 @@ const verifyExamPreparationUi = async (browser: Browser, baseUrl: string, {
       await confirmation.waitFor()
       assert(activationBodies.length === 0, 'the activation preview does not publish the learner plan')
       await confirmation.getByRole('button', { name: 'Planung jetzt übernehmen', exact: true }).click()
-      await sharedPlanning.getByText('1 Fachpläne sind gemeinsam wirksam. Aktuell ist kein startbares Planziel verfügbar.', { exact: true }).waitFor()
+      await sharedPlanning.getByText('1 Fachpläne sind gemeinsam wirksam. Es wurde kein neues Lernziel ausgewählt.', { exact: true }).waitFor()
       assert(activationBodies.length === 1, 'explicit confirmation activates the selected-only preparation exactly once')
       const learnerBlocks = activationBodies[0]!.plans[0]!.blocks
       const activeLearning = learnerBlocks.flatMap((block) => block.kind === 'learning' && block.active !== false ? [block] : [])
