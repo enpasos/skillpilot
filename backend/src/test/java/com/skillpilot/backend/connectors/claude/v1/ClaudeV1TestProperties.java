@@ -25,7 +25,7 @@ public final class ClaudeV1TestProperties {
      * tables of one that is still running.
      */
     public static final String CORE_DATASOURCE =
-            "spring.datasource.url=jdbc:h2:mem:claude-v1-core;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=VALUE";
+            "spring.datasource.url=jdbc:h2:mem:claude-v1-core-${random.uuid};DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=VALUE";
     public static final String WEB_DATASOURCE =
             "spring.datasource.url=jdbc:h2:mem:claude-v1-web;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=VALUE";
     public static final String DISABLED_DATASOURCE =

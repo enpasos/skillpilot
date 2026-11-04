@@ -1,0 +1,59 @@
+{
+  "status": "PASS_BOUNDED_GENERAL_DATABASE_FIX_AND_NATIVE_BOUND_CONTROLLER_EXPECTATIONS_READY_FOR_ROOT_IMPORT",
+  "frozenAt": "2026-11-04T01:40:09.849406+00:00",
+  "files": [
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/ClaudeV1TestProperties.java",
+      "candidatePath": "tmp/approach-review-20261101/general-context-database-isolation-20261104-v1/overlay/backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/ClaudeV1TestProperties.java",
+      "beforeSha256": "7eee2653a5bf7d044f767de04c6f530117c0edf2b8729bd05a457ea24bdf33f1",
+      "candidateSha256": "6ebe0cc85815cdab9e6a82ae40975cd0f0e0c9713f77fa3a5f901e262e28529c"
+    },
+    {
+      "path": "backend/src/test/resources/application-test.properties",
+      "candidatePath": "tmp/approach-review-20261101/general-context-database-isolation-20261104-v1/overlay/backend/src/test/resources/application-test.properties",
+      "beforeSha256": "219ec143332ce829c5c40a55af5a1db7ffb6c4b6e2e99881f0a72a5ca1d7b529",
+      "candidateSha256": "bd3311510d5cbbeb546d8b1ee8b36b25b283aa767d06ef45c1ac3ad8df9291f8"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+      "candidatePath": "tmp/approach-review-20261101/general-context-database-isolation-20261104-v1/overlay/backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+      "beforeSha256": "1024abc810bb86318d51a086dc109d3bcaf90ac4089162007e113a666f4e90c0",
+      "candidateSha256": "6316a0b0e90ff4c35d8827c59104269ebb5ece1e2a78966c489c78148b7733f2"
+    }
+  ],
+  "actualProof": {
+    "path": "tmp/approach-review-20261101/general-context-database-isolation-20261104-v1/database-isolation-and-controller.actual.json",
+    "sha256": "db86f8713ed1900ec33400c873493fb8be4f35b71d646f1c5b993884141e4c97",
+    "bytes": 8553
+  },
+  "candidateDiff": {
+    "path": "tmp/approach-review-20261101/general-context-database-isolation-20261104-v1/candidate.diff",
+    "sha256": "1d40e2aa175f354c6e75187bd9e9f4166c5a767810393fa6279c41494705a2ba",
+    "bytes": 3686
+  },
+  "inputBindings": {
+    "path": "tmp/approach-review-20261101/general-context-database-isolation-20261104-v1/input-bindings.json",
+    "sha256": "81bbda1f136b83023ce85735af88f5ad0da083c26fc5dce8e05f56d0ca7c021c",
+    "bytes": 1047387
+  },
+  "selectedActualCIClasses": {
+    "path": "tmp/approach-review-20261101/general-context-database-isolation-20261104-v1/selected-ci-context-cycle.json",
+    "sha256": "69e2a51060164f595b7c2799ca7e3539d643619520a592e6d751a88b95df0cfc",
+    "bytes": 5046
+  },
+  "correctedHostInputsAndNativeCounts": {
+    "path": "tmp/approach-review-20261101/general-context-database-isolation-20261104-v1/corrected-host-and-sh-counts.actual.json",
+    "sha256": "7211863da9150819302155424f7195fa6436734c6c3ca92966ddf630babf7cb9",
+    "bytes": 18973
+  },
+  "fourAffectedWholeClasses163AfterPass": true,
+  "core50AfterPass": true,
+  "correctedController38Pass": true,
+  "noRootOrRootGitWrites": true,
+  "noFullBackendCIPassClaimed": true,
+  "verificationSource": {
+    "path": "tmp/approach-review-20261101/general-context-database-isolation-20261104-v1/verify-and-freeze.py",
+    "sha256": "c132e6c9f108f11405e4208bc1544106d2293d528af1023edd7df01352a09658",
+    "bytes": 7801
+  }
+}

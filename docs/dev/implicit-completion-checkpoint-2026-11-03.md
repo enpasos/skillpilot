@@ -34,22 +34,35 @@ kompiliert. Die Graphvalidierung unterscheidet die curriculare Kompetenz von
 ihrer Prüfungsform und prüft gerichtete Vorbereitungswege. Sie meldet noch
 49 fachlich offene Routen.
 
-Der GitHub-Stand `36a1292e2f` bestätigt Dokumentation, Lernzielbuch,
-Completion-Kern, Cockpit, OpenAI-/Claude-Adapter und OAuth. Die vollständige
-Mathematik- und Graphprüfung bleibt wegen der Datenlücken rot. Der Frontendjob
-erreicht nach der Speicherbereinigung die Tests und findet einen veralteten
-Hinweistext; dessen Korrektur besteht inzwischen im vollständigen lokalen
-Trainer-Plan-UI-Test. Ein gemeinsamer Datenbankname in unterschiedlichen
-Gemini-Testkontexten verursacht zudem Tabellenverluste. Mit getrennten
+Der GitHub-Stand `54de010d39` bestätigt Dokumentation, Lernzielbuch,
+Completion-Kern, Cockpit, OpenAI-/Claude-Adapter und alle drei Gemini-Jobs.
+Die vollständige Mathematikprüfung bleibt wegen der Datenlücken rot. Ihr
+GitHub-Bericht stimmt für alle 161 Angebote bei Zielmenge, ungedeckten Zielen,
+offenen Endpunkten und Prüfergebnis mit der lokalen Backendmessung überein.
+Die vollständigen Frontend-, Backend- und Curriculum-Jobs laufen noch.
+
+Der veraltete Hinweistext im Trainer-Plan-Test ist korrigiert; der vollständige
+lokale UI-Test besteht. Ein gemeinsamer Datenbankname in unterschiedlichen
+Gemini-Testkontexten verursachte zudem Tabellenverluste. Mit getrennten
 Testdatenbanken bestehen lokal alle 170 Tests des betroffenen CI-Verbunds;
-vorher wurden dieselben 17 Fehler reproduziert. Für den neuen Gesamtstand wird
-noch kein vollständiger CI-PASS
-behauptet.
+vorher wurden dieselben 17 Fehler reproduziert. Der anschließende erfolgreiche
+GitHub-Gemini-Lauf bestätigt diese Korrektur. Für den gesamten PR wird weiterhin
+kein vollständiger CI-PASS behauptet.
+
+Die gleiche Datenbankkollision ist auch für Claude und die allgemeine
+Backend-Testkonfiguration reproduziert und korrigiert. Nach der Korrektur
+bestehen alle 163 Tests der vier betroffenen Klassen sowie der konkrete
+Claude-Cachezyklus mit 50 Tests. Die ergänzende Controllerprüfung besteht mit
+38 Tests; dabei wurden fehlende archivierte Eingaben im privaten Testaufbau
+ergänzt und vier Schleswig-Holstein-Zielzahlen an die geprüfte
+Markov-Ergänzung angepasst. Dieser begrenzte Nachweis ersetzt keinen
+vollständigen Backendlauf.
 
 [Analysisformen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/analysis-eight/README.md)
 · [Markov-Platzierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/sh-markov-twelve/README.md)
 · [Graphvalidierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/directed-prior-stage-validation/README.md)
 · [Coach und Plan](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-explicit-assessment-choices/README.md)
+· [Backend-Testdatenbanken](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/general-context-isolation/README.md)
 
 ## Integrierter Stand
 

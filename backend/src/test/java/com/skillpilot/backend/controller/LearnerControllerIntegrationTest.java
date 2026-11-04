@@ -1675,8 +1675,8 @@ public class LearnerControllerIntegrationTest {
                 { "DE-HE", "LK", "898", "904" },
                 { "DE-RP", "GK", "691", "695" },
                 { "DE-RP", "LK", "805", "809" },
-                { "DE-SH", "GK", "658", "661" },
-                { "DE-SH", "LK", "776", "779" }
+                { "DE-SH", "GK", "659", "662" },
+                { "DE-SH", "LK", "777", "780" }
         };
         SoftAssertions softly = new SoftAssertions();
 
