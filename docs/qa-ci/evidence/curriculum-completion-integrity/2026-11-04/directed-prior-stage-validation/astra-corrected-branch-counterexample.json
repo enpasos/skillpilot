@@ -1,0 +1,142 @@
+{
+  "counterexample": "Valid earlier p1->a1 preparation hides p1->x2 where x2 is a current-stage assessment. The graph is acyclic; all current/prior ordinary goals have genuine own-stage terminals; both orientations and all execution metadata are valid.",
+  "input": [
+    {
+      "id": "a1",
+      "title": "a1",
+      "stage": "prior",
+      "phase": "J10",
+      "contains": [],
+      "requires": []
+    },
+    {
+      "id": "a2",
+      "title": "a2",
+      "stage": "current",
+      "phase": "E",
+      "contains": [],
+      "requires": []
+    },
+    {
+      "id": "p1",
+      "title": "p1",
+      "stage": "prior",
+      "phase": "J10",
+      "contains": [],
+      "requires": [
+        "a1",
+        "x2"
+      ]
+    },
+    {
+      "id": "g2",
+      "title": "g2",
+      "stage": "current",
+      "phase": "E",
+      "contains": [],
+      "requires": [
+        "p1"
+      ]
+    },
+    {
+      "id": "q2",
+      "title": "q2",
+      "stage": "current",
+      "phase": "E",
+      "contains": [],
+      "requires": [
+        "a2"
+      ]
+    },
+    {
+      "id": "x2",
+      "title": "x2",
+      "stage": "current",
+      "phase": "E",
+      "contains": [],
+      "requires": [
+        "q2"
+      ],
+      "nodeKind": "exam",
+      "examData": {
+        "taskContent": "Task",
+        "solutionContent": "Solution and rubric",
+        "reviewStatus": "released",
+        "scoring": {
+          "maxPoints": 2,
+          "passingPoints": 1,
+          "steps": [
+            {
+              "points": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "e2",
+      "title": "e2",
+      "stage": "current",
+      "phase": "E",
+      "contains": [],
+      "requires": [
+        "g2"
+      ],
+      "nodeKind": "exam",
+      "examData": {
+        "taskContent": "Task",
+        "solutionContent": "Solution and rubric",
+        "reviewStatus": "released",
+        "scoring": {
+          "maxPoints": 2,
+          "passingPoints": 1,
+          "steps": [
+            {
+              "points": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "e1",
+      "title": "e1",
+      "stage": "prior",
+      "phase": "J10",
+      "contains": [],
+      "requires": [
+        "p1"
+      ],
+      "nodeKind": "exam",
+      "examData": {
+        "taskContent": "Task",
+        "solutionContent": "Solution and rubric",
+        "reviewStatus": "released",
+        "scoring": {
+          "maxPoints": 2,
+          "passingPoints": 1,
+          "steps": [
+            {
+              "points": 2
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "currentFindings": [
+    {
+      "goalId": "p1",
+      "message": "Route order is reversed: curricularAtomic directly requires later practiceAssessment goal x2 for Sek II."
+    }
+  ],
+  "priorFindings": [
+    {
+      "goalId": "p1",
+      "message": "Route order is reversed: curricularAtomic directly requires later practiceAssessment goal x2 for Sek I."
+    }
+  ],
+  "currentPreparationAccepted": true,
+  "canonicalPhaseFindings": [],
+  "expected": "The actual ordinary->assessment prerequisite p1->x2 must retain the route-order refusal; its exclusion from the proof relation must not remove edge validity/order checks."
+}

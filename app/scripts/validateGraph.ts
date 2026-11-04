@@ -4,6 +4,7 @@ import type { SkillLandscape } from '../src/landscapeTypes'
 import { convertLearningGoal, type UiGoal } from '../src/goalTypes'
 import {
   validateHardDirectAtomicRoutes,
+  buildHardRouteProofGraph,
   hasHardRouteAssessmentRole,
   validateOrientationMotivationStructure,
   type HardRouteSemanticKind,
@@ -154,13 +155,6 @@ interface ParsedLandscape {
   title: string
   frameworkId?: string
   goals: UiGoal[]
-}
-
-interface ScopedMotivationConnectivityProfile {
-  landscapeId: string
-  anchorGoalIds: string[]
-  goalSelector: (goal: UiGoal) => boolean
-  scopeLabel: string
 }
 
 interface ScopedFullRouteCoverageProfile extends HardRouteProfile<UiGoal> {
@@ -490,28 +484,13 @@ function isCanonicalGymMathAtomicGoal(goal: UiGoal): boolean {
   return isAtomicGoal(goal) && !isMemoryGoal(goal)
 }
 
-const scopedMotivationConnectivityProfiles: ScopedMotivationConnectivityProfile[] = [
-  {
-    landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
-    anchorGoalIds: [CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID],
-    goalSelector: isCanonicalGymMathSek1CurricularGoal,
-    scopeLabel: 'canonical DE Gymnasium mathematics / Sek I curricular atomic goals',
-  },
-  {
-    landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
-    anchorGoalIds: [CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID],
-    goalSelector: isCanonicalGymMathSek2CurricularGoal,
-    scopeLabel: 'canonical DE Gymnasium mathematics / Sek II curricular atomic goals',
-  },
-]
-
 const scopedFullRouteCoverageProfiles: ScopedFullRouteCoverageProfile[] = [
   {
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
     motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID],
     terminalGoalClusterIds: CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS,
     terminalGoalSelector: (goal) => hasHardRouteAssessmentRole(goal, canonicalMathSemanticKindByGoalId.get(goal.id)),
-    routeGoalSelector: isCanonicalGymMathSek1Goal,
+    routeGoalSelector: (goal) => isCanonicalGymMathSek1Goal(goal) && !isCanonicalGymMathSek2Goal(goal),
     goalSelector: isCanonicalGymMathSek1CurricularGoal,
     scopeLabel: 'canonical DE Gymnasium mathematics / Sek I curricular atomic goals',
   },
@@ -521,6 +500,10 @@ const scopedFullRouteCoverageProfiles: ScopedFullRouteCoverageProfile[] = [
     terminalGoalClusterIds: CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS,
     terminalGoalSelector: (goal) => hasHardRouteAssessmentRole(goal, canonicalMathSemanticKindByGoalId.get(goal.id)),
     routeGoalSelector: isCanonicalGymMathSek2Goal,
+    priorStagePreparation: {
+      motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID],
+      routeGoalSelector: isCanonicalGymMathSek1Goal,
+    },
     goalSelector: isCanonicalGymMathSek2CurricularGoal,
     scopeLabel: 'canonical DE Gymnasium mathematics / Sek II curricular atomic goals',
   },
@@ -959,12 +942,13 @@ function validateLandscape(landscape: ParsedLandscape) {
     }
   }
 
-  for (const profile of scopedMotivationConnectivityProfiles) {
+  for (const profile of scopedFullRouteCoverageProfiles) {
     if (profile.landscapeId !== landscape.landscapeId) continue
 
+    const proof = buildHardRouteProofGraph(landscape.goals, canonicalMathSemanticKindByGoalId, profile)
     const scopedGoals = landscape.goals.filter(profile.goalSelector)
-    const missingAnchorIds = profile.anchorGoalIds.filter((goalId) => !localMap.has(goalId))
-    const anchorLabels = profile.anchorGoalIds
+    const missingAnchorIds = profile.motivationAnchorGoalIds.filter((goalId) => !localMap.has(goalId))
+    const anchorLabels = profile.motivationAnchorGoalIds
       .map((goalId) => {
         const goal = localMap.get(goalId)
         return goal ? `${goal.id} (${goal.title})` : goalId
@@ -981,8 +965,8 @@ function validateLandscape(landscape: ParsedLandscape) {
     }
 
     scopedGoals.forEach((goal) => {
-      if (profile.anchorGoalIds.includes(goal.id)) return
-      if (profile.anchorGoalIds.some((anchorGoalId) => hasPathToTarget(goal.id, anchorGoalId, effectiveEdges))) return
+      if (profile.motivationAnchorGoalIds.includes(goal.id)) return
+      if (proof.hasEffectiveMotivationPath(goal.id, effectiveEdges)) return
 
       addIssue(
         graphRuleIssueLevel,

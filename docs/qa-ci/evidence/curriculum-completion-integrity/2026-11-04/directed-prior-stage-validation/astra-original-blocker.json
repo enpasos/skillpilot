@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "independent-directed-prior-stage-implementation-review-20261104-v1",
+  "reviewerAgent": "/root/astra_review_current_integration",
+  "status": "CHANGES_REQUIRED",
+  "candidateManifest": {
+    "path": "tmp/approach-review-20261101/sol-directed-prior-stage-qa-20261104-v1/manifest.json",
+    "sha256": "af91d2c51bdb731b03b583a238f3293824130e092ee0659a4c3600dfb506faa9"
+  },
+  "candidateDiff": {
+    "path": "tmp/approach-review-20261101/sol-directed-prior-stage-qa-20261104-v1/candidate.diff",
+    "sha256": "ae5f4cac57ee3ea78df8d3f403cb95895aca99f884e0a99150c7dd8f2f3a08b9"
+  },
+  "principleRetained": "Directed genuine prior-stage preparation remains the correct bounded design. The candidate correctly separates preparation and current-stage terminal proof, preserves own-stage terminals and excludes foreign/ambiguous nodes from witness construction.",
+  "findings": [
+    {
+      "id": "GVR-REVIEW-001",
+      "severity": "blocking",
+      "location": "app/scripts/lib/hardLearningRouteValidation.ts:418",
+      "problem": "Actual direct prerequisite order is checked only after filtering through preparationEdges. A valid prior-stage preparation branch therefore hides a reversed ordinary-to-assessment prerequisite on that same participating prior node when the assessment belongs to the current stage.",
+      "reproduction": {
+        "path": "tmp/approach-review-20261101/astra-current-integration-review-20261104-v1/gvr-branch-counterexample.mts",
+        "sha256": "6c144dd4e5e2c3c8412b90316b2958c567fdecfe79dbb073206450018ab9a9b2"
+      },
+      "actual": {
+        "path": "tmp/approach-review-20261101/astra-current-integration-review-20261104-v1/gvr-branch-counterexample.actual.json",
+        "sha256": "755c906f55fe39e47a1a203f53bc5e60747bff76809e9e4272046532d13a732f"
+      },
+      "observed": "Both current-stage and prior-stage validateHardDirectAtomicRoutes calls return zero findings for the acyclic counterexample; canonical phase validation also returns zero findings.",
+      "contract": "The fundamental contract explicitly retains every relevant direct edge validity/order guard, including parallel malformed or reversed prerequisites. The canonical reference-phase profile deliberately has no legacy acquisition-order fallback.",
+      "requiredCorrection": "Keep witness construction stage-filtered, but inspect actual authored direct prerequisite edges of relevant participating nodes for validity and role/order. Add regression for valid prior proof plus returning current-stage assessment; also test excluded future/ambiguous assessment branches so a valid witness cannot silently waive their order violations. Do not introduce universal temporal phase ordering or widen terminal scope.",
+      "testGap": "Topology case16 only examines missing motivation/terminal messages and expects full=true. It does not assert retained edge findings, so its label does not verify the unchanged-guards contract."
+    }
+  ],
+  "verifiedLimits": [
+    "No runtime, curriculum, source/scope, R, mastery or target mutations in the four-file candidate.",
+    "The prior 72-to-66 comparison and existing suites do not cover this independently reproduced counterexample.",
+    "No approval or import recommended until bounded correction and actual follow-up proof."
+  ]
+}

@@ -6,6 +6,8 @@ import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 import assert from 'node:assert/strict'
 import {
   validateHardDirectAtomicRoutes,
+  buildHardRouteProofGraph,
+  type HardRouteProfile,
   hasHardRouteAssessmentRole,
   validateOrientationMotivationStructure,
   type HardRouteGoal,
@@ -550,8 +552,19 @@ assert.ok(validateHardDirectAtomicRoutes(sameIdentityGoals.map(g => g.id === 'un
 const earlyCurricularAssessmentKinds = new Map(earlyAssessmentKinds).set('early-assessment', 'curricularAtomic')
 const earlyCurricularAssessmentGoals = assessmentBeforeUnderstanding.map(g => g.id === 'early-assessment'
   ? { ...g, nodeKind: 'exam', examData: curricularExam.examData } : g)
-assert.ok(validateHardDirectAtomicRoutes(earlyCurricularAssessmentGoals, earlyCurricularAssessmentKinds, profile)
-  .some(f => f.message.includes('Route order is reversed')), 'curricular membership does not lower the assessment execution role')
+for (const sourceHasAssessment of [false, true]) {
+  const sameRankGoals = earlyCurricularAssessmentGoals.map(g => sourceHasAssessment && g.id === 'understand-a'
+    ? { ...g, nodeKind: 'exam', examData: curricularExam.examData } : g)
+  assert.ok(!validateHardDirectAtomicRoutes(sameRankGoals, earlyCurricularAssessmentKinds, profile)
+    .some(f => f.message.includes('Route order is reversed')),
+    'authoritative curricularAtomic rank permits ordinary or whole-form curricular prerequisites')
+}
+const wholeFormBeforePureAssessment = assessmentBeforeUnderstanding.map(g => g.id === 'understand-a'
+  ? { ...g, nodeKind: 'exam', examData: curricularExam.examData } : g)
+assert.ok(validateHardDirectAtomicRoutes(wholeFormBeforePureAssessment, earlyAssessmentKinds, profile)
+  .some(f => f.goalId === 'understand-a' && f.message.includes('Route order is reversed')
+    && f.message.includes('early-assessment')),
+  'a curricular whole-form goal retains rank1 and cannot require a pure practiceAssessment of rank2')
 
 // Test the existing strict schema+fingerprint ledger parser on whole real input,
 // with transient copies only. No stale evidence or changed counts are accepted.
@@ -645,3 +658,199 @@ assert.ok(durationG8.includes(targetId))
 for (const id of legacyIds) assert.ok(durationG8.includes(id), 'legacy G8 terminal inventory retained '+id)
 assert.deepEqual(terminalAutonomyGoalsForRouteScope(cqsMap, durationProfile as any, {durationModel:'G9'}, mixedTerminals, new Set([targetId])).map(g=>g.id), [targetId], 'legacy per-duration narrowing stays exact')
 assert.deepEqual(collectRouteTerminalAutonomyGoals(bound, {...cqsProfile, goalSelector:()=>false}), [], 'no assessment crosses the selected global stage/profile')
+
+// Directed prior-stage preparation changes the incoming proof only. These are
+// the 16 independently proposed topology cases, with productive kind/role guards
+// exercised separately below. There is no goal-ID exception in the implementation.
+type StageFixtureGoal = HardRouteGoal & { stages: string[] }
+const stageFixtures = (requirements: Record<string, string[]>): StageFixtureGoal[] =>
+  ['a1', 'p1', 'q1', 'e1', 'a2', 'p2', 'q2', 'g2', 'e2', 'f3'].map((id) => ({
+    id, stages: [id.endsWith('1') ? 'prior' : id.endsWith('2') ? 'current' : 'future'],
+    contains: [], requires: requirements[id] ?? [],
+    ...(id.startsWith('e') ? { nodeKind: 'exam', examData: curricularExam.examData } : {}),
+  }))
+const stageKinds = new Map<string, HardRouteSemanticKind>(stageFixtures({}).map((goal) => [goal.id,
+  goal.id.startsWith('a') ? 'orientation' : goal.id.startsWith('e') ? 'practiceAssessment' : 'curricularAtomic']))
+const currentStageProfile: HardRouteProfile<StageFixtureGoal> = {
+  scopeLabel: 'fixture / directed Sek II preparation', motivationAnchorGoalIds: ['a2'],
+  terminalGoalClusterIds: [], terminalGoalSelector: (goal) => goal.nodeKind === 'exam',
+  routeGoalSelector: (goal) => goal.stages.includes('current'), goalSelector: (goal) => goal.id === 'g2',
+  priorStagePreparation: { motivationAnchorGoalIds: ['a1'], routeGoalSelector: (goal) => goal.stages.includes('prior') },
+}
+const earlierStageProfile: HardRouteProfile<StageFixtureGoal> = {
+  ...currentStageProfile, motivationAnchorGoalIds: ['a1'], priorStagePreparation: undefined,
+  routeGoalSelector: (goal) => goal.stages.includes('prior') && !goal.stages.includes('current'),
+  goalSelector: (goal) => goal.id === 'p1',
+}
+const directedPreparationCases: Array<{ name: string; requires: Record<string, string[]>;
+  preparation: boolean; terminal: boolean; full: boolean; earlier?: boolean }> = [
+  {"name": "unchanged same-stage route","requires": {"g2": ["p2"],"p2": ["a2"],"e2": ["g2"]},"preparation": true,"terminal": true,"full": true},
+  {"name": "genuine earlier basis then own terminal","requires": {"g2": ["p1"],"p1": ["a1"],"e2": ["g2"]},"preparation": true,"terminal": true,"full": true,"earlier": true},
+  {"name": "earlier preparation via current content","requires": {"g2": ["p2"],"p2": ["p1"],"p1": ["a1"],"e2": ["q2"],"q2": ["g2"]},"preparation": true,"terminal": true,"full": true},
+  {"name": "preparation missing entirely","requires": {"e2": ["g2"]},"preparation": false,"terminal": true,"full": false},
+  {"name": "earlier component lacks anchor","requires": {"g2": ["p1"],"e2": ["g2"]},"preparation": false,"terminal": true,"full": false,"earlier": false},
+  {"name": "mere direct foreign motivation edge is no earlier content basis","requires": {"g2": ["a1"],"e2": ["g2"]},"preparation": false,"terminal": true,"full": false},
+  {"name": "future preparation detour","requires": {"g2": ["f3"],"f3": ["p1"],"p1": ["a1"],"e2": ["g2"]},"preparation": false,"terminal": true,"full": false},
+  {"name": "earlier-to-later-to-earlier bounce","requires": {"g2": ["p1"],"p1": ["p2"],"p2": ["q1"],"q1": ["a1"],"e2": ["g2"]},"preparation": false,"terminal": true,"full": false,"earlier": false},
+  {"name": "earlier-to-later anchor bounce","requires": {"g2": ["p1"],"p1": ["a2"],"e2": ["g2"]},"preparation": false,"terminal": true,"full": false,"earlier": false},
+  {"name": "own-stage terminal absent","requires": {"g2": ["p1"],"p1": ["a1"]},"preparation": true,"terminal": false,"full": false},
+  {"name": "earlier assessment cannot stand in for current terminal","requires": {"g2": ["p1"],"p1": ["a1"],"e1": ["g2"]},"preparation": true,"terminal": false,"full": false},
+  {"name": "terminal segment cannot use earlier bridge","requires": {"g2": ["p1"],"p1": ["a1"],"e2": ["q1"],"q1": ["g2"]},"preparation": true,"terminal": false,"full": false},
+  {"name": "terminal segment cannot use future bridge","requires": {"g2": ["p1"],"p1": ["a1"],"e2": ["f3"],"f3": ["g2"]},"preparation": true,"terminal": false,"full": false},
+  {"name": "reversed terminal edge does not prove completion","requires": {"g2": ["p1","e2"],"p1": ["a1"]},"preparation": true,"terminal": false,"full": false},
+  {"name": "earlier-profile cannot be rescued by later stage","requires": {"p1": ["p2"],"p2": ["a1"],"g2": ["a2"],"e2": ["g2"]},"preparation": true,"terminal": true,"full": true,"earlier": false},
+  {"name": "valid branch plus invalid branch does not legitimize invalid branch","requires": {"g2": ["p1","f3"],"p1": ["a1"],"f3": ["a2"],"e2": ["g2"]},"preparation": true,"terminal": true,"full": true,"earlier": true},
+]
+assert.equal(directedPreparationCases.length, 16)
+for (const testCase of directedPreparationCases) {
+  const fixtureGoals = stageFixtures(testCase.requires)
+  const proof = buildHardRouteProofGraph(fixtureGoals, stageKinds, currentStageProfile)
+  const findings = validateHardDirectAtomicRoutes(fixtureGoals, stageKinds, currentStageProfile)
+  const missing = findings.filter((finding) => finding.goalId === 'g2' && finding.message.includes('missing direct atomic'))
+  assert.equal(proof.hasPreparationPath('g2'), testCase.preparation, testCase.name)
+  assert.equal(proof.hasEffectiveMotivationPath('g2', new Map(fixtureGoals.map((goal) => [goal.id, goal.requires ?? []]))),
+    testCase.preparation, `GVR011 uses the same directed alternative: ${testCase.name}`)
+  assert.equal(!missing.some((finding) => finding.message.includes('motivation')), testCase.preparation, testCase.name)
+  assert.equal(!missing.some((finding) => finding.message.includes('terminal')), testCase.terminal, testCase.name)
+  assert.equal(missing.length === 0, testCase.full, testCase.name)
+  if (testCase.earlier !== undefined) {
+    assert.equal(buildHardRouteProofGraph(fixtureGoals, stageKinds, earlierStageProfile).hasPreparationPath('p1'),
+      testCase.earlier, `Sek I remains independent: ${testCase.name}`)
+  }
+}
+
+const validEarlierRequirements = { g2: ['p1'], p1: ['a1'], e2: ['g2'] }
+const earlierGoals = stageFixtures(validEarlierRequirements)
+assert.deepEqual(validateHardDirectAtomicRoutes(earlierGoals, stageKinds, currentStageProfile), [])
+const effectiveOnlyGoals = stageFixtures({ e2: ['g2'] })
+const inheritedEarlierEdges = new Map([['g2', ['p1']], ['p1', ['a1']]])
+assert.equal(buildHardRouteProofGraph(effectiveOnlyGoals, stageKinds, currentStageProfile)
+  .hasEffectiveMotivationPath('g2', inheritedEarlierEdges), false,
+'an effective/inherited earlier-stage shortcut cannot replace direct preparation')
+assert.equal(buildHardRouteProofGraph(effectiveOnlyGoals, stageKinds, currentStageProfile)
+  .hasEffectiveMotivationPath('g2', new Map([['g2', ['p2']], ['p2', ['a2']]])), true,
+'GVR011 retains its weaker effective compatibility lane entirely within the current stage')
+assert.equal(buildHardRouteProofGraph(effectiveOnlyGoals, stageKinds, currentStageProfile)
+  .hasEffectiveMotivationPath('g2', new Map([['g2', ['p1']], ['p1', ['a2']]])), false,
+'GVR011 cannot leave and reenter the current stage through effective edges')
+
+for (const stages of [[], ['prior', 'current'], ['future']]) {
+  const ambiguousBridge = earlierGoals.map((goal) => goal.id === 'p1' ? { ...goal, stages } : goal)
+  assert.equal(buildHardRouteProofGraph(ambiguousBridge, stageKinds, currentStageProfile).hasPreparationPath('g2'), false,
+    `an unresolved or overlapping preparation membership cannot prove a route: ${stages}`)
+  assert.ok(validateHardDirectAtomicRoutes(earlierGoals.map((goal) => goal.id === 'e2' ? { ...goal, stages } : goal),
+    stageKinds, currentStageProfile).some((finding) => finding.goalId === 'g2' && finding.message.includes('terminal')),
+    'an unresolved or overlapping terminal cannot close the current-stage route')
+}
+for (const anchorId of ['a1', 'a2']) {
+  const ambiguousAnchor = earlierGoals.map((goal) => goal.id === anchorId ? { ...goal, stages: ['prior', 'current'] } : goal)
+  assert.ok(validateHardDirectAtomicRoutes(ambiguousAnchor, stageKinds, currentStageProfile)
+    .some((finding) => finding.goalId === anchorId && finding.message.includes('Motivation anchor must')))
+}
+for (const invalidAnchor of [
+  { requires: ['p1'] }, { contains: ['p1'] },
+]) {
+  assert.ok(validateHardDirectAtomicRoutes(earlierGoals.map((goal) => goal.id === 'a1' ? { ...goal, ...invalidAnchor } : goal),
+    stageKinds, currentStageProfile).some((finding) => finding.goalId === 'a1' && finding.message.includes('Motivation anchor must')),
+    'the earlier orientation remains an atomic prerequisite-free anchor')
+}
+assert.ok(validateHardDirectAtomicRoutes(earlierGoals, new Map(stageKinds).set('a1', 'curricularAtomic'), currentStageProfile)
+  .some((finding) => finding.goalId === 'a1' && finding.message.includes('semanticKind=orientation')))
+assert.ok(validateHardDirectAtomicRoutes(earlierGoals.filter((goal) => goal.id !== 'a1'), stageKinds, currentStageProfile)
+  .some((finding) => finding.goalId === 'a1' && finding.message.includes('Missing motivation anchor')))
+for (const earlierKind of ['memory', 'practiceAssessment'] as const) {
+  assert.equal(buildHardRouteProofGraph(earlierGoals, new Map(stageKinds).set('p1', earlierKind), currentStageProfile)
+    .hasPreparationPath('g2'), false, 'an earlier memory/assessment alone is not ordinary curricular preparation')
+}
+const earlierAssessment = earlierGoals.map((goal) => goal.id === 'p1'
+  ? { ...goal, nodeKind: 'exam', examData: curricularExam.examData } : goal)
+assert.equal(buildHardRouteProofGraph(earlierAssessment, stageKinds, currentStageProfile).hasPreparationPath('g2'), false,
+  'a same-identity curricular assessment cannot substitute for ordinary earlier preparation')
+
+const withBadPriorRequirement: StageFixtureGoal[] = [
+  ...stageFixtures({ ...validEarlierRequirements, p1: ['a1', 'bad-cluster'] }),
+  { id: 'bad-cluster', stages: ['prior'], contains: ['q1'], requires: [] },
+]
+assert.ok(validateHardDirectAtomicRoutes(withBadPriorRequirement, new Map(stageKinds).set('bad-cluster', 'curricularArea'), currentStageProfile)
+  .some((finding) => finding.goalId === 'p1' && finding.message.includes('non-route direct prerequisite')),
+  'a valid earlier path does not hide a cluster requirement on a participating preparation node')
+assert.ok(validateHardDirectAtomicRoutes(stageFixtures({ ...validEarlierRequirements, g2: ['p1', 'e1'] }), stageKinds, currentStageProfile)
+  .some((finding) => finding.goalId === 'g2' && finding.message.includes('Route order is reversed')),
+  'a valid earlier branch does not hide a reversed assessment prerequisite')
+assert.ok(validateHardDirectAtomicRoutes(earlierGoals.map((goal) => goal.id === 'e2'
+  ? { ...goal, examData: { ...curricularExam.examData, solutionContent: '' } } : goal), stageKinds, currentStageProfile)
+  .some((finding) => finding.goalId === 'e2' && finding.message.includes('task/rubric metadata')),
+  'earlier preparation does not waive terminal task/rubric readiness')
+const memoryStageKinds = new Map(stageKinds).set('m1', 'memory').set('m2', 'memory')
+const withEarlierMemory: StageFixtureGoal[] = [
+  ...stageFixtures({ ...validEarlierRequirements, g2: ['m2'] }),
+  { id: 'm2', stages: ['current'], requires: ['m1'], contains: [] },
+  { id: 'm1', stages: ['prior'], requires: ['p1'], contains: [] },
+]
+assert.deepEqual(validateHardDirectAtomicRoutes(withEarlierMemory, memoryStageKinds, currentStageProfile), [],
+  'ordinary prior preparation may precede optional memory on the directed preparation route')
+const earlyPriorMemory: StageFixtureGoal[] = [
+  ...stageFixtures({ ...validEarlierRequirements, p1: ['m1'] }),
+  { id: 'm1', stages: ['prior'], requires: ['a1'], contains: [] },
+]
+assert.ok(validateHardDirectAtomicRoutes(earlyPriorMemory, memoryStageKinds, currentStageProfile)
+  .some((finding) => finding.goalId === 'm1' && finding.message.includes('without following an ordinary curricular')),
+  'a participating earlier memory node still needs ordinary preparation before it')
+assert.ok(validateHardDirectAtomicRoutes(stageFixtures({ e2: ['p1'], p1: ['a1'] }), stageKinds,
+  { ...currentStageProfile, goalSelector: () => false }).some((finding) => finding.goalId === 'e2'
+    && finding.message.includes('ordinary curricular')), 'prior ordinary preparation does not replace current-stage terminal content')
+
+// Real reviewed whole competencies retain their exact authored preparation;
+// terminal population remains entirely Sek II.
+const actualSek1 = (goal: any) => goal.id === '65365dce-f33f-49d8-9516-42f75883aa86'
+  || goal.tags?.includes('phase:SekI') || /^J(?:[5-9]|10)$/.test(goal.dimensionTags?.phase ?? '')
+  || (goal.dimensionTags?.topicCode ?? '').includes('SEK1')
+const actualSek2 = (goal: any) => goal.id === '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'
+  || goal.tags?.includes('phase:SekII') || ['E', 'Q1', 'Q2', 'Q3', 'Q4'].includes(goal.dimensionTags?.phase)
+  || (goal.dimensionTags?.topicCode ?? '').includes('SEK2')
+const realPriorPreparationProfile: HardRouteProfile<HardRouteGoal> = {
+  scopeLabel: 'real unchanged Sek II competencies', motivationAnchorGoalIds: ['71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'],
+  terminalGoalClusterIds: [], routeGoalSelector: actualSek2,
+  priorStagePreparation: { motivationAnchorGoalIds: ['65365dce-f33f-49d8-9516-42f75883aa86'], routeGoalSelector: actualSek1 },
+  goalSelector: (goal) => ['71f62cfa-7cc2-5f60-9691-bcdc2ee910df', '9f9c7ece-b81c-55fa-8073-dd816d7d4778'].includes(goal.id),
+  terminalGoalSelector: (goal) => hasHardRouteAssessmentRole(goal, rawKinds.get(goal.id)),
+}
+const rawKinds = new Map<string, HardRouteSemanticKind>(ledger.decisions.map((decision: any) => [decision.goalId, decision.semanticKind]))
+const realPreparationProof = buildHardRouteProofGraph(raw.goals, rawKinds, realPriorPreparationProfile)
+for (const goalId of ['71f62cfa-7cc2-5f60-9691-bcdc2ee910df', '9f9c7ece-b81c-55fa-8073-dd816d7d4778']) {
+  assert.equal(realPreparationProof.hasPreparationPath(goalId), true, goalId)
+  assert.equal(buildHardRouteProofGraph(raw.goals, rawKinds, { ...realPriorPreparationProfile, priorStagePreparation: undefined })
+    .hasPreparationPath(goalId), false, 'the legitimate earlier basis has no invented Sek II anchor edge')
+  assert.ok(!validateHardDirectAtomicRoutes(raw.goals, rawKinds, realPriorPreparationProfile)
+    .some((finding) => finding.goalId === goalId && finding.message.includes('missing direct atomic')), goalId)
+}
+console.log('Directed prior-stage preparation: all 16 topology cases, guard regressions and two real whole goals passed.')
+
+// A good witness cannot waive a reversed edge excluded from that witness.
+// Each variant retains genuine current/prior preparation and independent
+// current-stage terminal routes, so a missing route cannot mask the edge guard.
+for (const excludedAssessmentStages of [['current'], ['future'], ['prior', 'current']]) {
+  const branchGoals: StageFixtureGoal[] = [
+    ...stageFixtures({ g2: ['p1'], p1: ['a1', 'x-assessment'], q2: ['a2'], e2: ['g2'], e1: ['p1'] })
+      .filter((goal) => ['a1', 'a2', 'p1', 'g2', 'q2', 'e1', 'e2'].includes(goal.id)),
+    { id: 'parallel-terminal', stages: ['current'], contains: [], requires: ['q2'],
+      nodeKind: 'exam', examData: curricularExam.examData },
+    { id: 'x-assessment', stages: excludedAssessmentStages, contains: [], requires: ['q2'],
+      nodeKind: 'exam', examData: curricularExam.examData },
+  ]
+  const branchKinds = new Map(stageKinds).set('parallel-terminal', 'practiceAssessment').set('x-assessment', 'practiceAssessment')
+  const branchCurrentProfile = { ...currentStageProfile,
+    goalSelector: (goal: StageFixtureGoal) => ['g2', 'q2'].includes(goal.id) }
+  const proof = buildHardRouteProofGraph(branchGoals, branchKinds, branchCurrentProfile)
+  assert.equal(proof.hasPreparationPath('g2'), true, 'genuine earlier preparation remains a valid witness')
+  assert.deepEqual(proof.preparationEdges.get('p1'), ['a1'], 'the excluded assessment must stay outside the witness relation')
+  for (const branchProfile of [branchCurrentProfile, earlierStageProfile]) {
+    const findings = validateHardDirectAtomicRoutes(branchGoals, branchKinds, branchProfile)
+    assert.ok(findings.some((finding) => finding.goalId === 'p1'
+      && finding.message.includes('Route order is reversed') && finding.message.includes('x-assessment')),
+      `an excluded assessment prerequisite must retain its authored edge guard: ${excludedAssessmentStages}`)
+    assert.ok(!findings.some((finding) => finding.message.includes('missing direct atomic')),
+      'both profiles have valid preparation and onward terminal routes independently of the reversed branch')
+  }
+}
+console.log('Authored edge-order guards retain returning, future and ambiguous assessment branches beside valid routes.')
