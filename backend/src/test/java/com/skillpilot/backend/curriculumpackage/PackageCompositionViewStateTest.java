@@ -436,8 +436,10 @@ class PackageCompositionViewStateTest {
 
         PackageCompositionViewState state = PackageCompositionViewState.load(candidate, mapper);
 
-        assertThat(state.viewsById()).hasSize(88);
-        assertThat(state.offeringsById()).hasSize(128);
+        // Include the reviewed G8/G9-specific compositions added to the canonical catalog.
+        assertThat(state.viewsById().keySet()).hasSize(108).containsExactlyInAnyOrderElementsOf(views.keySet());
+        assertThat(state.offeringsById().keySet()).hasSize(151)
+                .containsExactlyInAnyOrderElementsOf(offerings.keySet());
         for (var offering : offerings.values()) {
             var resolved = state.resolveOffering(offering.offeringId());
             assertThat(resolved).as(offering.offeringId())

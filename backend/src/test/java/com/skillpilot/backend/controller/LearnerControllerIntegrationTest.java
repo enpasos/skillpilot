@@ -1585,21 +1585,21 @@ public class LearnerControllerIntegrationTest {
         // do not count. The view-specific HE/RP/SH G8/G9 split remains explicit.
         String[][] scopes = {
                 { "DE-BB", "237", "237" },
-                { "DE-BE", "228", "228" },
+                { "DE-BE", "229", "229" },
                 { "DE-BW", "269", "257" },
-                { "DE-BY", "249", "249" },
-                { "DE-HB", "195", "195" },
+                { "DE-BY", "250", "250" },
+                { "DE-HB", "197", "197" },
                 { "DE-HE", "319", "345" },
-                { "DE-HH", "242", "242" },
+                { "DE-HH", "243", "243" },
                 { "DE-MV", "187", "187" },
-                { "DE-NI", "244", "244" },
-                { "DE-NW", "240", "240" },
+                { "DE-NI", "245", "245" },
+                { "DE-NW", "241", "241" },
                 { "DE-RP", "257", "263" },
-                { "DE-SH", "245", "247" },
+                { "DE-SH", "246", "248" },
                 { "DE-SL", "255", "255" },
-                { "DE-SN", "244", "244" },
-                { "DE-ST", "238", "238" },
-                { "DE-TH", "178", "178" }
+                { "DE-SN", "245", "245" },
+                { "DE-ST", "239", "239" },
+                { "DE-TH", "199", "199" }
         };
         SoftAssertions softly = new SoftAssertions();
 
@@ -1673,10 +1673,10 @@ public class LearnerControllerIntegrationTest {
         String[][] scopes = {
                 { "DE-HE", "GK", "757", "763" },
                 { "DE-HE", "LK", "898", "904" },
-                { "DE-RP", "GK", "690", "694" },
-                { "DE-RP", "LK", "804", "808" },
-                { "DE-SH", "GK", "656", "659" },
-                { "DE-SH", "LK", "774", "777" }
+                { "DE-RP", "GK", "691", "695" },
+                { "DE-RP", "LK", "805", "809" },
+                { "DE-SH", "GK", "658", "661" },
+                { "DE-SH", "LK", "776", "779" }
         };
         SoftAssertions softly = new SoftAssertions();
 

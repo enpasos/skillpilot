@@ -1,0 +1,35 @@
+{
+  "reviewId": "astra-backend-five-final-adapter-execution-addendum-20261104-v1",
+  "status": "PASS_SOURCE_REVIEW_AND_BOUNDED_CURRENT_ADAPTER_TEST_EVIDENCE",
+  "priorReview": {
+    "path": "tmp/approach-review-20261101/astra-backend-controller-catalog-review-20261104-v1/review.json",
+    "sha256": "db56f5c3de61f59015f614d4acf715740db66189a29cee35d5139d7680c351cc"
+  },
+  "followupEvidence": {
+    "path": "tmp/approach-review-20261101/backend-ci-review-cache-bound-20261104-v1/bounded-review-and-oom-diagnosis.json",
+    "sha256": "6bb49ff82825e0ac2b540e58cd1c122a02db95d2edd056115bb4af4e0fb9f106"
+  },
+  "execution": {
+    "path": "tmp/approach-review-20261101/backend-ci-review-cache-bound-20261104-v1/cache-two-five-context-tests.execution.json",
+    "sha256": "89c516e2c6a364ea8ff596794115d528991ada7f7e2ceba55ca60a69f2d9ecef",
+    "bytes": 36787
+  },
+  "log": {
+    "path": "tmp/approach-review-20261101/backend-ci-review-cache-bound-20261104-v1/cache-two-five-context-tests.log.gz",
+    "sha256": "26b9c78a37d48ae9bd868af1b1ae0adf24df451d2be4954d569151ff925d19d7",
+    "bytes": 178350
+  },
+  "allFiveCurrentSourceHashesMatchPriorIndependentReview": true,
+  "finalAdapterAndCanonicalPositiveNegativeClassBoundToFreshExecution": true,
+  "freshTestsPassed": 32,
+  "freshTestsFailed": 0,
+  "freshTestsSkipped": 0,
+  "freshTestsAborted": 0,
+  "seconds": 133.4,
+  "cacheMaxSize": 2,
+  "heap": "3g",
+  "scope": "Fresh32-test result binds current adapter and real canonical exam class; other three requested test files remain exactly bound to the original48-test run. The five requested review sources are unchanged. No assertion that all five requested classes were rerun in the32-test selection.",
+  "supersedes": "Only the pending-current-adapter-test-evidence limitation in prior review. Its source decisions and historical48-test binding remain intact.",
+  "noRootMutation": true,
+  "notClaimed": "No independent re-execution, complete backend/remote CI or host acceptance; cache candidate itself belongs to the separate Sol review."
+}

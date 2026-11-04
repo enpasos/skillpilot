@@ -100,7 +100,7 @@ tasks.test {
     }
     // Each Spring test context retains the current curriculum and publication models.
     // Bound their retained count within the test JVM's existing heap budget.
-    systemProperty("spring.test.context.cache.maxSize", "4")
+    systemProperty("spring.test.context.cache.maxSize", "2")
     // Show progress as well as failure details while long integration tests run.
     testLogging {
         events("started", "passed", "skipped", "failed")

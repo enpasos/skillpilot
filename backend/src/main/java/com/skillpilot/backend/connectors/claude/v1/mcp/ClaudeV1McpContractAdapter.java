@@ -1592,9 +1592,18 @@ public class ClaudeV1McpContractAdapter {
             if (active == null || !goalId.equals(active.id()) || !isExamGoal(active)) {
                 throw new ToolConflictException("The cited goal is not the active exam goal.");
             }
-            CoachToolFacade.ExamEvaluationResult evaluation = coachToolFacade.getExamEvaluation(
-                    ctx.skillpilotId(),
-                    new CoachToolFacade.ExamEvaluationRequest(goalId));
+            CoachToolFacade.ExamEvaluationResult evaluation;
+            try {
+                evaluation = coachToolFacade.getExamEvaluation(
+                        ctx.skillpilotId(), new CoachToolFacade.ExamEvaluationRequest(goalId));
+            } catch (ResponseStatusException exception) {
+                if (exception.getStatusCode().value() == 409) {
+                    throw new ToolConflictException(
+                            "The current assessment cannot be evaluated. Reload coach context "
+                                    + "and confirm its complete task explicitly.");
+                }
+                throw exception;
+            }
             requireValidExamEvaluation(evaluation, goalId);
 
             Map<String, Object> response = new LinkedHashMap<>();
