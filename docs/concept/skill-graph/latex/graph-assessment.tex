@@ -18,30 +18,33 @@ Maßgeblich ist die
 \srcref{docs/concept/skill-graph/assessment-gated-completion.md}{aktuelle Konzeptspezifikation}.
 
 \subsection{Vertrag, Zielumfang und geschützte Zieltypen}
-Ein lokaler Vertrag $L$ bindet einen begrenzten vollständigen curricularen
-Umfang $T_L\subseteq A$, die kanonischen Zielidentitäten, die
-Curriculumrevision und die fachlich geprüfte Bedeutung der Prüfungen.
-Er kann etwa ein Jahr oder einen abgeschlossenen Ausbildungsabschnitt
-beschreiben. Ein späteres Level erweitert diesen Vertrag nicht rückwirkend.
+Ein lokaler Vertrag gehört zu einer autoritativen Lerneinheit U aus
+Abschnitt~\ref{sec:learning-units}. Er bindet deren eigene Erwerbsziele
+$\Own(U)$, die kanonischen Identitäten, die Curriculumrevision und die
+fachlich geprüfte Bedeutung der eigenen Prüfungen. Ihr Gesamtumfang
+$T(U)$ enthält zusätzlich die Ziele der Kinder. Er ist \emph{kein}
+vergrößerter Ersatz-Anerkennungsvertrag der Eltern. Ein späterer
+Integrationsanspruch erweitert die Kindverträge nicht rückwirkend.
 Eine Anzeige, ein temporärer Fokus oder die aktuell ausgewählten Planwurzeln
-bestimmen $T_L$ nicht neu.
+bestimmen diese Zuordnung nicht neu.
 
 Seien $Q$ und $K$ die autoritativ bestimmten Prüfungs- beziehungsweise
 Memorierziele. In diesem Kapitel bezeichnet $K$ diesen pädagogischen Typ;
 die strukturellen Cluster aus dem Kernkapitel sind hier nicht gemeint.
 Dann gelten
 \[
- Q_L=T_L\cap Q,\qquad K_L=T_L\cap K,\qquad P_L=Q_L\cup K_L.
+ Q_U=\Own(U)\cap Q,\qquad K_U=\Own(U)\cap K,\qquad P_U=Q_U\cup K_U.
 \]
-$P_L$ schützt \emph{alle} ausgewählten Prüfungs- und Memorierziele vor
+$P_U$ schützt \emph{alle} eigenen Prüfungs- und Memorierziele vor
 implizitem Bestehen. Ein Erfolg an einer anderen Prüfung ersetzt weder
 deren eigene Prüfung noch den verifizierten Abruf ihrer Karten.
 Orientierung bleibt ein eigener motivationaler Zieltyp, keine dritte
-Schutzklasse. Ein Orientierungsmarker darf in $I_L$ liegen; er ist dann
+Schutzklasse. Ein Orientierungsmarker darf in $I_U$ liegen; er ist dann
 abgeleitet erledigter Einstieg, kein fachlicher Kompetenznachweis und
 keine Behauptung einer tatsächlich geführten Motivationsinteraktion.
-Unterstützung außerhalb $T_L$ vergrößert den Abschlussnenner nicht und
-wird in diesem Vertrag nicht implizit anerkannt.
+Unterstützung außerhalb $T(U)$ vergrößert den Gesamtabschlussnenner nicht.
+Eine Kompetenz außerhalb $\Own(U)$ wird in diesem eigenen Vertrag nicht
+implizit anerkannt; für Ziele der Kinder gelten deren eigene Verträge.
 
 Für die folgenden Formeln heißt die vollständig atomar expandierte und
 vererbte Voraussetzungrelation kurz $R$. Sie umfasst auch versteckte und
@@ -52,19 +55,19 @@ Voraussetzungshülle geschieht vor einer bloßen Anzeigeeinschränkung.
 \subsection{Transitive offene Nachfrage und implizite Menge}
 Mit der globalen ausdrücklichen Mastery-Menge $M=\{a\mid m(a)=1\}$ sei
 \begin{align}
- N_L&=\operatorname{Reach}_{R}^{*}(P_L\setminus M),\label{eq:needed}\\
- I_L&=T_L\setminus(M\cup P_L\cup N_L).\label{eq:implicit}
+ N_U&=\operatorname{Reach}_{R}^{*}(P_U\setminus M),\label{eq:needed}\\
+ I_U&=\Own(U)\setminus(M\cup P_U\cup N_U).\label{eq:implicit}
 \end{align}
 Die reflexive Erreichbarkeit enthält die offenen Wurzeln selbst und
 \emph{alle} ihre transitiven Voraussetzungen. Die Traversierung stoppt
 \textbf{nicht} an einem gemeisterten Zwischenziel. Dadurch bleibt
-$I_L$ unverändert, wenn eine redundante Kante hinzugefügt oder für die
+$I_U$ unverändert, wenn eine redundante Kante hinzugefügt oder für die
 vorgeschriebene transitive Minimalität wieder entfernt wird.
-Es gilt stets $I_L\cap M=\varnothing$ und $I_L\cap P_L=\varnothing$.
+Es gilt stets $I_U\cap M=\varnothing$ und $I_U\cap P_U=\varnothing$.
 
 Ein direkter Algorithmus besucht von den offenen geschützten Zielwurzeln
 aus jeden erreichbaren Knoten und jede Kante höchstens einmal. Er benötigt
-$O(|V_L|+|R_L|)$ für die vollständige Voraussetzungshülle. Eine explizite
+$O(|V_U|+|R_U|)$ für die vollständige Voraussetzungshülle. Eine explizite
 quadratische Speicherung der transitiven Hülle ist dafür nicht nötig.
 
 \begin{figure}[htbp]\centering
@@ -78,13 +81,16 @@ $Q\to A$ wäre redundant.}
 
 \subsection{Warum der Graph allein noch keinen Anwendungsnachweis liefert}
 Die Mengenformel darf nur für einen gültigen fachlichen Vertrag ausgewertet
-werden. Jedes gewöhnliche Ziel des Vertrags braucht einen lokalen Pfad zu
-mindestens einer lokalen Abschlussprüfung aus $Q_L$. Ein Pfad allein
+werden. Jede gewöhnliche fachliche Kompetenz in $\Own(U)$ braucht einen lokalen Pfad zu
+mindestens einer lokalen Abschlussprüfung aus $Q_U$. Ein Pfad allein
 zu einem Memorierziel genügt nicht: Verifizierter Abruf beweist noch keine
 selbstständige Anwendung. Ein bloß isoliertes
 Endziel ohne lokalen Assessmentpfad ist ein Vertragsfehler, kein automatisch
 beherrschtes Ziel. Das Fehlen eines späteren Verbrauchers ist allein
 kein Nachweis einer Kompetenz.
+Eine zusätzliche, frei wählbare Maske für \glqq anerkennungsfähige\grqq{}
+Teilziele existiert nicht: Die Formel gilt für den vollständigen gültigen
+eigenen Vertrag.
 
 Für fachliche Kompetenzziele müssen die realen Aufgaben und
 Bewertungsraster jede beanspruchte höhere Anwendung tatsächlich tragen.
@@ -106,32 +112,32 @@ Ein ungeprüftes historisches Assessment erhält die stärkere Bedeutung
 nicht nachträglich allein durch ein neues Diagramm oder eine Softwareänderung.
 
 \subsection{Globale Wirkung und dauerhafte Vertragsbindung}
-Die Menge $\mathcal L_{\mathrm{valid}}$ umfasst die für diese Person
-dauerhaft anwendbaren autoritativen Anerkennungsverträge, nicht beliebige
+Die Menge $\mathcal U_{\mathrm{valid}}$ umfasst die für diese Person
+dauerhaft anwendbaren autoritativen Einheitsverträge, nicht beliebige
 besuchte Ansichten oder sämtliche neuesten Inhaltsfassungen. Es gilt
 \[
  M_{\mathrm{eff}}=M\cup
-       \bigcup_{L\in\mathcal L_{\mathrm{valid}}}I_L.
+       \bigcup_{U\in\mathcal U_{\mathrm{valid}}}I_U.
 \]
-Die Vereinigung umfasst nicht nur die gerade angezeigten Level oder den
+Die Vereinigung umfasst nicht nur die gerade angezeigten Lerneinheiten oder den
 aktuellen Personal-Curriculum-Plan. Vertrag, Revision und Nachweisbedeutung
 müssen nach einem Auswahlwechsel weiter verfügbar sein. Die Ableitung wird
 immer aus den ausdrücklichen Ergebnissen und ihren gültigen Verträgen
 berechnet; frühere implizite Mengen werden nicht als neue Mastery-Eingaben
 zurückgespeist.
 
-Ein späteres Level mit einer weiteren Prüfung Q2 darf eine bereits aus L1
+Eine spätere Lerneinheit mit einer weiteren Prüfung Q2 darf eine bereits aus U1
 belegte Anwendung A nicht wieder öffnen. A erfüllt vielmehr die Voraussetzung
 von Q2. Bei festem Vertragsbestand kann zusätzliche ausdrückliche Mastery
 $M_{\mathrm{eff}}$ nur vergrößern: Die Menge offener geschützter Wurzeln
-wird kleiner, ihre transitive Nachfrage nimmt ab. Ein aus $I_L$
+wird kleiner, ihre transitive Nachfrage nimmt ab. Ein aus $I_U$
 herausfallendes neu ausdrücklich bestandenes Ziel bleibt über $M$ enthalten.
 
 \begin{figure}[htbp]\centering
 \includegraphics[width=\linewidth]{assets/graph-definition/09-local-recognition.png}
-\caption[Lokale Anerkennung bleibt für spätere Level wirksam]{L1 erkennt A und B nach seinem eigenen gültigen Vertrag an.
+\caption[Lokale Anerkennung bleibt für spätere Lerneinheiten wirksam]{U1 erkennt A und B nach seinem eigenen gültigen Vertrag an.
 Die offene spätere Prüfung Q2 verhindert diese Anerkennung nicht.
-Eine neue Anzeige oder Planwahl löscht den weiter auswertbaren L1-Vertrag nicht.}
+Eine neue Anzeige oder Planwahl löscht den weiter auswertbaren U1-Vertrag nicht.}
 \label{fig:local-recognition}\end{figure}
 
 Eine stabile Prüfungsziel-ID braucht eine stabile Anerkennungsbedeutung.
@@ -146,16 +152,21 @@ Berechtigte Ergebnis- oder Inhaltskorrekturen sind von einem bloßen späteren
 Verbraucher- oder Planwechsel zu unterscheiden.
 
 \subsection{Geschützte Ziele und vollständiger Abschluss}
-Der lokale Umfang ist abgeschlossen, wenn
-\[
- \Complete(L)\iff T_L\subseteq M_{\mathrm{eff}}.
-\]
-Da alle geschützten Ziele ausschließlich ausdrücklich bestehen, folgt
-$P_L\subseteq M$. Unter einem gültigen vollständigen lokalen Vertrag
-ist umgekehrt $P_L\subseteq M$ hinreichend: Dann ist $N_L=\varnothing$
-und jedes gewöhnliche Ziel gehört entweder zu $M$ oder $I_L$.
+Der ganze Abschluss folgt rekursiv aus Gleichung~\eqref{eq:unit-complete}:
+Alle eigenen Ziele müssen erfüllt und alle Pflichtkinder abgeschlossen sein.
+Bei festem globalem $M_{\mathrm{eff}}$ ist dies gleichbedeutend mit
+$T(U)\subseteq M_{\mathrm{eff}}$, sofern sämtliche Kinderpflichten als
+Zielpflichten in diesem Umfang enthalten sind. Bei vollständigem Abschluss
+gilt für die eigenen geschützten Ziele $P_U\subseteq M$.
 
-Ein offenes unabhängiges Memorierziel verhindert den ganzen Levelabschluss,
+Sind alle eigenen Prüfungen und Karten bestanden, ist $N_U=\varnothing$;
+ein gültiger eigener Anerkennungsvertrag kann damit seine gewöhnlichen
+Erwerbsziele vervollständigen. Der Abschluss der Kinder folgt daraus
+\textbf{nicht}. Eine eigene Syntheseprüfung der Eltern kann offen bleiben,
+während gewöhnliche Kindziele bereits global anerkannt sind. Umgekehrt
+ersetzt ihr Bestehen keine offene Q-/K-Pflicht eines Kindes.
+
+Ein offenes eigenes Memorierziel verhindert den ganzen Einheitsabschluss,
 blockiert aber nicht die Ableitung einer anderen gewöhnlichen Kompetenz,
 solange es diese nicht transitiv benötigt. Ein offenes Memorierziel mit
 $k\to^* a$ hält dagegen A im lokalen Bedarf. Auch mehrere Prüfungen mit
@@ -163,13 +174,13 @@ gemeinsamer Grundlage müssen in diesem lokalen Vertrag sämtlich aus dem
 Bedarf an der Grundlage herausgefallen sein.
 
 Dies unterscheidet Prüfungen im \emph{selben} Vertrag von einer späteren
-Prüfung in einem anderen Level (Abbildung~\ref{fig:local-recognition}).
+Prüfung in einer anderen Lerneinheit (Abbildung~\ref{fig:local-recognition}).
 Abbildung~\ref{fig:shared-assessments} zeigt zwei aufeinanderfolgende
 Ergebnisse bei unverändertem lokalem Umfang und ohne weitere Abschlusspflichten.
 \begin{figure}[htbp]\centering
 \includegraphics[width=\linewidth]{assets/graph-definition/15-shared-local-assessments.png}
 \caption[Zwei lokale Prüfungen mit gemeinsamer Grundlage]{Q1 und Q2
-benötigen im selben gültigen Levelvertrag A. Nach Q1 bleibt A wegen der
+benötigen im selben gültigen Erwerbsvertrag A. Nach Q1 bleibt A wegen der
 offenen Q2 im transitiven Bedarf. Erst nach beiden Prüfungen wird A
 implizit global beherrscht. Der ausdrückliche Erfolg von Q1 bleibt dabei
 erhalten; es gibt hier keine weiteren geschützten Ziele.}
@@ -180,13 +191,16 @@ erhalten; es gibt hier keine weiteren geschützten Ziele.}
 \includegraphics[width=\linewidth]{assets/graph-definition/10-protected-support.png}
 \caption[Geschützte Memorierziele und externe Unterstützung]{Q ist ausdrücklich bestanden und trägt die Anwendung A.
 Das unabhängige Memorierziel K bleibt offen und blockiert den ganzen
-Levelabschluss. Unterstützung H außerhalb des Zielumfangs wird nicht anerkannt.}
+Einheitsabschluss. Unterstützung H außerhalb des Zielumfangs wird nicht anerkannt.}
 \label{fig:protected}\end{figure}
 
-Jede passende Abschlussprüfung bleibt bewusst direkt wählbar, auch ohne
-vorherige Vorbereitungsmastery. Aufgabenverfügbarkeit, Authentifizierung,
-Sitzungszuordnung und ausdrückliche Auswahl bleiben erforderlich. Der neue
-Abschlussvertrag führt keine pauschalen Zugangssperren zwischen Leveln ein.
+Der bisherige direkte Prüfungszugriff bleibt der Ausgangspunkt des
+aktuellen Lernablaufs. Aufgabenverfügbarkeit, Authentifizierung,
+Sitzungszuordnung und ausdrückliche Auswahl bleiben erforderlich.
+Die Entscheidung über harte Ganzheitszugänge und direkte Prüfungsversuche
+unter einem solchen optionalen Profil steht noch aus
+(Abschnitt~\ref{sec:learning-units}). Die rekursive Einheitendefinition
+führt weder einen neuen Ausschluss noch einen verdeckten Umgehungsweg ein.
 Der normale Lernzugang verwendet $M_{\mathrm{eff}}$ und die transitive
 effektive Relation; die eigenständige Normal-/Strict-Fokusregel bleibt erhalten.
 

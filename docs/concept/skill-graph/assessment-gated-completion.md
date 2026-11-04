@@ -1,266 +1,261 @@
 # Assessment-Gated Completion and Global Mastery
 
-**Binding product decision, 4 November 2026; concept, not deployed behaviour.**
-An ordinary goal can be completed by demonstrating understanding directly,
-or by demonstrating independent application of that competence in the relevant
-passed assessments of an authoritative curriculum level. Both forms establish
-mastery for future prerequisites, total progress and plan IST. A passed
-assessment establishes application competence, rather than merely waiving work.
+**Binding product decision, 4 November 2026, with the accepted recursive
+[learning-unit](learning-units.md) structure; concept, not deployed behaviour.**
+An ordinary goal can be completed through direct understanding or independent
+application in the relevant passed assessments of its authoritative acquisition
+unit. Both establish global mastery for future prerequisites and total progress.
 
-This replaces the 31 October interpretation that mastery of an intermediate
-goal ends transitive prerequisite demand. For $Q\to B\to A$, ordinary mastery
-of B alone does **not** release A while the local assessment Q remains open.
-Passing the relevant local assessment can establish mastery by application for
-A and B. Transitive minimality remains required for authored `requires`.
-
-The current `main` implementation still follows the earlier semantics. This
-page defines the revised concept; it does not announce implementation, data
-migration, deployment or a verified assessment inventory. The new implementation
-plan and review of reusable earlier PR work follow concept/reference review.
+This replaces the 31 October preparation-discharge interpretation. In
+$Q\to B\to A$, ordinary mastery of B alone does not release A while the local
+Q remains open. Passing the relevant local obligations can establish mastery
+of A and B by application. Full transitivity and transitive minimality remain
+required. This document claims neither completed implementation/migration nor
+verified coverage of existing assessments.
 
 ## 1. One stored result, equivalent global credit
 
-The only persisted result per atomic goal remains binary:
+The sole persisted result per atomic goal remains binary:
 
 $$
 m(a)\in\{0,1\},\qquad M=\{a\mid m(a)=1\}.
 $$
 
-For an ordinary subject goal, a direct positive result means understanding
-under its normal completion contract. **Implicit mastery** means independent
-application of the same competence demonstrated through relevant passed local
-assessments. The effective mastered set $M_{\mathrm{eff}}$ combines these sources
-without another stored goal state, partial mastery tier, manual waiver grant,
-per-part result registry or second examination pass.
+The derived set $M_{\mathrm{eff}}$ combines explicit results and valid
+recognition. There is no second stored outcome, partial tier, waiver grant,
+per-part result registry or additional examination pass.
 
-The distinction records explanatory provenance, not different future credit.
-A goal in $M_{\mathrm{eff}}$ satisfies applicable prerequisites and counts as
-achieved wherever its canonical identity is a target. A later open assessment,
-wider focus or changed Personal Curriculum cannot undo this valid achievement.
-Those changes can introduce further work, without reopening the same competence.
+An ordinary direct result demonstrates understanding; implicit mastery
+demonstrates independent application. Both satisfy future prerequisites and
+count toward total progress wherever the same canonical goal is a target.
+A changed Personal Curriculum, wider focus or later open assessment cannot
+withdraw valid recognition. Correction of an invalid source result or contract
+is a separate explicit integrity process.
 
-Assessment goals and memorization goals are **never implicitly mastered**.
-Exams need their normal positive examination outcome; memory goals need the
-existing verified-recall result under M1. A due SRS card is not a failed
-recall, and self-rated practice is not verified recall. Orientation retains
-its own motivational-completion meaning: neither a direct nor a derived
-completion description certifies subject-matter competence or fabricates a
-motivational interaction.
+Assessment and memorization goals are never implicitly mastered. Exams need
+their normal positive outcome; memory goals need M1 verified recall. A due
+card is not a failed recall, and self-rated practice is not verified recall.
+Orientation retains its motivational-marker meaning; its completion does not
+certify subject competence or fabricate an interaction.
 
-## 2. Authoritative local levels over stable identities
+## 2. Authoritative acquisition ownership in recursive units
 
-Resolve a finite, versioned curriculum level L from existing program units,
-placements or reviewed composition views. Let $T_L$ be its unique applicable
-atomic targets. Resolve authored choices, direct entries and projection roles.
-Hidden `prerequisiteOnly` support remains part of prerequisite validation
-without becoming a target or increasing the progress denominator.
-
-A level is an authoritative educational unit, not an arbitrary display filter,
-tree expansion, dated plan or Level-3 focus. The graph alone does not uniquely
-determine its partition. No manually maintained list of waivable goals or
-learner-specific waiver profile substitutes for the curriculum structure.
-
-Let Q denote assessment atoms and K memorization atoms; K here denotes card
-goals, not the cluster set in the [graph specification](graph-definition.md).
-The protected local targets are
+Resolve a finite, versioned unit U from existing program/placement or reviewed
+composition structure. Let $Own(U)$ be its directly assigned actual atomic
+targets and $Children(U)$ its required child units after authored choices.
+Its recursive target scope is
 
 $$
-P_L=T_L\cap(Q\cup K).
+T(U)=Own(U)\cup\bigcup_{V\in Children(U)}T(V).
 $$
 
-Every ordinary local target needs a local assessment consumer in the full
-normalized relation:
+Each atom has one direct acquisition home within a resolved learning path.
+A parent aggregates child targets without claiming their acquisition again.
+Assign recognition to the smallest authoritative unit that owns that outcome.
+A focus, display filter, dated plan or arbitrary scope visit is not such a
+unit or a new contract. Synthetic tree markers are not atomic acquisition goals.
+A valid unit has a nonempty resolved T(U); an empty or unresolved structure is
+not a completed unit. Pure aggregates contain actual required children.
+
+Own targets include actual subject, orientation, exam and memory atoms.
+Hidden prerequisite-only support is validated without becoming a target or
+increasing the denominator. Resolve applicable choices, direct entries and
+projection roles before computing ownership.
+
+Let Q denote assessment atoms and K memorization atoms; K here does not denote
+the cluster set in the graph specification. A unit's own protected duties are
 
 $$
-\forall a\in T_L\setminus P_L:\quad
-\exists q\in T_L\cap Q:\ (q,a)\in R^+.
+P_U=Own(U)\cap(Q\cup K).
 $$
 
-This structural condition is necessary. For recognized subject competencies,
-the actual tasks/rubric must also cover their claimed independent application. A memory endpoint alone cannot
-provide the assessment proof. A level without that coverage cannot grant
-implicit mastery. An ordinary terminal without such coverage is a missing
-assessment contract, not competence awarded automatically at zero progress.
-A level containing only protected targets can require explicit outcomes but
-does not thereby establish an ordinary learning unit.
+Every ordinary subject target in Own(U) needs
+an own local assessment consumer in the full normalized relation:
+
+$$
+\forall a\in Own(U):\quad
+a\text{ is an ordinary subject target}\Rightarrow
+\exists q\in Own(U)\cap Q:\ (q,a)\in R^+.
+$$
+
+This structural condition is necessary, not task-content proof. A memory
+endpoint alone does not establish application. An uncovered ordinary terminal
+is a missing contract, never zero-work mastery.
+
+Pure aggregates may have no own assessment. An integrative parent may own
+a synthesis assessment solely of already acquired child competencies, without
+a new ordinary target. Neither case violates the own-target coverage rule.
+A parent assessment cannot substitute for child exams/cards or create a new
+recognition contract over all descendants.
+
+Required recall belongs with its actual first acquisition. Do not place a broad
+existing memory goal at the parent merely to declare its children complete
+without their required cards. Keep a fitting larger boundary or review a genuine
+goal/card-selection split with stable meanings and explicit evidence migration.
+A support reference does not satisfy a missing recall obligation.
 
 ## 3. Full transitive requirements independent of mastery
 
-Resolve direct and inherited requirements and expand required clusters into
-atomic obligations under the authoritative graph/composition contract. Let R
-on this page denote the normalized atomic relation, directed from consumer to
-prerequisite. Keep authored edges unchanged. Missing references, identity
-conflicts and containment, requirement or expanded atomic cycles make the
-calculation unavailable; they do not mean an empty completed level.
+Normalize direct/inherited requirements and expand required clusters into atomic
+obligations under the authoritative graph/composition contract. R points from
+consumer to prerequisite. Missing references, identity conflicts and containment,
+requirement or expanded atomic cycles make the calculation unavailable, not
+an empty completed unit.
 
-$R^+$ is the full transitive closure, computed independently of M:
-**never stop traversal at a mastered intermediate goal**. Define
+Full transitive reach is independent of M:
 
 $$
 Reach_R^*(S)=S\cup\{v\mid\exists u\in S:(u,v)\in R^+\}.
 $$
 
-Unresolved protected local targets retain all transitive preparation demand.
-All transitive consumers inside the authoritative level count. A future exam
-outside it does not retroactively prevent local recognition. Outside support
-remains visible to structural checks and normal/strict prerequisite policy;
-the local contract grants no mastery to goals outside $T_L$.
+Never stop at a mastered intermediate. Traverse outside support as needed for
+structural checks, without granting its mastery through the local unit.
+All own protected consumers count. Future exams outside this acquisition
+contract, including a parent's synthesis assessment, do not reopen its valid
+recognition.
 
-Transitive minimality prohibits an authored requirement that remains reachable
-after removing its edge and recomputing the effective relation, including
-alternative paths contributed by inheritance. For purely atomic authoring
-without inheritance, this is the familiar prohibition on redundant shortcuts
-along a longer authored path. A chain and a chain with a redundant shortcut
-have the same transitive demand; redundant edges do not retain a separate
-preparation obligation. Contains inheritance remains a distinct operation;
-[Graph Definition §7.3](graph-definition.md#73-transitive-minimality) states the
-general condition.
+Transitive minimality tests whether an authored requirement remains reachable
+after removing that edge and recomputing the effective relation, including
+inherited alternatives. A redundant shortcut does not retain a separate
+preparation obligation. See [Graph Definition §7.3](graph-definition.md#73-transitive-minimality).
 
-## 4. Local recognition and durable global mastery
+## 4. Own local recognition and durable global mastery
 
-Using the existing explicit results M, define
+Using explicit M only, define
 
 $$
-\begin{aligned}
-N_L&=Reach_R^*(P_L\setminus M),\\
-I_L&=T_L\setminus(M\cup P_L\cup N_L).
-\end{aligned}
+N_U=Reach_R^*(P_U\setminus M),\qquad
+I_U=Own(U)\setminus(M\cup P_U\cup N_U).
 $$
 
-$N_L$ contains unresolved protected roots and their full transitive prerequisites,
-even through mastered intermediates. Only its intersection with $T_L$ matters
-for $I_L$. No protected target enters $I_L$. An unrelated open card goal keeps
-the level incomplete, but retains ordinary preparation only when it actually
-transitively requires that preparation. The coverage condition in §5 is essential:
-for subject competencies the set difference expresses demonstrated application
-only under a valid authored recognition contract. If an orientation marker
-belongs to $I_L$, it is derivatively completed as a didactic entry marker;
-this claims neither subject-matter competence nor that its motivational
-interaction actually occurred. Orientation is not a third protected class.
+Unpassed own protected roots retain their full transitive preparation, including
+through mastered intermediates. Only own ordinary targets outside that demand
+can enter $I_U$, under a valid immutable recognition contract. An unrelated
+open card does not retain every ordinary target automatically. Orientation,
+where derivatively completed, remains an entry marker without an invented
+motivational interaction.
 
-The global effective mastered set is
+**Do not substitute T(U) for Own(U).** Child recognition comes from the child's
+own acquisition contract. An open parent synthesis does not revoke child
+achievement; a passed parent synthesis does not pass an open child Q/K.
+
+Global effective mastery is
 
 $$
-M_{\mathrm{eff}}=M\cup\bigcup_{L\in\mathcal D}I_L,
+M_{\mathrm{eff}}=M\cup\bigcup_{U\in\mathcal D}I_U,
 $$
 
-where $\mathcal D$ contains the learner's **durably applicable authoritative
-recognition contracts**, including valid earlier contracts after a curriculum
-or Personal-Curriculum change. It is not merely the current Level-2 selection
-or focus. Recognition remains reconstructible from immutable, versioned
-contracts, stable identities and valid existing outcomes. Arbitrary scope
-visits cannot create a contract or grant.
+where $\mathcal D$ contains durably applicable authoritative unit contracts,
+including valid earlier contracts after a focus, curriculum or Personal-Curriculum
+change. Retain immutable versions, stable identities and original result
+attribution. Arbitrary scope visits cannot grant applicability or mastery.
 
-Implicit results are never fed back into $I_L$. Every Q/K outcome is explicit;
-ordinary implicit mastery cannot pass an exam or verify a card. No recursive
-waiver fixed point is needed. Traversal may avoid materializing all transitive
-pairs, provided it continues through mastered nodes.
+Implicit results are never fed back into $I_U$. All Q/K outcomes are explicit;
+there is no recognition fixed point or second pass state. Direct adjacency
+traversal may avoid materializing all transitive pairs.
 
-A stable assessment goal ID binds a stable recognition meaning. Task variants
-may change while preserving that meaning. Expanded competency claims need a
-new assessment identity or an explicitly reviewed migration that preserves
-the old achievement's meaning. A later graph or contract revision must never
-reinterpret an old positive exam result as proof of newly added competencies.
-If historical meaning is ambiguous, preserve the explicit positive result
-without claiming the expanded recognition. This requires no new learner pass
-state or per-learner version-eligibility result.
-
-Changed subjects, a later open exam, removal from the current tree or wider
-focus do not erase valid recognition. Correction of an invalid source result
-or contract is a separate explicit integrity process. Version retention and
-migration details belong to the later implementation plan; no additional
-per-goal outcome is implied.
+A stable assessment ID binds stable recognition meaning. Task variants may
+preserve it. Expanded claims need a new assessment identity or a reviewed
+meaning-preserving migration; a new parent or graph revision must not reinterpret
+an old pass as evidence of additional competencies. Ambiguous historical meaning
+preserves the explicit result without granting expanded recognition. This
+requires no new per-learner version-eligibility outcome.
 
 ## 5. What the assessments must establish
 
-A `requires` path proves dependency reachability, **not task-content coverage**.
-Independent review must inspect the actual tasks and normal rubric. Collectively,
-the relevant assessments require genuine independent application of every
-subject competence they recognize. Guided recall or merely mentioning a
-competence is insufficient.
+A requires path proves reachability, not content coverage. Independent review
+inspects actual tasks and the normal pass rubric. For each own subject target a,
+derive its releasing protected set
 
-A normal pass must not allow a fully missing essential claimed competence to
-be compensated by points earned elsewhere while still granting it. Review
-each passing assessment combination that can release a subject target under §4,
-not merely the combined content of every exam in the unit. Every such
-combination must substantiate that target's claimed application. This is
-static task/rubric quality assurance, not additional runtime evidence,
-per-part stored passes or another qualification after the normal result.
+$$
+D_U(a)=\{p\in P_U\mid(p,a)\in R^+\}.
+$$
 
-The independent counterexample test is concrete: **Can a learner pass the
-relevant assessment combination without a competence that it would recognize?**
-If yes, the recognition contract fails. Revise its tasks, normal rubric, claim
-or level boundary. Required cards retain their existing recall contract.
+Targets with equal sets may share review of that release condition. Review each
+distinct releasing set and authorized task variant, rather than blindly all
+binary result subsets. The relevant assessments together must require independent
+application of each claimed essential competence. Cards are not application proof.
 
-Existing valid positive `examMastery` can be reused without another pass when
-the applicable legacy contract supports this meaning. Preserve its original
-attribution and contract meaning. This concept does not claim that today's
-legacy examinations have already been verified for the stronger recognition
-claim. Inventory review and any necessary migration remain separate work.
+The counterexample is concrete: can a learner pass the releasing assessment
+combination while entirely lacking a competence it would recognize? If yes,
+the contract fails. Points elsewhere must not compensate for a fully missing
+essential competence while still granting it. Revise tasks, normal rubric,
+claim or ownership boundary. This is static content QA, not a per-part stored
+pass or additional runtime qualification.
 
-## 6. Worked cases and completion
+Existing positive exam mastery may count without another pass if its legacy
+meaning supports this claim. A previous ordinary understanding result does not
+become an application-exam pass through a type conversion. Preserve original
+identities/results or introduce the stronger assessment identity. Existing
+curricula are not declared reviewed for that claim by this concept.
 
-| Local graph and explicit M | Result under a valid recognition contract |
+## 6. Recursive completion and partial achievement
+
+$$
+Complete(U)\iff Own(U)\subseteq M_{\mathrm{eff}}
+\ \land\ \bigwedge_{V\in Children(U)}Complete(V).
+$$
+
+Own Q/K need explicit outcomes and every required child must complete its own
+contract. Completion is derived, not a stored unit result or cluster mastery.
+A pure aggregate may complete through children alone. A parent with own synthesis
+also needs that explicit pass, even if it introduces no ordinary competence.
+
+| Case | Result |
 | --- | --- |
-| $Q\to B\to A$; M empty | Q, B and A remain open. |
-| Same graph; $M=\{B\}$ | Q stays open and its transitive demand keeps A open. |
-| Same graph; $M=\{Q\}$ | A and B are globally mastered by demonstrated application. |
-| Local exams Q and S both transitively require A; only Q passed | S retains A unless A already has valid direct or earlier implicit mastery. |
-| Exams passed; unrelated required card goal K unresolved | K remains open; ordinary recognition does not fabricate recall. |
-| Local level complete; a later external exam needs A | A's valid recognition satisfies that future prerequisite. |
-| Ordinary terminal lacks local assessment coverage | Invalid recognition contract; no implicit mastery is granted. |
+| Own $Q\to B\to A$; M empty or only B mastered | Q and its full transitive demand remain open. |
+| Same valid acquisition contract; Q passed | A and B may be globally recognized by application. |
+| Local Q and S both require A; only Q passed | S retains A unless valid direct/earlier recognition already establishes it. |
+| An unrelated required card stays open | Unit completion stays open; independently established recognition remains valid. |
+| Child completed; parent synthesis open | Child recognition stays globally valid; parent is incomplete. |
+| Parent synthesis passed; child exam/card open | Child and parent remain incomplete; child obligations were not passed. |
+| Parent has no own exam and all required children complete | A valid aggregate may complete without inventing another exam. |
 
-$$
-Complete(L)\iff T_L\subseteq M_{\mathrm{eff}}.
-$$
-
-Every protected local target still needs its own explicit positive outcome.
-Under a valid covering contract, passing those obligations is sufficient for
-the ordinary local targets. Optional whole-level entry gates remain a separate
-explicit course policy in [Curriculum Level Gates](curriculum-level-gates.md),
-not a universal prerequisite or a consequence of grouping goals.
+Whole-unit completion is not a precondition for every individually valid
+recognition. Nor is completion itself a decision about technical entry.
+[Learning-Unit Progression](learning-unit-progression.md) keeps regular order,
+any proposed access lock and direct assessment policy distinct.
 
 ## 7. Assessment access and ordinary continuation
 
-Every applicable assessment remains deliberately directly addressable without
-first mastering preparation. Direct access retains authentication, learner
-revision, session ownership, task availability and normal grading checks.
-An attempt is not a pass. Discovery is read-only; paging and recommendations
-must not permanently remove assessments from the accessible set.
+Existing applicable assessments remain deliberately addressable without first
+mastering preparation. Authentication, learner revision, session ownership,
+task availability and normal grading remain required. Discovery is read-only;
+paging must not permanently remove assessments. An attempt is not a pass.
 
-Normal prerequisites use $M_{\mathrm{eff}}$ and the full transitive relation,
-restricted by the existing focus policy. Strict mode checks globally. Compute
-reachability before focus restriction: a mastered or outside-focus intermediate
-cannot conceal an in-focus requirement. A valid prerequisite wholly outside
-focus remains ignored in normal mode; invalid authored Level-2 references
-remain configuration errors. This is the revised conceptual contract, not a
-claim of current backend enforcement or a new hard level gate.
+Whether authored whole-unit prerequisites later enforce technical locks, and
+how such a mode treats direct exams, remains undecided. The conditional gated
+example is not a new universal restriction on existing assessment access.
 
-Already mastered goals remain available for voluntary practice without
-revoking credit, rewriting source IDs or mutating authored requirements.
+Ordinary prerequisites use $M_{\mathrm{eff}}$ and full reachability before
+focus restriction. A mastered or outside-focus intermediate cannot hide an
+in-focus requirement. Normal mode ignores a wholly outside-focus valid
+prerequisite; strict mode checks globally. Invalid authored Level-2 references
+remain configuration errors. Voluntary repetition remains available without
+revoking credit or mutating authored requirements.
 
-## 8. Progress, plans and evidence boundary
+## 8. Progress, plans and evidence boundaries
 
-For any fixed deduplicated target set G, total achievement and plan IST use
+For a fixed deduplicated target set G, total achievement and default plan IST use
 
 $$
 IST(G)=|G\cap M_{\mathrm{eff}}|.
 $$
 
-Where weights apply, aggregate the same effective mastery indicators. Current
-target scope controls the denominator, not the existence of valid global
-achievement. Support outside G does not increase IST. Multiple placements
-count each canonical atom once. A dated plan is not another recognition level.
+The existing explicit-only plan-counting preference may use $|G\cap M|$ for
+plan IST only; it changes neither global mastery nor prerequisite satisfaction
+or general progress. Weighted progress uses the same effective indicators.
+Current targets determine the denominator; outside support contributes nothing.
+Multiple placements and recursive child scopes count each canonical atom once.
 
-Daily and weekly histories use reliably dated **explicit outcome events only**.
-Do not manufacture a date for implicit recognition, infer dates from imports
-or snapshots, or present a recognition batch as that day's performed work.
-Total effective achievement and period events serve different purposes.
+Daily/weekly histories and period quotas use reliably dated explicit outcome
+events only. Implicit recognition fabricates no date, threshold event or that
+day's performed work. A dated plan or calendar year is not another acquisition
+unit. Time-budget claims remain a separate optional planning profile.
 
-A future implementation must verify mastered-intermediate traversal, all local
-protected obligations, shared transitive demand, invalid coverage, bounded local
-recognition, durable global credit after scope changes, normal/strict boundaries,
-explicit-only exams/recall, legacy attribution, direct exam access, target
-deduplication and explicit-event histories. Independent task/rubric review
-supplies content evidence; machine tests alone establish neither that evidence
-nor host acceptance, usability or learning effectiveness.
+Acceptance must cover own/child ownership, all Q/K, full transitivity,
+invalid coverage, individual recognition before whole completion, parent
+synthesis/aggregation, stable global credit after scope changes, legacy meaning,
+normal/strict boundaries, direct exam access, card ownership, target deduplication
+and explicit-only event histories. Independent task/rubric review is separate
+from machine tests, real-host acceptance, usability and learning effectiveness.

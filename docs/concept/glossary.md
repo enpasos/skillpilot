@@ -271,25 +271,32 @@ SkillPilot separates five layers that older skill landscapes still mix:
 
 An explicit structural container (year, semester, module, phase, track, exam section) forming a tree via `parentUnitId` with an explicit `order`. A program-tree node must correspond one-to-one to a declared program unit; a content goal must not be reused as a stand-in for a phase.
 
-### Curriculum level
+### Learning unit
 
-*DE: curriculares Level* — see [Curriculum Levels](skill-graph/curriculum-levels.md)
-and [Graph Definition §12](skill-graph/graph-definition.md#12-optional-curriculum-level-assignments)
+*DE: Lerneinheit* — see [Learning Units](skill-graph/learning-units.md)
+and [Graph Definition §12](skill-graph/graph-definition.md#12-learning-units-and-optional-planning-profiles)
 
-An ordered acquisition stage in a resolved educational context, named
-`CurriculumLevel` technically. Its targets must be reachable from the declared
-entry basis and earlier stages, allowing a suitable order within the stage;
-its estimated workload and reserve must fit the declared learning budget.
-A school year across subjects is one example. Workload feasibility is conditional
-on the stated reference learners, learning conditions, and estimation evidence.
+A recursively composed educational whole with a stated learning outcome,
+motivational introduction, constituent goals or subunits, and a reviewed
+completion rule. The conceptual name is `LearningUnit`; a larger module is
+one possible form. A year, semester or arbitrary navigation cluster does not
+become a learning unit solely by grouping goals.
 
-The assignment belongs to program structure and placements, not to a goal's
-global identity or difficulty field. It is distinct from the four levels of
-personalization. Level completion aggregates the applicable goal results; it
-does not add a blanket prerequisite for entering later levels. This is a
-conceptual planning contract, not a claim of an implemented level feature.
-An optional [course design with completion gates](skill-graph/curriculum-level-gates.md)
-adds explicit entry restrictions between selected levels.
+Each target has one direct acquisition owner in the resolved unit hierarchy;
+parent units aggregate descendants. Completion follows from required children
+and the unit's own goal-type obligations without a stored unit-mastery result.
+Own integrative assessments are permitted, not required at every aggregation.
+An open parent exam does not reopen completed child competencies; a parent's
+pass never passes protected child exams or cards. Effective competence remains
+global. Individual recognition can precede complete unit completion.
+
+An explicitly declared whole-unit prerequisite belongs to the course structure.
+It is not inferred from every atomic requirement. Its enforcement as a hard
+access gate, including direct exam attempts, remains a separate policy decision;
+see [Learning Unit Progression](skill-graph/learning-unit-progression.md).
+Optional workload planning must use supported effort and budget assumptions.
+The existing personalization levels, QA maturity and goal difficulty `level`
+retain their separate meanings. This revised concept is not yet implemented.
 
 ### Goal placement
 
@@ -703,9 +710,9 @@ A report, status page, or dashboard file produced by a script. It carries a "do 
 | SkillPilot ID vs learning session | A permanent backend-only identity vs a fresh, opaque 24-hour key that travels to the provider. |
 | OAuth connection vs learning session | OAuth authorizes the app; the session selects the learner. |
 | `phase` vs program unit | `phase` is compatibility metadata; only an explicit program unit may become a structural node. |
-| Curriculum level vs personalization level | A planned acquisition stage with prerequisite and workload conditions vs one of the four scope/state layers. |
-| Curriculum level vs goal difficulty | A contextual placement in a learning path vs the demand of a particular goal; the existing `level` field is not a year assignment. |
-| Level completion vs goal availability | An aggregate milestone vs the applicable prerequisite/frontier check for an individual goal. |
+| Learning unit vs personalization level | A recursively composed educational whole with derived completion vs one of the four scope/state layers. |
+| Learning unit vs goal difficulty | A unit of learning and completion vs the demand of a particular goal; the existing `level` field does not assign unit membership. |
+| Unit completion vs goal availability | Fulfilled child and own obligations vs prerequisites for starting work; a technical whole-unit gate requires a separate explicit policy. |
 | QA scope vs learning route | A QA scope is a registered check profile, not a path a learner walks. |
 | CQR vs GVR rules | Content quality review vs structural graph validation. |
 | Curriculum vs skill graph | The normative external document vs the versioned operative model derived from it. |

@@ -2,7 +2,7 @@
 
 SkillPilot represents learning goals and their prerequisites as a shared graph.
 Educational programmes organise those stable goals into contextual views and
-learning stages. This section explains both the graph and the contracts around it.
+learning units. This section explains both the graph and the contracts around it.
 
 ## Foundations
 
@@ -15,17 +15,16 @@ learning stages. This section explains both the graph and the contracts around i
   frontier, and graph-validity conditions.
 - [Assessment-Gated Completion and Global Mastery](assessment-gated-completion.md):
   direct assessment access, transitive minimality and globally effective
-  recognition through independent application in valid local levels.
+  recognition through independent application in valid local learning units.
   [Decision of 4 November 2026](completion-semantics-clarification-2026-11-04.md).
-  [Umsetzungsplan](../../dev/assessment-gated-completion-implementation-plan.md):
-  historical implementation design, superseded by the 4 November concept.
-  Replanning and review of reusable PR work follow concept reconciliation.
-- [Curriculum Levels](curriculum-levels.md): ordered learning stages with
-  prerequisite-consistent targets and a feasible workload, including school
-  years across subjects and the knowledge-building metaphor.
-- [Curriculum levels with completion gates](curriculum-level-gates.md) describes
-  how a course can use cluster placements as units with local assessment routes,
-  required card recall and explicit gates between units.
+  [Neustartplan](../../dev/curriculum-recognition-restart-plan.md): staged
+  implementation planning and selective reuse of the former PR, pending the
+  updated unit-boundary and progression decisions.
+- [Learning Units (Lerneinheiten)](learning-units.md): recursively composed
+  educational units, a motivational introduction, required outcomes and
+  completion derived from child units and own obligations.
+- [Learning Unit Progression](learning-unit-progression.md): explicit course
+  dependencies, whole-unit ordering and the separate choice of access policy.
 - [General Goal System and Migration](general-goal-system-and-migration.md):
   the separation of goals, programmes, placements, competency axes, and views.
 - [Node Types](node-types.md): understanding, memorisation, and assessment goals.

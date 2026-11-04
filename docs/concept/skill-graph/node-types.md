@@ -300,14 +300,14 @@ Naming a competence or supplying the decisive steps is not independent applicati
 
 Independent review must attempt passing answers that omit each essential
 recognized competence. If an omission can be compensated by unrelated points
-and still pass, correct the task, normal grading rule or level contract before
+and still pass, correct the task, normal grading rule or learning-unit contract before
 it supports recognition. Different tasks may jointly cover a contract; duplicate
 examination of every competence in every task is not required. These checks
 qualify the authored task and its normal single outcome, not a learner's valid
 pass through a second procedure.
 
 The stable assessment identity must retain its recognition meaning across
-equivalent task variants. Broader later graph/level definitions cannot expand
+equivalent task variants. Broader later graph/unit definitions cannot expand
 what an old pass establishes. Legacy tasks need review against this stronger
 requirement; the illustrative points object above supplies no such recognition
 guarantee by itself.

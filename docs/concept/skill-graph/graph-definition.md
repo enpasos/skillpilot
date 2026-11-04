@@ -8,9 +8,9 @@ This specification covers the skill graph itself. Projection contracts for user-
 
 Layering, migration strategy, and canonical rollout policy are specified separately in [General Goal System and Migration](general-goal-system-and-migration.md) and [Canonical Gymnasium Rollout Policy](canonical-gymnasium-rollout.md).
 
-Related planning scope: [Curriculum Levels](curriculum-levels.md) explains how bounded learning stages, including school years, organize canonical goals. The optional formal profile in §12 checks a resolved plan without changing base graph validity.
+Related composition scope: [Learning Units](learning-units.md) defines recursive learning promises, direct acquisition ownership and derived completion. Section 12 formalizes that contract and separates optional calendar/workload planning from the unit itself.
 
-Related completion contract: [Assessment-Gated Completion and Global Mastery](assessment-gated-completion.md) defines the binding decision of 4 November 2026. Direct ordinary mastery demonstrates understanding; implicit mastery demonstrates independent application through relevant passed assessments of an authoritative local level. Both have equivalent global credit. Exams and memory goals require explicit outcomes. Full transitive requirements continue through mastered intermediates; transitive minimality remains mandatory. Binary mastery remains the sole stored goal result, with a derived effective mastered set.
+Related completion contract: [Assessment-Gated Completion and Global Mastery](assessment-gated-completion.md) defines the binding decision of 4 November 2026 within the accepted recursive unit structure. Direct ordinary mastery demonstrates understanding; implicit mastery demonstrates independent application under an authoritative unit's own acquisition contract. Both have equivalent global credit. Exams and memory goals require explicit outcomes. Full transitive requirements continue through mastered intermediates; transitive minimality remains mandatory. Binary mastery remains the sole stored goal result, with a derived effective mastered set.
 
 **Implementation boundary.** These revised completion and prerequisite semantics are conceptual. Current `main` still implements the earlier 31 October interpretation. This specification does not claim deployment, completed migration or reviewed coverage of existing assessments.
 
@@ -694,7 +694,9 @@ stored qualification is introduced.
 
 The derived **effective mastered set** $M_{\mathrm{eff}}$ includes $M_A$ and
 valid implicit mastery from durably applicable authoritative local recognition
-contracts. It is not limited to the current Personal Curriculum or focus.
+contracts for directly owned acquisition targets, not a replacement contract
+over all descendants of an arbitrary parent. It is not limited to the current
+Personal Curriculum or focus.
 [Assessment-Gated Completion](assessment-gated-completion.md) defines the
 local derivation and its static task/rubric requirements. An ordinary direct
 subject result demonstrates understanding; implicit subject mastery demonstrates
@@ -728,7 +730,9 @@ $$
 
 An atom is satisfied by direct or valid implicit mastery. A cluster is
 satisfied by all its atomic descendants; its satisfaction never writes
-mastery back to those descendants.
+mastery back to those descendants. Recursive unit completion in §12 additionally
+respects authored direct ownership and required children; a display cluster
+or filtered subtree does not define that contract.
 
 **Current implementation boundary.** Binary general writes coexist with
 historical numeric rows interpreted through the shared `0.9` threshold.
@@ -762,7 +766,9 @@ $$
 
 These formulas describe prerequisite availability. Existing orientation,
 workflow, session and explicitly selected course-policy gates retain their
-separate meaning. They introduce no universal whole-level gate. Voluntary
+separate meaning. The recursive unit model introduces no universal whole-unit
+gate; whether unit prerequisites also impose technical access locks remains
+undecided, including direct assessment access. Voluntary
 practice of an already achieved goal remains possible without revoking credit.
 
 <!-- BEGIN SKILLPILOT-ILLUSTRATION: fig-06 -->
@@ -1087,118 +1093,211 @@ Special cases:
 
 ---
 
-## 12. Optional curriculum level assignments
+<a id="12-optional-curriculum-level-assignments"></a>
 
-A **curriculum level** is a planned acquisition stage within a resolved curriculum context, with an explicit entry basis and learning budget. School years, semesters, and course stages are possible realizations. The rationale and examples are specified in [Curriculum Levels](curriculum-levels.md).
+## 12. Learning units and optional planning profiles
 
-**Status and scope.** This is a conceptual, optional planning profile over a graph valid under §10. Its requirements define what a plan would need to satisfy to claim level validity; they do not assert an implemented schema, validator, or runtime feature. The base graph-validity conditions remain unchanged. Higher-level composition contracts remain responsible for resolving cross-landscape identities and prerequisite facts before this profile is applied.
+A **learning unit** (German: **Lerneinheit**; conceptual name: LearningUnit)
+is a recursive learning promise with motivation, learning goals or child units,
+and explicit own assessment/recall obligations. Its role is assigned through
+authoritative program/placement or reviewed composition structure in a resolved,
+versioned educational context. [Learning Units](learning-units.md) gives the
+didactic contract; [Learning-Unit Progression](learning-unit-progression.md)
+records the unresolved access-policy question.
 
-Curriculum levels are distinct from the [levels of personalization](../levels-of-personalization.md). Their assignments are resolved from contextual program, placement, or reviewed composition structures, not inferred uniquely from the prerequisite graph or maintained as manual waiver lists. They do not change canonical goal identity or authored `requires` edges.
+**Status and scope.** Unit recognition and recursive completion are conceptual,
+not an implemented schema or migration. Calendar assignments and workload checks
+below are optional planning profiles over a valid graph. Base validity in §10,
+canonical goal identity and binary learner results remain unchanged.
 
-### 12.1 Plan scope and entry basis
+### 12.1 Recursive targets and direct ownership
 
-For a resolved plan $\pi$, define:
-
-- $T_\pi\subseteq A$: atomic goals whose acquisition is planned;
-- $B_\pi\subseteq A\setminus T_\pi$: explicitly assumed entry competencies;
-- $n_\pi\in\mathbb{N}_{>0}$: the number of levels;
-- $\ell_\pi:T_\pi\to\{1,\ldots,n_\pi\}$: the acquisition-level assignment.
-
-Define the level target sets and their prefixes:
+Let $\mathcal U$ be a finite set of resolved units, with an acyclic required-child
+relation. Resolve authored choices before selecting $Children(U)$. Each unit has
+directly assigned actual atomic targets $Own(U)\subseteq A$ and recursive targets
 
 $$
-L_i=\{\,g\in T_\pi\mid\ell_\pi(g)=i\,\},\qquad
-L_{<i}=\bigcup_{j<i}L_j,\qquad
-L_{\leq i}=\bigcup_{j\leq i}L_j.
+T(U)=Own(U)\cup\bigcup_{V\in Children(U)}T(V).
 $$
 
-Each target has exactly one acquisition level in this plan. The same canonical goal MAY have a different level in another plan. Later repetition or application is a separate planned activity; it does not create another goal identity or first acquisition.
+Own includes actual orientation, subject, assessment and memory atoms; synthetic
+composition markers do not become goals. In one resolved acquisition path every
+target has one direct home in the smallest authoritative unit that owns its
+acquisition or explicit outcome. Parents aggregate descendants without claiming
+their acquisition again. Another curriculum may place the same canonical atom
+differently without changing its identity or valid mastery.
 
-The entry basis is a declared planning assumption, not a learner-state update. Declaring $B_\pi$ MUST NOT mark goals as mastered. Unmet entry requirements need separate diagnosis and learning provision; their additional effort is not silently covered by the reference plan.
+Applicability, direct entries, subtree expansion and projection roles MUST be
+resolved first. Hidden prerequisite-only support remains in structural checks
+without becoming an acquisition target or progress denominator. Missing or
+ambiguous ownership is an error, not an empty completed unit. Every valid unit
+has nonempty T(U); a pure aggregate contains actual required children.
 
-### 12.2 Structural feasibility
+Required cards MUST follow their real acquisition duty. A broad memory goal
+spanning proposed children cannot simply move to the parent to make children
+complete without required recall. Keep a fitting larger boundary or review a
+meaning-preserving goal/card split and its explicit evidence migration.
+Support references do not discharge a missing child card obligation.
 
-Resolve inherited, cluster-expanded and cross-subject obligations before
-checking the plan. Declared entry competencies are assumed acquired: their
-own acquisition history is outside this reference plan. For this hypothetical
-planning check only, let
+### 12.2 Own recognition and global effectiveness
+
+Let Q and H denote assessment and memorization atoms here (K remains the graph's
+cluster set). With explicit mastered set $M_A$, define
+
+$$
+P_U=Own(U)\cap(Q\cup H),\qquad
+N_U=Reach_{R_{at}}^*(P_U\setminus M_A),
+$$
+
+$$
+I_U=Own(U)\setminus(M_A\cup P_U\cup N_U).
+$$
+
+R is normalized before evaluation; reachability continues through mastered
+intermediates and outside support. Every ordinary subject target in Own(U)
+MUST have an own local assessment consumer
+and independently reviewed application coverage in its normal tasks/rubric.
+A card alone is not that proof. An uncovered subject endpoint MUST NOT become
+a zero-work recognition. Orientation remains a motivational marker, not an
+assertion of subject competence or an unobserved interaction.
+
+Pure aggregates MAY have no own Q. A parent MAY own a synthesis assessment of
+already acquired child competencies without owning another ordinary target.
+Such an assessment remains explicit; it neither passes child Q/H nor recognizes
+their targets through a new parent-wide contract. The formula MUST use Own(U),
+never replace it with T(U) to bypass descendant obligations.
+
+As in §9,
+
+$$
+M_{\mathrm{eff}}=M_A\cup\bigcup_{U\in\mathcal D}I_U,
+$$
+
+where $\mathcal D$ contains durably applicable immutable recognition contracts,
+not merely the current tree, focus or Personal Curriculum. Derivation uses
+explicit outcomes only, without feeding I back into itself. A later parent
+exam, new placement or graph revision MUST NOT enlarge the meaning of an old
+pass or withdraw a valid child recognition.
+
+### 12.3 Derived recursive completion
+
+$$
+Complete(U)\iff Own(U)\subseteq M_{\mathrm{eff}}
+\ \land\ \bigwedge_{V\in Children(U)}Complete(V).
+$$
+
+Own assessment and memory targets need explicit positive outcomes; they never
+enter implicit mastery. Every required child must complete its own contract.
+A parent synthesis pass cannot close an unfinished child, and completed children
+cannot pass a parent's own synthesis. An aggregate with no own exam MAY complete
+through its children. No unit or cluster result is stored.
+
+Individual valid recognition MAY precede whole-unit completion. An unrelated
+open card or another unfinished branch keeps completion open without withdrawing
+an already established competence. Deduplicate targets in T(U) for reporting.
+A filtered view cannot remove a required child from the completion contract.
+
+### 12.4 Whole-unit dependencies and block feasibility
+
+A whole-unit prerequisite is deliberately authored over complete learning
+promises in the composition contract, outside base relations C and R.
+One atomic dependency does not imply compulsory completion of an entire module.
+Derived unit-dependency summaries MUST NOT silently become new access gates.
+
+If a course presents units as indivisible blocks, its projected block dependency
+graph MUST admit an acyclic order compatible with actual atomic prerequisites
+and required children. Atomic DAG validity alone is insufficient: a → b → c
+cannot place a,c in one indivisible block and b in another without a block-order
+conflict. Revise the boundary or explicitly permit interleaving. Preserve the
+internal atomic DAG, effective prerequisites and transitive minimality.
+
+**Unresolved policy.** Whether deliberately authored whole-unit prerequisites
+define regular learning order or additionally enforce technical entry locks
+remains undecided, including their interaction with direct assessment access.
+The conditional gated example is not a universal rule. Existing authorization,
+session and grading requirements remain; this concept activates no new lock.
+
+<a id="121-plan-scope-and-entry-basis"></a>
+<a id="122-structural-feasibility"></a>
+
+### 12.5 Optional calendar assignments and structural feasibility
+
+Years, semesters and dated periods are planning placements, not automatically
+learning units. For a resolved reference plan $\pi$, define planned acquisition
+targets $T_\pi\subseteq A$, an explicitly assumed entry basis
+$B_\pi\subseteq A\setminus T_\pi$, and a first-acquisition period assignment
+$c_\pi:T_\pi\to\{1,\ldots,n_\pi\}$. Let
+
+$$
+C_i=\{a\in T_\pi\mid c_\pi(a)=i\},\qquad
+C_{<i}=\bigcup_{j<i}C_j,\qquad C_{\le i}=\bigcup_{j\le i}C_j.
+$$
+
+Each planned atom has one acquisition period. Later practice/application is a
+separate activity, not another goal identity. A unit may span periods if the
+declared course policy permits that; an indivisible-block claim must additionally
+satisfy §12.4. Entry assumptions certify no actual learner competence and write
+no mastery.
+
+Resolve full inherited, cluster-expanded and cross-subject prerequisites before
+display restriction. For this hypothetical reference-plan check only, assumed
+entry competencies terminate their acquisition history:
 
 $$
 R_{at}^{\pi}=\{(a,b)\in R_{at}\mid a\notin B_\pi\}.
 $$
 
-Use the §9.1 frontier with this relation to write $Frontier_\pi$. All targets
-and earlier-level competencies retain full transitive requirements. Stopping
-at the declared entry basis is a planning boundary, not permission to stop at
-a mastered intermediate during real learner prerequisite evaluation.
-
-The plan is structurally feasible iff each $L_i$ has an order
-$a_1,\ldots,a_m$ such that
+Use the §9.1 frontier with this relation as $Frontier_\pi$. Structural feasibility
+requires an order $a_1,\ldots,a_m$ in every $C_i$ satisfying
 
 $$
-a_j\in Frontier_\pi\!\left(
-B_\pi\cup L_{<i}\cup\{a_1,\ldots,a_{j-1}\}
-\right)\qquad(1\le j\le m).
+a_j\in Frontier_\pi\!\left(B_\pi\cup C_{<i}\cup
+\{a_1,\ldots,a_{j-1}\}\right).
 $$
 
-This is a hypothetical acquisition witness without direct-exam shortcuts or
-assumed implicit recognition. It writes no real mastery. Same-level
-requirements are allowed; later-level or unplanned requirements are not.
+The witness assumes no direct-exam shortcut or implicit recognition. All targets
+and earlier acquired competencies retain full transitive demand; stopping at
+the declared entry basis here does not authorize stopping at mastered nodes
+in real learner evaluation.
 
-For diagnostics, define
-
-$$
-RequiredAtoms_\pi(g)=\{b\in A\mid(g,b)\in(R_{at}^{\pi})^+\}.
-$$
-
-Structural feasibility requires
+In particular,
 
 $$
-\forall g\in T_\pi:\quad
-RequiredAtoms_\pi(g)\subseteq B_\pi\cup L_{\le\ell_\pi(g)}.
+\forall a\in T_\pi:\quad
+\{b\mid(a,b)\in(R_{at}^{\pi})^+\}
+\subseteq B_\pi\cup C_{\le c_\pi(a)}.
 $$
 
-An atom outside $B_\pi\cup T_\pi$ is an unplanned prerequisite; a target
-assigned later than its consumer is a level-order conflict. Hidden support
-and `prerequisiteOnly` atoms remain in this diagnostic. Do not replace the
-check by a level-filtered optimistic frontier, which can hide the gaps.
+A missing acquisition/entry assignment is a planning gap; a prerequisite assigned
+later is a period-order conflict. Hidden support remains visible to this check.
+Same-period dependencies are permitted if the witness exists. Repeatedly add
+$C_i\cap Frontier_\pi(S)$ to $S=B_\pi\cup C_{<i}$ until stable to test traversal.
+This simulation writes no learner results and changes no focus/access policy.
 
-The witness can be checked by starting with $S=B_\pi\cup L_{<i}$ and repeating
-$S\leftarrow S\cup(L_i\cap Frontier_\pi(S))$ until stable. It succeeds iff
-all of $L_i$ is reached. This validation state does not add learner results,
-change real focus/strict mode or introduce a blanket dependency between levels.
+<a id="123-workload-feasibility"></a>
 
-### 12.3 Workload feasibility
+### 12.6 Optional workload feasibility
 
-A workload claim MUST state its reference learners, entry conditions, supported target or elective selection, available learning time, estimation method, and uncertainty. It MUST identify which acquisition, practice, assessment, repetition, and other planned activities it includes. Details and evidence expectations are described in [Curriculum Levels](curriculum-levels.md) and the [curriculum time-axis contract](../didactic/curriculum-time-axis-and-pacing.md), especially §§6–7.
-
-For each level, define in the same learning-time unit:
-
-- $Work_\pi(i;\Theta_\pi)\geq0$: estimated planned work under declared assumptions $\Theta_\pi$;
-- $Reserve_\pi(i)\geq0$: separately protected contingency time;
-- $Budget_\pi(i)>0$: available time after calendar exclusions.
-
-The workload-feasibility condition is:
+A workload claim MUST state reference learners, entry basis, supported choices,
+activities, time capacity, estimation method and uncertainty. The
+[time-axis contract](../didactic/curriculum-time-axis-and-pacing.md) owns effort
+calibration and capacity allocation. For each period, in a common learning-time
+unit require
 
 $$
-\forall i:\quad
-Work_\pi(i;\Theta_\pi)+Reserve_\pi(i)\leq Budget_\pi(i).
+Work_\pi(i;\Theta_\pi)+Reserve_\pi(i)\le Budget_\pi(i).
 $$
 
-Protected reserve MUST NOT also be counted as available time for the planned work. Activities already included in $Work_\pi$ MUST NOT consume the same reserve again. A zero reserve is permitted but must be disclosed as a planning assumption.
+Reserve is explicit and not also available for planned work. Goal weights and
+uncalibrated counts MUST NOT be treated as effort. Count shared acquisition once;
+include genuine extra practice explicitly. Cross-subject totals need a feasible
+allocation under binding subject, timetable and resource limits.
 
-Existing goal `Weight` values describe progress or assessment shares; they MUST NOT be reinterpreted as time or effort. Estimates use separate plan-local effort units with an explicit calibration to learning time. An uncalibrated goal count may describe volume but cannot substantiate time feasibility.
+<a id="124-validity-and-progression-boundaries"></a>
 
-A canonical atom MUST NOT be counted repeatedly as a new acquisition merely because several subjects or placements reference it. Genuine additional practice or application effort is included explicitly. A combined subject budget also needs a feasible allocation under any declared subject, timetable, or resource constraints; a total alone does not establish such an allocation.
-
-Workload feasibility is conditional on the declared assumptions and evidence, not a guarantee for every learner. Without a supported workload estimate, a plan MAY claim structural feasibility but MUST NOT claim workload feasibility or full level validity.
-
-### 12.4 Validity and progression boundaries
-
-A plan is valid under this optional profile iff it is structurally feasible and workload-feasible under its declared assumptions. Any validity claim MUST identify the plan, resolved curriculum scope, applicable graph or curriculum revision, and workload assumptions.
-
-Level validity does not add blanket dependencies between successive levels. Individual availability continues to follow the existing prerequisite semantics and selected runtime evaluation contract. Finishing a whole level is an aggregate plan result, not a prerequisite for every target in the next level.
-
-The optional [curriculum levels with completion gates](curriculum-level-gates.md) design adds an explicit course policy over selected cluster placements. It defines local assessment routes, mandatory card recall and whole-level entry gates. Its proposed `requiresLevel` relation belongs to the resolved plan and sits outside the base graph relations $C$ and $R$.
-
-Level assignment, hypothetical plan validation and presentation alone MUST NOT award or reset mastery. Separately, a valid local assessment recognition contract may establish globally effective ordinary mastery under §9. Retain its immutable meaning and existing result attribution after Personal-Curriculum changes; a new contract revision must not expand the meaning of an old positive assessment. Planning introduces no new stored goal state or automatic whole-level gate.
+A claim of structural/time feasibility names its resolved plan, revision and
+assumptions; without a supported estimate it MUST NOT claim workload validity.
+These optional planning claims neither define unit recognition nor add whole-unit
+locks. A valid application contract need not wait for a budget planner; a feasible
+timetable does not prove independent application. Unit placement and hypothetical
+planning MUST NOT award or reset mastery or reinterpret old assessment results.

@@ -25,14 +25,18 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [SkillPilot Skill Graph Specification](skill-graph/graph-definition.md)
   Core graph model and formal vocabulary.
 - [Assessment-Gated Completion and Global Mastery](skill-graph/assessment-gated-completion.md)
-  Direct assessment access and globally effective mastery through independent application in valid local level assessments.
+  Direct assessment access and globally effective mastery through independent application in valid local learning-unit assessments.
 - [Produktentscheidung: Beherrschung durch Verständnis und selbständige Anwendung](skill-graph/completion-semantics-clarification-2026-11-04.md)
   Verbindliche Konzeptkorrektur vom 4. November 2026; Umsetzung und Prüfung bestehender Prüfungsverträge folgen.
-- [Curriculum Levels](skill-graph/curriculum-levels.md)
-  Contextual learning stages with prerequisite-consistent targets, feasible
-  workload, and a connection to the knowledge-building metaphor.
-- [Curriculum levels with completion gates](skill-graph/curriculum-level-gates.md)
-  Design for cluster-based course units with explicit assessment, required card recall and whole-level entry gates.
+- [Learning Units (Lerneinheiten)](skill-graph/learning-units.md)
+  Recursive units with a learning promise, subunits, application assessments
+  and derived completion; acquired competence remains globally valid.
+- [Learning Unit Progression](skill-graph/learning-unit-progression.md)
+  Explicit dependencies between whole units, valid block ordering and the
+  separate decision about recommended routes versus technical entry gates.
+  The former [unit-concept address](skill-graph/curriculum-levels.md) and
+  [progression-concept address](skill-graph/curriculum-level-gates.md) remain
+  short compatibility pointers for existing links.
 - [General Goal System and Migration](skill-graph/general-goal-system-and-migration.md)
   Long-term goal-system split and migration direction.
 - [Node Types](skill-graph/node-types.md)

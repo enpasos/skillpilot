@@ -144,8 +144,8 @@ def transitive_demand():
             "implicit" if passed else "open")
         arrow(ax, (2.95, y), (4.75, y), active=not passed)
         arrow(ax, (7.25, y), (9.05, y), active=not passed)
-        ax.text(6, y-1.0, r"$N_L = \varnothing$;  $I_L = \{A,B\}$" if passed else
-                r"$N_L = \{Q,B,A\}$;  $I_L = \varnothing$", ha="center")
+        ax.text(6, y-1.0, r"$N_U = \varnothing$;  $I_U = \{A,B\}$" if passed else
+                r"$N_U = \{Q,B,A\}$;  $I_U = \varnothing$", ha="center")
     ax.text(6, .16, "Unabhängige Ausgangslagen, keine zeitliche Folge. Q → A wäre redundant.",
             ha="center", fontsize=8.7)
     return fig
@@ -156,8 +156,8 @@ def local_recognition():
     edges = {("q1", "b"), ("b", "a"), ("q2", "a")}
     assert demand(vertices, {"a", "b", "q1"}, {"q1", "q2"}, edges, {"q1"}) == (set(), {"a", "b"})
     fig, ax = canvas(4.6)
-    boundary(ax, .3, 1.25, 7.2, 6.0, "Gültiger lokaler Vertrag L1")
-    boundary(ax, 8, 1.25, 3.7, 6.0, "Späteres Level L2", color=BLUE, fill="#F5FAFD")
+    boundary(ax, .3, 1.25, 7.2, 6.0, "Eigener Erwerbsvertrag U1")
+    boundary(ax, 8, 1.25, 3.7, 6.0, "Spätere Einheit U2", color=BLUE, fill="#F5FAFD")
     box(ax, 2.25, 5.65, "q₁ · Prüfung", "ausdrücklich bestanden", "explicit", width=2.9)
     box(ax, 5.5, 4.05, "b · gewöhnlich", "implizit beherrscht", "implicit")
     box(ax, 2.25, 2.75, "a · Grundlage", "implizit beherrscht", "implicit", width=2.9)
@@ -166,8 +166,8 @@ def local_recognition():
     arrow(ax, (4.25, 3.7), (3.65, 3.15))
     arrow(ax, (8.3, 3.4), (3.8, 2.75))
     ax.text(6, 2.0, "A erfüllt Q₂s Voraussetzung", ha="center", fontsize=8.8, color=BLUE)
-    ax.text(6, .78, r"$M = \{q_1\}$;  $I_{L1} = \{a,b\}$;  $M_{eff} = \{q_1,a,b\}$", ha="center")
-    ax.text(6, .26, "L2, Fokuswechsel oder Planwahl öffnen die belegte Anwendung nicht erneut.",
+    ax.text(6, .78, r"$M = \{q_1\}$;  $I_{U1} = \{a,b\}$;  $M_{eff} = \{q_1,a,b\}$", ha="center")
+    ax.text(6, .26, "U2, Fokuswechsel oder Planwahl öffnen die belegte Anwendung nicht erneut.",
             ha="center", fontsize=9)
     return fig
 
@@ -177,17 +177,17 @@ def protected_support():
     assert demand(vertices, {"q", "a", "k"}, {"q", "k", "h"},
                   {("q", "a"), ("q", "h")}, {"q"}, exams={"q"}) == ({"k"}, {"a"})
     fig, ax = canvas(4.5)
-    boundary(ax, .3, 2.0, 7.45, 5.1, "Targets T = {q, a, k}")
+    boundary(ax, .3, 2.0, 7.45, 5.1, "Eigene Erwerbsziele Own(U) = {q, a, k}")
     box(ax, 2.05, 5.6, "q · Prüfung", "Mastery = 1", "explicit")
     box(ax, 2.05, 3.35, "a · gewöhnlich", "implizit beherrscht", "implicit")
     box(ax, 5.95, 3.35, "k · Gedächtnis", "ausdrücklich offen")
     box(ax, 9.8, 5.6, "h · Gedächtnis", "Mastery = 0", width=2.9, dashed=True)
     arrow(ax, (2.05, 4.95), (2.05, 4.0))
     arrow(ax, (3.3, 5.6), (8.25, 5.6))
-    ax.text(9.8, 4.25, "Unterstützung außerhalb T\nkein lokales Target\nkeine Anerkennung",
+    ax.text(9.8, 4.25, "Externe Unterstützung\nkein lokales Target\nkeine Anerkennung",
             ha="center", va="center", fontsize=9, linespacing=1.55)
     ax.text(5.95, 4.65, "k bleibt eine eigene\nAbschlusspflicht", ha="center", fontsize=9)
-    ax.text(6, 1.35, r"$P_L = \{q,k\}$;  $N_L = \{k\}$;  $I_L = \{a\}$", ha="center")
+    ax.text(6, 1.35, r"$P_U = \{q,k\}$;  $N_U = \{k\}$;  $I_U = \{a\}$", ha="center")
     ax.text(6, .75, "Effektiv beherrscht: 2 von 3 Targets. Explizite Mastery: 1 von 3 Targets.", ha="center", fontsize=10)
     ax.text(6, .22, "h zählt nicht zum Nenner. k braucht seinen eigenen verifizierten Abruf.", ha="center", fontsize=9)
     return fig
@@ -248,17 +248,17 @@ def title_graph():
     return fig
 
 
-def level_planning():
+def calendar_planning():
     fig, ax = canvas(2.5)
     positions = [1.5, 4.5, 7.5, 10.5]
-    for x, title, detail in zip(positions, ["Eintrittsbasis", "Level 1", "Level 2", "Level 3"],
-                                ["angenommen", "Erwerbsumfang", "Erwerbsumfang", "Erwerbsumfang"]):
+    for x, title, detail in zip(positions, ["Eintrittsbasis", "Zeitraum 1", "Zeitraum 2", "Zeitraum 3"],
+                                ["angenommen", "z. B. Schuljahr", "z. B. Schuljahr", "z. B. Schuljahr"]):
         box(ax, x, 2.8, title, detail, width=2.25)
     for x in positions[:-1]:
         arrow(ax, (x+1.22, 2.8), (x+1.78, 2.8))
-    ax.text(6, 1.25, "Planungsreihenfolge: globaler Erwerbsweg und begründetes Zeitbudget",
+    ax.text(6, 1.25, "Optionale Zeiteinteilung: Erwerbsweg und begründetes Zeitbudget",
             ha="center", fontsize=9.4)
-    ax.text(6, .55, "Pfeile sind keine requires-Kanten zwischen Levelcontainern.",
+    ax.text(6, .55, "Keine Einheitshierarchie; Pfeile sind keine requires-Kanten oder Zugangssperren.",
             ha="center", fontsize=9.4)
     return fig
 
@@ -365,14 +365,67 @@ def shared_local_assessments():
         arrow(ax, (4.05+offset, 4.9), (3.4+offset, 4.3), color=BLUE)
         ax.text(3+offset, 2.58, r"$M=\{Q_1,Q_2\}$" if both else r"$M=\{Q_1\}$",
                 ha="center", fontsize=10.5)
-        ax.text(3+offset, 1.98, r"$N_L=\varnothing;\ I_L=\{A\}$" if both else
-                r"$N_L=\{Q_2,A\};\ I_L=\varnothing$", ha="center", fontsize=10.5)
-    ax.text(6, 1.04, r"Derselbe gültige Levelvertrag: $T_L=\{Q_1,Q_2,A\}$, $P_L=\{Q_1,Q_2\}$.",
+        ax.text(3+offset, 1.98, r"$N_U=\varnothing;\ I_U=\{A\}$" if both else
+                r"$N_U=\{Q_2,A\};\ I_U=\varnothing$", ha="center", fontsize=10.5)
+    ax.text(6, 1.04, r"Derselbe eigene Erwerbsvertrag: $\operatorname{Own}(U)=\{Q_1,Q_2,A\}$, $P_U=\{Q_1,Q_2\}$.",
             ha="center", fontsize=10)
     ax.text(6, .49, "Beide Prüfungen benötigen A. Q₁ bleibt bestanden; erst die offene Nachfrage von Q₂ entfällt.",
             ha="center", fontsize=9.1)
     ax.text(6, .03, "Blau durchgezogen: requires · Grün: ausdrücklich bestanden · Hellblau: implizit global beherrscht",
             ha="center", fontsize=8.6)
+    return fig
+
+
+def recursive_learning_unit():
+    """Separate derived unit completion from explicit goal outcomes in two cases."""
+    vertices = {"a", "b", "d", "qK", "kK", "qD", "qS"}
+    edges = {("qK", "b"), ("b", "a"), ("qD", "d"),
+             ("d", "b"), ("qS", "d")}
+    protected = {"qK", "kK", "qD", "qS"}
+    exams = {"qK", "qD", "qS"}
+    own = [{"a", "b", "qK", "kK"}, {"d", "qD"}, {"qS"}]
+    def states(mastered):
+        recognized = [demand(vertices, targets, protected, edges, mastered, exams)[1]
+                      for targets in own]
+        effective = mastered | set().union(*recognized)
+        children = [targets <= effective for targets in own[:2]]
+        return recognized, children, own[2] <= effective and all(children)
+    assert states({"qK", "kK", "qD"}) == ([{"a", "b"}, {"d"}, set()], [True, True], False)
+    assert states({"qS"}) == ([set(), set(), set()], [False, False], False)
+    assert states({"qK"}) == ([{"a", "b"}, set(), set()], [False, False], False)
+    assert states({"qK", "kK", "qD", "qS"})[2]
+    fig, ax = canvas(6.1)
+    for offset, title, child_done in [(0, "A · Kinder fertig, Synthese offen", True),
+                                      (6, "B · Nur Synthese bestanden", False)]:
+        boundary(ax, .2+offset, 2.3, 5.6, 7.35, title)
+        box(ax, 3+offset, 8.1, "Mechanik", "Abschluss abgeleitet: nein", width=4.7, height=1.15)
+        ax.text(3+offset, 7.14, "Eigene Pflicht qₛ: " + ("offen" if child_done else "bestanden"),
+                ha="center", fontsize=9.2, color=MUTED if child_done else GREEN)
+        for x, name, detail, earned in [(1.65, "Kinematik", "qₖ, kₖ bestanden" if child_done else "qₖ, kₖ offen", "a, b anerkannt"),
+                                         (4.35, "Dynamik", "qᴅ bestanden" if child_done else "qᴅ offen", "d anerkannt")]:
+            ax.add_patch(FancyBboxPatch((x-1.2+offset, 3.95), 2.4, 2.25,
+                                       boxstyle="round,pad=.04,rounding_size=.10",
+                                       facecolor="#FAFCFD", edgecolor=INK, linewidth=1.1, zorder=3))
+            ax.text(x+offset, 5.82, name, ha="center", weight="bold", fontsize=9.6, zorder=4)
+            ax.text(x+offset, 5.25, detail, ha="center", fontsize=8.55,
+                    color=GREEN if child_done else MUTED, zorder=4)
+            ax.text(x+offset, 4.75, earned if child_done else "kein Kind-I erzeugt", ha="center",
+                    fontsize=8.4, color=BLUE if child_done else MUTED, zorder=4)
+            ax.text(x+offset, 4.25, "Abschluss: " + ("ja" if child_done else "nein"),
+                    ha="center", fontsize=8.7, zorder=4)
+            arrow(ax, (3+offset, 6.8), (x+offset, 6.3))
+        ax.text(3+offset, 3.35, r"$M=\{q_K,k_K,q_D\}$" if child_done else r"$M=\{q_S\}$",
+                ha="center", fontsize=10)
+        ax.text(3+offset, 2.77, r"$I_K\cup I_D=\{a,b,d\};\ I_S=\varnothing$" if child_done else
+                r"$I_K=I_D=I_S=\varnothing$", ha="center", fontsize=9.8)
+    ax.text(6, 1.68, "Eigene Erwerbsziele: Kinematik {a,b,qₖ,kₖ} · Dynamik {d,qᴅ} · Mechanik {qₛ}",
+            ha="center", fontsize=8.8)
+    ax.text(6, 1.14, "Fachliches requires: qₛ → d → b → a; qᴅ → d; qₖ → b. kₖ ist unabhängig.",
+            ha="center", fontsize=8.8, color=BLUE)
+    ax.text(6, .6, "Graue Pfeile: Pflichtkinder · Abschluss wird abgeleitet; gespeichert bleiben nur atomare Ergebnisse.",
+            ha="center", fontsize=8.4)
+    ax.text(6, .12, "Kein Eltern-I über Kindziele. Die Einheitshierarchie ist keine zusätzliche Mastery-Ebene.",
+            ha="center", fontsize=8.5)
     return fig
 
 
@@ -382,10 +435,11 @@ FIGURES = {
     "09-local-recognition.png": local_recognition,
     "10-protected-support.png": protected_support,
     "11-plan-period.png": plan_period,
-    "12-level-planning.png": level_planning,
+    "12-calendar-planning.png": calendar_planning,
     "13-atomic-expansion.png": atomic_expansion,
     "14-inherited-redundancy.png": inherited_redundancy,
     "15-shared-local-assessments.png": shared_local_assessments,
+    "16-recursive-learning-unit.png": recursive_learning_unit,
 }
 
 
@@ -417,7 +471,7 @@ def main():
                 if os.path.exists(temporary):
                     os.unlink(temporary)
         print(name, hashlib.sha256(data).hexdigest())
-    print("PASS: nine exact PNG illustrations; normalization, minimality, local recognition and counting verified.")
+    print("PASS: ten exact PNG illustrations; normalization, minimality, own-only recognition, recursive completion and counting verified.")
 
 
 if __name__ == "__main__":

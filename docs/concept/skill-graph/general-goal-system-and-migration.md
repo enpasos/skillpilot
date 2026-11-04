@@ -13,7 +13,7 @@ Use related documents for narrower questions:
 - `docs/dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot.md`
 - `docs/concept/skill-graph/view-projection-and-goal-placement.md`
 - `docs/concept/skill-graph/graph-definition.md`
-- [Curriculum Levels](curriculum-levels.md): ordered learning stages with prerequisite and workload conditions
+- [Learning Units](learning-units.md): recursive educational units with explicit outcomes and derived completion
 
 It is motivated by one concrete pressure point in the current canonical Gymnasium work:
 
@@ -249,41 +249,45 @@ This means:
 - the composition view becomes the explicit authoring surface for a learner-facing Bundesland or curriculum tree
 - validation can run on the compiled tree before any UI logic is involved
 
-## Curriculum levels across program units
+## Recursive learning units across program units
 
-A [curriculum level](curriculum-levels.md) (`CurriculumLevel`) is an ordered
-acquisition stage within a defined program. It adds a planning contract to the
-program and placement layers: prerequisites must be available from the declared
-entry basis or no later than the same level, and the estimated workload must fit
-the declared learning budget. A school year or semester can be such a stage;
-several modules can form one stage together.
+A [learning unit](learning-units.md) (**Lerneinheit**, conceptual name
+`LearningUnit`) is an educational whole with a stated outcome, a motivational
+introduction, constituent goals or subunits, and a reviewed completion rule.
+Small sections and larger modules use the same recursive structure. A year or
+semester is a calendar/program container; it becomes a learning unit only when
+it also has this educational meaning. A unit does not have to occupy a numbered
+rank, and independent branches can remain available in parallel.
 
-This is an optional conceptual extension, with formal conditions in
-[Graph Definition §12](graph-definition.md#12-optional-curriculum-level-assignments).
-It introduces neither another goal type nor a sixth semantic layer. Existing
-year labels or program membership alone do not establish that either condition
-has been checked. No new serialized field or implemented validator is implied.
+The unit role belongs to an authoritative placement or composition structure
+for a resolved curriculum revision. It introduces no new atomic mastery type
+and no competing editable goal tree. Within that course, each acquisition
+target has one directly owning unit; ancestors aggregate it without acquiring
+it again. Canonical goals retain their identities, and general canonical
+multiple-parent containment remains possible. See the
+[projection contract](view-projection-and-goal-placement.md#learning-units-in-projected-views).
 
-A level plan binds its resolved scope, curriculum release, applicable composition
-or program projection, explicit entry assumptions, and workload assumptions.
-The same canonical goal may have different acquisition levels in different
-programs. Within one resolved plan, each acquisition target has one assigned
-level; later repetition, application, or assessment remains additional activity
-on the same goal. Declared entry assumptions never create learner mastery.
+Completion is derived from all required child completions and the unit's own
+target results. A parent may add an integrative assessment; an aggregate needs
+no redundant extra exam. Valid recognition in a completed child remains global
+while the parent assessment is open. A parent's pass never passes protected
+child exams or cards. Local recognition applies only to directly owned ordinary
+targets under that unit's reviewed contract, not to its entire descendant union.
 
-The assignment belongs to contextual program planning. Do not repurpose the
-existing goal `level` difficulty metadata, `phase`, or the levels of
-personalization to store it. A reviewed composition view remains authoritative
-for the default learner-facing structure; level planning must reference that
-resolved structure instead of introducing a competing editable goal hierarchy.
-The [projection contract](view-projection-and-goal-placement.md#curriculum-levels-in-projected-views)
-specifies how to preserve goal identities and supporting prerequisites.
+An explicitly declared whole-unit prerequisite means the predecessor's complete
+outcome is required by the course. An individual atomic prerequisite does not
+create that stronger statement. Keep these course relations distinct from
+inherited canonical `requires`. Whether the course relation guides a recommended
+route or technically blocks starts, including direct exam attempts, remains a
+separate product decision in [Learning Unit Progression](learning-unit-progression.md).
 
-Level completion is derived from the declared goal results and completion rule.
-It does not create a `requires` edge between program units, make all earlier
-targets prerequisites of all later targets, or add an availability gate. The
-existing personal-curriculum, focus, and frontier contracts continue to govern
-individual learning.
+[Graph Definition §12](graph-definition.md#12-learning-units-and-optional-planning-profiles)
+specifies the recursive contract and optional structural/workload checks.
+Budget feasibility still requires supported effort estimates and an explicit
+entry basis; neither calendar placement nor a declared entry assumption writes
+mastery. The existing difficulty field `level` and personalization levels keep
+their meanings. This is revised concept documentation, not an implemented unit
+schema, compiler or access policy.
 
 ## Minimal target data structures
 
@@ -524,8 +528,8 @@ should be aggregated from effective goal mastery through placements and referenc
 The 4 November 2026 [completion contract](assessment-gated-completion.md)
 combines explicit binary results with global recognition through independent
 application. This is a derived result over fixed authoring contracts, not stored
-mastery on a programme, level or cluster. Later use and scope changes do not
-reopen recognized competencies. Authoritative acquisition-level boundaries are
+mastery on a programme, unit or cluster. Later use and scope changes do not
+reopen recognized competencies. Authoritative directly owning unit boundaries are
 needed for recognition; they are not arbitrary display cuts or per-exam waiver
 lists. Their concrete schema and migration belong to later implementation planning.
 

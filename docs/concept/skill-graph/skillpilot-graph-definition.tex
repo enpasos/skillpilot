@@ -22,8 +22,8 @@
 \hypersetup{colorlinks=true,linkcolor=ink,urlcolor=teal,citecolor=teal,
  pdftitle={Die Graph-Definition von SkillPilot},
  pdfauthor={SkillPilot / enpasos},
- pdfsubject={Graphsemantik, curriculare Sichten, Lernzustand und implizite Beherrschung},
- pdfkeywords={SkillPilot, Skill Graph, Lernziele, Frontier, Assessment, Curriculum}}
+ pdfsubject={Graphsemantik, rekursive Lerneinheiten, Lernzustand und implizite Beherrschung},
+ pdfkeywords={SkillPilot, Skill Graph, Lerneinheit, learning unit, Frontier, Assessment, Curriculum}}
 \setkomafont{disposition}{\normalfont\sffamily\bfseries\color{ink}}
 \setkomafont{pageheadfoot}{\normalfont\sffamily\small\color{muted}}
 \clearpairofpagestyles
@@ -58,6 +58,8 @@
 \DeclareMathOperator{\Verified}{Verified}
 \DeclareMathOperator{\Consumers}{Consumers}
 \DeclareMathOperator{\Complete}{Complete}
+\DeclareMathOperator{\Own}{Own}
+\DeclareMathOperator{\Children}{Children}
 \DeclareMathOperator{\Id}{Id}
 \DeclareMathOperator{\Title}{Title}
 \DeclareMathOperator{\Weight}{Weight}
@@ -93,15 +95,15 @@
 
 \begin{document}
 \begin{titlepage}
-\vspace*{12mm}
+\vspace*{9mm}
 {\sffamily\large\color{teal} SKILLPILOT · TECHNISCHE REFERENZ\par}
-\vspace{14mm}
+\vspace{10mm}
 {\sffamily\bfseries\fontsize{32}{37}\selectfont\color{ink}
 Die Graph-Definition\par von SkillPilot\par}
 \vspace{9mm}
-{\Large Struktur, Mathematik, curriculare Sichten\par und implizite Beherrschung\par}
-\vspace{14mm}
-\begin{center}\includegraphics[width=\linewidth,height=.27\textheight,keepaspectratio]{assets/graph-definition/00-title-skill-graph.png}\end{center}
+{\Large Struktur, Mathematik, rekursive Lerneinheiten\par und implizite Beherrschung\par}
+\vspace{8mm}
+\begin{center}\includegraphics[width=\linewidth,height=.23\textheight,keepaspectratio]{assets/graph-definition/00-title-skill-graph.png}\end{center}
 \vfill
 \begin{principle}{Geltung dieser Fassung}
 Deutsche Gesamtdarstellung, Stand \textbf{4. November 2026}.
@@ -111,6 +113,10 @@ Prüfungen belegter selbstständiger Anwendung. Beide zählen global als
 effektiv beherrscht. Diese neue Semantik ist auf der geprüften Hauptlinie
 \textbf{noch nicht implementiert}; Anhang~\ref{sec:implementation}
 beschreibt den Unterschied zum bisherigen Modell.
+Die fachliche Struktur heißt \textbf{Lerneinheit}: Lernversprechen,
+eigene Ziele und Kindlerneinheiten führen zu einem abgeleiteten Abschluss.
+Kalenderjahre definieren sie nicht; ihr Abschluss erzeugt keine zusätzliche
+gespeicherte Masterystufe.
 \end{principle}
 \vspace{6mm}
 {\small SkillPilot · enpasos -- Enterprise Patterns \& Solutions GmbH\par
@@ -125,6 +131,9 @@ Ein SkillPilot-Graph beschreibt, \emph{was} gelernt werden kann und welche
 Voraussetzungen dabei gelten. Curriculare Sichten bestimmen, welche dieser
 stabilen Ziele für eine Person gelten. Der Lernzustand hält für jedes atomare
 Ziel fest, ob es geschafft ist. Planung verteilt Erwerb und Übung auf verfügbare Zeit.
+Lerneinheiten erklären den fachlichen Zusammenhang vom überschaubaren
+Thema bis zum größeren Fachgebiet. Ihr Abschluss wird rekursiv aus
+Kindern und eigenen Pflichten abgeleitet, nicht pauschal gespeichert.
 Die Ableitung impliziter Beherrschung verbindet ausdrückliche Ergebnisse,
 transitive Voraussetzungen und fachlich geprüfte lokale Abschlussverträge. Diese Aussagen dürfen sich aufeinander beziehen,
 aber nicht stillschweigend gegenseitig ersetzen.
@@ -145,8 +154,10 @@ Normativer Kern & Verbindliche mathematische Graphsemantik aus
 \code{graph-definition.md}; zusätzliche Profile können strengere Regeln setzen.\\
 Angrenzender Vertrag & Semantik von Projektion, Zieltypen, Quellen oder
 Lernablauf; Implementierungsstand ist jeweils gesondert zu prüfen.\\
-Optionales Profil & Curriculum-Level mit Struktur- und Zeitprüfung;
-konzeptionell definiert, kein behaupteter neuer produktiver Validator.\\
+Fachliche Struktur & Rekursive Lerneinheiten mit Lernversprechen,
+eigenen Zielen und abgeleitetem Abschluss; kein behauptetes Runtimefeature.\\
+Optionales Profil & Zeit-/Budgetplanung und bedingte Einheitszugänge;
+harte Sperren und direkter Prüfungszugriff sind dafür noch nicht entschieden.\\
 Umsetzungsgrenze & Neuer Abschlussvertrag noch nicht implementiert;
 der bestehende Code folgt einem abweichenden Bedarfsmodell.\\
 \bottomrule
@@ -170,7 +181,10 @@ fachliche Aufgabenreviews noch Untersuchungen mit Lernenden.
 \ohead{Curriculare Sichten und Lernzustand}
 \input{latex/graph-context.tex}
 \clearpage
-\ohead{Curriculare Planung}
+\ohead{Rekursive Lerneinheiten}
+\input{latex/graph-learning-units.tex}
+\clearpage
+\ohead{Optionale Zeit- und Budgetplanung}
 \input{latex/graph-planning.tex}
 \clearpage
 \ohead{Implizite Beherrschung und Prüfungszugang}

@@ -13,7 +13,7 @@ Use related documents for adjacent concerns:
 - `docs/concept/skill-graph/general-goal-system-and-migration.md`
 - `docs/dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot.md`
 - `docs/concept/skill-graph/graph-definition.md`
-- [Curriculum Levels](curriculum-levels.md): the optional planning contract for ordered acquisition stages
+- [Learning Units](learning-units.md): recursive educational units and their completion contracts
 
 These related documents explain the layered model, the transition strategy, and the formal skill graph. This document answers a narrower question:
 
@@ -326,24 +326,28 @@ Compilation must not:
 
 The role assignment is therefore projection metadata only. Canonical goal identity, the canonical DAG, and learner mastery remain global and unchanged across composition views.
 
-## Curriculum levels in projected views
+<a id="curriculum-levels-in-projected-views"></a>
 
-The optional [curriculum-level concept](curriculum-levels.md) uses the same
-canonical goals and reviewed structural sources as the views above. This
-section describes its projection requirements; it does not claim that a
-level-specific schema, compiler, or runtime feature already exists.
+## Learning units in projected views
 
-For a resolved level plan:
+The [learning-unit concept](learning-units.md) uses the same canonical goals
+and reviewed structural sources as the views above. Units can contain subunits
+and directly assigned goals. This section describes the revised concept's
+projection requirements, not an already implemented schema or runtime feature.
+
+For a resolved unit hierarchy:
 
 1. Bind the curriculum release, participating subject scopes, and the applicable
    composition-view or program-projection revisions. Use the reviewed composition
    view where it is authoritative; otherwise use explicit program units and
-   placements. Level membership must be traceable to that source, not maintained
+   placements. Unit membership must be traceable to that source, not maintained
    as a competing editable hierarchy or inferred from titles or `phase`.
 2. Resolve referenced structures to canonical atomic goal IDs. Each planned
-   acquisition has one level in this plan. Conflicting assignments need an
-   explicit reviewed resolution; secondary and assessment references do not
-   silently create additional acquisitions.
+   acquisition has one directly owning unit in this course. Ancestors aggregate
+   child targets without owning their acquisition again. Conflicting direct
+   assignments need a reviewed resolution; secondary and assessment references
+   do not silently create additional acquisitions. General canonical multiple
+   containment parents are unaffected by this course-specific ownership rule.
 3. Compose participating subjects by canonical identity. A mathematics goal may
    be a `target` in Mathematics and `prerequisiteOnly` in Physics. Its acquisition
    is counted once in the joint plan, while each subject view keeps its authored
@@ -351,7 +355,7 @@ For a resolved level plan:
    the goal or its mastery.
 4. Retain access to the full effective prerequisites, including outside-view
    goals and the atomic descendants of required clusters, for
-   [structural level validation](graph-definition.md#12-optional-curriculum-level-assignments).
+   [structural unit validation](graph-definition.md#12-learning-units-and-optional-planning-profiles).
    A required atom must be accounted for by the explicit entry basis or a planned
    acquisition no later than its dependent target. Missing foundations remain
    visible planning gaps; hiding them or assigning `prerequisiteOnly` does not
@@ -363,11 +367,24 @@ strict-mode frontier. Explicit learning provision for a missing foundation uses
 the applicable reviewed target or remediation-plan contract. The entry basis
 records an assumption, never a mastery write.
 
-A level may be rendered as a program stage, progress grouping, or building stage
-in the knowledge-house visualization. Its representation must preserve the
-default tree's single-occurrence and parent rules. A level label or completion
-badge neither reparents canonical content nor adds `requires` edges or an
-additional all-subject completion gate to the learner frontier.
+A unit can be collapsed to its learning promise, prerequisites and completion,
+then expanded into its goals and subunits. Preserve the default tree's
+single-occurrence and parent rules. An introductory motivation explains purpose
+and intended outcomes without certifying subject competence or a conversation
+that did not occur. A calendar grouping alone is not an educational unit.
+
+Compute implicit recognition from each directly owning unit's reviewed contract;
+do not turn an ancestor's target union into a second recognition shortcut.
+Aggregate child completion and own obligations for the parent. A still-open
+parent exam does not reopen a completed child, and its pass cannot pass child
+exams or cards. Preserve canonical attribution and count each target once.
+
+Explicit [whole-unit progression](learning-unit-progression.md) belongs to the
+resolved course. Validate the block ordering separately from atomic acyclicity;
+an atomic link does not automatically become a whole-unit gate. Whether the
+declared order technically blocks starts remains an explicit unresolved policy,
+including its treatment of direct exam attempts. Rendering a unit label or
+completion badge cannot activate that policy.
 
 ## Default content tree contract
 

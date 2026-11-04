@@ -373,37 +373,46 @@ Reference:
 - `docs/concept/skill-graph/general-goal-system-and-migration.md`
 - `docs/dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot.md`
 
-### 2.4 Curriculum levels
+### 2.4 Recursive learning units
 
-A **curriculum level** (`CurriculumLevel`; DE: *curriculares Level*) is a
-contextual acquisition stage, such as a cross-subject school year. It is
-distinct from personalization Levels 1–4, QA maturity, and the existing
-goal-difficulty field `level`.
+The Product Owner confirmed **Lerneinheit** (English **learning unit**,
+conceptual name `LearningUnit`) on **4 November 2026**. This replaces the former
+curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
+`level` difficulty retain their meanings.
 
-- Assign acquisition levels through the authoritative program/placement or
-  reviewed composition structure for a resolved scope and curriculum revision;
-  keep canonical goal identities and mastery stable.
-- Every required competency must be in the declared entry basis, an earlier
-  level, or the same level. Include inherited, indirect, cluster, and
-  cross-subject requirements; hidden or `prerequisiteOnly` goals must not
-  disappear from this structural check.
-- Same-level dependencies are allowed, but the complete level must be traversable
-  using the global frontier from the hypothetical entry state. This check does
-  not write mastery or change the normal/strict runtime mode.
-- Claim workload feasibility only with a documented reference profile and
-  effort estimate: work plus explicit reserve must fit the overall and binding
-  subject budgets. Existing `weight` values are not effort estimates; do not
-  add uncalibrated plan-local subject units as if they represented equal time.
-- Count shared acquisition once. Additional practice and preparation consume
-  explicit time. Diagnose personal entry gaps without silently widening scope.
-- Derive level completion from the declared target scope and goal-type results.
-  Do not add blanket `requires` between level containers or block an otherwise
-  available goal because another subject has unfinished earlier-level work.
+- A unit states what learners will be able to do and why it matters. A motivational
+  introduction leads into goals and optional subunits. Calendar years, semesters
+  and navigation headings are not automatically assessed learning units.
+- Assign unit roles through authoritative placements or reviewed composition
+  structure for a resolved scope/revision. Every acquisition target has one
+  direct owner in that hierarchy. Ancestors aggregate child targets; general
+  canonical multiple-parent containment is still permitted.
+- Derive unit completion from all required child completions and its own
+  goal-type results. No extra unit mastery is stored. A parent may add an
+  integrative assessment; an aggregate needs no redundant extra examination.
+- Local recognition applies only to directly owned ordinary targets under the
+  reviewed assessment contract. Never turn a parent's descendant union into a
+  second shortcut. Valid direct and implicit competence remains globally effective
+  while a later or parent exam is open. Exams and cards always need their own
+  explicit results; a parent pass never passes them implicitly.
+- An explicitly authored whole-unit requirement belongs to the course. An atomic
+  prerequisite does not automatically impose the entire foreign unit. Whether
+  unit requirements guide recommendations or technically block starts, including
+  direct assessment attempts, remains undecided; no new hard gate is authorized
+  by this concept alone. Independent branches may proceed in parallel.
+- Preserve effective atomic acyclicity and transitive minimality. When whole-unit
+  sequencing is intended, additionally check the projected block graph at every
+  relevant boundary: atomic acyclicity alone does not guarantee a unit order.
+  Include inherited, indirect, cluster, hidden and cross-subject requirements.
+- Optional workload claims need documented entry assumptions, supported effort
+  estimates, reserve and overall/subject budgets. Count shared acquisition once;
+  `weight` and raw goal counts are not time estimates. An assumed entry competency
+  is not a learner mastery write.
 
-This is a conceptual optional planning profile, not a new enforced schema,
-validator, or runtime feature. Base graph validity remains independent of level
-planning. See `docs/concept/skill-graph/curriculum-levels.md` and Graph Definition
-§12; capacity details remain in `docs/concept/didactic/curriculum-time-axis-and-pacing.md`.
+This is revised concept documentation, not a new implemented schema, validator,
+or access policy. See `docs/concept/skill-graph/learning-units.md`,
+`docs/concept/skill-graph/learning-unit-progression.md` and Graph Definition §12;
+capacity details remain in `docs/concept/didactic/curriculum-time-axis-and-pacing.md`.
 
 ---
 
@@ -481,19 +490,19 @@ Personal Curriculum do not withdraw a valid recognition.
 Store only the existing binary result per atomic goal: `mastery[goalId] ∈ {0,1}`.
 Here `0` means no explicit completion; a goal may nevertheless be effectively
 mastered through derived recognition. Let M be explicit mastery and I the
-recognition derived from fixed authoritative level contracts; use M_eff = M ∪ I
+recognition derived from fixed authoritative learning-unit contracts; use M_eff = M ∪ I
 for competence, ordinary prerequisites and total progress. This is not a second
 stored outcome, partial mastery, a higher numeric tier or a separate pass.
 Assessment and memory goals themselves are never implicit: use their normal
 binary grading or verified-recall results.
 
 Recognition considers every transitive consumer within the authoritative
-acquisition level. Traverse full effective prerequisite paths through mastered
+directly owning learning unit. Traverse full effective prerequisite paths through mastered
 intermediate goals. In Q → B → A, ordinary B alone mastered does not discharge
 A while the local exam Q is open. Once all relevant local assessment/card
 obligations are met, A and B can be recognized and remain completed for later
-levels. A level can finish without waiting for later levels' exams. A temporary
-focus is not a recognition level. Uncovered ordinary endpoints are authoring
+units. A child unit can finish while a later or parent exam is open. A temporary
+focus is not a learning unit. Uncovered ordinary endpoints are authoring
 faults, never zero-work recognition; a failed structural calculation gives no
 new implicit credit. Required card targets remain explicit independently.
 
@@ -508,7 +517,7 @@ not automatically satisfy this stronger authoring contract.
 
 Keep recognition semantics stable for each assessment identity and retain the
 authoritative authorship context needed to reconstruct it outside today's
-selected plan. New graph edges or a broader new level must not grant additional
+selected plan. New graph edges or a broader new unit must not grant additional
 competencies to old exam results. Equivalent task forms preserve that contract;
 a different recognition claim requires a distinct assessment identity or an
 explicitly reviewed migration. Do not invent a learner qualification registry.
@@ -520,7 +529,7 @@ Replan implementation only after concept reconciliation; review old PR work
 for reuse afterwards. Do not continue the old PR's runtime/curriculum rollout.
 
 Cluster progress aggregates effective mastery of unique atomic descendants;
-no cluster or level completion writes mastery to its children.
+no cluster or unit completion writes mastery to its children.
 
 For goals authoritatively classified as `semanticKind: "orientation"`, this
 numeric field is only a compatibility completion marker: `1` means that the
@@ -1331,7 +1340,7 @@ first reconstruct global effective mastery M_eff from explicit results and
 fixed valid recognition contracts, independent of today's plan/focus selection.
 Then intersect with the fixed, subject-specific plan baseline G:
 `I = |G ∩ M_eff|`. Each goal counts once. A later open exam does not remove an
-already recognized prerequisite. Local level recognition and global effect are
+already recognized prerequisite. Local learning-unit recognition and global effect are
 separate from the plan's date mask; never calculate recognition just inside G.
 
 The Cockpit preference “Nur explizit erreichte Lernziele zählen” defaults to off

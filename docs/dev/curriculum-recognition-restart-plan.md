@@ -4,6 +4,11 @@
 Dieses Dokument plant die Korrektur; es behauptet weder eine bereits korrigierte
 Runtime noch geprüfte Anerkennungsverträge, Deployment oder erfolgreiche Host-Abnahme.
 Der alte PR wird bausteinweise geprüft und ersetzt diesen Auftrag nicht.
+Die spätere Entscheidung für rekursive **Lerneinheiten** ist begrifflich und in
+folgenden Strukturgrenzen berücksichtigt. Vor Umsetzung sind konkrete direkte
+Erwerbszuordnung, Untereinheiten und eigene Syntheseprüfungen am Kandidaten zu
+prüfen. Die Verbindlichkeit von Einheitszugängen ist noch nicht entschieden;
+dieser Plan aktiviert keine technischen Sperren.
 
 ## 1. Ziel und fachlicher Rahmen
 
@@ -15,7 +20,7 @@ Die gemeinsame technische Grundlage entsteht einmal; unabhängige Fächer bleibe
 Verbindlich sind die [Produktentscheidung vom 4. November](../concept/skill-graph/completion-semantics-clarification-2026-11-04.md),
 das [Anerkennungskonzept](../concept/skill-graph/assessment-gated-completion.md),
 die [Graph Definition](../concept/skill-graph/graph-definition.md) und die
-[curricularen Level](../concept/skill-graph/curriculum-levels.md).
+[Lerneinheiten](../concept/skill-graph/learning-units.md).
 Direktes Verständnis und durch unabhängige Anwendung anerkannte Kompetenz sind
 global gleichwertig. Pro atomarem Ziel bleibt ausschließlich das binäre Ergebnis
 gespeichert: explizite Ergebnisse bilden M, gültige Ableitungen ergänzen M_eff.
@@ -23,9 +28,9 @@ Prüfungs- und Lernkartenziele benötigen weiterhin ihre expliziten Ergebnisse.
 
 Vollständige transitive Anforderungen gelten auch durch gemeisterte Zwischenziele.
 Transitive Minimalität bleibt erforderlich. Eine offene spätere Prüfung außerhalb
-des anerkennenden Levels nimmt gültige Beherrschung nicht zurück. Fokus, aktuelle
+der anerkennenden Lerneinheit nimmt gültige Beherrschung nicht zurück. Fokus, aktuelle
 Baumansicht und Persönlicher Lehrplan definieren keinen beliebigen neuen Vertrag.
-Harte Levelzugangssperren und ein Zeitbudgetplaner sind eigene optionale Vorhaben;
+Harte Zugangssperren zwischen Lerneinheiten und ein Zeitbudgetplaner sind eigene optionale Vorhaben;
 sie sind keine Voraussetzung für diese Anerkennungskorrektur.
 
 ## 2. Belastbarer Ausgangspunkt
@@ -60,10 +65,10 @@ Auch der alte PR behebt diese beiden Unterschiede zum neuen Konzept nicht vollst
 Alte Source-/M7-Nachweise bleiben für unveränderte Inhalte prüfbare Quellenbelege;
 sie beweisen keine unabhängige Anwendung unter dem neuen Anerkennungsvertrag.
 
-## 3. Erste Etappe: einen echten Levelvertrag entscheidungsreif machen
+## 3. Erste Etappe: einen echten Lerneinheitsvertrag entscheidungsreif machen
 
 Vor breiter Änderung wird ein begrenzter tatsächlich angebotener Mathematikumfang
-mit Quellen-, Memory-, ID- und Levelprüfung bearbeitet. Das Ergebnis benennt
+mit Quellen-, Memory-, ID- und Einheitsprüfung bearbeitet. Das Ergebnis benennt
 Placement, vollständige Zielmenge, alle lokalen Prüfungen/Karten, externe
 Voraussetzungen, historische Ergebnisbedeutungen und offene Entscheidungen.
 Die tatsächlichen Mathematikangebote werden einmal nativ inventarisiert und mit
@@ -82,12 +87,12 @@ Die bestehende Prüfung `57aff94e-91b8-5cc6-9f85-3f317ecf36ca` steht unter
 `assessments/mathematik/sekii/q2/markov-backward-v2/gk_task_v2.md`.
 Sie existiert bereits auf main und wird nicht als neue Arbeit des alten PR gezählt.
 
-**15 fachliche Ziele plus eine Prüfung, K=0, ist noch kein fertiger Level.**
+**15 fachliche Ziele plus eine Prüfung, K=0, ist noch keine fertige Lerneinheit.**
 Das vorhandene Memoryreview bindet „Matrizen multiplizieren“
 (`304111dd-426b-520b-a275-3fa37da1b0e0`) und „Stochastische Übergangsmatrizen prüfen“
 (`9bf67cce-4c8f-5497-8e64-825b83c6aa40`) als `memory_required` an das breitere
 Memoryziel `bd55594a-3e06-5097-8324-4f2f1349fd2a`, Deck `de_gymnasium_math_linalg_core`.
-Die Levelgrenze muss dessen tatsächliche Kartenpflicht und Erwerbszuordnung lösen.
+Die Grenze der Lerneinheit muss dessen tatsächliche Kartenpflicht und Erwerbszuordnung lösen.
 Zulässig sind eine fachlich passende größere Grenze oder eine geprüfte bestehende
 Kartenselektion. Eine neue Aufteilung von Memoryziel/Card-Identitäten braucht eine
 ausdrückliche Evidenzmigration. Leere Decks, verkürzter Recall und erfundene
@@ -104,11 +109,11 @@ Er ist deshalb ebenfalls kein bereits fertiger Pilot.
 
 ## 4. Minimale gemeinsame Architektur
 
-Ein Anerkennungslevel erhält seine Rolle an einem autoritativen Program-/Placement-
+Eine anerkennende Lerneinheit erhält ihre Rolle an einem autoritativen Program-/Placement-
 oder Composition-Abschnitt. Stabile View-/Placement-IDs referenzieren bestehende
-kanonische Ziele. Zielmenge T_L, geschützte lokale Prüfungs-/Kartenziele P_L und
-normalisierte atomare Anforderungen R werden daraus erzeugt, einschließlich
-direkter Einträge, Varianten und `target`-/`prerequisiteOnly`-Rollen.
+kanonische Ziele. Direkt zugeordnete Ziele Own(U), aggregierte Ziele T_U, eigene geschützte
+Prüfungs-/Kartenziele P_U und normalisierte atomare Anforderungen R werden daraus
+erzeugt, einschließlich direkter Einträge, Varianten und `target`-/`prerequisiteOnly`-Rollen.
 Es entstehen keine manuell gepflegten `waivableGoalIds`-Listen, zweite Curriculumbäume
 oder lernerspezifischen Zulassungs- und Qualifikationsdatensätze.
 
@@ -121,10 +126,13 @@ Ein bloßer Scopebesuch erzeugt weder Vertragsgeltung noch Anerkennung.
 
 Stabile Prüfungsidentitäten tragen stabile Nachweisbedeutung. Ein später größerer
 Anspruch darf alte positive Ergebnisse nicht rückwirkend aufwerten.
-Für jeden gültigen lokalen Vertrag wird von allen offenen P_L aus vollständig
-traversiert, durch gemeisterte Zwischenziele hindurch. Nur gewöhnliche lokale
-Targets außerhalb dieses Bedarfs werden anerkannt. I wird nicht erneut als Eingabe
-dieser Ableitung verwendet; Prüfungen und Karten werden niemals implizit bestanden.
+Für jeden gültigen lokalen Vertrag wird von allen offenen P_U aus vollständig
+traversiert, durch gemeisterte Zwischenziele hindurch. Nur gewöhnliche direkt zugeordnete
+Own(U)-Ziele außerhalb dieses Bedarfs werden anerkannt. Eltern aggregieren
+Kindabschlüsse und eigene Pflichten; die ganze Nachkommenmenge wird nicht erneut
+zum Anerkennungsumfang. Eine offene Syntheseprüfung öffnet fertige Kinder nicht,
+und ihr Bestehen ersetzt keine Kinderprüfung oder Kartenpflicht. I wird nicht
+erneut als Eingabe dieser Ableitung verwendet; Prüfungen und Karten werden niemals implizit bestanden.
 
 Die Runtime trennt den expliziten Ergebnissnapshot M vom abgeleiteten Lesesnapshot
 M_eff. Derselbe kohärente Snapshot versorgt Voraussetzungen, erforderliche Arbeit,
@@ -150,9 +158,9 @@ kein Ersatz für diese Regeln. Provideradapter und Taskautorisierung werden erha
 
 | Stufe | Verbindliches Ergebnis | Grenze der Aussage |
 | --- | --- | --- |
-| 1: Scope- und Vertragsentscheidung | Aktuelles Angebotsinventar und erster echter Umfang mit stabiler Levelgrenze, vollständigen T/Q/K, Quellen-/Memorybindung, ID-/Altergebnisentscheidung und unabhängig geprüfter Freigabebedeutung. | Noch keine korrigierte Runtime oder Freigabe des gesamten Mathematikangebots. |
-| 2: Erster vollständiger Lernablauf | Gemeinsame Architektur und ein ganzer realer Level durch Cockpit, Coach, Prüfung, Frontier, globalen Fortschritt und Plan-IST; lokale Vorschau und frühe Owner-Demo, danach normale Deployment- und Host-Abnahme. | Eine tatsächlich verwendbare erste Scheibe; Mathematik ist damit noch nicht abgeschlossen. |
-| 3: Fachabschluss Mathematik | Alle aktuell angebotenen Länder-, Stufen-, Dauer-, Kurs- und Kurskombinationsauflösungen mit vollständigen Level-/Target-/Q-/K-Mengen, gültigen Quellen und neuen Anerkennungsreviews; bestehende strenge Mathematik-M7-/Releasegates erfüllt. | Keine automatische Anerkennungsfreigabe anderer Fächer oder Aussage über Lernwirksamkeit. |
+| 1: Scope- und Vertragsentscheidung | Aktuelles Angebotsinventar und erster echter Umfang mit stabiler Einheitsgrenze, vollständigen T/Q/K, Quellen-/Memorybindung, ID-/Altergebnisentscheidung und unabhängig geprüfter Freigabebedeutung. | Noch keine korrigierte Runtime oder Freigabe des gesamten Mathematikangebots. |
+| 2: Erster vollständiger Lernablauf | Gemeinsame Architektur und eine ganze reale Lerneinheit durch Cockpit, Coach, Prüfung, Frontier, globalen Fortschritt und Plan-IST; lokale Vorschau und frühe Owner-Demo, danach normale Deployment- und Host-Abnahme. | Eine tatsächlich verwendbare erste Scheibe; Mathematik ist damit noch nicht abgeschlossen. |
+| 3: Fachabschluss Mathematik | Alle aktuell angebotenen Länder-, Stufen-, Dauer-, Kurs- und Kurskombinationsauflösungen mit vollständigen Einheits-/Target-/Q-/K-Mengen, gültigen Quellen und neuen Anerkennungsreviews; bestehende strenge Mathematik-M7-/Releasegates erfüllt. | Keine automatische Anerkennungsfreigabe anderer Fächer oder Aussage über Lernwirksamkeit. |
 
 Die Owner-Demo in Stufe 2 zeigt einen direkten Prüfungsversuch trotz offener
 Vorbereitung, normale ausführliche Bewertung, globale Anerkennung, spätere
@@ -217,19 +225,23 @@ fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc
 
 Zuerst prüfen Maschinen Referenzen, Identitäten, alle Zyklusformen, vererbte und
 expandierte Anforderungen, transitive Minimalität und eindeutige Erwerbszuordnung.
-Jedes gewöhnliche lokale Target braucht einen lokalen Prüfungsverbraucher.
+Jede direkt erworbene gewöhnliche Fachkompetenz braucht einen passenden eigenen
+Prüfungsverbraucher. Reine Aggregate brauchen keine zusätzliche Prüfung;
+Eltern dürfen eine Syntheseprüfung über bereits in Kindern erworbene Kompetenzen
+haben. Prüfe außerdem die Blockreihenfolge, wenn Einheiten geschlossen nacheinander
+durchlaufen werden sollen.
 Karten allein sind kein Anwendungsbeweis; externe Unterstützung wird geprüft,
 aber weder lokal anerkannt noch zum Fortschrittsnenner hinzugefügt.
 
 Für ein gewöhnliches Ziel a wird die Freigabemenge erzeugt:
-`D_L(a) = {p ∈ P_L | p R⁺ a}`. Ziele mit gleicher Menge werden gemeinsam geprüft.
+`D_U(a) = {p ∈ P_U | p R⁺ a}`. Ziele mit gleicher Menge werden gemeinsam geprüft.
 Jede verschiedene Freigabemenge braucht ein begründetes Aufgaben-/Rubrikreview;
 ein blindes Durchprobieren aller 2^Prüfungsanzahl-Teilmengen ist nicht erforderlich.
 Maßgeblich sind die tatsächlichen freigebenden normalen Bestehenskombinationen
 einschließlich zulässiger Aufgabenvarianten. Für jede wesentliche anerkannte
 Kompetenz lautet der Gegenversuch: Kann die Person ohne diese Kompetenz bestehen
 und sie dennoch anerkannt bekommen? Wenn ja, scheitert der Vertrag; Aufgabe,
-normale Rubrik, Anerkennungsanspruch oder Levelgrenze muss korrigiert werden.
+normale Rubrik, Anerkennungsanspruch oder Einheitsgrenze muss korrigiert werden.
 Punkte anderer Teile dürfen einen vollständig fehlenden wesentlichen Nachweis
 nicht verdecken. Reviewentscheidungen binden konkrete Inhaltsrevisionen.
 Gleiche aufgelöste Vertragsbedeutungen dürfen ein Inhaltsreview teilen; jede
@@ -243,6 +255,7 @@ bleiben bestehen; Orientierung belegt weder eine erfundene Kompetenz noch Intera
 | Prüfbereich | Erforderliche Fälle |
 | --- | --- |
 | Reine Semantik | Q→B→A bei leerem M, nur B und nur Q; gemeinsame lokale Q/S-Verbraucher; spätere externe Prüfung; keine Wiederöffnung gültig anerkannter A/B. |
+| Rekursive Einheiten | Eindeutige direkte Erwerbszuordnung; vollständige Pflichtkinder und eigene Q/K; reines Aggregat ohne Zusatzprüfung; offene Elternprüfung erhält Kindanerkennung, bestandene Elternprüfung ersetzt keine Kindpflicht. |
 | Struktur/Fehler | Clusterexpansion, Vererbung, mehrere Eltern, minimale Kanten; ungedeckte gewöhnliche Endpunkte, M=0, fehlende Referenzen und Zyklen vergeben keine Anerkennung. |
 | Fokus/Lehrplan | Transitive Hülle vor Fokusbeschränkung; gemeisterte/außerhalb liegende Zwischenziele verbergen keine in-focus Pflicht; normal ignoriert vollständig außerhalb liegende gültige Anforderungen, strict prüft global; ungültige Level-2-Referenzen bleiben Fehler. |
 | Prüfung/Karten | Direkter Prüfungszugriff mit normaler Auth-/Owner-/Revisionsprüfung; normale Bewertung; Prüfungen/Karten ausschließlich explizit; Verified Recall, Fälligkeit und fehlgeschlagener Retest korrekt unterscheiden. |
@@ -270,7 +283,7 @@ offene Befunde und seinen nächsten Abnahmeschritt. Arbeit wird regelmäßig ges
 mehrtägige ungesicherte Gesamtdeltas und eine zweite fachübergreifende Großaufgabe
 werden vermieden. Die erste normale Owner-Demo erfolgt in Stufe 2.
 
-Fortschritt wird an fixierten Level-, Target-, Freigabemengen- und Angebots-IDs
+Fortschritt wird an fixierten Einheits-, Target-, Freigabemengen- und Angebots-IDs
 berichtet: entscheidungsreif, umgesetzt, maschinell geprüft, inhaltlich unabhängig
 abgenommen, lokal demonstriert und gegebenenfalls tatsächlich ausgerollt.
 Nenneränderungen werden erklärt; gefühlte Prozentstände und unbelegte Personentage

@@ -738,14 +738,16 @@ diese Planbasis nicht rückwirkend. Ausgegebene Soll-Zielzahlen werden auf ganze
 Ziele gerundet; Raten wie das Wochenkontingent werden höchstens mit einer
 Nachkommastelle dargestellt.
 
-### 6.1 Vergleichbarer Aufwand für curriculare Level
+### 6.1 Vergleichbarer Aufwand für Lerneinheiten und Planabschnitte
 
-Das [Konzept curricularer Level](../skill-graph/curriculum-levels.md)
-(`CurriculumLevel`) ergänzt diese Planung um voraussetzungskonsistente,
-budgetierte Etappen eines bestimmten Bildungsgangs. Ein curriculares Level
-ist keine Personalisierungsstufe wie „Level 2“ oder „Level 3“. Die folgenden
-Ergänzungen beschreiben ein Konzeptziel; sie behaupten keine bereits
-implementierte fachübergreifende Budgetprüfung oder automatische Freigabe.
+[Lerneinheiten](../skill-graph/learning-units.md) bündeln Lernziele und
+Untereinheiten zu einem fachlich begründeten Ganzen mit abgeleitetem Abschluss.
+Ein Kalenderjahr oder Semester kann mehrere solcher Einheiten einplanen;
+Zeitabschnitt und fachliche Einheit sind nicht automatisch identisch.
+Die folgenden Budgetbedingungen sind ein zusätzliches Planungsprofil. Sie
+behaupten keine implementierte fachübergreifende Budgetprüfung oder automatische
+Freigabe und definieren weder den Begriff noch den fachlichen Abschluss einer
+Lerneinheit über verfügbare Zeit.
 
 Planlokale Einheiten verschiedener Fachkurse sind ohne gemeinsame
 Kalibrierung weder direkt vergleichbar noch zu einem fachübergreifenden
@@ -860,9 +862,9 @@ Eine UI darf einen Startwert vorschlagen, aber keine Pufferquote als allgemein
 gültige pädagogische Norm festschreiben. Null Puffer ist zulässig, muss aber als
 bewusste, fragile Planung sichtbar sein.
 
-### 7.3 Gesamt- und Fachbudgets eines curricularen Levels
+### 7.3 Gesamt- und Fachbudgets eines Planabschnitts
 
-Das Referenzpensum eines fachübergreifenden curricularen Levels wird gegen
+Das Referenzpensum der in einem fachübergreifenden Abschnitt geplanten Lerneinheiten wird gegen
 das Gesamtbudget und die verbindlichen Fachbudgets geprüft. Eine ausreichende
 Gesamtsumme gleicht ein überbuchtes Fachbudget nicht automatisch aus.
 Lernzeit außerhalb des Unterrichts zählt nur, wenn sie ausdrücklich geplant
@@ -887,8 +889,8 @@ Referenzprofil, Methode und Fassung gebunden. Auch ein rechnerisch passendes
 Referenzpensum ist keine Zusicherung für jede einzelne Person. Reserve und
 bewusst gewählte Nullreserve bleiben nach Abschnitt 7.2 sichtbar.
 
-Die Levelzuordnung ersetzt keinen konkreten Ablaufplan: Voraussetzungen
-innerhalb desselben Levels müssen vor ihrer Verwendung eingeplant sein.
+Die Zuordnung zu Lerneinheiten ersetzt keinen konkreten Ablaufplan: Voraussetzungen
+innerhalb derselben Einheit müssen vor ihrer Verwendung eingeplant sein.
 Die genauere zeitliche Prüfung richtet sich nach Abschnitt 5.3.
 
 ### 7.4 Referenzpensum, persönliche Eingangslücken und Abschluss
@@ -903,20 +905,23 @@ bestehenden Auswahlregeln und erweitert weder Personal Curriculum noch Fokus
 automatisch. Ohne eingeplante Aufarbeitung bleibt der zusätzliche Bedarf
 ausgewiesen; er darf nicht als bereits beherrscht oder zeitlich gedeckt gelten.
 
-Ein eigener Levelumfang und seine ausdrückliche Abschlussregel sind von
+Ein eigener Einheitsumfang und seine ausdrückliche Abschlussregel sind von
 der vollständigen `target`-Menge des Personal Curriculum zu unterscheiden.
-Wahlregeln gelten nur für den deklarierten Levelumfang. Eine offiziell
+Wahlregeln gelten nur für den deklarierten Einheitsumfang. Eine offiziell
 optionale Einordnung entfernt keine Ziele aus dem derzeit verbindlichen
 Personal Curriculum; die bestehenden interimistischen Auswahlregeln und
 dessen Fortschritts- und Abschlussumfang bleiben erhalten.
 
-Der Levelabschluss folgt der veröffentlichten, zieltypgerechten Regel auf
-Grundlage gespeicherter Ergebnisse. Termine, Unterrichtsdauer und verbrauchte
-Planungseinheiten erzeugen keinen Abschluss. Fehlende Ergebnisdaten bleiben
-nicht beurteilbar. Der Abschlussstatus erzeugt auch keine zusätzliche
-pauschale Frontier-Sperre: Erreichbare Ziele eines späteren Levels bleiben
-nach den geltenden scope- und modusabhängigen Voraussetzungen zugänglich,
-auch wenn in einem anderen Fach noch Ziele einer früheren Etappe offen sind.
+Der Abschluss einer Lerneinheit folgt der veröffentlichten zieltypgerechten
+Regel: verpflichtende Untereinheiten und eigene Zielpflichten sind erfüllt.
+Wirksame Kompetenz umfasst direkte Ergebnisse und gültige implizite Anerkennung.
+Termine, Unterrichtsdauer und verbrauchte Planungseinheiten erzeugen keinen
+Abschluss. Fehlende Ergebnisdaten bleiben nicht beurteilbar. Ein abgeschlossener
+Teil bleibt abgeschlossen, auch wenn eine übergeordnete Prüfung noch offen ist.
+Eine bloße Zeitplanung aktiviert keine technische Zugangssperre. Die Verbindlichkeit
+expliziter Abhängigkeiten zwischen ganzen Einheiten, einschließlich direkter
+Prüfungsversuche, ist im [Fortschrittskonzept](../skill-graph/learning-unit-progression.md)
+als eigene noch offene Produktentscheidung ausgewiesen.
 
 ## 8. Sollkurve und Wochenquote
 

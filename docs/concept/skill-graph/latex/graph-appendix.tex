@@ -3,8 +3,8 @@
 \section{Statusabgleich und Grenzen der Aussagen}
 \label{sec:implementation}
 Diese Fassung beschreibt die verbindliche Konzeptkorrektur vom
-4. November 2026. Geprüfte Hauptlinie beim Beginn der Dokumentarbeit:
-\code{d6db9cff00} (kurzer Git-Präfix). Es wurde ausschließlich Dokumentation
+4. November 2026. Geprüfte Hauptlinie für den jüngsten Konzeptabgleich:
+\code{616324e857} (kurzer Git-Präfix). Es wurde ausschließlich Dokumentation
 und deren Werkzeugbestand verändert. Die neue globale Anwendungsanerkennung
 ist \textbf{noch nicht implementiert}. Ein lesbarer Beleg oder ein erfolgreicher
 Dokumentbuild beweist weder Laufzeitkonformität noch Deployment.
@@ -21,8 +21,9 @@ Der historische Profilpfad im selben Service ist ein anderer Algorithmus;
 auch seine Existenz beweist keine Umsetzung des neuen Vertrags.\\
 Geschützte Ziele & Der bisherige automatische Pfad beginnt bei offenen
 Assessments; der neue Vertrag schützt zusätzlich alle ausgewählten
-Memorierziele und verlangt lokale fachliche Assessmentabdeckung für jedes
-gewöhnliche Ziel. Bisheriger Leerlauf ist kein Anwendungsnachweis.\\
+Memorierziele und verlangt eigene fachliche Assessmentabdeckung für jede
+gewöhnliche eigene Fachkompetenz. Aggregation und Synthese
+werden dadurch nicht zu künstlichen neuen Erwerbsverträgen.\\
 Globale Wirkung & Kontextbezogene bisherige Freistellung ist nicht schon
 die dauerhaft vertragsgebundene globale Menge $M_{\mathrm{eff}}$.
 Folge-Frontier, Gesamt-IST, Vertragsrevision und historische Bedeutung
@@ -37,9 +38,11 @@ Memorierung & Der dokumentierte Zieltypvertrag nennt verifizierten Abruf
 und keine fälligen Karten. Backend und \code{useSrsMastery} verwenden den
 verifizierten Abruf aller erforderlichen Karten. Die Abweichung ist
 vor einer entsprechenden Konformitätsbehauptung ausdrücklich aufzulösen.\\
-Curriculare Level & Struktur-, Zeit- und Budgetbedingungen bleiben ein
-optionales Konzeptprofil. Keine neuen pauschalen Zugangssperren zwischen
-Leveln, kein behaupteter produktiver Level- oder Budgetvalidator.\\
+Lerneinheiten & Rekursive Ziel-/Kinderstruktur mit eindeutigem Ersterwerb
+und abgeleitetem Abschluss; noch kein behauptetes Runtimefeature.
+Technische Ganzheitssperren und direkter Prüfungszugriff unter einem
+solchen Profil sind unentschieden. Zeit und Budget bleiben zusätzliche
+Planung, kein Synonym für die Einheit.\\
 \bottomrule
 \end{longtable}
 
@@ -73,6 +76,14 @@ Vererbung für verfasste Minimalität.\\
 Globale Monotonie & Zusätzliche ausdrückliche Mastery öffnet bei festen
 gültigen Verträgen keine effektiv beherrschte Arbeit erneut. Prüfungs-
 und Memorierziele werden nie implizit bestanden.\\
+Rekursive Einheiten & 128 Belegungen des Mechanikbeispiels prüfen
+Abschluss, eigene Anerkennung und explizite Kindpflichten. Ein Aggregat
+braucht keine eigene Prüfung; eine reine Synthese braucht keine neuen
+gewöhnlichen Ziele.\\
+Einheitsgruppierung & 948 Gruppierungsfälle vergleichen den Block-DAG
+mit einer vollständigen Blockreihenfolge. Ein Gegenbeispiel zeigt einen
+atomaren DAG mit zyklischer Zusammenfassung; keine technische Sperrpolitik
+wird daraus abgeleitet.\\
 Konkrete Gegenbeispiele & Kein Stopp an Mastery-Zwischenknoten;
 lokale Anerkennung trotz späterer Prüfung; dauerhafte Vertragsvereinigung,
 künftige Voraussetzungen, Target-Schnitt und externe Unterstützung.\\
@@ -103,18 +114,19 @@ $m,M$ & Ein gespeicherter binärer Zielzustand und die Menge seiner
 ausdrücklichen Erfolge. $m(a)=0$ schließt implizite Beherrschung nicht aus.\\
 $M_{\mathrm{eff}},M_A$ & Globale Vereinigung ausdrücklicher und gültig
 abgeleiteter impliziter Beherrschung; allgemeine Erfüllungsmenge im Kern.\\
-$L,T_L$ & Gültiger dauerhafter lokaler Vertrag und seine Zielmenge.\\
-$Q_L,K_L,P_L$ & Lokale Prüfungs-, Memorier- und gemeinsame Schutzmenge.
-$K_L$ bezeichnet hier keine strukturellen Cluster.\\
-$N_L$ & Vollständige transitive Nachfrage der offenen geschützten Ziele,
+$U,\Own(U),T(U)$ & Lerneinheit, eigene atomare Erwerbsziele und Gesamtumfang einschließlich der Kinder.\\
+$\Complete(U)$ & Rekursiv abgeleiteter Abschluss; keine zusätzlich gespeicherte Unit-Mastery.\\
+$Q_U,K_U,P_U$ & Eigene Prüfungs-, Memorier- und gemeinsame Schutzmenge.
+$K_U$ bezeichnet hier keine strukturellen Cluster.\\
+$N_U$ & Vollständige transitive Nachfrage der offenen eigenen geschützten Ziele,
 ohne Stopp an gemeisterten Zwischenzielen.\\
-$I_L$ & Lokal abgeleitete selbstständige Anwendung gewöhnlicher Ziele.
+$I_U$ & Lokal abgeleitete Anwendung eigener gewöhnlicher Erwerbsziele.
 Keine zusätzliche gespeicherte Ergebnisart.\\
 Personal Curriculum & Verbindliche persönliche Zielauswahl auf Level 2;
 kein Filter, der vorhandene globale Anerkennung zurücknimmt.\\
 Fokus & Temporärer Arbeitsbereich auf Personalisierungslevel 3.\\
 $T_\pi,B_\pi,\ell_\pi$ & Geplante Erwerbsziele, Eintrittsbasis und
-curriculare Erwerbsstufen.\\
+optionale kalenderbezogene Planungsstufen.\\
 M7 & Maschineller Curriculum-QA-Reifegrad, kein menschlicher
 Wirksamkeitsnachweis.\\
 \bottomrule
@@ -142,9 +154,11 @@ Sichten und persönliche Auswahl &
 Zieltypen und Evidenz &
 \srcref{docs/concept/skill-graph/node-types.md}{Node Types};
 \srcref{AGENTS.md}{AGENTS.md, insbesondere Orientierung und Mastery}.\\
-Curriculare Planung &
-\srcref{docs/concept/skill-graph/graph-definition.md}{Graph Definition, Abschnitt 12};
-\srcref{docs/concept/skill-graph/curriculum-levels.md}{Curriculum Levels};
+Rekursive Lerneinheiten &
+\srcref{docs/concept/skill-graph/learning-units.md}{Learning Units};
+\srcref{docs/concept/skill-graph/learning-unit-progression.md}{Learning Unit Progression};
+\srcref{docs/concept/skill-graph/graph-definition.md}{Graph Definition, Abschnitt 12}.\\
+Optionale Zeitplanung &
 \srcref{docs/concept/didactic/curriculum-time-axis-and-pacing.md}{Curriculum Time Axis and Pacing}.\\
 Impliziter Abschluss &
 \srcref{docs/concept/skill-graph/assessment-gated-completion.md}{Assessment-Gated Completion};
@@ -170,9 +184,9 @@ Austausch und Rechte &
 Die sieben didaktischen Graphabbildungen stammen aus
 \href{https://github.com/enpasos/skillpilot/tree/main/docs/concept/skill-graph/assets/graph-definition}{SkillPilot: Graph Definition, Abbildungsbestand}
 und werden unverändert mit deutschen Erläuterungen verwendet.
-Die zusätzlichen Diagramme auf dem Titelblatt sowie zu Levelplanung,
+Die zusätzlichen Diagramme auf dem Titelblatt sowie zu Zeitplanung,
 atomarer Expansion, effektiver Minimalität, transitivem Bedarf, lokaler
-Anerkennung und Planstand werden deterministisch
+Anerkennung, rekursiven Lerneinheiten und Planstand werden deterministisch
 mit Matplotlib als PNG erzeugt. Maßgeblich sind die Formeln und Bildlegenden;
 die Bilder behaupten keine zusätzlichen Kanten oder Anforderungen.
 

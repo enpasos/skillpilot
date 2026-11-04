@@ -35,8 +35,8 @@ standardmäßig explizite und implizite Beherrschung. Implizit bedeutet den
 Nachweis selbständiger Anwendung durch fachlich geeignete Abschlussprüfungen;
 es bedeutet nicht bloß entfallene Vorbereitung. Ein gültiger Abschluss gilt
 auch für spätere Voraussetzungen und wird durch neue Verbraucher oder einen
-Planwechsel nicht aufgehoben. Die Anerkennung entsteht im verbindlichen
-Erwerbslevel und wirkt global. Tages- und Wochenkontingente zählen weiterhin
+Planwechsel nicht aufgehoben. Die Anerkennung entsteht in der verbindlichen
+Lerneinheit und wirkt global. Tages- und Wochenkontingente zählen weiterhin
 nur tatsächliche explizite Abschlussereignisse.
 
 Die Option „Nur explizit erreichte Lernziele zählen“ betrifft allein das
@@ -109,7 +109,7 @@ Die vollständige persönliche Zielmenge und die nachfolgend definierte Planmeng
 kann zur persönlichen Zielerreichung zählen, ohne in G enthalten zu sein.
 G ist eine zeitliche Auswahl, kein eigener Anerkennungsvertrag. Die globale
 Anerkennung wird unabhängig von dieser Auswahl bestimmt; erst danach wird mit
-G geschnitten. Ein gültiger Erwerbslevel ist ebenfalls kein beliebiger
+G geschnitten. Eine gültige Lerneinheit entsteht ebenfalls nicht durch einen beliebigen
 Anzeigeausschnitt. Plan- und Fokuswechsel verändern nicht, was bereits gilt.
 Abgeschlossene Orientierungsziele werden innerhalb ihres jeweiligen Umfangs
 konsistent mitgezählt, ohne sie als fachlichen Beherrschungsnachweis auszugeben.
@@ -166,14 +166,14 @@ $$
 Mit „Nur explizit erreichte Lernziele zählen“ gilt stattdessen $I=|G\cap M|$.
 W wird aus den festen fachlichen Abschlussverträgen und vorhandenen expliziten
 Prüfungs-/Recall-Ergebnissen rekonstruiert, nicht nur aus aktuell angezeigten
-oder im Personal Curriculum gewählten Levels. Die für bestehende Ergebnisse
+oder im Personal Curriculum gewählten Lerneinheiten. Die für bestehende Ergebnisse
 maßgeblichen Autorenverträge bleiben erhalten. Ein später geänderter Graph
 darf alten Prüfungsergebnissen keine zusätzlichen Kompetenzen zuschreiben.
 
-Die Prüfungen eines Levels müssen die selbständige Anwendung der anerkannten
+Die Prüfungen einer Lerneinheit müssen die selbständige Anwendung der anerkannten
 Kompetenzen absichern. Ein bloßes `requires` oder das Fehlen weiterer Verbraucher
-reicht nicht. Im Level wird transitiv gerechnet, auch durch gemeisterte
-Zwischenziele hindurch. Offene spätere Prüfungen anderer Levels verhindern
+reicht nicht. In der direkt zugeordneten Lerneinheit wird transitiv gerechnet, auch durch gemeisterte
+Zwischenziele hindurch. Offene spätere Prüfungen anderer oder übergeordneter Lerneinheiten verhindern
 weder diese Anerkennung noch ihren globalen Nutzen.
 
 Beispiel: Q berechtigt als einzige relevante Abschlussprüfung zur Anerkennung
@@ -181,7 +181,7 @@ von A und B. Alle drei liegen in G. Mit bestandener Q gilt **I = 3**; mit der
 Zähloption **I = 1**. Nur Q erhält einen expliziten Mastery-Eintrag. Eine spätere
 Prüfung Q2, die A benötigt, trifft auf eine bereits beherrschte Voraussetzung.
 Sie setzt I nicht zurück. Eine gewöhnliche B-Mastery allein genügt dagegen
-nicht zur Anerkennung von A, solange Q innerhalb desselben Levels offen ist.
+nicht zur Anerkennung von A, solange Q innerhalb derselben Lerneinheit offen ist.
 
 Ein gewöhnliches Ziel ohne gültige Prüfungsanbindung ist ein Modellierungsfehler,
 kein automatischer Fortschritt. Prüfungs- und Lernkartenziele bleiben selbst

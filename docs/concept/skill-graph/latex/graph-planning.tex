@@ -1,20 +1,21 @@
 % SPDX-License-Identifier: Apache-2.0
-\section{Curriculare Level: Erwerbsordnung und Bewältigbarkeit}
+\section{Optionale Erwerbs- und Zeitplanung: Reihenfolge und Budget}
 \label{sec:levels}
-\begin{principle}{Status: optionales Planungsprofil}
-Die folgenden Bedingungen definieren einen curricularen Levelplan.
-Sie ändern weder Grundgraphgültigkeit noch aktuelle Frontier oder
-gespeicherte Mastery. Es wird damit kein bereits implementierter
-Levelvalidator behauptet. Personalisierungsstufen, Schwierigkeit und
-QA-Reifegrade sind andere Begriffe.
+\begin{principle}{Status: zusätzliches Planungsprofil}
+Lerneinheiten tragen den fachlichen Zusammenhang und ihren rekursiven
+Abschluss. Ein optionaler Zeitplan ordnet deren Erwerbsziele auf
+Planungsstufen, etwa Schuljahre oder Semester, und prüft verfügbare Zeit.
+Diese Zuordnung ist keine Definition der Lerneinheiten. Sie verändert weder
+Grundgraphgültigkeit noch gespeicherte Mastery und führt keine technischen
+Einheitssperren ein. Ein produktiver neuer Budgetvalidator wird nicht behauptet.
 \end{principle}
 
-Ein curricularer Level ist eine kontextgebundene Erwerbsetappe, etwa ein
-Schuljahr, ein Semester oder eine fachübergreifende Stufe. Das anschauliche
-Bild eines Wissensgebäudes hilft: Kompetenzen sind Bauteile, Voraussetzungen
-tragende Beziehungen, ein Level eine geplante Bauetappe. Das Bild darf aber
-nicht suggerieren, alle Fächer müssten vollständig abgeschlossen sein,
-bevor irgendwo ein Ziel des nächsten Levels verfügbar wird.
+Eine fachliche Einheit kann in verschiedenen Bildungsgängen zu anderen
+Zeiten erworben werden. Die bildhafte Bauetappe bezeichnet hier nur einen
+geplanten Zeitraum: Kompetenzen bleiben die Bauteile und ihre fachlichen
+Voraussetzungen bleiben erhalten. Es folgt daraus keine Pflicht, erst alle
+Fächer eines Kalenderjahres abzuschließen, bevor irgendein späteres Ziel
+zugänglich wird.
 
 \subsection{Plan, Eintrittsbasis und eindeutiger Ersterwerb}
 Für einen aufgelösten Plan $\pi$ seien
@@ -22,14 +23,16 @@ Für einen aufgelösten Plan $\pi$ seien
  T_\pi&\subseteq A &&\text{geplante Erwerbsziele},\\
  B_\pi&\subseteq A\setminus T_\pi &&\text{ausdrücklich angenommene Eintrittsbasis},\\
  n_\pi&\in\N_{>0},\qquad
- \ell_\pi:T_\pi\to\{1,\ldots,n_\pi\} &&\text{Erwerbslevel}.
+ \ell_\pi:T_\pi\to\{1,\ldots,n_\pi\} &&\text{Planungsstufe}.
 \end{align}
-Die Levelmengen und ihre Präfixe sind
+Die Planungsstufen und ihre Präfixe sind
 \[
- L_i=\{g\in T_\pi\mid\ell_\pi(g)=i\},\quad
- L_{<i}=\bigcup_{j<i}L_j,\quad L_{\leq i}=\bigcup_{j\leq i}L_j.
+ S_i=\{g\in T_\pi\mid\ell_\pi(g)=i\},\quad
+ S_{<i}=\bigcup_{j<i}S_j,\quad S_{\leq i}=\bigcup_{j\leq i}S_j.
 \]
-Jedes Ziel erhält in diesem Plan genau einen Ersterwerbslevel. Ein anderer
+Diese zeitliche Zuordnung referenziert die fachliche Ersterwerbszuordnung
+der Lerneinheiten, ersetzt sie aber nicht. Jedes Ziel wird im Plan
+einer ersten Planungsstufe zugeordnet. Ein anderer
 Bildungsgang darf es anders platzieren. Spätere Wiederholung, Vertiefung oder
 Anwendung sind zusätzliche Aktivitäten, keine neue Zielidentität.
 $B_\pi$ ist eine Planungsannahme; sie schreibt keine Lernergebnisse.
@@ -37,9 +40,10 @@ Persönliche Lücken in dieser Basis brauchen eine eigene Diagnose und
 zusätzliche Lernzeit.
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{assets/graph-definition/12-level-planning.png}
-\caption[Curriculare Erwerbsstufen]{Planungsreihenfolge, keine \code{requires}-Kanten
-zwischen Levelcontainern. Der Abschluss eines Levels ist keine globale Zugangssperre.}
+\includegraphics[width=\linewidth]{assets/graph-definition/12-calendar-planning.png}
+\caption[Optionale kalenderbezogene Planungsstufen]{Die zeitliche
+Reihenfolge ist keine rekursive Einheitshierarchie. Pfeile sind keine
+\code{requires}-Kanten und führen keine Zugangssperren ein.}
 \label{fig:levels}\end{figure}
 
 \subsection{Strukturelle Machbarkeit durch einen Abschlusszeugen}
@@ -50,15 +54,15 @@ Planungstest sei deshalb
  R_{\mathrm{at}}^{\pi}=\{(a,b)\in R_{\mathrm{at}}\mid a\notin B_\pi\}.
 \]
 $\Frontier_\pi$ verwendet diese Relation mit vollständiger transitiver
-Hülle. Alle Ziele und früheren Level behalten ihre transitiven
+Hülle. Alle Ziele und früheren Planungsstufen behalten ihre transitiven
 Anforderungen; nur an deklarierten Eintrittskompetenzen endet die
 Planungsrekonstruktion. Diese Ausnahme erlaubt keinen Stopp an
 Mastery-Zwischenzielen im wirklichen Lernzustand.
 
-Ein Level $L_i$ ist strukturell machbar, wenn sich seine Ziele als
+Eine Planungsstufe $S_i$ ist strukturell machbar, wenn sich ihre Ziele als
 $a_1,\ldots,a_m$ aufzählen lassen, sodass
 \begin{equation}
- a_j\in\Frontier_\pi\!\left(B_\pi\cup L_{<i}\cup
+ a_j\in\Frontier_\pi\!\left(B_\pi\cup S_{<i}\cup
                          \{a_1,\ldots,a_{j-1}\}\right)
  \qquad(1\leq j\leq m).
  \label{eq:level-witness}
@@ -77,22 +81,22 @@ Zur Diagnose dienen die benötigten Atome
 Aus einem Abschlusszeugen folgt notwendig
 \begin{equation}
  \forall g\in T_\pi:\quad
- \ReqAtoms_\pi(g)\subseteq B_\pi\cup L_{\leq\ell_\pi(g)}.
+ \ReqAtoms_\pi(g)\subseteq B_\pi\cup S_{\leq\ell_\pi(g)}.
  \label{eq:level-closure}
 \end{equation}
 Eine benötigte Kompetenz außerhalb $B_\pi\cup T_\pi$ ist ungeplant;
-ein benötigtes Ziel mit höherem Erwerbslevel ist ein Reihenfolgefehler.
-Voraussetzungen innerhalb desselben Levels sind erlaubt. Die
+ein benötigtes Ziel mit höherer Planungsstufe ist ein Reihenfolgefehler.
+Voraussetzungen innerhalb derselben Planungsstufe sind erlaubt. Die
 Grundgraphgültigkeit einschließlich atomar expandierter Zyklen muss vor
 dieser Mengenprüfung bereits festgestellt sein. Der explizite Zeuge
 verbindet die Zuordnung mit einem tatsächlich möglichen Erwerbsweg.
 
-Ein endlicher Prüfalgorithmus startet für jedes Level mit
-$M^{(0)}=B_\pi\cup L_{<i}$ und wiederholt
+Ein endlicher Prüfalgorithmus startet für jede Planungsstufe mit
+$M^{(0)}=B_\pi\cup S_{<i}$ und wiederholt
 \begin{equation}
- M^{(r+1)}=M^{(r)}\cup\bigl(L_i\cap\Frontier_\pi(M^{(r)})\bigr).
+ M^{(r+1)}=M^{(r)}\cup\bigl(S_i\cap\Frontier_\pi(M^{(r)})\bigr).
 \end{equation}
-Er ist erfolgreich genau dann, wenn sein Fixpunkt ganz $L_i$ enthält.
+Er ist erfolgreich genau dann, wenn sein Fixpunkt ganz $S_i$ enthält.
 Die Verfügbarkeit eines noch offenen Ziels kann durch zusätzliche
 Erfüllungen nicht verschlechtert werden. Deshalb kann jede gleichzeitig
 hinzugefügte Menge auch nacheinander erworben werden. Ein vorhandener
@@ -153,20 +157,20 @@ gelten, ohne Doppelzählung gemeinsam zugeordneter Zeit. Ein Kalenderplan
 muss außerdem Voraussetzungen vor der konkreten Anwendung bereitstellen.
 
 \subsection{Gültigkeitsanspruch und Abschlussgrenzen}
-Ein Levelplan ist unter diesem optionalen Profil gültig, wenn er sowohl
+Ein Zeit- und Erwerbsplan ist unter diesem optionalen Profil gültig, wenn er sowohl
 strukturell als auch unter seinen erklärten Annahmen zeitlich machbar ist.
 Ohne belastbare Aufwandsschätzung ist allein die strukturelle Aussage
 zulässig. Der Anspruch bindet Plan, Curriculumfassung, aufgelösten Umfang
 und Schätzannahmen. Er garantiert keine identische Lerngeschwindigkeit
 für jede Person.
 
-Der Abschluss eines Levels wird aus seiner vollständigen Zielmenge und den
-Zieltypverträgen abgeleitet. Er ist keine pauschale Voraussetzung für alle
-Ziele des nächsten Levels. Gültige lokale Abschlussverträge leiten zusätzlich global wirksame
-Anwendungsbeherrschung ab. Das folgende Kapitel beschreibt diese Anerkennung,
-ohne zusätzliche Sperren zwischen Levelcontainern einzuführen.
+Der Abschluss der fachlichen Lerneinheit folgt den rekursiven Zieltyp- und
+Kinderpflichten aus Abschnitt~\ref{sec:learning-units}. Ein Kalenderabschnitt
+kann mehrere Einheiten enthalten; eine Einheit kann sich über mehrere
+Kalenderabschnitte erstrecken. Aus diesem Zeitprofil folgt keine pauschale
+Voraussetzung des gesamten vorigen Jahres für jedes spätere Lernziel.
 
 \paragraph{Quellen.}
-\srcref{docs/concept/skill-graph/curriculum-levels.md}{Curriculum Levels};
+\srcref{docs/concept/skill-graph/learning-units.md}{Lerneinheiten};
 \srcref{docs/concept/skill-graph/graph-definition.md}{Graph Definition, Abschnitt 12};
 \srcref{docs/concept/didactic/curriculum-time-axis-and-pacing.md}{Zeitachse und Kapazität}.

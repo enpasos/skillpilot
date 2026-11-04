@@ -126,7 +126,7 @@ Atomziele. Diese Darstellungsregel verändert keine Projektionsrolle.
 
 Die Auswahl \glqq Schule\grqq{}, \glqq Hochschule\grqq{} oder \glqq Sprachen\grqq{} ist zunächst
 Katalognavigation. Erst danach beginnen die vier
-Personalisierungsstufen. Sie sind von den curricularen Levels zu
+Personalisierungsstufen. Sie sind von den fachlichen Lerneinheiten zu
 unterscheiden, die Erwerbsetappen mit Voraussetzungen und Zeitbudgets
 bezeichnen.
 
@@ -432,8 +432,8 @@ Die Zeitplanung ist eine zusätzliche Ausführungsplanung und keine
 fünfte Personalisierungsstufe. Sie darf Ziele priorisieren, die im
 aktuellen Arbeitsbereich verfügbar sind. Sie erzeugt keine
 Voraussetzungskanten, keine neue Frontier und keine Lernergebnisse.
-Ein curricularer Level ordnet Erwerbsetappen gröber; ein datierter
-Ablaufplan muss darüber hinaus gewährleisten, dass eine Voraussetzung
+Die Lerneinheit beschreibt den fachlichen Erwerbszusammenhang; ein datierter
+Ablaufplan muss zusätzlich gewährleisten, dass eine Voraussetzung
 rechtzeitig vor ihrer geplanten Verwendung erarbeitet wird.
 
 Verfügbare Kapazität berücksichtigt tatsächliche Unterrichts- oder
@@ -453,7 +453,7 @@ frühere Aussagen nicht stillschweigend umdeuten.
 
 Der dokumentierte lokale Planungspilot und die angestrebte
 backendseitig maßgebliche Architektur sind getrennt zu betrachten.
-Insbesondere behauptet die Leveldefinition noch keine
+Insbesondere behauptet die Einheitendefinition noch keine
 implementierte fachübergreifende Budgetprüfung.
 
 \paragraph{Quelle.}
@@ -577,29 +577,30 @@ bestimmt noch nicht, welche Ziele für die Person als \code{target}
 auswählbar sind.
 
 Veröffentlichungs- und Prüfaussagen nennen Artefakt, Umfang, Version und
-gebundene Quellen. Ein lokaler Build belegt weder fremde Hostanzeige noch
-pädagogische Wirksamkeit. Dieses Kompendium erteilt keine Release- oder
-Produktionsfreigabe.
+gebundene Quellen. Ein lokaler Build beweist weder Hostanzeige noch
+pädagogische Wirksamkeit. Dieses Kompendium erteilt keine Release- oder Produktionsfreigabe.
 
+\enlargethispage{\baselineskip}
 \subsection{Lizenzen und private Lernergebnisse}
 
-Software, technische Schemas, Entwicklerdokumentation und funktionale
-Coachanweisungen stehen unter Apache-2.0; eigene Skill-Landschaften,
-Zieltexte, didaktische Aufgaben, Karten, Bilder und Bildungsdokumentation
-unter CC-BY-4.0. Entscheidend ist die Funktion, nicht die Dateiendung.
-Gemischte Sammlungen sind nicht pauschal doppelt lizenziert.
+Apache-2.0 gilt für Software, technische Schemas, Entwicklerdokumentation
+und funktionale Coachanweisungen; CC-BY-4.0 für eigene Skill-Landschaften,
+Zieltexte, didaktische Aufgaben, Karten, Bilder und Bildungsdokumentation.
+Maßgeblich ist die Funktion, nicht die Dateiendung. Gemischte Sammlungen
+sind nicht pauschal doppelt lizenziert.
 
 Fremde Quellen, Abhängigkeiten, Medien und Marken behalten ihre Bedingungen.
-Quellenangabe oder KI-Herkunft sind weder Rechtefreigabe noch Qualitätsbeweis.
-Exporte führen zutreffende Lizenzen, Herkunftsangaben und Änderungshinweise
-mit. Private Lernergebnisse, Sitzungsdaten und Gespräche gehören weder zur
-öffentlichen Inhaltslizenz noch in öffentliche Quellen- oder Reviewpakete.
+Quellenangabe und KI-Herkunft belegen weder Rechte noch Qualität.
+Exporte führen anwendbare Lizenzen, Herkunft und Änderungen mit.
+Private Ergebnisse, Sitzungsdaten und Gespräche gehören weder unter die
+öffentliche Inhaltslizenz noch in öffentliche Quellen- oder Reviewpakete.
 
-\paragraph{Quellen.}
-\srcref{docs/concept/skill-graph/source-and-resource-links.md}{Quellen und Materialien};
-\srcref{docs/concept/skill-graph/human-readable-source-rationales.md}{Menschenlesbare Quellenbegründungen};
-\srcref{docs/qa-ci/graph-validation-rules.md}{Algorithmische Graphvalidierung};
-\srcref{docs/qa-ci/curriculum-quality-maturity-and-routes.md}{Reifegrade und Qualitätsregeln};
-\srcref{docs/concept/skill-graph/learning-goal-book-and-evidence-review-pipeline.md}{Lernzielbuch und Evidenzreview};
-\srcref{docs/concept/skill-graph/dual-curriculum-package-releases.md}{Curriculum-Pakete};
-\srcref{LICENSING.md}{Lizenzaufteilung}.
+\begingroup\footnotesize\noindent\textbf{Quellen.}~
+\srcref{docs/concept/skill-graph/source-and-resource-links.md}{Materialien};
+\srcref{docs/concept/skill-graph/human-readable-source-rationales.md}{Quellenbegründungen};
+\srcref{docs/qa-ci/graph-validation-rules.md}{Graphvalidierung};
+\srcref{docs/qa-ci/curriculum-quality-maturity-and-routes.md}{Curriculum-QA};
+\srcref{docs/concept/skill-graph/learning-goal-book-and-evidence-review-pipeline.md}{Lernzielbuch};
+\srcref{docs/concept/skill-graph/dual-curriculum-package-releases.md}{Pakete};
+\srcref{LICENSING.md}{Lizenzen}.
+\par\endgroup

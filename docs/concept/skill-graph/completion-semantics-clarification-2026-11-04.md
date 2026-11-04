@@ -26,34 +26,66 @@ die bisherige Implementierung ist noch nicht entsprechend korrigiert.
 
 ## Lokale Begründung, globale Wirkung
 
-Ein autoritativ bestimmter Erwerbslevel umfasst seine Lernziele und sämtliche
-zugehörigen Prüfungs- und Lernkartenziele. Innerhalb dieses Vertrags werden
-alle transitiven Verbraucher berücksichtigt, auch über bereits gemeisterte
-Zwischenziele hinweg. Ein beliebiger Baum- oder Fokusfilter definiert keinen
-Abschlussvertrag. Die konkrete Levelauflösung ist später zu implementieren.
+Eine autoritativ bestimmte **Lerneinheit** hat ein Lernversprechen, einen
+motivierenden Auftakt und einen überprüfbaren Abschluss. Sie enthält eigene
+Ziele und kann weitere Lerneinheiten bündeln. Der Begriff ersetzt das zuvor
+verwendete curriculare „Level“; Personalisierungsstufen, Schwierigkeitsgrad und
+QA-Reife bleiben eigenständige Begriffe.
+
+Jedes Erwerbsziel ist innerhalb des aufgelösten Kurses genau einer Einheit
+direkt zugeordnet. Deren Anerkennungsvertrag umfasst die eigenen Ziele und
+sämtliche eigenen Prüfungs- und Lernkartenpflichten. Er berücksichtigt volle
+transitive Anforderungen, auch über bereits gemeisterte Zwischenziele hinweg.
+Ein beliebiger Baum- oder Fokusfilter definiert keinen solchen Vertrag.
 
 ```text
-Level 1: Prüfung Q1 ──requires──▶ B ──requires──▶ A
-Level 2: Prüfung Q2 ──requires──▶ C ──requires──▶ A
+Einheit U: Prüfung Q1 ──requires──▶ B ──requires──▶ A
+Einheit V: Prüfung Q2 ──requires──▶ C ──requires──▶ A
 ```
 
 Ist nur das gewöhnliche B gemeistert, bleibt A für die offene Q1 erforderlich.
-Besteht die Person Q1 und sind damit sämtliche für A und B relevanten lokalen
+Besteht die Person Q1 und sind damit sämtliche für A und B relevanten eigenen
 Pflichten erfüllt, gelten A und B als durch Anwendung gemeistert. Die offene
 Q2 verhindert dies nicht. Beim späteren Lernen von C ist A bereits erfüllt.
 Es wird weder erneut als offen verlangt noch als zweites Ziel gezählt.
 
-Eine weitere offene Prüfung im selben Level kann die Anerkennung von A
-hingegen noch verhindern. Ein unabhängiges offenes Lernkartenziel hält den
-Levelabschluss offen, aber nicht automatisch jede anderweitig bereits
-nachgewiesene Kompetenz. Keine ausgewählte Prüfung und kein ausgewähltes
-Lernkartenziel darf aus der Rechnung herausgefiltert werden.
+Eine weitere offene Prüfung derselben direkt zugeordneten Einheit kann die
+Anerkennung von A hingegen noch verhindern. Eine unabhängige offene Kartenpflicht
+hält den vollständigen Einheitsabschluss offen, aber nicht automatisch jede
+bereits belegte Kompetenz. Ausgewählte Prüfungs- und Kartenpflichten dürfen
+nicht aus der Rechnung herausgefiltert werden.
+
+## Rekursive Einheiten und größere Abschlüsse
+
+Eine größere Einheit ist abgeschlossen, wenn ihre verpflichtenden Untereinheiten
+und eigenen Zielpflichten erfüllt sind. Der Abschluss wird abgeleitet; es gibt
+keinen zusätzlichen gespeicherten Modul-Mastery-Zustand. Eine übergeordnete
+Prüfung kann das selbständige Zusammenspiel bereits erworbener Kompetenzen
+prüfen. Reine Bündelung braucht keine zusätzliche Prüfung.
+
+Eine offene übergeordnete Prüfung öffnet abgeschlossene Untereinheiten nicht
+wieder. Umgekehrt besteht sie weder deren Prüfungen noch deren Karten implizit.
+Eltern bündeln die Zielmengen ihrer Kinder, erhalten dadurch aber keinen neuen
+Anerkennungsvertrag über alle Nachkommen. Eigene neue Kompetenzen brauchen einen
+eigenen gültigen Anwendungsnachweis. Gemeinsame Voraussetzungen behalten ihre
+Identität und werden nicht mehrfach erworben.
+
+Das gilt auch für den motivationalen Auftakt: Er erklärt Zweck und Lernversprechen,
+belegt aber selbst keine Fachkompetenz. Ein abgeleiteter Orientierungsabschluss
+behauptet keine tatsächlich stattgefundene motivierende Interaktion.
+
+Eine ausdrücklich gesetzte Abhängigkeit zwischen ganzen Einheiten kann deren
+Ablauf strukturieren. Eine einzelne atomare Voraussetzung erzeugt diese stärkere
+Pflicht nicht automatisch. Ob solche Abhängigkeiten Empfehlungen oder technische
+Startblockaden sind und ob direkte Prüfungsversuche davon betroffen sind, bleibt
+bewusst offen. Die Einteilung muss einen möglichen Ablauf zulassen; atomare
+Zyklenfreiheit allein garantiert noch keine zyklusfreie Folge ganzer Einheiten.
 
 Die [normative Abschlussrechnung](assessment-gated-completion.md) definiert
 die Mengen und die Verbindung zur [Graph-Definition](graph-definition.md).
-Das Dokument [Curriculare Level](curriculum-levels.md) beschreibt ihre
-Einordnung. Zusätzliche ganze Level sperrende Zugangsgates bleiben ein
-[getrennter optionaler Entwurf](curriculum-level-gates.md).
+[Lerneinheiten](learning-units.md) beschreiben die rekursive Struktur;
+[Abhängigkeiten und Lernweg](learning-unit-progression.md) erläutern die
+separate Entscheidung über Zugang und Reihenfolge. Die Umsetzung folgt später.
 
 ## Verbindliche Anforderung an Prüfungen
 
@@ -65,7 +97,7 @@ Rechenschritt genügt nicht. Der unabhängige fachliche Review fragt:
 > Kann die relevante Prüfungsmenge bestanden werden, obwohl eine wesentliche
 > dadurch anerkannte Kompetenz nicht selbständig angewandt wurde?
 
-Wenn ja, muss Aufgabe, normale Bestehensregel oder Levelzuschnitt korrigiert
+Wenn ja, muss Aufgabe, normale Bestehensregel oder Einheitszuschnitt korrigiert
 werden. Ein völlig fehlender wesentlicher Bestandteil darf nicht durch Punkte
 aus anderen Bereichen ausgeglichen werden, während dieser Bestandteil als
 beherrscht anerkannt wird. Nicht jede einzelne Prüfung muss alles doppelt
