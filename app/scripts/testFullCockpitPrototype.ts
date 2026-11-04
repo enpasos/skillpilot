@@ -11,7 +11,7 @@ const artifacts = fileURLToPath(new URL('../../tmp/learning-cockpit-prototype-re
 const externalOrigin = process.env.PROTOTYPE_ORIGIN
 const server = externalOrigin ? null : await createServer({ root: appRoot,
   configFile: `${appRoot}/prototypes/vite.config.ts`, logLevel: 'error',
-  server: { host: '127.0.0.1', port: 0, strictPort: false, hmr: false, ws: false } })
+  server: { host: '127.0.0.1', port: 0, strictPort: false, hmr: false } })
 await server?.listen()
 const address = server?.httpServer?.address()
 const origin = externalOrigin ?? (address && typeof address !== 'string' ? `http://127.0.0.1:${address.port}` : '')
