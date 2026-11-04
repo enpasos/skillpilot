@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto'
 import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, unlinkSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { compileCompositionView, type CompositionViewNode } from '../src/utils/authoring/compositionViewAuthoring'
+import { collectCompositionProjectionRoleGoalIds, compileCompositionView, type CompositionViewNode } from '../src/utils/authoring/compositionViewAuthoring'
 import type { CanonicalAuthoringLandscape } from '../src/utils/authoring/canonicalAuthoring'
 import {
   assertMathStageMaterializationAllowed,
@@ -16,6 +16,7 @@ import {
   type StageReviewReceipt,
 } from './generateMathCountrySekICompositionViews'
 import { applyReviewedMathAssessmentVariants } from './mathAssessmentScopeVariants'
+import { withoutQ3WholeScopePlacements } from './mathQ3WholeScopePlacements'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const policyPath = 'app/scripts/config/math-country-seki-stage-policy.json'
@@ -53,6 +54,9 @@ assert(country('DE-MV').courses.every(course => course.prerequisiteOnlyGoalIds.i
 const existingRows = deriveMathExistingStageViews(root, policy)
 const authoredRows = deriveMathAuthoredAssessmentViews(root, policy)
 const allRows = [...rows, ...existingRows, ...authoredRows]
+// Earlier operations keep their exact reviewed before-Q3 contract. The later
+// bound Q3 layer is checked separately below against its actual final roles.
+const beforeQ3ByViewId = new Map(allRows.map(row => [row.view.viewId, withoutQ3WholeScopePlacements(row.view, goalById, root)]))
 for (const operation of policy.assessmentScopeOperations) {
   const row = allRows.find(candidate => candidate.view.viewId === operation.viewId)
   if (!row) {
@@ -61,7 +65,7 @@ for (const operation of policy.assessmentScopeOperations) {
     assert(policy.durationOutputViewIds.includes(operation.viewId), `assessment operation must have a generated view: ${operation.id}`)
     continue
   }
-  const preview = compileCompositionView(row.view, canonical)
+  const preview = compileCompositionView(beforeQ3ByViewId.get(row.view.viewId)!, canonical)
   const visible = compiledIds(preview.compiledRootNodes)
   const findAnchor = (nodes: typeof preview.compiledRootNodes): typeof preview.compiledRootNodes[number] | undefined => {
     for (const node of nodes) {
@@ -78,6 +82,49 @@ for (const operation of policy.assessmentScopeOperations) {
     }
   }
 }
+// Validate every explicitly bound Q3 operation, including duration and combined
+// outputs, without treating an older exclusion as a permanent final-role rule.
+const q3Binding = (policy as StagePolicy & { q3WholeScopePlacement?: BoundStageFile }).q3WholeScopePlacement
+if (q3Binding) {
+  const q3Bytes = readFileSync(resolve(root, q3Binding.path))
+  assert.equal(sha(q3Bytes), q3Binding.sha256)
+  assert(policy.stageDecisionBindings.some(binding => binding.path === q3Binding.path && binding.sha256 === q3Binding.sha256))
+  const q3 = JSON.parse(q3Bytes.toString('utf8')) as {
+    views: Array<{ viewId: string; outputPath: string; operations: Array<{
+      id: string; goalId: string; projectionRole: 'target' | 'prerequisiteOnly'
+      removePrerequisiteOnlyMask?: unknown
+    }> }>
+    retainedTargetPaths: Array<{ viewId: string; goalId: string }>
+  }
+  for (const rule of q3.views) {
+    const view = allRows.find(row => row.view.viewId === rule.viewId)?.view
+      ?? JSON.parse(readFileSync(resolve(root, rule.outputPath), 'utf8'))
+    assert.equal(view.viewId, rule.viewId)
+    const preview = compileCompositionView(view, canonical)
+    assert(!preview.findings.some(finding => finding.severity === 'error'), rule.viewId)
+    const visible = compiledIds(preview.compiledRootNodes)
+    const roles = collectCompositionProjectionRoleGoalIds(view.rootNodes, goalById)
+    const before = withoutQ3WholeScopePlacements(view, goalById, root)
+    const beforeRoles = collectCompositionProjectionRoleGoalIds(before.rootNodes, goalById)
+    for (const operation of rule.operations) {
+      if (operation.projectionRole === 'target') {
+        assert(roles.targetGoalIds.has(operation.goalId) && !roles.prerequisiteOnlyGoalIds.has(operation.goalId), operation.id)
+        assert.equal(visible.filter(id => id === operation.goalId).length, 1, `Q3 exactly one visible task parent: ${operation.id}`)
+        if (operation.removePrerequisiteOnlyMask) {
+          assert(beforeRoles.prerequisiteOnlyGoalIds.has(operation.goalId) && !beforeRoles.targetGoalIds.has(operation.goalId), `Q3 exact former support role: ${operation.id}`)
+        }
+      } else {
+        assert(roles.prerequisiteOnlyGoalIds.has(operation.goalId) && !roles.targetGoalIds.has(operation.goalId), operation.id)
+        assert(!visible.includes(operation.goalId), `Q3 support must stay outside visible targets: ${operation.id}`)
+      }
+    }
+    for (const retained of q3.retainedTargetPaths.filter(row => row.viewId === rule.viewId)) {
+      assert(roles.targetGoalIds.has(retained.goalId) && !roles.prerequisiteOnlyGoalIds.has(retained.goalId), `Q3 retained actual target: ${retained.goalId}/${rule.viewId}`)
+      assert.equal(visible.filter(id => id === retained.goalId).length, 1)
+    }
+  }
+}
+
 for (const code of ['ni', 'th']) for (const stage of ['', 'sekii-']) {
   const lk = existingRows.find(row => row.view.viewId === `de-${code}-gym-${stage}math-lk`)!
   assert(compiledIds(compileCompositionView(lk.view, canonical).compiledRootNodes).includes(id('2f8a3a90')), 'GK exclusion must preserve the selected LK task and its course union')
@@ -142,6 +189,7 @@ if (wrongReplacement.kind === 'structure') wrongReplacement.label += ' (mutation
 else if (wrongReplacement.kind !== 'landscapeEntry') wrongReplacement.displayLabel = 'Mutation'
 assert.throws(() => deriveMathCountrySekIViews(root, wrongCorrection), /source correction target delta differs|exact source before\/after correction reference changed/)
 
+mkdirSync(resolve(root, 'tmp'), { recursive: true })
 const fixture = mkdtempSync(resolve(root, 'tmp/math-stage-regression-'))
 const bindings: BoundStageFile[] = [policy.canonical, policy.nativeCompiler, policy.nativeCanonicalHelper, policy.nativeStageHelper, policy.durationGenerator, policy.stageDecision, ...policy.stageDecisionBindings,
   ...policy.sourceBindings, policy.sourceDecisions, policy.variantRegistry,

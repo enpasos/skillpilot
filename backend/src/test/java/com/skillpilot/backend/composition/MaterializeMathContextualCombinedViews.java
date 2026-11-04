@@ -69,6 +69,7 @@ public final class MaterializeMathContextualCombinedViews {
             if(!outputIds.add(text(pair.get("outputViewId"))) || !outputFiles.add(text(pair.get("outputFileName")))) throw new IllegalStateException("Duplicate combined output identity");
             for(String request:strings(pair.get("scopeRows"))) if(!requestIds.add(request)) throw new IllegalStateException("Duplicate combined request binding");
         }
+        q3Placement=Q3Placement.load(root,policy,canonical);
         G5Placement g5=G5Placement.load(root,views,plan,boundDecisions,canonical,children);
         ReviewedExistingChanges existingChanges=ReviewedExistingChanges.load(root,plan,boundDecisions,canonical);
         Map<String,Object> snapshots=map(plan.get("producerSourceSnapshots"));
@@ -82,7 +83,7 @@ public final class MaterializeMathContextualCombinedViews {
             List<Map<String,Object>> currentSources=new ArrayList<>(), baselineSources=new ArrayList<>();
             for(int i=0;i<2;i++) {
                 Path currentPath=views.resolve(Path.of(sourcePaths.get(i)).getFileName());
-                Map<String,Object> current=read(currentPath), snapshot=map(snapshots.get(sourcePaths.get(i)));
+                Map<String,Object> current=readSourceView(currentPath), snapshot=map(snapshots.get(sourcePaths.get(i)));
                 Path beforePath=root.resolve(text(snapshot.get("path")));
                 if(!sha(beforePath).equals(snapshot.get("sha256"))) throw new IllegalStateException("Bound before-view drift: "+beforePath);
                 Map<String,Object> before=read(beforePath);
@@ -126,6 +127,7 @@ public final class MaterializeMathContextualCombinedViews {
             Set<String> unionEmptyWrappers=existingChanges.checkUnion(pair,result,baseline,children,permittedUnionAdditions);
             if(count(result,omit)!=0 || !JSON.valueToTree(withoutNew(result,permittedUnionAdditions,unionEmptyWrappers)).equals(JSON.valueToTree(withoutNew(baseline,permittedUnionAdditions,unionEmptyWrappers)))) throw new IllegalStateException("Old union target/support/tree contract changed");
             Map<String,Object> view=new LinkedHashMap<>();view.put("viewId",pair.get("outputViewId"));view.put("landscapeId",canonical.get("landscapeId"));view.put("scope",scope);view.put("rootNodes",result);
+            if(q3Placement!=null)view=q3Placement.apply(view);
             String body=JSON.writerWithDefaultPrettyPrinter().writeValueAsString(view)+"\n";
             Path target=output.resolve(text(pair.get("outputFileName")));
             if(options.containsKey("check")) {
@@ -266,7 +268,7 @@ public final class MaterializeMathContextualCombinedViews {
                 String path=paths.get(text(rule.get("viewId")));if(path==null)throw new IllegalStateException("Existing positive source is absent");
                 var snapshot=map(snapshots.get(path));Path oldPath=root.resolve(text(snapshot.get("path")));
                 if(!sha(oldPath).equals(snapshot.get("sha256")))throw new IllegalStateException("Bound before-view drift: "+oldPath);
-                var before=read(oldPath);var current=read(views.resolve(Path.of(path).getFileName()));
+                var before=read(oldPath);var current=readSourceView(views.resolve(Path.of(path).getFileName()));
                 var oldNodes=maps(before.get("rootNodes"));var nodes=maps(current.get("rootNodes"));var oldTargets=CourseProfileCompositionViewMerger.projectionTargetGoalIds(oldNodes,children);
                 for(String id:positive)checkPositiveReferenceInventory(nodes,oldNodes,id,oldTargets.contains(id));
             }
@@ -338,7 +340,7 @@ public final class MaterializeMathContextualCombinedViews {
             Set<String> consumedOperations=new LinkedHashSet<>(),seenViews=new LinkedHashSet<>();
             for(var row:maps(rule.get("sourceRules"))) {
                 String vid=text(row.get("viewId"));if(!seenViews.add(vid))throw new IllegalStateException("G5 duplicate source baseline");
-                var b=map(row.get("baselineView"));ReviewedExistingChanges.requireBound(root,b,bindings);var before=read(root.resolve(text(b.get("path"))));var current=read(views.resolve(Path.of(text(b.get("path"))).getFileName()));
+                var b=map(row.get("baselineView"));ReviewedExistingChanges.requireBound(root,b,bindings);var before=read(root.resolve(text(b.get("path"))));var current=readSourceView(views.resolve(Path.of(text(b.get("path"))).getFileName()));
                 if(!vid.equals(current.get("viewId"))||!vid.equals(before.get("viewId")))throw new IllegalStateException("G5 source view identity differs");
                 Set<String> wrappers=new LinkedHashSet<>(),adds=new LinkedHashSet<>();
                 for(var op:maps(row.get("operations"))) {
@@ -435,7 +437,7 @@ public final class MaterializeMathContextualCombinedViews {
                 var ids=strings(pair.get("sourceViewIds"));var paths=strings(pair.get("baselineSourcePaths"));
                 for(int index=0;index<ids.size();index++) {
                     String vid=ids.get(index);if(!checkedSources.add(vid))continue;
-                    var current=read(views.resolve(Path.of(paths.get(index)).getFileName()));var nodes=maps(current.get("rootNodes"));var refs=ReviewedExistingChanges.exactReferences(nodes,ID);var sr=sourceRules.get(vid);
+                    var current=readSourceView(views.resolve(Path.of(paths.get(index)).getFileName()));var nodes=maps(current.get("rootNodes"));var refs=ReviewedExistingChanges.exactReferences(nodes,ID);var sr=sourceRules.get(vid);
                     if(sr==null){if(!refs.isEmpty()||CourseProfileCompositionViewMerger.projectionTargetGoalIds(nodes,children).contains(ID))throw new IllegalStateException("G4 unauthorized source reference");continue;}
                     ReviewedExistingChanges.equal(current.get("scope"),sr.get("scope"),"G4 source exact scope differs");
                     var op=map(sr.get("operation"));if(!vid.equals(op.get("viewId"))||!"include-target".equals(op.get("action")))throw new IllegalStateException("G4 source operation differs");
@@ -448,6 +450,43 @@ public final class MaterializeMathContextualCombinedViews {
             }
             if(!checkedSources.containsAll(SOURCES))throw new IllegalStateException("G4 source rule not consumed");
         }
+    }
+
+
+    private static Q3Placement q3Placement;
+    private static Map<String,Object> readSourceView(Path path)throws Exception {
+        Map<String,Object> view=read(path);return q3Placement==null?view:q3Placement.without(view);
+    }
+    /** Finite development contract, independently reviewed content; implementation acceptance is separate. */
+    private static final class Q3Placement {
+        private final Map<String,Map<String,Object>> rules=new LinkedHashMap<>(),before=new LinkedHashMap<>();
+        private final Map<String,List<String>> children=new LinkedHashMap<>();
+        private List<Map<String,Object>> retained=List.of();
+        static Q3Placement load(Path root,Map<String,Object> policy,Map<String,Object> canonical)throws Exception {
+            if(!policy.containsKey("q3WholeScopePlacement")){var ids=Set.of("f74d944a-e09b-5e01-867b-09740fadf18d","51b008fd-2ce4-5e38-98b1-75c9ede34f6d","57833097-393c-5a08-8c03-e161b43cb9cc","7246cd87-b720-5866-8c0c-3b93fec46189","ed344e04-818b-59ab-9b4a-087428c05c8f","a789460f-92b8-565a-82ca-d5d6b7928b19","6e977ea1-0d38-54bb-82d7-12e6326845af","095df29a-6791-50aa-aff1-b3d94d9b5eeb","fdba2315-d467-568c-a6b7-64c15d414935","f59b0af8-b90a-5cdb-88d6-561323a4f763","63576e96-1fdd-5bd5-a875-e0c010a534d7");if(maps(canonical.get("goals")).stream().anyMatch(g->ids.contains(text(g.get("id")))))throw new IllegalStateException("Q3 identities require their exact bound scope contract");return null;}
+            var out=new Q3Placement();var bindings=maps(policy.get("stageDecisionBindings"));var pb=map(policy.get("q3WholeScopePlacement"));ReviewedExistingChanges.requireBound(root,pb,bindings);var plan=read(root.resolve(text(pb.get("path"))));
+            if(!Integer.valueOf(1).equals(plan.get("schemaVersion"))||!"reviewed-q3-whole-scope-placement-development-contract".equals(plan.get("kind"))||!Boolean.TRUE.equals(plan.get("authorProposalIsNotImplementationAcceptance")))throw new IllegalStateException("Q3 development contract differs");
+            var decisionBinding=map(plan.get("contentDecision"));ReviewedExistingChanges.requireBound(root,decisionBinding,bindings);var decision=read(root.resolve(text(decisionBinding.get("path"))));
+            if(!"PASS_FINITE_CONTENT_SOURCE_R_RUBRIC_UX_WITH_FROZEN_OVERLAY".equals(decision.get("verdict"))||maps(decision.get("acceptedForms")).size()!=12||maps(decision.get("acceptedExistingWholeReuses")).size()!=6)throw new IllegalStateException("Q3 genuine content review differs");
+            var bb=map(plan.get("baselineCanonical"));ReviewedExistingChanges.requireBound(root,bb,bindings);var baseline=read(root.resolve(text(bb.get("path"))));Map<String,Map<String,Object>> goals=new LinkedHashMap<>(),expected=new LinkedHashMap<>();for(var g:maps(canonical.get("goals")))goals.put(text(g.get("id")),g);
+            for(var b:maps(plan.get("integratedWholeGoals"))){ReviewedExistingChanges.requireBound(root,b,bindings);var g=read(root.resolve(text(b.get("path"))));if(expected.put(text(g.get("id")),g)!=null)throw new IllegalStateException("Q3 duplicate whole goal");}
+            if(goals.size()!=maps(baseline.get("goals")).size()+11||strings(plan.get("newAssessmentIds")).size()!=11||!expected.keySet().equals(new LinkedHashSet<>(strings(plan.get("exactChangedGoalIds")))))throw new IllegalStateException("Q3 canonical delta inventory differs");
+            for(var old:maps(baseline.get("goals"))){String id=text(old.get("id"));ReviewedExistingChanges.equal(goals.get(id),expected.getOrDefault(id,old),"Q3 unapproved canonical drift: "+id);}
+            for(String id:strings(plan.get("newAssessmentIds")))ReviewedExistingChanges.equal(goals.get(id),expected.get(id),"Q3 new whole goal differs");
+            for(var b:maps(plan.get("assets")))ReviewedExistingChanges.requireBound(root,b,bindings);
+            for(var g:maps(canonical.get("goals")))out.children.put(text(g.get("id")),strings(g.get("contains")));out.retained=maps(plan.get("retainedTargetPaths"));
+            List<Map<String,Object>> placementFindings=List.of();if(plan.containsKey("independentPlacementFindings")){var fb=map(plan.get("independentPlacementFindings"));ReviewedExistingChanges.requireBound(root,fb,bindings);placementFindings=JSON.readValue(root.resolve(text(fb.get("path"))).toFile(),new TypeReference<List<Map<String,Object>>>(){});}
+            final var placementFindingRows=placementFindings;
+            var routingBinding=map(plan.get("baselineScopeViewRouting"));ReviewedExistingChanges.requireBound(root,routingBinding,bindings);var routing=read(root.resolve(text(routingBinding.get("path"))));var routingRows=maps(routing.get("rows"));if(!Integer.valueOf(161).equals(routing.get("actualScopeCount"))||routingRows.size()!=161||routingRows.stream().map(r->text(r.get("scope"))).distinct().count()!=161)throw new IllegalStateException("Q3 scope routing differs");
+            Map<String,List<String>> approved=new LinkedHashMap<>();for(var row:maps(decision.get("acceptedForms")))approved.put(text(row.get("goalId")),strings(row.get("exactTargetScopes")));for(var row:maps(decision.get("acceptedExistingWholeReuses")))approved.put(text(row.get("goalId")),strings(row.get("exactTargetScopes")));var support=map(map(decision.get("integrationContract")).get("onlyNewPreparationContext"));Set<String> seenOperations=new LinkedHashSet<>();
+            for(var rule:maps(plan.get("views"))){String id=text(rule.get("viewId"));var scopes=routingRows.stream().filter(r->id.equals(r.get("viewId"))).map(r->text(r.get("scope"))).sorted().toList();if(scopes.isEmpty())throw new IllegalStateException("Q3 view has no native baseline routing");for(var op:maps(rule.get("operations"))){var allowed="prerequisiteOnly".equals(op.get("projectionRole"))&&Objects.equals(op.get("goalId"),support.get("goalId"))?strings(support.get("exactScopes")):"prerequisiteOnly".equals(op.get("projectionRole"))?placementFindingRows.stream().filter(row->strings(row.get("targetExtra")).contains(text(op.get("goalId")))).map(row->text(row.get("scope"))).toList():"target".equals(op.get("projectionRole"))?approved.get(text(op.get("goalId"))):null;if(!id.equals(op.get("viewId"))||!seenOperations.add(text(op.get("id")))||!strings(op.get("scopeRows")).stream().sorted().toList().equals(scopes)||allowed==null||!allowed.containsAll(scopes))throw new IllegalStateException("Q3 operation differs from independent exact identity/scope/role decision");}if(out.rules.put(id,rule)!=null)throw new IllegalStateException("Q3 duplicate view");var b=map(rule.get("beforeView"));ReviewedExistingChanges.requireBound(root,b,bindings);out.before.put(id,read(root.resolve(text(b.get("path")))));}
+            return out;
+        }
+        private Map<String,Object> wrapper(Map<String,Object> op){var node=new LinkedHashMap<String,Object>();node.put("kind","goalEntry");node.put("goalId",op.get("goalId"));if("prerequisiteOnly".equals(op.get("projectionRole")))node.put("projectionRole","prerequisiteOnly");return Map.of("kind","structure","id",op.get("id"),"label",op.get("label"),"children",List.of(node));}
+        private List<Map<String,Object>> strip(List<Map<String,Object>> nodes,Map<String,Map<String,Object>> operations){var out=new ArrayList<Map<String,Object>>();for(var node:nodes){if("structure".equals(node.get("kind"))&&operations.containsKey(text(node.get("id")))){ReviewedExistingChanges.equal(node,wrapper(operations.get(text(node.get("id")))),"Q3 wrapper drift");continue;}var n=new LinkedHashMap<>(node);if("structure".equals(n.get("kind")))n.put("children",strip(maps(n.get("children")),operations));out.add(n);}return out;}
+        @SuppressWarnings("unchecked") private List<Map<String,Object>> maskParent(Map<String,Object> view,Map<String,Object> mask){var anchors=mask.get("parentStructureId")==null?List.<Map<String,Object>>of():ReviewedExistingChanges.structures(maps(view.get("rootNodes")),text(mask.get("parentStructureId")));if(mask.get("parentStructureId")!=null&&anchors.size()!=1)throw new IllegalStateException("Q3 exact mask parent differs");return(List<Map<String,Object>>)(anchors.isEmpty()?view.get("rootNodes"):anchors.get(0).get("children"));}
+        Map<String,Object> without(Map<String,Object> view){String id=text(view.get("viewId"));var rule=rules.get(id);if(rule==null)return view;if(JSON.valueToTree(view).equals(JSON.valueToTree(before.get(id))))return view;var ops=maps(rule.get("operations"));var wrappers=ops.stream().filter(op->!op.containsKey("removePrerequisiteOnlyMask")).toList();long present=wrappers.stream().filter(op->!ReviewedExistingChanges.structures(maps(view.get("rootNodes")),text(op.get("id"))).isEmpty()).count();if(present!=wrappers.size()||wrappers.stream().anyMatch(op->ReviewedExistingChanges.structures(maps(view.get("rootNodes")),text(op.get("id"))).size()!=1))throw new IllegalStateException("Q3 partial/duplicate layer");Map<String,Map<String,Object>> byId=new LinkedHashMap<>();for(var op:ops)byId.put(text(op.get("id")),op);var result=new LinkedHashMap<>(view);result.put("rootNodes",strip(maps(view.get("rootNodes")),byId));for(var op:ops)if(op.containsKey("removePrerequisiteOnlyMask")){var mask=map(op.get("removePrerequisiteOnlyMask"));var nodes=maskParent(result,mask);if(nodes.stream().anyMatch(n->JSON.valueToTree(n).equals(JSON.valueToTree(mask.get("reference")))))throw new IllegalStateException("Q3 removed mask retained/duplicated");nodes.add(((Number)mask.get("childIndex")).intValue(),map(mask.get("reference")));}ReviewedExistingChanges.equal(result,before.get(id),"Q3 source changed beyond exact additions/mask corrections");return result;}
+        @SuppressWarnings("unchecked") Map<String,Object> apply(Map<String,Object> view){String id=text(view.get("viewId"));var rule=rules.get(id);if(rule==null)return view;var source=without(view);ReviewedExistingChanges.equal(source,before.get(id),"Q3 generated G5 baseline differs: "+id);Map<String,Object> result=JSON.convertValue(source,new TypeReference<LinkedHashMap<String,Object>>(){});for(var op:maps(rule.get("operations"))){if(op.containsKey("removePrerequisiteOnlyMask")){var mask=map(op.get("removePrerequisiteOnlyMask"));if(!"target".equals(op.get("projectionRole")))throw new IllegalStateException("Q3 mask correction requires target role");ReviewedExistingChanges.equal(mask.get("reference"),Map.of("kind","goalEntry","goalId",op.get("goalId"),"projectionRole","prerequisiteOnly"),"Q3 exact mask reference differs");var nodes=maskParent(result,mask);int index=((Number)mask.get("childIndex")).intValue();ReviewedExistingChanges.equal(nodes.get(index),mask.get("reference"),"Q3 source mask drift");nodes.remove(index);}else{var anchors=op.get("anchorStructureId")==null?List.<Map<String,Object>>of():ReviewedExistingChanges.structures(maps(result.get("rootNodes")),text(op.get("anchorStructureId")));if(op.get("anchorStructureId")!=null&&anchors.size()!=1)throw new IllegalStateException("Q3 parent differs");((List<Map<String,Object>>)(anchors.isEmpty()?result.get("rootNodes"):anchors.get(0).get("children"))).add(wrapper(op));}}var targets=CourseProfileCompositionViewMerger.projectionTargetGoalIds(maps(result.get("rootNodes")),children);for(var op:maps(rule.get("operations")))if(("target".equals(op.get("projectionRole")))!=targets.contains(text(op.get("goalId"))))throw new IllegalStateException("Q3 actual target/support role differs");for(var row:retained)if(id.equals(row.get("viewId"))&&!targets.contains(text(row.get("goalId"))))throw new IllegalStateException("Q3 retained reference is not an actual target");return result;}
     }
 
     private static int effectiveCount(List<Map<String,Object>> nodes,String id,Map<String,List<String>> children) {int n=0;for(Map<String,Object> node:nodes){String kind=text(node.get("kind"));if("structure".equals(kind))n+=effectiveCount(maps(node.get("children")),id,children);else if(!"prerequisiteOnly".equals(node.get("projectionRole")) && ("goalEntry".equals(kind)&&id.equals(node.get("goalId")) || "canonicalSubtree".equals(kind)&&containsGoal(text(node.get("goalId")),id,children,new LinkedHashSet<>())))n++;}return n;}

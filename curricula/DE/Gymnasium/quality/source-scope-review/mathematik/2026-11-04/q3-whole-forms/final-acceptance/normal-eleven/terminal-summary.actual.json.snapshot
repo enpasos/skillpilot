@@ -1,0 +1,686 @@
+{
+  "status": "PASS_FINAL_AGREED_ELEVEN_NORMAL_Q3_CHECKS",
+  "distinctCommands": 11,
+  "totalAttempts": 19,
+  "successfulDistinctCommands": 11,
+  "eightFirstPassesNotRepeated": true,
+  "onlyFailedChecksRetried": [
+    "source-coverage",
+    "goalbook-model",
+    "stage-country"
+  ],
+  "oneIntermediateStageAttemptExplicitlyInterruptedForFinalFixtureCorrection": true,
+  "finalCommands": [
+    {
+      "name": "stage-policy",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testMathStageScopePolicy.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 0.69,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/stage-policy.attempt1.stdout.txt",
+        "sha256": "16d099c7afb360af7d577313297891faf2d7ac8095750d33480804c04b88fc90"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/stage-policy.attempt1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "hard-routes",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testHardLearningRouteValidation.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 2.84,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/hard-routes.attempt1.stdout.txt",
+        "sha256": "27f1d7d482766ef83aa094ee44efa19ac4d0449cd4e9f4f0eace290e99759e0a"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/hard-routes.attempt1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "source-coverage",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateCurriculumSourceCoverageAudit.ts",
+        "--check"
+      ],
+      "cwd": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 3,
+      "exitCode": 0,
+      "seconds": 27.46,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/source-coverage.attempt3.stdout.txt",
+        "sha256": "6229cca161cb085091658a3398a3066a294aad1f1363d848dab67597bebba79a"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/source-coverage.attempt3.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "python-population",
+      "argv": [
+        "python3",
+        "scripts/test_curricular_assessment_population.py"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 0.37,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/python-population.attempt1.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/python-population.attempt1.stderr.txt",
+        "sha256": "921b60a7fd52e978fbb551cacd29df2d6708879400278e1fcc70fceeb0c6f8e0"
+      }
+    },
+    {
+      "name": "phase-compatibility",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testPhaseCompatibilityValidation.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 3.44,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/phase-compatibility.attempt1.stdout.txt",
+        "sha256": "cc2a5c16e156122544633444a3f69dff5c21fb830b73d4fe8f1b1097a5632a65"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/phase-compatibility.attempt1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "atomicity-current-config",
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 1.28,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/atomicity-current-config.attempt1.stdout.txt",
+        "sha256": "461d4362126c3f1f3d8beb59dd6a4e8d8c7dd586d20e45a30191662192566db4"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/atomicity-current-config.attempt1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "memory-current-config",
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 1.19,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/memory-current-config.attempt1.stdout.txt",
+        "sha256": "edee2ea5e37412e3c1206c2d615498abdd23ca9ff6ef2bc742ed49186c34e22f"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/memory-current-config.attempt1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "goalbook-model",
+      "argv": [
+        "npm",
+        "run",
+        "test:goal-book-model"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app",
+      "attempt": 3,
+      "exitCode": 0,
+      "seconds": 143.29,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/goalbook-model.attempt3.stdout.txt",
+        "sha256": "7ed8a7c3aae8ffea8084cc931085697ab93ff49995629ec6ca205b2fb53610d0"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/goalbook-model.attempt3.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "stage-country",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testMathCountrySekICompositionViews.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 5,
+      "exitCode": 0,
+      "seconds": 549.91,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/stage-country.attempt5.stdout.txt",
+        "sha256": "775444aa2bb9a33016eee37e3a6861610065f6c87b657f5e74adb91011f53e77"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/stage-country.attempt5.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "privateTmpAbsentAtInvocation": true,
+      "finalQASha256": "f3279a960643a978c23f8b7a426792937a1c9aeeb840c4eb9745d35997983f55",
+      "startedAt": "2026-11-04T12:02:58.112765+00:00",
+      "finishedAt": "2026-11-04T12:12:07.979490+00:00",
+      "detachedOwnSupervisor": true
+    },
+    {
+      "name": "country83",
+      "command": [
+        "node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateMathCountrySekICompositionViews.ts",
+        "--check"
+      ],
+      "cwd": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "exitCode": 0,
+      "seconds": 141.28,
+      "defaultReceiptOnly": true,
+      "specialReviewFlag": false,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-checks/country.stdout.txt",
+        "sha256": "3090f7f7e53fbff0514885f58f81917dd342a7136332f6941301c5499e4f372c"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-checks/country.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "attempt": 1
+    },
+    {
+      "name": "duration18",
+      "command": [
+        "node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateMathDurationCompositionViews.ts",
+        "--check"
+      ],
+      "cwd": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "exitCode": 0,
+      "seconds": 35.32,
+      "defaultReceiptOnly": true,
+      "specialReviewFlag": false,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-checks/duration.stdout.txt",
+        "sha256": "1f91c50fb0d123b9fa5d7c972fce32b674eaff5df08399f6d896f40de7de1dbe"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-checks/duration.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "attempt": 1
+    }
+  ],
+  "allAttempts": [
+    {
+      "name": "stage-policy",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testMathStageScopePolicy.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 0.69,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/stage-policy.attempt1.stdout.txt",
+        "sha256": "16d099c7afb360af7d577313297891faf2d7ac8095750d33480804c04b88fc90"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/stage-policy.attempt1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "hard-routes",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testHardLearningRouteValidation.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 2.84,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/hard-routes.attempt1.stdout.txt",
+        "sha256": "27f1d7d482766ef83aa094ee44efa19ac4d0449cd4e9f4f0eace290e99759e0a"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/hard-routes.attempt1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "source-coverage",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateCurriculumSourceCoverageAudit.ts",
+        "--check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 1,
+      "exitCode": 1,
+      "seconds": 6.3,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/source-coverage.attempt1.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/source-coverage.attempt1.stderr.txt",
+        "sha256": "cad79f6923265aefd2694898f1a1d7bf3d5eb99258cae13cd28853f3a05436b2"
+      }
+    },
+    {
+      "name": "python-population",
+      "argv": [
+        "python3",
+        "scripts/test_curricular_assessment_population.py"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 0.37,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/python-population.attempt1.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/python-population.attempt1.stderr.txt",
+        "sha256": "921b60a7fd52e978fbb551cacd29df2d6708879400278e1fcc70fceeb0c6f8e0"
+      }
+    },
+    {
+      "name": "phase-compatibility",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testPhaseCompatibilityValidation.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 3.44,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/phase-compatibility.attempt1.stdout.txt",
+        "sha256": "cc2a5c16e156122544633444a3f69dff5c21fb830b73d4fe8f1b1097a5632a65"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/phase-compatibility.attempt1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "atomicity-current-config",
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 1.28,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/atomicity-current-config.attempt1.stdout.txt",
+        "sha256": "461d4362126c3f1f3d8beb59dd6a4e8d8c7dd586d20e45a30191662192566db4"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/atomicity-current-config.attempt1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "memory-current-config",
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 1,
+      "exitCode": 0,
+      "seconds": 1.19,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/memory-current-config.attempt1.stdout.txt",
+        "sha256": "edee2ea5e37412e3c1206c2d615498abdd23ca9ff6ef2bc742ed49186c34e22f"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/memory-current-config.attempt1.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "goalbook-model",
+      "argv": [
+        "npm",
+        "run",
+        "test:goal-book-model"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app",
+      "attempt": 1,
+      "exitCode": 1,
+      "seconds": 4.48,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/goalbook-model.attempt1.stdout.txt",
+        "sha256": "46ad416d513bc22724067a00b20e7bd0ac10a246be1abbd6ef389856941f04d1"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/goalbook-model.attempt1.stderr.txt",
+        "sha256": "51bc35e3580b5c28d579ad6df11bd011fc8fbe1edbcac04f8832cea41361ec3d"
+      }
+    },
+    {
+      "name": "stage-country",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testMathCountrySekICompositionViews.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 1,
+      "exitCode": 1,
+      "seconds": 327.6,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/stage-country.attempt1.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/stage-country.attempt1.stderr.txt",
+        "sha256": "5b98f0a23264674d834a2e76e573a0647ea0b4f4442ad01d616549604ffabe29"
+      }
+    },
+    {
+      "name": "goalbook-model",
+      "argv": [
+        "npm",
+        "run",
+        "test:goal-book-model"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app",
+      "attempt": 2,
+      "exitCode": 1,
+      "seconds": 6.08,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/goalbook-model.attempt2.stdout.txt",
+        "sha256": "46ad416d513bc22724067a00b20e7bd0ac10a246be1abbd6ef389856941f04d1"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/goalbook-model.attempt2.stderr.txt",
+        "sha256": "3204aaade053c8ab562ef8c5e63789a7d78a81af8f24de892b626e9f4079b4f7"
+      }
+    },
+    {
+      "name": "goalbook-model",
+      "argv": [
+        "npm",
+        "run",
+        "test:goal-book-model"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app",
+      "attempt": 3,
+      "exitCode": 0,
+      "seconds": 143.29,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/goalbook-model.attempt3.stdout.txt",
+        "sha256": "7ed8a7c3aae8ffea8084cc931085697ab93ff49995629ec6ca205b2fb53610d0"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/goalbook-model.attempt3.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "source-coverage",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateCurriculumSourceCoverageAudit.ts",
+        "--check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 2,
+      "exitCode": 1,
+      "seconds": 23.52,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/source-coverage.attempt2.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/source-coverage.attempt2.stderr.txt",
+        "sha256": "dbb98e1f0bffa0f4a21e53424c0f0a2d28df7565cdfbfd67991e19c252888ecb"
+      }
+    },
+    {
+      "name": "source-coverage",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateCurriculumSourceCoverageAudit.ts",
+        "--check"
+      ],
+      "cwd": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 3,
+      "exitCode": 0,
+      "seconds": 27.46,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/source-coverage.attempt3.stdout.txt",
+        "sha256": "6229cca161cb085091658a3398a3066a294aad1f1363d848dab67597bebba79a"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/source-coverage.attempt3.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "stage-country",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testMathCountrySekICompositionViews.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 2,
+      "exitCode": 1,
+      "seconds": 441.32,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/stage-country.attempt2.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/stage-country.attempt2.stderr.txt",
+        "sha256": "024e23a00d400a3725a13025506e4b819ab0da9071110b14cfc51af652b78d56"
+      }
+    },
+    {
+      "name": "stage-country",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testMathCountrySekICompositionViews.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 3,
+      "exitCode": 143,
+      "seconds": 164.06,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/stage-country.attempt3.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/stage-country.attempt3.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "stage-country",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testMathCountrySekICompositionViews.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 4,
+      "exitCode": null,
+      "seconds": null,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/stage-country.attempt4.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/stage-country.attempt4.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "status": "ABORTED_EXECUTION_WITHOUT_TERMINAL_TEST_RECEIPT",
+      "execSessionId": 78098,
+      "execSessionExitCodeObserved": 143,
+      "terminalTestExitCodeNotObserved": true
+    },
+    {
+      "name": "stage-country",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testMathCountrySekICompositionViews.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "attempt": 5,
+      "exitCode": 0,
+      "seconds": 549.91,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/stage-country.attempt5.stdout.txt",
+        "sha256": "775444aa2bb9a33016eee37e3a6861610065f6c87b657f5e74adb91011f53e77"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-eleven/stage-country.attempt5.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "privateTmpAbsentAtInvocation": true,
+      "finalQASha256": "f3279a960643a978c23f8b7a426792937a1c9aeeb840c4eb9745d35997983f55",
+      "startedAt": "2026-11-04T12:02:58.112765+00:00",
+      "finishedAt": "2026-11-04T12:12:07.979490+00:00",
+      "detachedOwnSupervisor": true
+    },
+    {
+      "name": "country83",
+      "command": [
+        "node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateMathCountrySekICompositionViews.ts",
+        "--check"
+      ],
+      "cwd": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "exitCode": 0,
+      "seconds": 141.28,
+      "defaultReceiptOnly": true,
+      "specialReviewFlag": false,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-checks/country.stdout.txt",
+        "sha256": "3090f7f7e53fbff0514885f58f81917dd342a7136332f6941301c5499e4f372c"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-checks/country.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "attempt": 1
+    },
+    {
+      "name": "duration18",
+      "command": [
+        "node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateMathDurationCompositionViews.ts",
+        "--check"
+      ],
+      "cwd": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host",
+      "exitCode": 0,
+      "seconds": 35.32,
+      "defaultReceiptOnly": true,
+      "specialReviewFlag": false,
+      "stdout": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-checks/duration.stdout.txt",
+        "sha256": "1f91c50fb0d123b9fa5d7c972fce32b674eaff5df08399f6d896f40de7de1dbe"
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-checks/duration.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "attempt": 1
+    }
+  ],
+  "originalAgreedPlan": {
+    "path": "tmp/approach-review-20261101/geometry-six-dgl1-final-handoff-20261104-v1/agreed-normal-checks.plan.json",
+    "sha256": "227c0b95812515b1d7b7a1c534694da4b24239a791504ed4deb9a6e484e6b13f"
+  },
+  "actualDefaultProducerAndConcreteNegativeDecision": {
+    "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/default-cli-and-negative.independent-decision.json",
+    "sha256": "b0144ba4d33d7082ca86f2ecae9f548b8314e4cf8a9848952dbb1e54c98ab48f"
+  },
+  "finalQA": {
+    "status": "FINAL_PRIVATE_QA_SUCCESSOR_READY_FOR_TRUE_FRESH_TMP_CHECK",
+    "path": "app/scripts/testMathCountrySekICompositionViews.ts",
+    "candidatePath": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/qa-followup/fixture-successor-overlay/app/scripts/testMathCountrySekICompositionViews.ts",
+    "beforeSha256": "a4ccd4856e3a4a9d1b156b3b4e0a44e45697077d67434d5b0cff143aee496f9f",
+    "priorQAFollowupSha256": "3a5a516ebf9a2db2152aec9d00fd4e3822db35fcb4b6208d7fde1af13e0b2a24",
+    "candidateSha256": "f3279a960643a978c23f8b7a426792937a1c9aeeb840c4eb9745d35997983f55",
+    "onlyDeltaAgainstPriorQA": "mkdirSync(resolve(root, tmp), recursive=true) before mkdtempSync",
+    "privateTmpAbsentBeforeActualFullCommand": true,
+    "oldAssertionsAndNewExactQ3AssertionsUnchanged": true,
+    "outsideOriginalNative11259InputMap": true,
+    "rootWrites": false
+  },
+  "soleExistingNativeInputDelta": {
+    "path": "app/scripts/config/math-country-seki-stage-policy.json",
+    "beforeSha256": "014dcef1163d30e08385d9a4f3392b3823e52dd688ccb8c5d1a4049f17c5326c",
+    "afterSha256": "96dccbe2d0e5953f2a81e43c69392a027132fa0e93e179bff25a995c50387f50"
+  },
+  "other11258OriginalNativeInputBytesUnchanged": true,
+  "newSourceReviewsAreOutsideOriginalNativeInputMap": true,
+  "sourceFollowup": {
+    "path": "tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/source-followup/manifest.bounded-source-followup.json",
+    "sha256": "2531927d750a1007b335c48ed4318dbaf9a0f5b942433710c18d1b1b9386aedc"
+  },
+  "noNewNativeInvocationOrGlobalM7OrCIClaim": true
+}

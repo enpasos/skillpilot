@@ -1,0 +1,93 @@
+{
+  "id": "7246cd87-b720-5866-8c0c-3b93fec46189",
+  "title": "Prüfung: Ausschusszahlen und Längenmessungen modellieren",
+  "titleEn": "Assessment: Model defect counts and length measurements",
+  "description": "Die lernende Person kann die vollständige Prüfung selbstständig bearbeiten und ihre Ergebnisse fachlich begründen.",
+  "descriptionEn": "The learner can complete the whole assessment independently and justify the results.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment"
+  ],
+  "contains": [],
+  "requires": [
+    "b431148b-526c-4bde-b04b-48d23101d0d3",
+    "f7879354-1a82-4195-8e3c-a339a820439c"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K2",
+      "K3",
+      "K4",
+      "K6"
+    ],
+    "guidingIdeas": [
+      "L5"
+    ],
+    "phase": "Q3"
+  },
+  "applicability": {
+    "jurisdiction": [
+      "DE-BY"
+    ]
+  },
+  "type": "atomic",
+  "nodeKind": "exam",
+  "sourceRef": "SkillPilot: eigene vollständige Abschlussaufgabe für die unveränderten vorbereitenden Lernzielverträge; keine amtliche Prüfungsaufgabe.",
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "f7879354-1a82-4195-8e3c-a339a820439c"
+    ],
+    "coveredStrands": [
+      "L5"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "# Qualitätskontrolle: Zählen und Messen\n\nEin fiktiver Betrieb prüft zwei unterschiedliche Merkmale. Bei $100$ unabhängig gefertigten Teilen sei die konstante Wahrscheinlichkeit eines Oberflächenfehlers $0{,}04$. $X$ zählt die fehlerhaften Teile. Zusätzlich werden an einer anderen, stabil eingestellten Maschine $100$ Längen in mm gemessen. Für diese Aufgabe sind die Messdaten **konstruiert**, keine echte Betriebsstudie.\n\n| Längenklasse in mm | Anzahl |\n|---|---|\n| [96;97) | 2 |\n| [97;98) | 7 |\n| [98;99) | 16 |\n| [99;100) | 25 |\n| [100;101) | 25 |\n| [101;102) | 16 |\n| [102;103) | 7 |\n| [103;104) | 2 |\n\n![Histogramm der konstruierten Längenmessungen](/assets/assessment-materials/mathematik/7246cd87-b720-5866-8c0c-3b93fec46189/by-measurements.png)\n\n\n1. Begründe ein Binomialmodell für $X$; berechne Erwartungswert und Standardabweichung aus $n,p$ und interpretiere beide im Kontext. Bedeuten sie, dass in jeder Serie genau diese Werte beobachtet werden?\n\n2. Beschreibe Wertebereiche und Bedeutung von $X$ und einer einzelnen Länge $L$. Warum ist die Länge selbst keine binomiale Trefferzahl?\n\n3. Prüfe anhand von Tabelle **und** Histogramm, ob ein ungefähr normalverteiltes Modell für die Längen plausibel ist. Nenne mindestens drei konkrete Merkmale und schätze die Lage der Mitte. Es sind keine Normalverteilungswahrscheinlichkeiten zu berechnen.\n\n4. Nenne zwei Grenzen dieser Modellbeurteilung und eine zusätzliche Beobachtung, die gegen ein einziges Normalmodell sprechen würde. Beurteile „Die Glockenform beweist die Normalverteilung und einen fehlerfreien Betrieb“.\n",
+    "taskContentEn": "# Quality control: counting and measuring\n\nA fictional manufacturer examines two different quantities. Each of $100$ independently produced parts has the same probability $0.04$ of a surface defect; $X$ counts defective parts. Separately, $100$ lengths in mm are measured on another, stably adjusted machine. These data are **constructed for the task**, not an actual business study.\n\n| Length interval in mm | Count |\n|---|---|\n| [96,97) | 2 |\n| [97,98) | 7 |\n| [98,99) | 16 |\n| [99,100) | 25 |\n| [100,101) | 25 |\n| [101,102) | 16 |\n| [102,103) | 7 |\n| [103,104) | 2 |\n\n![Histogram of the constructed length measurements](/assets/assessment-materials/mathematik/7246cd87-b720-5866-8c0c-3b93fec46189/by-measurements.png)\n\n\n1. Justify a binomial model for $X$, compute its mean and SD from $n,p$, and interpret both. Do they imply these exact observations in every series?\n\n2. Describe the value ranges and meaning of $X$ and of one length $L$. Why is length itself not a binomial success count?\n\n3. Use the table **and** histogram to judge whether an approximately normal model for the lengths is plausible. Identify at least three concrete features and estimate the central location. No normal probabilities are required.\n\n4. Give two limitations of this judgement and one additional observation that would count against a single normal model. Assess “The bell shape proves normality and defect-free production”.\n",
+    "solutionContent": "# Musterlösung\n\n$X\\sim B(100;0{,}04)$ setzt die genannte konstante Chance und Unabhängigkeit voraus; gezählt wird Fehler/kein Fehler. $E(X)=np=4$ und $\\sigma_X=\\sqrt{np(1-p)}=\\sqrt{3{,}84}\\approx1{,}9596$. Langfristig liegt die mittlere Zahl je Serie bei vier, die Standardabweichung beschreibt die Streuung der **Anzahl** um diesen Mittelwert. Sie ist keine garantierte Toleranz, kein Standardfehler der Längen und kein Versprechen für jede Serie.\n\n$X$ nimmt ganzzahlige Werte von $0$ bis $100$ an. Eine Länge ist eine Messgröße mit im Modell kontinuierlichen Werten in mm (auch wenn ein Gerät rundet); sie ist nicht die Anzahl von Erfolgen in $100$ Versuchen. Ein daraus definierter Indikator „Länge außerhalb Toleranz“ wäre eine andere Größe.\n\nDie Klassen sind gleich breit. Die Häufigkeiten steigen zu einem zentralen Bereich an und fallen wieder, sind etwa symmetrisch um $100$ mm und zeigen kleine Randhäufigkeiten ohne zweite getrennte Spitze. Das ist mit einer Glockenform und deshalb mit einem **ungefähren** Normalmodell vereinbar. Die zwei benachbarten gleich hohen Mittelbalken sind bei der Klasseneinteilung kein Beweis für zwei Populationen. Ein Mittelwert der Klassenmitten ergibt $100$ mm, aber die einzelnen Messwerte sind nicht bekannt.\n\nNur $100$ gruppierte Werte, gewählte Klassengrenzen und konstruierte/stichprobenabhängige Häufigkeiten beweisen keine Verteilungsform. Ein gemischter oder zeitlich driftender Prozess könnte anders aussehen. Deutliche getrennte Häufungen, starke Schiefe oder ein Trend in Messreihenfolge sprächen gegen das einfache stabile Modell. Ohne Spezifikationsgrenzen kann Fehlerfreiheit überhaupt nicht aus dem Histogramm entschieden werden; selbst ein Normalmodell erlaubt abweichende Werte.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 6 | Binomialannahmen 2; Mittelwert 1; SD 1; beide sachlich und ohne Garantie gedeutet 2 |\n| 2 | 3 | diskreter Wertebereich 1; Messgröße/Längeneinheit 1; Länge gegen Trefferzahl abgegrenzt 1 |\n| 3 | 6 | drei konkrete Histogrammmerkmale je 1; Mitte 100 mm 1; plausibles ungefähres Modell 1; Bezug zu Tabelle und Grafik 1 |\n| 4 | 5 | zwei Grenzen je 1; konkretes Gegenindiz 1; Normalität kein Beweis 1; Fehlerfreiheit nicht ableitbar 1 |\n| **Gesamt** | **20** | **Bestanden ab 12** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+    "solutionContentEn": "# Reference solution\n\n$X\\sim B(100;0.04)$ uses a fixed number of independent defect/no-defect trials with constant probability. $E(X)=np=4$ and $\\sigma_X=\\sqrt{np(1-p)}=\\sqrt{3.84}\\approx1.9596$. Four is the long-run mean count per series; SD describes variation of that count around its mean. Neither is a guaranteed observation or tolerance, and this SD is not a length standard error.\n\n$X$ is integer-valued from $0$ to $100$. Length is measured in mm and is modelled continuously, even if an instrument rounds. It is not a count of successes. A derived indicator “outside length tolerance” would be a different quantity.\n\nThe equal-width classes show rising then falling frequencies, approximate symmetry around $100$ mm, small tails and one central concentration. These concrete features support an approximate bell-shaped normal model. Two adjacent equally high central bars do not establish separate populations. Class-midpoint averaging gives $100$ mm but the exact individual measurements are unknown.\n\nA grouped sample of $100$, the chosen bins and sampling variation do not prove a distribution. Mixture or process drift can invalidate one stable model. Separate peaks, strong skew or a time trend would be counterevidence. Without specified tolerance limits, defect-free production cannot be concluded; normality itself would not guarantee it.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 6 | binomial assumptions 2; mean 1; SD 1; contextual interpretations without guarantee 2 |\n| 2 | 3 | discrete range 1; measured quantity/unit 1; length distinguished from success count 1 |\n| 3 | 6 | three concrete histogram features 1 each; centre 100 mm 1; plausible approximate model 1; table and graph evidence 1 |\n| 4 | 5 | two limitations 1 each; concrete counterevidence 1; no proof of normality 1; no defect-free conclusion 1 |\n| **Total** | **20** | **Pass at 12** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 12,
+      "steps": [
+        {
+          "id": "new_by_basic_stochastic_models_1",
+          "points": 6,
+          "description": "Binomialannahmen 2; Mittelwert 1; SD 1; beide sachlich und ohne Garantie gedeutet 2",
+          "descriptionEn": "binomial assumptions 2; mean 1; SD 1; contextual interpretations without guarantee 2"
+        },
+        {
+          "id": "new_by_basic_stochastic_models_2",
+          "points": 3,
+          "description": "diskreter Wertebereich 1; Messgröße/Längeneinheit 1; Länge gegen Trefferzahl abgegrenzt 1",
+          "descriptionEn": "discrete range 1; measured quantity/unit 1; length distinguished from success count 1"
+        },
+        {
+          "id": "new_by_basic_stochastic_models_3",
+          "points": 6,
+          "description": "drei konkrete Histogrammmerkmale je 1; Mitte 100 mm 1; plausibles ungefähres Modell 1; Bezug zu Tabelle und Grafik 1",
+          "descriptionEn": "three concrete histogram features 1 each; centre 100 mm 1; plausible approximate model 1; table and graph evidence 1"
+        },
+        {
+          "id": "new_by_basic_stochastic_models_4",
+          "points": 5,
+          "description": "zwei Grenzen je 1; konkretes Gegenindiz 1; Normalität kein Beweis 1; Fehlerfreiheit nicht ableitbar 1",
+          "descriptionEn": "two limitations 1 each; concrete counterevidence 1; no proof of normality 1; no defect-free conclusion 1"
+        }
+      ]
+    },
+    "reviewNote": "Independently reviewed whole content; integrated scope and current fingerprints require separate implementation review. curricula/DE/Gymnasium/assessments/mathematik/q3-whole-scoped-completion-2026-11-04-v1/reviews/independent-final-content-decision.json"
+  },
+  "extendedData": {
+    "applicabilityMappingInheritance": "boundary"
+  }
+}

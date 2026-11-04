@@ -1,3 +1,4 @@
+import { applyQ3WholeScopePlacements, withoutQ3WholeScopePlacements } from './mathQ3WholeScopePlacements'
 import { existsSync, readFileSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { resolve } from 'node:path'
@@ -15,6 +16,7 @@ const loaded = new Map<string, { fingerprint: string; operations: MathAssessment
 const digest = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex')
 /** Buildtime only. Reuse the normal producers' materialized-view and bound-decision guards. */
 export function applyContextualTerminalPlacements<T extends View>(view: T, goals: ReadonlyMap<string, Goal>, root: string): T {
+  view = withoutQ3WholeScopePlacements(view, goals, root)
   const path = resolve(root, finitePath)
   if (!existsSync(path)) throw new Error(`Missing finite contextual terminal authoring input: ${finitePath}`)
   const bytes = readFileSync(path), policyBytes = readFileSync(resolve(root, policyPath))
@@ -51,5 +53,5 @@ export function applyContextualTerminalPlacements<T extends View>(view: T, goals
     const roles = collectCompositionProjectionRoleGoalIds(view.rootNodes, goals)
     if (retained.some(r => !roles.targetGoalIds.has(r.goalId) || roles.prerequisiteOnlyGoalIds.has(r.goalId))) throw new Error('Bound existing B2 target path is missing')
   }
-  return applyMathAssessmentScopeOperations(view, goals, cached!.operations.filter(o => !retained.some(r => r.operationId === o.id)))
+  return applyQ3WholeScopePlacements(applyMathAssessmentScopeOperations(view, goals, cached!.operations.filter(o => !retained.some(r => r.operationId === o.id))), goals, root)
 }

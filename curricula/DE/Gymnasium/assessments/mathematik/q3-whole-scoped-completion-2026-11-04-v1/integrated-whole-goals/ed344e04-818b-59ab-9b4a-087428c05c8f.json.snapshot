@@ -1,0 +1,92 @@
+{
+  "id": "ed344e04-818b-59ab-9b4a-087428c05c8f",
+  "title": "Prüfung: Eine vorgegebene Testregel im Betrieb deuten",
+  "titleEn": "Assessment: Interpret a supplied quality-control test rule",
+  "description": "Die lernende Person kann die vollständige Prüfung selbstständig bearbeiten und ihre Ergebnisse fachlich begründen.",
+  "descriptionEn": "The learner can complete the whole assessment independently and justify the results.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment"
+  ],
+  "contains": [],
+  "requires": [
+    "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K2",
+      "K3",
+      "K4",
+      "K6"
+    ],
+    "guidingIdeas": [
+      "L5"
+    ],
+    "phase": "Q3"
+  },
+  "applicability": {
+    "jurisdiction": [
+      "DE-BY"
+    ]
+  },
+  "type": "atomic",
+  "nodeKind": "exam",
+  "sourceRef": "SkillPilot: eigene vollständige Abschlussaufgabe für die unveränderten vorbereitenden Lernzielverträge; keine amtliche Prüfungsaufgabe.",
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8"
+    ],
+    "coveredStrands": [
+      "L5"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "# Wann wird eine Produktionsphase untersucht?\n\nEine fiktive Produktionsphase hat eine unbekannte Fehlerquote $p$. Eine zufällige Stichprobe von $80$ Teilen wird im Modell als unabhängig bei konstantem $p$ angesehen; $X\\sim B(80;p)$ zählt fehlerhafte Teile. Getestet wird $H_0:p\\leq0{,}05$ gegen $H_1:p>0{,}05$. Die **bereits gültig bestimmte** Regel lautet: Verwirf $H_0$ bei $X\\geq8$, andernfalls verwirf sie nicht. Verwerfen löst eine zusätzliche Untersuchung aus, keine sofortige Stilllegung.\n\nAm Nullrand beträgt $P_{0{,}05}(X\\geq8)\\approx0{,}04659$; bei der festen Alternative $p=0{,}12$ beträgt $P_{0{,}12}(X\\leq7)\\approx0{,}24165$. Eine Herleitung der Regel oder eine Gütefunktionsgrafik ist nicht verlangt.\n\n\n1. Interpretiere Zufallsgröße, Hypothesen und Regel im Kontext. Warum ist die Untersuchung nach Verwerfen begründet, ohne bereits die genaue Fehlerquote zu kennen?\n\n2. In zwei getrennten Produktionsphasen ergeben sich $x=9$ bzw. $x=6$ Fehler. Triff jeweils die Entscheidung und schreibe für beide einen fachlich korrekten Ergebnissatz. Beurteile dabei „Sechs Fehler beweisen, dass höchstens 5 % aller Teile fehlerhaft sind“.\n\n3. Erkläre Fehler 1. und 2. Art samt betrieblicher Folge und deute die beiden angegebenen Wahrscheinlichkeiten mit ihrem jeweiligen Parameter. Kann man daraus eine Fehler-2-Wahrscheinlichkeit für **jedes** $p>0{,}05$ ablesen?\n\n4. Prüfe: „Nach neun Fehlern ist $H_0$ mit Wahrscheinlichkeit 4,659 % wahr“ und „Bei einer nicht verworfenen Nullhypothese sind die geprüften Teile sicher gut“. Erkläre, was die Testentscheidung tatsächlich aussagt, und nenne eine wichtige Modellgrenze.\n",
+    "taskContentEn": "# When should a production phase be investigated?\n\nA fictional production phase has an unknown defect probability $p$. A random sample of $80$ parts is modelled as independent with constant $p$. $X\\sim B(80;p)$ counts defects. Test $H_0:p\\leq0.05$ against $H_1:p>0.05$. The **already validly determined** rule rejects $H_0$ for $X\\geq8$ and otherwise does not reject it. Rejection triggers further investigation, not immediate shutdown.\n\nAt the null boundary, $P_{0.05}(X\\geq8)\\approx0.04659$. At the specified alternative $p=0.12$, $P_{0.12}(X\\leq7)\\approx0.24165$. Deriving the rule or drawing a power function is not required.\n\n\n1. Interpret the count, hypotheses and rule. Why can rejection justify investigation without identifying the exact defect probability?\n\n2. Separate phases yield $x=9$ and $x=6$. Decide in each case and write a sound contextual conclusion. Assess “Six defects prove that at most 5% of all parts are defective”.\n\n3. Explain both error types and operational consequences. Interpret the supplied probabilities with their respective parameter values. Do these give the type-II error probability for **every** $p>0.05$?\n\n4. Assess “After nine defects $H_0$ has a 4.659% probability of being true” and “If the null is not rejected, the inspected parts are certainly good”. Explain what the decision does say and name a relevant modelling limitation.\n",
+    "solutionContent": "# Musterlösung\n\n\n1. $X$ ist die Fehlerzahl, $p$ eine Quote der Produktionsphase. $H_0$ umfasst höchstens $5\\%$, $H_1$ mehr als $5\\%$. Unter $H_0$ sind acht oder mehr Fehler nach dem Modell selten; das spricht bei Beobachtung gegen $H_0$ und rechtfertigt eine Untersuchung. Es schätzt $p$ nicht exakt und beweist $H_1$ nicht sicher.\n\n2. Bei neun Fehlern wird $H_0$ verworfen: Es gibt anhand dieser Regel Hinweise auf eine Quote über $5\\%$; untersuchen. Bei sechs wird nicht verworfen: Die Daten reichen für diese Regel nicht aus, eine Quote über $5\\%$ festzustellen. Das ist kein Nachweis von $p\\leq0{,}05$; eine höhere Quote kann unentdeckt bleiben.\n\n3. Fehler 1. Art: eine tatsächlich höchstens $5\\%$ fehlerhafte Phase wird beanstandet und unnötig untersucht. Die Zahl $0{,}04659$ gilt am Rand $p=0{,}05$ (unter dem zusammengesetzten Nullmodell liegt dort die größte Verwerfungswahrscheinlichkeit). Fehler 2. Art: eine Phase mit $p>0{,}05$ bleibt ohne zusätzliche Untersuchung. $0{,}24165$ ist die Nichtverwerfungswahrscheinlichkeit **bei $p=0{,}12$**, keine konstante Wahrscheinlichkeit für alle Alternativen.\n\n4. $P_{0{,}05}(X\\geq8)$ ist eine Stichprobenergebnis-Wahrscheinlichkeit unter einem festen Parameter, keine nachträgliche Wahrscheinlichkeit von $H_0$. Keine Priorwahrscheinlichkeiten oder entsprechende Inferenz wurden gegeben. Die Regel entscheidet über einen Populationsparameter, sie macht einzelne bereits fehlerhafte Teile nicht gut und garantiert keine unbekannten Teile. Abhängige Fehler, driftende Produktion oder eine selektive Stichprobe könnten das Binomialmodell verletzen.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 4 | Zählgröße und Hypothesen 2; korrekte Regel 1; evidenzbezogene Begründung ohne Gewissheit 1 |\n| 2 | 6 | beide Entscheidungen je 1; beide korrekten Ergebnissätze je 1; Nichtverwerfen als fehlender Nachweis statt Beweis erklärt 2 |\n| 3 | 5 | beide kontextuellen Fehlerarten je 1; beide Zahlen mit Parametern je 1; Alternativabhängigkeit 1 |\n| 4 | 5 | bedingte Richtung/kein Posterior 2; keine Einzelteilgarantie 1; tatsächliche Aussage 1; Modellgrenze 1 |\n| **Gesamt** | **20** | **Bestanden ab 12** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+    "solutionContentEn": "# Reference solution\n\n\n1. $X$ counts defects and $p$ is a phase-wide proportion. The null covers rates at most 5%, the alternative rates above 5%. At least eight defects are rare under the null model, so observing this provides evidence for investigation. It does not determine $p$ exactly or prove the alternative with certainty.\n\n2. Nine defects cause rejection and investigation: the rule provides evidence of a rate above 5%. Six cause non-rejection: evidence is insufficient under this rule to establish a rate above 5%. This does not prove $p\\leq0.05$; an elevated rate may be missed.\n\n3. A type-I error unnecessarily flags/investigates a phase whose rate is at most 5%. The given $0.04659$ is at boundary $p=0.05$, where rejection probability is largest over this null. A type-II error misses a phase above 5%. The supplied $0.24165$ is non-rejection probability specifically at $p=0.12$ and varies with the alternative.\n\n4. A sample-event probability under a specified parameter is not a posterior probability of $H_0$. No prior or posterior model was supplied. A population test neither repairs observed faulty parts nor certifies every part. Dependence, drift or selective sampling could invalidate the binomial assumptions.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 4 | count/hypotheses 2; correct rule 1; evidential explanation without certainty 1 |\n| 2 | 6 | two decisions 1 each; two sound conclusions 1 each; explains non-rejection is not proof 2 |\n| 3 | 5 | two contextual error types 1 each; two parameter-specific probabilities 1 each; alternative dependence 1 |\n| 4 | 5 | conditioning direction/no posterior 2; no individual guarantee 1; actual meaning 1; model limitation 1 |\n| **Total** | **20** | **Pass at 12** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 12,
+      "steps": [
+        {
+          "id": "new_by_test_interpretation_1",
+          "points": 4,
+          "description": "Zählgröße und Hypothesen 2; korrekte Regel 1; evidenzbezogene Begründung ohne Gewissheit 1",
+          "descriptionEn": "count/hypotheses 2; correct rule 1; evidential explanation without certainty 1"
+        },
+        {
+          "id": "new_by_test_interpretation_2",
+          "points": 6,
+          "description": "beide Entscheidungen je 1; beide korrekten Ergebnissätze je 1; Nichtverwerfen als fehlender Nachweis statt Beweis erklärt 2",
+          "descriptionEn": "two decisions 1 each; two sound conclusions 1 each; explains non-rejection is not proof 2"
+        },
+        {
+          "id": "new_by_test_interpretation_3",
+          "points": 5,
+          "description": "beide kontextuellen Fehlerarten je 1; beide Zahlen mit Parametern je 1; Alternativabhängigkeit 1",
+          "descriptionEn": "two contextual error types 1 each; two parameter-specific probabilities 1 each; alternative dependence 1"
+        },
+        {
+          "id": "new_by_test_interpretation_4",
+          "points": 5,
+          "description": "bedingte Richtung/kein Posterior 2; keine Einzelteilgarantie 1; tatsächliche Aussage 1; Modellgrenze 1",
+          "descriptionEn": "conditioning direction/no posterior 2; no individual guarantee 1; actual meaning 1; model limitation 1"
+        }
+      ]
+    },
+    "reviewNote": "Independently reviewed whole content; integrated scope and current fingerprints require separate implementation review. curricula/DE/Gymnasium/assessments/mathematik/q3-whole-scoped-completion-2026-11-04-v1/reviews/independent-final-content-decision.json"
+  },
+  "extendedData": {
+    "applicabilityMappingInheritance": "boundary"
+  }
+}

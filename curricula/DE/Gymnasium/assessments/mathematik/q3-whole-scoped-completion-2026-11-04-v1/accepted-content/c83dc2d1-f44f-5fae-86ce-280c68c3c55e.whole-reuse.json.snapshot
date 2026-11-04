@@ -1,0 +1,101 @@
+{
+  "id": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+  "title": "Statistische Daten und Verteilungen abgleichen",
+  "description": "Die lernende Person kann eine materialgestützte Q3-Klausuraufgabe zu Datenanalyse, Simulation und weiteren Verteilungen selbstständig bearbeiten und die Güte des Modells bewerten.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment"
+  ],
+  "dimensionTags": {
+    "framework": "hessen-kc-2024",
+    "demandLevel": "AB2",
+    "processCompetencies": [
+      "K2",
+      "K3",
+      "K4",
+      "K6"
+    ],
+    "guidingIdeas": [
+      "L4",
+      "L5"
+    ],
+    "phase": "Q3"
+  },
+  "requires": [
+    "84069c5e-5526-57c1-9417-a886ccfd3f66",
+    "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+    "aeb947a2-2dd4-5017-a429-0d777e22db6a",
+    "c9a897ca-a0a2-5895-bbc4-23b20840c548",
+    "1cefd1ad-a250-5a03-8de7-04bdaf465ad8"
+  ],
+  "contains": [],
+  "examples": [],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "c9a897ca-a0a2-5895-bbc4-23b20840c548"
+    ],
+    "coveredStrands": [
+      "L4",
+      "L5"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2"
+    ],
+    "taskContent": "In einem Callcenter wird in $100$ gleich langen Zeitintervallen erfasst, wie viele Anrufe eingehen. Die beobachteten Häufigkeiten lauten:\n\n- $0$ Anrufe: $12$\n- $1$ Anruf: $29$\n- $2$ Anrufe: $31$\n- $3$ Anrufe: $17$\n- mindestens $4$ Anrufe: $11$\n\nAls vereinfachtes Modell für ein Zeitintervall werden $1000$ potentielle Anrufende betrachtet. Jede Person ruft in diesem Intervall entweder genau einmal oder gar nicht an; die Wahrscheinlichkeit für einen Anruf beträgt $p=0{,}002$. Die Anrufentscheidungen der Personen werden als unabhängig angenommen. Zur weiteren Rechnung soll geprüft werden, ob sich die Anzahl der Anrufe pro Intervall näherungsweise durch eine Poisson-Verteilung beschreiben lässt. Für das Modell werden die Anzahlen in verschiedenen Zeitintervallen zusätzlich als unabhängig angenommen.\n\n1. Definieren Sie die Zufallsvariable für die Anzahl der Anrufe in einem Zeitintervall und begründen Sie mit den Modellannahmen eine Binomialverteilung. Motivieren Sie die Poisson-Verteilung als Näherung für diese seltenen Einzelereignisse und bestimmen Sie ihren Parameter $\\lambda$. Berechnen Sie mit dieser Näherung die erwarteten Häufigkeiten für $0$, $1$, $2$, $3$ und mindestens $4$ Anrufe in $100$ Intervallen.\n2. Vergleichen Sie Beobachtung und Modell und beurteilen Sie, ob die Poisson-Verteilung hier als sinnvolles Modell gelten kann.\n3. Bestimmen Sie die Wahrscheinlichkeit, dass in drei aufeinanderfolgenden Intervallen zusammen mindestens $8$ Anrufe eingehen.\n4. Erläutern Sie, wie eine Simulation helfen kann, die Modellannahme weiter zu überprüfen.",
+    "solutionContent": "1. Sei $Z$ die Anzahl der Anrufe in einem Zeitintervall. Im vereinfachten Modell ist $Z$ die Summe von $1000$ unabhängigen Bernoulli-Zufallsvariablen mit derselben Erfolgswahrscheinlichkeit $p=0{,}002$: Eine Person ruft entweder genau einmal oder nicht an. Daher gilt $Z\\sim B(1000;0{,}002)$. Es gibt viele unabhängige Gelegenheiten mit jeweils kleiner Anrufwahrscheinlichkeit. Für solche seltenen Einzelereignisse ist eine Poisson-Verteilung mit demselben Erwartungswert eine geeignete Näherung. Ihr Parameter ist\n$$\n\\lambda=np=1000\\cdot0{,}002=2\n$$\nund bedeutet im Modell durchschnittlich zwei Anrufe pro Zeitintervall. Die Seltenheit betrifft den Anruf einer einzelnen Person, nicht zwingend die Gesamtzahl aller Anrufe. Die Binomialverteilung des vereinfachten Modells und ihre Poisson-Näherung werden nicht als exakt identisch behauptet. Für die Näherungsvariable $X\\sim \\operatorname{Pois}(2)$ gilt\n$$\nP(X=k)=\\frac{2^k\\mathrm e^{-2}}{k!}.\n$$\nDaraus folgen näherungsweise\n$$\nP(X=0)=\\mathrm e^{-2}\\approx 0{,}1353,\\quad P(X=1)=2\\mathrm e^{-2}\\approx 0{,}2707,\n$$\n$$\nP(X=2)=\\frac{2^2}{2!}\\mathrm e^{-2}\\approx 0{,}2707,\\quad P(X=3)=\\frac{2^3}{3!}\\mathrm e^{-2}\\approx 0{,}1804.\n$$\nSomit ist\n$$\nP(X\\ge 4)=1-(0{,}1353+0{,}2707+0{,}2707+0{,}1804)\\approx 0{,}1429.\n$$\nFür $100$ Intervalle ergeben sich die erwarteten Häufigkeiten:\n$$\n13{,}5;\\ 27{,}1;\\ 27{,}1;\\ 18{,}0;\\ 14{,}3.\n$$\n\n2. Die beobachteten Werte $12,29,31,17,11$ liegen insgesamt recht nah an den erwarteten Häufigkeiten. Es gibt kleinere Abweichungen, aber keine deutliche systematische Verletzung. Die beobachteten Häufigkeiten sind damit mit dem Modell vereinbar, beweisen es aber nicht. Insbesondere kann eine solche Häufigkeitstabelle ohne zeitliche Reihenfolge weder die angenommene Unabhängigkeit verschiedener Intervalle noch zeitlich konstante Raten überprüfen.\n\n3. Die Summe von drei unabhängigen Poisson-verteilten Zufallsvariablen mit Parameter $2$ ist wieder poissonverteilt mit Parameter $6$. Für $Y\\sim \\operatorname{Pois}(6)$ gilt daher\n$$\nP(Y\\ge 8)=1-P(Y\\le 7)\\approx 0{,}256.\n$$\nDie Wahrscheinlichkeit beträgt also etwa $25{,}6\\,$%.\n\n4. Man kann sehr viele Serien von je $100$ Intervallen mit dem Poisson-Modell simulieren und dabei vergleichen, wie stark die simulierten Häufigkeiten typischerweise streuen. Liegen die realen Daten im Bereich dieser typischen Schwankungen, stützt das die Vereinbarkeit der Häufigkeiten mit dem Modell. Eine Simulation unabhängiger Poisson-Anzahlen beweist jedoch nicht die Unabhängigkeit der realen Intervalle; dafür wären zeitlich zugeordnete Daten und weitere Untersuchungen nötig.",
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 10,
+      "steps": [
+        {
+          "id": "q3d_1",
+          "points": 7,
+          "description": "Zufallsvariable als Anzahl pro Zeitintervall definiert und Binomialmodell aus gleichen unabhängigen Bernoulli-Versuchen begründet (1 BE); Poisson-Näherung mit vielen Gelegenheiten und seltenen Einzelereignissen motiviert (1 BE); Parameter lambda=np=2 bestimmt und als mittlere Anrufzahl je Intervall gedeutet (1 BE); alle fünf erwarteten Häufigkeiten mit dem Poisson-Modell korrekt berechnet (4 BE)."
+        },
+        {
+          "id": "q3d_2",
+          "points": 4,
+          "description": "Daten und Modell fachlich sinnvoll verglichen"
+        },
+        {
+          "id": "q3d_3",
+          "points": 4,
+          "description": "Wahrscheinlichkeit für mindestens 8 Anrufe in drei Intervallen korrekt bestimmt"
+        },
+        {
+          "id": "q3d_4",
+          "points": 5,
+          "description": "Rolle einer Simulation für die Modellprüfung korrekt erläutert"
+        }
+      ]
+    },
+    "reviewNote": "Begrenzte Inhaltskorrektur vom 01.11.2026 unabhängig mit Astra Ultra fachlich geprüft; exakte Nachkorrekturen berücksichtigt. Nachweis: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-upper-candidate-review.json. Historische Quellen und bestehende gültige Mastery bleiben unverändert. Ergänzende Poisson-Teilaufgabe und nichtleere belegte Coverage nach curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/c83dc2d1-poisson-coverage-followup.review.json unabhängig fachlich geprüft."
+  },
+  "phase": "Q3",
+  "type": "atomic"
+}

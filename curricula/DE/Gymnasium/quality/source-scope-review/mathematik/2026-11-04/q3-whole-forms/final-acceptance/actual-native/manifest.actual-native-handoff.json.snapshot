@@ -1,0 +1,363 @@
+{
+  "schemaVersion": 1,
+  "status": "SEALED_ACTUAL_Q3_FINITE_NATIVE_MEASUREMENT_NOT_STAGE_OR_GLOBAL_ACCEPTANCE",
+  "sealedAtUtc": "2026-11-04T11:21:09.939800+00:00",
+  "candidateDataRoot": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/candidate-data",
+  "oneActualJvmInvocation": true,
+  "newCompilationClaim": false,
+  "actualScopeCount": 161,
+  "actualUnionCount": 46,
+  "inputCount": 11259,
+  "sourceManifestSha256": "4eeca57e31952690197578a752a4f5f12595b53e47acb0d412b91f5c12515ce8",
+  "archive": {
+    "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/candidate.json.gz",
+    "sha256": "31574bf661993b11867ee5109f79a676ba3b07122fdbdf6f19e18b1d8925d7fb"
+  },
+  "inputMap": {
+    "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/candidate-input-hashes.json",
+    "sha256": "095ba3aa631dad1fd786ece9e93352691e6a42deac7d2340db109a1ca74ad72b"
+  },
+  "actualCounts": {
+    "failedScopes": 140,
+    "uncoveredTargetUniquePairs": [
+      189,
+      2012
+    ],
+    "uncoveredEndpointUniquePairs": [
+      122,
+      1303
+    ],
+    "baselineUncoveredTargetUniquePairs": [
+      240,
+      2399
+    ],
+    "baselineUncoveredEndpointUniquePairs": [
+      149,
+      1536
+    ],
+    "deltaCountsComparedWithActualNative5": {
+      "newUncoveredTargetPairs": 0,
+      "closedUncoveredTargetPairs": 387,
+      "newUncoveredEndpointPairs": 0,
+      "closedUncoveredEndpointPairs": 233
+    },
+    "unreadyAssessmentScopePairs": 0,
+    "duplicateVisibleGoalPathScopes": 0,
+    "duplicateStructureScopes": 0,
+    "missingVisibleGoalScopePairs": 0,
+    "unexpectedVisibleGoalScopePairs": 0
+  },
+  "sideEffects": {
+    "measurementRepositoryMutations": 0,
+    "measurementEvents": 0,
+    "separateMockInventorySetupSaves": 15,
+    "separateMockInventorySetupEvents": 15,
+    "inertLearnerUnchanged": true,
+    "noDbOrProductionAccess": true,
+    "rootTrackedOrGitWritesByThisTask": false,
+    "previewProcesses": {
+      "postgres": {
+        "pid": 3038325,
+        "stillRunning": true
+      },
+      "backend": {
+        "pid": 3040118,
+        "stillRunning": true
+      },
+      "vite": {
+        "pid": 3052258,
+        "stillRunning": true
+      }
+    }
+  },
+  "runtime": {
+    "allBeforeAfterHashGuardsPassed": true,
+    "runtimeCounts": {
+      "main-source-hashes.json": 482,
+      "current-root-test-source-hashes.json": 320,
+      "runtime-class-hashes.json": 1389,
+      "runtime-resource-hashes.json": 3284,
+      "dependency-jar-hashes.json": 187
+    },
+    "frozenTestSourcesMatchGenuineFullCompileInputMap": true,
+    "currentProducerDeltasSeparatelyBoundIn": "test-source-runtime-boundary.json",
+    "actualClassLoadProof": "class-load.actual.json",
+    "changedProducerNotLoadedInActualJvm": true,
+    "samplerSourceSha256": "fda0cc47ee7a46b43c576b050b35cb1d1fed184f9ffffd5ced000a75c202d6bf",
+    "samplerClasses": {
+      "com/skillpilot/backend/completion/MatrixFiniteNativeProbe.class": "b38ea1b7bced367e42934dc0cf87852b51d18ced413edbce0adcb65a80e6af60"
+    },
+    "runtimeClassesAndResourcesReusedReadOnly": true
+  },
+  "boundaries": {
+    "emptyMasteryScenarioCount": 1,
+    "countsAreActualNotHardcodedDesignPredictions": true,
+    "independentSourceAndAMPassReceivedBeforeFreeze": true,
+    "requiresIndependentNativeAndStageReviewAfterThisMeasurement": true,
+    "normalCliNegativeCaseStillOpenPerSourceAuthorization": true,
+    "doesNotClaimM7StageNormalChecksRemoteCIDeploymentOrHumanAcceptance": true,
+    "originalG5AndSourceFreezesPreserved": true
+  },
+  "files": [
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/MatrixFiniteNativeProbe.java",
+      "sha256": "fda0cc47ee7a46b43c576b050b35cb1d1fed184f9ffffd5ced000a75c202d6bf",
+      "bytes": 23221
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/actual-uncovered-delta-vs-native5.json",
+      "sha256": "78725b7f398d521e0942a935126cbd8db7eb2eb10277fa493643767af10ffb62",
+      "bytes": 54877
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/am-manifest.frozen.json",
+      "sha256": "a7f2d78ffa47012b6e1fb80dd4ad29a4f2e0c2bca55915ab485028649580396e",
+      "bytes": 2032
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/am-receipt.frozen.json",
+      "sha256": "32f1648a33ce4fea211544168f5a5f64a3cc4c5106533dcc7c4e81e32baeeaaa",
+      "bytes": 7505
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/authorization.json",
+      "sha256": "31966796a3eac1d1476febc34ba5a2a44f1f8c1f86d63420fd98540400df6a28",
+      "bytes": 965
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/candidate-input-hashes.json",
+      "sha256": "095ba3aa631dad1fd786ece9e93352691e6a42deac7d2340db109a1ca74ad72b",
+      "bytes": 1968944
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/candidate.execution.json",
+      "sha256": "03365baa62cbfe48a851b5bec4e08f760eab5b5859bcf0706c70aa98b37fdcbe",
+      "bytes": 3278
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/candidate.json.gz",
+      "sha256": "31574bf661993b11867ee5109f79a676ba3b07122fdbdf6f19e18b1d8925d7fb",
+      "bytes": 18327421
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/candidate.log.gz",
+      "sha256": "4a3889d73cf7a04d3c434bdfc1aa897a29d9763ae139cf9402302ee84c4ad761",
+      "bytes": 3228
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/candidate.started.json",
+      "sha256": "91b5b7118266cac489b6f5eacd0b2e2bf64f22b72f34d360f5182c55b3577a94",
+      "bytes": 35639
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/candidate.summary.json",
+      "sha256": "b6e32aa7e0da74960f08659891a2f79811dbf0e8002daf8eb172e0e9d5ca74ff",
+      "bytes": 3463
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/class-load.actual.json",
+      "sha256": "8aaeba92c8ef374dcc5faea7739023a520c9a6cd79087611ec3f51af0f41a4ba",
+      "bytes": 84302
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/class-load.actual.log",
+      "sha256": "a09360e00bc50c2058a9fe0f3ecf49c60815ae7f8ccc5d783f65294a50d6c374",
+      "bytes": 1019498
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/classpath-current.txt",
+      "sha256": "90083bafcbc3c7a45f47c04c2fbde24aa0568f80abd0b019014f2d47a06f781c",
+      "bytes": 34383
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/current-root-ci-input-hashes.json",
+      "sha256": "2707a1b69815f7ae47f1b4db927734390685915c40c3d2bbb79753c071775a4c",
+      "bytes": 1812442
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/current-root-test-source-hashes.json",
+      "sha256": "fa509d4adda0fdd183fdcd5d4b83833f93f48f8904dd29704bafe67d94afb73f",
+      "bytes": 65432
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/decisions.json",
+      "sha256": "83652877d17c31c68c90d0bf4693132ea25430175bb1cf9991d850e75e2e0df4",
+      "bytes": 15967
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/dependency-jar-hashes.json",
+      "sha256": "b39346be020e21a8a221affb8ef7a31505193218d3ec03ea145580130bb0d490",
+      "bytes": 47527
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/effective-source-and-am-inputs.frozen.json",
+      "sha256": "515117d6ba914e7587f78d5a6848b5039820d2861375b2359375d5682473eb6f",
+      "bytes": 136799
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/guard.after-invocation.json",
+      "sha256": "b08b7cd44ce050d5a28ec50d9a88cb14e4fa062117d7c7e8d5c0fd4c3ec1c3de",
+      "bytes": 203
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/guard.before-invocation.json",
+      "sha256": "a2f33b343f787dce6cfb93453a5136c1cccb3513b6e5c9f76921aa8faf7ae503",
+      "bytes": 4014
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/launch.json",
+      "sha256": "2d8578d482837d380f781bc1eada02226c4cc728dd5221794e52501cc6385500",
+      "bytes": 175
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/launch.py",
+      "sha256": "ac2e385f57904fe0676df493c2751b43aa91c8a091478637b48de231faa709fe",
+      "bytes": 941
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/main-source-hashes.json",
+      "sha256": "a55844b5c2282feae8f61cd8a4338958374b4206dfb8cbb0e3f798bd9df17208",
+      "bytes": 94627
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/n5-input-deltas.json",
+      "sha256": "e7d121b7e291fc46dac5db93478e59f4734798faa0f56457b3050989bec69a02",
+      "bytes": 39426
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/preparation-script-seal.before-class-load-steering.json",
+      "sha256": "313dfe903caa035af8fe024fe4c26c5580177a22acf08fba79c4b1b1638a32a3",
+      "bytes": 526
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/preparation-script-seal.json",
+      "sha256": "be7eaa404c52fd6cb69fae3d2daee34b3c8f3e427ffb4e471168f80f2c4e664b",
+      "bytes": 763
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/preparation.json",
+      "sha256": "00fb2c6aa8835d391fa48b865265cc50386bc18c46cad4598e9cfa2aa5558c08",
+      "bytes": 2433
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/prepare.process.json",
+      "sha256": "d51605dd76e84328e18a2d86c84b3fcecf9e87bd7ae5a44ff4c729c77eefc843",
+      "bytes": 226
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/prepare.py",
+      "sha256": "6ce7a8d76146e96f039d64ee12056ec90bfeae94e2deefcb66525959e87bb53d",
+      "bytes": 15714
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/prepare.stdout.log",
+      "sha256": "1b0ba237915d5e4f2f524706f0c78ccc70b2155e339cdb59204eae2d79d50392",
+      "bytes": 173
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/prepare.terminal.json",
+      "sha256": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "bytes": 20
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/preserved-source-bindings.json",
+      "sha256": "3b0976b9de3c279505a9bea2f2e171d74bd07ad3c437594e786c303d27ae16c8",
+      "bytes": 68011
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/result.json",
+      "sha256": "b6e32aa7e0da74960f08659891a2f79811dbf0e8002daf8eb172e0e9d5ca74ff",
+      "bytes": 3463
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/root-copy-input-hashes.json",
+      "sha256": "7d4aa508abb2b234c1db03be199c4f718170603bee035dd2ec8d306f4c254005",
+      "bytes": 1939354
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/run.process.json",
+      "sha256": "3d3e5d82c3d458888345ee73579436e61167a98732bff6480bab72ac769d884d",
+      "bytes": 222
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/run.py",
+      "sha256": "536ed8595779fbda6b5e56b95f5d96c87cbf7c991815c3ad1cffbd3bf25739bf",
+      "bytes": 12042
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/run.stdout.log",
+      "sha256": "e41bca7992d73c5720843cd9a1611adc1668c559967a13219605708cd9cf612d",
+      "bytes": 3356
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/run.terminal.json",
+      "sha256": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "bytes": 20
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/runtime-class-hashes.json",
+      "sha256": "c72e1eb457e765c54130f77abad644bc9ca0b6364dd854ba03f29050168e230b",
+      "bytes": 386645
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/runtime-origin.json",
+      "sha256": "f58c0d7e905c3068fc11aaf0a174c95fa51f59dc82b1bde75641084c6f8242b2",
+      "bytes": 1769
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/runtime-resource-hashes.json",
+      "sha256": "0fa06877329ae3a38a839469a0890fcf1f07793a59c147a7c56bb62ee138fde6",
+      "bytes": 1015441
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/sampler-class-hashes.json",
+      "sha256": "2fd1634dda9325e3dd1b78a3fd0ea6044297954bbd0f423b28b6bd820707ebf3",
+      "bytes": 140
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/source-authorization.frozen.json",
+      "sha256": "c1e69a85ae711bfaec05a8bd8cdcf1e97fb6eb2b1eea9fafd4888539488970fe",
+      "bytes": 6960
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/source-manifest.frozen.json",
+      "sha256": "4eeca57e31952690197578a752a4f5f12595b53e47acb0d412b91f5c12515ce8",
+      "bytes": 135891
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/source-review.frozen.json",
+      "sha256": "38910dd530d77e9cca252e099356be7122236c388c463d4c0a4099f6c4dc6eaf",
+      "bytes": 8574
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/supervise.py",
+      "sha256": "03290f189b3a52e8295c0181404244e9eacfdeec7a55978156f4583a097543e0",
+      "bytes": 1566
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/supervisor.complete.json",
+      "sha256": "895fb2ed7494c244aaa7047bd81a8fe9dc096aff3c70b445300b89be2d2c196c",
+      "bytes": 213
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/supervisor.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/supervisor.started.json",
+      "sha256": "3752c255725da824dd54133cd3b4c143cd1af2566a02f42a884377b1b285c022",
+      "bytes": 75
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/test-source-runtime-boundary.json",
+      "sha256": "f7d6cdec1aa1789b8a205d4b5e6e0c201340653e12b9dd27d293768930dbc1f0",
+      "bytes": 652
+    },
+    {
+      "path": "tmp/approach-review-20261101/math-q3-whole-forms-native-20261104-v1/test-support-source-hashes.json",
+      "sha256": "3260b9d93b220433220cb7beea597ba06f5c3c3fc4ed47d84cf56ac7b17fe999",
+      "bytes": 65432
+    }
+  ]
+}

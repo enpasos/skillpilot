@@ -1,0 +1,60 @@
+{
+  "key": "new_bw_binomial_comparison",
+  "goalId": "f74d944a-e09b-5e01-867b-09740fadf18d",
+  "title": "Prüfung: Sensorprüfungen binomial modellieren und vergleichen",
+  "titleEn": "Assessment: Model and compare binomial sensor tests",
+  "directRequires": [
+    "42d300e3-e982-5889-98d7-fc297f10eff1",
+    "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+    "9b6f4d7d-a804-5666-b7ea-85bb3c73da4a"
+  ],
+  "examDataContent": {
+    "reviewStatus": "draft",
+    "coveredGoalIds": [
+      "42d300e3-e982-5889-98d7-fc297f10eff1"
+    ],
+    "coveredStrands": [
+      "L5"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "# Sensorprüfungen und veränderte Prüfserien\n\nDies ist eine eigene SkillPilot-Aufgabe. Ein Sensor meldet in jedem unabhängigen Prüfversuch mit Wahrscheinlichkeit $p=0{,}25$ einen Treffer. Die Bedingungen bleiben innerhalb einer Serie gleich. $X$ zählt die Treffer in vier Versuchen. Digitale Binomialwerkzeuge sind erlaubt; Ansätze und Deutungen müssen erkennbar sein.\n\n\n1. Begründe das Modell $X\\sim B(4;0{,}25)$. Erkläre, welche Modellannahme bei einem Sensor mit Gedächtnis fraglich wäre.\n\n2. Begründe die Formel für $P(X=2)$: Ermittle alle möglichen Positionen der zwei Treffer, bestimme die Wahrscheinlichkeit einer festen Folge und erkläre das Addieren der disjunkten Folgen. Berechne das Ergebnis und deute es.\n\n3. Erstelle eine vollständige Wahrscheinlichkeitstabelle und ein Histogramm von $X$ (Balkenbreite $1$). Erläutere die Bedeutung eines Balkens und bestimme $P(X\\geq1)$.\n\n4. Die folgenden tatsächlich aus den Binomialwahrscheinlichkeiten gezeichneten Histogramme zeigen A: $B(4;0{,}25)$, B: $B(8;0{,}25)$ und C: $B(4;0{,}5)$. Vergleiche A/B und A/C bezüglich Lage, **absoluter** Streuung und Symmetrie. Begründe deine Aussagen mit den Grafiken und bei Bedarf Kennwerten. Verwechsle absolute Streuung nicht mit Streuung relativ zum Erwartungswert.\n\n![Binomialhistogramme A, B und C mit gleicher Achsenskalierung](assets/bw-binomial.png)\n",
+    "taskContentEn": "# Sensor tests and changed test series\n\nThis is a SkillPilot-authored task. In each independent trial a sensor records a success with probability $p=0.25$. Conditions remain constant within a series. $X$ counts successes in four trials. Digital binomial tools are allowed; show the model and interpretations.\n\n\n1. Justify $X\\sim B(4;0.25)$. Explain which assumption becomes questionable for a sensor with memory.\n\n2. Justify the formula for $P(X=2)$: identify every possible placement of two successes, determine the probability of one fixed sequence, and explain adding disjoint sequences. Calculate and interpret the result.\n\n3. Make the complete probability table and a histogram of $X$ (bar width $1$). Interpret one bar and determine $P(X\\geq1)$.\n\n4. The following histograms were actually drawn from the binomial probabilities: A is $B(4;0.25)$, B is $B(8;0.25)$, and C is $B(4;0.5)$. Compare A/B and A/C in location, **absolute** spread, and symmetry. Support your answers using the graphs and, if useful, numerical measures. Distinguish absolute spread from spread relative to the mean.\n\n![Binomial histograms A, B and C on matching axes](assets/bw-binomial.png)\n",
+    "solutionContent": "# Musterlösung\n\n\n1. Vier feste Versuche, zwei Ausgänge Treffer/Niete, unabhängige Versuche und gleiches $p$ ergeben eine Bernoulli-Kette. Ein gespeicherter vorheriger Zustand könnte die bedingte Trefferchance ändern: Unabhängigkeit bzw. konstantes $p$ wären zu prüfen.\n\n2. Mit T/N sind die sechs Folgen TTNN, TNTN, TNNT, NTTN, NTNT, NNTT möglich. Jede hat wegen Unabhängigkeit dieselbe Wahrscheinlichkeit $0{,}25^2\\cdot0{,}75^2$. Die sechs Folgen sind disjunkt und erschöpfen genau zwei Treffer, also\n\n$$\nP(X=2)=\\binom42 0{,}25^2 0{,}75^2=6\\cdot\\frac9{256}=\\frac{54}{256}=0{,}2109375.\n$$\n\nEtwa $21{,}09\\%$ solcher Viererserien enthalten genau zwei Treffer. Alternativ dürfen die sechs Positionspaare systematisch gezählt werden.\n\n3. Die Tabelle liefert zugleich die Balkenhöhen für ganzzahlige $k=0,\\ldots,4$:\n\n| $k$ | $P(X=k)$ |\n|---|---|\n| 0 | $81/256$ |\n| 1 | $108/256$ |\n| 2 | $54/256$ |\n| 3 | $12/256$ |\n| 4 | $1/256$ |\n\nDie Summe ist $1$. Der Balken bei $2$ beschreibt die Wahrscheinlichkeit für genau zwei Treffer, keine Häufigkeit schon beobachteter Daten. $P(X\\geq1)=1-(3/4)^4=175/256\\approx0{,}6836$.\n\n4. A/B: Bei gleichem $p$ verdoppelt sich die mittlere Trefferzahl von $1$ auf $2$; das Histogramm verschiebt sich nach rechts. Die absolute Standardabweichung wächst von $\\sqrt{0{,}75}\\approx0{,}866$ auf $\\sqrt{1{,}5}\\approx1{,}225$. B ist weniger stark rechtsschief, aber bei $p=0{,}25$ nicht genau symmetrisch. A/C: Bei gleichem $n=4$ wächst der Mittelwert von $1$ auf $2$, die Standardabweichung auf $1$. C ist um $2$ symmetrisch; A ist rechtsschief. Nicht allgemein behaupten, dass jede Erhöhung von $p$ die Streuung erhöht: $p(1-p)$ ist bei $p=0{,}5$ maximal. Die drei konkreten Fälle begründen den Vergleich.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 3 | vier Modellmerkmale 2; Gedächtnisgrenze 1 |\n| 2 | 5 | sechs Anordnungen 2; feste Folge 1; disjunkte Summation 1; Ergebnis und Deutung 1 |\n| 3 | 5 | vollständige Tabelle 2; passend beschriftetes Histogramm 2; Gegenereignis 1 |\n| 4 | 7 | A/B Lage, absolute Streuung, Schiefe je 1; A/C Lage, Streuung, Symmetrie je 1; konkrete Begründung oder Grenze allgemeiner p-Aussage 1 |\n| **Gesamt** | **20** | **Bestanden ab 12** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+    "solutionContentEn": "# Reference solution\n\n\n1. A fixed number of four trials, two outcomes, independence and constant success probability give a Bernoulli chain. Memory could change the conditional success probability; independence and constant $p$ must be checked.\n\n2. The six sequences are SSFF, SFSF, SFFS, FSSF, FSFS and FFSS. Each has probability $0.25^2\\cdot0.75^2$. They are disjoint and exhaust exactly two successes. Thus\n\n$$\nP(X=2)=\\binom42 0.25^2 0.75^2=54/256=0.2109375.\n$$\n\nAbout $21.09\\%$ of such four-trial series have exactly two successes. Systematic counting of position pairs is equivalent.\n\n3. For $k=0,1,2,3,4$ the probabilities are respectively $81/256,108/256,54/256,12/256,1/256$. These sum to $1$ and are the histogram heights at the integers. The bar at $2$ represents the probability of exactly two successes, not an already observed frequency. $P(X\\geq1)=1-(3/4)^4=175/256\\approx0.6836$.\n\n4. A/B: the mean rises from $1$ to $2$ and location shifts right. Absolute SD rises from $\\sqrt{0.75}\\approx0.866$ to $\\sqrt{1.5}\\approx1.225$. B is less right-skewed but is not exactly symmetric. A/C: the mean rises from $1$ to $2$, and SD rises to $1$. C is symmetric about $2$ whereas A is right-skewed. Increasing $p$ does not always increase spread: $p(1-p)$ is maximal at $0.5$. The conclusions concern these concrete comparisons.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 3 | four model features 2; memory limitation 1 |\n| 2 | 5 | six arrangements 2; fixed sequence 1; disjoint sum 1; result and interpretation 1 |\n| 3 | 5 | complete table 2; labelled matching histogram 2; complement probability 1 |\n| 4 | 7 | A/B location, absolute spread, skew 1 each; A/C location, spread, symmetry 1 each; concrete justification or limit of general p claim 1 |\n| **Total** | **20** | **Pass at 12** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 12,
+      "steps": [
+        {
+          "id": "new_bw_binomial_comparison_1",
+          "points": 3,
+          "description": "vier Modellmerkmale 2; Gedächtnisgrenze 1",
+          "descriptionEn": "four model features 2; memory limitation 1"
+        },
+        {
+          "id": "new_bw_binomial_comparison_2",
+          "points": 5,
+          "description": "sechs Anordnungen 2; feste Folge 1; disjunkte Summation 1; Ergebnis und Deutung 1",
+          "descriptionEn": "six arrangements 2; fixed sequence 1; disjoint sum 1; result and interpretation 1"
+        },
+        {
+          "id": "new_bw_binomial_comparison_3",
+          "points": 5,
+          "description": "vollständige Tabelle 2; passend beschriftetes Histogramm 2; Gegenereignis 1",
+          "descriptionEn": "complete table 2; labelled matching histogram 2; complement probability 1"
+        },
+        {
+          "id": "new_bw_binomial_comparison_4",
+          "points": 7,
+          "description": "A/B Lage, absolute Streuung, Schiefe je 1; A/C Lage, Streuung, Symmetrie je 1; konkrete Begründung oder Grenze allgemeiner p-Aussage 1",
+          "descriptionEn": "A/B location, absolute spread, skew 1 each; A/C location, spread, symmetry 1 each; concrete justification or limit of general p claim 1"
+        }
+      ]
+    },
+    "reviewNote": "Own bilingual whole form; author candidate pending genuine independent content, source, preparation and role/identity reviews. One ordinary total result; no learner mastery migration."
+  }
+}

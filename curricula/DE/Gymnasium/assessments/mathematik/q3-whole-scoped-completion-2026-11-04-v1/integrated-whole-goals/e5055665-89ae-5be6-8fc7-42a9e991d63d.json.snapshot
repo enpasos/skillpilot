@@ -1,0 +1,95 @@
+{
+  "id": "e5055665-89ae-5be6-8fc7-42a9e991d63d",
+  "title": "Aufgabe 6 (Jahrgangsstufe 10, 10 BE)",
+  "description": "Die lernende Person kann eine freigegebene Prüfungsaufgabe der Jahrgangsstufe 10 bearbeiten: Kombinatorische Anzahlen, Wahrscheinlichkeiten und Monte-Carlo-Approximationen bestimmen und kritisch deuten.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "canonical",
+    "phase:SekI",
+    "ExamTask"
+  ],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v1.md#task-6",
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K1",
+      "K2",
+      "K3",
+      "K4"
+    ],
+    "guidingIdeas": [
+      "L5"
+    ],
+    "phase": "J10",
+    "area": "Mathematik",
+    "topicCode": "CANONICAL.MATH.SEK1.PRACTICE.J10.TASK.6"
+  },
+  "shortKey": "canonical_math_sek1_practice_j10_task_6",
+  "contains": [],
+  "requires": [
+    "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+    "e55edcb9-2184-4a24-890e-70cc91028990"
+  ],
+  "phase": "J10",
+  "type": "atomic",
+  "nodeKind": "exam",
+  "examData": {
+    "reviewStatus": "released",
+    "reviewNote": "released after simulated internal review on 2026-06-28 for J10",
+    "coveredGoalIds": [
+      "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+      "e55edcb9-2184-4a24-890e-70cc91028990"
+    ],
+    "coveredStrands": [
+      "L5"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10/draft_v1.md",
+    "taskContent": "Aus $8$ Sensoren, darunter $3$ fehlerhafte, werden ohne Zurücklegen $2$ Sensoren ausgewählt. Eine Monte-Carlo-Simulation mit $10000$ Durchläufen liefert $1060$ Treffer für \"beide Sensoren fehlerhaft\".\n\n1. Bestimme die Anzahl aller möglichen Zweierauswahlen. (2 BE)\n2. Berechne die Wahrscheinlichkeit, dass beide ausgewählten Sensoren fehlerhaft sind. (3 BE)\n3. Deute den Näherungswert aus der Simulation und erkläre, warum er vom exakten Modellwert abweichen kann. (3 BE)\n4. Beurteile, warum die Voraussetzung \"ohne Zurücklegen\" für das Modell wichtig ist. (2 BE)",
+    "solutionContent": "Es gibt $C(8,2)=28$ mögliche Zweierauswahlen.\n\nGünstig sind $C(3,2)=3$ Auswahlen mit zwei fehlerhaften Sensoren, also $P=3/28≈0.107$.\n\nDie Simulation liefert $1060/10000=0.106$; das liegt nahe am exakten Wert. Abweichungen entstehen durch Zufallsschwankungen und werden bei vielen Durchläufen typischerweise kleiner.\n\nOhne Zurücklegen verändert sich die Zusammensetzung nach der ersten Auswahl. Mit Zurücklegen wären die Pfadwahrscheinlichkeiten anders.",
+    "scoring": {
+      "maxPoints": 10,
+      "passingPoints": 5,
+      "steps": [
+        {
+          "id": "j10_released_v1_6",
+          "points": 10,
+          "description": "Kombinatorische Anzahlen, Wahrscheinlichkeiten und Monte-Carlo-Approximationen bestimmen und kritisch deuten."
+        }
+      ]
+    }
+  },
+  "extendedData": {
+    "applicabilityMappingInheritance": "boundary",
+    "applicabilityFromRequires": true
+  }
+}

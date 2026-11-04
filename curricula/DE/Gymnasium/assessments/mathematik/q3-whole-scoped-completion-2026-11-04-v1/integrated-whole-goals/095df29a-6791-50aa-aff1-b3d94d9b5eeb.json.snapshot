@@ -1,0 +1,92 @@
+{
+  "id": "095df29a-6791-50aa-aff1-b3d94d9b5eeb",
+  "title": "Prüfung: Einen Würfelversuch tatsächlich mit Software simulieren",
+  "titleEn": "Assessment: Actually simulate a die experiment with software",
+  "description": "Die lernende Person kann die vollständige Prüfung selbstständig bearbeiten und ihre Ergebnisse fachlich begründen.",
+  "descriptionEn": "The learner can complete the whole assessment independently and justify the results.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment"
+  ],
+  "contains": [],
+  "requires": [
+    "4aa70ad4-171d-5671-a864-c0c7758fa0ed"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K2",
+      "K3",
+      "K4",
+      "K6"
+    ],
+    "guidingIdeas": [
+      "L5"
+    ],
+    "phase": "SekI"
+  },
+  "applicability": {
+    "jurisdiction": [
+      "DE-HE"
+    ]
+  },
+  "type": "atomic",
+  "nodeKind": "exam",
+  "sourceRef": "SkillPilot: eigene vollständige Abschlussaufgabe für die unveränderten vorbereitenden Lernzielverträge; keine amtliche Prüfungsaufgabe.",
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "4aa70ad4-171d-5671-a864-c0c7758fa0ed"
+    ],
+    "coveredStrands": [
+      "L5"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "# Ein fairer Würfel in der Simulation\n\nFühre mit einer Tabellenkalkulation, einem kleinen Programm oder einer geeigneten Statistiksoftware **selbst tatsächlich** $600$ unabhängige Würfelwürfe mit Ergebnissen $1,\\ldots,6$ aus. Alle sechs Ergebnisse sollen im Modell gleich wahrscheinlich sein. Eine bloße Beschreibung oder die Übernahme einer fremden Ergebnistabelle ersetzt die Ausführung nicht. Andere zufällige Ergebnisse sind ausdrücklich erlaubt und werden nicht nach ihrer Nähe zu den Sollwerten bewertet.\n\n\n1. Dokumentiere Software, Zufallszahlenschritt und Ausführung nachvollziehbar, etwa durch ausgeführten Code/Datei und Ausgabe oder Formeln und gespeicherte Tabellenwerte. Speichere die ersten $20$ erzeugten Werte und alle $600$ Rohwerte. Bei gesetztem Startwert nenne ihn; andernfalls friere die tatsächlich erzeugten Werte ein, damit die Auswertung reproduzierbar ist. Erkläre, wie dein Verfahren die Zahlen $1$ bis $6$ gleich behandelt.\n\n2. Bestimme für die ersten $60$ und für alle $600$ Würfe die absoluten und relativen Häufigkeiten jeder Augenzahl. Prüfe Summen und erkläre die unterschiedlichen Nenner.\n\n3. Erzeuge aus deinen tatsächlichen Daten eine geeignet beschriftete Vergleichsgrafik der relativen Häufigkeiten bei $60$ und $600$ Würfen. Markiere oder nenne zum Vergleich die theoretische Wahrscheinlichkeit $1/6$.\n\n4. Vergleiche deine Daten mit den theoretischen Chancen, erläutere Zufallsschwankungen und beurteile „Nach 600 Würfen muss jede Zahl genau 100-mal vorliegen“ sowie „Nach vielen Sechsen ist eine Sechs beim nächsten Wurf weniger wahrscheinlich“. Benenne eine Modellgrenze eines realen Würfels oder einer Software-Simulation.\n",
+    "taskContentEn": "# Simulating a fair die\n\nUse a spreadsheet, small program or appropriate statistics software to **actually execute** $600$ independent simulated die throws with values $1,\\ldots,6$, equally likely in the model. A proposal or copied external results does not replace execution. Different random outputs are explicitly acceptable and are not graded by closeness to expected counts.\n\n\n1. Document software, random-number generation and actual execution through executed code/file and output, or formulas and saved spreadsheet values. Save the first $20$ outcomes and all $600$ raw outcomes. State a seed if used; otherwise freeze the generated values so the analysis can be reproduced. Explain how values $1$ to $6$ are treated equally.\n\n2. Find absolute and relative frequencies for every face among the first $60$ and all $600$ outcomes. Check totals and explain denominators.\n\n3. Produce a labelled comparative relative-frequency chart from your actual data for $60$ and $600$ outcomes. Mark or state the theoretical probability $1/6$.\n\n4. Compare the results with theoretical probabilities, discuss random fluctuation, and assess “After 600 throws every face must appear exactly 100 times” and “After many sixes, a six becomes less likely on the next throw”. Name a limitation of a physical die or software simulation.\n",
+    "solutionContent": "# Musterlösung mit tatsächlich ausgeführtem Referenzlauf\n\nEine zulässige Python-Ausführung lautet:\n\n```python\nimport random\nfrom collections import Counter\nrng = random.Random(20261104)\nrolls = [rng.randint(1, 6) for _ in range(600)]\nprint(rolls[:20])\nprint(rolls)  # alle 600 Ergebnisse in Ausführungsreihenfolge\nfor n in (60, 600):\n    counts = Counter(rolls[:n])\n    print(n, [(face, counts[face], counts[face] / n) for face in range(1, 7)])\n```\n\n`randint(1,6)` wählt im Modell gleichwahrscheinlich aus den sechs ganzen Zahlen; der lokale Generator und Startwert halten diesen Referenzlauf reproduzierbar. Software erzeugt Pseudozufall, keine experimentell nachgewiesene physikalische Unabhängigkeit. Der vollständige Code erzeugt alle $600$ Referenzwerte in `rolls`; die zusätzliche Ausgabe `print(rolls)` macht jeden Einzelwert zur Nachprüfung zugänglich. Die unten eingebundene Referenzgrafik zeigt die tatsächlich daraus berechneten relativen Häufigkeiten. Diese eine Ausgabe ist keine vorgeschriebene Lernendenausgabe.\n\nDie ersten $20$ Werte sind $6,6,2,3,3,4,5,1,2,4,1,6,5,5,5,6,1,4,4,1$.\n\n| Augenzahl | Anzahl, 60 | relativ, 60 | Anzahl, 600 | relativ, 600 |\n|---|---|---|---|---|\n| 1 | 8 | 0,13333 | 107 | 0,17833 |\n| 2 | 9 | 0,15 | 104 | 0,17333 |\n| 3 | 7 | 0,11667 | 99 | 0,165 |\n| 4 | 12 | 0,20 | 93 | 0,155 |\n| 5 | 12 | 0,20 | 97 | 0,16167 |\n| 6 | 12 | 0,20 | 100 | 0,16667 |\n\nAnzahlen summieren sich zu $60/600$, relative Häufigkeiten jeweils zu $1$ (Rundungsabweichungen erlaubt). Nenner ist die jeweilige tatsächlich betrachtete Versuchszahl. Die Referenzgrafik stellt diese Quotienten nebeneinander und eine waagrechte Linie bei $1/6$ dar.\n\n![Tatsächlicher Referenzlauf: relative Häufigkeiten der Augenzahlen 1 bis 6 bei 60 und 600 Würfen; gestrichelte Referenzlinie bei 1/6.](/assets/assessment-materials/mathematik/095df29a-6791-50aa-aff1-b3d94d9b5eeb/reference-chart.png)\n\nIm Referenzlauf liegen die 600er-Anteile insgesamt näher an $1/6$; ein solches monotones Näherkommen ist nicht für jeden Zwischenstand garantiert. $100$ je Zahl ist ein Erwartungswert, kein vorgeschriebenes Ergebnis. Bei unabhängigen Würfen bleibt die nächste Sechs mit Wahrscheinlichkeit $1/6$ möglich, unabhängig vom bisherigen Verlauf. Ein verzerrter realer Würfel oder ungeeigneter Zufallszahlengenerator kann das Modell verletzen. Andere tatsächlich ausgeführte gültige Simulationen erhalten dieselbe Bewertung anhand ihrer eigenen Daten.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 8 | tatsächliche Ausführung mit Software-/Formel- oder Codebeleg 4; eingefrorene 600 Rohwerte und erste 20 2; Generator/Startwert oder Speicherung reproduzierbar 1; Gleichbehandlung 1 |\n| 2 | 5 | aus echten Daten beide absoluten Tabellen 2; beide relativen Tabellen 2; Summen/Nenner geprüft 1 |\n| 3 | 4 | ausgeführte Datengrafik für beide Stichproben 2; Achsen/Legende/Skala 1; 1/6-Vergleich 1 |\n| 4 | 3 | eigene Schwankungen und keine exakte 100-Garantie 1; keine Kompensation der nächsten Würfe 1; Modellgrenze 1 |\n| **Gesamt** | **20** | **Bestanden ab 12** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+    "solutionContentEn": "# Reference solution from an actually executed example\n\nOne valid, complete Python run is:\n\n```python\nimport random\nfrom collections import Counter\nrng = random.Random(20261104)\nrolls = [rng.randint(1, 6) for _ in range(600)]\nprint(rolls[:20])\nprint(rolls)  # all 600 outcomes, in execution order\nfor n in (60, 600):\n    counts = Counter(rolls[:n])\n    print(n, [(face, counts[face], counts[face] / n) for face in range(1, 7)])\n```\n\nThe list `rolls` contains all $600$ reference outcomes; `print(rolls)` displays every raw result for checking. The reference chart embedded below shows the relative frequencies actually calculated from these outcomes. A seed makes this example repeatable; saved actual spreadsheet values are an equivalent audit trail without a seed. This pseudorandom implementation models uniform die outcomes rather than proving physical randomness.\n\nFirst $20$ outcomes: $6,6,2,3,3,4,5,1,2,4,1,6,5,5,5,6,1,4,4,1$.\n\n| Face | Count, 60 | Relative, 60 | Count, 600 | Relative, 600 |\n|---|---|---|---|---|\n| 1 | 8 | 0.13333 | 107 | 0.17833 |\n| 2 | 9 | 0.15 | 104 | 0.17333 |\n| 3 | 7 | 0.11667 | 99 | 0.165 |\n| 4 | 12 | 0.20 | 93 | 0.155 |\n| 5 | 12 | 0.20 | 97 | 0.16167 |\n| 6 | 12 | 0.20 | 100 | 0.16667 |\n\nCounts sum to $60$ and $600$ and relative counts to $1$, allowing rounding. Denominators are the respective numbers of throws. A side-by-side relative-frequency chart includes a horizontal $1/6$ reference.\n\n![Actually executed reference run: relative frequencies for die faces 1 through 6 after 60 and 600 throws; dashed reference line at 1/6.](/assets/assessment-materials/mathematik/095df29a-6791-50aa-aff1-b3d94d9b5eeb/reference-chart.png)\n\nIn this run the larger-sample proportions are collectively closer to $1/6$, but approach need not be monotone across every sample size. A count of $100$ is an expectation, not compulsory. With independent throws the next six still has probability $1/6$ regardless of past outcomes. A biased physical die or unsuitable generator can violate the model. Other genuinely executed valid runs are graded against their own data, not these particular counts.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 8 | actual execution with software/formula or code evidence 4; saved 600 raw outcomes and first 20 2; reproducible generator/seed or storage 1; equal treatment 1 |\n| 2 | 5 | both count tables from executed data 2; both relative tables 2; totals/denominators checked 1 |\n| 3 | 4 | chart from actual executed data for both samples 2; axes/legend/scale 1; 1/6 reference 1 |\n| 4 | 3 | own fluctuation and no exact 100 guarantee 1; no compensating next throws 1; model limitation 1 |\n| **Total** | **20** | **Pass at 12** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 12,
+      "steps": [
+        {
+          "id": "new_he_g9_software_simulation_1",
+          "points": 8,
+          "description": "tatsächliche Ausführung mit Software-/Formel- oder Codebeleg 4; eingefrorene 600 Rohwerte und erste 20 2; Generator/Startwert oder Speicherung reproduzierbar 1; Gleichbehandlung 1",
+          "descriptionEn": "actual execution with software/formula or code evidence 4; saved 600 raw outcomes and first 20 2; reproducible generator/seed or storage 1; equal treatment 1"
+        },
+        {
+          "id": "new_he_g9_software_simulation_2",
+          "points": 5,
+          "description": "aus echten Daten beide absoluten Tabellen 2; beide relativen Tabellen 2; Summen/Nenner geprüft 1",
+          "descriptionEn": "both count tables from executed data 2; both relative tables 2; totals/denominators checked 1"
+        },
+        {
+          "id": "new_he_g9_software_simulation_3",
+          "points": 4,
+          "description": "ausgeführte Datengrafik für beide Stichproben 2; Achsen/Legende/Skala 1; 1/6-Vergleich 1",
+          "descriptionEn": "chart from actual executed data for both samples 2; axes/legend/scale 1; 1/6 reference 1"
+        },
+        {
+          "id": "new_he_g9_software_simulation_4",
+          "points": 3,
+          "description": "eigene Schwankungen und keine exakte 100-Garantie 1; keine Kompensation der nächsten Würfe 1; Modellgrenze 1",
+          "descriptionEn": "own fluctuation and no exact 100 guarantee 1; no compensating next throws 1; model limitation 1"
+        }
+      ]
+    },
+    "reviewNote": "Independently reviewed whole content; integrated scope and current fingerprints require separate implementation review. curricula/DE/Gymnasium/assessments/mathematik/q3-whole-scoped-completion-2026-11-04-v1/reviews/independent-final-content-decision.json"
+  },
+  "extendedData": {
+    "applicabilityMappingInheritance": "boundary"
+  }
+}

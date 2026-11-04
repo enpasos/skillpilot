@@ -1,0 +1,2756 @@
+{
+  "schemaVersion": 1,
+  "kind": "SEALED_FINAL_INDEPENDENT_Q3_CONTENT_REVIEW",
+  "verdict": "PASS_FINITE_CONTENT_SOURCE_R_RUBRIC_UX_WITH_FROZEN_OVERLAY",
+  "createdAt": "2026-11-04T10:13:56.062289+00:00",
+  "reviewer": "openai:gpt-6-astra:/root/astra_q3_foundations_resume",
+  "decision": "decision.final-content.json",
+  "decisionSha256": "0c0969df529389f52b647b9b07613c0572f496113ee683707b5cc220de826607",
+  "inputManifestBindings": {
+    "foundationManifestSha256": "5f10a40513e50c734c8ee986c15e7f324edb30a060a8d4ae50d5a9cca7250c9c",
+    "authorManifestSha256": "6197152b4dee9a9853f614e19aff7dac8ce72530fabc886825cf40e7d379a0b1",
+    "conditionalReviewManifestSha256": "cee53b82e507970564167b3a0d2168c4b2877a23a82bd532340863713bed66b2",
+    "followupManifestSha256": "4fed9dce8db16d1841047e496e559d8a3f7fa02be957eb5d0fcedd60986319eb"
+  },
+  "files": [
+    {
+      "path": "author-input-manifest.frozen.json",
+      "sha256": "6197152b4dee9a9853f614e19aff7dac8ce72530fabc886825cf40e7d379a0b1",
+      "bytes": 102741
+    },
+    {
+      "path": "bounded-findings.json",
+      "sha256": "7d27048f38382b25606e14f40681e7e04f4ef72b1cb0ccaf57713b14d68b2cca",
+      "bytes": 2347
+    },
+    {
+      "path": "current-root-objects.at-content-final.json",
+      "sha256": "b0ba99b5dcfe986f1cc34b58ccbb66ccbccf72346c7b6fa024073683e79e7221",
+      "bytes": 322
+    },
+    {
+      "path": "decision.final-content.json",
+      "sha256": "0c0969df529389f52b647b9b07613c0572f496113ee683707b5cc220de826607",
+      "bytes": 26561
+    },
+    {
+      "path": "followup-browser-independent.actual.json",
+      "sha256": "032c67c1e1658ec8198a8169edb0e015669d5d831e0352d0be57c75a8ae8f82c",
+      "bytes": 3340
+    },
+    {
+      "path": "followup-freeze-check.json",
+      "sha256": "78c44f741a9a6f270b59e82f62f4f2489040f2b1c2fcb9fc6edf0c9203c7bec2",
+      "bytes": 1988
+    },
+    {
+      "path": "followup-independent-review.json",
+      "sha256": "0c0283a98dd0e5de65c9e97e69c21a1c6ffe40a04c15261639b307fe9cb692f7",
+      "bytes": 3222
+    },
+    {
+      "path": "followup-input/Q3-HANDOFF.json",
+      "sha256": "12581da68d348ce89cb39ab197b4fc97a7a31170757dcd485f609d5962000864",
+      "bytes": 1280
+    },
+    {
+      "path": "followup-input/manifest.bounded-followup.json",
+      "sha256": "4c1984f0d79fb276c037719184103499ce1f457a36d1a3b27a3036fc7f497fd1",
+      "bytes": 5987
+    },
+    {
+      "path": "followup-input/manifest.rendered-bounded-followup.json",
+      "sha256": "4fed9dce8db16d1841047e496e559d8a3f7fa02be957eb5d0fcedd60986319eb",
+      "bytes": 7300
+    },
+    {
+      "path": "followup-input/overlay/asset-integration-map.proposal.json",
+      "sha256": "1ac4620503a632c09699fd35693bf61ae8640ce576e3a875c94c19457d23f8d4",
+      "bytes": 2451
+    },
+    {
+      "path": "followup-input/overlay/forms/095df29a-6791-50aa-aff1-b3d94d9b5eeb/assets/reference-chart.png",
+      "sha256": "f353b93564a38ae285060cfcb4302d351c723ed5b6f2a9c586fea084f85ee73c",
+      "bytes": 27712
+    },
+    {
+      "path": "followup-input/overlay/forms/095df29a-6791-50aa-aff1-b3d94d9b5eeb/solution.de.md",
+      "sha256": "3db95bf245f9833ee38d2b514ac1363415cd8743326130287f5c4e994cd2ffa7",
+      "bytes": 2400
+    },
+    {
+      "path": "followup-input/overlay/forms/095df29a-6791-50aa-aff1-b3d94d9b5eeb/solution.en.md",
+      "sha256": "d530e233dbdd689dfdd1fd04d494909d1e53e7ca60e04119d04b54d16b50c0b5",
+      "bytes": 2048
+    },
+    {
+      "path": "followup-input/overlay/forms/095df29a-6791-50aa-aff1-b3d94d9b5eeb/whole-form-content.draft.json",
+      "sha256": "16e2ace2c475fabada7d630ad120abc6038c486cf943bea58c85a6bc035908cb",
+      "bytes": 12190
+    },
+    {
+      "path": "followup-input/overlay/forms/f59b0af8-b90a-5cdb-88d6-561323a4f763/solution.de.md",
+      "sha256": "76eebd8f2db37678efcf4e1eb158b5bb9316f19f1632d9849f19e62386c9bdb4",
+      "bytes": 2274
+    },
+    {
+      "path": "followup-input/overlay/forms/f59b0af8-b90a-5cdb-88d6-561323a4f763/solution.en.md",
+      "sha256": "a75af8336a346bef5d420c5ca42eca31819cb14ffacfb8c2d133af25bfde002b",
+      "bytes": 1834
+    },
+    {
+      "path": "followup-input/overlay/forms/f59b0af8-b90a-5cdb-88d6-561323a4f763/whole-form-content.draft.json",
+      "sha256": "75d90671a79b6760809187bf1257e2fca887f47f89658f9cae256caafbb12fe2",
+      "bytes": 12386
+    },
+    {
+      "path": "followup-input/overlay/input/whole-existing-exams/9cf020ee-4f6b-554e-97d6-eca3e2aabe99/solutionContent.md",
+      "sha256": "1845aa1db8f24c860216087ddd37dc6896444b013628fd8d6e938d95f7abddd5",
+      "bytes": 1473
+    },
+    {
+      "path": "followup-input/overlay/input/whole-existing-exams/9cf020ee-4f6b-554e-97d6-eca3e2aabe99/whole-current-goal.json",
+      "sha256": "2c057114c3d47ab109e9f9e2ec8b1d66679c2f90e3c18a2871136dddf4a134d7",
+      "bytes": 5218
+    },
+    {
+      "path": "followup-input/prepare_followup.py",
+      "sha256": "5274c6b0c0ab8ba91adfd8438d67ff5e73d789c1fee95848dbad50100d5d68ea",
+      "bytes": 7947
+    },
+    {
+      "path": "followup-input/render_followup.mjs",
+      "sha256": "11a54130fffc35d4ec637807d4f8ea05745ba9e0a11d58466ad0439c80f7aed2",
+      "bytes": 7575
+    },
+    {
+      "path": "followup-input/rendered/095df29a-6791-50aa-aff1-b3d94d9b5eeb.solutionContent.1100.png",
+      "sha256": "efc0c86785fba17946861d5fc18e554d726ec9fe0f71be137970464d6c6ccb60",
+      "bytes": 287154
+    },
+    {
+      "path": "followup-input/rendered/095df29a-6791-50aa-aff1-b3d94d9b5eeb.solutionContent.390.png",
+      "sha256": "436990fc8f6b07bc8ee9acbccc2c03648ad48f8376dc0c011d1fd25738b0f014",
+      "bytes": 264297
+    },
+    {
+      "path": "followup-input/rendered/095df29a-6791-50aa-aff1-b3d94d9b5eeb.solutionContent.html",
+      "sha256": "749b9dd553e20565e663e9c0a135482e6367669a33d73a86e5f6d3eb84f05878",
+      "bytes": 11730
+    },
+    {
+      "path": "followup-input/rendered/095df29a-6791-50aa-aff1-b3d94d9b5eeb.solutionContentEn.1100.png",
+      "sha256": "427f6bffc76fbfac26303cbe1f23b7912e6693809f5843300baaaa9c6a897ae8",
+      "bytes": 247082
+    },
+    {
+      "path": "followup-input/rendered/095df29a-6791-50aa-aff1-b3d94d9b5eeb.solutionContentEn.390.png",
+      "sha256": "2272cb6ccd6b34e2425557561bf156c5875b2caaade566da5c81aef941a62731",
+      "bytes": 227832
+    },
+    {
+      "path": "followup-input/rendered/095df29a-6791-50aa-aff1-b3d94d9b5eeb.solutionContentEn.html",
+      "sha256": "20f3e236eeb56779bda75fbd612c7abe92f7b68d8e8cbb38710f13bf13a1c661",
+      "bytes": 11596
+    },
+    {
+      "path": "followup-input/rendered/9cf020ee-4f6b-554e-97d6-eca3e2aabe99.solutionContent.1100.png",
+      "sha256": "bfef699949b2ee261bbde8a76275d5d8df08d86c1a91766eca9293c6ce5f87d2",
+      "bytes": 112923
+    },
+    {
+      "path": "followup-input/rendered/9cf020ee-4f6b-554e-97d6-eca3e2aabe99.solutionContent.390.png",
+      "sha256": "94ef2e99b73c7d849069c0e640802bbfb174b589e91e7ce3c8f43f1ebdd98610",
+      "bytes": 107470
+    },
+    {
+      "path": "followup-input/rendered/9cf020ee-4f6b-554e-97d6-eca3e2aabe99.solutionContent.html",
+      "sha256": "40911987ae503b6fa8ca5c2dc370a6de4d59d005152f6c65dbff296ba9770666",
+      "bytes": 36927
+    },
+    {
+      "path": "followup-input/rendered/f59b0af8-b90a-5cdb-88d6-561323a4f763.solutionContent.1100.png",
+      "sha256": "bfbc4167ff24cfef13eaa4817da349d3849b16eaa7f203da353388f23bac78bf",
+      "bytes": 276254
+    },
+    {
+      "path": "followup-input/rendered/f59b0af8-b90a-5cdb-88d6-561323a4f763.solutionContent.390.png",
+      "sha256": "9571e131afac769fd0cabb0c2229c2e9b02b9b87370bf072341d88b3a25c4202",
+      "bytes": 273211
+    },
+    {
+      "path": "followup-input/rendered/f59b0af8-b90a-5cdb-88d6-561323a4f763.solutionContent.html",
+      "sha256": "96eea9f3365fbbff04a5ea28658c6b814f8b0f7f29436a5987fddf2e1704dc54",
+      "bytes": 42474
+    },
+    {
+      "path": "followup-input/rendered/f59b0af8-b90a-5cdb-88d6-561323a4f763.solutionContentEn.1100.png",
+      "sha256": "4f84eef18b83dd86753558be74e598dfcb38453a2d7a6651aee61acca05b5a40",
+      "bytes": 222944
+    },
+    {
+      "path": "followup-input/rendered/f59b0af8-b90a-5cdb-88d6-561323a4f763.solutionContentEn.390.png",
+      "sha256": "a30dafcf0ba61d744e2506c781ebea730b8c0e49c7bcfe215918c39b2804f4f6",
+      "bytes": 222147
+    },
+    {
+      "path": "followup-input/rendered/f59b0af8-b90a-5cdb-88d6-561323a4f763.solutionContentEn.html",
+      "sha256": "58a4e2e486125ae4b74fbff01f35b0b31bffd6961bd472af63574dd684fd8907",
+      "bytes": 30324
+    },
+    {
+      "path": "followup-input/rendering-and-assets.actual.json",
+      "sha256": "7464c248895bafde0da61aa9db6fc3f2565e07cb4bb24259cbc40d4be18c9ab9",
+      "bytes": 10177
+    },
+    {
+      "path": "followup-input/runtime-public/assets/assessment-materials/mathematik/095df29a-6791-50aa-aff1-b3d94d9b5eeb/reference-chart.png",
+      "sha256": "f353b93564a38ae285060cfcb4302d351c723ed5b6f2a9c586fea084f85ee73c",
+      "bytes": 27712
+    },
+    {
+      "path": "followup-input/runtime-public/assets/assessment-materials/mathematik/7246cd87-b720-5866-8c0c-3b93fec46189/by-measurements.png",
+      "sha256": "af2226a0c2dd3f78d10176fae4924e4692f4c7c2ea389887a2f04c0787a1cfcf",
+      "bytes": 29685
+    },
+    {
+      "path": "followup-input/runtime-public/assets/assessment-materials/mathematik/f59b0af8-b90a-5cdb-88d6-561323a4f763/sh-binomial.png",
+      "sha256": "2fe3a65210bb4ed9cd1dea27dfbbc6345cd9214234a02fa8e951c5ce24d7ac32",
+      "bytes": 69098
+    },
+    {
+      "path": "followup-input/runtime-public/assets/assessment-materials/mathematik/f74d944a-e09b-5e01-867b-09740fadf18d/bw-binomial.png",
+      "sha256": "6da0a6f0d2db412caa2198d5aa0fc5cf7f28f5339641992dbdb4cee7cdd7361f",
+      "bytes": 57865
+    },
+    {
+      "path": "followup-input/visual-sample-check.actual.json",
+      "sha256": "51208566ed6ea2ac194cf64c27edd996900ad1e67fe92a161b17c7b5488c78e6",
+      "bytes": 754
+    },
+    {
+      "path": "followup_browser_check.mjs",
+      "sha256": "5aa66beb2e105eaf12246a1e86cc2b76f8057f686d7fd57e815a778bd81ca7e2",
+      "bytes": 3795
+    },
+    {
+      "path": "formal-one-genuine-am-judgments.proposal.json",
+      "sha256": "3e9abb6ddd98e7244503d0dd25b3f900c209f963bb1beded83c9142f0c6f6306",
+      "bytes": 6493
+    },
+    {
+      "path": "independent-check-results.json",
+      "sha256": "e7f535c977906e7fc5b4f44a8bf9dc6d6e0d8494969debbf772e634df472d7d5",
+      "bytes": 39732
+    },
+    {
+      "path": "independent-form-judgments.json",
+      "sha256": "6d96ab27bb20df7634b595be82ce725b00a72ff108c40b09dc639cd92d229c26",
+      "bytes": 24812
+    },
+    {
+      "path": "independent-freeze-check.json",
+      "sha256": "8651502eef5dc6183f7a04ea68cbe04d9a0ab4db2cf472fe4882d16d28093c57",
+      "bytes": 193
+    },
+    {
+      "path": "independent-primary-pages/BW-physical-39.txt",
+      "sha256": "4da93fd544bc31d1f6623e60d674bc0e7f1d546542d037c56768b5a5d87fb561",
+      "bytes": 2676
+    },
+    {
+      "path": "independent-primary-pages/BW-physical-40.txt",
+      "sha256": "004cce0492aa009c78bd1afc7ac4277ffd40f1cdcf433fe194e4698c4d2eaff6",
+      "bytes": 817
+    },
+    {
+      "path": "independent-primary-pages/BY-J11-physical-2.txt",
+      "sha256": "ffe52a98700115d8d0218a58a47963b918453f74f89a3b07bb22f147c4e29fcb",
+      "bytes": 3581
+    },
+    {
+      "path": "independent-primary-pages/BY-J11-physical-3.txt",
+      "sha256": "7f071bda3b89c4a46fc04380a847dd228e28ab1d9a5945b18bed78d825f4c0b3",
+      "bytes": 2623
+    },
+    {
+      "path": "independent-primary-pages/BY-J12-physical-2.txt",
+      "sha256": "6b8e1fb780799138d045c783ba550aa16143c622692a578668c13c4bc2dae928",
+      "bytes": 2572
+    },
+    {
+      "path": "independent-primary-pages/BY-J12-physical-3.txt",
+      "sha256": "7dd6eb1d74df9ddad474fc819f1dea40768359bff4864dad2927dc5ecd6d6b44",
+      "bytes": 2387
+    },
+    {
+      "path": "independent-primary-pages/BY-J13-physical-1.txt",
+      "sha256": "5dad40dec14bd031addf7f14322802238f6a7fd2b0bb53bbeaa4aecf77e709b4",
+      "bytes": 2550
+    },
+    {
+      "path": "independent-primary-pages/HE-G8-physical-25.txt",
+      "sha256": "df6f9f961bcc7b4086dcfc012c7c1103d481b176081008013f438175b3af8426",
+      "bytes": 2173
+    },
+    {
+      "path": "independent-primary-pages/HE-G9-physical-28.txt",
+      "sha256": "49f9f3b5c9711bd4ad4e498b46f0a1e583ad8fd27b7e1a67605e792486b2b3b8",
+      "bytes": 1158
+    },
+    {
+      "path": "independent-primary-pages/HE-G9-physical-36.txt",
+      "sha256": "de7c9609292a8c06e316d0b825a0e63b7ba56dba338e5d9a2b3428c02c9e86be",
+      "bytes": 2193
+    },
+    {
+      "path": "independent-primary-pages/HE-upper-physical-46.txt",
+      "sha256": "9df7eed3aec39975918b85005ad12338895fc53a864bcb17b07432ab977a422f",
+      "bytes": 3110
+    },
+    {
+      "path": "independent-primary-pages/HE-upper-physical-47.txt",
+      "sha256": "db75bb09b2cddd154c6884ab8fb3a96e1903ed172fd7a9c940025edaff62d3bd",
+      "bytes": 3346
+    },
+    {
+      "path": "independent-primary-pages/HE-upper-physical-48.txt",
+      "sha256": "330a5cc0344361e43a9695fd9c1d835af6d904b4449432ce06007986266e04a0",
+      "bytes": 2657
+    },
+    {
+      "path": "independent-primary-pages/HE-upper-physical-49.txt",
+      "sha256": "94db67e2ccf61af29c1c4d3c14c078ab54fd13dd97661d2e1dc628f4f1008320",
+      "bytes": 747
+    },
+    {
+      "path": "independent-primary-pages/SH-physical-70.txt",
+      "sha256": "fbf739006d5270d47dcf9eb18610345d6e789da54c4375e4f2388d79a413b8a3",
+      "bytes": 3094
+    },
+    {
+      "path": "independent-primary-pages/SH-physical-71.txt",
+      "sha256": "22da988dc2f8173a6b92d0422729f4f83658d5e0ae60a874a2c7fc068c6e2ba2",
+      "bytes": 4307
+    },
+    {
+      "path": "independent-primary-pages.json",
+      "sha256": "01852a9279cee40b558b4988b0ff3dffc427170e17333b706f942d980193292a",
+      "bytes": 10013
+    },
+    {
+      "path": "independent_checks.py",
+      "sha256": "ddf5fda2be5e8e23958b098728983e049a78f865e040ad47dccc77ddd59cd79b",
+      "bytes": 8925
+    },
+    {
+      "path": "input/author/CONTENT-HANDOFF.json",
+      "sha256": "f36795f002234b9b957a6b2bd98d6d53fb54cbba766ae0d5d9ea7bd38c049160",
+      "bytes": 2832
+    },
+    {
+      "path": "input/author/README.md",
+      "sha256": "fa07214cbea2b776e8cacedd5cc629246d3c7430100660e36a6e075c4f4a0fbc",
+      "bytes": 2829
+    },
+    {
+      "path": "input/author/actual-software/equivalent-other-seed.json",
+      "sha256": "5e3ed0be70aea04ff5b874ffccf2944aa18fae2ff3f4488425c10d51e6380569",
+      "bytes": 5135
+    },
+    {
+      "path": "input/author/actual-software/reference-chart.png",
+      "sha256": "f353b93564a38ae285060cfcb4302d351c723ed5b6f2a9c586fea084f85ee73c",
+      "bytes": 27712
+    },
+    {
+      "path": "input/author/actual-software/reference.json",
+      "sha256": "389b3d92e1d8b234463063f30a7a9293eb65b7e04f2024e889770d4f5a2ca240",
+      "bytes": 5063
+    },
+    {
+      "path": "input/author/asset-integration-map.proposal.json",
+      "sha256": "3618a8d5fb3cf56bd5369268eeee2dbe687b572ce36dd98503b21c92c03b7812",
+      "bytes": 1831
+    },
+    {
+      "path": "input/author/author-mathematics-check.json",
+      "sha256": "6fefb7273a4f4059393d56ea056273b995db3769ed165a59a851d3fc5cbfc34c",
+      "bytes": 16612
+    },
+    {
+      "path": "input/author/author-preparation-and-coverage-rationale.json",
+      "sha256": "28f156c668dcbd5ebd77d36fcf484d5cf5654d2b2391dd4835d4b8bbbdfe585b",
+      "bytes": 10497
+    },
+    {
+      "path": "input/author/author-rendering-check.json",
+      "sha256": "b2e705ab275bb3b3a14464e3a319d5bbbd4afe369e8d423c6de20c24211900f0",
+      "bytes": 63820
+    },
+    {
+      "path": "input/author/author-rubric-boundary-cases.json",
+      "sha256": "f64b00488ccf241ac7b8f8cae609a66d323a49294faed6d96814ce855c1008a6",
+      "bytes": 43413
+    },
+    {
+      "path": "input/author/author-visual-inspection.json",
+      "sha256": "6a4833a5d41867ea6447ad7326ec3a7a2f15d8d25aeafe89b6afecc0476f9bbd",
+      "bytes": 1915
+    },
+    {
+      "path": "input/author/author_forms.py",
+      "sha256": "0cb6cdfd539191464f9d23e2ed1517e45f2784a203caa547d9d4ae222d11e4dc",
+      "bytes": 104155
+    },
+    {
+      "path": "input/author/browser/new_bw_binomial_comparison.solutionContent.1100.png",
+      "sha256": "c141dc2954b5e76c5a561688b47a179ae73932ac037fbf86dd13f5368ead1b8e",
+      "bytes": 218634
+    },
+    {
+      "path": "input/author/browser/new_bw_binomial_comparison.solutionContentEn.1100.png",
+      "sha256": "39f408c8c2fa1fecfb27988aab676831c92901552aa79a337b6dd823d1d2d0a3",
+      "bytes": 175423
+    },
+    {
+      "path": "input/author/browser/new_bw_binomial_comparison.taskContent.1100.png",
+      "sha256": "0940831ad45f617d10b7980c75d6d89d6fbd545757a795fcdde01fa66d1af32a",
+      "bytes": 161569
+    },
+    {
+      "path": "input/author/browser/new_bw_binomial_comparison.taskContent.390.png",
+      "sha256": "1255700271e4343fcd37fcd141ba235c9a4e8dc16f1bdc235f83103dbe4c9c31",
+      "bytes": 125767
+    },
+    {
+      "path": "input/author/browser/new_bw_binomial_comparison.taskContentEn.1100.png",
+      "sha256": "42997427099559f34ef4f1839cb59e7e5c820b492065061c8ab53e1cb326f3b8",
+      "bytes": 149225
+    },
+    {
+      "path": "input/author/browser/new_bw_binomial_comparison.taskContentEn.390.png",
+      "sha256": "3b32e80bc42c86494174841a103c53aaca6d89f4538d7cd3dcb8e64fbd824986",
+      "bytes": 112114
+    },
+    {
+      "path": "input/author/browser/new_bw_independence.solutionContent.1100.png",
+      "sha256": "dc84188b5a91b42a3828d10a824f9273baee510b5a5371865b36327739372d08",
+      "bytes": 170307
+    },
+    {
+      "path": "input/author/browser/new_bw_independence.solutionContentEn.1100.png",
+      "sha256": "f80e763f8adc6777d0c91af2f111e8bf998da34a06bda6bd12c63341bcac7bee",
+      "bytes": 145280
+    },
+    {
+      "path": "input/author/browser/new_bw_independence.taskContent.1100.png",
+      "sha256": "fe682ac01de8e670f9ede5960b69ba295a7cf00c9f2b79ff1e99f63660c74957",
+      "bytes": 96997
+    },
+    {
+      "path": "input/author/browser/new_bw_independence.taskContent.390.png",
+      "sha256": "0d0ba8982d7778a69bd0a26f0536e632941aa7133caa7bab8e0f4a107b155eff",
+      "bytes": 93817
+    },
+    {
+      "path": "input/author/browser/new_bw_independence.taskContentEn.1100.png",
+      "sha256": "483e4157e4ff7c66d704ba2dbd81a0a5dcd71d413900b01f0ec14ae8cd09a950",
+      "bytes": 78096
+    },
+    {
+      "path": "input/author/browser/new_bw_independence.taskContentEn.390.png",
+      "sha256": "b166d03cfd366ba4212342a164c977b828cd9781c6af06105bb0f52cb769479f",
+      "bytes": 75600
+    },
+    {
+      "path": "input/author/browser/new_by_basic_stochastic_models.solutionContent.1100.png",
+      "sha256": "18a67dec5275661f891995b98e3066b7b400ef1063c59829d9d7db389542b3d0",
+      "bytes": 213992
+    },
+    {
+      "path": "input/author/browser/new_by_basic_stochastic_models.solutionContentEn.1100.png",
+      "sha256": "421fbde25bbca560caca4fb2e755beee9721cd71c03dde876db4669988b5bdff",
+      "bytes": 179753
+    },
+    {
+      "path": "input/author/browser/new_by_basic_stochastic_models.taskContent.1100.png",
+      "sha256": "48e32a9e6c62d1892ef1dc24c2baa5035f8cd0f79a043e2cd27e057fc1ca5307",
+      "bytes": 146463
+    },
+    {
+      "path": "input/author/browser/new_by_basic_stochastic_models.taskContent.390.png",
+      "sha256": "07f17a867da701725974a36834c1aa9871886de15775523e1e5ce99d0e6009db",
+      "bytes": 125264
+    },
+    {
+      "path": "input/author/browser/new_by_basic_stochastic_models.taskContentEn.1100.png",
+      "sha256": "eb7f70da4a2b25c40236d7abde11ba844fd6acd7540f8d53eb089c70110567b8",
+      "bytes": 135193
+    },
+    {
+      "path": "input/author/browser/new_by_basic_stochastic_models.taskContentEn.390.png",
+      "sha256": "80b6cf21b334443290e0a1ff870a099843ef379007f9033acb7837953fe61bcc",
+      "bytes": 115012
+    },
+    {
+      "path": "input/author/browser/new_by_critical_conditional_data.solutionContent.1100.png",
+      "sha256": "a53b53ca3c9a775bced694ee01a725c80f7ae072da9923f255929f32f88470d3",
+      "bytes": 311768
+    },
+    {
+      "path": "input/author/browser/new_by_critical_conditional_data.solutionContentEn.1100.png",
+      "sha256": "c553aa5fc9d497e728bd617de5b6c023d2bbab5dd68633d58c9018b35462bd51",
+      "bytes": 268213
+    },
+    {
+      "path": "input/author/browser/new_by_critical_conditional_data.taskContent.1100.png",
+      "sha256": "62dd42bec8539e05fbd8839242d979dde4cfccd4a0e660fea65f05effcf4d918",
+      "bytes": 200089
+    },
+    {
+      "path": "input/author/browser/new_by_critical_conditional_data.taskContent.390.png",
+      "sha256": "77b5887c62ac7cc29279a4b53db1da6001453a187f9b256ef0ef6b99b471f03f",
+      "bytes": 204232
+    },
+    {
+      "path": "input/author/browser/new_by_critical_conditional_data.taskContentEn.1100.png",
+      "sha256": "0845e5b3de1c583de719830e0d0097c8159c47392d2bed1c42bbe0fb0c6b9c79",
+      "bytes": 160543
+    },
+    {
+      "path": "input/author/browser/new_by_critical_conditional_data.taskContentEn.390.png",
+      "sha256": "7955fcd7bd26ae06de346361a709cf2362bcdb1ce50dcdca5a4d7e590eba22e3",
+      "bytes": 159738
+    },
+    {
+      "path": "input/author/browser/new_by_test_interpretation.solutionContent.1100.png",
+      "sha256": "e10c047610f24cd5d097374462455cbe5abb5a3f3d2d8a8dbf4353596ea28d42",
+      "bytes": 204434
+    },
+    {
+      "path": "input/author/browser/new_by_test_interpretation.solutionContentEn.1100.png",
+      "sha256": "37c2ee21e122a9891c9ee4cae2d32ee33448de4994d66e7f69df2e3a00c9e857",
+      "bytes": 170609
+    },
+    {
+      "path": "input/author/browser/new_by_test_interpretation.taskContent.1100.png",
+      "sha256": "663ef4be5413790b59c85f6683c3e8f8f5faecde111d5d1c3c1e32c9b91509e8",
+      "bytes": 134917
+    },
+    {
+      "path": "input/author/browser/new_by_test_interpretation.taskContent.390.png",
+      "sha256": "7b1a43dec2118ec8c91f9001ceaa94f4b3e97dfd60976f062bde6aa8147063f2",
+      "bytes": 136379
+    },
+    {
+      "path": "input/author/browser/new_by_test_interpretation.taskContentEn.1100.png",
+      "sha256": "315df38b167909867e885358627c46635334602d538d5bc176da06faaaa4d915",
+      "bytes": 117046
+    },
+    {
+      "path": "input/author/browser/new_by_test_interpretation.taskContentEn.390.png",
+      "sha256": "690c6725c530f64d2d81f121de6b3edc6b58ce83410122ba74d9aee1cc53078b",
+      "bytes": 119709
+    },
+    {
+      "path": "input/author/browser/new_gk_binomial_test_variation.solutionContent.1100.png",
+      "sha256": "5d198ed30ba5fa18a7c42439a773877fe287e21bf16cf524a5819652e8a2cd52",
+      "bytes": 243731
+    },
+    {
+      "path": "input/author/browser/new_gk_binomial_test_variation.solutionContentEn.1100.png",
+      "sha256": "279e9e94ccac4f122423f7575baae43811e1548b4b42038a9d8ecee191187f2b",
+      "bytes": 195012
+    },
+    {
+      "path": "input/author/browser/new_gk_binomial_test_variation.taskContent.1100.png",
+      "sha256": "84c3e7c78bee889db11fa126ba745540bea7db380dccd660207d73f6f85e92f8",
+      "bytes": 152094
+    },
+    {
+      "path": "input/author/browser/new_gk_binomial_test_variation.taskContent.390.png",
+      "sha256": "e37316f99627595c5f10acf014bd33b9207c7e5621a78251e73a7af05b409c5c",
+      "bytes": 156778
+    },
+    {
+      "path": "input/author/browser/new_gk_binomial_test_variation.taskContentEn.1100.png",
+      "sha256": "fb39c1ef1705758016ddc1ca930b469d9d785ba4dddf77536f9dd8ae9a8b2629",
+      "bytes": 123458
+    },
+    {
+      "path": "input/author/browser/new_gk_binomial_test_variation.taskContentEn.390.png",
+      "sha256": "674737b83d3c8668072047a450a0e62b6b6c4083ee2f72e676db5dc3a6b5a697",
+      "bytes": 125360
+    },
+    {
+      "path": "input/author/browser/new_he_g8_descriptive_statistics.solutionContent.1100.png",
+      "sha256": "43d02488967fa97ae8757240d66153c0e8353863c9f69208e1f18dbc4287b4fa",
+      "bytes": 225281
+    },
+    {
+      "path": "input/author/browser/new_he_g8_descriptive_statistics.solutionContentEn.1100.png",
+      "sha256": "4402136aa926d1d5da55d0c34041bdcd80113867add1390b9277408255b2fcec",
+      "bytes": 185066
+    },
+    {
+      "path": "input/author/browser/new_he_g8_descriptive_statistics.taskContent.1100.png",
+      "sha256": "58c1bb91f0e6718ceb51c3e754c1928c65b144b4efcac975e2ad459ff7549043",
+      "bytes": 135451
+    },
+    {
+      "path": "input/author/browser/new_he_g8_descriptive_statistics.taskContent.390.png",
+      "sha256": "0f593df892d03fad97adcd9032d437aa2cc0156613f1114be9dda6059c55dde6",
+      "bytes": 132730
+    },
+    {
+      "path": "input/author/browser/new_he_g8_descriptive_statistics.taskContentEn.1100.png",
+      "sha256": "330ba7ea7465d101571068fa07eecf4e06dd0f387be63d50fa8ca687f5731229",
+      "bytes": 117288
+    },
+    {
+      "path": "input/author/browser/new_he_g8_descriptive_statistics.taskContentEn.390.png",
+      "sha256": "c5efaa1d13fc41ecfdb2051d7b81b0ce37ef4292fb9387b8e2e45e8f7f66ceb3",
+      "bytes": 109747
+    },
+    {
+      "path": "input/author/browser/new_he_g9_software_simulation.solutionContent.1100.png",
+      "sha256": "5502d37d96758429230ff8e95d7e435a1fd794867af39657c1fd2519f7a57d88",
+      "bytes": 251120
+    },
+    {
+      "path": "input/author/browser/new_he_g9_software_simulation.solutionContentEn.1100.png",
+      "sha256": "d44893552172e944e0fa27062cd2dd00b065f72008d4da3a84f1d623a43267ce",
+      "bytes": 204140
+    },
+    {
+      "path": "input/author/browser/new_he_g9_software_simulation.taskContent.1100.png",
+      "sha256": "d8663245a6cefc8e207497135b401d086ea5baf2abdaf7e173716c1133d10aac",
+      "bytes": 135451
+    },
+    {
+      "path": "input/author/browser/new_he_g9_software_simulation.taskContent.390.png",
+      "sha256": "f8a9abbf7f9ed030594779cd39824099124b7d05a977c4dfefa8599f8d05db75",
+      "bytes": 130573
+    },
+    {
+      "path": "input/author/browser/new_he_g9_software_simulation.taskContentEn.1100.png",
+      "sha256": "40cfb685d10b7f5b743f875f88741478f02227c099ff7c9e190ca41afc3b816f",
+      "bytes": 109240
+    },
+    {
+      "path": "input/author/browser/new_he_g9_software_simulation.taskContentEn.390.png",
+      "sha256": "58d6f6113c2c9c256d897a438902bc2e8d7b6cdd22249eb75a8b0cb32f0c4df1",
+      "bytes": 105954
+    },
+    {
+      "path": "input/author/browser/new_he_g9_survey_critique.solutionContent.1100.png",
+      "sha256": "bc562f52ce0c37e55538148e8c3f7ccaea01b99ad7478f444329a77afb0dda0e",
+      "bytes": 239653
+    },
+    {
+      "path": "input/author/browser/new_he_g9_survey_critique.solutionContentEn.1100.png",
+      "sha256": "744e1bf1ccd1fc64456f7210d03b6bb92fc597971fb0c3668bb89bc0d03d7803",
+      "bytes": 192065
+    },
+    {
+      "path": "input/author/browser/new_he_g9_survey_critique.taskContent.1100.png",
+      "sha256": "7f6802029aad14ce684568adf222ef63472d47ba825aaf09a5a38405dd2c6f88",
+      "bytes": 145754
+    },
+    {
+      "path": "input/author/browser/new_he_g9_survey_critique.taskContent.390.png",
+      "sha256": "ac8f067b15ea6ad964ad76760f902b1bd3ac69890f5fbaf63b08551c7ec6ec04",
+      "bytes": 143514
+    },
+    {
+      "path": "input/author/browser/new_he_g9_survey_critique.taskContentEn.1100.png",
+      "sha256": "eee860314848c4d20664d919af2ac1ea636124f06974b28c8b338010e2bdb772",
+      "bytes": 125996
+    },
+    {
+      "path": "input/author/browser/new_he_g9_survey_critique.taskContentEn.390.png",
+      "sha256": "1c2e414aec974d7eb38e4d0a032fee67b5b5a1e7ae9e3ee12548667939e2db85",
+      "bytes": 122313
+    },
+    {
+      "path": "input/author/browser/new_sh_discrete_binomial_context.solutionContent.1100.png",
+      "sha256": "85cd469898cb3d2f0f00a173798556cbcc7920c1031a84a9daae33598bb4b9bd",
+      "bytes": 277919
+    },
+    {
+      "path": "input/author/browser/new_sh_discrete_binomial_context.solutionContentEn.1100.png",
+      "sha256": "2a1972bff9ec00f2d215af36b62a33321a3bc14c095f537e456cf8258d80fa58",
+      "bytes": 226415
+    },
+    {
+      "path": "input/author/browser/new_sh_discrete_binomial_context.taskContent.1100.png",
+      "sha256": "cc4c3e61b78ebee25eea20cabb1d9ce0516f4e4a2d043fdcdcb6c56dacb8795c",
+      "bytes": 205774
+    },
+    {
+      "path": "input/author/browser/new_sh_discrete_binomial_context.taskContent.390.png",
+      "sha256": "91795a8d0568ab286d414145c66a1b5a85fa182a862ec00e9831561adad1157a",
+      "bytes": 160914
+    },
+    {
+      "path": "input/author/browser/new_sh_discrete_binomial_context.taskContentEn.1100.png",
+      "sha256": "16c93067840d37f97773c0bc3bb9f1e7e00db1207468186beac13692050dde71",
+      "bytes": 185546
+    },
+    {
+      "path": "input/author/browser/new_sh_discrete_binomial_context.taskContentEn.390.png",
+      "sha256": "d33258660df73893139ef059c89286dbdc01e84d6f225dfd6fc5b821d69f2ea9",
+      "bytes": 138214
+    },
+    {
+      "path": "input/author/browser/new_urn_model_comparison.solutionContent.1100.png",
+      "sha256": "e8466339281f005e0aca2413843006b2c67f1f486e28f631cfa67ce183d1659a",
+      "bytes": 193367
+    },
+    {
+      "path": "input/author/browser/new_urn_model_comparison.solutionContentEn.1100.png",
+      "sha256": "1a5801fb8a7e942060a32ba76e1d6d1acd71899be80ef14672b20ee7af364b08",
+      "bytes": 167697
+    },
+    {
+      "path": "input/author/browser/new_urn_model_comparison.taskContent.1100.png",
+      "sha256": "e882e82e192a46e942363823836ffbe9c9004cf5bfd9bdc5640bf9d6e612f8b3",
+      "bytes": 102897
+    },
+    {
+      "path": "input/author/browser/new_urn_model_comparison.taskContent.390.png",
+      "sha256": "098272e4c15954dfa75321bfb9c5f6cbb524ea2601e455a7e5218e507365bb17",
+      "bytes": 99496
+    },
+    {
+      "path": "input/author/browser/new_urn_model_comparison.taskContentEn.1100.png",
+      "sha256": "e1581c1782c2a60f858e7825422780c0dadd06ccf294ca9dc94dbc1b1471c2c6",
+      "bytes": 85810
+    },
+    {
+      "path": "input/author/browser/new_urn_model_comparison.taskContentEn.390.png",
+      "sha256": "2423082163c902561c8dee23828dd6b51b4fff143f89b635a73d8c7a894794fb",
+      "bytes": 84683
+    },
+    {
+      "path": "input/author/browser/same_id_poisson_formal_limit.solutionContent.1100.png",
+      "sha256": "ca920d84e25b1cd32f4228c1bdb89bce943577eb151d2a7c6252083307ffaeb2",
+      "bytes": 322073
+    },
+    {
+      "path": "input/author/browser/same_id_poisson_formal_limit.solutionContentEn.1100.png",
+      "sha256": "588e68cb7851649da4e77eca3878e29c73793f0e579c7102841e20432bd94d79",
+      "bytes": 261676
+    },
+    {
+      "path": "input/author/browser/same_id_poisson_formal_limit.taskContent.1100.png",
+      "sha256": "0e587f3481e4a65d5fef248870effa0450994e3e7be12a9801f3cf9587bb7337",
+      "bytes": 158153
+    },
+    {
+      "path": "input/author/browser/same_id_poisson_formal_limit.taskContent.390.png",
+      "sha256": "16c866fbccf70a2ab5377189aa40446eb8b806d727503fb7251938ded7701387",
+      "bytes": 158105
+    },
+    {
+      "path": "input/author/browser/same_id_poisson_formal_limit.taskContentEn.1100.png",
+      "sha256": "64aa2eb25c4058f5f356320979d43b089dbcdf15a1698e8c08c2896cfaf22130",
+      "bytes": 136581
+    },
+    {
+      "path": "input/author/browser/same_id_poisson_formal_limit.taskContentEn.390.png",
+      "sha256": "5f1b746d5c5880dd395c86e826765d83160094bf6a9c214783e2a4b2e048586d",
+      "bytes": 132604
+    },
+    {
+      "path": "input/author/current-read-only-original-contract-binding.json",
+      "sha256": "352fae78dfcfd97949304758e7b384a5d3e741ad123bb6aeb05c7bc5835653d8",
+      "bytes": 598
+    },
+    {
+      "path": "input/author/existing-six-whole-reuse-byte-bindings.json",
+      "sha256": "91468313c2893bbf0685bf9de11e14bd684607700d24c3ab4d4c4714dadb194b",
+      "bytes": 11447
+    },
+    {
+      "path": "input/author/finalize_review_input.py",
+      "sha256": "3c515fa3e485be7ece149a454132244dd792a7e996c9ce8e273203d3e78cd1ae",
+      "bytes": 15385
+    },
+    {
+      "path": "input/author/forms/095df29a-6791-50aa-aff1-b3d94d9b5eeb/identity-preparation-coverage-source.draft.json",
+      "sha256": "8b52890e73018b82063dfa04134f5e4492dab8009c149ce4858bb9bb29029393",
+      "bytes": 923
+    },
+    {
+      "path": "input/author/forms/095df29a-6791-50aa-aff1-b3d94d9b5eeb/rubric.de.md",
+      "sha256": "73e7ba03454ac877d5e631c89b5d8a6c4956813d2c7197682e70a1ff7d1df1e0",
+      "bytes": 1091
+    },
+    {
+      "path": "input/author/forms/095df29a-6791-50aa-aff1-b3d94d9b5eeb/rubric.en.md",
+      "sha256": "d44550b856317407b66523f1c10416d1b8c319c474dedef541b75f4a3e80eaf1",
+      "bytes": 1004
+    },
+    {
+      "path": "input/author/forms/095df29a-6791-50aa-aff1-b3d94d9b5eeb/solution.de.md",
+      "sha256": "19e05c16702c507aa70b50c717187a89b14a53dc637eded3b9be12dd9107c2b1",
+      "bytes": 2011
+    },
+    {
+      "path": "input/author/forms/095df29a-6791-50aa-aff1-b3d94d9b5eeb/solution.en.md",
+      "sha256": "ac87188062ffcfab915887385002bfe251fa92f78508facee33c05f9c6b6a171",
+      "bytes": 1540
+    },
+    {
+      "path": "input/author/forms/095df29a-6791-50aa-aff1-b3d94d9b5eeb/solutionContent.preview.html",
+      "sha256": "3581f8ac83211c4e491d54c7104e7fbfaec655696899213df305f547be4687c9",
+      "bytes": 11193
+    },
+    {
+      "path": "input/author/forms/095df29a-6791-50aa-aff1-b3d94d9b5eeb/solutionContentEn.preview.html",
+      "sha256": "a2f15033c48ef5208710376128147c5f0affc963e52e1205e8106512fbc19655",
+      "bytes": 10570
+    },
+    {
+      "path": "input/author/forms/095df29a-6791-50aa-aff1-b3d94d9b5eeb/task.de.md",
+      "sha256": "10054c2b27efbfec13f53cdaa829d02dc3aab35d7b16594450bebaac0eae00b8",
+      "bytes": 1702
+    },
+    {
+      "path": "input/author/forms/095df29a-6791-50aa-aff1-b3d94d9b5eeb/task.en.md",
+      "sha256": "c3e07fdaea182144a97030ce6c4184e05f2ba246458f8073e6d0e97ff8b7fa9e",
+      "bytes": 1328
+    },
+    {
+      "path": "input/author/forms/095df29a-6791-50aa-aff1-b3d94d9b5eeb/taskContent.preview.html",
+      "sha256": "cb23e6fdf4434d8d6aeb724da049e70c245a5835680ce858b8ca2f1d2c6d77d4",
+      "bytes": 7201
+    },
+    {
+      "path": "input/author/forms/095df29a-6791-50aa-aff1-b3d94d9b5eeb/taskContentEn.preview.html",
+      "sha256": "065e2eff8dab36fabd9a43009c121895736dbe779b48d6d7f9cbd1c2aab50df3",
+      "bytes": 6829
+    },
+    {
+      "path": "input/author/forms/095df29a-6791-50aa-aff1-b3d94d9b5eeb/whole-form-content.draft.json",
+      "sha256": "750a1638b90e5e688c2ec8fc5225012bdda2ee2a7a5e598afcb93056d01eee44",
+      "bytes": 11274
+    },
+    {
+      "path": "input/author/forms/1cefd1ad-a250-5a03-8de7-04bdaf465ad8/identity-preparation-coverage-source.draft.json",
+      "sha256": "95a939a4f1e2cf56759c46b0a0115108c03296261a561c9e79ac0d7ac59b128e",
+      "bytes": 5011
+    },
+    {
+      "path": "input/author/forms/1cefd1ad-a250-5a03-8de7-04bdaf465ad8/rubric.de.md",
+      "sha256": "4e4378e01b635860a6953c64315161c512d96d73ca14941a2e666dcc5cc3c021",
+      "bytes": 1831
+    },
+    {
+      "path": "input/author/forms/1cefd1ad-a250-5a03-8de7-04bdaf465ad8/rubric.en.md",
+      "sha256": "cd13208457b58326036fa493c3c0426433dbe57dfcfff53f923953c7781f9308",
+      "bytes": 1593
+    },
+    {
+      "path": "input/author/forms/1cefd1ad-a250-5a03-8de7-04bdaf465ad8/solution.de.md",
+      "sha256": "19405fc9e943d483ffef7ede2bafdb173bfe03e96f280f74d5b040f9515a2edd",
+      "bytes": 2367
+    },
+    {
+      "path": "input/author/forms/1cefd1ad-a250-5a03-8de7-04bdaf465ad8/solution.en.md",
+      "sha256": "853f488b5a45109782020587fe464eab2e56443389146d67c96f3431255ef439",
+      "bytes": 1878
+    },
+    {
+      "path": "input/author/forms/1cefd1ad-a250-5a03-8de7-04bdaf465ad8/solutionContent.preview.html",
+      "sha256": "6eaa24621fd4b498b276175872efdf935cef568fc88a99898e36b84f5df6392c",
+      "bytes": 69915
+    },
+    {
+      "path": "input/author/forms/1cefd1ad-a250-5a03-8de7-04bdaf465ad8/solutionContentEn.preview.html",
+      "sha256": "be2a95651a9b3b381b1bf2f412a53b496b519f8706601bb4ce399aa28e0a9b8b",
+      "bytes": 46866
+    },
+    {
+      "path": "input/author/forms/1cefd1ad-a250-5a03-8de7-04bdaf465ad8/task.de.md",
+      "sha256": "0ed7a2f365567aa8e129d9014e41859f051f76613e49dd211cdff0c52666588d",
+      "bytes": 2017
+    },
+    {
+      "path": "input/author/forms/1cefd1ad-a250-5a03-8de7-04bdaf465ad8/task.en.md",
+      "sha256": "6d41bab06f777d1a3912ccf114e92fda4cdef6e1c8ca03beccfdd34850638ee7",
+      "bytes": 1705
+    },
+    {
+      "path": "input/author/forms/1cefd1ad-a250-5a03-8de7-04bdaf465ad8/taskContent.preview.html",
+      "sha256": "8e27e3ae00e35d5667193cac3b22c7100222d0af0a31d0a1c200747ca11b8c49",
+      "bytes": 44041
+    },
+    {
+      "path": "input/author/forms/1cefd1ad-a250-5a03-8de7-04bdaf465ad8/taskContentEn.preview.html",
+      "sha256": "2dddae99539df11de8d24e43cf747a7063af952d945f146edcbaff69ba1b6252",
+      "bytes": 40082
+    },
+    {
+      "path": "input/author/forms/1cefd1ad-a250-5a03-8de7-04bdaf465ad8/whole-form-content.draft.json",
+      "sha256": "8e33da038b00b74f8cd84e8e27f574b5ba015a55fc065780dbab48e0af6834bf",
+      "bytes": 14227
+    },
+    {
+      "path": "input/author/forms/51b008fd-2ce4-5e38-98b1-75c9ede34f6d/identity-preparation-coverage-source.draft.json",
+      "sha256": "e520db6d4d454ec4d6cc940fc461ca4db9610432b0dfe2eb072cc32455842cb7",
+      "bytes": 852
+    },
+    {
+      "path": "input/author/forms/51b008fd-2ce4-5e38-98b1-75c9ede34f6d/rubric.de.md",
+      "sha256": "1348a2e59dfd24c16fd1ff0d7a7bfd797a839db015559e226dd9a6bd4b30eca7",
+      "bytes": 971
+    },
+    {
+      "path": "input/author/forms/51b008fd-2ce4-5e38-98b1-75c9ede34f6d/rubric.en.md",
+      "sha256": "bf67fcdb59de3dd7aaf0a53234daa24477a8a22e8e6f3ae402614866396d6a43",
+      "bytes": 888
+    },
+    {
+      "path": "input/author/forms/51b008fd-2ce4-5e38-98b1-75c9ede34f6d/solution.de.md",
+      "sha256": "dac55e1e94339c5dd5adfc769338b70d5781085847643b22b9e368476f287a47",
+      "bytes": 1217
+    },
+    {
+      "path": "input/author/forms/51b008fd-2ce4-5e38-98b1-75c9ede34f6d/solution.en.md",
+      "sha256": "d967a84bccab689cce8d256289184aa75d1ecd5429d973ab7caa551dd6df675e",
+      "bytes": 1020
+    },
+    {
+      "path": "input/author/forms/51b008fd-2ce4-5e38-98b1-75c9ede34f6d/solutionContent.preview.html",
+      "sha256": "55fea147d78bb6d5199b859431ddca229ede22dc397cf60a8b6c42dea1cff648",
+      "bytes": 21722
+    },
+    {
+      "path": "input/author/forms/51b008fd-2ce4-5e38-98b1-75c9ede34f6d/solutionContentEn.preview.html",
+      "sha256": "381de6686c3e2779ee3d0d671db958a62606ce5428c40dfe2868be7c4c6d8ebe",
+      "bytes": 19283
+    },
+    {
+      "path": "input/author/forms/51b008fd-2ce4-5e38-98b1-75c9ede34f6d/task.de.md",
+      "sha256": "47a28eecf06e15e87495eec60aa2800d6903a52a667c1cad1b2150ba1de7451d",
+      "bytes": 1146
+    },
+    {
+      "path": "input/author/forms/51b008fd-2ce4-5e38-98b1-75c9ede34f6d/task.en.md",
+      "sha256": "bf8972ac729144c0576badbcc8528a194687450b48f35f15c1d6c9e2e8d75470",
+      "bytes": 911
+    },
+    {
+      "path": "input/author/forms/51b008fd-2ce4-5e38-98b1-75c9ede34f6d/taskContent.preview.html",
+      "sha256": "d357de195927ddd1997631128d1cc8980ce8d422e761d3b1e377256f51f7092a",
+      "bytes": 9682
+    },
+    {
+      "path": "input/author/forms/51b008fd-2ce4-5e38-98b1-75c9ede34f6d/taskContentEn.preview.html",
+      "sha256": "6426db22d2c14101eaa221e0424d29d2f0f014eec21e3563384ccf844483b35a",
+      "bytes": 9449
+    },
+    {
+      "path": "input/author/forms/51b008fd-2ce4-5e38-98b1-75c9ede34f6d/whole-form-content.draft.json",
+      "sha256": "f80343a8edbb22190155498ce1d361d441d2952e9bf48e921c631e67d98c57f5",
+      "bytes": 8447
+    },
+    {
+      "path": "input/author/forms/57833097-393c-5a08-8c03-e161b43cb9cc/identity-preparation-coverage-source.draft.json",
+      "sha256": "b811a5fa5cc042c480bc8e3688a92380d160c2e553edd505206b2fedce6ecb7d",
+      "bytes": 1558
+    },
+    {
+      "path": "input/author/forms/57833097-393c-5a08-8c03-e161b43cb9cc/rubric.de.md",
+      "sha256": "f2796cd2d9919cdf93c65967ca2f18e8baad1f017ef3eff974712a987c112267",
+      "bytes": 1027
+    },
+    {
+      "path": "input/author/forms/57833097-393c-5a08-8c03-e161b43cb9cc/rubric.en.md",
+      "sha256": "f19747017c129472d4e39281c3e2f498113bdef527e4be9a2a177e851e605f87",
+      "bytes": 949
+    },
+    {
+      "path": "input/author/forms/57833097-393c-5a08-8c03-e161b43cb9cc/solution.de.md",
+      "sha256": "0fd5eb4b8cae10a0fc5c109bab8193c889b80649320e8889748dc6046f40ad94",
+      "bytes": 1499
+    },
+    {
+      "path": "input/author/forms/57833097-393c-5a08-8c03-e161b43cb9cc/solution.en.md",
+      "sha256": "9ea0ef9d67dcecdb8ced6988a2326d44e541b056ba08346763f5db15e6790c05",
+      "bytes": 1243
+    },
+    {
+      "path": "input/author/forms/57833097-393c-5a08-8c03-e161b43cb9cc/solutionContent.preview.html",
+      "sha256": "4425f1390080aae604be3b358021b7deb47fbb06a78c4c4d6254bcfd8d751c51",
+      "bytes": 37201
+    },
+    {
+      "path": "input/author/forms/57833097-393c-5a08-8c03-e161b43cb9cc/solutionContentEn.preview.html",
+      "sha256": "64532e8634a90cd3392a4f23aa9b041e9110013f33a2bafff81dc0aaefe75c29",
+      "bytes": 24067
+    },
+    {
+      "path": "input/author/forms/57833097-393c-5a08-8c03-e161b43cb9cc/task.de.md",
+      "sha256": "0818559865ce85dd0898442e8ca11a372b5018ba48f3264e29fb447e71c52804",
+      "bytes": 1250
+    },
+    {
+      "path": "input/author/forms/57833097-393c-5a08-8c03-e161b43cb9cc/task.en.md",
+      "sha256": "a7478a8ac3b6f7462cc5437919a534558cbe610c9af6069e18eba7dbe57586e0",
+      "bytes": 993
+    },
+    {
+      "path": "input/author/forms/57833097-393c-5a08-8c03-e161b43cb9cc/taskContent.preview.html",
+      "sha256": "3a0a2583a436c9e333097a9b1971314668fd496ae46987c18fed29c14c35ae5b",
+      "bytes": 6511
+    },
+    {
+      "path": "input/author/forms/57833097-393c-5a08-8c03-e161b43cb9cc/taskContentEn.preview.html",
+      "sha256": "32d20292637af22912060b2c1914be58ce1871089ee07e71a0c077f604072314",
+      "bytes": 5597
+    },
+    {
+      "path": "input/author/forms/57833097-393c-5a08-8c03-e161b43cb9cc/whole-form-content.draft.json",
+      "sha256": "ab8a8d19f6564ef38472bf4c3a994ea326240957861b5a03f7f1684c3060169c",
+      "bytes": 9478
+    },
+    {
+      "path": "input/author/forms/63576e96-1fdd-5bd5-a875-e0c010a534d7/identity-preparation-coverage-source.draft.json",
+      "sha256": "6c4707078de27af1d326240fb1350a3203f928b8e7e73eca339774e11a51e709",
+      "bytes": 2035
+    },
+    {
+      "path": "input/author/forms/63576e96-1fdd-5bd5-a875-e0c010a534d7/rubric.de.md",
+      "sha256": "64cb6c2525b5fa48af4f83938fb886c1a6bda1fb403add930c93e0bbd5a5d513",
+      "bytes": 1050
+    },
+    {
+      "path": "input/author/forms/63576e96-1fdd-5bd5-a875-e0c010a534d7/rubric.en.md",
+      "sha256": "5cdf3a105c16329bd6c4fe34c7e71222bc5754e65ab7da8a7e42faab190fb4b4",
+      "bytes": 970
+    },
+    {
+      "path": "input/author/forms/63576e96-1fdd-5bd5-a875-e0c010a534d7/solution.de.md",
+      "sha256": "f8e4c2f6b75f41fd83cfcaf3bbb79cf7a981425220576443a25ace037b853034",
+      "bytes": 2102
+    },
+    {
+      "path": "input/author/forms/63576e96-1fdd-5bd5-a875-e0c010a534d7/solution.en.md",
+      "sha256": "2c54fec584476b53fb48bcb184ba43f0d090c4a543eca8c4608e48d7161efb31",
+      "bytes": 1552
+    },
+    {
+      "path": "input/author/forms/63576e96-1fdd-5bd5-a875-e0c010a534d7/solutionContent.preview.html",
+      "sha256": "15420f4c810e83f0c42ed16225d4bbf839d451c504c7a69ad58ce73686781be8",
+      "bytes": 24226
+    },
+    {
+      "path": "input/author/forms/63576e96-1fdd-5bd5-a875-e0c010a534d7/solutionContentEn.preview.html",
+      "sha256": "ac01292235841b37837293c79d64de917b883e8211bac7117e2c3eb85567c6b8",
+      "bytes": 14564
+    },
+    {
+      "path": "input/author/forms/63576e96-1fdd-5bd5-a875-e0c010a534d7/task.de.md",
+      "sha256": "37c3a5bcf06e5140b73dcee22ff7e5e023fae59c578b8770824ae2f7d97c0a11",
+      "bytes": 1899
+    },
+    {
+      "path": "input/author/forms/63576e96-1fdd-5bd5-a875-e0c010a534d7/task.en.md",
+      "sha256": "86be53f5b1154265347cf3f34584d18e4e1b7f94743f7d14b7efdb70b2bbf6e7",
+      "bytes": 1504
+    },
+    {
+      "path": "input/author/forms/63576e96-1fdd-5bd5-a875-e0c010a534d7/taskContent.preview.html",
+      "sha256": "5c52e9f99f7a35a9f4f65963a7e4775229f7a68b5ebbf1404a69314351b39fb8",
+      "bytes": 28544
+    },
+    {
+      "path": "input/author/forms/63576e96-1fdd-5bd5-a875-e0c010a534d7/taskContentEn.preview.html",
+      "sha256": "2126ff89b80df2b8780410ae9d8b7fdd536e1af88572c82989cc4d7abcc41971",
+      "bytes": 26095
+    },
+    {
+      "path": "input/author/forms/63576e96-1fdd-5bd5-a875-e0c010a534d7/whole-form-content.draft.json",
+      "sha256": "1bff3573e18c77599537fee724e9bd3cb60eb25bc7c6c869589e9e4848f2be61",
+      "bytes": 11630
+    },
+    {
+      "path": "input/author/forms/6e977ea1-0d38-54bb-82d7-12e6326845af/identity-preparation-coverage-source.draft.json",
+      "sha256": "7531390fa8aff8d70a7c59894f62f1527c85a3f5b3827a0cdc69240ed727d4c3",
+      "bytes": 1133
+    },
+    {
+      "path": "input/author/forms/6e977ea1-0d38-54bb-82d7-12e6326845af/rubric.de.md",
+      "sha256": "a03f1d43121b480b87f0cf95449a65188e293bf466df01ccc711182d79b3284b",
+      "bytes": 1046
+    },
+    {
+      "path": "input/author/forms/6e977ea1-0d38-54bb-82d7-12e6326845af/rubric.en.md",
+      "sha256": "3799a795ae857f866810655e109f8089a058e7625049dc4549b93a743296651d",
+      "bytes": 941
+    },
+    {
+      "path": "input/author/forms/6e977ea1-0d38-54bb-82d7-12e6326845af/solution.de.md",
+      "sha256": "d89aababe2d2d15c1b1f7bd82f5f01d68aac2ccf80b1e2ead1173034085573cd",
+      "bytes": 1945
+    },
+    {
+      "path": "input/author/forms/6e977ea1-0d38-54bb-82d7-12e6326845af/solution.en.md",
+      "sha256": "bc563d2f10805e387408e05a294e32422fd446de06ebc6747248dc7dd8df7f73",
+      "bytes": 1540
+    },
+    {
+      "path": "input/author/forms/6e977ea1-0d38-54bb-82d7-12e6326845af/solutionContent.preview.html",
+      "sha256": "30cd5aeba1bf848c5434d26aa36fd1d50f05769e318a6503a150bca3786564e5",
+      "bytes": 36755
+    },
+    {
+      "path": "input/author/forms/6e977ea1-0d38-54bb-82d7-12e6326845af/solutionContentEn.preview.html",
+      "sha256": "01d7be588a04e4b936c4cc2e2cb55e04cb6e6a57ad399c5ca5ea6e2b07d3e054",
+      "bytes": 27059
+    },
+    {
+      "path": "input/author/forms/6e977ea1-0d38-54bb-82d7-12e6326845af/task.de.md",
+      "sha256": "c3ed8a309304fbdd62f8b32f73f4e7f8be4e4a9f4309e34191656fbce29f14d8",
+      "bytes": 1648
+    },
+    {
+      "path": "input/author/forms/6e977ea1-0d38-54bb-82d7-12e6326845af/task.en.md",
+      "sha256": "c0c18d2f1f2e637377518e2e0695c527ce09a6f53348acb57c021ff07163ea8d",
+      "bytes": 1357
+    },
+    {
+      "path": "input/author/forms/6e977ea1-0d38-54bb-82d7-12e6326845af/taskContent.preview.html",
+      "sha256": "f04f1b5c32017002294d5256f7ab1b9579749cd0c2319c3c14d52e5b112624f6",
+      "bytes": 14742
+    },
+    {
+      "path": "input/author/forms/6e977ea1-0d38-54bb-82d7-12e6326845af/taskContentEn.preview.html",
+      "sha256": "2e847e7ac612f7ceab65b850657930b139c91a3cb773506fcba61cf6583b7904",
+      "bytes": 14463
+    },
+    {
+      "path": "input/author/forms/6e977ea1-0d38-54bb-82d7-12e6326845af/whole-form-content.draft.json",
+      "sha256": "ec3de4f5387646c5aadbac0d3965651dbe6062f2b3d808bb332c91392ed222df",
+      "bytes": 11104
+    },
+    {
+      "path": "input/author/forms/7246cd87-b720-5866-8c0c-3b93fec46189/assets/by-measurements.png",
+      "sha256": "af2226a0c2dd3f78d10176fae4924e4692f4c7c2ea389887a2f04c0787a1cfcf",
+      "bytes": 29685
+    },
+    {
+      "path": "input/author/forms/7246cd87-b720-5866-8c0c-3b93fec46189/identity-preparation-coverage-source.draft.json",
+      "sha256": "4a255a56ace20b58b11134a248f3cf500899e1e17fa693fa8f21549eb2049b43",
+      "bytes": 982
+    },
+    {
+      "path": "input/author/forms/7246cd87-b720-5866-8c0c-3b93fec46189/rubric.de.md",
+      "sha256": "78788bc15e870a5c9b644c17d3d52744232412e15ae326764535ad3a9acb119d",
+      "bytes": 1008
+    },
+    {
+      "path": "input/author/forms/7246cd87-b720-5866-8c0c-3b93fec46189/rubric.en.md",
+      "sha256": "befb360ad7de9d3936380925b043a0797dbdd85398f210b3acc5d899f8101311",
+      "bytes": 960
+    },
+    {
+      "path": "input/author/forms/7246cd87-b720-5866-8c0c-3b93fec46189/solution.de.md",
+      "sha256": "9be3a4371a7687363d734fd1fdfad05249654513af50453683cd7f3b08db3184",
+      "bytes": 1769
+    },
+    {
+      "path": "input/author/forms/7246cd87-b720-5866-8c0c-3b93fec46189/solution.en.md",
+      "sha256": "af0df28b04e75713050610b8eab4370ebe6c6535b1153f75809f75f352529050",
+      "bytes": 1360
+    },
+    {
+      "path": "input/author/forms/7246cd87-b720-5866-8c0c-3b93fec46189/solutionContent.preview.html",
+      "sha256": "13dc67bf92db14dabe64d8565e22dffac0ebd913af61ec2d359d10e0632d94b3",
+      "bytes": 14063
+    },
+    {
+      "path": "input/author/forms/7246cd87-b720-5866-8c0c-3b93fec46189/solutionContentEn.preview.html",
+      "sha256": "f3ae87126d75e3bb668f80d509399757d5fd4ee3ba8a191eea95222c2d83403e",
+      "bytes": 12956
+    },
+    {
+      "path": "input/author/forms/7246cd87-b720-5866-8c0c-3b93fec46189/task.de.md",
+      "sha256": "44420697d38d455f3798810c4def141478973c7cb40b3f2ec5bd30141f7e2c59",
+      "bytes": 1534
+    },
+    {
+      "path": "input/author/forms/7246cd87-b720-5866-8c0c-3b93fec46189/task.en.md",
+      "sha256": "5396af91de4ef3948d855f512ef32098bfb8199a5f07d42d539a59d4d968c917",
+      "bytes": 1348
+    },
+    {
+      "path": "input/author/forms/7246cd87-b720-5866-8c0c-3b93fec46189/taskContent.preview.html",
+      "sha256": "af1c31605d77d0d0e2bb2ab4cc725d7166c9e52d3a92937ad0ae19f9cea364a5",
+      "bytes": 6209
+    },
+    {
+      "path": "input/author/forms/7246cd87-b720-5866-8c0c-3b93fec46189/taskContentEn.preview.html",
+      "sha256": "9110057267eb0540493b1ccfce894eadb1e802dc094fbaf3a412c62aa01e7bf4",
+      "bytes": 5920
+    },
+    {
+      "path": "input/author/forms/7246cd87-b720-5866-8c0c-3b93fec46189/whole-form-content.draft.json",
+      "sha256": "549ed4ae851505b874696064be0c0d608b4f5d8b3bf23d7e116f1386ad7c5f33",
+      "bytes": 10488
+    },
+    {
+      "path": "input/author/forms/a789460f-92b8-565a-82ca-d5d6b7928b19/identity-preparation-coverage-source.draft.json",
+      "sha256": "318448a07c2523c1b828d4ec4259e6378919cec3ed6d679ec18e0f41c0b09b6e",
+      "bytes": 983
+    },
+    {
+      "path": "input/author/forms/a789460f-92b8-565a-82ca-d5d6b7928b19/rubric.de.md",
+      "sha256": "d0721295cc45e36012b5836cd4099b362f0cb41008fb16f9da8d38afaa15a634",
+      "bytes": 1227
+    },
+    {
+      "path": "input/author/forms/a789460f-92b8-565a-82ca-d5d6b7928b19/rubric.en.md",
+      "sha256": "d4c733db08497dc9c77f33703b9301f6ea504d804886a60b39521c4d8d087b81",
+      "bytes": 1135
+    },
+    {
+      "path": "input/author/forms/a789460f-92b8-565a-82ca-d5d6b7928b19/solution.de.md",
+      "sha256": "f3f3435524a742e00aa4d15239a2adad21ef21e5d6c00fbb666eae970bee3d0e",
+      "bytes": 2666
+    },
+    {
+      "path": "input/author/forms/a789460f-92b8-565a-82ca-d5d6b7928b19/solution.en.md",
+      "sha256": "628bdefa45d4c4059d4c518bad2155cf1e05b66fa7a12ac1cfc894296c642ff6",
+      "bytes": 2246
+    },
+    {
+      "path": "input/author/forms/a789460f-92b8-565a-82ca-d5d6b7928b19/solutionContent.preview.html",
+      "sha256": "476aa2534c725bc2da713e1b2decd41fe7a2cd02705a9f56f8d9cfb51da3dd35",
+      "bytes": 24040
+    },
+    {
+      "path": "input/author/forms/a789460f-92b8-565a-82ca-d5d6b7928b19/solutionContentEn.preview.html",
+      "sha256": "cdd1790f18a37811d0cf083298fbb5f2fcda664bf1d88b248ce06e50ba8f5ba7",
+      "bytes": 20083
+    },
+    {
+      "path": "input/author/forms/a789460f-92b8-565a-82ca-d5d6b7928b19/task.de.md",
+      "sha256": "eada426abfd271d05a9811662d3a453a7851d7bf1ee6f5d74fe7aae1b95fb603",
+      "bytes": 2513
+    },
+    {
+      "path": "input/author/forms/a789460f-92b8-565a-82ca-d5d6b7928b19/task.en.md",
+      "sha256": "5e5d24d7b7e4cf02aa11a154a7798ccedfeea7af6dbd310884b9f3f0a8e382e6",
+      "bytes": 2033
+    },
+    {
+      "path": "input/author/forms/a789460f-92b8-565a-82ca-d5d6b7928b19/taskContent.preview.html",
+      "sha256": "58c71b8b8d027f981cd716f1b5bf0867cd33aa233dcade46d360b372bb876d00",
+      "bytes": 7675
+    },
+    {
+      "path": "input/author/forms/a789460f-92b8-565a-82ca-d5d6b7928b19/taskContentEn.preview.html",
+      "sha256": "695f803b749cea13633d3ca3e7c017aadd70b93cedafd9968ae2ecd88589ea76",
+      "bytes": 7207
+    },
+    {
+      "path": "input/author/forms/a789460f-92b8-565a-82ca-d5d6b7928b19/whole-form-content.draft.json",
+      "sha256": "427b45e9442cc9a33f64ebf0f8ab20885ed8908aa767b515752db360586f6f63",
+      "bytes": 15014
+    },
+    {
+      "path": "input/author/forms/ed344e04-818b-59ab-9b4a-087428c05c8f/identity-preparation-coverage-source.draft.json",
+      "sha256": "fd6bb2b2b5776779b6bcf8688ffce4ab8a456bf3e9bded3372a61393a007b6a8",
+      "bytes": 945
+    },
+    {
+      "path": "input/author/forms/ed344e04-818b-59ab-9b4a-087428c05c8f/rubric.de.md",
+      "sha256": "763fccf168e27c182ba6fd231027cbeb4f8996aa10ee848d8bd4ff6dacfdbbee",
+      "bytes": 1032
+    },
+    {
+      "path": "input/author/forms/ed344e04-818b-59ab-9b4a-087428c05c8f/rubric.en.md",
+      "sha256": "b80549f628c1185a7a5d547cd38263b27e868c4080e678df67c558e454d77e76",
+      "bytes": 944
+    },
+    {
+      "path": "input/author/forms/ed344e04-818b-59ab-9b4a-087428c05c8f/solution.de.md",
+      "sha256": "b4d51626ffd72371f1bb030433ccc2395f38429de8f5675f9fbee690cf402c83",
+      "bytes": 1617
+    },
+    {
+      "path": "input/author/forms/ed344e04-818b-59ab-9b4a-087428c05c8f/solution.en.md",
+      "sha256": "3d6c6b3cdf1e38bc634f0facb7dc79e00db59a31a236af20556cb7889c1a311d",
+      "bytes": 1235
+    },
+    {
+      "path": "input/author/forms/ed344e04-818b-59ab-9b4a-087428c05c8f/solutionContent.preview.html",
+      "sha256": "11147bc9351834d5cc1800a9519e9f4ad4a5086757bbe6bc5b2306761dd3f0fc",
+      "bytes": 19796
+    },
+    {
+      "path": "input/author/forms/ed344e04-818b-59ab-9b4a-087428c05c8f/solutionContentEn.preview.html",
+      "sha256": "288409bd67e4f7b7899be64383ac7f103a05e3eadfb69325b6907b35abe9bb55",
+      "bytes": 8489
+    },
+    {
+      "path": "input/author/forms/ed344e04-818b-59ab-9b4a-087428c05c8f/task.de.md",
+      "sha256": "125588fe8da1f01e6a8c31719f9b300517b6d5516d178315a74483cfce0ba2ea",
+      "bytes": 1656
+    },
+    {
+      "path": "input/author/forms/ed344e04-818b-59ab-9b4a-087428c05c8f/task.en.md",
+      "sha256": "7fd782040d9d771da31801de4279e63d9f2a5d1c9ac9b5c6ce7694080e7c0d82",
+      "bytes": 1387
+    },
+    {
+      "path": "input/author/forms/ed344e04-818b-59ab-9b4a-087428c05c8f/taskContent.preview.html",
+      "sha256": "c1503e7427eff4c900b61f6f6e70b0bb289b205d8247052e338f116d946100ff",
+      "bytes": 17630
+    },
+    {
+      "path": "input/author/forms/ed344e04-818b-59ab-9b4a-087428c05c8f/taskContentEn.preview.html",
+      "sha256": "68a6b7f90f71745848258e3f7d9d4df2392665330d7b0e39f4397fb115b2f05a",
+      "bytes": 16513
+    },
+    {
+      "path": "input/author/forms/ed344e04-818b-59ab-9b4a-087428c05c8f/whole-form-content.draft.json",
+      "sha256": "b8fa4c13903d35905c27114e6b4e84e84da5dc5c106bcb8b9e74be0b96b0026c",
+      "bytes": 10315
+    },
+    {
+      "path": "input/author/forms/f59b0af8-b90a-5cdb-88d6-561323a4f763/assets/sh-binomial.csv",
+      "sha256": "588b3feddf3f6e9471ac7280f3568d0f7b7b155d4c07b052bb7d0a1abc27541e",
+      "bytes": 1457
+    },
+    {
+      "path": "input/author/forms/f59b0af8-b90a-5cdb-88d6-561323a4f763/assets/sh-binomial.png",
+      "sha256": "2fe3a65210bb4ed9cd1dea27dfbbc6345cd9214234a02fa8e951c5ce24d7ac32",
+      "bytes": 69098
+    },
+    {
+      "path": "input/author/forms/f59b0af8-b90a-5cdb-88d6-561323a4f763/identity-preparation-coverage-source.draft.json",
+      "sha256": "60f48112912554b6e6b487c1d46a7315cf31cc4d23f9053529c5a3510b49fabf",
+      "bytes": 1391
+    },
+    {
+      "path": "input/author/forms/f59b0af8-b90a-5cdb-88d6-561323a4f763/rubric.de.md",
+      "sha256": "7da9738c5e98dcf8799642b4be3285189c6af400699d3b39930e524f3c7f86e8",
+      "bytes": 1085
+    },
+    {
+      "path": "input/author/forms/f59b0af8-b90a-5cdb-88d6-561323a4f763/rubric.en.md",
+      "sha256": "5dcf47898f08bae240ca5fd0278f50109a994261e5877d5460e0bfb64fe0048a",
+      "bytes": 978
+    },
+    {
+      "path": "input/author/forms/f59b0af8-b90a-5cdb-88d6-561323a4f763/solution.de.md",
+      "sha256": "3f9b2e02b8278011ad92575cebd76d9be1cb2fc157c1910546fb18d2b4257f7f",
+      "bytes": 2299
+    },
+    {
+      "path": "input/author/forms/f59b0af8-b90a-5cdb-88d6-561323a4f763/solution.en.md",
+      "sha256": "feab6491e38bfee5f73c51b8c75995e9d9d7b587ddf2f0e3a1b8c2714ee6bf4b",
+      "bytes": 1870
+    },
+    {
+      "path": "input/author/forms/f59b0af8-b90a-5cdb-88d6-561323a4f763/solutionContent.preview.html",
+      "sha256": "d206b0dae01548912031ef65e4e7ae97a8339dcf7d0eb2d4291b8bdb2886e2f0",
+      "bytes": 42563
+    },
+    {
+      "path": "input/author/forms/f59b0af8-b90a-5cdb-88d6-561323a4f763/solutionContentEn.preview.html",
+      "sha256": "0f32b89d0dd8dae08328969c90e61a562dab95d6b6ff2e2433ae57fba347c0dd",
+      "bytes": 30424
+    },
+    {
+      "path": "input/author/forms/f59b0af8-b90a-5cdb-88d6-561323a4f763/task.de.md",
+      "sha256": "fddfe43e29835e0a1ca8d2c6fc6278304096d9ae9a7f07dee86fb4cb12096ff5",
+      "bytes": 1764
+    },
+    {
+      "path": "input/author/forms/f59b0af8-b90a-5cdb-88d6-561323a4f763/task.en.md",
+      "sha256": "8e35386d18a3d80af3105c1172bc88e195967f6a2cc4a23320e72e515b6b9434",
+      "bytes": 1421
+    },
+    {
+      "path": "input/author/forms/f59b0af8-b90a-5cdb-88d6-561323a4f763/taskContent.preview.html",
+      "sha256": "f0299d266178b5de1d2846e1fccc1d1d69e651a03c1a9a1458028e51b74efee8",
+      "bytes": 15037
+    },
+    {
+      "path": "input/author/forms/f59b0af8-b90a-5cdb-88d6-561323a4f763/taskContentEn.preview.html",
+      "sha256": "43716eb093eedac1ecd9f4f5dcaab795088522bac9e518b4030a8ca4798a6ac2",
+      "bytes": 13769
+    },
+    {
+      "path": "input/author/forms/f59b0af8-b90a-5cdb-88d6-561323a4f763/whole-form-content.draft.json",
+      "sha256": "d4b759f309a10ea4f7b8786136067ac1a1981eab4cdba94f9062d008bff84bd9",
+      "bytes": 12447
+    },
+    {
+      "path": "input/author/forms/f74d944a-e09b-5e01-867b-09740fadf18d/assets/bw-binomial.csv",
+      "sha256": "d97f439485fd482c3b6ff60b4bb3d3d9171f06ed2900def1d3e6794504cb363f",
+      "bytes": 460
+    },
+    {
+      "path": "input/author/forms/f74d944a-e09b-5e01-867b-09740fadf18d/assets/bw-binomial.png",
+      "sha256": "6da0a6f0d2db412caa2198d5aa0fc5cf7f28f5339641992dbdb4cee7cdd7361f",
+      "bytes": 57865
+    },
+    {
+      "path": "input/author/forms/f74d944a-e09b-5e01-867b-09740fadf18d/identity-preparation-coverage-source.draft.json",
+      "sha256": "abc6b69807d1f5dea325ed94d06dfe58a888dca42703f32e366e2a4b395fae77",
+      "bytes": 915
+    },
+    {
+      "path": "input/author/forms/f74d944a-e09b-5e01-867b-09740fadf18d/rubric.de.md",
+      "sha256": "ee2549b958fa49ed2b022dfa8b50fac3a6dd30adfa8aa8bb29bf484d843297dc",
+      "bytes": 947
+    },
+    {
+      "path": "input/author/forms/f74d944a-e09b-5e01-867b-09740fadf18d/rubric.en.md",
+      "sha256": "29bd5b3eadcec7a7cd1525d1f27e01b9f4c31059c9524c7ae68795af30b24f82",
+      "bytes": 902
+    },
+    {
+      "path": "input/author/forms/f74d944a-e09b-5e01-867b-09740fadf18d/solution.de.md",
+      "sha256": "f4661986b56560c3dd64e03a84ef04de753ee809163474513fd07d47f4fe1972",
+      "bytes": 1750
+    },
+    {
+      "path": "input/author/forms/f74d944a-e09b-5e01-867b-09740fadf18d/solution.en.md",
+      "sha256": "77bbdb80948341b0e981ba89abbc2b71d0edbde23b3cce2d99e2bfd90ba655ef",
+      "bytes": 1333
+    },
+    {
+      "path": "input/author/forms/f74d944a-e09b-5e01-867b-09740fadf18d/solutionContent.preview.html",
+      "sha256": "1346cbec6b867b11569b99c90bd43b79be504099f94abcf8e73ce9aa0d188f1d",
+      "bytes": 31516
+    },
+    {
+      "path": "input/author/forms/f74d944a-e09b-5e01-867b-09740fadf18d/solutionContentEn.preview.html",
+      "sha256": "a03d6e78e391c09a9318534ec67fa54db3239c87e6488b1a0c1fd8fb50aa5da0",
+      "bytes": 23063
+    },
+    {
+      "path": "input/author/forms/f74d944a-e09b-5e01-867b-09740fadf18d/task.de.md",
+      "sha256": "a9a70a73acef71a9b4f8bf503612712704354c2dca6e08c4a47d7c26c2262058",
+      "bytes": 1372
+    },
+    {
+      "path": "input/author/forms/f74d944a-e09b-5e01-867b-09740fadf18d/task.en.md",
+      "sha256": "730c43ff91d96897e88d8de9f0c8a50a38196ac6823aa464136439a8db9c6f7b",
+      "bytes": 1171
+    },
+    {
+      "path": "input/author/forms/f74d944a-e09b-5e01-867b-09740fadf18d/taskContent.preview.html",
+      "sha256": "12daa62b92b9cf66f436a9a59de72385b37aaab69f1cc1a58c9ea12b7c408eb0",
+      "bytes": 9769
+    },
+    {
+      "path": "input/author/forms/f74d944a-e09b-5e01-867b-09740fadf18d/taskContentEn.preview.html",
+      "sha256": "e5354f1f5a2ca5d1c7674f46c7fa873727b1ceb488ac50294af9c3ba98582187",
+      "bytes": 9145
+    },
+    {
+      "path": "input/author/forms/f74d944a-e09b-5e01-867b-09740fadf18d/whole-form-content.draft.json",
+      "sha256": "739002ed6dbefa9d7811af46a451d29254da5d0bffbf8e7fc04cadc052df96cd",
+      "bytes": 9908
+    },
+    {
+      "path": "input/author/forms/fdba2315-d467-568c-a6b7-64c15d414935/identity-preparation-coverage-source.draft.json",
+      "sha256": "03b8521c34417a5e2da3149fb103ed7993bb80f4c07466a42f9e53a82aa0f6b5",
+      "bytes": 905
+    },
+    {
+      "path": "input/author/forms/fdba2315-d467-568c-a6b7-64c15d414935/rubric.de.md",
+      "sha256": "cad543804cf3b57f557cde6c5fefcf6cd4a6ee142248e48d5cbacb42299ce0de",
+      "bytes": 1040
+    },
+    {
+      "path": "input/author/forms/fdba2315-d467-568c-a6b7-64c15d414935/rubric.en.md",
+      "sha256": "9a6a567aef2089ed0be9a00d5ca0a13da67b9ff3a7ff644b5285f6d76d036466",
+      "bytes": 982
+    },
+    {
+      "path": "input/author/forms/fdba2315-d467-568c-a6b7-64c15d414935/solution.de.md",
+      "sha256": "1818495fb9fa86bc9bf39f7f7057c9fa6156d25d4c9d40e03edee680910d7da9",
+      "bytes": 2019
+    },
+    {
+      "path": "input/author/forms/fdba2315-d467-568c-a6b7-64c15d414935/solution.en.md",
+      "sha256": "97e1d2493262e97a77090fe2f3caae5abd5f26633f9d4682d31e4a7f58e131c7",
+      "bytes": 1462
+    },
+    {
+      "path": "input/author/forms/fdba2315-d467-568c-a6b7-64c15d414935/solutionContent.preview.html",
+      "sha256": "b974a0cfaca81f6abb3274ea4dfd37ab37d481e09eb50eb015ab0cb60329d6d8",
+      "bytes": 13925
+    },
+    {
+      "path": "input/author/forms/fdba2315-d467-568c-a6b7-64c15d414935/solutionContentEn.preview.html",
+      "sha256": "393d47ca40e2a25b163fd776b288c64440f7621b471098a38ddcb9735216de81",
+      "bytes": 6860
+    },
+    {
+      "path": "input/author/forms/fdba2315-d467-568c-a6b7-64c15d414935/task.de.md",
+      "sha256": "7d36ce9b3a0c46ec8a7b95edf998f73f379464727da2dd698f99b1de40c5a29e",
+      "bytes": 1844
+    },
+    {
+      "path": "input/author/forms/fdba2315-d467-568c-a6b7-64c15d414935/task.en.md",
+      "sha256": "3247a6beb6ebeae035d956d9e91405ae3dd17f0fa08ee3850b4f31afb7138c77",
+      "bytes": 1553
+    },
+    {
+      "path": "input/author/forms/fdba2315-d467-568c-a6b7-64c15d414935/taskContent.preview.html",
+      "sha256": "91a29209b6b7382ad9ec3d76e861e6e13eef60f1861387c05162a85c4beeaf88",
+      "bytes": 7606
+    },
+    {
+      "path": "input/author/forms/fdba2315-d467-568c-a6b7-64c15d414935/taskContentEn.preview.html",
+      "sha256": "9672852e96c7471e9f656fdebf1d96a09f9a4acb2c5c5a73bdaf64a2497087a2",
+      "bytes": 4341
+    },
+    {
+      "path": "input/author/forms/fdba2315-d467-568c-a6b7-64c15d414935/whole-form-content.draft.json",
+      "sha256": "0047636f2de9633c5be8d992612d2e0d29fcfd7531b84d126ecc3d58ada7c1ef",
+      "bytes": 11406
+    },
+    {
+      "path": "input/author/forms.index.json",
+      "sha256": "f8e73ed86e9d3661f245d84795737ba600261512334390c57dbd01cdf50c4960",
+      "bytes": 18496
+    },
+    {
+      "path": "input/author/frozen-verification.actual.json",
+      "sha256": "446155af6303b53603ff6a189974221b58822b230d0466ef81de2cd2c8405b32",
+      "bytes": 358
+    },
+    {
+      "path": "input/author/input/authoring-and-integration-conditions.json",
+      "sha256": "743a8a2d1b9e097f57fd5229e0db053ba43f131260d90bbd8066cff57e909b0d",
+      "bytes": 1895
+    },
+    {
+      "path": "input/author/input/decision.json",
+      "sha256": "1c82eff1da73197f0b153ad458db026c930b0ad7360640c765df49cec40efefc",
+      "bytes": 1628
+    },
+    {
+      "path": "input/author/input/poisson-common-correction.json",
+      "sha256": "cc774b93123b163534e5cace7d82d612d3616940d7bfb93bfafa930e4373a771",
+      "bytes": 6364
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/BB/lower-secondary/Teil_C_Mathematik_2015_10_13_Ma_14.08.2023_Berlin_23_11.txt",
+      "sha256": "5601f4f50ba050a7b19ac93fd846dd827273a3e927c8977d6874085250acaa63",
+      "bytes": 180171
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/BB/upper-secondary/Teil_C_RLP_GOST_2022_Mathematik.txt",
+      "sha256": "078c61b737d558d014256601a267d70cb2e81b699e18c74ba682083b2de8a4a2",
+      "bytes": 78565
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/BE/lower-secondary/Teil_C_Mathematik_2015_10_13_Ma_14.08.2023_Berlin_23_11.txt",
+      "sha256": "5601f4f50ba050a7b19ac93fd846dd827273a3e927c8977d6874085250acaa63",
+      "bytes": 180171
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/BE/upper-secondary/rahmenlehrplan-mathematik_go-teil-c.txt",
+      "sha256": "78f7eaa74fd9e7b4e68aa68980b52a4c640b0a1c2aa3799b472e40612736859c",
+      "bytes": 110355
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_M.txt",
+      "sha256": "cbcb99059cac3a478cbd407b7dddba8c2df4d262856e9e573d0ed2be55d5de57",
+      "bytes": 308543
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_10.txt",
+      "sha256": "1467bc67b410d7fbdda535fb4b79ff706fe1a1502349b5f8c8ebbf0ad74dcca6",
+      "bytes": 8490
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_11.txt",
+      "sha256": "f978fe6663798756f10d0d0e341ebc2d72e2835ce7b3af29133cb3ffa625fc53",
+      "bytes": 11334
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_12_Vertiefungskurs.txt",
+      "sha256": "0f38e99ab6643b9133f6883a8acc76fe2ce7a80b6df3f2b6672ad8b2ea4d9cc5",
+      "bytes": 8377
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_12_eA.txt",
+      "sha256": "2bdc14ea1464cd396f98e0480d521e2fbb2cc8f9ccae3d416834e626d03305e8",
+      "bytes": 10762
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_13_eA_Teil1.txt",
+      "sha256": "d7b876f228aa006b96289b0c46627262f82f10560864bb7c4ad9abfc06f03a23",
+      "bytes": 6641
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_7.txt",
+      "sha256": "758afae39eb343aaa390d19cd84dbdeda5cf2bc4a21ca365ad4158e3e8b3eed2",
+      "bytes": 10365
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_8.txt",
+      "sha256": "0edc6ad7490752abbc6859b5b0b157863dc252a168961e8115088f8ac4fe5f85",
+      "bytes": 9446
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/HB/GyO_Mathematik_2022.txt",
+      "sha256": "d79c2b30e9244f2f908a2780c29c8ad4f5d2f57f9b9c1adfb34a07b882374dbe",
+      "bytes": 146084
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/HE/lower-secondary/g8-mathematik.txt",
+      "sha256": "f53f53b5293247a7964450775009c106b3dac8c60c3978c4c61d4c54bceafdb9",
+      "bytes": 106626
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.txt",
+      "sha256": "d29a6448242c163562bfc2ae7c97d7bf3d2ecff5b10c2fa204e5a18f2d1a2a4a",
+      "bytes": 128736
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.txt",
+      "sha256": "736af0d31b6bacfa81313aa22e413885fda4d4d59e91d3acc8286bf769c459b2",
+      "bytes": 131149
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/HH/mathematik-gyo-2022-data.txt",
+      "sha256": "7398bcfc4598e4a0281278251c7695558bf6abba97352a7bc40a70596110c882",
+      "bytes": 126355
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/MV/Mathematik_Gymnasium_11_12_2019.txt",
+      "sha256": "5d5cd44136105a671de5df43f420d1334d5df7f1b8580de5d3c9200d5a4150e8",
+      "bytes": 76989
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/NI/upper-secondary/ma_go_kc_druck_2019.txt",
+      "sha256": "43017d9c9e8b828fbedd61a90f96a6789866e62edcd0969f56bb3b3b92f5da12",
+      "bytes": 182309
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_m_2023_06_07.txt",
+      "sha256": "25d1dcac2b191e85401865afede07bb28468697abde4479cc70b419f792579f9",
+      "bytes": 82430
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_II_MSS.txt",
+      "sha256": "5f36e932dddf35cf6f56f3c5585fbae77af9c54a5b6ed83e1320b6e75f16f4f6",
+      "bytes": 208826
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.txt",
+      "sha256": "21274ae9fe6b3725e943f53658a2ead611991fd307c6f43b07f7eb6ba778b503",
+      "bytes": 346624
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/SL/LP_Ma_GOS_HP_G-Kurs_2016_Stand_2019.txt",
+      "sha256": "8d75c1a19f71382e26a598fecf6694a80c5cfa6736b0b56daf559e733e7ca048",
+      "bytes": 148350
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/SL/LP_Ma_LK_HP_2019.txt",
+      "sha256": "a7fcd63b02a86c6d3d7aacc9fdb5fabaf160fe0d4715253d9b36dc603abd06e7",
+      "bytes": 193914
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-mathematik-sachsen-2019.txt",
+      "sha256": "9805d1362e7fd8b8410a04a081d59f9cbf1728626df9741ececa096168850916",
+      "bytes": 164808
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/ST/Mathematik_FLP_Gym_01_07_2019.txt",
+      "sha256": "0d3e998735488e6219fa75faa710998eccd84f228443f35c024e063ab07e9fc5",
+      "bytes": 155017
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/TH/LP_GY_Mathematik_Entwurfsfassung2025.txt",
+      "sha256": "e3cef80574a2cfb48e1f23cf702058e76f2927306756ca41099bbe1640a28c2b",
+      "bytes": 60211
+    },
+    {
+      "path": "input/author/input/primary-text/curricula/DE/Gymnasium/input/TH/lp_gy_mathematik_10.04.2019_TSP.txt",
+      "sha256": "3186a6d12d724ee97e75d85aa4e137235a62237ed6b8e9bac133c0cc7b57cbdf",
+      "bytes": 103201
+    },
+    {
+      "path": "input/author/input/routes.exact-scopes.json",
+      "sha256": "2cd0ef01f0ff015c9b767fd2bc3941033ead4687d78866cd4a6dac2af88e2df8",
+      "bytes": 211647
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/03357e70-2280-532f-b629-5dfa31dc44eb/solutionContent.md",
+      "sha256": "578b1d795992399184c18392c7f1b4fa19097957fcf7da51ab2fff1df58eca2e",
+      "bytes": 6830
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/03357e70-2280-532f-b629-5dfa31dc44eb/solutionContentEn.md",
+      "sha256": "1d900cede0b931d75cabcdae753e18b9ec72616100f4b749849135c372acbf7a",
+      "bytes": 6101
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/03357e70-2280-532f-b629-5dfa31dc44eb/taskContent.md",
+      "sha256": "869e93221335f39f81b2d3bd93be1851f2adc58d55441057241ffb1b0c4ca988",
+      "bytes": 2351
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/03357e70-2280-532f-b629-5dfa31dc44eb/taskContentEn.md",
+      "sha256": "ba0b13df83936d8ff97e5148ae923ebae34c556233bc23e889ea1c24b3a8ee7d",
+      "bytes": 2070
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/03357e70-2280-532f-b629-5dfa31dc44eb/whole-R-and-scope-matrix.json",
+      "sha256": "d00721279967162a6775065c813576835d84ac5fd6e8571523c17720198e8306",
+      "bytes": 126458
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/03357e70-2280-532f-b629-5dfa31dc44eb/whole-current-goal.json",
+      "sha256": "3451d11f32f3637026c793e87826f4a2acbd0caee62cdb792a242d06296b303c",
+      "bytes": 25683
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/083079c3-bd26-5404-bd6a-7ec6cd9c0b43/solutionContent.md",
+      "sha256": "44a35b3ba027db0d8c551fbe8012dd67f33174df7b335168daa33bd5cedf64c0",
+      "bytes": 482
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/083079c3-bd26-5404-bd6a-7ec6cd9c0b43/solutionContentEn.md",
+      "sha256": "d8223d699c23888d48872e694f19f521d13bfda34c8c257c741872cb4a7bf3fa",
+      "bytes": 414
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/083079c3-bd26-5404-bd6a-7ec6cd9c0b43/taskContent.md",
+      "sha256": "74726f4ab95d70c1ef4cbf45c9fd76a66f97824cb3942e2107aeea1df17866bf",
+      "bytes": 316
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/083079c3-bd26-5404-bd6a-7ec6cd9c0b43/taskContentEn.md",
+      "sha256": "473618ac3988fd0c395d962721c2e5cecfae34bdcb6c9289177cb57a29bccdea",
+      "bytes": 275
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/083079c3-bd26-5404-bd6a-7ec6cd9c0b43/whole-R-and-scope-matrix.json",
+      "sha256": "2a7f245fa32242b371ee2261f74df442a101bedd5ebd5c72d2f7e80ddce59ef5",
+      "bytes": 54533
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/083079c3-bd26-5404-bd6a-7ec6cd9c0b43/whole-current-goal.json",
+      "sha256": "cca583fe54be6c71d34caf164b08b7239164be2cfdfaa54fa7069f6ea4dbc856",
+      "bytes": 2652
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/0c36723f-0de5-5bdb-8f07-3e67405c855e/solutionContent.md",
+      "sha256": "69da12bd1b692a52f0dadeb1098b6b97ea27c813df1bc6a5df6835e0d7884b7d",
+      "bytes": 138
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/0c36723f-0de5-5bdb-8f07-3e67405c855e/solutionContentEn.md",
+      "sha256": "d93160235feffc8b5db9d4d7951a24e332a62e665c8f23d0dd8e234795911062",
+      "bytes": 141
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/0c36723f-0de5-5bdb-8f07-3e67405c855e/taskContent.md",
+      "sha256": "8172760b90000bb59e0ccfd8f6dc89438c70156b4666a1bc1aacc77a0fafd07e",
+      "bytes": 410
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/0c36723f-0de5-5bdb-8f07-3e67405c855e/taskContentEn.md",
+      "sha256": "ad793af104c4843b34084bfe007a729699b99c896801eb3b48449e84fa552db9",
+      "bytes": 378
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/0c36723f-0de5-5bdb-8f07-3e67405c855e/whole-R-and-scope-matrix.json",
+      "sha256": "e3eb99e2b16c2e80ef0f9513a2dd1aa9ddf1739ee0df20160224293e01817f2f",
+      "bytes": 54533
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/0c36723f-0de5-5bdb-8f07-3e67405c855e/whole-current-goal.json",
+      "sha256": "5fd682eaa5b62b4493ae56c3df274f1617cce6168c6a054a8cad7743904f9485",
+      "bytes": 2152
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/14e40ac8-9666-5bf5-a011-870d62b8e597/solutionContent.md",
+      "sha256": "5627e15825092cb443ef0301abd1bc198c6df768bf0f2a01a1012d31d2abd7c8",
+      "bytes": 1157
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/14e40ac8-9666-5bf5-a011-870d62b8e597/taskContent.md",
+      "sha256": "654501ab4011a8bd46194083b49c42ad828605d983c262306350a6a2b869aba9",
+      "bytes": 926
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/14e40ac8-9666-5bf5-a011-870d62b8e597/whole-R-and-scope-matrix.json",
+      "sha256": "47ec40f532c5e3375c98978e459dd4ac931e8cf623e04d23cc0253dd14e36440",
+      "bytes": 134066
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/14e40ac8-9666-5bf5-a011-870d62b8e597/whole-current-goal.json",
+      "sha256": "995d78bca918ef2e0f679a91a390e626268e6d891197fe15d5df1daba5c10020",
+      "bytes": 5518
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/3c8c4a64-f6d0-5eaf-b35a-d97c8566ee3b/solutionContent.md",
+      "sha256": "6905739591698e3acf74c2fdf060ad90b0532cdc1dbd0d968616d3061f686c57",
+      "bytes": 840
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/3c8c4a64-f6d0-5eaf-b35a-d97c8566ee3b/taskContent.md",
+      "sha256": "d60098d359cc7a8049177e1a5fb4f405af59027a006d42e31c48ea6996e91601",
+      "bytes": 702
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/3c8c4a64-f6d0-5eaf-b35a-d97c8566ee3b/whole-R-and-scope-matrix.json",
+      "sha256": "3bc089bd8c2f5b40bbfa1002fedc0fc4ff122b7f7a55661dfa112668b5523241",
+      "bytes": 122203
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/3c8c4a64-f6d0-5eaf-b35a-d97c8566ee3b/whole-current-goal.json",
+      "sha256": "7784bb080615c5fd74cc86ecb3d1408458deae7b113ddb498457149b4b5c76f6",
+      "bytes": 3741
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/3f884dbe-108c-57eb-80cc-836bc4c79c9e/solutionContent.md",
+      "sha256": "c7ac9d29b55084f6efb19c328369d5d46835ba7f9d9634c8a905e6ef501833c9",
+      "bytes": 1068
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/3f884dbe-108c-57eb-80cc-836bc4c79c9e/taskContent.md",
+      "sha256": "983304dc4858d30be8fb32689b5d6a649073b0f0e978df82a4b77a974f373130",
+      "bytes": 750
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/3f884dbe-108c-57eb-80cc-836bc4c79c9e/whole-R-and-scope-matrix.json",
+      "sha256": "2136e129665bc6faa3e0ce0b2837703642421622dae2ce2ee9d379d209919266",
+      "bytes": 134268
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/3f884dbe-108c-57eb-80cc-836bc4c79c9e/whole-current-goal.json",
+      "sha256": "68c68649724bf27d5bd2ff505319b5e117123dc059df45af1d88811cc05edd69",
+      "bytes": 5478
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/455ef29a-7194-5c5a-b832-1c27fcbf2516/solutionContent.md",
+      "sha256": "b2362de92365772be8904b9e8f52c760442b4d96809b62b901ea855b8b1f0c5e",
+      "bytes": 4678
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/455ef29a-7194-5c5a-b832-1c27fcbf2516/solutionContentEn.md",
+      "sha256": "e449e3ebac2f62252a3216428d028aa48989f9e953359fde0226edb39eddb757",
+      "bytes": 4214
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/455ef29a-7194-5c5a-b832-1c27fcbf2516/taskContent.md",
+      "sha256": "e2fb422b7012526bd1f8150cc0ee9f1369ac5699ee01a2a17658d90c42e07d66",
+      "bytes": 1954
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/455ef29a-7194-5c5a-b832-1c27fcbf2516/taskContentEn.md",
+      "sha256": "3bfb94a10e0a91b1e6c006b913c08b1b1e870cf4d91caba064b582f868972dbe",
+      "bytes": 1803
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/455ef29a-7194-5c5a-b832-1c27fcbf2516/whole-R-and-scope-matrix.json",
+      "sha256": "7e2e15eb6eae19f4d1afd493625f971830cd084825fe8774817ab1aa9f14b666",
+      "bytes": 114578
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/455ef29a-7194-5c5a-b832-1c27fcbf2516/whole-current-goal.json",
+      "sha256": "7dccc33fcbafb95001182175c99e67539de9adf0b0f0f17a1c4bff6416f191ed",
+      "bytes": 18601
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/5b54f272-f588-5009-8b42-eb15f846d3e2/solutionContent.md",
+      "sha256": "257ec292efe7b2ab617b5ec804182695787f0d4edbb57fc673a11eaafafb7544",
+      "bytes": 4061
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/5b54f272-f588-5009-8b42-eb15f846d3e2/solutionContentEn.md",
+      "sha256": "a0a077698c4a2cca57979328cb1955d5816fa976eb790085f344685750d8906f",
+      "bytes": 3667
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/5b54f272-f588-5009-8b42-eb15f846d3e2/taskContent.md",
+      "sha256": "188706d13badac76bd49f2f14a5b0d103f51969b0785410b9af7777d8fce25e4",
+      "bytes": 1456
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/5b54f272-f588-5009-8b42-eb15f846d3e2/taskContentEn.md",
+      "sha256": "17ef380f667897632b4fd10601b03ed16322ac765c0dcf93ba0b721e2b105992",
+      "bytes": 1333
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/5b54f272-f588-5009-8b42-eb15f846d3e2/whole-R-and-scope-matrix.json",
+      "sha256": "2d38ac164f8ff3bccc57b155e93ce6fbccec55c5309551bf435f9c72a3c9c2d5",
+      "bytes": 61656
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/5b54f272-f588-5009-8b42-eb15f846d3e2/whole-current-goal.json",
+      "sha256": "2a3ccb7cf7960f35e3714d3fdb58d95af64ad513559ddd846c1668ea6cd33340",
+      "bytes": 16313
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/5dbf149c-d335-552c-a918-768a12e09201/solutionContent.md",
+      "sha256": "85298a8d30c87a750267a427b97c690456a0038ec086ec023346931bc164b6b5",
+      "bytes": 4939
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/5dbf149c-d335-552c-a918-768a12e09201/solutionContentEn.md",
+      "sha256": "eea8b838a466dd89bcc6e6372c31b02d4a852083d05cf70f98061831b2baf22c",
+      "bytes": 4262
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/5dbf149c-d335-552c-a918-768a12e09201/taskContent.md",
+      "sha256": "9b74b92c19b7c30874050c9aae72b06ca4a47c299ab9f9620380f56bfdcb4837",
+      "bytes": 2283
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/5dbf149c-d335-552c-a918-768a12e09201/taskContentEn.md",
+      "sha256": "8169b1ab66e180198379e41be0fae292f3d88baf3628db755cd497e476bd6fcd",
+      "bytes": 2127
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/5dbf149c-d335-552c-a918-768a12e09201/whole-R-and-scope-matrix.json",
+      "sha256": "686b863c03cdfa25abd9ef8c21fdef87233451ccb033b803f820f445711ee47e",
+      "bytes": 123630
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/5dbf149c-d335-552c-a918-768a12e09201/whole-current-goal.json",
+      "sha256": "697930b14867fd3291fc33045b038971ca51acdc77da112e9eb303e8333e1d6d",
+      "bytes": 20301
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/64a8a44d-d45b-5296-8123-834b4f88d6da/solutionContent.md",
+      "sha256": "58897e4fcdec854b7e7f60f8f52f6f4144ab3754a17cdaddff6758809bf2a882",
+      "bytes": 123
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/64a8a44d-d45b-5296-8123-834b4f88d6da/solutionContentEn.md",
+      "sha256": "969eb40483b4873100e2057b9e9150f1ba2c312c658a71a21c3325558a1d6189",
+      "bytes": 128
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/64a8a44d-d45b-5296-8123-834b4f88d6da/taskContent.md",
+      "sha256": "0fb6527f22b1f0415831711ab66af66c1ba9f4a4773c1e76b3d4a30513d65104",
+      "bytes": 348
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/64a8a44d-d45b-5296-8123-834b4f88d6da/taskContentEn.md",
+      "sha256": "592eddc112faba1e868630cce898e880ed1e564ac8a7837dc2e22478a7b087bc",
+      "bytes": 300
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/64a8a44d-d45b-5296-8123-834b4f88d6da/whole-R-and-scope-matrix.json",
+      "sha256": "441289e581009c0df83344ad35237f14a8f7dcfb2d27e9428ceffb65dc0c3dd2",
+      "bytes": 55219
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/64a8a44d-d45b-5296-8123-834b4f88d6da/whole-current-goal.json",
+      "sha256": "8a801e37965e7493cc9802c4571eaba13c6d653f1d3189549143e1bf52eb62f1",
+      "bytes": 1987
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/6644a4dc-a773-525f-a382-5e1e3c592b4f/solutionContent.md",
+      "sha256": "481c6dca65f6493e77af5407f285f08524469e0ab9340c6edeae6907bf75699a",
+      "bytes": 1217
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/6644a4dc-a773-525f-a382-5e1e3c592b4f/taskContent.md",
+      "sha256": "c029a67f1d982eb4ed10979fac74f8edcc023d96a3742a98ce2e5b4fb6cb0886",
+      "bytes": 987
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/6644a4dc-a773-525f-a382-5e1e3c592b4f/whole-R-and-scope-matrix.json",
+      "sha256": "4a3db3d90051cdd694ef6c6a65372ed98e576e9e6af87c318bc17fa49568269c",
+      "bytes": 115294
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/6644a4dc-a773-525f-a382-5e1e3c592b4f/whole-current-goal.json",
+      "sha256": "17c3e01ed917a489a61d859edc8c95b15d3e69c64f75ac502ad8419bf0bf19fe",
+      "bytes": 5342
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/6eb917e6-a204-5150-833f-a4455c8a05b0/solutionContent.md",
+      "sha256": "4db91082ce8664fb360c122c78c3577ef6c794f401f32ff3647f1e7661783233",
+      "bytes": 967
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/6eb917e6-a204-5150-833f-a4455c8a05b0/solutionContentEn.md",
+      "sha256": "3564dc5c2093c014997114535c138dae121fd8f8ba9bde63e611ccc359b77c16",
+      "bytes": 909
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/6eb917e6-a204-5150-833f-a4455c8a05b0/taskContent.md",
+      "sha256": "bc0faaeb20310775cba85e4c545ac2192d8e62169d909e66b1bfac994c918109",
+      "bytes": 1425
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/6eb917e6-a204-5150-833f-a4455c8a05b0/taskContentEn.md",
+      "sha256": "09f16000359fddabddf18516101ac72a5ae0ae24ca47d045f1fdd2a5fba0d3a8",
+      "bytes": 1238
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/6eb917e6-a204-5150-833f-a4455c8a05b0/whole-R-and-scope-matrix.json",
+      "sha256": "d019ce3f241d07dfb709484fe56c50ceb02cb9e80bea592c608efd2d917abb5c",
+      "bytes": 54533
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/6eb917e6-a204-5150-833f-a4455c8a05b0/whole-current-goal.json",
+      "sha256": "796979b4d2e03c95590ed9ccb973e44191ef72c3cb3412637a223e4b34ef587a",
+      "bytes": 6578
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/77940875-ad1e-5272-9002-3ca9db810a18/solutionContent.md",
+      "sha256": "dd5a85904ba8020ce025d65d509543a8858ad77343bdfcda5e6deddaf2e41ec2",
+      "bytes": 3239
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/77940875-ad1e-5272-9002-3ca9db810a18/solutionContentEn.md",
+      "sha256": "25dad0cfe04a37384c8b6740f94ab655a4771209078ae5055ce88f3c9ba35ac0",
+      "bytes": 2771
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/77940875-ad1e-5272-9002-3ca9db810a18/taskContent.md",
+      "sha256": "11c9e635e26f4d98cd755e439bfc03b20b6990253668859b7b6ec991e8b901d6",
+      "bytes": 1599
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/77940875-ad1e-5272-9002-3ca9db810a18/taskContentEn.md",
+      "sha256": "c54bda4ef9f3e53642b86c33d116583d03cd81717c4ed5ac66aa15c884761371",
+      "bytes": 1400
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/77940875-ad1e-5272-9002-3ca9db810a18/whole-R-and-scope-matrix.json",
+      "sha256": "1fe82b28d0004aedd086a86661ee90ed431aa37f826353773ad99a2b2ebf11b1",
+      "bytes": 169185
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/77940875-ad1e-5272-9002-3ca9db810a18/whole-current-goal.json",
+      "sha256": "0eadc3863adde8df09f107440345cdde8f9eac967f61d29cd67f01890d720242",
+      "bytes": 15711
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/7a6f1e6d-a9b9-5a70-836b-8718648d3904/solutionContent.md",
+      "sha256": "4d05b988e16d9684333286c6f572fbb7e422af8815fe9e1d608cb2755a56181f",
+      "bytes": 14957
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/7a6f1e6d-a9b9-5a70-836b-8718648d3904/solutionContentEn.md",
+      "sha256": "7b9518ecb036b9507ee1f180590649b15b0c2d0209807c8196dc2858d505742b",
+      "bytes": 13229
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/7a6f1e6d-a9b9-5a70-836b-8718648d3904/taskContent.md",
+      "sha256": "d2375f26368d820dc155b2300e380603b19750bb216c51210b865cbab3766ff1",
+      "bytes": 9056
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/7a6f1e6d-a9b9-5a70-836b-8718648d3904/taskContentEn.md",
+      "sha256": "fbccb8d1b094ec2b316b6265ccae5230fb26f5a33807dbf85403e992ed0995ee",
+      "bytes": 8091
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/7a6f1e6d-a9b9-5a70-836b-8718648d3904/whole-R-and-scope-matrix.json",
+      "sha256": "c74bea17b3a79286e48c9425d1df3d62b14bc2d7f1e98e922dc8df2efbe9ee5e",
+      "bytes": 154176
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/7a6f1e6d-a9b9-5a70-836b-8718648d3904/whole-current-goal.json",
+      "sha256": "ba5c72753f47ab3bfcafdcca295618b60a85b19a8427bc8dee915de9fd67b548",
+      "bytes": 53280
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/solutionContent.md",
+      "sha256": "237ee6678586b80a2dcc5c0e13817dbc7f1f12c8302404b88a22269eb122fcc9",
+      "bytes": 3930
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/solutionContentEn.md",
+      "sha256": "6a0f2590c4e83efdcd31a137cfe1a428d4f8f2711ff4f37bc2d740249e3a06b4",
+      "bytes": 3497
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/taskContent.md",
+      "sha256": "2c25790600eee7828797ad75116304a0004fa9235a81b1384431755976af7551",
+      "bytes": 1503
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/taskContentEn.md",
+      "sha256": "445cc58e2df387c7ecd28e07afd6f392e2fa31f2d6d179d6a5c4b12bd3888062",
+      "bytes": 1467
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/whole-R-and-scope-matrix.json",
+      "sha256": "9aea8d3290895db85e90868cc9368e29ed56910c1d2ccb6328b5b410179bae06",
+      "bytes": 100816
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/7d9c565c-8df1-40ca-b3c6-2d4ec51e9140/whole-current-goal.json",
+      "sha256": "9e3f17880b24e38af30861e9f9a5b57c8766abc06d77ad3a21592d321188aa32",
+      "bytes": 16980
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/8c12d84a-beff-5dbe-9a79-ae87462b903d/solutionContent.md",
+      "sha256": "49b482a21406f5ad03cb30793933e826f18b065580c89a217e34ef9301ec7471",
+      "bytes": 218
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/8c12d84a-beff-5dbe-9a79-ae87462b903d/solutionContentEn.md",
+      "sha256": "f8d9a33e056134fb9ed675c41fa59886738a31b1bdd7096f0c178eaf2b2d3b3b",
+      "bytes": 214
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/8c12d84a-beff-5dbe-9a79-ae87462b903d/taskContent.md",
+      "sha256": "e19834dac26269a71b17147de8ad8d963f164c68c4e8217f6b6ac9fd906dde8f",
+      "bytes": 275
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/8c12d84a-beff-5dbe-9a79-ae87462b903d/taskContentEn.md",
+      "sha256": "3d26aac26fadfb45597b728af10ce55050ec89c64aab86859420e1e4d4a35f51",
+      "bytes": 214
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/8c12d84a-beff-5dbe-9a79-ae87462b903d/whole-R-and-scope-matrix.json",
+      "sha256": "b32c4216e7f74ad4f98b63154ba97aa4c410649bbd308c7605754e9a7be926d2",
+      "bytes": 54533
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/8c12d84a-beff-5dbe-9a79-ae87462b903d/whole-current-goal.json",
+      "sha256": "900c9a7339064606f8bf0652c6eeb8b4cfa9a4cf6ef539c7849b1cfab1e6d66b",
+      "bytes": 2289
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/99e45593-8509-5f51-832e-39ed2a9c10d9/solutionContent.md",
+      "sha256": "5c54377285520b91f648b538a773671d2f970c84c83728e8cea83516a3adb4bd",
+      "bytes": 1473
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/99e45593-8509-5f51-832e-39ed2a9c10d9/taskContent.md",
+      "sha256": "dcfc7c89f54b5912e300c827e380262944ac53845ea36f0b6148548ac851fcc0",
+      "bytes": 572
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/99e45593-8509-5f51-832e-39ed2a9c10d9/whole-R-and-scope-matrix.json",
+      "sha256": "b9077d04fbf7072b49bf388dba9a2d7ad8901d1eb355537819635811a8d9606e",
+      "bytes": 147513
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/99e45593-8509-5f51-832e-39ed2a9c10d9/whole-current-goal.json",
+      "sha256": "9232610b11fc650ab344c3339a2918da752c6ffa5e506b4682925ce8b9c12346",
+      "bytes": 4766
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/9cf020ee-4f6b-554e-97d6-eca3e2aabe99/solutionContent.md",
+      "sha256": "3cf25c200f97eacbf0405d83259c5c56bef73aa71d4c9729e099e5bb30b09770",
+      "bytes": 1335
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/9cf020ee-4f6b-554e-97d6-eca3e2aabe99/taskContent.md",
+      "sha256": "fee286f97c0736a5099cfcf7ddad6e46593db58fac216baea1b92f123855d4c0",
+      "bytes": 677
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/9cf020ee-4f6b-554e-97d6-eca3e2aabe99/whole-R-and-scope-matrix.json",
+      "sha256": "e46a8556c26f1c540e0e36ceebd1ccfbf25a226171114541b0b6d31ea43e8389",
+      "bytes": 191025
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/9cf020ee-4f6b-554e-97d6-eca3e2aabe99/whole-current-goal.json",
+      "sha256": "e8c6c7139daa59e865654ee6e3f3c419630bc5657759b682d113c2c3c83ea4f8",
+      "bytes": 5075
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/solutionContent.md",
+      "sha256": "c5fef7d05b9ba757749ec1b0e7358ba6e2075ea86f5921459f1e9aeb3ec415ea",
+      "bytes": 4019
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/solutionContentEn.md",
+      "sha256": "65e0744404891b492e77a93c1d4d31b138081af46f0498853cdb02830c187683",
+      "bytes": 3586
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/taskContent.md",
+      "sha256": "c73de284a2b41ce1447e5e85fd2cdf75708fda5688c0bec6778dccd9d98b259a",
+      "bytes": 1961
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/taskContentEn.md",
+      "sha256": "f443b200b730d9b2693d50725a9d838a6d53b4d62edcbae39a0e0acb347b260d",
+      "bytes": 1781
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/whole-R-and-scope-matrix.json",
+      "sha256": "7c6124ba41313b583f870961d21fd524982688a88057288b3bfaa182ee97ee1e",
+      "bytes": 127959
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/ae3483e3-4712-56a1-a881-2e1f8a1a8df9/whole-current-goal.json",
+      "sha256": "783ef644ccbf4a8adcd9b4f00c3719aaf01f8163822770a523a4d95aec6e03d7",
+      "bytes": 17211
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/c2f6b981-f832-52ab-aa20-5e816eb33e64/solutionContent.md",
+      "sha256": "9289fcb5cd5efe5829e00a6ead83683060d2c71784b24eae95efc5c19766965b",
+      "bytes": 1090
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/c2f6b981-f832-52ab-aa20-5e816eb33e64/solutionContentEn.md",
+      "sha256": "6bf5dc18feb329cb9367b9856d5a664ecfdc0eb4c8157d2b0329b1a4240a869e",
+      "bytes": 978
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/c2f6b981-f832-52ab-aa20-5e816eb33e64/taskContent.md",
+      "sha256": "2320cd33c95709784173d7a55313676b8c88634ad819ca2c928bcc7ea9a337b5",
+      "bytes": 1117
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/c2f6b981-f832-52ab-aa20-5e816eb33e64/taskContentEn.md",
+      "sha256": "9f09b0affe91ee5b4c9066fa1627ddbd31a2fb3f13bf6fdc5cd95a2a16ed5505",
+      "bytes": 971
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/c2f6b981-f832-52ab-aa20-5e816eb33e64/whole-R-and-scope-matrix.json",
+      "sha256": "fb37e6c247bff5eb91f458bb1152665fcec7e128fdc0cf2fef4de95706c35e59",
+      "bytes": 55219
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/c2f6b981-f832-52ab-aa20-5e816eb33e64/whole-current-goal.json",
+      "sha256": "4142030846f7f0d6c61aff8fa8a4e4930f1f9ed804c10247ef37666c49bc5e1f",
+      "bytes": 5881
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/c6536bfb-e658-5bf5-b207-7caeca98632c/solutionContent.md",
+      "sha256": "5a0c56299fa4aa41051022b45b5ae024883ac1612f9a251e98a416292cc6baec",
+      "bytes": 4478
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/c6536bfb-e658-5bf5-b207-7caeca98632c/solutionContentEn.md",
+      "sha256": "61bb87ee5e30a596fe0706bf12a016aaa87312ca591135df36c7a6f10ba318cd",
+      "bytes": 3897
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/c6536bfb-e658-5bf5-b207-7caeca98632c/taskContent.md",
+      "sha256": "a1741c1163598beb10dc3ff9fd9a38ae5ebdad5e5dad44066989dd0a176b1c08",
+      "bytes": 2261
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/c6536bfb-e658-5bf5-b207-7caeca98632c/taskContentEn.md",
+      "sha256": "2f278f5945b439f5a8e5088c715d77d325f9e0056eca51ae83dbb12a6d666ddf",
+      "bytes": 2032
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/c6536bfb-e658-5bf5-b207-7caeca98632c/whole-R-and-scope-matrix.json",
+      "sha256": "6e1fa9751b2e34969ea62df8bababe7564ae4ed2bddb5c0e41f2e2f77bb9f7fd",
+      "bytes": 103818
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/c6536bfb-e658-5bf5-b207-7caeca98632c/whole-current-goal.json",
+      "sha256": "5d15f56fe3f4f66d35bb2436514a4745125e3fd946bc95774915f5492aacb7d4",
+      "bytes": 16568
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/c83dc2d1-f44f-5fae-86ce-280c68c3c55e/solutionContent.md",
+      "sha256": "f1133ca80c8b82ac50cf9014eb021e9776f7bb33892efff31fc9180701d91c20",
+      "bytes": 2625
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/c83dc2d1-f44f-5fae-86ce-280c68c3c55e/taskContent.md",
+      "sha256": "1de5a3131afaf93451d01846c70c35cc2f4d0965a41bbaa1bd60c45613b5d384",
+      "bytes": 1593
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/c83dc2d1-f44f-5fae-86ce-280c68c3c55e/whole-R-and-scope-matrix.json",
+      "sha256": "adc55f0133c7efb4ccf8aa8e1b18de4a78ba90d0d2712f2adc0bd6b9ba48357f",
+      "bytes": 164368
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/c83dc2d1-f44f-5fae-86ce-280c68c3c55e/whole-current-goal.json",
+      "sha256": "d759c41e7930bb8176765d14cb845947e6ac684fdc1c5e8b66d908fa72940364",
+      "bytes": 7531
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/e5055665-89ae-5be6-8fc7-42a9e991d63d/solutionContent.md",
+      "sha256": "a4557eec28ae3cbb664076c60551aaa6d67370b2b75c7ebf5445921b1bd95b3a",
+      "bytes": 463
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/e5055665-89ae-5be6-8fc7-42a9e991d63d/taskContent.md",
+      "sha256": "3bdd83b2f5e5b484e2f478314a688831ec9d311040a2f95186359127541bfe78",
+      "bytes": 574
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/e5055665-89ae-5be6-8fc7-42a9e991d63d/whole-R-and-scope-matrix.json",
+      "sha256": "d6d895f39fcab08ce358572d2284125350fe5df336f68c6cdcaded7fe0fa2c89",
+      "bytes": 126618
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/e5055665-89ae-5be6-8fc7-42a9e991d63d/whole-current-goal.json",
+      "sha256": "1dab2a3ee0ca1b6748cf1f894bd3292e4a607510999db5df43c052f5b3eaf8ed",
+      "bytes": 3393
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/f1050f11-50bb-52ce-a406-4563ad976cc4/solutionContent.md",
+      "sha256": "6ccdcd1e3b67ee4722fe372c77296ac4325b762323440b764bd83851fb4bebbb",
+      "bytes": 826
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/f1050f11-50bb-52ce-a406-4563ad976cc4/taskContent.md",
+      "sha256": "327e5ff5ef43cf7fe69c082624378ea04e5b6f91096b6e9555909354282d2e5f",
+      "bytes": 530
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/f1050f11-50bb-52ce-a406-4563ad976cc4/whole-R-and-scope-matrix.json",
+      "sha256": "434a0a55624a0a2905bf0f48bd15dd7da7b18c4e7bea55ee34b7099d65fa6948",
+      "bytes": 89564
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/f1050f11-50bb-52ce-a406-4563ad976cc4/whole-current-goal.json",
+      "sha256": "8ceed5beb1d7e7d6620a867615574daa82d04c3b83abaed553880fc660ace662",
+      "bytes": 4230
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/f85d225d-9441-5479-b798-661e3ae9bdfa/solutionContent.md",
+      "sha256": "160f4afcfcfe2bfaecef8dedffe13a4d3558d753a8cbb0573ce63d891c589b92",
+      "bytes": 378
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/f85d225d-9441-5479-b798-661e3ae9bdfa/solutionContentEn.md",
+      "sha256": "0a437085d115feb0d94a5b9d4c916e5298f5c98a8010e9138dc7ffad8bdaf8e2",
+      "bytes": 375
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/f85d225d-9441-5479-b798-661e3ae9bdfa/taskContent.md",
+      "sha256": "724fd6b6a820545e01893c9e90d35a7b3d2990cbbbef4a96a6cd7befa526bd36",
+      "bytes": 286
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/f85d225d-9441-5479-b798-661e3ae9bdfa/taskContentEn.md",
+      "sha256": "5847dbe8313e082c2d5a2cc5b610286cbbd3aa73206b20fe681ca5726792d2eb",
+      "bytes": 248
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/f85d225d-9441-5479-b798-661e3ae9bdfa/whole-R-and-scope-matrix.json",
+      "sha256": "596bc10826887c3f2b241742b7bc502c41b58ce3103e4b72d6788f7d099dd4a0",
+      "bytes": 55219
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/f85d225d-9441-5479-b798-661e3ae9bdfa/whole-current-goal.json",
+      "sha256": "5893be68763023bfcf68d897de3d1a6f1124b1d958c611a122c3ae69cafb27a8",
+      "bytes": 2894
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/fcb905ce-1276-5626-8c60-de0f035a9404/solutionContent.md",
+      "sha256": "24a05380bd0d2854b425541d604a534d7fd42fe6bea15b13f588ebe07f17d04c",
+      "bytes": 285
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/fcb905ce-1276-5626-8c60-de0f035a9404/solutionContentEn.md",
+      "sha256": "538f9897799b388558d7778dca299e6a3ece563e0fa5d9c18363750376369ef8",
+      "bytes": 253
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/fcb905ce-1276-5626-8c60-de0f035a9404/taskContent.md",
+      "sha256": "e1a037d93a16bc7a20a5c0438338236185ae3a895e1d590bced106233fe88f65",
+      "bytes": 241
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/fcb905ce-1276-5626-8c60-de0f035a9404/taskContentEn.md",
+      "sha256": "83e44de48e976a649ffe9726ecf5997ec6eb0351e8146821e3dfa928327ae74b",
+      "bytes": 212
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/fcb905ce-1276-5626-8c60-de0f035a9404/whole-R-and-scope-matrix.json",
+      "sha256": "f4d85c2d9b86981273d438457c1ae4906f9ca39e783cb24236fb06eb91f79d8f",
+      "bytes": 55219
+    },
+    {
+      "path": "input/author/input/whole-existing-exams/fcb905ce-1276-5626-8c60-de0f035a9404/whole-current-goal.json",
+      "sha256": "a876156420dfecf4320fe955191718a9b3abd6c0093498097aa4ee3219f66254",
+      "bytes": 2250
+    },
+    {
+      "path": "input/author/input/whole-form-decisions.json",
+      "sha256": "8df1028e423f7fa1e619c042cbdae3a9772afd93e43d9f79f64833a47d79b357",
+      "bytes": 9351
+    },
+    {
+      "path": "input/author/input/whole-preparation-contracts.json",
+      "sha256": "67d5cfe7713be6b6949aa06ff9390cbbe73bb8cb8db51f871a7e5c936ec1a16f",
+      "bytes": 718456
+    },
+    {
+      "path": "input/author/integration.proposal.json",
+      "sha256": "bb2a3d10449df3515f7ae44da6cca2040046ae4be1c3a4e2ba70f8b5881c23bb",
+      "bytes": 19250
+    },
+    {
+      "path": "input/author/make_visual_contacts.py",
+      "sha256": "2a01776485d75ee0dbcf03c2063c1b7747973d8ae7472d762d2dc5fb275da8fe",
+      "bytes": 1362
+    },
+    {
+      "path": "input/author/prepare_source_evidence.py",
+      "sha256": "d7dc8f0c3e43def5668846901cdc930c3fa2a6aeca9a707773e407b5a8711091",
+      "bytes": 4786
+    },
+    {
+      "path": "input/author/primary-page-evidence.json",
+      "sha256": "89f6ddc8ca0b1cd32de5c756b857e9205f1afb6792576fdd6cf03e8c6c2fc273",
+      "bytes": 7654
+    },
+    {
+      "path": "input/author/primary-pages/BW-physical-39.png",
+      "sha256": "44d382cb99d4022db890f786fd9ce6ff4be162d2196ae2a9c56728d3f4163243",
+      "bytes": 180818
+    },
+    {
+      "path": "input/author/primary-pages/BW-physical-39.txt",
+      "sha256": "4ff9ed4e80323bf073b21f394288550aa6217524ae5e8eb3301fb8254660a645",
+      "bytes": 2675
+    },
+    {
+      "path": "input/author/primary-pages/BW-physical-40.png",
+      "sha256": "b01d88d5caedcf37ede8eb98f8e34b5ff85eedb52bae5794cd03dc27e5befa61",
+      "bytes": 51874
+    },
+    {
+      "path": "input/author/primary-pages/BW-physical-40.txt",
+      "sha256": "e3759c034acdf0212ab4bc90627849e3700b4b58e0fcdbce159bd5eb51c80311",
+      "bytes": 816
+    },
+    {
+      "path": "input/author/primary-pages/BY-J11-physical-2.png",
+      "sha256": "d8fd8334dc11e99ae7d95f74ae2e07d06c54b26d903f0f72dd2944a9116d166e",
+      "bytes": 244837
+    },
+    {
+      "path": "input/author/primary-pages/BY-J11-physical-2.txt",
+      "sha256": "5a0834a1d8018eab3ef5e24fea33c1b4834e836d1a1b474a1090b6bfe196f2d8",
+      "bytes": 3580
+    },
+    {
+      "path": "input/author/primary-pages/BY-J11-physical-3.png",
+      "sha256": "365ac939e80ef7de97c6b6dab44050dc1e7b3786ba39b416a5b4d1af49f19eaf",
+      "bytes": 190050
+    },
+    {
+      "path": "input/author/primary-pages/BY-J11-physical-3.txt",
+      "sha256": "38b9dfb1f5293fc5cd7955355ee3a3534177bbe4ce47fa0d4921c61234039f10",
+      "bytes": 2622
+    },
+    {
+      "path": "input/author/primary-pages/BY-J12-physical-2.png",
+      "sha256": "1c9e51869a90cf3fef8c49eb2baf4cc6ae6472135cedf9f0df45ea83f95052d9",
+      "bytes": 180717
+    },
+    {
+      "path": "input/author/primary-pages/BY-J12-physical-2.txt",
+      "sha256": "0ff1501c598b2173d849b3bbe9b640296c68eede6104f02fe17bf328c43a5771",
+      "bytes": 2571
+    },
+    {
+      "path": "input/author/primary-pages/BY-J13-physical-1.png",
+      "sha256": "cf5155a4ccff6ea94e150cfc022629a89c84a79ed6456d371ebfda831e15f223",
+      "bytes": 189774
+    },
+    {
+      "path": "input/author/primary-pages/BY-J13-physical-1.txt",
+      "sha256": "02e87321937d57e81a7c5f08c8441d6957f4e4a779cb8d3602a365ce5d7a78bb",
+      "bytes": 2549
+    },
+    {
+      "path": "input/author/primary-pages/HE-G8-physical-25.png",
+      "sha256": "dea9f635dbbceb65158cdb775028a1c4c03f9ba4fdc86b27f0bb7db35ec97c73",
+      "bytes": 105857
+    },
+    {
+      "path": "input/author/primary-pages/HE-G8-physical-25.txt",
+      "sha256": "8068e0603a96af08815e018767565870abde67554ebd3a663ef79d817d9f2760",
+      "bytes": 2172
+    },
+    {
+      "path": "input/author/primary-pages/HE-G9-physical-28.png",
+      "sha256": "de035ed34d03c4ae53e55ef2397362ef36dcaeb98b6e6c2c08b38832df1cbab6",
+      "bytes": 58109
+    },
+    {
+      "path": "input/author/primary-pages/HE-G9-physical-28.txt",
+      "sha256": "b459c48f64c2cda17542efd1baa535f7b421cc52ca53b1376cc0147313ba814f",
+      "bytes": 1157
+    },
+    {
+      "path": "input/author/primary-pages/HE-upper-physical-46.png",
+      "sha256": "d088413871995c5e47f49db6bd134b41d76ab4631ee32573ee1d57d05aa8cd0a",
+      "bytes": 224600
+    },
+    {
+      "path": "input/author/primary-pages/HE-upper-physical-46.txt",
+      "sha256": "7d8a3d680d3ad5e17d4ba5f7a91244f1c0095ba7740aa3dcc387cd5c1988a1e4",
+      "bytes": 3109
+    },
+    {
+      "path": "input/author/primary-pages/HE-upper-physical-47.png",
+      "sha256": "e141947c63bef956a8d43e5124bec569e44fc26c2b8c9cad7560f9f7d52273cb",
+      "bytes": 216012
+    },
+    {
+      "path": "input/author/primary-pages/HE-upper-physical-47.txt",
+      "sha256": "190cb48d782b9f6bc609a43290589a4aa2166dfd3b1826d7ca7034573b1b21a1",
+      "bytes": 3345
+    },
+    {
+      "path": "input/author/primary-pages/HE-upper-physical-48.png",
+      "sha256": "e5f3ee774b8e24f84505c81c89d0159edbd045eab1ac8749565ce3f9a854ab94",
+      "bytes": 178089
+    },
+    {
+      "path": "input/author/primary-pages/HE-upper-physical-48.txt",
+      "sha256": "bab86d1884e97003bbbd0e484e13f15ce3b2e7764ee4eeee6cfcf0fb73275619",
+      "bytes": 2656
+    },
+    {
+      "path": "input/author/primary-pages/HE-upper-physical-49.png",
+      "sha256": "1b782cecf6937d8a6e9c5ac1073c884493beb90d338a02959e8837ea4ff232e5",
+      "bytes": 48872
+    },
+    {
+      "path": "input/author/primary-pages/HE-upper-physical-49.txt",
+      "sha256": "302813de2d82bc500be3007bf52c1a77ee8f48f7d8378693fb1ec243aec1a1ab",
+      "bytes": 746
+    },
+    {
+      "path": "input/author/primary-pages/SH-physical-70.png",
+      "sha256": "72d59040f0224612b69f587ebf834923a6c20e647daaf852772decf8b2f76290",
+      "bytes": 113986
+    },
+    {
+      "path": "input/author/primary-pages/SH-physical-70.txt",
+      "sha256": "eebdce88e2b8dfdf4f3251471efd59dafdb5b7b239bf152265a48bb323297ac8",
+      "bytes": 3093
+    },
+    {
+      "path": "input/author/primary-pages/SH-physical-71.png",
+      "sha256": "c9036f316f94fbea5eaf7c733d97984695688c2b2ddbb5def89c47e7c41bd76f",
+      "bytes": 141955
+    },
+    {
+      "path": "input/author/primary-pages/SH-physical-71.txt",
+      "sha256": "69ae1f10571b79be105ce0c8217d9b8a735892d30d572fb4c2ddd760184b60f3",
+      "bytes": 4306
+    },
+    {
+      "path": "input/author/primary-source-bindings.json",
+      "sha256": "488a4b641b891ce4113ff23c1d5507b6fcd80c759d27ffa5e16ca63ef2aa4e87",
+      "bytes": 10819
+    },
+    {
+      "path": "input/author/review-input-manifest.json",
+      "sha256": "6197152b4dee9a9853f614e19aff7dac8ce72530fabc886825cf40e7d379a0b1",
+      "bytes": 102741
+    },
+    {
+      "path": "input/author/source-and-rights-status.json",
+      "sha256": "48440a3d55e528ef0d7c93f44f8257b234315ecda69e285aee4ce22af31c3b72",
+      "bytes": 1442
+    },
+    {
+      "path": "input/author/verify_frozen.py",
+      "sha256": "c16650e14388a0eb2fd460b8b70d88501fbec6693cae941993ff656f724a327e",
+      "bytes": 1216
+    },
+    {
+      "path": "input/author/verify_math_and_inputs.py",
+      "sha256": "de6163abe6057a350afee4aa90cbfb25b06f5e14c49ba21d0869f7f46c43599b",
+      "bytes": 10714
+    },
+    {
+      "path": "input/author/verify_rendering.mjs",
+      "sha256": "8120f7dc55bfa33d920c83766cb1b2004943b70568cb833707cd16fa9d9604e6",
+      "bytes": 6846
+    },
+    {
+      "path": "input/author/verify_rubric_cases.py",
+      "sha256": "2ddeb6c705deb9f2897bbb87575b483c6dbc6fa93eeb9544a9c82bae4b0e3a5a",
+      "bytes": 7758
+    },
+    {
+      "path": "input/author/visual-contacts/new_gk_binomial_test_variation-solution-full.png",
+      "sha256": "07505987fde669e9d640dfc64878204aa08273a0c8a9649e8e98ddf2523ac646",
+      "bytes": 260039
+    },
+    {
+      "path": "input/author/visual-contacts/new_he_g8_descriptive_statistics-solution-full.png",
+      "sha256": "54ca0e4a94eaee6fbeffa7ce4ae46062efea48f94dcda496eb2cf40dda39dc24",
+      "bytes": 239831
+    },
+    {
+      "path": "input/author/visual-contacts/same_id_poisson_formal_limit-solution-full.png",
+      "sha256": "97b7af9f9363e4ea26a069a563b7e6725905e4545d3670c6e9ea0d2e5f7bd280",
+      "bytes": 341663
+    },
+    {
+      "path": "input/author/visual-contacts/taskContent-1.png",
+      "sha256": "05ed236d2f19570b0607d48ad566230ca974ef5648404ee241bb32969099e2e6",
+      "bytes": 357361
+    },
+    {
+      "path": "input/author/visual-contacts/taskContent-2.png",
+      "sha256": "03cad05363612ccdd194df86b3afce9aecc034dd30c6eee6d30cba33c9642d4e",
+      "bytes": 557830
+    },
+    {
+      "path": "input/author/visual-contacts/taskContent-3.png",
+      "sha256": "4e5d9584d78e7f83f0f46a33cf03c4cf7e946b89e9980e62337df0c5421dffae",
+      "bytes": 485022
+    },
+    {
+      "path": "input/author/visual-contacts/taskContent-4.png",
+      "sha256": "790dc21c4d9a6b40c50ef072964863af5fae0563525685d584c91dc12b30da3b",
+      "bytes": 568960
+    },
+    {
+      "path": "input/author/visual-contacts/taskContentEn-1.png",
+      "sha256": "133e141064d9564a19743a9d4d40eabb017f2eb478116647f8c378020d29b6ba",
+      "bytes": 311227
+    },
+    {
+      "path": "input/author/visual-contacts/taskContentEn-2.png",
+      "sha256": "d227368e20f213975024ad9df388b844f8a87a384711ef15cc5fc187c5998d14",
+      "bytes": 465343
+    },
+    {
+      "path": "input/author/visual-contacts/taskContentEn-3.png",
+      "sha256": "ac8faeb5cfacfdeb39736924626e4e91412ef9bc4e017bd6154b3a73d60f3407",
+      "bytes": 418563
+    },
+    {
+      "path": "input/author/visual-contacts/taskContentEn-4.png",
+      "sha256": "1b06a831c61776857911846561673210c19d37dfb54375b6e6ab0db59d0d1cbe",
+      "bytes": 455670
+    },
+    {
+      "path": "input/author/visual-contacts.index.json",
+      "sha256": "a80086ec76608fc0854a2f94691a7973eb05ca13d626afc6e365658bfe477d1d",
+      "bytes": 533
+    },
+    {
+      "path": "manifest.conditional.json",
+      "sha256": "cee53b82e507970564167b3a0d2168c4b2877a23a82bd532340863713bed66b2",
+      "bytes": 106764
+    },
+    {
+      "path": "preexisting-formal-am-history.readonly.json",
+      "sha256": "789cb48dd7eaf2ce02fb35adda1584ebde910462bb676560308a20d67c227890",
+      "bytes": 2101
+    },
+    {
+      "path": "review-progress.json",
+      "sha256": "cec399a1c3755a715d816b332b4dae84a91f515261a5c2574f8e3e937f4168b5",
+      "bytes": 931
+    },
+    {
+      "path": "review.conditional.md",
+      "sha256": "f6accdd3220c2aeee4f35824c39a24c9c9d3dddb53ac5510286feaac40d17911",
+      "bytes": 5017
+    },
+    {
+      "path": "review.final.md",
+      "sha256": "6088ccceca314ecf6a568af2231ee48191f644a9dfa9dd8ce38bbaecd54cd01d",
+      "bytes": 2761
+    },
+    {
+      "path": "rubric-countercases.json",
+      "sha256": "2488d25e4c48fa9cc856f1d366b51b090d7ab28bcc849cc786bd0a91deaa15d2",
+      "bytes": 12372
+    },
+    {
+      "path": "visual-and-source-read-record.json",
+      "sha256": "6e0eb3f7a86d817e0d21463664f11d0c5c328cf84bde6a38bbb374aed9f130d1",
+      "bytes": 4540
+    },
+    {
+      "path": "visual-review/solutionContent-1.png",
+      "sha256": "5b48878c51e35ad40a5fc496c42627eb5e42644374ea2f26fbed8430beae68bc",
+      "bytes": 483530
+    },
+    {
+      "path": "visual-review/solutionContent-2.png",
+      "sha256": "4f2d40f43afb4e50a4eeb6806f0f50c1479188b5280129ebd701df3cfcd66c6d",
+      "bytes": 526812
+    },
+    {
+      "path": "visual-review/solutionContent-3.png",
+      "sha256": "d94537e4172ae4ed4be074f3cd4f084feea15f61ed33b34910d7bc0ecdd1c1ae",
+      "bytes": 660725
+    },
+    {
+      "path": "visual-review/solutionContent-4.png",
+      "sha256": "7b7fb9a3f0146a1437df62d0fd7769ca10ab3afb78a10f9f20d310243226cfa8",
+      "bytes": 602862
+    },
+    {
+      "path": "visual-review/solutionContent-5.png",
+      "sha256": "a9e5b3a3a3eb3b1b222b332d2c904fb020f2c35d93319d71fb4c79ad6fdf30f4",
+      "bytes": 648551
+    },
+    {
+      "path": "visual-review/solutionContent-6.png",
+      "sha256": "0fff7eefe90d497cafa62ccd2462f0d7f526af63a8d70c97c1d60c29bb14519b",
+      "bytes": 713857
+    },
+    {
+      "path": "visual-review/taskContent-1.png",
+      "sha256": "dae1f990b5138472a0dd8a9ace87fd8729d5b1cb699517c995e76182b8adffe8",
+      "bytes": 306325
+    },
+    {
+      "path": "visual-review/taskContent-2.png",
+      "sha256": "7792b4b283a7bb4b18e7278b7c7bfb35d4a7af4a63005f128e674d03bc1af88d",
+      "bytes": 309602
+    },
+    {
+      "path": "visual-review/taskContent-3.png",
+      "sha256": "2dcacdc4f245b8b432842c26fdfe6758329eba8bf0e42176684be34f653a704c",
+      "bytes": 430847
+    },
+    {
+      "path": "visual-review/taskContent-4.png",
+      "sha256": "bfc3593c64e1aeb0965cdac30b0fd282dfcba10fdc27e108d5124c8a43e06d7c",
+      "bytes": 350547
+    },
+    {
+      "path": "visual-review/taskContent-5.png",
+      "sha256": "66a6e7085af469ec38f8cf4ebde48c25f1cbfcb825bd58b7eff452b8e7b0a9c9",
+      "bytes": 424317
+    },
+    {
+      "path": "visual-review/taskContent-6.png",
+      "sha256": "315885e27b64ec3e0e14c186c032f46f1b7f81faa8b3c91658360a6cf78d6e40",
+      "bytes": 390535
+    },
+    {
+      "path": "write_review.py",
+      "sha256": "41b9ce4b5bbd71ce39e524a4383d191481e7095727c5330b3b41d766a7438977",
+      "bytes": 16207
+    }
+  ],
+  "fileCount": 547,
+  "allPriorFrozenFilesPreserved": true,
+  "noRootGitProductionWrites": true,
+  "nativeStageM7Acceptance": false
+}

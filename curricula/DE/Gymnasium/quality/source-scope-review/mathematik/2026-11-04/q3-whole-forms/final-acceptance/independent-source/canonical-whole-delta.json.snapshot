@@ -1,0 +1,1402 @@
+{
+  "existingChanges": {
+    "e5055665-89ae-5be6-8fc7-42a9e991d63d": {
+      "applicability": {
+        "before": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "after": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      }
+    },
+    "1cefd1ad-a250-5a03-8de7-04bdaf465ad8": {
+      "sourceRef": {
+        "before": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.5, S. 48, Spiegelstrich 5",
+        "after": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.5, physische/gedruckte S.49: Poisson-Verteilung als Näherung der Binomialverteilung bei konstantem Erwartungswert; Beweisen des Grenzübergangs."
+      },
+      "nodeKind": {
+        "before": null,
+        "after": "exam"
+      },
+      "examData": {
+        "before": null,
+        "after": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "1cefd1ad-a250-5a03-8de7-04bdaf465ad8"
+          ],
+          "coveredStrands": [
+            "L5"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "# Der Poisson-Grenzübergang für allgemeine seltene Treffer\n\nDies ist die eigenständige formale SkillPilot-Prüfungsaufgabe zum bestehenden Lernziel. Sei $(p_n)$ eine **beliebige** Folge mit $0<p_n<1$, $p_n\\to0$ und $np_n\\to\\lambda>0$. Für jedes $n$ sei $X_n\\sim B(n;p_n)$. Sei $k\\geq0$ eine feste ganze Zahl, während $n\\to\\infty$ geht. Ein Beweis nur für $p_n=\\lambda/n$ genügt nicht für die allgemeine Aussage.\n\nDie folgenden elementaren Grenzwertfakten dürfen ohne eigenen Analysisbeweis verwendet werden: endliche Produkte und Summen konvergenter Folgen haben den erwarteten Grenzwert; $\\log(1-x)/x\\to-1$ für $x\\to0^+$; die Exponentialfunktion ist stetig; $a_n\\to a>0$ impliziert $a_n^r\\to a^r$ für jede feste ganze Potenz $r$. Für ein leeres Produkt gilt der Wert 1. Falls du die Normierung erläutern möchtest, darfst du $\\sum_{j=0}^{\\infty}\\lambda^j/j!=e^\\lambda$ verwenden; ein Beweis der Exponentialreihe ist nicht verlangt.\n\n\n1. Zerlege für $n\\geq k$ die Binomialwahrscheinlichkeit $P(X_n=k)$ in die Faktoren\n\n$$\n\\frac{(np_n)^k}{k!}\\;\\prod_{j=0}^{k-1}\\left(1-\\frac jn\\right)\\;(1-p_n)^n\\;(1-p_n)^{-k}.\n$$\n\nBegründe die Umformung einschließlich $k=0$.\n\n2. Bestimme und begründe den Grenzwert **jedes** Faktors. Zeige insbesondere mit den erlaubten Fakten für allgemeines $p_n$, warum $(1-p_n)^n\\to e^{-\\lambda}$. Führe daraus den Grenzwert von $P(X_n=k)$ her. Gleichwertige vollständige Beweise sind erlaubt.\n\n3. Erkläre, was „für jedes feste $k$“ aussagt und warum es keine ungeprüfte Aussage für mit $n$ wachsende Grenzen $k_n$ ist. Begründe die Eignung des Poissonmodells für viele unabhängige seltene Treffer mit ungefähr konstantem Mittel und benenne eine Modellgrenze.\n\n4. Bei $n=1000$ unabhängigen Prüfungen beträgt die Trefferchance $p=0{,}002$. Berechne $P(X=2)$ binomial und näherungsweise mit Poissonparameter $\\lambda=np$. Vergleiche numerisch und deute die Aussage „Die Verteilungen sind damit bei endlichem $n$ identisch“. Digitale Werkzeuge sind erlaubt.\n",
+          "taskContentEn": "# The Poisson limit for general rare-success sequences\n\nThis is the independent formal SkillPilot assessment for the existing goal. Let $(p_n)$ be **any** sequence with $0<p_n<1$, $p_n\\to0$ and $np_n\\to\\lambda>0$. Let $X_n\\sim B(n;p_n)$. Fix an integer $k\\geq0$ while $n\\to\\infty$. A proof restricted to $p_n=\\lambda/n$ does not establish the general statement.\n\nYou may use these elementary limit facts without further analysis proofs: finite products/sums of convergent sequences obey ordinary limit algebra; $\\log(1-x)/x\\to-1$ as $x\\to0^+$; exp is continuous; and $a_n\\to a>0$ implies $a_n^r\\to a^r$ for fixed integer $r$. An empty product equals 1. If discussing normalisation, you may use $\\sum_{j=0}^{\\infty}\\lambda^j/j!=e^\\lambda$; proving the exponential-series identity is not required.\n\n\n1. For $n\\geq k$, factor the binomial mass as\n\n$$\n\\frac{(np_n)^k}{k!}\\;\\prod_{j=0}^{k-1}\\left(1-\\frac jn\\right)\\;(1-p_n)^n\\;(1-p_n)^{-k}.\n$$\n\nJustify the rearrangement, including $k=0$.\n\n2. Determine and justify every factor's limit. In particular use the permitted facts to establish $(1-p_n)^n\\to e^{-\\lambda}$ for general $p_n$. Derive the limit of $P(X_n=k)$. Equivalent complete proofs receive credit.\n\n3. Explain “for every fixed $k$” and why this does not automatically establish a statement for growing boundaries $k_n$. Explain why Poisson models suit many independent rare trials with roughly constant mean and name a limitation.\n\n4. For $n=1000$ independent trials with $p=0.002$, calculate the binomial probability of exactly 2 successes and its Poisson approximation with $\\lambda=np$. Compare and assess “The finite-n distributions are therefore identical”. Digital tools are allowed.\n",
+          "solutionContent": "# Musterlösung\n\nFür $n\\geq k$ gilt\n\n$$\n\\binom nkp_n^k(1-p_n)^{n-k}\n=\\frac{n(n-1)\\cdots(n-k+1)}{k!}p_n^k(1-p_n)^n(1-p_n)^{-k}.\n$$\n\nIn den $k$ Faktoren des fallenden Produkts wird $n$ ausgeklammert; damit entsteht genau die geforderte Zerlegung. Bei $k=0$ sind $0!=1$, $(np_n)^0=1$, das Produkt leer und $(1-p_n)^0=1$; übrig bleibt korrekt $P(X_n=0)=(1-p_n)^n$.\n\nWeil $np_n\\to\\lambda$, gilt $(np_n)^k/k!\\to\\lambda^k/k!$. Da $k$ fest ist, enthält das Produkt nur endlich viele Faktoren $1-j/n\\to1$ und geht gegen 1. Ferner $p_n\\to0$, somit $(1-p_n)^{-k}\\to1$. Für den entscheidenden mittleren Faktor gilt **ohne** Voraussetzung $p_n=\\lambda/n$:\n\n$$\nn\\log(1-p_n)=(np_n)\\frac{\\log(1-p_n)}{p_n}\\longrightarrow\\lambda(-1)=-\\lambda.\n$$\n\nMit Stetigkeit von exp folgt\n\n$$\n(1-p_n)^n=\\exp\\bigl(n\\log(1-p_n)\\bigr)\\longrightarrow e^{-\\lambda}.\n$$\n\nDas Produkt aller Grenzwerte liefert für jedes feste $k\\in\\{0,1,2,\\ldots\\}$\n\n$$\n\\boxed{\\lim_{n\\to\\infty}P(X_n=k)=e^{-\\lambda}\\frac{\\lambda^k}{k!}.}\n$$\n\nDas ist die Poisson-Punktwahrscheinlichkeit. Wahlweise ergibt die gegebene Reihenidentität ihre Summe 1; diese Ergänzung ist nicht zum Bestehen notwendig. Die Voraussetzung lässt etwa auch $p_n=(\\lambda+1/\\sqrt n)/n$ für hinreichend große $n$ zu, also tatsächlich mehr als die Spezialfolge $\\lambda/n$.\n\nDer Grenzwert gilt für jede zuvor fest gewählte Trefferzahl. Ein mit $n$ wachsendes $k_n$ würde insbesondere die endliche feste Faktorzahl im Argument aufheben; dafür wurde nichts bewiesen. Viele gleichartige unabhängige Versuche, kleine Trefferchance und ein ungefähr stabiler Mittelwert $np$ motivieren die Näherung seltener Trefferzahlen. Abhängigkeiten, stark wechselnde Chancen oder nicht seltene Treffer können sie ungeeignet machen. Die Rechnung beweist nicht allein eine universelle Fehlerschranke bei endlichem $n$.\n\nIm Beispiel ist $\\lambda=1000\\cdot0{,}002=2$:\n\n$$\nP_B(X=2)=\\binom{1000}{2}0{,}002^2\\,0{,}998^{998}\\approx0{,}27094160,\n$$\n\n\n$$\nP_P(Y=2)=e^{-2}\\frac{2^2}{2!}=2e^{-2}\\approx0{,}27067057.\n$$\n\nAbsolute Abweichung etwa $0{,}00027103$ (rund $0{,}02710$ Prozentpunkte). Die endlichen Verteilungen sind nicht identisch; die Binomialverteilung ist auf 0 bis 1000 beschränkt, die Poissonverteilung hat auch darüber positive Massen. Die Nähe bei $k=2$ ist eine konkrete Näherungsbeobachtung, keine Gleichheit aller Wahrscheinlichkeiten.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 6 | fallendes Produkt aus Binomialkoeffizient 2; Ausklammern np-Faktor 2; Potenzzerlegung 1; k0/leeres Produkt 1 |\n| 2 | 10 | np-Faktorgrenze 1; endliches Produkt 1; inverse Potenz 1; allgemeine Log-Zerlegung 3; Grenzwert minuslambda und exp-Stetigkeit 2; richtiges Gesamtprodukt 2 |\n| 3 | 4 | fester k-Quantor und Grenze für wachsendes k 2; seltene unabhängige Versuche/stabiler Mittelwert 1; konkrete Modell- oder Fehlergrenze 1 |\n| 4 | 4 | lambda 2 und binomialer Ansatz/Wert 1; Poissonwert 1; numerischer Vergleich 1; endliche Ungleichheit begründet 1 |\n| **Gesamt** | **24** | **Bestanden ab 15** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n\n**Eine normale Beweiskern-Gesamtkappung:** Fehlt überall eine echte Herleitung eines nichttrivialen Grenzschritts und werden nur fertige Grenzwerte oder die Endformel abgeschrieben, ist die eine Gesamtpunktzahl höchstens 14 von 24. Eine gültige Grenzherleitung an beliebiger Stelle genügt gegen diese Kappung. Lokale Rechen-/Schreibfehler bei erkennbarer Grenzargumentation lösen sie nicht aus; gleichwertige allgemeine Beweise und Folgefehler werden fair bewertet. Es gibt keine Kappung oder Teilpassentscheidung je Voraussetzung. Ein nur auf die Spezialfolge beschränkter Beweis erhält seine sachlich verdienten Teilpunkte, aber keine Punkte für die nicht bewiesene allgemeine Log-Zerlegung.\n",
+          "solutionContentEn": "# Reference solution\n\nFor $n\\geq k$, write $\\binom nk=n(n-1)\\cdots(n-k+1)/k!$, factor $n$ from each of the $k$ numerator factors and use $(1-p_n)^{n-k}=(1-p_n)^n(1-p_n)^{-k}$. This gives the specified product. For $k=0$, factorial and empty product are 1, and the expression correctly reduces to $(1-p_n)^n$.\n\nSince $np_n\\to\\lambda$, the first factor tends to $\\lambda^k/k!$. With $k$ fixed the product is finite and every factor tends to 1, so its limit is 1. The final factor also tends to 1 because $p_n\\to0$ and its exponent is fixed. For the crucial factor, without assuming $p_n=\\lambda/n$,\n\n$$\nn\\log(1-p_n)=(np_n)\\frac{\\log(1-p_n)}{p_n}\\to-\\lambda.\n$$\n\nContinuity of exp gives $(1-p_n)^n\\to e^{-\\lambda}$. Multiplying limits yields\n\n$$\n\\lim_{n\\to\\infty}P(X_n=k)=e^{-\\lambda}\\lambda^k/k!\n$$\n\nfor every fixed nonnegative integer $k$. The supplied series identity may optionally establish normalisation; it is not required. For example, $p_n=(\\lambda+1/\\sqrt n)/n$ for sufficiently large $n$ satisfies the assumptions without equalling $\\lambda/n$.\n\nThe statement concerns each value fixed before taking the limit. A growing $k_n$ would remove the fixed finite number of factors used in the proof and is not covered automatically. Many independent similar rare trials with roughly constant mean motivate Poisson approximation. Dependence, changing probabilities or non-rare successes can invalidate it. No universal finite-n error bound was proved.\n\nFor $n=1000,p=0.002$, $\\lambda=2$. The binomial probability $\\binom{1000}{2}0.002^2 0.998^{998}\\approx0.27094160$, while Poisson gives $e^{-2}2^2/2!=2e^{-2}\\approx0.27067057$. Absolute error is about $0.00027103$, or $0.02710$ percentage points. Finite distributions are not identical: binomial support ends at 1000 while Poisson has positive mass beyond 1000. Agreement at one count does not establish equality everywhere.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 6 | falling factorial from coefficient 2; np factorisation 2; power split 1; k0/empty product 1 |\n| 2 | 10 | np factor limit 1; finite product 1; inverse power 1; general log rearrangement 3; minuslambda and exp continuity 2; correct total product 2 |\n| 3 | 4 | fixed-k quantifier and growing-k limitation 2; rare independent trials/stable mean 1; concrete model/error limitation 1 |\n| 4 | 4 | lambda 2 and binomial setup/value 1; Poisson value 1; numerical comparison 1; reasoned finite-n inequality 1 |\n| **Total** | **24** | **Pass at 15** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n\n**One ordinary proof-core total-score cap:** If no genuine derivation of a nontrivial limit step appears anywhere and the response only copies stated limits or the final formula, cap the single total at 14/24. A valid limit derivation anywhere avoids this cap. Local slips within genuine limit reasoning do not trigger it; accept equivalent general proofs and fair follow-through. No per-prerequisite caps or part-pass decisions apply. A proof restricted to the special sequence receives earned partial credit but no marks for the unproved general log argument.\n",
+          "scoring": {
+            "maxPoints": 24,
+            "passingPoints": 15,
+            "steps": [
+              {
+                "id": "same_id_poisson_formal_limit_1",
+                "points": 6,
+                "description": "fallendes Produkt aus Binomialkoeffizient 2; Ausklammern np-Faktor 2; Potenzzerlegung 1; k0/leeres Produkt 1",
+                "descriptionEn": "falling factorial from coefficient 2; np factorisation 2; power split 1; k0/empty product 1"
+              },
+              {
+                "id": "same_id_poisson_formal_limit_2",
+                "points": 10,
+                "description": "np-Faktorgrenze 1; endliches Produkt 1; inverse Potenz 1; allgemeine Log-Zerlegung 3; Grenzwert minuslambda und exp-Stetigkeit 2; richtiges Gesamtprodukt 2",
+                "descriptionEn": "np factor limit 1; finite product 1; inverse power 1; general log rearrangement 3; minuslambda and exp continuity 2; correct total product 2"
+              },
+              {
+                "id": "same_id_poisson_formal_limit_3",
+                "points": 4,
+                "description": "fester k-Quantor und Grenze für wachsendes k 2; seltene unabhängige Versuche/stabiler Mittelwert 1; konkrete Modell- oder Fehlergrenze 1",
+                "descriptionEn": "fixed-k quantifier and growing-k limitation 2; rare independent trials/stable mean 1; concrete model/error limitation 1"
+              },
+              {
+                "id": "same_id_poisson_formal_limit_4",
+                "points": 4,
+                "description": "lambda 2 und binomialer Ansatz/Wert 1; Poissonwert 1; numerischer Vergleich 1; endliche Ungleichheit begründet 1",
+                "descriptionEn": "lambda 2 and binomial setup/value 1; Poisson value 1; numerical comparison 1; reasoned finite-n inequality 1"
+              }
+            ]
+          },
+          "reviewNote": "Independently reviewed whole content; integrated scope and current fingerprints require separate implementation review. curricula/DE/Gymnasium/assessments/mathematik/q3-whole-scoped-completion-2026-11-04-v1/reviews/independent-final-content-decision.json"
+        }
+      }
+    },
+    "ae3483e3-4712-56a1-a881-2e1f8a1a8df9": {
+      "applicability": {
+        "before": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "after": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      }
+    },
+    "9cf020ee-4f6b-554e-97d6-eca3e2aabe99": {
+      "examData": {
+        "before": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "8c32d941-b51c-5663-951c-a610f8900f76",
+            "f7879354-1a82-4195-8e3c-a339a820439c"
+          ],
+          "coveredStrands": [
+            "L4",
+            "L5"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "taskContent": "In einem Versandzentrum kommen erfahrungsgemäß $6\\,$% aller Sendungen verspätet an. An einem Tag werden $250$ Sendungen betrachtet. Die Zufallsvariable $X$ beschreibt die Anzahl der verspäteten Sendungen.\n\n1. Begründen Sie ein geeignetes Modell für $X$ und bestimmen Sie Erwartungswert und Standardabweichung.\n2. Berechnen Sie mit der Normalapproximation und Stetigkeitskorrektur die Wahrscheinlichkeit, dass zwischen $10$ und $20$ Sendungen verspätet ankommen.\n3. Bestimmen Sie näherungsweise die Wahrscheinlichkeit, dass mehr als $25$ Sendungen verspätet sind.\n4. Beurteilen Sie, ob ein Tageswert von mehr als $25$ verspäteten Sendungen als auffällig gelten kann.",
+          "solutionContent": "1. Es ist ein Binomialmodell mit\n$$\nX\\sim B(250;0{,}06)\n$$\nunter den zusätzlichen Modellannahmen angemessen, dass die betrachteten Sendungen annähernd unabhängig sind und für jede dieselbe Verspätungswahrscheinlichkeit p=0,06 gilt. Gemeinsame Lieferketten, Wetter oder gebündelte Transporte können Abhängigkeiten bzw. unterschiedliche Wahrscheinlichkeiten verursachen; dann ist das Binomialmodell nur eingeschränkt passend. Es gilt\n$$\n\\mu=np=250\\cdot 0{,}06=15,\n$$\n$$\n\\sigma=\\sqrt{np(1-p)}=\\sqrt{250\\cdot 0{,}06\\cdot 0{,}94}=\\sqrt{14{,}1}\\approx 3{,}76.\n$$\n\n2. Mit Stetigkeitskorrektur wird\n$$\nP(10\\le X\\le 20)\\approx P(9{,}5\\le Y\\le 20{,}5)\n$$\nmit $Y\\sim N(15;3{,}76)$. Standardisiert ergibt sich\n$$\nz_1=\\frac{9{,}5-15}{3{,}76}\\approx -1{,}46,\\qquad z_2=\\frac{20{,}5-15}{3{,}76}\\approx 1{,}46.\n$$\nDamit folgt\n$$\nP(10\\le X\\le 20)\\approx \\Phi(1{,}46)-\\Phi(-1{,}46)\\approx 0{,}857.\n$$\n\n3. Für mehr als $25$ verspätete Sendungen gilt mit Stetigkeitskorrektur\n$$\nP(X>25)\\approx P(Y>25{,}5).\n$$\nStandardisieren liefert\n$$\nz=\\frac{25{,}5-15}{3{,}76}\\approx 2{,}79.\n$$\nAlso\n$$\nP(X>25)\\approx 1-\\Phi(2{,}79)\\approx 0{,}0026.\n$$\n\n4. Ein Tageswert von mehr als $25$ verspäteten Sendungen ist sehr unwahrscheinlich. Mit einer Wahrscheinlichkeit von nur etwa $0{,}26\\,$% kann ein solcher Wert als deutlich auffällig beurteilt werden.",
+          "scoring": {
+            "maxPoints": 20,
+            "passingPoints": 10,
+            "steps": [
+              {
+                "id": "q3b_1",
+                "points": 4,
+                "description": "Binomialmodell mit annähernder Unabhängigkeit und konstantem p begründet; Erwartungswert und Standardabweichung korrekt bestimmt"
+              },
+              {
+                "id": "q3b_2",
+                "points": 7,
+                "description": "Intervallwahrscheinlichkeit mit Normalapproximation korrekt berechnet"
+              },
+              {
+                "id": "q3b_3",
+                "points": 4,
+                "description": "Randwahrscheinlichkeit für mehr als 25 korrekt bestimmt"
+              },
+              {
+                "id": "q3b_4",
+                "points": 5,
+                "description": "Auffälligkeit im Kontext fachlich sinnvoll bewertet"
+              }
+            ]
+          },
+          "reviewNote": "Begrenzte Inhaltskorrektur vom 01.11.2026 unabhängig mit Astra Ultra fachlich geprüft; exakte Nachkorrekturen berücksichtigt. Nachweis: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-upper-candidate-review.json. Historische Quellen und bestehende gültige Mastery bleiben unverändert."
+        },
+        "after": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "8c32d941-b51c-5663-951c-a610f8900f76",
+            "f7879354-1a82-4195-8e3c-a339a820439c"
+          ],
+          "coveredStrands": [
+            "L4",
+            "L5"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "taskContent": "In einem Versandzentrum kommen erfahrungsgemäß $6\\,$% aller Sendungen verspätet an. An einem Tag werden $250$ Sendungen betrachtet. Die Zufallsvariable $X$ beschreibt die Anzahl der verspäteten Sendungen.\n\n1. Begründen Sie ein geeignetes Modell für $X$ und bestimmen Sie Erwartungswert und Standardabweichung.\n2. Berechnen Sie mit der Normalapproximation und Stetigkeitskorrektur die Wahrscheinlichkeit, dass zwischen $10$ und $20$ Sendungen verspätet ankommen.\n3. Bestimmen Sie näherungsweise die Wahrscheinlichkeit, dass mehr als $25$ Sendungen verspätet sind.\n4. Beurteilen Sie, ob ein Tageswert von mehr als $25$ verspäteten Sendungen als auffällig gelten kann.",
+          "solutionContent": "1. Es ist ein Binomialmodell mit\n$$\nX\\sim B(250;0{,}06)\n$$\nunter den zusätzlichen Modellannahmen angemessen, dass die betrachteten Sendungen annähernd unabhängig sind und für jede dieselbe Verspätungswahrscheinlichkeit p=0,06 gilt. Gemeinsame Lieferketten, Wetter oder gebündelte Transporte können Abhängigkeiten bzw. unterschiedliche Wahrscheinlichkeiten verursachen; dann ist das Binomialmodell nur eingeschränkt passend. Es gilt\n$$\n\\mu=np=250\\cdot 0{,}06=15,\n$$\n$$\n\\sigma=\\sqrt{np(1-p)}=\\sqrt{250\\cdot 0{,}06\\cdot 0{,}94}=\\sqrt{14{,}1}\\approx 3{,}76.\n$$\n\n2. Mit Stetigkeitskorrektur wird\n$$\nP(10\\le X\\le 20)\\approx P(9{,}5\\le Y\\le 20{,}5)\n$$\nmit $Y\\sim N(15;14{,}1)$, wobei der zweite Parameter die Varianz bezeichnet: $\\mu_Y=15$, $\\operatorname{Var}(Y)=14{,}1$ und $\\sigma_Y=\\sqrt{14{,}1}\\approx 3{,}76$. Standardisiert ergibt sich\n$$\nz_1=\\frac{9{,}5-15}{3{,}76}\\approx -1{,}46,\\qquad z_2=\\frac{20{,}5-15}{3{,}76}\\approx 1{,}46.\n$$\nDamit folgt\n$$\nP(10\\le X\\le 20)\\approx \\Phi(1{,}46)-\\Phi(-1{,}46)\\approx 0{,}857.\n$$\n\n3. Für mehr als $25$ verspätete Sendungen gilt mit Stetigkeitskorrektur\n$$\nP(X>25)\\approx P(Y>25{,}5).\n$$\nStandardisieren liefert\n$$\nz=\\frac{25{,}5-15}{3{,}76}\\approx 2{,}79.\n$$\nAlso\n$$\nP(X>25)\\approx 1-\\Phi(2{,}79)\\approx 0{,}0026.\n$$\n\n4. Ein Tageswert von mehr als $25$ verspäteten Sendungen ist sehr unwahrscheinlich. Mit einer Wahrscheinlichkeit von nur etwa $0{,}26\\,$% kann ein solcher Wert als deutlich auffällig beurteilt werden.",
+          "scoring": {
+            "maxPoints": 20,
+            "passingPoints": 10,
+            "steps": [
+              {
+                "id": "q3b_1",
+                "points": 4,
+                "description": "Binomialmodell mit annähernder Unabhängigkeit und konstantem p begründet; Erwartungswert und Standardabweichung korrekt bestimmt"
+              },
+              {
+                "id": "q3b_2",
+                "points": 7,
+                "description": "Intervallwahrscheinlichkeit mit Normalapproximation korrekt berechnet"
+              },
+              {
+                "id": "q3b_3",
+                "points": 4,
+                "description": "Randwahrscheinlichkeit für mehr als 25 korrekt bestimmt"
+              },
+              {
+                "id": "q3b_4",
+                "points": 5,
+                "description": "Auffälligkeit im Kontext fachlich sinnvoll bewertet"
+              }
+            ]
+          },
+          "reviewNote": "Begrenzte Inhaltskorrektur vom 01.11.2026 unabhängig mit Astra Ultra fachlich geprüft; exakte Nachkorrekturen berücksichtigt. Nachweis: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-upper-candidate-review.json. Historische Quellen und bestehende gültige Mastery bleiben unverändert."
+        }
+      },
+      "applicability": {
+        "before": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "after": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      }
+    },
+    "3c8c4a64-f6d0-5eaf-b35a-d97c8566ee3b": {
+      "applicability": {
+        "before": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "after": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        }
+      }
+    },
+    "c83dc2d1-f44f-5fae-86ce-280c68c3c55e": {
+      "requires": {
+        "before": [
+          "84069c5e-5526-57c1-9417-a886ccfd3f66",
+          "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+          "aeb947a2-2dd4-5017-a429-0d777e22db6a",
+          "c9a897ca-a0a2-5895-bbc4-23b20840c548",
+          "1cefd1ad-a250-5a03-8de7-04bdaf465ad8"
+        ],
+        "after": [
+          "84069c5e-5526-57c1-9417-a886ccfd3f66",
+          "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+          "aeb947a2-2dd4-5017-a429-0d777e22db6a",
+          "c9a897ca-a0a2-5895-bbc4-23b20840c548"
+        ]
+      }
+    }
+  },
+  "newWholeObjects": [
+    {
+      "id": "095df29a-6791-50aa-aff1-b3d94d9b5eeb",
+      "title": "Prüfung: Einen Würfelversuch tatsächlich mit Software simulieren",
+      "titleEn": "Assessment: Actually simulate a die experiment with software",
+      "description": "Die lernende Person kann die vollständige Prüfung selbstständig bearbeiten und ihre Ergebnisse fachlich begründen.",
+      "descriptionEn": "The learner can complete the whole assessment independently and justify the results.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "4aa70ad4-171d-5671-a864-c0c7758fa0ed"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2",
+          "K3",
+          "K4",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "SekI"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "type": "atomic",
+      "nodeKind": "exam",
+      "sourceRef": "SkillPilot: eigene vollständige Abschlussaufgabe für die unveränderten vorbereitenden Lernzielverträge; keine amtliche Prüfungsaufgabe.",
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "4aa70ad4-171d-5671-a864-c0c7758fa0ed"
+        ],
+        "coveredStrands": [
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "# Ein fairer Würfel in der Simulation\n\nFühre mit einer Tabellenkalkulation, einem kleinen Programm oder einer geeigneten Statistiksoftware **selbst tatsächlich** $600$ unabhängige Würfelwürfe mit Ergebnissen $1,\\ldots,6$ aus. Alle sechs Ergebnisse sollen im Modell gleich wahrscheinlich sein. Eine bloße Beschreibung oder die Übernahme einer fremden Ergebnistabelle ersetzt die Ausführung nicht. Andere zufällige Ergebnisse sind ausdrücklich erlaubt und werden nicht nach ihrer Nähe zu den Sollwerten bewertet.\n\n\n1. Dokumentiere Software, Zufallszahlenschritt und Ausführung nachvollziehbar, etwa durch ausgeführten Code/Datei und Ausgabe oder Formeln und gespeicherte Tabellenwerte. Speichere die ersten $20$ erzeugten Werte und alle $600$ Rohwerte. Bei gesetztem Startwert nenne ihn; andernfalls friere die tatsächlich erzeugten Werte ein, damit die Auswertung reproduzierbar ist. Erkläre, wie dein Verfahren die Zahlen $1$ bis $6$ gleich behandelt.\n\n2. Bestimme für die ersten $60$ und für alle $600$ Würfe die absoluten und relativen Häufigkeiten jeder Augenzahl. Prüfe Summen und erkläre die unterschiedlichen Nenner.\n\n3. Erzeuge aus deinen tatsächlichen Daten eine geeignet beschriftete Vergleichsgrafik der relativen Häufigkeiten bei $60$ und $600$ Würfen. Markiere oder nenne zum Vergleich die theoretische Wahrscheinlichkeit $1/6$.\n\n4. Vergleiche deine Daten mit den theoretischen Chancen, erläutere Zufallsschwankungen und beurteile „Nach 600 Würfen muss jede Zahl genau 100-mal vorliegen“ sowie „Nach vielen Sechsen ist eine Sechs beim nächsten Wurf weniger wahrscheinlich“. Benenne eine Modellgrenze eines realen Würfels oder einer Software-Simulation.\n",
+        "taskContentEn": "# Simulating a fair die\n\nUse a spreadsheet, small program or appropriate statistics software to **actually execute** $600$ independent simulated die throws with values $1,\\ldots,6$, equally likely in the model. A proposal or copied external results does not replace execution. Different random outputs are explicitly acceptable and are not graded by closeness to expected counts.\n\n\n1. Document software, random-number generation and actual execution through executed code/file and output, or formulas and saved spreadsheet values. Save the first $20$ outcomes and all $600$ raw outcomes. State a seed if used; otherwise freeze the generated values so the analysis can be reproduced. Explain how values $1$ to $6$ are treated equally.\n\n2. Find absolute and relative frequencies for every face among the first $60$ and all $600$ outcomes. Check totals and explain denominators.\n\n3. Produce a labelled comparative relative-frequency chart from your actual data for $60$ and $600$ outcomes. Mark or state the theoretical probability $1/6$.\n\n4. Compare the results with theoretical probabilities, discuss random fluctuation, and assess “After 600 throws every face must appear exactly 100 times” and “After many sixes, a six becomes less likely on the next throw”. Name a limitation of a physical die or software simulation.\n",
+        "solutionContent": "# Musterlösung mit tatsächlich ausgeführtem Referenzlauf\n\nEine zulässige Python-Ausführung lautet:\n\n```python\nimport random\nfrom collections import Counter\nrng = random.Random(20261104)\nrolls = [rng.randint(1, 6) for _ in range(600)]\nprint(rolls[:20])\nprint(rolls)  # alle 600 Ergebnisse in Ausführungsreihenfolge\nfor n in (60, 600):\n    counts = Counter(rolls[:n])\n    print(n, [(face, counts[face], counts[face] / n) for face in range(1, 7)])\n```\n\n`randint(1,6)` wählt im Modell gleichwahrscheinlich aus den sechs ganzen Zahlen; der lokale Generator und Startwert halten diesen Referenzlauf reproduzierbar. Software erzeugt Pseudozufall, keine experimentell nachgewiesene physikalische Unabhängigkeit. Der vollständige Code erzeugt alle $600$ Referenzwerte in `rolls`; die zusätzliche Ausgabe `print(rolls)` macht jeden Einzelwert zur Nachprüfung zugänglich. Die unten eingebundene Referenzgrafik zeigt die tatsächlich daraus berechneten relativen Häufigkeiten. Diese eine Ausgabe ist keine vorgeschriebene Lernendenausgabe.\n\nDie ersten $20$ Werte sind $6,6,2,3,3,4,5,1,2,4,1,6,5,5,5,6,1,4,4,1$.\n\n| Augenzahl | Anzahl, 60 | relativ, 60 | Anzahl, 600 | relativ, 600 |\n|---|---|---|---|---|\n| 1 | 8 | 0,13333 | 107 | 0,17833 |\n| 2 | 9 | 0,15 | 104 | 0,17333 |\n| 3 | 7 | 0,11667 | 99 | 0,165 |\n| 4 | 12 | 0,20 | 93 | 0,155 |\n| 5 | 12 | 0,20 | 97 | 0,16167 |\n| 6 | 12 | 0,20 | 100 | 0,16667 |\n\nAnzahlen summieren sich zu $60/600$, relative Häufigkeiten jeweils zu $1$ (Rundungsabweichungen erlaubt). Nenner ist die jeweilige tatsächlich betrachtete Versuchszahl. Die Referenzgrafik stellt diese Quotienten nebeneinander und eine waagrechte Linie bei $1/6$ dar.\n\n![Tatsächlicher Referenzlauf: relative Häufigkeiten der Augenzahlen 1 bis 6 bei 60 und 600 Würfen; gestrichelte Referenzlinie bei 1/6.](/assets/assessment-materials/mathematik/095df29a-6791-50aa-aff1-b3d94d9b5eeb/reference-chart.png)\n\nIm Referenzlauf liegen die 600er-Anteile insgesamt näher an $1/6$; ein solches monotones Näherkommen ist nicht für jeden Zwischenstand garantiert. $100$ je Zahl ist ein Erwartungswert, kein vorgeschriebenes Ergebnis. Bei unabhängigen Würfen bleibt die nächste Sechs mit Wahrscheinlichkeit $1/6$ möglich, unabhängig vom bisherigen Verlauf. Ein verzerrter realer Würfel oder ungeeigneter Zufallszahlengenerator kann das Modell verletzen. Andere tatsächlich ausgeführte gültige Simulationen erhalten dieselbe Bewertung anhand ihrer eigenen Daten.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 8 | tatsächliche Ausführung mit Software-/Formel- oder Codebeleg 4; eingefrorene 600 Rohwerte und erste 20 2; Generator/Startwert oder Speicherung reproduzierbar 1; Gleichbehandlung 1 |\n| 2 | 5 | aus echten Daten beide absoluten Tabellen 2; beide relativen Tabellen 2; Summen/Nenner geprüft 1 |\n| 3 | 4 | ausgeführte Datengrafik für beide Stichproben 2; Achsen/Legende/Skala 1; 1/6-Vergleich 1 |\n| 4 | 3 | eigene Schwankungen und keine exakte 100-Garantie 1; keine Kompensation der nächsten Würfe 1; Modellgrenze 1 |\n| **Gesamt** | **20** | **Bestanden ab 12** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+        "solutionContentEn": "# Reference solution from an actually executed example\n\nOne valid, complete Python run is:\n\n```python\nimport random\nfrom collections import Counter\nrng = random.Random(20261104)\nrolls = [rng.randint(1, 6) for _ in range(600)]\nprint(rolls[:20])\nprint(rolls)  # all 600 outcomes, in execution order\nfor n in (60, 600):\n    counts = Counter(rolls[:n])\n    print(n, [(face, counts[face], counts[face] / n) for face in range(1, 7)])\n```\n\nThe list `rolls` contains all $600$ reference outcomes; `print(rolls)` displays every raw result for checking. The reference chart embedded below shows the relative frequencies actually calculated from these outcomes. A seed makes this example repeatable; saved actual spreadsheet values are an equivalent audit trail without a seed. This pseudorandom implementation models uniform die outcomes rather than proving physical randomness.\n\nFirst $20$ outcomes: $6,6,2,3,3,4,5,1,2,4,1,6,5,5,5,6,1,4,4,1$.\n\n| Face | Count, 60 | Relative, 60 | Count, 600 | Relative, 600 |\n|---|---|---|---|---|\n| 1 | 8 | 0.13333 | 107 | 0.17833 |\n| 2 | 9 | 0.15 | 104 | 0.17333 |\n| 3 | 7 | 0.11667 | 99 | 0.165 |\n| 4 | 12 | 0.20 | 93 | 0.155 |\n| 5 | 12 | 0.20 | 97 | 0.16167 |\n| 6 | 12 | 0.20 | 100 | 0.16667 |\n\nCounts sum to $60$ and $600$ and relative counts to $1$, allowing rounding. Denominators are the respective numbers of throws. A side-by-side relative-frequency chart includes a horizontal $1/6$ reference.\n\n![Actually executed reference run: relative frequencies for die faces 1 through 6 after 60 and 600 throws; dashed reference line at 1/6.](/assets/assessment-materials/mathematik/095df29a-6791-50aa-aff1-b3d94d9b5eeb/reference-chart.png)\n\nIn this run the larger-sample proportions are collectively closer to $1/6$, but approach need not be monotone across every sample size. A count of $100$ is an expectation, not compulsory. With independent throws the next six still has probability $1/6$ regardless of past outcomes. A biased physical die or unsuitable generator can violate the model. Other genuinely executed valid runs are graded against their own data, not these particular counts.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 8 | actual execution with software/formula or code evidence 4; saved 600 raw outcomes and first 20 2; reproducible generator/seed or storage 1; equal treatment 1 |\n| 2 | 5 | both count tables from executed data 2; both relative tables 2; totals/denominators checked 1 |\n| 3 | 4 | chart from actual executed data for both samples 2; axes/legend/scale 1; 1/6 reference 1 |\n| 4 | 3 | own fluctuation and no exact 100 guarantee 1; no compensating next throws 1; model limitation 1 |\n| **Total** | **20** | **Pass at 12** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "new_he_g9_software_simulation_1",
+              "points": 8,
+              "description": "tatsächliche Ausführung mit Software-/Formel- oder Codebeleg 4; eingefrorene 600 Rohwerte und erste 20 2; Generator/Startwert oder Speicherung reproduzierbar 1; Gleichbehandlung 1",
+              "descriptionEn": "actual execution with software/formula or code evidence 4; saved 600 raw outcomes and first 20 2; reproducible generator/seed or storage 1; equal treatment 1"
+            },
+            {
+              "id": "new_he_g9_software_simulation_2",
+              "points": 5,
+              "description": "aus echten Daten beide absoluten Tabellen 2; beide relativen Tabellen 2; Summen/Nenner geprüft 1",
+              "descriptionEn": "both count tables from executed data 2; both relative tables 2; totals/denominators checked 1"
+            },
+            {
+              "id": "new_he_g9_software_simulation_3",
+              "points": 4,
+              "description": "ausgeführte Datengrafik für beide Stichproben 2; Achsen/Legende/Skala 1; 1/6-Vergleich 1",
+              "descriptionEn": "chart from actual executed data for both samples 2; axes/legend/scale 1; 1/6 reference 1"
+            },
+            {
+              "id": "new_he_g9_software_simulation_4",
+              "points": 3,
+              "description": "eigene Schwankungen und keine exakte 100-Garantie 1; keine Kompensation der nächsten Würfe 1; Modellgrenze 1",
+              "descriptionEn": "own fluctuation and no exact 100 guarantee 1; no compensating next throws 1; model limitation 1"
+            }
+          ]
+        },
+        "reviewNote": "Independently reviewed whole content; integrated scope and current fingerprints require separate implementation review. curricula/DE/Gymnasium/assessments/mathematik/q3-whole-scoped-completion-2026-11-04-v1/reviews/independent-final-content-decision.json"
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "51b008fd-2ce4-5e38-98b1-75c9ede34f6d",
+      "title": "Prüfung: Zwei Merkmale in einer Vierfeldertafel untersuchen",
+      "titleEn": "Assessment: Examine two attributes in a contingency table",
+      "description": "Die lernende Person kann die vollständige Prüfung selbstständig bearbeiten und ihre Ergebnisse fachlich begründen.",
+      "descriptionEn": "The learner can complete the whole assessment independently and justify the results.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "dabff49b-d40a-4c81-a584-21408b2d4219"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2",
+          "K3",
+          "K4",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "SekI"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "nodeKind": "exam",
+      "sourceRef": "SkillPilot: eigene vollständige Abschlussaufgabe für die unveränderten vorbereitenden Lernzielverträge; keine amtliche Prüfungsaufgabe.",
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "dabff49b-d40a-4c81-a584-21408b2d4219"
+        ],
+        "coveredStrands": [
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "# Pendelweg und Fahrrad\n\nEine eigene fiktive Erhebung erfasst genau $200$ Personen: $80$ haben einen kurzen Weg (K), davon fahren $48$ mit dem Fahrrad (F). Unter den $120$ mit längerem Weg fahren $24$ Fahrrad. Für diese Aufgabe wird eine Person gleichwahrscheinlich aus diesen $200$ ausgewählt.\n\n\n1. Erstelle die Vierfeldertafel einschließlich Randsummen und ein äquivalentes zweistufiges Wahrscheinlichkeitsbaumdiagramm (zuerst K/nicht K, dann F/nicht F).\n\n2. Berechne $P(F)$, $P(K\\cap F)$, $P(F\\mid K)$ und $P(K\\mid F)$; erläutere die beiden letzten Bezugsgruppen.\n\n3. Prüfe die Unabhängigkeit von K und F mit einem ausdrücklich genannten Kriterium. Deute das Ergebnis und beurteile die Aussage „Ein kurzer Weg verursacht Fahrradfahren“.\n\n4. In einer zweiten Gruppe von $200$ Personen gibt es wieder $80$ kurze Wege und $72$ Fahrradfahrende, davon $a$ mit kurzem Weg. Bestimme $a$ so, dass beide Merkmale in dieser zweiten Tafel unabhängig wären. Ist eine solche **exakte Personentafel** hier möglich? Begründe. Die Merkmale bleiben wohldefiniert, auch wenn perfekte Unabhängigkeit wegen ganzer Anzahlen nicht erreichbar ist.\n",
+        "taskContentEn": "# Journey length and cycling\n\nA fictional SkillPilot dataset records exactly $200$ people. Of $80$ with a short journey (K), $48$ cycle (F); of $120$ with a longer journey, $24$ cycle. A person is chosen uniformly from these $200$.\n\n\n1. Construct the contingency table with margins and an equivalent probability tree: K/not K first, F/not F second.\n\n2. Calculate $P(F)$, $P(K\\cap F)$, $P(F\\mid K)$ and $P(K\\mid F)$. Explain the reference groups of the last two quantities.\n\n3. Check independence using an explicit criterion. Interpret the result and assess “A short journey causes cycling”.\n\n4. A second group of $200$ again contains $80$ short journeys and $72$ cyclists, of whom $a$ have a short journey. Determine $a$ for independence in this second table. Is such an **exact person-count table** possible? Explain. The attributes remain meaningful even when integer counts prevent perfect independence.\n",
+        "solutionContent": "# Musterlösung\n\n| | F | nicht F | Summe |\n|---|---:|---:|---:|\n| K | 48 | 32 | 80 |\n| nicht K | 24 | 96 | 120 |\n| Summe | 72 | 128 | 200 |\n\nBaum: erster Ast $P(K)=0{,}4$, anderer $0{,}6$; nach K sind die F/nicht-F-Chancen $0{,}6/0{,}4$, nach nicht K $0{,}2/0{,}8$. Pfadprodukte geben $0{,}24,0{,}16,0{,}12,0{,}48$.\n\n$P(F)=72/200=0{,}36$, $P(K\\cap F)=48/200=0{,}24$, $P(F\\mid K)=48/80=0{,}6$, $P(K\\mid F)=48/72=2/3$. Die Bedingung begrenzt die Bezugsgruppe auf kurze Wege bzw. auf Fahrradfahrende; die Richtungen sind verschieden.\n\nUnabhängigkeit verlangte $P(K\\cap F)=P(K)P(F)=0{,}4\\cdot0{,}36=0{,}144$. Das ist nicht $0{,}24$; gleichwertig ist $P(F\\mid K)\\neq P(F)$. Die Merkmale sind in dieser Personenauswahl abhängig. Aus dem beobachteten Zusammenhang allein folgt keine Ursache; etwa Wohnlage oder verfügbare Verkehrsmittel können mitwirken.\n\nFür die zweite Tafel wäre $a/200=(80/200)(72/200)$, also $a=28{,}8$ nötig. Das ist keine ganze Personenanzahl, daher gibt es mit genau diesen Randsummen keine exakt unabhängige Personentafel. $a=29$ wäre nahe, aber nicht exakt unabhängig. Dies widerlegt weder das Unabhängigkeitskriterium noch die Möglichkeit unabhängiger Ereignisse in anderen Modellen.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 5 | vier Innenfelder/Randsummen 2; erste Baumstufe 1; bedingte zweite Stufe 1; korrekte Verbindung zur Tafel 1 |\n| 2 | 5 | vier Wahrscheinlichkeiten je 1; unterschiedliche Bezugsgruppen 1 |\n| 3 | 6 | gültiges Kriterium 2; Einsetzen und Abhängigkeit 2; Deutung 1; begründete Kausalitätsgrenze 1 |\n| 4 | 4 | Gleichung 1; 28,8 1; ganzzahlige Unmöglichkeit 1; Nähe ist keine exakte Unabhängigkeit 1 |\n| **Gesamt** | **20** | **Bestanden ab 12** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+        "solutionContentEn": "# Reference solution\n\nThe four cells K/F, K/not F, not K/F, not K/not F are $48,32,24,96$. Row totals are $80,120$, column totals $72,128$, total $200$. Tree first branches are $0.4,0.6$; conditional F/not-F branches are $0.6,0.4$ after K and $0.2,0.8$ after not K. Path probabilities are $0.24,0.16,0.12,0.48$.\n\n$P(F)=0.36$, $P(K\\cap F)=0.24$, $P(F\\mid K)=0.6$, $P(K\\mid F)=2/3$. The last two use short-journey people and cyclists as their respective reference groups.\n\nIndependence would require $P(K\\cap F)=P(K)P(F)=0.144$, unlike $0.24$. Equivalently, $P(F\\mid K)\\neq P(F)$. The attributes are dependent in this selection model. An observational association does not by itself establish causation; residential location or transport access could also matter.\n\nFor the second table independence requires $a/200=(80/200)(72/200)$, giving $a=28.8$. Person counts must be integers, so exact independence is impossible with these margins. $a=29$ is close but not exact. Independent events remain possible in other models.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 5 | cells/margins 2; first tree stage 1; conditional second stage 1; table-tree consistency 1 |\n| 2 | 5 | four probabilities 1 each; different reference groups 1 |\n| 3 | 6 | valid criterion 2; substitution and dependence 2; interpretation 1; reasoned causal limit 1 |\n| 4 | 4 | equation 1; 28.8 1; integer impossibility 1; closeness is not exact independence 1 |\n| **Total** | **20** | **Pass at 12** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "new_bw_independence_1",
+              "points": 5,
+              "description": "vier Innenfelder/Randsummen 2; erste Baumstufe 1; bedingte zweite Stufe 1; korrekte Verbindung zur Tafel 1",
+              "descriptionEn": "cells/margins 2; first tree stage 1; conditional second stage 1; table-tree consistency 1"
+            },
+            {
+              "id": "new_bw_independence_2",
+              "points": 5,
+              "description": "vier Wahrscheinlichkeiten je 1; unterschiedliche Bezugsgruppen 1",
+              "descriptionEn": "four probabilities 1 each; different reference groups 1"
+            },
+            {
+              "id": "new_bw_independence_3",
+              "points": 6,
+              "description": "gültiges Kriterium 2; Einsetzen und Abhängigkeit 2; Deutung 1; begründete Kausalitätsgrenze 1",
+              "descriptionEn": "valid criterion 2; substitution and dependence 2; interpretation 1; reasoned causal limit 1"
+            },
+            {
+              "id": "new_bw_independence_4",
+              "points": 4,
+              "description": "Gleichung 1; 28,8 1; ganzzahlige Unmöglichkeit 1; Nähe ist keine exakte Unabhängigkeit 1",
+              "descriptionEn": "equation 1; 28.8 1; integer impossibility 1; closeness is not exact independence 1"
+            }
+          ]
+        },
+        "reviewNote": "Independently reviewed whole content; integrated scope and current fingerprints require separate implementation review. curricula/DE/Gymnasium/assessments/mathematik/q3-whole-scoped-completion-2026-11-04-v1/reviews/independent-final-content-decision.json"
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "57833097-393c-5a08-8c03-e161b43cb9cc",
+      "title": "Prüfung: Stichproben mit und ohne Zurücklegen vergleichen",
+      "titleEn": "Assessment: Compare sampling with and without replacement",
+      "description": "Die lernende Person kann die vollständige Prüfung selbstständig bearbeiten und ihre Ergebnisse fachlich begründen.",
+      "descriptionEn": "The learner can complete the whole assessment independently and justify the results.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+        "dabff49b-d40a-4c81-a584-21408b2d4219"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2",
+          "K3",
+          "K4",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE",
+          "DE-SH"
+        ]
+      },
+      "type": "atomic",
+      "nodeKind": "exam",
+      "sourceRef": "SkillPilot: eigene vollständige Abschlussaufgabe für die unveränderten vorbereitenden Lernzielverträge; keine amtliche Prüfungsaufgabe.",
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "bd63c0fc-50ef-55aa-ae6c-25cf73d02636"
+        ],
+        "coveredStrands": [
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "# Zwei Prüfteile aus einem Behälter\n\nEin fiktiver Behälter enthält $10$ gleichartig greifbare Teile, davon $4$ rot markierte. Zwei Teile werden zufällig nacheinander gezogen. Vergleiche Modell M (nach jedem Zug zurücklegen und durchmischen) und Modell O (ohne Zurücklegen). Rote Teile gelten als Treffer.\n\n\n1. Beschreibe beide Modelle, zeichne die relevanten Zweigwahrscheinlichkeiten eines Baums und berechne jeweils die Wahrscheinlichkeit für **genau ein** rotes Teil. Erkläre, warum zwei Reihenfolgen zu berücksichtigen sind. Kombinationen dürfen statt eines vollständigen Baums verwendet werden.\n\n2. Seien A „erster Zug rot“ und B „zweiter Zug rot“. Bestimme in beiden Modellen $P(B\\mid A)$ und $P(B)$ und prüfe damit die Unabhängigkeit. Begründe insbesondere den Wert von $P(B)$ ohne Zurücklegen.\n\n3. Vergrößere den Behälter auf $1000$ Teile mit $400$ roten; zwei Züge bleiben fest. Berechne in beiden Modellen erneut $P(\\text{genau ein rotes Teil})$, vergleiche absolute Abweichungen mit dem kleinen Behälter und erkläre die Verbesserung der Näherung.\n\n4. Beurteile die Behauptung „Bei großem Behälter darf immer mit Zurücklegen gerechnet werden“. Nenne mindestens zwei sachliche Bedingungen oder Grenzen.\n",
+        "taskContentEn": "# Two inspected parts from a container\n\nA fictional container holds $10$ equally accessible parts, $4$ marked red. Draw two at random in sequence. Compare model M (replace and mix after each draw) with model O (no replacement). Red counts as success.\n\n\n1. Describe both models, show the relevant tree branches and calculate the probability of **exactly one** red part in each. Explain why two orders count. Combinations may replace a complete tree.\n\n2. Let A mean “first draw red” and B “second draw red”. Find $P(B\\mid A)$ and $P(B)$ in each model and check independence. In particular, justify $P(B)$ without replacement.\n\n3. Increase the population to $1000$ with $400$ red parts, still drawing only two. Recalculate both exactly-one-red probabilities. Compare absolute errors with the small container and explain why the approximation improves.\n\n4. Assess “For a large container one may always calculate with replacement”. Give at least two relevant conditions or limitations.\n",
+        "solutionContent": "# Musterlösung\n\nM: Erste Stufe rot/nicht rot $4/10,6/10$; dieselben Chancen nach jedem ersten Ergebnis. O: Nach rot sind die Chancen $3/9,6/9$, nach nicht rot $4/9,5/9$. Genau ein rotes Teil umfasst disjunkt rot–nicht rot und nicht rot–rot:\n\n$$\nP_M=2\\frac4{10}\\frac6{10}=\\frac{12}{25}=0{,}48,\\qquad P_O=\\frac4{10}\\frac69+\\frac6{10}\\frac49=\\frac8{15}\\approx0{,}533333.\n$$\n\nAuch $\\binom41\\binom61/\\binom{10}2$ ist richtig.\n\nM: $P(B\\mid A)=P(B)=0{,}4$, also unabhängig. O: $P(B\\mid A)=3/9=1/3$, aber\n\n$$\nP(B)=\\frac4{10}\\frac39+\\frac6{10}\\frac49=\\frac4{10}.\n$$\n\nJedes der zehn Teile hat dieselbe Chance, an zweiter Position zu liegen; dies begründet den Randwert ebenfalls. Die Abweichung von $1/3$ und $0{,}4$ beweist Abhängigkeit in O.\n\nGroßer Behälter: $P_M=0{,}48$ und\n\n$$\nP_O=2\\frac{400}{1000}\\frac{600}{999}=\\frac{160}{333}\\approx0{,}48048048.\n$$\n\nDie absolute Differenz sinkt von $4/75\\approx0{,}0533333$ auf $4/8325\\approx0{,}00048048$. Ein entnommenes Teil ändert hier die Trefferchance viel weniger. Der Stichprobenumfang ist fest und klein gegenüber der Population, der Trefferanteil gleich.\n\nGröße allein reicht nicht: Eine große Stichprobenfraktion kann deutliche Abhängigkeit erzeugen; gleichmäßige zufällige Auswahl und unveränderte Zusammensetzung müssen passen. Die zulässige Abweichung hängt auch von Ereignis und gewünschter Genauigkeit ab. Physisch werden die Teile weiterhin ohne Zurücklegen gezogen; eine Näherung macht die Züge nicht exakt unabhängig.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 6 | beide Modellzweige 2; beide Ereignisrechnungen je 1; zwei disjunkte Reihenfolgen 1; sachliche Deutung 1 |\n| 2 | 5 | bedingte Werte in M/O 2; beide Randwerte mit Begründung 2; korrekte Unabhängigkeitsentscheidung 1 |\n| 3 | 6 | große M/O-Werte je 1; kleine und große Abweichung je 1; Chanceänderung erklärt 1; feste kleine Stichprobe genannt 1 |\n| 4 | 3 | zwei konkrete Bedingungen oder Grenzen je 1; Näherung von exakter Unabhängigkeit getrennt 1 |\n| **Gesamt** | **20** | **Bestanden ab 12** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+        "solutionContentEn": "# Reference solution\n\nM has red/non-red probabilities $4/10,6/10$ at each stage. O has $3/9,6/9$ after a red first part and $4/9,5/9$ after a non-red one. The disjoint orders red–non-red and non-red–red give\n\n$$\nP_M=2(4/10)(6/10)=0.48,\\qquad P_O=(4/10)(6/9)+(6/10)(4/9)=8/15\\approx0.533333.\n$$\n\nThe combination calculation $\\binom41\\binom61/\\binom{10}2$ is equivalent.\n\nM has $P(B\\mid A)=P(B)=0.4$, so A and B are independent. In O, $P(B\\mid A)=1/3$ but $P(B)=(4/10)(3/9)+(6/10)(4/9)=0.4$. Alternatively each part is equally likely to occupy the second position. The unequal conditional and marginal probabilities establish dependence.\n\nFor $1000$ parts, $P_M=0.48$ and $P_O=2(400/1000)(600/999)=160/333\\approx0.48048048$. Absolute error falls from $4/75\\approx0.0533333$ to $4/8325\\approx0.00048048$. Removing one part now changes the probability much less; the sample size stays small and fixed while the red proportion stays constant.\n\nPopulation size alone is insufficient. A large sampling fraction can still cause substantial dependence. Uniform random selection and a stable composition must fit the context, and acceptable error depends on the event and required accuracy. Approximation does not make the actual draws independent.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 6 | both model branches 2; two event calculations 1 each; two disjoint orders 1; contextual interpretation 1 |\n| 2 | 5 | conditional values M/O 2; marginals and justification 2; independence decision 1 |\n| 3 | 6 | large M/O values 1 each; small and large error 1 each; explains changed chance 1; fixed small sample 1 |\n| 4 | 3 | two concrete conditions/limits 1 each; approximation distinguished from exact independence 1 |\n| **Total** | **20** | **Pass at 12** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "new_urn_model_comparison_1",
+              "points": 6,
+              "description": "beide Modellzweige 2; beide Ereignisrechnungen je 1; zwei disjunkte Reihenfolgen 1; sachliche Deutung 1",
+              "descriptionEn": "both model branches 2; two event calculations 1 each; two disjoint orders 1; contextual interpretation 1"
+            },
+            {
+              "id": "new_urn_model_comparison_2",
+              "points": 5,
+              "description": "bedingte Werte in M/O 2; beide Randwerte mit Begründung 2; korrekte Unabhängigkeitsentscheidung 1",
+              "descriptionEn": "conditional values M/O 2; marginals and justification 2; independence decision 1"
+            },
+            {
+              "id": "new_urn_model_comparison_3",
+              "points": 6,
+              "description": "große M/O-Werte je 1; kleine und große Abweichung je 1; Chanceänderung erklärt 1; feste kleine Stichprobe genannt 1",
+              "descriptionEn": "large M/O values 1 each; small and large error 1 each; explains changed chance 1; fixed small sample 1"
+            },
+            {
+              "id": "new_urn_model_comparison_4",
+              "points": 3,
+              "description": "zwei konkrete Bedingungen oder Grenzen je 1; Näherung von exakter Unabhängigkeit getrennt 1",
+              "descriptionEn": "two concrete conditions/limits 1 each; approximation distinguished from exact independence 1"
+            }
+          ]
+        },
+        "reviewNote": "Independently reviewed whole content; integrated scope and current fingerprints require separate implementation review. curricula/DE/Gymnasium/assessments/mathematik/q3-whole-scoped-completion-2026-11-04-v1/reviews/independent-final-content-decision.json"
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "63576e96-1fdd-5bd5-a875-e0c010a534d7",
+      "title": "Prüfung: Stichprobengröße bei einem Binomialtest verändern",
+      "titleEn": "Assessment: Vary sample size in a binomial test",
+      "description": "Die lernende Person kann die vollständige Prüfung selbstständig bearbeiten und ihre Ergebnisse fachlich begründen.",
+      "descriptionEn": "The learner can complete the whole assessment independently and justify the results.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "ae483d98-54e0-5985-96d2-fc1351d22e4f"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2",
+          "K3",
+          "K4",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "nodeKind": "exam",
+      "sourceRef": "SkillPilot: eigene vollständige Abschlussaufgabe für die unveränderten vorbereitenden Lernzielverträge; keine amtliche Prüfungsaufgabe.",
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "ae483d98-54e0-5985-96d2-fc1351d22e4f"
+        ],
+        "coveredStrands": [
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "# Gleiche Fehlerquote, unterschiedliche Stichprobengröße\n\nEin eigener fiktiver Betrieb modelliert Fehler in zufälligen Stichproben als unabhängige Bernoulli-Versuche mit konstanter unbekannter Fehlerquote $p$. Getestet wird $H_0:p\\leq0{,}05$ gegen $H_1:p>0{,}05$. Verwerfen führt zu einer zusätzlichen Untersuchung. Vergleiche zwei Stichprobenumfänge $n=40$ und $n=80$ mit demselben Signifikanzziel $\\alpha\\leq0{,}05$.\n\nDigitale **exakte Binomialwerkzeuge** sind erlaubt. Für $X_n\\sim B(n;p)$ kann die rechte Schwanzwahrscheinlichkeit als\n\n$$\nP_p(X_n\\geq k)=\\sum_{j=k}^{n}\\binom njp^j(1-p)^{n-j}\n$$\n\nberechnet werden. Ein Gütefunktionsgraph oder eine Normalapproximation ist nicht erforderlich. Unter $p\\leq0{,}05$ ist die rechte Schwanzwahrscheinlichkeit am Rand $p_0=0{,}05$ maximal; diese Tatsache darf verwendet werden.\n\n\n1. Bestimme für **jeden** Umfang die kleinste ganze kritische Zahl $k_n$, sodass die Regel „verwirf bei $X_n\\geq k_n$“ das Signifikanzziel erfüllt. Berechne jeweils die Randwahrscheinlichkeiten für $k_n$ und $k_n-1$ und begründe Minimalität.\n\n2. Gib die beiden Entscheidungsregeln vollständig an. In getrennten Stichproben werden $4$ von $40$ bzw. $8$ von $80$ fehlerhafte Teile beobachtet. Triff die Entscheidungen. Erkläre, warum dieselbe beobachtete relative Häufigkeit unterschiedliche Entscheidungen zulassen kann.\n\n3. Berechne für beide Regeln die tatsächliche Fehler-1-Wahrscheinlichkeit am Nullrand und die Fehler-2-Wahrscheinlichkeit bei der festen Alternative $p_1=0{,}12$; vergleiche auch die Wahrscheinlichkeit, diese Alternative zu entdecken. Erläutere Fehlerarten im Kontext.\n\n4. Beurteile Vorteile und Grenzen der Vergrößerung von 40 auf 80. Beziehe Empfindlichkeit, Aufwand und die diskreten Randfehler ein. Erkläre, warum Nichtverwerfen kein Beweis für $H_0$ und $\\alpha$ keine nachträgliche Wahrscheinlichkeit für $H_0$ ist.\n",
+        "taskContentEn": "# Same defect probability, different sample sizes\n\nA fictional manufacturer models randomly sampled parts as independent Bernoulli trials with a constant unknown defect probability $p$. Test $H_0:p\\leq0.05$ against $H_1:p>0.05$. Rejection triggers further investigation. Compare $n=40$ and $n=80$ using the same significance target $\\alpha\\leq0.05$.\n\nDigital **exact binomial tools** are allowed. For $X_n\\sim B(n;p)$ use\n\n$$\nP_p(X_n\\geq k)=\\sum_{j=k}^{n}\\binom njp^j(1-p)^{n-j}.\n$$\n\nNo power-function graph or normal approximation is needed. You may use that this right-tail probability is maximal over $p\\leq0.05$ at the boundary $p_0=0.05$.\n\n\n1. For **each** sample size find the smallest integer critical count $k_n$ for which “reject if $X_n\\geq k_n$” meets the target. Calculate boundary tail probabilities at $k_n$ and $k_n-1$ and justify minimality.\n\n2. State both complete decision rules. Separate samples contain 4 defects out of 40 and 8 out of 80. Decide in each case. Explain why equal observed proportions can lead to different decisions.\n\n3. For each rule calculate actual type-I error probability at the null boundary and type-II probability at the fixed alternative $p_1=0.12$. Compare probabilities of detecting this alternative and interpret both errors contextually.\n\n4. Assess benefits and limits of increasing 40 to 80: sensitivity, cost and discrete actual null errors. Explain why non-rejection is not proof of $H_0$, and why $\\alpha$ is not a posterior probability of $H_0$.\n",
+        "solutionContent": "# Musterlösung\n\n| Umfang | kritisches $k_n$ | $P_{0,05}(X_n\\geq k_n)$ | $P_{0,05}(X_n\\geq k_n-1)$ |\n|---|---:|---:|---:|\n|40|5|0,0480282603|0,1381497755|\n|80|8|0,0465915275|0,1052852509|\n\nBeide ersten Werte liegen höchstens bei 0,05, die jeweils vorherige Grenze aber darüber. Schwanzwahrscheinlichkeiten fallen beim Erhöhen der Grenze; damit sind 5 und 8 minimal. Auf ausreichend vielen Dezimalstellen prüfen; nicht aus auf ganze Prozent gerundeten Zahlen entscheiden.\n\nRegeln: Bei 40 verwerfen ab 5, nicht verwerfen bis 4; bei 80 verwerfen ab 8, nicht verwerfen bis 7. Vier von 40 führen also zum Nichtverwerfen, acht von 80 zum Verwerfen. Beide Quoten sind 10 %, doch ihre Zufallsschwankung und die diskreten Grenzen hängen von $n$ ab. Mehr Daten können eine gleich große relative Abweichung deutlicher nachweisen; es ist keine logische Unvereinbarkeit.\n\nDie tatsächlichen Randfehler erster Art sind die erste Spalte der Wahrscheinlichkeiten: etwa 4,803 % bzw.4,659 %. Bei $p_1=0{,}12$ gilt\n\n$$\n\\beta_{40}=P_{0{,}12}(X_{40}\\leq4)\\approx0{,}4669109648,\\qquad\n\\beta_{80}=P_{0{,}12}(X_{80}\\leq7)\\approx0{,}2416472614.\n$$\n\nDie Entdeckungswahrscheinlichkeiten sind $1-\\beta\\approx0{,}5330890352$ bzw. $0{,}7583527386$. Falsch beanstanden heißt eine nicht über 5 % liegende Phase unnötig untersuchen; Fehler 2 bedeutet eine tatsächlich über 5 % liegende Phase nicht untersuchen. Die angegebenen $\\beta$ gelten spezifisch bei 12 %, nicht für alle Alternativen.\n\nHier verbessert 80 die Entdeckung bei 12 % erheblich, kostet aber doppelt so viele Prüfungen. Die exakten Nullrandfehler sind wegen diskreter Anzahlen nicht genau gleich 5 % und müssen nicht allgemein mit jeder Erhöhung von $n$ monoton sinken. Diese konkrete Sensitivitätsverbesserung ist kein Beweis für jede beliebige Teständerung. Nichtverwerfen kann einen Fehler 2 enthalten. $\\alpha$ ist eine Wahrscheinlichkeit von Stichprobenentscheidungen unter einem Nullparameter, keine Wahrscheinlichkeit des Parameters oder von $H_0$ nach Beobachtung. Abhängigkeit, driftendes $p$ oder selektive Auswahl begrenzen das Modell.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 7 | beide kritischen Zahlen je 1; vier exakte Randtails insgesamt 3; Grenzvergleich und Minimalitätsbegründung 2 |\n| 2 | 4 | vollständige Regeln 1; beide Entscheidungen je 1; gleiche Quote bei anderer Stichprobenlage erklärt 1 |\n| 3 | 6 | beide Alpha-Werte 1; zwei Beta-Werte je 1; Entdeckungswerte 1; beide Fehlerarten samt Parametergrenze 2 |\n| 4 | 3 | Sensitivität gegen Aufwand 1; diskrete Fehlergrenze sachgerecht 1; keine Nullgewissheit/kein Posterior mit Begründung 1 |\n| **Gesamt** | **20** | **Bestanden ab 12** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+        "solutionContentEn": "# Reference solution\n\nFor 40 the minimum critical count is 5: null-boundary tails are $P(X\\geq5)=0.0480282603$ and $P(X\\geq4)=0.1381497755$. For 80 it is 8: tails at 8 and 7 are $0.0465915275$ and $0.1052852509$. Each chosen tail meets 0.05 and its immediate predecessor fails; monotonic decrease with threshold proves minimality. Retain sufficient numerical precision.\n\nFor 40 reject at 5 or more and otherwise do not reject; for 80 reject at 8 or more and otherwise do not reject. Hence 4/40 does not reject, whereas 8/80 does. Both proportions are 10%, but variability and discrete thresholds depend on sample size. More data can make the same relative deviation more detectable.\n\nActual boundary type-I probabilities are approximately 4.803% and 4.659%. At the specified alternative 0.12,\n\n$$\n\\beta_{40}=P_{0.12}(X_{40}\\leq4)=0.4669109648,\\qquad\n\\beta_{80}=P_{0.12}(X_{80}\\leq7)=0.2416472614.\n$$\n\nDetection probabilities are $0.5330890352$ and $0.7583527386$. Type I triggers unnecessary investigation of an acceptable phase; type II misses an excessive rate. These type-II values are specific to 12%.\n\nThe larger sample improves detection here but doubles inspection count. Discreteness prevents actual null errors from equalling exactly 5% and does not imply monotone decrease under every size change. Non-rejection may be a type-II error, not proof of the null. $\\alpha$ describes decision probabilities under a null parameter and is not a posterior hypothesis probability. Dependence, rate drift or selective sampling can invalidate the model.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 7 | two critical counts 1 each; four exact boundary tails 3 total; boundary comparisons and minimality 2 |\n| 2 | 4 | complete rules 1; two decisions 1 each; explains same proportion with different sample evidence 1 |\n| 3 | 6 | two alpha values 1; two beta values 1 each; detection values 1; contextual errors and parameter limit 2 |\n| 4 | 3 | sensitivity versus cost 1; sound discreteness limit 1; no null certainty/no posterior with reason 1 |\n| **Total** | **20** | **Pass at 12** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "new_gk_binomial_test_variation_1",
+              "points": 7,
+              "description": "beide kritischen Zahlen je 1; vier exakte Randtails insgesamt 3; Grenzvergleich und Minimalitätsbegründung 2",
+              "descriptionEn": "two critical counts 1 each; four exact boundary tails 3 total; boundary comparisons and minimality 2"
+            },
+            {
+              "id": "new_gk_binomial_test_variation_2",
+              "points": 4,
+              "description": "vollständige Regeln 1; beide Entscheidungen je 1; gleiche Quote bei anderer Stichprobenlage erklärt 1",
+              "descriptionEn": "complete rules 1; two decisions 1 each; explains same proportion with different sample evidence 1"
+            },
+            {
+              "id": "new_gk_binomial_test_variation_3",
+              "points": 6,
+              "description": "beide Alpha-Werte 1; zwei Beta-Werte je 1; Entdeckungswerte 1; beide Fehlerarten samt Parametergrenze 2",
+              "descriptionEn": "two alpha values 1; two beta values 1 each; detection values 1; contextual errors and parameter limit 2"
+            },
+            {
+              "id": "new_gk_binomial_test_variation_4",
+              "points": 3,
+              "description": "Sensitivität gegen Aufwand 1; diskrete Fehlergrenze sachgerecht 1; keine Nullgewissheit/kein Posterior mit Begründung 1",
+              "descriptionEn": "sensitivity versus cost 1; sound discreteness limit 1; no null certainty/no posterior with reason 1"
+            }
+          ]
+        },
+        "reviewNote": "Independently reviewed whole content; integrated scope and current fingerprints require separate implementation review. curricula/DE/Gymnasium/assessments/mathematik/q3-whole-scoped-completion-2026-11-04-v1/reviews/independent-final-content-decision.json"
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "6e977ea1-0d38-54bb-82d7-12e6326845af",
+      "title": "Prüfung: Wartezeiten beschreiben und ihre Streuung vergleichen",
+      "titleEn": "Assessment: Describe waiting times and compare their spread",
+      "description": "Die lernende Person kann die vollständige Prüfung selbstständig bearbeiten und ihre Ergebnisse fachlich begründen.",
+      "descriptionEn": "The learner can complete the whole assessment independently and justify the results.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "616c72a4-972d-5cc0-b903-e2a24bcb150c",
+        "83a5546e-0ea6-576e-83e2-3387b30872bb",
+        "e402f330-8ac6-525f-b3ff-bc4be229d131"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2",
+          "K3",
+          "K4",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "SekI"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "type": "atomic",
+      "nodeKind": "exam",
+      "sourceRef": "SkillPilot: eigene vollständige Abschlussaufgabe für die unveränderten vorbereitenden Lernzielverträge; keine amtliche Prüfungsaufgabe. Varianz und Standardabweichung sind hier ein SkillPilot-Zusatz zum HE-G8-Ziel, keine amtliche quantitative Streuungsanforderung.",
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "e402f330-8ac6-525f-b3ff-bc4be229d131"
+        ],
+        "coveredStrands": [
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "# Wartezeiten zweier Schalter\n\nEigene konstruierte Daten, jeweils acht Wartezeiten in Minuten:\n\n- Schalter A: $2,3,3,4,4,4,5,7$.\n- Schalter B: $3,3,4,4,4,4,5,5$.\n\nDie Aufgabe erweitert den bestehenden SkillPilot-Lernzielumfang bewusst um **empirische Varianz und Standardabweichung**. Im offiziellen hessischen G8-Plan, physische S. 25 / gedruckte S. 24, wird Streuung nur qualitativ verlangt; diese Rechnung wird hier nicht als offizielle G8-Pflicht ausgegeben. Taschenrechner oder Tabellenkalkulation sind erlaubt.\n\n\n1. Erstelle für beide Datensätze eine absolute und relative Häufigkeitstabelle und eine geeignete vergleichbare Grafik. Beschrifte Achsen, Einheit, Schalter und Skala; begründe die Darstellungswahl.\n\n2. Bestimme arithmetisches Mittel, Median und Modalwert beider Datensätze. Welchen Lagewert würdest du für eine typische Wartezeit gegenüber Kundinnen und Kunden nennen, welchen für die gesamte Wartezeit pro acht Personen? Begründe und erläutere, warum mehrere begründete Antworten möglich sein können.\n\n3. Verwende ausdrücklich den Divisor $m=8$:\n\n$$\nv=\\frac18\\sum_{i=1}^8(x_i-\\bar x)^2,\\qquad s=\\sqrt v.\n$$\n\nBerechne $v,s$ für A und B, zeige die Abweichungsquadratsummen und vergleiche die Streuung im Kontext samt Einheiten. Hier ist keine unverzerrte Populationsschätzung mit Divisor $7$ gefragt.\n\n4. Ersetze bei A die $7$ durch $23$ Minuten, alle übrigen Werte bleiben. Berechne die drei Lagewerte und $v,s$ erneut. Erläutere Ausreißerempfindlichkeit sowie Grenzen der Aussage „Schalter B verursacht kürzere Wartezeiten“. Die kleinen konstruierten Datensätze allein tragen keinen Ursachennachweis.\n",
+        "taskContentEn": "# Waiting times at two counters\n\nOwn constructed data, eight waits in minutes each:\n\n- Counter A: $2,3,3,4,4,4,5,7$.\n- Counter B: $3,3,4,4,4,4,5,5$.\n\nThis task deliberately supplements the existing SkillPilot target with **empirical variance and SD**. The official Hessian G8 plan, physical p25 / printed p24, requires spread only qualitatively; this computation is not presented as official compulsory G8 content. Calculator or spreadsheet use is allowed.\n\n\n1. Make absolute/relative frequency tables and a suitable comparable graphic for both datasets. Label axes, units, counters and scale; justify the display choice.\n\n2. Determine mean, median and mode for both. Which location measure would you report for a typical customer's wait, and which for total waiting time per eight people? Justify, allowing different defensible choices.\n\n3. Use divisor $m=8$ explicitly:\n\n$$\nv=\\frac18\\sum_{i=1}^8(x_i-\\bar x)^2,\\qquad s=\\sqrt v.\n$$\n\nCalculate $v,s$ for A/B, show sums of squared deviations, and compare spread with units. An unbiased population estimate using divisor $7$ is not requested.\n\n4. Replace A's $7$ by $23$ minutes and leave all other values fixed. Recompute all three location measures and $v,s$. Discuss outlier sensitivity and the limits of “Counter B causes shorter waits”. These small constructed datasets alone do not establish cause.\n",
+        "solutionContent": "# Musterlösung\n\n\n1. Für Werte $2,3,4,5,7$ hat A absolute Häufigkeiten $1,2,3,1,1$ und relative $1/8,2/8,3/8,1/8,1/8$; B hat $0,2,4,2,0$ bzw. $0,2/8,4/8,2/8,0$. Eine zusätzliche Nullhäufigkeitsstelle bei $6$ ist zulässig. Vergleichbare nebeneinanderliegende Balken mit gleicher Zahlenskala zeigen die Häufung und Streuung diskreter Minutenangaben; getrennte gleich skalierte Grafiken oder ein passend erklärter Punktplot sind ebenfalls geeignet. Ein Kreisdiagramm würde die geordnete Abstandsstruktur schlechter zeigen.\n\n2. Beide Summen sind $32$, also beide Mittelwerte $4$. Die mittleren Positionen sind jeweils $4,4$, Median $4$, und häufigster Wert ist $4$. Alle drei ergeben hier dieselbe typische Zahl. Median ist bei einzelnen sehr langen Wartezeiten robuster; Modalwert beschreibt die häufigste beobachtete Angabe. Für Gesamtwartezeit ist das Mittel passend, da $8\\bar x$ die Summe liefert. Eine sachlich begründete alternative Wahl für „typisch“ zählt.\n\n3. A: Quadratsumme um $4$ ist $4+1+1+0+0+0+1+9=16$, daher $v_A=2\\,\\mathrm{min}^2$, $s_A=\\sqrt2\\approx1{,}414\\,\\mathrm{min}$. B: $1+1+0+0+0+0+1+1=4$, also $v_B=0{,}5\\,\\mathrm{min}^2$, $s_B=\\sqrt{0{,}5}\\approx0{,}707\\,\\mathrm{min}$. Gleiche Mitte, aber A streut stärker; SD beschreibt die Größenordnung der Abstände, keine garantierte Grenze für jeden Wert.\n\n4. Neue A-Summe $48$, Mittel $6$, Median und Modus weiterhin $4$. Die Quadratsumme um $6$ ist $16+9+9+4+4+4+1+289=336$; $v=42\\,\\mathrm{min}^2$, $s=\\sqrt{42}\\approx6{,}481\\,\\mathrm{min}$. Der Ausreißer erhöht Mittel, Varianz und SD deutlich, aber nicht Median/Modus dieses Datensatzes. Die Mittelwerte der ursprünglichen A/B-Daten sind gleich, also ist „kürzer“ ohnehin nicht durch deren Mittel gestützt. Unterschiedliche Ankunftszeiten, Anliegen oder Bedienbedingungen können Unterschiede erklären; ohne passende Untersuchung ist keine kausale Aussage oder Verallgemeinerung gerechtfertigt.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 5 | zwei Häufigkeitstabellen einschließlich relativer Werte 2; passende vergleichbare Grafik 2; begründete Wahl/Beschriftung 1 |\n| 2 | 4 | sechs Lagewerte 2; typische Wartezeit begründet 1; Mittel für Gesamtsumme begründet 1 |\n| 3 | 6 | beide Quadratsummen 2; beide Varianzen 1; beide SD 1; Streuungsvergleich 1; richtige Einheiten/keine Garantie 1 |\n| 4 | 5 | neue Lagewerte 1; neue Quadratsumme/Varianz 1; neue SD 1; Ausreißerwirkung 1; sachliche Kausalitätsgrenze 1 |\n| **Gesamt** | **20** | **Bestanden ab 12** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+        "solutionContentEn": "# Reference solution\n\n\n1. At values $2,3,4,5,7$, A has counts $1,2,3,1,1$ and relative counts divided by $8$; B has $0,2,4,2,0$, likewise divided by $8$. Including a zero at $6$ is fine. Side-by-side bars on a common numeric scale, equally scaled separate charts, or an explained dot plot show the ordered waits and spread. Label minutes, frequency and counter. A pie chart makes the ordered distance structure less clear.\n\n2. Both sums are $32$, so both means are $4$. Both medians and modes are also $4$. Here they agree. Median resists an isolated long wait, whereas mode describes the most common recorded value. Mean suits total time because $8\\bar x$ gives the sum. Other reasoned choices for “typical” receive credit.\n\n3. Squared-deviation sums about $4$ are $16$ for A and $4$ for B. Thus $v_A=2\\,\\mathrm{min}^2$, $s_A=\\sqrt2\\approx1.414\\,\\mathrm{min}$; $v_B=0.5\\,\\mathrm{min}^2$, $s_B=\\sqrt{0.5}\\approx0.707\\,\\mathrm{min}$. A has greater spread despite the same centre. SD describes deviation scale, not a guaranteed bound.\n\n4. Replacing $7$ by $23$ gives sum $48$, mean $6$, median and mode still $4$. Squared deviations about $6$ sum to $336$, hence $v=42\\,\\mathrm{min}^2$ and $s=\\sqrt{42}\\approx6.481\\,\\mathrm{min}$. The outlier greatly raises mean, variance and SD but leaves median/mode unchanged here. Original means were equal, so they do not show shorter average waits at B. Timing, customer needs or operating conditions could matter; these small datasets do not establish causation or general population conclusions.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 5 | two absolute/relative tables 2; suitable comparable graphic 2; justified choice/labels 1 |\n| 2 | 4 | six location measures 2; typical wait justified 1; mean for total justified 1 |\n| 3 | 6 | two squared-deviation sums 2; two variances 1; two SDs 1; spread comparison 1; units/no guarantee 1 |\n| 4 | 5 | new location measures 1; new squared sum/variance 1; new SD 1; outlier effect 1; contextual causal limit 1 |\n| **Total** | **20** | **Pass at 12** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "new_he_g8_descriptive_statistics_1",
+              "points": 5,
+              "description": "zwei Häufigkeitstabellen einschließlich relativer Werte 2; passende vergleichbare Grafik 2; begründete Wahl/Beschriftung 1",
+              "descriptionEn": "two absolute/relative tables 2; suitable comparable graphic 2; justified choice/labels 1"
+            },
+            {
+              "id": "new_he_g8_descriptive_statistics_2",
+              "points": 4,
+              "description": "sechs Lagewerte 2; typische Wartezeit begründet 1; Mittel für Gesamtsumme begründet 1",
+              "descriptionEn": "six location measures 2; typical wait justified 1; mean for total justified 1"
+            },
+            {
+              "id": "new_he_g8_descriptive_statistics_3",
+              "points": 6,
+              "description": "beide Quadratsummen 2; beide Varianzen 1; beide SD 1; Streuungsvergleich 1; richtige Einheiten/keine Garantie 1",
+              "descriptionEn": "two squared-deviation sums 2; two variances 1; two SDs 1; spread comparison 1; units/no guarantee 1"
+            },
+            {
+              "id": "new_he_g8_descriptive_statistics_4",
+              "points": 5,
+              "description": "neue Lagewerte 1; neue Quadratsumme/Varianz 1; neue SD 1; Ausreißerwirkung 1; sachliche Kausalitätsgrenze 1",
+              "descriptionEn": "new location measures 1; new squared sum/variance 1; new SD 1; outlier effect 1; contextual causal limit 1"
+            }
+          ]
+        },
+        "reviewNote": "Independently reviewed whole content; integrated scope and current fingerprints require separate implementation review. curricula/DE/Gymnasium/assessments/mathematik/q3-whole-scoped-completion-2026-11-04-v1/reviews/independent-final-content-decision.json"
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "7246cd87-b720-5866-8c0c-3b93fec46189",
+      "title": "Prüfung: Ausschusszahlen und Längenmessungen modellieren",
+      "titleEn": "Assessment: Model defect counts and length measurements",
+      "description": "Die lernende Person kann die vollständige Prüfung selbstständig bearbeiten und ihre Ergebnisse fachlich begründen.",
+      "descriptionEn": "The learner can complete the whole assessment independently and justify the results.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "b431148b-526c-4bde-b04b-48d23101d0d3",
+        "f7879354-1a82-4195-8e3c-a339a820439c"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2",
+          "K3",
+          "K4",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "type": "atomic",
+      "nodeKind": "exam",
+      "sourceRef": "SkillPilot: eigene vollständige Abschlussaufgabe für die unveränderten vorbereitenden Lernzielverträge; keine amtliche Prüfungsaufgabe.",
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "f7879354-1a82-4195-8e3c-a339a820439c"
+        ],
+        "coveredStrands": [
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "# Qualitätskontrolle: Zählen und Messen\n\nEin fiktiver Betrieb prüft zwei unterschiedliche Merkmale. Bei $100$ unabhängig gefertigten Teilen sei die konstante Wahrscheinlichkeit eines Oberflächenfehlers $0{,}04$. $X$ zählt die fehlerhaften Teile. Zusätzlich werden an einer anderen, stabil eingestellten Maschine $100$ Längen in mm gemessen. Für diese Aufgabe sind die Messdaten **konstruiert**, keine echte Betriebsstudie.\n\n| Längenklasse in mm | Anzahl |\n|---|---|\n| [96;97) | 2 |\n| [97;98) | 7 |\n| [98;99) | 16 |\n| [99;100) | 25 |\n| [100;101) | 25 |\n| [101;102) | 16 |\n| [102;103) | 7 |\n| [103;104) | 2 |\n\n![Histogramm der konstruierten Längenmessungen](/assets/assessment-materials/mathematik/7246cd87-b720-5866-8c0c-3b93fec46189/by-measurements.png)\n\n\n1. Begründe ein Binomialmodell für $X$; berechne Erwartungswert und Standardabweichung aus $n,p$ und interpretiere beide im Kontext. Bedeuten sie, dass in jeder Serie genau diese Werte beobachtet werden?\n\n2. Beschreibe Wertebereiche und Bedeutung von $X$ und einer einzelnen Länge $L$. Warum ist die Länge selbst keine binomiale Trefferzahl?\n\n3. Prüfe anhand von Tabelle **und** Histogramm, ob ein ungefähr normalverteiltes Modell für die Längen plausibel ist. Nenne mindestens drei konkrete Merkmale und schätze die Lage der Mitte. Es sind keine Normalverteilungswahrscheinlichkeiten zu berechnen.\n\n4. Nenne zwei Grenzen dieser Modellbeurteilung und eine zusätzliche Beobachtung, die gegen ein einziges Normalmodell sprechen würde. Beurteile „Die Glockenform beweist die Normalverteilung und einen fehlerfreien Betrieb“.\n",
+        "taskContentEn": "# Quality control: counting and measuring\n\nA fictional manufacturer examines two different quantities. Each of $100$ independently produced parts has the same probability $0.04$ of a surface defect; $X$ counts defective parts. Separately, $100$ lengths in mm are measured on another, stably adjusted machine. These data are **constructed for the task**, not an actual business study.\n\n| Length interval in mm | Count |\n|---|---|\n| [96,97) | 2 |\n| [97,98) | 7 |\n| [98,99) | 16 |\n| [99,100) | 25 |\n| [100,101) | 25 |\n| [101,102) | 16 |\n| [102,103) | 7 |\n| [103,104) | 2 |\n\n![Histogram of the constructed length measurements](/assets/assessment-materials/mathematik/7246cd87-b720-5866-8c0c-3b93fec46189/by-measurements.png)\n\n\n1. Justify a binomial model for $X$, compute its mean and SD from $n,p$, and interpret both. Do they imply these exact observations in every series?\n\n2. Describe the value ranges and meaning of $X$ and of one length $L$. Why is length itself not a binomial success count?\n\n3. Use the table **and** histogram to judge whether an approximately normal model for the lengths is plausible. Identify at least three concrete features and estimate the central location. No normal probabilities are required.\n\n4. Give two limitations of this judgement and one additional observation that would count against a single normal model. Assess “The bell shape proves normality and defect-free production”.\n",
+        "solutionContent": "# Musterlösung\n\n$X\\sim B(100;0{,}04)$ setzt die genannte konstante Chance und Unabhängigkeit voraus; gezählt wird Fehler/kein Fehler. $E(X)=np=4$ und $\\sigma_X=\\sqrt{np(1-p)}=\\sqrt{3{,}84}\\approx1{,}9596$. Langfristig liegt die mittlere Zahl je Serie bei vier, die Standardabweichung beschreibt die Streuung der **Anzahl** um diesen Mittelwert. Sie ist keine garantierte Toleranz, kein Standardfehler der Längen und kein Versprechen für jede Serie.\n\n$X$ nimmt ganzzahlige Werte von $0$ bis $100$ an. Eine Länge ist eine Messgröße mit im Modell kontinuierlichen Werten in mm (auch wenn ein Gerät rundet); sie ist nicht die Anzahl von Erfolgen in $100$ Versuchen. Ein daraus definierter Indikator „Länge außerhalb Toleranz“ wäre eine andere Größe.\n\nDie Klassen sind gleich breit. Die Häufigkeiten steigen zu einem zentralen Bereich an und fallen wieder, sind etwa symmetrisch um $100$ mm und zeigen kleine Randhäufigkeiten ohne zweite getrennte Spitze. Das ist mit einer Glockenform und deshalb mit einem **ungefähren** Normalmodell vereinbar. Die zwei benachbarten gleich hohen Mittelbalken sind bei der Klasseneinteilung kein Beweis für zwei Populationen. Ein Mittelwert der Klassenmitten ergibt $100$ mm, aber die einzelnen Messwerte sind nicht bekannt.\n\nNur $100$ gruppierte Werte, gewählte Klassengrenzen und konstruierte/stichprobenabhängige Häufigkeiten beweisen keine Verteilungsform. Ein gemischter oder zeitlich driftender Prozess könnte anders aussehen. Deutliche getrennte Häufungen, starke Schiefe oder ein Trend in Messreihenfolge sprächen gegen das einfache stabile Modell. Ohne Spezifikationsgrenzen kann Fehlerfreiheit überhaupt nicht aus dem Histogramm entschieden werden; selbst ein Normalmodell erlaubt abweichende Werte.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 6 | Binomialannahmen 2; Mittelwert 1; SD 1; beide sachlich und ohne Garantie gedeutet 2 |\n| 2 | 3 | diskreter Wertebereich 1; Messgröße/Längeneinheit 1; Länge gegen Trefferzahl abgegrenzt 1 |\n| 3 | 6 | drei konkrete Histogrammmerkmale je 1; Mitte 100 mm 1; plausibles ungefähres Modell 1; Bezug zu Tabelle und Grafik 1 |\n| 4 | 5 | zwei Grenzen je 1; konkretes Gegenindiz 1; Normalität kein Beweis 1; Fehlerfreiheit nicht ableitbar 1 |\n| **Gesamt** | **20** | **Bestanden ab 12** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+        "solutionContentEn": "# Reference solution\n\n$X\\sim B(100;0.04)$ uses a fixed number of independent defect/no-defect trials with constant probability. $E(X)=np=4$ and $\\sigma_X=\\sqrt{np(1-p)}=\\sqrt{3.84}\\approx1.9596$. Four is the long-run mean count per series; SD describes variation of that count around its mean. Neither is a guaranteed observation or tolerance, and this SD is not a length standard error.\n\n$X$ is integer-valued from $0$ to $100$. Length is measured in mm and is modelled continuously, even if an instrument rounds. It is not a count of successes. A derived indicator “outside length tolerance” would be a different quantity.\n\nThe equal-width classes show rising then falling frequencies, approximate symmetry around $100$ mm, small tails and one central concentration. These concrete features support an approximate bell-shaped normal model. Two adjacent equally high central bars do not establish separate populations. Class-midpoint averaging gives $100$ mm but the exact individual measurements are unknown.\n\nA grouped sample of $100$, the chosen bins and sampling variation do not prove a distribution. Mixture or process drift can invalidate one stable model. Separate peaks, strong skew or a time trend would be counterevidence. Without specified tolerance limits, defect-free production cannot be concluded; normality itself would not guarantee it.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 6 | binomial assumptions 2; mean 1; SD 1; contextual interpretations without guarantee 2 |\n| 2 | 3 | discrete range 1; measured quantity/unit 1; length distinguished from success count 1 |\n| 3 | 6 | three concrete histogram features 1 each; centre 100 mm 1; plausible approximate model 1; table and graph evidence 1 |\n| 4 | 5 | two limitations 1 each; concrete counterevidence 1; no proof of normality 1; no defect-free conclusion 1 |\n| **Total** | **20** | **Pass at 12** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "new_by_basic_stochastic_models_1",
+              "points": 6,
+              "description": "Binomialannahmen 2; Mittelwert 1; SD 1; beide sachlich und ohne Garantie gedeutet 2",
+              "descriptionEn": "binomial assumptions 2; mean 1; SD 1; contextual interpretations without guarantee 2"
+            },
+            {
+              "id": "new_by_basic_stochastic_models_2",
+              "points": 3,
+              "description": "diskreter Wertebereich 1; Messgröße/Längeneinheit 1; Länge gegen Trefferzahl abgegrenzt 1",
+              "descriptionEn": "discrete range 1; measured quantity/unit 1; length distinguished from success count 1"
+            },
+            {
+              "id": "new_by_basic_stochastic_models_3",
+              "points": 6,
+              "description": "drei konkrete Histogrammmerkmale je 1; Mitte 100 mm 1; plausibles ungefähres Modell 1; Bezug zu Tabelle und Grafik 1",
+              "descriptionEn": "three concrete histogram features 1 each; centre 100 mm 1; plausible approximate model 1; table and graph evidence 1"
+            },
+            {
+              "id": "new_by_basic_stochastic_models_4",
+              "points": 5,
+              "description": "zwei Grenzen je 1; konkretes Gegenindiz 1; Normalität kein Beweis 1; Fehlerfreiheit nicht ableitbar 1",
+              "descriptionEn": "two limitations 1 each; concrete counterevidence 1; no proof of normality 1; no defect-free conclusion 1"
+            }
+          ]
+        },
+        "reviewNote": "Independently reviewed whole content; integrated scope and current fingerprints require separate implementation review. curricula/DE/Gymnasium/assessments/mathematik/q3-whole-scoped-completion-2026-11-04-v1/reviews/independent-final-content-decision.json"
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "a789460f-92b8-565a-82ca-d5d6b7928b19",
+      "title": "Prüfung: Einen Bericht über Appnutzung und Radfahren prüfen",
+      "titleEn": "Assessment: Critically examine an app-use and cycling report",
+      "description": "Die lernende Person kann die vollständige Prüfung selbstständig bearbeiten und ihre Ergebnisse fachlich begründen.",
+      "descriptionEn": "The learner can complete the whole assessment independently and justify the results.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "3e974075-b2fd-43e6-88d9-5f596ad053ec"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2",
+          "K3",
+          "K4",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "type": "atomic",
+      "nodeKind": "exam",
+      "sourceRef": "SkillPilot: eigene vollständige Abschlussaufgabe für die unveränderten vorbereitenden Lernzielverträge; keine amtliche Prüfungsaufgabe.",
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "3e974075-b2fd-43e6-88d9-5f596ad053ec"
+        ],
+        "coveredStrands": [
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "# „Unsere App verdoppelt das Radfahren“?\n\nDas folgende Material ist **vollständig fiktiv und für diese SkillPilot-Aufgabe konstruiert**. Es wird keine echte Veröffentlichung behauptet. An einer Schule gibt es $1000$ Lernende, davon $400$ mit kurzem Schulweg (höchstens $3$ km) und $600$ mit längerem Weg. Ein Fahrradclub und der App-Newsletter verbreiten einen freiwilligen Fragebogen. $250$ Personen antworten. „Regelmäßig“ bedeutet Radfahren an mindestens drei der fünf Schultage derselben Woche.\n\nDie Frage beginnt: „Unsere nützliche App bringt Jugendliche dazu, häufiger Rad zu fahren. Bist du dank der App regelmäßig mit dem Rad unterwegs?“ Appnutzung wird zusätzlich mit Ja/Nein erfasst. Die konstruierten, bereits bereinigten Daten lauten:\n\n| Weg | App | regelmäßig | nicht regelmäßig | Summe |\n|---|---|---:|---:|---:|\n| kurz | ja | 96 | 24 | 120 |\n| kurz | nein | 18 | 2 | 20 |\n| lang | ja | 3 | 27 | 30 |\n| lang | nein | 16 | 64 | 80 |\n\nEin fiktiver Bericht titelt „Unsere App verdoppelt das Radfahren an der ganzen Schule“ und zeigt $66\\%$ für Appnutzende und $34\\%$ für Nichtnutzende mit der Grafiküberschrift „Anteil aller Schülerinnen und Schüler“. Er behauptet einen nachgewiesenen App-Effekt.\n\n\n1. Berechne den Anteil regelmäßiger Radfahrender unter Appnutzenden und Nichtnutzenden sowie den Anteil Appnutzender unter regelmäßigen Radfahrenden. Erkläre die verschiedenen bedingten Richtungen.\n\n2. Berechne die vier Regelmäßig-Anteile innerhalb der Weg-/Appgruppen und vergleiche das Ergebnis mit den Gesamtquoten.\n\n3. Ermittle die Wegmischung der beiden Appgruppen. Erkläre, wie verschiedene Mischungen den Gesamtvergleich verändern können. Berechne beide Regelmäßig-Quoten bei einer rein rechnerisch gleichen Mischung von $40\\%$ kurzen und $60\\%$ langen Wegen; erläutere die Grenzen dieser Gewichtung.\n\n4. Prüfe Zugang, freiwillige Auswahl, Stichprobenumfang und -zusammensetzung. Vergleiche den Kurzweganteil der Stichprobe mit dem der Schule und erläutere an einer kleinen Teilgruppe die Bedeutung der Fallzahl.\n\n5. Prüfe Frageformulierung, Überschrift, Bezugsgruppen und Darstellung. Formuliere eine neutrale Messfrage und eine sachgerechte Grafiküberschrift mit nötigen Zusatzangaben.\n\n6. Beurteile die behauptete Ursache und auch die Gegenbehauptung „Die App schadet nachweislich dem Radfahren“. Schreibe eine kurze vertretbare Ersatzmeldung. Eine neue Erhebung, ein Codebuch oder eine Pilotdatenerfassung ist nicht verlangt.\n",
+        "taskContentEn": "# “Our app doubles cycling”?\n\nAll material is **fictional and constructed for this SkillPilot task**; it is not an actual publication. A school has $1000$ students: $400$ travel at most $3$ km and $600$ travel farther. A cycling club and app newsletter circulate a voluntary questionnaire; $250$ people respond. “Regular” means cycling on at least three of the same five school days.\n\nThe question begins: “Our useful app makes young people cycle more often. Do you cycle regularly thanks to the app?” App use is also recorded as yes/no. The constructed, already cleaned data are:\n\n| Journey | App | regular | not regular | Total |\n|---|---|---:|---:|---:|\n| short | yes | 96 | 24 | 120 |\n| short | no | 18 | 2 | 20 |\n| long | yes | 3 | 27 | 30 |\n| long | no | 16 | 64 | 80 |\n\nA fictional report says “Our app doubles cycling throughout the school”. It shows $66\\%$ for app users and $34\\%$ for non-users under “Proportion of all students”, claiming a demonstrated causal app effect.\n\n\n1. Find the regular-cycling proportions among users and non-users and the app-user proportion among regular cyclists. Explain the different conditioning directions.\n\n2. Find all four within-journey/app regular-cycling rates and compare with the overall rates.\n\n3. Find the journey mixture in each app group and explain its effect on the aggregate comparison. Recalculate both rates with the same numerical mixture of $40\\%$ short and $60\\%$ long journeys; explain the limits of this weighting.\n\n4. Evaluate access, voluntary selection, sample size and composition. Compare the sample's short-journey proportion with the school's and use a small subgroup to discuss sample size.\n\n5. Critique the question, title, reference groups and presentation. Supply a neutral measurement question and a sound graph heading with necessary additional information.\n\n6. Evaluate the causal claim and “The app demonstrably harms cycling”. Write a defensible short replacement report. No new survey, codebook or pilot recording is required.\n",
+        "solutionContent": "# Musterlösung\n\n\n1. Nutzende: $99/150=66\\%$; Nichtnutzende: $34/100=34\\%$; unter $133$ regelmäßig Radfahrenden nutzen $99$ die App, also $99/133\\approx74{,}44\\%$. Die Bedingungen wählen verschiedene Bezugsgruppen; $P(R\\mid A)$ ist nicht $P(A\\mid R)$.\n\n2. Kurze Wege: $96/120=80\\%$ mit App, $18/20=90\\%$ ohne. Lange: $3/30=10\\%$ mit, $16/80=20\\%$ ohne. Innerhalb beider Weggruppen liegt die Appgruppe zehn Prozentpunkte niedriger, insgesamt aber 32 Prozentpunkte höher. Die Rechnung selbst ist kein Widerspruch: Die Gruppen sind unterschiedlich zusammengesetzt.\n\n3. Nutzende haben $120/150=80\\%$ kurze Wege, Nichtnutzende $20/100=20\\%$. Kurze Wege gehen hier mit mehr Radfahren einher. Die Appgruppe enthält viel mehr davon. Mit gleicher 40/60-Mischung ergeben sich $0{,}4\\cdot0{,}8+0{,}6\\cdot0{,}1=0{,}38$ und $0{,}4\\cdot0{,}9+0{,}6\\cdot0{,}2=0{,}48$. Diese rechnerisch vergleichbaren $38\\%/48\\%$ sind weiterhin keine gesicherten Schulquoten oder Ursacheffekte: Auswahlfehler und weitere Unterschiede bleiben.\n\n4. Club/Newsletter erreichen nicht alle gleich; Radinteresse und Appnutzung beeinflussen Zugang und Teilnahme. $250$ ist kein Beweis für Repräsentativität. Kurze Wege: $140/250=56\\%$ statt $400/1000=40\\%$. Die nur $20$ kurzen Nichtnutzenden erlauben bereits durch eine einzige Antwortänderung eine Ratenänderung um fünf Prozentpunkte; bei $30$ langen Nutzenden sind es etwa $3{,}33$ Punkte. Eine formale Fehlerspanne ist ohne passenden Auswahlrahmen nicht gerechtfertigt.\n\n5. Die Frage lobt und unterstellt Wirkung. Neutral: „An wie vielen der fünf Schultage der angegebenen Woche bist du mit dem Fahrrad zur Schule gefahren?“ Appnutzung separat und eindeutig erfragen. Die Grafikquoten beziehen sich auf Antwortende **innerhalb der Appgruppen**, nicht auf alle Lernenden. Überschrift: „Regelmäßig Radfahrende unter den Antwortenden nach Appnutzung“, ergänzt um $n=150/100$, Zeitraum und Definition „mindestens drei Tage“. $66/34\\approx1{,}94$ ist auch nicht exakt zwei; der fehlende Kausalnachweis wiegt stärker als Rundung.\n\n6. Keine zufällige Appzuweisung, keine Vorhermessung; Weglänge, Gewohnheiten und Selbstselektion können die Assoziation erklären. Weder die positive Gesamtassoziation noch die negative Teilgruppenassoziation beweist Ursache oder Schaden. Ersatz: „Unter 250 freiwillig Antwortenden fahren 66 % der Appnutzenden und 34 % der Nichtnutzenden regelmäßig Rad. Ihre Weglängen unterscheiden sich stark; in beiden Weggruppen ist die Appquote niedriger. Auswahl und fehlende Kontrolle erlauben weder eine Schulquote noch einen App-Ursachennachweis.“ Gleichwertige sachliche Kurzmeldungen zählen.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 6 | drei Anteile je 1; passende Bezugsgruppen 2; Richtungsunterschied 1 |\n| 2 | 6 | vier Teilgruppenraten je 1; beide internen Vergleiche 1; Kontrast zur Gesamtquote 1 |\n| 3 | 6 | Mischungen 2; Gewichtswirkung erklärt 1; zwei gewichtete Quoten je 1; Grenzen 1 |\n| 4 | 5 | konkrete Zugangs-/Auswahlkritik 2; 56 gegen 40 % 1; kleine Teilgruppe mit Unsicherheit 1; Fallzahl beweist keine Repräsentativität 1 |\n| 5 | 5 | suggestive Frage und neutrale Alternative 2; falsche Bezugsgruppe 1; korrekte Überschrift 1; Gruppengrößen/Definition 1 |\n| 6 | 4 | begründete Ursache-Assoziation-Trennung 2; auch Schaden nicht bewiesen 1; vertretbare Ersatzmeldung 1 |\n| **Gesamt** | **32** | **Bestanden ab 20** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+        "solutionContentEn": "# Reference solution\n\n\n1. Users: $99/150=66\\%$; non-users: $34/100=34\\%$. Of $133$ regular cyclists, $99$ use the app, giving $99/133\\approx74.44\\%$. Conditioning changes the reference group: $P(R\\mid A)$ differs from $P(A\\mid R)$.\n\n2. For short journeys, rates are $96/120=80\\%$ and $18/20=90\\%$. For long journeys they are $3/30=10\\%$ and $16/80=20\\%$. Users are ten percentage points lower within each group but 32 points higher overall. Different mixtures explain how these correct calculations coexist.\n\n3. Users have $80\\%$ short journeys and non-users $20\\%$. Short journeys coincide with more cycling here, and users contain far more of them. Equal 40/60 weights give $0.4(0.8)+0.6(0.1)=38\\%$ and $0.4(0.9)+0.6(0.2)=48\\%$. These weighted comparisons still do not establish population rates or causal effects; selective participation and other differences remain.\n\n4. Club/newsletter access and voluntary response can depend on cycling interest and app use. Sample size $250$ does not establish representativeness. The short-journey share is $140/250=56\\%$, compared with $40\\%$ in the school. Reclassifying one answer changes the $20$-person short/non-user rate by five points, or the $30$-person long/user rate by about $3.33$ points. No formal margin of error follows without an appropriate sampling model.\n\n5. Praise and a presupposed effect make the question leading. Ask neutrally: “On how many of the specified five school days did you cycle to school?”, with app use defined separately. The displayed rates concern respondents within each app group, not all students. Use “Regular cyclists among respondents, by app use”, show group sizes $150/100$, the week and “at least three days”. The ratio $66/34\\approx1.94$ is not exactly two either; unsupported causation is the larger problem.\n\n6. There is no random app assignment or before-use measure. Journey length, prior habits and self-selection may matter. Neither aggregate positive association nor negative subgroup association establishes an app effect or harm. A defensible report states the observed 66/34 rates, different journey composition, reversed within-group rates and the limits on generalisation and causation. Equivalent concise reports receive credit.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 6 | three proportions 1 each; reference groups 2; direction distinction 1 |\n| 2 | 6 | four subgroup rates 1 each; within-group comparisons 1; aggregate contrast 1 |\n| 3 | 6 | mixtures 2; explains weighting 1; two weighted rates 1 each; limitations 1 |\n| 4 | 5 | specific access/selection critique 2; 56 versus 40% 1; small subgroup and uncertainty 1; size alone insufficient 1 |\n| 5 | 5 | leading wording and neutral alternative 2; false reference group 1; corrected title 1; group sizes/definition 1 |\n| 6 | 4 | reasoned cause-association distinction 2; harm not proven either 1; sound replacement report 1 |\n| **Total** | **32** | **Pass at 20** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+        "scoring": {
+          "maxPoints": 32,
+          "passingPoints": 20,
+          "steps": [
+            {
+              "id": "new_by_critical_conditional_data_1",
+              "points": 6,
+              "description": "drei Anteile je 1; passende Bezugsgruppen 2; Richtungsunterschied 1",
+              "descriptionEn": "three proportions 1 each; reference groups 2; direction distinction 1"
+            },
+            {
+              "id": "new_by_critical_conditional_data_2",
+              "points": 6,
+              "description": "vier Teilgruppenraten je 1; beide internen Vergleiche 1; Kontrast zur Gesamtquote 1",
+              "descriptionEn": "four subgroup rates 1 each; within-group comparisons 1; aggregate contrast 1"
+            },
+            {
+              "id": "new_by_critical_conditional_data_3",
+              "points": 6,
+              "description": "Mischungen 2; Gewichtswirkung erklärt 1; zwei gewichtete Quoten je 1; Grenzen 1",
+              "descriptionEn": "mixtures 2; explains weighting 1; two weighted rates 1 each; limitations 1"
+            },
+            {
+              "id": "new_by_critical_conditional_data_4",
+              "points": 5,
+              "description": "konkrete Zugangs-/Auswahlkritik 2; 56 gegen 40 % 1; kleine Teilgruppe mit Unsicherheit 1; Fallzahl beweist keine Repräsentativität 1",
+              "descriptionEn": "specific access/selection critique 2; 56 versus 40% 1; small subgroup and uncertainty 1; size alone insufficient 1"
+            },
+            {
+              "id": "new_by_critical_conditional_data_5",
+              "points": 5,
+              "description": "suggestive Frage und neutrale Alternative 2; falsche Bezugsgruppe 1; korrekte Überschrift 1; Gruppengrößen/Definition 1",
+              "descriptionEn": "leading wording and neutral alternative 2; false reference group 1; corrected title 1; group sizes/definition 1"
+            },
+            {
+              "id": "new_by_critical_conditional_data_6",
+              "points": 4,
+              "description": "begründete Ursache-Assoziation-Trennung 2; auch Schaden nicht bewiesen 1; vertretbare Ersatzmeldung 1",
+              "descriptionEn": "reasoned cause-association distinction 2; harm not proven either 1; sound replacement report 1"
+            }
+          ]
+        },
+        "reviewNote": "Independently reviewed whole content; integrated scope and current fingerprints require separate implementation review. curricula/DE/Gymnasium/assessments/mathematik/q3-whole-scoped-completion-2026-11-04-v1/reviews/independent-final-content-decision.json"
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "ed344e04-818b-59ab-9b4a-087428c05c8f",
+      "title": "Prüfung: Eine vorgegebene Testregel im Betrieb deuten",
+      "titleEn": "Assessment: Interpret a supplied quality-control test rule",
+      "description": "Die lernende Person kann die vollständige Prüfung selbstständig bearbeiten und ihre Ergebnisse fachlich begründen.",
+      "descriptionEn": "The learner can complete the whole assessment independently and justify the results.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2",
+          "K3",
+          "K4",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "type": "atomic",
+      "nodeKind": "exam",
+      "sourceRef": "SkillPilot: eigene vollständige Abschlussaufgabe für die unveränderten vorbereitenden Lernzielverträge; keine amtliche Prüfungsaufgabe.",
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "0a7ff229-bf90-523c-a6b4-dad2ecd54ed8"
+        ],
+        "coveredStrands": [
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "# Wann wird eine Produktionsphase untersucht?\n\nEine fiktive Produktionsphase hat eine unbekannte Fehlerquote $p$. Eine zufällige Stichprobe von $80$ Teilen wird im Modell als unabhängig bei konstantem $p$ angesehen; $X\\sim B(80;p)$ zählt fehlerhafte Teile. Getestet wird $H_0:p\\leq0{,}05$ gegen $H_1:p>0{,}05$. Die **bereits gültig bestimmte** Regel lautet: Verwirf $H_0$ bei $X\\geq8$, andernfalls verwirf sie nicht. Verwerfen löst eine zusätzliche Untersuchung aus, keine sofortige Stilllegung.\n\nAm Nullrand beträgt $P_{0{,}05}(X\\geq8)\\approx0{,}04659$; bei der festen Alternative $p=0{,}12$ beträgt $P_{0{,}12}(X\\leq7)\\approx0{,}24165$. Eine Herleitung der Regel oder eine Gütefunktionsgrafik ist nicht verlangt.\n\n\n1. Interpretiere Zufallsgröße, Hypothesen und Regel im Kontext. Warum ist die Untersuchung nach Verwerfen begründet, ohne bereits die genaue Fehlerquote zu kennen?\n\n2. In zwei getrennten Produktionsphasen ergeben sich $x=9$ bzw. $x=6$ Fehler. Triff jeweils die Entscheidung und schreibe für beide einen fachlich korrekten Ergebnissatz. Beurteile dabei „Sechs Fehler beweisen, dass höchstens 5 % aller Teile fehlerhaft sind“.\n\n3. Erkläre Fehler 1. und 2. Art samt betrieblicher Folge und deute die beiden angegebenen Wahrscheinlichkeiten mit ihrem jeweiligen Parameter. Kann man daraus eine Fehler-2-Wahrscheinlichkeit für **jedes** $p>0{,}05$ ablesen?\n\n4. Prüfe: „Nach neun Fehlern ist $H_0$ mit Wahrscheinlichkeit 4,659 % wahr“ und „Bei einer nicht verworfenen Nullhypothese sind die geprüften Teile sicher gut“. Erkläre, was die Testentscheidung tatsächlich aussagt, und nenne eine wichtige Modellgrenze.\n",
+        "taskContentEn": "# When should a production phase be investigated?\n\nA fictional production phase has an unknown defect probability $p$. A random sample of $80$ parts is modelled as independent with constant $p$. $X\\sim B(80;p)$ counts defects. Test $H_0:p\\leq0.05$ against $H_1:p>0.05$. The **already validly determined** rule rejects $H_0$ for $X\\geq8$ and otherwise does not reject it. Rejection triggers further investigation, not immediate shutdown.\n\nAt the null boundary, $P_{0.05}(X\\geq8)\\approx0.04659$. At the specified alternative $p=0.12$, $P_{0.12}(X\\leq7)\\approx0.24165$. Deriving the rule or drawing a power function is not required.\n\n\n1. Interpret the count, hypotheses and rule. Why can rejection justify investigation without identifying the exact defect probability?\n\n2. Separate phases yield $x=9$ and $x=6$. Decide in each case and write a sound contextual conclusion. Assess “Six defects prove that at most 5% of all parts are defective”.\n\n3. Explain both error types and operational consequences. Interpret the supplied probabilities with their respective parameter values. Do these give the type-II error probability for **every** $p>0.05$?\n\n4. Assess “After nine defects $H_0$ has a 4.659% probability of being true” and “If the null is not rejected, the inspected parts are certainly good”. Explain what the decision does say and name a relevant modelling limitation.\n",
+        "solutionContent": "# Musterlösung\n\n\n1. $X$ ist die Fehlerzahl, $p$ eine Quote der Produktionsphase. $H_0$ umfasst höchstens $5\\%$, $H_1$ mehr als $5\\%$. Unter $H_0$ sind acht oder mehr Fehler nach dem Modell selten; das spricht bei Beobachtung gegen $H_0$ und rechtfertigt eine Untersuchung. Es schätzt $p$ nicht exakt und beweist $H_1$ nicht sicher.\n\n2. Bei neun Fehlern wird $H_0$ verworfen: Es gibt anhand dieser Regel Hinweise auf eine Quote über $5\\%$; untersuchen. Bei sechs wird nicht verworfen: Die Daten reichen für diese Regel nicht aus, eine Quote über $5\\%$ festzustellen. Das ist kein Nachweis von $p\\leq0{,}05$; eine höhere Quote kann unentdeckt bleiben.\n\n3. Fehler 1. Art: eine tatsächlich höchstens $5\\%$ fehlerhafte Phase wird beanstandet und unnötig untersucht. Die Zahl $0{,}04659$ gilt am Rand $p=0{,}05$ (unter dem zusammengesetzten Nullmodell liegt dort die größte Verwerfungswahrscheinlichkeit). Fehler 2. Art: eine Phase mit $p>0{,}05$ bleibt ohne zusätzliche Untersuchung. $0{,}24165$ ist die Nichtverwerfungswahrscheinlichkeit **bei $p=0{,}12$**, keine konstante Wahrscheinlichkeit für alle Alternativen.\n\n4. $P_{0{,}05}(X\\geq8)$ ist eine Stichprobenergebnis-Wahrscheinlichkeit unter einem festen Parameter, keine nachträgliche Wahrscheinlichkeit von $H_0$. Keine Priorwahrscheinlichkeiten oder entsprechende Inferenz wurden gegeben. Die Regel entscheidet über einen Populationsparameter, sie macht einzelne bereits fehlerhafte Teile nicht gut und garantiert keine unbekannten Teile. Abhängige Fehler, driftende Produktion oder eine selektive Stichprobe könnten das Binomialmodell verletzen.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 4 | Zählgröße und Hypothesen 2; korrekte Regel 1; evidenzbezogene Begründung ohne Gewissheit 1 |\n| 2 | 6 | beide Entscheidungen je 1; beide korrekten Ergebnissätze je 1; Nichtverwerfen als fehlender Nachweis statt Beweis erklärt 2 |\n| 3 | 5 | beide kontextuellen Fehlerarten je 1; beide Zahlen mit Parametern je 1; Alternativabhängigkeit 1 |\n| 4 | 5 | bedingte Richtung/kein Posterior 2; keine Einzelteilgarantie 1; tatsächliche Aussage 1; Modellgrenze 1 |\n| **Gesamt** | **20** | **Bestanden ab 12** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+        "solutionContentEn": "# Reference solution\n\n\n1. $X$ counts defects and $p$ is a phase-wide proportion. The null covers rates at most 5%, the alternative rates above 5%. At least eight defects are rare under the null model, so observing this provides evidence for investigation. It does not determine $p$ exactly or prove the alternative with certainty.\n\n2. Nine defects cause rejection and investigation: the rule provides evidence of a rate above 5%. Six cause non-rejection: evidence is insufficient under this rule to establish a rate above 5%. This does not prove $p\\leq0.05$; an elevated rate may be missed.\n\n3. A type-I error unnecessarily flags/investigates a phase whose rate is at most 5%. The given $0.04659$ is at boundary $p=0.05$, where rejection probability is largest over this null. A type-II error misses a phase above 5%. The supplied $0.24165$ is non-rejection probability specifically at $p=0.12$ and varies with the alternative.\n\n4. A sample-event probability under a specified parameter is not a posterior probability of $H_0$. No prior or posterior model was supplied. A population test neither repairs observed faulty parts nor certifies every part. Dependence, drift or selective sampling could invalidate the binomial assumptions.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 4 | count/hypotheses 2; correct rule 1; evidential explanation without certainty 1 |\n| 2 | 6 | two decisions 1 each; two sound conclusions 1 each; explains non-rejection is not proof 2 |\n| 3 | 5 | two contextual error types 1 each; two parameter-specific probabilities 1 each; alternative dependence 1 |\n| 4 | 5 | conditioning direction/no posterior 2; no individual guarantee 1; actual meaning 1; model limitation 1 |\n| **Total** | **20** | **Pass at 12** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "new_by_test_interpretation_1",
+              "points": 4,
+              "description": "Zählgröße und Hypothesen 2; korrekte Regel 1; evidenzbezogene Begründung ohne Gewissheit 1",
+              "descriptionEn": "count/hypotheses 2; correct rule 1; evidential explanation without certainty 1"
+            },
+            {
+              "id": "new_by_test_interpretation_2",
+              "points": 6,
+              "description": "beide Entscheidungen je 1; beide korrekten Ergebnissätze je 1; Nichtverwerfen als fehlender Nachweis statt Beweis erklärt 2",
+              "descriptionEn": "two decisions 1 each; two sound conclusions 1 each; explains non-rejection is not proof 2"
+            },
+            {
+              "id": "new_by_test_interpretation_3",
+              "points": 5,
+              "description": "beide kontextuellen Fehlerarten je 1; beide Zahlen mit Parametern je 1; Alternativabhängigkeit 1",
+              "descriptionEn": "two contextual error types 1 each; two parameter-specific probabilities 1 each; alternative dependence 1"
+            },
+            {
+              "id": "new_by_test_interpretation_4",
+              "points": 5,
+              "description": "bedingte Richtung/kein Posterior 2; keine Einzelteilgarantie 1; tatsächliche Aussage 1; Modellgrenze 1",
+              "descriptionEn": "conditioning direction/no posterior 2; no individual guarantee 1; actual meaning 1; model limitation 1"
+            }
+          ]
+        },
+        "reviewNote": "Independently reviewed whole content; integrated scope and current fingerprints require separate implementation review. curricula/DE/Gymnasium/assessments/mathematik/q3-whole-scoped-completion-2026-11-04-v1/reviews/independent-final-content-decision.json"
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "f59b0af8-b90a-5cdb-88d6-561323a4f763",
+      "title": "Prüfung: Versandtage mit Binomialverteilungen untersuchen",
+      "titleEn": "Assessment: Examine dispatch days with binomial distributions",
+      "description": "Die lernende Person kann die vollständige Prüfung selbstständig bearbeiten und ihre Ergebnisse fachlich begründen.",
+      "descriptionEn": "The learner can complete the whole assessment independently and justify the results.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "42d300e3-e982-5889-98d7-fc297f10eff1",
+        "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+        "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+        "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+        "d81bc960-4eff-5c87-90b8-fec8e1cb8b3a",
+        "f7879354-1a82-4195-8e3c-a339a820439c",
+        "9de07e13-6a5f-5b49-a6d4-0decefb95784"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2",
+          "K3",
+          "K4",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-SH"
+        ]
+      },
+      "type": "atomic",
+      "nodeKind": "exam",
+      "sourceRef": "SkillPilot: eigene vollständige Abschlussaufgabe für die unveränderten vorbereitenden Lernzielverträge; keine amtliche Prüfungsaufgabe.",
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "9de07e13-6a5f-5b49-a6d4-0decefb95784"
+        ],
+        "coveredStrands": [
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "# Eilige Sendungen an Versandtagen\n\nEin fiktiver Versand betrachtet jede Sendung unabhängig als „eilig“ mit derselben Wahrscheinlichkeit $p=0{,}2$. Ein Tag der Serie A umfasst genau $12$ Sendungen. $X$ zählt die eiligen Sendungen. Digitale Werkzeuge dürfen exakte Binomialwahrscheinlichkeiten, Tabellen und Grafiken erzeugen; zeige dabei Parameter und Ereignisse.\n\n\n1. Beschreibe $X$ als Zuordnung von zwölfteiligen Eilig/Nicht-eilig-Folgen zu einer Zahl. Gib Wertebereich und Modellannahmen an. Erstelle für $k=0,\\ldots,12$ eine vollständige Wahrscheinlichkeitstabelle und ein Histogramm, und deute den Balken bei $k=2$ sowie die Summe aller Wahrscheinlichkeiten.\n\n2. Berechne $P(X=2)$ und erkläre in diesem Kontext die Bedeutung und den Wert von $\\binom{12}{2}$. Erkläre, wie mögliche Positionen und eine feste Reihenfolge zusammenwirken.\n\n3. Berechne Erwartungswert, Varianz und Standardabweichung von $X$ und deute sie im Kontext einschließlich Einheiten und Aussagegrenzen.\n\n4. In einer neuen Serie darf die Zahl $n\\geq1$ der Sendungen gewählt werden, bei gleichem $p=0{,}2$. Bestimme die **kleinste ganze** Zahl $n$, für die die Wahrscheinlichkeit mindestens einer eiligen Sendung mindestens $0{,}95$ ist. Gib das Ereignis, deine Suche oder Rechnung sowie den Nachweis für $n$ und $n-1$ an. Logarithmen sind nicht erforderlich; systematisches Probieren ist erlaubt.\n\n5. Vergleiche die tatsächlich gezeichneten Histogramme A: $B(12;0{,}2)$, B: $B(24;0{,}2)$ und C: $B(12;0{,}5)$ hinsichtlich Lage, absoluter Streuung und Symmetrie. Begründe zwei getrennte Parametervergleiche A/B und A/C und nenne eine Grenze des Modells bei gemeinsam gebuchten Gruppen von Sendungen.\n\n![Drei Binomialhistogramme der Versandserien](/assets/assessment-materials/mathematik/f59b0af8-b90a-5cdb-88d6-561323a4f763/sh-binomial.png)\n",
+        "taskContentEn": "# Urgent parcels on dispatch days\n\nA fictional dispatch service models each parcel independently as urgent with the same probability $p=0.2$. Series A has exactly 12 parcels a day. $X$ counts urgent parcels. Digital tools may produce exact binomial probabilities, tables and charts; show parameters and events.\n\n\n1. Describe $X$ as a mapping from twelve-entry urgent/non-urgent sequences to a number. State range and assumptions. Produce the complete probability table for $k=0,\\ldots,12$ and a histogram. Interpret the bar at $k=2$ and the probability sum.\n\n2. Compute $P(X=2)$ and explain the contextual meaning and value of $\\binom{12}{2}$, connecting success placements with a fixed ordered sequence.\n\n3. Calculate expectation, variance and SD of $X$ and interpret them with units and limitations.\n\n4. In a new series choose an integer parcel count $n\\geq1$, keeping $p=0.2$. Find the **smallest integer** $n$ such that at least one urgent parcel has probability at least $0.95$. State the event, calculation/search and checks for $n$ and $n-1$. Systematic trial is allowed; logarithms are unnecessary.\n\n5. Compare the actually drawn histograms A: $B(12;0.2)$, B: $B(24;0.2)$ and C: $B(12;0.5)$ in location, absolute spread and symmetry. Justify separate A/B and A/C comparisons. Give a model limitation for parcels booked together in groups.\n\n![Three binomial histograms for dispatch series](/assets/assessment-materials/mathematik/f59b0af8-b90a-5cdb-88d6-561323a4f763/sh-binomial.png)\n",
+        "solutionContent": "# Musterlösung\n\n\n1. Einer Folge wird die Anzahl ihrer Eilig-Einträge zugeordnet; z.B. erhält eine Folge mit genau zwei Eilig-Einträgen den Wert 2. $X\\in\\{0,\\ldots,12\\}$, $X\\sim B(12;0{,}2)$ bei fester Versuchszahl, zwei Ausgängen, konstantem $p$ und Unabhängigkeit. Für alle $k$ gilt\n\n$$\nP(X=k)=\\binom{12}{k}0{,}2^k0{,}8^{12-k}.\n$$\n\nDie vollständige Referenztabelle mit gerundeten Werten:\n\n| $k$ | $P(X=k)$ |\n|---|---:|\n|0|0,068719476736|\n|1|0,206158430208|\n|2|0,283467841536|\n|3|0,236223201280|\n|4|0,132875550720|\n|5|0,053150220288|\n|6|0,015502147584|\n|7|0,003321888768|\n|8|0,000519045120|\n|9|0,000057671680|\n|10|0,000004325376|\n|11|0,000000196608|\n|12|0,000000004096|\n\nDas Histogramm hat ganzzahlige Mittelpunkte und Breite 1, mit diesen Höhen. Der Balken bei 2 gibt die Wahrscheinlichkeit für genau zwei eilige Sendungen an; die Summe ist 1, weil alle möglichen Anzahlen erfasst sind.\n\n2. $\\binom{12}2=12\\cdot11/2=66$ wählt zwei ungeordnete Eilig-Positionen aus zwölf. Jede feste Folge hat Wahrscheinlichkeit $0{,}2^2 0{,}8^{10}$; die 66 disjunkten Folgen ergeben $P(X=2)=0{,}283467841536$. Die Division durch 2 verhindert Doppelzählung der beiden ausgewählten Positionen.\n\n3. $E(X)=12\\cdot0{,}2=2{,}4$ Sendungen, $\\operatorname{Var}(X)=12\\cdot0{,}2\\cdot0{,}8=1{,}92$ in quadrierten Anzahleinheiten, $\\sigma_X=\\sqrt{1{,}92}\\approx1{,}3856$ Sendungen. Erwartungswert ist langfristige mittlere Anzahl, kein möglicher einzelner Wert 2,4; Varianz/SD beschreiben die Zufallsstreuung, keine garantierte Tagesgrenze.\n\n4. Für $Y\\sim B(n;0{,}2)$ ist $P(Y\\geq1)=1-0{,}8^n\\geq0{,}95$. Bei $n=13$ ergibt sich $0{,}9450244186112<0{,}95$, bei $n=14$ $0{,}95601953488896\\geq0{,}95$. Weil $0{,}8^n$ streng fällt, ist $14$ die kleinste Zahl. Eine dokumentierte Tabelle mit diesen Grenzchecks reicht.\n\n5. A/B: Mittel $2{,}4\\to4{,}8$, SD $\\sqrt{1{,}92}\\to\\sqrt{3{,}84}\\approx1{,}9596$, also nach rechts und absolut breiter; bei gleichem $p<0{,}5$ weniger stark rechtsschief, aber nicht exakt symmetrisch. A/C: Mittel $2{,}4\\to6$, SD $\\sqrt{1{,}92}\\to\\sqrt3\\approx1{,}7321$; C ist symmetrisch um 6 statt rechtsschief. Gemeinsam gebuchte Eilaufträge können abhängig sein oder zeitlich andere Chancen haben; dann passt die unabhängige gleichartige Bernoulli-Kette nicht.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 5 | Zuordnung/Wertebereich 1; Modellannahmen 1; vollständige Tabelle 1; Histogramm 1; Balken und Summe gedeutet 1 |\n| 2 | 4 | 66 mit Zählbedeutung 2; feste Folge 1; korrektes Ereignisergebnis 1 |\n| 3 | 4 | Mittel 1; Varianz/SD 1; sachliche Deutung 1; Einheiten/keine Garantie 1 |\n| 4 | 5 | Ereignis/Gegenereignis 1; nachvollziehbare Suche 1; n14 geprüft 1; n13 geprüft 1; Minimalität/Monotonie 1 |\n| 5 | 6 | A/B Lage, absolute Streuung, Schiefe je 1; A/C entsprechende begründete Vergleiche 2; Kontextgrenze 1 |\n| **Gesamt** | **24** | **Bestanden ab 15** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+        "solutionContentEn": "# Reference solution\n\n\n1. Map each twelve-entry outcome sequence to its number of urgent entries; possible values are 0 through 12. Fixed trials, two outcomes, independence and constant $p$ give $X\\sim B(12;0.2)$ and\n\n$$\nP(X=k)=\\binom{12}{k}0.2^k0.8^{12-k}.\n$$\n\nFor $k=0,\\ldots,12$ the complete probability list is\n$0.068719476736$, $0.206158430208$, $0.283467841536$, $0.236223201280$, $0.132875550720$, $0.053150220288$, $0.015502147584$, $0.003321888768$, $0.000519045120$, $0.000057671680$, $0.000004325376$, $0.000000196608$, $0.000000004096$. Unit-width histogram bars have these heights at integer counts. The bar at 2 represents exactly two urgent parcels, and probabilities sum to 1 because all counts are included.\n\n2. $\\binom{12}2=12(11)/2=66$ selects two unordered urgent positions. Each fixed sequence has probability $0.2^2 0.8^{10}$; adding the 66 disjoint sequences gives $0.283467841536$. Dividing by 2 removes duplicate orders of the chosen positions.\n\n3. Mean is 2.4 parcels, variance 1.92 squared count-units, and SD $\\sqrt{1.92}\\approx1.3856$ parcels. Mean describes a long-run average, not a possible daily count of 2.4. Variance/SD measure random spread and are not guaranteed bounds.\n\n4. For $Y\\sim B(n;0.2)$ require $1-0.8^n\\geq0.95$. At 13 the probability is $0.9450244186112$, below 0.95; at 14 it is $0.95601953488896$, sufficient. Since $0.8^n$ decreases strictly,14 is minimal. A documented systematic search with these boundary checks is enough.\n\n5. A/B: mean 2.4 to 4.8, SD $\\sqrt{1.92}$ to $\\sqrt{3.84}\\approx1.9596$; location shifts right, absolute spread grows, right skew becomes less pronounced but does not disappear exactly. A/C: mean 2.4 to 6, SD rises to $\\sqrt3\\approx1.7321$; C is symmetric about 6. Group bookings or changing urgency rates can violate independence or constant probability.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 5 | mapping/range 1; assumptions 1; complete table 1; histogram 1; bar and sum interpreted 1 |\n| 2 | 4 | 66 and counting meaning 2; fixed sequence 1; event probability 1 |\n| 3 | 4 | mean 1; variance/SD 1; interpretation 1; units/no guarantee 1 |\n| 4 | 5 | event/complement 1; traceable search 1; n14 check 1; n13 check 1; minimality/monotonicity 1 |\n| 5 | 6 | A/B location, absolute spread, skew 1 each; A/C reasoned comparisons 2; contextual limit 1 |\n| **Total** | **24** | **Pass at 15** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+        "scoring": {
+          "maxPoints": 24,
+          "passingPoints": 15,
+          "steps": [
+            {
+              "id": "new_sh_discrete_binomial_context_1",
+              "points": 5,
+              "description": "Zuordnung/Wertebereich 1; Modellannahmen 1; vollständige Tabelle 1; Histogramm 1; Balken und Summe gedeutet 1",
+              "descriptionEn": "mapping/range 1; assumptions 1; complete table 1; histogram 1; bar and sum interpreted 1"
+            },
+            {
+              "id": "new_sh_discrete_binomial_context_2",
+              "points": 4,
+              "description": "66 mit Zählbedeutung 2; feste Folge 1; korrektes Ereignisergebnis 1",
+              "descriptionEn": "66 and counting meaning 2; fixed sequence 1; event probability 1"
+            },
+            {
+              "id": "new_sh_discrete_binomial_context_3",
+              "points": 4,
+              "description": "Mittel 1; Varianz/SD 1; sachliche Deutung 1; Einheiten/keine Garantie 1",
+              "descriptionEn": "mean 1; variance/SD 1; interpretation 1; units/no guarantee 1"
+            },
+            {
+              "id": "new_sh_discrete_binomial_context_4",
+              "points": 5,
+              "description": "Ereignis/Gegenereignis 1; nachvollziehbare Suche 1; n14 geprüft 1; n13 geprüft 1; Minimalität/Monotonie 1",
+              "descriptionEn": "event/complement 1; traceable search 1; n14 check 1; n13 check 1; minimality/monotonicity 1"
+            },
+            {
+              "id": "new_sh_discrete_binomial_context_5",
+              "points": 6,
+              "description": "A/B Lage, absolute Streuung, Schiefe je 1; A/C entsprechende begründete Vergleiche 2; Kontextgrenze 1",
+              "descriptionEn": "A/B location, absolute spread, skew 1 each; A/C reasoned comparisons 2; contextual limit 1"
+            }
+          ]
+        },
+        "reviewNote": "Independently reviewed whole content; integrated scope and current fingerprints require separate implementation review. curricula/DE/Gymnasium/assessments/mathematik/q3-whole-scoped-completion-2026-11-04-v1/reviews/independent-final-content-decision.json"
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "f74d944a-e09b-5e01-867b-09740fadf18d",
+      "title": "Prüfung: Sensorprüfungen binomial modellieren und vergleichen",
+      "titleEn": "Assessment: Model and compare binomial sensor tests",
+      "description": "Die lernende Person kann die vollständige Prüfung selbstständig bearbeiten und ihre Ergebnisse fachlich begründen.",
+      "descriptionEn": "The learner can complete the whole assessment independently and justify the results.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "42d300e3-e982-5889-98d7-fc297f10eff1",
+        "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+        "9b6f4d7d-a804-5666-b7ea-85bb3c73da4a"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2",
+          "K3",
+          "K4",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "SekI"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "type": "atomic",
+      "nodeKind": "exam",
+      "sourceRef": "SkillPilot: eigene vollständige Abschlussaufgabe für die unveränderten vorbereitenden Lernzielverträge; keine amtliche Prüfungsaufgabe.",
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "42d300e3-e982-5889-98d7-fc297f10eff1"
+        ],
+        "coveredStrands": [
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "# Sensorprüfungen und veränderte Prüfserien\n\nDies ist eine eigene SkillPilot-Aufgabe. Ein Sensor meldet in jedem unabhängigen Prüfversuch mit Wahrscheinlichkeit $p=0{,}25$ einen Treffer. Die Bedingungen bleiben innerhalb einer Serie gleich. $X$ zählt die Treffer in vier Versuchen. Digitale Binomialwerkzeuge sind erlaubt; Ansätze und Deutungen müssen erkennbar sein.\n\n\n1. Begründe das Modell $X\\sim B(4;0{,}25)$. Erkläre, welche Modellannahme bei einem Sensor mit Gedächtnis fraglich wäre.\n\n2. Begründe die Formel für $P(X=2)$: Ermittle alle möglichen Positionen der zwei Treffer, bestimme die Wahrscheinlichkeit einer festen Folge und erkläre das Addieren der disjunkten Folgen. Berechne das Ergebnis und deute es.\n\n3. Erstelle eine vollständige Wahrscheinlichkeitstabelle und ein Histogramm von $X$ (Balkenbreite $1$). Erläutere die Bedeutung eines Balkens und bestimme $P(X\\geq1)$.\n\n4. Die folgenden tatsächlich aus den Binomialwahrscheinlichkeiten gezeichneten Histogramme zeigen A: $B(4;0{,}25)$, B: $B(8;0{,}25)$ und C: $B(4;0{,}5)$. Vergleiche A/B und A/C bezüglich Lage, **absoluter** Streuung und Symmetrie. Begründe deine Aussagen mit den Grafiken und bei Bedarf Kennwerten. Verwechsle absolute Streuung nicht mit Streuung relativ zum Erwartungswert.\n\n![Binomialhistogramme A, B und C mit gleicher Achsenskalierung](/assets/assessment-materials/mathematik/f74d944a-e09b-5e01-867b-09740fadf18d/bw-binomial.png)\n",
+        "taskContentEn": "# Sensor tests and changed test series\n\nThis is a SkillPilot-authored task. In each independent trial a sensor records a success with probability $p=0.25$. Conditions remain constant within a series. $X$ counts successes in four trials. Digital binomial tools are allowed; show the model and interpretations.\n\n\n1. Justify $X\\sim B(4;0.25)$. Explain which assumption becomes questionable for a sensor with memory.\n\n2. Justify the formula for $P(X=2)$: identify every possible placement of two successes, determine the probability of one fixed sequence, and explain adding disjoint sequences. Calculate and interpret the result.\n\n3. Make the complete probability table and a histogram of $X$ (bar width $1$). Interpret one bar and determine $P(X\\geq1)$.\n\n4. The following histograms were actually drawn from the binomial probabilities: A is $B(4;0.25)$, B is $B(8;0.25)$, and C is $B(4;0.5)$. Compare A/B and A/C in location, **absolute** spread, and symmetry. Support your answers using the graphs and, if useful, numerical measures. Distinguish absolute spread from spread relative to the mean.\n\n![Binomial histograms A, B and C on matching axes](/assets/assessment-materials/mathematik/f74d944a-e09b-5e01-867b-09740fadf18d/bw-binomial.png)\n",
+        "solutionContent": "# Musterlösung\n\n\n1. Vier feste Versuche, zwei Ausgänge Treffer/Niete, unabhängige Versuche und gleiches $p$ ergeben eine Bernoulli-Kette. Ein gespeicherter vorheriger Zustand könnte die bedingte Trefferchance ändern: Unabhängigkeit bzw. konstantes $p$ wären zu prüfen.\n\n2. Mit T/N sind die sechs Folgen TTNN, TNTN, TNNT, NTTN, NTNT, NNTT möglich. Jede hat wegen Unabhängigkeit dieselbe Wahrscheinlichkeit $0{,}25^2\\cdot0{,}75^2$. Die sechs Folgen sind disjunkt und erschöpfen genau zwei Treffer, also\n\n$$\nP(X=2)=\\binom42 0{,}25^2 0{,}75^2=6\\cdot\\frac9{256}=\\frac{54}{256}=0{,}2109375.\n$$\n\nEtwa $21{,}09\\%$ solcher Viererserien enthalten genau zwei Treffer. Alternativ dürfen die sechs Positionspaare systematisch gezählt werden.\n\n3. Die Tabelle liefert zugleich die Balkenhöhen für ganzzahlige $k=0,\\ldots,4$:\n\n| $k$ | $P(X=k)$ |\n|---|---|\n| 0 | $81/256$ |\n| 1 | $108/256$ |\n| 2 | $54/256$ |\n| 3 | $12/256$ |\n| 4 | $1/256$ |\n\nDie Summe ist $1$. Der Balken bei $2$ beschreibt die Wahrscheinlichkeit für genau zwei Treffer, keine Häufigkeit schon beobachteter Daten. $P(X\\geq1)=1-(3/4)^4=175/256\\approx0{,}6836$.\n\n4. A/B: Bei gleichem $p$ verdoppelt sich die mittlere Trefferzahl von $1$ auf $2$; das Histogramm verschiebt sich nach rechts. Die absolute Standardabweichung wächst von $\\sqrt{0{,}75}\\approx0{,}866$ auf $\\sqrt{1{,}5}\\approx1{,}225$. B ist weniger stark rechtsschief, aber bei $p=0{,}25$ nicht genau symmetrisch. A/C: Bei gleichem $n=4$ wächst der Mittelwert von $1$ auf $2$, die Standardabweichung auf $1$. C ist um $2$ symmetrisch; A ist rechtsschief. Nicht allgemein behaupten, dass jede Erhöhung von $p$ die Streuung erhöht: $p(1-p)$ ist bei $p=0{,}5$ maximal. Die drei konkreten Fälle begründen den Vergleich.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 3 | vier Modellmerkmale 2; Gedächtnisgrenze 1 |\n| 2 | 5 | sechs Anordnungen 2; feste Folge 1; disjunkte Summation 1; Ergebnis und Deutung 1 |\n| 3 | 5 | vollständige Tabelle 2; passend beschriftetes Histogramm 2; Gegenereignis 1 |\n| 4 | 7 | A/B Lage, absolute Streuung, Schiefe je 1; A/C Lage, Streuung, Symmetrie je 1; konkrete Begründung oder Grenze allgemeiner p-Aussage 1 |\n| **Gesamt** | **20** | **Bestanden ab 12** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+        "solutionContentEn": "# Reference solution\n\n\n1. A fixed number of four trials, two outcomes, independence and constant success probability give a Bernoulli chain. Memory could change the conditional success probability; independence and constant $p$ must be checked.\n\n2. The six sequences are SSFF, SFSF, SFFS, FSSF, FSFS and FFSS. Each has probability $0.25^2\\cdot0.75^2$. They are disjoint and exhaust exactly two successes. Thus\n\n$$\nP(X=2)=\\binom42 0.25^2 0.75^2=54/256=0.2109375.\n$$\n\nAbout $21.09\\%$ of such four-trial series have exactly two successes. Systematic counting of position pairs is equivalent.\n\n3. For $k=0,1,2,3,4$ the probabilities are respectively $81/256,108/256,54/256,12/256,1/256$. These sum to $1$ and are the histogram heights at the integers. The bar at $2$ represents the probability of exactly two successes, not an already observed frequency. $P(X\\geq1)=1-(3/4)^4=175/256\\approx0.6836$.\n\n4. A/B: the mean rises from $1$ to $2$ and location shifts right. Absolute SD rises from $\\sqrt{0.75}\\approx0.866$ to $\\sqrt{1.5}\\approx1.225$. B is less right-skewed but is not exactly symmetric. A/C: the mean rises from $1$ to $2$, and SD rises to $1$. C is symmetric about $2$ whereas A is right-skewed. Increasing $p$ does not always increase spread: $p(1-p)$ is maximal at $0.5$. The conclusions concern these concrete comparisons.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 3 | four model features 2; memory limitation 1 |\n| 2 | 5 | six arrangements 2; fixed sequence 1; disjoint sum 1; result and interpretation 1 |\n| 3 | 5 | complete table 2; labelled matching histogram 2; complement probability 1 |\n| 4 | 7 | A/B location, absolute spread, skew 1 each; A/C location, spread, symmetry 1 each; concrete justification or limit of general p claim 1 |\n| **Total** | **20** | **Pass at 12** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "new_bw_binomial_comparison_1",
+              "points": 3,
+              "description": "vier Modellmerkmale 2; Gedächtnisgrenze 1",
+              "descriptionEn": "four model features 2; memory limitation 1"
+            },
+            {
+              "id": "new_bw_binomial_comparison_2",
+              "points": 5,
+              "description": "sechs Anordnungen 2; feste Folge 1; disjunkte Summation 1; Ergebnis und Deutung 1",
+              "descriptionEn": "six arrangements 2; fixed sequence 1; disjoint sum 1; result and interpretation 1"
+            },
+            {
+              "id": "new_bw_binomial_comparison_3",
+              "points": 5,
+              "description": "vollständige Tabelle 2; passend beschriftetes Histogramm 2; Gegenereignis 1",
+              "descriptionEn": "complete table 2; labelled matching histogram 2; complement probability 1"
+            },
+            {
+              "id": "new_bw_binomial_comparison_4",
+              "points": 7,
+              "description": "A/B Lage, absolute Streuung, Schiefe je 1; A/C Lage, Streuung, Symmetrie je 1; konkrete Begründung oder Grenze allgemeiner p-Aussage 1",
+              "descriptionEn": "A/B location, absolute spread, skew 1 each; A/C location, spread, symmetry 1 each; concrete justification or limit of general p claim 1"
+            }
+          ]
+        },
+        "reviewNote": "Independently reviewed whole content; integrated scope and current fingerprints require separate implementation review. curricula/DE/Gymnasium/assessments/mathematik/q3-whole-scoped-completion-2026-11-04-v1/reviews/independent-final-content-decision.json"
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      }
+    },
+    {
+      "id": "fdba2315-d467-568c-a6b7-64c15d414935",
+      "title": "Prüfung: Einen fiktiven Bibliotheksbericht kritisch lesen",
+      "titleEn": "Assessment: Critically read a fictional library survey report",
+      "description": "Die lernende Person kann die vollständige Prüfung selbstständig bearbeiten und ihre Ergebnisse fachlich begründen.",
+      "descriptionEn": "The learner can complete the whole assessment independently and justify the results.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "contains": [],
+      "requires": [
+        "75efcc7c-3c96-47c6-a681-1e9337862a20"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2",
+          "K3",
+          "K4",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L5"
+        ],
+        "phase": "SekI"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "type": "atomic",
+      "nodeKind": "exam",
+      "sourceRef": "SkillPilot: eigene vollständige Abschlussaufgabe für die unveränderten vorbereitenden Lernzielverträge; keine amtliche Prüfungsaufgabe.",
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "75efcc7c-3c96-47c6-a681-1e9337862a20"
+        ],
+        "coveredStrands": [
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "# Verdoppelte Bibliotheksnutzung?\n\nAlle folgenden Angaben sind **fiktives Aufgabenmaterial**, kein echter Schulbericht. Eine Schule hat $800$ Lernende. Im aktuellen Jahr hängen Buchclub-Mitglieder einen freiwilligen Fragebogen ausschließlich in der Bibliothek aus: „Unsere großartige Bibliothek hilft dir jeden Tag – wie oft kommst du in einer normalen Schulwoche?“ $20$ Personen antworten. Die tatsächlich für die Aufgabe erfasste Zahl der Besuchstage in der angegebenen Fünf-Tage-Woche lautet:\n\n| Tage | Anzahl |\n|---|---|\n| 0 | 2 |\n| 1 | 2 |\n| 2 | 4 |\n| 3 | 6 |\n| 4 | 4 |\n| 5 | 2 |\n\nIm Vorjahr antworteten $10$ andere freiwillige Personen, davon $5$ mit mindestens drei Besuchstagen. Dieses Jahr sind es $12$ von $20$. Ein Bericht titelt „Bibliotheksnutzung aller 800 Lernenden verdoppelt!“. Er zeigt Balken bei $50\\%$ und $60\\%$, beginnt die Prozentachse aber bei $40\\%$, sodass die sichtbaren Balkenhöhen $10$ bzw. $20$ Prozentpunkte betragen. Zusätzlich steht: „90 % der ganzen Schule kommen täglich. Die neue Werbung hat den Erfolg bewiesen.“\n\n\n1. Prüfe die Tabelle und berechne den Anteil mit mindestens einem Tag, mit mindestens drei Tagen und mit allen fünf Tagen sowie Mittelwert und Median. Deute, was diese Zahlen tatsächlich beschreiben.\n\n2. Prüfe Zugang, Freiwilligkeit, Fallzahlen und die Übertragung auf $800$ Personen. Warum behebt eine Verdopplung der Antwortzahl das Auswahlproblem nicht?\n\n3. Prüfe beide Werbeaussagen anhand der Zahlen und der verkürzten Achse. Erkläre Prozentpunkte gegenüber prozentualer Änderung und schlage eine passende korrigierte Darstellung vor.\n\n4. Prüfe Frageformulierung und behauptete Werbewirkung. Formuliere eine neutrale Frage zur angegebenen Woche und eine kurze, vertretbare Ersatzmeldung. Eine neue Erhebung oder ein Pilotversuch ist nicht auszuführen.\n",
+        "taskContentEn": "# Has library use doubled?\n\nAll material is **fictional**, not an actual school report. A school has $800$ students. This year book-club members post a voluntary questionnaire only in the library: “Our wonderful library helps you every day—how often do you come in a normal school week?” Twenty people respond. Their recorded visit-day counts in the specified five-day week are:\n\n| Days | Count |\n|---|---|\n| 0 | 2 |\n| 1 | 2 |\n| 2 | 4 |\n| 3 | 6 |\n| 4 | 4 |\n| 5 | 2 |\n\nLast year ten different volunteers responded, five reporting at least three visit days. This year it is twelve of twenty. A report says “Library use among all 800 students has doubled!” Its bars are at $50\\%$ and $60\\%$ but the percentage axis starts at $40\\%$, giving visible heights of 10 and 20 percentage points. It also says “90% of the whole school visit daily. New advertising has proved successful.”\n\n\n1. Check the table and find proportions with at least one, at least three, and all five visit days, plus mean and median. Interpret what these figures actually describe.\n\n2. Evaluate access, voluntary response, sample sizes and generalisation to 800 students. Why does doubling the response count not repair selection bias?\n\n3. Check both numerical publicity claims and the truncated axis. Explain percentage points versus percentage change and propose a corrected display.\n\n4. Critique the wording and claimed advertising effect. Give a neutral question for the specified week and a defensible short replacement report. No new collection or pilot is required.\n",
+        "solutionContent": "# Musterlösung\n\nDie Anzahlen summieren sich zu $20$. Mindestens ein Tag: $18/20=90\\%$, mindestens drei: $12/20=60\\%$, alle fünf: $2/20=10\\%$. Summe der Besuchstage $54$, Mittel $54/20=2{,}7$; Positionen 10/11 liegen beide bei $3$, Median $3$. Die Werte beschreiben diese $20$ freiwilligen Antwortenden in dieser Woche, keine Gesamtquote der Schule.\n\nBibliotheksaushang und Buchclub erreichen eher Bibliotheksinteressierte; die Auswahl ist nicht zufällig und die Antwortbereitschaft kann mit Nutzung zusammenhängen. $20$ statt $10$ Antworten sind mehr Daten, beheben aber den selektiven Zugang nicht. Es sind verschiedene Personen/Jahre, keine kontrollierte Vorher-Nachher-Messung. Kleine Stichproben schwanken und erlauben ohne geeigneten Auswahlplan keine gesicherte Schulquote.\n\n$50\\%\\to60\\%$ sind $10$ Prozentpunkte und relativ $(60-50)/50=20\\%$ Zunahme in den **beobachteten Stichprobenquoten**, keine Verdopplung. Die sichtbaren Balken verdoppeln sich nur wegen des Achsenbeginns bei 40. Vergleichbare Balken mit Nullbeginn, gleichen Skalen, klaren Jahren, $n=10/20$ und dem Indikator „mindestens drei Tage unter Antwortenden“ stellen den begrenzten Vergleich richtig dar; ein klar erklärter Punktplot wäre ebenfalls möglich. $90\\%$ besuchten mindestens einmal, nicht täglich; täglich entspricht hier fünf von fünf Schultagen und sind $10\\%$ der Antwortenden.\n\nDie Frage lobt die Bibliothek und legt tägliche Hilfe nahe; „normale Woche“ ist unscharf. Neutral: „An wie vielen der fünf Schultage vom … bis … hast du die Schulbibliothek besucht?“ Die Daten erlauben keinen Nachweis einer Werbeursache; andere Personen, Zeiten oder Veränderungen können erklären. Ersatzmeldung: „Von 20 freiwillig Antwortenden besuchten 12 die Bibliothek an mindestens drei Tagen; im Vorjahr waren es 5 von 10 anderen Antwortenden. Die jeweiligen Stichprobenquoten sind 60 % und 50 %. Wegen des selektiven Zugangs erlauben sie weder eine allgemeine Schulquote noch einen Nachweis der Werbewirkung.“\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 6 | drei Anteile 3; Mittel 1; Median 1; richtige Bezugsgruppe 1 |\n| 2 | 4 | konkreter Zugangsfehler 1; Selbstselektion 1; kleine andere Gruppen 1; mehr Antworten beheben Auswahl nicht 1 |\n| 3 | 6 | 10 Prozentpunkte 1;20 % relativ 1; Trunkierung erklärt 1;90 % gegen täglich korrigiert 1; passende Grafik 1; Bezugsgrößen/Jahre angegeben 1 |\n| 4 | 4 | begründete Fragekritik 1; neutrale zeitlich klare Alternative 1; Kausalitätsgrenze 1; sachgerechte Ersatzmeldung 1 |\n| **Gesamt** | **20** | **Bestanden ab 12** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+        "solutionContentEn": "# Reference solution\n\nCounts total 20. At least one day is $18/20=90\\%$, at least three $12/20=60\\%$, all five $2/20=10\\%$. Total visits-days 54 gives mean 2.7; sorted positions 10/11 are both 3, giving median 3. These describe the 20 voluntary respondents in that week.\n\nLibrary-only access and the book club favour interested users; willingness to reply may also depend on use. Twenty rather than ten responses do not repair selective access. Different people and years do not form a controlled before/after comparison. Small samples fluctuate, and no sound population estimate follows without an appropriate design.\n\n$50\\%$ to $60\\%$ is 10 percentage points or a 20% relative increase in observed sample proportions, not doubling. Visible bar heights double because the axis starts at 40. Use a zero-baseline common-scale bar chart, clear years, group sizes 10/20 and “at least three visit days among respondents”; an explained dot plot can also work. Ninety percent means at least one day, whereas daily in this five-day week is all five days:10% of respondents.\n\nThe wording praises the library and suggests daily benefit; “normal week” is vague. Ask neutrally for visit-day count in a clearly dated five-day week. Advertising causation is unsupported because selection, people and time differ without controls. A corrected report gives 12/20 versus 5/10, labels them voluntary sample results and states the limits on school-wide and causal claims.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 6 | three proportions 3; mean 1; median 1; reference group 1 |\n| 2 | 4 | specific access bias 1; self-selection 1; small different groups 1; more responses do not repair selection 1 |\n| 3 | 6 | 10 percentage points 1;20% relative 1; truncation explained 1;90%/daily error corrected 1; suitable graph 1; reference groups/years labelled 1 |\n| 4 | 4 | reasoned wording critique 1; neutral dated alternative 1; causal limitation 1; sound replacement report 1 |\n| **Total** | **20** | **Pass at 12** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "new_he_g9_survey_critique_1",
+              "points": 6,
+              "description": "drei Anteile 3; Mittel 1; Median 1; richtige Bezugsgruppe 1",
+              "descriptionEn": "three proportions 3; mean 1; median 1; reference group 1"
+            },
+            {
+              "id": "new_he_g9_survey_critique_2",
+              "points": 4,
+              "description": "konkreter Zugangsfehler 1; Selbstselektion 1; kleine andere Gruppen 1; mehr Antworten beheben Auswahl nicht 1",
+              "descriptionEn": "specific access bias 1; self-selection 1; small different groups 1; more responses do not repair selection 1"
+            },
+            {
+              "id": "new_he_g9_survey_critique_3",
+              "points": 6,
+              "description": "10 Prozentpunkte 1;20 % relativ 1; Trunkierung erklärt 1;90 % gegen täglich korrigiert 1; passende Grafik 1; Bezugsgrößen/Jahre angegeben 1",
+              "descriptionEn": "10 percentage points 1;20% relative 1; truncation explained 1;90%/daily error corrected 1; suitable graph 1; reference groups/years labelled 1"
+            },
+            {
+              "id": "new_he_g9_survey_critique_4",
+              "points": 4,
+              "description": "begründete Fragekritik 1; neutrale zeitlich klare Alternative 1; Kausalitätsgrenze 1; sachgerechte Ersatzmeldung 1",
+              "descriptionEn": "reasoned wording critique 1; neutral dated alternative 1; causal limitation 1; sound replacement report 1"
+            }
+          ]
+        },
+        "reviewNote": "Independently reviewed whole content; integrated scope and current fingerprints require separate implementation review. curricula/DE/Gymnasium/assessments/mathematik/q3-whole-scoped-completion-2026-11-04-v1/reviews/independent-final-content-decision.json"
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      }
+    }
+  ]
+}

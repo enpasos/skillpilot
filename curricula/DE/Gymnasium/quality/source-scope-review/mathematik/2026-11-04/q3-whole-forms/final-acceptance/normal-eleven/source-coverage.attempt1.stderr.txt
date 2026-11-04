@@ -1,0 +1,16 @@
+/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/scripts/memoryCardReviewConfigDiscovery.ts:190
+    throw new Error(`Active memory-card review configs have no configured predecessor: ${[...activeByLandscapeId.values()].join(', ')}`)
+          ^
+
+
+Error: Active memory-card review configs have no configured predecessor: curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.config.json, curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-eight-P-three-text-AMV-binding-technical-20261019-v1/M/M455.three-text-successor.config.json, curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-open18-current397-integration-technical-20261011-v1/atomicity-memory/M397.active.config.json, curricula/DE/Gymnasium/quality/goal-evidence/2026-10-26/ci-economics-current-report-routing-technical-v1/active-memory.config.json
+    at discoverActiveMemoryCardReviewConfigs (/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/scripts/memoryCardReviewConfigDiscovery.ts:190:11)
+    at loadMemoryReviewOriginReferences (/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/scripts/applicabilityCompiler.ts:482:23)
+    at buildApplicabilityCompilation (/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/scripts/applicabilityCompiler.ts:798:55)
+    at buildAudit (/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/scripts/generateCurriculumSourceCoverageAudit.ts:311:23)
+    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/astra-q3-native-final-stage-review-20261104-v1/normal-default-host/app/scripts/generateCurriculumSourceCoverageAudit.ts:419:15)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2

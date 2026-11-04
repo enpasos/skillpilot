@@ -6,8 +6,8 @@ M7-, Deployment- oder vollständige CI-Freigabe.
 
 ## Aktueller Messstand: 4. November 2026
 
-Der Stand enthält **34 vollständige Prüfungsformen unter bestehenden
-curricularen Lernziel-IDs und 15 gezielt platzierte eigenständige
+Der Stand enthält **35 vollständige Prüfungsformen unter bestehenden
+curricularen Lernziel-IDs und 26 gezielt platzierte eigenständige
 Prüfungsziele**. Die 807 curricularen Mathematikziele bleiben erhalten.
 Sechs zuvor zu breit eingeführte Prüfungsrollen sind korrigiert: Die
 Kompetenz bleibt dort ein gewöhnliches Lernziel, wo bereits ein anderer
@@ -19,8 +19,8 @@ unversorgten Angeboten ausgewählt.
 | Tatsächlich geprüfte Angebote | 161, einschließlich 46 Kursvereinigungen |
 | Abschlussintegrität bestanden | 21 Angebote |
 | Angebote mit verbleibenden Datenlücken | 140 |
-| Ungedeckte Ziele | 240 unterschiedliche IDs / 2.399 Ziel-Angebots-Paare |
-| Gewöhnliche offene Endpunkte | 149 unterschiedliche IDs / 1.536 Endpunktpaare |
+| Ungedeckte Ziele | 189 unterschiedliche IDs / 2.012 Ziel-Angebots-Paare |
+| Gewöhnliche offene Endpunkte | 122 unterschiedliche IDs / 1.303 Endpunktpaare |
 
 Die jüngste gemeinsame Korrektur schließt weitere **791 Ziel-Angebots-Paare
 und 404 Endpunktpaare**, ohne neue Lücken zu erzeugen. Sie begrenzt zehn
@@ -69,6 +69,17 @@ Prüfungen werden in weiteren passenden Angeboten verwendet. Alle elf normalen
 Autorenprüfungen bestehen nach zwei gezielten Nachkorrekturen. 733 geprüfte
 Dateien sind übernommen; alle **11.118 tatsächlichen Backend-Eingaben bleiben
 bytegleich**. 21 vollständige Angebote bestehen nun, 140 bleiben unvollständig.
+
+Der folgende Q3-Nachlauf ergänzt zwölf vollständige Formen und verwendet sechs
+vorhandene ganze Formen an genau geprüften Stellen. Er schließt weitere
+**387 Ziel-Angebots-Paare und 233 Endpunktpaare**, ohne neue Lücken zu erzeugen.
+Die unabhängige Inhalts-, Quellen- und tatsächliche Backendprüfung sowie alle
+elf normalen Autorenprüfungen bestehen. 397 geprüfte Dateien sind übernommen.
+Der ursprüngliche Backendlauf bleibt unverändert; der spätere reine
+Reviewverweis und zwei separat geprüfte Testquellen sind ausdrücklich als
+Abweichungen ausgewiesen. Gesamtgraph, Mathematik- und GitHub-Freigabe bleiben
+eigene offene Grenzen.
+[Nachweise des Q3-Nachlaufs](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/q3-whole-forms/README.md).
 
 41 veraltete feste API-Zielzahlen sind anhand der tatsächlichen Zielmengen
 und HTTP-Antworten korrigiert. Alle Mitgliedschaftsprüfungen bleiben erhalten;

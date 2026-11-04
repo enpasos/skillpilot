@@ -1,0 +1,59 @@
+{
+  "key": "new_urn_model_comparison",
+  "goalId": "57833097-393c-5a08-8c03-e161b43cb9cc",
+  "title": "Prüfung: Stichproben mit und ohne Zurücklegen vergleichen",
+  "titleEn": "Assessment: Compare sampling with and without replacement",
+  "directRequires": [
+    "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+    "dabff49b-d40a-4c81-a584-21408b2d4219"
+  ],
+  "examDataContent": {
+    "reviewStatus": "draft",
+    "coveredGoalIds": [
+      "bd63c0fc-50ef-55aa-ae6c-25cf73d02636"
+    ],
+    "coveredStrands": [
+      "L5"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "# Zwei Prüfteile aus einem Behälter\n\nEin fiktiver Behälter enthält $10$ gleichartig greifbare Teile, davon $4$ rot markierte. Zwei Teile werden zufällig nacheinander gezogen. Vergleiche Modell M (nach jedem Zug zurücklegen und durchmischen) und Modell O (ohne Zurücklegen). Rote Teile gelten als Treffer.\n\n\n1. Beschreibe beide Modelle, zeichne die relevanten Zweigwahrscheinlichkeiten eines Baums und berechne jeweils die Wahrscheinlichkeit für **genau ein** rotes Teil. Erkläre, warum zwei Reihenfolgen zu berücksichtigen sind. Kombinationen dürfen statt eines vollständigen Baums verwendet werden.\n\n2. Seien A „erster Zug rot“ und B „zweiter Zug rot“. Bestimme in beiden Modellen $P(B\\mid A)$ und $P(B)$ und prüfe damit die Unabhängigkeit. Begründe insbesondere den Wert von $P(B)$ ohne Zurücklegen.\n\n3. Vergrößere den Behälter auf $1000$ Teile mit $400$ roten; zwei Züge bleiben fest. Berechne in beiden Modellen erneut $P(\\text{genau ein rotes Teil})$, vergleiche absolute Abweichungen mit dem kleinen Behälter und erkläre die Verbesserung der Näherung.\n\n4. Beurteile die Behauptung „Bei großem Behälter darf immer mit Zurücklegen gerechnet werden“. Nenne mindestens zwei sachliche Bedingungen oder Grenzen.\n",
+    "taskContentEn": "# Two inspected parts from a container\n\nA fictional container holds $10$ equally accessible parts, $4$ marked red. Draw two at random in sequence. Compare model M (replace and mix after each draw) with model O (no replacement). Red counts as success.\n\n\n1. Describe both models, show the relevant tree branches and calculate the probability of **exactly one** red part in each. Explain why two orders count. Combinations may replace a complete tree.\n\n2. Let A mean “first draw red” and B “second draw red”. Find $P(B\\mid A)$ and $P(B)$ in each model and check independence. In particular, justify $P(B)$ without replacement.\n\n3. Increase the population to $1000$ with $400$ red parts, still drawing only two. Recalculate both exactly-one-red probabilities. Compare absolute errors with the small container and explain why the approximation improves.\n\n4. Assess “For a large container one may always calculate with replacement”. Give at least two relevant conditions or limitations.\n",
+    "solutionContent": "# Musterlösung\n\nM: Erste Stufe rot/nicht rot $4/10,6/10$; dieselben Chancen nach jedem ersten Ergebnis. O: Nach rot sind die Chancen $3/9,6/9$, nach nicht rot $4/9,5/9$. Genau ein rotes Teil umfasst disjunkt rot–nicht rot und nicht rot–rot:\n\n$$\nP_M=2\\frac4{10}\\frac6{10}=\\frac{12}{25}=0{,}48,\\qquad P_O=\\frac4{10}\\frac69+\\frac6{10}\\frac49=\\frac8{15}\\approx0{,}533333.\n$$\n\nAuch $\\binom41\\binom61/\\binom{10}2$ ist richtig.\n\nM: $P(B\\mid A)=P(B)=0{,}4$, also unabhängig. O: $P(B\\mid A)=3/9=1/3$, aber\n\n$$\nP(B)=\\frac4{10}\\frac39+\\frac6{10}\\frac49=\\frac4{10}.\n$$\n\nJedes der zehn Teile hat dieselbe Chance, an zweiter Position zu liegen; dies begründet den Randwert ebenfalls. Die Abweichung von $1/3$ und $0{,}4$ beweist Abhängigkeit in O.\n\nGroßer Behälter: $P_M=0{,}48$ und\n\n$$\nP_O=2\\frac{400}{1000}\\frac{600}{999}=\\frac{160}{333}\\approx0{,}48048048.\n$$\n\nDie absolute Differenz sinkt von $4/75\\approx0{,}0533333$ auf $4/8325\\approx0{,}00048048$. Ein entnommenes Teil ändert hier die Trefferchance viel weniger. Der Stichprobenumfang ist fest und klein gegenüber der Population, der Trefferanteil gleich.\n\nGröße allein reicht nicht: Eine große Stichprobenfraktion kann deutliche Abhängigkeit erzeugen; gleichmäßige zufällige Auswahl und unveränderte Zusammensetzung müssen passen. Die zulässige Abweichung hängt auch von Ereignis und gewünschter Genauigkeit ab. Physisch werden die Teile weiterhin ohne Zurücklegen gezogen; eine Näherung macht die Züge nicht exakt unabhängig.\n\n| Schritt | Punkte | Bewertung |\n|---|---:|---|\n| 1 | 6 | beide Modellzweige 2; beide Ereignisrechnungen je 1; zwei disjunkte Reihenfolgen 1; sachliche Deutung 1 |\n| 2 | 5 | bedingte Werte in M/O 2; beide Randwerte mit Begründung 2; korrekte Unabhängigkeitsentscheidung 1 |\n| 3 | 6 | große M/O-Werte je 1; kleine und große Abweichung je 1; Chanceänderung erklärt 1; feste kleine Stichprobe genannt 1 |\n| 4 | 3 | zwei konkrete Bedingungen oder Grenzen je 1; Näherung von exakter Unabhängigkeit getrennt 1 |\n| **Gesamt** | **20** | **Bestanden ab 12** |\n\nEs gibt eine Gesamtpunktzahl und eine binäre Bestehensentscheidung. Addiere die Teilpunkte; es gibt keine Mindestpunktzahl je Teil oder Voraussetzung. Gleichwertige Methoden und sinnvolle, knappe Begründungen zählen. Bei einem lokalen Rechenfehler werden korrekte nachfolgende Methoden und Deutungen mit den eigenen Zahlen bewertet; denselben Fehler nicht mehrfach abziehen. Ein Gesamtbestehen bescheinigt keine Einzelbeherrschung aller vorbereitenden Lernziele.\n",
+    "solutionContentEn": "# Reference solution\n\nM has red/non-red probabilities $4/10,6/10$ at each stage. O has $3/9,6/9$ after a red first part and $4/9,5/9$ after a non-red one. The disjoint orders red–non-red and non-red–red give\n\n$$\nP_M=2(4/10)(6/10)=0.48,\\qquad P_O=(4/10)(6/9)+(6/10)(4/9)=8/15\\approx0.533333.\n$$\n\nThe combination calculation $\\binom41\\binom61/\\binom{10}2$ is equivalent.\n\nM has $P(B\\mid A)=P(B)=0.4$, so A and B are independent. In O, $P(B\\mid A)=1/3$ but $P(B)=(4/10)(3/9)+(6/10)(4/9)=0.4$. Alternatively each part is equally likely to occupy the second position. The unequal conditional and marginal probabilities establish dependence.\n\nFor $1000$ parts, $P_M=0.48$ and $P_O=2(400/1000)(600/999)=160/333\\approx0.48048048$. Absolute error falls from $4/75\\approx0.0533333$ to $4/8325\\approx0.00048048$. Removing one part now changes the probability much less; the sample size stays small and fixed while the red proportion stays constant.\n\nPopulation size alone is insufficient. A large sampling fraction can still cause substantial dependence. Uniform random selection and a stable composition must fit the context, and acceptable error depends on the event and required accuracy. Approximation does not make the actual draws independent.\n\n| Step | Points | Credit |\n|---|---:|---|\n| 1 | 6 | both model branches 2; two event calculations 1 each; two disjoint orders 1; contextual interpretation 1 |\n| 2 | 5 | conditional values M/O 2; marginals and justification 2; independence decision 1 |\n| 3 | 6 | large M/O values 1 each; small and large error 1 each; explains changed chance 1; fixed small sample 1 |\n| 4 | 3 | two concrete conditions/limits 1 each; approximation distinguished from exact independence 1 |\n| **Total** | **20** | **Pass at 12** |\n\nThere is one total score and one binary pass decision. Add partial-credit marks; there is no minimum score for each part or prerequisite. Accept equivalent methods and concise sound explanations. After a local arithmetic error, credit subsequent correct methods and interpretations using the learner's own values; do not deduct repeatedly for the same error. An overall pass does not certify separate mastery of every preparation goal.\n",
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 12,
+      "steps": [
+        {
+          "id": "new_urn_model_comparison_1",
+          "points": 6,
+          "description": "beide Modellzweige 2; beide Ereignisrechnungen je 1; zwei disjunkte Reihenfolgen 1; sachliche Deutung 1",
+          "descriptionEn": "both model branches 2; two event calculations 1 each; two disjoint orders 1; contextual interpretation 1"
+        },
+        {
+          "id": "new_urn_model_comparison_2",
+          "points": 5,
+          "description": "bedingte Werte in M/O 2; beide Randwerte mit Begründung 2; korrekte Unabhängigkeitsentscheidung 1",
+          "descriptionEn": "conditional values M/O 2; marginals and justification 2; independence decision 1"
+        },
+        {
+          "id": "new_urn_model_comparison_3",
+          "points": 6,
+          "description": "große M/O-Werte je 1; kleine und große Abweichung je 1; Chanceänderung erklärt 1; feste kleine Stichprobe genannt 1",
+          "descriptionEn": "large M/O values 1 each; small and large error 1 each; explains changed chance 1; fixed small sample 1"
+        },
+        {
+          "id": "new_urn_model_comparison_4",
+          "points": 3,
+          "description": "zwei konkrete Bedingungen oder Grenzen je 1; Näherung von exakter Unabhängigkeit getrennt 1",
+          "descriptionEn": "two concrete conditions/limits 1 each; approximation distinguished from exact independence 1"
+        }
+      ]
+    },
+    "reviewNote": "Own bilingual whole form; author candidate pending genuine independent content, source, preparation and role/identity reviews. One ordinary total result; no learner mastery migration."
+  }
+}
