@@ -40,8 +40,10 @@ Mathematik- und Graphprüfung bleibt wegen der Datenlücken rot. Der Frontendjob
 erreicht nach der Speicherbereinigung die Tests und findet einen veralteten
 Hinweistext; dessen Korrektur besteht inzwischen im vollständigen lokalen
 Trainer-Plan-UI-Test. Ein gemeinsamer Datenbankname in unterschiedlichen
-Gemini-Testkontexten verursacht zudem Tabellenverluste und wird separat
-korrigiert. Für den neuen Gesamtstand wird noch kein vollständiger CI-PASS
+Gemini-Testkontexten verursacht zudem Tabellenverluste. Mit getrennten
+Testdatenbanken bestehen lokal alle 170 Tests des betroffenen CI-Verbunds;
+vorher wurden dieselben 17 Fehler reproduziert. Für den neuen Gesamtstand wird
+noch kein vollständiger CI-PASS
 behauptet.
 
 [Analysisformen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/analysis-eight/README.md)
