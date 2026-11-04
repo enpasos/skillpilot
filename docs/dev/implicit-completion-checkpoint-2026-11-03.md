@@ -131,6 +131,13 @@ abgeglichen und als PDF vom 4. November neu erzeugt; 266.376 Modellfälle
 und drei saubere LaTeX-Durchgänge bestehen.
 
 
+Die anschließend vollständig ausgeführte Compositionsuite besteht ebenfalls.
+Ihre alten BBB-/Prüfungs-Allowlists werden um exakt die später unabhängig
+freigegebenen Einzelkursstellen und deklarierten Kursvereinigungen ergänzt.
+Vier direkte G5-Vorbereitungsmengen und drei verworfene alte Kanten bleiben
+explizit geprüft. Alle 147 Mathematikansichten, 39 deklarierten Vereinigungen
+und 441 Ziel-/Ansichtsrollen sind ohne Änderung der Graphdaten bestätigt.
+
 Der gemeinsame vorherige Backendvergleich und das unabhängige Astra-Review prüfen
 alle 161 Angebote. Alle 502 übernommenen Dateien und die 3.187 Eingaben des
 Backendlaufs stimmen bytegenau. Die elf normalen Autorenprüfungen bestehen;
@@ -193,6 +200,7 @@ vollständigen Backendlauf.
 · [Geometrie und Projektionsweg](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/geometry-four/README.md)
 · [Räumliche Geometrie und Differenzialgleichungen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/geometry-six-dgl1/README.md)
 · [Baummitgliedschaft und Graph-Referenz](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/cockpit-authored-membership/README.md)
+· [Composition-QA-Nachlauf](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/cockpit-composition-qa-followup/README.md)
 · [Deklarierte CI-Eingaben](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/sparse-declared-inputs/README.md)
 · [Markov-Platzierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/sh-markov-twelve/README.md)
 · [Graphvalidierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/directed-prior-stage-validation/README.md)

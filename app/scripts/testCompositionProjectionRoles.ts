@@ -545,7 +545,7 @@ const hesseLkDirectPrerequisiteClosure = [
   ['2e40a879-b62e-5dbf-aa45-020c0625a902', '74dc4b0d-a167-564c-bdc1-5cf510aee280'],
   ['4a53a441-3c2a-53aa-8a1a-e08a6898e826', '9278bc5e-a77f-5f72-8636-0d0d3e3d32ae'],
   ['8cb5c712-9c58-5910-8c63-8c3736369b80', 'fac75b4a-4ec2-5d38-bbce-9b002c8a4904'],
-  ['bd3576b8-f4e5-542a-a8a2-74524d9cee21', 'fac75b4a-4ec2-5d38-bbce-9b002c8a4904'],
+  ['bd3576b8-f4e5-542a-a8a2-74524d9cee21', '3def350a-c01c-51c3-be74-b3de20ee53e1'],
   ['3256476b-ec65-4038-9f5a-a8808fbcf207', '265af6af-8eac-5632-b730-800aafcde26a'],
   ['509ae03b-96b1-4bb1-b015-b83d14569dae', 'effe43eb-cabe-56cb-a228-35887d7915c1'],
 ] as const
@@ -702,6 +702,47 @@ hesseLkDirectPrerequisiteClosure.forEach(([targetGoalId, prerequisiteGoalId]) =>
     `The direct prerequisite ${prerequisiteGoalId} of Hessen LK target ${targetGoalId} must remain in the projected structural lookup.`,
   )
 })
+
+// G5's independent geometry-six/content-review-handoff.json, exactGlobalRProposal:
+// modelling needs line-plane intersection, not the general distance package;
+// intersecting supplied planes needs no modelling pass; the parameter-angle
+// form needs line-plane angles, not two-line positions. The unchanged 8d3 form
+// genuinely constructs a full intersection line, so it now requires 857.
+const reviewedG5Preparation = [
+  ['bd3576b8-f4e5-542a-a8a2-74524d9cee21', [
+    '3def350a-c01c-51c3-be74-b3de20ee53e1',
+  ]],
+  ['857c1c46-5d94-5dfb-9697-9a9fd04103c3', [
+    'effe43eb-cabe-56cb-a228-35887d7915c1',
+    '9cc650e0-100d-5ae1-a83b-2b854ab7c5c8',
+    'd76766a5-ce07-5c7a-987b-157f2998b05e',
+  ]],
+  ['5f90df42-8a71-534d-b995-b8f7dcaf1661', [
+    '24174bba-a654-5f81-8de3-ca5bd09d9b6f',
+    'bda6a659-9640-53a5-8be0-24705ab623ef',
+    '57b11e9a-4acf-5ebe-b2b6-c9f99d2b5bb5',
+  ]],
+  ['8d314e15-69e9-5af1-a10a-be820b2f821d', [
+    '0f4f9957-8afe-4aab-9dd8-c26c9aee2afd',
+    '436532fe-cee6-5a13-a4be-05522435937b',
+    '6481fc23-d923-5ffc-ba49-f499328f43b8',
+    '857c1c46-5d94-5dfb-9697-9a9fd04103c3',
+  ]],
+] as const
+for (const [scope, goals] of [['canonical', canonicalGoalById], ['learner-facing Hessen LK', learnerFacingGoalById]] as const) {
+  for (const [goalId, expected] of reviewedG5Preparation) {
+    assert.deepEqual([...(goals.get(goalId)?.requires ?? [])].sort(), [...expected].sort(),
+      `${scope}: ${goalId} must retain the independently reviewed complete G5 preparation set.`)
+  }
+  for (const [goalId, removed] of [
+    ['bd3576b8-f4e5-542a-a8a2-74524d9cee21', 'fac75b4a-4ec2-5d38-bbce-9b002c8a4904'],
+    ['857c1c46-5d94-5dfb-9697-9a9fd04103c3', 'bd3576b8-f4e5-542a-a8a2-74524d9cee21'],
+    ['5f90df42-8a71-534d-b995-b8f7dcaf1661', '69beb31d-5d02-4505-9500-3ec81af86f1e'],
+  ]) {
+    assert.equal(goals.get(goalId)?.requires.includes(removed), false,
+      `${scope}: the independently rejected preparation edge ${goalId} -> ${removed} must not return.`)
+  }
+}
 assert.deepEqual(
   canonicalGoalById.get('e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e')?.contains,
   ['6c26a00a-ad1e-59cc-93e2-a38e1683665c', 'a1c79897-6ded-57f8-bee1-2d365a5083c9'],

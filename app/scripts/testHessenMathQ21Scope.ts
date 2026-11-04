@@ -11,6 +11,7 @@ import {
   collectCompositionProjectionRoleGoalIds,
   compileCompositionView,
   normalizeCompositionView,
+  type CompositionView,
 } from '../src/utils/authoring/compositionViewAuthoring'
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
@@ -164,13 +165,114 @@ const otherTaskAllowedViews = new Map(tasks.slice(1).map(taskId => [taskId, new 
   ...[...endpointOperations.operations, ...endpointOperations.sourceOperations].filter(op => op.goalId === taskId).map(op => op.viewId),
 ])]))
 for (const allowed of otherTaskAllowedViews.values()) assert.equal(allowed.size, 8, 'only four original HE-GK and four independently restored SH-GK views select each task')
+
+const views = readdirSync(resolve(repoRoot, viewDir)).filter(name => name.endsWith('.view.json')).map(name => ({
+  name, view: normalizeCompositionView(readJson(`${viewDir}/${name}`)),
+}))
+const viewById = new Map(views.map(({ view }) => [view.viewId, view]))
+assert.equal(viewById.size, views.length, 'Registered view identities must be unique')
+const rolesByViewId = new Map(views.map(({ view }) => [view.viewId,
+  collectCompositionProjectionRoleGoalIds(view.rootNodes, goalById)]))
+const stagePolicy = readJson('app/scripts/config/math-country-seki-stage-policy.json') as {
+  stageDecisionBindings: Array<{ path: string; sha256: string }>
+}
+const readBoundDecision = (path: string) => {
+  const bindings = stagePolicy.stageDecisionBindings.filter(binding => binding.path === path)
+  assert.equal(bindings.length, 1, `${path}: expected one current policy binding`)
+  const bytes = readFileSync(resolve(repoRoot, path))
+  assert.equal(createHash('sha256').update(bytes).digest('hex'), bindings[0].sha256, `${path}: reviewed input drift`)
+  return JSON.parse(bytes.toString('utf8'))
+}
+
+// These later, independently reviewed deltas extend the original eight-view
+// endpoint baseline. Match their finite offered scopes, never all GK views.
+const graphTransformReview = readBoundDecision('curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/46bb-remaining-gk-source-matrix-scope.review.json')
+assert.equal(graphTransformReview.status, 'PASS_EXACT_56_ADDITIONAL_GK_UNION_OFFERS_AND_HOLD_HB_HH_NOT_MATERIALIZATION')
+const niReviewPath = 'curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-01/ni-46bb-four-offers-union-addendum.review.json'
+const niReviewBytes = readFileSync(resolve(repoRoot, niReviewPath))
+assert.equal(createHash('sha256').update(niReviewBytes).digest('hex'),
+  graphTransformReview.inputs['tmp/approach-review-20261101/astra-remaining-material-scope/ni-46bb-four-offers-union-addendum-PASS.json'], 'Durable NI decision must equal the matrix review\'s exact independent input')
+const niReview = JSON.parse(niReviewBytes.toString('utf8'))
+assert.equal(niReview.status, 'PASS_EXACT_NI_FOUR_OFFERS_GK_AND_TRUE_UNION_SOURCE_ADDENDUM_NOT_MATERIALIZATION')
+const matchesReviewedOffer = (view: CompositionView, offerId: string) => {
+  const [jurisdiction, stage, durationModel, courseProfile] = offerId.split('/')
+  assert(jurisdiction && stage && durationModel && courseProfile, `Malformed reviewed offer ${offerId}`)
+  return view.scope.jurisdiction === jurisdiction && view.scope.stage === stage
+    && view.scope.courseProfile === courseProfile
+    && (!view.scope.durationModel || view.scope.durationModel === durationModel)
+}
+for (const { view } of views) {
+  if (view.scope.courseProfile === 'GK'
+    && [...graphTransformReview.approvedNewOfferIds, ...niReview.exactOfferIds]
+      .some((offerId: string) => matchesReviewedOffer(view, offerId))) otherTaskAllowedViews.get(tasks[1])!.add(view.viewId)
+}
+const heFiveReview = readBoundDecision('curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/he5-cuboid48-probability-two-edge/he-five-source-sequence-placement.review.json')
+assert.equal(heFiveReview.verdict, 'PASS')
+assert.equal(heFiveReview.authorIndependent, true)
+for (const operation of heFiveReview.approvedNormalOperations) {
+  if (operation.action === 'include-target' && operation.goalIds.includes(tasks[2])) {
+    assert(viewById.has(operation.viewId), `Reviewed HE endpoint view missing: ${operation.viewId}`)
+    otherTaskAllowedViews.get(tasks[2])!.add(operation.viewId)
+  }
+}
+const allowedSourceViews = new Map([[tasks[0], bbbAllowedViews], ...otherTaskAllowedViews])
+
+// The production finite plan is the authority for each materialized course
+// union's two source identities. A filename suffix is not a union declaration.
+const finitePlan = readBoundDecision('curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/finite-scope-operations.json') as {
+  counts: { combinedDocuments: number }
+  combinedMaterializations: Array<{
+    outputViewId: string; outputFileName: string; scope: CompositionView['scope']
+    sourceViewIds: string[]; baselineSourcePaths: string[]; excludedNewAssessmentIds: string[]
+  }>
+}
+const combinedById = new Map(finitePlan.combinedMaterializations.map(pair => [pair.outputViewId, pair]))
+assert.equal(combinedById.size, finitePlan.counts.combinedDocuments)
+const withoutCourse = ({ courseProfile: _courseProfile, ...scope }: CompositionView['scope']) => scope
+for (const pair of combinedById.values()) {
+  const output = viewById.get(pair.outputViewId)
+  assert(output, `Declared course union missing: ${pair.outputViewId}`)
+  assert.deepEqual(output.scope, pair.scope, `${pair.outputViewId}: exact combined scope changed`)
+  assert.equal(pair.scope.courseProfile, 'GK+LK')
+  assert.equal(views.find(({ name }) => name === pair.outputFileName)?.view.viewId, pair.outputViewId)
+  assert.equal(pair.sourceViewIds.length, 2)
+  assert.equal(pair.baselineSourcePaths.length, 2)
+  const sources = pair.sourceViewIds.map((id, index) => {
+    const source = viewById.get(id)
+    assert(source, `Declared union source missing: ${id}`)
+    assert.equal(readJson(pair.baselineSourcePaths[index]).viewId, id, `${id}: exact source path changed`)
+    assert.deepEqual(withoutCourse(source.scope), withoutCourse(pair.scope), `${id}: union source scope mismatch`)
+    assert(!combinedById.has(id), `${id}: union source must be a single-course view`)
+    return source
+  })
+  assert.deepEqual(sources.map(source => source.scope.courseProfile).sort(), ['GK', 'LK'])
+  assert(tasks.every(id => !pair.excludedNewAssessmentIds.includes(id)), `${pair.outputViewId}: existing endpoint cannot be omitted as a new assessment`)
+}
+const sourceContributesTask = (sourceViewId: string, taskId: string) => {
+  const source = viewById.get(sourceViewId)!
+  if (!allowedSourceViews.get(taskId)!.has(sourceViewId)
+    || !rolesByViewId.get(sourceViewId)!.targetGoalIds.has(taskId)) return false
+  // Same course availability as CourseProfileAvailability.matches; Bavaria
+  // takes its explicit authored course selection instead of canonical tags.
+  if (source.scope.jurisdiction === 'DE-BY') return true
+  const goal = rawGoalById.get(taskId)!
+  const tags = goal.tags ?? []
+  const profile = source.scope.courseProfile!
+  const releaseCourse = goal.release?.courseLevel?.trim().toUpperCase() ?? ''
+  return tags.length === 0 || tags.includes(profile) || releaseCourse === profile
+    || (!tags.includes('GK') && !tags.includes('LK') && !releaseCourse)
+}
 let checkedHe = 0
 let checkedOther = 0
-for (const name of readdirSync(resolve(repoRoot, viewDir)).filter((name) => name.endsWith('.view.json'))) {
-  const view = normalizeCompositionView(readJson(`${viewDir}/${name}`))
-  const { targetGoalIds, prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(view.rootNodes, goalById)
-  assert.equal(targetGoalIds.has(tasks[0]), bbbAllowedViews.has(view.viewId), `${name}: BBB must follow only its exact independent allowlist`)
-  for (const id of tasks.slice(1)) assert.equal(targetGoalIds.has(id), otherTaskAllowedViews.get(id)!.has(view.viewId), `${name}: local endpoint must follow its exact reviewed per-ID allowlist`)
+for (const { name, view } of views) {
+  const { targetGoalIds, prerequisiteOnlyGoalIds } = rolesByViewId.get(view.viewId)!
+  const combined = combinedById.get(view.viewId)
+  for (const id of tasks) {
+    const expected = combined
+      ? combined.sourceViewIds.some(sourceId => sourceContributesTask(sourceId, id))
+      : allowedSourceViews.get(id)!.has(view.viewId)
+    assert.equal(targetGoalIds.has(id), expected, `${name}: ${id} must follow its exact reviewed source allowlist or declared course union`)
+  }
   if (!heGkFiles.has(name)) {
     checkedOther += 1
     continue
@@ -194,4 +296,4 @@ for (const name of readdirSync(resolve(repoRoot, viewDir)).filter((name) => name
   }
 }
 assert.equal(checkedHe, 4)
-console.log(`HE Q2.1 regression passed: ${checkedHe} GK views, 10 shared goals, 3 local assessments; ${checkedOther} other views follow the independently selected local endpoints and exact reviewed BBB allowlist; native requires-derived/child-union applicability, current caches, memory visibility and removed prerequisite coupling checked.`)
+console.log(`HE Q2.1 regression passed: ${checkedHe} GK views, 10 shared goals, 3 local assessments; ${checkedOther} other views follow exact independently reviewed endpoint scopes and ${combinedById.size} declared course unions; native requires-derived/child-union applicability, current caches, memory visibility and removed prerequisite coupling checked.`)
