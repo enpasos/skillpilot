@@ -28,8 +28,8 @@ async function ready(page: Page) {
   await page.getByTestId('learner-active-goal-banner').waitFor()
 }
 
-async function open(width: number) {
-  const context = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion: 'reduce', serviceWorkers: 'block' })
+async function open(width: number, reducedMotion: 'reduce' | 'no-preference' = 'reduce') {
+  const context = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion, serviceWorkers: 'block' })
   await context.route('**/*', route => {
     const request = route.request()
     const url = new URL(request.url())
@@ -238,6 +238,50 @@ try {
     assert.equal(await mobile.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `tree at ${width}`)
     await mobile.screenshot({ path: `${artifacts}/15-full-classic-${width}.png` })
     await mobile.context().close()
+  }
+
+  stage = 'natural double-click opens an unselected unit without selection echo or pointer movement'
+  for (const motion of ['no-preference', 'reduce'] as const) {
+    const drill = await open(1440, motion)
+    const drillComparison = drill.getByTestId('full-cockpit-comparison')
+    await navigation(drill, 'map', data.mathScopeId)
+    await drill.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
+    await drill.locator(`.lum-canvas[data-scope-id="${data.mathLandscapeId}"][aria-busy="false"]`).waitFor()
+    const unit = drill.locator(`[data-entry-id="${data.contextId}"] .lum-node-main`)
+    assert.equal(await drillComparison.getAttribute('data-selected-goal-id'), data.ordinaryId)
+    await unit.evaluate(element => {
+      element.setAttribute('data-native-double-clicks', '0')
+      element.addEventListener('dblclick', () => element.setAttribute('data-native-double-clicks', '1'))
+    })
+    const originalButton = await unit.elementHandle()
+    const box = await unit.boundingBox()
+    assert.ok(originalButton && box)
+    // A fixed pointer with a human click interval catches DOM replacement and
+    // automatic panning between clicks; a zero-delay locator dblclick does not.
+    await drill.mouse.dblclick(box.x + box.width / 2, box.y + box.height / 2, { delay: 120 })
+    await drill.locator(`.lum-canvas[data-scope-id="${data.contextId}"][aria-busy="false"]`).waitFor()
+    assert.equal(await originalButton.getAttribute('data-native-double-clicks'), '1')
+    assert.equal(await drillComparison.getAttribute('data-selected-goal-id'), data.contextId)
+    assert.equal(await drillComparison.getAttribute('data-active-goal-id'), data.ordinaryId)
+    assert.equal(await drill.locator('.lum-node-open').count(), 0, 'The context contains leaf goals, not further scopes')
+    await drill.screenshot({ path: `${artifacts}/16-full-open-context-${motion}.png` })
+
+    const leaf = drill.locator('[data-entry-kind="goal"] .lum-node-main').first()
+    const leafId = await leaf.evaluate(element => element.closest('[data-entry-id]')?.getAttribute('data-entry-id'))
+    assert.ok(leafId)
+    await leaf.click()
+    assert.equal(await drillComparison.getAttribute('data-selected-goal-id'), leafId)
+    assert.equal(await drillComparison.getAttribute('data-active-goal-id'), data.ordinaryId)
+    await leaf.press('Enter')
+    assert.equal(await drill.getByTestId('learning-map-board').getAttribute('data-scope-id'), data.contextId)
+    await leaf.dblclick({ modifiers: ['Shift'], delay: 120 })
+    await drill.locator(`.lum-canvas[data-scope-id="${data.mathLandscapeId}"][aria-busy="false"]`).waitFor()
+    await drill.locator(`[data-entry-id="${data.contextId}"] .lum-node-open`).click()
+    await drill.locator(`.lum-canvas[data-scope-id="${data.contextId}"][aria-busy="false"]`).waitFor()
+    await drill.getByTestId('learner-active-goal-banner').getByRole('button', { name: 'Gehe zum aktiven Ziel', exact: true }).click()
+    await drill.locator(`.lum-canvas[data-scope-id="${data.mathScopeId}"][aria-busy="false"]`).waitFor()
+    assert.equal(await drillComparison.getAttribute('data-selected-goal-id'), data.ordinaryId)
+    await drill.context().close()
   }
   assert.deepEqual(rejected, [], 'No API, external network, or write may leave the local adapter')
   assert.deepEqual(errors, [], 'No browser errors or unknown API fallback')

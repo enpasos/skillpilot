@@ -393,7 +393,7 @@ try {
     assert.equal(h.requests.filter((r) => r.endpoint === 'profile').length, 1,
       'one profile request must serve personal configuration and learner metadata')
     assert.equal(h.requests.filter((r) => r.endpoint === 'state').length, 1)
-    const focus = h.page.locator('#learner-goal-sidebar button[aria-pressed="true"]')
+    const focus = h.page.locator('#learner-goal-sidebar [data-goal-id] button[aria-pressed="true"]')
     await focus.waitFor()
     assert.equal(await focus.count(), 1, 'full /state planned goals preserve exactly the saved focus')
     assert.match(await focus.locator('xpath=ancestor::*[@data-goal-id][1]').innerText(), /Ableitungen/u)
@@ -490,7 +490,7 @@ try {
     await pendingStateRequest
     await h.page.getByRole('button', { name: 'Zu Physik wechseln' }).click()
     await waitReady(h.page, physicsTitle)
-    const focus = h.page.locator('#learner-goal-sidebar button[aria-pressed="true"]')
+    const focus = h.page.locator('#learner-goal-sidebar [data-goal-id] button[aria-pressed="true"]')
     assert.equal(await focus.count(), 1)
     assert.match(await focus.locator('xpath=ancestor::*[@data-goal-id][1]').innerText(), /Elektrische Felder/u)
     assert.equal(switchRequests, 1)
@@ -596,7 +596,7 @@ try {
     await settledFrame(h.page)
     await waitReady(h.page, physicsTitle)
     await assertNoFalseSetup(h.page)
-    const focus = h.page.locator('#learner-goal-sidebar button[aria-pressed="true"]')
+    const focus = h.page.locator('#learner-goal-sidebar [data-goal-id] button[aria-pressed="true"]')
     assert.equal(await focus.count(), 1)
     assert.match(await focus.locator('xpath=ancestor::*[@data-goal-id][1]').innerText(), /Elektrische Felder/u)
     assert.equal(h.requests.filter((r) => r.learnerId === learnerB && r.endpoint === 'profile').length, 1)

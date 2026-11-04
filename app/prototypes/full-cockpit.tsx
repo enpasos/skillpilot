@@ -42,7 +42,7 @@ function FullCockpitPreview() {
   const [navigationMode, setNavigationMode] = useState<LearnerGoalNavigationMode>('tree')
   const [selectedId, setSelectedId] = useState(fullCockpitData.initialGoalId)
   const initialGoal = fullCockpitData.goalIndexAll.get(fullCockpitData.initialGoalId)!
-  const [landscapeId, setLandscapeId] = useState(initialGoal.landscapeId ?? fullCockpitData.availableLandscapes[0].landscapeId)
+  const [landscapeId, setLandscapeId] = useState(fullCockpitData.rootLandscapeId)
   const [notice, setNotice] = useState(false)
   const [toast, setToast] = useState('')
   const dialog = useRef<HTMLDialogElement>(null)
@@ -87,7 +87,6 @@ function FullCockpitPreview() {
     const goal = fullCockpitData.goalIndexAll.get(id)
     if (!goal) return
     setSelectedId(id)
-    if (goal.landscapeId) setLandscapeId(goal.landscapeId)
   }, [])
   const selectInLandscape = useCallback((_nextLandscapeId: string, id: string) => select(id), [select])
   const getMastery = useCallback((id: string) => snapshot.mastery[id] ?? 0, [snapshot.mastery])

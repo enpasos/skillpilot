@@ -74,7 +74,8 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const [searchOpen, setSearchOpen] = useState(false)
   const searchInput = useRef<HTMLInputElement>(null)
   const mapSurface = useRef<HTMLDivElement>(null)
-  const pendingSearchFocus = useRef<string | null>(null)
+  const pendingNodeFocus = useRef<{ id: string; center: boolean } | null>(null)
+  const pendingSelectionEcho = useRef<string | null>(null)
   const lastCommand = useRef<string | null>(null)
   const gestureTarget = useRef<string | null>(null)
   const gestureOnMap = useRef(true)
@@ -108,6 +109,8 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   }, [nav.scopeId, visible])
   const select = useCallback((id: string) => {
     if (!visible.has(id)) return
+    pendingNodeFocus.current = null
+    pendingSelectionEcho.current = id
     highlight(id)
     onEntrySelect?.(id)
   }, [highlight, onEntrySelect, visible])
@@ -115,6 +118,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     const entry = fixture.entries[id]
     if (!entry) return
     if (entry.kind === 'unit' && entry.children?.length) {
+      pendingNodeFocus.current = null
       setSelection(null)
       enter(id)
     }
@@ -122,7 +126,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   }, [fixture, enter, select])
   const focusNode = useCallback((id: string, center = false) => {
     if (!visible.has(id)) return
-    pendingSearchFocus.current = center ? id : null
+    pendingNodeFocus.current = { id, center }
     highlight(id)
     setSearchOpen(false)
   }, [highlight, visible])
@@ -130,6 +134,16 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     select(id)
     focusNode(id, true)
   }, [focusNode, select])
+
+  useEffect(() => {
+    // A controlled caller mirrors a map click back as its selected-goal command.
+    // Acknowledge that echo before navigation; a later explicit reveal remains
+    // a fresh command, including when it targets this same goal.
+    if (pendingSelectionEcho.current && command?.entryId === pendingSelectionEcho.current) {
+      lastCommand.current = `${command.nonce}:${command.entryId}`
+    }
+    pendingSelectionEcho.current = null
+  }, [command, selection])
 
   useEffect(() => { onSelectionChange?.(selectedId) }, [onSelectionChange, selectedId])
 
@@ -160,8 +174,10 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
         const width = surface.clientWidth
         const height = surface.clientHeight
         const current = flow.getViewport()
-        if (pendingSearchFocus.current === selectedId) {
-          pendingSearchFocus.current = null
+        const requested = pendingNodeFocus.current?.id === selectedId ? pendingNodeFocus.current : null
+        if (!showInspector && !requested) return
+        pendingNodeFocus.current = null
+        if (requested?.center) {
           const zoom = Math.max(0.95, Math.min(current.zoom, 1.25))
           void flow.setViewport({ x: width / 2 - (node.position.x + 110) * zoom,
             y: height / 2 - (node.position.y + 36) * zoom, zoom }, { duration: reducedMotion ? 0 : 180 })
@@ -179,7 +195,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
       })
     })
     return () => { cancelAnimationFrame(frame); cancelAnimationFrame(secondFrame) }
-  }, [selection, selectedId, flow, reducedMotion, nav.isTransitioning])
+  }, [selection, selectedId, flow, reducedMotion, nav.isTransitioning, showInspector])
 
   const connections = useMemo(() => {
     const incoming = new Map<string, string[]>()

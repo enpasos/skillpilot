@@ -43,7 +43,9 @@ export const MapNode = memo(function MapNode({ data }: NodeProps<LearningFlowNod
       onClick={event => { event.stopPropagation(); onSelect(entry.id) }} onFocus={() => onFocus(entry.id)}
       onKeyDown={event => {
         if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault(); event.stopPropagation(); onOpen(entry.id)
+          event.preventDefault(); event.stopPropagation()
+          if (expandable) onOpen(entry.id)
+          else onSelect(entry.id)
         }
       }} aria-pressed={active} aria-label={`${entry.title}, ${expandable ? 'Lerneinheit öffnen' : 'Details anzeigen'}${activeLearningGoal ? ', aktives Lernziel' : ''}`}>
       <span className={`lum-node-icon${expandable ? '' : ` lum-node-state ${status}`}`} role="img" aria-label={expandable ? kindLabels[entry.kind] : statusLabel}
@@ -59,12 +61,11 @@ export const MapNode = memo(function MapNode({ data }: NodeProps<LearningFlowNod
     {outsideCount > 0 && <span className="lum-context-count" title={`${outsideCount} Voraussetzungen außerhalb dieser Ebene`}>
       <Link2 size={11} /><span className="lum-sr-only">{outsideCount} Voraussetzungen außerhalb dieser Ebene</span>
     </span>}
-    <button type="button" className="lum-node-open nodrag" onClick={event => {
+    {expandable && <button type="button" className="lum-node-open nodrag" onClick={event => {
       event.stopPropagation()
       if (!event.shiftKey) onOpen(entry.id)
-    }} title={expandable ? 'Einheit öffnen' : 'Details anzeigen'}
-      aria-label={expandable ? `In ${entry.title} hineinzoomen` : `Information zu ${entry.title}`}>
+    }} title="Einheit öffnen" aria-label={`In ${entry.title} hineinzoomen`}>
       <ArrowDownRight size={15} strokeWidth={1.7} />
-    </button>
+    </button>}
   </article>
 })
