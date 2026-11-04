@@ -114,9 +114,9 @@ public class LearnerServiceTest {
     private static final String COMPOSITION_J10_SCOPE_ID =
             "composition:de-he-gym-math-gk-g9:structure:j10-g9";
     private static final String COMPOSITION_MERGED_DE_J8_SCOPE_ID =
-            "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j8";
+            "composition:de-de-gym-math-gk-lk:structure:j8";
     private static final String COMPOSITION_MERGED_DE_J8_ADDITIONAL_SCOPE_ID =
-            "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j8-additional-competencies";
+            "composition:de-de-gym-math-gk-lk:structure:j8-additional-competencies";
     private static final String COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID =
             "composition:de-de-gym-math-lk:structure:math-root";
     private static final String COMPOSITION_DE_MATH_LK_ANALYSIS_BASICS_SCOPE_ID =

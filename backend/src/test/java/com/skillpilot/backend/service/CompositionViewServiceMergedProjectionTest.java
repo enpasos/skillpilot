@@ -28,6 +28,13 @@ import org.springframework.test.util.ReflectionTestUtils;
 class CompositionViewServiceMergedProjectionTest {
     private static final String MATH = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String OVERVIEW = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
+    // Exact independent obligation decision in the finite combined-view plan:
+    // these additional GK preparation exams are redundant with existing LK routes.
+    private static final Set<String> REVIEWED_GK_ONLY_ASSESSMENTS = Set.of(
+            "7b61db50-aaca-5be0-8830-e1d78279bfea",
+            "19c9f288-e9cb-5103-8ce0-01b75e18bd51",
+            "49bd46a0-818a-5304-8a5d-2e504629cba5",
+            "e724ac68-ccf8-5cf9-8a3d-fd05fb7a58e1");
     private static final ObjectMapper MAPPER = new ObjectMapper();
     private static final LandscapeProperties PROPERTIES = new LandscapeProperties();
     private static SkillLandscape landscape;
@@ -60,6 +67,8 @@ class CompositionViewServiceMergedProjectionTest {
         var gkProjection = projection(service, gkScope);
         var lkProjection = projection(service, lkScope);
         Set<String> expectedTargets = union(gkProjection.targets(), lkProjection.targets());
+        assertThat(expectedTargets).containsAll(REVIEWED_GK_ONLY_ASSESSMENTS);
+        expectedTargets.removeAll(REVIEWED_GK_ONLY_ASSESSMENTS);
         Set<String> expectedSupport = union(gkProjection.support(), lkProjection.support());
         expectedSupport.removeAll(expectedTargets);
 
@@ -70,20 +79,21 @@ class CompositionViewServiceMergedProjectionTest {
         assertThat(projected.support()).isEqualTo(expectedSupport);
         assertThat(projected.structural()).isEqualTo(goals);
 
-        // This is the formerly shipped repository result. It preserves sets
-        // but duplicates visible paths, so a flat visibleGoals map cannot catch it.
+        // The raw historical union also includes the four redundant exams.
+        // Every other target, support item and preparation edge must be retained.
         var oldView = new LinkedHashMap<>(combined);
         oldView.put("rootNodes", CourseProfileCompositionViewMerger.mergeViews(
                 List.of(roots(lk), roots(gk)), contains));
         var oldViews = fixedView(oldView);
         var oldService = learnerService(oldViews);
         var prior = projection(oldService, combinedScope);
-        assertThat(prior.targets()).isEqualTo(projected.targets());
+        assertThat(prior.targets()).isEqualTo(union(projected.targets(), REVIEWED_GK_ONLY_ASSESSMENTS));
         assertThat(prior.support()).isEqualTo(projected.support());
         assertThat(directRequirements(prior.structural())).isEqualTo(directRequirements(projected.structural()));
         assertThat(normalized(oldService.computeEffectiveRequires(prior.structural())))
                 .isEqualTo(normalized(service.computeEffectiveRequires(projected.structural())));
-        assertThat(completionContext(prior)).isEqualTo(completionContext(projected));
+        assertThat(withoutReviewedOmittedExams(completionContext(prior)))
+                .isEqualTo(completionContext(projected));
 
         var oldPaths = visiblePaths(roots(oldView), prior);
         assertThat(oldPaths.values()).anySatisfy(paths -> assertThat(paths).hasSizeGreaterThan(1));
@@ -213,6 +223,20 @@ class CompositionViewServiceMergedProjectionTest {
         graph.contextGoalIds().forEach(id -> edges.put(id, graph.directPrerequisites(id)));
         return Map.of("context", graph.contextGoalIds(), "protected", graph.protectedGoalIds(),
                 "protectedTargets", graph.protectedTargetGoalIds(), "edges", normalized(edges));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static Map<String, Object> withoutReviewedOmittedExams(Map<String, Object> context) {
+        Map<String, Object> result = new LinkedHashMap<>(context);
+        for (String key : List.of("context", "protected", "protectedTargets")) {
+            Set<String> retained = new TreeSet<>((Set<String>) context.get(key));
+            retained.removeAll(REVIEWED_GK_ONLY_ASSESSMENTS);
+            result.put(key, retained);
+        }
+        Map<String, List<String>> edges = new TreeMap<>((Map<String, List<String>>) context.get("edges"));
+        edges.keySet().removeAll(REVIEWED_GK_ONLY_ASSESSMENTS);
+        result.put("edges", edges);
+        return result;
     }
 
     private static Map<String, List<String>> directRequirements(Map<String, LearningGoal> structural) {

@@ -11,6 +11,7 @@ import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -215,8 +216,15 @@ class LearnerPlanningScopeServiceTest {
                         bavariaNormalDistribution, bavariaExponentialGrowth)
                 .doesNotContain(bavariaVertiefungMandelbrot);
         selectMathScope("DE-BY", "LK");
-        assertThat(learnerService.getPlanningScope(LEARNER_ID, MATH_LANDSCAPE_ID).scopeAtomicGoalIds())
-                .containsAll(bavariaGk)
+        var bavariaLk = learnerService.getPlanningScope(LEARNER_ID, MATH_LANDSCAPE_ID).scopeAtomicGoalIds();
+        Set<String> gkOnly = new LinkedHashSet<>(bavariaGk);
+        gkOnly.removeAll(bavariaLk);
+        // LK retains the GK competencies. The separate Euler preparation exam
+        // is needed only in GK; LK already has its reviewed completion route.
+        assertThat(gkOnly).containsExactly("e724ac68-ccf8-5cf9-8a3d-fd05fb7a58e1");
+        assertThat(bavariaGk).contains("ccd47872-4d9d-44db-8c8d-eda24019b502");
+        assertThat(bavariaLk)
+                .contains("ccd47872-4d9d-44db-8c8d-eda24019b502")
                 .contains(bavariaModelValidation, bavariaVertiefungMandelbrot);
 
         selectMathScope("DE-NI", "GK");

@@ -60,6 +60,14 @@ bestätigen die Wiederherstellung der benötigten Dateien und den unveränderten
 Generator-PASS für 39 Dokumente und 46 Kursvereinigungen. Die Mathematik-Datenlücken
 bleiben davon unabhängig offen.
 
+Veraltete Backend-Testannahmen zu den expliziten Kursvereinigungen sind
+korrigiert. Die Paketfixture erzeugt keine zusätzlichen virtuellen Angebote,
+die aktuellen Ansichts-IDs werden aufgelöst und die vier bewusst entfallenden
+GK-Vorbereitungsprüfungen werden exakt abgegrenzt. Alle übrigen Zielmengen,
+Vorbereitungsbeziehungen und Eindeutigkeitsprüfungen bleiben erhalten.
+Die gezielte Wiederholung besteht mit **104/104 Tests ohne Skips**; die
+vollständige Backend-CI bleibt ein eigener ausstehender Nachweis.
+
 Der gemeinsame vorherige Backendvergleich und das unabhängige Astra-Review prüfen
 alle 161 Angebote. Alle 502 übernommenen Dateien und die 3.187 Eingaben des
 Backendlaufs stimmen bytegenau. Die elf normalen Autorenprüfungen bestehen;
@@ -126,6 +134,7 @@ vollständigen Backendlauf.
 · [Backend-Testdatenbanken](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/general-context-isolation/README.md)
 · [CI-Platzkorrektur](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/ci-checkout-space/README.md)
 · [Backend-Testheap](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-test-heap/README.md)
+· [Backend-Kursvereinigungen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-authored-course-unions/README.md)
 
 ## Integrierter Stand
 

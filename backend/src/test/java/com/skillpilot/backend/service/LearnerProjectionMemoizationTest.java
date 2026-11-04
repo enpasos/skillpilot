@@ -132,7 +132,15 @@ class LearnerProjectionMemoizationTest {
         assertThat(basicCourse).isNotSameAs(combined);
         assertThat(unfiltered).isNotSameAs(combined);
         assertThat(anotherRoot).isNotSameAs(combined);
-        assertThat(visibleGoals(combined).keySet()).containsAll(visibleGoals(basicCourse).keySet());
+        Set<String> basicOnly = new java.util.LinkedHashSet<>(visibleGoals(basicCourse).keySet());
+        basicOnly.removeAll(visibleGoals(combined).keySet());
+        // These additional preparation exams are deliberately absent from the
+        // reviewed union, where existing LK routes already require their skills.
+        assertThat(basicOnly).containsExactlyInAnyOrder(
+                "7b61db50-aaca-5be0-8830-e1d78279bfea",
+                "19c9f288-e9cb-5103-8ce0-01b75e18bd51",
+                "49bd46a0-818a-5304-8a5d-2e504629cba5",
+                "e724ac68-ccf8-5cf9-8a3d-fd05fb7a58e1");
         assertThat(visibleGoals(combined).size()).isGreaterThan(visibleGoals(basicCourse).size());
         assertThat(projection(ROOT, combinedConfig, false)).isSameAs(combined);
     }
