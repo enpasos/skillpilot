@@ -1,0 +1,30 @@
+{
+  "status": "APPROVE_TEST_OWNED_LIFECYCLE_ONLY_CURRENT_ROOT_SEQUENCE_PASS",
+  "reviewedPatch": "memory-only.patch",
+  "findings": [
+    "All six opted-in classes use plain JUnit. No Spring extension or MockitoBean lifecycle is enrolled.",
+    "Creation listener starts in BeforeEachCallback, after BeforeAll; all six fixtures create method-owned mocks synchronously in BeforeEach or the test body.",
+    "Exact-runtime Mockito bytecode confirms listener registration/removal uses thread-local MockingProgress and clearInlineMock(object) calls single-object clearMock, not clearAllMocks.",
+    "ExtensionContext stores one Scope per test invocation; removal plus finally clearing the owned list releases scope references.",
+    "AfterEachCallback runs after user AfterEach cleanup; LearnerProjectionMemoizationTest retains its transaction completion and synchronization teardown before mock disposal.",
+    "Bound shared spy is not acquired by the per-method listener. clearInvocations only removes its per-case history and preserves its identity and stubs. Its clearInlineMock is explicit in its class owner AfterAll.",
+    "Bound SAME_THREAD is appropriate because its committedConfigs, real catalogs and spy are shared mutable class fixtures and pathResolutionCalls reads invocation history.",
+    "All six AfterAll callbacks release only their explicit static fields; committedConfigs is cleared. No global Mockito cleanup or Spring context eviction is introduced.",
+    "Current root Memoization functional assertion remains byte-preserved below the lifecycle-only hunks. No assertion, production source, SRS test, build option, heap setting, fork setting or selector is changed.",
+    "Private validation probes additionally exercise two concurrent owners, foreign stub preservation, BeforeEach/body failure cleanup, listener reuse, and the same real Spring context across the six plain fixtures."
+  ],
+  "limits": [
+    "This opt-in extension only owns mocks created on its test execution thread after its BeforeEach callback. Constructors, BeforeAll, asynchronous workers, static mocks and future Spring fixture integration require separate explicit ownership.",
+    "The existing SRS metrics MockitoBean returns null to BackgroundMetricsTask after scheduler wakeups. Its logged background NPE is unrelated to the SQL assertions and heap ownership correction.",
+    "The 1536m sequence with forced GC only between classes measures retained class-lifecycle heap and preservation; it does not establish full 3201-test or remote-CI acceptance."
+  ],
+  "bytecodeEvidence": "mockito-lifecycle-bytecode.txt",
+  "bytecodeEvidenceSha256": "b27f9eb2a50a093bda6f69b05a34ca890d6f67f90d5dccdb9ca707634c9ea613",
+  "privateOnly": true,
+  "rootApplyCheckPassed": true,
+  "finalExecution": "execution.json",
+  "finalTests": 250,
+  "finalPassed": 250,
+  "finalGuardFailures": 0,
+  "sameCachedSpringContextAndSpy": true
+}

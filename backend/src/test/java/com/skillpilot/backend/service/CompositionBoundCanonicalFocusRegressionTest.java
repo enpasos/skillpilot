@@ -1,5 +1,12 @@
 package com.skillpilot.backend.service;
 
+import com.skillpilot.backend.testsupport.OwnedMockitoMocks;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -33,7 +40,26 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.test.util.ReflectionTestUtils;
 
 /** Real production CVS, actual reviewed HE/ST views and whole canonical objects; no frontier/result stubs. */
+@Execution(ExecutionMode.SAME_THREAD)
+@ExtendWith(OwnedMockitoMocks.class)
 class CompositionBoundCanonicalFocusRegressionTest {
+
+    @AfterAll
+    static void releaseClassFixtures() {
+        if (views != null) org.mockito.Mockito.framework().clearInlineMock(views);
+        committedConfigs.clear();
+        landscapes = null;
+        mappings = null;
+        views = null;
+        canonical = null;
+    }
+
+    @AfterEach
+    void releaseSharedSpyInvocations() {
+        // Keep the shared spy and its stubs usable for the next case.
+        if (views != null) org.mockito.Mockito.clearInvocations(views);
+    }
+
     private static final String ROOT="a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String MATH="68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CUBOID="c34c6132-f85d-59be-8b95-032ddfc0d0de";

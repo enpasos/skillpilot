@@ -1,0 +1,237 @@
+--- a/backend/src/test/java/com/skillpilot/backend/service/CompositionBoundCanonicalFocusRegressionTest.java
++++ b/backend/src/test/java/com/skillpilot/backend/service/CompositionBoundCanonicalFocusRegressionTest.java
+@@ -1,4 +1,11 @@
+ package com.skillpilot.backend.service;
++
++import com.skillpilot.backend.testsupport.OwnedMockitoMocks;
++import org.junit.jupiter.api.extension.ExtendWith;
++import org.junit.jupiter.api.AfterAll;
++import org.junit.jupiter.api.AfterEach;
++import org.junit.jupiter.api.parallel.Execution;
++import org.junit.jupiter.api.parallel.ExecutionMode;
+ 
+ import static org.assertj.core.api.Assertions.assertThat;
+ import static org.mockito.Mockito.mock;
+@@ -33,7 +40,26 @@
+ import org.springframework.test.util.ReflectionTestUtils;
+ 
+ /** Real production CVS, actual reviewed HE/ST views and whole canonical objects; no frontier/result stubs. */
++@Execution(ExecutionMode.SAME_THREAD)
++@ExtendWith(OwnedMockitoMocks.class)
+ class CompositionBoundCanonicalFocusRegressionTest {
++
++    @AfterAll
++    static void releaseClassFixtures() {
++        if (views != null) org.mockito.Mockito.framework().clearInlineMock(views);
++        committedConfigs.clear();
++        landscapes = null;
++        mappings = null;
++        views = null;
++        canonical = null;
++    }
++
++    @AfterEach
++    void releaseSharedSpyInvocations() {
++        // Keep the shared spy and its stubs usable for the next case.
++        if (views != null) org.mockito.Mockito.clearInvocations(views);
++    }
++
+     private static final String ROOT="a0e13c56-c25f-4742-9272-3a1a603ee52e";
+     private static final String MATH="68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
+     private static final String CUBOID="c34c6132-f85d-59be-8b95-032ddfc0d0de";
+--- a/backend/src/test/java/com/skillpilot/backend/service/LearnerFrontierInvariantTest.java
++++ b/backend/src/test/java/com/skillpilot/backend/service/LearnerFrontierInvariantTest.java
+@@ -1,4 +1,8 @@
+ package com.skillpilot.backend.service;
++
++import com.skillpilot.backend.testsupport.OwnedMockitoMocks;
++import org.junit.jupiter.api.extension.ExtendWith;
++import org.junit.jupiter.api.AfterAll;
+ 
+ import static org.assertj.core.api.Assertions.assertThat;
+ import static org.mockito.ArgumentMatchers.any;
+@@ -43,7 +47,16 @@
+ import org.junit.jupiter.api.Test;
+ import org.springframework.context.ApplicationEventPublisher;
+ 
++@ExtendWith(OwnedMockitoMocks.class)
+ public class LearnerFrontierInvariantTest {
++
++    @AfterAll
++    static void releaseClassFixtures() {
++        objectMapper = null;
++        landscapeService = null;
++        goalMappingService = null;
++    }
++
+ 
+     private static final String LEARNER_ID = "test-learner";
+     private static final String CURRICULUM_ID = "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da";
+--- a/backend/src/test/java/com/skillpilot/backend/service/LearnerProjectionMemoizationTest.java
++++ b/backend/src/test/java/com/skillpilot/backend/service/LearnerProjectionMemoizationTest.java
+@@ -1,4 +1,8 @@
+ package com.skillpilot.backend.service;
++
++import com.skillpilot.backend.testsupport.OwnedMockitoMocks;
++import org.junit.jupiter.api.extension.ExtendWith;
++import org.junit.jupiter.api.AfterAll;
+ 
+ import static org.assertj.core.api.Assertions.assertThat;
+ import static org.assertj.core.api.Assertions.assertThatThrownBy;
+@@ -30,7 +34,17 @@
+ import org.springframework.transaction.support.TransactionSynchronization;
+ import org.springframework.transaction.support.TransactionSynchronizationManager;
+ 
++@ExtendWith(OwnedMockitoMocks.class)
+ class LearnerProjectionMemoizationTest {
++
++    @AfterAll
++    static void releaseClassFixtures() {
++        mapper = null;
++        properties = null;
++        landscapes = null;
++        mappings = null;
++    }
++
+     private static final String ROOT = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
+     private static final String MATH = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
+     private static final String PHYSICS = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+--- a/backend/src/test/java/com/skillpilot/backend/service/LearnerServiceCanonicalProjectionTest.java
++++ b/backend/src/test/java/com/skillpilot/backend/service/LearnerServiceCanonicalProjectionTest.java
+@@ -1,4 +1,8 @@
+ package com.skillpilot.backend.service;
++
++import com.skillpilot.backend.testsupport.OwnedMockitoMocks;
++import org.junit.jupiter.api.extension.ExtendWith;
++import org.junit.jupiter.api.AfterAll;
+ 
+ import static org.assertj.core.api.Assertions.assertThat;
+ import static org.mockito.Mockito.any;
+@@ -37,7 +41,16 @@
+ import org.junit.jupiter.api.Test;
+ import org.springframework.context.ApplicationEventPublisher;
+ 
++@ExtendWith(OwnedMockitoMocks.class)
+ class LearnerServiceCanonicalProjectionTest {
++
++    @AfterAll
++    static void releaseClassFixtures() {
++        objectMapper = null;
++        landscapeService = null;
++        goalMappingService = null;
++    }
++
+ 
+     private static final String LEARNER_ID = "canonical-projection-learner";
+     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
+--- a/backend/src/test/java/com/skillpilot/backend/service/LearnerServiceCrossSubjectPilotTest.java
++++ b/backend/src/test/java/com/skillpilot/backend/service/LearnerServiceCrossSubjectPilotTest.java
+@@ -1,4 +1,8 @@
+ package com.skillpilot.backend.service;
++
++import com.skillpilot.backend.testsupport.OwnedMockitoMocks;
++import org.junit.jupiter.api.extension.ExtendWith;
++import org.junit.jupiter.api.AfterAll;
+ 
+ import static org.assertj.core.api.Assertions.assertThat;
+ import static org.mockito.ArgumentMatchers.any;
+@@ -41,7 +45,17 @@
+ import org.springframework.transaction.PlatformTransactionManager;
+ import org.springframework.transaction.support.SimpleTransactionStatus;
+ 
++@ExtendWith(OwnedMockitoMocks.class)
+ class LearnerServiceCrossSubjectPilotTest {
++
++    @AfterAll
++    static void releaseClassFixtures() {
++        objectMapper = null;
++        landscapeService = null;
++        goalMappingService = null;
++        compositionViewService = null;
++    }
++
+ 
+     private static final String LEARNER_ID = "cross-subject-pilot-learner";
+     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
+--- a/backend/src/test/java/com/skillpilot/backend/service/MitOcwFrontierWalkthroughTest.java
++++ b/backend/src/test/java/com/skillpilot/backend/service/MitOcwFrontierWalkthroughTest.java
+@@ -1,4 +1,8 @@
+ package com.skillpilot.backend.service;
++
++import com.skillpilot.backend.testsupport.OwnedMockitoMocks;
++import org.junit.jupiter.api.extension.ExtendWith;
++import org.junit.jupiter.api.AfterAll;
+ 
+ import static org.assertj.core.api.Assertions.assertThat;
+ import static org.mockito.ArgumentMatchers.any;
+@@ -30,7 +34,16 @@
+ import org.junit.jupiter.api.Test;
+ import org.springframework.context.ApplicationEventPublisher;
+ 
++@ExtendWith(OwnedMockitoMocks.class)
+ class MitOcwFrontierWalkthroughTest {
++
++    @AfterAll
++    static void releaseClassFixtures() {
++        objectMapper = null;
++        landscapeService = null;
++        goalMappingService = null;
++    }
++
+ 
+     private static final String LEARNER_ID = "mit-ocw-frontier-learner";
+     private static final String MIT_OCW_FOUNDATIONS_CURRICULUM_ID = "25df82ae-f6ab-518b-98f2-dc72bcdf2fcf";
+--- /dev/null
++++ b/backend/src/test/java/com/skillpilot/backend/testsupport/OwnedMockitoMocks.java
+@@ -0,0 +1,51 @@
++package com.skillpilot.backend.testsupport;
++
++import java.util.ArrayList;
++import java.util.List;
++import org.junit.jupiter.api.extension.AfterEachCallback;
++import org.junit.jupiter.api.extension.BeforeEachCallback;
++import org.junit.jupiter.api.extension.ExtensionContext;
++import org.mockito.Mockito;
++import org.mockito.listeners.MockCreationListener;
++import org.mockito.mock.MockCreationSettings;
++
++/**
++ * Owns mocks created in a plain JUnit test's BeforeEach callbacks and test method.
++ * Opt in explicitly: Spring context mocks and class-shared mocks have separate owners.
++ * Mockito listeners are thread local; these fixtures create and release mocks on the test thread.
++ */
++public final class OwnedMockitoMocks implements BeforeEachCallback, AfterEachCallback {
++    private static final ExtensionContext.Namespace NAMESPACE =
++            ExtensionContext.Namespace.create(OwnedMockitoMocks.class);
++
++    @Override
++    public void beforeEach(ExtensionContext context) {
++        Scope scope = new Scope();
++        Mockito.framework().addListener(scope);
++        context.getStore(NAMESPACE).put("scope", scope);
++    }
++
++    @Override
++    public void afterEach(ExtensionContext context) {
++        Scope scope = context.getStore(NAMESPACE).remove("scope", Scope.class);
++        if (scope != null) scope.close();
++    }
++
++    private static final class Scope implements MockCreationListener {
++        private final List<Object> mocks = new ArrayList<>();
++
++        @Override
++        public void onMockCreated(Object mock, MockCreationSettings settings) {
++            mocks.add(mock);
++        }
++
++        void close() {
++            Mockito.framework().removeListener(this);
++            try {
++                mocks.forEach(Mockito.framework()::clearInlineMock);
++            } finally {
++                mocks.clear();
++            }
++        }
++    }
++}

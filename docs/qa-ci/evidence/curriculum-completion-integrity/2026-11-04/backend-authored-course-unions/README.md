@@ -22,8 +22,7 @@ der aktuelle Kanon blieb während des Laufs unverändert. Der Nachweis verwendet
 den vorhandenen frisch kompilierten, bytegleichen Produktionsklassenstand.
 
 [Ausführung und Quellenbindungen](execution.json),
-[vollständige Testzusammenfassung](summary.txt),
-[Kompilierung](compile.log).
+[vollständige Testzusammenfassung](summary.txt).
 
 Dieser Nachweis ersetzt keine vollständige Backend-CI. Speicherbereinigung
 anderer Test-Fixtures und die verbleibenden Mathematik-Datenlücken werden
