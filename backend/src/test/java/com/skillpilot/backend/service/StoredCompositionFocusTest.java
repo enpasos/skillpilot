@@ -45,6 +45,11 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.mockito.Mockito;
+import org.mockito.listeners.MockCreationListener;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -73,6 +78,44 @@ class StoredCompositionFocusTest {
     private static CompositionViewService historicalAfterViews;
     private static SkillLandscape compiledShMathematics;
     private static com.fasterxml.jackson.databind.JsonNode shFixtureBasis;
+
+    private final List<Object> ownedMocks = new ArrayList<>();
+    private final MockCreationListener mockCreationListener = (mock, settings) -> ownedMocks.add(mock);
+
+    @BeforeEach
+    void trackFixtureMocks() {
+        Mockito.framework().addListener(mockCreationListener);
+    }
+
+    @AfterEach
+    void releaseFixtureMocks() {
+        Mockito.framework().removeListener(mockCreationListener);
+        try {
+            // Recorded events refer back to their LearnerService and its loaded views.
+            // Release only this test's mocks; cached Spring context mocks belong to other tests.
+            ownedMocks.forEach(Mockito.framework()::clearInlineMock);
+        } finally {
+            ownedMocks.clear();
+        }
+    }
+
+    @AfterAll
+    static void releaseCatalogs() {
+        landscape = null;
+        goals = null;
+        properties = null;
+        historicalBeforeMathematics = null;
+        historicalBeforeCatalog = null;
+        historicalAfterCatalog = null;
+        historicalBeforeMappings = null;
+        historicalAfterMappings = null;
+        historicalBeforeProperties = null;
+        historicalAfterProperties = null;
+        historicalBeforeViews = null;
+        historicalAfterViews = null;
+        compiledShMathematics = null;
+        shFixtureBasis = null;
+    }
 
     @BeforeAll static void loadActualHessianMathematics(@TempDir Path historicalDirectory) throws Exception {
         Path curricula = Path.of("../curricula").toAbsolutePath().normalize();

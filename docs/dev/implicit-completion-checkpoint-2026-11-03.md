@@ -62,7 +62,8 @@ und die betroffenen Regressionen sind lokal geprüft und in Git gesichert.
 Der vollständige Backendjob brach nach 2.963 erfolgreichen Testereignissen
 mit einem Java-Heapüberlauf ab. Eine kontrollierte Untersuchung identifiziert
 zurückgehaltene testinterne Mockito-Ereignisgraphen; die gezielte Bereinigung
-ist umgesetzt und wird vor dem nächsten CI-Nachlauf vollständig geprüft.
+besteht lokal 68/68 Testaufrufe in zwei vollständigen Klassendurchläufen
+mit 768 MiB Heap. Der vollständige GitHub-Nachlauf bleibt erforderlich.
 Dieser GitHub-Stand enthält die jüngste gemeinsame Datenkorrektur noch nicht.
 
 Der veraltete Hinweistext im Trainer-Plan-Test ist korrigiert; der vollständige
@@ -90,6 +91,7 @@ vollständigen Backendlauf.
 · [Coach und Plan](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-explicit-assessment-choices/README.md)
 · [Backend-Testdatenbanken](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/general-context-isolation/README.md)
 · [CI-Platzkorrektur](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/ci-checkout-space/README.md)
+· [Backend-Testheap](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-test-heap/README.md)
 
 ## Integrierter Stand
 
