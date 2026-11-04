@@ -6,32 +6,44 @@ M7-, Deployment- oder vollständige CI-Freigabe.
 
 ## Aktueller Messstand: 4. November 2026
 
-Die integrierten Änderungen umfassen jetzt **28 vollständige Prüfungsformen
-unter bestehenden Lernziel-IDs** sowie geprüfte Plätze vorhandener Prüfungen.
-Der jüngste Datenimport ergänzt neun geprüfte Formen an zuvor unversorgten
-Endpunkten. Die 807 curricularen Mathematikziele bleiben erhalten.
+Der Stand enthält **25 vollständige Prüfungsformen unter bestehenden
+curricularen Lernziel-IDs und zehn gezielt platzierte eigenständige
+Prüfungsziele**. Die 807 curricularen Mathematikziele bleiben erhalten.
+Sechs zuvor zu breit eingeführte Prüfungsrollen sind korrigiert: Die
+Kompetenz bleibt dort ein gewöhnliches Lernziel, wo bereits ein anderer
+Abschlussweg besteht. Eine zusätzliche Prüfung wird nur in tatsächlich
+unversorgten Angeboten ausgewählt.
 
 | Vollständige Mathematikangebote | Aktueller Befund |
 | --- | --- |
 | Tatsächlich geprüfte Angebote | 161, einschließlich 46 Kursvereinigungen |
-| Abschlussintegrität bestanden | Thüringen / Sekundarstufe I / G8 / GK+LK |
-| Angebote mit verbleibenden Datenlücken | 160 |
-| Ungedeckte Ziele | 287 unterschiedliche IDs / 3.773 Ziel-Angebots-Paare |
-| Gewöhnliche offene Endpunkte | 177 unterschiedliche IDs / 2.391 Endpunktpaare |
+| Abschlussintegrität bestanden | 17 Angebote |
+| Angebote mit verbleibenden Datenlücken | 144 |
+| Ungedeckte Ziele | 261 unterschiedliche IDs / 2.982 Ziel-Angebots-Paare |
+| Gewöhnliche offene Endpunkte | 169 unterschiedliche IDs / 1.987 Endpunktpaare |
 
-Die acht zusätzlichen Analysisformen schließen 1.824 Ziel-Angebots-Paare und
-624 Endpunktpaare. Der anschließende Markov-Import schließt weitere 164 bzw.
-80 Paare. Die jüngsten neun Formen schließen weitere 1.949 bzw. 650 Paare.
-Diese Verbesserungen sind mit tatsächlichen Backendprojektionen und
-unabhängigen Reviews belegt. Die ältere Nachweischronik unten nennt jeweils
-den damaligen Zwischenstand.
+Die jüngste gemeinsame Korrektur schließt weitere **791 Ziel-Angebots-Paare
+und 404 Endpunktpaare**, ohne neue Lücken zu erzeugen. Sie begrenzt zehn
+Prüfungsidentitäten auf 532 tatsächlich fehlende Prüfungsplätze, verwendet
+eine vorhandene Analysisprüfung in weiteren 36 Angeboten und ergänzt drei
+vollständige Prüfungsformen an bisher isolierten Kompetenzen. Eine echte
+Matrixvoraussetzung ist ergänzt; eine sachfremde Dichtevoraussetzung ist
+entfernt. Vier hessische Ziel-Angebots-Paare zum Bogenmaß sind quellenbelegt
+sichtbar, ohne neue unversorgte Arbeit zu erzeugen.
 
-Bei sechs früher integrierten Formen ist eine zusätzliche Korrektur nötig:
-Eine globale Prüfungsrolle kann auch dort eine eigene Pflicht erzeugen, wo
-die Kompetenz bereits durch einen anderen Abschlussweg versorgt ist. Diese
-Formen werden auf die tatsächlich fehlenden Prüfungsplätze begrenzt. Für die
-neun neuen Formen wurde unabhängig bestätigt, dass alle 650 betroffenen
-Ziel-Angebots-Paare vorher unversorgte gewöhnliche Endpunkte waren.
+Der tatsächliche Backendvergleich und das unabhängige Astra-Review prüfen
+alle 161 Angebote. Alle 502 übernommenen Dateien und die 3.187 Eingaben des
+Backendlaufs stimmen bytegenau. Die elf normalen Autorenprüfungen bestehen;
+auch die reguläre Erzeugung der 39 kombinierten Ansichten besteht mit den
+46 tatsächlichen Kursvereinigungen. Die ältere Nachweischronik unten nennt
+jeweils den damaligen Zwischenstand.
+
+Bei alten gespeicherten Fokusreferenzen auf ersetzte virtuelle kombinierte
+Ansichten ist eine neue bewusste Auswahl nötig. Der öffentliche Lesetest
+bestätigt, dass die Referenz erhalten bleibt, keine automatische Erweiterung
+erfolgt und ein bereits gültiges aktives atomares Lernziel fortgesetzt
+werden kann. Ein älterer B2-Datensatz hat noch unvollständige Freigabe- und
+Abdeckungsmetadaten; dieser Befund ist ausgewiesen.
 
 Der Coach zeigt verfügbare Prüfungen auch bei ausschließlich ungedeckten
 Abschlussrouten als ausdrückliche Auswahl. Daraus entstehen weder automatischer
@@ -39,16 +51,19 @@ Prüfungsstart noch implizite Gutschrift. Die gezielte integrierte Backendprüfu
 besteht mit 179 Tests; alle Produktionsklassen wurden zusätzlich frisch
 kompiliert. Die Graphvalidierung unterscheidet die curriculare Kompetenz von
 ihrer Prüfungsform und prüft gerichtete Vorbereitungswege. Sie meldet noch
-23 fachlich offene Routen.
+12 offene direkte atomare Abschlussrouten.
 
-Der GitHub-Stand `047ec7fcb9` bestätigt Dokumentation, Lernzielbuch,
+Der GitHub-Stand `427723ecdf` bestätigt Dokumentation, Lernzielbuch,
 Completion-Kern, Cockpit, OpenAI-/Claude-Adapter und alle drei Gemini-Jobs.
-Die vollständige Mathematik- und Curriculum-Prüfung bleibt wegen der
-Datenlücken rot. Der vollständige Backendjob läuft noch. Der Frontendjob
-brach beim Checkout mit Platzmangel auf dem GitHub-Runner ab. Die gesonderte
-Platzkorrektur für vier vollständige Checkoutjobs ist lokal geprüft und
-integriert; die echte Runnerkapazität muss der nächste GitHub-Lauf bestätigen.
-Dieser GitHub-Stand enthält die jüngsten neun Formen noch nicht.
+Die Platzkorrektur ist dort in allen vier vollständigen Checkoutjobs
+bestätigt. Die vollständige Mathematik- und Curriculum-Prüfung bleibt wegen
+der Datenlücken rot. Der Frontendjob meldete 17 Lintfehler; die Korrekturen
+und die betroffenen Regressionen sind lokal geprüft und in Git gesichert.
+Der vollständige Backendjob brach nach 2.963 erfolgreichen Testereignissen
+mit einem Java-Heapüberlauf ab. Eine kontrollierte Untersuchung identifiziert
+zurückgehaltene testinterne Mockito-Ereignisgraphen; die gezielte Bereinigung
+ist umgesetzt und wird vor dem nächsten CI-Nachlauf vollständig geprüft.
+Dieser GitHub-Stand enthält die jüngste gemeinsame Datenkorrektur noch nicht.
 
 Der veraltete Hinweistext im Trainer-Plan-Test ist korrigiert; der vollständige
 lokale UI-Test besteht. Ein gemeinsamer Datenbankname in unterschiedlichen
@@ -69,6 +84,7 @@ vollständigen Backendlauf.
 
 [Analysisformen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/analysis-eight/README.md)
 · [Neun weitere Formen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/nine-whole-forms/README.md)
+· [Gemeinsame Rollen- und Pfadkorrektur](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/context-he-three/README.md)
 · [Markov-Platzierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/sh-markov-twelve/README.md)
 · [Graphvalidierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/directed-prior-stage-validation/README.md)
 · [Coach und Plan](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-explicit-assessment-choices/README.md)

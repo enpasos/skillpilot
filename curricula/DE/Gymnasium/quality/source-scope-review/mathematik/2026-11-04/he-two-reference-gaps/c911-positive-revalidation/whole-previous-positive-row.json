@@ -1,0 +1,110 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+  "schemaVersion": 2,
+  "reviewId": "canonical-math-positive-evidence-b010-j7-algebra-variables-terms-v1",
+  "goalFingerprintRuleVersion": "goal-evidence-v1",
+  "profileRuleVersion": "positive-understanding-evidence-v2",
+  "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+  "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+  "goalId": "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee",
+  "goalFingerprint": "sha256:a8ca2aac0efa1ae69d787f71b7e72892ed7221fa213fe2b40e8018716be4f370",
+  "reviewInputFingerprint": "sha256:ac4b7c26da934d683ecfa0d10ecc2b29777ef65dd78833b1074ef62cf51060a5",
+  "profileFingerprint": "sha256:81cfd3ab42a537b3387355c5d7d1ac9d751af724a9be524363c2f0f5456ff80e",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "reviewedAt": "2026-11-03T18:54:32.000Z",
+  "reviewer": "astra-independent-current-context-revalidation-20261103",
+  "reason": "Actual targeted independent revalidation of the unchanged whole competency, bilingual positive-understanding profile, worked examples and unchanged visual evidence against the current canonical context. Only the separately approved preparation corrections, real assessment execution role and corrected source locator differ. Mathematical profile and claim scope remain unchanged. Historical whole row and exact prior fingerprints are retained in eleven-finite-description-positive-revalidations.PASS.json; this is not a new blind dual-round D review or human approval.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "reviewRunIds": [],
+  "dissent": [],
+  "profile": {
+    "archetype": "concept",
+    "expectations": [
+      {
+        "id": "role-from-statement-and-context",
+        "essentialUnderstandingDe": "Ob ein Symbol eine Unbekannte, eine veränderliche Größe oder einen Parameter bezeichnet, ergibt sich aus der mathematischen Aussage und der Situation, nicht aus dem verwendeten Buchstaben oder seiner Position.",
+        "essentialUnderstandingEn": "Whether a symbol denotes an unknown, a varying quantity, or a parameter follows from the mathematical statement and situation, not from the letter used or its position.",
+        "observablePerformanceDe": "Die lernende Person ordnet Variablen in neuen Termen, Gleichungen und Formeln ihren Rollen zu und begründet jede Zuordnung durch das, was gegeben ist, gesucht wird, sich innerhalb eines Falls verändert oder einen ganzen Fall festlegt.",
+        "observablePerformanceEn": "The learner assigns roles to variables in new expressions, equations, and formulae and justifies each assignment by what is given, sought, varies within one case, or determines an entire case."
+      },
+      {
+        "id": "unknown-and-varying-quantity-distinction",
+        "essentialUnderstandingDe": "Eine Unbekannte steht in einer Gleichung für einen noch zu bestimmenden, im betrachteten Fall festen Wert; eine veränderliche Größe kann dagegen innerhalb einer Menge zulässiger Werte wechseln und dadurch den Wert eines Terms oder einer Formel verändern.",
+        "essentialUnderstandingEn": "In an equation, an unknown stands for a value that is fixed in the case under consideration but has yet to be determined; a varying quantity can instead range over a set of admissible values and thereby change the value of an expression or formula.",
+        "observablePerformanceDe": "Die lernende Person erklärt an einem Gleichungs- und einem Term- oder Formelkontext, warum ein Symbol im ersten Fall gesucht und fest, im zweiten Fall aber veränderlich ist, und verwendet das Symbol entsprechend.",
+        "observablePerformanceEn": "Using an equation context and an expression or formula context, the learner explains why a symbol is sought and fixed in the first case but varying in the second, and uses the symbol accordingly."
+      },
+      {
+        "id": "parameter-controls-a-family",
+        "essentialUnderstandingDe": "Ein Parameter wird für einen einzelnen Fall als fest behandelt, kann aber zwischen Fällen unterschiedliche Werte annehmen und dadurch eine ganze Situation oder Familie verwandter Terme, Gleichungen oder Formeln bestimmen.",
+        "essentialUnderstandingEn": "A parameter is treated as fixed within one case but can take different values between cases and thereby determine an entire situation or family of related expressions, equations, or formulae.",
+        "observablePerformanceDe": "Die lernende Person kennzeichnet in einer einfachen Formel den Parameter und die veränderlichen Größen, erklärt die Wirkung einer Parameteränderung auf die entstehende Familie und grenzt diese Rolle von einer zu lösenden Unbekannten ab.",
+        "observablePerformanceEn": "In a simple formula, the learner identifies the parameter and varying quantities, explains how changing the parameter affects the resulting family, and distinguishes that role from an unknown to be solved for."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "role-from-statement-and-context",
+        "unknown-and-varying-quantity-distinction",
+        "parameter-controls-a-family"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 3,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "mathematical-object",
+        "textDe": "Term gegenüber Gleichung und Formel",
+        "textEn": "Expression versus equation and formula"
+      },
+      {
+        "id": "information-status",
+        "textDe": "Gesuchter fester Wert gegenüber innerhalb eines Falls veränderlicher Größe und zwischen Fällen veränderlichem Parameter",
+        "textEn": "A fixed value being sought versus a quantity varying within one case and a parameter varying between cases"
+      },
+      {
+        "id": "same-symbol-new-role",
+        "textDe": "Derselbe Buchstabe in zwei Aussagen mit unterschiedlichen Rollen",
+        "textEn": "The same letter in two statements with different roles"
+      },
+      {
+        "id": "single-and-multiple-roles",
+        "textDe": "Eine einzelne Variable gegenüber mehreren Symbolen mit gleichzeitig verschiedenen Rollen",
+        "textEn": "One variable versus several symbols with different roles at the same time"
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "unknown-in-equation",
+        "taskDemandDe": "In der Gleichung 4x + 3 = 27 beschreibt x die Anzahl gleich großer Pakete in einer Lieferung. Erkläre die Rolle von x und wodurch sie sich von einer frei veränderlichen Größe unterscheidet.",
+        "taskDemandEn": "In the equation 4x + 3 = 27, x represents the number of equal-sized packages in a delivery. Explain the role of x and how it differs from a freely varying quantity.",
+        "expectedPerformanceDe": "Die lernende Person bezeichnet x als Unbekannte, weil die Situation genau einen noch zu bestimmenden Paketwert verlangt, und erklärt, dass x nach Festlegung der Gleichung nicht beliebig variiert. Die Begründung stützt sich auf die gesuchte Größe und nicht auf den Buchstaben x.",
+        "expectedPerformanceEn": "The learner identifies x as an unknown because the situation requires one package value that has yet to be determined and explains that x does not vary arbitrarily once the equation is fixed. The justification relies on the quantity being sought, not on the letter x.",
+        "understandingFocusDe": "Der Fall prüft die fachsprachlich begründete Rolle einer Unbekannten in einer Gleichung.",
+        "understandingFocusEn": "The case tests a correctly justified role of an unknown in an equation."
+      },
+      {
+        "id": "varying-side-length-in-formula",
+        "taskDemandDe": "Die Formel U = 4s gibt den Umfang eines Quadrats für verschiedene Seitenlängen s an. Ordne U und s Rollen zu und erkläre, warum s hier keine zu lösende Unbekannte ist.",
+        "taskDemandEn": "The formula U = 4s gives the perimeter of a square for different side lengths s. Assign roles to U and s and explain why s is not an unknown to be solved for here.",
+        "expectedPerformanceDe": "Die lernende Person beschreibt s als veränderliche Seitenlänge und U als davon abhängige veränderliche Umfangsgröße. Sie erklärt, dass verschiedene zulässige s-Werte eingesetzt werden können und die Formel jeweils den zugehörigen U-Wert liefert.",
+        "expectedPerformanceEn": "The learner describes s as a varying side length and U as the varying perimeter quantity that depends on it. The learner explains that different admissible values of s can be used and that the formula yields the corresponding value of U each time.",
+        "understandingFocusDe": "Der Transfer wechselt von einer gesuchten Unbekannten zu zwei durch eine Formel verbundenen veränderlichen Größen.",
+        "understandingFocusEn": "The transfer changes from an unknown being sought to two varying quantities connected by a formula."
+      },
+      {
+        "id": "unit-price-parameter-and-role-change",
+        "taskDemandDe": "In K = p · n ist n die gekaufte Stückzahl und p der für eine Preisliste festgelegte Stückpreis. Erkläre die Rollen von n, K und p und vergleiche sie mit der Gleichung p · 6 = 24, in der p gesucht ist.",
+        "taskDemandEn": "In K = p · n, n is the number of items purchased and p is the unit price fixed for one price list. Explain the roles of n, K, and p and compare them with the equation p · 6 = 24, in which p is being sought.",
+        "expectedPerformanceDe": "Die lernende Person deutet in der Formel n und K als veränderliche Größen und p als Parameter, der innerhalb einer Preisliste fest ist, aber zwischen Preislisten wechseln kann. In der zweiten Aussage ordnet sie demselben Buchstaben p die Rolle einer Unbekannten zu, weil sein fester Wert aus der Gleichung bestimmt werden soll.",
+        "expectedPerformanceEn": "In the formula, the learner interprets n and K as varying quantities and p as a parameter that is fixed within one price list but can change between price lists. In the second statement, the learner assigns the same letter p the role of an unknown because its fixed value is to be determined from the equation.",
+        "understandingFocusDe": "Der unabhängige Fall prüft Parameterbedeutung, mehrere gleichzeitige Rollen und die Neuordnung desselben Symbols aus dem Kontext.",
+        "understandingFocusEn": "The independent case tests parameter meaning, several simultaneous roles, and reclassification of the same symbol from context."
+      }
+    ]
+  }
+}

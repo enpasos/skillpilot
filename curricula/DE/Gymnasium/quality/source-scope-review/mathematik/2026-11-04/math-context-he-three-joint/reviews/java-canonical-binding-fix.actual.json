@@ -1,0 +1,21 @@
+{
+  "status": "PASS_INDEPENDENT_FRESH_COMPILE_AND_CANONICAL_BINDING_NEGATIVE_PROBES",
+  "implementationSha256": "d0d769f3b13ebba0c606f1c9cfc17cd849978f7a3121aeb6ab6cd11a2261d890",
+  "rows": [
+    {
+      "case": "different-path",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.IllegalStateException: Combined canonical path/SHA must match normal policy canonical input\n\tat com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews.main(MaterializeMathContextualCombinedViews.java:45)\n",
+      "rejectedBeforeAbsentPlanRead": true
+    },
+    {
+      "case": "different-sha",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.IllegalStateException: Combined canonical path/SHA must match normal policy canonical input\n\tat com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews.main(MaterializeMathContextualCombinedViews.java:45)\n",
+      "rejectedBeforeAbsentPlanRead": true
+    }
+  ],
+  "rootWrites": false
+}

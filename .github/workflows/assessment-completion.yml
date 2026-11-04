@@ -141,6 +141,8 @@ jobs:
             /contracts/
             /curricula/
             !/curricula/DE/Gymnasium/quality/
+            /curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/math-context-he-three-joint/approved-he-source-baselines/de-he-gk-g9.view.json
+            /curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/math-context-he-three-joint/approved-he-source-baselines/de-he-lk-g9.view.json
             !/curricula/DE/Gymnasium/visualizations/
             /docs/qa-ci/status/curriculum-quality-status.json
             /scripts/
@@ -173,6 +175,11 @@ jobs:
           python3 scripts/curriculum_completion_inputs.py --sparse-patterns | git sparse-checkout add --stdin
       - name: Verify strict report evidence contracts
         run: python3 scripts/test_curriculum_completion_integrity_report.py
+      - name: Check explicit Mathematics GK+LK views with the production merger
+        working-directory: backend
+        run: >-
+          ./gradlew checkMathContextualCombinedViews --console=plain
+          -x processResources -x generateClaudePluginPublication
       - name: Audit every offered Mathematics scope with the full prerequisite context
         working-directory: backend
         # This tagged data method constructs backend objects without a Spring

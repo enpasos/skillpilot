@@ -4,7 +4,7 @@
   "authorStatus": "PROPOSAL_REQUIRES_INDEPENDENT_SOURCE_FRAGMENT_REVIEW",
   "canonical": {
     "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
-    "sha256": "3c3ca7bdbe110061e263b7e37173e5bb365f325384e8cc0cde0713108a2b438a"
+    "sha256": "916f309dd5bc1d8cb66dba6fc204c29c5dfb9b54c935ce5968f27e2404cb7c2d"
   },
   "nativeCompiler": {
     "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
@@ -285,7 +285,7 @@
     },
     {
       "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
-      "sha256": "683b7e6354e455da65deb609be7a27ac2ac3027478c95c7bc876d081829d8924"
+      "sha256": "e9807b165ee7b4cc0050a0e7bea963092139a75bb7445c5705f92a5b71c3c936"
     },
     {
       "path": "curricula/DE/Gymnasium/quality/release-model/mathematik-semantic-fingerprint-rebind-3a3792.json",
@@ -325,7 +325,7 @@
     },
     {
       "path": "curricula/DE/Gymnasium/provenance/canonical-goal-applicability-override-registry.json",
-      "sha256": "84f9c894efc63f3a9f5375d9c1cde317bb9773db8afd9a12713b592065e8b374"
+      "sha256": "facf341659f03f1cf4f27ed5479091664efcc32c0249bdecb80000c8b477a648"
     },
     {
       "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/duration-target-role-reservation-code.review.json",
@@ -338,6 +338,38 @@
     {
       "path": "docs/qa-ci/evidence/curriculum-completion-integrity/2026-11-03/rp-context-contract-v4-upper-source-support-inputs/independent-upper-source-support-anchor-adoption.review.json",
       "sha256": "21df2b7972e95a87111619ddc19c410358332533fe9d2d9b3be0af1fc1eb3963"
+    },
+    {
+      "path": "app/scripts/mathContextualTerminalPlacements.ts",
+      "sha256": "ad45b726d5bf19859a7c0bab9abc35b63169fe99d43778a88946271336b53612"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+      "sha256": "def34edd54191bb2b85d69f638a52ab1e40769b785d3b70a6368de9ea63e5b0b"
+    },
+    {
+      "path": "app/scripts/generateHeMathSekiSourceExtraction.ts",
+      "sha256": "279d1c7258d2d935638a7ca59a987232bc8748c1f1db299afab800cc736e012e"
+    },
+    {
+      "path": "backend/build.gradle.kts",
+      "sha256": "c35f770eaab652d91ab9ed304f91efa3be9f73c5550aebe91e89b08df19c80ab"
+    },
+    {
+      "path": "app/scripts/generateMathDurationCompositionViews.ts",
+      "sha256": "d139c54b43f2c8411230bf6406164c5ae25c788120bd9d3475ffaece105d6982"
+    },
+    {
+      "path": "app/scripts/generateMathCountrySekICompositionViews.ts",
+      "sha256": "4cd58b60d5cdd7fe07171a02e027eebcd2049c11b548c67153a0916d980d9d1e"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/composition/MaterializeMathContextualCombinedViews.java",
+      "sha256": "d0d769f3b13ebba0c606f1c9cfc17cd849978f7a3121aeb6ab6cd11a2261d890"
+    },
+    {
+      "path": ".github/workflows/assessment-completion.yml",
+      "sha256": "1f83b222a3b062207fa35409c6dd8682330b53f9f845c67c9a2dbda2e1adc9ed"
     }
   ],
   "variantRegistry": {
@@ -437,7 +469,7 @@
       "sources": [
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-bb-gk.source.json",
             "sha256": "b9ea6c053a67bac976477fa964fc8ec943c96dda1c2865be4089daf1cabc563c"
           },
           "viewId": "de-bb-gym-math-gk",
@@ -456,7 +488,7 @@
         },
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-lk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-bb-lk.source.json",
             "sha256": "2d6194a6fabcd8003424b9884a9ec837607036142575af9cbb90523647d33ab0"
           },
           "viewId": "de-bb-gym-math-lk",
@@ -471,7 +503,7 @@
             {
               "goalId": "509ae03b-96b1-4bb1-b015-b83d14569dae",
               "view": {
-                "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-lk.view.json",
+                "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-bb-sekii-lk.source.json",
                 "sha256": "f90144ee1a9f555a66c809a3f4ce2a76d500774212160586326240b8bdc55794"
               }
             }
@@ -494,7 +526,7 @@
       "sources": [
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-be-gk.source.json",
             "sha256": "847f5651aa8d47ac7382d12816897b09500b2ee3401c81aff9f1843727144169"
           },
           "viewId": "de-be-gym-math-gk",
@@ -513,7 +545,7 @@
         },
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-lk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-be-lk.source.json",
             "sha256": "006a4e48ef1bcf3cc63c64b081ca2c9e6a73e6d1841a41005f18fe2c06fd3653"
           },
           "viewId": "de-be-gym-math-lk",
@@ -528,7 +560,7 @@
             {
               "goalId": "509ae03b-96b1-4bb1-b015-b83d14569dae",
               "view": {
-                "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-lk.view.json",
+                "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-be-sekii-lk.source.json",
                 "sha256": "e6c54428d022d3e2984aa07129624f3e9d0512908b3725c01830b52eb7ab42fc"
               }
             }
@@ -550,7 +582,7 @@
       "sources": [
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-gk.source.json",
             "sha256": "d93b0f63c8692a4d3d3000cc5d5bb716dd64ac1a250e0e098d8d90ddecad7c48"
           },
           "viewId": "de-by-gym-math-gk",
@@ -565,35 +597,35 @@
             {
               "goalId": "b321e32c-1dff-5529-8200-6879ee8fb10b",
               "view": {
-                "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+                "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-sekii-gk.source.json",
                 "sha256": "896e850144c7e9e6b4020f370099749ef33fc9a933f8691b100830626d15b5b1"
               }
             },
             {
               "goalId": "d110ab96-275e-5ccb-8851-e02725baf31c",
               "view": {
-                "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+                "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-sekii-gk.source.json",
                 "sha256": "896e850144c7e9e6b4020f370099749ef33fc9a933f8691b100830626d15b5b1"
               }
             },
             {
               "goalId": "4f85d29a-bd52-5f21-8b57-55def4440e1b",
               "view": {
-                "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+                "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-sekii-gk.source.json",
                 "sha256": "896e850144c7e9e6b4020f370099749ef33fc9a933f8691b100830626d15b5b1"
               }
             },
             {
               "goalId": "6cff2b2e-be7f-531a-8849-e5fb3a55978a",
               "view": {
-                "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+                "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-sekii-gk.source.json",
                 "sha256": "896e850144c7e9e6b4020f370099749ef33fc9a933f8691b100830626d15b5b1"
               }
             },
             {
               "goalId": "9809780d-c860-5a79-87ec-2a3479cc7f1f",
               "view": {
-                "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+                "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-sekii-gk.source.json",
                 "sha256": "896e850144c7e9e6b4020f370099749ef33fc9a933f8691b100830626d15b5b1"
               }
             }
@@ -605,7 +637,7 @@
         },
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-lk.source.json",
             "sha256": "66ea5df7f8d19b97d070aa14d195c2ac2f89f86f99967b6477aaa7864a92f047"
           },
           "viewId": "de-by-gym-math-lk",
@@ -620,70 +652,70 @@
             {
               "goalId": "b321e32c-1dff-5529-8200-6879ee8fb10b",
               "view": {
-                "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+                "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-sekii-lk.source.json",
                 "sha256": "e29b51a831ee4903c9f89eafb8ca896adf0f65f3591b195c93b37fbe86e6b121"
               }
             },
             {
               "goalId": "d110ab96-275e-5ccb-8851-e02725baf31c",
               "view": {
-                "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+                "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-sekii-lk.source.json",
                 "sha256": "e29b51a831ee4903c9f89eafb8ca896adf0f65f3591b195c93b37fbe86e6b121"
               }
             },
             {
               "goalId": "938d47a2-5d7c-52d6-8644-5cc6060d76a1",
               "view": {
-                "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+                "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-sekii-lk.source.json",
                 "sha256": "e29b51a831ee4903c9f89eafb8ca896adf0f65f3591b195c93b37fbe86e6b121"
               }
             },
             {
               "goalId": "e98672c6-871a-5d0b-889c-5afc51040f0d",
               "view": {
-                "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+                "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-sekii-lk.source.json",
                 "sha256": "e29b51a831ee4903c9f89eafb8ca896adf0f65f3591b195c93b37fbe86e6b121"
               }
             },
             {
               "goalId": "4f85d29a-bd52-5f21-8b57-55def4440e1b",
               "view": {
-                "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+                "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-sekii-lk.source.json",
                 "sha256": "e29b51a831ee4903c9f89eafb8ca896adf0f65f3591b195c93b37fbe86e6b121"
               }
             },
             {
               "goalId": "03b00864-7001-5c6a-875b-dc269b3484d9",
               "view": {
-                "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+                "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-sekii-lk.source.json",
                 "sha256": "e29b51a831ee4903c9f89eafb8ca896adf0f65f3591b195c93b37fbe86e6b121"
               }
             },
             {
               "goalId": "60dbe2ed-55fb-5352-8829-1ea23fbee024",
               "view": {
-                "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+                "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-sekii-lk.source.json",
                 "sha256": "e29b51a831ee4903c9f89eafb8ca896adf0f65f3591b195c93b37fbe86e6b121"
               }
             },
             {
               "goalId": "240f7716-7c6f-5705-876e-8046fd8a6720",
               "view": {
-                "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+                "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-sekii-lk.source.json",
                 "sha256": "e29b51a831ee4903c9f89eafb8ca896adf0f65f3591b195c93b37fbe86e6b121"
               }
             },
             {
               "goalId": "6cff2b2e-be7f-531a-8849-e5fb3a55978a",
               "view": {
-                "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+                "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-sekii-lk.source.json",
                 "sha256": "e29b51a831ee4903c9f89eafb8ca896adf0f65f3591b195c93b37fbe86e6b121"
               }
             },
             {
               "goalId": "9809780d-c860-5a79-87ec-2a3479cc7f1f",
               "view": {
-                "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+                "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-sekii-lk.source.json",
                 "sha256": "e29b51a831ee4903c9f89eafb8ca896adf0f65f3591b195c93b37fbe86e6b121"
               }
             }
@@ -705,7 +737,7 @@
       "sources": [
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-gk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-hb-gk.source.json",
             "sha256": "e5f7650ab4a3f2de26a4a63c6bbb71e25e8eb4e8a9e686b0a139916d1f560e22"
           },
           "viewId": "de-hb-gym-math-gk",
@@ -724,7 +756,7 @@
         },
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-lk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-hb-lk.source.json",
             "sha256": "0c2b81ec0360f2ba2c41707f06802a98ace90a2bc43c35fb0d0d0ab9d4e4b91f"
           },
           "viewId": "de-hb-gym-math-lk",
@@ -753,7 +785,7 @@
       "sources": [
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-gk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-hh-gk.source.json",
             "sha256": "d5bd4ff11a8f7d1256e6659cae3d28b9d801ecb0110bdaf2a14c14b7e843d81f"
           },
           "viewId": "de-hh-gym-math-gk",
@@ -774,7 +806,7 @@
         },
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-lk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-hh-lk.source.json",
             "sha256": "73de7be02ca5fb761ce45af6acda764299d7c92c4817d8328b9544fd6e063713"
           },
           "viewId": "de-hh-gym-math-lk",
@@ -805,7 +837,7 @@
       "sources": [
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-mv-gk.source.json",
             "sha256": "64c30e2c51e3ade70aca557c2955a6981a2edace7feafb874e72af6f5d132cdc"
           },
           "viewId": "de-mv-gym-math-gk",
@@ -920,7 +952,7 @@
         },
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-lk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-mv-lk.source.json",
             "sha256": "54578018676aa5a3393237719eb9df5fc68b9b03ee39c4068054f17ee55bd710"
           },
           "viewId": "de-mv-gym-math-lk",
@@ -1045,7 +1077,7 @@
       "sources": [
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-ni-gk.source.json",
             "sha256": "01ce516257d488b2b3091f6e48d6992ab9fa0f78906005d5cefe8f79c90a6280"
           },
           "viewId": "de-ni-gym-math-gk",
@@ -1120,7 +1152,7 @@
         },
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-lk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-ni-lk.source.json",
             "sha256": "6401c4a9e4d97732e4a11f53bc436eebee80c599c348d8993bcf3d0fb4a7dad5"
           },
           "viewId": "de-ni-gym-math-lk",
@@ -1205,7 +1237,7 @@
       "sources": [
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-nw-gk.source.json",
             "sha256": "d9f4478b2dd70f444af4f25b77069342d9fbc1651f7cd90ce146956e25558faa"
           },
           "viewId": "de-nw-gym-math-gk",
@@ -1226,7 +1258,7 @@
         },
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-lk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-nw-lk.source.json",
             "sha256": "ac79020913c025053fd5d1c25afaa3b75d2eb9302bdcac24abd396359eb1ba40"
           },
           "viewId": "de-nw-gym-math-lk",
@@ -1257,7 +1289,7 @@
       "sources": [
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-sl-gk.source.json",
             "sha256": "9726236d0b7756ddbc1b24fc00c9c2386f6b2425b973103ce807880d27d97aa4"
           },
           "viewId": "de-sl-gym-math-gk",
@@ -1278,7 +1310,7 @@
         },
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-lk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-sl-lk.source.json",
             "sha256": "108965a7ec5b68092ab6694c2d522cf54c81d0e26ed35043d0a7e62f7e76c55a"
           },
           "viewId": "de-sl-gym-math-lk",
@@ -1309,7 +1341,7 @@
       "sources": [
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-sn-gk.source.json",
             "sha256": "02dc70aabaf72f05befd162df1c7d2c319313518db7b74b46e218996b85896b2"
           },
           "viewId": "de-sn-gym-math-gk",
@@ -1330,7 +1362,7 @@
         },
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-lk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-sn-lk.source.json",
             "sha256": "8f5575b53dd5ac3dfbfff7dd213ebe3d30c29b96172cee15387da914dc3e231a"
           },
           "viewId": "de-sn-gym-math-lk",
@@ -1361,7 +1393,7 @@
       "sources": [
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-st-gk.source.json",
             "sha256": "cff4a8628a841e6a485abfb3a0c430fad79704431679f2d0cff3d07b89ec8fd3"
           },
           "viewId": "de-st-gym-math-gk",
@@ -1382,7 +1414,7 @@
         },
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-lk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-st-lk.source.json",
             "sha256": "07770a6ecdff441e01878366657247dd734dcc7c771f6d361148cadc2e9961e6"
           },
           "viewId": "de-st-gym-math-lk",
@@ -1413,7 +1445,7 @@
       "sources": [
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-th-gk.source.json",
             "sha256": "38dc7c2d1eff4fba0da2bcbb446fb7da1ee7040d9849d5a90abaa610ef2614ce"
           },
           "viewId": "de-th-gym-math-gk",
@@ -1709,7 +1741,7 @@
         },
         {
           "view": {
-            "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-lk.view.json",
+            "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-th-lk.source.json",
             "sha256": "2d71c623be8dc3f6e4b41859fe8c8a065e7cf5053ce580e206a75c3744df2e7a"
           },
           "viewId": "de-th-gym-math-lk",
@@ -3192,7 +3224,7 @@
     },
     {
       "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
-      "sha256": "167120e1f19f954ab90880f562f399324628a809ddb37b4b52513204a13e1026"
+      "sha256": "00ebcba880da85a5f6f4065c912077e70a87d11ffe0d66645b7b3f163ae1f58c"
     },
     {
       "path": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_math_lower_secondary_source_extraction_to_canonical_math.review.json",
@@ -3733,12 +3765,36 @@
     {
       "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/math-nine/author-exact-nine-whole-form-integration.json",
       "sha256": "a2dbf306c5716ad5c8d1aecc7581544900fd07e06f1c53f2bc415d6262e6780f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/finite-scope-operations.json",
+      "sha256": "e8a4a016c6a47c65abbe61ac959b9aaa66b6f65c30656f31d51251a32e0ef468"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/reviews/fundamental/final-joint-obligation-decision-v2.json",
+      "sha256": "16ef97303ef3c59275739ea19db2e20bcc2cac926af28d33a31eb9f6e9ff8f2b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/reviews/b2/review.json",
+      "sha256": "e4e62d3e3cfffa9ae5fde8bd6acfe8ba620ad097bf2d4470143b9caae01a6ff3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/he-two-reference-gaps/original-review.json",
+      "sha256": "05e0548e3c247c484b95e83a8a5540438e473e72fa0698dd3947a91cdea2c03b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/he-two-reference-gaps/portable-source-evidence.json",
+      "sha256": "4324d6091fdd50b4d3ecb54eaaf3c3782c1959d04ad764b174c6c16db0271ed6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/math-context-he-three-joint/author-exact-context-he-three-joint-integration.json",
+      "sha256": "c422f2fe36fce397f408198bea03dd66134c63924b93a41fda6f54765f534645"
     }
   ],
   "existingStageViews": [
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-bb-gk.source.json",
         "sha256": "b9ea6c053a67bac976477fa964fc8ec943c96dda1c2865be4089daf1cabc563c"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
@@ -3756,7 +3812,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-bb-lk.source.json",
         "sha256": "2d6194a6fabcd8003424b9884a9ec837607036142575af9cbb90523647d33ab0"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-lk.view.json",
@@ -3774,7 +3830,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-be-gk.source.json",
         "sha256": "847f5651aa8d47ac7382d12816897b09500b2ee3401c81aff9f1843727144169"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json",
@@ -3792,7 +3848,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-be-lk.source.json",
         "sha256": "006a4e48ef1bcf3cc63c64b081ca2c9e6a73e6d1841a41005f18fe2c06fd3653"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-lk.view.json",
@@ -3810,7 +3866,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-gk.source.json",
         "sha256": "d93b0f63c8692a4d3d3000cc5d5bb716dd64ac1a250e0e098d8d90ddecad7c48"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json",
@@ -3837,7 +3893,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-lk.source.json",
         "sha256": "66ea5df7f8d19b97d070aa14d195c2ac2f89f86f99967b6477aaa7864a92f047"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
@@ -3864,7 +3920,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-hb-gk.source.json",
         "sha256": "e5f7650ab4a3f2de26a4a63c6bbb71e25e8eb4e8a9e686b0a139916d1f560e22"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-gk.view.json",
@@ -3882,7 +3938,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-hb-lk.source.json",
         "sha256": "0c2b81ec0360f2ba2c41707f06802a98ace90a2bc43c35fb0d0d0ab9d4e4b91f"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-lk.view.json",
@@ -3936,7 +3992,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-hh-gk.source.json",
         "sha256": "d5bd4ff11a8f7d1256e6659cae3d28b9d801ecb0110bdaf2a14c14b7e843d81f"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-gk.view.json",
@@ -3954,7 +4010,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-hh-lk.source.json",
         "sha256": "73de7be02ca5fb761ce45af6acda764299d7c92c4817d8328b9544fd6e063713"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-lk.view.json",
@@ -3972,7 +4028,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-mv-gk.source.json",
         "sha256": "64c30e2c51e3ade70aca557c2955a6981a2edace7feafb874e72af6f5d132cdc"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
@@ -3990,7 +4046,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-mv-lk.source.json",
         "sha256": "54578018676aa5a3393237719eb9df5fc68b9b03ee39c4068054f17ee55bd710"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-lk.view.json",
@@ -4008,7 +4064,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-ni-gk.source.json",
         "sha256": "01ce516257d488b2b3091f6e48d6992ab9fa0f78906005d5cefe8f79c90a6280"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
@@ -4026,7 +4082,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-ni-lk.source.json",
         "sha256": "6401c4a9e4d97732e4a11f53bc436eebee80c599c348d8993bcf3d0fb4a7dad5"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-lk.view.json",
@@ -4044,7 +4100,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-nw-gk.source.json",
         "sha256": "d9f4478b2dd70f444af4f25b77069342d9fbc1651f7cd90ce146956e25558faa"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
@@ -4062,7 +4118,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-nw-lk.source.json",
         "sha256": "ac79020913c025053fd5d1c25afaa3b75d2eb9302bdcac24abd396359eb1ba40"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-lk.view.json",
@@ -4152,7 +4208,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-sl-gk.source.json",
         "sha256": "9726236d0b7756ddbc1b24fc00c9c2386f6b2425b973103ce807880d27d97aa4"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
@@ -4170,7 +4226,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-sl-lk.source.json",
         "sha256": "108965a7ec5b68092ab6694c2d522cf54c81d0e26ed35043d0a7e62f7e76c55a"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-lk.view.json",
@@ -4188,7 +4244,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-sn-gk.source.json",
         "sha256": "02dc70aabaf72f05befd162df1c7d2c319313518db7b74b46e218996b85896b2"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
@@ -4206,7 +4262,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-sn-lk.source.json",
         "sha256": "8f5575b53dd5ac3dfbfff7dd213ebe3d30c29b96172cee15387da914dc3e231a"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-lk.view.json",
@@ -4224,7 +4280,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-st-gk.source.json",
         "sha256": "cff4a8628a841e6a485abfb3a0c430fad79704431679f2d0cff3d07b89ec8fd3"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json",
@@ -4251,7 +4307,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-st-lk.source.json",
         "sha256": "07770a6ecdff441e01878366657247dd734dcc7c771f6d361148cadc2e9961e6"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-lk.view.json",
@@ -4278,7 +4334,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-th-gk.source.json",
         "sha256": "38dc7c2d1eff4fba0da2bcbb446fb7da1ee7040d9849d5a90abaa610ef2614ce"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
@@ -4296,7 +4352,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-th-lk.source.json",
         "sha256": "2d71c623be8dc3f6e4b41859fe8c8a065e7cf5053ce580e206a75c3744df2e7a"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-lk.view.json",
@@ -4460,7 +4516,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-sekii-gk.source.json",
         "sha256": "896e850144c7e9e6b4020f370099749ef33fc9a933f8691b100830626d15b5b1"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
@@ -4485,7 +4541,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-by-sekii-lk.source.json",
         "sha256": "e29b51a831ee4903c9f89eafb8ca896adf0f65f3591b195c93b37fbe86e6b121"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
@@ -4510,7 +4566,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-st-sekii-gk.source.json",
         "sha256": "66c4544a7cd4911d779539dcf5a2204f74a0a33c4317694fc7645be73ce91bba"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json",
@@ -4535,7 +4591,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-st-sekii-lk.source.json",
         "sha256": "86cf6c4aa186f509edbe5c623bfbabb995eaa6b0389a34f2dcdd864dca8c7e79"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-lk.view.json",
@@ -4560,7 +4616,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-bw-sekii-gk.source.json",
         "sha256": "0e5e2cd81a7fc4e94c6c70ac59f4123b429f91d39f0dffec5300d507a460fde1"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk-g9.view.json",
@@ -4594,7 +4650,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-bw-sekii-lk.source.json",
         "sha256": "88cc92b70dd5d4ff240a21e36da1080383f852eb13bff60b785bea4e50d270bd"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk-g9.view.json",
@@ -4628,7 +4684,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-mv-sekii-gk.source.json",
         "sha256": "814d34a5136700a19ae5c635afcc0a738f1185737ead9e6d26d9d51282ad22ab"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json",
@@ -4644,7 +4700,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-mv-sekii-lk.source.json",
         "sha256": "8dfda8ccafdabc01f90d03bf7a6d286c5118c18b5c9426894acf1b216870a87a"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-lk.view.json",
@@ -4660,7 +4716,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-ni-sekii-gk.source.json",
         "sha256": "398f9ef2d7d6195bd610dda37093ed6e14069795c3aa0d285607641ca1424bb6"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
@@ -4676,7 +4732,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-ni-sekii-lk.source.json",
         "sha256": "56198c29bdeb5bdc2e9d2b7c047bf660f909b80f2945ce124627a42adf367e51"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-lk.view.json",
@@ -4692,7 +4748,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-nw-sekii-gk.source.json",
         "sha256": "78fb81eea0b858ada4ece211b0843715323d06ba6ba2156d1af5e1d8aec21cc3"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json",
@@ -4708,7 +4764,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-nw-sekii-lk.source.json",
         "sha256": "870182a2c13789ab5b5cd7829374344d48173e018ff379369754cca1fda29dc0"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-lk.view.json",
@@ -4724,7 +4780,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-sl-sekii-gk.source.json",
         "sha256": "ac1dc92cc9cc1d50df9bda1ad094b82367708259527f81380d630dc1eeeaedbb"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json",
@@ -4740,7 +4796,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-sl-sekii-lk.source.json",
         "sha256": "dec312e03f98646d3aec46a00441e2509796f33770020a4be904cb6cc4b80456"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-lk.view.json",
@@ -4756,7 +4812,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-sn-sekii-gk.source.json",
         "sha256": "aa69594d7cc5853f4aceb49963a8be55efac238e38cd5966f81253f7bae18f2e"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json",
@@ -4772,7 +4828,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-sn-sekii-lk.source.json",
         "sha256": "e8d1944ffee4344b25a1d232753a31cb8fec3239e4fc6c6b9368ec60aa7ca42f"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-lk.view.json",
@@ -4788,7 +4844,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-th-sekii-gk.source.json",
         "sha256": "6b03e68c7eafe7ae040031cfdd1f0879e18877544789afb8955b0aa01755c6b7"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json",
@@ -4804,7 +4860,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-th-sekii-lk.source.json",
         "sha256": "b71da2a4ccd9eab97d1bb6e1d5518d869f8a0d195131b80b16775482e1398e2b"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-lk.view.json",
@@ -4820,7 +4876,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-bb-sekii-gk.source.json",
         "sha256": "fd97be82094a2cb793e3a0b5b56d61c402a380ab996f8e9b598b12830911e16f"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json",
@@ -4836,7 +4892,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-bb-sekii-lk.source.json",
         "sha256": "f90144ee1a9f555a66c809a3f4ce2a76d500774212160586326240b8bdc55794"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-lk.view.json",
@@ -4852,7 +4908,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-be-sekii-lk.source.json",
         "sha256": "e6c54428d022d3e2984aa07129624f3e9d0512908b3725c01830b52eb7ab42fc"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-lk.view.json",
@@ -4900,7 +4956,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-bw-sekii-gk.source.json",
         "sha256": "0e5e2cd81a7fc4e94c6c70ac59f4123b429f91d39f0dffec5300d507a460fde1"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json",
@@ -4916,7 +4972,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-bw-sekii-lk.source.json",
         "sha256": "88cc92b70dd5d4ff240a21e36da1080383f852eb13bff60b785bea4e50d270bd"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk.view.json",
@@ -4932,7 +4988,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-hb-sekii-gk.source.json",
         "sha256": "939978703db25187f41b7c246ac02c4d15c49c7c6a0153dbfb32a026cc523565"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
@@ -4948,7 +5004,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-hb-sekii-lk.source.json",
         "sha256": "b409c48bd1a53dcb8935e87d62b900062575436fdf5f693828ec763f0c7de1c0"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-lk.view.json",
@@ -4964,7 +5020,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-he-sekii-lk.source.json",
         "sha256": "5c650046c7293c47fa071bd292c4658f50f10277fa2e6364ce70e030dc341981"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json",
@@ -4980,7 +5036,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-hh-sekii-gk.source.json",
         "sha256": "40bd8f604281f82c27f7b16a874908fd9a4c3d72c7c52cdf268b1877f3ba2394"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-gk.view.json",
@@ -4996,7 +5052,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-hh-sekii-lk.source.json",
         "sha256": "f8778c2241a1fa12c69507708b66ccd7c45a47e8d355b0dfead1be7fba69c098"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-lk.view.json",
@@ -5012,7 +5068,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-sh-sekii-lk.source.json",
         "sha256": "1d6849bcb28d1efed500a1d6b72d22c58608bf123616acd6e64999151e4558b6"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
@@ -5028,7 +5084,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-he-sekii-gk.source.json",
         "sha256": "742871bb4ad6c85f4c901b4942f85141330cf699b9f61f333c3772ba409cfccd"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-gk.view.json",
@@ -5044,7 +5100,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-rp-sekii-gk.source.json",
         "sha256": "2b4e0b3739df2a68507d3915494226a8ef353dd6e523705b6bdb0da0b25c80ba"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-gk.view.json",
@@ -5060,7 +5116,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-sh-sekii-gk.source.json",
         "sha256": "3e965dc125e754e5898dec3331e550605e64d763b42e30854fc18c97d2c8cf7f"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
@@ -5076,7 +5132,7 @@
     },
     {
       "source": {
-        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-gk.view.json",
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-be-sekii-gk.source.json",
         "sha256": "a3cc4a35d1cfbaa3ee22acd09a7baba26ceac7c778f45bd64bc8ecbb3f80ab93"
       },
       "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-gk.view.json",
@@ -5089,11 +5145,87 @@
       },
       "relocations": [],
       "upperPlacements": []
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-de-gk.source.json",
+        "sha256": "2c5e9f0853c0bbee94bce61f210bccd3fb7a4865f9365c351ddb64c21fc07df1"
+      },
+      "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-gk.view.json",
+      "outputViewId": "de-de-gym-math-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "relocations": [],
+      "upperPlacements": []
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-de-lk.source.json",
+        "sha256": "a84ec0540573b2a1c8c8dbd3d28152d316148b38896e07e01bb43f7160a0e3a1"
+      },
+      "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-lk.view.json",
+      "outputViewId": "de-de-gym-math-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "relocations": [],
+      "upperPlacements": []
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-de-sekii-gk.source.json",
+        "sha256": "87ba12809b7a4f141a378f0dfb24c631206225fe0c0a65b47440bac7fe6027f3"
+      },
+      "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-sekii-gk.view.json",
+      "outputViewId": "de-de-gym-sekii-math-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "relocations": [],
+      "upperPlacements": []
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-de-sekii-lk.source.json",
+        "sha256": "f963f6690ab9b47d7b6f4b237bd3994b354f96876f706042ed295d988b649df4"
+      },
+      "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-sekii-lk.view.json",
+      "outputViewId": "de-de-gym-sekii-math-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "relocations": [],
+      "upperPlacements": []
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/producer-input-baselines/de-rp-sekii-lk.source.json",
+        "sha256": "26509a5aaad4eb1557ef3cb9c445168a1157795ff8a941a827d34e8197a7ed25"
+      },
+      "outputPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-lk.view.json",
+      "outputViewId": "de-rp-gym-sekii-math-lk",
+      "scope": {
+        "jurisdiction": "DE-RP",
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "relocations": [],
+      "upperPlacements": []
     }
   ],
   "durationGenerator": {
     "path": "app/scripts/generateMathDurationCompositionViews.ts",
-    "sha256": "561cfd69914e29b7c9f4b9d0042ed3035bd9faaf40ddab9c8dc3896b7ad863ce"
+    "sha256": "d139c54b43f2c8411230bf6406164c5ae25c788120bd9d3475ffaece105d6982"
   },
   "durationOutputViewIds": [
     "de-he-gym-seki-math-g8",
@@ -5115,7 +5247,7 @@
     "de-sh-gym-math-gk-g9",
     "de-sh-gym-math-lk-g9"
   ],
-  "reviewReceiptPath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/stage-scope-implementation-math-nine-same-identity.review.json",
+  "reviewReceiptPath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/stage-scope-implementation-math-context-he-three-joint.review.json",
   "assessmentScopeOperations": [
     {
       "id": "mv-seki-material-exclude",
@@ -13638,10 +13770,10 @@
       "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/vector-thirtysix/author-exact-source-and-operations.json"
     }
   ],
-  "revision": "nine-existing-math-whole-assessment-forms-20261104-v1",
+  "revision": "context-he-three-joint-finite-implementation-20261104-v1",
   "priorImplementationReview": {
-    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/stage-scope-implementation-sh-markov-own-late-twelve.review.json",
-    "sha256": "6675d079131fe378be985657c6e2de85e9b1fe4d6217eef7cf19627b57af9858"
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/stage-scope-implementation-math-nine-same-identity.review.json",
+    "sha256": "0c80527939091f90a40ef955d934a40b3797238cd1772641326d6fffc2d03669"
   },
   "scopeFollowupSections": [
     {

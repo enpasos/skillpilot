@@ -38,6 +38,8 @@ type Passage = {
   sourcePath: string
   sourceDocumentKey: SourceDocumentKey
   goalBearing: boolean
+  printedPage?: number
+  supportingPrintedPages?: number[]
 }
 
 type SourceGoal = {
@@ -1135,6 +1137,45 @@ const extractLegacyGradePlanPassages = (
     left.topicCode.localeCompare(right.topicCode, 'de-DE', { numeric: true }))
 }
 
+/** The mandatory-topic parser omits introductions and transition profiles.
+ * Retain only the independently reviewed G9 J10 radian expectation/context;
+ * optional J9 content and G8 remain outside this bounded addition. */
+const buildReviewedG9RadianPassages = (pdfText: string): Passage[] => {
+  const pages = pdfText.split(/\f/u)
+  const span = (pdfPage: number, start: string, end: string, includeEnd = true): string => {
+    const page = normalizeForSearch(pages[pdfPage - 1] ?? '')
+    const first = page.indexOf(start)
+    const last = page.indexOf(end, first + start.length)
+    if (first < 0 || last < first) throw new Error(`Missing reviewed G9 radian context on PDF page ${pdfPage}`)
+    return page.slice(first, last + (includeEnd ? end.length : 0)).trim()
+  }
+  return [
+    { id: 'g9-introduction-j10-bogenmass-context', topicCode: 'G9-J10.INTRODUCTION.BOGENMASS',
+      title: 'G9 Jahrgang 10: Einleitung zum Bogenmaß (gedruckte Seite 36)',
+      text: span(37, 'Die mathematischen Begriffe Sinus', 'behandelt werden.'),
+      page: 37, printedPage: 36, sourcePath: repoPath(g9PdfPath), sourceDocumentKey: 'G9', goalBearing: false },
+    { id: 'g9-transition-j10-context', topicCode: 'G9-UEBERGANG.J10.CONTEXT',
+      title: 'G9 Übergangsprofil: Geltung und Unterrichtsorganisation (gedruckte Seite 43)',
+      text: span(44, 'Voraussetzung und Grundlage', 'erarbeitet werden.'),
+      page: 44, printedPage: 43, sourcePath: repoPath(g9PdfPath), sourceDocumentKey: 'G9', goalBearing: false },
+    { id: 'g9-transition-j10-bogenmass', topicCode: 'G9-UEBERGANG.J10.BOGENMASS',
+      title: 'G9 Übergangsprofil: Winkel im Bogenmaß (gedruckte Seite 45)',
+      text: span(46, 'Kreis und Kreisteile', 'Trigonometrie', false),
+      page: 46, printedPage: 45, supportingPrintedPages: [36, 41, 43],
+      sourcePath: repoPath(g9PdfPath), sourceDocumentKey: 'G9', goalBearing: true },
+  ]
+}
+const buildReviewedG9RadianSourceGoal = (): SourceGoal => ({
+  id: 'he-math-seki-g9-transition-j10-bogenmass', passageId: 'g9-transition-j10-bogenmass',
+  topicCode: 'G9-UEBERGANG.J10.BOGENMASS', title: 'Winkel im Bogenmaß (Übergangsprofil Jahrgang 10)',
+  description: 'Die lernende Person kann den im G9-Übergangsprofil von Jahrgangsstufe 10 in die gymnasiale Oberstufe ausgewiesenen Schwerpunkt "Winkel im Bogenmaß" fachgerecht bearbeiten.',
+  sourceText: 'Winkel im Bogenmaß', sourceSpan: 'Winkel im Bogenmaß', parentBulletText: 'Winkel im Bogenmaß',
+  sourceRef: 'Lehrplan Gymnasium G9 Mathematik, Übergangsprofil von Jahrgangsstufe 10 in die gymnasiale Oberstufe, gedruckte Seiten 43–45; konkret Seite 45, ergänzend Jahrgang-10-Einleitung Seite 36 und 10.4 Seite 41',
+  granularity: 'legacyGradeTopicFocus',
+  tags: ['source:DE-HE', 'sourceDocument:G9', 'subject:Mathematik', 'stage:SekI', 'legacy:G9', 'durationModel:G9', 'grade:10'],
+  requires: [], contains: [], type: 'atomic',
+})
+
 const buildLeitfadenPassages = (): Passage[] => [
   {
     id: 'leitfaden-kc-fachcurriculum-relation',
@@ -1249,13 +1290,15 @@ const g9Passages = extractLegacyGradePlanPassages(g9Text, {
   sourceDocumentKey: 'G9',
 })
 const leitfadenPassages = buildLeitfadenPassages()
+const reviewedG9RadianPassages = buildReviewedG9RadianPassages(g9Text)
 const sourceGoals = [
   ...buildKcContentSourceGoals(),
   ...buildKcCompetencySourceGoals(),
   ...buildLegacyGradePlanSourceGoals(g8Passages, 'G8'),
   ...buildLegacyGradePlanSourceGoals(g9Passages, 'G9'),
+  buildReviewedG9RadianSourceGoal(),
 ]
-const passages = [...kcContentPassages, ...kcCompetencyPassages, ...g8Passages, ...g9Passages, ...leitfadenPassages]
+const passages = [...kcContentPassages, ...kcCompetencyPassages, ...g8Passages, ...g9Passages, ...leitfadenPassages, ...reviewedG9RadianPassages]
 
 const expectedG8TopicCodes = [
   'G8-5G.1',
@@ -1375,6 +1418,13 @@ const mapping1Checks = [
     `Erfasst: ${expectedG9TopicCodes.length - missingG9TopicCodes.length}/${expectedG9TopicCodes.length}; fehlend: ${missingG9TopicCodes.join(', ') || '-'}`,
   ),
   buildCheck(
+    'g9-reviewed-j10-radian-context-present',
+    'Begrenzt geprüfte G9-J10-/Übergangspassagen zum Bogenmaß sind getrennt erhalten',
+    reviewedG9RadianPassages.length === 3
+      && reviewedG9RadianPassages.find((passage) => passage.goalBearing)?.text.includes('Winkel im Bogenmaß') === true,
+    'J10-Einleitung S.36 und Übergangsprofil S.43/45; keine Aufwertung fakultativer J9-Inhalte, keine G8-Aussage.',
+  ),
+  buildCheck(
     'leitfaden-processing-policy-present',
     'Leitfaden-Beleg fuer Kerncurriculum/Fachcurriculum-Verhältnis ist erfasst',
     leitfadenPolicyPresent,
@@ -1428,7 +1478,7 @@ const mapping2Checks = [
   ),
   buildCheck(
     'g9-source-goals-created',
-    'Aus G9-Jahrgangspassagen wurden granulare Source-Ziele erzeugt',
+    'Aus G9-Jahrgangspassagen und dem begrenzt geprüften J10-Übergangsprofil wurden Source-Ziele erzeugt',
     goalBearingPassagesWithoutSourceGoals.filter((id) => id.startsWith('g9-')).length === 0 && g9SourceGoals.length > 0,
     `G9-Source-Ziele: ${g9SourceGoals.length}; Passagen ohne Source-Ziele: ${goalBearingPassagesWithoutSourceGoals.filter((id) => id.startsWith('g9-')).slice(0, 12).join(', ') || '-'}`,
   ),
@@ -1778,11 +1828,12 @@ const output = {
   sourceDocument: sourceDocuments[0],
   sourceDocuments,
   method: {
-    passageExtraction: 'pdftotext -layout; KC 7.3 content-field cells are persisted as goal-bearing original passages; G8 topic blocks 5G.1-9G.3 and G9 topic blocks 5.1-10.5 are extracted from verbindliche Unterrichtsinhalte; Leitfaden passages document the processing policy.',
-    sourceGoalExtraction: 'extracts one source goal per literal KC 7.3 content focus, one source goal per KC 7.1/7.2/6 competency expectation bullet, and granular source goals from the verbindliche G8/G9 topic lines.',
+    passageExtraction: 'pdftotext -layout; KC 7.3 content-field cells are persisted as goal-bearing original passages; G8 topic blocks 5G.1-9G.3 and G9 topic blocks 5.1-10.5 are extracted from verbindliche Unterrichtsinhalte; separately reviewed G9 J10 introduction/transition radian passages retain their own context and do not promote optional J9 content; Leitfaden passages document the processing policy.',
+    sourceGoalExtraction: 'extracts one source goal per literal KC 7.3 content focus, one source goal per KC 7.1/7.2/6 competency expectation bullet, and granular source goals from the verbindliche G8/G9 topic lines; one separately reviewed radian expectation from the G9 end-of-J10 transition profile.',
     projectionAudit: 'derives canonical-duration-grade evidence from G8/G9 source goals and M3 mappings, then checks that each evidence link is represented by authored year structure or duration-specific goalPlacements.',
   },
-  expectedTopicCodes: [...expectedKcTopicCodes, ...expectedG8TopicCodes, ...expectedG9TopicCodes],
+  expectedTopicCodes: [...expectedKcTopicCodes, ...expectedG8TopicCodes, ...expectedG9TopicCodes,
+    ...reviewedG9RadianPassages.filter((passage) => passage.goalBearing).map((passage) => passage.topicCode)],
   durationProjectionAudit: {
     evidenceLinks: durationProjectionEvidenceKeys.size,
     evidenceByDuration: durationProjectionEvidenceByDuration,

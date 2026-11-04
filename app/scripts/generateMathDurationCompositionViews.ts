@@ -1,3 +1,4 @@
+import { applyContextualTerminalPlacements } from './mathContextualTerminalPlacements'
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, relative, resolve } from 'node:path'
@@ -1702,7 +1703,7 @@ const generatedViewsBeforeReviewedPlacements = new Map(
 
 const generatedViews = new Map(
   [...generatedViewsBeforeReviewedPlacements].map(([fileName, view]) => [
-    fileName, applyMathAssessmentScopeOperations(applyReviewedMathAssessmentPlacements(view, goalById, repoRoot), goalById, commonStagePolicy.assessmentScopeOperations),
+    fileName, applyContextualTerminalPlacements(applyMathAssessmentScopeOperations(applyReviewedMathAssessmentPlacements(view, goalById, repoRoot), goalById, commonStagePolicy.assessmentScopeOperations), goalById, repoRoot),
   ]),
 )
 

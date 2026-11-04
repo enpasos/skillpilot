@@ -1,0 +1,759 @@
+{
+  "status": "REVIEWER_AUTHORED_MANUAL_SEMANTIC_CASES_ARITHMETIC_CHECKED",
+  "caseCount": 16,
+  "cases": [
+    {
+      "goalId": "613871f6-ccb2-51fe-aba2-0dd17b86a89e",
+      "case": "Alternative vollständige Enumeration",
+      "concreteSubmittedWork": "Die Abgabe definiert für alle x,y in 0..20 den Indikator I=1 bei x>=r oder 3<=x<r und x+y>=8, multipliziert die beiden Binomialmassen, summiert I und 20+20*1[3<=x<r] und begründet die Wahl r=6. Sie nennt außerdem 5/8 als minimale feste Schwellen, die jeweiligen Vorgängerwahrscheinlichkeiten, alle vier adaptiven Werte, alle Grenzfälle und die Modellannahmen.",
+      "criterionCredits": [
+        {
+          "id": "fixed-model",
+          "credit": 1,
+          "maximum": 1
+        },
+        {
+          "id": "fixed-thresholds",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "fixed-power",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "two-stage-events",
+          "credit": 3,
+          "maximum": 3
+        },
+        {
+          "id": "two-stage-values",
+          "credit": 3,
+          "maximum": 3
+        },
+        {
+          "id": "stopping-distinction",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "effort",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "final-rule",
+          "credit": 3,
+          "maximum": 3
+        },
+        {
+          "id": "limits",
+          "credit": 2,
+          "maximum": 2
+        }
+      ],
+      "capApplies": false,
+      "rawPoints": 20,
+      "finalPoints": 20,
+      "passed": true,
+      "reviewerReason": "Vollständige gleichwertige Fallrechnung, ohne dass eine benannte Tail-Funktion verlangt werden darf."
+    },
+    {
+      "goalId": "613871f6-ccb2-51fe-aba2-0dd17b86a89e",
+      "case": "14: fehlende feste 40er-Teststärke und Aufwand",
+      "concreteSubmittedWork": "Alle Schwellen mit Vorgängerprüfung, gesamte adaptive Ereignisrechnung, alle vier adaptiven Wahrscheinlichkeiten und Stop-Abweichungen sind richtig. Für n=20 wird die Teststärke berechnet; die feste 40er-Teststärke fehlt. r=6 wird mit vollständiger Regel und beiden adaptiven Grenzen gewählt. Aufwand und Schlussfrage bleiben leer.",
+      "criterionCredits": [
+        {
+          "id": "fixed-model",
+          "credit": 1,
+          "maximum": 1
+        },
+        {
+          "id": "fixed-thresholds",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "fixed-power",
+          "credit": 1,
+          "maximum": 2
+        },
+        {
+          "id": "two-stage-events",
+          "credit": 3,
+          "maximum": 3
+        },
+        {
+          "id": "two-stage-values",
+          "credit": 3,
+          "maximum": 3
+        },
+        {
+          "id": "stopping-distinction",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "effort",
+          "credit": 0,
+          "maximum": 2
+        },
+        {
+          "id": "final-rule",
+          "credit": 2,
+          "maximum": 3
+        },
+        {
+          "id": "limits",
+          "credit": 0,
+          "maximum": 2
+        }
+      ],
+      "capApplies": false,
+      "rawPoints": 14,
+      "finalPoints": 14,
+      "passed": false,
+      "reviewerReason": "Die zentrale begründete Regel liegt vor. Fehlende Nebenergebnisse ergeben 14, kein Bestehen und keine künstliche Teilgrenze."
+    },
+    {
+      "goalId": "613871f6-ccb2-51fe-aba2-0dd17b86a89e",
+      "case": "15: feste 40er-Teststärke ergänzt",
+      "concreteSubmittedWork": "Wie der vorherige Fall; zusätzlich steht P_0.30(Bin(40,p)>=8)=0.944717, sodass die feste 40er-Regel beide Grenzen erfüllt. Die Aufwandsrechnung und Schlussfrage fehlen weiterhin.",
+      "criterionCredits": [
+        {
+          "id": "fixed-model",
+          "credit": 1,
+          "maximum": 1
+        },
+        {
+          "id": "fixed-thresholds",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "fixed-power",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "two-stage-events",
+          "credit": 3,
+          "maximum": 3
+        },
+        {
+          "id": "two-stage-values",
+          "credit": 3,
+          "maximum": 3
+        },
+        {
+          "id": "stopping-distinction",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "effort",
+          "credit": 0,
+          "maximum": 2
+        },
+        {
+          "id": "final-rule",
+          "credit": 2,
+          "maximum": 3
+        },
+        {
+          "id": "limits",
+          "credit": 0,
+          "maximum": 2
+        }
+      ],
+      "capApplies": false,
+      "rawPoints": 15,
+      "finalPoints": 15,
+      "passed": true,
+      "reviewerReason": "Genau 15 mit tragfähigem Gesamtereignis und Entscheidung. Der Vertrag verlangt keine zusätzliche ungeschriebene Effizienz-Teilbestehensgrenze."
+    },
+    {
+      "goalId": "613871f6-ccb2-51fe-aba2-0dd17b86a89e",
+      "case": "Falsche feste Gesamtschwelle für adaptiven Plan",
+      "concreteSubmittedWork": "Die festen Rechnungen sind vollständig. Für beide r nennt die Abgabe nur die Bin(40,p)-Schwelle 8 und dieselben Werte 0.041902/0.944717. Sie formuliert die r=6-Handlungsfälle und berechnet E(N) korrekt sowie zwei Modellgrenzen, liefert jedoch keine adaptive Ereignisprüfung und begründet die adaptive Wahl ausschließlich durch die falsche feste Verteilung.",
+      "criterionCredits": [
+        {
+          "id": "fixed-model",
+          "credit": 1,
+          "maximum": 1
+        },
+        {
+          "id": "fixed-thresholds",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "fixed-power",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "two-stage-events",
+          "credit": 0,
+          "maximum": 3
+        },
+        {
+          "id": "two-stage-values",
+          "credit": 0,
+          "maximum": 3
+        },
+        {
+          "id": "stopping-distinction",
+          "credit": 0,
+          "maximum": 2
+        },
+        {
+          "id": "effort",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "final-rule",
+          "credit": 1,
+          "maximum": 3
+        },
+        {
+          "id": "limits",
+          "credit": 2,
+          "maximum": 2
+        }
+      ],
+      "capApplies": true,
+      "rawPoints": 10,
+      "finalPoints": 10,
+      "passed": false,
+      "reviewerReason": "Das ist keine bloße Zahlabweichung: x=6,y=0 und x=2,y=10 widerlegen das verwendete Ereignis. Die gesamte adaptive Regel bleibt mathematisch unbegründet."
+    },
+    {
+      "goalId": "0190e463-51a7-4860-9b35-d875530a85ba",
+      "case": "Direktes Vertauschen der Quadrate",
+      "concreteSubmittedWork": "Vollständige sonstige Lösung; bei u wird u(-x)=(-x+1)^2+(-x-1)^2=(x-1)^2+(x+1)^2=u(x) geschrieben, u(0)=2 schließt Ursprungssymmetrie aus. Die gleichwertige Strukturbegründung ist das Vertauschen der beiden Summanden.",
+      "criterionCredits": [
+        {
+          "id": "sym-f",
+          "credit": 3,
+          "maximum": 3
+        },
+        {
+          "id": "sym-g",
+          "credit": 3,
+          "maximum": 3
+        },
+        {
+          "id": "sym-h",
+          "credit": 3,
+          "maximum": 3
+        },
+        {
+          "id": "sym-hidden",
+          "credit": 4,
+          "maximum": 4
+        },
+        {
+          "id": "sym-rules",
+          "credit": 3,
+          "maximum": 3
+        },
+        {
+          "id": "sym-claims",
+          "credit": 4,
+          "maximum": 4
+        }
+      ],
+      "capApplies": false,
+      "rawPoints": 20,
+      "finalPoints": 20,
+      "passed": true,
+      "reviewerReason": "Erweiterung in Einzelmonome ist nicht die einzig zulässige Strukturprüfung."
+    },
+    {
+      "goalId": "0190e463-51a7-4860-9b35-d875530a85ba",
+      "case": "14: h nur eingesetzt, keine beiden Schlussbehauptungen",
+      "concreteSubmittedWork": "f und g werden vollständig rechnerisch und strukturell geprüft. Bei h steht nur h(-x)=x^4-x^3-2, ohne Schluss. u wird vollständig durch Expansion und Identität geprüft; beide allgemeinen Koeffizientenregeln, v und z sind richtig. Beide Schlussbehauptungen bleiben unbeantwortet.",
+      "criterionCredits": [
+        {
+          "id": "sym-f",
+          "credit": 3,
+          "maximum": 3
+        },
+        {
+          "id": "sym-g",
+          "credit": 3,
+          "maximum": 3
+        },
+        {
+          "id": "sym-h",
+          "credit": 1,
+          "maximum": 3
+        },
+        {
+          "id": "sym-hidden",
+          "credit": 4,
+          "maximum": 4
+        },
+        {
+          "id": "sym-rules",
+          "credit": 3,
+          "maximum": 3
+        },
+        {
+          "id": "sym-claims",
+          "credit": 0,
+          "maximum": 4
+        }
+      ],
+      "capApplies": false,
+      "rawPoints": 14,
+      "finalPoints": 14,
+      "passed": false,
+      "reviewerReason": "Beide geforderten Prüfweisen sind schon bei f,g sichtbar. Fehlende Antworten bleiben normale Punktverluste."
+    },
+    {
+      "goalId": "0190e463-51a7-4860-9b35-d875530a85ba",
+      "case": "15: beide h-Identitäten verworfen",
+      "concreteSubmittedWork": "Wie vorher, zusätzlich wird h(-x) mit h(x) und -h(x) verglichen und beide Identitäten werden richtig verworfen. Eine gesonderte Aussage über den gemischten geraden/ungeraden Anteil fehlt weiterhin.",
+      "criterionCredits": [
+        {
+          "id": "sym-f",
+          "credit": 3,
+          "maximum": 3
+        },
+        {
+          "id": "sym-g",
+          "credit": 3,
+          "maximum": 3
+        },
+        {
+          "id": "sym-h",
+          "credit": 2,
+          "maximum": 3
+        },
+        {
+          "id": "sym-hidden",
+          "credit": 4,
+          "maximum": 4
+        },
+        {
+          "id": "sym-rules",
+          "credit": 3,
+          "maximum": 3
+        },
+        {
+          "id": "sym-claims",
+          "credit": 0,
+          "maximum": 4
+        }
+      ],
+      "capApplies": false,
+      "rawPoints": 15,
+      "finalPoints": 15,
+      "passed": true,
+      "reviewerReason": "Die begründeten Symmetrieentscheidungen ergänzen genau 1 BE; die eine 15er-Schwelle entscheidet."
+    },
+    {
+      "goalId": "0190e463-51a7-4860-9b35-d875530a85ba",
+      "case": "Nur richtige Etiketten",
+      "concreteSubmittedWork": "Es stehen f:y-Achse, g:Ursprung, h:keines, u:y-Achse, v:y-Achse, z:beide, aber keine Rechnung, keine Strukturbegründung, keine Regel und keine Gegenbeispiele.",
+      "criterionCredits": [
+        {
+          "id": "sym-f",
+          "credit": 0.5,
+          "maximum": 3
+        },
+        {
+          "id": "sym-g",
+          "credit": 0.5,
+          "maximum": 3
+        },
+        {
+          "id": "sym-h",
+          "credit": 0.5,
+          "maximum": 3
+        },
+        {
+          "id": "sym-hidden",
+          "credit": 0.5,
+          "maximum": 4
+        },
+        {
+          "id": "sym-rules",
+          "credit": 1.5,
+          "maximum": 3
+        },
+        {
+          "id": "sym-claims",
+          "credit": 0,
+          "maximum": 4
+        }
+      ],
+      "capApplies": true,
+      "rawPoints": 3.5,
+      "finalPoints": 3.5,
+      "passed": false,
+      "reviewerReason": "Richtige Einordnungen erhalten begrenzten Teilkredit; keine der beiden verpflichtenden Begründungsweisen ist nachgewiesen."
+    },
+    {
+      "goalId": "6a4716bd-8038-46bb-b647-0db4a254fee7",
+      "case": "Alternative über Koeffizienten",
+      "concreteSubmittedWork": "Vollständige Graphauswertung mit Grad 3; die Abgabe nutzt ax^3+bx^2+cx+d, F(-2)=0,F(1)=0,F(0)=1 sowie die doppelte Nullstelle bei 1 und erhält a=1/2,b=0,c=-3/2,d=1. Sie kontrolliert Vorzeichen und konstruiert F(x)(1+x^2) bei reduzierten Daten.",
+      "criterionCredits": [
+        {
+          "id": "graph-read",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "graph-multiplicity",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "graph-degree",
+          "credit": 4,
+          "maximum": 4
+        },
+        {
+          "id": "graph-expression",
+          "credit": 5,
+          "maximum": 5
+        },
+        {
+          "id": "graph-check",
+          "credit": 3,
+          "maximum": 3
+        },
+        {
+          "id": "graph-limits",
+          "credit": 4,
+          "maximum": 4
+        }
+      ],
+      "capApplies": false,
+      "rawPoints": 20,
+      "finalPoints": 20,
+      "passed": true,
+      "reviewerReason": "Gleichwertiger Rechenweg ist zulässig. Ableitungen sind nicht erforderlich, aber auch nicht verboten."
+    },
+    {
+      "goalId": "6a4716bd-8038-46bb-b647-0db4a254fee7",
+      "case": "14: nur erste Bildkontrolle",
+      "concreteSubmittedWork": "Graphdaten, Vielfachheiten, Gradbegründung mit Enden/oberer Grenze und Termbestimmung sind vollständig. Danach wird nur die Kreuzung bei -2 mit Vorzeichen von x+2 begründet; Berührung, Intervallvorzeichen und Teil 5 fehlen.",
+      "criterionCredits": [
+        {
+          "id": "graph-read",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "graph-multiplicity",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "graph-degree",
+          "credit": 4,
+          "maximum": 4
+        },
+        {
+          "id": "graph-expression",
+          "credit": 5,
+          "maximum": 5
+        },
+        {
+          "id": "graph-check",
+          "credit": 1,
+          "maximum": 3
+        },
+        {
+          "id": "graph-limits",
+          "credit": 0,
+          "maximum": 4
+        }
+      ],
+      "capApplies": false,
+      "rawPoints": 14,
+      "finalPoints": 14,
+      "passed": false,
+      "reviewerReason": "Die inverse Graphkompetenz ist unzweifelhaft gezeigt; 14 bleiben dennoch unter der Gesamtgrenze."
+    },
+    {
+      "goalId": "6a4716bd-8038-46bb-b647-0db4a254fee7",
+      "case": "15: Berührung als weitere Kontrolle",
+      "concreteSubmittedWork": "Wie zuvor; zusätzlich erklärt die Abgabe die gerade Vielfachheit bei 1 mit einem beiderseits nicht negativen Quadrat und positivem Faktor x+2. Vorzeichenintervall und Teil 5 fehlen weiterhin.",
+      "criterionCredits": [
+        {
+          "id": "graph-read",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "graph-multiplicity",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "graph-degree",
+          "credit": 4,
+          "maximum": 4
+        },
+        {
+          "id": "graph-expression",
+          "credit": 5,
+          "maximum": 5
+        },
+        {
+          "id": "graph-check",
+          "credit": 2,
+          "maximum": 3
+        },
+        {
+          "id": "graph-limits",
+          "credit": 0,
+          "maximum": 4
+        }
+      ],
+      "capApplies": false,
+      "rawPoints": 15,
+      "finalPoints": 15,
+      "passed": true,
+      "reviewerReason": "Genau 15. Eine separate Pflicht zur Gegenkonstruktion würde die veröffentlichte Gesamtbewertung verschärfen."
+    },
+    {
+      "goalId": "6a4716bd-8038-46bb-b647-0db4a254fee7",
+      "case": "Ein allein abgeschriebener Term",
+      "concreteSubmittedWork": "Die ganze Abgabe besteht aus F(x)=0.5(x+2)(x-1)^2. Kein Ablesen, kein Ansatz, kein Faktorbestimmen, kein Gradargument und keine Kontrolle.",
+      "criterionCredits": [
+        {
+          "id": "graph-read",
+          "credit": 0,
+          "maximum": 2
+        },
+        {
+          "id": "graph-multiplicity",
+          "credit": 0,
+          "maximum": 2
+        },
+        {
+          "id": "graph-degree",
+          "credit": 0,
+          "maximum": 4
+        },
+        {
+          "id": "graph-expression",
+          "credit": 1,
+          "maximum": 5
+        },
+        {
+          "id": "graph-check",
+          "credit": 0,
+          "maximum": 3
+        },
+        {
+          "id": "graph-limits",
+          "credit": 0,
+          "maximum": 4
+        }
+      ],
+      "capApplies": true,
+      "rawPoints": 1,
+      "finalPoints": 1,
+      "passed": false,
+      "reviewerReason": "Ein zufällig richtiger Endterm ist kein nachgewiesener Rückschluss aus dem Bild."
+    },
+    {
+      "goalId": "e33e75e3-eae5-5a09-862f-d1a11176373f",
+      "case": "Geometrisch begründete vollständige Antwort",
+      "concreteSubmittedWork": "Alle Merkmale und konkreten Werte sind richtig. Die Abgabe beschreibt eine starre Translation um (t,1), Multiplikation jeder Ordinate mit a und Division jeder Abszisse durch b; sie setzt die so erhaltenen Koordinaten in die jeweilige Funktion ein und liefert zwei zulässige Gegenbeispiele.",
+      "criterionCredits": [
+        {
+          "id": "trans-shift-map",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "trans-shift-features",
+          "credit": 4,
+          "maximum": 4
+        },
+        {
+          "id": "trans-exp-map",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "trans-exp-features",
+          "credit": 4,
+          "maximum": 4
+        },
+        {
+          "id": "trans-sine-map",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "trans-sine-features",
+          "credit": 4,
+          "maximum": 4
+        },
+        {
+          "id": "trans-claim",
+          "credit": 2,
+          "maximum": 2
+        }
+      ],
+      "capApplies": false,
+      "rawPoints": 20,
+      "finalPoints": 20,
+      "passed": true,
+      "reviewerReason": "Kein bestimmter Theoremname und kein Computerplot verlangt; geometrische und algebraische Begründung sind gleichwertig."
+    },
+    {
+      "goalId": "e33e75e3-eae5-5a09-862f-d1a11176373f",
+      "case": "14: zwei Familien vollständig, Sinus nur allgemeine Merkmale",
+      "concreteSubmittedWork": "G_t und H_a sind einschließlich Punktabbildung, Parameterrichtung, Merkmalen, konkreten Werten und Nichtschneiden vollständig. Bei K_b stehen nur Wertebereich [-1,1], Amplitude 1, Periode 2pi/b und Nullstellen k*pi/b. Keine Punktabbildung, keine konkrete Periode/Maxima und keine Schlussbeispiele.",
+      "criterionCredits": [
+        {
+          "id": "trans-shift-map",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "trans-shift-features",
+          "credit": 4,
+          "maximum": 4
+        },
+        {
+          "id": "trans-exp-map",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "trans-exp-features",
+          "credit": 4,
+          "maximum": 4
+        },
+        {
+          "id": "trans-sine-map",
+          "credit": 0,
+          "maximum": 2
+        },
+        {
+          "id": "trans-sine-features",
+          "credit": 2,
+          "maximum": 4
+        },
+        {
+          "id": "trans-claim",
+          "credit": 0,
+          "maximum": 2
+        }
+      ],
+      "capApplies": false,
+      "rawPoints": 14,
+      "finalPoints": 14,
+      "passed": false,
+      "reviewerReason": "Die zentrale Begründung ist in zwei Familien präsent. Der unvollständige Sinusteil führt zu normalem Punkteabzug."
+    },
+    {
+      "goalId": "e33e75e3-eae5-5a09-862f-d1a11176373f",
+      "case": "15: ein konkretes Sinuspaar ergänzt",
+      "concreteSubmittedWork": "Wie zuvor, zusätzlich werden für b=2 korrekt Periode pi und erster Hochpunkt (pi/4,1) genannt. Andere fehlende Angaben bleiben leer.",
+      "criterionCredits": [
+        {
+          "id": "trans-shift-map",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "trans-shift-features",
+          "credit": 4,
+          "maximum": 4
+        },
+        {
+          "id": "trans-exp-map",
+          "credit": 2,
+          "maximum": 2
+        },
+        {
+          "id": "trans-exp-features",
+          "credit": 4,
+          "maximum": 4
+        },
+        {
+          "id": "trans-sine-map",
+          "credit": 0,
+          "maximum": 2
+        },
+        {
+          "id": "trans-sine-features",
+          "credit": 3,
+          "maximum": 4
+        },
+        {
+          "id": "trans-claim",
+          "credit": 0,
+          "maximum": 2
+        }
+      ],
+      "capApplies": false,
+      "rawPoints": 15,
+      "finalPoints": 15,
+      "passed": true,
+      "reviewerReason": "Genau 15. Es gibt keine separate Mindestleistung pro Funktionsklasse."
+    },
+    {
+      "goalId": "e33e75e3-eae5-5a09-862f-d1a11176373f",
+      "case": "Merkmallisten ohne Parametermechanismus",
+      "concreteSubmittedWork": "Nur richtige Definitions-/Wertebereiche, Scheitel, Achse, konkrete Scheitel, Achsenabschnitte, Asymptote, Werte bei x=0 sowie Sinusperioden/Nullstellen/Maxima. Weder Punktabbildung noch Unterscheidung der festen und variablen Translation, keine Schnittpunktbegründung, keine Wirkungsbegründung oder Schlussbeispiele.",
+      "criterionCredits": [
+        {
+          "id": "trans-shift-map",
+          "credit": 0,
+          "maximum": 2
+        },
+        {
+          "id": "trans-shift-features",
+          "credit": 3.5,
+          "maximum": 4
+        },
+        {
+          "id": "trans-exp-map",
+          "credit": 0,
+          "maximum": 2
+        },
+        {
+          "id": "trans-exp-features",
+          "credit": 3,
+          "maximum": 4
+        },
+        {
+          "id": "trans-sine-map",
+          "credit": 0,
+          "maximum": 2
+        },
+        {
+          "id": "trans-sine-features",
+          "credit": 4,
+          "maximum": 4
+        },
+        {
+          "id": "trans-claim",
+          "credit": 0,
+          "maximum": 2
+        }
+      ],
+      "capApplies": true,
+      "rawPoints": 10.5,
+      "finalPoints": 10.5,
+      "passed": false,
+      "reviewerReason": "Kein tragfähiger Zusammenhang zwischen Parameter und Graphänderung; auswendig richtige Listen reichen nicht."
+    }
+  ],
+  "limits": "Manual evaluation of explicit synthetic submissions, not an automatic semantic grader and not learner data. All 32 author cases were separately read; their generic boundary narratives do not become independent evidence."
+}

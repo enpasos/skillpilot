@@ -1,3 +1,4 @@
+import { applyContextualTerminalPlacements } from './mathContextualTerminalPlacements'
 import { createHash } from 'node:crypto'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, isAbsolute, relative, resolve } from 'node:path'
@@ -86,6 +87,7 @@ export function deriveMathExistingStageViews(root: string, policy: StagePolicy) 
       view = addReviewedMathStageTargets(view, goals, placement.goalIds, placement.anchorStructureId, placement.sourceDecisionId, placement.label)
     }
     view = applyMathAssessmentScopeOperations(view, goals, policy.assessmentScopeOperations)
+    view = applyContextualTerminalPlacements(view, goals, root)
     const compiled = compileCompositionView(view, canonical)
     expect(!compiled.findings.some(finding => finding.severity === 'error'), `existing stage correction fails native compilation: ${view.viewId}`)
     const afterRoles = collectCompositionProjectionRoleGoalIds(view.rootNodes, goals)
@@ -343,7 +345,13 @@ export function deriveMathCountrySekIViews(root: string, policy: StagePolicy) {
     // The selected native stage targets must nevertheless agree exactly.
     expect(same(courses[0].compiledGoalIds, courses[1].compiledGoalIds)
       && same(courses[0].targetGoalIds, courses[1].targetGoalIds), `${country.jurisdiction}: GK/LK stage targets differ`)
-    return { jurisdiction: country.jurisdiction, path: country.outputPath, view: courses[0].view, courses }
+    // Both source-course checks above stay unchanged. These exact output-view
+    // placements run once on the chosen authored output, not on an LK tree
+    // whose distinct source structure IDs were never this operation's anchors.
+    const view = applyContextualTerminalPlacements(courses[0].view, goals, root)
+    const finalCompiled = compileCompositionView(view, canonical)
+    expect(!finalCompiled.findings.some(finding => finding.severity === 'error'), `${view.viewId}: final contextual placement compile failed`)
+    return { jurisdiction: country.jurisdiction, path: country.outputPath, view, courses }
   })
 }
 

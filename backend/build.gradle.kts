@@ -287,3 +287,21 @@ tasks.register("prepareOpenAiDialogReplay") {
         }
     }
 }
+
+// Dedicated buildtime generation/check. Frontend consumers read committed view JSON.
+for ((taskName, checkOnly) in listOf(
+    "generateMathContextualCombinedViews" to false,
+    "checkMathContextualCombinedViews" to true,
+)) {
+    tasks.register<JavaExec>(taskName) {
+        group = if (checkOnly) "verification" else "generation"
+        description = if (checkOnly) "Checks the 39 explicit Mathematics GK+LK views with the production merger."
+            else "Regenerates the 39 explicit Mathematics GK+LK views with the production merger."
+        dependsOn(tasks.testClasses)
+        classpath = sourceSets.test.get().runtimeClasspath
+        javaLauncher.set(javaToolchains.launcherFor(java.toolchain))
+        mainClass.set("com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews")
+        workingDir = projectDir.parentFile
+        if (checkOnly) args("--check")
+    }
+}
