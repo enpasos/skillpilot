@@ -166,6 +166,7 @@ const extractYearFromUnitId = (unitId?: string): string | null => {
 const sourceDocuments = [
   {
     key: 'KC',
+    official: true,
     title: 'Kerncurriculum Mathematik - Sekundarstufe I (Gymnasium)',
     path: repoPath(kcPdfPath),
     role: 'binding-core',
@@ -173,6 +174,7 @@ const sourceDocuments = [
   },
   {
     key: 'G8',
+    official: true,
     title: 'Lehrplan Gymnasium G8 Mathematik',
     path: repoPath(g8PdfPath),
     role: 'legacy-grade-sequencing-reference',
@@ -181,6 +183,7 @@ const sourceDocuments = [
   },
   {
     key: 'G9',
+    official: true,
     title: 'Lehrplan Gymnasium G9 Mathematik',
     path: repoPath(g9PdfPath),
     role: 'legacy-grade-sequencing-reference',
@@ -189,6 +192,7 @@ const sourceDocuments = [
   },
   {
     key: 'LEITFADEN',
+    official: true,
     title: 'Leitfaden Mathematik - Sekundarstufe I',
     path: repoPath(leitfadenPdfPath),
     role: 'implementation-guide',

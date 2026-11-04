@@ -6,8 +6,8 @@ M7-, Deployment- oder vollständige CI-Freigabe.
 
 ## Aktueller Messstand: 4. November 2026
 
-Der Stand enthält **27 vollständige Prüfungsformen unter bestehenden
-curricularen Lernziel-IDs und zwölf gezielt platzierte eigenständige
+Der Stand enthält **30 vollständige Prüfungsformen unter bestehenden
+curricularen Lernziel-IDs und 13 gezielt platzierte eigenständige
 Prüfungsziele**. Die 807 curricularen Mathematikziele bleiben erhalten.
 Sechs zuvor zu breit eingeführte Prüfungsrollen sind korrigiert: Die
 Kompetenz bleibt dort ein gewöhnliches Lernziel, wo bereits ein anderer
@@ -19,8 +19,8 @@ unversorgten Angeboten ausgewählt.
 | Tatsächlich geprüfte Angebote | 161, einschließlich 46 Kursvereinigungen |
 | Abschlussintegrität bestanden | 17 Angebote |
 | Angebote mit verbleibenden Datenlücken | 144 |
-| Ungedeckte Ziele | 255 unterschiedliche IDs / 2.718 Ziel-Angebots-Paare |
-| Gewöhnliche offene Endpunkte | 164 unterschiedliche IDs / 1.819 Endpunktpaare |
+| Ungedeckte Ziele | 251 unterschiedliche IDs / 2.642 Ziel-Angebots-Paare |
+| Gewöhnliche offene Endpunkte | 160 unterschiedliche IDs / 1.751 Endpunktpaare |
 
 Die jüngste gemeinsame Korrektur schließt weitere **791 Ziel-Angebots-Paare
 und 404 Endpunktpaare**, ohne neue Lücken zu erzeugen. Sie begrenzt zehn
@@ -49,6 +49,17 @@ Die spätere reine Generator-/Hashkorrektur ist getrennt nachgewiesen:
 ändert sich mit eigener Prüfung. Das ist kein neuer Lauf der ursprünglichen
 Backendmessung.
 
+Drei weitere vollständige Geometrieformen, ein vorhandener Projektionsweg und
+eine auf vier bayerische Kursangebote begrenzte eigene Prüfung schließen
+anschließend **76 Ziel-Angebots-Paare und 68 Endpunktpaare**. Alle gewöhnlichen
+Targets bleiben erhalten. Das unabhängige Astra-Review und alle elf normalen
+Autorenprüfungen bestehen; 546 geprüfte Dateien sind bytegenau übernommen.
+Die ursprüngliche Backendmessung bleibt mit ihren tatsächlichen Eingaben
+erhalten. Zwei später ergänzte echte A/M-Reviewverweise sind als reine
+Qualitätsänderungen ausdrücklich abgegrenzt. Die Korrektur stellt außerdem
+die vier versehentlich verlorenen amtlichen Quellenflags samt KC-Alias im
+hessischen Generator wieder her, ohne Quellziele oder Passagen zu verändern.
+
 41 veraltete feste API-Zielzahlen sind anhand der tatsächlichen Zielmengen
 und HTTP-Antworten korrigiert. Alle Mitgliedschaftsprüfungen bleiben erhalten;
 die vollständige Controllerklasse besteht danach mit 38/38 Tests ohne Skips.
@@ -67,6 +78,14 @@ GK-Vorbereitungsprüfungen werden exakt abgegrenzt. Alle übrigen Zielmengen,
 Vorbereitungsbeziehungen und Eindeutigkeitsprüfungen bleiben erhalten.
 Die gezielte Wiederholung besteht mit **104/104 Tests ohne Skips**; die
 vollständige Backend-CI bleibt ein eigener ausstehender Nachweis.
+
+Der anschließende vollständige Backendjob auf `1a63656071` bestätigt den
+Stored-Focus-Fix und zeigt weitere zurückgehaltene Test-Fixtures vor dem
+SRS-Kontextaufbau. Deren gezielte Eigentums- und Lebensdauerkorrektur besteht
+mit **250/250 Tests** und demselben wiederverwendeten Spring-Kontext. Der Heap
+bleibt bei unverändertem Limit über die Sequenz stabil; Produktionscode,
+SRS und Assertions bleiben unverändert. Auch dieser Nachweis ersetzt den
+vollständigen GitHub-Nachlauf nicht.
 
 Der gemeinsame vorherige Backendvergleich und das unabhängige Astra-Review prüfen
 alle 161 Angebote. Alle 502 übernommenen Dateien und die 3.187 Eingaben des
@@ -90,7 +109,7 @@ Prüfungsstart noch implizite Gutschrift. Die gezielte integrierte Backendprüfu
 besteht mit 179 Tests; alle Produktionsklassen wurden zusätzlich frisch
 kompiliert. Die Graphvalidierung unterscheidet die curriculare Kompetenz von
 ihrer Prüfungsform und prüft gerichtete Vorbereitungswege. Sie meldet noch
-10 offene direkte atomare Abschlussrouten.
+sechs offene direkte atomare Abschlussrouten.
 
 Der GitHub-Stand `427723ecdf` bestätigt Dokumentation, Lernzielbuch,
 Completion-Kern, Cockpit, OpenAI-/Claude-Adapter und alle drei Gemini-Jobs.
@@ -127,6 +146,7 @@ vollständigen Backendlauf.
 · [Gemeinsame Rollen- und Pfadkorrektur](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/context-he-three/README.md)
 · [Kegel und komplexe Zahlen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/cone-complex-four/README.md)
 · [Statistik und Pyramiden](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/statistics-pyramid/README.md)
+· [Geometrie und Projektionsweg](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/geometry-four/README.md)
 · [Deklarierte CI-Eingaben](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/sparse-declared-inputs/README.md)
 · [Markov-Platzierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/sh-markov-twelve/README.md)
 · [Graphvalidierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/directed-prior-stage-validation/README.md)
@@ -134,6 +154,7 @@ vollständigen Backendlauf.
 · [Backend-Testdatenbanken](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/general-context-isolation/README.md)
 · [CI-Platzkorrektur](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/ci-checkout-space/README.md)
 · [Backend-Testheap](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-test-heap/README.md)
+· [Eigentum großer Test-Fixtures](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-fixture-ownership/README.md)
 · [Backend-Kursvereinigungen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-authored-course-unions/README.md)
 
 ## Integrierter Stand

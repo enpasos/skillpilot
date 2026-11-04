@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict'
+import { readFileSync, writeFileSync, mkdirSync, renameSync } from 'node:fs'
+import { createHash } from 'node:crypto'
+import { resolve, dirname } from 'node:path'
+import { fileURLToPath, pathToFileURL } from 'node:url'
+const H=dirname(fileURLToPath(import.meta.url)),R=resolve(H,'../../..'),C=resolve(H,'check-host'),O=resolve(H,'overlay'),read=(p:string)=>JSON.parse(readFileSync(p,'utf8')),sha=(p:string)=>createHash('sha256').update(readFileSync(p)).digest('hex'),cfg=read(resolve(H,'integration-config.json')),B=resolve(R,cfg.baseHost),policy=read(resolve(C,cfg.policyPath))
+const {assertMathStagePolicyInputs,deriveMathCountrySekIViews,deriveMathExistingStageViews}=await import(pathToFileURL(resolve(C,'app/scripts/generateMathCountrySekICompositionViews.ts')).href)
+const start=performance.now(),valid=assertMathStagePolicyInputs(C,policy),outputs=[...deriveMathCountrySekIViews(C,policy),...deriveMathExistingStageViews(C,policy)];assert.equal(outputs.length,88)
+const rows=outputs.map((x:any)=>{const body=JSON.stringify(x.view,null,2)+'\n';assert.equal(readFileSync(resolve(C,x.path),'utf8'),body);return{path:x.path,viewId:x.view.viewId,sha256:sha(resolve(C,x.path)),beforeSha256:sha(resolve(B,x.path)),changedFromBase:sha(resolve(C,x.path))!==sha(resolve(B,x.path))}})
+const report={status:'PASS_ACTUAL_FINAL_COUNTRY88_INPUTS_AND_EXISTING_OUTPUT_BYTES_READ_ONLY',canonicalSha256:sha(resolve(C,cfg.canonicalPath)),policySha256:sha(resolve(C,cfg.policyPath)),ledgerSha256:sha(resolve(C,cfg.ledgerPath)),sourceDecisionsValidated:valid.decisions.decisions.length,outputViews:rows.length,changedOutputViews:rows.filter(x=>x.changedFromBase).length,outputs:rows,seconds:Math.round((performance.now()-start)/10)/100,noFakeStageReceiptOrReviewOverride:true,noRootWrites:true,normalStageGuardedWriteAndFinalChecksPending:true};writeFileSync(resolve(H,'final-country88-readonly.actual.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({status:report.status,outputs:rows.length,changed:report.changedOutputViews,seconds:report.seconds}))

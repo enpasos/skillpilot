@@ -1,0 +1,28 @@
+"""Run the same eleven agreed normal checks only after genuine Stage adoption."""
+from pathlib import Path
+import concurrent.futures,datetime,hashlib,json,os,subprocess,sys,threading,time
+R=Path('/home/enpasos/projects/skillpilot');H=Path(__file__).resolve().parent;C=H/'check-host';D=H/'final-bound-checks'
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def read(p):return json.loads(Path(p).read_text())
+manifestPath=H/'manifest.quality-stage-adopted.json';assert manifestPath.is_file(),'Genuine Stage must be adopted in a separate additive quality manifest first.'
+manifest=read(manifestPath);stage=manifest.get('genuineStageReceipt');assert stage and sha(C/stage['path'])==stage['sha256'],'Actual genuine Stage receipt required.'
+guard={r['path']:r['candidateSha256']for r in manifest['files']}
+for rel,digest in guard.items():assert sha(C/rel)==digest,rel
+for row in manifest['rootOwnedCheckSources']:assert sha(C/row['path'])==sha(R/row['path'])==row['sha256'],row['path']
+plan=read(R/'tmp/approach-review-20261101/space-geometry-four-integration-preparation-20261103-v1/normal-checks.plan.json');commands=[]
+for c in plan['commands']:commands.append({'name':'country88'if c['name']=='country83'else c['name'],'argv':[s.replace('<final-private-check-host>',str(C))for s in c['argv']],'cwd':c['cwd'].replace('<final-private-check-host>',str(C))})
+selected=set(sys.argv[1].split(','))if len(sys.argv)>1 else{c['name']for c in commands};assert selected<={c['name']for c in commands};D.mkdir(exist_ok=True);target=D/'execution.json'
+result=read(target)if target.exists()else{'status':'RUNNING_AGREED_ELEVEN_NORMAL_CHECKS','dataRoot':str(C),'startedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'commands':[],'effectiveImplementationManifestSha256':manifest['baseEffective306Manifest']['sha256'],'qualityManifestSha256':sha(manifestPath),'canonicalSha256':manifest['canonicalSha256'],'policySha256':manifest['policySha256'],'exactAgreedCommands':11,'genuineStageReceipt':stage,'rootOrRootGitWrites':False};lock=threading.Lock()
+def publish():p=target.with_suffix('.json.new');p.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');p.replace(target)
+todo=[]
+for c in commands:
+ if c['name']not in selected:continue
+ attempts=[r for r in result['commands']if r['name']==c['name']];assert not attempts or attempts[-1]['exitCode']!=0,'Passed checks require concrete new reason to repeat: '+c['name'];c['attempt']=len(attempts)+1;todo.append(c)
+def run(c):
+ t=time.monotonic();out=D/f'{c["name"]}.attempt{c["attempt"]}.stdout.txt';err=D/f'{c["name"]}.attempt{c["attempt"]}.stderr.txt'
+ with out.open('wb')as stdout,err.open('wb')as stderr:p=subprocess.run(c['argv'],cwd=c['cwd'],env=dict(os.environ,PYTHONDONTWRITEBYTECODE='1'),stdout=stdout,stderr=stderr)
+ row={**c,'exitCode':p.returncode,'seconds':round(time.monotonic()-t,2),'inputManifestSha256':sha(manifestPath),'stdout':{'path':str(out.relative_to(R)),'sha256':sha(out),'bytes':out.stat().st_size},'stderr':{'path':str(err.relative_to(R)),'sha256':sha(err),'bytes':err.stat().st_size}}
+ with lock:result['commands'].append(row);publish();print(json.dumps({k:row[k]for k in['name','attempt','exitCode','seconds']}),flush=True)
+publish()
+with concurrent.futures.ThreadPoolExecutor(max_workers=3)as pool:list(pool.map(run,todo))
+last={r['name']:r for r in result['commands']};result['payloadDrift']=[rel for rel,digest in guard.items()if sha(C/rel)!=digest];result['completedDistinctCommands']=len(last);result['allFinalExitCodesZero']=all(r['exitCode']==0 for r in last.values());result['status']=('PASS_FINAL_AGREED_ELEVEN_NORMAL_CHECKS'if len(last)==11 else'PARTIAL_NORMAL_CHECKS_COMPLETE')if result['allFinalExitCodesZero']and not result['payloadDrift']else'CONCRETE_NORMAL_CHECK_FINDING';result['updatedAt']=datetime.datetime.now(datetime.timezone.utc).isoformat();publish();print(json.dumps({k:result[k]for k in['status','completedDistinctCommands','allFinalExitCodesZero','payloadDrift']}),flush=True)

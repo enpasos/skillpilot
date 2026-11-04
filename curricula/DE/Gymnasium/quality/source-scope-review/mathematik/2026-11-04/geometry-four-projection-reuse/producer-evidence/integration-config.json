@@ -1,0 +1,105 @@
+{
+  "baseHost": "tmp/approach-review-20261101/statistics-pyramid-existing-route-producer-bindings-20261104-v1/check-host",
+  "baseManifest": {
+    "path": "tmp/approach-review-20261101/statistics-pyramid-existing-route-producer-bindings-20261104-v1/manifest.final-normal-checks.json",
+    "sha256": "a9dc13539a66e124b7ebb21e29211ad6382bbba189899460c8c296e4269af307"
+  },
+  "baseNative": {
+    "path": "tmp/approach-review-20261101/statistics-pyramid-existing-route-native-20261104-v1/candidate.json.gz",
+    "sha256": "e0b466350b58395c0440a8b1af837044ee143c6bbb36d5f8c5a3a6a2f65708ab"
+  },
+  "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "ledgerPath": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+  "policyPath": "app/scripts/config/math-country-seki-stage-policy.json",
+  "layoutPath": "app/scripts/config/math-duration-split-spanning-tree-policy.json",
+  "planPath": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/finite-scope-operations.json",
+  "artifactRoot": "curricula/DE/Gymnasium/assessments/mathematik/geometry-four-projection-reuse-2026-11-04-v1",
+  "qualityRoot": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/geometry-four-projection-reuse",
+  "authorPath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/geometry-four-projection-reuse/author-exact-geometry-four-integration.json",
+  "allowancePath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/geometry-four-projection-reuse/exact-separate-assessment-placement.json",
+  "roleReviewPath": "curricula/DE/Gymnasium/assessments/mathematik/geometry-four-projection-reuse-2026-11-04-v1/reviews/review-handoff.json",
+  "stageReceipt": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/stage-scope-implementation-geometry-four-projection-reuse.review.json",
+  "newAssessmentId": "dd1954f6-0941-55a9-88d2-e2980ed902fd",
+  "sameIdAssessmentIds": [
+    "803d910d-96d1-5118-b9ca-29e93d0da76d",
+    "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+    "7bb3c312-f714-55e6-a31f-f31605a93760"
+  ],
+  "ordinaryGoalId": "5748633c-113f-5ea8-9041-24da55919de7",
+  "existingReuseAssessmentId": "e3c70a12-7886-51f7-8bcd-ed54865415d6",
+  "sourceOperations": [
+    {
+      "id": "contextual-terminal-geometry-four-coordinate-projection-de-by-gym-sekii-math-lk",
+      "viewId": "de-by-gym-sekii-math-lk",
+      "goalIds": [
+        "dd1954f6-0941-55a9-88d2-e2980ed902fd"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "lk-sek-ii-only-q2",
+      "label": "SkillPilot-Prüfung: Koordinatenansichten und schräger Schatten",
+      "sourceDecision": "curricula/DE/Gymnasium/assessments/mathematik/geometry-four-projection-reuse-2026-11-04-v1/reviews/review-handoff.json#separate574Assessment"
+    },
+    {
+      "id": "contextual-terminal-geometry-four-coordinate-projection-de-by-gym-math-lk",
+      "viewId": "de-by-gym-math-lk",
+      "goalIds": [
+        "dd1954f6-0941-55a9-88d2-e2980ed902fd"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "lk-sek-ii-q2",
+      "label": "SkillPilot-Prüfung: Koordinatenansichten und schräger Schatten",
+      "sourceDecision": "curricula/DE/Gymnasium/assessments/mathematik/geometry-four-projection-reuse-2026-11-04-v1/reviews/review-handoff.json#separate574Assessment"
+    }
+  ],
+  "approvedNewTargetScopePairs": [
+    "DE-BY/SekII/G9/LK",
+    "DE-BY/SekII/G9/GK+LK",
+    "DE-BY/CrossStage/G9/LK",
+    "DE-BY/CrossStage/G9/GK+LK"
+  ],
+  "rootQASourceSync": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "e31ca62a9bf3aba948384c5d66f967d77acfcc96acab04c4477403421a0f8001",
+      "ownedByThisPayload": false
+    },
+    {
+      "path": "app/scripts/testHardLearningRouteValidation.ts",
+      "sha256": "2395ef11f0e9b70b03063f5d5a1350f3f303aa90cf192821ce229484e6688b9e",
+      "ownedByThisPayload": false
+    },
+    {
+      "path": "app/scripts/markdownSourceArchives.ts",
+      "sha256": "70eb89d322be038928612052a91e595de2bde72149ca42cbdfa9ee69f11b8399",
+      "ownedByThisPayload": false
+    },
+    {
+      "path": "app/scripts/testMathReviewedAssessmentPlacements.ts",
+      "sha256": "948800671024f26878decef18f28faa6765bd02a51d1239c3a2d82dd9d981178",
+      "ownedByThisPayload": false
+    },
+    {
+      "path": "app/scripts/testMathCountrySekICompositionViews.ts",
+      "sha256": "cb1b410ae8d3ac5a47dd044a7df0000020541df87b94aa634367a8e2244e99bd",
+      "ownedByThisPayload": false
+    },
+    {
+      "path": "app/scripts/testMathDistanceReflectionStructure.ts",
+      "sha256": "3361f179f19e5a79bbea550a773d7e96b32a3fd2dd1157569268afbab8a33be5",
+      "ownedByThisPayload": false
+    }
+  ],
+  "canonicalRootId": "c01b1ce9-a667-4a46-b251-ec33ae602b15",
+  "rootOwnedAdditionalInputSync": [
+    {
+      "path": "scripts/curriculum_completion_inputs.py",
+      "sha256": "47cd4250247cbf53f0dcecc5ebd4acb11e371d06310093b23080e65c9df89549",
+      "ownedByThisPayload": false
+    },
+    {
+      "path": "scripts/test_curriculum_completion_integrity_report.py",
+      "sha256": "ae21b9ff95efb66e74f85df414369fd33ba7fe5dfc62533890665cee41894795",
+      "ownedByThisPayload": false
+    }
+  ]
+}

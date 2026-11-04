@@ -1,0 +1,58 @@
+{
+  "status": "PASS_EXACT_AUTHOR_MATHEMATICAL_COUNTERCHECKS_NOT_INDEPENDENT_REVIEW",
+  "checks": [
+    {
+      "check": "Oblique projection: independent line solution, exact matrix, all-point plane identity, idempotence, full nullspace/rank, target-plane basis and image check",
+      "result": "Matrix([[1/2, -1, 1/2], [-1/2, 0, 1/2], [-1/2, -1, 3/2]])",
+      "passed": true
+    },
+    {
+      "check": "General formula checked on two different arbitrary oblique planes; parallel direction leaves plane expression constant",
+      "result": "x_1 + 2*x_2 - x_3",
+      "passed": true
+    },
+    {
+      "check": "Full fixed-point solution A",
+      "result": "{'rref': (Matrix([\n[0, 1, 0],\n[0, 0, 1],\n[0, 0, 0]]), (1, 2)), 'nullspace': [Matrix([\n[1],\n[0],\n[0]])]}",
+      "passed": true
+    },
+    {
+      "check": "Full fixed-point solution B",
+      "result": "{'rref': (Matrix([\n[1, 0, 1],\n[0, 0, 0],\n[0, 0, 0]]), (0,)), 'nullspace': [Matrix([\n[0],\n[1],\n[0]]), Matrix([\n[-1],\n[ 0],\n[ 1]])]}",
+      "passed": true
+    },
+    {
+      "check": "Full fixed-point solution C",
+      "result": "{'rref': (Matrix([\n[1, 0, 0],\n[0, 1, 0],\n[0, 0, 1]]), (0, 1, 2)), 'nullspace': []}",
+      "passed": true
+    },
+    {
+      "check": "Full fixed-point solution D",
+      "result": "{'rref': (Matrix([\n[0, 0, 0],\n[0, 0, 0],\n[0, 0, 0]]), ()), 'nullspace': [Matrix([\n[1],\n[0],\n[0]]), Matrix([\n[0],\n[1],\n[0]]), Matrix([\n[0],\n[0],\n[1]])]}",
+      "passed": true
+    },
+    {
+      "check": "Sail projected vertices and Gram-determinant area",
+      "result": "{'vertices': [Matrix([\n[1],\n[1],\n[0]]), Matrix([\n[5],\n[1],\n[0]]), Matrix([\n[1],\n[4],\n[0]])], 'area': 6}",
+      "passed": true
+    },
+    {
+      "check": "Sail projected vertices and Gram-determinant area",
+      "result": "{'vertices': [Matrix([\n[0],\n[1],\n[2]]), Matrix([\n[0],\n[1],\n[2]]), Matrix([\n[0],\n[4],\n[5]])], 'area': 0}",
+      "passed": true
+    },
+    {
+      "check": "Shadow solved by independent third-coordinate intersection",
+      "result": "Matrix([[4], [1], [0]])",
+      "passed": true
+    },
+    {
+      "check": "Plate normal, two dot checks, plane checks, independent Gram area, swap sign, all real parameter area",
+      "result": "{'normal': Matrix([\n[ 2],\n[-4],\n[ 4]]), 'Gram': Matrix([\n[5, 2],\n[2, 8]]), 'area': 3*Abs(t)}",
+      "passed": true
+    }
+  ],
+  "checkCount": 10,
+  "method": "SymPy exact rational arithmetic; independently solved intersections, full nullspaces/ranks, Gram determinant areas and all-real symbolic parameter checks.",
+  "limitations": "Checks substantiate calculations; content and rubric approval require a different reviewer."
+}

@@ -1,0 +1,72 @@
+{
+  "status": "AUTHOR_WHOLE_REUSE_ANALYSIS_CONDITIONAL_PENDING_INDEPENDENT_REVIEW",
+  "wholeSnapshot": "whole-existing-exams-and-reuse.json",
+  "decisions": [
+    {
+      "goalId": "803d910d-96d1-5118-b9ca-29e93d0da76d",
+      "existingExamIds": [
+        "e3c70a12-7886-51f7-8bcd-ed54865415d6",
+        "81823f27-0c92-5444-ac4e-32b83169f318",
+        "3449ecb6-7f5b-5ff2-b058-7eb6ca09ea39"
+      ],
+      "actualExistingActions": "e3c70a12 supplies orthogonal coordinate-plane map and checks one projection/linearity/image/kernel; 81823f27 uses two-dimensional matrices and a coordinate-axis projection; Solardach computes one shadow line-plane intersection and a normal, without deriving a 3D arbitrary-origin-plane matrix.",
+      "judgment": "No found whole form determines and analyzes the oblique projection matrix on an arbitrary origin plane. New content is justified as a role-neutral option; no existing form modified."
+    },
+    {
+      "goalId": "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+      "existingExamIds": [
+        "942de65f-e8cc-417c-a66b-5f597b26d965",
+        "a7896fa5-993e-52b9-8aa4-10420b35bfd9",
+        "81823f27-0c92-5444-ac4e-32b83169f318"
+      ],
+      "actualExistingActions": "Affine A1 solves two-dimensional nonzero-translation fixed sets, distinguishes invariant/fixed lines; CAD discusses one point fixed under an axis half-turn inside a reflection task; 81823f27 checks a 2D eigenvector and image points.",
+      "judgment": "Neither is the original required 3D linear Ax=x system solution for all fixed points. Keep the affine, reflection and eigenvector obligations separate; no assumed transfer through title or coverage labels."
+    },
+    {
+      "goalId": "5748633c-113f-5ea8-9041-24da55919de7",
+      "existingExamIds": [
+        "e3c70a12-7886-51f7-8bcd-ed54865415d6",
+        "6cff2b2e-be7f-531a-8849-e5fb3a55978a"
+      ],
+      "actualExistingActions": "e3c70a12 actually calculates the supplied P(v)=(2,-1,0), orthogonal rest, and interprets coordinate plane/image and perpendicular line/kernel, plus linearity. Software cuboid task creates two actual software views and explains vanished dimensions; it has its own real artifact obligation.",
+      "judgment": "e3c70a12 is a genuine reviewed whole-task reuse alternative to investigate for the point-and-geometric-interpretation reading of the original description, which says points/lines/surfaces/objects OR, not AND. Do not require every object type as new separate mastery. Existing e3 applicability excludes BY and its original R does not reach this goal. The new multi-view form remains optional content for a later reviewed route choice; it is not an automatic extra obligation or blanket replacement. Never waive the separate software artifact requirement.",
+      "laterDecision": "Independent whole-content review should explicitly decide whether the supplied-rule point projection plus interpretation is sufficient in each compatible scope; choose a reusable existing route where it is, rather than imposing both. BY and any scope/preparation changes require separate review.",
+      "actualCurrentN2Counts": {
+        "actualScopesRead": 161,
+        "examTargetScopes": 132,
+        "examProtectedScopes": 132,
+        "competencyTargetScopes": 16,
+        "competencyTargetWithExamProtectedScopes": 12,
+        "conditionalCandidateEffectScopes": 12,
+        "goalNewlyNeededInConditionalCandidateScopes": 12,
+        "contextsNeedingRecompile": 120
+      },
+      "conditionalRemainingNewFormScopeOptions": [
+        "DE-BY/SekII/G9/LK",
+        "DE-BY/SekII/G9/GK+LK",
+        "DE-BY/CrossStage/G9/LK",
+        "DE-BY/CrossStage/G9/GK+LK"
+      ],
+      "warning": "Declarative 15-jurisdiction e3 applicability is not actual membership of the coordinate competency. Actual overlap is 12 HE scopes; 4 BY scopes are distinct. A global e3->574 edge would affect 120 further existing exam scopes without the currently complete preparation context and is not approved."
+    },
+    {
+      "goalId": "7bb3c312-f714-55e6-a31f-f31605a93760",
+      "existingExamIds": [
+        "3449ecb6-7f5b-5ff2-b058-7eb6ca09ea39",
+        "1878f680-095c-511d-aaed-e98393f7fde9"
+      ],
+      "actualExistingActions": "Solardach solution uses a cross product as one permissible way to find a normal, but the task neither explicitly requires it nor assesses a cross-product magnitude for area. The pyramid task uses a perpendicular triangle area and volume; no cross product is demanded.",
+      "judgment": "Normal-only example or area arithmetic via perpendicular sides is not the whole explicitly joined cross-product applications to normals and areas. New content is justified; no claim that prerequisite definition/normal/area competencies are separately mastered."
+    }
+  ],
+  "otherWholeReadForms": {
+    "03b00864-7001-5c6a-875b-dc269b3484d9": "Plane description/axis intercepts and point location, no actual projected object.",
+    "4eaf7b88-ca73-537c-8067-029a7b1116fa": "Intersection with affine plane and line-plane angle, no projection matrix or whole target action.",
+    "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc": "Parameter-dependent plane-family intersection, common axis and parallelism, no target matrix/fixed-system/vector-product-area action.",
+    "e98672c6-871a-5d0b-889c-5afc51040f0d": "Projection of one vector onto a vector direction to explain dot product, not coordinate-plane projection or cross-product application."
+  },
+  "notAnIndependentApproval": true,
+  "noDuplicateRequirementCreated": true,
+  "actualScopedReuseAnalysis": "existing-e3-reuse-whole-scope-candidate-effect.json",
+  "actualMembershipViewBindings": "actual-membership-view-bindings.json"
+}

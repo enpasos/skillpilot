@@ -1,0 +1,314 @@
+{
+  "status": "PASS_ACTUAL_COMPILED_G4_GUARD_POSITIVE39_46_AND29_NEGATIVES",
+  "guardSourceSha256": "5fd88cf50139bf66f6cc97f8d672bd85a443f5f600fff86f5946af8276ae82f0",
+  "unchangedProductionMainSha256": "7bd872996af2e6178dde8baa729be8615b736c32baa5573e6f417e41e8f64758",
+  "originalActualGradleBuild": "normal-combined39-generate.actual.json",
+  "finalFreshJavac": "fresh-javac.actual.json",
+  "policyLayoutSourcePinsNotReboundInNormalFrozenHost": true,
+  "finalCanonicalSha256": "2fd2e68235ffb462dccebce5b5f35b76ba0ce0f092e52b4dce3ad21b7c20d753",
+  "finalPolicySha256": "4bc1a330878f211728bc1331210fea18aa203fb7e501838bfa7ce333fdf85360",
+  "positive": {
+    "exitCode": 0,
+    "stdout": "{\"combinedViews\":39,\"mode\":\"check\",\"requests\":46,\"omittedDocumentReferences\":147}\n",
+    "stderr": "",
+    "guardedInputsUnchanged": 233
+  },
+  "cases": [
+    {
+      "case": "unauthorized-existing-id",
+      "mode": "read-only --check",
+      "exitCode": 1,
+      "expectedRejection": "Unreviewed existing assessment allowance",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.15,
+      "stderrSha256": "2a33aa76bbef662c10269f6d9836e46974ee3b15642c00b110dd7cfc3ef6f539"
+    },
+    {
+      "case": "wrong-source-scope",
+      "mode": "read-only --check",
+      "exitCode": 1,
+      "expectedRejection": "Existing source current scope differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 3.71,
+      "stderrSha256": "13dad2776773be200025b7cf1820270af975520a5a28211d8da2eaa50ad0f038"
+    },
+    {
+      "case": "missing-SH-GK-mask",
+      "mode": "read-only --check",
+      "exitCode": 1,
+      "expectedRejection": "Existing excluded source role/mask inventory differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 3.7,
+      "stderrSha256": "6def44ed9b217b99bd2d9f43ca54b90c864d13d709d43db1841ecb398dff978e"
+    },
+    {
+      "case": "extra-mask-key",
+      "mode": "read-only --check",
+      "exitCode": 1,
+      "expectedRejection": "Existing excluded source exact root mask differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 3.87,
+      "stderrSha256": "87f2e2d64f3aab06ebc81768563a66dea273c7aee167fb31d1c97280414a64ee"
+    },
+    {
+      "case": "unrelated-source-tree-drift",
+      "mode": "read-only --check",
+      "exitCode": 1,
+      "expectedRejection": "Original source tree changed beyond reviewed task references",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 3.76,
+      "stderrSha256": "354f9b78757f7ec2c6f98a1e02ae005d3cf10d403b42d482d13db693ab311ee9"
+    },
+    {
+      "case": "original-snapshot-drift",
+      "mode": "read-only --check",
+      "exitCode": 1,
+      "expectedRejection": "Bound before-view drift",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 2.19,
+      "stderrSha256": "cb941c67195d61792e24c826a557b95b19c729b944439f428c7ca57872047104"
+    },
+    {
+      "case": "empty-SH-retained-wrapper",
+      "mode": "read-only --check",
+      "exitCode": 1,
+      "expectedRejection": "Original source tree changed beyond reviewed task references",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 4.11,
+      "stderrSha256": "038804c46e9c3063111a2cee9b5ae2f012da10a5ac167e07019c591e28c5d933"
+    },
+    {
+      "case": "check-with-report-rejected",
+      "mode": "read-only --check",
+      "exitCode": 1,
+      "expectedRejection": "--check is read-only; omit --report",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 0.5,
+      "stderrSha256": "d3cef5e94589a28bbe7ffdaf05f0bbee1254b160cc80a05cd061075b68be5d65"
+    },
+    {
+      "case": "G3-BY-statistics-plain-POnly-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "Existing added source direct-reference inventory differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.16,
+      "stderrSha256": "5691457e0c8fdc96d73b338162fa6c1e77b026f54b1c437e0d6b15bc8b455065"
+    },
+    {
+      "case": "G3-BY-pyramid-plain-POnly-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "Existing added source direct-reference inventory differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.23,
+      "stderrSha256": "5691457e0c8fdc96d73b338162fa6c1e77b026f54b1c437e0d6b15bc8b455065"
+    },
+    {
+      "case": "G3-SH-statistics-plain-POnly-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "Existing retained source direct-reference inventory differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.21,
+      "stderrSha256": "9932132f03b32e2adaa9640c60b1f654ee655764c71c8da4817c7483c94af417"
+    },
+    {
+      "case": "G4-BY-plain-POnly-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 exact positive direct-reference inventory differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.44,
+      "stderrSha256": "9dc8058df5f80ce13d639f75bde448e3a78fca47630999aebec393fb3efbb46f"
+    },
+    {
+      "case": "G4-unauthorized-source-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 unauthorized source reference",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.31,
+      "stderrSha256": "ec614cd6c9e84098fa162e3988324e67c4854e98d6ea85306f68a37ca34b721c"
+    },
+    {
+      "case": "G4-wrong-source-scope-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 source exact scope differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.56,
+      "stderrSha256": "e2659f1af788d289f20fd94951120ffa40ee01e50e744a8918f7ec1b04008617"
+    },
+    {
+      "case": "G4-missing-positive-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 exact positive direct-reference inventory differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.45,
+      "stderrSha256": "9dc8058df5f80ce13d639f75bde448e3a78fca47630999aebec393fb3efbb46f"
+    },
+    {
+      "case": "G4-unauthorized-id-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 identity/schema differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.19,
+      "stderrSha256": "7b9fe2df303abdd176f46d996a00129a3925c800f39a23bf9f08f2ed94c1abd4"
+    },
+    {
+      "case": "G4-broadened-scope-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 exact four scope pairs differ",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.15,
+      "stderrSha256": "6cb306fc550847d25bf16e399891a003f3f17b632280797fa7c117fc22cc49da"
+    },
+    {
+      "case": "G4-bound-old-plan-drift-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 original finite plan drift",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.18,
+      "stderrSha256": "5a3d6f1a2632d7814c7d6e727d35651e29d0d320ddab820e6b67060ba73c85d7"
+    },
+    {
+      "case": "G4-broad-override-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 explicit own-content override/boundary differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.17,
+      "stderrSha256": "f3bca358347213fbf6715a7d749f22c37303219177f369a7f22c5aed745d04cb"
+    },
+    {
+      "case": "G4-missing-form-preparation-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 canonical preparation differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.18,
+      "stderrSha256": "209cef9dde3d6c089707255ab06035220b0fbff8e05d6c5b33c916fb67356b58"
+    },
+    {
+      "case": "G4-fake-extra-coverage-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 scored coverage differs",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.14,
+      "stderrSha256": "fa53bc43f68af4058dc4b1498e3f9ae7f02904980ce99ab4b7e507fd35003a00"
+    },
+    {
+      "case": "missing-G4-contract-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 assessment identity requires geometryFourAssessmentPlacement",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.19,
+      "stderrSha256": "10bd540960aa694ed532eb20a6e93c57ba5fce08e973580daafbd67774cd1c36"
+    },
+    {
+      "case": "missing-contract-and-required-BY-reference-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 assessment identity requires geometryFourAssessmentPlacement",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.22,
+      "stderrSha256": "10bd540960aa694ed532eb20a6e93c57ba5fce08e973580daafbd67774cd1c36"
+    },
+    {
+      "case": "missing-contract-and-short-form-R-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 assessment identity requires geometryFourAssessmentPlacement",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.22,
+      "stderrSha256": "10bd540960aa694ed532eb20a6e93c57ba5fce08e973580daafbd67774cd1c36"
+    },
+    {
+      "case": "missing-contract-and-both-invalid-fields-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 assessment identity requires geometryFourAssessmentPlacement",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.24,
+      "stderrSha256": "10bd540960aa694ed532eb20a6e93c57ba5fce08e973580daafbd67774cd1c36"
+    },
+    {
+      "case": "missing-contract-canonical-identity-with-G3-plan-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 assessment identity requires geometryFourAssessmentPlacement",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.24,
+      "stderrSha256": "10bd540960aa694ed532eb20a6e93c57ba5fce08e973580daafbd67774cd1c36"
+    },
+    {
+      "case": "missing-contract-plan-identity-with-G3-canonical-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 assessment identity requires geometryFourAssessmentPlacement",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.2,
+      "stderrSha256": "10bd540960aa694ed532eb20a6e93c57ba5fce08e973580daafbd67774cd1c36"
+    },
+    {
+      "case": "missing-contract-nested-canonical-reference-only-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 assessment identity requires geometryFourAssessmentPlacement",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.17,
+      "stderrSha256": "10bd540960aa694ed532eb20a6e93c57ba5fce08e973580daafbd67774cd1c36"
+    },
+    {
+      "case": "missing-contract-policy-binding-only-identity-generation",
+      "mode": "generation to isolated fresh path",
+      "exitCode": 1,
+      "expectedRejection": "G4 assessment identity requires geometryFourAssessmentPlacement",
+      "guardedInputsUnchanged": 233,
+      "outputDirectoryCreated": false,
+      "seconds": 1.31,
+      "stderrSha256": "10bd540960aa694ed532eb20a6e93c57ba5fce08e973580daafbd67774cd1c36"
+    }
+  ],
+  "old21CasesRetained": 21,
+  "newRequiredContractGenerativeCases": 8,
+  "oldEightRetained": 8,
+  "G3PlainPOnlyGenerationRetained": 3,
+  "newG4GenerationNegatives": 10,
+  "rootGitNativeWrites": false
+}
