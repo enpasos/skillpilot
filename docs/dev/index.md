@@ -4,10 +4,12 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 
 ## Start Here
 
-- [Umsetzungsplan: Assessment-gated Completion](assessment-gated-completion-implementation-plan.md)
-  Backend-Berechnung, Cockpit- und Coach-UX, Performance sowie schrittweise Abnahme des vorgeschlagenen Abschlussprofils.
-- [Assessment-gated Completion: technischer Pilot](assessment-gated-completion-pilot.md)
-  Implementierter lokaler Pilot, Aktivierung, private Navigation und reproduzierbare Prüfpfade.
+- [Neustartplan: curriculare Anerkennung und Fachabschluss](curriculum-recognition-restart-plan.md)
+  Neuplanungsstand vom 4. November 2026: erste vollständige Mathematikeinheit, Fachabschluss und anschließende Korrektur von Physik, Biologie und Chemie.
+- [Historischer Umsetzungsplan: Assessment-gated Completion](assessment-gated-completion-implementation-plan.md)
+  Überholter Implementierungs- und Prüfstand vom 31. Oktober; keine Freigabe zur Fortsetzung des alten Modells.
+- [Historische Implementierungs- und Prüfhinweise](assessment-gated-completion-pilot.md)
+  Frühere lokale Bedienung und Nachweise; für den Neustart nur bausteinweise und mit neuen Sollwerten verwendbar.
 - [Dual Curriculum Package Implementation Status](dual-curriculum-package-implementation-status.md)
   Current checkpoint, quality evidence, and remaining roadmap for paired JSON-runtime and FWU-ontology releases.
 - [Documentation Guidelines](documentation-guidelines.md)

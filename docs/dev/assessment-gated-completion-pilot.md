@@ -6,9 +6,9 @@
 > und globale Verbraucherblockierung gelten nicht für das korrigierte Konzept.
 > Verbindlich sind [die neue Abschlusssemantik](../concept/skill-graph/assessment-gated-completion.md)
 > und [die Produktentscheidung](../concept/skill-graph/completion-semantics-clarification-2026-11-04.md).
-> Zuerst werden die Konzepte konsolidiert, anschließend wird die Umsetzung neu
-> geplant; erst danach werden wiederverwendbare Teile des alten PR geprüft.
-> Dieser Text darf nicht als Freigabe zur Fortsetzung des alten Rollouts dienen.
+> Die aktuelle Neuplanung steht im [Neustartplan für curriculare Anerkennung](curriculum-recognition-restart-plan.md).
+> Der nachfolgende historische Stand ist keine Freigabe zur Fortsetzung des alten
+> Rollouts; wiederverwendbare Teile benötigen die dort festgelegte neue Prüfung.
 
 
 Stand: 31. Oktober 2026. Der historische Dateiname bleibt bestehen. Dieses
