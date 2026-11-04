@@ -2,7 +2,8 @@
 """One conservative input inventory for the completion corpus and its report gate.
 
 The exact quality root is offline evidence, except for registry-addressed source
-files and extraction fallbacks. Other curriculum JSON is cheap to over-bind and
+files, extraction fallbacks and declared buildtime view-check dependencies.
+Other curriculum JSON is cheap to over-bind and
 may be read by a different runtime loader, including mappings in metadata roots.
 The Git index supplements the filesystem so sparse checkout cannot silently make
 functional inputs disappear. No source files or evidence copies are generated.
@@ -31,6 +32,9 @@ CODE_INPUTS = {
 }
 OFFLINE_ROOT = 'curricula/DE/Gymnasium/quality/'
 REGISTRY = 'curricula/DE/Gymnasium/provenance/source-landscape-registry.json'
+MATH_VIEW_PLAN = ('curricula/DE/Gymnasium/assessments/mathematik/'
+                  'contextual-terminal-assessments-2026-11-04-v1/finite-scope-operations.json')
+MATH_VIEW_POLICY = 'app/scripts/config/math-country-seki-stage-policy.json'
 
 
 def tracked_files(root):
@@ -79,6 +83,38 @@ def registered_path(root, relative, known, ordered):
     return fallback
 
 
+def math_view_check_inputs(root, known):
+    """Mirror the explicit file bindings read by the production-merger check.
+
+    Read a sparse plan from this repository's index before hydration. Review
+    contents are not traversed: their historical paths are not build inputs.
+    The allowance's review must already occur in independentDecisionBindings,
+    as enforced by MaterializeMathContextualCombinedViews.
+    """
+    plan_path = root / MATH_VIEW_PLAN
+    if plan_path.is_file():
+        plan = json.loads(plan_path.read_text())
+    elif MATH_VIEW_PLAN in known:
+        result = subprocess.run(['git', '-C', str(root), 'show', ':' + MATH_VIEW_PLAN],
+                                capture_output=True, check=True)
+        plan = json.loads(result.stdout)
+    else:
+        return set()
+    result = {MATH_VIEW_PLAN, MATH_VIEW_POLICY}
+    bindings = [*plan.get('independentDecisionBindings', []),
+                *plan.get('producerSourceSnapshots', {}).values()]
+    if 'reviewedExistingAssessmentChanges' in plan:
+        bindings.append(plan['reviewedExistingAssessmentChanges'])
+    for binding in bindings:
+        relative = binding.get('path') if isinstance(binding, dict) else None
+        if (not isinstance(relative, str) or not relative
+                or Path(relative).is_absolute() or '..' in Path(relative).parts
+                or '\\' in relative or relative != Path(relative).as_posix()):
+            raise ValueError(f'Invalid declared view-check input: {relative!r}')
+        result.add(relative)
+    return result
+
+
 def current_input_paths(root):
     root = root.resolve()
     known = tracked_files(root)
@@ -93,6 +129,7 @@ def current_input_paths(root):
         path.startswith('curricula/') and not path.startswith(OFFLINE_ROOT)
         and path.endswith(('.json', '.json.snapshot'))
     ) or (path.startswith(('backend/src/main/java/', 'backend/src/test/java/')) and path.endswith('.java')))
+    result.update(math_view_check_inputs(root, known))
     registry = root / REGISTRY
     if REGISTRY in known and not registry.is_file():
         raise ValueError(f'Missing input inventory registry: {REGISTRY}')

@@ -53,6 +53,13 @@ Backendmessung.
 und HTTP-Antworten korrigiert. Alle Mitgliedschaftsprüfungen bleiben erhalten;
 die vollständige Controllerklasse besteht danach mit 38/38 Tests ohne Skips.
 
+Der GitHub-Nachlauf auf `c608f2e032` zeigt außerdem eine fehlende deklarierte
+Generator-Eingabe im schlanken Checkout. Die Ermittlung dieser Eingaben ist
+korrigiert: 30 Vertragsprüfungen und eine tatsächliche Sparse-Reproduktion
+bestätigen die Wiederherstellung der benötigten Dateien und den unveränderten
+Generator-PASS für 39 Dokumente und 46 Kursvereinigungen. Die Mathematik-Datenlücken
+bleiben davon unabhängig offen.
+
 Der gemeinsame vorherige Backendvergleich und das unabhängige Astra-Review prüfen
 alle 161 Angebote. Alle 502 übernommenen Dateien und die 3.187 Eingaben des
 Backendlaufs stimmen bytegenau. Die elf normalen Autorenprüfungen bestehen;
@@ -112,6 +119,7 @@ vollständigen Backendlauf.
 · [Gemeinsame Rollen- und Pfadkorrektur](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/context-he-three/README.md)
 · [Kegel und komplexe Zahlen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/cone-complex-four/README.md)
 · [Statistik und Pyramiden](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/statistics-pyramid/README.md)
+· [Deklarierte CI-Eingaben](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/sparse-declared-inputs/README.md)
 · [Markov-Platzierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/sh-markov-twelve/README.md)
 · [Graphvalidierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/directed-prior-stage-validation/README.md)
 · [Coach und Plan](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-explicit-assessment-choices/README.md)

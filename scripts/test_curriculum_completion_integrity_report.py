@@ -10,7 +10,7 @@ import subprocess
 import unittest
 
 from check_curriculum_completion_integrity_report import CLASS, CORPUS_METHOD, REQUIRED_SUBJECTS, GYMNASIUM_ROOT, canonical_pc_scopes, validate
-from curriculum_completion_inputs import current_input_paths
+from curriculum_completion_inputs import current_input_paths, MATH_VIEW_PLAN, MATH_VIEW_POLICY
 
 
 class ReportContractTest(unittest.TestCase):
@@ -409,6 +409,68 @@ class ReportContractTest(unittest.TestCase):
         self.assertEqual(expected, current_input_paths(self.root))
         self.assertTrue(all((self.root / path).is_file() for path in expected))
         self.assertFalse((self.root / offline).exists())
+
+    def test_sparse_hydration_restores_declared_view_review_and_snapshot_inputs(self):
+        review = 'curricula/DE/Gymnasium/quality/review/independent.json'
+        allowance = 'curricula/DE/Gymnasium/quality/review/allowance.json'
+        snapshot = 'curricula/DE/Gymnasium/quality/review/source.view.json'
+        offline = 'curricula/DE/Gymnasium/quality/unrelated/bulk.json'
+        historical = 'tmp/unpublished-native-history.json'
+        self.write(MATH_VIEW_PLAN, json.dumps({
+            'independentDecisionBindings': [{'path': review, 'sha256': 'review'}],
+            'producerSourceSnapshots': {'source': {'path': snapshot, 'sha256': 'snapshot'}},
+            'reviewedExistingAssessmentChanges': {'path': allowance, 'sha256': 'allowance'},
+        }))
+        self.write(MATH_VIEW_POLICY, '{}')
+        self.write(review, json.dumps({'historicalInput': {'path': historical}}))
+        self.write(allowance, json.dumps({'review': {'path': review, 'sha256': 'review'}}))
+        for relative in [snapshot, offline]:
+            self.write(relative, '{}')
+
+        def git(*arguments, **kwargs):
+            return subprocess.run(['git', '-C', str(self.root), *arguments], check=True,
+                                  capture_output=True, **kwargs)
+
+        git('init', '-q')
+        git('add', '.')
+        git('-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
+            'commit', '-qm', 'fixture')
+        expected = current_input_paths(self.root)
+        self.assertTrue({review, allowance, snapshot, MATH_VIEW_POLICY} <= expected)
+        self.assertNotIn(offline, expected)
+        self.assertNotIn(historical, expected)
+        # Neither the plan nor its quality dependencies are initially present.
+        git('sparse-checkout', 'set', '--no-cone', '/app/', '/docs/',
+            '/curricula/DE/Gymnasium/canonical/')
+        self.assertFalse((self.root / MATH_VIEW_PLAN).exists())
+        self.assertEqual(expected, current_input_paths(self.root))
+        patterns = '\n'.join('/' + path for path in sorted(expected)) + '\n'
+        git('sparse-checkout', 'add', '--stdin', input=patterns.encode())
+        self.assertTrue(all((self.root / path).is_file() for path in expected))
+        self.assertFalse((self.root / offline).exists())
+        self.assertEqual(expected, current_input_paths(self.root))
+
+    def test_declared_view_dependencies_remain_hash_bound_and_cannot_escape(self):
+        review = 'curricula/DE/Gymnasium/quality/review/independent.json'
+        self.bind(MATH_VIEW_POLICY, '{}')
+        self.bind(MATH_VIEW_PLAN, json.dumps({
+            'independentDecisionBindings': [{'path': review, 'sha256': 'review'}],
+        }))
+        self.bind(review, '{}')
+        self.assertIn('4 subjects unexamined', self.check())
+        self.write(review, '{"changed":true}')
+        with self.assertRaisesRegex(ValueError, 'Changed bound input'):
+            self.check()
+        (self.root / review).unlink()
+        with self.assertRaisesRegex(ValueError, 'Missing bound input'):
+            self.check()
+        for relative in ['../outside.json', '/outside.json', 'curricula/../../outside.json']:
+            with self.subTest(relative=relative):
+                self.write(MATH_VIEW_PLAN, json.dumps({
+                    'independentDecisionBindings': [{'path': relative, 'sha256': 'x'}],
+                }))
+                with self.assertRaisesRegex(ValueError, 'Invalid declared view-check input'):
+                    current_input_paths(self.root)
 
     def test_registry_fallback_extractions_are_bound_inside_reserved_roots(self):
         for route, source_present in [('archive/', True), ('', True), ('archive/', False), ('', False)]:
