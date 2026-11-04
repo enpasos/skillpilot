@@ -12,7 +12,7 @@ import { normalizeCanonicalLandscape } from '../src/utils/authoring/canonicalAut
 import { applyReviewedMathAssessmentVariants } from './mathAssessmentScopeVariants'
 import { applyReviewedMathAssessmentPlacements } from './mathReviewedAssessmentPlacements'
 import { applyMathAssessmentScopeOperations, applyMathStageScopeRule, mathStageRuleForScope, selectReviewedMathTargetBuckets, assertKnownMathTargetSupport } from './mathStageScopePolicy'
-import { assertMathStageMaterializationAllowed, type StagePolicy, type StageReviewReceipt } from './generateMathCountrySekICompositionViews'
+import { assertMathStagePolicyInputs, assertMathStageMaterializationAllowed, type StagePolicy, type StageReviewReceipt } from './generateMathCountrySekICompositionViews'
 
 type DurationModel = 'G8' | 'G9'
 
@@ -78,12 +78,6 @@ interface SourceGoal {
 interface MappingEntry {
   legacyGoalId?: string
   canonicalGoalId?: string
-}
-
-interface SemanticKindDecision {
-  goalId?: string
-  semanticKind?: string
-  decisionStatus?: string
 }
 
 interface SplitLayoutPlacement {
@@ -184,10 +178,6 @@ const compositionViewDir = resolve(repoRoot, argument('--composition-input-dir')
 const splitLayoutPlanPath = resolve(
   argument('--layout-policy') ? repoRoot : scriptDir,
   argument('--layout-policy') ?? 'config/math-duration-split-spanning-tree-policy.json',
-)
-const semanticKindLedgerPath = resolve(
-  repoRoot,
-  'curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json',
 )
 
 const CANONICAL_MATH_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
@@ -374,12 +364,16 @@ if (shouldWrite || shouldCheck) {
   const receipt = receiptPath && existsSync(receiptPath) ? readJson<StageReviewReceipt>(receiptPath) : undefined
   assertMathStageMaterializationAllowed(repoRoot, commonStagePolicy, commonStagePolicyBytes, receipt)
 }
-const semanticKindLedger = readJson<{ decisions?: SemanticKindDecision[] }>(semanticKindLedgerPath)
 const canonicalMathRelativePath =
   argument('--canonical') ?? 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
 const canonicalMathSha256 = createHash('sha256')
   .update(readFileSync(canonicalMathPath))
   .digest('hex')
+
+if (commonStagePolicy.canonical.path !== canonicalMathRelativePath
+  || commonStagePolicy.canonical.sha256 !== canonicalMathSha256) {
+  throw new Error('Stage-policy canonical path/SHA must match the duration canonical input')
+}
 
 if (
   splitLayoutPlan.schemaVersion !== 1
@@ -424,13 +418,7 @@ const splitLayoutTemplateByFileName = new Map(
 const goalById = new Map(
   (canonicalMath.goals ?? []).flatMap((goal) => goal.id ? [[goal.id, goal]] as const : []),
 )
-const semanticKindByGoalId = new Map(
-  (semanticKindLedger.decisions ?? []).flatMap((decision) => (
-    decision.goalId && decision.decisionStatus === 'authoritative'
-      ? [[decision.goalId, decision.semanticKind ?? '']] as const
-      : []
-  )),
-)
+const { semanticKindByGoalId } = assertMathStagePolicyInputs(repoRoot, commonStagePolicy)
 const sourceGoalById = new Map(
   (sourceExtraction.sourceGoals ?? []).flatMap((goal) => goal.id ? [[goal.id, goal]] as const : []),
 )
@@ -1491,7 +1479,7 @@ const applyCommonStageScope = (view: CompositionView): CompositionView => {
   const scopedRule = { ...rule, additionalTargetGoalIds: rule.additionalTargetGoalIds.filter(id =>
     explicitViewSelections.get(id) !== false
     && (!roles.targetGoalIds.has(id) || stageRoles.targetGoalIds.has(id) || rule.relocateGoalIds.includes(id))) }
-  return applyMathStageScopeRule(view, goalById, scopedRule, anchor, view.scope.stage === 'CrossStage').view
+  return applyMathStageScopeRule(view, goalById, scopedRule, anchor, view.scope.stage === 'CrossStage', semanticKindByGoalId).view
 }
 
 const removePrerequisiteOnlyReferences = (

@@ -12,6 +12,8 @@ import {
   type CompositionViewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
 import type { CanonicalAuthoringLandscape } from '../src/utils/authoring/canonicalAuthoring'
+import { parseSemanticKindLedger } from './lib/semanticKindLedger'
+import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 import { addReviewedMathStageTargets, applyMathAssessmentScopeOperations, applyMathStageScopeRule, mathStageRuleForScope,
   relocateReviewedMathStageTargets, type MathAssessmentScopeOperation, type MathStageScopeRule } from './mathStageScopePolicy'
 
@@ -58,7 +60,7 @@ export type StagePolicy = {
 
 /** Explicit corrections/duration variants of authored existing stage views. */
 export function deriveMathExistingStageViews(root: string, policy: StagePolicy) {
-  const { canonical, goals, decisions } = assertMathStagePolicyInputs(root, policy)
+  const { canonical, goals, decisions, semanticKindByGoalId } = assertMathStagePolicyInputs(root, policy)
   return policy.existingStageViews.map(operation => {
     localPath(root, operation.outputPath)
     expect(operation.outputPath.startsWith('curricula/DE/Gymnasium/composition-views/mathematik/') && operation.outputPath.endsWith('.view.json'), 'invalid existing output destination')
@@ -77,7 +79,7 @@ export function deriveMathExistingStageViews(root: string, policy: StagePolicy) 
     if (operation.ruleId) {
       const rule = policy.stageRules.find(candidate => candidate.id === operation.ruleId)
       expect(rule && operation.stageAnchorId && rule.jurisdiction === view.scope.jurisdiction, 'existing stage view lacks exact source rule/anchor')
-      stageAudit = applyMathStageScopeRule(view, goals, rule, operation.stageAnchorId!, view.scope.stage === 'CrossStage')
+      stageAudit = applyMathStageScopeRule(view, goals, rule, operation.stageAnchorId!, view.scope.stage === 'CrossStage', semanticKindByGoalId)
       view = stageAudit.view as CompositionView
     }
     for (const placement of operation.upperPlacements) {
@@ -238,12 +240,15 @@ export function assertMathStagePolicyInputs(root: string, policy: StagePolicy) {
     expect(outputIds.has(operation.viewId), 'assessment scope operation has no materialized view')
     expect(policy.stageDecisionBindings.some(binding => binding.path === operation.sourceDecision.split('#')[0]), 'assessment scope operation lacks its exact bound independent source decision')
   }
-  return { canonical, goals, decisions, selections }
+  const ledger = policy.sourceBindings.find(binding => binding.path === 'curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json')
+  if (!ledger) fail('missing authoritative semantic-kind ledger binding')
+  const { semanticKindByGoalId } = parseSemanticKindLedger(boundJson(root, ledger), canonical, canonical.landscapeId, policy.canonical.path, fingerprintSemanticKindSourceGoal)
+  return { canonical, goals, decisions, selections, semanticKindByGoalId }
 }
 
 /** Build ordinary views from explicitly classified fragments; no stage inference. */
 export function deriveMathCountrySekIViews(root: string, policy: StagePolicy) {
-  const { canonical, goals, decisions, selections } = assertMathStagePolicyInputs(root, policy)
+  const { canonical, goals, decisions, selections, semanticKindByGoalId } = assertMathStagePolicyInputs(root, policy)
   expect(new Set(policy.countries.map(country => country.jurisdiction)).size === policy.countries.length, 'duplicate country')
   expect(new Set(policy.countries.map(country => country.outputViewId)).size === policy.countries.length, 'duplicate output view')
   return policy.countries.map(country => {
@@ -318,7 +323,7 @@ export function deriveMathCountrySekIViews(root: string, policy: StagePolicy) {
       expect(same(actual.filter(occurrence => !changedGoalIds.has(occurrence.goalId)), expected.filter(occurrence => !changedGoalIds.has(occurrence.goalId))),
         `${view.viewId}: unaffected full-source structure/goal parent paths changed`)
       const stageRule = mathStageRuleForScope(policy.stageRules, country.jurisdiction, country.offeredDurationModels)
-      const stageAudit = applyMathStageScopeRule(proposed, goals, stageRule, source.mainStageId, false)
+      const stageAudit = applyMathStageScopeRule(proposed, goals, stageRule, source.mainStageId, false, semanticKindByGoalId)
       proposed = applyMathAssessmentScopeOperations(stageAudit.view, goals, policy.assessmentScopeOperations)
       compiled = compileCompositionView(proposed, canonical)
       expect(!compiled.findings.some(finding => finding.severity === 'error'), `${view.viewId}: stage correction compile failed`)

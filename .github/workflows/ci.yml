@@ -388,11 +388,49 @@ jobs:
         run: |
           set -euo pipefail
           test "${RUNNER_ENVIRONMENT:-}" = github-hosted
-          df -h .
-          sudo rm -rf -- /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup /opt/hostedtoolcache/CodeQL
-          df -h .
+          test "${RUNNER_OS:-}" = Linux
+          df -h "${GITHUB_WORKSPACE}"
+          df -i "${GITHUB_WORKSPACE}"
+          # Keep Python, Java/JDK caches and system build tools; set up Node below.
+          sudo rm -rf -- \
+            /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup \
+            /usr/share/swift /usr/local/julia* /usr/share/miniconda \
+            /opt/az /opt/microsoft/powershell /usr/local/share/powershell \
+            /usr/local/share/boost /usr/local/share/vcpkg \
+            /home/linuxbrew "${HOME}/.rustup" "${HOME}/.cargo"
+          if [ -d /opt/hostedtoolcache ]; then
+            sudo find /opt/hostedtoolcache -mindepth 1 -maxdepth 1 \
+              ! -name Python ! -name 'Java*' -exec rm -rf -- {} +
+          fi
+          if ! sudo docker image prune --all --force; then
+            echo "::warning::Docker image cleanup unavailable; the disk budget is still required."
+          fi
+          sudo apt-get clean
+          df -h "${GITHUB_WORKSPACE}"
+          df -i "${GITHUB_WORKSPACE}"
+          # 43 GiB worktree + 15 GiB shallow Git reserve + 8 GiB dependencies/builds.
+          required_bytes=$((66 * 1024 * 1024 * 1024))
+          available_bytes="$(df -B1 --output=avail "${GITHUB_WORKSPACE}" | tail -n 1)"
+          if [ "${available_bytes}" -lt "${required_bytes}" ]; then
+            echo "::error::Full checkout needs ${required_bytes} free bytes; only ${available_bytes} are available after cleanup."
+            exit 1
+          fi
       - name: Checkout
         uses: actions/checkout@v6
+      - name: Verify disk reserve after the complete checkout
+        working-directory: ${{ github.workspace }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          df -h .
+          df -i .
+          du -sh .git
+          required_bytes=$((8 * 1024 * 1024 * 1024))
+          available_bytes="$(df -B1 --output=avail . | tail -n 1)"
+          if [ "${available_bytes}" -lt "${required_bytes}" ]; then
+            echo "::error::Dependencies and builds need ${required_bytes} free bytes after checkout; only ${available_bytes} remain."
+            exit 1
+          fi
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
@@ -539,11 +577,49 @@ jobs:
         run: |
           set -euo pipefail
           test "${RUNNER_ENVIRONMENT:-}" = github-hosted
-          df -h .
-          sudo rm -rf -- /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup /opt/hostedtoolcache/CodeQL
-          df -h .
+          test "${RUNNER_OS:-}" = Linux
+          df -h "${GITHUB_WORKSPACE}"
+          df -i "${GITHUB_WORKSPACE}"
+          # Keep Python, Java/JDK caches and system build tools; set up Node below.
+          sudo rm -rf -- \
+            /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup \
+            /usr/share/swift /usr/local/julia* /usr/share/miniconda \
+            /opt/az /opt/microsoft/powershell /usr/local/share/powershell \
+            /usr/local/share/boost /usr/local/share/vcpkg \
+            /home/linuxbrew "${HOME}/.rustup" "${HOME}/.cargo"
+          if [ -d /opt/hostedtoolcache ]; then
+            sudo find /opt/hostedtoolcache -mindepth 1 -maxdepth 1 \
+              ! -name Python ! -name 'Java*' -exec rm -rf -- {} +
+          fi
+          if ! sudo docker image prune --all --force; then
+            echo "::warning::Docker image cleanup unavailable; the disk budget is still required."
+          fi
+          sudo apt-get clean
+          df -h "${GITHUB_WORKSPACE}"
+          df -i "${GITHUB_WORKSPACE}"
+          # 43 GiB worktree + 15 GiB shallow Git reserve + 8 GiB dependencies/builds.
+          required_bytes=$((66 * 1024 * 1024 * 1024))
+          available_bytes="$(df -B1 --output=avail "${GITHUB_WORKSPACE}" | tail -n 1)"
+          if [ "${available_bytes}" -lt "${required_bytes}" ]; then
+            echo "::error::Full checkout needs ${required_bytes} free bytes; only ${available_bytes} are available after cleanup."
+            exit 1
+          fi
       - name: Checkout
         uses: actions/checkout@v6
+      - name: Verify disk reserve after the complete checkout
+        working-directory: ${{ github.workspace }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          df -h .
+          df -i .
+          du -sh .git
+          required_bytes=$((8 * 1024 * 1024 * 1024))
+          available_bytes="$(df -B1 --output=avail . | tail -n 1)"
+          if [ "${available_bytes}" -lt "${required_bytes}" ]; then
+            echo "::error::Dependencies and builds need ${required_bytes} free bytes after checkout; only ${available_bytes} remain."
+            exit 1
+          fi
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
@@ -775,11 +851,49 @@ jobs:
         run: |
           set -euo pipefail
           test "${RUNNER_ENVIRONMENT:-}" = github-hosted
-          df -h .
-          sudo rm -rf -- /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup /opt/hostedtoolcache/CodeQL
-          df -h .
+          test "${RUNNER_OS:-}" = Linux
+          df -h "${GITHUB_WORKSPACE}"
+          df -i "${GITHUB_WORKSPACE}"
+          # Keep Python, Java/JDK caches and system build tools; set up Node below.
+          sudo rm -rf -- \
+            /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup \
+            /usr/share/swift /usr/local/julia* /usr/share/miniconda \
+            /opt/az /opt/microsoft/powershell /usr/local/share/powershell \
+            /usr/local/share/boost /usr/local/share/vcpkg \
+            /home/linuxbrew "${HOME}/.rustup" "${HOME}/.cargo"
+          if [ -d /opt/hostedtoolcache ]; then
+            sudo find /opt/hostedtoolcache -mindepth 1 -maxdepth 1 \
+              ! -name Python ! -name 'Java*' -exec rm -rf -- {} +
+          fi
+          if ! sudo docker image prune --all --force; then
+            echo "::warning::Docker image cleanup unavailable; the disk budget is still required."
+          fi
+          sudo apt-get clean
+          df -h "${GITHUB_WORKSPACE}"
+          df -i "${GITHUB_WORKSPACE}"
+          # 43 GiB worktree + 15 GiB shallow Git reserve + 8 GiB dependencies/builds.
+          required_bytes=$((66 * 1024 * 1024 * 1024))
+          available_bytes="$(df -B1 --output=avail "${GITHUB_WORKSPACE}" | tail -n 1)"
+          if [ "${available_bytes}" -lt "${required_bytes}" ]; then
+            echo "::error::Full checkout needs ${required_bytes} free bytes; only ${available_bytes} are available after cleanup."
+            exit 1
+          fi
       - name: Checkout
         uses: actions/checkout@v6
+      - name: Verify disk reserve after the complete checkout
+        working-directory: ${{ github.workspace }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          df -h .
+          df -i .
+          du -sh .git
+          required_bytes=$((8 * 1024 * 1024 * 1024))
+          available_bytes="$(df -B1 --output=avail . | tail -n 1)"
+          if [ "${available_bytes}" -lt "${required_bytes}" ]; then
+            echo "::error::Dependencies and builds need ${required_bytes} free bytes after checkout; only ${available_bytes} remain."
+            exit 1
+          fi
       - name: Restore same-run verified goal-book catalog and models
         uses: actions/download-artifact@v7
         with:

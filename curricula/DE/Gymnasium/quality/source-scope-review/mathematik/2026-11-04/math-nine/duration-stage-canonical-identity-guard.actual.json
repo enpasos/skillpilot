@@ -1,0 +1,44 @@
+{
+  "status": "PASS_DIRECT_DURATION_STAGE_CANONICAL_PATH_AND_SHA_GUARD",
+  "implementation": {
+    "path": "app/scripts/generateMathDurationCompositionViews.ts",
+    "sha256": "561cfd69914e29b7c9f4b9d0042ed3035bd9faaf40ddab9c8dc3896b7ad863ce"
+  },
+  "normalInputCanonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "normalInputCanonicalSha256": "3c3ca7bdbe110061e263b7e37173e5bb365f325384e8cc0cde0713108a2b438a",
+  "negativePreviewCases": [
+    {
+      "case": "different-canonical-path",
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateMathDurationCompositionViews.ts",
+        "--output-dir",
+        "tmp/rejected-different-canonical-path",
+        "--canonical",
+        "tmp/aliased-canonical.json"
+      ],
+      "exitCode": 1,
+      "seconds": 0.58,
+      "exactNewGuardObserved": true,
+      "noPreviewOutputsWritten": true
+    },
+    {
+      "case": "different-canonical-sha",
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateMathDurationCompositionViews.ts",
+        "--output-dir",
+        "tmp/rejected-different-canonical-sha",
+        "--stage-policy",
+        "tmp/stale-canonical-stage-policy.json"
+      ],
+      "exitCode": 1,
+      "seconds": 0.57,
+      "exactNewGuardObserved": true,
+      "noPreviewOutputsWritten": true
+    }
+  ],
+  "noNewRuntimeFeatureScopeRuleOrTaskChange": true
+}

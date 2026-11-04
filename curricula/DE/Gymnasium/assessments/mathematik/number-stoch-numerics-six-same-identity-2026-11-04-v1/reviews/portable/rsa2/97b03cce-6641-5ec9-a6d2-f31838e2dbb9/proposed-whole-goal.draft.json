@@ -1,0 +1,158 @@
+{
+  "id": "97b03cce-6641-5ec9-a6d2-f31838e2dbb9",
+  "shortKey": "canonical_math_sek2_q4_rsa_cryptography_by",
+  "title": "RSA-Verfahren mathematisch erläutern und anwenden (LK)",
+  "titleEn": "Explain and apply the RSA method mathematically (advanced course)",
+  "description": "Die lernende Person kann das Prinzip des RSA-Verfahrens als asymmetrisches Verschlüsselungsverfahren erläutern, Nachrichten damit verschlüsseln und die Korrektheit der Entschlüsselung plausibel begründen.",
+  "descriptionEn": "The learner can explain RSA as an asymmetric encryption method, encrypt messages with it, and plausibly justify why decryption recovers the original message.",
+  "core": false,
+  "weight": 1,
+  "tags": [
+    "LK",
+    "canonical"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-math",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K1.4",
+      "K2.2",
+      "K4.2"
+    ],
+    "guidingIdeas": [
+      "L1",
+      "L4"
+    ],
+    "phase": "Q4",
+    "area": "Algebra",
+    "topicCode": "CANONICAL.MATH.SEK2.Q4.NUMBER_THEORY.RSA_BY"
+  },
+  "contains": [],
+  "requires": [
+    "d8cbf2bd-2512-5661-b431-4aea7e688912",
+    "e4eaff7f-1e3d-54ea-8a59-02864948b5eb",
+    "474fe553-d868-50d9-a19b-761e64f21c0d"
+  ],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "type": "atomic",
+  "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.4",
+  "semanticAtomic": true,
+  "resourceLinks": [
+    {
+      "type": "goal-visualization",
+      "resourceType": "image",
+      "role": "primary",
+      "skillpilotId": "97b03cce-6641-5ec9-a6d2-f31838e2dbb9",
+      "title": "Visualisierung: RSA-Verfahren mathematisch erläutern und anwenden (LK)",
+      "url": "/assets/goal-visualizations/mathematik/97b03cce-6641-5ec9-a6d2-f31838e2dbb9/97b03cce-6641-5ec9-a6d2-f31838e2dbb9.jpg",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "description": "Visualisierung zum Lernziel: RSA-Verfahren mathematisch erläutern und anwenden (LK).",
+      "altText": "Didaktische Visualisierung zum Lernziel \"RSA-Verfahren mathematisch erläutern und anwenden (LK)\". Die lernende Person kann das Prinzip des RSA-Verfahrens als asymmetrisches Verschlüsselungsverfahren erläutern, Nachrichten damit verschlüsseln und die Korrektheit der Entschlüsselung plausibel begründen.",
+      "lang": "de",
+      "license": "AI-generated, SkillPilot-curated",
+      "reviewStatus": "pilot"
+    }
+  ],
+  "nodeKind": "exam",
+  "examData": {
+    "reviewStatus": "draft",
+    "taskContent": "# Ein mathematisches RSA-Modell\n\nEine Empfängerin verwendet die verschiedenen Primzahlen $p=11$ und $q=17$\nund den öffentlichen Exponenten $e=7$. Nachrichten sind hier die ganzen\nZahlen $m$ mit $0\\leq m<n$, wobei $n=pq$ gilt. Zeige die Rechenschritte\nund begründe deine Aussagen. Insgesamt sind **20 BE** erreichbar.\n\n**1. Schlüssel bilden (4 BE)**\n\nBerechne $n$ und $\\varphi(n)=(p-1)(q-1)$. Prüfe die Bedingung an $e$ und\nbestimme einen positiven privaten Exponenten $d<\\varphi(n)$ mit\n$ed\\equiv1\\pmod{\\varphi(n)}$. Prüfe dein Ergebnis.\n\n**2. Asymmetrisches Prinzip erläutern (3 BE)**\n\nGib den öffentlichen und den privaten Schlüssel in einer eindeutig erklärten\nSchreibweise an. Beschreibe, welche Daten ein Absender zum Verschlüsseln\nbenutzt und welche Daten die Empfängerin zum Entschlüsseln verwendet.\nErläutere daran, was hier „asymmetrisch“ bedeutet.\n\n**3. Nachrichten verschlüsseln und zurückgewinnen (6 BE)**\n\nVerschlüssele $m=20$ und $m=11$ mit $c\\equiv m^e\\pmod n$; wähle jeweils\n$0\\leq c<n$. Zeige eine nachvollziehbare modulare Potenzrechnung.\nEntschlüssele beide Ergebnisse mit $m'\\equiv c^d\\pmod n$ und prüfe,\nwelche ursprüngliche Nachricht zurückkommt. Eine geeignete\nQuadrat-und-Multiplizier-Rechnung oder eine gleichwertige modulare Rechnung\ngenügt; bloß ausgegebene Endwerte genügen nicht.\n\n**4. Korrektheit plausibel begründen (7 BE)**\n\nBegründe für **jede** Nachricht $0\\leq m<n$, warum Entschlüsseln nach\nVerschlüsseln wieder $m$ ergibt. Betrachte dazu die Reste modulo $11$ und\nmodulo $17$ und führe die Ergebnisse zusammen. Berücksichtige ausdrücklich,\ndass eine Nachricht durch $11$ oder durch $17$ teilbar sein kann, und ordne\ndas Beispiel $m=11$ ein.\n\nBeurteile die Aussage: „Man darf für alle Nachrichten einfach\n$m^{\\varphi(n)}\\equiv1\\pmod n$ einsetzen.“ Du darfst den kleinen Satz\nvon Fermat und den chinesischen Restsatz verwenden; ein erneuter Beweis\ndieser Sätze ist nicht verlangt. Eine andere mathematisch tragfähige\nBegründung, die alle Nachrichten einschließlich der nicht teilerfremden\nabdeckt, ist gleichwertig.\n",
+    "taskContentEn": "# A mathematical RSA model\n\nA recipient uses the distinct primes $p=11$ and $q=17$ and the public\nexponent $e=7$. Messages here are the integers $m$ with $0\\leq m<n$,\nwhere $n=pq$. Show your calculations and justify your statements.\nA total of **20 points** is available.\n\n**1. Construct the keys (4 points)**\n\nCalculate $n$ and $\\varphi(n)=(p-1)(q-1)$. Check the condition on $e$ and\nfind a positive private exponent $d<\\varphi(n)$ satisfying\n$ed\\equiv1\\pmod{\\varphi(n)}$. Check your result.\n\n**2. Explain the asymmetric principle (3 points)**\n\nState the public and private keys using a clearly explained notation.\nDescribe which data a sender uses to encrypt and which data the recipient\nuses to decrypt. Explain what “asymmetric” means here.\n\n**3. Encrypt and recover messages (6 points)**\n\nEncrypt $m=20$ and $m=11$ using $c\\equiv m^e\\pmod n$, choosing\n$0\\leq c<n$. Show traceable modular exponentiation.\nDecrypt both results using $m'\\equiv c^d\\pmod n$ and check which original\nmessage is recovered. Suitable repeated squaring and multiplication, or an\nequivalent modular calculation, is sufficient; unexplained final values\nare insufficient.\n\n**4. Make correctness plausible (7 points)**\n\nExplain why decryption after encryption recovers $m$ for **every** message\n$0\\leq m<n$. Consider residues modulo $11$ and modulo $17$, then combine\nyour results. Explicitly include messages divisible by $11$ or $17$ and\nrelate this to the example $m=11$.\n\nEvaluate the claim: “For all messages we may simply substitute\n$m^{\\varphi(n)}\\equiv1\\pmod n$.” You may use Fermat's little theorem and\nthe Chinese remainder theorem without proving them again. Another sound\nmathematical justification covering all messages, including those not\ncoprime to $n$, is equally acceptable.\n",
+    "solutionContent": "# Musterlösung: RSA\n\n**1. Schlüsselbildung**\n\nEs ist $n=11\\cdot17=187$ und $\\varphi(n)=10\\cdot16=160$.\nWegen $\\operatorname{ggT}(7,160)=1$ besitzt $7$ ein multiplikatives Inverses\nmodulo $160$. Aus $160=22\\cdot7+6$ und $7=6+1$ folgt\n$1=23\\cdot7-160$. Also ist $d=23$, und $7\\cdot23=161=1+160$ prüft die\nBedingung. Hier ist $d$ in $1,\\ldots,159$ eindeutig.\n\n**2. Rollen**\n\nMit der Konvention $(\\text{Modul},\\text{Exponent})$ ist der öffentliche\nSchlüssel $(187,7)$, der private Schlüssel $(187,23)$. Der Absender\nverschlüsselt mit den öffentlichen Daten zu $c=m^7\\bmod187$; die Empfängerin\nentschlüsselt mit dem privaten Exponenten zu $c^{23}\\bmod187$.\nAsymmetrisch bedeutet, dass zum Verschlüsseln und Entschlüsseln verschiedene,\nzusammengehörige Schlüssel verwendet werden. Der Absender benötigt den\nprivaten Exponenten nicht. Die zur Schlüsselbildung benutzten Faktoren\nmüssen ihm nicht mitgeteilt werden. Damit wird eine mathematische\nSchlüsselrollen-Erklärung gegeben, keine Aussage zur Sicherheit einer\nkonkreten Implementierung.\n\n**3. Rechnungen**\n\nFür $m=20$ liefern aufeinanderfolgende Quadrate\n\n$$\n20^2\\equiv26,\\qquad20^4\\equiv115\\pmod{187}.\n$$\n\nWeil $7=4+2+1$, ist\n\n$$\n20^7\\equiv115\\cdot26\\cdot20\\equiv147\\pmod{187}.\n$$\n\nFür $m=11$ gilt\n\n$$\n11^2\\equiv121,\\qquad11^4\\equiv55,\\qquad\n11^7\\equiv55\\cdot121\\cdot11\\equiv88\\pmod{187}.\n$$\n\nDie verschlüsselten Nachrichten sind daher $147$ und $88$.\n\nZum Entschlüsseln ist $23=16+4+2+1$. Wiederholtes Quadrieren ergibt:\n\n| $c$ | $c^2\\bmod187$ | $c^4\\bmod187$ | $c^8\\bmod187$ | $c^{16}\\bmod187$ |\n|---:|---:|---:|---:|---:|\n| 147 | 104 | 157 | 152 | 103 |\n| 88 | 77 | 132 | 33 | 154 |\n\nDamit folgen\n\n$$\n147^{23}\\equiv103\\cdot157\\cdot104\\cdot147\\equiv20\\pmod{187},\n$$\n\n\n$$\n88^{23}\\equiv154\\cdot132\\cdot77\\cdot88\\equiv11\\pmod{187}.\n$$\n\nBeide ursprünglichen Nachrichten werden zurückgewonnen. Insbesondere ist\n$\\operatorname{ggT}(11,187)=11$; Teilerfremdheit zu $n$ ist für die\nRückgewinnung hier nicht erforderlich. Eine Rechnung über die beiden\nPrimmoduln mit anschließender CRT-Zusammenführung ist gleichwertig.\n\n**4. Begründung für alle Nachrichten**\n\nAus $c\\equiv m^7\\pmod{187}$ folgt\n$c^{23}\\equiv m^{161}\\pmod{187}$. Betrachte zunächst modulo $11$:\nIst $11\\mid m$, so sind $m^{161}$ und $m$ beide $0$ modulo $11$.\nAndernfalls gibt Fermats kleiner Satz $m^{10}\\equiv1\\pmod{11}$ und damit\n\n$$\nm^{161}=m(m^{10})^{16}\\equiv m\\pmod{11}.\n$$\n\nModulo $17$ gilt entsprechend: Ist $17\\mid m$, sind beide Reste $0$;\nandernfalls liefert $m^{16}\\equiv1\\pmod{17}$\n\n$$\nm^{161}=m(m^{16})^{10}\\equiv m\\pmod{17}.\n$$\n\nSomit stimmen die Reste der entschlüsselten Zahl und von $m$ modulo beider\nteilerfremder Primzahlen überein. Der chinesische Restsatz macht die\nRestklasse modulo $187$ eindeutig; da $m$ und der gewählte entschlüsselte\nVertreter beide zwischen $0$ und $186$ liegen, sind sie gleich. Auch $m=0$\nist eingeschlossen. Für $m=11$ greift modulo $11$ der Nullrestfall und\nmodulo $17$ der Fermat-Fall.\n\nDie behauptete Substitution für alle Nachrichten ist falsch: Die\nEuler-Aussage $m^{160}\\equiv1\\pmod{187}$ setzt\n$\\operatorname{ggT}(m,187)=1$ voraus. Schon bei $m=11$ ist $m^{160}$\nmodulo $11$ gleich $0$ und kann daher nicht $1$ modulo $187$ sein.\nDer Beweis nach Primmoduln vermeidet diese unzulässige Anwendung oder eine\nunzulässige Division durch $m$.\n\n# Eine Gesamtbewertung\n\nEs gibt eine Gesamtpunktzahl aus 20 BE und genau ein binäres Gesamtergebnis:\n**bestanden ab 15 BE**, sonst nicht bestanden. Teilpunkte haben keine eigenen\nBestehensgrenzen.\n\nBewerte mathematisch gleichwertige Verfahren und nachvollziehbare Leistungen\nunabhängig vom Ort in der Abgabe. Identische Leistungen zählen nur einmal.\nTeilpunkte wie angegeben, sonst 0,5 BE für eine fachlich sinnvolle, aber\nunvollständige Teilleistung. Ein lokaler Rechen- oder Übertragungsfehler wird\nnicht mehrfach bestraft; richtige nachvollziehbare Folgearbeit behält ihren\nKredit. Ein solcher lokaler Fehler allein löst keine Gesamtpunktkappung aus.\nKnappe richtige Erklärungen und äquivalente Schreibweisen genügen; bestimmte\nSchlüsselwörter oder eine feste Reihenfolge sind nicht erforderlich.\n\n| Kriterium | BE |\n|---|---:|\n| n=187 und phi=160 je 1; Teilerfremdheits-/Inversenbedingung modulo phi (1); d=23 mit Prüfung bzw. Herleitung (1). | 4 |\n| Öffentlichen Schlüssel eindeutig angegeben (1); privaten Schlüssel eindeutig angegeben (1); unterschiedliche zusammengehörige Schlüssel und Absender-/Empfängerrollen erläutert (1). | 3 |\n| Geeignete modulare Potenzrechnung für m=20 (1); c=147 (1). | 2 |\n| Geeignete modulare Potenzrechnung für m=11 (1); c=88 (1). | 2 |\n| Beide Entschlüsselungen mit nachvollziehbarem Verfahren, je 1: 0,5 Rechnung und 0,5 Rückgewinnung. | 2 |\n| Verschlüsseln/Entschlüsseln auf m hoch ed mit ed=161=1+160 zurückgeführt. | 1 |\n| Nichtnullrestfall modulo 11 durch Fermat und den Exponenten 160 schlüssig erklärt. | 1 |\n| Nichtnullrestfall modulo 17 durch Fermat und den Exponenten 160 schlüssig erklärt. | 1 |\n| Nullrestfälle allgemein berücksichtigt (1); m=11 richtig eingeordnet und die pauschale Euler-Substitution mit ihrer fehlenden Voraussetzung beurteilt (1). | 2 |\n| Zusammenführung beider Primmodul-Ergebnisse per CRT (1); eindeutige Rückgewinnung für den ganzen Nachrichtenbereich einschließlich 0 erklärt (1). | 2 |\n\nDie Gesamtpunktzahl wird vor dem Vergleich mit der Bestehensgrenze auf höchstens 14 BE begrenzt, wenn über die gesamte Abgabe die asymmetrischen Schlüsselrollen vollständig fehlen oder durch eine einzige gemeinsame Geheimschlüsselrolle ersetzt werden, keine nachvollziehbare RSA-Verschlüsselung einer Nachricht vorliegt oder eine tragfähige allgemeine Rückgewinnungsbegründung einschließlich nicht teilerfremder Nachrichten vollständig fehlt. Insbesondere ersetzt ein ausschließlich für teilerfremde Nachrichten zulässiger Euler-Schritt die fehlende Behandlung der durch p oder q teilbaren Nachrichten nicht; eine anderweitige gültige Behandlung zählt. Die bloße Überprüfung der zwei Zahlenbeispiele ersetzt keine allgemeine Begründung. Eine kurze korrekte Primmodul-/CRT-Begründung oder ein gleichwertiger allgemeiner Nachweis genügt. Einzelne lokale Rechenfehler, unvollständige Nebendetails oder eine fehlende Benennung eines bereits richtig verwendeten Satzes lösen diese Kappung nicht aus.\n\nMehrere zutreffende Kappungsgründe führen weiterhin nur zur selben Obergrenze von 14 BE. Danach wird die einzige Gesamtpunktzahl mit 15 BE verglichen. Es gibt keine zusätzlichen Teilbestehensentscheidungen.\n",
+    "solutionContentEn": "# Worked solution: RSA\n\n**1. Key construction**\n\nWe have $n=11\\cdot17=187$ and $\\varphi(n)=10\\cdot16=160$.\nSince $\\gcd(7,160)=1$, the number $7$ has a multiplicative inverse modulo\n$160$. From $160=22\\cdot7+6$ and $7=6+1$ we obtain\n$1=23\\cdot7-160$. Thus $d=23$, checked by $7\\cdot23=161=1+160$.\nThis value is unique in $1,\\ldots,159$.\n\n**2. Roles**\n\nUsing the convention $(\\text{modulus},\\text{exponent})$, the public key is\n$(187,7)$ and the private key is $(187,23)$. The sender encrypts with the\npublic data to obtain $c=m^7\\bmod187$; the recipient uses the private\nexponent to decrypt with $c^{23}\\bmod187$. Asymmetric means that encryption\nand decryption use different, related keys. The sender does not need the\nprivate exponent and need not be given the factors used to construct the\nkey. This explains the mathematical key roles; it does not assert the\nsecurity of any particular implementation.\n\n**3. Calculations**\n\nFor $m=20$, repeated squaring gives\n\n$$\n20^2\\equiv26,\\qquad20^4\\equiv115\\pmod{187}.\n$$\n\nSince $7=4+2+1$,\n\n$$\n20^7\\equiv115\\cdot26\\cdot20\\equiv147\\pmod{187}.\n$$\n\nFor $m=11$,\n\n$$\n11^2\\equiv121,\\qquad11^4\\equiv55,\\qquad\n11^7\\equiv55\\cdot121\\cdot11\\equiv88\\pmod{187}.\n$$\n\nThe encrypted messages are therefore $147$ and $88$.\n\nFor decryption, $23=16+4+2+1$. Repeated squaring yields:\n\n| $c$ | $c^2\\bmod187$ | $c^4\\bmod187$ | $c^8\\bmod187$ | $c^{16}\\bmod187$ |\n|---:|---:|---:|---:|---:|\n| 147 | 104 | 157 | 152 | 103 |\n| 88 | 77 | 132 | 33 | 154 |\n\nHence\n\n$$\n147^{23}\\equiv103\\cdot157\\cdot104\\cdot147\\equiv20\\pmod{187},\n$$\n\n\n$$\n88^{23}\\equiv154\\cdot132\\cdot77\\cdot88\\equiv11\\pmod{187}.\n$$\n\nBoth original messages are recovered. In particular, $\\gcd(11,187)=11$;\nbeing coprime to $n$ is not required for recovery here. A calculation using\nthe two prime moduli followed by CRT reconstruction is equally acceptable.\n\n**4. Justification for all messages**\n\nFrom $c\\equiv m^7\\pmod{187}$ we obtain\n$c^{23}\\equiv m^{161}\\pmod{187}$. First work modulo $11$. If $11\\mid m$,\nthen both $m^{161}$ and $m$ are $0$ modulo $11$. Otherwise Fermat's little\ntheorem gives $m^{10}\\equiv1\\pmod{11}$, and so\n\n$$\nm^{161}=m(m^{10})^{16}\\equiv m\\pmod{11}.\n$$\n\nSimilarly modulo $17$, if $17\\mid m$, both residues are $0$; otherwise\n$m^{16}\\equiv1\\pmod{17}$ gives\n\n$$\nm^{161}=m(m^{16})^{10}\\equiv m\\pmod{17}.\n$$\n\nThe decrypted number and $m$ thus have the same residues modulo both\ncoprime primes. The Chinese remainder theorem makes the residue class\nmodulo $187$ unique. Since $m$ and the chosen decrypted representative are\nboth between $0$ and $186$, they are equal. This includes $m=0$.\nFor $m=11$, use the zero-residue case modulo $11$ and Fermat's theorem\nmodulo $17$.\n\nThe proposed substitution for all messages is false. Euler's assertion\n$m^{160}\\equiv1\\pmod{187}$ requires $\\gcd(m,187)=1$. Already for $m=11$,\n$m^{160}$ is $0$ modulo $11$ and hence cannot be $1$ modulo $187$.\nWorking separately with the prime moduli avoids this invalid use or an\ninvalid division by $m$.\n\n# One overall result\n\nThere is one total score out of 20 points and exactly one binary overall\nresult: **pass at 15 points**, otherwise not passed. Partial marks have no\nseparate pass thresholds.\n\nCredit equivalent mathematical methods and traceable work wherever they\nappear in the submission. Count identical work only once. Award partial\nmarks as specified, otherwise 0.5 points for meaningful but incomplete work.\nDo not repeatedly penalise one local calculation or transcription error;\ncorrect traceable follow-through retains its credit. Such a local error alone\ndoes not trigger an overall cap. Concise correct explanations and equivalent\nnotation are sufficient; no particular wording or fixed order is required.\n\n| Criterion | Points |\n|---|---:|\n| n=187 and phi=160, 1 each; coprimality/inverse condition modulo phi (1); d=23 with check or derivation (1). | 4 |\n| Clearly states the public key (1); private key (1); explains the different related keys and sender/recipient roles (1). | 3 |\n| Suitable modular exponentiation for m=20 (1); c=147 (1). | 2 |\n| Suitable modular exponentiation for m=11 (1); c=88 (1). | 2 |\n| Both decryptions using a traceable method, 1 each: 0.5 calculation and 0.5 recovery. | 2 |\n| Reduces encryption/decryption to m to the power ed, with ed=161=1+160. | 1 |\n| Sound Fermat/exponent argument for nonzero residues modulo 11. | 1 |\n| Sound Fermat/exponent argument for nonzero residues modulo 17. | 1 |\n| Includes zero-residue cases generally (1); correctly relates m=11 and evaluates the blanket Euler substitution and its missing hypothesis (1). | 2 |\n| Combines the two prime-modulus results using CRT (1); explains unique recovery over the complete message range including 0 (1). | 2 |\n\nBefore comparison with the pass threshold, cap the total score at 14 points if, across the whole submission, the asymmetric key roles are entirely absent or replaced by a single shared-secret-key role, no traceable RSA encryption of a message is present, or a sound general recovery justification including messages not coprime to n is entirely absent. In particular, an Euler step valid only for coprime messages does not replace the missing treatment of messages divisible by p or q; a valid treatment elsewhere counts. Merely checking the two numerical examples does not replace a general justification. A concise correct prime-modulus/CRT argument or an equivalent general justification is sufficient. Isolated local calculation errors, incomplete secondary details, or failure to name a theorem already correctly used do not trigger this cap.\n\nMultiple applicable reasons still impose only the same cap of 14 points. Compare the one resulting total with 15 points. There are no additional part-pass decisions.\n",
+    "coveredGoalIds": [
+      "97b03cce-6641-5ec9-a6d2-f31838e2dbb9"
+    ],
+    "coveredStrands": [
+      "L1",
+      "L4"
+    ],
+    "demandLevels": [
+      "AB3"
+    ],
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 15,
+      "steps": [
+        {
+          "id": "rsa-keys",
+          "points": 4,
+          "description": "n=187 und phi=160 je 1; Teilerfremdheits-/Inversenbedingung modulo phi (1); d=23 mit Prüfung bzw. Herleitung (1).",
+          "descriptionEn": "n=187 and phi=160, 1 each; coprimality/inverse condition modulo phi (1); d=23 with check or derivation (1)."
+        },
+        {
+          "id": "rsa-roles",
+          "points": 3,
+          "description": "Öffentlichen Schlüssel eindeutig angegeben (1); privaten Schlüssel eindeutig angegeben (1); unterschiedliche zusammengehörige Schlüssel und Absender-/Empfängerrollen erläutert (1).",
+          "descriptionEn": "Clearly states the public key (1); private key (1); explains the different related keys and sender/recipient roles (1)."
+        },
+        {
+          "id": "rsa-encrypt20",
+          "points": 2,
+          "description": "Geeignete modulare Potenzrechnung für m=20 (1); c=147 (1).",
+          "descriptionEn": "Suitable modular exponentiation for m=20 (1); c=147 (1)."
+        },
+        {
+          "id": "rsa-encrypt11",
+          "points": 2,
+          "description": "Geeignete modulare Potenzrechnung für m=11 (1); c=88 (1).",
+          "descriptionEn": "Suitable modular exponentiation for m=11 (1); c=88 (1)."
+        },
+        {
+          "id": "rsa-decrypt",
+          "points": 2,
+          "description": "Beide Entschlüsselungen mit nachvollziehbarem Verfahren, je 1: 0,5 Rechnung und 0,5 Rückgewinnung.",
+          "descriptionEn": "Both decryptions using a traceable method, 1 each: 0.5 calculation and 0.5 recovery."
+        },
+        {
+          "id": "rsa-exponent",
+          "points": 1,
+          "description": "Verschlüsseln/Entschlüsseln auf m hoch ed mit ed=161=1+160 zurückgeführt.",
+          "descriptionEn": "Reduces encryption/decryption to m to the power ed, with ed=161=1+160."
+        },
+        {
+          "id": "rsa-prime11",
+          "points": 1,
+          "description": "Nichtnullrestfall modulo 11 durch Fermat und den Exponenten 160 schlüssig erklärt.",
+          "descriptionEn": "Sound Fermat/exponent argument for nonzero residues modulo 11."
+        },
+        {
+          "id": "rsa-prime17",
+          "points": 1,
+          "description": "Nichtnullrestfall modulo 17 durch Fermat und den Exponenten 160 schlüssig erklärt.",
+          "descriptionEn": "Sound Fermat/exponent argument for nonzero residues modulo 17."
+        },
+        {
+          "id": "rsa-zero",
+          "points": 2,
+          "description": "Nullrestfälle allgemein berücksichtigt (1); m=11 richtig eingeordnet und die pauschale Euler-Substitution mit ihrer fehlenden Voraussetzung beurteilt (1).",
+          "descriptionEn": "Includes zero-residue cases generally (1); correctly relates m=11 and evaluates the blanket Euler substitution and its missing hypothesis (1)."
+        },
+        {
+          "id": "rsa-crt",
+          "points": 2,
+          "description": "Zusammenführung beider Primmodul-Ergebnisse per CRT (1); eindeutige Rückgewinnung für den ganzen Nachrichtenbereich einschließlich 0 erklärt (1).",
+          "descriptionEn": "Combines the two prime-modulus results using CRT (1); explains unique recovery over the complete message range including 0 (1)."
+        }
+      ]
+    }
+  }
+}

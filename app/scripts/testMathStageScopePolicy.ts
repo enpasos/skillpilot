@@ -93,6 +93,18 @@ assert.throws(() => applyMathStageScopeRule(view, goals, { ...rule, deniedGoalId
 const protectedGoals = new Map(goals)
 protectedGoals.set('theorem', { ...goals.get('theorem')!, nodeKind: 'memory' })
 assert.throws(() => applyMathStageScopeRule(view, protectedGoals, rule, 'sek1', true), /ordinary atomic stage contract/)
+// A reviewed curricular competence keeps its existing source role when it gains
+// its own whole assessment form; pure assessments still need their separate path.
+const wholeFormGoals = new Map(goals)
+wholeFormGoals.set('tangent', { ...goals.get('tangent')!, nodeKind: 'exam', examData: { reviewStatus: 'released' } })
+const semanticKinds = new Map([...goals.keys()].map(id => [id, 'curricularAtomic']))
+const wholeFormStage = applyMathStageScopeRule(view, wholeFormGoals, rule, 'sek1', true, semanticKinds)
+assert.deepEqual(wholeFormStage, result, 'execution form must not change whole curricular source targets, paths, support or placement')
+assert.throws(() => applyMathStageScopeRule(view, wholeFormGoals, rule, 'sek1', true), /ordinary atomic stage contract/, 'without authoritative semantic context the legacy guard stays strict')
+const pureAssessmentKinds = new Map(semanticKinds).set('tangent', 'practiceAssessment')
+assert.throws(() => applyMathStageScopeRule(view, wholeFormGoals, rule, 'sek1', true, pureAssessmentKinds), /ordinary atomic stage contract/, 'a pure assessment cannot acquire an ordinary source role')
+assert.throws(() => applyMathStageScopeRule(view, protectedGoals, rule, 'sek1', true, semanticKinds), /ordinary atomic stage contract/, 'memory execution cannot use the curricular exception')
+
 assert.throws(() => mathStageRuleForScope([rule, { ...rule, id: 'duplicate' }], 'DE-HH', ['G8']), /ambiguous/)
 assert.throws(() => mathStageRuleForScope([rule], 'DE-HH', ['G8', 'G9']), /every/)
 assert.throws(() => mathStageRuleForScope([rule, { ...rule, id: 'g9', durationModels: ['G9'], deniedGoalIds: [] }], 'DE-HH', ['G8', 'G9']), /separate output views/)

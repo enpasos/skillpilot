@@ -1,0 +1,925 @@
+{
+  "status": "PASS_INDEPENDENT_MATHEMATICS_PRINTED_TABLES_AND_WORKBOOK_FORMULAS",
+  "checkedAtUTC": "2026-11-04T01:30:51.458845+00:00",
+  "reviewerAgent": "/root/astra_six_math_whole_forms",
+  "checkCount": 29,
+  "checks": [
+    {
+      "check": "Family antiderivative",
+      "passed": true,
+      "detail": "-a*x**2 + 2*a*x + x**3/3"
+    },
+    {
+      "check": "Family definite integrals",
+      "passed": true,
+      "detail": {
+        "I": "a + 1/3",
+        "J": "8/3"
+      }
+    },
+    {
+      "check": "Family zero and signed-balance witness",
+      "passed": true,
+      "detail": {
+        "zeroParameter": "-1/3",
+        "endpointValues": [
+          "-2/3",
+          "1"
+        ],
+        "continuousNonzeroRegions": true
+      }
+    },
+    {
+      "check": "Parameter cancellation interval",
+      "passed": true,
+      "detail": {
+        "IIncreasing": true,
+        "JParameterIndependent": true
+      }
+    },
+    {
+      "check": "Existing exam vertex and locus",
+      "passed": true,
+      "detail": {
+        "vertex": [
+          "a",
+          "-a^2+2a"
+        ],
+        "locus": "y=-x^2+2x"
+      }
+    },
+    {
+      "check": "Existing exam discriminant",
+      "passed": true,
+      "detail": "No real roots exactly for 0<a<2"
+    },
+    {
+      "check": "Existing exam geometric area",
+      "passed": true,
+      "detail": "4*sqrt(3)"
+    },
+    {
+      "check": "Periodic original data",
+      "passed": true,
+      "detail": {
+        "midline": 10,
+        "amplitude": 8,
+        "period": 24,
+        "clockOrigin": "06:00"
+      }
+    },
+    {
+      "check": "Periodic second day and phase",
+      "passed": true,
+      "detail": {
+        "maximumClock": "12:00",
+        "minimumClock": "00:00"
+      }
+    },
+    {
+      "check": "Periodic variant data",
+      "passed": true,
+      "detail": {
+        "midline": 12,
+        "amplitude": 6,
+        "maximum": 18,
+        "minimum": 6
+      }
+    },
+    {
+      "check": "Periodic cosine equivalence",
+      "passed": true,
+      "detail": "Cosine form with shift 6 h gives the same model"
+    },
+    {
+      "check": "Growth and decay data",
+      "passed": true,
+      "detail": {
+        "growthPoints": 5,
+        "decayPoints": 4
+      }
+    },
+    {
+      "check": "Changed growth continuity and value",
+      "passed": true,
+      "detail": {
+        "N8": 1600,
+        "Nv8": "585.64",
+        "roundedCount": 586
+      }
+    },
+    {
+      "check": "Decay does not vanish finitely",
+      "passed": true,
+      "detail": "80*(1/2)^(t/3)>0 for every finite real t; limit is zero"
+    },
+    {
+      "check": "Interest exact bracketing",
+      "passed": true,
+      "detail": {
+        "lower": "5.07%",
+        "upper": "5.08%",
+        "differences": [
+          "-0.116412314000",
+          "0.546033024000"
+        ]
+      }
+    },
+    {
+      "check": "Interest all accepted estimates",
+      "passed": true,
+      "detail": {
+        "acceptedPercent": [
+          "5.06",
+          "5.07",
+          "5.08"
+        ],
+        "withinOneEuro": true
+      }
+    },
+    {
+      "check": "Simple-interest counterexample",
+      "passed": true,
+      "detail": {
+        "simple": "2300",
+        "compound": "2315.25"
+      }
+    },
+    {
+      "check": "Saving exact integer threshold",
+      "passed": true,
+      "detail": {
+        "rate478End": "1999.77370600",
+        "rate479End": "2003.95733300",
+        "wholeEuroMinimum": 479
+      }
+    },
+    {
+      "check": "Saving monotonic rate dependence",
+      "passed": true,
+      "detail": "End balance = rate times a positive common factor"
+    },
+    {
+      "check": "Saving payment timing",
+      "passed": true,
+      "detail": {
+        "fourPayments": 1916,
+        "yearEndFirstBalance": 479,
+        "beginningYearFactor": "1.03 more end balance for same rate"
+      }
+    },
+    {
+      "check": "Duration first complete target period",
+      "passed": true,
+      "detail": {
+        "period": 7,
+        "depositCount": 7,
+        "year6": "2387.786611904000",
+        "year7": "2635.54234414208000"
+      }
+    },
+    {
+      "check": "Duration zero-interest comparison",
+      "passed": true,
+      "detail": {
+        "firstPeriod": 8,
+        "previous": 2400,
+        "targetPeriodBalance": 2600
+      }
+    },
+    {
+      "check": "Printed finance table 1842da92 de",
+      "passed": true,
+      "detail": {
+        "rows": 6,
+        "cells": 30,
+        "rounding": "Decimal ROUND_HALF_UP to cents; full internal precision retained"
+      }
+    },
+    {
+      "check": "Printed finance table 1842da92 en",
+      "passed": true,
+      "detail": {
+        "rows": 6,
+        "cells": 30,
+        "rounding": "Decimal ROUND_HALF_UP to cents; full internal precision retained"
+      }
+    },
+    {
+      "check": "Printed finance table f6574cdc de",
+      "passed": true,
+      "detail": {
+        "rows": 5,
+        "cells": 25,
+        "rounding": "Decimal ROUND_HALF_UP to cents; full internal precision retained"
+      }
+    },
+    {
+      "check": "Printed finance table f6574cdc en",
+      "passed": true,
+      "detail": {
+        "rows": 5,
+        "cells": 25,
+        "rounding": "Decimal ROUND_HALF_UP to cents; full internal precision retained"
+      }
+    },
+    {
+      "check": "Printed finance table fc34449a de",
+      "passed": true,
+      "detail": {
+        "rows": 7,
+        "cells": 35,
+        "rounding": "Decimal ROUND_HALF_UP to cents; full internal precision retained"
+      }
+    },
+    {
+      "check": "Printed finance table fc34449a en",
+      "passed": true,
+      "detail": {
+        "rows": 7,
+        "cells": 35,
+        "rounding": "Decimal ROUND_HALF_UP to cents; full internal precision retained"
+      }
+    },
+    {
+      "check": "Actual workbook arithmetic and caches",
+      "passed": true,
+      "detail": {
+        "workbooks": 3,
+        "formulaCells": 104,
+        "method": "restricted AST + Decimal compared with stored cache; not Excel or LibreOffice execution"
+      }
+    }
+  ],
+  "workbooks": [
+    {
+      "path": "tmp/approach-review-20261101/functions-finance-six-whole-forms-20261104-v1/1842da92-ca2c-5fed-a946-e6413a6285bb/solution-spreadsheet.xlsx",
+      "sha256": "c1d25b04e2ee298661c864f62df6217e41c15072fd453b8a5ee316d1f7cd7dc9",
+      "sheets": [
+        {
+          "sheet": "Rates",
+          "formulaCells": [
+            {
+              "cell": "B2",
+              "formula": "=2000*(1+A2)",
+              "independentDecimalValue": "2080.00",
+              "cachedValue": 2080.0
+            },
+            {
+              "cell": "C2",
+              "formula": "=B2*(1+A2)",
+              "independentDecimalValue": "2163.2000",
+              "cachedValue": 2163.2000000000003
+            },
+            {
+              "cell": "D2",
+              "formula": "=C2*(1+A2)",
+              "independentDecimalValue": "2249.728000",
+              "cachedValue": 2249.7280000000005
+            },
+            {
+              "cell": "E2",
+              "formula": "=D2-2320",
+              "independentDecimalValue": "-70.272000",
+              "cachedValue": -70.27199999999948
+            },
+            {
+              "cell": "B3",
+              "formula": "=2000*(1+A3)",
+              "independentDecimalValue": "2100.00",
+              "cachedValue": 2100.0
+            },
+            {
+              "cell": "C3",
+              "formula": "=B3*(1+A3)",
+              "independentDecimalValue": "2205.0000",
+              "cachedValue": 2205.0
+            },
+            {
+              "cell": "D3",
+              "formula": "=C3*(1+A3)",
+              "independentDecimalValue": "2315.250000",
+              "cachedValue": 2315.25
+            },
+            {
+              "cell": "E3",
+              "formula": "=D3-2320",
+              "independentDecimalValue": "-4.750000",
+              "cachedValue": -4.75
+            },
+            {
+              "cell": "B4",
+              "formula": "=2000*(1+A4)",
+              "independentDecimalValue": "2120.00",
+              "cachedValue": 2120.0
+            },
+            {
+              "cell": "C4",
+              "formula": "=B4*(1+A4)",
+              "independentDecimalValue": "2247.2000",
+              "cachedValue": 2247.2000000000003
+            },
+            {
+              "cell": "D4",
+              "formula": "=C4*(1+A4)",
+              "independentDecimalValue": "2382.032000",
+              "cachedValue": 2382.0320000000006
+            },
+            {
+              "cell": "E4",
+              "formula": "=D4-2320",
+              "independentDecimalValue": "62.032000",
+              "cachedValue": 62.03200000000061
+            },
+            {
+              "cell": "B5",
+              "formula": "=2000*(1+A5)",
+              "independentDecimalValue": "2101.2000",
+              "cachedValue": 2101.2
+            },
+            {
+              "cell": "C5",
+              "formula": "=B5*(1+A5)",
+              "independentDecimalValue": "2207.52072000",
+              "cachedValue": 2207.52072
+            },
+            {
+              "cell": "D5",
+              "formula": "=C5*(1+A5)",
+              "independentDecimalValue": "2319.221268432000",
+              "cachedValue": 2319.2212684319998
+            },
+            {
+              "cell": "E5",
+              "formula": "=D5-2320",
+              "independentDecimalValue": "-0.778731568000",
+              "cachedValue": -0.7787315680002393
+            },
+            {
+              "cell": "B6",
+              "formula": "=2000*(1+A6)",
+              "independentDecimalValue": "2101.4000",
+              "cachedValue": 2101.4
+            },
+            {
+              "cell": "C6",
+              "formula": "=B6*(1+A6)",
+              "independentDecimalValue": "2207.94098000",
+              "cachedValue": 2207.94098
+            },
+            {
+              "cell": "D6",
+              "formula": "=C6*(1+A6)",
+              "independentDecimalValue": "2319.883587686000",
+              "cachedValue": 2319.883587686
+            },
+            {
+              "cell": "E6",
+              "formula": "=D6-2320",
+              "independentDecimalValue": "-0.116412314000",
+              "cachedValue": -0.11641231400017205
+            },
+            {
+              "cell": "B7",
+              "formula": "=2000*(1+A7)",
+              "independentDecimalValue": "2101.6000",
+              "cachedValue": 2101.6
+            },
+            {
+              "cell": "C7",
+              "formula": "=B7*(1+A7)",
+              "independentDecimalValue": "2208.36128000",
+              "cachedValue": 2208.3612799999996
+            },
+            {
+              "cell": "D7",
+              "formula": "=C7*(1+A7)",
+              "independentDecimalValue": "2320.546033024000",
+              "cachedValue": 2320.5460330239994
+            },
+            {
+              "cell": "E7",
+              "formula": "=D7-2320",
+              "independentDecimalValue": "0.546033024000",
+              "cachedValue": 0.5460330239993709
+            }
+          ],
+          "computedValuesMatchIndependentFinancialModel": true
+        }
+      ]
+    },
+    {
+      "path": "tmp/approach-review-20261101/functions-finance-six-whole-forms-20261104-v1/f6574cdc-e29c-5a8f-a009-9f28b3bcf9be/solution-spreadsheet.xlsx",
+      "sha256": "635b6ca79794178333d7da12d91faff9877f9b7e3bad13b48ffd695ff5f659ce",
+      "sheets": [
+        {
+          "sheet": "Savings",
+          "formulaCells": [
+            {
+              "cell": "B2",
+              "formula": "=A2",
+              "independentDecimalValue": "450",
+              "cachedValue": 450
+            },
+            {
+              "cell": "C2",
+              "formula": "=B2*1.03+A2",
+              "independentDecimalValue": "913.50",
+              "cachedValue": 913.5
+            },
+            {
+              "cell": "D2",
+              "formula": "=C2*1.03+A2",
+              "independentDecimalValue": "1390.9050",
+              "cachedValue": 1390.905
+            },
+            {
+              "cell": "E2",
+              "formula": "=D2*1.03+A2",
+              "independentDecimalValue": "1882.632150",
+              "cachedValue": 1882.63215
+            },
+            {
+              "cell": "B3",
+              "formula": "=A3",
+              "independentDecimalValue": "475",
+              "cachedValue": 475
+            },
+            {
+              "cell": "C3",
+              "formula": "=B3*1.03+A3",
+              "independentDecimalValue": "964.25",
+              "cachedValue": 964.25
+            },
+            {
+              "cell": "D3",
+              "formula": "=C3*1.03+A3",
+              "independentDecimalValue": "1468.1775",
+              "cachedValue": 1468.1775
+            },
+            {
+              "cell": "E3",
+              "formula": "=D3*1.03+A3",
+              "independentDecimalValue": "1987.222825",
+              "cachedValue": 1987.222825
+            },
+            {
+              "cell": "B4",
+              "formula": "=A4",
+              "independentDecimalValue": "500",
+              "cachedValue": 500
+            },
+            {
+              "cell": "C4",
+              "formula": "=B4*1.03+A4",
+              "independentDecimalValue": "1015.00",
+              "cachedValue": 1015.0
+            },
+            {
+              "cell": "D4",
+              "formula": "=C4*1.03+A4",
+              "independentDecimalValue": "1545.4500",
+              "cachedValue": 1545.45
+            },
+            {
+              "cell": "E4",
+              "formula": "=D4*1.03+A4",
+              "independentDecimalValue": "2091.813500",
+              "cachedValue": 2091.8135
+            },
+            {
+              "cell": "B5",
+              "formula": "=A5",
+              "independentDecimalValue": "478",
+              "cachedValue": 478
+            },
+            {
+              "cell": "C5",
+              "formula": "=B5*1.03+A5",
+              "independentDecimalValue": "970.34",
+              "cachedValue": 970.34
+            },
+            {
+              "cell": "D5",
+              "formula": "=C5*1.03+A5",
+              "independentDecimalValue": "1477.4502",
+              "cachedValue": 1477.4502000000002
+            },
+            {
+              "cell": "E5",
+              "formula": "=D5*1.03+A5",
+              "independentDecimalValue": "1999.773706",
+              "cachedValue": 1999.7737060000002
+            },
+            {
+              "cell": "B6",
+              "formula": "=A6",
+              "independentDecimalValue": "479",
+              "cachedValue": 479
+            },
+            {
+              "cell": "C6",
+              "formula": "=B6*1.03+A6",
+              "independentDecimalValue": "972.37",
+              "cachedValue": 972.37
+            },
+            {
+              "cell": "D6",
+              "formula": "=C6*1.03+A6",
+              "independentDecimalValue": "1480.5411",
+              "cachedValue": 1480.5411
+            },
+            {
+              "cell": "E6",
+              "formula": "=D6*1.03+A6",
+              "independentDecimalValue": "2003.957333",
+              "cachedValue": 2003.957333
+            }
+          ],
+          "computedValuesMatchIndependentFinancialModel": true
+        }
+      ]
+    },
+    {
+      "path": "tmp/approach-review-20261101/functions-finance-six-whole-forms-20261104-v1/fc34449a-fbf4-574c-884f-ecdf48b42d2e/solution-spreadsheet.xlsx",
+      "sha256": "0c20847bb804a08aa62bff466cb79bc9950a1001c26838e13691c24825f84465",
+      "sheets": [
+        {
+          "sheet": "2pct",
+          "formulaCells": [
+            {
+              "cell": "A3",
+              "formula": "=A2+1",
+              "independentDecimalValue": "1",
+              "cachedValue": 1
+            },
+            {
+              "cell": "B3",
+              "formula": "=E2",
+              "independentDecimalValue": "1000",
+              "cachedValue": 1000
+            },
+            {
+              "cell": "C3",
+              "formula": "=B3*0.02",
+              "independentDecimalValue": "20.00",
+              "cachedValue": 20.0
+            },
+            {
+              "cell": "E3",
+              "formula": "=B3+C3+D3",
+              "independentDecimalValue": "1220.00",
+              "cachedValue": 1220.0
+            },
+            {
+              "cell": "A4",
+              "formula": "=A3+1",
+              "independentDecimalValue": "2",
+              "cachedValue": 2
+            },
+            {
+              "cell": "B4",
+              "formula": "=E3",
+              "independentDecimalValue": "1220.00",
+              "cachedValue": 1220.0
+            },
+            {
+              "cell": "C4",
+              "formula": "=B4*0.02",
+              "independentDecimalValue": "24.4000",
+              "cachedValue": 24.400000000000002
+            },
+            {
+              "cell": "E4",
+              "formula": "=B4+C4+D4",
+              "independentDecimalValue": "1444.4000",
+              "cachedValue": 1444.4
+            },
+            {
+              "cell": "A5",
+              "formula": "=A4+1",
+              "independentDecimalValue": "3",
+              "cachedValue": 3
+            },
+            {
+              "cell": "B5",
+              "formula": "=E4",
+              "independentDecimalValue": "1444.4000",
+              "cachedValue": 1444.4
+            },
+            {
+              "cell": "C5",
+              "formula": "=B5*0.02",
+              "independentDecimalValue": "28.888000",
+              "cachedValue": 28.888
+            },
+            {
+              "cell": "E5",
+              "formula": "=B5+C5+D5",
+              "independentDecimalValue": "1673.288000",
+              "cachedValue": 1673.288
+            },
+            {
+              "cell": "A6",
+              "formula": "=A5+1",
+              "independentDecimalValue": "4",
+              "cachedValue": 4
+            },
+            {
+              "cell": "B6",
+              "formula": "=E5",
+              "independentDecimalValue": "1673.288000",
+              "cachedValue": 1673.288
+            },
+            {
+              "cell": "C6",
+              "formula": "=B6*0.02",
+              "independentDecimalValue": "33.46576000",
+              "cachedValue": 33.46576
+            },
+            {
+              "cell": "E6",
+              "formula": "=B6+C6+D6",
+              "independentDecimalValue": "1906.75376000",
+              "cachedValue": 1906.75376
+            },
+            {
+              "cell": "A7",
+              "formula": "=A6+1",
+              "independentDecimalValue": "5",
+              "cachedValue": 5
+            },
+            {
+              "cell": "B7",
+              "formula": "=E6",
+              "independentDecimalValue": "1906.75376000",
+              "cachedValue": 1906.75376
+            },
+            {
+              "cell": "C7",
+              "formula": "=B7*0.02",
+              "independentDecimalValue": "38.1350752000",
+              "cachedValue": 38.1350752
+            },
+            {
+              "cell": "E7",
+              "formula": "=B7+C7+D7",
+              "independentDecimalValue": "2144.8888352000",
+              "cachedValue": 2144.8888352000004
+            },
+            {
+              "cell": "A8",
+              "formula": "=A7+1",
+              "independentDecimalValue": "6",
+              "cachedValue": 6
+            },
+            {
+              "cell": "B8",
+              "formula": "=E7",
+              "independentDecimalValue": "2144.8888352000",
+              "cachedValue": 2144.8888352000004
+            },
+            {
+              "cell": "C8",
+              "formula": "=B8*0.02",
+              "independentDecimalValue": "42.897776704000",
+              "cachedValue": 42.89777670400001
+            },
+            {
+              "cell": "E8",
+              "formula": "=B8+C8+D8",
+              "independentDecimalValue": "2387.786611904000",
+              "cachedValue": 2387.7866119040004
+            },
+            {
+              "cell": "A9",
+              "formula": "=A8+1",
+              "independentDecimalValue": "7",
+              "cachedValue": 7
+            },
+            {
+              "cell": "B9",
+              "formula": "=E8",
+              "independentDecimalValue": "2387.786611904000",
+              "cachedValue": 2387.7866119040004
+            },
+            {
+              "cell": "C9",
+              "formula": "=B9*0.02",
+              "independentDecimalValue": "47.75573223808000",
+              "cachedValue": 47.75573223808001
+            },
+            {
+              "cell": "E9",
+              "formula": "=B9+C9+D9",
+              "independentDecimalValue": "2635.54234414208000",
+              "cachedValue": 2635.5423441420803
+            }
+          ],
+          "computedValuesMatchIndependentFinancialModel": true
+        },
+        {
+          "sheet": "0pct",
+          "formulaCells": [
+            {
+              "cell": "A3",
+              "formula": "=A2+1",
+              "independentDecimalValue": "1",
+              "cachedValue": 1
+            },
+            {
+              "cell": "B3",
+              "formula": "=E2",
+              "independentDecimalValue": "1000",
+              "cachedValue": 1000
+            },
+            {
+              "cell": "C3",
+              "formula": "=B3*0",
+              "independentDecimalValue": "0",
+              "cachedValue": 0
+            },
+            {
+              "cell": "E3",
+              "formula": "=B3+C3+D3",
+              "independentDecimalValue": "1200",
+              "cachedValue": 1200
+            },
+            {
+              "cell": "A4",
+              "formula": "=A3+1",
+              "independentDecimalValue": "2",
+              "cachedValue": 2
+            },
+            {
+              "cell": "B4",
+              "formula": "=E3",
+              "independentDecimalValue": "1200",
+              "cachedValue": 1200
+            },
+            {
+              "cell": "C4",
+              "formula": "=B4*0",
+              "independentDecimalValue": "0",
+              "cachedValue": 0
+            },
+            {
+              "cell": "E4",
+              "formula": "=B4+C4+D4",
+              "independentDecimalValue": "1400",
+              "cachedValue": 1400
+            },
+            {
+              "cell": "A5",
+              "formula": "=A4+1",
+              "independentDecimalValue": "3",
+              "cachedValue": 3
+            },
+            {
+              "cell": "B5",
+              "formula": "=E4",
+              "independentDecimalValue": "1400",
+              "cachedValue": 1400
+            },
+            {
+              "cell": "C5",
+              "formula": "=B5*0",
+              "independentDecimalValue": "0",
+              "cachedValue": 0
+            },
+            {
+              "cell": "E5",
+              "formula": "=B5+C5+D5",
+              "independentDecimalValue": "1600",
+              "cachedValue": 1600
+            },
+            {
+              "cell": "A6",
+              "formula": "=A5+1",
+              "independentDecimalValue": "4",
+              "cachedValue": 4
+            },
+            {
+              "cell": "B6",
+              "formula": "=E5",
+              "independentDecimalValue": "1600",
+              "cachedValue": 1600
+            },
+            {
+              "cell": "C6",
+              "formula": "=B6*0",
+              "independentDecimalValue": "0",
+              "cachedValue": 0
+            },
+            {
+              "cell": "E6",
+              "formula": "=B6+C6+D6",
+              "independentDecimalValue": "1800",
+              "cachedValue": 1800
+            },
+            {
+              "cell": "A7",
+              "formula": "=A6+1",
+              "independentDecimalValue": "5",
+              "cachedValue": 5
+            },
+            {
+              "cell": "B7",
+              "formula": "=E6",
+              "independentDecimalValue": "1800",
+              "cachedValue": 1800
+            },
+            {
+              "cell": "C7",
+              "formula": "=B7*0",
+              "independentDecimalValue": "0",
+              "cachedValue": 0
+            },
+            {
+              "cell": "E7",
+              "formula": "=B7+C7+D7",
+              "independentDecimalValue": "2000",
+              "cachedValue": 2000
+            },
+            {
+              "cell": "A8",
+              "formula": "=A7+1",
+              "independentDecimalValue": "6",
+              "cachedValue": 6
+            },
+            {
+              "cell": "B8",
+              "formula": "=E7",
+              "independentDecimalValue": "2000",
+              "cachedValue": 2000
+            },
+            {
+              "cell": "C8",
+              "formula": "=B8*0",
+              "independentDecimalValue": "0",
+              "cachedValue": 0
+            },
+            {
+              "cell": "E8",
+              "formula": "=B8+C8+D8",
+              "independentDecimalValue": "2200",
+              "cachedValue": 2200
+            },
+            {
+              "cell": "A9",
+              "formula": "=A8+1",
+              "independentDecimalValue": "7",
+              "cachedValue": 7
+            },
+            {
+              "cell": "B9",
+              "formula": "=E8",
+              "independentDecimalValue": "2200",
+              "cachedValue": 2200
+            },
+            {
+              "cell": "C9",
+              "formula": "=B9*0",
+              "independentDecimalValue": "0",
+              "cachedValue": 0
+            },
+            {
+              "cell": "E9",
+              "formula": "=B9+C9+D9",
+              "independentDecimalValue": "2400",
+              "cachedValue": 2400
+            },
+            {
+              "cell": "A10",
+              "formula": "=A9+1",
+              "independentDecimalValue": "8",
+              "cachedValue": 8
+            },
+            {
+              "cell": "B10",
+              "formula": "=E9",
+              "independentDecimalValue": "2400",
+              "cachedValue": 2400
+            },
+            {
+              "cell": "C10",
+              "formula": "=B10*0",
+              "independentDecimalValue": "0",
+              "cachedValue": 0
+            },
+            {
+              "cell": "E10",
+              "formula": "=B10+C10+D10",
+              "independentDecimalValue": "2600",
+              "cachedValue": 2600
+            }
+          ],
+          "computedValuesMatchIndependentFinancialModel": true
+        }
+      ]
+    }
+  ],
+  "actualSpreadsheetHostExecution": false,
+  "authorCheckScriptsInvoked": false,
+  "originalInputsModified": false
+}

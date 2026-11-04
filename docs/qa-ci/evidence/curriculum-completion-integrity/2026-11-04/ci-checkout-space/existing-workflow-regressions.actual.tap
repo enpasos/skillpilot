@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: Ubuntu APT policy bypasses the Azure mirror list and unrelated repositories while preserving trust settings
+ok 1 - Ubuntu APT policy bypasses the Azure mirror list and unrelated repositories while preserving trust settings
+  ---
+  duration_ms: 81.793547
+  ...
+# Subtest: rendering rewrites direct Azure URIs and keeps other sources untouched
+ok 2 - rendering rewrites direct Azure URIs and keeps other sources untouched
+  ---
+  duration_ms: 18.255305
+  ...
+# Subtest: every Ubuntu job prepares APT after checkout and before its first package dependency command
+ok 3 - every Ubuntu job prepares APT after checkout and before its first package dependency command
+  ---
+  duration_ms: 32.218003
+  ...
+# Subtest: demo-video CI installs its own pinned browser before browser-dependent tests
+ok 4 - demo-video CI installs its own pinned browser before browser-dependent tests
+  ---
+  duration_ms: 1.763226
+  ...
+# Subtest: paid dialogs run only on trusted default-branch code with bounded dedicated credentials
+ok 5 - paid dialogs run only on trusted default-branch code with bounded dedicated credentials
+  ---
+  duration_ms: 0.40653
+  ...
+# Subtest: plugin CI stays focused on current releases
+ok 6 - plugin CI stays focused on current releases
+  ---
+  duration_ms: 1.192385
+  ...
+# Subtest: current source validation is independent of archived review-video bytes and digest
+ok 7 - current source validation is independent of archived review-video bytes and digest
+  ---
+  duration_ms: 1809.429052
+  ...
+# Subtest: current OpenAI contract, submission and runtime checks remain active
+ok 8 - current OpenAI contract, submission and runtime checks remain active
+  ---
+  duration_ms: 0.253718
+  ...
+# Subtest: backend CI checks the read-only deploy snapshot before its long test suite
+ok 9 - backend CI checks the read-only deploy snapshot before its long test suite
+  ---
+  duration_ms: 0.448632
+  ...
+# Subtest: Claude package and publication validation remains independent
+ok 10 - Claude package and publication validation remains independent
+  ---
+  duration_ms: 0.319023
+  ...
+# Subtest: Claude checkout retains release verification inputs without unrelated curriculum media
+ok 11 - Claude checkout retains release verification inputs without unrelated curriculum media
+  ---
+  duration_ms: 0.400129
+  ...
+# Subtest: CI retains reproducible non-secret submission worksheets and ZIP after validation and audit
+ok 12 - CI retains reproducible non-secret submission worksheets and ZIP after validation and audit
+  ---
+  duration_ms: 1.023673
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1892.456188

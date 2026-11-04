@@ -1,0 +1,258 @@
+{
+  "examCountAtInspection": 195,
+  "existingCoverageHits": [
+    {
+      "id": "7337049a-c85c-5b94-adaa-81dc93528bf8",
+      "title": "Darstellungen sicher wechseln und bewerten",
+      "description": "Die lernende Person kann eine Aufgabe zu verschiedenen Darstellungen selbstständig bearbeiten, zwischen ihnen sicher wechseln und ihre Aussagekraft bewerten.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        "phase": "Q4"
+      },
+      "requires": [
+        "cf4fe700-dec2-502f-888b-90acefa307bb",
+        "42b57670-d2be-5da2-be2f-d58055901813",
+        "d668c22d-caeb-5e91-8980-721c931a2bcf",
+        "7c4e8d59-4acb-5f62-a387-c804c6fa23e0",
+        "d0475ed5-cb6f-5694-9501-a1c94288d65a",
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+        "96c55cb6-d2c7-5145-8567-b5f570f55a8a",
+        "1675fdde-cba7-5456-ae70-a846e1924a68"
+      ],
+      "contains": [],
+      "examples": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "cf4fe700-dec2-502f-888b-90acefa307bb",
+          "42b57670-d2be-5da2-be2f-d58055901813",
+          "d668c22d-caeb-5e91-8980-721c931a2bcf",
+          "7c4e8d59-4acb-5f62-a387-c804c6fa23e0",
+          "d0475ed5-cb6f-5694-9501-a1c94288d65a",
+          "1675fdde-cba7-5456-ae70-a846e1924a68"
+        ],
+        "coveredStrands": [
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "Gegeben ist p(x)=−0,5x²+12x. Ein digitales Rechen- oder Graphikwerkzeug steht zur Verfügung; dokumentieren Sie die verwendeten Eingaben und Ergebnisse.\n\n1. Erstellen Sie zunächst von Hand eine Wertetabelle für x=0,4,8,12,16,20,24. Kontrollieren Sie danach mindestens die Werte p(8) und p(12) mit dem digitalen Werkzeug. Vergleichen Sie die Ergebnisse, erklären Sie gegebenenfalls eine Abweichung und beschreiben Sie bei Übereinstimmung eine typische Eingabe- oder Rundungsfehlerquelle samt geeigneter Kontrolle.\n2. Bestimmen Sie mit dem Term die Nullstellen und den Scheitelpunkt und skizzieren Sie den Graphen auf 0≤x≤24 mit einer geeigneten Achsenskalierung.\n3. Erläutern Sie, was Term, Tabelle und Schaubild jeweils zeigen. Begründen und prüfen Sie ausdrücklich, warum Nullstellen, Scheitel und die kontrollierten Tabellenpunkte in allen drei Darstellungen zusammenpassen.\n4. Ein Diagramm zeigt nur die Endpunkte x=0 und x=24 und benutzt die y-Skala 0 bis 10000. Eine Schülerin bezeichnet den Graphen als „fast linear“. Beurteilen Sie diese Aussage für [6,18] nach dem überprüfbaren Kriterium: Die Verbindungsgerade der beiden Intervallendpunkte darf vom Funktionswert höchstens 5 Einheiten abweichen. Berechnen Sie die maximale Abweichung. Erklären Sie den Einfluss der Skalierung und der fehlenden Zwischenwerte; schlagen Sie eine konkrete klarere Darstellung vor und prüfen Sie diese mit dem digitalen Werkzeug.\n\nDie Teile 1 bis 4 werden mit 3, 3, 2 und 3 BE bewertet.\n\n**5. Zusätzliche graphische Untersuchung (9 BE):**\n\nDie folgende Darstellung zeigt denselben Graphen von $p$ ausschließlich im Bereich $0\\le x\\le24$ und drei horizontale Geraden $a$, $b$ und $c$.\n\n![Gegebener Graph von p mit drei horizontalen Vergleichsgeraden](/assets/assessments/mathematik/completion-integrity-2026-11-01/route-actions-batch3-v1/graph-comparison.de.svg)\n\nBegründe anhand der Darstellung für jede der drei Geraden, wie viele verschiedene gemeinsame Punkte sie mit dem dargestellten Graphen von $p$ hat. Erläutere dabei, welche der Geraden hier eine Tangente ist und woran man das erkennt. Begründe auch, weshalb es im angegebenen Bereich keine weiteren gemeinsamen Punkte gibt. Eine reine Zahlenliste genügt nicht; für diesen Teil ist eine anschauliche Begründung am gegebenen Graphen gefragt, keine erneute Gleichungslösung.",
+        "solutionContent": "1. Die Werte sind 0,40,64,72,64,40,0. Digitale Eingaben beispielsweise p(8)=−0,5·8²+12·8=64 und p(12)=72 werden mit den eigenen Handwerten verglichen. Ein typischer Fehler ist falsche Klammerung oder ein falsches Vorzeichen; erneutes Einsetzen und Vergleich mit p(x)=−0,5(x−12)²+72 sichern die Rechnung. Tatsächliche eigene Abweichungen sind passend zu erklären; eine erfundene Abweichung ist nicht nötig.\n\n2. p(x)=x(−0,5x+12) hat Nullstellen 0 und 24. Quadratische Ergänzung liefert p(x)=−0,5(x−12)²+72, also S=(12,72). Ein sinnvoller Graph zeigt x von 0 bis 24 und y etwa von 0 bis 80 mit beschrifteten Achsen und Zwischenpunkten.\n\n3. Der Term erlaubt exakte allgemeine Rechnungen; die Tabelle zeigt ausgewählte Werte, aber keine gesicherte Aussage über alle Zwischenwerte. Der Graph verdeutlicht den Verlauf abhängig von Skalierung/Auflösung. Tabelle und Term liefern dieselben Nullstellen, die Symmetrie um x=12 und den Maximalwert 72. Die kontrollierten Punkte (8,64) und (12,72) müssen auf dem skizzierten Graphen liegen; diese Konsistenzprüfungen begründen die Übertragung.\n\n4. p(6)=p(18)=54, daher ist die Verbindungsgerade l(x)=54. Auf [6,18] ist p(x)−54=18−0,5(x−12)²≥0, maximal 18 bei x=12. Die Toleranz von 5 wird verletzt; nach dem angegebenen Kriterium ist diese Näherung nicht hinreichend linear. Das widerlegt keine beliebige andere Toleranzdefinition. Eine y-Skala bis 10000 lässt die Höhe 72 nahezu verschwinden. Zwei Endpunkte allein erfassen den Scheitel/Innenverlauf nicht. Konkrete Verbesserung: geeignete y-Skala etwa 0 bis 80, zusätzlich Werte bei x=6,12,18, beide Kurven p und l im selben Fenster darstellen und die 18-Einheiten-Differenz markieren. Dokumentierte digitale Kontrolle muss diese Werte und den deutlich gekrümmten Verlauf bestätigen.\n\n**5. Anschauliche Schnittanzahl (9 BE):**\n\n- $a$: zwei gemeinsame Punkte. Die Gerade auf Höhe54 schneidet den steigenden linken und den fallenden rechten Ast jeweils einmal. Innerhalb jedes Astes gibt es keine weitere Umkehr; im vollständig dargestellten Bereich kommen keine weiteren Schnitte hinzu.\n- $b$: ein gemeinsamer Punkt. Sie berührt am Scheitel den Graphen, ohne ihn dort zu durchqueren. Damit ist $b$ hier die waagerechte Tangente. Sämtliche anderen Graphpunkte liegen unter ihr; eine Berührung zählt als ein gemeinsamer Punkt.\n- $c$: kein gemeinsamer Punkt. Der höchste abgebildete Graphpunkt hat die Höhe72. Die Gerade liegt auf Höhe80 darüber, sodass kein Punkt im gesamten angegebenen Bereich auf ihr liegen kann.\n\nGleichwertige klare Bildbegründungen sind zulässig. Die bloße Zahlenfolge 2/1/0 belegt nur die drei Anzahlpunkte, nicht die sechs Begründungspunkte. Eine ausschließlich rechnerische Lösung kann die Anzahlen belegen, ersetzt aber nicht den ausdrücklich verlangten graphischen Begründungsweg.\n\n**Normale Gesamtrubrik-Kappung: Fehlt in Teil 5 jede nachvollziehbare anschauliche Begründung am gegebenen Graphen, ist die Gesamtpunktzahl auf höchstens 11 von 20 BE begrenzt. Bloßes Zählen oder ausschließliches Gleichungslösen ersetzt diese ausdrücklich verlangte Handlung nicht.**\n\n**Bewertungshinweis:** Die Lösung ist eine nicht ausschließliche Referenz. Fachlich gleichwertige Ergebnisse, zulässige Näherungen, Darstellungen und Lösungswege sind anzuerkennen; ausdrücklich geforderte Begründungsformen bleiben verbindlich. Teilpunkte nach den Rubrikschritten vergeben, einen Rechenfehler nicht mehrfach als denselben fachlichen Fehler abziehen und nachvollziehbare Folgearbeit eigenständig würdigen. Nur verlässlich lesbare eingereichte Arbeit bewerten, keine Rückfragen zur Vervollständigung. Es gilt ausschließlich die angegebene Gesamtpunktschwelle nach Anwendung der normalen Rubrik-Kappung, kein zusätzlicher Teilpassstatus. Bereits gültige Mastery wird durch diese Aufgabenergänzung nicht neu qualifiziert.",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "pk_4_1",
+              "points": 3,
+              "description": "Teil 1: Handtabelle richtig 1 BE; wirkliche digitale Eingaben/Ergebnisse samt Vergleich dokumentiert 1 BE; passende Fehlerkontrolle erläutert 1 BE. Abweichung darf nicht erfunden werden.",
+              "descriptionEn": "Part 1: correct manual table 1 point; actual digital inputs/results and comparison documented 1; appropriate error check explained 1. Do not require an invented discrepancy."
+            },
+            {
+              "id": "pk_4_2",
+              "points": 3,
+              "description": "Teil 2: Nullstellen hergeleitet 1 BE; Scheitel hergeleitet 1 BE; passende selbst erstellte beschriftete Skizze 1 BE. Das gegebene Bild ersetzt diese eigene Zeichenleistung nicht.",
+              "descriptionEn": "Part 2: roots derived 1 point; vertex derived 1; suitable own labelled sketch 1. The given image does not replace the learner’s own drawing."
+            },
+            {
+              "id": "pk_4_3",
+              "points": 2,
+              "description": "Teil 3: Stärken/Grenzen von Term,Tabelle,Schaubild erklärt 1 BE; Übertragung anhand konkreter Nullstellen-,Scheitel- und Punktkonsistenz geprüft 1 BE.",
+              "descriptionEn": "Part 3: explains strengths/limits of expression,table,graph 1 point; checks translation using concrete roots,vertex and point consistency 1."
+            },
+            {
+              "id": "pk_4_4",
+              "points": 3,
+              "description": "Teil 4: Verbindungsgerade 54, maximale Abweichung 18 und Toleranzentscheid korrekt 1 BE; Skalen-/Datenproblem und konkrete Verbesserung erklärt 1 BE; Verbesserung wirklich digital geprüft und Eingaben/Ergebnisse dokumentiert 1 BE.",
+              "descriptionEn": "Part 4: correct line 54,maximum difference 18 and tolerance decision 1 point; explains scale/data limitations and concrete improvement 1; actually checks the improvement digitally and documents inputs/results 1."
+            },
+            {
+              "id": "visual_a",
+              "points": 3,
+              "description": "Teil 5a: zwei gemeinsame Punkte 1 BE; anschaulich je ein Schnitt am steigenden und fallenden Ast 1 BE; Ausschluss weiterer Schnitte durch durchgehend steigenden/fallenden Ast im ganzen Bereich 1 BE.",
+              "descriptionEn": "Part 5a: two common points 1 point; visual explanation of one crossing on each rising/falling branch 1; excludes further crossings from the continuous rising/falling shape over the full interval 1."
+            },
+            {
+              "id": "visual_b",
+              "points": 3,
+              "description": "Teil 5b: ein gemeinsamer Punkt 1 BE; Scheitelberührung ohne Durchqueren als Tangente erkannt und anschaulich erklärt 1 BE; weitere Schnitte wegen sämtlicher übriger Graphpunkte unterhalb ausgeschlossen 1 BE.",
+              "descriptionEn": "Part 5b: one common point 1 point; recognises and visually explains vertex contact without crossing as tangency 1; excludes further intersections because all other graph points lie below 1."
+            },
+            {
+              "id": "visual_c",
+              "points": 3,
+              "description": "Teil 5c: kein gemeinsamer Punkt 1 BE; höchsten Graphwert 72 im Bild als obere Schranke erkannt 1 BE; c mit Höhe 80 liegt darüber, also im ganzen Bereich kein Schnitt, anschaulich verglichen 1 BE. Normale Gesamtrubrik-Kappung: Fehlt in Teil 5 jede nachvollziehbare anschauliche Begründung am gegebenen Graphen, ist die Gesamtpunktzahl auf höchstens 11 von 20 BE begrenzt. Bloßes Zählen oder ausschließliches Gleichungslösen ersetzt diese ausdrücklich verlangte Handlung nicht.",
+              "descriptionEn": "Part 5c: no common point 1 point; identifies the highest graph value 72 as an upper bound visually 1; visually compares c at 80 above this to exclude intersections throughout the interval 1. Normal total-score cap: If part 5 contains no traceable visual justification from the given graph, cap the overall score at 11 out of 20. Mere counting or exclusively solving equations does not replace this explicitly required action."
+            }
+          ]
+        },
+        "reviewNote": "Independent bounded machine content/preparation PASS 2026-11-01: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/route-actions-batch3-v1/scoring-followup-review.json. Released metadata for this exact reviewed task/solution/rubric/coverage and prerequisite delta; sourceArtifactPath identifies its durable task artifact. No source/target enrollment, learner trial, Mathematics/M7 or CI acceptance is implied. Existing valid mastery remains valid without a second pass or requalification. Detailed grading uses the normal rubric; the server continues to enforce total points.",
+        "taskContentEn": "Given $p(x)=-0.5x^2+12x$, a digital calculation or graphing tool is available. Document the inputs and results you use.\n\n1. First create a table by hand for $x=0,4,8,12,16,20,24$. Then use the digital tool to check at least $p(8)$ and $p(12)$. Compare the results, explain any discrepancy and, if they agree, describe a typical input or rounding error together with a suitable check.\n2. Use the expression to find the roots and vertex and sketch the graph on $0\\le x\\le24$ with a suitable axis scale.\n3. Explain what the expression, table and graph each show. Explicitly justify and check why the roots, vertex and checked table points agree across all three representations.\n4. A diagram shows only the endpoints $x=0$ and $x=24$ with a y-scale from 0 to 10000. A student calls the graph “almost linear”. Assess this claim for $[6,18]$ using the verifiable criterion: the line joining the interval endpoints may differ from the function by at most 5 units. Calculate the maximum difference. Explain the effects of the scale and missing intermediate values; propose a concrete clearer representation and check it using the digital tool.\n\nParts 1 to 4 are worth 3,3,2 and3 points, respectively.\n\n**5. Additional graphical investigation (9 points):**\n\nThe following diagram shows the same graph of $p$ only on $0\\le x\\le24$, together with three horizontal lines $a$, $b$ and $c$.\n\n![Given graph of p with three horizontal comparison lines](/assets/assessments/mathematik/completion-integrity-2026-11-01/route-actions-batch3-v1/graph-comparison.en.svg)\n\nUse the diagram to justify how many distinct points each of the three lines shares with the displayed graph of $p$. Explain which of the lines is a tangent here and how this is visible. Also justify why there are no further common points in the stated interval. A list of numbers alone is insufficient; this part asks for a visual justification from the given graph, not another equation-solving calculation.",
+        "solutionContentEn": "1. The table values are 0,40,64,72,64,40,0. Digital inputs such as $p(8)=-0.5\\cdot8^2+12\\cdot8=64$ and $p(12)=72$ are compared with the manual results. Typical errors include incorrect grouping or signs; substitution and comparison with $p(x)=-0.5(x-12)^2+72$ check the calculation. Explain actual discrepancies if present; an invented discrepancy is unnecessary.\n\n2. Since $p(x)=x(-0.5x+12)$, the roots are 0 and 24. Completing the square gives $p(x)=-0.5(x-12)^2+72$, hence $S=(12,72)$. A suitable graph uses x from 0 to 24 and y approximately0 to 80, with labelled axes and intermediate points.\n\n3. The expression supports exact general calculations; the table provides selected values but does not establish every intermediate value. The graph shows the shape subject to scale and resolution. Table and expression give the same roots, symmetry about x=12 and maximum 72. Checked points (8,64) and (12,72) must lie on the sketched graph; these checks justify the translation.\n\n4. Since $p(6)=p(18)=54$, the connecting line is $l(x)=54$. On [6,18], $p(x)-54=18-0.5(x-12)^2\\ge0$, with maximum18 at x=12. This exceeds the tolerance 5, so the approximation fails the stated criterion; it does not disprove every possible tolerance definition. A y-scale up to 10000 makes a height of72 almost disappear. Two endpoints miss the vertex and interior shape. A concrete improvement is a y-scale about 0 to 80, extra values at x=6,12,18 and a plot of both p and l, marking the difference 18. Documented digital checks must confirm the values and clearly curved shape.\n\n**5. Visual intersection counts (9 points):**\n\n- $a$: two common points. The line at height 54 crosses the rising left and falling right branches once each. Neither branch reverses again; no further crossings occur in the fully displayed interval.\n- $b$: one common point. It touches the graph at the vertex without crossing it there, so $b$ is the horizontal tangent here. All other graph points lie below it. A point of contact counts as one common point.\n- $c$: no common points. The highest displayed graph point has height 72. The line at height 80 lies above this, excluding any common point throughout the stated interval.\n\nAccept equivalent clear visual explanations. The list 2/1/0 alone earns only the three count points, not the six reasoning points. A purely algebraic solution may establish the counts but does not replace the explicitly required visual reasoning.\n\n**Normal total-score cap: If part 5 contains no traceable visual justification from the given graph, cap the overall score at 11 out of 20. Mere counting or exclusively solving equations does not replace this explicitly required action.**\n\n**Grading note:** The solution is a non-exclusive reference. Accept mathematically equivalent results, permitted approximations, representations and methods; explicitly required reasoning forms remain binding. Award partial credit by rubric step, do not penalise one arithmetic error repeatedly as the same conceptual error, and credit traceable follow-through separately. Grade only reliably legible submitted work, without follow-up questions to complete it. Apply the normal rubric cap before comparing with the stated total-point threshold; there is no additional part-pass status. Previously valid mastery is not requalified by this task extension.",
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/route-actions-batch3-v1/TASKS.md"
+      },
+      "phase": "Q4",
+      "type": "atomic",
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/route-actions-batch3-v1/TASKS.md"
+    },
+    {
+      "id": "4c319dfd-ebb1-504b-a036-c780e1915900",
+      "title": "Formale Verfahren und Werkzeuge reflektiert einsetzen",
+      "description": "Die lernende Person kann formale Verfahren und technische Werkzeuge in einer selbstständigen Aufgabe sicher einsetzen, Grenzen benennen und Entscheidungen dokumentieren.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        "phase": "Q4"
+      },
+      "requires": [
+        "647ec09d-68ae-57db-9ca4-aeb2da4218f1",
+        "07be4b71-b7e0-5dd1-be0c-9f590f3db3f3",
+        "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
+        "fbcb4ad3-786d-5365-94ba-b105660694a5",
+        "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+        "f76d00dc-6b31-59cd-b01a-3610eadc9908",
+        "27bdc580-ba17-5399-bf02-48f354846d1d"
+      ],
+      "contains": [],
+      "examples": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "647ec09d-68ae-57db-9ca4-aeb2da4218f1",
+          "07be4b71-b7e0-5dd1-be0c-9f590f3db3f3",
+          "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
+          "fbcb4ad3-786d-5365-94ba-b105660694a5"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "Für x>0 soll die Gleichung ln(x)=2−x gelöst werden. Erstellen Sie eine kurze nachvollziehbare Rechennotiz, die exakte Aussagen, Näherungen und Werkzeugkontrollen auseinanderhält. Sie dürfen einen wissenschaftlichen Taschenrechner oder ein geeignetes digitales Werkzeug verwenden.\n\nMaterial: F(x)=ln(x)+x−2 ist auf x>0 stetig und hat dort die Ableitung F'(x)=1+1/x. Das Newton-Verfahren für eine differenzierbare Funktion h lautet x_(n+1)=x_n−h(x_n)/h'(x_n), sofern die verwendeten Werte zulässig sind.\n\n1. Geben Sie D_F in Intervallschreibweise und die gesuchte Lösungsmenge L in Mengenschreibweise an. Erklären Sie den Unterschied zwischen einem Näherungswert x_n und der gesuchten Zahl x*. Begründen Sie anhand von F(1), F(2) und F', dass genau eine Lösung existiert.\n2. Passen Sie das allgemeine Newton-Verfahren an F an und begründen Sie die Zulässigkeit des Startwerts x_0=2. Eine fremde Rechennotiz setzt F'(2)=1/2 und erhält x_1≈0,614. Lokalisieren und korrigieren Sie den Fehler; geben Sie den korrekten ersten Schritt an.\n3. Setzen Sie das Verfahren mit geeigneter Genauigkeit fort und geben Sie die Lösung auf drei Nachkommastellen an. Dokumentieren Sie verwendete Rechen-/Werkzeugschritte. Sichern Sie die Rundung durch Funktionswerte an zwei geeigneten Intervallgrenzen; beispielsweise können 1,5571 und 1,5572 geprüft werden.\n4. Ein Graphikprogramm zeigt den Schnittpunkt gerundet bei x=1,56. In einer Zusammenfassung steht: 'Der Graph beweist die exakte Lösung x=1,56 und zeigt, dass es sonst keine gibt.' Schreiben Sie die Zusammenfassung fachlich richtig um. Erklären Sie den Nutzen der Graphik, mindestens zwei Grenzen dieser Anzeige und welche Ihrer Kontrollen die betreffenden Unsicherheiten beheben.",
+        "solutionContent": "1. D_F=(0,∞), L={x∈(0,∞):F(x)=0}={x*}. Ein x_n ist eine Approximation, keine durch Dezimaldarstellung automatisch exakte Nullstelle.\n\n2. F(1)=−1, F(2)=ln2>0; Stetigkeit liefert eine Nullstelle in (1,2). F'(x)=1+1/x>0 liefert strenge Monotonie und Eindeutigkeit.\n\n3. x_(n+1)=x_n−(ln(x_n)+x_n−2)/(1+1/x_n). x0=2 ist positiv; F'(2)=1,5≠0. Der fremde Schritt hat die Ableitung des Summanden x unterschlagen.\n\n4. x1=2−ln2/1,5≈1,5379018796, x2≈1,5570985511, x3≈1,5571455987; gerundet x*=1,557.\n\n5. F(1,5571)≈−0,0000748831 und F(1,5572)≈0,0000893368. Eindeutige Nullstelle in diesem Intervall, dessen sämtliche Werte auf drei Nachkommastellen zu1,557 runden.\n\n6. 1,56 ist nur eine gröbere Rundung; Fenster/Pixelauflösung und Achsenskalierung begrenzen die Graphik. Ein Bild allein beweist keine globale Eindeutigkeit. Formale Monotonie-/Zwischenwertargumente und die numerische Intervallkontrolle liefern die jeweils fehlende Sicherheit; andere fachlich gleichwertige Kontrollen zulassen.",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 10,
+          "steps": [
+            {
+              "id": "pk_5_1",
+              "points": 5,
+              "description": "D und L korrekt und erläutert (2); Näherung/exakte Lösung unterschieden (1); Existenz und Eindeutigkeit mit den gegebenen Eigenschaften begründet (2)."
+            },
+            {
+              "id": "pk_5_2",
+              "points": 5,
+              "description": "Newton-Formel nachvollziehbar angepasst (2); Startwert/Division zulässig begründet (1); Ableitungsfehler lokalisiert und erster Schritt korrigiert (2)."
+            },
+            {
+              "id": "pk_5_3",
+              "points": 5,
+              "description": "Nachvollziehbare weitere Approximation und dokumentierte Werkzeug-/Rechenschritte (2); Vorzeichenintervall korrekt kontrolliert (2); sichere Rundung1,557 (1)."
+            },
+            {
+              "id": "pk_5_4",
+              "points": 5,
+              "description": "Exaktheits-/Eindeutigkeitsbehauptung korrekt verbessert (2); zwei sachliche Graphik-/Näherungsgrenzen benannt (2); passende eigene Kontrollen zugeordnet (1)."
+            }
+          ]
+        },
+        "reviewNote": "Nicht aktivierter Korrekturkandidat 2026-11-01. Neues Aufgaben-/Rubrikreview erforderlich; bestehendes released gilt nicht für diese Bytes. Astras konkreter 20-BE-Entwurf unverändert als Ausgangspunkt übernommen. Die ln-Ableitung wird als Material gegeben. RSA/CRT/Primzahl-/Faktorisierungsverfahren und allgemeine LK-Entscheidungscoverage entfallen; kein dafür erfundener Aufgabenmix. Scope-Hold: die zwei historischen SekI-Plätze sind gesondert verdächtig."
+      },
+      "phase": "Q4",
+      "type": "atomic",
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityFromRequires": true
+      }
+    }
+  ]
+}

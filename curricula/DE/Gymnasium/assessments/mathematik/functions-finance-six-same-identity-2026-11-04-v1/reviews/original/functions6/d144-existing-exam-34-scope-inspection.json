@@ -1,0 +1,1929 @@
+{
+  "status": "READ_EXISTING_NATIVE_SCOPE_EVIDENCE_NOT_NEW_RUNTIME_ACCEPTANCE",
+  "nativePath": "tmp/approach-review-20261101/sh-markov-current-main-native-20261104-v1/candidate.json.gz",
+  "nativeCompressedSha256": "76431ba5713add159e82c9ba97df370def6ada2003d737482e0128d2dc0021c7",
+  "actualScopeCount": 161,
+  "actualUnionCount": 46,
+  "wholeCurrentExistingExam": {
+    "id": "1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf",
+    "title": "Funktionenscharen und Ortskurven untersuchen",
+    "description": "Die lernende Person kann eine materialgestützte Q4-Klausuraufgabe zu Funktionenscharen, Parameteruntersuchungen und Ortskurven selbstständig bearbeiten und die Ergebnisse begründen.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024",
+      "demandLevel": "AB3",
+      "processCompetencies": [
+        "K1",
+        "K2",
+        "K3"
+      ],
+      "guidingIdeas": [
+        "L1",
+        "L2",
+        "L4"
+      ],
+      "phase": "Q4"
+    },
+    "requires": [
+      "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+      "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+      "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+      "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+      "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+      "9023226b-fc17-412b-807c-2bb45cd551d5",
+      "d144a855-9139-55c7-a801-e8b85dab5f01",
+      "647888d2-8e23-52b2-a2ec-fad3f31cb1a6"
+    ],
+    "contains": [],
+    "examples": [],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "coveredGoalIds": [
+        "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+        "d144a855-9139-55c7-a801-e8b85dab5f01"
+      ],
+      "coveredStrands": [
+        "L1",
+        "L2",
+        "L4"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "taskContent": "Gegeben ist für $a \\in \\mathbb R$ die Funktionenschar\n$$\nf_a(x)=x^2-2ax+2a.\n$$\n\n1. Bestimmen Sie den Scheitelpunkt $S_a$ des Graphen von $f_a$ in Abhängigkeit von $a$.\n2. Weisen Sie nach, dass die Scheitelpunkte aller Graphen auf einer gemeinsamen Ortskurve liegen, und geben Sie deren Gleichung an.\n3. Untersuchen Sie in Abhängigkeit von $a$, für welche Werte die Parabel keine reellen Nullstellen besitzt.\n4a. Lassen Sie zunächst $a$ als Parameter stehen. Bestimmen Sie eine Stammfunktion $F_a$ von $f_a$ und berechnen Sie das bestimmte Integral\n$$\nI(a)=\\int_0^1 f_a(x)\\,dx\n$$\nsymbolisch in Abhängigkeit von $a$. Bestimmen Sie den Parameter mit $I(a)=0$ und deuten Sie das Ergebnis als orientierte Flächenbilanz. Erläutern Sie, warum $I(a)=0$ nicht bedeutet, dass der Graph auf dem ganzen Intervall die $x$-Achse ist. Erst danach bearbeiten Sie 4b.\n\n4b. Berechnen Sie für $a=3$ den Flächeninhalt der von dem Graphen von $f_3$, der $x$-Achse und den Nullstellen eingeschlossenen Fläche.\n\nBewertung: 1: 5 BE, 2: 5 BE, 3: 4 BE, 4a: 5 BE, 4b: 6 BE; insgesamt 25 BE, bestanden ab 13 BE. Ohne nachvollziehbare parameterabhängige Stammfunktion, daraus berechneten parameterabhängigen Integralterm und sachlich richtige Flächenbilanzdeutung in 4a höchstens 12 BE insgesamt. Einzelne Rechenfehler bei erkennbar ausgeführtem, fachlich tragfähigem Kernverfahren lösen die Kappung nicht automatisch aus.",
+      "solutionContent": "1. Durch quadratische Ergänzung erhält man\n$$\nf_a(x)=x^2-2ax+2a=(x-a)^2-a^2+2a.\n$$\nDamit ist der Scheitelpunkt\n$$\nS_a=(a\\mid -a^2+2a).\n$$\n\n2. Für die Scheitelpunkte gilt $x=a$. Einsetzen in die $y$-Koordinate liefert\n$$\ny=-a^2+2a=-x^2+2x.\n$$\nDie Ortskurve der Scheitelpunkte ist also\n$$\ny=-x^2+2x.\n$$\n\n3. Die Funktion $f_a$ besitzt genau dann keine reellen Nullstellen, wenn die Diskriminante negativ ist:\n$$\n\\Delta=(-2a)^2-4\\cdot 1\\cdot 2a=4a^2-8a=4a(a-2).\n$$\nGesucht ist\n$$\n4a(a-2)<0.\n$$\nDas gilt für\n$$\n0<a<2.\n$$\n\n4a. Beim Integrieren nach $x$ ist $a$ konstant. Eine Stammfunktion ist\n$$\nF_a(x)=\\frac{x^3}{3}-ax^2+2ax+C_a.\n$$\nDie Integrationskonstante darf von $a$ abhängen. Die Ableitung nach $x$ ergibt wieder $f_a$. Deshalb\n$$\nI(a)=F_a(1)-F_a(0)=\\frac13-a+2a=a+\\frac13.\n$$\nSomit ist $I(a)=0$ genau für $a=-\\frac13$. $I(a)$ beschreibt die vorzeichenbehaftete Flächenbilanz zwischen Graph und $x$-Achse auf $[0,1]$: positiv für $a>-\\frac13$, negativ für $a<-\\frac13$, null für $a=-\\frac13$. Beim Nullwert gleichen sich positive und negative Beiträge aus. Der Graph ist nicht identisch null, denn für jedes $a$ gilt $f_a(1)=1$; für $a=-\\frac13$ gilt außerdem $f_a(0)=-\\frac23$. Der stetige Graph liegt also auf Teilen des Intervalls unter und auf anderen über der Achse. Der Integralwert ist nicht allgemein der nichtnegative geometrische Flächeninhalt.\n\n4b. Für $a=3$ ist\n$$\nf_3(x)=x^2-6x+6=(x-3)^2-3.\n$$\nDie Nullstellen sind\n$$\nx_{1,2}=3\\pm \\sqrt{3}.\n$$\nZwischen diesen Nullstellen liegt der Graph unter der $x$-Achse. Der Flächeninhalt ist daher\n$$\nA=\\int_{3-\\sqrt{3}}^{3+\\sqrt{3}} -f_3(x)\\,dx.\n$$\nMit $u=x-3$ wird\n$$\nA=\\int_{-\\sqrt{3}}^{\\sqrt{3}} (3-u^2)\\,du = \\left[3u-\\frac{u^3}{3}\\right]_{-\\sqrt{3}}^{\\sqrt{3}} = 4\\sqrt{3}.\n$$\nAlso gilt\n$$\nA=4\\sqrt{3}.\n$$",
+      "scoring": {
+        "maxPoints": 25,
+        "passingPoints": 13,
+        "steps": [
+          {
+            "id": "q4a_1",
+            "points": 5,
+            "description": "Scheitelpunkt der Funktionenschar korrekt bestimmt"
+          },
+          {
+            "id": "q4a_2",
+            "points": 5,
+            "description": "Ortskurve korrekt hergeleitet"
+          },
+          {
+            "id": "q4a_3",
+            "points": 4,
+            "description": "Parameterbereich ohne reelle Nullstellen korrekt bestimmt"
+          },
+          {
+            "id": "q4a_4a_antiderivative",
+            "points": 2,
+            "description": "4a: Parameter als konstant behandelt und F_a=x³/3−ax²+2ax+C_a angegeben. Kernkappung für die gesamte Bewertung: Fehlt eine nachvollziehbare parameterabhängige Stammfunktion ODER der daraus berechnete parameterabhängige bestimmte Integralterm ODER die sachlich richtige Flächenbilanzdeutung, höchstens 12/25 BE, unter Passgrenze 13. Einzelne Rechenfehler bei substantiv erbrachtem Kernverfahren bewirken nicht automatisch die Kappung."
+          },
+          {
+            "id": "q4a_4a_definite_parameter",
+            "points": 2,
+            "description": "4a: Grenzen an F_a ausgewertet, I(a)=a+1/3 hergeleitet (1 BE) und I(a)=0 genau für a=−1/3 bestimmt (1 BE)"
+          },
+          {
+            "id": "q4a_4a_signed_meaning",
+            "points": 1,
+            "description": "4a: Vorzeichenbehaftete Flächenbilanz mit Ausgleich bei a=−1/3 erklärt und durch f_a(1)=1 oder vergleichbares Argument von der Nullfunktion unterschieden"
+          },
+          {
+            "id": "q4a_4",
+            "points": 6,
+            "description": "4b: Flächeninhalt für a=3 korrekt berechnet (bisherige 6 BE unverändert)"
+          }
+        ]
+      },
+      "reviewNote": "Independent bounded machine content/preparation PASS 2026-11-01: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/route-actions-v1/batch1/independent-content-review.json. Released metadata for this exact reviewed task/solution/rubric/coverage and prerequisite delta; sourceArtifactPath identifies its durable task artifact. No source/target enrollment, learner trial, Mathematics/M7 or CI acceptance is implied. Existing valid mastery remains valid without a second pass or requalification. Detailed grading uses the normal rubric; the server continues to enforce total points.",
+      "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/route-actions-v1/batch1/1969d4dc.task.md",
+      "taskContentEn": "For $a\\in\\mathbb R$, consider the family\n$$\nf_a(x)=x^2-2ax+2a.\n$$\n\n1. Determine the vertex $S_a$ as a function of $a$.\n2. Show that all vertices lie on one locus and state its equation.\n3. Determine the parameter values for which the parabola has no real roots.\n4a. First keep $a$ symbolic. Find an antiderivative $F_a$ of $f_a$ and compute\n$$\nI(a)=\\int_0^1 f_a(x)\\,dx\n$$\nas a function of $a$. Find the parameter for which $I(a)=0$ and interpret it as a signed area balance. Explain why a zero integral does not mean that the graph is the $x$-axis throughout the interval. Only then proceed to 4b.\n\n4b. For $a=3$, find the area enclosed by the graph of $f_3$, the $x$-axis and the roots.\n\nScoring: 1: 5 points, 2: 5, 3: 4, 4a: 5, 4b: 6; total 25, pass at 13. Without a demonstrable parameter-dependent antiderivative, a definite-integral expression derived from it and a valid signed-area interpretation in 4a, the total is capped at 12. Isolated calculation errors do not automatically trigger this cap when the required reasoning and method are substantively present.",
+      "solutionContentEn": "1. Completing the square gives $f_a(x)=(x-a)^2-a^2+2a$, so $S_a=(a,-a^2+2a)$.\n\n2. Since the vertex has $x=a$, its ordinate is $y=-x^2+2x$. This is the locus of all vertices; every real $x$ occurs because $a$ ranges over $\\mathbb R$.\n\n3. The discriminant is $\\Delta=4a(a-2)$. There are no real roots exactly when $\\Delta<0$, hence $0<a<2$.\n\n4a. Treating $a$ as constant when integrating with respect to $x$ gives\n$$\nF_a(x)=\\frac{x^3}{3}-ax^2+2ax+C_a,\n\\qquad I(a)=F_a(1)-F_a(0)=a+\\frac13.\n$$\nThe integration constant may depend on $a$. Differentiating $F_a$ with respect to $x$ recovers $f_a$. The integral vanishes exactly at $a=-\\frac13$. It is the signed area balance on $[0,1]$: positive for $a>-\\frac13$ and negative for $a<-\\frac13$. At the zero parameter the positive and negative contributions cancel. The function is not identically zero: $f_a(1)=1$ for every $a$, and $f_{-1/3}(0)=-\\frac23$. Continuity therefore gives portions below and above the axis. A signed integral is not generally the nonnegative geometric area.\n\n4b. For $a=3$, $f_3(x)=(x-3)^2-3$ with roots $3\\pm\\sqrt3$. The graph is below the axis between them. Thus\n$$\nA=\\int_{3-\\sqrt3}^{3+\\sqrt3}-f_3(x)\\,dx\n=\\int_{-\\sqrt3}^{\\sqrt3}(3-u^2)\\,du=4\\sqrt3,\n$$\nusing $u=x-3$."
+    },
+    "phase": "Q4",
+    "type": "atomic"
+  },
+  "wholeCurrentExamPreparationObjects": [
+    {
+      "id": "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+      "title": "Ganzrationale Funktionenscharen untersuchen",
+      "titleEn": "Analyze polynomial function families",
+      "description": "Die lernende Person kann ganzrationale Funktionenscharen in Abhängigkeit vom Parameter untersuchen, charakteristische Grapheneigenschaften bestimmen und die Ergebnisse fachsprachlich deuten.",
+      "descriptionEn": "The learner can analyze polynomial function families depending on the parameter, determine characteristic graph properties, and interpret the results in mathematical language.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "993a14e8-60f0-5764-9340-b2447a5fa84b",
+        "bfa2351c-735e-56eb-a778-2413aa68db42",
+        "7feaaebd-cc8d-522b-8b3a-ea22675c65dd"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K3.2",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "phase": "Q4",
+        "topicCode": "CANONICAL.MATH.SEK2.Q4.1.ANALYZE_POLYNOMIAL_FUNCTION_FAMILIES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true,
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+          "title": "Visualisierung: Ganzrationale Funktionenscharen untersuchen",
+          "url": "/assets/goal-visualizations/mathematik/fcf9af67-7abd-5f69-a22a-b436297d44c5/fcf9af67-7abd-5f69-a22a-b436297d44c5.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Ganzrationale Funktionenscharen untersuchen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Ganzrationale Funktionenscharen untersuchen\". Die lernende Person kann ganzrationale Funktionenscharen in Abhängigkeit vom Parameter untersuchen, charakteristische Grapheneigenschaften bestimmen und die Ergebnisse fachsprachlich deuten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+      "shortKey": "canonical_math_q4_derive_locus_of_extrema_lk",
+      "title": "Ortskurven von Extrempunkten bestimmen (LK)",
+      "titleEn": "Determine loci of extrema (advanced course)",
+      "description": "Die lernende Person kann für eine Funktionenschar die Koordinaten ihrer Extrempunkte parameterabhängig bestimmen, den Parameter eliminieren und daraus die Gleichung der Ortskurve herleiten.",
+      "descriptionEn": "For a family of functions, the learner can determine the parameter-dependent coordinates of its extrema, eliminate the parameter, and derive the equation of their locus.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K3.2",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "phase": "Q4"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 4",
+      "requires": [
+        "7feaaebd-cc8d-522b-8b3a-ea22675c65dd"
+      ],
+      "contains": [],
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+          "title": "Visualisierung: Ortskurven von Extrempunkten bestimmen (LK)",
+          "url": "/assets/goal-visualizations/mathematik/fdce0ced-46a0-594a-9b5d-d2dc18e5e473/fdce0ced-46a0-594a-9b5d-d2dc18e5e473.png",
+          "provider": "ChatGPT image generation (user-provided via Astra)",
+          "description": "Visualisierung zum Lernziel: Ortskurven von Extrempunkten bestimmen (LK).",
+          "altText": "Illustration zum Lernziel: Ortskurven von Extrempunkten bestimmen (LK)",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+      "title": "Parameterbereiche für Lösungsexistenz analysieren (LK)",
+      "titleEn": "Analyze parameter ranges for solution existence",
+      "description": "Die lernende Person kann für eine Funktionenschar begründen, für welche Parameterbereiche eine geforderte Lösung existiert.",
+      "descriptionEn": "The learner can justify for which parameter ranges of a family of functions a required solution exists.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "6ca8ad6b-a770-5d5e-9f91-7211c54c45b0"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "K2.3",
+          "K3.2",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "phase": "Q4"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+          "title": "Visualisierung: Parameterbereiche für Lösungsexistenz analysieren (LK)",
+          "url": "/assets/goal-visualizations/mathematik/1bdac3d8-6b6f-5e27-9c9e-9addf198aa99/1bdac3d8-6b6f-5e27-9c9e-9addf198aa99.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Parameterbereiche für Lösungsexistenz analysieren (LK).",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Parameterbereiche für Lösungsexistenz analysieren (LK)\". Die lernende Person kann für eine Funktionenschar begründen, für welche Parameterbereiche eine geforderte Lösung existiert.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+      "title": "Flächen mit Integralen berechnen",
+      "titleEn": "Calculate areas with integrals",
+      "description": "Die lernende Person kann Flächeninhalte berechnen, die von einem oder mehreren Funktionsgraphen und Parallelen zu den Koordinatenachsen begrenzt werden, und dazu passende Integrale aufstellen.",
+      "descriptionEn": "The learner can calculate areas bounded by one or more function graphs and parallels to the coordinate axes, and set up suitable integrals.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "b9bbd2a8-1379-5ffb-817f-41467d48abef"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K3.2"
+        ],
+        "guidingIdeas": [
+          "L2",
+          "L4"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q1.2, S. 37, Spiegelstrich 1",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
+          "title": "Visualisierung: Flächen mit Integralen berechnen",
+          "url": "/assets/goal-visualizations/mathematik/e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd/e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Flächen mit Integralen berechnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Flächen mit Integralen berechnen\". Die lernende Person kann Flächeninhalte berechnen, die von einem oder mehreren Funktionsgraphen und Parallelen zu den Koordinatenachsen begrenzt werden, und dazu passende Integrale aufstellen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+      "shortKey": "canonical_math_quadratic_vertices_and_graphs",
+      "title": "Scheitelpunkte quadratischer Funktionen bestimmen",
+      "titleEn": "Determine vertices of quadratic functions",
+      "description": "Die lernende Person kann aus quadratischen Termen den Scheitelpunkt ermitteln, zwischen Normal- und Scheitelpunktform wechseln und den zugehörigen Graphen skizzieren.",
+      "descriptionEn": "The learner can determine the vertex from quadratic expressions, switch between general and vertex form, and sketch the corresponding graph.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "modality:visual",
+        "representation:graph",
+        "tool:geogebra"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+          "title": "Visualisierung: Scheitelpunkte quadratischer Funktionen bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/3e4032bd-4d8c-4e72-bfdd-64a34df053c9/3e4032bd-4d8c-4e72-bfdd-64a34df053c9.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Scheitelpunkte quadratischer Funktionen bestimmen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Scheitelpunkte quadratischer Funktionen bestimmen\". Die lernende Person kann aus quadratischen Termen den Scheitelpunkt ermitteln, zwischen Normal- und Scheitelpunktform wechseln und den zugehörigen Graphen skizzieren.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        },
+        {
+          "type": "tool",
+          "title": "GeoGebra Graphing Calculator",
+          "url": "https://www.geogebra.org/graphing",
+          "resourceType": "graphing-calculator",
+          "provider": "GeoGebra",
+          "description": "Dynamischer Graphikrechner für Visualisierung und gemeinsame Arbeit an Koordinatensystemen, Graphen und Funktionsdarstellungen.",
+          "lang": "mul"
+        }
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "GLOBAL",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.3A1"
+      },
+      "contains": [],
+      "requires": [
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+        "9023226b-fc17-412b-807c-2bb45cd551d5",
+        "65365dce-f33f-49d8-9516-42f75883aa86",
+        "fd860da9-73ba-47cd-a1a8-452424915a80",
+        "2c4830e6-a8d5-48d0-9202-3b7d18a419c2"
+      ],
+      "type": "atomic"
+    },
+    {
+      "id": "9023226b-fc17-412b-807c-2bb45cd551d5",
+      "shortKey": "canonical_math_solve_quadratic_equations",
+      "title": "Quadratische Gleichungen lösen",
+      "titleEn": "Solve quadratic equations",
+      "description": "Die lernende Person kann gegebene quadratische Gleichungen mit einem zur Form passenden rechnerischen Verfahren einschließlich der Lösungsformel lösen, grafische Lösungen bei Bedarf näherungsweise bestimmen, die Fälle null, eine oder zwei reelle Lösungen begründen und Ergebnisse durch Einsetzen sowie eine geeignete Skizze überprüfen.",
+      "descriptionEn": "The learner can solve given quadratic equations using an algebraic method suited to their form, including the quadratic formula, approximate solutions graphically when appropriate, justify whether there are zero, one, or two real solutions, and check the results by substitution and a suitable sketch.",
+      "core": true,
+      "weight": 1,
+      "tags": [
+        "canonical",
+        "modality:visual",
+        "representation:graph",
+        "tool:geogebra"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "9023226b-fc17-412b-807c-2bb45cd551d5",
+          "title": "Visualisierung: Quadratische Gleichungen lösen",
+          "url": "/assets/goal-visualizations/mathematik/9023226b-fc17-412b-807c-2bb45cd551d5/9023226b-fc17-412b-807c-2bb45cd551d5.png",
+          "provider": "OpenAI / Codex built-in image generation (edit)",
+          "description": "Visualisierung zum Lernziel: Quadratische Gleichungen lösen.",
+          "altText": "Ein Quadrat der Seitenlänge x+2 ist in die Flächen x², zweimal 2x und 4 geteilt. Daher gilt x²+4x+4=(x+2)². Die Gleichung (x+2)²=0 hat algebraisch die Lösung x=−2; die gezeigte geometrische Länge ist nur für x≥0 gemeint.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        },
+        {
+          "type": "tool",
+          "title": "GeoGebra Graphing Calculator",
+          "url": "https://www.geogebra.org/graphing",
+          "resourceType": "graphing-calculator",
+          "provider": "GeoGebra",
+          "description": "Dynamischer Graphikrechner für Visualisierung und gemeinsame Arbeit an Koordinatensystemen, Graphen und Funktionsdarstellungen.",
+          "lang": "mul"
+        }
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K1.1",
+          "K2.1",
+          "K5.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "J9",
+        "area": "Analysis",
+        "topicCode": "CANONICAL.MATH.SEK1.2B"
+      },
+      "contains": [],
+      "requires": [
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+        "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+        "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5",
+        "fd860da9-73ba-47cd-a1a8-452424915a80",
+        "65365dce-f33f-49d8-9516-42f75883aa86",
+        "2c4830e6-a8d5-48d0-9202-3b7d18a419c2"
+      ],
+      "type": "atomic",
+      "semanticAtomic": true
+    },
+    {
+      "id": "d144a855-9139-55c7-a801-e8b85dab5f01",
+      "title": "Integrale ganzrationaler Funktionenscharen berechnen",
+      "titleEn": "Compute integrals of polynomial function families",
+      "description": "Die lernende Person kann Stammfunktionen und bestimmte Integrale ganzrationaler Funktionenscharen parameterabhängig berechnen und die Ergebnisse im Zusammenhang der Schar deuten.",
+      "descriptionEn": "The learner can compute antiderivatives and definite integrals of polynomial function families depending on the parameter and interpret the results in the context of the family.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "31be24f0-3ab1-54d2-856d-fa9b7f36552f",
+        "fcf9af67-7abd-5f69-a22a-b436297d44c5"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.3",
+          "K3.2",
+          "K5.2"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "phase": "Q4",
+        "topicCode": "CANONICAL.MATH.SEK2.Q4.1.COMPUTE_INTEGRALS_OF_POLYNOMIAL_FUNCTION_FAMILIES"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "semanticAtomic": true,
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "d144a855-9139-55c7-a801-e8b85dab5f01",
+          "title": "Visualisierung: Integrale ganzrationaler Funktionenscharen berechnen",
+          "url": "/assets/goal-visualizations/mathematik/d144a855-9139-55c7-a801-e8b85dab5f01/d144a855-9139-55c7-a801-e8b85dab5f01.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Integrale ganzrationaler Funktionenscharen berechnen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Integrale ganzrationaler Funktionenscharen berechnen\". Die lernende Person kann Stammfunktionen und bestimmte Integrale ganzrationaler Funktionenscharen parameterabhängig berechnen und die Ergebnisse im Zusammenhang der Schar deuten.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+      "title": "Integrationsgrenzen und Parameter bestimmen",
+      "titleEn": "Determine integration limits and parameters",
+      "description": "Die lernende Person kann aus vorgegebenen Gleichungen mit bestimmten Integralen Integrationsgrenzen oder Parameterwerte eines Funktionsterms so bestimmen, dass ein geforderter Flächeninhalt oder Bestand erreicht wird.",
+      "descriptionEn": "The learner can determine integration limits or parameter values of a function term from given equations with definite integrals so that a required area or stock is achieved.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K3.1"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q1.2, S. 37, Spiegelstrich 1",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+          "title": "Visualisierung: Integrationsgrenzen und Parameter bestimmen",
+          "url": "/assets/goal-visualizations/mathematik/647888d2-8e23-52b2-a2ec-fad3f31cb1a6/647888d2-8e23-52b2-a2ec-fad3f31cb1a6.jpg",
+          "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+          "description": "Visualisierung zum Lernziel: Integrationsgrenzen und Parameter bestimmen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Integrationsgrenzen und Parameter bestimmen\". Die lernende Person kann aus vorgegebenen Gleichungen mit bestimmten Integralen Integrationsgrenzen oder Parameterwerte eines Funktionsterms so bestimmen, dass ein geforderter Flächeninhalt oder Bestand erreicht wird.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    }
+  ],
+  "affectedScopeCount": 34,
+  "scopes": [
+    {
+      "scope": "DE-BW/SekII/G8/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-BW",
+          "stage": "SekII",
+          "durationModel": "G8"
+        }
+      },
+      "compositionViewIds": [
+        "de-bw-gym-sekii-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ]
+    },
+    {
+      "scope": "DE-BW/SekII/G9/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-BW",
+          "stage": "SekII",
+          "durationModel": "G9"
+        }
+      },
+      "compositionViewIds": [
+        "de-bw-gym-sekii-math-gk-g9"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ]
+    },
+    {
+      "scope": "DE-BW/CrossStage/G8/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-BW",
+          "stage": "CrossStage",
+          "durationModel": "G8"
+        }
+      },
+      "compositionViewIds": [
+        "de-bw-gym-math-gk-g8"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99"
+      ]
+    },
+    {
+      "scope": "DE-BW/CrossStage/G9/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-BW",
+          "stage": "CrossStage",
+          "durationModel": "G9"
+        }
+      },
+      "compositionViewIds": [
+        "de-bw-gym-math-gk-g9"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99"
+      ]
+    },
+    {
+      "scope": "DE-MV/SekII/G8/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-MV",
+          "stage": "SekII",
+          "durationModel": "G8"
+        }
+      },
+      "compositionViewIds": [
+        "de-mv-gym-sekii-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ]
+    },
+    {
+      "scope": "DE-MV/CrossStage/G8/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-MV",
+          "stage": "CrossStage",
+          "durationModel": "G8"
+        }
+      },
+      "compositionViewIds": [
+        "de-mv-gym-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99"
+      ]
+    },
+    {
+      "scope": "DE-NI/SekII/G9/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-NI",
+          "stage": "SekII",
+          "durationModel": "G9"
+        }
+      },
+      "compositionViewIds": [
+        "de-ni-gym-sekii-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ]
+    },
+    {
+      "scope": "DE-NI/CrossStage/G9/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-NI",
+          "stage": "CrossStage",
+          "durationModel": "G9"
+        }
+      },
+      "compositionViewIds": [
+        "de-ni-gym-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ]
+    },
+    {
+      "scope": "DE-NW/SekII/G9/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-NW",
+          "stage": "SekII",
+          "durationModel": "G9"
+        }
+      },
+      "compositionViewIds": [
+        "de-nw-gym-sekii-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ]
+    },
+    {
+      "scope": "DE-NW/CrossStage/G9/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-NW",
+          "stage": "CrossStage",
+          "durationModel": "G9"
+        }
+      },
+      "compositionViewIds": [
+        "de-nw-gym-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ]
+    },
+    {
+      "scope": "DE-RP/SekII/G8/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-RP",
+          "stage": "SekII",
+          "durationModel": "G8"
+        }
+      },
+      "compositionViewIds": [
+        "de-rp-gym-sekii-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ]
+    },
+    {
+      "scope": "DE-RP/SekII/G9/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-RP",
+          "stage": "SekII",
+          "durationModel": "G9"
+        }
+      },
+      "compositionViewIds": [
+        "de-rp-gym-sekii-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ]
+    },
+    {
+      "scope": "DE-RP/CrossStage/G8/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-RP",
+          "stage": "CrossStage",
+          "durationModel": "G8"
+        }
+      },
+      "compositionViewIds": [
+        "de-rp-gym-math-gk-g8"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99"
+      ]
+    },
+    {
+      "scope": "DE-RP/CrossStage/G9/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-RP",
+          "stage": "CrossStage",
+          "durationModel": "G9"
+        }
+      },
+      "compositionViewIds": [
+        "de-rp-gym-math-gk-g9"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99"
+      ]
+    },
+    {
+      "scope": "DE-SH/SekII/G8/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-SH",
+          "stage": "SekII",
+          "durationModel": "G8"
+        }
+      },
+      "compositionViewIds": [
+        "de-sh-gym-sekii-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9"
+      ]
+    },
+    {
+      "scope": "DE-SH/SekII/G8/LK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "LK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-SH",
+          "stage": "SekII",
+          "durationModel": "G8"
+        }
+      },
+      "compositionViewIds": [
+        "de-sh-gym-sekii-math-lk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9"
+      ]
+    },
+    {
+      "scope": "DE-SH/SekII/G8/GK+LK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK+LK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-SH",
+          "stage": "SekII",
+          "durationModel": "G8"
+        }
+      },
+      "compositionViewIds": [
+        "merged:de-sh-gym-sekii-math-lk+de-sh-gym-sekii-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9"
+      ]
+    },
+    {
+      "scope": "DE-SH/SekII/G9/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-SH",
+          "stage": "SekII",
+          "durationModel": "G9"
+        }
+      },
+      "compositionViewIds": [
+        "de-sh-gym-sekii-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9"
+      ]
+    },
+    {
+      "scope": "DE-SH/SekII/G9/LK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "LK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-SH",
+          "stage": "SekII",
+          "durationModel": "G9"
+        }
+      },
+      "compositionViewIds": [
+        "de-sh-gym-sekii-math-lk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9"
+      ]
+    },
+    {
+      "scope": "DE-SH/SekII/G9/GK+LK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK+LK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-SH",
+          "stage": "SekII",
+          "durationModel": "G9"
+        }
+      },
+      "compositionViewIds": [
+        "merged:de-sh-gym-sekii-math-lk+de-sh-gym-sekii-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9"
+      ]
+    },
+    {
+      "scope": "DE-SH/CrossStage/G8/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-SH",
+          "stage": "CrossStage",
+          "durationModel": "G8"
+        }
+      },
+      "compositionViewIds": [
+        "de-sh-gym-math-gk-g8"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99"
+      ]
+    },
+    {
+      "scope": "DE-SH/CrossStage/G8/LK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "LK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-SH",
+          "stage": "CrossStage",
+          "durationModel": "G8"
+        }
+      },
+      "compositionViewIds": [
+        "de-sh-gym-math-lk-g8"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": []
+    },
+    {
+      "scope": "DE-SH/CrossStage/G8/GK+LK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK+LK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-SH",
+          "stage": "CrossStage",
+          "durationModel": "G8"
+        }
+      },
+      "compositionViewIds": [
+        "merged:de-sh-gym-math-lk-g8+de-sh-gym-math-gk-g8"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": []
+    },
+    {
+      "scope": "DE-SH/CrossStage/G9/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-SH",
+          "stage": "CrossStage",
+          "durationModel": "G9"
+        }
+      },
+      "compositionViewIds": [
+        "de-sh-gym-math-gk-g9"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99"
+      ]
+    },
+    {
+      "scope": "DE-SH/CrossStage/G9/LK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "LK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-SH",
+          "stage": "CrossStage",
+          "durationModel": "G9"
+        }
+      },
+      "compositionViewIds": [
+        "de-sh-gym-math-lk-g9"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": []
+    },
+    {
+      "scope": "DE-SH/CrossStage/G9/GK+LK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK+LK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-SH",
+          "stage": "CrossStage",
+          "durationModel": "G9"
+        }
+      },
+      "compositionViewIds": [
+        "merged:de-sh-gym-math-lk-g9+de-sh-gym-math-gk-g9"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": []
+    },
+    {
+      "scope": "DE-SL/SekII/G9/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-SL",
+          "stage": "SekII",
+          "durationModel": "G9"
+        }
+      },
+      "compositionViewIds": [
+        "de-sl-gym-sekii-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ]
+    },
+    {
+      "scope": "DE-SL/CrossStage/G9/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-SL",
+          "stage": "CrossStage",
+          "durationModel": "G9"
+        }
+      },
+      "compositionViewIds": [
+        "de-sl-gym-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ]
+    },
+    {
+      "scope": "DE-SN/SekII/G8/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-SN",
+          "stage": "SekII",
+          "durationModel": "G8"
+        }
+      },
+      "compositionViewIds": [
+        "de-sn-gym-sekii-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ]
+    },
+    {
+      "scope": "DE-SN/CrossStage/G8/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-SN",
+          "stage": "CrossStage",
+          "durationModel": "G8"
+        }
+      },
+      "compositionViewIds": [
+        "de-sn-gym-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ]
+    },
+    {
+      "scope": "DE-ST/SekII/G8/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-ST",
+          "stage": "SekII",
+          "durationModel": "G8"
+        }
+      },
+      "compositionViewIds": [
+        "de-st-gym-sekii-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ]
+    },
+    {
+      "scope": "DE-ST/CrossStage/G8/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-ST",
+          "stage": "CrossStage",
+          "durationModel": "G8"
+        }
+      },
+      "compositionViewIds": [
+        "de-st-gym-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ]
+    },
+    {
+      "scope": "DE-TH/SekII/G8/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-TH",
+          "stage": "SekII",
+          "durationModel": "G8"
+        }
+      },
+      "compositionViewIds": [
+        "de-th-gym-sekii-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+        "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+        "9023226b-fc17-412b-807c-2bb45cd551d5"
+      ]
+    },
+    {
+      "scope": "DE-TH/CrossStage/G8/GK",
+      "personalCurriculumConfig": {
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {
+          "filterId": "GK",
+          "selected": true
+        },
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+          "selected": true,
+          "filterId": "DE-TH",
+          "stage": "CrossStage",
+          "durationModel": "G8"
+        }
+      },
+      "compositionViewIds": [
+        "de-th-gym-math-gk"
+      ],
+      "examInTargets": false,
+      "goalInTargets": true,
+      "goalUncoveredEndpoint": true,
+      "examEffectiveDirectRequires": null,
+      "examEligibility": {
+        "projectedVisible": false,
+        "examReady": true,
+        "isSelectedProtectedObligation": false,
+        "structurallyAvailable": true,
+        "isContext": false,
+        "isHiddenProtectedSupport": false,
+        "isTarget": false
+      },
+      "examPreparationOutsideTargets": [
+        "fdce0ced-46a0-594a-9b5d-d2dc18e5e473",
+        "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99"
+      ]
+    }
+  ]
+}

@@ -208,6 +208,7 @@ export function applyMathStageScopeRule<T extends View>(
   rule: MathStageScopeRule | undefined,
   stageAnchorId: string,
   crossStage: boolean,
+  semanticKindByGoalId?: ReadonlyMap<string, string>,
 ): { view: T; splitCanonicalGoalIds: string[]; addedAtomicGoalIds: string[]; removedAtomicGoalIds: string[]; relocatedGoalIds: string[] } {
   if (!rule) return { view: input, splitCanonicalGoalIds: [], addedAtomicGoalIds: [], removedAtomicGoalIds: [], relocatedGoalIds: [] }
   const deniedOrdinary = new Set(rule.deniedGoalIds)
@@ -216,7 +217,9 @@ export function applyMathStageScopeRule<T extends View>(
   if (rule.relocateGoalIds.some(id => !additions.has(id))) fail('relocation needs an explicit positive stage target decision')
   for (const id of [...deniedOrdinary, ...additions, ...rule.retainedGoalIds]) {
     const goal = goals.get(id)
-    if (!goal || goal.contains?.length || ['exam', 'memory'].includes(goal.nodeKind ?? '') || goal.examData) fail(`${id} is not an existing ordinary atomic stage contract`)
+    const curricularAtomic = semanticKindByGoalId?.get(id) === 'curricularAtomic'
+    if (!goal || goal.contains?.length || goal.nodeKind === 'memory'
+      || (semanticKindByGoalId ? !curricularAtomic : goal.nodeKind === 'exam' || goal.examData)) fail(`${id} is not an existing ordinary atomic stage contract`)
   }
   for (const id of rule.deniedAssessmentGoalIds ?? []) {
     const goal = goals.get(id)

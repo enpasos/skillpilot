@@ -1,0 +1,152 @@
+{
+  "status": "PASS_INDEPENDENT_MATHEMATICS_AND_LITERAL_DIAGRAM_CHECKS",
+  "checkedAtUTC": "2026-11-04T01:48:44.436874+00:00",
+  "reviewerAgent": "/root/astra_six_math_whole_forms",
+  "checkCount": 28,
+  "checks": [
+    {
+      "check": "de task literal ASCII lengths and endpoints",
+      "result": "PASS",
+      "evidence": "Exactly 5 versus 15 # cells; values100/120. Scale marks at columns11,16,21,26 represent90,100,110,120."
+    },
+    {
+      "check": "de uniform actual scale and baselines",
+      "result": "PASS",
+      "evidence": "10 visits per five cells; all bars start at90, so one cell represents2 visits."
+    },
+    {
+      "check": "de actual corrected zero plot",
+      "result": "PASS",
+      "evidence": "10/12 cells and uniform zero scale encode100/120 with ratio5:6."
+    },
+    {
+      "check": "de stored render HTML preserves actual task diagram",
+      "result": "PASS",
+      "evidence": "Same actual embedded text, no runtime PNG dependency."
+    },
+    {
+      "check": "en task literal ASCII lengths and endpoints",
+      "result": "PASS",
+      "evidence": "Exactly 5 versus 15 # cells; values100/120. Scale marks at columns11,16,21,26 represent90,100,110,120."
+    },
+    {
+      "check": "en uniform actual scale and baselines",
+      "result": "PASS",
+      "evidence": "10 visits per five cells; all bars start at90, so one cell represents2 visits."
+    },
+    {
+      "check": "en actual corrected zero plot",
+      "result": "PASS",
+      "evidence": "10/12 cells and uniform zero scale encode100/120 with ratio5:6."
+    },
+    {
+      "check": "en stored render HTML preserves actual task diagram",
+      "result": "PASS",
+      "evidence": "Same actual embedded text, no runtime PNG dependency."
+    },
+    {
+      "check": "true count ratio and percent",
+      "result": "PASS",
+      "evidence": "100->120 means+20visits,20percent,1.2times; tripling would yield300."
+    },
+    {
+      "check": "truncated-length exaggeration",
+      "result": "PASS",
+      "evidence": "The incorrect3-times visual comparison concerns increments from90, not full values."
+    },
+    {
+      "check": "concrete distinct-people counterexample",
+      "result": "PASS",
+      "evidence": "60people each visiting twice produce120visits; distinct visitors cannot be inferred."
+    },
+    {
+      "check": "bracket equation exact unique root",
+      "result": "PASS",
+      "evidence": "Distributing3 to both terms gives3x-6; unique root11."
+    },
+    {
+      "check": "bracket original substitution check",
+      "result": "PASS",
+      "evidence": "Both original sides equal31."
+    },
+    {
+      "check": "ratio equation exact root on admissible domain",
+      "result": "PASS",
+      "evidence": "On x!=1, denominator-clearing factor2(x-1) is nonzero; transformed equation12=3(x-1) gives5."
+    },
+    {
+      "check": "ratio original substitution and proportional route",
+      "result": "PASS",
+      "evidence": "Numerator3->6 and denominator2->4 preserve the ratio; substitution6/4=3/2."
+    },
+    {
+      "check": "excluded denominator cannot be restored",
+      "result": "PASS",
+      "evidence": "At1 the original expression is undefined; transformed12=0 does not license original division by zero."
+    },
+    {
+      "check": "incorrect distributive step fails original check",
+      "result": "PASS",
+      "evidence": "Wrong expansion3(x-2)=3x-2 yieldsx7; original sides19and23 expose it. A probe checks candidate, not every transformation."
+    },
+    {
+      "check": "finite-set boundary and N convention",
+      "result": "PASS",
+      "evidence": "The inclusion or exclusion of0fromN does not affect this set."
+    },
+    {
+      "check": "real interval boundary membership",
+      "result": "PASS",
+      "evidence": "(-2,3] includes3and2.5, excludes-2; ]-2;3] equivalent convention."
+    },
+    {
+      "check": "finite integer-list counterexample",
+      "result": "PASS",
+      "evidence": "2.5 is one explicit omitted real member; the finite integer list is not P."
+    },
+    {
+      "check": "function exact image and permitted codomains",
+      "result": "PASS",
+      "evidence": "[1,11] exact image; R and any containing real codomain such as[0,infinity) are valid."
+    },
+    {
+      "check": "function value and ordered graph pair",
+      "result": "PASS",
+      "evidence": "f is the varying map, f(2) is5euros for2km, and(2,5)is a graph point; f=5 is not this whole function."
+    },
+    {
+      "check": "invalid natural-number-only codomain counterexample",
+      "result": "PASS",
+      "evidence": "The allowed distance0.25km gives1.5euros, so N is not a valid codomain for the full real input interval."
+    },
+    {
+      "check": "existing whole quadratic exam values",
+      "result": "PASS",
+      "evidence": "Additional full-exam requirements actually include quadratics, manual/digital values and vertex(12,72)."
+    },
+    {
+      "check": "existing whole quadratic exam max deviation",
+      "result": "PASS",
+      "evidence": "The secant54 on[6,18] deviates by18>5, with horizontal comparison levels54/72/80."
+    },
+    {
+      "check": "existing Newton numerical sequence",
+      "result": "PASS",
+      "evidence": "The older whole exam really requires adapting and executing Newton, beyond J8 notation; iterations independently computed."
+    },
+    {
+      "check": "existing Newton bracket and rounding",
+      "result": "PASS",
+      "evidence": "Positive derivative1+1/x on x>0 gives uniqueness; bracket supports rounded1.557 rather than exact1.56."
+    },
+    {
+      "check": "author render reader binding still current",
+      "result": "PASS",
+      "evidence": "Reviewer verified the declared GoalCard source hash. Browser generation remains author execution; reviewer actually viewed4PNGs separately."
+    }
+  ],
+  "authorCodeExecuted": false,
+  "browserRendererExecutedByReviewer": false,
+  "noNewApprovalOfExistingWholeExams": true,
+  "writes": "Private reviewer directory only"
+}

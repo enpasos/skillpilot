@@ -1,0 +1,74 @@
+{
+  "status": "BOUNDED_REVIEWABLE_CI_CHECKOUT_DISK_BUDGET_CANDIDATE_NOT_REMOTE_PASS",
+  "author": "/root/sol_directed_prior_stage_qa",
+  "baselineHead": "047ec7fcb9c5c11c3d90c7524ad8fa4e2ab1eec5",
+  "manifest": {
+    "path": "manifest.json",
+    "sha256": "1b8051092257df782b7ef68f8ff515e12ece08ef08fff02a4b07b2a6009ad9b2",
+    "files": 24
+  },
+  "productDelta": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "beforeSha256": "ed65cd3bbc4371738eafca6205a21747ff94305a32036198706138c1137c7c52",
+      "afterSha256": "4d6884f4313190b8fa2238663dedadbf618816c80705981326e6d23ccc4ed574",
+      "changedFullCheckoutJobs": 3
+    },
+    {
+      "path": ".github/workflows/docs_checks.yml",
+      "beforeSha256": "556e12668c506085e54818db368333faa8e64429c0c283abf33639061b4044df",
+      "afterSha256": "570ab663440bcd436fa44bdfca5871b1f5e3d2a705ad02c625d7b2f424581abe",
+      "changedFullCheckoutJobs": 1
+    }
+  ],
+  "patch": {
+    "path": "finite-workflow.patch",
+    "sha256": "aaaa81d498663f492f313c224bb945c68ca7ab5b75f08adfe28dc782d6f272a4"
+  },
+  "actualFailure": {
+    "jobId": 126339281130,
+    "runId": 41756241901,
+    "url": "https://github.com/enpasos/skillpilot/actions/runs/41756241901/job/126339281130",
+    "classification": "ENOSPC in runner worker diagnostic write during complete checkout; old cleanup succeeded; tests never ran"
+  },
+  "localChecks": {
+    "status": "PASS_LOCAL_CANDIDATE_YAML_BASH_AND_EXISTING_WORKFLOW_REGRESSIONS_ONLY",
+    "existingWorkflowRegressionTests": 12,
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0,
+    "yamlWorkflowFiles": 2,
+    "targetJobs": 4,
+    "bashSyntaxFragments": 8,
+    "cleanupCommandsExecutedLocally": false,
+    "rootWorkflowBytesStillEqualBaseline": true,
+    "remoteCIPassClaimed": false
+  },
+  "preserved": [
+    "Complete repository and all curriculum/QA history/test inputs",
+    "All pre-existing later job steps and every other job",
+    "GitHub-hosted pre-cleanup guard and explicit Linux guard",
+    "System Java/JDKs and all Java* toolcache entries",
+    "Python toolcache/system build tools",
+    "Existing exact Node/Corretto setup",
+    "Runner labels and shared goal-book producer/consumer image choice"
+  ],
+  "diagnostics": "df -h and df -i before/after cleanup and after checkout; actual .git size after checkout",
+  "budget": {
+    "beforeCheckoutGiB": 66,
+    "roundedWorktreeGiB": 43,
+    "gitReserveGiB": 15,
+    "dependencyBuildReserveGiB": 8,
+    "afterCheckoutMinimumFreeGiB": 8,
+    "limit": "Budget reservations are explicit guards, not observed hosted runner capacity or measured remote shallow transfer size."
+  },
+  "boundaries": [
+    "No cleanup/prune/delete command executed locally or in production.",
+    "No root/Git writes or push by this agent.",
+    "Actual shallow transport size, reclaimed runner capacity and later job footprint remain unmeasured.",
+    "66 GiB preflight and 8 GiB post-checkout reserve are explicit budget assumptions, not GitHub capacity guarantees.",
+    "A real remote run is required; insufficient cleanup capacity must fail at the preflight with a clear message.",
+    "Inode availability is diagnosed, not guaranteed by a new inferred inode threshold."
+  ],
+  "reviewAndNextStep": "Root reviews/imports the exact two-workflow patch, handles Git/push, then checks a fresh real remote run. Four content forms and HE author packages are untouched."
+}

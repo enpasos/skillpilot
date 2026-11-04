@@ -1,0 +1,197 @@
+{
+  "status": "AUTHOR_MATHEMATICS_CHECKS_PASS_NOT_INDEPENDENT_APPROVAL",
+  "checks": [
+    {
+      "check": "Binomial ratio identity on 0<p<1",
+      "result": "PASS",
+      "evidence": "p=r/(1+r), r>0 parametrises precisely 0<p<1; symbolic difference is zero."
+    },
+    {
+      "check": "Fixed-p fourfold-n relationship",
+      "result": "PASS",
+      "evidence": "v(4n,p)=v(n,p)/2 for n>0 and 0<p<1."
+    },
+    {
+      "check": "Fixed-p strictly decreasing sequence",
+      "result": "PASS",
+      "evidence": "General exact reasoning: positive constant times 1/sqrt(n); sampled integer boundaries also checked."
+    },
+    {
+      "check": "Binomial numerical examples",
+      "result": "PASS",
+      "evidence": [
+        {
+          "n": 100,
+          "p": 0.2,
+          "mu": 20.0,
+          "sigma": 4.0,
+          "cv": 0.2
+        },
+        {
+          "n": 400,
+          "p": 0.2,
+          "mu": 80.0,
+          "sigma": 8.0,
+          "cv": 0.1
+        },
+        {
+          "n": 100,
+          "p": 0.5,
+          "mu": 50.0,
+          "sigma": 5.0,
+          "cv": 0.1
+        },
+        {
+          "n": 400,
+          "p": 0.01,
+          "mu": 4.0,
+          "sigma": 1.98997487421324,
+          "cv": 0.49749371855331
+        }
+      ]
+    },
+    {
+      "check": "Binomial exact minimal integer",
+      "result": "PASS",
+      "evidence": "v²=4/n; n=1600 meets 0.05, n=1599 exceeds it, and sequence strictly decreases."
+    },
+    {
+      "check": "Changing-p counterexample valid",
+      "result": "PASS",
+      "evidence": "n 100->400 while p .5->.01 increases CV .1->.49749; all parameters stay within original domain."
+    },
+    {
+      "check": "Exponential all displayed probability rounding",
+      "result": "PASS",
+      "evidence": {
+        "interval_2_3": 0.13416410697161874,
+        "at_most_2": 0.3934693402873666,
+        "interval_2_6": 0.38340049956420363,
+        "conditional_extra_3": 0.47236655274101474,
+        "tail_4": 0.36787944117144233,
+        "t90": 9.210340371976184
+      }
+    },
+    {
+      "check": "Exponential memorylessness exact",
+      "result": "PASS",
+      "evidence": "Exact survival-ratio identity for nonnegative elapsed/additional times."
+    },
+    {
+      "check": "Exponential quantile exact",
+      "result": "PASS",
+      "evidence": "t90=4 ln10, substituted into CDF gives exactly .9."
+    },
+    {
+      "check": "DG2 correct candidate full equation and IC",
+      "result": "PASS",
+      "evidence": "u=2cos(2t), u prime=-4sin(2t), u double prime=-8cos(2t)."
+    },
+    {
+      "check": "DG2 wrong candidates have exact counterexamples",
+      "result": "PASS",
+      "evidence": "v meets both IC but violates equation; w violates equation and initial velocity."
+    },
+    {
+      "check": "DG2 qualitative values and velocity distinction",
+      "result": "PASS",
+      "evidence": "At equilibrium crossing y=0 but velocity=-4; acceleration=0. At t=0 turning point: y=2, velocity=0, acceleration=-8."
+    },
+    {
+      "check": "DG2 second periodic model and periods",
+      "result": "PASS",
+      "evidence": "Cosine fundamental periods are pi and 2pi/3; amplitude 2 and 1 respectively."
+    },
+    {
+      "check": "Numerical decision table accuracy and robust signs",
+      "result": "PASS",
+      "evidence": [
+        {
+          "x": 1,
+          "exactFloatEvaluation": -0.2817181715409549,
+          "table": -0.2817182,
+          "absoluteDifference": 2.8459045064987976e-08
+        },
+        {
+          "x": 2,
+          "exactFloatEvaluation": 5.38905609893065,
+          "table": 5.3890561,
+          "absoluteDifference": 1.0693499419289765e-09
+        },
+        {
+          "x": 1.5,
+          "exactFloatEvaluation": 1.9816890703380645,
+          "table": 1.9816891,
+          "absoluteDifference": 2.966193557440988e-08
+        },
+        {
+          "x": 1.25,
+          "exactFloatEvaluation": 0.7403429574618414,
+          "table": 0.740343,
+          "absoluteDifference": 4.253815855115306e-08
+        },
+        {
+          "x": 1.073,
+          "exactFloatEvaluation": -0.0028612291862697425,
+          "table": -0.0028612,
+          "absoluteDifference": 2.9186269742600274e-08
+        },
+        {
+          "x": 1.074,
+          "exactFloatEvaluation": 0.0010643721414087537,
+          "table": 0.0010644,
+          "absoluteDifference": 2.7858591246376907e-08
+        },
+        {
+          "x": 1.0737,
+          "exactFloatEvaluation": -0.00011361546550814339,
+          "table": -0.0001136,
+          "absoluteDifference": 1.5465508143390743e-08
+        },
+        {
+          "x": 1.0738,
+          "exactFloatEvaluation": 0.00027901780436501156,
+          "table": 0.000279,
+          "absoluteDifference": 1.7804365011551537e-08
+        }
+      ]
+    },
+    {
+      "check": "Bisection first two updates",
+      "result": "PASS",
+      "evidence": "[1,2]->[1,1.5]->[1,1.25]; remaining bracket is not falsely claimed as a result of unperformed steps."
+    },
+    {
+      "check": "Decision original bracket and error exact",
+      "result": "PASS",
+      "evidence": {
+        "rootHighPrecision": "1.073728937556499087093144117162093945482",
+        "bracket": [
+          "1.073",
+          "1.074"
+        ],
+        "midpoint": "1.0735",
+        "errorBound": "0.0005",
+        "actualError": 0.0002289375564992202
+      }
+    },
+    {
+      "check": "Decision revised bracket and error exact",
+      "result": "PASS",
+      "evidence": {
+        "bracket": [
+          "1.0737",
+          "1.0738"
+        ],
+        "midpoint": "1.07375",
+        "errorBound": "0.00005",
+        "actualError": 2.106244350086328e-05
+      }
+    },
+    {
+      "check": "Decision long displayed solver value is numerically plausible",
+      "result": "PASS",
+      "evidence": "Displayed digits closely approximate root, but the task correctly distinguishes a plausible value from a documented error certificate."
+    }
+  ]
+}

@@ -1,0 +1,903 @@
+{
+  "currentGoal": {
+    "id": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+    "title": "Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)",
+    "titleEn": "Compute relative dispersion of binomial distributions (advanced course)",
+    "description": "Die lernende Person kann die relative Streuung (Variationskoeffizient) $\\sigma/\\mu$ einer Binomialverteilung mit $n\\ge 1$ und $0<p<1$ berechnen und zeigen, dass sie bei festem $p$ mit wachsendem $n$ abnimmt (z. B. $\\sigma/\\mu = \\sqrt{\\frac{1-p}{n\\,p}}$).",
+    "descriptionEn": "The learner can compute the relative dispersion (coefficient of variation) $\\sigma/\\mu$ of a binomial distribution with $n\\ge 1$ and $0<p<1$ and show that for fixed $p$ it decreases as $n$ grows (e.g. $\\sigma/\\mu = \\sqrt{\\frac{1-p}{n\\,p}}$).",
+    "weight": 1,
+    "tags": [
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024",
+      "demandLevel": "AB3",
+      "processCompetencies": [
+        "K2.3",
+        "K3.3"
+      ],
+      "guidingIdeas": [
+        "L4",
+        "L5"
+      ],
+      "phase": "Q3"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+        "title": "Visualisierung: Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)",
+        "url": "/assets/goal-visualizations/mathematik/5b54f272-f588-5009-8b42-eb15f846d3e2/5b54f272-f588-5009-8b42-eb15f846d3e2.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK).",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)\". Die lernende Person kann die relative Streuung (Variationskoeffizient) $\\sigma/\\mu$ einer Binomialverteilung mit $n\\ge 1$ und $0<p<1$ berechnen und zeigen, dass sie bei festem $p$ mit wachsendem $n$ abnimmt (z. B. $\\sigma/\\mu = \\sqrt{\\frac{1-p}{n\\,p}}$).",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "parents": [
+    {
+      "id": "67ef9787-d540-5f30-9995-f1f9c39a1a45",
+      "title": "Wahrscheinlichkeitsverteilungen (Überblick)",
+      "titleEn": "Q3.2 Probability Distributions (Overview)",
+      "description": "Clusterknoten für Q3.2 Wahrscheinlichkeitsverteilungen: Zufallsgrößen, diskrete Wahrscheinlichkeitsverteilungen mit Histogrammen und Kenngrößen, Bernoulli-Ketten, binomialverteilte Zufallsgrößen einschließlich kumulierter Wahrscheinlichkeiten sowie im Leistungskurs normalverteilte Zufallsgrößen mit Dichte- und Verteilungsfunktion.",
+      "descriptionEn": "Cluster node for Q3.2 probability distributions: random variables, discrete probability distributions with histograms and characteristic values, Bernoulli chains, binomially distributed random variables including cumulative probabilities, and in the advanced course normally distributed random variables with density and distribution functions.",
+      "weight": 22,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+        "d711bc18-c27c-4739-8289-edac53dc8ba3",
+        "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+        "42d300e3-e982-5889-98d7-fc297f10eff1",
+        "34735a1a-c9d9-5378-805e-b48f9c2d947f",
+        "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+        "187c1bef-57bc-4a93-a26b-04191879626c",
+        "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+        "5b54f272-f588-5009-8b42-eb15f846d3e2",
+        "66f432e9-22d3-51a9-8787-35f91db30616",
+        "c92133c6-d5de-4902-936c-321915cf21e9",
+        "b431148b-526c-4bde-b04b-48d23101d0d3",
+        "7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+        "fd13605e-21d9-523f-bcf4-6824b6cc09e5",
+        "3d9530ef-8355-59fc-b8c1-afe42cf9e888"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K3.3",
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "cluster",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47"
+    }
+  ],
+  "requiresClosureObjects": [
+    {
+      "id": "3019e775-1420-510f-850b-5a29acc47a64",
+      "shortKey": "canonical_math_q3_describe_random_experiments_outcomes_events",
+      "title": "Zufallsexperimente mit Ergebnissen und Ereignissen beschreiben",
+      "titleEn": "Describe random experiments using outcomes and events",
+      "description": "Die lernende Person kann ein Zufallsexperiment durch mögliche Ergebnisse, die Ergebnismenge und geeignete Ereignisse eindeutig beschreiben.",
+      "descriptionEn": "The learner can describe a random experiment unambiguously using possible outcomes, the sample space, and suitable events.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2.1",
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.1, S. 46, Spiegelstrich 2",
+      "requires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "contains": [],
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "3019e775-1420-510f-850b-5a29acc47a64",
+          "title": "Visualisierung: Zufallsexperimente mit Ergebnissen und Ereignissen beschreiben",
+          "url": "/assets/goal-visualizations/mathematik/3019e775-1420-510f-850b-5a29acc47a64/3019e775-1420-510f-850b-5a29acc47a64.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Zufallsexperimente mit Ergebnissen und Ereignissen beschreiben.",
+          "altText": "Ein schematischer Würfel zeigt oben die 3 als einzelnes Ergebnis. Daneben stehen die Ergebnismenge Ω = {1, 2, 3, 4, 5, 6} und das Ereignis E der geraden Zahlen mit E = {2, 4, 6}. In der Ergebnismenge sind 2, 4 und 6 markiert, die 3 nicht; das gezeigte Ergebnis gehört nicht zu E.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+      "semanticKind": "orientation",
+      "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+      "titleEn": "Why Mathematics? – Thinking, Patterns & Future",
+      "description": "Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+      "descriptionEn": "The 'Big Picture' intro: How algorithms power your smartphone, how data becomes decisions (medicine, climate), why models make growth and risks visible, and why mathematical thinking structures problem solving. Overview of the relevance of topics from calculus to stochastics for your life.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Motivation",
+        "Orientation",
+        "canonical"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "treeOrder": 1,
+        "orientationOutlook": {
+          "paths": [
+            {
+              "id": "change-and-models",
+              "title": "Veränderung, Wachstum und Modelle",
+              "titleEn": "Change, growth and models",
+              "learningOutlook": "Du lernst, Funktionen in verschiedenen Darstellungen zu lesen, Änderungsraten und Integrale zu deuten und mit Differenzialgleichungen sowie Parametern reale Entwicklungen zu modellieren.",
+              "learningOutlookEn": "You learn to read functions in different representations, interpret rates of change and integrals, and model real developments with differential equations and parameters.",
+              "practicalContexts": [
+                "Wachstum, Klima, Epidemien und wirtschaftliche Entwicklungen modellieren",
+                "Bewegungen, Verbräuche und optimale Entscheidungen untersuchen",
+                "Algorithmen, Datenmodelle und Vorhersagen in Smartphone und KI besser verstehen"
+              ],
+              "practicalContextsEn": [
+                "Modelling growth, climate, epidemics and economic developments",
+                "Investigating motion, consumption and optimal decisions",
+                "Understanding algorithms, data models and predictions in smartphones and AI"
+              ],
+              "subtreeRootIds": [
+                "a668ea17-9226-4074-8f8e-051acbe839eb",
+                "c8951a07-a3e7-59d2-8a23-dce545dd811a",
+                "6c8a677b-ede8-5c2c-86d8-0ef0be8ace28"
+              ],
+              "entryGoalIds": [
+                "8dd9f210-2683-5902-acab-e3be22725232",
+                "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+                "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+              ],
+              "milestoneGoalIds": [
+                "8dd9f210-2683-5902-acab-e3be22725232",
+                "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+                "5fe4218e-4fb0-5339-8764-c989befa244e",
+                "993a14e8-60f0-5764-9340-b2447a5fa84b"
+              ]
+            },
+            {
+              "id": "space-and-linear-algebra",
+              "title": "Räume, Vektoren und lineare Abbildungen",
+              "titleEn": "Space, vectors and linear transformations",
+              "learningOutlook": "Du lernst, Punkte, Geraden und Ebenen mit Vektoren zu beschreiben, Winkel und Abstände zu bestimmen und geometrische Veränderungen mit Matrizen und Projektionen zu verstehen.",
+              "learningOutlookEn": "You learn to describe points, lines and planes with vectors, determine angles and distances, and understand geometric change with matrices and projections.",
+              "practicalContexts": [
+                "Navigation, Robotik und Bewegungen im Raum",
+                "3D-Grafik, Bildverarbeitung und technische Konstruktion",
+                "Architektur, Vermessung und räumliche Modellierung"
+              ],
+              "practicalContextsEn": [
+                "Navigation, robotics and motion in space",
+                "3D graphics, image processing and technical construction",
+                "Architecture, surveying and spatial modelling"
+              ],
+              "subtreeRootIds": [
+                "98dcf9bd-d119-5eb1-835c-7d719f67b485"
+              ],
+              "entryGoalIds": [
+                "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+              ],
+              "milestoneGoalIds": [
+                "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+                "9460c3ff-e72d-4107-bc73-087d217200aa",
+                "bd3576b8-f4e5-542a-a8a2-74524d9cee21"
+              ]
+            },
+            {
+              "id": "data-and-decisions",
+              "title": "Daten, Zufall und begründete Entscheidungen",
+              "titleEn": "Data, chance and evidence-based decisions",
+              "learningOutlook": "Du lernst, Daten aufzubereiten, Zufallsmodelle und Verteilungen zu nutzen und mit Hypothesentests sowie Konfidenzintervallen die Aussagekraft von Ergebnissen kritisch einzuschätzen.",
+              "learningOutlookEn": "You learn to prepare data, use random models and distributions, and critically assess evidence with hypothesis tests and confidence intervals.",
+              "practicalContexts": [
+                "Medizinische Tests und Studienergebnisse beurteilen",
+                "Risiken, Qualitätskontrollen und Prognosen einordnen",
+                "Umfragen, A/B-Tests und datenbasierte Entscheidungen kritisch prüfen"
+              ],
+              "practicalContextsEn": [
+                "Assessing medical tests and study results",
+                "Interpreting risks, quality controls and forecasts",
+                "Critically checking surveys, A/B tests and data-driven decisions"
+              ],
+              "subtreeRootIds": [
+                "3e937f39-1187-58b3-96c3-ec39278c0e3c"
+              ],
+              "entryGoalIds": [
+                "508292f2-671b-4fd3-acbf-53d705e44693"
+              ],
+              "milestoneGoalIds": [
+                "83a5546e-0ea6-576e-83e2-3387b30872bb",
+                "e495fa38-b198-5280-a405-9e41cafd6d17",
+                "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+                "5c9ac68c-3928-518c-bbe0-e044667035a6"
+              ]
+            }
+          ]
+        }
+      },
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K3"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        "phase": "E"
+      },
+      "shortKey": "canonical_math_why",
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "title": "Visualisierung: Warum Mathematik? – Denken, Muster & Zukunft",
+          "url": "/assets/goal-visualizations/mathematik/71cec9fb-3751-4d61-8b34-c5adbbf6e5f2/71cec9fb-3751-4d61-8b34-c5adbbf6e5f2.jpg",
+          "provider": "Google Gemini / Nano Banana Pro",
+          "description": "Visualisierung zum Lernziel: Warum Mathematik? – Denken, Muster & Zukunft.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Warum Mathematik? – Denken, Muster & Zukunft\". Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+      "title": "Kenngrößen binomialverteilter Zufallsgrößen",
+      "titleEn": "Characteristic values of binomially distributed random variables",
+      "description": "Die lernende Person kann für binomialverteilte Zufallsgrößen Erwartungswert, Varianz und Standardabweichung berechnen und diese mit der zugrunde liegenden Bernoulli-Situation in Beziehung setzen.",
+      "descriptionEn": "The learner can calculate expected value, variance, and standard deviation for binomial distributed random variables and relate them to the underlying Bernoulli situation.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "e495fa38-b198-5280-a405-9e41cafd6d17"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1.2",
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47, Spiegelstrich 3",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+          "title": "Visualisierung: Kenngrößen binomialverteilter Zufallsgrößen",
+          "url": "/assets/goal-visualizations/mathematik/7d41b805-0fd8-5ac3-980d-79112a27c1b4/7d41b805-0fd8-5ac3-980d-79112a27c1b4.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Visualisierung zum Lernziel: Kenngrößen binomialverteilter Zufallsgrößen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Kenngrößen binomialverteilter Zufallsgrößen\". Die lernende Person kann für binomialverteilte Zufallsgrößen Erwartungswert, Varianz und Standardabweichung berechnen und diese mit der zugrunde liegenden Bernoulli-Situation in Beziehung setzen.",
+          "lang": "de",
+          "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "e495fa38-b198-5280-a405-9e41cafd6d17",
+      "shortKey": "canonical_math_q3_identify_bernoulli_experiments_chains_parameters",
+      "title": "Bernoulli-Experimente und -Ketten identifizieren und parametrisieren",
+      "titleEn": "Identify and parameterise Bernoulli experiments and chains",
+      "description": "Die lernende Person kann Bernoulli-Experimente und Bernoulli-Ketten anhand ihrer Voraussetzungen identifizieren und Länge $n$ sowie Trefferwahrscheinlichkeit $p$ aus dem Kontext angeben.",
+      "descriptionEn": "The learner can identify Bernoulli experiments and Bernoulli chains from their assumptions and determine the length $n$ and success probability $p$ from context.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K3.3"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47, Spiegelstrich 2",
+      "requires": [
+        "3019e775-1420-510f-850b-5a29acc47a64"
+      ],
+      "contains": [],
+      "type": "atomic",
+      "semanticAtomic": true,
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "e495fa38-b198-5280-a405-9e41cafd6d17",
+          "title": "Visualisierung: Bernoulli-Experimente und -Ketten identifizieren und parametrisieren",
+          "url": "/assets/goal-visualizations/mathematik/e495fa38-b198-5280-a405-9e41cafd6d17/e495fa38-b198-5280-a405-9e41cafd6d17.png",
+          "provider": "ChatGPT/Codex imagegen (model/version not exposed)",
+          "description": "Visualisierung zum Lernziel: Bernoulli-Experimente und -Ketten identifizieren und parametrisieren.",
+          "altText": "Vier unabhängige Münzwürfe als Bernoulli-Kette mit n = 4; beim fairen Einzelwurf ist p(Kopf) = 1/2.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    }
+  ],
+  "allContainsAncestorObjects": [
+    {
+      "id": "213c3e11-3e8d-4db7-a04e-3a05c13304a5",
+      "shortKey": "canonical_math_sek2_stochastics_inference",
+      "title": "Stochastik, Tests und Statistik (Sek II)",
+      "titleEn": "Stochastics, Tests, and Statistics (Upper Secondary)",
+      "description": "Cluster für den stochastischen Oberstufenkorridor in Q3. Die sichtbare Oberfläche bündelt Grundlagen der Stochastik mit späteren Inferenzpaketen zu Binomialmodellen, Hypothesentests sowie Prognose- und Konfidenzintervallen; die Normalapproximation bleibt als explizite LK-Brücke markiert.",
+      "descriptionEn": "Cluster for the upper-secondary stochastics corridor in Q3. Its visible surface bundles stochastic foundations with later inference packages for binomial models, hypothesis tests, and prediction and confidence intervals; normal approximation remains marked as an explicit advanced-course bridge.",
+      "core": true,
+      "weight": 77,
+      "tags": [
+        "canonical",
+        "phase:SekII",
+        "area:Stochastics"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K2",
+          "K3",
+          "K4",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "GLOBAL",
+        "area": "Stochastics",
+        "topicCode": "CANONICAL.MATH.SEK2.STOCHASTICS.INFERENCE"
+      },
+      "contains": [
+        "31cbe2ae-67be-4b2e-9276-4f81fbfb6d96",
+        "0f8fc8bc-3a9e-49a3-8afb-b125b571af97",
+        "ce774aad-edd7-4f86-a431-6ca921b8e570",
+        "6fd35cc4-c375-4e58-b6f1-5382d8422906",
+        "a5ead83b-4893-5076-be1d-ded8de4ef2a7",
+        "4af3fe2f-851c-520a-9a1d-b8036ac1dbb1",
+        "35e14223-54fc-5ec1-ae73-ac9f13b07db2"
+      ],
+      "requires": [],
+      "competencyRefs": [
+        "PROCESS.K2",
+        "PROCESS.K3",
+        "PROCESS.K4",
+        "PROCESS.K6"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "treeOrder": 14
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "3e937f39-1187-58b3-96c3-ec39278c0e3c",
+      "title": "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+      "titleEn": "Probability Distributions, Hypothesis Tests and Statistics",
+      "description": "Zusammenfassender Cluster für Grundlagen der Stochastik, Wahrscheinlichkeitsverteilungen, Hypothesentests, Prognose- und Konfidenzintervalle sowie Statistik.",
+      "descriptionEn": "Summarizing cluster for basic stochastics, probability distributions, hypothesis tests, prediction and confidence intervals, and statistics.",
+      "weight": 86,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "213c3e11-3e8d-4db7-a04e-3a05c13304a5",
+        "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+        "f24096c6-6ca0-5c15-a2f5-7bdaec789a8d"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2",
+          "K3",
+          "K4",
+          "K6"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "treeOrder": 12
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "67ef9787-d540-5f30-9995-f1f9c39a1a45",
+      "title": "Wahrscheinlichkeitsverteilungen (Überblick)",
+      "titleEn": "Q3.2 Probability Distributions (Overview)",
+      "description": "Clusterknoten für Q3.2 Wahrscheinlichkeitsverteilungen: Zufallsgrößen, diskrete Wahrscheinlichkeitsverteilungen mit Histogrammen und Kenngrößen, Bernoulli-Ketten, binomialverteilte Zufallsgrößen einschließlich kumulierter Wahrscheinlichkeiten sowie im Leistungskurs normalverteilte Zufallsgrößen mit Dichte- und Verteilungsfunktion.",
+      "descriptionEn": "Cluster node for Q3.2 probability distributions: random variables, discrete probability distributions with histograms and characteristic values, Bernoulli chains, binomially distributed random variables including cumulative probabilities, and in the advanced course normally distributed random variables with density and distribution functions.",
+      "weight": 22,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [
+        "da95ab35-bac2-54f2-b38f-8b612cde8b54",
+        "d711bc18-c27c-4739-8289-edac53dc8ba3",
+        "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+        "42d300e3-e982-5889-98d7-fc297f10eff1",
+        "34735a1a-c9d9-5378-805e-b48f9c2d947f",
+        "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+        "187c1bef-57bc-4a93-a26b-04191879626c",
+        "7d41b805-0fd8-5ac3-980d-79112a27c1b4",
+        "5b54f272-f588-5009-8b42-eb15f846d3e2",
+        "66f432e9-22d3-51a9-8787-35f91db30616",
+        "c92133c6-d5de-4902-936c-321915cf21e9",
+        "b431148b-526c-4bde-b04b-48d23101d0d3",
+        "7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+        "fd13605e-21d9-523f-bcf4-6824b6cc09e5",
+        "3d9530ef-8355-59fc-b8c1-afe42cf9e888"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K2.2",
+          "K3.3",
+          "K4.2"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "cluster",
+      "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47"
+    },
+    {
+      "id": "6fd35cc4-c375-4e58-b6f1-5382d8422906",
+      "shortKey": "canonical_math_sek2_probability_distributions",
+      "title": "Wahrscheinlichkeiten und Verteilungen (Sek II)",
+      "titleEn": "Probabilities and Distributions (Upper Secondary)",
+      "description": "Cluster für einen grundlegenden stochastischen Oberstufenkorridor in Q3. Der Korridor verbindet Grundbegriffe und Methoden der Stochastik mit Wahrscheinlichkeitsverteilungen und ist zusätzlich an den Phasenanker Q3 angebunden.",
+      "descriptionEn": "Cluster for a foundational upper-secondary stochastics corridor in Q3. The corridor connects basic concepts and methods of stochastics with probability distributions and is additionally attached to the phase anchor Q3.",
+      "core": true,
+      "weight": 45,
+      "tags": [
+        "canonical",
+        "phase:SekII",
+        "area:Stochastics"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1",
+          "K2",
+          "K3",
+          "K4"
+        ],
+        "guidingIdeas": [
+          "L4",
+          "L5"
+        ],
+        "phase": "GLOBAL",
+        "area": "Stochastics",
+        "topicCode": "CANONICAL.MATH.SEK2.PROBABILITY.DISTRIBUTIONS"
+      },
+      "contains": [
+        "dd550132-2a3f-5b4e-a3c6-f940621186ac",
+        "67ef9787-d540-5f30-9995-f1f9c39a1a45"
+      ],
+      "requires": [],
+      "competencyRefs": [
+        "PROCESS.K1",
+        "PROCESS.K2",
+        "PROCESS.K3",
+        "PROCESS.K4"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "treeOrder": 14
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "c01b1ce9-a667-4a46-b251-ec33ae602b15",
+      "shortKey": "canonical_math_module",
+      "title": "Mathematik",
+      "titleEn": "Mathematics",
+      "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die Baseline bündelt einen kanonischen Mathematik-Graphen über Sekundarstufe I und II mit Jahrgangsankern, fachlichen Korridoren und anschlussfähigen Oberstufenzielen.",
+      "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The baseline bundles one canonical mathematics graph across lower and upper secondary with year anchors, content corridors, and upper-secondary continuation goals.",
+      "core": true,
+      "weight": 991,
+      "tags": [
+        "root",
+        "canonical",
+        "subject:mathematics",
+        "GK",
+        "LK"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "K1",
+          "K3",
+          "K4",
+          "K5"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.MATH"
+      },
+      "contains": [
+        "65365dce-f33f-49d8-9516-42f75883aa86",
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "6377e1e3-8c26-4cf1-997d-8802690d74dd",
+        "8f7bb79b-f014-4bb6-8dce-7e3f1c92e893",
+        "5a7095a2-2b3a-48bf-9536-eca79ee5ff8c",
+        "d64516eb-9dd2-4808-91d0-0040ccdc281f",
+        "902de188-6f27-47c2-ace1-9b2c5771fde8",
+        "845f2a2c-e6aa-4991-8a12-645b8a9f70fe",
+        "5c6b7342-0f67-4b4c-894d-fd83a6df64b3",
+        "88f8e185-a89b-4a34-869d-766042977f38",
+        "f7b11173-f99b-4a65-b6a7-c53c1220ccbb",
+        "86862fe1-d1cc-40b6-b250-0858df508abc",
+        "a569561a-49bf-4426-b1d0-7edd8554c2a3",
+        "8e68f24a-8b0e-4ce6-9567-a49e706f83be",
+        "a66c8d6d-8f3c-4e15-855a-019186e5eee4",
+        "6c16599a-b61f-414f-a55a-79efada9c8f5",
+        "3823e90d-a34b-46d2-a0f8-3168138d3a95",
+        "ecce03e4-0082-41e1-95bd-0244e76ed292",
+        "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+        "9710e996-f6d0-4b8b-b893-592213c91767",
+        "0756b198-0074-49d5-becd-9bb9f161a291",
+        "728db43c-cf11-4fb6-b1dc-27e76573bcfc",
+        "ed631938-ad77-405e-ac25-b06d750b9c05",
+        "6e28d5ad-5f18-4a26-8a9e-9ea7e50b0fbb",
+        "8034d078-facf-450c-bed6-b00b9a94f07d",
+        "4eefbd04-9e49-41ea-a087-9ad6ac71ec5a",
+        "a668ea17-9226-4074-8f8e-051acbe839eb",
+        "c8951a07-a3e7-59d2-8a23-dce545dd811a",
+        "98dcf9bd-d119-5eb1-835c-7d719f67b485",
+        "3e937f39-1187-58b3-96c3-ec39278c0e3c",
+        "6c8a677b-ede8-5c2c-86d8-0ef0be8ace28",
+        "464a6024-a2f8-53b4-84e0-d7b9df22a0b1",
+        "9ad83149-3cb7-5b87-a617-3eae3715a50c",
+        "320bc921-06df-4500-96fd-93f9f6fee9b4",
+        "967d1863-1b9b-4798-8a35-ae4e9760e322",
+        "c6536bfb-e658-5bf5-b207-7caeca98632c",
+        "010c133c-dcf1-5530-8305-61bc638017bc",
+        "f5d06f11-1938-5172-a1c5-73fff4a1b65f",
+        "6185792f-3024-59be-a3ff-de98589ae2c6",
+        "6d1eacae-e3c1-59b5-b4ae-1eb68441b95f",
+        "7a6f1e6d-a9b9-5a70-836b-8718648d3904",
+        "002dae37-e209-531c-b87c-719124b6bb4a",
+        "aa56cd8e-232e-5c16-bd9b-7ccdbe67c22a"
+      ],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "cluster"
+    }
+  ],
+  "ancestorRequiresSummary": [
+    {
+      "id": "213c3e11-3e8d-4db7-a04e-3a05c13304a5",
+      "title": "Stochastik, Tests und Statistik (Sek II)",
+      "requires": []
+    },
+    {
+      "id": "3e937f39-1187-58b3-96c3-ec39278c0e3c",
+      "title": "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+      "requires": []
+    },
+    {
+      "id": "67ef9787-d540-5f30-9995-f1f9c39a1a45",
+      "title": "Wahrscheinlichkeitsverteilungen (Überblick)",
+      "requires": []
+    },
+    {
+      "id": "6fd35cc4-c375-4e58-b6f1-5382d8422906",
+      "title": "Wahrscheinlichkeiten und Verteilungen (Sek II)",
+      "requires": []
+    },
+    {
+      "id": "c01b1ce9-a667-4a46-b251-ec33ae602b15",
+      "title": "Mathematik",
+      "requires": []
+    }
+  ]
+}

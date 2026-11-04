@@ -1,0 +1,98 @@
+{
+  "status": "AUTHOR_EXISTING_CONTEXT_INSPECTION_NOT_NEW_SOURCE_APPROVAL",
+  "explicitReuseInspection": {
+    "authoritativeCanonicalExamDataObjectsInspected": 195,
+    "existingExplicitCoveredGoalHits": [],
+    "directExistingExamPreparationRouteHits": [],
+    "productiveAssessmentTaskAndContractIdSearch": "No corresponding productive task/execution contract artifact found by the exact four stable IDs; reviewed broad/context references are not promoted into complete coverage.",
+    "reuseConclusion": "No current explicit complete assessment form for the four identities was established, so author complete same-identity forms."
+  },
+  "finiteOriginalGoalBindings": [
+    {
+      "goalId": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+      "sha256CanonicalJSON": "a8954014cfe93750c5225060e4ca8acceecbc2b75564eed1fdf813a84b5b743e"
+    },
+    {
+      "goalId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+      "sha256CanonicalJSON": "66acaabbfe2f99a1b0987d4d21a6d7c882800aada86bbf370dc9db1948794dbd"
+    },
+    {
+      "goalId": "58fda9b4-4336-5594-99ce-722c4a453372",
+      "sha256CanonicalJSON": "e35df98e1255ed4665b3a3020c51b0cfeb61a3213e20c6b86b3886e916e49916"
+    },
+    {
+      "goalId": "619f29f5-7f44-5654-9692-01b250997d52",
+      "sha256CanonicalJSON": "0a32418e2864574de95c4def760c6001876d4c0281f84c892ab20695732fbeb7"
+    }
+  ],
+  "existingSourceRows": {
+    "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_math_upper_secondary_to_canonical_math.json": {
+      "sha256AtInspection": "f561cd0aa1c4a453d2d5d9c47a352f3c224e856a52df335dcab2201a9de8114b",
+      "exactExistingRows": [
+        {
+          "legacyGoalId": "a019aeb4-031d-407e-91cc-1dbdacb3e08a",
+          "canonicalGoalId": "619f29f5-7f44-5654-9692-01b250997d52",
+          "matchType": "exact"
+        },
+        {
+          "legacyGoalId": "46eadb86-072f-4939-8f32-6467aa2b7272",
+          "canonicalGoalId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+          "matchType": "exact"
+        },
+        {
+          "legacyGoalId": "543ec1f7-923d-4c0c-911c-2ab09f78894c",
+          "canonicalGoalId": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+          "matchType": "exact"
+        },
+        {
+          "legacyGoalId": "f913c4f6-a47d-4485-9ae3-6e2c936ee0fc",
+          "canonicalGoalId": "58fda9b4-4336-5594-99ce-722c4a453372",
+          "matchType": "exact"
+        }
+      ]
+    },
+    "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_math_upper_secondary_source_extraction_to_canonical_math.review.json": {
+      "sha256AtInspection": "41462123c671854fbab3e38619158f46b0d21bf02a548b1a5fa41d32628928e4",
+      "exactExistingRows": [
+        {
+          "legacyGoalId": "he-math-sekii-q1-5-b03-a01-c5f46423",
+          "canonicalGoalId": "58fda9b4-4336-5594-99ce-722c4a453372",
+          "matchType": "exact",
+          "reviewDecisionId": "he-math-sekii-q1-5-b03-a01-c5f46423"
+        },
+        {
+          "legacyGoalId": "he-math-sekii-q3-5-b06-a01-44c2c619",
+          "canonicalGoalId": "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+          "matchType": "exact",
+          "reviewDecisionId": "he-math-sekii-q3-5-b06-a01-44c2c619"
+        },
+        {
+          "sourceGoalId": "he-math-sekii-q1-5-b03-a01-c5f46423",
+          "topicCode": "Q1.5",
+          "sourceSpan": "Untersuchen von Differenzialgleichungen zweiter Ordnung (zum Beispiel bei periodischen Prozessen)",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "58fda9b4-4336-5594-99ce-722c4a453372"
+          ],
+          "rationale": "Das LK-Ziel fordert die qualitative Untersuchung einfacher Differenzialgleichungen zweiter Ordnung und nennt periodische Prozesse als Beispiel; damit ist der offizielle LK-Aspekt direkt abgedeckt.",
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex"
+        },
+        {
+          "sourceGoalId": "he-math-sekii-q3-5-b06-a01-44c2c619",
+          "topicCode": "Q3.5",
+          "sourceSpan": "weitere stetige Verteilungen (zum Beispiel Exponentialverteilung)",
+          "decision": "mapped",
+          "canonicalGoalIds": [
+            "455ef29a-7194-5c5a-b832-1c27fcbf2516"
+          ],
+          "rationale": "Das umbenannte LK-Ziel deckt weitere stetige Verteilungen exemplarisch ab und nennt die Exponentialverteilung als Beispiel.",
+          "reviewedAt": "2026-05-05",
+          "reviewer": "codex"
+        }
+      ]
+    }
+  },
+  "scopeDecision": "None. Existing original texts, tags, applicability, dimensions, direct requirements, sourceRef and all mappings retained. Exact extraction rows exist for DG2 and further continuous distributions; no new extraction/source-coverage claim is created for relative dispersion or documenting decisions.",
+  "completionBoundary": "Static authoring only. No mastery, route, new requires, target scope, memory goal/deck, productive files, M7, CI or host writes."
+}
