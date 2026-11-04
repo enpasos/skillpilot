@@ -206,6 +206,12 @@ public final class CourseProfileCompositionViewMerger {
         return result;
     }
 
+    /** Internal buildtime guard access to the exact production role precedence. */
+    static Set<String> projectionTargetGoalIds(
+            List<Map<String, Object>> nodes, Map<String, List<String>> canonicalChildren) {
+        return Set.copyOf(new ProjectionGraph(canonicalChildren).targets(nodes));
+    }
+
     private record RoleAssignment(boolean target, boolean direct, int distance) {
         private RoleAssignment combine(RoleAssignment other) {
             if (direct != other.direct) return other.direct ? other : this;

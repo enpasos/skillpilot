@@ -1582,23 +1582,24 @@ public class LearnerControllerIntegrationTest {
         // Current canonical leaves were enumerated from each matched Sek-I view,
         // applying projection-role precedence and jurisdiction applicability.
         // Totals include local assessments; excluded and prerequisite-only goals
-        // do not count. The view-specific HE/RP/SH G8/G9 split remains explicit.
+        // do not count. Reviewed additional local assessment placements are
+        // included; the view-specific HE/RP/SH G8/G9 split remains explicit.
         String[][] scopes = {
-                { "DE-BB", "237", "237" },
-                { "DE-BE", "229", "229" },
-                { "DE-BW", "269", "257" },
-                { "DE-BY", "250", "250" },
-                { "DE-HB", "197", "197" },
-                { "DE-HE", "319", "345" },
-                { "DE-HH", "243", "243" },
-                { "DE-MV", "187", "187" },
-                { "DE-NI", "245", "245" },
-                { "DE-NW", "241", "241" },
-                { "DE-RP", "257", "263" },
-                { "DE-SH", "246", "248" },
-                { "DE-SL", "255", "255" },
-                { "DE-SN", "245", "245" },
-                { "DE-ST", "239", "239" },
+                { "DE-BB", "238", "238" },
+                { "DE-BE", "230", "230" },
+                { "DE-BW", "269", "258" },
+                { "DE-BY", "252", "252" },
+                { "DE-HB", "198", "198" },
+                { "DE-HE", "321", "349" },
+                { "DE-HH", "244", "244" },
+                { "DE-MV", "188", "188" },
+                { "DE-NI", "246", "246" },
+                { "DE-NW", "242", "242" },
+                { "DE-RP", "258", "264" },
+                { "DE-SH", "249", "251" },
+                { "DE-SL", "256", "256" },
+                { "DE-SN", "246", "246" },
+                { "DE-ST", "240", "240" },
                 { "DE-TH", "199", "199" }
         };
         SoftAssertions softly = new SoftAssertions();
@@ -1671,12 +1672,12 @@ public class LearnerControllerIntegrationTest {
         // with projection roles, jurisdiction, course tags and G8/G9 applicability.
         // Keep exact counts and selected membership checks to catch scope drift.
         String[][] scopes = {
-                { "DE-HE", "GK", "757", "763" },
-                { "DE-HE", "LK", "898", "904" },
-                { "DE-RP", "GK", "691", "695" },
-                { "DE-RP", "LK", "805", "809" },
-                { "DE-SH", "GK", "659", "662" },
-                { "DE-SH", "LK", "777", "780" }
+                { "DE-HE", "GK", "763", "771" },
+                { "DE-HE", "LK", "900", "908" },
+                { "DE-RP", "GK", "699", "703" },
+                { "DE-RP", "LK", "810", "814" },
+                { "DE-SH", "GK", "668", "670" },
+                { "DE-SH", "LK", "783", "785" }
         };
         SoftAssertions softly = new SoftAssertions();
 

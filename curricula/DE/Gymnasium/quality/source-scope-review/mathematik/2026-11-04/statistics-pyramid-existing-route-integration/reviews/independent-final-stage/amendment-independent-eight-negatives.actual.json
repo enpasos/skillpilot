@@ -1,0 +1,80 @@
+{
+  "status": "ACTUAL_COMPILED_NORMAL_GUARD_REJECTS_ALL_EIGHT_NEGATIVE_CASES_READ_ONLY",
+  "rows": [
+    {
+      "case": "unauthorized-existing-id",
+      "exitCode": 1,
+      "expectedRejection": "Unreviewed existing assessment allowance",
+      "actualRejectionObserved": true,
+      "guardedFilesByteUnchangedByCheck": 231,
+      "seconds": 1.16,
+      "stderrSha256": "3d7d86725f615cd3f46b0d38047bd8bf1c95fe815ff57876747772180ddf9363"
+    },
+    {
+      "case": "wrong-source-scope",
+      "exitCode": 1,
+      "expectedRejection": "Existing source current scope differs",
+      "actualRejectionObserved": true,
+      "guardedFilesByteUnchangedByCheck": 231,
+      "seconds": 3.53,
+      "stderrSha256": "3653e1fa6526869f7ac7ef42e77c8c8e8db877db36134ee839f4b4e9e4902c1a"
+    },
+    {
+      "case": "missing-SH-GK-mask",
+      "exitCode": 1,
+      "expectedRejection": "Existing excluded source role/mask inventory differs",
+      "actualRejectionObserved": true,
+      "guardedFilesByteUnchangedByCheck": 231,
+      "seconds": 4.6,
+      "stderrSha256": "051074029a065e2585496c11feef4314c71bd263775f82a435516eb749e7ce6f"
+    },
+    {
+      "case": "extra-mask-key",
+      "exitCode": 1,
+      "expectedRejection": "Existing excluded source exact root mask differs",
+      "actualRejectionObserved": true,
+      "guardedFilesByteUnchangedByCheck": 231,
+      "seconds": 3.41,
+      "stderrSha256": "48a4e6b93caeaf060ce9ac23f7ca12cad088e5b5d9c946431cba2a6b61cef2c7"
+    },
+    {
+      "case": "unrelated-source-tree-drift",
+      "exitCode": 1,
+      "expectedRejection": "Original source tree changed beyond reviewed task references",
+      "actualRejectionObserved": true,
+      "guardedFilesByteUnchangedByCheck": 231,
+      "seconds": 3.39,
+      "stderrSha256": "cfdaf68d3b70947e67b40b7d352dd8dbb9b5d7aae92b6b75d4ed48d241b8c67e"
+    },
+    {
+      "case": "original-snapshot-drift",
+      "exitCode": 1,
+      "expectedRejection": "Bound before-view drift",
+      "actualRejectionObserved": true,
+      "guardedFilesByteUnchangedByCheck": 231,
+      "seconds": 1.38,
+      "stderrSha256": "d07a3893fa493e2d280833a113fa03d4119f60141416ca3ce2ae46c2e18051a6"
+    },
+    {
+      "case": "empty-SH-retained-wrapper",
+      "exitCode": 1,
+      "expectedRejection": "Original source tree changed beyond reviewed task references",
+      "actualRejectionObserved": true,
+      "guardedFilesByteUnchangedByCheck": 231,
+      "seconds": 3.34,
+      "stderrSha256": "e58641407ba6cc8f269e9fdd72e0be321a86fc424c7a951b82506858cd015d0c"
+    },
+    {
+      "case": "check-with-report-rejected",
+      "exitCode": 1,
+      "expectedRejection": "--check is read-only; omit --report",
+      "actualRejectionObserved": true,
+      "guardedFilesByteUnchangedByCheck": 231,
+      "seconds": 0.55,
+      "stderrSha256": "d3cef5e94589a28bbe7ffdaf05f0bbee1254b160cc80a05cd061075b68be5d65"
+    }
+  ],
+  "runtimeRolesDelegatedToUnchangedProductionAlgorithm": true,
+  "normalPositiveCombined39ReadOnlyCheck": "normal-combined39-check.final-guard.actual.json",
+  "rootGitNativeWrites": false
+}

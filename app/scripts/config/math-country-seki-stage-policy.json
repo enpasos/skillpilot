@@ -4,7 +4,7 @@
   "authorStatus": "PROPOSAL_REQUIRES_INDEPENDENT_SOURCE_FRAGMENT_REVIEW",
   "canonical": {
     "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
-    "sha256": "4b1e946f920829f423d2500971c799c9bc1056c5e3e13f27e2e7004150e71f35"
+    "sha256": "30c95213b0a6b7debc6b9a470c924c31cc7b733612bc11cf3e559d394dcdc891"
   },
   "nativeCompiler": {
     "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
@@ -365,7 +365,7 @@
     },
     {
       "path": "backend/src/test/java/com/skillpilot/backend/composition/MaterializeMathContextualCombinedViews.java",
-      "sha256": "d0d769f3b13ebba0c606f1c9cfc17cd849978f7a3121aeb6ab6cd11a2261d890"
+      "sha256": "c92ffeaeb59bffeb785b80196a7d9b271eb6df2e24743e905378e3d9a578c382"
     },
     {
       "path": ".github/workflows/assessment-completion.yml",
@@ -3768,7 +3768,7 @@
     },
     {
       "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/finite-scope-operations.json",
-      "sha256": "740c4bc49af89ba5ccb6ac7152e6e751c8089e2bc2470cb724a42749903804f7"
+      "sha256": "4a7d744700170f170d4da40468f2eb46ddb43d9e0c9be5905da2465628ef4ba1"
     },
     {
       "path": "curricula/DE/Gymnasium/assessments/mathematik/contextual-terminal-assessments-2026-11-04-v1/reviews/fundamental/final-joint-obligation-decision-v2.json",
@@ -3797,6 +3797,26 @@
     {
       "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/cone-complex-four-plus-b2/author-exact-cone-complex-four-plus-b2-integration.json",
       "sha256": "bca6be18efe6397dd4210f0232cf93283cf0ba1349678248481db04e5b099c04"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route-integration/reviews/independent-source-scope.review.json",
+      "sha256": "62ed68aa309a46987a3a889aed038b132f7dcbf3bfda1380c364a3584dfd7d73"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route-integration/reviewed-existing-assessment-allowances.json",
+      "sha256": "43b8dbadf44e2e31ac3bdd6e1ccacc7bbbeb806dadc96226c7eeca3e484c8da3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json",
+      "sha256": "54c61ddeb5b110c3123ee66832ce15728479b76e0d059da92cd8d021470d52e7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route-integration/author-exact-statistics-pyramid-integration.json",
+      "sha256": "d51568f75a3720870a5ecd795b8e16906a924ff4a0788fca85cf9689d711e6df"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/author-producer-binding-amendment.json",
+      "sha256": "780f5867bbfcbd61353cd1d23dda3dc3e3884bfa11e6fd2b0d2536e79ce95545"
     }
   ],
   "existingStageViews": [
@@ -5255,7 +5275,7 @@
     "de-sh-gym-math-gk-g9",
     "de-sh-gym-math-lk-g9"
   ],
-  "reviewReceiptPath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/stage-scope-implementation-cone-complex-four-plus-b2.review.json",
+  "reviewReceiptPath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/stage-scope-implementation-statistics-pyramid.review.json",
   "assessmentScopeOperations": [
     {
       "id": "mv-seki-material-exclude",
@@ -13776,12 +13796,122 @@
       "anchorStructureId": "j10",
       "label": "Prüfungen Jahrgangsstufe 10 / Einführungsphase: Vektorgrundlagen",
       "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-03/vector-thirtysix/author-exact-source-and-operations.json"
+    },
+    {
+      "id": "statistics-pyramid-existing-c83dc2d1-include-target-de-by-gym-sekii-math-lk",
+      "viewId": "de-by-gym-sekii-math-lk",
+      "goalIds": [
+        "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "lk-sek-ii-only-q3",
+      "label": "Zusätzliche SkillPilot-Prüfung: Poisson-Modell mit Daten und Simulation abgleichen (LK-Vorbereitung)",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#statistics"
+    },
+    {
+      "id": "statistics-pyramid-existing-1878f680-include-target-de-by-gym-sekii-math-lk",
+      "viewId": "de-by-gym-sekii-math-lk",
+      "goalIds": [
+        "1878f680-095c-511d-aaed-e98393f7fde9"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "lk-sek-ii-only-q2",
+      "label": "SkillPilot-Transferprüfung: Pyramidenvolumen und Streckung mit Koordinaten und Vektoren",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#pyramid"
+    },
+    {
+      "id": "statistics-pyramid-existing-c83dc2d1-include-target-de-by-gym-math-lk",
+      "viewId": "de-by-gym-math-lk",
+      "goalIds": [
+        "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "lk-sek-ii-q3",
+      "label": "Zusätzliche SkillPilot-Prüfung: Poisson-Modell mit Daten und Simulation abgleichen (LK-Vorbereitung)",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#statistics"
+    },
+    {
+      "id": "statistics-pyramid-existing-1878f680-include-target-de-by-gym-math-lk",
+      "viewId": "de-by-gym-math-lk",
+      "goalIds": [
+        "1878f680-095c-511d-aaed-e98393f7fde9"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "lk-sek-ii-q2",
+      "label": "SkillPilot-Transferprüfung: Pyramidenvolumen und Streckung mit Koordinaten und Vektoren",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#pyramid"
+    },
+    {
+      "id": "statistics-pyramid-existing-c83dc2d1-include-target-de-sh-gym-sekii-math-lk",
+      "viewId": "de-sh-gym-sekii-math-lk",
+      "goalIds": [
+        "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "stochastics",
+      "label": "Zusätzliche SkillPilot-Prüfung: Poisson-Modell mit Daten und Simulation abgleichen (LK-Vorbereitung)",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#statistics"
+    },
+    {
+      "id": "statistics-pyramid-existing-c83dc2d1-include-target-de-sh-gym-math-lk-g8",
+      "viewId": "de-sh-gym-math-lk-g8",
+      "goalIds": [
+        "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "stochastics",
+      "label": "Zusätzliche SkillPilot-Prüfung: Poisson-Modell mit Daten und Simulation abgleichen (LK-Vorbereitung)",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#statistics"
+    },
+    {
+      "id": "statistics-pyramid-existing-c83dc2d1-include-target-de-sh-gym-math-lk-g9",
+      "viewId": "de-sh-gym-math-lk-g9",
+      "goalIds": [
+        "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "stochastics",
+      "label": "Zusätzliche SkillPilot-Prüfung: Poisson-Modell mit Daten und Simulation abgleichen (LK-Vorbereitung)",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#statistics"
+    },
+    {
+      "id": "statistics-pyramid-existing-c83dc2d1-exclude-target-de-sh-gym-sekii-math-gk",
+      "viewId": "de-sh-gym-sekii-math-gk",
+      "goalIds": [
+        "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      ],
+      "action": "exclude-target",
+      "anchorStructureId": "stochastics",
+      "label": "Kein zusätzliches Poisson-Prüfungsziel im GK",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#statistics"
+    },
+    {
+      "id": "statistics-pyramid-existing-c83dc2d1-exclude-target-de-sh-gym-math-gk-g8",
+      "viewId": "de-sh-gym-math-gk-g8",
+      "goalIds": [
+        "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      ],
+      "action": "exclude-target",
+      "anchorStructureId": "stochastics",
+      "label": "Kein zusätzliches Poisson-Prüfungsziel im GK",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#statistics"
+    },
+    {
+      "id": "statistics-pyramid-existing-c83dc2d1-exclude-target-de-sh-gym-math-gk-g9",
+      "viewId": "de-sh-gym-math-gk-g9",
+      "goalIds": [
+        "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      ],
+      "action": "exclude-target",
+      "anchorStructureId": "stochastics",
+      "label": "Kein zusätzliches Poisson-Prüfungsziel im GK",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#statistics"
     }
   ],
-  "revision": "cone-complex-four-plus-b2-finite-implementation-20261104-v1",
+  "revision": "statistics-pyramid-existing-route-20261104-v1",
   "priorImplementationReview": {
-    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/stage-scope-implementation-math-context-he-three-joint.review.json",
-    "sha256": "1c8d8c70c2e538aafe2509aec1214d8057d3381463b5eb77ffb5010431ea9b18"
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/stage-scope-implementation-cone-complex-four-plus-b2.review.json",
+    "sha256": "e81333f6563249b52fc4d28c6e08e24f40db0e1c9960ab85313e754252618cf3"
   },
   "scopeFollowupSections": [
     {

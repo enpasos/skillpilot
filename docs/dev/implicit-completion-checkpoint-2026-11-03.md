@@ -19,8 +19,8 @@ unversorgten Angeboten ausgewählt.
 | Tatsächlich geprüfte Angebote | 161, einschließlich 46 Kursvereinigungen |
 | Abschlussintegrität bestanden | 17 Angebote |
 | Angebote mit verbleibenden Datenlücken | 144 |
-| Ungedeckte Ziele | 257 unterschiedliche IDs / 2.818 Ziel-Angebots-Paare |
-| Gewöhnliche offene Endpunkte | 165 unterschiedliche IDs / 1.887 Endpunktpaare |
+| Ungedeckte Ziele | 255 unterschiedliche IDs / 2.718 Ziel-Angebots-Paare |
+| Gewöhnliche offene Endpunkte | 164 unterschiedliche IDs / 1.819 Endpunktpaare |
 
 Die jüngste gemeinsame Korrektur schließt weitere **791 Ziel-Angebots-Paare
 und 404 Endpunktpaare**, ohne neue Lücken zu erzeugen. Sie begrenzt zehn
@@ -37,6 +37,21 @@ Prüfungsplätze; Einheitswurzeln und komplexes Dividieren behalten ihre IDs
 und bestehenden Speicherpflichten. Die anschließende tatsächliche Messung
 verwendet 3.254 Eingaben, deren Bytes nach dem Import vollständig stimmen.
 Auch dieser Nachlauf besteht alle elf Autorenprüfungen.
+
+Zwei bereits vorhandene Statistik- und Pyramidenprüfungen schließen anschließend
+weitere **100 Ziel-Angebots-Paare und 68 Endpunktpaare**. Sie erhalten zusammen
+16 zusätzliche Plätze, ohne Aufgaben, Voraussetzungen, Lernstände oder die
+807 curricularen IDs zu ändern. Der tatsächliche Backendvergleich und das
+unabhängige Astra-Review bestätigen die genaue Begrenzung. Alle elf regulären
+Autorenprüfungen bestehen; 127 geprüfte Dateien sind bytegenau übernommen.
+Die spätere reine Generator-/Hashkorrektur ist getrennt nachgewiesen:
+3.284 ursprüngliche Messungseingaben bleiben gleich, eine Autorenbindung
+ändert sich mit eigener Prüfung. Das ist kein neuer Lauf der ursprünglichen
+Backendmessung.
+
+41 veraltete feste API-Zielzahlen sind anhand der tatsächlichen Zielmengen
+und HTTP-Antworten korrigiert. Alle Mitgliedschaftsprüfungen bleiben erhalten;
+die vollständige Controllerklasse besteht danach mit 38/38 Tests ohne Skips.
 
 Der gemeinsame vorherige Backendvergleich und das unabhängige Astra-Review prüfen
 alle 161 Angebote. Alle 502 übernommenen Dateien und die 3.187 Eingaben des
@@ -96,6 +111,7 @@ vollständigen Backendlauf.
 · [Neun weitere Formen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/nine-whole-forms/README.md)
 · [Gemeinsame Rollen- und Pfadkorrektur](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/context-he-three/README.md)
 · [Kegel und komplexe Zahlen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/cone-complex-four/README.md)
+· [Statistik und Pyramiden](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/statistics-pyramid/README.md)
 · [Markov-Platzierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/sh-markov-twelve/README.md)
 · [Graphvalidierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/directed-prior-stage-validation/README.md)
 · [Coach und Plan](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/backend-explicit-assessment-choices/README.md)

@@ -1,0 +1,744 @@
+{
+  "schemaVersion": 1,
+  "status": "APPROVED_BOUNDED_EXISTING_ROUTE_SOURCE_SCOPE_AND_FINITE_PLACEMENT",
+  "reviewedAt": "2026-11-04T04:44:18.822409+00:00",
+  "reviewer": {
+    "agentTask": "/root/astra_statistics_pyramid_review",
+    "role": "Live independent reviewer assigned by Root for the requested Astra Ultra review",
+    "independentFromAuthor": true,
+    "authorVerdictNotUsedAsApproval": true,
+    "childAgentsUsed": false,
+    "modelRuntimeMetadata": "Root owns the invocation provenance; this report does not invent a separate model execution record."
+  },
+  "scopeBoundary": "Approval of this exact frozen author packet and its finite source/scope/placement proposal only. No product write, Git write, normal Combined39 acceptance, Stage, Native, M7, CI, release, deployment or learner-state acceptance is performed or claimed.",
+  "inputBindings": {
+    "reviewRequest": {
+      "path": "tmp/approach-review-20261101/statistics-pyramid-existing-route-placement-20261104-v1/review-request.json",
+      "sha256": "4cbf3d8669bbf45f946c3cc678933d1d6c2d89f48c7680da165c2a88f044f8e3"
+    },
+    "authorManifest": {
+      "path": "tmp/approach-review-20261101/statistics-pyramid-existing-route-placement-20261104-v1/author-payload.manifest.json",
+      "sha256": "52b86eda22565be3e48d7980502f270f7c1a3803288862ab6aaf6d74b69634ce"
+    },
+    "baseCanonicalSha256": "916f309dd5bc1d8cb66dba6fc204c29c5dfb9b54c935ce5968f27e2404cb7c2d",
+    "candidateCanonicalSha256": "ea91672b05397036ad08df91da848be423691b4cb559f327ae6d1115ad7c80c2",
+    "baseNative": {
+      "path": "tmp/approach-review-20261101/math-context-he-three-joint-native-20261104-v1/candidate.json.gz",
+      "sha256": "e412662ca5720f4b5d52046cf283484604eb691201eee0e3c52e9dbb4402eea4"
+    },
+    "primarySources": [
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_12_eA.pdf",
+        "sha256": "b3583a2902749e34f02561e9795021bb3bcf8e6ad4d357581be52b08cb59359a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_12_Vertiefungskurs.pdf",
+        "sha256": "0c999c585ec65ed7f167d0d07b6a40fe12d435cbcffed56c39f44674f684e138"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+        "sha256": "17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+        "sha256": "77f04b8d5954a799d6946860d69a5f06d9058e9b4813421eef5d6b3798afa6e6"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+        "sha256": "6c355eee69922644fc576b34ffb1830f323a96437bab5ae63ee38d4893d00009"
+      }
+    ]
+  },
+  "blockers": [],
+  "approvedTargetScopePairs": {
+    "c83dc2d1-f44f-5fae-86ce-280c68c3c55e": [
+      "DE-BY/CrossStage/G9/GK+LK",
+      "DE-BY/CrossStage/G9/LK",
+      "DE-BY/SekII/G9/GK+LK",
+      "DE-BY/SekII/G9/LK",
+      "DE-SH/CrossStage/G8/GK+LK",
+      "DE-SH/CrossStage/G8/LK",
+      "DE-SH/CrossStage/G9/GK+LK",
+      "DE-SH/CrossStage/G9/LK",
+      "DE-SH/SekII/G8/GK+LK",
+      "DE-SH/SekII/G8/LK",
+      "DE-SH/SekII/G9/GK+LK",
+      "DE-SH/SekII/G9/LK"
+    ],
+    "1878f680-095c-511d-aaed-e98393f7fde9": [
+      "DE-BY/CrossStage/G9/GK+LK",
+      "DE-BY/CrossStage/G9/LK",
+      "DE-BY/SekII/G9/GK+LK",
+      "DE-BY/SekII/G9/LK"
+    ]
+  },
+  "approvedCanonicalChanges": [
+    {
+      "id": "1878f680-095c-511d-aaed-e98393f7fde9",
+      "fields": [
+        "applicability"
+      ],
+      "before": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "after": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "id": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+      "fields": [
+        "applicability"
+      ],
+      "before": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "after": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    }
+  ],
+  "canonicalFieldBoundary": {
+    "onlyChangedTopLevelField": "applicability",
+    "statisticsAddsJurisdictions": [
+      "DE-BY",
+      "DE-SH"
+    ],
+    "pyramidAddsJurisdictions": [
+      "DE-BY"
+    ],
+    "newGoalIds": [],
+    "rawRequiresChanges": [],
+    "rawContainsChanges": [],
+    "titleDescriptionChanges": [],
+    "taskSolutionScoringCoverageChanges": [],
+    "sourceRefOrSourceMappingChanges": [],
+    "existingReviewNoteChanges": [],
+    "allOtherCanonicalObjectsUnchanged": true
+  },
+  "approvedExactAssessmentScopeOperations": [
+    {
+      "id": "statistics-pyramid-existing-c83dc2d1-include-target-de-by-gym-sekii-math-lk",
+      "viewId": "de-by-gym-sekii-math-lk",
+      "goalIds": [
+        "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "lk-sek-ii-only-q3",
+      "label": "Zusätzliche SkillPilot-Prüfung: Poisson-Modell mit Daten und Simulation abgleichen (LK-Vorbereitung)",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#statistics"
+    },
+    {
+      "id": "statistics-pyramid-existing-1878f680-include-target-de-by-gym-sekii-math-lk",
+      "viewId": "de-by-gym-sekii-math-lk",
+      "goalIds": [
+        "1878f680-095c-511d-aaed-e98393f7fde9"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "lk-sek-ii-only-q2",
+      "label": "SkillPilot-Transferprüfung: Pyramidenvolumen und Streckung mit Koordinaten und Vektoren",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#pyramid"
+    },
+    {
+      "id": "statistics-pyramid-existing-c83dc2d1-include-target-de-by-gym-math-lk",
+      "viewId": "de-by-gym-math-lk",
+      "goalIds": [
+        "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "lk-sek-ii-q3",
+      "label": "Zusätzliche SkillPilot-Prüfung: Poisson-Modell mit Daten und Simulation abgleichen (LK-Vorbereitung)",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#statistics"
+    },
+    {
+      "id": "statistics-pyramid-existing-1878f680-include-target-de-by-gym-math-lk",
+      "viewId": "de-by-gym-math-lk",
+      "goalIds": [
+        "1878f680-095c-511d-aaed-e98393f7fde9"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "lk-sek-ii-q2",
+      "label": "SkillPilot-Transferprüfung: Pyramidenvolumen und Streckung mit Koordinaten und Vektoren",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#pyramid"
+    },
+    {
+      "id": "statistics-pyramid-existing-c83dc2d1-include-target-de-sh-gym-sekii-math-lk",
+      "viewId": "de-sh-gym-sekii-math-lk",
+      "goalIds": [
+        "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "stochastics",
+      "label": "Zusätzliche SkillPilot-Prüfung: Poisson-Modell mit Daten und Simulation abgleichen (LK-Vorbereitung)",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#statistics"
+    },
+    {
+      "id": "statistics-pyramid-existing-c83dc2d1-include-target-de-sh-gym-math-lk-g8",
+      "viewId": "de-sh-gym-math-lk-g8",
+      "goalIds": [
+        "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "stochastics",
+      "label": "Zusätzliche SkillPilot-Prüfung: Poisson-Modell mit Daten und Simulation abgleichen (LK-Vorbereitung)",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#statistics"
+    },
+    {
+      "id": "statistics-pyramid-existing-c83dc2d1-include-target-de-sh-gym-math-lk-g9",
+      "viewId": "de-sh-gym-math-lk-g9",
+      "goalIds": [
+        "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      ],
+      "action": "include-target",
+      "anchorStructureId": "stochastics",
+      "label": "Zusätzliche SkillPilot-Prüfung: Poisson-Modell mit Daten und Simulation abgleichen (LK-Vorbereitung)",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#statistics"
+    },
+    {
+      "id": "statistics-pyramid-existing-c83dc2d1-exclude-target-de-sh-gym-sekii-math-gk",
+      "viewId": "de-sh-gym-sekii-math-gk",
+      "goalIds": [
+        "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      ],
+      "action": "exclude-target",
+      "anchorStructureId": "stochastics",
+      "label": "Kein zusätzliches Poisson-Prüfungsziel im GK",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#statistics"
+    },
+    {
+      "id": "statistics-pyramid-existing-c83dc2d1-exclude-target-de-sh-gym-math-gk-g8",
+      "viewId": "de-sh-gym-math-gk-g8",
+      "goalIds": [
+        "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      ],
+      "action": "exclude-target",
+      "anchorStructureId": "stochastics",
+      "label": "Kein zusätzliches Poisson-Prüfungsziel im GK",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#statistics"
+    },
+    {
+      "id": "statistics-pyramid-existing-c83dc2d1-exclude-target-de-sh-gym-math-gk-g9",
+      "viewId": "de-sh-gym-math-gk-g9",
+      "goalIds": [
+        "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      ],
+      "action": "exclude-target",
+      "anchorStructureId": "stochastics",
+      "label": "Kein zusätzliches Poisson-Prüfungsziel im GK",
+      "sourceDecision": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/author-source-and-scope-decision.json#statistics"
+    }
+  ],
+  "approvedViewFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk-lk.view.json",
+      "candidatePath": "tmp/approach-review-20261101/statistics-pyramid-existing-route-placement-20261104-v1/files/curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk-lk.view.json",
+      "candidateSha256": "f2c18f5c48981e4c62aa37ade37fda56fa5a38a2fb04d9d918d262c37daa7196",
+      "beforeSha256": "576dfcb3caac4cb123cf6d2f00549961e536c5d5d34a8ca79ca7102f91e20e4a",
+      "authorProductObjectChanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
+      "candidatePath": "tmp/approach-review-20261101/statistics-pyramid-existing-route-placement-20261104-v1/files/curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
+      "candidateSha256": "4db96c3c596193d7245f98972e08767ebdbe380552eaa5bd69e37d07403bb466",
+      "beforeSha256": "95d5f7238ea4f1a00db5c37e8daf6ab464f5ddd3dd0ce86f75d8e70560f35fa3",
+      "authorProductObjectChanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk-lk.view.json",
+      "candidatePath": "tmp/approach-review-20261101/statistics-pyramid-existing-route-placement-20261104-v1/files/curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk-lk.view.json",
+      "candidateSha256": "985c38634b12b8f7f1a2814f1d9cb4930ddf68c537f2f08ce152812a0085b6af",
+      "beforeSha256": "99c9d491b0e02793bb2c39805e8934ba97807d396c898c73a2e3b707cb756673",
+      "authorProductObjectChanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+      "candidatePath": "tmp/approach-review-20261101/statistics-pyramid-existing-route-placement-20261104-v1/files/curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+      "candidateSha256": "cf4ffe633c57693b253000585e63b1081a2aaa5fe21101a3d73dabb768255724",
+      "beforeSha256": "c87c046cc1d9c254858fd3c3343dee18168b6c0c8fcc8d0f7305342471606108",
+      "authorProductObjectChanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "candidatePath": "tmp/approach-review-20261101/statistics-pyramid-existing-route-placement-20261104-v1/files/curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "candidateSha256": "aa3feee46def3d1bc8f876e0f007183b3272066aab7544da1660fbaa873c91fb",
+      "beforeSha256": "e9fb4f63ad8100c28ac24efd81070810b9a77298259b3fb3eedba4f60211fe30",
+      "authorProductObjectChanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "candidatePath": "tmp/approach-review-20261101/statistics-pyramid-existing-route-placement-20261104-v1/files/curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "candidateSha256": "9e1e0af902320056ccfa1d3c8f8d286c4931f0b3805bbed09c743bde74a9adc5",
+      "beforeSha256": "edc07eb0850af968948e826f08c91aa414bc98bf9487b4c000cb4ce240a66a5d",
+      "authorProductObjectChanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-lk-g8.view.json",
+      "candidatePath": "tmp/approach-review-20261101/statistics-pyramid-existing-route-placement-20261104-v1/files/curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-lk-g8.view.json",
+      "candidateSha256": "f5efefe24f27f4e1c5014745dc726e94d7fef01958f5855317522971d0de9ec0",
+      "beforeSha256": "f5efefe24f27f4e1c5014745dc726e94d7fef01958f5855317522971d0de9ec0",
+      "authorProductObjectChanged": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-lk-g9.view.json",
+      "candidatePath": "tmp/approach-review-20261101/statistics-pyramid-existing-route-placement-20261104-v1/files/curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-lk-g9.view.json",
+      "candidateSha256": "ab2559777b8920f38503dc998ba4c602975a6159820539a5ec9826a5f9e08db5",
+      "beforeSha256": "ab2559777b8920f38503dc998ba4c602975a6159820539a5ec9826a5f9e08db5",
+      "authorProductObjectChanged": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "candidatePath": "tmp/approach-review-20261101/statistics-pyramid-existing-route-placement-20261104-v1/files/curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "candidateSha256": "1201353bec082809f81422f5783f23500760fd1787b351faae08dfe940dc4f08",
+      "beforeSha256": "1201353bec082809f81422f5783f23500760fd1787b351faae08dfe940dc4f08",
+      "authorProductObjectChanged": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "candidatePath": "tmp/approach-review-20261101/statistics-pyramid-existing-route-placement-20261104-v1/files/curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "candidateSha256": "329789dc63f97e2c18a90d8005990fab9fd904a2acb82948119664bab2aadd5f",
+      "beforeSha256": "329789dc63f97e2c18a90d8005990fab9fd904a2acb82948119664bab2aadd5f",
+      "authorProductObjectChanged": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk-lk.view.json",
+      "candidatePath": "tmp/approach-review-20261101/statistics-pyramid-existing-route-placement-20261104-v1/files/curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk-lk.view.json",
+      "candidateSha256": "8f7812cb24934e236658e1cd39017f03a848107e6569246cf579d537b2e331e7",
+      "beforeSha256": "8f7812cb24934e236658e1cd39017f03a848107e6569246cf579d537b2e331e7",
+      "authorProductObjectChanged": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+      "candidatePath": "tmp/approach-review-20261101/statistics-pyramid-existing-route-placement-20261104-v1/files/curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+      "candidateSha256": "efd11443768a99be408fa506526b61e3c391a7ac0e061fbf088d55f86aee524b",
+      "beforeSha256": "0d6b6b0869537b9f908bd6752640401ed8bb258d146868d313b843b3f881db5d",
+      "authorProductObjectChanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+      "candidatePath": "tmp/approach-review-20261101/statistics-pyramid-existing-route-placement-20261104-v1/files/curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+      "candidateSha256": "653290c92bf248debad83e6b9e9716ec49a284fc58a810e1ec1233edb8905271",
+      "beforeSha256": "653290c92bf248debad83e6b9e9716ec49a284fc58a810e1ec1233edb8905271",
+      "authorProductObjectChanged": false
+    }
+  ],
+  "explicitRoleMaskDecision": {
+    "approved": true,
+    "sourceMasks": [
+      {
+        "viewId": "de-sh-gym-sekii-math-gk",
+        "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+        "beforeRawTargetRole": true,
+        "afterRawTargetRole": false,
+        "afterRawPrerequisiteOnlyRole": true,
+        "nativeActualSelectedProtectedTargetBefore": false,
+        "finiteActualSelectedProtectedTargetAfter": false,
+        "directMaskShape": {
+          "kind": "goalEntry",
+          "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+          "projectionRole": "prerequisiteOnly"
+        },
+        "originalTreeComparison": "After checking this exact single role mask exists, omit only this direct mask from the tree comparison; retain the complete original canonicalSubtree and every other original node."
+      },
+      {
+        "viewId": "de-sh-gym-math-gk-g8",
+        "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+        "beforeRawTargetRole": true,
+        "afterRawTargetRole": false,
+        "afterRawPrerequisiteOnlyRole": true,
+        "nativeActualSelectedProtectedTargetBefore": false,
+        "finiteActualSelectedProtectedTargetAfter": false,
+        "directMaskShape": {
+          "kind": "goalEntry",
+          "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+          "projectionRole": "prerequisiteOnly"
+        },
+        "originalTreeComparison": "After checking this exact single role mask exists, omit only this direct mask from the tree comparison; retain the complete original canonicalSubtree and every other original node."
+      },
+      {
+        "viewId": "de-sh-gym-math-gk-g9",
+        "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+        "beforeRawTargetRole": true,
+        "afterRawTargetRole": false,
+        "afterRawPrerequisiteOnlyRole": true,
+        "nativeActualSelectedProtectedTargetBefore": false,
+        "finiteActualSelectedProtectedTargetAfter": false,
+        "directMaskShape": {
+          "kind": "goalEntry",
+          "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+          "projectionRole": "prerequisiteOnly"
+        },
+        "originalTreeComparison": "After checking this exact single role mask exists, omit only this direct mask from the tree comparison; retain the complete original canonicalSubtree and every other original node."
+      }
+    ],
+    "affectedActualScopeRows": [
+      {
+        "scope": "DE-SH/SekII/G8/GK",
+        "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      },
+      {
+        "scope": "DE-SH/SekII/G9/GK",
+        "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      },
+      {
+        "scope": "DE-SH/CrossStage/G8/GK",
+        "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      },
+      {
+        "scope": "DE-SH/CrossStage/G9/GK",
+        "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e"
+      }
+    ],
+    "allPOnlyUnchangedClaimAllowed": false,
+    "otherPOnlyRolesPreserved": true,
+    "reason": "SH raw exercise-collection subtrees already include this exam. Adding SH jurisdiction without masks would activate GK as well. The exact three direct prerequisiteOnly entries override that raw target role in four GK requests. They neither select an examination obligation nor widen ordinary targets. In the completion graph, context is the closure of selected targets; an unused mask is not an independent root.",
+    "SHLKAndCombinedWholeObjectPreservation": true
+  },
+  "wholeFormReview": [
+    {
+      "assessmentId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+      "decision": "APPROVE_EXACT_12_ADDITIONAL_SCOPE_PAIRS",
+      "contentRead": "Entire actual task, full reference solution, all four scoring steps, coverage metadata, five direct prerequisite contracts and all 58 normalized support goal descriptions and relations.",
+      "judgement": "The call-centre data form a coherent data-model-simulation problem. The explicit Bernoulli assumptions distinguish the binomial model from its Poisson approximation; the table comparison and simulation discussion appropriately limit the conclusions about independence and time-constant rate. All numerical values were independently recomputed. The ordinary 20-point maximum and 10-point pass are retained. No formal derivation is scored.",
+      "strongerPoissonPreparationAccepted": true,
+      "sourceJudgement": "BY M12.2 supports random variables, parameter interpretation and binomial contextual modelling. The BY additional statistics module supports data criticism and statistical methods but does not name Poisson or require its formal limit. SH pages 70-73 support distribution modelling, expected frequency interpretation and software simulation, and name binomial/hypergeometric and normal methods rather than this Poisson limit. Therefore the complete Poisson exercise is accepted as additional own SkillPilot content in the already theory-inclusive selected LK targets, with no new claim of official compulsory coverage. The new BY wrapper identifies additional SkillPilot work. SH reuses the existing collection path; approval relies on the explicit published source/scope decision and does not falsely claim that a new visible SH wrapper was materialized.",
+      "coverageDecision": "Keep coveredGoalIds exactly [c9a897ca-a0a2-5895-bbc4-23b20840c548]. Coverage names task content; it creates no separate prerequisite pass or mastery.",
+      "masteryConsequenceAcknowledged": "Under the binding binary-outcome semantics, an ordinary passing result ends this exam's outgoing preparation demand even though formal Poisson derivation and hands-on simulation were not separately demonstrated. That consequence is accepted, not concealed by a second qualification gate."
+    },
+    {
+      "assessmentId": "1878f680-095c-511d-aaed-e98393f7fde9",
+      "decision": "APPROVE_EXACT_4_BY_ADDITIONAL_SCOPE_PAIRS",
+      "contentRead": "Entire actual task, full reference solution, all four scoring steps, four coverage references, all four direct prerequisite contracts and all 39 normalized support goal descriptions and relations.",
+      "judgement": "The coordinate pyramid is one coherent geometry situation with an accessible perpendicularity/base calculation and a scaling explanation. The values 12 square units, 12 cubic units and 40.5 cubic units are correct. BY M12.5 directly supports spatial coordinates, vector/scalar-product reasoning, geometric volume calculation and flexible use of earlier geometry. This is SkillPilot-authored assessment content, not a reproduced official examination.",
+      "broaderPreparationContext": "The inherited context includes general plane/solid properties and advanced point-plane distance preparation, although the axis-aligned height here is immediate. These are unchanged broader curriculum preparation, not 39 assessed actions or minimal logical solving requirements. Their exact existing normalized relations and pre-existing membership in each approved context were verified. This placement adds no such goals and certifies no mastery of them.",
+      "heldDecision": "Keep all 14 listed BY-GK/SH pairs held. Target absence of 9460 is real; an official vector passage or hidden preparation membership alone does not authorize widening the reviewed target or changing this whole task. The hold is a scope decision, not a mathematical assertion that perpendicular coordinate axes cannot be understood without a dot product.",
+      "coverageDecision": "Keep the existing four coveredGoalIds and the ordinary 20/10 rubric. A pass need not demonstrate every listed action or description variant separately; only the examination goal receives mastery."
+    }
+  ],
+  "nineDirectPreparationDecisions": [
+    {
+      "assessmentId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+      "prerequisiteGoalId": "84069c5e-5526-57c1-9417-a886ccfd3f66",
+      "decision": "ACCEPT_UNCHANGED_DIDACTIC_PREPARATION_IN_EXACT_APPROVED_SCOPES",
+      "reason": "The observed-versus-expected frequency comparison and the distinction between model compatibility and proof are central to part 2. Prior histogram and descriptive-measure work supports this judgement; this item does not separately assess every representation.",
+      "coveredByExistingTaskMetadata": false,
+      "masteryTransfer": false
+    },
+    {
+      "assessmentId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+      "prerequisiteGoalId": "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+      "decision": "ACCEPT_UNCHANGED_DIDACTIC_PREPARATION_IN_EXACT_APPROVED_SCOPES",
+      "reason": "Having simulated experiments and inspected frequency variation is sound preparation for designing the simulation check in part 4. The written explanation is not a performance certificate for actually operating software; the coverage list correctly does not claim that.",
+      "coveredByExistingTaskMetadata": false,
+      "masteryTransfer": false
+    },
+    {
+      "assessmentId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+      "prerequisiteGoalId": "aeb947a2-2dd4-5017-a429-0d777e22db6a",
+      "decision": "ACCEPT_UNCHANGED_DIDACTIC_PREPARATION_IN_EXACT_APPROVED_SCOPES",
+      "reason": "Prior empirical location and dispersion work gives substance to the comparison of deviations and typical fluctuations. This is broader preparatory experience, not a claim that the examination calculates empirical mean and variance.",
+      "coveredByExistingTaskMetadata": false,
+      "masteryTransfer": false
+    },
+    {
+      "assessmentId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+      "prerequisiteGoalId": "c9a897ca-a0a2-5895-bbc4-23b20840c548",
+      "decision": "ACCEPT_UNCHANGED_DIDACTIC_PREPARATION_IN_EXACT_APPROVED_SCOPES",
+      "reason": "Part 1 now explicitly asks for the binomial model, rare-single-event approximation, lambda and probabilities; part 3 uses independent aggregation. This directly supports the existing nonempty assessed-content coverage. One time-interval model is an appropriate instance; an additional area-density variant is not required.",
+      "coveredByExistingTaskMetadata": true,
+      "masteryTransfer": false
+    },
+    {
+      "assessmentId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+      "prerequisiteGoalId": "1cefd1ad-a250-5a03-8de7-04bdaf465ad8",
+      "decision": "ACCEPT_UNCHANGED_DIDACTIC_PREPARATION_IN_EXACT_APPROVED_SCOPES",
+      "reason": "Accepted deliberately as theory-before-application preparation in these already theory-inclusive LK targets. Deriving the fixed-mean rare-event limit explains why many opportunities and small individual probability matter, why lambda=np is retained, and why the finite binomial model is only approximated. This is a coherent stronger teaching sequence, although formal derivation is not logically necessary for these computations. Approval does not depend on closing its graph endpoint and does not make this limit official BY/SH compulsory content. No formal proof is asked for, scored, covered or separately certified.",
+      "coveredByExistingTaskMetadata": false,
+      "masteryTransfer": false
+    },
+    {
+      "assessmentId": "1878f680-095c-511d-aaed-e98393f7fde9",
+      "prerequisiteGoalId": "288633c1-f61c-5b48-af7e-a80357f96cad",
+      "decision": "ACCEPT_UNCHANGED_DIDACTIC_PREPARATION_IN_EXACT_APPROVED_SCOPES",
+      "reason": "Part 3 explicitly requires V=Gh/3 and an interpretation against the corresponding prism. This is a direct preparatory and assessed-content relationship.",
+      "coveredByExistingTaskMetadata": true,
+      "masteryTransfer": false
+    },
+    {
+      "assessmentId": "1878f680-095c-511d-aaed-e98393f7fde9",
+      "prerequisiteGoalId": "9460c3ff-e72d-4107-bc73-087d217200aa",
+      "decision": "ACCEPT_UNCHANGED_DIDACTIC_PREPARATION_IN_EXACT_APPROVED_SCOPES",
+      "reason": "The reference method proves perpendicularity by AB dot AC=0 and fits a spatial-vector course. The general 4-point rubric accepts a correct right-angle proof, so this review does not assert that every successful response must calculate a dot product: the coordinate-axis argument is also mathematically sound. Keeping the reviewed vector-bearing preparation boundary and withholding scopes without this target is appropriate for reuse of this unchanged course task.",
+      "coveredByExistingTaskMetadata": true,
+      "masteryTransfer": false
+    },
+    {
+      "assessmentId": "1878f680-095c-511d-aaed-e98393f7fde9",
+      "prerequisiteGoalId": "5f548596-9bc3-532e-88a0-81d5029809e9",
+      "decision": "ACCEPT_UNCHANGED_DIDACTIC_PREPARATION_IN_EXACT_APPROVED_SCOPES",
+      "reason": "The solid-volume computation and cubic scaling require interpreting the shape and relating length, area and volume. The existing broad solid-volume goal is a suitable prerequisite and assessed-content reference; no mastery of all solid variants is inferred.",
+      "coveredByExistingTaskMetadata": true,
+      "masteryTransfer": false
+    },
+    {
+      "assessmentId": "1878f680-095c-511d-aaed-e98393f7fde9",
+      "prerequisiteGoalId": "5390691d-1b7c-5572-9589-a69c2bba9a27",
+      "decision": "ACCEPT_UNCHANGED_DIDACTIC_PREPARATION_IN_EXACT_APPROVED_SCOPES",
+      "reason": "Part 2 uses the right-triangle properties to choose and evaluate the base-area formula. This directly supports the reference without requiring an exhaustive sample of every plane figure.",
+      "coveredByExistingTaskMetadata": true,
+      "masteryTransfer": false
+    }
+  ],
+  "minimalObligationJudgement": {
+    "newAssessmentIdentities": 0,
+    "approvedExistingAssessmentIdentities": 2,
+    "addedSelectedProtectedTargetPairs": 16,
+    "separateRecreatedFormsNeeded": false,
+    "reason": "Each existing whole form is a coherent execution task for the selected preparation. Reusing its stable ID avoids inventing a second compulsory mastery object. Every one of the 16 scope-pair additions supplies at least one previously unrouted existing endpoint even when the other proposed exam remains selected, so none is a redundant extra obligation within this finite repair. This is local nonredundancy, not proof of a global minimum across all possible future forms.",
+    "independentEvidence": "independent-minimality.actual.json"
+  },
+  "heldPyramidScopePairs": [
+    "DE-BY/SekII/G9/GK",
+    "DE-BY/CrossStage/G9/GK",
+    "DE-SH/SekII/G8/GK",
+    "DE-SH/SekII/G8/LK",
+    "DE-SH/SekII/G8/GK+LK",
+    "DE-SH/SekII/G9/GK",
+    "DE-SH/SekII/G9/LK",
+    "DE-SH/SekII/G9/GK+LK",
+    "DE-SH/CrossStage/G8/GK",
+    "DE-SH/CrossStage/G8/LK",
+    "DE-SH/CrossStage/G8/GK+LK",
+    "DE-SH/CrossStage/G9/GK",
+    "DE-SH/CrossStage/G9/LK",
+    "DE-SH/CrossStage/G9/GK+LK"
+  ],
+  "vectorFreeAlternativeDecision": "Proposal only. No new identity or target approved. Any future form needs its own whole task, solution, rubric, source and exact scope review, and must actually omit coordinate/vector proof demands rather than merely remove a prerequisite edge.",
+  "combined39IntegrationAllowance": {
+    "decision": "APPROVE_FINITE_REQUIREMENTS_NOT_UNWRITTEN_IMPLEMENTATION",
+    "existingAssessmentAllowances": [
+      {
+        "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+        "positiveSourceViewIds": [
+          "de-by-gym-math-lk",
+          "de-by-gym-sekii-math-lk",
+          "de-sh-gym-math-lk-g8",
+          "de-sh-gym-math-lk-g9",
+          "de-sh-gym-sekii-math-lk"
+        ],
+        "excludedSourceViewIds": [
+          "de-sh-gym-math-gk-g8",
+          "de-sh-gym-math-gk-g9",
+          "de-sh-gym-sekii-math-gk"
+        ],
+        "combinedOutputViewIds": [
+          "de-by-gym-math-gk-lk",
+          "de-by-gym-sekii-math-gk-lk",
+          "de-sh-gym-math-gk-lk-g8",
+          "de-sh-gym-math-gk-lk-g9",
+          "de-sh-gym-sekii-math-gk-lk"
+        ]
+      },
+      {
+        "goalId": "1878f680-095c-511d-aaed-e98393f7fde9",
+        "positiveSourceViewIds": [
+          "de-by-gym-math-lk",
+          "de-by-gym-sekii-math-lk"
+        ],
+        "excludedSourceViewIds": [],
+        "combinedOutputViewIds": [
+          "de-by-gym-math-gk-lk",
+          "de-by-gym-sekii-math-gk-lk"
+        ]
+      }
+    ],
+    "maskAllowances": [
+      {
+        "viewId": "de-sh-gym-sekii-math-gk",
+        "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+        "beforeRawTargetRole": true,
+        "afterRawTargetRole": false,
+        "afterRawPrerequisiteOnlyRole": true,
+        "nativeActualSelectedProtectedTargetBefore": false,
+        "finiteActualSelectedProtectedTargetAfter": false,
+        "directMaskShape": {
+          "kind": "goalEntry",
+          "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+          "projectionRole": "prerequisiteOnly"
+        },
+        "originalTreeComparison": "After checking this exact single role mask exists, omit only this direct mask from the tree comparison; retain the complete original canonicalSubtree and every other original node."
+      },
+      {
+        "viewId": "de-sh-gym-math-gk-g8",
+        "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+        "beforeRawTargetRole": true,
+        "afterRawTargetRole": false,
+        "afterRawPrerequisiteOnlyRole": true,
+        "nativeActualSelectedProtectedTargetBefore": false,
+        "finiteActualSelectedProtectedTargetAfter": false,
+        "directMaskShape": {
+          "kind": "goalEntry",
+          "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+          "projectionRole": "prerequisiteOnly"
+        },
+        "originalTreeComparison": "After checking this exact single role mask exists, omit only this direct mask from the tree comparison; retain the complete original canonicalSubtree and every other original node."
+      },
+      {
+        "viewId": "de-sh-gym-math-gk-g9",
+        "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+        "beforeRawTargetRole": true,
+        "afterRawTargetRole": false,
+        "afterRawPrerequisiteOnlyRole": true,
+        "nativeActualSelectedProtectedTargetBefore": false,
+        "finiteActualSelectedProtectedTargetAfter": false,
+        "directMaskShape": {
+          "kind": "goalEntry",
+          "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+          "projectionRole": "prerequisiteOnly"
+        },
+        "originalTreeComparison": "After checking this exact single role mask exists, omit only this direct mask from the tree comparison; retain the complete original canonicalSubtree and every other original node."
+      }
+    ],
+    "requirements": [
+      "Preserve the ten existing new-identity inventory, B2 allowance, all 39 union documents, all 46 requests and the immutable original producer snapshots.",
+      "Bind the genuine independent decision and exact finite proposal through the existing normal policy; apply only against matching whole before objects.",
+      "Allow only the named existing assessment IDs in the enumerated source and union views. Neither ID becomes a new assessment identity or a generic globally allowed addition.",
+      "Check the exact three SH GK direct prerequisiteOnly mask objects, each once, and omit only those exact entries from the appropriate old-tree comparison. Keep the original canonicalSubtree and every unrelated node.",
+      "Keep the three SH LK sources and three SH unions whole-object identical. BY additions are only the exact Q2/Q3 wrappers.",
+      "The old effectiveCount helper counts a raw canonicalSubtree occurrence and does not itself resolve a separate direct role mask. The mask guard must verify the exact role override rather than treating that raw count as selected membership.",
+      "Reject unreviewed additions, extra mask keys or locations, duplicate task references, snapshot drift and unrelated tree changes. Actual implementation and negative guard checks remain Root integration work."
+    ]
+  },
+  "checks": {
+    "freezeBindings": 47,
+    "frozenAliasCopiesEqual": 13,
+    "actualNativeScopeBaselinesReconstructed": 161,
+    "normalizedDirectEdgeEntriesCompared": 111994,
+    "wholeContextFactsMatched": 18,
+    "actualExistingHelperOperationsReproduced": 10,
+    "candidateViewsCompiledWithoutErrorsOrDuplicates": 13,
+    "changedViewObjects": 7,
+    "wholeObjectIdenticalViews": 6,
+    "recompiledProductionUnionOutputsByteEqual": 5,
+    "selectedProtectedTargetAdditions": 16,
+    "newOrdinaryTargets": 0,
+    "newOrdinaryContextGoals": 0,
+    "preparationTargetPairsRouted": 100,
+    "preparationEndpointPairsRouted": 68,
+    "newMasteryWrites": 0,
+    "newAssessmentIdentities": 0
+  },
+  "countsInterpretation": "The 100/68 values are finite zero-mastery preparation-demand reachability deltas from the pinned actual Native graph. They are not assessed-competence counts, mastery proof, human learning-effectiveness evidence or a fresh runtime acceptance.",
+  "rootFollowThrough": [
+    "Integrate the exact reviewed payload and independent decision while preserving frozen author originals.",
+    "Implement and check only the bounded Combined39 guard allowances; do not report that this review already ran the normal command.",
+    "Reconcile current concurrent changes by whole-object checks, update normal input bindings truthfully, then run the required final production Stage/Native/M7/CI work."
+  ],
+  "portableProvenanceRule": "Root may add references to this independent report and describe the finite decision as independently approved in a derived integration handoff. Preserve the original author packet and author status as history. This is no permission to rewrite canonical sourceRef, source mappings, tasks, scoring, coverage or requires.",
+  "reviewEvidenceBindings": [
+    {
+      "path": "independent-check.actual.json",
+      "sha256": "906787caa801c13ad019bc0d305af22682c0976f8c35ea1155fb2bf6b33af222"
+    },
+    {
+      "path": "independent-views.actual.json",
+      "sha256": "aeca82a44fdc809b8e88e235660597aeac6f9e82241e48f368aa759f2da644c5"
+    },
+    {
+      "path": "independent-unions.actual.json",
+      "sha256": "64794e6bcb2ce5c2df66855a4a5f1ecece5cb4415027593f6186739a82654272"
+    },
+    {
+      "path": "independent-minimality.actual.json",
+      "sha256": "1fbd12b48c2503d84b7dacaae36de63e03f38d546b93e7a52f5226c6f5de0aa7"
+    },
+    {
+      "path": "independent_check.py",
+      "sha256": "698b094f7e80536906ba70beaef9db844e898e00aaf9a2e969a28bfcf858bf87"
+    },
+    {
+      "path": "independent_views.mts",
+      "sha256": "416c408a4f3fe41fe549799b214c01618555a3d34a92b5845e45355ad21a9ab4"
+    },
+    {
+      "path": "independent_union.py",
+      "sha256": "043efac22177b710e924bafa9f812095f5a8e5499d1831c425785d60983cad65"
+    },
+    {
+      "path": "independent_minimality.py",
+      "sha256": "9f405c9999dbc290a25b6ce3caa8aa759c4eb368057bca0a23ce4a17c6652331"
+    }
+  ],
+  "allAuthorFrozenOriginalsUnchanged": true,
+  "rejectedClaims": [
+    "Every prerequisite is separately passed",
+    "Poisson limit is an official BY/SH compulsory requirement",
+    "All prerequisiteOnly roles are unchanged",
+    "All 39 normal union checks passed in this review",
+    "Fresh Native or final Stage acceptance",
+    "M7 or CI acceptance",
+    "The future vector-free alternative is approved"
+  ]
+}

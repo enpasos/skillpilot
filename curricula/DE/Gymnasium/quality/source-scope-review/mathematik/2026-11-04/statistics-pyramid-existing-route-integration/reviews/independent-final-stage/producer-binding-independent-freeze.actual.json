@@ -1,0 +1,53 @@
+{
+  "status": "PASS_INDEPENDENT_EXACT_PRODUCER_BINDING_SUCCESSOR",
+  "manifestPath": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/statistics-pyramid-existing-route-producer-bindings-20261104-v1/binding-amendment-manifest.json",
+  "manifestSha256": "e55d9a4c12e6c62c00e556fb2f6d117175988cefd4d4fcb7d34b1d25e2f9349e",
+  "consolidatedImportManifestPath": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/statistics-pyramid-existing-route-producer-bindings-20261104-v1/final-import-manifest.json",
+  "consolidatedImportManifestSha256": "76b9e0541e420e8bd2f2f536ba0585a99ac0631b2ce8b4d1f2d587980d5217fe",
+  "effectiveCheckHost": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/statistics-pyramid-existing-route-producer-bindings-20261104-v1/check-host",
+  "originalG3ManifestSha256": "e038e6419305dbb9986d37c163f4c63b27282e2d1a1bc059dbd5542cb85da0e9",
+  "guardAmendmentManifestSha256": "e975231d01a7c16a973278badbc120490d2503d80084657ee3ebc9552c2ffe47",
+  "bindingAmendmentLeaves": 5,
+  "effectiveLayeredLeaves": 49,
+  "allLayeredCandidateAndBeforeHashesIndependentlyMatched": true,
+  "allManifestReferencedEvidenceHashesMatched": 23,
+  "policySha256": "795a97e647d335c3a9edf341f067131b16318163992dec0d84f622f8e69f3587",
+  "layoutSha256": "daa70c1b77ad9092982fe9ef304d02a1e5d38669e4ecf45ac971f46c3f55de86",
+  "newBindingAuthor": {
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/author-producer-binding-amendment.json",
+    "sha256": "780f5867bbfcbd61353cd1d23dda3dc3e3884bfa11e6fd2b0d2536e79ce95545"
+  },
+  "originalG3AuthorWholeUnchanged": true,
+  "independentWholeHostComparison": {
+    "path": "producer-binding-independent-comparison.actual.json",
+    "sha256": "8b7c4ff762612e387020af02a889c134e7b3866a375437134276d20bdb1a35da"
+  },
+  "nativeRecordedInputDelta": {
+    "originalInputCount": 3285,
+    "unchangedOriginalInputs": 3284,
+    "changedOriginalInputs": [
+      {
+        "path": "app/scripts/config/math-country-seki-stage-policy.json",
+        "native3Sha256": "b537c7455fa0ce9c946341fcaa898228d9d6d2054426af90f40d58af4fffdb61",
+        "finalProducerBindingSha256": "795a97e647d335c3a9edf341f067131b16318163992dec0d84f622f8e69f3587"
+      }
+    ],
+    "additionalMetadataPathsNotInOriginalInputMap": [
+      "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/author-producer-binding-amendment.json",
+      "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/guard-amendment.manifest.json",
+      "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-producer-bindings/producer-binding-deltas.actual.json"
+    ],
+    "guardAndLayoutNotInOriginalInputMap": true
+  },
+  "nonRuntimeJudgment": {
+    "guard": "Test-source buildtime producer, not invoked by Native sampler.",
+    "policyAndLayout": "Only authoring hash bindings change; no view, stage, scope, operation or source curriculum decisions change.",
+    "newMetadata": "All three files reside under reserved DE/Gymnasium/quality, excluded by actual runtime LandscapeService and GoalMappingService; CompositionViewService reads composition-views.",
+    "scopeInventory": "Actual sampler support reads gymnasiumDurationOfferings.ts, whose bytes are unchanged."
+  },
+  "actualUnchangedStageSourceConsumerPassed": true,
+  "actualFreshGuard39_46ReadOnlyPassed": true,
+  "sourceScopeStageOperationsAndAllRuntimeProjectionDataUnchanged": true,
+  "noFinalByteIdenticalNativeClaim": true,
+  "rootOrFrozenInputsWritten": false
+}

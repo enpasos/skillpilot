@@ -1,0 +1,83 @@
+{
+  "status": "AUTHOR_READ_RETAINED_PRIMARY_PDFS_NO_INDEPENDENT_SOURCE_PASS_CLAIM",
+  "sources": [
+    {
+      "key": "BY-M12",
+      "path": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_12_eA.pdf",
+      "sha256": "b3583a2902749e34f02561e9795021bb3bcf8e6ad4d357581be52b08cb59359a",
+      "officialURL": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/12/mathematik/regulaer",
+      "inspectedPdfPages": [
+        2,
+        4,
+        5
+      ],
+      "shortExactExcerpts": [
+        {
+          "pdfPage": 2,
+          "text": "modellieren Sachzusammenhänge mit Bernoulli-Ketten"
+        },
+        {
+          "pdfPage": 5,
+          "text": "bestimmen mithilfe des Skalarprodukts Längen von Vektoren sowie Größen von Winkeln zwischen Vektoren"
+        }
+      ],
+      "boundedSourceInterpretation": "M12.2 includes random-variable distributions, empirical display, parameters and binomial context modeling. M12.5 includes 3D coordinates, vectors, geometric argumentation with scalar product, areas/volumes and flexible reuse of lower-stage geometry. It does not require this exact original SkillPilot task or a formal Poisson limit."
+    },
+    {
+      "key": "BY-M12-V",
+      "path": "curricula/DE/Gymnasium/input/BY/raw/Gymnasium_Mathematik_Jgst_12_Vertiefungskurs.pdf",
+      "sha256": "0c999c585ec65ed7f167d0d07b6a40fe12d435cbcffed56c39f44674f684e138",
+      "officialURL": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/12/mathematik/vertieft",
+      "inspectedPdfPages": [
+        1,
+        3
+      ],
+      "shortExactExcerpts": [
+        {
+          "pdfPage": 1,
+          "text": "Die unterrichtende Lehrkraft des jeweiligen Kurses wählt drei der fünf Module aus."
+        }
+      ],
+      "boundedSourceInterpretation": "The statistics module includes variable scales, regression/correlation, one test family and critical data representations. It supplies no named Poisson distribution or formal Poisson limit. SkillPilot technical LK includes all five modules under the existing owner decision; no learner module-selection evidence is inferred."
+    },
+    {
+      "key": "SH-2024",
+      "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+      "sha256": "17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28",
+      "officialURL": "https://fachportal.lernnetz.de/sh/faecher/mathematik/fachanforderungen.html",
+      "inspectedPdfPages": [
+        64,
+        65,
+        70,
+        71,
+        72,
+        73
+      ],
+      "shortExactExcerpts": [
+        {
+          "pdfPage": 71,
+          "text": "interpretieren Wahrscheinlichkeitsverteilungen als Prognose von zu erwartenden Häufigkeitsverteilungen"
+        },
+        {
+          "pdfPage": 71,
+          "text": "verwenden den Computer zur Simulation von Zufallsexperimenten"
+        },
+        {
+          "pdfPage": 65,
+          "text": "deuten das Skalarprodukt und das Vektorprodukt geometrisch"
+        }
+      ],
+      "boundedSourceInterpretation": "L5 supports modeling real situations using discrete distributions, comparing expected frequencies, parameter interpretation and simulation. Named distributions include binomial/hypergeometric and normal approximation. This is not evidence that a formal Poisson limit is compulsory. L2/L3 supports vector geometry and scalar products in the official upper-stage curriculum, but source inclusion alone does not add missing canonical dot-product target 9460 to the actual SH Personal Curriculum."
+    }
+  ],
+  "secondaryExtractionBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "sha256": "77f04b8d5954a799d6946860d69a5f06d9058e9b4813421eef5d6b3798afa6e6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+      "sha256": "6c355eee69922644fc576b34ffb1830f323a96437bab5ae63ee38d4893d00009"
+    }
+  ]
+}

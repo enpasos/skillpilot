@@ -1,0 +1,454 @@
+{
+  "status": "AUTHOR_PROPOSAL_PENDING_GENUINE_REVIEW",
+  "canonicalBase": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "916f309dd5bc1d8cb66dba6fc204c29c5dfb9b54c935ce5968f27e2404cb7c2d"
+  },
+  "operations": [
+    {
+      "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+      "wholeBefore": {
+        "id": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+        "title": "Statistische Daten und Verteilungen abgleichen",
+        "description": "Die lernende Person kann eine materialgestützte Q3-Klausuraufgabe zu Datenanalyse, Simulation und weiteren Verteilungen selbstständig bearbeiten und die Güte des Modells bewerten.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2",
+            "K3",
+            "K4",
+            "K6"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "requires": [
+          "84069c5e-5526-57c1-9417-a886ccfd3f66",
+          "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+          "aeb947a2-2dd4-5017-a429-0d777e22db6a",
+          "c9a897ca-a0a2-5895-bbc4-23b20840c548",
+          "1cefd1ad-a250-5a03-8de7-04bdaf465ad8"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "c9a897ca-a0a2-5895-bbc4-23b20840c548"
+          ],
+          "coveredStrands": [
+            "L4",
+            "L5"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "taskContent": "In einem Callcenter wird in $100$ gleich langen Zeitintervallen erfasst, wie viele Anrufe eingehen. Die beobachteten Häufigkeiten lauten:\n\n- $0$ Anrufe: $12$\n- $1$ Anruf: $29$\n- $2$ Anrufe: $31$\n- $3$ Anrufe: $17$\n- mindestens $4$ Anrufe: $11$\n\nAls vereinfachtes Modell für ein Zeitintervall werden $1000$ potentielle Anrufende betrachtet. Jede Person ruft in diesem Intervall entweder genau einmal oder gar nicht an; die Wahrscheinlichkeit für einen Anruf beträgt $p=0{,}002$. Die Anrufentscheidungen der Personen werden als unabhängig angenommen. Zur weiteren Rechnung soll geprüft werden, ob sich die Anzahl der Anrufe pro Intervall näherungsweise durch eine Poisson-Verteilung beschreiben lässt. Für das Modell werden die Anzahlen in verschiedenen Zeitintervallen zusätzlich als unabhängig angenommen.\n\n1. Definieren Sie die Zufallsvariable für die Anzahl der Anrufe in einem Zeitintervall und begründen Sie mit den Modellannahmen eine Binomialverteilung. Motivieren Sie die Poisson-Verteilung als Näherung für diese seltenen Einzelereignisse und bestimmen Sie ihren Parameter $\\lambda$. Berechnen Sie mit dieser Näherung die erwarteten Häufigkeiten für $0$, $1$, $2$, $3$ und mindestens $4$ Anrufe in $100$ Intervallen.\n2. Vergleichen Sie Beobachtung und Modell und beurteilen Sie, ob die Poisson-Verteilung hier als sinnvolles Modell gelten kann.\n3. Bestimmen Sie die Wahrscheinlichkeit, dass in drei aufeinanderfolgenden Intervallen zusammen mindestens $8$ Anrufe eingehen.\n4. Erläutern Sie, wie eine Simulation helfen kann, die Modellannahme weiter zu überprüfen.",
+          "solutionContent": "1. Sei $Z$ die Anzahl der Anrufe in einem Zeitintervall. Im vereinfachten Modell ist $Z$ die Summe von $1000$ unabhängigen Bernoulli-Zufallsvariablen mit derselben Erfolgswahrscheinlichkeit $p=0{,}002$: Eine Person ruft entweder genau einmal oder nicht an. Daher gilt $Z\\sim B(1000;0{,}002)$. Es gibt viele unabhängige Gelegenheiten mit jeweils kleiner Anrufwahrscheinlichkeit. Für solche seltenen Einzelereignisse ist eine Poisson-Verteilung mit demselben Erwartungswert eine geeignete Näherung. Ihr Parameter ist\n$$\n\\lambda=np=1000\\cdot0{,}002=2\n$$\nund bedeutet im Modell durchschnittlich zwei Anrufe pro Zeitintervall. Die Seltenheit betrifft den Anruf einer einzelnen Person, nicht zwingend die Gesamtzahl aller Anrufe. Die Binomialverteilung des vereinfachten Modells und ihre Poisson-Näherung werden nicht als exakt identisch behauptet. Für die Näherungsvariable $X\\sim \\operatorname{Pois}(2)$ gilt\n$$\nP(X=k)=\\frac{2^k\\mathrm e^{-2}}{k!}.\n$$\nDaraus folgen näherungsweise\n$$\nP(X=0)=\\mathrm e^{-2}\\approx 0{,}1353,\\quad P(X=1)=2\\mathrm e^{-2}\\approx 0{,}2707,\n$$\n$$\nP(X=2)=\\frac{2^2}{2!}\\mathrm e^{-2}\\approx 0{,}2707,\\quad P(X=3)=\\frac{2^3}{3!}\\mathrm e^{-2}\\approx 0{,}1804.\n$$\nSomit ist\n$$\nP(X\\ge 4)=1-(0{,}1353+0{,}2707+0{,}2707+0{,}1804)\\approx 0{,}1429.\n$$\nFür $100$ Intervalle ergeben sich die erwarteten Häufigkeiten:\n$$\n13{,}5;\\ 27{,}1;\\ 27{,}1;\\ 18{,}0;\\ 14{,}3.\n$$\n\n2. Die beobachteten Werte $12,29,31,17,11$ liegen insgesamt recht nah an den erwarteten Häufigkeiten. Es gibt kleinere Abweichungen, aber keine deutliche systematische Verletzung. Die beobachteten Häufigkeiten sind damit mit dem Modell vereinbar, beweisen es aber nicht. Insbesondere kann eine solche Häufigkeitstabelle ohne zeitliche Reihenfolge weder die angenommene Unabhängigkeit verschiedener Intervalle noch zeitlich konstante Raten überprüfen.\n\n3. Die Summe von drei unabhängigen Poisson-verteilten Zufallsvariablen mit Parameter $2$ ist wieder poissonverteilt mit Parameter $6$. Für $Y\\sim \\operatorname{Pois}(6)$ gilt daher\n$$\nP(Y\\ge 8)=1-P(Y\\le 7)\\approx 0{,}256.\n$$\nDie Wahrscheinlichkeit beträgt also etwa $25{,}6\\,$%.\n\n4. Man kann sehr viele Serien von je $100$ Intervallen mit dem Poisson-Modell simulieren und dabei vergleichen, wie stark die simulierten Häufigkeiten typischerweise streuen. Liegen die realen Daten im Bereich dieser typischen Schwankungen, stützt das die Vereinbarkeit der Häufigkeiten mit dem Modell. Eine Simulation unabhängiger Poisson-Anzahlen beweist jedoch nicht die Unabhängigkeit der realen Intervalle; dafür wären zeitlich zugeordnete Daten und weitere Untersuchungen nötig.",
+          "scoring": {
+            "maxPoints": 20,
+            "passingPoints": 10,
+            "steps": [
+              {
+                "id": "q3d_1",
+                "points": 7,
+                "description": "Zufallsvariable als Anzahl pro Zeitintervall definiert und Binomialmodell aus gleichen unabhängigen Bernoulli-Versuchen begründet (1 BE); Poisson-Näherung mit vielen Gelegenheiten und seltenen Einzelereignissen motiviert (1 BE); Parameter lambda=np=2 bestimmt und als mittlere Anrufzahl je Intervall gedeutet (1 BE); alle fünf erwarteten Häufigkeiten mit dem Poisson-Modell korrekt berechnet (4 BE)."
+              },
+              {
+                "id": "q3d_2",
+                "points": 4,
+                "description": "Daten und Modell fachlich sinnvoll verglichen"
+              },
+              {
+                "id": "q3d_3",
+                "points": 4,
+                "description": "Wahrscheinlichkeit für mindestens 8 Anrufe in drei Intervallen korrekt bestimmt"
+              },
+              {
+                "id": "q3d_4",
+                "points": 5,
+                "description": "Rolle einer Simulation für die Modellprüfung korrekt erläutert"
+              }
+            ]
+          },
+          "reviewNote": "Begrenzte Inhaltskorrektur vom 01.11.2026 unabhängig mit Astra Ultra fachlich geprüft; exakte Nachkorrekturen berücksichtigt. Nachweis: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-upper-candidate-review.json. Historische Quellen und bestehende gültige Mastery bleiben unverändert. Ergänzende Poisson-Teilaufgabe und nichtleere belegte Coverage nach curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/c83dc2d1-poisson-coverage-followup.review.json unabhängig fachlich geprüft."
+        },
+        "phase": "Q3",
+        "type": "atomic"
+      },
+      "wholeAfter": {
+        "id": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+        "title": "Statistische Daten und Verteilungen abgleichen",
+        "description": "Die lernende Person kann eine materialgestützte Q3-Klausuraufgabe zu Datenanalyse, Simulation und weiteren Verteilungen selbstständig bearbeiten und die Güte des Modells bewerten.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2",
+            "K3",
+            "K4",
+            "K6"
+          ],
+          "guidingIdeas": [
+            "L4",
+            "L5"
+          ],
+          "phase": "Q3"
+        },
+        "requires": [
+          "84069c5e-5526-57c1-9417-a886ccfd3f66",
+          "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+          "aeb947a2-2dd4-5017-a429-0d777e22db6a",
+          "c9a897ca-a0a2-5895-bbc4-23b20840c548",
+          "1cefd1ad-a250-5a03-8de7-04bdaf465ad8"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "c9a897ca-a0a2-5895-bbc4-23b20840c548"
+          ],
+          "coveredStrands": [
+            "L4",
+            "L5"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "taskContent": "In einem Callcenter wird in $100$ gleich langen Zeitintervallen erfasst, wie viele Anrufe eingehen. Die beobachteten Häufigkeiten lauten:\n\n- $0$ Anrufe: $12$\n- $1$ Anruf: $29$\n- $2$ Anrufe: $31$\n- $3$ Anrufe: $17$\n- mindestens $4$ Anrufe: $11$\n\nAls vereinfachtes Modell für ein Zeitintervall werden $1000$ potentielle Anrufende betrachtet. Jede Person ruft in diesem Intervall entweder genau einmal oder gar nicht an; die Wahrscheinlichkeit für einen Anruf beträgt $p=0{,}002$. Die Anrufentscheidungen der Personen werden als unabhängig angenommen. Zur weiteren Rechnung soll geprüft werden, ob sich die Anzahl der Anrufe pro Intervall näherungsweise durch eine Poisson-Verteilung beschreiben lässt. Für das Modell werden die Anzahlen in verschiedenen Zeitintervallen zusätzlich als unabhängig angenommen.\n\n1. Definieren Sie die Zufallsvariable für die Anzahl der Anrufe in einem Zeitintervall und begründen Sie mit den Modellannahmen eine Binomialverteilung. Motivieren Sie die Poisson-Verteilung als Näherung für diese seltenen Einzelereignisse und bestimmen Sie ihren Parameter $\\lambda$. Berechnen Sie mit dieser Näherung die erwarteten Häufigkeiten für $0$, $1$, $2$, $3$ und mindestens $4$ Anrufe in $100$ Intervallen.\n2. Vergleichen Sie Beobachtung und Modell und beurteilen Sie, ob die Poisson-Verteilung hier als sinnvolles Modell gelten kann.\n3. Bestimmen Sie die Wahrscheinlichkeit, dass in drei aufeinanderfolgenden Intervallen zusammen mindestens $8$ Anrufe eingehen.\n4. Erläutern Sie, wie eine Simulation helfen kann, die Modellannahme weiter zu überprüfen.",
+          "solutionContent": "1. Sei $Z$ die Anzahl der Anrufe in einem Zeitintervall. Im vereinfachten Modell ist $Z$ die Summe von $1000$ unabhängigen Bernoulli-Zufallsvariablen mit derselben Erfolgswahrscheinlichkeit $p=0{,}002$: Eine Person ruft entweder genau einmal oder nicht an. Daher gilt $Z\\sim B(1000;0{,}002)$. Es gibt viele unabhängige Gelegenheiten mit jeweils kleiner Anrufwahrscheinlichkeit. Für solche seltenen Einzelereignisse ist eine Poisson-Verteilung mit demselben Erwartungswert eine geeignete Näherung. Ihr Parameter ist\n$$\n\\lambda=np=1000\\cdot0{,}002=2\n$$\nund bedeutet im Modell durchschnittlich zwei Anrufe pro Zeitintervall. Die Seltenheit betrifft den Anruf einer einzelnen Person, nicht zwingend die Gesamtzahl aller Anrufe. Die Binomialverteilung des vereinfachten Modells und ihre Poisson-Näherung werden nicht als exakt identisch behauptet. Für die Näherungsvariable $X\\sim \\operatorname{Pois}(2)$ gilt\n$$\nP(X=k)=\\frac{2^k\\mathrm e^{-2}}{k!}.\n$$\nDaraus folgen näherungsweise\n$$\nP(X=0)=\\mathrm e^{-2}\\approx 0{,}1353,\\quad P(X=1)=2\\mathrm e^{-2}\\approx 0{,}2707,\n$$\n$$\nP(X=2)=\\frac{2^2}{2!}\\mathrm e^{-2}\\approx 0{,}2707,\\quad P(X=3)=\\frac{2^3}{3!}\\mathrm e^{-2}\\approx 0{,}1804.\n$$\nSomit ist\n$$\nP(X\\ge 4)=1-(0{,}1353+0{,}2707+0{,}2707+0{,}1804)\\approx 0{,}1429.\n$$\nFür $100$ Intervalle ergeben sich die erwarteten Häufigkeiten:\n$$\n13{,}5;\\ 27{,}1;\\ 27{,}1;\\ 18{,}0;\\ 14{,}3.\n$$\n\n2. Die beobachteten Werte $12,29,31,17,11$ liegen insgesamt recht nah an den erwarteten Häufigkeiten. Es gibt kleinere Abweichungen, aber keine deutliche systematische Verletzung. Die beobachteten Häufigkeiten sind damit mit dem Modell vereinbar, beweisen es aber nicht. Insbesondere kann eine solche Häufigkeitstabelle ohne zeitliche Reihenfolge weder die angenommene Unabhängigkeit verschiedener Intervalle noch zeitlich konstante Raten überprüfen.\n\n3. Die Summe von drei unabhängigen Poisson-verteilten Zufallsvariablen mit Parameter $2$ ist wieder poissonverteilt mit Parameter $6$. Für $Y\\sim \\operatorname{Pois}(6)$ gilt daher\n$$\nP(Y\\ge 8)=1-P(Y\\le 7)\\approx 0{,}256.\n$$\nDie Wahrscheinlichkeit beträgt also etwa $25{,}6\\,$%.\n\n4. Man kann sehr viele Serien von je $100$ Intervallen mit dem Poisson-Modell simulieren und dabei vergleichen, wie stark die simulierten Häufigkeiten typischerweise streuen. Liegen die realen Daten im Bereich dieser typischen Schwankungen, stützt das die Vereinbarkeit der Häufigkeiten mit dem Modell. Eine Simulation unabhängiger Poisson-Anzahlen beweist jedoch nicht die Unabhängigkeit der realen Intervalle; dafür wären zeitlich zugeordnete Daten und weitere Untersuchungen nötig.",
+          "scoring": {
+            "maxPoints": 20,
+            "passingPoints": 10,
+            "steps": [
+              {
+                "id": "q3d_1",
+                "points": 7,
+                "description": "Zufallsvariable als Anzahl pro Zeitintervall definiert und Binomialmodell aus gleichen unabhängigen Bernoulli-Versuchen begründet (1 BE); Poisson-Näherung mit vielen Gelegenheiten und seltenen Einzelereignissen motiviert (1 BE); Parameter lambda=np=2 bestimmt und als mittlere Anrufzahl je Intervall gedeutet (1 BE); alle fünf erwarteten Häufigkeiten mit dem Poisson-Modell korrekt berechnet (4 BE)."
+              },
+              {
+                "id": "q3d_2",
+                "points": 4,
+                "description": "Daten und Modell fachlich sinnvoll verglichen"
+              },
+              {
+                "id": "q3d_3",
+                "points": 4,
+                "description": "Wahrscheinlichkeit für mindestens 8 Anrufe in drei Intervallen korrekt bestimmt"
+              },
+              {
+                "id": "q3d_4",
+                "points": 5,
+                "description": "Rolle einer Simulation für die Modellprüfung korrekt erläutert"
+              }
+            ]
+          },
+          "reviewNote": "Begrenzte Inhaltskorrektur vom 01.11.2026 unabhängig mit Astra Ultra fachlich geprüft; exakte Nachkorrekturen berücksichtigt. Nachweis: curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/independent-upper-candidate-review.json. Historische Quellen und bestehende gültige Mastery bleiben unverändert. Ergänzende Poisson-Teilaufgabe und nichtleere belegte Coverage nach curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/contract-corrections-v1/c83dc2d1-poisson-coverage-followup.review.json unabhängig fachlich geprüft."
+        },
+        "phase": "Q3",
+        "type": "atomic"
+      },
+      "changedTopLevelFields": [
+        "applicability"
+      ],
+      "newJurisdictions": [
+        "DE-BY",
+        "DE-SH"
+      ],
+      "wholeTaskSolutionScoringCoverageRequiresUnchanged": true,
+      "beforeObjectSha256": "2b91cbb9d6479e8873b6cbe6035a3906aee51254ed69b1dcda46b4293f20164e",
+      "afterObjectSha256": "cb68c6dde329e496db3c80fb9491b3cbfec06e5f6573b56095f02ffbcfbf9c0c"
+    },
+    {
+      "goalId": "1878f680-095c-511d-aaed-e98393f7fde9",
+      "wholeBefore": {
+        "id": "1878f680-095c-511d-aaed-e98393f7fde9",
+        "title": "Pyramidenvolumen und Volumenänderung bei Streckung untersuchen",
+        "titleEn": "Investigate pyramid volume and volume changes under scaling",
+        "description": "Die lernende Person kann in einer Q2-Klausuraufgabe aus gegebenen Raumkoordinaten Rechtwinkligkeit, Grundfläche und Pyramidenvolumen bestimmen, den Faktor 1/3 gegenüber einem Prisma gleicher Grundfläche und Höhe deuten und die Volumenänderung bei einer Streckung begründen.",
+        "descriptionEn": "The learner can use given three-dimensional coordinates in a Q2 exam task to establish perpendicularity, calculate the base area and pyramid volume, interpret the factor 1/3 in comparison with a prism of the same base area and height, and explain how scaling changes the volume.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1",
+            "K2",
+            "K3",
+            "K4",
+            "K5"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2",
+            "L3",
+            "L4"
+          ],
+          "phase": "Q2"
+        },
+        "requires": [
+          "288633c1-f61c-5b48-af7e-a80357f96cad",
+          "9460c3ff-e72d-4107-bc73-087d217200aa",
+          "5f548596-9bc3-532e-88a0-81d5029809e9",
+          "5390691d-1b7c-5572-9589-a69c2bba9a27"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "288633c1-f61c-5b48-af7e-a80357f96cad",
+            "9460c3ff-e72d-4107-bc73-087d217200aa",
+            "5f548596-9bc3-532e-88a0-81d5029809e9",
+            "5390691d-1b7c-5572-9589-a69c2bba9a27"
+          ],
+          "coveredStrands": [
+            "L1",
+            "L2",
+            "L3",
+            "L4"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "Gegeben sind die Punkte\n$$\nA(0\\mid0\\mid0),\\ B(6\\mid0\\mid0),\\ C(0\\mid4\\mid0),\\ D(0\\mid0\\mid3).\n$$\nSie bilden die Eckpunkte einer Pyramide mit Grunddreieck $ABC$ und Spitze $D$.\n\n1. Zeigen Sie, dass das Dreieck $ABC$ rechtwinklig ist.\n2. Berechnen Sie den Flächeninhalt des Grunddreiecks $ABC$.\n3. Bestimmen Sie das Volumen der Pyramide $ABCD$ und deuten Sie den Faktor $1/3$ im Vergleich zu einem Prisma mit derselben Grundfläche und Höhe.\n4. Die Koordinaten aller Punkte werden mit dem Faktor $1.5$ multipliziert. Bestimmen Sie das neue Volumen und erläutern Sie, warum sich das Volumen gerade so ändert.",
+          "solutionContent": "1. Es gilt\n$$\n\\overrightarrow{AB} = \\begin{pmatrix}6\\\\0\\\\0\\end{pmatrix},\\qquad \\overrightarrow{AC}=\\begin{pmatrix}0\\\\4\\\\0\\end{pmatrix}.\n$$\nDas Skalarprodukt ist\n$$\n\\overrightarrow{AB}\\cdot\\overrightarrow{AC}=6\\cdot 0+0\\cdot 4+0\\cdot 0=0.\n$$\nAlso stehen $\\overrightarrow{AB}$ und $\\overrightarrow{AC}$ senkrecht aufeinander; das Dreieck $ABC$ ist rechtwinklig bei $A$.\n\n2. Der Flächeninhalt des rechtwinkligen Dreiecks ist\n$$\nA_{ABC}=\\frac12\\cdot 6\\cdot 4 = 12.\n$$\n\n3. Die Höhe der Pyramide ist die Entfernung des Punktes $D$ von der Ebene $z=0$, also $h=3$.\nDamit ergibt sich\n$$\nV = \\frac13\\cdot A_{ABC}\\cdot h = \\frac13\\cdot 12\\cdot 3 = 12.\n$$\nDas Volumen beträgt $12\\,\\text{LE}^3$.\nDer Faktor $1/3$ bedeutet: Im Vergleich zu einem Prisma mit derselben Grundfläche und Höhe ist das Pyramidenvolumen ein Drittel; hier hätte das Prisma $G\\cdot h=36\\,\\text{LE}^3$.\n\n4. Bei einer Streckung aller Längen mit dem Faktor $1.5$ werden Flächen mit dem Faktor $1.5^2=2.25$ und Volumina mit dem Faktor $1.5^3=3.375$ multipliziert. Also gilt\n$$\nV_{\\text{neu}} = 12\\cdot 1.5^3 = 12\\cdot 3.375 = 40.5.\n$$\nDas neue Volumen beträgt $40.5\\,\\text{LE}^3$.",
+          "scoring": {
+            "maxPoints": 20,
+            "passingPoints": 10,
+            "steps": [
+              {
+                "id": "q2_geo_1",
+                "points": 4,
+                "description": "Rechtwinkligkeit des Grunddreiecks korrekt nachgewiesen"
+              },
+              {
+                "id": "q2_geo_2",
+                "points": 4,
+                "description": "Flächeninhalt des Grunddreiecks korrekt berechnet"
+              },
+              {
+                "id": "q2_geo_3",
+                "points": 6,
+                "description": "Volumen der Pyramide korrekt bestimmt und Drittelfaktor im Vergleich zum Prisma gedeutet"
+              },
+              {
+                "id": "q2_geo_4",
+                "points": 6,
+                "description": "Volumenänderung unter Streckung korrekt berechnet und begründet"
+              }
+            ]
+          }
+        },
+        "phase": "Q2",
+        "type": "atomic"
+      },
+      "wholeAfter": {
+        "id": "1878f680-095c-511d-aaed-e98393f7fde9",
+        "title": "Pyramidenvolumen und Volumenänderung bei Streckung untersuchen",
+        "titleEn": "Investigate pyramid volume and volume changes under scaling",
+        "description": "Die lernende Person kann in einer Q2-Klausuraufgabe aus gegebenen Raumkoordinaten Rechtwinkligkeit, Grundfläche und Pyramidenvolumen bestimmen, den Faktor 1/3 gegenüber einem Prisma gleicher Grundfläche und Höhe deuten und die Volumenänderung bei einer Streckung begründen.",
+        "descriptionEn": "The learner can use given three-dimensional coordinates in a Q2 exam task to establish perpendicularity, calculate the base area and pyramid volume, interpret the factor 1/3 in comparison with a prism of the same base area and height, and explain how scaling changes the volume.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "K1",
+            "K2",
+            "K3",
+            "K4",
+            "K5"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2",
+            "L3",
+            "L4"
+          ],
+          "phase": "Q2"
+        },
+        "requires": [
+          "288633c1-f61c-5b48-af7e-a80357f96cad",
+          "9460c3ff-e72d-4107-bc73-087d217200aa",
+          "5f548596-9bc3-532e-88a0-81d5029809e9",
+          "5390691d-1b7c-5572-9589-a69c2bba9a27"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "288633c1-f61c-5b48-af7e-a80357f96cad",
+            "9460c3ff-e72d-4107-bc73-087d217200aa",
+            "5f548596-9bc3-532e-88a0-81d5029809e9",
+            "5390691d-1b7c-5572-9589-a69c2bba9a27"
+          ],
+          "coveredStrands": [
+            "L1",
+            "L2",
+            "L3",
+            "L4"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "Gegeben sind die Punkte\n$$\nA(0\\mid0\\mid0),\\ B(6\\mid0\\mid0),\\ C(0\\mid4\\mid0),\\ D(0\\mid0\\mid3).\n$$\nSie bilden die Eckpunkte einer Pyramide mit Grunddreieck $ABC$ und Spitze $D$.\n\n1. Zeigen Sie, dass das Dreieck $ABC$ rechtwinklig ist.\n2. Berechnen Sie den Flächeninhalt des Grunddreiecks $ABC$.\n3. Bestimmen Sie das Volumen der Pyramide $ABCD$ und deuten Sie den Faktor $1/3$ im Vergleich zu einem Prisma mit derselben Grundfläche und Höhe.\n4. Die Koordinaten aller Punkte werden mit dem Faktor $1.5$ multipliziert. Bestimmen Sie das neue Volumen und erläutern Sie, warum sich das Volumen gerade so ändert.",
+          "solutionContent": "1. Es gilt\n$$\n\\overrightarrow{AB} = \\begin{pmatrix}6\\\\0\\\\0\\end{pmatrix},\\qquad \\overrightarrow{AC}=\\begin{pmatrix}0\\\\4\\\\0\\end{pmatrix}.\n$$\nDas Skalarprodukt ist\n$$\n\\overrightarrow{AB}\\cdot\\overrightarrow{AC}=6\\cdot 0+0\\cdot 4+0\\cdot 0=0.\n$$\nAlso stehen $\\overrightarrow{AB}$ und $\\overrightarrow{AC}$ senkrecht aufeinander; das Dreieck $ABC$ ist rechtwinklig bei $A$.\n\n2. Der Flächeninhalt des rechtwinkligen Dreiecks ist\n$$\nA_{ABC}=\\frac12\\cdot 6\\cdot 4 = 12.\n$$\n\n3. Die Höhe der Pyramide ist die Entfernung des Punktes $D$ von der Ebene $z=0$, also $h=3$.\nDamit ergibt sich\n$$\nV = \\frac13\\cdot A_{ABC}\\cdot h = \\frac13\\cdot 12\\cdot 3 = 12.\n$$\nDas Volumen beträgt $12\\,\\text{LE}^3$.\nDer Faktor $1/3$ bedeutet: Im Vergleich zu einem Prisma mit derselben Grundfläche und Höhe ist das Pyramidenvolumen ein Drittel; hier hätte das Prisma $G\\cdot h=36\\,\\text{LE}^3$.\n\n4. Bei einer Streckung aller Längen mit dem Faktor $1.5$ werden Flächen mit dem Faktor $1.5^2=2.25$ und Volumina mit dem Faktor $1.5^3=3.375$ multipliziert. Also gilt\n$$\nV_{\\text{neu}} = 12\\cdot 1.5^3 = 12\\cdot 3.375 = 40.5.\n$$\nDas neue Volumen beträgt $40.5\\,\\text{LE}^3$.",
+          "scoring": {
+            "maxPoints": 20,
+            "passingPoints": 10,
+            "steps": [
+              {
+                "id": "q2_geo_1",
+                "points": 4,
+                "description": "Rechtwinkligkeit des Grunddreiecks korrekt nachgewiesen"
+              },
+              {
+                "id": "q2_geo_2",
+                "points": 4,
+                "description": "Flächeninhalt des Grunddreiecks korrekt berechnet"
+              },
+              {
+                "id": "q2_geo_3",
+                "points": 6,
+                "description": "Volumen der Pyramide korrekt bestimmt und Drittelfaktor im Vergleich zum Prisma gedeutet"
+              },
+              {
+                "id": "q2_geo_4",
+                "points": 6,
+                "description": "Volumenänderung unter Streckung korrekt berechnet und begründet"
+              }
+            ]
+          }
+        },
+        "phase": "Q2",
+        "type": "atomic"
+      },
+      "changedTopLevelFields": [
+        "applicability"
+      ],
+      "newJurisdictions": [
+        "DE-BY"
+      ],
+      "wholeTaskSolutionScoringCoverageRequiresUnchanged": true,
+      "beforeObjectSha256": "801f476c04aa664ca72fee08194f10fa7021e97eb40f902e77b6f3fae1e62b85",
+      "afterObjectSha256": "6f38d1744eccc297e8e4bf9ef97aa46cf56f17536bfd337209c9cd24bbd27d34"
+    }
+  ],
+  "applyOnlyAfterMatchingWholeBefore": true,
+  "newAssessmentIdentities": 0,
+  "noRawContainsChanges": true
+}

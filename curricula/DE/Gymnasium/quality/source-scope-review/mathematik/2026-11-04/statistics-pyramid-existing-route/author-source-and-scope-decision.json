@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "status": "AUTHOR_PROPOSED_FINITE_REPAIR_PENDING_GENUINE_ASTRA_REVIEW",
+  "canonicalBase": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "916f309dd5bc1d8cb66dba6fc204c29c5dfb9b54c935ce5968f27e2404cb7c2d"
+  },
+  "nativeBase": {
+    "path": "tmp/approach-review-20261101/math-context-he-three-joint-native-20261104-v1/candidate.json.gz",
+    "sha256": "e412662ca5720f4b5d52046cf283484604eb691201eee0e3c52e9dbb4402eea4",
+    "scopes": 161
+  },
+  "wholeContractBoundary": "Existing two released 20/10 tasks, solutions, step rubrics, coverage and all nine direct requires remain byte-structurally unchanged. Only applicability and exact authored view placement proposed. No new exam identity, mastery transfer, level work or source-mapping claims.",
+  "statistics": {
+    "assessmentId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
+    "authorProposedScopePairs": [
+      "DE-BY/CrossStage/G9/GK+LK",
+      "DE-BY/CrossStage/G9/LK",
+      "DE-BY/SekII/G9/GK+LK",
+      "DE-BY/SekII/G9/LK",
+      "DE-SH/CrossStage/G8/GK+LK",
+      "DE-SH/CrossStage/G8/LK",
+      "DE-SH/CrossStage/G9/GK+LK",
+      "DE-SH/CrossStage/G9/LK",
+      "DE-SH/SekII/G8/GK+LK",
+      "DE-SH/SekII/G8/LK",
+      "DE-SH/SekII/G9/GK+LK",
+      "DE-SH/SekII/G9/LK"
+    ],
+    "wholeTaskInterpretation": "Task 1 explicitly derives B(1000,0.002) from model assumptions, motivates its Poisson approximation, identifies lambda=np=2 and calculates five expected frequencies. Task 2 evaluates fit with limitations; Task 3 uses the sum of independent Poisson variables; Task 4 explains simulation. Formal limit derivation is not requested or scored.",
+    "directPreparationReasons": {
+      "84069c5e-5526-57c1-9417-a886ccfd3f66": "Task 2 compares observed and theoretical frequencies and distinguishes model compatibility from proof.",
+      "4aa70ad4-171d-5671-a864-c0c7758fa0ed": "Task 4 asks for a technically meaningful simulation plan and interpretation. Prior hands-on simulation is broader preparation, not evidence awarded by this written item.",
+      "aeb947a2-2dd4-5017-a429-0d777e22db6a": "Prior evaluation of empirical data supplies the context for interpreting deviations and selecting distributional summaries; this form does not assess every empirical dispersion/lage computation.",
+      "c9a897ca-a0a2-5895-bbc4-23b20840c548": "Task 1 applies the rare-single-event binomial-to-Poisson approximation, determines its rate and calculates frequencies; Task 3 applies independent aggregation.",
+      "1cefd1ad-a250-5a03-8de7-04bdaf465ad8": "Retain as an intentional theory-before-application sequence in the selected additional LK path: derive the limiting distribution, then decide whether a finite binomial model can reasonably use that approximation and explain the many-trials/small-p/fixed-mean conditions. This is stronger than the minimum needed to compute this example. Its purpose is to ground the approximation rationale rather than teach a memorized recipe. The deliberate didactic demand is not a claim of logical necessity, official compulsory status, or scored formal derivation. Independent review must explicitly accept or reject this stronger sequence; no graph-closing rationale is sufficient."
+    },
+    "sourceBoundary": "BY/SH general modeling and simulation passages support the shared techniques. Poisson modeling, the formal limit and this integrated form are additional own SkillPilot content in these exact already-theory-inclusive LK targets. No new mapping asserting them as compulsory is authored. New BY references have an explicit additional-content label. SH retains the original exercise-collection tree, with the additional-content boundary recorded by this source decision rather than claiming a new visible label.",
+    "coverageBoundary": "coveredGoalIds remains exactly [c9a897ca]. All five requires are preparation. Passing the ordinary 20/10 form marks only the assessment goal; it creates no mastery of any prerequisite and no formal-derivation attestation.",
+    "SHScopeProtection": "Add SH jurisdiction only with three GK exclusions. Raw SH exam-collection references otherwise activate Statistics in GK. Keep the three actual LK source references byte-structurally unchanged and regenerate their production unions. The three LK includes are idempotent retention operations. Do not split/relocate the shared exercise subtree: that concrete attempt conflicts in the unchanged production merger. No target ordinary competency is added."
+  },
+  "pyramid": {
+    "assessmentId": "1878f680-095c-511d-aaed-e98393f7fde9",
+    "authorProposedScopePairs": [
+      "DE-BY/CrossStage/G9/GK+LK",
+      "DE-BY/CrossStage/G9/LK",
+      "DE-BY/SekII/G9/GK+LK",
+      "DE-BY/SekII/G9/LK"
+    ],
+    "wholeTaskInterpretation": "The four parts establish a right angle from spatial coordinates, compute triangular base area, use perpendicular height and pyramid/prism ratio, and justify cubic scaling. The reference solution uses the scalar product for perpendicularity; the 4-BE first step is not a vector-free volume-only task.",
+    "directPreparationReasons": {
+      "288633c1-f61c-5b48-af7e-a80357f96cad": "Part 3 explicitly uses V=Gh/3 and interprets the factor relative to a prism.",
+      "9460c3ff-e72d-4107-bc73-087d217200aa": "Part 1 and its reference method establish perpendicularity using AB dot AC=0 in 3D.",
+      "5f548596-9bc3-532e-88a0-81d5029809e9": "Parts 3 and 4 apply solid volume and distinguish lengths, areas and volumes under scaling.",
+      "5390691d-1b7c-5572-9589-a69c2bba9a27": "Part 2 uses right-triangle geometry and its base-area formula."
+    },
+    "sourceBoundary": "BY M12.5 supplies a direct primary basis for spatial coordinates, scalar-product geometric arguments, volume computations and flexible reuse of lower-stage geometry. This exact form and the cubic-scaling transfer are authored SkillPilot assessment content. BY GK remains held because the actual target lacks 9460; the technical LK label does not imply Bavarian Mathematics is a selectable Leistungsfach.",
+    "heldScopePairs": [
+      "DE-BY/SekII/G9/GK",
+      "DE-BY/CrossStage/G9/GK",
+      "DE-SH/SekII/G8/GK",
+      "DE-SH/SekII/G8/LK",
+      "DE-SH/SekII/G8/GK+LK",
+      "DE-SH/SekII/G9/GK",
+      "DE-SH/SekII/G9/LK",
+      "DE-SH/SekII/G9/GK+LK",
+      "DE-SH/CrossStage/G8/GK",
+      "DE-SH/CrossStage/G8/LK",
+      "DE-SH/CrossStage/G8/GK+LK",
+      "DE-SH/CrossStage/G9/GK",
+      "DE-SH/CrossStage/G9/LK",
+      "DE-SH/CrossStage/G9/GK+LK"
+    ],
+    "holdReason": "14 actual scopes have 9460 only in existing hidden preparation context, not in their selected targets. An official vector passage or hidden context alone is not authority to widen those target scopes or activate this complete vector-bearing form.",
+    "alternativeProposalOnly": "A future separate vector-free form can give a right-triangular base with stated perpendicular side lengths 6 and 4 and perpendicular pyramid height 3, ask for base area, compare prism/pyramid volumes and justify the factor 1.5 cubed. It must omit both spatial coordinate proof and dot-product rubric demand; receive its own whole task/rubric/source/scope review; and use a separately reviewed identity only if selected existing goals still need it. No new alternative identity, activation or closed-endpoint claim is made here."
+  },
+  "semantics": {
+    "mastery": "Binary existing mastery only. Assessment completion does not imply prerequisite mastery. A mastered goal ends its outgoing preparation demand. Selected protected targets remain independent obligations.",
+    "scope": "Full Personal Curriculum T is distinct from Level-3 focus. New placements target only the existing two exams in the finite positive scopes; no learner state, focus selection or default teaching is authored.",
+    "closure": "Any preparation-demand cut is separate from exam coverage; exact endpoint impact must use actual native R. A DAG screening count is not source permission, assessment coverage or prerequisite-mastery proof."
+  },
+  "requiredIndependentReview": [
+    "Whole-source/task suitability and stronger Poisson preparation policy",
+    "Exact two applicability-only changes, scope-specific SH masks and retained SH LK paths",
+    "Full 161-scope finite delta and production GK+LK result",
+    "No new learner writes, masteries, broad source claims or existing-task changes"
+  ],
+  "rootWrites": false,
+  "gitWrites": false,
+  "nativeRun": false,
+  "independentReviewStatus": "PENDING_ROOT_ARRANGED_GENUINE_ASTRA_REVIEW",
+  "boundPrimarySourceEvidence": {
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/primary-source-bindings.json",
+    "sha256": "feda58489ab409187df236dd99c38df1308d9bc5e0ac81b6c1b76a2be72bfd53"
+  },
+  "boundWholeNinePreparationContracts": {
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/nine-direct-preparation-contracts.json",
+    "sha256": "345bf95eea05eb120efe97aed8241facd731ae22c1dca8792f691168ef6d48c1"
+  },
+  "boundActualFiniteAuthoringDelta": {
+    "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-04/statistics-pyramid-existing-route/161-scope-finite-delta.actual.json",
+    "sha256": "d1c9ea8d1e85fec2bb1f983c3513b48f33cbfeb6dbb9e4a9e9d71f2a14164a95"
+  },
+  "authoringCounts": {
+    "verifiedNativeBaselineScopes": 161,
+    "newSelectedProtectedTargetPairs": 16,
+    "statisticsPairs": 12,
+    "pyramidPairs": 4,
+    "changedScopes": 12,
+    "closedRequiredWorkTargetPairs": 100,
+    "closedRequiredWorkEndpointPairs": 68,
+    "remainingUncoveredEndpointPairs": 1919,
+    "changedViewObjects": 7,
+    "unchangedRetainedOrRegeneratedViewObjects": 6
+  }
+}

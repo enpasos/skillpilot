@@ -1,0 +1,129 @@
+{
+  "status": "PASS_INDEPENDENT_FRESH_AMENDED_GUARD_POSITIVE_AND_NEGATIVES",
+  "guardSource": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/statistics-pyramid-existing-route-guard-amendment-20261104-v1/overlay/backend/src/test/java/com/skillpilot/backend/composition/MaterializeMathContextualCombinedViews.java",
+  "guardSourceSha256": "c92ffeaeb59bffeb785b80196a7d9b271eb6df2e24743e905378e3d9a578c382",
+  "unchangedMainSourceSha256": "7bd872996af2e6178dde8baa729be8615b736c32baa5573e6f417e41e8f64758",
+  "freshClasses": {
+    "com/skillpilot/backend/composition/CourseProfileCompositionViewMerger$MergeState.class": "d6b0ecd0f9b51d57f73d5c5079c83bac5f5c5bf2a1ba3c5ced683c07c38f1152",
+    "com/skillpilot/backend/composition/CourseProfileCompositionViewMerger$NodeGroup.class": "7f6f2f1501535ce4e7666e53afbe18a61965b4a80103a1c1f6338b06233ee44a",
+    "com/skillpilot/backend/composition/MaterializeMathContextualCombinedViews$ExistingAssessmentAllowance.class": "78d7ead25f4de4e76bebe0c70cb7c14c5c8d17305968751ee7d4f7930d9630bc",
+    "com/skillpilot/backend/composition/CourseProfileCompositionViewMerger$RoleAssignment.class": "835206a4ff602e2d420c2ecb08b786262426201f839c5a8973ab1b64ec4e7858",
+    "com/skillpilot/backend/composition/CourseProfileCompositionViewMerger$ProjectionGraph.class": "a164e3bf78c5b079e5c21188dc1e5858de3b8cbd1367d6d2b1c83f992cb9488b",
+    "com/skillpilot/backend/composition/CourseProfileCompositionViewMerger$GoalReference.class": "fcd58ed42bb470266bbdb9e5c5c5ac0faccdbaf1fc47a239e194fc46dddb2a85",
+    "com/skillpilot/backend/composition/MaterializeMathContextualCombinedViews$ReviewedExistingChanges.class": "cfe0b234b4737df169b80f429fad6a78e853f0be8ff7eadfc0d7fbc977300977",
+    "com/skillpilot/backend/composition/MaterializeMathContextualCombinedViews$1.class": "e47d5f094515983c0157e72b9b5371ad0afcd89d40c1828cb09f1b754e791926",
+    "com/skillpilot/backend/composition/MaterializeMathContextualCombinedViews.class": "7651d98c92539ef136f4f4dcc6ba29aa295700d4d924d0ed03741f4aba8ccb26",
+    "com/skillpilot/backend/composition/CourseProfileCompositionViewMerger.class": "f54fb7334047be16c0a7bb4f81bf128067b25f3e0921c1b18a88fb8e8b76c55c"
+  },
+  "positiveReadOnlyCheck": {
+    "exitCode": 0,
+    "stdout": "{\"combinedViews\":39,\"omittedDocumentReferences\":147,\"requests\":46,\"mode\":\"check\"}\n",
+    "stderr": "",
+    "guardedFilesUnchanged": 231
+  },
+  "originalEightNegativeCases": [
+    {
+      "case": "unauthorized-existing-id",
+      "exitCode": 1,
+      "expectedRejection": "Unreviewed existing assessment allowance",
+      "actualRejectionObserved": true,
+      "guardedFilesByteUnchangedByCheck": 231,
+      "seconds": 1.16,
+      "stderrSha256": "3d7d86725f615cd3f46b0d38047bd8bf1c95fe815ff57876747772180ddf9363"
+    },
+    {
+      "case": "wrong-source-scope",
+      "exitCode": 1,
+      "expectedRejection": "Existing source current scope differs",
+      "actualRejectionObserved": true,
+      "guardedFilesByteUnchangedByCheck": 231,
+      "seconds": 3.53,
+      "stderrSha256": "3653e1fa6526869f7ac7ef42e77c8c8e8db877db36134ee839f4b4e9e4902c1a"
+    },
+    {
+      "case": "missing-SH-GK-mask",
+      "exitCode": 1,
+      "expectedRejection": "Existing excluded source role/mask inventory differs",
+      "actualRejectionObserved": true,
+      "guardedFilesByteUnchangedByCheck": 231,
+      "seconds": 4.6,
+      "stderrSha256": "051074029a065e2585496c11feef4314c71bd263775f82a435516eb749e7ce6f"
+    },
+    {
+      "case": "extra-mask-key",
+      "exitCode": 1,
+      "expectedRejection": "Existing excluded source exact root mask differs",
+      "actualRejectionObserved": true,
+      "guardedFilesByteUnchangedByCheck": 231,
+      "seconds": 3.41,
+      "stderrSha256": "48a4e6b93caeaf060ce9ac23f7ca12cad088e5b5d9c946431cba2a6b61cef2c7"
+    },
+    {
+      "case": "unrelated-source-tree-drift",
+      "exitCode": 1,
+      "expectedRejection": "Original source tree changed beyond reviewed task references",
+      "actualRejectionObserved": true,
+      "guardedFilesByteUnchangedByCheck": 231,
+      "seconds": 3.39,
+      "stderrSha256": "cfdaf68d3b70947e67b40b7d352dd8dbb9b5d7aae92b6b75d4ed48d241b8c67e"
+    },
+    {
+      "case": "original-snapshot-drift",
+      "exitCode": 1,
+      "expectedRejection": "Bound before-view drift",
+      "actualRejectionObserved": true,
+      "guardedFilesByteUnchangedByCheck": 231,
+      "seconds": 1.38,
+      "stderrSha256": "d07a3893fa493e2d280833a113fa03d4119f60141416ca3ce2ae46c2e18051a6"
+    },
+    {
+      "case": "empty-SH-retained-wrapper",
+      "exitCode": 1,
+      "expectedRejection": "Original source tree changed beyond reviewed task references",
+      "actualRejectionObserved": true,
+      "guardedFilesByteUnchangedByCheck": 231,
+      "seconds": 3.34,
+      "stderrSha256": "e58641407ba6cc8f269e9fdd72e0be321a86fc424c7a951b82506858cd015d0c"
+    },
+    {
+      "case": "check-with-report-rejected",
+      "exitCode": 1,
+      "expectedRejection": "--check is read-only; omit --report",
+      "actualRejectionObserved": true,
+      "guardedFilesByteUnchangedByCheck": 231,
+      "seconds": 0.55,
+      "stderrSha256": "d3cef5e94589a28bbe7ffdaf05f0bbee1254b160cc80a05cd061075b68be5d65"
+    }
+  ],
+  "threePlainPOnlyGenerationRejections": [
+    {
+      "case": "BY-statistics-extra-plain-root-POnly-generation",
+      "mode": "write-to-isolated-fresh-directory",
+      "exitCode": 1,
+      "stderr": "Exception in thread \"main\" java.lang.IllegalStateException: Existing added source direct-reference inventory differs\n\tat com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews$ReviewedExistingChanges.checkPositiveReferenceInventory(MaterializeMathContextualCombinedViews.java:272)\n\tat com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews$ReviewedExistingChanges.preflightPositiveReferenceInventories(MaterializeMathContextualCombinedViews.java:267)\n\tat com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews.main(MaterializeMathContextualCombinedViews.java:74)\n",
+      "stderrSha256": "f9c4937db49129d1c2fa2cf9f59c916e89260dd98d1cfbd16b3e889f9cd972a8",
+      "guardedInputsByteUnchanged": 231,
+      "partialPrivateOutputFiles": 0
+    },
+    {
+      "case": "BY-pyramid-extra-plain-root-POnly-generation",
+      "mode": "write-to-isolated-fresh-directory",
+      "exitCode": 1,
+      "stderr": "Exception in thread \"main\" java.lang.IllegalStateException: Existing added source direct-reference inventory differs\n\tat com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews$ReviewedExistingChanges.checkPositiveReferenceInventory(MaterializeMathContextualCombinedViews.java:272)\n\tat com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews$ReviewedExistingChanges.preflightPositiveReferenceInventories(MaterializeMathContextualCombinedViews.java:267)\n\tat com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews.main(MaterializeMathContextualCombinedViews.java:74)\n",
+      "stderrSha256": "f9c4937db49129d1c2fa2cf9f59c916e89260dd98d1cfbd16b3e889f9cd972a8",
+      "guardedInputsByteUnchanged": 231,
+      "partialPrivateOutputFiles": 0
+    },
+    {
+      "case": "SH-retained-statistics-extra-plain-root-POnly-generation",
+      "mode": "write-to-isolated-fresh-directory",
+      "exitCode": 1,
+      "stderr": "Exception in thread \"main\" java.lang.IllegalStateException: Existing retained source direct-reference inventory differs\n\tat com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews$ReviewedExistingChanges.equal(MaterializeMathContextualCombinedViews.java:255)\n\tat com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews$ReviewedExistingChanges.checkPositiveReferenceInventory(MaterializeMathContextualCombinedViews.java:271)\n\tat com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews$ReviewedExistingChanges.preflightPositiveReferenceInventories(MaterializeMathContextualCombinedViews.java:267)\n\tat com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews.main(MaterializeMathContextualCombinedViews.java:74)\n",
+      "stderrSha256": "dbd55ccf967ee6c423508c0479f09a164e942f6e9b2c38b75895be2dee56aa5d",
+      "guardedInputsByteUnchanged": 231,
+      "partialPrivateOutputFiles": 0
+    }
+  ],
+  "originalBypassReproducedBeforeAmendment": true,
+  "rootAndFrozenInputsWritten": false
+}
