@@ -81,6 +81,17 @@ jobs:
       run:
         working-directory: app
     steps:
+      # Full checkouts include the immutable curriculum QA archives. Keep all
+      # repository inputs; remove only unused SDKs from this disposable runner.
+      - name: Reserve disk space for the complete repository
+        working-directory: ${{ runner.temp }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${RUNNER_ENVIRONMENT:-}" = github-hosted
+          df -h .
+          sudo rm -rf -- /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup /opt/hostedtoolcache/CodeQL
+          df -h .
       - name: Checkout
         uses: actions/checkout@v6
       - name: Use Node.js
