@@ -17,9 +17,9 @@ learning units. This section explains both the graph and the contracts around it
   direct assessment access, transitive minimality and globally effective
   recognition through independent application in valid local learning units.
   [Decision of 4 November 2026](completion-semantics-clarification-2026-11-04.md).
-  [Neustartplan](../../dev/curriculum-recognition-restart-plan.md): staged
-  implementation planning and selective reuse of the former PR, pending the
-  updated unit-boundary and progression decisions.
+  [Umsetzungsplan: Lerneinheiten und integrierte Lernkarte](../../dev/learning-units-implementation-plan.md):
+  staged integration in the complete Cockpit, recursive unit implementation,
+  selective reuse of the former PR and separate subject milestones.
 - [Learning Units (Lerneinheiten)](learning-units.md): recursively composed
   educational units, a motivational introduction, required outcomes and
   completion derived from child units and own obligations.

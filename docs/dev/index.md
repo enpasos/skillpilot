@@ -4,8 +4,10 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 
 ## Start Here
 
-- [Neustartplan: curriculare Anerkennung und Fachabschluss](curriculum-recognition-restart-plan.md)
-  Neuplanungsstand vom 4. November 2026: erste vollständige Mathematikeinheit, Fachabschluss und anschließende Korrektur von Physik, Biologie und Chemie.
+- [Umsetzungsplan: Lerneinheiten und integrierte Lernkarte](learning-units-implementation-plan.md)
+  Aktueller Planungsauftrag: Karte im vollständigen Cockpit, erste echte rekursive Lerneinheit, vollständiger Mathematik-Meilenstein; danach separat Physik, Chemie und Biologie.
+- [Historischer Neustartplan: curriculare Anerkennung und Fachabschluss](curriculum-recognition-restart-plan.md)
+  Frühere Neuplanung mit konkreten Bestands- und ID-Befunden; durch den Lerneinheitenplan abgelöst, für gezielte Nachnutzung erhalten.
 - [Historischer Umsetzungsplan: Assessment-gated Completion](assessment-gated-completion-implementation-plan.md)
   Überholter Implementierungs- und Prüfstand vom 31. Oktober; keine Freigabe zur Fortsetzung des alten Modells.
 - [Historische Implementierungs- und Prüfhinweise](assessment-gated-completion-pilot.md)
