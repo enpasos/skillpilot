@@ -1,0 +1,38 @@
+{
+  "status": "PASS_6_AUTHOR_EXACT_DGL1_CHECKS_NOT_INDEPENDENT_REVIEW",
+  "engine": "sympy 1.14.0",
+  "contentSha256": "ec8a4c81dc2462328148561b216131b0f0b2e7f3844f74fc04af985335b72ccb",
+  "checks": [
+    {
+      "name": "actual-separation-and-parameter",
+      "status": "PASS_EXACT_AUTHOR_CHECK",
+      "details": "Integral y^-2 gives−1/y on y≠0; integrate1 to t+K; algebra yields−1/(t+K)=1/(C−t), C=−K. Derivative equals square identically for t≠C."
+    },
+    {
+      "name": "division-and-equilibrium",
+      "status": "PASS_EXACT_AUTHOR_CHECK",
+      "details": "Division by y² excludes exactly the constant zero solution; no finiteC gives zero. Constant test0=k² gives onlyk=0. A parameter family cannot be evaluated at t=C."
+    },
+    {
+      "name": "initial-condition-and-elementary-domain",
+      "status": "PASS_EXACT_AUTHOR_CHECK",
+      "details": "C=1; y=1/(1−t); denominator has only real zero1, so largest open zero-free interval containing0 is(−∞,1). Other branch(1,∞) omits0 and cannot join through missing value1. Pole limits independently checked; no existence/uniqueness theorem is required."
+    },
+    {
+      "name": "control-rule-and-equivalent-method",
+      "status": "PASS_EXACT_AUTHOR_CHECK",
+      "details": "Supplied general reciprocal derivative rule verified symbolically for nonzero u; it specifies no affine expression or solution family. The affine specialisation was independently checked too. The optional equivalent u=1/y method givesu′=−1 and same family; the rubric must credit it. Rule states no solution constant and does not solve the original DGL for the learner."
+    },
+    {
+      "name": "direct-integration",
+      "status": "PASS_EXACT_AUTHOR_CHECK",
+      "details": "Generalz=t²+L, condition fixesL=−2; derivative2t and initial−2 checked; polynomial has no domain singularities, intervalR."
+    },
+    {
+      "name": "independent-boundary-counterchecks",
+      "status": "PASS_EXACT_AUTHOR_CHECK",
+      "details": "C=0 is a valid family member away from0 but cannot satisfy initial data at0. Positive and negative initial values giveC=1/y0 with the appropriate zero-free branch; initial0 uses the separately checked equilibrium. No need to divide by zero or import logarithmic integration."
+    }
+  ],
+  "learnerTheoryBurden": "Only elementary separation, integer-power antiderivatives, general reciprocal derivative rule supplied for control, elementary denominator intervals. No logarithm integration, second derivative or DGL existence/uniqueness theorem."
+}

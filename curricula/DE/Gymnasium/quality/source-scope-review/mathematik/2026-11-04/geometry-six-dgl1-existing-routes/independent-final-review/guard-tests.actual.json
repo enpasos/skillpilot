@@ -1,0 +1,46 @@
+{
+  "cases": [
+    {
+      "case": "current-g5-positive",
+      "exitCode": 0,
+      "seconds": 6.43,
+      "stdout": "{\"omittedDocumentReferences\":188,\"combinedViews\":39,\"mode\":\"check\",\"requests\":46}\n",
+      "stderr": ""
+    },
+    {
+      "case": "old-g4-positive-with-current-g5-producer",
+      "exitCode": 0,
+      "seconds": 6.01,
+      "stdout": "{\"omittedDocumentReferences\":147,\"requests\":46,\"mode\":\"check\",\"combinedViews\":39}\n",
+      "stderr": ""
+    },
+    {
+      "case": "missing-g5-contract",
+      "exitCode": 1,
+      "seconds": 1.02,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.IllegalStateException: G5 exact additive guard binding is required\n\tat com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews$G5Placement.load(MaterializeMathContextualCombinedViews.java:304)\n\tat com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews.main(MaterializeMathContextualCombinedViews.java:72)\n"
+    },
+    {
+      "case": "missing-g5-contract-only-operations",
+      "exitCode": 1,
+      "seconds": 1.05,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.IllegalStateException: G5 exact additive guard binding is required\n\tat com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews$G5Placement.load(MaterializeMathContextualCombinedViews.java:304)\n\tat com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews.main(MaterializeMathContextualCombinedViews.java:72)\n"
+    },
+    {
+      "case": "new-bda-requires-drift",
+      "exitCode": 1,
+      "seconds": 1.19,
+      "stdout": "",
+      "stderr": "Exception in thread \"main\" java.lang.IllegalStateException: G5 own form preparation differs\n\tat com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews$ReviewedExistingChanges.equal(MaterializeMathContextualCombinedViews.java:259)\n\tat com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews$G5Placement.load(MaterializeMathContextualCombinedViews.java:336)\n\tat com.skillpilot.backend.composition.MaterializeMathContextualCombinedViews.main(MaterializeMathContextualCombinedViews.java:72)\n"
+    },
+    {
+      "case": "new-bda-task-drift",
+      "exitCode": 0,
+      "seconds": 5.77,
+      "stdout": "{\"combinedViews\":39,\"mode\":\"check\",\"requests\":46,\"omittedDocumentReferences\":188}\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -48,6 +48,7 @@ export type StagePolicy = {
   nativeCanonicalHelper: BoundStageFile; stageDecision: BoundStageFile; sourceBindings: BoundStageFile[]
   nativeStageHelper: BoundStageFile; stageRules: MathStageScopeRule[]; stageDecisionBindings: BoundStageFile[]
   existingStageViews: ExistingStageView[]
+  authoredAssessmentViews?: Array<{ source: BoundStageFile; outputPath: string; outputViewId: string; scope: CompositionView['scope'] }>
   durationGenerator: BoundStageFile; durationOutputViewIds: string[]; reviewReceiptPath?: string
   assessmentScopeOperations: MathAssessmentScopeOperation[]
   sourceDecisions: BoundStageFile; variantRegistry: BoundStageFile
@@ -96,6 +97,24 @@ export function deriveMathExistingStageViews(root: string, policy: StagePolicy) 
       removedAtomicGoalIds: atomic([...beforeRoles.targetGoalIds].filter(id => !afterRoles.targetGoalIds.has(id))),
       addedAtomicGoalIds: atomic([...afterRoles.targetGoalIds].filter(id => !beforeRoles.targetGoalIds.has(id))),
       compiledGoalIds: sorted(occurrences(compiled.compiledRootNodes).map(occurrence => occurrence.goalId)) }
+  })
+}
+/** Explicitly bound existing authored views use the same assessment operation and role compiler. */
+export function deriveMathAuthoredAssessmentViews(root: string, policy: StagePolicy) {
+  const { canonical, goals } = assertMathStagePolicyInputs(root, policy)
+  const materializedIds = new Set([...policy.countries.map(view => view.outputViewId), ...policy.existingStageViews.map(view => view.outputViewId), ...policy.durationOutputViewIds])
+  const ids = new Set<string>()
+  return (policy.authoredAssessmentViews ?? []).map(operation => {
+    expect(!materializedIds.has(operation.outputViewId) && !ids.has(operation.outputViewId), 'duplicate authored assessment view')
+    ids.add(operation.outputViewId)
+    localPath(root, operation.outputPath)
+    expect(operation.outputPath.startsWith('curricula/DE/Gymnasium/composition-views/mathematik/') && operation.outputPath.endsWith('.view.json'), 'invalid authored assessment output')
+    let view = boundJson<CompositionView>(root, operation.source)
+    expect(view.viewId === operation.outputViewId && view.landscapeId === canonical.landscapeId && same(view.scope, operation.scope), 'authored assessment view identity/scope changed')
+    view = applyContextualTerminalPlacements(applyMathAssessmentScopeOperations(view, goals, policy.assessmentScopeOperations), goals, root)
+    const compiled = compileCompositionView(view, canonical)
+    expect(!compiled.findings.some(finding => finding.severity === 'error'), `authored assessment view compile failed: ${view.viewId}`)
+    return { path: operation.outputPath, view }
   })
 }
 export type StageReviewReceipt = {
@@ -202,7 +221,7 @@ export function assertMathStagePolicyInputs(root: string, policy: StagePolicy) {
   const bindings = [policy.nativeCompiler, policy.nativeCanonicalHelper, policy.nativeStageHelper, policy.durationGenerator, policy.stageDecision,
     ...policy.sourceBindings, ...policy.stageDecisionBindings,
     ...policy.countries.flatMap(country => country.sources.flatMap(source => [source.view, ...source.secondaryTargets.map(target => target.view)])),
-    ...policy.existingStageViews.map(operation => operation.source)]
+    ...policy.existingStageViews.map(operation => operation.source), ...(policy.authoredAssessmentViews ?? []).map(operation => operation.source)]
   const boundByPath = new Map<string, BoundStageFile>()
   for (const binding of bindings) {
     const prior = boundByPath.get(binding.path)
@@ -233,7 +252,7 @@ export function assertMathStagePolicyInputs(root: string, policy: StagePolicy) {
     return entry
   })
   const outputIds = new Set([...policy.countries.map(country => country.outputViewId),
-    ...policy.existingStageViews.map(view => view.outputViewId), ...policy.durationOutputViewIds])
+    ...policy.existingStageViews.map(view => view.outputViewId), ...policy.durationOutputViewIds, ...(policy.authoredAssessmentViews ?? []).map(view => view.outputViewId)])
   for (const rule of policy.stageRules) for (const decision of [rule.sourceDecision, ...(rule.additionalSourceDecisions ?? [])]) {
     expect(policy.stageDecisionBindings.some(binding => binding.path === decision.split('#')[0]), 'stage rule lacks its exact bound independent source decision')
   }
@@ -363,7 +382,7 @@ export function assertMathStageMaterializationAllowed(root: string, policy: Stag
   expect(receipt?.verdict === 'PASS' && receipt.authorIndependent === true
     && receipt.policySha256 === digest(policyBytes) && receipt.sourceDecisionsSha256 === policy.sourceDecisions.sha256
     && receipt.generatorSha256 === digest(readFileSync(localPath(root, generatorPath))), 'HOLD: exact independent policy/source/generator approval required')
-  expect(same(sorted(receipt!.approvedViewIds), sorted([...policy.countries.map(country => country.outputViewId), ...policy.existingStageViews.map(view => view.outputViewId), ...policy.durationOutputViewIds]))
+  expect(same(sorted(receipt!.approvedViewIds), sorted([...policy.countries.map(country => country.outputViewId), ...policy.existingStageViews.map(view => view.outputViewId), ...policy.durationOutputViewIds, ...(policy.authoredAssessmentViews ?? []).map(view => view.outputViewId)]))
     && same(sorted(receipt!.approvedSourceDecisionIds), sorted(decisions.decisions.map(decision => decision.id)))
     && same(sorted(receipt!.approvedStageRuleIds), sorted(policy.stageRules.map(rule => rule.id)))
     && same(sorted(receipt!.approvedAssessmentScopeOperationIds), sorted(policy.assessmentScopeOperations.map(operation => operation.id))), 'HOLD: approval does not cover exact views/source/stage/assessment decisions')
@@ -385,7 +404,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   expect(!(args.includes('--write') && args.includes('--check')), 'choose write or check')
   const bytes = readFileSync(localPath(root, value('--policy') ?? policyPath), 'utf8')
   const policy = JSON.parse(bytes) as StagePolicy
-  const output = [...deriveMathCountrySekIViews(root, policy), ...deriveMathExistingStageViews(root, policy)]
+  const output = [...deriveMathCountrySekIViews(root, policy), ...deriveMathExistingStageViews(root, policy), ...deriveMathAuthoredAssessmentViews(root, policy)]
   const live = args.includes('--write') || args.includes('--check')
   if (live) {
     const reviewPath = value('--review') ?? policy.reviewReceiptPath

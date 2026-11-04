@@ -1,0 +1,129 @@
+{
+  "status": "PLAN_ONLY_NO_CHECKS_RUN_OR_RELEASE_APPROVAL",
+  "sourceExistingSameIdCheckSet": {
+    "path": "tmp/approach-review-20261101/matrix-five-actual-source-authoring-20261103-v1/final-bound-checks/execution.json",
+    "sha256": "8750d06861e88c0b4eb079344e9298f99cdf57a10501df4e88af24996682aff2"
+  },
+  "commands": [
+    {
+      "name": "country83",
+      "argv": [
+        "node",
+        "<final-private-check-host>/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateMathCountrySekICompositionViews.ts",
+        "--check"
+      ],
+      "cwd": "<final-private-check-host>"
+    },
+    {
+      "name": "duration18",
+      "argv": [
+        "node",
+        "<final-private-check-host>/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateMathDurationCompositionViews.ts",
+        "--check"
+      ],
+      "cwd": "<final-private-check-host>"
+    },
+    {
+      "name": "stage-policy",
+      "argv": [
+        "node",
+        "<final-private-check-host>/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testMathStageScopePolicy.ts"
+      ],
+      "cwd": "<final-private-check-host>"
+    },
+    {
+      "name": "stage-country",
+      "argv": [
+        "node",
+        "<final-private-check-host>/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testMathCountrySekICompositionViews.ts"
+      ],
+      "cwd": "<final-private-check-host>"
+    },
+    {
+      "name": "source-coverage",
+      "argv": [
+        "node",
+        "<final-private-check-host>/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateCurriculumSourceCoverageAudit.ts",
+        "--check"
+      ],
+      "cwd": "<final-private-check-host>"
+    },
+    {
+      "name": "hard-routes",
+      "argv": [
+        "node",
+        "<final-private-check-host>/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testHardLearningRouteValidation.ts"
+      ],
+      "cwd": "<final-private-check-host>"
+    },
+    {
+      "name": "phase-compatibility",
+      "argv": [
+        "node",
+        "<final-private-check-host>/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testPhaseCompatibilityValidation.ts"
+      ],
+      "cwd": "<final-private-check-host>"
+    },
+    {
+      "name": "python-population",
+      "argv": [
+        "python3",
+        "scripts/test_curricular_assessment_population.py"
+      ],
+      "cwd": "<final-private-check-host>"
+    },
+    {
+      "name": "goalbook-model",
+      "argv": [
+        "npm",
+        "run",
+        "test:goal-book-model"
+      ],
+      "cwd": "<final-private-check-host>/app"
+    },
+    {
+      "name": "atomicity-current-config",
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+        "--mode=check"
+      ],
+      "cwd": "<final-private-check-host>"
+    },
+    {
+      "name": "memory-current-config",
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+        "--mode=check"
+      ],
+      "cwd": "<final-private-check-host>"
+    }
+  ],
+  "commandCount": 11,
+  "pythonEnvironment": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "existingQualityStatusAndMaturityFloorStillRequiredAtNormalCloseout": true,
+  "notNewlyRequested": [
+    "general M7 content review",
+    "new source/country/scope approvals",
+    "unchanged author mathematics rerun",
+    "unchanged SSR rerun",
+    "JVM run by this agent",
+    "raw sourcecache blanket rebind"
+  ],
+  "nativeOwner": "/root",
+  "noRootOrContentV1Mutations": true
+}

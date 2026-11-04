@@ -1,0 +1,120 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "case": "separated primitive",
+      "left": "y**(-2)",
+      "right": "y**(-2)",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "case": "free-constant family residual",
+      "left": "(C - t)**(-2)",
+      "right": "(C - t)**(-2)",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "case": "K and C convention",
+      "left": "-1/(-C + t)",
+      "right": "1/(C - t)",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "case": "reciprocal derivative under DGL",
+      "left": "-1",
+      "right": "-1",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "case": "integrated reciprocal",
+      "left": "-1",
+      "right": "-1",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "case": "initial solution",
+      "left": "1",
+      "right": "1",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "case": "zero constant residual",
+      "left": "0",
+      "right": "0",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "case": "direct family derivative",
+      "left": "2*t",
+      "right": "2*t",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "case": "direct particular initial",
+      "left": "-2",
+      "right": "-2",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "case": "free coefficient ansatz equation",
+      "left": "-b/(a + b*t)**2 - 1/(a + b*t)**2",
+      "right": "(-b - 1)/(a + b*t)**2",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "case": "wrong plus sign is not solution",
+      "left": "-2/(C + t)**2",
+      "right": "-2/(C + t)**2",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "case": "family parameter -3",
+      "left": "(-t - 3)**(-2)",
+      "right": "(-t - 3)**(-2)",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "case": "family parameter 0",
+      "left": "t**(-2)",
+      "right": "t**(-2)",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "case": "family parameter 1",
+      "left": "(1 - t)**(-2)",
+      "right": "(1 - t)**(-2)",
+      "residual": "0",
+      "passed": true
+    },
+    {
+      "case": "family parameter 4",
+      "left": "(4 - t)**(-2)",
+      "right": "(4 - t)**(-2)",
+      "residual": "0",
+      "passed": true
+    }
+  ],
+  "separateExactConditions": [
+    "Division only where y is nonzero.",
+    "Family denominator vanishes only at t=C; maximal zero-free open branches are (-infinity,C) and (C,infinity).",
+    "For C=1 the branch containing initial time 0 is (-infinity,1); R minus {1} is not an interval.",
+    "The same expression on (1,infinity) does not satisfy an initial condition at 0 because 0 is outside its domain.",
+    "Zero function is a further constant solution on R and is not obtained by any finite C.",
+    "z=t^2-2 is differentiable on R, so its largest elementary solution interval is R.",
+    "No general existence, uniqueness, completeness or maximality theorem is used or requested."
+  ],
+  "symbolicChecksAreNotDidacticReview": true
+}

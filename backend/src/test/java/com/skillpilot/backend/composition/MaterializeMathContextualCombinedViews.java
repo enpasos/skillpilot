@@ -69,10 +69,11 @@ public final class MaterializeMathContextualCombinedViews {
             if(!outputIds.add(text(pair.get("outputViewId"))) || !outputFiles.add(text(pair.get("outputFileName")))) throw new IllegalStateException("Duplicate combined output identity");
             for(String request:strings(pair.get("scopeRows"))) if(!requestIds.add(request)) throw new IllegalStateException("Duplicate combined request binding");
         }
+        G5Placement g5=G5Placement.load(root,views,plan,boundDecisions,canonical,children);
         ReviewedExistingChanges existingChanges=ReviewedExistingChanges.load(root,plan,boundDecisions,canonical);
         Map<String,Object> snapshots=map(plan.get("producerSourceSnapshots"));
         existingChanges.preflightPositiveReferenceInventories(root,views,pairs,snapshots,children);
-        GeometryPlacement.preflight(root,views,plan,boundDecisions,canonical,children);
+        GeometryPlacement.preflight(root,views,g5.g4Plan(plan),boundDecisions,canonical,children);
         List<Map<String,Object>> reports=new ArrayList<>(); int requests=0, removedTotal=0;
         for(Map<String,Object> pair:pairs) {
             List<String> sourceIds=strings(pair.get("sourceViewIds"));
@@ -91,6 +92,7 @@ public final class MaterializeMathContextualCombinedViews {
                     if(effectiveCount(maps(before.get("rootNodes")),existingAddedId,children)>1 || effectiveCount(maps(current.get("rootNodes")),existingAddedId,children)!=1) throw new IllegalStateException("Existing B2 addition is missing, duplicate or already present: "+sourceIds.get(i));
                     permittedAdditions.add(existingAddedId);
                 }
+                g5.permitSource(current,permittedAdditions);
                 Set<String> emptyWrappers=existingChanges.checkSource(pair,current,before,children,permittedAdditions);
                 if(!JSON.valueToTree(withoutNew(maps(current.get("rootNodes")),permittedAdditions,emptyWrappers)).equals(JSON.valueToTree(withoutNew(maps(before.get("rootNodes")),permittedAdditions,emptyWrappers)))) throw new IllegalStateException("Original source tree changed beyond reviewed task references: "+sourceIds.get(i));
                 currentSources.add(current); baselineSources.add(before);
@@ -120,6 +122,7 @@ public final class MaterializeMathContextualCombinedViews {
                 if(effectiveCount(baseline,existingAddedId,children)>1 || effectiveCount(result,existingAddedId,children)!=1) throw new IllegalStateException("Union B2 addition is missing, duplicate or already present");
                 permittedUnionAdditions.add(existingAddedId);
             }
+            g5.permitUnion(pair,permittedUnionAdditions);
             Set<String> unionEmptyWrappers=existingChanges.checkUnion(pair,result,baseline,children,permittedUnionAdditions);
             if(count(result,omit)!=0 || !JSON.valueToTree(withoutNew(result,permittedUnionAdditions,unionEmptyWrappers)).equals(JSON.valueToTree(withoutNew(baseline,permittedUnionAdditions,unionEmptyWrappers)))) throw new IllegalStateException("Old union target/support/tree contract changed");
             Map<String,Object> view=new LinkedHashMap<>();view.put("viewId",pair.get("outputViewId"));view.put("landscapeId",canonical.get("landscapeId"));view.put("scope",scope);view.put("rootNodes",result);
@@ -284,6 +287,91 @@ public final class MaterializeMathContextualCombinedViews {
         private static List<Map<String,Object>> exactReferences(List<Map<String,Object>> nodes,String id){var out=new ArrayList<Map<String,Object>>();for(var n:nodes){if("structure".equals(n.get("kind")))out.addAll(exactReferences(maps(n.get("children")),id));else if(id.equals(n.get("goalId")))out.add(n);}return out;}
     }
 
+
+
+    /** Exact additive extension: the complete original G4 plan is checked by its unchanged G4 guard. */
+    private static final class G5Placement {
+        private static final String KEY="geometrySixDgl1ExistingRoutesPlacement";
+        private static final Set<String> IDS=Set.of("f0894721-49e1-5860-a3a6-afba2d2cc08b","a79d589d-8679-5f3e-812f-6affdd8b1f58");
+        private Map<String,Object> base;
+        private final Map<String,Set<String>> sourceAdditions=new LinkedHashMap<>(),unionAdditions=new LinkedHashMap<>();
+        Map<String,Object> g4Plan(Map<String,Object> current){return base==null?current:base;}
+        void permitSource(Map<String,Object> view,Set<String> permitted){permitted.addAll(sourceAdditions.getOrDefault(text(view.get("viewId")),Set.of()));}
+        void permitUnion(Map<String,Object> pair,Set<String> permitted){permitted.addAll(unionAdditions.getOrDefault(text(pair.get("outputViewId")),Set.of()));}
+        static G5Placement load(Path root,Path views,Map<String,Object> plan,List<Map<String,Object>> bindings,Map<String,Object> canonical,Map<String,List<String>> children)throws Exception {
+            var out=new G5Placement();
+            if(!plan.containsKey(KEY)) {
+                if(maps(canonical.get("goals")).stream().anyMatch(g->IDS.contains(text(g.get("id"))))||maps(plan.get("assessmentScopeOperations")).stream().anyMatch(o->text(o.get("id")).startsWith("contextual-terminal-g5-")))throw new IllegalStateException("G5 exact additive guard binding is required");
+                return out;
+            }
+            var binding=map(plan.get(KEY));ReviewedExistingChanges.requireBound(root,binding,bindings);var rule=read(root.resolve(text(binding.get("path"))));
+            if(!Integer.valueOf(1).equals(rule.get("schemaVersion"))||!"exact-additive-g5-development-contract".equals(rule.get("kind"))||!Boolean.TRUE.equals(rule.get("authorProposalIsNotReviewAcceptance")))throw new IllegalStateException("G5 explicit development contract differs");
+            if(!IDS.equals(new LinkedHashSet<>(strings(rule.get("newAssessmentIds"))))||strings(rule.get("newAssessmentIds")).size()!=2)throw new IllegalStateException("G5 exact two identities differ");
+            for(var b:maps(rule.get("wholeContentReviews")))ReviewedExistingChanges.requireBound(root,b,bindings);
+            var bb=map(rule.get("baseFinitePlan"));ReviewedExistingChanges.requireBound(root,bb,bindings);out.base=read(root.resolve(text(bb.get("path"))));
+            var mutable=Set.of("counts","assessmentScopeOperations","bindings","independentDecisionBindings","combinedMaterializations");
+            for(var key:out.base.keySet())if(!mutable.contains(key))ReviewedExistingChanges.equal(plan.get(key),out.base.get(key),"G5 changed original finite field: "+key);
+            var allowedKeys=new LinkedHashSet<>(out.base.keySet());allowedKeys.add(KEY);if(!plan.keySet().equals(allowedKeys))throw new IllegalStateException("G5 unexpected finite plan fields");
+            ReviewedExistingChanges.equal(plan.get("counts"),rule.get("exactCounts"),"G5 exact counts differ");
+            for(var pair:List.of(List.of("assessmentScopeOperations","exactOperations"),List.of("bindings","exactNewBindings"),List.of("independentDecisionBindings","exactAdditionalIndependentDecisionBindings"))) {
+                var old=(List<?>)out.base.get(pair.get(0));var current=(List<?>)plan.get(pair.get(0));var added=(List<?>)rule.get(pair.get(1));
+                if(current.size()!=old.size()+added.size())throw new IllegalStateException("G5 finite prefix size differs");
+                ReviewedExistingChanges.equal(current.subList(0,old.size()),old,"G5 original finite prefix changed");ReviewedExistingChanges.equal(current.subList(old.size(),current.size()),added,"G5 exact appended finite inventory differs");
+            }
+            if(maps(rule.get("exactOperations")).size()!=98||maps(rule.get("exactNewBindings")).size()!=98)throw new IllegalStateException("G5 exact operation cardinality differs");
+            ReviewedExistingChanges.equal(plan.get("combinedMaterializations"),rule.get("exactCombinedMaterializations"),"G5 exact combined plan differs");
+            var originalPairs=maps(out.base.get("combinedMaterializations"));var pairs=maps(plan.get("combinedMaterializations"));if(originalPairs.size()!=39||pairs.size()!=39)throw new IllegalStateException("G5 original39 union inventory differs");
+            for(int i=0;i<pairs.size();i++)for(String key:originalPairs.get(i).keySet())if(!Set.of("excludedNewAssessmentIds","excludeNewAssessmentForOriginalGoalIds").contains(key))ReviewedExistingChanges.equal(pairs.get(i).get(key),originalPairs.get(i).get(key),"G5 old union field differs: "+key);
+            Map<String,Map<String,Object>> goals=new LinkedHashMap<>();for(var g:maps(canonical.get("goals")))goals.put(text(g.get("id")),g);
+            String af="af7905d0-e684-5ea3-99ac-8a045455370e";var afRule=map(rule.get("af790ExactDecision"));var afDecisionBinding=map(afRule.get("decision"));ReviewedExistingChanges.requireBound(root,afDecisionBinding,bindings);var afDecision=read(root.resolve(text(afDecisionBinding.get("path"))));
+            if(!"PASS_FOR_WHOLE_UNCHANGED_AF790_IN_EXACT_FOUR_BY_G9_SCOPES".equals(afDecision.get("decision"))||!Boolean.TRUE.equals(afDecision.get("authorIndependent"))||!af.equals(afDecision.get("assessmentId")))throw new IllegalStateException("G5 af790 genuine independent decision differs");
+            var afScopes=List.of("DE-BY/CrossStage/G9/GK","DE-BY/CrossStage/G9/GK+LK","DE-BY/CrossStage/G9/LK","DE-BY/SekI/G9/GK+LK");ReviewedExistingChanges.equal(afScopes,afDecision.get("approvedTargetScopePairs"),"G5 af790 exact approved scope pairs differ");ReviewedExistingChanges.equal(afScopes,map(rule.get("exactAdditionalTargetScopePairs")).get(af),"G5 af790 exact placement scope pairs differ");
+            var afOriginalBinding=map(afRule.get("originalCanonical"));ReviewedExistingChanges.requireBound(root,afOriginalBinding,bindings);Map<String,Map<String,Object>> afOriginalGoals=new LinkedHashMap<>();for(var g:maps(read(root.resolve(text(afOriginalBinding.get("path")))).get("goals")))afOriginalGoals.put(text(g.get("id")),g);var afOriginal=afOriginalGoals.get(af);ReviewedExistingChanges.equal(afOriginal,afRule.get("originalWholeGoal"),"G5 af790 original whole canonical goal differs");
+            var afGoal=goals.get(af);var afExpected=new LinkedHashMap<>(afOriginal);var afMetadata=map(afDecision.get("finiteMetadataRepair"));afExpected.put("applicability",afMetadata.get("approvedAfterApplicability"));afExpected.put("extendedData",afMetadata.get("approvedAfterExtendedData"));ReviewedExistingChanges.equal(afExpected,afGoal,"G5 af790 changed task, solution, rubric, R, coverage or unapproved metadata");ReviewedExistingChanges.equal(afExpected,afRule.get("approvedWholeGoal"),"G5 af790 exact approved whole-goal binding differs");
+            var afPreparation=new LinkedHashSet<String>();var afPending=new ArrayList<>(List.of(af));while(!afPending.isEmpty()){String id=afPending.remove(afPending.size()-1);if(!afPreparation.add(id))continue;var originalGoal=afOriginalGoals.get(id);if(originalGoal==null)throw new IllegalStateException("G5 af790 missing original preparation goal");if(!af.equals(id))ReviewedExistingChanges.equal(originalGoal,goals.get(id),"G5 af790 changed prerequisite applicability or whole preparation goal: "+id);afPending.addAll(strings(originalGoal.get("requires")));}if(afPreparation.size()!=76)throw new IllegalStateException("G5 af790 original whole preparation inventory differs");
+            var afOps=maps(rule.get("exactOperations")).stream().filter(op->strings(op.get("goalIds")).contains(af)).toList();if(afOps.size()!=3||!Set.of("de-by-gym-math-gk","de-by-gym-math-lk","de-by-gym-seki-math").equals(afOps.stream().map(op->text(op.get("viewId"))).collect(java.util.stream.Collectors.toSet())))throw new IllegalStateException("G5 af790 exact three source operations differ");
+            for(var op:afOps)if(!(("de-by-gym-math-lk".equals(op.get("viewId"))?"lk":"gk")+"-sek-i-j10").equals(op.get("anchorStructureId")))throw new IllegalStateException("G5 af790 existing J10 assessment path differs");
+            for(String id:IDS) {
+                var g=goals.get(id);if(g==null||!"exam".equals(g.get("nodeKind"))||!strings(g.get("contains")).isEmpty()||!"released".equals(map(g.get("examData")).get("reviewStatus"))||map(g.get("extendedData")).containsKey("applicabilityFromRequires"))throw new IllegalStateException("G5 new terminal identity/availability differs");
+                ReviewedExistingChanges.equal(g.get("requires"),map(rule.get("newGoalRequires")).get(id),"G5 own form preparation differs");
+            }
+            Set<String> consumedOperations=new LinkedHashSet<>(),seenViews=new LinkedHashSet<>();
+            for(var row:maps(rule.get("sourceRules"))) {
+                String vid=text(row.get("viewId"));if(!seenViews.add(vid))throw new IllegalStateException("G5 duplicate source baseline");
+                var b=map(row.get("baselineView"));ReviewedExistingChanges.requireBound(root,b,bindings);var before=read(root.resolve(text(b.get("path"))));var current=read(views.resolve(Path.of(text(b.get("path"))).getFileName()));
+                if(!vid.equals(current.get("viewId"))||!vid.equals(before.get("viewId")))throw new IllegalStateException("G5 source view identity differs");
+                Set<String> wrappers=new LinkedHashSet<>(),adds=new LinkedHashSet<>();
+                for(var op:maps(row.get("operations"))) {
+                    if(!vid.equals(op.get("viewId"))||!"include-target".equals(op.get("action"))||strings(op.get("goalIds")).size()!=1||!consumedOperations.add(text(op.get("id"))))throw new IllegalStateException("G5 source operation differs");
+                    if(maps(rule.get("exactOperations")).stream().noneMatch(x->JSON.valueToTree(x).equals(JSON.valueToTree(op))))throw new IllegalStateException("G5 unbound source operation");
+                    String id=strings(op.get("goalIds")).get(0),wrapper="reviewed-stage-positive-"+text(op.get("id"));adds.add(id);
+                    var expected=Map.of("kind","structure","id",wrapper,"label",op.get("label"),"children",List.of(Map.of("kind","goalEntry","goalId",id)));
+                    var nodes=maps(current.get("rootNodes"));var anchors=ReviewedExistingChanges.structures(nodes,text(op.get("anchorStructureId")));
+                    if(af.equals(id)) {
+                        var originalExamSubtree=Map.of("kind","canonicalSubtree","goalId","cb20dd6b-c4ff-4a1b-9636-3b3d6ea86aa8","displayLabel","Prüfungen Jahrgangsstufe 10");
+                        if(anchors.size()!=1||!CourseProfileCompositionViewMerger.projectionTargetGoalIds(maps(before.get("rootNodes")),children).contains(af)||maps(anchors.get(0).get("children")).stream().filter(x->JSON.valueToTree(x).equals(JSON.valueToTree(originalExamSubtree))).count()!=1||!ReviewedExistingChanges.exactReferences(nodes,af).isEmpty())throw new IllegalStateException("G5 af790 retained existing whole J10 subtree differs or duplicate direct path added");
+                    } else {
+                        wrappers.add(wrapper);
+                        if(anchors.size()!=1||ReviewedExistingChanges.structures(nodes,wrapper).size()!=1||maps(anchors.get(0).get("children")).stream().filter(x->JSON.valueToTree(x).equals(JSON.valueToTree(expected))).count()!=1)throw new IllegalStateException("G5 exact positive wrapper/anchor differs");
+                    }
+                }
+                var stripped=new LinkedHashMap<>(current);stripped.put("rootNodes",removeWrappers(maps(current.get("rootNodes")),wrappers));ReviewedExistingChanges.equal(stripped,before,"G5 changed original G4 whole source beyond exact appended wrappers: "+vid);
+                var expected=new LinkedHashSet<>(CourseProfileCompositionViewMerger.projectionTargetGoalIds(maps(before.get("rootNodes")),children));expected.addAll(adds);
+                if(!expected.equals(CourseProfileCompositionViewMerger.projectionTargetGoalIds(maps(current.get("rootNodes")),children)))throw new IllegalStateException("G5 source target delta differs");
+                out.sourceAdditions.put(vid,adds);
+            }
+            if(consumedOperations.size()!=98)throw new IllegalStateException("G5 not all exact source operations consumed");
+            for(var pair:pairs) {
+                Set<String> adds=new LinkedHashSet<>();for(String vid:strings(pair.get("sourceViewIds")))adds.addAll(out.sourceAdditions.getOrDefault(vid,Set.of()));adds.removeAll(strings(pair.get("excludedNewAssessmentIds")));
+                for(String id:adds)if(!strings(map(rule.get("exactAdditionalTargetScopePairs")).get(id)).containsAll(strings(pair.get("scopeRows"))))throw new IllegalStateException("G5 additional union target outside exact scope");
+                out.unionAdditions.put(text(pair.get("outputViewId")),adds);
+            }
+            return out;
+        }
+        private static List<Map<String,Object>> removeWrappers(List<Map<String,Object>> nodes,Set<String> ids) {
+            var result=new ArrayList<Map<String,Object>>();for(var node:nodes){if("structure".equals(node.get("kind"))&&ids.contains(text(node.get("id"))))continue;var n=new LinkedHashMap<>(node);if("structure".equals(n.get("kind")))n.put("children",removeWrappers(maps(n.get("children")),ids));result.add(n);}return result;
+        }
+    }
 
     /** Exact additive G4 producer contract; the original B2 and G3 guards remain in force. */
     private static final class GeometryPlacement {

@@ -1,0 +1,115 @@
+{
+  "id": "58fda9b4-4336-5594-99ce-722c4a453372",
+  "title": "Differenzialgleichungen zweiter Ordnung untersuchen (LK)",
+  "titleEn": "Investigate second-order differential equations (advanced course)",
+  "description": "Die lernende Person kann einfache Differenzialgleichungen zweiter Ordnung, zum Beispiel bei periodischen Prozessen, qualitativ untersuchen und typische Lösungsverläufe beschreiben.",
+  "descriptionEn": "The learner can qualitatively investigate simple second-order differential equations, for example in periodic processes, and describe typical solution behaviours.",
+  "weight": 1,
+  "tags": [
+    "LK"
+  ],
+  "contains": [],
+  "requires": [
+    "28cdee95-3c8e-5760-a68a-405b7f9c6cbf"
+  ],
+  "dimensionTags": {
+    "framework": "hessen-kc-2024",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "K2.3",
+      "K3.2"
+    ],
+    "guidingIdeas": [
+      "L1",
+      "L2"
+    ],
+    "phase": "Q1"
+  },
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "type": "atomic",
+  "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q1.5, S. 38, Spiegelstrich 3",
+  "resourceLinks": [
+    {
+      "type": "goal-visualization",
+      "resourceType": "image",
+      "role": "primary",
+      "skillpilotId": "58fda9b4-4336-5594-99ce-722c4a453372",
+      "title": "Visualisierung: Differenzialgleichungen zweiter Ordnung untersuchen (LK)",
+      "url": "/assets/goal-visualizations/mathematik/58fda9b4-4336-5594-99ce-722c4a453372/58fda9b4-4336-5594-99ce-722c4a453372.png",
+      "provider": "OpenAI / ChatGPT-Codex image generation",
+      "description": "Visualisierung zum Lernziel: Differenzialgleichungen zweiter Ordnung untersuchen (LK).",
+      "altText": "Didaktische Visualisierung zum Lernziel \"Differenzialgleichungen zweiter Ordnung untersuchen (LK)\". Die lernende Person kann einfache Differenzialgleichungen zweiter Ordnung, zum Beispiel bei periodischen Prozessen, qualitativ untersuchen und typische Lösungsverläufe beschreiben.",
+      "lang": "de",
+      "license": "AI-generated, SkillPilot-curated",
+      "reviewStatus": "pilot"
+    }
+  ],
+  "nodeKind": "exam",
+  "examData": {
+    "reviewStatus": "released",
+    "taskContent": "# Eine Differenzialgleichung zweiter Ordnung qualitativ untersuchen\n\nDie Auslenkung $y(t)$ eines idealisierten Schwingers wird für $t\\geq0$\ndurch $y''(t)=-4y(t)$ beschrieben. Die Zeit $t$ wird in Sekunden, die\nAuslenkung in Zentimetern angegeben; der Faktor $4$ hat die Einheit\n$\\mathrm{s}^{-2}$. Es gelten $y(0)=2$ und $y'(0)=0$.\nEs wird **kein allgemeines Lösungsverfahren** verlangt. Nutze die gegebenen\nFunktionen, ihre Ableitungen und qualitative Überlegungen. Insgesamt sind\n**20 BE** erreichbar.\n\n**1. Die Gleichung deuten (4 BE)**\n\nErkläre, warum dies eine Differenzialgleichung zweiter Ordnung ist.\nDeute $y'$ und $y''$ im Modell. Beschreibe für positive, negative und\nverschwindende Auslenkung die Richtung beziehungsweise den Wert der\nBeschleunigung. Warum wirkt die Beschleunigung rückstellend?\n\n**2. Typische Lösungskandidaten prüfen (6 BE)**\n\nGegeben sind $u(t)=2\\cos(2t)$, $v(t)=2\\cos(4t)$ und $w(t)=2e^{-2t}$.\nPrüfe durch Ableiten und Einsetzen, welche dieser Funktionen die\nDifferenzialgleichung und beide Anfangsbedingungen erfüllt. Erkläre\nauch bei den anderen Kandidaten konkret, welche Bedingung scheitert.\n\n**3. Den Verlauf beschreiben (6 BE)**\n\nNutze den passenden Kandidaten aus Teil 2. Beschreibe oder skizziere\nseinen Verlauf von $t=0$ bis $t=\\pi$ mit den Auslenkungen bei\n$0$, $\\pi/4$, $\\pi/2$, $3\\pi/4$ und $\\pi$.\nGib Amplitude und Periodendauer an. Erläutere an einer Umkehrstelle und\nan einem Durchgang durch die Ruhelage den Unterschied zwischen\nAuslenkung, Geschwindigkeit und Beschleunigung. Ist die Geschwindigkeit\nbei Auslenkung null ebenfalls zwingend null?\n\n**4. Einen zweiten periodischen Prozess vergleichen (4 BE)**\n\nFür einen anderen Schwinger ist $z''=-9z$ und als Lösungskandidat\n$z(t)=\\cos(3t)$ gegeben. Prüfe die Gleichung und beschreibe den typischen\nVerlauf. Bestimme die Periodendauer und vergleiche sie mit der aus Teil 3.\n",
+    "taskContentEn": "# Investigate a second-order differential equation qualitatively\n\nFor $t\\geq0$, the displacement $y(t)$ of an idealised oscillator satisfies\n$y''(t)=-4y(t)$. Time $t$ is measured in seconds and displacement in\ncentimetres; the factor $4$ has unit $\\mathrm{s}^{-2}$.\nThe initial conditions are $y(0)=2$ and $y'(0)=0$.\n**No general solution method** is required. Use the supplied functions,\ntheir derivatives, and qualitative reasoning. A total of **20 points**\nis available.\n\n**1. Interpret the equation (4 points)**\n\nExplain why this is a second-order differential equation. Interpret $y'$\nand $y''$ in the model. Describe the direction or value of the acceleration\nfor positive, negative and zero displacement. Why is the acceleration\nrestoring?\n\n**2. Check typical candidate solutions (6 points)**\n\nConsider $u(t)=2\\cos(2t)$, $v(t)=2\\cos(4t)$ and $w(t)=2e^{-2t}$.\nDifferentiate and substitute to check which function satisfies the equation\nand both initial conditions. For each other candidate, identify specifically\nwhich condition fails.\n\n**3. Describe the behaviour (6 points)**\n\nUse the appropriate candidate from part 2. Describe or sketch its behaviour\nfrom $t=0$ to $t=\\pi$, including the displacements at\n$0$, $\\pi/4$, $\\pi/2$, $3\\pi/4$ and $\\pi$.\nState amplitude and period. At a turning point and at a crossing of the\nequilibrium position, explain the distinction between displacement,\nvelocity and acceleration. Must velocity also be zero when displacement\nis zero?\n\n**4. Compare a second periodic process (4 points)**\n\nAnother oscillator satisfies $z''=-9z$, with candidate solution\n$z(t)=\\cos(3t)$. Check the equation and describe the typical behaviour.\nFind the period and compare it with the period in part 3.\n",
+    "solutionContent": "# Musterlösung: Qualitative Untersuchung zweiter Ordnung\n\n**1. Bedeutung**\n\nDie höchste vorkommende Ableitung ist $y''$, also ist die Gleichung von\nzweiter Ordnung. $y'$ ist die Geschwindigkeit, $y''$ die Beschleunigung.\nFür $y>0$ ist $y''<0$, für $y<0$ ist $y''>0$, für $y=0$ ist $y''=0$.\nBei nichtverschwindender Auslenkung zeigt die Beschleunigung zur Ruhelage:\nSie ist rückstellend. Sie hat nicht stets dieselbe Richtung wie die\nGeschwindigkeit.\n\n**2. Kandidaten**\n\nFür $u$ gilt $u'=-4\\sin(2t)$ und $u''=-8\\cos(2t)=-4u$.\nAußerdem $u(0)=2$ und $u'(0)=0$: Alle Bedingungen sind erfüllt.\nFür $v$ ist $v'=-8\\sin(4t)$ und $v''=-32\\cos(4t)=-16v$,\nalso nicht $-4v$. Die beiden Anfangsbedingungen erfüllt $v$ zwar,\naber bereits bei $t=0$ sind $v''(0)=-32$ und $-4v(0)=-8$ verschieden.\nFür $w$ gilt $w'=-4e^{-2t}$ und $w''=8e^{-2t}=4w$.\nDamit scheitert die Gleichung; außerdem ist $w'(0)=-4$ statt $0$.\n$w(0)=2$ allein genügt nicht.\n\n**3. Periodischer Verlauf**\n\nDie Auslenkungen an den genannten Stellen sind $2,0,-2,0,2$ cm.\nDer Verlauf beginnt am positiven Maximum, fällt durch die Ruhelage zum\nnegativen Minimum und steigt über die Ruhelage zum positiven Maximum zurück.\nDie Amplitude beträgt $2$ cm, die Periodendauer $\\pi$ s.\nBei $t=0$ gilt $y=2$, $y'=0$, $y''=-8$ (mit den jeweils passenden\nEinheiten cm, cm/s, cm/s²). Dies ist eine Umkehrstelle mit Beschleunigung\nzur Ruhelage. Bei $t=\\pi/4$ gilt $y=0$, $y'=-4$, $y''=0$.\nDie Geschwindigkeit ist dort nicht null: Der Schwinger durchquert die\nRuhelage und wird dort in diesem Augenblick nicht beschleunigt.\nBei $t=\\pi/2$ folgt entsprechend $y=-2$, $y'=0$, $y''=8$.\nEine korrekte Skizze mit Erläuterung oder ein anderer passender Umkehrpunkt\nund Ruhelagedurchgang zeigt dieselbe Leistung.\n\n**4. Zweiter Verlauf**\n\n$z'=-3\\sin(3t)$ und $z''=-9\\cos(3t)=-9z$.\nDer Verlauf ist ebenfalls sinusförmig und periodisch, mit Amplitude $1$ cm\nund Start am positiven Maximum. Die Periode ist $2\\pi/3$ s und damit\nkürzer als $\\pi$ s. Der zweite Schwinger durchläuft eine volle Schwingung\nin zwei Dritteln der Zeit des ersten. Eine allgemeine Lösungsfamilie ist\nfür keine der beiden Gleichungen erforderlich.\n\n# Eine Gesamtbewertung\n\nEs gibt genau eine Gesamtpunktzahl aus 20 BE und ein binäres Gesamtergebnis:\n**bestanden ab 15 BE**, sonst nicht bestanden. Teilpunkte sind keine eigenen\nBestehensgrenzen.\n\nBewerte mathematisch gleichwertige Verfahren und nachvollziehbare Leistungen\nunabhängig vom Ort in der Abgabe. Identische Leistungen zählen nur einmal.\nTeilpunkte wie angegeben, sonst 0,5 BE für eine fachlich sinnvolle, aber\nunvollständige Teilleistung. Bei Kriterien mit 2 oder mehr BE sind entsprechende\nTeilpunkte für richtig gezeigte Schritte möglich. Ein lokaler Rechen- oder\nÜbertragungsfehler wird nicht mehrfach bestraft; richtige nachvollziehbare\nFolgearbeit bleibt anrechenbar. Ein solcher lokaler Fehler allein löst keine\nGesamtpunktkappung aus. Knappe richtige Erklärungen und äquivalente Schreibweisen\ngenügen; bestimmte Schlüsselwörter oder eine feste Reihenfolge sind nicht nötig.\n\n| Kriterium | BE |\n|---|---:|\n| Zweite Ordnung über höchste Ableitung erkannt (1); Geschwindigkeit und Beschleunigung richtig zugeordnet (1); Vorzeichen bzw. Nullwert und Rückstellrichtung fachlich erklärt (2). | 4 |\n| u durch passende Ableitungen, Gleichung und beide Anfangsbedingungen bestätigt (2); v mit konkretem Gleichungswiderspruch trotz passender Anfangswerte verworfen (2); w mit konkretem Gleichungswiderspruch bzw. unpassender Anfangsgeschwindigkeit verworfen (2). | 6 |\n| Wertefolge und typischen Verlauf richtig beschrieben oder skizziert (2); Amplitude und Periodendauer korrekt (je 1); Umkehrstelle und Ruhelagedurchgang hinsichtlich Auslenkung, Geschwindigkeit und Beschleunigung unterschieden, einschließlich nichtverschwindender Geschwindigkeit bei y=0 (2). | 6 |\n| z durch zweite Ableitung als Lösung bestätigt (2); periodischen typischen Verlauf mit Periode 2π/3 und kürzerer Periodendauer beschrieben (2). | 4 |\n\nDie Gesamtpunktzahl wird vor dem Vergleich mit der Bestehensgrenze auf höchstens 14 BE begrenzt, wenn in der ganzen Abgabe keine fachlich tragfähige qualitative Verknüpfung von Differenzialgleichung und Beschleunigungsrichtung beziehungsweise Krümmung oder kein zutreffend beschriebener typischer periodischer Lösungsverlauf erkennbar ist. Qualitative Aussagen und passende Skizzen an beliebiger Stelle zählen. Ein lokaler Ableitungs-, Vorzeichen- oder Zahlenfehler bei ansonsten tragfähiger qualitativer Untersuchung löst die Kappung nicht aus. Eine allgemeine Lösungsmethode, eine vollständige Lösungsfamilie und eine zusätzliche nichtperiodische Gleichung sind keine Bestehensanforderungen.\n\nMehrere zutreffende Kappungsgründe führen weiterhin nur zur selben Obergrenze von 14 BE. Es bleibt bei einer Gesamtbewertung ohne zusätzliche Teilbestehensbedingungen.\n",
+    "solutionContentEn": "# Worked solution: qualitative second-order investigation\n\n**1. Meaning**\n\nThe highest derivative present is $y''$, so the equation is second order.\n$y'$ is velocity and $y''$ is acceleration. If $y>0$, then $y''<0$;\nif $y<0$, then $y''>0$; if $y=0$, then $y''=0$.\nAt nonzero displacement, acceleration points towards equilibrium and is\ntherefore restoring. It need not point in the direction of the velocity.\n\n**2. Candidates**\n\nFor $u$, $u'=-4\\sin(2t)$ and $u''=-8\\cos(2t)=-4u$.\nAlso $u(0)=2$ and $u'(0)=0$, so all conditions hold.\nFor $v$, $v'=-8\\sin(4t)$ and $v''=-32\\cos(4t)=-16v$,\nwhich is not $-4v$. Both initial conditions hold, but already at $t=0$,\n$v''(0)=-32$ differs from $-4v(0)=-8$.\nFor $w$, $w'=-4e^{-2t}$ and $w''=8e^{-2t}=4w$.\nThe equation fails, and $w'(0)=-4$ instead of $0$ as well.\nThe fact that $w(0)=2$ is not sufficient.\n\n**3. Periodic behaviour**\n\nThe displacements at the listed times are $2,0,-2,0,2$ cm.\nThe graph starts at the positive maximum, falls through equilibrium to the\nnegative minimum, then rises through equilibrium to the positive maximum.\nAmplitude is $2$ cm and period is $\\pi$ s.\nAt $t=0$, $y=2$, $y'=0$, $y''=-8$ (in cm, cm/s, and cm/s² respectively).\nThis is a turning point with acceleration towards equilibrium.\nAt $t=\\pi/4$, $y=0$, $y'=-4$, $y''=0$.\nVelocity is not zero: the oscillator crosses equilibrium with zero\ninstantaneous acceleration. At $t=\\pi/2$, correspondingly,\n$y=-2$, $y'=0$, $y''=8$.\nA correct sketch with explanation, or another suitable turning point and\nequilibrium crossing, demonstrates the same performance.\n\n**4. Second behaviour**\n\n$z'=-3\\sin(3t)$ and $z''=-9\\cos(3t)=-9z$.\nThis solution is also sinusoidal and periodic, with amplitude $1$ cm and\na start at the positive maximum. Its period is $2\\pi/3$ s, shorter than\n$\\pi$ s. The second oscillator completes a cycle in two thirds of the\ntime of the first. No general solution family is required for either\nequation.\n\n# One overall assessment\n\nThere is one total score out of 20 points and one binary overall result:\n**pass at 15 points or more**, otherwise not passed. Part allocations are\nnot separate pass thresholds.\n\nCredit mathematically equivalent methods and traceable work wherever they\nappear in the submission. Count the same performance only once. Award partial\ncredit as specified, otherwise 0.5 points for meaningful incomplete work.\nFor criteria worth 2 or more points, proportionate credit for correct steps\nis available. Do not repeatedly penalise one local arithmetic or copying error;\ncredit correct traceable follow-through. Such a local error alone does not\ntrigger a total-score cap. Concise correct explanations and equivalent notation\nare sufficient; no prescribed keywords or fixed order are required.\n\n| Criterion | Points |\n|---|---:|\n| Identifies second order from the highest derivative (1); correctly interprets velocity and acceleration (1); explains the signs or zero value and restoring direction (2). | 4 |\n| Confirms u with appropriate derivatives, equation and both initial conditions (2); rejects v with a specific equation mismatch despite matching initial values (2); rejects w with a specific equation mismatch or incorrect initial velocity (2). | 6 |\n| Correctly describes or sketches the values and typical behaviour (2); correct amplitude and period (1 each); distinguishes a turning point and equilibrium crossing in displacement, velocity and acceleration, including nonzero velocity at y=0 (2). | 6 |\n| Confirms z as a solution using its second derivative (2); describes its typical periodic behaviour with period 2π/3 and shorter cycle time (2). | 4 |\n\nBefore comparison with the passing threshold, cap the total at 14 points if the whole submission contains no sound qualitative connection between the equation and acceleration direction or curvature, or no correctly described typical periodic solution behaviour. Qualitative reasoning and suitable sketches anywhere in the submission count. A local derivative, sign or numerical error in an otherwise sound qualitative investigation does not trigger the cap. A general solution method, complete solution family, and additional nonperiodic equation are not pass requirements.\n\nMultiple applicable cap reasons still give the same upper limit of 14 points. There is one overall assessment without additional part pass conditions.\n",
+    "coveredGoalIds": [
+      "58fda9b4-4336-5594-99ce-722c4a453372"
+    ],
+    "coveredStrands": [
+      "L1",
+      "L2"
+    ],
+    "demandLevels": [
+      "AB3"
+    ],
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 15,
+      "steps": [
+        {
+          "id": "qualitative-equation",
+          "points": 4,
+          "description": "Zweite Ordnung über höchste Ableitung erkannt (1); Geschwindigkeit und Beschleunigung richtig zugeordnet (1); Vorzeichen bzw. Nullwert und Rückstellrichtung fachlich erklärt (2).",
+          "descriptionEn": "Identifies second order from the highest derivative (1); correctly interprets velocity and acceleration (1); explains the signs or zero value and restoring direction (2)."
+        },
+        {
+          "id": "candidate-checks",
+          "points": 6,
+          "description": "u durch passende Ableitungen, Gleichung und beide Anfangsbedingungen bestätigt (2); v mit konkretem Gleichungswiderspruch trotz passender Anfangswerte verworfen (2); w mit konkretem Gleichungswiderspruch bzw. unpassender Anfangsgeschwindigkeit verworfen (2).",
+          "descriptionEn": "Confirms u with appropriate derivatives, equation and both initial conditions (2); rejects v with a specific equation mismatch despite matching initial values (2); rejects w with a specific equation mismatch or incorrect initial velocity (2)."
+        },
+        {
+          "id": "periodic-behaviour",
+          "points": 6,
+          "description": "Wertefolge und typischen Verlauf richtig beschrieben oder skizziert (2); Amplitude und Periodendauer korrekt (je 1); Umkehrstelle und Ruhelagedurchgang hinsichtlich Auslenkung, Geschwindigkeit und Beschleunigung unterschieden, einschließlich nichtverschwindender Geschwindigkeit bei y=0 (2).",
+          "descriptionEn": "Correctly describes or sketches the values and typical behaviour (2); correct amplitude and period (1 each); distinguishes a turning point and equilibrium crossing in displacement, velocity and acceleration, including nonzero velocity at y=0 (2)."
+        },
+        {
+          "id": "second-process",
+          "points": 4,
+          "description": "z durch zweite Ableitung als Lösung bestätigt (2); periodischen typischen Verlauf mit Periode 2π/3 und kürzerer Periodendauer beschrieben (2).",
+          "descriptionEn": "Confirms z as a solution using its second derivative (2); describes its typical periodic behaviour with period 2π/3 and shorter cycle time (2)."
+        }
+      ]
+    },
+    "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/number-stoch-numerics-six-same-identity-2026-11-04-v1/58fda9b4-4336-5594-99ce-722c4a453372/reviewed-execution-contract.json",
+    "reviewNote": "The complete bilingual same-identity form and ordinary overall rubric were approved in the genuine independent whole-content review. One 20-point total, pass at 15, with the reviewed caps. Only this stable goal ID is assessed; existing curricular identity and preparation are retained."
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "status": "PASS_AUTHOR_MATHEMATICS_NOT_INDEPENDENT_REVIEW",
+  "symbolicEngine": "sympy 1.14.0",
+  "checks": [
+    {
+      "name": "roof-and-ray",
+      "status": "PASS_AUTHOR_EXACT_SYMBOLIC_CHECK",
+      "details": "Independent edge cross product; all roof-point identities; unique t=4 on both forward rays; P=(4,2,5) in finite roof, P′=(4,5,5) outside. No distance/angle calculation is required for this model."
+    },
+    {
+      "name": "special-axes-and-planes",
+      "status": "PASS_AUTHOR_EXACT_SYMBOLIC_CHECK",
+      "details": "Independent rank/LGS classification confirms all 14 requested relations, including h skew to z-axis and k meeting z-axis while parallel to xy. General p3+u d3 condition has zero/all/one solutions in exactly the stated cases."
+    },
+    {
+      "name": "plane-angle",
+      "status": "PASS_AUTHOR_EXACT_SYMBOLIC_CHECK",
+      "details": {
+        "normalF": [
+          "1",
+          "-1",
+          "-2"
+        ],
+        "exactCosine": "5*sqrt(6)/18",
+        "degrees": 47.12401133336427,
+        "negativeScalingInvariant": true,
+        "crossSectionNormalsPerpendicularToIntersection": true,
+        "GafterDivision": "x+2y+2z=5, distinct from E constant 3"
+      }
+    },
+    {
+      "name": "parameter-angle-all-real",
+      "status": "PASS_AUTHOR_EXACT_SYMBOLIC_CHECK",
+      "details": {
+        "positiveNormSquares": "1+a² > 0 for all real a",
+        "line30Solutions": [
+          -1,
+          1
+        ],
+        "plane60Solutions": [
+          -1,
+          1
+        ],
+        "equivalentSquaring": "Both original quotients nonnegative, denominators positive; both roots checked in original equations.",
+        "complementaryAngles": "iff |a|=1; a=0 gives 0°+45°",
+        "positionAt0": "g0 has y+z=1 throughout: strictly parallel to F."
+      }
+    },
+    {
+      "name": "parabolic-trajectory",
+      "status": "PASS_AUTHOR_EXACT_SYMBOLIC_CHECK",
+      "details": {
+        "timeDomain": "[0,3] maps bijectively to x∈[1,13], q∈[0,15], u∈[0,6]",
+        "max": "t=3/2, H=(7,5/2,13/2)",
+        "planarParabola": "q is horizontal orthogonal coordinate of the vertical trajectory plane; z(q)=2+6q/5−2q²/25",
+        "reparameterisation": "x_u(2t)=x_t(t) identically; physical time remains t=u/2"
+      }
+    },
+    {
+      "name": "unchanged-existing-8d3-whole-form",
+      "status": "PASS_AUTHOR_EXACT_SYMBOLIC_CHECK",
+      "details": "A full line verified in both planes for every t; B inconsistent ranks 1/2; C rank 1 with exactly two free parameters. Original 23/21 score and method comparison retained, no new task or pass condition authored."
+    }
+  ],
+  "boundMarkdown": [
+    {
+      "path": "58f613da-03be-5c6a-90a9-ff0958aa7849/rubric.de.md",
+      "sha256": "28a4c5669442fee2cfe018b4d1d43c654adbc8d36c7b8d73fd096a0c56524388"
+    },
+    {
+      "path": "58f613da-03be-5c6a-90a9-ff0958aa7849/rubric.en.md",
+      "sha256": "c3849a172bfa50f87331b94c3b8fc7115d34f22d4b257316a8de1f727ae661d3"
+    },
+    {
+      "path": "58f613da-03be-5c6a-90a9-ff0958aa7849/solution.de.md",
+      "sha256": "967151cd058e9df687707000b1a93ee3286c764aa688787bfa60c477a87550a5"
+    },
+    {
+      "path": "58f613da-03be-5c6a-90a9-ff0958aa7849/solution.en.md",
+      "sha256": "0d24b5d6b3a50aacb772baff930cc2c31a0756da8f8bdd9995076204980368d6"
+    },
+    {
+      "path": "58f613da-03be-5c6a-90a9-ff0958aa7849/task.de.md",
+      "sha256": "85b981f6e038a12aaffbd2c47a365b26e517d42da1790c3d64486e9d74460ba4"
+    },
+    {
+      "path": "58f613da-03be-5c6a-90a9-ff0958aa7849/task.en.md",
+      "sha256": "927c40821ce28e588196c310bc2925ad3ad2e6987c20c999d50df33040027019"
+    },
+    {
+      "path": "5f90df42-8a71-534d-b995-b8f7dcaf1661/rubric.de.md",
+      "sha256": "ff03fc72b7c4c4c4c342d9170153823a10b5676656f965d7d98cee088e9ce1f5"
+    },
+    {
+      "path": "5f90df42-8a71-534d-b995-b8f7dcaf1661/rubric.en.md",
+      "sha256": "7e755a00a7967dd7c82855f8748bdb8951bad95338520fc6cc92a9a8538d2e77"
+    },
+    {
+      "path": "5f90df42-8a71-534d-b995-b8f7dcaf1661/solution.de.md",
+      "sha256": "c82cb12f8f1b28cc4a0ff8e4df752b19d91f60eec527cbb98be995c21c27aa40"
+    },
+    {
+      "path": "5f90df42-8a71-534d-b995-b8f7dcaf1661/solution.en.md",
+      "sha256": "a2db7ceb8d32d36bbe8a3d02cf851367b1c9bdfd8dc8f12b7e7399c7459d43ae"
+    },
+    {
+      "path": "5f90df42-8a71-534d-b995-b8f7dcaf1661/task.de.md",
+      "sha256": "b17845339a9011ff319b9bec90864aa5a63983ef404e7e55799ca24daeb9493f"
+    },
+    {
+      "path": "5f90df42-8a71-534d-b995-b8f7dcaf1661/task.en.md",
+      "sha256": "30e22fc6f1b7beac95baaec11bb97aa1ea1b0ceea12d6f8b9b9aee1693875af5"
+    },
+    {
+      "path": "bd3576b8-f4e5-542a-a8a2-74524d9cee21/rubric.de.md",
+      "sha256": "208fe72842092ec46583eba8b2bfdda7951ca16658c7f4cebc1b028eecb45b41"
+    },
+    {
+      "path": "bd3576b8-f4e5-542a-a8a2-74524d9cee21/rubric.en.md",
+      "sha256": "f9324fcf15cdad9e071e9c542d546bc8118a3cdb58dbf65cee33a3456d4eb616"
+    },
+    {
+      "path": "bd3576b8-f4e5-542a-a8a2-74524d9cee21/solution.de.md",
+      "sha256": "0dd67741830da66f90690cbcc628e62af04585627df806d58246b10f42c9b043"
+    },
+    {
+      "path": "bd3576b8-f4e5-542a-a8a2-74524d9cee21/solution.en.md",
+      "sha256": "37ec301ca269b4a9c93337a67938006416ca34b53bd4db8c0cc95285206cae0d"
+    },
+    {
+      "path": "bd3576b8-f4e5-542a-a8a2-74524d9cee21/task.de.md",
+      "sha256": "96849946f44e06dd591ec9a9dea9d04cf391c1dd8baa41762924b3b6693537ef"
+    },
+    {
+      "path": "bd3576b8-f4e5-542a-a8a2-74524d9cee21/task.en.md",
+      "sha256": "d4b508da401875ebc7694acbfe4dfaaa24430f886d77f877cb0cccd10816e8ef"
+    },
+    {
+      "path": "bda6a659-9640-53a5-8be0-24705ab623ef/rubric.de.md",
+      "sha256": "8e3edf9f80217963680d677cd8526500690e4a0bee6e4dff62db4a006981a599"
+    },
+    {
+      "path": "bda6a659-9640-53a5-8be0-24705ab623ef/rubric.en.md",
+      "sha256": "454447e3f5dd230490ef328da2b5de6afe36590524d5ca2c87cd2d423471a071"
+    },
+    {
+      "path": "bda6a659-9640-53a5-8be0-24705ab623ef/solution.de.md",
+      "sha256": "217c2e3342a3b1e7c133bf2fe80baf9d359326b37317cb099c505865d98c15fd"
+    },
+    {
+      "path": "bda6a659-9640-53a5-8be0-24705ab623ef/solution.en.md",
+      "sha256": "9270ae1246b369876ec1692ecd8512e1d22548c0b2e6fe384330d3a2fa3978f3"
+    },
+    {
+      "path": "bda6a659-9640-53a5-8be0-24705ab623ef/task.de.md",
+      "sha256": "7813df7b2358da6de9a53ce2ea25d343ef6ad715b727fd0184232fde78bafa16"
+    },
+    {
+      "path": "bda6a659-9640-53a5-8be0-24705ab623ef/task.en.md",
+      "sha256": "7ef1af2ba7f027a63a3809873a0e0f86c95c3fe0cab17333b06bae8ee7ea117e"
+    },
+    {
+      "path": "eb112b6f-4cc4-58af-975a-f1ea61b727f0/rubric.de.md",
+      "sha256": "7f8c1da6b5e10eef27574dc37ab9f00fc98a812b3b07fc3986295f7787ac0ff8"
+    },
+    {
+      "path": "eb112b6f-4cc4-58af-975a-f1ea61b727f0/rubric.en.md",
+      "sha256": "48d1d91fc44b7f5fdd9a4c6c2ac186494fc5116e607d25e1795149502060ad9e"
+    },
+    {
+      "path": "eb112b6f-4cc4-58af-975a-f1ea61b727f0/solution.de.md",
+      "sha256": "59ec4f2604ba9ac025b7a0a62ce53b7eb5e90f690371f59ab27dd880ac924137"
+    },
+    {
+      "path": "eb112b6f-4cc4-58af-975a-f1ea61b727f0/solution.en.md",
+      "sha256": "a6aa91b61178063249a70b3bff06a166c4f139cc7b001c9da5cc2ea04759c77a"
+    },
+    {
+      "path": "eb112b6f-4cc4-58af-975a-f1ea61b727f0/task.de.md",
+      "sha256": "aa524682f860e2c4e1e0c3531b92309c00487d7f6c37492025fa134f29bde86b"
+    },
+    {
+      "path": "eb112b6f-4cc4-58af-975a-f1ea61b727f0/task.en.md",
+      "sha256": "e776b08b74958d913a167f6b2d988613ca7f518322e41eaae81e708fa05a08fa"
+    }
+  ]
+}

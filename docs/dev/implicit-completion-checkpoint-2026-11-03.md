@@ -6,8 +6,8 @@ M7-, Deployment- oder vollständige CI-Freigabe.
 
 ## Aktueller Messstand: 4. November 2026
 
-Der Stand enthält **30 vollständige Prüfungsformen unter bestehenden
-curricularen Lernziel-IDs und 13 gezielt platzierte eigenständige
+Der Stand enthält **34 vollständige Prüfungsformen unter bestehenden
+curricularen Lernziel-IDs und 15 gezielt platzierte eigenständige
 Prüfungsziele**. Die 807 curricularen Mathematikziele bleiben erhalten.
 Sechs zuvor zu breit eingeführte Prüfungsrollen sind korrigiert: Die
 Kompetenz bleibt dort ein gewöhnliches Lernziel, wo bereits ein anderer
@@ -17,10 +17,10 @@ unversorgten Angeboten ausgewählt.
 | Vollständige Mathematikangebote | Aktueller Befund |
 | --- | --- |
 | Tatsächlich geprüfte Angebote | 161, einschließlich 46 Kursvereinigungen |
-| Abschlussintegrität bestanden | 17 Angebote |
-| Angebote mit verbleibenden Datenlücken | 144 |
-| Ungedeckte Ziele | 251 unterschiedliche IDs / 2.642 Ziel-Angebots-Paare |
-| Gewöhnliche offene Endpunkte | 160 unterschiedliche IDs / 1.751 Endpunktpaare |
+| Abschlussintegrität bestanden | 21 Angebote |
+| Angebote mit verbleibenden Datenlücken | 140 |
+| Ungedeckte Ziele | 240 unterschiedliche IDs / 2.399 Ziel-Angebots-Paare |
+| Gewöhnliche offene Endpunkte | 149 unterschiedliche IDs / 1.536 Endpunktpaare |
 
 Die jüngste gemeinsame Korrektur schließt weitere **791 Ziel-Angebots-Paare
 und 404 Endpunktpaare**, ohne neue Lücken zu erzeugen. Sie begrenzt zehn
@@ -59,6 +59,16 @@ erhalten. Zwei später ergänzte echte A/M-Reviewverweise sind als reine
 Qualitätsänderungen ausdrücklich abgegrenzt. Die Korrektur stellt außerdem
 die vier versehentlich verlorenen amtlichen Quellenflags samt KC-Alias im
 hessischen Generator wieder her, ohne Quellziele oder Passagen zu verändern.
+
+Der anschließende Nachlauf zur räumlichen Geometrie und zu Differenzialgleichungen
+schließt weitere **243 Ziel-Angebots-Paare und 215 Endpunktpaare**, ohne neue
+Lücken zu erzeugen. Vier bestehende IDs erhalten ganze Prüfungsformen; zwei
+zusätzliche Prüfungsziele werden nur an den geprüften Stellen angeboten.
+Unzutreffende Vorbereitungsbeziehungen sind korrigiert, vorhandene ganze
+Prüfungen werden in weiteren passenden Angeboten verwendet. Alle elf normalen
+Autorenprüfungen bestehen nach zwei gezielten Nachkorrekturen. 733 geprüfte
+Dateien sind übernommen; alle **11.118 tatsächlichen Backend-Eingaben bleiben
+bytegleich**. 21 vollständige Angebote bestehen nun, 140 bleiben unvollständig.
 
 41 veraltete feste API-Zielzahlen sind anhand der tatsächlichen Zielmengen
 und HTTP-Antworten korrigiert. Alle Mitgliedschaftsprüfungen bleiben erhalten;
@@ -99,6 +109,17 @@ gebundenen Policy-Dateien. Die tatsächliche Sparse-Reproduktion besteht wieder
 Vertragsprüfungen bestehen. Der erzeugte Memory-Report und die fünf gemessenen
 Medienbestandsfelder sind aktualisiert; Prüfgrenzen und Herkunftsaussagen
 bleiben unverändert.
+
+Der letzte gepushte Commit `e9f318a5d8` besteht nun ebenfalls die vollständige
+Backend- und Frontend-CI. Die Curriculum- und Mathematikjobs bleiben wegen der
+bekannten Datenlücken rot. Dieser GitHub-Nachweis gilt für den damaligen
+Commit; der neue räumliche Geometrie-/DGL-Nachlauf braucht einen eigenen Lauf.
+
+Eine lokale Cockpit-Vorschau mit eigener PostgreSQL-Testdatenbank zeigt den
+aktuellen importierten Datenstand. Ein synthetisch bestandenes Ebenen-Prüfungsziel
+führt dort zu einem expliziten und zwei impliziten Abschlüssen. Beide
+Vorher-/Nachher-Ansichten wurden im Browser geöffnet; das ersetzt keinen echten
+Coach-Hosttest und keine vollständige Mathematikfreigabe.
 
 Der gemeinsame vorherige Backendvergleich und das unabhängige Astra-Review prüfen
 alle 161 Angebote. Alle 502 übernommenen Dateien und die 3.187 Eingaben des
@@ -160,6 +181,7 @@ vollständigen Backendlauf.
 · [Kegel und komplexe Zahlen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/cone-complex-four/README.md)
 · [Statistik und Pyramiden](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/statistics-pyramid/README.md)
 · [Geometrie und Projektionsweg](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/geometry-four/README.md)
+· [Räumliche Geometrie und Differenzialgleichungen](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/geometry-six-dgl1/README.md)
 · [Deklarierte CI-Eingaben](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/sparse-declared-inputs/README.md)
 · [Markov-Platzierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/sh-markov-twelve/README.md)
 · [Graphvalidierung](../qa-ci/evidence/curriculum-completion-integrity/2026-11-04/directed-prior-stage-validation/README.md)

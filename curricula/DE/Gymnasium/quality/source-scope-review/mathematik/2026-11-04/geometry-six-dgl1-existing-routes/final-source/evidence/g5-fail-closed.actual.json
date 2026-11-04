@@ -1,0 +1,56 @@
+{
+  "status": "PASS_ACTUAL_PRODUCTION_JAVA_GUARD_REJECTS_FIVE_INDEPENDENT_TAMPERS",
+  "canonicalPolicyHashesReboundInNegativeHosts": true,
+  "originalG4AndCurrentG5HostBytesUnchanged": true,
+  "testHost": "tmp/approach-review-20261101/math-geometry-six-dgl1-existing-route-integration-20261104-v1/negative-check-host",
+  "classPathSha256": "5ef73f3d4becb42650f14cd9ba084ccd9afe03b16331a353fb8b1c7dfc49490b",
+  "cases": [
+    {
+      "case": "g5-negative-task-drift",
+      "exitCode": 1,
+      "expectedFailure": "G5 af790 changed task, solution, rubric, R, coverage or unapproved metadata",
+      "failureObserved": true,
+      "seconds": 1.45,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "a8e6744bc6b68ccc4274a7cad2ed40326128736c13f743375574b89c35d741f5"
+    },
+    {
+      "case": "g5-negative-reintroduced-derived-applicability",
+      "exitCode": 1,
+      "expectedFailure": "G5 af790 changed task, solution, rubric, R, coverage or unapproved metadata",
+      "failureObserved": true,
+      "seconds": 1.29,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "a8e6744bc6b68ccc4274a7cad2ed40326128736c13f743375574b89c35d741f5"
+    },
+    {
+      "case": "g5-negative-prerequisite-applicability-widening",
+      "exitCode": 1,
+      "expectedFailure": "G5 af790 changed prerequisite applicability or whole preparation goal",
+      "failureObserved": true,
+      "seconds": 1.16,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "674dd656eb8c838d131da0a36eb0d0fd7f02c149e28441cbdad40786b5b947eb"
+    },
+    {
+      "case": "g5-negative-missing-independent-decision",
+      "exitCode": 1,
+      "expectedFailure": "Independent decision binding differs",
+      "failureObserved": true,
+      "seconds": 0.74,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "7d4218fcef5f371993758e4b616698ffbaa7824241dcf87b7cfbd5f824b540ef"
+    },
+    {
+      "case": "g5-negative-duplicate-af790-path",
+      "exitCode": 1,
+      "expectedFailure": "G5 af790 retained existing whole J10 subtree differs or duplicate direct path added",
+      "failureObserved": true,
+      "seconds": 1.64,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "6b62385cd6836b3f3f0e567203aed7a926f673fa6998177023df0bebd12b3006"
+    }
+  ],
+  "masteryWrites": 0,
+  "stageAcceptance": false
+}

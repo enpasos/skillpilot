@@ -1,0 +1,589 @@
+{
+  "status": "WRITTEN_WHOLE_RUBRIC_ACCEPTED_WITH_TWO_NONBLOCKING_AUTHOR_EXAMPLE_CORRECTIONS",
+  "total": 20,
+  "passAt": 15,
+  "capAt": 14,
+  "ordinarySingleOverallBinaryResult": true,
+  "reviewerCases": [
+    {
+      "case": "complete separation",
+      "concreteSubmission": "For y≠0: y^-2dy=dt; -1/y=t+K; y=-1/(t+K)=1/(C-t), C=-K arbitrary, intervals avoid C. Constant k forces k=0, omitted by division. 1=1/C gives C=1; y=1/(1-t), I=(-∞,1), pole 1 cannot be crossed and other branch lacks 0. Differentiate to (1-t)^-2=y², y(0)=1. z=t²+L, L=-2, domain R, derivative 2t and initial -2 checked.",
+      "reviewerMarksByWrittenRubric": [
+        {
+          "part": 1,
+          "points": 6
+        },
+        {
+          "part": 2,
+          "points": 2
+        },
+        {
+          "part": 3,
+          "points": 5
+        },
+        {
+          "part": 4,
+          "points": 3
+        },
+        {
+          "part": 5,
+          "points": 4
+        }
+      ],
+      "rawScore": 20,
+      "wholeCoreCapApplies": false,
+      "finalScore": 20,
+      "overallResult": "pass",
+      "separatePartMastery": false
+    },
+    {
+      "case": "reciprocal derivation is genuine solving",
+      "concreteSubmission": "On y≠0 choose u=1/y; u'=-y'/y²=-1. Integrate u=-t+C and invert. All denominator conditions and remaining work as in complete solution.",
+      "reviewerMarksByWrittenRubric": [
+        {
+          "part": 1,
+          "points": 6
+        },
+        {
+          "part": 2,
+          "points": 2
+        },
+        {
+          "part": 3,
+          "points": 5
+        },
+        {
+          "part": 4,
+          "points": 3
+        },
+        {
+          "part": 5,
+          "points": 4
+        }
+      ],
+      "rawScore": 20,
+      "wholeCoreCapApplies": false,
+      "finalScore": 20,
+      "overallResult": "pass",
+      "separatePartMastery": false
+    },
+    {
+      "case": "coefficient ansatz is genuine solving",
+      "concreteSubmission": "Choose y=1/(a+bt) with unknown a,b and nonzero denominator. Its derivative gives -b/(a+bt)²=1/(a+bt)², so b=-1 while a remains arbitrary. State family and denominator restriction. Complete all remaining work. No theorem claiming exhaustive solution classification is asserted.",
+      "reviewerMarksByWrittenRubric": [
+        {
+          "part": 1,
+          "points": 6
+        },
+        {
+          "part": 2,
+          "points": 2
+        },
+        {
+          "part": 3,
+          "points": 5
+        },
+        {
+          "part": 4,
+          "points": 3
+        },
+        {
+          "part": 5,
+          "points": 4
+        }
+      ],
+      "rawScore": 20,
+      "wholeCoreCapApplies": false,
+      "finalScore": 20,
+      "overallResult": "pass",
+      "separatePartMastery": false
+    },
+    {
+      "case": "unrenamed integration constant",
+      "concreteSubmission": "Correct separation keeps y=-1/(t+K). From y(0)=1 obtain K=-1. State the same particular, interval, zero, verification and direct case correctly.",
+      "reviewerMarksByWrittenRubric": [
+        {
+          "part": 1,
+          "points": 6
+        },
+        {
+          "part": 2,
+          "points": 2
+        },
+        {
+          "part": 3,
+          "points": 5
+        },
+        {
+          "part": 4,
+          "points": 3
+        },
+        {
+          "part": 5,
+          "points": 4
+        }
+      ],
+      "rawScore": 20,
+      "wholeCoreCapApplies": false,
+      "finalScore": 20,
+      "overallResult": "pass",
+      "separatePartMastery": false
+    },
+    {
+      "case": "guessed family plus all checks cannot pass",
+      "concreteSubmission": "Only writes y=1/(C-t), t≠C, without setup, integration or derivation. Zero, correct C=1 determination, interval, actual derivative/initial checks and all z work are complete.",
+      "reviewerMarksByWrittenRubric": [
+        {
+          "part": 1,
+          "points": 2
+        },
+        {
+          "part": 2,
+          "points": 2
+        },
+        {
+          "part": 3,
+          "points": 5
+        },
+        {
+          "part": 4,
+          "points": 3
+        },
+        {
+          "part": 5,
+          "points": 4
+        }
+      ],
+      "rawScore": 16,
+      "wholeCoreCapApplies": true,
+      "finalScore": 14,
+      "overallResult": "not_passed",
+      "separatePartMastery": false
+    },
+    {
+      "case": "method keyword is insufficient",
+      "concreteSubmission": "Adds only the words 'by separation' to the preceding guessed-family answer. No separated equation, integration or derivation appears anywhere.",
+      "reviewerMarksByWrittenRubric": [
+        {
+          "part": 1,
+          "points": 2
+        },
+        {
+          "part": 2,
+          "points": 2
+        },
+        {
+          "part": 3,
+          "points": 5
+        },
+        {
+          "part": 4,
+          "points": 3
+        },
+        {
+          "part": 5,
+          "points": 4
+        }
+      ],
+      "rawScore": 16,
+      "wholeCoreCapApplies": true,
+      "finalScore": 14,
+      "overallResult": "not_passed",
+      "separatePartMastery": false
+    },
+    {
+      "case": "no initial determination anywhere cannot pass",
+      "concreteSubmission": "Both general families are properly derived. State particular guesses 1/(1-t) and t²-2 and their correct intervals/checks, but explicitly make no substitution of either initial condition into either general family. All zero work is correct. Part3 earns particular+interval+pole=3; part5 earns general+interval+checks=3.",
+      "reviewerMarksByWrittenRubric": [
+        {
+          "part": 1,
+          "points": 6
+        },
+        {
+          "part": 2,
+          "points": 2
+        },
+        {
+          "part": 3,
+          "points": 3
+        },
+        {
+          "part": 4,
+          "points": 3
+        },
+        {
+          "part": 5,
+          "points": 3
+        }
+      ],
+      "rawScore": 17,
+      "wholeCoreCapApplies": true,
+      "finalScore": 14,
+      "overallResult": "not_passed",
+      "separatePartMastery": false
+    },
+    {
+      "case": "initial core may be supplied in direct case",
+      "concreteSubmission": "Derive the nonzero family and zero case correctly. For y merely guess 1/(1-t), but give its correct interval/pole explanation and checks. For z genuinely integrate t²+L and use z(0)=-2 to derive L=-2, with domain and checks.",
+      "reviewerMarksByWrittenRubric": [
+        {
+          "part": 1,
+          "points": 6
+        },
+        {
+          "part": 2,
+          "points": 2
+        },
+        {
+          "part": 3,
+          "points": 3
+        },
+        {
+          "part": 4,
+          "points": 3
+        },
+        {
+          "part": 5,
+          "points": 4
+        }
+      ],
+      "rawScore": 18,
+      "wholeCoreCapApplies": false,
+      "finalScore": 18,
+      "overallResult": "pass",
+      "separatePartMastery": false
+    },
+    {
+      "case": "direct-integration part is not a separate pass",
+      "concreteSubmission": "Parts1–4 exactly complete; part5 entirely blank.",
+      "reviewerMarksByWrittenRubric": [
+        {
+          "part": 1,
+          "points": 6
+        },
+        {
+          "part": 2,
+          "points": 2
+        },
+        {
+          "part": 3,
+          "points": 5
+        },
+        {
+          "part": 4,
+          "points": 3
+        },
+        {
+          "part": 5,
+          "points": 0
+        }
+      ],
+      "rawScore": 16,
+      "wholeCoreCapApplies": false,
+      "finalScore": 16,
+      "overallResult": "pass",
+      "separatePartMastery": false
+    },
+    {
+      "case": "zero case has no hidden pass gate",
+      "concreteSubmission": "Parts1,3,4,5 exactly complete; no constant-solution work anywhere.",
+      "reviewerMarksByWrittenRubric": [
+        {
+          "part": 1,
+          "points": 6
+        },
+        {
+          "part": 2,
+          "points": 0
+        },
+        {
+          "part": 3,
+          "points": 5
+        },
+        {
+          "part": 4,
+          "points": 3
+        },
+        {
+          "part": 5,
+          "points": 4
+        }
+      ],
+      "rawScore": 18,
+      "wholeCoreCapApplies": false,
+      "finalScore": 18,
+      "overallResult": "pass",
+      "separatePartMastery": false
+    },
+    {
+      "case": "exact fifteen-point ordinary pass",
+      "concreteSubmission": "Correct full separation, parameter and denominator restriction (6). Substitutes k into 0=k², obtains k=0 (1), but omits the link to division. Complete initial-family calculation and interval/pole reasoning (5); complete derivative and initial checks (3). Part5 entirely blank (0). Both core actions occur.",
+      "reviewerMarksByWrittenRubric": [
+        {
+          "part": 1,
+          "points": 6
+        },
+        {
+          "part": 2,
+          "points": 1
+        },
+        {
+          "part": 3,
+          "points": 5
+        },
+        {
+          "part": 4,
+          "points": 3
+        },
+        {
+          "part": 5,
+          "points": 0
+        }
+      ],
+      "rawScore": 15,
+      "wholeCoreCapApplies": false,
+      "finalScore": 15,
+      "overallResult": "pass",
+      "separatePartMastery": false
+    },
+    {
+      "case": "fourteen without missing-core cap",
+      "concreteSubmission": "Complete parts1,3,4; constant-solution and direct-integration parts both blank. Own family and initial specialization are present, but total is only14.",
+      "reviewerMarksByWrittenRubric": [
+        {
+          "part": 1,
+          "points": 6
+        },
+        {
+          "part": 2,
+          "points": 0
+        },
+        {
+          "part": 3,
+          "points": 5
+        },
+        {
+          "part": 4,
+          "points": 3
+        },
+        {
+          "part": 5,
+          "points": 0
+        }
+      ],
+      "rawScore": 14,
+      "wholeCoreCapApplies": false,
+      "finalScore": 14,
+      "overallResult": "not_passed",
+      "separatePartMastery": false
+    },
+    {
+      "case": "disconnected set is not one initial-value interval",
+      "concreteSubmission": "All derivations, zero and initial constants are correct. Instead of the interval gives R minus {1} and does not explain pole or branches. Correct derivative and initial checks are performed on their valid points. All z work correct.",
+      "reviewerMarksByWrittenRubric": [
+        {
+          "part": 1,
+          "points": 6
+        },
+        {
+          "part": 2,
+          "points": 2
+        },
+        {
+          "part": 3,
+          "points": 3
+        },
+        {
+          "part": 4,
+          "points": 3
+        },
+        {
+          "part": 5,
+          "points": 4
+        }
+      ],
+      "rawScore": 18,
+      "wholeCoreCapApplies": false,
+      "finalScore": 18,
+      "overallResult": "pass",
+      "separatePartMastery": false
+    },
+    {
+      "case": "single arithmetic slip with credited contradictory initial check",
+      "concreteSubmission": "Correct family and zero. Writes 1=1/C, then makes the isolated arithmetic slip C=-1. Consistently states y=1/(-1-t), I=(-1,∞) containing0, and explains pole -1. Correctly differentiates, verifies y'=y², and explicitly computes y(0)=-1≠1, recognizing failure of the original initial condition. Does not correct C. All z work correct. Part3 gets initial setup1, wrong constant0, follow-through expression1, interval1, pole1; part4 gets all3 for correctly performed checks. No second penalty for the same slip.",
+      "reviewerMarksByWrittenRubric": [
+        {
+          "part": 1,
+          "points": 6
+        },
+        {
+          "part": 2,
+          "points": 2
+        },
+        {
+          "part": 3,
+          "points": 4
+        },
+        {
+          "part": 4,
+          "points": 3
+        },
+        {
+          "part": 5,
+          "points": 4
+        }
+      ],
+      "rawScore": 19,
+      "wholeCoreCapApplies": false,
+      "finalScore": 19,
+      "overallResult": "pass",
+      "separatePartMastery": false
+    },
+    {
+      "case": "correct work under another heading receives credit",
+      "concreteSubmission": "Part1 box is blank, but under part4 gives the full valid separated equation, integration, free family, denominator restriction and actual checks. Every other requested action is complete. Allocate each performance once to its criterion.",
+      "reviewerMarksByWrittenRubric": [
+        {
+          "part": 1,
+          "points": 6
+        },
+        {
+          "part": 2,
+          "points": 2
+        },
+        {
+          "part": 3,
+          "points": 5
+        },
+        {
+          "part": 4,
+          "points": 3
+        },
+        {
+          "part": 5,
+          "points": 4
+        }
+      ],
+      "rawScore": 20,
+      "wholeCoreCapApplies": false,
+      "finalScore": 20,
+      "overallResult": "pass",
+      "separatePartMastery": false
+    },
+    {
+      "case": "verification omitted loses only its allocated points",
+      "concreteSubmission": "All requested derivation, zero, initial/interval and direct-case work are complete, but no derivative or initial verification for y appears anywhere.",
+      "reviewerMarksByWrittenRubric": [
+        {
+          "part": 1,
+          "points": 6
+        },
+        {
+          "part": 2,
+          "points": 2
+        },
+        {
+          "part": 3,
+          "points": 5
+        },
+        {
+          "part": 4,
+          "points": 0
+        },
+        {
+          "part": 5,
+          "points": 4
+        }
+      ],
+      "rawScore": 17,
+      "wholeCoreCapApplies": false,
+      "finalScore": 17,
+      "overallResult": "pass",
+      "separatePartMastery": false
+    }
+  ],
+  "reviewerCaseCount": 16,
+  "reviewOfAll13AuthorCases": [
+    {
+      "authorCaseNumber": 1,
+      "authorCase": "complete separation",
+      "reviewerDecision": "ACCEPTED_INDEPENDENTLY",
+      "reason": "The concrete actions and whole-core status agree with the written rubric. Equivalent derivation includes reciprocal and justified coefficient ansatz; a word or a derivative check of a guessed family alone does not."
+    },
+    {
+      "authorCaseNumber": 2,
+      "authorCase": "equivalent reciprocal method accepted",
+      "reviewerDecision": "ACCEPTED_INDEPENDENTLY",
+      "reason": "The concrete actions and whole-core status agree with the written rubric. Equivalent derivation includes reciprocal and justified coefficient ansatz; a word or a derivative check of a guessed family alone does not."
+    },
+    {
+      "authorCaseNumber": 3,
+      "authorCase": "different constant parameterisation accepted",
+      "reviewerDecision": "ACCEPTED_INDEPENDENTLY",
+      "reason": "The concrete actions and whole-core status agree with the written rubric. Equivalent derivation includes reciprocal and justified coefficient ansatz; a word or a derivative check of a guessed family alone does not."
+    },
+    {
+      "authorCaseNumber": 4,
+      "authorCase": "true core cap16to14 for guessed family only",
+      "reviewerDecision": "ACCEPTED_INDEPENDENTLY",
+      "reason": "The concrete actions and whole-core status agree with the written rubric. Equivalent derivation includes reciprocal and justified coefficient ansatz; a word or a derivative check of a guessed family alone does not."
+    },
+    {
+      "authorCaseNumber": 5,
+      "authorCase": "method word alone is not derivation",
+      "reviewerDecision": "ACCEPTED_INDEPENDENTLY",
+      "reason": "The concrete actions and whole-core status agree with the written rubric. Equivalent derivation includes reciprocal and justified coefficient ansatz; a word or a derivative check of a guessed family alone does not."
+    },
+    {
+      "authorCaseNumber": 6,
+      "authorCase": "no extra method subpass",
+      "reviewerDecision": "ACCEPTED_INDEPENDENTLY",
+      "reason": "The concrete actions and whole-core status agree with the written rubric. Equivalent derivation includes reciprocal and justified coefficient ansatz; a word or a derivative check of a guessed family alone does not."
+    },
+    {
+      "authorCaseNumber": 7,
+      "authorCase": "zero case omitted does not add a hidden gate",
+      "reviewerDecision": "ACCEPTED_INDEPENDENTLY",
+      "reason": "The concrete actions and whole-core status agree with the written rubric. Equivalent derivation includes reciprocal and justified coefficient ansatz; a word or a derivative check of a guessed family alone does not."
+    },
+    {
+      "authorCaseNumber": 8,
+      "authorCase": "disconnected-domain notation loses allocated points",
+      "reviewerDecision": "ACCEPTED_INDEPENDENTLY",
+      "reason": "The concrete actions and whole-core status agree with the written rubric. Equivalent derivation includes reciprocal and justified coefficient ansatz; a word or a derivative check of a guessed family alone does not."
+    },
+    {
+      "authorCaseNumber": 9,
+      "authorCase": "local constant sign slip with followthrough",
+      "reviewerDecision": "NOT_ACCEPTED_AS_EXACT_17_POINT_EVIDENCE",
+      "reason": "The stated submission explicitly computes and recognizes the wrong initial value. That is a correct initial-condition check and must receive its verification point under the written follow-through rule. The text does not fully specify every interval substep; an exact score17 is therefore not a reliable independent oracle. The fully specified reviewer case gives19 and no cap. At least the omitted verification point must not be denied merely because it exposes the earlier arithmetic slip."
+    },
+    {
+      "authorCaseNumber": 10,
+      "authorCase": "valid15point ordinary pass",
+      "reviewerDecision": "UNDERSPECIFIED_EXACT_POINT_ALLOCATION",
+      "reason": "The prose describes a sound family with denominator restriction but assigns only5/6, and does not identify enough z-domain/check work to justify3/4. This cannot establish its exact15 score. The reviewer supplies an unambiguous15-point pass without adding any gate."
+    },
+    {
+      "authorCaseNumber": 11,
+      "authorCase": "no initial determination anywhere protected",
+      "reviewerDecision": "ACCEPTED_INDEPENDENTLY",
+      "reason": "The concrete actions and whole-core status agree with the written rubric. Equivalent derivation includes reciprocal and justified coefficient ansatz; a word or a derivative check of a guessed family alone does not."
+    },
+    {
+      "authorCaseNumber": 12,
+      "authorCase": "concise valid elementary domain accepted",
+      "reviewerDecision": "ACCEPTED_INDEPENDENTLY",
+      "reason": "The concrete actions and whole-core status agree with the written rubric. Equivalent derivation includes reciprocal and justified coefficient ansatz; a word or a derivative check of a guessed family alone does not."
+    },
+    {
+      "authorCaseNumber": 13,
+      "authorCase": "genuine elementary ansatz reasoning accepted",
+      "reviewerDecision": "ACCEPTED_INDEPENDENTLY",
+      "reason": "The concrete actions and whole-core status agree with the written rubric. Equivalent derivation includes reciprocal and justified coefficient ansatz; a word or a derivative check of a guessed family alone does not."
+    }
+  ],
+  "twoAuthorExampleIssuesDoNotChangeWrittenTaskOrRubric": true,
+  "scoringAuthority": "The frozen written rubric and these concrete independent interpretations; author case numbers are not a semantic auto-grader.",
+  "newPartMasteryOrExhaustiveVariantRequirement": false
+}

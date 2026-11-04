@@ -1,0 +1,37 @@
+{
+  "status": "CONFIRMED_SOURCE_PACKAGING_BLOCKER_FOR_ORIGINAL_639_NOT_MATHEMATICAL_CONTENT_DRIFT",
+  "originalManifestSha256": "fc2f047ff6d55a772cc65aa1c83a31d76ee36301725da192556fd2765e417f26",
+  "firstActualNativeFailure": {
+    "log": "tmp/approach-review-20261101/geometry-six-dgl1-existing-routes-native-20261104-v1/candidate.log.gz",
+    "sha256": "28f0445d2bcaaa913e4a290a65b5eb22661a62abf87fa7cd62144708f72a281e",
+    "exception": "Conflicting goal mappings for legacyGoalId eb9048a4-9cb9-5aaf-8a91-aeba08e05b0c"
+  },
+  "runtimeDiscoverableHistoricalJsons": [
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/geometry-six-dgl1-existing-routes-2026-11-04-v1/whole-source/af790-four-by/input/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "2fd2e68235ffb462dccebce5b5f35b76ba0ce0f092e52b4dce3ad21b7c20d753",
+      "recommendedStoredPath": "curricula/DE/Gymnasium/assessments/mathematik/geometry-six-dgl1-existing-routes-2026-11-04-v1/whole-source/af790-four-by/input/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json.snapshot",
+      "rawBytesMustRemainSame": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/geometry-six-dgl1-existing-routes-2026-11-04-v1/whole-source/af790-four-by/input/curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math.json",
+      "sha256": "2c3fee2207840c2e16f570976af8f26d4386cc49d9ffa56f23b6f36a56356546",
+      "recommendedStoredPath": "curricula/DE/Gymnasium/assessments/mathematik/geometry-six-dgl1-existing-routes-2026-11-04-v1/whole-source/af790-four-by/input/curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math.json.snapshot",
+      "rawBytesMustRemainSame": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/geometry-six-dgl1-existing-routes-2026-11-04-v1/whole-source/dgl1/original/canonical.current.json",
+      "sha256": "30c95213b0a6b7debc6b9a470c924c31cc7b733612bc11cf3e559d394dcdc891",
+      "recommendedStoredPath": "curricula/DE/Gymnasium/assessments/mathematik/geometry-six-dgl1-existing-routes-2026-11-04-v1/whole-source/dgl1/original/canonical.current.json.snapshot",
+      "rawBytesMustRemainSame": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/geometry-six-dgl1-existing-routes-2026-11-04-v1/whole-source/geometry-six/original/canonical.current.json",
+      "sha256": "30c95213b0a6b7debc6b9a470c924c31cc7b733612bc11cf3e559d394dcdc891",
+      "recommendedStoredPath": "curricula/DE/Gymnasium/assessments/mathematik/geometry-six-dgl1-existing-routes-2026-11-04-v1/whole-source/geometry-six/original/canonical.current.json.snapshot",
+      "rawBytesMustRemainSame": true
+    }
+  ],
+  "boundedCorrection": "Store these four exact historical bytes as .json.snapshot with explicit originalPath to storedPath/hash index; update the af790 originalCanonical live typed pin and its dependent contract/plan/policy hashes. Keep original freeze and failed native run intact; no production loader relaxation or sampler omission.",
+  "stageAcceptance": false
+}

@@ -10,7 +10,7 @@ const policyPath = 'app/scripts/config/math-country-seki-stage-policy.json'
 type View = { viewId: string; scope?: Record<string, string | undefined>; rootNodes: CompositionViewNode[] }
 type Goal = { id?: string; contains?: readonly string[]; requires?: readonly string[]; nodeKind?: string; examData?: unknown }
 type Binding = { path: string; sha256: string }
-type Policy = { countries: { outputViewId: string }[]; existingStageViews: { outputViewId: string }[]; durationOutputViewIds: string[]; stageDecisionBindings: Binding[] }
+type Policy = { authoredAssessmentViews?: { outputViewId: string }[]; countries: { outputViewId: string }[]; existingStageViews: { outputViewId: string }[]; durationOutputViewIds: string[]; stageDecisionBindings: Binding[] }
 const loaded = new Map<string, { fingerprint: string; operations: MathAssessmentScopeOperation[]; retained: { viewId: string; goalId: string; operationId: string }[] }>()
 const digest = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex')
 /** Buildtime only. Reuse the normal producers' materialized-view and bound-decision guards. */
@@ -29,7 +29,7 @@ export function applyContextualTerminalPlacements<T extends View>(view: T, goals
       throw new Error('Finite contextual terminal operation identity/shape differs from bound reference inventory')
     }
     const policy = JSON.parse(policyBytes.toString('utf8')) as Policy
-    const outputIds = new Set([...policy.countries.map(v => v.outputViewId), ...policy.existingStageViews.map(v => v.outputViewId), ...policy.durationOutputViewIds])
+    const outputIds = new Set([...policy.countries.map(v => v.outputViewId), ...policy.existingStageViews.map(v => v.outputViewId), ...policy.durationOutputViewIds, ...(policy.authoredAssessmentViews ?? []).map(v => v.outputViewId)])
     const independentBindings = proposal.independentDecisionBindings
     if (!Array.isArray(independentBindings) || !independentBindings.length) throw new Error('Finite contextual terminal operations lack bound independent decisions')
     for (const operation of operations) {

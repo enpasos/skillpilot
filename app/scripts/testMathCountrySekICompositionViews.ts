@@ -10,6 +10,7 @@ import {
   assertMathStageMaterializationAllowed,
   deriveMathCountrySekIViews,
   deriveMathExistingStageViews,
+  deriveMathAuthoredAssessmentViews,
   type BoundStageFile,
   type StagePolicy,
   type StageReviewReceipt,
@@ -50,7 +51,8 @@ assert(country('DE-MV').courses.every(course => course.prerequisiteOnlyGoalIds.i
 
 // Exact independently reviewed task scopes must agree across stage choices.
 const existingRows = deriveMathExistingStageViews(root, policy)
-const allRows = [...rows, ...existingRows]
+const authoredRows = deriveMathAuthoredAssessmentViews(root, policy)
+const allRows = [...rows, ...existingRows, ...authoredRows]
 for (const operation of policy.assessmentScopeOperations) {
   const row = allRows.find(candidate => candidate.view.viewId === operation.viewId)
   if (!row) {
@@ -100,7 +102,7 @@ const noHoldBytes = JSON.stringify(noHolds)
 const receipt: StageReviewReceipt = {
   verdict: 'PASS', authorIndependent: true, policySha256: sha(noHoldBytes), sourceDecisionsSha256: policy.sourceDecisions.sha256,
   generatorSha256: sha(readFileSync(resolve(root, generatorPath))),
-  approvedViewIds: [...rows.map(row => row.view.viewId), ...policy.existingStageViews.map(view => view.outputViewId), ...policy.durationOutputViewIds],
+  approvedViewIds: [...rows.map(row => row.view.viewId), ...policy.existingStageViews.map(view => view.outputViewId), ...policy.durationOutputViewIds, ...authoredRows.map(row => row.view.viewId)],
   approvedSourceDecisionIds: sourceDecisions.decisions.map(decision => decision.id),
   approvedStageRuleIds: policy.stageRules.map(rule => rule.id),
   approvedAssessmentScopeOperationIds: policy.assessmentScopeOperations.map(operation => operation.id),

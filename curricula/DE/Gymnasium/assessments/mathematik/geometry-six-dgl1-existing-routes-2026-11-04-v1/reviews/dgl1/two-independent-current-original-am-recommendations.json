@@ -1,0 +1,225 @@
+{
+  "status": "GENUINE_CONTENT_CONDITIONAL_RECOMMENDATIONS_NOT_APPLIED",
+  "inputManifestSha256": "0562557487f7be71513c316411103d364313d82e01557f8ab5355f4f5b93347f",
+  "fingerprintSources": [
+    {
+      "path": "app/scripts/semanticAtomicityReview.ts",
+      "sha256": "e66fac8a4398833f014df41dc3d457a17aed9afa2751037598407261cb590aee",
+      "executedSourceSha256": "ed3811001b81b4067d3c8d106395021b821ec85663637aa0c88192048993dbf9"
+    },
+    {
+      "path": "app/scripts/memoryCardReview.ts",
+      "sha256": "756f1647f0a26edb20b2f54a8acd65ff17aa3a232b10f406b534219fa6916181",
+      "executedSourceSha256": "5aed1157b2a9624974db503993b844d710fab3b54030ac1786f6402e805e9a6e"
+    }
+  ],
+  "decisions": [
+    {
+      "lane": "semantic-atomicity",
+      "currentRegisteredLine": 130,
+      "wholeOriginalGoal": {
+        "id": "28cdee95-3c8e-5760-a68a-405b7f9c6cbf",
+        "title": "Differenzialgleichungen erster Ordnung elementar lösen",
+        "titleEn": "Solve first-order differential equations with elementary methods",
+        "description": "Die lernende Person kann geeignete Differenzialgleichungen erster Ordnung durch Separation der Variablen und andere elementare Lösungsmethoden lösen, allgemeine und spezielle Lösungen gewinnen und Anfangsbedingungen berücksichtigen.",
+        "descriptionEn": "The learner can solve suitable first-order differential equations by separation of variables and other elementary solution methods, obtain general and particular solutions, and account for initial conditions.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "5fe4218e-4fb0-5339-8764-c989befa244e",
+          "a9ed219d-d497-55e5-a4e0-4d45d2554f6b"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q1.5, S. 38, Spiegelstrich 2",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "28cdee95-3c8e-5760-a68a-405b7f9c6cbf",
+            "title": "Visualisierung: Differenzialgleichungen erster Ordnung elementar lösen",
+            "url": "/assets/goal-visualizations/mathematik/28cdee95-3c8e-5760-a68a-405b7f9c6cbf/28cdee95-3c8e-5760-a68a-405b7f9c6cbf.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Differenzialgleichungen erster Ordnung elementar lösen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Differenzialgleichungen erster Ordnung elementar lösen\". Die lernende Person kann geeignete Differenzialgleichungen erster Ordnung durch Separation der Variablen und andere elementare Lösungsmethoden lösen, allgemeine und spezielle Lösungen gewinnen und Anfangsbedingungen berücksichtigen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "currentRegisteredRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "28cdee95-3c8e-5760-a68a-405b7f9c6cbf",
+        "fingerprint": "sha256:7e032167b78f4b902cadb9646a1d40272b0b088bbb3fc73f02c2b943d32e9d3c",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-05-05",
+        "reviewer": "codex",
+        "reason": "Q1-Review: Eine zusammenhaengende Differentialgleichungsroutine; Modellieren, Loesen oder qualitatives Deuten bilden jeweils einen pruefbaren Kompetenzkern.",
+        "suggestedSplit": []
+      },
+      "proposedRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "28cdee95-3c8e-5760-a68a-405b7f9c6cbf",
+        "fingerprint": "sha256:7e032167b78f4b902cadb9646a1d40272b0b088bbb3fc73f02c2b943d32e9d3c",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "suggestedSplit": [],
+        "reviewedAt": "2026-11-04",
+        "reviewer": "independent-astra-ultra-content-review",
+        "reason": "Ein kohärenter Lösungskern: aus einer geeigneten Differenzialgleichung erster Ordnung mit einem elementaren Verfahren eine parametrisierte Lösung gewinnen und über eine Anfangsbedingung spezialisieren. Allgemeine und spezielle Lösungen sind zusammenhängende Stufen derselben Handlung. Separation und andere geeignete elementare Verfahren sind Methoden dieses Kerns; weder eine erschöpfende Methodensammlung noch selbstständige Teilmasterys sind nötig. Die geprüfte ganze Form erzwingt eine eigene nichtverschwindende Familienherleitung und mindestens eine echte Anfangswertbestimmung, erlaubt aber gleichwertige Kehrwert- und begründete Koeffizientenansätze."
+      },
+      "applied": false
+    },
+    {
+      "lane": "memory-card-review",
+      "currentRegisteredLine": 130,
+      "wholeOriginalGoal": {
+        "id": "28cdee95-3c8e-5760-a68a-405b7f9c6cbf",
+        "title": "Differenzialgleichungen erster Ordnung elementar lösen",
+        "titleEn": "Solve first-order differential equations with elementary methods",
+        "description": "Die lernende Person kann geeignete Differenzialgleichungen erster Ordnung durch Separation der Variablen und andere elementare Lösungsmethoden lösen, allgemeine und spezielle Lösungen gewinnen und Anfangsbedingungen berücksichtigen.",
+        "descriptionEn": "The learner can solve suitable first-order differential equations by separation of variables and other elementary solution methods, obtain general and particular solutions, and account for initial conditions.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "5fe4218e-4fb0-5339-8764-c989befa244e",
+          "a9ed219d-d497-55e5-a4e0-4d45d2554f6b"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "K2.3",
+            "K3.2"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L2"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q1.5, S. 38, Spiegelstrich 2",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "28cdee95-3c8e-5760-a68a-405b7f9c6cbf",
+            "title": "Visualisierung: Differenzialgleichungen erster Ordnung elementar lösen",
+            "url": "/assets/goal-visualizations/mathematik/28cdee95-3c8e-5760-a68a-405b7f9c6cbf/28cdee95-3c8e-5760-a68a-405b7f9c6cbf.jpg",
+            "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+            "description": "Visualisierung zum Lernziel: Differenzialgleichungen erster Ordnung elementar lösen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Differenzialgleichungen erster Ordnung elementar lösen\". Die lernende Person kann geeignete Differenzialgleichungen erster Ordnung durch Separation der Variablen und andere elementare Lösungsmethoden lösen, allgemeine und spezielle Lösungen gewinnen und Anfangsbedingungen berücksichtigen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "currentRegisteredRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "28cdee95-3c8e-5760-a68a-405b7f9c6cbf",
+        "fingerprint": "sha256:0fc66f1ca650b2d0eccc81e66c0b7c51d8ae3f19fc7d123ef2ccd24e4ae40531",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-memory-pilot",
+        "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+      },
+      "proposedRow": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "28cdee95-3c8e-5760-a68a-405b7f9c6cbf",
+        "fingerprint": "sha256:0fc66f1ca650b2d0eccc81e66c0b7c51d8ae3f19fc7d123ef2ccd24e4ae40531",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-11-04",
+        "reviewer": "independent-astra-ultra-content-review",
+        "reason": "Die tragende Leistung besteht in eigener Umformung, Integration beziehungsweise gleichwertiger Herleitung, dem Umgang mit Integrationskonstanten und der Anwendung einer Anfangsbedingung. Ein zusätzlicher isolierter Faktenabruf zum DGL-Verfahren wäre kein eigener erforderlicher Gedächtnisgegenstand. Die vorhandenen drei memory_required-Verträge im Original-R-Kontext sowie das Analysis-Kernregeln-Deck mit 14 aktuellen Karten bleiben ausdrücklich erhalten; die gegebene Ableitungshilfe schafft keine Memory-Ausnahme."
+      },
+      "applied": false
+    }
+  ],
+  "obligationsPerLane": 807,
+  "authoritativeOriginalSemanticKind": {
+    "goalId": "28cdee95-3c8e-5760-a68a-405b7f9c6cbf",
+    "sourceFingerprint": "sha256:440ed10d7e75f690f1bf83c7ae65fa235f4793251f73567b131ca38b2b876126",
+    "semanticKind": "curricularAtomic",
+    "decisionStatus": "authoritative",
+    "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+  },
+  "futureIdOrRoleBinding": "Not granted. These rows bind only the unchanged original DGL1 identity and complete current contract; a future separate exam needs its own identity/role/source-scope check. R and coverage are absent from these A/M fingerprints, so equality is not graph approval."
+}

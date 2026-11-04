@@ -1,0 +1,63 @@
+{
+  "status": "PASS_TWO_GENUINE_FINDINGS_REPAIRED",
+  "startedAt": "2026-11-04T10:02:49.883064+00:00",
+  "dataRoot": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/geometry-six-dgl1-final-handoff-20261104-v1/failed-check-retry-v1/check-host",
+  "commands": [
+    {
+      "name": "source-coverage",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/geometry-six-dgl1-final-handoff-20261104-v1/failed-check-retry-v1/check-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateCurriculumSourceCoverageAudit.ts",
+        "--check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/geometry-six-dgl1-final-handoff-20261104-v1/failed-check-retry-v1/check-host",
+      "attempt": 2,
+      "exitCode": 0,
+      "seconds": 23.5,
+      "inputManifestSha256": "987ea8d5017845a245b7d7fa3b47f6eec371608d3a459573ec2757aef71a49e6",
+      "stdout": {
+        "path": "tmp/approach-review-20261101/geometry-six-dgl1-final-handoff-20261104-v1/failed-check-retry-v1/final-bound-checks/source-coverage.attempt2.stdout.txt",
+        "sha256": "6229cca161cb085091658a3398a3066a294aad1f1363d848dab67597bebba79a",
+        "bytes": 47
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/geometry-six-dgl1-final-handoff-20261104-v1/failed-check-retry-v1/final-bound-checks/source-coverage.attempt2.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "stage-country",
+      "argv": [
+        "node",
+        "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/geometry-six-dgl1-final-handoff-20261104-v1/failed-check-retry-v1/check-host/app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/testMathCountrySekICompositionViews.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/tmp/approach-review-20261101/geometry-six-dgl1-final-handoff-20261104-v1/failed-check-retry-v1/check-host",
+      "attempt": 2,
+      "exitCode": 0,
+      "seconds": 325.2,
+      "inputManifestSha256": "987ea8d5017845a245b7d7fa3b47f6eec371608d3a459573ec2757aef71a49e6",
+      "stdout": {
+        "path": "tmp/approach-review-20261101/geometry-six-dgl1-final-handoff-20261104-v1/failed-check-retry-v1/final-bound-checks/stage-country.attempt2.stdout.txt",
+        "sha256": "775444aa2bb9a33016eee37e3a6861610065f6c87b657f5e74adb91011f53e77",
+        "bytes": 134
+      },
+      "stderr": {
+        "path": "tmp/approach-review-20261101/geometry-six-dgl1-final-handoff-20261104-v1/failed-check-retry-v1/final-bound-checks/stage-country.attempt2.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "inputManifestSha256": "987ea8d5017845a245b7d7fa3b47f6eec371608d3a459573ec2757aef71a49e6",
+  "firstSequenceSha256": "03d5c9f9e8b36bf39b6630b22fde79f634a079929e13ab6d5f8b1782b5e7a7ea",
+  "priorNinePassesReusedWithoutRerun": true,
+  "noRootGitWrites": true,
+  "payloadDrift": [],
+  "nativeInputDrift": [],
+  "ownedCheckSourceDrift": [],
+  "allRetryExitCodesZero": true,
+  "finishedAt": "2026-11-04T10:08:18.819822+00:00"
+}
