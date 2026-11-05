@@ -29,7 +29,7 @@ class ConsumerRevisionTest(unittest.TestCase):
                          "948060cb5fb9128edc81d9b2a3554325ebb840a19f537638cf0a30488b74987d")
 
     def test_choice_uses_current_actions_and_explicit_stage(self):
-        first = {"optionId": "first", "kind": "VALUE", "scopeKey": "stage", "scopeValue": "SekI"}
+        first = {"optionId": "first", "kind": "SCOPE_VALUE", "scopeKey": "stage", "scopeValue": "SekI"}
         cross = first | {"optionId": "cross", "scopeValue": "CrossStage"}
         plan = {"stage": "SELECTION", "options": [first, cross],
                 "displayOptions": [{"optionId": "never-submit", "kind": "COMPLETE_GROUP"}]}
@@ -43,7 +43,7 @@ class ConsumerRevisionTest(unittest.TestCase):
     def setup_replies(self, *, initial_count=0, stage="CrossStage", action_status=200):
         def reply(value, status=200):
             return status, value, http.canonical_json(value)
-        action = {"optionId": "opaque-action", "kind": "VALUE", "scopeKey": "stage", "scopeValue": "CrossStage"}
+        action = {"optionId": "opaque-action", "kind": "SCOPE_VALUE", "scopeKey": "stage", "scopeValue": "CrossStage"}
         config = {"root": {"stage": stage, "filterId": "DE-HE", "durationModel": "G9"}}
         return [reply({"goals": {"personalized": {"total_atomic": initial_count}}}),
                 reply({"goals": []}), reply({"stage": "SELECTION", "options": [action]}),

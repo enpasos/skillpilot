@@ -129,7 +129,7 @@ def select_personalization_option(plan: Any) -> dict[str, Any]:
     options = plan.get("options")
     require(isinstance(options, list) and options, "personalization plan has no actionable options")
     require(all(isinstance(option, dict) and isinstance(option.get("optionId"), str)
-                and option["optionId"] and option.get("kind") in ("VALUE", "COMPLETE_GROUP")
+                and option["optionId"] and option.get("kind") in ("VALUE", "SCOPE_VALUE", "COMPLETE_GROUP")
                 for option in options), "personalization plan has an invalid action")
     preferred = (
         lambda option: option.get("kind") == "COMPLETE_GROUP",
@@ -640,6 +640,13 @@ def run() -> int:
         require(status == 200, f"learner creation status is {status}")
         learner_id = find_skillpilot_id(created)
         require(learner_id is not None, "learner creation returned no SkillPilot ID")
+        # Keep this technical fixture idle until its explicit orientation/K
+        # selections. Authored setup reads state before the recall check.
+        preferences_status, _, preferences_body = request(
+            f"/api/ui/learners/{urllib.parse.quote(learner_id, safe='')}/preferences",
+            method="PUT", json_body={"autoPilot": False},
+        )
+        require(preferences_status == 200, "fixture AutoPilot preference failed before personalization")
         root_id = context["rootId"]
         curriculum_status, _headers, curriculum_body = request(
             f"/api/ui/learners/{urllib.parse.quote(learner_id, safe='')}/curriculum",
@@ -669,6 +676,9 @@ def run() -> int:
             "curriculumSelectionStatus": curriculum_status,
             "curriculumSelectionResponseSha256": sha256(curriculum_body),
             "learnerResponseSha256": sha256(create_body),
+            "fixtureAutoPilot": False,
+            "fixtureAutoPilotPreferenceStatus": preferences_status,
+            "fixtureAutoPilotPreferenceResponseSha256": sha256(preferences_body),
             "frontierResponseSha256": sha256(frontier_body),
             "frontierGoalCount": len(frontier_ids),
             "personalization": setup_evidence,

@@ -83,10 +83,10 @@ PINNED_HELPER_SHA256 = {
     "backend/src/main/resources/action-regression-report.html": "a8531a620b3d923cfdc3b9f8839d99d9b60edf01795c33fd84b2572c06ae59fe",
     "backend/src/main/resources/claude-mcp-regression-report.html": "0237929c224ab7cf1e512cfedbb31e2401766d80a4b5e16bc937dcbf5b01addf",
     "backend/src/main/resources/db/changelog/changes/030-add-oauth-client-security.yaml": "1e35e8063d2bb93423223f0d427935d9fdd616cccc705bfec235abc25d5823d9",
-    "scripts/package_consumer_browser_smoke.cjs": "b542fcf4f735d3aa6f0c07262cda68089871f712bde17aef95a3549092fe2c31",
+    "scripts/package_consumer_browser_smoke.cjs": "20405289c21768cc1d6d863318d021b55db74f1e5c6f7ad7c1da72618c820bb7",
     "scripts/package_consumer_runtime.init.gradle": "e084d70053a16a9a499a3cab7e807035d9179ee0f318f26318de798f096b470b",
     "scripts/package_consumer_sandbox_entry.py": "32c348c4912271f3773705477bd4f2d86ad332ed2a68a92498188f45879499d3",
-    "scripts/package_consumer_smoke_http.py": "031159002afda8cde6f862480bfcd28038bc23a27a7f85afda155189e2f09a0d",
+    "scripts/package_consumer_smoke_http.py": "1d41a9b4148cf7140e866a5be0071ce0608fb2c2f3be2eb6461ff023c359c32c",
 }
 
 BACKEND_CLASSPATH_RESOURCES = (

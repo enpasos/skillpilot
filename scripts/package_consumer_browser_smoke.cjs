@@ -131,7 +131,7 @@ const selectPersonalizationOption = (plan) => {
   const options = plan.options
   requireCondition(Array.isArray(options) && options.length > 0
     && options.every((option) => typeof option?.optionId === 'string' && option.optionId
-      && ['VALUE', 'COMPLETE_GROUP'].includes(option.kind)),
+      && ['VALUE', 'SCOPE_VALUE', 'COMPLETE_GROUP'].includes(option.kind)),
   'browser personalization plan has no valid actionable options')
   const preferred = [
     (option) => option.kind === 'COMPLETE_GROUP',
@@ -231,7 +231,7 @@ const selfTestDefaultOfferingSelector = () => {
   })
   requireCondition(rejected === 4,
     `default-offering selector rejection count differs: ${rejected}`)
-  const first = { optionId: 'first', kind: 'VALUE', scopeKey: 'stage', scopeValue: 'SekI' }
+  const first = { optionId: 'first', kind: 'SCOPE_VALUE', scopeKey: 'stage', scopeValue: 'SekI' }
   const cross = { ...first, optionId: 'cross', scopeValue: 'CrossStage' }
   const plan = { stage: 'SELECTION', options: [first, cross],
     displayOptions: [{ optionId: 'display-only', kind: 'COMPLETE_GROUP' }] }
