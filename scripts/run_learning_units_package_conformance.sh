@@ -93,7 +93,7 @@ try:
     plan = {'producerProfile': str(profile_path), 'producerProfileSha256': hashlib.sha256(profile_path.read_bytes()).hexdigest(),
             'profileId': profile['profileId'], 'packageVersion': profile['package']['packageVersion'],
             'catalogPath': str(catalog_path.relative_to(root)), 'expectedContractCount': len(catalog['contracts']),
-            'expectedCounts': profile['expectedCounts'], 'packageProfile': str(package_profile),
+            'expectedCounts': profile['expectedCounts'], 'packageProfile': str(package_profile.relative_to(root)),
             'workDir': str(work), 'offerProfile': offer, 'fullMode': sys.argv[3] == 'true',
             'validation': 'producer schema and declared contract pins; full semantic validation runs with the actual model',
             'executedQualificationGates': []}

@@ -72,7 +72,8 @@ class ConformancePlanTest(unittest.TestCase):
             self.assertEqual(plan['packageVersion'], '0.1.0-learning-unit-offers.2')
             self.assertEqual(plan['fullMode'], full)
             self.assertTrue(plan['offerProfile'])
-            self.assertTrue(plan['packageProfile'].endswith('full-standalone-learning-unit-offers-v1.profile.json'))
+            self.assertEqual(plan['packageProfile'], 'contracts/curriculum-package/v1.2/profiles/full-standalone-learning-unit-offers-v1.profile.json')
+            self.assertTrue(Path(plan['producerProfile']).is_absolute())
             self.assertEqual([plan['expectedCounts'][key] for key in ('goals', 'programUnits', 'goalPlacements', 'views')], [1255, 35, 351, 98])
 
     def test_existing_empty_and_nonempty_targets_are_never_reused(self):
@@ -173,6 +174,59 @@ if 'scripts/compile_curriculum_release_model.py' in args:
             self.assertEqual(self.log.exists(), full)
             if full:
                 self.assertIn('export:full-standalone-package', self.log.read_text())
+                self.assertIn('--package-profile contracts/curriculum-package/v1.2/profiles/full-standalone-learning-unit-offers-v1.profile.json', self.log.read_text())
+                self.assertNotIn('--package-profile ' + str(ROOT), self.log.read_text())
+
+    def test_planned_profile_crosses_the_actual_builder_boundary_for_another_repository_root(self):
+        # Exercise the real builder import, stopping at the first deliberately
+        # missing release artifact after complete profile validation. No model,
+        # archive, redistribution decision, or provisioned store is produced.
+        plan = self.planned('--producer-profile', V2, full=True)
+        repository_path = plan['packageProfile']
+        foreign = self.private / 'foreign-repository'
+        copied_profile = foreign / repository_path
+        copied_profile.parent.mkdir(parents=True)
+        shutil.copy2(ROOT / repository_path, copied_profile)
+        linked_profile = copied_profile.with_name('linked.profile.json')
+        linked_profile.symlink_to(copied_profile)
+        with tempfile.TemporaryDirectory(prefix='conformance-builder-boundary-', dir=ROOT / 'tmp') as temporary:
+            cases = []
+            for repository, release in ((ROOT, Path(temporary) / 'release-model'),
+                                        (foreign, foreign / 'tmp/release-model')):
+                catalog = release / 'data/runtime/catalog.json'
+                catalog.parent.mkdir(parents=True)
+                catalog.write_text(json.dumps({'runtimeContractVersion': '1.2',
+                    'capabilities': ['learningUnitOfferBindingsV1']}))
+                cases.append({'repositoryRoot': str(repository), 'releaseRoot': str(release),
+                              'fullStandaloneProfilePath': repository_path})
+            script = self.private / 'actual-builder-boundary.mts'
+            script.write_text('''import assert from 'node:assert/strict';
+import { createFullStandalonePackagePlan } from ''' + json.dumps(str(ROOT / 'app/scripts/buildFullStandaloneCurriculumPackage.ts')) + ''';
+const cases = JSON.parse(process.argv[2]);
+for (const options of cases) {
+  assert.throws(() => createFullStandalonePackagePlan(options),
+    /Release model is missing metadata\\/semantic-content-index.json/);
+  for (const path of [options.repositoryRoot + '/' + options.fullStandaloneProfilePath,
+    '../escape.profile.json', 'contracts/../escape.profile.json']) {
+    assert.throws(() => createFullStandalonePackagePlan({ ...options, fullStandaloneProfilePath: path }),
+      /Unsafe full-standalone release profile repository path/);
+  }
+}
+const foreign = cases[1];
+assert.throws(() => createFullStandalonePackagePlan({ ...foreign,
+  fullStandaloneProfilePath: foreign.fullStandaloneProfilePath.replace(/[^/]+$/, 'linked.profile.json') }),
+  /Symlink path component is forbidden/);
+assert.throws(() => createFullStandalonePackagePlan({ ...foreign,
+  fullStandaloneProfilePath: foreign.fullStandaloneProfilePath.replace(/[^/]+$/, 'missing.profile.json') }),
+  /Required path component does not exist/);
+console.log('Actual builder accepted both repository-relative profile locations; absolute, traversal, symlink and missing profiles remain rejected.');
+''')
+            result = subprocess.run(['node', str(ROOT / 'app/node_modules/tsx/dist/cli.mjs'),
+                                     str(script), json.dumps(cases)], cwd=ROOT, env=os.environ.copy(),
+                                    text=True, capture_output=True, timeout=30)
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertIn('Actual builder accepted both', result.stdout)
+            self.assertFalse(self.log.exists(), 'Boundary probe invoked a heavy wrapper command')
 
     def test_actual_main_ci_chooses_explicit_v2_model_route(self):
         text = (ROOT / '.github/workflows/ci.yml').read_text()
