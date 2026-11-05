@@ -189,6 +189,10 @@ jobs:
             /docs/qa-ci/status/curriculum-quality-status.json
             /docs/dev/learning-units-mathematics-*.json
             /scripts/
+      - name: Resolve backend test selectors and required reports before builds
+        run: |
+          python3 -B scripts/check_completion_ci_test_references.py
+          python3 -B scripts/test_completion_ci_test_references.py
       - uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
@@ -252,7 +256,7 @@ jobs:
           --tests 'com.skillpilot.backend.curriculumpackage.JsonCurriculumPackageLoaderTest'
           --tests 'com.skillpilot.backend.curriculumpackage.PackageNativeMappingInputsTest'
           --tests 'com.skillpilot.backend.curriculumpackage.PackageCompositionViewStateTest'
-          --tests 'com.skillpilot.backend.curriculumpackage.PackageCompositionViewConsumerTest'
+          --tests 'com.skillpilot.backend.service.PackageCompositionViewConsumerTest'
           --tests 'com.skillpilot.backend.curriculumpackage.CompositionViewServicePackageTest'
           --tests 'com.skillpilot.backend.ui.CompositionViewUiControllerTest'
           --tests 'com.skillpilot.backend.landscape.GoalMappingServiceTest'
@@ -329,7 +333,7 @@ jobs:
               'com.skillpilot.backend.curriculumpackage.JsonCurriculumPackageLoaderTest': 13,
               'com.skillpilot.backend.curriculumpackage.PackageNativeMappingInputsTest': 4,
               'com.skillpilot.backend.curriculumpackage.PackageCompositionViewStateTest': 25,
-              'com.skillpilot.backend.curriculumpackage.PackageCompositionViewConsumerTest': 14,
+              'com.skillpilot.backend.service.PackageCompositionViewConsumerTest': 14,
               'com.skillpilot.backend.curriculumpackage.CompositionViewServicePackageTest': 4,
               'com.skillpilot.backend.ui.CompositionViewUiControllerTest': 3,
               'com.skillpilot.backend.landscape.GoalMappingServiceTest': 15,
