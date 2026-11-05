@@ -1,6 +1,6 @@
 # Umsetzungsplan: Lerneinheiten und integrierte Lernkarte
 
-**Stand: 4. November 2026. Aktueller Planungsauftrag.** Dieser Plan ersetzt den
+**Stand: 5. November 2026. Arbeitsgrundlage für die Umsetzung.** Dieser Plan ersetzt den
 [vorherigen Neustartplan](curriculum-recognition-restart-plan.md) als Arbeitsgrundlage.
 Der alte Plan und [PR #79](https://github.com/enpasos/skillpilot/pull/79) bleiben als
 Historie und Bausteinbestand erhalten. Ein geprüftes Konzept, lokale Browserprüfung,
@@ -35,6 +35,15 @@ Grundlage sind [Lerneinheiten](../concept/skill-graph/learning-units.md),
 Dieser Plan konkretisiert die Umsetzung; er eröffnet diese beschlossenen Begriffe nicht neu.
 
 ## 2. Ausgangspunkt und ehrlicher Lieferstand
+
+**Fortschreibung vom 5. November:** [PR #80](https://github.com/enpasos/skillpilot/pull/80)
+ist mit `e2514eacb595010648ffe50bc4c444ba4553257c` in `main` gemergt.
+Der Product Owner meldet Deployment und bestandenen Smoke-Test. Damit ist S0
+ausgerollt; die Meldung ersetzt keine darüber hinausgehende Coach-Hostabnahme.
+S1 beginnt auf dem neuen Branch `feat/cockpit-learning-map`, direkt auf diesem
+frisch abgerufenen `origin/main`. Der vorherige Branch wird nicht fortgeführt.
+Die folgende Bestandsaufnahme beschreibt die Ausgangslage dieses Schritts;
+eine Vorschau oder ein Merge allein schließen S1 noch nicht ab.
 
 Planungsbasis ist main `8fda13b6505df9f2ba4f8239e1703d8e54d2456e` mit dem akzeptierten
 Lerneinheitenkonzept. Der am 4. November erneut gelesene alte Draft-PR #79 ist
@@ -88,6 +97,29 @@ freigegebene Aufteilung des Mathematikcurriculums.
   pauschalen Gates; der bestehende bewusste Direktprüfungszugriff bleibt erhalten.
 
 ## 4. Lieferstufen und Abnahmen
+
+**Verbindlich für jede Stufe S0–S5 und für jedes einzelne Fach in S5:** Der
+konkret reviewte, committed Kandidat muss mit der bestehenden produktiven
+Konfiguration build- und deploybar sein und die vorhandenen produktiven Abläufe
+erhalten. Keine Stufe darf eine spätere Stufe zur Reparatur oder Fertigstellung
+des produktiven Pfads voraussetzen. Diese Bedingung gilt zusätzlich zu jeder
+Abnahme in der folgenden Tabelle.
+
+Beschlossene Korrekturen wie globale Anerkennung und getrennte Gesamt-/
+Periodenanrechnung werden ausdrücklich als beabsichtigte Verhaltensänderungen
+benannt und gegen ihre neuen Sollwerte geprüft. Funktionserhalt konserviert
+keine abgelöste Semantik. Unfertige Erweiterungen bleiben außerhalb des
+produktiven Pfads. Zusätzliche Flags oder Konfiguration sind dafür keine
+pauschale Pflicht; falls nötig, werden sie begründet und bewusst entschieden.
+
+Zur Fertigmeldung gehören die für das Delta angemessene Regression der
+bisherigen Cockpit-, Baum-, Plan-, Prüfungs-, Karten-, Mastery-, Coach-, Session-,
+Personalisierungs- und Datenabläufe sowie der Release-Preflight am konkreten
+Kandidaten. Bei betroffenen Daten oder Verträgen werden Migration und Rollback
+reviewt; die erforderliche CI muss am exakten Commit terminal grün sein.
+Eine bestandene Prototypprüfung ersetzt diese Nachweise nicht. Deploybarkeit,
+tatsächlicher Rollout und echte Hostabnahme bleiben getrennte Nachweise;
+die Meilensteinabnahme autorisiert kein Deployment.
 
 | Stufe | Konkretes Lieferstück | Abnahme / sichtbarer Nachweis |
 | --- | --- | --- |
@@ -298,6 +330,7 @@ bleibt Recherchehilfe. Die Liste ist keine bereits getroffene Migrationsentschei
 | Coach | Alle passenden Prüfungen backendseitig auffindbar, Paging vollständig; direkter gewählter Start; ausführliche Bewertung; Fortsetzen und Zustimmung zum Zielwechsel. |
 | Pläne | Gesamt einschließlich I, Periode ausschließlich explizit; keine zusätzlichen Ereignisse durch Anerkennung; gewählte Anrechnungspräferenz bleibt lokal zur Planung. |
 | Betrieb | Konsistente Revisionen, SRS-/Lernerisolation, Kalt-/Warmverhalten, Cacheinvalidierung, Neustart und fehlende Artefakte; Fehler einer unabhängigen Einheit sperren kein anderes Fach pauschal. |
+| Deploybarkeit je Meilenstein/Fach | Reviewter Commit mit bestehender Produktionskonfiguration build- und deploybar; Regression und Release-Preflight bestanden, erforderliche CI am exakten Head grün; betroffene Migration/Rollback geprüft, keine Reparatur durch spätere Stufen nötig. |
 
 Für jede geänderte fachliche Freigabemenge gilt zusätzlich der Gegenversuch:
 **Kann jemand nach der normalen Rubrik bestehen, obwohl die wesentliche
@@ -340,15 +373,18 @@ warten nicht pauschal auf alle Q/K. Anerkennung und Gesamtabschluss bleiben getr
   und Owner-Abnahme bleiben ausdrücklich ausgewiesene eigene Schritte.
 
 Der Fortschrittsbericht nennt pro Lieferung **implementiert, lokal geprüft,
-inhaltlich reviewt, CI grün, ausgerollt, im echten Host beobachtet**. Für Mathematik
+inhaltlich reviewt, CI grün, deploybar, ausgerollt, im echten Host beobachtet**.
+**Deploybar** nennt den konkreten Commit und die Nachweise aus Abschnitt 4. Für Mathematik
 kommen erledigte/offene Einheiten und Angebote aus dem fixierten Inventar hinzu.
 Nenneränderungen werden erklärt. Keine schwankenden geschätzten Gesamtprozente
 anstelle fertiger, sichtbar demonstrierbarer Ergebnisse.
 
 ## 9. Nächster ausführbarer Schritt
 
-Nach Planreview S0 sichern. Dann S1 an eine echte aufgelöste Mathematikansicht
-anbinden und parallel für den benannten kleinen S2-Kandidaten einen vollständigen
-Vertragsbefund erzeugen. Vor größerem Inhaltsausbau steht die erste tatsächliche
-Owner-Demo. Die genaue technische Sperrwirkung von Einheitszugängen wird als
-separate Produktentscheidung behandelt und blockiert diese beiden Lieferstücke nicht.
+S0 ist ausgerollt. Jetzt S1 an eine echte aufgelöste Mathematikansicht anbinden,
+mit einem eigenen PR sowie den Funktions- und Deploybarkeitsnachweisen aus
+Abschnitt 4. Anschließend beziehungsweise unabhängig parallel für den benannten
+kleinen S2-Kandidaten einen vollständigen Vertragsbefund erzeugen. Vor größerem
+Inhaltsausbau steht die erste tatsächliche Owner-Demo. Die genaue technische
+Sperrwirkung von Einheitszugängen wird als separate Produktentscheidung behandelt
+und blockiert diese beiden Lieferstücke nicht.
