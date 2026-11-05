@@ -509,6 +509,7 @@ const hesseMathLkView = JSON.parse(
 const canonicalMathPrismGoalId = '59d5a330-61be-4590-ab46-cf7cefecd144'
 const canonicalMathPrismVolumeGoalId = '68fb0e78-34f2-5572-8db6-e7f5ebcff70f'
 const canonicalMathPrismSurfaceGoalId = 'f1348d40-3872-5e44-8892-3600c811796f'
+const canonicalMathPrismAssessmentGoalId = 'e5494c67-aed6-5710-8ae3-51ae147c10e9'
 const canonicalMathJ8GoalId = 'd64516eb-9dd2-4808-91d0-0040ccdc281f'
 const canonicalMathJ8AxisInterceptGoalId = '0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43'
 
@@ -575,15 +576,32 @@ assert.equal(
 )
 assert.deepEqual(
   mathGoalById.get(canonicalMathPrismGoalId)?.contains,
-  [canonicalMathPrismVolumeGoalId, canonicalMathPrismSurfaceGoalId],
-  'The historical prism cluster must contain the two independent competencies exactly once.',
+  [canonicalMathPrismVolumeGoalId, canonicalMathPrismSurfaceGoalId, canonicalMathPrismAssessmentGoalId],
+  'The historical prism cluster must contain exactly the two ordinary competencies and their reviewed assessment, once each.',
 )
-for (const prismChildId of [canonicalMathPrismVolumeGoalId, canonicalMathPrismSurfaceGoalId]) {
+assert.equal(
+  mathGoalById.get(canonicalMathPrismGoalId)?.weight,
+  3,
+  'The prism cluster weight must count both ordinary targets and the separately completed assessment.',
+)
+for (const ordinaryId of [canonicalMathPrismVolumeGoalId, canonicalMathPrismSurfaceGoalId]) {
+  assert.equal(mathGoalById.get(ordinaryId)?.type, 'atomic')
+  assert.notEqual(mathGoalById.get(ordinaryId)?.nodeKind, 'exam')
+}
+const prismAssessment = mathGoalById.get(canonicalMathPrismAssessmentGoalId)
+assert.equal(prismAssessment?.type, 'atomic')
+assert.equal(prismAssessment?.nodeKind, 'exam', 'The third prism child is its own explicit assessment, not a third ordinary competence.')
+assert.deepEqual(
+  prismAssessment?.examData?.coveredGoalIds,
+  [canonicalMathPrismVolumeGoalId, canonicalMathPrismSurfaceGoalId],
+  'The reviewed assessment must retain exactly the two prism competence claims.',
+)
+for (const prismChildId of [canonicalMathPrismVolumeGoalId, canonicalMathPrismSurfaceGoalId, canonicalMathPrismAssessmentGoalId]) {
   const childPath = findVisiblePath(prismChildId, mathRootGoal!.id)
-  assert.ok(childPath, 'Both independent prism competencies must remain reachable after the legacy atomic goal becomes a cluster.')
+  assert.ok(childPath, 'Both prism competencies and their reviewed assessment must remain reachable after the legacy atomic goal becomes a cluster.')
   assert.ok(
     childPath!.includes(canonicalMathPrismGoalId),
-    'Prism volume and surface-area goals must remain under the historical prism path.',
+    'Prism volume, surface-area and assessment goals must remain under the historical prism path.',
   )
 }
 
