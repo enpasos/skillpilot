@@ -6,13 +6,14 @@
   "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
   "status": {
     "scope": "DE-SH - Mathematik Oberstufe (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction), official PDF source extraction",
-    "reviewedSourceGoals": 274,
-    "mappedSourceGoals": 274,
+    "reviewedSourceGoals": 275,
+    "mappedSourceGoals": 275,
     "needsViewPlacementReview": 0,
     "needsCanonicalGoal": 0,
-    "totalSourceGoals": 274,
+    "totalSourceGoals": 275,
     "explicitNeedsCanonicalGoal": 0,
-    "notes": "DE-SH - Mathematik Oberstufe (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction): all 274 official source goals are reviewed and content-covered by canonical mathematics goals. Exact/partial counts describe mapping shape only: 73 exact, 201 partial."
+    "notes": "Current source-stage revision2026-11-05: 275/275 distinct original source goals reviewed in 276 retained decision rows; 275 mapped; 0 explicit canonical carrier pending fresh content/QA. Distinct original-goal counts do not deduplicate legitimate different decision rows. Page58 P3 is transferred once to SekII.",
+    "reviewedDecisionRows": 276
   },
   "mappings": [
     {
@@ -4394,6 +4395,12 @@
       "canonicalGoalId": "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
       "matchType": "partial",
       "reviewDecisionId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T064-7e2dbaac31"
+    },
+    {
+      "legacyGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-prozesskompetenzen-k2-muster-und-beziehungen-erkennen-a0790b057f",
+      "canonicalGoalId": "22fb19c1-9b26-5090-a8ae-6cea79ee581a",
+      "matchType": "partial",
+      "reviewDecisionId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-prozesskompetenzen-k2-muster-und-beziehungen-erkennen-a0790b057f"
     }
   ],
   "decisions": [
@@ -9548,6 +9555,37 @@
         "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json"
       },
       "matchType": "partial"
+    },
+    {
+      "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-prozesskompetenzen-k2-muster-und-beziehungen-erkennen-a0790b057f",
+      "topicCode": "SH-SEKII-PROZESSKOMPETENZEN-K2-MUSTER-UND-BEZIEHUNGEN-ERKENNEN",
+      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 58, Zeile 6405",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "22fb19c1-9b26-5090-a8ae-6cea79ee581a"
+      ],
+      "rationale": "Original S.58 steht unter SekundarstufeII. Das Erkennen von Mustern und Beziehungen bei mathematischen Problemen wird als fachlicher Teilbezug durch systematisches Variieren, Mustererkennung und Ableiten eines Lösungswegs oder einer Vermutung operationalisiert. Keine Äquivalenz zur gesamten Prozessdomäne, keine SekI-Pflicht und keine neue Viewaufnahme. Das Fragment wird aus der alten Fehlzuordnung übernommen und genau einmal gezählt.",
+      "reviewedAt": "2026-11-05",
+      "reviewer": "independent-astra-native-source-gap-review",
+      "evidence": {
+        "method": "independent-original-source-stage-and-content-review",
+        "reviewPath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-05/hb-sh-native-source-scope-review.json",
+        "reviewSha256": "2ee78c57f5917855aa4b752f4b0306b8d8b16a764a788cd5521974977067bd1b",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+        "humanApproval": false,
+        "independentReviewPath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-05/hb-sh-native-source-scope-review.json",
+        "independentReviewSha256": "2ee78c57f5917855aa4b752f4b0306b8d8b16a764a788cd5521974977067bd1b",
+        "reviewAuthority": "independent_ai_review"
+      },
+      "matchType": "partial",
+      "supersedes": {
+        "sourceLandscapeId": "271b385b-04c7-4205-8202-b2dc918f5782",
+        "sourceGoalId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p3-muster-und-beziehungen-erkennen-a0790b057f",
+        "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+        "mappingReviewSha256": "632e178911d6c8bbd6e0457da27a46544bc12ed1a5609d83b315eb694deae4b9"
+      },
+      "reviewRevision": "2026-11-05-source-stage-correction-v1",
+      "appliedBy": "codex-sol-batch-c-v2"
     }
   ]
 }

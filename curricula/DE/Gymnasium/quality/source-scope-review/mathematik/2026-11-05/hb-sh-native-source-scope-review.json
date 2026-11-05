@@ -1,0 +1,428 @@
+{
+  "schemaVersion": 1,
+  "status": "INDEPENDENT-TARGETED-REPAIR-DESIGN-REVIEW-NOT-IMPLEMENTATION-OR-M7-ACCEPTANCE",
+  "reviewedAt": "2026-11-05T21:00:39.000440+00:00",
+  "reviewer": "astra_native_source_gap_review",
+  "scope": "Only HB3 and SH7 from the actual V7 source-coverage gap dossier; directly necessary source/consumer semantics were inspected. No general review of 9978 sources or 807 goals.",
+  "baseline": {
+    "nativePath": "docs/dev/learning-units-mathematics-native-source-projection-v7.json",
+    "nativeSha256": "8b46ca50e2571af3e975e4e72b89020021d8760850c923eacddfa52ea2efcb35",
+    "offeredConfigurations": 182,
+    "allAtomicTargetUnion": 980,
+    "originalOrdinaryTargetUnion": 807,
+    "sourceCompleteJurisdictions": 14,
+    "totalJurisdictions": 16,
+    "uncoveredOriginalSources": 7,
+    "sourceOriginalDenominator": 9978,
+    "unsupportedAssignedTargets": 3,
+    "nativeHashAndMembershipIndependentlyVerified": true,
+    "coverageTotalsSource": "tmp/math-learning-units/current-qa-fix/actual-v7-native-source-coverage.json"
+  },
+  "SH": {
+    "existingTargetRepairs": [
+      {
+        "sourceGoalId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l1-zahl-und-operation-K016-bf37137691",
+        "canonicalGoalIds": [
+          "314854a0-4e97-462e-9486-9fd83652e91d"
+        ],
+        "decision": "GO-RESTORE-EXISTING-TARGETS",
+        "sourcePage": 29,
+        "rationale": "Taschenrechner situationsgerecht nutzen; Volltext und S. 18-19 bestätigen auch Plausibilisierung und Kontrollstrategien."
+      },
+      {
+        "sourceGoalId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l2-grossen-und-messen-K015-8f65a62558",
+        "canonicalGoalIds": [
+          "ad26e4d9-b025-57ec-8f25-df4a2415cc62",
+          "25a3cc39-976e-58a5-b882-73baee5c037c"
+        ],
+        "decision": "GO-RESTORE-EXISTING-TARGETS",
+        "sourcePage": 32,
+        "rationale": "Die eine amtliche Erwartung umfasst zwei getrennte Handlungen: reale Messungen und Maßangaben aus Quellen; beide bestehenden Ziele sind nötig."
+      },
+      {
+        "sourceGoalId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l2-grossen-und-messen-T037-6ea8fdfa37",
+        "canonicalGoalIds": [
+          "37bf2eb6-75a0-44c1-a988-ca0e203cb072"
+        ],
+        "decision": "GO-RESTORE-EXISTING-TARGETS",
+        "sourcePage": 32,
+        "rationale": "Geschwindigkeit wird als abgeleitete Größe im mathematischen Sachzusammenhang behandelt."
+      },
+      {
+        "sourceGoalId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l2-grossen-und-messen-T038-700dde137c",
+        "canonicalGoalIds": [
+          "2345ae25-5805-4c72-b830-32e63cc6262a"
+        ],
+        "decision": "GO-RESTORE-EXISTING-TARGETS",
+        "sourcePage": 32,
+        "rationale": "Dichte wird als abgeleitete Größe im mathematischen Sachzusammenhang behandelt; keine zusätzliche Physik-Spezialisierung nötig."
+      },
+      {
+        "sourceGoalId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l3-strukturen-und-funktionaler-zusammenhang-T084-0db85cafb4",
+        "canonicalGoalIds": [
+          "e42c208d-9555-43cc-92f5-5bb4c0688726"
+        ],
+        "decision": "GO-RESTORE-EXISTING-TARGETS",
+        "sourcePage": 38,
+        "rationale": "Grafisches Lösen ist ausdrücklich eines der zulässigen Verfahren. Grafisch plus algebraisch erfüllt mindestens zwei Verfahren; der bestehende M7-Vertrag verlangt beide."
+      }
+    ],
+    "targetViews": [
+      "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+      "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+      "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json"
+    ],
+    "targetScopes": [
+      "DE-SH/CrossStage/G8/GK",
+      "DE-SH/CrossStage/G8/GK+LK",
+      "DE-SH/CrossStage/G8/LK",
+      "DE-SH/CrossStage/G9/GK",
+      "DE-SH/CrossStage/G9/GK+LK",
+      "DE-SH/CrossStage/G9/LK",
+      "DE-SH/SekI/G8/",
+      "DE-SH/SekI/G9/"
+    ],
+    "placement": "Add explicit target goalEntries in a stage-wide structural child of the existing SH SekI node (or the appropriate existing reviewed unit). Do not invent an official year allocation: source S26 explicitly avoids year allocations. Maintain one visible parent per goal and preserve acquisition ownership. No additions to the two SekII-only physical views for these six goals.",
+    "T085": {
+      "sourceGoalId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-l3-strukturen-und-funktionaler-zusammenhang-T085-220b07f62e",
+      "sourcePage": 38,
+      "decision": "GO-NEW-NARROW-ORDINARY-TARGET-WITH-FRESH-QA",
+      "doNotChangeExistingGoalId": "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "existingEvidence": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-028r-j8-systems-fractional-equations-revised-recheck-3-v1/resolutions-stable-current-carryover-2-v1/e42c208d-9555-43cc-92f5-5bb4c0688726.resolution.json",
+      "rejectedShortcutGoalId": "27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6",
+      "newGoal": {
+        "proposedId": "679a0aeb-9f1d-53dc-be90-a40d1aaad947",
+        "idStatus": "proposal-not-created; stable UUIDv5 URL namespace",
+        "shortKey": "canonical_math_sek1_linear_systems_over_underdetermined_two_variables",
+        "title": "Über- und unterbestimmte lineare Gleichungssysteme mit zwei Variablen untersuchen",
+        "description": "Die lernende Person kann lineare Gleichungssysteme mit zwei Variablen und einer oder drei Gleichungen als unter- beziehungsweise überbestimmt einordnen, ihre Lösungsmenge grafisch und rechnerisch bestimmen und an konsistenten sowie widersprüchlichen Beispielen begründen, dass die Gleichungsanzahl allein die Lösbarkeit nicht entscheidet.",
+        "suggestedRequires": [
+          "e42c208d-9555-43cc-92f5-5bb4c0688726"
+        ],
+        "scope": "DE-SH SekI and corresponding CrossStage views; no inferred nationwide target",
+        "extraordinaryWarning": "Ordinary assessable curricular competency; separate from original807, not an exercise/exam or automatic recognition of e42."
+      },
+      "conditions": [
+        "New own explicit assessment/result; preserve e42 meaning and existing mastery",
+        "Independent source/description/atomicity/task/image QA as applicable before current M7 acceptance",
+        "SH T085 mapping only after source-specific new goal is available; do not count broad process assessments as carriers",
+        "Provide fresh explicit Q/Own assessment and local ownership evidence for the new target; do not silently strengthen an old Own contract or treat old e42/Own completion as passing the additional target. Preserve historic unit receipts and bind any new version to actual fresh evidence."
+      ]
+    },
+    "P3": {
+      "oldSourceGoalId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p3-muster-und-beziehungen-erkennen-a0790b057f",
+      "oldCanonicalGoalId": "8cb18560-3a2b-593e-b634-9d768566cba9",
+      "verifiedSourceStage": "SekII",
+      "sourcePage": 58,
+      "decision": "GO-CORRECT-STAGE-AND-REMAP-TO-EXISTING-SUITABLE-TARGET",
+      "recommendedCanonicalGoalId": "22fb19c1-9b26-5090-a8ae-6cea79ee581a",
+      "rationale": "The original S58 statement concerns identifying patterns/relationships while analysing mathematical problems. The already offered SekII goal 22fb covers systematic variation, pattern recognition and deriving a strategy/conjecture more faithfully than the narrower basic pattern/sequence goal. Use partial mapping with exact original fragment; do not call the old numbers-sequence skill equivalent to the whole process domain.",
+      "sourceCorrection": "Move/version the exact original fragment into the SH SekII extraction and review with an explicit supersedes relation to the old erroneous SekI source ID; retain history and count the original exactly once. Its existing aggregate K2 source must not become a second count of the same claim. Update only the affected current passage/source indexes and expected-source membership.",
+      "targetViewsChanged": [],
+      "notApproved": "No automatic new SekI target 8cb18560 based on page58; no general audit of other process atoms."
+    }
+  },
+  "HB": {
+    "currentTargetScope": "DE-HB/SekI/G8/",
+    "currentTargetView": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-seki.view.json",
+    "currentClaimDecision": "NO-GO-FOR-EXISTING-REQUIRES-CLOSURE-JUSTIFICATIONS",
+    "officialSekIResult": "2022 binding restriction pp1-2 allows Sin/Cos/Tan for geometrical quantities in grades5-9. It does not require general periodic-function modelling, radian measure or trig derivatives. The actual view places these goals under Jahrgangsstufe10, which is inconsistent with a current official HB SekI grade claim.",
+    "rejectedConsumers": [
+      "4cba85d3-2e25-5c4b-9c4c-37e5b201dce7",
+      "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+      "f9fdb733-5838-4983-888a-05624eabbe17"
+    ],
+    "reasonByConsumer": {
+      "4cba85d3-2e25-5c4b-9c4c-37e5b201dce7": "No actual HB native context in V7.",
+      "7f11ffe0-7c43-4507-9101-50374a60b0e8": "Actual path exists, but its three candidate HB SekI source anchors describe geometrical trigonometry, not modelling periodic real processes. Graph reachability does not repair the source mismatch.",
+      "f9fdb733-5838-4983-888a-05624eabbe17": "Trig derivative use is not established by the restricted grades5-9 source; the source review already flags the old grade10 analysis-stage issue."
+    },
+    "recommendedRepair": {
+      "decision": "GO-STAGE-CORRECT-PLACEMENT-OF-BOUNDED-EIGHT-GOAL-CORRIDOR",
+      "currentScope": "DE-HB/SekI/G8/",
+      "futureTargetScopes": [
+        "DE-HB/SekII/G8/GK",
+        "DE-HB/SekII/G8/LK",
+        "DE-HB/SekII/G8/GK+LK",
+        "DE-HB/CrossStage/G8/GK",
+        "DE-HB/CrossStage/G8/LK",
+        "DE-HB/CrossStage/G8/GK+LK"
+      ],
+      "affectedViews": [
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-seki.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-lk.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-gk.view.json",
+        "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-lk.view.json"
+      ],
+      "instructions": [
+        "Remove target placement of exactly the eight identified ordinary goals from HB SekI, including inherited target paths; keep stable goal IDs and global original807 membership.",
+        "Place the first seven goals in the upper-stage trigonometry/basics portion of HB SekII GK/LK and upper-stage CrossStage GK/LK, with independently checked BM3.9 fragment mappings. Place f9fdb in upper-stage derivative applications with A3.3 source mapping.",
+        "Retain genuinely needed lower-stage prerequisite context for unchanged targets, but do not claim context as official source duty or target. Recompile full native target/support/demand; do not edit membership receipts by hand.",
+        "Retire the three obsolete HB requires-closure registry explanations; no insertion of absent Tangens consumer4cba or arbitrary registry intermediates.",
+        "Do not retain the false three lower-source direct7f11 mappings as proof of current SekI periodic modelling; record bounded corrections of those specific source-goal/canonical-goal pairs.",
+        "For f9fdb, retain the old grade10 source passages as history but stop treating old content-overview041/042/043 and the 2022 irrational-number-approximation fragment as current SekI trig-derivative evidence. Review only those pairs that touch this eight-goal corridor.",
+        "The incorrect old broad lower-stage source mappings remain an explicit HOLD wherever the implementation cannot retire the affected-pair claim without broader changes. A green country union alone does not certify their stage correctness."
+      ],
+      "goals": [
+        {
+          "goalId": "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
+          "title": "Sinus- und Kosinusfunktionen als periodische Funktionen beschreiben",
+          "actualCurrentHbTargetScopes": [
+            "DE-HB/SekI/G8/"
+          ],
+          "proposedOfficialStage": "SekII",
+          "sourceGoalIds": [
+            "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-001-2be33a4c12",
+            "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-002-16e4cae5c8"
+          ],
+          "sourcePages": [
+            19,
+            20,
+            21
+          ],
+          "mappingQualification": "Partial source operationalization of the exact relevant BM3.9 aspects; do not equate one part-goal with all BM3.9. The unit circle is an instructional representation, not a claim that this exact method is prescribed."
+        },
+        {
+          "goalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
+          "title": "Bogenmass am Einheitskreis veranschaulichen und sicher zwischen Grad- und Bogenmass wechseln",
+          "actualCurrentHbTargetScopes": [
+            "DE-HB/SekI/G8/"
+          ],
+          "proposedOfficialStage": "SekII",
+          "sourceGoalIds": [
+            "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-001-2be33a4c12",
+            "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-002-16e4cae5c8"
+          ],
+          "sourcePages": [
+            19,
+            20,
+            21
+          ],
+          "mappingQualification": "Partial source operationalization of the exact relevant BM3.9 aspects; do not equate one part-goal with all BM3.9. The unit circle is an instructional representation, not a claim that this exact method is prescribed."
+        },
+        {
+          "goalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+          "title": "Sinus- und Kosinuswerte am Einheitskreis im Bogenmass deuten und Winkel bestimmen",
+          "actualCurrentHbTargetScopes": [
+            "DE-HB/SekI/G8/"
+          ],
+          "proposedOfficialStage": "SekII",
+          "sourceGoalIds": [
+            "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-001-2be33a4c12",
+            "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-002-16e4cae5c8"
+          ],
+          "sourcePages": [
+            19,
+            20,
+            21
+          ],
+          "mappingQualification": "Partial source operationalization of the exact relevant BM3.9 aspects; do not equate one part-goal with all BM3.9. The unit circle is an instructional representation, not a claim that this exact method is prescribed."
+        },
+        {
+          "goalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+          "title": "Periodische Realsituationen mit Sinus- und Kosinusfunktionen modellieren und Modelle variieren",
+          "actualCurrentHbTargetScopes": [
+            "DE-HB/CrossStage/G8/GK",
+            "DE-HB/CrossStage/G8/GK+LK",
+            "DE-HB/CrossStage/G8/LK",
+            "DE-HB/SekI/G8/"
+          ],
+          "proposedOfficialStage": "SekII",
+          "sourceGoalIds": [
+            "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-001-2be33a4c12",
+            "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-002-16e4cae5c8"
+          ],
+          "sourcePages": [
+            19,
+            20,
+            21
+          ],
+          "mappingQualification": "Partial source operationalization of the exact relevant BM3.9 aspects; do not equate one part-goal with all BM3.9. The unit circle is an instructional representation, not a claim that this exact method is prescribed."
+        },
+        {
+          "goalId": "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+          "title": "Trigonometrische Graphen aus Funktionstermen zeichnen",
+          "actualCurrentHbTargetScopes": [
+            "DE-HB/SekI/G8/"
+          ],
+          "proposedOfficialStage": "SekII",
+          "sourceGoalIds": [
+            "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-001-2be33a4c12",
+            "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-002-16e4cae5c8"
+          ],
+          "sourcePages": [
+            19,
+            20,
+            21
+          ],
+          "mappingQualification": "Partial source operationalization of the exact relevant BM3.9 aspects; do not equate one part-goal with all BM3.9. The unit circle is an instructional representation, not a claim that this exact method is prescribed."
+        },
+        {
+          "goalId": "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+          "title": "Graphen von Sinus und Kosinus aus dem Einheitskreis ableiten und Periodizität sowie ihren Zusammenhang begründen",
+          "actualCurrentHbTargetScopes": [
+            "DE-HB/SekI/G8/"
+          ],
+          "proposedOfficialStage": "SekII",
+          "sourceGoalIds": [
+            "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-001-2be33a4c12",
+            "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-002-16e4cae5c8"
+          ],
+          "sourcePages": [
+            19,
+            20,
+            21
+          ],
+          "mappingQualification": "Partial source operationalization of the exact relevant BM3.9 aspects; do not equate one part-goal with all BM3.9. The unit circle is an instructional representation, not a claim that this exact method is prescribed."
+        },
+        {
+          "goalId": "53b47494-ec60-4128-840d-2a4c4bab6d32",
+          "title": "Sinus- und Kosinuswerte für Winkel größer als 2π und für negative Winkel auf den Grundbereich zurückführen",
+          "actualCurrentHbTargetScopes": [
+            "DE-HB/SekI/G8/"
+          ],
+          "proposedOfficialStage": "SekII",
+          "sourceGoalIds": [
+            "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-001-2be33a4c12",
+            "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-002-16e4cae5c8"
+          ],
+          "sourcePages": [
+            19,
+            20,
+            21
+          ],
+          "mappingQualification": "Partial source operationalization of the exact relevant BM3.9 aspects; do not equate one part-goal with all BM3.9. The unit circle is an instructional representation, not a claim that this exact method is prescribed."
+        },
+        {
+          "goalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+          "title": "Ableitungen von Sinus- und Kosinusfunktionen in einfachen Fällen nutzen",
+          "actualCurrentHbTargetScopes": [
+            "DE-HB/CrossStage/G8/GK",
+            "DE-HB/CrossStage/G8/GK+LK",
+            "DE-HB/CrossStage/G8/LK",
+            "DE-HB/SekI/G8/"
+          ],
+          "proposedOfficialStage": "SekII",
+          "sourceGoalIds": [
+            "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-a3-3-004-85729b2bac"
+          ],
+          "sourcePages": [
+            26
+          ],
+          "mappingQualification": "Partial source operationalization of the exact relevant BM3.9 aspects; do not equate one part-goal with all BM3.9. The unit circle is an instructional representation, not a claim that this exact method is prescribed."
+        }
+      ],
+      "scopeBoundary": "Only these8 affected targets and their exact source-pair claims. No approval to refactor all HB grade10 branches or all9978 original source records."
+    },
+    "permissibleAlternativePreparation": {
+      "decision": "PERMISSIBLE-ONLY-WITH-SEPARATE-EXISTING-OR-EXPLICITLY-AUTHORED-PREPARATION-INTENT;NOT-RECOMMENDED-TO-BYPASS-QA",
+      "membership": "Keep the three existing HB SekI targets only under an explicit supplementary preparation designation. Do not add absent Tangens consumer or invent new requires edges.",
+      "viewChange": "Move exactly the three references from math-root/j10/j10-trigonometric-functions into a visible structure labelled Vorbereitung auf die Oberstufe (SkillPilot-Ergänzung), without calling this an official HB year10 or SekI duty. Other identified consumer source issues remain separate HOLDs, not silently approved.",
+      "sourceScope": "DE-HB SekII, Gymnasiale Oberstufe 2022, BM3.9 pp19-21 with the referenced BM3.1-3.7, and BM1.2 for simple trig equations.",
+      "sourceGoalIds": [
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-001-2be33a4c12",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm3-9-002-16e4cae5c8",
+        "de-hb-mathematik-sekii-bildungsplan-2022-hb-sekii-bm1-2-008-10e05a3bad"
+      ],
+      "receiptRequirements": [
+        "Distinct reviewed preparation evidence, not a false requires-closure witness or official SekI mapping",
+        "Pin exact source page/fragment, actual target scope, actual later offered consumer scope, canonical texts/revision, current native evidence and reviewer decision",
+        "Validate each consumer is a target in an actual HB SekII offer and the source legitimately supports its content",
+        "No obligation/mastery claim for absent consumer in current scope; preserve official source denominator separately from authored target completion"
+      ],
+      "items": [
+        {
+          "goalId": "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
+          "title": "Sinus- und Kosinusfunktionen als periodische Funktionen beschreiben",
+          "preparesActualLaterConsumerId": "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+          "consumerTitle": "Parameter periodischer Funktionen deuten",
+          "actualLaterScopeIds": [
+            "DE-HB/SekII/G8/GK",
+            "DE-HB/SekII/G8/GK+LK",
+            "DE-HB/SekII/G8/LK"
+          ],
+          "didacticRationale": "Die Beschreibung von Sinus/Kosinus als periodische Funktionen bereitet die Deutung von Amplitude, Periode und weiteren Parametern vor."
+        },
+        {
+          "goalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
+          "title": "Bogenmass am Einheitskreis veranschaulichen und sicher zwischen Grad- und Bogenmass wechseln",
+          "preparesActualLaterConsumerId": "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+          "consumerTitle": "Bogenmaß in periodischen Prozessen nutzen",
+          "actualLaterScopeIds": [
+            "DE-HB/SekII/G8/GK",
+            "DE-HB/SekII/G8/GK+LK",
+            "DE-HB/SekII/G8/LK"
+          ],
+          "didacticRationale": "Die Winkelmaß-Umrechnung und Einheitskreisvorstellung bereiten die Nutzung des Bogenmaßes in periodischen Prozessen vor."
+        },
+        {
+          "goalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+          "title": "Sinus- und Kosinuswerte am Einheitskreis im Bogenmass deuten und Winkel bestimmen",
+          "preparesActualLaterConsumerId": "ecd13e54-ab0e-550f-9400-66e13306635d",
+          "consumerTitle": "Trigonometrische Gleichungen lösen",
+          "actualLaterScopeIds": [
+            "DE-HB/SekII/G8/GK",
+            "DE-HB/SekII/G8/GK+LK",
+            "DE-HB/SekII/G8/LK"
+          ],
+          "didacticRationale": "Das Bestimmen zugehöriger Winkel im Grundintervall bereitet die vollständige trigonometrische Gleichungslösung mit Periodizität und Symmetrie vor."
+        }
+      ],
+      "limit": "No existing preparation authority for these three was established. Do not invent a curriculum supplement merely to eliminate current QA findings. The parent instructed preferring stage-correct target placement."
+    }
+  },
+  "sameOfferedScope": {
+    "decision": "KEEP-FOR-LOCAL-REQUIRES-CLOSURE;DO-NOT-TREAT-AS-UNIVERSAL-CURRICULAR-PREPARATION-LAW",
+    "soundUse": "If a source claim says a current target is required by a currently offered consumer, actual same-scope context and a full path are necessary; the current Tangens rejection is correct.",
+    "falsePositiveRisk": "An explicitly reviewed preparatory target can legitimately prepare a later offered stage even when that later consumer is absent from the current entry scope. A universal same-scope rule would reject that distinct semantic claim. Represent it through a separate bounded review contract; do not relax country/scope checks on existing requires-closure.",
+    "sufficiencyLimit": "Same-scope graph reachability is not sufficient: validate source content and its actual stage. The 7f11 route is the concrete counterexample.",
+    "recursiveChainRisk": "The wrapper checks one common scope per edge, while the recursive source checker carries no shared scope witness across all registry edges. Add a negative test where A is target in scope1, B context there but target only in scope2, and B->C is source-anchored only in scope2; do not infer a single local witness for A unless a separately reviewed cross-stage preparation contract authorizes it."
+  },
+  "negativeTests": [
+    "Die alte Tangens-Registryroute 4cba85d3 darf ohne tatsächlichen HB-Kontext weiterhin keine Deckung liefern; keine automatische Targetaufnahme dieses Consumers.",
+    "Die formal vorhandene Route 7f11 -> a6c8 -> 302a -> 53b4 -> c881 -> 8d30 darf geometrische SekI-SourceIDs nicht in amtliche Periodik- oder Bogenmaßpflicht umdeuten.",
+    "HB Stageverschiebung: alle8 bezeichneten IDs dürfen im SekI-Targetset nicht mehr auftauchen; ihre upper-stage target refs müssen in allen6 betroffenen aktuellen HB-Konfigurationen vorhanden sein. Alte unveränderte übrige Targets und Supportrollen nur bei tatsächlich notwendiger abgeleiteter Änderung anfassen.",
+    "Der alte J10-Ableitungsanker/HOLD darf nicht als heutiger HB-SekI-Pflichtbeleg für f9fdb oder 5d17 gelten.",
+    "HB-Vorbereitung darf bei unverändertem Landesnamen, aber falscher Stage, fehlendem aktuellem Consumer, fehlender Reviewentscheidung oder geänderter Quellen-/Zielrevision nicht akzeptiert werden.",
+    "Vorbereitung erzeugt keine sourceOriginal-Kompetenz und keine Mastery; sie darf den offiziellen Pflichtnenner nicht vergrößern. Ihre Targets bleiben aber regulär im angebotenen Lernplan und Progress sichtbar.",
+    "Eine Quelle zu Messungen und Quellenmaterial ist erst vollständig abgedeckt, wenn beide passenden ordinary Targets vorhanden sind; bloßes Existieren in einer ungewählten RawView oder nur support genügt nicht.",
+    "SH-T084 wird nicht allein durch eine algebraische Methode erfüllt; grafisches plus algebraisches Verfahren reicht.",
+    "SH-T085 darf weder e42-2x2-Mastery noch dem späteren SekII-Ziel 27cfa1b3 gleichgesetzt werden; neue Kompetenz braucht eigenes explizites Ergebnis/assessmentgerechten Vertrag.",
+    "Neuer T085-Träger: eine Gleichung/zwei Variablen sowie drei Gleichungen/zwei Variablen; überbestimmt konsistent und inkonsistent. Überbestimmt bedeutet nicht automatisch unlösbar.",
+    "SH-S.58 darf keine amtliche SekI-Pflicht begründen. Source-Stage und ausgewählte Target-Stage müssen zusammenpassen oder eine ausdrücklich reviewte Vorbereitung ausweisen.",
+    "SH-P3-Korrektur darf den Originalinhalt nicht aus dem Nenner löschen oder doppelt zählen; stabile Nachfolgeverknüpfung und einmalige Source-Zählung prüfen.",
+    "Alle ursprünglichen 807 gewöhnlichen IDs bleiben global vorhanden und angeboten. Ein neuer T085-Träger wird zusätzlich und separat gezählt, ohne denominator surgery.",
+    "V7 SHA bleibt 8b46ca50e2571af3e975e4e72b89020021d8760850c923eacddfa52ea2efcb35. Jede Datenkorrektur benötigt neuen nativen V8-Nachweis; alte Fingerprints und M7-Resolutions bleiben historisch unverändert.",
+    "Neue oder fachlich geänderte Inhalte erhalten eigene aktuelle M7-Belege; keine historische e42-Aufgaben-/Bild-/Beschreibungsevidenz als Freigabe des neuen T085-Ziels wiederverwenden."
+  ],
+  "releaseBoundary": "No implementation, native V8 generation, M7 acceptance, deployment, publication or original history rewrite performed. All repair GO decisions authorize content direction only; final review/evidence must match actual changed bytes.",
+  "inputSha256": {
+    "docs/dev/learning-units-mathematics-native-source-projection-v7.json": "8b46ca50e2571af3e975e4e72b89020021d8760850c923eacddfa52ea2efcb35",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "fed02ed64c3fa4b728f622d441a55b11aad881a42b1729428170fe9667f91397",
+    "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_MATHEMATIK_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json": "a66cf627e3da9c2d2c67f31c96478e4d691815cc3351ed5f9db09abe43be488d",
+    "curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json": "edf90817fe8e9368a74a8af9258ec073b3b46b84652b39f63bfa833fac65d96e",
+    "app/scripts/nativeSourceCoverage.ts": "103d1b9bf037883f83e5204274a455f74f72797951c7fa2474ae459877e1c869",
+    "app/scripts/sourceCoverageEvidence.ts": "620ae671ae4fb508adde7151c51a5412454d7e98aa2c2c14993f17fa95c5b579",
+    "tmp/math-learning-units/current-qa-fix/additional-gap-dossier.json": "b3f2227805b889eef0f73d62e24bf5cffb01eb94a3643c434444e866a2657460",
+    "tmp/math-learning-units/current-qa-fix/actual-v7-native-source-coverage.json": "8d96801564bad07d718d10c041843fec5067d9883f319bd55ee28a7fb145ce5c",
+    "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf": "17d35f8bb5129819c7de5040c5edfbe355e58cfcd01f43f694029b3b841e0d28",
+    "curricula/DE/Gymnasium/input/HB/Gy_Mathe_2006_inhalt_Einschraenkungen.pdf": "4b2e5bc478eb44ed54a0c0c5ce0776a3179b74cf24cd99404f9bbc1bc856a9b5",
+    "curricula/DE/Gymnasium/input/HB/06-12-06_mathe_gy.pdf": "76f230175a036f0819f9cab202770dd3a1f6d3631ced221b17d4b80e00cc3672",
+    "curricula/DE/Gymnasium/input/HB/GyO_Mathematik_2022.pdf": "758fe3dff58f8b99e51b0806b17ee2eea2a0a2882d20df5fff6fff1bbad17cee",
+    "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_source_extraction_to_canonical_math.review.json": "632e178911d6c8bbd6e0457da27a46544bc12ed1a5609d83b315eb694deae4b9",
+    "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_math_lower_secondary_source_extraction_to_canonical_math.review.json": "baf64ef2ea7c852e52b6157cbeb0e86fa9d8d0c5805cd8f1709ee7b0689d139a",
+    "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_math_upper_secondary_source_extraction_to_canonical_math.review.json": "2ee4a52c62ec56ee4d69096ba78b5f9e470d9e8a8b1290094a0a21465eb2fca6",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-seki.view.json": "fb87217288f42f8d29095524dd9e9200a5cc3cd06d51435ef204b187e6eb42c9",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json": "595ded88926fb7993f449cdc630d7d8afdbb41517051b228df282dd3dc8e255a",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json": "22d1805dff1ea8a42889e7e2fedd25f293de977f1ac4ed5dcf17e043f875a93a",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json": "881b69e8ba11a261965eaee11757905a1ff41fa72d4433c5aad625958dfef917",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json": "71ab591f1d0cd3999a20aef34ac53279f8df481e784fae56cedbea22e3718c31",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json": "cbfae0b3926d4b77e7526955fcdcf9cf9e24f073653620943c8ac9d17b8b18e0",
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json": "3d2070bd49f8c570765e898aabebbbae730d28931ae266a7978d07b14629f3d5",
+    "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-02/batch-028r-j8-systems-fractional-equations-revised-recheck-3-v1/resolutions-stable-current-carryover-2-v1/e42c208d-9555-43cc-92f5-5bb4c0688726.resolution.json": "85178d1b58b7d3889097d95e9cb69437efe0a8bc52094d0fd2dae262d55e2e56"
+  }
+}

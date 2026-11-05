@@ -28,7 +28,7 @@
   ],
   "method": {
     "passageExtraction": "completed: official Schleswig-Holstein 2024 Fachanforderungen tables were extracted from the local combined mathematics PDF; the old pilot Quellsnapshot is diagnostic only.",
-    "sourceGoalExtraction": "completed: 346 source goals were derived from official Schleswig-Holstein 2024 content rows, binding topic/content rows, and process competency sections.",
+    "sourceGoalExtraction": "Current revision2026-11-05: 345 unique original source goals. Exact page58 fragment is counted once in the SekII extraction; no original competency was dropped.",
     "unitOfWork": "One visible official competency expectation in the left table column or one official binding topic/content item in the middle table column becomes one source goal. Continuation lines are joined.",
     "legacySnapshotPolicy": "The old Schleswig-Holstein pilot source snapshots are retained as diagnostic material and are not counted as source extraction."
   },
@@ -60,7 +60,7 @@
             "id": "official-passages-present",
             "label": "Originalpassagen aus amtlichem PDF sind erfasst",
             "passed": true,
-            "details": "6/6 official Schleswig-Holstein source passages extracted from PDF text, including content Leitideen and process competencies."
+            "details": "6/6 current original passages registered; page58 process fragment is assigned only to SekundarstufeII."
           },
           {
             "id": "snapshot-not-counted",
@@ -82,13 +82,13 @@
             "id": "mapping-1-complete",
             "label": "MAPPING-1 abgeschlossen",
             "passed": true,
-            "details": "6/6 official Schleswig-Holstein source passages extracted from PDF text, including content Leitideen and process competencies."
+            "details": "6/6 current original passages registered; page58 process fragment is assigned only to SekundarstufeII."
           },
           {
             "id": "source-goals-derived-from-passages",
             "label": "Source-Ziele aus Lehrplanpassagen erzeugt",
             "passed": true,
-            "details": "346 source goals from official content rows, binding topic/content rows, and process competency sections; old snapshot goals are not counted."
+            "details": "345 current source goals derived from the registered original passages."
           },
           {
             "id": "source-goal-ids-unique",
@@ -107,7 +107,7 @@
       {
         "id": "MAPPING-3",
         "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-        "status": "complete",
+        "status": "incomplete",
         "dependsOn": [
           "MAPPING-2"
         ],
@@ -116,7 +116,7 @@
             "id": "mapping-2-complete",
             "label": "MAPPING-2 abgeschlossen",
             "passed": true,
-            "details": "346 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+            "details": "345 current source goals are present."
           },
           {
             "id": "m3-review-file-present",
@@ -128,19 +128,19 @@
             "id": "m3-review-decisions-reference-source-goals",
             "label": "M3-Review-Entscheidungen referenzieren gültige Source-Ziele",
             "passed": true,
-            "details": "Reviewed Source-Ziele: 346/346."
+            "details": "345/345 distinct original source goals reviewed; 345 decision rows retained."
           },
           {
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
             "passed": true,
-            "details": "346/346 Source-Ziele reviewed; offen: 0."
+            "details": "345/345 distinct original source goals reviewed."
           },
           {
             "id": "m3-all-source-goals-covered",
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
-            "passed": true,
-            "details": "Abgedeckt: 346/346; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+            "passed": false,
+            "details": "344/345 distinct original source goals mapped; 1 explicit new carrier pending content/QA."
           }
         ]
       }
@@ -552,7 +552,6 @@
         "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p1-mathematisch-argumentieren-e665ff98e7",
         "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p2-mathematisch-kommunizieren-f51b07727c",
         "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p3-probleme-mathematisch-loesen-a54d5e1186",
-        "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p3-muster-und-beziehungen-erkennen-a0790b057f",
         "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p4-mathematisch-modellieren-37600a561e",
         "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p5-mathematisch-darstellen-73c0c7dcad",
         "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p6-mit-mathematischen-objekten-umgehen-8793bf288f",
@@ -9090,32 +9089,6 @@
       ]
     },
     {
-      "id": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p3-muster-und-beziehungen-erkennen-a0790b057f",
-      "passageId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen",
-      "topicCode": "SH-SEKI-PROZESSKOMPETENZEN-P3-MUSTER-UND-BEZIEHUNGEN-ERKENNEN",
-      "rowIndex": 341.1,
-      "title": "Muster und Beziehungen erkennen",
-      "description": "Die lernende Person kann Muster und Beziehungen in Problemsituationen erkennen.",
-      "sourceText": "erkennen Muster und Beziehungen",
-      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 58, Zeile 6405",
-      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 58",
-      "sourcePage": 58,
-      "sourceLine": 6405,
-      "category": "process-competency-standard",
-      "granularity": "officialProcessCompetencyExpectation",
-      "phase": "5-10",
-      "courseLevel": "ALL",
-      "tags": [
-        "source:DE-SH",
-        "stage:SekI",
-        "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
-        "section:process-competencies",
-        "section:P3",
-        "area:Prozesskompetenzen",
-        "sourceMode:process-competency"
-      ]
-    },
-    {
       "id": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p4-mathematisch-modellieren-37600a561e",
       "passageId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen",
       "topicCode": "SH-SEKI-PROZESSKOMPETENZEN-P4-MATHEMATISCH-MODELLIEREN",
@@ -9219,5 +9192,13 @@
         "sourceMode:process-competency"
       ]
     }
-  ]
+  ],
+  "sourceRevision": {
+    "revision": "2026-11-05-source-stage-correction-v1",
+    "supersedesPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_MATHEMATIK_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json",
+    "supersedesSha256": "a66cf627e3da9c2d2c67f31c96478e4d691815cc3351ed5f9db09abe43be488d",
+    "reviewPath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-05/hb-sh-native-source-scope-review.json",
+    "humanApproval": false,
+    "supersedesRepositoryRevision": "c127aa5e668702d12138980d4a2a0b62d309400a"
+  }
 }

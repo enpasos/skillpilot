@@ -74,6 +74,22 @@
       {
         "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-09-29/he-g9-j8-body-placements-decision.md",
         "sha256": "0abfeb3a4321709bb27df059121c09b0e08ce41c0ef935c0968cf3bf8eb2ef60"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-05/hb-sh-native-source-scope-review.json",
+        "sha256": "2ee78c57f5917855aa4b752f4b0306b8d8b16a764a788cd5521974977067bd1b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-05/sh-three-existing-assessment-scope-review.json",
+        "sha256": "f4dc0fb491710541dac8bfed7af391ee5bd01e1490a4ebcbbfa278d913017661"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-05/sh-prospective-assessment-admission.md",
+        "sha256": "dc2482d9f3aba80090d4bda5d59446091c94da6dd8603934b78931e57e2c6b6b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-05/sh-current-prospective-assessment-non-admission.json",
+        "sha256": "8545008759eefe59f00d68009981461d883bbc66d0895cfbfb1b04d9494da5da"
       }
     ]
   },
@@ -88,7 +104,8 @@
       "Assert actualAfter equals (flatBefore minus the union of removeAtomicGoalIds) union the atomic closure of every filtered replacementNode; additionally assert each non-excluded preservedReusedGoalId was visible before, is never removed, and remains visible after. Then compile and reject CPV-004/005/006/007/009.",
       "Use the transformed Sek-I node as the standalone output and as the authoritative replacement node for both GK and LK cross-stage outputs.",
       "Apply each template's explicitly reviewed prerequisiteOnlyOverrideGoalIds to direct target references after Sek-I assembly, adding a direct override for inherited references; block route-closure promotion and derive assessment visibility from the resulting curricular target set.",
-      "Seed each template's reviewed additionalTargetGoalIds as ordinary canonical-year bucket targets before prerequisite closure, independently of assessment visibility; retain explicit prerequisite-only overrides."
+      "Seed each template's reviewed additionalTargetGoalIds as ordinary canonical-year bucket targets before prerequisite closure, independently of assessment visibility; retain explicit prerequisite-only overrides.",
+      "Add reviewed stageWideTargetNodes as explicit SH target structures without inventing an official year allocation; seed only their prerequisite route and preserve exact prospective assessment non-admissions."
     ],
     "j6StructuralSplitContract": {
       "adjudicationPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-26/batch-003b-j6-structural-splits/source-edge-adjudication.json",
@@ -134,6 +151,20 @@
         ],
         "humanApproval": false
       }
+    },
+    "prospectiveAssessmentAdmission20261105": {
+      "sourceReviewPath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-05/sh-prospective-assessment-admission.md",
+      "notNewlyAdmittedAssessmentGoalIds": [
+        "0dded9c1-043e-57cb-82fc-792b391e9cb0",
+        "2c97548a-77d2-57ef-98f7-a6d06aab48c9",
+        "3ce97753-f442-52c5-882c-bf78a5be9925"
+      ],
+      "beforeActualTargets": 0,
+      "afterRequiredTargets": 0,
+      "scopePairs": 24,
+      "newSuccessorContents": "Distinct measurement/speed/density/T085 assessments and Own require current independent review; no new content applied",
+      "admittedOldAssessmentScopePairs": 0,
+      "currentAuthoringDecisionPath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-05/sh-current-prospective-assessment-non-admission.json"
     }
   },
   "counts": {
@@ -1391,7 +1422,43 @@
         }
       ],
       "prerequisiteOnlyOverrideGoalIds": [
-        "3a69dab2-3fe8-5076-a980-5b7ac1bd1127"
+        "3a69dab2-3fe8-5076-a980-5b7ac1bd1127",
+        "2c97548a-77d2-57ef-98f7-a6d06aab48c9",
+        "3ce97753-f442-52c5-882c-bf78a5be9925",
+        "0dded9c1-043e-57cb-82fc-792b391e9cb0"
+      ],
+      "stageWideTargetNodes": [
+        {
+          "kind": "structure",
+          "id": "sh-stage-wide-tools-systems-g8",
+          "label": "Werkzeuge, Messgrößen und Gleichungssysteme",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "314854a0-4e97-462e-9486-9fd83652e91d"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "ad26e4d9-b025-57ec-8f25-df4a2415cc62"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "25a3cc39-976e-58a5-b882-73baee5c037c"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "37bf2eb6-75a0-44c1-a988-ca0e203cb072"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "2345ae25-5805-4c72-b830-32e63cc6262a"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "e42c208d-9555-43cc-92f5-5bb4c0688726"
+            }
+          ]
+        }
       ]
     },
     {
@@ -1650,7 +1717,43 @@
         }
       ],
       "prerequisiteOnlyOverrideGoalIds": [
-        "3a69dab2-3fe8-5076-a980-5b7ac1bd1127"
+        "3a69dab2-3fe8-5076-a980-5b7ac1bd1127",
+        "2c97548a-77d2-57ef-98f7-a6d06aab48c9",
+        "3ce97753-f442-52c5-882c-bf78a5be9925",
+        "0dded9c1-043e-57cb-82fc-792b391e9cb0"
+      ],
+      "stageWideTargetNodes": [
+        {
+          "kind": "structure",
+          "id": "sh-stage-wide-tools-systems-g9",
+          "label": "Werkzeuge, Messgrößen und Gleichungssysteme",
+          "children": [
+            {
+              "kind": "goalEntry",
+              "goalId": "314854a0-4e97-462e-9486-9fd83652e91d"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "ad26e4d9-b025-57ec-8f25-df4a2415cc62"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "25a3cc39-976e-58a5-b882-73baee5c037c"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "37bf2eb6-75a0-44c1-a988-ca0e203cb072"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "2345ae25-5805-4c72-b830-32e63cc6262a"
+            },
+            {
+              "kind": "goalEntry",
+              "goalId": "e42c208d-9555-43cc-92f5-5bb4c0688726"
+            }
+          ]
+        }
       ]
     }
   ],

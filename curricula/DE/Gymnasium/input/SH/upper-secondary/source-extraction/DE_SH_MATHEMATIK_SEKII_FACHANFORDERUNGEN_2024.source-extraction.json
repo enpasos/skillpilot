@@ -28,7 +28,7 @@
   ],
   "method": {
     "passageExtraction": "completed: official Schleswig-Holstein 2024 Fachanforderungen tables and the AHR process competency section were extracted from the local combined mathematics PDF; the old pilot Quellsnapshot is diagnostic only.",
-    "sourceGoalExtraction": "completed: 280 source goals were derived from official Schleswig-Holstein 2024 content rows, binding topic/content rows, and process competency sections.",
+    "sourceGoalExtraction": "Current revision2026-11-05: 275 unique original source goals. Exact page58 fragment is counted once in the SekII extraction; no original competency was dropped.",
     "unitOfWork": "One visible official competency expectation in the left table column, one official binding topic/content item in the middle table column, or one official AHR process competency block K1-K6 becomes one source goal. Continuation lines are joined.",
     "legacySnapshotPolicy": "The old Schleswig-Holstein pilot source snapshots are retained as diagnostic material and are not counted as source extraction."
   },
@@ -38,7 +38,8 @@
     "SH-SEKII-L2-MESSEN",
     "SH-SEKII-L3-RAUM-UND-FORM",
     "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG",
-    "SH-SEKII-L5-DATEN-UND-ZUFALL"
+    "SH-SEKII-L5-DATEN-UND-ZUFALL",
+    "SH-SEKII-PROZESSKOMPETENZEN-K2-MUSTER-UND-BEZIEHUNGEN-ERKENNEN"
   ],
   "pipelineStatus": {
     "version": 1,
@@ -60,7 +61,7 @@
             "id": "official-passages-present",
             "label": "Originalpassagen aus amtlichem PDF sind erfasst",
             "passed": true,
-            "details": "6/6 official Schleswig-Holstein source passages extracted from PDF text, including content Leitideen and process competencies."
+            "details": "7/7 current original passages registered; page58 process fragment is assigned only to SekundarstufeII."
           },
           {
             "id": "snapshot-not-counted",
@@ -82,13 +83,13 @@
             "id": "mapping-1-complete",
             "label": "MAPPING-1 abgeschlossen",
             "passed": true,
-            "details": "6/6 official Schleswig-Holstein source passages extracted from PDF text, including content Leitideen and process competencies."
+            "details": "7/7 current original passages registered; page58 process fragment is assigned only to SekundarstufeII."
           },
           {
             "id": "source-goals-derived-from-passages",
             "label": "Source-Ziele aus Lehrplanpassagen erzeugt",
             "passed": true,
-            "details": "274 source goals from official content rows, binding topic/content rows, and process competency sections; old snapshot goals are not counted."
+            "details": "275 current source goals derived from the registered original passages."
           },
           {
             "id": "source-goal-ids-unique",
@@ -116,7 +117,7 @@
             "id": "mapping-2-complete",
             "label": "MAPPING-2 abgeschlossen",
             "passed": true,
-            "details": "274 Source-Ziele liegen vor; MAPPING-3 wurde gegen diese Source-Extraction-IDs abgeschlossen."
+            "details": "275 current source goals are present."
           },
           {
             "id": "m3-review-file-present",
@@ -128,19 +129,19 @@
             "id": "m3-review-decisions-reference-source-goals",
             "label": "M3-Review-Entscheidungen referenzieren gültige Source-Ziele",
             "passed": true,
-            "details": "Reviewed Source-Ziele: 274/274."
+            "details": "275/275 distinct original source goals reviewed; 276 decision rows retained."
           },
           {
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
             "passed": true,
-            "details": "274/274 Source-Ziele reviewed; offen: 0."
+            "details": "275/275 distinct original source goals reviewed."
           },
           {
             "id": "m3-all-source-goals-covered",
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
             "passed": true,
-            "details": "Abgedeckt: 274/274; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+            "details": "275/275 distinct original source goals mapped; 0 explicit new carrier pending content/QA."
           }
         ]
       }
@@ -485,6 +486,18 @@
         "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-prozesskompetenzen-k4-mathematische-darstellungen-verwenden-78e9957035",
         "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-prozesskompetenzen-k5-symbolisch-formal-technisch-umgehen-a5a2fa7864",
         "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-prozesskompetenzen-k6-mathematisch-kommunizieren-b30436a31b"
+      ]
+    },
+    {
+      "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-prozesskompetenzen-k2-muster-source-stage-20261105",
+      "topicCode": "SH-SEKII-PROZESSKOMPETENZEN-K2-MUSTER-UND-BEZIEHUNGEN-ERKENNEN",
+      "title": "Muster und Beziehungen beim mathematischen Problemlösen (Sekundarstufe II)",
+      "sourcePath": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Mathematik_Sekundarstufe_2024_barrierearm.pdf",
+      "sourceDocumentKey": "SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 58",
+      "text": "erkennen Muster und Beziehungen",
+      "sourceGoalIds": [
+        "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-prozesskompetenzen-k2-muster-und-beziehungen-erkennen-a0790b057f"
       ]
     }
   ],
@@ -7344,6 +7357,49 @@
         "area:Prozesskompetenzen",
         "sourceMode:process-competency"
       ]
+    },
+    {
+      "id": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-prozesskompetenzen-k2-muster-und-beziehungen-erkennen-a0790b057f",
+      "passageId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-prozesskompetenzen-k2-muster-source-stage-20261105",
+      "topicCode": "SH-SEKII-PROZESSKOMPETENZEN-K2-MUSTER-UND-BEZIEHUNGEN-ERKENNEN",
+      "rowIndex": 341.1,
+      "title": "Muster und Beziehungen erkennen",
+      "description": "Die lernende Person kann Muster und Beziehungen in Problemsituationen erkennen.",
+      "sourceText": "erkennen Muster und Beziehungen",
+      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 58, Zeile 6405",
+      "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 58",
+      "sourcePage": 58,
+      "sourceLine": 6405,
+      "category": "process-competency-standard",
+      "granularity": "officialProcessCompetencyExpectation",
+      "phase": "E-Q",
+      "courseLevel": "ALL",
+      "tags": [
+        "source:DE-SH",
+        "stage:SekII",
+        "sourceDocument:SH_GYM_MATHEMATIK_FACHANFORDERUNGEN_2024",
+        "section:process-competencies",
+        "section:K2",
+        "area:Prozesskompetenzen",
+        "sourceMode:process-competency"
+      ],
+      "supersedes": {
+        "sourceLandscapeId": "271b385b-04c7-4205-8202-b2dc918f5782",
+        "sourceGoalId": "de-sh-mathematik-seki-fachanforderungen-2024-sh-seki-prozesskompetenzen-p3-muster-und-beziehungen-erkennen-a0790b057f",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_MATHEMATIK_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json",
+        "sourceExtractionSha256": "a66cf627e3da9c2d2c67f31c96478e4d691815cc3351ed5f9db09abe43be488d",
+        "reason": "Original printed page58 is SekundarstufeII, not SekundarstufeI",
+        "reviewPath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-05/hb-sh-native-source-scope-review.json",
+        "repositoryRevision": "c127aa5e668702d12138980d4a2a0b62d309400a"
+      }
     }
-  ]
+  ],
+  "sourceRevision": {
+    "revision": "2026-11-05-source-stage-correction-v1",
+    "supersedesPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+    "supersedesSha256": "71b9b16473d16ae6d526bfdc56a7c39b03a1ad0512f4dfd19a007213e583ac87",
+    "reviewPath": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-11-05/hb-sh-native-source-scope-review.json",
+    "humanApproval": false,
+    "supersedesRepositoryRevision": "c127aa5e668702d12138980d4a2a0b62d309400a"
+  }
 }

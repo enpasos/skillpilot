@@ -1,7 +1,8 @@
 import { createHash } from 'node:crypto'
-import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { writeAtomicAuthoringFile } from './atomicAuthoringFile'
 import {
   collectCompositionProjectionRoleGoalIds,
   compileCompositionView,
@@ -101,6 +102,7 @@ interface SplitLayoutTemplate {
   prerequisiteOnlyGoalIds?: string[]
   prerequisiteOnlyOverrideGoalIds?: string[]
   additionalTargetGoalIds?: string[]
+  stageWideTargetNodes?: CompositionNode[]
   primaryYearOverrides?: Record<string, string>
   placements: SplitLayoutPlacement[]
 }
@@ -543,6 +545,27 @@ for (const template of splitLayoutPlan.sek1Templates) {
       throw new Error(`${template.fileName}: additional target ${goalId} is also explicitly excluded`)
     }
   }
+  const stageWideNodes = template.stageWideTargetNodes ?? []
+  if (!Array.isArray(stageWideNodes) || (stageWideNodes.length > 0 && !template.fileName.startsWith('de-sh-seki-'))) {
+    throw new Error(`${template.fileName}: stage-wide targets require the reviewed SH layout`)
+  }
+  const validateStageWideNode = (node: CompositionNode): void => {
+    if (node.kind === 'structure') {
+      node.children.forEach(validateStageWideNode)
+      return
+    }
+    if (node.kind === 'landscapeEntry' || node.projectionRole === 'prerequisiteOnly') {
+      throw new Error(`${template.fileName}: stage-wide targets must reference explicit canonical targets`)
+    }
+    if (!goalById.has(node.goalId)) throw new Error(`${template.fileName}: missing stage-wide goal ${node.goalId}`)
+    for (const id of collectAtomicDescendantIds(node.goalId)) {
+      if (!['curricularAtomic', 'practiceAssessment'].includes(semanticKindByGoalId.get(id) ?? '')
+        || !isGoalApplicableToJurisdiction(id, jurisdiction) || nonTargetGoalIds.has(id)) {
+        throw new Error(`${template.fileName}: invalid stage-wide target ${id}`)
+      }
+    }
+  }
+  stageWideNodes.forEach(validateStageWideNode)
 }
 
 interface CompleteSek1RouteBucketsOptions<TBucket extends string> {
@@ -1503,11 +1526,15 @@ const createShSek1Node = (
     ...(splitLayoutTemplateByFileName.get(templateFileName)?.excludedGoalIds ?? []),
   ])
   const routeContext = reviewedLayoutRouteContext(templateFileName, effectiveExcludedGoalIds)
+  const stageWideNodes = (splitLayoutTemplateByFileName.get(templateFileName)?.stageWideTargetNodes ?? [])
+    .map((node) => filterLayoutNodeByExcludedGoals(node, effectiveExcludedGoalIds))
+    .filter((node): node is CompositionNode => node !== null)
+  const stageWideGoalIds = [...collectAtomicGoalIdsFromNodes(stageWideNodes)]
   const buckets = completeSek1RouteBuckets({
     jurisdiction: 'DE-SH',
     durationModel,
     buckets: assignShBandBuckets(effectiveExcludedGoalIds),
-    supplementGoalIds: shStageWideJ6GoalIds,
+    supplementGoalIds: [...shStageWideJ6GoalIds, ...stageWideGoalIds],
     additionalTargetGoalIds: routeContext.additionalTargetGoalIds,
     routeSeedGoalIds: [
       ...routeContext.replacementTargetGoalIds,
@@ -1527,6 +1554,7 @@ const createShSek1Node = (
       ...shBands
         .map((band) => createShBandNode(durationModel, band, buckets[band]))
         .filter((node): node is CompositionNode => node !== null),
+      ...stageWideNodes,
       ...createSek1CommonTail(),
     ],
   }
@@ -1969,7 +1997,7 @@ for (const fileName of GENERATED_VIEW_PATHS) {
   if (changed) {
     differences += 1
     if (shouldWrite) {
-      writeFileSync(targetPath, generated)
+      writeAtomicAuthoringFile(targetPath, generated)
     }
   }
 
