@@ -1199,7 +1199,7 @@ export const createFullStandalonePackagePlan = (
         '--check',
         '--release-root', releaseRoot,
         '--ledger', reviewPath,
-        ...(unitProfile ? ['--learning-units-candidate'] : completionProfile ? ['--completion-candidate'] : []),
+        ...(unitProfile ? ['--learning-units-candidate', '--producer-profile', buildProfilePath] : completionProfile ? ['--completion-candidate'] : []),
         '--schema', resolve(repositoryRoot, `contracts/curriculum-package/${unitProfile ? 'v1.2' : completionProfile ? 'v1.1' : 'v1'}/${offerProfile ? 'offer-' : ''}package-redistribution-review.schema.json`),
       ],
       'redistribution review checker',

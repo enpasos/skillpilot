@@ -593,7 +593,57 @@ def deterministic_render_evidence(
     }
 
 
-def load_source_model(release_root: Path) -> SourceModel:
+def producer_profile_id(
+    release_root: Path, conformance: dict[str, Any], build_inputs: dict[str, Any],
+    producer_profile: Path | None = None,
+) -> str:
+    """Bind an explicit producer revision without rebinding the legacy default."""
+    if producer_profile is None:
+        return PROFILE_ID
+    import curriculum_learning_unit_artifacts as unit_artifacts
+    import validate_curriculum_release_model as model_validator
+
+    try:
+        relative = producer_profile.resolve(strict=True).relative_to(REPO_ROOT.resolve()).as_posix()
+        profile_path = repo_file(relative)
+        context = model_validator.load_trusted_context(profile_path)
+    except (OSError, ValueError, model_validator.ValidationError) as error:
+        raise ReviewError(f"Invalid explicit producer profile: {error}") from error
+    profile = context.profile
+    if "learningUnits" not in profile or ("entryLandscape" in profile) != (TARGET_PROFILE_ID == "full-standalone-learning-unit-offers-v1"):
+        raise ReviewError("Explicit producer profile does not match the selected learning-unit package kind")
+    if build_inputs.get("profilePath") != relative or build_inputs.get("profileSha256") != sha256_file(profile_path):
+        raise ReviewError("Explicit producer profile path/hash differs from actual model build inputs")
+    package = profile["package"]
+    if any(conformance.get(key) != package[key] for key in ("packageId", "packageVersion", "releaseId", "curriculumEdition")):
+        raise ReviewError("Explicit producer profile package metadata differs from model conformance")
+    if conformance.get("profileId") != profile["profileId"] or conformance.get("counts") != profile["expectedCounts"]:
+        raise ReviewError("Explicit producer profile identity/counts differ from model conformance")
+    try:
+        _, expected_inputs = unit_artifacts.compile_documents(REPO_ROOT, profile["learningUnits"],
+                require_object(read_json(repo_file(profile["canonicalLandscape"]["sourcePath"])), "canonical source"))
+    except ValueError as error:
+        raise ReviewError(f"Invalid explicit producer learning-unit sources: {error}") from error
+    if build_inputs.get("learningUnitInputs") != expected_inputs:
+        raise ReviewError("Explicit producer model complete learning-unit source bindings differ")
+    catalog = require_object(read_json(release_file(release_root, "data/runtime/catalog.json")), "runtime catalog")
+    roots = [profile["canonicalLandscape"]] + ([profile["entryLandscape"]] if "entryLandscape" in profile else [])
+    expected_roots = {item["landscapeId"]: item["outputPath"] for item in roots}
+    landscapes = require_list(catalog.get("landscapes"), "runtime catalog landscapes")
+    if (len(catalog.get("rootLandscapeIds", [])) != len(expected_roots)
+            or set(catalog.get("rootLandscapeIds", [])) != set(expected_roots)
+            or len(landscapes) != len(expected_roots)
+            or any(not isinstance(item, dict)
+                   or expected_roots.get(item.get("landscapeId")) != item.get("artifactPath")
+                   or item.get("locale") != package["locale"] or item.get("subject") != package["subject"]
+                   for item in landscapes)
+            or {item["landscapeId"] for item in landscapes} != set(expected_roots)
+            or catalog.get("releaseBinding") != {"releaseId": package["releaseId"], "contentDigest": conformance.get("contentDigest")}):
+        raise ReviewError("Explicit producer profile scope/metadata differs from runtime catalog")
+    return profile["profileId"]
+
+
+def load_source_model(release_root: Path, producer_profile: Path | None = None) -> SourceModel:
     if not release_root.is_dir() or release_root.is_symlink():
         raise ReviewError(f"Release-model root must be a regular directory: {release_root}")
 
@@ -617,7 +667,7 @@ def load_source_model(release_root: Path) -> SourceModel:
     release_id = conformance.get("releaseId")
     if package_id != PACKAGE_ID:
         raise ReviewError(f"Unexpected packageId {package_id!r}")
-    if profile_id != PROFILE_ID:
+    if profile_id != producer_profile_id(release_root, conformance, build_inputs, producer_profile):
         raise ReviewError(f"Unexpected release-model profile {profile_id!r}")
     if not isinstance(content_digest, str) or not SHA256_RE.fullmatch(content_digest):
         raise ReviewError("Release-model contentDigest is malformed")
@@ -2130,9 +2180,12 @@ def main() -> int:
     )
     parser.add_argument("--completion-candidate", action="store_true", help="bind the reviewed completion-capable runtime profile; no publication approval")
     parser.add_argument("--learning-units-candidate", action="store_true", help="bind the separate runtime 1.2 learning-unit candidate")
+    parser.add_argument("--producer-profile", type=Path, help="Explicit trusted learning-unit producer profile; model path/hash, metadata and source bindings must match")
     args = parser.parse_args()
     if args.learning_units_candidate and args.completion_candidate:
         parser.error("Select one candidate profile")
+    if args.producer_profile is not None and not args.learning_units_candidate:
+        parser.error("--producer-profile requires --learning-units-candidate")
     if args.ledger is None:
         args.ledger = (DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-completion-v1.review.json")
                        if args.completion_candidate else DEFAULT_LEDGER)
@@ -2154,7 +2207,7 @@ def main() -> int:
     try:
         schema = require_object(read_json(args.schema), "redistribution review schema")
         Draft202012Validator.check_schema(schema)
-        source = load_source_model(args.release_root)
+        source = load_source_model(args.release_root, args.producer_profile)
         if args.generate:
             previous = read_json(args.ledger) if args.ledger.exists() else None
             review = build_review(source, previous)
@@ -2164,7 +2217,12 @@ def main() -> int:
                     print(f"[{item.code}] {item.path}: {item.message}", file=sys.stderr)
                 raise ReviewError("Refusing to write an invalid redistribution review")
             write_json_atomic(args.ledger, review)
-            print(f"Wrote {args.ledger.relative_to(REPO_ROOT)}")
+            display_ledger = args.ledger.resolve()
+            try:
+                display_ledger = display_ledger.relative_to(REPO_ROOT)
+            except ValueError:
+                pass
+            print(f"Wrote {display_ledger}")
             print_summary(review)
             return 0
 

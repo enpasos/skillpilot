@@ -50,7 +50,10 @@
       ],
       "properties": {
         "profileId": {
-          "const": "de-gymnasium-mathematik-learning-unit-offers-release-model-v1"
+          "enum": [
+            "de-gymnasium-mathematik-learning-unit-offers-release-model-v1",
+            "de-gymnasium-mathematik-learning-unit-offers-release-model-v2"
+          ]
         },
         "releaseId": {
           "$ref": "#/$defs/nonBlankText"
