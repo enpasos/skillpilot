@@ -135,7 +135,8 @@ public final class LearningUnitPackageBindings {
             for (var entry : rawGoals.entrySet()) {
                 var expected = entry.getValue();
                 var found = actualGoals.get(entry.getKey());
-                if (!LearningUnitSourceBindings.resolvedKind(expected).equals(LearningUnitSourceBindings.resolvedKind(found))) {
+                if (expected.getContains().isEmpty()
+                        && !LearningUnitSourceBindings.resolvedKind(expected).equals(LearningUnitSourceBindings.resolvedKind(found))) {
                     fail("INVALID_UNIT_PARTITION", "Installed current resolved goal kind differs");
                 }
                 var meaning = mapper.convertValue(found, LearningGoal.class);
@@ -144,6 +145,9 @@ public final class LearningUnitPackageBindings {
                         fail("INVALID_UNIT_PARTITION", "Installed kind enrichment lacks its pinned authoritative ledger decision");
                     }
                     meaning.setSemanticKind(expected.getSemanticKind());
+                }
+                if (!LearningUnitSourceBindings.resolvedKind(expected).equals(LearningUnitSourceBindings.resolvedKind(meaning))) {
+                    fail("INVALID_UNIT_PARTITION", "Installed current source kind differs after verified mechanical enrichment");
                 }
                 if (!LearningUnitSourceBindings.meaningDigest(expected).equals(LearningUnitSourceBindings.meaningDigest(meaning))
                         || !expected.getContains().equals(found.getContains()) || !expected.getRequires().equals(found.getRequires())) {

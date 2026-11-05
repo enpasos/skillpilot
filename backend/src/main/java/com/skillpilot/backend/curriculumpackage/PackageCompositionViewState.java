@@ -759,7 +759,8 @@ public final class PackageCompositionViewState {
             Map<String, Set<String>> rootGoalIdsByLandscape,
             Map<String, String> landscapeByGoalId,
             Map<String, List<String>> containsByGoalId,
-            Map<String, String> parentByLandscapeId) {
+            Map<String, String> parentByLandscapeId,
+            Map<String, Set<String>> referencedRootClosures) {
 
         private static LandscapeGraph load(CurriculumRuntimeSnapshot snapshot, ObjectMapper objectMapper) {
             Map<String, Set<String>> rootGoalIdsByLandscape = new LinkedHashMap<>();
@@ -818,7 +819,7 @@ public final class PackageCompositionViewState {
                     immutableOrderedMap(rootGoalIdsByLandscape),
                     immutableOrderedMap(landscapeByGoal),
                     immutableOrderedMap(contains),
-                    immutableOrderedMap(parents));
+                    immutableOrderedMap(parents), new HashMap<>());
         }
 
         private boolean isGoalVisibleFrom(String landscapeId, String goalId) {
@@ -835,7 +836,17 @@ public final class PackageCompositionViewState {
                 }
                 current = parentByLandscapeId.get(current);
             }
-            return false;
+            Set<String> candidateRoots = rootGoalIdsByLandscape.getOrDefault(candidate, Set.of());
+            if (candidateRoots.isEmpty()) return false;
+            // A separately installed root may be an explicit canonical contains child
+            // of another root (the reviewed package entry). Keep both identities/roles;
+            // only that declared root closure grants visibility, never co-installation.
+            Set<String> contained = referencedRootClosures.computeIfAbsent(landscapeId, id -> {
+                Set<String> result = new LinkedHashSet<>();
+                rootGoalIdsByLandscape.getOrDefault(id, Set.of()).forEach(root -> result.addAll(goalAndDescendants(root)));
+                return Set.copyOf(result);
+            });
+            return contained.containsAll(candidateRoots);
         }
 
         private Set<String> visibleGoalsForLandscape(String landscapeId) {

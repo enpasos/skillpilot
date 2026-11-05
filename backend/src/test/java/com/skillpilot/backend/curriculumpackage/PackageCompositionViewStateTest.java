@@ -436,8 +436,9 @@ class PackageCompositionViewStateTest {
 
         PackageCompositionViewState state = PackageCompositionViewState.load(candidate, mapper);
 
-        assertThat(state.viewsById()).hasSize(88);
-        assertThat(state.offeringsById()).hasSize(128);
+        // Current source includes the nine reviewed SekI scope views added with Batch A.
+        assertThat(state.viewsById()).hasSize(97);
+        assertThat(state.offeringsById()).hasSize(137);
         for (var offering : offerings.values()) {
             var resolved = state.resolveOffering(offering.offeringId());
             assertThat(resolved).as(offering.offeringId())
@@ -630,6 +631,95 @@ class PackageCompositionViewStateTest {
                         copy(snapshot, Map.of(original.viewId(), invalid), snapshot.offeringsById()), mapper))
                 .isInstanceOf(CurriculumPackageException.class)
                 .hasMessageContaining("no resolvable root goal");
+    }
+
+    @Test
+    void separatelyInstalledRootIsVisibleOnlyThroughItsDeclaredCanonicalContainsRoot() throws Exception {
+        var accepted = crossRootEntrySnapshot(true);
+        var state = PackageCompositionViewState.load(accepted, mapper);
+        assertThat(accepted.rootLandscapeIds()).containsExactly("landscape-alpha", "entry-alpha");
+        assertThat(state.resolveDefault("entry-alpha").document()).containsEntry("rootNodes",
+                List.of(Map.of("kind", "landscapeEntry", "landscapeId", "landscape-alpha")));
+    }
+
+    @Test
+    void coinstalledUnrelatedRootCannotBeAddedToAnEntryView() throws Exception {
+        assertThatThrownBy(() -> PackageCompositionViewState.load(crossRootEntrySnapshot(false), mapper))
+                .isInstanceOf(CurriculumPackageException.class).hasMessageContaining("unknown or foreign landscape");
+    }
+
+    private CurriculumRuntimeSnapshot crossRootEntrySnapshot(boolean containsTarget) throws Exception {
+        return crossRootEntrySnapshot(containsTarget ? "alpha-root" : null);
+    }
+
+    @Test
+    void entryContainsAnInnerForeignAtomDoesNotGrantTheWholeForeignLandscape() throws Exception {
+        assertThatThrownBy(() -> PackageCompositionViewState.load(crossRootEntrySnapshot("goal-alpha"), mapper))
+                .isInstanceOf(CurriculumPackageException.class).hasMessageContaining("unknown or foreign landscape");
+    }
+
+    @Test
+    void requiringAForeignRootDoesNotGrantNavigationVisibility() throws Exception {
+        var snapshot = crossRootEntrySnapshot(false);
+        var entry = snapshot.landscapesById().get("entry-alpha");
+        var payload = (com.fasterxml.jackson.databind.node.ObjectNode) mapper.readTree(entry.json());
+        ((com.fasterxml.jackson.databind.node.ObjectNode) payload.path("goals").get(0)).putArray("requires").add("alpha-root");
+        var landscapes = new LinkedHashMap<>(snapshot.landscapesById());
+        landscapes.put("entry-alpha", new CurriculumRuntimeSnapshot.LandscapeDescriptor(entry.packageId(),
+                entry.landscapeId(), entry.role(), entry.locale(), entry.frameworkId(), entry.subject(),
+                entry.country(), entry.region(), entry.schoolForm(), entry.defaultOfferingId(),
+                entry.parentLandscapeId(), entry.artifact(), mapper.writeValueAsString(payload)));
+        assertThatThrownBy(() -> PackageCompositionViewState.load(
+                copy(snapshot, landscapes, snapshot.viewsById(), snapshot.offeringsById()), mapper))
+                .isInstanceOf(CurriculumPackageException.class).hasMessageContaining("unknown or foreign landscape");
+    }
+
+    @Test
+    void containsRootVisibilityIsDirectedAndDoesNotAuthorizeTheReverseEntry() throws Exception {
+        var snapshot = crossRootEntrySnapshot(true);
+        var original = snapshot.viewsById().get("view-alpha");
+        var reverse = new CurriculumRuntimeSnapshot.ViewDescriptor(original.packageId(), original.viewId(),
+                original.landscapeId(), original.language(), original.scope(), original.artifact(),
+                mapper.writeValueAsString(Map.of("viewId", original.viewId(), "landscapeId", original.landscapeId(),
+                        "scope", original.scope(), "rootNodes", List.of(Map.of("kind", "landscapeEntry", "landscapeId", "entry-alpha")))));
+        var views = new LinkedHashMap<>(snapshot.viewsById()); views.put(reverse.viewId(), reverse);
+        assertThatThrownBy(() -> PackageCompositionViewState.load(copy(snapshot, views, snapshot.offeringsById()), mapper))
+                .isInstanceOf(CurriculumPackageException.class).hasMessageContaining("unknown or foreign landscape");
+    }
+
+    private CurriculumRuntimeSnapshot crossRootEntrySnapshot(String referencedGoal) throws Exception {
+        var base = load(CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a'));
+        var original = base.landscapesById().get("landscape-alpha");
+        var alpha = (com.fasterxml.jackson.databind.node.ObjectNode) mapper.readTree(original.json());
+        for (var goal : alpha.path("goals")) if ("goal-alpha".equals(goal.path("id").asText())) {
+            ((com.fasterxml.jackson.databind.node.ObjectNode) goal).putArray("tags");
+        }
+        var subjectRoot = ((com.fasterxml.jackson.databind.node.ArrayNode) alpha.path("goals")).addObject().put("id", "alpha-root");
+        subjectRoot.putArray("tags").add("root"); subjectRoot.putArray("contains").add("goal-alpha");
+        var landscapes = new LinkedHashMap<>(base.landscapesById());
+        landscapes.put("landscape-alpha", new CurriculumRuntimeSnapshot.LandscapeDescriptor(original.packageId(),
+                original.landscapeId(), original.role(), original.locale(), original.frameworkId(), original.subject(),
+                original.country(), original.region(), original.schoolForm(), original.defaultOfferingId(),
+                original.parentLandscapeId(), original.artifact(), mapper.writeValueAsString(alpha)));
+        String entryJson = mapper.writeValueAsString(Map.of("landscapeId", "entry-alpha", "goals", List.of(
+                Map.of("id", "entry-root", "tags", List.of("root"), "contains", referencedGoal == null ? List.of() : List.of(referencedGoal)))));
+        landscapes.put("entry-alpha", new CurriculumRuntimeSnapshot.LandscapeDescriptor(original.packageId(),
+                "entry-alpha", "root", original.locale(), original.frameworkId(), original.subject(),
+                original.country(), original.region(), original.schoolForm(), "offering-entry", null,
+                original.artifact(), entryJson));
+        var views = new LinkedHashMap<>(base.viewsById());
+        var originalView = base.viewsById().get("view-alpha");
+        views.put("view-entry", new CurriculumRuntimeSnapshot.ViewDescriptor(original.packageId(),
+                "view-entry", "entry-alpha", originalView.language(), originalView.scope(), originalView.artifact(),
+                mapper.writeValueAsString(Map.of("viewId", "view-entry", "landscapeId", "entry-alpha",
+                        "scope", originalView.scope(), "rootNodes", List.of(Map.of("kind", "landscapeEntry", "landscapeId", "landscape-alpha"))))));
+        var offerings = new LinkedHashMap<>(base.offeringsById());
+        offerings.put("offering-entry", new CurriculumRuntimeSnapshot.OfferingDescriptor(original.packageId(),
+                "offering-entry", "entry-alpha", originalView.scope(), "single", null, List.of("view-entry")));
+        return new CurriculumRuntimeSnapshot(base.generationSha256(), base.packages(),
+                List.of("landscape-alpha", "entry-alpha"), landscapes, views, offerings, base.decksByKey(),
+                base.resourcesById(), base.resourcesByPublicUrl(), base.artifactsByKey(),
+                base.migrationAliasesJsonByPackageId(), base.definitionCount());
     }
 
     @Test

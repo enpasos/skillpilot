@@ -27,6 +27,9 @@ class LearningUnitOfferPackageLoaderTest {
                 .doesNotContain("learningUnitOfferBindingsV1");
         assertThat(snapshot.artifactsByRole().get("learning-unit-catalog")).singleElement()
                 .satisfies(artifact -> assertThat(artifact.logicalId()).endsWith("alternate.catalog.json"));
+        assertThat(PackageCurriculumDomainState.load(snapshot,
+                new CurriculumPackageArtifactReader(new CurriculumPackageFileReader()), mapper).landscapes())
+                .hasSize(1);
     }
 
     @Test void exactOfferPairRetainsManifestBoundReviewedMappingBytes() throws Exception {
@@ -37,6 +40,9 @@ class LearningUnitOfferPackageLoaderTest {
             assertThat(artifact.runtimeRequired()).isTrue();
             assertThat(artifact.contentBytes()).isNotEmpty();
         });
+        assertThat(PackageCurriculumDomainState.load(snapshot,
+                new CurriculumPackageArtifactReader(new CurriculumPackageFileReader()), mapper).landscapes())
+                .hasSize(1);
     }
 
     @Test void oldProfileCannotSilentlyDropNewOfferCapability() throws Exception {

@@ -75,6 +75,45 @@ class LearningUnitPackageRegistryBindingsTest {
                 .hasMessageContaining("shape/version");
     }
 
+    @Test void reviewedAssessmentClusterEnrichmentDoesNotChangeAnyAtomicResultMeaning() throws Exception {
+        validateCurrentEnrichment(false, true);
+    }
+
+    @Test void evenALedgerClaimCannotRetypeAnOrdinaryAtomicResultAsAnAssessment() {
+        assertThatThrownBy(() -> validateCurrentEnrichment(true, true))
+                .hasMessageContaining("Installed current resolved goal kind differs");
+    }
+
+    @Test void aStructuralKindEnrichmentStillRequiresItsExactAuthoritativeLedgerDecision() {
+        assertThatThrownBy(() -> validateCurrentEnrichment(false, false))
+                .hasMessageContaining("lacks its pinned authoritative ledger decision");
+    }
+
+    private void validateCurrentEnrichment(boolean retypeAtom, boolean reviewed) throws Exception {
+        String path = "DE/Gymnasium/canonical/test.json";
+        var raw = mapper.createObjectNode().put("landscapeId", MATH);
+        var goals = raw.putArray("goals");
+        goals.addObject().put("id", "assessment-cluster").put("type", "cluster").putArray("contains").add("ordinary");
+        goals.addObject().put("id", "ordinary").put("type", "atomic");
+        var installed = raw.deepCopy();
+        ((ObjectNode) installed.path("goals").get(0)).put("semanticKind", "practiceAssessment");
+        ((ObjectNode) installed.path("goals").get(1)).put("semanticKind", retypeAtom ? "practiceAssessment" : "curricularAtomic");
+        var ledger = mapper.createObjectNode().put("documentType", "semantic-kind-ledger");
+        if (reviewed) {
+            var decisions = ledger.putArray("decisions");
+            decisions.addObject().put("goalId", "assessment-cluster").put("semanticKind", "practiceAssessment").put("decisionStatus", "authoritative");
+            decisions.addObject().put("goalId", "ordinary").put("semanticKind", retypeAtom ? "practiceAssessment" : "curricularAtomic").put("decisionStatus", "authoritative");
+        }
+        byte[] rawBytes = mapper.writeValueAsBytes(raw);
+        Map<String, byte[]> inputs = Map.of(path, rawBytes, "DE/Gymnasium/quality/test-ledger.json", mapper.writeValueAsBytes(ledger));
+        var snapshot = mock(CurriculumRuntimeSnapshot.class);
+        when(snapshot.packages()).thenReturn(List.of());
+        when(snapshot.landscapesById()).thenReturn(Map.of(MATH, new CurriculumRuntimeSnapshot.LandscapeDescriptor(
+                "test", MATH, "root", "de-DE", "test", "test", "DE", null, "Gymnasium",
+                null, null, null, mapper.writeValueAsString(installed))));
+        new LearningUnitPackageBindings(snapshot, inputs, mapper).validateCurrentOfferInput(path, rawBytes);
+    }
+
     private void validate(String path, byte[] bytes, Map<String, byte[]> files) throws Exception {
         JsonNode math = mapper.readTree(Files.readAllBytes(Path.of("../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json")));
         LearningUnitPackageRegistryBindings.validate(path, bytes, mapper.readTree(bytes), files, Map.of(MATH, math),

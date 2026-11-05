@@ -2,6 +2,7 @@ package com.skillpilot.backend.curriculumpackage;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.completion.learningunit.LearningUnitOfferBindings;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.landscape.SkillLandscape;
 import java.util.ArrayList;
@@ -121,12 +122,13 @@ public final class PackageCurriculumDomainState {
                     snapshot,
                     packageId,
                     MAPPING_ROLE,
-                    "source-to-canonical-mappings");
+                    "source-to-canonical-mappings",
+                    packageDescriptor.capabilities().contains(LearningUnitOfferBindings.CAPABILITY));
             CurriculumRuntimeSnapshot.Artifact sourceIndexArtifact = exactlyOneArtifact(
                     snapshot,
                     packageId,
                     SOURCE_INDEX_ROLE,
-                    "official-source-index");
+                    "official-source-index", false);
             byte[] mappingBytes = artifactReader.readVerified(
                     mappingArtifact, CurriculumPackageFileReader.MAX_CONTROL_BYTES);
             byte[] sourceIndexBytes = artifactReader.readVerified(
@@ -221,7 +223,8 @@ public final class PackageCurriculumDomainState {
             CurriculumRuntimeSnapshot snapshot,
             String packageId,
             String role,
-            String normalizationRole) {
+            String normalizationRole,
+            boolean expectedRuntimeRequired) {
         List<CurriculumRuntimeSnapshot.Artifact> matches = snapshot.artifactsByRole()
                 .getOrDefault(role, List.of())
                 .stream()
@@ -234,7 +237,7 @@ public final class PackageCurriculumDomainState {
         if (!"application/json".equals(artifact.mediaType())
                 || !"logical-artifact".equals(artifact.semanticBindingKind())
                 || !normalizationRole.equals(artifact.normalizationRole())
-                || artifact.runtimeRequired()) {
+                || artifact.runtimeRequired() != expectedRuntimeRequired) {
             throw failure("Package artifact binding disagrees with role " + role + ": " + packageId);
         }
         return artifact;

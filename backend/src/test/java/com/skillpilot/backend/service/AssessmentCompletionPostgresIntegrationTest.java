@@ -40,6 +40,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.springframework.aop.framework.Advised;
 import org.springframework.aop.support.AopUtils;
@@ -74,6 +76,7 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 })
 @ActiveProfiles("test")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
+@org.springframework.context.annotation.Import(AssessmentCompletionPostgresIntegrationTest.ProviderReadConfiguration.class)
 @EnabledIfEnvironmentVariable(named = "SKILLPILOT_TEST_POSTGRES_URL", matches = "jdbc:postgresql://.+")
 class AssessmentCompletionPostgresIntegrationTest {
     private static final String PROFILE = "math-dot-product-projection";
@@ -95,6 +98,13 @@ class AssessmentCompletionPostgresIntegrationTest {
     @Autowired com.skillpilot.backend.connectors.claude.v1.session.ClaudeV1SessionTokenCodec sessionTokens;
     @Autowired JdbcTemplate jdbc;
     @Autowired ObjectMapper mapper;
+    @Autowired org.springframework.transaction.PlatformTransactionManager transactions;
+    @Autowired com.skillpilot.backend.repository.MasteryRepository masteryRepository;
+    @Autowired com.skillpilot.backend.repository.LearnerClientStateRepository clientStates;
+    @Autowired com.skillpilot.backend.repository.OpenAiDeLearningSessionRepository openAiSessions;
+    @Autowired com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpSessionCoordinator openAiCoordinator;
+    @Autowired com.skillpilot.backend.openai.de.OpenAiDeCurriculumRevisionProvider openAiRevision;
+    @Autowired com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1SessionCoordinator geminiCoordinator;
     @PersistenceContext EntityManager entityManager;
 
     private Object originalApplication;
@@ -301,6 +311,220 @@ class AssessmentCompletionPostgresIntegrationTest {
         assertThat(independentJdbc().queryForObject(
                 "SELECT count(*) FROM claude_v1_session_idempotency WHERE client_request_id = ?",
                 Integer.class, "rolled-back-write")).isZero();
+    }
+
+    /** Actual production coordinator proxies and JDBC repositories, without enabling OAuth/HTTP
+     * hosts in this database-only lane. Provider handles are valid committed fixture sessions. */
+    @org.springframework.boot.test.context.TestConfiguration(proxyBeanMethods = false)
+    static class ProviderReadConfiguration {
+        @org.springframework.context.annotation.Bean
+        com.skillpilot.backend.openai.de.OpenAiDeCurriculumRevisionProvider providerProbeRevision(
+                com.skillpilot.backend.landscape.LandscapeProperties landscapes,
+                com.skillpilot.backend.curriculumpackage.CurriculumPackageProperties packages,
+                org.springframework.beans.factory.ObjectProvider<com.skillpilot.backend.curriculumpackage.CurriculumRuntimeSnapshotProvider> snapshots) {
+            return new com.skillpilot.backend.openai.de.OpenAiDeCurriculumRevisionProvider(
+                    new com.skillpilot.backend.openai.de.OpenAiDeProperties(), packages, landscapes, snapshots);
+        }
+
+        @org.springframework.context.annotation.Bean
+        com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpSessionCoordinator providerProbeOpenAi(
+                com.skillpilot.backend.repository.OpenAiDeLearningSessionRepository sessions,
+                LearnerRepository learners,
+                com.skillpilot.backend.repository.OpenAiDeIdempotencyRecordRepository replays,
+                com.skillpilot.backend.openai.de.OpenAiDeCurriculumRevisionProvider revision) {
+            return new com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpSessionCoordinator(
+                    sessions, learners, replays, new com.skillpilot.backend.openai.de.OpenAiDeProperties(),
+                    revision, "postgres-provider-probe-dedicated-test-secret");
+        }
+
+        @org.springframework.context.annotation.Bean
+        com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1SessionCoordinator providerProbeGemini(
+                LearnerRepository learners, JdbcTemplate jdbc, ObjectMapper mapper) {
+            var properties = com.skillpilot.backend.connectors.gemini.v1.GeminiV1TestProperties.validProperties();
+            return new com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1SessionCoordinator(learners,
+                    new com.skillpilot.backend.connectors.gemini.v1.session.GeminiV1LearningSessionRepository(jdbc),
+                    new com.skillpilot.backend.connectors.gemini.v1.persistence.GeminiV1IdempotencyRepository(jdbc),
+                    new com.skillpilot.backend.connectors.gemini.v1.session.GeminiV1SessionTokenCodec(properties),
+                    properties, mapper);
+        }
+    }
+
+    private record ProviderProjection(long revision, UnifiedLearnerStateResponse state,
+            com.skillpilot.backend.api.ClientStateSnapshot practice) { }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"claude", "openai", "gemini"})
+    void providerConflictRollsBackBeforeAnExplicitFreshContextReadsCommittedMasteryRecallAndRevision(String provider)
+            throws Exception {
+        String memory = "4eefbd04-9e49-41ea-a087-9ad6ac71ec5a";
+        String cardId = "provider-concurrent-practice-card";
+        String handle = providerSession(provider);
+        AtomicBoolean firstLock = new AtomicBoolean(true);
+        AtomicInteger contextCalls = new AtomicInteger();
+        AtomicInteger masteryReads = new AtomicInteger();
+        AtomicInteger recallReads = new AtomicInteger();
+        AtomicReference<Long> committedRevision = new AtomicReference<>();
+        List<Integer> completions = new java.util.concurrent.CopyOnWriteArrayList<>();
+        long readerThread = Thread.currentThread().threadId();
+        MethodInterceptor lockProbe = invocation -> {
+            if (!"findBySkillpilotIdForUpdate".equals(invocation.getMethod().getName())
+                    || !learnerId.equals(invocation.getArguments()[0])
+                    || Thread.currentThread().threadId() != readerThread) return invocation.proceed();
+            assertSqlTransaction("repeatable read", "off");
+            TransactionSynchronizationManager.registerSynchronization(
+                    new org.springframework.transaction.support.TransactionSynchronization() {
+                        @Override public void afterCompletion(int status) { completions.add(status); }
+                    });
+            if (firstLock.getAndSet(false)) {
+                // The production session lookup already established the outer RR snapshot.
+                // Read the old revision, then let an independent legitimate service write commit.
+                assertThat(currentRevision(jdbc)).isEqualTo(initialRevision);
+                var writer = Executors.newSingleThreadExecutor();
+                try {
+                    writer.submit(() -> new org.springframework.transaction.support.TransactionTemplate(transactions)
+                            .execute(status -> {
+                                successfulWrite("provider-writer-" + provider);
+                                learners.upsertClientState(learnerId, memory, new com.skillpilot.backend.api.ClientStateRequest(
+                                        java.time.Instant.now(), Map.of(cardId, Map.of("id", cardId, "interval", 6))));
+                                return null;
+                            })).get(30, TimeUnit.SECONDS);
+                } finally { writer.shutdownNow(); }
+                committedRevision.set(currentRevision(independentJdbc()));
+                assertThat(committedRevision.get()).isGreaterThan(initialRevision);
+            } else {
+                assertThat(completions).containsExactly(
+                        org.springframework.transaction.support.TransactionSynchronization.STATUS_ROLLED_BACK);
+            }
+            return invocation.proceed(); // PostgreSQL itself raises 40001 on the obsolete snapshot.
+        };
+        MethodInterceptor masteryProbe = invocation -> {
+            if ("findByLearner_SkillpilotId".equals(invocation.getMethod().getName())
+                    && learnerId.equals(invocation.getArguments()[0])
+                    && Thread.currentThread().threadId() == readerThread) {
+                assertSqlTransaction("repeatable read", "off"); masteryReads.incrementAndGet();
+                @SuppressWarnings("unchecked")
+                var rows = (List<com.skillpilot.backend.domain.Mastery>) invocation.proceed();
+                assertThat(rows).singleElement().satisfies(row -> {
+                    assertThat(row.getGoalKey()).isEqualTo(EXAM);
+                    assertThat(row.getValue()).isEqualTo(1.0);
+                });
+                return rows;
+            }
+            return invocation.proceed();
+        };
+        MethodInterceptor recallProbe = invocation -> {
+            if ("findByLearnerAndNodeIds".equals(invocation.getMethod().getName())
+                    && learnerId.equals(invocation.getArguments()[0])
+                    && Thread.currentThread().threadId() == readerThread) {
+                assertSqlTransaction("repeatable read", "off"); recallReads.incrementAndGet();
+                @SuppressWarnings("unchecked")
+                var rows = (List<com.skillpilot.backend.domain.LearnerClientState>) invocation.proceed();
+                assertThat(rows).anySatisfy(row -> {
+                    assertThat(row.getId().getNodeId()).isEqualTo(memory);
+                    assertThat(row.getClientState()).contains(cardId).contains("\"interval\":6");
+                });
+                return rows;
+            }
+            return invocation.proceed();
+        };
+        var learnerProxy = (Advised) learnerRepository;
+        var masteryProxy = (Advised) masteryRepository;
+        var recallProxy = (Advised) clientStates;
+        learnerProxy.addAdvice(0, lockProbe);
+        masteryProxy.addAdvice(0, masteryProbe);
+        recallProxy.addAdvice(0, recallProbe);
+        java.util.function.LongFunction<ProviderProjection> read = revision -> {
+            contextCalls.incrementAndGet();
+            assertThat(revision).isEqualTo(committedRevision.get());
+            assertThat(currentRevision(jdbc)).isEqualTo(revision);
+            return new ProviderProjection(revision, learners.getCoachLearnerState(learnerId),
+                    learners.getClientState(learnerId, memory));
+        };
+        try {
+            Throwable conflict = org.assertj.core.api.Assertions.catchThrowable(() -> readProvider(provider, handle, read));
+            assertThat(conflict).isInstanceOf(org.springframework.dao.PessimisticLockingFailureException.class);
+            assertThat(sqlState(conflict)).isEqualTo("40001");
+            assertThat(contextCalls).hasValue(0); // no partial success or automatic operation replay
+            assertThat(masteryReads).hasValue(0);
+            assertThat(recallReads).hasValue(0);
+            assertThat(completions).containsExactly(
+                    org.springframework.transaction.support.TransactionSynchronization.STATUS_ROLLED_BACK);
+            assertThat(TransactionSynchronizationManager.isActualTransactionActive()).isFalse();
+
+            // A distinct explicit call revalidates its session in a fresh outer transaction.
+            ProviderProjection fresh = readProvider(provider, handle, read);
+            assertThat(fresh.revision()).isEqualTo(committedRevision.get());
+            assertThat(fresh.state().skillpilotId()).isEqualTo(learnerId);
+            assertThat(fresh.state().levelCompletion().learnerRevision()).isEqualTo(committedRevision.get());
+            assertThat(fresh.state().levelCompletion().masteredTargetCount()).isEqualTo(1);
+            assertThat(fresh.state().learningUnits().recognizedGoalIds()).containsExactly(PREPARATION);
+            assertThat(fresh.practice().srsState()).containsEntry(cardId, Map.of("id", cardId, "interval", 6));
+            assertThat(contextCalls).hasValue(1);
+            assertThat(masteryReads).hasValue(1);
+            assertThat(recallReads).hasValue(1);
+            assertThat(completions).containsExactly(
+                    org.springframework.transaction.support.TransactionSynchronization.STATUS_ROLLED_BACK,
+                    org.springframework.transaction.support.TransactionSynchronization.STATUS_COMMITTED);
+            assertThat(examMasteryRows(independentJdbc())).isEqualTo(1);
+            assertThat(currentRevision(independentJdbc())).isEqualTo(committedRevision.get());
+        } finally {
+            learnerProxy.removeAdvice(lockProbe);
+            masteryProxy.removeAdvice(masteryProbe);
+            recallProxy.removeAdvice(recallProbe);
+        }
+    }
+
+    private ProviderProjection readProvider(String provider, String handle,
+            java.util.function.LongFunction<ProviderProjection> read) {
+        return switch (provider) {
+            case "claude" -> coordinator.readForCoachContext(handle, context -> read.apply(context.stateVersion())).value();
+            case "gemini" -> geminiCoordinator.read(handle, context -> read.apply(context.stateVersion())).value();
+            case "openai" -> {
+                AtomicReference<ProviderProjection> projection = new AtomicReference<>();
+                openAiCoordinator.read(handle, metadata -> {
+                    projection.set(read.apply(metadata.stateVersion()));
+                    return io.modelcontextprotocol.spec.McpSchema.CallToolResult.builder()
+                            .structuredContent(Map.of("coherent", true)).build();
+                });
+                yield projection.get();
+            }
+            default -> throw new IllegalArgumentException(provider);
+        };
+    }
+
+    private String providerSession(String provider) {
+        java.time.Instant now = java.time.Instant.now();
+        if ("claude".equals(provider)) return sessionId;
+        if ("gemini".equals(provider)) {
+            var codec = new com.skillpilot.backend.connectors.gemini.v1.session.GeminiV1SessionTokenCodec(
+                    com.skillpilot.backend.connectors.gemini.v1.GeminiV1TestProperties.validProperties());
+            String token = codec.issue();
+            new com.skillpilot.backend.connectors.gemini.v1.session.GeminiV1LearningSessionRepository(jdbc)
+                    .insert(new com.skillpilot.backend.connectors.gemini.v1.session.GeminiV1LearningSession(
+                            codec.hash(token), learnerId, now, now.plusSeconds(86400), "de", initialRevision));
+            assertThat(AopUtils.isAopProxy(geminiCoordinator)).isTrue();
+            return token;
+        }
+        String token = "test-openai-provider-" + UUID.randomUUID();
+        var session = new com.skillpilot.backend.domain.OpenAiDeLearningSession();
+        session.setTokenHash(ReflectionTestUtils.invokeMethod(openAiCoordinator, "hash", token));
+        session.setLearner(learnerRepository.findById(learnerId).orElseThrow());
+        session.setStartedAt(now); session.setExpiresAt(now.plusSeconds(86400));
+        session.setContractMajor(com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata.CONTRACT_MAJOR);
+        session.setStateSchemaVersion(com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata.STATE_SCHEMA_VERSION);
+        session.setWorkflowVersion(new com.skillpilot.backend.openai.de.OpenAiDeProperties().getWorkflowVersion());
+        session.setCurriculumRevision(openAiRevision.currentRevision());
+        session.setCommunicationLocale("de"); session.setStateVersion(initialRevision); session.setVerifiedRecallBatchSize(1);
+        openAiSessions.saveAndFlush(session);
+        assertThat(AopUtils.isAopProxy(openAiCoordinator)).isTrue();
+        return token;
+    }
+
+    private static String sqlState(Throwable error) {
+        for (Throwable cause = error; cause != null; cause = cause.getCause()) {
+            if (cause instanceof java.sql.SQLException sql && sql.getSQLState() != null) return sql.getSQLState();
+        }
+        return null;
     }
 
     private Map<String, Object> successfulWrite(String requestId) {
