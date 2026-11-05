@@ -679,7 +679,7 @@ class CompositionViewServiceTest {
     }
 
     @Test
-    void learnerScopeAcceptsReviewedGenericSekOneViewForCommittedJurisdictionAndDuration() {
+    void learnerScopePrefersReviewedJurisdictionSekOneViewForCommittedDuration() {
         CompositionViewService service = createService();
 
         assertThat(service.findLearnerScopeView(
@@ -689,7 +689,8 @@ class CompositionViewServiceTest {
                                 "jurisdiction", "DE-BB",
                                 "stage", "SekI",
                                 "durationModel", "G8")))
-                .containsEntry("viewId", "de-de-gym-seki-math");
+                .containsEntry("viewId", "de-bb-gym-seki-math")
+                .containsEntry("scope", Map.of("schoolForm", "Gymnasium", "jurisdiction", "DE-BB", "stage", "SekI"));
     }
 
     @Test

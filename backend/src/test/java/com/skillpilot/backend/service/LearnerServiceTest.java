@@ -1294,26 +1294,26 @@ public class LearnerServiceTest {
                 List.of(CANONICAL_CHOOSE_REPRESENTATION_ID,
                         CANONICAL_CREATE_REPRESENTATION_ID, CANONICAL_READ_REPRESENTATION_ID));
         // This mastery was acquired after the plan baseline, with no known completion
-        // timestamp. It contributes to I, never to H, and stays in the fixed plan set.
+        // timestamp. It credits existing work, never a new completion event H,
+        // and stays in the fixed plan set.
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         var fixedPlan = learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, today);
         masteryRepository.saveAndFlush(new Mastery(learner, CANONICAL_READ_REPRESENTATION_ID, 1.0));
-        // READ is CREATE's only consumer. Mastering READ also ends CREATE's
-        // demand, so the default I now credits both without inventing an event
-        // or mastery for CREATE. CHOOSE still has other open consumers.
+        // Ordinary READ mastery has no fixed assessment contract recognizing
+        // CREATE. Both CREATE and CHOOSE stay open; no implicit result or
+        // completion timestamp may be invented from that prerequisite edge.
         assertThat(learnerService.getCoachLearnerState(learnerId).levelCompletion().waivedTargetGoalIds())
-                .contains(CANONICAL_CREATE_REPRESENTATION_ID)
-                .doesNotContain(CANONICAL_CHOOSE_REPRESENTATION_ID);
+                .doesNotContain(CANONICAL_CREATE_REPRESENTATION_ID, CANONICAL_CHOOSE_REPRESENTATION_ID);
         assertThat(learnerService.getMastery(learnerId)
                 .getOrDefault(CANONICAL_CREATE_REPRESENTATION_ID, 0.0)).isZero();
         assertThat(learnerService.getGoalCompletionsOnDate(learnerId, today)).isEmpty();
         var before = subjectBalance(today, CANONICAL_MATH_LANDSCAPE_ID);
-        assertThat(before.erfuelltesPeriodenziel()).isEqualTo(2);
-        assertThat(before.offenesPeriodenpensum()).isZero();
-        assertThat(before.rohsaldo()).isZero();
+        assertThat(before.erfuelltesPeriodenziel()).isEqualTo(1);
+        assertThat(before.offenesPeriodenpensum()).isEqualTo(1);
+        assertThat(before.rohsaldo()).isEqualTo(-1);
         learnerService.setPreferences(learnerId, "SEQUENTIAL", true, null, null, true);
-        // The learner may explicitly continue after covering today's quota;
-        // that extra work must not trigger another automatic task.
+        // Earlier READ work covers one of today's two goals. Completing CHOOSE
+        // covers the remaining quota and must not trigger automatic extra work.
         learnerService.setActiveGoal(learnerId, CANONICAL_CHOOSE_REPRESENTATION_ID);
 
         var completion = learnerService.setMastery(learnerId, new MasteryUpdateRequest(
@@ -1322,7 +1322,7 @@ public class LearnerServiceTest {
         var balance = subjectBalance(today, CANONICAL_MATH_LANDSCAPE_ID);
         assertThat(balance.erfuelltesPeriodenziel()).isEqualTo(2);
         assertThat(balance.offenesPeriodenpensum()).isZero();
-        assertThat(balance.vorsprung()).isEqualTo(1);
+        assertThat(balance.vorsprung()).isZero();
         assertThat(completion.activeGoal()).isNull();
         assertThat(learnerService.getGoalCompletionsOnDate(learnerId, today))
                 .containsOnlyKeys(CANONICAL_CHOOSE_REPRESENTATION_ID);

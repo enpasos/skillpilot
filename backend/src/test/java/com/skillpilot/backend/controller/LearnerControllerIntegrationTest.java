@@ -132,16 +132,6 @@ public class LearnerControllerIntegrationTest {
               }
             }
             """;
-    private static final String CANONICAL_PHYSICS_HE_CROSS_STAGE_GK_PERSONAL_CONFIG = """
-            {
-              "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
-                "selected": true, "filterId": "HE", "stage": "CrossStage"
-              },
-              "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {
-                "selected": true, "filterId": "GK", "stage": "CrossStage"
-              }
-            }
-            """;
     private static final String CANONICAL_MATH_ANALYSIS_CLUSTER_ID = "a668ea17-9226-4074-8f8e-051acbe839eb";
     private static final String CANONICAL_MATH_POWER_FUNCTIONS_ID = "30c013ac-5164-4c3c-8bc1-9a10b2f49533";
     private static final String CANONICAL_MATH_FUNCTION_CONCEPT_ID = "09f47964-2cd0-410e-93ee-9632b582fc91";
@@ -734,22 +724,55 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void getLearnerStateHttpTurnsMixedLegacyConservationPlanAndMasteryIntoCanonicalFrontier() throws Exception {
-        String responseBody = getPreparedLearnerStateBody(
-                List.of(
-                        LEGACY_PHYSICS_CONSERVATION_CLUSTER_ID,
-                        LEGACY_BAYERN_PHYSICS_ENERGY_CLUSTER_ID,
-                        LEGACY_BAYERN_PHYSICS_MOMENTUM_CLUSTER_ID),
-                List.of(
-                        LEGACY_PHYSICS_ENERGY_CONSERVATION_ID,
-                        LEGACY_BAYERN_PHYSICS_MOMENTUM_CONSERVATION_ID),
-                List.of(CANONICAL_PHYSICS_SIMPLE_COLLISIONS_ID, CANONICAL_PHYSICS_INELASTIC_COLLISIONS_ID),
-                Set.of("91c49019-ea51-4ce5-a919-c91c45b25e83", "839ecc8f-3a60-418b-bc92-64bfeef33824"),
-                CANONICAL_PHYSICS_HE_CROSS_STAGE_GK_PERSONAL_CONFIG,
-                // Inelastic collisions needs exactly the two mastered mapped
-                // predecessors. Simple collisions still has another direct,
-                // unmastered requirement; earlier ancestors of the mastered
-                // predecessors no longer block either route on their own.
-                Set.of(CANONICAL_PHYSICS_INELASTIC_COLLISIONS_ID));
+        List<String> targets = List.of(CANONICAL_PHYSICS_SIMPLE_COLLISIONS_ID, CANONICAL_PHYSICS_INELASTIC_COLLISIONS_ID);
+        String hessianPersonalCurriculum = canonicalGymnasiumSubjectPersonalCurriculum(
+                CANONICAL_PHYSICS_ID, "DE-HE", "G8", "GK", true, true);
+        assertThat(learnerService.getFilteredAtomicGoalIds(
+                CANONICAL_PHYSICS_ID, hessianPersonalCurriculum, null, false))
+                .as("A subject-only root cannot apply the separate overview jurisdiction; ALL keeps these goals as support")
+                .doesNotContainAnyElementsOf(targets);
+        String enrolledPersonalCurriculum = hessianPersonalCurriculum;
+        assertThat(learnerService.getFilteredAtomicGoalIds(
+                CANONICAL_GYMNASIUM_ROOT_ID, enrolledPersonalCurriculum, null, false))
+                .as("The reviewed HE overview scope enrolls both canonical collision goals")
+                .containsAll(targets);
+        List<String> legacyPlanned = List.of(LEGACY_PHYSICS_CONSERVATION_CLUSTER_ID,
+                LEGACY_BAYERN_PHYSICS_ENERGY_CLUSTER_ID, LEGACY_BAYERN_PHYSICS_MOMENTUM_CLUSTER_ID);
+        // The HE result has the existing exact momentum mapping for this HE
+        // projection. Keep the BY result too; selecting HE does not erase it.
+        List<String> legacyMastery = List.of(LEGACY_PHYSICS_ENERGY_CONSERVATION_ID,
+                "f9c16720-ee4e-4bd4-b4a5-e9c12b910fab", LEGACY_BAYERN_PHYSICS_MOMENTUM_CONSERVATION_ID);
+        Set<String> mappedMastery = Set.of("91c49019-ea51-4ce5-a919-c91c45b25e83", "839ecc8f-3a60-418b-bc92-64bfeef33824");
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        // A jurisdiction is read from the selected overview root. Selecting only
+        // the subject would leave the separate overview config outside its scope.
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(enrolledPersonalCurriculum);
+        learner.setStrictMode(true);
+        learnerRepository.save(learner);
+        masteryRepository.deleteAll();
+        plannedGoalRepository.deleteAll();
+        plannedGoalRepository.saveAll(legacyPlanned.stream().map(id -> new PlannedGoal(learner, id)).toList());
+        masteryRepository.saveAll(legacyMastery.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
+        JsonNode initial = objectMapper.readTree(fetchLearnerStateBody());
+        assertThat(jsonTextValues(initial.path("activeFilters"))).contains("DE-HE", "G8", "GK");
+        assertThat(jsonIds(initial.path("frontier")).stream().filter(targets::contains).toList())
+                .containsExactly(CANONICAL_PHYSICS_INELASTIC_COLLISIONS_ID);
+        assertThat(learnerService.getMastery(learnerId)).containsAllEntriesOf(mappedMastery.stream()
+                .collect(java.util.stream.Collectors.toMap(id -> id, id -> 1.0)));
+        assertThat(learnerService.getMastery(learnerId))
+                .containsEntry(LEGACY_BAYERN_PHYSICS_MOMENTUM_CONSERVATION_ID, 1.0);
+        for (String target : targets) {
+            assertThat(learnerService.getMastery(learnerId).getOrDefault(target, 0.0)).isZero();
+        }
+        // Supply remaining preparation from unchanged R. This ordinary migration
+        // case does not derive fixed-unit recognition or either target's result.
+        List<String> prepared = CanonicalPrerequisiteTestContext.withStoredPrerequisites(
+                landscapeService, targets, legacyMastery, mappedMastery);
+        assertThat(prepared).doesNotContainAnyElementsOf(targets).doesNotContainAnyElementsOf(mappedMastery);
+        masteryRepository.deleteAll();
+        masteryRepository.saveAll(prepared.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
+        String responseBody = fetchLearnerStateBody();
 
         JsonNode root = objectMapper.readTree(responseBody);
         JsonNode planned = root.path("goals").path("planned");
@@ -1464,25 +1487,26 @@ public class LearnerControllerIntegrationTest {
     void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
         // Current canonical leaves were enumerated from each matched Sek-I view,
         // applying projection-role precedence and jurisdiction applicability.
-        // Totals include local assessments; excluded and prerequisite-only goals
-        // do not count. The view-specific HE/RP/SH G8/G9 split remains explicit.
+        // Totals bind the reviewed Source V6 projection, including the new local
+        // Q and the restored BB/SL Pythagoras scopes. Excluded and prerequisite-only
+        // goals do not count. Keep the HE/RP/SH G8/G9 split explicit.
         String[][] scopes = {
-                { "DE-BB", "241", "241" },
+                { "DE-BB", "242", "242" },
                 { "DE-BE", "237", "237" },
-                { "DE-BW", "267", "267" },
+                { "DE-BW", "268", "268" },
                 { "DE-BY", "227", "227" },
-                { "DE-HB", "215", "215" },
-                { "DE-HE", "325", "352" },
+                { "DE-HB", "214", "214" },
+                { "DE-HE", "326", "353" },
                 { "DE-HH", "237", "237" },
-                { "DE-MV", "236", "236" },
-                { "DE-NI", "236", "236" },
-                { "DE-NW", "236", "236" },
-                { "DE-RP", "267", "279" },
-                { "DE-SH", "260", "266" },
-                { "DE-SL", "239", "239" },
-                { "DE-SN", "236", "236" },
-                { "DE-ST", "236", "236" },
-                { "DE-TH", "237", "237" }
+                { "DE-MV", "235", "235" },
+                { "DE-NI", "235", "235" },
+                { "DE-NW", "235", "235" },
+                { "DE-RP", "268", "280" },
+                { "DE-SH", "261", "267" },
+                { "DE-SL", "246", "246" },
+                { "DE-SN", "235", "235" },
+                { "DE-ST", "235", "235" },
+                { "DE-TH", "236", "236" }
         };
         SoftAssertions softly = new SoftAssertions();
 
@@ -1509,6 +1533,19 @@ public class LearnerControllerIntegrationTest {
 
             assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", "GK");
             assertThat(jsonTextValues(g9State.path("activeFilters"))).contains(jurisdiction, "G9", "GK");
+            Set<String> currentTargets = learnerService.getFilteredAtomicGoalIds(
+                    CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false);
+            assertThat(currentTargets.contains("010c133c-dcf1-5530-8305-61bc638017bc"))
+                    .as(jurisdiction + " Sek-I monotonicity assessment scope")
+                    .isEqualTo("DE-BW".equals(jurisdiction));
+            assertThat(currentTargets.contains("e5494c67-aed6-5710-8ae3-51ae147c10e9"))
+                    .as(jurisdiction + " Sek-I prism assessment scope")
+                    .isEqualTo(Set.of("DE-HE", "DE-RP", "DE-SH").contains(jurisdiction));
+            if ("DE-BB".equals(jurisdiction)) {
+                assertThat(currentTargets).contains(
+                        "081c9802-6da7-5ae8-b78e-f99c2b2dbb14", // restored converse application
+                        "241915f4-8d90-5542-ac9c-230aa98bee39"); // its own explicit assessment
+            }
             if (Set.of("DE-BW", "DE-HE", "DE-SL").contains(jurisdiction)) {
                 Set<String> g9Targets = learnerService.getFilteredAtomicGoalIds(
                         CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false);
@@ -1522,6 +1559,11 @@ public class LearnerControllerIntegrationTest {
                             "5f6496ef-e4d2-5341-8a2c-3293b2e4e25a",
                             "ea664a30-98be-508e-90ac-5304679814ee");
                 } else {
+                    assertThat(g9Targets).contains(
+                            "3a69dab2-3fe8-5076-a980-5b7ac1bd1127", "e086671c-9f55-5d8b-8467-b6390dc6a879",
+                            "487ec508-f421-5a5a-a84c-98f88a8fb3e5", "2686049c-2cb2-5595-be5b-4860c3ceb76b",
+                            "6a3502ee-b616-5db7-88fc-8951f33c9f63", "5c00b06d-9644-5e23-ac29-6ff1499ee0ca",
+                            "081c9802-6da7-5ae8-b78e-f99c2b2dbb14", "241915f4-8d90-5542-ac9c-230aa98bee39");
                     assertThat(g9Targets).doesNotContain(
                             "baea3966-5d10-53bf-8193-3fcda7b1e73f"); // SL prerequisite-only atom
                 }
@@ -1536,14 +1578,15 @@ public class LearnerControllerIntegrationTest {
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
         // Current cross-stage target leaves were counted from each matched view
         // with projection roles, jurisdiction, course tags and G8/G9 applicability.
-        // Keep exact counts and selected membership checks to catch scope drift.
+        // Both reviewed new Q are in these cross-stage offers. Keep exact counts
+        // and explicit membership checks rather than accepting any same-sized set.
         String[][] scopes = {
-                { "DE-HE", "GK", "751", "761" },
-                { "DE-HE", "LK", "889", "899" },
-                { "DE-RP", "GK", "688", "699" },
-                { "DE-RP", "LK", "802", "813" },
-                { "DE-SH", "GK", "667", "674" },
-                { "DE-SH", "LK", "764", "772" }
+                { "DE-HE", "GK", "753", "763" },
+                { "DE-HE", "LK", "891", "901" },
+                { "DE-RP", "GK", "690", "701" },
+                { "DE-RP", "LK", "804", "815" },
+                { "DE-SH", "GK", "669", "676" },
+                { "DE-SH", "LK", "766", "774" }
         };
         SoftAssertions softly = new SoftAssertions();
 
@@ -1596,6 +1639,10 @@ public class LearnerControllerIntegrationTest {
                 assertHessenGkQ21Projection(learner);
             }
 
+            assertThat(learnerService.getFilteredAtomicGoalIds(
+                    CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false))
+                    .as(jurisdiction + " " + courseProfile + " reviewed cross-stage assessments")
+                    .contains("010c133c-dcf1-5530-8305-61bc638017bc", "e5494c67-aed6-5710-8ae3-51ae147c10e9");
             assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", courseProfile);
             assertThat(jsonTextValues(g9State.path("activeFilters"))).contains(jurisdiction, "G9", courseProfile);
             softly.assertThat(g8Total).as(jurisdiction + " " + courseProfile + " G8 total")
@@ -1919,8 +1966,8 @@ public class LearnerControllerIntegrationTest {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setStrictMode(true);
         learnerRepository.save(learner);
-        // A mastered legacy predecessor ends its own preparation demand without
-        // certifying that preparation. Other direct requirements still block.
+        // Preserve mapped explicit results and check normal strict availability
+        // against the unchanged effective prerequisite relation.
         // Preserve the exact initial availability before adding missing preparation.
         JsonNode initial = objectMapper.readTree(getLearnerStateBody(
                 plannedIds, originallyStoredIds, personalCurriculum));
