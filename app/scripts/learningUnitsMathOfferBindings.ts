@@ -37,22 +37,7 @@ export function physicalViewIds(ids: string[], resolvedViews: Record<string, any
   }))].sort()
 }
 
-export function prepareOfferBindings(raw: any, config: any, catalog: any) {
-  requireNativeInventory(raw); assert.equal(raw.scopes.length, 182)
-  assert.equal(config.schemaVersion, 1)
-  const nativeByScope = new Map(raw.scopes.map((row: any) => [row.scopeId, row]))
-  const definitionByRef = new Map<string, any>()
-  for (const entry of catalog.contracts) {
-    assert.equal(digest(bytes(`curricula/${entry.path}`)), entry.sha256)
-    for (const [path, expected] of Object.entries(entry.inputs)) assert.equal(digest(bytes(`curricula/${path}`)), expected, `Frozen contract input drift: ${path}`)
-    const definition = parse(`curricula/${entry.path}`)
-    definitionByRef.set(`${definition.contractId}@${definition.revision}`, definition)
-  }
-  for (const selection of config.rootSelections) {
-    assert.ok(definitionByRef.has(`${selection.contractId}@${selection.revision}`), 'Unknown selected root')
-    assert.equal(new Set(selection.scopeIds).size, selection.scopeIds.length, 'Duplicate root scope')
-    for (const scopeId of selection.scopeIds) assert.ok(nativeByScope.has(scopeId), `Not an actual offered configuration ${scopeId}`)
-  }
+export function collectNativeMathProjectionInputs(raw: any) {
   const source = parse(mathCanonicalPath)
   assert.equal(digest(bytes(mathCanonicalPath)), raw.nativeMapperInputSha256[mathCanonicalPath], 'Canonical changed after native proof')
   const activeViewPaths = new Map<string, string>()
@@ -88,6 +73,29 @@ export function prepareOfferBindings(raw: any, config: any, catalog: any) {
     // ALL consumes all authored mappings; a state scope consumes just that state's mappings.
     const usedMappings = mappingPaths.filter(path => scope.jurisdiction === 'ALL' || path.includes(`/mapping/${scope.jurisdiction}/`))
     const inputPaths = [...new Set([...common, ...usedMappings, ...viewPaths])].sort(); inputPaths.forEach(addInput)
+    return { row, scope, viewIds, inputPaths }
+  })
+  return { source, inputs, rows }
+}
+
+export function prepareOfferBindings(raw: any, config: any, catalog: any) {
+  requireNativeInventory(raw); assert.equal(raw.scopes.length, 182)
+  assert.equal(config.schemaVersion, 1)
+  const nativeByScope = new Map(raw.scopes.map((row: any) => [row.scopeId, row]))
+  const definitionByRef = new Map<string, any>()
+  for (const entry of catalog.contracts) {
+    assert.equal(digest(bytes(`curricula/${entry.path}`)), entry.sha256)
+    for (const [path, expected] of Object.entries(entry.inputs)) assert.equal(digest(bytes(`curricula/${path}`)), expected, `Frozen contract input drift: ${path}`)
+    const definition = parse(`curricula/${entry.path}`)
+    definitionByRef.set(`${definition.contractId}@${definition.revision}`, definition)
+  }
+  for (const selection of config.rootSelections) {
+    assert.ok(definitionByRef.has(`${selection.contractId}@${selection.revision}`), 'Unknown selected root')
+    assert.equal(new Set(selection.scopeIds).size, selection.scopeIds.length, 'Duplicate root scope')
+    for (const scopeId of selection.scopeIds) assert.ok(nativeByScope.has(scopeId), `Not an actual offered configuration ${scopeId}`)
+  }
+  const { source, inputs, rows: projectionRows } = collectNativeMathProjectionInputs(raw)
+  const rows = projectionRows.map(({ row, scope, viewIds, inputPaths }: any) => {
     const rootContractRefs = config.rootSelections.filter((selection: any) => selection.scopeIds.includes(row.scopeId))
       .map(({ contractId, revision }: any) => ({ contractId, revision }))
     const owned = new Set<string>(); const visited = new Set<string>()

@@ -1,0 +1,362 @@
+{
+  "schemaVersion": 1,
+  "semantics": "global-unit-recognition-v1",
+  "contractId": "math-sphere-volume-cross-sections",
+  "revision": "2026-11-05-v1",
+  "sourceBinding": {
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "programUnitId": "de-gym-math-sphere-volume-cross-sections",
+    "placementRevision": "2026-11-05-v1",
+    "compositionViewDigests": {
+      "de-bb-gym-math-gk": "9f9bcfc02ee5770e4caa779b2c45a515c00fed83a51f3e46c961ee3eb04a3ba8",
+      "de-bb-gym-math-lk": "19baa5626024d5a53dc3bdee1da824dc5e864d5258c7e8d1ef584162b8f154c9",
+      "de-bb-gym-seki-math": "2e857894de46eaa486aaaa9b2adde933ce67043b62685adda8a668fc22dd98b0",
+      "de-bb-gym-sekii-math-gk": "ef2dfc022502db692fe71cfca23517f41e045da16323a726a1d1cb2ac98c1679",
+      "de-bb-gym-sekii-math-lk": "0a0aaf571ebdf0013e1e403345e9587ce4349c239ce5afc79888d2ac61aff386",
+      "de-be-gym-math-gk": "f3a44e01ab011df39e51bcf31bda096380f7f45609953a011972ee1a73cddd2c",
+      "de-be-gym-math-lk": "a9a684bb65ba1b6bff2d4d13fa3ba599c53db60a7df4054ebf06eee90bf47482",
+      "de-be-gym-sekii-math-gk": "975eb7e95a6cacd33fd4886674de81fd1f05691e3573d826506ed3f5b683ce6b",
+      "de-be-gym-sekii-math-lk": "b5657d07db1d8f7bfec34869790f9b7f3fb916e98ef613b17a9ca2c795f83afd",
+      "de-bw-gym-math-gk": "b6fe01c25fc8ca62852c75d3883b514f62fa682f74965e69a137ce7e753517b1",
+      "de-bw-gym-math-lk": "5740c9d28a8b26f831a7d5bd35d8a7d0e6e2270b1046db4e4c83f9b70ac22a9b",
+      "de-bw-gym-seki-math": "b02fad31081e1b1c52a17e5ec45252022b2b551b80f3c60626b6fe93a744dc6a",
+      "de-bw-gym-sekii-math-gk": "8fc2adf9f0d856f9032795d46d834375b6d0ed087e2027da38086f801ae99a63",
+      "de-bw-gym-sekii-math-lk": "561b3831ff9469511b694fb5797d790547f60d76ef5feef34a1b49adf1f6f077",
+      "de-by-gym-math-gk": "3524f11295b343f829a6c77fcc0b468c730747710f08de15e38aaf23a832469e",
+      "de-by-gym-math-lk": "d1cfa2a71c844d95fc9ec5795ead574b77e3d68ae4bf927e0b70ec1ed07708e8",
+      "de-by-gym-sekii-math-gk": "0b1532d50ed05c495e85d4427916c9f76ae219552a93764eeb14677606862f1a",
+      "de-by-gym-sekii-math-lk": "29b3e85a02f572d24121f8be21cd48ab7560b7b228fe2b909b59e140afe26b03",
+      "de-de-gym-math-gk": "89f13bef448c5c57d2c1609ed66532845f33995cddfb71a17137a3e81f9bc8af",
+      "de-de-gym-math-lk": "1ccbfa6edf07c88d2c3b91dbb8991572056b1e056cc3c4d6681ad3197b90757a",
+      "de-de-gym-seki-math": "9c7418ea63a4b8e684c6af12653178f7870ed19eb7441895322c57659525f30f",
+      "de-de-gym-sekii-math-gk": "f7d0967233c90968fb115705232d2a70ef72ad22e0f62ae52dc0f6f8a228baac",
+      "de-de-gym-sekii-math-lk": "f2d1e6d3a7282f47ccfe407facd1fd4e49dd977e1faa900061c2081995e29b2a",
+      "de-hb-gym-math-gk": "5d4a0a8a1ddb3563e22bdbe28c5aae1fd13e2fdeac5c8a175d0af2a1159bcaa1",
+      "de-hb-gym-math-lk": "4338b1a3bc72b435c9e609360074d11007c9f0859842831181fd69062a659c06",
+      "de-hb-gym-seki-math": "fb87217288f42f8d29095524dd9e9200a5cc3cd06d51435ef204b187e6eb42c9",
+      "de-hb-gym-sekii-math-gk": "46468ca0ffc22dee44679a2d60bf65929beded48b50819a6c048848071434b7b",
+      "de-hb-gym-sekii-math-lk": "a5859364d95472bb2b7a49192de51ce794742b3d26e6bef7d48ab250048acd7f",
+      "de-he-gym-math-gk": "e8613162e630d05035b614bf29a2bb90f22af1c128fddf9e7ff7538c84b0e310",
+      "de-he-gym-math-gk-g8": "c47b709c6d0925cf920945b943cb6dae712d943f124c06667edba1063921773e",
+      "de-he-gym-math-gk-g9": "580e50bcc6c5be6ce36ac3b75650b3abb9d48e17ccd68bdf412e0353c2f3c8c0",
+      "de-he-gym-math-lk": "9934ac47215d1295af1f5bf15da30ac050a8015296d1b8457afba978db301c4e",
+      "de-he-gym-math-lk-g8": "4fdb828831767b0d9a4e52168ac1473e806fe67e83f8297890f6b4d1dd75b7eb",
+      "de-he-gym-math-lk-g9": "2ff3df048111d3d936021ab526eb9be060f0d96bdee0cd6d20c52cccff818fdb",
+      "de-he-gym-seki-math-g8": "1f8a3cac0b91c80fd84cbad72f358f0774d88b8ba4ed23ff59430bf7d661198f",
+      "de-he-gym-seki-math-g9": "0a67d241305a7ef4af1abb9276b3e992a050164289560c62c7f4a0aae12a9b2c",
+      "de-he-gym-sekii-math-gk": "84e31f91a8256f4eb36f5195278d5d7abb6fa1e786b9cf18f594ad8b9b8e4f93",
+      "de-he-gym-sekii-math-lk": "1f72e5dda230cdbbb616757ee88cbdb3787e1f0b55caa18a2a512273aa91a7d7",
+      "de-hh-gym-math-gk": "4634610e4b9b3a21884bcf9cc3a8395f6385e8382f7c973f8ba32a867f0498ae",
+      "de-hh-gym-math-lk": "811461128d5c1d55029174d3cb2b267c3e476355ebe49a8e9c914139abe9c398",
+      "de-hh-gym-sekii-math-gk": "a71c10b4f8e82f30b83a097c9f1857b8a8bb52149374b23ab25c89a51df3206a",
+      "de-hh-gym-sekii-math-lk": "5a201376f57be9bab522e9cc3f2b63a2fa5f1e5d37f7bf7ac5832d133e6df362",
+      "de-mv-gym-math-gk": "6649f4e4f0fa8b6e983f2b45a964ef73461f186564d563b34489acb56d55af22",
+      "de-mv-gym-math-lk": "eacfe7d9128352abb842afc908592c9a4395a88c0b5bab2565b30ac6dd708e9e",
+      "de-mv-gym-seki-math": "b8f53aedf7e6d1570dcc05ead6f5b717b655e2f24e8c89db0eea8f12310a6a4a",
+      "de-mv-gym-sekii-math-gk": "faa3063f189faf5f01c02bad927c6a715c3bee22df1b33a49480c68f6a66fd6f",
+      "de-mv-gym-sekii-math-lk": "96597b2ab9ef22fbbb52563e1a6fc6ac7dff2b4dab4ecbd591e10f0bd002cc70",
+      "de-ni-gym-math-gk": "95cd04637a14c8edcc4e38d31bf2919792885eb9f509dd7904de56be94c8b7b0",
+      "de-ni-gym-math-lk": "b4f6b383f4a5cc295cdcb7140e957968746f1538dd22177f3f908a54332b21f6",
+      "de-ni-gym-seki-math": "a0f767b16c2ecbc8cda29f7f4b46e071808cf5859af08f63ad5bcf34d9d46687",
+      "de-ni-gym-sekii-math-gk": "6f65e16f4a5a5705f65aba95523cd7de88d85577f1421a60c5f111d89b1c2cc0",
+      "de-ni-gym-sekii-math-lk": "5dd4947b90fcba168c61886563b8a1d90150a46f1c01d24ba1c064bdfbd5d118",
+      "de-nw-gym-math-gk": "2444fb2fb6f2e0d27d6a12ce9411c4c550c071a524c17f88058c3b4996201032",
+      "de-nw-gym-math-lk": "def26e60042b1e512490938940ae743749159ed0c91cfaa43ff1287b987abf6f",
+      "de-nw-gym-seki-math": "9557398af131113b0724c2ec1e14e23118757678aa9383b51b6bd890d54bf15c",
+      "de-nw-gym-sekii-math-gk": "f2e9b430de5425f195d12cf66516408321ad09a44b4d22c805d158f27750a69f",
+      "de-nw-gym-sekii-math-lk": "062b3d71eddb48d0fdd1106ba932364e1302c2003cb4ff2fe8e1cb88f6c35b39",
+      "de-rp-gym-math-gk": "eb8b21fbe829261468bf9f47709cd44fa4c1bc09d09e8fab67c95dbc69867e51",
+      "de-rp-gym-math-gk-g8": "489b18a5606b14ce02d9b9d65b9982e1c86d35f393a8e059424a1c5be36ef93e",
+      "de-rp-gym-math-gk-g9": "de041941f4a12d41f6a200f19f4e8b7a1027db62fe0b35fdfd772920af70aeca",
+      "de-rp-gym-math-lk": "c524f67a06d99f651bf474dd3e24e6934c404b07068b49b81e648ff6cd4a3661",
+      "de-rp-gym-math-lk-g8": "23ffcd184ef5e3b4a25c34039444b9fbb1484885f399004b6c2c90f86170ce3a",
+      "de-rp-gym-math-lk-g9": "0d289bfe30ba2359e90daf4dca83fc149eb36f4151bb1067d52b046e3370c8af",
+      "de-rp-gym-seki-math-g8": "e32ef68f3f53fda913d631b5fb0a8d0be3cb434c3b174b4e51e27436c2fb0648",
+      "de-rp-gym-seki-math-g9": "ee6b5174b46a697a413d311b2df3939eaa2b7b918ea0fe5e0038efcb5fa1c64a",
+      "de-rp-gym-sekii-math-gk": "6f924296b17fe252f8ac0f93edec43ac717e99bbb442f6e3dd437a9223d7e7cd",
+      "de-rp-gym-sekii-math-lk": "7cf285e42dcc0efddc2409011fd35e894108e2d9e3d81e652cadcb3bee3483ac",
+      "de-sh-gym-math-gk": "49f1651b311db0831ccc6ea9b684943eadb83a26c317f0eb203a5d664586d699",
+      "de-sh-gym-math-gk-g8": "881b69e8ba11a261965eaee11757905a1ff41fa72d4433c5aad625958dfef917",
+      "de-sh-gym-math-gk-g9": "71ab591f1d0cd3999a20aef34ac53279f8df481e784fae56cedbea22e3718c31",
+      "de-sh-gym-math-lk": "f89fa17954152c3f08ad460d51f42d23985a1c4d8c18f012c36ded50960844d4",
+      "de-sh-gym-math-lk-g8": "cbfae0b3926d4b77e7526955fcdcf9cf9e24f073653620943c8ac9d17b8b18e0",
+      "de-sh-gym-math-lk-g9": "3d2070bd49f8c570765e898aabebbbae730d28931ae266a7978d07b14629f3d5",
+      "de-sh-gym-seki-math-g8": "595ded88926fb7993f449cdc630d7d8afdbb41517051b228df282dd3dc8e255a",
+      "de-sh-gym-seki-math-g9": "22d1805dff1ea8a42889e7e2fedd25f293de977f1ac4ed5dcf17e043f875a93a",
+      "de-sh-gym-sekii-math-gk": "f5718a9f6a1b9f846ff75e65ecc6e1622de9ce0c749a20be70f342618f2185f1",
+      "de-sh-gym-sekii-math-lk": "58af6fb4104eaf36700f9a7077a27b1f9ae1759593102ac76e800b6f64210733",
+      "de-sl-gym-math-gk": "b3db9a1d6a6f8095600c713964f12eab3b5bac387924c533b484693bd79dc55c",
+      "de-sl-gym-math-lk": "3b53a14df8a4791cfce4c3f719342f7cc1031e05ad9dc9df8a2036b276e5c56b",
+      "de-sl-gym-seki-math": "6cd5ff25243b4bedaf19473c795f2ad2385d38a55c0e1950b159d1a463623294",
+      "de-sl-gym-sekii-math-gk": "1cb1e235be1acb2b2be06f0aee689418f1c0054fe1fb61eb955bd64a5da7ca74",
+      "de-sl-gym-sekii-math-lk": "8cf3f513f6d8772969e408a5da2b07171bd16af958eaad1e1c9a2737245d8bd2",
+      "de-sn-gym-math-gk": "84a90a25ae2b8c82d12652a63d83fc17099c22db64a04f009666dcfb51ffa5e3",
+      "de-sn-gym-math-lk": "15e88308100593827b089912bdbb571649971faa2ab0749a31460ce5192289b1",
+      "de-sn-gym-seki-math": "e374d38c3e0ec6edeab8232e2a4d6d497cfde9703007fa79b8902456ad46e569",
+      "de-sn-gym-sekii-math-gk": "0d967dc177c5de1137cdbaadc9c984b4987fcf4fd884f1fa71a39af7189349bc",
+      "de-sn-gym-sekii-math-lk": "e01778a106202581ec2b19845184328f0b78e9ee70e8410274b84a0b656edb8e",
+      "de-st-gym-math-gk": "1903d088e2958457964d000248b1c5a949e33341fa20edc5ab2aefdebad75116",
+      "de-st-gym-math-lk": "51cf94744500eb4918017dbf425f1cccd905af6d4119da944c319cb059a7603c",
+      "de-st-gym-seki-math": "f13bbed7c4fde5433c0d91ba9197c5628439dacb8153b552868f710f567b2f38",
+      "de-st-gym-sekii-math-gk": "3c2a2b7ced2da9c8ddeab2318b163692ac363edcfbd9780abe690fe79a960b3c",
+      "de-st-gym-sekii-math-lk": "e75d9bafd63ad9767c5905487ef1b74a89a108ebd8f006648659c8095b41da44",
+      "de-th-gym-math-gk": "1890de00fb4783ec9dc2ed23cda5b3b7505be9dbff9893fc4541f92916860b56",
+      "de-th-gym-math-lk": "ca41a1ec288d1ff57ef301a2c2e2ec340d0cb48bd3c3d26db19eabf2b89dc0ea",
+      "de-th-gym-seki-math": "02b8ff9ea07d70b78358df7e4fad9cd394106c4ebd6265c68bcf03bd5ac5e816",
+      "de-th-gym-sekii-math-gk": "efd6206fd086bfa3d01ef1b583dd9ed7a9bd411837129a50f9c9513175294d46",
+      "de-th-gym-sekii-math-lk": "3a33ed3abae2878d4fd6ca30223059d0b4cf6dd43f2f10a602a6314bb326be7c"
+    }
+  },
+  "title": {
+    "de": "Kugelvolumen mit Cavalieri herleiten",
+    "en": "Derive the volume of a sphere using Cavalieri's principle"
+  },
+  "promise": {
+    "de": "Du kannst die Formel $V=\\frac43\\pi r^3$ für das Kugelvolumen mit dem Satz von Cavalieri herleiten, indem sie Kugelquerschnitte mit gleich hohen Schnitten eines Zylinders (Radius $r$, Höhe $2r$) nach Herausnahme zweier Kegel (je Radius und Höhe $r$) vergleicht und das Volumen des Restkörpers berechnet.",
+    "en": "You can derive the sphere-volume formula $V=\\frac43\\pi r^3$ using Cavalieri's principle by comparing each horizontal sphere section with the corresponding section of a cylinder (radius $r$, height $2r$) after removing two cones (each of radius and height $r$), then calculating the remaining volume."
+  },
+  "introduction": {
+    "de": "Passende Querschnitte machen zwei räumliche Volumina vergleichbar. Du nutzt diese Verbindung zu einer geometrischen Herleitung.",
+    "en": "Connect the calculation with its geometric meaning and justify the steps independently."
+  },
+  "ownGoalIds": [
+    "baea3966-5d10-53bf-8193-3fcda7b1e73f",
+    "79f5f4cc-10e1-56a5-8ed3-8cd51688db41"
+  ],
+  "requiredChildContractRefs": [],
+  "ownAssessmentGoalIds": [
+    "79f5f4cc-10e1-56a5-8ed3-8cd51688db41"
+  ],
+  "ownRecallGoalIds": [],
+  "ownOrientationGoalIds": [],
+  "ownGoalMeanings": {
+    "baea3966-5d10-53bf-8193-3fcda7b1e73f": {
+      "id": "baea3966-5d10-53bf-8193-3fcda7b1e73f",
+      "title": "Kugelvolumen mit Cavalieri herleiten",
+      "titleEn": "Derive the volume of a sphere using Cavalieri's principle",
+      "description": "Die lernende Person kann die Formel $V=\\frac43\\pi r^3$ für das Kugelvolumen mit dem Satz von Cavalieri herleiten, indem sie Kugelquerschnitte mit gleich hohen Schnitten eines Zylinders (Radius $r$, Höhe $2r$) nach Herausnahme zweier Kegel (je Radius und Höhe $r$) vergleicht und das Volumen des Restkörpers berechnet.",
+      "descriptionEn": "The learner can derive the sphere-volume formula $V=\\frac43\\pi r^3$ using Cavalieri's principle by comparing each horizontal sphere section with the corresponding section of a cylinder (radius $r$, height $2r$) after removing two cones (each of radius and height $r$), then calculating the remaining volume.",
+      "type": "atomic",
+      "nodeKind": null,
+      "semanticKind": null
+    },
+    "79f5f4cc-10e1-56a5-8ed3-8cd51688db41": {
+      "id": "79f5f4cc-10e1-56a5-8ed3-8cd51688db41",
+      "title": "Kugelvolumen durch Querschnittsvergleich herleiten (Jahrgangsstufe 10, 12 BE)",
+      "titleEn": "Derive sphere volume by comparing cross sections (Year 10, 12 points)",
+      "description": "Die lernende Person kann in einer eigenständigen Prüfungsaufgabe die Querschnitte einer Kugel mit denen eines Zylinders ohne zwei Kegel vergleichen, die Voraussetzungen von Cavalieri begründen und daraus die Kugelvolumenformel herleiten.",
+      "descriptionEn": "The learner can independently compare the cross sections of a sphere with those of a cylinder minus two cones, justify the conditions of Cavalieri’s principle, and derive the sphere-volume formula.",
+      "type": "atomic",
+      "nodeKind": "exam",
+      "semanticKind": null
+    }
+  },
+  "ownResolvedKinds": {
+    "baea3966-5d10-53bf-8193-3fcda7b1e73f": "ordinary",
+    "79f5f4cc-10e1-56a5-8ed3-8cd51688db41": "assessment"
+  },
+  "ownGoalMeaningDigests": {
+    "baea3966-5d10-53bf-8193-3fcda7b1e73f": "e14dc80a2617cc7ee0fe1898b5c8a73696f8ab94def0c2b2e50e281445cccd2f",
+    "79f5f4cc-10e1-56a5-8ed3-8cd51688db41": "e378da791fd17e05c3faea7405d25cd56afb7e298832df350684800304b6d246"
+  },
+  "atomicPrerequisites": {
+    "11c88ea2-8502-5008-bec2-3e491c75ace4": [
+      "6bb52f96-6320-5a34-afb0-db9b471dd4ac",
+      "f52e9d72-4995-5c80-91d2-7761ea0cbec0"
+    ],
+    "11e3cf89-9224-5894-8e4a-ae8ff5af0119": [
+      "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
+    ],
+    "121e3fdf-54d2-4d46-bc2d-f6e725f10f41": [
+      "25593605-5e13-55cc-9a05-8f3d737e15e9"
+    ],
+    "191c67db-44a8-4f63-994a-d85e8e301194": [
+      "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
+    ],
+    "1a25ef44-f310-4c23-9ba8-44baec60d3b0": [
+      "624764d6-becd-5f9b-ada3-0d4f9d143073"
+    ],
+    "1dd0266c-41b4-5481-b64b-7b718cfe799b": [
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    "2231c29b-eb4e-51ae-9cb1-eb033bf16099": [
+      "25593605-5e13-55cc-9a05-8f3d737e15e9"
+    ],
+    "2331caf2-ccb2-5492-9fc6-48763b848bae": [
+      "25593605-5e13-55cc-9a05-8f3d737e15e9"
+    ],
+    "25593605-5e13-55cc-9a05-8f3d737e15e9": [
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    "2ae76eae-799c-463e-9ec9-82327f8209a8": [
+      "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+    ],
+    "3e53a39b-1c75-4034-a647-8de85719e1fb": [
+      "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+      "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+    ],
+    "3fde4db5-9e92-5f3a-98e1-d386a42b9e01": [
+      "4b67bed9-06da-40b2-a306-24e9e7dfd390"
+    ],
+    "415bd48b-8a76-4d4f-bfdd-d085573e7ac3": [
+      "491e0858-e977-516e-a339-1cc2f9e9690f",
+      "7c978529-ce62-5adc-897f-24ea80babbc8",
+      "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+      "f0a49da2-018b-4cda-adbd-27047b610a0f"
+    ],
+    "491e0858-e977-516e-a339-1cc2f9e9690f": [
+      "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+      "d98849c7-bd0b-50d4-90aa-6293a3adb211"
+    ],
+    "4b67bed9-06da-40b2-a306-24e9e7dfd390": [
+      "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "d825f7ce-e19b-594a-8181-eff199c21d93"
+    ],
+    "4d78bbcc-89b8-47f0-aa45-516199e4da5d": [
+      "de393ab3-d2af-5476-8b46-315185abb805",
+      "f0a49da2-018b-4cda-adbd-27047b610a0f"
+    ],
+    "4dbb8e8e-c0b5-5d51-8897-0024d77e8602": [
+      "8a691345-3216-522c-a898-d65e8e94db28"
+    ],
+    "54148506-c23f-41b8-959b-068dd194cf15": [
+      "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+    ],
+    "57fbbf31-9b8c-5408-9af5-fbc73acd12bb": [
+      "ca623958-c204-5d1b-bdd0-3f76765674cb",
+      "d98849c7-bd0b-50d4-90aa-6293a3adb211"
+    ],
+    "5d1decb2-b01b-5c85-88fc-9fc255ff9776": [
+      "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+    ],
+    "624764d6-becd-5f9b-ada3-0d4f9d143073": [
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    "65365dce-f33f-49d8-9516-42f75883aa86": [],
+    "6bb52f96-6320-5a34-afb0-db9b471dd4ac": [
+      "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6"
+    ],
+    "74d29d0c-80b3-4d46-a5f5-3c2f609e8483": [
+      "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+      "f65ab452-1884-57b0-9be3-c7d9e4944891"
+    ],
+    "79f5f4cc-10e1-56a5-8ed3-8cd51688db41": [
+      "baea3966-5d10-53bf-8193-3fcda7b1e73f"
+    ],
+    "7b860649-373e-5523-9843-ec96b3537f1f": [
+      "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5"
+    ],
+    "7c978529-ce62-5adc-897f-24ea80babbc8": [
+      "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+      "b44f038c-fb1f-527e-b9ad-382214d0328a"
+    ],
+    "87c55be5-06a9-41e2-a0d4-c60f7c8b8078": [
+      "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+      "d98849c7-bd0b-50d4-90aa-6293a3adb211"
+    ],
+    "8a691345-3216-522c-a898-d65e8e94db28": [
+      "1dd0266c-41b4-5481-b64b-7b718cfe799b",
+      "d6c3fb37-ece6-5b56-9221-1eeb21845877"
+    ],
+    "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10": [
+      "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
+    ],
+    "8da730f1-8947-498d-9e78-7fb20b00a994": [
+      "2331caf2-ccb2-5492-9fc6-48763b848bae"
+    ],
+    "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5": [
+      "74d29d0c-80b3-4d46-a5f5-3c2f609e8483"
+    ],
+    "9ef6c4fa-b97a-5d7a-86c1-96690f02d916": [
+      "cf474eab-1379-4877-907e-58b0892ce734"
+    ],
+    "a506fc1d-b784-548f-90c3-5aae1b819b68": [
+      "9d497a0c-f48d-4a90-8ec8-aeb89ca6d0c5"
+    ],
+    "b44f038c-fb1f-527e-b9ad-382214d0328a": [
+      "ca623958-c204-5d1b-bdd0-3f76765674cb",
+      "d98849c7-bd0b-50d4-90aa-6293a3adb211"
+    ],
+    "b5de0574-93ed-409c-80ee-312211420cd6": [
+      "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+    ],
+    "baea3966-5d10-53bf-8193-3fcda7b1e73f": [
+      "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
+      "7b860649-373e-5523-9843-ec96b3537f1f",
+      "a506fc1d-b784-548f-90c3-5aae1b819b68"
+    ],
+    "c31d3a7a-778b-5ae3-9aa4-7b5674047f83": [
+      "3e53a39b-1c75-4034-a647-8de85719e1fb"
+    ],
+    "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6": [
+      "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+    ],
+    "ca623958-c204-5d1b-bdd0-3f76765674cb": [
+      "f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
+    ],
+    "cafd6520-c4af-4109-9863-cc49ba6fad4d": [
+      "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+      "191c67db-44a8-4f63-994a-d85e8e301194",
+      "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+      "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+      "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+      "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+    ],
+    "cf474eab-1379-4877-907e-58b0892ce734": [
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe": [
+      "9ef6c4fa-b97a-5d7a-86c1-96690f02d916"
+    ],
+    "d6c3fb37-ece6-5b56-9221-1eeb21845877": [
+      "ca623958-c204-5d1b-bdd0-3f76765674cb"
+    ],
+    "d825f7ce-e19b-594a-8181-eff199c21d93": [
+      "9ef6c4fa-b97a-5d7a-86c1-96690f02d916"
+    ],
+    "d98849c7-bd0b-50d4-90aa-6293a3adb211": [
+      "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+      "2331caf2-ccb2-5492-9fc6-48763b848bae"
+    ],
+    "de393ab3-d2af-5476-8b46-315185abb805": [
+      "8da730f1-8947-498d-9e78-7fb20b00a994",
+      "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e"
+    ],
+    "e82d8d3a-9012-5482-afe6-ab0d727a49bb": [
+      "d825f7ce-e19b-594a-8181-eff199c21d93"
+    ],
+    "f0a49da2-018b-4cda-adbd-27047b610a0f": [
+      "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e"
+    ],
+    "f2e42af5-67a6-477e-82ea-e65b09cc6cb3": [
+      "2ae76eae-799c-463e-9ec9-82327f8209a8",
+      "54148506-c23f-41b8-959b-068dd194cf15",
+      "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+      "b5de0574-93ed-409c-80ee-312211420cd6"
+    ],
+    "f52e9d72-4995-5c80-91d2-7761ea0cbec0": [
+      "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6"
+    ],
+    "f65ab452-1884-57b0-9be3-c7d9e4944891": [
+      "11c88ea2-8502-5008-bec2-3e491c75ace4",
+      "4dbb8e8e-c0b5-5d51-8897-0024d77e8602"
+    ],
+    "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e": [
+      "c31d3a7a-778b-5ae3-9aa4-7b5674047f83"
+    ],
+    "fe07241a-b779-5f35-a82d-7aa51ae74f42": [
+      "624764d6-becd-5f9b-ada3-0d4f9d143073"
+    ]
+  },
+  "assessmentClaims": {
+    "79f5f4cc-10e1-56a5-8ed3-8cd51688db41": {
+      "coveredGoalIds": [
+        "baea3966-5d10-53bf-8193-3fcda7b1e73f"
+      ],
+      "taskRevision": "aa4b53672f594190de43f7020545d309043f4d15616e2504bb43fbcdcbb0a8ad",
+      "rubricRevision": "41e3ecaefd505a165665c322c2285a2af4b5a558d663447c7023a24584da0aaf",
+      "reviewRef": "quality/learning-units/math-sphere-volume-cross-sections-2026-11-05.md"
+    }
+  },
+  "reviewRef": "quality/learning-units/math-sphere-volume-cross-sections-2026-11-05.md"
+}

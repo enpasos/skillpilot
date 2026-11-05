@@ -25,6 +25,9 @@ const expected = batch.nativeExpectation
 assert.ok(expected, 'Batch needs explicit independently reviewed projection expectations')
 const ordered = (ids: Iterable<string>) => [...new Set(ids)].sort()
 const newQIds = Object.keys(expected.newAssessmentTargets)
+const activeOffers = args.includes('--require-current-offers')
+  ? read('curricula/DE/Gymnasium/learning-units/offers/math-2026-11-05-v2.json') : undefined
+const offerByScope = new Map<string, any>((activeOffers?.offers ?? []).map((row: any) => [canonicalJson(row.scope), row]))
 const matches = (map: Record<string, string[]>, scopeId: string) => Object.keys(map).filter(id => map[id].includes(scopeId))
 const rows = after.scopes.map((row: any) => {
   const old = originalRows.get(row.scopeId); assert.ok(old)
@@ -44,6 +47,15 @@ const rows = after.scopes.map((row: any) => {
   for (const id of old.targetAtomicGoalIds.filter((id: string) => !shifted.includes(id))) assert.deepEqual(currentClosure[id], oldClosure[id], `Existing offered target demand changed ${row.scopeId}/${id}`)
   const ctx = row.nativeOfferContext
   assert.deepEqual(ordered(ctx.targetIds), ordered(row.targetAtomicGoalIds)); assert.deepEqual(ordered(ctx.prerequisiteOnlyIds), ordered(row.prerequisiteOnlyGoalIds))
+  if (activeOffers) {
+    const authored = offerByScope.get(canonicalJson(ctx.scopeKey)); assert.ok(authored, `Missing exact authored offer ${row.scopeId}`)
+    const model = row.learningUnitReadModel
+    assert.equal(model.offerBinding.status, 'valid', `Actual offer API unavailable ${row.scopeId}`)
+    assert.equal(model.offerBinding.revision, activeOffers.revision)
+    assert.deepEqual(model.offerBinding.rootContractRefs, authored.rootContractRefs, `Actual API selected different roots ${row.scopeId}`)
+    assert.deepEqual(ordered(model.units.map((unit: any) => `${unit.contractId}@${unit.revision}`)),
+      ordered(authored.rootContractRefs.map((ref: any) => `${ref.contractId}@${ref.revision}`)), `Unexpected unit subset inference ${row.scopeId}`)
+  }
   const owned = new Set<string>(); const eligible = batch.packets.filter((packet: any) => expected.ownTargetScopes[packet.contractId].includes(row.scopeId))
   for (const packet of eligible) for (const id of packet.ownGoalIds) { assert.ok(row.targetAtomicGoalIds.includes(id)); assert.ok(!owned.has(id), `Duplicate direct owner ${row.scopeId}/${id}`); owned.add(id) }
   return { scopeId: row.scopeId, shiftedOriginalTargetIds: shifted, addedAssessmentTargetIds: added,
@@ -92,6 +104,8 @@ const report = { schemaVersion: 1, semantics: 'actual-native-mathematics-batch-d
   globalRecognitionAtEmptyMastery: after.globalRecognitionAtEmptyMastery,
   actualContractEvaluations: projectionOnly ? undefined : after.actualContractEvaluations,
   admittedContractCount: projectionOnly ? undefined : (after.actualContractEvaluations as any[]).length,
+  actualValidCurrentOfferApiScopes: activeOffers ? rows.length : undefined,
+  catalogAdmissionMeasurement: after.catalogAdmissionMeasurement,
   baselineNativeReportSha256: digest(readFileSync(resolve(root, beforePath))), currentNativeReportSha256: digest(readFileSync(resolve(root, afterPath))),
   currentNativeInputManifestSha256: digest(canonicalJson(after.nativeMapperInputSha256)), rows,
   boundary: 'Exact declared source correction and batch-only ownership proof; partial overall Mathematics. Legacy duplicate scopes and uncovered sphere A/Q masks remain open. Offer API/package/HTTP acceptance is separate.' }

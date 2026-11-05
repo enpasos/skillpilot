@@ -41,6 +41,8 @@ public final class NativeMathOfferingInventory {
 
     public static void main(String[] args) throws Exception {
         Path root = Path.of(args[0]).toAbsolutePath().normalize();
+        Map<String, String> implementationBefore = implementationInputs(root);
+        Map<String, String> dependenciesBefore = runtimeDependencies();
         var properties = new LandscapeProperties();
         properties.setDirectory(root.resolve("curricula").toString());
         var landscapes = new LandscapeService(properties, MAPPER);
@@ -232,9 +234,59 @@ public final class NativeMathOfferingInventory {
             inputs.put(root.relativize(Path.of(input.getKey())).toString(), input.getValue());
         }
         report.put("nativeMapperInputSha256", inputs);
+        if (!implementationBefore.equals(implementationInputs(root))) throw new IllegalStateException("Native resolver/build/declaration inputs changed during execution");
+        if (!dependenciesBefore.equals(runtimeDependencies())) throw new IllegalStateException("Native runtime dependencies changed during execution");
+        report.put("nativeImplementationBindingSemantics", "captured-before-native-execution-and-equal-after-v1");
+        report.put("nativeImplementationInputSha256", implementationBefore);
+        report.put("nativeRuntimeDependencySha256", dependenciesBefore);
+        report.put("nativeExecutionJdk", Map.of("version", System.getProperty("java.runtime.version"), "vendor", System.getProperty("java.vendor")));
+        Map<String, String> executedClasses = new TreeMap<>();
+        for (Class<?> type : List.of(LandscapeService.class, GoalMappingService.class, CompositionViewService.class,
+                LearnerService.class, CurriculumPersonalizationPlanner.class, CompletionCanonicalGraphResolver.class,
+                CompletionProfileCompiler.class, NativeMathOfferingInventory.class)) {
+            try (var stream = type.getResourceAsStream("/" + type.getName().replace('.', '/') + ".class")) {
+                if (stream == null) throw new IllegalStateException("Missing actual runtime class " + type.getName());
+                executedClasses.put(type.getName(), java.util.HexFormat.of().formatHex(
+                        java.security.MessageDigest.getInstance("SHA-256").digest(stream.readAllBytes())));
+            }
+        }
+        report.put("nativeExecutedClassSha256", executedClasses);
         report.put("inputBindingCoverage", "Every file parser opened by the shared runtime ObjectMapper plus the exact declared learning-unit catalog/contract/input/active-offer closure; generated offerings and source code bound by invoking script");
         Files.createDirectories(Path.of(args[1]).getParent());
         MAPPER.writerWithDefaultPrettyPrinter().writeValue(Path.of(args[1]).toFile(), report);
+    }
+
+    private static Map<String, String> implementationInputs(Path root) throws Exception {
+        Map<String, String> inputs = new TreeMap<>();
+        try (var paths = Files.walk(root.resolve("backend/src/main/java"))) {
+            for (Path path : paths.filter(Files::isRegularFile).filter(path -> path.toString().endsWith(".java")).sorted().toList()) {
+                inputs.put(root.relativize(path).toString(), fileDigest(path));
+            }
+        }
+        for (String path : List.of("backend/build.gradle.kts", "backend/settings.gradle.kts", "backend/gradlew",
+                "backend/gradle/wrapper/gradle-wrapper.properties", "backend/gradle/wrapper/gradle-wrapper.jar",
+                ".java-version", ".corretto-version", ".nvmrc", "app/package.json", "app/package-lock.json", "app/src/generated/gymnasiumDurationOfferings.ts",
+                "app/scripts/generateGymnasiumDurationOfferings.ts", "app/scripts/learningUnitsNativeMathInventory.ts",
+                "app/scripts/learningUnitsMathProjectionEvidence.ts", "app/scripts/nativeProjectionEvidence.ts",
+                "app/scripts/learningUnitsMathOfferBindings.ts",
+                "app/scripts/learningUnits/NativeMathOfferingInventory.java", "app/scripts/learningUnits/nativeMathInventory.init.gradle")) {
+            inputs.put(path, fileDigest(root.resolve(path)));
+        }
+        return inputs;
+    }
+
+    private static Map<String, String> runtimeDependencies() throws Exception {
+        Map<String, String> dependencies = new TreeMap<>();
+        for (String entry : System.getProperty("java.class.path").split(java.io.File.pathSeparator)) {
+            Path path = Path.of(entry);
+            if (!Files.isRegularFile(path) || !entry.endsWith(".jar")) continue;
+            String name = path.getFileName().toString();
+            String digest = fileDigest(path);
+            String previous = dependencies.putIfAbsent(name, digest);
+            if (previous != null && !previous.equals(digest)) throw new IllegalStateException("Ambiguous runtime dependency name: " + name);
+        }
+        if (dependencies.isEmpty()) throw new IllegalStateException("No executed runtime dependencies bound");
+        return dependencies;
     }
 
     private static String fileDigest(Path path) throws java.io.IOException {

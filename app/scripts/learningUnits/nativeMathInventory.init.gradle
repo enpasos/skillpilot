@@ -15,7 +15,9 @@ allprojects { project ->
             mainClass.set('com.skillpilot.backend.completion.NativeMathOfferingInventory')
             javaLauncher.set(javaToolchains.launcherFor(java.toolchain))
             maxHeapSize = '1200m'
-            args inventoryRoot.absolutePath, new File(inventoryWork, 'native-backend.raw.json').absolutePath
+            args inventoryRoot.absolutePath, (project.hasProperty('learningUnitNativeOutput')
+                ? project.file(project.property('learningUnitNativeOutput'))
+                : new File(inventoryWork, 'native-backend.raw.json')).absolutePath
         }
     }
 }

@@ -20,6 +20,8 @@ export interface Batch {
   compositionViews: Record<string, string>
   qualityProofPath?: string
   semanticRebindProofPath?: string
+  /** Actual shared review documents, pinned separately from the mathematical packet input. */
+  reviewEvidencePaths?: string[]
   compositionViewEdits?: Array<{ path: string; expectedSha256: string; arrayPointer: string; afterIndex: number; expectedAnchorGoalId: string; node: Record<string, any> }>
 }
 export interface Receipt {
@@ -215,7 +217,8 @@ export function prepareBatch(batch: Batch, baseline: Landscape, baselineLedger: 
   for (const entry of entries) {
     const packet = entry.packet as Packet; delete entry.packet
     for (const path of [snapshotPath, ledgerPath, ...Object.values(entry.assessmentInputs).flatMap((value: any) => [value.taskPath, value.rubricPath]),
-      ...Object.keys(batch.compositionViews).map(id => `${generation}/views/${id}.view.json`), `DE/Gymnasium/${packet.reviewRef}`, packet.reviewReceiptPath]) {
+      ...Object.keys(batch.compositionViews).map(id => `${generation}/views/${id}.view.json`), `DE/Gymnasium/${packet.reviewRef}`, packet.reviewReceiptPath,
+      ...(batch.reviewEvidencePaths ?? [])]) {
       if (allowPendingReview && [packet.reviewReceiptPath, `DE/Gymnasium/${packet.reviewRef}`].includes(path) && !receiptAvailable(path)) continue
       entry.inputs[path] = digest(artifacts.get(path) ?? read(path))
     }

@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "status": "open-independent-content-or-material-holds",
+  "originalReviewInputSha256": "77083a8d5bdec1633c6460882a150b7799038bc4c13c1474792c4f04324f2c9c",
+  "packets": [
+    {
+      "contractId": "math-space-segment-midpoints",
+      "reviewedInputSha256": "244809d6578b71af59529696ca8ae6573e39260f83ab62c31d1174a83a63b962",
+      "taskClaimSignatureSha256": "d402cd8081ff53377a9db1d0b55a2f6a4600e3edd64a714e3fa2bab26bccc1a7",
+      "ownDemandSignatureSha256": "7fdc01763586b7ac4c1ef2ed391c6c8c7bd3a04909fae1f97469d7b211184c69",
+      "contentAndDemandSignatureSha256": "16a61a48dca4456cc88da468682fd8b7f09f136c6d3bab46399d234bd120c321",
+      "independentReviewer": "independent-agent-astra_batch_b_and_hb_source_review",
+      "packetDecision": "HOLD_TASK_AND_RECALL",
+      "actualTaskDecision": "HOLD",
+      "ownDemandDecision": "PASS_STRUCTURE_ONLY",
+      "recallDecision": "HOLD_EXISTING_MEMORY_REQUIRED_OMITTED",
+      "placementDecision": "PASS_EXISTING_ALL_OWN_TARGET_INTERSECTION_ONLY",
+      "runtimeIntegrationDecision": "PENDING_FRESH_NATIVE_AND_PACKAGE_CHECKS",
+      "ownOrdinaryGoalIds": [
+        "bea0e5a0-4833-5337-b6f1-7251b8cf8089"
+      ],
+      "ownAssessmentGoalIds": [
+        "5f6496ef-e4d2-5341-8a2c-3293b2e4e25a"
+      ],
+      "ownRecallGoalIds": [],
+      "localOwnDemandClasses": {
+        "bea0e5a0-4833-5337-b6f1-7251b8cf8089": [
+          "5f6496ef-e4d2-5341-8a2c-3293b2e4e25a"
+        ]
+      },
+      "allOwnTargetScopeCount": 16,
+      "ordinaryTargetScopesWithoutOwnQ": {
+        "bea0e5a0-4833-5337-b6f1-7251b8cf8089": [
+          "DE-BB/CrossStage//GK",
+          "DE-BB/CrossStage//GK+LK",
+          "DE-BB/CrossStage//LK",
+          "DE-BB/CrossStage/G8/GK",
+          "DE-BB/CrossStage/G8/GK+LK",
+          "DE-BB/CrossStage/G8/LK",
+          "DE-BB/CrossStage/G9/GK",
+          "DE-BB/CrossStage/G9/GK+LK",
+          "DE-BB/CrossStage/G9/LK",
+          "DE-BB/SekI//",
+          "DE-BB/SekI/G8/",
+          "DE-BB/SekI/G9/",
+          "DE-BB/SekII//GK",
+          "DE-BB/SekII//GK+LK",
+          "DE-BB/SekII//LK",
+          "DE-BB/SekII/G8/GK",
+          "DE-BB/SekII/G8/GK+LK",
+          "DE-BB/SekII/G8/LK",
+          "DE-BB/SekII/G9/GK",
+          "DE-BB/SekII/G9/GK+LK",
+          "DE-BB/SekII/G9/LK",
+          "DE-SL/CrossStage/G9/GK",
+          "DE-SL/CrossStage/G9/GK+LK",
+          "DE-SL/CrossStage/G9/LK",
+          "DE-SL/SekI/G9/",
+          "DE-SL/SekII/G9/GK",
+          "DE-SL/SekII/G9/GK+LK",
+          "DE-SL/SekII/G9/LK"
+        ]
+      },
+      "normalLanguageDecision": "All15 actual main tasks and solutions are DE only; no taskContentEn/solutionContentEn present. Reviewed ordinary DE/EN meanings are equivalent. EN falls back to this same reviewed DE pair; no independently authored English assessment form is claimed.",
+      "fixedResultDecision": "Current main coverageIds/task/solution/scoring match the prepared input exactly. PASS authorizes only those current fixed claims, not broader prerequisite recognition; HOLD prohibits deriving the missing component from old results. This review does not invent retrospective runtime-serving evidence.",
+      "substantiveReason": "A no-interpretation response can receive 2/3 in part1, 2/2 in part2 and3/3 in part3 =7/8. It calculates the midpoint and proves directed halves but never interprets the mean of position vectors. That explicitly claimed component is not protected. The sentence that7/8 requires both checks is also false:3+2+2=7; the second check is redundant for the OwnA but the solution rationale is inaccurate.",
+      "requiredActionOrBoundary": "Use a distinct successor Q identity with an explicit cap below7 whenever the mean interpretation is absent or substantively false. Preserve7/8 for nonessential slips if desired. Do not strengthen the old Q and award its old results the new meaning. Additionally resolve the established midpoint recall ownership: current memory_required cards math_linalg_c02 and math_seki_c10 belong to broad decks bd55594a-3e06-5097-8324-4f2f1349fd2a and4eefbd04-9e49-41ea-a087-9ad6ac71ec5a. K=[] is not admissible. Use a fitting larger acquisition boundary or a reviewed stable card/goal split; do not put the obligation in support/a parent to erase it.",
+      "currentMemoryReviews": [
+        {
+          "goalId": "bea0e5a0-4833-5337-b6f1-7251b8cf8089",
+          "fingerprint": "sha256:93429a068a9d794be8f719f2f6877bd363bf067c5926a0a824de6a9dc968613a",
+          "status": "memory_required",
+          "memoryGoalIds": [
+            "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+            "4eefbd04-9e49-41ea-a087-9ad6ac71ec5a"
+          ],
+          "deckIds": [
+            "de_gymnasium_math_linalg_core",
+            "de_gymnasium_math_seki_core"
+          ]
+        }
+      ],
+      "eligibleForExactPacketContentReceipt": false
+    },
+    {
+      "contractId": "math-function-derivative-graphs",
+      "reviewedInputSha256": "4cf187b305aa932b6300ab119e7b504f258de8f9bfb191556be41d28fa56fa3c",
+      "taskClaimSignatureSha256": "64158da0b81598c9b8be6a2701e2608014802ed2e9ef05e7fe552d4dac0400fb",
+      "ownDemandSignatureSha256": "16468a46b0ed324b69101e4a6113ad6bbd8681b9ca37b7c64e2ac8443ac63754",
+      "contentAndDemandSignatureSha256": "c7c0e3bc4645b2aed459f5caf4b4df796d952d168911ca7d690c3b60da0c9d2f",
+      "independentReviewer": "independent-agent-astra_batch_b_and_hb_source_review",
+      "packetDecision": "CONTENT_PASS_ASSET_BINDING_HOLD",
+      "actualTaskDecision": "PASS",
+      "ownDemandDecision": "PASS_STRUCTURE_ONLY",
+      "recallDecision": "PASS_NO_OWN_RECALL_REQUIRED",
+      "placementDecision": "PASS_EXISTING_ALL_OWN_TARGET_INTERSECTION_ONLY",
+      "runtimeIntegrationDecision": "PENDING_FRESH_NATIVE_AND_PACKAGE_CHECKS",
+      "ownOrdinaryGoalIds": [
+        "5518ceb3-f668-5b52-a9b1-57653b16ca98"
+      ],
+      "ownAssessmentGoalIds": [
+        "632a3837-7381-5701-9cfa-4ae15ccae8ba"
+      ],
+      "ownRecallGoalIds": [],
+      "localOwnDemandClasses": {
+        "5518ceb3-f668-5b52-a9b1-57653b16ca98": [
+          "632a3837-7381-5701-9cfa-4ae15ccae8ba"
+        ]
+      },
+      "allOwnTargetScopeCount": 51,
+      "ordinaryTargetScopesWithoutOwnQ": {
+        "5518ceb3-f668-5b52-a9b1-57653b16ca98": [
+          "DE-HB/SekII/G8/GK",
+          "DE-HB/SekII/G8/GK+LK",
+          "DE-HB/SekII/G8/LK",
+          "DE-SH/CrossStage/G8/GK",
+          "DE-SH/CrossStage/G8/GK+LK",
+          "DE-SH/CrossStage/G8/LK",
+          "DE-SH/SekII/G8/GK",
+          "DE-SH/SekII/G8/GK+LK",
+          "DE-SH/SekII/G8/LK",
+          "DE-SH/SekII/G9/GK",
+          "DE-SH/SekII/G9/GK+LK",
+          "DE-SH/SekII/G9/LK"
+        ]
+      },
+      "normalLanguageDecision": "All15 actual main tasks and solutions are DE only; no taskContentEn/solutionContentEn present. Reviewed ordinary DE/EN meanings are equivalent. EN falls back to this same reviewed DE pair; no independently authored English assessment form is claimed.",
+      "fixedResultDecision": "Current main coverageIds/task/solution/scoring match the prepared input exactly. PASS authorizes only those current fixed claims, not broader prerequisite recognition; HOLD prohibits deriving the missing component from old results. This review does not invent retrospective runtime-serving evidence.",
+      "substantiveReason": "At11/12 both graph directions must earn at least4/5; without a drawing the direction earns0, and without the central slope/sign reasoning at most3, so neither direction can be absent. The remaining1–2 points address vertical-translation freedom. I inspected actual SVG scales and all501 plotted vertices per image; they represent f=x^3/3-x and q-prime=x+1 as asserted.",
+      "requiredActionOrBoundary": "Pin the exact two SVG bytes as essential review/package inputs. Current task/provenance hashes bind only mutable URLs, not the images. Exact-byte addition need not change Q identity, but requires a new complete packet hash and actual packaging/path-resolution check. Do not claim original packet fully sealed.",
+      "currentMemoryReviews": [
+        {
+          "goalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+          "fingerprint": "sha256:2ba3c8d6e81ffc6a90b6dbe758330fd76b106440d371d43575eca17db8d9247c",
+          "status": "no_memory_needed"
+        }
+      ],
+      "eligibleForExactPacketContentReceipt": false,
+      "essentialGraphAssets": [
+        {
+          "path": "app/public/assets/assessment-materials/mathematik/632a3837-7381-5701-9cfa-4ae15ccae8ba/given-function.svg",
+          "sha256": "8c7a554ced407a942035d0a693e7bb2110689f9e687933d2b391a7e4bf10d647",
+          "sampledVertices": 501,
+          "maxCoordinateError": 0.00000264533333355077,
+          "taskInputPinnedInPacket": false
+        },
+        {
+          "path": "app/public/assets/assessment-materials/mathematik/632a3837-7381-5701-9cfa-4ae15ccae8ba/given-derivative.svg",
+          "sha256": "52905a8ffa7c47c3db7e9c84d40a2bd27856f8cf0770d8f46178376617706458",
+          "sampledVertices": 501,
+          "maxCoordinateError": 6.661338147750939e-16,
+          "taskInputPinnedInPacket": false
+        }
+      ]
+    },
+    {
+      "contractId": "math-pythagoras-test-right-angle",
+      "reviewedInputSha256": "2900bf294058f34ce41e96a89b193f95184c866ee37ad3efeda6d05ce30fe54b",
+      "taskClaimSignatureSha256": "435d194c1ae2a19eb5a7e5d70e452e08ff874fdda8da788ab735ae3c2d8a3f3a",
+      "ownDemandSignatureSha256": "74aa15c8139b4bc267f29d0247b724a6e6cfe7c17767f6d09dd1457d1fe60b5e",
+      "contentAndDemandSignatureSha256": "c580bb4e782b8c784cbb407b4406fc03c01057916ea27a90234364f1f431ad77",
+      "independentReviewer": "independent-agent-astra_batch_b_and_hb_source_review",
+      "packetDecision": "HOLD_TASK",
+      "actualTaskDecision": "HOLD",
+      "ownDemandDecision": "PASS_STRUCTURE_ONLY",
+      "recallDecision": "PASS_NO_OWN_RECALL_REQUIRED",
+      "placementDecision": "PASS_EXISTING_ALL_OWN_TARGET_INTERSECTION_ONLY",
+      "runtimeIntegrationDecision": "PENDING_FRESH_NATIVE_AND_PACKAGE_CHECKS",
+      "ownOrdinaryGoalIds": [
+        "081c9802-6da7-5ae8-b78e-f99c2b2dbb14"
+      ],
+      "ownAssessmentGoalIds": [
+        "241915f4-8d90-5542-ac9c-230aa98bee39"
+      ],
+      "ownRecallGoalIds": [],
+      "localOwnDemandClasses": {
+        "081c9802-6da7-5ae8-b78e-f99c2b2dbb14": [
+          "241915f4-8d90-5542-ac9c-230aa98bee39"
+        ]
+      },
+      "allOwnTargetScopeCount": 49,
+      "ordinaryTargetScopesWithoutOwnQ": {
+        "081c9802-6da7-5ae8-b78e-f99c2b2dbb14": []
+      },
+      "normalLanguageDecision": "All15 actual main tasks and solutions are DE only; no taskContentEn/solutionContentEn present. Reviewed ordinary DE/EN meanings are equivalent. EN falls back to this same reviewed DE pair; no independently authored English assessment form is claimed.",
+      "fixedResultDecision": "Current main coverageIds/task/solution/scoring match the prepared input exactly. PASS authorizes only those current fixed claims, not broader prerequisite recognition; HOLD prohibits deriving the missing component from old results. This review does not invent retrospective runtime-serving evidence.",
+      "substantiveReason": "A response can correctly select AB=13, calculate25+144=169, assert right-angled, but give the wrong vertex or omit C. Losing1–2 of the4 points in part1 and earning3+3 elsewhere still yields8–9/10. The only global caps protect longest-side selection and the negative case, not the explicitly claimed location of the right angle.",
+      "requiredActionOrBoundary": "Use a distinct successor Q identity with a below8 cap for absent/substantively incorrect right-angle localization, as well as the existing positive/negative criterion essentials. Keep8/10 for nonessential arithmetic or presentation slips; do not silently tighten old-result meaning.",
+      "currentMemoryReviews": [
+        {
+          "goalId": "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+          "fingerprint": "sha256:27be25876f16225212a54e42efd454e77be3ec5c140129aea96bdc6ef2b544cd",
+          "status": "no_memory_needed"
+        }
+      ],
+      "eligibleForExactPacketContentReceipt": false
+    }
+  ]
+}

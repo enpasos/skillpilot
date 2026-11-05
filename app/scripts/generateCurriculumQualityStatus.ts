@@ -898,7 +898,10 @@ const surrogateEvidencePath = resolve(
   repoRoot,
   'curricula/DE/Gymnasium/provenance/canonical-goal-surrogate-evidence-registry.json',
 )
-const statusDir = resolve(repoRoot, 'docs/qa-ci/status')
+const outputDirIndex = process.argv.indexOf('--output-dir')
+const outputDir = outputDirIndex < 0 ? 'docs/qa-ci/status' : process.argv[outputDirIndex + 1]
+if (!outputDir || outputDir.startsWith('--')) throw new Error('--output-dir needs a path')
+const statusDir = resolve(repoRoot, outputDir)
 const statusJsonPath = join(statusDir, 'curriculum-quality-status.json')
 const statusMarkdownPath = join(statusDir, 'curriculum-quality-status.md')
 

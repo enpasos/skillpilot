@@ -25,6 +25,8 @@ interface CheckerOptions<CanonicalGoal> {
   canonicalGoalById: Map<string, CanonicalGoal>
   surrogateEntriesByKey: Map<string, ReviewedRequiresClosureEntryLike[]>
   isEligibleCanonicalGoal: (goal: CanonicalGoal | undefined) => boolean
+  /** Optional actual native full-R witness; applies only to an explicit reviewed entry. */
+  hasReviewedDemandWitness?: (prerequisiteGoalId: string, reviewedConsumerGoalId: string) => boolean
 }
 
 export function sourceCoverageSurrogateKey(
@@ -52,6 +54,7 @@ export function createReviewedRequiresClosureCoverageChecker<CanonicalGoal>({
   canonicalGoalById,
   surrogateEntriesByKey,
   isEligibleCanonicalGoal,
+  hasReviewedDemandWitness,
 }: CheckerOptions<CanonicalGoal>): {
   hasCoverageBackedJurisdictionEvidence: (goal: SourceCoverageGoalLike) => boolean
   hasReviewedRequiresClosureSurrogateEvidence: (goal: SourceCoverageGoalLike) => boolean
@@ -92,7 +95,7 @@ export function createReviewedRequiresClosureCoverageChecker<CanonicalGoal>({
         && evidence.dimension === 'jurisdiction'
         && evidence.value === jurisdiction
         && evidence.source === `required by ${requiredByGoalId}`)
-      if (!hasActiveRequiresEvidence) return false
+      if (!hasActiveRequiresEvidence && !hasReviewedDemandWitness?.(goal.goalId, requiredByGoalId)) return false
 
       return hasCoverageBackedJurisdictionEvidence(
         requiredByGoal,

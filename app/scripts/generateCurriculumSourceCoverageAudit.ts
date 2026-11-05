@@ -8,6 +8,7 @@ import type { ApplicabilityEvidence } from './applicabilityCompiler'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
 import { collectAuthoritativeTargetAtomicGoalIds } from './compositionViewSourceCoverage'
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
+import { nativeReviewedDemandWitness, nativeTargetsByJurisdiction, validateNativeProjectionEvidence, type NativeProjectionEvidence } from './nativeProjectionEvidence'
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
@@ -60,6 +61,7 @@ interface CurriculumAudit {
   landscapeId: string
   title: string
   file: string
+  targetProjectionAuthority: 'actual-native-offers' | 'legacy-raw-composition-views'
   totalAtomicGoals: number
   summary: CurriculumAuditSummary
   jurisdictions: JurisdictionAudit[]
@@ -120,6 +122,8 @@ function collectFiles(directory: string): string[] {
 function readAuthoritativeTargetAtomicGoalIdsByJurisdiction(
   landscape: SkillLandscape,
 ): Map<string, Set<string>> {
+  const native = nativeProjectionAdapters.get(landscape.landscapeId)
+  if (native) return nativeTargetsByJurisdiction(native)
   const directoryName = compositionViewDirectoryByLandscapeId.get(landscape.landscapeId)
   if (!directoryName) return new Map<string, Set<string>>()
 
@@ -144,6 +148,33 @@ function readAuthoritativeTargetAtomicGoalIdsByJurisdiction(
   }
   return result
 }
+
+// Explicit per-landscape migration. Unmigrated subjects retain their previous
+// raw-view behavior, reported as such; no title/path heuristic selects authority.
+function readNativeProjectionAdapters(): Map<string, NativeProjectionEvidence> {
+  const adapters = new Map<string, NativeProjectionEvidence>()
+  const policy = JSON.parse(readFileSync(resolve(repoRoot, 'app/scripts/config/source-coverage-native-adapters.json'), 'utf8'))
+  if (policy.schemaVersion !== 1 || !Array.isArray(policy.requiredLandscapeIds) || !policy.requiredLandscapeIds.every((id: unknown) => typeof id === 'string')) {
+    throw new Error('Invalid native projection authority policy')
+  }
+  const index = process.argv.indexOf('--native-projection-adapters')
+  const path = index < 0 ? 'app/scripts/config/source-coverage-native-adapters.json' : process.argv[index + 1]
+  if (!path || path.startsWith('--')) throw new Error('--native-projection-adapters needs a path')
+  const manifest = JSON.parse(readFileSync(resolve(repoRoot, path), 'utf8'))
+  if (manifest.schemaVersion !== 1 || !manifest.landscapes || typeof manifest.landscapes !== 'object') {
+    throw new Error('Invalid native projection adapter manifest')
+  }
+  for (const [landscapeId, adapter] of Object.entries(manifest.landscapes) as Array<[string, { path: string }]>) {
+    const evidence = JSON.parse(readFileSync(resolve(repoRoot, adapter.path), 'utf8')) as NativeProjectionEvidence
+    validateNativeProjectionEvidence(evidence, repoRoot, landscapeId)
+    adapters.set(landscapeId, evidence)
+  }
+  for (const landscapeId of policy.requiredLandscapeIds) if (!adapters.has(landscapeId)) {
+    throw new Error(`Required native projection adapter missing for ${landscapeId}`)
+  }
+  return adapters
+}
+const nativeProjectionAdapters = readNativeProjectionAdapters()
 
 function isMemoryGoal(goal: LearningGoal): boolean {
   const tags = goal.tags ?? []
@@ -277,13 +308,14 @@ function renderMarkdown(audit: SourceCoverageAudit): string {
   lines.push('')
   lines.push('Memory/SRS, practice, assessment, motivation, orientation, and `examData` goals are excluded from the source-coverage denominator; memory traceability is handled by the separate memory-card review.')
   lines.push('')
-  lines.push('The Applicability compiler supplies source evidence and projection findings; learner-facing visibility is resolved from the same composition-view target projection used by the Workbench `Curriculum Quality` counters. Those counters additionally include extracted source atoms and fully covered source original goals.')
+  lines.push('The Applicability compiler supplies source evidence and projection findings. A migrated landscape uses a source-bound export of actual backend offers for target visibility; the report names unmigrated landscapes that still use the legacy raw-view projection. This is country-level target source coverage, not certification of every stage/course source link. Workbench counters additionally include extracted source atoms and fully covered source original goals.')
   lines.push('')
 
   for (const curriculum of audit.curricula) {
     lines.push(`## ${curriculum.title}`)
     lines.push('')
     lines.push(`Source-coverage atomic goals: ${curriculum.totalAtomicGoals}`)
+    lines.push(`Target authority: \`${curriculum.targetProjectionAuthority}\`.`)
     lines.push(`Global status: ${curriculum.summary.coveredJurisdictions}/${curriculum.summary.jurisdictions} covered, ${curriculum.summary.partialJurisdictions} partial, ${curriculum.summary.errorJurisdictions} error.`)
     lines.push(`View status: ${curriculum.summary.coveredViews}/${curriculum.summary.jurisdictions} covered, ${curriculum.summary.partialViews} partial, ${curriculum.summary.errorViews} error.`)
     lines.push(`Unsupported visible atomic goals: ${curriculum.summary.unsupportedVisibleAtomicGoals}. Non-visible missing source-backed atomic goals: ${curriculum.summary.nonVisibleMissingSourceBackedAtomicGoals}.`)
@@ -320,6 +352,7 @@ function buildAudit(): SourceCoverageAudit {
     const atomicGoals = report.goals.filter((goal) =>
       goal.goalType === 'atomic' && isCurriculumSourceCoverageGoal(goalById.get(goal.goalId)))
     const jurisdictions = report.projections.map((projection) => {
+      const native = nativeProjectionAdapters.get(report.landscapeId)
       const coverageEvidence = createReviewedRequiresClosureCoverageChecker({
         landscapeId: report.landscapeId,
         jurisdiction: projection.value,
@@ -327,6 +360,8 @@ function buildAudit(): SourceCoverageAudit {
         canonicalGoalById: goalById,
         surrogateEntriesByKey,
         isEligibleCanonicalGoal: isCurriculumSourceCoverageGoal,
+        hasReviewedDemandWitness: native ? (prerequisiteId, consumerId) => nativeReviewedDemandWitness(native, projection.value,
+          consumerId, prerequisiteId, id => isCurriculumSourceCoverageGoal(goalById.get(id))) !== null : undefined,
       })
       const sourceBackedAtomicGoals = atomicGoals.filter((goal) =>
         coverageEvidence.hasCoverageBackedJurisdictionEvidence(goal))
@@ -394,6 +429,7 @@ function buildAudit(): SourceCoverageAudit {
       landscapeId: report.landscapeId,
       title: report.title,
       file: report.file,
+      targetProjectionAuthority: nativeProjectionAdapters.has(report.landscapeId) ? 'actual-native-offers' : 'legacy-raw-composition-views',
       totalAtomicGoals: atomicGoals.length,
       summary: buildCurriculumAuditSummary(jurisdictions),
       jurisdictions,
@@ -414,6 +450,17 @@ function buildAudit(): SourceCoverageAudit {
 }
 
 const audit = buildAudit()
+
+// Keep complete diagnostics available without refreshing public QA artifacts.
+// This also retains every unsupported ID when the console examples are bounded.
+const diagnosticIndex = process.argv.indexOf('--diagnostic-json')
+if (diagnosticIndex >= 0) {
+  const path = process.argv[diagnosticIndex + 1]
+  if (!path || path.startsWith('--')) throw new Error('--diagnostic-json needs a path')
+  const destination = resolve(repoRoot, path)
+  mkdirSync(dirname(destination), { recursive: true })
+  writeFileSync(destination, `${JSON.stringify(audit, null, 2)}\n`)
+}
 
 function formatGoalExamples(goals: GoalReference[], limit = 5): string {
   const examples = goals.slice(0, limit).map((goal) => `${goal.goalId} (${goal.title})`)

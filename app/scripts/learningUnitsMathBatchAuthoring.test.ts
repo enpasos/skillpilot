@@ -19,6 +19,11 @@ assert.throws(() => prepareBatch(batch, source, ledger, { schemaVersion: 1, cont
 files.set('DE/Gymnasium/quality/review.md', 'Independent review: the essential seven points require the complete claimed application; three optional points do not weaken this claim.')
 files.set('review.receipt.json', JSON.stringify({ schemaVersion: 1, semantics: 'learning-unit-content-review-v1', decision: 'approved', independentReviewer: 'independent fixture reviewer', reviewedInputSha256: pending.reviews[0].reviewedInputSha256, reviewPath: packet.reviewRef }))
 const admitted = prepareBatch(batch, source, ledger, { schemaVersion: 1, contracts: [] }, read, false)
+files.set('review-source.json', JSON.stringify({ reviewer: 'actual fixture reviewer', decision: 'approved' }))
+const withSharedReview = prepareBatch({ ...batch, reviewEvidencePaths: ['review-source.json'] }, source, ledger, { schemaVersion: 1, contracts: [] }, read, false)
+assert.equal(withSharedReview.catalog.contracts[0].inputs['review-source.json'], digest(files.get('review-source.json')!))
+assert.equal(withSharedReview.reviews[0].reviewedInputSha256, admitted.reviews[0].reviewedInputSha256,
+  'Pin actual review evidence separately without relabelling the approved mathematical packet')
 assert.deepEqual(admitted.proof.independentReviewPending, [])
 assert.equal(JSON.parse([...admitted.artifacts].find(([path]) => path.endsWith('q.rubric.json'))![1]).passingPoints, 7, 'Preserve legitimate normal-rubric tolerance')
 const changed = structuredClone(source); changed.goals[1].examData!.solutionContent = 'Different meaning'
