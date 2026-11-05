@@ -316,6 +316,92 @@
             "learningState": {
               "type": "string"
             },
+            "learningUnits": {
+              "additionalProperties": false,
+              "properties": {
+                "activeGoalRecognized": {
+                  "type": "boolean"
+                },
+                "activeGoalVoluntaryRepetition": {
+                  "type": "boolean"
+                },
+                "calculationStatus": {
+                  "type": "string"
+                },
+                "globallyEffective": {
+                  "const": true,
+                  "type": "boolean"
+                },
+                "recognizedGoalCount": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "semantics": {
+                  "type": "string"
+                },
+                "units": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "complete": {
+                        "type": "boolean"
+                      },
+                      "contractId": {
+                        "type": "string"
+                      },
+                      "explicitTargetCount": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "promise": {
+                        "additionalProperties": {
+                          "type": "string"
+                        },
+                        "type": "object"
+                      },
+                      "recognizedTargetCount": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "revision": {
+                        "type": "string"
+                      },
+                      "targetCount": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "title": {
+                        "additionalProperties": {
+                          "type": "string"
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "required": [
+                      "contractId",
+                      "revision",
+                      "title",
+                      "promise",
+                      "complete",
+                      "targetCount",
+                      "explicitTargetCount",
+                      "recognizedTargetCount"
+                    ],
+                    "type": "object"
+                  },
+                  "maxItems": 3,
+                  "minItems": 0,
+                  "type": "array"
+                }
+              },
+              "required": [
+                "calculationStatus",
+                "semantics",
+                "recognizedGoalCount",
+                "globallyEffective"
+              ],
+              "type": "object"
+            },
             "nextAllowedTools": {
               "items": {
                 "minLength": 1,
@@ -1313,6 +1399,92 @@
                 "learningState": {
                   "type": "string"
                 },
+                "learningUnits": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "activeGoalRecognized": {
+                      "type": "boolean"
+                    },
+                    "activeGoalVoluntaryRepetition": {
+                      "type": "boolean"
+                    },
+                    "calculationStatus": {
+                      "type": "string"
+                    },
+                    "globallyEffective": {
+                      "const": true,
+                      "type": "boolean"
+                    },
+                    "recognizedGoalCount": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "semantics": {
+                      "type": "string"
+                    },
+                    "units": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "complete": {
+                            "type": "boolean"
+                          },
+                          "contractId": {
+                            "type": "string"
+                          },
+                          "explicitTargetCount": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "promise": {
+                            "additionalProperties": {
+                              "type": "string"
+                            },
+                            "type": "object"
+                          },
+                          "recognizedTargetCount": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "revision": {
+                            "type": "string"
+                          },
+                          "targetCount": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "title": {
+                            "additionalProperties": {
+                              "type": "string"
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "contractId",
+                          "revision",
+                          "title",
+                          "promise",
+                          "complete",
+                          "targetCount",
+                          "explicitTargetCount",
+                          "recognizedTargetCount"
+                        ],
+                        "type": "object"
+                      },
+                      "maxItems": 3,
+                      "minItems": 0,
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "calculationStatus",
+                    "semantics",
+                    "recognizedGoalCount",
+                    "globallyEffective"
+                  ],
+                  "type": "object"
+                },
                 "nextAllowedTools": {
                   "items": {
                     "minLength": 1,
@@ -2197,6 +2369,92 @@
                 "learningState": {
                   "type": "string"
                 },
+                "learningUnits": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "activeGoalRecognized": {
+                      "type": "boolean"
+                    },
+                    "activeGoalVoluntaryRepetition": {
+                      "type": "boolean"
+                    },
+                    "calculationStatus": {
+                      "type": "string"
+                    },
+                    "globallyEffective": {
+                      "const": true,
+                      "type": "boolean"
+                    },
+                    "recognizedGoalCount": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "semantics": {
+                      "type": "string"
+                    },
+                    "units": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "complete": {
+                            "type": "boolean"
+                          },
+                          "contractId": {
+                            "type": "string"
+                          },
+                          "explicitTargetCount": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "promise": {
+                            "additionalProperties": {
+                              "type": "string"
+                            },
+                            "type": "object"
+                          },
+                          "recognizedTargetCount": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "revision": {
+                            "type": "string"
+                          },
+                          "targetCount": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "title": {
+                            "additionalProperties": {
+                              "type": "string"
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "contractId",
+                          "revision",
+                          "title",
+                          "promise",
+                          "complete",
+                          "targetCount",
+                          "explicitTargetCount",
+                          "recognizedTargetCount"
+                        ],
+                        "type": "object"
+                      },
+                      "maxItems": 3,
+                      "minItems": 0,
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "calculationStatus",
+                    "semantics",
+                    "recognizedGoalCount",
+                    "globallyEffective"
+                  ],
+                  "type": "object"
+                },
                 "nextAllowedTools": {
                   "items": {
                     "minLength": 1,
@@ -2989,6 +3247,92 @@
             "learningState": {
               "type": "string"
             },
+            "learningUnits": {
+              "additionalProperties": false,
+              "properties": {
+                "activeGoalRecognized": {
+                  "type": "boolean"
+                },
+                "activeGoalVoluntaryRepetition": {
+                  "type": "boolean"
+                },
+                "calculationStatus": {
+                  "type": "string"
+                },
+                "globallyEffective": {
+                  "const": true,
+                  "type": "boolean"
+                },
+                "recognizedGoalCount": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "semantics": {
+                  "type": "string"
+                },
+                "units": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "complete": {
+                        "type": "boolean"
+                      },
+                      "contractId": {
+                        "type": "string"
+                      },
+                      "explicitTargetCount": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "promise": {
+                        "additionalProperties": {
+                          "type": "string"
+                        },
+                        "type": "object"
+                      },
+                      "recognizedTargetCount": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "revision": {
+                        "type": "string"
+                      },
+                      "targetCount": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "title": {
+                        "additionalProperties": {
+                          "type": "string"
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "required": [
+                      "contractId",
+                      "revision",
+                      "title",
+                      "promise",
+                      "complete",
+                      "targetCount",
+                      "explicitTargetCount",
+                      "recognizedTargetCount"
+                    ],
+                    "type": "object"
+                  },
+                  "maxItems": 3,
+                  "minItems": 0,
+                  "type": "array"
+                }
+              },
+              "required": [
+                "calculationStatus",
+                "semantics",
+                "recognizedGoalCount",
+                "globallyEffective"
+              ],
+              "type": "object"
+            },
             "nextAllowedTools": {
               "items": {
                 "minLength": 1,
@@ -3629,6 +3973,92 @@
                 "learningState": {
                   "type": "string"
                 },
+                "learningUnits": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "activeGoalRecognized": {
+                      "type": "boolean"
+                    },
+                    "activeGoalVoluntaryRepetition": {
+                      "type": "boolean"
+                    },
+                    "calculationStatus": {
+                      "type": "string"
+                    },
+                    "globallyEffective": {
+                      "const": true,
+                      "type": "boolean"
+                    },
+                    "recognizedGoalCount": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "semantics": {
+                      "type": "string"
+                    },
+                    "units": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "complete": {
+                            "type": "boolean"
+                          },
+                          "contractId": {
+                            "type": "string"
+                          },
+                          "explicitTargetCount": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "promise": {
+                            "additionalProperties": {
+                              "type": "string"
+                            },
+                            "type": "object"
+                          },
+                          "recognizedTargetCount": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "revision": {
+                            "type": "string"
+                          },
+                          "targetCount": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "title": {
+                            "additionalProperties": {
+                              "type": "string"
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "contractId",
+                          "revision",
+                          "title",
+                          "promise",
+                          "complete",
+                          "targetCount",
+                          "explicitTargetCount",
+                          "recognizedTargetCount"
+                        ],
+                        "type": "object"
+                      },
+                      "maxItems": 3,
+                      "minItems": 0,
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "calculationStatus",
+                    "semantics",
+                    "recognizedGoalCount",
+                    "globallyEffective"
+                  ],
+                  "type": "object"
+                },
                 "nextAllowedTools": {
                   "items": {
                     "minLength": 1,
@@ -4263,6 +4693,92 @@
             },
             "learningState": {
               "type": "string"
+            },
+            "learningUnits": {
+              "additionalProperties": false,
+              "properties": {
+                "activeGoalRecognized": {
+                  "type": "boolean"
+                },
+                "activeGoalVoluntaryRepetition": {
+                  "type": "boolean"
+                },
+                "calculationStatus": {
+                  "type": "string"
+                },
+                "globallyEffective": {
+                  "const": true,
+                  "type": "boolean"
+                },
+                "recognizedGoalCount": {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "semantics": {
+                  "type": "string"
+                },
+                "units": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "complete": {
+                        "type": "boolean"
+                      },
+                      "contractId": {
+                        "type": "string"
+                      },
+                      "explicitTargetCount": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "promise": {
+                        "additionalProperties": {
+                          "type": "string"
+                        },
+                        "type": "object"
+                      },
+                      "recognizedTargetCount": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "revision": {
+                        "type": "string"
+                      },
+                      "targetCount": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "title": {
+                        "additionalProperties": {
+                          "type": "string"
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "required": [
+                      "contractId",
+                      "revision",
+                      "title",
+                      "promise",
+                      "complete",
+                      "targetCount",
+                      "explicitTargetCount",
+                      "recognizedTargetCount"
+                    ],
+                    "type": "object"
+                  },
+                  "maxItems": 3,
+                  "minItems": 0,
+                  "type": "array"
+                }
+              },
+              "required": [
+                "calculationStatus",
+                "semantics",
+                "recognizedGoalCount",
+                "globallyEffective"
+              ],
+              "type": "object"
             },
             "nextAllowedTools": {
               "items": {
@@ -5127,6 +5643,92 @@
                 "learningState": {
                   "type": "string"
                 },
+                "learningUnits": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "activeGoalRecognized": {
+                      "type": "boolean"
+                    },
+                    "activeGoalVoluntaryRepetition": {
+                      "type": "boolean"
+                    },
+                    "calculationStatus": {
+                      "type": "string"
+                    },
+                    "globallyEffective": {
+                      "const": true,
+                      "type": "boolean"
+                    },
+                    "recognizedGoalCount": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "semantics": {
+                      "type": "string"
+                    },
+                    "units": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "complete": {
+                            "type": "boolean"
+                          },
+                          "contractId": {
+                            "type": "string"
+                          },
+                          "explicitTargetCount": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "promise": {
+                            "additionalProperties": {
+                              "type": "string"
+                            },
+                            "type": "object"
+                          },
+                          "recognizedTargetCount": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "revision": {
+                            "type": "string"
+                          },
+                          "targetCount": {
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "title": {
+                            "additionalProperties": {
+                              "type": "string"
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "contractId",
+                          "revision",
+                          "title",
+                          "promise",
+                          "complete",
+                          "targetCount",
+                          "explicitTargetCount",
+                          "recognizedTargetCount"
+                        ],
+                        "type": "object"
+                      },
+                      "maxItems": 3,
+                      "minItems": 0,
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "calculationStatus",
+                    "semantics",
+                    "recognizedGoalCount",
+                    "globallyEffective"
+                  ],
+                  "type": "object"
+                },
                 "nextAllowedTools": {
                   "items": {
                     "minLength": 1,
@@ -5740,6 +6342,92 @@
           },
           "learningState": {
             "type": "string"
+          },
+          "learningUnits": {
+            "additionalProperties": false,
+            "properties": {
+              "activeGoalRecognized": {
+                "type": "boolean"
+              },
+              "activeGoalVoluntaryRepetition": {
+                "type": "boolean"
+              },
+              "calculationStatus": {
+                "type": "string"
+              },
+              "globallyEffective": {
+                "const": true,
+                "type": "boolean"
+              },
+              "recognizedGoalCount": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "semantics": {
+                "type": "string"
+              },
+              "units": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "complete": {
+                      "type": "boolean"
+                    },
+                    "contractId": {
+                      "type": "string"
+                    },
+                    "explicitTargetCount": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "promise": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "type": "object"
+                    },
+                    "recognizedTargetCount": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "revision": {
+                      "type": "string"
+                    },
+                    "targetCount": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "title": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "contractId",
+                    "revision",
+                    "title",
+                    "promise",
+                    "complete",
+                    "targetCount",
+                    "explicitTargetCount",
+                    "recognizedTargetCount"
+                  ],
+                  "type": "object"
+                },
+                "maxItems": 3,
+                "minItems": 0,
+                "type": "array"
+              }
+            },
+            "required": [
+              "calculationStatus",
+              "semantics",
+              "recognizedGoalCount",
+              "globallyEffective"
+            ],
+            "type": "object"
           },
           "nextAllowedTools": {
             "items": {
@@ -6738,6 +7426,92 @@
               "learningState": {
                 "type": "string"
               },
+              "learningUnits": {
+                "additionalProperties": false,
+                "properties": {
+                  "activeGoalRecognized": {
+                    "type": "boolean"
+                  },
+                  "activeGoalVoluntaryRepetition": {
+                    "type": "boolean"
+                  },
+                  "calculationStatus": {
+                    "type": "string"
+                  },
+                  "globallyEffective": {
+                    "const": true,
+                    "type": "boolean"
+                  },
+                  "recognizedGoalCount": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "semantics": {
+                    "type": "string"
+                  },
+                  "units": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "complete": {
+                          "type": "boolean"
+                        },
+                        "contractId": {
+                          "type": "string"
+                        },
+                        "explicitTargetCount": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "promise": {
+                          "additionalProperties": {
+                            "type": "string"
+                          },
+                          "type": "object"
+                        },
+                        "recognizedTargetCount": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "revision": {
+                          "type": "string"
+                        },
+                        "targetCount": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "title": {
+                          "additionalProperties": {
+                            "type": "string"
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "required": [
+                        "contractId",
+                        "revision",
+                        "title",
+                        "promise",
+                        "complete",
+                        "targetCount",
+                        "explicitTargetCount",
+                        "recognizedTargetCount"
+                      ],
+                      "type": "object"
+                    },
+                    "maxItems": 3,
+                    "minItems": 0,
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "calculationStatus",
+                  "semantics",
+                  "recognizedGoalCount",
+                  "globallyEffective"
+                ],
+                "type": "object"
+              },
               "nextAllowedTools": {
                 "items": {
                   "minLength": 1,
@@ -7622,6 +8396,92 @@
               "learningState": {
                 "type": "string"
               },
+              "learningUnits": {
+                "additionalProperties": false,
+                "properties": {
+                  "activeGoalRecognized": {
+                    "type": "boolean"
+                  },
+                  "activeGoalVoluntaryRepetition": {
+                    "type": "boolean"
+                  },
+                  "calculationStatus": {
+                    "type": "string"
+                  },
+                  "globallyEffective": {
+                    "const": true,
+                    "type": "boolean"
+                  },
+                  "recognizedGoalCount": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "semantics": {
+                    "type": "string"
+                  },
+                  "units": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "complete": {
+                          "type": "boolean"
+                        },
+                        "contractId": {
+                          "type": "string"
+                        },
+                        "explicitTargetCount": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "promise": {
+                          "additionalProperties": {
+                            "type": "string"
+                          },
+                          "type": "object"
+                        },
+                        "recognizedTargetCount": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "revision": {
+                          "type": "string"
+                        },
+                        "targetCount": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "title": {
+                          "additionalProperties": {
+                            "type": "string"
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "required": [
+                        "contractId",
+                        "revision",
+                        "title",
+                        "promise",
+                        "complete",
+                        "targetCount",
+                        "explicitTargetCount",
+                        "recognizedTargetCount"
+                      ],
+                      "type": "object"
+                    },
+                    "maxItems": 3,
+                    "minItems": 0,
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "calculationStatus",
+                  "semantics",
+                  "recognizedGoalCount",
+                  "globallyEffective"
+                ],
+                "type": "object"
+              },
               "nextAllowedTools": {
                 "items": {
                   "minLength": 1,
@@ -8414,6 +9274,92 @@
           "learningState": {
             "type": "string"
           },
+          "learningUnits": {
+            "additionalProperties": false,
+            "properties": {
+              "activeGoalRecognized": {
+                "type": "boolean"
+              },
+              "activeGoalVoluntaryRepetition": {
+                "type": "boolean"
+              },
+              "calculationStatus": {
+                "type": "string"
+              },
+              "globallyEffective": {
+                "const": true,
+                "type": "boolean"
+              },
+              "recognizedGoalCount": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "semantics": {
+                "type": "string"
+              },
+              "units": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "complete": {
+                      "type": "boolean"
+                    },
+                    "contractId": {
+                      "type": "string"
+                    },
+                    "explicitTargetCount": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "promise": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "type": "object"
+                    },
+                    "recognizedTargetCount": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "revision": {
+                      "type": "string"
+                    },
+                    "targetCount": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "title": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "contractId",
+                    "revision",
+                    "title",
+                    "promise",
+                    "complete",
+                    "targetCount",
+                    "explicitTargetCount",
+                    "recognizedTargetCount"
+                  ],
+                  "type": "object"
+                },
+                "maxItems": 3,
+                "minItems": 0,
+                "type": "array"
+              }
+            },
+            "required": [
+              "calculationStatus",
+              "semantics",
+              "recognizedGoalCount",
+              "globallyEffective"
+            ],
+            "type": "object"
+          },
           "nextAllowedTools": {
             "items": {
               "minLength": 1,
@@ -9054,6 +10000,92 @@
               "learningState": {
                 "type": "string"
               },
+              "learningUnits": {
+                "additionalProperties": false,
+                "properties": {
+                  "activeGoalRecognized": {
+                    "type": "boolean"
+                  },
+                  "activeGoalVoluntaryRepetition": {
+                    "type": "boolean"
+                  },
+                  "calculationStatus": {
+                    "type": "string"
+                  },
+                  "globallyEffective": {
+                    "const": true,
+                    "type": "boolean"
+                  },
+                  "recognizedGoalCount": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "semantics": {
+                    "type": "string"
+                  },
+                  "units": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "complete": {
+                          "type": "boolean"
+                        },
+                        "contractId": {
+                          "type": "string"
+                        },
+                        "explicitTargetCount": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "promise": {
+                          "additionalProperties": {
+                            "type": "string"
+                          },
+                          "type": "object"
+                        },
+                        "recognizedTargetCount": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "revision": {
+                          "type": "string"
+                        },
+                        "targetCount": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "title": {
+                          "additionalProperties": {
+                            "type": "string"
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "required": [
+                        "contractId",
+                        "revision",
+                        "title",
+                        "promise",
+                        "complete",
+                        "targetCount",
+                        "explicitTargetCount",
+                        "recognizedTargetCount"
+                      ],
+                      "type": "object"
+                    },
+                    "maxItems": 3,
+                    "minItems": 0,
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "calculationStatus",
+                  "semantics",
+                  "recognizedGoalCount",
+                  "globallyEffective"
+                ],
+                "type": "object"
+              },
               "nextAllowedTools": {
                 "items": {
                   "minLength": 1,
@@ -9688,6 +10720,92 @@
           },
           "learningState": {
             "type": "string"
+          },
+          "learningUnits": {
+            "additionalProperties": false,
+            "properties": {
+              "activeGoalRecognized": {
+                "type": "boolean"
+              },
+              "activeGoalVoluntaryRepetition": {
+                "type": "boolean"
+              },
+              "calculationStatus": {
+                "type": "string"
+              },
+              "globallyEffective": {
+                "const": true,
+                "type": "boolean"
+              },
+              "recognizedGoalCount": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "semantics": {
+                "type": "string"
+              },
+              "units": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "complete": {
+                      "type": "boolean"
+                    },
+                    "contractId": {
+                      "type": "string"
+                    },
+                    "explicitTargetCount": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "promise": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "type": "object"
+                    },
+                    "recognizedTargetCount": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "revision": {
+                      "type": "string"
+                    },
+                    "targetCount": {
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "title": {
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "contractId",
+                    "revision",
+                    "title",
+                    "promise",
+                    "complete",
+                    "targetCount",
+                    "explicitTargetCount",
+                    "recognizedTargetCount"
+                  ],
+                  "type": "object"
+                },
+                "maxItems": 3,
+                "minItems": 0,
+                "type": "array"
+              }
+            },
+            "required": [
+              "calculationStatus",
+              "semantics",
+              "recognizedGoalCount",
+              "globallyEffective"
+            ],
+            "type": "object"
           },
           "nextAllowedTools": {
             "items": {
@@ -10551,6 +11669,92 @@
               },
               "learningState": {
                 "type": "string"
+              },
+              "learningUnits": {
+                "additionalProperties": false,
+                "properties": {
+                  "activeGoalRecognized": {
+                    "type": "boolean"
+                  },
+                  "activeGoalVoluntaryRepetition": {
+                    "type": "boolean"
+                  },
+                  "calculationStatus": {
+                    "type": "string"
+                  },
+                  "globallyEffective": {
+                    "const": true,
+                    "type": "boolean"
+                  },
+                  "recognizedGoalCount": {
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "semantics": {
+                    "type": "string"
+                  },
+                  "units": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "complete": {
+                          "type": "boolean"
+                        },
+                        "contractId": {
+                          "type": "string"
+                        },
+                        "explicitTargetCount": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "promise": {
+                          "additionalProperties": {
+                            "type": "string"
+                          },
+                          "type": "object"
+                        },
+                        "recognizedTargetCount": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "revision": {
+                          "type": "string"
+                        },
+                        "targetCount": {
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "title": {
+                          "additionalProperties": {
+                            "type": "string"
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "required": [
+                        "contractId",
+                        "revision",
+                        "title",
+                        "promise",
+                        "complete",
+                        "targetCount",
+                        "explicitTargetCount",
+                        "recognizedTargetCount"
+                      ],
+                      "type": "object"
+                    },
+                    "maxItems": 3,
+                    "minItems": 0,
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "calculationStatus",
+                  "semantics",
+                  "recognizedGoalCount",
+                  "globallyEffective"
+                ],
+                "type": "object"
               },
               "nextAllowedTools": {
                 "items": {
