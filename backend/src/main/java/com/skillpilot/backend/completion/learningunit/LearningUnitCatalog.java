@@ -28,20 +28,57 @@ public final class LearningUnitCatalog {
     private final CompiledLearningUnits compiled;
     private final Map<String, com.skillpilot.backend.landscape.LearningGoal> masteryGoals;
     private final Map<String, String> resultAliases;
+    private final Map<String, LearningUnitRecallBindings.FrozenRecall> frozenRecallSelections;
+    private final Set<LearningUnitDefinition.ContractRef> activeContractRefs;
+    private final Map<LearningUnitDefinition.ContractRef, String> currentReadinessFailures;
+    private final CurrentOfferBinding currentOfferBinding;
+    private final String currentOfferBindingFailure;
 
     private LearningUnitCatalog(List<LearningUnitDefinition> definitions, Map<String, String> quarantined,
                                 Map<String, com.skillpilot.backend.landscape.LearningGoal> masteryGoals) {
-        this(definitions, quarantined, masteryGoals, Map.of());
+        this(definitions, quarantined, masteryGoals, Map.of(), Map.of());
     }
 
     private LearningUnitCatalog(List<LearningUnitDefinition> definitions, Map<String, String> quarantined,
                                 Map<String, com.skillpilot.backend.landscape.LearningGoal> masteryGoals,
                                 Map<String, String> resultAliases) {
+        this(definitions, quarantined, masteryGoals, resultAliases, Map.of());
+    }
+
+    private LearningUnitCatalog(List<LearningUnitDefinition> definitions, Map<String, String> quarantined,
+                                Map<String, com.skillpilot.backend.landscape.LearningGoal> masteryGoals,
+                                Map<String, String> resultAliases,
+                                Map<String, LearningUnitRecallBindings.FrozenRecall> frozenRecallSelections) {
+        this(definitions, quarantined, masteryGoals, resultAliases, frozenRecallSelections, Set.of(), Map.of());
+    }
+
+    private LearningUnitCatalog(List<LearningUnitDefinition> definitions, Map<String, String> quarantined,
+                                Map<String, com.skillpilot.backend.landscape.LearningGoal> masteryGoals,
+                                Map<String, String> resultAliases,
+                                Map<String, LearningUnitRecallBindings.FrozenRecall> frozenRecallSelections,
+                                Set<LearningUnitDefinition.ContractRef> activeContractRefs,
+                                Map<LearningUnitDefinition.ContractRef, String> currentReadinessFailures) {
+        this(definitions, quarantined, masteryGoals, resultAliases, frozenRecallSelections,
+                activeContractRefs, currentReadinessFailures, null, null);
+    }
+
+    private LearningUnitCatalog(List<LearningUnitDefinition> definitions, Map<String, String> quarantined,
+                                Map<String, com.skillpilot.backend.landscape.LearningGoal> masteryGoals,
+                                Map<String, String> resultAliases,
+                                Map<String, LearningUnitRecallBindings.FrozenRecall> frozenRecallSelections,
+                                Set<LearningUnitDefinition.ContractRef> activeContractRefs,
+                                Map<LearningUnitDefinition.ContractRef, String> currentReadinessFailures,
+                                CurrentOfferBinding currentOfferBinding, String currentOfferBindingFailure) {
         this.definitions = List.copyOf(definitions);
         this.quarantined = Map.copyOf(quarantined);
         this.compiled = definitions.isEmpty() ? null : new LearningUnitCompiler().compile(definitions);
         this.masteryGoals = Map.copyOf(masteryGoals);
         this.resultAliases = Map.copyOf(resultAliases);
+        this.frozenRecallSelections = Map.copyOf(frozenRecallSelections);
+        this.activeContractRefs = Set.copyOf(activeContractRefs);
+        this.currentReadinessFailures = Map.copyOf(currentReadinessFailures);
+        this.currentOfferBinding = currentOfferBinding;
+        this.currentOfferBindingFailure = currentOfferBindingFailure;
     }
 
     public static LearningUnitCatalog empty() { return new LearningUnitCatalog(List.of(), Map.of(), Map.of()); }
@@ -49,9 +86,39 @@ public final class LearningUnitCatalog {
     public static LearningUnitCatalog load(byte[] manifestBytes, InputSource source,
                                            Consumer<LearningUnitDefinition> activeSourceValidator,
                                            ObjectMapper mapper) throws IOException {
+        return load(manifestBytes, source, activeSourceValidator, recall -> {
+            throw new IllegalArgumentException("Active recall requires actual runtime deck/selection validation");
+        }, mapper);
+    }
+
+    public static LearningUnitCatalog load(byte[] manifestBytes, InputSource source,
+                                           Consumer<LearningUnitDefinition> activeSourceValidator,
+                                           LearningUnitRecallBindings.ActiveValidator activeRecallValidator,
+                                           ObjectMapper mapper) throws IOException {
         ObjectMapper strict = mapper.copy().enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        Manifest manifest = strict.readValue(manifestBytes, Manifest.class);
-        if (manifest.schemaVersion() != 1 || manifest.contracts() == null) throw new IllegalArgumentException("Unsupported learning-unit catalog");
+        JsonNode manifest = strict.readTree(manifestBytes);
+        Set<String> manifestFields = new java.util.HashSet<>();
+        if (manifest != null && manifest.isObject()) manifest.fieldNames().forEachRemaining(manifestFields::add);
+        if ((!manifestFields.equals(Set.of("schemaVersion", "contracts"))
+                && !manifestFields.equals(Set.of("schemaVersion", "contracts", "currentOfferBinding")))
+                || !manifest.path("schemaVersion").isIntegralNumber() || manifest.path("schemaVersion").intValue() != 1
+                || !manifest.path("contracts").isArray()) throw new IllegalArgumentException("Unsupported learning-unit catalog");
+        CurrentOfferBinding currentOffer = null;
+        String currentOfferFailure = null;
+        if (manifest.has("currentOfferBinding")) {
+            try {
+                JsonNode pointer = manifest.get("currentOfferBinding");
+                if (!pointer.isObject() || pointer.size() != 2 || !pointer.path("path").isTextual()
+                        || !pointer.path("sha256").isTextual() || !pointer.path("sha256").asText().matches("[0-9a-f]{64}")) {
+                    throw new IllegalArgumentException("Current offer binding requires exact path and SHA256 fields");
+                }
+                currentOffer = strict.treeToValue(pointer, CurrentOfferBinding.class);
+                checkedPath(currentOffer.path());
+            } catch (Exception invalid) {
+                currentOffer = null;
+                currentOfferFailure = "CURRENT_OFFER_BINDING_UNAVAILABLE: " + invalid.getMessage();
+            }
+        }
         List<LearningUnitDefinition> prepared = new ArrayList<>();
         Map<String, String> quarantined = new LinkedHashMap<>();
         Map<String, VerifiedInput> capturedInputs = new LinkedHashMap<>();
@@ -60,14 +127,20 @@ public final class LearningUnitCatalog {
         Map<String, com.skillpilot.backend.landscape.LearningGoal> masteryGoals = new LinkedHashMap<>();
         Map<LearningUnitDefinition.ContractRef, PreparedSource> sources = new LinkedHashMap<>();
         Map<String, String> preparedAliases = new LinkedHashMap<>();
+        Map<String, LearningUnitRecallBindings.FrozenRecall> preparedRecalls = new LinkedHashMap<>();
+        Map<String, Map<String, String>> preparedAssessmentMeanings = new LinkedHashMap<>();
+        Set<LearningUnitDefinition.ContractRef> activeRefs = new java.util.LinkedHashSet<>();
+        Map<LearningUnitDefinition.ContractRef, String> readinessFailures = new LinkedHashMap<>();
         Set<String> seen = new java.util.HashSet<>();
         // Historical admission wins even if a manifest accidentally lists a new
         // active candidate first. Relative archive order remains authoritative.
-        List<Entry> admissionOrder = new ArrayList<>(manifest.contracts());
-        admissionOrder.sort(java.util.Comparator.comparingInt(entry -> entry != null && "archived".equals(entry.status()) ? 0 : 1));
-        for (Entry entry : admissionOrder) {
-            String identity = entry == null ? "<null>" : entry.path();
+        List<JsonNode> admissionOrder = new ArrayList<>();
+        manifest.path("contracts").forEach(admissionOrder::add);
+        admissionOrder.sort(java.util.Comparator.comparingInt(entry -> "archived".equals(entry.path("status").asText()) ? 0 : 1));
+        for (JsonNode rawEntry : admissionOrder) {
+            String identity = rawEntry.path("path").isTextual() ? rawEntry.path("path").asText() : "<invalid-entry>";
             try {
+                Entry entry = strict.treeToValue(rawEntry, Entry.class);
                 if (entry == null || !Set.of("active", "archived").contains(entry.status()) || !seen.add(entry.path())) {
                     throw new IllegalArgumentException("Invalid/duplicate catalog entry");
                 }
@@ -103,30 +176,38 @@ public final class LearningUnitCatalog {
                     if (!pinned) throw new IllegalArgumentException("Bound source view bytes are not pinned: " + view.getKey());
                 }
                 requireInput(inputs, reviewPath(definition.reviewRef()));
+                Map<String, Map<String, String>> assessmentMeanings = new LinkedHashMap<>();
                 for (var claim : definition.assessmentClaims().entrySet()) {
                     var paths = entry.assessmentInputs().get(claim.getKey());
-                    if (paths == null) throw new IllegalArgumentException("Missing frozen normal task/rubric inputs");
-                    JsonNode task = strict.readTree(requireInput(inputs, paths.taskPath()));
-                    if (!task.isObject() || task.size() != 2 || !task.path("taskContent").isTextual()
-                            || !task.path("solutionContent").isTextual()) throw new IllegalArgumentException("Frozen task and solution pair is required");
-                    if (!LearningUnitSourceBindings.canonicalDigest(task).equals(claim.getValue().taskRevision())) {
-                        throw new IllegalArgumentException("Frozen task bytes differ from reviewed claim");
+                    LearningUnitAssessmentVariants.validateFrozen(claim.getKey(), claim.getValue(), paths,
+                            inputs, frozen.canonicalGoals(), strict);
+                    Map<String, String> meanings = new java.util.TreeMap<>();
+                    for (String covered : claim.getValue().coveredGoalIds()) {
+                        var goal = frozen.canonicalGoals().get(covered);
+                        if (goal == null) throw new CompletionCompilationException("ASSESSMENT_CLAIM_CONFLICT", "Claimed canonical goal is missing: " + covered);
+                        meanings.put(covered, LearningUnitSourceBindings.canonicalDigest(Map.of(
+                                "meaning", LearningUnitSourceBindings.meaning(goal), "resolvedKind", LearningUnitSourceBindings.resolvedKind(goal))));
                     }
-                    JsonNode rubric = strict.readTree(requireInput(inputs, paths.rubricPath()));
-                    if (!LearningUnitSourceBindings.canonicalDigest(rubric).equals(claim.getValue().rubricRevision())) {
-                        throw new IllegalArgumentException("Frozen normal rubric differs from reviewed claim");
+                    var earlier = preparedAssessmentMeanings.get(claim.getKey());
+                    if (earlier != null && !earlier.equals(meanings)) {
+                        throw new CompletionCompilationException("ASSESSMENT_MEANING_CONFLICT", "Frozen meanings of the full canonical claim changed: " + claim.getKey());
                     }
-                    requireInput(inputs, reviewPath(claim.getValue().reviewRef()));
+                    assessmentMeanings.put(claim.getKey(), Map.copyOf(meanings));
                 }
                 if (!entry.assessmentInputs().keySet().equals(definition.assessmentClaims().keySet())) {
                     throw new IllegalArgumentException("Frozen assessment inputs do not match own Q");
                 }
-                if (!entry.recallInputs().keySet().equals(Set.copyOf(definition.ownRecallGoalIds()))) {
-                    throw new IllegalArgumentException("Every own recall duty needs frozen deck/selection inputs");
+                if ((!definition.ownRecallGoalIds().isEmpty()
+                        && !LearningUnitRecallBindings.SEMANTICS.equals(entry.recallBindingSemantics()))
+                        || (definition.ownRecallGoalIds().isEmpty() && entry.recallBindingSemantics() != null)) {
+                    throw new CompletionCompilationException("INVALID_RECALL_BINDING", "Recall contracts need the explicitly supported immutable selection semantics");
                 }
-                for (var recall : entry.recallInputs().values()) {
-                    if (recall.isEmpty()) throw new IllegalArgumentException("Empty frozen recall input binding");
-                    for (String path : recall) requireInput(inputs, path);
+                var recalls = LearningUnitRecallBindings.validateFrozen(definition, frozen.canonicalGoals(), entry.recallInputs(), inputs, strict);
+                for (var recall : recalls.entrySet()) {
+                    var previous = preparedRecalls.get(recall.getKey());
+                    if (previous != null && !previous.sameOutcomeMeaning(recall.getValue())) {
+                        throw new CompletionCompilationException("RECALL_MEANING_CONFLICT", "Stable memory identity changed its deck, selected cards or card meaning: " + recall.getKey());
+                    }
                 }
                 Map<String, String> aliases = validateAliases(definition, frozen, inputs, strict);
                 for (var alias : aliases.entrySet()) {
@@ -140,9 +221,20 @@ public final class LearningUnitCatalog {
                 List<LearningUnitDefinition> candidate = new ArrayList<>(prepared);
                 candidate.add(definition);
                 compiler.validateCanonicalDefinitions(candidate);
-                if ("active".equals(entry.status())) activeSourceValidator.accept(definition);
+                if ("active".equals(entry.status())) {
+                    activeRefs.add(definition.ref());
+                    try {
+                        activeSourceValidator.accept(definition);
+                        for (var recall : recalls.values()) activeRecallValidator.validate(recall);
+                    } catch (Exception unavailable) {
+                        String code = unavailable instanceof CompletionCompilationException failure ? failure.code() : "CURRENT_SOURCE_UNAVAILABLE";
+                        readinessFailures.put(definition.ref(), code + ": " + unavailable.getMessage());
+                    }
+                }
                 prepared.add(definition);
                 preparedAliases.putAll(aliases);
+                preparedRecalls.putAll(recalls);
+                preparedAssessmentMeanings.putAll(assessmentMeanings);
                 sources.put(definition.ref(), new PreparedSource(entry.path(), frozen.canonicalGoals(), aliases));
             } catch (Exception invalid) {
                 String code = invalid instanceof CompletionCompilationException failure ? failure.code() : "INVALID_ARCHIVED_INPUT";
@@ -155,7 +247,13 @@ public final class LearningUnitCatalog {
             masteryGoals.putIfAbsent(id, sources.get(definition.ref()).canonicalGoals().get(id));
             aliases.putAll(sources.get(definition.ref()).aliases());
         }
-        return new LearningUnitCatalog(admitted, quarantined, masteryGoals, aliases);
+        Map<String, LearningUnitRecallBindings.FrozenRecall> recalls = new LinkedHashMap<>();
+        for (var definition : admitted) for (String id : definition.ownRecallGoalIds()) recalls.put(id, preparedRecalls.get(id));
+        Set<LearningUnitDefinition.ContractRef> admittedRefs = admitted.stream().map(LearningUnitDefinition::ref).collect(java.util.stream.Collectors.toSet());
+        activeRefs.retainAll(admittedRefs);
+        readinessFailures.keySet().retainAll(admittedRefs);
+        return new LearningUnitCatalog(admitted, quarantined, masteryGoals, aliases, recalls, activeRefs, readinessFailures,
+                currentOffer, currentOfferFailure);
     }
 
     private static List<LearningUnitDefinition> admitChildrenFirst(List<LearningUnitDefinition> prepared,
@@ -208,17 +306,39 @@ public final class LearningUnitCatalog {
     public CompiledLearningUnits compiled() { return compiled; }
     public Map<String, com.skillpilot.backend.landscape.LearningGoal> masteryGoals() { return masteryGoals; }
     public Map<String, String> resultAliases() { return resultAliases; }
+    public Map<String, LearningUnitRecallBindings.FrozenRecall> frozenRecallSelections() { return frozenRecallSelections; }
+    public Set<LearningUnitDefinition.ContractRef> activeContractRefs() { return activeContractRefs; }
+    public Map<LearningUnitDefinition.ContractRef, String> currentReadinessFailures() { return currentReadinessFailures; }
+    public CurrentOfferBinding currentOfferBinding() { return currentOfferBinding; }
+    public String currentOfferBindingFailure() { return currentOfferBindingFailure; }
 
-    public record Manifest(int schemaVersion, List<Entry> contracts) { }
+    public record Manifest(int schemaVersion, List<Entry> contracts,
+                           @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+                           CurrentOfferBinding currentOfferBinding) {
+        public Manifest(int schemaVersion, List<Entry> contracts) { this(schemaVersion, contracts, null); }
+    }
+    public record CurrentOfferBinding(String path, String sha256) { }
     public record Entry(String path, String sha256, String status, String sourceSnapshotPath, Map<String, String> inputs,
-                        Map<String, AssessmentInputs> assessmentInputs, Map<String, List<String>> recallInputs) {
+                        Map<String, AssessmentInputs> assessmentInputs, Map<String, List<String>> recallInputs,
+                        @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+                        String recallBindingSemantics) {
         public Entry {
             inputs = inputs == null ? Map.of() : Map.copyOf(inputs);
             assessmentInputs = assessmentInputs == null ? Map.of() : Map.copyOf(assessmentInputs);
             recallInputs = recallInputs == null ? Map.of() : Map.copyOf(recallInputs);
         }
+        public Entry(String path, String sha256, String status, String sourceSnapshotPath, Map<String, String> inputs,
+                     Map<String, AssessmentInputs> assessmentInputs, Map<String, List<String>> recallInputs) {
+            this(path, sha256, status, sourceSnapshotPath, inputs, assessmentInputs, recallInputs, null);
+        }
     }
-    public record AssessmentInputs(String taskPath, String rubricPath) { }
+    public record AssessmentInputs(String taskPath, String rubricPath,
+            @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
+            Map<String, TaskVariantInputs> taskVariants) {
+        public AssessmentInputs { taskVariants = taskVariants == null ? Map.of() : Map.copyOf(taskVariants); }
+        public AssessmentInputs(String taskPath, String rubricPath) { this(taskPath, rubricPath, Map.of()); }
+    }
+    public record TaskVariantInputs(String taskPath, String rubricPath) { }
     public record SourceSnapshot(int schemaVersion, String resolverRevision, List<SkillLandscape> landscapes,
                                  Map<String, String> compositionViewDigests, List<ResultAlias> resultAliases) {
         public SourceSnapshot { resultAliases = resultAliases == null ? List.of() : List.copyOf(resultAliases); }
@@ -315,11 +435,7 @@ public final class LearningUnitCatalog {
                 var exam = sourceGoal.getExamData();
                 var claim = definition.assessmentClaims().get(alias.canonicalGoalId());
                 if (exam == null || !alias.canonicalGoalId().equals(alias.assessmentMeaningRef())
-                        || !Set.copyOf(exam.getCoveredGoalIds() == null ? List.<String>of() : exam.getCoveredGoalIds())
-                                .equals(Set.copyOf(claim.coveredGoalIds()))
-                        || !LearningUnitSourceBindings.canonicalDigest(Map.of("taskContent", exam.getTaskContent(),
-                            "solutionContent", exam.getSolutionContent())).equals(claim.taskRevision())
-                        || !LearningUnitSourceBindings.canonicalDigest(exam.getScoring()).equals(claim.rubricRevision())) {
+                        || !LearningUnitSourceBindings.assessmentClaimMatches(claim, exam)) {
                     throw new CompletionCompilationException("RESULT_ALIAS_ASSESSMENT_CONFLICT", "Source pass does not establish this immutable normal assessment");
                 }
             }

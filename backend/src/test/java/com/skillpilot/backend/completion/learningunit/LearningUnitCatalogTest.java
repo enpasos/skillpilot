@@ -28,11 +28,58 @@ class LearningUnitCatalogTest {
     @Test
     void neverValidActiveUnitGetsNoRecognition() throws Exception {
         var archive = archive("active");
-        var loaded = LearningUnitCatalog.load(archive.manifest(), archive.files()::get,
-                ignored -> { throw new IllegalArgumentException("Active placement never matched"); }, mapper);
+        var original = mapper.readValue(archive.manifest(), LearningUnitCatalog.Manifest.class).contracts().getFirst();
+        var snapshot = (com.fasterxml.jackson.databind.node.ObjectNode) mapper.readTree(archive.files().get(original.sourceSnapshotPath()));
+        ((com.fasterxml.jackson.databind.node.ObjectNode) snapshot.path("landscapes").get(0)).putArray("goalPlacements");
+        archive.files().put(original.sourceSnapshotPath(), mapper.writeValueAsBytes(snapshot));
+        var inputs = new LinkedHashMap<>(original.inputs());
+        inputs.put(original.sourceSnapshotPath(), hash(archive.files().get(original.sourceSnapshotPath())));
+        var invalid = new LearningUnitCatalog.Entry(original.path(), original.sha256(), original.status(), original.sourceSnapshotPath(),
+                inputs, original.assessmentInputs(), original.recallInputs());
+        var loaded = LearningUnitCatalog.load(mapper.writeValueAsBytes(new LearningUnitCatalog.Manifest(1, List.of(invalid))), archive.files()::get,
+                ignored -> { throw new AssertionError("Invalid frozen source must not reach current readiness"); }, mapper);
         assertThat(loaded.definitions()).isEmpty();
         assertThat(loaded.compiled()).isNull();
         assertThat(loaded.quarantined()).hasSize(1);
+    }
+
+    @Test void currentViewChangeRetainsFrozenRecognitionAndReportsCurrentReadinessSeparately() throws Exception {
+        var archive = archive("active");
+        var loaded = LearningUnitCatalog.load(archive.manifest(), archive.files()::get,
+                ignored -> { throw new IllegalArgumentException("Current view changed"); }, mapper);
+        assertThat(loaded.quarantined()).isEmpty();
+        assertThat(loaded.definitions()).hasSize(1);
+        var ref = loaded.definitions().getFirst().ref();
+        assertThat(loaded.activeContractRefs()).containsExactly(ref);
+        assertThat(loaded.currentReadinessFailures()).containsEntry(ref, "CURRENT_SOURCE_UNAVAILABLE: Current view changed");
+        assertThat(new LearningUnitEvaluator().evaluate(loaded.compiled(), java.util.Set.of("Q")).recognizedGoalIds()).containsExactly("A");
+    }
+
+    @Test void malformedCurrentOfferPointerCannotWithdrawValidFrozenRecognition() throws Exception {
+        var archive = archive("archived");
+        for (var pointer : List.of(mapper.readTree("null"), mapper.readTree("42"),
+                mapper.valueToTree(Map.of("path", "../private", "sha256", "0".repeat(64))),
+                mapper.valueToTree(Map.of("path", "DE/Gymnasium/learning-units/offers.json", "sha256", "wrong")),
+                mapper.valueToTree(Map.of("path", "DE/Gymnasium/learning-units/offers.json", "sha256", "0".repeat(64), "unknown", true)))) {
+            var manifest = (com.fasterxml.jackson.databind.node.ObjectNode) mapper.readTree(archive.manifest());
+            manifest.set("currentOfferBinding", pointer);
+            var loaded = LearningUnitCatalog.load(mapper.writeValueAsBytes(manifest), archive.files()::get, ignored -> {}, mapper);
+            assertThat(loaded.quarantined()).isEmpty();
+            assertThat(loaded.currentOfferBinding()).isNull();
+            assertThat(loaded.currentOfferBindingFailure()).startsWith("CURRENT_OFFER_BINDING_UNAVAILABLE:");
+            assertThat(new LearningUnitEvaluator().evaluate(loaded.compiled(), java.util.Set.of("Q")).recognizedGoalIds()).containsExactly("A");
+        }
+    }
+
+    @Test void currentOfferPointerIsExposedWithoutReadingCurrentOfferBytesDuringFrozenAdmission() throws Exception {
+        var archive = archive("archived");
+        var oldManifest = mapper.readValue(archive.manifest(), LearningUnitCatalog.Manifest.class);
+        var pointer = new LearningUnitCatalog.CurrentOfferBinding("DE/Gymnasium/learning-units/current-offers.json", "0".repeat(64));
+        var manifest = new LearningUnitCatalog.Manifest(1, oldManifest.contracts(), pointer);
+        var loaded = LearningUnitCatalog.load(mapper.writeValueAsBytes(manifest), archive.files()::get, ignored -> {}, mapper);
+        assertThat(loaded.currentOfferBinding()).isEqualTo(pointer);
+        assertThat(loaded.currentOfferBindingFailure()).isNull();
+        assertThat(loaded.definitions()).hasSize(1);
     }
 
     @Test

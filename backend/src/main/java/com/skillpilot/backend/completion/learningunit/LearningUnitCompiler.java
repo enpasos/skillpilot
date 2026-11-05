@@ -29,6 +29,7 @@ public final class LearningUnitCompiler {
         Map<LearningUnitDefinition.ContractRef, LearningUnitDefinition> ordered = new TreeMap<>();
         Map<String, String> meanings = new HashMap<>();
         Map<String, LearningUnitDefinition.AssessmentClaim> assessments = new HashMap<>();
+        Map<String, Map<String, LearningUnitDefinition.AssessmentTaskVariant>> variants = new HashMap<>();
         Map<String, String> kinds = new HashMap<>();
         for (LearningUnitDefinition definition : definitions) {
             validate(definition);
@@ -51,6 +52,14 @@ public final class LearningUnitCompiler {
                     }
                     fail("ASSESSMENT_MEANING_CONFLICT", "Canonical assessment claim changed: " + id);
                 }
+                Map<String, LearningUnitDefinition.AssessmentTaskVariant> admitted = variants.computeIfAbsent(id, ignored -> new HashMap<>());
+                claim.taskVariants().forEach((locale, variant) -> {
+                    var earlier = admitted.putIfAbsent(locale, variant);
+                    if (earlier != null && (!earlier.taskRevision().equals(variant.taskRevision())
+                            || !earlier.rubricRevision().equals(variant.rubricRevision()))) {
+                        fail("ASSESSMENT_MEANING_CONFLICT", "Previously admitted task variant changed: " + id + "/" + locale);
+                    }
+                });
             });
         }
 
@@ -173,6 +182,12 @@ public final class LearningUnitCompiler {
             if (claim == null || !text(claim.taskRevision()) || !text(claim.rubricRevision()) || !text(claim.reviewRef())) {
                 fail("INVALID_ASSESSMENT_CLAIM", "Task, normal rubric and independent review revisions are required: " + id);
             }
+            claim.taskVariants().forEach((locale, variant) -> {
+                if (!"en".equals(locale) || variant == null || !text(variant.taskRevision())
+                        || !claim.rubricRevision().equals(variant.rubricRevision()) || !text(variant.reviewRef())) {
+                    fail("ASSESSMENT_VARIANT_REVIEW_REQUIRED", "A finite EN variant needs its exact task, shared normal rubric and independent review: " + id);
+                }
+            });
             Set<String> claimed = unique(claim.coveredGoalIds(), "canonical assessment coverage");
             Set<String> reachable = reach(graph, Set.of(id));
             reachable.remove(id);

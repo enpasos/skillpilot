@@ -1,5 +1,6 @@
 package com.skillpilot.backend.completion.learningunit;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,7 +71,17 @@ public record LearningUnitDefinition(
 
     /** The full canonical assessment claim remains identical in every scope variant. */
     public record AssessmentClaim(List<String> coveredGoalIds, String taskRevision, String rubricRevision,
-                                  String reviewRef) {
-        public AssessmentClaim { coveredGoalIds = copy(coveredGoalIds); }
+                                  String reviewRef, @JsonInclude(JsonInclude.Include.NON_EMPTY)
+                                  Map<String, AssessmentTaskVariant> taskVariants) {
+        public AssessmentClaim {
+            coveredGoalIds = copy(coveredGoalIds);
+            taskVariants = taskVariants == null ? Map.of() : Map.copyOf(taskVariants);
+        }
+        public AssessmentClaim(List<String> coveredGoalIds, String taskRevision, String rubricRevision,
+                               String reviewRef) {
+            this(coveredGoalIds, taskRevision, rubricRevision, reviewRef, Map.of());
+        }
     }
+
+    public record AssessmentTaskVariant(String taskRevision, String rubricRevision, String reviewRef) { }
 }

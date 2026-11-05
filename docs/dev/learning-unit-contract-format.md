@@ -47,12 +47,20 @@ Generation vermeidet das Kopieren desselben Curriculums für jede kleine Einheit
 Er enthält die für Normalisierung und Erwerbsbindung erforderlichen
 Landschaften, Program-/Placementdaten und Kompositionsbindungen.
 
-Aktive Verträge werden zusätzlich gegen die aktuelle Quelle geprüft.
-Archivierte gültige Verträge werden gegen ihre eingefrorenen Quellen geprüft;
-ein späterer Graph darf alte Ergebnisse nicht neu auslegen. Eine neue ungültige
-Revision wird isoliert zurückgewiesen und darf keine gültige ältere Anerkennung
-oder ein unabhängiges Fach ausfallen lassen. Historische Vertragsbedeutungen
-haben bei Konflikten Vorrang vor neuen Kandidaten.
+Aktive und archivierte Einträge dieses Runtimekatalogs sind bereits unabhängig
+geprüfte Verträge. Ungeprüfte Kandidaten bleiben in der Autorierungsqueue.
+Beide Eintragsarten werden gegen ihre gepinnten eingefrorenen Quellen geprüft;
+ein späterer Graph darf alte Ergebnisse nicht neu auslegen. Eine ungültige
+neue Eingabe wird isoliert zurückgewiesen und darf keine gültige ältere
+Anerkennung oder ein unabhängiges Fach ausfallen lassen. Historische
+Vertragsbedeutungen haben bei Konflikten Vorrang vor neuen Kandidaten.
+
+Davon getrennt wird geprüft, ob ein Vertrag heute im konkreten Angebot
+ausgewählt und bedient werden kann. Eine veränderte Navigation oder Platzierung
+kann diese aktuelle Bindung ungültig machen, entzieht aber keine gültige
+Anerkennung. Ebenso darf eine unter derselben Ziel-ID veränderte Prüfungsaufgabe
+keine neuen Ergebnisse mit der alten Ergebnisbedeutung schreiben. Diese
+Identitätsprüfung ist keine neue Voraussetzungssperre für Direktprüfungen.
 
 Eigene Zielbedeutungen werden als festes Datenobjekt und Digest gebunden.
 Die aufgelöste fachliche Rolle wird gesondert gegen die autoritative Quelle
@@ -67,10 +75,57 @@ Curriculum-Mapping darf keinen früheren Verständnisabschluss zum Prüfungspass
 machen. Die erste Einheit benötigt weder Ergebnis-Aliasse noch englische
 Aufgabenvarianten oder eigene Karten.
 
+Eine tatsächlich ausgelieferte englische Aufgabe wird durch die optionale
+endliche Map `assessmentClaims[Q].taskVariants.en` gebunden. Sie nennt den Digest
+des wirklichen Aufgaben-/Lösungspaars, die unveränderte normale Rubrik und eine
+gepinnt strukturierte unabhängige Same-Claim-Prüfung. Diese Prüfung bindet auch
+die vollständigen kanonischen Claim-IDs und deren Kompetenzbedeutungen.
+Die eigene normale Bestehensentscheidung bleibt binär; eine Sprachvariante
+erzeugt weder eine zusätzliche Bestehensstufe noch eine Lernerqualifikation.
+
+Eine Karteneinheit bindet ihre wirklich ausgewählten stabilen Karten-IDs, die
+Deckidentität und die jeweilige Frage-/Antwortbedeutung für Deutsch und Englisch.
+Statische Aufnahme und Runtime verwenden denselben vorhandenen Tag-Selektor.
+Verlässliche Recall-Ergebnisse werden gegen diese eingefrorene Auswahl
+ausgewertet; später fällige Karten oder reine Darstellungsänderungen am Deck
+öffnen sie nicht rückwirkend. Eine andere erforderliche Kartenauswahl braucht
+eine ausdrückliche Inhalts- und Identitätsentscheidung. Vor der ersten solchen
+Einheit sind die Auswahlbindung und ihre Paketkompatibilität nachzuweisen.
+Katalogeinträge mit eigenen Karten verlangen dafür ausdrücklich
+`recallBindingSemantics=verified-recall-selection-v1`. Ein alter strikter
+Consumer darf die Auswahlbeschreibung nicht als beliebige Deckdatei ignorieren.
+
 Die Objekt-Hashes verwenden sortierte JSON-Schlüssel, UTF-8, kompakte
 Trennzeichen und explizite Nullwerte der festen Bedeutungsfelder. Dateihashes
 binden genaue Bytes. Ein Hash beweist Integrität, keine fachliche Qualität:
 die unabhängige Gegenbeispielprüfung der normalen Bestehensrubrik bleibt nötig.
+
+## Aktuelle Angebotsbindung
+
+Der zusätzliche Katalogzeiger `currentOfferBinding: {path, sha256}` bindet eine
+gemeinsame Angebotsgeneration. Sie enthält schon beim Teilrollout alle 182
+erfassten Konfigurationen. Der Schlüssel verwendet die nativen Dimensionen
+Basislehrplan, Fachlandschaft, Schulform, Jurisdiktion, Stufe, Dauer und
+Kursprofil. Fokus, Sprache und Lernenden-ID gehören nicht hinein.
+
+Jede Zeile nennt die ausdrücklich ausgewählten Wurzelverträge, die tatsächlich
+verwendeten View-IDs und Digests der exakten atomaren Target- und
+`prerequisiteOnly`-Mengen. Der normale Backendprojektor liefert die Vergleichsdaten.
+Es werden keine Einheiten allein deshalb gewählt, weil ihre Ziele zufällig
+eine Teilmenge des aktuellen Umfangs sind. Die direkte Erwerbszuordnung muss
+innerhalb der ausgewählten Hierarchie eindeutig sein.
+
+`coverage=partial` erlaubt eine disjunkte Teilabdeckung einschließlich leerer
+Wurzelliste. `coverage=complete` verlangt die exakte vollständige Zielmenge
+einschließlich Q, K und Orientierung. Der Nachweis für S4 verlangt vollständige
+Abdeckung jeder erfassten Konfiguration und aller 807 ursprünglichen
+Fachkompetenzen; erledigte Autorenpakete allein genügen nicht.
+
+Gemeinsame notwendige Runtimeinputs werden einmal gebunden und pro betroffener
+Zeile geprüft. Der umfangreiche native Quellenbeleg dient separat der
+Reproduktion und Releaseprüfung. Er wird nicht je Lernendenrequest erneut
+aufgebaut. Eine ungültige Angebotszeile liefert einen getrennten
+`offerBinding`-Status; gültige globale Anerkennung bleibt erhalten.
 
 ## Ein gemeinsamer Ergebnisstand
 
@@ -100,6 +155,14 @@ Die neue Bedeutung braucht eine explizite Paketfähigkeit mit vollständigen
 Verträgen und Eingabebytes. Ein älterer Consumer darf sie nicht stillschweigend
 ignorieren. Der aktuelle Export-/Importpfad muss die neue Bedeutung erhalten;
 die alten veröffentlichten Paketprofile und Artefakte bleiben unverändert.
+
+Für Angebotsbindungen kommt die verpflichtende Fähigkeit
+`learningUnitOfferBindingsV1` hinzu. Innerhalb Runtime 1.2 erhält sie ein
+ausdrücklich benanntes zusätzliches Schema-/Profilpaar; vorhandene
+1.2-Schemas und Profile bleiben für die alten Pakete bytegenau erhalten.
+Ein Consumer ohne diese Fähigkeit muss das neue Paket abweisen. Der
+negative Kompatibilitätstest gehört zur Abnahme; ein neuer optionaler
+JSON-Abschnitt allein würde stilles Ignorieren nicht zuverlässig verhindern.
 
 Vor einer Fertigmeldung sind die echten nativen Angebote und ihre
 Erwerbs-/Inhaltsbindungen, Archiv-/Fehlerisolation, SRS-/Cacheinvalidierung,

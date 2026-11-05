@@ -90,13 +90,13 @@ public final class LearningUnitSourceBindings {
                 if (!canonicalClaim.equals(Set.copyOf(claim.coveredGoalIds()))) {
                     fail("ASSESSMENT_CLAIM_CONFLICT", "Unit claim differs from the frozen canonical assessment claim: " + id);
                 }
-                if (exam == null || !Objects.equals(claim.taskRevision(), canonicalDigest(Map.of(
-                        "taskContent", exam.getTaskContent(), "solutionContent", exam.getSolutionContent())))
-                        || !Objects.equals(claim.rubricRevision(), canonicalDigest(exam.getScoring()))) {
-                    fail("STALE_ASSESSMENT_BINDING", "Active normal task or rubric differs: " + id);
-                }
-                if (exam.getTaskContentEn() != null || exam.getSolutionContentEn() != null) {
-                    fail("ASSESSMENT_VARIANT_REVIEW_REQUIRED", "Every delivered translated task variant needs a binding: " + id);
+                if (!assessmentClaimMatches(claim, exam)) {
+                    if (exam != null && (exam.getTaskContentEn() != null && !exam.getTaskContentEn().isBlank()
+                            || exam.getSolutionContentEn() != null && !exam.getSolutionContentEn().isBlank())
+                            && !claim.taskVariants().containsKey("en")) {
+                        fail("ASSESSMENT_VARIANT_REVIEW_REQUIRED", "Every delivered translated task variant needs a binding: " + id);
+                    }
+                    fail("STALE_ASSESSMENT_BINDING", "Active normal task, canonical claim, rubric or reviewed variant differs: " + id);
                 }
             }
         }
@@ -106,6 +106,12 @@ public final class LearningUnitSourceBindings {
         } else if (!definition.atomicPrerequisites().isEmpty()) {
             fail("STALE_REQUIREMENTS_BINDING", "An aggregate cannot own an unrelated atomic snapshot");
         }
+    }
+
+    /** Result-identity check for normal assessment routes, independent of current placement/view readiness. */
+    public static boolean assessmentClaimMatches(LearningUnitDefinition.AssessmentClaim claim,
+                                                 com.skillpilot.backend.landscape.ExamData exam) {
+        return LearningUnitAssessmentVariants.matches(claim, exam);
     }
 
     /** Fixed meaning fields, sorted JSON keys, UTF-8, explicit nulls; excludes QA and visualization. */
