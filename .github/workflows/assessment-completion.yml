@@ -51,7 +51,7 @@ concurrency:
 jobs:
   authoring-and-ui:
     name: Completion profiles, shared fixtures and Cockpit
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     defaults:
       run:
@@ -117,7 +117,7 @@ jobs:
 
   backend-and-postgres:
     name: Completion core, HTTP browser, sessions and PostgreSQL snapshots
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@v6

@@ -26,7 +26,7 @@ concurrency:
 jobs:
   package-ci:
     name: Full standalone JSON package CI
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       SKILLPILOT_SOURCE_PDF_MODE: committed-bindings
     steps:

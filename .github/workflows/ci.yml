@@ -285,7 +285,7 @@ jobs:
 
   goal-book-publication:
     name: Learning-goal book build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         working-directory: app
@@ -347,7 +347,7 @@ jobs:
   frontend-ci:
     name: Application frontend CI
     needs: goal-book-publication
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         working-directory: app
@@ -493,7 +493,7 @@ jobs:
   graph-validation:
     name: Curriculum CI
     needs: goal-book-publication
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         working-directory: app
