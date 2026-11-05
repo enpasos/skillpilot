@@ -1,7 +1,7 @@
 # Curriculum-Pakete sicher provisionieren
 
 Dieses Runbook beschreibt die lokale Installation und Aktivierung bereits gebauter
-`full-standalone-v1`-JSON-Pakete. Der Provisioner ist die einzige schreibende
+eigenständiger JSON-Pakete. Der Provisioner ist die einzige schreibende
 Komponente des Package-Stores. Die SkillPilot-Runtime liest ausschließlich den
 exakt gepinnten aktiven Lock und verändert den Store nicht.
 
@@ -100,6 +100,26 @@ Runtime unter getrennten OS-Identitäten laufen; Schreibrechte auf Store und Loc
 gehören ausschließlich zur Provisioning-/Deployment-Autorität. Paketmodus fällt bei
 fehlender oder beschädigter Evidenz nicht auf Repository, Classpath oder Netzwerk
 zurück.
+
+## Lerneinheitenangebote in Runtime 1.2
+
+`full-standalone-learning-unit-offers-v1` verlangt ausdrücklich
+`learningUnitOfferBindingsV1`. Hier verwendet die Runtime für Scope- und
+Aliasauflösung die genauen, über Manifest und Inputwrapper authentifizierten
+nativen Mappingdateien mit demselben Parser wie im Repositorybetrieb. Die
+kompilierten Mappings bleiben geprüfte Publikations-/Quellenbelege.
+`runtimeRequired` fordert ihre Verfügbarkeit; es erklärt die Reviewrelation
+nicht zur operativen Relation. Ältere S2-Pakete ohne diese Fähigkeit behalten
+ihren bisherigen Pfad. Ein aktuelles Mapping erzeugt keinen Ergebnis-Alias;
+eine ungültige Angebotsbindung entzieht kein gültiges globales I.
+
+Die abgeleitete Entry-Defaultsicht dient nur der Navigation zum unveränderten
+Mathematikbestand. Sie fügt keine Mathematikziele hinzu und erweitert keinen
+fachlichen Zielumfang. Für den Offer-Pfad sind die tatsächlichen
+Projektionen des installierten Pakets mit dem nativen Angebotsstand zu
+vergleichen; ein gültiges ZIP allein belegt diese Runtimeparität nicht.
+Die [Vertragsbindung](../dev/learning-unit-contract-format.md) beschreibt die
+getrennten Bedeutungen und Eingaben.
 
 ## Qualitätssicherung
 

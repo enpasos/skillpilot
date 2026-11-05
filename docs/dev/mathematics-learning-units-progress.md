@@ -25,7 +25,7 @@ vollständige Mathematik-Umsetzung. Ein erster Vertrag ist ein Zwischenergebnis.
 | --- | --- | --- |
 | S2 | Gebundener Skalarprodukt-/Projektionsvertrag mit zwei eigenen Zielen, unabhängiger KI-Inhaltsprüfung und unverändertem Prüfungsanspruch; native Prüfung aller 182 Angebote ohne Target-/Q-/K-/Supportdelta, Einheit in genau 42 passenden Angeboten. Daten und Quellen in `8481434d48` gesichert. | Eine erste Einheit ist kein vollständiger Mathematikabschluss. |
 | S3 | Gemeinsame Runtime-, Cockpit-, Coach-, Frontier- und Planintegration in `f5a61af0dd` gesichert und gepusht. 257 lokale Backendtests in 18 Suiten bestanden. Der tatsächliche äußere Datenbanksnapshot für WebGUI und Provider wurde in `1509ba001e` ergänzt und mit HTTP-/JDBC-Prüfungen belegt. | Exakte terminale Kandidaten-CI und abschließendes Integrationsreview. Deployment und echte Hostabnahme sind gesonderte Nachweise. |
-| S4 | [Angebotsinventar](learning-units-mathematics-offering-inventory.md): 182 Konfigurationen und 807 ursprüngliche Fachkompetenzen. Neun unabhängig inhaltlich geprüfte Einheiten binden zehn dieser Kompetenzen. Der aktuelle [native Nachweis](learning-units-mathematics-batch-a-native-proof.json) prüft alle 182 Projektionen und die neun tatsächlichen Verträge. | Die übrigen 797 Kompetenzen fachlich binden; zwölf bestehende Hierarchiefälle korrigieren; vollständige Karten-/Sprach-/Angebotsbindung, Paketeinstiegsparität, ergänzende Einheitskarte und aktuelle QA-/M7-/Releaseabnahme nachweisen. |
+| S4 | [Angebotsinventar](learning-units-mathematics-offering-inventory.md): 182 Konfigurationen und 807 ursprüngliche Fachkompetenzen. Der Autorierungsstand umfasst 21 unabhängig inhaltlich geprüfte Einheiten mit 27 dieser Kompetenzen. Der [native Nachweis](learning-units-mathematics-batch-a-native-proof.json) und die [Parität des tatsächlich installierten Pakets](learning-units-mathematics-installed-offer-parity.json) belegen den vorherigen Neun-Einheiten-Stand. | Die übrigen 780 Kompetenzen fachlich binden; die zwölf neuen Verträge nativ und in der aktuellen Angebotsbindung abnehmen; zwölf bestehende Hierarchiefälle korrigieren; vollständige Karten-/Sprach-/Angebotsbindung und aktuelle QA-/M7-/Releaseabnahme nachweisen. |
 
 Der fixierte Angebotsnenner umfasst die Vereinigungsmenge aus 140 nativen
 Planner-Konfigurationen und 154 GUI-Konfigurationen mit 112 gemeinsamen
@@ -70,6 +70,23 @@ ursprünglichen Fachkompetenzen gebunden. Ein bestandener eigener Prüfungssatz
 erkennt jeweils genau die eigenen Fachziele an; bei leerem M entsteht keine
 Anerkennung, und explizite Fachziele allein bestehen keine offene Prüfung.
 
+Der folgende Block ergänzt zwölf fachlich freigegebene Verträge für 17 weitere
+Fachkompetenzen, unter anderem zu Pythagorasbeweisen, räumlichen Spiegelungen,
+affinen Fixelementen, Volumenvergleichen und Lagebeziehungen. Die vollständigen
+Review-Eingaben stimmen mit dem unabhängigen Astra-Review überein. Die 38
+entfernten redundanten Voraussetzungskanten erhalten nach Mengenvergleich die
+gesamte transitive Relation aller 980 aktuellen atomaren Ziele. Das ist noch
+keine Freigabe neuer aktueller Angebote: Deren konkrete Vertragsauswahl und
+native Laufzeitprüfung folgen gesondert.
+
+Drei geprüfte Kandidaten bleiben zurückgestellt: Bei einer Ableitungsaufgabe
+müssen die wesentlichen Diagrammdateien vollständig an Aufgabe und Auslieferung
+gebunden werden. Bei Mittelpunkt und Rechtwinkligkeit konnte die bisherige
+normale Bestehensregel eine wesentliche Teilkompetenz auslassen; zum Mittelpunkt
+ist außerdem die eigene Abrufpflicht korrekt aufzuteilen. Ein solches Ergebnis
+wird weder durch einen aktualisierten Hash noch durch pauschal 100 Prozent
+Bestehensanforderung repariert.
+
 Die neue Monotonieprüfung wird in 118 Angeboten als Ziel und in elf weiteren
 als Unterstützung eingeordnet. Für ihr bereits vorhandenes Ableitungsziel
 wurde anhand der Quellen in genau elf Sek-I-Konfigurationen die bisherige
@@ -85,7 +102,12 @@ Bundesland, Stufe, Dauer und Kursprofil ausgewählt. Diese Bindung enthält alle
 erzeugt keine Anerkennung und entzieht keine gültige historische Anerkennung.
 Ein neuer eigenständiger Mathematik-Paketeinstieg erhält eine eigene Identität;
 der bisherige Gymnasialeinstieg mit allen Fächern wird dafür nicht verkürzt.
-Die tatsächliche Gleichheit aller 182 Paketprojektionen ist noch nachzuweisen.
+Für den eingefrorenen Neun-Einheiten-Stand ist die tatsächliche Gleichheit aller
+182 Projektionen des installierten Pakets inzwischen nachgewiesen. Verglichen
+wurden Ziele, Unterstützung, Mathematiksichten, Vertragsauswahl und volle atomare
+Voraussetzungen. Eine aktuelle Angebotsbindung darf gültige historische
+Anerkennung nicht entziehen. Operative native Mappings und kompilierte
+Publikations-/Quellenbelege behalten dabei ihre verschiedenen Bedeutungen.
 
 ## Verbindliche technische Grenzen
 
@@ -151,6 +173,15 @@ bestanden. Diese eingefrorene Evidenz beschreibt den S2-Datenstand; spätere
 Inhaltserweiterungen brauchen neue Paketnachweise. Die offene Freigabe zur
 Weiterveröffentlichung wird dadurch nicht ersetzt. Paketformat 1.2 ist ein
 neuer unveröffentlichter Kandidat; veröffentlichte ältere Formate bleiben erhalten.
+
+Ein zweiter, gesonderter Paketnachweis umfasst den Neun-Einheiten-Stand mit dem
+eigenen Mathematikeinstieg: 1.255 Ziele in zwei Landschaften, 23 Program Units,
+322 Placements und 98 Sichten. Das fertige ZIP bestand seine sechs Prüfungen
+einschließlich Assetbytes und wurde in einem neuen privaten Store installiert.
+Der echte installierte Backendpfad reproduziert alle 182 nativen Projektionen.
+Die abschließende Prüfung mit dem gepinnten isolierten Verbraucher läuft noch;
+das ZIP ist nicht als veröffentlicht freigegeben. Die zwölf danach autorierten
+Verträge gehören nicht zu diesem eingefrorenen Paketnachweis.
 
 Claude **1.1.13 ist bereits veröffentlicht**. Die neue Coachsemantik wird für
 einen lokalen Nachfolgekandidaten **1.1.14** vorbereitet; veröffentlichte Bytes

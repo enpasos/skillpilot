@@ -127,6 +127,25 @@ Reproduktion und Releaseprüfung. Er wird nicht je Lernendenrequest erneut
 aufgebaut. Eine ungültige Angebotszeile liefert einen getrennten
 `offerBinding`-Status; gültige globale Anerkennung bleibt erhalten.
 
+Für Pakete mit `learningUnitOfferBindingsV1` verwendet die Runtime die nativen
+Mappingdateien für operative Scope- und Aliasauflösung. Ihre Bytes und logischen
+Quellpfade sind durch Manifestinventar, Inputwrapper und Angebotsbindung
+authentifiziert. Derselbe Parser wie im Repositorybetrieb wertet sie aus.
+Die kompilierten `source-to-canonical-mappings` bleiben dagegen geprüfte
+Publikations- und Quellenbelege; ihre Reviewrelation muss nicht mit der nativen
+operativen Relation übereinstimmen. `runtimeRequired` verlangt Vorhandensein und
+Verfügbarkeit des Artefakts, nicht Gleichheit dieser beiden Relationen.
+Der bisherige S2-/Paketpfad ohne diese Fähigkeit bleibt unverändert. Laufende
+Mappings erzeugen keine neuen Ergebnis-Aliasse: Dafür gelten weiterhin die
+eingefrorenen Ergebnisbindungen. Eine ungültige aktuelle Angebotsbindung zieht
+gültiges globales I nicht zurück.
+
+Die Defaultsicht des getrennten Paketeinstiegs wird aus dessen geprüfter
+Definition abgeleitet. Sie navigiert zur unveränderten Mathematiklandschaft und
+fügt weder Mathematikziele noch einen weiteren fachlichen Umfang hinzu. Die
+Bedienfolge und die getrennten Paketnachweise stehen im
+[Provisionierungsrunbook](../production-pipelines/curriculum-package-provisioning.md).
+
 ## Ein gemeinsamer Ergebnisstand
 
 Der statische Compiler arbeitet unabhängig von Lernenden. Ein kohärenter
