@@ -18,6 +18,17 @@ export interface ReviewedRequiresClosureEntryLike {
   requiredByGoalId?: string
 }
 
+/** Scope IDs belong to one validated native projection. A recursive branch may
+ * only narrow this set; a new consumer never resets its original scope. */
+export interface ReviewedDemandScopeAdapter {
+  initialTargetScopeIds: (goalId: string) => ReadonlySet<string>
+  reviewedDemandScopeIds: (
+    prerequisiteGoalId: string,
+    reviewedConsumerGoalId: string,
+    candidateScopeIds: ReadonlySet<string>,
+  ) => ReadonlySet<string>
+}
+
 interface CheckerOptions<CanonicalGoal> {
   landscapeId: string
   jurisdiction: string
@@ -27,6 +38,8 @@ interface CheckerOptions<CanonicalGoal> {
   isEligibleCanonicalGoal: (goal: CanonicalGoal | undefined) => boolean
   /** When supplied, the actual scope witness is mandatory even for a direct edge. */
   hasReviewedDemandWitness?: (prerequisiteGoalId: string, reviewedConsumerGoalId: string) => boolean
+  /** When supplied, no legacy boolean or direct-edge annotation can replace it. */
+  demandScopeAdapter?: ReviewedDemandScopeAdapter
 }
 
 export function sourceCoverageSurrogateKey(
@@ -55,6 +68,7 @@ export function createReviewedRequiresClosureCoverageChecker<CanonicalGoal>({
   surrogateEntriesByKey,
   isEligibleCanonicalGoal,
   hasReviewedDemandWitness,
+  demandScopeAdapter,
 }: CheckerOptions<CanonicalGoal>): {
   hasCoverageBackedJurisdictionEvidence: (goal: SourceCoverageGoalLike) => boolean
   hasReviewedRequiresClosureSurrogateEvidence: (goal: SourceCoverageGoalLike) => boolean
@@ -63,16 +77,21 @@ export function createReviewedRequiresClosureCoverageChecker<CanonicalGoal>({
 
   const hasCoverageBackedJurisdictionEvidence = (
     goal: SourceCoverageGoalLike,
-    visitedGoalIds: Set<string> = new Set(),
+    visitedGoalIds: ReadonlySet<string>,
+    candidateScopeIds?: ReadonlySet<string>,
   ): boolean => {
+    if (demandScopeAdapter && !candidateScopeIds?.size) return false
     if (hasDirectSourceCoverageEvidence(goal, jurisdiction)) return true
-    return hasReviewedRequiresClosureSurrogateEvidence(goal, visitedGoalIds)
+    return hasReviewedRequiresClosureSurrogateEvidence(goal, visitedGoalIds, candidateScopeIds)
   }
 
   const hasReviewedRequiresClosureSurrogateEvidence = (
     goal: SourceCoverageGoalLike,
-    visitedGoalIds: Set<string> = new Set(),
+    visitedGoalIds: ReadonlySet<string>,
+    candidateScopeIds?: ReadonlySet<string>,
   ): boolean => {
+    if (demandScopeAdapter && (!candidateScopeIds?.size || goal.goalType !== 'atomic'
+      || !isEligibleCanonicalGoal(canonicalGoalById.get(goal.goalId)))) return false
     const entries = surrogateEntriesByKey.get(
       sourceCoverageSurrogateKey(landscapeId, goal.goalId, jurisdiction),
     ) ?? []
@@ -95,21 +114,33 @@ export function createReviewedRequiresClosureCoverageChecker<CanonicalGoal>({
         && evidence.dimension === 'jurisdiction'
         && evidence.value === jurisdiction
         && evidence.source === `required by ${requiredByGoalId}`)
-      if (hasReviewedDemandWitness
+      let nextScopeIds = candidateScopeIds
+      if (demandScopeAdapter) {
+        const reviewed = demandScopeAdapter.reviewedDemandScopeIds(
+          goal.goalId, requiredByGoalId, candidateScopeIds!,
+        )
+        nextScopeIds = new Set([...candidateScopeIds!].filter(id => reviewed.has(id)))
+        if (nextScopeIds.size === 0) return false
+      } else if (hasReviewedDemandWitness
         ? !hasReviewedDemandWitness(goal.goalId, requiredByGoalId)
         : !hasActiveRequiresEvidence) return false
 
       return hasCoverageBackedJurisdictionEvidence(
         requiredByGoal,
         new Set([...visitedGoalIds, goal.goalId]),
+        nextScopeIds,
       )
     })
   }
 
   return {
     hasCoverageBackedJurisdictionEvidence: (goal) =>
-      hasCoverageBackedJurisdictionEvidence(goal),
+      // Genuine direct source evidence does not require a surrogate route.
+      hasDirectSourceCoverageEvidence(goal, jurisdiction)
+      || hasReviewedRequiresClosureSurrogateEvidence(goal, new Set([goal.goalId]),
+        demandScopeAdapter?.initialTargetScopeIds(goal.goalId)),
     hasReviewedRequiresClosureSurrogateEvidence: (goal) =>
-      hasReviewedRequiresClosureSurrogateEvidence(goal),
+      hasReviewedRequiresClosureSurrogateEvidence(goal, new Set([goal.goalId]),
+        demandScopeAdapter?.initialTargetScopeIds(goal.goalId)),
   }
 }

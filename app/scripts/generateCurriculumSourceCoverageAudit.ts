@@ -9,7 +9,7 @@ import { buildApplicabilityCompilation } from './applicabilityCompiler'
 import { collectAuthoritativeTargetAtomicGoalIds } from './compositionViewSourceCoverage'
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
 import { nativeTargetsByJurisdiction } from './nativeProjectionEvidence'
-import { nativeTargetReviewedDemandWitness, readNativeSourceCoverageAdapters } from './nativeSourceCoverage'
+import { createNativeSourceCoverageScopeAdapter, NATIVE_MATH_SOURCE_COVERAGE_LANDSCAPE, readNativeSourceCoverageAdapters } from './nativeSourceCoverage'
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
@@ -334,6 +334,9 @@ function buildAudit(): SourceCoverageAudit {
       goal.goalType === 'atomic' && isCurriculumSourceCoverageGoal(goalById.get(goal.goalId)))
     const jurisdictions = report.projections.map((projection) => {
       const native = nativeProjectionAdapters.get(report.landscapeId)
+      if (report.landscapeId === NATIVE_MATH_SOURCE_COVERAGE_LANDSCAPE && !native) {
+        throw new Error('Mathematics source coverage requires the native scope adapter')
+      }
       const coverageEvidence = createReviewedRequiresClosureCoverageChecker({
         landscapeId: report.landscapeId,
         jurisdiction: projection.value,
@@ -341,8 +344,11 @@ function buildAudit(): SourceCoverageAudit {
         canonicalGoalById: goalById,
         surrogateEntriesByKey,
         isEligibleCanonicalGoal: isCurriculumSourceCoverageGoal,
-        hasReviewedDemandWitness: native ? (prerequisiteId, consumerId) => nativeTargetReviewedDemandWitness(native, projection.value,
-          consumerId, prerequisiteId, id => isCurriculumSourceCoverageGoal(goalById.get(id))) !== null : undefined,
+        demandScopeAdapter: native ? createNativeSourceCoverageScopeAdapter(native, projection.value,
+          id => isCurriculumSourceCoverageGoal(goalById.get(id))
+            && (goalById.get(id)?.contains?.length ?? 0) === 0
+            && (goalById.get(id)?.semanticKind == null
+              || goalById.get(id)?.semanticKind === 'curricularAtomic')) : undefined,
       })
       const sourceBackedAtomicGoals = atomicGoals.filter((goal) =>
         coverageEvidence.hasCoverageBackedJurisdictionEvidence(goal))

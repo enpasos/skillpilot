@@ -25,7 +25,7 @@ import { generateDeepUnderstandingRollout, type DeepUnderstandingRolloutReport }
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
 import { shouldRequireCanonicalMathSek1AssessmentEndpoint } from './lib/canonicalMathSek1ReviewedExamRoutes'
 import { createRepositorySourceAvailability } from './repositorySourceAvailability'
-import { nativeSourceCoverageTargetSets, nativeTargetReviewedDemandWitness, readNativeSourceCoverageAdapters } from './nativeSourceCoverage'
+import { createNativeSourceCoverageScopeAdapter, NATIVE_MATH_SOURCE_COVERAGE_LANDSCAPE, nativeSourceCoverageTargetSets, readNativeSourceCoverageAdapters } from './nativeSourceCoverage'
 import type { NativeProjectionEvidence } from './nativeProjectionEvidence'
 import { filterFreshMathWarningAcceptances } from './reviewedMathApplicabilityWarning'
 
@@ -4109,6 +4109,9 @@ function createCoverageEvidenceChecker(
   hasCoverageBackedJurisdictionEvidence: (goal: CoverageGoalReport) => boolean
   hasReviewedRequiresClosureSurrogateEvidence: (goal: CoverageGoalReport) => boolean
 } {
+  if (report.landscapeId === NATIVE_MATH_SOURCE_COVERAGE_LANDSCAPE && !native) {
+    throw new Error('Mathematics source coverage requires the native scope adapter')
+  }
   return createReviewedRequiresClosureCoverageChecker({
     landscapeId: report.landscapeId,
     jurisdiction,
@@ -4116,11 +4119,13 @@ function createCoverageEvidenceChecker(
     canonicalGoalById,
     surrogateEntriesByKey,
     isEligibleCanonicalGoal: isCurriculumSourceCoverageGoal,
-    hasReviewedDemandWitness: native ? (prerequisiteId, consumerId) => nativeTargetReviewedDemandWitness(
-      native, jurisdiction, consumerId, prerequisiteId,
+    demandScopeAdapter: native ? createNativeSourceCoverageScopeAdapter(
+      native, jurisdiction,
       id => isCurriculumSourceCoverageGoal(canonicalGoalById.get(id))
-        && (canonicalGoalById.get(id)?.contains?.length ?? 0) === 0,
-    ) !== null : undefined,
+        && (canonicalGoalById.get(id)?.contains?.length ?? 0) === 0
+        && (canonicalGoalById.get(id)?.semanticKind == null
+          || canonicalGoalById.get(id)?.semanticKind === 'curricularAtomic'),
+    ) : undefined,
   })
 }
 
