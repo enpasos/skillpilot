@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import hashlib
+from fnmatch import fnmatchcase
 from functools import lru_cache
 from pathlib import Path
 import re
@@ -16,19 +17,97 @@ SOURCE_BUDGET_BYTES = 30_400_000_000
 GIT_RESERVE_BYTES = 15 * 1024 ** 3
 BUILD_RESERVE_BYTES = 8 * 1024 ** 3
 BINARY_SUFFIXES = ('png', 'jpg', 'jpeg', 'pdf', 'zip')
-SPARSE_PATTERNS = ('/*', *(f'!/curricula/**/quality/**/*.{suffix}' for suffix in BINARY_SUFFIXES))
+BASE_SPARSE_PATTERNS = ('/*', *(f'!/curricula/**/quality/**/*.{suffix}' for suffix in BINARY_SUFFIXES))
 HISTORICAL_QUALITY_BINARY = re.compile(r'^curricula/(?:.*/)?quality/.*\.(?:png|jpg|jpeg|pdf|zip)$')
 SIZE_QUERY_BATCH = 2048
+CI_EVIDENCE_REGISTRY = 'scripts/config/curriculum-ci-evidence-inputs.json'
+
+
+def workflow_sparse_patterns() -> tuple[str, ...]:
+    """Read the one shared literal block; aliases consume the same checkout."""
+    lines = (ROOT / '.github/workflows/ci.yml').read_text().splitlines()
+    anchors = [i for i, line in enumerate(lines) if line.strip() == '- &checkout_curriculum_inputs']
+    if len(anchors) != 1:
+        raise ValueError('Expected one shared curriculum checkout anchor')
+    anchor = anchors[0]
+    anchor_indent = len(lines[anchor]) - len(lines[anchor].lstrip())
+    for i in range(anchor + 1, len(lines)):
+        line = lines[i]
+        if line.strip() and len(line) - len(line.lstrip()) <= anchor_indent:
+            break
+        if line.strip() != 'sparse-checkout: |':
+            continue
+        indent = len(line) - len(line.lstrip())
+        patterns = []
+        for value in lines[i + 1:]:
+            if value.strip() and len(value) - len(value.lstrip()) <= indent:
+                break
+            if value.strip() and not value.lstrip().startswith('#'):
+                patterns.append(value.strip())
+        if tuple(patterns[:len(BASE_SPARSE_PATTERNS)]) != BASE_SPARSE_PATTERNS:
+            raise ValueError('Curriculum sparse checkout base policy changed')
+        for pattern in patterns[len(BASE_SPARSE_PATTERNS):]:
+            directory = pattern.rsplit('/', 1)[0]
+            if (not pattern.startswith('/curricula/') or '/quality/' not in pattern
+                    or any(part in ('', '.', '..') for part in pattern[1:].split('/'))
+                    or '\\' in pattern or any(ord(char) < 32 for char in pattern)
+                    or any(char in directory for char in '*?[]!#')):
+                raise ValueError('Unsafe explicit curriculum sparse include')
+        return tuple(patterns)
+    raise ValueError('Shared curriculum sparse checkout block is missing')
+
+
+SPARSE_PATTERNS = workflow_sparse_patterns()
+
+
+def required_ci_evidence_documents() -> dict[str, str]:
+    """Exact reviewed binary exceptions; never discover omitted blob contents."""
+    registry = json.loads((ROOT / CI_EVIDENCE_REGISTRY).read_bytes())
+    entries = registry.get('inputs')
+    if (registry.get('schemaVersion') != 1
+            or registry.get('semantics') != 'curriculum-ci-explicit-quality-binary-inputs-v1'
+            or not isinstance(entries, list) or not entries):
+        raise ValueError('Invalid CI evidence input registry')
+    required = {}
+    for entry in entries:
+        if not isinstance(entry, dict):
+            raise ValueError('Invalid CI evidence input binding')
+        path, digest = entry.get('path'), entry.get('sha256')
+        if (not isinstance(path, str) or not HISTORICAL_QUALITY_BINARY.fullmatch(path)
+                or any(part in ('', '.', '..') for part in path.split('/'))
+                or any(char in path for char in '\\*?[]!#') or any(ord(char) < 32 for char in path)
+                or not isinstance(digest, str) or not re.fullmatch('sha256:[a-f0-9]{64}', digest)
+                or not isinstance(entry.get('purpose'), str) or not entry['purpose'].strip()):
+            raise ValueError('Unsafe CI evidence input binding')
+        if path in required:
+            raise ValueError('Duplicate CI evidence input binding')
+        required[path] = digest
+    return required
+
+
+def explicitly_included(path: str) -> bool:
+    return bool(HISTORICAL_QUALITY_BINARY.fullmatch(path)) and any(
+        fnmatchcase(path, pattern[1:]) for pattern in SPARSE_PATTERNS[len(BASE_SPARSE_PATTERNS):])
+
+
+def verify_required_document(path: str, digest: str) -> None:
+    target = ROOT / path
+    if target.is_symlink() or not target.is_file() or not target.resolve().is_relative_to(ROOT.resolve()):
+        raise ValueError(f'Registered source document is not a contained regular file: {path}')
+    with target.open('rb') as stream:
+        actual = hashlib.file_digest(stream, 'sha256').hexdigest()
+    if 'sha256:' + actual != digest:
+        raise ValueError(f'Registered source document bytes differ: {path}')
 
 
 @lru_cache(maxsize=1)
 def required_source_documents() -> dict[str, str]:
-    """Reuse current registered source-atlas receipts, not a handwritten PDF list."""
+    """Join source-atlas receipts with the bounded explicit CI evidence closure."""
     registry = (ROOT / 'app/src/utils/goalBookPublicationRegistry.ts').read_text()
     configs = re.findall(r"configPath:\s*'([^']+\.json)'", registry)
     if not configs:
         raise ValueError('Registered book configuration paths are missing')
-    required: dict[str, str] = {}
+    required: dict[str, str] = required_ci_evidence_documents()
     for config in configs:
         companion = ROOT / ('app/' + config.removesuffix('.json') + '.inputs.json')
         if not companion.is_file():
@@ -70,6 +149,11 @@ def inventory(*, verify_files: bool = True) -> dict:
         _mode, kind, object_id = metadata.split()
         if kind == b'blob':
             records[raw_path.decode('utf-8')] = object_id.decode('ascii')
+    explicit = {path for path in records if explicitly_included(path)}
+    registered = set(required_ci_evidence_documents())
+    if explicit != registered:
+        raise ValueError(f'Explicit sparse evidence closure differs from registry: '
+                         f'unregistered={sorted(explicit - registered)}, missing={sorted(registered - explicit)}')
     missing_required = set(required_source_documents()) - records.keys()
     if missing_required:
         raise ValueError(f'Registered source documents are not tracked: {sorted(missing_required)}')
@@ -100,6 +184,9 @@ def inventory(*, verify_files: bool = True) -> dict:
             raise ValueError(f'Sparse checkout omitted selected tracked input: {path}')
     if counts['retainedBytes'] > SOURCE_BUDGET_BYTES:
         raise ValueError(f'Selected tracked inputs exceed reviewed source budget: {counts["retainedBytes"]} > {SOURCE_BUDGET_BYTES}; remeasure the closure and runner reserve')
+    if verify_files:
+        for path, digest in required_source_documents().items():
+            verify_required_document(path, digest)
     return {'semantics': 'curriculum-ci-sparse-checkout-v1', **counts,
             'sourceBudgetBytes': SOURCE_BUDGET_BYTES, 'gitReserveBytes': GIT_RESERVE_BYTES,
             'buildReserveBytes': BUILD_RESERVE_BYTES,
@@ -118,14 +205,6 @@ def materialize_required_documents() -> dict:
         patterns = ['/' + re.sub(r'([\\*?\[\]!# ])', r'\\\1', path) for path in paths]
         subprocess.run(['git', '-c', 'core.trustctime=false', 'sparse-checkout', 'add', '--stdin'],
                        input='\n'.join(patterns) + '\n', text=True, cwd=ROOT, check=True)
-    for path, digest in required_source_documents().items():
-        target = ROOT / path
-        if target.is_symlink() or not target.resolve().is_relative_to(ROOT.resolve()):
-            raise ValueError(f'Registered source document is not a contained regular file: {path}')
-        with target.open('rb') as stream:
-            actual = hashlib.file_digest(stream, 'sha256').hexdigest()
-        if 'sha256:' + actual != digest:
-            raise ValueError(f'Registered source document bytes differ: {path}')
     result = inventory()
     remaining = shutil.disk_usage(ROOT).free
     if remaining < BUILD_RESERVE_BYTES:

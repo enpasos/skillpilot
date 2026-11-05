@@ -12,6 +12,7 @@ from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 import hashlib
+import json
 
 import yaml
 import check_ci_curriculum_checkout as curriculum_checkout
@@ -135,7 +136,8 @@ class CheckoutDiskReserveTest(unittest.TestCase):
                 self.assertEqual(mode, 'curriculum-sparse-v1')
                 checkout = next(step for step in configuration['steps'] if step.get('uses') == 'actions/checkout@v6')
                 self.assertIs(checkout['with']['sparse-checkout-cone-mode'], False)
-                self.assertEqual(tuple(checkout['with']['sparse-checkout'].splitlines()), curriculum_checkout.SPARSE_PATTERNS)
+                self.assertEqual(tuple(line for line in checkout['with']['sparse-checkout'].splitlines()
+                                       if line and not line.startswith('#')), curriculum_checkout.SPARSE_PATTERNS)
                 self.assertTrue(any(step.get('run') == 'python3 -B scripts/check_ci_curriculum_checkout.py --materialize-required-source-documents' for step in configuration['steps']))
             elif job == EDGE_JOB:
                 self.assertEqual(mode, 'openai-edge-sparse-v1')
@@ -156,6 +158,51 @@ class CheckoutDiskReserveTest(unittest.TestCase):
             self.assertEqual(result.returncode, expected, result.stdout + result.stderr)
         result, _ = simulate(script(SPARSE_JOBS[0], PRE), 100 * GIB, checkout_mode='unknown')
         self.assertNotEqual(result.returncode, 0)
+
+    def test_explicit_ci_evidence_closure_has_exact_current_byte_pins(self):
+        required = curriculum_checkout.required_ci_evidence_documents()
+        self.assertEqual(len(required), 25)
+        for path, digest in required.items():
+            self.assertTrue(curriculum_checkout.explicitly_included(path), path)
+            self.assertTrue(curriculum_checkout.selected(path), path)
+            curriculum_checkout.verify_required_document(path, digest)
+        self.assertEqual(sum((ROOT / path).stat().st_size for path in required), 31_537_347)
+
+    def test_ci_evidence_binding_rejects_unsafe_duplicate_stale_missing_or_symlink_inputs(self):
+        with tempfile.TemporaryDirectory(prefix='ci-evidence-input-') as temporary:
+            root = Path(temporary)
+            relative = 'curricula/DE/Gymnasium/quality/current/image.png'
+            target = root / relative
+            target.parent.mkdir(parents=True)
+            target.write_bytes(b'current evidence')
+            digest = 'sha256:' + hashlib.sha256(target.read_bytes()).hexdigest()
+            registry = root / curriculum_checkout.CI_EVIDENCE_REGISTRY
+            registry.parent.mkdir(parents=True)
+            entry = {'path': relative, 'sha256': digest, 'purpose': 'fixture'}
+            def write(entries):
+                registry.write_text(json.dumps({'schemaVersion': 1,
+                    'semantics': 'curriculum-ci-explicit-quality-binary-inputs-v1', 'inputs': entries}))
+            with patch.object(curriculum_checkout, 'ROOT', root):
+                write([entry])
+                self.assertEqual(curriculum_checkout.required_ci_evidence_documents(), {relative: digest})
+                curriculum_checkout.verify_required_document(relative, digest)
+                for changes in ({'path': '../outside.png'}, {'path': relative.replace('/current/', '/current/../')},
+                                {'path': relative.replace('image', '*')}, {'sha256': 'sha256:stale'}):
+                    write([{**entry, **changes}])
+                    with self.assertRaisesRegex(ValueError, 'Unsafe CI evidence'):
+                        curriculum_checkout.required_ci_evidence_documents()
+                write([entry, entry])
+                with self.assertRaisesRegex(ValueError, 'Duplicate CI evidence'):
+                    curriculum_checkout.required_ci_evidence_documents()
+                target.write_bytes(b'changed evidence')
+                with self.assertRaisesRegex(ValueError, 'bytes differ'):
+                    curriculum_checkout.verify_required_document(relative, digest)
+                target.unlink()
+                with self.assertRaisesRegex(ValueError, 'regular file'):
+                    curriculum_checkout.verify_required_document(relative, digest)
+                target.symlink_to(registry)
+                with self.assertRaisesRegex(ValueError, 'regular file'):
+                    curriculum_checkout.verify_required_document(relative, digest)
 
     def test_real_git_sparse_matching_preserves_metadata_and_current_binary_inputs(self):
         required_paths = sorted(curriculum_checkout.required_source_documents())
@@ -241,7 +288,14 @@ class CheckoutDiskReserveTest(unittest.TestCase):
 
             current = clone('current')
             with patch.object(curriculum_checkout, 'ROOT', current), patch.object(curriculum_checkout,
-                    'required_source_documents', return_value={required: 'sha256:' + hashlib.sha256(contents[required]).hexdigest()}):
+                    'required_source_documents', return_value={required: 'sha256:' + hashlib.sha256(contents[required]).hexdigest()}), \
+                    patch.object(curriculum_checkout, 'required_ci_evidence_documents', return_value={
+                        required: 'sha256:' + hashlib.sha256(contents[required]).hexdigest()}), \
+                    patch.object(curriculum_checkout, 'SPARSE_PATTERNS', curriculum_checkout.BASE_SPARSE_PATTERNS + ('/' + required,)):
+                with patch.object(curriculum_checkout, 'SPARSE_PATTERNS', curriculum_checkout.SPARSE_PATTERNS + ('/' + ignored,)):
+                    with self.assertRaisesRegex(ValueError, 'closure differs from registry'):
+                        curriculum_checkout.inventory(verify_files=False)
+                self.assertIn(object_ids[ignored], missing(current), 'Unregistered inclusion fails before fetching its blob')
                 result = curriculum_checkout.inventory(verify_files=False)
                 expected_bytes = len(contents['app/code.txt']) + len(contents[required])
                 self.assertEqual(result['retainedBytes'], expected_bytes)
