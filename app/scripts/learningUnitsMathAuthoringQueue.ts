@@ -40,6 +40,22 @@ function main() {
   const kind = (id: string) => kinds.get(id)
   const packets = original.goals.filter(goal => kind(goal.id) === 'curricularArea' && (goal.contains ?? []).some(id => originalOrdinary.some(atom => atom.id === id)))
   const packetIds = new Set(packets.map(goal => goal.id))
+  const routingPath = 'app/scripts/config/learning-units/math-authoring-routing.json'
+  const routing = read(routingPath) as { schemaVersion: number; semantics: string; groups: Array<{
+    candidatePacketId: string; title?: string; nearbyCanonicalSourceIds?: string[]; goalIds: string[] }> }
+  assert.equal(routing.schemaVersion, 1)
+  assert.equal(routing.semantics, 'authoring-routing-only-not-unit-approval')
+  const extraRouting = new Map<string, string>()
+  for (const group of routing.groups) {
+    assert.ok(packetIds.has(group.candidatePacketId) || group.title, 'Residual routing requires its own authoring packet title')
+    for (const id of group.goalIds) {
+      assert.ok(originalOrdinary.some(goal => goal.id === id), `Routing references a nonordinary original goal ${id}`)
+      assert.ok(!(parents.get(id) ?? []).some(parent => packetIds.has(parent)), `Already-routed goal ${id}`)
+      assert.ok(!extraRouting.has(id), `Duplicate residual route ${id}`)
+      extraRouting.set(id, group.candidatePacketId)
+    }
+  }
+  assert.equal(extraRouting.size, 17)
   let missingNativeConsumerCount = 0
   const goals = originalOrdinary.map(goal => {
     const consumers = assessments.filter(q => assessmentReach.get(q.id)?.has(goal.id)).map(q => q.id).sort()
@@ -51,7 +67,8 @@ function main() {
     const acquisitions = source.goalPlacements.filter(placement => placement.goalId === goal.id && placement.acquisition)
     return { goalId: goal.id, title: goal.title,
       status: contracts.length ? 'bound-contract-candidate; independent content/binding/native gates are recorded in its pinned review and proofs' : 'pending-own-unit-and-normal-pass-review',
-      candidatePacketIds: (parents.get(goal.id) ?? []).filter(id => packetIds.has(id)),
+      candidatePacketIds: extraRouting.has(goal.id) ? [extraRouting.get(goal.id)!] : (parents.get(goal.id) ?? []).filter(id => packetIds.has(id)),
+      routingBasis: extraRouting.has(goal.id) ? 'accepted-explicit-authoring-route; not-canonical-containment-or-unit-approval' : 'existing-direct-canonical-curricular-area',
       allDirectCanonicalParentIds: parents.get(goal.id) ?? [],
       ownerDecisionRequired: (parents.get(goal.id)?.length ?? 0) > 1,
       authoredAcquisitionUnitIds: acquisitions.map(placement => placement.unitId),
@@ -96,9 +113,12 @@ function main() {
   const artifact = {
     schemaVersion: 1, semantics: 'finite-authoring-queue-not-recognition-approval', baselineRef, oldMaterialRef: oldRef,
     sourceBindings: { initialOfferingInventorySha256: digest(readFileSync(resolve(root, inventoryPath))),
-      originalCanonicalContentSha256: digest(canonicalJson(original)), semanticKindLedgerSha256: digest(readFileSync(resolve(root, ledgerPath))) },
+      originalCanonicalContentSha256: digest(canonicalJson(original)), semanticKindLedgerSha256: digest(readFileSync(resolve(root, ledgerPath))),
+      authoringRoutingSha256: digest(readFileSync(resolve(root, routingPath))) },
     summary: { originalAtomicTargets: 978, originalCurricularAtoms: 807, offeredScopes: 182,
       substantiveCandidatePackets: packets.length, multipleDirectParentDecisions: goals.filter(goal => goal.ownerDecisionRequired).length,
+      authoringRoutingPackets: packets.length + routing.groups.filter(group => !packetIds.has(group.candidatePacketId)).length,
+      explicitlyRoutedResidualAtoms: extraRouting.size, unroutedOrdinaryAtoms: goals.filter(goal => !goal.candidatePacketIds.length).length,
       existingAssessments: assessments.length, missingExplicitClaimAtoms: originalOrdinary.filter(goal => !claimed.has(goal.id)).length,
       atomsMissingOfferedAssessmentConsumerSomewhere: missingNativeConsumerCount,
       existingRecallGoals: recallPackets.length, existingCards: recallPackets.reduce((sum, packet) => sum + packet.cardCount, 0),
@@ -117,15 +137,21 @@ function main() {
       { name: 'monotonicity', ordinaryGoalIds: ['2850e8f6-2330-50d3-a577-d519540d9924'], candidateAssessmentId: '010c133c-dcf1-5530-8305-61bc638017bc',
         status: 'independent-strategy-positive; actual-source-placement-and-contract-review-next' },
     ],
-    packets: packets.map(goal => ({ candidatePacketId: goal.id, title: goal.title,
-      ordinaryGoalIds: (goal.contains ?? []).filter(id => originalOrdinary.some(goal => goal.id === id)),
+    packets: [...packets.map(goal => ({ candidatePacketId: goal.id, title: goal.title,
+      ordinaryGoalIds: [...(goal.contains ?? []).filter(id => originalOrdinary.some(goal => goal.id === id)),
+        ...routing.groups.filter(group => group.candidatePacketId === goal.id).flatMap(group => group.goalIds)],
       status: 'pending-promise-own-q-k-and-required-child-review; not automatically a learning unit' })),
+    ...routing.groups.filter(group => !packetIds.has(group.candidatePacketId)).map(group => ({ candidatePacketId: group.candidatePacketId,
+      title: group.title, ordinaryGoalIds: group.goalIds, nearbyCanonicalSourceIds: group.nearbyCanonicalSourceIds,
+      status: 'pending-residual-content-and-native-mask-review; no automatic ownership merger' }))],
     ordinaryGoals: goals, recallPackets, pr79MaterialCandidates: materialCandidates,
     completionRule: 'S4 remains open until every applicable acquisition path covers all original 978 targets, all 807 ordinary IDs have one authoritative direct owner and reviewed own Q, Q/K remain explicit, new Q deltas are accounted for, and required native/QA/release acceptance passes.',
   }
   assert.equal(goals.length, 807); assert.equal(new Set(goals.map(goal => goal.goalId)).size, 807)
   assert.equal(artifact.summary.substantiveCandidatePackets, 210)
   assert.equal(artifact.summary.multipleDirectParentDecisions, 74)
+  assert.equal(artifact.summary.authoringRoutingPackets, 211)
+  assert.equal(artifact.summary.unroutedOrdinaryAtoms, 0)
   assert.equal(artifact.summary.missingExplicitClaimAtoms, 282)
   assert.equal(artifact.summary.atomsMissingOfferedAssessmentConsumerSomewhere, 498)
   assert.equal(materialCandidates.length, 74)

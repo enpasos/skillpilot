@@ -15,6 +15,14 @@ angebotenen Scope keinen sichtbaren Prüfungsconsumer; diese beiden Fehlermengen
 überschneiden sich. Sie werden nicht addiert und bedeuten nicht, dass pauschal
 282 oder 498 neue Aufgaben erforderlich sind.
 
+Alle 807 Kompetenzen besitzen eine endliche Autorenroute. 17 zunächst keinem
+dieser fachlichen Cluster direkt zugeordnete Ziele wurden ausdrücklich auf
+fünf bestehende Pakete und ein kleines Restpaket zur Kegelvolumenherleitung
+verteilt. Damit gibt es 211 Routingpakete bei unverändert 210 ursprünglichen
+Kandidatclustern. Diese Zuordnung verändert weder `contains`, Erwerbsownership
+noch eine Inhaltsfreigabe. Die konkrete Zuordnung steht in
+`app/scripts/config/learning-units/math-authoring-routing.json`.
+
 Jeder Zieleintrag nennt Kandidatpakete, tatsächliche Erwerbsplatzierungen,
 gebundene Verträge, native Angebotsscope-Indizes und Kandidatprüfungen mit
 Aufgaben-/Rubrikdigest. Der Status trennt bereits gebundene Inhaltskandidaten
@@ -44,6 +52,52 @@ cd app
 npx tsx scripts/learningUnitsMathAuthoringQueue.ts
 npx tsx scripts/learningUnitsMathAuthoringQueue.ts --check
 ```
+
+Neue Inhalte werden gemeinsam mit dem generischen Batchmaterializer vorbereitet:
+
+```bash
+npx tsx scripts/learningUnitsMathBatchAuthoring.ts --batch <batch.json> --plan
+npx tsx scripts/learningUnitsMathBatchAuthoring.ts --batch <batch.json> --apply
+npx tsx scripts/learningUnitsMathBatchAuthoring.ts --batch <batch.json> --check
+```
+
+`--plan` schreibt ausschließlich Kandidaten und vollständige Reviewinputs unter
+`tmp/math-learning-units/batches/`. `--input-root` kann vorbereitete, noch nicht
+live geschriebene Curriculuminputs beisteuern. Der Materializer erzeugt keine
+Reviewfreigabe. `--apply` verlangt pro Paket einen tatsächlichen unabhängigen
+Receipt mit `semantics=learning-unit-content-review-v1`,
+`decision=approved`, benanntem Reviewer, `reviewedInputSha256` und passendem
+`reviewPath`. Der Inputdigest bindet Own, feste Zielbedeutungen, Arten, das
+vollständige lokale R, Claims, unveränderte normale Aufgaben und Rubriken,
+lokale D-Klassen und Provenanceinputs. Änderungen verlangen erneutes Review.
+
+Ein Batch teilt einen eingefrorenen vollständigen Quellensnapshot, eine
+Artenledgerkopie und physische Viewquellen. Bestehende Vertrags-/Task-/Quellenbytes
+werden geprüft und nicht neu erzeugt. Korrekturen an `requires` müssen nach
+jeder einzelnen entfernten Kante die gesamte atomare Erreichbarkeit erhalten.
+Neue Prüfungen bekommen neue Identitäten; alte gewöhnliche Zielbedeutungen und
+normale Bewertungstoleranzen bleiben erhalten. Recall und übersetzte Aufgaben
+benötigen ihre eigenen tatsächlich geprüften Bindungen; der erste Emitter
+weist diese Fälle bis zur Aufnahme des entsprechenden Adapters ausdrücklich ab.
+
+Die aktuelle Angebotsauswahl ist ein separater Generatorlauf:
+
+```bash
+npx tsx scripts/learningUnitsMathOfferBindings.ts --prepare
+npx tsx scripts/learningUnitsMathOfferBindings.ts --stage
+npx tsx scripts/learningUnitsMathOfferBindings.ts --apply
+npx tsx scripts/learningUnitsMathOfferBindings.ts --check
+```
+
+`--prepare` schreibt nur private Kandidaten. `--stage` prüft den tatsächlichen
+unabhängigen Offerreceipt und schreibt den Binder samt kleinem Nachweis, ohne
+den Katalogzeiger zu aktivieren. `--apply` aktiviert den geprüften Zeiger erst
+im ausdrücklich koordinierten Runtime-/Producercheckpoint. Der Binder enthält
+alle 182 nativen Scopekeys und ausschließlich statisch genannte Roots; leere
+partielle Zeilen sind gültig. Seine benötigten aktuellen Runtimeinputs sind
+von den umfangreichen proof-only Nativeinputs getrennt. Alte Inhaltsverträge
+und globale Anerkennung werden durch eine neue Angebotsgeneration nicht
+umgeschrieben.
 
 Die Erzeugung liest den festgehaltenen Basiscommit und PR-79-Materialstand nur
 über Git-Blobs. Sie ändert weder Aufgaben noch Learnerdaten oder Curriculumziele.

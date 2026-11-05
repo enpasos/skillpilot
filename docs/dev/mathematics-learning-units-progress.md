@@ -44,10 +44,14 @@ an. Im anderen persönlichen Lehrplan bleibt die Anerkennung gültig, auch wenn
 die Einheit dort nicht angezeigt wird.
 
 Die [endliche Autorierungsqueue](learning-units-mathematics-authoring-queue.md)
-hält alle 807 ursprünglichen Fachkompetenzen fest. 210 fachliche Kandidatenpakete,
+hält alle 807 ursprünglichen Fachkompetenzen fest. 211 fachliche Autorenpakete,
 74 mehrfache kanonische Elternzuordnungen und sechs Kartendecks mit 64 Karten
 werden einzeln aufgelöst. 282 Kompetenzen ohne ausdrückliches Coverage-Feld
 sind Prüflücken, keine pauschale Forderung nach 282 neuen Prüfungen.
+Die Queue umfasst 210 bestehende Themenpakete und ein ausdrücklich ergänztes
+Restpaket. Zuvor hatten 17 Kompetenzen noch keine Paketroute; alle 807 besitzen
+jetzt eine solche Route. Diese Zuordnung ersetzt weder ihre Erwerbsheimat noch
+die unabhängige Inhaltsfreigabe.
 
 Die nächste unabhängig geprüfte Einheit betrifft Volumen und Oberfläche gerader
 Prismen. Ihre neue Prüfung wird exakt in 27 Angeboten sichtbar; die übrigen

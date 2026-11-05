@@ -63,7 +63,7 @@ export function goalMeaning(goal: MathGoal) {
   return Object.fromEntries(['id', 'title', 'titleEn', 'description', 'descriptionEn', 'type', 'nodeKind', 'semanticKind']
     .map(key => [key, goal[key] ?? null]))
 }
-const resolvedKind = (goal: MathGoal) => goal.nodeKind === 'exam' || goal.examData || ['assessment', 'practiceAssessment'].includes(goal.semanticKind ?? '')
+export const resolvedKind = (goal: MathGoal) => goal.nodeKind === 'exam' || goal.examData || ['assessment', 'practiceAssessment'].includes(goal.semanticKind ?? '')
   ? 'assessment' : goal.nodeKind === 'memory' || ['memory', 'memorization'].includes(goal.semanticKind ?? '') || goal.extendedData?.vocabularySource
     || goal.tags?.some(tag => tag.startsWith('srs-deck') || tag === 'memorization') ? 'memory'
     : goal.semanticKind === 'orientation' || !goal.semanticKind && goal.tags?.some(tag => ['orientation', 'motivation'].includes(tag)) ? 'orientation' : 'ordinary'
@@ -196,12 +196,13 @@ function main() {
   }
   for (const path of [`DE/Gymnasium/${config.reviewRef}`, config.taskSourcePath]) inputs[path] = digest(readFileSync(resolve(root, 'curricula', path)))
   for (const [path, bytes] of rawArtifacts) inputs[path.substring('curricula/'.length)] = digest(bytes)
-  const priorEntries = existsSync(resolve(root, `${base}/catalog.json`)) ? parse(`${base}/catalog.json`).contracts : []
+  const priorManifest = existsSync(resolve(root, `${base}/catalog.json`)) ? parse(`${base}/catalog.json`) : { schemaVersion: 1, contracts: [] }
+  const priorEntries = priorManifest.contracts
   const previousOwn = priorEntries.find((entry: { path: string }) => entry.path === contractPath.substring('curricula/'.length))
   const ownEntry = { path: contractPath.substring('curricula/'.length),
     sha256: digest(serialize(definition)), status: previousOwn?.status ?? 'active', sourceSnapshotPath: snapshotPath.substring('curricula/'.length),
     inputs, assessmentInputs, recallInputs: {} }
-  const manifest = { schemaVersion: 1, contracts: previousOwn
+  const manifest = { ...priorManifest, schemaVersion: 1, contracts: previousOwn
     ? priorEntries.map((entry: { path: string }) => entry.path === ownEntry.path ? ownEntry : entry)
     : [...priorEntries, ownEntry] }
   artifacts.set(`${base}/catalog.json`, manifest)

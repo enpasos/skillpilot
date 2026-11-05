@@ -104,6 +104,8 @@ jobs:
           npx --no-install tsx scripts/learningUnitsMathAuthoring.test.ts
           npx --no-install tsx scripts/learningUnitsPrismAuthoring.ts --check
           npx --no-install tsx scripts/learningUnitsPrismAuthoring.test.ts
+          npx --no-install tsx scripts/learningUnitsMathBatchAuthoring.test.ts
+          npx --no-install tsx scripts/learningUnitsMathOfferBindings.test.ts
           npx --no-install tsx scripts/learningUnitsMathAuthoringQueue.ts --check
           npx --no-install tsx scripts/learningUnitsNativeMathInventory.test.ts
       - name: Validate profile/scope authoring and the shared semantic fixture corpus
