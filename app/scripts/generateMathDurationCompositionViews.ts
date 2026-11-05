@@ -184,6 +184,11 @@ const J6_REFLECTIONS_CLUSTER_ID = '1335dff9-db1e-5dd6-aa55-3938b6d3b0ec'
 const J6_NETS_GOAL_ID = 'f52e9d72-4995-5c80-91d2-7761ea0cbec0'
 const J6_OBLIQUE_VIEW_GOAL_ID = '6bb52f96-6320-5a34-afb0-db9b471dd4ac'
 const RIGHT_PRISM_CLUSTER_GOAL_ID = '59d5a330-61be-4590-ab46-cf7cefecd144'
+const RIGHT_PRISM_ORDINARY_CHILD_GOAL_IDS = [
+  '68fb0e78-34f2-5572-8db6-e7f5ebcff70f',
+  'f1348d40-3872-5e44-8892-3600c811796f',
+]
+const RIGHT_PRISM_ASSESSMENT_GOAL_ID = 'e5494c67-aed6-5710-8ae3-51ae147c10e9'
 const SEK1_EXTERNAL_PREREQUISITE_GOAL_IDS = [
   '85eda551-cfc1-52c6-a252-4c7394c1f7e6',
   '22842d80-de9d-5dad-9819-6ae6e9ca61be',
@@ -193,6 +198,9 @@ const SEK1_EXTERNAL_PREREQUISITE_GOAL_IDS = [
 // The Q4 Caterer assessment was mapped to a lower-secondary process source, but
 // it is a phase-local upper-secondary exam, not a Sek-I learner target.
 const Q4_CATERER_ASSESSMENT_GOAL_ID = '3095e125-fbb7-51c6-bf12-ffbb1735b9b7'
+// This reviewed learning-unit Q belongs to the upper-secondary monotony unit.
+// Do not seed it into generated Sek-I layouts through its shared folder.
+const SEK2_MONOTONY_ASSESSMENT_GOAL_ID = '010c133c-dcf1-5530-8305-61bc638017bc'
 const SEK1_EXAM_FOLDER_IDS_BY_YEAR: Record<string, string> = {
   '5': '81c8da58-9258-488e-9ab8-48500ab31652',
   '6': '7a2a5706-aff4-4fd0-b092-1779d6ecbc1f',
@@ -1069,6 +1077,7 @@ const createSek1Node = (durationModel: DurationModel, excludedGoalIds: Set<strin
   const templateFileName = `de-he-seki-${durationModel.toLowerCase()}.view.json`
   const effectiveExcludedGoalIds = new Set([
     ...excludedGoalIds,
+    SEK2_MONOTONY_ASSESSMENT_GOAL_ID,
     ...(splitLayoutTemplateByFileName.get(templateFileName)?.excludedGoalIds ?? []),
   ])
   const routeContext = reviewedLayoutRouteContext(templateFileName, effectiveExcludedGoalIds)
@@ -1273,6 +1282,7 @@ const createRpSek1Node = (
   const templateFileName = `de-rp-seki-${durationModel.toLowerCase()}.view.json`
   const sek1ExcludedGoalIds = new Set([
     ...excludedGoalIds,
+    SEK2_MONOTONY_ASSESSMENT_GOAL_ID,
     Q4_CATERER_ASSESSMENT_GOAL_ID,
     ...(splitLayoutTemplateByFileName.get(templateFileName)?.excludedGoalIds ?? []),
   ])
@@ -1489,6 +1499,7 @@ const createShSek1Node = (
   const templateFileName = `de-sh-seki-${durationModel.toLowerCase()}.view.json`
   const effectiveExcludedGoalIds = new Set([
     ...excludedGoalIds,
+    SEK2_MONOTONY_ASSESSMENT_GOAL_ID,
     ...(splitLayoutTemplateByFileName.get(templateFileName)?.excludedGoalIds ?? []),
   ])
   const routeContext = reviewedLayoutRouteContext(templateFileName, effectiveExcludedGoalIds)
@@ -1816,19 +1827,34 @@ const unfilteredGeneratedViews = new Map<string, CompositionView>([
   ['de-sh-lk-g8.view.json', createShCrossStageView(baseShLkView, 'LK', 'G8')],
   ['de-sh-lk-g9.view.json', createShCrossStageView(baseShLkView, 'LK', 'G9')],
 ])
-/** Keep the reviewed prism folder in the printed tree after its former single
- * goal was split into separate volume and surface-area atoms. Both atoms must
- * remain direct siblings at one placement, so this cannot silently alter the
- * generated target set. */
+/** Keep the reviewed prism folder, its two ordinary atoms and its explicit
+ * learning-unit assessment. The ordinary atoms must remain direct siblings at
+ * one placement; the exact reviewed Q is included through the canonical folder. */
 const restoreRightPrismFolder = (view: CompositionView): CompositionView => {
-  const childGoalIds = goalById.get(RIGHT_PRISM_CLUSTER_GOAL_ID)?.contains ?? []
-  if (childGoalIds.length !== 2) {
-    throw new Error('The reviewed right-prism folder must have exactly two canonical children')
+  const childGoalIds = RIGHT_PRISM_ORDINARY_CHILD_GOAL_IDS
+  const folderChildren = goalById.get(RIGHT_PRISM_CLUSTER_GOAL_ID)?.contains ?? []
+  const assessment = goalById.get(RIGHT_PRISM_ASSESSMENT_GOAL_ID)
+  const assessmentData = assessment?.examData as { coveredGoalIds?: string[] } | undefined
+  if (JSON.stringify(folderChildren) !== JSON.stringify([...childGoalIds, RIGHT_PRISM_ASSESSMENT_GOAL_ID])
+    || childGoalIds.some((id) => semanticKindByGoalId.get(id) !== 'curricularAtomic')
+    || semanticKindByGoalId.get(RIGHT_PRISM_ASSESSMENT_GOAL_ID) !== 'practiceAssessment'
+    || assessment?.nodeKind !== 'exam'
+    || (assessment.contains?.length ?? 0) !== 0
+    || JSON.stringify(assessmentData?.coveredGoalIds) !== JSON.stringify(childGoalIds)) {
+    throw new Error('The reviewed right-prism folder must retain its exact two ordinary atoms and their reviewed learning-unit assessment')
   }
   let replacements = 0
+  let relocatedAssessmentReferences = 0
   const visit = (node: CompositionNode): CompositionNode => {
     if (node.kind !== 'structure') return clone(node)
-    const children = node.children.map(visit)
+    const children = node.children.filter((child) => {
+      if (child.kind === 'goalEntry' && child.goalId === RIGHT_PRISM_ASSESSMENT_GOAL_ID
+        && child.projectionRole !== 'prerequisiteOnly') {
+        relocatedAssessmentReferences += 1
+        return false
+      }
+      return true
+    }).map(visit)
     const childIndices = childGoalIds.map((goalId) => children.findIndex((child) => (
       child.kind === 'goalEntry' && child.goalId === goalId && child.projectionRole !== 'prerequisiteOnly'
     )))
@@ -1845,6 +1871,9 @@ const restoreRightPrismFolder = (view: CompositionView): CompositionView => {
   const rootNodes = view.rootNodes.map(visit)
   if (replacements !== 1) {
     throw new Error(`${view.viewId}: expected one reviewed right-prism placement, found ${replacements}`)
+  }
+  if (relocatedAssessmentReferences > 1) {
+    throw new Error(`${view.viewId}: duplicate explicit right-prism assessment references`)
   }
   return { ...view, rootNodes }
 }

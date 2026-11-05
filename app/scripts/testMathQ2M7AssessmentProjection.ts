@@ -32,6 +32,35 @@ const canonical = JSON.parse(readFileSync(canonicalPath, 'utf8')) as { goals: Ar
 const byId = new Map(canonical.goals.map((goal) => [goal.id, goal]))
 const exams = canonical.goals.filter((goal) => goal.shortKey?.startsWith('canonical_math_sek2_q2_m7_route_'))
 assert.equal(exams.length, 12)
+const reviewedCoverage: Record<string, string[]> = {
+  'b321e32c-1dff-5529-8200-6879ee8fb10b': [spatId, tetraId],
+  'd110ab96-275e-5ccb-8851-e02725baf31c': ['c71ae268-f28e-59f0-982d-91db8f963378', 'e8237315-654e-5150-97de-49c4cb49b3d1', '2f2c9f1a-07f0-59e4-b84a-60648c3b0bda'],
+  '938d47a2-5d7c-52d6-8644-5cc6060d76a1': [lkVolumeDerivationId],
+  'e98672c6-871a-5d0b-889c-5afc51040f0d': ['3016ec37-1c2e-47db-83f5-e767923bc97e'],
+  'e3c70a12-7886-51f7-8bcd-ed54865415d6': ['ed5d869b-af4e-4b80-b34d-a2338e16ce34'],
+  '4f85d29a-bd52-5f21-8b57-55def4440e1b': ['6fc9246a-9448-4cdb-b627-cf20ea1c65d3', '54cfe5ce-693e-5d4a-ac1b-009570fbbc11'],
+  '03b00864-7001-5c6a-875b-dc269b3484d9': ['06de364f-9b63-4044-8229-a975621dc6df'],
+  'bc244d82-bac0-5b13-8a33-d7b101835480': ['baf7276f-60a0-4d96-b959-d63acfb929de'],
+  '60dbe2ed-55fb-5352-8829-1ea23fbee024': ['509ae03b-96b1-4bb1-b015-b83d14569dae'],
+  '240f7716-7c6f-5705-876e-8046fd8a6720': ['8eb14d81-353a-4909-9464-61be7b1ba5b8'],
+  '6cff2b2e-be7f-531a-8849-e5fb3a55978a': ['eb6bfdd9-3cbe-51b5-9798-a741bdc2782e'],
+  '9809780d-c860-5a79-87ec-2a3479cc7f1f': ['ef1524f1-0b2f-59f7-a001-5ab3e3dececb'],
+}
+const fullRequires = (goalId: string): Set<string> => {
+  const reached = new Set<string>()
+  const pending = [...(byId.get(goalId)?.requires ?? [])]
+  while (pending.length > 0) {
+    const id = pending.pop()!
+    assert.ok(byId.has(id), `Unknown preparation goal ${id}`)
+    if (reached.has(id)) continue
+    reached.add(id)
+    pending.push(...(byId.get(id)?.requires ?? []))
+  }
+  return reached
+}
+for (const exam of exams) {
+  assert.deepEqual(exam.examData?.coveredGoalIds, reviewedCoverage[exam.id], `Reviewed coverage changed ${exam.id}`)
+}
 
 let viewCount = 0
 let targetExamPairs = 0
@@ -47,7 +76,9 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
   for (const exam of exams) {
     const covered = exam.examData?.coveredGoalIds ?? []
     assert.ok(covered.length > 0, `${filename}: empty exam coverage ${exam.id}`)
-    assert.deepEqual(exam.requires, covered, `${filename}: assessment requires/coverage mismatch ${exam.id}`)
+    const preparation = fullRequires(exam.id)
+    assert.ok(covered.every((id) => preparation.has(id)),
+      `${filename}: assessment preparation no longer includes its reviewed coverage ${exam.id}`)
     assert.equal((exam as { examData?: { scoring?: { maxPoints?: number; passingPoints?: number } } }).examData?.scoring?.passingPoints,
       (exam as { examData?: { scoring?: { maxPoints?: number; passingPoints?: number } } }).examData?.scoring?.maxPoints,
       `${filename}: total-only scoring could pass without an assessed competency ${exam.id}`)

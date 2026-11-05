@@ -801,6 +801,7 @@ const canonicalMathFallbackPolicy = JSON.parse(
 ) as {
   landscapeId?: string
   approvedDeDefaultFallbackGroups?: ApprovedCanonicalMathFallbackGroup[]
+  approvedExplicitScopeGroups?: ApprovedCanonicalMathFallbackGroup[]
 }
 
 const collectFiles = (directory: string, predicate: (fileName: string) => boolean, target: string[] = []): string[] => {
@@ -1058,7 +1059,10 @@ REQUIRED_CANONICAL_MATH_SCOPES.forEach(({ expectedViewId, scope }) => {
   }
 })
 
-const approvedCanonicalMathFallbackScopes = (canonicalMathFallbackPolicy.approvedDeDefaultFallbackGroups ?? [])
+const approvedCanonicalMathPolicyScopes = [
+  ...(canonicalMathFallbackPolicy.approvedDeDefaultFallbackGroups ?? []),
+  ...(canonicalMathFallbackPolicy.approvedExplicitScopeGroups ?? []),
+]
   .flatMap((group) => group.jurisdictions.flatMap((jurisdiction) => (
     group.scopes.map(({ expectedViewId, ...scope }) => ({
       expectedViewId,
@@ -1067,7 +1071,7 @@ const approvedCanonicalMathFallbackScopes = (canonicalMathFallbackPolicy.approve
     }))
   )));
 
-approvedCanonicalMathFallbackScopes.forEach(({ expectedViewId, rationale, scope }) => {
+approvedCanonicalMathPolicyScopes.forEach(({ expectedViewId, rationale, scope }) => {
   const requestedScope = normalizeScopeForMatching(scope)
   const matches = canonicalMathViews
     .map((view) => ({
@@ -1091,9 +1095,9 @@ approvedCanonicalMathFallbackScopes.forEach(({ expectedViewId, rationale, scope 
     findings.push({
       code: 'CPV-208',
       severity: 'error',
-      message: `Genehmigter DE-default-Fallback-Scope für kanonische Mathematik löst auf keine Composition View auf: ${composeScopeKey(scope)}`,
+      message: `Genehmigter Scope für kanonische Mathematik löst auf keine Composition View auf: ${composeScopeKey(scope)}`,
       viewId: expectedViewId,
-      viewPath: '(approved-canonical-math-default-fallback)',
+      viewPath: '(approved-canonical-math-scope)',
       landscapeId: CANONICAL_DE_MATH_ID,
     })
     return
@@ -1103,9 +1107,9 @@ approvedCanonicalMathFallbackScopes.forEach(({ expectedViewId, rationale, scope 
     findings.push({
       code: 'CPV-209',
       severity: 'error',
-      message: `Genehmigter DE-default-Fallback-Scope für kanonische Mathematik löst unerwartet auf: erwartet ${expectedViewId}, gefunden ${bestMatch.viewId}${rationale ? ` (${rationale})` : ''}`,
+      message: `Genehmigter Scope für kanonische Mathematik löst unerwartet auf: erwartet ${expectedViewId}, gefunden ${bestMatch.viewId}${rationale ? ` (${rationale})` : ''}`,
       viewId: expectedViewId,
-      viewPath: '(approved-canonical-math-default-fallback)',
+      viewPath: '(approved-canonical-math-scope)',
       landscapeId: CANONICAL_DE_MATH_ID,
     })
   }
