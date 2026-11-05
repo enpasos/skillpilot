@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import './testLearningUnitNavigationProjection'
 import { readFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import type { UiGoal } from '../src/goalTypes'

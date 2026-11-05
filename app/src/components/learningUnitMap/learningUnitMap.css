@@ -52,6 +52,8 @@
 .lum-map-summary > span { color: #a0a8af; font-size: 10px; }
 .lum-app--contextual .lum-map-summary { min-height: 62px; height: auto; padding: 14px 24px; }
 .lum-app--contextual .lum-map-summary h1 { font-size: 17px; line-height: 1.4; font-weight: 550; }
+.lum-app--contextual .lum-map-summary:has(.lum-unit-promise) { display: block; }
+.lum-unit-promise { margin: 4px 0 0; color: var(--lum-muted, #64748b); font-size: 12px; line-height: 1.5; max-width: 65ch; }
 .lum-flow { flex: 1; min-height: 0; position: relative; margin-bottom: 20px; opacity: 1; transition: opacity 140ms ease; }
 .lum-flow--leaving { opacity: 0; pointer-events: none; }
 .lum-flow--entering { opacity: .55; pointer-events: none; }

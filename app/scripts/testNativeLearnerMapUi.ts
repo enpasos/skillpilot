@@ -9,6 +9,8 @@ import { chromium, type BrowserContext, type Page } from 'playwright'
 import { createServer } from 'vite'
 import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
 import { nativeMapDeck, nativeMapIds as id, nativeMapLandscapes, nativeMapProfile, nativeMapView } from './fixtures/nativeLearningMapData'
+import type { LearningUnitsReadModel } from '../src/utils/learningUnitsApi'
+import { learningUnitNavigationId } from '../src/components/learningUnitMap/learnerUnitMapProjection'
 
 const appRoot = fileURLToPath(new URL('../', import.meta.url))
 const artifacts = fileURLToPath(new URL('../../tmp/s1-cockpit-map/', import.meta.url))
@@ -36,7 +38,7 @@ const contexts: BrowserContext[] = []
 let stage = 'startup'
 let lastPage: Page | null = null
 
-async function open(width = 1440, failLayoutWorker = false, reducedMotion: 'reduce' | 'no-preference' = 'reduce') {
+async function open(width = 1440, failLayoutWorker = false, reducedMotion: 'reduce' | 'no-preference' = 'reduce', withUnits = false) {
   const context = await browser.newContext({ viewport: { width, height: 960 }, reducedMotion, serviceWorkers: 'block' })
   contexts.push(context)
   // tsx preserves names in serialized test classes with this helper. Supply it
@@ -102,6 +104,20 @@ async function open(width = 1440, failLayoutWorker = false, reducedMotion: 'redu
   let planned: string[] = [id.section]
   let active: string = id.application
   let choosingSubjects = false
+  const landscapes = withUnits ? nativeMapLandscapes.map(landscape => ({ ...landscape,
+    goals: landscape.goals.map(goal => goal.id === id.other ? { ...goal, nodeKind: 'exam' as const } : goal),
+  })) : nativeMapLandscapes
+  const learningUnits: LearningUnitsReadModel = { calculationStatus: 'valid', semantics: 'global-unit-recognition-v1', contractDigest: 'fixture-contracts',
+    recognizedGoalIds: [id.application], voluntaryGoalIds: [id.application], units: [{
+      contractId: 'reviewed-native-unit', revision: 'r1', programUnitId: 'reviewed-native-program-unit',
+      title: { de: 'Vektoren selbständig anwenden' }, promise: { de: 'Du kannst Vektoren in einer eigenen Lösung anwenden.' }, introduction: { de: 'Motivation zur eigenen Anwendung.' },
+      ownGoalIds: [id.application, id.other], requiredChildContractRefs: [], ownAssessmentGoalIds: [id.other], ownRecallGoalIds: [],
+      complete: false, targetCount: 2, explicitTargetCount: 0, recognizedTargetCount: 1,
+      ownRecognizedGoalIds: [id.application], pendingGoalIds: [id.other],
+    }], offerBinding: { status: 'valid', revision: 'native-offer-r1', bindingDigest: 'native-offer', coverage: 'partial', coveredTargetCount: 2, totalTargetCount: 5,
+      rootContractRefs: [{ contractId: 'reviewed-native-unit', revision: 'r1' }],
+      scopeKey: { rootLandscapeId: id.root, landscapeId: id.math, schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'SekII', durationModel: 'G9', courseProfile: 'GK+LK' },
+    } }
   const subjectOption = (landscapeId: string, label: string) => ({
     optionId: landscapeId === id.physics ? 'physics-only' : 'mathematics', stageId: 'subjects', groupId: 'subjects', groupInstanceId: 'native-subjects',
     landscapeId, landscapeLabel: label, filterId: null, filterLabel: null, scopeKey: null, scopeValue: null, scopeLabel: null, kind: 'VALUE',
@@ -119,6 +135,7 @@ async function open(width = 1440, failLayoutWorker = false, reducedMotion: 'redu
   })
   const mastery = { [id.foundation]: 1 }
   const state = () => ({
+    ...(withUnits ? { learningUnits } : {}),
     activeGoal: { id: active }, frontier: [{ id: active }],
     goals: { planned: planned.map(goalId => ({ id: goalId })), mastered_count: 1, total_count: physicsOnly ? 1 : 5,
       personalized: { mastered_atomic: 1, total_atomic: physicsOnly ? 1 : 5 } },
@@ -150,12 +167,12 @@ async function open(width = 1440, failLayoutWorker = false, reducedMotion: 'redu
       return json(nativeMapView(url.searchParams.get('landscapeId')!, physicsOnly))
     }
     if (path === `/api/ui/learners/${id.learner}/landscapes/${id.root}/closure`) {
-      return json(physicsOnly ? nativeMapLandscapes.filter(landscape => landscape.landscapeId !== id.math) : nativeMapLandscapes)
+      return json(physicsOnly ? landscapes.filter(landscape => landscape.landscapeId !== id.math) : landscapes)
     }
     if (path === `/api/ui/learners/${id.learner}` && request.method() === 'GET') return json(nativeMapProfile(physicsOnly))
     const suffix = path.replace(`/api/ui/learners/${id.learner}`, '')
     if (suffix === '/resume' && ['GET', 'POST'].includes(request.method())) return json({ lastActivityAt: '2026-11-05T08:00:00Z', scheduledDeletionAt: '2027-05-05T08:00:00Z' })
-    if (suffix === '/mastery' && request.method() === 'GET') return json({ mastery })
+    if (suffix === '/mastery' && request.method() === 'GET') return json({ mastery, ...(withUnits ? { learningUnits } : {}) })
     if (suffix === '/state' && request.method() === 'GET') return json(state())
     if (suffix === '/learning-plans' && request.method() === 'GET') return json({ asOf: '2026-11-05', followLearningPlans: false, plans: [],
       status: { asOf: '2026-11-05', periodBasis: 'DAY', periodStart: '2026-11-05', periodEnd: '2026-11-05', timeZone: 'Europe/Berlin', language: 'de',
@@ -191,7 +208,7 @@ async function open(width = 1440, failLayoutWorker = false, reducedMotion: 'redu
   await page.getByTestId('learner-current-goal').getByRole('heading', { name: 'Skalarprodukte anwenden', exact: true }).waitFor({ timeout: 30_000 })
   await page.getByTestId('learner-active-goal-banner').waitFor()
   await page.getByTestId('learner-progress-loading').waitFor({ state: 'hidden' })
-  return { page, context, errors, unexpected, requests, writes, mastery,
+  return { page, context, errors, unexpected, requests, writes, mastery, learningUnits,
     changePersonalCurriculum: async () => {
       await sidebarSettings(page).click()
       const settings = page.getByRole('dialog', { name: 'Mein Lehrplan', exact: true })
@@ -338,6 +355,43 @@ try {
   assert.deepEqual(h.errors, [])
   assert.deepEqual(h.unexpected, [])
   await h.context.close()
+
+  stage = 'authoritative unit hierarchy keeps the native tree and atomic goal card'
+  {
+    const u = await open(1440, false, 'reduce', true)
+    const unitId = learningUnitNavigationId(u.learningUnits.units[0])
+    const main = u.page.getByTestId('learner-current-goal')
+    await main.evaluate(element => element.setAttribute('data-unit-goal-card-witness', 'original'))
+    await navigation(u.page, 'map')
+    await scope(u.page, unitId)
+    await u.page.getByTestId('learning-map-board').getByText('Du kannst Vektoren in einer eigenen Lösung anwenden.', { exact: true }).waitFor()
+    assert.equal(await u.page.locator(`[data-entry-id="${id.other}"]`).getAttribute('data-entry-kind'), 'assessment')
+    assert.equal(await u.page.locator(`[data-entry-id="${id.application}"]`).getByRole('img', { name: 'Durch selbständige Anwendung gemeistert', exact: true }).count(), 1)
+    assert.equal(await u.page.locator('.lum-canvas img').count(), 0, 'the unit map never renders a second goal image')
+    assert.equal(await main.locator('img').count(), 1)
+    await u.page.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
+    await scope(u.page, '__learner_goal_map_root__')
+    const unitNode = u.page.locator(`[data-entry-id="${unitId}"]`)
+    assert.equal(await unitNode.getAttribute('data-entry-kind'), 'unit')
+    assert.match(await unitNode.innerText(), /1\/2 erledigt/u, 'unit counts are the published backend counts')
+    await node(u.page, unitId).click()
+    await scope(u.page, unitId)
+    assert.equal(await main.getAttribute('data-unit-goal-card-witness'), 'original', 'unit navigation preserves the original atomic goal card')
+    assert.equal(await main.getByRole('heading', { name: 'Skalarprodukte anwenden', exact: true }).count(), 1)
+    await node(u.page, id.other).click()
+    await selectedTitle(u.page, 'Änderungsraten deuten')
+    await u.page.getByTestId('learner-active-goal-banner').getByRole('button', { name: 'Gehe zum aktiven Ziel', exact: true }).click()
+    await selectedTitle(u.page, 'Skalarprodukte anwenden')
+    await scope(u.page, unitId)
+    await navigation(u.page, 'tree')
+    await u.page.locator('#learner-goal-sidebar [data-goal-id="' + id.section + '"]').waitFor()
+    assert.equal(await u.page.locator(`[data-goal-id="${unitId}"]`).count(), 0, 'the original canonical tree stays intact')
+    assert.deepEqual(u.writes, [], 'units and atomic navigation never write results, focus or active goals')
+    assert.deepEqual(u.mastery, { [id.foundation]: 1 }, 'derived recognition is never saved as explicit mastery')
+    assert.deepEqual(u.errors, [])
+    assert.deepEqual(u.unexpected, [])
+    await u.context.close()
+  }
 
   for (const width of [320, 390]) {
     stage = `native mobile navigation at ${width}px`

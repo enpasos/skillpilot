@@ -32,6 +32,8 @@ type MapProps = {
   command?: LearningMapCommand | null
   showInspector?: boolean
   onEntrySelect?: (entryId: string) => void
+  /** Namespaced navigation IDs never become active atomic goals. */
+  navigationEntryIds?: ReadonlySet<string>
   onSelectionChange?: (entryId: string | null) => void
   renderSelectionActions?: (entryId: string) => ReactNode
   onReturnToTree?: () => void
@@ -62,7 +64,7 @@ function useNarrowScreen() {
 
 function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = false,
   active = true, headingMode = 'standard', rootLabel,
-  learnerProgress, activeGoalId, initialScopeId, command, showInspector = true, onEntrySelect,
+  learnerProgress, activeGoalId, initialScopeId, command, showInspector = true, onEntrySelect, navigationEntryIds,
   onSelectionChange, renderSelectionActions, onReturnToTree, language = 'de' }: MapProps) {
   const label = (de: string, en: string) => language === 'en' ? en : de
   const kindLabels = getKindLabels(language)
@@ -134,11 +136,15 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     if (command) lastCommand.current = `${command.nonce}:${command.entryId}`
     setContextTrail([])
     setContextLimit(12)
+    if (navigationEntryIds?.has(id)) {
+      if (fixture.entries[id]?.children?.length) { setSelection(null); enter(id) }
+      return
+    }
     pendingSelectionEcho.current = { entryId: id, nonce: command?.nonce ?? 0,
       baselineKey: command ? `${command.nonce}:${command.entryId}` : null }
     highlight(id)
     onEntrySelect?.(id)
-  }, [highlight, onEntrySelect, visible, command])
+  }, [highlight, onEntrySelect, visible, command, navigationEntryIds, fixture, enter])
   const open = useCallback((id: string) => {
     const entry = fixture.entries[id]
     if (!entry) return
@@ -400,6 +406,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
           touchDistance.current = distance
         }} onTouchEndCapture={() => { touchDistance.current = null }}>
         <div className="lum-map-summary"><h1>{scopeTitle}</h1>
+          {scope.kind === 'unit' && scope.description && <p className="lum-unit-promise">{scope.description}</p>}
           {headingMode === 'standard' && <span>{visibleIds.length} Bereiche · {activeLayout?.edges.length ?? '…'} Verbindungen</span>}
         </div>
         {fixture.scopeRelations && <details className="lum-requirement-context" data-testid="learning-map-requirement-context">

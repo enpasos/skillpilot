@@ -9,6 +9,8 @@ export interface LearnerMapProjectionInput {
   visibleGoalIds: ReadonlySet<string>
   visibleChildrenByParent: ReadonlyMap<string, readonly string[]>
   useRawGoalTitles?: boolean
+  /** Namespaced navigation nodes supplied only by an admitted backend offer. */
+  navigationUnitIds?: ReadonlySet<string>
 }
 
 /**
@@ -17,7 +19,7 @@ export interface LearnerMapProjectionInput {
  * targets, change progress, or turn a branch into a whole-unit prerequisite.
  */
 export function buildLearnerMapProjection({ rootGoals, goalIndexAll, canonicalGoalIndexAll = goalIndexAll,
-  visibleGoalIds, visibleChildrenByParent, useRawGoalTitles = true }: LearnerMapProjectionInput): LearningMapFixture {
+  visibleGoalIds, visibleChildrenByParent, useRawGoalTitles = true, navigationUnitIds }: LearnerMapProjectionInput): LearningMapFixture {
   let rootId = '__learner_goal_map_root__'
   while (goalIndexAll.has(rootId)) rootId += '_'
   const entries: Record<string, LearningMapEntry> = Object.create(null)
@@ -35,7 +37,7 @@ export function buildLearnerMapProjection({ rootGoals, goalIndexAll, canonicalGo
     const original = canonicalGoalIndexAll.get(id)
     const cluster = goal.type === 'cluster' || goal.contains.length > 0 || children.length > 0
       || original?.type === 'cluster' || (original?.contains.length ?? 0) > 0
-    const kind = cluster ? 'cluster' : goal.nodeKind === 'exam' || goal.examData ? 'assessment'
+    const kind = navigationUnitIds?.has(id) ? 'unit' : cluster ? 'cluster' : goal.nodeKind === 'exam' || goal.examData ? 'assessment'
       : goal.nodeKind === 'memory' ? 'memory' : goal.tags?.some(tag => tag === 'motivation' || tag === 'orientation') ? 'motivation' : 'goal'
     entries[id] = { id, title: goal.title, description: goal.description, kind, children,
       requires: [], position: { x: 0, y: 0 } }
@@ -214,7 +216,7 @@ export function buildLearnerMapProjection({ rootGoals, goalIndexAll, canonicalGo
 export function createLearnerMapProjectionCache() {
   let previous: { signature: string; canonical: LearnerMapProjectionInput['canonicalGoalIndexAll']; fixture: LearningMapFixture } | undefined
   return (input: LearnerMapProjectionInput): LearningMapFixture => {
-    const signature = JSON.stringify([input.useRawGoalTitles, input.rootGoals.map(goal => goal.id), [...input.visibleGoalIds].map(id => {
+    const signature = JSON.stringify([input.useRawGoalTitles, [...input.navigationUnitIds ?? []], input.rootGoals.map(goal => goal.id), [...input.visibleGoalIds].map(id => {
       const goal = input.goalIndexAll.get(id)
       return [id, goal?.title, goal?.description, goal?.type, goal?.nodeKind, goal?.tags, goal?.examData ? true : false,
         goal?.contains, goal?.requires, goal?.effectiveRequires, goal?.inheritedRequires, input.visibleChildrenByParent.get(id)]

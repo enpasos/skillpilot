@@ -144,6 +144,7 @@ export interface LearnerGoalNavigationMapProps {
   activeGoalId: string | null
   getMastery: (goalId: string) => number
   completionWaivers: ReadonlyMap<string, CompletionTreeWaiver>
+  learningUnits?: LearningUnitsReadModel | null
   revealRequest?: { entryId: string; nonce: number }
   onSelectGoal: (goalId: string) => void
   active: boolean
@@ -458,6 +459,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [completionSnapshot, setCompletionSnapshot] = useState<{ scopeKey: string; data: LevelCompletion | null } | null>(null)
   const [unitSnapshot, setUnitSnapshot] = useState<{ scopeKey: string; data: LearningUnitsReadModel | null } | null>(null)
   const learningUnits = unitSnapshot?.scopeKey === learnerStateScopeKey ? unitSnapshot.data : null
+  const effectiveLearningUnits = masteryLearningUnits === undefined ? learningUnits : masteryLearningUnits
   const [completionActionBusy, setCompletionActionBusy] = useState(false)
   const [completionActionError, setCompletionActionError] = useState<string | null>(null)
   const completionActionInFlightRef = useRef(createSynchronousInFlightGuard())
@@ -476,8 +478,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         ? 'loading'
         : 'ready'
   const completionTreeWaivers = useMemo(
-    () => learningCompletionAnnotations(levelCompletion, masteryLearningUnits === undefined ? learningUnits : masteryLearningUnits, learnerStateLoadStatus !== 'ready'),
-    [levelCompletion, learningUnits, masteryLearningUnits, learnerStateLoadStatus],
+    () => learningCompletionAnnotations(levelCompletion, effectiveLearningUnits, learnerStateLoadStatus !== 'ready'),
+    [levelCompletion, effectiveLearningUnits, learnerStateLoadStatus],
   )
   const [personalConfigLoadState, setPersonalConfigLoadState] = useState<{
     scopeKey: string
@@ -3611,6 +3613,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             activeGoalId: effectiveActiveGoalId ?? null,
             getMastery: getEffectiveMastery,
             completionWaivers: completionTreeWaivers,
+            learningUnits: effectiveLearningUnits,
             revealRequest: navigationRevealRequest ? {
               ...navigationRevealRequest,
               entryId: subjectRootIdByAlias.get(navigationRevealRequest.entryId) ?? navigationRevealRequest.entryId,
@@ -3663,7 +3666,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         {levelCompletion || completionDiscoveryRequest ? <div ref={completionEntryRef} className="w-full">
           {levelCompletion && (!isGuidedPersonalizationRequired || learnerStateLoadStatus === 'error') ? (
             <LevelCompletionCard
-              recognizedGoalIds={(masteryLearningUnits === undefined ? learningUnits : masteryLearningUnits)?.recognizedGoalIds}
+              recognizedGoalIds={effectiveLearningUnits?.recognizedGoalIds}
               key={`${learnerStateScopeKey}:${levelCompletion.profileId ?? 'selection'}`}
               completion={levelCompletion}
               language={localizedLanguage}
@@ -3937,7 +3940,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                     <GoalCard
                       goal={currentGoal}
                       recognized={completionTreeWaivers.get(currentGoal.id)?.reason === 'recognized'}
-                      onVoluntaryPractice={learningUnits?.voluntaryGoalIds.includes(currentGoal.id) ? handleSetActiveGoal : undefined}
+                      onVoluntaryPractice={effectiveLearningUnits?.voluntaryGoalIds.includes(currentGoal.id) ? handleSetActiveGoal : undefined}
                       masteryValue={
                         currentGoal.contains && currentGoal.contains.length > 0
                           ? getFilteredMastery(currentGoal.id)
@@ -3956,7 +3959,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                     />
                   )}
 
-                {learningUnits?.units.filter(unit => (unit.programUnitId === currentGoal.id || unit.ownGoalIds.includes(currentGoal.id))).map(unit => (
+                {effectiveLearningUnits?.units.filter(unit => (unit.programUnitId === currentGoal.id || unit.ownGoalIds.includes(currentGoal.id))).map(unit => (
                   <details key={unit.contractId} data-testid="learning-unit-introduction" className="mt-4 rounded-2xl border border-border-color p-4 text-sm">
                     <summary className="cursor-pointer font-medium text-text-secondary">{localizedLanguage === 'en' ? 'Learning unit' : 'Lerneinheit'}: {learningUnitText(unit.title, localizedLanguage)}</summary>
                     <p className="mt-3 font-semibold text-text-primary">{learningUnitText(unit.promise, localizedLanguage)}</p>

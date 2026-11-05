@@ -4,6 +4,7 @@ import { buildTreeCompletionProgressMap } from '../../utils/treeCompletionProgre
 import { completionLabel } from '../../utils/levelCompletionApi'
 import { LearningUnitMap } from './LearningUnitMap'
 import { createLearnerMapProjectionCache } from './learnerMapProjection'
+import { projectLearningUnitNavigation } from './learnerUnitMapProjection'
 import type { LearningEntryProgress } from './types'
 
 /** Lazy product adapter; the original GoalCard remains the only goal detail view. */
@@ -14,9 +15,11 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
   const canonicalGoalIndexAll = useMemo(() => canonicalSource instanceof Map ? canonicalSource
     : new Map(canonicalSource.flatMap(source => source.goals.map(goal => [goal.id, goal] as const))), [canonicalSource])
   const project = useMemo(() => createLearnerMapProjectionCache(), [])
-  const fixture = useMemo(() => project({ rootGoals, goalIndexAll,
-    canonicalGoalIndexAll, visibleGoalIds, visibleChildrenByParent, useRawGoalTitles: props.useRawGoalTitles }),
-  [project, rootGoals, goalIndexAll, canonicalGoalIndexAll, visibleGoalIds, visibleChildrenByParent, props.useRawGoalTitles])
+  const unitNavigation = useMemo(() => projectLearningUnitNavigation({ rootGoals, goalIndexAll,
+    canonicalGoalIndexAll, visibleGoalIds, visibleChildrenByParent, useRawGoalTitles: props.useRawGoalTitles },
+  props.learningUnits, props.language ?? 'de'),
+  [rootGoals, goalIndexAll, canonicalGoalIndexAll, visibleGoalIds, visibleChildrenByParent, props.useRawGoalTitles, props.learningUnits, props.language])
+  const fixture = useMemo(() => project(unitNavigation.input), [project, unitNavigation.input])
   const progress = useMemo(() => {
     const visibleGoals = new Map(Object.keys(fixture.entries).flatMap(id => {
       const goal = goalIndexAll.get(id)
@@ -38,8 +41,14 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
         ? `${waiver.reason === 'no_remaining_demand' ? 'No longer required' : 'Covered by assessment'} for this section: ${completionLabel(waiver.sectionTitle, language)}`
         : `${waiver.reason === 'no_remaining_demand' ? 'Nicht mehr erforderlich' : 'Durch Prüfung abgedeckt'} für diesen Lernabschnitt: ${completionLabel(waiver.sectionTitle, language)}`
     }
+    // Unit counts are published by the backend; tree progress does not derive
+    // a second recognition or completion rule for the unit hierarchy.
+    for (const [id, unit] of unitNavigation.unitsByEntryId) result[id] = {
+      total: unit.targetCount, explicit: unit.explicitTargetCount, implicit: unit.recognizedTargetCount,
+      recognizedCount: unit.recognizedTargetCount, globalRecognition: true,
+    }
     return result
-  }, [fixture, goalIndexAll, getMastery, completionWaivers, props.language])
+  }, [fixture, goalIndexAll, getMastery, completionWaivers, props.language, unitNavigation.unitsByEntryId])
   const command = useMemo(() => ({ entryId: props.selectedGoalId,
     // This is the global reveal sequence, independent of ordinary selection.
     nonce: props.revealRequest?.nonce ?? 0,
@@ -56,7 +65,8 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
     data-selected-goal-id={props.selectedGoalId} data-map-active={props.active}>
     <LearningUnitMap fixture={fixture} embedded active={props.active} headingMode="context"
       rootLabel={english ? 'My learning goals' : 'Meine Lernziele'} language={props.language} learnerProgress={progress} activeGoalId={props.activeGoalId}
-      command={command} showInspector={false} onEntrySelect={props.onSelectGoal}
+      command={command} showInspector={false} navigationEntryIds={unitNavigation.navigationEntryIds}
+      onEntrySelect={id => { if (goalIndexAll.has(id)) props.onSelectGoal(id) }}
       onReturnToTree={props.onReturnToTree} />
   </div>
 }
