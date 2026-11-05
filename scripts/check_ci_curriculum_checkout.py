@@ -18,6 +18,7 @@ BUILD_RESERVE_BYTES = 8 * 1024 ** 3
 BINARY_SUFFIXES = ('png', 'jpg', 'jpeg', 'pdf', 'zip')
 SPARSE_PATTERNS = ('/*', *(f'!/curricula/**/quality/**/*.{suffix}' for suffix in BINARY_SUFFIXES))
 HISTORICAL_QUALITY_BINARY = re.compile(r'^curricula/(?:.*/)?quality/.*\.(?:png|jpg|jpeg|pdf|zip)$')
+SIZE_QUERY_BATCH = 2048
 
 
 @lru_cache(maxsize=1)
@@ -57,22 +58,45 @@ def selected(path: str) -> bool:
 
 
 def inventory(*, verify_files: bool = True) -> dict:
-    raw = subprocess.check_output(['git', '-c', 'core.trustctime=false', 'ls-tree', '-rlz', 'HEAD'], cwd=ROOT)
-    counts = {'trackedFiles': 0, 'trackedBytes': 0, 'retainedFiles': 0, 'retainedBytes': 0, 'omittedFiles': 0, 'omittedBytes': 0}
+    # Asking ls-tree for every blob size (-l) lazily downloads even omitted
+    # historical binaries in a blob:none checkout. Enumerate trees first and
+    # query sizes only for the selected object IDs, in bounded batches.
+    raw = subprocess.check_output(['git', '-c', 'core.trustctime=false', 'ls-tree', '-rz', 'HEAD'], cwd=ROOT)
+    records: dict[str, str] = {}
     for row in raw.split(b'\0'):
         if not row:
             continue
         metadata, raw_path = row.split(b'\t', 1)
-        size = metadata.split()[3]
-        if size == b'-':
-            continue
-        path, size_bytes = raw_path.decode('utf-8'), int(size)
-        counts['trackedFiles'] += 1
-        counts['trackedBytes'] += size_bytes
-        category = 'retained' if selected(path) else 'omitted'
-        counts[category + 'Files'] += 1
-        counts[category + 'Bytes'] += size_bytes
-        if verify_files and category == 'retained' and not (ROOT / path).exists() and not (ROOT / path).is_symlink():
+        _mode, kind, object_id = metadata.split()
+        if kind == b'blob':
+            records[raw_path.decode('utf-8')] = object_id.decode('ascii')
+    missing_required = set(required_source_documents()) - records.keys()
+    if missing_required:
+        raise ValueError(f'Registered source documents are not tracked: {sorted(missing_required)}')
+    retained = {path: object_id for path, object_id in records.items() if selected(path)}
+    object_ids = sorted(set(retained.values()))
+    sizes: dict[str, int] = {}
+    for start in range(0, len(object_ids), SIZE_QUERY_BATCH):
+        batch = object_ids[start:start + SIZE_QUERY_BATCH]
+        expected = set(batch)
+        output = subprocess.check_output(['git', '-c', 'core.trustctime=false', 'cat-file',
+            '--batch-check=%(objectname) %(objecttype) %(objectsize)'], cwd=ROOT,
+            input=('\n'.join(batch) + '\n').encode('ascii'))
+        for line in output.splitlines():
+            fields = line.decode('ascii').split()
+            if len(fields) != 3 or fields[0] not in expected or fields[1] != 'blob' or not fields[2].isdigit():
+                raise ValueError('Selected tracked input has no exact Git blob size')
+            sizes[fields[0]] = int(fields[2])
+    if set(sizes) != set(object_ids):
+        raise ValueError('Selected Git blob-size query is incomplete')
+    # Omitted byte totals are deliberately unknown: measuring them would fetch
+    # the historical objects that this checkout is required to leave out.
+    counts = {'trackedFiles': len(records), 'trackedBytes': None,
+              'retainedFiles': len(retained), 'retainedBytes': 0,
+              'omittedFiles': len(records) - len(retained), 'omittedBytes': None}
+    for path, object_id in retained.items():
+        counts['retainedBytes'] += sizes[object_id]
+        if verify_files and not (ROOT / path).exists() and not (ROOT / path).is_symlink():
             raise ValueError(f'Sparse checkout omitted selected tracked input: {path}')
     if counts['retainedBytes'] > SOURCE_BUDGET_BYTES:
         raise ValueError(f'Selected tracked inputs exceed reviewed source budget: {counts["retainedBytes"]} > {SOURCE_BUDGET_BYTES}; remeasure the closure and runner reserve')
@@ -86,7 +110,9 @@ def materialize_required_documents() -> dict:
     import os
     if os.environ.get('RUNNER_ENVIRONMENT') != 'github-hosted' or os.environ.get('RUNNER_OS') != 'Linux':
         raise ValueError('Sparse input materialization is restricted to the disposable GitHub Linux job')
-    inventory(verify_files=False)  # Reject a changed source budget before downloading.
+    # Size only selected Git objects (including the registered PDF inputs),
+    # then reject an oversized source tree before materializing it in the worktree.
+    inventory(verify_files=False)
     paths = sorted(required_source_documents())
     if paths:
         patterns = ['/' + re.sub(r'([\\*?\[\]!# ])', r'\\\1', path) for path in paths]

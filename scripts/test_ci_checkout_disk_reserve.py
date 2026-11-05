@@ -8,7 +8,10 @@ import shutil
 from pathlib import Path
 import subprocess
 import tempfile
+from types import SimpleNamespace
 import unittest
+from unittest.mock import patch
+import hashlib
 
 import yaml
 import check_ci_curriculum_checkout as curriculum_checkout
@@ -196,6 +199,67 @@ class CheckoutDiskReserveTest(unittest.TestCase):
         # A sparse policy must never lower the gate on the remaining full jobs.
         result, _ = simulate(script(JOBS[0], PRE), 52_192_530_432)
         self.assertNotEqual(result.returncode, 0)
+
+    def test_partial_clone_inventory_never_fetches_omitted_historical_blobs(self):
+        with tempfile.TemporaryDirectory(prefix='ci-partial-clone-') as temporary:
+            root = Path(temporary)
+            author = root / 'author'
+            author.mkdir()
+            def git(directory, *arguments, input=None):
+                return subprocess.check_output(['git', '-c', 'core.trustctime=false', '-c', 'core.hooksPath=/dev/null',
+                    '-c', 'user.name=CI fixture', '-c', 'user.email=ci-fixture@example.invalid', *arguments],
+                    cwd=directory, input=input, stderr=subprocess.PIPE)
+            git(author, 'init', '--quiet')
+            required = 'curricula/DE/Gymnasium/quality/primary/required.pdf'
+            ignored = 'curricula/DE/Gymnasium/quality/archive/ignored.png'
+            contents = {'app/code.txt': b'code\n', required: b'%PDF-' + os.urandom(16384),
+                        ignored: b'PNG' + os.urandom(32768)}
+            for relative, content in contents.items():
+                path = author / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(content)
+            git(author, 'add', '.')
+            git(author, 'commit', '--quiet', '-m', 'private partial-clone fixture')
+            origin = root / 'origin.git'
+            git(root, 'clone', '--quiet', '--bare', str(author), str(origin))
+            git(origin, 'config', 'uploadpack.allowFilter', 'true')
+            object_ids = {path: git(author, 'rev-parse', 'HEAD:' + path).decode().strip() for path in contents}
+            def clone(name):
+                target = root / name
+                git(root, 'clone', '--quiet', '--filter=blob:none', '--no-checkout', origin.as_uri(), str(target))
+                git(target, 'sparse-checkout', 'set', '--no-cone', '--stdin',
+                    input=('\n'.join(curriculum_checkout.SPARSE_PATTERNS) + '\n').encode())
+                git(target, 'checkout', '--quiet', 'HEAD')
+                return target
+            def missing(target):
+                return {line[1:] for line in git(target, 'rev-list', '--objects', '--all', '--missing=print')
+                        .decode().splitlines() if line.startswith('?')}
+            old = clone('old')
+            self.assertEqual(missing(old), {object_ids[required], object_ids[ignored]})
+            git(old, 'ls-tree', '-rlz', 'HEAD')
+            self.assertNotIn(object_ids[ignored], missing(old), 'The old -l query really triggers the unwanted lazy fetch')
+
+            current = clone('current')
+            with patch.object(curriculum_checkout, 'ROOT', current), patch.object(curriculum_checkout,
+                    'required_source_documents', return_value={required: 'sha256:' + hashlib.sha256(contents[required]).hexdigest()}):
+                result = curriculum_checkout.inventory(verify_files=False)
+                expected_bytes = len(contents['app/code.txt']) + len(contents[required])
+                self.assertEqual(result['retainedBytes'], expected_bytes)
+                self.assertEqual((result['trackedFiles'], result['retainedFiles'], result['omittedFiles']), (3, 2, 1))
+                self.assertIsNone(result['omittedBytes'])
+                self.assertEqual(missing(current), {object_ids[ignored]})
+                self.assertFalse((current / required).exists(), 'Size preflight has not materialized the PDF')
+                with patch.dict(os.environ, {'RUNNER_ENVIRONMENT': 'github-hosted', 'RUNNER_OS': 'Linux'}):
+                    with patch.object(curriculum_checkout, 'SOURCE_BUDGET_BYTES', expected_bytes - 1):
+                        with self.assertRaisesRegex(ValueError, 'exceed reviewed source budget'):
+                            curriculum_checkout.materialize_required_documents()
+                    self.assertFalse((current / required).exists(), 'Overbudget inputs fail before sparse worktree reload')
+                    with patch.object(curriculum_checkout.shutil, 'disk_usage', return_value=SimpleNamespace(free=9 * GIB)):
+                        loaded = curriculum_checkout.materialize_required_documents()
+                    self.assertEqual(loaded['requiredSourceDocuments'], 1)
+                    self.assertEqual((current / required).read_bytes(), contents[required])
+                    self.assertFalse((current / ignored).exists())
+                    self.assertEqual(missing(current), {object_ids[ignored]})
 
     def test_actual_edge_checks_consume_only_the_declared_sparse_inputs(self):
         with tempfile.TemporaryDirectory(prefix='ci-openai-edge-inputs-') as temporary:
