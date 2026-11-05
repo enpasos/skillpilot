@@ -3959,10 +3959,13 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         binary_records.append(record)
     binary_records.sort(key=lambda item: item["resourceId"])
     expected_content_counts = publication_profile["expectedCounts"]["contentIndex"]
+    expected_logical_count = (sum(profile["expectedCounts"][key] for key in ("landscapes", "views", "decks"))
+        + 6 + expected_content_counts["addedLogicalArtifacts"] if compiled_entry is not None
+        else expected_content_counts["totalLogicalArtifacts"])
     if (
         len(publication_logical_documents)
         != expected_content_counts["addedLogicalArtifacts"]
-        or len(logical_records) != expected_content_counts["totalLogicalArtifacts"] + len(completion_documents) + len(unit_documents) + int(compiled_entry is not None)
+        or len(logical_records) != expected_logical_count + len(completion_documents) + len(unit_documents)
         or len(binary_records) != expected_content_counts["binaryResources"]
     ):
         raise CompilationError(

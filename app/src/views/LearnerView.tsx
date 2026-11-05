@@ -544,6 +544,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const verifiedRecallStartInFlightRef = useRef(createSynchronousInFlightGuard())
   const learnerDeletionInFlightRef = useRef(createSynchronousInFlightGuard())
   const learnerResumeAttemptedIdRef = useRef('')
+  const learnerResumeInFlightRef = useRef<{ learnerId: string; promise: Promise<void> } | null>(null)
   const currentSkillpilotIdRef = useRef(skillpilotId)
   const loadLearnerRetentionRef = useRef<() => Promise<void>>(async () => undefined)
   const fullRefreshInFlightRef = useRef(false)
@@ -608,7 +609,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     if (!resumeId || learnerResumeAttemptedIdRef.current === resumeId) return
     learnerResumeAttemptedIdRef.current = resumeId
 
-    void (async () => {
+    const promise = (async () => {
       try {
         const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
         const retention = await requestLearnerResume(fetch, apiBase, resumeId)
@@ -645,6 +646,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         }
       }
     })()
+    const pending = { learnerId: resumeId, promise }
+    learnerResumeInFlightRef.current = pending
+    void promise.finally(() => {
+      if (learnerResumeInFlightRef.current === pending) learnerResumeInFlightRef.current = null
+    })
   }, [learnerDataManagementCopy.missingLearner, learnerDataManagementCopy.resumeFailed, learnerDataManagementCopy.title, onLogout, onNotify, skillpilotId])
 
   const queryParams = useMemo(() => new URLSearchParams(location.search), [location.search])
@@ -1750,6 +1756,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         })
         return null
       }
+      const resume = learnerResumeInFlightRef.current
+      if (resume?.learnerId === skillpilotId) {
+        await resume.promise
+        if (currentLearnerStateScopeKeyRef.current !== learnerStateScopeKey) return null
+      }
       const requestSequence = beginLatestRequest(learnerStateRequestSequenceRef)
       const requestScopeKey = learnerStateScopeKey
       const isCurrentRequest = () => isLatestRequestForScope(
@@ -2080,6 +2091,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   ])
 
   const handleSseUpdate = useCallback(async (payload?: { type?: string; nodeId?: string }) => {
+    const resume = learnerResumeInFlightRef.current
+    if (resume?.learnerId === skillpilotId) {
+      await resume.promise
+      if (currentLearnerStateScopeKeyRef.current !== learnerStateScopeKey) return
+    }
     if (payload?.type === 'PREFERENCES_CHANGED') {
       const saving = preferenceSaveRefreshRef.current
       if (saving?.scopeKey === learnerStateScopeKey) {

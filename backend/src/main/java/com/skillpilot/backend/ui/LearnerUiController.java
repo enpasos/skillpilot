@@ -79,7 +79,24 @@ public class LearnerUiController {
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public UnifiedLearnerStateResponse getLearnerState(@PathVariable String skillpilotId) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
-        return learnerService.getLearnerState(skillpilotId);
+        for (int attempt = 0; ; attempt++) {
+            try { return learnerService.getLearnerState(skillpilotId); }
+            catch (org.springframework.dao.PessimisticLockingFailureException conflict) {
+                // The proxied service has already rolled its entire RR projection
+                // back. Retry only this GET, in a new outer transaction; never
+                // repeat a mutation or continue inside an aborted caller transaction.
+                if (attempt >= 2 || org.springframework.transaction.support.TransactionSynchronizationManager.isActualTransactionActive()
+                        || !isSerializationConflict(conflict)) throw conflict;
+            }
+        }
+    }
+
+    private static boolean isSerializationConflict(Throwable failure) {
+        for (Throwable cause = failure; cause != null; cause = cause.getCause()) {
+            if (cause instanceof java.sql.SQLException sql
+                    && ("40001".equals(sql.getSQLState()) || "40P01".equals(sql.getSQLState()))) return true;
+        }
+        return false;
     }
 
     @PostMapping("/{skillpilotId}/level-completion/actions")

@@ -236,6 +236,7 @@ jobs:
           --tests 'com.skillpilot.backend.completion.learningunit.*'
           --tests 'com.skillpilot.backend.service.LearningUnitRecognitionIntegrationTest'
           --tests 'com.skillpilot.backend.service.LearningUnitEntryScopeTest'
+          --tests 'com.skillpilot.backend.ui.LearnerUiStateRetryTest'
           --tests 'com.skillpilot.backend.curriculumpackage.LearningUnitOfferPackageLoaderTest'
           --tests 'com.skillpilot.backend.curriculumpackage.JsonCurriculumPackageLoaderTest'
           --tests 'com.skillpilot.backend.service.LearningPlanDailyProgressTest'
@@ -305,7 +306,8 @@ jobs:
               'com.skillpilot.backend.completion.learningunit.LearningUnitAssessmentVariantAliasesTest': 1,
               'com.skillpilot.backend.completion.learningunit.LearningUnitRecallBindingsTest': 9,
               'com.skillpilot.backend.service.LearningUnitEntryScopeTest': 7,
-              'com.skillpilot.backend.curriculumpackage.LearningUnitOfferPackageLoaderTest': 6,
+              'com.skillpilot.backend.curriculumpackage.LearningUnitOfferPackageLoaderTest': 8,
+              'com.skillpilot.backend.ui.LearnerUiStateRetryTest': 4,
               'com.skillpilot.backend.curriculumpackage.JsonCurriculumPackageLoaderTest': 13,
               'com.skillpilot.backend.service.LearningPlanDailyProgressTest': 13,
               'com.skillpilot.backend.completion.CompletionCoreTest': 20,
@@ -334,7 +336,7 @@ jobs:
               'com.skillpilot.backend.service.SrsMasteryBatchQueryTest': 6,
               'com.skillpilot.backend.service.AssessmentCompletionPostgresIntegrationTest': 4,
               'com.skillpilot.backend.service.AssessmentCompletionRestartIntegrationTest': 1,
-              'com.skillpilot.backend.service.AssessmentCompletionBackendBrowserIntegrationTest': 5,
+              'com.skillpilot.backend.service.AssessmentCompletionBackendBrowserIntegrationTest': 6,
               'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionProjectionTest': 7,
               'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest': 1,
               'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionContractRegistryTest': 5,

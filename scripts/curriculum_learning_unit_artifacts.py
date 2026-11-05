@@ -150,6 +150,13 @@ def source_path(value: Any) -> str:
     return value
 
 
+def artifact_identity(path: str) -> str:
+    """Keep old IDs byte-exact; a long source locator is not an artifact path."""
+    if len(path) <= 180 and re.fullmatch(r'[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*', path):
+        return path
+    return 'learning-unit-source:sha256:' + hashlib.sha256(path.encode('utf-8')).hexdigest()
+
+
 def _read(repo: Path, path: str) -> bytes:
     source = repo / 'curricula' / source_path(path)
     if source.is_symlink() or not source.resolve().is_relative_to((repo / 'curricula').resolve()) or not source.is_file():
@@ -259,9 +266,10 @@ def compile_documents(repo: Path, configuration: Mapping[str, Any], source_lands
             raise ValueError(f'Stale learning-unit source input: {path}')
         kind = 'catalog' if path == catalog_path else kinds.get(path, 'input')
         artifact_path = 'data/learning-units/' + kind + '/' + hashlib.sha256(path.encode()).hexdigest()[:24] + '.json'
-        wrapper = {'artifactFormatVersion': 1, 'artifactKind': kind, 'id': path,
+        identity = artifact_identity(path)
+        wrapper = {'artifactFormatVersion': 1, 'artifactKind': kind, 'id': identity,
                    'definition': {'sourcePath': path, 'sha256': sha, 'contentBase64': base64.b64encode(raw).decode('ascii')}}
-        documents.append((ROLES[kind], path, artifact_path, wrapper))
+        documents.append((ROLES[kind], identity, artifact_path, wrapper))
         inputs.append({'sourcePath': 'curricula/' + path, 'sourceSha256': sha, 'artifactPath': artifact_path})
     validate_package_documents(documents, source_landscape)
     return documents, inputs
@@ -278,7 +286,7 @@ def validate_package_documents(documents: list[tuple[str, str, str, Any]], lands
         if ROLES.get(kind) != role or not isinstance(definition, dict) or set(definition) != {'sourcePath', 'sha256', 'contentBase64'}:
             raise ValueError('Invalid learning-unit artifact role/definition')
         path = source_path(definition['sourcePath'])
-        if path != logical_id or wrapper['id'] != path or path in values:
+        if artifact_identity(path) != logical_id or wrapper['id'] != logical_id or path in values:
             raise ValueError('Duplicate or mismatched learning-unit source identity')
         raw = base64.b64decode(definition['contentBase64'], validate=True)
         if hashlib.sha256(raw).hexdigest() != definition['sha256']:

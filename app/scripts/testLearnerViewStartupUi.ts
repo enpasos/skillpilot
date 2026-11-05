@@ -128,6 +128,7 @@ try {
   const open = async (
     initial?: Partial<Record<Endpoint, Reply | Promise<Reply>>>,
     root: 'canonical' | 'legacy' = 'canonical',
+    resumeReply?: Reply | Promise<Reply> | ((learnerId: string) => Reply | Promise<Reply>),
   ) => {
     const context = await browser!.newContext({ viewport: { width: 1280, height: 900 }, locale: 'de-DE' })
     contexts.push(context)
@@ -152,6 +153,7 @@ try {
     const unexpected: string[] = []
     const contentRequests: string[] = []
     const requests: Array<{ learnerId: string; endpoint: Endpoint }> = []
+    const resumeStarted = deferred<void>()
     const replies: Record<string, Record<Endpoint, Reply | Promise<Reply>>> = {
       [learnerA]: { profile: profile(learnerA), state: state(learnerA), plans: plans(), ...initial },
       [learnerB]: { profile: profile(learnerB), state: state(learnerB), plans: plans() },
@@ -178,9 +180,13 @@ try {
       }
       const match = /^\/api\/ui\/learners\/(fixture-learner-[ab])(?:\/(state|learning-plans|resume))?$/u.exec(path)
       if (match && (request.method() === 'GET' || (match[2] === 'resume' && request.method() === 'POST'))) {
-        if (match[2] === 'resume') return json({ body: {
-          lastActivityAt: '2026-09-09T08:00:00Z', scheduledDeletionAt: '2027-03-09T08:00:00Z',
-        } })
+        if (match[2] === 'resume') {
+          resumeStarted.resolve()
+          const reply = typeof resumeReply === 'function' ? resumeReply(match[1]!) : resumeReply
+          return json(reply ? await reply : { body: {
+            lastActivityAt: '2026-09-09T08:00:00Z', scheduledDeletionAt: '2027-03-09T08:00:00Z',
+          } })
+        }
         const learnerId = match[1]!
         const endpoint: Endpoint = match[2] === 'learning-plans' ? 'plans' : match[2] === 'state' ? 'state' : 'profile'
         requests.push({ learnerId, endpoint })
@@ -190,7 +196,7 @@ try {
       return json({ status: 404, body: { error: 'Unexpected local fixture request' } })
     })
     await page.goto(`${server.baseUrl}/scripts/fixtures/learnerViewStartupUi.html?root=${root}`)
-    return { context, page, replies, errors, unexpected, requests, contentRequests }
+    return { context, page, replies, errors, unexpected, requests, contentRequests, resumeStarted: resumeStarted.promise }
   }
   const assertNoFalseSetup = async (page: Page) => {
     assert.equal(await page.getByRole('dialog').count(), 0, 'a valid delayed scope must never open setup')
@@ -249,6 +255,51 @@ try {
     await h.page.locator('#learner-goal-sidebar').getByText(mathTitle, { exact: true }).waitFor()
     assert.deepEqual(h.unexpected, [], 'collapsing a subject wrapper must not rewrite the saved focus')
     await h.page.screenshot({ path: `${screenshotDir}subject-headings.png` })
+    await h.context.close()
+  }
+
+  // State/SSE reads must not compete with the initial activity-write lock.
+  {
+    const resume = gate()
+    const h = await open(undefined, 'canonical', resume.promise)
+    await h.resumeStarted
+    await emit(h.page, learnerA, 'ACTIVE_GOAL_CHANGED')
+    await settledFrame(h.page)
+    assert.equal(h.requests.filter(request => request.endpoint === 'state').length, 0,
+      'initial and SSE state reads wait for the actual pending resume response')
+    resume.resolve({ body: { lastActivityAt: '2026-09-09T08:00:00Z', scheduledDeletionAt: '2027-03-09T08:00:00Z' } })
+    await waitReady(h.page, mathTitle)
+    assert.ok(h.requests.some(request => request.endpoint === 'state'), 'state loads after the resume write settles')
+    assert.deepEqual(h.errors, [])
+    assert.deepEqual(h.unexpected, [])
+    await h.context.close()
+  }
+
+  {
+    const h = await open(undefined, 'canonical', { status: 503, body: { error: 'Controlled activity outage' } })
+    await waitReady(h.page, mathTitle)
+    await h.page.getByText('SkillPilot konnte nicht bestätigen, dass die Aktivität gespeichert wurde.', { exact: false }).waitFor()
+    assert.ok(h.requests.some(request => request.endpoint === 'state'), 'a rejected resume releases state reads and keeps its existing error notice')
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+  {
+    const pendingResume = gate()
+    const activity = { body: { lastActivityAt: '2026-09-09T08:00:00Z', scheduledDeletionAt: '2027-03-09T08:00:00Z' } }
+    const h = await open(undefined, 'canonical', learnerId => learnerId === learnerA ? pendingResume.promise : activity)
+    await h.resumeStarted
+    await h.page.getByTestId('fixture-switch-learner').click()
+    await waitReady(h.page, physicsTitle)
+    assert.equal(h.requests.filter(request => request.learnerId === learnerA && request.endpoint === 'state').length, 0)
+    const oldResponse = h.page.waitForResponse(response => new URL(response.url()).pathname === `/api/ui/learners/${learnerA}/resume`)
+    pendingResume.resolve(activity)
+    await oldResponse
+    await settledFrame(h.page)
+    assert.equal(h.requests.filter(request => request.learnerId === learnerA && request.endpoint === 'state').length, 0,
+      'releasing learner A resume cannot start a stale A state read after B is ready')
+    await h.page.getByTestId('learner-active-goal-banner').getByText(physicsTitle, { exact: true }).waitFor()
+    assert.deepEqual(h.errors, [])
+    assert.deepEqual(h.unexpected, [])
     await h.context.close()
   }
 

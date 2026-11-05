@@ -347,7 +347,7 @@ public final class JsonCurriculumPackageLoader {
         int catalogs = 0;
         for (JsonNode entry : entries) {
             requireFieldSet(entry, Set.of("id", "kind", "artifactPath"), "learning-unit discovery");
-            String id = requiredRelativePath(entry, "id", "learning-unit discovery");
+            String id = requiredText(entry, "id", "learning-unit discovery");
             String kind = requiredText(entry, "kind", "learning-unit discovery");
             if (!Set.of("catalog", "contract", "input").contains(kind)) throw failure("Unknown learning-unit artifact kind");
             String role = "learning-unit-" + kind;
@@ -367,8 +367,13 @@ public final class JsonCurriculumPackageLoader {
             requireExactText(wrapper, "id", id, "learning-unit wrapper");
             JsonNode definition = requiredObject(wrapper, "definition", "learning-unit wrapper");
             requireFieldSet(definition, Set.of("sourcePath", "contentBase64", "sha256"), "learning-unit source bytes");
-            requireExactText(definition, "sourcePath", id, "learning-unit source bytes");
-            com.skillpilot.backend.completion.learningunit.LearningUnitCatalog.checkedPath(id);
+            String sourcePath = requiredText(definition, "sourcePath", "learning-unit source bytes");
+            try {
+                if (!id.equals(com.skillpilot.backend.completion.learningunit.LearningUnitApplicationService.packageArtifactIdentity(sourcePath))) {
+                    throw failure("Learning-unit artifact identity differs from its exact source locator");
+                }
+            } catch (CurriculumPackageException invalid) { throw invalid; }
+            catch (Exception invalid) { throw failure("Invalid learning-unit source locator", invalid); }
             byte[] content;
             try { content = java.util.Base64.getDecoder().decode(requiredText(definition, "contentBase64", "learning-unit source bytes")); }
             catch (IllegalArgumentException invalid) { throw failure("Invalid learning-unit source base64", invalid); }

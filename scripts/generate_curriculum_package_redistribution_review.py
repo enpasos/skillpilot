@@ -2137,7 +2137,7 @@ def main() -> int:
         args.ledger = (DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-completion-v1.review.json")
                        if args.completion_candidate else DEFAULT_LEDGER)
     if args.learning_units_candidate:
-        catalog = read_json(release_file(args.release_root, "metadata/runtime-catalog.json"))
+        catalog = read_json(release_file(args.release_root, "data/runtime/catalog.json"))
         offers = "learningUnitOfferBindingsV1" in catalog.get("capabilities", [])
         if args.ledger.resolve() == DEFAULT_LEDGER.resolve():
             args.ledger = DEFAULT_LEDGER.with_name(f"de-gymnasium-mathematik-{'learning-unit-offers' if offers else 'learning-units'}-v1.review.json")

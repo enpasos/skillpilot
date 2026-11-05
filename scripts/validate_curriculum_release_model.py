@@ -1696,6 +1696,8 @@ def validate_schema_registry_coverage(
             if schema.get("$id") in {completion_contracts.CATALOG_SCHEMA_ID, learning_units.CATALOG_SCHEMA_ID, learning_units.OFFER_CATALOG_SCHEMA_ID}:
                 schema = completion_artifacts.schema_for_coverage(REPO_ROOT, schema)
             paths = schema_field_paths(schema)
+            if role == "canonical-landscape" and "offer-compiled-landscape" in schemas:
+                paths |= schema_field_paths(schemas["offer-compiled-landscape"])
             if schema.get("$id") in {completion_contracts.CATALOG_SCHEMA_ID, learning_units.CATALOG_SCHEMA_ID, learning_units.OFFER_CATALOG_SCHEMA_ID}:
                 if "completionArtifacts" in schema.get("properties", {}):
                     paths.add(("completionArtifacts", "*"))
@@ -4702,10 +4704,13 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
     publication_content_counts = context.publication_profile["expectedCounts"][
         "contentIndex"
     ]
+    expected_logical_count = (sum(profile["expectedCounts"][key] for key in ("landscapes", "views", "decks"))
+        + 6 + publication_content_counts["addedLogicalArtifacts"] if entry is not None
+        else publication_content_counts["totalLogicalArtifacts"])
     require(
         len(model["publication"]["logicalDocuments"])
         == publication_content_counts["addedLogicalArtifacts"]
-        and len(logical_records) == publication_content_counts["totalLogicalArtifacts"] + len(completion_documents) + len(unit_documents) + int(entry is not None)
+        and len(logical_records) == expected_logical_count + len(completion_documents) + len(unit_documents)
         and len(binary_records) == publication_content_counts["binaryResources"],
         "Publication-evidence content-index counts changed",
     )

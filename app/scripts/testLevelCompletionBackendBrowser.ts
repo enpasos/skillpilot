@@ -79,6 +79,10 @@ let shuttingDown = false
 const requests: { method: string; path: string; status: number; revision?: number }[] = []
 const errors: string[] = []
 const releaseTransportGates: (() => void)[] = []
+let rejectBackendFailure!: (error: Error) => void
+const backendFailure = new Promise<never>((_resolve, reject) => { rejectBackendFailure = reject })
+// Keep the diagnostic promise handled before a browser's first critical wait.
+void backendFailure.catch(() => undefined)
 try {
   browser = await chromium.launch({ headless: true, args: ['--disable-background-networking', '--disable-dev-shm-usage', '--disable-gpu', '--no-sandbox'] })
   const open = async (mobile: boolean) => {
@@ -130,6 +134,21 @@ try {
         requests.push({ method: request.method(), path: url.pathname, status: response.status(),
           revision: request.method() === 'POST' && url.pathname.endsWith('/level-completion/actions')
             ? request.postDataJSON().expectedRevision : undefined })
+        if (response.status() >= 500) {
+          const safePath = url.pathname.replaceAll(learner, '[learner]')
+          let parsed: Record<string, unknown> = {}
+          try { parsed = JSON.parse((await response.text()).slice(0, 4096)) as Record<string, unknown> } catch { /* no raw error-body logging */ }
+          const allowedErrors = ['Internal Server Error', 'Service Unavailable', 'Bad Gateway', 'Gateway Timeout', 'Not Implemented']
+          // Log only standard, bounded error fields. Session/capability/receipt
+          // values and arbitrary message/stack/detail fields are never copied.
+          const body = JSON.stringify({ status: response.status(),
+            ...(allowedErrors.includes(String(parsed?.error)) ? { error: parsed.error } : {}),
+            ...(typeof parsed?.timestamp === 'string' && /^[0-9T:.+Z-]{1,40}$/u.test(parsed.timestamp) ? { timestamp: parsed.timestamp } : {}),
+          })
+          const failure = new Error(`Real backend HTTP ${response.status()} ${request.method()} ${safePath}: ${body}`)
+          console.error(failure.message)
+          rejectBackendFailure(failure)
+        }
         // Byte-for-byte backend payload and status: no generated state, mastery,
         // launch response or conflict response is substituted by this test.
         await route.fulfill({ response })
@@ -137,10 +156,12 @@ try {
         if (!shuttingDown && !page.isClosed()) throw error
       }
     })
-    await page.goto(`${server.baseUrl}/scripts/fixtures/levelCompletionBackendUi.html?learner=${learner}`)
-    const discovery = page.getByTestId('completion-shortcut-discovery')
-    await discovery.locator('summary').click()
-    await discovery.getByRole('button', { name: `Abschnitt als Lernweg wählen: ${title}`, exact: true }).waitFor()
+    await Promise.race([backendFailure, (async () => {
+      await page.goto(`${server.baseUrl}/scripts/fixtures/levelCompletionBackendUi.html?learner=${learner}`)
+      const discovery = page.getByTestId('completion-shortcut-discovery')
+      await discovery.locator('summary').click()
+      await discovery.getByRole('button', { name: `Abschnitt als Lernweg wählen: ${title}`, exact: true }).waitFor()
+    })()])
     return { page, context, failState: (failed: boolean) => { abortState = failed }, holdState: () => {
       const held = new Promise<void>((resolveHeld) => { stateHeld = resolveHeld })
       stateGate = new Promise<void>((release) => { releaseState = release })

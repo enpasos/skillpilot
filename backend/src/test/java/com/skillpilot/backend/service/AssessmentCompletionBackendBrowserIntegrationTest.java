@@ -367,6 +367,60 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
         }
     }
 
+    @Test void actualHttpReadRetriesAConflictOnlyAfterOuterRollbackAndRetainsRepeatableRead() throws Exception {
+        String id = createSyntheticLearner();
+        var attempts = new java.util.concurrent.atomic.AtomicInteger();
+        var completions = new java.util.concurrent.CopyOnWriteArrayList<Integer>();
+        var conflictStates = new java.util.concurrent.CopyOnWriteArrayList<String>();
+        org.aopalliance.intercept.MethodInterceptor probe = invocation -> {
+            if (!invocation.getMethod().getName().equals("getLearnerState") || !id.equals(invocation.getArguments()[0])) return invocation.proceed();
+            assertThat(org.springframework.transaction.support.TransactionSynchronizationManager.isActualTransactionActive()).isTrue();
+            assertThat(org.springframework.jdbc.datasource.DataSourceUtils.getConnection(dataSource).getTransactionIsolation())
+                    .isEqualTo(java.sql.Connection.TRANSACTION_REPEATABLE_READ);
+            int attempt = attempts.getAndIncrement();
+            if (attempt > 0) assertThat(completions).containsExactly(
+                    org.springframework.transaction.support.TransactionSynchronization.STATUS_ROLLED_BACK);
+            org.springframework.transaction.support.TransactionSynchronizationManager.registerSynchronization(
+                    new org.springframework.transaction.support.TransactionSynchronization() {
+                        @Override public void afterCompletion(int status) { completions.add(status); }
+                    });
+            if (attempt == 0) {
+                // Establish the real RR snapshot before a separate committed writer
+                // changes this row. The production FOR UPDATE then raises real40001.
+                jdbc.queryForObject("SELECT coach_state_revision FROM learner WHERE skillpilot_id = ?", Long.class, id);
+                try (var writer = dataSource.getConnection()) {
+                    writer.setAutoCommit(false);
+                    try (var update = writer.prepareStatement("UPDATE learner SET last_activity_at = ? WHERE skillpilot_id = ?")) {
+                        update.setTimestamp(1, java.sql.Timestamp.from(Instant.now())); update.setString(2, id);
+                        assertThat(update.executeUpdate()).isEqualTo(1);
+                    }
+                    writer.commit();
+                }
+            }
+            try { return invocation.proceed(); }
+            catch (RuntimeException conflict) {
+                for (Throwable cause = conflict; cause != null; cause = cause.getCause()) {
+                    if (cause instanceof java.sql.SQLException sql) { conflictStates.add(sql.getSQLState()); break; }
+                }
+                throw conflict;
+            }
+        };
+        var proxy = (org.springframework.aop.framework.Advised) learnerService;
+        proxy.addAdvice(probe);
+        try (HttpClient client = HttpClient.newHttpClient()) {
+            var response = client.send(HttpRequest.newBuilder(URI.create("http://127.0.0.1:" + port
+                    + "/api/ui/learners/" + id + "/state")).GET().build(), HttpResponse.BodyHandlers.ofString());
+            assertThat(response.statusCode()).isEqualTo(200);
+            assertThat(mapper.readTree(response.body()).path("levelCompletion").path("calculationStatus").asText()).isEqualTo("valid");
+            assertThat(attempts.get()).isEqualTo(2);
+            assertThat(conflictStates).containsExactly("40001");
+            assertThat(completions).containsExactly(
+                    org.springframework.transaction.support.TransactionSynchronization.STATUS_ROLLED_BACK,
+                    org.springframework.transaction.support.TransactionSynchronization.STATUS_COMMITTED);
+            assertThat(mastery.findByLearner_SkillpilotId(id)).isEmpty();
+        } finally { proxy.removeAdvice(probe); }
+    }
+
     private void assertRepeatableSingleBatch(String id, List<Map.Entry<String, Integer>> observations) {
         assertThat(observations).containsExactly(Map.entry("M", java.sql.Connection.TRANSACTION_REPEATABLE_READ),
                 Map.entry("K", java.sql.Connection.TRANSACTION_REPEATABLE_READ));

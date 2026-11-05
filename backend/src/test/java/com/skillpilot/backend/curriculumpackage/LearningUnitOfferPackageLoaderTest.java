@@ -61,8 +61,31 @@ class LearningUnitOfferPackageLoaderTest {
         assertThatThrownBy(() -> loader(optionalMapping.root()).load()).hasMessageContaining("runtimeRequired mapping");
     }
 
+    @Test void longSourcePathUsesOnlyItsExactDeterministicArtifactIdentity() throws Exception {
+        String sourcePath = "DE/Gymnasium/learning-units/sources/" + "long-source-name-".repeat(11) + ".json";
+        var store = store(false, false, false, false, sourcePath, null);
+        var snapshot = loader(store.root()).load();
+        String expected = "learning-unit-source:sha256:" + CurriculumPackageFileReader.sha256(sourcePath.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+        assertThat(snapshot.artifactsByRole().get("learning-unit-catalog")).singleElement()
+                .satisfies(artifact -> assertThat(artifact.logicalId()).isEqualTo(expected));
+        var wrong = store(false, false, false, false, sourcePath, "learning-unit-source:sha256:" + "1".repeat(64));
+        assertThatThrownBy(() -> loader(wrong.root()).load()).hasMessageContaining("identity differs from its exact source locator");
+    }
+
+    @Test void aShortSourceCannotUseAnUnnecessaryHashIdentity() throws Exception {
+        String sourcePath = "DE/Gymnasium/learning-units/offers/short.json";
+        String hash = "learning-unit-source:sha256:" + CurriculumPackageFileReader.sha256(sourcePath.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+        var wrong = store(false, false, false, false, sourcePath, hash);
+        assertThatThrownBy(() -> loader(wrong.root()).load()).hasMessageContaining("identity differs from its exact source locator");
+    }
+
     private CurriculumPackageTestFixture.TestStore store(boolean offerProfile, boolean offerCapability,
                                                         boolean pointer, boolean requiredMapping) throws Exception {
+        return store(offerProfile, offerCapability, pointer, requiredMapping, "DE/Gymnasium/learning-units/offers/alternate.catalog.json", null);
+    }
+
+    private CurriculumPackageTestFixture.TestStore store(boolean offerProfile, boolean offerCapability,
+            boolean pointer, boolean requiredMapping, String sourcePath, String overrideIdentity) throws Exception {
         var fixture = new CurriculumPackageTestFixture(mapper);
         var store = fixture.create(directory.resolve("store-" + storeSequence++),
                 CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a'));
@@ -80,23 +103,23 @@ class LearningUnitOfferPackageLoaderTest {
         catalog.put("catalogVersion", "1.2"); catalog.put("runtimeContractVersion", "1.2");
         var capabilities = catalog.withArray("capabilities"); capabilities.add("learningUnitRecognitionV1");
         if (offerCapability) capabilities.add("learningUnitOfferBindingsV1");
-        String sourcePath = "DE/Gymnasium/learning-units/offers/alternate.catalog.json";
+        String identity = overrideIdentity == null ? com.skillpilot.backend.completion.learningunit.LearningUnitApplicationService.packageArtifactIdentity(sourcePath) : overrideIdentity;
         String artifactPath = "data/learning-units/catalog.json";
         ObjectNode sourceCatalog = mapper.createObjectNode(); sourceCatalog.put("schemaVersion", 1); sourceCatalog.putArray("contracts");
         if (pointer) sourceCatalog.putObject("currentOfferBinding").put("path", "DE/Gymnasium/learning-units/offers/current.json")
                 .put("sha256", "1".repeat(64));
         byte[] sourceBytes = mapper.writeValueAsBytes(sourceCatalog);
-        byte[] wrapper = mapper.writeValueAsBytes(Map.of("artifactFormatVersion", 1, "artifactKind", "catalog", "id", sourcePath,
+        byte[] wrapper = mapper.writeValueAsBytes(Map.of("artifactFormatVersion", 1, "artifactKind", "catalog", "id", identity,
                 "definition", Map.of("sourcePath", sourcePath, "contentBase64", Base64.getEncoder().encodeToString(sourceBytes),
                         "sha256", CurriculumPackageFileReader.sha256(sourceBytes))));
         Files.createDirectories(pkg.packageRoot().resolve(artifactPath).getParent()); Files.write(pkg.packageRoot().resolve(artifactPath), wrapper);
-        catalog.putArray("learningUnitArtifacts").addObject().put("id", sourcePath).put("kind", "catalog").put("artifactPath", artifactPath);
+        catalog.putArray("learningUnitArtifacts").addObject().put("id", identity).put("kind", "catalog").put("artifactPath", artifactPath);
         fixture.writeJson(pkg.packageRoot().resolve(catalogPath), catalog);
         manifest.withArray("files").add(mapper.valueToTree(Map.ofEntries(Map.entry("path", artifactPath),
                 Map.entry("role", "learning-unit-catalog"), Map.entry("mediaType", "application/json"),
                 Map.entry("bytes", wrapper.length), Map.entry("sha256", CurriculumPackageFileReader.sha256(wrapper)),
                 Map.entry("runtimeRequired", true), Map.entry("validationSchemaId", "https://skillpilot.com/schemas/curriculum-package/v1.2/learning-unit-artifact.schema.json"),
-                Map.entry("semanticBinding", Map.of("kind", "logical-artifact", "logicalId", sourcePath, "normalizationRole", "learning-unit-catalog")),
+                Map.entry("semanticBinding", Map.of("kind", "logical-artifact", "logicalId", identity, "normalizationRole", "learning-unit-catalog")),
                 Map.entry("licenseExpression", "Apache-2.0"), Map.entry("provenanceClass", "software-contract"), Map.entry("redistributionStatus", "allowed"))));
         for (var file : manifest.path("files")) {
             byte[] bytes = Files.readAllBytes(pkg.packageRoot().resolve(file.path("path").asText()));

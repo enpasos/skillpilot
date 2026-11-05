@@ -310,6 +310,14 @@ public class LearningUnitApplicationService {
                         offer.coverage(), offer.rootContractRefs(), offer.coveredTargetCount(), offer.totalTargetCount(), offer.bindingDigest()));
     }
 
+    /** Stable artifact identity for source locators outside the older 180-character path-ID schema. */
+    public static String packageArtifactIdentity(String sourcePath) throws Exception {
+        LearningUnitCatalog.checkedPath(sourcePath);
+        if (sourcePath.length() > 240) throw new IllegalArgumentException("Learning-unit source locator exceeds its fixed schema bound");
+        if (sourcePath.length() <= 180 && sourcePath.matches("[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*")) return sourcePath;
+        return "learning-unit-source:sha256:" + rawDigest(sourcePath.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+    }
+
     public static byte[] packageManifest(CurriculumRuntimeSnapshot snapshot, Map<String, byte[]> inputs,
                                          ObjectMapper mapper) throws Exception {
         var catalogs = snapshot.artifactsByRole().getOrDefault(LearningUnitCatalog.CATALOG_ROLE, List.of());
@@ -328,6 +336,7 @@ public class LearningUnitApplicationService {
                 JsonNode wrapper = mapper.readTree(artifact.contentBytes());
                 JsonNode definition = wrapper.path("definition");
                 String sourcePath = LearningUnitCatalog.checkedPath(definition.path("sourcePath").asText());
+                if (!packageArtifactIdentity(sourcePath).equals(wrapper.path("id").asText())) throw new IllegalArgumentException("Packaged learning-unit artifact identity differs from its exact source locator");
                 byte[] content = Base64.getDecoder().decode(definition.path("contentBase64").asText());
                 if (!rawDigest(content).equals(definition.path("sha256").asText())) throw new IllegalArgumentException("Packaged learning-unit source digest differs");
                 byte[] previous = result.putIfAbsent(sourcePath, content);

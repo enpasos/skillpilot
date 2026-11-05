@@ -110,6 +110,21 @@ def run() -> None:
         package_documents, _ = units.compile_documents(repo, package_configuration, {})
         assert units.catalog_capabilities(package_documents) == capabilities
         units.validate_package_documents(package_documents, capabilities=capabilities)
+        assert all(identity == value['definition']['sourcePath'] for _role, identity, _path, value in package_documents), 'old short source identities remain exact'
+        long_source = 'DE/Gymnasium/learning-units/sources/' + 'retained-reviewed-source/' * 6 + 'direct-source-routing.json'
+        assert 180 < len(long_source) <= 240
+        extra_catalog = copy.deepcopy(catalog)
+        extra_catalog['contracts'][0]['inputs'][long_source] = write(long_source, {'pinned': 'complete original source'})
+        write(package_catalog_path, extra_catalog)
+        long_documents, _ = units.compile_documents(repo, package_configuration, {})
+        long_artifact = next(value for _role, _identity, _path, value in long_documents if value['definition']['sourcePath'] == long_source)
+        assert long_artifact['id'] == 'learning-unit-source:sha256:' + sha(long_source.encode())
+        units.validate_package_documents(long_documents, capabilities=capabilities)
+        wrong_identity = [(role, 'unrelated-source-id', path, {**value, 'id': 'unrelated-source-id'})
+                          if value is long_artifact else (role, identity, path, value)
+                          for role, identity, path, value in long_documents]
+        reject(lambda: units.validate_package_documents(wrong_identity, capabilities=capabilities))
+        write(package_catalog_path, catalog)
         reject(lambda: units.validate_package_documents(documents + [package_documents[0]], capabilities=capabilities))
         # The distinct entry is installed; the complete original overview is
         # pinned provenance. Its authored flow permits only this finite rewrite.
