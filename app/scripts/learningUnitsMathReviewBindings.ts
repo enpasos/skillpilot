@@ -12,9 +12,9 @@ const read = (path: string) => JSON.parse(readFileSync(resolve(root, path), 'utf
 const inputsPath = arg('--inputs', 'tmp/math-learning-units/batches/math-2026-11-05-batch-a-scoped/content-review-inputs.json')
 const decisionsPath = arg('--decisions', 'curricula/DE/Gymnasium/quality/learning-units/math-batch-a-2026-11-05/independent-content-decisions.json')
 const inputs = read(inputsPath); const decisions = read(decisionsPath)
-const rows = inputs.map((row: any) => {
+const rows = inputs.map((row: { contractId: string; reviewedInputSha256: string; reviewInput: Parameters<typeof contentSignatures>[0] }) => {
   assert.equal(digest(canonicalJson(row.reviewInput)), row.reviewedInputSha256)
-  const decision = decisions.decisions.find((value: any) => value.contractId === row.contractId)
+  const decision = decisions.decisions.find((value: { contractId: string }) => value.contractId === row.contractId)
   assert.ok(decision); assert.equal(decision.contentDecision, 'PASS'); assert.equal(decision.ownDemandDecision, 'PASS')
   assert.equal(decision.recallDecision, 'PASS_NO_OWN_RECALL_REQUIRED')
   const signatures = contentSignatures(row.reviewInput)

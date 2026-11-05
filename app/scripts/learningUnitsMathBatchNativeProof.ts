@@ -6,30 +6,32 @@ import { fileURLToPath } from 'node:url'
 import { atomicRelation, canonicalJson, digest, fullClosure, goalMeaning, mathCanonicalPath, type MathGoal } from './learningUnitsMathAuthoring'
 import { requireNativeInventory } from './learningUnitsNativeMathInventory'
 import { compactScalarArrays } from './learningUnits/compactJson'
+import type { Batch } from './learningUnits/batchAuthoring'
+import type { NativeReport, NativeRow, OfferBinder, UnitEvaluation } from './learningUnits/adapterTypes'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const args = process.argv.slice(2)
 const option = (flag: string, fallback: string) => { const index = args.indexOf(flag); return index < 0 ? fallback : args[index + 1] }
 const read = (path: string) => JSON.parse(readFileSync(resolve(root, path), 'utf8'))
-const batch = read(option('--batch', 'app/scripts/config/learning-units/math-2026-11-05-batch-a.json'))
+const batch = read(option('--batch', 'app/scripts/config/learning-units/math-2026-11-05-batch-a.json')) as Batch & { nativeExpectation?: { originalTargetToSupport: Record<string, string[]>; newAssessmentTargets: Record<string, string[]>; newAssessmentSupport: Record<string, string[]>; ownTargetScopes: Record<string, string[]> } }
 const beforePath = option('--before', 'tmp/math-learning-units/native-before-batch-a.raw.json')
 const afterPath = option('--after', 'tmp/math-learning-units/native-backend.raw.json')
-const before = read(beforePath); const after = read(afterPath)
+const before = read(beforePath) as NativeReport; const after = read(afterPath) as NativeReport
 requireNativeInventory(after); assert.equal(after.scopes.length, 182)
 assert.deepEqual(after.plannerScopeIds, before.plannerScopeIds, 'Native planner offering denominator changed')
 assert.deepEqual(after.declaredScopeIds, before.declaredScopeIds, 'Declared offering denominator changed')
 assert.deepEqual(after.discoveryFailures, [], 'Native planner discovery failed')
 assert.deepEqual(after.learningUnitCatalogQuarantines, {})
-const originalRows = new Map<string, any>(before.scopes.map((row: any) => [row.scopeId, row]))
+const originalRows = new Map<string, NativeRow>(before.scopes.map((row) => [row.scopeId, row]))
 const expected = batch.nativeExpectation
 assert.ok(expected, 'Batch needs explicit independently reviewed projection expectations')
 const ordered = (ids: Iterable<string>) => [...new Set(ids)].sort()
 const newQIds = Object.keys(expected.newAssessmentTargets)
 const activeOffers = args.includes('--require-current-offers')
-  ? read(option('--offer-binding', `curricula/${read('curricula/DE/Gymnasium/learning-units/catalog.json').currentOfferBinding.path}`)) : undefined
-const offerByScope = new Map<string, any>((activeOffers?.offers ?? []).map((row: any) => [canonicalJson(row.scope), row]))
+  ? read(option('--offer-binding', `curricula/${read('curricula/DE/Gymnasium/learning-units/catalog.json').currentOfferBinding.path}`)) as OfferBinder : undefined
+const offerByScope = new Map((activeOffers?.offers ?? []).map((row) => [canonicalJson(row.scope), row]))
 const matches = (map: Record<string, string[]>, scopeId: string) => Object.keys(map).filter(id => map[id].includes(scopeId))
-const rows = after.scopes.map((row: any) => {
+const rows = after.scopes.map((row) => {
   const old = originalRows.get(row.scopeId); assert.ok(old)
   assert.ok(row.projectionResolved && row.prerequisiteCompilationResolved)
   const shifted = matches(expected.originalTargetToSupport, row.scopeId)
@@ -38,7 +40,7 @@ const rows = after.scopes.map((row: any) => {
   assert.deepEqual(ordered(row.targetAtomicGoalIds), ordered([...old.targetAtomicGoalIds.filter((id: string) => !shifted.includes(id)), ...added]), `Unexpected target delta ${row.scopeId}`)
   assert.deepEqual(ordered(row.assessmentGoalIds), ordered([...old.assessmentGoalIds, ...added]), `Unexpected Q delta ${row.scopeId}`)
   assert.deepEqual(ordered(row.prerequisiteOnlyGoalIds), ordered([...old.prerequisiteOnlyGoalIds, ...shifted, ...support]), `Unexpected support-role delta ${row.scopeId}`)
-  for (const key of ['recallGoalIds', 'orientationGoalIds']) assert.deepEqual(row[key], old[key], `Old ${key} changed ${row.scopeId}`)
+  for (const key of ['recallGoalIds', 'orientationGoalIds'] as const) assert.deepEqual(row[key], old[key], `Old ${key} changed ${row.scopeId}`)
   assert.deepEqual(Object.keys(row.duplicateVisibleGoalPaths).sort(), Object.keys(old.duplicateVisibleGoalPaths).sort(), `New duplicate visible path ${row.scopeId}`)
   assert.deepEqual(row.missingVisibleGoalIds, old.missingVisibleGoalIds, `Missing visible target ${row.scopeId}`)
   for (const id of newQIds) assert.equal(row.visibleGoalPaths[id]?.length ?? 0, added.includes(id) ? 1 : 0, `New Q must have exactly its reviewed visible path ${row.scopeId}`)
@@ -53,13 +55,13 @@ const rows = after.scopes.map((row: any) => {
     assert.equal(model.offerBinding.status, 'valid', `Actual offer API unavailable ${row.scopeId}`)
     assert.equal(model.offerBinding.revision, activeOffers.revision)
     assert.deepEqual(model.offerBinding.rootContractRefs, authored.rootContractRefs, `Actual API selected different roots ${row.scopeId}`)
-    assert.deepEqual(ordered(model.units.map((unit: any) => `${unit.contractId}@${unit.revision}`)),
-      ordered(authored.rootContractRefs.map((ref: any) => `${ref.contractId}@${ref.revision}`)), `Unexpected unit subset inference ${row.scopeId}`)
+    assert.deepEqual(ordered(model.units.map((unit) => `${unit.contractId}@${unit.revision}`)),
+      ordered(authored.rootContractRefs.map((ref) => `${ref.contractId}@${ref.revision}`)), `Unexpected unit subset inference ${row.scopeId}`)
   }
-  const owned = new Set<string>(); const eligible = batch.packets.filter((packet: any) => expected.ownTargetScopes[packet.contractId].includes(row.scopeId))
+  const owned = new Set<string>(); const eligible = batch.packets.filter((packet) => expected.ownTargetScopes[packet.contractId].includes(row.scopeId))
   for (const packet of eligible) for (const id of packet.ownGoalIds) { assert.ok(row.targetAtomicGoalIds.includes(id)); assert.ok(!owned.has(id), `Duplicate direct owner ${row.scopeId}/${id}`); owned.add(id) }
   return { scopeId: row.scopeId, shiftedOriginalTargetIds: shifted, addedAssessmentTargetIds: added,
-    addedAssessmentSupportIds: support, eligibleBatchContractIds: eligible.map((packet: any) => packet.contractId),
+    addedAssessmentSupportIds: support, eligibleBatchContractIds: eligible.map((packet) => packet.contractId),
     retainedLegacyDuplicateGoalCount: Object.keys(row.duplicateVisibleGoalPaths).length,
     droppedUnusedPrerequisiteContextIds: Object.keys(old.atomicPrerequisites).filter(id => !(id in row.atomicPrerequisites)).sort() }
 })
@@ -73,7 +75,7 @@ assert.deepEqual(ordered(current.goals.filter((goal: MathGoal) => !baseline.goal
 assert.equal(after.nativeMapperInputSha256[mathCanonicalPath], digest(readFileSync(resolve(root, mathCanonicalPath))))
 const projectionOnly = args.includes('--projection-only')
 if (!projectionOnly) {
-  for (const evidence of after.actualContractEvaluations as any[]) {
+  for (const evidence of after.actualContractEvaluations as UnitEvaluation[]) {
     assert.deepEqual(evidence.ownRecallGoalIds, [], 'This bounded proof covers the actual reviewed K-free contracts')
     assert.deepEqual(ordered(evidence.globalRecognitionAfterOwnQPass), ordered(evidence.ownOrdinaryGoalIds))
     assert.equal(evidence.ownQPassUnitResult.complete, true)
@@ -81,7 +83,7 @@ if (!projectionOnly) {
     assert.deepEqual(ordered(evidence.onlyOrdinaryExplicitUnitResult.pendingGoalIds), ordered(evidence.ownAssessmentGoalIds))
   }
   for (const packet of batch.packets) {
-    const evidence = (after.actualContractEvaluations as any[]).find(row => row.contractId === packet.contractId)
+    const evidence: UnitEvaluation | undefined = (after.actualContractEvaluations as UnitEvaluation[]).find(row => row.contractId === packet.contractId)
     assert.ok(evidence, `Actual current catalog did not admit ${packet.contractId}`)
     assert.deepEqual(ordered(evidence.globalRecognitionAfterOwnQPass), ordered(evidence.ownOrdinaryGoalIds))
     assert.equal(evidence.ownQPassUnitResult.complete, true); assert.equal(evidence.ownQPassUnitResult.explicitTargetCount, evidence.ownAssessmentGoalIds.length)
@@ -94,16 +96,16 @@ const report = { schemaVersion: 1, semantics: 'actual-native-mathematics-batch-d
   stage: projectionOnly ? 'projection-and-fixed-source-proof-before-catalog-admission' : 'actual-admitted-contracts-and-native-projection-proof',
   sourceSha256: digest(readFileSync(resolve(root, mathCanonicalPath))), scopeCount: rows.length,
   originalGoalMeaningsPreserved: baseline.goals.length, originalFullAtomicDemandClosuresPreserved: Object.keys(oldR).length,
-  currentAtomicTargetUnion: new Set(after.scopes.flatMap((row: any) => row.targetAtomicGoalIds)).size,
+  currentAtomicTargetUnion: new Set(after.scopes.flatMap((row) => row.targetAtomicGoalIds)).size,
   changedOriginalTargetScopeCount: rows.filter(row => row.shiftedOriginalTargetIds.length).length,
   newAssessmentTargetScopeCounts: Object.fromEntries(newQIds.map(id => [id, rows.filter(row => row.addedAssessmentTargetIds.includes(id)).length])),
   newAssessmentSupportScopeCounts: Object.fromEntries(newQIds.map(id => [id, rows.filter(row => row.addedAssessmentSupportIds.includes(id)).length])),
-  eligibleUnitScopeCounts: Object.fromEntries(batch.packets.map((packet: any) => [packet.contractId, rows.filter(row => row.eligibleBatchContractIds.includes(packet.contractId)).length])),
+  eligibleUnitScopeCounts: Object.fromEntries(batch.packets.map((packet) => [packet.contractId, rows.filter(row => row.eligibleBatchContractIds.includes(packet.contractId)).length])),
   unchangedRecallOrientationAndOtherOriginalTargets: true, duplicateSelectedOwnPaths: 0,
   retainedLegacyDuplicateScopeCount: rows.filter(row => row.retainedLegacyDuplicateGoalCount).length,
   globalRecognitionAtEmptyMastery: after.globalRecognitionAtEmptyMastery,
   actualContractEvaluations: projectionOnly ? undefined : after.actualContractEvaluations,
-  admittedContractCount: projectionOnly ? undefined : (after.actualContractEvaluations as any[]).length,
+  admittedContractCount: projectionOnly ? undefined : (after.actualContractEvaluations as UnitEvaluation[]).length,
   actualValidCurrentOfferApiScopes: activeOffers ? rows.length : undefined,
   catalogAdmissionMeasurement: after.catalogAdmissionMeasurement,
   baselineNativeReportSha256: digest(readFileSync(resolve(root, beforePath))), currentNativeReportSha256: digest(readFileSync(resolve(root, afterPath))),

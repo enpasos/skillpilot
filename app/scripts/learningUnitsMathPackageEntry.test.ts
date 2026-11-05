@@ -12,13 +12,13 @@ const originalSha = digest(canonicalJson(overview)); const mathSha = digest(cano
 const entry = derivePackageEntry(overview, mathematics, config)
 assert.equal(digest(canonicalJson(overview)), originalSha); assert.equal(digest(canonicalJson(mathematics)), mathSha)
 assert.equal(overview.goals[0].contains.length, 20, 'Full Gymnasium root retains all subject children')
-assert.deepEqual(entry.goals.map((goal: any) => ({ id: goal.id, kind: goal.semanticKind, type: goal.type, nodeKind: goal.nodeKind,
+assert.deepEqual(entry.goals.map((goal) => ({ id: goal.id, kind: goal.semanticKind, type: goal.type, nodeKind: goal.nodeKind,
   contains: goal.contains, requires: goal.requires })), [{ id: config.entryRootGoalId, kind: 'programStructure', type: 'cluster', nodeKind: undefined, contains: [config.mathematicsRootGoalId], requires: [] }])
 assert.deepEqual(entry.filters, overview.filters)
-function expectedFlow(value: any): any {
+function expectedFlow(value: unknown): unknown {
   if (Array.isArray(value)) return value.map(expectedFlow)
   if (!value || typeof value !== 'object') return value
-  const result = structuredClone(value)
+  const result = structuredClone(value) as Record<string, unknown>
   for (const key of Object.keys(result)) {
     if (key === 'landscapeIds') result[key] = [config.mathematicsLandscapeId]
     else if ((key === 'landscapeId' || key === 'targetLandscapeId') && result[key] === overview.landscapeId) result[key] = config.entryLandscapeId

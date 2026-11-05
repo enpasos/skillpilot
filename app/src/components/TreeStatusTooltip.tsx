@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useRef, useState, type ReactNode } from 'react'
+import React, { useCallback, useEffect, useId, useRef, useState, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 
 /** Shared compact tree status trigger: hover, focus and tap, without selecting the goal. */
@@ -18,8 +18,8 @@ export function TreeStatusTooltip({ label, testId, triggerClassName, children, c
     left: number; top: number; width: number; maxHeight: number; above: boolean
   } | null>(null)
   const cancelClose = () => clearTimeout(closeTimer.current)
-  const open = () => {
-    cancelClose()
+  const open = useCallback(() => {
+    clearTimeout(closeTimer.current)
     const rect = trigger.current?.getBoundingClientRect()
     if (!rect) return
     const width = Math.min(320, window.innerWidth - 24)
@@ -33,7 +33,7 @@ export function TreeStatusTooltip({ label, testId, triggerClassName, children, c
       maxHeight: Math.max(48, (above ? aboveSpace : below) - 6),
       above,
     })
-  }
+  }, [])
   const leave = () => {
     cancelClose()
     // Give the pointer time to cross the small gap into the tooltip.
@@ -81,7 +81,7 @@ export function TreeStatusTooltip({ label, testId, triggerClassName, children, c
       window.removeEventListener('scroll', scroll, true)
       window.removeEventListener('resize', close)
     }
-  }, [isOpen])
+  }, [isOpen, open])
 
   return <>
     <button

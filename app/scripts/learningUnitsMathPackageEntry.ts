@@ -4,14 +4,17 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { digest, mathCanonicalPath } from './learningUnitsMathAuthoring'
 
+import type { MathGoal } from './learningUnitsMathAuthoring'
+interface EntryLandscape { landscapeId: string; title?: string; titleEn?: string; description?: string; descriptionEn?: string; goals: MathGoal[]; filters?: unknown; personalizationFlow?: unknown; [key: string]: unknown }
+interface EntryConfig { schemaVersion: number; entryLandscapeId: string; entryRootGoalId: string; mathematicsLandscapeId: string; mathematicsRootGoalId: string; originalOverviewPath: string }
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
-export function derivePackageEntry(overview: any, mathematics: any, config: any) {
+export function derivePackageEntry(overview: EntryLandscape, mathematics: EntryLandscape, config: EntryConfig) {
   assert.equal(config.schemaVersion, 1); assert.notEqual(config.entryLandscapeId, overview.landscapeId)
   assert.notEqual(config.entryLandscapeId, mathematics.landscapeId)
   assert.equal(mathematics.landscapeId, config.mathematicsLandscapeId)
-  assert.ok(mathematics.goals.some((goal: any) => goal.id === config.mathematicsRootGoalId))
+  assert.ok(mathematics.goals.some((goal) => goal.id === config.mathematicsRootGoalId))
   assert.equal(overview.goals.length, 1); assert.notEqual(config.entryRootGoalId, overview.goals[0].id)
-  assert.ok(!mathematics.goals.some((goal: any) => goal.id === config.entryRootGoalId), 'Entry root collides with an existing Mathematics identity')
+  assert.ok(!mathematics.goals.some((goal) => goal.id === config.entryRootGoalId), 'Entry root collides with an existing Mathematics identity')
   const entry = structuredClone(overview)
   entry.landscapeId = config.entryLandscapeId
   entry.frameworkId = 'canonical-gymnasium-mathematics-entry-v1'
@@ -19,7 +22,7 @@ export function derivePackageEntry(overview: any, mathematics: any, config: any)
   entry.title = 'Gymnasium Mathematik – Einstieg'; entry.titleEn = 'Gymnasium Mathematics – Entry'
   entry.description = 'Einstieg in die unveränderte Gymnasium-Mathematik mit ausdrücklicher Auswahl von Bundesland, Lernstufe, Dauer und Kursprofil.'
   entry.descriptionEn = 'Entry into unchanged Gymnasium Mathematics with explicit jurisdiction, stage, duration and course profile selection.'
-  const rewrite = (value: any): any => {
+  const rewrite = (value: unknown): unknown => {
     if (Array.isArray(value)) return value.map(rewrite)
     if (!value || typeof value !== 'object') return value
     return Object.fromEntries(Object.entries(value).map(([key, item]) => [key,
@@ -32,7 +35,7 @@ export function derivePackageEntry(overview: any, mathematics: any, config: any)
   goal.title = entry.title; goal.titleEn = entry.titleEn; goal.description = entry.description; goal.descriptionEn = entry.descriptionEn
   goal.type = 'cluster'; delete goal.nodeKind; goal.semanticKind = 'programStructure'
   goal.contains = [config.mathematicsRootGoalId]; goal.requires = []
-  goal.weight = mathematics.goals.filter((item: any) => !item.contains?.length).length
+  goal.weight = mathematics.goals.filter((item) => !item.contains?.length).length
   goal.tags = ['root', 'canonical', 'school:Gymnasium']
   goal.dimensionTags = { framework: entry.frameworkId, demandLevel: 'AB2', processCompetencies: [], guidingIdeas: [], phase: 'Programm', area: 'Mathematik', topicCode: 'CANONICAL.GYMNASIUM.MATHEMATICS.ENTRY' }
   goal.sourceRef = `curricula/${config.originalOverviewPath}`; delete goal.extendedData

@@ -4,6 +4,7 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { canonicalJson, digest } from './learningUnitsMathAuthoring'
 import { compactScalarArrays } from './learningUnits/compactJson'
+import type { OfferBinder, OfferScope, SelectionConfig } from './learningUnits/adapterTypes'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const read = (path: string) => readFileSync(resolve(root, checkedPath(path)), 'utf8')
@@ -41,8 +42,8 @@ export function prepareMathPackageBindings(options: MathPackageBindingOptions, a
   assert.equal(options.reviewReceiptPath, options.reviewRef.replace(/\.md$/, '.review.json'), 'Package review and receipt paths differ')
   assert.ok(options.proofPath.startsWith('docs/dev/') && options.proofPath.endsWith('.json'))
   const config = json('app/scripts/config/learning-units/math-package-entry.json')
-  const selection = json(options.nativeSelectionConfigPath)
-  const native = json(options.nativeBinderPath)
+  const selection = json(options.nativeSelectionConfigPath) as SelectionConfig
+  const native = json(options.nativeBinderPath) as OfferBinder
   const sourceCatalog = json(options.sourceCatalogPath)
   assert.equal(selection.schemaVersion, 1)
   assert.equal(native.revision, selection.revision, 'Source binder and selection revisions differ')
@@ -70,8 +71,8 @@ export function prepareMathPackageBindings(options: MathPackageBindingOptions, a
     const ref = `${definition.contractId}@${definition.revision}`
     assert.ok(!contractRefs.has(ref), 'Duplicate source contract'); contractRefs.add(ref)
   }
-  const scopeId = (scope: any) => [scope.jurisdiction, scope.stage, scope.durationModel ?? '', scope.courseProfile ?? ''].join('/')
-  const offeredScopes = new Set(native.offers.map((row: any) => scopeId(row.scope)))
+  const scopeId = (scope: OfferScope) => [scope.jurisdiction, scope.stage, scope.durationModel ?? '', scope.courseProfile ?? ''].join('/')
+  const offeredScopes = new Set(native.offers.map((row) => scopeId(row.scope)))
   assert.equal(offeredScopes.size, 182)
   for (const selected of selection.rootSelections) {
     assert.ok(contractRefs.has(`${selected.contractId}@${selected.revision}`), 'Selected source root missing from catalog')
@@ -89,13 +90,13 @@ export function prepareMathPackageBindings(options: MathPackageBindingOptions, a
   if (!historical) inputs[config.reviewRef] = digest(read(`curricula/${config.reviewRef}`))
   assert.equal(inputs[config.originalOverviewPath], derivation.originalOverviewSha256)
   const originalRoot = json(`curricula/${config.originalOverviewPath}`).landscapeId
-  const offers = native.offers.map((row: any) => {
+  const offers = native.offers.map((row) => {
     assert.equal(row.scope.rootLandscapeId, originalRoot, 'Source offer does not use the reviewed original overview')
     assert.equal(row.scope.landscapeId, config.mathematicsLandscapeId)
     assert.equal(row.coverage, 'partial')
     assert.deepEqual(row.rootContractRefs, selection.rootSelections
-      .filter((selected: any) => selected.scopeIds.includes(scopeId(row.scope)))
-      .map(({ contractId, revision }: any) => ({ contractId, revision })), 'Source roots differ from explicit selection')
+      .filter((selected) => selected.scopeIds.includes(scopeId(row.scope)))
+      .map(({ contractId, revision }) => ({ contractId, revision })), 'Source roots differ from explicit selection')
     return { ...row, scope: { ...row.scope, rootLandscapeId: config.entryLandscapeId },
       inputPaths: [...new Set([...row.inputPaths, config.entryPath, config.derivationPath, config.reviewRef])].sort() }
   })

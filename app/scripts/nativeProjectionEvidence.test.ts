@@ -4,6 +4,7 @@ import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'nod
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import test from 'node:test'
+import type { NativeReport, NativeRow } from './learningUnits/adapterTypes'
 import { createNativeProjectionEvidence, discoverProjectionInputs, nativeReviewedDemandWitness, nativeTargetsByJurisdiction, validateNativeProjectionEvidence } from './nativeProjectionEvidence'
 import { createReviewedRequiresClosureCoverageChecker, sourceCoverageSurrogateKey } from './sourceCoverageEvidence'
 import { prepareMathProjectionEvidence } from './learningUnitsMathProjectionEvidence'
@@ -90,16 +91,16 @@ const nativeIndex = process.argv.indexOf('--native')
 if (nativeIndex >= 0) test('actual182 stable projection excludes volatile raw diagnostics while old V2 proof truthfully retains its original sensitivity', () => {
   const repo = resolve(import.meta.dirname, '../..')
   const read = (path: string) => JSON.parse(readFileSync(resolve(repo, path), 'utf8'))
-  const raw = read(process.argv[nativeIndex + 1])
+  const raw = read(process.argv[nativeIndex + 1]) as NativeReport
   const config = read('app/scripts/config/learning-units/math-current-offer-roots-v2.json')
   const catalog = read('curricula/DE/Gymnasium/learning-units/catalog.json')
   const changed = structuredClone(raw)
   changed.catalogAdmissionMeasurement = { elapsedNanos: 42, heapBytes: 13 }
-  changed.actualContractEvaluations = [{ arbitraryDiagnostic: 'different run' }]
+  changed.actualContractEvaluations = [{ arbitraryDiagnostic: 'different run' }] as unknown as NativeReport['actualContractEvaluations']
   changed.globalRecognitionAtEmptyMastery = ['volatile-diagnostic-only']
   changed.nativeMapperInputSha256['curricula/DE/Gymnasium/learning-units/catalog.json'] = 'a'.repeat(64)
   changed.nativeMapperInputSha256['curricula/DE/Gymnasium/learning-units/offers/proof-only-added.json'] = 'b'.repeat(64)
-  changed.scopes.forEach((row: any) => { row.learningUnitReadModel = { status: 'changed' }; row.nativeOfferContext = { diagnostic: 'changed' } })
+  changed.scopes.forEach((row) => { row.learningUnitReadModel = { status: 'changed' } as unknown as NativeRow['learningUnitReadModel']; row.nativeOfferContext = { diagnostic: 'changed' } as unknown as NativeRow['nativeOfferContext'] })
   assert.notEqual(prepareOfferBindings(raw, config, catalog).proofBytes, prepareOfferBindings(changed, config, catalog).proofBytes,
     'This demonstrates the old proof boundary; v1/v2 admitted bytes must not be rewritten')
   assert.deepEqual(prepareMathProjectionEvidence(raw), prepareMathProjectionEvidence(changed))

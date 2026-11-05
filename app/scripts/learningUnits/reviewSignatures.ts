@@ -1,7 +1,8 @@
 import { canonicalJson, digest } from '../learningUnitsMathAuthoring'
+import type { UnitDefinition } from './adapterTypes'
 
 /** Exact signature definitions from the actual independent Batch A review. */
-export function contentSignatures(input: any) {
+export function contentSignatures(input: { definition: UnitDefinition; normalTasksAndRubrics: unknown; localOwnDemandClasses: unknown }) {
   const definition = input.definition
   const hash = (value: unknown) => digest(canonicalJson(value))
   return {

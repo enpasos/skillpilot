@@ -4,6 +4,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { digest } from './learningUnitsMathAuthoring'
+import type { NativeReport } from './learningUnits/adapterTypes'
 import { compactScalarArrays } from './learningUnits/compactJson'
 import { requireNativeInventory } from './learningUnitsNativeMathInventory'
 import { collectNativeMathProjectionInputs } from './learningUnitsMathOfferBindings'
@@ -13,7 +14,7 @@ export function prepareMathProjectionEvidence(raw: unknown) {
   requireNativeInventory(raw)
   assert.deepEqual(raw.discoveryFailures, [], 'Native offered scope discovery failed')
   assert.equal(raw.scopes.length, 182, 'Actual Mathematics offered denominator changed; review it explicitly')
-  const projected = collectNativeMathProjectionInputs(raw)
+  const projected = collectNativeMathProjectionInputs(raw as unknown as NativeReport)
   const landscapeId = projected.source.landscapeId as string
   const inputs = Object.fromEntries(Object.entries(projected.inputs).map(([path, sha]) => [`curricula/${path}`, sha]))
   for (const [path, sha] of Object.entries(inputs)) assert.equal(raw.nativeMapperInputSha256[path], sha, `Consumed semantic input lacks actual native binding: ${path}`)
@@ -32,11 +33,11 @@ export function prepareMathProjectionEvidence(raw: unknown) {
   // Bind unused candidate views too: changing one can affect native view matching.
   for (const descriptor of inputDiscovery) for (const path of descriptor.paths) {
     const sha = digest(readFileSync(resolve(repo, path)))
-    const bound = descriptor.kind === 'javaSources' ? (raw.nativeImplementationInputSha256 as Record<string, string>)[path] : raw.nativeMapperInputSha256[path]
+    const bound: string | undefined = descriptor.kind === 'javaSources' ? (raw.nativeImplementationInputSha256 as Record<string, string>)[path] : raw.nativeMapperInputSha256[path]
     assert.equal(bound, sha, `Projection candidate missing/drifted after actual native run: ${path}`)
     inputs[path] = sha
   }
-  const goalIds = new Set(projected.source.goals.map((goal: any) => goal.id))
+  const goalIds = new Set(projected.source.goals.map((goal) => goal.id))
   for (const { row } of projected.rows) for (const [id, requirements] of Object.entries(row.atomicPrerequisites)) {
     assert.ok(goalIds.has(id), `Native demand leaves the currently bound landscape: ${id}`)
     for (const requirement of requirements as string[]) assert.ok(goalIds.has(requirement), `Foreign demand requires an explicit additional source adapter: ${requirement}`)

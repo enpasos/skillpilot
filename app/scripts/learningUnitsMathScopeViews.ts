@@ -4,19 +4,21 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { digest } from './learningUnitsMathAuthoring'
 
+interface ScopeView { viewId: string; scope: Record<string, unknown>; rootNodes: Array<{ kind: string; goalId?: string; projectionRole?: string }>; [key: string]: unknown }
+interface ViewConfig { schemaVersion: number; offers: Array<{ viewId: string; path: string; scope: Record<string, string> }>; prerequisiteOnlyGoalIds: string[] }
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
-export function scopedViews(template: any, config: any) {
+export function scopedViews(template: ScopeView, config: ViewConfig) {
   assert.equal(config.schemaVersion, 1)
   assert.ok(Array.isArray(template.rootNodes))
   const seen = new Set<string>()
-  return config.offers.map((offer: any) => {
+  return config.offers.map((offer) => {
     assert.ok(!seen.has(offer.viewId), 'Duplicate scoped view'); seen.add(offer.viewId)
     assert.equal(offer.scope.schoolForm, 'Gymnasium'); assert.equal(offer.scope.stage, 'SekI')
     assert.match(offer.scope.jurisdiction, /^DE-[A-Z]{2}$/)
     const view = structuredClone(template)
     view.viewId = offer.viewId; view.scope = offer.scope
     for (const goalId of config.prerequisiteOnlyGoalIds) {
-      assert.ok(!view.rootNodes.some((node: any) => node.kind === 'goalEntry' && node.goalId === goalId), 'Duplicate direct scope override')
+      assert.ok(!view.rootNodes.some((node) => node.kind === 'goalEntry' && node.goalId === goalId), 'Duplicate direct scope override')
       view.rootNodes.unshift({ kind: 'goalEntry', goalId, projectionRole: 'prerequisiteOnly' })
     }
     return { path: offer.path, view }

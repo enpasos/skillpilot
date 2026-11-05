@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import { readFileSync, readdirSync } from 'node:fs'
 import { resolve } from 'node:path'
+import type { NativeRow } from './learningUnits/adapterTypes'
 
 const sha = (bytes: string | Buffer) => createHash('sha256').update(bytes).digest('hex')
 const stable = (value: unknown): string => JSON.stringify(value, (_key, item) => item && typeof item === 'object' && !Array.isArray(item)
@@ -63,7 +64,7 @@ export function discoverProjectionInputs(repo: string, landscapeId: string, desc
 /** Project only actual resolver output; no mastery, measurement, unit selection or source inference. */
 export function createNativeProjectionEvidence(options: {
   landscapeId: string; landscapeSourcePath: string; resolverRevision: string; inputs: Record<string, string>; runtimeDependencySha256: Record<string, string>; inputDiscovery: ProjectionInputDiscovery[]
-  rows: Array<{ row: any; scope: Record<string, unknown>; viewIds: string[]; inputPaths: string[] }>
+  rows: Array<{ row: Pick<NativeRow, 'scopeId' | 'projectionResolved' | 'prerequisiteCompilationResolved' | 'offeredByNativePlanner' | 'declaredByRepositoryGui' | 'targetAtomicGoalIds' | 'prerequisiteOnlyGoalIds' | 'atomicPrerequisites'>; scope: Record<string, unknown>; viewIds: string[]; inputPaths: string[] }>
 }): NativeProjectionEvidence {
   const rows = [...options.rows].sort((a, b) => a.row.scopeId.localeCompare(b.row.scopeId, 'en'))
   const targetAtomicMembership: Record<string, number[]> = {}

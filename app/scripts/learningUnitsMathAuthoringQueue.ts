@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url'
 import { atomicRelation, canonicalJson, digest, mathCanonicalPath, reachable, type MathGoal } from './learningUnitsMathAuthoring'
 import { compactScalarArrays } from './learningUnits/compactJson'
 
+interface IndependentDecision { contractId: string; packetDecision: string; ownOrdinaryGoalIds: string[]; reviewedInputSha256: string; substantiveReason: string; requiredActionOrBoundary: string; sourceReviewPath: string }
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const baselineRef = '0ce5a8d791eeb9783a919195fd8590bfb79f3595'
 const oldRef = '802f333f80c58d3409ab5d9fb3e9913fecafbf54'
@@ -53,10 +54,10 @@ function main() {
   const definitions = manifest.contracts.map((entry: { path: string }) => read(`curricula/${entry.path}`))
   const independentReviewPaths = [...new Set<string>(manifest.contracts.flatMap((entry: { inputs: Record<string, string> }) =>
     Object.keys(entry.inputs).filter(path => path.endsWith('/independent-review.json'))))].sort()
-  const independentDecisions = independentReviewPaths.flatMap(path => {
+  const independentDecisions: IndependentDecision[] = independentReviewPaths.flatMap(path => {
     const document = read(`curricula/${path}`)
     if (document.semantics !== 'independent-content-demand-recall-and-placement-decisions-v1') return []
-    return document.packets.map((packet: any) => ({ ...packet, sourceReviewPath: path }))
+    return document.packets.map((packet: Omit<IndependentDecision, 'sourceReviewPath'>) => ({ ...packet, sourceReviewPath: path }))
   })
   const claimed = new Set(assessments.flatMap(goal => (goal.examData!.coveredGoalIds as string[] | undefined) ?? []))
   const currentClaimed = new Set(currentAssessments.flatMap(goal => (goal.examData!.coveredGoalIds as string[] | undefined) ?? []))
@@ -92,13 +93,13 @@ function main() {
     const currentMissingConsumerScopes = currentTargetIndices.filter(index => !currentConsumers.some(q => currentMembership.get(q)?.includes(index)))
     if (currentMissingConsumerScopes.length) currentMissingNativeConsumerCount++
     const contracts = definitions.filter((definition: { ownGoalIds: string[] }) => definition.ownGoalIds.includes(goal.id))
-    const contentHolds = independentDecisions.filter((decision: any) => decision.packetDecision !== 'PASS'
+    const contentHolds = independentDecisions.filter((decision) => decision.packetDecision !== 'PASS'
       && decision.ownOrdinaryGoalIds.includes(goal.id))
     const acquisitions = source.goalPlacements.filter(placement => placement.goalId === goal.id && placement.acquisition)
     return { goalId: goal.id, title: goal.title,
       status: contracts.length ? 'bound-contract-candidate; independent content/binding/native gates are recorded in its pinned review and proofs'
         : contentHolds.length ? 'held-by-actual-independent-content-or-recall-review' : 'pending-own-unit-and-normal-pass-review',
-      independentReviewHolds: contentHolds.map((decision: any) => ({ contractId: decision.contractId, decision: decision.packetDecision,
+      independentReviewHolds: contentHolds.map((decision) => ({ contractId: decision.contractId, decision: decision.packetDecision,
         reviewPath: decision.sourceReviewPath, reviewedInputSha256: decision.reviewedInputSha256,
         reason: decision.substantiveReason, requiredAction: decision.requiredActionOrBoundary })),
       candidatePacketIds: extraRouting.has(goal.id) ? [extraRouting.get(goal.id)!] : (parents.get(goal.id) ?? []).filter(id => packetIds.has(id)),

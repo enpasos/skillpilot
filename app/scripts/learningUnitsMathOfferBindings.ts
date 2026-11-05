@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 import { canonicalJson, digest, mathCanonicalPath } from './learningUnitsMathAuthoring'
 import { requireNativeInventory } from './learningUnitsNativeMathInventory'
 import { compactScalarArrays } from './learningUnits/compactJson'
+import type { ContractRef, MathSource, NativeReport, NativeRow, OfferReviewReceipt, SelectionConfig, UnitCatalog, UnitDefinition } from './learningUnits/adapterTypes'
 
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const ROOT = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
@@ -12,14 +13,14 @@ const MATH = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const ledger = 'DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json'
 const overview = 'DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json'
 const bytes = (path: string) => readFileSync(resolve(repo, path), 'utf8')
-const parse = (path: string) => JSON.parse(bytes(path))
+const parse = <T = Record<string, unknown>>(path: string): T => JSON.parse(bytes(path))
 const hash = (value: unknown) => digest(canonicalJson(value))
 const setDigest = (ids: string[]) => digest(JSON.stringify([...new Set(ids)].sort()))
-export function nativeOfferScope(row: any) {
+export function nativeOfferScope(row: Pick<NativeRow, 'scopeId' | 'requestedCompositionScope' | 'personalCurriculum'>) {
   const scope = row.requestedCompositionScope
   assert.ok(scope && scope.stage, `Unresolved native stage: ${row.scopeId}`)
   const jurisdiction = scope.jurisdiction ?? row.personalCurriculum?.[ROOT]?.filterId
-  assert.ok(jurisdiction === 'ALL' || /^DE-[A-Z]{2}$/.test(jurisdiction), 'Missing exact jurisdiction')
+  assert.ok(jurisdiction === 'ALL' || /^DE-[A-Z]{2}$/.test(jurisdiction as string), 'Missing exact jurisdiction')
   const result = { rootLandscapeId: ROOT, landscapeId: MATH, schoolForm: scope.schoolForm,
     jurisdiction, stage: scope.stage, durationModel: scope.durationModel ?? null,
     courseProfile: scope.stage === 'SekI' ? null : scope.courseProfile ?? null }
@@ -28,7 +29,7 @@ export function nativeOfferScope(row: any) {
     'Native dimensions differ from declared inventory identity')
   return result
 }
-export function physicalViewIds(ids: string[], resolvedViews: Record<string, any>) {
+export function physicalViewIds(ids: string[], resolvedViews: NativeRow['resolvedSubjectViews']) {
   return [...new Set(ids.flatMap(id => {
     if (!id.startsWith('merged:')) return [id]
     const sources = resolvedViews[id]?.mergedFromViewIds
@@ -37,15 +38,15 @@ export function physicalViewIds(ids: string[], resolvedViews: Record<string, any
   }))].sort()
 }
 
-export function collectNativeMathProjectionInputs(raw: any) {
-  const source = parse(mathCanonicalPath)
+export function collectNativeMathProjectionInputs(raw: NativeReport) {
+  const source = parse<MathSource>(mathCanonicalPath)
   assert.equal(digest(bytes(mathCanonicalPath)), raw.nativeMapperInputSha256[mathCanonicalPath], 'Canonical changed after native proof')
   const activeViewPaths = new Map<string, string>()
   const mappingPaths: string[] = []
   for (const path of Object.keys(raw.nativeMapperInputSha256).sort()) {
     if (!path.startsWith('curricula/DE/Gymnasium/')) continue
     if (path.includes('/composition-views/mathematik/') && path.endsWith('.json')) {
-      const view = parse(path); if (view.landscapeId === MATH && view.viewId) activeViewPaths.set(view.viewId, path.substring('curricula/'.length))
+      const view = parse<{ landscapeId: string; viewId: string }>(path); if (view.landscapeId === MATH && view.viewId) activeViewPaths.set(view.viewId, path.substring('curricula/'.length))
     }
     if (path.includes('/mapping/') && path.endsWith('.json') && !path.endsWith('.review.json') && !path.includes('/quality/')) {
       const map = parse(path)
@@ -65,7 +66,7 @@ export function collectNativeMathProjectionInputs(raw: any) {
     inputs[path] = sha
   }
   common.forEach(addInput)
-  const rows = raw.scopes.map((row: any) => {
+  const rows = raw.scopes.map((row) => {
     assert.equal(row.projectionResolved, true); assert.equal(row.prerequisiteCompilationResolved, true)
     const viewIds = physicalViewIds(row.compositionViewIds, row.resolvedSubjectViews)
     const viewPaths = viewIds.map(id => { const path = activeViewPaths.get(id); assert.ok(path, `Missing physical native view ${id}`); return path })
@@ -78,15 +79,15 @@ export function collectNativeMathProjectionInputs(raw: any) {
   return { source, inputs, rows }
 }
 
-export function prepareOfferBindings(raw: any, config: any, catalog: any) {
+export function prepareOfferBindings(raw: NativeReport, config: SelectionConfig, catalog: UnitCatalog) {
   requireNativeInventory(raw); assert.equal(raw.scopes.length, 182)
   assert.equal(config.schemaVersion, 1)
-  const nativeByScope = new Map(raw.scopes.map((row: any) => [row.scopeId, row]))
-  const definitionByRef = new Map<string, any>()
+  const nativeByScope = new Map(raw.scopes.map((row) => [row.scopeId, row]))
+  const definitionByRef = new Map<string, UnitDefinition>()
   for (const entry of catalog.contracts) {
     assert.equal(digest(bytes(`curricula/${entry.path}`)), entry.sha256)
     for (const [path, expected] of Object.entries(entry.inputs)) assert.equal(digest(bytes(`curricula/${path}`)), expected, `Frozen contract input drift: ${path}`)
-    const definition = parse(`curricula/${entry.path}`)
+    const definition = parse<UnitDefinition>(`curricula/${entry.path}`)
     definitionByRef.set(`${definition.contractId}@${definition.revision}`, definition)
   }
   for (const selection of config.rootSelections) {
@@ -95,17 +96,17 @@ export function prepareOfferBindings(raw: any, config: any, catalog: any) {
     for (const scopeId of selection.scopeIds) assert.ok(nativeByScope.has(scopeId), `Not an actual offered configuration ${scopeId}`)
   }
   const { source, inputs, rows: projectionRows } = collectNativeMathProjectionInputs(raw)
-  const rows = projectionRows.map(({ row, scope, viewIds, inputPaths }: any) => {
-    const rootContractRefs = config.rootSelections.filter((selection: any) => selection.scopeIds.includes(row.scopeId))
-      .map(({ contractId, revision }: any) => ({ contractId, revision }))
+  const rows = projectionRows.map(({ row, scope, viewIds, inputPaths }) => {
+    const rootContractRefs = config.rootSelections.filter((selection) => selection.scopeIds.includes(row.scopeId))
+      .map(({ contractId, revision }) => ({ contractId, revision }))
     const owned = new Set<string>(); const visited = new Set<string>()
-    const walk = (ref: any) => {
+    const walk = (ref: ContractRef) => {
       const key = `${ref.contractId}@${ref.revision}`; assert.ok(!visited.has(key), `Duplicate child acquisition path ${row.scopeId}: ${key}`); visited.add(key)
       const definition = definitionByRef.get(key); assert.ok(definition)
-      const unit = source.programUnits.find((value: any) => value.id === definition.sourceBinding.programUnitId)
+      const unit = source.programUnits.find((value) => value.id === definition.sourceBinding.programUnitId)
       assert.ok(unit?.learningUnit); assert.equal(unit.learningUnit.contractId, ref.contractId); assert.equal(unit.learningUnit.revision, ref.revision)
       assert.equal(unit.learningUnit.placementRevision, definition.sourceBinding.placementRevision)
-      const acquisition = source.goalPlacements.filter((value: any) => value.unitId === unit.id && value.acquisition).map((value: any) => value.goalId).sort()
+      const acquisition = source.goalPlacements.filter((value) => value.unitId === unit.id && value.acquisition).map((value) => value.goalId).sort()
       assert.deepEqual(acquisition, [...definition.ownGoalIds].sort(), `Current acquisition binding differs ${key}`)
       for (const id of definition.ownGoalIds) {
         assert.ok(row.targetAtomicGoalIds.includes(id), `Selected root Own outside actual native target ${row.scopeId}: ${id}`)
@@ -120,9 +121,9 @@ export function prepareOfferBindings(raw: any, config: any, catalog: any) {
   assert.equal(new Set(rows.map(row => canonicalJson(row.scope))).size, 182, 'Nonunique actual ScopeKey')
   const proof = { schemaVersion: 1, semantics: 'actual-native-current-offer-binding-proof-v1', revision: config.revision,
     offeredScopeCount: rows.length, resolvedScopeCount: rows.length, partialScopeCount: rows.length,
-    originalCurricularGoalIdsRetained: 807, targetAtomicUnionCount: new Set(raw.scopes.flatMap((row: any) => row.targetAtomicGoalIds)).size,
+    originalCurricularGoalIdsRetained: 807, targetAtomicUnionCount: new Set(raw.scopes.flatMap((row) => row.targetAtomicGoalIds)).size,
     emptyRootScopeCount: rows.filter(row => !row.rootContractRefs.length).length,
-    selectedRootScopeCounts: config.rootSelections.map((selection: any) => ({ contractId: selection.contractId, revision: selection.revision, count: selection.scopeIds.length })),
+    selectedRootScopeCounts: config.rootSelections.map((selection) => ({ contractId: selection.contractId, revision: selection.revision, count: selection.scopeIds.length })),
     duplicateSelectedOwnPaths: 0, sameContractHistoricalInputsRewritten: 0,
     sourceSha256: digest(bytes(mathCanonicalPath)), nativeReportSha256: hash(raw), nativeInputManifestSha256: hash(raw.nativeMapperInputSha256),
     proofOnlyNativeInputCount: Object.keys(raw.nativeMapperInputSha256).length,
@@ -141,13 +142,13 @@ export function prepareOfferBindings(raw: any, config: any, catalog: any) {
 function main() {
   const args = process.argv.slice(2); const value = (key: string) => { const index = args.indexOf(key); return index < 0 ? undefined : args[index + 1] }
   assert.equal(['--prepare', '--stage', '--apply', '--check'].filter(flag => args.includes(flag)).length, 1, 'Choose exactly --prepare, --stage, --apply or --check')
-  const config = parse(value('--config') ?? 'app/scripts/config/learning-units/math-current-offer-roots.json')
-  const raw = parse(value('--native') ?? 'tmp/math-learning-units/native-backend.raw.json')
-  const catalogPath = 'curricula/DE/Gymnasium/learning-units/catalog.json'; const catalog = parse(catalogPath)
+  const config = parse<SelectionConfig>(value('--config') ?? 'app/scripts/config/learning-units/math-current-offer-roots.json')
+  const raw = parse<NativeReport>(value('--native') ?? 'tmp/math-learning-units/native-backend.raw.json')
+  const catalogPath = 'curricula/DE/Gymnasium/learning-units/catalog.json'; const catalog = parse<UnitCatalog>(catalogPath)
   const result = prepareOfferBindings(raw, config, catalog)
   const candidate = args.includes('--prepare')
   if (!candidate) {
-    const receipt = parse(`curricula/${config.reviewReceiptPath}`)
+    const receipt = parse<OfferReviewReceipt>(`curricula/${config.reviewReceiptPath}`)
     assert.equal(receipt.schemaVersion, 1); assert.equal(receipt.semantics, 'learning-unit-offer-review-v1')
     assert.equal(receipt.decision, 'approved'); assert.ok(receipt.independentReviewer?.trim())
     assert.equal(receipt.reviewedInputSha256, result.reviewedInputSha256, 'Offer review inputs changed')

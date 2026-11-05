@@ -4,23 +4,24 @@ import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { canonicalJson, digest } from './learningUnitsMathAuthoring'
 import { prepareStableOfferBindings, validateFreshNativeOfferRuntime } from './learningUnitsMathStableOfferBindings'
+import type { NativeReadModel, NativeReport, NativeRow, UnitCatalog, UnitDefinition } from './learningUnits/adapterTypes'
 const repo=resolve(dirname(fileURLToPath(import.meta.url)),'../..')
 const args=process.argv.slice(2); const option=(key:string,fallback?:string)=>{const index=args.indexOf(key);return index<0?fallback:args[index+1]}
 const read=(path:string)=>JSON.parse(readFileSync(resolve(repo,path),'utf8'))
 const nativePath=option('--native'); const configPath=option('--config')
 assert.ok(nativePath&&configPath,'Pass --native <fresh-raw> --config <explicit-new-generation>')
-const raw=read(nativePath);const config=read(configPath);const projection=read('docs/dev/learning-units-mathematics-native-source-projection.json')
-const catalog=read('curricula/DE/Gymnasium/learning-units/catalog.json')
+const raw=read(nativePath) as NativeReport;const config=read(configPath);const projection=read(option('--projection','docs/dev/learning-units-mathematics-native-source-projection.json')!)
+const catalog=read('curricula/DE/Gymnasium/learning-units/catalog.json') as UnitCatalog
 const baseline=prepareStableOfferBindings(raw,projection,config,catalog)
 assert.ok(!('app/scripts/learningUnitsMathStableOfferBindings.ts' in projection.inputs), 'Runtime acceptance CLI unexpectedly entered normative projection inputs')
-const definitions=catalog.contracts.map((entry:any)=>read(`curricula/${entry.path}`))
+const definitions=catalog.contracts.map((entry)=>read(`curricula/${entry.path}`) as UnitDefinition)
 const runtime=validateFreshNativeOfferRuntime(raw,baseline.binder,config,definitions)
 const runtimeOnly={learningUnitCatalogQuarantines:raw.learningUnitCatalogQuarantines,
  globalRecognitionAtEmptyMastery:raw.globalRecognitionAtEmptyMastery,
- scopes:raw.scopes.map((row:any)=>({scopeId:row.scopeId,learningUnitReadModel:row.learningUnitReadModel}))}
-const nonempty=runtimeOnly.scopes.findIndex((row:any)=>row.learningUnitReadModel.units.length>0)
+ scopes:raw.scopes.map((row)=>({scopeId:row.scopeId,learningUnitReadModel:row.learningUnitReadModel}))}
+const nonempty=runtimeOnly.scopes.findIndex((row)=>row.learningUnitReadModel.units.length>0)
 assert.ok(nonempty>=0)
-const mutations:Array<[string,(value:any)=>void]>=[
+const mutations:Array<[string,(value:typeof runtimeOnly)=>void]>=[
  ['unavailable binding',value=>{value.scopes[0].learningUnitReadModel.offerBinding.status='unavailable'}],
  ['unavailable read model',value=>{value.scopes[0].learningUnitReadModel.calculationStatus='unavailable'}],
  ['old revision',value=>{value.scopes[0].learningUnitReadModel.offerBinding.revision='old-revision'}],
@@ -33,7 +34,7 @@ const mutations:Array<[string,(value:any)=>void]>=[
  ['unexpected unit',value=>{value.scopes[0].learningUnitReadModel.units.push({contractId:'unselected',revision:'v1'})}],
 ]
 for(const[label,mutate]of mutations){const value=structuredClone(runtimeOnly);mutate(value)
- assert.throws(()=>validateFreshNativeOfferRuntime(value,baseline.binder,config,definitions),undefined,label)}
+ assert.throws(()=>validateFreshNativeOfferRuntime(value,baseline.binder,config,definitions),label)}
 const parent={contractId:'parent',revision:'v1'},child={contractId:'child',revision:'v1'}
 const fixtureScope={jurisdiction:'DE-HE',stage:'SekI',durationModel:null,courseProfile:null}
 const fixtureBinder={revision:'fixture-v1',offers:[{scope:fixtureScope,rootContractRefs:[parent]}]}
@@ -46,10 +47,10 @@ assert.throws(()=>validateFreshNativeOfferRuntime(missingChild,fixtureBinder,{re
 const changed=structuredClone(raw)
 changed.catalogAdmissionMeasurement={elapsedNanos:999,usedHeapBeforeBytes:7,usedHeapAfterBytes:12}
 changed.globalRecognitionAtEmptyMastery=['diagnostic-only']
-changed.actualContractEvaluations=[{differentRunDiagnostic:true}]
+changed.actualContractEvaluations=[{differentRunDiagnostic:true}] as unknown as NativeReport['actualContractEvaluations']
 changed.nativeMapperInputSha256['curricula/DE/Gymnasium/learning-units/catalog.json']='a'.repeat(64)
 changed.nativeMapperInputSha256['curricula/DE/Gymnasium/learning-units/offers/proof-only-diagnostic.json']='b'.repeat(64)
-changed.scopes.forEach((row:any)=>{row.learningUnitReadModel={different:true};row.nativeOfferContext={different:true}})
+changed.scopes.forEach((row)=>{row.learningUnitReadModel={different:true} as unknown as NativeReadModel;row.nativeOfferContext={different:true} as unknown as NativeRow['nativeOfferContext']})
 const pointerChanged=structuredClone(catalog)
 pointerChanged.currentOfferBinding={path:'DE/Gymnasium/learning-units/offers/other-current-pointer.json',sha256:'c'.repeat(64)}
 const actual=prepareStableOfferBindings(changed,projection,config,pointerChanged)

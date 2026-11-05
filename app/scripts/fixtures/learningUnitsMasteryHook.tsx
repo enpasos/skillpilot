@@ -5,7 +5,7 @@ import { LanguageProvider } from '../../src/contexts/LanguageContext'
 import type { UiGoal } from '../../src/goalTypes'
 import { useLearnerProgress } from '../../src/hooks/useLearnerProgress'
 
-function Fixture() {
+export function Fixture() {
   const [learner, setLearner] = useState('snapshot-test')
   const [landscape, setLandscape] = useState('first')
   const [active, setActive] = useState(false)

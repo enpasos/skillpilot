@@ -50,12 +50,11 @@ export function useLearnerProgress({ landscapeEntries, selectedLandscapeId, skil
         ? { ...previous, learningUnits: unavailableLearningUnits() } : previous)
       console.warn('Failed to fetch mastery', e)
     }
-  }, [skillpilotId, activeLandscapeId])
+  }, [skillpilotId])
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     void refreshMastery()
-  }, [refreshMastery])
+  }, [refreshMastery, activeLandscapeId])
 
   const explicitMastery = useMemo(() => snapshot?.learnerId === skillpilotId ? snapshot.mastery : {}, [snapshot, skillpilotId])
   const learningUnits = snapshot?.learnerId === skillpilotId ? snapshot.learningUnits : null
@@ -72,7 +71,7 @@ export function useLearnerProgress({ landscapeEntries, selectedLandscapeId, skil
     })
   }, [skillpilotId])
 
-  const getMasteryMap = useCallback((_landscapeId: string) => mastery, [mastery])
+  const getMasteryMap: (landscapeId: string) => MasteryMap = useCallback(() => mastery, [mastery])
 
   return {
     activeLandscapeId,

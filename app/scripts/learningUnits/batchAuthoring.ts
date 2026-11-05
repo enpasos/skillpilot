@@ -1,9 +1,12 @@
 import assert from 'node:assert/strict'
 import { atomicRelation, canonicalJson, digest, fullClosure, goalMeaning, reachable, resolvedKind, type MathGoal } from '../learningUnitsMathAuthoring'
 import { fingerprintSemanticKindSourceGoal } from '../goalBookModel'
+import type { GoalPlacement, ProgramUnit } from '../../src/landscapeTypes'
+import type { JsonObject, JsonValue } from '../fwuOwlFieldRegistry'
+import type { AssessmentInput, ContractEntry, SemanticLedger, UnitDefinition } from './adapterTypes'
 
 export interface Landscape {
-  landscapeId: string; goals: MathGoal[]; programUnits: Array<Record<string, any>>; goalPlacements: Array<Record<string, any>>
+  landscapeId: string; goals: MathGoal[]; programUnits: Array<Pick<ProgramUnit, 'id'> & Partial<Omit<ProgramUnit, 'id'>>>; goalPlacements: GoalPlacement[]
 }
 export interface Packet {
   contractId: string; revision: string; programUnitId: string; parentUnitId: string; placementRevision: string
@@ -22,7 +25,7 @@ export interface Batch {
   semanticRebindProofPath?: string
   /** Actual shared review documents, pinned separately from the mathematical packet input. */
   reviewEvidencePaths?: string[]
-  compositionViewEdits?: Array<{ path: string; expectedSha256: string; arrayPointer: string; afterIndex: number; expectedAnchorGoalId: string; node: Record<string, any> }>
+  compositionViewEdits?: Array<{ path: string; expectedSha256: string; arrayPointer: string; afterIndex: number; expectedAnchorGoalId: string; node: { kind: string; goalId: string; projectionRole?: string } }>
 }
 export interface Receipt {
   schemaVersion: 1; semantics: 'learning-unit-content-review-v1'; decision: 'approved'
@@ -54,8 +57,8 @@ export function suggestRedundantRequires(source: Landscape, ownGoalIds: string[]
 }
 
 /** Pure preparation. Review approval is an input; this function cannot create it. */
-export function prepareBatch(batch: Batch, baseline: Landscape, baselineLedger: any,
-  existingCatalog: any, read: (path: string) => string, allowPendingReview: boolean) {
+export function prepareBatch(batch: Batch, baseline: Landscape, baselineLedger: SemanticLedger,
+  existingCatalog: { contracts: ContractEntry[]; currentOfferBinding?: { path: string; sha256: string }; [key: string]: unknown }, read: (path: string) => string, allowPendingReview: boolean) {
   assert.equal(batch.schemaVersion, 1); safe(batch.generation)
   assert.ok(batch.packets.length, 'Empty content batch')
   unique(batch.packets.map(packet => packet.contractId), 'contract identity')
@@ -79,7 +82,7 @@ export function prepareBatch(batch: Batch, baseline: Landscape, baselineLedger: 
   for (const [id, demand] of Object.entries(previous)) assert.deepEqual(expected[id], demand, `A new Q changed original demand ${id}`)
   for (const [id, prerequisite] of batch.removeRedundantRequires) {
     const goal = byId.get(id); assert.ok(goal?.requires?.includes(prerequisite), `Repair is not an authored edge ${id}->${prerequisite}`)
-    goal.requires = goal.requires.filter(value => value !== prerequisite)
+    goal!.requires = goal!.requires!.filter(value => value !== prerequisite)
     assert.deepEqual(fullClosure(atomicRelation(source.goals)), expected, `Repair changed full transitive demand ${id}->${prerequisite}`)
   }
   const relation = atomicRelation(source.goals)
@@ -93,23 +96,23 @@ export function prepareBatch(batch: Batch, baseline: Landscape, baselineLedger: 
   for (const goal of source.goals.filter(goal => goal.contains?.length)) {
     const atoms = descendants(goal.id); if ([...added].some(id => atoms.has(id))) goal.weight = atoms.size
   }
-  const existingDefinitions = existingCatalog.contracts.map((entry: any) => JSON.parse(read(entry.path)))
+  const existingDefinitions = existingCatalog.contracts.map((entry) => JSON.parse(read(entry.path)) as UnitDefinition)
   const artifacts = new Map<string, string>()
   const set = (path: string, value: unknown) => artifacts.set(path, json(value))
   const generation = `${prefix}/sources/${batch.generation}`
   const snapshotPath = `${generation}.source.json`
   const ledgerPath = `${generation}/mathematik.semantic-kinds.json`
   const currentViews = new Map(Object.values(batch.compositionViews).map(path => [path, read(path)]))
-  const patchedViews = new Map<string, any>()
+  const patchedViews = new Map<string, JsonObject>()
   for (const edit of batch.compositionViewEdits ?? []) {
     assert.ok(currentViews.has(edit.path)); assert.equal(digest(currentViews.get(edit.path)!), edit.expectedSha256, 'View generation drift')
     const view = patchedViews.get(edit.path) ?? JSON.parse(currentViews.get(edit.path)!); patchedViews.set(edit.path, view)
-    let array: any = view
-    for (const segment of edit.arrayPointer.split('/').slice(1)) array = array[segment.replace(/~1/g, '/').replace(/~0/g, '~')]
+    let array: JsonValue = view
+    for (const segment of edit.arrayPointer.split('/').slice(1)) array = (array as JsonObject)[segment.replace(/~1/g, '/').replace(/~0/g, '~')]
     assert.ok(Array.isArray(array), 'View edit must address an exact existing array')
-    assert.equal(array[edit.afterIndex]?.kind, 'goalEntry'); assert.equal(array[edit.afterIndex]?.goalId, edit.expectedAnchorGoalId, 'View anchor drift')
+    assert.equal((array[edit.afterIndex] as JsonObject)?.kind, 'goalEntry'); assert.equal((array[edit.afterIndex] as JsonObject)?.goalId, edit.expectedAnchorGoalId, 'View anchor drift')
     assert.equal(edit.node.kind, 'goalEntry'); assert.ok(added.has(edit.node.goalId), 'View additions are limited to the declared new Q')
-    assert.equal(edit.node.projectionRole ?? 'target', array[edit.afterIndex].projectionRole ?? 'target', 'Q role must preserve its reviewed anchor role')
+    assert.equal(edit.node.projectionRole ?? 'target', (array[edit.afterIndex] as JsonObject).projectionRole ?? 'target', 'Q role must preserve its reviewed anchor role')
     array.splice(edit.afterIndex + 1, 0, edit.node)
   }
   for (const [path, view] of patchedViews) { currentViews.set(path, json(view)); artifacts.set(path, json(view)) }
@@ -117,7 +120,7 @@ export function prepareBatch(batch: Batch, baseline: Landscape, baselineLedger: 
   for (const [id, path] of Object.entries(batch.compositionViews)) artifacts.set(`${generation}/views/${id}.view.json`, currentViews.get(path)!)
   const ledger = structuredClone(baselineLedger)
   for (const goal of source.goals) {
-    const decision = ledger.decisions.find((entry: any) => entry.goalId === goal.id)
+    const decision = ledger.decisions.find((entry) => entry.goalId === goal.id)
     if (decision) decision.sourceFingerprint = fingerprintSemanticKindSourceGoal(goal)
     else {
       assert.ok(added.has(goal.id)); ledger.decisions.push({ goalId: goal.id, sourceFingerprint: fingerprintSemanticKindSourceGoal(goal),
@@ -125,8 +128,8 @@ export function prepareBatch(batch: Batch, baseline: Landscape, baselineLedger: 
       ledger.counts.practiceAssessment++; ledger.counts.total++
     }
   }
-  ledger.decisions.sort((a: any, b: any) => a.goalId.localeCompare(b.goalId))
-  const definitions: any[] = []; const reviews: any[] = []; const entries: any[] = []
+  ledger.decisions.sort((a, b) => a.goalId.localeCompare(b.goalId))
+  const definitions: UnitDefinition[] = []; const reviews: Array<{ contractId: string; reviewedInputSha256: string; status: string; reviewInput: { definition: UnitDefinition; normalTasksAndRubrics: unknown; localOwnDemandClasses: unknown } }> = []; const entries: Array<ContractEntry & { assessmentInputs: Record<string, AssessmentInput>; packet?: Packet }> = []
   for (const packet of batch.packets) {
     safe(packet.contractId); safe(packet.revision); unique(packet.ownGoalIds, 'own goal')
     assert.ok(packet.ownGoalIds.length || packet.requiredChildContractRefs.length, 'An empty aggregate requires explicit reviewed children')
@@ -151,7 +154,7 @@ export function prepareBatch(batch: Batch, baseline: Landscape, baselineLedger: 
       assert.ok(definition, `Missing child contract; order a batch child before its parent: ${ref.contractId}`)
       return definition.sourceBinding.programUnitId
     })
-    const taskInputs: Record<string, any> = {}; const claims: Record<string, any> = {}; const tasks: Record<string, any> = {}
+    const taskInputs: Record<string, AssessmentInput> = {}; const claims: Record<string, { coveredGoalIds: string[]; taskRevision: string; rubricRevision: string; reviewRef: string }> = {}; const tasks: Record<string, unknown> = {}
     assert.deepEqual(Object.keys(packet.assessmentClaims).sort(), [...ownAssessmentGoalIds].sort(), 'Every own Q requires exactly one static claim')
     for (const id of ownAssessmentGoalIds) {
       const exam = byId.get(id)!.examData!; assert.ok(exam.taskContent && exam.solutionContent && exam.scoring)
@@ -203,7 +206,7 @@ export function prepareBatch(batch: Batch, baseline: Landscape, baselineLedger: 
       inputs: {}, assessmentInputs: taskInputs, recallInputs: {}, packet })
     definitions.push(definition)
     const hierarchyOwners = new Set<string>(); const hierarchyUnits = new Set<string>()
-    const visit = (current: any) => {
+    const visit = (current: UnitDefinition) => {
       const key = `${current.contractId}@${current.revision}`; assert.ok(!hierarchyUnits.has(key), `Repeated child acquisition path ${key}`); hierarchyUnits.add(key)
       for (const id of current.ownGoalIds) { assert.ok(!hierarchyOwners.has(id), `Repeated direct owner inside hierarchy ${id}`); hierarchyOwners.add(id) }
       for (const ref of current.requiredChildContractRefs) {
@@ -216,7 +219,7 @@ export function prepareBatch(batch: Batch, baseline: Landscape, baselineLedger: 
   set(snapshotPath, { schemaVersion: 1, resolverRevision: 'completion-goal-kinds-v1', landscapes: [source], compositionViewDigests: views }); set(ledgerPath, ledger)
   for (const entry of entries) {
     const packet = entry.packet as Packet; delete entry.packet
-    for (const path of [snapshotPath, ledgerPath, ...Object.values(entry.assessmentInputs).flatMap((value: any) => [value.taskPath, value.rubricPath]),
+    for (const path of [snapshotPath, ledgerPath, ...Object.values(entry.assessmentInputs).flatMap((value) => [value.taskPath, value.rubricPath]),
       ...Object.keys(batch.compositionViews).map(id => `${generation}/views/${id}.view.json`), `DE/Gymnasium/${packet.reviewRef}`, packet.reviewReceiptPath,
       ...(batch.reviewEvidencePaths ?? [])]) {
       if (allowPendingReview && [packet.reviewReceiptPath, `DE/Gymnasium/${packet.reviewRef}`].includes(path) && !receiptAvailable(path)) continue

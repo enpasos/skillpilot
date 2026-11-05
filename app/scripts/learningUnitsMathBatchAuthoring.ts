@@ -5,6 +5,7 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { canonicalJson, digest, mathCanonicalPath } from './learningUnitsMathAuthoring'
 import { prepareBatch, type Batch } from './learningUnits/batchAuthoring'
+import type { SemanticLedger } from './learningUnits/adapterTypes'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const argv = process.argv.slice(2)
@@ -16,7 +17,7 @@ const fromGit = (path: string) => execFileSync('git', ['-c', 'core.trustctime=fa
 const canonical = JSON.parse(fromGit(mathCanonicalPath))
 const ledgerPath = 'curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json'
 const catalogPath = 'curricula/DE/Gymnasium/learning-units/catalog.json'
-const ledger = JSON.parse(fromGit(ledgerPath)); const catalog = JSON.parse(fromGit(catalogPath))
+const ledger = JSON.parse(fromGit(ledgerPath)) as SemanticLedger; const catalog = JSON.parse(fromGit(catalogPath))
 const inputRoot = value('--input-root')
 const patchedViewPaths = new Set((batch.compositionViewEdits ?? []).map(edit => edit.path))
 const read = (path: string) => {
@@ -34,8 +35,8 @@ if (liveCatalog.currentOfferBinding) result.catalog.currentOfferBinding = liveCa
 const artifacts = new Map(result.artifacts)
 if (batch.qualityProofPath) artifacts.set(batch.qualityProofPath, `${JSON.stringify(result.proof, null, 2)}\n`)
 if (batch.semanticRebindProofPath) {
-  const records = ledger.decisions.map((previous: any) => {
-    const current = result.ledger.decisions.find((entry: any) => entry.goalId === previous.goalId)
+  const records = ledger.decisions.map((previous) => {
+    const current = result.ledger.decisions.find((entry) => entry.goalId === previous.goalId)
     assert.ok(current)
     assert.equal(current.semanticKind, previous.semanticKind); assert.equal(current.decisionStatus, previous.decisionStatus); assert.equal(current.decisionBasis, previous.decisionBasis)
     return previous.sourceFingerprint === current.sourceFingerprint ? [] : [{ goalId: current.goalId,
