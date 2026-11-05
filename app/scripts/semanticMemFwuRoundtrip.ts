@@ -13,6 +13,7 @@ import { dirname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { createInterface } from 'node:readline'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { parseSubjectExportSourceReferences } from './subjectExportSourceReferences'
+import { learningUnitMetadataJson } from './fwuOwlLearningUnitMetadata'
 
 type JsonValue =
   | null
@@ -195,6 +196,7 @@ const EXPECTED_DE_STATES = [
 const RDF = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
 const RDFS = 'http://www.w3.org/2000/01/rdf-schema#'
 const OWL = 'http://www.w3.org/2002/07/owl#'
+const XSD = 'http://www.w3.org/2001/XMLSchema#'
 const DCTERMS = 'http://purl.org/dc/terms/'
 const BFO = 'http://purl.obolibrary.org/obo/'
 const LP = 'https://w3id.org/lehrplan/ontology/'
@@ -303,6 +305,8 @@ const P = {
   relation: `${SP}relation`,
   referenceRole: `${SP}referenceRole`,
   contextJson: `${SP}contextJson`,
+  learningUnitMetadata: `${SP}learningUnitMetadata`,
+  acquisition: `${SP}acquisitionOwnership`,
   metadataJson: `${SP}metadataJson`,
   applicabilityJson: `${SP}applicabilityJson`,
   resourceLinksJson: `${SP}resourceLinksJson`,
@@ -670,6 +674,39 @@ const literalObjects = (model: RdfModel, subject: string, predicate: string) => 
 const lit = (model: RdfModel, subject: string, predicate: string) => (
   literalObjects(model, subject, predicate)[0]?.value
 )
+
+// New contract-bearing extensions must never select a first value or coerce an
+// IRI, a language-tagged string, or a literal of a different datatype.
+const optionalTypedLiteral = (model: RdfModel, subject: string, predicate: string, datatype: string) => {
+  const values = literalObjects(model, subject, predicate)
+  if ((model.iris.get(subject)?.get(predicate)?.length ?? 0) > 0
+    || values.some((value) => value.datatype !== datatype || value.lang !== undefined)
+    || new Set(values.map((value) => value.value)).size > 1) {
+    throw new Error(`Ambiguous or invalid RDF contract literal: ${subject} ${predicate}`)
+  }
+  return values[0]?.value
+}
+
+const learningUnitMetadata = (model: RdfModel, subject: string): JsonValue | undefined => {
+  const value = optionalTypedLiteral(model, subject, P.learningUnitMetadata, `${XSD}string`)
+  if (value === undefined) return undefined
+  if (Buffer.byteLength(value, 'utf8') > 1048576) {
+    throw new Error(`RDF learningUnit metadata exceeds the registered byte limit: ${subject}`)
+  }
+  const data: unknown = JSON.parse(value)
+  if (learningUnitMetadataJson(data) !== value) {
+    throw new Error(`Noncanonical RDF learningUnit metadata: ${subject}`)
+  }
+  return data as JsonValue
+}
+
+const acquisitionFlag = (model: RdfModel, subject: string): boolean | undefined => {
+  const value = optionalTypedLiteral(model, subject, P.acquisition, `${XSD}boolean`)
+  if (value === undefined) return undefined
+  if (value === 'true' || value === '1') return true
+  if (value === 'false' || value === '0') return false
+  throw new Error(`Invalid RDF acquisition boolean: ${subject}`)
+}
 
 const lits = (model: RdfModel, subject: string, predicate: string) => (
   literalObjects(model, subject, predicate).map((value) => value.value)
@@ -1460,9 +1497,9 @@ const mergeGoalVisualizationLinks = (
   return reconstructed
 }
 
-const reconstructLandscape = (
+export const reconstructLandscape = (
   model: RdfModel,
-  goalVisualizations: GoalVisualizationRecord[],
+  goalVisualizations: GoalVisualizationRecord[] = [],
 ): ReconstructedLandscape => {
   const landscapeResource = resourcesOfType(model, T.learningLandscape)[0]
   if (!landscapeResource) {
@@ -1506,6 +1543,7 @@ const reconstructLandscape = (
     withString(unit, 'parentUnitId', lit(model, resource, P.parentUnitId))
     withNumber(unit, 'order', num(lit(model, resource, P.order)))
     withJson(unit, 'context', json(lit(model, resource, P.contextJson)))
+    withJson(unit, 'learningUnit', learningUnitMetadata(model, resource))
     return unit
   })
 
@@ -1517,6 +1555,7 @@ const reconstructLandscape = (
     withString(placement, 'unitId', unit ? skillpilotId(model, unit) : undefined)
     withString(placement, 'relation', lit(model, resource, P.relation))
     withJson(placement, 'context', json(lit(model, resource, P.contextJson)))
+    withBoolean(placement, 'acquisition', acquisitionFlag(model, resource))
     return placement
   })
 

@@ -6,12 +6,15 @@ import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
   emptyCounts,
+  writeLandscapeSemantics,
   writeMappingSemantics,
   writeProfile,
+  writeSemanticDeclarations,
   writeSourceSemantics,
   writeViewSemantics,
 } from './memFwuRoundtrip'
-import { readRdfModel, reconstructMappings, reconstructSourceGoalReferences, reconstructViews } from './semanticMemFwuRoundtrip'
+import { readRdfModel, reconstructLandscape, reconstructMappings, reconstructSourceGoalReferences, reconstructViews } from './semanticMemFwuRoundtrip'
+import { assertJsonValue, compactCanonicalJsonText } from './fwuOwlFieldRegistry'
 
 const repositoryRoot = fileURLToPath(new URL('../../', import.meta.url))
 const archiveRoot = 'semantic-record-regression'
@@ -27,6 +30,130 @@ const decisionSet = (records: Array<Record<string, unknown>>) => records
   .sort((left, right) => String(left.sourceGoalId).localeCompare(String(right.sourceGoalId)))
 
 try {
+  const sp = 'https://skillpilot.de/ns/roundtrip#'
+  const xsd = 'http://www.w3.org/2001/XMLSchema#'
+  const metadata = {
+    contractId: 'fixture-contract', revision: 'contract-v2', placementRevision: 'placement-v3',
+    promise: { de: 'Du kannst „Volumen“ erklären.', en: 'Explain volume.', fr: 'Expliquer le volume.' },
+    introduction: { de: 'Erste Zeile\nZweite Zeile mit \\ und "Zitat".', en: 'Start here → calculate.' },
+  }
+  const fixture = {
+    landscapeId: 'metadata-regression',
+    programUnits: [
+      { id: 'unit-legacy', kind: 'year', label: 'Legacy' },
+      { id: 'unit-omitted', kind: 'module', label: 'Omitted children', learningUnit: metadata },
+      { id: 'unit-empty', kind: 'module', label: 'No children', learningUnit: { ...metadata, requiredChildUnitIds: [] } },
+      { id: 'unit-parent', kind: 'module', label: 'Parent', learningUnit: { ...metadata, requiredChildUnitIds: ['unit-omitted', 'unit-empty'] } },
+    ],
+    goalPlacements: [
+      { goalId: 'atom', unitId: 'unit-legacy', relation: 'primary' },
+      { goalId: 'atom', unitId: 'unit-omitted', relation: 'secondary', acquisition: false },
+      { goalId: 'atom', unitId: 'unit-empty', relation: 'primary', acquisition: true },
+    ],
+    goals: [{ id: 'atom', title: 'Ordinary goal' }],
+  }
+  const landscapePath = join(directory, 'landscape.nt')
+  const emitLandscape = (value: unknown) => {
+    const lines: string[] = []
+    writeLandscapeSemantics((line) => lines.push(line), archiveRoot,
+      [entry('data/canonical/regression.landscape.json', value)], emptyCounts())
+    return lines
+  }
+  const reconstructLines = async (lines: string[]) => {
+    await writeFile(landscapePath, lines.join(''))
+    return reconstructLandscape((await readRdfModel(landscapePath)).model)
+  }
+  const recordSet = (records: unknown[]) => records.map((record) => {
+    assertJsonValue(record)
+    return compactCanonicalJsonText(record)
+  }).sort()
+  const fixtureLines = emitLandscape(fixture)
+  const reconstructedFixture = await reconstructLines(fixtureLines)
+  const declarationsPath = join(directory, 'declarations.nt')
+  await writeSemanticDeclarations(declarationsPath, [landscapePath])
+  const declarations = await readFile(declarationsPath, 'utf8')
+  for (const property of ['learningUnitMetadata', 'acquisitionOwnership']) {
+    assert.ok(declarations.includes(`<${sp}${property}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty>`),
+      `the actual slim declarations classify ${property} as a datatype property`)
+  }
+  assert.deepEqual(recordSet(reconstructedFixture.programUnits), recordSet(fixture.programUnits),
+    'full contract/revision/placement/localized text and omitted/empty/ordered child list values survive RDF alone')
+  assert.deepEqual(recordSet(reconstructedFixture.goalPlacements), recordSet(fixture.goalPlacements),
+    'true, false and missing ownership stay distinct independently of primary/secondary navigation')
+  assert.deepEqual(reconstructedFixture.programUnits.find((unit) => (unit as { id: string }).id === 'unit-omitted'),
+    fixture.programUnits[1], 'missing requiredChildUnitIds is never synthesized')
+
+  // Real current source vectors, with no binary asset extraction or package rebuild.
+  const canonical = await readJson('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json')
+  assert.equal(canonical.programUnits.length, 35)
+  assert.equal(canonical.goalPlacements.length, 351)
+  assert.equal(canonical.programUnits.filter((unit: Record<string, unknown>) => Object.hasOwn(unit, 'learningUnit')).length, 21)
+  assert.equal(canonical.goalPlacements.filter((placement: Record<string, unknown>) => Object.hasOwn(placement, 'acquisition')).length, 48)
+  const actual = await reconstructLines(emitLandscape(canonical))
+  assert.deepEqual(recordSet(actual.programUnits), recordSet(canonical.programUnits), 'all 35 real program units match exactly')
+  assert.deepEqual(recordSet(actual.goalPlacements), recordSet(canonical.goalPlacements), 'all 351 real goal placements match exactly')
+
+  // Missing extensions remain readable for legacy data, but cannot pass an exact
+  // comparison to a current record that explicitly contains those extensions.
+  const droppedMetadata = await reconstructLines(fixtureLines.filter((line) => !line.includes(`#learningUnitMetadata>`)))
+  assert.notDeepEqual(recordSet(droppedMetadata.programUnits), recordSet(fixture.programUnits))
+  const droppedOwnership = await reconstructLines(fixtureLines.filter((line) => !line.includes(`#acquisitionOwnership>`)))
+  assert.notDeepEqual(recordSet(droppedOwnership.goalPlacements), recordSet(fixture.goalPlacements))
+
+  const metadataLine = fixtureLines.find((line) => line.includes('#learningUnitMetadata>'))!
+  const ownershipLine = fixtureLines.find((line) => line.includes('#acquisitionOwnership>') && line.includes('"false"'))!
+  const literalLine = (original: string, lexical: string, datatype = `${xsd}string`) =>
+    `${original.match(/^<[^>]+> <[^>]+> /u)![0]}${JSON.stringify(lexical)}^^<${datatype}> .\n`
+  const rejectRdf = async (lines: string[], message: string) => {
+    await writeFile(landscapePath, lines.join(''))
+    const { model } = await readRdfModel(landscapePath)
+    assert.throws(() => reconstructLandscape(model), message)
+  }
+  for (const invalid of [null, [], 'text', 1, {}, { ...metadata, extraMeaning: true },
+    { ...metadata, contractId: '' }, { ...metadata, revision: null }, { ...metadata, placementRevision: 3 },
+    { ...metadata, promise: {} }, { ...metadata, introduction: { de: 1 } },
+    { ...metadata, requiredChildUnitIds: null }, { ...metadata, requiredChildUnitIds: ['a', 'a'] }]) {
+    assert.throws(() => emitLandscape({ ...fixture, programUnits: [{ ...fixture.programUnits[1], learningUnit: invalid }] }),
+      'export rejects malformed or unknown learning-unit semantics')
+    await rejectRdf(fixtureLines.map((line) => line === metadataLine ? literalLine(line, JSON.stringify(invalid)) : line),
+      'reverse rejects malformed or unknown learning-unit semantics')
+  }
+  for (const invalid of [null, 'false', 0, {}]) {
+    assert.throws(() => emitLandscape({ ...fixture, goalPlacements: [{ ...fixture.goalPlacements[1], acquisition: invalid }] }),
+      /acquisition/u, 'export must not silently omit nonboolean ownership')
+  }
+  for (const original of [metadataLine, ownershipLine]) {
+    await rejectRdf([...fixtureLines, original.replace(/\^\^<[^>]+>/u, '^^<urn:wrong-datatype>')], 'wrong datatype')
+    await rejectRdf([...fixtureLines, original.replace(/\^\^<[^>]+>/u, '@en')], 'language tag')
+    await rejectRdf([...fixtureLines, original.replace(/".*"\^\^<[^>]+>/u, '<urn:wrong-object>')], 'IRI/literal mixture')
+    await rejectRdf(fixtureLines.map((line) => line === original
+      ? original.replace(/".*"\^\^<[^>]+>/u, '<urn:wrong-object>') : line), 'IRI instead of literal')
+  }
+  await rejectRdf([...fixtureLines, ownershipLine.replace('"false"', '"true"')], 'conflicting ownership')
+  await rejectRdf(fixtureLines.map((line) => line === ownershipLine ? line.replace('"false"', '"maybe"') : line), 'invalid boolean lexical form')
+  await rejectRdf([...fixtureLines, metadataLine.replace('contract-v2', 'contract-v3')], 'conflicting contract revision')
+  await rejectRdf(fixtureLines.map((line) => line === metadataLine ? literalLine(line, '{') : line), 'invalid JSON')
+  await rejectRdf(fixtureLines.map((line) => line === metadataLine ? literalLine(line, JSON.stringify(metadata)) : line), 'noncanonical JSON')
+  const oversizedMetadata = { ...metadata, promise: { de: 'x'.repeat(1048576) } }
+  assert.throws(() => emitLandscape({ ...fixture, programUnits: [{ ...fixture.programUnits[1], learningUnit: oversizedMetadata }] }),
+    /byte limit/u, 'export enforces the existing registered literal size limit')
+  await rejectRdf(fixtureLines.map((line) => line === metadataLine ? literalLine(line, JSON.stringify(oversizedMetadata)) : line), 'oversized metadata')
+  const duplicateTriples = await reconstructLines([...fixtureLines, metadataLine, ownershipLine])
+  assert.deepEqual(recordSet(duplicateTriples.programUnits), recordSet(fixture.programUnits), 'identical RDF statements have set semantics')
+  const numericBoolean = await reconstructLines(fixtureLines.map((line) => line === ownershipLine ? line.replace('"false"', '"0"') : line))
+  assert.deepEqual(recordSet(numericBoolean.goalPlacements), recordSet(fixture.goalPlacements), 'standard xsd:boolean false lexical form')
+
+  const registry = await readJson('contracts/curriculum-package/v1.2/profiles/skillpilot-field-semantics-learning-units-v1.registry.json')
+  const metadataMapping = registry.entries.find((field: { pathPattern: string }) => field.pathPattern === '/programUnits/*/learningUnit').rdfMapping
+  const ownershipMapping = registry.entries.find((field: { pathPattern: string }) => field.pathPattern === '/goalPlacements/*/acquisition').rdfMapping
+  assert.equal(metadataMapping.canonicalJsonLiteral.predicate, 'sp:learningUnitMetadata')
+  assert.equal(metadataMapping.canonicalJsonLiteral.datatype, 'xsd:string')
+  assert.equal(metadataMapping.canonicalJsonLiteral.maxBytes, 1048576)
+  assert.equal(ownershipMapping.construction.predicate, 'sp:acquisitionOwnership')
+  assert.equal(ownershipMapping.construction.datatype, 'xsd:boolean')
+  assert.ok(metadataLine.includes(`<${sp}learningUnitMetadata>`))
+  assert.ok(ownershipLine.includes(`<${sp}acquisitionOwnership>`))
+
   const views = [entry('data/views/regression.view.json', {
     viewId: 'projection-role-regression', landscapeId: 'math', scope: { stage: 'SekII' },
     rootNodes: [{ kind: 'structure', id: 'root', label: 'Prerequisites and targets', children: [
@@ -175,11 +302,14 @@ try {
   writeProfile(profilePath, { includeCarrier: false })
   const profile = await readFile(profilePath, 'utf8')
   for (const property of ['projectionRole', 'reviewDecisionId', 'rationale', 'partialSourceEvidenceJson', 'withdrawnMappingsJson',
-    'sourceGoalReferenceSchemaVersion', 'sourceGoalReferenceNote', 'sourceArtifactPath', 'mappingPath']) {
+    'sourceGoalReferenceSchemaVersion', 'sourceGoalReferenceNote', 'sourceArtifactPath', 'mappingPath',
+    'learningUnitMetadata', 'acquisitionOwnership']) {
     assert.ok(profile.includes(`sp:${property} a owl:DatatypeProperty`),
       `the slim ontology declares the added semantic property ${property}`)
   }
-  console.log(`MEM/FWU semantic records regression passed: ${counts.compositionNodes} view nodes, ${counts.reviewDecisions} review decisions, strict v1 and version-bound v2 sources`)
+  assert.ok(profile.includes('rdfs:domain sp:ProgramUnit ; rdfs:range xsd:string'))
+  assert.ok(profile.includes('rdfs:domain sp:GoalPlacement ; rdfs:range xsd:boolean'))
+  console.log(`MEM/FWU semantic records regression passed: 35 program units, 351 placements, 21 learningUnit and 48 acquisition values, strict metadata/ownership adversaries; ${counts.compositionNodes} view nodes, ${counts.reviewDecisions} review decisions, strict v1 and version-bound v2 sources`)
 } finally {
   await rm(directory, { recursive: true, force: true })
 }

@@ -19,6 +19,7 @@ import { basename, dirname, isAbsolute, relative, resolve, sep } from 'node:path
 import { createInterface } from 'node:readline'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { parseSubjectExportSourceReferences } from './subjectExportSourceReferences'
+import { assertAcquisition, learningUnitMetadataJson } from './fwuOwlLearningUnitMetadata'
 
 type JsonValue =
   | null
@@ -876,6 +877,7 @@ sp:sourceIndexSummaryJson a owl:DatatypeProperty ; rdfs:label "source index summ
 @prefix owl: <${OWL}> .
 @prefix rdfs: <${RDFS}> .
 @prefix dcterms: <${DCTERMS}> .
+@prefix xsd: <${XSD}> .
 
 <${SP}> a owl:Ontology ;
   owl:imports <${LP_CORE_ONTOLOGY}> ;
@@ -998,6 +1000,14 @@ sp:kind a owl:DatatypeProperty ; rdfs:label "kind"@en .
 sp:shortLabel a owl:DatatypeProperty ; rdfs:label "short label"@en .
 sp:parentUnitId a owl:DatatypeProperty ; rdfs:label "parent program unit id"@en .
 sp:contextJson a owl:DatatypeProperty ; rdfs:label "context JSON"@en .
+sp:learningUnitMetadata a owl:DatatypeProperty ;
+  rdfs:domain sp:ProgramUnit ; rdfs:range xsd:string ;
+  rdfs:label "Learning unit contract metadata JSON"@en ;
+  rdfs:comment "Optional closed learningUnit object from the SkillPilot compiled landscape v1.2 schema, encoded as compact canonical JSON in xsd:string. The complete value retains contractId, revision, placementRevision, localized promise and introduction, and the distinction between omitted and explicit requiredChildUnitIds. Missing assertion means missing field; null and unknown fields are forbidden. This is application metadata, not an additional FWU Core competence assertion."@en .
+sp:acquisitionOwnership a owl:DatatypeProperty ;
+  rdfs:domain sp:GoalPlacement ; rdfs:range xsd:boolean ;
+  rdfs:label "Direct acquisition ownership"@en ;
+  rdfs:comment "Optional explicit direct acquisition ownership of this exact goal placement. True, false and missing are distinct; the codec never infers ownership from a navigation relation."@en .
 sp:phase a owl:DatatypeProperty ; rdfs:label "phase"@en .
 sp:area a owl:DatatypeProperty ; rdfs:label "area"@en .
 sp:level a owl:DatatypeProperty ; rdfs:label "level"@en .
@@ -1727,7 +1737,7 @@ const writeIndependentFile = (target: string, content: Buffer) => {
   writeFileSync(target, content)
 }
 
-const writeLandscapeSemantics = (
+export const writeLandscapeSemantics = (
   write: (line: string) => void,
   archiveRoot: string,
   entries: ZipEntryRecord[],
@@ -1867,6 +1877,9 @@ const writeLandscapeSemantics = (
     writeStringField(write, resource, `${SP}parentUnitId`, data.parentUnitId)
     writeNumberField(write, resource, `${SP}order`, data.order)
     writeJsonField(write, resource, `${SP}contextJson`, data.context)
+    if (Object.hasOwn(data, 'learningUnit')) {
+      write(tripleLine(resource, `${SP}learningUnitMetadata`, literal(learningUnitMetadataJson(data.learningUnit), `${XSD}string`)))
+    }
     const grade = FWU_GRADES.get(unitId)
     const year = unitId.match(/^de-gym-math-j([0-9]+)$/u)?.[1]
     const yearNumber = year ? Number(year) : null
@@ -2039,6 +2052,10 @@ const writeLandscapeSemantics = (
     write(tripleLine(resource, `${SP}placedInProgramUnit`, iri(`${packageIri(archiveRoot)}/program-unit/${idSegment(unitId)}`)))
     writeStringField(write, resource, `${SP}relation`, data.relation)
     writeJsonField(write, resource, `${SP}contextJson`, data.context)
+    if (Object.hasOwn(data, 'acquisition')) {
+      assertAcquisition(data.acquisition)
+      writeBooleanField(write, resource, `${SP}acquisitionOwnership`, data.acquisition)
+    }
   })
 }
 
@@ -2635,7 +2652,7 @@ const writeBundleFile = async (bundlePath: string, sourcePaths: string[]) => {
   return statSync(bundlePath).size
 }
 
-const writeSemanticDeclarations = async (filePath: string, sourcePaths: string[]) => {
+export const writeSemanticDeclarations = async (filePath: string, sourcePaths: string[]) => {
   const classIris = new Set<string>()
   const propertyUsage = new Map<string, { iri: boolean; literal: boolean }>()
   for (const sourcePath of sourcePaths) {
