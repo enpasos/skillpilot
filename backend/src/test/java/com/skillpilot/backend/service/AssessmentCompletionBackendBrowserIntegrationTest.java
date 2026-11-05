@@ -371,6 +371,7 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
         String id = createSyntheticLearner();
         var attempts = new java.util.concurrent.atomic.AtomicInteger();
         var completions = new java.util.concurrent.CopyOnWriteArrayList<Integer>();
+        var committedRevision = new java.util.concurrent.atomic.AtomicLong();
         var conflictStates = new java.util.concurrent.CopyOnWriteArrayList<String>();
         org.aopalliance.intercept.MethodInterceptor probe = invocation -> {
             if (!invocation.getMethod().getName().equals("getLearnerState") || !id.equals(invocation.getArguments()[0])) return invocation.proceed();
@@ -387,12 +388,16 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
             if (attempt == 0) {
                 // Establish the real RR snapshot before a separate committed writer
                 // changes this row. The production FOR UPDATE then raises real40001.
-                jdbc.queryForObject("SELECT coach_state_revision FROM learner WHERE skillpilot_id = ?", Long.class, id);
+                committedRevision.set(jdbc.queryForObject("SELECT coach_state_revision FROM learner WHERE skillpilot_id = ?", Long.class, id) + 1);
                 try (var writer = dataSource.getConnection()) {
                     writer.setAutoCommit(false);
-                    try (var update = writer.prepareStatement("UPDATE learner SET last_activity_at = ? WHERE skillpilot_id = ?")) {
-                        update.setTimestamp(1, java.sql.Timestamp.from(Instant.now())); update.setString(2, id);
+                    try (var update = writer.prepareStatement("UPDATE learner SET last_activity_at = ?, coach_state_revision = ? WHERE skillpilot_id = ?")) {
+                        update.setTimestamp(1, java.sql.Timestamp.from(Instant.now())); update.setLong(2, committedRevision.get()); update.setString(3, id);
                         assertThat(update.executeUpdate()).isEqualTo(1);
+                    }
+                    try (var outcome = writer.prepareStatement("INSERT INTO mastery (skillpilot_id, goal_key, value, updated_at) VALUES (?, ?, ?, ?)")) {
+                        outcome.setString(1, id); outcome.setString(2, EXAM); outcome.setDouble(3, 1.0);
+                        outcome.setTimestamp(4, java.sql.Timestamp.from(Instant.now())); assertThat(outcome.executeUpdate()).isEqualTo(1);
                     }
                     writer.commit();
                 }
@@ -411,13 +416,21 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
             var response = client.send(HttpRequest.newBuilder(URI.create("http://127.0.0.1:" + port
                     + "/api/ui/learners/" + id + "/state")).GET().build(), HttpResponse.BodyHandlers.ofString());
             assertThat(response.statusCode()).isEqualTo(200);
-            assertThat(mapper.readTree(response.body()).path("levelCompletion").path("calculationStatus").asText()).isEqualTo("valid");
+            JsonNode fresh = mapper.readTree(response.body());
+            assertThat(fresh.path("levelCompletion").path("calculationStatus").asText()).isEqualTo("valid");
+            assertThat(fresh.path("levelCompletion").path("learnerRevision").asLong()).isEqualTo(committedRevision.get());
+            assertThat(fresh.path("levelCompletion").path("masteredTargetCount").asInt()).isEqualTo(1);
+            assertThat(fresh.path("learningUnits").path("recognizedGoalIds").toString()).isEqualTo("[\"" + PREPARATION + "\"]");
             assertThat(attempts.get()).isEqualTo(2);
             assertThat(conflictStates).containsExactly("40001");
             assertThat(completions).containsExactly(
                     org.springframework.transaction.support.TransactionSynchronization.STATUS_ROLLED_BACK,
                     org.springframework.transaction.support.TransactionSynchronization.STATUS_COMMITTED);
-            assertThat(mastery.findByLearner_SkillpilotId(id)).isEmpty();
+            assertThat(mastery.findByLearner_SkillpilotId(id)).singleElement().satisfies(result -> {
+                assertThat(result.getGoalKey()).isEqualTo(EXAM); assertThat(result.getValue()).isEqualTo(1.0);
+            });
+            assertThat(learners.findById(id).orElseThrow().getCoachStateRevision()).isEqualTo(committedRevision.get());
+            org.mockito.Mockito.verify(mastery, org.mockito.Mockito.never()).save(org.mockito.ArgumentMatchers.any());
         } finally { proxy.removeAdvice(probe); }
     }
 
