@@ -13,6 +13,7 @@ import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.MasteryId;
 import com.skillpilot.backend.landscape.LearningGoal;
+import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import java.util.List;
@@ -53,6 +54,9 @@ class LearnerPersonalizationProgressionIntegrationTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @Autowired
+    private LandscapeService landscapeService;
+
     @Test
     void orientationClassificationPrefersSemanticKindAndUsesOnlyExplicitLegacyTagsAsFallback() {
         LearningGoal semanticOrientation = new LearningGoal();
@@ -74,6 +78,54 @@ class LearnerPersonalizationProgressionIntegrationTest {
         assertThat(LearnerService.isOrientationGoal(legacyOrientation)).isTrue();
         assertThat(LearnerService.isOrientationGoal(authoritativeNonOrientation)).isFalse();
         assertThat(LearnerService.isOrientationGoal(titleOnly)).isFalse();
+    }
+
+    @Test
+    void orientationOutlookReachRequiresAnUnbrokenInScopeAtomicCurricularRoute() {
+        LearningGoal anchor = outlookRouteGoal("anchor", "orientation", List.of());
+        LearningGoal intermediate = outlookRouteGoal("intermediate", "curricularAtomic", List.of("anchor"));
+        LearningGoal entry = outlookRouteGoal("entry", "curricularAtomic", List.of("intermediate"));
+        Map<String, LearningGoal> goals = Map.of("anchor", anchor, "intermediate", intermediate, "entry", entry);
+        Set<String> permitted = goals.keySet();
+        assertThat(learnerService.collectOrientationOutlookDownstream("anchor", goals, permitted))
+                .containsExactlyInAnyOrder("intermediate", "entry");
+
+        intermediate.setRequires(List.of());
+        assertThat(learnerService.collectOrientationOutlookDownstream("anchor", goals, permitted)).isEmpty();
+        intermediate.setRequires(List.of("anchor"));
+        intermediate.setPhase("Q2");
+        assertThat(learnerService.collectOrientationOutlookDownstream("anchor", goals, permitted)).isEmpty();
+        intermediate.setPhase("J7");
+        assertThat(learnerService.collectOrientationOutlookDownstream("anchor", goals, Set.of("anchor", "entry")))
+                .isEmpty();
+        for (String excludedKind : List.of("memory", "practiceAssessment", "runtimeSupport", "programStructure", "orientation")) {
+            intermediate.setSemanticKind(excludedKind);
+            assertThat(learnerService.collectOrientationOutlookDownstream("anchor", goals, permitted))
+                    .as("No route through %s", excludedKind).isEmpty();
+        }
+        intermediate.setSemanticKind("curricularAtomic");
+        intermediate.setContains(List.of("entry"));
+        assertThat(learnerService.collectOrientationOutlookDownstream("anchor", goals, permitted)).isEmpty();
+        intermediate.setContains(List.of());
+        intermediate.setType("cluster");
+        assertThat(learnerService.collectOrientationOutlookDownstream("anchor", goals, permitted)).isEmpty();
+        intermediate.setType("atomic");
+        intermediate.setNodeKind("memory");
+        assertThat(learnerService.collectOrientationOutlookDownstream("anchor", goals, permitted)).isEmpty();
+        intermediate.setNodeKind(null);
+        intermediate.setRequires(List.of("entry"));
+        assertThat(learnerService.collectOrientationOutlookDownstream("anchor", goals, permitted)).isEmpty();
+    }
+
+    private LearningGoal outlookRouteGoal(String id, String kind, List<String> requires) {
+        LearningGoal goal = new LearningGoal();
+        goal.setId(id);
+        goal.setType("atomic");
+        goal.setSemanticKind(kind);
+        goal.setPhase("J7");
+        goal.setContains(List.of());
+        goal.setRequires(requires);
+        return goal;
     }
 
     @Test
@@ -238,6 +290,16 @@ class LearnerPersonalizationProgressionIntegrationTest {
         assertThat(orientationState.activeGoal().id()).isEqualTo(MATH_SEK_TWO_ORIENTATION_ID);
         assertThat(orientationState.activeGoal().semanticKind()).isEqualTo("orientation");
         assertThat(orientationState.stateMachine().requiredAction()).isEqualTo("orientActiveGoal");
+
+        String spatialEntryId = "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8";
+        assertThat(landscapeService.getGoalDefinition(spatialEntryId).getRequires())
+                .contains("075f1ef2-6860-4b20-9df2-878157eb395e")
+                .doesNotContain(MATH_SEK_TWO_ORIENTATION_ID);
+        assertThatThrownBy(() -> learnerService.setActiveGoal(learner.getSkillpilotId(), spatialEntryId))
+                .isInstanceOfSatisfying(ResponseStatusException.class, exception ->
+                        assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.CONFLICT));
+        assertThat(learnerService.getCoachLearnerState(learner.getSkillpilotId()).activeGoal().id())
+                .isEqualTo(MATH_SEK_TWO_ORIENTATION_ID);
 
         OrientationOutlook orientationOutlook = learnerService.getCoachOrientationOutlook(
                 learner.getSkillpilotId(),

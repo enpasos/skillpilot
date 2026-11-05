@@ -140,6 +140,34 @@ assert.deepEqual(
   'a bounded outlook with contained and directly reachable milestones is valid',
 )
 
+const transitiveOutlookGoals = structuredClone(validOrientationOutlookGoals)
+transitiveOutlookGoals.push({
+  id: 'intermediate', title: 'Fachliche Grundlage', type: 'atomic', stage: 'seki',
+  contains: [], requires: ['orientation-outlook'],
+})
+transitiveOutlookGoals.find((goal) => goal.id === 'goal-a')!.requires = ['intermediate']
+const transitiveOutlookKinds = new Map(validOrientationOutlookKinds)
+transitiveOutlookKinds.set('intermediate', 'curricularAtomic')
+assert.deepEqual(
+  validateOrientationOutlooks(transitiveOutlookGoals, transitiveOutlookKinds, sekiOrientationOutlookProfiles),
+  [],
+  'a reviewed entry remains valid through an in-stage atomic route after transitive reduction',
+)
+const brokenTransitiveOutlookGoals = structuredClone(transitiveOutlookGoals)
+brokenTransitiveOutlookGoals.find((goal) => goal.id === 'intermediate')!.requires = []
+assert.ok(
+  validateOrientationOutlooks(brokenTransitiveOutlookGoals, transitiveOutlookKinds, sekiOrientationOutlookProfiles)
+    .some((finding) => finding.message.includes('Entry goal goal-a is not reachable')),
+  'an intermediate with no route to the orientation anchor must fail closed',
+)
+const foreignStageTransitiveOutlookGoals = structuredClone(transitiveOutlookGoals)
+foreignStageTransitiveOutlookGoals.find((goal) => goal.id === 'intermediate')!.stage = 'sekii'
+assert.ok(
+  validateOrientationOutlooks(foreignStageTransitiveOutlookGoals, transitiveOutlookKinds, sekiOrientationOutlookProfiles)
+    .some((finding) => finding.message.includes('Entry goal goal-a is not reachable')),
+  'a route through a foreign-stage intermediate must not prove orientation reach',
+)
+
 const invalidOrientationOutlookGoals = structuredClone(validOrientationOutlookGoals)
 const invalidOutlook = invalidOrientationOutlookGoals[0]?.extendedData
   ?.orientationOutlook as { paths: Array<Record<string, unknown>> }

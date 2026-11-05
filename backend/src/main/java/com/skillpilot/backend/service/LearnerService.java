@@ -8246,6 +8246,8 @@ public class LearnerService {
                     Collections.emptyMap());
             permittedGoalIds.retainAll(plannedScope);
         }
+        Set<String> orientationDownstream = collectOrientationOutlookDownstream(
+                activeGoalId, structuralGoals, permittedGoalIds);
 
         boolean english = communicationLocale != null
                 && communicationLocale.toLowerCase(Locale.ROOT).startsWith("en");
@@ -8286,8 +8288,7 @@ public class LearnerService {
                 if (entryGoal == null
                         || !pathDescendantIds.contains(entryId)
                         || projection.prerequisiteOnlyGoalIds().contains(entryId)
-                        || !isAtomicGoal(entryGoal)
-                        || !directlyRequiresGoal(entryGoal, activeGoalId, structuralGoals)) {
+                        || !orientationDownstream.contains(entryId)) {
                     continue;
                 }
                 relatedGoalIds.add(entryId);
@@ -8303,7 +8304,7 @@ public class LearnerService {
                     continue;
                 }
                 LearningGoal milestone = structuralGoals.get(milestoneId);
-                if (!isAtomicGoal(milestone)
+                if (!orientationDownstream.contains(milestoneId)
                         || projection.prerequisiteOnlyGoalIds().contains(milestoneId)) {
                     continue;
                 }
@@ -8334,16 +8335,72 @@ public class LearnerService {
         return paths.size() < 2 ? null : new OrientationOutlook(activeGoalId, List.copyOf(paths));
     }
 
-    private boolean directlyRequiresGoal(
-            LearningGoal goal,
-            String requiredGoalId,
-            Map<String, LearningGoal> structuralGoals) {
-        if (goal == null || goal.getRequires() == null) {
+    /** Reviewed outlook reach is not a frontier or permission to start a goal. */
+    Set<String> collectOrientationOutlookDownstream(
+            String orientationGoalId,
+            Map<String, LearningGoal> structuralGoals,
+            Set<String> permittedGoalIds) {
+        LearningGoal anchor = structuralGoals.get(orientationGoalId);
+        String stage = orientationOutlookStage(anchor);
+        if (stage == null || !isOrientationGoal(anchor) || !isAtomicGoal(anchor)
+                || !permittedGoalIds.contains(orientationGoalId)) {
+            return Set.of();
+        }
+        Set<String> routeIds = structuralGoals.entrySet().stream()
+                .filter(entry -> permittedGoalIds.contains(entry.getKey()))
+                .filter(entry -> stage.equals(orientationOutlookStage(entry.getValue())))
+                .filter(entry -> entry.getKey().equals(orientationGoalId)
+                        || isOrientationOutlookCurricularAtomic(entry.getValue()))
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toSet());
+        Map<String, List<String>> successors = new HashMap<>();
+        for (String id : routeIds) {
+            for (String ref : Optional.ofNullable(structuralGoals.get(id).getRequires()).orElse(List.of())) {
+                String requiredId = resolveGoalRef(ref, structuralGoals);
+                if (routeIds.contains(requiredId)) {
+                    successors.computeIfAbsent(requiredId, ignored -> new ArrayList<>()).add(id);
+                }
+            }
+        }
+        Set<String> reached = new HashSet<>();
+        Deque<String> pending = new ArrayDeque<>();
+        reached.add(orientationGoalId);
+        pending.add(orientationGoalId);
+        while (!pending.isEmpty()) {
+            for (String successor : successors.getOrDefault(pending.removeFirst(), List.of())) {
+                if (reached.add(successor)) pending.addLast(successor);
+            }
+        }
+        reached.remove(orientationGoalId);
+        return reached;
+    }
+
+    private boolean isOrientationOutlookCurricularAtomic(LearningGoal goal) {
+        if (!isAtomicGoal(goal) || "cluster".equalsIgnoreCase(goal.getType())
+                || isOrientationGoal(goal) || CompletionProfileCompiler.isAssessment(goal)
+                || CompletionProfileCompiler.isMemory(goal)
+                || (goal.getNodeKind() != null && !goal.getNodeKind().isBlank())) {
             return false;
         }
-        return goal.getRequires().stream()
-                .map(requirementRef -> resolveGoalRef(requirementRef, structuralGoals))
-                .anyMatch(requiredGoalId::equals);
+        // Current canonical ordinary atoms predate inline semanticKind. Explicit
+        // classifications always win over this existing structural encoding.
+        String kind = goal.getSemanticKind();
+        return kind == null || kind.isBlank() || "curricularAtomic".equals(kind.trim());
+    }
+
+    private String orientationOutlookStage(LearningGoal goal) {
+        if (goal == null) return null;
+        List<String> tags = Optional.ofNullable(goal.getTags()).orElse(List.of());
+        String phase = goal.getPhase();
+        if ((phase == null || phase.isBlank()) && goal.getDimensionTags() != null) {
+            phase = goal.getDimensionTags().getPhase();
+        }
+        String topic = goal.getDimensionTags() == null ? null : goal.getDimensionTags().getTopicCode();
+        boolean sek1 = tags.contains("phase:SekI") || (phase != null && phase.matches("J(?:[5-9]|10)"))
+                || (topic != null && topic.contains("SEK1"));
+        boolean sek2 = tags.contains("phase:SekII") || Set.of("E", "Q1", "Q2", "Q3", "Q4").contains(phase == null ? "" : phase)
+                || (topic != null && topic.contains("SEK2"));
+        return sek1 == sek2 ? null : sek1 ? "SekI" : "SekII";
     }
 
     private void collectResolvedDescendants(

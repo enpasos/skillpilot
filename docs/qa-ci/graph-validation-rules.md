@@ -62,7 +62,7 @@ prove the corrected model.
 | `GVR-012` | Hard scoped full-route coverage: every selected `curricularAtomic` goal must lie on a direct atomic `requires` path from its stage-specific `orientation` anchor to a stage-specific atomic `practiceAssessment` terminal. | Canonical DE Gymnasium mathematics, independently for Sek I and Sek II | unconditional `error` |
 | `GVR-013` | Configured scoped atomic-route profile: every direct local `requires` edge from a selected atomic route node must target an atomic node, not a cluster. | Profile-defined rollout scopes | `error` |
 | `GVR-014` | Motivation/orientation nodes are pure, prerequisite-free atomic entry anchors and must not carry exam, memory, example, or assessment metadata. | All loaded landscapes | unconditional `error` |
-| `GVR-015` | Reviewed orientation outlooks have bounded bilingual paths with in-stage `curricularArea` roots plus atomic `curricularAtomic` entry goals and milestones. Every entry directly requires the `orientation` anchor; `contains` proves path membership, while a direct, stage-scoped atomic `requires` route proves downstream sequencing. | Canonical DE Gymnasium mathematics, independently for Sek I and Sek II | unconditional `error` |
+| `GVR-015` | Reviewed orientation outlooks have bounded bilingual paths with in-stage `curricularArea` roots plus atomic `curricularAtomic` entry goals and milestones. `contains` proves path membership; a stage-scoped route of direct atomic `requires` edges from the `orientation` anchor proves downstream sequencing, including transitive entry routes. | Canonical DE Gymnasium mathematics, independently for Sek I and Sek II | unconditional `error` |
 | `GVR-016` | Table-like blocks in learner-facing exam Markdown must use a valid GFM delimiter row and a consistent column count. | All `examData.taskContent*` and `examData.solutionContent*` fields | unconditional `error` |
 
 ## Core validator checks (always active, fail CI)
@@ -324,10 +324,12 @@ four bounded bilingual paths. The anchor must be authoritatively classified as
 same canonical landscape and in the anchor's explicit stage scope. Subtree
 roots must be non-atomic `curricularArea` nodes; entries and milestones must be
 atomic `curricularAtomic` goals. Each bounded `entryGoalIds` allowlist must be
-contained in the respective path and each entry must directly require the
-orientation anchor. Runtime path activation uses only this build-validated
-allowlist; `milestoneGoalIds` remain learner-facing outlook content and never
-become transition authorization.
+contained in the respective path and each entry must be reachable from the
+orientation anchor through the scoped atomic route. A transitive route remains
+valid after redundant direct edges are removed. Runtime path activation uses
+only this build-validated allowlist and the ordinary current frontier;
+`milestoneGoalIds` remain learner-facing outlook content and never become
+transition authorization.
 
 The two graph proofs are deliberately separate. Authored `contains` edges prove
 only that an entry or milestone belongs to one of the path's reviewed fachliche subtrees.
@@ -345,9 +347,12 @@ milestones, or technical maintenance labels from silently reaching the coach.
 `GVR-015` validates the canonical authored map and intentionally does not claim
 that every referenced goal is a `target` in every jurisdiction/course-profile
 composition view. At runtime the coach outlook is intersected fail-closed with
-the learner's resolved `targetGoalIds`; goals visible only as
-`prerequisiteOnly` are excluded, and a path without a valid target entry or a
-valid target milestone is omitted. Transition selection uses the complete
+the learner's resolved `targetGoalIds` and current permitted focus. Every node
+of the runtime route must remain an atomic curricular target in the anchor's
+stage; missing, outside-focus, `prerequisiteOnly`, memory, assessment, cluster,
+and support intermediates cannot prove reach. A path without a valid target
+entry or a valid target milestone is omitted. The outlook describes the later
+learning path and does not make its entries immediately available. Transition selection uses the complete
 personalized frontier rather than the compact display options. It activates a
 reviewed path entry only when that entry is currently available. If none is
 available, orientation completion still succeeds, no active goal is set, and
