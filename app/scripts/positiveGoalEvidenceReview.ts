@@ -428,6 +428,7 @@ export function reviewPositiveGoalEvidenceConfig(
       goal,
       resourceState.digests,
       semanticKind,
+      relative(repoRoot, repoPath(configuredPath)).split(sep).join('/'),
     ))
     if (config.requireApproved && record.status !== 'approved') {
       errors.push(`${record.goalId}: configured scope requires an approved profile`)

@@ -13,6 +13,7 @@ import {
   stableGoalBookJson,
 } from './goalBookModel'
 import { fingerprintGoalForEvidence } from './goalEvidenceProfileModel'
+import { compatibleHistoricalReviewGoal } from './goalReviewContextCompatibility'
 import {
   buildGoalDescriptionCanonicalContext,
   fingerprintGoalDescriptionReviewInput,
@@ -834,7 +835,16 @@ const validateGoalDescriptionDualRoundResolutionBindingsInternal = async ({
     errors.push('Resolution dualSummary validationContract does not match the persisted dual summary')
   }
 
-  const currentBindings = validateCurrentGoalBindings({ resolution, currentInput, canonicalGoal })
+  // Revalidate both unchanged source rounds/resolution below against their exact
+  // original input. Only a registered, currently pinned contextual decision may
+  // supply that original canonical goal; missing D evidence still fails closed.
+  const historicalGoal = currentInput.goals.find(({ goalId }) => goalId === resolution.goal.goalId)
+  const changedContext = canonicalGoal && historicalGoal && stableGoalBookJson(historicalGoal.canonicalContext)
+    !== stableGoalBookJson(buildGoalDescriptionCanonicalContext(canonicalGoal))
+  const compatibleGoal = changedContext && compatibleHistoricalReviewGoal(canonicalGoal!, {
+    kind: 'description', resolution, currentInput, firstSource, secondSource,
+  })
+  const currentBindings = validateCurrentGoalBindings({ resolution, currentInput, canonicalGoal: compatibleGoal || canonicalGoal })
   errors.push(...currentBindings.errors)
   const summaryGoalMatches = dualSummary.goals.filter(({ goalId }) => goalId === resolution.goal.goalId)
   if (summaryGoalMatches.length !== 1) {

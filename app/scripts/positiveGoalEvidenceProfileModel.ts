@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto'
 import type { LearningGoal } from '../src/landscapeTypes'
+import { compatibleHistoricalReviewGoal } from './goalReviewContextCompatibility'
 import {
   fingerprintGoalForEvidence,
   goalEvidenceReviewInputPayload,
@@ -140,6 +141,7 @@ export function validatePositiveGoalEvidenceRecordSemantics(
   goal: LearningGoal | undefined,
   resourceDigests: Readonly<Record<string, string>> = {},
   effectiveSemanticKind?: string,
+  compatibilityConfigPath?: string,
 ): string[] {
   const errors: string[] = []
   if (!goal) return [`${record.goalId}: goal does not exist in the configured landscape`]
@@ -156,12 +158,18 @@ export function validatePositiveGoalEvidenceRecordSemantics(
     errors.push(`${record.goalId}: stale goalFingerprint; expected ${expectedGoalFingerprint}`)
   }
 
-  const expectedReviewInputFingerprint = fingerprintPositiveGoalEvidenceReviewInput(
+  let expectedReviewInputFingerprint = fingerprintPositiveGoalEvidenceReviewInput(
     goal,
     record.reviewCriteriaFingerprint,
     resourceDigests,
     effectiveSemanticKind,
   )
+  if (record.reviewInputFingerprint !== expectedReviewInputFingerprint) {
+    const compatible = compatibleHistoricalReviewGoal(goal, {
+      kind: 'positive', record, configPath: compatibilityConfigPath, resourceDigests,
+    })
+    if (compatible) expectedReviewInputFingerprint = fingerprintPositiveGoalEvidenceReviewInput(compatible, record.reviewCriteriaFingerprint, resourceDigests, effectiveSemanticKind)
+  }
   if (record.reviewInputFingerprint !== expectedReviewInputFingerprint) {
     errors.push(`${record.goalId}: stale reviewInputFingerprint; expected ${expectedReviewInputFingerprint}`)
   }
