@@ -861,6 +861,7 @@ const App: React.FC = () => {
             <LearnerView
               rootGoals={core.breadcrumbRootGoals}
               goalIndexAll={core.goalIndexAll}
+              canonicalGoalSources={core.prerequisiteGoalSources}
               getMastery={core.getMasteryValue}
               currentGoal={core.currentGoal}
               onSelectGoal={core.handleSelectAbsolute}

@@ -9,13 +9,21 @@ export { NODE_HEIGHT, NODE_WIDTH } from './layoutTypes'
 export type { LayoutDirection, LayoutPoint, LayoutPort, LearningLayoutOptions, LearningScopeLayout } from './layoutTypes'
 
 let worker: Promise<ELK> | undefined
-const cache = new WeakMap<LearningMapFixture, Map<string, Promise<LearningScopeLayout>>>()
+let cache = new WeakMap<LearningMapFixture, Map<string, Promise<LearningScopeLayout>>>()
 const MAX_LAYOUTS_PER_FIXTURE = 128
 
 function getWorker(): Promise<ELK> {
   worker ??= import('elkjs/lib/elk-api.js').then(({ default: Elk }) => new Elk({ workerUrl: elkWorkerUrl }))
     .catch(error => { worker = undefined; throw error })
   return worker
+}
+
+/** A retry after a dead/timed-out worker must not reuse its pending promise. */
+export function restartLearningScopeLayoutWorker(): void {
+  const previous = worker
+  worker = undefined
+  cache = new WeakMap()
+  void previous?.then(elk => elk.terminateWorker()).catch(() => undefined)
 }
 
 /** Coalesces async requests; selection/hover changes reuse the exact routed graph. */

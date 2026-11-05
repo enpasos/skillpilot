@@ -285,7 +285,7 @@ jobs:
 
   goal-book-publication:
     name: Learning-goal book build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         working-directory: app
@@ -347,7 +347,7 @@ jobs:
   frontend-ci:
     name: Application frontend CI
     needs: goal-book-publication
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         working-directory: app
@@ -440,6 +440,8 @@ jobs:
         run: npm run test:learner-learning-plans
       - name: Test quiet and bounded learner cockpit startup
         run: npm run test:learner-cockpit-startup
+      - name: Test native learner map and focused cockpit regression
+        run: npm run test:learner-map
       - name: Test read-only learning-goal book UI
         run: npm run test:goal-book-ui
       - name: Test compact completed session setup
@@ -458,6 +460,8 @@ jobs:
         run: npm run lint
       - name: Build application without regenerating curriculum assets
         run: npm run build:application
+      - name: Check optional learner map stays outside startup precache
+        run: npm run test:learner-map-build
       - name: Test service-worker update lifecycle
         run: npm run test:service-worker-update-lifecycle
       - name: Check AI transparency inventory
@@ -489,7 +493,7 @@ jobs:
   graph-validation:
     name: Curriculum CI
     needs: goal-book-publication
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         working-directory: app

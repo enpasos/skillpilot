@@ -33,7 +33,7 @@ Es gibt genau eine `LearnerView`. Hauptinhalt, Controller und Dialoge entspreche
 | Coachauswahl und Einrichtung | „Lernen starten“, danach Original-`SessionSetup`; Rückkehr über „Zum Cockpit“. |
 | Abmelden | Gewohntes Exit-Icon unten links. |
 
-Die Karte ersetzt vorerst weder sämtliche Fokusbedienelemente des Baums noch einen freigegebenen neuen Lerneinheitsgraphen. Beide Navigationsformen bleiben direkt erreichbar. Die optionalen Kartenprops werden ausschließlich von dieser lokalen Vorschau verwendet; ohne sie bleibt das Produkt-Cockpit beim bisherigen Baum.
+Die Karte ersetzt vorerst weder sämtliche Fokusbedienelemente des Baums noch einen freigegebenen neuen Lerneinheitsgraphen. Beide Navigationsformen bleiben direkt erreichbar. Diese Vorschau injiziert ihren lokalen Adapter über die optionalen Kartenprops. Die native Produktanbindung in PR #81 verwendet einen eigenen Adapter mit den tatsächlichen Cockpitdaten; der normale Produktstart bleibt beim Baum. Die Test-API dieser Vorschau wird dort nicht verwendet.
 
 ## Lokale Testgrenze
 

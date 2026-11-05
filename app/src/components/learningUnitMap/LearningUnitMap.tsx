@@ -6,11 +6,12 @@ import { Background, BackgroundVariant, MarkerType, MiniMap, ReactFlow, ReactFlo
 import '@xyflow/react/dist/style.css'
 import type { LearningEntryProgress, LearningMapCommand, LearningMapFixture } from './types'
 import { MapNode, type LearningFlowNode } from './MapNode'
-import { kindLabels } from './presentation'
+import { getKindLabels } from './presentation'
 import { useMapNavigation } from './useMapNavigation'
-import { layoutLearningScope, type LearningScopeLayout } from './layoutLearningScope'
+import { layoutLearningScope, restartLearningScopeLayoutWorker, type LearningScopeLayout } from './layoutLearningScope'
 import { ElkRoutedEdge } from './ElkRoutedEdge'
 import { mapEntryPath } from './mapEntryPath'
+import { getLearningScopeRelations } from './scopeRelations'
 import './learningUnitMap.css'
 
 const nodeTypes = { learningUnit: MapNode }
@@ -33,6 +34,8 @@ type MapProps = {
   onEntrySelect?: (entryId: string) => void
   onSelectionChange?: (entryId: string | null) => void
   renderSelectionActions?: (entryId: string) => ReactNode
+  onReturnToTree?: () => void
+  language?: 'de' | 'en'
 }
 
 function useReducedMotion() {
@@ -60,22 +63,34 @@ function useNarrowScreen() {
 function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = false,
   active = true, headingMode = 'standard', rootLabel,
   learnerProgress, activeGoalId, initialScopeId, command, showInspector = true, onEntrySelect,
-  onSelectionChange, renderSelectionActions }: MapProps) {
+  onSelectionChange, renderSelectionActions, onReturnToTree, language = 'de' }: MapProps) {
+  const label = (de: string, en: string) => language === 'en' ? en : de
+  const kindLabels = getKindLabels(language)
+  const MapContainer = embedded ? 'section' : 'main'
   const reducedMotion = useReducedMotion()
   const narrowScreen = useNarrowScreen()
   const flow = useReactFlow<LearningFlowNode>()
   const [direction, setDirection] = useState<'RIGHT' | 'DOWN'>('RIGHT')
   const [layout, setLayout] = useState<{ fixture: LearningMapFixture; key: string; data: LearningScopeLayout } | null>(null)
   const [layoutError, setLayoutError] = useState<string | null>(null)
-  const nav = useMapNavigation(fixture, reducedMotion, layout?.fixture === fixture ? layout.key : null, direction, initialScopeId, active)
+  const [layoutAttempt, setLayoutAttempt] = useState(0)
+  const mapContainer = useRef<HTMLElement>(null)
+  const mapSurface = useRef<HTMLDivElement>(null)
+  const nav = useMapNavigation(fixture, reducedMotion, layout?.fixture === fixture ? layout.key : null,
+    direction, initialScopeId, active, mapContainer, mapSurface)
   const { enter, goUp, goToDepth, goToScope } = nav
   const [selection, setSelection] = useState<{ scope: string; id: string } | null>(null)
   const [query, setQuery] = useState('')
   const [searchOpen, setSearchOpen] = useState(false)
+  const [contextTrail, setContextTrail] = useState<string[]>([])
+  const [contextLimit, setContextLimit] = useState(12)
   const searchInput = useRef<HTMLInputElement>(null)
-  const mapSurface = useRef<HTMLDivElement>(null)
   const pendingNodeFocus = useRef<{ id: string; center: boolean } | null>(null)
-  const pendingSelectionEcho = useRef<string | null>(null)
+  const pendingSelectionEcho = useRef<{ entryId: string; nonce: number; baselineKey: string | null } | null>(null)
+  // A newly mounted scope starts from its current selection; the supplied
+  // sequence may describe a historical reveal made before the map was opened.
+  const seenRevealNonce = useRef(command?.nonce ?? 0)
+  const pendingReveal = useRef<{ entryId: string; nonce: number; baselineSelectionId: string } | null>(null)
   const lastCommand = useRef<string | null>(null)
   const gestureTarget = useRef<string | null>(null)
   const gestureOnMap = useRef(true)
@@ -97,11 +112,15 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   useEffect(() => {
     if (!active) return
     let current = true
+    const timeout = window.setTimeout(() => {
+      if (current) { current = false; setLayoutError(language === 'en' ? 'Arranging the map is taking too long.' : 'Das Anordnen der Karte dauert zu lange.') }
+    }, 15000)
     void layoutLearningScope(fixture, nav.scopeId, direction).then(data => {
       if (current) { setLayout({ fixture, key: layoutKey, data }); setLayoutError(null) }
-    }).catch(() => { if (current) setLayoutError('Die Karte konnte nicht angeordnet werden. Bitte lade sie erneut.') })
-    return () => { current = false }
-  }, [active, fixture, nav.scopeId, direction, layoutKey])
+    }).catch(() => { if (current) setLayoutError(language === 'en' ? 'The map could not be arranged.' : 'Die Karte konnte nicht angeordnet werden.') })
+      .finally(() => window.clearTimeout(timeout))
+    return () => { current = false; window.clearTimeout(timeout) }
+  }, [active, fixture, nav.scopeId, direction, layoutKey, layoutAttempt, language])
 
   const highlight = useCallback((id: string) => {
     if (!visible.has(id)) return
@@ -110,23 +129,30 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const select = useCallback((id: string) => {
     if (!visible.has(id)) return
     pendingNodeFocus.current = null
-    pendingSelectionEcho.current = id
+    pendingReveal.current = null
+    // Local intent supersedes any still-routed baseline while its echo is pending.
+    if (command) lastCommand.current = `${command.nonce}:${command.entryId}`
+    setContextTrail([])
+    setContextLimit(12)
+    pendingSelectionEcho.current = { entryId: id, nonce: command?.nonce ?? 0,
+      baselineKey: command ? `${command.nonce}:${command.entryId}` : null }
     highlight(id)
     onEntrySelect?.(id)
-  }, [highlight, onEntrySelect, visible])
+  }, [highlight, onEntrySelect, visible, command])
   const open = useCallback((id: string) => {
     const entry = fixture.entries[id]
     if (!entry) return
-    if (entry.kind === 'unit' && entry.children?.length) {
+    if (entry.children?.length) {
       pendingNodeFocus.current = null
+      setContextTrail([])
       setSelection(null)
       enter(id)
     }
-    else select(id)
-  }, [fixture, enter, select])
+  }, [fixture, enter])
   const focusNode = useCallback((id: string, center = false) => {
     if (!visible.has(id)) return
     pendingNodeFocus.current = { id, center }
+    setContextTrail([])
     highlight(id)
     setSearchOpen(false)
   }, [highlight, visible])
@@ -136,13 +162,34 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   }, [focusNode, select])
 
   useEffect(() => {
-    // A controlled caller mirrors a map click back as its selected-goal command.
-    // Acknowledge that echo before navigation; a later explicit reveal remains
-    // a fresh command, including when it targets this same goal.
-    if (pendingSelectionEcho.current && command?.entryId === pendingSelectionEcho.current) {
-      lastCommand.current = `${command.nonce}:${command.entryId}`
+    if (!command) return
+    if (command.revealEntryId && seenRevealNonce.current !== command.nonce) {
+      // The requested target is authoritative even while the router still
+      // exposes the previous selection. A sequence is consumed only once.
+      seenRevealNonce.current = command.nonce
+      pendingReveal.current = { entryId: command.revealEntryId, nonce: command.nonce,
+        baselineSelectionId: command.entryId }
+      // Keep the eventual routed target echo separate from camera navigation:
+      // opening its children before that echo arrives must not jump back out.
+      pendingSelectionEcho.current = { entryId: command.revealEntryId, nonce: command.nonce,
+        baselineKey: `${command.nonce}:${command.entryId}` }
+    } else if (pendingReveal.current && (command.nonce !== pendingReveal.current.nonce
+      || (command.entryId !== pendingReveal.current.baselineSelectionId && command.entryId !== pendingReveal.current.entryId))) {
+      pendingReveal.current = null
     }
-    pendingSelectionEcho.current = null
+    const pending = pendingSelectionEcho.current
+    if (!pending) return
+    const key = `${command.nonce}:${command.entryId}`
+    // Local highlighting can commit before the concurrent router echoes the
+    // selection. Keep the intent across that unchanged old command, including
+    // a drill into its children. Only its actual echo is acknowledgement.
+    if (command.nonce === pending.nonce && command.entryId === pending.entryId) {
+      lastCommand.current = key
+      pendingSelectionEcho.current = null
+    } else if (command.nonce !== pending.nonce || key !== pending.baselineKey) {
+      // A fresh reveal (even of this same ID) or another external selection wins.
+      pendingSelectionEcho.current = null
+    }
   }, [command, selection])
 
   useEffect(() => { onSelectionChange?.(selectedId) }, [onSelectionChange, selectedId])
@@ -150,15 +197,18 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   useEffect(() => {
     if (!active || !command || nav.isTransitioning) return
     const key = `${command.nonce}:${command.entryId}`
-    if (lastCommand.current === key) return
-    const targetPath = mapEntryPath(fixture, command.entryId)
+    const reveal = pendingReveal.current
+    if (!reveal && lastCommand.current === key) return
+    const targetId = reveal?.entryId ?? command.entryId
+    const targetPath = mapEntryPath(fixture, targetId)
     // A temporarily hydrating projection may not contain the command yet.
     if (!targetPath) return
     const ownerId = targetPath.length > 1 ? targetPath[targetPath.length - 2] : fixture.rootId
     if (ownerId !== nav.scopeId) { goToScope(ownerId); return }
     const frame = requestAnimationFrame(() => {
       lastCommand.current = key
-      if (command.entryId !== fixture.rootId) focusNode(command.entryId)
+      if (pendingReveal.current === reveal) pendingReveal.current = null
+      if (targetId !== fixture.rootId) focusNode(targetId)
     })
     return () => cancelAnimationFrame(frame)
   }, [active, command, fixture, nav.isTransitioning, nav.scopeId, goToScope, focusNode])
@@ -197,17 +247,18 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     return () => { cancelAnimationFrame(frame); cancelAnimationFrame(secondFrame) }
   }, [selection, selectedId, flow, reducedMotion, nav.isTransitioning, showInspector])
 
+  const scopeRelations = useMemo(() => getLearningScopeRelations(fixture, nav.scopeId), [fixture, nav.scopeId])
+  const relationByEndpoints = useMemo(() => new Map(scopeRelations.map(relation =>
+    [`${relation.source}\u0000${relation.target}`, relation])), [scopeRelations])
   const connections = useMemo(() => {
     const incoming = new Map<string, string[]>()
     const outgoing = new Map<string, string[]>()
-    visibleIds.forEach(id => {
-      incoming.set(id, fixture.entries[id].requires.filter(ref => visible.has(ref)))
-      fixture.entries[id].requires.filter(ref => visible.has(ref)).forEach(ref => {
-        outgoing.set(ref, [...(outgoing.get(ref) ?? []), id])
-      })
+    scopeRelations.forEach(({ source, target }) => {
+      incoming.set(target, [...(incoming.get(target) ?? []), source])
+      outgoing.set(source, [...(outgoing.get(source) ?? []), target])
     })
     return { incoming, outgoing }
-  }, [fixture, visible, visibleIds])
+  }, [scopeRelations])
   const related = useMemo(() => new Set(selectedId ? [selectedId,
     ...(connections.incoming.get(selectedId) ?? []), ...(connections.outgoing.get(selectedId) ?? [])] : []), [connections, selectedId])
 
@@ -216,32 +267,41 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     return { id, type: 'learningUnit', position: activeLayout.positions[id],
       width: 220, height: 72, draggable: false, selectable: false,
       data: { entry, childCount: entry.children?.length ?? 0,
-        outsideCount: entry.requires.filter(ref => !visible.has(ref)).length,
+        outsideCount: fixture.scopeContext
+          ? new Set(fixture.scopeContext[nav.scopeId]?.[id]?.map(context => context.requiredGoalId)).size
+          : entry.requires.filter(ref => !visible.has(ref)).length,
         ports: activeLayout.ports[id], active: selectedId === id,
-        progress: learnerProgress?.[id], activeLearningGoal: activeGoalId === id,
+        progress: learnerProgress?.[id], activeLearningGoal: activeGoalId === id, language,
         related: selectedId !== id && related.has(id), muted: !!selectedId && !related.has(id),
-        onFocus: highlight, onSelect: select, onOpen: open } }
-  }) : [], [activeLayout, fixture, visible, visibleIds, selectedId, related, highlight, select, open, learnerProgress, activeGoalId])
+        onSelect: select, onOpen: open } }
+  }) : [], [activeLayout, fixture, nav.scopeId, visible, visibleIds, selectedId, related, select, open, learnerProgress, activeGoalId, language])
 
   const edges = useMemo<Edge[]>(() => activeLayout?.edges.map(edge => {
     const highlighted = edge.source === selectedId || edge.target === selectedId
     const color = highlighted ? '#2870b0' : '#9aa4ae'
+    const summary = relationByEndpoints.get(`${edge.source}\u0000${edge.target}`)?.kind === 'summary'
     return { ...edge, type: 'routed', data: { points: edge.points },
       markerEnd: { type: MarkerType.ArrowClosed, width: 11, height: 11, color },
-      style: { stroke: color, strokeWidth: highlighted ? 1.8 : 1.1,
+      style: { stroke: color, strokeWidth: highlighted ? 1.8 : 1.1, strokeDasharray: summary ? '5 4' : undefined,
         opacity: selectedId && !highlighted ? 0.13 : 1 },
       zIndex: highlighted ? 2 : 0,
-      ariaLabel: `${fixture.entries[edge.source].title} bereitet auf ${fixture.entries[edge.target].title} vor`,
+      ariaLabel: summary ? `${fixture.entries[edge.source].title} → ${fixture.entries[edge.target].title}: ${language === 'en' ? 'summarized atomic prerequisites, context' : 'zusammengefasste atomare Voraussetzungen, Kontext'}`
+        : language === 'en' ? `${fixture.entries[edge.source].title} prepares for ${fixture.entries[edge.target].title}`
+          : `${fixture.entries[edge.source].title} bereitet auf ${fixture.entries[edge.target].title} vor`,
     }
-  }) ?? [], [activeLayout, fixture, selectedId])
+  }) ?? [], [activeLayout, fixture, selectedId, relationByEndpoints, language])
 
   useEffect(() => {
     if (!active) return
     const keys = (event: KeyboardEvent) => {
-      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'f') {
+      if (!(event.target instanceof Node) || !mapContainer.current?.contains(event.target)) return
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'f' && searchInput.current) {
         event.preventDefault(); searchInput.current?.focus(); setSearchOpen(true)
+      } else if (event.shiftKey && event.key === 'ArrowUp' && event.target instanceof Node
+        && mapSurface.current?.contains(event.target)) {
+        event.preventDefault(); goUp()
       } else if (event.key === 'Escape') {
-        if (searchOpen) { setSearchOpen(false); searchInput.current?.blur() }
+        if (searchOpen) { setSearchOpen(false); mapSurface.current?.focus({ preventScroll: true }) }
         else if (selectedId) setSelection(null)
         else goUp()
       }
@@ -268,8 +328,23 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     return visibleIds.filter(id => !text || fixture.entries[id].title.toLocaleLowerCase('de').includes(text))
   }, [fixture, query, visibleIds])
   const contextEntries = inspected?.requires.filter(id => !visible.has(id) && fixture.entries[id]).map(id => fixture.entries[id]) ?? []
+  const selectedRelations = selectedId ? scopeRelations.filter(relation => relation.source === selectedId || relation.target === selectedId) : []
+  const selectedOutside = selectedId ? fixture.scopeContext?.[nav.scopeId]?.[selectedId] ?? [] : []
+  const contextTitle = (id: string) => fixture.entries[id]?.title ?? fixture.contextGoalTitles?.[id] ?? id
+  // Follow original hidden prerequisites one step at a time. These records are
+  // deliberately never fed back into the board's directed edges or progress.
+  const inspectedContextId = contextTrail[contextTrail.length - 1]
+  const inspectedContext = inspectedContextId ? fixture.getRequirementContext?.(inspectedContextId) ?? [] : []
+  const explainRequirements = (requirements: typeof selectedOutside) => requirements.slice(0, contextLimit).map((requirement, index) =>
+    <div className="lum-requirement-row" key={`${requirement.dependentGoalId}:${requirement.requiredGoalId}:${requirement.authoredOnGoalId ?? ''}:${index}`}>
+      <p><strong>{contextTitle(requirement.dependentGoalId)}</strong> {label('benötigt', 'requires')} <strong>{contextTitle(requirement.requiredGoalId)}</strong>.</p>
+      <small>{requirement.inherited ? `${label('Übernommen', 'Inherited')}${requirement.authoredOnGoalId ? ` ${label('aus', 'from')} „${contextTitle(requirement.authoredOnGoalId)}“` : ` ${label('aus vorhandenen Voraussetzungen', 'from existing prerequisites')}`}. ` : ''}
+        {requirement.sourceGoalIds.length} {label(`atomare Vorbereitung${requirement.sourceGoalIds.length === 1 ? '' : 'en'}`, `atomic prerequisite${requirement.sourceGoalIds.length === 1 ? '' : 's'}`)}{requirement.unresolved ? label(' · Quelldaten unvollständig', ' · incomplete source data') : ''}.</small>
+      {fixture.getRequirementContext && contextTrail.length < 8 && !contextTrail.includes(requirement.requiredGoalId)
+        && <button type="button" onClick={() => { setContextLimit(12); setContextTrail(current => [...current, requirement.requiredGoalId]) }}>{label('Vorbereitung ansehen:', 'Inspect prerequisites:')} {contextTitle(requirement.requiredGoalId)}</button>}
+    </div>)
 
-  return <main className={`lum-app${embedded ? ' lum-app--embedded' : ''}${headingMode === 'context' ? ' lum-app--contextual' : ''}`}>
+  return <MapContainer ref={mapContainer} className={`lum-app${embedded ? ' lum-app--embedded' : ''}${headingMode === 'context' ? ' lum-app--contextual' : ''}`}>
     {!embedded && <header className="lum-topbar">
       <button type="button" className="lum-brand" onClick={() => goToDepth(0)} aria-label="Lernkarte Übersicht">
         <Compass size={19} strokeWidth={1.7} /><strong>SkillPilot</strong><span>Lernkarte</span>
@@ -281,37 +356,37 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     </header>}
     {showLocationBar && <div className="lum-location-bar">
       {(headingMode === 'standard' || nav.path.length > 1) && <button type="button" className="lum-back" disabled={nav.path.length === 1 || nav.isTransitioning}
-        onClick={goUp} title="Eine Ebene auftauchen · Shift + Doppelklick" aria-label="Eine Ebene auftauchen"><ArrowLeft size={17} /></button>
+        onClick={goUp} title={label('Eine Ebene auftauchen · Shift + Doppelklick', 'Go up one level · Shift + double-click')} aria-label={label('Eine Ebene auftauchen', 'Go up one level')}><ArrowLeft size={17} /></button>
       }
-      {breadcrumbPath.length > 0 && <nav className="lum-breadcrumb" aria-label="Aktuelle Kartenebene">
+      {breadcrumbPath.length > 0 && <nav className="lum-breadcrumb" aria-label={label('Aktuelle Kartenebene', 'Current map level')}>
         {breadcrumbPath.map((id, depth) => <span key={id}>
           {depth > 0 && <ChevronRight size={12} />}
           <button type="button" onClick={() => goToDepth(depth)} disabled={nav.isTransitioning}
             title={fixture.entries[id].title} aria-current={depth === nav.path.length - 1 ? 'page' : undefined}>
-            {depth === 0 ? headingMode === 'context' ? rootLabel ?? fixture.entries[id].title : 'Übersicht' : fixture.entries[id].title}
+            {depth === 0 ? headingMode === 'context' ? rootLabel ?? fixture.entries[id].title : label('Übersicht', 'Overview') : fixture.entries[id].title}
           </button>
         </span>)}
       </nav>}
       {extendedTools && <div className="lum-search"><Search size={15} />
-        <input ref={searchInput} aria-label="In dieser Ebene suchen" placeholder="In dieser Ebene suchen"
+        <input ref={searchInput} aria-label={label('In dieser Ebene suchen', 'Search this level')} placeholder={label('In dieser Ebene suchen', 'Search this level')}
           value={query} onFocus={() => setSearchOpen(true)} onChange={event => { setQuery(event.target.value); setSearchOpen(true) }}
           onKeyDown={event => { if (event.key === 'Enter' && matches[0]) { event.preventDefault(); selectSearchResult(matches[0]) } }} />
-        {query && <button type="button" aria-label="Suche leeren" onClick={() => { setQuery(''); searchInput.current?.focus() }}><X size={13} /></button>}
-        {searchOpen && <div className="lum-search-results" role="listbox" aria-label="Suchtreffer">
+        {query && <button type="button" aria-label={label('Suche leeren', 'Clear search')} onClick={() => { setQuery(''); searchInput.current?.focus() }}><X size={13} /></button>}
+        {searchOpen && <div className="lum-search-results" role="listbox" aria-label={label('Suchtreffer', 'Search results')}>
           {matches.slice(0, 8).map(id => <button key={id} type="button" role="option" aria-selected={selectedId === id}
             onClick={() => selectSearchResult(id)}>{fixture.entries[id].title}<span>{kindLabels[fixture.entries[id].kind]}</span></button>)}
-          {!matches.length && <p>Keine Treffer in dieser Ebene.</p>}
-          {matches.length > 8 && <small>{matches.length} Treffer · Suche eingrenzen</small>}
+          {!matches.length && <p>{label('Keine Treffer in dieser Ebene.', 'No matches in this level.')}</p>}
+          {matches.length > 8 && <small>{matches.length} {label('Treffer · Suche eingrenzen', 'matches · narrow your search')}</small>}
         </div>}
       </div>}
       {extendedTools && <button type="button" className="lum-direction" onClick={() => setDirection(value => value === 'RIGHT' ? 'DOWN' : 'RIGHT')}
-        aria-label="Lernrichtung drehen" title={direction === 'RIGHT' ? 'Von links nach rechts · zum Drehen klicken' : 'Von oben nach unten · zum Drehen klicken'}>
+        aria-label={label('Lernrichtung drehen', 'Rotate learning direction')} title={direction === 'RIGHT' ? label('Von links nach rechts · zum Drehen klicken', 'Left to right · click to rotate') : label('Von oben nach unten · zum Drehen klicken', 'Top to bottom · click to rotate')}>
         {direction === 'RIGHT' ? <ArrowRight size={17} /> : <ArrowDown size={17} />}
       </button>}
     </div>}
     <div className="lum-workspace">
       <section className="lum-canvas" data-testid="learning-map-board" data-scope-id={nav.scopeId}
-        aria-label={`Lernkarte: ${scopeTitle}`} aria-busy={nav.isTransitioning}
+        aria-label={`${label('Lernkarte', 'Learning map')}: ${scopeTitle}`} aria-busy={nav.isTransitioning}
         onWheelCapture={event => { setGestureTarget(event.target); nav.recordGesture(-event.deltaY) }}
         onTouchStartCapture={event => {
           setGestureTarget(event.target)
@@ -327,7 +402,33 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
         <div className="lum-map-summary"><h1>{scopeTitle}</h1>
           {headingMode === 'standard' && <span>{visibleIds.length} Bereiche · {activeLayout?.edges.length ?? '…'} Verbindungen</span>}
         </div>
-        <div ref={mapSurface} className={`lum-flow lum-flow--${nav.phase}`} onDoubleClickCapture={event => {
+        {fixture.scopeRelations && <details className="lum-requirement-context" data-testid="learning-map-requirement-context">
+          <summary>{label('Verbindungen und Voraussetzungen', 'Connections and prerequisites')}{selectedId ? ` · ${contextTitle(selectedId)}` : ''}</summary>
+          <div className="lum-requirement-body">
+            <p>{label('Pfeile führen von der Vorbereitung zur Anwendung. Gestrichelte Pfeile fassen einzelne Anforderungen zusammen; sie beschreiben Zusammenhänge zwischen Bereichen.', 'Arrows lead from preparation to application. Dashed arrows summarize individual requirements and provide context between sections.')}</p>
+            {inspectedContextId ? <>
+              <button type="button" onClick={() => { setContextLimit(12); setContextTrail(current => current.slice(0, -1)) }}>{label('Zurück', 'Back')}</button>
+              <h2>{label('Vorbereitung von', 'Prerequisites for')} {contextTitle(inspectedContextId)}</h2>
+              {explainRequirements(inspectedContext)}
+              {!inspectedContext.length && <p>{label('Keine weiteren Voraussetzungen in den verfügbaren Quelldaten.', 'No further prerequisites in the available source data.')}</p>}
+            </> : <>
+              {selectedRelations.slice(0, contextLimit).map(relation => <div key={`${relation.source}:${relation.target}`}>
+                <h2>{contextTitle(relation.source)} → {contextTitle(relation.target)}{relation.kind === 'summary' ? label(' · Zusammenfassung', ' · Summary') : ''}</h2>
+                {explainRequirements(relation.provenance)}
+              </div>)}
+              {selectedOutside.length > 0 && <><h2>{label('Vorbereitung außerhalb dieser Ebene', 'Prerequisites outside this level')}</h2>{explainRequirements(selectedOutside)}</>}
+              {selectedId && !selectedRelations.length && !selectedOutside.length && <p>{label('Keine Verbindungen außerhalb dieses Bereichs in dieser Ebene.', 'No connections outside this section at this level.')}</p>}
+              {!selectedId && <p>{label('Wähle einen Bereich oder ein Lernziel, um die Herkunft seiner Voraussetzungen zu sehen.', 'Select a section or learning goal to inspect the origin of its prerequisites.')}</p>}
+              {selectedId && fixture.getRequirementContext && <button type="button" onClick={() => {
+                setContextLimit(12); setContextTrail([selectedId])
+              }}>{label('Ursprüngliche Voraussetzungen ansehen', 'Inspect original prerequisites')}</button>}
+            </>}
+            {(inspectedContextId ? inspectedContext.length > contextLimit : selectedRelations.length > contextLimit
+              || selectedOutside.length > contextLimit || selectedRelations.some(relation => relation.provenance.length > contextLimit))
+              && <button type="button" onClick={() => setContextLimit(value => value + 12)}>{label('Weitere Einträge anzeigen', 'Show more entries')}</button>}
+          </div>
+        </details>}
+        <div ref={mapSurface} tabIndex={-1} className={`lum-flow lum-flow--${nav.phase}`} onDoubleClickCapture={event => {
           if (!event.shiftKey) return
           event.preventDefault()
           event.stopPropagation()
@@ -347,16 +448,19 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
               maskColor="rgba(245,247,249,0.75)" ariaLabel="Übersichtskarte" />}
           </ReactFlow>
         </div>
-        {layoutError && <div className="lum-layout-error" role="alert">{layoutError}</div>}
-        {!activeLayout && !layoutError && <div className="lum-loading" role="status">Karte wird angeordnet…</div>}
-        <div className="lum-map-controls" aria-label="Kartensteuerung" onPointerDownCapture={() => { gestureOnMap.current = false }}>
-          <button type="button" onClick={() => void flow.zoomOut({ duration: reducedMotion ? 0 : 150 })} aria-label="Karte verkleinern"><Minus size={16} /></button>
-          <span aria-label="Zoomwert">{Math.round(nav.zoom * 100)} %</span>
-          <button type="button" onClick={() => void flow.zoomIn({ duration: reducedMotion ? 0 : 150 })} aria-label="Karte vergrößern"><Plus size={16} /></button>
+        {layoutError && <div className="lum-layout-error" role="alert" data-testid="learner-map-layout-error"><p>{layoutError}</p>
+          <button type="button" onClick={() => { restartLearningScopeLayoutWorker(); setLayoutError(null); setLayoutAttempt(value => value + 1) }}>{label('Erneut versuchen', 'Try again')}</button>
+          {onReturnToTree && <button type="button" onClick={onReturnToTree}>{label('Zum Baum wechseln', 'Return to tree')}</button>}
+        </div>}
+        {!activeLayout && !layoutError && <div className="lum-loading" role="status">{label('Karte wird angeordnet…', 'Arranging map…')}</div>}
+        <div className="lum-map-controls" aria-label={label('Kartensteuerung', 'Map controls')} onPointerDownCapture={() => { gestureOnMap.current = false }}>
+          <button type="button" onClick={() => void flow.zoomOut({ duration: reducedMotion ? 0 : 150 })} aria-label={label('Karte verkleinern', 'Zoom out')}><Minus size={16} /></button>
+          <span aria-label={label('Zoomwert', 'Zoom level')}>{Math.round(nav.zoom * 100)} %</span>
+          <button type="button" onClick={() => void flow.zoomIn({ duration: reducedMotion ? 0 : 150 })} aria-label={label('Karte vergrößern', 'Zoom in')}><Plus size={16} /></button>
           <span className="lum-control-divider" />
-          <button type="button" onClick={() => void flow.fitView({ padding: 0.16, maxZoom: 1.1, duration: reducedMotion ? 0 : 200 })} aria-label="Diese Ebene einpassen" title="Gesamte Ebene einpassen"><Expand size={16} /></button>
+          <button type="button" onClick={() => void flow.fitView({ padding: 0.16, maxZoom: 1.1, duration: reducedMotion ? 0 : 200 })} aria-label={label('Diese Ebene einpassen', 'Fit this level')} title={label('Gesamte Ebene einpassen', 'Fit entire level')}><Expand size={16} /></button>
         </div>
-        <span className="lum-map-hint">{direction === 'RIGHT' ? '→' : '↓'} Vorbereitung zur Anwendung<span> · Doppelklick hinein · Shift + Doppelklick heraus</span></span>
+        <span className="lum-map-hint">{direction === 'RIGHT' ? '→' : '↓'} {label('Vorbereitung zur Anwendung', 'Preparation to application')}<span> · {label('Doppelklick hinein · Shift + Doppelklick heraus', 'Double-click in · Shift + double-click out')}</span></span>
       </section>
       {showInspector && inspected && <aside className="lum-inspector" aria-label="Ausgewählter Bereich">
         <div className="lum-inspector-top"><span>{inspected.eyebrow ?? kindLabels[inspected.kind]}</span>
@@ -367,8 +471,8 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
           <span>{learnerProgress[inspected.id].explicit} direkt · {learnerProgress[inspected.id].implicit} implizit</span>
         </div>}
         {renderSelectionActions && <div className="lum-selection-actions">{renderSelectionActions(inspected.id)}</div>}
-        {inspected.kind === 'unit' && inspected.children?.length ? <button type="button" className="lum-enter" disabled={nav.isTransitioning}
-          onClick={() => open(inspected.id)}>Einheit öffnen <ArrowUpRight size={16} /></button> : null}
+        {inspected.children?.length ? <button type="button" className="lum-enter" disabled={nav.isTransitioning}
+          onClick={() => open(inspected.id)}>{inspected.kind === 'unit' ? 'Einheit öffnen' : 'Bereich öffnen'} <ArrowUpRight size={16} /></button> : null}
         <div className="lum-relations">
           <h3>Vorbereitungen <span>{connections.incoming.get(inspected.id)?.length ?? 0}</span></h3>
           {(connections.incoming.get(inspected.id) ?? []).map(id => <button type="button" key={id} onClick={() => selectSearchResult(id)}>{fixture.entries[id].title}<ChevronRight size={13} /></button>)}
@@ -381,8 +485,8 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
         </div>
       </aside>}
     </div>
-    <div className="lum-sr-only" role="status" aria-live="polite">{scope.title}, Ebene {nav.path.length}, {visibleIds.length} Bereiche.</div>
-  </main>
+    <div className="lum-sr-only" role="status" aria-live="polite">{scopeTitle}, {label('Ebene', 'level')} {nav.path.length}, {visibleIds.length} {label('Bereiche', 'sections')}.</div>
+  </MapContainer>
 }
 
 export function LearningUnitMap(props: MapProps) {

@@ -89,4 +89,9 @@ assert.ok(
   'large learning-goal publications must stay outside the application-shell precache',
 )
 
+assert.ok(serviceWorkerPrecacheGlobIgnores.includes('assets/LearnerGoalNavigationMap-*.{js,css}'),
+  'optional native map chunks must not download through the shell precache')
+assert.ok(serviceWorkerPrecacheGlobIgnores.includes('assets/elk-worker*.{js,css}'),
+  'ELK worker, URL wrapper and generated CSS must stay outside shell precaching')
+
 console.log('Service-worker navigation and silent lifecycle policy passed.')
