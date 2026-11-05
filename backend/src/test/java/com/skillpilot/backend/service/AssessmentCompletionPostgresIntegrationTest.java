@@ -234,10 +234,10 @@ class AssessmentCompletionPostgresIntegrationTest {
     @Test
     void coordinatedReadRetainsItsExistingWritableLockedTransaction() {
         var result = coordinator.read(sessionId, context -> {
-            assertSqlTransaction("read committed", "off");
+            assertSqlTransaction("repeatable read", "off");
             Long transaction = jdbc.queryForObject("SELECT txid_current()", Long.class);
             var state = learners.getCoachLearnerState(context.skillpilotId());
-            assertSqlTransaction("read committed", "off");
+            assertSqlTransaction("repeatable read", "off");
             assertThat(jdbc.queryForObject("SELECT txid_current()", Long.class)).isEqualTo(transaction);
             assertThat(state.levelCompletion().learnerRevision()).isEqualTo(context.stateVersion());
             return state;
