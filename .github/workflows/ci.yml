@@ -747,7 +747,8 @@ jobs:
           cd ..
           bash -n \
             scripts/provision_pinned_fwu_ontology.sh \
-            scripts/run_curriculum_release_model_conformance.sh
+            scripts/run_curriculum_release_model_conformance.sh \
+            scripts/run_learning_units_package_conformance.sh
       - name: Validate Curriculum Package Contracts
         env:
           SKILLPILOT_SOURCE_PDF_MODE: committed-bindings
@@ -760,8 +761,11 @@ jobs:
           python -B scripts/validate_full_standalone_curriculum_package.py --self-test
           python -B scripts/provision_curriculum_package.py self-test
           python -B scripts/run_package_consumer_smoke.py --self-test
+          python3 -B scripts/test_learning_unit_package_conformance_plan.py
           SKILLPILOT_FULL_PACKAGE_CONFORMANCE=false \
-            bash scripts/run_curriculum_release_model_conformance.sh
+            bash scripts/run_learning_units_package_conformance.sh \
+              --producer-profile contracts/curriculum-package/v1.2/profiles/de-gymnasium-mathematik-learning-unit-offers-release-model-v2.profile.json \
+              --work-dir "tmp/curriculum-release-model/conformance-runs/current-v3-model-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
       - name: Test portable curriculum symlinks
         working-directory: .
         run: python -B scripts/test_validate_schemas_symlinks.py -v
