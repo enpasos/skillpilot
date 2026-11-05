@@ -25,7 +25,7 @@ vollständige Mathematik-Umsetzung. Ein erster Vertrag ist ein Zwischenergebnis.
 | --- | --- | --- |
 | S2 | Gebundener Skalarprodukt-/Projektionsvertrag mit zwei eigenen Zielen, unabhängiger KI-Inhaltsprüfung und unverändertem Prüfungsanspruch; native Prüfung aller 182 Angebote ohne Target-/Q-/K-/Supportdelta, Einheit in genau 42 passenden Angeboten. Daten und Quellen in `8481434d48` gesichert. | Eine erste Einheit ist kein vollständiger Mathematikabschluss. |
 | S3 | Gemeinsame Runtime-, Cockpit-, Coach-, Frontier- und Planintegration in `f5a61af0dd` gesichert und gepusht. 257 lokale Backendtests in 18 Suiten bestanden. Der tatsächliche äußere Datenbanksnapshot für WebGUI und Provider wurde in `1509ba001e` ergänzt und mit HTTP-/JDBC-Prüfungen belegt. | Exakte terminale Kandidaten-CI, abschließendes Integrationsreview sowie Produktions-/Rückrollpreflight. Die neue Semantik braucht einen abgestimmten Claude-Skill. Deployment und echte Hostabnahme sind gesonderte Nachweise. |
-| S4 | [Angebotsinventar](learning-units-mathematics-offering-inventory.md): 182 Konfigurationen und 807 ursprüngliche Fachkompetenzen. 21 unabhängig inhaltlich geprüfte Einheiten mit 27 dieser Kompetenzen bestehen den [aktuellen nativen Angebotsabgleich](learning-units-mathematics-current-offers-v6-native-proof.json). Der [neue Paketnachweis mit allen 21 Einheiten](learning-units-mathematics-twenty-one-unit-package-proof.json) umfasst tatsächliche Installation, dieselben 182 Projektionen und alle 15 isolierten Verbrauchertests. | Die übrigen 780 Kompetenzen und die verbliebenen Scopevarianten fachlich binden; zwölf bestehende Hierarchiefälle einschließlich gespeicherter Fokusreferenzen korrigieren; vollständige Karten-/Sprach-/Angebotsbindung und aktuelle QA-/M7-/Releaseabnahme nachweisen. |
+| S4 | [Angebotsinventar](learning-units-mathematics-offering-inventory.md): 182 Konfigurationen und 807 ursprüngliche Fachkompetenzen. 21 unabhängig inhaltlich geprüfte Einheiten mit 27 dieser Kompetenzen bestehen den [aktuellen nativen Angebotsabgleich V7](learning-units-mathematics-current-offers-v7-native-proof.json). Der [Paketnachweis mit allen 21 Einheiten](learning-units-mathematics-twenty-one-unit-package-proof.json) umfasst die tatsächliche Installation des getrennt eingefrorenen Paketstands, dieselben 182 Projektionen und alle 15 isolierten Verbrauchertests. | Die übrigen 780 Kompetenzen und die verbliebenen Scopevarianten fachlich binden; zwölf bestehende Hierarchiefälle einschließlich gespeicherter Fokusreferenzen korrigieren; vollständige Karten-/Sprach-/Angebotsbindung und aktuelle QA-/M7-/Releaseabnahme nachweisen. |
 
 Der fixierte Angebotsnenner umfasst die Vereinigungsmenge aus 140 nativen
 Planner-Konfigurationen und 154 GUI-Konfigurationen mit 112 gemeinsamen
@@ -86,6 +86,26 @@ Zielbedeutungen und vollständigen transitiven Voraussetzungen bleiben erhalten.
 Die getrennten [Mutationstests](learning-units-mathematics-stable-offer-mutation-proof.json)
 belegen die Unabhängigkeit von Laufzeitdiagnostik und aktuellem Katalogzeiger,
 während Inhalts-, Ownership- und Scopeänderungen weiterhin erkannt werden.
+
+Der anschließende [V7-Nachweis](learning-units-mathematics-current-offers-v7-native-proof.json)
+bindet die Typkorrekturen dreier Projektionsadapter an den aktuellen Quellstand.
+Ihr erzeugtes JavaScript bleibt gleich; alle übrigen Projektionsdaten stimmen
+mit V6 überein. Nach der Katalogumstellung wurden tatsächlich erneut alle 182
+Angebote und 1.726 Einheits-/Angebotspaare geprüft. Alle 21 Verträge sind gültig;
+leeres explizites M erzeugt kein I. Eigene bestandene Prüfungen erkennen exakt
+die eigenen gewöhnlichen Ziele an; gewöhnliche Ziele allein bestehen keine
+offene Prüfung. Die 648 Quellbindungen und 130 Katalogeingaben wurden zusätzlich
+unabhängig nachgeprüft. V6 und die eingefrorenen Paketbelege bleiben unverändert;
+dieser native Nachweis ist keine neue Paket-, M7- oder Hostabnahme.
+
+Die neue vollständige Quellenprüfung verwendet alle 807 tatsächlich angebotenen
+gewöhnlichen Ziele anstelle einer kleineren nationalen Rohsicht. Dabei bestehen
+14 von 16 Länderabgleichen; offen sind drei Bremer Ziel-/Quellenbindungen und
+sieben schleswig-holsteinische Quelleneinträge ohne passendes angebotenes Ziel.
+Die ursprünglichen 9.978 Quelleneinträge bleiben vollständig im Nenner. Die
+verbleibenden Befunde werden geprüft; bis zur fachlich belegten Korrektur wird
+kein vollständiges M7 behauptet. Dies ist von den technisch bestandenen
+Angebots- und Anerkennungsprüfungen zu unterscheiden.
 
 Drei geprüfte Kandidaten bleiben zurückgestellt: Bei einer Ableitungsaufgabe
 müssen die wesentlichen Diagrammdateien vollständig an Aufgabe und Auslieferung
