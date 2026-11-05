@@ -10,6 +10,8 @@ vollständige Mathematik-Umsetzung. Ein erster Vertrag ist ein Zwischenergebnis.
 - Basis: `main` nach Merge von [PR #81](https://github.com/enpasos/skillpilot/pull/81),
   Commit `0ce5a8d791eeb9783a919195fd8590bfb79f3595`.
 - Neuer Arbeitsbranch: `feat/mathematics-learning-units`.
+- Neuer Draft-PR: [#82](https://github.com/enpasos/skillpilot/pull/82).
+  Erster gesicherter Plancheckpoint: `f7842358a486a8d19cd3dd6fdd85f8243d0e6767`.
 - S1 ergänzt die Lernkarte im vollständigen Cockpit. Die erforderliche CI des
   Kandidaten bestand; der Owner meldet den laufenden Rollout. Dessen Smoke-Test
   und eine echte Coach-Hostabnahme sind damit noch nicht nachgewiesen.
@@ -23,11 +25,14 @@ vollständige Mathematik-Umsetzung. Ein erster Vertrag ist ein Zwischenergebnis.
 | --- | --- | --- |
 | S2 | Präzise bestehende Skalarprodukt-/Projektionskompetenz, eigenes Prüfungsziel, Erwerbszuordnung und unveränderlichen Aufgabenanspruch prüfen. | Veröffentlichten Vertrag mit vollständiger Quellenbindung und unabhängiger Inhaltsprüfung. |
 | S3 | Gemeinsamen Compiler und M-only-Evaluator, Eigentumsbindung und Katalogzulassung aufbauen. | Produktive gemeinsame Anerkennung in Frontier, Cockpit, Coach und Planung; Performance-/Regressionsabnahme. |
-| S4 | Tatsächliche native Mathematikangebote über Backend, Planner und übrige GUI-Einstiege inventarisieren; passende Bausteine aus PR #79 prüfen. | Vollständige Einheits-, Aufgaben- und Kartenabdeckung aller angebotenen Mathematikumfänge und deren aktuelle QA. |
+| S4 | [Angebotsinventar](learning-units-mathematics-offering-inventory.md) frisch gemessen: 182 Einstiegskonfigurationen, 978 atomare Ziele, darunter 807 curriculare Ziele. Bausteine aus PR #79 indexiert. | Vollständige Einheits-, Aufgaben- und Kartenabdeckung dieses Umfangs; zwölf bestehende Hierarchiefälle korrigieren und aktuelle QA nachweisen. |
 
-Der Angebotsnenner wird erst nach Abgleich aller tatsächlichen Einstiegswege
-fixiert. Ein Plannerlauf allein darf andere GUI-Angebote nicht unbemerkt aus
-dem Auftrag entfernen. Alte Zahlen und Dateizahlen aus PR #79 sind keine
+Der fixierte Angebotsnenner umfasst die Vereinigungsmenge aus 140 nativen
+Planner-Konfigurationen und 154 GUI-Konfigurationen mit 112 gemeinsamen
+Einträgen. Alle 182 Projektionen und Voraussetzungskompilationen liefen
+erfolgreich. Das ist eine Bestandsaufnahme, keine Einheits- oder Fachabnahme.
+Die eigenständigen Hochschul-/BOS-Angebote sind ausdrücklich außerhalb dieser
+Gymnasium-Korrektur erfasst. Alte Zahlen und Dateizahlen aus PR #79 sind keine
 aktuellen Abnahmeergebnisse.
 
 ## Verbindliche technische Grenzen

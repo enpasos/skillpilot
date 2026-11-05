@@ -1,0 +1,21 @@
+allprojects { project ->
+    plugins.withId('java') {
+        def inventoryRoot = new File(project.rootDir, '..').canonicalFile
+        def inventoryWork = new File(inventoryRoot, 'tmp/math-learning-units')
+        tasks.register('compileNativeMathOfferingInventory', JavaCompile) {
+            dependsOn tasks.named('compileJava')
+            source new File(inventoryRoot, 'app/scripts/learningUnits/NativeMathOfferingInventory.java')
+            classpath = configurations.testCompileClasspath + sourceSets.main.output.classesDirs
+            destinationDirectory.set(new File(inventoryWork, 'native-classes'))
+            javaCompiler.set(javaToolchains.compilerFor(java.toolchain))
+        }
+        tasks.register('nativeMathOfferingInventory', JavaExec) {
+            dependsOn tasks.named('compileNativeMathOfferingInventory')
+            classpath = files(new File(inventoryWork, 'native-classes')) + sourceSets.main.output.classesDirs + configurations.testRuntimeClasspath
+            mainClass.set('com.skillpilot.backend.completion.NativeMathOfferingInventory')
+            javaLauncher.set(javaToolchains.launcherFor(java.toolchain))
+            maxHeapSize = '1200m'
+            args inventoryRoot.absolutePath, new File(inventoryWork, 'native-backend.raw.json').absolutePath
+        }
+    }
+}
