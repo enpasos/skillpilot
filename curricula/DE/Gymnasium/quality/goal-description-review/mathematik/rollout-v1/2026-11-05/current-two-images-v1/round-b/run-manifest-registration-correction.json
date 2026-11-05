@@ -1,0 +1,35 @@
+{
+  "semantics": "explicit-registration-metadata-successor-original-review-preserved",
+  "correctedAt": "2026-11-05T20:53:30Z",
+  "correctedBy": "OpenAI Codex registration agent; no review judgment change",
+  "runId": "codex-astra-fresh-d-b-20261105t204809z",
+  "originalPath": "original-run-manifest.json",
+  "originalSha256": "ba9d67a056f8d698481aa43f7e389ca1855ef60e055563bef739e1811ad14833",
+  "successorPath": "results/mathematik-current-description-two-20261105-first-pass-b.batch-001.run.json",
+  "successorSha256": "0f92f955f8d32cfec2ae2ac81111260c37e0dc1f846aeeeb449b7161d84a4caf",
+  "changedFields": [
+    "inputArtifacts"
+  ],
+  "removedInputArtifacts": [
+    {
+      "digest": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+      "role": "finding_schema"
+    },
+    {
+      "digest": "sha256:fbcd77966ad00111fe9cf3c7e6623a4f989edb9fd20161bad5822ffc341d9085",
+      "role": "review_input_json"
+    },
+    {
+      "digest": "sha256:b36d81bc4f9b26220f0b95bd552e4749af3b9b36217faecc7d94abee44395845",
+      "role": "review_input_json"
+    },
+    {
+      "digest": "sha256:e0956274745bea39fb2d2c7e628a75b524ee3c5c4c7b9d4f15626e9ee232fdec",
+      "role": "review_markdown"
+    }
+  ],
+  "reason": "The original manifests mislabeled extra sealed blind context files as GoalBook bundle artifact roles. Those optional declarations are removed from the loader manifest; their exact original declarations and actual input bytes remain in original-run-manifest.json and input-manifest.json. No unsupported bundle artifact is invented. Run identity, times, reviewer, generation parameters, records and outputDigest are unchanged.",
+  "sealedInputManifestSha256": "5a1864ad88141abcea6d3a100fd23f21e9371429b9a7d800053551f1f60f91d0",
+  "reviewerRecordBytesUnchanged": true,
+  "humanApproval": false
+}

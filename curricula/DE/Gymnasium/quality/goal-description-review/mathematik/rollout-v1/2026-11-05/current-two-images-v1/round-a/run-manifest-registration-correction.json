@@ -1,0 +1,31 @@
+{
+  "semantics": "explicit-registration-metadata-successor-original-review-preserved",
+  "correctedAt": "2026-11-05T20:53:30Z",
+  "correctedBy": "OpenAI Codex registration agent; no review judgment change",
+  "runId": "mathematik-current-description-two-20261105-a-codex-gpt6-20261105T204512Z",
+  "originalPath": "original-run-manifest.json",
+  "originalSha256": "bebf9fe1b808606f7c598c36c0f39de654dfba45638d94ab37bb7ffe9617b855",
+  "successorPath": "results/mathematik-current-description-two-20261105-first-pass-a.batch-001.run.json",
+  "successorSha256": "bd4ecc7cb8a89706158ce06ebd5ca47cbf6316c0956046b4d3c741af97059d11",
+  "changedFields": [
+    "inputArtifacts"
+  ],
+  "removedInputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:0ca9e4a65a041cc30360b9d8dc2486c2058b4ac4bb615aa6cdc40175e6a550cb"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:fbcd77966ad00111fe9cf3c7e6623a4f989edb9fd20161bad5822ffc341d9085"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:b36d81bc4f9b26220f0b95bd552e4749af3b9b36217faecc7d94abee44395845"
+    }
+  ],
+  "reason": "The original manifests mislabeled extra sealed blind context files as GoalBook bundle artifact roles. Those optional declarations are removed from the loader manifest; their exact original declarations and actual input bytes remain in original-run-manifest.json and input-manifest.json. No unsupported bundle artifact is invented. Run identity, times, reviewer, generation parameters, records and outputDigest are unchanged.",
+  "sealedInputManifestSha256": "6543f20e5eac8fef748d740a75dfb6341089f59d8c74cf4c11b0354576013848",
+  "reviewerRecordBytesUnchanged": true,
+  "humanApproval": false
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-current-description-two-20261105-a-codex-gpt6-20261105T204512Z",
+  "campaignId": "mathematik-current-description-two-20261105-a",
+  "roundId": "mathematik-current-description-two-20261105-first-pass-a",
+  "batchId": "mathematik-current-description-two-20261105-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:c323487dcb47c443712a8c8663a0e9d2c6b98cdc8fb7bd2bdb024a91a78f9f89",
+  "bundleFingerprint": "sha256:a51743d2b5bcb2cdf2ccd1fa7d6a298c99d8d6e8de599b25d4dbb6f5661a3b71",
+  "bookDigest": "sha256:6d968145cb67b5dbbbcf5e13e884c86e7d36710986d09d83e105f67444fe7fc8",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol (explicitly requested; deployment variant not exposed)",
+  "modelVersion": "Not exposed to reviewer; observed system identity is Codex based on GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:da556411108bfc0ffe03154eccd2bbbe79e6534bba018a04c1a0869cd9986281",
+  "independenceGroupId": "mathematik-current-description-two-20261105-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+    "d98849c7-bd0b-50d4-90aa-6293a3adb211"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:c323487dcb47c443712a8c8663a0e9d2c6b98cdc8fb7bd2bdb024a91a78f9f89"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:0ca9e4a65a041cc30360b9d8dc2486c2058b4ac4bb615aa6cdc40175e6a550cb"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:fbcd77966ad00111fe9cf3c7e6623a4f989edb9fd20161bad5822ffc341d9085"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:b36d81bc4f9b26220f0b95bd552e4749af3b9b36217faecc7d94abee44395845"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-11-05T20:45:12Z",
+  "completedAt": "2026-11-05T20:47:21Z",
+  "status": "completed",
+  "outputDigest": "sha256:2bedb2ce324586f2553988b6ad1f7a0316e563b3937a259b1b295a26f535f197",
+  "toolchainVersion": "sealed-description-review-python-jsonschema-1"
+}

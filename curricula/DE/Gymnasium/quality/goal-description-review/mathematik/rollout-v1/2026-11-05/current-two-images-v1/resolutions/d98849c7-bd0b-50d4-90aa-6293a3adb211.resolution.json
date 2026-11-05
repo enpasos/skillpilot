@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "math-current-two-images-20261105-resolution-d98849c7-bd0b-50d4-90aa-6293a3adb211",
+  "goal": {
+    "goalId": "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:09c7dbfdffac8ef78f176c5a120f6412942e991e6462adc7bd7110b8abd5fa93",
+    "pageFingerprint": "sha256:8574eb494f4376996643fc332b8ac53be3a74097b81d33fa72a84459e1914c90",
+    "goalReviewContextFingerprint": "sha256:159d6c6fe36210d1bb595990ac6938a048ef72c7fe1d6dff5b63222932e1221d",
+    "finalText": {
+      "titleDe": "Vierecke anhand ihrer Eigenschaften einordnen und begründen",
+      "titleEn": "Classify and justify quadrilaterals from their properties",
+      "descriptionDe": "Die lernende Person kann Quadrat, Rechteck, Parallelogramm, Raute, Drachenviereck und Trapez anhand ihrer Eigenschaften erkennen, darstellen und hierarchisch einordnen; dabei verwendet sie für Trapeze die inklusive Definition mit mindestens einem Paar paralleler Gegenseiten und begründet Mehrfachzuordnungen.",
+      "descriptionEn": "The learner can identify, represent, and hierarchically classify squares, rectangles, parallelograms, rhombi, kites, and trapezoids from their properties, using the inclusive definition of a trapezoid as having at least one pair of opposite parallel sides and justifying multiple classifications."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-current-description-two-20261105-a",
+      "campaignDigest": "sha256:73388eb1358124b7d46b957ac9b7be36a6719fcf29f3b69d5238575ee9798537",
+      "roundId": "mathematik-current-description-two-20261105-first-pass-a",
+      "independenceGroupId": "mathematik-current-description-two-20261105-independent-a",
+      "reviewInputFingerprint": "sha256:d7b66799a6d9447b3eec227bb6d7629db62f8c017ae760c608cc7bf9fcf0ad74",
+      "goalReviewContextFingerprint": "sha256:159d6c6fe36210d1bb595990ac6938a048ef72c7fe1d6dff5b63222932e1221d",
+      "batchId": "mathematik-current-description-two-20261105-first-pass-a.batch-001",
+      "runId": "mathematik-current-description-two-20261105-a-codex-gpt6-20261105T204512Z",
+      "runManifestDigest": "sha256:aab3d017479b14169d663bd2230ead5c540e9b42eae061e49471838338612268",
+      "resultsDigest": "sha256:2bedb2ce324586f2553988b6ad1f7a0316e563b3937a259b1b295a26f535f197",
+      "recordId": "mathematik-current-description-two-20261105-a-codex-gpt6-20261105T204512Z.goal-2",
+      "recordDigest": "sha256:414e3df57f3e25baef37d7b609ec56a4003cf574306b7c916758905185d7f98e"
+    },
+    "second": {
+      "campaignId": "mathematik-current-description-two-20261105-b",
+      "campaignDigest": "sha256:013a0cc2acb52bedbff0b6c10113663022dd862c11aff74d53300b8dbf59b4fd",
+      "roundId": "mathematik-current-description-two-20261105-first-pass-b",
+      "independenceGroupId": "mathematik-current-description-two-20261105-independent-b",
+      "reviewInputFingerprint": "sha256:d7b66799a6d9447b3eec227bb6d7629db62f8c017ae760c608cc7bf9fcf0ad74",
+      "goalReviewContextFingerprint": "sha256:159d6c6fe36210d1bb595990ac6938a048ef72c7fe1d6dff5b63222932e1221d",
+      "batchId": "mathematik-current-description-two-20261105-first-pass-b.batch-001",
+      "runId": "codex-astra-fresh-d-b-20261105t204809z",
+      "runManifestDigest": "sha256:13e475282a3423742b30a6b37f4ebab2ada93cb9569074ad711ffe30ad2dcaa6",
+      "resultsDigest": "sha256:46628e8cebe5ba359f8e44af2825c653a59c0d24fd7760f0ee0035f28a3f6902",
+      "recordId": "codex-astra-fresh-d-b-20261105t204809z.002",
+      "recordDigest": "sha256:c3faf5a9a502d67bedd477f01b9244bb452d2736326f24fff1e68ee7ff326780"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:38a96bc5b44e0191a1a3cdf5ec2ff638e7c236cff9ac036767e284963fb36986"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "math-current-two-images-20261105-synthesis-d98849c7-bd0b-50d4-90aa-6293a3adb211",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis of two completed independent blind reviews; no human approval",
+    "synthesizedAt": "2026-11-05T20:53:30Z",
+    "rationaleDe": "Beide frischen, voneinander blinden Runden bestätigen die unveränderte aktuelle DE/EN-Beschreibung und die aktuelle JPEG. Die inklusive Trapezdefinition und die im Bild ausdrücklich verwendete Drachenviereckdefinition tragen die begründeten Mehrfachzuordnungen. Unabhängiges Darstellen und Klassifizieren sowie die Grenze zur umgekehrten Inklusion sind miteinander vereinbar; kein formaler Beweisstandard wird ergänzt. Die Synthese übernimmt ausdrücklich die sechs Evidenzfelder der ersten Runde. Diese neue D-Resolution ersetzt nur die frühere D-Zuordnung dieses Ziels; sie erklärt die alten abweichenden Bildbytes nicht für kompatibel.",
+    "rationaleEn": "Both fresh mutually blind rounds confirm the unchanged current DE/EN description and current JPEG. The inclusive trapezoid definition and the kite definition explicitly used in the image support justified multiple classifications. Independent representation and classification and the limit of converse inclusion are compatible; no formal proof standard is added. The synthesis explicitly selects the six evidence fields of the first round. This new D resolution replaces only this goal’s previous D assignment; it does not declare the old differing image bytes compatible.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Viereckklassen werden durch Beziehungen zwischen Seiten und Winkeln bestimmt, nicht durch die Lage einer Zeichnung. Ein Quadrat erfüllt gleichzeitig die Eigenschaften von Rechteck und Raute; diese sind Parallelogramme und nach der ausdrücklich inklusiven Trapezdefinition auch Trapeze. Unter der im Bild angegebenen Eigenschaft zweier Paare gleich langer Nachbarseiten ist eine Raute auch ein Drachenviereck. Eine speziellere Klasse behält die Eigenschaften der übergeordneten Klassen.",
+      "essentialUnderstandingEn": "Quadrilateral classes are determined by relationships between sides and angles, rather than by the orientation of a drawing. A square simultaneously satisfies the properties of a rectangle and a rhombus; these are parallelograms and, under the expressly inclusive trapezoid definition, also trapezoids. Under the property of two pairs of equal adjacent sides stated in the image, a rhombus is also a kite. A more specific class retains the properties of its broader classes.",
+      "observablePerformanceDe": "Die lernende Person ordnet unabhängig vorgelegte, auch gedrehte Vierecke anhand gekennzeichneter Parallelitäten, Seitenlängengleichheiten und rechter Winkel allen zutreffenden Klassen zu. Sie stellt ein Viereck mit vorgegebenen Eigenschaften selbst dar und erklärt etwa am Quadrat anhand der jeweiligen Klassenmerkmale, warum mehrere Bezeichnungen gleichzeitig gelten.",
+      "observablePerformanceEn": "The learner assigns independently presented quadrilaterals, including rotated examples, to all applicable classes using marked parallel sides, equal side lengths, and right angles. The learner independently represents a quadrilateral with specified properties and explains, for example for a square, why several names apply simultaneously by referring to the defining properties of the classes.",
+      "transferExpectationDe": "Wird in einer neuen Aufgabe statt einer typischen Zeichnung nur die Bedingung vier gleich langer Seiten vorgegeben, benennt die lernende Person die dadurch gesicherten Klassen und stellt ein passendes Viereck dar. Sie erklärt, weshalb die Zuordnung als Quadrat zusätzlich rechte Winkel verlangt, während Raute, Parallelogramm, inklusives Trapez und das im Bild definierte Drachenviereck bereits aus den Eigenschaften folgen.",
+      "transferExpectationEn": "When a fresh task supplies only the condition of four equal sides instead of a typical drawing, the learner identifies the classes guaranteed by that condition and represents a suitable quadrilateral. The learner explains why classification as a square additionally requires right angles, whereas classification as a rhombus, parallelogram, inclusive trapezoid, and kite as defined in the image already follows from the properties."
+    },
+    "dissent": [
+      {
+        "dissentId": "evidence-wording-d98849c7-bd0b-50d4-90aa-6293a3adb211",
+        "source": "both",
+        "textDe": "Die beiden keep-Reviews unterscheiden sich in understandingEvidence, rationale. Die Synthese wählt die konkrete Evidenzfassung der ersten Runde; die zweite formuliert fachlich vereinbare Begründungen und andere unabhängige Transferbeispiele.",
+        "textEn": "The two keep reviews differ in understandingEvidence, rationale. The synthesis selects the first round’s concrete evidence formulation; the second supplies compatible reasons and different independent transfer examples.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:5fa10402f1c49e5233568d14e2ec7f157b0b48067fbbc8033750caadef299672"
+}

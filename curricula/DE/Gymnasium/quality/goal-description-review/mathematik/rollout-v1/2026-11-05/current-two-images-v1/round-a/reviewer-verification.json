@@ -1,0 +1,60 @@
+{
+  "runId": "mathematik-current-description-two-20261105-a-codex-gpt6-20261105T204512Z",
+  "checkedAt": "2026-11-05T20:48:37Z",
+  "status": "passed_for_output_schemas_hashes_and_bindings",
+  "checks": [
+    "All 16 sealed input files match exact bytes and SHA-256 in input-manifest.json.",
+    "Two records, campaign and run manifest validate against the supplied schemas including date-time formats, with external schema retrieval disabled.",
+    "Exact assigned order, stable IDs, current bilingual texts and all supplied goal/page/book/bundle/campaign/round/run/input bindings match.",
+    "Both actual images were opened using view_image and match current-images.json and page originalDigest.",
+    "Run outputDigest and generationParametersFingerprint match the written artifact bytes."
+  ],
+  "images": [
+    {
+      "goalId": "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+      "path": "images/4dbb8e8e-c0b5-5d51-8897-0024d77e8602.png",
+      "sha256": "sha256:75f10fcf70cc0e3b7c2c34a1cabd50eab3d6f10657256e207210b948c53968f5",
+      "openedWith": "view_image"
+    },
+    {
+      "goalId": "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+      "path": "images/d98849c7-bd0b-50d4-90aa-6293a3adb211.jpg",
+      "sha256": "sha256:cbde47065ca9c8be63244b82923c13a34a16cd99b20dcae770ba488f98b1c9bc",
+      "openedWith": "view_image"
+    }
+  ],
+  "decisions": [
+    {
+      "goalId": "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+      "decision": "keep",
+      "profileRecommendation": "create"
+    },
+    {
+      "goalId": "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+      "decision": "keep",
+      "profileRecommendation": "create"
+    }
+  ],
+  "limitations": [
+    "Only this sealed round and its allowed inputs were inspected. No other reviewer, prior judgment, sibling round, canonical diff or resolution was inspected.",
+    "No concrete successor task bodies were supplied; only public goal descriptions, prerequisite context, successor titles and the two current teaching images were reviewed.",
+    "Native learner target projection, external source completeness, human acceptance and runtime readiness were not established.",
+    "Reviewer configuration gpt-6.1-sol / ultra is confirmed as requested by the parent; exact deployment version was not exposed.",
+    "Manifest startedAt is an actual clock timestamp taken before final record authoring; preliminary sealed-input inspection occurred earlier without a captured start timestamp.",
+    "An additional full input-schema validation was attempted but could not complete: the supplied input schema references an absent goal-book-model.schema.json. The validator automatically attempted remote resolution and received HTTP 404; no external content was obtained or used. The final output validation explicitly disables external resolution. Input hashes and field bindings were verified, without claiming complete input-schema validation."
+  ],
+  "artifacts": [
+    {
+      "path": "reviews/mathematik-current-description-two-20261105-a-codex-gpt6-20261105T204512Z.jsonl",
+      "digest": "sha256:2bedb2ce324586f2553988b6ad1f7a0316e563b3937a259b1b295a26f535f197"
+    },
+    {
+      "path": "reviews/mathematik-current-description-two-20261105-a-codex-gpt6-20261105T204512Z.manifest.json",
+      "digest": "sha256:bebf9fe1b808606f7c598c36c0f39de654dfba45638d94ab37bb7ffe9617b855"
+    },
+    {
+      "path": "reviews/mathematik-current-description-two-20261105-a-codex-gpt6-20261105T204512Z.generation-parameters.json",
+      "digest": "sha256:da556411108bfc0ffe03154eccd2bbbe79e6534bba018a04c1a0869cd9986281"
+    }
+  ]
+}

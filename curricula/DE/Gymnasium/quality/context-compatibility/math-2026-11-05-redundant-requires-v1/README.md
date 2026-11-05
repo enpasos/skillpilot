@@ -55,7 +55,14 @@ Their original structural D validations do not establish current image-context
 compatibility. Missing original bytes or different current images cannot be
 healed by the R decision. Both goals require separate genuine current blind D
 rounds and a separately validated successor resolution before they can be
-counted current. This registration intentionally leaves them open.
+counted current. This compatibility registration intentionally leaves their old
+D contexts open. Separate fresh blind reviews and current successor resolutions
+are now registered under
+`quality/goal-description-review/mathematik/rollout-v1/2026-11-05/current-two-images-v1/`.
+Exactly two explicit central-index supersessions select those new D results;
+none of the old image bindings is reclassified as compatible. The only change
+to `compatibility.json` for this registration is the common rollout-config hash;
+all 108 per-goal rows and original artifacts are unchanged.
 
 The production reader accepts one exact source-reviewed registration digest.
 It rechecks per-goal original bytes; common native validation is cached only

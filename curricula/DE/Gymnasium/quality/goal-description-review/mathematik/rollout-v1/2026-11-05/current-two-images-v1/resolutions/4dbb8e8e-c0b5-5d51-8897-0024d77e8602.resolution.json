@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "math-current-two-images-20261105-resolution-4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+  "goal": {
+    "goalId": "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:82ab6ff1997d3ed3fe63c3707ffc465a7d0598018c825bd32530606a482ad5a7",
+    "pageFingerprint": "sha256:76a81e5c286d016a7e70acfb33631fb5b1b7a0f099d57d5b42c75c8234b6025f",
+    "goalReviewContextFingerprint": "sha256:1ac6640724563e2a698ea17c8d222ada9ef3c84b04d8e0d0e7396dec63626819",
+    "finalText": {
+      "titleDe": "Kreisumfänge und Bogenlängen bestimmen",
+      "titleEn": "Determine circumferences and arc lengths",
+      "descriptionDe": "Die lernende Person kann Umfänge von Kreisen und Kreisteilen bestimmen, indem sie Radius oder Durchmesser mit dem Umfang verknüpft, Kreisbögen als Anteil des Vollkreises berechnet und bei geschlossenen Kreisteilen die geraden Randstücke berücksichtigt.",
+      "descriptionEn": "The learner can determine perimeters of circles and circle parts by relating the radius or diameter to circumference, calculating arcs as fractions of a full circle, and including the straight boundary segments of closed circle parts."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-current-description-two-20261105-a",
+      "campaignDigest": "sha256:73388eb1358124b7d46b957ac9b7be36a6719fcf29f3b69d5238575ee9798537",
+      "roundId": "mathematik-current-description-two-20261105-first-pass-a",
+      "independenceGroupId": "mathematik-current-description-two-20261105-independent-a",
+      "reviewInputFingerprint": "sha256:d7b66799a6d9447b3eec227bb6d7629db62f8c017ae760c608cc7bf9fcf0ad74",
+      "goalReviewContextFingerprint": "sha256:1ac6640724563e2a698ea17c8d222ada9ef3c84b04d8e0d0e7396dec63626819",
+      "batchId": "mathematik-current-description-two-20261105-first-pass-a.batch-001",
+      "runId": "mathematik-current-description-two-20261105-a-codex-gpt6-20261105T204512Z",
+      "runManifestDigest": "sha256:aab3d017479b14169d663bd2230ead5c540e9b42eae061e49471838338612268",
+      "resultsDigest": "sha256:2bedb2ce324586f2553988b6ad1f7a0316e563b3937a259b1b295a26f535f197",
+      "recordId": "mathematik-current-description-two-20261105-a-codex-gpt6-20261105T204512Z.goal-1",
+      "recordDigest": "sha256:ee0531750d1293bcc5b218eca2d4b15fa007b46a7b75d32e5f34f9d7a53c75c9"
+    },
+    "second": {
+      "campaignId": "mathematik-current-description-two-20261105-b",
+      "campaignDigest": "sha256:013a0cc2acb52bedbff0b6c10113663022dd862c11aff74d53300b8dbf59b4fd",
+      "roundId": "mathematik-current-description-two-20261105-first-pass-b",
+      "independenceGroupId": "mathematik-current-description-two-20261105-independent-b",
+      "reviewInputFingerprint": "sha256:d7b66799a6d9447b3eec227bb6d7629db62f8c017ae760c608cc7bf9fcf0ad74",
+      "goalReviewContextFingerprint": "sha256:1ac6640724563e2a698ea17c8d222ada9ef3c84b04d8e0d0e7396dec63626819",
+      "batchId": "mathematik-current-description-two-20261105-first-pass-b.batch-001",
+      "runId": "codex-astra-fresh-d-b-20261105t204809z",
+      "runManifestDigest": "sha256:13e475282a3423742b30a6b37f4ebab2ada93cb9569074ad711ffe30ad2dcaa6",
+      "resultsDigest": "sha256:46628e8cebe5ba359f8e44af2825c653a59c0d24fd7760f0ee0035f28a3f6902",
+      "recordId": "codex-astra-fresh-d-b-20261105t204809z.001",
+      "recordDigest": "sha256:167364c66b8d5af8c42c44b80d3c565efcce2d37c478c17d200d272fcc615eb8"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:38a96bc5b44e0191a1a3cdf5ec2ff638e7c236cff9ac036767e284963fb36986"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesis": {
+    "synthesisId": "math-current-two-images-20261105-synthesis-4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "OpenAI Codex AI synthesis of two completed independent blind reviews; no human approval",
+    "synthesizedAt": "2026-11-05T20:53:30Z",
+    "rationaleDe": "Beide frischen, voneinander blinden Runden bestätigen die unveränderte aktuelle DE/EN-Beschreibung und die aktuelle PNG. Umfang, Bogenanteil und gerade Randstücke werden übereinstimmend getrennt. Der neue Dreiviertelsektor der ersten Runde und das Kreissegment mit gegebener Sehne der zweiten Runde prüfen denselben Zusammenhang an verschiedenen Figuren; weder Trigonometrie noch die Berechnung einer unbekannten Sehne wird hinzugefügt. Die Synthese übernimmt ausdrücklich die sechs Evidenzfelder der ersten Runde. Diese neue D-Resolution ersetzt nur die frühere D-Zuordnung dieses Ziels; sie erklärt die alten abweichenden Bildbytes nicht für kompatibel.",
+    "rationaleEn": "Both fresh mutually blind rounds confirm the unchanged current DE/EN description and current PNG. Both distinguish circumference, arc fraction and straight boundary segments. The first round’s fresh three-quarter sector and the second round’s circular segment with a given chord assess the same relation on different figures; neither trigonometry nor calculation of an unknown chord is added. The synthesis explicitly selects the six evidence fields of the first round. This new D resolution replaces only this goal’s previous D assignment; it does not declare the old differing image bytes compatible.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Der Umfang ist die Länge der Kreislinie, mit U = π·d = 2·π·r. Ein Kreisbogen hat denselben Anteil am Umfang wie der zugehörige Kreisteil am Vollkreis. Zur vollständigen Umrandung eines geschlossenen Kreisteils gehören zusätzlich alle geraden Randstücke; Bogenlänge und Gesamtumfang sind deshalb verschiedene Größen.",
+      "essentialUnderstandingEn": "Circumference is the length of the circle boundary, with U = π·d = 2·π·r. An arc occupies the same fraction of the circumference as the corresponding circle part occupies of the full circle. The complete boundary of a closed circle part also includes every straight boundary segment, so arc length and total perimeter are different quantities.",
+      "observablePerformanceDe": "Die lernende Person kennzeichnet an einer unabhängig vorgelegten Kreisfigur den tatsächlich gesuchten Rand, verknüpft den gegebenen Radius oder Durchmesser mit dem Vollkreisumfang und bestimmt daraus den passenden Bogenanteil. Sie erläutert, welche geraden Strecken für den Gesamtumfang hinzukommen, und gibt das Ergebnis als Länge mit passender Einheit an.",
+      "observablePerformanceEn": "Given an independently presented circular figure, the learner marks the boundary actually being requested, relates the given radius or diameter to the full circumference, and determines the appropriate arc fraction. The learner explains which straight segments must be added for the total perimeter and states the result as a length with an appropriate unit.",
+      "transferExpectationDe": "Bei einer neuen Aufgabe zu einem Dreiviertelkreis-Sektor mit gegebenem Durchmesser unterscheidet die lernende Person die Länge seines Bogens von der vollständigen Umrandung. Sie nutzt drei Viertel des Vollkreisumfangs für den Bogen und begründet aus der neuen Figur, dass zwei Radien die geraden Randstücke bilden, statt die Halbkreiszeichnung lediglich nachzurechnen.",
+      "transferExpectationEn": "In a fresh task about a three-quarter-circle sector with a given diameter, the learner distinguishes the length of its arc from the complete boundary. The learner uses three quarters of the full circumference for the arc and explains from the new figure that two radii form the straight boundary segments, rather than merely reproducing the semicircle calculation."
+    },
+    "dissent": [
+      {
+        "dissentId": "evidence-wording-4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+        "source": "both",
+        "textDe": "Die beiden keep-Reviews unterscheiden sich in understandingEvidence, rationale. Die Synthese wählt die konkrete Evidenzfassung der ersten Runde; die zweite formuliert fachlich vereinbare Begründungen und andere unabhängige Transferbeispiele.",
+        "textEn": "The two keep reviews differ in understandingEvidence, rationale. The synthesis selects the first round’s concrete evidence formulation; the second supplies compatible reasons and different independent transfer examples.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:5681dcff18893d2731132407055f1a80ee46098c7516c309317f5bc970bc8ade"
+}

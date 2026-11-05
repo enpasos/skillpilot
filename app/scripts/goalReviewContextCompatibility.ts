@@ -38,7 +38,7 @@ interface CompatibilityPredecessor {
   fullAtomicClosureDigest: string
 }
 export const contextCompatibilityPath = 'curricula/DE/Gymnasium/quality/context-compatibility/math-2026-11-05-redundant-requires-v1/compatibility.json'
-const registeredDigest = '4d3b6b93e260ab8fa444d874ee7bfe3df8754437970bdd19912b0dbcd60987f3'
+const registeredDigest = 'd4e2aa4208720e85d5a8c2a01588c1140a08cfa880e8e6ad6532811413896be8'
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const stable = (value: unknown): string => JSON.stringify(value, (_key, item) => item && typeof item === 'object' && !Array.isArray(item)
   ? Object.fromEntries(Object.entries(item).sort(([a], [b]) => a.localeCompare(b))) : item)

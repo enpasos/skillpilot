@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:a51743d2b5bcb2cdf2ccd1fa7d6a298c99d8d6e8de599b25d4dbb6f5661a3b71",
+  "reviewInputFingerprint": "sha256:d7b66799a6d9447b3eec227bb6d7629db62f8c017ae760c608cc7bf9fcf0ad74",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-current-description-two-20261105-a",
+      "roundId": "mathematik-current-description-two-20261105-first-pass-a",
+      "independenceGroupId": "mathematik-current-description-two-20261105-independent-a",
+      "runIds": [
+        "mathematik-current-description-two-20261105-a-codex-gpt6-20261105T204512Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol (explicitly requested; deployment variant not exposed)::Not exposed to reviewer; observed system identity is Codex based on GPT-6"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-current-description-two-20261105-b",
+      "roundId": "mathematik-current-description-two-20261105-first-pass-b",
+      "independenceGroupId": "mathematik-current-description-two-20261105-independent-b",
+      "runIds": [
+        "codex-astra-fresh-d-b-20261105t204809z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-astra (requested configuration; resolved deployment metadata not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "require_distinct_provider_or_model",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+      "firstRecordId": "mathematik-current-description-two-20261105-a-codex-gpt6-20261105T204512Z.goal-1",
+      "secondRecordId": "codex-astra-fresh-d-b-20261105t204809z.001",
+      "firstRunId": "mathematik-current-description-two-20261105-a-codex-gpt6-20261105T204512Z",
+      "secondRunId": "codex-astra-fresh-d-b-20261105t204809z",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+      "firstRecordId": "mathematik-current-description-two-20261105-a-codex-gpt6-20261105T204512Z.goal-2",
+      "secondRecordId": "codex-astra-fresh-d-b-20261105t204809z.002",
+      "firstRunId": "mathematik-current-description-two-20261105-a-codex-gpt6-20261105T204512Z",
+      "secondRunId": "codex-astra-fresh-d-b-20261105t204809z",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}
