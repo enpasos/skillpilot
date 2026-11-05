@@ -608,8 +608,7 @@ public class LearnerService {
         // never memorisation goals. Preparation/SRS work belongs to route evaluation.
         if (includePreparation) {
             resolveSrsMasterySnapshot(learner.getSkillpilotId(), contextGoals.values().stream()
-                    .filter(Objects::nonNull).filter(goal -> !unitContext
-                        || !learningUnitApplicationService.governedGoalIds().contains(goal.getId())).toList())
+                    .filter(Objects::nonNull).toList())
                     .forEach((id, mastered) -> mastery.put(id, mastered ? 1.0 : 0.0));
         }
         return unitContext ? trustedUnitProjection(learner.getSkillpilotId(), mastery) : mastery;
