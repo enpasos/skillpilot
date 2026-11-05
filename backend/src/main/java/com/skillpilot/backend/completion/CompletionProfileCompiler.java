@@ -22,6 +22,16 @@ import java.util.TreeSet;
  * context, so an unrelated expansion defect does not change this scope.
  */
 public final class CompletionProfileCompiler {
+    /** Freeze the shared canonical normalization for an immutable learning-unit contract. */
+    public Map<String, List<String>> compileAtomicPrerequisites(Map<String, LearningGoal> canonicalGoals,
+                                                               Set<String> atomicRoots) {
+        CompiledAutomaticCompletion graph = compileAutomatic(canonicalGoals, atomicRoots, atomicRoots,
+                "learning-unit-source-snapshot-v1");
+        Map<String, List<String>> result = new TreeMap<>();
+        for (String id : graph.contextGoalIds()) result.put(id, graph.directPrerequisites(id));
+        return java.util.Collections.unmodifiableMap(result);
+    }
+
     /** Adds existing scope metadata without requiring authored review or waiver grants. */
     public CompiledCompletionProfile compileAutomaticProfile(
             CompletionProfileDefinition definition,

@@ -10,6 +10,14 @@ public class ProgramUnit {
     private String shortLabel;
     private Integer order;
     private String parentUnitId;
+    private LearningUnitMetadata learningUnit;
+
+    public LearningUnitMetadata getLearningUnit() { return learningUnit; }
+    public void setLearningUnit(LearningUnitMetadata learningUnit) { this.learningUnit = learningUnit; }
+
+    public record LearningUnitMetadata(String contractId, String revision, String placementRevision,
+                                       java.util.Map<String, String> promise,
+                                       java.util.Map<String, String> introduction) { }
 
     public String getId() {
         return id;

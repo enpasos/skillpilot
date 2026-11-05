@@ -9,6 +9,10 @@ public class GoalPlacement {
     private String unitId;
     private String relation;
     private Map<String, String> context;
+    private Boolean acquisition;
+
+    public Boolean getAcquisition() { return acquisition; }
+    public void setAcquisition(Boolean acquisition) { this.acquisition = acquisition; }
 
     public String getGoalId() {
         return goalId;

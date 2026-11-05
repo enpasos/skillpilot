@@ -35,6 +35,7 @@ public class LandscapeService {
     private static final Path QUALITY_REVIEW_ARTIFACTS_PATH = Path.of("DE", "Gymnasium", "quality");
     private static final Path COMPLETION_PROFILES_PATH = Path.of("DE", "Gymnasium", "completion-profiles");
     private static final Path COMPLETION_SCOPES_PATH = Path.of("DE", "Gymnasium", "completion-scopes");
+    private static final Path LEARNING_UNITS_PATH = Path.of("DE", "Gymnasium", "learning-units");
     private static final int SUPPORTED_SOURCE_GOAL_CLOSURE_REGISTRY_VERSION = 1;
     private static final Path SOURCE_GOAL_CLOSURE_REGISTRY_PATH = Path.of(
             "DE", "Gymnasium", "provenance", "source-goal-closure-registry.json");
@@ -890,7 +891,8 @@ public class LandscapeService {
     private boolean isReservedMetadataPath(Path dir, Path path) {
         return path.startsWith(dir.resolve(QUALITY_REVIEW_ARTIFACTS_PATH))
                 || path.startsWith(dir.resolve(COMPLETION_PROFILES_PATH))
-                || path.startsWith(dir.resolve(COMPLETION_SCOPES_PATH));
+                || path.startsWith(dir.resolve(COMPLETION_SCOPES_PATH))
+                || path.startsWith(dir.resolve(LEARNING_UNITS_PATH));
     }
 
     private long loadArchivedSourceLandscapes(Path dir, List<SkillLandscape> loaded) {
