@@ -8,6 +8,17 @@ import { test } from 'node:test'
 const workflow = readFileSync(new URL('../.github/workflows/oauth-client-authentication.yml', import.meta.url), 'utf8')
 const docsWorkflow = readFileSync(new URL('../.github/workflows/docs_checks.yml', import.meta.url), 'utf8')
 const postgresService = readFileSync(new URL('../.github/actions/postgres-service/postgres_service.py', import.meta.url), 'utf8')
+const sharedSafetyDependencies = [
+  'scripts/claude_v1_revoke.py',
+  'scripts/test_claude_v1_revoke.py',
+  '.github/actions/postgres-service/action.yml',
+  '.github/actions/postgres-service/postgres_service.py',
+  '.github/actions/postgres-service/test_postgres_service.py',
+  '.github/actions/ubuntu-apt/action.yml',
+  '.github/actions/ubuntu-apt/apt.conf',
+  '.github/actions/ubuntu-apt/render-ubuntu-sources.sh',
+  'deploy/nginx/skillpilot-claude-connector-v1-contained.conf',
+]
 const postgresSuite = 'com.skillpilot.backend.oauth.OAuthClientSecurityPostgresIntegrationTest'
 const reportGuard = workflow.match(/python3 - <<'PY'\n([\s\S]*?)\n          PY/u)?.[1]
   .split('\n').map(line => line.replace(/^ {10}/u, '')).join('\n')
@@ -99,7 +110,7 @@ test('Provider security bounds checkout while retaining policy, runtime and evid
   const patterns = checkout.match(/sparse-checkout: \|\n((?: {12}[^\n]+\n?)+)/u)?.[1]
     .trim().split('\n').map(line => line.trim())
   assert.ok(patterns, 'Provider security must not materialize the complete repository')
-  for (const pattern of ['/*', '!/*/', '/.github/', '/ai/', '/backend/', '/content/', '/contracts/',
+  for (const pattern of ['/*', '!/*/', '/.github/', '/ai/', '/backend/', '/content/', '/contracts/', '/deploy/',
     '/curricula/', '!/curricula/DE/Gymnasium/quality/', '!/curricula/DE/Gymnasium/visualizations/',
     '/curricula/DE/Gymnasium/quality/assessment-completion/', '/curricula/DE/Gymnasium/quality/learning-units/',
     '/docs/deploy/', '/docs/qa-ci/status/curriculum-quality-status.json', '/scripts/']) {
@@ -107,6 +118,13 @@ test('Provider security bounds checkout while retaining policy, runtime and evid
   }
   assert.ok(patterns.indexOf('/curricula/DE/Gymnasium/quality/learning-units/')
     > patterns.indexOf('!/curricula/DE/Gymnasium/quality/'), 'Runtime inputs must override the broad archive exclusion')
+  // This guard also reads the revocation lane's safety files. A full local
+  // workspace must not hide a dependency missing from provider-security CI.
+  for (const file of sharedSafetyDependencies) {
+    assert.ok(patterns.some(pattern => !pattern.startsWith('!') && pattern !== '/*'
+      && (`/${file}` === pattern || `/${file}`.startsWith(pattern))),
+    `Provider checkout excludes shared guard safety dependency: ${file}`)
+  }
   const ledger = JSON.parse(readFileSync(new URL('../contracts/oauth/client-profile-release.json', import.meta.url), 'utf8'))
   for (const profile of ledger.profiles) for (const stage of Object.values(profile.stages)) {
     for (const artifact of stage?.evidence ?? []) {
@@ -129,17 +147,7 @@ test('Claude revocation checkout contains its safety dependencies without curric
   assert.ok(directories, 'Revocation must not materialize the complete repository')
   assert.deepEqual(new Set(directories), new Set(['.github/actions', 'scripts', 'deploy/nginx']),
     'Keep this lane bounded to the revocation scripts, local actions and containment configuration')
-  for (const file of [
-    'scripts/claude_v1_revoke.py',
-    'scripts/test_claude_v1_revoke.py',
-    '.github/actions/postgres-service/action.yml',
-    '.github/actions/postgres-service/postgres_service.py',
-    '.github/actions/postgres-service/test_postgres_service.py',
-    '.github/actions/ubuntu-apt/action.yml',
-    '.github/actions/ubuntu-apt/apt.conf',
-    '.github/actions/ubuntu-apt/render-ubuntu-sources.sh',
-    'deploy/nginx/skillpilot-claude-connector-v1-contained.conf',
-  ]) {
+  for (const file of sharedSafetyDependencies) {
     assert.ok(directories.some(directory => file.startsWith(`${directory}/`)), `Checkout excludes ${file}`)
     assert.ok(existsSync(new URL(`../${file}`, import.meta.url)), `Missing safety dependency ${file}`)
   }

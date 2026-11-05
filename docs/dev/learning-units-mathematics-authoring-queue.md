@@ -1,6 +1,6 @@
 # Endliche Arbeitsliste für die gesamte Gymnasium-Mathematik
 
-Die [maschinenlesbare Arbeitsliste](../../curricula/DE/Gymnasium/learning-units/authoring/mathematics-queue.json)
+Die [maschinenlesbare Arbeitsliste](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/learning-units/authoring/mathematics-queue.json)
 verfolgt alle **807 ursprünglichen curricularen Kompetenz-IDs** einzeln. Die
 ursprünglichen **978 atomaren Targets** und zusätzliche neue Prüfungs-IDs bleiben
 getrennt. Grundlage sind die [182 tatsächlichen Einstiegskonfigurationen](learning-units-mathematics-offering-inventory.md).
