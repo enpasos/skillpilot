@@ -98,7 +98,8 @@ function main() {
   const physicalViews = readdirSync(resolve(root, 'curricula/DE/Gymnasium/composition-views/mathematik')).filter(name => name.endsWith('.json'))
     .map(name => ({ path: `curricula/DE/Gymnasium/composition-views/mathematik/${name}`, view: parse(`curricula/DE/Gymnasium/composition-views/mathematik/${name}`) }))
     .filter(entry => referencedViews.has(entry.view.viewId)).sort((a, b) => a.view.viewId.localeCompare(b.view.viewId))
-  const compositionViewDigests = Object.fromEntries(physicalViews.map(entry => [entry.view.viewId, digest(readFileSync(resolve(root, entry.path)))]))
+    .map(entry => ({ ...entry, bytes: show(config.baselineRef, entry.path) }))
+  const compositionViewDigests = Object.fromEntries(physicalViews.map(entry => [entry.view.viewId, digest(entry.bytes)]))
   const artifacts = new Map<string, string>()
   const jsonBytes = (value: unknown) => `${JSON.stringify(value, null, 2)}\n`
   const setJson = (path: string, value: unknown) => artifacts.set(path, jsonBytes(value))
@@ -117,7 +118,7 @@ function main() {
   setJson(snapshotPath, { schemaVersion: 1, resolverRevision: 'completion-goal-kinds-v1', landscapes: [source], compositionViewDigests })
   const frozenLedgerPath = `${generation}/mathematik.semantic-kinds.json`
   setJson(frozenLedgerPath, ledger)
-  for (const view of physicalViews) artifacts.set(`${generation}/views/${view.view.viewId}.view.json`, readFileSync(resolve(root, view.path), 'utf8'))
+  for (const view of physicalViews) artifacts.set(`${generation}/views/${view.view.viewId}.view.json`, view.bytes)
   const pair = { taskContent: candidate.examData.taskContent, solutionContent: candidate.examData.solutionContent }
   const rubric = candidate.examData.scoring
   const taskSnapshot = `${base}/inputs/${config.contractId}/${config.revision}/${candidate.id}.task.json`

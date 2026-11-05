@@ -18,6 +18,8 @@ export interface Batch {
   newGoalPaths: string[]; canonicalClusterAdditions: Array<{ clusterId: string; goalIds: string[] }>
   removeRedundantRequires: Array<[string, string]>
   compositionViews: Record<string, string>
+  qualityProofPath?: string
+  semanticRebindProofPath?: string
   compositionViewEdits?: Array<{ path: string; expectedSha256: string; arrayPointer: string; afterIndex: number; expectedAnchorGoalId: string; node: Record<string, any> }>
 }
 export interface Receipt {

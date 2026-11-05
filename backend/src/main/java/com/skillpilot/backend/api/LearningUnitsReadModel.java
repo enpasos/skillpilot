@@ -12,7 +12,9 @@ public record LearningUnitsReadModel(
         List<String> recognizedGoalIds,
         List<Unit> units,
         @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
-        List<String> voluntaryGoalIds) {
+        List<String> voluntaryGoalIds,
+        @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+        OfferBinding offerBinding) {
     public LearningUnitsReadModel {
         recognizedGoalIds = List.copyOf(recognizedGoalIds);
         units = List.copyOf(units);
@@ -21,12 +23,26 @@ public record LearningUnitsReadModel(
 
     public LearningUnitsReadModel(String calculationStatus, String semantics, String contractDigest,
                                   List<String> recognizedGoalIds, List<Unit> units) {
-        this(calculationStatus, semantics, contractDigest, recognizedGoalIds, units, List.of());
+        this(calculationStatus, semantics, contractDigest, recognizedGoalIds, units, List.of(), null);
+    }
+
+    public LearningUnitsReadModel(String calculationStatus, String semantics, String contractDigest,
+                                  List<String> recognizedGoalIds, List<Unit> units, List<String> voluntaryGoalIds) {
+        this(calculationStatus, semantics, contractDigest, recognizedGoalIds, units, voluntaryGoalIds, null);
     }
 
     public LearningUnitsReadModel withVoluntaryGoalIds(List<String> ids) {
-        return new LearningUnitsReadModel(calculationStatus, semantics, contractDigest, recognizedGoalIds, units, ids);
+        return new LearningUnitsReadModel(calculationStatus, semantics, contractDigest, recognizedGoalIds, units, ids, offerBinding);
     }
+
+    public LearningUnitsReadModel withOfferBinding(OfferBinding binding) {
+        return new LearningUnitsReadModel(calculationStatus, semantics, contractDigest, recognizedGoalIds, units, voluntaryGoalIds, binding);
+    }
+
+    public record OfferBinding(String status, String revision,
+            com.skillpilot.backend.completion.learningunit.LearningUnitOfferBindings.ScopeKey scopeKey,
+            String coverage, List<LearningUnitDefinition.ContractRef> rootContractRefs,
+            int coveredTargetCount, int totalTargetCount, String bindingDigest) { }
 
     public record Unit(
             String contractId,

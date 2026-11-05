@@ -24,8 +24,8 @@ vollständige Mathematik-Umsetzung. Ein erster Vertrag ist ein Zwischenergebnis.
 | Stufe | Aktuelle Arbeit | Noch kein Erfolgsnachweis für |
 | --- | --- | --- |
 | S2 | Gebundener Skalarprodukt-/Projektionsvertrag mit zwei eigenen Zielen, unabhängiger KI-Inhaltsprüfung und unverändertem Prüfungsanspruch; native Prüfung aller 182 Angebote ohne Target-/Q-/K-/Supportdelta, Einheit in genau 42 passenden Angeboten. Daten und Quellen in `8481434d48` gesichert. | Eine erste Einheit ist kein vollständiger Mathematikabschluss. |
-| S3 | Gemeinsame Runtime-, Cockpit-, Coach-, Frontier- und Planintegration in `f5a61af0dd` gesichert und gepusht. 257 lokale Backendtests in 18 Suiten ohne Fehler oder ausgelassene Fälle; tatsächliche Hook-/Browserprüfungen und Paketpfad 1.2 geprüft. | Exakte terminale Kandidaten-CI und abschließendes Integrationsreview. Für S4 folgen insbesondere bilinguale Aufgaben-/Recallbindung und die exakte Angebotswurzelbindung. Deployment und echte Hostabnahme sind gesonderte Nachweise. |
-| S4 | [Angebotsinventar](learning-units-mathematics-offering-inventory.md) frisch gemessen: 182 Einstiegskonfigurationen, 978 atomare Ziele, darunter 807 curriculare Ziele. Bausteine aus PR #79 indexiert. | Vollständige Einheits-, Aufgaben- und Kartenabdeckung dieses Umfangs; zwölf bestehende Hierarchiefälle korrigieren und aktuelle QA nachweisen. |
+| S3 | Gemeinsame Runtime-, Cockpit-, Coach-, Frontier- und Planintegration in `f5a61af0dd` gesichert und gepusht. 257 lokale Backendtests in 18 Suiten bestanden. Der tatsächliche äußere Datenbanksnapshot für WebGUI und Provider wurde in `1509ba001e` ergänzt und mit HTTP-/JDBC-Prüfungen belegt. | Exakte terminale Kandidaten-CI und abschließendes Integrationsreview. Deployment und echte Hostabnahme sind gesonderte Nachweise. |
+| S4 | [Angebotsinventar](learning-units-mathematics-offering-inventory.md): 182 Konfigurationen und 807 ursprüngliche Fachkompetenzen. Neun unabhängig inhaltlich geprüfte Einheiten binden zehn dieser Kompetenzen. Der aktuelle [native Nachweis](learning-units-mathematics-batch-a-native-proof.json) prüft alle 182 Projektionen und die neun tatsächlichen Verträge. | Die übrigen 797 Kompetenzen fachlich binden; zwölf bestehende Hierarchiefälle korrigieren; vollständige Karten-/Sprach-/Angebotsbindung, Paketeinstiegsparität, ergänzende Einheitskarte und aktuelle QA-/M7-/Releaseabnahme nachweisen. |
 
 Der fixierte Angebotsnenner umfasst die Vereinigungsmenge aus 140 nativen
 Planner-Konfigurationen und 154 GUI-Konfigurationen mit 112 gemeinsamen
@@ -53,15 +53,39 @@ Restpaket. Zuvor hatten 17 Kompetenzen noch keine Paketroute; alle 807 besitzen
 jetzt eine solche Route. Diese Zuordnung ersetzt weder ihre Erwerbsheimat noch
 die unabhängige Inhaltsfreigabe.
 
-Die nächste unabhängig geprüfte Einheit betrifft Volumen und Oberfläche gerader
+Die zweite unabhängig geprüfte Einheit betrifft Volumen und Oberfläche gerader
 Prismen. Ihre neue Prüfung wird exakt in 27 Angeboten sichtbar; die übrigen
 155 Angebote bleiben unverändert. Der [native Nachweis](learning-units-mathematics-prism-native-proof.json)
 erhält sämtliche ursprünglichen 978 atomaren Zielidentitäten und ihre
 vollständigen Voraussetzungspfade. Ein Prüfungspass erkennt genau die beiden
 eigenen Prismenziele an: drei erreichte Einheitsziele aus einem expliziten
 Ergebnis und zwei Anerkennungen. Andere Geometrieziele erhalten dadurch keinen
-Abschluss. Mit der Projektionseinheit sind damit drei der 807 ursprünglichen
-Fachkompetenzen vertraglich gebunden; der breite Fachumbau bleibt offen.
+Abschluss.
+
+Sieben weitere geprüfte Einheiten behandeln Monotonie/Extrema, räumliche
+Koordinatenbeschreibung, orthogonale Projektion als lineare Abbildung,
+Pyramidenvolumen, Abstände paralleler Geraden/Ebenen sowie Kugeloberfläche und
+Kugelvolumen. Zusammen mit den ersten beiden Einheiten sind zehn der 807
+ursprünglichen Fachkompetenzen gebunden. Ein bestandener eigener Prüfungssatz
+erkennt jeweils genau die eigenen Fachziele an; bei leerem M entsteht keine
+Anerkennung, und explizite Fachziele allein bestehen keine offene Prüfung.
+
+Die neue Monotonieprüfung wird in 118 Angeboten als Ziel und in elf weiteren
+als Unterstützung eingeordnet. Für ihr bereits vorhandenes Ableitungsziel
+wurde anhand der Quellen in genau elf Sek-I-Konfigurationen die bisherige
+Zielrolle zu Unterstützung korrigiert. Baden-Württembergs ausdrücklich belegte
+Sek-I-Zuordnung bleibt erhalten. Alle 1.253 vorherigen Zielbedeutungen und ihre
+979 vollständigen atomaren Voraussetzungshüllen bleiben unverändert. Der neue
+Prüfungsknoten erhöht den aktuellen atomaren Zielumfang auf 980; die 807
+ursprünglichen Fachkompetenzen bleiben der feste fachliche Nenner.
+
+Aktuelle Angebote werden über eine eigene genaue Bindung aus Einstieg,
+Bundesland, Stufe, Dauer und Kursprofil ausgewählt. Diese Bindung enthält alle
+182 Konfigurationen zunächst ausdrücklich als **teilweise** umgebaut. Sie
+erzeugt keine Anerkennung und entzieht keine gültige historische Anerkennung.
+Ein neuer eigenständiger Mathematik-Paketeinstieg erhält eine eigene Identität;
+der bisherige Gymnasialeinstieg mit allen Fächern wird dafür nicht verkürzt.
+Die tatsächliche Gleichheit aller 182 Paketprojektionen ist noch nachzuweisen.
 
 ## Verbindliche technische Grenzen
 

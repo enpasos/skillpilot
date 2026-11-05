@@ -64,9 +64,9 @@ Revision und Semantik.
 
 | Bestandteil | Heute belegt | Noch zu liefern |
 | --- | --- | --- |
-| Rekursive Lerneinheiten | Konzept und Formeln beschlossen. | Autoritative Datenbindung, Compiler, Runtime und geprüfte echte Einheiten. |
+| Rekursive Lerneinheiten | Autoritative Datenbindung, Compiler und gemeinsamer Runtimekern im Draft-PR #82; erste unabhängig geprüfte echte Verträge vorhanden. | Vollständiger fachlicher Umbau und die zugehörigen Kandidatenabnahmen. |
 | Karte im vollständigen Cockpit | Native Produktanbindung mit derselben Baumprojektion aus PR #81 auf main; Kandidaten-CI bestanden, Rollout vom Owner begonnen. | Gesonderter Smoke-Test des ausgerollten S1-Stands. |
-| Bisherige Completion-Engine | Vorhandener automatischer Bedarfs-/Erlassmechanismus. | Neue globale Anerkennung aus unveränderlichen lokalen Einheitsverträgen; alte Semantik nicht unverändert übernehmen. |
+| Completion-Engine | Globale Anerkennung aus unveränderlichen lokalen Einheitsverträgen im PR; vollständige transitive Nachfrage, explizite Prüfungs-/Kartenergebnisse und getrennte Periodenzählung lokal geprüft. | Vollständige Inhaltsbindung, abschließendes Review und exakte terminale Kandidaten-CI. |
 | Prüfungen und Inhalte | Bestehende Quellen, Aufgaben, Rubriken und QA-Bestände auf main und im alten PR. | Prüfung des neuen Anwendungsanspruchs, Erwerbszuordnung und historische ID-Bedeutung. |
 | Fachabschluss Mathematik | Noch nicht erreicht. | Sämtliche angebotenen Auflösungen und ihre erforderlichen Verträge nach diesem Konzept abnehmen. |
 
@@ -423,10 +423,17 @@ anstelle fertiger, sichtbar demonstrierbarer Ergebnisse.
 
 ## 9. Nächster ausführbarer Schritt
 
-S0 ist ausgerollt. Jetzt S1 an eine echte aufgelöste Mathematikansicht anbinden,
-mit einem eigenen PR sowie den Funktions- und Deploybarkeitsnachweisen aus
-Abschnitt 4. Anschließend beziehungsweise unabhängig parallel für den benannten
-kleinen S2-Kandidaten einen vollständigen Vertragsbefund erzeugen. Vor größerem
-Inhaltsausbau steht die erste tatsächliche Owner-Demo. Die genaue technische
-Sperrwirkung von Einheitszugängen wird als separate Produktentscheidung behandelt
-und blockiert diese beiden Lieferstücke nicht.
+S1 ist gemergt; S2 und der gemeinsame S3-Laufzeitpfad sind im Draft-PR #82
+gesichert. Jetzt die unabhängig geprüften weiteren Einheiten mit ihren genauen
+Angebotszuordnungen zusammenführen. Dabei Paketinstieg und Repositoryinstieg
+anhand derselben 182 fachlichen Konfigurationen vergleichen und die echte
+Einheitshierarchie in die ergänzende Cockpitkarte übernehmen. Die gewohnte
+Baumansicht und die bestehenden produktiven Lernwege bleiben erhalten.
+
+Anschließend die endliche Inhaltsqueue bis zu allen 807 ursprünglichen
+Mathematikkompetenzen abarbeiten, bestehende Hierarchielücken korrigieren und
+die vollständige Abnahmematrix aus Abschnitt 7 am konkreten Kandidaten erfüllen.
+Der [Arbeitsstand](mathematics-learning-units-progress.md) nennt die bereits
+gebundenen Kompetenzen und die noch fehlenden Nachweise. Erst ein vollständiger
+fachlicher und technischer Nachweis erfüllt S4. Einheitszugänge erhalten durch
+diesen Umbau keine zusätzlichen technischen Startsperren.

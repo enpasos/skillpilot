@@ -2096,14 +2096,15 @@ def select_completion_candidate() -> None:
 
 
 
-def select_learning_units_candidate() -> None:
+def select_learning_units_candidate(offers: bool = False) -> None:
     """Separate unpublished learning-unit candidate; keep all prior ledgers intact."""
     global PROFILE_ID, TARGET_PROFILE_ID, TARGET_PROFILE_PATH, SCHEMA_ID, REVIEW_ID, CLASS_SPECS
-    PROFILE_ID = "de-gymnasium-mathematik-learning-units-release-model-v1"
-    TARGET_PROFILE_ID = "full-standalone-learning-units-v1"
-    TARGET_PROFILE_PATH = "contracts/curriculum-package/v1.2/profiles/full-standalone-learning-units-v1.profile.json"
-    SCHEMA_ID = SCHEMA_ID.replace("/v1/", "/v1.2/")
-    REVIEW_ID = "de-gymnasium-mathematik-learning-units-v1"
+    suffix = "learning-unit-offers" if offers else "learning-units"
+    PROFILE_ID = f"de-gymnasium-mathematik-{suffix}-release-model-v1"
+    TARGET_PROFILE_ID = f"full-standalone-{suffix}-v1"
+    TARGET_PROFILE_PATH = f"contracts/curriculum-package/v1.2/profiles/{TARGET_PROFILE_ID}.profile.json"
+    SCHEMA_ID = f"https://skillpilot.com/schemas/curriculum-package/v1.2/{'offer-' if offers else ''}package-redistribution-review.schema.json"
+    REVIEW_ID = f"de-gymnasium-mathematik-{suffix}-v1"
     CLASS_SPECS = tuple({**spec, "artifactRoles": spec["artifactRoles"] +
                         (["learning-unit-catalog", "learning-unit-contract", "learning-unit-input"] if spec["classId"] == "skillpilot-data" else [])}
                         for spec in CLASS_SPECS)
@@ -2136,11 +2137,13 @@ def main() -> int:
         args.ledger = (DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-completion-v1.review.json")
                        if args.completion_candidate else DEFAULT_LEDGER)
     if args.learning_units_candidate:
+        catalog = read_json(release_file(args.release_root, "metadata/runtime-catalog.json"))
+        offers = "learningUnitOfferBindingsV1" in catalog.get("capabilities", [])
         if args.ledger.resolve() == DEFAULT_LEDGER.resolve():
-            args.ledger = DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-learning-units-v1.review.json")
-        select_learning_units_candidate()
+            args.ledger = DEFAULT_LEDGER.with_name(f"de-gymnasium-mathematik-{'learning-unit-offers' if offers else 'learning-units'}-v1.review.json")
+        select_learning_units_candidate(offers)
         if args.schema == DEFAULT_SCHEMA:
-            args.schema = CONTRACT_ROOT.parent / "v1.2/package-redistribution-review.schema.json"
+            args.schema = CONTRACT_ROOT.parent / f"v1.2/{'offer-' if offers else ''}package-redistribution-review.schema.json"
     if args.completion_candidate:
         if args.ledger.resolve() == DEFAULT_LEDGER.resolve():
             parser.error("Completion candidates must use a separate ledger; the existing V1 review is preserved")

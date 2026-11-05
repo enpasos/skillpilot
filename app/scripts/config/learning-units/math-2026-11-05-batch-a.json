@@ -1,0 +1,2601 @@
+{
+  "schemaVersion": 1,
+  "generation": "math-2026-11-05-batch-a",
+  "baselineRef": "4d781fe9f8",
+  "packets": [
+    {
+      "contractId": "math-monotonicity-extrema",
+      "revision": "2026-11-05-v1",
+      "programUnitId": "de-gym-math-monotonicity-extrema",
+      "parentUnitId": "de-gym-math-j10",
+      "placementRevision": "2026-11-05-v1",
+      "title": {
+        "de": "Monotonie und lokale sowie globale Extrema begründen",
+        "en": "Justify monotonicity and local and global extrema"
+      },
+      "promise": {
+        "de": "Du kannst mit der ersten Ableitung das Steigen und Fallen einer Funktion auf einem abgeschlossenen Bereich begründen sowie lokale und globale Extremwerte einschließlich der Randwerte unterscheiden.",
+        "en": "You can use the first derivative to justify increase and decrease on a closed domain and distinguish local from global extrema, including boundary values."
+      },
+      "introduction": {
+        "de": "Bei einer Führungsschiene kommt es auf den Verlauf im gesamten Arbeitsbereich an. Du nutzt Vorzeichen und Randwerte, um lokale Beobachtungen von globalen Aussagen zu unterscheiden.",
+        "en": "A guide rail depends on its behavior throughout its working domain. Use signs and boundary values to distinguish local observations from global claims."
+      },
+      "ownGoalIds": [
+        "2850e8f6-2330-50d3-a577-d519540d9924",
+        "010c133c-dcf1-5530-8305-61bc638017bc"
+      ],
+      "requiredChildContractRefs": [],
+      "reviewRef": "quality/learning-units/math-monotonicity-extrema-2026-11-05.md",
+      "reviewReceiptPath": "DE/Gymnasium/quality/learning-units/math-monotonicity-extrema-2026-11-05.review.json",
+      "additionalInputPaths": [
+        "DE/Gymnasium/assessments/mathematik/learning-units/monotonicity-2026-11-05/tasks.md",
+        "DE/Gymnasium/quality/learning-units/math-batch-a-2026-11-05/independent-content-decisions.json",
+        "DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_MATHEMATIK_SEKI_BP2016.source-extraction.json",
+        "DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-j10-derivative-split-20260928-v1/direct-source-routing.json"
+      ],
+      "assessmentClaims": {
+        "010c133c-dcf1-5530-8305-61bc638017bc": {
+          "coveredGoalIds": [
+            "2850e8f6-2330-50d3-a577-d519540d9924"
+          ]
+        }
+      },
+      "scopeReview": {
+        "status": "approved-minimal-source-scope-correction; actual182-proof-pending",
+        "canonicalMeaning": "The unchanged A explicitly requires the first derivative and global boundary comparison; a graph-only assessment would not establish this A.",
+        "proposedMatchingNativeScopeIds": [
+          "ALL/CrossStage//GK",
+          "ALL/CrossStage//GK+LK",
+          "ALL/CrossStage//LK",
+          "ALL/SekI//",
+          "DE-BB/CrossStage//GK",
+          "DE-BB/CrossStage//GK+LK",
+          "DE-BB/CrossStage//LK",
+          "DE-BB/CrossStage/G8/GK",
+          "DE-BB/CrossStage/G8/GK+LK",
+          "DE-BB/CrossStage/G8/LK",
+          "DE-BB/CrossStage/G9/GK",
+          "DE-BB/CrossStage/G9/GK+LK",
+          "DE-BB/CrossStage/G9/LK",
+          "DE-BB/SekI//",
+          "DE-BB/SekI/G8/",
+          "DE-BB/SekI/G9/",
+          "DE-BB/SekII//GK",
+          "DE-BB/SekII//GK+LK",
+          "DE-BB/SekII//LK",
+          "DE-BB/SekII/G8/GK",
+          "DE-BB/SekII/G8/GK+LK",
+          "DE-BB/SekII/G8/LK",
+          "DE-BB/SekII/G9/GK",
+          "DE-BB/SekII/G9/GK+LK",
+          "DE-BB/SekII/G9/LK",
+          "DE-BW/CrossStage//GK",
+          "DE-BW/CrossStage//GK+LK",
+          "DE-BW/CrossStage//LK",
+          "DE-BW/CrossStage/G8/GK",
+          "DE-BW/CrossStage/G8/GK+LK",
+          "DE-BW/CrossStage/G8/LK",
+          "DE-BW/CrossStage/G9/GK",
+          "DE-BW/CrossStage/G9/GK+LK",
+          "DE-BW/CrossStage/G9/LK",
+          "DE-BW/SekI//",
+          "DE-BW/SekI/G8/",
+          "DE-BW/SekI/G9/",
+          "DE-HB/CrossStage/G8/GK",
+          "DE-HB/CrossStage/G8/GK+LK",
+          "DE-HB/CrossStage/G8/LK",
+          "DE-HB/SekI/G8/",
+          "DE-HB/SekII/G8/GK",
+          "DE-HB/SekII/G8/GK+LK",
+          "DE-HB/SekII/G8/LK",
+          "DE-HE/CrossStage/G8/GK",
+          "DE-HE/CrossStage/G8/GK+LK",
+          "DE-HE/CrossStage/G8/LK",
+          "DE-HE/CrossStage/G9/GK",
+          "DE-HE/CrossStage/G9/GK+LK",
+          "DE-HE/CrossStage/G9/LK",
+          "DE-HE/SekII/G8/GK",
+          "DE-HE/SekII/G8/GK+LK",
+          "DE-HE/SekII/G8/LK",
+          "DE-HE/SekII/G9/GK",
+          "DE-HE/SekII/G9/GK+LK",
+          "DE-HE/SekII/G9/LK",
+          "DE-MV/CrossStage/G8/GK",
+          "DE-MV/CrossStage/G8/GK+LK",
+          "DE-MV/CrossStage/G8/LK",
+          "DE-MV/SekI/G8/",
+          "DE-MV/SekII/G8/GK",
+          "DE-MV/SekII/G8/GK+LK",
+          "DE-MV/SekII/G8/LK",
+          "DE-NI/CrossStage/G9/GK",
+          "DE-NI/CrossStage/G9/GK+LK",
+          "DE-NI/CrossStage/G9/LK",
+          "DE-NI/SekI/G9/",
+          "DE-NI/SekII/G9/GK",
+          "DE-NI/SekII/G9/GK+LK",
+          "DE-NI/SekII/G9/LK",
+          "DE-NW/CrossStage/G9/GK",
+          "DE-NW/CrossStage/G9/GK+LK",
+          "DE-NW/CrossStage/G9/LK",
+          "DE-NW/SekI/G9/",
+          "DE-NW/SekII/G9/GK",
+          "DE-NW/SekII/G9/GK+LK",
+          "DE-NW/SekII/G9/LK",
+          "DE-RP/CrossStage/G8/GK",
+          "DE-RP/CrossStage/G8/GK+LK",
+          "DE-RP/CrossStage/G8/LK",
+          "DE-RP/CrossStage/G9/GK",
+          "DE-RP/CrossStage/G9/GK+LK",
+          "DE-RP/CrossStage/G9/LK",
+          "DE-RP/SekII/G8/GK",
+          "DE-RP/SekII/G8/GK+LK",
+          "DE-RP/SekII/G8/LK",
+          "DE-RP/SekII/G9/GK",
+          "DE-RP/SekII/G9/GK+LK",
+          "DE-RP/SekII/G9/LK",
+          "DE-SH/CrossStage/G8/GK",
+          "DE-SH/CrossStage/G8/GK+LK",
+          "DE-SH/CrossStage/G8/LK",
+          "DE-SH/CrossStage/G9/GK",
+          "DE-SH/CrossStage/G9/GK+LK",
+          "DE-SH/CrossStage/G9/LK",
+          "DE-SH/SekII/G8/GK",
+          "DE-SH/SekII/G8/GK+LK",
+          "DE-SH/SekII/G8/LK",
+          "DE-SH/SekII/G9/GK",
+          "DE-SH/SekII/G9/GK+LK",
+          "DE-SH/SekII/G9/LK",
+          "DE-SL/CrossStage/G9/GK",
+          "DE-SL/CrossStage/G9/GK+LK",
+          "DE-SL/CrossStage/G9/LK",
+          "DE-SL/SekI/G9/",
+          "DE-SL/SekII/G9/GK",
+          "DE-SL/SekII/G9/GK+LK",
+          "DE-SL/SekII/G9/LK",
+          "DE-SN/CrossStage/G8/GK",
+          "DE-SN/CrossStage/G8/GK+LK",
+          "DE-SN/CrossStage/G8/LK",
+          "DE-SN/SekI/G8/",
+          "DE-SN/SekII/G8/GK",
+          "DE-SN/SekII/G8/GK+LK",
+          "DE-SN/SekII/G8/LK",
+          "DE-ST/CrossStage/G8/GK",
+          "DE-ST/CrossStage/G8/GK+LK",
+          "DE-ST/CrossStage/G8/LK",
+          "DE-ST/SekI/G8/",
+          "DE-ST/SekII/G8/GK",
+          "DE-ST/SekII/G8/GK+LK",
+          "DE-ST/SekII/G8/LK",
+          "DE-TH/CrossStage/G8/GK",
+          "DE-TH/CrossStage/G8/GK+LK",
+          "DE-TH/CrossStage/G8/LK",
+          "DE-TH/SekI/G8/",
+          "DE-TH/SekII/G8/GK",
+          "DE-TH/SekII/G8/GK+LK",
+          "DE-TH/SekII/G8/LK"
+        ],
+        "surprisingSekIScopeIds": [
+          "ALL/SekI//",
+          "DE-BB/SekI//",
+          "DE-BB/SekI/G8/",
+          "DE-BB/SekI/G9/",
+          "DE-BW/SekI//",
+          "DE-BW/SekI/G8/",
+          "DE-BW/SekI/G9/",
+          "DE-HB/SekI/G8/",
+          "DE-MV/SekI/G8/",
+          "DE-NI/SekI/G9/",
+          "DE-NW/SekI/G9/",
+          "DE-SL/SekI/G9/",
+          "DE-SN/SekI/G8/",
+          "DE-ST/SekI/G8/",
+          "DE-TH/SekI/G8/"
+        ],
+        "teachingAssumptions": [
+          "Differentiate a simple polynomial and factor its quadratic derivative.",
+          "Interpret the derivative sign on the complete closed domain.",
+          "Distinguish internal stationary extrema and global endpoints."
+        ],
+        "sourceQAQuestion": "Check the existing calculus-A source mappings/applicability for all15 SekI configurations. Preserve the accepted807 ordinary IDs/meanings; do not infer an official SekI calculus obligation from its current native target presence. Any justified per-offer correction needs a disclosed native baseline delta.",
+        "placementStatus": "Nine explicit jurisdiction SekI views move A and new Q to prerequisiteOnly in exactly11 configurations; Q target118, BW3+ALL preserved. Actual native182 proof remains a separate acceptance gate.",
+        "scopeViewConfigPath": "app/scripts/config/learning-units/math-monotonicity-seki-offers.json",
+        "sourceDecision": "Independent actual Astra content/source review accepted by Root 2026-11-05. BW BP2016 3.3.4(22),p35 and(12) support the complete derivative/endpoint A; no such full local source evidence for the other nine SekI jurisdictions."
+      }
+    },
+    {
+      "contractId": "math-coordinate-plane-spatial-description",
+      "revision": "2026-11-05-v1",
+      "programUnitId": "de-gym-math-coordinate-plane-spatial-description",
+      "parentUnitId": "de-gym-math-q2",
+      "placementRevision": "2026-11-05-v1",
+      "title": {
+        "de": "Eine Ebene aus ihrer Koordinatenform räumlich beschreiben",
+        "en": "Describe a plane spatially from its coordinate equation"
+      },
+      "promise": {
+        "de": "Du kannst Achsenschnittpunkte, Normalenrichtung und Punktproben zu einer begründeten räumlichen Beschreibung einer Ebene zusammenführen.",
+        "en": "You can combine axis intercepts, a normal direction and point tests into a justified spatial description of a plane."
+      },
+      "introduction": {
+        "de": "Eine Gleichung beschreibt eine ganze Ebene. Du setzt ihre einzelnen Merkmale zu einem räumlichen Bild zusammen.",
+        "en": "An equation describes an entire plane. Combine its individual features into a spatial picture."
+      },
+      "ownGoalIds": [
+        "06de364f-9b63-4044-8229-a975621dc6df",
+        "03b00864-7001-5c6a-875b-dc269b3484d9"
+      ],
+      "requiredChildContractRefs": [],
+      "reviewRef": "quality/learning-units/math-coordinate-plane-spatial-description-2026-11-05.md",
+      "reviewReceiptPath": "DE/Gymnasium/quality/learning-units/math-coordinate-plane-spatial-description-2026-11-05.review.json",
+      "additionalInputPaths": [
+        "DE/Gymnasium/assessments/mathematik/sekii/q2/m7-route-repair-20260929-v1/tasks.md",
+        "DE/Gymnasium/quality/learning-units/math-batch-a-2026-11-05/independent-content-decisions.json"
+      ],
+      "assessmentClaims": {
+        "03b00864-7001-5c6a-875b-dc269b3484d9": {
+          "coveredGoalIds": [
+            "06de364f-9b63-4044-8229-a975621dc6df"
+          ]
+        }
+      }
+    },
+    {
+      "contractId": "math-orthogonal-projection-linear-map",
+      "revision": "2026-11-05-v1",
+      "programUnitId": "de-gym-math-orthogonal-projection-linear-map",
+      "parentUnitId": "de-gym-math-q2",
+      "placementRevision": "2026-11-05-v1",
+      "title": {
+        "de": "Orthogonale Projektion als lineare Abbildung verstehen",
+        "en": "Understand orthogonal projection as a linear map"
+      },
+      "promise": {
+        "de": "Du kannst einen Vektor in seinen Anteil in einer Ebene und einen senkrechten Rest zerlegen und an der Projektion die Linearität begründen.",
+        "en": "You can decompose a vector into its component in a plane and a perpendicular remainder and justify the linearity of the projection."
+      },
+      "introduction": {
+        "de": "Ein Schatten auf einer Koordinatenebene verliert eine Richtung. Du untersuchst, was die Projektion bewahrt und welche Vektoren sie auf null abbildet.",
+        "en": "A shadow on a coordinate plane loses one direction. Examine what the projection preserves and which vectors it maps to zero."
+      },
+      "ownGoalIds": [
+        "ed5d869b-af4e-4b80-b34d-a2338e16ce34",
+        "e3c70a12-7886-51f7-8bcd-ed54865415d6"
+      ],
+      "requiredChildContractRefs": [],
+      "reviewRef": "quality/learning-units/math-orthogonal-projection-linear-map-2026-11-05.md",
+      "reviewReceiptPath": "DE/Gymnasium/quality/learning-units/math-orthogonal-projection-linear-map-2026-11-05.review.json",
+      "additionalInputPaths": [
+        "DE/Gymnasium/assessments/mathematik/sekii/q2/m7-route-repair-20260929-v1/tasks.md",
+        "DE/Gymnasium/quality/learning-units/math-batch-a-2026-11-05/independent-content-decisions.json"
+      ],
+      "assessmentClaims": {
+        "e3c70a12-7886-51f7-8bcd-ed54865415d6": {
+          "coveredGoalIds": [
+            "ed5d869b-af4e-4b80-b34d-a2338e16ce34"
+          ]
+        }
+      }
+    },
+    {
+      "contractId": "math-pyramid-volume-derivation",
+      "revision": "2026-11-05-v1",
+      "programUnitId": "de-gym-math-pyramid-volume-derivation",
+      "parentUnitId": "de-gym-math-q2",
+      "placementRevision": "2026-11-05-v1",
+      "title": {
+        "de": "Die Pyramidenvolumenformel aus Querschnitten herleiten",
+        "en": "Derive the pyramid volume formula from cross-sections"
+      },
+      "promise": {
+        "de": "Du kannst die Volumenformel einer Pyramide mit ähnlichen Querschnitten und einem geeigneten Integral herleiten und die Herleitung geometrisch erklären.",
+        "en": "You can derive a pyramid volume formula using similar cross-sections and an appropriate integral and explain the geometry of the derivation."
+      },
+      "introduction": {
+        "de": "Warum ist eine Pyramide nur ein Drittel des passenden Prismas? Du setzt ihre kleiner werdenden Querschnitte zu einer Volumenherleitung zusammen.",
+        "en": "Why does a pyramid occupy one third of the corresponding prism? Combine its shrinking cross-sections into a volume derivation."
+      },
+      "ownGoalIds": [
+        "e9181209-1506-59df-9053-17f36b91bb06",
+        "938d47a2-5d7c-52d6-8644-5cc6060d76a1"
+      ],
+      "requiredChildContractRefs": [],
+      "reviewRef": "quality/learning-units/math-pyramid-volume-derivation-2026-11-05.md",
+      "reviewReceiptPath": "DE/Gymnasium/quality/learning-units/math-pyramid-volume-derivation-2026-11-05.review.json",
+      "additionalInputPaths": [
+        "DE/Gymnasium/assessments/mathematik/sekii/q2/m7-route-repair-20260929-v1/tasks.md",
+        "DE/Gymnasium/quality/learning-units/math-batch-a-2026-11-05/independent-content-decisions.json"
+      ],
+      "assessmentClaims": {
+        "938d47a2-5d7c-52d6-8644-5cc6060d76a1": {
+          "coveredGoalIds": [
+            "e9181209-1506-59df-9053-17f36b91bb06"
+          ]
+        }
+      }
+    },
+    {
+      "contractId": "math-parallel-line-plane-distances",
+      "revision": "2026-11-05-v1",
+      "programUnitId": "de-gym-math-parallel-line-plane-distances",
+      "parentUnitId": "de-gym-math-q2",
+      "placementRevision": "2026-11-05-v1",
+      "title": {
+        "de": "Abstände zwischen Geraden und Ebenen geometrisch begründen",
+        "en": "Justify distances between lines and planes geometrically"
+      },
+      "promise": {
+        "de": "Du kannst Gerade-Ebene- und Ebene-Ebene-Abstände analytisch bestimmen und die kürzeste Verbindung geometrisch begründen.",
+        "en": "You can determine line-plane and plane-plane distances analytically and justify the shortest connection geometrically."
+      },
+      "introduction": {
+        "de": "Eine Leitung und zwei Wände liefern konkrete Abstandsfragen. Du verknüpfst die Rechnung mit der Bedeutung der senkrechten Verbindung.",
+        "en": "A cable and two walls pose concrete distance questions. Connect the calculation to the meaning of a perpendicular connection."
+      },
+      "ownGoalIds": [
+        "8eb14d81-353a-4909-9464-61be7b1ba5b8",
+        "240f7716-7c6f-5705-876e-8046fd8a6720"
+      ],
+      "requiredChildContractRefs": [],
+      "reviewRef": "quality/learning-units/math-parallel-line-plane-distances-2026-11-05.md",
+      "reviewReceiptPath": "DE/Gymnasium/quality/learning-units/math-parallel-line-plane-distances-2026-11-05.review.json",
+      "additionalInputPaths": [
+        "DE/Gymnasium/assessments/mathematik/sekii/q2/m7-route-repair-20260929-v1/tasks.md",
+        "DE/Gymnasium/quality/learning-units/math-batch-a-2026-11-05/independent-content-decisions.json"
+      ],
+      "assessmentClaims": {
+        "240f7716-7c6f-5705-876e-8046fd8a6720": {
+          "coveredGoalIds": [
+            "8eb14d81-353a-4909-9464-61be7b1ba5b8"
+          ]
+        }
+      }
+    },
+    {
+      "contractId": "math-sphere-surface-application",
+      "revision": "2026-11-05-v1",
+      "programUnitId": "de-gym-math-sphere-surface-application",
+      "parentUnitId": "de-gym-math-j10",
+      "placementRevision": "2026-11-05-v1",
+      "title": {
+        "de": "Kugeloberfläche geometrisch erklären und anwenden",
+        "en": "Explain and apply sphere surface area geometrically"
+      },
+      "promise": {
+        "de": "Du kannst die Kugeloberflächenformel geometrisch plausibilisieren, Beschichtungsflächen berechnen und Flächeneinheit sowie quadratische Skalierung begründen.",
+        "en": "You can give geometric plausibility for the sphere surface formula, calculate coating areas and justify area units and quadratic scaling."
+      },
+      "introduction": {
+        "de": "Für die Beschichtung einer kugelförmigen Leuchte zählt ihre Außenhaut. Du erklärst den Faktor vier und prüfst, wie der Bedarf bei einer größeren Leuchte wächst.",
+        "en": "Coating a spherical lamp depends on its outer surface. Explain the factor four and investigate how the requirement grows for a larger lamp."
+      },
+      "ownGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+        "64f37348-20f7-55b1-82a8-8fc388087577"
+      ],
+      "requiredChildContractRefs": [],
+      "reviewRef": "quality/learning-units/math-sphere-surface-application-2026-11-05.md",
+      "reviewReceiptPath": "DE/Gymnasium/quality/learning-units/math-sphere-surface-application-2026-11-05.review.json",
+      "additionalInputPaths": [
+        "DE/Gymnasium/assessments/mathematik/sphere-split-2026-09-28/sphere-surface/draft_v1.md",
+        "DE/Gymnasium/quality/learning-units/math-batch-a-2026-11-05/independent-content-decisions.json"
+      ],
+      "assessmentClaims": {
+        "64f37348-20f7-55b1-82a8-8fc388087577": {
+          "coveredGoalIds": [
+            "7b01d3d8-1fff-5924-b133-5a4825dc742e"
+          ]
+        }
+      }
+    },
+    {
+      "contractId": "math-sphere-volume-application",
+      "revision": "2026-11-05-v1",
+      "programUnitId": "de-gym-math-sphere-volume-application",
+      "parentUnitId": "de-gym-math-j10",
+      "placementRevision": "2026-11-05-v1",
+      "title": {
+        "de": "Kugelvolumen geometrisch erklären und anwenden",
+        "en": "Explain and apply sphere volume geometrically"
+      },
+      "promise": {
+        "de": "Du kannst die Kugelvolumenformel geometrisch plausibilisieren, Fassungsvermögen berechnen und Volumeneinheit sowie kubische Skalierung begründen.",
+        "en": "You can give geometric plausibility for the sphere volume formula, calculate capacities and justify volume units and cubic scaling."
+      },
+      "introduction": {
+        "de": "Wie viel Wasser passt in ein kugelförmiges Gefäß? Du vergleichst mit einem Zylinder und begründest, wie das Fassungsvermögen bei größerem Radius wächst.",
+        "en": "How much water fits in a spherical vessel? Compare it with a cylinder and justify how capacity grows with the radius."
+      },
+      "ownGoalIds": [
+        "bb227e31-0b0b-544a-b5e0-548256a70dec",
+        "926d0551-4537-569e-b6ad-fc33bb17546e"
+      ],
+      "requiredChildContractRefs": [],
+      "reviewRef": "quality/learning-units/math-sphere-volume-application-2026-11-05.md",
+      "reviewReceiptPath": "DE/Gymnasium/quality/learning-units/math-sphere-volume-application-2026-11-05.review.json",
+      "additionalInputPaths": [
+        "DE/Gymnasium/assessments/mathematik/sphere-split-2026-09-28/sphere-volume/draft_v1.md",
+        "DE/Gymnasium/quality/learning-units/math-batch-a-2026-11-05/independent-content-decisions.json"
+      ],
+      "assessmentClaims": {
+        "926d0551-4537-569e-b6ad-fc33bb17546e": {
+          "coveredGoalIds": [
+            "bb227e31-0b0b-544a-b5e0-548256a70dec"
+          ]
+        }
+      }
+    }
+  ],
+  "newGoalPaths": [
+    "DE/Gymnasium/learning-units/authoring/materials/monotonicity-2026-11-05.goal.json"
+  ],
+  "canonicalClusterAdditions": [
+    {
+      "clusterId": "1a18dbb3-f350-4766-9c8b-20ca018ccef1",
+      "goalIds": [
+        "010c133c-dcf1-5530-8305-61bc638017bc"
+      ]
+    }
+  ],
+  "removeRedundantRequires": [
+    [
+      "05012547-7263-5bfa-9e7c-df970745a011",
+      "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f"
+    ],
+    [
+      "05012547-7263-5bfa-9e7c-df970745a011",
+      "ee48e811-4c9c-5080-9836-8403fc9f0810"
+    ],
+    [
+      "05012547-7263-5bfa-9e7c-df970745a011",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+      "5d1decb2-b01b-5c85-88fc-9fc255ff9776"
+    ],
+    [
+      "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "26f668a0-6425-5466-9cf7-6295dd189005",
+      "d658e26a-e351-4bca-824e-f346deaa87c5"
+    ],
+    [
+      "26f668a0-6425-5466-9cf7-6295dd189005",
+      "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+    ],
+    [
+      "26f668a0-6425-5466-9cf7-6295dd189005",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "2850e8f6-2330-50d3-a577-d519540d9924",
+      "7156558c-57f1-4372-9ba7-0640c3f7cb3a"
+    ],
+    [
+      "2850e8f6-2330-50d3-a577-d519540d9924",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5",
+      "6596405a-9728-41df-9163-53670ec2a937"
+    ],
+    [
+      "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "2ac2e902-a6ad-53c9-b139-d1c63d823023",
+      "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+    ],
+    [
+      "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "2c4830e6-a8d5-48d0-9202-3b7d18a419c2",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+      "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+    ],
+    [
+      "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+      "fd860da9-73ba-47cd-a1a8-452424915a80"
+    ],
+    [
+      "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+      "2c4830e6-a8d5-48d0-9202-3b7d18a419c2"
+    ],
+    [
+      "3e53a39b-1c75-4034-a647-8de85719e1fb",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+      "b44f038c-fb1f-527e-b9ad-382214d0328a"
+    ],
+    [
+      "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+      "57fbbf31-9b8c-5408-9af5-fbc73acd12bb"
+    ],
+    [
+      "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+      "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+    ],
+    [
+      "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "491e0858-e977-516e-a339-1cc2f9e9690f",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "491e0858-e977-516e-a339-1cc2f9e9690f",
+      "f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
+    ],
+    [
+      "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+      "d6c3fb37-ece6-5b56-9221-1eeb21845877"
+    ],
+    [
+      "4dbb8e8e-c0b5-5d51-8897-0024d77e8602",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+      "4b67bed9-06da-40b2-a306-24e9e7dfd390"
+    ],
+    [
+      "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+      "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
+    ],
+    [
+      "5bba4ec2-3781-4624-8b62-e24b38f7f76e",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "6596405a-9728-41df-9163-53670ec2a937",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+      "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+    ],
+    [
+      "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+      "f65ab452-1884-57b0-9be3-c7d9e4944891"
+    ],
+    [
+      "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "7bff61c1-1a69-4991-97de-0cff764f507e",
+      "9023226b-fc17-412b-807c-2bb45cd551d5"
+    ],
+    [
+      "7bff61c1-1a69-4991-97de-0cff764f507e",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "7bff61c1-1a69-4991-97de-0cff764f507e",
+      "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+    ],
+    [
+      "8a691345-3216-522c-a898-d65e8e94db28",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "9023226b-fc17-412b-807c-2bb45cd551d5",
+      "f8704a7b-e93d-4e32-b0f9-1b171545fe28"
+    ],
+    [
+      "9023226b-fc17-412b-807c-2bb45cd551d5",
+      "fd860da9-73ba-47cd-a1a8-452424915a80"
+    ],
+    [
+      "9023226b-fc17-412b-807c-2bb45cd551d5",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "9023226b-fc17-412b-807c-2bb45cd551d5",
+      "2c4830e6-a8d5-48d0-9202-3b7d18a419c2"
+    ],
+    [
+      "944dd479-9f30-5acb-ab32-3ea0b6dc8e06",
+      "2ac2e902-a6ad-53c9-b139-d1c63d823023"
+    ],
+    [
+      "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+      "6596405a-9728-41df-9163-53670ec2a937"
+    ],
+    [
+      "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "a1c79897-6ded-57f8-bee1-2d365a5083c9",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "a1c79897-6ded-57f8-bee1-2d365a5083c9",
+      "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+    ],
+    [
+      "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+      "c1f50bcc-7848-4e49-b9de-0ec030cc6bca"
+    ],
+    [
+      "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+      "0a6dab2e-1bbb-5587-adb0-456d3991c327"
+    ],
+    [
+      "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "b44f038c-fb1f-527e-b9ad-382214d0328a",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "b44f038c-fb1f-527e-b9ad-382214d0328a",
+      "f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
+    ],
+    [
+      "b9f2cf6b-f892-46a5-8f0b-2a916f0f2f8e",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "bb227e31-0b0b-544a-b5e0-548256a70dec",
+      "415bd48b-8a76-4d4f-bfdd-d085573e7ac3"
+    ],
+    [
+      "bb227e31-0b0b-544a-b5e0-548256a70dec",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+      "2231c29b-eb4e-51ae-9cb1-eb033bf16099"
+    ],
+    [
+      "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+      "624764d6-becd-5f9b-ada3-0d4f9d143073"
+    ],
+    [
+      "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+      "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+    ],
+    [
+      "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "d658e26a-e351-4bca-824e-f346deaa87c5",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "e322310f-f33a-485d-bc23-2412a6b8fa12",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "ee48e811-4c9c-5080-9836-8403fc9f0810",
+      "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+    ],
+    [
+      "ee48e811-4c9c-5080-9836-8403fc9f0810",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "f08d06dc-139d-5fd2-892c-8cc919b1e4fc",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "f0a49da2-018b-4cda-adbd-27047b610a0f",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
+      "2bb4bb91-7929-483a-b735-44275f6b5cdc"
+    ],
+    [
+      "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "f65ab452-1884-57b0-9be3-c7d9e4944891",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "f6b13b8e-1ecd-5420-905d-21290aa996a6",
+      "cf474eab-1379-4877-907e-58b0892ce734"
+    ],
+    [
+      "f6b13b8e-1ecd-5420-905d-21290aa996a6",
+      "9ef6c4fa-b97a-5d7a-86c1-96690f02d916"
+    ],
+    [
+      "f6b13b8e-1ecd-5420-905d-21290aa996a6",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "ca8b2e67-7d14-5baf-8404-26820fe3d548"
+    ],
+    [
+      "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+    ],
+    [
+      "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "2f565855-bcd6-4da5-bc80-4b72a2d93d50"
+    ],
+    [
+      "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "44cb7404-114e-5b14-b33a-ddee41952d46"
+    ],
+    [
+      "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "26f668a0-6425-5466-9cf7-6295dd189005"
+    ],
+    [
+      "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "b41cb496-dad5-596e-9c23-cdcbdab3ec2e"
+    ],
+    [
+      "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "6b0075bb-f71c-59f6-ab98-fb894568cc26"
+    ],
+    [
+      "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "02013455-72a0-5213-9509-ed77f7ede62b"
+    ],
+    [
+      "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "f6b13b8e-1ecd-5420-905d-21290aa996a6"
+    ],
+    [
+      "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97"
+    ],
+    [
+      "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "199fe2ed-2576-4611-b8de-fd56fb9f78fc"
+    ],
+    [
+      "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f"
+    ],
+    [
+      "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "ee48e811-4c9c-5080-9836-8403fc9f0810"
+    ],
+    [
+      "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "0a6dab2e-1bbb-5587-adb0-456d3991c327"
+    ],
+    [
+      "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "05012547-7263-5bfa-9e7c-df970745a011"
+    ],
+    [
+      "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+      "3e53a39b-1c75-4034-a647-8de85719e1fb"
+    ],
+    [
+      "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "fd860da9-73ba-47cd-a1a8-452424915a80",
+      "ca8b2e67-7d14-5baf-8404-26820fe3d548"
+    ],
+    [
+      "fd860da9-73ba-47cd-a1a8-452424915a80",
+      "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+    ],
+    [
+      "fd860da9-73ba-47cd-a1a8-452424915a80",
+      "2f565855-bcd6-4da5-bc80-4b72a2d93d50"
+    ],
+    [
+      "fd860da9-73ba-47cd-a1a8-452424915a80",
+      "44cb7404-114e-5b14-b33a-ddee41952d46"
+    ],
+    [
+      "fd860da9-73ba-47cd-a1a8-452424915a80",
+      "26f668a0-6425-5466-9cf7-6295dd189005"
+    ],
+    [
+      "fd860da9-73ba-47cd-a1a8-452424915a80",
+      "b41cb496-dad5-596e-9c23-cdcbdab3ec2e"
+    ],
+    [
+      "fd860da9-73ba-47cd-a1a8-452424915a80",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ]
+  ],
+  "compositionViews": {
+    "de-bb-gym-math-gk": "DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+    "de-bb-gym-math-lk": "DE/Gymnasium/composition-views/mathematik/de-bb-lk.view.json",
+    "de-bb-gym-sekii-math-gk": "DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json",
+    "de-bb-gym-sekii-math-lk": "DE/Gymnasium/composition-views/mathematik/de-bb-sekii-lk.view.json",
+    "de-be-gym-math-gk": "DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json",
+    "de-be-gym-math-lk": "DE/Gymnasium/composition-views/mathematik/de-be-lk.view.json",
+    "de-be-gym-sekii-math-gk": "DE/Gymnasium/composition-views/mathematik/de-be-sekii-gk.view.json",
+    "de-be-gym-sekii-math-lk": "DE/Gymnasium/composition-views/mathematik/de-be-sekii-lk.view.json",
+    "de-bw-gym-math-gk": "DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+    "de-bw-gym-math-lk": "DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+    "de-bw-gym-seki-math": "DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json",
+    "de-bw-gym-sekii-math-gk": "DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json",
+    "de-bw-gym-sekii-math-lk": "DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk.view.json",
+    "de-by-gym-math-gk": "DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json",
+    "de-by-gym-math-lk": "DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
+    "de-by-gym-sekii-math-gk": "DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+    "de-by-gym-sekii-math-lk": "DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+    "de-de-gym-math-gk": "DE/Gymnasium/composition-views/mathematik/de-de-gk.view.json",
+    "de-de-gym-math-lk": "DE/Gymnasium/composition-views/mathematik/de-de-lk.view.json",
+    "de-de-gym-seki-math": "DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json",
+    "de-de-gym-sekii-math-gk": "DE/Gymnasium/composition-views/mathematik/de-de-sekii-gk.view.json",
+    "de-de-gym-sekii-math-lk": "DE/Gymnasium/composition-views/mathematik/de-de-sekii-lk.view.json",
+    "de-hb-gym-math-gk": "DE/Gymnasium/composition-views/mathematik/de-hb-gk.view.json",
+    "de-hb-gym-math-lk": "DE/Gymnasium/composition-views/mathematik/de-hb-lk.view.json",
+    "de-hb-gym-sekii-math-gk": "DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
+    "de-hb-gym-sekii-math-lk": "DE/Gymnasium/composition-views/mathematik/de-hb-sekii-lk.view.json",
+    "de-he-gym-math-gk-g8": "DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+    "de-he-gym-math-gk-g9": "DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+    "de-he-gym-math-gk": "DE/Gymnasium/composition-views/mathematik/de-he-gk.view.json",
+    "de-he-gym-math-lk-g8": "DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+    "de-he-gym-math-lk-g9": "DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+    "de-he-gym-math-lk": "DE/Gymnasium/composition-views/mathematik/de-he-lk.view.json",
+    "de-he-gym-seki-math-g8": "DE/Gymnasium/composition-views/mathematik/de-he-seki-g8.view.json",
+    "de-he-gym-seki-math-g9": "DE/Gymnasium/composition-views/mathematik/de-he-seki-g9.view.json",
+    "de-he-gym-sekii-math-gk": "DE/Gymnasium/composition-views/mathematik/de-he-sekii-gk.view.json",
+    "de-he-gym-sekii-math-lk": "DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json",
+    "de-hh-gym-math-gk": "DE/Gymnasium/composition-views/mathematik/de-hh-gk.view.json",
+    "de-hh-gym-math-lk": "DE/Gymnasium/composition-views/mathematik/de-hh-lk.view.json",
+    "de-hh-gym-sekii-math-gk": "DE/Gymnasium/composition-views/mathematik/de-hh-sekii-gk.view.json",
+    "de-hh-gym-sekii-math-lk": "DE/Gymnasium/composition-views/mathematik/de-hh-sekii-lk.view.json",
+    "de-mv-gym-math-gk": "DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
+    "de-mv-gym-math-lk": "DE/Gymnasium/composition-views/mathematik/de-mv-lk.view.json",
+    "de-mv-gym-sekii-math-gk": "DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json",
+    "de-mv-gym-sekii-math-lk": "DE/Gymnasium/composition-views/mathematik/de-mv-sekii-lk.view.json",
+    "de-ni-gym-math-gk": "DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+    "de-ni-gym-math-lk": "DE/Gymnasium/composition-views/mathematik/de-ni-lk.view.json",
+    "de-ni-gym-sekii-math-gk": "DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+    "de-ni-gym-sekii-math-lk": "DE/Gymnasium/composition-views/mathematik/de-ni-sekii-lk.view.json",
+    "de-nw-gym-math-gk": "DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+    "de-nw-gym-math-lk": "DE/Gymnasium/composition-views/mathematik/de-nw-lk.view.json",
+    "de-nw-gym-sekii-math-gk": "DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json",
+    "de-nw-gym-sekii-math-lk": "DE/Gymnasium/composition-views/mathematik/de-nw-sekii-lk.view.json",
+    "de-rp-gym-math-gk-g8": "DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+    "de-rp-gym-math-gk-g9": "DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+    "de-rp-gym-math-gk": "DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json",
+    "de-rp-gym-math-lk-g8": "DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+    "de-rp-gym-math-lk-g9": "DE/Gymnasium/composition-views/mathematik/de-rp-lk-g9.view.json",
+    "de-rp-gym-math-lk": "DE/Gymnasium/composition-views/mathematik/de-rp-lk.view.json",
+    "de-rp-gym-seki-math-g8": "DE/Gymnasium/composition-views/mathematik/de-rp-seki-g8.view.json",
+    "de-rp-gym-seki-math-g9": "DE/Gymnasium/composition-views/mathematik/de-rp-seki-g9.view.json",
+    "de-rp-gym-sekii-math-gk": "DE/Gymnasium/composition-views/mathematik/de-rp-sekii-gk.view.json",
+    "de-rp-gym-sekii-math-lk": "DE/Gymnasium/composition-views/mathematik/de-rp-sekii-lk.view.json",
+    "de-sh-gym-math-gk-g8": "DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+    "de-sh-gym-math-gk-g9": "DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+    "de-sh-gym-math-gk": "DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+    "de-sh-gym-math-lk-g8": "DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+    "de-sh-gym-math-lk-g9": "DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+    "de-sh-gym-math-lk": "DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+    "de-sh-gym-seki-math-g8": "DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+    "de-sh-gym-seki-math-g9": "DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+    "de-sh-gym-sekii-math-gk": "DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+    "de-sh-gym-sekii-math-lk": "DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+    "de-sl-gym-math-gk": "DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
+    "de-sl-gym-math-lk": "DE/Gymnasium/composition-views/mathematik/de-sl-lk.view.json",
+    "de-sl-gym-sekii-math-gk": "DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json",
+    "de-sl-gym-sekii-math-lk": "DE/Gymnasium/composition-views/mathematik/de-sl-sekii-lk.view.json",
+    "de-sn-gym-math-gk": "DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
+    "de-sn-gym-math-lk": "DE/Gymnasium/composition-views/mathematik/de-sn-lk.view.json",
+    "de-sn-gym-sekii-math-gk": "DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json",
+    "de-sn-gym-sekii-math-lk": "DE/Gymnasium/composition-views/mathematik/de-sn-sekii-lk.view.json",
+    "de-st-gym-math-gk": "DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json",
+    "de-st-gym-math-lk": "DE/Gymnasium/composition-views/mathematik/de-st-lk.view.json",
+    "de-st-gym-sekii-math-gk": "DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json",
+    "de-st-gym-sekii-math-lk": "DE/Gymnasium/composition-views/mathematik/de-st-sekii-lk.view.json",
+    "de-th-gym-math-gk": "DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
+    "de-th-gym-math-lk": "DE/Gymnasium/composition-views/mathematik/de-th-lk.view.json",
+    "de-th-gym-sekii-math-gk": "DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json",
+    "de-th-gym-sekii-math-lk": "DE/Gymnasium/composition-views/mathematik/de-th-sekii-lk.view.json",
+    "de-bb-gym-seki-math": "DE/Gymnasium/composition-views/mathematik/de-bb-seki.view.json",
+    "de-hb-gym-seki-math": "DE/Gymnasium/composition-views/mathematik/de-hb-seki.view.json",
+    "de-mv-gym-seki-math": "DE/Gymnasium/composition-views/mathematik/de-mv-seki.view.json",
+    "de-ni-gym-seki-math": "DE/Gymnasium/composition-views/mathematik/de-ni-seki.view.json",
+    "de-nw-gym-seki-math": "DE/Gymnasium/composition-views/mathematik/de-nw-seki.view.json",
+    "de-sl-gym-seki-math": "DE/Gymnasium/composition-views/mathematik/de-sl-seki.view.json",
+    "de-sn-gym-seki-math": "DE/Gymnasium/composition-views/mathematik/de-sn-seki.view.json",
+    "de-st-gym-seki-math": "DE/Gymnasium/composition-views/mathematik/de-st-seki.view.json",
+    "de-th-gym-seki-math": "DE/Gymnasium/composition-views/mathematik/de-th-seki.view.json"
+  },
+  "compositionViewEdits": [
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+      "expectedSha256": "ca40124093b769cb494a971ac0384d281e9f31bb258c9a5b5882c9cee29b51fa",
+      "arrayPointer": "/rootNodes/27/children/1/children/7/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-bb-lk.view.json",
+      "expectedSha256": "87f2d4fc89050f8cdff2c7bb34befa7c8f3a09089649ccdde43e1c25bc039298",
+      "arrayPointer": "/rootNodes/22/children/1/children/7/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json",
+      "expectedSha256": "0f420a487ae4911801c86ab34465e9bc2c1f9e40115ee810734af818f4cf5940",
+      "arrayPointer": "/rootNodes/23/children/7/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-bb-sekii-lk.view.json",
+      "expectedSha256": "19ab12cc93887735b059e69d74124e5b5ad3b91cfc249aa63160c9addcc0e575",
+      "arrayPointer": "/rootNodes/18/children/7/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-hb-gk.view.json",
+      "expectedSha256": "51436e4602500fc237228b353f53952c2f3cccf09bd186dd9a4b304775c2c379",
+      "arrayPointer": "/rootNodes/24/children/1/children/7/children",
+      "afterIndex": 1,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-hb-lk.view.json",
+      "expectedSha256": "31da8ec4f44f6086aaa5a6d8c943d2090e23bdbc7dbdfade46e12d33ec75d3d7",
+      "arrayPointer": "/rootNodes/21/children/1/children/7/children",
+      "afterIndex": 1,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
+      "expectedSha256": "f15d857b0e399aefb71eaa9f3fed7300bcf7d80a352c8bc49e30ff04d787165f",
+      "arrayPointer": "/rootNodes/22/children/7/children",
+      "afterIndex": 1,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-hb-sekii-lk.view.json",
+      "expectedSha256": "53d7ec3cf1df2181b423b96cd4ec8ed09ae71ca8692f45e1761077edc720b436",
+      "arrayPointer": "/rootNodes/19/children/7/children",
+      "afterIndex": 1,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+      "expectedSha256": "169b0adf4ef09802f910acfe3ef2706838d0a575156d4ba9c952316b34a875c6",
+      "arrayPointer": "/rootNodes/12/children/1/children/7/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+      "expectedSha256": "a33d9519191f2d260b8f16deaf9f70825a98802b111bfe5ac6fab96f1b081938",
+      "arrayPointer": "/rootNodes/12/children/1/children/7/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-he-gk.view.json",
+      "expectedSha256": "378e1d63c3d82165ce45c9233b0a532426f0556d20a49f2bd8c60ac4dc25400e",
+      "arrayPointer": "/rootNodes/12/children/1/children/7/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+      "expectedSha256": "c77b4bb843a7ec819717d8b7db44b12102e95d4c009bc048a3f23127bf7ef9a8",
+      "arrayPointer": "/rootNodes/13/children/1/children/7/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+      "expectedSha256": "f52a68ee85e375047e7dd51ec051e589b6c99ae44ceff25681914d429845af5a",
+      "arrayPointer": "/rootNodes/13/children/1/children/7/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-he-lk.view.json",
+      "expectedSha256": "1793bf991061f2f7c3cce9758fbafd89b2ba61788f5669416afc0898259b6ca5",
+      "arrayPointer": "/rootNodes/13/children/1/children/7/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-he-sekii-gk.view.json",
+      "expectedSha256": "3888f56417b1759afd195cb8098f2115f98c530ce9fe264ae02fd92ebc8da09e",
+      "arrayPointer": "/rootNodes/8/children/7/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json",
+      "expectedSha256": "c410c6c2068539efbd769b2833571fcae8c0460e96689b9992b5b3b37a173271",
+      "arrayPointer": "/rootNodes/10/children/29/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
+      "expectedSha256": "55c3d17704a0d767e36a999cb7b08ed5a5cdef8f900c6a170045b425d9982163",
+      "arrayPointer": "/rootNodes/23/children/2/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-mv-lk.view.json",
+      "expectedSha256": "ae30563c0918541887ae98e1b7aed97f9e5f886620ec1f4f97dbb4c971a15cb8",
+      "arrayPointer": "/rootNodes/21/children/2/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json",
+      "expectedSha256": "2a7d49026aa636b8b3c0ea62b8fff3cb6651ca891959e8ad8e6de638c5cf7c59",
+      "arrayPointer": "/rootNodes/21/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-mv-sekii-lk.view.json",
+      "expectedSha256": "7e0b559342453dc5bacd6b32f896154349a00e42b017f1438b33977dec746627",
+      "arrayPointer": "/rootNodes/19/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+      "expectedSha256": "d7ee5587244799265c5a2aa0f98cf1c330328462d5b556cb50d5576a9b14c82b",
+      "arrayPointer": "/rootNodes/25/children/2/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-ni-lk.view.json",
+      "expectedSha256": "3ad7a25c2b8e277f1b6a80eba7cb726b3954a3e061b02fcba142e5aea33e9834",
+      "arrayPointer": "/rootNodes/23/children/2/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+      "expectedSha256": "b19567c57d9df6a485921da5c433d52ff7094b981e079a25954bf94161c17dbc",
+      "arrayPointer": "/rootNodes/21/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-ni-sekii-lk.view.json",
+      "expectedSha256": "899ffe5e9581b63c606560619b6bc26d98680438075f39356449e095fe6792e3",
+      "arrayPointer": "/rootNodes/19/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+      "expectedSha256": "919de6972f08e15d2407c58e205d200a5fbe4abe22b0f123255953cc28738b06",
+      "arrayPointer": "/rootNodes/25/children/2/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-nw-lk.view.json",
+      "expectedSha256": "478e95fdc1b35755c0e6bc9796af84739167e74c3191621bf6dab2aec6ef2dee",
+      "arrayPointer": "/rootNodes/23/children/2/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json",
+      "expectedSha256": "264fcbe3931030496eab2f37d2341891fbef0368d64b2167f262e1f2415c3642",
+      "arrayPointer": "/rootNodes/21/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-nw-sekii-lk.view.json",
+      "expectedSha256": "eca30104f1d57165ca75c18a44a1ff4c4e074c224b21acb071dd8ae2c49f98ea",
+      "arrayPointer": "/rootNodes/19/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+      "expectedSha256": "3c583ac50023bc1388f1eb95a99b41a2e25ee715a6822517a22475aabe375df3",
+      "arrayPointer": "/rootNodes/26/children/1/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+      "expectedSha256": "91737984ff49111d32f3d7b27449816888c7d7b304c54e2f2e3c97821a7c0194",
+      "arrayPointer": "/rootNodes/26/children/1/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json",
+      "expectedSha256": "4a4f3caa7b0b52d3195092c83f67fe420d92745bab83cb2dbd9fcbfc43209a3a",
+      "arrayPointer": "/rootNodes/26/children/2/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+      "expectedSha256": "90ddde1f7607cecdf7473080b101e18a4d48600e1ca0be55632702889c87bc03",
+      "arrayPointer": "/rootNodes/23/children/1/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-rp-lk-g9.view.json",
+      "expectedSha256": "97a08caaa9b136b2d01273e97bb8e4f55eca651018227cf6b4f992e93d3cdc36",
+      "arrayPointer": "/rootNodes/23/children/1/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-rp-lk.view.json",
+      "expectedSha256": "16e53d24276b5ae97e99e76c862a963261a104a0c6f1362192fc3a791dc8fb1f",
+      "arrayPointer": "/rootNodes/23/children/2/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-rp-sekii-gk.view.json",
+      "expectedSha256": "e6f7f7f9fd7169e0fbc82d2761ae4a1b2bf5179d010ccefb7053d3f9e782dd46",
+      "arrayPointer": "/rootNodes/22/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-rp-sekii-lk.view.json",
+      "expectedSha256": "6bcf8ffe06dab7f3c538cde1e335067f3c8ac4984826191cef95cde59f140242",
+      "arrayPointer": "/rootNodes/19/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "expectedSha256": "5a57672da5f6ca80393c877013a324feb7db8e72baef254d1d162a10b446042f",
+      "arrayPointer": "/rootNodes/24/children/1/children/6/children",
+      "afterIndex": 1,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "expectedSha256": "57bed3698e21d3f0c5c547a810f3734ae155e190f7d0459f26bbf2fbff8ea49e",
+      "arrayPointer": "/rootNodes/24/children/1/children/6/children",
+      "afterIndex": 1,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+      "expectedSha256": "de03556c27836cc4452796ae65187b1dd6f7777b46b74dfdb60f78f224f51645",
+      "arrayPointer": "/rootNodes/24/children/1/children/6/children",
+      "afterIndex": 1,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "expectedSha256": "251b1a123860c7baaa57ce891cd6dfd4aa92b5cad30541fd636e88c9f6c1e0d7",
+      "arrayPointer": "/rootNodes/22/children/1/children/6/children",
+      "afterIndex": 1,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "expectedSha256": "75ac64f48c03b9217ca485ba270a48dc055311d4383790b5c2a34fe05482fa12",
+      "arrayPointer": "/rootNodes/22/children/1/children/6/children",
+      "afterIndex": 1,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+      "expectedSha256": "c292708beb59a94b440f8e8b74cbe9b08b4562b3815301403697751b82663464",
+      "arrayPointer": "/rootNodes/22/children/1/children/6/children",
+      "afterIndex": 1,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+      "expectedSha256": "ce10e69d60d0f4ebd5a8bd22d24a8d4498091ba76e165624f991d87e3a8d950b",
+      "arrayPointer": "/rootNodes/20/children/6/children",
+      "afterIndex": 1,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+      "expectedSha256": "549eb1a5363b7014d67d27dff6fd08ca2e0a1e94b9badc1318eb61d5d0c5b452",
+      "arrayPointer": "/rootNodes/18/children/6/children",
+      "afterIndex": 1,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
+      "expectedSha256": "a46ddfe408eb5cc368cb0b3b50249f69515c16be4e792d522dfdea5b9f72ca1c",
+      "arrayPointer": "/rootNodes/25/children/2/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sl-lk.view.json",
+      "expectedSha256": "52465935344c5024de64b566f19c108e234523f57edd0425ad149f31d3046c21",
+      "arrayPointer": "/rootNodes/21/children/2/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json",
+      "expectedSha256": "27de96d373250803f4a148bf876a1cac8b6a5e877ec7112fe838812754165631",
+      "arrayPointer": "/rootNodes/22/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sl-sekii-lk.view.json",
+      "expectedSha256": "4adbb8790ae4d6ff694f5da2dd15ac40b0adf96871c40046263b4ec9bf49c119",
+      "arrayPointer": "/rootNodes/18/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
+      "expectedSha256": "5caddb9f0defa0f50f2cdfb3c7ddf210b42c3c3a26eca9409fa9eff8fc241476",
+      "arrayPointer": "/rootNodes/25/children/2/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sn-lk.view.json",
+      "expectedSha256": "489ad2f871419f517298fe69a57fecef09a3ba524940c3febcc7d56c4b9b3bb7",
+      "arrayPointer": "/rootNodes/23/children/2/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json",
+      "expectedSha256": "9ea510e0d73cceb33c9b1fd2718ead433e9699e46d12ab244b224cec65140d6e",
+      "arrayPointer": "/rootNodes/21/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sn-sekii-lk.view.json",
+      "expectedSha256": "57a613473b5ea90b75eb107ca42cb49fb3349dbaa1c6c998890ef3be1876f35f",
+      "arrayPointer": "/rootNodes/19/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json",
+      "expectedSha256": "553134728863f1d3c1611fffa2926a12b73c6a4e1fc9080ec0c703dbd337784b",
+      "arrayPointer": "/rootNodes/26/children/2/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-st-lk.view.json",
+      "expectedSha256": "5085941530481dbbe5a2ca563ce79c440efdf6ee244a5682e58f0731a188180d",
+      "arrayPointer": "/rootNodes/23/children/2/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json",
+      "expectedSha256": "e52a645dba2c18ebb433e9ff1721d857c40b5d429d4a5ccece1ef29483261562",
+      "arrayPointer": "/rootNodes/22/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-st-sekii-lk.view.json",
+      "expectedSha256": "cf21a24e8eac5a93b9fdcc65bb04cb871c2faec76176854277acb1ff4f162483",
+      "arrayPointer": "/rootNodes/19/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
+      "expectedSha256": "4d27647e5677fc8229ab575b47d2a7299185fa123a5fd712bac1c1dbe3f6b8a2",
+      "arrayPointer": "/rootNodes/24/children/2/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-th-lk.view.json",
+      "expectedSha256": "e536b81a99594bcc4790af3c9f78165bbeedd9c5161a64b18837b2da9ba7eed7",
+      "arrayPointer": "/rootNodes/21/children/2/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json",
+      "expectedSha256": "708ecd95f4fef966ddbe61fca9be7d37d0b5de932d41f32b5ffa06acd906fac0",
+      "arrayPointer": "/rootNodes/22/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-th-sekii-lk.view.json",
+      "expectedSha256": "ead0e3dbc7d6fc6aab8a974b79ceff5947618a231e15e44e81387dc5430ffd7d",
+      "arrayPointer": "/rootNodes/19/children/6/children",
+      "afterIndex": 0,
+      "expectedAnchorGoalId": "2850e8f6-2330-50d3-a577-d519540d9924",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "010c133c-dcf1-5530-8305-61bc638017bc"
+      }
+    }
+  ],
+  "nativeExpectation": {
+    "originalTargetToSupport": {
+      "2850e8f6-2330-50d3-a577-d519540d9924": [
+        "DE-BB/SekI//",
+        "DE-BB/SekI/G8/",
+        "DE-BB/SekI/G9/",
+        "DE-HB/SekI/G8/",
+        "DE-MV/SekI/G8/",
+        "DE-NI/SekI/G9/",
+        "DE-NW/SekI/G9/",
+        "DE-SL/SekI/G9/",
+        "DE-SN/SekI/G8/",
+        "DE-ST/SekI/G8/",
+        "DE-TH/SekI/G8/"
+      ]
+    },
+    "newAssessmentTargets": {
+      "010c133c-dcf1-5530-8305-61bc638017bc": [
+        "ALL/CrossStage//GK",
+        "ALL/CrossStage//GK+LK",
+        "ALL/CrossStage//LK",
+        "ALL/SekI//",
+        "DE-BB/CrossStage//GK",
+        "DE-BB/CrossStage//GK+LK",
+        "DE-BB/CrossStage//LK",
+        "DE-BB/CrossStage/G8/GK",
+        "DE-BB/CrossStage/G8/GK+LK",
+        "DE-BB/CrossStage/G8/LK",
+        "DE-BB/CrossStage/G9/GK",
+        "DE-BB/CrossStage/G9/GK+LK",
+        "DE-BB/CrossStage/G9/LK",
+        "DE-BB/SekII//GK",
+        "DE-BB/SekII//GK+LK",
+        "DE-BB/SekII//LK",
+        "DE-BB/SekII/G8/GK",
+        "DE-BB/SekII/G8/GK+LK",
+        "DE-BB/SekII/G8/LK",
+        "DE-BB/SekII/G9/GK",
+        "DE-BB/SekII/G9/GK+LK",
+        "DE-BB/SekII/G9/LK",
+        "DE-BW/CrossStage//GK",
+        "DE-BW/CrossStage//GK+LK",
+        "DE-BW/CrossStage//LK",
+        "DE-BW/CrossStage/G8/GK",
+        "DE-BW/CrossStage/G8/GK+LK",
+        "DE-BW/CrossStage/G8/LK",
+        "DE-BW/CrossStage/G9/GK",
+        "DE-BW/CrossStage/G9/GK+LK",
+        "DE-BW/CrossStage/G9/LK",
+        "DE-BW/SekI//",
+        "DE-BW/SekI/G8/",
+        "DE-BW/SekI/G9/",
+        "DE-HB/CrossStage/G8/GK",
+        "DE-HB/CrossStage/G8/GK+LK",
+        "DE-HB/CrossStage/G8/LK",
+        "DE-HB/SekII/G8/GK",
+        "DE-HB/SekII/G8/GK+LK",
+        "DE-HB/SekII/G8/LK",
+        "DE-HE/CrossStage/G8/GK",
+        "DE-HE/CrossStage/G8/GK+LK",
+        "DE-HE/CrossStage/G8/LK",
+        "DE-HE/CrossStage/G9/GK",
+        "DE-HE/CrossStage/G9/GK+LK",
+        "DE-HE/CrossStage/G9/LK",
+        "DE-HE/SekII/G8/GK",
+        "DE-HE/SekII/G8/GK+LK",
+        "DE-HE/SekII/G8/LK",
+        "DE-HE/SekII/G9/GK",
+        "DE-HE/SekII/G9/GK+LK",
+        "DE-HE/SekII/G9/LK",
+        "DE-MV/CrossStage/G8/GK",
+        "DE-MV/CrossStage/G8/GK+LK",
+        "DE-MV/CrossStage/G8/LK",
+        "DE-MV/SekII/G8/GK",
+        "DE-MV/SekII/G8/GK+LK",
+        "DE-MV/SekII/G8/LK",
+        "DE-NI/CrossStage/G9/GK",
+        "DE-NI/CrossStage/G9/GK+LK",
+        "DE-NI/CrossStage/G9/LK",
+        "DE-NI/SekII/G9/GK",
+        "DE-NI/SekII/G9/GK+LK",
+        "DE-NI/SekII/G9/LK",
+        "DE-NW/CrossStage/G9/GK",
+        "DE-NW/CrossStage/G9/GK+LK",
+        "DE-NW/CrossStage/G9/LK",
+        "DE-NW/SekII/G9/GK",
+        "DE-NW/SekII/G9/GK+LK",
+        "DE-NW/SekII/G9/LK",
+        "DE-RP/CrossStage/G8/GK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G9/GK",
+        "DE-RP/CrossStage/G9/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/SekII/G8/GK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G9/GK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/SekII/G9/LK",
+        "DE-SH/CrossStage/G8/GK",
+        "DE-SH/CrossStage/G8/GK+LK",
+        "DE-SH/CrossStage/G8/LK",
+        "DE-SH/CrossStage/G9/GK",
+        "DE-SH/CrossStage/G9/GK+LK",
+        "DE-SH/CrossStage/G9/LK",
+        "DE-SH/SekII/G8/GK",
+        "DE-SH/SekII/G8/GK+LK",
+        "DE-SH/SekII/G8/LK",
+        "DE-SH/SekII/G9/GK",
+        "DE-SH/SekII/G9/GK+LK",
+        "DE-SH/SekII/G9/LK",
+        "DE-SL/CrossStage/G9/GK",
+        "DE-SL/CrossStage/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/SekII/G9/GK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/SekII/G9/LK",
+        "DE-SN/CrossStage/G8/GK",
+        "DE-SN/CrossStage/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/SekII/G8/GK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/SekII/G8/LK",
+        "DE-ST/CrossStage/G8/GK",
+        "DE-ST/CrossStage/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/SekII/G8/GK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/SekII/G8/LK",
+        "DE-TH/CrossStage/G8/GK",
+        "DE-TH/CrossStage/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/SekII/G8/GK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/SekII/G8/LK"
+      ]
+    },
+    "newAssessmentSupport": {
+      "010c133c-dcf1-5530-8305-61bc638017bc": [
+        "DE-BB/SekI//",
+        "DE-BB/SekI/G8/",
+        "DE-BB/SekI/G9/",
+        "DE-HB/SekI/G8/",
+        "DE-MV/SekI/G8/",
+        "DE-NI/SekI/G9/",
+        "DE-NW/SekI/G9/",
+        "DE-SL/SekI/G9/",
+        "DE-SN/SekI/G8/",
+        "DE-ST/SekI/G8/",
+        "DE-TH/SekI/G8/"
+      ]
+    },
+    "ownTargetScopes": {
+      "math-monotonicity-extrema": [
+        "ALL/CrossStage//GK",
+        "ALL/CrossStage//GK+LK",
+        "ALL/CrossStage//LK",
+        "ALL/SekI//",
+        "DE-BB/CrossStage//GK",
+        "DE-BB/CrossStage//GK+LK",
+        "DE-BB/CrossStage//LK",
+        "DE-BB/CrossStage/G8/GK",
+        "DE-BB/CrossStage/G8/GK+LK",
+        "DE-BB/CrossStage/G8/LK",
+        "DE-BB/CrossStage/G9/GK",
+        "DE-BB/CrossStage/G9/GK+LK",
+        "DE-BB/CrossStage/G9/LK",
+        "DE-BB/SekII//GK",
+        "DE-BB/SekII//GK+LK",
+        "DE-BB/SekII//LK",
+        "DE-BB/SekII/G8/GK",
+        "DE-BB/SekII/G8/GK+LK",
+        "DE-BB/SekII/G8/LK",
+        "DE-BB/SekII/G9/GK",
+        "DE-BB/SekII/G9/GK+LK",
+        "DE-BB/SekII/G9/LK",
+        "DE-BW/CrossStage//GK",
+        "DE-BW/CrossStage//GK+LK",
+        "DE-BW/CrossStage//LK",
+        "DE-BW/CrossStage/G8/GK",
+        "DE-BW/CrossStage/G8/GK+LK",
+        "DE-BW/CrossStage/G8/LK",
+        "DE-BW/CrossStage/G9/GK",
+        "DE-BW/CrossStage/G9/GK+LK",
+        "DE-BW/CrossStage/G9/LK",
+        "DE-BW/SekI//",
+        "DE-BW/SekI/G8/",
+        "DE-BW/SekI/G9/",
+        "DE-HB/CrossStage/G8/GK",
+        "DE-HB/CrossStage/G8/GK+LK",
+        "DE-HB/CrossStage/G8/LK",
+        "DE-HB/SekII/G8/GK",
+        "DE-HB/SekII/G8/GK+LK",
+        "DE-HB/SekII/G8/LK",
+        "DE-HE/CrossStage/G8/GK",
+        "DE-HE/CrossStage/G8/GK+LK",
+        "DE-HE/CrossStage/G8/LK",
+        "DE-HE/CrossStage/G9/GK",
+        "DE-HE/CrossStage/G9/GK+LK",
+        "DE-HE/CrossStage/G9/LK",
+        "DE-HE/SekII/G8/GK",
+        "DE-HE/SekII/G8/GK+LK",
+        "DE-HE/SekII/G8/LK",
+        "DE-HE/SekII/G9/GK",
+        "DE-HE/SekII/G9/GK+LK",
+        "DE-HE/SekII/G9/LK",
+        "DE-MV/CrossStage/G8/GK",
+        "DE-MV/CrossStage/G8/GK+LK",
+        "DE-MV/CrossStage/G8/LK",
+        "DE-MV/SekII/G8/GK",
+        "DE-MV/SekII/G8/GK+LK",
+        "DE-MV/SekII/G8/LK",
+        "DE-NI/CrossStage/G9/GK",
+        "DE-NI/CrossStage/G9/GK+LK",
+        "DE-NI/CrossStage/G9/LK",
+        "DE-NI/SekII/G9/GK",
+        "DE-NI/SekII/G9/GK+LK",
+        "DE-NI/SekII/G9/LK",
+        "DE-NW/CrossStage/G9/GK",
+        "DE-NW/CrossStage/G9/GK+LK",
+        "DE-NW/CrossStage/G9/LK",
+        "DE-NW/SekII/G9/GK",
+        "DE-NW/SekII/G9/GK+LK",
+        "DE-NW/SekII/G9/LK",
+        "DE-RP/CrossStage/G8/GK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G9/GK",
+        "DE-RP/CrossStage/G9/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/SekII/G8/GK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G9/GK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/SekII/G9/LK",
+        "DE-SH/CrossStage/G8/GK",
+        "DE-SH/CrossStage/G8/GK+LK",
+        "DE-SH/CrossStage/G8/LK",
+        "DE-SH/CrossStage/G9/GK",
+        "DE-SH/CrossStage/G9/GK+LK",
+        "DE-SH/CrossStage/G9/LK",
+        "DE-SH/SekII/G8/GK",
+        "DE-SH/SekII/G8/GK+LK",
+        "DE-SH/SekII/G8/LK",
+        "DE-SH/SekII/G9/GK",
+        "DE-SH/SekII/G9/GK+LK",
+        "DE-SH/SekII/G9/LK",
+        "DE-SL/CrossStage/G9/GK",
+        "DE-SL/CrossStage/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/SekII/G9/GK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/SekII/G9/LK",
+        "DE-SN/CrossStage/G8/GK",
+        "DE-SN/CrossStage/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/SekII/G8/GK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/SekII/G8/LK",
+        "DE-ST/CrossStage/G8/GK",
+        "DE-ST/CrossStage/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/SekII/G8/GK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/SekII/G8/LK",
+        "DE-TH/CrossStage/G8/GK",
+        "DE-TH/CrossStage/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/SekII/G8/GK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/SekII/G8/LK"
+      ],
+      "math-coordinate-plane-spatial-description": [
+        "ALL/CrossStage//GK",
+        "ALL/CrossStage//GK+LK",
+        "ALL/CrossStage//LK",
+        "ALL/SekII//GK",
+        "ALL/SekII//GK+LK",
+        "ALL/SekII//LK",
+        "DE-BB/CrossStage//GK",
+        "DE-BB/CrossStage//GK+LK",
+        "DE-BB/CrossStage//LK",
+        "DE-BB/CrossStage/G8/GK",
+        "DE-BB/CrossStage/G8/GK+LK",
+        "DE-BB/CrossStage/G8/LK",
+        "DE-BB/CrossStage/G9/GK",
+        "DE-BB/CrossStage/G9/GK+LK",
+        "DE-BB/CrossStage/G9/LK",
+        "DE-BB/SekII//GK",
+        "DE-BB/SekII//GK+LK",
+        "DE-BB/SekII//LK",
+        "DE-BB/SekII/G8/GK",
+        "DE-BB/SekII/G8/GK+LK",
+        "DE-BB/SekII/G8/LK",
+        "DE-BB/SekII/G9/GK",
+        "DE-BB/SekII/G9/GK+LK",
+        "DE-BB/SekII/G9/LK",
+        "DE-BE/CrossStage//GK",
+        "DE-BE/CrossStage//GK+LK",
+        "DE-BE/CrossStage//LK",
+        "DE-BE/CrossStage/G8/GK",
+        "DE-BE/CrossStage/G8/GK+LK",
+        "DE-BE/CrossStage/G8/LK",
+        "DE-BE/CrossStage/G9/GK",
+        "DE-BE/CrossStage/G9/GK+LK",
+        "DE-BE/CrossStage/G9/LK",
+        "DE-BE/SekII//GK",
+        "DE-BE/SekII//GK+LK",
+        "DE-BE/SekII//LK",
+        "DE-BE/SekII/G8/GK",
+        "DE-BE/SekII/G8/GK+LK",
+        "DE-BE/SekII/G8/LK",
+        "DE-BE/SekII/G9/GK",
+        "DE-BE/SekII/G9/GK+LK",
+        "DE-BE/SekII/G9/LK",
+        "DE-BW/CrossStage//GK",
+        "DE-BW/CrossStage//GK+LK",
+        "DE-BW/CrossStage//LK",
+        "DE-BW/CrossStage/G8/GK",
+        "DE-BW/CrossStage/G8/GK+LK",
+        "DE-BW/CrossStage/G8/LK",
+        "DE-BW/CrossStage/G9/GK",
+        "DE-BW/CrossStage/G9/GK+LK",
+        "DE-BW/CrossStage/G9/LK",
+        "DE-BW/SekII//GK",
+        "DE-BW/SekII//GK+LK",
+        "DE-BW/SekII//LK",
+        "DE-BW/SekII/G8/GK",
+        "DE-BW/SekII/G8/GK+LK",
+        "DE-BW/SekII/G8/LK",
+        "DE-BW/SekII/G9/GK",
+        "DE-BW/SekII/G9/GK+LK",
+        "DE-BW/SekII/G9/LK",
+        "DE-BY/CrossStage/G9/GK+LK",
+        "DE-BY/CrossStage/G9/LK",
+        "DE-BY/SekII/G9/GK+LK",
+        "DE-BY/SekII/G9/LK",
+        "DE-HB/CrossStage/G8/GK",
+        "DE-HB/CrossStage/G8/GK+LK",
+        "DE-HB/CrossStage/G8/LK",
+        "DE-HB/SekII/G8/GK",
+        "DE-HB/SekII/G8/GK+LK",
+        "DE-HB/SekII/G8/LK",
+        "DE-HE/CrossStage/G8/GK",
+        "DE-HE/CrossStage/G8/GK+LK",
+        "DE-HE/CrossStage/G8/LK",
+        "DE-HE/CrossStage/G9/GK",
+        "DE-HE/CrossStage/G9/GK+LK",
+        "DE-HE/CrossStage/G9/LK",
+        "DE-HE/SekII/G8/GK",
+        "DE-HE/SekII/G8/GK+LK",
+        "DE-HE/SekII/G8/LK",
+        "DE-HE/SekII/G9/GK",
+        "DE-HE/SekII/G9/GK+LK",
+        "DE-HE/SekII/G9/LK",
+        "DE-HH/CrossStage/G8/GK",
+        "DE-HH/CrossStage/G8/GK+LK",
+        "DE-HH/CrossStage/G8/LK",
+        "DE-HH/SekII/G8/GK",
+        "DE-HH/SekII/G8/GK+LK",
+        "DE-HH/SekII/G8/LK",
+        "DE-MV/CrossStage/G8/GK",
+        "DE-MV/CrossStage/G8/GK+LK",
+        "DE-MV/CrossStage/G8/LK",
+        "DE-MV/SekII/G8/GK",
+        "DE-MV/SekII/G8/GK+LK",
+        "DE-MV/SekII/G8/LK",
+        "DE-NI/CrossStage/G9/GK",
+        "DE-NI/CrossStage/G9/GK+LK",
+        "DE-NI/CrossStage/G9/LK",
+        "DE-NI/SekII/G9/GK",
+        "DE-NI/SekII/G9/GK+LK",
+        "DE-NI/SekII/G9/LK",
+        "DE-NW/CrossStage/G9/GK",
+        "DE-NW/CrossStage/G9/GK+LK",
+        "DE-NW/CrossStage/G9/LK",
+        "DE-NW/SekII/G9/GK",
+        "DE-NW/SekII/G9/GK+LK",
+        "DE-NW/SekII/G9/LK",
+        "DE-RP/CrossStage/G8/GK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G9/GK",
+        "DE-RP/CrossStage/G9/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/SekII/G8/GK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G9/GK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/SekII/G9/LK",
+        "DE-SH/CrossStage/G8/GK",
+        "DE-SH/CrossStage/G8/GK+LK",
+        "DE-SH/CrossStage/G8/LK",
+        "DE-SH/CrossStage/G9/GK",
+        "DE-SH/CrossStage/G9/GK+LK",
+        "DE-SH/CrossStage/G9/LK",
+        "DE-SH/SekII/G8/GK",
+        "DE-SH/SekII/G8/GK+LK",
+        "DE-SH/SekII/G8/LK",
+        "DE-SH/SekII/G9/GK",
+        "DE-SH/SekII/G9/GK+LK",
+        "DE-SH/SekII/G9/LK",
+        "DE-SL/CrossStage/G9/GK",
+        "DE-SL/CrossStage/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/SekII/G9/GK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/SekII/G9/LK",
+        "DE-SN/CrossStage/G8/GK",
+        "DE-SN/CrossStage/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/SekII/G8/GK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/SekII/G8/LK",
+        "DE-ST/CrossStage/G8/GK",
+        "DE-ST/CrossStage/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/SekII/G8/GK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/SekII/G8/LK",
+        "DE-TH/CrossStage/G8/GK",
+        "DE-TH/CrossStage/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/SekII/G8/GK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/SekII/G8/LK"
+      ],
+      "math-orthogonal-projection-linear-map": [
+        "ALL/CrossStage//GK",
+        "ALL/CrossStage//GK+LK",
+        "ALL/CrossStage//LK",
+        "ALL/SekII//GK",
+        "ALL/SekII//GK+LK",
+        "ALL/SekII//LK",
+        "DE-BB/CrossStage//GK",
+        "DE-BB/CrossStage//GK+LK",
+        "DE-BB/CrossStage//LK",
+        "DE-BB/CrossStage/G8/GK",
+        "DE-BB/CrossStage/G8/GK+LK",
+        "DE-BB/CrossStage/G8/LK",
+        "DE-BB/CrossStage/G9/GK",
+        "DE-BB/CrossStage/G9/GK+LK",
+        "DE-BB/CrossStage/G9/LK",
+        "DE-BB/SekII//GK",
+        "DE-BB/SekII//GK+LK",
+        "DE-BB/SekII//LK",
+        "DE-BB/SekII/G8/GK",
+        "DE-BB/SekII/G8/GK+LK",
+        "DE-BB/SekII/G8/LK",
+        "DE-BB/SekII/G9/GK",
+        "DE-BB/SekII/G9/GK+LK",
+        "DE-BB/SekII/G9/LK",
+        "DE-BE/CrossStage//GK",
+        "DE-BE/CrossStage//GK+LK",
+        "DE-BE/CrossStage//LK",
+        "DE-BE/CrossStage/G8/GK",
+        "DE-BE/CrossStage/G8/GK+LK",
+        "DE-BE/CrossStage/G8/LK",
+        "DE-BE/CrossStage/G9/GK",
+        "DE-BE/CrossStage/G9/GK+LK",
+        "DE-BE/CrossStage/G9/LK",
+        "DE-BE/SekII//GK",
+        "DE-BE/SekII//GK+LK",
+        "DE-BE/SekII//LK",
+        "DE-BE/SekII/G8/GK",
+        "DE-BE/SekII/G8/GK+LK",
+        "DE-BE/SekII/G8/LK",
+        "DE-BE/SekII/G9/GK",
+        "DE-BE/SekII/G9/GK+LK",
+        "DE-BE/SekII/G9/LK",
+        "DE-BW/CrossStage//GK",
+        "DE-BW/CrossStage//GK+LK",
+        "DE-BW/CrossStage//LK",
+        "DE-BW/CrossStage/G8/GK",
+        "DE-BW/CrossStage/G8/GK+LK",
+        "DE-BW/CrossStage/G8/LK",
+        "DE-BW/CrossStage/G9/GK",
+        "DE-BW/CrossStage/G9/GK+LK",
+        "DE-BW/CrossStage/G9/LK",
+        "DE-BW/SekII//GK",
+        "DE-BW/SekII//GK+LK",
+        "DE-BW/SekII//LK",
+        "DE-BW/SekII/G8/GK",
+        "DE-BW/SekII/G8/GK+LK",
+        "DE-BW/SekII/G8/LK",
+        "DE-BW/SekII/G9/GK",
+        "DE-BW/SekII/G9/GK+LK",
+        "DE-BW/SekII/G9/LK",
+        "DE-HB/CrossStage/G8/GK",
+        "DE-HB/CrossStage/G8/GK+LK",
+        "DE-HB/CrossStage/G8/LK",
+        "DE-HB/SekII/G8/GK",
+        "DE-HB/SekII/G8/GK+LK",
+        "DE-HB/SekII/G8/LK",
+        "DE-HE/CrossStage/G8/GK",
+        "DE-HE/CrossStage/G8/GK+LK",
+        "DE-HE/CrossStage/G8/LK",
+        "DE-HE/CrossStage/G9/GK",
+        "DE-HE/CrossStage/G9/GK+LK",
+        "DE-HE/CrossStage/G9/LK",
+        "DE-HE/SekII/G8/GK",
+        "DE-HE/SekII/G8/GK+LK",
+        "DE-HE/SekII/G8/LK",
+        "DE-HE/SekII/G9/GK",
+        "DE-HE/SekII/G9/GK+LK",
+        "DE-HE/SekII/G9/LK",
+        "DE-HH/CrossStage/G8/GK",
+        "DE-HH/CrossStage/G8/GK+LK",
+        "DE-HH/CrossStage/G8/LK",
+        "DE-HH/SekII/G8/GK",
+        "DE-HH/SekII/G8/GK+LK",
+        "DE-HH/SekII/G8/LK",
+        "DE-MV/CrossStage/G8/GK",
+        "DE-MV/CrossStage/G8/GK+LK",
+        "DE-MV/CrossStage/G8/LK",
+        "DE-MV/SekII/G8/GK",
+        "DE-MV/SekII/G8/GK+LK",
+        "DE-MV/SekII/G8/LK",
+        "DE-NI/CrossStage/G9/GK",
+        "DE-NI/CrossStage/G9/GK+LK",
+        "DE-NI/CrossStage/G9/LK",
+        "DE-NI/SekII/G9/GK",
+        "DE-NI/SekII/G9/GK+LK",
+        "DE-NI/SekII/G9/LK",
+        "DE-NW/CrossStage/G9/GK",
+        "DE-NW/CrossStage/G9/GK+LK",
+        "DE-NW/CrossStage/G9/LK",
+        "DE-NW/SekII/G9/GK",
+        "DE-NW/SekII/G9/GK+LK",
+        "DE-NW/SekII/G9/LK",
+        "DE-RP/CrossStage/G8/GK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G9/GK",
+        "DE-RP/CrossStage/G9/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/SekII/G8/GK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G9/GK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/SekII/G9/LK",
+        "DE-SH/CrossStage/G8/GK",
+        "DE-SH/CrossStage/G8/GK+LK",
+        "DE-SH/CrossStage/G8/LK",
+        "DE-SH/CrossStage/G9/GK",
+        "DE-SH/CrossStage/G9/GK+LK",
+        "DE-SH/CrossStage/G9/LK",
+        "DE-SH/SekII/G8/GK",
+        "DE-SH/SekII/G8/GK+LK",
+        "DE-SH/SekII/G8/LK",
+        "DE-SH/SekII/G9/GK",
+        "DE-SH/SekII/G9/GK+LK",
+        "DE-SH/SekII/G9/LK",
+        "DE-SL/CrossStage/G9/GK",
+        "DE-SL/CrossStage/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/SekII/G9/GK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/SekII/G9/LK",
+        "DE-SN/CrossStage/G8/GK",
+        "DE-SN/CrossStage/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/SekII/G8/GK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/SekII/G8/LK",
+        "DE-ST/CrossStage/G8/GK",
+        "DE-ST/CrossStage/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/SekII/G8/GK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/SekII/G8/LK",
+        "DE-TH/CrossStage/G8/GK",
+        "DE-TH/CrossStage/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/SekII/G8/GK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/SekII/G8/LK"
+      ],
+      "math-pyramid-volume-derivation": [
+        "ALL/CrossStage//GK+LK",
+        "ALL/CrossStage//LK",
+        "ALL/SekII//GK+LK",
+        "ALL/SekII//LK",
+        "DE-BB/CrossStage//GK+LK",
+        "DE-BB/CrossStage//LK",
+        "DE-BB/CrossStage/G8/GK+LK",
+        "DE-BB/CrossStage/G8/LK",
+        "DE-BB/CrossStage/G9/GK+LK",
+        "DE-BB/CrossStage/G9/LK",
+        "DE-BB/SekII//GK+LK",
+        "DE-BB/SekII//LK",
+        "DE-BB/SekII/G8/GK+LK",
+        "DE-BB/SekII/G8/LK",
+        "DE-BB/SekII/G9/GK+LK",
+        "DE-BB/SekII/G9/LK",
+        "DE-BE/CrossStage//GK+LK",
+        "DE-BE/CrossStage//LK",
+        "DE-BE/CrossStage/G8/GK+LK",
+        "DE-BE/CrossStage/G8/LK",
+        "DE-BE/CrossStage/G9/GK+LK",
+        "DE-BE/CrossStage/G9/LK",
+        "DE-BE/SekII//GK+LK",
+        "DE-BE/SekII//LK",
+        "DE-BE/SekII/G8/GK+LK",
+        "DE-BE/SekII/G8/LK",
+        "DE-BE/SekII/G9/GK+LK",
+        "DE-BE/SekII/G9/LK",
+        "DE-BW/CrossStage//GK+LK",
+        "DE-BW/CrossStage//LK",
+        "DE-BW/CrossStage/G8/GK+LK",
+        "DE-BW/CrossStage/G8/LK",
+        "DE-BW/CrossStage/G9/GK+LK",
+        "DE-BW/CrossStage/G9/LK",
+        "DE-BW/SekII//GK+LK",
+        "DE-BW/SekII//LK",
+        "DE-BW/SekII/G8/GK+LK",
+        "DE-BW/SekII/G8/LK",
+        "DE-BW/SekII/G9/GK+LK",
+        "DE-BW/SekII/G9/LK",
+        "DE-BY/CrossStage/G9/GK+LK",
+        "DE-BY/CrossStage/G9/LK",
+        "DE-BY/SekII/G9/GK+LK",
+        "DE-BY/SekII/G9/LK",
+        "DE-HB/CrossStage/G8/GK+LK",
+        "DE-HB/CrossStage/G8/LK",
+        "DE-HB/SekII/G8/GK+LK",
+        "DE-HB/SekII/G8/LK",
+        "DE-HE/CrossStage/G8/GK+LK",
+        "DE-HE/CrossStage/G8/LK",
+        "DE-HE/CrossStage/G9/GK+LK",
+        "DE-HE/CrossStage/G9/LK",
+        "DE-HE/SekII/G8/GK+LK",
+        "DE-HE/SekII/G8/LK",
+        "DE-HE/SekII/G9/GK+LK",
+        "DE-HE/SekII/G9/LK",
+        "DE-HH/CrossStage/G8/GK+LK",
+        "DE-HH/CrossStage/G8/LK",
+        "DE-HH/SekII/G8/GK+LK",
+        "DE-HH/SekII/G8/LK",
+        "DE-MV/CrossStage/G8/GK+LK",
+        "DE-MV/CrossStage/G8/LK",
+        "DE-MV/SekII/G8/GK+LK",
+        "DE-MV/SekII/G8/LK",
+        "DE-NI/CrossStage/G9/GK+LK",
+        "DE-NI/CrossStage/G9/LK",
+        "DE-NI/SekII/G9/GK+LK",
+        "DE-NI/SekII/G9/LK",
+        "DE-NW/CrossStage/G9/GK+LK",
+        "DE-NW/CrossStage/G9/LK",
+        "DE-NW/SekII/G9/GK+LK",
+        "DE-NW/SekII/G9/LK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/CrossStage/G9/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/SekII/G8/GK+LK",
+        "DE-RP/SekII/G8/LK",
+        "DE-RP/SekII/G9/GK+LK",
+        "DE-RP/SekII/G9/LK",
+        "DE-SH/CrossStage/G8/GK+LK",
+        "DE-SH/CrossStage/G8/LK",
+        "DE-SH/CrossStage/G9/GK+LK",
+        "DE-SH/CrossStage/G9/LK",
+        "DE-SH/SekII/G8/GK+LK",
+        "DE-SH/SekII/G8/LK",
+        "DE-SH/SekII/G9/GK+LK",
+        "DE-SH/SekII/G9/LK",
+        "DE-SL/CrossStage/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/SekII/G9/GK+LK",
+        "DE-SL/SekII/G9/LK",
+        "DE-SN/CrossStage/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/SekII/G8/GK+LK",
+        "DE-SN/SekII/G8/LK",
+        "DE-ST/CrossStage/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/SekII/G8/GK+LK",
+        "DE-ST/SekII/G8/LK",
+        "DE-TH/CrossStage/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/SekII/G8/GK+LK",
+        "DE-TH/SekII/G8/LK"
+      ],
+      "math-parallel-line-plane-distances": [
+        "DE-BB/CrossStage//GK",
+        "DE-BB/CrossStage//GK+LK",
+        "DE-BB/CrossStage//LK",
+        "DE-BB/CrossStage/G8/GK",
+        "DE-BB/CrossStage/G8/GK+LK",
+        "DE-BB/CrossStage/G8/LK",
+        "DE-BB/CrossStage/G9/GK",
+        "DE-BB/CrossStage/G9/GK+LK",
+        "DE-BB/CrossStage/G9/LK",
+        "DE-BB/SekII//GK",
+        "DE-BB/SekII//GK+LK",
+        "DE-BB/SekII//LK",
+        "DE-BB/SekII/G8/GK",
+        "DE-BB/SekII/G8/GK+LK",
+        "DE-BB/SekII/G8/LK",
+        "DE-BB/SekII/G9/GK",
+        "DE-BB/SekII/G9/GK+LK",
+        "DE-BB/SekII/G9/LK",
+        "DE-BE/CrossStage//GK",
+        "DE-BE/CrossStage//GK+LK",
+        "DE-BE/CrossStage//LK",
+        "DE-BE/CrossStage/G8/GK",
+        "DE-BE/CrossStage/G8/GK+LK",
+        "DE-BE/CrossStage/G8/LK",
+        "DE-BE/CrossStage/G9/GK",
+        "DE-BE/CrossStage/G9/GK+LK",
+        "DE-BE/CrossStage/G9/LK",
+        "DE-BE/SekII//GK",
+        "DE-BE/SekII//GK+LK",
+        "DE-BE/SekII//LK",
+        "DE-BE/SekII/G8/GK",
+        "DE-BE/SekII/G8/GK+LK",
+        "DE-BE/SekII/G8/LK",
+        "DE-BE/SekII/G9/GK",
+        "DE-BE/SekII/G9/GK+LK",
+        "DE-BE/SekII/G9/LK",
+        "DE-BW/CrossStage//GK+LK",
+        "DE-BW/CrossStage//LK",
+        "DE-BW/CrossStage/G8/GK+LK",
+        "DE-BW/CrossStage/G8/LK",
+        "DE-BW/CrossStage/G9/GK+LK",
+        "DE-BW/CrossStage/G9/LK",
+        "DE-BW/SekII//GK+LK",
+        "DE-BW/SekII//LK",
+        "DE-BW/SekII/G8/GK+LK",
+        "DE-BW/SekII/G8/LK",
+        "DE-BW/SekII/G9/GK+LK",
+        "DE-BW/SekII/G9/LK",
+        "DE-BY/CrossStage/G9/GK+LK",
+        "DE-BY/CrossStage/G9/LK",
+        "DE-BY/SekII/G9/GK+LK",
+        "DE-BY/SekII/G9/LK",
+        "DE-HE/CrossStage/G8/GK+LK",
+        "DE-HE/CrossStage/G8/LK",
+        "DE-HE/CrossStage/G9/GK+LK",
+        "DE-HE/CrossStage/G9/LK",
+        "DE-HE/SekII/G8/GK+LK",
+        "DE-HE/SekII/G8/LK",
+        "DE-HE/SekII/G9/GK+LK",
+        "DE-HE/SekII/G9/LK"
+      ],
+      "math-sphere-surface-application": [
+        "ALL/CrossStage//GK",
+        "ALL/CrossStage//GK+LK",
+        "ALL/CrossStage//LK",
+        "ALL/SekI//",
+        "DE-BB/CrossStage//GK",
+        "DE-BB/CrossStage//GK+LK",
+        "DE-BB/CrossStage//LK",
+        "DE-BB/CrossStage/G8/GK",
+        "DE-BB/CrossStage/G8/GK+LK",
+        "DE-BB/CrossStage/G8/LK",
+        "DE-BB/CrossStage/G9/GK",
+        "DE-BB/CrossStage/G9/GK+LK",
+        "DE-BB/CrossStage/G9/LK",
+        "DE-BB/SekI//",
+        "DE-BB/SekI/G8/",
+        "DE-BB/SekI/G9/",
+        "DE-BE/SekI//",
+        "DE-BE/SekI/G8/",
+        "DE-BE/SekI/G9/",
+        "DE-BW/CrossStage//GK",
+        "DE-BW/CrossStage//GK+LK",
+        "DE-BW/CrossStage//LK",
+        "DE-BW/CrossStage/G8/GK",
+        "DE-BW/CrossStage/G8/GK+LK",
+        "DE-BW/CrossStage/G8/LK",
+        "DE-BW/CrossStage/G9/GK",
+        "DE-BW/CrossStage/G9/GK+LK",
+        "DE-BW/CrossStage/G9/LK",
+        "DE-BW/SekI//",
+        "DE-BW/SekI/G8/",
+        "DE-BW/SekI/G9/",
+        "DE-BY/CrossStage/G9/GK",
+        "DE-BY/CrossStage/G9/GK+LK",
+        "DE-BY/CrossStage/G9/LK",
+        "DE-BY/SekI/G9/",
+        "DE-HB/CrossStage/G8/GK",
+        "DE-HB/CrossStage/G8/GK+LK",
+        "DE-HB/CrossStage/G8/LK",
+        "DE-HB/SekI/G8/",
+        "DE-HE/CrossStage/G9/GK",
+        "DE-HE/CrossStage/G9/GK+LK",
+        "DE-HE/CrossStage/G9/LK",
+        "DE-HE/SekI/G9/",
+        "DE-HH/CrossStage/G8/GK",
+        "DE-HH/CrossStage/G8/GK+LK",
+        "DE-HH/CrossStage/G8/LK",
+        "DE-HH/SekI/G8/",
+        "DE-MV/CrossStage/G8/GK",
+        "DE-MV/CrossStage/G8/GK+LK",
+        "DE-MV/CrossStage/G8/LK",
+        "DE-MV/SekI/G8/",
+        "DE-NI/CrossStage/G9/GK",
+        "DE-NI/CrossStage/G9/GK+LK",
+        "DE-NI/CrossStage/G9/LK",
+        "DE-NI/SekI/G9/",
+        "DE-NW/CrossStage/G9/GK",
+        "DE-NW/CrossStage/G9/GK+LK",
+        "DE-NW/CrossStage/G9/LK",
+        "DE-NW/SekI/G9/",
+        "DE-RP/CrossStage/G9/GK",
+        "DE-RP/CrossStage/G9/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/SekI/G9/",
+        "DE-SH/CrossStage/G9/GK",
+        "DE-SH/CrossStage/G9/GK+LK",
+        "DE-SH/CrossStage/G9/LK",
+        "DE-SH/SekI/G9/",
+        "DE-SL/CrossStage/G9/GK",
+        "DE-SL/CrossStage/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/SekI/G9/",
+        "DE-SN/CrossStage/G8/GK",
+        "DE-SN/CrossStage/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/SekI/G8/",
+        "DE-ST/CrossStage/G8/GK",
+        "DE-ST/CrossStage/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/SekI/G8/",
+        "DE-TH/CrossStage/G8/GK",
+        "DE-TH/CrossStage/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/SekI/G8/"
+      ],
+      "math-sphere-volume-application": [
+        "ALL/CrossStage//GK",
+        "ALL/CrossStage//GK+LK",
+        "ALL/CrossStage//LK",
+        "ALL/SekI//",
+        "DE-BB/CrossStage//GK",
+        "DE-BB/CrossStage//GK+LK",
+        "DE-BB/CrossStage//LK",
+        "DE-BB/CrossStage/G8/GK",
+        "DE-BB/CrossStage/G8/GK+LK",
+        "DE-BB/CrossStage/G8/LK",
+        "DE-BB/CrossStage/G9/GK",
+        "DE-BB/CrossStage/G9/GK+LK",
+        "DE-BB/CrossStage/G9/LK",
+        "DE-BB/SekI//",
+        "DE-BB/SekI/G8/",
+        "DE-BB/SekI/G9/",
+        "DE-BE/SekI//",
+        "DE-BE/SekI/G8/",
+        "DE-BE/SekI/G9/",
+        "DE-BW/CrossStage//GK",
+        "DE-BW/CrossStage//GK+LK",
+        "DE-BW/CrossStage//LK",
+        "DE-BW/CrossStage/G8/GK",
+        "DE-BW/CrossStage/G8/GK+LK",
+        "DE-BW/CrossStage/G8/LK",
+        "DE-BW/CrossStage/G9/GK",
+        "DE-BW/CrossStage/G9/GK+LK",
+        "DE-BW/CrossStage/G9/LK",
+        "DE-BW/SekI//",
+        "DE-BW/SekI/G8/",
+        "DE-BW/SekI/G9/",
+        "DE-BY/CrossStage/G9/GK",
+        "DE-BY/CrossStage/G9/GK+LK",
+        "DE-BY/CrossStage/G9/LK",
+        "DE-BY/SekI/G9/",
+        "DE-HB/CrossStage/G8/GK",
+        "DE-HB/CrossStage/G8/GK+LK",
+        "DE-HB/CrossStage/G8/LK",
+        "DE-HB/SekI/G8/",
+        "DE-HE/CrossStage/G9/GK",
+        "DE-HE/CrossStage/G9/GK+LK",
+        "DE-HE/CrossStage/G9/LK",
+        "DE-HE/SekI/G9/",
+        "DE-HH/CrossStage/G8/GK",
+        "DE-HH/CrossStage/G8/GK+LK",
+        "DE-HH/CrossStage/G8/LK",
+        "DE-HH/SekI/G8/",
+        "DE-MV/CrossStage/G8/GK",
+        "DE-MV/CrossStage/G8/GK+LK",
+        "DE-MV/CrossStage/G8/LK",
+        "DE-MV/SekI/G8/",
+        "DE-NI/CrossStage/G9/GK",
+        "DE-NI/CrossStage/G9/GK+LK",
+        "DE-NI/CrossStage/G9/LK",
+        "DE-NI/SekI/G9/",
+        "DE-NW/CrossStage/G9/GK",
+        "DE-NW/CrossStage/G9/GK+LK",
+        "DE-NW/CrossStage/G9/LK",
+        "DE-NW/SekI/G9/",
+        "DE-RP/CrossStage/G9/GK",
+        "DE-RP/CrossStage/G9/GK+LK",
+        "DE-RP/CrossStage/G9/LK",
+        "DE-RP/SekI/G9/",
+        "DE-SH/CrossStage/G9/GK",
+        "DE-SH/CrossStage/G9/GK+LK",
+        "DE-SH/CrossStage/G9/LK",
+        "DE-SH/SekI/G9/",
+        "DE-SL/CrossStage/G9/GK",
+        "DE-SL/CrossStage/G9/GK+LK",
+        "DE-SL/CrossStage/G9/LK",
+        "DE-SL/SekI/G9/",
+        "DE-SN/CrossStage/G8/GK",
+        "DE-SN/CrossStage/G8/GK+LK",
+        "DE-SN/CrossStage/G8/LK",
+        "DE-SN/SekI/G8/",
+        "DE-ST/CrossStage/G8/GK",
+        "DE-ST/CrossStage/G8/GK+LK",
+        "DE-ST/CrossStage/G8/LK",
+        "DE-ST/SekI/G8/",
+        "DE-TH/CrossStage/G8/GK",
+        "DE-TH/CrossStage/G8/GK+LK",
+        "DE-TH/CrossStage/G8/LK",
+        "DE-TH/SekI/G8/"
+      ]
+    },
+    "uncoveredOrdinaryTargetScopes": {
+      "math-sphere-surface-application": [
+        "DE-HE/CrossStage/G8/GK",
+        "DE-HE/CrossStage/G8/GK+LK",
+        "DE-HE/CrossStage/G8/LK",
+        "DE-HE/SekI/G8/",
+        "DE-RP/CrossStage/G8/GK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/SekI/G8/",
+        "DE-SH/CrossStage/G8/GK",
+        "DE-SH/CrossStage/G8/GK+LK",
+        "DE-SH/CrossStage/G8/LK",
+        "DE-SH/SekI/G8/"
+      ],
+      "math-sphere-volume-application": [
+        "DE-HE/CrossStage/G8/GK",
+        "DE-HE/CrossStage/G8/GK+LK",
+        "DE-HE/CrossStage/G8/LK",
+        "DE-HE/SekI/G8/",
+        "DE-RP/CrossStage/G8/GK",
+        "DE-RP/CrossStage/G8/GK+LK",
+        "DE-RP/CrossStage/G8/LK",
+        "DE-RP/SekI/G8/",
+        "DE-SH/CrossStage/G8/GK",
+        "DE-SH/CrossStage/G8/GK+LK",
+        "DE-SH/CrossStage/G8/LK",
+        "DE-SH/SekI/G8/"
+      ]
+    }
+  },
+  "qualityProofPath": "DE/Gymnasium/quality/learning-units/math-batch-a-2026-11-05/structural-proof.json",
+  "semanticRebindProofPath": "DE/Gymnasium/quality/learning-units/math-batch-a-2026-11-05/semantic-source-rebind.json"
+}

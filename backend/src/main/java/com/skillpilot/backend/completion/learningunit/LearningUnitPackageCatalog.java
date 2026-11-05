@@ -16,7 +16,7 @@ public final class LearningUnitPackageCatalog {
 
     public static LearningUnitCatalog load(CurriculumRuntimeSnapshot snapshot, ObjectMapper mapper) throws Exception {
         Map<String, byte[]> inputs = LearningUnitApplicationService.packageInputs(snapshot, mapper);
-        byte[] manifest = inputs.get(LearningUnitCatalog.MANIFEST_PATH);
+        byte[] manifest = LearningUnitApplicationService.packageManifest(snapshot, inputs, mapper);
         if (manifest == null) throw new IllegalArgumentException("Package omits its learning-unit catalog");
         Map<String, SkillLandscape> landscapes = new LinkedHashMap<>();
         for (var descriptor : snapshot.landscapesById().values()) {
@@ -35,7 +35,8 @@ public final class LearningUnitPackageCatalog {
             LearningUnitSourceBindings.validateActiveSource(definition, source, sourceMeanings,
                     definition.sourceBinding().compositionViewDigests());
             active.add(definition.ref());
-        }, mapper);
+        }, recall -> LearningUnitRecallBindings.validateActive(recall, goals.get(recall.goalId()),
+                bindings::readCurrentDeck, mapper), mapper);
         if (!catalog.quarantined().isEmpty()) throw new IllegalArgumentException("Invalid packaged unit admission: " + catalog.quarantined());
         Set<LearningUnitDefinition.ContractRef> authored = new LinkedHashSet<>();
         for (SkillLandscape landscape : landscapes.values()) if (landscape.getProgramUnits() != null) {
@@ -43,7 +44,7 @@ public final class LearningUnitPackageCatalog {
                 authored.add(new LearningUnitDefinition.ContractRef(unit.getLearningUnit().contractId(), unit.getLearningUnit().revision()));
             }
         }
-        if (!authored.equals(active)) throw new IllegalArgumentException("Packaged unit source metadata and active contracts differ");
+        if (!catalog.activeContractRefs().containsAll(authored)) throw new IllegalArgumentException("Packaged unit source metadata and active contracts differ");
         return catalog;
     }
 }

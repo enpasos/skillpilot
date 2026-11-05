@@ -1,0 +1,4 @@
+{
+  "taskContent": "Eine Pyramide hat Grundflächeninhalt $G>0$ und senkrechte Höhe $h>0$. Ein Schnitt parallel zur Grundfläche in Höhe $z$ über ihr ist ähnlich zur Grundfläche. Leite die Volumenformel $V=Gh/3$ aus den Querschnittsflächen mit einem geeigneten Integral her. Begründe dabei den quadratischen Faktor für die Schnittfläche und die Grenzen des Integrals. (12 BE)",
+  "solutionContent": "Bei $z=0$ ist der Schnitt die Grundfläche, bei $z=h$ schrumpft er zur Spitze. Entsprechende Längen skalieren daher mit $1-z/h$, die Flächen mit dessen Quadrat: $A(z)=G(1-z/h)^2$ für $0\\le z\\le h$. Das Volumen ist\n$$V=\\int_0^h A(z)\\,dz=G\\int_0^h(1-2z/h+z^2/h^2)\\,dz=G[z-z^2/h+z^3/(3h^2)]_0^h=Gh/3.$$\nDie Grenzen sind Grundfläche und Spitze; das Ergebnis ist ein Drittel des Prismas gleicher Grundfläche und Höhe. Die Herleitung gilt auch ohne numerische Maße für eine beliebige Pyramide mit zueinander ähnlichen Parallelquerschnitten."
+}

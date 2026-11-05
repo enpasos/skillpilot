@@ -52,3 +52,18 @@ const compatibilityWitness: LevelCompletion = { ...physicsLegacy, waivedTargetGo
 assert.equal(learningCompletionAnnotations(compatibilityWitness, null, false).get('A')?.reason, 'recognized', 'a compatibility-only witness keeps its global meaning')
 assert.equal(learningCompletionAnnotations(compatibilityWitness, { ...parsed, recognizedGoalIds: [] }, false).has('A'), false, 'older compatibility state cannot resurrect recognition absent from the authoritative snapshot')
 assert.equal(learningCompletionAnnotations(compatibilityWitness, { ...parsed, calculationStatus: 'unavailable', recognizedGoalIds: [] }, false).has('A'), false)
+
+const offer = { status: 'valid', revision: 'offer-1', bindingDigest: 'sha256:offer', coverage: 'partial',
+  scopeKey: { rootLandscapeId: 'root', landscapeId: 'math', schoolForm: 'Gymnasium', jurisdiction: 'ALL', stage: 'CrossStage', durationModel: null, courseProfile: 'GK+LK' },
+  rootContractRefs: [{ contractId: unit.contractId, revision: unit.revision }], coveredTargetCount: 4, totalTargetCount: 10 }
+assert.equal(parseLearningUnits({ ...raw, offerBinding: offer })?.offerBinding?.status, 'valid')
+for (const status of ['unavailable', 'unresolved']) {
+  const independent = parseLearningUnits({ ...raw, voluntaryGoalIds: ['A'], offerBinding: { ...offer, status } })!
+  assert.deepEqual(independent.recognizedGoalIds, ['A', 'B'], 'offer availability must never revoke global recognition')
+  assert.deepEqual(independent.voluntaryGoalIds, ['A'], 'ordinary voluntary practice remains backend-authorized independently of unit offer availability')
+  assert.deepEqual(independent.units, [], 'unavailable offers must not expose stale unit navigation')
+  assert.equal(effectiveMasteryFromSnapshot(explicit, independent).A, 1)
+}
+const malformedOffer = parseLearningUnits({ ...raw, offerBinding: { ...offer, status: 'unknown' } })!
+assert.equal(malformedOffer.offerBinding?.status, 'unavailable')
+assert.deepEqual(malformedOffer.recognizedGoalIds, ['A', 'B'], 'malformed offer metadata cannot invalidate a valid recognition snapshot')

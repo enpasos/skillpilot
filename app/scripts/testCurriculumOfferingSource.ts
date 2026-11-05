@@ -9,6 +9,7 @@ import {
 import {
   applyCompositionViewProjection,
   deriveRuntimeCompositionScope,
+  deriveRuntimeGoalPlacementFilters,
   selectCompositionManagedLandscapeIds,
   shouldApplyLearnerPlacementFallback,
 } from '../src/utils/compositionViewRuntime'
@@ -691,5 +692,23 @@ assert.deepEqual(
     courseProfile: 'LK',
   },
 )
+
+const installedEntry = '19b53458-3f94-5bcf-8fcd-e85444851cff'
+const mathSubject = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
+const entryConfig = {
+  [installedEntry]: { selected: true, filterId: 'DE-HE', stage: 'CrossStage', durationModel: 'G9' },
+  [mathSubject]: { selected: true, filterId: 'LK', durationModel: 'G8' },
+}
+const entryArguments = { landscapeId: mathSubject, rootLandscapeId: installedEntry, scopeEnabled: true,
+  learnerPersonalCurriculum: JSON.stringify(entryConfig), activeFilter: 'G8' }
+assert.equal(deriveRuntimeCompositionScope(entryArguments)?.durationModel, 'G9', 'actual Entry duration wins over stale subject and UI filters')
+assert.deepEqual(deriveRuntimeGoalPlacementFilters(entryArguments), ['DE-HE', 'LK', 'G9'], 'placement fallback uses the identical explicit Entry duration')
+const noEntryDuration = { ...entryConfig, [installedEntry]: { selected: true, filterId: 'DE-HE', stage: 'CrossStage' } }
+const unresolvedEntry = { ...entryArguments, learnerPersonalCurriculum: JSON.stringify(noEntryDuration) }
+assert.equal(deriveRuntimeCompositionScope(unresolvedEntry)?.durationModel, undefined, 'a missing Entry duration never falls back to the stale subject')
+assert.deepEqual(deriveRuntimeGoalPlacementFilters(unresolvedEntry), ['DE-HE', 'LK'], 'missing Entry duration removes stale duration filters')
+const directMath = { ...entryArguments, rootLandscapeId: mathSubject }
+assert.equal(deriveRuntimeCompositionScope(directMath)?.durationModel, 'G8', 'direct Math keeps its own duration without an Entry alias')
+assert.ok(deriveRuntimeGoalPlacementFilters(directMath).includes('G8'))
 
 console.log('Curriculum offering source self-test passed (catalog-only package mode, repository regression).')

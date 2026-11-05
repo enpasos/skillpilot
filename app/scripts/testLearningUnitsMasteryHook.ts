@@ -36,8 +36,12 @@ try {
   await page.keyboard.press('Escape')
 
   assert.equal(await page.getByRole('button', { name: 'Freiwillig üben', exact: true }).count(), 0, 'recognition alone does not authorize a voluntary start')
-  next = { mastery: { Q: 1, A: 0 }, learningUnits: { ...learningUnits(['A']), voluntaryGoalIds: ['A'] } }
+  next = { mastery: { Q: 1, A: 0 }, learningUnits: { ...learningUnits(['A']), voluntaryGoalIds: ['A'],
+    offerBinding: { status: 'unavailable', revision: null, scopeKey: null, coverage: null,
+      rootContractRefs: [], coveredTargetCount: 0, totalTargetCount: 10, bindingDigest: null } } }
   await page.getByText('Refresh', { exact: true }).click()
+  await page.waitForFunction(() => JSON.parse(document.querySelector('[data-testid="snapshot"]')!.textContent!).units?.offerBinding?.status === 'unavailable')
+  assert.equal((await snapshot()).effective.A, 1, 'unavailable unit navigation retains globally effective mastery')
   const activeWrites: unknown[] = []
   await page.route('**/api/ui/learners/*/active-goal', async route => {
     activeWrites.push(route.request().postDataJSON())

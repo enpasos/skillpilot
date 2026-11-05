@@ -18,7 +18,8 @@ for (const before of original.goals) {
   const after = currentGoals.get(before.id); assert.ok(after, `Lost original goal ${before.id}`)
   assert.deepEqual(goalMeaning(after), goalMeaning(before), `Changed original fixed goal meaning ${before.id}`)
 }
-const added = current.goals.filter(goal => !original.goals.some(original => original.id === goal.id))
+const frozenSource = load('curricula/DE/Gymnasium/learning-units/sources/math-2026-11-05-prisms-v1.source.json').landscapes[0] as { goals: MathGoal[] }
+const added = frozenSource.goals.filter(goal => !original.goals.some(original => original.id === goal.id))
 assert.deepEqual(added.map(goal => goal.id), [config.assessmentGoalId])
 assert.deepEqual(added[0].requires, config.ownOrdinaryGoalIds)
 assert.deepEqual(added[0].examData?.coveredGoalIds, config.ownOrdinaryGoalIds)
@@ -42,7 +43,7 @@ assert.equal(proof.reductionFullReachabilityBeforeSha256, proof.reductionFullRea
 const oldMaterial = JSON.parse(execFileSync('git', ['-c', 'core.trustctime=false', 'show', `${config.materialRef}:${mathCanonicalPath}`],
   { cwd: root, encoding: 'utf8', maxBuffer: 12 * 1024 * 1024 })) as { goals: MathGoal[] }
 const oldExam = oldMaterial.goals.find(goal => goal.id === config.assessmentGoalId)!.examData!
-const newExam = added[0].examData!
+const newExam = currentGoals.get(config.assessmentGoalId)!.examData!
 assert.deepEqual({ taskContent: newExam.taskContent, solutionContent: newExam.solutionContent, scoring: newExam.scoring },
   { taskContent: oldExam.taskContent, solutionContent: oldExam.solutionContent, scoring: oldExam.scoring }, 'Historical reviewed normal performance changed')
 assert.equal(digest(canonicalJson({ taskContent: newExam.taskContent, solutionContent: newExam.solutionContent })), contract.assessmentClaims[config.assessmentGoalId].taskRevision)

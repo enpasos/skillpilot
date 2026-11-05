@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import {
   findRuntimeRootLandscapeId,
+  resolveRuntimeCompositionRootId,
   loadRuntimeCurriculumCatalog,
   parseRuntimeCurriculumCatalog,
   resolveExplicitRuntimeOfferingId,
@@ -145,6 +146,17 @@ assert.equal(
   'an explicit course-local package landscape remains selectable without implicit root defaulting',
 )
 assert.equal(findRuntimeRootLandscapeId(parsed, MODULE_ID), ROOT_ID)
+const separatelyRootedSubject = fixture()
+separatelyRootedSubject.rootLandscapeIds.push(MODULE_ID)
+separatelyRootedSubject.landscapes[1].role = 'root'
+delete separatelyRootedSubject.landscapes[1].parentLandscapeId
+const dualRoots = parseRuntimeCurriculumCatalog(separatelyRootedSubject)
+assert.equal(resolveRuntimeCompositionRootId(dualRoots, MODULE_ID, ROOT_ID, new Set([ROOT_ID, MODULE_ID])), ROOT_ID,
+  'the selected installed entry remains scope context when its subject is also a mapping root')
+assert.equal(resolveRuntimeCompositionRootId(dualRoots, MODULE_ID, MODULE_ID, new Set([MODULE_ID])), MODULE_ID,
+  'a direct subject selection stays its own real root without aliasing the package entry')
+assert.equal(resolveRuntimeCompositionRootId(dualRoots, MODULE_ID, ROOT_ID, new Set([MODULE_ID])), MODULE_ID,
+  'an unloaded or unrelated entry cannot supply another subject scope')
 assert.equal(resolveRuntimeOfferingId(parsed, ROOT_ID, null), OFFERING_ID)
 assert.equal(
   resolveRuntimeOfferingId(parsed, ROOT_ID, { stage: 'One', schoolForm: 'Sentinel' }),

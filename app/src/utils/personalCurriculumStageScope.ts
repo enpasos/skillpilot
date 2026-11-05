@@ -108,6 +108,9 @@ export const resolvePersonalCurriculumStageScope = (
   if (rootStage) {
     return rootStage
   }
+  // Only the original repository root has historical stage markers. A
+  // separately installed entry needs its own explicit current root setting.
+  if (rootLandscapeId !== CANONICAL_GYMNASIUM_ROOT_ID && landscapeId !== rootLandscapeId) return undefined
 
   if (landscapeId && landscapeId !== rootLandscapeId) {
     const landscapeStage = normalizePersonalCurriculumStageScope(
@@ -198,7 +201,10 @@ export const getGlobalStageScopeSelection = (
   context: PersonalCurriculumStageContext = {},
 ): GlobalStageScopeSelection => {
   const stage = resolvePersonalCurriculumStageScope(config, context)
-  return stage ? selectionFromStageScope(stage) : legacyStageScopeSelection(config)
+  return stage ? selectionFromStageScope(stage)
+    : context.rootLandscapeId && context.rootLandscapeId !== CANONICAL_GYMNASIUM_ROOT_ID && context.landscapeId !== context.rootLandscapeId
+      ? { sek1Selected: false, sek2Selected: false }
+      : legacyStageScopeSelection(config)
 }
 
 export const setGlobalStageScopeSelection = <

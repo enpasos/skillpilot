@@ -543,7 +543,7 @@ public class CurriculaService {
             if (topic != null && !full) label += " / " + topic.getTitle();
         }
         if (!full) {
-            Map<String, String> runtimeScope = deriveRuntimeCompositionScope(landscapeId, personal);
+            Map<String, String> runtimeScope = deriveRuntimeCompositionScope(landscapeId, personal, champion.getCurriculumId());
             if (!runtimeScope.isEmpty()) label += " (" + String.join(", ", new java.util.TreeMap<>(runtimeScope).values()) + ")";
         }
         boolean findingsAvailable = quality != null && quality.humanTrialFindingsAvailable();
@@ -737,7 +737,7 @@ public class CurriculaService {
             matchedView = compositionViewService.findDefaultView(compositionLandscapeId);
         } else {
             Map<String, String> requestedScope =
-                    deriveRuntimeCompositionScope(compositionLandscapeId, personalCurriculumJson);
+                    deriveRuntimeCompositionScope(compositionLandscapeId, personalCurriculumJson, curriculumId);
             if (requestedScope.isEmpty()) {
                 return Collections.emptySet();
             }
@@ -769,6 +769,11 @@ public class CurriculaService {
     }
 
     private Map<String, String> deriveRuntimeCompositionScope(String landscapeId, String personalCurriculumJson) {
+        return deriveRuntimeCompositionScope(landscapeId, personalCurriculumJson, CANONICAL_GYMNASIUM_ROOT_ID);
+    }
+
+    private Map<String, String> deriveRuntimeCompositionScope(String landscapeId, String personalCurriculumJson,
+                                                             String selectedRootId) {
         SkillLandscape landscape = landscapeService.getById(landscapeId);
         if (landscape == null || landscape.getFrameworkId() == null || !landscape.getFrameworkId().startsWith("canonical-gymnasium")) {
             return Collections.emptyMap();
@@ -779,16 +784,19 @@ public class CurriculaService {
             config = Collections.emptyMap();
         }
 
-        String rootFilterId = readFilterId(config, CANONICAL_GYMNASIUM_ROOT_ID);
+        String rootId = CANONICAL_GYMNASIUM_ROOT_ID.equals(selectedRootId)
+                || landscapeService.isPersonalizationEntryRootForSubject(selectedRootId, landscapeId) ? selectedRootId : null;
+        boolean explicitEntry = rootId != null && !CANONICAL_GYMNASIUM_ROOT_ID.equals(rootId);
+        String rootFilterId = readFilterId(config, rootId);
         String landscapeFilterId = readFilterId(config, landscapeId);
         String jurisdiction = resolveJurisdictionFilter(rootFilterId, landscapeFilterId);
         String courseProfile = normalizeCourseProfileScope(landscapeFilterId);
-        String stage = inferStageScope(config, landscapeId);
+        String stage = inferStageScope(config, landscapeId, rootId);
         String durationModel = resolveDurationModelScope(
-                readScopeValue(config, landscapeId, "durationModel"),
-                readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, "durationModel"),
+                readScopeValue(config, explicitEntry ? rootId : landscapeId, "durationModel"),
+                explicitEntry ? null : readScopeValue(config, rootId, "durationModel"),
                 rootFilterId,
-                landscapeFilterId);
+                explicitEntry ? null : landscapeFilterId);
 
         if (jurisdiction == null && stage == null && courseProfile == null && durationModel == null) {
             return Collections.emptyMap();
@@ -861,8 +869,15 @@ public class CurriculaService {
     private String inferStageScope(
             Map<String, Map<String, Object>> config,
             String landscapeId) {
+        return inferStageScope(config, landscapeId, CANONICAL_GYMNASIUM_ROOT_ID);
+    }
+
+    private String inferStageScope(Map<String, Map<String, Object>> config, String landscapeId, String rootId) {
+        if (rootId != null && !CANONICAL_GYMNASIUM_ROOT_ID.equals(rootId)) {
+            return resolveStageScope(readScopeValue(config, rootId, "stage"));
+        }
         String explicitStage = resolveStageScope(
-                readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, "stage"),
+                readScopeValue(config, rootId, "stage"),
                 readScopeValue(config, landscapeId, "stage"));
         if (explicitStage != null) {
             return explicitStage;

@@ -3,9 +3,21 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "${ROOT_DIR}"
-PROFILE="contracts/curriculum-package/v1.2/profiles/de-gymnasium-mathematik-learning-units-release-model-v1.profile.json"
+PROFILE_ID="$(python3 -B - <<'PY'
+import sys
+from pathlib import Path
+sys.path.insert(0, 'scripts')
+import curriculum_learning_unit_artifacts as units
+print(units.current_build_profile_id(Path.cwd()))
+PY
+)"
+PROFILE="contracts/curriculum-package/v1.2/profiles/${PROFILE_ID}.profile.json"
 PACKAGE_PROFILE="contracts/curriculum-package/v1.2/profiles/full-standalone-learning-units-v1.profile.json"
 OUTPUT_BASE="tmp/curriculum-release-model/learning-units"
+if [[ "${PROFILE_ID}" == "de-gymnasium-mathematik-learning-unit-offers-release-model-v1" ]]; then
+  PACKAGE_PROFILE="contracts/curriculum-package/v1.2/profiles/full-standalone-learning-unit-offers-v1.profile.json"
+  OUTPUT_BASE="tmp/curriculum-release-model/learning-unit-offers"
+fi
 OUTPUT_A="${OUTPUT_BASE}/mathematik-a"
 OUTPUT_B="${OUTPUT_BASE}/mathematik-b"
 REVIEW="${ROOT_DIR}/${OUTPUT_BASE}/redistribution-review.json"
@@ -16,7 +28,10 @@ mkdir -p "${OUTPUT_BASE}"
 # This provisions that input; runtime 1.2 FWU-OWL export remains unsupported.
 bash scripts/provision_pinned_fwu_ontology.sh
 python3 -B scripts/test_learning_unit_package.py
-python3 -B scripts/validate_curriculum_package_contracts.py --contracts-dir contracts/curriculum-package/v1.2
+python3 -B scripts/test_learning_unit_offer_package.py
+python3 -B scripts/test_learning_unit_semantic_inputs.py
+python3 -B scripts/validate_curriculum_package_contracts.py --contracts-dir contracts/curriculum-package/v1.2 \
+  --profile-id "$(basename "${PACKAGE_PROFILE}" .profile.json)"
 python3 -B scripts/compile_curriculum_release_model.py --profile "${PROFILE}" --output "${OUTPUT_A}"
 python3 -B scripts/validate_curriculum_release_model.py --profile "${PROFILE}" --release-root "${OUTPUT_A}"
 python3 -B scripts/compile_curriculum_release_model.py --profile "${PROFILE}" --output "${OUTPUT_B}"

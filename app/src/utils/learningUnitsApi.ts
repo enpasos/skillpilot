@@ -21,6 +21,27 @@ export interface LearningUnitReadModel {
   pendingGoalIds: string[]
 }
 
+export interface LearningUnitOfferScope {
+  rootLandscapeId: string
+  landscapeId: string
+  schoolForm: string
+  jurisdiction: string
+  stage: string
+  durationModel: string | null
+  courseProfile: string | null
+}
+
+export interface LearningUnitOfferBinding {
+  status: 'valid' | 'unavailable' | 'unresolved'
+  revision: string | null
+  scopeKey: LearningUnitOfferScope | null
+  coverage: 'partial' | 'complete' | null
+  rootContractRefs: { contractId: string; revision: string }[]
+  coveredTargetCount: number
+  totalTargetCount: number
+  bindingDigest: string | null
+}
+
 export interface LearningUnitsReadModel {
   calculationStatus: 'valid' | 'partial' | 'unavailable'
   semantics: 'global-unit-recognition-v1'
@@ -28,6 +49,7 @@ export interface LearningUnitsReadModel {
   recognizedGoalIds: string[]
   voluntaryGoalIds: string[]
   units: LearningUnitReadModel[]
+  offerBinding?: LearningUnitOfferBinding
 }
 
 const invalid = (): never => { throw new Error('Invalid learning-unit response') }
@@ -47,19 +69,61 @@ const localized = (value: unknown): Record<string, string> => Object.fromEntries
 )
 const count = (value: unknown): number => Number.isSafeInteger(value) && Number(value) >= 0 ? Number(value) : invalid()
 
+const unavailableOfferBinding = (): LearningUnitOfferBinding => ({ status: 'unavailable', revision: null, scopeKey: null,
+  coverage: null, rootContractRefs: [], coveredTargetCount: 0, totalTargetCount: 0, bindingDigest: null })
+
+/** Offer metadata is separate from the backend's globally valid recognition. */
+const parseOfferBinding = (value: unknown): LearningUnitOfferBinding | undefined => {
+  if (value === undefined) return undefined
+  try {
+    const source = object(value)
+    if (!['valid', 'unavailable', 'unresolved'].includes(String(source.status))) return invalid()
+    const scope = source.scopeKey === null ? null : object(source.scopeKey)
+    const parsed: LearningUnitOfferBinding = {
+      status: source.status as LearningUnitOfferBinding['status'],
+      revision: source.revision === null ? null : text(source.revision),
+      bindingDigest: source.bindingDigest === null ? null : text(source.bindingDigest),
+      scopeKey: scope === null ? null : {
+        rootLandscapeId: text(scope.rootLandscapeId), landscapeId: text(scope.landscapeId),
+        schoolForm: text(scope.schoolForm), jurisdiction: text(scope.jurisdiction), stage: text(scope.stage),
+        durationModel: scope.durationModel === null ? null : text(scope.durationModel),
+        courseProfile: scope.courseProfile === null ? null : text(scope.courseProfile),
+      },
+      coverage: source.coverage === null ? null : ['partial', 'complete'].includes(String(source.coverage))
+        ? source.coverage as 'partial' | 'complete' : invalid(),
+      rootContractRefs: Array.isArray(source.rootContractRefs) ? source.rootContractRefs.map(value => {
+        const ref = object(value)
+        return { contractId: text(ref.contractId), revision: text(ref.revision) }
+      }) : invalid(),
+      coveredTargetCount: count(source.coveredTargetCount), totalTargetCount: count(source.totalTargetCount),
+    }
+    if (parsed.coveredTargetCount > parsed.totalTargetCount
+      || new Set(parsed.rootContractRefs.map(ref => `${ref.contractId}@${ref.revision}`)).size !== parsed.rootContractRefs.length
+      || (parsed.status === 'valid' && (!parsed.scopeKey || !parsed.revision || !parsed.bindingDigest || !parsed.coverage))) return invalid()
+    return parsed
+  } catch {
+    console.warn('Learning-unit offer binding is invalid; retaining global recognition')
+    return unavailableOfferBinding()
+  }
+}
+
 /** Validate the backend snapshot without deriving recognition from local edges or focus. */
 export const parseLearningUnits = (value: unknown): LearningUnitsReadModel | null => {
   if (value === undefined || value === null) return null
   const source = object(value)
   const status = source.calculationStatus
   if (source.semantics !== 'global-unit-recognition-v1'
-    || !['valid', 'partial', 'unavailable'].includes(String(status)) || !Array.isArray(source.units)) return invalid()
+    || !['valid', 'partial', 'unavailable'].includes(String(status))) return invalid()
+  const offerBinding = parseOfferBinding(source.offerBinding)
+  const rawUnits = offerBinding && offerBinding.status !== 'valid' ? [] : source.units
+  if (!Array.isArray(rawUnits)) return invalid()
   const result: LearningUnitsReadModel = {
     calculationStatus: status as LearningUnitsReadModel['calculationStatus'],
     semantics: 'global-unit-recognition-v1', contractDigest: status === 'unavailable' && source.contractDigest == null ? null : text(source.contractDigest),
     recognizedGoalIds: texts(source.recognizedGoalIds),
     voluntaryGoalIds: source.voluntaryGoalIds === undefined ? [] : texts(source.voluntaryGoalIds),
-    units: source.units.map(value => {
+    ...(offerBinding === undefined ? {} : { offerBinding }),
+    units: rawUnits.map(value => {
       const unit = object(value)
       if (typeof unit.complete !== 'boolean' || (unit.calculationStatus !== undefined && unit.calculationStatus !== 'unavailable')) return invalid()
       const parsed: LearningUnitReadModel = {

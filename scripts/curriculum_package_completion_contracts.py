@@ -22,14 +22,14 @@ def base_directory(directory: Path) -> Path:
     return directory.parent / "v1" if extended_directory(directory) else directory
 
 
-def profile_path(directory: Path) -> Path:
-    name = learning_units.PROFILE_ID if learning_units.extended_directory(directory) else PROFILE_ID if extended_directory(directory) else "full-standalone-v1"
+def profile_path(directory: Path, profile_id: str | None = None) -> Path:
+    name = learning_units.OFFER_PROFILE_ID if profile_id == learning_units.OFFER_PROFILE_ID and learning_units.extended_directory(directory) else learning_units.PROFILE_ID if learning_units.extended_directory(directory) else PROFILE_ID if extended_directory(directory) else "full-standalone-v1"
     return directory / "profiles" / f"{name}.profile.json"
 
 
-def extra_schemas(directory: Path) -> tuple[tuple[str, Path], ...]:
+def extra_schemas(directory: Path, profile_id: str | None = None) -> tuple[tuple[str, Path], ...]:
     if learning_units.extended_directory(directory):
-        return learning_units.extra_schemas(directory)
+        return learning_units.extra_schemas(directory, profile_id)
     core = directory.parent.parent / "assessment-completion" / "v1"
     return (
         (CATALOG_SCHEMA_ID, directory / "runtime-catalog.schema.json"),

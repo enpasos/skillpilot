@@ -172,6 +172,7 @@ export interface LearnerViewProps {
   onNotify?: (kind: ToastKind, message: string) => void
   availableLandscapes?: { landscapeId: string; title: string; filters?: { id: string; label: string }[]; compatibilityOnly?: boolean }[]
   rootLandscapeId?: string
+  usesGuidedPersonalCurriculumEditor?: boolean
   onRefresh?: () => void
   onScopeDataRefresh?: () => void
   parentMap?: Map<string, string[]>
@@ -423,6 +424,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   onNotify,
   availableLandscapes = [],
   rootLandscapeId,
+  usesGuidedPersonalCurriculumEditor: guidedPersonalCurriculumEditor,
   onRefresh,
   onScopeDataRefresh,
   parentMap,
@@ -574,6 +576,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const { language, setLanguage } = useLanguage();
   const learnerDataManagementCopy = getLearnerDataManagementCopy(language === 'en' ? 'en' : 'de')
   const runtimeCatalogState = useRuntimeCurriculumCatalog()
+  const usesGuidedPersonalCurriculumEditor = guidedPersonalCurriculumEditor
+    ?? rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
   const t = useTranslation();
   const location = useLocation()
   const completionDiscoveryRequest = new URLSearchParams(location.search).get('completionShortcuts') === '1'
@@ -755,11 +759,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [skillpilotId])
 
   useEffect(() => {
-    if (rootLandscapeId !== CANONICAL_GYMNASIUM_ROOT_ID) return
-    if (learnerData?.selectedCurriculum !== CANONICAL_GYMNASIUM_ROOT_ID) return
-    if (landscapeId === CANONICAL_GYMNASIUM_ROOT_ID) return
-    onLandscapeChange?.(CANONICAL_GYMNASIUM_ROOT_ID)
-  }, [landscapeId, learnerData?.selectedCurriculum, onLandscapeChange, rootLandscapeId])
+    if (!usesGuidedPersonalCurriculumEditor || !rootLandscapeId) return
+    if (learnerData?.selectedCurriculum !== rootLandscapeId) return
+    if (landscapeId === rootLandscapeId) return
+    onLandscapeChange?.(rootLandscapeId)
+  }, [landscapeId, learnerData?.selectedCurriculum, onLandscapeChange, rootLandscapeId, usesGuidedPersonalCurriculumEditor])
 
   const getSrsSource = useCallback((goal: UiGoal) => {
     return resolveGoalDeckHref(runtimeCatalogState, goal, localizedLanguage, () => {
@@ -1586,8 +1590,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       ? stateRequiredAction === 'setActiveGoal' || currentActiveFlashcardVerificationWaiting
       : !effectiveActiveGoalId)
 
-  const usesGuidedPersonalCurriculumEditor =
-    rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
   const personalConfigLoadStatus: LearnerStateLoadStatus =
     personalConfigLoadState.scopeKey === learnerStateScopeKey
       ? personalConfigLoadState.status
@@ -1991,10 +1993,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       ])
       if (!isCurrentRefresh()) return null
       if (
-        rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
-        && landscapeId !== CANONICAL_GYMNASIUM_ROOT_ID
+        usesGuidedPersonalCurriculumEditor && rootLandscapeId
+        && landscapeId !== rootLandscapeId
       ) {
-        onLandscapeChange?.(CANONICAL_GYMNASIUM_ROOT_ID)
+        onLandscapeChange?.(rootLandscapeId)
       }
       return refreshedConfig
     } catch (error) {
@@ -2610,7 +2612,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         if (res.ok) {
           const data = await res.json()
           if (isCurrentRefresh()) applyLoadedProfile(data, learnerStateScopeKey, preferenceSequenceAtStart)
-          if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
+          if (usesGuidedPersonalCurriculumEditor) {
             if (isCurrentRefresh()) {
               setPersonalConfig(readPersonalCurriculumConfig(data.personalCurriculum))
             }
@@ -2680,6 +2682,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     rootLandscapeId,
     skillpilotId,
     t.notifications.learnerInitialLoadFailed,
+    usesGuidedPersonalCurriculumEditor,
   ])
 
   // Check mobile state
@@ -3011,8 +3014,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
       if (configChanged) {
         onScopeDataRefresh?.()
-        if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID && landscapeId !== CANONICAL_GYMNASIUM_ROOT_ID) {
-          onLandscapeChange?.(CANONICAL_GYMNASIUM_ROOT_ID)
+        if (usesGuidedPersonalCurriculumEditor && rootLandscapeId && landscapeId !== rootLandscapeId) {
+          onLandscapeChange?.(rootLandscapeId)
         }
       }
 
@@ -3077,6 +3080,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     skillpilotId,
     t.notifications.personalCurriculumSaveFailed,
     t.notifications.preferencesSaveFailed,
+    usesGuidedPersonalCurriculumEditor,
   ])
 
   // Save preferences to backend

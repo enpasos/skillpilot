@@ -39,6 +39,9 @@ public final class JsonCurriculumPackageLoader {
     private static final String LEARNING_UNIT_CAPABILITY = "learningUnitRecognitionV1";
     private static final String LEARNING_UNIT_RELEASE_PROFILE = "full-standalone-learning-units-v1";
     private static final String LEARNING_UNIT_CATALOG_SCHEMA_ID = "https://skillpilot.com/schemas/curriculum-package/v1.2/runtime-catalog.schema.json";
+    private static final String LEARNING_UNIT_OFFER_CAPABILITY = "learningUnitOfferBindingsV1";
+    private static final String LEARNING_UNIT_OFFER_RELEASE_PROFILE = "full-standalone-learning-unit-offers-v1";
+    private static final String LEARNING_UNIT_OFFER_CATALOG_SCHEMA_ID = "https://skillpilot.com/schemas/curriculum-package/v1.2/offer-runtime-catalog.schema.json";
     private static final String LEARNING_UNIT_ARTIFACT_SCHEMA_ID = "https://skillpilot.com/schemas/curriculum-package/v1.2/learning-unit-artifact.schema.json";
     private static final String RELEASE_PROFILE = "full-standalone-v1";
     private static final String PACKAGE_FORMAT_VERSION = "1.0";
@@ -51,7 +54,7 @@ public final class JsonCurriculumPackageLoader {
             "memoryCards",
             "goalVisualizations",
             "embeddedDependencies",
-            "examNodes", COMPLETION_CAPABILITY, LEARNING_UNIT_CAPABILITY);
+            "examNodes", COMPLETION_CAPABILITY, LEARNING_UNIT_CAPABILITY, LEARNING_UNIT_OFFER_CAPABILITY);
 
     private final CurriculumPackageProperties properties;
     private final CurriculumPackageRepository repository;
@@ -178,8 +181,9 @@ public final class JsonCurriculumPackageLoader {
         if (!completion && !learningUnits && !runtimeVersion.equals(RUNTIME_CONTRACT_VERSION)) {
             throw failure("Unsupported runtime contract version: " + runtimeVersion);
         }
+        boolean unitOffers = learningUnits && LEARNING_UNIT_OFFER_RELEASE_PROFILE.equals(manifest.path("releaseProfile").asText());
         requireExactText(manifest, "releaseProfile",
-                learningUnits ? LEARNING_UNIT_RELEASE_PROFILE : completion ? COMPLETION_RELEASE_PROFILE : RELEASE_PROFILE, "package manifest");
+                unitOffers ? LEARNING_UNIT_OFFER_RELEASE_PROFILE : learningUnits ? LEARNING_UNIT_RELEASE_PROFILE : completion ? COMPLETION_RELEASE_PROFILE : RELEASE_PROFILE, "package manifest");
         requireExactText(manifest, "variant", "json", "package manifest");
         requireExactText(manifest, "packageId", lock.packageId(), "package manifest");
         requireExactText(manifest, "packageVersion", lock.packageVersion(), "package manifest");
@@ -198,7 +202,7 @@ public final class JsonCurriculumPackageLoader {
         ManifestFile catalogFile = exactlyOneRole(files, "runtime-catalog");
         JsonNode catalog = readJsonArtifact(installedPackage, catalogFile, verifiedPaths);
         requireExactText(catalog, "$schema",
-                learningUnits ? LEARNING_UNIT_CATALOG_SCHEMA_ID : completion ? COMPLETION_CATALOG_SCHEMA_ID : RUNTIME_CATALOG_SCHEMA_ID, "runtime catalog");
+                unitOffers ? LEARNING_UNIT_OFFER_CATALOG_SCHEMA_ID : learningUnits ? LEARNING_UNIT_CATALOG_SCHEMA_ID : completion ? COMPLETION_CATALOG_SCHEMA_ID : RUNTIME_CATALOG_SCHEMA_ID, "runtime catalog");
         requireExactText(catalog, "catalogVersion", runtimeVersion, "runtime catalog");
         requireExactText(catalog, "runtimeContractVersion", runtimeVersion, "runtime catalog");
         JsonNode releaseBinding = requiredObject(catalog, "releaseBinding", "runtime catalog");
@@ -219,6 +223,10 @@ public final class JsonCurriculumPackageLoader {
         }
         if (learningUnits != capabilities.contains(LEARNING_UNIT_CAPABILITY)) {
             throw failure("Learning-unit recognition capability requires the exact runtime 1.2 release profile");
+        }
+
+        if (unitOffers != capabilities.contains(LEARNING_UNIT_OFFER_CAPABILITY)) {
+            throw failure("Learning-unit offer capability requires its exact runtime 1.2 offer profile/schema pair");
         }
 
         JsonNode indexes = requiredObject(catalog, "artifactIndexes", "runtime catalog");
@@ -268,7 +276,15 @@ public final class JsonCurriculumPackageLoader {
                 installedPackage, catalog, resourceIndex, files);
         validateLocalCatalogBindings(landscapes, views, offerings, decks, resources);
         validateCompletionArtifacts(installedPackage, catalog, files, artifacts, verifiedPaths, landscapes, completion);
-        validateLearningUnitArtifacts(installedPackage, catalog, files, artifacts, verifiedPaths, landscapes, learningUnits);
+        validateLearningUnitArtifacts(installedPackage, catalog, files, artifacts, verifiedPaths, landscapes, learningUnits, unitOffers);
+        if (unitOffers) {
+            ManifestFile mapping = exactlyOneRole(files, "mapping");
+            if (!mapping.runtimeRequired() || !"source-to-canonical-mappings".equals(mapping.normalizationRole())
+                    || !"application/json".equals(mapping.mediaType())) throw failure("Offer profile requires one reviewed runtime mapping artifact");
+            byte[] mappingBytes = readArtifactBytes(installedPackage, mapping, verifiedPaths);
+            parseJson(mappingBytes, "reviewed runtime mappings");
+            artifacts.get(new CurriculumRuntimeSnapshot.ArtifactKey(lock.packageId(), mapping.path())).retainVerifiedContent(mappingBytes);
+        }
 
         for (ManifestFile file : files.values()) {
             if (!verifiedPaths.contains(file.path())) {
@@ -309,7 +325,7 @@ public final class JsonCurriculumPackageLoader {
             InstalledCurriculumPackage installed, JsonNode catalog, Map<String, ManifestFile> files,
             Map<CurriculumRuntimeSnapshot.ArtifactKey, CurriculumRuntimeSnapshot.Artifact> artifacts,
             Set<String> verified, Map<String, CurriculumRuntimeSnapshot.LandscapeDescriptor> landscapes,
-            boolean learningUnits) {
+            boolean learningUnits, boolean unitOffers) {
         Set<String> roles = Set.of("learning-unit-catalog", "learning-unit-contract", "learning-unit-input");
         Set<String> inventory = new HashSet<>();
         files.values().stream().filter(file -> roles.contains(file.role())).forEach(file -> inventory.add(file.path()));
@@ -359,7 +375,9 @@ public final class JsonCurriculumPackageLoader {
             requireExactText(definition, "sha256", CurriculumPackageFileReader.sha256(content), "learning-unit source bytes");
             if ("catalog".equals(kind)) {
                 catalogs++;
-                if (!com.skillpilot.backend.completion.learningunit.LearningUnitCatalog.MANIFEST_PATH.equals(id)) throw failure("Unexpected learning-unit catalog source identity");
+                if (parseJson(content, "learning-unit source catalog").has("currentOfferBinding") != unitOffers) {
+                    throw failure("Current offer pointer requires the exact offer capability/profile/schema pair");
+                }
             }
             artifacts.get(new CurriculumRuntimeSnapshot.ArtifactKey(installed.lockEntry().packageId(), path)).retainVerifiedContent(bytes);
         }

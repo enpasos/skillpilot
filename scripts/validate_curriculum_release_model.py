@@ -44,7 +44,7 @@ DEFAULT_PROFILE = (
     / "profiles/de-gymnasium-mathematik-release-model-v1.profile.json"
 )
 if learning_units.requires_runtime(REPO_ROOT):
-    DEFAULT_PROFILE = CONTRACT_ROOT.parent / "v1.2/profiles/de-gymnasium-mathematik-learning-units-release-model-v1.profile.json"
+    DEFAULT_PROFILE = CONTRACT_ROOT.parent / ("v1.2/profiles/" + learning_units.current_build_profile_id(REPO_ROOT) + ".profile.json")
 
 MAX_JSON_BYTES = 64 * 1024 * 1024
 ZERO_DIGEST = "sha256:" + "0" * 64
@@ -1693,10 +1693,10 @@ def validate_schema_registry_coverage(
             paths = {(field,) for field in schemas[schema_name]["properties"]}
         else:
             schema = schemas[schema_name]
-            if schema.get("$id") in {completion_contracts.CATALOG_SCHEMA_ID, learning_units.CATALOG_SCHEMA_ID}:
+            if schema.get("$id") in {completion_contracts.CATALOG_SCHEMA_ID, learning_units.CATALOG_SCHEMA_ID, learning_units.OFFER_CATALOG_SCHEMA_ID}:
                 schema = completion_artifacts.schema_for_coverage(REPO_ROOT, schema)
             paths = schema_field_paths(schema)
-            if schema.get("$id") in {completion_contracts.CATALOG_SCHEMA_ID, learning_units.CATALOG_SCHEMA_ID}:
+            if schema.get("$id") in {completion_contracts.CATALOG_SCHEMA_ID, learning_units.CATALOG_SCHEMA_ID, learning_units.OFFER_CATALOG_SCHEMA_ID}:
                 if "completionArtifacts" in schema.get("properties", {}):
                     paths.add(("completionArtifacts", "*"))
                 if "learningUnitArtifacts" in schema.get("properties", {}):
@@ -1774,6 +1774,8 @@ def load_trusted_context(profile_path: Path) -> TrustedContext:
 
     profile = load_json(profile_path)
     require(isinstance(profile, dict), "Build profile must be an object")
+    require(not ("learningUnits" in profile and learning_units.has_current_offer(REPO_ROOT, profile["learningUnits"]["catalogPath"].removeprefix("curricula/"))
+            and "entryLandscape" not in profile), "Current Mathematics offers require their explicit reviewed entry build profile")
     if ("learningUnits" not in profile
             and profile.get("canonicalLandscape", {}).get("sourcePath") == "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json"
             and learning_units.requires_runtime(REPO_ROOT)):
@@ -1789,6 +1791,12 @@ def load_trusted_context(profile_path: Path) -> TrustedContext:
         for name in ("build-profile", "runtime-catalog", "compiled-landscape", "learning-unit-artifact"):
             filename = "release-model-build-profile" if name == "build-profile" else name
             schema_files[name] = CONTRACT_ROOT.parent / ("v1.2/" + filename + ".schema.json")
+    offer_profile = unit_profile and learning_units.has_current_offer(REPO_ROOT, profile["learningUnits"]["catalogPath"].removeprefix("curricula/"))
+    if offer_profile:
+        schema_files["runtime-catalog"] = CONTRACT_ROOT.parent / "v1.2/offer-runtime-catalog.schema.json"
+    if "entryLandscape" in profile:
+        schema_files["build-profile"] = CONTRACT_ROOT.parent / "v1.2/offer-release-model-build-profile.schema.json"
+        schema_files["offer-compiled-landscape"] = CONTRACT_ROOT.parent / "v1.2/offer-compiled-landscape.schema.json"
     schemas: dict[str, dict[str, Any]] = {}
     validators: dict[str, Draft202012Validator] = {}
     for name, path in schema_files.items():
@@ -1805,6 +1813,10 @@ def load_trusted_context(profile_path: Path) -> TrustedContext:
     for name, schema_id in SCHEMA_IDS.items():
         if unit_profile and name in {"build-profile", "runtime-catalog", "compiled-landscape"}:
             schema_id = learning_units.NAMESPACE + ("release-model-build-profile" if name == "build-profile" else name) + ".schema.json"
+            if offer_profile and name == "runtime-catalog":
+                schema_id = learning_units.OFFER_CATALOG_SCHEMA_ID
+            if "entryLandscape" in profile and name == "build-profile":
+                schema_id = learning_units.NAMESPACE + "offer-release-model-build-profile.schema.json"
         elif completion and name == "runtime-catalog":
             schema_id = completion_contracts.CATALOG_SCHEMA_ID
         require(
@@ -1817,7 +1829,7 @@ def load_trusted_context(profile_path: Path) -> TrustedContext:
         validators["runtime-catalog"] = offline[completion_contracts.CATALOG_SCHEMA_ID]
         validators["completion-artifact"] = offline[completion_contracts.ARTIFACT_SCHEMA_ID]
     if unit_profile:
-        validators["runtime-catalog"] = completion_artifacts.validators(REPO_ROOT)[learning_units.CATALOG_SCHEMA_ID]
+        validators["runtime-catalog"] = completion_artifacts.validators(REPO_ROOT)[learning_units.OFFER_CATALOG_SCHEMA_ID if offer_profile else learning_units.CATALOG_SCHEMA_ID]
     validate_schema(profile, validators["build-profile"], str(profile_path))
 
     contracts = profile["contracts"]
@@ -3558,6 +3570,14 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
 
     landscape_id = compiled_landscape["landscapeId"]
     landscape_output = profile["canonicalLandscape"]["outputPath"]
+    entry_source = learning_units.entry_landscape(REPO_ROOT, profile)
+    compiled_entry = None
+    if entry_source is not None:
+        compiled_entry = copy.deepcopy(entry_source)
+        compiled_entry["$schema"] = learning_units.OFFER_LANDSCAPE_SCHEMA_ID
+        compiled_entry["landscapeFormatVersion"] = "1.2"
+        validate_schema(compiled_entry, context.validators["offer-compiled-landscape"], "explicit Mathematics package entry")
+        semantic_counts["programStructure"] += 1
     compiled_views: list[tuple[str, dict[str, Any]]] = []
     view_source_directory = resolve_repo_path(
         profile["compositionViews"]["sourceDirectory"]
@@ -3826,6 +3846,8 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
         "sourceGoalById": source_goal_by_id,
         "landscape": compiled_landscape,
         "landscapePath": landscape_output,
+        "entryLandscape": compiled_entry,
+        "entryLandscapePath": profile.get("entryLandscape", {}).get("outputPath"),
         "views": compiled_views,
         "viewIndex": view_index,
         "viewIndexPath": view_index_path,
@@ -3906,6 +3928,7 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
     release_id = model["releaseId"]
     landscape_id = model["landscapeId"]
     landscape = model["landscape"]
+    entry = model.get("entryLandscape")
     goals = landscape["goals"]
     resources = model["resources"]
     completion_documents: list[tuple[str, str, str, Any]] = []
@@ -4097,6 +4120,16 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
             )
 
     resource_keys: dict[str, dict[str, Any]] = {}
+    entry_key = None
+    if entry is not None:
+        entry_id = entry["landscapeId"]
+        entry_output = profile["entryLandscape"]["outputPath"]
+        entry_key = {"kind": "landscape", "id": entry_id}
+        add_definition(entry_key, "canonical-landscape", entry_id, entry_output, "", entry, "")
+        entry_goal = entry["goals"][0]
+        require(entry_goal["id"] not in goal_keys, "Entry structural root collides with a canonical goal")
+        entry_goal_key = {"kind": "goal", "id": entry_goal["id"]}
+        add_definition(entry_goal_key, "canonical-landscape", entry_id, entry_output, "/goals/0", entry_goal, "/goals/0")
     for index, resource in enumerate(resources):
         key = {"kind": "resource", "id": resource["resourceId"]}
         resource_keys[resource["resourceId"]] = key
@@ -4166,6 +4199,9 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
             "landscape.goals",
             goal_keys[goal["id"]],
         )
+    if entry_key is not None:
+        hard(entry_key, "/goals/0", "landscape.goals", entry_goal_key)
+        hard(entry_goal_key, "/contains/0", "goal.contains", goal_keys[profile["canonicalLandscape"]["rootGoalId"]])
     for unit_index, unit in enumerate(landscape.get("programUnits", [])):
         hard(
             landscape_key,
@@ -4337,7 +4373,7 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
     reference_ids = [canonical_json_bytes(reference) for reference in references]
     require(len(reference_ids) == len(set(reference_ids)), "Duplicate closure reference")
 
-    seeds = [landscape_key, *[view_keys[view_id] for view_id in sorted(view_keys)]]
+    seeds = [landscape_key, *([entry_key] if entry_key is not None else []), *[view_keys[view_id] for view_id in sorted(view_keys)]]
     adjacency: dict[str, set[str]] = defaultdict(set)
     for reference in references:
         if reference["strength"] == "hard":
@@ -4438,7 +4474,7 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
     default_view_id = profile["compositionViews"]["defaultViewId"]
     runtime_catalog_path = "data/runtime/catalog.json"
     runtime_catalog = {
-        "$schema": learning_units.CATALOG_SCHEMA_ID if unit_documents else completion_contracts.CATALOG_SCHEMA_ID if completion_documents else SCHEMA_IDS["runtime-catalog"],
+        "$schema": (learning_units.OFFER_CATALOG_SCHEMA_ID if learning_units.OFFER_CAPABILITY in learning_units.catalog_capabilities(unit_documents) else learning_units.CATALOG_SCHEMA_ID) if unit_documents else completion_contracts.CATALOG_SCHEMA_ID if completion_documents else SCHEMA_IDS["runtime-catalog"],
         "catalogVersion": "1.2" if unit_documents else "1.1" if completion_documents else "1.0",
         "runtimeContractVersion": "1.2" if unit_documents else "1.1" if completion_documents else profile["contracts"]["runtimeContractVersion"],
         "releaseBinding": {"releaseId": release_id, "contentDigest": ZERO_DIGEST},
@@ -4525,11 +4561,19 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
         ]
 
     if unit_documents:
-        runtime_catalog["capabilities"].append(learning_units.CAPABILITY)
+        runtime_catalog["capabilities"].extend(learning_units.catalog_capabilities(unit_documents))
         runtime_catalog["learningUnitArtifacts"] = [
             {"id": logical_id, "kind": document["artifactKind"], "artifactPath": path}
             for _role, logical_id, path, document in unit_documents
         ]
+    if entry is not None:
+        entry_id = entry["landscapeId"]
+        runtime_catalog["rootLandscapeIds"].insert(0, entry_id)
+        runtime_catalog["landscapes"].insert(0, {
+            "landscapeId": entry_id, "role": "root", "artifactPath": profile["entryLandscape"]["outputPath"],
+            "locale": entry["locale"], "frameworkId": entry["frameworkId"], "subject": entry["subject"],
+            "country": entry["country"], "region": entry["region"], "schoolForm": entry["schoolType"],
+        })
     logical_documents: list[tuple[str, str, str, Any]] = [
         ("canonical-landscape", landscape_id, model["landscapePath"], landscape),
         (
@@ -4575,6 +4619,8 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
     logical_documents.extend(model["publication"]["logicalDocuments"])
     logical_documents.extend(completion_documents)
     logical_documents.extend(unit_documents)
+    if entry is not None:
+        logical_documents.append(("canonical-landscape", entry["landscapeId"], profile["entryLandscape"]["outputPath"], entry))
 
     logical_records: list[dict[str, Any]] = []
     normalized_payloads: dict[tuple[str, str], bytes] = {}
@@ -4659,7 +4705,7 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
     require(
         len(model["publication"]["logicalDocuments"])
         == publication_content_counts["addedLogicalArtifacts"]
-        and len(logical_records) == publication_content_counts["totalLogicalArtifacts"] + len(completion_documents) + len(unit_documents)
+        and len(logical_records) == publication_content_counts["totalLogicalArtifacts"] + len(completion_documents) + len(unit_documents) + int(entry is not None)
         and len(binary_records) == publication_content_counts["binaryResources"],
         "Publication-evidence content-index counts changed",
     )
@@ -4704,8 +4750,8 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
         validate_schema(value, context.validators[schema_name], label)
 
     counts = {
-        "landscapes": 1,
-        "goals": len(goals),
+        "landscapes": 1 + int(entry is not None),
+        "goals": len(goals) + int(entry is not None),
         "programUnits": len(landscape.get("programUnits", [])),
         "goalPlacements": len(landscape.get("goalPlacements", [])),
         "competencyEntries": len(landscape.get("competencyCatalog", [])),
@@ -4868,6 +4914,10 @@ def expected_json_documents(model: Mapping[str, Any]) -> dict[str, tuple[str | N
     for output_path, view in model["views"]:
         require(output_path not in documents, f"Duplicate output path: {output_path}")
         documents[output_path] = ("composition-view", view)
+    if model.get("entryLandscape") is not None:
+        output_path = model["entryLandscapePath"]
+        require(output_path not in documents, f"Duplicate output path: {output_path}")
+        documents[output_path] = ("offer-compiled-landscape", model["entryLandscape"])
     for output_path, deck in model["decks"]:
         require(output_path not in documents, f"Duplicate output path: {output_path}")
         documents[output_path] = ("card-deck", deck)

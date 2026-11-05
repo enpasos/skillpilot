@@ -2,6 +2,9 @@ import type { UiGoal } from '../goalTypes'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from './curriculumDisplay'
 import {
   goalMatchesGlobalStageScope,
+  resolvePersonalCurriculumStageScope,
+  getGlobalStageScopeSelection,
+  GLOBAL_STAGE_SCOPE_CONFIG_IDS,
   type PersonalCurriculumStageConfig,
   type PersonalCurriculumStageScope,
 } from './personalCurriculumStageScope'
@@ -72,5 +75,19 @@ assert(
   ),
   'conflicting stage tags remain fail-open instead of being assigned arbitrarily',
 )
+
+const separateEntry = 'installed-authored-entry'
+const stalePriorScope = {
+  ...sek2Config,
+  math: { selected: true, stage: 'SekII' },
+  [separateEntry]: { selected: true },
+  [GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2]: { selected: true },
+}
+assert(resolvePersonalCurriculumStageScope(stalePriorScope, { rootLandscapeId: separateEntry, landscapeId: 'math' }) === undefined,
+  'a distinct package entry never inherits a previous root, subject stage or legacy global marker')
+assert(!getGlobalStageScopeSelection(stalePriorScope, { rootLandscapeId: separateEntry }).sek2Selected,
+  'stage checkboxes remain unresolved for a distinct entry without explicit stage')
+assert(resolvePersonalCurriculumStageScope({ ...stalePriorScope, [separateEntry]: { selected: true, stage: 'SekI' } },
+  { rootLandscapeId: separateEntry, landscapeId: 'math' }) === 'SekI', 'the actual explicit entry stage is used')
 
 console.log('personal curriculum stage scope tests passed')

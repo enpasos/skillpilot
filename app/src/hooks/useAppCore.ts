@@ -31,6 +31,7 @@ import { useRuntimeCurriculumCatalog } from './useRuntimeCurriculumCatalog'
 import { shouldSyncRouteStateToUrl } from '../utils/rootRoutePolicy'
 import {
   findRuntimeRootLandscapeId,
+  resolveRuntimeCompositionRootId,
   resolveLearnerRuntimeOfferingId,
   resolveExplicitRuntimeOfferingId,
   resolveRuntimeApiHref,
@@ -338,11 +339,16 @@ export function useAppCore({
 
   const [learnerGraphRefreshToken, setLearnerGraphRefreshToken] = React.useState(0)
   const runtimeCatalogReady = runtimeCatalogState.mode === 'package' || runtimeCatalogState.mode === 'repository'
+  const selectedCatalogRoot = runtimeCatalogState.mode === 'package'
+    ? runtimeCatalogState.catalog.landscapes.find((entry) => entry.landscapeId === selectedLandscapeId
+        && entry.role === 'root' && runtimeCatalogState.catalog.rootLandscapeIds.includes(entry.landscapeId))
+    : undefined
   // The canonical learner closure already carries root/subject metadata. Do
   // not additionally download every unselected subject's complete graph.
   // Canonical editor choices remain owned by the personalization-plan API.
   const scopedCanonicalLearner = role === 'learner' && !!skillpilotId
-    && selectedLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
+    && (selectedLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
+      || !!selectedCatalogRoot && isRepositoryGymnasiumFramework(selectedCatalogRoot.frameworkId))
   const {
     landscapeEntries: publicLandscapeEntries,
     loadingLandscapes,
@@ -519,7 +525,8 @@ export function useAppCore({
     if (role === 'learner' && (loadingLearnerProfile || currentLearnerProfile?.error)) return requests
     graphSourceLandscapeEntries.forEach((entry) => {
       const rootLandscapeId = runtimeCatalogState.mode === 'package'
-        ? findRuntimeRootLandscapeId(runtimeCatalogState.catalog, entry.meta.landscapeId)
+        ? resolveRuntimeCompositionRootId(runtimeCatalogState.catalog, entry.meta.landscapeId, selectedCatalogRoot?.landscapeId,
+            new Set(graphSourceLandscapeEntries.map((source) => source.meta.landscapeId)))
         : undefined
       const scope = deriveRuntimeCompositionScope({
         landscapeId: entry.meta.landscapeId,
@@ -581,7 +588,7 @@ export function useAppCore({
       }
     })
     return requests
-  }, [activeFilter, selectedOfferingId, graphSourceLandscapeEntries, learnerPersonalCurriculum, runtimeCatalogState, selectedLandscapeId, role, loadingLearnerProfile, currentLearnerProfile?.error])
+  }, [activeFilter, selectedOfferingId, graphSourceLandscapeEntries, learnerPersonalCurriculum, runtimeCatalogState, selectedLandscapeId, selectedCatalogRoot?.landscapeId, role, loadingLearnerProfile, currentLearnerProfile?.error])
 
   const compositionRequestKey = JSON.stringify([learnerProfileKey, [...runtimeCompositionRequests]])
 
@@ -694,7 +701,8 @@ export function useAppCore({
         deriveRuntimeGoalPlacementFilters({
           landscapeId: entry.meta.landscapeId,
           rootLandscapeId: runtimeCatalogState.mode === 'package'
-            ? findRuntimeRootLandscapeId(runtimeCatalogState.catalog, entry.meta.landscapeId)
+            ? resolveRuntimeCompositionRootId(runtimeCatalogState.catalog, entry.meta.landscapeId, selectedCatalogRoot?.landscapeId,
+                new Set(graphSourceLandscapeEntries.map((source) => source.meta.landscapeId)))
             : undefined,
           activeFilter,
           learnerPersonalCurriculum,
@@ -734,6 +742,7 @@ export function useAppCore({
     role,
     runtimeCatalogState,
     runtimeCompositionRequests,
+    selectedCatalogRoot?.landscapeId,
   ])
 
   const projectedCurrentLandscapeEntry = useMemo(() => {
@@ -911,13 +920,13 @@ export function useAppCore({
       // goals. Revealing one must not reload a subject closure and immediately
       // bounce back to the learner's committed root curriculum.
       const isLoadedCanonicalTarget = role === 'learner'
-        && selectedLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
+        && (selectedLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID || !!selectedCatalogRoot)
         && goalIndexAll.get(goalId)?.landscapeId === targetLandscapeId
       if (!isLoadedCanonicalTarget) newSearchParams.set('l', targetLandscapeId)
       const view = location.pathname.split('/')[1]
       navigate(`/${view}/${goalId}?${newSearchParams.toString()}`)
     },
-    [navigate, location.pathname, searchParams, role, selectedLandscapeId, goalIndexAll],
+    [navigate, location.pathname, searchParams, role, selectedLandscapeId, selectedCatalogRoot, goalIndexAll],
   )
 
   const handleMasteryChange = (id: string, value: number) => {
@@ -1047,8 +1056,10 @@ export function useAppCore({
       ?? loadedLandscapeError,
     runtimeCatalogState,
     runtimeRootLandscapeId: runtimeCatalogState.mode === 'package'
-      ? findRuntimeRootLandscapeId(runtimeCatalogState.catalog, selectedLandscapeId)
+      ? selectedCatalogRoot?.landscapeId ?? findRuntimeRootLandscapeId(runtimeCatalogState.catalog, selectedLandscapeId)
       : undefined,
+    usesGuidedPersonalCurriculumEditor: selectedLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
+      || !!selectedCatalogRoot && selectedCatalogRoot.frameworkId === 'canonical-gymnasium-mathematics-entry-v1',
     showLearnerTools,
     selectedLandscapeId,
     currentRouteGoalId: goalId ?? '',

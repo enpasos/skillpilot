@@ -15,6 +15,7 @@ import com.skillpilot.backend.landscape.*;
 import com.skillpilot.backend.repository.*;
 import com.skillpilot.backend.service.*;
 import com.skillpilot.backend.completion.learningunit.LearningUnitApplicationService;
+import com.skillpilot.backend.completion.learningunit.LearningUnitOfferBindings;
 import java.nio.file.*;
 import java.util.*;
 import org.springframework.context.ApplicationEventPublisher;
@@ -60,9 +61,14 @@ public final class NativeMathOfferingInventory {
         ReflectionTestUtils.setField(service, "completionApplicationService", completion);
         var learner = new Learner();
         learner.setSelectedCurriculum(ROOT);
+        bindLearningUnitInputClosure(root.resolve("curricula"));
+        long admissionHeapBefore = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        long admissionStartNanos = System.nanoTime();
         var learningUnits = new LearningUnitApplicationService(properties, MAPPER, landscapes,
                 new CompletionCanonicalGraphResolver(landscapes, MAPPER), "repository",
                 mock(org.springframework.beans.factory.ObjectProvider.class));
+        long admissionNanos = System.nanoTime() - admissionStartNanos;
+        long admissionHeapAfter = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 
         JsonNode declared = readOfferings(root).path(MATH);
         Set<String> jurisdictions = new TreeSet<>();
@@ -116,7 +122,13 @@ public final class NativeMathOfferingInventory {
                 row.put("assessmentGoalIds", select(mathTargets, effective, "assessment"));
                 row.put("recallGoalIds", select(mathTargets, effective, "recall"));
                 row.put("orientationGoalIds", select(mathTargets, effective, "orientation"));
-                row.put("learningUnitReadModel", learningUnits.readModel(learningUnits.evaluate("native-inventory", Set.of()), mathTargets));
+                learner.setPersonalCurriculum(MAPPER.writeValueAsString(scope.getValue()));
+                LearningUnitOfferBindings.ResolvedOfferContext offerContext = ReflectionTestUtils.invokeMethod(service,
+                        "learningUnitOfferContext", learner);
+                if (!offerContext.targetIds().equals(mathTargets)) throw new IllegalStateException("Native offer adapter target mismatch");
+                if (!offerContext.prerequisiteOnlyIds().equals(intersection(support, mathIds))) throw new IllegalStateException("Native offer adapter support mismatch");
+                row.put("nativeOfferContext", offerContext);
+                row.put("learningUnitReadModel", learningUnits.readModel(learningUnits.evaluate("native-inventory", Set.of()), offerContext, Set.of()));
                 Map<String, List<String>> paths = new TreeMap<>();
                 Map<String, Object> resolvedViews = new TreeMap<>();
                 for (String viewId : new TreeSet<>(viewIds)) {
@@ -169,6 +181,27 @@ public final class NativeMathOfferingInventory {
         report.put("scopes", rows);
         report.put("canonicalGraphGoalCount", canonical.size());
         report.put("learningUnitCatalogQuarantines", learningUnits.catalog().quarantined());
+        report.put("catalogAdmissionMeasurement", Map.of("contractCount", learningUnits.catalog().definitions().size(),
+                "elapsedNanos", admissionNanos, "usedHeapBeforeBytes", admissionHeapBefore, "usedHeapAfterBytes", admissionHeapAfter,
+                "javaVersion", System.getProperty("java.runtime.version"),
+                "boundary", "One actual catalog/service construction after landscape/canonical caches were initialized; no forced GC, HTTP, SQL or CI performance claim"));
+        List<Map<String, Object>> contractEvaluations = new ArrayList<>();
+        for (var definition : learningUnits.catalog().definitions()) {
+            Set<String> ordinary = new TreeSet<>();
+            definition.ownResolvedKinds().forEach((id, kind) -> { if ("ordinary".equals(kind)) ordinary.add(id); });
+            Set<String> qPass = new TreeSet<>(definition.ownAssessmentGoalIds());
+            var passed = learningUnits.evaluate("native-contract-q-pass-" + definition.contractId(), qPass);
+            var ordinaryOnly = learningUnits.evaluate("native-contract-a-only-" + definition.contractId(), ordinary);
+            Map<String, Object> evidence = new TreeMap<>();
+            evidence.put("contractId", definition.contractId()); evidence.put("revision", definition.revision());
+            evidence.put("ownOrdinaryGoalIds", ordinary); evidence.put("ownAssessmentGoalIds", qPass);
+            evidence.put("ownRecallGoalIds", definition.ownRecallGoalIds());
+            evidence.put("globalRecognitionAfterOwnQPass", passed.recognizedGoalIds());
+            evidence.put("ownQPassUnitResult", passed.units().get(definition.ref()));
+            evidence.put("onlyOrdinaryExplicitUnitResult", ordinaryOnly.units().get(definition.ref()));
+            contractEvaluations.add(evidence);
+        }
+        report.put("actualContractEvaluations", contractEvaluations);
         report.put("globalRecognitionAfterProjectionAssessment", learningUnits.evaluate("native-inventory",
                 Set.of("e98672c6-871a-5d0b-889c-5afc51040f0d")).recognizedGoalIds());
         if (canonical.containsKey("e5494c67-aed6-5710-8ae3-51ae147c10e9")) {
@@ -199,7 +232,7 @@ public final class NativeMathOfferingInventory {
             inputs.put(root.relativize(Path.of(input.getKey())).toString(), input.getValue());
         }
         report.put("nativeMapperInputSha256", inputs);
-        report.put("inputBindingCoverage", "Every file parser opened by the shared runtime ObjectMapper; generated offerings and source code bound by invoking script");
+        report.put("inputBindingCoverage", "Every file parser opened by the shared runtime ObjectMapper plus the exact declared learning-unit catalog/contract/input/active-offer closure; generated offerings and source code bound by invoking script");
         Files.createDirectories(Path.of(args[1]).getParent());
         MAPPER.writerWithDefaultPrettyPrinter().writeValue(Path.of(args[1]).toFile(), report);
     }
@@ -208,6 +241,35 @@ public final class NativeMathOfferingInventory {
         try {
             return java.util.HexFormat.of().formatHex(java.security.MessageDigest.getInstance("SHA-256").digest(Files.readAllBytes(path)));
         } catch (java.security.NoSuchAlgorithmException error) { throw new IllegalStateException(error); }
+    }
+
+    private static void bindLearningUnitInputClosure(Path curricula) throws Exception {
+        Path catalog = curricula.resolve("DE/Gymnasium/learning-units/catalog.json");
+        if (!Files.isRegularFile(catalog)) return;
+        INPUT_DIGESTS.put(catalog.toAbsolutePath().normalize().toString(), fileDigest(catalog));
+        JsonNode document = MAPPER.readTree(catalog.toFile());
+        for (JsonNode entry : document.path("contracts")) {
+            bindDeclaredInput(curricula, entry.path("path").asText());
+            entry.path("inputs").fieldNames().forEachRemaining(path -> {
+                try { bindDeclaredInput(curricula, path); }
+                catch (Exception error) { throw new IllegalStateException(error); }
+            });
+        }
+        if (document.hasNonNull("currentOfferBinding")) {
+            Path offer = bindDeclaredInput(curricula, document.path("currentOfferBinding").path("path").asText());
+            JsonNode binding = MAPPER.readTree(offer.toFile());
+            binding.path("inputs").fieldNames().forEachRemaining(path -> {
+                try { bindDeclaredInput(curricula, path); }
+                catch (Exception error) { throw new IllegalStateException(error); }
+            });
+        }
+    }
+
+    private static Path bindDeclaredInput(Path curricula, String relative) throws Exception {
+        Path path = curricula.resolve(relative).toAbsolutePath().normalize();
+        if (!path.startsWith(curricula.toAbsolutePath().normalize())) throw new IllegalStateException("Escaping declared input");
+        INPUT_DIGESTS.put(path.toString(), fileDigest(path));
+        return path;
     }
 
     private static Set<String> intersection(Set<String> left, Set<String> right) {

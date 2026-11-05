@@ -10,7 +10,7 @@ import {
   type CompositionViewNode,
 } from './authoring/compositionViewAuthoring'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from './curriculumDisplay'
-import { normalizeDurationModel } from './durationModel'
+import { isDurationModelFilterId, normalizeDurationModel } from './durationModel'
 import { splitFilterIds } from './goalFilters'
 import { normalizeJurisdictionCode } from './jurisdictionMetadata'
 import {
@@ -321,24 +321,24 @@ export const deriveRuntimeGoalPlacementFilters = ({
   const personalCurriculum = parsePersonalCurriculum(learnerPersonalCurriculum)
   const rootConfig = personalCurriculum[rootLandscapeId]
   const landscapeConfig = personalCurriculum[landscapeId]
+  const explicitEntryContext = rootLandscapeId !== landscapeId && rootLandscapeId !== CANONICAL_GYMNASIUM_ROOT_ID
   const filters: string[] = []
 
   pushScopedFilter(filters, rootConfig?.filterId)
   pushScopedFilter(filters, landscapeConfig?.filterId)
   pushScopedFilter(filters, activeFilter)
 
-  const durationModel = [
-    landscapeConfig?.durationModel,
-    rootConfig?.durationModel,
-  ]
+  const durationModel = (explicitEntryContext ? [rootConfig?.durationModel]
+    : [landscapeConfig?.durationModel, rootConfig?.durationModel])
     .map((value) => normalizeDurationModel(value))
     .find((value): value is NonNullable<typeof value> => !!value)
 
-  if (durationModel && !filters.includes(durationModel)) {
-    filters.push(durationModel)
+  const scopedFilters = explicitEntryContext ? filters.filter(filter => !isDurationModelFilterId(filter)) : filters
+  if (durationModel && !scopedFilters.includes(durationModel)) {
+    scopedFilters.push(durationModel)
   }
 
-  return filters
+  return scopedFilters
 }
 
 export const selectCompositionManagedLandscapeIds = (
@@ -385,13 +385,14 @@ export const deriveRuntimeCompositionScope = ({
     landscapeId,
     rootLandscapeId,
   })
-  const durationModel = [
+  const explicitEntryContext = rootLandscapeId !== landscapeId && rootLandscapeId !== CANONICAL_GYMNASIUM_ROOT_ID
+  const durationModel = (explicitEntryContext ? [personalCurriculum[rootLandscapeId]?.durationModel] : [
     personalCurriculum[landscapeId]?.durationModel,
     personalCurriculum[rootLandscapeId]?.durationModel,
     rootFilterId,
     landscapeFilterId,
     ...activeFilters,
-  ]
+  ])
     .map((value) => normalizeDurationModel(value))
     .find((value): value is NonNullable<typeof value> => !!value)
 

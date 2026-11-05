@@ -190,6 +190,36 @@ public class LandscapeService {
                 packageState.mappingState().mappings().size());
     }
 
+    /** An installed curriculum root must actually contain and offer this subject. */
+    public boolean isPersonalizationEntryRootForSubject(String rootId, String subjectId) {
+        ensureFresh();
+        if (rootId == null || rootId.equals(subjectId)) return false;
+        SkillLandscape root = cachedById.get(rootId);
+        SkillLandscape subject = cachedById.get(subjectId);
+        if (root == null || subject == null || !"Gymnasium".equals(root.getSchoolType())
+                || root.getFrameworkId() == null || !root.getFrameworkId().startsWith("canonical-gymnasium")
+                || (!curriculumManifest.isEmpty() ? !curriculumManifest.contains(rootId)
+                    : getReferencedLandscapeIds().contains(rootId))) return false;
+        LearningGoal rootGoal = getRootGoal(root);
+        if (rootGoal == null || rootGoal.getContains() == null
+                || !rootGoal.getContains().contains(getRootGoalId(subject)) || root.getPersonalizationFlow() == null) return false;
+        JsonNode flow = objectMapper.valueToTree(root.getPersonalizationFlow());
+        boolean offersSubject = false, ownsJurisdiction = false, ownsStage = false;
+        for (JsonNode stage : flow.path("stages")) for (JsonNode group : stage.path("groups")) {
+            JsonNode source = group.path("source");
+            String kind = source.path("kind").asText();
+            if (Set.of("landscapes", "offeredLandscapes").contains(kind)) {
+                for (JsonNode id : source.path("landscapeIds")) if (subjectId.equals(id.asText())) offersSubject = true;
+            }
+            if (rootId.equals(source.path("landscapeId").asText())) {
+                ownsJurisdiction |= "landscapeFilters".equals(kind);
+                ownsStage |= Set.of("scopeValues", "offeredScopeValues").contains(kind)
+                        && "stage".equals(source.path("scopeKey").asText());
+            }
+        }
+        return offersSubject && ownsJurisdiction && ownsStage;
+    }
+
     public List<SkillLandscape> getAll() {
         ensureFresh();
         return cachedLandscapes;

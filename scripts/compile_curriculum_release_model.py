@@ -40,7 +40,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 CONTRACT_ROOT = REPO_ROOT / "contracts/curriculum-package/v1"
 DEFAULT_PROFILE = CONTRACT_ROOT / "profiles/de-gymnasium-mathematik-release-model-v1.profile.json"
 if learning_units.requires_runtime(REPO_ROOT):
-    DEFAULT_PROFILE = CONTRACT_ROOT.parent / "v1.2/profiles/de-gymnasium-mathematik-learning-units-release-model-v1.profile.json"
+    DEFAULT_PROFILE = CONTRACT_ROOT.parent / ("v1.2/profiles/" + learning_units.current_build_profile_id(REPO_ROOT) + ".profile.json")
 
 
 SCHEMA_FILES = {
@@ -1068,9 +1068,11 @@ def schema_validator(path: Path) -> Draft202012Validator:
 def validate_schema(value: Any, schema_name: str, context: str) -> None:
     if isinstance(value, dict) and value.get("$schema", "").startswith(learning_units.NAMESPACE):
         if schema_name == "runtime-catalog":
-            validator = completion_artifacts.validators(REPO_ROOT)[learning_units.CATALOG_SCHEMA_ID]
+            validator = completion_artifacts.validators(REPO_ROOT)[value["$schema"]]
         else:
-            filename = "release-model-build-profile" if schema_name == "build-profile" else schema_name
+            filename = "release-model-build-profile" if schema_name == "build-profile" else value["$schema"].removeprefix(learning_units.NAMESPACE).removesuffix(".schema.json")
+            if schema_name == "build-profile" and "entryLandscape" in value:
+                filename = "offer-release-model-build-profile"
             validator = schema_validator(CONTRACT_ROOT.parent / ("v1.2/" + filename + ".schema.json"))
     elif schema_name == "runtime-catalog" and isinstance(value, dict) and value.get("$schema") == completion_contracts.CATALOG_SCHEMA_ID:
         validator = completion_artifacts.validators(REPO_ROOT)[completion_contracts.CATALOG_SCHEMA_ID]
@@ -2821,6 +2823,9 @@ def compile_publication_evidence(
 def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     profile = load_json(profile_path)
     validate_schema(profile, "build-profile", str(profile_path))
+    if ("learningUnits" in profile and learning_units.has_current_offer(REPO_ROOT, profile["learningUnits"]["catalogPath"].removeprefix("curricula/"))
+            and "entryLandscape" not in profile):
+        raise CompilationError("Current Mathematics offers require their explicit reviewed entry build profile")
     if ("learningUnits" not in profile
             and profile["canonicalLandscape"]["sourcePath"] == "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json"
             and learning_units.requires_runtime(REPO_ROOT)):
@@ -3091,6 +3096,15 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     output_root.mkdir(parents=True, exist_ok=True)
     landscape_output = profile["canonicalLandscape"]["outputPath"]
     write_json(output_root, landscape_output, compiled_landscape)
+    entry_source = learning_units.entry_landscape(REPO_ROOT, profile)
+    compiled_entry = None
+    if entry_source is not None:
+        compiled_entry = copy.deepcopy(entry_source)
+        compiled_entry["$schema"] = learning_units.OFFER_LANDSCAPE_SCHEMA_ID
+        compiled_entry["landscapeFormatVersion"] = "1.2"
+        validate_schema(compiled_entry, "compiled-landscape", "explicit Mathematics package entry")
+        semantic_counts["programStructure"] += 1
+        write_json(output_root, profile["entryLandscape"]["outputPath"], compiled_entry)
 
     compiled_views: list[tuple[str, dict[str, Any]]] = []
     view_source_directory = resolve_repo_path(profile["compositionViews"]["sourceDirectory"])
@@ -3413,6 +3427,17 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         key = {"kind": "competency-entry", "landscapeId": landscape_id, "id": competency["id"]}
         competency_keys[competency["id"]] = key
         add_definition(key, "canonical-landscape", landscape_id, landscape_output, pointer("competencyCatalog", index), competency, "canonical-landscape", pointer("competencyCatalog", index))
+    entry_key = None
+    if compiled_entry is not None:
+        entry_id = compiled_entry["landscapeId"]
+        entry_output = profile["entryLandscape"]["outputPath"]
+        entry_key = {"kind": "landscape", "id": entry_id}
+        add_definition(entry_key, "canonical-landscape", entry_id, entry_output, "", compiled_entry, "canonical-landscape", "")
+        entry_goal = compiled_entry["goals"][0]
+        if entry_goal["id"] in goal_keys:
+            raise CompilationError("Entry structural root collides with a canonical goal")
+        entry_goal_key = {"kind": "goal", "id": entry_goal["id"]}
+        add_definition(entry_goal_key, "canonical-landscape", entry_id, entry_output, "/goals/0", entry_goal, "canonical-landscape", "/goals/0")
     view_keys: dict[str, dict[str, Any]] = {}
     for output_path, view in compiled_views:
         key = {"kind": "view", "id": view["viewId"]}
@@ -3501,6 +3526,9 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
 
     for goal_index, goal in enumerate(goals):
         hard(landscape_key, pointer("goals", goal_index), "landscape.goals", goal_keys[goal["id"]])
+    if entry_key is not None:
+        hard(entry_key, "/goals/0", "landscape.goals", entry_goal_key)
+        hard(entry_goal_key, "/contains/0", "goal.contains", goal_keys[profile["canonicalLandscape"]["rootGoalId"]])
     for unit_index, unit in enumerate(compiled_landscape.get("programUnits", [])):
         hard(landscape_key, pointer("programUnits", unit_index), "landscape.program-units", unit_keys[unit["id"]])
         parent_id = unit.get("parentUnitId")
@@ -3681,7 +3709,7 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
             canonical_json_bytes(item["target"]),
         )
     )
-    seeds = [landscape_key, *[view_keys[view_id] for view_id in sorted(view_keys)]]
+    seeds = [landscape_key, *([entry_key] if entry_key is not None else []), *[view_keys[view_id] for view_id in sorted(view_keys)]]
     adjacency: dict[str, set[str]] = defaultdict(set)
     for reference in references:
         if reference["strength"] == "hard":
@@ -3778,7 +3806,7 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     default_view_id = profile["compositionViews"]["defaultViewId"]
     default_offering_id = f"offering.{default_view_id}"
     runtime_catalog = {
-        "$schema": learning_units.CATALOG_SCHEMA_ID if unit_documents else completion_contracts.CATALOG_SCHEMA_ID if completion_documents else SCHEMA_IDS["runtime-catalog"],
+        "$schema": (learning_units.OFFER_CATALOG_SCHEMA_ID if learning_units.OFFER_CAPABILITY in learning_units.catalog_capabilities(unit_documents) else learning_units.CATALOG_SCHEMA_ID) if unit_documents else completion_contracts.CATALOG_SCHEMA_ID if completion_documents else SCHEMA_IDS["runtime-catalog"],
         "catalogVersion": "1.2" if unit_documents else "1.1" if completion_documents else "1.0",
         "runtimeContractVersion": "1.2" if unit_documents else "1.1" if completion_documents else profile["contracts"]["runtimeContractVersion"],
         "releaseBinding": {"releaseId": release_id, "contentDigest": ZERO_DIGEST},
@@ -3859,11 +3887,20 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
             for _role, logical_id, path, document in completion_documents
         ]
     if unit_documents:
-        runtime_catalog["capabilities"].append(learning_units.CAPABILITY)
+        runtime_catalog["capabilities"].extend(learning_units.catalog_capabilities(unit_documents))
         runtime_catalog["learningUnitArtifacts"] = [
             {"id": logical_id, "kind": document["artifactKind"], "artifactPath": path}
             for _role, logical_id, path, document in unit_documents
         ]
+    if compiled_entry is not None:
+        entry_id = compiled_entry["landscapeId"]
+        runtime_catalog["rootLandscapeIds"].insert(0, entry_id)
+        runtime_catalog["landscapes"].insert(0, {
+            "landscapeId": entry_id, "role": "root", "artifactPath": profile["entryLandscape"]["outputPath"],
+            "locale": compiled_entry["locale"], "frameworkId": compiled_entry["frameworkId"],
+            "subject": compiled_entry["subject"], "country": compiled_entry["country"],
+            "region": compiled_entry["region"], "schoolForm": compiled_entry["schoolType"],
+        })
     validate_schema(runtime_catalog, "runtime-catalog", "runtime catalog")
     write_json(output_root, runtime_catalog_path, runtime_catalog)
 
@@ -3886,6 +3923,8 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     logical_documents.extend(publication_logical_documents)
     logical_documents.extend(completion_documents)
     logical_documents.extend(unit_documents)
+    if compiled_entry is not None:
+        logical_documents.append(("canonical-landscape", compiled_entry["landscapeId"], profile["entryLandscape"]["outputPath"], compiled_entry))
     logical_records: list[dict[str, Any]] = []
     normalized_payloads: dict[tuple[str, str], bytes] = {}
     for role, logical_id, _path, value in logical_documents:
@@ -3923,7 +3962,7 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     if (
         len(publication_logical_documents)
         != expected_content_counts["addedLogicalArtifacts"]
-        or len(logical_records) != expected_content_counts["totalLogicalArtifacts"] + len(completion_documents) + len(unit_documents)
+        or len(logical_records) != expected_content_counts["totalLogicalArtifacts"] + len(completion_documents) + len(unit_documents) + int(compiled_entry is not None)
         or len(binary_records) != expected_content_counts["binaryResources"]
     ):
         raise CompilationError(
@@ -3984,8 +4023,8 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
 
     expected = profile["expectedCounts"]
     actual_counts = {
-        "landscapes": 1,
-        "goals": len(goals),
+        "landscapes": 1 + int(compiled_entry is not None),
+        "goals": len(goals) + int(compiled_entry is not None),
         "programUnits": len(compiled_landscape.get("programUnits", [])),
         "goalPlacements": len(compiled_landscape.get("goalPlacements", [])),
         "competencyEntries": len(compiled_landscape.get("competencyCatalog", [])),

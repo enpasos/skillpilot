@@ -27,6 +27,18 @@ public final class LearningUnitSourceBindings {
     public static void validateActiveSource(LearningUnitDefinition definition, SkillLandscape source,
                                             Map<String, LearningGoal> canonicalGoals,
                                             Map<String, String> compositionViewDigests) {
+        validateSource(definition, source, canonicalGoals, compositionViewDigests, true, true);
+    }
+
+    /** Today's unit semantics bind to the separately reviewed current offer views. */
+    public static void validateCurrentUnit(LearningUnitDefinition definition, SkillLandscape source,
+                                           Map<String, LearningGoal> canonicalGoals) {
+        validateSource(definition, source, canonicalGoals, Map.of(), false, false);
+    }
+
+    private static void validateSource(LearningUnitDefinition definition, SkillLandscape source,
+            Map<String, LearningGoal> canonicalGoals, Map<String, String> compositionViewDigests,
+            boolean compareHistoricalViews, boolean compareAssessmentEvidence) {
         var binding = definition.sourceBinding();
         if (source == null || !Objects.equals(binding.landscapeId(), source.getLandscapeId())) fail("INVALID_SOURCE_BINDING", "Wrong source landscape");
         Map<String, ProgramUnit> programUnits = new TreeMap<>();
@@ -44,7 +56,7 @@ public final class LearningUnitSourceBindings {
                 || !Objects.equals(metadata.introduction(), definition.introduction())) {
             fail("INVALID_SOURCE_BINDING", "Program unit does not name this exact reviewed contract");
         }
-        if (!compositionViewDigests.entrySet().containsAll(binding.compositionViewDigests().entrySet())) {
+        if (compareHistoricalViews && !compositionViewDigests.entrySet().containsAll(binding.compositionViewDigests().entrySet())) {
             fail("STALE_COMPOSITION_BINDING", "Reviewed composition view differs");
         }
         Set<String> placedOwn = new LinkedHashSet<>();
@@ -83,7 +95,7 @@ public final class LearningUnitSourceBindings {
                 fail("INVALID_UNIT_PARTITION", "Active source goal classification differs: " + id);
             }
             if (!resolvedKind(goal).equals(definition.ownResolvedKinds().get(id))) fail("INVALID_UNIT_PARTITION", "Source resolved kind differs: " + id);
-            if (definition.ownAssessmentGoalIds().contains(id)) {
+            if (compareAssessmentEvidence && definition.ownAssessmentGoalIds().contains(id)) {
                 var claim = definition.assessmentClaims().get(id);
                 var exam = goal.getExamData();
                 Set<String> canonicalClaim = exam == null || exam.getCoveredGoalIds() == null ? Set.of() : Set.copyOf(exam.getCoveredGoalIds());

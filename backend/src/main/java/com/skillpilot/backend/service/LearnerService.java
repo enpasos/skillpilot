@@ -275,11 +275,45 @@ public class LearnerService {
         Set<String> targets = learner.getSelectedCurriculum() == null ? Set.of()
                 : getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum()).targetGoalIds();
         var read = readMastery(skillpilotId);
-        var model = learningUnitApplicationService.readModel(units, targets, read.unavailableRecallGoalIds());
+        var model = learningUnitApplicationService.readModel(units, learningUnitOfferContext(learner), read.unavailableRecallGoalIds());
         if (model == null || units.recognizedGoalIds().isEmpty()) return model;
         List<String> voluntary = getUncompactedRichFrontier(skillpilotId).stream().map(FrontierGoal::id)
                 .filter(targets::contains).filter(units.recognizedGoalIds()::contains).toList();
         return model.withVoluntaryGoalIds(voluntary);
+    }
+
+    /** Uses the normal Level-2 projector; focus, locale and other subjects do not enter the Math key. */
+    LearningUnitOfferBindings.ResolvedOfferContext learningUnitOfferContext(Learner learner) {
+        if (learner.getSelectedCurriculum() == null) return new LearningUnitOfferBindings.ResolvedOfferContext(null, Set.of(), Set.of(), Set.of());
+        GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        SkillLandscape math = landscapeService.getById(CANONICAL_GYMNASIUM_MATH_ID);
+        Set<String> mathIds = math == null || math.getGoals() == null ? Set.of()
+                : math.getGoals().stream().map(LearningGoal::getId).collect(Collectors.toSet());
+        Set<String> targets = projection.targetGoalIds().stream().filter(mathIds::contains)
+                .filter(id -> isAtomicGoal(projection.visibleGoals().get(id))).collect(Collectors.toSet());
+        Set<String> support = projection.prerequisiteOnlyGoalIds().stream().filter(mathIds::contains).collect(Collectors.toSet());
+        Set<String> views = new LinkedHashSet<>();
+        if (compositionViewService != null) for (String id : projection.compositionViewIds()) {
+            Map<String, Object> view = compositionViewService.findViewById(id);
+            if (view == null || !CANONICAL_GYMNASIUM_MATH_ID.equals(view.get("landscapeId"))) continue;
+            Object constituents = view.get("mergedFromViewIds");
+            if (constituents instanceof List<?> physical) {
+                for (Object value : physical) if (value instanceof String physicalId) views.add(physicalId);
+            } else views.add(id);
+        }
+        Map<String, Map<String, Object>> config = parsePersonalCurriculumConfig(learner.getPersonalCurriculum());
+        Map<String, String> nativeScope = deriveCompositionScope(CANONICAL_GYMNASIUM_MATH_ID, config, learner.getSelectedCurriculum());
+        String jurisdiction = nativeScope.get("jurisdiction");
+        if (jurisdiction == null && "ALL".equals(readFilterId(config, learner.getSelectedCurriculum()))) jurisdiction = "ALL";
+        LearningUnitOfferBindings.ScopeKey key = null;
+        if (landscapeService.isPersonalizationEntryRootForSubject(learner.getSelectedCurriculum(), CANONICAL_GYMNASIUM_MATH_ID)
+                && Boolean.TRUE.equals(readSelectedFlagIfPresent(config, CANONICAL_GYMNASIUM_MATH_ID))
+                && jurisdiction != null && nativeScope.get("stage") != null) {
+            key = new LearningUnitOfferBindings.ScopeKey(learner.getSelectedCurriculum(), CANONICAL_GYMNASIUM_MATH_ID,
+                    nativeScope.get("schoolForm"), jurisdiction, nativeScope.get("stage"), nativeScope.get("durationModel"),
+                    nativeScope.get("courseProfile"));
+        }
+        return new LearningUnitOfferBindings.ResolvedOfferContext(key, targets, support, views);
     }
 
     @Transactional(readOnly = true, isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
@@ -623,7 +657,7 @@ public class LearnerService {
         if (subjects.contains(null)) throw new CompletionApplicability.UnresolvedScopeException();
         Map<String, Map<String, Object>> config = parsePersonalCurriculumConfig(learner.getPersonalCurriculum());
         CompletionApplicability.requireMatches(compiled.profile().applicability(), subjects.stream()
-                .map(subject -> deriveCompositionScope(subject, config)).toList());
+                .map(subject -> deriveCompositionScope(subject, config, learner.getSelectedCurriculum())).toList());
     }
 
     /** Reviewed plan inputs belong to Level 2, independently of the active route and its opt-out. */
@@ -1152,20 +1186,7 @@ public class LearnerService {
     @org.springframework.beans.factory.annotation.Autowired
     private ChampionPracticeFingerprint championPracticeFingerprint;
 
-    private static final Set<String> SRS_FILTER_EXCLUDE = Set.of(
-            "structure",
-            "root",
-            "module",
-            "lesson",
-            "vocabulary",
-            "grammar",
-            "practice",
-            "A1",
-            "A2",
-            "B1",
-            "B2",
-            "C1",
-            "C2");
+
 
     private static final String COMBINED_COURSE_FILTER_ID = "GK+LK";
     private static final Set<String> COURSE_FILTER_IDS = Set.of("GK", "LK", COMBINED_COURSE_FILTER_ID);
@@ -1370,52 +1391,11 @@ public class LearnerService {
     }
 
     private String getVocabularySource(LearningGoal goal, String language) {
-        if (goal == null) {
-            return null;
-        }
-        Map<String, Object> extended = goal.getExtendedData();
-        if (extended == null) {
-            return null;
-        }
-        Object source = extended.get("vocabularySource");
-        Object sourceEn = extended.get("vocabularySourceEn");
-        boolean preferEnglish = language != null && language.trim().toLowerCase(Locale.ROOT).startsWith("en");
-        Object preferred = preferEnglish ? sourceEn : source;
-        Object fallback = preferEnglish ? source : sourceEn;
-        if (preferred instanceof String text && !text.isBlank()) {
-            return text;
-        }
-        return fallback instanceof String text && !text.isBlank() ? text : null;
+        return SrsGoalCardSelection.vocabularySource(goal, language);
     }
 
     private List<String> getSrsFilterTags(LearningGoal goal) {
-        List<String> tags = goal != null ? goal.getTags() : null;
-        if (tags == null || tags.isEmpty()) {
-            return Collections.emptyList();
-        }
-        List<String> selectTags = new ArrayList<>();
-        for (String tag : tags) {
-            if (tag != null && tag.startsWith("select:")) {
-                selectTags.add(tag);
-            }
-        }
-        if (!selectTags.isEmpty()) {
-            return selectTags;
-        }
-        List<String> filtered = new ArrayList<>();
-        for (String tag : tags) {
-            if (tag == null) {
-                continue;
-            }
-            if (tag.startsWith("srs-deck")) {
-                continue;
-            }
-            if (SRS_FILTER_EXCLUDE.contains(tag)) {
-                continue;
-            }
-            filtered.add(tag);
-        }
-        return filtered;
+        return SrsGoalCardSelection.filterTags(goal);
     }
 
     private List<SrsCard> loadSrsDeckCards(LearningGoal goal, String vocabularySource) {
@@ -1574,16 +1554,27 @@ public class LearnerService {
         Instant now = Instant.now();
         for (LearningGoal goal : srsGoals.values()) {
             try {
-                String source = getVocabularySource(goal);
-                if (source == null || source.isBlank()) throw new SrsStateUnavailableException("Memorization deck reference is missing");
-                Resource resource = deckResourceService.resolveDeckResource(goal.getId(), source);
-                if (resource == null) throw new SrsStateUnavailableException("Required memorization deck is unavailable");
-                if (deckFailures.containsKey(resource)) throw deckFailures.get(resource);
-                if (!decks.containsKey(resource)) {
-                    try { decks.put(resource, loadSrsDeckCards(resource, true)); }
-                    catch (SrsStateUnavailableException error) { deckFailures.put(resource, error); throw error; }
+                var frozenRecall = learningUnitApplicationService == null ? null
+                        : learningUnitApplicationService.frozenRecallSelections().get(goal.getId());
+                List<SrsCard> required;
+                if (frozenRecall != null) {
+                    // Archived outcomes keep their verified immutable card duty;
+                    // today's deck source or selection cannot reinterpret old K.
+                    var meanings = frozenRecall.cardMeaningsByLocale().get("de");
+                    required = frozenRecall.requiredCardIds().stream().sorted().map(id -> new SrsCard(
+                            id, meanings.get(id).front(), meanings.get(id).back(), null, List.of())).toList();
+                } else {
+                    String source = getVocabularySource(goal);
+                    if (source == null || source.isBlank()) throw new SrsStateUnavailableException("Memorization deck reference is missing");
+                    Resource resource = deckResourceService.resolveDeckResource(goal.getId(), source);
+                    if (resource == null) throw new SrsStateUnavailableException("Required memorization deck is unavailable");
+                    if (deckFailures.containsKey(resource)) throw deckFailures.get(resource);
+                    if (!decks.containsKey(resource)) {
+                        try { decks.put(resource, loadSrsDeckCards(resource, true)); }
+                        catch (SrsStateUnavailableException error) { deckFailures.put(resource, error); throw error; }
+                    }
+                    required = filterSrsCards(goal, decks.get(resource));
                 }
-                List<SrsCard> required = filterSrsCards(goal, decks.get(resource));
                 if (required.isEmpty()) throw new SrsStateUnavailableException("Required memorization deck is empty for this goal");
                 Map<String, Object> state = readStoredSrsState(storedByGoal.get(goal.getId()));
                 result.put(goal.getId(), new SrsGoalSnapshot(isSrsMasteredByVerifiedRecall(required, state),
@@ -1698,6 +1689,8 @@ public class LearnerService {
 
     private boolean hasVerifiedRecallEligibleCardsToday(String skillpilotId, LearningGoal goal) {
         if (goal == null || !isSrsGoal(goal)) return false;
+        try { assertCurrentUnitRecallMeaning(goal); }
+        catch (ResponseStatusException unavailable) { return false; }
         SrsGoalSnapshot snapshot = resolveSrsGoalSnapshots(skillpilotId, List.of(goal), false).get(goal.getId());
         return snapshot != null && snapshot.recallAvailable();
     }
@@ -1708,8 +1701,14 @@ public class LearnerService {
         List<LearningGoal> memoryGoals = goals.stream().filter(this::isMemoryFrontierGoal)
                 .map(goal -> landscapeService.getGoalDefinition(goal.id())).filter(Objects::nonNull).toList();
         Map<String, SrsGoalSnapshot> snapshots = resolveSrsGoalSnapshots(skillpilotId, memoryGoals, false);
-        return goals.stream().filter(goal -> !isMemoryFrontierGoal(goal)
-                || snapshots.containsKey(goal.id()) && snapshots.get(goal.id()).recallAvailable()).toList();
+        return goals.stream().filter(goal -> {
+            if (!isMemoryFrontierGoal(goal)) return true;
+            LearningGoal memory = landscapeService.getGoalDefinition(goal.id());
+            if (memory == null) return false;
+            try { assertCurrentUnitRecallMeaning(memory); }
+            catch (ResponseStatusException unavailable) { return false; }
+            return snapshots.containsKey(goal.id()) && snapshots.get(goal.id()).recallAvailable();
+        }).toList();
     }
 
     private Map<String, Double> applySrsMasteryOverlay(String skillpilotId,
@@ -2325,6 +2324,7 @@ public class LearnerService {
         }
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        assertCurrentUnitRecallMeaning(goal);
         MasteryId id = new MasteryId(skillpilotId, goal.getId());
         Mastery mastery = masteryRepository.findById(id)
                 .orElseGet(() -> new Mastery(learner, goal.getId(), 0.0));
@@ -2353,6 +2353,7 @@ public class LearnerService {
             String language,
             Learner lockedLearner) {
         LearningGoal goal = requireActiveVisibleMemoryGoal(lockedLearner, requestedGoalId);
+        assertCurrentUnitRecallMeaning(goal);
         String source = getVocabularySource(goal, language);
         if (source == null || source.isBlank()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
@@ -2365,6 +2366,17 @@ public class LearnerService {
                     "No cards match this memorization goal.");
         }
         return new VerifiedRecallContext(goal, cards, loadSrsStateStrict(skillpilotId, goal.getId()));
+    }
+
+    private void assertCurrentUnitRecallMeaning(LearningGoal goal) {
+        if (learningUnitApplicationService == null || learningUnitApplicationService.currentRecallMeaningAdmitted(
+                goal, (id, source) -> {
+                    Resource resource = deckResourceService.resolveDeckResource(id, source);
+                    if (resource == null || !resource.exists()) return null;
+                    try (InputStream input = resource.getInputStream()) { return input.readAllBytes(); }
+                }, objectMapper)) return;
+        throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                "This memory goal no longer names its admitted cards and meanings. A reviewed goal identity is required.");
     }
 
     private LearningGoal requireActiveVisibleMemoryGoal(
@@ -2429,16 +2441,7 @@ public class LearnerService {
     }
 
     private List<SrsCard> filterSrsCards(LearningGoal goal, List<SrsCard> cards) {
-        if (cards == null || cards.isEmpty()) {
-            return Collections.emptyList();
-        }
-        List<String> filterTags = getSrsFilterTags(goal);
-        if (filterTags.isEmpty()) {
-            return cards;
-        }
-        return cards.stream()
-                .filter(card -> card.tags != null && card.tags.stream().anyMatch(filterTags::contains))
-                .collect(Collectors.toList());
+        return SrsGoalCardSelection.select(goal, cards, card -> card.tags);
     }
 
     private MemoryPracticeResponse buildMemoryPracticeResponse(
@@ -2927,8 +2930,15 @@ public class LearnerService {
             projected.put(id, snapshot.mastered() ? 1.0 : 0.0);
             if (unitOwned.contains(id)) unitExplicit.put(id, snapshot.mastered() ? 1.0 : 0.0);
         });
+        Set<String> frozenRecallIds = learningUnitApplicationService == null ? Set.of()
+                : learningUnitApplicationService.frozenRecallSelections().keySet();
+        for (String id : frozenRecallIds) if (!srs.containsKey(id)) {
+            projected.remove(id);
+            unitExplicit.remove(id);
+        }
         Set<String> unavailable = unitOwned.stream().filter(srsKnown::contains)
-                .filter(id -> !srs.containsKey(id) && !Mastery.isMastered(unitExplicit.get(id))).collect(Collectors.toSet());
+                .filter(id -> !srs.containsKey(id) && (frozenRecallIds.contains(id)
+                        || !Mastery.isMastered(unitExplicit.get(id)))).collect(Collectors.toSet());
         MasteryRead loaded = new MasteryRead(Collections.unmodifiableMap(new LinkedHashMap<>(result)),
                 Collections.unmodifiableMap(projected), Collections.unmodifiableMap(unitExplicit), Set.copyOf(unavailable),
                 Set.copyOf(srsKnown), srs, curriculumState);
@@ -3551,6 +3561,17 @@ public class LearnerService {
                     "No active goal selected and no goalId provided.");
         }
 
+        // A current mapping is not evidence that an incoming legacy result has
+        // the immutable meaning of a managed canonical goal. Historical aliases
+        // remain readable; new results name the actually served canonical goal.
+        if (learningUnitApplicationService != null
+                && learningUnitApplicationService.masteryGoals().containsKey(effectiveGoalId)
+                && (!effectiveGoalId.equals(masteryEntry.getKey())
+                    || request.goalId() != null && !request.goalId().isBlank() && !effectiveGoalId.equals(request.goalId()))) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                    "Managed goal results must name the current canonical goal ID. Refresh the current learning goal.");
+        }
+
         if (activeGoalId == null || activeGoalId.isBlank()) {
             List<FrontierGoal> frontierAtomic = filterAtomicFrontier(getUncompactedRichFrontier(skillpilotId));
             boolean allowed = frontierAtomic.stream().anyMatch(goal -> goal.id().equals(effectiveGoalId));
@@ -3587,6 +3608,12 @@ public class LearnerService {
         if (def == null) {
             def = landscapeService.getGoalDefinition(effectiveGoalId);
         }
+        if (masteryValue == 1.0 && learningUnitApplicationService != null
+                && !learningUnitApplicationService.currentResultMeaningAdmitted(effectiveGoalId, def)) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                    "This goal ID no longer names its admitted result meaning. A reviewed goal identity is required.");
+        }
+
         if (def != null && def.getContains() != null && !def.getContains().isEmpty()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "Cannot set mastery on cluster goals. Select an atomic goal first.");
@@ -10036,7 +10063,9 @@ public class LearnerService {
         if (goal == null || !isExamGoal(goal)) {
             return false;
         }
-        return !isExamDataReadyForHardCheck(goal.getExamData());
+        return !isExamDataReadyForHardCheck(goal.getExamData())
+                || learningUnitApplicationService != null
+                    && !learningUnitApplicationService.currentResultMeaningAdmitted(goal.getId(), goal);
     }
 
     private boolean isNonGlobalExamWithoutDirectPrerequisite(
@@ -11087,7 +11116,7 @@ public class LearnerService {
                     && CANONICAL_GYMNASIUM_MATH_ID.equals(l.getLandscapeId())
                     && compositionViewService != null
                     && compositionViewService.findLearnerScopeView(
-                            l.getLandscapeId(), deriveCompositionScope(l.getLandscapeId(), config)) != null) {
+                            l.getLandscapeId(), deriveCompositionScope(l.getLandscapeId(), config, curriculumId)) != null) {
                 effectiveFilterIds.removeIf(id -> COURSE_FILTER_IDS.contains(normalizeFilterId(id)));
             }
 
@@ -11259,7 +11288,7 @@ public class LearnerService {
             if (defaultCurriculumViewRequested && landscape.getLandscapeId().equals(curriculumId)) {
                 continue;
             }
-            Map<String, String> requestedScope = deriveCompositionScope(landscape.getLandscapeId(), effectiveConfig);
+            Map<String, String> requestedScope = deriveCompositionScope(landscape.getLandscapeId(), effectiveConfig, curriculumId);
             if (requestedScope.isEmpty()) {
                 if (!authoritative) {
                     addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);
@@ -11565,16 +11594,24 @@ public class LearnerService {
     }
 
     private Map<String, String> deriveCompositionScope(String landscapeId, Map<String, Map<String, Object>> config) {
-        String rootFilterId = readFilterId(config, CANONICAL_GYMNASIUM_ROOT_ID);
+        return deriveCompositionScope(landscapeId, config, CANONICAL_GYMNASIUM_ROOT_ID);
+    }
+
+    private Map<String, String> deriveCompositionScope(String landscapeId, Map<String, Map<String, Object>> config,
+                                                        String selectedRootId) {
+        String rootId = CANONICAL_GYMNASIUM_ROOT_ID.equals(selectedRootId)
+                || landscapeService.isPersonalizationEntryRootForSubject(selectedRootId, landscapeId) ? selectedRootId : null;
+        boolean explicitEntry = rootId != null && !CANONICAL_GYMNASIUM_ROOT_ID.equals(rootId);
+        String rootFilterId = readFilterId(config, rootId);
         String landscapeFilterId = readFilterId(config, landscapeId);
         String jurisdiction = resolveJurisdictionFilter(rootFilterId, landscapeFilterId);
         String courseProfile = normalizeCourseProfileScope(landscapeFilterId);
-        String stage = inferCompositionStageScope(config, landscapeId);
+        String stage = inferCompositionStageScope(config, landscapeId, rootId);
         String durationModel = resolveDurationModelScope(
-                readScopeValue(config, landscapeId, "durationModel"),
-                readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, "durationModel"),
+                readScopeValue(config, explicitEntry ? rootId : landscapeId, "durationModel"),
+                explicitEntry ? null : readScopeValue(config, rootId, "durationModel"),
                 rootFilterId,
-                landscapeFilterId);
+                explicitEntry ? null : landscapeFilterId);
 
         if (jurisdiction == null && stage == null && courseProfile == null && durationModel == null) {
             return Collections.emptyMap();
@@ -11663,8 +11700,16 @@ public class LearnerService {
     private String inferCompositionStageScope(
             Map<String, Map<String, Object>> config,
             String landscapeId) {
+        return inferCompositionStageScope(config, landscapeId, CANONICAL_GYMNASIUM_ROOT_ID);
+    }
+
+    private String inferCompositionStageScope(Map<String, Map<String, Object>> config, String landscapeId,
+                                              String rootId) {
+        if (rootId != null && !CANONICAL_GYMNASIUM_ROOT_ID.equals(rootId)) {
+            return resolveStageScope(readScopeValue(config, rootId, "stage"));
+        }
         String explicitStage = resolveStageScope(
-                readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, "stage"),
+                readScopeValue(config, rootId, "stage"),
                 readScopeValue(config, landscapeId, "stage"));
         if (explicitStage != null) {
             return explicitStage;

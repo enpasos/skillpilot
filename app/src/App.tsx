@@ -877,6 +877,7 @@ const App: React.FC = () => {
               onLogout={handleLogout}
               availableLandscapes={availableLandscapes}
               rootLandscapeId={setupRootLandscapeId}
+              usesGuidedPersonalCurriculumEditor={core.usesGuidedPersonalCurriculumEditor}
               onRefresh={core.refreshMastery}
               onScopeDataRefresh={core.refreshLearnerGraphData}
               parentMap={core.parentMapAll}

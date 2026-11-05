@@ -700,7 +700,8 @@ def trusted_contracts() -> TrustedContracts:
             ) in package_contracts.TRUSTED_SCHEMA_BINDINGS.items()
         }
         if ACTIVE_CONTRACT_DIR != CONTRACT_DIR:
-            trusted_schema_paths["runtimeCatalogSchema"] = ACTIVE_CONTRACT_DIR / "runtime-catalog.schema.json"
+            trusted_schema_paths["runtimeCatalogSchema"] = ACTIVE_CONTRACT_DIR / (
+                "offer-runtime-catalog.schema.json" if profile.get("profileId") == learning_units.OFFER_PROFILE_ID else "runtime-catalog.schema.json")
         roles = package_contracts.validate_trusted_contract(
             manifest_schema,
             profile,
@@ -5298,7 +5299,7 @@ def parse_args() -> argparse.Namespace:
     return args
 
 
-def select_contract_directory(directory: Path) -> None:
+def select_contract_directory(directory: Path, *, offers: bool = False) -> None:
     global ACTIVE_CONTRACT_DIR, PROFILE_PATH, POLICY_PATH, REPORT_SCHEMA_PATH, REPORT_SCHEMA_ID, POLICY_ID, POLICY_SCOPE
     directory = directory.resolve()
     if directory == CONTRACT_DIR.resolve():
@@ -5306,17 +5307,20 @@ def select_contract_directory(directory: Path) -> None:
     if directory != (CONTRACT_DIR.parent / "v1.2").resolve():
         raise ReadinessError("Readiness contracts must select a software-pinned repository version")
     ACTIVE_CONTRACT_DIR = directory
-    PROFILE_PATH = directory / "profiles/full-standalone-learning-units-v1.profile.json"
-    POLICY_PATH = directory / "profiles/full-standalone-learning-units-v1.readiness-policy.json"
-    REPORT_SCHEMA_PATH = directory / "package-readiness-report.schema.json"
-    REPORT_SCHEMA_ID = learning_units.NAMESPACE + "package-readiness-report.schema.json"
-    POLICY_ID = "full-standalone-learning-units-v1-readiness-v1"
-    POLICY_SCOPE = "json-full-standalone-learning-units-v1"
+    profile_id = learning_units.OFFER_PROFILE_ID if offers else learning_units.PROFILE_ID
+    report_name = ("offer-" if offers else "") + "package-readiness-report.schema.json"
+    PROFILE_PATH = directory / f"profiles/{profile_id}.profile.json"
+    POLICY_PATH = directory / f"profiles/{profile_id}.readiness-policy.json"
+    REPORT_SCHEMA_PATH = directory / report_name
+    REPORT_SCHEMA_ID = learning_units.NAMESPACE + report_name
+    POLICY_ID = profile_id + "-readiness-v1"
+    POLICY_SCOPE = "json-" + profile_id
 
 
 def main() -> int:
     args = parse_args()
-    select_contract_directory(args.contracts_dir)
+    candidate_input = args.manifest or args.zip_path
+    select_contract_directory(args.contracts_dir, offers=bool(candidate_input and learning_units.offered_profile_from_input(candidate_input)))
     try:
         if args.self_test:
             run_fixture_suite()

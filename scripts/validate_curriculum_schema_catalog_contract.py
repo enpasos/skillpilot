@@ -806,6 +806,11 @@ def validate_catalog_against_manifest(
     for binding_name, (trusted_schema_id, _filename) in TRUSTED_SCHEMA_BINDINGS.items():
         if (binding_name == "runtimeCatalogSchema"
                 and manifest.get("runtimeContractVersion") == "1.2"
+                and manifest.get("releaseProfile") == learning_units.OFFER_PROFILE_ID
+                and learning_units.OFFER_CATALOG_SCHEMA_ID in trusted_schema_bytes):
+            trusted_schema_id = learning_units.OFFER_CATALOG_SCHEMA_ID
+        elif (binding_name == "runtimeCatalogSchema"
+                and manifest.get("runtimeContractVersion") == "1.2"
                 and manifest.get("releaseProfile") == learning_units.PROFILE_ID
                 and learning_units.CATALOG_SCHEMA_ID in trusted_schema_bytes):
             trusted_schema_id = learning_units.CATALOG_SCHEMA_ID

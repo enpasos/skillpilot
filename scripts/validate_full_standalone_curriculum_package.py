@@ -659,12 +659,12 @@ def load_deterministic_render_authority() -> DeterministicRenderAuthority:
     )
 
 
-def load_trusted_context(contract_dir: Path) -> TrustedContext:
+def load_trusted_context(contract_dir: Path, profile_id: str | None = None) -> TrustedContext:
     contract_dir = contract_dir.resolve()
     try:
         extended = completion_contracts.extended_directory(contract_dir)
         base_dir = completion_contracts.base_directory(contract_dir)
-        profile_path = completion_contracts.profile_path(contract_dir)
+        profile_path = completion_contracts.profile_path(contract_dir, profile_id)
         manifest_schema_path = base_dir / package_contracts.SCHEMA_FILENAME
         profile_bytes = profile_path.read_bytes()
         manifest_schema_bytes = manifest_schema_path.read_bytes()
@@ -678,7 +678,7 @@ def load_trusted_context(contract_dir: Path) -> TrustedContext:
             for binding_name, (_schema_id, filename) in package_contracts.TRUSTED_SCHEMA_BINDINGS.items()
         }
         if extended:
-            trusted_schema_paths["runtimeCatalogSchema"] = contract_dir / "runtime-catalog.schema.json"
+            trusted_schema_paths["runtimeCatalogSchema"] = contract_dir / ("offer-runtime-catalog.schema.json" if profile_id == learning_units.OFFER_PROFILE_ID else "runtime-catalog.schema.json")
         roles = package_contracts.validate_trusted_contract(
             manifest_schema,
             profile,
@@ -691,7 +691,7 @@ def load_trusted_context(contract_dir: Path) -> TrustedContext:
         schema_files = [(schema_id, base_dir / filename)
                         for schema_id, filename in package_contracts.NORMATIVE_SCHEMA_FILES]
         if extended:
-            schema_files.extend(completion_contracts.extra_schemas(contract_dir))
+            schema_files.extend(completion_contracts.extra_schemas(contract_dir, profile_id))
         for schema_id, path in schema_files:
             raw = path.read_bytes()
             document = object_value(parse_json_bytes(raw, str(path)), str(path))
@@ -3681,6 +3681,7 @@ def validate_hard_reference_closure(
     completion_documents = []
     unit_documents = []
     unit_landscape = None
+    unit_capabilities = None
     goals = {}
     for record in manifest.get("files", []):
         role = record.get("role")
@@ -3690,6 +3691,8 @@ def validate_hard_reference_closure(
             unit_documents.append((role, artifact.get("id"), artifact_path, artifact))
         elif role in completion_contracts.ROLES.values() and isinstance(artifact, dict):
             completion_documents.append((role, artifact.get("id"), artifact_path, artifact))
+        elif role == "runtime-catalog" and isinstance(artifact, dict):
+            unit_capabilities = artifact.get("capabilities", [])
         elif role == "canonical-landscape" and isinstance(artifact, dict):
             if artifact.get("landscapeFormatVersion") == "1.2":
                 unit_landscape = artifact
@@ -3705,7 +3708,7 @@ def validate_hard_reference_closure(
             collector.add("hardReferenceClosure", "COMPLETION_CONTRACT_INVALID", "/data/completion", str(error))
     if unit_documents:
         try:
-            learning_units.validate_package_documents(unit_documents, unit_landscape)
+            learning_units.validate_package_documents(unit_documents, unit_landscape, unit_capabilities)
         except (KeyError, TypeError, ValueError) as error:
             collector.add("hardReferenceClosure", "LEARNING_UNIT_CONTRACT_INVALID", "/data/learning-units", str(error))
     del logical_documents  # derivation intentionally starts from manifest-bound package artifacts
@@ -3818,6 +3821,9 @@ def validate_package(path: Path, trusted: TrustedContext) -> dict[str, Any]:
         lexical_path.lstat()
     except OSError as error:
         raise ValidationFailure(f"cannot inspect input ZIP {lexical_path}: {error}") from error
+    if (learning_units.extended_directory(trusted.contract_dir)
+            and learning_units.offered_profile_from_input(lexical_path)):
+        trusted = load_trusted_context(trusted.contract_dir, learning_units.OFFER_PROFILE_ID)
     collector = DiagnosticCollector()
     snapshot = inspect_archive(lexical_path, trusted, collector)
     documents = parse_and_validate_package_documents(snapshot, trusted, collector)

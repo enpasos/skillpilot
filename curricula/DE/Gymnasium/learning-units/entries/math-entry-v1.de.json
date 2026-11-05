@@ -1,0 +1,367 @@
+{
+  "landscapeId": "19b53458-3f94-5bcf-8fcd-e85444851cff",
+  "locale": "de-DE",
+  "country": "DE",
+  "region": "DEU",
+  "schoolType": "Gymnasium",
+  "subject": "Mathematik",
+  "frameworkId": "canonical-gymnasium-mathematics-entry-v1",
+  "title": "Gymnasium Mathematik – Einstieg",
+  "titleEn": "Gymnasium Mathematics – Entry",
+  "description": "Einstieg in die unveränderte Gymnasium-Mathematik mit ausdrücklicher Auswahl von Bundesland, Lernstufe, Dauer und Kursprofil.",
+  "descriptionEn": "Entry into unchanged Gymnasium Mathematics with explicit jurisdiction, stage, duration and course profile selection.",
+  "filters": [
+    {
+      "id": "ALL",
+      "label": "Alle Bundesländer"
+    },
+    {
+      "id": "DE-BW",
+      "label": "Baden-Württemberg"
+    },
+    {
+      "id": "DE-HE",
+      "label": "Hessen"
+    },
+    {
+      "id": "DE-BY",
+      "label": "Bayern"
+    },
+    {
+      "id": "DE-BB",
+      "label": "Brandenburg"
+    },
+    {
+      "id": "DE-BE",
+      "label": "Berlin"
+    },
+    {
+      "id": "DE-NI",
+      "label": "Niedersachsen"
+    },
+    {
+      "id": "DE-NW",
+      "label": "Nordrhein-Westfalen"
+    },
+    {
+      "id": "DE-SH",
+      "label": "Schleswig-Holstein"
+    },
+    {
+      "id": "DE-HB",
+      "label": "Bremen"
+    },
+    {
+      "id": "DE-HH",
+      "label": "Hamburg"
+    },
+    {
+      "id": "DE-MV",
+      "label": "Mecklenburg-Vorpommern"
+    },
+    {
+      "id": "DE-RP",
+      "label": "Rheinland-Pfalz"
+    },
+    {
+      "id": "DE-SL",
+      "label": "Saarland"
+    },
+    {
+      "id": "DE-SN",
+      "label": "Sachsen"
+    },
+    {
+      "id": "DE-ST",
+      "label": "Sachsen-Anhalt"
+    },
+    {
+      "id": "DE-TH",
+      "label": "Thüringen"
+    }
+  ],
+  "personalizationFlow": {
+    "version": "1",
+    "stages": [
+      {
+        "id": "jurisdiction",
+        "order": 10,
+        "label": "Bundesland auswählen",
+        "labelEn": "Choose jurisdiction",
+        "groups": [
+          {
+            "id": "jurisdiction",
+            "order": 10,
+            "label": "Welches Bundesland soll gelten?",
+            "labelEn": "Which jurisdiction applies?",
+            "minSelections": 1,
+            "maxSelections": 1,
+            "source": {
+              "kind": "landscapeFilters",
+              "landscapeId": "19b53458-3f94-5bcf-8fcd-e85444851cff"
+            }
+          }
+        ]
+      },
+      {
+        "id": "subject",
+        "order": 40,
+        "label": "Fach auswählen",
+        "labelEn": "Choose subject",
+        "groups": [
+          {
+            "id": "subject",
+            "order": 10,
+            "label": "Welches Fach möchtest du lernen?",
+            "labelEn": "Which subject do you want to learn?",
+            "minSelections": 1,
+            "maxSelections": 20,
+            "source": {
+              "kind": "offeredLandscapes",
+              "landscapeIds": [
+                "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+              ],
+              "scopeBindings": [
+                {
+                  "dimension": "schoolForm",
+                  "value": "Gymnasium"
+                },
+                {
+                  "dimension": "jurisdiction",
+                  "selectedValueFromGroupId": "jurisdiction",
+                  "omitValues": [
+                    "ALL"
+                  ]
+                },
+                {
+                  "dimension": "stage",
+                  "selectedValueFromGroupId": "stage"
+                },
+                {
+                  "dimension": "durationModel",
+                  "selectedValueFromGroupId": "durationModel",
+                  "required": false
+                },
+                {
+                  "dimension": "courseProfile",
+                  "values": [
+                    "GK",
+                    "LK",
+                    "GK+LK"
+                  ],
+                  "required": false
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "subjectProfile",
+        "order": 50,
+        "label": "Kursprofil auswählen",
+        "labelEn": "Choose course profile",
+        "groups": [
+          {
+            "id": "subjectProfile",
+            "order": 10,
+            "label": "Welches Kursprofil möchtest du verwenden?",
+            "labelEn": "Which course profile do you want to use?",
+            "minSelections": 1,
+            "maxSelections": 1,
+            "source": {
+              "kind": "offeredFiltersForSelectedLandscapes",
+              "selectedLandscapesFromGroupId": "subject",
+              "scopeKey": "courseProfile",
+              "filterIds": [
+                "GK",
+                "LK",
+                "GK+LK"
+              ],
+              "scopeBindings": [
+                {
+                  "dimension": "schoolForm",
+                  "value": "Gymnasium"
+                },
+                {
+                  "dimension": "jurisdiction",
+                  "selectedValueFromGroupId": "jurisdiction",
+                  "omitValues": [
+                    "ALL"
+                  ]
+                },
+                {
+                  "dimension": "stage",
+                  "selectedValueFromGroupId": "stage"
+                },
+                {
+                  "dimension": "durationModel",
+                  "selectedValueFromGroupId": "durationModel",
+                  "required": false
+                }
+              ],
+              "optionalWhenUnavailable": true
+            }
+          }
+        ]
+      },
+      {
+        "id": "stage",
+        "order": 30,
+        "label": "Lernumfang auswählen",
+        "labelEn": "Choose learning scope",
+        "groups": [
+          {
+            "id": "stage",
+            "order": 10,
+            "label": "Welche Lernstufen möchtest du abdecken?",
+            "labelEn": "Which stages do you want to cover?",
+            "minSelections": 1,
+            "maxSelections": 1,
+            "source": {
+              "kind": "scopeValues",
+              "landscapeId": "19b53458-3f94-5bcf-8fcd-e85444851cff",
+              "scopeKey": "stage",
+              "values": [
+                {
+                  "value": "SekI",
+                  "label": "Sekundarstufe I",
+                  "labelEn": "Lower secondary"
+                },
+                {
+                  "value": "SekII",
+                  "label": "Gymnasiale Oberstufe (Sekundarstufe II)",
+                  "labelEn": "Upper secondary"
+                },
+                {
+                  "value": "CrossStage",
+                  "label": "Sekundarstufe I und II",
+                  "labelEn": "Lower and upper secondary"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "durationModel",
+        "order": 20,
+        "label": "Gymnasialdauer auswählen",
+        "labelEn": "Choose duration model",
+        "groups": [
+          {
+            "id": "durationModel",
+            "order": 10,
+            "label": "G8 oder G9?",
+            "labelEn": "G8 or G9?",
+            "minSelections": 1,
+            "maxSelections": 1,
+            "source": {
+              "kind": "offeredScopeValues",
+              "landscapeIds": [
+                "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+              ],
+              "targetLandscapeId": "19b53458-3f94-5bcf-8fcd-e85444851cff",
+              "scopeKey": "durationModel",
+              "values": [
+                {
+                  "value": "G8",
+                  "label": "G8",
+                  "labelEn": "G8"
+                },
+                {
+                  "value": "G9",
+                  "label": "G9",
+                  "labelEn": "G9"
+                }
+              ],
+              "scopeBindings": [
+                {
+                  "dimension": "schoolForm",
+                  "value": "Gymnasium"
+                },
+                {
+                  "dimension": "jurisdiction",
+                  "selectedValueFromGroupId": "jurisdiction",
+                  "omitValues": [
+                    "ALL"
+                  ]
+                },
+                {
+                  "dimension": "stage",
+                  "values": [
+                    "SekI",
+                    "SekII",
+                    "CrossStage"
+                  ]
+                },
+                {
+                  "dimension": "courseProfile",
+                  "values": [
+                    "GK",
+                    "LK"
+                  ],
+                  "required": false
+                }
+              ],
+              "optionalWhenUnavailable": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "goals": [
+    {
+      "id": "f17954a3-17e4-5b0f-83e9-8abfb24de22b",
+      "shortKey": "gymnasium_mathematics_package_entry",
+      "title": "Gymnasium Mathematik – Einstieg",
+      "titleEn": "Gymnasium Mathematics – Entry",
+      "description": "Einstieg in die unveränderte Gymnasium-Mathematik mit ausdrücklicher Auswahl von Bundesland, Lernstufe, Dauer und Kursprofil.",
+      "descriptionEn": "Entry into unchanged Gymnasium Mathematics with explicit jurisdiction, stage, duration and course profile selection.",
+      "core": true,
+      "weight": 980,
+      "tags": [
+        "root",
+        "canonical",
+        "school:Gymnasium"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-mathematics-entry-v1",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "Programm",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.GYMNASIUM.MATHEMATICS.ENTRY"
+      },
+      "contains": [
+        "c01b1ce9-a667-4a46-b251-ec33ae602b15"
+      ],
+      "requires": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+      "type": "cluster",
+      "semanticKind": "programStructure"
+    }
+  ]
+}

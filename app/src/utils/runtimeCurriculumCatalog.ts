@@ -500,6 +500,22 @@ export const findRuntimeRootLandscapeId = (catalog: RuntimeCurriculumCatalog, la
   return undefined
 }
 
+/** Keep the selected installed root when resolving its backend-loaded closure.
+ * A subject can also be a root in its own right; that does not change the
+ * learner's explicitly selected entry or alias a direct subject selection.
+ */
+export const resolveRuntimeCompositionRootId = (
+  catalog: RuntimeCurriculumCatalog,
+  landscapeId: string,
+  selectedRootLandscapeId: string | undefined,
+  loadedClosureLandscapeIds: ReadonlySet<string>,
+): string | undefined => selectedRootLandscapeId
+  && catalog.rootLandscapeIds.includes(selectedRootLandscapeId)
+  && loadedClosureLandscapeIds.has(selectedRootLandscapeId)
+  && loadedClosureLandscapeIds.has(landscapeId)
+  ? selectedRootLandscapeId
+  : findRuntimeRootLandscapeId(catalog, landscapeId)
+
 export const resolveRuntimeOfferingId = (
   catalog: RuntimeCurriculumCatalog,
   landscapeId: string,

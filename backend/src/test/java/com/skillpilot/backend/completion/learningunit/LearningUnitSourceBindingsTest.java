@@ -56,6 +56,15 @@ class LearningUnitSourceBindingsTest {
                 fixture.definition(), fixture.source(), fixture.goals(), viewDigests()));
     }
 
+    @Test void aNewCurrentViewDoesNotReviseTheUnchangedFrozenUnitMeaning() {
+        var fixture = fixture();
+        String immutable = LearningUnitSourceBindings.canonicalDigest(fixture.definition());
+        assertCode("STALE_COMPOSITION_BINDING", () -> LearningUnitSourceBindings.validateActiveSource(
+                fixture.definition(), fixture.source(), fixture.goals(), Map.of("view", "new-reviewed-view")));
+        LearningUnitSourceBindings.validateCurrentUnit(fixture.definition(), fixture.source(), fixture.goals());
+        assertThat(LearningUnitSourceBindings.canonicalDigest(fixture.definition())).isEqualTo(immutable);
+    }
+
     @Test void explicitEmptyRequiredChildrenOverridesProgramNavigationParentage() {
         var fixture = fixture();
         var parent = fixture.source().getProgramUnits().getFirst();

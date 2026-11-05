@@ -489,11 +489,11 @@ def validate_trusted_contract(
         },
         "profile",
     )
-    unit_profile = profile.get("profileId") == learning_units.PROFILE_ID
+    unit_profile = profile.get("profileId") in {learning_units.PROFILE_ID, learning_units.OFFER_PROFILE_ID}
     completion = profile.get("profileId") == completion_contracts.PROFILE_ID
     if (
         profile.get("profileFormatVersion") != 1
-        or profile.get("profileId") not in {PROFILE_ID, completion_contracts.PROFILE_ID, learning_units.PROFILE_ID}
+        or profile.get("profileId") not in {PROFILE_ID, completion_contracts.PROFILE_ID, learning_units.PROFILE_ID, learning_units.OFFER_PROFILE_ID}
     ):
         raise ContractDefinitionError(
             "Profile identity must be full-standalone-v1 with format version 1"
@@ -512,7 +512,7 @@ def validate_trusted_contract(
     expected_trusted_schemas: list[dict[str, str]] = []
     schema_files = [(schema_id, schema_path.parent / filename) for schema_id, filename in NORMATIVE_SCHEMA_FILES]
     if completion or unit_profile:
-        schema_files.extend(completion_contracts.extra_schemas(profile_path.parent.parent))
+        schema_files.extend(completion_contracts.extra_schemas(profile_path.parent.parent, profile.get("profileId")))
     for schema_id, trusted_path in schema_files:
         trusted_schema = expect_object(load_json(trusted_path), str(trusted_path))
         Draft202012Validator.check_schema(trusted_schema)
@@ -728,8 +728,9 @@ def validate_trusted_contract(
 
     semantic_roles = dict(ROLE_SEMANTIC_CONTRACTS)
     if unit_profile:
-        semantic_roles["runtime-catalog"] = ("logical-artifact", ("runtime-catalog",), (learning_units.CATALOG_SCHEMA_ID,))
-        semantic_roles["canonical-landscape"] = ("logical-artifact", ("canonical-landscape",), (learning_units.LANDSCAPE_SCHEMA_ID,))
+        semantic_roles["runtime-catalog"] = ("logical-artifact", ("runtime-catalog",), (learning_units.OFFER_CATALOG_SCHEMA_ID if profile.get("profileId") == learning_units.OFFER_PROFILE_ID else learning_units.CATALOG_SCHEMA_ID,))
+        semantic_roles["canonical-landscape"] = ("logical-artifact", ("canonical-landscape",), (learning_units.LANDSCAPE_SCHEMA_ID,
+            *([learning_units.OFFER_LANDSCAPE_SCHEMA_ID] if profile.get("profileId") == learning_units.OFFER_PROFILE_ID else [])))
         semantic_roles.update({role: ("logical-artifact", (role,), (learning_units.ARTIFACT_SCHEMA_ID,))
                                for role in learning_units.ROLES.values()})
     if completion:
@@ -764,6 +765,11 @@ def validate_trusted_contract(
             roles[role]["minimum"] != 1 or roles[role]["runtimeRequired"] != "required"
         ):
             raise ContractDefinitionError("Completion roles must be runtime-required and nonempty")
+
+    if profile.get("profileId") == learning_units.OFFER_PROFILE_ID:
+        mapping = roles["mapping"]
+        if mapping.get("minimum") != 1 or mapping.get("maximum") != 1 or mapping.get("runtimeRequired") != "required":
+            raise ContractDefinitionError("Current-offer mapping input must be runtime-required exactly once")
 
     release_profile_rule = roles.get("release-profile")
     if release_profile_rule is None or (
@@ -2779,6 +2785,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--verbose", action="store_true", help="Print every passing fixture"
     )
+    parser.add_argument("--profile-id", choices=[learning_units.PROFILE_ID, learning_units.OFFER_PROFILE_ID], help="Explicit bounded runtime 1.2 feature profile")
     return parser.parse_args()
 
 
@@ -2787,13 +2794,13 @@ def main() -> int:
     contract_dir = args.contracts_dir.resolve()
     base_dir = completion_contracts.base_directory(contract_dir)
     schema_path = base_dir / SCHEMA_FILENAME
-    profile_path = completion_contracts.profile_path(contract_dir)
+    profile_path = completion_contracts.profile_path(contract_dir, getattr(args, "profile_id", None))
     trusted_schema_paths = {
         binding_name: base_dir / filename
         for binding_name, (_schema_id, filename) in TRUSTED_SCHEMA_BINDINGS.items()
     }
     if completion_contracts.extended_directory(contract_dir):
-        trusted_schema_paths["runtimeCatalogSchema"] = contract_dir / RUNTIME_CATALOG_SCHEMA_FILENAME
+        trusted_schema_paths["runtimeCatalogSchema"] = contract_dir / ("offer-runtime-catalog.schema.json" if getattr(args, "profile_id", None) == learning_units.OFFER_PROFILE_ID else RUNTIME_CATALOG_SCHEMA_FILENAME)
     try:
         try:
             installed_jsonschema_version = distribution_version("jsonschema")

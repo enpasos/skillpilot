@@ -17,6 +17,7 @@ on:
       - 'contracts/curriculum-package/**'
       - 'scripts/*curriculum_package*'
       - 'scripts/*completion*'
+      - 'scripts/*learning_unit*'
       - 'docs/dev/assessment-gated-completion-implementation-plan.md'
       - '.github/workflows/assessment-completion.yml'
       - '.github/actions/postgres-service/**'
@@ -35,6 +36,7 @@ on:
       - 'contracts/curriculum-package/**'
       - 'scripts/*curriculum_package*'
       - 'scripts/*completion*'
+      - 'scripts/*learning_unit*'
       - 'docs/dev/assessment-gated-completion-implementation-plan.md'
       - '.github/workflows/assessment-completion.yml'
       - '.github/actions/postgres-service/**'
@@ -116,14 +118,20 @@ jobs:
         run: |
           python3 ../scripts/test_assessment_completion_package.py
           python3 ../scripts/test_learning_unit_package.py
+          python3 ../scripts/test_learning_unit_offer_package.py
+          python3 ../scripts/test_learning_unit_semantic_inputs.py
           npm run test:learning-units-package-builder
+          npm run test:learning-unit-offers-package-builder
           python3 ../scripts/validate_curriculum_package_contracts.py --contracts-dir ../contracts/curriculum-package/v1.2
+          python3 ../scripts/validate_curriculum_package_contracts.py --contracts-dir ../contracts/curriculum-package/v1.2 --profile-id full-standalone-learning-unit-offers-v1
           npm run test:fwu-owl-package-builder
       - name: Check TypeScript, state parsing, binary goals and public practice synchronization
         run: |
           npx --no-install tsc -b --pretty false
           npm run test:level-completion
           npm run test:learning-units-ui
+          npm run test:runtime-curriculum-catalog
+          npm run test:personal-curriculum-stage-scope
           npx --no-install tsx src/utils/srsPracticeSync.test.ts
           npm run test:session-setup-id-entry
       - name: Use Ubuntu package sources
@@ -227,6 +235,9 @@ jobs:
           ./gradlew test --console=plain --rerun-tasks
           --tests 'com.skillpilot.backend.completion.learningunit.*'
           --tests 'com.skillpilot.backend.service.LearningUnitRecognitionIntegrationTest'
+          --tests 'com.skillpilot.backend.service.LearningUnitEntryScopeTest'
+          --tests 'com.skillpilot.backend.curriculumpackage.LearningUnitOfferPackageLoaderTest'
+          --tests 'com.skillpilot.backend.curriculumpackage.JsonCurriculumPackageLoaderTest'
           --tests 'com.skillpilot.backend.service.LearningPlanDailyProgressTest'
           --tests 'com.skillpilot.backend.completion.CompletionCoreTest'
           --tests 'com.skillpilot.backend.completion.CompletionApplicationServiceTest'
@@ -280,13 +291,22 @@ jobs:
 
           required = {
               'com.skillpilot.backend.completion.learningunit.LearningUnitCoreTest': 14,
-              'com.skillpilot.backend.completion.learningunit.LearningUnitCatalogTest': 8,
-              'com.skillpilot.backend.completion.learningunit.LearningUnitSourceBindingsTest': 5,
+              'com.skillpilot.backend.completion.learningunit.LearningUnitCatalogTest': 11,
+              'com.skillpilot.backend.completion.learningunit.LearningUnitSourceBindingsTest': 6,
               'com.skillpilot.backend.completion.learningunit.LearningUnitRecursiveCatalogTest': 2,
               'com.skillpilot.backend.completion.learningunit.LearningUnitResultAliasTest': 5,
-              'com.skillpilot.backend.completion.learningunit.LearningUnitRepositoryTest': 2,
+              'com.skillpilot.backend.completion.learningunit.LearningUnitRepositoryTest': 3,
+              'com.skillpilot.backend.completion.learningunit.LearningUnitPackageRegistryBindingsTest': 5,
               'com.skillpilot.backend.completion.learningunit.LearningUnitPrerequisiteGraphTest': 4,
-              'com.skillpilot.backend.service.LearningUnitRecognitionIntegrationTest': 11,
+              'com.skillpilot.backend.service.LearningUnitRecognitionIntegrationTest': 19,
+              'com.skillpilot.backend.completion.learningunit.LearningUnitOfferBindingsTest': 7,
+              'com.skillpilot.backend.completion.learningunit.LearningUnitEntryDerivationTest': 3,
+              'com.skillpilot.backend.completion.learningunit.LearningUnitAssessmentVariantsTest': 8,
+              'com.skillpilot.backend.completion.learningunit.LearningUnitAssessmentVariantAliasesTest': 1,
+              'com.skillpilot.backend.completion.learningunit.LearningUnitRecallBindingsTest': 9,
+              'com.skillpilot.backend.service.LearningUnitEntryScopeTest': 7,
+              'com.skillpilot.backend.curriculumpackage.LearningUnitOfferPackageLoaderTest': 6,
+              'com.skillpilot.backend.curriculumpackage.JsonCurriculumPackageLoaderTest': 13,
               'com.skillpilot.backend.service.LearningPlanDailyProgressTest': 13,
               'com.skillpilot.backend.completion.CompletionCoreTest': 20,
               'com.skillpilot.backend.completion.CompletionApplicationServiceTest': 6,

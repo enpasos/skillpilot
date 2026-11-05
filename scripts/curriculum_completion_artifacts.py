@@ -169,6 +169,9 @@ def validators(repo: Path) -> dict[str, Draft202012Validator]:
     unit_schema = repo / "contracts/curriculum-package/v1.2/runtime-catalog.schema.json"
     if unit_schema.is_file():
         paths.append(unit_schema)
+    offer_schema = repo / "contracts/curriculum-package/v1.2/offer-runtime-catalog.schema.json"
+    if offer_schema.is_file():
+        paths.append(offer_schema)
     documents = [json.loads(path.read_bytes()) for path in paths]
     registry = Registry().with_resources((document["$id"], Resource.from_contents(document)) for document in documents)
     return {document["$id"]: Draft202012Validator(document, registry=registry) for document in documents}

@@ -29,14 +29,30 @@ function main() {
   const inventory = read(inventoryPath)
   assert.equal(inventory.scopes.length, 182)
   const nativeMembership = new Map<string, number[]>(inventory.targetAtomicMembership.map((entry: { goalId: string; scopeIndices: number[] }) => [entry.goalId, entry.scopeIndices]))
+  const currentMembership = new Map([...nativeMembership].map(([id, indices]) => [id, [...indices]]))
+  const scopeIndex = new Map<string, number>(inventory.scopes.map((scope: { scopeId: string }, index: number) => [scope.scopeId, index]))
+  const batchPath = 'app/scripts/config/learning-units/math-2026-11-05-batch-a.json'
+  const currentBatch = read(batchPath)
+  for (const [id, scopes] of Object.entries(currentBatch.nativeExpectation.originalTargetToSupport) as Array<[string, string[]]>) {
+    const removed = new Set(scopes.map(scope => { assert.ok(scopeIndex.has(scope)); return scopeIndex.get(scope)! }))
+    currentMembership.set(id, (currentMembership.get(id) ?? []).filter(index => !removed.has(index)))
+  }
+  for (const [id, scopes] of Object.entries(currentBatch.nativeExpectation.newAssessmentTargets) as Array<[string, string[]]>) currentMembership.set(id, scopes.map(scope => scopeIndex.get(scope)!).sort((a, b) => a - b))
+  const prismProof = read('docs/dev/learning-units-mathematics-prism-native-proof.json')
+  currentMembership.set('e5494c67-aed6-5710-8ae3-51ae147c10e9', prismProof.rows.filter((row: { newPrismAssessmentTarget: boolean }) => row.newPrismAssessmentTarget)
+    .map((row: { scopeId: string }) => scopeIndex.get(row.scopeId)!).sort((a: number, b: number) => a - b))
   const parents = new Map<string, string[]>()
   for (const goal of original.goals) for (const child of goal.contains ?? []) parents.set(child, [...(parents.get(child) ?? []), goal.id])
   const assessments = original.goals.filter(goal => goal.examData)
   const relation = atomicRelation(original.goals)
   const assessmentReach = new Map(assessments.map(goal => [goal.id, reachable(goal.requires ?? [], relation)]))
+  const currentAssessments = source.goals.filter(goal => goal.examData)
+  const currentRelation = atomicRelation(source.goals)
+  const currentAssessmentReach = new Map(currentAssessments.map(goal => [goal.id, reachable(goal.requires ?? [], currentRelation)]))
   const manifest = read('curricula/DE/Gymnasium/learning-units/catalog.json')
   const definitions = manifest.contracts.map((entry: { path: string }) => read(`curricula/${entry.path}`))
   const claimed = new Set(assessments.flatMap(goal => (goal.examData!.coveredGoalIds as string[] | undefined) ?? []))
+  const currentClaimed = new Set(currentAssessments.flatMap(goal => (goal.examData!.coveredGoalIds as string[] | undefined) ?? []))
   const kind = (id: string) => kinds.get(id)
   const packets = original.goals.filter(goal => kind(goal.id) === 'curricularArea' && (goal.contains ?? []).some(id => originalOrdinary.some(atom => atom.id === id)))
   const packetIds = new Set(packets.map(goal => goal.id))
@@ -57,12 +73,17 @@ function main() {
   }
   assert.equal(extraRouting.size, 17)
   let missingNativeConsumerCount = 0
+  let currentMissingNativeConsumerCount = 0
   const goals = originalOrdinary.map(goal => {
     const consumers = assessments.filter(q => assessmentReach.get(q.id)?.has(goal.id)).map(q => q.id).sort()
-    const claimQs = assessments.filter(q => (q.examData!.coveredGoalIds as string[] | undefined)?.includes(goal.id))
+    const claimQs = currentAssessments.filter(q => (q.examData!.coveredGoalIds as string[] | undefined)?.includes(goal.id))
     const targetIndices = nativeMembership.get(goal.id) ?? []
     const missingConsumerScopes = targetIndices.filter(index => !consumers.some(q => nativeMembership.get(q)?.includes(index)))
     if (missingConsumerScopes.length) missingNativeConsumerCount++
+    const currentTargetIndices = currentMembership.get(goal.id) ?? []
+    const currentConsumers = currentAssessments.filter(q => currentAssessmentReach.get(q.id)?.has(goal.id)).map(q => q.id).sort()
+    const currentMissingConsumerScopes = currentTargetIndices.filter(index => !currentConsumers.some(q => currentMembership.get(q)?.includes(index)))
+    if (currentMissingConsumerScopes.length) currentMissingNativeConsumerCount++
     const contracts = definitions.filter((definition: { ownGoalIds: string[] }) => definition.ownGoalIds.includes(goal.id))
     const acquisitions = source.goalPlacements.filter(placement => placement.goalId === goal.id && placement.acquisition)
     return { goalId: goal.id, title: goal.title,
@@ -75,9 +96,11 @@ function main() {
       boundContractRefs: contracts.map((definition: { contractId: string; revision: string; reviewRef: string }) => ({
         contractId: definition.contractId, revision: definition.revision, reviewRef: definition.reviewRef,
       })),
-      nativeTargetScopeIndices: targetIndices,
-      scopeIndicesWithoutOfferedAssessmentConsumer: missingConsumerScopes,
-      candidateAssessmentIdsWithRequiresRoute: consumers,
+      originalNativeTargetScopeIndices: targetIndices,
+      nativeTargetScopeIndices: currentTargetIndices,
+      originalScopeIndicesWithoutOfferedAssessmentConsumer: missingConsumerScopes,
+      scopeIndicesWithoutOfferedAssessmentConsumer: currentMissingConsumerScopes,
+      candidateAssessmentIdsWithRequiresRoute: currentConsumers,
       explicitClaimCandidates: claimQs.map(q => ({ assessmentGoalId: q.id,
         taskRevision: digest(canonicalJson({ taskContent: q.examData!.taskContent, solutionContent: q.examData!.solutionContent })),
         rubricRevision: digest(canonicalJson(q.examData!.scoring)),
@@ -121,6 +144,10 @@ function main() {
       explicitlyRoutedResidualAtoms: extraRouting.size, unroutedOrdinaryAtoms: goals.filter(goal => !goal.candidatePacketIds.length).length,
       existingAssessments: assessments.length, missingExplicitClaimAtoms: originalOrdinary.filter(goal => !claimed.has(goal.id)).length,
       atomsMissingOfferedAssessmentConsumerSomewhere: missingNativeConsumerCount,
+      currentAtomsMissingOfferedAssessmentConsumerSomewhere: currentMissingNativeConsumerCount,
+      currentAtomicTargets: source.goals.filter(goal => !goal.contains?.length).length,
+      currentAssessments: currentAssessments.length,
+      currentMissingExplicitClaimAtoms: originalOrdinary.filter(goal => !currentClaimed.has(goal.id)).length,
       existingRecallGoals: recallPackets.length, existingCards: recallPackets.reduce((sum, packet) => sum + packet.cardCount, 0),
       boundOrdinaryCandidateAtoms: goals.filter(goal => goal.boundContractRefs.length).length,
       newAssessmentDelta: newSourceGoals.filter(goal => goal.examData || goal.nodeKind === 'exam').map(goal => goal.id),
@@ -128,6 +155,10 @@ function main() {
     },
     scopeIds: inventory.scopes.map((scope: { scopeId: string }) => scope.scopeId),
     originalAtomicGoalIds: originalAtoms.map(goal => goal.id).sort(),
+    currentProjectionBasis: { correctionConfigPath: batchPath, correctionConfigSha256: digest(readFileSync(resolve(root, batchPath))),
+      actualBatchNativeProofPath: 'docs/dev/learning-units-mathematics-batch-a-native-proof.json',
+      actualBatchNativeProofSha256: digest(readFileSync(resolve(root, 'docs/dev/learning-units-mathematics-batch-a-native-proof.json'))),
+      semantics: 'Initial 182-scope membership plus the explicit independently reviewed native deltas; original masks and diagnostic counts remain separately retained.' },
     nextBoundedPackets: [
       { name: 'projection', contractId: 'math-dot-product-projection', status: 'bound-candidate; integration acceptance tracked separately' },
       { name: 'prisms', ordinaryGoalIds: ['68fb0e78-34f2-5572-8db6-e7f5ebcff70f', 'f1348d40-3872-5e44-8892-3600c811796f'],
