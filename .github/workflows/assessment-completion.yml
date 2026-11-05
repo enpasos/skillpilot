@@ -126,9 +126,11 @@ jobs:
           python3 ../scripts/test_assessment_completion_package.py
           python3 ../scripts/test_learning_unit_package.py
           python3 ../scripts/test_learning_unit_offer_package.py
+          python3 ../scripts/test_package_consumer_revision.py
           python3 ../scripts/test_learning_unit_semantic_inputs.py
           npm run test:learning-units-package-builder
           npm run test:learning-unit-offers-package-builder
+          npx --no-install tsx scripts/learningUnitsMathPackageBindings.test.ts
           python3 ../scripts/validate_curriculum_package_contracts.py --contracts-dir ../contracts/curriculum-package/v1.2
           python3 ../scripts/validate_curriculum_package_contracts.py --contracts-dir ../contracts/curriculum-package/v1.2 --profile-id full-standalone-learning-unit-offers-v1
           npm run test:fwu-owl-package-builder
@@ -243,12 +245,14 @@ jobs:
           ./gradlew test --console=plain --rerun-tasks
           --tests 'com.skillpilot.backend.completion.learningunit.*'
           --tests 'com.skillpilot.backend.service.LearningUnitRecognitionIntegrationTest'
+          --tests 'com.skillpilot.backend.service.CurriculumPersonalizationPlannerTest'
           --tests 'com.skillpilot.backend.service.LearningUnitEntryScopeTest'
           --tests 'com.skillpilot.backend.ui.LearnerUiStateRetryTest'
           --tests 'com.skillpilot.backend.curriculumpackage.LearningUnitOfferPackageLoaderTest'
           --tests 'com.skillpilot.backend.curriculumpackage.JsonCurriculumPackageLoaderTest'
           --tests 'com.skillpilot.backend.curriculumpackage.PackageNativeMappingInputsTest'
           --tests 'com.skillpilot.backend.curriculumpackage.PackageCompositionViewStateTest'
+          --tests 'com.skillpilot.backend.curriculumpackage.PackageCompositionViewConsumerTest'
           --tests 'com.skillpilot.backend.curriculumpackage.CompositionViewServicePackageTest'
           --tests 'com.skillpilot.backend.ui.CompositionViewUiControllerTest'
           --tests 'com.skillpilot.backend.landscape.GoalMappingServiceTest'
@@ -312,7 +316,8 @@ jobs:
               'com.skillpilot.backend.completion.learningunit.LearningUnitRepositoryTest': 3,
               'com.skillpilot.backend.completion.learningunit.LearningUnitPackageRegistryBindingsTest': 8,
               'com.skillpilot.backend.completion.learningunit.LearningUnitPrerequisiteGraphTest': 4,
-              'com.skillpilot.backend.service.LearningUnitRecognitionIntegrationTest': 22,
+              'com.skillpilot.backend.service.LearningUnitRecognitionIntegrationTest': 23,
+              'com.skillpilot.backend.service.CurriculumPersonalizationPlannerTest': 39,
               'com.skillpilot.backend.completion.learningunit.LearningUnitOfferBindingsTest': 9,
               'com.skillpilot.backend.completion.learningunit.LearningUnitEntryDerivationTest': 3,
               'com.skillpilot.backend.completion.learningunit.LearningUnitAssessmentVariantsTest': 8,
@@ -324,6 +329,7 @@ jobs:
               'com.skillpilot.backend.curriculumpackage.JsonCurriculumPackageLoaderTest': 13,
               'com.skillpilot.backend.curriculumpackage.PackageNativeMappingInputsTest': 4,
               'com.skillpilot.backend.curriculumpackage.PackageCompositionViewStateTest': 25,
+              'com.skillpilot.backend.curriculumpackage.PackageCompositionViewConsumerTest': 14,
               'com.skillpilot.backend.curriculumpackage.CompositionViewServicePackageTest': 4,
               'com.skillpilot.backend.ui.CompositionViewUiControllerTest': 3,
               'com.skillpilot.backend.landscape.GoalMappingServiceTest': 15,
@@ -385,6 +391,8 @@ jobs:
         run: |
           npx --no-install tsx scripts/learningUnitsMathProjectionEvidence.ts --run-native --native tmp/math-learning-units/native-audit-ci.raw.json --output docs/dev/learning-units-mathematics-native-source-projection.json --check
           npx --no-install tsx scripts/nativeProjectionEvidence.test.ts --native tmp/math-learning-units/native-audit-ci.raw.json
+          npx --no-install tsx scripts/learningUnitsMathStableOfferBindings.ts --check --config app/scripts/config/learning-units/math-current-offer-roots-v6.json --native tmp/math-learning-units/native-audit-ci.raw.json
+          npx --no-install tsx scripts/learningUnitsMathStableOfferBindings.test.ts --config app/scripts/config/learning-units/math-current-offer-roots-v6.json --native tmp/math-learning-units/native-audit-ci.raw.json --output tmp/math-learning-units/native-runtime-gate-ci.json
       - name: Stop disposable PostgreSQL
         if: always()
         uses: ./.github/actions/postgres-service

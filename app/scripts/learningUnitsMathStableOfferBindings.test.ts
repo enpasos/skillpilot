@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { canonicalJson, digest } from './learningUnitsMathAuthoring'
-import { prepareStableOfferBindings } from './learningUnitsMathStableOfferBindings'
+import { prepareStableOfferBindings, validateFreshNativeOfferRuntime } from './learningUnitsMathStableOfferBindings'
 const repo=resolve(dirname(fileURLToPath(import.meta.url)),'../..')
 const args=process.argv.slice(2); const option=(key:string,fallback?:string)=>{const index=args.indexOf(key);return index<0?fallback:args[index+1]}
 const read=(path:string)=>JSON.parse(readFileSync(resolve(repo,path),'utf8'))
@@ -12,6 +12,37 @@ assert.ok(nativePath&&configPath,'Pass --native <fresh-raw> --config <explicit-n
 const raw=read(nativePath);const config=read(configPath);const projection=read('docs/dev/learning-units-mathematics-native-source-projection.json')
 const catalog=read('curricula/DE/Gymnasium/learning-units/catalog.json')
 const baseline=prepareStableOfferBindings(raw,projection,config,catalog)
+assert.ok(!('app/scripts/learningUnitsMathStableOfferBindings.ts' in projection.inputs), 'Runtime acceptance CLI unexpectedly entered normative projection inputs')
+const definitions=catalog.contracts.map((entry:any)=>read(`curricula/${entry.path}`))
+const runtime=validateFreshNativeOfferRuntime(raw,baseline.binder,config,definitions)
+const runtimeOnly={learningUnitCatalogQuarantines:raw.learningUnitCatalogQuarantines,
+ globalRecognitionAtEmptyMastery:raw.globalRecognitionAtEmptyMastery,
+ scopes:raw.scopes.map((row:any)=>({scopeId:row.scopeId,learningUnitReadModel:row.learningUnitReadModel}))}
+const nonempty=runtimeOnly.scopes.findIndex((row:any)=>row.learningUnitReadModel.units.length>0)
+assert.ok(nonempty>=0)
+const mutations:Array<[string,(value:any)=>void]>=[
+ ['unavailable binding',value=>{value.scopes[0].learningUnitReadModel.offerBinding.status='unavailable'}],
+ ['unavailable read model',value=>{value.scopes[0].learningUnitReadModel.calculationStatus='unavailable'}],
+ ['old revision',value=>{value.scopes[0].learningUnitReadModel.offerBinding.revision='old-revision'}],
+ ['wrong roots',value=>{value.scopes[nonempty].learningUnitReadModel.offerBinding.rootContractRefs=[]}],
+ ['missing row',value=>{value.scopes.pop()}],
+ ['duplicate row',value=>{value.scopes[value.scopes.length-1]=value.scopes[0]}],
+ ['unexpected quarantine',value=>{value.learningUnitCatalogQuarantines={'contract@revision':'unexpected quarantine'}}],
+ ['recognized at empty mastery',value=>{value.globalRecognitionAtEmptyMastery=['unexpected-goal']}],
+ ['missing selected unit',value=>{value.scopes[nonempty].learningUnitReadModel.units.pop()}],
+ ['unexpected unit',value=>{value.scopes[0].learningUnitReadModel.units.push({contractId:'unselected',revision:'v1'})}],
+]
+for(const[label,mutate]of mutations){const value=structuredClone(runtimeOnly);mutate(value)
+ assert.throws(()=>validateFreshNativeOfferRuntime(value,baseline.binder,config,definitions),undefined,label)}
+const parent={contractId:'parent',revision:'v1'},child={contractId:'child',revision:'v1'}
+const fixtureScope={jurisdiction:'DE-HE',stage:'SekI',durationModel:null,courseProfile:null}
+const fixtureBinder={revision:'fixture-v1',offers:[{scope:fixtureScope,rootContractRefs:[parent]}]}
+const fixtureRaw={learningUnitCatalogQuarantines:{},globalRecognitionAtEmptyMastery:[],scopes:[{scopeId:'DE-HE/SekI//',
+ learningUnitReadModel:{calculationStatus:'valid',offerBinding:{status:'valid',revision:'fixture-v1',scopeKey:fixtureScope,rootContractRefs:[parent]},units:[parent,child]}}]}
+const fixtureDefinitions=[{...parent,requiredChildContractRefs:[child]},{...child,requiredChildContractRefs:[]}]
+assert.equal(validateFreshNativeOfferRuntime(fixtureRaw,fixtureBinder,{revision:'fixture-v1'},fixtureDefinitions).unitScopePairs,2)
+const missingChild=structuredClone(fixtureRaw);missingChild.scopes[0].learningUnitReadModel.units.pop()
+assert.throws(()=>validateFreshNativeOfferRuntime(missingChild,fixtureBinder,{revision:'fixture-v1'},fixtureDefinitions),/units differ/)
 const changed=structuredClone(raw)
 changed.catalogAdmissionMeasurement={elapsedNanos:999,usedHeapBeforeBytes:7,usedHeapAfterBytes:12}
 changed.globalRecognitionAtEmptyMastery=['diagnostic-only']
@@ -49,6 +80,7 @@ const report={schemaVersion:1,semantics:'actual-stable-offer-authoring-mutation-
  duplicateOwnerAndWrongScopeRejected:true,contractBindingsRetained:catalog.contracts.length,
  projectionInputCountBeforeReviewEvidence:proof.projectionInputCountBeforeReviewEvidence,
  reviewEvidenceSelfReferenceBoundaryExplicit:true,proofSha256:digest(baseline.proofBytes),
+ freshRuntimeCheck:runtime,freshRuntimeAdversarialCasesRejected:mutations.length,recursiveChildMaterializationChecked:true,
  boundary:'In-memory adversarial checks with current real source files. Actual post-activation native/API182 and fresh binder --check remain separate gates.'}
 const output=option('--output');if(output)writeFileSync(resolve(repo,output),JSON.stringify(report,null,2)+'\n')
 console.log(canonicalJson(report))

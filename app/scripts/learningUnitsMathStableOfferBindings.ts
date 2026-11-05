@@ -48,13 +48,65 @@ export function prepareStableOfferBindings(raw: any, projection: NativeProjectio
     offers: binder.offers, proofSha256: digest(proofBytes) }
   return { binder, proofPath, proofBytes, reviewInput, reviewedInputSha256: hash(reviewInput) }
 }
+/** Volatile runtime acceptance stays separate from the stable authoring proof. */
+export function validateFreshNativeOfferRuntime(raw: any, binder: any, config: any, definitions: any[]) {
+  assert.deepEqual(raw.learningUnitCatalogQuarantines, {}, 'Actual runtime quarantined learning-unit contracts')
+  assert.deepEqual(raw.globalRecognitionAtEmptyMastery, [], 'Actual runtime recognized goals at empty mastery')
+  assert.equal(binder.revision, config.revision, 'Runtime check configuration differs from reviewed binder')
+  const byRef = new Map<string, any>()
+  for (const definition of definitions) {
+    const ref = `${definition.contractId}@${definition.revision}`
+    assert.ok(!byRef.has(ref), `Duplicate runtime contract definition ${ref}`)
+    byRef.set(ref, definition)
+  }
+  const scopeId = (scope: any) => [scope.jurisdiction, scope.stage, scope.durationModel ?? '', scope.courseProfile ?? ''].join('/')
+  const offered = new Map<string, any>(binder.offers.map((row: any) => [scopeId(row.scope), row]))
+  assert.equal(offered.size, binder.offers.length, 'Reviewed runtime scope identities are not unique')
+  assert.ok(Array.isArray(raw.scopes), 'Actual runtime scope rows are missing')
+  assert.equal(raw.scopes.length, offered.size, 'Actual runtime scope count differs from reviewed binder')
+  const seen = new Set<string>()
+  let unitScopePairs = 0
+  for (const row of raw.scopes) {
+    const authored = offered.get(row.scopeId)
+    assert.ok(authored && !seen.has(row.scopeId), `Missing or duplicate actual runtime scope ${row.scopeId}`)
+    seen.add(row.scopeId)
+    const model = row.learningUnitReadModel
+    assert.equal(model?.calculationStatus, 'valid', `Actual learning-unit read model unavailable ${row.scopeId}`)
+    assert.equal(model.offerBinding?.status, 'valid', `Actual offer binding unavailable ${row.scopeId}`)
+    assert.equal(model.offerBinding.revision, config.revision, `Actual offer binding revision differs ${row.scopeId}`)
+    assert.deepEqual(model.offerBinding.scopeKey, authored.scope, `Actual offer binding scope differs ${row.scopeId}`)
+    assert.deepEqual(model.offerBinding.rootContractRefs, authored.rootContractRefs, `Actual selected roots differ ${row.scopeId}`)
+    const expected = new Set<string>()
+    const visiting = new Set<string>()
+    const visit = (ref: any) => {
+      const key = `${ref.contractId}@${ref.revision}`
+      assert.ok(!visiting.has(key), `Cyclic runtime child contracts ${key}`)
+      if (expected.has(key)) return
+      const definition = byRef.get(key)
+      assert.ok(definition, `Selected runtime contract absent from catalog ${key}`)
+      assert.ok(Array.isArray(definition.requiredChildContractRefs), `Runtime child contract references missing ${key}`)
+      visiting.add(key)
+      definition.requiredChildContractRefs.forEach(visit)
+      visiting.delete(key)
+      expected.add(key)
+    }
+    authored.rootContractRefs.forEach(visit)
+    assert.ok(Array.isArray(model.units), `Actual runtime units missing ${row.scopeId}`)
+    const actual = model.units.map((unit: any) => `${unit.contractId}@${unit.revision}`)
+    assert.equal(new Set(actual).size, actual.length, `Actual runtime units duplicated ${row.scopeId}`)
+    assert.deepEqual([...actual].sort(), [...expected].sort(), `Actual runtime units differ from selected roots and children ${row.scopeId}`)
+    unitScopePairs += expected.size
+  }
+  return { scopeCount: seen.size, catalogContractCount: byRef.size, unitScopePairs }
+}
 function main() {
   const args = process.argv.slice(2); const value = (key: string, fallback?: string) => { const index = args.indexOf(key); return index < 0 ? fallback : args[index + 1] }
   assert.equal(['--prepare','--apply','--check'].filter(flag => args.includes(flag)).length, 1, 'Choose --prepare, --apply or --check')
   const configPath = value('--config'); const nativePath = value('--native'); assert.ok(configPath && nativePath, 'Pass --config and --native')
   const projection = parse(value('--projection','docs/dev/learning-units-mathematics-native-source-projection.json')!)
   const catalogPath = 'curricula/DE/Gymnasium/learning-units/catalog.json'; const catalog = parse(catalogPath)
-  const config = parse(configPath); const result = prepareStableOfferBindings(parse(nativePath), projection, config, catalog)
+  const config = parse(configPath); const raw = parse(nativePath)
+  const result = prepareStableOfferBindings(raw, projection, config, catalog)
   const candidate = args.includes('--prepare')
   if (!candidate) {
     const receipt = parse(`curricula/${config.reviewReceiptPath}`)
@@ -76,6 +128,9 @@ function main() {
     for(const[path,data]of artifacts)if(args.includes('--check')||path===binderPath&&existsSync(resolve(repo,path)))assert.equal(bytes(path),data,`Immutable stable binder/generator drift ${path}`)
     if(!args.includes('--check'))for(const[path,data]of artifacts){mkdirSync(dirname(resolve(repo,path)),{recursive:true});writeFileSync(resolve(repo,path),data)}
   }
-  console.log(JSON.stringify({revision:config.revision,scopeCount:result.binder.offers.length,reviewedInputSha256:result.reviewedInputSha256,candidateOnly:candidate}))
+  const freshRuntime = args.includes('--check') ? validateFreshNativeOfferRuntime(raw, result.binder, config,
+    catalog.contracts.map((entry: any) => parse(`curricula/${entry.path}`))) : undefined
+  console.log(JSON.stringify({revision:config.revision,scopeCount:result.binder.offers.length,reviewedInputSha256:result.reviewedInputSha256,candidateOnly:candidate,
+    ...(freshRuntime ? { freshRuntime } : {})}))
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url))main()
