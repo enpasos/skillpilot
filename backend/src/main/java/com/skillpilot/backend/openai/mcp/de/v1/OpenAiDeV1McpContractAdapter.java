@@ -3558,6 +3558,7 @@ public final class OpenAiDeV1McpContractAdapter {
         properties.put("completion", completionSchema());
         properties.put("policies", stringArraySchema(0));
         properties.put("instruction", stringSchema());
+        properties.put("learningUnits", learningUnitsSchema());
         if (dailyPlanToolsEnabled) properties.put("learningPlanToday", dailyPlanSchema());
         return objectSchema(
                 properties,
@@ -3573,6 +3574,34 @@ public final class OpenAiDeV1McpContractAdapter {
                         "completion",
                         "policies",
                         "instruction"));
+    }
+
+    /** Exact bounded projection shared with the other coach providers. */
+    private static Map<String, Object> learningUnitsSchema() {
+        Map<String, Object> localizedText = Map.of(
+                "type", "object", "additionalProperties", stringSchema());
+        Map<String, Object> unit = objectSchema(
+                Map.of(
+                        "contractId", stringSchema(),
+                        "revision", stringSchema(),
+                        "title", localizedText,
+                        "promise", localizedText,
+                        "complete", booleanSchema(),
+                        "targetCount", integerSchema(0, null),
+                        "explicitTargetCount", integerSchema(0, null),
+                        "recognizedTargetCount", integerSchema(0, null)),
+                List.of("contractId", "revision", "title", "promise", "complete",
+                        "targetCount", "explicitTargetCount", "recognizedTargetCount"));
+        return objectSchema(
+                Map.of(
+                        "calculationStatus", stringSchema(),
+                        "semantics", stringSchema(),
+                        "recognizedGoalCount", integerSchema(0, null),
+                        "globallyEffective", Map.of("type", "boolean", "const", true),
+                        "activeGoalRecognized", booleanSchema(),
+                        "activeGoalVoluntaryRepetition", booleanSchema(),
+                        "units", boundedObjectArraySchema(unit, 0, 3)),
+                List.of("calculationStatus", "semantics", "recognizedGoalCount", "globallyEffective"));
     }
 
     private static Map<String, Object> navigationSchema() {

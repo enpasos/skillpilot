@@ -21,6 +21,7 @@ import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.GoalStats;
 import com.skillpilot.backend.api.LearnerGoals;
+import com.skillpilot.backend.api.LearningUnitsReadModel;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.MemoryPracticeCard;
@@ -874,6 +875,54 @@ class OpenAiDeCoachMcpContractTest {
                         "decision",
                         "presentationAction");
     }
+
+    @Test
+    void currentAndLegacyContextsPublishTheSharedBoundedLearningUnitProjection() {
+        var base = visualizationState();
+        String goalId = base.activeGoal().id();
+        var ownedUnits = Stream.of("one", "two", "three", "four").map(id ->
+                new LearningUnitsReadModel.Unit("contract-" + id, "revision", "private-unit-" + id,
+                        Map.of("de", "Projektionen", "en", "Projections"),
+                        Map.of("de", "Projektionen deuten", "en", "Interpret projections"),
+                        Map.of("de", "Private introduction"), List.of(goalId), List.of(),
+                        List.of("private-assessment"), List.of(), true, 2, 1, 1,
+                        List.of(goalId), List.of(), null)).toList();
+        for (boolean current : List.of(false, true)) {
+            if (current) useCurrentContract();
+            for (boolean active : List.of(true, false)) {
+                for (String status : List.of("valid", "partial", "unavailable")) {
+                    var units = new LearningUnitsReadModel(status, "learning-unit-recognition-v1",
+                            "private-contract-digest", List.of(goalId), ownedUnits, List.of(goalId));
+                    var offered = new UnifiedLearnerStateResponse(base.skillpilotId(), base.curriculum(),
+                            base.frontier(), base.goals(), base.nextAllowedActions(), base.activeFilters(),
+                            base.copySources(), base.learningState(), active ? base.activeGoal() : null,
+                            new StateMachineInfo("TEACHING", active ? "teachActiveGoal" : "setActiveGoal",
+                                    List.of(), List.of(), active ? base.activeGoal() : null), null, units);
+                    when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(offered);
+
+                    var result = call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of());
+                    assertThat(result.isError()).isFalse();
+                    assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.GET_CONTEXT, result);
+                    var projection = structured(result, OpenAiDeCoachContext.class).learningUnits();
+                    assertThat(projection).isEqualTo(com.skillpilot.backend.ai.LearningUnitsCoachProjection
+                            .project(units, active ? base.activeGoal() : null));
+                    assertThat(projection).containsEntry("calculationStatus", status)
+                            .containsEntry("recognizedGoalCount", 1).containsEntry("globallyEffective", true);
+                    if (active) {
+                        assertThat(projection).containsEntry("activeGoalRecognized", true)
+                                .containsEntry("activeGoalVoluntaryRepetition", true);
+                        assertThat((List<?>) projection.get("units")).hasSize(3);
+                    } else {
+                        assertThat(projection).doesNotContainKeys("activeGoalRecognized",
+                                "activeGoalVoluntaryRepetition", "units");
+                    }
+                    assertThat(projection.toString()).doesNotContain("private-contract-digest",
+                            "private-unit-", "private-assessment", "Private introduction", goalId);
+                }
+            }
+        }
+    }
+
     @Test
     void dedicatedReadOnlyToolRendersOnlyTheCurrentTrustedVisualization() {
         UnifiedLearnerStateResponse state = visualizationState();
@@ -1360,15 +1409,16 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("nearest broader focus first")
                 .contains("copy exactly the first published option's goalIds unchanged")
                 .contains("never infer an ancestor or construct an ID")
-                .contains("Mastery never propagates to prerequisites")
-                .contains("remaining work from the full committed Personal Curriculum")
-                .contains("a mastered goal no longer demands its own prerequisites")
-                .contains("non-assessment goals with no remaining demand are implicitly completed")
-                .contains("Implicit completion changes no saved goal result")
-                .contains("not proof of prerequisite competence")
-                .contains("do not rebuild the frontier, restore implicitly completed work as mandatory, or create mastery for it")
-                .contains("Explicit voluntary learning remains possible through current published options")
-                .doesNotContain("or suppresses, an unmastered prerequisite")
+                .contains("Use backend-published learningUnits as the sole recognition authority")
+                .contains("globally effective mastery through independent application in reviewed learning-unit assessments")
+                .contains("including after focus or curriculum changes")
+                .contains("never infer recognition from requires, a passed dependent goal alone")
+                .contains("A mastered intermediate goal must not hide the transitive demand of an open local assessment")
+                .contains("Exams and memory goals still require their own explicit results")
+                .contains("Never write derived recognition, fabricate explicit mastery or store a second learner result")
+                .contains("If recognition is unavailable, award no new implicit credit")
+                .contains("Voluntary learning remains possible through current published options")
+                .doesNotContain("Mastery never propagates to prerequisites", "not proof of prerequisite competence")
                 .contains("reload exactly once")
                 .contains("exactly one corrected read using only its actual published input schema")
                 .contains("Do not copy arguments from another provider or retry any state-changing operation")
@@ -3843,6 +3893,17 @@ class OpenAiDeCoachMcpContractTest {
             }
             Map<String, Object> properties =
                     (Map<String, Object>) schema.getOrDefault("properties", Map.of());
+            Object additional = schema.get("additionalProperties");
+            node.fields().forEachRemaining(field -> {
+                if (!properties.containsKey(field.getKey())) {
+                    assertThat(additional).as("%s.%s must be declared by the closed schema", path, field.getKey())
+                            .isNotEqualTo(false);
+                    if (additional instanceof Map<?, ?> valueSchema) {
+                        assertSchemaNode(field.getValue(), (Map<String, Object>) valueSchema,
+                                path + "." + field.getKey());
+                    }
+                }
+            });
             for (Map.Entry<String, Object> property : properties.entrySet()) {
                 if (node.has(property.getKey())) {
                     assertSchemaNode(
@@ -3855,6 +3916,12 @@ class OpenAiDeCoachMcpContractTest {
         }
         if ("array".equals(type)) {
             assertThat(node.isArray()).as("%s must be an array", path).isTrue();
+            if (schema.get("minItems") instanceof Number minimum) {
+                assertThat(node.size()).as("%s minimum array size", path).isGreaterThanOrEqualTo(minimum.intValue());
+            }
+            if (schema.get("maxItems") instanceof Number maximum) {
+                assertThat(node.size()).as("%s maximum array size", path).isLessThanOrEqualTo(maximum.intValue());
+            }
             Object itemSchema = schema.get("items");
             if (itemSchema instanceof Map<?, ?> items) {
                 for (int index = 0; index < node.size(); index++) {
