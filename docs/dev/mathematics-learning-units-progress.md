@@ -182,9 +182,19 @@ eigenen Mathematikeinstieg: 1.255 Ziele in zwei Landschaften, 23 Program Units,
 322 Placements und 98 Sichten. Das fertige ZIP bestand seine sechs Prüfungen
 einschließlich Assetbytes und wurde in einem neuen privaten Store installiert.
 Der echte installierte Backendpfad reproduziert alle 182 nativen Projektionen.
-Die abschließende Prüfung mit dem gepinnten isolierten Verbraucher läuft noch;
-das ZIP ist nicht als veröffentlicht freigegeben. Die zwölf danach autorierten
-Verträge gehören nicht zu diesem eingefrorenen Paketnachweis.
+Die Prüfung mit dem gemeinsam versionierten isolierten Verbraucher **1.1.0**
+bestand alle [15 Pflichtprüfungen](learning-units-mathematics-nine-unit-consumer-smoke-report.json),
+einschließlich tatsächlicher Lehrplanauswahl über veröffentlichte Optionen,
+Kartenübung und gesperrter Repository-Fallbacks. Das unveränderte Neun-Einheiten-ZIP
+hat SHA256 `167ac363fb4b4dd34ca3dcdcb17d9c55deae7ce9b3c9477244532b8198a6e3a8`.
+Der Nachweis bindet die tatsächlich geprüfte Anwendungsassembly
+`5564c7d8c17e65aebe7c2335e0a90da882ea8d6d87778bf327d21ec0eaa1bd4f`;
+spätere Softwareänderungen benötigen neue Kandidatenprüfungen. Der äußere
+Readiness-Aufruf wurde nach dem erfolgreichen Verbraucher beendet und erzeugte
+keinen abschließenden Readiness-Bericht. Das ZIP ist nicht als veröffentlicht
+freigegeben. Die zwölf danach autorierten Verträge gehören nicht zu diesem
+eingefrorenen Paketnachweis. Die unveränderten 1.0.0-Verbraucherquellen und
+damaligen Nachweise bleiben gesondert archiviert.
 
 Der reale Paketablauf deckte außerdem einen Fehler im noch unkonfigurierten
 Einstieg auf: Seine Navigationssicht wurde als voller Mathematikzielumfang
