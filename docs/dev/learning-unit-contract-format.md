@@ -95,6 +95,33 @@ Katalogeinträge mit eigenen Karten verlangen dafür ausdrücklich
 `recallBindingSemantics=verified-recall-selection-v1`. Ein alter strikter
 Consumer darf die Auswahlbeschreibung nicht als beliebige Deckdatei ignorieren.
 
+### Geprüfte Nachfolger und Kartenaufteilungen
+
+Eine neue Curriculum-/Placementrevision darf eine alte Prüfungs- oder
+Abrufpflicht durch einen ausdrücklich geprüften Nachfolger ersetzen. Das Review
+nennt alte und neue IDs, betroffene native Angebote, geänderte Aufgaben- oder
+Kartenbedeutung sowie das genaue erwartete Zielmengendelta. Gewöhnliche
+Kompetenzen dürfen dadurch nicht aus dem fachlichen Umfang verschwinden. Zwei
+ähnliche Prüfungen bleiben nur dann beide Pflicht, wenn tatsächlich zwei
+eigenständige Ergebnisse gewollt sind. Eine neue ID allein ersetzt kein Ziel.
+
+Alte Aufgaben, Ergebnisse und gültige Verträge bleiben erhalten; ein neuer
+strengerer Anspruch erhält keinen Ergebnis-Alias von einem alten Pass, der die
+zusätzliche Kompetenz auslassen konnte. Bestehende feste Planzielmengen werden
+nicht still umgeschrieben. Eine ausdrückliche Neuplanung übernimmt den neuen
+Zielstand, ohne rückdatierte Abschlüsse oder neue Periodenereignisse zu erfinden.
+
+Ein breites Kartenziel darf erst aus den aktuellen Pflichten entfallen, wenn
+seine gesamte bisherige Kartenpflicht einer geprüften Nachfolgerpartition
+zugeordnet ist. Kleine neue Abrufziele verwenden neue stabile IDs und genaue
+`select:`-Auswahlen mit derselben DE-/EN-Bedeutung. Ein Kartenziel unter derselben
+ID erhält keine wechselnde Auswahl je Bundesland. Gleiche Karten-IDs in einem
+neuen Ziel übernehmen allein noch keine alte SRS-Historie: Der erste minimale
+Betriebsweg ist ein eigener expliziter Abruf. Eine spätere Übernahme verifizierter
+Kartenleistungen braucht belegte historische Bedeutung und bewahrt deren echte
+Zeitpunkte. Weder ein breites altes Masteryergebnis noch heutige Deckhashes
+genügen dafür.
+
 Die Objekt-Hashes verwenden sortierte JSON-Schlüssel, UTF-8, kompakte
 Trennzeichen und explizite Nullwerte der festen Bedeutungsfelder. Dateihashes
 binden genaue Bytes. Ein Hash beweist Integrität, keine fachliche Qualität:
