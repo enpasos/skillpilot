@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
-import { assertCurrentCoachBehavior, assertCurrentCompletionBehavior } from "./check_skillpilot_coach_behavior.mjs";
+import { assertCurrentCoachBehavior, assertCurrentCompletionBehavior, assertLearningUnitRecognitionBehavior } from "./check_skillpilot_coach_behavior.mjs";
 
 const skillRoot = new URL("../ai/openai plugin/skillpilot-coach/skills/skillpilot-coach/", import.meta.url);
 const source = {
@@ -23,61 +23,38 @@ test("current instructions distinguish ordinary/exam success from orientation an
   assert.doesNotThrow(() => assertCurrentCoachBehavior(source));
 });
 
-test("current package and live instructions separate implicit completion from prerequisite mastery", () => {
+test("current package and live instructions publish globally effective reviewed recognition", () => {
   assert.doesNotThrow(() => assertCurrentCompletionBehavior(completionSource));
 });
 
-test("obsolete mandatory preparation cannot return alongside the correct completion rules", () => {
+test("Claude, ChatGPT and Gemini share the same learning-unit competence rules", () => {
+  for (const path of [
+    "../ai/claude/plugin/skillpilot-coach-v1/skills/skillpilot-coach-v1/SKILL.md",
+    "../ai/gemini/coach/candidates/0.2.0/SKILL.md",
+  ]) assert.doesNotThrow(() => assertLearningUnitRecognitionBehavior(readFileSync(new URL(path, import.meta.url), "utf8")));
+});
+
+test("obsolete discharge, fake mastery writes and incomplete recognition rules fail closed", () => {
   for (const field of Object.keys(completionSource)) {
     for (const obsolete of [
-      "mastery of a dependent goal never implies mastery of, or suppresses, an unmastered prerequisite",
-      "Do not suppress or mark A as mastered from that relation.",
-      "Every unmastered personalized target remains a normal frontier candidate.",
-      "Every unmastered target in the Personal Curriculum remains subject to the normal frontier test.",
-    ]) {
-      assert.throws(() => assertCurrentCompletionBehavior({
-        ...completionSource, [field]: `${completionSource[field]}\n${obsolete}`,
-      }), /Obsolete mandatory-prerequisite instructions/u);
-    }
-  }
-});
-
-test("implicit completion and dependent mastery cannot become stored prerequisite mastery", () => {
-  for (const field of Object.keys(completionSource)) {
-    for (const invalid of [
+      "Implicit completion needs no passed assessment.",
+      "A mastered goal no longer demands its own prerequisites.",
       "Mastery of B implies mastery of A.",
-      "Implicit completion creates mastery.",
-      "Implicit completion writes saved mastery.",
-    ]) {
-      assert.throws(() => assertCurrentCompletionBehavior({
-        ...completionSource, [field]: `${completionSource[field]}\n${invalid}`,
-      }), /must never create prerequisite mastery/u);
-    }
+      "Write recognized goals back to mastery.",
+    ]) assert.throws(() => assertCurrentCompletionBehavior({
+      ...completionSource, [field]: `${completionSource[field]}\n${obsolete}`,
+    }), /Obsolete preparation-discharge|stored mastery write/u);
   }
-});
-
-test("completion guards detect missing mastery barriers, backend authority, scope and voluntary access", () => {
-  for (const [field, pattern, replacement, reason] of [
-    ["skill", /Mastery of a goal never implies mastery of its\s+prerequisites/u,
-      "Check prerequisites separately", /skill must prohibit mastery transfer/u],
-    ["skill", /backend alone determines remaining work/u,
-      "coach determines remaining work", /defer remaining work/u],
-    ["policy", /A mastered goal no longer demands its own prerequisites/u,
-      "Always require every transitive prerequisite", /Mastered intermediate goals/u],
-    ["policy", /full committed Personal Curriculum/u,
-      "current visible learning focus", /full authoritative demand scope/u],
-    ["policy", /Implicit completion needs no passed assessment/u,
-      "Implicit completion requires a passed assessment", /scopes without assessments/u],
-    ["serverInstructions", /Mastery never propagates to prerequisites/u,
-      "Check prerequisite mastery later", /Live instructions must prohibit/u],
-    ["serverInstructions", /Implicit completion changes no saved goal result/u,
-      "Implicit completion changes the saved goal result", /preserve binary results/u],
-    ["serverInstructions", /Explicit voluntary learning remains possible through current published options/u,
-      "Implicitly completed goals cannot be studied", /retain authorized voluntary learning/u],
+  for (const [pattern, reason] of [
+    [/globally effective mastery/iu, /globally effective/u],
+    [/independent\s+application/iu, /independent application/u],
+    [/Exams and memory goals still require their own explicit results/iu, /Protected exams/u],
+    [/Never write\s+derived recognition/iu, /persisted as explicit/u],
+    [/Voluntary learning remains possible through\s+current\s+published options/iu, /Voluntary access/u],
   ]) {
-    const mutated = completionSource[field].replace(pattern, replacement);
-    assert.notEqual(mutated, completionSource[field], "The mutation must change a current instruction.");
-    assert.throws(() => assertCurrentCompletionBehavior({ ...completionSource, [field]: mutated }), reason);
+    const mutated = completionSource.skill.replace(pattern, "removed rule");
+    assert.notEqual(mutated, completionSource.skill);
+    assert.throws(() => assertLearningUnitRecognitionBehavior(mutated), reason);
   }
 });
 

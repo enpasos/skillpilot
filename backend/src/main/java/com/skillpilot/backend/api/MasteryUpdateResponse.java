@@ -13,7 +13,17 @@ public record MasteryUpdateResponse(
                 StateMachineInfo stateMachine,
                 LearnerGoals goals,
                 @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
-                LevelCompletionResponse levelCompletion) {
+                LevelCompletionResponse levelCompletion,
+                @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+                LearningUnitsReadModel learningUnits) {
+
+        public MasteryUpdateResponse(Boolean saved, String savedGoalId, Double savedMastery,
+                        List<FrontierGoal> frontier, List<String> nextAllowedActions, String learningState,
+                        FrontierGoal activeGoal, StateMachineInfo stateMachine, LearnerGoals goals,
+                        LevelCompletionResponse levelCompletion) {
+                this(saved, savedGoalId, savedMastery, frontier, nextAllowedActions, learningState,
+                        activeGoal, stateMachine, goals, levelCompletion, null);
+        }
 
         public MasteryUpdateResponse(Boolean saved, String savedGoalId, Double savedMastery,
                         List<FrontierGoal> frontier, List<String> nextAllowedActions, String learningState,

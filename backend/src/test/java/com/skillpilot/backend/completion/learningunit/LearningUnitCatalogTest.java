@@ -67,7 +67,86 @@ class LearningUnitCatalogTest {
         }
     }
 
-    private Archive archive(String status) throws Exception {
+    @Test void reversedActiveThenArchivedOrderCannotBroadenAnOldAssessmentClaim() throws Exception {
+        var archive = archive("archived");
+        var original = mapper.readValue(archive.manifest(), LearningUnitCatalog.Manifest.class).contracts().getFirst();
+        var broader = broaderEntry(archive, original);
+        var loaded = LearningUnitCatalog.load(mapper.writeValueAsBytes(new LearningUnitCatalog.Manifest(1, List.of(broader, original))),
+                archive.files()::get, ignored -> {}, mapper);
+        assertThat(loaded.definitions()).singleElement().satisfies(definition -> assertThat(definition.contractId()).isEqualTo("unit"));
+        assertThat(loaded.quarantined()).containsKey(broader.path()).doesNotContainKey(original.path());
+        assertThat(new LearningUnitEvaluator().evaluate(loaded.compiled(), java.util.Set.of("Q")).recognizedGoalIds()).containsExactly("A").doesNotContain("B");
+    }
+
+    @Test void cachedSourceSnapshotCannotReplaceAnotherEntriesOwnInputPin() throws Exception {
+        var archive = archive("archived");
+        var original = mapper.readValue(archive.manifest(), LearningUnitCatalog.Manifest.class).contracts().getFirst();
+        String duplicatePath = "DE/Gymnasium/learning-units/contracts/unit/unpinned-copy.json";
+        archive.files().put(duplicatePath, archive.files().get(original.path()));
+        Map<String, String> incompleteInputs = new LinkedHashMap<>(original.inputs());
+        incompleteInputs.remove(original.sourceSnapshotPath());
+        var unpinned = new LearningUnitCatalog.Entry(duplicatePath, original.sha256(), "active", original.sourceSnapshotPath(),
+                incompleteInputs, original.assessmentInputs(), Map.of());
+        var loaded = LearningUnitCatalog.load(mapper.writeValueAsBytes(new LearningUnitCatalog.Manifest(1, List.of(original, unpinned))),
+                archive.files()::get, ignored -> {}, mapper);
+        assertThat(loaded.definitions()).hasSize(1);
+        assertThat(loaded.quarantined().get(duplicatePath)).contains("Unpinned frozen input");
+    }
+
+    @Test void unchangedTaskCannotExtendItsFrozenCanonicalCoveredCompetenceClaim() throws Exception {
+        var archive = archive("archived");
+        var original = mapper.readValue(archive.manifest(), LearningUnitCatalog.Manifest.class).contracts().getFirst();
+        var broader = broaderEntry(archive, original);
+        var snapshot = (com.fasterxml.jackson.databind.node.ObjectNode) mapper.readTree(archive.files().get(broader.sourceSnapshotPath()));
+        for (var goal : snapshot.path("landscapes").get(0).path("goals")) if ("Q".equals(goal.path("id").asText())) {
+            ((com.fasterxml.jackson.databind.node.ObjectNode) goal.path("examData")).putArray("coveredGoalIds").add("A");
+        }
+        archive.files().put(broader.sourceSnapshotPath(), mapper.writeValueAsBytes(snapshot));
+        var inputs = new LinkedHashMap<>(broader.inputs());
+        inputs.put(broader.sourceSnapshotPath(), hash(archive.files().get(broader.sourceSnapshotPath())));
+        broader = new LearningUnitCatalog.Entry(broader.path(), broader.sha256(), "archived", broader.sourceSnapshotPath(),
+                inputs, broader.assessmentInputs(), broader.recallInputs());
+        var loaded = LearningUnitCatalog.load(mapper.writeValueAsBytes(new LearningUnitCatalog.Manifest(1, List.of(broader))),
+                archive.files()::get, ignored -> {}, mapper);
+        assertThat(loaded.definitions()).isEmpty();
+        assertThat(loaded.quarantined().get(broader.path())).startsWith("ASSESSMENT_CLAIM_CONFLICT:");
+    }
+
+    private LearningUnitCatalog.Entry broaderEntry(Archive archive, LearningUnitCatalog.Entry original) throws Exception {
+        var definition = (com.fasterxml.jackson.databind.node.ObjectNode) mapper.readTree(archive.files().get(original.path()));
+        definition.put("contractId", "broader").put("revision", "2");
+        ((com.fasterxml.jackson.databind.node.ObjectNode) definition.get("sourceBinding")).put("placementRevision", "placements-2");
+        definition.withArray("ownGoalIds").add("B");
+        var b = new com.skillpilot.backend.landscape.LearningGoal();
+        b.setId("B"); b.setTitle("Goal B"); b.setDescription("Can apply B"); b.setType("atomic");
+        b.setNodeKind("tutor"); b.setSemanticKind("curricularAtomic"); b.setContains(List.of()); b.setRequires(List.of());
+        ((com.fasterxml.jackson.databind.node.ObjectNode) definition.get("ownGoalMeanings")).set("B", mapper.valueToTree(LearningUnitSourceBindings.meaning(b)));
+        ((com.fasterxml.jackson.databind.node.ObjectNode) definition.get("ownGoalMeaningDigests")).put("B", LearningUnitSourceBindings.meaningDigest(b));
+        ((com.fasterxml.jackson.databind.node.ObjectNode) definition.get("ownResolvedKinds")).put("B", "ordinary");
+        ((com.fasterxml.jackson.databind.node.ObjectNode) definition.get("atomicPrerequisites")).putArray("B");
+        ((com.fasterxml.jackson.databind.node.ArrayNode) definition.path("atomicPrerequisites").path("Q")).add("B");
+        ((com.fasterxml.jackson.databind.node.ArrayNode) definition.path("assessmentClaims").path("Q").path("coveredGoalIds")).add("B");
+        var snapshot = (com.fasterxml.jackson.databind.node.ObjectNode) mapper.readTree(archive.files().get(original.sourceSnapshotPath()));
+        var source = (com.fasterxml.jackson.databind.node.ObjectNode) snapshot.path("landscapes").get(0);
+        source.withArray("goals").add(mapper.valueToTree(b));
+        for (var node : source.withArray("goals")) if ("Q".equals(node.path("id").asText())) {
+            ((com.fasterxml.jackson.databind.node.ObjectNode) node).withArray("requires").add("B");
+            ((com.fasterxml.jackson.databind.node.ObjectNode) node.get("examData")).putArray("coveredGoalIds").add("A").add("B");
+        }
+        var unit = (com.fasterxml.jackson.databind.node.ObjectNode) source.path("programUnits").get(0).path("learningUnit");
+        unit.put("contractId", "broader").put("revision", "2").put("placementRevision", "placements-2");
+        source.withArray("goalPlacements").add(mapper.valueToTree(Map.of("goalId", "B", "unitId", "unit", "relation", "primary", "acquisition", true)));
+        String contractPath = "DE/Gymnasium/learning-units/contracts/broader/2.json";
+        String snapshotPath = "DE/Gymnasium/learning-units/inputs/broader-source.json";
+        archive.files().put(contractPath, mapper.writeValueAsBytes(definition));
+        archive.files().put(snapshotPath, mapper.writeValueAsBytes(snapshot));
+        Map<String, String> inputs = new LinkedHashMap<>(original.inputs());
+        inputs.remove(original.sourceSnapshotPath()); inputs.put(snapshotPath, hash(archive.files().get(snapshotPath)));
+        return new LearningUnitCatalog.Entry(contractPath, hash(archive.files().get(contractPath)), "active", snapshotPath,
+                inputs, original.assessmentInputs(), Map.of());
+    }
+
+    Archive archive(String status) throws Exception {
         var fixture = LearningUnitSourceBindingsTest.fixture();
         String contractPath = "DE/Gymnasium/learning-units/contracts/unit/1.json";
         String sourcePath = "DE/Gymnasium/learning-units/inputs/source.json";
@@ -91,6 +170,6 @@ class LearningUnitCatalogTest {
         return new Archive(mapper.writeValueAsBytes(new LearningUnitCatalog.Manifest(1, List.of(entry))), files);
     }
 
-    private static String hash(byte[] bytes) throws Exception { return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(bytes)); }
-    private record Archive(byte[] manifest, Map<String, byte[]> files) { }
+    static String hash(byte[] bytes) throws Exception { return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(bytes)); }
+    record Archive(byte[] manifest, Map<String, byte[]> files) { }
 }

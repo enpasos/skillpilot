@@ -924,6 +924,15 @@
                 "type": "string",
                 "minLength": 1
               }
+            },
+            "requiredChildUnitIds": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": "Explicit required child units. An empty array declares no required children; omission retains the legacy parent binding."
             }
           }
         }

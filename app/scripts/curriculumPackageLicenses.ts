@@ -12,7 +12,7 @@ export const completionContentLicenseDecision = (
   decision: PackageLicenseDecision,
   grant: { contentLicenseExpression: string; scope: string },
 ): PackageLicenseDecision => {
-  if (!['completion-profile', 'completion-scope', 'completion-rule-review'].includes(role)) return decision
+  if (!['completion-profile', 'completion-scope', 'completion-rule-review', 'learning-unit-catalog', 'learning-unit-contract', 'learning-unit-input'].includes(role)) return decision
   if (decision.provenanceClass !== 'skillpilot-authored' || decision.redistributionStatus === 'prohibited'
       || grant.contentLicenseExpression !== 'CC-BY-4.0' || grant.scope !== 'skillpilot-owned-contributions') {
     throw new Error('Completion content lacks the existing owner license grant or its own-material classification.')

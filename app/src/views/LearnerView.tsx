@@ -50,7 +50,7 @@ import type { ToastKind } from '../hooks/useToast'
 import { queueToastForNextLoad } from '../hooks/useToast'
 import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
 import { createSynchronousInFlightGuard } from '../utils/synchronousInFlightGuard'
-import { buildCompletionAssessmentStartHref, buildCompletionRouteStartHref, completionAssessmentsForGoal, completionLabel, completionUnavailableReason, completionWaiversForTree, hasActiveCompletionRoute, parseLevelCompletion, requestLevelCompletionAction, type CompletionActionInput, type LevelCompletion, type CompletionTreeWaiver } from '../utils/levelCompletionApi'
+import { buildCompletionAssessmentStartHref, buildCompletionRouteStartHref, completionAssessmentsForGoal, completionLabel, completionUnavailableReason, hasActiveCompletionRoute, parseLevelCompletion, requestLevelCompletionAction, type CompletionActionInput, type LevelCompletion, type CompletionTreeWaiver } from '../utils/levelCompletionApi'
 import {
   beginLatestRequest,
   invalidateLatestRequest,
@@ -104,6 +104,7 @@ import {
   usePersonalCurriculumEditor,
 } from '../hooks/usePersonalCurriculumEditor'
 import { resolveGoalDeckHref } from '../utils/runtimeCurriculumCatalog'
+import { parseLearningUnits, unavailableLearningUnits, learningCompletionAnnotations, learningUnitText, type LearningUnitsReadModel } from '../utils/learningUnitsApi'
 import {
   buildDirectChildrenMap,
   buildVisibleChildrenMap,
@@ -156,6 +157,8 @@ export interface LearnerViewProps {
   goalIndexAll: Map<string, UiGoal>
   canonicalGoalSources?: readonly { goals: readonly UiGoal[] }[]
   getMastery: (goalId: string) => number
+  /** Recognition from the same backend snapshot as the displayed mastery map. */
+  masteryLearningUnits?: LearningUnitsReadModel | null
   currentGoal: UiGoal | null
   onSelectGoal: (id: string) => void
   onSelectGoalInLandscape?: (landscapeId: string, goalId: string) => void
@@ -200,6 +203,7 @@ type LearnerStateRefreshResult = {
 
 type LearnerStatePayload = {
   levelCompletion?: unknown
+  learningUnits?: unknown
   activeGoal?: { id?: string } | null
   frontier?: FrontierGoal[]
   stateMachine?: {
@@ -405,6 +409,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   goalIndexAll,
   canonicalGoalSources,
   getMastery,
+  masteryLearningUnits,
   currentGoal,
   onSelectGoal,
   onSelectGoalInLandscape,
@@ -449,6 +454,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [stateActiveGoalId, setStateActiveGoalId] = useState<string | null>(null)
   const [stateRequiredAction, setStateRequiredAction] = useState<string | null>(null)
   const [completionSnapshot, setCompletionSnapshot] = useState<{ scopeKey: string; data: LevelCompletion | null } | null>(null)
+  const [unitSnapshot, setUnitSnapshot] = useState<{ scopeKey: string; data: LearningUnitsReadModel | null } | null>(null)
+  const learningUnits = unitSnapshot?.scopeKey === learnerStateScopeKey ? unitSnapshot.data : null
   const [completionActionBusy, setCompletionActionBusy] = useState(false)
   const [completionActionError, setCompletionActionError] = useState<string | null>(null)
   const completionActionInFlightRef = useRef(createSynchronousInFlightGuard())
@@ -467,8 +474,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         ? 'loading'
         : 'ready'
   const completionTreeWaivers = useMemo(
-    () => completionWaiversForTree(levelCompletion, learnerStateLoadStatus !== 'ready'),
-    [levelCompletion, learnerStateLoadStatus],
+    () => learningCompletionAnnotations(levelCompletion, masteryLearningUnits === undefined ? learningUnits : masteryLearningUnits, learnerStateLoadStatus !== 'ready'),
+    [levelCompletion, learningUnits, masteryLearningUnits, learnerStateLoadStatus],
   )
   const [personalConfigLoadState, setPersonalConfigLoadState] = useState<{
     scopeKey: string
@@ -1684,6 +1691,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     requestScopeKey: string,
   ): LearnerStateRefreshResult => {
     const completion = parseLevelCompletion(data.levelCompletion)
+    let units: LearningUnitsReadModel | null
+    try { units = parseLearningUnits(data.learningUnits) }
+    catch {
+      units = unavailableLearningUnits()
+      console.warn('Learning-unit status is invalid; showing explicit learning results')
+    }
     const backendActiveGoalId = data.activeGoal?.id ?? data.stateMachine?.activeGoal?.id ?? null
     if (data.frontier && Array.isArray(data.frontier)) {
       setFrontierOptions(data.frontier)
@@ -1704,6 +1717,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     setLearnerData(prev => prev ? { ...prev, activeGoalId: backendActiveGoalId ?? undefined } : prev)
     setStateRequiredAction(data.stateMachine?.requiredAction ?? null)
     setCompletionSnapshot({ scopeKey: requestScopeKey, data: completion })
+    setUnitSnapshot({ scopeKey: requestScopeKey, data: units })
     // Store backend-computed stats for consistency with GPT
     if (data.goals) {
       setBackendStats({
@@ -2218,6 +2232,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
       if (res.ok) {
         const data = await res.json()
+        if (currentLearnerStateScopeKeyRef.current !== learnerStateScopeKey) return
+        if (isLearnerStatePayload(data)) applyLearnerStatePayload(data, learnerStateScopeKey)
         if (data.frontier && Array.isArray(data.frontier)) {
           setFrontierOptions(data.frontier)
         } else if (data.stateMachine && Array.isArray(data.stateMachine.goalOptions)) {
@@ -2252,6 +2268,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       onNotify?.('error', t.notifications.activeGoalSetSystemFailed)
     }
   }, [
+    applyLearnerStatePayload,
+    learnerStateScopeKey,
     learnerViewCopy.activeGoalNotAllowedTitle,
     learnerViewCopy.activeGoalNotInFrontierMessage,
     onNotify,
@@ -3897,6 +3915,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   ) : (
                     <GoalCard
                       goal={currentGoal}
+                      recognized={completionTreeWaivers.get(currentGoal.id)?.reason === 'recognized'}
+                      onVoluntaryPractice={learningUnits?.voluntaryGoalIds.includes(currentGoal.id) ? handleSetActiveGoal : undefined}
                       masteryValue={
                         currentGoal.contains && currentGoal.contains.length > 0
                           ? getFilteredMastery(currentGoal.id)
@@ -3914,6 +3934,17 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                       activeFilter={effectiveActiveFilter}
                     />
                   )}
+
+                {learningUnits?.units.filter(unit => (unit.programUnitId === currentGoal.id || unit.ownGoalIds.includes(currentGoal.id))).map(unit => (
+                  <details key={unit.contractId} data-testid="learning-unit-introduction" className="mt-4 rounded-2xl border border-border-color p-4 text-sm">
+                    <summary className="cursor-pointer font-medium text-text-secondary">{localizedLanguage === 'en' ? 'Learning unit' : 'Lerneinheit'}: {learningUnitText(unit.title, localizedLanguage)}</summary>
+                    <p className="mt-3 font-semibold text-text-primary">{learningUnitText(unit.promise, localizedLanguage)}</p>
+                    <p className="mt-2 text-text-secondary">{learningUnitText(unit.introduction, localizedLanguage)}</p>
+                    <p className="mt-2 text-text-secondary">{unit.calculationStatus === 'unavailable'
+                      ? (localizedLanguage === 'en' ? 'Completion cannot currently be calculated.' : 'Der Abschluss kann gerade nicht berechnet werden.')
+                      : `${localizedLanguage === 'en' ? 'Completed' : 'Abgeschlossen'}: ${unit.explicitTargetCount + unit.recognizedTargetCount}/${unit.targetCount}`}</p>
+                  </details>
+                ))}
 
                 {selectedGoalAssessments.length > 0 ? <div data-testid="selected-goal-assessment-shortcuts" className="mt-3 flex flex-col items-start gap-2 text-sm">
                   {selectedGoalAssessments.map(({ profileId, profileTitle, assessment }) => <div key={profileId} className="flex flex-wrap items-center gap-3">

@@ -24,12 +24,17 @@ export function TreeCompletionProgressBar({ progress, title, language, sectionTi
       ? `${completedCount} von ${totalCount} Lernzielen erledigt`
       : `${completedCount} of ${totalCount} learning goals completed`)
   const explicitLabel = language === 'de' ? `${explicitCount} explizit geschafft` : `${explicitCount} explicitly achieved`
-  const implicitLabel = language === 'de' ? `${implicitCount} implizit erledigt` : `${implicitCount} implicitly completed`
+  const recognizedCount = progress.recognizedCount ?? 0
+  const legacyCount = implicitCount - recognizedCount
+  const implicitLabel = progress.globalRecognition
+    ? (language === 'de' ? `${recognizedCount} durch Anwendung gemeistert${legacyCount ? `; ${legacyCount} im Abschnitt abgedeckt` : ''}`
+      : `${recognizedCount} mastered through application${legacyCount ? `; ${legacyCount} covered in this section` : ''}`)
+    : language === 'de' ? `${implicitCount} implizit erledigt` : `${implicitCount} implicitly completed`
   const openLabel = language === 'de' ? `${openCount} offen` : `${openCount} open`
   const weightedLabel = language === 'de'
     ? `Gewichteter Fortschritt: ${percentLabel} %`
     : `Weighted progress: ${percentLabel}%`
-  const scope = implicitCount > 0 && sectionTitle ? completionLabel(sectionTitle, language) : undefined
+  const scope = legacyCount > 0 && sectionTitle ? completionLabel(sectionTitle, language) : undefined
   const scopeLabel = scope ? `${language === 'de' ? 'Implizite Erledigung im Lernabschnitt' : 'Implicit completion in section'}: ${scope}` : ''
 
   return <TreeStatusTooltip
@@ -46,9 +51,14 @@ export function TreeCompletionProgressBar({ progress, title, language, sectionTi
       </ul>
       {totalCount > 0 && <p className="mt-2">{weightedLabel}</p>}
       {scope && <p className="mt-2"><InlineMathText text={scopeLabel} /></p>}
-      {implicitCount > 0 && <p className="mt-2">{language === 'de'
+      {implicitCount > 0 && <p className="mt-2">{progress.globalRecognition ? (language === 'de'
+        ? 'Selbständige Anwendung in bestandenen Prüfungen zählt auch für spätere Voraussetzungen und den gesamten Fortschritt.'
+        : 'Independent application in passed assessments counts toward later prerequisites and total progress.') : language === 'de'
         ? 'Implizite Erledigung verändert den gespeicherten Lernstand nicht.'
         : 'Implicit completion does not change the saved learning result.'}</p>}
+      {progress.globalRecognition && legacyCount > 0 && <p className="mt-2">{language === 'de'
+        ? 'Die zusätzliche Vorbereitung entfällt nur für die im Abschnitt abgedeckten Ziele.'
+        : 'Separate preparation is waived only for the goals covered in this section.'}</p>}
     </>}
   >
     <span aria-hidden="true" className="flex h-1.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">

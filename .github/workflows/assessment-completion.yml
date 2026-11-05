@@ -13,6 +13,7 @@ on:
       - 'app/**'
       - 'curricula/**'
       - 'contracts/assessment-completion/**'
+      - 'contracts/learning-units/**'
       - 'contracts/curriculum-package/**'
       - 'scripts/*curriculum_package*'
       - 'scripts/*completion*'
@@ -30,6 +31,7 @@ on:
       - 'app/**'
       - 'curricula/**'
       - 'contracts/assessment-completion/**'
+      - 'contracts/learning-units/**'
       - 'contracts/curriculum-package/**'
       - 'scripts/*curriculum_package*'
       - 'scripts/*completion*'
@@ -73,6 +75,10 @@ jobs:
             !/curricula/DE/Gymnasium/quality/
             !/curricula/DE/Gymnasium/visualizations/
             /curricula/DE/Gymnasium/quality/assessment-completion/
+            /curricula/DE/Gymnasium/quality/learning-units/
+            /curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json
+            /docs/landscape-runtime.schema.json
+            /docs/dev/learning-units-mathematics-offering-inventory.json
             /scripts/
       - uses: actions/setup-node@v6
         with:
@@ -85,6 +91,19 @@ jobs:
           python-version: '3.11'
       - name: Install pinned package and RDF validation dependencies
         run: python -m pip install -r ../scripts/curriculum_fwu_owl_validation_requirements.txt
+      - name: Fetch exact historical authoring inputs without checking out archives
+        run: |
+          for revision in 0ce5a8d791eeb9783a919195fd8590bfb79f3595 802f333f80c58d3409ab5d9fb3e9913fecafbf54; do
+            if ! git -c core.trustctime=false cat-file -e "${revision}^{commit}"; then
+              git -c core.trustctime=false fetch --no-tags --filter=blob:none origin "${revision}"
+            fi
+          done
+      - name: Validate reviewed Mathematics ownership, source retention and full offering inventory
+        run: |
+          npx --no-install tsx scripts/learningUnitsMathAuthoring.ts --check
+          npx --no-install tsx scripts/learningUnitsMathAuthoring.test.ts
+          npx --no-install tsx scripts/learningUnitsMathAuthoringQueue.ts --check
+          npx --no-install tsx scripts/learningUnitsNativeMathInventory.test.ts
       - name: Validate profile/scope authoring and the shared semantic fixture corpus
         run: |
           npm run check:assessment-completion-profiles
@@ -92,11 +111,15 @@ jobs:
       - name: Validate package completion contracts and independent FWU reconstruction
         run: |
           python3 ../scripts/test_assessment_completion_package.py
+          python3 ../scripts/test_learning_unit_package.py
+          npm run test:learning-units-package-builder
+          python3 ../scripts/validate_curriculum_package_contracts.py --contracts-dir ../contracts/curriculum-package/v1.2
           npm run test:fwu-owl-package-builder
       - name: Check TypeScript, state parsing, binary goals and public practice synchronization
         run: |
           npx --no-install tsc -b --pretty false
           npm run test:level-completion
+          npm run test:learning-units-ui
           npx --no-install tsx src/utils/srsPracticeSync.test.ts
           npm run test:session-setup-id-entry
       - name: Use Ubuntu package sources
@@ -105,7 +128,9 @@ jobs:
         timeout-minutes: 10
         run: npx --no-install playwright install --with-deps chromium
       - name: Test real browser navigation, revision conflicts and keyboard interaction
-        run: npm run test:level-completion-browser
+        run: |
+          npm run test:level-completion-browser
+          npm run test:learning-units-browser
       - name: Retain browser evidence
         if: always()
         uses: actions/upload-artifact@v6
@@ -138,6 +163,8 @@ jobs:
             !/curricula/DE/Gymnasium/quality/
             !/curricula/DE/Gymnasium/visualizations/
             /curricula/DE/Gymnasium/quality/assessment-completion/
+            /curricula/DE/Gymnasium/quality/learning-units/
+            /curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json
             /docs/qa-ci/status/curriculum-quality-status.json
             /scripts/
       - uses: actions/setup-node@v6
@@ -194,6 +221,9 @@ jobs:
           SKILLPILOT_COMPLETION_BACKEND_BROWSER: 'true'
         run: >-
           ./gradlew test --console=plain --rerun-tasks
+          --tests 'com.skillpilot.backend.completion.learningunit.*'
+          --tests 'com.skillpilot.backend.service.LearningUnitRecognitionIntegrationTest'
+          --tests 'com.skillpilot.backend.service.LearningPlanDailyProgressTest'
           --tests 'com.skillpilot.backend.completion.CompletionCoreTest'
           --tests 'com.skillpilot.backend.completion.CompletionApplicationServiceTest'
           --tests 'com.skillpilot.backend.completion.CompletionCatalogTest'
@@ -245,6 +275,15 @@ jobs:
           import xml.etree.ElementTree as ET
 
           required = {
+              'com.skillpilot.backend.completion.learningunit.LearningUnitCoreTest': 14,
+              'com.skillpilot.backend.completion.learningunit.LearningUnitCatalogTest': 8,
+              'com.skillpilot.backend.completion.learningunit.LearningUnitSourceBindingsTest': 5,
+              'com.skillpilot.backend.completion.learningunit.LearningUnitRecursiveCatalogTest': 2,
+              'com.skillpilot.backend.completion.learningunit.LearningUnitResultAliasTest': 5,
+              'com.skillpilot.backend.completion.learningunit.LearningUnitRepositoryTest': 2,
+              'com.skillpilot.backend.completion.learningunit.LearningUnitPrerequisiteGraphTest': 4,
+              'com.skillpilot.backend.service.LearningUnitRecognitionIntegrationTest': 11,
+              'com.skillpilot.backend.service.LearningPlanDailyProgressTest': 13,
               'com.skillpilot.backend.completion.CompletionCoreTest': 20,
               'com.skillpilot.backend.completion.CompletionApplicationServiceTest': 6,
               'com.skillpilot.backend.completion.CompletionCatalogTest': 14,
@@ -260,7 +299,7 @@ jobs:
               'com.skillpilot.backend.ai.CoachToolFacadeTest': 2,
               'com.skillpilot.backend.curriculumpackage.CompletionPackageLoaderTest': 6,
               'com.skillpilot.backend.service.AssessmentCompletionIntegrationTest': 35,
-              'com.skillpilot.backend.service.AutomaticCompletionIntegrationTest': 7,
+              'com.skillpilot.backend.service.AutomaticCompletionIntegrationTest': 8,
               'com.skillpilot.backend.service.AutomaticCompletionFrontierTest': 12,
               'com.skillpilot.backend.service.CompositionViewServiceCacheTest': 8,
               'com.skillpilot.backend.landscape.LandscapeServiceTest': 1,

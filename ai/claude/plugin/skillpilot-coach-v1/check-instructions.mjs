@@ -2,8 +2,9 @@
 // dialogue quality or real-host acceptance. Each instruction has one owner;
 // specialty references add only the protected workflow they are loaded for.
 export const instructionByteLimits = Object.freeze({
-  // Includes inline exams and explicit shortcut-intent routing; neither needs a second lookup.
-  skill: 18 * 1024,
+  // Includes inline exams, shortcut routing and the shared global learning-unit
+  // recognition contract; these rules need no extra startup reference lookup.
+  skill: 19 * 1024,
   taskClosure: 3584,
   recall: 3 * 1024,
 });
@@ -138,9 +139,16 @@ export function validateClaudeCoachInstructions({ skill, taskClosure, recall }) 
     /make no second start-confirmation round/iu,
     /If no matching choice is available, explain that honestly.+?never enable it or bypass prerequisites with ordinary goal\/focus tools/iu,
     /While a completion route owns navigation, use only its published choices instead of normal plan resume/iu,
-    /backend completion statements without recalculating waivers/iu,
-    /only for that section, never become globally mastered/iu,
-    /only binary mastery, with no second pass record/iu,
+    /backend-published learningUnits/iu,
+    /Never infer recognition from requires/iu,
+    /globally effective mastery.+?independent application/iu,
+    /prerequisites, total progress and later learning/iu,
+    /mastered intermediate goal.+?transitive demand.+?open local assessment/iu,
+    /Exams and memory goals still require their own explicit results/iu,
+    /Never write derived recognition or a second learner result/iu,
+    /recognition is unavailable, award no new implicit credit/iu,
+    /Legacy section waivers remove preparation only within their stated section/iu,
+    /only binary explicit mastery, with no second pass record/iu,
     /Detailed exam feedback remains governed by Exams/iu,
     /Do not interrupt current feedback or replace an agreed normal successor with unsolicited shortcut offers/iu,
   ]);

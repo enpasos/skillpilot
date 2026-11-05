@@ -82,9 +82,10 @@ const marketplaceTemplate = JSON.parse(
 );
 const publishedMarketplaceLane = loadHistorical110MarketplaceLane();
 const currentMarketplaceLane = loadClaudeMarketplaceLane(repositoryRoot);
-const pinnedMarketplaceLane = currentMarketplaceLane;
+const pinnedMarketplaceLane = JSON.parse(readFileSync(resolve(canonicalPluginRoot,
+  "release/history/1.1.13/marketplace-publication.json"), "utf8"));
 const pinnedBaseline = JSON.parse(readFileSync(resolve(canonicalPluginRoot,
-  "release/contract-baseline.json"), "utf8"));
+  "release/history/1.1.13/contract-baseline.json"), "utf8"));
 // Export behavior uses the current validator and an explicitly synthetic local
 // source pin. The real published workflow and pending-candidate guard are tested
 // separately below; no synthetic evidence is written into the repository.
@@ -937,13 +938,13 @@ test("published verification is pinned to the configured repository", () => {
   );
 });
 
-test("committed source produces the eligible 1.1.13 export without claiming client acceptance", () => {
+test("published 1.1.13 export remains pinned beside the unpublished 1.1.14 candidate", () => {
   const result = checkClaudeMarketplace({ repositoryRoot });
   assert.equal(result.pluginName, "skillpilot-coach-v1");
   assert.equal(result.version, "1.1.13");
-  assert.equal(result.pendingCandidateVersion, undefined);
+  assert.equal(result.pendingCandidateVersion, "1.1.14");
   assert.match(result.treeSha256, /^[0-9a-f]{64}$/u);
-  assert.ok(result.outputRoot);
+  assert.equal(result.outputRoot, null);
   assert.equal(result.files.length, 12);
   assert.notEqual(currentMarketplaceLane.activation.state, "published_verified");
   assert.ok(currentMarketplaceLane.activation.evidence.slice(1).every(({ status }) => status === "pending"));
@@ -952,12 +953,12 @@ test("committed source produces the eligible 1.1.13 export without claiming clie
 test("an unpinned future candidate cannot use the published workflow export", () => {
   withOutput(({ root, outputRoot }) => {
     const futureLane = withoutPublicationEvidence(currentMarketplaceLane);
-    futureLane.plugin.version = "1.1.14";
+    futureLane.plugin.version = "1.1.15";
     const lanePath = resolve(root, "ai/claude/plugin/skillpilot-coach-v1/release/marketplace-publication.json");
     mkdirSync(dirname(lanePath), { recursive: true });
     writeFileSync(lanePath, JSON.stringify(futureLane));
     assert.throws(() => prepareCurrentMarketplace({ repositoryRoot: root, outputRoot }),
-      /export version 1\.1\.14 does not match pinned template version 1\.1\.13/u);
+      /export version 1\.1\.15 does not match pinned template version 1\.1\.13/u);
   });
 });
 
@@ -1005,10 +1006,10 @@ test("source CI always checks the marketplace and exports only an eligible candi
 
   const current = runSourceWorkflowGate(checkStep);
   assert.equal(current.status, 0, current.stderr);
-  assert.equal(current.output, "export_ready=true\n");
+  assert.equal(current.output, "export_ready=false\n", "The unpublished 1.1.14 candidate cannot export through the published 1.1.13 lane");
 
   const pending = runSourceWorkflowGate(checkStep,
-    "{ version: '1.1.12', pendingCandidateVersion: loadClaudeMarketplaceLane().plugin.version, outputRoot: null }");
+    "{ version: '1.1.13', pendingCandidateVersion: loadClaudeMarketplaceLane().plugin.version, outputRoot: null }");
   assert.equal(pending.status, 0, pending.stderr);
   assert.equal(pending.output, "export_ready=false\n");
 

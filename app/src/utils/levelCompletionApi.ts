@@ -62,7 +62,7 @@ export interface CompletionActionInput {
 
 export interface CompletionTreeWaiver {
   sectionTitle: CompletionTitle
-  reason?: 'assessment' | 'no_remaining_demand'
+  reason?: 'assessment' | 'no_remaining_demand' | 'recognized'
   assessments: { goalId: string; title: CompletionTitle }[]
   assessmentCount?: number
 }

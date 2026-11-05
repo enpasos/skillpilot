@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import curriculum_learning_unit_artifacts as learning_units
 
 PROFILE_ID = "full-standalone-completion-v1"
 CAPABILITY = "assessmentCompletionV1"
@@ -14,7 +15,7 @@ ROLES = {"profile": "completion-profile", "scope": "completion-scope", "review":
 
 
 def extended_directory(directory: Path) -> bool:
-    return (directory / "profiles" / f"{PROFILE_ID}.profile.json").is_file()
+    return learning_units.extended_directory(directory) or (directory / "profiles" / f"{PROFILE_ID}.profile.json").is_file()
 
 
 def base_directory(directory: Path) -> Path:
@@ -22,11 +23,13 @@ def base_directory(directory: Path) -> Path:
 
 
 def profile_path(directory: Path) -> Path:
-    name = PROFILE_ID if extended_directory(directory) else "full-standalone-v1"
+    name = learning_units.PROFILE_ID if learning_units.extended_directory(directory) else PROFILE_ID if extended_directory(directory) else "full-standalone-v1"
     return directory / "profiles" / f"{name}.profile.json"
 
 
 def extra_schemas(directory: Path) -> tuple[tuple[str, Path], ...]:
+    if learning_units.extended_directory(directory):
+        return learning_units.extra_schemas(directory)
     core = directory.parent.parent / "assessment-completion" / "v1"
     return (
         (CATALOG_SCHEMA_ID, directory / "runtime-catalog.schema.json"),
@@ -38,6 +41,8 @@ def extra_schemas(directory: Path) -> tuple[tuple[str, Path], ...]:
 
 def schema_package_path(schema_id: str) -> str:
     name = schema_id.rsplit("/", 1)[-1]
+    if "/curriculum-package/v1.2/" in schema_id:
+        return f"schemas/v1.2/{name}"
     if "/curriculum-package/v1.1/" in schema_id:
         return f"schemas/v1.1/{name}"
     if "/assessment-completion/" in schema_id:

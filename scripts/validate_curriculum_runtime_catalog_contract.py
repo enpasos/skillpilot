@@ -356,10 +356,13 @@ def validate_catalog(catalog: Any, validator: Draft202012Validator) -> list[Diag
 
     artifact_paths: list[str] = []
     completions = items(catalog.get("completionArtifacts"))
+    learning_units = items(catalog.get("learningUnitArtifacts"))
+    if learning_units:
+        add_duplicates(diagnostics, "DUPLICATE_LEARNING_UNIT_ID", "/learningUnitArtifacts", [(entry.get("kind"), entry.get("id")) for entry in learning_units])
     if completions:
         add_duplicates(diagnostics, "DUPLICATE_COMPLETION_ID", "/completionArtifacts", [
             (entry.get("kind"), entry.get("id")) for entry in completions])
-    for collection in (landscapes, views, decks, resources, completions):
+    for collection in (landscapes, views, decks, resources, completions, learning_units):
         artifact_paths.extend(
             entry["artifactPath"]
             for entry in collection
@@ -390,6 +393,8 @@ def validate_catalog(catalog: Any, validator: Draft202012Validator) -> list[Diag
     }
     if "completionArtifacts" in catalog or "assessmentCompletionV1" in capabilities:
         expected_capabilities["assessmentCompletionV1"] = bool(completions)
+    if "learningUnitArtifacts" in catalog or "learningUnitRecognitionV1" in capabilities:
+        expected_capabilities["learningUnitRecognitionV1"] = bool(learning_units)
     for capability, expected in expected_capabilities.items():
         if (capability in capabilities) != expected:
             diagnostics.append(Diagnostic("CAPABILITY_MISMATCH", "/capabilities", f"Capability {capability!r} must be {expected}"))
@@ -451,7 +456,13 @@ def validate_catalog_against_manifest(
         role = completion_roles.get(entry.get("kind"))
         if role is not None and isinstance(entry.get("artifactPath"), str):
             expected[role].add(entry["artifactPath"])
-    roles_to_check = CATALOG_MANIFEST_ROLES | (set(completion_roles.values()) if completion_entries else set())
+    unit_roles = {kind: "learning-unit-" + kind for kind in ("catalog", "contract", "input")}
+    unit_entries = items(catalog.get("learningUnitArtifacts"))
+    for entry in unit_entries:
+        role = unit_roles.get(entry.get("kind"))
+        if role is not None and isinstance(entry.get("artifactPath"), str):
+            expected[role].add(entry["artifactPath"])
+    roles_to_check = CATALOG_MANIFEST_ROLES | (set(completion_roles.values()) if completion_entries else set()) | (set(unit_roles.values()) if unit_entries else set())
     for role in sorted(roles_to_check):
         paths = expected.get(role, set())
         actual = {record.get("path") for record in by_role.get(role, []) if isinstance(record.get("path"), str)}

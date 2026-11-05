@@ -2,6 +2,8 @@ import type { UiGoal } from '../goalTypes'
 import { isMastered } from '../goalUiUtils'
 
 export interface TreeCompletionProgress {
+  globalRecognition?: boolean
+  recognizedCount?: number
   totalCount: number
   explicitCount: number
   implicitCount: number
@@ -14,12 +16,12 @@ export interface TreeCompletionProgress {
   implicitRatio: number
 }
 
-/** Display-only totals over unique visible atoms; implicit membership comes from the current backend scope. */
+/** Display-only totals over unique visible atoms; implicit membership comes from the backend snapshot. */
 export const buildTreeCompletionProgressMap = (
   allGoals: Map<string, UiGoal>,
   visibleChildrenByParent: Map<string, string[]>,
   getMastery: (goalId: string) => number,
-  implicitGoals?: { has(goalId: string): boolean },
+  implicitGoals?: { has(goalId: string): boolean; get?(goalId: string): { reason?: string } | undefined },
 ): Map<string, TreeCompletionProgress> => {
   const atomsByGoal = new Map<string, ReadonlySet<string>>()
   const visiting = new Set<string>()
@@ -58,7 +60,8 @@ export const buildTreeCompletionProgressMap = (
       let state = atomStates.get(atomId)
       if (!state) {
         const weight = allGoals.get(atomId)!.weight
-        const explicit = isMastered(getMastery(atomId))
+        const recognition = implicitGoals?.get?.(atomId)?.reason === 'recognized'
+        const explicit = isMastered(getMastery(atomId)) && !recognition
         state = {
           // Missing or invalid authoring weights must not hide an otherwise visible atom.
           weight: Number.isFinite(weight) && weight > 0 ? weight : 1,
@@ -73,6 +76,10 @@ export const buildTreeCompletionProgressMap = (
       } else if (state.implicit) {
         progress.implicitCount += 1
         progress.implicitWeight += state.weight
+        if (implicitGoals?.get?.(atomId)?.reason === 'recognized') {
+          progress.globalRecognition = true
+          progress.recognizedCount = (progress.recognizedCount ?? 0) + 1
+        }
       } else {
         progress.openCount += 1
         progress.openWeight += state.weight

@@ -25,6 +25,20 @@ PACKAGE_STATUS_REPORT="${PACKAGE_OUTPUT}/provision-status.json"
 EXPECTED_CONTENT_DIGEST="sha256:e8ad1ec76513cac8248234798ea10e612db11fb58785ad9723b49b77ca80b97a"
 cd "${ROOT_DIR}"
 
+# Current explicit learning-unit metadata requires its versioned consumer contract.
+# Historical V1 profiles remain available to fixtures and explicit callers.
+LEARNING_UNIT_RUNTIME="$(python3 -B - <<'PY_UNITS'
+import sys
+from pathlib import Path
+sys.path.insert(0, 'scripts')
+from curriculum_learning_unit_artifacts import requires_runtime
+print('learning-units' if requires_runtime(Path.cwd()) else 'legacy')
+PY_UNITS
+)"
+if [[ "${LEARNING_UNIT_RUNTIME}" == 'learning-units' ]]; then
+  exec bash scripts/run_learning_units_package_conformance.sh
+fi
+
 SOURCE_PDF_MODE="${SKILLPILOT_SOURCE_PDF_MODE:-strict}"
 SOURCE_VERIFICATION_ARGS=()
 case "${SOURCE_PDF_MODE}" in

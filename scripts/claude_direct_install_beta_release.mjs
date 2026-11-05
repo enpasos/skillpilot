@@ -1444,7 +1444,7 @@ function buildCurrentPackage({ paths, buildPackage }) {
   }
 }
 
-function createPublicationIndex({
+export function createPublicationIndex({
   lane,
   manifest,
   preparedAt,

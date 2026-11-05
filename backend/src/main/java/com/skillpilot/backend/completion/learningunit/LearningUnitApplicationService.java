@@ -36,6 +36,8 @@ public class LearningUnitApplicationService {
     public static final String CAPABILITY = "learningUnitRecognitionV1";
     private static final Logger log = LoggerFactory.getLogger(LearningUnitApplicationService.class);
     private final LearningUnitCatalog catalog;
+    private final CompletionCanonicalGraphResolver canonicalResolver;
+    private final Map<String, Map<String, LearningGoal>> canonicalBases = new LinkedHashMap<>(8, .75f, true);
     private final LearningUnitRecognitionCache cache = new LearningUnitRecognitionCache();
     private final Map<String, LearningGoal> masteryGoals;
     private final Set<String> governedGoalIds;
@@ -48,6 +50,7 @@ public class LearningUnitApplicationService {
             LandscapeService landscapes, CompletionCanonicalGraphResolver resolver,
             @Value("${skillpilot.curriculum.source:repository}") String source,
             ObjectProvider<CurriculumRuntimeSnapshotProvider> packageSnapshots) {
+        canonicalResolver = resolver;
         LearningUnitCatalog loaded = LearningUnitCatalog.empty();
         Set<LearningUnitDefinition.ContractRef> active = new LinkedHashSet<>();
         Map<String, LearningGoal> goals = new LinkedHashMap<>();
@@ -133,6 +136,7 @@ public class LearningUnitApplicationService {
 
     public LearningUnitApplicationService(LearningUnitCatalog catalog, Map<String, LearningGoal> masteryGoals,
                                           Set<String> governedGoalIds, Set<LearningUnitDefinition.ContractRef> activeContracts) {
+        this.canonicalResolver = null;
         this.catalog = catalog;
         this.masteryGoals = Map.copyOf(masteryGoals);
         this.governedGoalIds = Set.copyOf(governedGoalIds);
@@ -144,13 +148,28 @@ public class LearningUnitApplicationService {
     public Set<String> governedGoalIds() { return governedGoalIds; }
     public Map<String, LearningGoal> masteryGoals() { return masteryGoals; }
     public LearningUnitCatalog catalog() { return catalog; }
-    public synchronized LearningUnitPrerequisiteGraph normalizedPrerequisites(String graphIdentity, Map<String, LearningGoal> goals) {
+    public Map<String, Double> normalizeExplicitResults(Map<String, Double> storedMastery) {
+        Map<String, Double> results = new LinkedHashMap<>(storedMastery);
+        catalog.resultAliases().forEach((source, target) -> {
+            if (com.skillpilot.backend.domain.Mastery.isMastered(storedMastery.get(source))) results.put(target, 1.0);
+        });
+        return results;
+    }
+    /** Unit prerequisite readiness is independent of the legacy completion-offer catalog. */
+    public synchronized Map<String, LearningGoal> canonicalGoals(String curriculumId, Map<String, LearningGoal> fallback) {
+        if (canonicalResolver == null) return fallback;
+        Map<String, LearningGoal> existing = canonicalBases.get(curriculumId);
+        if (existing != null) return existing;
+        Map<String, LearningGoal> compiled = Map.copyOf(canonicalResolver.load(curriculumId));
+        while (canonicalBases.size() >= 8) canonicalBases.remove(canonicalBases.keySet().iterator().next());
+        canonicalBases.put(curriculumId, compiled);
+        return compiled;
+    }
+    public synchronized LearningUnitPrerequisiteGraph normalizedPrerequisites(String graphIdentity, Map<String, LearningGoal> goals,
+                                                                              Set<String> atomicRoots) {
         LearningUnitPrerequisiteGraph existing = prerequisiteGraphs.get(graphIdentity);
         if (existing != null) return existing;
-        Set<String> roots = new LinkedHashSet<>();
-        goals.values().stream().filter(goal -> goal.getContains() == null || goal.getContains().isEmpty())
-                .map(LearningGoal::getId).forEach(roots::add);
-        LearningUnitPrerequisiteGraph compiled = new LearningUnitPrerequisiteGraph(new CompletionProfileCompiler().compileAtomicPrerequisites(goals, roots));
+        LearningUnitPrerequisiteGraph compiled = new LearningUnitPrerequisiteGraph(new CompletionProfileCompiler().compileAtomicPrerequisites(goals, atomicRoots));
         while (prerequisiteGraphs.size() >= 8) prerequisiteGraphs.remove(prerequisiteGraphs.keySet().iterator().next());
         prerequisiteGraphs.put(graphIdentity, compiled);
         return compiled;
@@ -161,6 +180,11 @@ public class LearningUnitApplicationService {
     }
 
     public LearningUnitsReadModel readModel(LearningUnitEvaluation evaluation, Set<String> currentTargetIds) {
+        return readModel(evaluation, currentTargetIds, Set.of());
+    }
+
+    public LearningUnitsReadModel readModel(LearningUnitEvaluation evaluation, Set<String> currentTargetIds,
+                                            Set<String> unavailableRecallGoalIds) {
         if (governedGoalIds.isEmpty() && !hasContracts()) return null;
         List<LearningUnitsReadModel.Unit> units = new ArrayList<>();
         for (var definition : catalog.definitions()) {
@@ -169,9 +193,11 @@ public class LearningUnitApplicationService {
             units.add(new LearningUnitsReadModel.Unit(definition.contractId(), definition.revision(), definition.sourceBinding().programUnitId(),
                     definition.title(), definition.promise(), definition.introduction(), definition.ownGoalIds(), definition.requiredChildContractRefs(),
                     definition.ownAssessmentGoalIds(), definition.ownRecallGoalIds(), result.complete(), result.targetCount(), result.explicitTargetCount(),
-                    result.recognizedTargetCount(), result.ownRecognizedGoalIds().stream().sorted().toList(), result.pendingGoalIds().stream().sorted().toList()));
+                    result.recognizedTargetCount(), result.ownRecognizedGoalIds().stream().sorted().toList(), result.pendingGoalIds().stream().sorted().toList(),
+                    java.util.Collections.disjoint(catalog.compiled().targetGoalIds(definition.ref()), unavailableRecallGoalIds) ? null : "unavailable"));
         }
-        return new LearningUnitsReadModel(unavailableReason != null ? "unavailable" : catalog.quarantined().isEmpty() ? "valid" : "partial", LearningUnitDefinition.SEMANTICS,
+        return new LearningUnitsReadModel(unavailableReason != null ? "unavailable"
+                : catalog.quarantined().isEmpty() && unavailableRecallGoalIds.isEmpty() ? "valid" : "partial", LearningUnitDefinition.SEMANTICS,
                 hasContracts() ? catalog.compiled().digest() : null, evaluation.recognizedGoalIds().stream().sorted().toList(), units);
     }
 

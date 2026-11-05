@@ -863,6 +863,7 @@ const App: React.FC = () => {
               goalIndexAll={core.goalIndexAll}
               canonicalGoalSources={core.prerequisiteGoalSources}
               getMastery={core.getMasteryValue}
+              masteryLearningUnits={core.learningUnits}
               currentGoal={core.currentGoal}
               onSelectGoal={core.handleSelectAbsolute}
               onSelectGoalInLandscape={core.handleNavigateToExternal}

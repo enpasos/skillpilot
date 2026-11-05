@@ -113,4 +113,12 @@ const children = (...entries: [string, string[]][]) => new Map(entries)
 }
 
 assert.equal(buildTreeCompletionProgressMap(new Map(), new Map(), () => 0).size, 0)
+{
+  const goals = graph(goal('root', { contains: ['A', 'Q', 'K'] }), goal('A'), goal('Q'), goal('K'))
+  const result = buildTreeCompletionProgressMap(goals, children(['root', ['A', 'Q', 'K']]),
+    id => id === 'K' ? 0 : 1, new Map([['A', { reason: 'recognized' }]]))
+  assert.equal(result.get('root')?.explicitCount, 1, 'the exam keeps its explicit result')
+  assert.equal(result.get('root')?.implicitCount, 1, 'global recognition is shown separately even when effective mastery is one')
+  assert.equal(result.get('root')?.openCount, 1, 'unpassed recall remains open')
+}
 console.log('treeCompletionProgress tests passed')

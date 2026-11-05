@@ -111,7 +111,7 @@ public class GeminiV1CoachContextProjector {
                 Set.of(),
                 projectedUpdate.learningState(),
                 projectedUpdate.activeGoal(),
-                projectedUpdate.stateMachine());
+                projectedUpdate.stateMachine(), null, projectedUpdate.learningUnits());
         return projectContext(skillpilotId, stateVersion, language, projectedState, true);
     }
 
@@ -125,6 +125,8 @@ public class GeminiV1CoachContextProjector {
         FrontierGoal activeGoal = projectedState.activeGoal();
         context.put("stateVersion", stateVersion);
         context.put("language", language);
+        if (projectedState.learningUnits() != null) context.put("learningUnits",
+                com.skillpilot.backend.ai.LearningUnitsCoachProjection.project(projectedState.learningUnits(), activeGoal));
         Map<String, Object> dailyPlan = projectLearningPlanToday(
                 coachToolFacade.getLearningPlanTodayStatus(skillpilotId, language), activeGoal != null, language);
         context.put("learningPlanToday", dailyPlan);

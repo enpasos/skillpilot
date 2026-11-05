@@ -10,10 +10,22 @@ public record LearningUnitsReadModel(
         String semantics,
         String contractDigest,
         List<String> recognizedGoalIds,
-        List<Unit> units) {
+        List<Unit> units,
+        @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY)
+        List<String> voluntaryGoalIds) {
     public LearningUnitsReadModel {
         recognizedGoalIds = List.copyOf(recognizedGoalIds);
         units = List.copyOf(units);
+        voluntaryGoalIds = voluntaryGoalIds == null ? List.of() : List.copyOf(voluntaryGoalIds);
+    }
+
+    public LearningUnitsReadModel(String calculationStatus, String semantics, String contractDigest,
+                                  List<String> recognizedGoalIds, List<Unit> units) {
+        this(calculationStatus, semantics, contractDigest, recognizedGoalIds, units, List.of());
+    }
+
+    public LearningUnitsReadModel withVoluntaryGoalIds(List<String> ids) {
+        return new LearningUnitsReadModel(calculationStatus, semantics, contractDigest, recognizedGoalIds, units, ids);
     }
 
     public record Unit(
@@ -32,5 +44,7 @@ public record LearningUnitsReadModel(
             int explicitTargetCount,
             int recognizedTargetCount,
             List<String> ownRecognizedGoalIds,
-            List<String> pendingGoalIds) { }
+            List<String> pendingGoalIds,
+            @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+            String calculationStatus) { }
 }

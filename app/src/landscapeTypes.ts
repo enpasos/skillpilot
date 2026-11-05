@@ -34,6 +34,8 @@ export interface LearningUnitMetadata {
   contractId: string
   revision: string
   placementRevision: string
+  /** Explicit required child units; an omitted value retains the legacy parent binding. */
+  requiredChildUnitIds?: string[]
   promise: Record<string, string>
   introduction: Record<string, string>
 }

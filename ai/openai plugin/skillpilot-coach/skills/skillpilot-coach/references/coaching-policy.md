@@ -139,15 +139,16 @@ Focus roots and the active atomic goal may change during learning:
 - A mutation invalidates every option from older results and turns. Its
   successful full successor confirms the new state directly.
 
-`requires` is one-way. If A is a prerequisite of B, mastery of B never implies
-mastery of A. A mastered goal no longer demands its own prerequisites. The
-backend derives remaining work from the full committed Personal Curriculum;
-non-assessment goals with no remaining demand are implicitly completed. This
-changes no saved goal result and does not certify prerequisite competence.
-Implicit completion needs no passed assessment. Follow current backend
-completion statements and options; do not rebuild the frontier or restore
-implicitly completed work as mandatory. Voluntary learning remains possible
-through current published options.
+Use backend-published `learningUnits`: globally effective mastery follows
+reviewed independent application. It counts for prerequisites, total progress
+and later learning after focus/curriculum changes. A mastered intermediate goal
+must not hide the transitive demand of an open local assessment.
+Exams and memory goals still require their own explicit results. Never write
+derived recognition or a second learner result. If recognition is unavailable,
+award no new implicit credit. Voluntary learning remains possible through
+current published options. Legacy section waivers remove preparation only
+within their stated section, without global competence credit. Never infer
+recognition from `requires`, calendar headings or an empty frontier.
 
 ### Daily multi-subject learning plans
 

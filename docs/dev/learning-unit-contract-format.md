@@ -16,9 +16,16 @@ dadurch nicht automatisch zur fachlichen Einheit.
 `GoalPlacement.acquisition=true` bezeichnet die direkte Erwerbsheimat.
 Bestehende `primary`-, `secondary`- oder `assessed`-Platzierungen allein reichen
 dafür nicht. Der Compiler verlangt genaue Übereinstimmung zwischen den
-gebundenen Erwerbsplatzierungen und Own. Erforderliche Kinder werden gegen die
-explizite Programmhierarchie geprüft. Innerhalb eines aufgelösten rekursiven
-Erwerbswegs gibt es für jedes Ziel eine direkte Heimat.
+gebundenen Erwerbsplatzierungen und Own. Die optionale Liste
+`learningUnit.requiredChildUnitIds` bindet erforderliche Kinder an vorhandene
+ProgramUnits und deren genaue Vertragsrevisionen. Mehrere Angebotsaggregate
+dürfen dieselbe kleine Einheit referenzieren, ohne deren Ziele, Platzierungen
+oder Vertrag zu kopieren. `parentUnitId` bleibt Programmnavigation.
+Eine explizit leere Liste bedeutet keine Pflichtkinder; bei fehlendem Feld wird
+für ältere Verträge noch der bisherige Parentbinder verwendet.
+Innerhalb eines aufgelösten rekursiven Erwerbswegs gibt es für jedes Ziel eine
+direkte Heimat. Die ausgewählte Angebotswurzel muss den tatsächlichen
+Zielumfang genau treffen; die bloße Teilmengenprüfung reicht dafür nicht.
 
 Unterschiedliche Länder-/Kursumfänge brauchen geprüfte passende Bindungen.
 Ein gerade gewählter Fokus, ein gemeinsamer Bildschirm-Elternknoten oder ein
@@ -53,6 +60,12 @@ geprüft. Das ist nötig, weil vorhandene echte Prüfungsziele teilweise `examDa
 besitzen, ohne bereits `nodeKind=exam` zu tragen. Ebenso darf ein gewöhnliches
 Fachziel nicht durch Selbstdeklaration als Orientierung der Inhaltsprüfung
 entgehen. Task-, Rubrik- und Karteneingaben erhalten eigene Bindungen.
+Ausgelieferte Sprachvarianten einer Prüfung brauchen statische Bindungen an
+denselben geprüften Anspruch. Historische Ergebnis-Aliasse benötigen ebenfalls
+eingefrorene Rollen-, Bedeutungs- und Reviewbindungen; ein heutiges allgemeines
+Curriculum-Mapping darf keinen früheren Verständnisabschluss zum Prüfungspass
+machen. Die erste Einheit benötigt weder Ergebnis-Aliasse noch englische
+Aufgabenvarianten oder eigene Karten.
 
 Die Objekt-Hashes verwenden sortierte JSON-Schlüssel, UTF-8, kompakte
 Trennzeichen und explizite Nullwerte der festen Bedeutungsfelder. Dateihashes

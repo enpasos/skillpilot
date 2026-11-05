@@ -143,7 +143,8 @@ public final class OpenAiDeCoachContextProjector {
                         completion,
                         examHasImage,
                         communicationLocale),
-                null);
+                null, state.learningUnits() == null ? null
+                        : com.skillpilot.backend.ai.LearningUnitsCoachProjection.project(state.learningUnits(), activeGoal));
     }
 
     private OpenAiDeCoachContext.CurriculumCatalog curriculumCatalog(

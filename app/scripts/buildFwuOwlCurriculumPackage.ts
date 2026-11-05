@@ -722,6 +722,9 @@ export const createFwuOwlCurriculumPackagePlan = (
   options: CreateFwuOwlPackagePlanOptions,
 ): FwuOwlPackagePlan => {
   assertSourceZipIntegrity(options.source, 'before FWU-OWL plan construction')
+  if (options.source.manifest.runtimeContractVersion === '1.2') {
+    fail('The current FWU-OWL profiles do not support learningUnitRecognitionV1. Keep the runtime 1.2 JSON package to preserve its contracts and exact source bytes.')
+  }
   const repositoryRoot = resolve(options.repositoryRoot ?? defaultRepositoryRoot)
   const completion = options.source.manifest.releaseProfile === 'full-standalone-completion-v1'
   const canonicalProfile = completion ? COMPLETION_PACKAGE_PROFILE : DEFAULT_PACKAGE_PROFILE

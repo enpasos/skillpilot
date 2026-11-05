@@ -36,6 +36,10 @@ public final class JsonCurriculumPackageLoader {
             "https://skillpilot.com/schemas/curriculum-package/v1.1/completion-artifact.schema.json";
     private static final String COMPLETION_RELEASE_PROFILE = "full-standalone-completion-v1";
     private static final String COMPLETION_CAPABILITY = "assessmentCompletionV1";
+    private static final String LEARNING_UNIT_CAPABILITY = "learningUnitRecognitionV1";
+    private static final String LEARNING_UNIT_RELEASE_PROFILE = "full-standalone-learning-units-v1";
+    private static final String LEARNING_UNIT_CATALOG_SCHEMA_ID = "https://skillpilot.com/schemas/curriculum-package/v1.2/runtime-catalog.schema.json";
+    private static final String LEARNING_UNIT_ARTIFACT_SCHEMA_ID = "https://skillpilot.com/schemas/curriculum-package/v1.2/learning-unit-artifact.schema.json";
     private static final String RELEASE_PROFILE = "full-standalone-v1";
     private static final String PACKAGE_FORMAT_VERSION = "1.0";
     private static final String RUNTIME_CONTRACT_VERSION = "1.0";
@@ -47,7 +51,7 @@ public final class JsonCurriculumPackageLoader {
             "memoryCards",
             "goalVisualizations",
             "embeddedDependencies",
-            "examNodes", COMPLETION_CAPABILITY);
+            "examNodes", COMPLETION_CAPABILITY, LEARNING_UNIT_CAPABILITY);
 
     private final CurriculumPackageProperties properties;
     private final CurriculumPackageRepository repository;
@@ -146,6 +150,13 @@ public final class JsonCurriculumPackageLoader {
                 throw failure("Invalid reviewed completion package: " + e.getMessage());
             }
         }
+        if (packageDescriptors.stream().anyMatch(p -> p.capabilities().contains(LEARNING_UNIT_CAPABILITY))) {
+            try {
+                com.skillpilot.backend.completion.learningunit.LearningUnitPackageCatalog.load(snapshot, objectMapper);
+            } catch (Exception invalid) {
+                throw failure("Invalid learning-unit package: " + invalid.getMessage());
+            }
+        }
         return snapshot;
     }
 
@@ -163,11 +174,12 @@ public final class JsonCurriculumPackageLoader {
         requireExactText(manifest, "packageFormatVersion", PACKAGE_FORMAT_VERSION, "package manifest");
         String runtimeVersion = requiredText(manifest, "runtimeContractVersion", "package manifest");
         boolean completion = runtimeVersion.equals("1.1");
-        if (!completion && !runtimeVersion.equals(RUNTIME_CONTRACT_VERSION)) {
+        boolean learningUnits = runtimeVersion.equals("1.2");
+        if (!completion && !learningUnits && !runtimeVersion.equals(RUNTIME_CONTRACT_VERSION)) {
             throw failure("Unsupported runtime contract version: " + runtimeVersion);
         }
         requireExactText(manifest, "releaseProfile",
-                completion ? COMPLETION_RELEASE_PROFILE : RELEASE_PROFILE, "package manifest");
+                learningUnits ? LEARNING_UNIT_RELEASE_PROFILE : completion ? COMPLETION_RELEASE_PROFILE : RELEASE_PROFILE, "package manifest");
         requireExactText(manifest, "variant", "json", "package manifest");
         requireExactText(manifest, "packageId", lock.packageId(), "package manifest");
         requireExactText(manifest, "packageVersion", lock.packageVersion(), "package manifest");
@@ -186,8 +198,8 @@ public final class JsonCurriculumPackageLoader {
         ManifestFile catalogFile = exactlyOneRole(files, "runtime-catalog");
         JsonNode catalog = readJsonArtifact(installedPackage, catalogFile, verifiedPaths);
         requireExactText(catalog, "$schema",
-                completion ? COMPLETION_CATALOG_SCHEMA_ID : RUNTIME_CATALOG_SCHEMA_ID, "runtime catalog");
-        requireExactText(catalog, "catalogVersion", completion ? "1.1" : "1.0", "runtime catalog");
+                learningUnits ? LEARNING_UNIT_CATALOG_SCHEMA_ID : completion ? COMPLETION_CATALOG_SCHEMA_ID : RUNTIME_CATALOG_SCHEMA_ID, "runtime catalog");
+        requireExactText(catalog, "catalogVersion", runtimeVersion, "runtime catalog");
         requireExactText(catalog, "runtimeContractVersion", runtimeVersion, "runtime catalog");
         JsonNode releaseBinding = requiredObject(catalog, "releaseBinding", "runtime catalog");
         requireExactText(releaseBinding, "releaseId", lock.releaseId(), "runtime catalog releaseBinding");
@@ -204,6 +216,9 @@ public final class JsonCurriculumPackageLoader {
         }
         if (completion != capabilities.contains(COMPLETION_CAPABILITY)) {
             throw failure("Assessment completion capability requires the exact runtime 1.1 release profile");
+        }
+        if (learningUnits != capabilities.contains(LEARNING_UNIT_CAPABILITY)) {
+            throw failure("Learning-unit recognition capability requires the exact runtime 1.2 release profile");
         }
 
         JsonNode indexes = requiredObject(catalog, "artifactIndexes", "runtime catalog");
@@ -253,6 +268,7 @@ public final class JsonCurriculumPackageLoader {
                 installedPackage, catalog, resourceIndex, files);
         validateLocalCatalogBindings(landscapes, views, offerings, decks, resources);
         validateCompletionArtifacts(installedPackage, catalog, files, artifacts, verifiedPaths, landscapes, completion);
+        validateLearningUnitArtifacts(installedPackage, catalog, files, artifacts, verifiedPaths, landscapes, learningUnits);
 
         for (ManifestFile file : files.values()) {
             if (!verifiedPaths.contains(file.path())) {
@@ -287,6 +303,67 @@ public final class JsonCurriculumPackageLoader {
                 artifacts,
                 aliasesJson,
                 definitions);
+    }
+
+    private void validateLearningUnitArtifacts(
+            InstalledCurriculumPackage installed, JsonNode catalog, Map<String, ManifestFile> files,
+            Map<CurriculumRuntimeSnapshot.ArtifactKey, CurriculumRuntimeSnapshot.Artifact> artifacts,
+            Set<String> verified, Map<String, CurriculumRuntimeSnapshot.LandscapeDescriptor> landscapes,
+            boolean learningUnits) {
+        Set<String> roles = Set.of("learning-unit-catalog", "learning-unit-contract", "learning-unit-input");
+        Set<String> inventory = new HashSet<>();
+        files.values().stream().filter(file -> roles.contains(file.role())).forEach(file -> inventory.add(file.path()));
+        boolean authoredUnits = landscapes.values().stream().anyMatch(landscape -> {
+            JsonNode document = parseJson(landscape.json().getBytes(StandardCharsets.UTF_8), "unit landscape");
+            for (JsonNode unit : document.path("programUnits")) if (unit.has("learningUnit")) return true;
+            return false;
+        });
+        if (!learningUnits) {
+            if (!inventory.isEmpty() || catalog.has("learningUnitArtifacts") || authoredUnits) {
+                throw failure("Learning-unit metadata requires runtime 1.2 and its recognition capability");
+            }
+            return;
+        }
+        JsonNode entries = requiredArray(catalog, "learningUnitArtifacts", "runtime 1.2 catalog");
+        if (entries.isEmpty() || entries.size() > 20_000) throw failure("Learning-unit artifact discovery is empty or too large");
+        Set<String> indexed = new HashSet<>();
+        Set<String> identities = new HashSet<>();
+        int catalogs = 0;
+        for (JsonNode entry : entries) {
+            requireFieldSet(entry, Set.of("id", "kind", "artifactPath"), "learning-unit discovery");
+            String id = requiredRelativePath(entry, "id", "learning-unit discovery");
+            String kind = requiredText(entry, "kind", "learning-unit discovery");
+            if (!Set.of("catalog", "contract", "input").contains(kind)) throw failure("Unknown learning-unit artifact kind");
+            String role = "learning-unit-" + kind;
+            String path = requiredRelativePath(entry, "artifactPath", "learning-unit discovery");
+            if (!indexed.add(path) || !identities.add(id)) throw failure("Duplicate learning-unit source identity or path");
+            ManifestFile file = requiredRole(files, path, role);
+            if (!"application/json".equals(file.mediaType()) || !"logical-artifact".equals(file.semanticBindingKind())
+                    || !id.equals(file.logicalId()) || !role.equals(file.normalizationRole())
+                    || !LEARNING_UNIT_ARTIFACT_SCHEMA_ID.equals(file.validationSchemaId())) {
+                throw failure("Learning-unit artifact has incompatible manifest/semantic bindings");
+            }
+            byte[] bytes = readArtifactBytes(installed, file, verified);
+            JsonNode wrapper = parseJson(bytes, "learning-unit artifact");
+            requireFieldSet(wrapper, Set.of("artifactFormatVersion", "artifactKind", "id", "definition"), "learning-unit wrapper");
+            if (requiredNonNegativeLong(wrapper, "artifactFormatVersion", "learning-unit wrapper") != 1) throw failure("Unsupported learning-unit artifact version");
+            requireExactText(wrapper, "artifactKind", kind, "learning-unit wrapper");
+            requireExactText(wrapper, "id", id, "learning-unit wrapper");
+            JsonNode definition = requiredObject(wrapper, "definition", "learning-unit wrapper");
+            requireFieldSet(definition, Set.of("sourcePath", "contentBase64", "sha256"), "learning-unit source bytes");
+            requireExactText(definition, "sourcePath", id, "learning-unit source bytes");
+            com.skillpilot.backend.completion.learningunit.LearningUnitCatalog.checkedPath(id);
+            byte[] content;
+            try { content = java.util.Base64.getDecoder().decode(requiredText(definition, "contentBase64", "learning-unit source bytes")); }
+            catch (IllegalArgumentException invalid) { throw failure("Invalid learning-unit source base64", invalid); }
+            requireExactText(definition, "sha256", CurriculumPackageFileReader.sha256(content), "learning-unit source bytes");
+            if ("catalog".equals(kind)) {
+                catalogs++;
+                if (!com.skillpilot.backend.completion.learningunit.LearningUnitCatalog.MANIFEST_PATH.equals(id)) throw failure("Unexpected learning-unit catalog source identity");
+            }
+            artifacts.get(new CurriculumRuntimeSnapshot.ArtifactKey(installed.lockEntry().packageId(), path)).retainVerifiedContent(bytes);
+        }
+        if (catalogs != 1 || !indexed.equals(inventory)) throw failure("Learning-unit discovery must exactly cover one catalog and every declared input");
     }
 
     private void validateCompletionArtifacts(

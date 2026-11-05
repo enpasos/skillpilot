@@ -440,12 +440,12 @@ class AssessmentCompletionIntegrationTest {
         assertThat(defaultStatus.subjects()).singleElement().satisfies(subject -> {
             assertThat(subject.balance().rohsaldo()).isZero();
             assertThat(subject.periodGauge().target()).isEqualTo(2);
-            assertThat(subject.periodGauge().completed()).isEqualTo(2);
+            assertThat(subject.periodGauge().completed()).isEqualTo(1);
         });
         mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get(
                 "/api/ui/learners/{id}/learning-plans/status", learner.getSkillpilotId()).queryParam("language", "de"))
                 .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.status().isOk())
-                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath("$.subjects[0].periodGauge.completed").value(2))
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath("$.subjects[0].periodGauge.completed").value(1))
                 .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath("$.subjects[0].planCreditText").isNotEmpty());
         mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put(
                 "/api/ui/learners/{id}/preferences", learner.getSkillpilotId())
@@ -491,7 +491,7 @@ class AssessmentCompletionIntegrationTest {
                 .isInstanceOf(CompletionApplicationService.PreparedContextUnavailableException.class);
     }
 
-    @Test void existingAssessmentMasteryCompletesOnlyThisScopeWithoutCreatingPreparationMastery() {
+    @Test void existingAssessmentMasteryGloballyRecognizesReviewedPreparationWithoutWritingIt() {
         masteryRepository.saveAndFlush(new Mastery(learner, EXAM, 1.0));
         var state = select();
         assertThat(state.levelCompletion().calculationStatus()).isEqualTo("valid");
@@ -499,10 +499,13 @@ class AssessmentCompletionIntegrationTest {
         assertThat(state.levelCompletion().targetCount()).isEqualTo(2);
         assertThat(state.levelCompletion().masteredTargetCount()).isEqualTo(1);
         assertThat(state.levelCompletion().waivedTargetCount()).isEqualTo(1);
-        assertThat(state.goals().scope_completed()).isFalse();
+        assertThat(state.goals().scope_completed()).isTrue();
+        assertThat(state.learningUnits().recognizedGoalIds()).contains(PREPARATION);
         assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId()))
                 .extracting(Mastery::getGoalKey).containsExactly(EXAM);
-        assertThat(learners.getFrontier(learner.getSkillpilotId())).contains(PREPARATION);
+        assertThat(learners.getFrontier(learner.getSkillpilotId())).doesNotContain(PREPARATION);
+        assertThat(learners.getUncompactedRichFrontier(learner.getSkillpilotId()))
+                .extracting(com.skillpilot.backend.api.FrontierGoal::id).contains(PREPARATION);
     }
 
     @Test void strictDirectAssessmentSurvivesCockpitRefreshAndRejectsForeignSession() {

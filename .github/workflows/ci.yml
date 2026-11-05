@@ -162,6 +162,7 @@ jobs:
         run: |
           python3 -m unittest discover -s scripts -p test_gemini_v1_deployment.py
           node --test scripts/verify_gemini_skill_download.test.mjs
+          python3 -B ai/gemini/coach/scripts/test_prepare_candidate.py
 
   openai-mcp-app-ci:
     name: OpenAI MCP Apps CI

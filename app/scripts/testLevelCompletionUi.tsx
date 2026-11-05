@@ -141,6 +141,16 @@ try {
   assert.match(trainerTree, /width:50%/u, 'Trainer averages retain fractional progress')
   assert.doesNotMatch(trainerTree, /completion-tree-progress|completion-tree-waiver/u,
     'Learner completion overlays must never reinterpret trainer averages')
+  const recognizedTree = renderToStaticMarkup(<LanguageProvider><CompetenceTree
+    rootGoals={[cluster]} allGoals={new Map([[cluster.id, cluster], [atom.id, atom]])}
+    getMastery={() => 1} plannedGoals={new Set()} onTogglePlan={() => undefined}
+    onSelect={() => undefined} selectedId="" audience="learner" expandedGoalIds={new Set(['cluster'])}
+    completionWaivers={new Map([['atom', { reason: 'recognized', sectionTitle: { de: 'Vektoren' }, assessments: [] }]])}
+  /></LanguageProvider>)
+  assert.match(recognizedTree, /Durch selbständige Anwendung gemeistert/u)
+  assert.match(recognizedTree, /1 durch Anwendung gemeistert/u)
+  assert.doesNotMatch(recognizedTree, /in diesem Lernabschnitt erledigt|nicht mehr erforderlich/u,
+    'Globally effective mastery must not be described as a temporary preparation waiver')
 } finally {
   if (savedStorage) Object.defineProperty(globalThis, 'localStorage', savedStorage)
   else Reflect.deleteProperty(globalThis, 'localStorage')

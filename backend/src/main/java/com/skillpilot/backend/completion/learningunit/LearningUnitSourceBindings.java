@@ -29,8 +29,13 @@ public final class LearningUnitSourceBindings {
                                             Map<String, String> compositionViewDigests) {
         var binding = definition.sourceBinding();
         if (source == null || !Objects.equals(binding.landscapeId(), source.getLandscapeId())) fail("INVALID_SOURCE_BINDING", "Wrong source landscape");
-        ProgramUnit unit = source.getProgramUnits() == null ? null : source.getProgramUnits().stream()
-                .filter(candidate -> binding.programUnitId().equals(candidate.getId())).findFirst().orElse(null);
+        Map<String, ProgramUnit> programUnits = new TreeMap<>();
+        if (source.getProgramUnits() != null) for (ProgramUnit candidate : source.getProgramUnits()) {
+            if (candidate.getId() == null || candidate.getId().isBlank() || programUnits.putIfAbsent(candidate.getId(), candidate) != null) {
+                fail("INVALID_SOURCE_BINDING", "Program unit IDs must be unique");
+            }
+        }
+        ProgramUnit unit = programUnits.get(binding.programUnitId());
         var metadata = unit == null ? null : unit.getLearningUnit();
         if (metadata == null || !Objects.equals(metadata.contractId(), definition.contractId())
                 || !Objects.equals(metadata.revision(), definition.revision())
@@ -45,13 +50,27 @@ public final class LearningUnitSourceBindings {
         Set<String> placedOwn = new LinkedHashSet<>();
         if (source.getGoalPlacements() != null) for (GoalPlacement placement : source.getGoalPlacements()) {
             if (!binding.programUnitId().equals(placement.getUnitId()) || !Boolean.TRUE.equals(placement.getAcquisition())) continue;
+            if (!"primary".equals(placement.getRelation()) && !"assessed".equals(placement.getRelation())) {
+                fail("INVALID_SOURCE_BINDING", "Acquisition needs an authored primary or assessed placement");
+            }
             if (!placedOwn.add(placement.getGoalId())) fail("AMBIGUOUS_ACQUISITION_OWNER", "Duplicate active acquisition placement");
         }
         if (!placedOwn.equals(Set.copyOf(definition.ownGoalIds()))) fail("STALE_PLACEMENT_BINDING", "Own targets differ from acquisition placements");
         Set<LearningUnitDefinition.ContractRef> sourceChildren = new HashSet<>();
-        if (source.getProgramUnits() != null) for (ProgramUnit candidate : source.getProgramUnits()) {
-            if (!binding.programUnitId().equals(candidate.getParentUnitId()) || candidate.getLearningUnit() == null) continue;
-            sourceChildren.add(new LearningUnitDefinition.ContractRef(candidate.getLearningUnit().contractId(), candidate.getLearningUnit().revision()));
+        if (metadata.requiredChildUnitIds() != null) {
+            Set<String> childIds = new HashSet<>();
+            for (String childId : metadata.requiredChildUnitIds()) {
+                ProgramUnit child = programUnits.get(childId);
+                if (!childIds.add(childId) || child == null || child.getLearningUnit() == null) {
+                    fail("MISSING_CHILD_CONTRACT", "Explicit child unit is unknown, duplicated or has no contract");
+                }
+                sourceChildren.add(new LearningUnitDefinition.ContractRef(child.getLearningUnit().contractId(), child.getLearningUnit().revision()));
+            }
+        } else {
+            for (ProgramUnit candidate : programUnits.values()) {
+                if (!binding.programUnitId().equals(candidate.getParentUnitId()) || candidate.getLearningUnit() == null) continue;
+                sourceChildren.add(new LearningUnitDefinition.ContractRef(candidate.getLearningUnit().contractId(), candidate.getLearningUnit().revision()));
+            }
         }
         if (!sourceChildren.equals(Set.copyOf(definition.requiredChildContractRefs()))) fail("STALE_CHILD_BINDING", "Required children differ from authored program units");
         for (String id : definition.ownGoalIds()) {
@@ -67,6 +86,10 @@ public final class LearningUnitSourceBindings {
             if (definition.ownAssessmentGoalIds().contains(id)) {
                 var claim = definition.assessmentClaims().get(id);
                 var exam = goal.getExamData();
+                Set<String> canonicalClaim = exam == null || exam.getCoveredGoalIds() == null ? Set.of() : Set.copyOf(exam.getCoveredGoalIds());
+                if (!canonicalClaim.equals(Set.copyOf(claim.coveredGoalIds()))) {
+                    fail("ASSESSMENT_CLAIM_CONFLICT", "Unit claim differs from the frozen canonical assessment claim: " + id);
+                }
                 if (exam == null || !Objects.equals(claim.taskRevision(), canonicalDigest(Map.of(
                         "taskContent", exam.getTaskContent(), "solutionContent", exam.getSolutionContent())))
                         || !Objects.equals(claim.rubricRevision(), canonicalDigest(exam.getScoring()))) {

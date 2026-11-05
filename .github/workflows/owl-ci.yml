@@ -32,6 +32,39 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          # Retain the complete Mathematics producer/consumer input closure,
+          # including its 1.638 GB of images, without historical QA archives.
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /.github/
+            /ai/
+            /app/
+            !/app/public/assets/goal-visualizations/
+            /app/public/assets/goal-visualizations/mathematik/
+            /backend/
+            /content/
+            /contracts/
+            /curricula/
+            !/curricula/DE/Gymnasium/quality/
+            !/curricula/DE/Gymnasium/visualizations/
+            /curricula/DE/Gymnasium/quality/assessment-completion/
+            /curricula/DE/Gymnasium/quality/learning-units/
+            /curricula/DE/Gymnasium/quality/release-model/
+            /curricula/DE/Gymnasium/quality/package-redistribution/
+            /curricula/DE/Gymnasium/quality/source-verification/
+            /curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json
+            /curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json
+            /curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl
+            /curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json
+            /curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl
+            /curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.cards.review.jsonl
+            /deploy/
+            /docs/
+            /LICENSES/
+            /scripts/
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
@@ -101,6 +134,12 @@ jobs:
             tmp/curriculum-release-model/package-consumer-smoke/assembly-manifest.json
             tmp/curriculum-release-model/package-consumer-smoke/evidence-bundle-manifest.json
             tmp/curriculum-release-model/package-consumer-smoke/evidence-bundle/
+            tmp/curriculum-release-model/learning-units/*report*.json
+            tmp/curriculum-release-model/learning-units/provision-*.json
+            tmp/curriculum-release-model/learning-units/package-build-summary.json
+            tmp/curriculum-release-model/learning-units/package-consumer-smoke/assembly-manifest.json
+            tmp/curriculum-release-model/learning-units/package-consumer-smoke/evidence-bundle-manifest.json
+            tmp/curriculum-release-model/learning-units/package-consumer-smoke/evidence-bundle/
 
   fwu-owl-ci:
     name: FWU-OWL and roundtrip CI

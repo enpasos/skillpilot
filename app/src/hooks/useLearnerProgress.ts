@@ -1,6 +1,7 @@
-import { useCallback, useState, useEffect } from 'react'
+import { useCallback, useState, useEffect, useMemo, useRef } from 'react'
 import type { LandscapeEntry } from './useLandscapes'
 import type { MasteryMap } from '../learnerTypes';
+import { effectiveMasteryFromSnapshot, parseLearningUnits, unavailableLearningUnits, type LearningUnitsReadModel } from '../utils/learningUnitsApi'
 
 interface Options {
   landscapeEntries: LandscapeEntry[]
@@ -10,7 +11,8 @@ interface Options {
 
 export function useLearnerProgress({ landscapeEntries, selectedLandscapeId, skillpilotId, initialCourseFilter = 'all' }: Options & { skillpilotId: string }) {
   // selectedLandscapeId is now managed by the parent (useAppCore)
-  const [masteryByLandscape, setMasteryByLandscape] = useState<Record<string, MasteryMap>>({})
+  const [snapshot, setSnapshot] = useState<{ learnerId: string; mastery: MasteryMap; learningUnits: LearningUnitsReadModel | null } | null>(null)
+  const requestGeneration = useRef(0)
   const [activeFilter, setActiveFilter] = useState<string>(initialCourseFilter ?? 'all')
 
   const currentLandscapeEntry =
@@ -21,6 +23,7 @@ export function useLearnerProgress({ landscapeEntries, selectedLandscapeId, skil
 
 
   const refreshMastery = useCallback(async () => {
+    const generation = ++requestGeneration.current
     if (!skillpilotId) return
 
     try {
@@ -31,21 +34,20 @@ export function useLearnerProgress({ landscapeEntries, selectedLandscapeId, skil
       const res = await fetch(url)
       if (res.ok) {
         const data = await res.json()
-        // API returns { mastery: { goalId: 1.0 } }
-        // We need to store it. Since the API is global, we might store it for "current landscape" or globally?
-        // For now, let's assume the map applies to all goals. 
-        // But this hook structures it by landscapeId.
-        // Let's store it under activeLandscapeId (or 'global'?)
-        // The current implementation expects `masteryByLandscape[activeLandscapeId]`
-
-        if (data.mastery) {
-          setMasteryByLandscape(prev => ({
-            ...prev,
-            [activeLandscapeId]: data.mastery
-          }))
+        let learningUnits: LearningUnitsReadModel | null
+        try {
+          learningUnits = parseLearningUnits(data.learningUnits)
+        } catch {
+          learningUnits = unavailableLearningUnits()
+          console.warn('Learning-unit status is invalid; showing explicit learning results')
         }
-      }
+        if (data.mastery && generation === requestGeneration.current) {
+          setSnapshot({ learnerId: skillpilotId, mastery: data.mastery, learningUnits })
+        }
+      } else throw new Error('Mastery request failed')
     } catch (e) {
+      if (generation === requestGeneration.current) setSnapshot(previous => previous?.learnerId === skillpilotId
+        ? { ...previous, learningUnits: unavailableLearningUnits() } : previous)
       console.warn('Failed to fetch mastery', e)
     }
   }, [skillpilotId, activeLandscapeId])
@@ -55,23 +57,29 @@ export function useLearnerProgress({ landscapeEntries, selectedLandscapeId, skil
     void refreshMastery()
   }, [refreshMastery])
 
-  const mastery = masteryByLandscape[activeLandscapeId] ?? {}
+  const explicitMastery = useMemo(() => snapshot?.learnerId === skillpilotId ? snapshot.mastery : {}, [snapshot, skillpilotId])
+  const learningUnits = snapshot?.learnerId === skillpilotId ? snapshot.learningUnits : null
+  const mastery = useMemo(() => effectiveMasteryFromSnapshot(explicitMastery, learningUnits), [explicitMastery, learningUnits])
 
   const updateMasteryForCurrent = useCallback((updater: (prev: MasteryMap) => MasteryMap) => {
-    if (!activeLandscapeId) return
-    setMasteryByLandscape((prev) => {
-      const prevMap = prev[activeLandscapeId] ?? {}
-      const nextMap = updater(prevMap)
-      return { ...prev, [activeLandscapeId]: nextMap }
+    if (!skillpilotId) return
+    // A local explicit-result edit invalidates the old derived snapshot and
+    // every read already in flight. Only a newer backend read can restore I.
+    requestGeneration.current += 1
+    setSnapshot((prev) => {
+      const ownSnapshot = prev?.learnerId === skillpilotId ? prev : null
+      return { learnerId: skillpilotId, mastery: updater(ownSnapshot?.mastery ?? {}), learningUnits: unavailableLearningUnits() }
     })
-  }, [activeLandscapeId])
+  }, [skillpilotId])
 
-  const getMasteryMap = useCallback((landscapeId: string) => masteryByLandscape[landscapeId] ?? {}, [masteryByLandscape])
+  const getMasteryMap = useCallback((_landscapeId: string) => mastery, [mastery])
 
   return {
     activeLandscapeId,
     currentLandscapeEntry,
     mastery,
+    explicitMastery,
+    learningUnits,
     updateMasteryForCurrent,
     getMasteryMap,
     activeFilter,

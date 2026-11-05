@@ -18,15 +18,15 @@ test("validates the checked-in Claude plugin package", () => {
   assert.deepEqual(validateClaudePluginPackage(packageRoot), { errors: [], toolCount: 14 });
 });
 
-test("rejects a replacement candidate version other than 1.1.13", () => {
+test("rejects a replacement candidate version other than 1.1.14", () => {
   withPackageCopy((root) => {
     mutate(root, ".claude-plugin/plugin.json", (value) => value.replace(
-      '"version": "1.1.13"',
+      '"version": "1.1.14"',
       '"version": "1.0.4"',
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /replacement candidate must be version 1\.1\.13/u,
+      /replacement candidate must be version 1\.1\.14/u,
     );
   });
 });
@@ -238,9 +238,9 @@ for (const [name, original, replacement] of [
   ["requiring preliminary section selection", "No preliminary section selection is needed", "Always select a section before starting an assessment"],
   ["automatic shortcut opt-in", "never enable it\nor bypass prerequisites", "enable it and bypass prerequisites"],
   ["normal plan resume overriding a completion route", "use only its published choices instead of normal plan resume", "resume the normal plan instead"],
-  ["AI-derived shortcut waivers", "without recalculating waivers", "by recalculating waivers"],
-  ["waived preparation becoming mastery", "only for that section, never become globally mastered", "for every section and become globally mastered"],
-  ["an additional saved assessment result", "only binary mastery, with no second pass record", "a second saved assessment result"],
+  ["AI-derived recognition", "Never infer\nrecognition from `requires`", "Infer recognition from `requires`"],
+  ["waived preparation becoming mastery", "Legacy section waivers remove preparation only\nwithin their stated section", "Legacy section waivers grant mastery in every section"],
+  ["an additional saved assessment result", "only binary explicit mastery, with no second pass record", "a second saved assessment result"],
   ["dropping detailed exam feedback", "Detailed exam feedback remains governed by Exams", "Only report binary mastery without feedback"],
   ["unsolicited shortcuts replacing normal continuation", "Do not interrupt current\nfeedback or replace an agreed normal successor", "Interrupt feedback and replace the normal successor"],
 ]) {
@@ -377,7 +377,7 @@ test("rejects loss of same-server coexistence and custom-connector boundaries", 
   });
 });
 
-test("rejects conflation of historical observations with 1.1.13 acceptance", () => {
+test("rejects conflation of historical observations with 1.1.14 acceptance", () => {
   withPackageCopy((root) => {
     mutate(root, "SETUP.md", (value) => value.replace(
       /Earlier packages were\s+observed in paid Claude Web chat and, after account-level direct installation\s+on Claude Pro, in the native Claude app on Android/u,
@@ -385,7 +385,7 @@ test("rejects conflation of historical observations with 1.1.13 acceptance", () 
     ));
     assert.match(
       validateClaudePluginPackage(root).errors.join("\n"),
-      /distinguish historical observations from pending 1\.1\.13 exact-candidate acceptance/u,
+      /distinguish historical observations from pending 1\.1\.14 exact-candidate acceptance/u,
     );
   });
 });

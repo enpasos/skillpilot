@@ -147,8 +147,11 @@ final class ClaudeV1CompletionChoices {
                     "goal", label(detail.title(), language),
                     "passedAssessments", detail.assessments().stream().map(assessment -> label(assessment.title(), language)).toList(),
                     "supportingAssessmentCount", detail.assessmentCount(),
-                    "scope", en ? "Only this learning section; implicit completion does not change the goal's saved result."
-                            : "Nur dieser Lernabschnitt; die implizite Erledigung ändert den gespeicherten Stand des Lernziels nicht.")).toList());
+                    "scope", "learning_unit_application".equals(detail.ruleId())
+                            ? (en ? "Globally effective application competence; the saved explicit result remains unchanged."
+                                    : "Global wirksame Anwendungskompetenz; das gespeicherte explizite Ergebnis bleibt unverändert.")
+                            : (en ? "Only this learning section; implicit completion does not change the goal's saved result."
+                                    : "Nur dieser Lernabschnitt; die implizite Erledigung ändert den gespeicherten Stand des Lernziels nicht."))).toList());
         }
         if (active(completion) && !supported()) {
             result.put("notice", en

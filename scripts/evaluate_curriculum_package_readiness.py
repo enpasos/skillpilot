@@ -42,6 +42,7 @@ if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
 import validate_curriculum_package_contracts as package_contracts  # noqa: E402
+import curriculum_learning_unit_artifacts as learning_units  # noqa: E402
 from jsonschema import Draft202012Validator  # noqa: E402
 
 
@@ -65,6 +66,7 @@ CONSUMER_REPORT_SCHEMA_ID = (
 EVALUATOR_NAME = "skillpilot-json-package-readiness"
 EVALUATOR_VERSION = "1.3.0"
 JSONSCHEMA_VERSION = "4.26.0"
+ACTIVE_CONTRACT_DIR = CONTRACT_DIR
 POLICY_ID = "full-standalone-v1-readiness-v1"
 POLICY_SCOPE = "json-full-standalone-v1"
 
@@ -697,6 +699,8 @@ def trusted_contracts() -> TrustedContracts:
                 filename,
             ) in package_contracts.TRUSTED_SCHEMA_BINDINGS.items()
         }
+        if ACTIVE_CONTRACT_DIR != CONTRACT_DIR:
+            trusted_schema_paths["runtimeCatalogSchema"] = ACTIVE_CONTRACT_DIR / "runtime-catalog.schema.json"
         roles = package_contracts.validate_trusted_contract(
             manifest_schema,
             profile,
@@ -720,7 +724,7 @@ def trusted_contracts() -> TrustedContracts:
     consumer_report_schema_sha256 = sha256_file(CONSUMER_REPORT_SCHEMA_PATH)
     trusted_schema_metadata = {
         binding_name: (
-            package_contracts.TRUSTED_SCHEMA_BINDINGS[binding_name][0],
+            load_trusted_json(path)["$id"],
             sha256_file(path),
             path.stat().st_size,
         )
@@ -2622,7 +2626,7 @@ def run_full_validator_process(
             "--zip",
             str(loaded.path.resolve()),
             "--contracts-dir",
-            str(CONTRACT_DIR.resolve()),
+            str(ACTIVE_CONTRACT_DIR.resolve()),
             "--report",
             str(report_path),
         ]
@@ -5271,6 +5275,7 @@ def parse_args() -> argparse.Namespace:
         help="Return success only when the exact status is produced (for CI fixtures)",
     )
     parser.add_argument("--compact", action="store_true", help="Print compact JSON")
+    parser.add_argument("--contracts-dir", type=Path, default=CONTRACT_DIR, help="Software-pinned package contract version (v1 or v1.2)")
     args = parser.parse_args()
     if args.self_test and (
         args.report is not None
@@ -5293,8 +5298,25 @@ def parse_args() -> argparse.Namespace:
     return args
 
 
+def select_contract_directory(directory: Path) -> None:
+    global ACTIVE_CONTRACT_DIR, PROFILE_PATH, POLICY_PATH, REPORT_SCHEMA_PATH, REPORT_SCHEMA_ID, POLICY_ID, POLICY_SCOPE
+    directory = directory.resolve()
+    if directory == CONTRACT_DIR.resolve():
+        return
+    if directory != (CONTRACT_DIR.parent / "v1.2").resolve():
+        raise ReadinessError("Readiness contracts must select a software-pinned repository version")
+    ACTIVE_CONTRACT_DIR = directory
+    PROFILE_PATH = directory / "profiles/full-standalone-learning-units-v1.profile.json"
+    POLICY_PATH = directory / "profiles/full-standalone-learning-units-v1.readiness-policy.json"
+    REPORT_SCHEMA_PATH = directory / "package-readiness-report.schema.json"
+    REPORT_SCHEMA_ID = learning_units.NAMESPACE + "package-readiness-report.schema.json"
+    POLICY_ID = "full-standalone-learning-units-v1-readiness-v1"
+    POLICY_SCOPE = "json-full-standalone-learning-units-v1"
+
+
 def main() -> int:
     args = parse_args()
+    select_contract_directory(args.contracts_dir)
     try:
         if args.self_test:
             run_fixture_suite()

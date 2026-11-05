@@ -33,11 +33,15 @@ from typing import Any, Callable, Iterable, Iterator, Mapping, Sequence
 from jsonschema import Draft202012Validator, FormatChecker
 import curriculum_completion_artifacts as completion_artifacts
 import curriculum_package_completion_contracts as completion_contracts
+import curriculum_learning_unit_artifacts as learning_units
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 CONTRACT_ROOT = REPO_ROOT / "contracts/curriculum-package/v1"
 DEFAULT_PROFILE = CONTRACT_ROOT / "profiles/de-gymnasium-mathematik-release-model-v1.profile.json"
+if learning_units.requires_runtime(REPO_ROOT):
+    DEFAULT_PROFILE = CONTRACT_ROOT.parent / "v1.2/profiles/de-gymnasium-mathematik-learning-units-release-model-v1.profile.json"
+
 
 SCHEMA_FILES = {
     "build-profile": CONTRACT_ROOT / "release-model-build-profile.schema.json",
@@ -1062,7 +1066,13 @@ def schema_validator(path: Path) -> Draft202012Validator:
 
 
 def validate_schema(value: Any, schema_name: str, context: str) -> None:
-    if schema_name == "runtime-catalog" and isinstance(value, dict) and value.get("$schema") == completion_contracts.CATALOG_SCHEMA_ID:
+    if isinstance(value, dict) and value.get("$schema", "").startswith(learning_units.NAMESPACE):
+        if schema_name == "runtime-catalog":
+            validator = completion_artifacts.validators(REPO_ROOT)[learning_units.CATALOG_SCHEMA_ID]
+        else:
+            filename = "release-model-build-profile" if schema_name == "build-profile" else schema_name
+            validator = schema_validator(CONTRACT_ROOT.parent / ("v1.2/" + filename + ".schema.json"))
+    elif schema_name == "runtime-catalog" and isinstance(value, dict) and value.get("$schema") == completion_contracts.CATALOG_SCHEMA_ID:
         validator = completion_artifacts.validators(REPO_ROOT)[completion_contracts.CATALOG_SCHEMA_ID]
     elif schema_name == "build-profile" and isinstance(value, dict) and "completion" in value:
         validator = schema_validator(CONTRACT_ROOT.parent / "v1.1/release-model-build-profile.schema.json")
@@ -2811,6 +2821,10 @@ def compile_publication_evidence(
 def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     profile = load_json(profile_path)
     validate_schema(profile, "build-profile", str(profile_path))
+    if ("learningUnits" not in profile
+            and profile["canonicalLandscape"]["sourcePath"] == "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json"
+            and learning_units.requires_runtime(REPO_ROOT)):
+        raise CompilationError("Current Mathematics learning-unit contracts require the runtime 1.2 build profile, including archived recognition")
     package = profile["package"]
     expected_release_id = f"{package['packageId']}@{package['packageVersion']}"
     if package["releaseId"] != expected_release_id:
@@ -2967,7 +2981,9 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
 
     compiled_landscape = copy.deepcopy(source_landscape)
     compiled_landscape["$schema"] = SCHEMA_IDS["compiled-landscape"]
-    compiled_landscape["landscapeFormatVersion"] = "1.0"
+    compiled_landscape["landscapeFormatVersion"] = "1.2" if "learningUnits" in profile else "1.0"
+    if "learningUnits" in profile:
+        compiled_landscape["$schema"] = learning_units.LANDSCAPE_SCHEMA_ID
     goals = compiled_landscape.get("goals")
     if not isinstance(goals, list):
         raise CompilationError("Canonical landscape goals are missing")
@@ -3307,6 +3323,12 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         for _role, _identity, relative_path, document in completion_documents:
             write_json(output_root, relative_path, document)
 
+    unit_documents: list[tuple[str, str, str, Any]] = []
+    unit_inputs: list[dict[str, Any]] = []
+    if "learningUnits" in profile:
+        unit_documents, unit_inputs = learning_units.compile_documents(REPO_ROOT, profile["learningUnits"], source_landscape)
+        for _role, _identity, relative_path, document in unit_documents:
+            write_json(output_root, relative_path, document)
     copied_assessment_sources: list[dict[str, Any]] = []
     for source, target in sorted(assessment_sources.items()):
         source_path = resolve_repo_path(source)
@@ -3756,9 +3778,9 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     default_view_id = profile["compositionViews"]["defaultViewId"]
     default_offering_id = f"offering.{default_view_id}"
     runtime_catalog = {
-        "$schema": completion_contracts.CATALOG_SCHEMA_ID if completion_documents else SCHEMA_IDS["runtime-catalog"],
-        "catalogVersion": "1.1" if completion_documents else "1.0",
-        "runtimeContractVersion": "1.1" if completion_documents else profile["contracts"]["runtimeContractVersion"],
+        "$schema": learning_units.CATALOG_SCHEMA_ID if unit_documents else completion_contracts.CATALOG_SCHEMA_ID if completion_documents else SCHEMA_IDS["runtime-catalog"],
+        "catalogVersion": "1.2" if unit_documents else "1.1" if completion_documents else "1.0",
+        "runtimeContractVersion": "1.2" if unit_documents else "1.1" if completion_documents else profile["contracts"]["runtimeContractVersion"],
         "releaseBinding": {"releaseId": release_id, "contentDigest": ZERO_DIGEST},
         "rootLandscapeIds": [landscape_id],
         "landscapes": [
@@ -3836,6 +3858,12 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
             {"id": logical_id, "kind": document["artifactKind"], "artifactPath": path}
             for _role, logical_id, path, document in completion_documents
         ]
+    if unit_documents:
+        runtime_catalog["capabilities"].append(learning_units.CAPABILITY)
+        runtime_catalog["learningUnitArtifacts"] = [
+            {"id": logical_id, "kind": document["artifactKind"], "artifactPath": path}
+            for _role, logical_id, path, document in unit_documents
+        ]
     validate_schema(runtime_catalog, "runtime-catalog", "runtime catalog")
     write_json(output_root, runtime_catalog_path, runtime_catalog)
 
@@ -3857,6 +3885,7 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     )
     logical_documents.extend(publication_logical_documents)
     logical_documents.extend(completion_documents)
+    logical_documents.extend(unit_documents)
     logical_records: list[dict[str, Any]] = []
     normalized_payloads: dict[tuple[str, str], bytes] = {}
     for role, logical_id, _path, value in logical_documents:
@@ -3894,7 +3923,7 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     if (
         len(publication_logical_documents)
         != expected_content_counts["addedLogicalArtifacts"]
-        or len(logical_records) != expected_content_counts["totalLogicalArtifacts"] + len(completion_documents)
+        or len(logical_records) != expected_content_counts["totalLogicalArtifacts"] + len(completion_documents) + len(unit_documents)
         or len(binary_records) != expected_content_counts["binaryResources"]
     ):
         raise CompilationError(
@@ -3996,6 +4025,7 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
             "source-goal-reference-index",
             "release-quality-evidence",
             *completion_contracts.ROLES.values(),
+            *learning_units.ROLES.values(),
         }:
             continue
         coverage_entries.append(
@@ -4045,6 +4075,8 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     }
     if completion_documents:
         build_inputs["completionArtifacts"] = completion_inputs
+    if unit_documents:
+        build_inputs["learningUnitInputs"] = unit_inputs
     write_json(output_root, "metadata/build-inputs.json", build_inputs)
 
     summary = {

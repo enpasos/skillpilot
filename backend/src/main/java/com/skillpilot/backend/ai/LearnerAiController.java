@@ -397,7 +397,7 @@ public class LearnerAiController {
                 java.util.Set.of(),
                 state.learningState(),
                 state.activeGoal(),
-                state.stateMachine());
+                state.stateMachine(), state.levelCompletion(), state.learningUnits());
     }
 
     private UnifiedLearnerStateResponse withAbsoluteExamAssetUrls(UnifiedLearnerStateResponse state) {
@@ -437,7 +437,7 @@ public class LearnerAiController {
                 state.copySources(),
                 state.learningState(),
                 activeGoal,
-                smUpdated);
+                smUpdated, state.levelCompletion(), state.learningUnits());
     }
 
     private MasteryUpdateResponse withAbsoluteExamAssetUrls(MasteryUpdateResponse response) {
@@ -474,7 +474,7 @@ public class LearnerAiController {
                 response.learningState(),
                 activeGoal,
                 smUpdated,
-                response.goals());
+                response.goals(), response.levelCompletion(), response.learningUnits());
     }
 
     private com.skillpilot.backend.api.LearnerGoals rewriteLearnerGoals(

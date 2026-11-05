@@ -39,7 +39,8 @@ import validate_curriculum_package_contracts as package_contracts  # noqa: E402
 import validate_curriculum_runtime_catalog_contract as runtime_catalog_contracts  # noqa: E402
 import validate_curriculum_schema_catalog_contract as schema_catalog_contracts  # noqa: E402
 import curriculum_package_completion_contracts as completion_contracts  # noqa: E402
-import curriculum_completion_artifacts as completion_artifacts  # noqa: E402
+import curriculum_completion_artifacts as completion_artifacts
+import curriculum_learning_unit_artifacts as learning_units  # noqa: E402
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -3678,14 +3679,20 @@ def validate_hard_reference_closure(
         collector.add("hardReferenceClosure", "CLOSURE_UNAVAILABLE", f"/{path}", "closure is unavailable")
         return
     completion_documents = []
+    unit_documents = []
+    unit_landscape = None
     goals = {}
     for record in manifest.get("files", []):
         role = record.get("role")
         artifact_path = record.get("path")
         artifact = documents.values.get(artifact_path)
-        if role in completion_contracts.ROLES.values() and isinstance(artifact, dict):
+        if role in learning_units.ROLES.values() and isinstance(artifact, dict):
+            unit_documents.append((role, artifact.get("id"), artifact_path, artifact))
+        elif role in completion_contracts.ROLES.values() and isinstance(artifact, dict):
             completion_documents.append((role, artifact.get("id"), artifact_path, artifact))
         elif role == "canonical-landscape" and isinstance(artifact, dict):
+            if artifact.get("landscapeFormatVersion") == "1.2":
+                unit_landscape = artifact
             for goal in artifact.get("goals", []):
                 goal_id = goal.get("id")
                 if goal_id in goals and goals[goal_id] != goal:
@@ -3696,6 +3703,11 @@ def validate_hard_reference_closure(
             completion_artifacts.validate_package_documents(completion_documents, goals)
         except (KeyError, TypeError, ValueError) as error:
             collector.add("hardReferenceClosure", "COMPLETION_CONTRACT_INVALID", "/data/completion", str(error))
+    if unit_documents:
+        try:
+            learning_units.validate_package_documents(unit_documents, unit_landscape)
+        except (KeyError, TypeError, ValueError) as error:
+            collector.add("hardReferenceClosure", "LEARNING_UNIT_CONTRACT_INVALID", "/data/learning-units", str(error))
     del logical_documents  # derivation intentionally starts from manifest-bound package artifacts
     try:
         expected = derive_expected_closure(

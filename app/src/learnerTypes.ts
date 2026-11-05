@@ -81,6 +81,7 @@ export interface GoalStats {
 }
 
 export interface UnifiedLearnerStateResponse {
+  learningUnits?: import('./utils/learningUnitsApi').LearningUnitsReadModel | null;
   levelCompletion?: import('./utils/levelCompletionApi').LevelCompletion | null;
   skillpilotId: string;
   curriculum: { landscapeId: string; title: string };

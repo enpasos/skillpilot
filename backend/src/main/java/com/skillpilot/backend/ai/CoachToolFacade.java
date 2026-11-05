@@ -1009,7 +1009,7 @@ public class CoachToolFacade {
                 state.learningState(),
                 state.activeGoal(),
                 state.stateMachine(),
-                state.levelCompletion());
+                state.levelCompletion(), state.learningUnits());
     }
 
     private VerifiedRecallPromptResponse withoutSkillpilotId(VerifiedRecallPromptResponse response) {

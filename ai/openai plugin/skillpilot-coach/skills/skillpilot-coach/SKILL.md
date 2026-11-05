@@ -263,13 +263,16 @@ explicit continuation. Hints inside an unfinished task need no closure round.
   independent checks or genuine multi-step transfer before mastery. That
   transfer may occur within one task; judge evidence, not task count. Stop
   assessing once every aspect is shown; require no extra task quota.
-- **Directed prerequisites:** Mastery of a goal never implies mastery of its
-  prerequisites. The backend alone determines remaining work: mastered goals
-  end their own prerequisite demand; goals with no remaining demand may be
-  implicitly completed without changing any saved goal result. Follow current
-  completion statements and options. Do not restore implicitly completed work
-  as mandatory or create mastery for it. Voluntary learning remains possible
-  through current published options.
+- **Directed prerequisites and learning units:** Use backend-published `learningUnits`: globally effective mastery follows
+  reviewed independent application. It counts for prerequisites, total progress
+  and later learning after focus/curriculum changes. A mastered intermediate goal
+  must not hide the transitive demand of an open local assessment.
+  Exams and memory goals still require their own explicit results. Never write
+  derived recognition or a second learner result. If recognition is unavailable,
+  award no new implicit credit. Voluntary learning remains possible through
+  current published options. Legacy section waivers remove preparation only
+  within their stated section, without global competence credit. Never infer
+  recognition from `requires`, calendar headings or an empty frontier.
 - **Memory:** Normal card practice and strict Verified Recall are different
   learning modes. Only the component reviews displayed practice cards; normal
   practice changes repetition scheduling, never mastery. In Verified Recall,

@@ -36,6 +36,7 @@ SCHEMA_CATALOG_SCHEMA_ID = (
 )
 PROFILE_ID = "full-standalone-v1"
 import curriculum_package_completion_contracts as completion_contracts
+import curriculum_learning_unit_artifacts as learning_units
 JSONSCHEMA_VERSION = "4.26.0"
 CONSUMER_API_VERSION = "0.1.0"
 CONSUMER_FUNCTIONAL_CHECK_IDS = (
@@ -488,10 +489,11 @@ def validate_trusted_contract(
         },
         "profile",
     )
+    unit_profile = profile.get("profileId") == learning_units.PROFILE_ID
     completion = profile.get("profileId") == completion_contracts.PROFILE_ID
     if (
         profile.get("profileFormatVersion") != 1
-        or profile.get("profileId") not in {PROFILE_ID, completion_contracts.PROFILE_ID}
+        or profile.get("profileId") not in {PROFILE_ID, completion_contracts.PROFILE_ID, learning_units.PROFILE_ID}
     ):
         raise ContractDefinitionError(
             "Profile identity must be full-standalone-v1 with format version 1"
@@ -509,7 +511,7 @@ def validate_trusted_contract(
 
     expected_trusted_schemas: list[dict[str, str]] = []
     schema_files = [(schema_id, schema_path.parent / filename) for schema_id, filename in NORMATIVE_SCHEMA_FILES]
-    if completion:
+    if completion or unit_profile:
         schema_files.extend(completion_contracts.extra_schemas(profile_path.parent.parent))
     for schema_id, trusted_path in schema_files:
         trusted_schema = expect_object(load_json(trusted_path), str(trusted_path))
@@ -547,7 +549,7 @@ def validate_trusted_contract(
     )
     if compatibility != {
         "packageFormatVersion": "1.0",
-        "runtimeContractVersion": "1.1" if completion else "1.0",
+        "runtimeContractVersion": "1.2" if unit_profile else "1.1" if completion else "1.0",
         "variant": "json",
     }:
         raise ContractDefinitionError(
@@ -725,6 +727,11 @@ def validate_trusted_contract(
         roles[role] = rule
 
     semantic_roles = dict(ROLE_SEMANTIC_CONTRACTS)
+    if unit_profile:
+        semantic_roles["runtime-catalog"] = ("logical-artifact", ("runtime-catalog",), (learning_units.CATALOG_SCHEMA_ID,))
+        semantic_roles["canonical-landscape"] = ("logical-artifact", ("canonical-landscape",), (learning_units.LANDSCAPE_SCHEMA_ID,))
+        semantic_roles.update({role: ("logical-artifact", (role,), (learning_units.ARTIFACT_SCHEMA_ID,))
+                               for role in learning_units.ROLES.values()})
     if completion:
         semantic_roles["runtime-catalog"] = (
             ROLE_SEMANTIC_CONTRACTS["runtime-catalog"][0],
@@ -2808,7 +2815,7 @@ def main() -> int:
             trusted_schema_paths,
         )
         if completion_contracts.extended_directory(contract_dir):
-            print("Assessment-completion runtime 1.1 schema/profile trust bindings passed; checking immutable V1 regression fixtures.")
+            print(f"Runtime {profile['compatibility']['runtimeContractVersion']} schema/profile trust bindings passed; checking immutable V1 regression fixtures.")
             contract_dir = base_dir
             profile_path = contract_dir / PROFILE_RELATIVE_PATH
             profile = expect_object(load_json(profile_path), str(profile_path))

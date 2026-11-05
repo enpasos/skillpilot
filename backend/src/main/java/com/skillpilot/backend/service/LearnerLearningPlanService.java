@@ -138,11 +138,24 @@ public class LearnerLearningPlanService {
             }
             try {
                 Set<String> allObligations = obligationsBySubject.getOrDefault(subject, entry.getValue());
+                if (learners.unitRecognitionGoverns(allObligations)) {
+                    Set<String> recognized = new LinkedHashSet<>(learners.hasUnitRecognition()
+                            ? learners.reconcileLearningUnitPlanRecognition(learnerId, mastery, Set.of()) : Set.of());
+                    recognized.retainAll(allObligations);
+                    Set<String> resolved = Set.copyOf(recognized);
+                    waived.put(entry.getKey(), resolved);
+                    resolvedBySubject.put(subject, resolved);
+                    continue;
+                }
                 var context = automaticContext != null ? automaticContext
                         : learners.getLearningPlanCompletionContext(learnerId, allObligations);
                 if (context == null) {
-                    waived.put(entry.getKey(), Set.of());
-                    resolvedBySubject.put(subject, Set.of());
+                    Set<String> recognized = new LinkedHashSet<>(learners.hasUnitRecognition()
+                            ? learners.reconcileLearningUnitPlanRecognition(learnerId, mastery, Set.of()) : Set.of());
+                    recognized.retainAll(allObligations);
+                    Set<String> resolved = Set.copyOf(recognized);
+                    waived.put(entry.getKey(), resolved);
+                    resolvedBySubject.put(subject, resolved);
                     continue;
                 }
                 if (subject == null || invalidObligations.stream()
@@ -181,6 +194,10 @@ public class LearnerLearningPlanService {
                     resolved = completionProjection.waivedGoals(context, allObligations,
                             ids -> learners.resolveLearningPlanCompletionMastery(learnerId, mastery, ids));
                 }
+                Set<String> recognized = new LinkedHashSet<>(learners.hasUnitRecognition()
+                        ? learners.reconcileLearningUnitPlanRecognition(learnerId, mastery, resolved) : resolved);
+                recognized.retainAll(allObligations);
+                resolved = Set.copyOf(recognized);
                 resolvedBySubject.put(subject, resolved);
                 waived.put(entry.getKey(), resolved);
             } catch (RuntimeException e) {
@@ -410,7 +427,7 @@ public class LearnerLearningPlanService {
         boolean evaluable = !subjects.isEmpty() && unavailablePlanCount == 0
                 && subjects.stream().allMatch(LearnerPlanTodayStatus.SubjectStatus::evaluable);
         boolean periodQuotaFulfilled = evaluated.stream()
-                .allMatch(subject -> subject.balance().offenesPeriodenpensum() == 0);
+                .allMatch(subject -> subject.periodGauge().completed() >= subject.periodGauge().target());
 
         boolean automaticResume = !preview && enabled && !activeGoalInProgress && firstCandidateAcrossPlans(
                 skillpilotId, subjectPlans, asOf, mastery, false, false, true, fulfillment).isPresent();
@@ -2579,28 +2596,33 @@ public class LearnerLearningPlanService {
         int i = (int) plannedGoalIds.stream()
                 .filter(id -> mastery.getOrDefault(id, 0.0) >= MASTERY_THRESHOLD || waived.contains(id))
                 .count();
-        int h = (int) periodCompletions.entrySet().stream()
-                .filter(entry -> plannedGoalIds.contains(entry.getKey()))
-                .filter(entry -> entry.getValue() != null)
+        int h = explicitPeriodCompletionCount(plannedGoalIds, periodStart, periodEnd, mastery, periodCompletions);
+        return UnifiedLearningPlanStatusCalculator.calculate(new PlanBalanceInputs(s, p, i, h));
+    }
+
+    /** Dated explicit outcomes alone fill a day/week quota, including when total work is complete. */
+    static LearnerPlanTodayStatus.PeriodGauge periodGauge(Set<String> plannedGoalIds,
+            Map<String, LocalDate> dueDates, LocalDate periodStart, LocalDate periodEnd,
+            Map<String, Double> mastery, Map<String, Instant> periodCompletions) {
+        int target = (int) dueDates.values().stream()
+                .filter(date -> !date.isBefore(periodStart) && !date.isAfter(periodEnd)).count();
+        int completed = Math.min(target, explicitPeriodCompletionCount(
+                plannedGoalIds, periodStart, periodEnd, mastery, periodCompletions));
+        return new LearnerPlanTodayStatus.PeriodGauge(
+                completed, target, target == 0 ? null : (double) completed / target);
+    }
+
+    private static int explicitPeriodCompletionCount(Set<String> plannedGoalIds,
+            LocalDate periodStart, LocalDate periodEnd, Map<String, Double> mastery,
+            Map<String, Instant> periodCompletions) {
+        return (int) periodCompletions.entrySet().stream()
+                .filter(entry -> plannedGoalIds.contains(entry.getKey()) && entry.getValue() != null)
                 .filter(entry -> {
                     LocalDate completedOn = entry.getValue().atZone(PLAN_ZONE).toLocalDate();
                     return !completedOn.isBefore(periodStart) && !completedOn.isAfter(periodEnd);
                 })
                 .filter(entry -> mastery.getOrDefault(entry.getKey(), 0.0) >= MASTERY_THRESHOLD)
                 .count();
-        return UnifiedLearningPlanStatusCalculator.calculate(new PlanBalanceInputs(s, p, i, h));
-    }
-
-    /**
-     * Projects the current period's existing balance into a dial. A zero target has no
-     * meaningful needle position; it remains distinct from an unavailable plan status.
-     */
-    static LearnerPlanTodayStatus.PeriodGauge periodGauge(PlanBalanceResult balance) {
-        Objects.requireNonNull(balance, "plan balance");
-        int completed = balance.erfuelltesPeriodenziel();
-        int target = completed + balance.offenesPeriodenpensum();
-        return new LearnerPlanTodayStatus.PeriodGauge(
-                completed, target, target == 0 ? null : (double) completed / target);
     }
 
     /**
@@ -2756,21 +2778,23 @@ public class LearnerLearningPlanService {
             }
             PlanBalanceResult balance = calculateBalance(
                     plannedGoalIds, dueDates, periodStart, periodEnd, mastery, periodCompletions, waived);
+            LearnerPlanTodayStatus.PeriodGauge quota = periodGauge(
+                    plannedGoalIds, dueDates, periodStart, periodEnd, mastery, periodCompletions);
             boolean hasScheduledGoals = !plannedGoalIds.isEmpty();
             LearnerPlanTodayStatus.LearningScope selectedScope = learningScope;
             boolean unscheduledScope = !hasScheduledGoals && selectedScope != null;
             String periodText = hasScheduledGoals
-                    ? UnifiedLearningPlanStatusFormatter.formatPeriodText(periodBasis, balance, locale)
+                    ? UnifiedLearningPlanStatusFormatter.formatPeriodText(periodBasis, quota.target(), quota.completed(), locale)
                     : unscheduledScope ? (locale.startsWith("en") ? "Scheduling pending" : "Zeitplanung offen")
                             : UnifiedLearningPlanStatusFormatter.formatNoScheduledGoalsText(locale);
             String planStatusText = hasScheduledGoals
                     ? UnifiedLearningPlanStatusFormatter.formatPlanStatusText(balance, locale)
                     : unscheduledScope ? selectedScope.progressText() : periodText;
-            String subjectLine = hasScheduledGoals ? UnifiedLearningPlanStatusFormatter.formatSubjectLine(
-                    subjectLabel, periodBasis, balance, locale) : subjectLabel + ": " + periodText;
+            String subjectLine = subjectLabel + ": " + periodText
+                    + (hasScheduledGoals ? " · " + planStatusText : "");
             if (selectedScope != null && "exam".equals(selectedScope.kind())) {
                 subjectLine = subjectLabel + ": " + selectedScope.progressText() + " · "
-                        + (hasScheduledGoals ? UnifiedLearningPlanStatusFormatter.formatPeriodText(periodBasis, balance, locale)
+                        + (hasScheduledGoals ? UnifiedLearningPlanStatusFormatter.formatPeriodText(periodBasis, quota.target(), quota.completed(), locale)
                                 : periodText);
             }
             return new LearnerPlanTodayStatus.SubjectStatus(
@@ -2784,7 +2808,7 @@ public class LearnerLearningPlanService {
                     hasScheduledGoals ? balance.statusDirection() : null,
                     current,
                     switchable,
-                    periodGauge(balance),
+                    quota,
                     balanceGauge(balance, dueDates, periodBasis),
                     achievement == null ? null : achievement.achievedGoalCount(),
                     achievement == null ? null : achievement.targetGoalCount(),

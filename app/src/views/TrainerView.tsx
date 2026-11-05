@@ -34,6 +34,7 @@ import {
 } from '../utils/teacherCoursePlanContext'
 import { migrateTrainerClassSession } from '../utils/trainerLandscapeContext'
 import { applyGoalPlacementProjection } from '../utils/goalPlacementProjection'
+import { effectiveMasteryFromSnapshot, parseLearningUnits } from '../utils/learningUnitsApi'
 import { goalMatchesFilters, isWildcardFilter } from '../utils/goalFilters'
 import {
   getGlobalStageScopeSelection,
@@ -1294,7 +1295,15 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           )
           if (res.ok) {
             const data = await res.json()
-            if (data && data.mastery) return [student.id, data.mastery] as const
+            if (data && data.mastery) {
+              let units = null
+              try { units = parseLearningUnits(data.learningUnits) }
+              catch (error) {
+                hadDataLoadFailure = true
+                console.warn(`Could not load recognition for ${student.name}; showing explicit results`, error)
+              }
+              return [student.id, effectiveMasteryFromSnapshot(data.mastery, units)] as const
+            }
           } else {
             hadDataLoadFailure = true
           }

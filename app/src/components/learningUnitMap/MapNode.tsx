@@ -32,9 +32,14 @@ export const MapNode = memo(function MapNode({ data }: NodeProps<LearningFlowNod
   const explicit = Math.min(total, Math.max(0, progress?.explicit ?? 0))
   const implicit = Math.min(total - explicit, Math.max(0, progress?.implicit ?? 0))
   const achieved = explicit + implicit
+  const recognized = progress?.recognizedCount ?? 0
+  const legacy = implicit - recognized
   const scopeLabel = progress?.implicitScopeLabel
-  const progressLabel = (english ? `${achieved} of ${total} learning goals completed: ${explicit} explicit, ${implicit} completed in this section.`
-    : `${achieved} von ${total} Lernzielen erledigt: ${explicit} explizit, ${implicit} in diesem Lernabschnitt erledigt.`)
+  const progressLabel = (progress?.globalRecognition
+    ? (english ? `${achieved} of ${total} learning goals completed: ${explicit} explicit, ${recognized} mastered through independent application${legacy ? `, ${legacy} covered in this section` : ''}.`
+      : `${achieved} von ${total} Lernzielen erledigt: ${explicit} explizit, ${recognized} durch selbständige Anwendung gemeistert${legacy ? `, ${legacy} im Abschnitt abgedeckt` : ''}.`)
+    : english ? `${achieved} of ${total} learning goals completed: ${explicit} explicit, ${implicit} completed in this section.`
+      : `${achieved} von ${total} Lernzielen erledigt: ${explicit} explizit, ${implicit} in diesem Lernabschnitt erledigt.`)
     + (implicit && scopeLabel ? ` ${scopeLabel}. ${english ? 'Saved learning results stay unchanged.' : 'Gespeicherte Lernstände bleiben unverändert.'}` : '')
   const Icon = expandable ? Layers3 : explicit ? Check : implicit ? ShieldCheck : activeLearningGoal ? Send : Target
   const status = explicit ? 'is-explicit' : implicit ? 'is-implicit' : activeLearningGoal ? 'is-active' : progress ? 'is-open' : 'is-context'

@@ -79,9 +79,17 @@ If no matching choice is available, explain that honestly and refer to the
 Cockpit for current options or the assessment-shortcut setting; never enable it
 or bypass prerequisites with ordinary goal/focus tools. While a completion route
 owns navigation, use only its published choices instead of normal plan resume.
-Use backend completion statements without recalculating waivers: preparation
-may cease to be required only for that section, never become globally mastered.
-Each atomic goal still has only binary mastery, with no second pass record.
+Use backend-published `learningUnits`: globally effective mastery follows
+reviewed independent application. It counts for prerequisites, total progress
+and later learning after focus/curriculum changes. A mastered intermediate goal
+must not hide the transitive demand of an open local assessment.
+Exams and memory goals still require their own explicit results. Never write
+derived recognition or a second learner result. If recognition is unavailable,
+award no new implicit credit. Voluntary learning remains possible through
+current published options. Legacy section waivers remove preparation only
+within their stated section, without global competence credit. Never infer
+recognition from `requires`, calendar headings or an empty frontier.
+Each atomic goal still has only binary explicit mastery, with no second pass record.
 Detailed exam feedback remains governed by Exams. Do not interrupt current
 feedback or replace an agreed normal successor with unsolicited shortcut offers.
 

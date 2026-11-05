@@ -371,6 +371,7 @@ export function useAppCore({
   const {
     currentLandscapeEntry,
     mastery,
+    learningUnits,
     updateMasteryForCurrent,
     activeFilter,
     setActiveFilter,
@@ -1061,6 +1062,7 @@ export function useAppCore({
     // Exposing source references builds no extra index on the default tree path.
     prerequisiteGoalSources: graphSourceLandscapeEntries,
     getMasteryValue,
+    learningUnits,
     handleSelectAbsolute,
     handleTrainerContextChange,
     handleMasteryChange,

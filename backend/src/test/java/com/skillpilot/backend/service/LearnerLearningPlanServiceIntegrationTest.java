@@ -301,7 +301,7 @@ class LearnerLearningPlanServiceIntegrationTest {
         assertThat(edited.blocks().getFirst().atomicGoalIds()).containsExactly("atom-a");
         assertThat(edited.blocks().get(1).atomicGoalIds()).containsExactly("atom-b");
         var status = service.getTodayStatus(LEARNER_ID, "de");
-        assertThat(status.statusText()).isEqualTo("Mathematik: Tagesziel erreicht · im Plan");
+        assertThat(status.statusText()).isEqualTo("Mathematik: Tagesziel 0 von 1 · im Plan");
         assertThat(status.subjects().getFirst().balance().erfuelltesPeriodenziel()).isEqualTo(1);
         assertThat(learnerService.getMastery(LEARNER_ID)).containsEntry("atom-a", 1.0).containsEntry("atom-c", 1.0);
         assertThat(service.getPlan(LEARNER_ID, LANDSCAPE_ID, TODAY).blocks()).isEqualTo(edited.blocks());
@@ -416,7 +416,7 @@ class LearnerLearningPlanServiceIntegrationTest {
         when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-b", 1.0));
         learner.setFollowLearningPlans(true);
         var status = service.getTodayStatus(LEARNER_ID, "de");
-        assertThat(status.statusText()).isEqualTo("Mathematik: Tagesziel erreicht · im Plan");
+        assertThat(status.statusText()).isEqualTo("Mathematik: Tagesziel 0 von 1 · im Plan");
         assertThat(status.automaticResumeAvailable()).isFalse();
         assertThat(status.resumeAvailable()).isTrue();
         verify(learnerService, never()).applyLearningPlanTransition(any(), anyBoolean(), anyBoolean(), any(), any(), anyBoolean(), any());

@@ -81,6 +81,25 @@ class AutomaticCompletionIntegrationTest {
         ReflectionTestUtils.setField(learners, "completionApplicationService", originalApplication);
     }
 
+    @Test void actualRecognizedProjectionCompetenceCanBeRepeatedWithAllEightSupportsOpenEvenInStrictMode() {
+        masteryRepository.saveAndFlush(new com.skillpilot.backend.domain.Mastery(learner, PILOT_EXAM, 1.0));
+        learner.setStrictMode(true);
+        var mastery = learners.getMasteryResponse(learner.getSkillpilotId());
+        assertThat(mastery.mastery().entrySet()).filteredOn(entry -> entry.getValue() >= 0.5)
+                .containsExactly(Map.entry(PILOT_EXAM, 1.0));
+        assertThat(mastery.learningUnits().recognizedGoalIds()).contains(PREPARATION);
+        assertThat(mastery.learningUnits().voluntaryGoalIds()).contains(PREPARATION);
+        assertThat(learners.getRichFrontier(learner.getSkillpilotId())).extracting(com.skillpilot.backend.api.FrontierGoal::id)
+                .doesNotContain(PREPARATION);
+        learners.setActiveGoal(learner.getSkillpilotId(), PREPARATION);
+        var state = learners.getCoachLearnerState(learner.getSkillpilotId());
+        assertThat(state.activeGoal().id()).isEqualTo(PREPARATION);
+        assertThat(state.learningState()).isEqualTo(LearningState.TEACHING.name());
+        assertThat(state.learningUnits().recognizedGoalIds()).contains(PREPARATION);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId()))
+                .extracting(com.skillpilot.backend.domain.Mastery::getGoalKey).containsExactly(PILOT_EXAM);
+    }
+
     @Test void defaultPreviewIncludesNonPilotAndSekOneAssessmentsWithoutMutatingNavigationOrMastery() throws Exception {
         learner.setActiveGoalId(PREPARATION);
         learner.setLearningState(LearningState.TEACHING);

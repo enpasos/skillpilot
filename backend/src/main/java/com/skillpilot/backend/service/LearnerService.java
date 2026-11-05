@@ -5,6 +5,9 @@ import com.skillpilot.backend.api.LevelCompletionResponse;
 import com.skillpilot.backend.api.LevelCompletionActionRequest;
 import com.skillpilot.backend.api.CompletionAssessmentStart;
 import com.skillpilot.backend.completion.*;
+import com.skillpilot.backend.completion.learningunit.*;
+import com.skillpilot.backend.api.LearningUnitsReadModel;
+import com.skillpilot.backend.api.MasteryResponse;
 import com.skillpilot.backend.domain.CopySource;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearnerClientState;
@@ -162,6 +165,182 @@ public class LearnerService {
     @Autowired(required = false)
     private CompletionApplicationService completionApplicationService;
 
+    @Autowired(required = false)
+    private LearningUnitApplicationService learningUnitApplicationService;
+
+    private static final String MASTERY_READ_TRANSACTION_RESOURCE = LearnerService.class.getName() + ".masteryRead";
+    private final ThreadLocal<Map<String, MasteryRead>> operationMasteryReads = new ThreadLocal<>();
+    private record MasteryRead(Map<String, Double> stored, Map<String, Double> explicit,
+                               Map<String, Double> unitExplicit, Set<String> unavailableRecallGoalIds,
+                               Set<String> srsKnownGoalIds, Map<String, SrsGoalSnapshot> srsSnapshots,
+                               String curriculumState) { }
+
+    @SuppressWarnings("unchecked")
+    private Map<String, MasteryRead> masteryReadCache() {
+        Map<String, MasteryRead> local = operationMasteryReads.get();
+        if (local != null) return local;
+        if (!TransactionSynchronizationManager.isActualTransactionActive() || !TransactionSynchronizationManager.isSynchronizationActive()) return null;
+        var cache = (Map<String, MasteryRead>) TransactionSynchronizationManager.getResource(MASTERY_READ_TRANSACTION_RESOURCE);
+        if (cache == null) {
+            cache = new LinkedHashMap<>();
+            TransactionSynchronizationManager.bindResource(MASTERY_READ_TRANSACTION_RESOURCE, cache);
+            TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
+                @Override public void afterCompletion(int status) {
+                    TransactionSynchronizationManager.unbindResourceIfPossible(MASTERY_READ_TRANSACTION_RESOURCE);
+                }
+            });
+        }
+        return cache;
+    }
+
+    private <T> T withMasteryRead(java.util.function.Supplier<T> work) {
+        if (operationMasteryReads.get() != null) return work.get();
+        // Distinct public operations see their own writes even if a caller keeps
+        // one transaction open. Nested consumers share this single input batch.
+        Map<String, MasteryRead> snapshot = new LinkedHashMap<>();
+        operationMasteryReads.set(snapshot);
+        boolean completed = false;
+        try {
+            T result = work.get();
+            completed = true;
+            return result;
+        } finally {
+            operationMasteryReads.remove();
+            // Plan services can reuse the completed read while holding the same
+            // learner lock; the next public mastery/state operation refreshes it.
+            Map<String, MasteryRead> transactionCache = completed ? masteryReadCache() : null;
+            if (transactionCache != null) snapshot.forEach((id, read) -> {
+                while (!transactionCache.containsKey(id) && transactionCache.size() >= 16)
+                    transactionCache.remove(transactionCache.keySet().iterator().next());
+                transactionCache.put(id, read);
+            });
+        }
+    }
+
+    private void invalidateMasteryRead(String learnerId) {
+        Map<String, MasteryRead> cache = masteryReadCache();
+        if (cache != null) cache.remove(learnerId);
+    }
+
+    private LearningUnitEvaluation learningUnitRecognition(Learner learner, Map<String, Double> explicitMastery) {
+        if (learningUnitApplicationService == null) return null;
+        Map<String, Double> resolved = readMastery(learner.getSkillpilotId()).unitExplicit();
+        Set<String> explicit = resolved.entrySet().stream().filter(entry -> Mastery.isMastered(entry.getValue()))
+                .map(Map.Entry::getKey).collect(Collectors.toSet());
+        return learningUnitApplicationService.evaluate(learner.getSkillpilotId(), explicit);
+    }
+
+    private Map<String, Double> withUnitRecognition(Learner learner, Map<String, Double> explicitMastery) {
+        LearningUnitEvaluation units = learningUnitRecognition(learner, explicitMastery);
+        if (units == null || units.recognizedGoalIds().isEmpty()) return explicitMastery;
+        Map<String, Double> effective = new LinkedHashMap<>(explicitMastery);
+        units.recognizedGoalIds().forEach(id -> effective.put(id, 1.0));
+        return effective;
+    }
+
+    private Map<String, Double> trustedUnitProjection(String learnerId, Map<String, Double> candidate) {
+        if (learningUnitApplicationService == null || !learningUnitApplicationService.hasContracts()) return candidate;
+        Map<String, Double> trusted = readMastery(learnerId).unitExplicit();
+        Map<String, Double> result = new LinkedHashMap<>(candidate);
+        for (String id : learningUnitApplicationService.masteryGoals().keySet()) {
+            result.remove(id);
+            if (trusted.containsKey(id)) result.put(id, trusted.get(id));
+        }
+        return result;
+    }
+
+    private Map<String, MasteryEntryDTO> trustedUnitTimestamps(String learnerId,
+            Map<String, MasteryEntryDTO> projected, Map<String, MasteryEntryDTO> stored) {
+        if (learningUnitApplicationService == null || !learningUnitApplicationService.hasContracts()) return projected;
+        Map<String, MasteryEntryDTO> result = new LinkedHashMap<>(projected);
+        Map<String, Double> trusted = readMastery(learnerId).unitExplicit();
+        for (String id : learningUnitApplicationService.masteryGoals().keySet()) {
+            result.remove(id);
+            if (!trusted.containsKey(id)) continue;
+            MasteryEntryDTO source = stored.get(id);
+            if (source == null) for (var alias : learningUnitApplicationService.catalog().resultAliases().entrySet()) {
+                if (id.equals(alias.getValue()) && stored.containsKey(alias.getKey())
+                        && Mastery.isMastered(stored.get(alias.getKey()).value())) { source = stored.get(alias.getKey()); break; }
+            }
+            result.put(id, new MasteryEntryDTO(trusted.get(id), source == null ? null : source.updatedAt()));
+        }
+        return result;
+    }
+
+    @Transactional(readOnly = true)
+    public LearningUnitsReadModel getLearningUnits(String skillpilotId, Map<String, Double> explicitMastery) {
+        if (learningUnitApplicationService == null) return null;
+        Learner learner = getLearner(skillpilotId);
+        var units = learningUnitRecognition(learner, explicitMastery);
+        Set<String> targets = learner.getSelectedCurriculum() == null ? Set.of()
+                : getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum()).targetGoalIds();
+        var read = readMastery(skillpilotId);
+        var model = learningUnitApplicationService.readModel(units, targets, read.unavailableRecallGoalIds());
+        if (model == null || units.recognizedGoalIds().isEmpty()) return model;
+        List<String> voluntary = getUncompactedRichFrontier(skillpilotId).stream().map(FrontierGoal::id)
+                .filter(targets::contains).filter(units.recognizedGoalIds()::contains).toList();
+        return model.withVoluntaryGoalIds(voluntary);
+    }
+
+    @Transactional(readOnly = true, isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
+    public MasteryResponse getMasteryResponse(String skillpilotId) {
+        return withMasteryRead(() -> {
+            Map<String, Double> explicit = getMastery(skillpilotId);
+            return new MasteryResponse(explicit, getLearningUnits(skillpilotId, explicit));
+        });
+    }
+
+    /** Shared global credit; plan periods still receive the caller's explicit event snapshot. */
+    @Transactional(readOnly = true)
+    public Set<String> reconcileLearningUnitPlanRecognition(String skillpilotId, Map<String, Double> explicitMastery,
+                                                           Set<String> legacyWaived) {
+        if (learningUnitApplicationService == null) return legacyWaived;
+        Set<String> recognized = new LinkedHashSet<>(legacyWaived);
+        recognized.removeAll(learningUnitApplicationService.governedGoalIds());
+        var units = learningUnitRecognition(getLearner(skillpilotId), explicitMastery);
+        recognized.addAll(units.recognizedGoalIds());
+        return Set.copyOf(recognized);
+    }
+
+    public boolean unitRecognitionGoverns(Set<String> goalIds) {
+        return learningUnitApplicationService != null && !goalIds.isEmpty()
+                && learningUnitApplicationService.governedGoalIds().containsAll(goalIds);
+    }
+
+    public boolean hasUnitRecognition() {
+        return learningUnitApplicationService != null && !learningUnitApplicationService.governedGoalIds().isEmpty();
+    }
+
+    private CompletionEvaluation evaluateCompletion(Learner learner, CompiledCompletionProfile compiled,
+                                                     Map<String, Double> explicitMastery) {
+        CompletionEvaluation legacy = completionApplicationService.evaluate(compiled,
+                trustedUnitProjection(learner.getSkillpilotId(), explicitMastery));
+        if (!compiled.automatic() || learningUnitApplicationService == null) return legacy;
+        Set<String> waived = new LinkedHashSet<>(legacy.waivedGoalIds());
+        waived.removeAll(learningUnitApplicationService.governedGoalIds());
+        var unitEvaluation = learningUnitRecognition(learner, explicitMastery);
+        unitEvaluation.recognizedGoalIds().stream().filter(compiled.contextGoalIds()::contains).forEach(waived::add);
+        Set<String> pending = new LinkedHashSet<>(compiled.targetGoalIds());
+        pending.removeAll(legacy.masteredGoalIds());
+        pending.removeAll(waived);
+        Map<String, CompletionEvaluation.WaiverReason> reasons = new LinkedHashMap<>();
+        legacy.waiverReasons().forEach((id, reason) -> { if (waived.contains(id)) reasons.put(id, reason); });
+        for (var definition : learningUnitApplicationService.catalog().definitions()) {
+            var local = unitEvaluation.units().get(definition.ref());
+            for (String id : local.ownRecognizedGoalIds()) if (waived.contains(id)) {
+                var assessments = definition.assessmentClaims().entrySet().stream()
+                        .filter(entry -> entry.getValue().coveredGoalIds().contains(id))
+                        .map(Map.Entry::getKey).filter(unitEvaluation.explicitMasteryGoalIds()::contains).sorted().toList();
+                reasons.putIfAbsent(id, new CompletionEvaluation.WaiverReason("learning_unit_application", assessments));
+            }
+        }
+        int masteredTargets = (int) compiled.targetGoalIds().stream().filter(legacy.masteredGoalIds()::contains).count();
+        int recognizedTargets = (int) compiled.targetGoalIds().stream().filter(waived::contains).count();
+        return new CompletionEvaluation(legacy.masteredGoalIds(), waived, pending, legacy.masteredAssessmentGoalIds(),
+                reasons, legacy.blockedByGoalIds(), pending.isEmpty(), compiled.targetGoalIds().size(), masteredTargets,
+                recognizedTargets, compiled.assessmentGoalIds().size());
+    }
+
     public boolean completionRouteOwnsNavigation(Learner learner) {
         return CompletionNavigationPolicy.ownsNavigation(learner);
     }
@@ -266,6 +445,11 @@ public class LearnerService {
     private Map<String, LearningGoal> completionGraph(Learner learner, GoalProjection projection) {
         Map<String, LearningGoal> canonical = completionCanonicalGraph(learner.getSelectedCurriculum());
         if (!completionApplicationService.catalog().automatic()) return canonical;
+        return projectCanonicalAtomicTargets(canonical, projection);
+    }
+
+    private Map<String, LearningGoal> projectCanonicalAtomicTargets(Map<String, LearningGoal> canonical,
+                                                                   GoalProjection projection) {
         Map<String, LearningGoal> resolved = new LinkedHashMap<>(canonical);
         // A reviewed direct goalEntry can intentionally make a canonical cluster
         // an atomic target. Apply that authoritative structure, never UI collapse.
@@ -413,18 +597,22 @@ public class LearnerService {
         profiles.forEach(profile -> (includePreparation ? profile.contextGoalIds() : profile.assessmentGoalIds())
                 .forEach(id -> contextGoals.put(id, graph.get(id))));
         Map<String, Double> storedMastery = new LinkedHashMap<>();
-        masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())
-                .forEach(entry -> storedMastery.put(entry.getGoalKey(), entry.getValue()));
+        boolean unitContext = learningUnitApplicationService != null
+                && contextGoals.keySet().stream().anyMatch(learningUnitApplicationService.governedGoalIds()::contains);
+        if (unitContext) storedMastery.putAll(getMastery(learner.getSkillpilotId()));
+        else masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())
+                    .forEach(entry -> storedMastery.put(entry.getGoalKey(), entry.getValue()));
         Map<String, Double> mastery = new LinkedHashMap<>(applyCanonicalMasteryProjection(
                 contextGoals, storedMastery, resolveProjectionStateFilterId(learner)));
         // The ordinary discovery surface needs only assessment results; its exams are
         // never memorisation goals. Preparation/SRS work belongs to route evaluation.
         if (includePreparation) {
             resolveSrsMasterySnapshot(learner.getSkillpilotId(), contextGoals.values().stream()
-                    .filter(Objects::nonNull).toList())
+                    .filter(Objects::nonNull).filter(goal -> !unitContext
+                        || !learningUnitApplicationService.governedGoalIds().contains(goal.getId())).toList())
                     .forEach((id, mastered) -> mastery.put(id, mastered ? 1.0 : 0.0));
         }
-        return mastery;
+        return unitContext ? trustedUnitProjection(learner.getSkillpilotId(), mastery) : mastery;
     }
 
     private void assertCompletionApplicability(Learner learner, CompiledCompletionProfile compiled) {
@@ -536,7 +724,7 @@ public class LearnerService {
                 contextGoals, existingMastery, resolveProjectionStateFilterId(learner)));
         resolveSrsMasterySnapshot(skillpilotId, List.copyOf(contextGoals.values()))
                 .forEach((id, mastered) -> resolved.put(id, mastered ? 1.0 : 0.0));
-        return resolved;
+        return trustedUnitProjection(skillpilotId, resolved);
     }
 
     private CompletionSnapshot completionSnapshot(Learner learner, GoalProjection projection) {
@@ -654,7 +842,7 @@ public class LearnerService {
                 if (!candidates.containsKey(compiled.profile().id())) {
                     masterySnapshot = completionMasterySnapshot(learner, graph, List.of(compiled), true);
                 }
-                evaluation = completionApplicationService.evaluate(compiled, masterySnapshot);
+                evaluation = evaluateCompletion(learner, compiled, masterySnapshot);
                 status = "valid";
                 CompletionCallContext call = CompletionCallContext.current();
                 boolean foreignOwner = storedDirect && call != null && !ownsDirectAssessment(call, workflow);
@@ -1333,6 +1521,28 @@ public class LearnerService {
     /** One call-local input snapshot shared by strict completion and tolerant normal projections. */
     private Map<String, SrsGoalSnapshot> resolveSrsGoalSnapshots(
             String skillpilotId, Collection<LearningGoal> goals, boolean strict) {
+        return resolveSrsGoalSnapshots(skillpilotId, goals, strict, Set.of());
+    }
+
+    private Map<String, SrsGoalSnapshot> resolveSrsGoalSnapshots(
+            String skillpilotId, Collection<LearningGoal> goals, boolean strict, Set<String> strictGoalIds) {
+        Map<String, MasteryRead> readCache = masteryReadCache();
+        MasteryRead cached = readCache == null ? null : readCache.get(skillpilotId);
+        if (cached != null) {
+            Set<String> requested = goals == null ? Set.of() : goals.stream().filter(this::isSrsGoal)
+                    .map(LearningGoal::getId).collect(Collectors.toSet());
+            if (cached.srsKnownGoalIds().containsAll(requested)) {
+                Map<String, SrsGoalSnapshot> result = new LinkedHashMap<>();
+                for (String id : requested) {
+                    SrsGoalSnapshot snapshot = cached.srsSnapshots().get(id);
+                    if (snapshot == null && (strict || strictGoalIds.contains(id))) {
+                        throw new SrsStateUnavailableException("Memorization input is unavailable in this operation snapshot");
+                    }
+                    if (snapshot != null) result.put(id, snapshot);
+                }
+                return Collections.unmodifiableMap(result);
+            }
+        }
         Map<String, LearningGoal> srsGoals = new LinkedHashMap<>();
         if (goals != null) for (LearningGoal goal : goals) {
             if (!isSrsGoal(goal)) continue;
@@ -1352,7 +1562,7 @@ public class LearnerService {
                         .forEach(state -> storedByGoal.put(state.getId().getNodeId(), state));
             }
         } catch (RuntimeException error) {
-            if (strict) throw new SrsStateUnavailableException("Memorization state is unavailable", error);
+            if (strict || !strictGoalIds.isEmpty()) throw new SrsStateUnavailableException("Memorization state is unavailable", error);
             return Map.of(); // Preserve existing normal mastery instead of fabricating an unsuccessful result.
         }
         // Resource equality identifies paths/classpath objects or actual package bytes;
@@ -1378,7 +1588,7 @@ public class LearnerService {
                 result.put(goal.getId(), new SrsGoalSnapshot(isSrsMasteredByVerifiedRecall(required, state),
                         summarizeVerifiedRecallDeck(required, state, now).eligibleCards() > 0));
             } catch (RuntimeException error) {
-                if (strict) {
+                if (strict || strictGoalIds.contains(goal.getId())) {
                     if (error instanceof SrsStateUnavailableException unavailable) throw unavailable;
                     throw new SrsStateUnavailableException("Memorization input is unavailable", error);
                 }
@@ -2098,6 +2308,7 @@ public class LearnerService {
             stored.setClientStateUpdatedAt(testedAt);
         }
         learnerClientStateRepository.save(stored);
+        invalidateMasteryRead(learner.getSkillpilotId());
     }
 
     private void persistVerifiedRecallMastery(String skillpilotId, LearningGoal goal) {
@@ -2120,6 +2331,7 @@ public class LearnerService {
         boolean masteryChanged = mastery.getValue() < 1.0;
         mastery.setValue(1.0);
         masteryRepository.save(mastery);
+        invalidateMasteryRead(skillpilotId);
         recordGoalCompletion(learner, goal.getId(), goal, previousValue, 1.0, verifiedRecallNow(), "verified_recall");
 
         boolean activeGoalCleared = goal.getId().equals(learner.getActiveGoalId());
@@ -2671,7 +2883,16 @@ public class LearnerService {
 
     @Transactional(readOnly = true)
     public Map<String, Double> getMastery(String skillpilotId) {
+        return withMasteryRead(() -> new LinkedHashMap<>(readMastery(skillpilotId).explicit()));
+    }
+
+    private MasteryRead readMastery(String skillpilotId) {
         Learner learner = getLearner(skillpilotId);
+        String curriculumState = learner.getSelectedCurriculum() + ":" + learner.getPersonalCurriculum();
+        Map<String, MasteryRead> cache = masteryReadCache();
+        MasteryRead existing = cache == null ? null : cache.get(skillpilotId);
+        if (existing != null && curriculumState.equals(existing.curriculumState())) return existing;
+        if (cache != null) cache.remove(skillpilotId);
         List<Mastery> mastered = masteryRepository.findByLearner_SkillpilotId(skillpilotId);
         Map<String, Double> result = new HashMap<>();
         for (Mastery m : mastered) {
@@ -2682,9 +2903,39 @@ public class LearnerService {
         if (curriculumId != null) {
             goals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
         }
+        if (learningUnitApplicationService != null && learningUnitApplicationService.hasContracts()) {
+            Map<String, LearningGoal> union = new LinkedHashMap<>(goals);
+            learningUnitApplicationService.masteryGoals().forEach(union::putIfAbsent);
+            goals = union;
+        }
         String projectionStateFilterId = resolveProjectionStateFilterId(learner);
-        Map<String, Double> projected = applyCanonicalMasteryProjection(goals, result, projectionStateFilterId);
-        return applySrsMasteryOverlay(skillpilotId, goals, projected);
+        Map<String, Double> projected = new LinkedHashMap<>(applyCanonicalMasteryProjection(goals, result, projectionStateFilterId));
+        Map<String, Double> unitExplicit = learningUnitApplicationService == null ? new LinkedHashMap<>(result)
+                : learningUnitApplicationService.normalizeExplicitResults(result);
+        Set<String> unitOwned = learningUnitApplicationService == null ? Set.of()
+                : learningUnitApplicationService.masteryGoals().keySet();
+        // A live UI mapping is not an assessment outcome or a frozen result alias.
+        // Every governed ID uses this same trusted canonical input in all consumers.
+        for (String id : unitOwned) {
+            projected.remove(id);
+            if (unitExplicit.containsKey(id)) projected.put(id, unitExplicit.get(id));
+        }
+        Set<String> srsKnown = goals.values().stream().filter(this::isSrsGoal).map(LearningGoal::getId).collect(Collectors.toSet());
+        Map<String, SrsGoalSnapshot> srs = resolveSrsGoalSnapshots(skillpilotId, goals.values(), false);
+        srs.forEach((id, snapshot) -> {
+            projected.put(id, snapshot.mastered() ? 1.0 : 0.0);
+            if (unitOwned.contains(id)) unitExplicit.put(id, snapshot.mastered() ? 1.0 : 0.0);
+        });
+        Set<String> unavailable = unitOwned.stream().filter(srsKnown::contains)
+                .filter(id -> !srs.containsKey(id) && !Mastery.isMastered(unitExplicit.get(id))).collect(Collectors.toSet());
+        MasteryRead loaded = new MasteryRead(Collections.unmodifiableMap(new LinkedHashMap<>(result)),
+                Collections.unmodifiableMap(projected), Collections.unmodifiableMap(unitExplicit), Set.copyOf(unavailable),
+                Set.copyOf(srsKnown), srs, curriculumState);
+        if (cache != null) {
+            while (cache.size() >= 16) cache.remove(cache.keySet().iterator().next());
+            cache.put(skillpilotId, loaded);
+        }
+        return loaded;
     }
 
     @Transactional(readOnly = true)
@@ -2705,7 +2956,7 @@ public class LearnerService {
                 goals,
                 result,
                 projectionStateFilterId);
-        return applySrsMasteryOverlayWithTimestamps(skillpilotId, goals, projected);
+        return trustedUnitTimestamps(skillpilotId, applySrsMasteryOverlayWithTimestamps(skillpilotId, goals, projected), result);
     }
 
     @Transactional(readOnly = true)
@@ -2734,7 +2985,7 @@ public class LearnerService {
                 goals,
                 result,
                 projectionStateFilterId);
-        return applySrsMasteryOverlayWithTimestamps(skillpilotId, goals, projected);
+        return trustedUnitTimestamps(skillpilotId, applySrsMasteryOverlayWithTimestamps(skillpilotId, goals, projected), result);
     }
 
     private Map<String, Double> applyCanonicalMasteryProjection(Map<String, LearningGoal> goals,
@@ -3350,6 +3601,7 @@ public class LearnerService {
         double previousValue = mastery.getValue();
         mastery.setValue(masteryValue);
         masteryRepository.save(mastery);
+        invalidateMasteryRead(skillpilotId);
         recordGoalCompletion(learner, effectiveGoalId, def, previousValue, masteryValue, learningPlanClock.instant(), "coach_learning");
 
         // A failed/partial plan attempt remains the current work item. This is
@@ -3380,7 +3632,7 @@ public class LearnerService {
                 state.activeGoal(),
                 state.stateMachine(),
                 state.goals(),
-                state.levelCompletion());
+                state.levelCompletion(), state.learningUnits());
     }
 
     @Transactional(readOnly = true)
@@ -3453,7 +3705,7 @@ public class LearnerService {
                     "landscapeId has no atomic targets in the learner's personal curriculum.");
         }
 
-        Map<String, Double> mastery = getMastery(skillpilotId);
+        Map<String, Double> mastery = withUnitRecognition(learner, getMastery(skillpilotId));
         List<String> openAtomicGoalIds = scopeAtomicGoalIds.stream()
                 .filter(goalId -> mastery.getOrDefault(goalId, 0.0)
                         < PLANNING_SCOPE_MASTERY_THRESHOLD)
@@ -4047,7 +4299,7 @@ public class LearnerService {
     public String describeLearningPlanBlockage(String skillpilotId, List<String> selectedIds, String locale) {
         Learner learner = getLearner(skillpilotId);
         GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
-        Map<String, Double> mastery = getMastery(skillpilotId);
+        Map<String, Double> mastery = withUnitRecognition(learner, getMastery(skillpilotId));
         Map<String, Double> prerequisiteMastery = computeEffectivePrereqMastery(projection.structuralGoals(), mastery);
         Map<String, List<String>> requirements = computeEffectiveRequires(projection.structuralGoals());
         LinkedHashSet<String> names = new LinkedHashSet<>();
@@ -6784,6 +7036,11 @@ public class LearnerService {
      */
     private Set<String> automaticFrontierWaivers(Learner learner, GoalProjection projection,
             Map<String, Double> existingMastery) {
+        if (learningUnitApplicationService != null) {
+            Set<String> atoms = projection.targetGoalIds().stream()
+                    .filter(id -> isAtomicGoal(projection.structuralGoals().get(id))).collect(Collectors.toSet());
+            if (unitRecognitionGoverns(atoms)) return learningUnitRecognition(learner, existingMastery).recognizedGoalIds();
+        }
         if (completionApplicationService == null || !completionApplicationService.catalog().automatic()
                 || !completionApplicationService.catalog().enabled()) return Set.of();
         if (!completionApplicationService.catalog().available()) return null;
@@ -6798,7 +7055,7 @@ public class LearnerService {
                     contextGoals, existingMastery, resolveProjectionStateFilterId(learner)));
             resolveSrsMasterySnapshot(learner.getSkillpilotId(), List.copyOf(contextGoals.values()))
                     .forEach((id, mastered) -> mastery.put(id, mastered ? 1.0 : 0.0));
-            return completionApplicationService.evaluate(compiled, mastery).waivedGoalIds();
+            return evaluateCompletion(learner, compiled, mastery).waivedGoalIds();
         } catch (RuntimeException unavailable) {
             // The context projection publishes the error. Do not recommend work from an
             // invented fallback outcome; explicit raw availability remains separate.
@@ -6840,6 +7097,10 @@ public class LearnerService {
 
     @Transactional(readOnly = true)
     public List<String> getFrontier(String skillpilotId) {
+        return withMasteryRead(() -> computeFrontier(skillpilotId));
+    }
+
+    private List<String> computeFrontier(String skillpilotId) {
         Learner learner = getLearner(skillpilotId);
         String curriculumId = learner.getSelectedCurriculum();
         if (curriculumId == null || curriculumId.isBlank()) {
@@ -6850,9 +7111,10 @@ public class LearnerService {
         Set<String> followedScope = followedLearningScopeIds(learner, projection, null);
         if (followedScope != null && followedScope.isEmpty()) return List.of();
         Map<String, LearningGoal> allGoals = projection.visibleGoals();
-        Map<String, Double> masteryMap = getMastery(skillpilotId);
+        Map<String, Double> explicitMastery = getMastery(skillpilotId);
+        Map<String, Double> masteryMap = withUnitRecognition(learner, explicitMastery);
         Map<String, Double> effectiveMastery = computeEffectiveMastery(allGoals, masteryMap);
-        Set<String> waived = automaticFrontierWaivers(learner, projection, masteryMap);
+        Set<String> waived = automaticFrontierWaivers(learner, projection, explicitMastery);
         if (waived == null) return List.of();
         Set<String> completedWork = completedFrontierWork(allGoals, effectiveMastery, waived);
 
@@ -6967,6 +7229,11 @@ public class LearnerService {
             boolean compactFrontier,
             List<String> prospectiveFocusGoalIds,
             boolean requiredRecommendations) {
+        return withMasteryRead(() -> computeRichFrontier(skillpilotId, compactFrontier, prospectiveFocusGoalIds, requiredRecommendations));
+    }
+
+    private List<FrontierGoal> computeRichFrontier(
+            String skillpilotId, boolean compactFrontier, List<String> prospectiveFocusGoalIds, boolean requiredRecommendations) {
         Learner learner = getLearner(skillpilotId);
         String curriculumId = learner.getSelectedCurriculum();
         if (curriculumId == null || curriculumId.isBlank()) {
@@ -6982,9 +7249,11 @@ public class LearnerService {
         Map<String, LearningGoal> allFilteredGoals = projection.visibleGoals();
         Map<String, LearningGoal> allStructuralGoals = projection.structuralGoals();
 
-        Map<String, Double> masteryMap = getMastery(skillpilotId);
-        Map<String, Double> effectiveMastery = computeEffectiveMastery(allFilteredGoals, masteryMap);
-        Set<String> automaticWaivers = automaticFrontierWaivers(learner, projection, masteryMap);
+        Map<String, Double> explicitMastery = getMastery(skillpilotId);
+        Map<String, Double> masteryMap = withUnitRecognition(learner, explicitMastery);
+        Map<String, Double> effectiveMastery = computeEffectiveMastery(allFilteredGoals,
+                requiredRecommendations ? masteryMap : explicitMastery);
+        Set<String> automaticWaivers = automaticFrontierWaivers(learner, projection, explicitMastery);
         if (requiredRecommendations && automaticWaivers == null) return List.of();
         Set<String> waived = automaticWaivers == null ? Set.of() : automaticWaivers;
         Set<String> completedWork = requiredRecommendations
@@ -7025,6 +7294,15 @@ public class LearnerService {
             return getInitialScopeOptions(learner.getSelectedCurriculum(), projection);
         }
 
+        Set<String> voluntaryRecognized = requiredRecommendations || learningUnitApplicationService == null ? Set.of()
+                : learningUnitRecognition(learner, explicitMastery).recognizedGoalIds().stream()
+                        .filter(id -> {
+                            LearningGoal goal = allFilteredGoals.get(id);
+                            return goal != null && !CompletionProfileCompiler.isAssessment(goal)
+                                    && !CompletionProfileCompiler.isMemory(goal)
+                                    && !CompletionProfileCompiler.isOrientation(goal);
+                        }).collect(java.util.stream.Collectors.toUnmodifiableSet());
+
         // Only still-required orientation work gates the route. An implicitly
         // completed orientation remains voluntarily available without blocking
         // other explicitly chosen goals.
@@ -7038,14 +7316,14 @@ public class LearnerService {
                 projectedFocusIds,
                 plannedIds,
                 scope).stream().filter(goal -> !waived.contains(goal.id())).toList();
-        if (!requiredOrientationGoals.isEmpty()) {
+        if (!requiredOrientationGoals.isEmpty() && (requiredRecommendations || voluntaryRecognized.isEmpty())) {
             return orderFrontierByProjection(requiredOrientationGoals.stream()
                     .filter(goal -> followedScope == null || followedScope.contains(goal.id())).toList(), projection);
         }
 
         FrontierPrerequisites prerequisites = frontierPrerequisites(
                 learner, projection, masteryMap, scope);
-        List<FrontierGoal> frontier = new ArrayList<>();
+        List<FrontierGoal> frontier = new ArrayList<>(requiredOrientationGoals);
 
         // Iterate FILTERED goals (what the user should see)
         for (LearningGoal goal : allFilteredGoals.values()) {
@@ -7068,7 +7346,11 @@ public class LearnerService {
                 continue;
             }
 
-            boolean prerequisitesMet = areFrontierPrerequisitesMastered(
+            // This is an explicit repetition of already proven competence, including
+            // in strict mode. It does not relax first acquisition or pass Q/K.
+            boolean voluntaryRepeat = voluntaryRecognized.contains(goal.getId());
+            if (!requiredOrientationGoals.isEmpty() && !voluntaryRepeat) continue;
+            boolean prerequisitesMet = voluntaryRepeat || areFrontierPrerequisitesMastered(
                     goal, projection, prerequisites);
 
             if (isExamGoalUnavailableForHardCheck(goal)) {
@@ -7079,7 +7361,8 @@ public class LearnerService {
             }
 
             if (prerequisitesMet) {
-                frontier.add(toFrontierGoal(goal, "Prerequisites met", null));
+                frontier.add(toFrontierGoal(goal, voluntaryRepeat
+                        ? "Voluntary repetition of globally recognized competence" : "Prerequisites met", null));
             }
         }
         frontier = new ArrayList<>(filterVerifiedRecallAvailableMemoryGoals(skillpilotId, frontier));
@@ -7192,13 +7475,27 @@ public class LearnerService {
                 .collect(Collectors.toCollection(LinkedHashSet::new));
         // Inherit on the structural graph first. Only the ensuing traversal is
         // restricted to F, so an ancestor outside F may still author an internal edge.
+        Map<String, Boolean> transitiveRequirementsSatisfied = null;
+        if (learningUnitApplicationService != null && !learningUnitApplicationService.governedGoalIds().isEmpty()
+                && projection.targetGoalIds().stream().anyMatch(learningUnitApplicationService.governedGoalIds()::contains)) {
+            Map<String, LearningGoal> canonical = projectCanonicalAtomicTargets(
+                    learningUnitApplicationService.canonicalGoals(learner.getSelectedCurriculum(), lookup), projection);
+            Set<String> atomicTargets = projection.targetGoalIds().stream().filter(id -> isAtomicGoal(canonical.get(id)))
+                    .collect(Collectors.toSet());
+            var atomicRequirements = learningUnitApplicationService.normalizedPrerequisites(
+                    learner.getSelectedCurriculum() + ":" + completionScopeDigest(learner), canonical, atomicTargets);
+            Set<String> effectiveAtoms = mastery.entrySet().stream().filter(entry -> Mastery.isMastered(entry.getValue()))
+                    .map(Map.Entry::getKey).collect(Collectors.toSet());
+            transitiveRequirementsSatisfied = atomicRequirements.evaluate(effectiveAtoms, prerequisiteScope);
+        }
         return new FrontierPrerequisites(lookup, computeEffectiveRequires(lookup),
-                computeEffectivePrereqMastery(lookup, mastery, prerequisiteScope), strictMode, prerequisiteScope);
+                computeEffectivePrereqMastery(lookup, mastery, prerequisiteScope), strictMode, prerequisiteScope,
+                transitiveRequirementsSatisfied);
     }
 
     private record FrontierPrerequisites(Map<String, LearningGoal> lookup,
             Map<String, List<String>> effectiveRequires, Map<String, Double> mastery,
-            boolean strictMode, Set<String> scope) { }
+            boolean strictMode, Set<String> scope, Map<String, Boolean> transitiveRequirementsSatisfied) { }
 
     private boolean areFrontierPrerequisitesMastered(
             LearningGoal goal, GoalProjection projection, FrontierPrerequisites prerequisites) {
@@ -7234,9 +7531,11 @@ public class LearnerService {
                 if (prerequisites.mastery().getOrDefault(resolvedReqId, 0.0) < PLANNING_SCOPE_MASTERY_THRESHOLD) {
                     return false;
                 }
-                // An achieved prerequisite ends its own preparation demand.
-                // This does not certify or write mastery of earlier prerequisites.
             }
+        }
+        if (prerequisites.transitiveRequirementsSatisfied() != null
+                && learningUnitApplicationService.governedGoalIds().contains(goal.getId())) {
+            return prerequisites.transitiveRequirementsSatisfied().getOrDefault(goal.getId(), true);
         }
         return true;
     }
@@ -8082,7 +8381,7 @@ public class LearnerService {
         List<String> currentFocusIds = resolveEffectiveProjectedFocusIds(
                 learner,
                 projection);
-        Map<String, Double> mastery = getMastery(skillpilotId);
+        Map<String, Double> mastery = withUnitRecognition(learner, getMastery(skillpilotId));
 
         LinkedHashMap<String, FrontierGoal> options = new LinkedHashMap<>();
         buildBroaderFocusOptions(projection, currentFocusIds, mastery)
@@ -8128,6 +8427,12 @@ public class LearnerService {
             String sequentialAutopilotAnchorGoalId,
             boolean allowSideEffects,
             boolean publishTransitionEvents) {
+        return withMasteryRead(() -> computeLearnerState(skillpilotId, sequentialAutopilotAnchorGoalId,
+                allowSideEffects, publishTransitionEvents));
+    }
+
+    private UnifiedLearnerStateResponse computeLearnerState(String skillpilotId, String sequentialAutopilotAnchorGoalId,
+            boolean allowSideEffects, boolean publishTransitionEvents) {
         Learner learner = allowSideEffects
                 ? learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                         .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"))
@@ -8186,7 +8491,8 @@ public class LearnerService {
                 : getGoalProjection(curriculumId, learner.getPersonalCurriculum());
         CompletionSnapshot completion = completionSnapshot(learner, completionProjection);
         boolean completionOwnsNavigation = completionRouteOwnsNavigation(learner);
-        Map<String, Double> mastery = getMastery(skillpilotId);
+        Map<String, Double> explicitMastery = getMastery(skillpilotId);
+        Map<String, Double> mastery = withUnitRecognition(learner, explicitMastery);
         boolean followingLearningPlans = effectivePlanFollowing(learner);
         List<LearnerLearningPlan> followedLearningPlans = currentFollowedLearningPlans(learner);
         boolean hasFollowedLearningPlans = !followedLearningPlans.isEmpty();
@@ -8270,7 +8576,7 @@ public class LearnerService {
         String storedActiveGoalId = learner.getActiveGoalId();
         String activeGoalId = resolveGoalIdInVisibleGoals(storedActiveGoalId, allGoals, false);
         boolean activeGoalMastered = activeGoalId != null && !activeGoalId.isBlank()
-                && mastery.getOrDefault(activeGoalId, 0.0) >= PLANNING_SCOPE_MASTERY_THRESHOLD;
+                && explicitMastery.getOrDefault(activeGoalId, 0.0) >= PLANNING_SCOPE_MASTERY_THRESHOLD;
         boolean activeGoalInvalidInView = storedActiveGoalId != null
                 && !storedActiveGoalId.isBlank()
                 && activeGoalId == null;
@@ -8434,7 +8740,7 @@ public class LearnerService {
                     publishTransitionEvents);
         }
         activeGoalMastered = activeGoalId != null && !activeGoalId.isBlank()
-                && mastery.getOrDefault(activeGoalId, 0.0) >= PLANNING_SCOPE_MASTERY_THRESHOLD;
+                && explicitMastery.getOrDefault(activeGoalId, 0.0) >= PLANNING_SCOPE_MASTERY_THRESHOLD;
 
         FrontierGoal activeGoal = resolveActiveGoal(activeGoalId, allGoals);
         boolean activeGoalIsMemory = isMemoryFrontierGoal(activeGoal);
@@ -8539,7 +8845,7 @@ public class LearnerService {
                         personalizedStats, scopeStats, scopeCompleted),
                 nextAllowedActions, activeFilters,
                 learner.getCopySources(), learningState.name(), activeGoal, stateMachine,
-                completion == null ? null : completion.response());
+                completion == null ? null : completion.response(), getLearningUnits(skillpilotId, explicitMastery));
     }
 
     private List<FrontierGoal> completionRecommendations(List<FrontierGoal> normal,
@@ -12814,6 +13120,7 @@ public class LearnerService {
                         .orElse(new Mastery(existing, entry.getKey(), entryData.value()));
                 m.setValue(entryData.value());
                 masteryRepository.saveAndFlush(m);
+                invalidateMasteryRead(skillpilotId);
                 // Restore original timestamp using native query (bypasses @PreUpdate)
                 if (entryData.updatedAt() != null) {
                     masteryRepository.updateTimestamp(skillpilotId, entry.getKey(), entryData.updatedAt());

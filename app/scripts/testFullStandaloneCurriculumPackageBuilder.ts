@@ -22,7 +22,10 @@ import {
   type FullStandaloneManifestFile,
 } from './buildFullStandaloneCurriculumPackage'
 
+import { curriculumContractLocation } from './curriculumPackageContractPaths'
+
 type JsonObject = Record<string, unknown>
+const unitProfileMode = process.env.SKILLPILOT_TEST_LEARNING_UNITS === 'true'
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const realRepositoryRoot = resolve(scriptDir, '../..')
@@ -32,7 +35,7 @@ const fixtureRepositoryRoot = mkdtempSync(resolve(tempParent, 'full-package-buil
 const fixtureTmp = resolve(fixtureRepositoryRoot, 'tmp')
 const releaseRoot = resolve(fixtureTmp, 'release-model')
 const contractRoot = resolve(fixtureRepositoryRoot, 'contracts/curriculum-package/v1')
-const profileRepositoryPath = 'contracts/curriculum-package/v1/profiles/full-standalone-v1.profile.json'
+const profileRepositoryPath = unitProfileMode ? 'contracts/curriculum-package/v1.2/profiles/full-standalone-learning-units-v1.profile.json' : 'contracts/curriculum-package/v1/profiles/full-standalone-v1.profile.json'
 const buildProfileRepositoryPath = 'contracts/curriculum-package/v1/profiles/fixture-release-model-v1.profile.json'
 const reviewRepositoryPath = 'curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.review.json'
 const packageId = 'org.skillpilot.curriculum.de.gymnasium.mathematik'
@@ -92,7 +95,7 @@ const contractPaths = [
 ]
 contractPaths.forEach(copyRepositoryFile)
 packageProfile.trustedContractSchemas.forEach((binding) => {
-  copyRepositoryFile(`contracts/curriculum-package/v1/${basename(binding.id)}`)
+  copyRepositoryFile(curriculumContractLocation(binding.id).sourcePath)
 })
 copyRepositoryFile('LICENSE')
 copyRepositoryFile('LICENSING.md')
@@ -231,6 +234,19 @@ const runtimeCatalog = {
   },
   dependencyClosure: { path: 'data/runtime/dependency-closure.json' },
 }
+if (unitProfileMode) {
+  Object.assign(runtimeCatalog, { $schema: 'https://skillpilot.com/schemas/curriculum-package/v1.2/runtime-catalog.schema.json',
+    runtimeContractVersion: '1.2', capabilities: ['learningUnitRecognitionV1'],
+    learningUnitArtifacts: ['catalog', 'contract', 'input'].map(kind => ({ id: `DE/fixture-${kind}.json`, kind,
+      artifactPath: `data/learning-units/${kind}.json` })) })
+  Object.assign(logicalDocuments.find(item => item.role === 'canonical-landscape')!.document,
+    { $schema: 'https://skillpilot.com/schemas/curriculum-package/v1.2/compiled-landscape.schema.json' })
+  for (const kind of ['catalog', 'contract', 'input']) logicalDocuments.push({
+    path: `data/learning-units/${kind}.json`, role: `learning-unit-${kind}`, logicalId: `DE/fixture-${kind}.json`,
+    document: { artifactFormatVersion: 1, artifactKind: kind, id: `DE/fixture-${kind}.json`,
+      definition: { sourcePath: `DE/fixture-${kind}.json`, sha256: sha256('{}\n'), contentBase64: Buffer.from('{}\n').toString('base64') } },
+  })
+}
 logicalDocuments.find((item) => item.role === 'runtime-catalog')!.document = runtimeCatalog
 logicalDocuments.forEach((item) => writeJson(`tmp/release-model/${item.path}`, item.document))
 writeBytes(`tmp/release-model/${assessmentArtifactPath}`, assessmentContent)
@@ -344,7 +360,7 @@ writeJson(reviewRepositoryPath, {
     buildInputsSha256: digest(readFileSync(buildInputsPath)),
   },
   targetReleaseProfile: {
-    profileId: 'full-standalone-v1',
+    profileId: unitProfileMode ? 'full-standalone-learning-units-v1' : 'full-standalone-v1',
     path: profileRepositoryPath,
     sha256: digest(readFileSync(packageProfilePath)),
     nonBinaryRoles,
@@ -359,7 +375,7 @@ writeJson(reviewRepositoryPath, {
   classDecisions: [
     {
       classId: 'skillpilot-data',
-      artifactRoles: ['canonical-landscape', 'card-deck', 'composition-view', 'mapping', 'migration-aliases'],
+      artifactRoles: ['canonical-landscape', 'card-deck', 'composition-view', 'mapping', 'migration-aliases', ...(unitProfileMode ? ['learning-unit-catalog', 'learning-unit-contract', 'learning-unit-input'] : [])],
       provenanceClass: 'skillpilot-authored',
       decisionStatus: 'pending-human-review',
       redistributionStatus: 'review-required',
@@ -518,6 +534,7 @@ try {
     repositoryRoot: fixtureRepositoryRoot,
     releaseRoot,
     redistributionReviewPath: reviewRepositoryPath,
+    fullStandaloneProfilePath: profileRepositoryPath,
     fixtureOnly: true,
   } as const
   const plan = createFullStandalonePackagePlan(fixturePlanOptions)
@@ -531,13 +548,13 @@ try {
     '>=0.1.0 <1.0.0',
     'default package range accepts the stable curriculum-consumer API version 0.1.0',
   )
-  assert.equal(plan.entries.length, 49, 'fixture package entry count')
+  assert.equal(plan.entries.length, unitProfileMode ? 55 : 49, 'fixture package entry count')
   assert.equal(manifestFiles(plan).length, plan.entries.length - 2, 'manifest excludes only itself and SHA256SUMS')
   assert.equal(plan.publicationReady, false, 'pending review remains non-public')
   assert.equal(plan.sourceVerificationPendingCount, 0, 'fixture explicitly omits external source-review evidence')
-  assert.equal(manifestFiles(plan).filter((file) => file.role === 'schema').length, 22, 'complete schema set')
+  assert.equal(manifestFiles(plan).filter((file) => file.role === 'schema').length, unitProfileMode ? 25 : 22, 'complete schema set')
   assert.equal(manifestFiles(plan).filter((file) => file.role === 'semantic-contract').length, 5, 'five semantic contracts')
-  assert.equal(manifestFiles(plan).filter((file) => file.semanticBinding.kind === 'logical-artifact').length, 8, 'all logical fixture artifacts are bound')
+  assert.equal(manifestFiles(plan).filter((file) => file.semanticBinding.kind === 'logical-artifact').length, unitProfileMode ? 11 : 8, 'all logical fixture artifacts are bound')
   const assetRecord = manifestFiles(plan).find((file) => file.path === binaryArtifactPath)
   assert.deepEqual(assetRecord?.semanticBinding, { kind: 'binary-resource', resourceId: 'fixture-resource' })
   assert.equal(assetRecord?.runtimeRequired, true)
@@ -567,6 +584,7 @@ try {
       repositoryRoot: fixtureRepositoryRoot,
       releaseRoot,
       redistributionReviewPath: reviewRepositoryPath,
+      fullStandaloneProfilePath: profileRepositoryPath,
     }),
     /external security gates|source-verification review|semantic preflight|checker/iu,
     'external security gates cannot be omitted outside the tightly bound fixture mode',
@@ -844,7 +862,7 @@ try {
   assert.equal(buildInputsIntegrity.sha256, sha256(readFileSync(buildInputsPath)))
   assert.equal(packageProfileIntegrity.sha256, sha256(readFileSync(packageProfilePath)))
   assert.ok(existsSync(contractRoot), 'fixture copied its complete local contract tree')
-  process.stdout.write(`Full-standalone package builder self-test passed: ${plan.entries.length} entries, 8 logical artifacts, 1 binary asset, 2 byte-identical independent ZIPs.\n`)
+  process.stdout.write(`Full-standalone package builder self-test passed: ${plan.entries.length} entries, ${unitProfileMode ? 11 : 8} logical artifacts, 1 binary asset, 2 byte-identical independent ZIPs.\n`)
 } finally {
   rmSync(fixtureRepositoryRoot, { recursive: true, force: true })
 }

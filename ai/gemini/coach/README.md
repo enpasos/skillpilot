@@ -55,3 +55,16 @@ persistence and continuation in another chat remain separate host checks.
 
 See [the integration runbook](../../../docs/deploy/gemini-integration.md)
 for server setup, required host checks and current limitations.
+
+## Unpublished learning-unit candidate 0.2.0
+
+`candidates/0.2.0/SKILL.md` consumes backend-published learning-unit recognition
+as globally effective competence. Exams and memory goals still need their own
+explicit results. The coach never writes derived recognition as another result.
+
+Prepare this candidate locally with
+`python3 -B ai/gemini/coach/scripts/prepare_candidate.py`. It creates a
+deterministic ZIP and hash receipt under `tmp/gemini-learning-units-candidate/`.
+It does not replace the tested 0.1.0 archive or its existing frontend download.
+The candidate requires the matching backend and a fresh Gemini import and
+learning-flow check. Those host checks remain pending.

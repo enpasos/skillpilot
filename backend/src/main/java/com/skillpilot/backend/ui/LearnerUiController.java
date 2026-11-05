@@ -271,7 +271,7 @@ public class LearnerUiController {
     @GetMapping("/{skillpilotId}/mastery")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public MasteryResponse getMastery(@PathVariable String skillpilotId) {
-        return new MasteryResponse(learnerService.getMastery(skillpilotId));
+        return learnerService.getMasteryResponse(skillpilotId);
     }
 
     @GetMapping("/{skillpilotId}/frontier")

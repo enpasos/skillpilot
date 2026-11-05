@@ -27,17 +27,17 @@ class LearningUnitRepositoryTest {
     void actualFirstUnitAdmitsAndRecognizesOnlyItsOwnCompetence() throws Exception {
         var service = service();
         assertThat(service.catalog().quarantined()).isEmpty();
-        assertThat(service.catalog().definitions()).hasSize(1);
-        assertThat(service.evaluate("real-unit", Set.of()).recognizedGoalIds()).isEmpty();
+        assertThat(service.catalog().definitions()).anyMatch(definition -> "math-dot-product-projection".equals(definition.contractId()));
+        assertThat(service.evaluate("real-unit", Set.of()).recognizedGoalIds()).doesNotContain(A);
         var passed = service.evaluate("real-unit", Set.of(Q));
-        assertThat(passed.recognizedGoalIds()).containsExactly(A);
-        assertThat(service.readModel(passed, Set.of(A, Q)).units()).singleElement().satisfies(unit -> {
+        assertThat(passed.recognizedGoalIds()).contains(A);
+        assertThat(service.readModel(passed, Set.of(A, Q)).units()).filteredOn(unit -> "math-dot-product-projection".equals(unit.contractId())).singleElement().satisfies(unit -> {
             assertThat(unit.complete()).isTrue();
             assertThat(unit.targetCount()).isEqualTo(2);
             assertThat(unit.explicitTargetCount()).isEqualTo(1);
             assertThat(unit.recognizedTargetCount()).isEqualTo(1);
         });
-        assertThat(service.readModel(passed, Set.of("another-curriculum-target")).recognizedGoalIds()).containsExactly(A);
+        assertThat(service.readModel(passed, Set.of("another-curriculum-target")).recognizedGoalIds()).contains(A);
         assertThat(service.readModel(passed, Set.of("another-curriculum-target")).units()).isEmpty();
     }
 
@@ -46,7 +46,8 @@ class LearningUnitRepositoryTest {
         var service = service();
         assertThat(service.governedGoalIds()).contains(A, Q);
         assertThat(service.governedGoalIds()).doesNotContain("unrelated-university-mathematics");
-        assertThat(service.catalog().compiled().targetGoalIds(service.catalog().definitions().getFirst().ref())).containsExactlyInAnyOrder(A, Q);
+        var first = service.catalog().definitions().stream().filter(definition -> "math-dot-product-projection".equals(definition.contractId())).findFirst().orElseThrow();
+        assertThat(service.catalog().compiled().targetGoalIds(first.ref())).containsExactlyInAnyOrder(A, Q);
     }
 
     private LearningUnitApplicationService service() throws Exception {

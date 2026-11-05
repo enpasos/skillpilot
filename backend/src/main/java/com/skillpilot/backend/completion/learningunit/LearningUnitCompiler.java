@@ -24,7 +24,7 @@ import java.util.TreeSet;
 /** Validates frozen, reviewed contracts independently of current learner scope and outcomes. */
 public final class LearningUnitCompiler {
     private final Set<LearningUnitDefinition> validated = java.util.Collections.newSetFromMap(new java.util.IdentityHashMap<>());
-    public CompiledLearningUnits compile(Collection<LearningUnitDefinition> definitions) {
+    Map<LearningUnitDefinition.ContractRef, LearningUnitDefinition> validateCanonicalDefinitions(Collection<LearningUnitDefinition> definitions) {
         if (definitions == null || definitions.isEmpty()) fail("EMPTY_UNIT_CATALOG", "No learning-unit contracts");
         Map<LearningUnitDefinition.ContractRef, LearningUnitDefinition> ordered = new TreeMap<>();
         Map<String, String> meanings = new HashMap<>();
@@ -54,6 +54,11 @@ public final class LearningUnitCompiler {
             });
         }
 
+        return ordered;
+    }
+
+    public CompiledLearningUnits compile(Collection<LearningUnitDefinition> definitions) {
+        Map<LearningUnitDefinition.ContractRef, LearningUnitDefinition> ordered = validateCanonicalDefinitions(definitions);
         List<LearningUnitDefinition.ContractRef> refs = List.copyOf(ordered.keySet());
         Map<LearningUnitDefinition.ContractRef, Set<LearningUnitDefinition.ContractRef>> children = new TreeMap<>();
         ordered.forEach((ref, definition) -> {
@@ -109,6 +114,12 @@ public final class LearningUnitCompiler {
             if (!text(id) || !text(digest)) fail("INVALID_SOURCE_BINDING", "Invalid composition binding");
         });
         Set<String> own = unique(definition.ownGoalIds(), "own targets");
+        Set<LearningUnitDefinition.ContractRef> childRefs = new HashSet<>();
+        for (var child : definition.requiredChildContractRefs()) {
+            if (child == null || !text(child.contractId()) || !text(child.revision()) || !childRefs.add(child)) {
+                fail("MISSING_CHILD_CONTRACT", "Unknown or duplicate child contract reference");
+            }
+        }
         Set<String> assessment = unique(definition.ownAssessmentGoalIds(), "own assessments");
         Set<String> recall = unique(definition.ownRecallGoalIds(), "own recall");
         Set<String> orientation = unique(definition.ownOrientationGoalIds(), "own orientation");

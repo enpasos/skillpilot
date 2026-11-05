@@ -1,5 +1,6 @@
 import React from 'react'
-import { Check, FileSearch, Send, Target, X } from 'lucide-react'
+import { Check, FileSearch, Send, ShieldCheck, Target, X } from 'lucide-react'
+import { TreeStatusTooltip } from './TreeStatusTooltip'
 import type { UiGoal as Goal } from '../goalTypes'
 
 import { MasteryBar } from './MasteryBar'
@@ -23,6 +24,8 @@ import type {
 interface GoalCardProps {
   goal: Goal
   masteryValue: number
+  recognized?: boolean
+  onVoluntaryPractice?: (id: string) => void
   onMasteryChange?: (id: string, value: number) => void
   showLearnerTools: boolean
   useRawGoalTitles?: boolean
@@ -429,6 +432,8 @@ const SourceRationaleModal: React.FC<{
 export const GoalCard: React.FC<GoalCardProps> = ({
   goal,
   masteryValue,
+  recognized = false,
+  onVoluntaryPractice,
   onMasteryChange,
   showLearnerTools,
   useRawGoalTitles = false,
@@ -470,7 +475,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   const mastered = isMastered(masteryValue)
   const complete = isAtomic ? mastered : isCompleteMastery(masteryValue)
   const hasProgress = !isAtomic && masteryValue > 0
-  const canSetActive = Boolean(!readOnly && onSetActive && isAtomic && !mastered && (isFrontier || isActive))
+  const canSetActive = Boolean(!readOnly && onSetActive && isAtomic && (isActive || (!mastered && isFrontier)))
   const activeActionLabel = isActive
     ? copy.activeActionReveal
     : copy.activeActionSelect
@@ -634,7 +639,16 @@ export const GoalCard: React.FC<GoalCardProps> = ({
             </button>
           )}
           {isAtomic && (
-            canSetActive ? (
+            recognized && !isActive ? (
+              <TreeStatusTooltip testId="goal-recognized"
+                label={localizedLanguage === 'en' ? 'Mastered through independent application' : 'Durch selbständige Anwendung gemeistert'}
+                triggerClassName="shrink-0 text-sky-600 dark:text-sky-400 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
+                content={<p>{localizedLanguage === 'en'
+                  ? 'Your passed assessments demonstrate this competence. It counts toward total progress and later prerequisites.'
+                  : 'Deine bestandenen Prüfungen belegen diese Kompetenz. Sie zählt für den gesamten Fortschritt und spätere Voraussetzungen.'}</p>}>
+                <ShieldCheck size={28} strokeWidth={2.5} />
+              </TreeStatusTooltip>
+            ) : canSetActive ? (
               <button
                 type="button"
                 onClick={() => (isActive ? onRevealActive?.() : onSetActive?.(goal.id))}
@@ -652,6 +666,13 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           )}
         </div>
       </div>
+
+      {recognized && !isActive && !readOnly && isAtomic && onVoluntaryPractice && (
+        <button type="button" onClick={() => onVoluntaryPractice(goal.id)}
+          className="mb-3 text-sm font-medium text-sky-700 hover:underline dark:text-sky-300">
+          {localizedLanguage === 'en' ? 'Practise voluntarily' : 'Freiwillig üben'}
+        </button>
+      )}
 
       {!isLearnerAudience && isProjectedStructureNode && !hideTechnicalStructureUi && (
         <div className="mb-4 rounded-2xl border border-slate-200 bg-slate-50/80 p-4 text-sm text-text-secondary dark:border-slate-700 dark:bg-slate-800/40">

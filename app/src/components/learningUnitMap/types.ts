@@ -44,6 +44,8 @@ export interface LearningMapFixture {
 
 /** Read-only projection supplied by the caller; never a persisted unit result. */
 export interface LearningEntryProgress {
+  globalRecognition?: boolean
+  recognizedCount?: number
   total: number
   explicit: number
   implicit: number

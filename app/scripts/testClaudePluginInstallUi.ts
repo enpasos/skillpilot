@@ -27,11 +27,15 @@ const appRoot = fileURLToPath(new URL('../', import.meta.url))
 const publicationFixtureRoot = await mkdtemp(join(tmpdir(), 'skillpilot-plugin-ui-'))
 const loadCurrentPublication = async () => {
   try {
-    const generatedRoot = join(publicationFixtureRoot, 'claude-plugin-publication')
-    execFileSync(process.execPath, [
-      fileURLToPath(new URL('../../scripts/generate_claude_plugin_publication.mjs', import.meta.url)),
-      generatedRoot,
-    ])
+    // A private exact-candidate fixture permits testing the guide before its
+    // local readiness record is approved; production preparation keeps its gate.
+    const suppliedRoot = process.env.SKILLPILOT_CLAUDE_PUBLICATION_UI_FIXTURE
+    const generatedRoot = suppliedRoot ?? join(publicationFixtureRoot, 'claude-plugin-publication')
+    if (suppliedRoot) assert.ok(suppliedRoot.startsWith(fileURLToPath(new URL('../../tmp/', import.meta.url))), 'candidate UI fixtures stay below repository tmp/')
+    else execFileSync(process.execPath, [
+        fileURLToPath(new URL('../../scripts/generate_claude_plugin_publication.mjs', import.meta.url)),
+        generatedRoot,
+      ])
     const artifactRoot = pathToFileURL(`${generatedRoot}/`)
     const index = parseClaudePluginPublicationIndex(JSON.parse(await readFile(new URL('index.json', artifactRoot), 'utf8')))
     const plugin = index.plugins[0]!

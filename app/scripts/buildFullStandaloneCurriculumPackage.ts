@@ -658,6 +658,15 @@ const logicalArtifactPaths = (
     })
   }
 
+  if (runtimeCatalog.learningUnitArtifacts !== undefined) {
+    arrayValue<JsonObject>(runtimeCatalog.learningUnitArtifacts, 'runtime catalog learning-unit artifacts').forEach(raw => {
+      const item = objectValue(raw, 'learning-unit artifact')
+      const kind = stringValue(item.kind, 'learning-unit artifact kind')
+      if (!['catalog', 'contract', 'input'].includes(kind)) fail(`Unknown learning-unit artifact kind: ${kind}`)
+      bind(stringValue(item.artifactPath, 'learning-unit artifact path'), `learning-unit-${kind}`, stringValue(item.id, 'learning-unit artifact id'))
+    })
+  }
+
   const artifactIndexes = objectValue(runtimeCatalog.artifactIndexes, 'runtime catalog artifactIndexes')
   const singletonPaths: Array<[string, string, string | undefined]> = [
     [stringValue(artifactIndexes.cardsPath, 'cardsPath'), 'card-index', undefined],
@@ -1072,14 +1081,17 @@ export const createFullStandalonePackagePlan = (
   assertNoSymlinkComponents(repositoryRoot, releaseRoot, false)
   if (!lstatSync(releaseRoot).isDirectory()) fail(`Release root is not a directory: ${releaseRoot}`)
 
-  const profileRepositoryPath = options.fullStandaloneProfilePath ?? DEFAULT_PROFILE_PATH
+  const releaseCatalogVersion = readJson<JsonObject>(resolve(releaseRoot, 'data/runtime/catalog.json'), 'runtime catalog').runtimeContractVersion
+  const profileRepositoryPath = options.fullStandaloneProfilePath ?? (releaseCatalogVersion === '1.2'
+    ? 'contracts/curriculum-package/v1.2/profiles/full-standalone-learning-units-v1.profile.json' : DEFAULT_PROFILE_PATH)
   const profilePath = resolveRepositoryFile(repositoryRoot, profileRepositoryPath, 'full-standalone release profile')
   const profile = readJson<FullStandaloneProfile>(profilePath, 'full-standalone release profile')
+  const unitProfile = profile.profileId === 'full-standalone-learning-units-v1'
   const completionProfile = profile.profileId === 'full-standalone-completion-v1'
-  if (profile.profileFormatVersion !== 1 || !['full-standalone-v1', 'full-standalone-completion-v1'].includes(profile.profileId)) fail('Unsupported full-standalone release profile identity.')
-  if (profile.compatibility.runtimeContractVersion !== (completionProfile ? '1.1' : '1.0')) fail('Release profile and runtime contract version differ.')
+  if (profile.profileFormatVersion !== 1 || !['full-standalone-v1', 'full-standalone-completion-v1', 'full-standalone-learning-units-v1'].includes(profile.profileId)) fail('Unsupported full-standalone release profile identity.')
+  if (profile.compatibility.runtimeContractVersion !== (unitProfile ? '1.2' : completionProfile ? '1.1' : '1.0')) fail('Release profile and runtime contract version differ.')
   if (profile.compatibility.variant !== 'json') fail('Full-standalone profile variant must be json.')
-  const expectedSchemaCount = options.expectedTrustedSchemaCount ?? (completionProfile ? 26 : 22)
+  const expectedSchemaCount = options.expectedTrustedSchemaCount ?? (unitProfile ? 25 : completionProfile ? 26 : 22)
   if (profile.trustedContractSchemas.length !== expectedSchemaCount) {
     fail(`Expected ${expectedSchemaCount} complete trusted schemas, profile declares ${profile.trustedContractSchemas.length}.`)
   }
@@ -1136,7 +1148,7 @@ export const createFullStandalonePackagePlan = (
   ) {
     fail('Release-model conformance identity does not match its pinned build profile.')
   }
-  if (contractDefinition.runtimeContractVersion !== (completionProfile ? '1.0' : profile.compatibility.runtimeContractVersion)
+  if (contractDefinition.runtimeContractVersion !== (completionProfile || unitProfile ? '1.0' : profile.compatibility.runtimeContractVersion)
     || runtimeCatalog.runtimeContractVersion !== profile.compatibility.runtimeContractVersion) {
     fail('Release model and package profile runtime contract versions differ.')
   }
@@ -1184,8 +1196,8 @@ export const createFullStandalonePackagePlan = (
         '--check',
         '--release-root', releaseRoot,
         '--ledger', reviewPath,
-        ...(completionProfile ? ['--completion-candidate'] : []),
-        '--schema', resolve(repositoryRoot, `contracts/curriculum-package/${completionProfile ? 'v1.1' : 'v1'}/package-redistribution-review.schema.json`),
+        ...(unitProfile ? ['--learning-units-candidate'] : completionProfile ? ['--completion-candidate'] : []),
+        '--schema', resolve(repositoryRoot, `contracts/curriculum-package/${unitProfile ? 'v1.2' : completionProfile ? 'v1.1' : 'v1'}/package-redistribution-review.schema.json`),
       ],
       'redistribution review checker',
     )
@@ -1292,13 +1304,15 @@ export const createFullStandalonePackagePlan = (
     if (logical) {
       const packageRole = logical.packageRole
       const role = requiredRole(packageRole)
-      const schemaId = packageRole.startsWith('completion-')
+      const schemaId = packageRole.startsWith('learning-unit-')
+        ? 'https://skillpilot.com/schemas/curriculum-package/v1.2/learning-unit-artifact.schema.json'
+        : packageRole.startsWith('completion-')
         ? 'https://skillpilot.com/schemas/curriculum-package/v1.1/completion-artifact.schema.json'
         : schemaIdFromJsonFile(entry.sourcePath as string, path)
       attachManifestFile(
         entry,
         role,
-        completionProfile ? completionContentLicenseDecision(packageRole, classify(packageRole, path), projectGrant) : classify(packageRole, path),
+        (completionProfile || unitProfile) ? completionContentLicenseDecision(packageRole, classify(packageRole, path), projectGrant) : classify(packageRole, path),
         { kind: 'logical-artifact', logicalId: logical.logicalId, normalizationRole: logical.normalizationRole },
         schemaId,
       )
@@ -1589,7 +1603,7 @@ export const createFullStandalonePackagePlan = (
   const manifestFiles = inventoryEntries.map((entry) => entry.manifestFile as FullStandaloneManifestFile)
   const schemaById = new Map(trustedSchemas.map((schema) => [schema.id, schema]))
   const requiredSchemaBinding = (id: string) => schemaById.get(id) ?? fail(`Trusted schemas lack binding ${id}.`)
-  const runtimeCatalogSchema = requiredSchemaBinding(`https://skillpilot.com/schemas/curriculum-package/${completionProfile ? 'v1.1' : 'v1'}/runtime-catalog.schema.json`)
+  const runtimeCatalogSchema = requiredSchemaBinding(`https://skillpilot.com/schemas/curriculum-package/${unitProfile ? 'v1.2' : completionProfile ? 'v1.1' : 'v1'}/runtime-catalog.schema.json`)
   const schemaCatalogSchema = requiredSchemaBinding('https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json')
   const manifestSchema = requiredSchemaBinding(profile.manifestSchema.id)
   if (manifestSchema.sha256 !== profile.manifestSchema.sha256) fail('Manifest schema binding differs between profile fields.')

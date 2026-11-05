@@ -10,7 +10,8 @@ export function CompletionWaiverIcon({ waiver, language }: {
   language: 'de' | 'en'
 }): React.ReactElement {
   const implicit = waiver.reason === 'no_remaining_demand'
-  const label = implicit
+  const recognized = waiver.reason === 'recognized'
+  const label = recognized ? (language === 'en' ? 'Mastered through independent application' : 'Durch selbständige Anwendung gemeistert') : implicit
     ? (language === 'en' ? 'No longer required for this section' : 'Für diesen Abschnitt nicht mehr erforderlich')
     : (language === 'en' ? 'Covered by assessment for this section' : 'Für diesen Abschnitt durch Prüfung abgedeckt')
   return <TreeStatusTooltip
@@ -19,9 +20,9 @@ export function CompletionWaiverIcon({ waiver, language }: {
     triggerClassName="relative flex h-4 w-4 shrink-0 items-center justify-center rounded-sm text-sky-600 dark:text-sky-400 before:absolute before:-inset-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2"
     content={<>
         <p className="font-semibold text-sky-700 dark:text-sky-300">{label}</p>
-        <p className="mt-2">{language === 'en' ? 'Section: ' : 'Lernabschnitt: '}
+        {Object.keys(waiver.sectionTitle).length > 0 && <p className="mt-2">{language === 'en' ? 'Learning unit: ' : 'Lerneinheit: '}
           <InlineMathText text={completionLabel(waiver.sectionTitle, language)} />
-        </p>
+        </p>}
         {!implicit && waiver.assessments.length > 0 && <p className="mt-2">
           {language === 'en' ? 'Passed assessments: ' : 'Bestandene Prüfungen: '}
           <InlineMathText text={waiver.assessments.map(a => completionLabel(a.title, language)).join('; ')} />
@@ -31,7 +32,9 @@ export function CompletionWaiverIcon({ waiver, language }: {
               : ` (+${waiver.assessmentCount! - waiver.assessments.length} weitere)`)
             : null}
         </p>}
-        <p className="mt-2">{implicit
+        <p className="mt-2">{recognized ? (language === 'en'
+          ? 'Your passed assessments demonstrate this competence. It counts toward your progress and later prerequisites. You can still choose to practise it.'
+          : 'Deine bestandenen Prüfungen belegen diese Kompetenz. Sie zählt für deinen Fortschritt und spätere Voraussetzungen. Du kannst sie weiterhin freiwillig üben.') : implicit
           ? (language === 'en'
             ? 'No remaining work needs this goal in this section. This goal is implicitly completed here; its saved learning result stays unchanged. You can still choose to study it.'
             : 'In diesem Abschnitt benötigt keine verbleibende Arbeit dieses Ziel mehr. Das Ziel ist hier implizit erledigt; sein gespeicherter Lernstand bleibt unverändert. Du kannst es weiterhin freiwillig bearbeiten.')

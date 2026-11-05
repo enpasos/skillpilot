@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1.2/learning-unit-artifact.schema.json",
+  "title": "Exact-byte learning-unit policy input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifactFormatVersion",
+    "artifactKind",
+    "id",
+    "definition"
+  ],
+  "properties": {
+    "artifactFormatVersion": {
+      "const": 1
+    },
+    "artifactKind": {
+      "enum": [
+        "catalog",
+        "contract",
+        "input"
+      ]
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "definition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourcePath",
+        "contentBase64",
+        "sha256"
+      ],
+      "properties": {
+        "sourcePath": {
+          "type": "string",
+          "pattern": "^DE/[A-Za-z0-9_./+-]+$",
+          "maxLength": 240
+        },
+        "contentBase64": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9+/]*={0,2}$",
+          "maxLength": 89478488
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    }
+  }
+}

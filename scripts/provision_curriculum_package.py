@@ -29,7 +29,8 @@ from typing import Any, Callable, Iterable, Iterator, Mapping, Sequence
 sys.dont_write_bytecode = True
 
 from jsonschema import Draft202012Validator  # noqa: E402
-import curriculum_package_completion_contracts as completion_contracts  # noqa: E402
+import curriculum_package_completion_contracts as completion_contracts
+import curriculum_learning_unit_artifacts as learning_units  # noqa: E402
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -356,11 +357,11 @@ def trusted_json(path: Path, description: str) -> dict[str, Any]:
 
 def load_profile(contract_dir: Path = CONTRACT_DIR) -> dict[str, Any]:
     contract_dir = contract_dir.resolve()
-    if contract_dir not in {CONTRACT_DIR.resolve(), (CONTRACT_DIR.parent / "v1.1").resolve()}:
+    if contract_dir not in {CONTRACT_DIR.resolve(), (CONTRACT_DIR.parent / "v1.1").resolve(), (CONTRACT_DIR.parent / "v1.2").resolve()}:
         raise TrustFailure("Package contracts must select a software-pinned repository version")
     profile_path = completion_contracts.profile_path(contract_dir)
     profile = trusted_json(profile_path, "trusted package profile")
-    expected = completion_contracts.PROFILE_ID if completion_contracts.extended_directory(contract_dir) else "full-standalone-v1"
+    expected = learning_units.PROFILE_ID if learning_units.extended_directory(contract_dir) else completion_contracts.PROFILE_ID if completion_contracts.extended_directory(contract_dir) else "full-standalone-v1"
     if profile.get("profileFormatVersion") != 1 or profile.get("profileId") != expected:
         raise TrustFailure("Unexpected trusted full-standalone package profile")
     limits = profile.get("archiveLimits")
@@ -1574,8 +1575,8 @@ def install_package(
             layout,
             timeout_seconds=timeout_seconds,
             validator_path=validator_path,
-            contracts_dir=(CONTRACT_DIR.parent / "v1.1")
-                if profile.get("profileId") == completion_contracts.PROFILE_ID else None,
+            contracts_dir=(CONTRACT_DIR.parent / "v1.2") if profile.get("profileId") == learning_units.PROFILE_ID
+                else (CONTRACT_DIR.parent / "v1.1") if profile.get("profileId") == completion_contracts.PROFILE_ID else None,
         )
         assert_quarantine_unchanged(candidate, rehash=True)
         package_binding = validate_report_binding(

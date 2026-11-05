@@ -32,10 +32,10 @@ test("checked-in public plugin lane is structurally valid but fail-closed PRE_SU
   assert.equal(result.requiredPendingCount, pendingGateCount);
   assert.equal(result.blockers.length, pendingGateCount);
   assert.ok(pendingGateCount > 0);
-  assert.equal(result.pluginVersion, "1.1.13");
+  assert.equal(result.pluginVersion, "1.1.14");
 
   const baseline = readJson(repositoryRoot, `${releasePath}/contract-baseline.json`);
-  assert.equal(baseline.pluginVersion, "1.1.13");
+  assert.equal(baseline.pluginVersion, "1.1.14");
   assert.equal(baseline.remoteContract.tools.length, 14);
   assert.deepEqual(baseline.remoteContract.optionalCompletionTools, [
     "confirm_skillpilot_completion_contract",
@@ -59,6 +59,14 @@ test("checked-in public plugin lane is structurally valid but fail-closed PRE_SU
     attemptedSubmission.errors.join("\n"),
     /Expected plugin lifecycle READY_FOR_SUBMISSION, found PRE_SUBMISSION/u,
   );
+});
+
+test("the published 1.1.13 release dossier remains immutable beside the new candidate", (t) => {
+  const fixture = createFixture(t);
+  const historicalPath = resolve(fixture, releasePath, "history/1.1.13/marketplace-publication.json");
+  writeFileSync(historicalPath, `${readFileSync(historicalPath, "utf8")}\n`);
+  const result = verifyClaudePluginV1Release({ repositoryRoot: fixture });
+  assert.match(result.errors.join("\n"), /1\.1\.13\/marketplace-publication\.json/u);
 });
 
 test("the published 1.1.12 release dossier remains immutable beside the new candidate", (t) => {

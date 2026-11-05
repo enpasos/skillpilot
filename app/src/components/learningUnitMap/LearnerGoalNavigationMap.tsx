@@ -29,9 +29,12 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
     for (const [id, value] of buildTreeCompletionProgressMap(visibleGoals, children, getMastery, completionWaivers)) {
       result[id] = { total: value.totalCount, explicit: value.explicitCount, implicit: value.implicitCount,
         explicitRatio: value.explicitRatio, implicitRatio: value.implicitRatio,
-        implicitScopeLabel: scope ? completionLabel(scope, language) : undefined }
+        globalRecognition: value.globalRecognition,
+        recognizedCount: value.recognizedCount,
+        implicitScopeLabel: value.implicitCount > (value.recognizedCount ?? 0) && scope ? completionLabel(scope, language) : undefined }
       const waiver = completionWaivers.get(id)
-      if (waiver) result[id].waiverLabel = language === 'en'
+      if (waiver) result[id].waiverLabel = waiver.reason === 'recognized'
+        ? (language === 'en' ? 'Mastered through independent application' : 'Durch selbständige Anwendung gemeistert') : language === 'en'
         ? `${waiver.reason === 'no_remaining_demand' ? 'No longer required' : 'Covered by assessment'} for this section: ${completionLabel(waiver.sectionTitle, language)}`
         : `${waiver.reason === 'no_remaining_demand' ? 'Nicht mehr erforderlich' : 'Durch Prüfung abgedeckt'} für diesen Lernabschnitt: ${completionLabel(waiver.sectionTitle, language)}`
     }

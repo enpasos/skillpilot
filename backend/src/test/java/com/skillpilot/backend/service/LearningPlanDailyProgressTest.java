@@ -118,32 +118,16 @@ class LearningPlanDailyProgressTest {
     }
 
     @Test
-    void periodGaugeUsesCreditedPlanGoalsAndKeepsAnEmptyQuotaDistinct() {
-        var stillOnTrack = UnifiedLearningPlanStatusCalculator.calculate(
-                new PlanBalanceInputs(13, 3, 10, 0));
-        var fulfilledWithBacklog = UnifiedLearningPlanStatusCalculator.calculate(
-                new PlanBalanceInputs(13, 3, 12, 4));
-        var coveredByAdvanceWork = UnifiedLearningPlanStatusCalculator.calculate(
-                new PlanBalanceInputs(13, 3, 13, 0));
-        var noQuota = UnifiedLearningPlanStatusCalculator.calculate(
-                new PlanBalanceInputs(10, 0, 8, 0));
-
-        assertThat(LearnerLearningPlanService.periodGauge(stillOnTrack))
-                .extracting("completed", "target", "needlePosition")
-                .containsExactly(0, 3, 0.0);
-        assertThat(LearnerLearningPlanService.balanceGauge(stillOnTrack,
-                Map.of("a", TODAY), PeriodBasis.DAY).net()).isZero();
-        assertThat(LearnerLearningPlanService.periodGauge(fulfilledWithBacklog))
-                .extracting("completed", "target", "needlePosition")
-                .containsExactly(3, 3, 1.0);
-        assertThat(LearnerLearningPlanService.balanceGauge(fulfilledWithBacklog,
-                Map.of("a", TODAY), PeriodBasis.DAY).net()).isEqualTo(-1);
-        assertThat(LearnerLearningPlanService.periodGauge(coveredByAdvanceWork))
-                .extracting("completed", "target", "needlePosition")
-                .containsExactly(3, 3, 1.0);
-        assertThat(LearnerLearningPlanService.periodGauge(noQuota))
-                .extracting("completed", "target", "needlePosition")
-                .containsExactly(0, 0, null);
+    void periodGaugeUsesOnlyDatedExplicitResultsEvenWhenOverallPlanIsFinished() {
+        Map<String, LocalDate> due = Map.of("a", TODAY, "b", TODAY, "c", TODAY);
+        Map<String, Double> mastered = Map.of("a", 1.0, "b", 1.0, "c", 1.0);
+        assertThat(LearnerLearningPlanService.periodGauge(due.keySet(), due, TODAY, TODAY, mastered, Map.of()))
+                .extracting("completed", "target", "needlePosition").containsExactly(0, 3, 0.0);
+        assertThat(LearnerLearningPlanService.periodGauge(due.keySet(), due, TODAY, TODAY, mastered,
+                Map.of("a", TODAY.atTime(12, 0).atZone(java.time.ZoneId.of("Europe/Berlin")).toInstant())))
+                .extracting("completed", "target", "needlePosition").containsExactly(1, 3, 1.0 / 3);
+        assertThat(LearnerLearningPlanService.periodGauge(due.keySet(), due, TODAY.plusDays(1), TODAY.plusDays(1), mastered, Map.of()))
+                .extracting("completed", "target", "needlePosition").containsExactly(0, 0, null);
     }
 
     @Test

@@ -592,14 +592,19 @@ public class ClaudeV1McpContractAdapter {
                 Answer in the learner's language; pass "de" or "en" as the language argument.
                 """ + (completionEnabled ? """
 
-                Assessment completion route: when context.levelCompletion is present, use its
-                exact backend statement and published choices. Section completion is scoped work
-                completion, never new mastery. Within the authoritative scope, mastered goals no
-                longer demand their own prerequisites; non-assessment goals with no remaining demand
-                are implicitly completed. This does not certify prerequisite competence or change
-                saved goal results. A section with no required assessments may also be complete.
-                Do not recalculate this result or restore implicitly completed work as mandatory;
-                voluntary learning remains possible through current published choices.
+                When context.learningUnits is present, its reviewed application recognition is
+                globally effective mastery for ordinary prerequisites, total progress and later
+                learning, including after focus or curriculum changes. Use only the backend's
+                result. An open local assessment retains its full transitive requirements even
+                through mastered or outside-focus intermediates. Exams and memory goals always
+                need their own explicit results. Never infer recognition from requires, a passed
+                dependent goal alone or an empty frontier; never write derived recognition.
+                If recognition is unavailable, award no new implicit credit and follow current
+                backend choices. Voluntary learning remains available through published options.
+                A legacy context.levelCompletion section waiver only removes preparation inside
+                that stated section; it does not establish global competence. Follow its exact
+                backend statement and choices without recalculating or turning waived work into
+                mandatory preparation. These legacy section waivers are separate from learningUnits.
                 In ordinary learning, a published direct-assessment
                 choice starts its current section and assessment together; no preliminary section
                 selection is needed. When the learner asks for a shortcut, an exam or to show existing

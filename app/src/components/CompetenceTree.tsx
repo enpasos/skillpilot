@@ -247,9 +247,9 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     : isForcedExpanded || localIsExpanded
   const hasChildren = renderedChildren.length > 0
   const mastered = isMastered(mastery)
-  const completionWaiver = audience === 'learner' && !hasChildren && !mastered
-    ? completionWaivers?.get(goal.id)
-    : undefined
+  const annotatedCompletion = completionWaivers?.get(goal.id)
+  const completionWaiver = audience === 'learner' && !hasChildren && (!mastered || annotatedCompletion?.reason === 'recognized')
+    ? annotatedCompletion : undefined
   const complete = isCompleteMastery(mastery)
   const hasProgress = mastery > 0
   const isPlanned = plannedGoals.has(goal.id)
@@ -383,10 +383,10 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 : 'text-slate-400 dark:text-slate-500'
               }`}
           >
-            {mastered ? (
-              <Check size={16} strokeWidth={3} />
-            ) : completionWaiver ? (
+            {completionWaiver ? (
               <CompletionWaiverIcon waiver={completionWaiver} language={localizedLanguage} />
+            ) : mastered ? (
+              <Check size={16} strokeWidth={3} />
             ) : activeGoalId === goal.id ? (
               <Send size={16} className="text-amber-500" />
             ) : (

@@ -122,7 +122,7 @@ public class ClaudeV1CoachContextProjector {
                 projectedUpdate.learningState(),
                 projectedUpdate.activeGoal(),
                 projectedUpdate.stateMachine(),
-                projectedUpdate.levelCompletion());
+                projectedUpdate.levelCompletion(), projectedUpdate.learningUnits());
         return projectContext(skillpilotId, stateVersion, language, projectedState, true);
     }
 
@@ -139,6 +139,8 @@ public class ClaudeV1CoachContextProjector {
         FrontierGoal activeGoal = unsupportedCompletion ? null : projectedState.activeGoal();
         context.put("stateVersion", stateVersion);
         context.put("language", language);
+        if (projectedState.learningUnits() != null) context.put("learningUnits",
+                com.skillpilot.backend.ai.LearningUnitsCoachProjection.project(projectedState.learningUnits(), activeGoal));
         if (completion != null) context.put("levelCompletion", ClaudeV1CompletionChoices.project(completion, language));
         if (!completionRoute && !ClaudeV1CompletionChoices.supported()) {
             var discovery = com.skillpilot.backend.ai.AssessmentShortcutDiscovery.project(completion, publicBaseUrl, language);

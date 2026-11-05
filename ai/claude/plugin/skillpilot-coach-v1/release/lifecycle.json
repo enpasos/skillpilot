@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "lane": "CLAUDE_PUBLIC_PLUGIN_V1",
   "pluginIdentity": "skillpilot-coach-v1",
-  "pluginVersion": "1.1.13",
+  "pluginVersion": "1.1.14",
   "state": "PRE_SUBMISSION",
   "submissionTarget": "ANTHROPIC_PLUGIN_CONSOLE",
   "connectorDirectoryDependency": "none",
@@ -28,9 +28,9 @@
     "subagents"
   ],
   "productOwnerAuthorization": {
-    "approvedAt": "2026-10-31",
+    "approvedAt": "2026-11-05",
     "approvedBy": "product-owner",
-    "scope": "The Product Owner authorized explicit assessment-shortcut guidance in the coach Skills and local preparation of the exact SkillPilot Coach v1.1.13 candidate. Preserve all published 1.1.12 files and evidence. This prepares and validates the candidate only; all external publication and exact-candidate host acceptance remain pending.",
+    "scope": "The Product Owner authorized Mathematics learning units, globally effective backend-derived recognition, and local preparation of the exact SkillPilot Coach v1.1.14 candidate. Preserve all published 1.1.13 files and evidence. This prepares and validates the candidate only; all external publication and exact-candidate host acceptance remain pending.",
     "excludes": [
       "Deployment, Marketplace publication, Anthropic Console submission, guide activation, credential changes and inherited candidate acceptance",
       "Connector Directory lifecycle, gates and Team/Enterprise submission access"
@@ -42,9 +42,9 @@
   },
   "releaseLine": {
     "major": 1,
-    "version": "1.1.13",
+    "version": "1.1.14",
     "status": "pre_submission_candidate",
-    "compatibilityPolicy": "Version 1.1.13 adds deliberate assessment-shortcut guidance using the existing server-published completion choices. It preserves ordinary learning, the fourteen base tools, OAuth, learner-session isolation, privacy, grading and binary mastery. The optional completion tools remain backend-owned and require a current supported session. Published 1.1.12 bytes and evidence remain immutable; no earlier client acceptance transfers."
+    "compatibilityPolicy": "Version 1.1.14 consumes backend-published learning-unit recognition as globally effective competence while preserving explicit exam and memory results, existing tools, OAuth, learner-session isolation, privacy, grading and continuation consent. Published 1.1.13 bytes and evidence remain immutable; no earlier client acceptance transfers."
   },
   "stateTransitions": [
     {
@@ -68,7 +68,7 @@
     "approvedAt": "2026-09-16",
     "approvedBy": "product-owner",
     "issue": "https://github.com/enpasos/skillpilot/issues/48",
-    "scope": "Version 1.1.7 adopts the unified backend learning-plan status. The consumed Claude connector-v1 publishes learningPlanToday.text as the only formulation together with non-numeric control fields (periodBasis, evaluable and per-subject evaluable and statusDirection; no overall statusDirection or unavailablePlanCount) and no longer publishes totals or the per-subject counts dueToday, completedToday, openToday, openOverdue and extraCompletedToday. The 1.1.7 skill quotes that text verbatim and performs no plan arithmetic. Extended on 2026-09-17 to the binding concept § 6.5: learningPlanToday.text no longer contains the active-goal announcement; the connector publishes it separately as learningPlanToday.activeGoalAnnouncement, which the skill quotes once when teaching begins.",
+    "scope": "Version 1.1.7 adopts the unified backend learning-plan status. The consumed Claude connector-v1 publishes learningPlanToday.text as the only formulation together with non-numeric control fields (periodBasis, evaluable and per-subject evaluable and statusDirection; no overall statusDirection or unavailablePlanCount) and no longer publishes totals or the per-subject counts dueToday, completedToday, openToday, openOverdue and extraCompletedToday. The 1.1.7 skill quotes that text verbatim and performs no plan arithmetic. Extended on 2026-09-17 to the binding concept \u00a7 6.5: learningPlanToday.text no longer contains the active-goal announcement; the connector publishes it separately as learningPlanToday.activeGoalAnnouncement, which the skill quotes once when teaching begins.",
     "compatibilityImpact": "Plugin packages up to and including 1.1.6 instruct Claude to report the removed count fields, and the production connector before this change does not publish learningPlanToday.text. Anthropic applies remote MCP changes on the next connection, so the connector change and the 1.1.7 package must reach production in one coordinated step.",
     "excludes": [
       "Deployment, Marketplace publication, Anthropic Console submission, guide activation and inherited candidate acceptance",

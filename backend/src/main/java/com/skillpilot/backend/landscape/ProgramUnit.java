@@ -15,9 +15,19 @@ public class ProgramUnit {
     public LearningUnitMetadata getLearningUnit() { return learningUnit; }
     public void setLearningUnit(LearningUnitMetadata learningUnit) { this.learningUnit = learningUnit; }
 
+    @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
     public record LearningUnitMetadata(String contractId, String revision, String placementRevision,
                                        java.util.Map<String, String> promise,
-                                       java.util.Map<String, String> introduction) { }
+                                       java.util.Map<String, String> introduction,
+                                       java.util.List<String> requiredChildUnitIds) {
+        public LearningUnitMetadata {
+            requiredChildUnitIds = requiredChildUnitIds == null ? null : java.util.List.copyOf(requiredChildUnitIds);
+        }
+        public LearningUnitMetadata(String contractId, String revision, String placementRevision,
+                                     java.util.Map<String, String> promise, java.util.Map<String, String> introduction) {
+            this(contractId, revision, placementRevision, promise, introduction, null);
+        }
+    }
 
     public String getId() {
         return id;

@@ -107,6 +107,10 @@ class LearningPlanAssessmentCreditTest {
         String originalBlocks = storedPlans.getFirst().getBlocksJson();
         var inclusive = subject("mathematik");
         assertThat(inclusive.balance().rohsaldo()).isZero();
+        assertThat(inclusive.periodGauge().completed()).isEqualTo(1);
+        assertThat(inclusive.periodGauge().target()).isEqualTo(3);
+        assertThat(inclusive.periodText()).isEqualTo("Tagesziel 1 von 3");
+        assertThat(service.getTodayStatus(ID, "de").periodQuotaFulfilled()).isFalse();
         assertThat(inclusive.learningScope().achievedGoalCount()).isEqualTo(3);
         assertThat(inclusive.achievedGoalCount()).isEqualTo(1); // Global Level-2 mastery stays separate.
         assertThat(inclusive.planCreditText()).contains("3 Ziele", "2 implizit erledigt");

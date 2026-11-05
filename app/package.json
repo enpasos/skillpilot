@@ -231,7 +231,7 @@
     "test:fwu-owl-package-builder": "tsx scripts/testFwuOwlCurriculumPackageBuilder.ts",
     "typecheck:fwu-owl-package-builder": "tsc -p tsconfig.fwu-owl-scripts.json --pretty false",
     "export:fwu-owl-package": "tsx scripts/buildFwuOwlCurriculumPackage.ts",
-    "check:full-standalone-mathematik-plan": "tsx scripts/buildFullStandaloneCurriculumPackage.ts --release-root tmp/curriculum-release-model/mathematik-a --output-dir tmp/full-standalone-package --plan-only --expect-entry-count 1060 --expect-manifest-file-count 1058 --expect-binary-asset-count 836 --expect-content-digest sha256:ce49ec9492e14ae133bcda7bd831a9494b1d04c3376437f1863c057dfe5fa1ba",
+    "check:full-standalone-mathematik-plan": "tsx scripts/buildFullStandaloneCurriculumPackage.ts --release-root tmp/curriculum-release-model/learning-units/mathematik-a --output-dir tmp/full-standalone-package-learning-units --redistribution-review tmp/curriculum-release-model/learning-units/redistribution-review.json --plan-only --expect-entry-count 1094 --expect-manifest-file-count 1092 --expect-binary-asset-count 836 --expect-content-digest sha256:1972b56243b78b9011e3a26514ecb7eb50fd85bafbb1510982f4bfc4045e2f73",
     "export:subject-package": "tsx scripts/buildSkillpilotExportPackage.ts",
     "test:subject-export-package-contracts": "tsx scripts/testSubjectExportPackageContracts.ts && tsx scripts/testSubjectExportSourceAndDeckInputs.ts && tsx scripts/testSubjectExportVisualizationMetadata.ts && tsx scripts/testSubjectExportSourceTrace.ts && tsx scripts/testSubjectExportRepositoryReferences.ts",
     "typecheck:subject-export-scripts": "tsc -p tsconfig.subject-export-scripts.json --pretty false",
@@ -265,7 +265,12 @@
     "check:assessment-completion-profiles": "tsx scripts/checkAssessmentCompletionProfiles.ts",
     "test:assessment-completion-profiles": "tsx scripts/testAssessmentCompletionProfiles.ts",
     "test:level-completion": "tsx src/utils/levelCompletionApi.test.ts && tsx src/utils/treeCompletionProgress.test.ts && tsx scripts/testLevelCompletionUi.tsx",
-    "test:level-completion-browser": "tsx scripts/testLevelCompletionBrowser.ts"
+    "test:level-completion-browser": "tsx scripts/testLevelCompletionBrowser.ts",
+    "test:learning-units-ui": "tsx src/utils/learningUnitsApi.test.ts && tsx src/utils/treeCompletionProgress.test.ts",
+    "test:learning-units-package-builder": "SKILLPILOT_TEST_LEARNING_UNITS=true tsx scripts/testFullStandaloneCurriculumPackageBuilder.ts",
+    "check:learning-units-package": "bash ../scripts/run_learning_units_package_conformance.sh",
+    "export:learning-units-package": "SKILLPILOT_FULL_PACKAGE_CONFORMANCE=true bash ../scripts/run_learning_units_package_conformance.sh",
+    "test:learning-units-browser": "tsx scripts/testLearningUnitsMasteryHook.ts"
   },
   "dependencies": {
     "@types/dagre": "^0.7.53",

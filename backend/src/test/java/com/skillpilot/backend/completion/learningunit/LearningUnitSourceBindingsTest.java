@@ -49,6 +49,26 @@ class LearningUnitSourceBindingsTest {
         assertCode("STALE_COMPOSITION_BINDING", () -> LearningUnitSourceBindings.validateActiveSource(view.definition(), view.source(), view.goals(), Map.of("view", "changed")));
     }
 
+    @Test void activeSourceMustKeepItsCanonicalAssessmentCoverageClaim() {
+        var fixture = fixture();
+        fixture.goals().get("Q").getExamData().setCoveredGoalIds(List.of("A", "outside-support"));
+        assertCode("ASSESSMENT_CLAIM_CONFLICT", () -> LearningUnitSourceBindings.validateActiveSource(
+                fixture.definition(), fixture.source(), fixture.goals(), viewDigests()));
+    }
+
+    @Test void explicitEmptyRequiredChildrenOverridesProgramNavigationParentage() {
+        var fixture = fixture();
+        var parent = fixture.source().getProgramUnits().getFirst();
+        var metadata = parent.getLearningUnit();
+        parent.setLearningUnit(new ProgramUnit.LearningUnitMetadata(metadata.contractId(), metadata.revision(),
+                metadata.placementRevision(), metadata.promise(), metadata.introduction(), List.of()));
+        var navigationalChild = new ProgramUnit();
+        navigationalChild.setId("navigation-child"); navigationalChild.setParentUnitId(parent.getId());
+        navigationalChild.setLearningUnit(new ProgramUnit.LearningUnitMetadata("child", "1", "p", Map.of(), Map.of()));
+        fixture.source().setProgramUnits(List.of(parent, navigationalChild));
+        LearningUnitSourceBindings.validateActiveSource(fixture.definition(), fixture.source(), fixture.goals(), viewDigests());
+    }
+
     static Map<String, String> viewDigests() { return Map.of("view", LearningUnitSourceBindings.canonicalDigest(Map.of("viewId", "view"))); }
 
     static Fixture fixture() {
@@ -58,6 +78,7 @@ class LearningUnitSourceBindingsTest {
         ExamData exam = new ExamData();
         exam.setTaskContent("Explain A independently.");
         exam.setSolutionContent("The complete application of A.");
+        exam.setCoveredGoalIds(List.of("A"));
         ExamData.Scoring scoring = new ExamData.Scoring();
         scoring.setMaxPoints(10);
         scoring.setPassingPoints(10);
