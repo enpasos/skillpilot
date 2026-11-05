@@ -1,0 +1,42 @@
+.learner-goal-navigation-switch[hidden],
+.learner-tree-navigation[hidden],
+.learner-map-navigation[hidden] {
+  display: none !important;
+}
+
+.learner-goal-navigation-switch {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.25rem;
+  margin: 0.5rem 0.75rem;
+  padding: 0.25rem;
+  border: 1px solid var(--color-border-color);
+  border-radius: 0.625rem;
+}
+
+.learner-goal-navigation-switch button {
+  min-width: 0;
+  min-height: 2.25rem;
+  flex: 1;
+  border-radius: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  color: var(--color-text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.learner-goal-navigation-switch button[aria-pressed='true'] {
+  background: color-mix(in srgb, var(--color-sky-500) 10%, transparent);
+  color: var(--color-sky-600);
+}
+
+.learner-goal-navigation-switch button:focus-visible {
+  outline: 2px solid var(--color-sky-500);
+  outline-offset: 2px;
+}
+
+.learner-map-navigation {
+  min-height: 0;
+  flex: 1;
+  overflow: hidden;
+}

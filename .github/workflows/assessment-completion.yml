@@ -122,6 +122,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
+          # The browser fixture has no goal-image links; retain all source and review inputs.
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /*
@@ -129,6 +130,7 @@ jobs:
             /.github/
             /ai/
             /app/
+            !/app/public/assets/goal-visualizations/
             /backend/
             /content/
             /contracts/

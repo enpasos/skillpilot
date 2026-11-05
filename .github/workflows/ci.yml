@@ -37,8 +37,59 @@ jobs:
   action-regression-ci:
     runs-on: ubuntu-latest
     steps:
+      # Full checkouts include the immutable curriculum QA archives. Keep all
+      # repository inputs; remove only unused SDKs from this disposable runner.
+      - &reserve_repository_disk
+        name: Reserve disk space for the complete repository
+        working-directory: ${{ runner.temp }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${RUNNER_ENVIRONMENT:-}" = github-hosted
+          test "${RUNNER_OS:-}" = Linux
+          df -h "${GITHUB_WORKSPACE}"
+          df -i "${GITHUB_WORKSPACE}"
+          # Keep Python, Java/JDK and Node caches plus system build tools.
+          sudo rm -rf -- \
+            /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup \
+            /usr/share/swift /usr/local/julia* /usr/share/miniconda \
+            /opt/az /opt/microsoft/powershell /usr/local/share/powershell \
+            /usr/local/share/boost /usr/local/share/vcpkg \
+            /home/linuxbrew "${HOME}/.rustup" "${HOME}/.cargo"
+          if [ -d /opt/hostedtoolcache ]; then
+            sudo find /opt/hostedtoolcache -mindepth 1 -maxdepth 1 \
+              ! -name Python ! -name 'Java*' ! -iname 'node*' -exec rm -rf -- {} +
+          fi
+          if ! sudo docker image prune --all --force; then
+            echo "::warning::Docker image cleanup unavailable; the disk budget is still required."
+          fi
+          sudo apt-get clean
+          df -h "${GITHUB_WORKSPACE}"
+          df -i "${GITHUB_WORKSPACE}"
+          # 43 GiB worktree + 15 GiB shallow Git reserve + 8 GiB dependencies/builds.
+          required_bytes=$((66 * 1024 * 1024 * 1024))
+          available_bytes="$(df -B1 --output=avail "${GITHUB_WORKSPACE}" | tail -n 1)"
+          if [ "${available_bytes}" -lt "${required_bytes}" ]; then
+            echo "::error::Full checkout needs ${required_bytes} free bytes; only ${available_bytes} are available after cleanup."
+            exit 1
+          fi
       - name: Checkout
         uses: actions/checkout@v6
+      - &verify_repository_disk
+        name: Verify disk reserve after the complete checkout
+        working-directory: ${{ github.workspace }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          df -h .
+          df -i .
+          du -sh .git
+          required_bytes=$((8 * 1024 * 1024 * 1024))
+          available_bytes="$(df -B1 --output=avail . | tail -n 1)"
+          if [ "${available_bytes}" -lt "${required_bytes}" ]; then
+            echo "::error::Dependencies and builds need ${required_bytes} free bytes after checkout; only ${available_bytes} remain."
+            exit 1
+          fi
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
@@ -116,8 +167,10 @@ jobs:
     name: OpenAI MCP Apps CI
     runs-on: ubuntu-latest
     steps:
+      - *reserve_repository_disk
       - name: Checkout
         uses: actions/checkout@v6
+      - *verify_repository_disk
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
@@ -219,8 +272,10 @@ jobs:
     name: OpenAI MCP V1 public edge CI
     runs-on: ubuntu-latest
     steps:
+      - *reserve_repository_disk
       - name: Checkout
         uses: actions/checkout@v6
+      - *verify_repository_disk
       - name: Validate public edge script
         run: |
           bash -n scripts/verify_openai_v1_public_edge.sh
@@ -235,8 +290,10 @@ jobs:
       run:
         working-directory: app
     steps:
+      - *reserve_repository_disk
       - name: Checkout
         uses: actions/checkout@v6
+      - *verify_repository_disk
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
@@ -295,8 +352,10 @@ jobs:
       run:
         working-directory: app
     steps:
+      - *reserve_repository_disk
       - name: Checkout
         uses: actions/checkout@v6
+      - *verify_repository_disk
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
@@ -435,8 +494,10 @@ jobs:
       run:
         working-directory: app
     steps:
+      - *reserve_repository_disk
       - name: Checkout
         uses: actions/checkout@v6
+      - *verify_repository_disk
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
@@ -654,8 +715,10 @@ jobs:
       run:
         working-directory: backend
     steps:
+      - *reserve_repository_disk
       - name: Checkout
         uses: actions/checkout@v6
+      - *verify_repository_disk
       - name: Restore same-run verified goal-book catalog and models
         uses: actions/download-artifact@v7
         with:

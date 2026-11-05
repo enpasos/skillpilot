@@ -1,0 +1,19 @@
+.full-cockpit-shell{height:100dvh;display:flex;flex-direction:column;background:var(--color-chat-bg,#fff);color:var(--color-text-primary,#162534);font-family:Inter,system-ui,sans-serif}
+.full-cockpit-comparison{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;flex:none;padding:6px 16px;border-bottom:1px solid #e2e8f0;background:var(--color-sidebar-bg,#f8fafc)}
+.full-cockpit-preview-label{font-size:12px;font-weight:600;color:#64748b}
+.full-cockpit-local-tools{display:flex;align-items:center;gap:9px;font-size:12px;color:#64748b}
+.full-cockpit-local-tools select{max-width:150px;padding:5px 8px;border:1px solid #d7e0e9;border-radius:6px;background:var(--color-chat-bg,#fff);color:inherit}
+.full-cockpit-info{display:grid;place-items:center;width:30px;height:30px;border:0;border-radius:6px;background:transparent;color:#64748b;cursor:pointer}
+.full-cockpit-host{flex:1;min-height:0;overflow:hidden}
+.full-cockpit-host>div{height:100%;min-height:0}
+.full-cockpit-host[hidden]{display:none}
+.full-cockpit-coach-setup{flex:1;min-height:0;overflow:auto;padding:16px}
+.full-cockpit-setup-back{padding:8px 12px;border:1px solid #d7e0e9;border-radius:8px;font-size:13px;cursor:pointer}
+.full-cockpit-map{height:100%;min-height:360px;width:100%}
+.full-cockpit-map .lum-app{height:100%;min-height:360px}
+.full-cockpit-notice{max-width:460px;width:calc(100% - 32px);margin:auto;padding:22px;border:1px solid #d7e0e9;border-radius:12px;background:var(--color-chat-bg,#fff);color:inherit}
+.full-cockpit-notice::backdrop{background:rgb(15 23 42 / .4)}
+.full-cockpit-notice p{font-size:14px;line-height:1.6;margin:0 0 18px}
+.full-cockpit-notice button{float:right;border:1px solid #d7e0e9;border-radius:7px;padding:7px 14px;cursor:pointer}
+.full-cockpit-toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:10000;max-width:calc(100vw - 32px);padding:10px 14px;border:1px solid #d7e0e9;border-radius:8px;background:#fff;color:#334155;box-shadow:0 4px 18px #0f172a20;font-size:13px}
+@media(max-width:600px){.full-cockpit-comparison{gap:6px;padding:6px 8px}.full-cockpit-local-label{display:none}.full-cockpit-local-tools{gap:2px}.full-cockpit-local-tools select{max-width:95px;font-size:11px;padding:5px 3px}}

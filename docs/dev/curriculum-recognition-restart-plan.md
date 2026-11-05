@@ -1,6 +1,13 @@
 # Neustartplan: curriculare Anerkennung und Fachabschluss
 
-**Stand: 4. November 2026. Neuplanungsstand für die nächste Umsetzung.**
+> **Als Arbeitsplan abgelöst am 4. November 2026:** Der aktuelle
+> [Umsetzungsplan für Lerneinheiten und integrierte Lernkarte](learning-units-implementation-plan.md)
+> bündelt die akzeptierte rekursive Struktur, die schrittweise Cockpit-Integration
+> und die neue Fachfolge Mathematik → Physik → Chemie → Biologie.
+> Dieses Dokument bleibt mit seinen damaligen Befunden und ID-Listen erhalten;
+> es ist keine konkurrierende Freigabe zur Umsetzung.
+
+**Stand: 4. November 2026. Historischer Neuplanungsstand.**
 Dieses Dokument plant die Korrektur; es behauptet weder eine bereits korrigierte
 Runtime noch geprüfte Anerkennungsverträge, Deployment oder erfolgreiche Host-Abnahme.
 Der alte PR wird bausteinweise geprüft und ersetzt diesen Auftrag nicht.
