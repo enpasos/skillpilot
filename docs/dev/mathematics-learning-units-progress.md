@@ -107,6 +107,18 @@ verbleibenden Befunde werden geprüft; bis zur fachlich belegten Korrektur wird
 kein vollständiges M7 behauptet. Dies ist von den technisch bestandenen
 Angebots- und Anerkennungsprüfungen zu unterscheiden.
 
+Die Prüfung der vorhandenen Beschreibungs- und Verständnisevidenz ist inzwischen
+vollständig erneut ausgeführt: 180 Profilkonfigurationen und 190
+Beschreibungsindizes ergeben jeweils 807 von 807 gültig gebundene Fachziele.
+Bei zwei geänderten Bildern ersetzen neue unabhängige Sol-/Astra-Reviews die
+veraltete Bildbindung; beide Originalrunden bleiben erhalten. Die
+[neuen aktuellen Entscheidungen](https://github.com/enpasos/skillpilot/tree/main/curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-11-05/current-two-images-v1)
+sind KI-Evidenz und keine menschliche Freigabe. Bei den 108 Zielen mit reinem
+Entfall redundanter Kanten bleiben alte Reviewbytes und vollständige
+Voraussetzungen nachweislich erhalten. Der reguläre Gesamt-QA-Generator besteht;
+die unveränderte M7-Schutzprüfung scheitert weiterhin ausdrücklich am offenen
+Quellenabgleich CQR-003. Alle anderen 20 Curriculumergebnisse sind unverändert.
+
 Drei geprüfte Kandidaten bleiben zurückgestellt: Bei einer Ableitungsaufgabe
 müssen die wesentlichen Diagrammdateien vollständig an Aufgabe und Auslieferung
 gebunden werden. Bei Mittelpunkt und Rechtwinkligkeit konnte die bisherige

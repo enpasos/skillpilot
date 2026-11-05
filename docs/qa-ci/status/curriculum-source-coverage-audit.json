@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-18T10:16:34.445Z",
+  "generatedAt": "2026-11-05T21:08:56.644Z",
   "generatedBy": "app/scripts/generateCurriculumSourceCoverageAudit.ts",
   "evidencePolicy": {
     "sourceBackedEvidenceKinds": [
@@ -22,17 +22,18 @@
       "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
       "title": "Mathematik (Gymnasium, DE)",
       "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "targetProjectionAuthority": "actual-native-offers",
       "totalAtomicGoals": 807,
       "summary": {
         "jurisdictions": 16,
         "coveredJurisdictions": 0,
-        "partialJurisdictions": 16,
-        "errorJurisdictions": 0,
-        "coveredViews": 16,
+        "partialJurisdictions": 15,
+        "errorJurisdictions": 1,
+        "coveredViews": 15,
         "partialViews": 0,
-        "errorViews": 0,
-        "unsupportedVisibleAtomicGoals": 0,
-        "nonVisibleMissingSourceBackedAtomicGoals": 610
+        "errorViews": 1,
+        "unsupportedVisibleAtomicGoals": 3,
+        "nonVisibleMissingSourceBackedAtomicGoals": 635
       },
       "jurisdictions": [
         {
@@ -137,17 +138,21 @@
           "labelEn": "Hesse",
           "status": "partial",
           "viewStatus": "covered",
-          "sourceBackedAtomicGoals": 793,
-          "surrogateBackedAtomicGoals": 1,
-          "missingSourceBackedAtomicGoals": 14,
-          "visibleAtomicGoals": 785,
-          "visibleCoveredAtomicGoals": 785,
-          "nonVisibleMissingSourceBackedAtomicGoals": 14,
+          "sourceBackedAtomicGoals": 792,
+          "surrogateBackedAtomicGoals": 0,
+          "missingSourceBackedAtomicGoals": 15,
+          "visibleAtomicGoals": 777,
+          "visibleCoveredAtomicGoals": 777,
+          "nonVisibleMissingSourceBackedAtomicGoals": 15,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 16,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [
+            {
+              "goalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+              "title": "Funktions- und Ableitungsgraphen in Beziehung setzen"
+            },
             {
               "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
               "title": "Lagebeziehungen und Schnittpunkte von Geraden im Raum untersuchen"
@@ -213,14 +218,14 @@
           "labelEn": "Bavaria",
           "status": "partial",
           "viewStatus": "covered",
-          "sourceBackedAtomicGoals": 624,
-          "surrogateBackedAtomicGoals": 19,
-          "missingSourceBackedAtomicGoals": 183,
-          "visibleAtomicGoals": 568,
-          "visibleCoveredAtomicGoals": 568,
-          "nonVisibleMissingSourceBackedAtomicGoals": 183,
+          "sourceBackedAtomicGoals": 607,
+          "surrogateBackedAtomicGoals": 2,
+          "missingSourceBackedAtomicGoals": 200,
+          "visibleAtomicGoals": 576,
+          "visibleCoveredAtomicGoals": 576,
+          "nonVisibleMissingSourceBackedAtomicGoals": 200,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 346,
+          "partialSourceLinkedAtomicGoals": 353,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [
@@ -297,6 +302,10 @@
               "title": "Logarithmen als Umkehrung exponentieller Zusammenhänge nutzen"
             },
             {
+              "goalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+              "title": "Funktions- und Ableitungsgraphen in Beziehung setzen"
+            },
+            {
               "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
               "title": "Lagebeziehungen und Schnittpunkte von Geraden im Raum untersuchen"
             },
@@ -305,8 +314,16 @@
               "title": "Geradlinige Bewegungen mit Vektoren modellieren"
             },
             {
+              "goalId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+              "title": "Winkelbeziehungen in Figuren beschreiben und für geometrische Argumentationen nutzen"
+            },
+            {
               "goalId": "dcda6fdf-108f-5ea1-bce7-6f30d6443517",
               "title": "Seitenhalbierende in Dreiecken konstruieren"
+            },
+            {
+              "goalId": "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
+              "title": "Kreisbeziehungen am Kreis begründen und nutzen"
             },
             {
               "goalId": "6833664b-bd8b-44a2-95bc-c0b78ff89e31",
@@ -317,16 +334,52 @@
               "title": "Kongruente sowie maßstäblich vergrößerte und verkleinerte Figuren zeichnen und begründen"
             },
             {
+              "goalId": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+              "title": "Annahmen und Begriffe klären"
+            },
+            {
+              "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+              "title": "Plausibilität mit Beispielen testen"
+            },
+            {
+              "goalId": "04118376-6dd8-532e-ab38-be22017ba93d",
+              "title": "Geltungsbereich bestimmen"
+            },
+            {
+              "goalId": "591cb948-f313-5b1c-a9cb-3df8162eeb8b",
+              "title": "Kettenschlüsse nachvollziehen und bilden"
+            },
+            {
+              "goalId": "2b497114-66ce-5f38-9b4d-dd17a2f4088f",
+              "title": "Fehlschlüsse erkennen und korrigieren"
+            },
+            {
               "goalId": "a8d4eb81-b77a-53e3-813a-dbfeed09f1bf",
               "title": "Quantoren richtig interpretieren"
+            },
+            {
+              "goalId": "09e85220-afc3-5357-b5bc-c4b2c17e85aa",
+              "title": "Vermutungen mit Beispielen testen"
+            },
+            {
+              "goalId": "e2d56885-a204-54b4-8717-a46d029ef416",
+              "title": "Gegenbeispiele konstruieren"
             },
             {
               "goalId": "f84ea3d8-c255-552a-998a-202e42843f56",
               "title": "Widerlegung verständlich formulieren"
             },
             {
+              "goalId": "d21a1303-50fc-5e38-aeda-eeae3392c74b",
+              "title": "Direkten Beweis führen"
+            },
+            {
               "goalId": "81527aac-1abf-588d-acae-b82a86564b06",
               "title": "Beweis durch Kontraposition"
+            },
+            {
+              "goalId": "c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9",
+              "title": "Beweis durch Widerspruch"
             },
             {
               "goalId": "9ea981ed-8b78-502c-b316-01d8cb885814",
@@ -335,6 +388,18 @@
             {
               "goalId": "f2df01c0-355e-5e51-973f-d31b0eed28ec",
               "title": "Beweise verständlich präsentieren"
+            },
+            {
+              "goalId": "01217f4a-5221-5df9-b379-7b241fccf809",
+              "title": "Beweisstrategien vergleichen und wählen (LK)"
+            },
+            {
+              "goalId": "4ae439c0-ce3c-5c96-9755-9899bc70e948",
+              "title": "Argumentation formalisieren und präzisieren (LK)"
+            },
+            {
+              "goalId": "dd1d9f9c-0a4e-5d01-95d8-f6993163b20c",
+              "title": "Beweislücken identifizieren (LK)"
             },
             {
               "goalId": "a288231e-e4bb-5c65-b018-b79a51ca87d8",
@@ -765,6 +830,10 @@
               "title": "Mittelwerte von Funktionen mit Integralen bestimmen und deuten"
             },
             {
+              "goalId": "2713980f-75d2-5455-a8cb-bcd3888c49a0",
+              "title": "Analysisgrundlagen in Q1-Anschlussaufgaben nutzen"
+            },
+            {
               "goalId": "93fcf49d-a08c-5aa5-a5b2-cb4ee56fdae4",
               "title": "Stammfunktionen durch Ableiten nachweisen"
             },
@@ -919,6 +988,10 @@
             {
               "goalId": "f2a12269-6bcb-564a-9fdb-45cfdbd704fc",
               "title": "Teilungsverhältnisse bei Volumina untersuchen"
+            },
+            {
+              "goalId": "03703b29-efd8-57e0-acf5-4381b1dc67ec",
+              "title": "Modalwert bestimmen und im Kontext deuten"
             },
             {
               "goalId": "baea3966-5d10-53bf-8193-3fcda7b1e73f",
@@ -1084,11 +1157,11 @@
           "sourceBackedAtomicGoals": 780,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 27,
-          "visibleAtomicGoals": 671,
-          "visibleCoveredAtomicGoals": 671,
+          "visibleAtomicGoals": 682,
+          "visibleCoveredAtomicGoals": 682,
           "nonVisibleMissingSourceBackedAtomicGoals": 27,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 3,
+          "partialSourceLinkedAtomicGoals": 5,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [
@@ -1209,12 +1282,12 @@
           "labelEn": "Lower Saxony",
           "status": "partial",
           "viewStatus": "covered",
-          "sourceBackedAtomicGoals": 781,
-          "surrogateBackedAtomicGoals": 3,
-          "missingSourceBackedAtomicGoals": 26,
+          "sourceBackedAtomicGoals": 780,
+          "surrogateBackedAtomicGoals": 2,
+          "missingSourceBackedAtomicGoals": 27,
           "visibleAtomicGoals": 683,
           "visibleCoveredAtomicGoals": 683,
-          "nonVisibleMissingSourceBackedAtomicGoals": 26,
+          "nonVisibleMissingSourceBackedAtomicGoals": 27,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 620,
           "projectionWarnings": 0,
@@ -1223,6 +1296,10 @@
             {
               "goalId": "25a3cc39-976e-58a5-b882-73baee5c037c",
               "title": "Maßangaben aus Quellenmaterial entnehmen"
+            },
+            {
+              "goalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+              "title": "Funktions- und Ableitungsgraphen in Beziehung setzen"
             },
             {
               "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
@@ -1333,12 +1410,12 @@
           "labelEn": "North Rhine-Westphalia",
           "status": "partial",
           "viewStatus": "covered",
-          "sourceBackedAtomicGoals": 780,
-          "surrogateBackedAtomicGoals": 3,
-          "missingSourceBackedAtomicGoals": 27,
+          "sourceBackedAtomicGoals": 779,
+          "surrogateBackedAtomicGoals": 2,
+          "missingSourceBackedAtomicGoals": 28,
           "visibleAtomicGoals": 678,
           "visibleCoveredAtomicGoals": 678,
-          "nonVisibleMissingSourceBackedAtomicGoals": 27,
+          "nonVisibleMissingSourceBackedAtomicGoals": 28,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 554,
           "projectionWarnings": 0,
@@ -1347,6 +1424,10 @@
             {
               "goalId": "25a3cc39-976e-58a5-b882-73baee5c037c",
               "title": "Maßangaben aus Quellenmaterial entnehmen"
+            },
+            {
+              "goalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+              "title": "Funktions- und Ableitungsgraphen in Beziehung setzen"
             },
             {
               "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
@@ -1464,11 +1545,11 @@
           "sourceBackedAtomicGoals": 739,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 68,
-          "visibleAtomicGoals": 714,
-          "visibleCoveredAtomicGoals": 714,
+          "visibleAtomicGoals": 698,
+          "visibleCoveredAtomicGoals": 698,
           "nonVisibleMissingSourceBackedAtomicGoals": 68,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 481,
+          "partialSourceLinkedAtomicGoals": 477,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [
@@ -1751,16 +1832,16 @@
           "jurisdiction": "DE-HB",
           "labelDe": "Bremen",
           "labelEn": "Bremen",
-          "status": "partial",
-          "viewStatus": "covered",
-          "sourceBackedAtomicGoals": 763,
-          "surrogateBackedAtomicGoals": 12,
-          "missingSourceBackedAtomicGoals": 44,
-          "visibleAtomicGoals": 654,
-          "visibleCoveredAtomicGoals": 654,
-          "nonVisibleMissingSourceBackedAtomicGoals": 44,
-          "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 586,
+          "status": "error",
+          "viewStatus": "error",
+          "sourceBackedAtomicGoals": 761,
+          "surrogateBackedAtomicGoals": 10,
+          "missingSourceBackedAtomicGoals": 46,
+          "visibleAtomicGoals": 670,
+          "visibleCoveredAtomicGoals": 667,
+          "nonVisibleMissingSourceBackedAtomicGoals": 43,
+          "unsupportedAssignedAtomicGoals": 3,
+          "partialSourceLinkedAtomicGoals": 591,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [
@@ -1789,8 +1870,12 @@
               "title": "Größen in Sachsituationen mithilfe von Bezugsgrößen schätzen"
             },
             {
-              "goalId": "0bd7dc9b-c7f9-52e6-b374-a019edfd821c",
-              "title": "Rechteckflächenformel aus dem Messprinzip erklären"
+              "goalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
+              "title": "Bogenmass am Einheitskreis veranschaulichen und sicher zwischen Grad- und Bogenmass wechseln"
+            },
+            {
+              "goalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+              "title": "Sinus- und Kosinuswerte am Einheitskreis im Bogenmass deuten und Winkel bestimmen"
             },
             {
               "goalId": "0500f77f-8c12-5f7e-97b0-a75125eaa99b",
@@ -1811,6 +1896,10 @@
             {
               "goalId": "0190e463-51a7-4860-9b35-d875530a85ba",
               "title": "Symmetrie ganzrationaler Funktionsgraphen am Term prüfen"
+            },
+            {
+              "goalId": "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
+              "title": "Sinus- und Kosinusfunktionen als periodische Funktionen beschreiben"
             },
             {
               "goalId": "235ae698-369f-4dbe-b46f-87e8b65bb03d",
@@ -1941,7 +2030,20 @@
               "title": "Fixgeraden affiner Abbildungen untersuchen (LK, A1)"
             }
           ],
-          "unsupportedAssignedAtomicGoalIds": []
+          "unsupportedAssignedAtomicGoalIds": [
+            {
+              "goalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
+              "title": "Bogenmass am Einheitskreis veranschaulichen und sicher zwischen Grad- und Bogenmass wechseln"
+            },
+            {
+              "goalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+              "title": "Sinus- und Kosinuswerte am Einheitskreis im Bogenmass deuten und Winkel bestimmen"
+            },
+            {
+              "goalId": "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
+              "title": "Sinus- und Kosinusfunktionen als periodische Funktionen beschreiben"
+            }
+          ]
         },
         {
           "jurisdiction": "DE-HH",
@@ -2081,20 +2183,24 @@
           "labelEn": "Mecklenburg-Western Pomerania",
           "status": "partial",
           "viewStatus": "covered",
-          "sourceBackedAtomicGoals": 780,
-          "surrogateBackedAtomicGoals": 3,
-          "missingSourceBackedAtomicGoals": 27,
-          "visibleAtomicGoals": 630,
-          "visibleCoveredAtomicGoals": 630,
-          "nonVisibleMissingSourceBackedAtomicGoals": 27,
+          "sourceBackedAtomicGoals": 779,
+          "surrogateBackedAtomicGoals": 2,
+          "missingSourceBackedAtomicGoals": 28,
+          "visibleAtomicGoals": 716,
+          "visibleCoveredAtomicGoals": 716,
+          "nonVisibleMissingSourceBackedAtomicGoals": 28,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 574,
+          "partialSourceLinkedAtomicGoals": 657,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [
             {
               "goalId": "25a3cc39-976e-58a5-b882-73baee5c037c",
               "title": "Maßangaben aus Quellenmaterial entnehmen"
+            },
+            {
+              "goalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+              "title": "Funktions- und Ableitungsgraphen in Beziehung setzen"
             },
             {
               "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
@@ -2209,20 +2315,24 @@
           "labelEn": "Rhineland-Palatinate",
           "status": "partial",
           "viewStatus": "covered",
-          "sourceBackedAtomicGoals": 783,
-          "surrogateBackedAtomicGoals": 3,
-          "missingSourceBackedAtomicGoals": 24,
-          "visibleAtomicGoals": 735,
-          "visibleCoveredAtomicGoals": 735,
-          "nonVisibleMissingSourceBackedAtomicGoals": 24,
+          "sourceBackedAtomicGoals": 782,
+          "surrogateBackedAtomicGoals": 2,
+          "missingSourceBackedAtomicGoals": 25,
+          "visibleAtomicGoals": 722,
+          "visibleCoveredAtomicGoals": 722,
+          "nonVisibleMissingSourceBackedAtomicGoals": 25,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 691,
+          "partialSourceLinkedAtomicGoals": 679,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [
             {
               "goalId": "25a3cc39-976e-58a5-b882-73baee5c037c",
               "title": "Maßangaben aus Quellenmaterial entnehmen"
+            },
+            {
+              "goalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+              "title": "Funktions- und Ableitungsgraphen in Beziehung setzen"
             },
             {
               "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
@@ -2325,12 +2435,12 @@
           "labelEn": "Saarland",
           "status": "partial",
           "viewStatus": "covered",
-          "sourceBackedAtomicGoals": 788,
-          "surrogateBackedAtomicGoals": 3,
-          "missingSourceBackedAtomicGoals": 19,
+          "sourceBackedAtomicGoals": 787,
+          "surrogateBackedAtomicGoals": 2,
+          "missingSourceBackedAtomicGoals": 20,
           "visibleAtomicGoals": 690,
           "visibleCoveredAtomicGoals": 690,
-          "nonVisibleMissingSourceBackedAtomicGoals": 19,
+          "nonVisibleMissingSourceBackedAtomicGoals": 20,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 647,
           "projectionWarnings": 0,
@@ -2339,6 +2449,10 @@
             {
               "goalId": "25a3cc39-976e-58a5-b882-73baee5c037c",
               "title": "Maßangaben aus Quellenmaterial entnehmen"
+            },
+            {
+              "goalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+              "title": "Funktions- und Ableitungsgraphen in Beziehung setzen"
             },
             {
               "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
@@ -2421,12 +2535,12 @@
           "labelEn": "Saxony",
           "status": "partial",
           "viewStatus": "covered",
-          "sourceBackedAtomicGoals": 780,
-          "surrogateBackedAtomicGoals": 3,
-          "missingSourceBackedAtomicGoals": 27,
+          "sourceBackedAtomicGoals": 779,
+          "surrogateBackedAtomicGoals": 2,
+          "missingSourceBackedAtomicGoals": 28,
           "visibleAtomicGoals": 682,
           "visibleCoveredAtomicGoals": 682,
-          "nonVisibleMissingSourceBackedAtomicGoals": 27,
+          "nonVisibleMissingSourceBackedAtomicGoals": 28,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 634,
           "projectionWarnings": 0,
@@ -2435,6 +2549,10 @@
             {
               "goalId": "25a3cc39-976e-58a5-b882-73baee5c037c",
               "title": "Maßangaben aus Quellenmaterial entnehmen"
+            },
+            {
+              "goalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+              "title": "Funktions- und Ableitungsgraphen in Beziehung setzen"
             },
             {
               "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
@@ -2549,12 +2667,12 @@
           "labelEn": "Saxony-Anhalt",
           "status": "partial",
           "viewStatus": "covered",
-          "sourceBackedAtomicGoals": 780,
-          "surrogateBackedAtomicGoals": 3,
-          "missingSourceBackedAtomicGoals": 27,
+          "sourceBackedAtomicGoals": 779,
+          "surrogateBackedAtomicGoals": 2,
+          "missingSourceBackedAtomicGoals": 28,
           "visibleAtomicGoals": 676,
           "visibleCoveredAtomicGoals": 676,
-          "nonVisibleMissingSourceBackedAtomicGoals": 27,
+          "nonVisibleMissingSourceBackedAtomicGoals": 28,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 635,
           "projectionWarnings": 0,
@@ -2563,6 +2681,10 @@
             {
               "goalId": "25a3cc39-976e-58a5-b882-73baee5c037c",
               "title": "Maßangaben aus Quellenmaterial entnehmen"
+            },
+            {
+              "goalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+              "title": "Funktions- und Ableitungsgraphen in Beziehung setzen"
             },
             {
               "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
@@ -2677,20 +2799,24 @@
           "labelEn": "Thuringia",
           "status": "partial",
           "viewStatus": "covered",
-          "sourceBackedAtomicGoals": 781,
-          "surrogateBackedAtomicGoals": 3,
-          "missingSourceBackedAtomicGoals": 26,
-          "visibleAtomicGoals": 619,
-          "visibleCoveredAtomicGoals": 619,
-          "nonVisibleMissingSourceBackedAtomicGoals": 26,
+          "sourceBackedAtomicGoals": 780,
+          "surrogateBackedAtomicGoals": 2,
+          "missingSourceBackedAtomicGoals": 27,
+          "visibleAtomicGoals": 709,
+          "visibleCoveredAtomicGoals": 709,
+          "nonVisibleMissingSourceBackedAtomicGoals": 27,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 588,
+          "partialSourceLinkedAtomicGoals": 675,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [
             {
               "goalId": "25a3cc39-976e-58a5-b882-73baee5c037c",
               "title": "Maßangaben aus Quellenmaterial entnehmen"
+            },
+            {
+              "goalId": "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+              "title": "Funktions- und Ableitungsgraphen in Beziehung setzen"
             },
             {
               "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
@@ -2801,6 +2927,7 @@
       "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
       "title": "Physik (Gymnasium, DE)",
       "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "targetProjectionAuthority": "legacy-raw-composition-views",
       "totalAtomicGoals": 478,
       "summary": {
         "jurisdictions": 16,

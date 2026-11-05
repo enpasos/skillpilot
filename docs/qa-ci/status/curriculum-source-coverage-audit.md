@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/`
 > Source of truth: `curricula/DE/Gymnasium/provenance/canonical-goal-surrogate-evidence-registry.json`
 
-Generated: 2026-10-18T10:16:34.445Z
+Generated: 2026-11-05T21:08:56.644Z
 
 This audit separates inhaltliche Abdeckung from passgenaue Zuordnung. `provenance`, reviewed `mapping` entries including `partial`, and explicitly reviewed requires-closure surrogate entries count as Lehrplan evidence; `partial` mappings remain visible as quality warnings. `override`, `child-union`, automatic `requires-closure`, and `assessment-requires` do not count as source coverage.
 
@@ -16,37 +16,39 @@ This audit separates inhaltliche Abdeckung from passgenaue Zuordnung. `provenanc
 
 Memory/SRS, practice, assessment, motivation, orientation, and `examData` goals are excluded from the source-coverage denominator; memory traceability is handled by the separate memory-card review.
 
-The Applicability compiler supplies source evidence and projection findings; learner-facing visibility is resolved from the same composition-view target projection used by the Workbench `Curriculum Quality` counters. Those counters additionally include extracted source atoms and fully covered source original goals.
+The Applicability compiler supplies source evidence and projection findings. A migrated landscape uses a source-bound export of actual backend offers for target visibility; the report names unmigrated landscapes that still use the legacy raw-view projection. This is country-level target source coverage, not certification of every stage/course source link. Workbench counters additionally include extracted source atoms and fully covered source original goals.
 
 ## Mathematik (Gymnasium, DE)
 
 Source-coverage atomic goals: 807
-Global status: 0/16 covered, 16 partial, 0 error.
-View status: 16/16 covered, 0 partial, 0 error.
-Unsupported visible atomic goals: 0. Non-visible missing source-backed atomic goals: 610.
+Target authority: `actual-native-offers`.
+Global status: 0/16 covered, 15 partial, 1 error.
+View status: 15/16 covered, 0 partial, 1 error.
+Unsupported visible atomic goals: 3. Non-visible missing source-backed atomic goals: 635.
 
 | Bundesland | Status | View status | Covered | Direct | Surrogate-only | Missing | Visible | Visible covered | Unsupported visible | Partial source links | Warnings | Errors |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | DE-BW | partial | covered | 788/807 (97.6%) | 788 | 0 | 19 | 703 | 703 | 0 | 502 | 0 | 0 |
-| DE-HE | partial | covered | 793/807 (98.3%) | 792 | 1 | 14 | 785 | 785 | 0 | 16 | 0 | 0 |
-| DE-BY | partial | covered | 624/807 (77.3%) | 605 | 19 | 183 | 568 | 568 | 0 | 346 | 0 | 0 |
+| DE-HE | partial | covered | 792/807 (98.1%) | 792 | 0 | 15 | 777 | 777 | 0 | 16 | 0 | 0 |
+| DE-BY | partial | covered | 607/807 (75.2%) | 605 | 2 | 200 | 576 | 576 | 0 | 353 | 0 | 0 |
 | DE-BB | partial | covered | 783/807 (97%) | 783 | 0 | 24 | 684 | 684 | 0 | 7 | 0 | 0 |
-| DE-BE | partial | covered | 780/807 (96.7%) | 780 | 0 | 27 | 671 | 671 | 0 | 3 | 0 | 0 |
-| DE-NI | partial | covered | 781/807 (96.8%) | 778 | 3 | 26 | 683 | 683 | 0 | 620 | 0 | 0 |
-| DE-NW | partial | covered | 780/807 (96.7%) | 777 | 3 | 27 | 678 | 678 | 0 | 554 | 0 | 0 |
-| DE-SH | partial | covered | 739/807 (91.6%) | 739 | 0 | 68 | 714 | 714 | 0 | 481 | 0 | 0 |
-| DE-HB | partial | covered | 763/807 (94.5%) | 751 | 12 | 44 | 654 | 654 | 0 | 586 | 0 | 0 |
+| DE-BE | partial | covered | 780/807 (96.7%) | 780 | 0 | 27 | 682 | 682 | 0 | 5 | 0 | 0 |
+| DE-NI | partial | covered | 780/807 (96.7%) | 778 | 2 | 27 | 683 | 683 | 0 | 620 | 0 | 0 |
+| DE-NW | partial | covered | 779/807 (96.5%) | 777 | 2 | 28 | 678 | 678 | 0 | 554 | 0 | 0 |
+| DE-SH | partial | covered | 739/807 (91.6%) | 739 | 0 | 68 | 698 | 698 | 0 | 477 | 0 | 0 |
+| DE-HB | error | error | 761/807 (94.3%) | 751 | 10 | 46 | 670 | 667 | 3 | 591 | 0 | 0 |
 | DE-HH | partial | covered | 779/807 (96.5%) | 777 | 2 | 28 | 680 | 680 | 0 | 565 | 0 | 0 |
-| DE-MV | partial | covered | 780/807 (96.7%) | 777 | 3 | 27 | 630 | 630 | 0 | 574 | 0 | 0 |
-| DE-RP | partial | covered | 783/807 (97%) | 780 | 3 | 24 | 735 | 735 | 0 | 691 | 0 | 0 |
-| DE-SL | partial | covered | 788/807 (97.6%) | 785 | 3 | 19 | 690 | 690 | 0 | 647 | 0 | 0 |
-| DE-SN | partial | covered | 780/807 (96.7%) | 777 | 3 | 27 | 682 | 682 | 0 | 634 | 0 | 0 |
-| DE-ST | partial | covered | 780/807 (96.7%) | 777 | 3 | 27 | 676 | 676 | 0 | 635 | 0 | 0 |
-| DE-TH | partial | covered | 781/807 (96.8%) | 778 | 3 | 26 | 619 | 619 | 0 | 588 | 0 | 0 |
+| DE-MV | partial | covered | 779/807 (96.5%) | 777 | 2 | 28 | 716 | 716 | 0 | 657 | 0 | 0 |
+| DE-RP | partial | covered | 782/807 (96.9%) | 780 | 2 | 25 | 722 | 722 | 0 | 679 | 0 | 0 |
+| DE-SL | partial | covered | 787/807 (97.5%) | 785 | 2 | 20 | 690 | 690 | 0 | 647 | 0 | 0 |
+| DE-SN | partial | covered | 779/807 (96.5%) | 777 | 2 | 28 | 682 | 682 | 0 | 634 | 0 | 0 |
+| DE-ST | partial | covered | 779/807 (96.5%) | 777 | 2 | 28 | 676 | 676 | 0 | 635 | 0 | 0 |
+| DE-TH | partial | covered | 780/807 (96.7%) | 778 | 2 | 27 | 709 | 709 | 0 | 675 | 0 | 0 |
 
 ## Physik (Gymnasium, DE)
 
 Source-coverage atomic goals: 478
+Target authority: `legacy-raw-composition-views`.
 Global status: 0/16 covered, 16 partial, 0 error.
 View status: 16/16 covered, 0 partial, 0 error.
 Unsupported visible atomic goals: 0. Non-visible missing source-backed atomic goals: 489.
