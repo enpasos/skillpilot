@@ -7,12 +7,108 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
+import java.util.Map;
+import com.skillpilot.backend.curriculumpackage.PackageLandscapeMappingState;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 class GoalMappingServiceTest {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
+
+    @Test
+    void capabilityNativeDocumentsUseRepositoryOrderingAndFirstPartialIndexWithoutReviewUnion() throws Exception {
+        String firstPath = "DE/Gymnasium/mapping/AA/a.json";
+        String secondPath = "DE/Gymnasium/mapping/ZZ/z.json";
+        byte[] first = nativeDocument("canon-1", "partial");
+        byte[] second = nativeDocument("canon-2", "partial");
+        writeJson(tempDir.resolve(firstPath), new String(first, java.nio.charset.StandardCharsets.UTF_8));
+        writeJson(tempDir.resolve(secondPath), new String(second, java.nio.charset.StandardCharsets.UTF_8));
+        var repository = createService(tempDir);
+        var reviewOnly = new ResolvedGoalMapping("legacy-math", "canonical-math", "legacy-1", "review-only", "partial", "compiled-review");
+        var merged = packageMappings("offer", List.of(reviewOnly));
+        var operational = new GoalMappingService(merged, objectMapper,
+                Map.of("offer", Map.of(secondPath, second, firstPath, first)));
+        assertThat(operational.getAllMappings().stream().map(this::tuple).toList())
+                .containsExactlyElementsOf(repository.getAllMappings().stream().map(this::tuple).toList());
+        assertThat(operational.findByLegacyGoalId("legacy-1")).get()
+                .extracting(ResolvedGoalMapping::canonicalGoalId, ResolvedGoalMapping::sourceFile)
+                .containsExactly("canon-1", firstPath);
+        assertThat(operational.findAllByLegacyGoalId("legacy-1")).hasSize(2);
+        assertThat(merged.packageStates().getFirst().mappings()).containsExactly(reviewOnly);
+        assertThat(operational.getAllMappings()).noneMatch(mapping -> "review-only".equals(mapping.canonicalGoalId()));
+    }
+
+    @Test
+    void nativeCapabilitySelectionDoesNotChangeAnotherPackagesCompiledRelation() throws Exception {
+        var nativeState = packageState("offer", List.of(new ResolvedGoalMapping(
+                "legacy-math", "canonical-math", "review-source", "review-only", "partial", "review")));
+        var ordinary = new ResolvedGoalMapping("legacy-other", "canonical-other", "ordinary-source", "ordinary-goal", "exact", "package:old");
+        var oldState = packageState("old", List.of(ordinary));
+        var merged = org.mockito.Mockito.mock(PackageLandscapeMappingState.Merged.class);
+        org.mockito.Mockito.when(merged.packageStates()).thenReturn(List.of(nativeState, oldState));
+        var operational = new GoalMappingService(merged, objectMapper,
+                Map.of("offer", Map.of("DE/Gymnasium/mapping/AA/native.json", nativeDocument("canon-1", "partial"))));
+        assertThat(operational.getAllMappings()).contains(ordinary).noneMatch(mapping -> "review-only".equals(mapping.canonicalGoalId()));
+        assertThat(operational.findByLegacyGoalId("ordinary-source")).contains(ordinary);
+    }
+
+    @Test
+    void missingMalformedArchivedAndReviewInputsNeverFallBackToTheCompiledRelation() throws Exception {
+        var merged = packageMappings("offer", List.of(new ResolvedGoalMapping(
+                "legacy-math", "canonical-math", "legacy-1", "review-only", "exact", "review")));
+        for (Map<String, byte[]> documents : List.<Map<String, byte[]>>of(
+                Map.of(), Map.of("DE/Gymnasium/mapping/AA/native.json", "{}".getBytes()),
+                Map.of("DE/Gymnasium/learning-units/sources/archive/mapping/native.json", nativeDocument("canon-1", "partial")),
+                Map.of("DE/Gymnasium/mapping/AA/native.review.json", nativeDocument("canon-1", "partial")))) {
+            var unavailable = new GoalMappingService(merged, objectMapper, Map.of("offer", documents));
+            assertThat(unavailable.operationalProjectionAvailable()).isFalse();
+            assertThatThrownBy(unavailable::getAllMappings).isInstanceOf(GoalMappingService.ProjectionUnavailableException.class);
+            assertThatThrownBy(() -> unavailable.findByLegacyGoalId("legacy-1")).isInstanceOf(GoalMappingService.ProjectionUnavailableException.class);
+        }
+    }
+
+    @Test
+    void nativeParserRetainsItsExactConflictAndVersionChecks() throws Exception {
+        var merged = packageMappings("offer", List.of());
+        var conflict = new GoalMappingService(merged, objectMapper, Map.of("offer", Map.of(
+                "DE/Gymnasium/mapping/AA/a.json", nativeDocument("canon-1", "partial"),
+                "DE/Gymnasium/mapping/ZZ/z.json", nativeDocument("canon-2", "exact"))));
+        assertThatThrownBy(conflict::getAllMappings).hasMessageContaining("Conflicting goal mappings");
+        var wrong = objectMapper.readTree(nativeDocument("canon-1", "partial"));
+        ((com.fasterxml.jackson.databind.node.ObjectNode) wrong).put("version", 99);
+        var version = new GoalMappingService(merged, objectMapper, Map.of("offer", Map.of(
+                "DE/Gymnasium/mapping/AA/native.json", objectMapper.writeValueAsBytes(wrong))));
+        assertThatThrownBy(version::getAllMappings).hasMessageContaining("Unsupported goal mapping version");
+    }
+
+    private List<String> tuple(ResolvedGoalMapping mapping) {
+        return List.of(mapping.sourceLandscapeId(), mapping.targetLandscapeId(), mapping.legacyGoalId(), mapping.canonicalGoalId(), mapping.matchType());
+    }
+
+    private byte[] nativeDocument(String target, String matchType) throws Exception {
+        return objectMapper.writeValueAsBytes(Map.of("version", 1, "sourceLandscapeId", "legacy-math",
+                "targetLandscapeId", "canonical-math", "mappings", List.of(Map.of("legacyGoalId", "legacy-1",
+                        "canonicalGoalId", target, "matchType", matchType))));
+    }
+
+    private PackageLandscapeMappingState.Merged packageMappings(String id, List<ResolvedGoalMapping> review) {
+        var state = packageState(id, review);
+        var merged = org.mockito.Mockito.mock(PackageLandscapeMappingState.Merged.class);
+        org.mockito.Mockito.when(merged.packageStates()).thenReturn(List.of(state));
+        return merged;
+    }
+
+    private PackageLandscapeMappingState packageState(String id, List<ResolvedGoalMapping> review) {
+        var state = org.mockito.Mockito.mock(PackageLandscapeMappingState.class);
+        org.mockito.Mockito.when(state.packageId()).thenReturn(id);
+        org.mockito.Mockito.when(state.targetLandscapeId()).thenReturn("canonical-math");
+        org.mockito.Mockito.when(state.sourceLandscapesById()).thenReturn(Map.of("legacy-math",
+                new PackageLandscapeMappingState.SourceLandscapeMetadata("legacy-math", "DE-HE", "Math", "SekI", List.of("source"))));
+        org.mockito.Mockito.when(state.mappings()).thenReturn(review);
+        return state;
+    }
 
     @TempDir
     Path tempDir;

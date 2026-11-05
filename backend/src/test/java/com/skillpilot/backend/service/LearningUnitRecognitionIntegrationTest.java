@@ -24,6 +24,135 @@ import org.springframework.test.util.ReflectionTestUtils;
 
 /** Public runtime seams share explicit outcomes and one authoritative global unit result. */
 class LearningUnitRecognitionIntegrationTest {
+    @Test void invalidLiveMappingShapeStillAdmitsFrozenContractsAndPublicHistoricalRecognition() throws Exception {
+        assertMalformedPackagePreservesRecognition("{\"version\":1,\"sourceLandscapeId\":\"legacy\",\"targetLandscapeId\":\"base\",\"mappings\":\"broken\"}");
+    }
+
+    @Test void invalidLiveMappingSyntaxStillAdmitsFrozenContractsAndPublicHistoricalRecognition() throws Exception {
+        assertMalformedPackagePreservesRecognition("{");
+    }
+
+    private void assertMalformedPackagePreservesRecognition(String broken) throws Exception {
+        var f = fixture(false);
+        var mapper = new ObjectMapper();
+        var original = (LearningUnitApplicationService) ReflectionTestUtils.getField(f.service(), "learningUnitApplicationService");
+        var definition = original.catalog().definitions().getFirst();
+        var landscape = f.landscapes().getById("base");
+        var unit = new ProgramUnit(); unit.setId("unit");
+        unit.setLearningUnit(new ProgramUnit.LearningUnitMetadata("unit", "1", "1", definition.promise(), definition.introduction()));
+        landscape.setProgramUnits(List.of(unit));
+        landscape.setGoalPlacements(definition.ownGoalIds().stream().map(id -> {
+            var placement = new GoalPlacement(); placement.setGoalId(id); placement.setUnitId("unit");
+            placement.setRelation("Q".equals(id) ? "assessed" : "primary"); placement.setAcquisition(true); return placement;
+        }).toList());
+        Map<String, byte[]> files = new LinkedHashMap<>();
+        String contract = "DE/Gymnasium/learning-units/contracts/unit/1.json";
+        String source = "DE/Gymnasium/learning-units/sources/fixture.json";
+        String task = "DE/Gymnasium/learning-units/inputs/Q.task.json", rubric = "DE/Gymnasium/learning-units/inputs/Q.rubric.json";
+        files.put(contract, mapper.writeValueAsBytes(definition));
+        files.put(source, mapper.writeValueAsBytes(new LearningUnitCatalog.SourceSnapshot(1, "completion-goal-kinds-v1", List.of(landscape), Map.of())));
+        var exam = landscape.getGoals().stream().filter(goal -> "Q".equals(goal.getId())).findFirst().orElseThrow().getExamData();
+        files.put(task, mapper.writeValueAsBytes(Map.of("taskContent", exam.getTaskContent(), "solutionContent", exam.getSolutionContent())));
+        files.put(rubric, mapper.writeValueAsBytes(exam.getScoring()));
+        files.put("DE/Gymnasium/review", "Independent immutable review".getBytes(StandardCharsets.UTF_8));
+        Map<String, String> pins = new LinkedHashMap<>();
+        for (var input : files.entrySet()) if (!contract.equals(input.getKey())) pins.put(input.getKey(), hash(input.getValue()));
+        var entry = new LearningUnitCatalog.Entry(contract, hash(files.get(contract)), "archived", source, pins,
+                Map.of("Q", new LearningUnitCatalog.AssessmentInputs(task, rubric)), Map.of());
+        files.put("DE/Gymnasium/mapping/AA/good.json", mapper.writeValueAsBytes(Map.of("version", 1, "sourceLandscapeId", "legacy",
+                "targetLandscapeId", "base", "mappings", List.of(Map.of("legacyGoalId", "legacy-understanding", "canonicalGoalId", "Q", "matchType", "exact")))));
+        files.put("DE/Gymnasium/mapping/AA/broken.json", broken.getBytes(StandardCharsets.UTF_8));
+        files.put(LearningUnitCatalog.MANIFEST_PATH, mapper.writeValueAsBytes(new LearningUnitCatalog.Manifest(1, List.of(entry))));
+        var artifacts = new LinkedHashMap<String, List<com.skillpilot.backend.curriculumpackage.CurriculumRuntimeSnapshot.Artifact>>();
+        for (var file : files.entrySet()) {
+            String role = contract.equals(file.getKey()) ? LearningUnitCatalog.CONTRACT_ROLE
+                    : LearningUnitCatalog.MANIFEST_PATH.equals(file.getKey()) ? LearningUnitCatalog.CATALOG_ROLE : LearningUnitCatalog.INPUT_ROLE;
+            var artifact = mock(com.skillpilot.backend.curriculumpackage.CurriculumRuntimeSnapshot.Artifact.class);
+            when(artifact.packageId()).thenReturn("offer");
+            when(artifact.contentBytes()).thenReturn(mapper.writeValueAsBytes(Map.of("id", LearningUnitApplicationService.packageArtifactIdentity(file.getKey()),
+                    "definition", Map.of("sourcePath", file.getKey(), "contentBase64", Base64.getEncoder().encodeToString(file.getValue()), "sha256", hash(file.getValue())))));
+            artifacts.computeIfAbsent(role, ignored -> new ArrayList<>()).add(artifact);
+        }
+        var snapshot = mock(com.skillpilot.backend.curriculumpackage.CurriculumRuntimeSnapshot.class);
+        when(snapshot.packages()).thenReturn(List.of(new com.skillpilot.backend.curriculumpackage.CurriculumRuntimeSnapshot.PackageDescriptor(
+                "offer", "1", "offer@1", "a", "a", "a", "a", "a", List.of(), List.of(LearningUnitOfferBindings.CAPABILITY))));
+        when(snapshot.artifactsByRole()).thenReturn(artifacts);
+        when(snapshot.landscapesById()).thenReturn(Map.of()); when(snapshot.viewsById()).thenReturn(Map.of());
+        var provider = mock(com.skillpilot.backend.curriculumpackage.CurriculumRuntimeSnapshotProvider.class); when(provider.current()).thenReturn(snapshot);
+        @SuppressWarnings("unchecked") org.springframework.beans.factory.ObjectProvider<com.skillpilot.backend.curriculumpackage.CurriculumRuntimeSnapshotProvider> providers = mock(org.springframework.beans.factory.ObjectProvider.class);
+        when(providers.getIfAvailable()).thenReturn(provider);
+        var resolver = mock(CompletionCanonicalGraphResolver.class);
+        var units = new LearningUnitApplicationService(new LandscapeProperties(), mapper, f.landscapes(), resolver, "package", providers);
+        assertThat(units.catalog().quarantined()).isEmpty(); assertThat(units.hasContracts()).isTrue();
+        ReflectionTestUtils.setField(f.service(), "learningUnitApplicationService", units);
+        var state = mock(com.skillpilot.backend.curriculumpackage.PackageLandscapeMappingState.class);
+        when(state.packageId()).thenReturn("offer"); when(state.targetLandscapeId()).thenReturn("base");
+        when(state.sourceLandscapesById()).thenReturn(Map.of("legacy", new com.skillpilot.backend.curriculumpackage.PackageLandscapeMappingState.SourceLandscapeMetadata(
+                "legacy", "DE-HE", "Math", "SekI", List.of("source"))));
+        var merged = mock(com.skillpilot.backend.curriculumpackage.PackageLandscapeMappingState.Merged.class); when(merged.packageStates()).thenReturn(List.of(state));
+        Map<String, Map<String, byte[]>> selected = ReflectionTestUtils.invokeMethod(com.skillpilot.backend.curriculumpackage.PackageCurriculumDomainState.class,
+                "readNativeMappingDocuments", snapshot, mapper);
+        var mappings = new GoalMappingService(merged, mapper, selected);
+        assertThat(mappings.operationalProjectionAvailable()).isFalse();
+        ReflectionTestUtils.setField(f.service(), "goalMappingService", mappings);
+        f.mastery().put("legacy-understanding", 1.0);
+        assertThat(f.service().getMasteryResponse("learner").learningUnits().recognizedGoalIds()).isEmpty();
+        f.mastery().put("Q", 1.0);
+        var response = f.service().getMasteryResponse("learner");
+        assertThat(response.mastery()).containsEntry("Q", 1.0).doesNotContainKeys("A", "B");
+        assertThat(response.learningUnits().calculationStatus()).isEqualTo("valid");
+        assertThat(response.learningUnits().recognizedGoalIds()).containsExactly("A", "B");
+        assertThat(response.learningUnits().offerBinding().status()).isEqualTo("unavailable");
+        assertThat(response.learningUnits().voluntaryGoalIds()).isEmpty();
+        assertThatThrownBy(() -> ReflectionTestUtils.invokeMethod(f.service(), "getGoalProjection", "base", null))
+                .isInstanceOf(GoalMappingService.ProjectionUnavailableException.class);
+        assertThatThrownBy(() -> f.service().getRichFrontier("learner")).isInstanceOf(GoalMappingService.ProjectionUnavailableException.class);
+        assertThatThrownBy(() -> f.service().setActiveGoal("learner", "A")).isInstanceOf(GoalMappingService.ProjectionUnavailableException.class);
+        assertThatThrownBy(() -> f.service().setMastery("learner", new com.skillpilot.backend.api.MasteryUpdateRequest(Map.of("Q", 1.0), "Q")))
+                .isInstanceOf(GoalMappingService.ProjectionUnavailableException.class);
+        verify(f.masteryRepository(), never()).save(any()); verify(f.cardStates(), never()).save(any());
+    }
+
+    private static String hash(byte[] bytes) throws Exception {
+        return java.util.HexFormat.of().formatHex(java.security.MessageDigest.getInstance("SHA-256").digest(bytes));
+    }
+
+    @Test void malformedOperationalMappingBlocksCurrentScopeAndWritesButPreservesTrustedGlobalRecognition() throws Exception {
+        var f = fixture(false);
+        var state = mock(com.skillpilot.backend.curriculumpackage.PackageLandscapeMappingState.class);
+        when(state.packageId()).thenReturn("offer");
+        when(state.targetLandscapeId()).thenReturn("base");
+        when(state.sourceLandscapesById()).thenReturn(Map.of("legacy",
+                new com.skillpilot.backend.curriculumpackage.PackageLandscapeMappingState.SourceLandscapeMetadata(
+                        "legacy", "DE-HE", "Math", "SekI", List.of("source"))));
+        var merged = mock(com.skillpilot.backend.curriculumpackage.PackageLandscapeMappingState.Merged.class);
+        when(merged.packageStates()).thenReturn(List.of(state));
+        byte[] malformed = new ObjectMapper().writeValueAsBytes(Map.of("version", 99, "sourceLandscapeId", "legacy",
+                "targetLandscapeId", "base", "mappings", List.of()));
+        var mappings = new GoalMappingService(merged, new ObjectMapper(),
+                Map.of("offer", Map.of("DE/Gymnasium/mapping/AA/native.json", malformed)));
+        assertThat(mappings.operationalProjectionAvailable()).isFalse();
+        ReflectionTestUtils.setField(f.service(), "goalMappingService", mappings);
+        f.mastery().put("legacy-understanding", 1.0);
+        assertThat(f.service().getMasteryResponse("learner").learningUnits().recognizedGoalIds()).isEmpty();
+        f.mastery().put("Q", 1.0);
+        var global = f.service().getMasteryResponse("learner");
+        assertThat(global.mastery()).containsEntry("Q", 1.0).doesNotContainKeys("A", "B");
+        assertThat(global.learningUnits().calculationStatus()).isEqualTo("valid");
+        assertThat(global.learningUnits().recognizedGoalIds()).containsExactly("A", "B");
+        assertThat(global.learningUnits().offerBinding().status()).isEqualTo("unavailable");
+        assertThat(global.learningUnits().offerBinding().totalTargetCount()).isZero();
+        assertThat(global.learningUnits().units()).isEmpty();
+        assertThat(global.learningUnits().voluntaryGoalIds()).isEmpty();
+        assertThatThrownBy(() -> f.service().getRichFrontier("learner")).isInstanceOf(GoalMappingService.ProjectionUnavailableException.class);
+        assertThatThrownBy(() -> f.service().setActiveGoal("learner", "A")).isInstanceOf(GoalMappingService.ProjectionUnavailableException.class);
+        assertThatThrownBy(() -> f.service().setMastery("learner",
+                new com.skillpilot.backend.api.MasteryUpdateRequest(Map.of("Q", 1.0), "Q")))
+                .isInstanceOf(GoalMappingService.ProjectionUnavailableException.class);
+        verify(f.masteryRepository(), never()).save(any());
+        verify(f.cardStates(), never()).save(any());
+    }
+
     @Test void uncontractedMathEndpointsStayOpenInsteadOfReceivingLegacyVacuousCredit() throws Exception {
         var f = fixture(false);
         assertThat(f.service().getMasteryResponse("learner").learningUnits().recognizedGoalIds()).isEmpty();

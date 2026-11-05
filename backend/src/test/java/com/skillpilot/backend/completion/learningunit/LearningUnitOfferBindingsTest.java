@@ -104,6 +104,52 @@ class LearningUnitOfferBindingsTest {
         assertThat(fixture.catalog().compiled().digest()).isEqualTo(unchangedContractDigest);
     }
 
+    @Test void validCurrentOfferRequiresExactlyItsNativeMappingPathsAndHashesWithoutArchiveOrReviewUnion() throws Exception {
+        var fixture = fixture();
+        String nativePath = "DE/Gymnasium/mapping/AA/native.json";
+        byte[] mapping = mapper.writeValueAsBytes(Map.of("version", 1, "sourceLandscapeId", "legacy",
+                "targetLandscapeId", "math", "mappings", List.of()));
+        fixture.files().put(nativePath, mapping);
+        fixture.files().put("DE/Gymnasium/learning-units/sources/archive/mapping/old.json", mapping);
+        var review = (com.fasterxml.jackson.databind.node.ObjectNode) mapper.readTree(mapping);
+        review.put("reviewId", "review-only");
+        fixture.files().put("DE/Gymnasium/mapping/AA/review-metadata.json", mapper.writeValueAsBytes(review));
+        load(fixture, fixture.catalog(), List.of(row(scope("ALL"), "partial", List.of(UNIT), INPUT)), ignored -> {});
+        byte[] bytes = fixture.files().get(BINDER);
+        var pointer = new LearningUnitCatalog.CurrentOfferBinding(BINDER, LearningUnitCatalogTest.hash(bytes));
+        Map<String, String> exact = Map.of(nativePath, LearningUnitCatalogTest.hash(mapping));
+        var valid = LearningUnitOfferBindings.load(pointer, fixture.files()::get, fixture.catalog(),
+                ignored -> {}, (path, input) -> {}, mapper, exact);
+        assertThat(valid.resolve(context(scope("ALL"), TARGETS)).status()).isEqualTo("valid");
+        for (Map<String, String> wrong : List.of(Map.<String, String>of(), Map.of(nativePath, "0".repeat(64)),
+                Map.of(nativePath, LearningUnitCatalogTest.hash(mapping), "DE/Gymnasium/mapping/AA/extra.json", LearningUnitCatalogTest.hash(mapping)))) {
+            var unavailable = LearningUnitOfferBindings.load(pointer, fixture.files()::get, fixture.catalog(),
+                    ignored -> {}, (path, input) -> {}, mapper, wrong);
+            assertThat(unavailable.resolve(context(scope("ALL"), TARGETS)).status()).isEqualTo("unavailable");
+        }
+        assertThat(new LearningUnitEvaluator().evaluate(fixture.catalog().compiled(), Set.of("Q")).recognizedGoalIds()).containsExactly("A");
+    }
+
+    @Test void malformedLiveMappingCannotProduceAHealthySubsetEvenWithMatchingDeclaredDigests() throws Exception {
+        for (String bad : List.of("{\"version\":1,\"sourceLandscapeId\":\"legacy\",\"targetLandscapeId\":\"math\",\"mappings\":\"broken\"}", "{")) {
+            var fixture = fixture();
+            String goodPath = "DE/Gymnasium/mapping/AA/good.json", badPath = "DE/Gymnasium/mapping/AA/bad.json";
+            fixture.files().put(goodPath, mapper.writeValueAsBytes(Map.of("version", 1, "sourceLandscapeId", "legacy",
+                    "targetLandscapeId", "math", "mappings", List.of())));
+            fixture.files().put(badPath, bad.getBytes(StandardCharsets.UTF_8));
+            load(fixture, fixture.catalog(), List.of(row(scope("ALL"), "partial", List.of(UNIT), INPUT)), ignored -> {});
+            byte[] bytes = fixture.files().get(BINDER);
+            var pointer = new LearningUnitCatalog.CurrentOfferBinding(BINDER, LearningUnitCatalogTest.hash(bytes));
+            Map<String, String> exact = Map.of(goodPath, LearningUnitCatalogTest.hash(fixture.files().get(goodPath)),
+                    badPath, LearningUnitCatalogTest.hash(fixture.files().get(badPath)));
+            for (Map<String, String> declared : List.of(exact, Map.of(goodPath, exact.get(goodPath)))) {
+                var loaded = LearningUnitOfferBindings.load(pointer, fixture.files()::get, fixture.catalog(),
+                        ignored -> {}, (path, input) -> {}, mapper, declared);
+                assertThat(loaded.resolve(context(scope("ALL"), TARGETS)).status()).isEqualTo("unavailable");
+            }
+        }
+    }
+
     private LearningUnitOfferBindings load(Fixture f, LearningUnitCatalog catalog,
             List<LearningUnitOfferBindings.Offer> rows, java.util.function.Consumer<LearningUnitDefinition> validator) throws Exception {
         return load(f, catalog, rows, validator, () -> {});

@@ -272,14 +272,20 @@ public class LearnerService {
         if (learningUnitApplicationService == null) return null;
         Learner learner = getLearner(skillpilotId);
         var units = learningUnitRecognition(learner, explicitMastery);
-        Set<String> targets = learner.getSelectedCurriculum() == null ? Set.of()
-                : getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum()).targetGoalIds();
-        var read = readMastery(skillpilotId);
-        var model = learningUnitApplicationService.readModel(units, learningUnitOfferContext(learner), read.unavailableRecallGoalIds());
-        if (model == null || units.recognizedGoalIds().isEmpty()) return model;
-        List<String> voluntary = getUncompactedRichFrontier(skillpilotId).stream().map(FrontierGoal::id)
-                .filter(targets::contains).filter(units.recognizedGoalIds()::contains).toList();
-        return model.withVoluntaryGoalIds(voluntary);
+        try {
+            if (goalMappingService != null) goalMappingService.requireOperationalProjection();
+            Set<String> targets = learner.getSelectedCurriculum() == null ? Set.of()
+                    : getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum()).targetGoalIds();
+            var read = readMastery(skillpilotId);
+            var model = learningUnitApplicationService.readModel(units, learningUnitOfferContext(learner), read.unavailableRecallGoalIds());
+            if (model == null || units.recognizedGoalIds().isEmpty()) return model;
+            List<String> voluntary = getUncompactedRichFrontier(skillpilotId).stream().map(FrontierGoal::id)
+                    .filter(targets::contains).filter(units.recognizedGoalIds()::contains).toList();
+            return model.withVoluntaryGoalIds(voluntary);
+        } catch (GoalMappingService.ProjectionUnavailableException unavailable) {
+            return learningUnitApplicationService.readModelWithUnavailableOffer(units,
+                    readMastery(skillpilotId).unavailableRecallGoalIds());
+        }
     }
 
     /** Uses the normal Level-2 projector; focus, locale and other subjects do not enter the Math key. */
@@ -2904,8 +2910,14 @@ public class LearnerService {
         }
         String curriculumId = learner.getSelectedCurriculum();
         Map<String, LearningGoal> goals = Collections.emptyMap();
-        if (curriculumId != null) {
-            goals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
+        boolean projectionUnavailable = false;
+        try {
+            if (goalMappingService != null) goalMappingService.requireOperationalProjection();
+            if (curriculumId != null) {
+                goals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
+            }
+        } catch (GoalMappingService.ProjectionUnavailableException unavailable) {
+            projectionUnavailable = true;
         }
         if (learningUnitApplicationService != null && learningUnitApplicationService.hasContracts()) {
             Map<String, LearningGoal> union = new LinkedHashMap<>(goals);
@@ -2913,7 +2925,8 @@ public class LearnerService {
             goals = union;
         }
         String projectionStateFilterId = resolveProjectionStateFilterId(learner);
-        Map<String, Double> projected = new LinkedHashMap<>(applyCanonicalMasteryProjection(goals, result, projectionStateFilterId));
+        Map<String, Double> projected = projectionUnavailable ? new LinkedHashMap<>(result)
+                : new LinkedHashMap<>(applyCanonicalMasteryProjection(goals, result, projectionStateFilterId));
         Map<String, Double> unitExplicit = learningUnitApplicationService == null ? new LinkedHashMap<>(result)
                 : learningUnitApplicationService.normalizeExplicitResults(result);
         Set<String> unitOwned = learningUnitApplicationService == null ? Set.of()
@@ -11013,6 +11026,7 @@ public class LearnerService {
             String curriculumId,
             String personalCurriculumJson,
             boolean ignoreCourseFilters) {
+        if (goalMappingService != null) goalMappingService.requireOperationalProjection();
         ProjectionComputationCache cache = transactionProjectionCache();
         if (cache == null) {
             return computeGoalProjection(curriculumId, personalCurriculumJson, ignoreCourseFilters);

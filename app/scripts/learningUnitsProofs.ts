@@ -10,7 +10,7 @@ const repo = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const work = resolve(repo, 'tmp/math-learning-units')
 const args = process.argv.slice(2)
 const mode = args.shift()
-assert.ok(mode === 'admission' || mode === 'performance', 'Usage: learningUnitsProofs.ts admission --model <root> | performance [--native-inventory <json>] [--canonical <json>] [--publish-report]')
+assert.ok(mode === 'admission' || mode === 'performance' || mode === 'installed-offers', 'Usage: learningUnitsProofs.ts installed-offers --store <provisioned-store> [--native-inventory <report>] | admission --model <root> | performance [--native-inventory <json>] [--canonical <json>] [--publish-report]')
 const option = (name: string, fallback?: string) => {
   const index = args.indexOf(name)
   if (index < 0) return fallback
@@ -24,16 +24,19 @@ const inputPath = (name: string, fallback?: string) => {
   assert.ok(existsSync(path), `Missing input: ${path}`)
   return path
 }
-const output = resolve(process.cwd(), option('--output', resolve(work, mode === 'admission' ? 'actual-produced-runtime12-admission.json' : 'prerequisite-performance.json'))!)
+const output = resolve(process.cwd(), option('--output', resolve(work, mode === 'admission' ? 'actual-produced-runtime12-admission.json' : mode === 'installed-offers' ? 'actual-installed-offer-182-parity.json' : 'prerequisite-performance.json'))!)
 mkdirSync(dirname(output), { recursive: true })
 const propertyArguments: string[] = []
 if (mode === 'admission') propertyArguments.push(`-PlearningUnitModelRoot=${inputPath('--model')}`, `-PlearningUnitAdmissionOutput=${output}`)
+else if (mode === 'installed-offers') propertyArguments.push(`-PlearningUnitPackageStore=${inputPath('--store')}`,
+  `-PlearningUnitNativeInventory=${inputPath('--native-inventory', resolve(work, 'native-backend.raw.json'))}`,
+  `-PlearningUnitInstalledOfferOutput=${output}`)
 else propertyArguments.push(`-PlearningUnitNativeInventory=${inputPath('--native-inventory', resolve(work, 'native-backend.raw.json'))}`,
   `-PlearningUnitCanonicalSource=${inputPath('--canonical', resolve(repo, 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'))}`,
   `-PlearningUnitBenchmarkOutput=${output}`)
 if (!args.includes('--reports-only')) {
   execFileSync('./gradlew', ['--no-daemon', '--max-workers=1', '--init-script', '../app/scripts/learningUnits/proofs.init.gradle',
-    mode === 'admission' ? 'actualProducedLearningUnitAdmission' : 'learningUnitPrerequisiteBenchmark', ...propertyArguments], {
+    mode === 'admission' ? 'actualProducedLearningUnitAdmission' : mode === 'installed-offers' ? 'actualInstalledLearningUnitOffers' : 'learningUnitPrerequisiteBenchmark', ...propertyArguments], {
     cwd: resolve(repo, 'backend'), stdio: 'inherit', env: { ...process.env,
       GRADLE_USER_HOME: process.env.GRADLE_USER_HOME ?? resolve(repo, 'tmp/chatgpt-coach-gradle-user-home') },
   })
@@ -48,10 +51,32 @@ const shared = {
   javaVersion: report.javaVersion, javaVendor: report.javaVendor,
   rawReportSha256: digest(rawBytes), productionClassSha256: report.productionClassSha256,
   harnessSourceSha256: digest(readFileSync(resolve(repo, 'app/scripts/learningUnits', mode === 'admission'
-    ? 'ActualProducedLearningUnitAdmission.java' : 'LearningUnitPrerequisiteBenchmark.java'))),
+    ? 'ActualProducedLearningUnitAdmission.java' : mode === 'installed-offers' ? 'ActualInstalledLearningUnitOffers.java' : 'LearningUnitPrerequisiteBenchmark.java'))),
 }
 let publicReport: Record<string, unknown>
-if (mode === 'admission') {
+if (mode === 'installed-offers') {
+  assert.equal(report.proof, 'actual-installed-learning-unit-offers-182-native-parity')
+  assert.equal(report.repositoryNativeScopeCount, 182)
+  assert.equal(report.actualPackageScopeCount, 182)
+  assert.equal(report.all182ActualNativeProjectionsEqual, true)
+  assert.deepEqual(report.quarantinedContracts, {})
+  assert.ok(report.scopes.every((scope: {exactActualProjectionParity: boolean}) => scope.exactActualProjectionParity))
+  publicReport = { ...shared, proof: report.proof, packageGenerationSha256: report.packageGenerationSha256,
+    packages: report.packages, repositoryNativeReportSha256: report.repositoryNativeReportSha256,
+    repositoryNativeScopeCount: report.repositoryNativeScopeCount, actualPackageScopeCount: report.actualPackageScopeCount,
+    all182ActualNativeProjectionsEqual: true, admittedContractCount: report.admittedContractCount,
+    quarantinedContracts: report.quarantinedContracts, scopes: report.scopes,
+    installedEntryView: report.installedEntryView, installedEntryDefaultOffering: report.installedEntryDefaultOffering,
+    entryNavigationController: report.entryNavigationController,
+    operationalNativeMappingInputSha256: report.operationalNativeMappingInputSha256,
+    operationalNativeMappingTupleCount: report.operationalNativeMappingTupleCount,
+    operationalNativeMappingTupleSha256: report.operationalNativeMappingTupleSha256,
+    compiledReviewEvidenceMappingTupleCount: report.compiledReviewEvidenceMappingTupleCount,
+    coherentPublicMastery: report.coherentPublicMastery, directMathOfferStatus: report.directMathOfferStatus,
+    measurement: report.measurement,
+    evidenceBoundary: 'Exact provisioned ZIP loaded by the real JsonCurriculumPackageLoader and native services under its own Entry; all182 projections compared to actual repository outputs. Repositories mocked; no HTTP/SQL or host acceptance claim.',
+    reproduction: 'cd app && npx tsx scripts/learningUnitsProofs.ts installed-offers --store <provisioned-store> --native-inventory <actual-repository-report>' }
+} else if (mode === 'admission') {
   assert.equal(report.proof, 'actual-produced-runtime-1.2-cold-java-admission')
   assert.deepEqual(report.quarantinedContracts, {})
   assert.deepEqual(report.coldEmptyMasteryRecognition, [])
@@ -81,7 +106,7 @@ if (mode === 'admission') {
     reproduction: 'cd app && npx tsx scripts/learningUnitsProofs.ts performance --native-inventory <native-inventory.json> --canonical <canonical-math.json> --publish-report' }
 }
 if (args.includes('--publish-report')) {
-  const path = resolve(repo, `docs/dev/learning-units-mathematics-${mode === 'admission' ? 'produced-model-admission' : 'local-performance'}.json`)
+  const path = resolve(repo, `docs/dev/learning-units-mathematics-${mode === 'admission' ? 'produced-model-admission' : mode === 'installed-offers' ? 'installed-offer-parity' : 'local-performance'}.json`)
   writeFileSync(path, `${compactScalarArrays(publicReport)}\n`)
   console.log(`Published local ${mode} proof: ${path}`)
 } else console.log(JSON.stringify({ mode, proof: report.proof, rawReport: output }))

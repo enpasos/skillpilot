@@ -819,7 +819,7 @@ public final class PackageCompositionViewState {
                     immutableOrderedMap(rootGoalIdsByLandscape),
                     immutableOrderedMap(landscapeByGoal),
                     immutableOrderedMap(contains),
-                    immutableOrderedMap(parents), new HashMap<>());
+                    immutableOrderedMap(parents), new java.util.concurrent.ConcurrentHashMap<>());
         }
 
         private boolean isGoalVisibleFrom(String landscapeId, String goalId) {

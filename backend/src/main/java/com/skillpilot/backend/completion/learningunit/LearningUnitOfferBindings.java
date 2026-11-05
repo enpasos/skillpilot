@@ -72,6 +72,13 @@ public final class LearningUnitOfferBindings {
             LearningUnitCatalog.InputSource source, LearningUnitCatalog catalog,
             Consumer<LearningUnitDefinition> currentUnitValidator, InputValidator currentInputValidator,
             ObjectMapper mapper) {
+        return load(pointer, source, catalog, currentUnitValidator, currentInputValidator, mapper, null);
+    }
+
+    public static LearningUnitOfferBindings load(LearningUnitCatalog.CurrentOfferBinding pointer,
+            LearningUnitCatalog.InputSource source, LearningUnitCatalog catalog,
+            Consumer<LearningUnitDefinition> currentUnitValidator, InputValidator currentInputValidator,
+            ObjectMapper mapper, Map<String, String> nativeMappingInputs) {
         if (pointer == null) return unavailable("Current offer binding is absent");
         try {
             String path = LearningUnitCatalog.checkedPath(pointer.path());
@@ -96,6 +103,20 @@ public final class LearningUnitOfferBindings {
                     if (!sha256(inputBytes).equals(input.getValue())) throw new IllegalArgumentException("Runtime input digest differs");
                     inputBytesByPath.put(inputPath, inputBytes);
                 } catch (Exception invalid) { inputFailures.put(input.getKey(), invalid.getMessage()); }
+            }
+            if (nativeMappingInputs != null) {
+                Map<String, String> declaredMappings = new java.util.TreeMap<>();
+                for (var input : inputBytesByPath.entrySet()) {
+                    if (com.skillpilot.backend.landscape.GoalMappingService.isNativeOperationalMappingCandidate(input.getKey(), input.getValue(), mapper)) {
+                        declaredMappings.put(input.getKey(), manifest.inputs().get(input.getKey()));
+                        if (!com.skillpilot.backend.landscape.GoalMappingService.isNativeMappingDocument(mapper.readTree(input.getValue()))) {
+                            throw new IllegalArgumentException("Malformed operational native mapping input: " + input.getKey());
+                        }
+                    }
+                }
+                if (nativeMappingInputs.isEmpty() || !declaredMappings.equals(nativeMappingInputs)) {
+                    throw new IllegalArgumentException("Current offer does not bind the exact operational native mapping path/hash set");
+                }
             }
             Set<String> provenanceOnly = LearningUnitEntryDerivation.validate(manifest.entryDerivation(), inputBytesByPath, mapper);
             for (var input : inputBytesByPath.entrySet()) if (!provenanceOnly.contains(input.getKey())) {

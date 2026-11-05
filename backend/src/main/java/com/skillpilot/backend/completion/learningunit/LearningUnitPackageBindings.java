@@ -24,6 +24,7 @@ public final class LearningUnitPackageBindings {
     private String currentMappingFailure;
     private final CurriculumRuntimeSnapshot snapshot;
     private final ObjectMapper mapper;
+    private Map<String, String> nativeMappingInputDigests;
 
     public LearningUnitPackageBindings(CurriculumRuntimeSnapshot snapshot, Map<String, byte[]> pinnedInputs,
                                        ObjectMapper mapper) throws Exception {
@@ -35,6 +36,7 @@ public final class LearningUnitPackageBindings {
             JsonNode document;
             try { document = mapper.readTree(input.getValue()); }
             catch (java.io.IOException malformed) { continue; } // The owning frozen contract/offer records its own failure.
+            if (document == null) continue;
             if (document.path("viewId").isTextual()) viewsByDigest.put(rawDigest(input.getValue()), document);
             if ("semantic-kind-ledger".equals(document.path("documentType").asText())) {
                 for (JsonNode decision : document.path("decisions")) {
@@ -48,6 +50,22 @@ public final class LearningUnitPackageBindings {
             installedLandscapes.put(landscape.landscapeId(), mapper.readTree(landscape.json()));
         }
         if (snapshot.packages().stream().anyMatch(pkg -> pkg.capabilities().contains(LearningUnitOfferBindings.CAPABILITY))) {
+            nativeMappingInputDigests = new java.util.TreeMap<>();
+            Set<String> operationalPackages = snapshot.packages().stream()
+                    .filter(pkg -> pkg.capabilities().contains(LearningUnitOfferBindings.CAPABILITY))
+                    .map(CurriculumRuntimeSnapshot.PackageDescriptor::packageId).collect(java.util.stream.Collectors.toSet());
+            for (var artifact : snapshot.artifactsByRole().getOrDefault(LearningUnitCatalog.INPUT_ROLE, java.util.List.of())) {
+                if (!operationalPackages.contains(artifact.packageId())) continue;
+                String path = mapper.readTree(artifact.contentBytes()).path("definition").path("sourcePath").asText();
+                if (com.skillpilot.backend.landscape.GoalMappingService.isNativeOperationalMappingPath(path)) {
+                    byte[] bytes = pinnedInputs.get(path);
+                    if (bytes == null) throw new IllegalArgumentException("Native operational mapping has no exact input wrapper");
+                    if (com.skillpilot.backend.landscape.GoalMappingService.isNativeOperationalMappingCandidate(path, bytes, mapper)) {
+                        nativeMappingInputDigests.put(path, rawDigest(bytes));
+                    }
+                }
+            }
+            nativeMappingInputDigests = java.util.Collections.unmodifiableMap(nativeMappingInputDigests);
             for (var artifact : snapshot.artifactsByRole().getOrDefault("mapping", java.util.List.of())) {
                 try {
                     JsonNode mapping = mapper.readTree(artifact.contentBytes());
@@ -62,6 +80,9 @@ public final class LearningUnitPackageBindings {
             }
         }
     }
+
+    /** Null for legacy packages; otherwise exact live native inputs, never archived copies. */
+    public Map<String, String> nativeMappingInputDigests() { return nativeMappingInputDigests; }
 
     public Map<String, LearningGoal> validateAndRestoreSourceMeanings(LearningUnitDefinition definition,
                                                                      Map<String, LearningGoal> installedGoals) {
@@ -103,6 +124,10 @@ public final class LearningUnitPackageBindings {
     public void validateCurrentOfferInput(String path, byte[] pinnedBytes) throws Exception {
         if (!path.endsWith(".json")) return; // Exact review bytes were already pinned by the offer loader.
         JsonNode source = mapper.readTree(pinnedBytes);
+        if (com.skillpilot.backend.landscape.GoalMappingService.isNativeOperationalMappingCandidate(path, pinnedBytes, mapper)
+                && !com.skillpilot.backend.landscape.GoalMappingService.isNativeMappingDocument(source)) {
+            fail("INVALID_SOURCE_BINDING", "Malformed current native mapping input: " + path);
+        }
         if (LearningUnitPackageRegistryBindings.supports(path)) {
             if (currentMappingFailure != null) fail("INVALID_SOURCE_BINDING", currentMappingFailure);
             LearningUnitPackageRegistryBindings.validate(path, pinnedBytes, source, pinnedInputs,

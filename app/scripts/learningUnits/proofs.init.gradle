@@ -32,6 +32,12 @@ allprojects { project ->
             [project.file(project.property('learningUnitModelRoot')),
              selectedFile('learningUnitAdmissionOutput', new File(work, 'actual-produced-runtime12-admission.json'))]
         })
+        registerProof('actualInstalledLearningUnitOffers', 'ActualInstalledLearningUnitOffers', '1200m', {
+            if (!project.hasProperty('learningUnitPackageStore')) throw new GradleException('Pass -PlearningUnitPackageStore=/absolute/provisioned-store')
+            [project.file(project.property('learningUnitPackageStore')),
+             selectedFile('learningUnitNativeInventory', new File(work, 'native-backend.raw.json')),
+             selectedFile('learningUnitInstalledOfferOutput', new File(work, 'actual-installed-offer-182-parity.json'))]
+        })
         registerProof('learningUnitPrerequisiteBenchmark', 'LearningUnitPrerequisiteBenchmark', '900m', {
             [selectedFile('learningUnitNativeInventory', new File(work, 'native-backend.raw.json')),
              selectedFile('learningUnitCanonicalSource', new File(repo, 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json')),

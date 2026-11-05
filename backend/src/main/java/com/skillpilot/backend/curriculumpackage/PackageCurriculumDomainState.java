@@ -3,6 +3,8 @@ package com.skillpilot.backend.curriculumpackage;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.completion.learningunit.LearningUnitOfferBindings;
+import com.skillpilot.backend.completion.learningunit.LearningUnitApplicationService;
+import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.landscape.SkillLandscape;
 import java.util.ArrayList;
@@ -32,6 +34,7 @@ public final class PackageCurriculumDomainState {
     private final Map<String, String> landscapeIdByGoalId;
     private final List<String> rootLandscapeIds;
     private final PackageLandscapeMappingState.Merged mappingState;
+    private final Map<String, Map<String, byte[]>> nativeMappingDocumentsByPackage;
 
     private PackageCurriculumDomainState(
             String generationSha256,
@@ -39,13 +42,15 @@ public final class PackageCurriculumDomainState {
             Map<String, SkillLandscape> landscapesById,
             Map<String, String> landscapeIdByGoalId,
             List<String> rootLandscapeIds,
-            PackageLandscapeMappingState.Merged mappingState) {
+            PackageLandscapeMappingState.Merged mappingState,
+            Map<String, Map<String, byte[]>> nativeMappingDocumentsByPackage) {
         this.generationSha256 = generationSha256;
         this.landscapes = List.copyOf(landscapes);
         this.landscapesById = immutableOrderedMap(landscapesById);
         this.landscapeIdByGoalId = immutableOrderedMap(landscapeIdByGoalId);
         this.rootLandscapeIds = List.copyOf(rootLandscapeIds);
         this.mappingState = Objects.requireNonNull(mappingState, "mappingState");
+        this.nativeMappingDocumentsByPackage = nativeMappingDocumentsByPackage;
     }
 
     static PackageCurriculumDomainState load(
@@ -154,7 +159,8 @@ public final class PackageCurriculumDomainState {
                 landscapesById,
                 landscapeIdByGoalId,
                 snapshot.rootLandscapeIds(),
-                PackageLandscapeMappingState.merge(packageMappingStates));
+                PackageLandscapeMappingState.merge(packageMappingStates),
+                readNativeMappingDocuments(snapshot, objectMapper));
     }
 
     public String generationSha256() {
@@ -179,6 +185,52 @@ public final class PackageCurriculumDomainState {
 
     public PackageLandscapeMappingState.Merged mappingState() {
         return mappingState;
+    }
+
+    /** Compiled publication evidence stays separate from native operational projection inputs. */
+    public Map<String, Map<String, byte[]>> nativeMappingDocumentsByPackage() {
+        Map<String, Map<String, byte[]>> result = new LinkedHashMap<>();
+        nativeMappingDocumentsByPackage.forEach((packageId, documents) -> {
+            Map<String, byte[]> copy = new LinkedHashMap<>();
+            documents.forEach((path, bytes) -> copy.put(path, bytes.clone()));
+            result.put(packageId, Collections.unmodifiableMap(copy));
+        });
+        return Collections.unmodifiableMap(result);
+    }
+
+    public Set<String> nativeMappingSourceLandscapeIds() {
+        Set<String> sources = new LinkedHashSet<>();
+        for (var state : mappingState.packageStates()) if (nativeMappingDocumentsByPackage.containsKey(state.packageId()))
+            sources.addAll(state.sourceLandscapesById().keySet());
+        return Set.copyOf(sources);
+    }
+
+    private static Map<String, Map<String, byte[]>> readNativeMappingDocuments(
+            CurriculumRuntimeSnapshot snapshot, ObjectMapper mapper) {
+        Map<String, Map<String, byte[]>> result = new LinkedHashMap<>();
+        for (var pkg : snapshot.packages()) {
+            if (!pkg.capabilities().contains(LearningUnitOfferBindings.CAPABILITY)) continue;
+            Map<String, byte[]> documents = new java.util.TreeMap<>();
+            try {
+                Map<String, byte[]> inputs = LearningUnitApplicationService.packageInputs(snapshot, mapper, pkg.packageId());
+                // Only verified input wrappers in the original live mapping namespace qualify.
+                // Archived source copies, contracts, catalogs and review files are never unioned.
+                for (var artifact : snapshot.artifactsByRole().getOrDefault(
+                        com.skillpilot.backend.completion.learningunit.LearningUnitCatalog.INPUT_ROLE, List.of())) {
+                    if (!pkg.packageId().equals(artifact.packageId())) continue;
+                    String path = mapper.readTree(artifact.contentBytes()).path("definition").path("sourcePath").asText();
+                    if (GoalMappingService.isNativeOperationalMappingCandidate(path, inputs.get(path), mapper)) {
+                        documents.put(path, inputs.get(path));
+                    }
+                }
+            } catch (Exception invalid) {
+                // The mapper exposes a missing/invalid operational input explicitly at use;
+                // an unrelated current-offer failure never changes frozen contract admission.
+                documents.clear();
+            }
+            result.put(pkg.packageId(), Collections.unmodifiableMap(documents));
+        }
+        return Collections.unmodifiableMap(result);
     }
 
     private static SkillLandscape parseLandscape(

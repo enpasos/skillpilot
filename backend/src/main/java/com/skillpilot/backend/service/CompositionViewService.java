@@ -494,6 +494,22 @@ public class CompositionViewService {
         return findRepositoryMatchingView(landscapeId, requestedScope, false);
     }
 
+    /** Exact published entry navigation; this does not resolve a subject's learner scope. */
+    public Map<String, Object> findEntryNavigationView(String landscapeId, Map<String, String> requestedScope) {
+        if (packageState == null || !StringUtils.hasText(landscapeId) || requestedScope == null
+                || !requestedScope.keySet().equals(Set.of("schoolForm"))
+                || !StringUtils.hasText(requestedScope.get("schoolForm"))) return null;
+        var offering = packageState.defaultOfferingsByLandscapeId().get(landscapeId.trim());
+        if (offering == null || !"single".equals(offering.resolutionMode())
+                || !offering.scope().equals(normalizeScope(requestedScope))) return null;
+        var view = packageState.resolveOfferingDocument(offering.offeringId());
+        var roots = asNodeList(view.get("rootNodes"));
+        if (roots.size() != 1 || !roots.getFirst().keySet().equals(Set.of("kind", "landscapeId"))
+                || !"landscapeEntry".equals(roots.getFirst().get("kind"))) return null;
+        // Package state has already validated the directed canonical root containment.
+        return view;
+    }
+
     private Map<String, Object> findRepositoryMatchingView(
             String landscapeId,
             Map<String, String> requestedScope,

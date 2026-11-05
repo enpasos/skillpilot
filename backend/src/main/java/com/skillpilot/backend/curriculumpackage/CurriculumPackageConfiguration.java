@@ -111,8 +111,8 @@ public class CurriculumPackageConfiguration {
     }
 
     @Bean
-    GoalMappingService packageGoalMappingService(PackageCurriculumDomainState domainState) {
-        return new GoalMappingService(domainState.mappingState());
+    GoalMappingService packageGoalMappingService(PackageCurriculumDomainState domainState, ObjectMapper mapper) {
+        return new GoalMappingService(domainState.mappingState(), mapper, domainState.nativeMappingDocumentsByPackage());
     }
 
     @Bean

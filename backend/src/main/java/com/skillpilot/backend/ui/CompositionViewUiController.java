@@ -35,6 +35,9 @@ public class CompositionViewUiController {
         Map<String, Object> matchedView =
                 compositionViewService.findLearnerScopeView(landscapeId, requestedScope);
         if (matchedView == null) {
+            matchedView = compositionViewService.findEntryNavigationView(landscapeId, requestedScope);
+        }
+        if (matchedView == null) {
             return ResponseEntity.noContent().build();
         }
 

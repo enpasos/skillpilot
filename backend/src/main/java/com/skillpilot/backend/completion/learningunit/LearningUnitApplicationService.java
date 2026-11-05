@@ -140,7 +140,7 @@ public class LearningUnitApplicationService {
                             finalPackageBindings == null ? base : finalPackageBindings.restoreCurrentSourceMeanings(definition, base));
                 }, (path, bytes) -> {
                     if (finalPackageBindings != null) finalPackageBindings.validateCurrentOfferInput(path, bytes);
-                }, mapper);
+                }, mapper, finalPackageBindings == null ? null : finalPackageBindings.nativeMappingInputDigests());
                 active.clear();
                 active.addAll(loaded.activeContractRefs());
                 goals.putAll(loaded.masteryGoals());
@@ -310,6 +310,17 @@ public class LearningUnitApplicationService {
                         offer.coverage(), offer.rootContractRefs(), offer.coveredTargetCount(), offer.totalTargetCount(), offer.bindingDigest()));
     }
 
+    /** Technical current-projection failure cannot revoke a valid historical recognition. */
+    public LearningUnitsReadModel readModelWithUnavailableOffer(LearningUnitEvaluation evaluation,
+                                                                Set<String> unavailableRecallGoalIds) {
+        var model = readModel(evaluation, new LearningUnitOfferBindings.ResolvedOfferContext(
+                null, Set.of(), Set.of(), Set.of()), unavailableRecallGoalIds);
+        if (model == null) return null;
+        var offer = model.offerBinding();
+        return model.withOfferBinding(new LearningUnitsReadModel.OfferBinding("unavailable", offer.revision(),
+                null, null, List.of(), 0, 0, offer.bindingDigest()));
+    }
+
     /** Stable artifact identity for source locators outside the older 180-character path-ID schema. */
     public static String packageArtifactIdentity(String sourcePath) throws Exception {
         LearningUnitCatalog.checkedPath(sourcePath);
@@ -330,9 +341,15 @@ public class LearningUnitApplicationService {
     }
 
     public static Map<String, byte[]> packageInputs(CurriculumRuntimeSnapshot snapshot, ObjectMapper mapper) throws Exception {
+        return packageInputs(snapshot, mapper, null);
+    }
+
+    public static Map<String, byte[]> packageInputs(CurriculumRuntimeSnapshot snapshot, ObjectMapper mapper,
+                                                   String packageId) throws Exception {
         Map<String, byte[]> result = new LinkedHashMap<>();
         for (String role : List.of(LearningUnitCatalog.CATALOG_ROLE, LearningUnitCatalog.CONTRACT_ROLE, LearningUnitCatalog.INPUT_ROLE)) {
             for (var artifact : snapshot.artifactsByRole().getOrDefault(role, List.of())) {
+                if (packageId != null && !packageId.equals(artifact.packageId())) continue;
                 JsonNode wrapper = mapper.readTree(artifact.contentBytes());
                 JsonNode definition = wrapper.path("definition");
                 String sourcePath = LearningUnitCatalog.checkedPath(definition.path("sourcePath").asText());

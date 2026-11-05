@@ -66,6 +66,8 @@ class CompositionViewUiControllerTest {
                         "landscape-1",
                         Map.of("courseProfile", "GK+LK")))
                 .thenReturn(null);
+        when(service.findEntryNavigationView("landscape-1", Map.of("courseProfile", "GK+LK")))
+                .thenReturn(null);
         CompositionViewUiController controller = new CompositionViewUiController(service);
 
         assertThat(controller.matchCompositionView(

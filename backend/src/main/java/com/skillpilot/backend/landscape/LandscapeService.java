@@ -173,7 +173,19 @@ public class LandscapeService {
                         sourceLandscapeId, metadata.jurisdiction()));
         sourceLandscapeJurisdictionById = Collections.unmodifiableMap(jurisdictions);
         sourceAtomicGoalIdsByLandscapeAndGoal = Collections.emptyMap();
-        sourceLandscapeIdByGoalId = packageState.mappingState().sourceLandscapeBySourceGoalId();
+        Map<String, String> sourceOwners = new LinkedHashMap<>(packageState.mappingState().sourceLandscapeBySourceGoalId());
+        Set<String> nativeSources = packageState.nativeMappingSourceLandscapeIds();
+        sourceOwners.entrySet().removeIf(entry -> nativeSources.contains(entry.getValue()));
+        if (!nativeSources.isEmpty() && goalMappingService.operationalProjectionAvailable()) {
+            Map<String, Set<String>> ownersByGoal = new LinkedHashMap<>();
+            for (ResolvedGoalMapping mapping : goalMappingService.getAllMappings()) if (nativeSources.contains(mapping.sourceLandscapeId())) {
+                ownersByGoal.computeIfAbsent(mapping.legacyGoalId(), ignored -> new LinkedHashSet<>()).add(mapping.sourceLandscapeId());
+            }
+            ownersByGoal.forEach((goalId, owners) -> {
+                if (owners.size() == 1) sourceOwners.put(goalId, owners.iterator().next());
+            });
+        }
+        sourceLandscapeIdByGoalId = Collections.unmodifiableMap(sourceOwners);
         canonicalGoalProvenanceByGoalId = Collections.emptyMap();
         canonicalGoalApplicabilityOverridesByGoalId = Collections.emptyMap();
         canonicalJurisdictionApplicabilityByLandscapeId = new ConcurrentHashMap<>();

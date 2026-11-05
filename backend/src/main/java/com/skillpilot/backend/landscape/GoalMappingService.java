@@ -27,6 +27,12 @@ public class GoalMappingService {
     private final LandscapeProperties properties;
     private final ObjectMapper objectMapper;
     private final boolean packageBacked;
+    private String operationalMappingFailure;
+
+    /** An unavailable operational input must never use the review relation as fallback. */
+    public static final class ProjectionUnavailableException extends IllegalStateException {
+        public ProjectionUnavailableException(String message) { super(message); }
+    }
 
     private volatile List<ResolvedGoalMapping> cachedMappings = Collections.emptyList();
     private volatile Map<String, ResolvedGoalMapping> cachedByLegacyGoalId = Collections.emptyMap();
@@ -62,6 +68,75 @@ public class GoalMappingService {
     }
 
     private volatile boolean runtimeGenerationPinned;
+
+    /** Replays exact native documents only for capability-selected packages. */
+    public GoalMappingService(PackageLandscapeMappingState.Merged packageMappings, ObjectMapper mapper,
+                              Map<String, Map<String, byte[]>> nativeDocumentsByPackage) {
+        this.properties = null;
+        this.objectMapper = mapper;
+        this.packageBacked = true;
+        try {
+            MappingAccumulator nativeMappings = new MappingAccumulator();
+            List<ResolvedGoalMapping> compiled = new ArrayList<>();
+            for (var state : packageMappings.packageStates()) {
+                Map<String, byte[]> documents = nativeDocumentsByPackage.get(state.packageId());
+                if (documents == null) { compiled.addAll(state.mappings()); continue; }
+                if (documents.isEmpty()) throw new IllegalStateException("Native operational mapping inputs are missing: " + state.packageId());
+                for (String sourcePath : documents.keySet().stream().sorted().toList()) {
+                    if (!isNativeOperationalMappingPath(sourcePath)) throw new IllegalStateException("Native mapping input has an archived/review/non-mapping locator");
+                    JsonNode document = mapper.readTree(documents.get(sourcePath));
+                    if (document == null || !isGoalMappingFile(document)) throw new IllegalStateException("Native mapping input has no supported native mapping shape: " + sourcePath);
+                    var mappingFile = mapper.treeToValue(document, GoalMappingFile.class);
+                    if (!state.targetLandscapeId().equals(mappingFile.getTargetLandscapeId())
+                            || !state.sourceLandscapesById().containsKey(mappingFile.getSourceLandscapeId())) {
+                        throw new IllegalStateException("Native mapping input has an unbound package source/target identity: " + sourcePath);
+                    }
+                    addMappingFile(mappingFile, Path.of(sourcePath), nativeMappings);
+                }
+            }
+            List<ResolvedGoalMapping> combined = new ArrayList<>(compiled); combined.addAll(nativeMappings.mappings);
+            Map<String, List<ResolvedGoalMapping>> all = new LinkedHashMap<>();
+            combined.forEach(mapping -> all.computeIfAbsent(mapping.legacyGoalId(), ignored -> new ArrayList<>()).add(mapping));
+            Map<String, ResolvedGoalMapping> indexed = new LinkedHashMap<>();
+            all.forEach((id, mappings) -> {
+                if (nativeMappings.first.containsKey(id)) {
+                    if (mappings.size() != nativeMappings.all.get(id).size()) throw new IllegalStateException("Native and compiled package result keys collide: " + id);
+                    indexed.put(id, nativeMappings.first.get(id));
+                } else if (mappings.size() == 1) indexed.put(id, mappings.getFirst());
+            });
+            cachedMappings = List.copyOf(combined);
+            cachedAllByLegacyGoalId = immutableMappingLists(all);
+            cachedByLegacyGoalId = Collections.unmodifiableMap(indexed);
+        } catch (Exception invalid) {
+            operationalMappingFailure = "Native operational mapping projection is unavailable: " + invalid.getMessage();
+        }
+    }
+
+    public static boolean isNativeOperationalMappingPath(String sourcePath) {
+        if (sourcePath == null || !sourcePath.startsWith("DE/Gymnasium/mapping/")
+                || sourcePath.contains("/../") || sourcePath.contains("\\") || sourcePath.contains("/quality/")) return false;
+        String name = sourcePath.toLowerCase(Locale.ROOT);
+        return name.endsWith(".json") && !name.endsWith(".review.json");
+    }
+
+    /** Select candidates before validation: malformed live inputs must never disappear. */
+    public static boolean isNativeOperationalMappingCandidate(String sourcePath, byte[] bytes, ObjectMapper mapper) {
+        if (!isNativeOperationalMappingPath(sourcePath)) return false;
+        try {
+            JsonNode root = mapper.readTree(bytes);
+            return root == null || !isSourceExtractionReviewFile(root);
+        } catch (java.io.IOException malformed) {
+            return true; // The operational parser reports typed unavailability at use.
+        }
+    }
+
+    public boolean operationalProjectionAvailable() { return operationalMappingFailure == null; }
+
+    public String operationalProjectionFailure() { return operationalMappingFailure; }
+
+    public void requireOperationalProjection() {
+        if (operationalMappingFailure != null) throw new ProjectionUnavailableException(operationalMappingFailure);
+    }
 
     public void pinRuntimeGeneration() {
         if (packageBacked) return;
@@ -106,6 +181,7 @@ public class GoalMappingService {
     }
 
     private void ensureFresh() {
+        requireOperationalProjection();
         if (packageBacked || runtimeGenerationPinned) {
             return;
         }
@@ -165,9 +241,7 @@ public class GoalMappingService {
             return;
         }
 
-        List<ResolvedGoalMapping> loadedMappings = new ArrayList<>();
-        Map<String, ResolvedGoalMapping> byLegacyGoalId = new LinkedHashMap<>();
-        Map<String, List<ResolvedGoalMapping>> allByLegacyGoalId = new LinkedHashMap<>();
+        MappingAccumulator accumulator = new MappingAccumulator();
         long fingerprint = 1L;
 
         try {
@@ -198,45 +272,55 @@ public class GoalMappingService {
                     throw new IllegalStateException("Failed to parse goal mapping file " + file, e);
                 }
 
-                validateMappingFile(mappingFile, file);
-                List<ResolvedGoalMapping> resolved = mappingFile.getMappings().stream()
-                        .map(entry -> toResolvedMapping(mappingFile, entry, file))
-                        .toList();
-
-                for (ResolvedGoalMapping mapping : resolved) {
-                    List<ResolvedGoalMapping> existingMappings = allByLegacyGoalId.computeIfAbsent(
-                            mapping.legacyGoalId(), ignored -> new ArrayList<>());
-                    if (existingMappings.isEmpty()) {
-                        existingMappings.add(mapping);
-                        byLegacyGoalId.put(mapping.legacyGoalId(), mapping);
-                        loadedMappings.add(mapping);
-                        continue;
-                    }
-
-                    if (existingMappings.contains(mapping)) {
-                        continue;
-                    }
-
-                    for (ResolvedGoalMapping existing : existingMappings) {
-                        if ("exact".equals(existing.matchType()) || "exact".equals(mapping.matchType())) {
-                            throw new IllegalStateException(
-                                    "Conflicting goal mappings for legacyGoalId %s between %s and %s"
-                                            .formatted(mapping.legacyGoalId(), existing.sourceFile(), mapping.sourceFile()));
-                        }
-                    }
-                    existingMappings.add(mapping);
-                    loadedMappings.add(mapping);
-                }
+                addMappingFile(mappingFile, file, accumulator);
             }
         } catch (IOException e) {
             throw new IllegalStateException("Failed to load goal mappings from " + dir, e);
         }
 
-        cachedMappings = Collections.unmodifiableList(loadedMappings);
-        cachedByLegacyGoalId = Collections.unmodifiableMap(byLegacyGoalId);
-        cachedAllByLegacyGoalId = immutableMappingLists(allByLegacyGoalId);
+        cachedMappings = Collections.unmodifiableList(accumulator.mappings);
+        cachedByLegacyGoalId = Collections.unmodifiableMap(accumulator.first);
+        cachedAllByLegacyGoalId = immutableMappingLists(accumulator.all);
         lastLoadedFingerprint = fingerprint;
-        log.info("Loaded {} goal mappings from {}", loadedMappings.size(), dir);
+        log.info("Loaded {} goal mappings from {}", accumulator.mappings.size(), dir);
+    }
+
+    private static final class MappingAccumulator {
+        final List<ResolvedGoalMapping> mappings = new ArrayList<>();
+        final Map<String, ResolvedGoalMapping> first = new LinkedHashMap<>();
+        final Map<String, List<ResolvedGoalMapping>> all = new LinkedHashMap<>();
+    }
+
+    private void addMappingFile(GoalMappingFile mappingFile, Path file, MappingAccumulator accumulator) {
+        validateMappingFile(mappingFile, file);
+        List<ResolvedGoalMapping> resolved = mappingFile.getMappings().stream()
+                .map(entry -> toResolvedMapping(mappingFile, entry, file))
+                .toList();
+
+        for (ResolvedGoalMapping mapping : resolved) {
+            List<ResolvedGoalMapping> existingMappings = accumulator.all.computeIfAbsent(
+                    mapping.legacyGoalId(), ignored -> new ArrayList<>());
+            if (existingMappings.isEmpty()) {
+                existingMappings.add(mapping);
+                accumulator.first.put(mapping.legacyGoalId(), mapping);
+                accumulator.mappings.add(mapping);
+                continue;
+            }
+
+            if (existingMappings.contains(mapping)) {
+                continue;
+            }
+
+            for (ResolvedGoalMapping existing : existingMappings) {
+                if ("exact".equals(existing.matchType()) || "exact".equals(mapping.matchType())) {
+                    throw new IllegalStateException(
+                            "Conflicting goal mappings for legacyGoalId %s between %s and %s"
+                                    .formatted(mapping.legacyGoalId(), existing.sourceFile(), mapping.sourceFile()));
+                }
+            }
+            existingMappings.add(mapping);
+            accumulator.mappings.add(mapping);
+        }
     }
 
     private Map<String, List<ResolvedGoalMapping>> immutableMappingLists(
@@ -296,6 +380,11 @@ public class GoalMappingService {
     }
 
     private boolean isGoalMappingFile(JsonNode root) {
+        return isNativeMappingDocument(root);
+    }
+
+    public static boolean isNativeMappingDocument(JsonNode root) {
+        if (root == null || !root.isObject()) return false;
         return root.has("version")
                 && root.hasNonNull("sourceLandscapeId")
                 && root.hasNonNull("targetLandscapeId")
@@ -304,7 +393,7 @@ public class GoalMappingService {
                 && !isSourceExtractionReviewFile(root);
     }
 
-    private boolean isSourceExtractionReviewFile(JsonNode root) {
+    private static boolean isSourceExtractionReviewFile(JsonNode root) {
         return root.hasNonNull("reviewId")
                 || root.hasNonNull("sourceExtractionPath")
                 || root.has("decisions");

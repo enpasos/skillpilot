@@ -643,6 +643,36 @@ class PackageCompositionViewStateTest {
     }
 
     @Test
+    void exactEntryDefaultNavigationMatchesHttpWithoutInferringAMissingSubjectStage() throws Exception {
+        var snapshot = crossRootEntrySnapshot(true);
+        var original = snapshot.viewsById().get("view-entry");
+        Map<String, String> scope = Map.of("schoolForm", "Gymnasium");
+        var payload = (com.fasterxml.jackson.databind.node.ObjectNode) mapper.readTree(original.json());
+        payload.set("scope", mapper.valueToTree(scope));
+        var views = new LinkedHashMap<>(snapshot.viewsById());
+        views.put("view-entry", new CurriculumRuntimeSnapshot.ViewDescriptor(original.packageId(), original.viewId(),
+                original.landscapeId(), original.language(), scope, original.artifact(), mapper.writeValueAsString(payload)));
+        var offerings = new LinkedHashMap<>(snapshot.offeringsById());
+        offerings.put("offering-entry", new CurriculumRuntimeSnapshot.OfferingDescriptor(original.packageId(),
+                "offering-entry", "entry-alpha", scope, "single", null, List.of("view-entry")));
+        var service = new com.skillpilot.backend.service.CompositionViewService(PackageCompositionViewState.load(copy(snapshot, views, offerings), mapper));
+        assertThat(service.findLearnerScopeView("entry-alpha", scope)).isNull();
+        var http = org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup(
+                new com.skillpilot.backend.ui.CompositionViewUiController(service)).build();
+        http.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get("/api/ui/composition-views/match")
+                .param("landscapeId", "entry-alpha").param("schoolForm", "Gymnasium"))
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.status().isOk())
+                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath("$.viewId").value("view-entry"));
+        for (String landscape : List.of("landscape-alpha", "unrelated-root")) {
+            http.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get("/api/ui/composition-views/match")
+                    .param("landscapeId", landscape).param("schoolForm", "Gymnasium"))
+                    .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.status().isNoContent());
+        }
+        assertThat(service.findEntryNavigationView("entry-alpha", Map.of("schoolForm", "Gymnasium", "stage", "SekII"))).isNull();
+        assertThat(service.findEntryNavigationView("entry-alpha", Map.of("schoolForm", "Other"))).isNull();
+    }
+
+    @Test
     void coinstalledUnrelatedRootCannotBeAddedToAnEntryView() throws Exception {
         assertThatThrownBy(() -> PackageCompositionViewState.load(crossRootEntrySnapshot(false), mapper))
                 .isInstanceOf(CurriculumPackageException.class).hasMessageContaining("unknown or foreign landscape");
