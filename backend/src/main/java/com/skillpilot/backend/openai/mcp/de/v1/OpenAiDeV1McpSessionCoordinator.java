@@ -93,7 +93,7 @@ public class OpenAiDeV1McpSessionCoordinator {
         this.clock = clock;
     }
 
-    @Transactional
+    @Transactional(isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
     public McpSchema.CallToolResult read(
             String learningSessionId,
             Function<OpenAiDeV1SessionMetadata, McpSchema.CallToolResult> operation) {

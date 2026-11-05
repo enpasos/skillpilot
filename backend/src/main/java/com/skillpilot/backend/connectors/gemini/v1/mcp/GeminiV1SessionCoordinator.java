@@ -143,7 +143,7 @@ public class GeminiV1SessionCoordinator {
                 .enable(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS);
     }
 
-    @Transactional
+    @Transactional(isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
     public <T> Outcome<T> read(String learningSessionId, Function<ReadContext, T> operation) {
         LockedSession locked = requireCurrentSession(learningSessionId);
         Learner learner = locked.learner();

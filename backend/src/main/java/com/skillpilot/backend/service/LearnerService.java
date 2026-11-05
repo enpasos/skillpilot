@@ -2882,7 +2882,7 @@ public class LearnerService {
                 + status.pendingCards() + " Karte(n).";
     }
 
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true, isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
     public Map<String, Double> getMastery(String skillpilotId) {
         return withMasteryRead(() -> new LinkedHashMap<>(readMastery(skillpilotId).explicit()));
     }
@@ -2939,7 +2939,7 @@ public class LearnerService {
         return loaded;
     }
 
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true, isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
     public Map<String, MasteryEntryDTO> getMasteryWithTimestamps(String skillpilotId) {
         Learner learner = getLearner(skillpilotId);
         List<Mastery> mastered = masteryRepository.findByLearner_SkillpilotId(skillpilotId);
@@ -7096,7 +7096,7 @@ public class LearnerService {
         return completed;
     }
 
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true, isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
     public List<String> getFrontier(String skillpilotId) {
         return withMasteryRead(() -> computeFrontier(skillpilotId));
     }
@@ -7188,7 +7188,7 @@ public class LearnerService {
                 .toList();
     }
 
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true, isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
     public List<FrontierGoal> getRichFrontier(String skillpilotId) {
         return getRichFrontier(skillpilotId, true, null, true);
     }
@@ -7202,7 +7202,7 @@ public class LearnerService {
      * Neither UI compaction nor automatic demand reduction may prevent a
      * learner from voluntarily studying an otherwise available goal.</p>
      */
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true, isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
     public List<FrontierGoal> getUncompactedRichFrontier(String skillpilotId) {
         return getRichFrontier(skillpilotId, false, null, false);
     }
@@ -8139,7 +8139,7 @@ public class LearnerService {
         return tags.contains("GK");
     }
 
-    @Transactional
+    @Transactional(isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
     public UnifiedLearnerStateResponse getLearnerState(String skillpilotId) {
         return getLearnerState(skillpilotId, null, true, true);
     }

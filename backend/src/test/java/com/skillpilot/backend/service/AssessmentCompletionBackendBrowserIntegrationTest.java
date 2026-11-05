@@ -70,7 +70,12 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
     @LocalServerPort int port;
     @Autowired LearnerRepository learners;
     @Autowired PlannedGoalRepository focus;
-    @Autowired MasteryRepository mastery;
+    @org.springframework.test.context.bean.override.mockito.MockitoSpyBean MasteryRepository mastery;
+    @org.springframework.test.context.bean.override.mockito.MockitoSpyBean
+    com.skillpilot.backend.repository.LearnerClientStateRepository recallStates;
+    @Autowired javax.sql.DataSource dataSource;
+    @Autowired com.skillpilot.backend.ai.CoachToolFacade coachFacade;
+    @Autowired com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1SessionCoordinator coordinator;
     @Autowired ObjectMapper mapper;
     @Autowired JdbcTemplate jdbc;
     @Autowired ClaudeV1CompletionContractRegistry completionContract;
@@ -325,6 +330,49 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
 
     private static String firstMatchingLine(String file, String prefix) {
         return optionalFile(file).lines().filter(line -> line.startsWith(prefix)).findFirst().orElse("unavailable");
+    }
+
+    @Test void actualHttpAndOuterCoachReadsUseRepeatableReadAndOneCoherentMasteryRecallBatch() throws Exception {
+        String id = createSyntheticLearner();
+        mastery.saveAndFlush(new com.skillpilot.backend.domain.Mastery(learners.findById(id).orElseThrow(), EXAM, 1.0));
+        var observations = new java.util.concurrent.CopyOnWriteArrayList<Map.Entry<String, Integer>>();
+        var masteryDelegate = org.mockito.Mockito.mockingDetails(mastery).getMockCreationSettings().getDefaultAnswer();
+        var recallDelegate = org.mockito.Mockito.mockingDetails(recallStates).getMockCreationSettings().getDefaultAnswer();
+        org.mockito.Mockito.doAnswer(invocation -> {
+            observations.add(Map.entry("M", org.springframework.jdbc.datasource.DataSourceUtils.getConnection(dataSource).getTransactionIsolation()));
+            return masteryDelegate.answer(invocation);
+        }).when(mastery).findByLearner_SkillpilotId(id);
+        org.mockito.Mockito.doAnswer(invocation -> {
+            observations.add(Map.entry("K", org.springframework.jdbc.datasource.DataSourceUtils.getConnection(dataSource).getTransactionIsolation()));
+            return recallDelegate.answer(invocation);
+        }).when(recallStates).findByLearnerAndNodeIds(org.mockito.ArgumentMatchers.eq(id), org.mockito.ArgumentMatchers.anyList());
+        URI base = URI.create("http://127.0.0.1:" + port + "/api/ui/learners/" + id + "/");
+        try (HttpClient client = HttpClient.newHttpClient()) {
+            for (String endpoint : List.of("mastery", "state")) {
+                observations.clear(); org.mockito.Mockito.clearInvocations(mastery, recallStates);
+                var response = client.send(HttpRequest.newBuilder(base.resolve(endpoint)).GET().build(), HttpResponse.BodyHandlers.ofString());
+                assertThat(response.statusCode()).isEqualTo(200);
+                assertThat(mapper.readTree(response.body()).path("learningUnits").path("recognizedGoalIds").toString()).contains(PREPARATION);
+                assertRepeatableSingleBatch(id, observations);
+            }
+            var launch = client.send(HttpRequest.newBuilder(base.resolve("claude/v1/launch"))
+                    .header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString("{\"client\":\"web-start\",\"communicationLocale\":\"de\"}"))
+                    .build(), HttpResponse.BodyHandlers.ofString());
+            assertThat(launch.statusCode()).isEqualTo(200);
+            String session = mapper.readTree(launch.body()).path("learningSessionId").asText();
+            observations.clear(); org.mockito.Mockito.clearInvocations(mastery, recallStates);
+            coordinator.readForCoachContext(session, context -> coachFacade.getLearnerState(context.skillpilotId()));
+            assertRepeatableSingleBatch(id, observations);
+        }
+    }
+
+    private void assertRepeatableSingleBatch(String id, List<Map.Entry<String, Integer>> observations) {
+        assertThat(observations).containsExactly(Map.entry("M", java.sql.Connection.TRANSACTION_REPEATABLE_READ),
+                Map.entry("K", java.sql.Connection.TRANSACTION_REPEATABLE_READ));
+        org.mockito.Mockito.verify(mastery, org.mockito.Mockito.times(1)).findByLearner_SkillpilotId(id);
+        org.mockito.Mockito.verify(recallStates, org.mockito.Mockito.times(1)).findByLearnerAndNodeIds(
+                org.mockito.ArgumentMatchers.eq(id), org.mockito.ArgumentMatchers.anyList());
     }
 
     private String createSyntheticLearner() throws Exception {

@@ -80,7 +80,7 @@ public class LearnerLifecycleService {
      * the complete operation succeeds. Nested service transactions join this
      * learner-row lock, so cleanup cannot race past an accepted activity.
      */
-    @Transactional
+    @Transactional(isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
     public <T> T withActivity(String skillpilotId, Supplier<T> operation) {
         return withActivity(skillpilotId, operation, result -> true);
     }
@@ -90,7 +90,7 @@ public class LearnerLifecycleService {
      * instead of throwing. Such results commit neither learner-state changes
      * nor retention activity.
      */
-    @Transactional
+    @Transactional(isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
     public <T> T withActivity(
             String skillpilotId,
             Supplier<T> operation,
@@ -109,7 +109,7 @@ public class LearnerLifecycleService {
         return result;
     }
 
-    @Transactional
+    @Transactional(isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
     public void withActivity(String skillpilotId, Runnable operation) {
         withActivity(skillpilotId, () -> {
             operation.run();

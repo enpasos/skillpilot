@@ -161,13 +161,13 @@ public class ClaudeV1SessionCoordinator {
                 .enable(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS);
     }
 
-    @Transactional
+    @Transactional(isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
     public <T> Outcome<T> read(String learningSessionId, Function<ReadContext, T> operation) {
         return readInternal(learningSessionId, operation, false);
     }
 
     /** Only the context endpoint can expose the technical receipt while the profile route is paused. */
-    @Transactional
+    @Transactional(isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
     public <T> Outcome<T> readForCoachContext(String learningSessionId, Function<ReadContext, T> operation) {
         return readInternal(learningSessionId, operation, true);
     }
