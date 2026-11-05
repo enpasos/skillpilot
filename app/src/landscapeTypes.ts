@@ -193,6 +193,8 @@ export interface SkillLandscape {
   description: string
   compatibilityOnly?: boolean
   legacyHiddenByDefault?: boolean
+  /** Authored entry flow; the backend personalization planner interprets it. */
+  personalizationFlow?: Record<string, unknown> | null
   filters?: LandscapeFilter[]
   programUnits?: ProgramUnit[]
   goalPlacements?: GoalPlacement[]

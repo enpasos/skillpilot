@@ -19,6 +19,7 @@ on:
       - 'scripts/*completion*'
       - 'scripts/*learning_unit*'
       - 'docs/dev/assessment-gated-completion-implementation-plan.md'
+      - 'docs/dev/learning-units-mathematics-*.json'
       - '.github/workflows/assessment-completion.yml'
       - '.github/actions/postgres-service/**'
       - '.github/actions/ubuntu-apt/**'
@@ -38,6 +39,7 @@ on:
       - 'scripts/*completion*'
       - 'scripts/*learning_unit*'
       - 'docs/dev/assessment-gated-completion-implementation-plan.md'
+      - 'docs/dev/learning-units-mathematics-*.json'
       - '.github/workflows/assessment-completion.yml'
       - '.github/actions/postgres-service/**'
       - '.github/actions/ubuntu-apt/**'
@@ -81,6 +83,11 @@ jobs:
             /curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json
             /docs/landscape-runtime.schema.json
             /docs/dev/learning-units-mathematics-*.json
+            /backend/src/main/java/
+            /backend/build.gradle.kts
+            /backend/settings.gradle.kts
+            /backend/gradlew
+            /backend/gradle/wrapper/
             /scripts/
       - uses: actions/setup-node@v6
         with:
@@ -178,6 +185,7 @@ jobs:
             /curricula/DE/Gymnasium/quality/learning-units/
             /curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json
             /docs/qa-ci/status/curriculum-quality-status.json
+            /docs/dev/learning-units-mathematics-*.json
             /scripts/
       - uses: actions/setup-node@v6
         with:
@@ -239,6 +247,11 @@ jobs:
           --tests 'com.skillpilot.backend.ui.LearnerUiStateRetryTest'
           --tests 'com.skillpilot.backend.curriculumpackage.LearningUnitOfferPackageLoaderTest'
           --tests 'com.skillpilot.backend.curriculumpackage.JsonCurriculumPackageLoaderTest'
+          --tests 'com.skillpilot.backend.curriculumpackage.PackageNativeMappingInputsTest'
+          --tests 'com.skillpilot.backend.curriculumpackage.PackageCompositionViewStateTest'
+          --tests 'com.skillpilot.backend.curriculumpackage.CompositionViewServicePackageTest'
+          --tests 'com.skillpilot.backend.ui.CompositionViewUiControllerTest'
+          --tests 'com.skillpilot.backend.landscape.GoalMappingServiceTest'
           --tests 'com.skillpilot.backend.service.LearningPlanDailyProgressTest'
           --tests 'com.skillpilot.backend.completion.CompletionCoreTest'
           --tests 'com.skillpilot.backend.completion.CompletionApplicationServiceTest'
@@ -297,10 +310,10 @@ jobs:
               'com.skillpilot.backend.completion.learningunit.LearningUnitRecursiveCatalogTest': 2,
               'com.skillpilot.backend.completion.learningunit.LearningUnitResultAliasTest': 5,
               'com.skillpilot.backend.completion.learningunit.LearningUnitRepositoryTest': 3,
-              'com.skillpilot.backend.completion.learningunit.LearningUnitPackageRegistryBindingsTest': 5,
+              'com.skillpilot.backend.completion.learningunit.LearningUnitPackageRegistryBindingsTest': 8,
               'com.skillpilot.backend.completion.learningunit.LearningUnitPrerequisiteGraphTest': 4,
-              'com.skillpilot.backend.service.LearningUnitRecognitionIntegrationTest': 19,
-              'com.skillpilot.backend.completion.learningunit.LearningUnitOfferBindingsTest': 7,
+              'com.skillpilot.backend.service.LearningUnitRecognitionIntegrationTest': 22,
+              'com.skillpilot.backend.completion.learningunit.LearningUnitOfferBindingsTest': 9,
               'com.skillpilot.backend.completion.learningunit.LearningUnitEntryDerivationTest': 3,
               'com.skillpilot.backend.completion.learningunit.LearningUnitAssessmentVariantsTest': 8,
               'com.skillpilot.backend.completion.learningunit.LearningUnitAssessmentVariantAliasesTest': 1,
@@ -309,6 +322,11 @@ jobs:
               'com.skillpilot.backend.curriculumpackage.LearningUnitOfferPackageLoaderTest': 8,
               'com.skillpilot.backend.ui.LearnerUiStateRetryTest': 4,
               'com.skillpilot.backend.curriculumpackage.JsonCurriculumPackageLoaderTest': 13,
+              'com.skillpilot.backend.curriculumpackage.PackageNativeMappingInputsTest': 4,
+              'com.skillpilot.backend.curriculumpackage.PackageCompositionViewStateTest': 25,
+              'com.skillpilot.backend.curriculumpackage.CompositionViewServicePackageTest': 4,
+              'com.skillpilot.backend.ui.CompositionViewUiControllerTest': 3,
+              'com.skillpilot.backend.landscape.GoalMappingServiceTest': 15,
               'com.skillpilot.backend.service.LearningPlanDailyProgressTest': 13,
               'com.skillpilot.backend.completion.CompletionCoreTest': 20,
               'com.skillpilot.backend.completion.CompletionApplicationServiceTest': 6,
@@ -334,7 +352,7 @@ jobs:
               'com.skillpilot.backend.ui.LearnerUiControllerPersonalizationTest': 1,
               'com.skillpilot.backend.service.AssessmentCompletionSrsIntegrationTest': 7,
               'com.skillpilot.backend.service.SrsMasteryBatchQueryTest': 6,
-              'com.skillpilot.backend.service.AssessmentCompletionPostgresIntegrationTest': 4,
+              'com.skillpilot.backend.service.AssessmentCompletionPostgresIntegrationTest': 7,
               'com.skillpilot.backend.service.AssessmentCompletionRestartIntegrationTest': 1,
               'com.skillpilot.backend.service.AssessmentCompletionBackendBrowserIntegrationTest': 6,
               'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionProjectionTest': 7,
@@ -362,6 +380,11 @@ jobs:
                   raise SystemExit(f'Skipped or failed test case: {name}')
               print(f'{name}: {len(cases)} executed tests, no skips or failures')
           PY
+      - name: Reproduce the bound native Mathematics source projection
+        working-directory: app
+        run: |
+          npx --no-install tsx scripts/learningUnitsMathProjectionEvidence.ts --run-native --native tmp/math-learning-units/native-audit-ci.raw.json --output docs/dev/learning-units-mathematics-native-source-projection.json --check
+          npx --no-install tsx scripts/nativeProjectionEvidence.test.ts --native tmp/math-learning-units/native-audit-ci.raw.json
       - name: Stop disposable PostgreSQL
         if: always()
         uses: ./.github/actions/postgres-service
@@ -378,6 +401,7 @@ jobs:
             backend/build/reports/tests/test/
             tmp/level-completion-backend-browser/
             tmp/assessment-completion-restart/
+            tmp/math-learning-units/native-audit-ci.raw.json
           if-no-files-found: error
           retention-days: 30
 

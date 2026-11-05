@@ -1059,7 +1059,8 @@ export function useAppCore({
       ? selectedCatalogRoot?.landscapeId ?? findRuntimeRootLandscapeId(runtimeCatalogState.catalog, selectedLandscapeId)
       : undefined,
     usesGuidedPersonalCurriculumEditor: selectedLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
-      || !!selectedCatalogRoot && selectedCatalogRoot.frameworkId === 'canonical-gymnasium-mathematics-entry-v1',
+      || !!selectedCatalogRoot && landscapeEntries.some(entry => entry.meta.landscapeId === selectedCatalogRoot.landscapeId
+        && !!entry.meta.personalizationFlow),
     showLearnerTools,
     selectedLandscapeId,
     currentRouteGoalId: goalId ?? '',

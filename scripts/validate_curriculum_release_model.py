@@ -3608,10 +3608,19 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
             + source_view_path.name
         )
         compiled_views.append((output_path, compiled))
+    if compiled_entry is not None:
+        entry_view_id = 'entry-default.' + compiled_entry['landscapeId']
+        # Independently reconstruct the reviewed entry's exact structural view.
+        entry_default = {'$schema': SCHEMA_IDS['composition-view'], 'viewFormatVersion': '1.0',
+            'viewId': entry_view_id, 'landscapeId': compiled_entry['landscapeId'], 'language': compiled_entry['locale'],
+            'title': compiled_entry['title'], 'scope': {'schoolForm': compiled_entry['schoolType']},
+            'rootNodes': [{'kind': 'landscapeEntry', 'landscapeId': landscape_id}]}
+        validate_schema(entry_default, context.validators['composition-view'], 'derived Entry default view')
+        compiled_views.append(('data/views/' + entry_view_id + '.view.json', entry_default))
     compiled_views.sort(key=lambda item: item[1]["viewId"])
     view_ids = [view["viewId"] for _, view in compiled_views]
     require(len(view_ids) == len(set(view_ids)), "Duplicate composition-view ID")
-    scopes = [canonical_json_bytes(view["scope"]) for _, view in compiled_views]
+    scopes = [canonical_json_bytes([view['landscapeId'], view["scope"]]) for _, view in compiled_views]
     require(len(scopes) == len(set(scopes)), "Composition-view scopes are not unique")
     require(
         profile["compositionViews"]["defaultViewId"] in set(view_ids),
@@ -4316,16 +4325,20 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
 
     for _, view in model["views"]:
         view_key = view_keys[view["viewId"]]
-        hard(view_key, pointer("landscapeId"), "view.landscape-id", landscape_key)
+        landscape_keys = {landscape_id: landscape_key}
+        if entry_key is not None:
+            landscape_keys[entry_key['id']] = entry_key
+        require(view['landscapeId'] in landscape_keys, 'View belongs to an absent installed landscape')
+        hard(view_key, pointer("landscapeId"), "view.landscape-id", landscape_keys[view['landscapeId']])
         for source_pointer, registry_id, target_id in collect_view_goal_references(
             view["rootNodes"]
         ):
             if registry_id == "view.node-landscape-id":
                 require(
-                    target_id == landscape_id,
+                    target_id in landscape_keys,
                     f"Standalone view {view['viewId']} contains a foreign landscapeId {target_id}",
                 )
-                hard(view_key, source_pointer, registry_id, landscape_key)
+                hard(view_key, source_pointer, registry_id, landscape_keys[target_id])
             else:
                 hard(view_key, source_pointer, registry_id, goal_keys[target_id])
     for output_path, deck in model["decks"]:
@@ -4575,6 +4588,7 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
             "landscapeId": entry_id, "role": "root", "artifactPath": profile["entryLandscape"]["outputPath"],
             "locale": entry["locale"], "frameworkId": entry["frameworkId"], "subject": entry["subject"],
             "country": entry["country"], "region": entry["region"], "schoolForm": entry["schoolType"],
+            "defaultOfferingId": 'offering.entry-default.' + entry_id,
         })
     logical_documents: list[tuple[str, str, str, Any]] = [
         ("canonical-landscape", landscape_id, model["landscapePath"], landscape),

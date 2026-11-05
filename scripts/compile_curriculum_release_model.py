@@ -3127,11 +3127,24 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         output_path = f"{profile['compositionViews']['outputDirectory'].rstrip('/')}/{source_path.name}"
         compiled_views.append((output_path, compiled))
         write_json(output_root, output_path, compiled)
+    if compiled_entry is not None:
+        # This structural entry view is a deterministic projection of the
+        # reviewed entry's one Math child, not another curricular Math view.
+        entry_view_id = 'entry-default.' + compiled_entry['landscapeId']
+        entry_view = {'$schema': SCHEMA_IDS['composition-view'], 'viewFormatVersion': '1.0',
+            'viewId': entry_view_id, 'landscapeId': compiled_entry['landscapeId'],
+            'language': compiled_entry['locale'], 'title': compiled_entry['title'],
+            'scope': {'schoolForm': compiled_entry['schoolType']},
+            'rootNodes': [{'kind': 'landscapeEntry', 'landscapeId': compiled_landscape['landscapeId']}]}
+        entry_view_output = 'data/views/' + entry_view_id + '.view.json'
+        validate_schema(entry_view, 'composition-view', 'derived Entry default view')
+        compiled_views.append((entry_view_output, entry_view))
+        write_json(output_root, entry_view_output, entry_view)
     compiled_views.sort(key=lambda item: item[1]["viewId"])
     view_ids = [value["viewId"] for _, value in compiled_views]
     if len(view_ids) != len(set(view_ids)):
         raise CompilationError("Duplicate composition view ID")
-    scope_keys = [canonical_json_bytes(value["scope"]) for _, value in compiled_views]
+    scope_keys = [canonical_json_bytes([value['landscapeId'], value["scope"]]) for _, value in compiled_views]
     if len(scope_keys) != len(set(scope_keys)):
         raise CompilationError("Composition view scopes must be unique")
     if profile["compositionViews"]["defaultViewId"] not in set(view_ids):
@@ -3586,20 +3599,23 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
 
     for output_path, view in compiled_views:
         view_key = view_keys[view["viewId"]]
-        if view["landscapeId"] != landscape_id:
+        landscape_keys = {landscape_id: landscape_key}
+        if entry_key is not None:
+            landscape_keys[entry_key['id']] = entry_key
+        if view["landscapeId"] not in landscape_keys:
             raise CompilationError(
                 f"View {view['viewId']} belongs to unsupported landscape {view['landscapeId']}"
             )
-        hard(view_key, pointer("landscapeId"), "view.landscape-id", landscape_key)
+        hard(view_key, pointer("landscapeId"), "view.landscape-id", landscape_keys[view['landscapeId']])
         for source_pointer, registry_id, target_kind, target_id in collect_view_references(
             view["rootNodes"]
         ):
             if target_kind == "landscape":
-                if target_id != landscape_id:
+                if target_id not in landscape_keys:
                     raise CompilationError(
                         f"View {view['viewId']} references unsupported landscape {target_id}"
                     )
-                hard(view_key, source_pointer, registry_id, landscape_key)
+                hard(view_key, source_pointer, registry_id, landscape_keys[target_id])
             else:
                 if target_id not in goal_keys:
                     raise CompilationError(f"View {view['viewId']} references unknown goal {target_id}")
@@ -3900,6 +3916,7 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
             "locale": compiled_entry["locale"], "frameworkId": compiled_entry["frameworkId"],
             "subject": compiled_entry["subject"], "country": compiled_entry["country"],
             "region": compiled_entry["region"], "schoolForm": compiled_entry["schoolType"],
+            "defaultOfferingId": 'offering.entry-default.' + entry_id,
         })
     validate_schema(runtime_catalog, "runtime-catalog", "runtime catalog")
     write_json(output_root, runtime_catalog_path, runtime_catalog)

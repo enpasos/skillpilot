@@ -64,7 +64,7 @@ python3 -B scripts/validate_full_standalone_curriculum_package.py \
 
 # Preserve the existing operational contract: validate and CAS-activate only
 # the exact built object; package-only operation needs a fresh isolated run.
-PACKAGE_STORE="tmp/curriculum-release-model/provisioned-store"
+PACKAGE_STORE="${OUTPUT_BASE}/provisioned-store"
 python3 -B - "${PACKAGE_STORE}" <<'PY'
 import sys
 from pathlib import Path
@@ -88,6 +88,19 @@ python3 -B scripts/provision_curriculum_package.py activate --store "${PACKAGE_S
   > "${OUTPUT_BASE}/provision-activate.json"
 python3 -B scripts/provision_curriculum_package.py status --store "${PACKAGE_STORE}" \
   > "${OUTPUT_BASE}/provision-status.json"
+if [[ "${PROFILE_ID}" == "de-gymnasium-mathematik-learning-unit-offers-release-model-v1" ]]; then
+  # Compare the actual installed package under its distinct Entry with a fresh
+  # repository projection; a model-only admission does not prove this path.
+  (
+    cd app
+    npx --no-install tsx scripts/learningUnitsMathProjectionEvidence.ts --run-native \
+      --native "${OUTPUT_BASE}/repository-native.raw.json" \
+      --output docs/dev/learning-units-mathematics-native-source-projection.json --check
+    npx --no-install tsx scripts/learningUnitsProofs.ts installed-offers \
+      --store "../${PACKAGE_STORE}" --native-inventory "../${OUTPUT_BASE}/repository-native.raw.json" \
+      --output "../${OUTPUT_BASE}/installed-offer-182-parity.json"
+  )
+fi
 python3 -B scripts/evaluate_curriculum_package_readiness.py --contracts-dir contracts/curriculum-package/v1.2 \
   --zip "${PACKAGE_ZIP}" --consumer-smoke-store "${PACKAGE_STORE}" \
   --consumer-smoke-work-dir "${OUTPUT_BASE}/package-consumer-smoke" \
