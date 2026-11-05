@@ -8,7 +8,8 @@ import type { ApplicabilityEvidence } from './applicabilityCompiler'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
 import { collectAuthoritativeTargetAtomicGoalIds } from './compositionViewSourceCoverage'
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
-import { nativeReviewedDemandWitness, nativeTargetsByJurisdiction, validateNativeProjectionEvidence, type NativeProjectionEvidence } from './nativeProjectionEvidence'
+import { nativeTargetsByJurisdiction } from './nativeProjectionEvidence'
+import { nativeTargetReviewedDemandWitness, readNativeSourceCoverageAdapters } from './nativeSourceCoverage'
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
@@ -151,30 +152,10 @@ function readAuthoritativeTargetAtomicGoalIdsByJurisdiction(
 
 // Explicit per-landscape migration. Unmigrated subjects retain their previous
 // raw-view behavior, reported as such; no title/path heuristic selects authority.
-function readNativeProjectionAdapters(): Map<string, NativeProjectionEvidence> {
-  const adapters = new Map<string, NativeProjectionEvidence>()
-  const policy = JSON.parse(readFileSync(resolve(repoRoot, 'app/scripts/config/source-coverage-native-adapters.json'), 'utf8'))
-  if (policy.schemaVersion !== 1 || !Array.isArray(policy.requiredLandscapeIds) || !policy.requiredLandscapeIds.every((id: unknown) => typeof id === 'string')) {
-    throw new Error('Invalid native projection authority policy')
-  }
-  const index = process.argv.indexOf('--native-projection-adapters')
-  const path = index < 0 ? 'app/scripts/config/source-coverage-native-adapters.json' : process.argv[index + 1]
-  if (!path || path.startsWith('--')) throw new Error('--native-projection-adapters needs a path')
-  const manifest = JSON.parse(readFileSync(resolve(repoRoot, path), 'utf8'))
-  if (manifest.schemaVersion !== 1 || !manifest.landscapes || typeof manifest.landscapes !== 'object') {
-    throw new Error('Invalid native projection adapter manifest')
-  }
-  for (const [landscapeId, adapter] of Object.entries(manifest.landscapes) as Array<[string, { path: string }]>) {
-    const evidence = JSON.parse(readFileSync(resolve(repoRoot, adapter.path), 'utf8')) as NativeProjectionEvidence
-    validateNativeProjectionEvidence(evidence, repoRoot, landscapeId)
-    adapters.set(landscapeId, evidence)
-  }
-  for (const landscapeId of policy.requiredLandscapeIds) if (!adapters.has(landscapeId)) {
-    throw new Error(`Required native projection adapter missing for ${landscapeId}`)
-  }
-  return adapters
-}
-const nativeProjectionAdapters = readNativeProjectionAdapters()
+const adapterIndex = process.argv.indexOf('--native-projection-adapters')
+const adapterPath = adapterIndex < 0 ? undefined : process.argv[adapterIndex + 1]
+if (adapterIndex >= 0 && (!adapterPath || adapterPath.startsWith('--'))) throw new Error('--native-projection-adapters needs a path')
+const nativeProjectionAdapters = readNativeSourceCoverageAdapters(repoRoot, adapterPath)
 
 function isMemoryGoal(goal: LearningGoal): boolean {
   const tags = goal.tags ?? []
@@ -360,7 +341,7 @@ function buildAudit(): SourceCoverageAudit {
         canonicalGoalById: goalById,
         surrogateEntriesByKey,
         isEligibleCanonicalGoal: isCurriculumSourceCoverageGoal,
-        hasReviewedDemandWitness: native ? (prerequisiteId, consumerId) => nativeReviewedDemandWitness(native, projection.value,
+        hasReviewedDemandWitness: native ? (prerequisiteId, consumerId) => nativeTargetReviewedDemandWitness(native, projection.value,
           consumerId, prerequisiteId, id => isCurriculumSourceCoverageGoal(goalById.get(id))) !== null : undefined,
       })
       const sourceBackedAtomicGoals = atomicGoals.filter((goal) =>

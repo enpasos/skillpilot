@@ -5,6 +5,7 @@ import type { ApplicabilityFinding } from './applicabilityCompiler'
 import { buildApplicabilityCompilation, getApplicabilityReportDir, writeApplicabilityReports } from './applicabilityCompiler'
 import type { TreeProjectionFinding } from './treeProjectionValidator'
 import { buildTreeProjectionValidationFindings } from './treeProjectionValidator'
+import { filterFreshMathWarningAcceptances } from './reviewedMathApplicabilityWarning'
 
 interface AcceptedWarningEntry {
   code: string
@@ -33,9 +34,9 @@ function findingKey(finding: Pick<ApplicabilityFinding, 'code' | 'landscapeId' |
   ].join('|')
 }
 
-function loadAcceptedWarnings(): Map<string, AcceptedWarningEntry> {
+function loadAcceptedWarnings(compilation: ReturnType<typeof buildApplicabilityCompilation>): Map<string, AcceptedWarningEntry> {
   const raw = JSON.parse(readFileSync(acceptedWarningsPath, 'utf8')) as AcceptedWarningRegistry
-  const acceptedWarnings = Array.isArray(raw.acceptedWarnings) ? raw.acceptedWarnings : []
+  const acceptedWarnings = filterFreshMathWarningAcceptances(Array.isArray(raw.acceptedWarnings) ? raw.acceptedWarnings : [], compilation, resolve(scriptDir, '../..'))
 
   return new Map(
     acceptedWarnings.map((entry) => [
@@ -98,7 +99,7 @@ function printBreakdown(label: string, entries: Array<[string, number]>, limit: 
 
 const result = buildApplicabilityCompilation()
 writeApplicabilityReports(result)
-const acceptedWarnings = loadAcceptedWarnings()
+const acceptedWarnings = loadAcceptedWarnings(result)
 const treeProjectionFindings = buildTreeProjectionValidationFindings()
 
 const reviewedCanonicalLandscapeIds = new Set([

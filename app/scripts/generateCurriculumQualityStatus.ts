@@ -25,6 +25,9 @@ import { generateDeepUnderstandingRollout, type DeepUnderstandingRolloutReport }
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
 import { shouldRequireCanonicalMathSek1AssessmentEndpoint } from './lib/canonicalMathSek1ReviewedExamRoutes'
 import { createRepositorySourceAvailability } from './repositorySourceAvailability'
+import { nativeSourceCoverageTargetSets, nativeTargetReviewedDemandWitness, readNativeSourceCoverageAdapters } from './nativeSourceCoverage'
+import type { NativeProjectionEvidence } from './nativeProjectionEvidence'
+import { filterFreshMathWarningAcceptances } from './reviewedMathApplicabilityWarning'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
 type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
@@ -70,6 +73,8 @@ interface JurisdictionCoverageEntry {
   sourceBackedAtomicGoals: number
   surrogateBackedAtomicGoals: number
   unsupportedAssignedAtomicGoals: number
+  unsupportedAssignedGoalIds?: string[]
+  unmappedSourceOriginalGoalIds?: string[]
   partialSourceLinkedAtomicGoals: number
   sourceAtomicGoals: number
   sourceMappedToViewAtomicGoals: number
@@ -93,6 +98,8 @@ interface JurisdictionCoverageEntry {
 
 interface JurisdictionCoverage {
   dimension: 'jurisdiction'
+  targetProjectionAuthority?: 'actual-native-offers'
+  nativeOfferedScopes?: number
   totalJurisdictions: number
   totalAtomicGoals: number
   rawAtomicGoals: number
@@ -1526,7 +1533,7 @@ function isProjectedRouteTargetGoal(goal: LearningGoal | undefined): goal is Lea
     && !isMotivationOrOrientationGoal(goal)
 }
 
-function isCurriculumSourceCoverageGoal(goal: LearningGoal | undefined): boolean {
+export function isCurriculumSourceCoverageGoal(goal: LearningGoal | undefined): boolean {
   if (!goal) return false
   if (isMemoryGoal(goal) || isPracticeOrAssessmentGoal(goal)) return false
   const tags = goal.tags ?? []
@@ -3909,10 +3916,10 @@ function applicabilityWarningKey(
   ].join('|')
 }
 
-function readAcceptedWarningEntries(): AcceptedWarningEntry[] {
+function readAcceptedWarningEntries(compilation: ApplicabilityCompilationResult): AcceptedWarningEntry[] {
   if (!existsSync(acceptedWarningsPath)) return []
   const registry = loadJson<{ acceptedWarnings?: AcceptedWarningEntry[] }>(acceptedWarningsPath)
-  return Array.isArray(registry.acceptedWarnings) ? registry.acceptedWarnings : []
+  return filterFreshMathWarningAcceptances(Array.isArray(registry.acceptedWarnings) ? registry.acceptedWarnings : [], compilation, repoRoot)
 }
 
 function metricKeyPart(value: string): string {
@@ -3946,10 +3953,10 @@ function readSurrogateEvidenceEntries(): SurrogateEvidenceEntry[] {
   return Array.isArray(registry.entries) ? registry.entries : []
 }
 
-function readApplicabilityWarningMetricsByLandscapeId(
+export function readApplicabilityWarningMetricsByLandscapeId(
   applicabilityCompilation: ApplicabilityCompilationResult,
 ): Map<string, Record<string, number>> {
-  const acceptedEntries = readAcceptedWarningEntries()
+  const acceptedEntries = readAcceptedWarningEntries(applicabilityCompilation)
   const acceptedWarningEntries = acceptedEntries.filter((entry) => entry.code !== 'APV-202')
   const acceptedKeys = new Set(acceptedWarningEntries.map(applicabilityWarningKey))
   const currentWarningKeys = new Set<string>()
@@ -4097,6 +4104,7 @@ function createCoverageEvidenceChecker(
   jurisdiction: string,
   surrogateEntriesByKey: Map<string, SurrogateEvidenceEntry[]>,
   canonicalGoalById: Map<string, LearningGoal>,
+  native?: NativeProjectionEvidence,
 ): {
   hasCoverageBackedJurisdictionEvidence: (goal: CoverageGoalReport) => boolean
   hasReviewedRequiresClosureSurrogateEvidence: (goal: CoverageGoalReport) => boolean
@@ -4108,6 +4116,11 @@ function createCoverageEvidenceChecker(
     canonicalGoalById,
     surrogateEntriesByKey,
     isEligibleCanonicalGoal: isCurriculumSourceCoverageGoal,
+    hasReviewedDemandWitness: native ? (prerequisiteId, consumerId) => nativeTargetReviewedDemandWitness(
+      native, jurisdiction, consumerId, prerequisiteId,
+      id => isCurriculumSourceCoverageGoal(canonicalGoalById.get(id))
+        && (canonicalGoalById.get(id)?.contains?.length ?? 0) === 0,
+    ) !== null : undefined,
   })
 }
 
@@ -5349,6 +5362,7 @@ function sourceGoalKey(sourceLandscapeId: string, goalId: string): string {
 function readReverseSourceCoverageByJurisdiction(
   report: CoverageReport,
   viewAtomicGoalIdsByJurisdiction: Map<string, Set<string>>,
+  nativeTargetAuthority = false,
 ): Map<string, {
   sourceAtomicGoals: number
   sourceMappedToViewAtomicGoals: number
@@ -5361,6 +5375,7 @@ function readReverseSourceCoverageByJurisdiction(
   sourceFullyCoveredOriginalGoals: number
   sourcePartiallyCoveredOriginalGoals: number
   sourceUncoveredOriginalGoals: number
+  sourceUncoveredOriginalGoalIds: string[]
 }> {
   const sourceLandscapeJurisdictionById = readSourceLandscapeJurisdictionById()
   const sourceGoalMembershipByLandscapeId = readSourceGoalMembershipByLandscapeId()
@@ -5423,12 +5438,15 @@ function readReverseSourceCoverageByJurisdiction(
     sourceFullyCoveredOriginalGoals: number
     sourcePartiallyCoveredOriginalGoals: number
     sourceUncoveredOriginalGoals: number
+    sourceUncoveredOriginalGoalIds: string[]
   }>()
 
   for (const [jurisdiction, sourceLandscapeIds] of sourceLandscapeIdsByJurisdiction.entries()) {
     const explicitViewAtomicGoalIds = viewAtomicGoalIdsByJurisdiction.get(jurisdiction)
-    const viewAtomicGoalIds = explicitViewAtomicGoalIds && explicitViewAtomicGoalIds.size > 0
-      ? explicitViewAtomicGoalIds
+    const viewAtomicGoalIds = nativeTargetAuthority
+      ? explicitViewAtomicGoalIds ?? new Set<string>()
+      : explicitViewAtomicGoalIds && explicitViewAtomicGoalIds.size > 0
+        ? explicitViewAtomicGoalIds
       : new Set(
         report.goals
           .filter((goal) =>
@@ -5496,7 +5514,8 @@ function readReverseSourceCoverageByJurisdiction(
     let sourceFullyCoveredOriginalGoals = 0
     let sourcePartiallyCoveredOriginalGoals = 0
     let sourceUncoveredOriginalGoals = 0
-    for (const atomicClosure of atomicClosureBySourceOriginalGoalId.values()) {
+    const sourceUncoveredOriginalGoalIds: string[] = []
+    for (const [originalId, atomicClosure] of atomicClosureBySourceOriginalGoalId) {
       const closureGoalIds = Array.from(atomicClosure)
       const coveredGoalIds = closureGoalIds.filter((goalId) => mappedSourceAtomicGoalIdsInUniverse.has(goalId))
       if (closureGoalIds.length > 0 && coveredGoalIds.length === closureGoalIds.length) {
@@ -5505,6 +5524,7 @@ function readReverseSourceCoverageByJurisdiction(
         sourcePartiallyCoveredOriginalGoals += 1
       } else {
         sourceUncoveredOriginalGoals += 1
+        sourceUncoveredOriginalGoalIds.push(originalId)
       }
     }
     result.set(jurisdiction, {
@@ -5519,29 +5539,39 @@ function readReverseSourceCoverageByJurisdiction(
       sourceFullyCoveredOriginalGoals,
       sourcePartiallyCoveredOriginalGoals,
       sourceUncoveredOriginalGoals,
+      sourceUncoveredOriginalGoalIds,
     })
   }
 
   return result
 }
 
-function readJurisdictionCoverageByLandscapeId(
+export function readJurisdictionCoverageByLandscapeId(
   applicabilityCompilation: ApplicabilityCompilationResult,
 ): Map<string, JurisdictionCoverage> {
   const coverageByLandscapeId = new Map<string, JurisdictionCoverage>()
   const surrogateEntriesByKey = readAcceptedSurrogateEvidenceByKey()
+  const nativeAdapters = readNativeSourceCoverageAdapters(repoRoot)
 
   applicabilityCompilation.reports.forEach((report) => {
     const rawAtomicGoals = report.goals.filter((goal) => goal.goalType === 'atomic')
     const landscape = readLandscapeForReport(report)
     const canonicalGoalById = new Map((landscape?.goals ?? []).map((goal) => [goal.id, goal]))
+    const native = nativeAdapters.get(report.landscapeId)
     const {
       canonicalViewAtomicGoalIds,
       viewAtomicGoalIdsByJurisdiction,
-    } = readCompositionViewAtomicGoalIds(report)
+    } = native ? nativeSourceCoverageTargetSets(native) : readCompositionViewAtomicGoalIds(report)
+    if (native) {
+      const reportedAtomicIds = new Set(rawAtomicGoals.map(goal => goal.goalId))
+      for (const id of canonicalViewAtomicGoalIds) {
+        if (!reportedAtomicIds.has(id)) throw new Error(`Actual native target missing from applicability report: ${id}`)
+      }
+    }
     const reverseSourceCoverageByJurisdiction = readReverseSourceCoverageByJurisdiction(
       report,
       viewAtomicGoalIdsByJurisdiction,
+      !!native,
     )
     const canonicalAtomicGoalIds = canonicalViewAtomicGoalIds.size > 0
       ? canonicalViewAtomicGoalIds
@@ -5561,8 +5591,10 @@ function readJurisdictionCoverageByLandscapeId(
       const visibleGoals = report.goals.filter((goal) =>
         (goal.compiledApplicability.jurisdiction ?? []).includes(projection.value))
       const viewAtomicGoalIds = viewAtomicGoalIdsByJurisdiction.get(projection.value)
-      const visibleAtomicGoalReports = (viewAtomicGoalIds && viewAtomicGoalIds.size > 0
-        ? rawAtomicGoals.filter((goal) => viewAtomicGoalIds.has(goal.goalId))
+      const visibleAtomicGoalReports = (native
+        ? rawAtomicGoals.filter((goal) => viewAtomicGoalIds?.has(goal.goalId))
+        : viewAtomicGoalIds && viewAtomicGoalIds.size > 0
+          ? rawAtomicGoals.filter((goal) => viewAtomicGoalIds.has(goal.goalId))
         : visibleGoals.filter((goal) => goal.goalType === 'atomic' && canonicalAtomicGoalIds.has(goal.goalId)))
         .filter((goal) => sourceCoverageAtomicGoalIds.has(goal.goalId))
       const visibleAtomicGoals = visibleAtomicGoalReports.length
@@ -5572,14 +5604,16 @@ function readJurisdictionCoverageByLandscapeId(
         projection.value,
         surrogateEntriesByKey,
         canonicalGoalById,
+        native,
       )
       const sourceBackedAtomicGoals = visibleAtomicGoalReports.filter((goal) =>
         coverageEvidence.hasCoverageBackedJurisdictionEvidence(goal)).length
       const surrogateBackedAtomicGoals = visibleAtomicGoalReports.filter((goal) =>
         !hasDirectSourceBackedJurisdictionEvidence(goal, projection.value)
         && coverageEvidence.hasReviewedRequiresClosureSurrogateEvidence(goal)).length
-      const unsupportedAssignedAtomicGoals = visibleAtomicGoalReports.filter((goal) =>
-        !coverageEvidence.hasCoverageBackedJurisdictionEvidence(goal)).length
+      const unsupportedAssignedGoalReports = visibleAtomicGoalReports.filter((goal) =>
+        !coverageEvidence.hasCoverageBackedJurisdictionEvidence(goal))
+      const unsupportedAssignedAtomicGoals = unsupportedAssignedGoalReports.length
       const partialSourceLinkedAtomicGoals = visibleAtomicGoalReports.filter((goal) =>
         !coverageEvidence.hasCoverageBackedJurisdictionEvidence(goal)
         && isPartialSourceLinkedJurisdictionEvidence(goal.evidence, projection.value)).length
@@ -5595,6 +5629,7 @@ function readJurisdictionCoverageByLandscapeId(
         sourceFullyCoveredOriginalGoals: 0,
         sourcePartiallyCoveredOriginalGoals: 0,
         sourceUncoveredOriginalGoals: 0,
+        sourceUncoveredOriginalGoalIds: [],
       }
       const labels = JURISDICTION_LABELS[projection.value]
       const hasSourceBackedAtomicCoverage = sourceBackedAtomicGoals > 0
@@ -5632,6 +5667,8 @@ function readJurisdictionCoverageByLandscapeId(
         sourceBackedAtomicGoals,
         surrogateBackedAtomicGoals,
         unsupportedAssignedAtomicGoals,
+        ...(native ? { unsupportedAssignedGoalIds: unsupportedAssignedGoalReports.map(g => g.goalId),
+          unmappedSourceOriginalGoalIds: reverseSourceCoverage.sourceUncoveredOriginalGoalIds } : {}),
         partialSourceLinkedAtomicGoals,
         sourceAtomicGoals: reverseSourceCoverage.sourceAtomicGoals,
         sourceMappedToViewAtomicGoals: reverseSourceCoverage.sourceMappedToViewAtomicGoals,
@@ -5675,6 +5712,7 @@ function readJurisdictionCoverageByLandscapeId(
         && entry.errors === 0).length
     coverageByLandscapeId.set(report.landscapeId, {
       dimension: 'jurisdiction',
+      ...(native ? { targetProjectionAuthority: 'actual-native-offers' as const, nativeOfferedScopes: native.scopes.length } : {}),
       totalJurisdictions: jurisdictions.length,
       totalAtomicGoals,
       rawAtomicGoals: rawAtomicGoals.length,

@@ -25,7 +25,7 @@ interface CheckerOptions<CanonicalGoal> {
   canonicalGoalById: Map<string, CanonicalGoal>
   surrogateEntriesByKey: Map<string, ReviewedRequiresClosureEntryLike[]>
   isEligibleCanonicalGoal: (goal: CanonicalGoal | undefined) => boolean
-  /** Optional actual native full-R witness; applies only to an explicit reviewed entry. */
+  /** When supplied, the actual scope witness is mandatory even for a direct edge. */
   hasReviewedDemandWitness?: (prerequisiteGoalId: string, reviewedConsumerGoalId: string) => boolean
 }
 
@@ -95,7 +95,9 @@ export function createReviewedRequiresClosureCoverageChecker<CanonicalGoal>({
         && evidence.dimension === 'jurisdiction'
         && evidence.value === jurisdiction
         && evidence.source === `required by ${requiredByGoalId}`)
-      if (!hasActiveRequiresEvidence && !hasReviewedDemandWitness?.(goal.goalId, requiredByGoalId)) return false
+      if (hasReviewedDemandWitness
+        ? !hasReviewedDemandWitness(goal.goalId, requiredByGoalId)
+        : !hasActiveRequiresEvidence) return false
 
       return hasCoverageBackedJurisdictionEvidence(
         requiredByGoal,
