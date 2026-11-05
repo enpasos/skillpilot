@@ -78,6 +78,11 @@ entfernten redundanten Voraussetzungskanten erhalten nach Mengenvergleich die
 gesamte transitive Relation aller 980 aktuellen atomaren Ziele. Die tatsächliche
 Laufzeit wählt die ausdrücklich gebundenen Verträge in allen 182 Konfigurationen
 korrekt aus; alle 21 Verträge sind aufgenommen, keiner ist quarantiniert.
+Der [aktuelle V6-Nachweis](learning-units-mathematics-current-offers-v6-native-proof.json)
+bestätigt erneut alle 182 Angebote. Er ergänzt die quellengebundenen
+Pythagoras-Ziele in BB und SL ohne Zielverlust; im SL-Sek-I-Angebot sind dadurch
+auch die beiden bestehenden Beweiseinheiten verfügbar. Alle ursprünglichen
+Zielbedeutungen und vollständigen transitiven Voraussetzungen bleiben erhalten.
 Die getrennten [Mutationstests](learning-units-mathematics-stable-offer-mutation-proof.json)
 belegen die Unabhängigkeit von Laufzeitdiagnostik und aktuellem Katalogzeiger,
 während Inhalts-, Ownership- und Scopeänderungen weiterhin erkannt werden.
@@ -89,6 +94,11 @@ normale Bestehensregel eine wesentliche Teilkompetenz auslassen; zum Mittelpunkt
 ist außerdem die eigene Abrufpflicht korrekt aufzuteilen. Ein solches Ergebnis
 wird weder durch einen aktualisierten Hash noch durch pauschal 100 Prozent
 Bestehensanforderung repariert.
+
+Die nächste Gruppe mit zehn Einheiten und 52 weiteren Fachkompetenzen hat nach
+drei Aufgabenreparaturen ein neues unabhängiges Astra-Inhaltsreview bestanden.
+Ihre tatsächliche Angebots-, Placement- und Laufzeitprüfung ist noch offen;
+sie zählt deshalb noch nicht zu den 27 eingebundenen Kompetenzen.
 
 Die neue Monotonieprüfung wird in 118 Angeboten als Ziel und in elf weiteren
 als Unterstützung eingeordnet. Für ihr bereits vorhandenes Ableitungsziel

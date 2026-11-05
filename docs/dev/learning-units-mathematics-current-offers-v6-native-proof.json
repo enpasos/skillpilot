@@ -1,0 +1,2585 @@
+{
+  "schemaVersion": 1,
+  "semantics": "actual-native-source-v6-bounded-restoration-proof-v1",
+  "stage": "post-pointer-actual-api",
+  "sourceBaselineRef": "50b453b4d3",
+  "originalCanonicalGoalMeaningsPreserved": 1254,
+  "fullCanonicalAtomicDemandClosuresPreserved": 980,
+  "sourceCanonicalAndOwnAcquisitionBytesUnchanged": true,
+  "scopeCount": 182,
+  "changedScopeCount": 4,
+  "targetAtomicUnionCount": 980,
+  "unchangedPhysicalViewsRecallOrientationDuplicateAndMissingVisibleSets": true,
+  "allExistingScopeDirectAndFullAtomicDemandsUnchanged": true,
+  "admittedContractCount": 21,
+  "recognizedOrdinaryTargetCount": 27,
+  "actualM0Recognition": [],
+  "all21ActualOwnQPassRecognizesExactlyOwnOrdinaryAndCompletesUnit": true,
+  "all21ActualOrdinaryOnlyLeavesOwnQPending": true,
+  "exactAllOwnTargetEligibilityMatchesExplicitSelections": true,
+  "actualValidV6CurrentOfferApiScopes": 182,
+  "runtimeDependenciesByteExact": 185,
+  "staticInputCount": 648,
+  "changedInputsVsV4": {
+    "backend/src/main/java/com/skillpilot/backend/api/MasteryEntryDTO.java": {
+      "before": "1983a6c9a588eebb6fd4e74ff5b53a57695cc7a59a4ea38e108c8e9701c08152",
+      "after": "44c527f114caf9a2727e7c2f3a9237e89b06aa58fc51d1f878d6916f7fb02710"
+    },
+    "backend/src/main/java/com/skillpilot/backend/api/MasteryHistoryEntry.java": {
+      "before": "946d8e835c0c7c6d249f49b856ca934e341e467f9457f466acbcfd02a1ed2e12",
+      "after": "1cb3100e74f7870c8ad76410655433c188263f5eb0e616ab62880c47c7625e16"
+    },
+    "backend/src/main/java/com/skillpilot/backend/api/SignedLearnerDataDTO.java": {
+      "before": "d4cb206b29beb8e1bd62f2edd6074eede6345d390a3a1b73aaffa722732d4c1f",
+      "after": "3fbbbf81fec6f8bde1f27a65761f9b21404d036bf5ee95e07771d88c44abe7fd"
+    },
+    "backend/src/main/java/com/skillpilot/backend/api/UpdateController.java": {
+      "before": "9a350d381efd67a2ca7d11a048dca76031ed245d3ea249e951c0688fd9e373da",
+      "after": "29522c1db232494e7529548ae2bca0007fbb2d43e81a5297b2bd29f589348f7d"
+    },
+    "backend/src/main/java/com/skillpilot/backend/config/AiAuthenticationFilter.java": {
+      "before": "a62fea1e899d2b9ef31cef52d8452be401569df33f936a65ada22056aeeaba97",
+      "after": "7d368ac05f36dfae3585c5c29ad060a43dff74afbce95d7e06fa41384ab7282d"
+    },
+    "backend/src/main/java/com/skillpilot/backend/config/SecurityConfig.java": {
+      "before": "2506a53eb663290b61b3b48413e14c4905d33deaf289a1ae0a28101b349d15a2",
+      "after": "7c4d7ad0a20b02f75b99de8e7cd2774a00057dd419ada34664c671002e351201"
+    },
+    "backend/src/main/java/com/skillpilot/backend/domain/CopySource.java": {
+      "before": "09d4850fa7a78cb445b569d8db27424f6c76b0fc99b743a5fb2e84514fc4de0a",
+      "after": "2b7de10c8fa43ee3163f29f3b31afff7f5fb01e843824fe7df63f64a336b6be4"
+    },
+    "backend/src/main/java/com/skillpilot/backend/events/LearnerStateChangedEvent.java": {
+      "before": "32b53034906e338bc1b37601434a05d6b672c6cf66831af109f313404b639d4d",
+      "after": "cdf27eaf5a80ff45db6fe7a69020a0468b44dc2e792fb7ca9361ee8a5c683583"
+    },
+    "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV1McpContractAdapter.java": {
+      "before": "f0ba2ad2b75d56394eb13cc59448f026d8ba7891cb9ecdb0fcf7422a49657c9d",
+      "after": "6e932a179783a0c00c5ca13ff0fa7f846c881933fe722befdb374438b7a1a546"
+    },
+    "backend/src/main/java/com/skillpilot/backend/service/CurriculumPersonalizationPlanner.java": {
+      "before": "407f28b3787e0a261d1c1c598d70f8cceec3439b87c0cd4a9e48b46b68862f9c",
+      "after": "9f02aabb5396fd8a2e05c27854ee86a4247cbe66246d89eaacca3a28e738adde"
+    },
+    "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java": {
+      "before": "05373d892cc9158b3d05655a39e15a26f0b3365eae874f04d24aa02659bf9b9e",
+      "after": "ee2f7ca161eafca3ddb7bf29e06a6e4d548e8561a5b67faa161856b012cbf8d0"
+    },
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-seki.view.json": {
+      "before": "2e857894de46eaa486aaaa9b2adde933ce67043b62685adda8a668fc22dd98b0",
+      "after": "8f847579206fec5ebeb6cc81688cd3ab742112ac11191036844498085b6441a1"
+    },
+    "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-seki.view.json": {
+      "before": "6cd5ff25243b4bedaf19473c795f2ad2385d38a55c0e1950b159d1a463623294",
+      "after": "4a3ba1bf0ffe8b35e1f96d9d0804eff4b76f04e1e35b666b9978121de452fda8"
+    }
+  },
+  "beforeV4Projection": {
+    "path": "tmp/math-learning-units/native-source-projection-before-v5.json",
+    "sha256": "83615c146611b73524fb3397e165cf569b109cc2f283160370fd3c299eb3802c"
+  },
+  "currentProjection": {
+    "path": "docs/dev/learning-units-mathematics-native-source-projection.json",
+    "sha256": "a8ff522d035a1f8dd778acac5c71a641b1fb097cc25a68cd3447623263b6e647"
+  },
+  "beforeActualRaw": {
+    "path": "tmp/math-learning-units/native-v4-after-pointer.raw.json",
+    "sha256": "bac7c0fa12e7c4f3f14e5d08c6c666d26f30f46b7853ad8acf7156fa21a36e98"
+  },
+  "currentActualRaw": {
+    "path": "tmp/math-learning-units/native-v6-after-pointer.raw.json",
+    "sha256": "4389d72a17e07a3df4bbfebe2e0f642b883fcfbd19498a1ddd758e772aa495e1"
+  },
+  "rootSelectionDeltas": [
+    {
+      "contractId": "math-pythagoras-geometric-proof",
+      "addedScopeIds": [
+        "DE-SL/SekI/G9/"
+      ],
+      "removedScopeIds": [],
+      "before": 27,
+      "after": 28
+    },
+    {
+      "contractId": "math-pythagoras-converse-proof",
+      "addedScopeIds": [
+        "DE-SL/SekI/G9/"
+      ],
+      "removedScopeIds": [],
+      "before": 19,
+      "after": 20
+    }
+  ],
+  "scopeDeltas": [
+    {
+      "scopeId": "DE-BB/SekI//",
+      "targetAtomicGoalIds": {
+        "added": [
+          "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+          "241915f4-8d90-5542-ac9c-230aa98bee39"
+        ],
+        "removed": [],
+        "before": 240,
+        "after": 242
+      },
+      "targetGoalIds": {
+        "added": [
+          "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+          "241915f4-8d90-5542-ac9c-230aa98bee39"
+        ],
+        "removed": [],
+        "before": 291,
+        "after": 293
+      },
+      "prerequisiteOnlyGoalIds": {
+        "added": [],
+        "removed": [
+          "241915f4-8d90-5542-ac9c-230aa98bee39"
+        ],
+        "before": 13,
+        "after": 12
+      },
+      "assessmentGoalIds": {
+        "added": [
+          "241915f4-8d90-5542-ac9c-230aa98bee39"
+        ],
+        "removed": [],
+        "before": 48,
+        "after": 49
+      }
+    },
+    {
+      "scopeId": "DE-BB/SekI/G8/",
+      "targetAtomicGoalIds": {
+        "added": [
+          "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+          "241915f4-8d90-5542-ac9c-230aa98bee39"
+        ],
+        "removed": [],
+        "before": 240,
+        "after": 242
+      },
+      "targetGoalIds": {
+        "added": [
+          "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+          "241915f4-8d90-5542-ac9c-230aa98bee39"
+        ],
+        "removed": [],
+        "before": 291,
+        "after": 293
+      },
+      "prerequisiteOnlyGoalIds": {
+        "added": [],
+        "removed": [
+          "241915f4-8d90-5542-ac9c-230aa98bee39"
+        ],
+        "before": 13,
+        "after": 12
+      },
+      "assessmentGoalIds": {
+        "added": [
+          "241915f4-8d90-5542-ac9c-230aa98bee39"
+        ],
+        "removed": [],
+        "before": 48,
+        "after": 49
+      }
+    },
+    {
+      "scopeId": "DE-BB/SekI/G9/",
+      "targetAtomicGoalIds": {
+        "added": [
+          "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+          "241915f4-8d90-5542-ac9c-230aa98bee39"
+        ],
+        "removed": [],
+        "before": 240,
+        "after": 242
+      },
+      "targetGoalIds": {
+        "added": [
+          "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+          "241915f4-8d90-5542-ac9c-230aa98bee39"
+        ],
+        "removed": [],
+        "before": 291,
+        "after": 293
+      },
+      "prerequisiteOnlyGoalIds": {
+        "added": [],
+        "removed": [
+          "241915f4-8d90-5542-ac9c-230aa98bee39"
+        ],
+        "before": 13,
+        "after": 12
+      },
+      "assessmentGoalIds": {
+        "added": [
+          "241915f4-8d90-5542-ac9c-230aa98bee39"
+        ],
+        "removed": [],
+        "before": 48,
+        "after": 49
+      }
+    },
+    {
+      "scopeId": "DE-SL/SekI/G9/",
+      "targetAtomicGoalIds": {
+        "added": [
+          "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+          "241915f4-8d90-5542-ac9c-230aa98bee39",
+          "2686049c-2cb2-5595-be5b-4860c3ceb76b",
+          "3a69dab2-3fe8-5076-a980-5b7ac1bd1127",
+          "487ec508-f421-5a5a-a84c-98f88a8fb3e5",
+          "5c00b06d-9644-5e23-ac29-6ff1499ee0ca",
+          "6a3502ee-b616-5db7-88fc-8951f33c9f63",
+          "e086671c-9f55-5d8b-8467-b6390dc6a879"
+        ],
+        "removed": [],
+        "before": 238,
+        "after": 246
+      },
+      "targetGoalIds": {
+        "added": [
+          "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+          "241915f4-8d90-5542-ac9c-230aa98bee39",
+          "2686049c-2cb2-5595-be5b-4860c3ceb76b",
+          "3a69dab2-3fe8-5076-a980-5b7ac1bd1127",
+          "487ec508-f421-5a5a-a84c-98f88a8fb3e5",
+          "5c00b06d-9644-5e23-ac29-6ff1499ee0ca",
+          "6a3502ee-b616-5db7-88fc-8951f33c9f63",
+          "e086671c-9f55-5d8b-8467-b6390dc6a879"
+        ],
+        "removed": [],
+        "before": 289,
+        "after": 297
+      },
+      "prerequisiteOnlyGoalIds": {
+        "added": [],
+        "removed": [
+          "241915f4-8d90-5542-ac9c-230aa98bee39",
+          "2686049c-2cb2-5595-be5b-4860c3ceb76b",
+          "5c00b06d-9644-5e23-ac29-6ff1499ee0ca",
+          "e086671c-9f55-5d8b-8467-b6390dc6a879"
+        ],
+        "before": 13,
+        "after": 9
+      },
+      "assessmentGoalIds": {
+        "added": [
+          "241915f4-8d90-5542-ac9c-230aa98bee39",
+          "2686049c-2cb2-5595-be5b-4860c3ceb76b",
+          "5c00b06d-9644-5e23-ac29-6ff1499ee0ca",
+          "e086671c-9f55-5d8b-8467-b6390dc6a879"
+        ],
+        "removed": [],
+        "before": 48,
+        "after": 52
+      }
+    }
+  ],
+  "catalogAdmissionMeasurement": {
+    "contractCount": 21,
+    "boundary": "One actual catalog/service construction after landscape/canonical caches were initialized; no forced GC, HTTP, SQL or CI performance claim",
+    "javaVersion": "25.0.1+9-LTS",
+    "elapsedNanos": 2748852448,
+    "usedHeapBeforeBytes": 421548416,
+    "usedHeapAfterBytes": 358386592
+  },
+  "boundary": "Actual partial SourceV6 checkpoint:21 reviewed contracts and27 original ordinary acquisition targets;182 exact current-offer API scopes.780originalordinarytargets, explicit Recall partition work,12legacyduplicate scopes and complete807 remain open. No package21,M7,humantrial,deployment or host acceptance.",
+  "currentOfferBinding": {
+    "path": "DE/Gymnasium/learning-units/offers/math-2026-11-05-v6.json",
+    "sha256": "b889f9ed77cc9a2f73ede598e3c411160fdfb6912d6bf22440988673aa6136fc"
+  },
+  "reviewedInputSha256": "d66a70c1a651212ad7d8fbcaf0bc2fd14a02ca0a45551324fca6d94b4be58007",
+  "independentRootReviewFileSha256": "2dfc94b93125deedb3c5c21c0ae7536ab0096acaf9fd4aeaf2f9cd052e511ca1",
+  "actualContractEvaluations": [
+    {
+      "contractId": "math-dot-product-projection",
+      "globalRecognitionAfterOwnQPass": [
+        "3016ec37-1c2e-47db-83f5-e767923bc97e"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "e98672c6-871a-5d0b-889c-5afc51040f0d"
+        ],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "e98672c6-871a-5d0b-889c-5afc51040f0d"
+      ],
+      "ownOrdinaryGoalIds": [
+        "3016ec37-1c2e-47db-83f5-e767923bc97e"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "3016ec37-1c2e-47db-83f5-e767923bc97e"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 1
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-right-prisms-volume-surface",
+      "globalRecognitionAfterOwnQPass": [
+        "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+        "f1348d40-3872-5e44-8892-3600c811796f"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "e5494c67-aed6-5710-8ae3-51ae147c10e9"
+        ],
+        "targetCount": 3,
+        "explicitTargetCount": 2,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "e5494c67-aed6-5710-8ae3-51ae147c10e9"
+      ],
+      "ownOrdinaryGoalIds": [
+        "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+        "f1348d40-3872-5e44-8892-3600c811796f"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+          "f1348d40-3872-5e44-8892-3600c811796f"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 3,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 2
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-monotonicity-extrema",
+      "globalRecognitionAfterOwnQPass": [
+        "2850e8f6-2330-50d3-a577-d519540d9924"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "010c133c-dcf1-5530-8305-61bc638017bc"
+        ],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "010c133c-dcf1-5530-8305-61bc638017bc"
+      ],
+      "ownOrdinaryGoalIds": [
+        "2850e8f6-2330-50d3-a577-d519540d9924"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "2850e8f6-2330-50d3-a577-d519540d9924"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 1
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-coordinate-plane-spatial-description",
+      "globalRecognitionAfterOwnQPass": [
+        "06de364f-9b63-4044-8229-a975621dc6df"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "03b00864-7001-5c6a-875b-dc269b3484d9"
+        ],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "03b00864-7001-5c6a-875b-dc269b3484d9"
+      ],
+      "ownOrdinaryGoalIds": [
+        "06de364f-9b63-4044-8229-a975621dc6df"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "06de364f-9b63-4044-8229-a975621dc6df"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 1
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-orthogonal-projection-linear-map",
+      "globalRecognitionAfterOwnQPass": [
+        "ed5d869b-af4e-4b80-b34d-a2338e16ce34"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "e3c70a12-7886-51f7-8bcd-ed54865415d6"
+        ],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "e3c70a12-7886-51f7-8bcd-ed54865415d6"
+      ],
+      "ownOrdinaryGoalIds": [
+        "ed5d869b-af4e-4b80-b34d-a2338e16ce34"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "ed5d869b-af4e-4b80-b34d-a2338e16ce34"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 1
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-pyramid-volume-derivation",
+      "globalRecognitionAfterOwnQPass": [
+        "e9181209-1506-59df-9053-17f36b91bb06"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "938d47a2-5d7c-52d6-8644-5cc6060d76a1"
+        ],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "938d47a2-5d7c-52d6-8644-5cc6060d76a1"
+      ],
+      "ownOrdinaryGoalIds": [
+        "e9181209-1506-59df-9053-17f36b91bb06"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "e9181209-1506-59df-9053-17f36b91bb06"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 1
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-parallel-line-plane-distances",
+      "globalRecognitionAfterOwnQPass": [
+        "8eb14d81-353a-4909-9464-61be7b1ba5b8"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "240f7716-7c6f-5705-876e-8046fd8a6720"
+        ],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "240f7716-7c6f-5705-876e-8046fd8a6720"
+      ],
+      "ownOrdinaryGoalIds": [
+        "8eb14d81-353a-4909-9464-61be7b1ba5b8"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "8eb14d81-353a-4909-9464-61be7b1ba5b8"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 1
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-sphere-surface-application",
+      "globalRecognitionAfterOwnQPass": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "64f37348-20f7-55b1-82a8-8fc388087577"
+        ],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "64f37348-20f7-55b1-82a8-8fc388087577"
+      ],
+      "ownOrdinaryGoalIds": [
+        "7b01d3d8-1fff-5924-b133-5a4825dc742e"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "7b01d3d8-1fff-5924-b133-5a4825dc742e"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 1
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-sphere-volume-application",
+      "globalRecognitionAfterOwnQPass": [
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "926d0551-4537-569e-b6ad-fc33bb17546e"
+        ],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "926d0551-4537-569e-b6ad-fc33bb17546e"
+      ],
+      "ownOrdinaryGoalIds": [
+        "bb227e31-0b0b-544a-b5e0-548256a70dec"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "bb227e31-0b0b-544a-b5e0-548256a70dec"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 1
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-reflect-space-line-at-centre",
+      "globalRecognitionAfterOwnQPass": [
+        "976def9e-c81c-5875-9d87-a1024318ce48"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "440edf01-1824-597a-9afa-2f23f5becfba"
+        ],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "440edf01-1824-597a-9afa-2f23f5becfba"
+      ],
+      "ownOrdinaryGoalIds": [
+        "976def9e-c81c-5875-9d87-a1024318ce48"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "976def9e-c81c-5875-9d87-a1024318ce48"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 1
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-pythagoras-geometric-proof",
+      "globalRecognitionAfterOwnQPass": [
+        "487ec508-f421-5a5a-a84c-98f88a8fb3e5"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "2686049c-2cb2-5595-be5b-4860c3ceb76b"
+        ],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "2686049c-2cb2-5595-be5b-4860c3ceb76b"
+      ],
+      "ownOrdinaryGoalIds": [
+        "487ec508-f421-5a5a-a84c-98f88a8fb3e5"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "487ec508-f421-5a5a-a84c-98f88a8fb3e5"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 1
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-pythagoras-converse-proof",
+      "globalRecognitionAfterOwnQPass": [
+        "6a3502ee-b616-5db7-88fc-8951f33c9f63"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "5c00b06d-9644-5e23-ac29-6ff1499ee0ca"
+        ],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "5c00b06d-9644-5e23-ac29-6ff1499ee0ca"
+      ],
+      "ownOrdinaryGoalIds": [
+        "6a3502ee-b616-5db7-88fc-8951f33c9f63"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "6a3502ee-b616-5db7-88fc-8951f33c9f63"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 1
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-sphere-volume-cross-sections",
+      "globalRecognitionAfterOwnQPass": [
+        "baea3966-5d10-53bf-8193-3fcda7b1e73f"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "79f5f4cc-10e1-56a5-8ed3-8cd51688db41"
+        ],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "79f5f4cc-10e1-56a5-8ed3-8cd51688db41"
+      ],
+      "ownOrdinaryGoalIds": [
+        "baea3966-5d10-53bf-8193-3fcda7b1e73f"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "baea3966-5d10-53bf-8193-3fcda7b1e73f"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 1
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-affine-fixed-elements",
+      "globalRecognitionAfterOwnQPass": [
+        "53d52b0c-1fd7-4a36-bc14-ba41e7dc6d5d",
+        "1a63bf83-1dd5-4eb2-bd8e-f9cfa02f4c42"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "942de65f-e8cc-417c-a66b-5f597b26d965"
+        ],
+        "targetCount": 3,
+        "explicitTargetCount": 2,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "942de65f-e8cc-417c-a66b-5f597b26d965"
+      ],
+      "ownOrdinaryGoalIds": [
+        "1a63bf83-1dd5-4eb2-bd8e-f9cfa02f4c42",
+        "53d52b0c-1fd7-4a36-bc14-ba41e7dc6d5d"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "53d52b0c-1fd7-4a36-bc14-ba41e7dc6d5d",
+          "1a63bf83-1dd5-4eb2-bd8e-f9cfa02f4c42"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 3,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 2
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-scalar-triple-product-volume",
+      "globalRecognitionAfterOwnQPass": [
+        "a594dec0-3977-5c43-9432-d4254a7f6130",
+        "944dd479-9f30-5acb-ab32-3ea0b6dc8e06"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "b321e32c-1dff-5529-8200-6879ee8fb10b"
+        ],
+        "targetCount": 3,
+        "explicitTargetCount": 2,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "b321e32c-1dff-5529-8200-6879ee8fb10b"
+      ],
+      "ownOrdinaryGoalIds": [
+        "944dd479-9f30-5acb-ab32-3ea0b6dc8e06",
+        "a594dec0-3977-5c43-9432-d4254a7f6130"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "a594dec0-3977-5c43-9432-d4254a7f6130",
+          "944dd479-9f30-5acb-ab32-3ea0b6dc8e06"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 3,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 2
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-cylinder-cone-sphere-volume-comparison",
+      "globalRecognitionAfterOwnQPass": [
+        "2f2c9f1a-07f0-59e4-b84a-60648c3b0bda",
+        "c71ae268-f28e-59f0-982d-91db8f963378",
+        "e8237315-654e-5150-97de-49c4cb49b3d1"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "d110ab96-275e-5ccb-8851-e02725baf31c"
+        ],
+        "targetCount": 4,
+        "explicitTargetCount": 3,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "d110ab96-275e-5ccb-8851-e02725baf31c"
+      ],
+      "ownOrdinaryGoalIds": [
+        "2f2c9f1a-07f0-59e4-b84a-60648c3b0bda",
+        "c71ae268-f28e-59f0-982d-91db8f963378",
+        "e8237315-654e-5150-97de-49c4cb49b3d1"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "2f2c9f1a-07f0-59e4-b84a-60648c3b0bda",
+          "c71ae268-f28e-59f0-982d-91db8f963378",
+          "e8237315-654e-5150-97de-49c4cb49b3d1"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 4,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 3
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-vector-dependence-collinearity",
+      "globalRecognitionAfterOwnQPass": [
+        "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+        "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "4f85d29a-bd52-5f21-8b57-55def4440e1b"
+        ],
+        "targetCount": 3,
+        "explicitTargetCount": 2,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "4f85d29a-bd52-5f21-8b57-55def4440e1b"
+      ],
+      "ownOrdinaryGoalIds": [
+        "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+        "6fc9246a-9448-4cdb-b627-cf20ea1c65d3"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+          "54cfe5ce-693e-5d4a-ac1b-009570fbbc11"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 3,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 2
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-line-plane-intersection",
+      "globalRecognitionAfterOwnQPass": [
+        "baf7276f-60a0-4d96-b959-d63acfb929de"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "bc244d82-bac0-5b13-8a33-d7b101835480"
+        ],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "bc244d82-bac0-5b13-8a33-d7b101835480"
+      ],
+      "ownOrdinaryGoalIds": [
+        "baf7276f-60a0-4d96-b959-d63acfb929de"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "baf7276f-60a0-4d96-b959-d63acfb929de"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 1
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-skew-lines-distance",
+      "globalRecognitionAfterOwnQPass": [
+        "509ae03b-96b1-4bb1-b015-b83d14569dae"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "60dbe2ed-55fb-5352-8829-1ea23fbee024"
+        ],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "60dbe2ed-55fb-5352-8829-1ea23fbee024"
+      ],
+      "ownOrdinaryGoalIds": [
+        "509ae03b-96b1-4bb1-b015-b83d14569dae"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "509ae03b-96b1-4bb1-b015-b83d14569dae"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 1
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-spatial-geometry-software",
+      "globalRecognitionAfterOwnQPass": [
+        "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "6cff2b2e-be7f-531a-8849-e5fb3a55978a"
+        ],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "6cff2b2e-be7f-531a-8849-e5fb3a55978a"
+      ],
+      "ownOrdinaryGoalIds": [
+        "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 1
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    },
+    {
+      "contractId": "math-justify-figure-properties",
+      "globalRecognitionAfterOwnQPass": [
+        "ef1524f1-0b2f-59f7-a001-5ab3e3dececb"
+      ],
+      "onlyOrdinaryExplicitUnitResult": {
+        "complete": false,
+        "ownRecognizedGoalIds": [],
+        "pendingGoalIds": [
+          "9809780d-c860-5a79-87ec-2a3479cc7f1f"
+        ],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 0
+      },
+      "ownAssessmentGoalIds": [
+        "9809780d-c860-5a79-87ec-2a3479cc7f1f"
+      ],
+      "ownOrdinaryGoalIds": [
+        "ef1524f1-0b2f-59f7-a001-5ab3e3dececb"
+      ],
+      "ownQPassUnitResult": {
+        "complete": true,
+        "ownRecognizedGoalIds": [
+          "ef1524f1-0b2f-59f7-a001-5ab3e3dececb"
+        ],
+        "pendingGoalIds": [],
+        "targetCount": 2,
+        "explicitTargetCount": 1,
+        "recognizedTargetCount": 1
+      },
+      "ownRecallGoalIds": [],
+      "revision": "2026-11-05-v1"
+    }
+  ],
+  "actualCurrentOfferApi": [
+    {
+      "scopeId": "ALL/CrossStage//GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 736
+    },
+    {
+      "scopeId": "ALL/CrossStage//GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 871
+    },
+    {
+      "scopeId": "ALL/CrossStage//LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 857
+    },
+    {
+      "scopeId": "ALL/SekI//",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 3,
+      "coveredTargetCount": 6,
+      "totalTargetCount": 251
+    },
+    {
+      "scopeId": "ALL/SekII//GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 7,
+      "coveredTargetCount": 18,
+      "totalTargetCount": 461
+    },
+    {
+      "scopeId": "ALL/SekII//GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 596
+    },
+    {
+      "scopeId": "ALL/SekII//LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 582
+    },
+    {
+      "scopeId": "DE-BB/CrossStage//GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 698
+    },
+    {
+      "scopeId": "DE-BB/CrossStage//GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 13,
+      "coveredTargetCount": 30,
+      "totalTargetCount": 831
+    },
+    {
+      "scopeId": "DE-BB/CrossStage//LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 13,
+      "coveredTargetCount": 30,
+      "totalTargetCount": 817
+    },
+    {
+      "scopeId": "DE-BB/CrossStage/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 698
+    },
+    {
+      "scopeId": "DE-BB/CrossStage/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 13,
+      "coveredTargetCount": 30,
+      "totalTargetCount": 831
+    },
+    {
+      "scopeId": "DE-BB/CrossStage/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 13,
+      "coveredTargetCount": 30,
+      "totalTargetCount": 817
+    },
+    {
+      "scopeId": "DE-BB/CrossStage/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 698
+    },
+    {
+      "scopeId": "DE-BB/CrossStage/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 13,
+      "coveredTargetCount": 30,
+      "totalTargetCount": 831
+    },
+    {
+      "scopeId": "DE-BB/CrossStage/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 13,
+      "coveredTargetCount": 30,
+      "totalTargetCount": 817
+    },
+    {
+      "scopeId": "DE-BB/SekI//",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 2,
+      "coveredTargetCount": 4,
+      "totalTargetCount": 242
+    },
+    {
+      "scopeId": "DE-BB/SekI/G8/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 2,
+      "coveredTargetCount": 4,
+      "totalTargetCount": 242
+    },
+    {
+      "scopeId": "DE-BB/SekI/G9/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 2,
+      "coveredTargetCount": 4,
+      "totalTargetCount": 242
+    },
+    {
+      "scopeId": "DE-BB/SekII//GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 462
+    },
+    {
+      "scopeId": "DE-BB/SekII//GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 595
+    },
+    {
+      "scopeId": "DE-BB/SekII//LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 581
+    },
+    {
+      "scopeId": "DE-BB/SekII/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 462
+    },
+    {
+      "scopeId": "DE-BB/SekII/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 595
+    },
+    {
+      "scopeId": "DE-BB/SekII/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 581
+    },
+    {
+      "scopeId": "DE-BB/SekII/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 462
+    },
+    {
+      "scopeId": "DE-BB/SekII/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 595
+    },
+    {
+      "scopeId": "DE-BB/SekII/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 581
+    },
+    {
+      "scopeId": "DE-BE/CrossStage//GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 682
+    },
+    {
+      "scopeId": "DE-BE/CrossStage//GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 815
+    },
+    {
+      "scopeId": "DE-BE/CrossStage//LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 801
+    },
+    {
+      "scopeId": "DE-BE/CrossStage/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 682
+    },
+    {
+      "scopeId": "DE-BE/CrossStage/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 815
+    },
+    {
+      "scopeId": "DE-BE/CrossStage/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 801
+    },
+    {
+      "scopeId": "DE-BE/CrossStage/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 682
+    },
+    {
+      "scopeId": "DE-BE/CrossStage/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 815
+    },
+    {
+      "scopeId": "DE-BE/CrossStage/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 801
+    },
+    {
+      "scopeId": "DE-BE/SekI//",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 2,
+      "coveredTargetCount": 4,
+      "totalTargetCount": 237
+    },
+    {
+      "scopeId": "DE-BE/SekI/G8/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 2,
+      "coveredTargetCount": 4,
+      "totalTargetCount": 237
+    },
+    {
+      "scopeId": "DE-BE/SekI/G9/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 2,
+      "coveredTargetCount": 4,
+      "totalTargetCount": 237
+    },
+    {
+      "scopeId": "DE-BE/SekII//GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 459
+    },
+    {
+      "scopeId": "DE-BE/SekII//GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 592
+    },
+    {
+      "scopeId": "DE-BE/SekII//LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 578
+    },
+    {
+      "scopeId": "DE-BE/SekII/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 459
+    },
+    {
+      "scopeId": "DE-BE/SekII/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 592
+    },
+    {
+      "scopeId": "DE-BE/SekII/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 578
+    },
+    {
+      "scopeId": "DE-BE/SekII/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 459
+    },
+    {
+      "scopeId": "DE-BE/SekII/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 592
+    },
+    {
+      "scopeId": "DE-BE/SekII/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 578
+    },
+    {
+      "scopeId": "DE-BW/CrossStage//GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 678
+    },
+    {
+      "scopeId": "DE-BW/CrossStage//GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 16,
+      "coveredTargetCount": 36,
+      "totalTargetCount": 808
+    },
+    {
+      "scopeId": "DE-BW/CrossStage//LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 16,
+      "coveredTargetCount": 36,
+      "totalTargetCount": 807
+    },
+    {
+      "scopeId": "DE-BW/CrossStage/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 678
+    },
+    {
+      "scopeId": "DE-BW/CrossStage/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 16,
+      "coveredTargetCount": 36,
+      "totalTargetCount": 808
+    },
+    {
+      "scopeId": "DE-BW/CrossStage/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 16,
+      "coveredTargetCount": 36,
+      "totalTargetCount": 807
+    },
+    {
+      "scopeId": "DE-BW/CrossStage/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 678
+    },
+    {
+      "scopeId": "DE-BW/CrossStage/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 16,
+      "coveredTargetCount": 36,
+      "totalTargetCount": 808
+    },
+    {
+      "scopeId": "DE-BW/CrossStage/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 16,
+      "coveredTargetCount": 36,
+      "totalTargetCount": 807
+    },
+    {
+      "scopeId": "DE-BW/SekI//",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 3,
+      "coveredTargetCount": 6,
+      "totalTargetCount": 268
+    },
+    {
+      "scopeId": "DE-BW/SekI/G8/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 3,
+      "coveredTargetCount": 6,
+      "totalTargetCount": 268
+    },
+    {
+      "scopeId": "DE-BW/SekI/G9/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 3,
+      "coveredTargetCount": 6,
+      "totalTargetCount": 268
+    },
+    {
+      "scopeId": "DE-BW/SekII//GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 454
+    },
+    {
+      "scopeId": "DE-BW/SekII//GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 13,
+      "coveredTargetCount": 30,
+      "totalTargetCount": 584
+    },
+    {
+      "scopeId": "DE-BW/SekII//LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 13,
+      "coveredTargetCount": 30,
+      "totalTargetCount": 578
+    },
+    {
+      "scopeId": "DE-BW/SekII/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 454
+    },
+    {
+      "scopeId": "DE-BW/SekII/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 13,
+      "coveredTargetCount": 30,
+      "totalTargetCount": 584
+    },
+    {
+      "scopeId": "DE-BW/SekII/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 13,
+      "coveredTargetCount": 30,
+      "totalTargetCount": 578
+    },
+    {
+      "scopeId": "DE-BW/SekII/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 454
+    },
+    {
+      "scopeId": "DE-BW/SekII/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 13,
+      "coveredTargetCount": 30,
+      "totalTargetCount": 584
+    },
+    {
+      "scopeId": "DE-BW/SekII/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 13,
+      "coveredTargetCount": 30,
+      "totalTargetCount": 578
+    },
+    {
+      "scopeId": "DE-BY/CrossStage/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 7,
+      "coveredTargetCount": 18,
+      "totalTargetCount": 451
+    },
+    {
+      "scopeId": "DE-BY/CrossStage/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 12,
+      "coveredTargetCount": 28,
+      "totalTargetCount": 641
+    },
+    {
+      "scopeId": "DE-BY/CrossStage/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 12,
+      "coveredTargetCount": 28,
+      "totalTargetCount": 641
+    },
+    {
+      "scopeId": "DE-BY/SekI/G9/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 2,
+      "coveredTargetCount": 4,
+      "totalTargetCount": 227
+    },
+    {
+      "scopeId": "DE-BY/SekII/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 5,
+      "coveredTargetCount": 14,
+      "totalTargetCount": 205
+    },
+    {
+      "scopeId": "DE-BY/SekII/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 396
+    },
+    {
+      "scopeId": "DE-BY/SekII/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 396
+    },
+    {
+      "scopeId": "DE-HB/CrossStage/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 641
+    },
+    {
+      "scopeId": "DE-HB/CrossStage/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 756
+    },
+    {
+      "scopeId": "DE-HB/CrossStage/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 755
+    },
+    {
+      "scopeId": "DE-HB/SekI/G8/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 2,
+      "coveredTargetCount": 4,
+      "totalTargetCount": 214
+    },
+    {
+      "scopeId": "DE-HB/SekII/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 446
+    },
+    {
+      "scopeId": "DE-HB/SekII/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 561
+    },
+    {
+      "scopeId": "DE-HB/SekII/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 560
+    },
+    {
+      "scopeId": "DE-HE/CrossStage/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 753
+    },
+    {
+      "scopeId": "DE-HE/CrossStage/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 15,
+      "coveredTargetCount": 35,
+      "totalTargetCount": 908
+    },
+    {
+      "scopeId": "DE-HE/CrossStage/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 15,
+      "coveredTargetCount": 35,
+      "totalTargetCount": 891
+    },
+    {
+      "scopeId": "DE-HE/CrossStage/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 12,
+      "coveredTargetCount": 28,
+      "totalTargetCount": 763
+    },
+    {
+      "scopeId": "DE-HE/CrossStage/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 17,
+      "coveredTargetCount": 39,
+      "totalTargetCount": 918
+    },
+    {
+      "scopeId": "DE-HE/CrossStage/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 17,
+      "coveredTargetCount": 39,
+      "totalTargetCount": 901
+    },
+    {
+      "scopeId": "DE-HE/SekI/G8/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 3,
+      "coveredTargetCount": 7,
+      "totalTargetCount": 326
+    },
+    {
+      "scopeId": "DE-HE/SekI/G9/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 5,
+      "coveredTargetCount": 11,
+      "totalTargetCount": 353
+    },
+    {
+      "scopeId": "DE-HE/SekII/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 7,
+      "coveredTargetCount": 17,
+      "totalTargetCount": 475
+    },
+    {
+      "scopeId": "DE-HE/SekII/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 12,
+      "coveredTargetCount": 28,
+      "totalTargetCount": 630
+    },
+    {
+      "scopeId": "DE-HE/SekII/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 601
+    },
+    {
+      "scopeId": "DE-HE/SekII/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 7,
+      "coveredTargetCount": 17,
+      "totalTargetCount": 475
+    },
+    {
+      "scopeId": "DE-HE/SekII/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 12,
+      "coveredTargetCount": 28,
+      "totalTargetCount": 630
+    },
+    {
+      "scopeId": "DE-HE/SekII/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 601
+    },
+    {
+      "scopeId": "DE-HH/CrossStage/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 693
+    },
+    {
+      "scopeId": "DE-HH/CrossStage/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 821
+    },
+    {
+      "scopeId": "DE-HH/CrossStage/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 807
+    },
+    {
+      "scopeId": "DE-HH/SekI/G8/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 2,
+      "coveredTargetCount": 4,
+      "totalTargetCount": 237
+    },
+    {
+      "scopeId": "DE-HH/SekII/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 7,
+      "coveredTargetCount": 18,
+      "totalTargetCount": 455
+    },
+    {
+      "scopeId": "DE-HH/SekII/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 583
+    },
+    {
+      "scopeId": "DE-HH/SekII/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 569
+    },
+    {
+      "scopeId": "DE-MV/CrossStage/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 27,
+      "totalTargetCount": 627
+    },
+    {
+      "scopeId": "DE-MV/CrossStage/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 12,
+      "coveredTargetCount": 29,
+      "totalTargetCount": 738
+    },
+    {
+      "scopeId": "DE-MV/CrossStage/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 12,
+      "coveredTargetCount": 29,
+      "totalTargetCount": 737
+    },
+    {
+      "scopeId": "DE-MV/SekI/G8/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 2,
+      "coveredTargetCount": 4,
+      "totalTargetCount": 235
+    },
+    {
+      "scopeId": "DE-MV/SekII/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 433
+    },
+    {
+      "scopeId": "DE-MV/SekII/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 544
+    },
+    {
+      "scopeId": "DE-MV/SekII/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 543
+    },
+    {
+      "scopeId": "DE-NI/CrossStage/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 679
+    },
+    {
+      "scopeId": "DE-NI/CrossStage/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 790
+    },
+    {
+      "scopeId": "DE-NI/CrossStage/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 789
+    },
+    {
+      "scopeId": "DE-NI/SekI/G9/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 2,
+      "coveredTargetCount": 4,
+      "totalTargetCount": 235
+    },
+    {
+      "scopeId": "DE-NI/SekII/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 433
+    },
+    {
+      "scopeId": "DE-NI/SekII/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 544
+    },
+    {
+      "scopeId": "DE-NI/SekII/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 543
+    },
+    {
+      "scopeId": "DE-NW/CrossStage/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 674
+    },
+    {
+      "scopeId": "DE-NW/CrossStage/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 785
+    },
+    {
+      "scopeId": "DE-NW/CrossStage/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 784
+    },
+    {
+      "scopeId": "DE-NW/SekI/G9/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 2,
+      "coveredTargetCount": 4,
+      "totalTargetCount": 235
+    },
+    {
+      "scopeId": "DE-NW/SekII/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 433
+    },
+    {
+      "scopeId": "DE-NW/SekII/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 544
+    },
+    {
+      "scopeId": "DE-NW/SekII/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 543
+    },
+    {
+      "scopeId": "DE-RP/CrossStage/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 25,
+      "totalTargetCount": 690
+    },
+    {
+      "scopeId": "DE-RP/CrossStage/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 12,
+      "coveredTargetCount": 30,
+      "totalTargetCount": 805
+    },
+    {
+      "scopeId": "DE-RP/CrossStage/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 12,
+      "coveredTargetCount": 30,
+      "totalTargetCount": 804
+    },
+    {
+      "scopeId": "DE-RP/CrossStage/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 12,
+      "coveredTargetCount": 29,
+      "totalTargetCount": 701
+    },
+    {
+      "scopeId": "DE-RP/CrossStage/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 14,
+      "coveredTargetCount": 34,
+      "totalTargetCount": 816
+    },
+    {
+      "scopeId": "DE-RP/CrossStage/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 14,
+      "coveredTargetCount": 34,
+      "totalTargetCount": 815
+    },
+    {
+      "scopeId": "DE-RP/SekI/G8/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 2,
+      "coveredTargetCount": 5,
+      "totalTargetCount": 268
+    },
+    {
+      "scopeId": "DE-RP/SekI/G9/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 4,
+      "coveredTargetCount": 9,
+      "totalTargetCount": 280
+    },
+    {
+      "scopeId": "DE-RP/SekII/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 432
+    },
+    {
+      "scopeId": "DE-RP/SekII/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 25,
+      "totalTargetCount": 547
+    },
+    {
+      "scopeId": "DE-RP/SekII/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 25,
+      "totalTargetCount": 546
+    },
+    {
+      "scopeId": "DE-RP/SekII/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 432
+    },
+    {
+      "scopeId": "DE-RP/SekII/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 25,
+      "totalTargetCount": 547
+    },
+    {
+      "scopeId": "DE-RP/SekII/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 25,
+      "totalTargetCount": 546
+    },
+    {
+      "scopeId": "DE-SH/CrossStage/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 12,
+      "coveredTargetCount": 29,
+      "totalTargetCount": 669
+    },
+    {
+      "scopeId": "DE-SH/CrossStage/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 13,
+      "coveredTargetCount": 31,
+      "totalTargetCount": 766
+    },
+    {
+      "scopeId": "DE-SH/CrossStage/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 13,
+      "coveredTargetCount": 31,
+      "totalTargetCount": 766
+    },
+    {
+      "scopeId": "DE-SH/CrossStage/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 14,
+      "coveredTargetCount": 33,
+      "totalTargetCount": 676
+    },
+    {
+      "scopeId": "DE-SH/CrossStage/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 15,
+      "coveredTargetCount": 35,
+      "totalTargetCount": 774
+    },
+    {
+      "scopeId": "DE-SH/CrossStage/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 15,
+      "coveredTargetCount": 35,
+      "totalTargetCount": 774
+    },
+    {
+      "scopeId": "DE-SH/SekI/G8/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 3,
+      "coveredTargetCount": 7,
+      "totalTargetCount": 261
+    },
+    {
+      "scopeId": "DE-SH/SekI/G9/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 5,
+      "coveredTargetCount": 11,
+      "totalTargetCount": 267
+    },
+    {
+      "scopeId": "DE-SH/SekII/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 421
+    },
+    {
+      "scopeId": "DE-SH/SekII/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 518
+    },
+    {
+      "scopeId": "DE-SH/SekII/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 518
+    },
+    {
+      "scopeId": "DE-SH/SekII/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 421
+    },
+    {
+      "scopeId": "DE-SH/SekII/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 518
+    },
+    {
+      "scopeId": "DE-SH/SekII/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 518
+    },
+    {
+      "scopeId": "DE-SL/CrossStage/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 13,
+      "coveredTargetCount": 30,
+      "totalTargetCount": 691
+    },
+    {
+      "scopeId": "DE-SL/CrossStage/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 14,
+      "coveredTargetCount": 32,
+      "totalTargetCount": 805
+    },
+    {
+      "scopeId": "DE-SL/CrossStage/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 14,
+      "coveredTargetCount": 32,
+      "totalTargetCount": 804
+    },
+    {
+      "scopeId": "DE-SL/SekI/G9/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 4,
+      "coveredTargetCount": 8,
+      "totalTargetCount": 246
+    },
+    {
+      "scopeId": "DE-SL/SekII/G9/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 435
+    },
+    {
+      "scopeId": "DE-SL/SekII/G9/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 549
+    },
+    {
+      "scopeId": "DE-SL/SekII/G9/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 548
+    },
+    {
+      "scopeId": "DE-SN/CrossStage/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 678
+    },
+    {
+      "scopeId": "DE-SN/CrossStage/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 789
+    },
+    {
+      "scopeId": "DE-SN/CrossStage/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 788
+    },
+    {
+      "scopeId": "DE-SN/SekI/G8/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 2,
+      "coveredTargetCount": 4,
+      "totalTargetCount": 235
+    },
+    {
+      "scopeId": "DE-SN/SekII/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 433
+    },
+    {
+      "scopeId": "DE-SN/SekII/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 544
+    },
+    {
+      "scopeId": "DE-SN/SekII/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 543
+    },
+    {
+      "scopeId": "DE-ST/CrossStage/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 671
+    },
+    {
+      "scopeId": "DE-ST/CrossStage/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 783
+    },
+    {
+      "scopeId": "DE-ST/CrossStage/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 782
+    },
+    {
+      "scopeId": "DE-ST/SekI/G8/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 2,
+      "coveredTargetCount": 4,
+      "totalTargetCount": 235
+    },
+    {
+      "scopeId": "DE-ST/SekII/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 432
+    },
+    {
+      "scopeId": "DE-ST/SekII/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 544
+    },
+    {
+      "scopeId": "DE-ST/SekII/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 543
+    },
+    {
+      "scopeId": "DE-TH/CrossStage/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 10,
+      "coveredTargetCount": 24,
+      "totalTargetCount": 615
+    },
+    {
+      "scopeId": "DE-TH/CrossStage/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 727
+    },
+    {
+      "scopeId": "DE-TH/CrossStage/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 11,
+      "coveredTargetCount": 26,
+      "totalTargetCount": 726
+    },
+    {
+      "scopeId": "DE-TH/SekI/G8/",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 2,
+      "coveredTargetCount": 4,
+      "totalTargetCount": 236
+    },
+    {
+      "scopeId": "DE-TH/SekII/G8/GK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 8,
+      "coveredTargetCount": 20,
+      "totalTargetCount": 432
+    },
+    {
+      "scopeId": "DE-TH/SekII/G8/GK+LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 544
+    },
+    {
+      "scopeId": "DE-TH/SekII/G8/LK",
+      "status": "valid",
+      "revision": "math-2026-11-05-v6",
+      "selectedRootContractCount": 9,
+      "coveredTargetCount": 22,
+      "totalTargetCount": 543
+    }
+  ],
+  "restoredSaarlandActualUnitsAtEmptyMastery": [
+    {
+      "contractId": "math-pythagoras-geometric-proof",
+      "revision": "2026-11-05-v1",
+      "programUnitId": "de-gym-math-pythagoras-geometric-proof",
+      "title": {
+        "en": "Prove the Pythagorean theorem geometrically",
+        "de": "Den Satz des Pythagoras geometrisch beweisen"
+      },
+      "promise": {
+        "en": "You can prove the Pythagorean theorem for an arbitrary right triangle using a suitable dissection or completion diagram and justify the area relations and the generality of the conclusion.",
+        "de": "Du kannst den Satz des Pythagoras f\u00fcr ein beliebiges rechtwinkliges Dreieck an einer geeigneten Zerlegungs- oder Erg\u00e4nzungsfigur geometrisch beweisen und dabei die verwendeten Fl\u00e4chenbeziehungen und die Allgemeing\u00fcltigkeit der Schlussfolgerung nachvollziehbar begr\u00fcnden."
+      },
+      "introduction": {
+        "en": "Connect the calculation with its geometric meaning and justify the steps independently.",
+        "de": "Eine Fl\u00e4chenzerlegung erkl\u00e4rt einen Satz f\u00fcr alle passenden rechtwinkligen Dreiecke. Du unterscheidest die allgemeine Begr\u00fcndung von einer Zahlenprobe."
+      },
+      "ownGoalIds": [
+        "487ec508-f421-5a5a-a84c-98f88a8fb3e5",
+        "2686049c-2cb2-5595-be5b-4860c3ceb76b"
+      ],
+      "requiredChildContractRefs": [],
+      "ownAssessmentGoalIds": [
+        "2686049c-2cb2-5595-be5b-4860c3ceb76b"
+      ],
+      "ownRecallGoalIds": [],
+      "complete": false,
+      "targetCount": 2,
+      "explicitTargetCount": 0,
+      "recognizedTargetCount": 0,
+      "ownRecognizedGoalIds": [],
+      "pendingGoalIds": [
+        "2686049c-2cb2-5595-be5b-4860c3ceb76b",
+        "487ec508-f421-5a5a-a84c-98f88a8fb3e5"
+      ]
+    },
+    {
+      "contractId": "math-pythagoras-converse-proof",
+      "revision": "2026-11-05-v1",
+      "programUnitId": "de-gym-math-pythagoras-converse-proof",
+      "title": {
+        "en": "Prove the converse of the Pythagorean theorem",
+        "de": "Den Kehrsatz des Pythagoras beweisen"
+      },
+      "promise": {
+        "en": "For a triangle with sides $a,b,c$, the learner can prove the converse of the Pythagorean theorem from $a^2+b^2=c^2$: they construct a right auxiliary triangle with legs $a,b$, use the Pythagorean theorem to establish equality of the third sides, and infer by congruence that the angle opposite $c$ in the original triangle is right.",
+        "de": "Du kannst f\u00fcr ein Dreieck mit Seiten $a,b,c$ aus $a^2+b^2=c^2$ den Kehrsatz des Pythagoras beweisen: Sie konstruiert ein rechtwinkliges Hilfsdreieck mit Katheten $a,b$, zeigt mit dem Satz des Pythagoras die Gleichheit der dritten Seiten und schlie\u00dft mittels Kongruenz auf den rechten Winkel gegen\u00fcber $c$ im urspr\u00fcnglichen Dreieck."
+      },
+      "introduction": {
+        "en": "Connect the calculation with its geometric meaning and justify the steps independently.",
+        "de": "Die Umkehrung eines Satzes braucht eine eigene Begr\u00fcndung. Ein Hilfsdreieck verkn\u00fcpft die L\u00e4ngengleichheit mit dem rechten Winkel."
+      },
+      "ownGoalIds": [
+        "6a3502ee-b616-5db7-88fc-8951f33c9f63",
+        "5c00b06d-9644-5e23-ac29-6ff1499ee0ca"
+      ],
+      "requiredChildContractRefs": [],
+      "ownAssessmentGoalIds": [
+        "5c00b06d-9644-5e23-ac29-6ff1499ee0ca"
+      ],
+      "ownRecallGoalIds": [],
+      "complete": false,
+      "targetCount": 2,
+      "explicitTargetCount": 0,
+      "recognizedTargetCount": 0,
+      "ownRecognizedGoalIds": [],
+      "pendingGoalIds": [
+        "5c00b06d-9644-5e23-ac29-6ff1499ee0ca",
+        "6a3502ee-b616-5db7-88fc-8951f33c9f63"
+      ]
+    }
+  ],
+  "entryScopeGuardRegression": {
+    "suite": "com.skillpilot.backend.service.LearningUnitEntryScopeTest",
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "testSourceSha256": "b7fcb24a27748ffaece408f7d5a5a28981d9efe645bbfa6c849a0ed16eec94e7",
+    "cases": [
+      "sekIHasNoCourseAndNonapplicableDurationStaysAbsent()",
+      "missingEntryStageIsUnresolvedDespiteStaleOriginalAndSubjectStage()",
+      "changedContainmentCannotClaimEntryAuthority()",
+      "originalAllIsNotTranslatedIntoANeighboringJurisdiction()",
+      "directMathSelectionIsNeverAnEntryAlias()",
+      "installedEntryOwnsScopeAndStaleOriginalRootCannotOverrideIt()",
+      "changedPersonalizationSourceCannotClaimEntryAuthority()"
+    ],
+    "boundary": "Actual derived Entry scope fixtures in both services; missing Entry stage remains absent despite stale original-root/subject stages. No new installed package21 claim."
+  },
+  "successfulNativeCaptureCount": 3,
+  "nativeProjectionByteEquality": "Identical a8ff522d035a1f8dd778acac5c71a641b1fb097cc25a68cd3447623263b6e647 from first capture, successful repeat2 and fresh post-pointer check.",
+  "excludedFailedCapture": {
+    "log": "tmp/math-learning-units/native-v6-fresh-equality.log",
+    "cause": "Validator-only fallback policy changed during measurement; actual harness failed closed. Not used for acceptance."
+  },
+  "executionBoundary": "Unsaved native backend fixture with actual application-service/catalog/read-model execution; no HTTP/SQL, deployment, client rendering or host acceptance. Separate OpenAI HTTP and orientation tests are recorded independently.",
+  "retainedLegacyDuplicateScopeCount": 12
+}
