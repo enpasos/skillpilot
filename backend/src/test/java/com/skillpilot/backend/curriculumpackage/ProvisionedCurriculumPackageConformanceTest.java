@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeService;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.Test;
@@ -21,12 +20,13 @@ class ProvisionedCurriculumPackageConformanceTest {
     void loadsTheRealProvisionedMathematicsReleaseWithoutRepositoryDiscovery() {
         String configuredStore = System.getenv("SKILLPILOT_CONFORMANCE_PACKAGE_STORE");
         Assumptions.assumeTrue(
-                configuredStore != null && !configuredStore.isBlank(),
+                configuredStore != null,
                 "real package store is supplied only by repository-wide conformance");
+        assertThat(configuredStore).as("An explicitly configured package store cannot be blank").isNotBlank();
         Path store = Path.of(configuredStore).toAbsolutePath().normalize();
-        Assumptions.assumeTrue(
-                Files.isRegularFile(store.resolve("locks/active.json")),
-                "real provisioned active lock is unavailable");
+        assertThat(store.resolve("locks/active.json"))
+                .as("An explicitly configured package store must have its actual active lock")
+                .isRegularFile();
 
         CurriculumPackageProperties properties = new CurriculumPackageProperties();
         properties.setSource(CurriculumSourceMode.PACKAGE);
@@ -43,14 +43,17 @@ class ProvisionedCurriculumPackageConformanceTest {
         assertThat(snapshot.packages()).hasSize(1);
         assertThat(snapshot.packages().getFirst().packageId())
                 .isEqualTo("org.skillpilot.curriculum.de.gymnasium.mathematik");
-        // Bind the current release-model profile and independently validated
-        // standalone package, rather than the superseded curriculum snapshot.
+        // Independently verified .2 ZIP: two landscapes, 21 contracts and
+        // 27 ordinary acquisition targets. Publication review remains separate.
+        assertThat(snapshot.packages().getFirst().packageVersion())
+                .isEqualTo("0.1.0-learning-unit-offers.2");
         assertThat(snapshot.packages().getFirst().contentDigest())
-                .isEqualTo("sha256:3f935a5bfd586cb253f337f6f558f4799c38e6576d217cc0ee9c1198208c79df");
-        assertThat(snapshot.rootLandscapeIds()).hasSize(1);
-        assertThat(snapshot.landscapesById()).hasSize(1);
-        assertThat(snapshot.viewsById()).hasSize(88);
-        assertThat(snapshot.offeringsById()).hasSize(128);
+                .isEqualTo("sha256:d701457183e6d6a04b7beaeee6f43367db73de2c53748c22e0855e94d0f51b5e");
+        assertThat(snapshot.rootLandscapeIds()).containsExactlyInAnyOrder(
+                "19b53458-3f94-5bcf-8fcd-e85444851cff", "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced");
+        assertThat(snapshot.landscapesById()).hasSize(2);
+        assertThat(snapshot.viewsById()).hasSize(98);
+        assertThat(snapshot.offeringsById()).hasSize(138);
         assertThat(snapshot.decksByKey()).hasSize(12);
         assertThat(snapshot.resourcesById()).hasSize(912);
         assertThat(snapshot.resourcesByPublicUrl()).hasSize(836);
@@ -81,24 +84,26 @@ class ProvisionedCurriculumPackageConformanceTest {
                         .filter(resource -> resource.mediaType().equals("image/png"))
                         .count())
                 .isEqualTo(250);
-        assertThat(snapshot.artifactsByKey()).hasSize(1058);
+        assertThat(snapshot.artifactsByKey()).hasSize(1583);
+        assertThat(snapshot.artifactsByRole().get("learning-unit-contract")).hasSize(21);
         assertThat(snapshot.artifactsByRole().get("mapping"))
                 .singleElement()
                 .satisfies(artifact -> {
-                    assertThat(artifact.runtimeRequired()).isFalse();
+                    assertThat(artifact.runtimeRequired()).isTrue();
                     assertThat(artifact.normalizationRole()).isEqualTo("source-to-canonical-mappings");
                 });
         assertThat(snapshot.artifactsByRole().get("quality-evidence"))
                 .singleElement()
                 .satisfies(artifact -> assertThat(artifact.runtimeRequired()).isFalse());
-        assertThat(snapshot.definitionCount()).isEqualTo(2716);
+        assertThat(snapshot.definitionCount()).isEqualTo(2799);
 
         PackageCompositionViewState compositionViews = PackageCompositionViewState.load(snapshot, mapper);
         assertThat(compositionViews.generationSha256()).isEqualTo(snapshot.generationSha256());
-        assertThat(compositionViews.viewsById()).hasSize(88);
-        assertThat(compositionViews.offeringsById()).hasSize(128);
+        assertThat(compositionViews.viewsById()).hasSize(98);
+        assertThat(compositionViews.offeringsById()).hasSize(138);
         assertThat(compositionViews.defaultOfferingsByLandscapeId())
-                .containsOnlyKeys("68a8ac50-f5f5-4e24-8aa9-5e408ca01ced");
+                .containsOnlyKeys(
+                        "19b53458-3f94-5bcf-8fcd-e85444851cff", "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced");
         snapshot.offeringsById().values().forEach(offering -> {
             PackageCompositionViewState.ResolvedView byId =
                     compositionViews.resolveOffering(offering.offeringId());
@@ -124,8 +129,13 @@ class ProvisionedCurriculumPackageConformanceTest {
                 new CurriculumPackageArtifactReader(reader),
                 mapper);
         assertThat(domainState.generationSha256()).isEqualTo(snapshot.generationSha256());
-        assertThat(domainState.landscapes()).hasSize(1);
-        assertThat(domainState.landscapeIdByGoalId()).hasSize(1252);
+        assertThat(domainState.landscapes()).hasSize(2);
+        assertThat(domainState.landscapeIdByGoalId()).hasSize(1255);
+        var mathematics = domainState.landscapes().stream()
+                .filter(landscape -> "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced".equals(landscape.getLandscapeId()))
+                .findFirst().orElseThrow();
+        assertThat(mathematics.getProgramUnits()).hasSize(35);
+        assertThat(mathematics.getGoalPlacements()).hasSize(351);
         assertThat(domainState.mappingState().packageStates()).singleElement().satisfies(state -> {
             assertThat(state.mappingCollectionCount()).isEqualTo(31);
             assertThat(state.decisionCount()).isEqualTo(10_022);
@@ -156,7 +166,7 @@ class ProvisionedCurriculumPackageConformanceTest {
             assertThat(entry.href()).isEqualTo(
                     "/api/ui/curriculum-source-evidence/packages/"
                             + "org.skillpilot.curriculum.de.gymnasium.mathematik/"
-                            + "0.1.0-conformance.3/goals");
+                            + "0.1.0-learning-unit-offers.2/goals");
         });
         var exactBavarianMapping = domainState.mappingState().mappings().stream()
                 .filter(mapping -> "exact".equals(mapping.matchType()))
@@ -168,7 +178,7 @@ class ProvisionedCurriculumPackageConformanceTest {
                 .orElseThrow();
         var exactBavarianEvidence = sourceEvidence.lookup(
                 "org.skillpilot.curriculum.de.gymnasium.mathematik",
-                "0.1.0-conformance.3",
+                "0.1.0-learning-unit-offers.2",
                 exactBavarianMapping.canonicalGoalId(),
                 snapshot.generationSha256(),
                 "DE-BY");
@@ -192,7 +202,7 @@ class ProvisionedCurriculumPackageConformanceTest {
         assertThat(resources.resourceHrefs()).hasSize(912);
         var germanDeck = resources.resolveDeck(
                         "org.skillpilot.curriculum.de.gymnasium.mathematik",
-                        "0.1.0-conformance.3",
+                        "0.1.0-learning-unit-offers.2",
                         "de_gymnasium_math_seki_core",
                         "de-DE")
                 .orElseThrow();
@@ -201,7 +211,7 @@ class ProvisionedCurriculumPackageConformanceTest {
         } catch (java.io.IOException error) {
             throw new AssertionError("real package deck is not readable JSON", error);
         }
-        var memoryGoal = domainState.landscapes().getFirst().getGoals().stream()
+        var memoryGoal = mathematics.getGoals().stream()
                 .filter(goal -> goal.getTags() != null
                         && goal.getTags().contains("srs-deck:de_gymnasium_math_seki_core"))
                 .findFirst()
@@ -222,7 +232,7 @@ class ProvisionedCurriculumPackageConformanceTest {
                 .orElseThrow();
         var image = resources.resolveResource(
                         embeddedResource.packageId(),
-                        "0.1.0-conformance.3",
+                        "0.1.0-learning-unit-offers.2",
                         embeddedResource.resourceId())
                 .orElseThrow();
         assertThat(image.bytes()).hasSize(Math.toIntExact(embeddedResource.artifact().bytes()));
@@ -244,7 +254,8 @@ class ProvisionedCurriculumPackageConformanceTest {
         LandscapeService landscapeService = new LandscapeService(mapper, mappingService, domainState);
         assertThat(landscapeService.getOverview("de", true).getSummaries())
                 .extracting(summary -> summary.getCurriculumId())
-                .containsExactly("68a8ac50-f5f5-4e24-8aa9-5e408ca01ced");
+                .containsExactlyInAnyOrder(
+                        "19b53458-3f94-5bcf-8fcd-e85444851cff", "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced");
         assertThat(domainState.mappingState().sourceLandscapesById().values())
                 .extracting(metadata -> metadata.jurisdiction())
                 .containsOnly(

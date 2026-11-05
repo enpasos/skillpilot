@@ -29,6 +29,7 @@ jobs:
     runs-on: ubuntu-24.04
     env:
       SKILLPILOT_SOURCE_PDF_MODE: committed-bindings
+      SKILLPILOT_PACKAGE_RUN: tmp/curriculum-release-model/conformance-runs/current-v3-full-${{ github.run_id }}-${{ github.run_attempt }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -107,20 +108,43 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Install package validation dependencies
         run: python -m pip install -r scripts/curriculum_package_validation_requirements.txt
-      - name: Validate full standalone curriculum package
+      - name: Validate current full standalone Mathematics package
+        env:
+          SKILLPILOT_FULL_PACKAGE_CONFORMANCE: 'true'
         run: |
-          bash -n \
-            scripts/run_curriculum_release_model_conformance.sh \
-            scripts/run_curriculum_full_package_conformance.sh
-          bash scripts/run_curriculum_full_package_conformance.sh
-      - name: Load real package through the backend
+          bash -n scripts/run_learning_units_package_conformance.sh
+          bash scripts/run_learning_units_package_conformance.sh \
+            --producer-profile contracts/curriculum-package/v1.2/profiles/de-gymnasium-mathematik-learning-unit-offers-release-model-v2.profile.json \
+            --work-dir "${SKILLPILOT_PACKAGE_RUN}"
+      - name: Load the actual current package through the backend
         working-directory: backend
         env:
-          SKILLPILOT_CONFORMANCE_PACKAGE_STORE: ${{ github.workspace }}/tmp/curriculum-release-model/provisioned-store
+          SKILLPILOT_CONFORMANCE_PACKAGE_STORE: ${{ github.workspace }}/${{ env.SKILLPILOT_PACKAGE_RUN }}/provisioned-store
         run: |
-          ./gradlew test \
+          test -f "${SKILLPILOT_CONFORMANCE_PACKAGE_STORE}/locks/active.json"
+          ./gradlew test --console=plain --rerun-tasks \
             --tests 'com.skillpilot.backend.curriculumpackage.ProvisionedCurriculumPackageConformanceTest'
-      - name: Upload package evidence
+      - name: Require one real package test without skips
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          name = 'com.skillpilot.backend.curriculumpackage.ProvisionedCurriculumPackageConformanceTest'
+          path = Path('backend/build/test-results/test') / f'TEST-{name}.xml'
+          if not path.is_file():
+              raise SystemExit('Missing actual current-package test report')
+          suite = ET.parse(path).getroot()
+          cases = suite.findall('testcase')
+          if suite.get('name') != name or suite.get('tests') != '1' or len(cases) != 1:
+              raise SystemExit('Expected exactly one actual current-package test')
+          if any(int(suite.get(field, '0')) for field in ('skipped', 'failures', 'errors')):
+              raise SystemExit('Current-package test failed or skipped')
+          if any(suite.findall('.//' + tag) for tag in ('skipped', 'failure', 'error')):
+              raise SystemExit('Current-package testcase failed or skipped')
+          print('Actual current-package integration: 1 executed test, 0 skips/failures/errors')
+          PY
+      - name: Upload current package evidence
         if: always()
         uses: actions/upload-artifact@v6
         with:
@@ -128,18 +152,11 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
           path: |
-            tmp/curriculum-release-model/full-standalone-package/*report*.json
-            tmp/curriculum-release-model/full-standalone-package/provision-*.json
-            tmp/curriculum-release-model/full-standalone-package-build-summary.json
-            tmp/curriculum-release-model/package-consumer-smoke/assembly-manifest.json
-            tmp/curriculum-release-model/package-consumer-smoke/evidence-bundle-manifest.json
-            tmp/curriculum-release-model/package-consumer-smoke/evidence-bundle/
-            tmp/curriculum-release-model/learning-units/*report*.json
-            tmp/curriculum-release-model/learning-units/provision-*.json
-            tmp/curriculum-release-model/learning-units/package-build-summary.json
-            tmp/curriculum-release-model/learning-units/package-consumer-smoke/assembly-manifest.json
-            tmp/curriculum-release-model/learning-units/package-consumer-smoke/evidence-bundle-manifest.json
-            tmp/curriculum-release-model/learning-units/package-consumer-smoke/evidence-bundle/
+            ${{ env.SKILLPILOT_PACKAGE_RUN }}/*.json
+            ${{ env.SKILLPILOT_PACKAGE_RUN }}/package-consumer-smoke/assembly-manifest.json
+            ${{ env.SKILLPILOT_PACKAGE_RUN }}/package-consumer-smoke/evidence-bundle-manifest.json
+            ${{ env.SKILLPILOT_PACKAGE_RUN }}/package-consumer-smoke/evidence-bundle/
+            backend/build/test-results/test/TEST-com.skillpilot.backend.curriculumpackage.ProvisionedCurriculumPackageConformanceTest.xml
 
   fwu-owl-ci:
     name: FWU-OWL and roundtrip CI
