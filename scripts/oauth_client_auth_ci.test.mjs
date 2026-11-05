@@ -91,6 +91,32 @@ test('OAuth concurrency separates trigger events while superseding older runs fo
   }
 })
 
+test('Provider security bounds checkout while retaining policy, runtime and evidence inputs', () => {
+  const lane = workflow.match(/^ {2}provider-security:\n([\s\S]*?)(?=^ {2}[\w-]+:|$(?![\s\S]))/mu)?.[1]
+  assert.ok(lane)
+  const checkout = lane.match(/uses: actions\/checkout@v6\n([\s\S]*?)(?=\n {6}- uses:)/u)?.[1]
+  assert.match(checkout ?? '', /sparse-checkout-cone-mode: false/u)
+  const patterns = checkout.match(/sparse-checkout: \|\n((?: {12}[^\n]+\n?)+)/u)?.[1]
+    .trim().split('\n').map(line => line.trim())
+  assert.ok(patterns, 'Provider security must not materialize the complete repository')
+  for (const pattern of ['/*', '!/*/', '/.github/', '/ai/', '/backend/', '/content/', '/contracts/',
+    '/curricula/', '!/curricula/DE/Gymnasium/quality/', '!/curricula/DE/Gymnasium/visualizations/',
+    '/curricula/DE/Gymnasium/quality/assessment-completion/', '/curricula/DE/Gymnasium/quality/learning-units/',
+    '/docs/deploy/', '/docs/qa-ci/status/curriculum-quality-status.json', '/scripts/']) {
+    assert.ok(patterns.includes(pattern), `Missing provider checkout input or archive exclusion: ${pattern}`)
+  }
+  assert.ok(patterns.indexOf('/curricula/DE/Gymnasium/quality/learning-units/')
+    > patterns.indexOf('!/curricula/DE/Gymnasium/quality/'), 'Runtime inputs must override the broad archive exclusion')
+  const ledger = JSON.parse(readFileSync(new URL('../contracts/oauth/client-profile-release.json', import.meta.url), 'utf8'))
+  for (const profile of ledger.profiles) for (const stage of Object.values(profile.stages)) {
+    for (const artifact of stage?.evidence ?? []) {
+      assert.ok(patterns.some(pattern => !pattern.startsWith('!') && pattern !== '/*'
+        && (`/${artifact.path}` === pattern || `/${artifact.path}`.startsWith(pattern))),
+      `Provider checkout excludes pinned release evidence: ${artifact.path}`)
+    }
+  }
+})
+
 test('Claude revocation checkout contains its safety dependencies without curriculum assets', () => {
   const lane = docsWorkflow.match(/^ {2}claude-revocation-postgres:\n([\s\S]*?)(?=^ {2}[\w-]+:|$(?![\s\S]))/mu)?.[1]
   assert.ok(lane, 'Missing Claude revocation job')
