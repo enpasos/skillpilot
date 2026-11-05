@@ -40,7 +40,7 @@ jobs:
       # Full checkouts include the immutable curriculum QA archives. Keep all
       # repository inputs; remove only unused SDKs from this disposable runner.
       - &reserve_repository_disk
-        name: Reserve disk space for the complete repository
+        name: Reserve disk space for selected repository inputs
         working-directory: ${{ runner.temp }}
         shell: bash
         run: |
@@ -66,17 +66,26 @@ jobs:
           sudo apt-get clean
           df -h "${GITHUB_WORKSPACE}"
           df -i "${GITHUB_WORKSPACE}"
-          # 43 GiB worktree + 15 GiB shallow Git reserve + 8 GiB dependencies/builds.
-          required_bytes=$((66 * 1024 * 1024 * 1024))
+          # Full checkouts retain the 66 GiB gate. The three pinned Ubuntu 24
+          # jobs omit only unconsumed historical quality raster/PDF/ZIP copies:
+          # measured selected tree about 30.26 GB; bound 30.4 GB, plus the
+          # same 15 GiB Git reserve and 8 GiB dependencies/builds reserve.
+          case "${SKILLPILOT_CI_CHECKOUT_MODE:-full}" in
+            full) required_bytes=$((66 * 1024 * 1024 * 1024)); checkout_label="Full checkout" ;;
+            curriculum-sparse-v1)
+              required_bytes=$((30400000000 + 15 * 1024 * 1024 * 1024 + 8 * 1024 * 1024 * 1024))
+              checkout_label="Bounded curriculum checkout" ;;
+            *) echo "::error::Unknown checkout disk policy"; exit 1 ;;
+          esac
           available_bytes="$(df -B1 --output=avail "${GITHUB_WORKSPACE}" | tail -n 1)"
           if [ "${available_bytes}" -lt "${required_bytes}" ]; then
-            echo "::error::Full checkout needs ${required_bytes} free bytes; only ${available_bytes} are available after cleanup."
+            echo "::error::${checkout_label} needs ${required_bytes} free bytes; only ${available_bytes} are available after cleanup."
             exit 1
           fi
       - name: Checkout
         uses: actions/checkout@v6
       - &verify_repository_disk
-        name: Verify disk reserve after the complete checkout
+        name: Verify disk reserve after checkout
         working-directory: ${{ github.workspace }}
         shell: bash
         run: |
@@ -287,14 +296,33 @@ jobs:
   goal-book-publication:
     name: Learning-goal book build
     runs-on: ubuntu-24.04
+    env:
+      SKILLPILOT_CI_CHECKOUT_MODE: curriculum-sparse-v1
     defaults:
       run:
         working-directory: app
     steps:
       - *reserve_repository_disk
-      - name: Checkout
+      - &checkout_curriculum_inputs
+        name: Checkout current curriculum inputs and all quality metadata
         uses: actions/checkout@v6
+        with:
+          sparse-checkout-cone-mode: false
+          # Keep every metadata file, current visualization and original source
+          # PDF. Only historical quality binary copies are omitted; actual book
+          # loaders below prove that none is consumed by registered publications.
+          sparse-checkout: |
+            /*
+            !/curricula/**/quality/**/*.png
+            !/curricula/**/quality/**/*.jpg
+            !/curricula/**/quality/**/*.jpeg
+            !/curricula/**/quality/**/*.pdf
+            !/curricula/**/quality/**/*.zip
       - *verify_repository_disk
+      - &verify_curriculum_input_budget
+        name: Verify selected tracked inputs fit the reviewed checkout budget
+        working-directory: ${{ github.workspace }}
+        run: python3 -B scripts/check_ci_curriculum_checkout.py --materialize-required-source-documents
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
@@ -303,6 +331,8 @@ jobs:
           cache-dependency-path: app/package-lock.json
       - name: Install dependencies
         run: npm ci
+      - name: Verify real registered book and source-index input closure
+        run: npx --no-install tsx scripts/testCiCurriculumCheckoutInputs.ts
       - name: Use Ubuntu package sources
         uses: ./.github/actions/ubuntu-apt
       - name: Test CI package source isolation
@@ -349,14 +379,16 @@ jobs:
     name: Application frontend CI
     needs: goal-book-publication
     runs-on: ubuntu-24.04
+    env:
+      SKILLPILOT_CI_CHECKOUT_MODE: curriculum-sparse-v1
     defaults:
       run:
         working-directory: app
     steps:
       - *reserve_repository_disk
-      - name: Checkout
-        uses: actions/checkout@v6
+      - *checkout_curriculum_inputs
       - *verify_repository_disk
+      - *verify_curriculum_input_budget
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
@@ -495,14 +527,16 @@ jobs:
     name: Curriculum CI
     needs: goal-book-publication
     runs-on: ubuntu-24.04
+    env:
+      SKILLPILOT_CI_CHECKOUT_MODE: curriculum-sparse-v1
     defaults:
       run:
         working-directory: app
     steps:
       - *reserve_repository_disk
-      - name: Checkout
-        uses: actions/checkout@v6
+      - *checkout_curriculum_inputs
       - *verify_repository_disk
+      - *verify_curriculum_input_budget
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:

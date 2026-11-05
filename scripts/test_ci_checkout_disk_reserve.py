@@ -9,11 +9,12 @@ import tempfile
 import unittest
 
 import yaml
+import check_ci_curriculum_checkout as curriculum_checkout
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / '.github/workflows/ci.yml'
-PRE = 'Reserve disk space for the complete repository'
-POST = 'Verify disk reserve after the complete checkout'
+PRE = 'Reserve disk space for selected repository inputs'
+POST = 'Verify disk reserve after checkout'
 GIB = 1024 ** 3
 
 
@@ -29,7 +30,10 @@ def full_checkout_jobs(document):
                         for step in job['steps']))
 
 
-JOBS = full_checkout_jobs(workflow())
+FULL_JOBS = full_checkout_jobs(workflow())
+SPARSE_JOBS = ('goal-book-publication', 'frontend-ci', 'graph-validation')
+JOBS = tuple(name for name, job in workflow()['jobs'].items()
+             if any(step.get('name') == PRE for step in job['steps']))
 
 
 def step_source(job, name):
@@ -43,7 +47,7 @@ def script(job, name):
     return step_source(job, name)['run']
 
 
-def simulate(source, available, runner='github-hosted', system='Linux', docker_fail=False):
+def simulate(source, available, runner='github-hosted', system='Linux', docker_fail=False, checkout_mode='full'):
     # Every destructive entry point is shadowed. Fake sudo records arguments and
     # NEVER dispatches its command; direct destructive calls fail the test.
     with tempfile.TemporaryDirectory(prefix='ci-disk-guard-') as directory:
@@ -72,6 +76,7 @@ else printf 'synthetic filesystem information\n'; fi
             path.chmod(0o755)
         env = {**os.environ, 'PATH': f'{binaries}:/usr/bin:/bin',
                'RUNNER_ENVIRONMENT': runner, 'RUNNER_OS': system,
+               'SKILLPILOT_CI_CHECKOUT_MODE': checkout_mode,
                'GITHUB_WORKSPACE': str(workspace),
                'CI_DISK_TEST_LOG': str(log), 'CI_DISK_TEST_BYTES': str(available),
                'CI_DISK_TEST_DOCKER_FAIL': str(int(docker_fail))}
@@ -91,8 +96,9 @@ else printf 'synthetic filesystem information\n'; fi
 class CheckoutDiskReserveTest(unittest.TestCase):
     def test_all_full_checkouts_use_the_shared_guard_mappings(self):
         document = workflow()
-        full = set(full_checkout_jobs(document))
-        self.assertTrue(full)
+        guarded = set(JOBS)
+        self.assertTrue(FULL_JOBS)
+        self.assertEqual(guarded, set(FULL_JOBS) | set(SPARSE_JOBS))
         text = WORKFLOW.read_text()
         for anchor in ('reserve_repository_disk', 'verify_repository_disk'):
             self.assertEqual(text.count(f'&{anchor}'), 1)
@@ -111,8 +117,62 @@ class CheckoutDiskReserveTest(unittest.TestCase):
                 self.assertEqual(step_source(job, POST), step_source(JOBS[0], POST))
                 for name in (PRE, POST):
                     subprocess.run(['/bin/bash', '-n'], input=script(job, name), text=True, check=True)
-        for job in document['jobs'].keys() - full:
+        for job in document['jobs'].keys() - guarded:
             self.assertFalse(any(step.get('name') in {PRE, POST} for step in document['jobs'][job]['steps']))
+
+    def test_only_pinned_curriculum_jobs_select_the_bounded_policy(self):
+        for job, configuration in workflow()['jobs'].items():
+            mode = configuration.get('env', {}).get('SKILLPILOT_CI_CHECKOUT_MODE')
+            if job in SPARSE_JOBS:
+                self.assertEqual(configuration['runs-on'], 'ubuntu-24.04')
+                self.assertEqual(mode, 'curriculum-sparse-v1')
+                checkout = next(step for step in configuration['steps'] if step.get('uses') == 'actions/checkout@v6')
+                self.assertIs(checkout['with']['sparse-checkout-cone-mode'], False)
+                self.assertEqual(tuple(checkout['with']['sparse-checkout'].splitlines()), curriculum_checkout.SPARSE_PATTERNS)
+                self.assertTrue(any(step.get('run') == 'python3 -B scripts/check_ci_curriculum_checkout.py --materialize-required-source-documents' for step in configuration['steps']))
+            else:
+                self.assertIsNone(mode)
+        self.assertIn('npx --no-install tsx scripts/testCiCurriculumCheckoutInputs.ts',
+                      str(workflow()['jobs']['goal-book-publication']['steps']))
+
+    def test_bounded_budget_comes_from_selected_bytes_plus_existing_git_and_build_reserves(self):
+        required = curriculum_checkout.SOURCE_BUDGET_BYTES + curriculum_checkout.GIT_RESERVE_BYTES + curriculum_checkout.BUILD_RESERVE_BYTES
+        self.assertLess(required, 52 * GIB)
+        for available, expected in [(required, 0), (required - 1, 1), (52 * GIB, 0)]:
+            result, _ = simulate(script(SPARSE_JOBS[0], PRE), available, checkout_mode='curriculum-sparse-v1')
+            self.assertEqual(result.returncode, expected, result.stdout + result.stderr)
+        result, _ = simulate(script(SPARSE_JOBS[0], PRE), 100 * GIB, checkout_mode='unknown')
+        self.assertNotEqual(result.returncode, 0)
+
+    def test_real_git_sparse_matching_preserves_metadata_and_current_binary_inputs(self):
+        required_paths = sorted(curriculum_checkout.required_source_documents())
+        paths = [*required_paths,
+            'curricula/DE/Gymnasium/quality/archive/a.png', 'curricula/DE/Gymnasium/quality/a.pdf',
+            'curricula/DE/HE/quality/archive/a.jpg', 'curricula/DE/Gymnasium/quality/a.zip',
+            'curricula/DE/Gymnasium/quality/archive/a.jpeg', 'curricula/DE/Gymnasium/quality/a.PNG',
+            'curricula/DE/Gymnasium/quality/archive/a.json', 'curricula/DE/Gymnasium/quality/a.review.jsonl',
+            'curricula/DE/Gymnasium/quality/a.md', 'curricula/DE/Gymnasium/quality/a.svg',
+            'curricula/DE/Gymnasium/input/original.pdf', 'curricula/DE/Gymnasium/visualizations/current.png',
+            'app/public/assets/goal-visualizations/current.jpg', 'app/scripts/config/goal-books/current.json',
+            'contracts/goal-book/v1/model.schema.json', 'backend/src/main/resources/widget.html',
+        ]
+        with tempfile.TemporaryDirectory(prefix='ci-sparse-matcher-') as temporary:
+            directory = Path(temporary)
+            def git(*arguments, **kwargs):
+                return subprocess.run(['git', '-c', 'core.trustctime=false', '-c', 'core.hooksPath=/dev/null',
+                                       '-c', 'user.name=CI fixture', '-c', 'user.email=ci-fixture@example.invalid',
+                                       '-C', temporary, *arguments], check=True, capture_output=True, text=True, **kwargs)
+            git('init', '--quiet')
+            for path in paths:
+                target = directory / path
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(b'fixture\n')
+            git('add', '.')
+            git('commit', '--quiet', '-m', 'private sparse-pattern fixture')
+            git('sparse-checkout', 'set', '--no-cone', '--stdin', input='\n'.join(curriculum_checkout.SPARSE_PATTERNS) + '\n')
+            git('sparse-checkout', 'add', '--stdin', input='\n'.join('/' + path for path in required_paths) + '\n')
+            for path in paths:
+                self.assertEqual((directory / path).exists(), curriculum_checkout.selected(path), path)
 
     def test_self_hosted_and_non_linux_are_rejected_before_any_cleanup(self):
         for runner, system in [('self-hosted', 'Linux'), ('github-hosted', 'Windows'), ('', 'Linux')]:
