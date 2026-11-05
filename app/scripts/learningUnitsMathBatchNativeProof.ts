@@ -26,7 +26,7 @@ assert.ok(expected, 'Batch needs explicit independently reviewed projection expe
 const ordered = (ids: Iterable<string>) => [...new Set(ids)].sort()
 const newQIds = Object.keys(expected.newAssessmentTargets)
 const activeOffers = args.includes('--require-current-offers')
-  ? read('curricula/DE/Gymnasium/learning-units/offers/math-2026-11-05-v2.json') : undefined
+  ? read(option('--offer-binding', `curricula/${read('curricula/DE/Gymnasium/learning-units/catalog.json').currentOfferBinding.path}`)) : undefined
 const offerByScope = new Map<string, any>((activeOffers?.offers ?? []).map((row: any) => [canonicalJson(row.scope), row]))
 const matches = (map: Record<string, string[]>, scopeId: string) => Object.keys(map).filter(id => map[id].includes(scopeId))
 const rows = after.scopes.map((row: any) => {
@@ -74,7 +74,7 @@ assert.equal(after.nativeMapperInputSha256[mathCanonicalPath], digest(readFileSy
 const projectionOnly = args.includes('--projection-only')
 if (!projectionOnly) {
   for (const evidence of after.actualContractEvaluations as any[]) {
-    assert.deepEqual(evidence.ownRecallGoalIds, [], 'This bounded proof covers the actual nine K-free contracts')
+    assert.deepEqual(evidence.ownRecallGoalIds, [], 'This bounded proof covers the actual reviewed K-free contracts')
     assert.deepEqual(ordered(evidence.globalRecognitionAfterOwnQPass), ordered(evidence.ownOrdinaryGoalIds))
     assert.equal(evidence.ownQPassUnitResult.complete, true)
     assert.equal(evidence.onlyOrdinaryExplicitUnitResult.complete, false)

@@ -51,6 +51,13 @@ function main() {
   const currentAssessmentReach = new Map(currentAssessments.map(goal => [goal.id, reachable(goal.requires ?? [], currentRelation)]))
   const manifest = read('curricula/DE/Gymnasium/learning-units/catalog.json')
   const definitions = manifest.contracts.map((entry: { path: string }) => read(`curricula/${entry.path}`))
+  const independentReviewPaths = [...new Set<string>(manifest.contracts.flatMap((entry: { inputs: Record<string, string> }) =>
+    Object.keys(entry.inputs).filter(path => path.endsWith('/independent-review.json'))))].sort()
+  const independentDecisions = independentReviewPaths.flatMap(path => {
+    const document = read(`curricula/${path}`)
+    if (document.semantics !== 'independent-content-demand-recall-and-placement-decisions-v1') return []
+    return document.packets.map((packet: any) => ({ ...packet, sourceReviewPath: path }))
+  })
   const claimed = new Set(assessments.flatMap(goal => (goal.examData!.coveredGoalIds as string[] | undefined) ?? []))
   const currentClaimed = new Set(currentAssessments.flatMap(goal => (goal.examData!.coveredGoalIds as string[] | undefined) ?? []))
   const kind = (id: string) => kinds.get(id)
@@ -85,9 +92,15 @@ function main() {
     const currentMissingConsumerScopes = currentTargetIndices.filter(index => !currentConsumers.some(q => currentMembership.get(q)?.includes(index)))
     if (currentMissingConsumerScopes.length) currentMissingNativeConsumerCount++
     const contracts = definitions.filter((definition: { ownGoalIds: string[] }) => definition.ownGoalIds.includes(goal.id))
+    const contentHolds = independentDecisions.filter((decision: any) => decision.packetDecision !== 'PASS'
+      && decision.ownOrdinaryGoalIds.includes(goal.id))
     const acquisitions = source.goalPlacements.filter(placement => placement.goalId === goal.id && placement.acquisition)
     return { goalId: goal.id, title: goal.title,
-      status: contracts.length ? 'bound-contract-candidate; independent content/binding/native gates are recorded in its pinned review and proofs' : 'pending-own-unit-and-normal-pass-review',
+      status: contracts.length ? 'bound-contract-candidate; independent content/binding/native gates are recorded in its pinned review and proofs'
+        : contentHolds.length ? 'held-by-actual-independent-content-or-recall-review' : 'pending-own-unit-and-normal-pass-review',
+      independentReviewHolds: contentHolds.map((decision: any) => ({ contractId: decision.contractId, decision: decision.packetDecision,
+        reviewPath: decision.sourceReviewPath, reviewedInputSha256: decision.reviewedInputSha256,
+        reason: decision.substantiveReason, requiredAction: decision.requiredActionOrBoundary })),
       candidatePacketIds: extraRouting.has(goal.id) ? [extraRouting.get(goal.id)!] : (parents.get(goal.id) ?? []).filter(id => packetIds.has(id)),
       routingBasis: extraRouting.has(goal.id) ? 'accepted-explicit-authoring-route; not-canonical-containment-or-unit-approval' : 'existing-direct-canonical-curricular-area',
       allDirectCanonicalParentIds: parents.get(goal.id) ?? [],
@@ -150,6 +163,7 @@ function main() {
       currentMissingExplicitClaimAtoms: originalOrdinary.filter(goal => !currentClaimed.has(goal.id)).length,
       existingRecallGoals: recallPackets.length, existingCards: recallPackets.reduce((sum, packet) => sum + packet.cardCount, 0),
       boundOrdinaryCandidateAtoms: goals.filter(goal => goal.boundContractRefs.length).length,
+      independentlyHeldOrdinaryAtoms: goals.filter(goal => goal.independentReviewHolds.length).length,
       newAssessmentDelta: newSourceGoals.filter(goal => goal.examData || goal.nodeKind === 'exam').map(goal => goal.id),
       removedOriginalGoalIds: [...originalIds].filter(id => !source.goals.some(goal => goal.id === id)),
     },

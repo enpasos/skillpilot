@@ -1,0 +1,13 @@
+# Current Mathematics offers V3: independent structure/source decision
+
+Approved by the Root agent's actual independent literal review of the exact input `16156fc19f31bf18f8f1bbfd6845b5d5bc0c0dcb0b4264106a214cb82e965d0e`. This is a partial repository offer binding, not complete Mathematics, M7, human approval, package21 or host acceptance.
+
+All182 semantic scope keys, target/support sets and physical view selections equal actual native projections. The128 current projection input bytes and all21 immutable contracts with350 distinct historical inputs were independently checked. Each literal selected Own/acquisition set is applicable in its named native offer and no row has duplicate direct owners. Existing A-without-own-Q masks, three content/material/recall holds and12 legacy duplicate-tree scopes remain open.
+
+Astra independently reviewed the stable emitter design and its forward digest chain. The Root agent independently reviewed this exact literal candidate, including21 contract bindings and explicit ownership. The author separately executed the real-source mutation tests: timing, M/I, readmodels, full raw-catalog proof-only bytes and catalog.currentOfferBinding changes preserve binder/proof/review-input bytes; altered selections change the proof, and altered contract/input/duplicate-owner/wrong-scope cases are rejected.
+
+The normative proof binds the canonical parsed native projection payload, its static input map, explicit selection config, complete immutable catalog.contracts entries and explicit current ProgramUnit/acquisition placements. Current catalog pointer, raw run hashes and admission measurements are outside that ancestry. The proof counts128 projection inputs BEFORE review evidence. The hashes of this exact decision document and its receipt are appended afterward, giving130 final binder inputs; they are intentionally outside their own reviewed-input digest. The final binder and catalog pointer bind their actual bytes. Historical V1/V2 and PackageV2 remain byte-exact.
+
+The companion receipt embeds the actual independent literal review result. Root original report file SHA256: `e17e39a6453b414c25a6cbce6d0ec0a4b2976af26c7a9af0823db7c83e38816d`. Fresh native API182 and generator equality after pointer activation remain separate execution gates; this authoring approval does not claim them in advance.
+
+Reproduction: `cd app && npx --no-install tsx scripts/learningUnitsMathStableOfferBindings.ts --check --config app/scripts/config/learning-units/math-current-offer-roots-v3.json --native tmp/math-learning-units/native-batch-b-v3-active.raw.json` after generating the actual native report with the unchanged stable source.
