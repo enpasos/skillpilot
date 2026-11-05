@@ -393,10 +393,10 @@ jobs:
       - name: Reproduce the bound native Mathematics source projection
         working-directory: app
         run: |
-          npx --no-install tsx scripts/learningUnitsMathProjectionEvidence.ts --run-native --native tmp/math-learning-units/native-audit-ci.raw.json --output docs/dev/learning-units-mathematics-native-source-projection.json --check
+          npx --no-install tsx scripts/learningUnitsMathProjectionEvidence.ts --run-native --native tmp/math-learning-units/native-audit-ci.raw.json --output docs/dev/learning-units-mathematics-native-source-projection-v7.json --check
           npx --no-install tsx scripts/nativeProjectionEvidence.test.ts --native tmp/math-learning-units/native-audit-ci.raw.json
-          npx --no-install tsx scripts/learningUnitsMathStableOfferBindings.ts --check --config app/scripts/config/learning-units/math-current-offer-roots-v6.json --native tmp/math-learning-units/native-audit-ci.raw.json
-          npx --no-install tsx scripts/learningUnitsMathStableOfferBindings.test.ts --config app/scripts/config/learning-units/math-current-offer-roots-v6.json --native tmp/math-learning-units/native-audit-ci.raw.json --output tmp/math-learning-units/native-runtime-gate-ci.json
+          npx --no-install tsx scripts/learningUnitsMathStableOfferBindings.ts --check --config app/scripts/config/learning-units/math-current-offer-roots-v7.json --projection docs/dev/learning-units-mathematics-native-source-projection-v7.json --native tmp/math-learning-units/native-audit-ci.raw.json
+          npx --no-install tsx scripts/learningUnitsMathStableOfferBindings.test.ts --config app/scripts/config/learning-units/math-current-offer-roots-v7.json --projection docs/dev/learning-units-mathematics-native-source-projection-v7.json --native tmp/math-learning-units/native-audit-ci.raw.json --output tmp/math-learning-units/native-runtime-gate-ci.json
       - name: Stop disposable PostgreSQL
         if: always()
         uses: ./.github/actions/postgres-service
