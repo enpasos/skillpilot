@@ -122,6 +122,55 @@ Kartenleistungen braucht belegte historische Bedeutung und bewahrt deren echte
 Zeitpunkte. Weder ein breites altes Masteryergebnis noch heutige Deckhashes
 genügen dafür.
 
+### Statische Ablösung nach der Kursprofil-Union
+
+**Geplante Umsetzung, noch nicht implementiert.** Kursprofile vereinigen ihre
+zuvor unabhängig aufgelösten Targets weiterhin additiv. Ein direkter Ausschluss
+in einer LK-View entfernt deshalb keine alte Prüfung, die eine gleichzeitig
+gewählte GK-View weiterhin als Target enthält. Die normale Rollenpriorität wird
+für diesen Nachfolgerfall nicht verändert.
+
+Eine revisionsgebundene, unabhängig geprüfte Programm-/Placementquelle soll
+dafür optional `obligationReplacements` deklarieren: alte und neue Q-/K-IDs,
+exakte native Scopebezüge, erforderliche Einheits- und Placementrevisionen
+sowie den gepinnten Reviewbeleg. Die Quelle ist eigenständige Autoreninformation,
+keine Eingabe aus dem daraus erzeugten aktuellen Offerbinder. Scopebezüge werden
+aus dem tatsächlichen Angebotsinventar gebunden; Lernenden-ID, Fokus, Sprache,
+M und I beeinflussen diese Auswahl nicht.
+
+Für die zunächst unverändert additiv berechnete atomare Targetmenge `T0(s)` gilt:
+
+```text
+Removed(s) = Vereinigung der ausdrücklich ersetzten alten Q/K im Angebot s
+Tnew(s)    = T0(s) \ Removed(s)
+```
+
+Die Operation fügt selbst kein Target hinzu. Alle Nachfolger müssen bereits
+reguläre Targets sein; gewöhnliche Kompetenzen, Orientierung und Cluster dürfen
+nicht entfernt werden. Kanonische Eltern und `requires` bleiben erhalten.
+Überschneidungen, Zyklen, fehlende Nachfolger und unvollständige Partitionen sind
+Konfigurationsfehler. Ein altes Q mit verbleibendem Verbraucher benötigt eine
+eigene geprüfte Entscheidung und darf nicht still übersprungen werden.
+
+Der native Projektor verwendet ausschließlich diese statischen Quellen. Erst
+der nachgelagerte Offercompiler prüft ihre Übereinstimmung mit den ausdrücklich
+ausgewählten Einheiten. Ein Aufruf von `LearningUnitService` oder die Abfrage des
+aktuellen Binders während der Targetberechnung würde eine Abhängigkeitsrunde
+erzeugen und ist ausgeschlossen. Quelle, Review und Algorithmus benötigen
+echte Eingabebindung, einen Cache je unveränderlicher Revision und denselben
+Paketpfad. Consumer ohne die nötige Fähigkeit müssen einen solchen neuen Stand
+ablehnen; ohne das Feld bleibt das bisherige Verhalten bestehen.
+
+Alte M-Ergebnisse und gültiges globales I bleiben erhalten. Eine entfallene
+Prüfpflicht ist kein bestandenes Prüfungslernziel. Feste Pläne behalten `G_old`;
+erst ausdrückliche Neuplanung übernimmt `G_new`. Ein dadurch überholter Plan
+muss weiter bedienbar bleiben oder die nötige Neuplanung sichtbar anbieten.
+Es entstehen keine rückdatierten Abschlüsse und keine Periodenereignisse.
+Vor Aufnahme sind insbesondere GK/LK/Kursunion, alle 182 Angebote, die bisherigen
+807 Kompetenzmitgliedschaften, historische Pläne, Direktzugang und die wirkliche
+Source-/Paketparität zu prüfen. Die aktuelle Inhaltsfreigabe neuer Aufgaben
+ersetzt diese Abnahme nicht.
+
 Die Objekt-Hashes verwenden sortierte JSON-Schlüssel, UTF-8, kompakte
 Trennzeichen und explizite Nullwerte der festen Bedeutungsfelder. Dateihashes
 binden genaue Bytes. Ein Hash beweist Integrität, keine fachliche Qualität:

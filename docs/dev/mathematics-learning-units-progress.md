@@ -99,6 +99,13 @@ Die nächste Gruppe mit zehn Einheiten und 52 weiteren Fachkompetenzen hat nach
 drei Aufgabenreparaturen ein neues unabhängiges Astra-Inhaltsreview bestanden.
 Ihre tatsächliche Angebots-, Placement- und Laufzeitprüfung ist noch offen;
 sie zählt deshalb noch nicht zu den 27 eingebundenen Kompetenzen.
+Der echte Eltern-Preview zeigt, warum diese Grenze nötig ist: ungefiltertes
+Erben erzeugt Prüfungsangebote ohne vollständige eigene Ziele sowie alte und
+neue Pflichten gleichzeitig. Die geprüfte Nachfolgerprojektion nach der
+additiven Kursprofil-Union wird deshalb als gemeinsamer Mechanismus umgesetzt;
+ihre [Regeln und Abnahmegrenzen](learning-unit-contract-format.md#statische-ablosung-nach-der-kursprofil-union)
+sind dokumentiert. Kanonische Eltern, gewöhnliche Targets und alte Ergebnisse
+werden dafür nicht entfernt oder umgedeutet.
 
 Die neue Monotonieprüfung wird in 118 Angeboten als Ziel und in elf weiteren
 als Unterstützung eingeordnet. Für ihr bereits vorhandenes Ableitungsziel
