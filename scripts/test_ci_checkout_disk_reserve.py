@@ -2,7 +2,9 @@
 """Exercise embedded CI disk guards with inert commands; never clean the host."""
 from functools import lru_cache
 import os
+import re
 import shlex
+import shutil
 from pathlib import Path
 import subprocess
 import tempfile
@@ -10,6 +12,7 @@ import unittest
 
 import yaml
 import check_ci_curriculum_checkout as curriculum_checkout
+import check_ci_openai_edge_checkout as edge_checkout
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / '.github/workflows/ci.yml'
@@ -32,6 +35,7 @@ def full_checkout_jobs(document):
 
 FULL_JOBS = full_checkout_jobs(workflow())
 SPARSE_JOBS = ('goal-book-publication', 'frontend-ci', 'graph-validation')
+EDGE_JOB = 'openai-v1-public-edge-ci'
 JOBS = tuple(name for name, job in workflow()['jobs'].items()
              if any(step.get('name') == PRE for step in job['steps']))
 
@@ -98,7 +102,7 @@ class CheckoutDiskReserveTest(unittest.TestCase):
         document = workflow()
         guarded = set(JOBS)
         self.assertTrue(FULL_JOBS)
-        self.assertEqual(guarded, set(FULL_JOBS) | set(SPARSE_JOBS))
+        self.assertEqual(guarded, set(FULL_JOBS) | set(SPARSE_JOBS) | {EDGE_JOB})
         text = WORKFLOW.read_text()
         for anchor in ('reserve_repository_disk', 'verify_repository_disk'):
             self.assertEqual(text.count(f'&{anchor}'), 1)
@@ -120,7 +124,7 @@ class CheckoutDiskReserveTest(unittest.TestCase):
         for job in document['jobs'].keys() - guarded:
             self.assertFalse(any(step.get('name') in {PRE, POST} for step in document['jobs'][job]['steps']))
 
-    def test_only_pinned_curriculum_jobs_select_the_bounded_policy(self):
+    def test_only_declared_sparse_jobs_select_their_bounded_policy(self):
         for job, configuration in workflow()['jobs'].items():
             mode = configuration.get('env', {}).get('SKILLPILOT_CI_CHECKOUT_MODE')
             if job in SPARSE_JOBS:
@@ -130,6 +134,12 @@ class CheckoutDiskReserveTest(unittest.TestCase):
                 self.assertIs(checkout['with']['sparse-checkout-cone-mode'], False)
                 self.assertEqual(tuple(checkout['with']['sparse-checkout'].splitlines()), curriculum_checkout.SPARSE_PATTERNS)
                 self.assertTrue(any(step.get('run') == 'python3 -B scripts/check_ci_curriculum_checkout.py --materialize-required-source-documents' for step in configuration['steps']))
+            elif job == EDGE_JOB:
+                self.assertEqual(mode, 'openai-edge-sparse-v1')
+                checkout = next(step for step in configuration['steps'] if step.get('uses') == 'actions/checkout@v6')
+                self.assertIs(checkout['with']['sparse-checkout-cone-mode'], False)
+                self.assertEqual(tuple(checkout['with']['sparse-checkout'].splitlines()), edge_checkout.SPARSE_PATTERNS)
+                self.assertTrue(any(step.get('run') == 'python3 -B scripts/check_ci_openai_edge_checkout.py' for step in configuration['steps']))
             else:
                 self.assertIsNone(mode)
         self.assertIn('npx --no-install tsx scripts/testCiCurriculumCheckoutInputs.ts',
@@ -173,6 +183,58 @@ class CheckoutDiskReserveTest(unittest.TestCase):
             git('sparse-checkout', 'add', '--stdin', input='\n'.join('/' + path for path in required_paths) + '\n')
             for path in paths:
                 self.assertEqual((directory / path).exists(), curriculum_checkout.selected(path), path)
+
+    def test_openai_edge_budget_keeps_existing_git_and_build_reserves(self):
+        self.assertEqual(edge_checkout.GIT_RESERVE_BYTES, 15 * GIB)
+        self.assertEqual(edge_checkout.BUILD_RESERVE_BYTES, 8 * GIB)
+        evidence = edge_checkout.inventory()
+        self.assertLess(evidence['retainedBytes'], edge_checkout.SOURCE_BUDGET_BYTES)
+        required = evidence['requiredPreCheckoutBytes']
+        for available, expected in [(required, 0), (required - 1, 1), (52_192_530_432, 0)]:
+            result, _ = simulate(script(EDGE_JOB, PRE), available, checkout_mode='openai-edge-sparse-v1')
+            self.assertEqual(result.returncode, expected, result.stdout + result.stderr)
+        # A sparse policy must never lower the gate on the remaining full jobs.
+        result, _ = simulate(script(JOBS[0], PRE), 52_192_530_432)
+        self.assertNotEqual(result.returncode, 0)
+
+    def test_actual_edge_checks_consume_only_the_declared_sparse_inputs(self):
+        with tempfile.TemporaryDirectory(prefix='ci-openai-edge-inputs-') as temporary:
+            root = Path(temporary)
+            for path in edge_checkout.REQUIRED_PATHS:
+                target = root / path
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(ROOT / path, target)
+            excluded = ('curricula/archive.png', 'app/public/goal.png', 'unrelated.txt')
+            for path in excluded:
+                target = root / path
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(b'Excluded fixture, never a repository asset.\n')
+            def git(*arguments, **kwargs):
+                return subprocess.run(['git', '-c', 'core.trustctime=false', '-c', 'core.hooksPath=/dev/null',
+                                       '-c', 'user.name=CI fixture', '-c', 'user.email=ci-fixture@example.invalid',
+                                       '-C', temporary, *arguments], check=True, capture_output=True, text=True, **kwargs)
+            git('init', '--quiet')
+            git('add', '.')
+            git('commit', '--quiet', '-m', 'private edge input fixture')
+            git('sparse-checkout', 'set', '--no-cone', '--stdin', input='\n'.join(edge_checkout.SPARSE_PATTERNS) + '\n')
+            self.assertTrue(all((root / path).is_file() for path in edge_checkout.REQUIRED_PATHS))
+            self.assertFalse(any((root / path).exists() for path in excluded))
+            self.assertEqual(edge_checkout.inventory(root)['retainedFiles'], len(edge_checkout.REQUIRED_PATHS))
+            for command in edge_checkout.CHECK_COMMANDS:
+                result = subprocess.run(command, cwd=root, text=True, capture_output=True, timeout=180,
+                                        env={**os.environ, 'PYTHONDONTWRITEBYTECODE': '1'})
+                self.assertEqual(result.returncode, 0, f'{command}:\n{result.stdout}\n{result.stderr}')
+                counts = re.findall(r'Ran ([1-9][0-9]*) tests? in', result.stderr)
+                if command[0] == 'python3':
+                    self.assertEqual(len(counts), 1, result.stderr)
+                if command[-1] == '--static':
+                    self.assertEqual(len(counts), 2, result.stderr)
+                    self.assertIn('CHECK openai_v1_mtls_static PASS', result.stdout)
+                self.assertNotIn('skipped=', result.stderr)
+                print(f'Actual edge sparse-input check {command}: executed suite counts {counts or ["shell syntax"]}')
+            (root / 'deploy/openai-mtls/openai-root-ca.pem').unlink()
+            with self.assertRaises(FileNotFoundError):
+                edge_checkout.inventory(root)
 
     def test_self_hosted_and_non_linux_are_rejected_before_any_cleanup(self):
         for runner, system in [('self-hosted', 'Linux'), ('github-hosted', 'Windows'), ('', 'Linux')]:

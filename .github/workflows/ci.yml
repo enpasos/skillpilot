@@ -75,6 +75,11 @@ jobs:
             curriculum-sparse-v1)
               required_bytes=$((30400000000 + 15 * 1024 * 1024 * 1024 + 8 * 1024 * 1024 * 1024))
               checkout_label="Bounded curriculum checkout" ;;
+            openai-edge-sparse-v1)
+              # The static edge checks consume 25 code/configuration inputs
+              # below 0.3 MB; round their source bound up to 1 MiB.
+              required_bytes=$((1024 * 1024 + 15 * 1024 * 1024 * 1024 + 8 * 1024 * 1024 * 1024))
+              checkout_label="Bounded OpenAI edge checkout" ;;
             *) echo "::error::Unknown checkout disk policy"; exit 1 ;;
           esac
           available_bytes="$(df -B1 --output=avail "${GITHUB_WORKSPACE}" | tail -n 1)"
@@ -281,11 +286,43 @@ jobs:
   openai-v1-public-edge-ci:
     name: OpenAI MCP V1 public edge CI
     runs-on: ubuntu-latest
+    env:
+      SKILLPILOT_CI_CHECKOUT_MODE: openai-edge-sparse-v1
     steps:
       - *reserve_repository_disk
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/workflows/ci.yml
+            /deploy_skillpilot.sh
+            /deploy/nginx/skillpilot-main-vhost-openai-deny-locations.conf
+            /deploy/nginx/skillpilot-mcp-coaches.conf
+            /deploy/nginx/skillpilot-openai-mtls-mode-enforce.conf
+            /deploy/nginx/skillpilot-openai-mtls-mode-observe.conf
+            /deploy/nginx/skillpilot-openai-stable-acme.conf
+            /deploy/openai-mtls/openai-connectors-mtls-ca.pem
+            /deploy/openai-mtls/openai-root-ca.pem
+            /deploy/openai-mtls/skillpilot-openai-v1-mtls-verifier.service
+            /scripts/check_ci_openai_edge_checkout.py
+            /scripts/deploy.sh
+            /scripts/install_openai_stable_origin_edge.sh
+            /scripts/install_openai_v1_mtls_edge.sh
+            /scripts/lib/openai_v1_mtls_mode.sh
+            /scripts/lib/service_environment_permissions.py
+            /scripts/openai_v1_mtls_verifier.py
+            /scripts/test_openai_v1_mtls_edge.py
+            /scripts/test_openai_v1_public_edge.py
+            /scripts/test_service_environment_permissions.py
+            /scripts/validate_openai_oauth_metadata.py
+            /scripts/verify_openai_stable_origin_certificate.sh
+            /scripts/verify_openai_v1_mtls_edge.sh
+            /scripts/verify_openai_v1_mtls_nginx_contract.py
+            /scripts/verify_openai_v1_public_edge.sh
       - *verify_repository_disk
+      - name: Verify bounded OpenAI edge input inventory
+        run: python3 -B scripts/check_ci_openai_edge_checkout.py
       - name: Validate public edge script
         run: |
           bash -n scripts/verify_openai_v1_public_edge.sh
