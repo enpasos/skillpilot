@@ -1,5 +1,6 @@
 import type { ELK, ElkEdgeSection, ElkNode } from 'elkjs/lib/elk-api'
 import type { LearningMapFixture } from './types'
+import { getLearningScopeRelations } from './scopeRelations'
 import { NODE_HEIGHT, NODE_WIDTH, type LayoutDirection, type LayoutPoint,
   type LayoutPortSide, type LearningLayoutEdge, type LearningLayoutOptions,
   type LearningScopeLayout } from './layoutTypes'
@@ -44,15 +45,21 @@ export async function computeLearningScopeLayout(
   }
   if (ids.length === 0) return { positions: {}, ports: {}, edges: [], width: 0, height: 0 }
 
-  const edges: EdgeDefinition[] = ids.flatMap(target => {
+  ids.forEach(target => {
     const entry = fixture.entries[target]
     if (!entry || entry.id !== target) throw new Error(`Missing or conflicting sibling entry: ${target}`)
     const local = entry.requires.filter(id => siblings.has(id)).sort()
     if (new Set(local).size !== local.length) throw new Error(`Duplicate prerequisite on ${target}`)
-    return local.map(source => {
-      const id = `sibling:${source}->${target}`
-      return { id, source, target, sourceHandle: `out:${id}`, targetHandle: `in:${id}` }
-    })
+  })
+  const relations = [...getLearningScopeRelations(fixture, scopeId)].sort((left, right) => {
+    const a = `${left.target}\u0000${left.source}`
+    const b = `${right.target}\u0000${right.source}`
+    return a < b ? -1 : a > b ? 1 : 0
+  })
+  const edges: EdgeDefinition[] = relations.map(({ source, target }) => {
+    if (!siblings.has(source) || !siblings.has(target) || source === target) throw new Error('Invalid scope relation')
+    const id = `sibling:${source}->${target}`
+    return { id, source, target, sourceHandle: `out:${id}`, targetHandle: `in:${id}` }
   })
   const sourceSide: LayoutPortSide = direction === 'RIGHT' ? 'EAST' : 'SOUTH'
   const targetSide: LayoutPortSide = direction === 'RIGHT' ? 'WEST' : 'NORTH'

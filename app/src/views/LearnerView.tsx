@@ -1,9 +1,10 @@
-import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react'
+import React, { Suspense, lazy, useState, useMemo, useCallback, useRef, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './LearnerViewPresentation.css'
 import { useLearnerUpdates } from '../hooks/useLearnerUpdates'
 import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
+import { LearnerMapBoundary } from '../components/LearnerMapBoundary'
 import type { TreeStructureMode } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
 import { learnerPreferences, PreferencesReloadError, type PersonalCurriculumPreferences } from '../utils/personalCurriculumPreferences'
@@ -117,10 +118,25 @@ import type { ResourceLink } from '../landscapeTypes'
 
 export type LearnerGoalNavigationMode = 'tree' | 'map'
 
+const NativeGoalNavigationMap = lazy(async () => {
+  let timeout: ReturnType<typeof setTimeout> | undefined
+  try {
+    return await Promise.race([
+      import('../components/learningUnitMap/LearnerGoalNavigationMap'),
+      new Promise<never>((_resolve, reject) => {
+        timeout = setTimeout(() => reject(new Error('Learning map loading timed out')), 15000)
+      }),
+    ])
+  } finally {
+    clearTimeout(timeout)
+  }
+})
+
 /** The map reads exactly the scoped navigation projection used by the goal tree. */
 export interface LearnerGoalNavigationMapProps {
   rootGoals: UiGoal[]
   goalIndexAll: Map<string, UiGoal>
+  canonicalGoalSources?: readonly { goals: readonly UiGoal[] }[]
   visibleGoalIds: ReadonlySet<string>
   visibleChildrenByParent: ReadonlyMap<string, readonly string[]>
   selectedGoalId: string
@@ -130,11 +146,15 @@ export interface LearnerGoalNavigationMapProps {
   revealRequest?: { entryId: string; nonce: number }
   onSelectGoal: (goalId: string) => void
   active: boolean
+  onReturnToTree?: () => void
+  language?: 'de' | 'en'
+  useRawGoalTitles?: boolean
 }
 
 export interface LearnerViewProps {
   rootGoals: UiGoal[]
   goalIndexAll: Map<string, UiGoal>
+  canonicalGoalSources?: readonly { goals: readonly UiGoal[] }[]
   getMastery: (goalId: string) => number
   currentGoal: UiGoal | null
   onSelectGoal: (id: string) => void
@@ -383,6 +403,7 @@ const personalCurriculumConfigsEqual = (
 export const LearnerView: React.FC<LearnerViewProps> = ({
   rootGoals,
   goalIndexAll,
+  canonicalGoalSources,
   getMastery,
   currentGoal,
   onSelectGoal,
@@ -406,15 +427,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   renderGoalNavigationMap,
 }) => {
   const [localGoalNavigationMode, setLocalGoalNavigationMode] = useState<LearnerGoalNavigationMode>('tree')
+  const [hasVisitedNavigationMap, setHasVisitedNavigationMap] = useState(false)
   const [navigationRevealRequest, setNavigationRevealRequest] = useState<{ entryId: string; nonce: number } | null>(null)
   const navigationRevealSequence = useRef(0)
-  const hasNavigationMap = Boolean(renderGoalNavigationMap)
   const requestNavigationReveal = useCallback((entryId: string) => {
-    if (!hasNavigationMap) return
     setNavigationRevealRequest({ entryId, nonce: ++navigationRevealSequence.current })
-  }, [hasNavigationMap])
-  const navigationMode = renderGoalNavigationMap ? (goalNavigationMode ?? localGoalNavigationMode) : 'tree'
+  }, [])
+  const navigationMode = goalNavigationMode ?? localGoalNavigationMode
   const selectNavigationMode = (mode: LearnerGoalNavigationMode) => {
+    if (mode === 'map') setHasVisitedNavigationMap(true)
     setLocalGoalNavigationMode(mode)
     onGoalNavigationModeChange?.(mode)
   }
@@ -908,7 +929,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     const selectedScopeEntries = Object.entries(personalConfig)
       .filter(([, config]) => config.selected || config.filterId)
       .sort(([left], [right]) => left.localeCompare(right))
-      .map(([scopeId, config]) => `${scopeId}:${config.selected ? '1' : '0'}:${config.filterId ?? ''}:${config.durationModel ?? ''}`)
+      .map(([scopeId, config]) => `${scopeId}:${config.selected ? '1' : '0'}:${config.filterId ?? ''}:${config.durationModel ?? ''}:${config.stage ?? ''}`)
 
     return [
       landscapeId,
@@ -3475,7 +3496,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             )}
           </div>
         </div>
-        <nav className="learner-goal-navigation-switch" aria-label={localizedLanguage === 'en' ? 'Goal navigation' : 'Lernzielnavigation'} hidden={!renderGoalNavigationMap}>
+        <nav className="learner-goal-navigation-switch" aria-label={localizedLanguage === 'en' ? 'Goal navigation' : 'Lernzielnavigation'}>
           {([
             ['tree', localizedLanguage === 'en' ? 'Tree' : 'Baum'],
             ['map', localizedLanguage === 'en' ? 'Learning map' : 'Lernkarte'],
@@ -3529,9 +3550,23 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           )}
         </div>
         <div className="learner-map-navigation" data-testid="learner-goal-navigation-map-panel" tabIndex={-1} hidden={navigationMode !== 'map'} inert={navigationMode !== 'map'}>
-          {renderGoalNavigationMap?.({
+          {isPersonalConfigHydrating || guidedPersonalizationGateReason === 'scopeLoading' ? (
+            <div className="learner-map-status" role="status">{localizedLanguage === 'en' ? 'Loading curriculum…' : 'Lehrplan wird geladen…'}</div>
+          ) : isGuidedPersonalizationRequired ? (
+            <div className="m-2 rounded-xl border border-sky-300 bg-sky-50 p-4 text-sm dark:border-sky-900/60 dark:bg-sky-950/20">
+              <h3 className="font-semibold text-text-primary">{personalizationGateCopy.title}</h3>
+              <p className="mt-1 text-text-secondary">{personalizationGateCopy.body}</p>
+              <button type="button" onClick={handlePersonalizationGateAction} className="mt-3 rounded-lg bg-sky-600 px-3 py-2 font-semibold text-white">{personalizationGateCopy.action}</button>
+            </div>
+          ) : (hasVisitedNavigationMap || navigationMode === 'map') && <LearnerMapBoundary key={`${learnerStateScopeKey}\u0000${learnerTreeScopeKey}`} onReturnToTree={() => selectNavigationMode('tree')} language={localizedLanguage}>
+          <Suspense fallback={<div className="learner-map-status" role="status">{localizedLanguage === 'en' ? 'Loading map…' : 'Lernkarte wird geladen…'}</div>}>
+          {(() => {
+            const mapProps: LearnerGoalNavigationMapProps = {
             rootGoals: visibleRootGoals,
+            language: localizedLanguage,
+            useRawGoalTitles: currentLandscapeHasMatchedCompositionView,
             goalIndexAll,
+            canonicalGoalSources,
             visibleGoalIds: visibleGoals,
             visibleChildrenByParent: learnerVisibleChildrenByParent,
             selectedGoalId: subjectRootIdByAlias.get(selectedId) ?? selectedId,
@@ -3540,9 +3575,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             completionWaivers: completionTreeWaivers,
             revealRequest: navigationRevealRequest ?? undefined,
             onSelectGoal: selectMapGoal,
+            onReturnToTree: () => selectNavigationMode('tree'),
             active: navigationMode === 'map' && (isMobile ? isSidebarOpen : isDesktopSidebarOpen)
               && !isSetupOpen && !isDataManagementOpen && !isModalOpen,
-          })}
+            }
+            return renderGoalNavigationMap ? renderGoalNavigationMap(mapProps)
+              : <NativeGoalNavigationMap key={`${learnerStateScopeKey}\u0000${learnerTreeScopeKey}`} {...mapProps} />
+          })()}
+          </Suspense></LearnerMapBoundary>}
         </div>
         <div className="flex items-center justify-between gap-2 border-t border-border-color p-2">
           <button

@@ -49,7 +49,7 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
           // A readable point of entry on small screens; the overview fit remains
           // an explicit action, while ordinary panning discovers the surroundings.
           const nodes = flow.getNodes()
-          const first = nodes.find(node => fixture.entries[node.id]?.kind === 'unit') ?? nodes[0]
+          const first = nodes.find(node => fixture.entries[node.id]?.children?.length) ?? nodes[0]
           if (first) {
             const centerX = first.position.x + (first.width ?? 220) / 2
             const centerY = first.position.y + (first.height ?? 72) / 2
@@ -102,7 +102,7 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
 
   const enter = useCallback((id: string) => {
     const entry = fixture.entries[id]
-    if (entry?.kind !== 'unit' || !entry.children?.length
+    if (!entry?.children?.length
       || !fixture.entries[scopeId]?.children?.includes(id)) return
     navigate([...path, id], id)
   }, [fixture, navigate, path, scopeId])
@@ -139,7 +139,7 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
     const base = initialZooms.current.get(viewKey) ?? 1
     if (gesture.direction > 0 && viewport.zoom >= Math.max(1.5, base * 1.65) && targetId) {
       const target = fixture.entries[targetId]
-      if (target?.kind === 'unit' && target.children?.length) enter(targetId)
+      if (target?.children?.length) enter(targetId)
     } else if (gesture.direction < 0 && path.length > 1 && viewport.zoom <= Math.max(0.18, base * 0.52)) {
       goUp()
     }

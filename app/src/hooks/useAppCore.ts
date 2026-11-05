@@ -1058,6 +1058,8 @@ export function useAppCore({
     handleFilterChange,
     currentGoal,
     goalIndexAll,
+    // Exposing source references builds no extra index on the default tree path.
+    prerequisiteGoalSources: graphSourceLandscapeEntries,
     getMasteryValue,
     handleSelectAbsolute,
     handleTrainerContextChange,
