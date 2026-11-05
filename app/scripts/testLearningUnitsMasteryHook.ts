@@ -29,6 +29,11 @@ try {
   await page.getByText('Refresh', { exact: true }).click()
   await page.waitForFunction(() => JSON.parse(document.querySelector('[data-testid="snapshot"]')!.textContent!).effective.A === 1)
   assert.equal((await snapshot()).explicit.A, 0, 'backend recognition is displayed without creating an explicit result')
+  const recognizedIcon = page.getByTestId('goal-recognized')
+  await recognizedIcon.focus()
+  await page.evaluate(() => window.dispatchEvent(new Event('scroll')))
+  await page.getByRole('tooltip').getByText('Deine bestandenen Prüfungen belegen diese Kompetenz. Sie zählt für den gesamten Fortschritt und spätere Voraussetzungen.', { exact: true }).waitFor()
+  await page.keyboard.press('Escape')
 
   assert.equal(await page.getByRole('button', { name: 'Freiwillig üben', exact: true }).count(), 0, 'recognition alone does not authorize a voluntary start')
   next = { mastery: { Q: 1, A: 0 }, learningUnits: { ...learningUnits(['A']), voluntaryGoalIds: ['A'] } }

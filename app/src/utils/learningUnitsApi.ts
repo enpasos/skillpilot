@@ -113,6 +113,11 @@ export const learningCompletionAnnotations = (
   completion: LevelCompletion | null, units: LearningUnitsReadModel | null, stale: boolean,
 ): ReadonlyMap<string, CompletionTreeWaiver> => {
   const annotations = new Map(completionWaiversForTree(completion, stale))
+  if (units) {
+    for (const [id, annotation] of annotations) {
+      if (annotation.reason === 'recognized' && (units.calculationStatus === 'unavailable' || !units.recognizedGoalIds.includes(id))) annotations.delete(id)
+    }
+  }
   if (stale || !units || units.calculationStatus === 'unavailable') return annotations
   for (const id of units.recognizedGoalIds) {
     const unit = units.units.find(unit => unit.ownRecognizedGoalIds.includes(id))

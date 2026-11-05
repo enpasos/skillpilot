@@ -21,7 +21,7 @@ const completed: LevelCompletion = {
     { action: 'leaveProfile', title: { de: 'Zur regulären Lernansicht', en: 'Return to regular learning' } },
   ],
 }
-const render = (completion: LevelCompletion, extra: { stale?: boolean; language?: string; learningPlanPaused?: boolean } = {}) => renderToStaticMarkup(
+const render = (completion: LevelCompletion, extra: { stale?: boolean; language?: string; learningPlanPaused?: boolean; recognizedGoalIds?: readonly string[] } = {}) => renderToStaticMarkup(
   <MemoryRouter><LevelCompletionCard completion={completion} language="de" onAction={() => undefined} onRetry={() => undefined} {...extra} /></MemoryRouter>,
 )
 const done = render(completed, { learningPlanPaused: true })
@@ -32,6 +32,10 @@ assert.doesNotMatch(done, /2 von 2 Lernzielen geschafft/u)
 assert.match(done, /Lernplan ist pausiert/u)
 assert.match(done, /Für heute beenden/u)
 assert.match(done, /aria-labelledby=/u)
+const globalCompletion = render({ ...completed, profileId: 'automatic:personal-curriculum', navigationIntent: 'required', waiverDetails: [{ goalId: 'A', title: { de: 'Anwendung' }, ruleId: 'learning_unit_application', assessments: [], assessmentCount: 0 }] }, { recognizedGoalIds: ['A'] })
+assert.match(globalCompletion, /1 durch selbständige Anwendung gemeistert/u)
+assert.match(globalCompletion, /Sie zählt für den gesamten Fortschritt und spätere Voraussetzungen/u)
+assert.doesNotMatch(globalCompletion, /Keine verbleibende Arbeit benötigt dieses Ziel|weil keine verbleibende Arbeit/u)
 assert.doesNotMatch(done, /type="range"|completionProfile=/u)
 const explained = render({ ...completed, waiverDetails: [{ goalId: 'A', title: { de: 'Projektion veranschaulichen' },
   ruleId: 'internal-static-rule', assessments: [{ goalId: 'Q', title: { de: 'Projektion erklären' } }], assessmentCount: 1 }] })

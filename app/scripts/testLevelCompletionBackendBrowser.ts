@@ -21,6 +21,7 @@ assert.match(learner, /^completion-browser-[a-f0-9-]{36}$/u)
 const profileId = 'automatic:personal-curriculum'
 const rootId = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
 const examId = 'e98672c6-871a-5d0b-889c-5afc51040f0d'
+const preparationId = '3016ec37-1c2e-47db-83f5-e767923bc97e'
 const learnerPath = `/api/ui/learners/${learner}`
 const state = async () => {
   const response = await fetch(new URL(`${learnerPath}/state`, backend), { redirect: 'error' })
@@ -295,18 +296,27 @@ try {
     const passedExam = await findExamRow(reloadedCard)
     await passedExam.getByText('Geschafft', { exact: true }).waitFor()
     assert.equal(await passedExam.getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).count(), 0)
-    // Explain an actually derived goal, not a presumed waiver for the former
-    // two-goal pilot: other open assessments may still need that preparation.
-    const waived = beforePause.levelCompletion.waiverDetails.find((detail: { ruleId: string }) => detail.ruleId === 'no_remaining_demand')
-    assert.ok(waived, 'the real canonical scope must expose a generic explanation for an actual implicit goal')
-    assert.ok(beforePause.levelCompletion.waivedTargetGoalIds.includes(waived.goalId))
-    assert.deepEqual(waived.assessments, [])
-    await reloadedCard.getByText('Warum sind diese Ziele implizit erledigt?', { exact: true }).click()
-    const explanation = reloadedCard.locator('details').getByRole('listitem').filter({
-      has: mobile.page.getByRole('button', { name: `Im Lernzielbaum anzeigen: ${waived.title.de}`, exact: true }),
-    })
-    await explanation.getByText('Keine verbleibende Arbeit benötigt dieses Ziel in diesem Abschnitt.', { exact: false }).waitFor()
-    assert.equal(await explanation.getByText('Geschaffte Prüfungen:', { exact: false }).count(), 0)
+    // The actual MCP result recognizes the reviewed ordinary goal globally.
+    // It need not create a legacy section waiver while the full scope stays open.
+    assert.ok(['valid', 'partial'].includes(beforePause.learningUnits.calculationStatus))
+    assert.ok(beforePause.learningUnits.recognizedGoalIds.includes(preparationId),
+      'the real canonical unit must publish the preparation as global recognition')
+    assert.equal(beforePause.levelCompletion.waiverDetails.find((detail: { goalId: string }) => detail.goalId === preparationId)?.ruleId, 'learning_unit_application',
+      'global recognition keeps its own reason in the compatibility completion projection')
+    const explicitResponse = await fetch(new URL(`${learnerPath}/mastery`, backend), { redirect: 'error' })
+    assert.equal(explicitResponse.status, 200)
+    const explicitResults = await explicitResponse.json()
+    assert.equal(explicitResults.mastery[examId], 1)
+    assert.notEqual(explicitResults.mastery[preparationId], 1, 'recognition does not manufacture an explicit result')
+    const recognizedIcon = mobile.page.getByTestId('goal-recognized')
+    await recognizedIcon.waitFor()
+    assert.equal(await recognizedIcon.getAttribute('aria-label'), 'Durch selbständige Anwendung gemeistert')
+    assert.match(await recognizedIcon.getAttribute('class') ?? '', /text-sky-/u)
+    await recognizedIcon.focus()
+    const recognitionTooltip = mobile.page.getByRole('tooltip')
+    await recognitionTooltip.getByText('Deine bestandenen Prüfungen belegen diese Kompetenz. Sie zählt für den gesamten Fortschritt und spätere Voraussetzungen.', { exact: true }).waitFor()
+    assert.equal(await recognitionTooltip.getByText('Keine verbleibende Arbeit benötigt dieses Ziel in diesem Abschnitt.', { exact: false }).count(), 0)
+    await mobile.page.keyboard.press('Escape')
     await mobile.page.screenshot({ path: `${output}/mobile-assessment-passed.png`, fullPage: true })
     const paused = mobile.page.waitForResponse((response) => response.url().endsWith('/level-completion/actions'))
     await reloadedCard.getByRole('button', { name: 'Für heute beenden', exact: true }).focus()
@@ -321,6 +331,8 @@ try {
     assert.equal(afterPause.levelCompletion.complete, false)
     assert.equal(afterPause.levelCompletion.masteredAssessmentCount, beforePause.levelCompletion.masteredAssessmentCount)
     assert.equal(afterPause.levelCompletion.masteredTargetCount, 1)
+    assert.deepEqual(afterPause.learningUnits.recognizedGoalIds, beforePause.learningUnits.recognizedGoalIds,
+      'pausing the learning route cannot withdraw global recognition')
     assert.deepEqual(afterPause.levelCompletion.waivedTargetGoalIds, beforePause.levelCompletion.waivedTargetGoalIds,
       'pausing navigation cannot alter the current derived implicit result')
     assert.equal(afterPause.levelCompletion.learnerRevision, beforePause.levelCompletion.learnerRevision + 1)
@@ -333,7 +345,7 @@ try {
     checks: ['keyboard-profile-choice', 'mobile-card', 'stale-parallel-choice-409', 'provider-session-start',
       'cockpit-reload-preserves-assessment', 'keyboard-exit-cancel-preserves-assessment'],
     resultChecks: resultMode ? ['real-delayed-state-read', 'real-aborted-state-read', 'reload-recovers-authoritative-state',
-      'actual-mcp-write-passes-assessment-with-section-still-open', 'accessible-confirmed-status', 'scoped-waiver-explanation',
+      'actual-mcp-write-passes-assessment-with-section-still-open', 'accessible-confirmed-status', 'global-recognition-icon-and-tooltip',
       'keyboard-pause-retains-profile-and-results-after-reload'] : [],
     initialRevision: initial.levelCompletion.learnerRevision,
     selectedRevision: selected.levelCompletion.learnerRevision,

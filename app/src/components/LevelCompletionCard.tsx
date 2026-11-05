@@ -21,6 +21,7 @@ export interface LevelCompletionCardProps {
   busy?: boolean
   error?: string | null
   learningPlanPaused?: boolean
+  recognizedGoalIds?: readonly string[]
   onAction: (action: CompletionActionInput) => void
   onRetry: () => void
   onShowGoal?: (goalId: string) => void
@@ -33,7 +34,7 @@ export interface LevelCompletionCardProps {
 /** All counts and choices come from the same backend state as the active goal. */
 export const LevelCompletionCard = ({
   completion, language, stale = false, busy = false, error, learningPlanPaused = false, onAction, onRetry, onShowGoal,
-  discoveryOpenRequest, onOpenSettings, requestedAssessmentMissing = false,
+  discoveryOpenRequest, onOpenSettings, requestedAssessmentMissing = false, recognizedGoalIds,
 }: LevelCompletionCardProps) => {
   const en = language.startsWith('en')
   const headingId = React.useId()
@@ -52,6 +53,9 @@ export const LevelCompletionCard = ({
   const disabled = stale || busy
   const discoveryDisabled = disabled || completion.calculationStatus === 'invalid' || completion.calculationStatus === 'unavailable'
   const automatic = isAutomaticCompletion(completion)
+  const recognized = new Set(recognizedGoalIds ?? completion.waiverDetails?.filter(detail => detail.ruleId === 'learning_unit_application').map(detail => detail.goalId) ?? [])
+  const recognizedCount = completion.waivedTargetGoalIds.filter(id => recognized.has(id)).length
+  const legacyCount = completion.waivedTargetCount - recognizedCount
   const active = hasActiveCompletionRoute(completion)
   const automaticOverview = automatic && !active
   const valid = completion.calculationStatus === 'valid'
@@ -86,8 +90,8 @@ export const LevelCompletionCard = ({
             ? `${completion.masteredTargetCount} goals achieved directly; ${completion.waivedTargetCount} implicitly completed; ${completion.pendingTargetCount} still required.`
             : `${completion.masteredTargetCount} Lernziele direkt geschafft; ${completion.waivedTargetCount} implizit erledigt; ${completion.pendingTargetCount} noch erforderlich.`}</p>
           <p>{en
-            ? 'Implicitly completed goals no longer need separate work in this scope. Their saved learning results stay unchanged.'
-            : 'Implizit erledigte Ziele müssen in diesem Umfang nicht mehr eigens bearbeitet werden. Ihre gespeicherten Lernstände bleiben unverändert.'}</p>
+            ? (recognizedCount ? 'Recognition through independent application also counts toward total progress and later prerequisites. Other preparation is covered only in this section.' : 'Implicitly completed goals no longer need separate work in this scope. Their saved learning results stay unchanged.')
+            : (recognizedCount ? 'Anerkennung durch selbständige Anwendung zählt auch für den gesamten Fortschritt und spätere Voraussetzungen. Andere Vorbereitung ist nur in diesem Abschnitt abgedeckt.' : 'Implizit erledigte Ziele müssen in diesem Umfang nicht mehr eigens bearbeitet werden. Ihre gespeicherten Lernstände bleiben unverändert.')}</p>
         </div> : null}
         {stale ? <p role="status" className="mt-3 text-sm text-text-secondary">{en
           ? 'This view is out of date. Reload before choosing your next step.'
@@ -167,7 +171,9 @@ export const LevelCompletionCard = ({
           {completion.complete ? <p role="status" className="font-semibold">{en ? 'Learning section completed.' : 'Lernabschnitt abgeschlossen.'}</p> : null}
           <p>{en ? `${completion.masteredTargetCount} of ${completion.targetCount} learning ${completion.targetCount === 1 ? 'goal' : 'goals'} achieved${automatic ? ' directly' : ''}.` : `${completion.masteredTargetCount} von ${completion.targetCount} ${completion.targetCount === 1 ? 'Lernziel' : 'Lernzielen'} ${automatic ? 'direkt ' : ''}geschafft.`}</p>
           <p role="status">{en ? `${completion.masteredAssessmentCount} of ${completion.requiredAssessmentCount} ${automatic ? 'completion' : 'required'} ${completion.requiredAssessmentCount === 1 ? 'assessment' : 'assessments'} passed.` : `${automatic ? 'Abschlussprüfungen' : 'Erforderliche Prüfungen'}: ${completion.masteredAssessmentCount} von ${completion.requiredAssessmentCount} geschafft.`}</p>
-          {completion.waivedTargetCount > 0 ? <p>{automatic
+          {completion.waivedTargetCount > 0 ? <p>{recognizedCount ? (en
+            ? `${recognizedCount} mastered through independent application${legacyCount ? `; preparation for ${legacyCount} goals covered in this section` : ''}.`
+            : `${recognizedCount} durch selbständige Anwendung gemeistert${legacyCount ? `; Vorbereitung für ${legacyCount} Lernziele in diesem Abschnitt abgedeckt` : ''}.`) : automatic
             ? (en ? `${completion.waivedTargetCount} learning ${completion.waivedTargetCount === 1 ? 'goal is' : 'goals are'} implicitly completed in this section because no remaining work requires them. Saved learning results stay unchanged.`
               : `${completion.waivedTargetCount} ${completion.waivedTargetCount === 1 ? 'Lernziel ist' : 'Lernziele sind'} in diesem Abschnitt implizit erledigt, weil keine verbleibende Arbeit sie benötigt. Die gespeicherten Lernstände bleiben unverändert.`)
             : (en ? `Preparation for ${completion.waivedTargetCount} learning ${completion.waivedTargetCount === 1 ? 'goal' : 'goals'} is no longer required for this section. The individual goals keep their existing result.` : `Für diesen Abschnitt entfällt die Vorbereitung für ${completion.waivedTargetCount} ${completion.waivedTargetCount === 1 ? 'Lernziel' : 'Lernziele'}. Die einzelnen Lernziele behalten ihren bisherigen Stand.`)}</p> : null}
@@ -182,7 +188,7 @@ export const LevelCompletionCard = ({
                   className="min-h-9 rounded text-left underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:opacity-50">
                   {en ? 'Show in goal tree' : 'Im Lernzielbaum anzeigen'}
                 </button> : null}
-                {!automatic && detail.ruleId !== 'no_remaining_demand' && detail.assessments.length > 0 ? <p>{en ? 'Passed assessments: ' : 'Geschaffte Prüfungen: '}
+                {(!automatic || detail.ruleId === 'learning_unit_application') && detail.ruleId !== 'no_remaining_demand' && detail.assessments.length > 0 ? <p>{en ? 'Passed assessments: ' : 'Geschaffte Prüfungen: '}
                   {detail.assessments.map((assessment, index) => <React.Fragment key={assessment.goalId}>
                     {index > 0 ? '; ' : ''}<InlineMathText text={completionLabel(assessment.title, language)} />
                   </React.Fragment>)}
@@ -190,7 +196,9 @@ export const LevelCompletionCard = ({
                     ? `; and ${detail.assessmentCount - detail.assessments.length} more`
                     : `; und ${detail.assessmentCount - detail.assessments.length} weitere`) : null}.
                 </p> : null}
-                <p>{automatic || detail.ruleId === 'no_remaining_demand'
+                <p>{detail.ruleId === 'learning_unit_application'
+                  ? (en ? 'Passed assessments demonstrate this competence. It counts toward total progress and later prerequisites.' : 'Bestandene Prüfungen belegen diese Kompetenz. Sie zählt für den gesamten Fortschritt und spätere Voraussetzungen.')
+                  : automatic || detail.ruleId === 'no_remaining_demand'
                   ? (en ? 'No remaining work requires this goal in this section. It is implicitly completed here; its saved learning result stays unchanged.'
                     : 'Keine verbleibende Arbeit benötigt dieses Ziel in diesem Abschnitt. Es ist hier implizit erledigt; sein gespeicherter Lernstand bleibt unverändert.')
                   : (en ? 'This preparation is no longer required for this section; the learning goal keeps its existing result.' : 'Diese Vorbereitung entfällt für diesen Abschnitt; das Lernziel behält seinen bisherigen Stand.')}</p>

@@ -101,8 +101,8 @@ export const completionWaiversForTree = (
     const detail = details.get(goalId)
     result.set(goalId, {
       sectionTitle: completion.title,
-      reason: isAutomaticCompletion(completion) || detail?.ruleId === 'no_remaining_demand'
-        ? 'no_remaining_demand' : 'assessment',
+      reason: detail?.ruleId === 'learning_unit_application' ? 'recognized'
+        : isAutomaticCompletion(completion) || detail?.ruleId === 'no_remaining_demand' ? 'no_remaining_demand' : 'assessment',
       assessments: detail?.assessments ?? [],
       assessmentCount: detail?.assessmentCount,
     })
@@ -193,7 +193,7 @@ export const parseLevelCompletion = (value: unknown): LevelCompletion | null => 
       })
       const assessmentCount = integer(detail.assessmentCount)
       const ruleId = text(detail.ruleId)
-      if ((!assessmentCount && ruleId !== 'no_remaining_demand')
+      if ((!assessmentCount && ruleId !== 'no_remaining_demand' && ruleId !== 'learning_unit_application')
           || assessments.length > assessmentCount || assessments.length > 3) throw invalid()
       return { goalId: text(detail.goalId), title: title(detail.title), ruleId, assessments, assessmentCount }
     }),

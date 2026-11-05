@@ -55,7 +55,11 @@ export function TreeStatusTooltip({ label, testId, triggerClassName, children, c
     const releasePointer = () => { pointerInTooltip.current = false }
     const key = (event: KeyboardEvent) => { if (event.key === 'Escape') close() }
     const scroll = (event: Event) => {
-      if (!(event.target instanceof Node && tooltip.current?.contains(event.target))) close()
+      if (event.target instanceof Node && tooltip.current?.contains(event.target)) return
+      // Keyboard focus can scroll the trigger into view after onFocus opened it.
+      // Keep its explanation anchored while that trigger retains focus.
+      if (document.activeElement === trigger.current) open()
+      else close()
     }
     document.addEventListener('pointerdown', outside, true)
     document.addEventListener('pointerup', releasePointer, true)

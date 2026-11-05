@@ -324,7 +324,9 @@ public class LearnerService {
         pending.removeAll(legacy.masteredGoalIds());
         pending.removeAll(waived);
         Map<String, CompletionEvaluation.WaiverReason> reasons = new LinkedHashMap<>();
-        legacy.waiverReasons().forEach((id, reason) -> { if (waived.contains(id)) reasons.put(id, reason); });
+        legacy.waiverReasons().forEach((id, reason) -> {
+            if (waived.contains(id) && !learningUnitApplicationService.governedGoalIds().contains(id)) reasons.put(id, reason);
+        });
         for (var definition : learningUnitApplicationService.catalog().definitions()) {
             var local = unitEvaluation.units().get(definition.ref());
             for (String id : local.ownRecognizedGoalIds()) if (waived.contains(id)) {

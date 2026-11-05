@@ -47,3 +47,8 @@ assert.equal(learningCompletionAnnotations(physicsLegacy, { ...parsed, units: []
   'loading a Mathematics catalog must not suppress a Physics-only legacy route')
 assert.equal(learningCompletionAnnotations(physicsLegacy, parsed, true).size, 0, 'stale state supplies neither legacy nor new annotations')
 console.log('Learning-unit readmodel: global recognition, explicit results, open recall and invalid-snapshot checks passed.')
+
+const compatibilityWitness: LevelCompletion = { ...physicsLegacy, waivedTargetGoalIds: ['A'], waiverDetails: [{ goalId: 'A', title: { de: 'A' }, ruleId: 'learning_unit_application', assessments: [], assessmentCount: 0 }] }
+assert.equal(learningCompletionAnnotations(compatibilityWitness, null, false).get('A')?.reason, 'recognized', 'a compatibility-only witness keeps its global meaning')
+assert.equal(learningCompletionAnnotations(compatibilityWitness, { ...parsed, recognizedGoalIds: [] }, false).has('A'), false, 'older compatibility state cannot resurrect recognition absent from the authoritative snapshot')
+assert.equal(learningCompletionAnnotations(compatibilityWitness, { ...parsed, calculationStatus: 'unavailable', recognizedGoalIds: [] }, false).has('A'), false)

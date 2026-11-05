@@ -3643,6 +3643,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         {levelCompletion || completionDiscoveryRequest ? <div ref={completionEntryRef} className="w-full">
           {levelCompletion && (!isGuidedPersonalizationRequired || learnerStateLoadStatus === 'error') ? (
             <LevelCompletionCard
+              recognizedGoalIds={(masteryLearningUnits === undefined ? learningUnits : masteryLearningUnits)?.recognizedGoalIds}
               key={`${learnerStateScopeKey}:${levelCompletion.profileId ?? 'selection'}`}
               completion={levelCompletion}
               language={localizedLanguage}
@@ -3965,7 +3966,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   </div>)}
                 </div> : null}
 
-                {learnerStateLoadStatus === 'ready' && levelCompletion?.calculationStatus === 'valid' && levelCompletion.waivedTargetGoalIds.includes(currentGoal.id) ? (
+                {learnerStateLoadStatus === 'ready' && levelCompletion?.calculationStatus === 'valid' && completionTreeWaivers.get(currentGoal.id)?.reason !== 'recognized' && levelCompletion.waivedTargetGoalIds.includes(currentGoal.id) ? (
                   <p data-testid="level-completion-goal-context" className="mt-3 text-sm text-text-secondary">
                     {levelCompletion.profileId?.startsWith('automatic:')
                       ? (localizedLanguage === 'en'

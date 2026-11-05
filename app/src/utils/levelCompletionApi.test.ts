@@ -197,3 +197,6 @@ await requestClaudeV1Start({ skillpilotId: 'learner', language: 'en', completion
 })
 assert.deepEqual(launchBody, { communicationLocale: 'en', client: 'web-start', completionAssessment: choice }, 'assessment choice reaches the existing authenticated launch, not a separate early activation')
 console.log('Level completion API tests passed.')
+
+const globallyRecognized = parseLevelCompletion({ ...valid, profileId: 'automatic:personal-curriculum', waiverDetails: [{ goalId: 'A', title: { de: 'Anwendung' }, ruleId: 'learning_unit_application', assessments: [], assessmentCount: 0 }] })!
+assert.equal(completionWaiversForTree(globallyRecognized, false).get('A')?.reason, 'recognized', 'automatic scope must not overwrite authoritative global recognition with a local waiver')
