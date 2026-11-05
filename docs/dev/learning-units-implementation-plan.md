@@ -38,12 +38,20 @@ Dieser Plan konkretisiert die Umsetzung; er eröffnet diese beschlossenen Begrif
 
 **Fortschreibung vom 5. November:** [PR #80](https://github.com/enpasos/skillpilot/pull/80)
 ist mit `e2514eacb595010648ffe50bc4c444ba4553257c` in `main` gemergt.
-Der Product Owner meldet Deployment und bestandenen Smoke-Test. Damit ist S0
-ausgerollt; die Meldung ersetzt keine darüber hinausgehende Coach-Hostabnahme.
-S1 beginnt auf dem neuen Branch `feat/cockpit-learning-map`, direkt auf diesem
-frisch abgerufenen `origin/main`. Der vorherige Branch wird nicht fortgeführt.
-Die folgende Bestandsaufnahme beschreibt die Ausgangslage dieses Schritts;
-eine Vorschau oder ein Merge allein schließen S1 noch nicht ab.
+Der Product Owner meldete Deployment und bestandenen Smoke-Test für S0.
+Auch [PR #81](https://github.com/enpasos/skillpilot/pull/81) ist inzwischen gemergt:
+aktuelle Basis ist `0ce5a8d791eeb9783a919195fd8590bfb79f3595`.
+Der S1-Kandidat bestand seine erforderliche CI; der Product Owner meldet den
+laufenden Rollout. Ein Smoke-Test dieses Rollouts ist noch nicht bestätigt.
+
+S2–S4 werden direkt auf dieser frisch abgerufenen main-Basis auf dem neuen Branch
+`feat/mathematics-learning-units` umgesetzt. Der Auftrag reicht ausdrücklich
+bis zur vollständigen Mathematik-Umsetzung. Der Product Owner hat das zugehörige
+Goal und selbständige Detailentscheidungen bestätigt. Ergebnisse werden früh
+committed und in einem neuen Draft-PR gesichert; frühere Branches und der alte
+PR #79 sind ausschließlich geprüfte Bausteinquellen. Der laufende Stand und die
+verbleibenden Nachweise stehen im
+[Mathematik-Arbeitsstand](mathematics-learning-units-progress.md).
 
 Planungsbasis ist main `8fda13b6505df9f2ba4f8239e1703d8e54d2456e` mit dem akzeptierten
 Lerneinheitenkonzept. Der am 4. November erneut gelesene alte Draft-PR #79 ist
@@ -57,15 +65,16 @@ Revision und Semantik.
 | Bestandteil | Heute belegt | Noch zu liefern |
 | --- | --- | --- |
 | Rekursive Lerneinheiten | Konzept und Formeln beschlossen. | Autoritative Datenbindung, Compiler, Runtime und geprüfte echte Einheiten. |
-| Karte im vollständigen Cockpit | Vorschau auf main; native Produktanbindung mit derselben Baumprojektion entsteht in [PR #81](https://github.com/enpasos/skillpilot/pull/81). | S1-Nachweise am endgültigen Kandidaten und gesonderte Produktionsabnahme. |
+| Karte im vollständigen Cockpit | Native Produktanbindung mit derselben Baumprojektion aus PR #81 auf main; Kandidaten-CI bestanden, Rollout vom Owner begonnen. | Gesonderter Smoke-Test des ausgerollten S1-Stands. |
 | Bisherige Completion-Engine | Vorhandener automatischer Bedarfs-/Erlassmechanismus. | Neue globale Anerkennung aus unveränderlichen lokalen Einheitsverträgen; alte Semantik nicht unverändert übernehmen. |
 | Prüfungen und Inhalte | Bestehende Quellen, Aufgaben, Rubriken und QA-Bestände auf main und im alten PR. | Prüfung des neuen Anwendungsanspruchs, Erwerbszuordnung und historische ID-Bedeutung. |
 | Fachabschluss Mathematik | Noch nicht erreicht. | Sämtliche angebotenen Auflösungen und ihre erforderlichen Verträge nach diesem Konzept abnehmen. |
 
-Die aktuelle Vorschau und ihre Grenzen stehen in der technischen
+Die frühere Vorschau und ihre Grenzen stehen in der technischen
 Bedienbeschreibung `app/prototypes/full-cockpit-README.md`.
-Sie ist keine bereits ausgerollte Runtime und ihre Beispielgruppen sind keine
-freigegebene Aufteilung des Mathematikcurriculums.
+Ihre Beispielgruppen sind keine freigegebene Aufteilung des Mathematikcurriculums.
+Die native Produktanbindung aus S1 verwendet die echte sichtbare Hierarchie,
+ohne ihr bereits neue Einheits- oder Anerkennungssemantik zuzuschreiben.
 
 ## 3. Verbindliche Umsetzungskriterien
 
@@ -268,7 +277,7 @@ begründete Regressionsgrenzen vereinbart.
 
 | Paket | Bestehende Ansatzpunkte und notwendige Ergänzung |
 | --- | --- |
-| Produktkarte | `App.tsx`, `LearnerView.tsx`, `treeProjectionRuntime` und `compositionViewRuntime`: echten Adapter anschließen; `FullCockpitMap` ist bisher nur lokal. UI-Tests ausdrücklich in einen passenden CI-Pfad aufnehmen und Worker-/Assetbuild prüfen. |
+| Produktkarte | `App.tsx`, `LearnerView.tsx`, `treeProjectionRuntime` und `compositionViewRuntime`: S1-Adapter und dessen CI-Prüfungen erhalten; autoritative Einheitsmetadaten und gemeinsame M/I-Lesesicht aus S3 ergänzen. |
 | Format und Kompilierung | `ProgramUnit`, `GoalPlacement`, Runtime-/Composition-/Paketschemata und Authoringwerkzeuge; vorhandene `CompletionProfileCompiler`, `CompiledCompletionGraph` und `CompletionCanonicalGraphResolver` wiederverwenden. Neue Einheitsbedeutung explizit versionieren. |
 | Gemeinsame Lesesicht | `LearnerService`, `UnifiedLearnerStateResponse`, `MasteryResponse`, `CoachStateProjection` und `CoachToolFacade`: kohärenten M-/I-/M_eff-Snapshot bis zur normalen Frontier und Fortsetzung tragen. Der bisherige Name `computeEffectiveMastery` allein belegt diese neue Semantik nicht. |
 | Planung | `LearnerLearningPlanService`, `LearningPlanCompletionProjection`, `UnifiedLearningPlanStatusCalculator`: neuen Kern statt einer abweichenden zweiten Berechnung verwenden; explizite Ereignisse erhalten. |
