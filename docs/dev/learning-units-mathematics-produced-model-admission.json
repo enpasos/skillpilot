@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "measurement": "local in-process proof; no HTTP, DB, browser, provider-host or CI performance acceptance",
+  "javaVersion": "25.0.1",
+  "javaVendor": "Amazon.com Inc.",
+  "rawReportSha256": "5c603f4f5331bc7c7d3dc1dcf9d7732f5569abaf58ea1e6c75d1044946091d07",
+  "productionClassSha256": {
+    "LearningUnitPackageCatalog": "d73219da7594a9184f07d8165e7d2cd72a1e431b1b05a2e2f1d8af3e5f3d07b7",
+    "LearningUnitSourceBindings": "bf5e3822142cc7c9d7e2274a11f3b203625b51f8e1f284f367cc1f8145829bb3",
+    "LearningUnitCompiler": "00654f1aee15537a8f8ceafe6ec872f94bdd256e6c2811c893c2af3f15095602",
+    "ActualProducedLearningUnitAdmission": "8026fdf5f587a633ca8e125c20e8a65f945428348bdb6ca594127808147e4a65"
+  },
+  "harnessSourceSha256": "77daafa330d6a5af454cc9310a4a20b15fb4da72e4a086cb272f2dcc16f163a3",
+  "proof": "actual-produced-runtime-1.2-cold-java-admission",
+  "contentDigest": "sha256:1972b56243b78b9011e3a26514ecb7eb50fd85bafbb1510982f4bfc4045e2f73",
+  "compiledLandscapeCount": 1,
+  "compiledViewCount": 88,
+  "actualUnitWrapperCount": 30,
+  "actualModelInputCount": 122,
+  "actualModelInputManifestSha256": "d73931f0b32155c184acf2e2c9e83d092ab83add7ecf2e09b6763d0f7ebdd340",
+  "admittedContracts": ["math-dot-product-projection@2026-11-05-v1"],
+  "quarantinedContracts": {},
+  "explicitMastery": ["e98672c6-871a-5d0b-889c-5afc51040f0d"],
+  "coldEmptyMasteryRecognition": [],
+  "recognizedGoalIds": ["3016ec37-1c2e-47db-83f5-e767923bc97e"],
+  "derivedComplete": true,
+  "compiledSemanticKindsPreserved": {
+    "3016ec37-1c2e-47db-83f5-e767923bc97e": "curricularAtomic",
+    "e98672c6-871a-5d0b-889c-5afc51040f0d": "practiceAssessment"
+  },
+  "evidenceBoundary": "Actual producer canonical, views and immutable unit wrappers loaded by the real Java package-admission catalog. This proof does not install or serve a ZIP.",
+  "reproduction": "cd app && npx tsx scripts/learningUnitsProofs.ts admission --model <compiled-model-root> --publish-report"
+}

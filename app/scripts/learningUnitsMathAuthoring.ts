@@ -105,8 +105,9 @@ function main() {
   for (const id of config.ownGoalIds as string[]) assert.deepEqual(byId.get(id), beforeById.get(id), 'S2 changed historical A/Q meaning or task')
   const ownContext = [...reachable(config.ownGoalIds, afterRelation)].sort()
   const atomicPrerequisites = Object.fromEntries(ownContext.map(id => [id, afterRelation[id]]))
-  const compositionViewDigests = Object.fromEntries(Object.entries(config.compositionViews as Record<string, string>)
-    .map(([id, path]) => [id, digest(readFileSync(resolve(root, path)))]))
+  const frozenViewBytes = Object.fromEntries(Object.entries(config.compositionViews as Record<string, string>).map(([id, path]) => [id,
+    execFileSync('git', ['-c', 'core.trustctime=false', 'show', `${config.baselineRef}:${path}`], { cwd: root, encoding: 'utf8', maxBuffer: 4 * 1024 * 1024 })]))
+  const compositionViewDigests = Object.fromEntries(Object.entries(frozenViewBytes).map(([id, bytes]) => [id, digest(bytes)]))
   const meanings = Object.fromEntries(config.ownGoalIds.map((id: string) => [id, goalMeaning(byId.get(id)!)]))
   const taskDir = `${base}/inputs/${config.contractId}/${config.revision}`
   const snapshotPath = `${base}/sources/math-2026-11-05-s2-v1.source.json`
@@ -144,7 +145,9 @@ function main() {
     goal.requires = (goal.requires ?? []).filter(id => id !== prerequisite)
   }
   const liveUnitIndex = liveWithS2.programUnits.findIndex(unit => unit.id === config.programUnitId)
-  if (liveUnitIndex < 0) liveWithS2.programUnits.push(authoredUnit); else liveWithS2.programUnits[liveUnitIndex] = authoredUnit
+  if (liveUnitIndex < 0) liveWithS2.programUnits.push(authoredUnit)
+  else assert.equal((liveWithS2.programUnits[liveUnitIndex].learningUnit as { contractId: string }).contractId, config.contractId,
+    'Do not overwrite a different live acquisition unit while reproducing the S2 archive')
   for (const placement of current.goalPlacements.filter(placement => placement.unitId === config.programUnitId)) {
     const livePlacementIndex = liveWithS2.goalPlacements.findIndex(item => item.goalId === placement.goalId && item.unitId === config.programUnitId)
     if (livePlacementIndex < 0) liveWithS2.goalPlacements.push(placement); else liveWithS2.goalPlacements[livePlacementIndex] = placement
@@ -180,8 +183,8 @@ function main() {
   artifacts.set(semanticLedgerPath, ledger)
   const frozenLedgerPath = `${base}/sources/math-2026-11-05-s2-v1/mathematik.semantic-kinds.json`
   artifacts.set(frozenLedgerPath, frozenLedger)
-  for (const [viewId, path] of Object.entries(config.compositionViews as Record<string, string>)) {
-    rawArtifacts.set(`${base}/sources/math-2026-11-05-s2-v1/views/${viewId}.view.json`, readFileSync(resolve(root, path), 'utf8'))
+  for (const [viewId, bytes] of Object.entries(frozenViewBytes)) {
+    rawArtifacts.set(`${base}/sources/math-2026-11-05-s2-v1/views/${viewId}.view.json`, bytes)
   }
   artifacts.set(rebindPath, { schemaVersion: 1, scope: 'three exact source fingerprints after reachability-neutral redundant-edge repair',
     baselineRef: config.baselineRef, proofPath: minimalityPath, proofSha256: objectDigest(artifacts.get(minimalityPath)),
@@ -193,11 +196,14 @@ function main() {
   }
   for (const path of [`DE/Gymnasium/${config.reviewRef}`, config.taskSourcePath]) inputs[path] = digest(readFileSync(resolve(root, 'curricula', path)))
   for (const [path, bytes] of rawArtifacts) inputs[path.substring('curricula/'.length)] = digest(bytes)
-  const ownEntry = { path: contractPath.substring('curricula/'.length),
-    sha256: digest(serialize(definition)), status: 'active', sourceSnapshotPath: snapshotPath.substring('curricula/'.length),
-    inputs, assessmentInputs, recallInputs: {} }
   const priorEntries = existsSync(resolve(root, `${base}/catalog.json`)) ? parse(`${base}/catalog.json`).contracts : []
-  const manifest = { schemaVersion: 1, contracts: [...priorEntries.filter((entry: { path: string }) => entry.path !== ownEntry.path), ownEntry] }
+  const previousOwn = priorEntries.find((entry: { path: string }) => entry.path === contractPath.substring('curricula/'.length))
+  const ownEntry = { path: contractPath.substring('curricula/'.length),
+    sha256: digest(serialize(definition)), status: previousOwn?.status ?? 'active', sourceSnapshotPath: snapshotPath.substring('curricula/'.length),
+    inputs, assessmentInputs, recallInputs: {} }
+  const manifest = { schemaVersion: 1, contracts: previousOwn
+    ? priorEntries.map((entry: { path: string }) => entry.path === ownEntry.path ? ownEntry : entry)
+    : [...priorEntries, ownEntry] }
   artifacts.set(`${base}/catalog.json`, manifest)
   for (const [path, value] of artifacts) {
     const bytes = serialize(value); const absolute = resolve(root, path)

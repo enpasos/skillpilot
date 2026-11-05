@@ -1,0 +1,41 @@
+// Usage from backend/: ./gradlew --init-script ../app/scripts/learningUnits/proofs.init.gradle
+//   actualProducedLearningUnitAdmission -PlearningUnitModelRoot=/absolute/model
+//   learningUnitPrerequisiteBenchmark -PlearningUnitNativeInventory=/absolute/native.json
+allprojects { project ->
+    plugins.withId('java') {
+        def repo = new File(project.rootDir, '..').canonicalFile
+        def work = new File(repo, 'tmp/math-learning-units')
+        def sourceDirectory = new File(repo, 'app/scripts/learningUnits')
+        def selectedFile = { name, fallback -> project.hasProperty(name) ? project.file(project.property(name)) : fallback }
+        def registerProof = { taskName, className, memory, argumentProvider ->
+            def compileName = 'compile' + taskName.substring(0, 1).toUpperCase() + taskName.substring(1)
+            def classes = new File(work, taskName + '-classes')
+            tasks.register(compileName, JavaCompile) {
+                dependsOn tasks.named('compileJava')
+                source new File(sourceDirectory, className + '.java')
+                // Configurations avoid the main output resource dependency: no assets are copied.
+                classpath = configurations.testCompileClasspath + sourceSets.main.output.classesDirs
+                destinationDirectory.set(classes)
+                javaCompiler.set(javaToolchains.compilerFor(java.toolchain))
+            }
+            tasks.register(taskName, JavaExec) {
+                dependsOn tasks.named(compileName)
+                classpath = files(classes) + sourceSets.main.output.classesDirs + configurations.testRuntimeClasspath
+                mainClass.set('com.skillpilot.backend.curriculumpackage.' + className)
+                javaLauncher.set(javaToolchains.launcherFor(java.toolchain))
+                maxHeapSize = memory
+                doFirst { args argumentProvider().collect { it.absolutePath } }
+            }
+        }
+        registerProof('actualProducedLearningUnitAdmission', 'ActualProducedLearningUnitAdmission', '700m', {
+            if (!project.hasProperty('learningUnitModelRoot')) throw new GradleException('Pass -PlearningUnitModelRoot=/absolute/compiled-model-root')
+            [project.file(project.property('learningUnitModelRoot')),
+             selectedFile('learningUnitAdmissionOutput', new File(work, 'actual-produced-runtime12-admission.json'))]
+        })
+        registerProof('learningUnitPrerequisiteBenchmark', 'LearningUnitPrerequisiteBenchmark', '900m', {
+            [selectedFile('learningUnitNativeInventory', new File(work, 'native-backend.raw.json')),
+             selectedFile('learningUnitCanonicalSource', new File(repo, 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json')),
+             selectedFile('learningUnitBenchmarkOutput', new File(work, 'prerequisite-performance.json'))]
+        })
+    }
+}

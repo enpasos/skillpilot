@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "semantics": "global-unit-recognition-v1",
+  "contractId": "math-right-prisms-volume-surface",
+  "revision": "2026-11-05-v1",
+  "sourceBinding": {
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "programUnitId": "de-gym-math-right-prisms-volume-surface",
+    "placementRevision": "2026-11-05-v1",
+    "compositionViewDigests": {
+      "de-he-gym-math-gk-g8": "169b0adf4ef09802f910acfe3ef2706838d0a575156d4ba9c952316b34a875c6",
+      "de-he-gym-math-gk-g9": "a33d9519191f2d260b8f16deaf9f70825a98802b111bfe5ac6fab96f1b081938",
+      "de-he-gym-math-lk-g8": "c77b4bb843a7ec819717d8b7db44b12102e95d4c009bc048a3f23127bf7ef9a8",
+      "de-he-gym-math-lk-g9": "f52a68ee85e375047e7dd51ec051e589b6c99ae44ceff25681914d429845af5a",
+      "de-he-gym-seki-math-g8": "1f8a3cac0b91c80fd84cbad72f358f0774d88b8ba4ed23ff59430bf7d661198f",
+      "de-he-gym-seki-math-g9": "0a67d241305a7ef4af1abb9276b3e992a050164289560c62c7f4a0aae12a9b2c",
+      "de-mv-gym-math-gk": "55c3d17704a0d767e36a999cb7b08ed5a5cdef8f900c6a170045b425d9982163",
+      "de-mv-gym-math-lk": "ae30563c0918541887ae98e1b7aed97f9e5f886620ec1f4f97dbb4c971a15cb8",
+      "de-rp-gym-math-gk-g8": "3c583ac50023bc1388f1eb95a99b41a2e25ee715a6822517a22475aabe375df3",
+      "de-rp-gym-math-gk-g9": "91737984ff49111d32f3d7b27449816888c7d7b304c54e2f2e3c97821a7c0194",
+      "de-rp-gym-math-lk-g8": "90ddde1f7607cecdf7473080b101e18a4d48600e1ca0be55632702889c87bc03",
+      "de-rp-gym-math-lk-g9": "97a08caaa9b136b2d01273e97bb8e4f55eca651018227cf6b4f992e93d3cdc36",
+      "de-rp-gym-seki-math-g8": "e32ef68f3f53fda913d631b5fb0a8d0be3cb434c3b174b4e51e27436c2fb0648",
+      "de-rp-gym-seki-math-g9": "ee6b5174b46a697a413d311b2df3939eaa2b7b918ea0fe5e0038efcb5fa1c64a",
+      "de-sh-gym-math-gk-g8": "5a57672da5f6ca80393c877013a324feb7db8e72baef254d1d162a10b446042f",
+      "de-sh-gym-math-gk-g9": "57bed3698e21d3f0c5c547a810f3734ae155e190f7d0459f26bbf2fbff8ea49e",
+      "de-sh-gym-math-lk-g8": "251b1a123860c7baaa57ce891cd6dfd4aa92b5cad30541fd636e88c9f6c1e0d7",
+      "de-sh-gym-math-lk-g9": "75ac64f48c03b9217ca485ba270a48dc055311d4383790b5c2a34fe05482fa12",
+      "de-sh-gym-seki-math-g8": "595ded88926fb7993f449cdc630d7d8afdbb41517051b228df282dd3dc8e255a",
+      "de-sh-gym-seki-math-g9": "22d1805dff1ea8a42889e7e2fedd25f293de977f1ac4ed5dcf17e043f875a93a"
+    }
+  },
+  "title": {
+    "de": "Volumen und Außenfläche eines geraden Prismas bestimmen",
+    "en": "Determine the volume and exterior surface area of a right prism"
+  },
+  "promise": {
+    "de": "Du kannst an einem geraden Prisma den Rauminhalt und die gesamte Außenfläche berechnen, die Rechnungen mit dem Aufbau des Körpers erklären und beide Größen mit passenden Einheiten im Sachkontext unterscheiden.",
+    "en": "You can calculate a right prism's volume and complete exterior surface area, explain the calculations using its structure, and distinguish both quantities with appropriate units in context."
+  },
+  "introduction": {
+    "de": "Ein ausgefüllter Messkeil und seine äußere Beschichtung verlangen unterschiedliche Größen. Hier nutzt du kongruente Schichten und die einzelnen Außenflächen, um Rauminhalt und Oberfläche eines geraden Prismas zu verstehen.",
+    "en": "A solid measuring wedge and its exterior coating call for different quantities. Here you use congruent layers and individual exterior faces to understand a right prism's volume and surface area."
+  },
+  "ownGoalIds": [
+    "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+    "f1348d40-3872-5e44-8892-3600c811796f",
+    "e5494c67-aed6-5710-8ae3-51ae147c10e9"
+  ],
+  "requiredChildContractRefs": [],
+  "ownAssessmentGoalIds": [
+    "e5494c67-aed6-5710-8ae3-51ae147c10e9"
+  ],
+  "ownRecallGoalIds": [],
+  "ownOrientationGoalIds": [],
+  "ownGoalMeanings": {
+    "68fb0e78-34f2-5572-8db6-e7f5ebcff70f": {
+      "id": "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+      "title": "Volumen gerader Prismen berechnen",
+      "titleEn": "Calculate the volume of right prisms",
+      "description": "Die lernende Person kann mithilfe der Schichtung kongruenter Grundflächen erklären, warum für das Volumen eines geraden Prismas V = G · h gilt, den Grundflächeninhalt G und die dazu senkrechte Körperhöhe h bestimmen, den Rauminhalt berechnen und mit passender Volumeneinheit im Sachkontext deuten.",
+      "descriptionEn": "The learner can use layers of congruent bases to explain why the volume of a right prism is V = G × h, determine the base area G and perpendicular height h, calculate the volume, and interpret it with an appropriate volume unit in context.",
+      "type": "atomic",
+      "nodeKind": null,
+      "semanticKind": null
+    },
+    "f1348d40-3872-5e44-8892-3600c811796f": {
+      "id": "f1348d40-3872-5e44-8892-3600c811796f",
+      "title": "Oberflächeninhalt gerader Prismen berechnen",
+      "titleEn": "Calculate the surface area of right prisms",
+      "description": "Die lernende Person kann an einem geraden Prisma beide kongruenten Grundflächen und alle Mantelflächen identifizieren, ihre Flächeninhalte ohne Auslassung oder Doppelzählung zur gesamten äußeren Oberfläche addieren und das Ergebnis mit passender Flächeneinheit im Sachkontext deuten.",
+      "descriptionEn": "The learner can identify both congruent bases and all lateral faces of a right prism, add their areas without omission or double-counting to find its total exterior surface area, and interpret the result with an appropriate area unit in context.",
+      "type": "atomic",
+      "nodeKind": null,
+      "semanticKind": null
+    },
+    "e5494c67-aed6-5710-8ae3-51ae147c10e9": {
+      "id": "e5494c67-aed6-5710-8ae3-51ae147c10e9",
+      "title": "Prismenvolumen und Beschichtungsfläche bestimmen",
+      "titleEn": null,
+      "description": "Die lernende Person kann an einem geraden Dreiecksprisma das Volumen aus kongruenten Schichten begründen und berechnen sowie alle Außenflächen zur gesamten Beschichtungsfläche addieren und beide Ergebnisse mit ihren Einheiten im Sachkontext deuten.",
+      "descriptionEn": null,
+      "type": "atomic",
+      "nodeKind": "exam",
+      "semanticKind": "practiceAssessment"
+    }
+  },
+  "ownResolvedKinds": {
+    "68fb0e78-34f2-5572-8db6-e7f5ebcff70f": "ordinary",
+    "f1348d40-3872-5e44-8892-3600c811796f": "ordinary",
+    "e5494c67-aed6-5710-8ae3-51ae147c10e9": "assessment"
+  },
+  "ownGoalMeaningDigests": {
+    "68fb0e78-34f2-5572-8db6-e7f5ebcff70f": "0e21bd8341643056cc5966a247348b8358d721be219e4619bc2e3e8392b1dad1",
+    "f1348d40-3872-5e44-8892-3600c811796f": "b61c0404d1dfe229d33e4503f65c54b8a318fd340d9d9460e9c848c7694f3cb9",
+    "e5494c67-aed6-5710-8ae3-51ae147c10e9": "a80599ef3d0424663e64fe49727f31baac821759afea57ccc92e9cea0db3e5cf"
+  },
+  "atomicPrerequisites": {
+    "11e3cf89-9224-5894-8e4a-ae8ff5af0119": [
+      "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
+    ],
+    "191c67db-44a8-4f63-994a-d85e8e301194": [
+      "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
+    ],
+    "1a25ef44-f310-4c23-9ba8-44baec60d3b0": [
+      "624764d6-becd-5f9b-ada3-0d4f9d143073"
+    ],
+    "2231c29b-eb4e-51ae-9cb1-eb033bf16099": [
+      "25593605-5e13-55cc-9a05-8f3d737e15e9"
+    ],
+    "2331caf2-ccb2-5492-9fc6-48763b848bae": [
+      "25593605-5e13-55cc-9a05-8f3d737e15e9"
+    ],
+    "25593605-5e13-55cc-9a05-8f3d737e15e9": [
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    "2ae76eae-799c-463e-9ec9-82327f8209a8": [
+      "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+    ],
+    "3fde4db5-9e92-5f3a-98e1-d386a42b9e01": [
+      "4b67bed9-06da-40b2-a306-24e9e7dfd390"
+    ],
+    "4b67bed9-06da-40b2-a306-24e9e7dfd390": [
+      "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "d825f7ce-e19b-594a-8181-eff199c21d93"
+    ],
+    "54148506-c23f-41b8-959b-068dd194cf15": [
+      "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+    ],
+    "57fbbf31-9b8c-5408-9af5-fbc73acd12bb": [
+      "ca623958-c204-5d1b-bdd0-3f76765674cb",
+      "d98849c7-bd0b-50d4-90aa-6293a3adb211"
+    ],
+    "5d1decb2-b01b-5c85-88fc-9fc255ff9776": [
+      "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+    ],
+    "624764d6-becd-5f9b-ada3-0d4f9d143073": [
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    "65365dce-f33f-49d8-9516-42f75883aa86": [],
+    "68fb0e78-34f2-5572-8db6-e7f5ebcff70f": [
+      "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+      "87c55be5-06a9-41e2-a0d4-c60f7c8b8078"
+    ],
+    "87c55be5-06a9-41e2-a0d4-c60f7c8b8078": [
+      "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+      "d98849c7-bd0b-50d4-90aa-6293a3adb211"
+    ],
+    "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10": [
+      "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
+    ],
+    "9ef6c4fa-b97a-5d7a-86c1-96690f02d916": [
+      "cf474eab-1379-4877-907e-58b0892ce734"
+    ],
+    "b5de0574-93ed-409c-80ee-312211420cd6": [
+      "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+    ],
+    "ca623958-c204-5d1b-bdd0-3f76765674cb": [
+      "f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
+    ],
+    "cafd6520-c4af-4109-9863-cc49ba6fad4d": [
+      "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+      "191c67db-44a8-4f63-994a-d85e8e301194",
+      "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+      "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+      "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+      "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+    ],
+    "cf474eab-1379-4877-907e-58b0892ce734": [
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe": [
+      "9ef6c4fa-b97a-5d7a-86c1-96690f02d916"
+    ],
+    "d6c3fb37-ece6-5b56-9221-1eeb21845877": [
+      "ca623958-c204-5d1b-bdd0-3f76765674cb"
+    ],
+    "d825f7ce-e19b-594a-8181-eff199c21d93": [
+      "9ef6c4fa-b97a-5d7a-86c1-96690f02d916"
+    ],
+    "d98849c7-bd0b-50d4-90aa-6293a3adb211": [
+      "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+      "2331caf2-ccb2-5492-9fc6-48763b848bae"
+    ],
+    "e5494c67-aed6-5710-8ae3-51ae147c10e9": [
+      "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+      "f1348d40-3872-5e44-8892-3600c811796f"
+    ],
+    "e82d8d3a-9012-5482-afe6-ab0d727a49bb": [
+      "d825f7ce-e19b-594a-8181-eff199c21d93"
+    ],
+    "f1348d40-3872-5e44-8892-3600c811796f": [
+      "87c55be5-06a9-41e2-a0d4-c60f7c8b8078"
+    ],
+    "f2e42af5-67a6-477e-82ea-e65b09cc6cb3": [
+      "2ae76eae-799c-463e-9ec9-82327f8209a8",
+      "54148506-c23f-41b8-959b-068dd194cf15",
+      "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+      "b5de0574-93ed-409c-80ee-312211420cd6"
+    ],
+    "fe07241a-b779-5f35-a82d-7aa51ae74f42": [
+      "624764d6-becd-5f9b-ada3-0d4f9d143073"
+    ]
+  },
+  "assessmentClaims": {
+    "e5494c67-aed6-5710-8ae3-51ae147c10e9": {
+      "coveredGoalIds": [
+        "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+        "f1348d40-3872-5e44-8892-3600c811796f"
+      ],
+      "taskRevision": "6e14ddcde1cd7dd0f1b9aa76c19e8255ba87030efdba9629c794298d9abb21d0",
+      "rubricRevision": "f4960abe16d268d24e6f762d492ed3ed9b98ed4c91e1d50b943659f4df20097b",
+      "reviewRef": "quality/learning-units/math-right-prisms-2026-11-05/pr79-history/review.md"
+    }
+  },
+  "reviewRef": "quality/learning-units/math-right-prisms-2026-11-05.md"
+}

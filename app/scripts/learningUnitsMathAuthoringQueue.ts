@@ -50,7 +50,7 @@ function main() {
     const contracts = definitions.filter((definition: { ownGoalIds: string[] }) => definition.ownGoalIds.includes(goal.id))
     const acquisitions = source.goalPlacements.filter(placement => placement.goalId === goal.id && placement.acquisition)
     return { goalId: goal.id, title: goal.title,
-      status: contracts.length ? 'bound-ai-reviewed-contract-awaiting-integrated-native-acceptance' : 'pending-own-unit-and-normal-pass-review',
+      status: contracts.length ? 'bound-contract-candidate; independent content/binding/native gates are recorded in its pinned review and proofs' : 'pending-own-unit-and-normal-pass-review',
       candidatePacketIds: (parents.get(goal.id) ?? []).filter(id => packetIds.has(id)),
       allDirectCanonicalParentIds: parents.get(goal.id) ?? [],
       ownerDecisionRequired: (parents.get(goal.id)?.length ?? 0) > 1,
@@ -89,7 +89,9 @@ function main() {
     .map(({ goal, identityDecision }) => ({ sourceGoalId: goal.id, title: goal.title, identityDecision,
       sourceArtifactPath: goal.examData?.sourceArtifactPath ?? null,
       taskRevision: digest(canonicalJson({ taskContent: goal.examData?.taskContent, solutionContent: goal.examData?.solutionContent })),
-      rubricRevision: digest(canonicalJson(goal.examData?.scoring)), status: 'pending-bounded-task-rubric-review-and-own-placement' }))
+      rubricRevision: digest(canonicalJson(goal.examData?.scoring)), status: !originalIds.has(goal.id) && source.goals.some(current => current.id === goal.id)
+        ? 'actual new-Q candidate imported; independent current-unit and native acceptance still tracked separately'
+        : 'pending-bounded-task-rubric-review-and-own-placement' }))
   const newSourceGoals = source.goals.filter(goal => !originalIds.has(goal.id))
   const artifact = {
     schemaVersion: 1, semantics: 'finite-authoring-queue-not-recognition-approval', baselineRef, oldMaterialRef: oldRef,
@@ -109,7 +111,9 @@ function main() {
     nextBoundedPackets: [
       { name: 'projection', contractId: 'math-dot-product-projection', status: 'bound-candidate; integration acceptance tracked separately' },
       { name: 'prisms', ordinaryGoalIds: ['68fb0e78-34f2-5572-8db6-e7f5ebcff70f', 'f1348d40-3872-5e44-8892-3600c811796f'],
-        candidateAssessmentId: 'e5494c67-aed6-5710-8ae3-51ae147c10e9', status: 'independent-strategy-positive; actual-source-placement-and-contract-review-next' },
+        candidateAssessmentId: 'e5494c67-aed6-5710-8ae3-51ae147c10e9', status: source.goals.some(goal => goal.id === 'e5494c67-aed6-5710-8ae3-51ae147c10e9')
+          ? 'actual three-target unit candidate bound; separate current-unit review and fresh native acceptance required'
+          : 'independent-strategy-positive; actual-source-placement-and-contract-review-next' },
       { name: 'monotonicity', ordinaryGoalIds: ['2850e8f6-2330-50d3-a577-d519540d9924'], candidateAssessmentId: '010c133c-dcf1-5530-8305-61bc638017bc',
         status: 'independent-strategy-positive; actual-source-placement-and-contract-review-next' },
     ],

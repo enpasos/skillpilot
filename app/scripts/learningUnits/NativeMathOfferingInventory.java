@@ -171,6 +171,14 @@ public final class NativeMathOfferingInventory {
         report.put("learningUnitCatalogQuarantines", learningUnits.catalog().quarantined());
         report.put("globalRecognitionAfterProjectionAssessment", learningUnits.evaluate("native-inventory",
                 Set.of("e98672c6-871a-5d0b-889c-5afc51040f0d")).recognizedGoalIds());
+        if (canonical.containsKey("e5494c67-aed6-5710-8ae3-51ae147c10e9")) {
+            var prismPass = learningUnits.evaluate("native-prism-inventory", Set.of("e5494c67-aed6-5710-8ae3-51ae147c10e9"));
+            report.put("globalRecognitionAfterPrismAssessment", prismPass.recognizedGoalIds());
+            report.put("globalRecognitionAtEmptyMastery", learningUnits.evaluate("native-prism-inventory", Set.of()).recognizedGoalIds());
+            report.put("prismPassReadModelOverCanonicalMathTargets", learningUnits.readModel(prismPass,
+                    landscapes.getById(MATH).getGoals().stream().filter(goal -> goal.getContains().isEmpty()).map(LearningGoal::getId)
+                            .collect(java.util.stream.Collectors.toSet())));
+        }
         report.put("publicBaseCurricula", landscapes.getBaseCurricula(false));
         List<Map<String, Object>> publicMathModules = new ArrayList<>();
         for (var base : landscapes.getBaseCurricula(false)) {

@@ -8,6 +8,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const load = (path: string) => JSON.parse(readFileSync(resolve(root, path), 'utf8'))
 const source = load(mathCanonicalPath)
 const contract = load('curricula/DE/Gymnasium/learning-units/contracts/math-dot-product-projection/2026-11-05-v1.json')
+const frozenS2Source = load('curricula/DE/Gymnasium/learning-units/sources/math-2026-11-05-s2-v1.source.json').landscapes[0]
 const relation = atomicRelation(source.goals)
 const actual = Object.fromEntries([...reachable(contract.ownGoalIds, relation)].sort().map(id => [id, relation[id]]))
 assert.deepEqual(actual, contract.atomicPrerequisites, 'Frozen contract must equal actual source demand')
@@ -22,7 +23,8 @@ const proof = load('curricula/DE/Gymnasium/quality/learning-units/math-dot-produ
 assert.equal(proof.atomicGoalCount, 978)
 assert.equal(proof.removedAuthoredEdges.length, 3)
 assert.equal(proof.beforeFullReachabilitySha256, proof.afterFullReachabilitySha256)
-assert.equal(digest(canonicalJson(fullClosure(relation))), proof.afterFullReachabilitySha256)
+assert.equal(digest(canonicalJson(fullClosure(atomicRelation(frozenS2Source.goals)))), proof.afterFullReachabilitySha256,
+  'Historical S2 proof binds its own complete frozen source, while later units may add legitimate new targets')
 assert.equal(contract.ownResolvedKinds[contract.ownAssessmentGoalIds[0]], 'assessment')
 for (const [id, claim] of Object.entries(contract.assessmentClaims) as Array<[string, { taskRevision: string; rubricRevision: string }]>) {
   const exam = source.goals.find((goal: { id: string }) => goal.id === id).examData

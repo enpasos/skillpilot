@@ -33,6 +33,11 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 
 ## Mathematics Rollout
 
+- [Mathematik: Arbeitsstand der Lerneinheiten-Umsetzung](mathematics-learning-units-progress.md)
+- [Lerneinheiten: natives Mathematik-Angebotsinventar](learning-units-mathematics-offering-inventory.md)
+- [Lerneinheiten: endliche Mathematik-Autorierungsqueue](learning-units-mathematics-authoring-queue.md)
+- [Lerneinheiten: Datenbindung und Vertragsformat](learning-unit-contract-format.md)
+- [Lerneinheiten: lokale Aufnahme- und Performanceprüfungen](learning-units-mathematics-local-proofs.md)
 - [Mathematics Bundeslaender Status](canonical-gymnasium-math-bundeslaender-status.md)
 - [Mathematics DE Expansion Plan](canonical-gymnasium-math-de-expansion-plan.md)
 - [Mathematics Source-Closure Plan](canonical-gymnasium-math-source-closure-plan.md)

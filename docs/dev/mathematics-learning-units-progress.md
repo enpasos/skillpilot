@@ -23,8 +23,8 @@ vollständige Mathematik-Umsetzung. Ein erster Vertrag ist ein Zwischenergebnis.
 
 | Stufe | Aktuelle Arbeit | Noch kein Erfolgsnachweis für |
 | --- | --- | --- |
-| S2 | Gebundener Skalarprodukt-/Projektionsvertrag mit zwei eigenen Zielen, unabhängiger KI-Inhaltsprüfung und unverändertem Prüfungsanspruch; aktuelle native Prüfung aller 182 Angebote ohne Target-/Q-/K-/Supportdelta, Einheit in genau 42 passenden Angeboten. | Gesicherter vollständiger Kandidat mit Paket-/Runtimeintegration; keine bloße Einzelprüfung als gesamten Mathematikabschluss ausgeben. |
-| S3 | Isolierter Compiler/Evaluator gesichert; 24 gezielte Kern-, Quellen-, Archiv- und echte Repositorytests bestanden. Gemeinsame produktive Lesesicht und Paketformat 1.2 in Integration. | Durchgängige Cockpit-/Coach-/Frontier-/Planparität, Performance, vollständige Regression und exakte Kandidaten-CI. |
+| S2 | Gebundener Skalarprodukt-/Projektionsvertrag mit zwei eigenen Zielen, unabhängiger KI-Inhaltsprüfung und unverändertem Prüfungsanspruch; native Prüfung aller 182 Angebote ohne Target-/Q-/K-/Supportdelta, Einheit in genau 42 passenden Angeboten. Daten und Quellen in `8481434d48` gesichert. | Eine erste Einheit ist kein vollständiger Mathematikabschluss. |
+| S3 | Gemeinsame Runtime-, Cockpit-, Coach-, Frontier- und Planintegration in `f5a61af0dd` gesichert und gepusht. 257 lokale Backendtests in 18 Suiten ohne Fehler oder ausgelassene Fälle; tatsächliche Hook-/Browserprüfungen und Paketpfad 1.2 geprüft. | Exakte terminale Kandidaten-CI und abschließendes Integrationsreview. Für S4 folgen insbesondere bilinguale Aufgaben-/Recallbindung und die exakte Angebotswurzelbindung. Deployment und echte Hostabnahme sind gesonderte Nachweise. |
 | S4 | [Angebotsinventar](learning-units-mathematics-offering-inventory.md) frisch gemessen: 182 Einstiegskonfigurationen, 978 atomare Ziele, darunter 807 curriculare Ziele. Bausteine aus PR #79 indexiert. | Vollständige Einheits-, Aufgaben- und Kartenabdeckung dieses Umfangs; zwölf bestehende Hierarchiefälle korrigieren und aktuelle QA nachweisen. |
 
 Der fixierte Angebotsnenner umfasst die Vereinigungsmenge aus 140 nativen
@@ -48,6 +48,16 @@ hält alle 807 ursprünglichen Fachkompetenzen fest. 210 fachliche Kandidatenpak
 74 mehrfache kanonische Elternzuordnungen und sechs Kartendecks mit 64 Karten
 werden einzeln aufgelöst. 282 Kompetenzen ohne ausdrückliches Coverage-Feld
 sind Prüflücken, keine pauschale Forderung nach 282 neuen Prüfungen.
+
+Die nächste unabhängig geprüfte Einheit betrifft Volumen und Oberfläche gerader
+Prismen. Ihre neue Prüfung wird exakt in 27 Angeboten sichtbar; die übrigen
+155 Angebote bleiben unverändert. Der [native Nachweis](learning-units-mathematics-prism-native-proof.json)
+erhält sämtliche ursprünglichen 978 atomaren Zielidentitäten und ihre
+vollständigen Voraussetzungspfade. Ein Prüfungspass erkennt genau die beiden
+eigenen Prismenziele an: drei erreichte Einheitsziele aus einem expliziten
+Ergebnis und zwei Anerkennungen. Andere Geometrieziele erhalten dadurch keinen
+Abschluss. Mit der Projektionseinheit sind damit drei der 807 ursprünglichen
+Fachkompetenzen vertraglich gebunden; der breite Fachumbau bleibt offen.
 
 ## Verbindliche technische Grenzen
 
@@ -98,6 +108,21 @@ gebundener Einheitsartefakte. Modellkompilierung, unabhängige Modellvalidierung
 fertige ZIP-/Runtimeprüfung und rechtlich/qualitativ freigegebene Weitergabe
 sind verschiedene Nachweise. Vorhandene offene Publikationsentscheidungen
 werden nicht als neue Freigaben übernommen.
+
+Der Zwischenstand `f5a61af0dd` umfasst die gemeinsame Laufzeit und ihre
+Regressionen, noch nicht den vollständigen Fachumbau. Insbesondere zählen
+Gesamtfortschritt und Periodenkontingent nun getrennt: gültige Anerkennung
+erhöht den Gesamtstand; Tages-/Wochenanzeigen verwenden ausschließlich datierte
+explizite Ergebnisse. Ein freiwillig wiederholtes anerkanntes Ziel bleibt
+angerechnet und wird dadurch nicht als explizit gemeistert gespeichert.
+
+Der echte lokale S2-Paketnachweis verwendet 1.252 Ziele, 15 Program Units und
+305 Placements. Das fertige ZIP wurde unabhängig validiert und mit dem
+unveränderten, gepinnten isolierten Verbraucher geprüft: 15 Pflichtprüfungen
+bestanden. Diese eingefrorene Evidenz beschreibt den S2-Datenstand; spätere
+Inhaltserweiterungen brauchen neue Paketnachweise. Die offene Freigabe zur
+Weiterveröffentlichung wird dadurch nicht ersetzt. Paketformat 1.2 ist ein
+neuer unveröffentlichter Kandidat; veröffentlichte ältere Formate bleiben erhalten.
 
 Claude **1.1.13 ist bereits veröffentlicht**. Die neue Coachsemantik wird für
 einen lokalen Nachfolgekandidaten **1.1.14** vorbereitet; veröffentlichte Bytes

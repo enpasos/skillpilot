@@ -93,15 +93,17 @@ jobs:
         run: python -m pip install -r ../scripts/curriculum_fwu_owl_validation_requirements.txt
       - name: Fetch exact historical authoring inputs without checking out archives
         run: |
-          for revision in 0ce5a8d791eeb9783a919195fd8590bfb79f3595 802f333f80c58d3409ab5d9fb3e9913fecafbf54; do
+          for revision in 0ce5a8d791eeb9783a919195fd8590bfb79f3595 8481434d4838cf422960dcd24d7724b02746a440 802f333f80c58d3409ab5d9fb3e9913fecafbf54; do
             if ! git -c core.trustctime=false cat-file -e "${revision}^{commit}"; then
-              git -c core.trustctime=false fetch --no-tags --filter=blob:none origin "${revision}"
+              git -c core.trustctime=false fetch --no-tags --depth=1 --filter=blob:none origin "${revision}"
             fi
           done
       - name: Validate reviewed Mathematics ownership, source retention and full offering inventory
         run: |
           npx --no-install tsx scripts/learningUnitsMathAuthoring.ts --check
           npx --no-install tsx scripts/learningUnitsMathAuthoring.test.ts
+          npx --no-install tsx scripts/learningUnitsPrismAuthoring.ts --check
+          npx --no-install tsx scripts/learningUnitsPrismAuthoring.test.ts
           npx --no-install tsx scripts/learningUnitsMathAuthoringQueue.ts --check
           npx --no-install tsx scripts/learningUnitsNativeMathInventory.test.ts
       - name: Validate profile/scope authoring and the shared semantic fixture corpus

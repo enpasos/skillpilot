@@ -1,0 +1,444 @@
+{
+  "schemaVersion": 1,
+  "measurement": "local in-process proof; no HTTP, DB, browser, provider-host or CI performance acceptance",
+  "javaVersion": "25.0.1",
+  "javaVendor": "Amazon.com Inc.",
+  "rawReportSha256": "0074157a0d909cae0f5132c6dd2a9686030967ddf084ebf24aad37b6c314b26e",
+  "productionClassSha256": {
+    "LearningUnitPrerequisiteBenchmark": "e166244448f637134716e9d5d6667f0a0508195b7d0aadfaedc5a8ce74e8d8c9",
+    "LearningUnitPrerequisiteGraph": "a425ecb127c54ef3eb21763c98db9333dd0fd8b9fac21a00aa6127dcefe9d898",
+    "CompletionProfileCompiler": "81eb3edba0d99cc1d821e2c68344d041ba27656dcf4ba7bce834b0cf6d2ea0de"
+  },
+  "harnessSourceSha256": "3824635db71a8258de8427ea7804491136e74a44b290362b70fce92ea5619bc7",
+  "proof": "independent-full-transitive-BFS-parity-and-local-timing",
+  "availableProcessors": 16,
+  "inputSha256": {
+    "canonicalMathematics": "fa35400d51b70381a6d9cf6c07108c20010e2462db75764d0ef2b8f8babecdaf",
+    "nativeInventory": "26f63a67d442caa702f77b05aa315d21a6f0c0e0d01924609a1c3fc0d415aeff"
+  },
+  "rule": "Full transitive demand traverses mastered and outside-scope intermediates; outside-scope outcomes do not block, but their in-scope ancestors remain checked",
+  "timingUnit": "microseconds; p50/p95 observed locally, no hard performance threshold",
+  "timingBoundary": "Fresh static graph instances and in-process evaluation; includes no HTTP, DB, UI, provider host or CI performance measurement",
+  "warmupIterations": 8,
+  "cases": [
+    {
+      "case": "zero",
+      "coldStaticGraphConstruction": {
+        "p50": 2372.15,
+        "p95": 3399.615
+      },
+      "edges": 1645,
+      "exactReferenceParity": true,
+      "firstEvaluationMicros": 2451.955,
+      "firstStaticConstructionMicros": 21552.368,
+      "graphId": "DE-HE/SekII/G9/LK",
+      "masteryCount": 0,
+      "meaning": "actual native target scope with complete support context",
+      "repetitions": 25,
+      "satisfiedEndpoints": 101,
+      "targetScopeCount": 600,
+      "vertices": 702,
+      "warmFullBfsPerEndpoint": {
+        "p50": 5677.761,
+        "p95": 8626.247
+      },
+      "warmTopologicalPass": {
+        "p50": 847.854,
+        "p95": 1220.277
+      }
+    },
+    {
+      "case": "near-complete",
+      "coldStaticGraphConstruction": {
+        "p50": 2372.15,
+        "p95": 3399.615
+      },
+      "edges": 1645,
+      "exactReferenceParity": true,
+      "firstEvaluationMicros": 948.26,
+      "firstStaticConstructionMicros": 21552.368,
+      "graphId": "DE-HE/SekII/G9/LK",
+      "masteryCount": 660,
+      "meaning": "actual native target scope with complete support context",
+      "repetitions": 25,
+      "satisfiedEndpoints": 551,
+      "targetScopeCount": 600,
+      "vertices": 702,
+      "warmFullBfsPerEndpoint": {
+        "p50": 4354.176,
+        "p95": 8308.827
+      },
+      "warmTopologicalPass": {
+        "p50": 401.926,
+        "p95": 669.142
+      }
+    },
+    {
+      "case": "all-mastered",
+      "coldStaticGraphConstruction": {
+        "p50": 2372.15,
+        "p95": 3399.615
+      },
+      "edges": 1645,
+      "exactReferenceParity": true,
+      "firstEvaluationMicros": 462.029,
+      "firstStaticConstructionMicros": 21552.368,
+      "graphId": "DE-HE/SekII/G9/LK",
+      "masteryCount": 702,
+      "meaning": "actual native target scope with complete support context",
+      "repetitions": 25,
+      "satisfiedEndpoints": 702,
+      "targetScopeCount": 600,
+      "vertices": 702,
+      "warmFullBfsPerEndpoint": {
+        "p50": 4807.905,
+        "p95": 6596.519
+      },
+      "warmTopologicalPass": {
+        "p50": 474.13,
+        "p95": 1138.973
+      }
+    },
+    {
+      "case": "near-complete-focus",
+      "coldStaticGraphConstruction": {
+        "p50": 2372.15,
+        "p95": 3399.615
+      },
+      "edges": 1645,
+      "exactReferenceParity": true,
+      "firstEvaluationMicros": 659.741,
+      "firstStaticConstructionMicros": 21552.368,
+      "graphId": "DE-HE/SekII/G9/LK",
+      "masteryCount": 660,
+      "meaning": "actual native target scope with complete support context",
+      "repetitions": 25,
+      "satisfiedEndpoints": 613,
+      "targetScopeCount": 200,
+      "vertices": 702,
+      "warmFullBfsPerEndpoint": {
+        "p50": 3671.033,
+        "p95": 5938.277
+      },
+      "warmTopologicalPass": {
+        "p50": 260.117,
+        "p95": 446.629
+      }
+    },
+    {
+      "case": "zero",
+      "coldStaticGraphConstruction": {
+        "p50": 600.438,
+        "p95": 862.955
+      },
+      "edges": 2273,
+      "exactReferenceParity": true,
+      "firstEvaluationMicros": 332.621,
+      "firstStaticConstructionMicros": 1260.08,
+      "graphId": "DE-HE/CrossStage/G9/LK",
+      "masteryCount": 0,
+      "meaning": "actual native target scope with complete support context",
+      "repetitions": 25,
+      "satisfiedEndpoints": 2,
+      "targetScopeCount": 899,
+      "vertices": 903,
+      "warmFullBfsPerEndpoint": {
+        "p50": 5283.436,
+        "p95": 5661.759
+      },
+      "warmTopologicalPass": {
+        "p50": 238.915,
+        "p95": 471.23
+      }
+    },
+    {
+      "case": "near-complete",
+      "coldStaticGraphConstruction": {
+        "p50": 600.438,
+        "p95": 862.955
+      },
+      "edges": 2273,
+      "exactReferenceParity": true,
+      "firstEvaluationMicros": 386.125,
+      "firstStaticConstructionMicros": 1260.08,
+      "graphId": "DE-HE/CrossStage/G9/LK",
+      "masteryCount": 849,
+      "meaning": "actual native target scope with complete support context",
+      "repetitions": 25,
+      "satisfiedEndpoints": 291,
+      "targetScopeCount": 899,
+      "vertices": 903,
+      "warmFullBfsPerEndpoint": {
+        "p50": 5897.174,
+        "p95": 9865.926
+      },
+      "warmTopologicalPass": {
+        "p50": 281.618,
+        "p95": 340.221
+      }
+    },
+    {
+      "case": "all-mastered",
+      "coldStaticGraphConstruction": {
+        "p50": 600.438,
+        "p95": 862.955
+      },
+      "edges": 2273,
+      "exactReferenceParity": true,
+      "firstEvaluationMicros": 547.034,
+      "firstStaticConstructionMicros": 1260.08,
+      "graphId": "DE-HE/CrossStage/G9/LK",
+      "masteryCount": 903,
+      "meaning": "actual native target scope with complete support context",
+      "repetitions": 25,
+      "satisfiedEndpoints": 903,
+      "targetScopeCount": 899,
+      "vertices": 903,
+      "warmFullBfsPerEndpoint": {
+        "p50": 6628.721,
+        "p95": 10666.477
+      },
+      "warmTopologicalPass": {
+        "p50": 321.021,
+        "p95": 457.93
+      }
+    },
+    {
+      "case": "near-complete-focus",
+      "coldStaticGraphConstruction": {
+        "p50": 600.438,
+        "p95": 862.955
+      },
+      "edges": 2273,
+      "exactReferenceParity": true,
+      "firstEvaluationMicros": 275.717,
+      "firstStaticConstructionMicros": 1260.08,
+      "graphId": "DE-HE/CrossStage/G9/LK",
+      "masteryCount": 849,
+      "meaning": "actual native target scope with complete support context",
+      "repetitions": 25,
+      "satisfiedEndpoints": 652,
+      "targetScopeCount": 300,
+      "vertices": 903,
+      "warmFullBfsPerEndpoint": {
+        "p50": 5309.337,
+        "p95": 8418.434
+      },
+      "warmTopologicalPass": {
+        "p50": 223.414,
+        "p95": 274.118
+      }
+    },
+    {
+      "case": "zero",
+      "coldStaticGraphConstruction": {
+        "p50": 2019.028,
+        "p95": 2817.878
+      },
+      "edges": 2482,
+      "exactReferenceParity": true,
+      "firstEvaluationMicros": 2795.178,
+      "firstStaticConstructionMicros": 4492.985,
+      "graphId": "canonical-atomic-union-978",
+      "masteryCount": 0,
+      "meaning": "diagnostic union of all canonical atoms, not a native ALL offering",
+      "repetitions": 25,
+      "satisfiedEndpoints": 2,
+      "targetScopeCount": 978,
+      "vertices": 978,
+      "warmFullBfsPerEndpoint": {
+        "p50": 11831.551,
+        "p95": 16598.853
+      },
+      "warmTopologicalPass": {
+        "p50": 940.76,
+        "p95": 1412.69
+      }
+    },
+    {
+      "case": "near-complete",
+      "coldStaticGraphConstruction": {
+        "p50": 2019.028,
+        "p95": 2817.878
+      },
+      "edges": 2482,
+      "exactReferenceParity": true,
+      "firstEvaluationMicros": 565.936,
+      "firstStaticConstructionMicros": 4492.985,
+      "graphId": "canonical-atomic-union-978",
+      "masteryCount": 920,
+      "meaning": "diagnostic union of all canonical atoms, not a native ALL offering",
+      "repetitions": 25,
+      "satisfiedEndpoints": 343,
+      "targetScopeCount": 978,
+      "vertices": 978,
+      "warmFullBfsPerEndpoint": {
+        "p50": 10073.039,
+        "p95": 16493.047
+      },
+      "warmTopologicalPass": {
+        "p50": 441.028,
+        "p95": 537.534
+      }
+    },
+    {
+      "case": "all-mastered",
+      "coldStaticGraphConstruction": {
+        "p50": 2019.028,
+        "p95": 2817.878
+      },
+      "edges": 2482,
+      "exactReferenceParity": true,
+      "firstEvaluationMicros": 670.443,
+      "firstStaticConstructionMicros": 4492.985,
+      "graphId": "canonical-atomic-union-978",
+      "masteryCount": 978,
+      "meaning": "diagnostic union of all canonical atoms, not a native ALL offering",
+      "repetitions": 25,
+      "satisfiedEndpoints": 978,
+      "targetScopeCount": 978,
+      "vertices": 978,
+      "warmFullBfsPerEndpoint": {
+        "p50": 12064.315,
+        "p95": 16529.179
+      },
+      "warmTopologicalPass": {
+        "p50": 622.637,
+        "p95": 746.744
+      }
+    },
+    {
+      "case": "near-complete-focus",
+      "coldStaticGraphConstruction": {
+        "p50": 2019.028,
+        "p95": 2817.878
+      },
+      "edges": 2482,
+      "exactReferenceParity": true,
+      "firstEvaluationMicros": 284.917,
+      "firstStaticConstructionMicros": 4492.985,
+      "graphId": "canonical-atomic-union-978",
+      "masteryCount": 920,
+      "meaning": "diagnostic union of all canonical atoms, not a native ALL offering",
+      "repetitions": 25,
+      "satisfiedEndpoints": 756,
+      "targetScopeCount": 326,
+      "vertices": 978,
+      "warmFullBfsPerEndpoint": {
+        "p50": 7790.962,
+        "p95": 13154.579
+      },
+      "warmTopologicalPass": {
+        "p50": 160.809,
+        "p95": 195.211
+      }
+    },
+    {
+      "case": "zero",
+      "coldStaticGraphConstruction": {
+        "p50": 2653.857,
+        "p95": 2982.876
+      },
+      "edges": 20000,
+      "exactReferenceParity": true,
+      "firstEvaluationMicros": 5500.526,
+      "firstStaticConstructionMicros": 2948.675,
+      "graphId": "synthetic-fanout-5000-20000",
+      "masteryCount": 0,
+      "meaning": "synthetic five layers, 1000 nodes per layer, five distinct dependencies per nonroot",
+      "repetitions": 10,
+      "satisfiedEndpoints": 1000,
+      "targetScopeCount": 5000,
+      "vertices": 5000,
+      "warmFullBfsPerEndpoint": {
+        "p50": 14977.187,
+        "p95": 25893.734
+      },
+      "warmTopologicalPass": {
+        "p50": 1443.585,
+        "p95": 2439.145
+      }
+    },
+    {
+      "case": "near-complete",
+      "coldStaticGraphConstruction": {
+        "p50": 2653.857,
+        "p95": 2982.876
+      },
+      "edges": 20000,
+      "exactReferenceParity": true,
+      "firstEvaluationMicros": 2085.023,
+      "firstStaticConstructionMicros": 2948.675,
+      "graphId": "synthetic-fanout-5000-20000",
+      "masteryCount": 4705,
+      "meaning": "synthetic five layers, 1000 nodes per layer, five distinct dependencies per nonroot",
+      "repetitions": 10,
+      "satisfiedEndpoints": 1970,
+      "targetScopeCount": 5000,
+      "vertices": 5000,
+      "warmFullBfsPerEndpoint": {
+        "p50": 18405.19,
+        "p95": 21149.152
+      },
+      "warmTopologicalPass": {
+        "p50": 2143.227,
+        "p95": 2569.352
+      }
+    },
+    {
+      "case": "all-mastered",
+      "coldStaticGraphConstruction": {
+        "p50": 2653.857,
+        "p95": 2982.876
+      },
+      "edges": 20000,
+      "exactReferenceParity": true,
+      "firstEvaluationMicros": 1834.209,
+      "firstStaticConstructionMicros": 2948.675,
+      "graphId": "synthetic-fanout-5000-20000",
+      "masteryCount": 5000,
+      "meaning": "synthetic five layers, 1000 nodes per layer, five distinct dependencies per nonroot",
+      "repetitions": 10,
+      "satisfiedEndpoints": 5000,
+      "targetScopeCount": 5000,
+      "vertices": 5000,
+      "warmFullBfsPerEndpoint": {
+        "p50": 16483.977,
+        "p95": 25764.026
+      },
+      "warmTopologicalPass": {
+        "p50": 1670.999,
+        "p95": 1947.916
+      }
+    },
+    {
+      "case": "near-complete-focus",
+      "coldStaticGraphConstruction": {
+        "p50": 2653.857,
+        "p95": 2982.876
+      },
+      "edges": 20000,
+      "exactReferenceParity": true,
+      "firstEvaluationMicros": 1889.112,
+      "firstStaticConstructionMicros": 2948.675,
+      "graphId": "synthetic-fanout-5000-20000",
+      "masteryCount": 4705,
+      "meaning": "synthetic five layers, 1000 nodes per layer, five distinct dependencies per nonroot",
+      "repetitions": 10,
+      "satisfiedEndpoints": 3486,
+      "targetScopeCount": 1667,
+      "vertices": 5000,
+      "warmFullBfsPerEndpoint": {
+        "p50": 17402.031,
+        "p95": 22291.52
+      },
+      "warmTopologicalPass": {
+        "p50": 1436.785,
+        "p95": 1961.516
+      }
+    }
+  ],
+  "exactReferenceParityCases": 16,
+  "percentileMeaning": "Observed p50/p95 of repeated local calls. Static samples construct fresh graph instances; first-call measurements are separate. No service-level timing threshold or acceptance limit is inferred.",
+  "reproduction": "cd app && npx tsx scripts/learningUnitsProofs.ts performance --native-inventory <native-inventory.json> --canonical <canonical-math.json> --publish-report"
+}

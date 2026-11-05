@@ -37,6 +37,7 @@ interface NativeScope {
   assessmentGoalIds?: string[]; recallGoalIds?: string[]; orientationGoalIds?: string[]
   externalSupportAtomicGoalIds?: string[]; atomicPrerequisites?: Record<string, string[]>
   duplicateVisibleGoalPaths?: Record<string, string[]>; missingVisibleGoalIds?: string[]
+  visibleGoalPaths?: Record<string, string[]>
   compositionViewIds?: string[]
   learningUnitReadModel?: { calculationStatus: string; units: Array<{ contractId: string; revision: string; ownGoalIds: string[] }> }
 }

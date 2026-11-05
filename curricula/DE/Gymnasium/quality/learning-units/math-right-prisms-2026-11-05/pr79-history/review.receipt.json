@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "reviewType": "independent-machine-content-review",
+  "reviewerAgent": "/root/astra_completion_foundations",
+  "authorIndependent": true,
+  "verdict": "PASS",
+  "approvedScope": "Exact candidate task, solution, rubric, competency coverage and prerequisite metadata only",
+  "candidateGoalId": "e5494c67-aed6-5710-8ae3-51ae147c10e9",
+  "files": [
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/prism-volume-surface-v1/draft_v1.md",
+      "sha256": "0f9cda853dcde9382ff4457d33d2b32ebf8afab1507b80adffd96a62d372d8eb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/prism-volume-surface-v1/candidate.goal.json",
+      "sha256": "b342a38ecd8873a46ebd06c834fae7ee33f5871424a80a1c13e2b18d8b148146"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/prism-volume-surface-v1/author-evidence.json",
+      "sha256": "a7653ec2c843eb549b95bc406c995d8719692857b8f9b5bc853d0a87c8b0972c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/completion-integrity-2026-11-01/prism-volume-surface-v1/review.md",
+      "sha256": "b951ecffbc4ad24e5a872b4a88fa2812309ce9df00fff99fbcca9a8ea444adf2"
+    }
+  ],
+  "embeddedContentSha256": {
+    "taskContent": "7316e0770966fd286d9a64460c43894821bc41d926d96e220746b7f74a600fc7",
+    "solutionContent": "a72fffa89e492f7b282d000c3ceea501357e67ce7fc6eef68c3d6c40d90a00fa"
+  },
+  "sourceArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/seki/j7/draft_v6.md",
+      "sha256": "54393630a36caca7fa0a94ca0bf166e75c2c5e23326af5006631667468c9f2ee"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/assessments/mathematik/seki/j7/solution_v6.md",
+      "sha256": "bec70bdf1d9216f312c53df6e54e8d37c8d1e82a295f06c8383bb26f8a6c4547"
+    }
+  ],
+  "canonicalGoalBindings": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "normalization": "Python json.dumps ensure_ascii=False sort_keys=True separators=(comma,colon), UTF-8",
+    "goals": [
+      {
+        "id": "0dded9c1-043e-57cb-82fc-792b391e9cb0",
+        "normalizedSha256": "c0ee415ce41da4aff80e4681dc1b536d1379252b171e437effac619aa9919aeb"
+      },
+      {
+        "id": "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+        "normalizedSha256": "f1f5d6ff4385c6868b72b2ffb642801203ba8d9ebec3e0020ecb7aa1f4ea87ec"
+      },
+      {
+        "id": "f1348d40-3872-5e44-8892-3600c811796f",
+        "normalizedSha256": "5502b736ceb90b8fe5974158d0be09d4a0c74d014909f4393692286e1d14e259"
+      }
+    ]
+  },
+  "checks": {
+    "geometry": {
+      "baseAreaCm2": 24,
+      "heightCm": 20,
+      "volumeCm3": 480,
+      "fiveFaceAreasCm2": [
+        24,
+        24,
+        120,
+        160,
+        200
+      ],
+      "surfaceCm2": 528
+    },
+    "rubric": {
+      "maxPoints": 6,
+      "passingPoints": 6,
+      "maxWithoutVolumeCore": 4,
+      "maxWithoutSurfaceCore": 3,
+      "maxWithoutEitherInterpretation": 5,
+      "bothClaimedCompetenciesNecessary": true
+    },
+    "coveredGoalIds": [
+      "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+      "f1348d40-3872-5e44-8892-3600c811796f"
+    ],
+    "requires": [
+      "68fb0e78-34f2-5572-8db6-e7f5ebcff70f",
+      "f1348d40-3872-5e44-8892-3600c811796f"
+    ],
+    "densityRequiredOrClaimed": false,
+    "demandLevel": "AB2",
+    "markdownEmbeddedTaskSolutionParity": true,
+    "jsonActualNewlines": true,
+    "jsonConsecutiveLatexBackslashes": false,
+    "independentKatexParse": {
+      "taskFormulas": 5,
+      "solutionFormulas": 7,
+      "throwOnError": true,
+      "strict": "error",
+      "passed": true
+    },
+    "originalGoalHashMatchesAuthorEvidence": true,
+    "originalTaskFileHashMatchesAuthorEvidence": true
+  },
+  "pendingIntegration": {
+    "placementVerdict": "NOT_REVIEWED",
+    "authorReportedReplacementProfileCount": 23,
+    "fullBackendOfferingMatrixRerun": false,
+    "requires": [
+      "Verify replacement-only placement in actual offered scopes",
+      "Verify original plus replacement do not add duplicate mandatory assessments",
+      "Verify three author-reported MV placements and unaffected full-density offerings",
+      "Run source, projection, prerequisite and strict M7 gates"
+    ]
+  },
+  "limitations": [
+    "Machine content review only",
+    "No human approval or learner trial",
+    "No real coach-host rubric acceptance",
+    "No M7 certification",
+    "No deployment or publication approval"
+  ],
+  "candidateMutationPolicy": "Task, solution, rubric or goal-contract changes invalidate the affected review claims; deployment/release bookkeeping does not independently establish placement acceptance."
+}
