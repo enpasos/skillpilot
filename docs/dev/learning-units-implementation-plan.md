@@ -57,7 +57,7 @@ Revision und Semantik.
 | Bestandteil | Heute belegt | Noch zu liefern |
 | --- | --- | --- |
 | Rekursive Lerneinheiten | Konzept und Formeln beschlossen. | Autoritative Datenbindung, Compiler, Runtime und geprüfte echte Einheiten. |
-| Karte im vollständigen Cockpit | Lokale Integrationsvorschau mit einer `LearnerView`, Originalhauptinhalt, Baum/Karte und abgeschotteten Testdaten; unabhängiges Astra-Review und Browserprüfungen. | Native Produktdatenanbindung, passende Kantenprojektion und Produktionsabnahme. |
+| Karte im vollständigen Cockpit | Vorschau auf main; native Produktanbindung mit derselben Baumprojektion entsteht in [PR #81](https://github.com/enpasos/skillpilot/pull/81). | S1-Nachweise am endgültigen Kandidaten und gesonderte Produktionsabnahme. |
 | Bisherige Completion-Engine | Vorhandener automatischer Bedarfs-/Erlassmechanismus. | Neue globale Anerkennung aus unveränderlichen lokalen Einheitsverträgen; alte Semantik nicht unverändert übernehmen. |
 | Prüfungen und Inhalte | Bestehende Quellen, Aufgaben, Rubriken und QA-Bestände auf main und im alten PR. | Prüfung des neuen Anwendungsanspruchs, Erwerbszuordnung und historische ID-Bedeutung. |
 | Fachabschluss Mathematik | Noch nicht erreicht. | Sämtliche angebotenen Auflösungen und ihre erforderlichen Verträge nach diesem Konzept abnehmen. |
@@ -167,6 +167,39 @@ ELK-Layout, Culling und Kamerahistorie bleiben wiederverwendbare Darstellungstec
 Die neue Ansicht darf zunächst ohne vollständige curriculare Lerneinheiten mit
 der vorhandenen geprüften Hierarchie arbeiten; sie behauptet dadurch noch keine
 neuen Abschlussverträge.
+
+### S1: Bedienung und Nachweise des Produktkandidaten
+
+[PR #81](https://github.com/enpasos/skillpilot/pull/81) ergänzt den Produktadapter.
+Im normalen Cockpit bleibt zunächst **Baum** gewählt; **Lernkarte** öffnet die
+zusätzliche Navigation. Erst dabei werden die Karte und ihre Layouttechnik
+geladen. Einzelklick oder Enter wählt ein Ziel für die gewohnte Zielkarte;
+Doppelklick oder der eigene Öffnungsknopf führt in einen Bereich, Shift mit
+Doppelklick wieder hinaus. Blattziele besitzen keinen Öffnungsknopf.
+Auswahl und Zoom setzen weder Mastery noch Lernfokus oder aktives Ziel.
+
+Bereiche zeigen die vorhandene sichtbare Hierarchie. Zusammengefasste Pfeile
+sind beschreibende Graphbezüge; zusätzliche Voraussetzungen und deren Herkunft
+lassen sich bei Bedarf aufklappen. Dadurch entstehen keine neuen Lerneinheiten
+oder Ganz-Einheits-Sperren. Ergebnisanzeigen verwenden weiterhin den bestehenden
+Backendstand; S3-Anerkennung wird damit nicht vorweggenommen.
+
+Die native Prüfung beginnt bei `index.html` und `App`, ohne Prototyp-Adapter.
+Abgeschottete Test-HTTP-Antworten prüfen Bedienung und Zustandsisolation;
+zusätzlich vergleicht ein Test die Kartenprojektion mit der aktuell hinterlegten
+hessischen Mathematikansicht Sekundarstufe II LK. Beides ist von einer echten
+Produktions- oder Coach-Hostabnahme zu unterscheiden.
+
+Relevante Befehle in `app/` sind `npm run test:learner-map`,
+`npm run test:learner-cockpit-startup` und `npm run test:learner-learning-plans`.
+Nach dem normalen Produktionsbuild prüft `npm run test:learner-map-build` die
+tatsächlich erzeugten Karten-/Workerdateien und deren Ausschluss vom
+Start-Precache. Diese Prüfungen sind im Frontend-CI-Pfad eingebunden.
+S1 benötigt keine neuen Backend-, Datenbank-, Curriculum- oder Pluginverträge
+und keine zusätzliche Betriebskonfiguration. Beim Rollout bleiben der normale
+Release-Preflight und ein Smoke-Test einschließlich Baum/Karte, Zielwahl,
+Prüfung, Kartenübung und Plan erforderlich. Ein Kartenfehler muss lokal bleiben
+und die Rückkehr zum Baum erlauben.
 
 ### S2: zuerst eine fachlich kleine echte Einheit
 

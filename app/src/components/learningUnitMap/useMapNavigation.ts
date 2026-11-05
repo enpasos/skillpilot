@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, type RefObject } from 'react'
 import { useReactFlow, useStoreApi, type OnMove, type Viewport } from '@xyflow/react'
 import type { LearningMapFixture } from './types'
 import { mapEntryPath, validMapScopePath } from './mapEntryPath'
@@ -8,7 +8,8 @@ type Gesture = { direction: number; at: number }
 
 /** Camera history belongs to a scope, never to its individual visible nodes. */
 export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boolean,
-  layoutScopeKey?: string | null, direction = 'RIGHT', initialScopeId?: string, active = true) {
+  layoutScopeKey?: string | null, direction = 'RIGHT', initialScopeId?: string, active = true,
+  focusBoundaryRef?: RefObject<HTMLElement | null>, focusSurfaceRef?: RefObject<HTMLElement | null>) {
   const flow = useReactFlow()
   const store = useStoreApi()
   const [requestedPath, setPath] = useState(() => {
@@ -29,6 +30,7 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
   const armed = useRef(true)
   const unlockAt = useRef(0)
   const lastGesture = useRef<Gesture>({ direction: 0, at: 0 })
+  const restoreMapFocus = useRef(false)
   const scopeId = path[path.length - 1]
   const viewKey = `${scopeId}:${direction}`
   const layoutReady = active && (layoutScopeKey === undefined || layoutScopeKey === viewKey)
@@ -68,6 +70,15 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
         setCameraKey(viewKey)
         timer.current = setTimeout(() => {
           if (version !== epoch.current) return
+          if (restoreMapFocus.current && active) {
+            const focused = document.activeElement
+            // A removed map node must not strand keyboard navigation on body.
+            // A learner who moved to the original answer/settings keeps focus.
+            if (!focused || focused === document.body || !focused.isConnected) {
+              focusSurfaceRef?.current?.focus({ preventScroll: true })
+            }
+          }
+          restoreMapFocus.current = false
           busy.current = false
           setPhase('idle')
         }, reducedMotion ? 0 : 150)
@@ -78,10 +89,11 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
       cancelAnimationFrame(innerFrame)
       clearTimeout(timer.current)
     }
-  }, [scopeId, viewKey, flow, store, direction, reducedMotion, fixture, layoutReady])
+  }, [scopeId, viewKey, flow, store, direction, reducedMotion, fixture, layoutReady, active, focusSurfaceRef])
 
   const navigate = useCallback((nextPath: string[], towardId?: string) => {
     if (busy.current || nextPath[nextPath.length - 1] === scopeId) return
+    restoreMapFocus.current = !!focusBoundaryRef?.current?.contains(document.activeElement)
     cameras.current.set(viewKey, flow.getViewport())
     busy.current = true
     armed.current = false
@@ -98,7 +110,7 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
       setPhase('entering')
       setPath(nextPath)
     }, reducedMotion ? 0 : 170)
-  }, [flow, reducedMotion, scopeId, viewKey])
+  }, [flow, reducedMotion, scopeId, viewKey, focusBoundaryRef])
 
   const enter = useCallback((id: string) => {
     const entry = fixture.entries[id]

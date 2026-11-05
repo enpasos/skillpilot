@@ -11,7 +11,7 @@ const root = fileURLToPath(new URL('../', import.meta.url))
 const artifacts = fileURLToPath(new URL('../../tmp/learning-map-netron-review/', import.meta.url))
 const vite = await createServer({
   root, configFile: `${root}/prototypes/vite.config.ts`, logLevel: 'error',
-  server: { host: '127.0.0.1', port: 0, strictPort: false, hmr: false, ws: false },
+  server: { host: '127.0.0.1', port: 0, strictPort: false, hmr: false },
 })
 await vite.listen()
 const address = vite.httpServer?.address()
@@ -190,12 +190,21 @@ try {
   await page.screenshot({ path: `${artifacts}/02-mechanics.png` })
   const mechanicsCamera = await camera(page)
 
-  // Enter and Space operate the same hierarchy as the explicit touch button.
+  // Enter/Space select details on the main node. Its separate scope-opening
+  // control supports keyboard drilling without changing the selection contract.
   await page.locator('[data-entry-id="demo:kinematics"] .lum-node-main').focus()
+  await page.keyboard.press('Enter')
+  await settled(page, 'demo:mechanics')
+  assert.equal(await page.locator('[data-entry-id="demo:kinematics"] .lum-node-main').getAttribute('aria-pressed'), 'true')
+  await page.locator('[data-entry-id="demo:kinematics"] .lum-node-open').focus()
   await page.keyboard.press('Enter')
   await settled(page, 'demo:kinematics')
   await assertScopeRoutes(page, learningMapFixture, 'demo:kinematics')
   await page.locator('[data-entry-id="demo:uniform"] .lum-node-main').focus()
+  await page.keyboard.press('Space')
+  await settled(page, 'demo:kinematics')
+  assert.equal(await page.locator('[data-entry-id="demo:uniform"] .lum-node-main').getAttribute('aria-pressed'), 'true')
+  await page.locator('[data-entry-id="demo:uniform"] .lum-node-open').focus()
   await page.keyboard.press('Space')
   await settled(page, 'demo:uniform')
   assert.deepEqual(await ids(page), [
@@ -211,6 +220,7 @@ try {
   assert.match(await page.getByRole('complementary').innerText(), /Größen und Einheiten/)
   await page.screenshot({ path: `${artifacts}/03-inner-detail.png` })
   await page.keyboard.press('Escape')
+  await page.getByRole('complementary').waitFor({ state: 'hidden' })
   await settled(page, 'demo:uniform')
   await page.keyboard.press('Escape')
   await settled(page, 'demo:kinematics')
@@ -369,7 +379,14 @@ try {
   console.log(`Screenshots: ${artifacts}`)
 } catch (error) {
   console.error({ stage, rejectedRequests, pageErrors })
-  if (lastPage) await lastPage.screenshot({ path: `${artifacts}/failure.png` }).catch(() => undefined)
+  if (lastPage) {
+    console.error(await lastPage.evaluate(() => ({ scope: document.querySelector('.lum-canvas')?.getAttribute('data-scope-id'),
+      busy: document.querySelector('.lum-canvas')?.getAttribute('aria-busy'),
+      selected: [...document.querySelectorAll('.lum-node-main[aria-pressed="true"]')].map(element => element.getAttribute('title')),
+      inspector: document.querySelector('.lum-inspector')?.textContent,
+    })))
+    await lastPage.screenshot({ path: `${artifacts}/failure.png` }).catch(() => undefined)
+  }
   throw error
 } finally {
   await browser.close()

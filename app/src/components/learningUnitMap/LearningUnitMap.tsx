@@ -74,7 +74,10 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const [layout, setLayout] = useState<{ fixture: LearningMapFixture; key: string; data: LearningScopeLayout } | null>(null)
   const [layoutError, setLayoutError] = useState<string | null>(null)
   const [layoutAttempt, setLayoutAttempt] = useState(0)
-  const nav = useMapNavigation(fixture, reducedMotion, layout?.fixture === fixture ? layout.key : null, direction, initialScopeId, active)
+  const mapContainer = useRef<HTMLElement>(null)
+  const mapSurface = useRef<HTMLDivElement>(null)
+  const nav = useMapNavigation(fixture, reducedMotion, layout?.fixture === fixture ? layout.key : null,
+    direction, initialScopeId, active, mapContainer, mapSurface)
   const { enter, goUp, goToDepth, goToScope } = nav
   const [selection, setSelection] = useState<{ scope: string; id: string } | null>(null)
   const [query, setQuery] = useState('')
@@ -82,10 +85,12 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const [contextTrail, setContextTrail] = useState<string[]>([])
   const [contextLimit, setContextLimit] = useState(12)
   const searchInput = useRef<HTMLInputElement>(null)
-  const mapContainer = useRef<HTMLElement>(null)
-  const mapSurface = useRef<HTMLDivElement>(null)
   const pendingNodeFocus = useRef<{ id: string; center: boolean } | null>(null)
-  const pendingSelectionEcho = useRef<string | null>(null)
+  const pendingSelectionEcho = useRef<{ entryId: string; nonce: number; baselineKey: string | null } | null>(null)
+  // A newly mounted scope starts from its current selection; the supplied
+  // sequence may describe a historical reveal made before the map was opened.
+  const seenRevealNonce = useRef(command?.nonce ?? 0)
+  const pendingReveal = useRef<{ entryId: string; nonce: number; baselineSelectionId: string } | null>(null)
   const lastCommand = useRef<string | null>(null)
   const gestureTarget = useRef<string | null>(null)
   const gestureOnMap = useRef(true)
@@ -124,12 +129,16 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const select = useCallback((id: string) => {
     if (!visible.has(id)) return
     pendingNodeFocus.current = null
+    pendingReveal.current = null
+    // Local intent supersedes any still-routed baseline while its echo is pending.
+    if (command) lastCommand.current = `${command.nonce}:${command.entryId}`
     setContextTrail([])
     setContextLimit(12)
-    pendingSelectionEcho.current = id
+    pendingSelectionEcho.current = { entryId: id, nonce: command?.nonce ?? 0,
+      baselineKey: command ? `${command.nonce}:${command.entryId}` : null }
     highlight(id)
     onEntrySelect?.(id)
-  }, [highlight, onEntrySelect, visible])
+  }, [highlight, onEntrySelect, visible, command])
   const open = useCallback((id: string) => {
     const entry = fixture.entries[id]
     if (!entry) return
@@ -153,13 +162,34 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   }, [focusNode, select])
 
   useEffect(() => {
-    // A controlled caller mirrors a map click back as its selected-goal command.
-    // Acknowledge that echo before navigation; a later explicit reveal remains
-    // a fresh command, including when it targets this same goal.
-    if (pendingSelectionEcho.current && command?.entryId === pendingSelectionEcho.current) {
-      lastCommand.current = `${command.nonce}:${command.entryId}`
+    if (!command) return
+    if (command.revealEntryId && seenRevealNonce.current !== command.nonce) {
+      // The requested target is authoritative even while the router still
+      // exposes the previous selection. A sequence is consumed only once.
+      seenRevealNonce.current = command.nonce
+      pendingReveal.current = { entryId: command.revealEntryId, nonce: command.nonce,
+        baselineSelectionId: command.entryId }
+      // Keep the eventual routed target echo separate from camera navigation:
+      // opening its children before that echo arrives must not jump back out.
+      pendingSelectionEcho.current = { entryId: command.revealEntryId, nonce: command.nonce,
+        baselineKey: `${command.nonce}:${command.entryId}` }
+    } else if (pendingReveal.current && (command.nonce !== pendingReveal.current.nonce
+      || (command.entryId !== pendingReveal.current.baselineSelectionId && command.entryId !== pendingReveal.current.entryId))) {
+      pendingReveal.current = null
     }
-    pendingSelectionEcho.current = null
+    const pending = pendingSelectionEcho.current
+    if (!pending) return
+    const key = `${command.nonce}:${command.entryId}`
+    // Local highlighting can commit before the concurrent router echoes the
+    // selection. Keep the intent across that unchanged old command, including
+    // a drill into its children. Only its actual echo is acknowledgement.
+    if (command.nonce === pending.nonce && command.entryId === pending.entryId) {
+      lastCommand.current = key
+      pendingSelectionEcho.current = null
+    } else if (command.nonce !== pending.nonce || key !== pending.baselineKey) {
+      // A fresh reveal (even of this same ID) or another external selection wins.
+      pendingSelectionEcho.current = null
+    }
   }, [command, selection])
 
   useEffect(() => { onSelectionChange?.(selectedId) }, [onSelectionChange, selectedId])
@@ -167,15 +197,18 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   useEffect(() => {
     if (!active || !command || nav.isTransitioning) return
     const key = `${command.nonce}:${command.entryId}`
-    if (lastCommand.current === key) return
-    const targetPath = mapEntryPath(fixture, command.entryId)
+    const reveal = pendingReveal.current
+    if (!reveal && lastCommand.current === key) return
+    const targetId = reveal?.entryId ?? command.entryId
+    const targetPath = mapEntryPath(fixture, targetId)
     // A temporarily hydrating projection may not contain the command yet.
     if (!targetPath) return
     const ownerId = targetPath.length > 1 ? targetPath[targetPath.length - 2] : fixture.rootId
     if (ownerId !== nav.scopeId) { goToScope(ownerId); return }
     const frame = requestAnimationFrame(() => {
       lastCommand.current = key
-      if (command.entryId !== fixture.rootId) focusNode(command.entryId)
+      if (pendingReveal.current === reveal) pendingReveal.current = null
+      if (targetId !== fixture.rootId) focusNode(targetId)
     })
     return () => cancelAnimationFrame(frame)
   }, [active, command, fixture, nav.isTransitioning, nav.scopeId, goToScope, focusNode])
@@ -268,7 +301,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
         && mapSurface.current?.contains(event.target)) {
         event.preventDefault(); goUp()
       } else if (event.key === 'Escape') {
-        if (searchOpen) { setSearchOpen(false); searchInput.current?.blur() }
+        if (searchOpen) { setSearchOpen(false); mapSurface.current?.focus({ preventScroll: true }) }
         else if (selectedId) setSelection(null)
         else goUp()
       }
@@ -395,7 +428,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
               && <button type="button" onClick={() => setContextLimit(value => value + 12)}>{label('Weitere Einträge anzeigen', 'Show more entries')}</button>}
           </div>
         </details>}
-        <div ref={mapSurface} className={`lum-flow lum-flow--${nav.phase}`} onDoubleClickCapture={event => {
+        <div ref={mapSurface} tabIndex={-1} className={`lum-flow lum-flow--${nav.phase}`} onDoubleClickCapture={event => {
           if (!event.shiftKey) return
           event.preventDefault()
           event.stopPropagation()

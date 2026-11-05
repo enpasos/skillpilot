@@ -3573,7 +3573,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             activeGoalId: effectiveActiveGoalId ?? null,
             getMastery: getEffectiveMastery,
             completionWaivers: completionTreeWaivers,
-            revealRequest: navigationRevealRequest ?? undefined,
+            revealRequest: navigationRevealRequest ? {
+              ...navigationRevealRequest,
+              entryId: subjectRootIdByAlias.get(navigationRevealRequest.entryId) ?? navigationRevealRequest.entryId,
+            } : undefined,
             onSelectGoal: selectMapGoal,
             onReturnToTree: () => selectNavigationMode('tree'),
             active: navigationMode === 'map' && (isMobile ? isSidebarOpen : isDesktopSidebarOpen)

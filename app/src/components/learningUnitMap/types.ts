@@ -55,5 +55,8 @@ export interface LearningEntryProgress {
 
 export interface LearningMapCommand {
   entryId: string
+  /** Monotonic explicit-reveal sequence; ordinary selections retain its value. */
   nonce: number
+  /** Requested reveal target, which may precede the routed selected entryId. */
+  revealEntryId?: string
 }

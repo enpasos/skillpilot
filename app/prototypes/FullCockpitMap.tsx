@@ -46,7 +46,8 @@ export function FullCockpitMap(props: LearnerGoalNavigationMapProps) {
     return result
   }, [fixture, getMastery, completionWaivers])
   const command = useMemo(() => ({ entryId: props.selectedGoalId,
-    nonce: props.revealRequest?.entryId === props.selectedGoalId ? props.revealRequest.nonce : 0,
+    nonce: props.revealRequest?.nonce ?? 0,
+    revealEntryId: props.revealRequest?.entryId,
   }), [props.selectedGoalId, props.revealRequest])
 
   return <div className="full-cockpit-map" data-testid="full-cockpit-map"

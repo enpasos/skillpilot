@@ -36,4 +36,8 @@ export const serviceWorkerNavigationFallbackDenylist = [
 export const serviceWorkerPrecacheGlobIgnores = [
   '**/version.json',
   'lernzielbuch/**',
+  // The optional cockpit map and its layout worker load only after switching
+  // navigation modes. Precaching would otherwise fetch them on classic startup.
+  'assets/LearnerGoalNavigationMap-*.{js,css}',
+  'assets/elk-worker*.{js,css}',
 ] as const

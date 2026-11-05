@@ -38,7 +38,9 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
     return result
   }, [fixture, goalIndexAll, getMastery, completionWaivers, props.language])
   const command = useMemo(() => ({ entryId: props.selectedGoalId,
-    nonce: props.revealRequest?.entryId === props.selectedGoalId ? props.revealRequest.nonce : 0,
+    // This is the global reveal sequence, independent of ordinary selection.
+    nonce: props.revealRequest?.nonce ?? 0,
+    revealEntryId: props.revealRequest?.entryId,
   }), [props.selectedGoalId, props.revealRequest])
   const english = props.language === 'en'
 
