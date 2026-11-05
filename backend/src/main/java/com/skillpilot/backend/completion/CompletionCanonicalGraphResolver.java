@@ -3,6 +3,7 @@ package com.skillpilot.backend.completion;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import java.util.LinkedHashMap;
 import java.util.Collection;
 import java.util.LinkedHashSet;
@@ -39,8 +40,13 @@ public final class CompletionCanonicalGraphResolver {
     }
 
     public Map<String, LearningGoal> load(String curriculumId) {
+        return normalizeDefinitions(landscapes.getClosure(curriculumId), mapper);
+    }
+
+    /** The same normalization authenticates frozen source snapshots without a live landscape service. */
+    public static Map<String, LearningGoal> normalizeDefinitions(Collection<SkillLandscape> definitions, ObjectMapper mapper) {
         Map<String, LearningGoal> graph = new LinkedHashMap<>();
-        for (var landscape : landscapes.getClosure(curriculumId)) {
+        for (var landscape : definitions) {
             if (landscape.getGoals() == null) continue;
             for (LearningGoal goal : landscape.getGoals()) {
                 LearningGoal previous = graph.putIfAbsent(goal.getId(), goal);
@@ -60,11 +66,11 @@ public final class CompletionCanonicalGraphResolver {
         return normalized;
     }
 
-    private List<String> normalize(List<String> references, Map<String, LearningGoal> graph) {
+    private static List<String> normalize(List<String> references, Map<String, LearningGoal> graph) {
         return references == null ? List.of() : references.stream().map(ref -> resolve(ref, graph)).toList();
     }
 
-    private String resolve(String reference, Map<String, LearningGoal> graph) {
+    private static String resolve(String reference, Map<String, LearningGoal> graph) {
         if (reference == null || graph.containsKey(reference)) return reference;
         int separator = reference.indexOf(':');
         if (separator >= 0 && graph.containsKey(reference.substring(separator + 1))) {

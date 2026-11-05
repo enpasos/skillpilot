@@ -4,6 +4,7 @@ import { execFileSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { compactScalarArrays } from './learningUnits/compactJson'
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const outputDir = resolve(repoRoot, 'tmp/math-learning-units')
@@ -37,6 +38,7 @@ interface NativeScope {
   externalSupportAtomicGoalIds?: string[]; atomicPrerequisites?: Record<string, string[]>
   duplicateVisibleGoalPaths?: Record<string, string[]>; missingVisibleGoalIds?: string[]
   compositionViewIds?: string[]
+  learningUnitReadModel?: { calculationStatus: string; units: Array<{ contractId: string; revision: string; ownGoalIds: string[] }> }
 }
 
 export function requireNativeInventory(value: unknown): asserts value is {
@@ -95,6 +97,15 @@ function closure(start: Iterable<string>, prerequisites: Record<string, string[]
 
 function main() {
   mkdirSync(outputDir, { recursive: true })
+  if (process.argv.includes('--format-snapshot')) {
+    const path = resolve(repoRoot, 'docs/dev/learning-units-mathematics-offering-inventory.json')
+    const original = JSON.parse(readFileSync(path, 'utf8'))
+    const formatted = `${compactScalarArrays(original)}\n`
+    assert.deepEqual(JSON.parse(formatted), original)
+    writeFileSync(path, formatted)
+    console.log('Public inventory scalar arrays compacted; parsed payload unchanged')
+    return
+  }
   if (!process.argv.includes('--report-only')) {
     execFileSync('./gradlew', ['--no-daemon', '--max-workers=1', '--init-script',
       '../app/scripts/learningUnits/nativeMathInventory.init.gradle', 'nativeMathOfferingInventory'], {
@@ -267,7 +278,7 @@ function main() {
         'Requires reachability and coveredGoalIds do not prove independent normal-pass application',
         'No new ownership, task/rubric/unit review, deployment, publication or host acceptance'],
     }
-    writeFileSync(resolve(repoRoot, 'docs/dev/learning-units-mathematics-offering-inventory.json'), `${JSON.stringify(snapshot, null, 2)}\n`)
+    writeFileSync(resolve(repoRoot, 'docs/dev/learning-units-mathematics-offering-inventory.json'), `${compactScalarArrays(snapshot)}\n`)
   }
   const byCountry = new Map<string, number>()
   for (const scope of scopeRows) byCountry.set(scope.scopeId.split('/')[0], (byCountry.get(scope.scopeId.split('/')[0]) ?? 0) + 1)

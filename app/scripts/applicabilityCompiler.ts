@@ -252,7 +252,7 @@ export function getAllJsonFiles(dir: string, files: string[] = []): string[] {
     if (entry.isDirectory()) {
       // Review inputs and historical snapshots are not live curriculum sources.
       // Their explicit QA bindings are checked by the dedicated review tools.
-      if (entry.name === 'quality') continue
+      if (entry.name === 'quality' || entry.name === 'learning-units') continue
       getAllJsonFiles(file, files)
       continue
     }

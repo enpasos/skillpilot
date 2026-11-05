@@ -23,6 +23,7 @@ import java.util.TreeSet;
 
 /** Validates frozen, reviewed contracts independently of current learner scope and outcomes. */
 public final class LearningUnitCompiler {
+    private final Set<LearningUnitDefinition> validated = java.util.Collections.newSetFromMap(new java.util.IdentityHashMap<>());
     public CompiledLearningUnits compile(Collection<LearningUnitDefinition> definitions) {
         if (definitions == null || definitions.isEmpty()) fail("EMPTY_UNIT_CATALOG", "No learning-unit contracts");
         Map<LearningUnitDefinition.ContractRef, LearningUnitDefinition> ordered = new TreeMap<>();
@@ -94,6 +95,7 @@ public final class LearningUnitCompiler {
     }
 
     private void validate(LearningUnitDefinition definition) {
+        if (validated.contains(definition)) return;
         if (definition == null || definition.schemaVersion() != 1 || !LearningUnitDefinition.SEMANTICS.equals(definition.semantics())
                 || !text(definition.contractId()) || !text(definition.revision()) || !localized(definition.title())
                 || !localized(definition.promise()) || !localized(definition.introduction()) || !text(definition.reviewRef())) {
@@ -114,7 +116,8 @@ public final class LearningUnitCompiler {
         for (Set<String> group : List.of(assessment, recall, orientation)) for (String id : group) {
             if (!own.contains(id) || !classified.add(id)) fail("INVALID_UNIT_PARTITION", "Own target roles overlap or refer outside Own: " + id);
         }
-        if (!definition.ownGoalMeaningDigests().keySet().equals(own) || !definition.ownGoalMeanings().keySet().equals(own)) {
+        if (!definition.ownGoalMeaningDigests().keySet().equals(own) || !definition.ownGoalMeanings().keySet().equals(own)
+                || !definition.ownResolvedKinds().keySet().equals(own)) {
             fail("MISSING_GOAL_MEANING", "Every own target requires its immutable meaning and digest");
         }
         definition.ownGoalMeaningDigests().forEach((id, digest) -> {
@@ -124,9 +127,20 @@ public final class LearningUnitCompiler {
                     || !digest.equals(LearningUnitSourceBindings.canonicalDigest(meaning))) {
                 fail("GOAL_MEANING_CONFLICT", "Invalid frozen atomic meaning: " + id);
             }
-            boolean q = "exam".equals(meaning.nodeKind()) || "assessment".equals(meaning.semanticKind()) || "practiceAssessment".equals(meaning.semanticKind());
-            boolean k = "memory".equals(meaning.nodeKind()) || "memory".equals(meaning.semanticKind()) || "memorization".equals(meaning.semanticKind());
-            boolean o = "orientation".equals(meaning.semanticKind());
+            String resolvedKind = definition.ownResolvedKinds().get(id);
+            if (!Set.of("ordinary", "assessment", "memory", "orientation").contains(resolvedKind)) {
+                fail("INVALID_UNIT_PARTITION", "Unsupported resolved archived goal kind: " + id);
+            }
+            boolean rawQ = "exam".equals(meaning.nodeKind()) || "assessment".equals(meaning.semanticKind()) || "practiceAssessment".equals(meaning.semanticKind());
+            boolean rawK = "memory".equals(meaning.nodeKind()) || "memory".equals(meaning.semanticKind()) || "memorization".equals(meaning.semanticKind());
+            boolean rawO = "orientation".equals(meaning.semanticKind());
+            boolean q = "assessment".equals(resolvedKind);
+            boolean k = "memory".equals(resolvedKind);
+            boolean o = "orientation".equals(resolvedKind);
+            if (rawQ && !q || rawK && !k || rawO && !o || o && !rawO
+                    || rawQ && (rawK || rawO) || rawK && rawO) {
+                fail("INVALID_UNIT_PARTITION", "Resolved kind contradicts frozen explicit semantics: " + id);
+            }
             if ((q ? 1 : 0) + (k ? 1 : 0) + (o ? 1 : 0) > 1
                     || q != assessment.contains(id) || k != recall.contains(id) || o != orientation.contains(id)) {
                 fail("INVALID_UNIT_PARTITION", "Archived goal semantics disagree with own roles: " + id);
@@ -160,6 +174,7 @@ public final class LearningUnitCompiler {
             ordinary.removeAll(covered);
             fail("UNCOVERED_OWN_TARGET", "Own ordinary targets lack an own reviewed assessment: " + ordinary);
         }
+        validated.add(definition);
     }
 
     static Set<String> reach(Map<String, ? extends Collection<String>> graph, Collection<String> roots) {

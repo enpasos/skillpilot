@@ -26,6 +26,16 @@ export interface ProgramUnit {
   shortLabel?: string
   order?: number
   parentUnitId?: string
+  /** Reviewed learning-unit role; calendar structure alone never supplies this role. */
+  learningUnit?: LearningUnitMetadata
+}
+
+export interface LearningUnitMetadata {
+  contractId: string
+  revision: string
+  placementRevision: string
+  promise: Record<string, string>
+  introduction: Record<string, string>
 }
 
 export interface GoalPlacementContext {
@@ -42,6 +52,8 @@ export interface GoalPlacement {
   unitId: string
   relation: 'primary' | 'secondary' | 'assessed'
   context?: GoalPlacementContext
+  /** Explicit direct acquisition ownership, independent of the navigation relation. */
+  acquisition?: boolean
 }
 
 export interface CompetencyCatalogEntry {

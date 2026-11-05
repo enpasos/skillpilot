@@ -92,6 +92,8 @@ test('curriculum discovery excludes QA snapshots while keeping live source and m
       'DE/Gymnasium/quality/goal-evidence/candidate/mapping/DE-HE/snapshot.json',
       'DE/Gymnasium/quality/goal-evidence/candidate/canonical/snapshot.de.json',
       'DE/Gymnasium/quality-backup/mapping/DE-HE/live.json',
+      'DE/Gymnasium/learning-units/sources/full-source.json',
+      'DE/Gymnasium/learning-units/contracts/unit/1.json',
     ]
     paths.forEach((file) => {
       const absolute = join(root, file)

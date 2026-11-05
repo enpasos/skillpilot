@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "semantics": "global-unit-recognition-v1",
+  "contractId": "math-dot-product-projection",
+  "revision": "2026-11-05-v1",
+  "sourceBinding": {
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "programUnitId": "de-gym-math-dot-product-projection",
+    "placementRevision": "2026-11-05-v1",
+    "compositionViewDigests": {
+      "de-bw-gym-math-gk": "b6fe01c25fc8ca62852c75d3883b514f62fa682f74965e69a137ce7e753517b1",
+      "de-bw-gym-math-lk": "5740c9d28a8b26f831a7d5bd35d8a7d0e6e2270b1046db4e4c83f9b70ac22a9b",
+      "de-bw-gym-sekii-math-gk": "8fc2adf9f0d856f9032795d46d834375b6d0ed087e2027da38086f801ae99a63",
+      "de-bw-gym-sekii-math-lk": "561b3831ff9469511b694fb5797d790547f60d76ef5feef34a1b49adf1f6f077",
+      "de-by-gym-math-gk": "3524f11295b343f829a6c77fcc0b468c730747710f08de15e38aaf23a832469e",
+      "de-by-gym-math-lk": "d1cfa2a71c844d95fc9ec5795ead574b77e3d68ae4bf927e0b70ec1ed07708e8",
+      "de-by-gym-sekii-math-gk": "0b1532d50ed05c495e85d4427916c9f76ae219552a93764eeb14677606862f1a",
+      "de-by-gym-sekii-math-lk": "29b3e85a02f572d24121f8be21cd48ab7560b7b228fe2b909b59e140afe26b03",
+      "de-he-gym-math-gk-g8": "169b0adf4ef09802f910acfe3ef2706838d0a575156d4ba9c952316b34a875c6",
+      "de-he-gym-math-gk-g9": "a33d9519191f2d260b8f16deaf9f70825a98802b111bfe5ac6fab96f1b081938",
+      "de-he-gym-math-lk-g8": "c77b4bb843a7ec819717d8b7db44b12102e95d4c009bc048a3f23127bf7ef9a8",
+      "de-he-gym-math-lk-g9": "f52a68ee85e375047e7dd51ec051e589b6c99ae44ceff25681914d429845af5a",
+      "de-he-gym-sekii-math-gk": "3888f56417b1759afd195cb8098f2115f98c530ce9fe264ae02fd92ebc8da09e",
+      "de-he-gym-sekii-math-lk": "c410c6c2068539efbd769b2833571fcae8c0460e96689b9992b5b3b37a173271",
+      "de-sh-gym-math-gk-g8": "5a57672da5f6ca80393c877013a324feb7db8e72baef254d1d162a10b446042f",
+      "de-sh-gym-math-gk-g9": "57bed3698e21d3f0c5c547a810f3734ae155e190f7d0459f26bbf2fbff8ea49e",
+      "de-sh-gym-math-lk-g8": "251b1a123860c7baaa57ce891cd6dfd4aa92b5cad30541fd636e88c9f6c1e0d7",
+      "de-sh-gym-math-lk-g9": "75ac64f48c03b9217ca485ba270a48dc055311d4383790b5c2a34fe05482fa12",
+      "de-sh-gym-sekii-math-gk": "ce10e69d60d0f4ebd5a8bd22d24a8d4498091ba76e165624f991d87e3a8d950b",
+      "de-sh-gym-sekii-math-lk": "549eb1a5363b7014d67d27dff6fd08ca2e0a1e94b9badc1318eb61d5d0c5b452"
+    }
+  },
+  "title": {
+    "de": "Das Skalarprodukt geometrisch erklären",
+    "en": "Explain the dot product geometrically"
+  },
+  "promise": {
+    "de": "Du kannst an einer konkreten Vektorzerlegung geometrisch erklären, wie das Skalarprodukt mit der gerichteten Projektionslänge zusammenhängt.",
+    "en": "You can use a concrete vector decomposition to explain geometrically how the dot product relates to the signed projection length."
+  },
+  "introduction": {
+    "de": "Vektorrechnungen werden anschaulich, wenn du die senkrechte Zerlegung eines Vektors betrachtest. Hier verbindest du das rechnerische Skalarprodukt mit seiner geometrischen Bedeutung.",
+    "en": "Vector calculations become easier to visualize when you decompose a vector into perpendicular components. Here you connect the dot product calculation with its geometric meaning."
+  },
+  "ownGoalIds": [
+    "3016ec37-1c2e-47db-83f5-e767923bc97e",
+    "e98672c6-871a-5d0b-889c-5afc51040f0d"
+  ],
+  "requiredChildContractRefs": [],
+  "ownAssessmentGoalIds": [
+    "e98672c6-871a-5d0b-889c-5afc51040f0d"
+  ],
+  "ownRecallGoalIds": [],
+  "ownOrientationGoalIds": [],
+  "ownGoalMeanings": {
+    "3016ec37-1c2e-47db-83f5-e767923bc97e": {
+      "id": "3016ec37-1c2e-47db-83f5-e767923bc97e",
+      "title": "Definition des Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen",
+      "titleEn": "Visualize the definition of the dot product using orthogonal projections",
+      "description": "Die lernende Person kann die orthogonale Projektion eines Vektors auf die durch einen anderen Vektor bestimmte Richtung nutzen, um die Definition des Skalarprodukts geometrisch zu veranschaulichen und fachsprachlich zu erläutern.",
+      "descriptionEn": "The learner can use the orthogonal projection of one vector onto the direction determined by another vector to visualize and explain the definition of the dot product geometrically.",
+      "type": "atomic",
+      "nodeKind": null,
+      "semanticKind": null
+    },
+    "e98672c6-871a-5d0b-889c-5afc51040f0d": {
+      "id": "e98672c6-871a-5d0b-889c-5afc51040f0d",
+      "title": "Skalarprodukt über eine orthogonale Projektion erklären",
+      "titleEn": "Explain the dot product through orthogonal projection",
+      "description": "Die lernende Person kann in einer Q2-Prüfungsaufgabe eine orthogonale Vektorprojektion bestimmen und damit die geometrische Bedeutung des Skalarprodukts erklären.",
+      "descriptionEn": "The learner can independently explain the dot product through orthogonal projection in a Q2 assessment and justify the results.",
+      "type": "atomic",
+      "nodeKind": "exam",
+      "semanticKind": null
+    }
+  },
+  "ownResolvedKinds": {
+    "3016ec37-1c2e-47db-83f5-e767923bc97e": "ordinary",
+    "e98672c6-871a-5d0b-889c-5afc51040f0d": "assessment"
+  },
+  "ownGoalMeaningDigests": {
+    "3016ec37-1c2e-47db-83f5-e767923bc97e": "183645f6995b708f1295766c8fb06bf6beff99a32c4080e65c10b21cfed95046",
+    "e98672c6-871a-5d0b-889c-5afc51040f0d": "90487e5c9c22aa6271baa036a446b4efabed0e03ad5809b67616f5eb031c0d3a"
+  },
+  "atomicPrerequisites": {
+    "075f1ef2-6860-4b20-9df2-878157eb395e": [
+      "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+      "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+      "f242a3e8-55a3-492e-8354-b81b24cdbb78"
+    ],
+    "19f170e4-b88f-4c06-b72a-ce6923748bb4": [
+      "25593605-5e13-55cc-9a05-8f3d737e15e9"
+    ],
+    "25593605-5e13-55cc-9a05-8f3d737e15e9": [
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    "265af6af-8eac-5632-b730-800aafcde26a": [
+      "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+    ],
+    "3016ec37-1c2e-47db-83f5-e767923bc97e": [
+      "265af6af-8eac-5632-b730-800aafcde26a"
+    ],
+    "65365dce-f33f-49d8-9516-42f75883aa86": [],
+    "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2": [],
+    "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8": [
+      "075f1ef2-6860-4b20-9df2-878157eb395e"
+    ],
+    "e98672c6-871a-5d0b-889c-5afc51040f0d": [
+      "3016ec37-1c2e-47db-83f5-e767923bc97e"
+    ],
+    "f242a3e8-55a3-492e-8354-b81b24cdbb78": [
+      "25593605-5e13-55cc-9a05-8f3d737e15e9"
+    ]
+  },
+  "assessmentClaims": {
+    "e98672c6-871a-5d0b-889c-5afc51040f0d": {
+      "coveredGoalIds": [
+        "3016ec37-1c2e-47db-83f5-e767923bc97e"
+      ],
+      "taskRevision": "ef5e72c9c3e7b7001d25573a436dfd181b8734c33fe974a6a287fb7d05cca19d",
+      "rubricRevision": "ec0e1d9209aa6971e2ecfac05feec8c9ac2fffe00d73b4a64cd1518c4e09771b",
+      "reviewRef": "quality/learning-units/math-dot-product-projection-2026-11-05.md"
+    }
+  },
+  "reviewRef": "quality/learning-units/math-dot-product-projection-2026-11-05.md"
+}

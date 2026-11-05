@@ -885,6 +885,47 @@
         },
         "parentUnitId": {
           "type": "string"
+        },
+        "learningUnit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "revision",
+            "placementRevision",
+            "promise",
+            "introduction"
+          ],
+          "properties": {
+            "contractId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "revision": {
+              "type": "string",
+              "minLength": 1
+            },
+            "placementRevision": {
+              "type": "string",
+              "minLength": 1
+            },
+            "promise": {
+              "type": "object",
+              "minProperties": 1,
+              "additionalProperties": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "introduction": {
+              "type": "object",
+              "minProperties": 1,
+              "additionalProperties": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
         }
       }
     },
@@ -913,6 +954,10 @@
           "additionalProperties": {
             "type": "string"
           }
+        },
+        "acquisition": {
+          "type": "boolean",
+          "description": "Explicit direct acquisition ownership. Never inferred from primary navigation placements."
         }
       }
     },

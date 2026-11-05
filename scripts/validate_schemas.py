@@ -544,7 +544,7 @@ def looks_like_runtime_landscape(file_path, data):
     # including partial or complete goal collections with landscape references.
     # They are excluded by validateGraph.ts and compute_curriculum_revision.mjs.
     # validate_file still parses every JSON artifact before reaching this boundary.
-    if "quality" in os.path.normpath(file_path).split(os.sep):
+    if {"quality", "learning-units"}.intersection(os.path.normpath(file_path).split(os.sep)):
         return False
     return isinstance(data, dict) and "goals" in data
 
@@ -570,6 +570,9 @@ def validate_landscape_discovery_contract():
             {"landscapeId": "reviewed-landscape", "title": "Snapshot", "goals": None},
         ):
             cases.append((review_path, data, False))
+    for path in ("curricula/DE/Gymnasium/learning-units/sources/source.json",
+                 "curricula/DE/Gymnasium/learning-units/contracts/unit/1.json"):
+        cases.append((path, {"landscapeId": "frozen-source", "goals": []}, False))
     # Similar names outside the quality directory must not bypass the schema.
     for path in (
         "curricula/DE/Gymnasium/quality-backup/receipt.json",

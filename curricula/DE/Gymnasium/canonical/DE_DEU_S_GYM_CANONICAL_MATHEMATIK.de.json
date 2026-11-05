@@ -130,6 +130,26 @@
       "shortLabel": "Q4",
       "order": 15,
       "parentUnitId": "de-gym-math-sek2"
+    },
+    {
+      "id": "de-gym-math-dot-product-projection",
+      "kind": "module",
+      "label": "Das Skalarprodukt geometrisch erklären",
+      "shortLabel": "Skalarprodukt geometrisch",
+      "parentUnitId": "de-gym-math-q2",
+      "learningUnit": {
+        "contractId": "math-dot-product-projection",
+        "revision": "2026-11-05-v1",
+        "placementRevision": "2026-11-05-v1",
+        "promise": {
+          "de": "Du kannst an einer konkreten Vektorzerlegung geometrisch erklären, wie das Skalarprodukt mit der gerichteten Projektionslänge zusammenhängt.",
+          "en": "You can use a concrete vector decomposition to explain geometrically how the dot product relates to the signed projection length."
+        },
+        "introduction": {
+          "de": "Vektorrechnungen werden anschaulich, wenn du die senkrechte Zerlegung eines Vektors betrachtest. Hier verbindest du das rechnerische Skalarprodukt mit seiner geometrischen Bedeutung.",
+          "en": "Vector calculations become easier to visualize when you decompose a vector into perpendicular components. Here you connect the dot product calculation with its geometric meaning."
+        }
+      }
     }
   ],
   "goalPlacements": [
@@ -3217,6 +3237,18 @@
         "stage": "SekII",
         "courseProfile": "LK"
       }
+    },
+    {
+      "goalId": "3016ec37-1c2e-47db-83f5-e767923bc97e",
+      "unitId": "de-gym-math-dot-product-projection",
+      "relation": "primary",
+      "acquisition": true
+    },
+    {
+      "goalId": "e98672c6-871a-5d0b-889c-5afc51040f0d",
+      "unitId": "de-gym-math-dot-product-projection",
+      "relation": "assessed",
+      "acquisition": true
     }
   ],
   "competencyCatalog": [
@@ -26264,8 +26296,7 @@
       },
       "contains": [],
       "requires": [
-        "25593605-5e13-55cc-9a05-8f3d737e15e9",
-        "65365dce-f33f-49d8-9516-42f75883aa86"
+        "25593605-5e13-55cc-9a05-8f3d737e15e9"
       ],
       "applicability": {
         "jurisdiction": [
@@ -26336,8 +26367,7 @@
       },
       "contains": [],
       "requires": [
-        "25593605-5e13-55cc-9a05-8f3d737e15e9",
-        "65365dce-f33f-49d8-9516-42f75883aa86"
+        "25593605-5e13-55cc-9a05-8f3d737e15e9"
       ],
       "applicability": {
         "jurisdiction": [
@@ -63529,8 +63559,7 @@
       ],
       "contains": [],
       "requires": [
-        "075f1ef2-6860-4b20-9df2-878157eb395e",
-        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        "075f1ef2-6860-4b20-9df2-878157eb395e"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024",

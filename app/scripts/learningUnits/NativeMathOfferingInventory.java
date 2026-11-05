@@ -14,6 +14,7 @@ import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.landscape.*;
 import com.skillpilot.backend.repository.*;
 import com.skillpilot.backend.service.*;
+import com.skillpilot.backend.completion.learningunit.LearningUnitApplicationService;
 import java.nio.file.*;
 import java.util.*;
 import org.springframework.context.ApplicationEventPublisher;
@@ -24,13 +25,17 @@ public final class NativeMathOfferingInventory {
     private static final String ROOT = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String MATH = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final Map<String, String> INPUT_DIGESTS = new TreeMap<>();
-    private static final ObjectMapper MAPPER = new ObjectMapper(new JsonFactory() {
+    private static final ObjectMapper MAPPER = new ObjectMapper(new TrackingJsonFactory());
+    private static final class TrackingJsonFactory extends JsonFactory {
+        TrackingJsonFactory() { super(); }
+        TrackingJsonFactory(TrackingJsonFactory source) { super(source, null); }
+        @Override public JsonFactory copy() { return new TrackingJsonFactory(this); }
         @Override public JsonParser createParser(java.io.File file) throws java.io.IOException {
             String path = file.toPath().toAbsolutePath().normalize().toString();
             INPUT_DIGESTS.putIfAbsent(path, fileDigest(file.toPath()));
             return super.createParser(file);
         }
-    });
+    }
     private static final List<Map<String, Object>> DISCOVERY_FAILURES = new ArrayList<>();
 
     public static void main(String[] args) throws Exception {
@@ -55,6 +60,9 @@ public final class NativeMathOfferingInventory {
         ReflectionTestUtils.setField(service, "completionApplicationService", completion);
         var learner = new Learner();
         learner.setSelectedCurriculum(ROOT);
+        var learningUnits = new LearningUnitApplicationService(properties, MAPPER, landscapes,
+                new CompletionCanonicalGraphResolver(landscapes, MAPPER), "repository",
+                mock(org.springframework.beans.factory.ObjectProvider.class));
 
         JsonNode declared = readOfferings(root).path(MATH);
         Set<String> jurisdictions = new TreeSet<>();
@@ -108,6 +116,7 @@ public final class NativeMathOfferingInventory {
                 row.put("assessmentGoalIds", select(mathTargets, effective, "assessment"));
                 row.put("recallGoalIds", select(mathTargets, effective, "recall"));
                 row.put("orientationGoalIds", select(mathTargets, effective, "orientation"));
+                row.put("learningUnitReadModel", learningUnits.readModel(learningUnits.evaluate("native-inventory", Set.of()), mathTargets));
                 Map<String, List<String>> paths = new TreeMap<>();
                 Map<String, Object> resolvedViews = new TreeMap<>();
                 for (String viewId : new TreeSet<>(viewIds)) {
@@ -159,6 +168,9 @@ public final class NativeMathOfferingInventory {
         report.put("discoveryFailures", DISCOVERY_FAILURES);
         report.put("scopes", rows);
         report.put("canonicalGraphGoalCount", canonical.size());
+        report.put("learningUnitCatalogQuarantines", learningUnits.catalog().quarantined());
+        report.put("globalRecognitionAfterProjectionAssessment", learningUnits.evaluate("native-inventory",
+                Set.of("e98672c6-871a-5d0b-889c-5afc51040f0d")).recognizedGoalIds());
         report.put("publicBaseCurricula", landscapes.getBaseCurricula(false));
         List<Map<String, Object>> publicMathModules = new ArrayList<>();
         for (var base : landscapes.getBaseCurricula(false)) {

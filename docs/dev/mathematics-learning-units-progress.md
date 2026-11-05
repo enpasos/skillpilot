@@ -23,8 +23,8 @@ vollständige Mathematik-Umsetzung. Ein erster Vertrag ist ein Zwischenergebnis.
 
 | Stufe | Aktuelle Arbeit | Noch kein Erfolgsnachweis für |
 | --- | --- | --- |
-| S2 | Präzise bestehende Skalarprodukt-/Projektionskompetenz, eigenes Prüfungsziel, Erwerbszuordnung und unveränderlichen Aufgabenanspruch prüfen. | Veröffentlichten Vertrag mit vollständiger Quellenbindung und unabhängiger Inhaltsprüfung. |
-| S3 | Gemeinsamen Compiler und M-only-Evaluator, Eigentumsbindung und Katalogzulassung aufbauen. | Produktive gemeinsame Anerkennung in Frontier, Cockpit, Coach und Planung; Performance-/Regressionsabnahme. |
+| S2 | Gebundener Skalarprodukt-/Projektionsvertrag mit zwei eigenen Zielen, unabhängiger KI-Inhaltsprüfung und unverändertem Prüfungsanspruch; aktuelle native Prüfung aller 182 Angebote ohne Target-/Q-/K-/Supportdelta, Einheit in genau 42 passenden Angeboten. | Gesicherter vollständiger Kandidat mit Paket-/Runtimeintegration; keine bloße Einzelprüfung als gesamten Mathematikabschluss ausgeben. |
+| S3 | Isolierter Compiler/Evaluator gesichert; 24 gezielte Kern-, Quellen-, Archiv- und echte Repositorytests bestanden. Gemeinsame produktive Lesesicht und Paketformat 1.2 in Integration. | Durchgängige Cockpit-/Coach-/Frontier-/Planparität, Performance, vollständige Regression und exakte Kandidaten-CI. |
 | S4 | [Angebotsinventar](learning-units-mathematics-offering-inventory.md) frisch gemessen: 182 Einstiegskonfigurationen, 978 atomare Ziele, darunter 807 curriculare Ziele. Bausteine aus PR #79 indexiert. | Vollständige Einheits-, Aufgaben- und Kartenabdeckung dieses Umfangs; zwölf bestehende Hierarchiefälle korrigieren und aktuelle QA nachweisen. |
 
 Der fixierte Angebotsnenner umfasst die Vereinigungsmenge aus 140 nativen
@@ -34,6 +34,20 @@ erfolgreich. Das ist eine Bestandsaufnahme, keine Einheits- oder Fachabnahme.
 Die eigenständigen Hochschul-/BOS-Angebote sind ausdrücklich außerhalb dieser
 Gymnasium-Korrektur erfasst. Alte Zahlen und Dateizahlen aus PR #79 sind keine
 aktuellen Abnahmeergebnisse.
+
+Die [aktuelle native S2-Nachprüfung](learning-units-mathematics-after-s2-native-proof.json)
+vergleicht den geänderten Quellstand mit dem fixierten Ausgangsinventar. Die
+drei Minimalitätskorrekturen erhalten die vollständige transitive Relation;
+die beiden bestehenden Kompetenz-/Prüfungsobjekte bleiben unverändert.
+Der neue Vertrag erkennt nach dem Prüfungspass genau seine eigene Kompetenz
+an. Im anderen persönlichen Lehrplan bleibt die Anerkennung gültig, auch wenn
+die Einheit dort nicht angezeigt wird.
+
+Die [endliche Autorierungsqueue](learning-units-mathematics-authoring-queue.md)
+hält alle 807 ursprünglichen Fachkompetenzen fest. 210 fachliche Kandidatenpakete,
+74 mehrfache kanonische Elternzuordnungen und sechs Kartendecks mit 64 Karten
+werden einzeln aufgelöst. 282 Kompetenzen ohne ausdrückliches Coverage-Feld
+sind Prüflücken, keine pauschale Forderung nach 282 neuen Prüfungen.
 
 ## Verbindliche technische Grenzen
 
@@ -70,3 +84,23 @@ Commits und CI werden am jeweiligen Kandidaten dokumentiert. Lokale Tests,
 terminale GitHub-CI, Deployment und beobachtete Hostabläufe bleiben getrennte
 Nachweise. Ein Merge, Produktionsrollout oder eine Pluginveröffentlichung ist
 durch diesen Arbeitsauftrag nicht zusätzlich autorisiert.
+
+## Kandidaten und Betrieb
+
+Die ersten gespeicherten technischen Checkpoints sind `7e046a8584`
+(Angebotsinventar), `3bbf1dc556` (isolierter Anerkennungskern) und `d4e3416a50`
+(begrenzter Checkout des OAuth-Sicherheitsjobs). Dessen vorheriger Runner
+scheiterte beim vollständigen Checkout mit ENOSPC; Sicherheits- und
+Releaseprüfungen wurden dadurch nicht reduziert.
+
+Der aktuelle Paketpfad 1.2 kompiliert den echten Mathematikbestand einschließlich
+gebundener Einheitsartefakte. Modellkompilierung, unabhängige Modellvalidierung,
+fertige ZIP-/Runtimeprüfung und rechtlich/qualitativ freigegebene Weitergabe
+sind verschiedene Nachweise. Vorhandene offene Publikationsentscheidungen
+werden nicht als neue Freigaben übernommen.
+
+Claude **1.1.13 ist bereits veröffentlicht**. Die neue Coachsemantik wird für
+einen lokalen Nachfolgekandidaten **1.1.14** vorbereitet; veröffentlichte Bytes
+und deren Evidenz bleiben erhalten. Eine echte neue Veröffentlichung oder
+Hostabnahme ist damit nicht erfolgt. Für Gemini bleibt 0.1.0 erhalten, eine
+getrennte neue Kandidatenquelle enthält die überarbeiteten gemeinsamen Regeln.

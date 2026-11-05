@@ -63,6 +63,7 @@ public final class LearningUnitSourceBindings {
                     || CompletionProfileCompiler.isOrientation(goal) != definition.ownOrientationGoalIds().contains(id)) {
                 fail("INVALID_UNIT_PARTITION", "Active source goal classification differs: " + id);
             }
+            if (!resolvedKind(goal).equals(definition.ownResolvedKinds().get(id))) fail("INVALID_UNIT_PARTITION", "Source resolved kind differs: " + id);
             if (definition.ownAssessmentGoalIds().contains(id)) {
                 var claim = definition.assessmentClaims().get(id);
                 var exam = goal.getExamData();
@@ -92,6 +93,13 @@ public final class LearningUnitSourceBindings {
     public static LearningUnitDefinition.GoalMeaning meaning(LearningGoal goal) {
         return new LearningUnitDefinition.GoalMeaning(goal.getId(), goal.getTitle(), goal.getTitleEn(),
                 goal.getDescription(), goal.getDescriptionEn(), goal.getType(), goal.getNodeKind(), goal.getSemanticKind());
+    }
+
+    public static String resolvedKind(LearningGoal goal) {
+        if (CompletionProfileCompiler.isAssessment(goal)) return "assessment";
+        if (CompletionProfileCompiler.isMemory(goal)) return "memory";
+        if (CompletionProfileCompiler.isOrientation(goal)) return "orientation";
+        return "ordinary";
     }
 
     public static String canonicalDigest(Object value) {

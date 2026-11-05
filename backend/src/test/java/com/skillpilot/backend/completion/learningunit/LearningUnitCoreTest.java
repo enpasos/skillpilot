@@ -229,11 +229,13 @@ class LearningUnitCoreTest {
         }
         Map<String, String> meanings = new HashMap<>();
         Map<String, LearningUnitDefinition.GoalMeaning> snapshots = new HashMap<>();
+        Map<String, String> kinds = new HashMap<>();
         own.forEach(goal -> {
             var meaning = new LearningUnitDefinition.GoalMeaning(goal, "Goal " + goal, null, "Can apply " + goal,
                     null, "atomic", assessments.contains(goal) ? "exam" : recall.contains(goal) ? "memory" : "tutor",
                     assessments.contains(goal) ? "practiceAssessment" : recall.contains(goal) ? "memory" : "curricularAtomic");
             snapshots.put(goal, meaning);
+            kinds.put(goal, assessments.contains(goal) ? "assessment" : recall.contains(goal) ? "memory" : "ordinary");
             meanings.put(goal, LearningUnitSourceBindings.canonicalDigest(meaning));
         });
         return new LearningUnitDefinition(1, LearningUnitDefinition.SEMANTICS, id, "1",
@@ -243,7 +245,7 @@ class LearningUnitCoreTest {
                 Map.of("de", "This unit matters because " + id, "en", "This unit matters because " + id),
                 new ArrayList<>(new java.util.TreeSet<>(own)), children,
                 new ArrayList<>(new java.util.TreeSet<>(assessments)), new ArrayList<>(new java.util.TreeSet<>(recall)),
-                List.of(), snapshots, meanings, graph, claims, "independent-review-1");
+                List.of(), snapshots, kinds, meanings, graph, claims, "independent-review-1");
     }
 
     private static void assertCode(String code, Runnable action) {

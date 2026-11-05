@@ -20,6 +20,7 @@ public record LearningUnitDefinition(
         List<String> ownRecallGoalIds,
         List<String> ownOrientationGoalIds,
         Map<String, GoalMeaning> ownGoalMeanings,
+        Map<String, String> ownResolvedKinds,
         Map<String, String> ownGoalMeaningDigests,
         Map<String, List<String>> atomicPrerequisites,
         Map<String, AssessmentClaim> assessmentClaims,
@@ -37,6 +38,7 @@ public record LearningUnitDefinition(
         ownRecallGoalIds = copy(ownRecallGoalIds);
         ownOrientationGoalIds = copy(ownOrientationGoalIds);
         ownGoalMeanings = ownGoalMeanings == null ? Map.of() : Map.copyOf(ownGoalMeanings);
+        ownResolvedKinds = ownResolvedKinds == null ? Map.of() : Map.copyOf(ownResolvedKinds);
         ownGoalMeaningDigests = ownGoalMeaningDigests == null ? Map.of() : Map.copyOf(ownGoalMeaningDigests);
         Map<String, List<String>> prerequisites = new LinkedHashMap<>();
         if (atomicPrerequisites != null) atomicPrerequisites.forEach((id, edges) -> prerequisites.put(id, copy(edges)));

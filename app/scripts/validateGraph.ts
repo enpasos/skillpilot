@@ -194,7 +194,7 @@ function getAllJsonFiles(dir: string, fileList: string[] = []): string[] {
       // QA packages contain immutable historical full-landscape snapshots.
       // Validate live curriculum files here; review candidates have their own
       // targeted checks and must not become a second copy of a live graph.
-      if (file.name === 'quality') return
+      if (file.name === 'quality' || file.name === 'learning-units') return
       getAllJsonFiles(join(dir, file.name), fileList)
     } else {
       if (file.name.endsWith('.json')) {
