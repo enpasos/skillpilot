@@ -35,6 +35,7 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 
 - [Mathematik: Arbeitsstand der Lerneinheiten-Umsetzung](mathematics-learning-units-progress.md)
 - [Lerneinheiten: natives Mathematik-Angebotsinventar](learning-units-mathematics-offering-inventory.md)
+- [Mathematik: native Zielprojektion für den Quellen-Audit](learning-units-mathematics-source-audit-authority.md)
 - [Lerneinheiten: endliche Mathematik-Autorierungsqueue](learning-units-mathematics-authoring-queue.md)
 - [Lerneinheiten: Datenbindung und Vertragsformat](learning-unit-contract-format.md)
 - [Lerneinheiten: lokale Aufnahme- und Performanceprüfungen](learning-units-mathematics-local-proofs.md)
