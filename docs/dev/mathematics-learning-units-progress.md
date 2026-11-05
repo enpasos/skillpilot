@@ -25,7 +25,7 @@ vollständige Mathematik-Umsetzung. Ein erster Vertrag ist ein Zwischenergebnis.
 | --- | --- | --- |
 | S2 | Gebundener Skalarprodukt-/Projektionsvertrag mit zwei eigenen Zielen, unabhängiger KI-Inhaltsprüfung und unverändertem Prüfungsanspruch; native Prüfung aller 182 Angebote ohne Target-/Q-/K-/Supportdelta, Einheit in genau 42 passenden Angeboten. Daten und Quellen in `8481434d48` gesichert. | Eine erste Einheit ist kein vollständiger Mathematikabschluss. |
 | S3 | Gemeinsame Runtime-, Cockpit-, Coach-, Frontier- und Planintegration in `f5a61af0dd` gesichert und gepusht. 257 lokale Backendtests in 18 Suiten bestanden. Der tatsächliche äußere Datenbanksnapshot für WebGUI und Provider wurde in `1509ba001e` ergänzt und mit HTTP-/JDBC-Prüfungen belegt. | Exakte terminale Kandidaten-CI und abschließendes Integrationsreview. Deployment und echte Hostabnahme sind gesonderte Nachweise. |
-| S4 | [Angebotsinventar](learning-units-mathematics-offering-inventory.md): 182 Konfigurationen und 807 ursprüngliche Fachkompetenzen. 21 unabhängig inhaltlich geprüfte Einheiten mit 27 dieser Kompetenzen bestehen den [tatsächlichen nativen Angebotsabgleich](learning-units-mathematics-batch-b-native-proof.json). Der [installierte Paketnachweis](learning-units-mathematics-installed-offer-parity.json) betrifft weiterhin den vorherigen Neun-Einheiten-Datenstand. | Die übrigen 780 Kompetenzen und die verbliebenen Scopevarianten fachlich binden; zwölf bestehende Hierarchiefälle korrigieren; vollständige Karten-/Sprach-/Angebotsbindung und aktuelle QA-/M7-/Releaseabnahme nachweisen. |
+| S4 | [Angebotsinventar](learning-units-mathematics-offering-inventory.md): 182 Konfigurationen und 807 ursprüngliche Fachkompetenzen. 21 unabhängig inhaltlich geprüfte Einheiten mit 27 dieser Kompetenzen bestehen den [aktuellen nativen Angebotsabgleich](learning-units-mathematics-current-offers-v6-native-proof.json). Der [neue Paketnachweis mit allen 21 Einheiten](learning-units-mathematics-twenty-one-unit-package-proof.json) umfasst tatsächliche Installation, dieselben 182 Projektionen und alle 15 isolierten Verbrauchertests. | Die übrigen 780 Kompetenzen und die verbliebenen Scopevarianten fachlich binden; zwölf bestehende Hierarchiefälle einschließlich gespeicherter Fokusreferenzen korrigieren; vollständige Karten-/Sprach-/Angebotsbindung und aktuelle QA-/M7-/Releaseabnahme nachweisen. |
 
 Der fixierte Angebotsnenner umfasst die Vereinigungsmenge aus 140 nativen
 Planner-Konfigurationen und 154 GUI-Konfigurationen mit 112 gemeinsamen
@@ -97,8 +97,12 @@ Bestehensanforderung repariert.
 
 Die nächste Gruppe mit zehn Einheiten und 52 weiteren Fachkompetenzen hat nach
 drei Aufgabenreparaturen ein neues unabhängiges Astra-Inhaltsreview bestanden.
-Ihre tatsächliche Angebots-, Placement- und Laufzeitprüfung ist noch offen;
-sie zählt deshalb noch nicht zu den 27 eingebundenen Kompetenzen.
+Ein privater tatsächlicher Vergleich aller 182 Angebote prüft inzwischen die
+Aufnahmemasken und erhält alle ursprünglichen Fachkompetenzen und vollen
+Voraussetzungen. Die bereinigte Hierarchie verliert allerdings zwölf bisherige
+Fokusreferenzen; ihre lesende Kompatibilität ist noch nicht umgesetzt.
+Angebotsfreigabe, Nachfolgerprojektion und Aufnahme in die Laufzeit bleiben
+deshalb offen. Diese Gruppe zählt noch nicht zu den 27 eingebundenen Kompetenzen.
 Der echte Eltern-Preview zeigt, warum diese Grenze nötig ist: ungefiltertes
 Erben erzeugt Prüfungsangebote ohne vollständige eigene Ziele sowie alte und
 neue Pflichten gleichzeitig. Die geprüfte Nachfolgerprojektion nach der
@@ -212,6 +216,22 @@ keinen abschließenden Readiness-Bericht. Das ZIP ist nicht als veröffentlicht
 freigegeben. Die zwölf danach autorierten Verträge gehören nicht zu diesem
 eingefrorenen Paketnachweis. Die unveränderten 1.0.0-Verbraucherquellen und
 damaligen Nachweise bleiben gesondert archiviert.
+
+Der neue, getrennte Paketkandidat `0.1.0-learning-unit-offers.2` enthält alle
+21 aktuellen Verträge: 1.255 Ziele, 35 Program Units, 351 Placements und 98
+Sichten. Zwei Modellbauten sind bytegleich; die unabhängige Modellprüfung mit
+49 Gegenproben und alle sechs Prüfungen des fertigen ZIP bestanden. Installation
+in einem neuen privaten Store und der tatsächliche Backendvergleich bestätigen
+alle 182 aktuellen Angebote. Der frisch ausgeführte isolierte Verbraucher
+bestand [alle 15 Pflichtprüfungen](learning-units-mathematics-twenty-one-unit-consumer-smoke-report.json).
+Der vollständige Readiness-Bericht akzeptiert diese Verbraucherevidenz und
+meldet ausschließlich die weiterhin offene Weitergabefreigabe als Sperre.
+Das ist ein technischer Paketnachweis, keine Veröffentlichungs-, M7- oder
+vollständige Mathematikabnahme. Der [Nachweis](learning-units-mathematics-twenty-one-unit-package-proof.json)
+bindet ZIP, Quellgeneration, tatsächliche Assembly und Prüfergebnisse jeweils
+mit ihren eigenen Hashes; die früheren Neun-Einheiten- und S2-Artefakte bleiben
+unverändert. Spätere Änderungen sind durch diesen eingefrorenen Lauf nicht
+automatisch abgenommen.
 
 Der reale Paketablauf deckte außerdem einen Fehler im noch unkonfigurierten
 Einstieg auf: Seine Navigationssicht wurde als voller Mathematikzielumfang
