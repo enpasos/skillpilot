@@ -24,6 +24,51 @@ import org.springframework.test.util.ReflectionTestUtils;
 
 /** Public runtime seams share explicit outcomes and one authoritative global unit result. */
 class LearningUnitRecognitionIntegrationTest {
+    @Test void entryNavigationWithoutStageHasNoTargetsOrFrontierButPreservesGlobalExplicitAndRecognizedMastery() throws Exception {
+        var f = fixture(false);
+        String entryId = "entry-fixture";
+        var subject = f.landscapes().getById("base"); subject.setFrameworkId("canonical-gymnasium-mathematik");
+        subject.getGoals().stream().filter(g -> "ROOT".equals(g.getId())).forEach(g -> g.setTags(List.of("root")));
+        var root = goal("ENTRY-ROOT"); root.setType("cluster"); root.setContains(List.of("ROOT")); root.setTags(List.of("root"));
+        var entry = new SkillLandscape(); entry.setLandscapeId(entryId); entry.setFrameworkId("canonical-gymnasium-mathematik-entry"); entry.setGoals(List.of(root));
+        when(f.landscapes().getById(entryId)).thenReturn(entry);
+        when(f.landscapes().getClosure(entryId)).thenReturn(List.of(entry, subject));
+        when(f.landscapes().getGoalDefinition("ENTRY-ROOT")).thenReturn(root);
+        var state = mock(com.skillpilot.backend.curriculumpackage.PackageCompositionViewState.class);
+        var offering = new com.skillpilot.backend.curriculumpackage.PackageCompositionViewState.Offering(
+                "package", "entry-default", entryId, Map.of("schoolForm", "Gymnasium"), "single", null, List.of("entry-view"));
+        Map<String, Object> view = Map.of("viewId", "entry-view", "landscapeId", entryId,
+                "scope", offering.scope(), "rootNodes", List.of(Map.of("kind", "landscapeEntry", "landscapeId", "base")));
+        when(state.isManagedLandscape(anyString())).thenReturn(true);
+        when(state.defaultOfferingsByLandscapeId()).thenReturn(Map.of(entryId, offering));
+        when(state.resolveDefaultDocument(entryId)).thenReturn(view);
+        when(state.resolveOfferingDocument("entry-default")).thenReturn(view);
+        var views = new CompositionViewService(state);
+        ReflectionTestUtils.setField(f.service(), "compositionViewService", views);
+        doCallRealMethod().when(f.service()).learningUnitOfferContext(any(Learner.class));
+        f.learner().setSelectedCurriculum(entryId); f.mastery().put("Q", 1.0);
+        for (String config : Arrays.asList(null, "{}", "{\"entry-fixture\":{\"selected\":true},\"base\":{\"selected\":true,\"filterId\":\"LK\"}}")) {
+            f.learner().setPersonalCurriculum(config);
+            assertThat(f.service().getFilteredAtomicGoalIds(entryId, config, null, false)).isEmpty();
+            assertThat(f.service().getFrontier("learner")).isEmpty();
+            assertThat(f.service().getRichFrontier("learner")).isEmpty();
+            var coach = f.service().getCoachLearnerState("learner");
+            assertThat(coach.goals().personalized().total_atomic()).isZero();
+            assertThat(coach.goals().scope_completed()).isFalse();
+            var mastery = f.service().getMasteryResponse("learner");
+            assertThat(mastery.mastery()).containsEntry("Q", 1.0).doesNotContainKeys("A", "B");
+            assertThat(mastery.learningUnits().calculationStatus()).isEqualTo("valid");
+            assertThat(mastery.learningUnits().recognizedGoalIds()).containsExactly("A", "B");
+            assertThat(mastery.learningUnits().offerBinding().status()).isEqualTo("unresolved");
+            assertThatThrownBy(() -> f.service().setActiveGoal("learner", "A"))
+                    .isInstanceOf(org.springframework.web.server.ResponseStatusException.class);
+        }
+        assertThat(views.findDefaultView(entryId)).isEqualTo(view);
+        assertThat(new com.skillpilot.backend.ui.CompositionViewUiController(views).matchCompositionView(
+                entryId, Map.of("landscapeId", entryId, "schoolForm", "Gymnasium")).getStatusCode().value()).isEqualTo(200);
+        verify(f.masteryRepository(), never()).save(any()); verify(f.cardStates(), never()).save(any());
+    }
+
     @Test void invalidLiveMappingShapeStillAdmitsFrozenContractsAndPublicHistoricalRecognition() throws Exception {
         assertMalformedPackagePreservesRecognition("{\"version\":1,\"sourceLandscapeId\":\"legacy\",\"targetLandscapeId\":\"base\",\"mappings\":\"broken\"}");
     }

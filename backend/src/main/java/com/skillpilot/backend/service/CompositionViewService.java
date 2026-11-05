@@ -510,6 +510,13 @@ public class CompositionViewService {
         return view;
     }
 
+    /** A navigation default does not commit the learner to any subject target scope. */
+    public boolean isEntryNavigationDefault(String landscapeId) {
+        if (packageState == null || !StringUtils.hasText(landscapeId)) return false;
+        var offering = packageState.defaultOfferingsByLandscapeId().get(landscapeId.trim());
+        return offering != null && findEntryNavigationView(landscapeId, offering.scope()) != null;
+    }
+
     private Map<String, Object> findRepositoryMatchingView(
             String landscapeId,
             Map<String, String> requestedScope,

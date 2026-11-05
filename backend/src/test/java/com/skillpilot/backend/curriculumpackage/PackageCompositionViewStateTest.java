@@ -656,6 +656,8 @@ class PackageCompositionViewStateTest {
         offerings.put("offering-entry", new CurriculumRuntimeSnapshot.OfferingDescriptor(original.packageId(),
                 "offering-entry", "entry-alpha", scope, "single", null, List.of("view-entry")));
         var service = new com.skillpilot.backend.service.CompositionViewService(PackageCompositionViewState.load(copy(snapshot, views, offerings), mapper));
+        assertThat(service.isEntryNavigationDefault("entry-alpha")).isTrue();
+        assertThat(service.isEntryNavigationDefault("landscape-alpha")).isFalse();
         assertThat(service.findLearnerScopeView("entry-alpha", scope)).isNull();
         var http = org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup(
                 new com.skillpilot.backend.ui.CompositionViewUiController(service)).build();

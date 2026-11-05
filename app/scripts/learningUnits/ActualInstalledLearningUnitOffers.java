@@ -96,6 +96,7 @@ public final class ActualInstalledLearningUnitOffers {
         sourceBindings.validateCurrentOfferInput(currentCanonicalSource, pinnedSourceInputs.get(currentCanonicalSource));
         var learner = new Learner(); learner.setSkillpilotId("installed-offer-proof"); learner.setSelectedCurriculum(ENTRY);
         var learners = mock(LearnerRepository.class); when(learners.findById(learner.getSkillpilotId())).thenReturn(Optional.of(learner));
+        when(learners.findBySkillpilotIdForUpdate(learner.getSkillpilotId())).thenReturn(Optional.of(learner));
         when(learners.existsById(learner.getSkillpilotId())).thenReturn(true);
         var outcomes = mock(MasteryRepository.class); Map<String, Double> explicit = new LinkedHashMap<>();
         when(outcomes.findByLearner_SkillpilotId(learner.getSkillpilotId())).thenAnswer(call -> explicit.entrySet().stream()
@@ -112,6 +113,29 @@ public final class ActualInstalledLearningUnitOffers {
                 MAPPER, landscapes, mappings, decks, true, "", "package", snapshots);
         ReflectionTestUtils.setField(service, "completionApplicationService",
                 new com.skillpilot.backend.completion.CompletionApplicationService(completionCatalog));
+        List<Map<String, Object>> unresolvedEntryCases = new ArrayList<>();
+        for (String config : Arrays.asList(null, "{}", MAPPER.writeValueAsString(Map.of(
+                ENTRY, Map.of("selected", true, "filterId", "DE-HE"), MATH, Map.of("selected", true, "filterId", "LK"))))) {
+            learner.setPersonalCurriculum(config);
+            var current = (LearningUnitOfferBindings.ResolvedOfferContext) ReflectionTestUtils.invokeMethod(service, "learningUnitOfferContext", learner);
+            require(current.scopeKey() == null && current.targetIds().isEmpty(), "Entry without explicit stage became a subject target scope");
+            require(service.getFrontier(learner.getSkillpilotId()).isEmpty(), "Entry navigation became the raw UI frontier");
+            require(service.getRichFrontier(learner.getSkillpilotId()).isEmpty(), "Entry navigation became a learning frontier");
+            var coach = service.getCoachLearnerState(learner.getSkillpilotId());
+            require(coach.goals().personalized().total_atomic() == 0, "Coach counted unresolved Entry navigation as subject acquisition");
+            require(!coach.goals().scope_completed(), "Unresolved Entry scope was reported complete");
+            explicit.put(Q, 1.0); var global = service.getMasteryResponse(learner.getSkillpilotId()); explicit.clear();
+            require(global.mastery().get(Q) == 1.0 && global.learningUnits().recognizedGoalIds().equals(List.of(A))
+                    && "valid".equals(global.learningUnits().calculationStatus())
+                    && "unresolved".equals(global.learningUnits().offerBinding().status()), "Missing stage withdrew historical global M/I");
+            try { service.setActiveGoal(learner.getSkillpilotId(), A); throw new IllegalStateException("Unresolved Entry accepted direct start"); }
+            catch (org.springframework.web.server.ResponseStatusException rejected) {
+                require(rejected.getStatusCode().value() == 409, "Unresolved Entry direct start did not use the normal PC guard");
+            }
+            unresolvedEntryCases.add(Map.of("configuration", config == null ? "absent" : config.equals("{}") ? "empty" : "missing-stage",
+                    "atomicTargetCount", 0, "frontierCount", 0, "rawUiFrontierCount", 0, "coachAtomicTargetCount", 0, "directStartStatus", 409,
+                    "globalRecognitionPreserved", true));
+        }
         List<Map<String, Object>> rows = new ArrayList<>(); Set<String> scopeIds = new LinkedHashSet<>();
         List<Map<String, String>> failures = new ArrayList<>();
         for (JsonNode row : reference.path("scopes")) {
@@ -192,6 +216,10 @@ public final class ActualInstalledLearningUnitOffers {
         var direct = service.getMasteryResponse(learner.getSkillpilotId());
         require("unresolved".equals(direct.learningUnits().offerBinding().status()) && direct.learningUnits().recognizedGoalIds().equals(List.of(A)),
                 "Direct Math selection invented an Entry offer or withdrew historical recognition");
+        learner.setPersonalCurriculum(null);
+        require(!views.isEntryNavigationDefault(MATH)
+                && !service.getFilteredAtomicGoalIds(MATH, null, null, false).isEmpty(),
+                "Existing direct Mathematics canonical default was incorrectly disabled with Entry navigation");
         verify(outcomes, never()).save(any()); verify(states, never()).save(any());
         require(Arrays.equals(referenceBytes, Files.readAllBytes(referencePath)), "Repository reference changed during comparison");
         Map<String, String> classBindings = new TreeMap<>();
@@ -217,6 +245,8 @@ public final class ActualInstalledLearningUnitOffers {
         report.put("installedEntryDefaultOffering", entryOfferings.getFirst());
         report.put("entryNavigationController", Map.of("status", entryResponse.getStatusCode().value(),
                 "viewId", entryResponse.getBody().get("viewId"), "directMathWithoutStageUnresolved", true));
+        report.put("unresolvedEntryProjectionCases", unresolvedEntryCases);
+        report.put("directMathCanonicalDefaultRetained", true);
         report.put("operationalNativeMappingInputSha256", nativeMappingDigests);
         List<List<String>> operationalTuples = mappings.getAllMappings().stream().map(mapping -> List.of(
                 mapping.sourceLandscapeId(), mapping.targetLandscapeId(), mapping.legacyGoalId(),

@@ -68,6 +68,8 @@ if (mode === 'installed-offers') {
     quarantinedContracts: report.quarantinedContracts, scopes: report.scopes,
     installedEntryView: report.installedEntryView, installedEntryDefaultOffering: report.installedEntryDefaultOffering,
     entryNavigationController: report.entryNavigationController,
+    unresolvedEntryProjectionCases: report.unresolvedEntryProjectionCases,
+    directMathCanonicalDefaultRetained: report.directMathCanonicalDefaultRetained,
     operationalNativeMappingInputSha256: report.operationalNativeMappingInputSha256,
     operationalNativeMappingTupleCount: report.operationalNativeMappingTupleCount,
     operationalNativeMappingTupleSha256: report.operationalNativeMappingTupleSha256,

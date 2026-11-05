@@ -11282,7 +11282,8 @@ public class LearnerService {
         boolean defaultCurriculumViewRequested = authoritativeCurriculum && effectiveConfig.isEmpty();
         if (defaultCurriculumViewRequested) {
             Map<String, Object> defaultView = compositionViewService.findDefaultView(curriculumId);
-            if (defaultView != null && !defaultView.isEmpty()) {
+            if (defaultView != null && !defaultView.isEmpty()
+                    && !compositionViewService.isEntryNavigationDefault(curriculumId)) {
                 addCompositionViewId(defaultView, compositionViewIds);
                 addCompositionPresentationRootGoalId(
                         defaultView,
@@ -11649,6 +11650,7 @@ public class LearnerService {
     }
 
     private String readFilterId(Map<String, Map<String, Object>> config, String landscapeId) {
+        if (landscapeId == null) return null;
         Map<String, Object> entry = config.get(landscapeId);
         if (entry == null) {
             return null;
@@ -11658,6 +11660,7 @@ public class LearnerService {
     }
 
     private String readScopeValue(Map<String, Map<String, Object>> config, String landscapeId, String key) {
+        if (landscapeId == null) return null;
         Map<String, Object> entry = config.get(landscapeId);
         if (entry == null) {
             return null;
