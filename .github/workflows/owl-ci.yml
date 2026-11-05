@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           # Retain the complete Mathematics producer/consumer input closure,
-          # including its 1.638 GB of images, without historical QA archives.
+          # including its 1.638 GB of images and bound prompt/import provenance.
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /*
@@ -51,6 +51,15 @@ jobs:
             /curricula/
             !/curricula/DE/Gymnasium/quality/
             !/curricula/DE/Gymnasium/visualizations/
+            /curricula/DE/Gymnasium/visualizations/mathematik/*/prompt.*.md
+            /curricula/DE/Gymnasium/quality/goal-visualization-review/m7-astra-user-prompts-20260924-v1/prompts.md
+            /curricula/DE/Gymnasium/quality/goal-visualization-review/m7-astra-user-prompts-20260924-v1/user-image-sight-and-prompt21-receipt-20260924-v2.json
+            /curricula/DE/Gymnasium/quality/goal-visualization-review/m7-astra-user-prompts-20260924-v1/incoming/prompt_[1369].png
+            /curricula/DE/Gymnasium/quality/goal-visualization-review/m7-astra-user-prompts-20260924-v1/incoming/prompt_1[1-9].png
+            /curricula/DE/Gymnasium/quality/goal-visualization-review/m7-astra-user-prompts-20260924-v1/incoming/prompt_2[12].png
+            /curricula/DE/Gymnasium/quality/goal-visualization-review/m7-ln-existing-keep-20260927-v1/README.md
+            /curricula/DE/Gymnasium/quality/goal-visualization-review/m7-ln-existing-keep-20260927-v1/user-image-reactivation-receipt.json
+            /curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-ln-hyperbola-mobile-png-20260923-v1.md
             /curricula/DE/Gymnasium/quality/assessment-completion/
             /curricula/DE/Gymnasium/quality/learning-units/
             /curricula/DE/Gymnasium/quality/release-model/
