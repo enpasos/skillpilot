@@ -25,7 +25,7 @@ vollständige Mathematik-Umsetzung. Ein erster Vertrag ist ein Zwischenergebnis.
 | --- | --- | --- |
 | S2 | Gebundener Skalarprodukt-/Projektionsvertrag mit zwei eigenen Zielen, unabhängiger KI-Inhaltsprüfung und unverändertem Prüfungsanspruch; native Prüfung aller 182 Angebote ohne Target-/Q-/K-/Supportdelta, Einheit in genau 42 passenden Angeboten. Daten und Quellen in `8481434d48` gesichert. | Eine erste Einheit ist kein vollständiger Mathematikabschluss. |
 | S3 | Gemeinsame Runtime-, Cockpit-, Coach-, Frontier- und Planintegration in `f5a61af0dd` gesichert und gepusht. 257 lokale Backendtests in 18 Suiten bestanden. Der tatsächliche äußere Datenbanksnapshot für WebGUI und Provider wurde in `1509ba001e` ergänzt und mit HTTP-/JDBC-Prüfungen belegt. | Exakte terminale Kandidaten-CI und abschließendes Integrationsreview. Deployment und echte Hostabnahme sind gesonderte Nachweise. |
-| S4 | [Angebotsinventar](learning-units-mathematics-offering-inventory.md): 182 Konfigurationen und 807 ursprüngliche Fachkompetenzen. Der Autorierungsstand umfasst 21 unabhängig inhaltlich geprüfte Einheiten mit 27 dieser Kompetenzen. Der [native Nachweis](learning-units-mathematics-batch-a-native-proof.json) und die [Parität des tatsächlich installierten Pakets](learning-units-mathematics-installed-offer-parity.json) belegen den vorherigen Neun-Einheiten-Stand. | Die übrigen 780 Kompetenzen fachlich binden; die zwölf neuen Verträge nativ und in der aktuellen Angebotsbindung abnehmen; zwölf bestehende Hierarchiefälle korrigieren; vollständige Karten-/Sprach-/Angebotsbindung und aktuelle QA-/M7-/Releaseabnahme nachweisen. |
+| S4 | [Angebotsinventar](learning-units-mathematics-offering-inventory.md): 182 Konfigurationen und 807 ursprüngliche Fachkompetenzen. 21 unabhängig inhaltlich geprüfte Einheiten mit 27 dieser Kompetenzen bestehen den [tatsächlichen nativen Angebotsabgleich](learning-units-mathematics-batch-b-native-proof.json). Der [installierte Paketnachweis](learning-units-mathematics-installed-offer-parity.json) betrifft weiterhin den vorherigen Neun-Einheiten-Datenstand. | Die übrigen 780 Kompetenzen und die verbliebenen Scopevarianten fachlich binden; zwölf bestehende Hierarchiefälle korrigieren; vollständige Karten-/Sprach-/Angebotsbindung und aktuelle QA-/M7-/Releaseabnahme nachweisen. |
 
 Der fixierte Angebotsnenner umfasst die Vereinigungsmenge aus 140 nativen
 Planner-Konfigurationen und 154 GUI-Konfigurationen mit 112 gemeinsamen
@@ -75,9 +75,12 @@ Fachkompetenzen, unter anderem zu Pythagorasbeweisen, räumlichen Spiegelungen,
 affinen Fixelementen, Volumenvergleichen und Lagebeziehungen. Die vollständigen
 Review-Eingaben stimmen mit dem unabhängigen Astra-Review überein. Die 38
 entfernten redundanten Voraussetzungskanten erhalten nach Mengenvergleich die
-gesamte transitive Relation aller 980 aktuellen atomaren Ziele. Das ist noch
-keine Freigabe neuer aktueller Angebote: Deren konkrete Vertragsauswahl und
-native Laufzeitprüfung folgen gesondert.
+gesamte transitive Relation aller 980 aktuellen atomaren Ziele. Die tatsächliche
+Laufzeit wählt die ausdrücklich gebundenen Verträge in allen 182 Konfigurationen
+korrekt aus; alle 21 Verträge sind aufgenommen, keiner ist quarantiniert.
+Die getrennten [Mutationstests](learning-units-mathematics-stable-offer-mutation-proof.json)
+belegen die Unabhängigkeit von Laufzeitdiagnostik und aktuellem Katalogzeiger,
+während Inhalts-, Ownership- und Scopeänderungen weiterhin erkannt werden.
 
 Drei geprüfte Kandidaten bleiben zurückgestellt: Bei einer Ableitungsaufgabe
 müssen die wesentlichen Diagrammdateien vollständig an Aufgabe und Auslieferung
@@ -182,6 +185,16 @@ Der echte installierte Backendpfad reproduziert alle 182 nativen Projektionen.
 Die abschließende Prüfung mit dem gepinnten isolierten Verbraucher läuft noch;
 das ZIP ist nicht als veröffentlicht freigegeben. Die zwölf danach autorierten
 Verträge gehören nicht zu diesem eingefrorenen Paketnachweis.
+
+Der reale Paketablauf deckte außerdem einen Fehler im noch unkonfigurierten
+Einstieg auf: Seine Navigationssicht wurde als voller Mathematikzielumfang
+ausgewertet. Die Korrektur in `57b8fa3765` trennt beide Bedeutungen. Ohne
+vollständige Auswahl bleiben Ziele, Frontier und Coach-Zielzähler leer; der
+Start bleibt gesperrt. Globale explizite Ergebnisse und gültige Anerkennungen
+bleiben lesbar. 69 Regressionstests und der tatsächliche Paketvergleich aller
+182 konfigurierten Scopes einschließlich dreier unaufgelöster Einstiegsfälle
+bestanden; Astra bestätigte die enge Korrektur. Der bisherige direkte
+Mathematik-Default und die reine Einstiegsnavigation bleiben erhalten.
 
 Claude **1.1.13 ist bereits veröffentlicht**. Die neue Coachsemantik wird für
 einen lokalen Nachfolgekandidaten **1.1.14** vorbereitet; veröffentlichte Bytes
