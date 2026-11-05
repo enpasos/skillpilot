@@ -24,7 +24,7 @@ vollständige Mathematik-Umsetzung. Ein erster Vertrag ist ein Zwischenergebnis.
 | Stufe | Aktuelle Arbeit | Noch kein Erfolgsnachweis für |
 | --- | --- | --- |
 | S2 | Gebundener Skalarprodukt-/Projektionsvertrag mit zwei eigenen Zielen, unabhängiger KI-Inhaltsprüfung und unverändertem Prüfungsanspruch; native Prüfung aller 182 Angebote ohne Target-/Q-/K-/Supportdelta, Einheit in genau 42 passenden Angeboten. Daten und Quellen in `8481434d48` gesichert. | Eine erste Einheit ist kein vollständiger Mathematikabschluss. |
-| S3 | Gemeinsame Runtime-, Cockpit-, Coach-, Frontier- und Planintegration in `f5a61af0dd` gesichert und gepusht. 257 lokale Backendtests in 18 Suiten bestanden. Der tatsächliche äußere Datenbanksnapshot für WebGUI und Provider wurde in `1509ba001e` ergänzt und mit HTTP-/JDBC-Prüfungen belegt. | Exakte terminale Kandidaten-CI und abschließendes Integrationsreview. Deployment und echte Hostabnahme sind gesonderte Nachweise. |
+| S3 | Gemeinsame Runtime-, Cockpit-, Coach-, Frontier- und Planintegration in `f5a61af0dd` gesichert und gepusht. 257 lokale Backendtests in 18 Suiten bestanden. Der tatsächliche äußere Datenbanksnapshot für WebGUI und Provider wurde in `1509ba001e` ergänzt und mit HTTP-/JDBC-Prüfungen belegt. | Exakte terminale Kandidaten-CI, abschließendes Integrationsreview sowie Produktions-/Rückrollpreflight. Die neue Semantik braucht einen abgestimmten Claude-Skill. Deployment und echte Hostabnahme sind gesonderte Nachweise. |
 | S4 | [Angebotsinventar](learning-units-mathematics-offering-inventory.md): 182 Konfigurationen und 807 ursprüngliche Fachkompetenzen. 21 unabhängig inhaltlich geprüfte Einheiten mit 27 dieser Kompetenzen bestehen den [aktuellen nativen Angebotsabgleich](learning-units-mathematics-current-offers-v6-native-proof.json). Der [neue Paketnachweis mit allen 21 Einheiten](learning-units-mathematics-twenty-one-unit-package-proof.json) umfasst tatsächliche Installation, dieselben 182 Projektionen und alle 15 isolierten Verbrauchertests. | Die übrigen 780 Kompetenzen und die verbliebenen Scopevarianten fachlich binden; zwölf bestehende Hierarchiefälle einschließlich gespeicherter Fokusreferenzen korrigieren; vollständige Karten-/Sprach-/Angebotsbindung und aktuelle QA-/M7-/Releaseabnahme nachweisen. |
 
 Der fixierte Angebotsnenner umfasst die Vereinigungsmenge aus 140 nativen
@@ -233,6 +233,20 @@ mit ihren eigenen Hashes; die früheren Neun-Einheiten- und S2-Artefakte bleiben
 unverändert. Spätere Änderungen sind durch diesen eingefrorenen Lauf nicht
 automatisch abgenommen.
 
+Die aktuelle Pflicht-CI wählt für ihre Modellprüfung den Produzenten V2 mit
+allen 21 Verträgen ausdrücklich aus. Der Wrapper reserviert ausschließlich
+frische Ausgabeverzeichnisse; vorhandene Paketstores und frühere Nachweise
+werden nicht gelöscht oder überschrieben. Diese Modellroute ist keine
+vollständige Remote-Paketabnahme. Im optionalen vollständigen Paketworkflow
+wurde außerdem eine vorhandene falsche Store-Zuordnung mit veralteten
+Backendassertionen berichtigt. Er verwendet nun denselben ausdrücklich
+ausgewählten V2-Run für Paketbau, Store, Backendtest und Nachweise. Der reale
+Backendtest gegen das neue installierte Paket bestand lokal mit einem
+ausgeführten Test ohne Auslassung; bei gesetztem, aber ungültigem Store schlägt
+er fehl. Ein zusätzlicher JUnit-Gate verlangt exakt einen ausgeführten Test
+ohne Fehler oder Auslassung. Der vollständige Remote-Lauf dieses korrigierten
+Workflows ist damit noch nicht nachgewiesen.
+
 Der reale Paketablauf deckte außerdem einen Fehler im noch unkonfigurierten
 Einstieg auf: Seine Navigationssicht wurde als voller Mathematikzielumfang
 ausgewertet. Die Korrektur in `57b8fa3765` trennt beide Bedeutungen. Ohne
@@ -245,6 +259,18 @@ Mathematik-Default und die reine Einstiegsnavigation bleiben erhalten.
 
 Claude **1.1.13 ist bereits veröffentlicht**. Die neue Coachsemantik wird für
 einen lokalen Nachfolgekandidaten **1.1.14** vorbereitet; veröffentlichte Bytes
-und deren Evidenz bleiben erhalten. Eine echte neue Veröffentlichung oder
+und deren Evidenz bleiben erhalten. Der veröffentlichte 1.1.13-Skill beschreibt
+noch die alte, auf einen Abschnitt begrenzte Anerkennung. Ein technisch
+erfolgreicher Sessionstart bestätigt keine geladene Skillversion und beweist
+deshalb keine semantische Kompatibilität. Für den S3-Rollout sind abgestimmte
+Backend-/WebGUI-/1.1.14-Bytes, ein ausdrückliches Clientupdate und ein frischer
+Claude-Durchlauf erforderlich. Eine echte neue Veröffentlichung oder
 Hostabnahme ist damit nicht erfolgt. Für Gemini bleibt 0.1.0 erhalten, eine
 getrennte neue Kandidatenquelle enthält die überarbeiteten gemeinsamen Regeln.
+
+Die Rückrollfreigabe muss gültige globale Anerkennung aus den archivierten
+Verträgen und dem unveränderten expliziten M weiter lesen können. Ein
+Rücksprung auf die frühere Waiversemantik ist dafür kein belegter Ersatz.
+Mindestversion und Datenumfang des Anerkennungsreaders sowie ein möglicher
+reiner UI-/Routing-Rollback sind vor dem Rollout konkret zu prüfen; es wird
+dafür keine zusätzliche gespeicherte Masteryebene eingeführt.
