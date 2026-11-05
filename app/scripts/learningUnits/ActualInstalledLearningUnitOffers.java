@@ -97,6 +97,7 @@ public final class ActualInstalledLearningUnitOffers {
         var learner = new Learner(); learner.setSkillpilotId("installed-offer-proof"); learner.setSelectedCurriculum(ENTRY);
         var learners = mock(LearnerRepository.class); when(learners.findById(learner.getSkillpilotId())).thenReturn(Optional.of(learner));
         when(learners.findBySkillpilotIdForUpdate(learner.getSkillpilotId())).thenReturn(Optional.of(learner));
+        when(learners.save(any())).thenAnswer(call -> call.getArgument(0));
         when(learners.existsById(learner.getSkillpilotId())).thenReturn(true);
         var outcomes = mock(MasteryRepository.class); Map<String, Double> explicit = new LinkedHashMap<>();
         when(outcomes.findByLearner_SkillpilotId(learner.getSkillpilotId())).thenAnswer(call -> explicit.entrySet().stream()
@@ -136,6 +137,28 @@ public final class ActualInstalledLearningUnitOffers {
                     "atomicTargetCount", 0, "frontierCount", 0, "rawUiFrontierCount", 0, "coachAtomicTargetCount", 0, "directStartStatus", 409,
                     "globalRecognitionPreserved", true));
         }
+        learner.setPersonalCurriculum(null);
+        List<Map<String, Object>> publishedFlowChoices = new ArrayList<>();
+        for (int step = 0; step < 24; step++) {
+            var plan = service.getPersonalizationPlan(learner.getSkillpilotId());
+            require(plan.valid(), "Actual installed published personalization plan is invalid: " + plan.problemCode());
+            if (!plan.required()) break;
+            require(!plan.options().isEmpty(), "Actual published plan has no actionable choice");
+            var option = plan.options().stream().filter(value -> value.kind() == com.skillpilot.backend.api.PersonalizationPlan.OptionKind.COMPLETE_GROUP)
+                    .findFirst().orElse(plan.options().getFirst());
+            require(option.optionId() != null && !option.optionId().isBlank(), "Published choice has no opaque identity");
+            service.patchPersonalCurriculum(learner.getSkillpilotId(), null, null, null, option.optionId());
+            publishedFlowChoices.add(Map.of("groupId", plan.groupId(), "kind", option.kind().name(), "optionId", option.optionId()));
+        }
+        var completedPublishedPlan = service.getPersonalizationPlan(learner.getSkillpilotId());
+        require(completedPublishedPlan.valid() && completedPublishedPlan.stage() == com.skillpilot.backend.api.PersonalizationPlan.Stage.COMPLETE,
+                "Published choices did not complete within the bounded flow");
+        var chosenContext = (LearningUnitOfferBindings.ResolvedOfferContext) ReflectionTestUtils.invokeMethod(service, "learningUnitOfferContext", learner);
+        require(chosenContext.scopeKey() != null && ENTRY.equals(chosenContext.scopeKey().rootLandscapeId())
+                && chosenContext.scopeKey().stage() != null && !chosenContext.targetIds().isEmpty(),
+                "Complete published choices did not commit a real explicit Entry scope");
+        require("valid".equals(service.getMasteryResponse(learner.getSkillpilotId()).learningUnits().offerBinding().status()),
+                "Published-choice scope did not resolve an actual reviewed offer");
         List<Map<String, Object>> rows = new ArrayList<>(); Set<String> scopeIds = new LinkedHashSet<>();
         List<Map<String, String>> failures = new ArrayList<>();
         for (JsonNode row : reference.path("scopes")) {
@@ -247,6 +270,8 @@ public final class ActualInstalledLearningUnitOffers {
                 "viewId", entryResponse.getBody().get("viewId"), "directMathWithoutStageUnresolved", true));
         report.put("unresolvedEntryProjectionCases", unresolvedEntryCases);
         report.put("directMathCanonicalDefaultRetained", true);
+        report.put("publishedPersonalizationFlow", Map.of("complete", true, "choices", publishedFlowChoices,
+                "resolvedScope", chosenContext.scopeKey(), "targetCount", chosenContext.targetIds().size(), "usesOnlyPublishedOpaqueOptionIds", true));
         report.put("operationalNativeMappingInputSha256", nativeMappingDigests);
         List<List<String>> operationalTuples = mappings.getAllMappings().stream().map(mapping -> List.of(
                 mapping.sourceLandscapeId(), mapping.targetLandscapeId(), mapping.legacyGoalId(),

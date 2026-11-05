@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "measurement": {
-    "catalogAdmissionNanos": 1814062744,
-    "snapshotLoadNanos": 7464844039,
-    "usedHeapBeforeAdmissionBytes": 422321448,
+    "onePublicMasteryReadNanos": 101544149,
+    "usedHeapAfterAdmissionBytes": 468589216,
     "boundary": "Local actual installed package/native service. Repositories mocked with one explicit M batch; no HTTP/SQL or host acceptance claim.",
-    "usedHeapAfterAdmissionBytes": 624285392,
-    "onePublicMasteryReadNanos": 50849687
+    "usedHeapBeforeAdmissionBytes": 437154888,
+    "snapshotLoadNanos": 8889523824,
+    "catalogAdmissionNanos": 3232774398
   },
   "javaVersion": "25.0.1+9-LTS",
   "javaVendor": "Amazon.com Inc.",
-  "rawReportSha256": "7de1bf71c546b9eb3734a4bcffb4ca9272b5b746d9b4539f68055a1c8dd967e8",
+  "rawReportSha256": "ee3d56eb82ef3f27e5d9e05844b71638675a1bac711a18c48f8fb6f289eb332e",
   "productionClassSha256": {
     "com.skillpilot.backend.completion.CompletionCanonicalGraphResolver": "b2ce2bf94af7cbfb7634540e3d858150ae66f9821bb15cd7c0fb04c5c48cf485",
     "com.skillpilot.backend.completion.CompletionProfileCompiler": "81eb3edba0d99cc1d821e2c68344d041ba27656dcf4ba7bce834b0cf6d2ea0de",
@@ -33,7 +33,7 @@
     "com.skillpilot.backend.service.SrsGoalCardSelection": "1b5b7f8bc190c7ac3e78ebaf4ca95505145f4a93c6d049f2eafef9f56d69511d",
     "com.skillpilot.backend.ui.CompositionViewUiController": "b3483683479ed58fb2d00322832c0337fb50c1fb57086c8500350b3ca8783a07"
   },
-  "harnessSourceSha256": "b8ed1364dc2948269e267533ea2b2dba17892cb4bb43450a4c7ebde299e6804c",
+  "harnessSourceSha256": "8af3fe94e3eb58eacd1f6039fa37b1671ca03f22393f0dad2705bd3c8e19dfad",
   "proof": "actual-installed-learning-unit-offers-182-native-parity",
   "packageGenerationSha256": "72c83afadfa16f5bd2d64257f561c85d2653c100d754d998cfaa8347ec7b2db3",
   "packages": [
@@ -7378,9 +7378,6 @@
   ],
   "installedEntryView": {
     "viewId": "entry-default.19b53458-3f94-5bcf-8fcd-e85444851cff",
-    "artifactPath": "data/views/entry-default.19b53458-3f94-5bcf-8fcd-e85444851cff.view.json",
-    "landscapeId": "19b53458-3f94-5bcf-8fcd-e85444851cff",
-    "artifactSha256": "58b8517128ad0bbf8c8d9b9237b6821a4c2979224757b7230544f9580a5cfe20",
     "definition": {
       "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json",
       "landscapeId": "19b53458-3f94-5bcf-8fcd-e85444851cff",
@@ -7397,7 +7394,10 @@
       "title": "Gymnasium Mathematik – Einstieg",
       "viewFormatVersion": "1.0",
       "viewId": "entry-default.19b53458-3f94-5bcf-8fcd-e85444851cff"
-    }
+    },
+    "artifactSha256": "58b8517128ad0bbf8c8d9b9237b6821a4c2979224757b7230544f9580a5cfe20",
+    "landscapeId": "19b53458-3f94-5bcf-8fcd-e85444851cff",
+    "artifactPath": "data/views/entry-default.19b53458-3f94-5bcf-8fcd-e85444851cff.view.json"
   },
   "installedEntryDefaultOffering": {
     "packageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
@@ -7412,39 +7412,75 @@
   },
   "entryNavigationController": {
     "status": 200,
-    "viewId": "entry-default.19b53458-3f94-5bcf-8fcd-e85444851cff",
-    "directMathWithoutStageUnresolved": true
+    "directMathWithoutStageUnresolved": true,
+    "viewId": "entry-default.19b53458-3f94-5bcf-8fcd-e85444851cff"
   },
   "unresolvedEntryProjectionCases": [
     {
-      "frontierCount": 0,
       "globalRecognitionPreserved": true,
-      "coachAtomicTargetCount": 0,
+      "frontierCount": 0,
+      "directStartStatus": 409,
+      "rawUiFrontierCount": 0,
+      "atomicTargetCount": 0,
       "configuration": "absent",
-      "atomicTargetCount": 0,
-      "rawUiFrontierCount": 0,
-      "directStartStatus": 409
+      "coachAtomicTargetCount": 0
     },
     {
-      "frontierCount": 0,
       "globalRecognitionPreserved": true,
-      "coachAtomicTargetCount": 0,
+      "frontierCount": 0,
+      "directStartStatus": 409,
+      "rawUiFrontierCount": 0,
+      "atomicTargetCount": 0,
       "configuration": "empty",
-      "atomicTargetCount": 0,
-      "rawUiFrontierCount": 0,
-      "directStartStatus": 409
+      "coachAtomicTargetCount": 0
     },
     {
-      "frontierCount": 0,
       "globalRecognitionPreserved": true,
-      "coachAtomicTargetCount": 0,
-      "configuration": "missing-stage",
-      "atomicTargetCount": 0,
+      "frontierCount": 0,
+      "directStartStatus": 409,
       "rawUiFrontierCount": 0,
-      "directStartStatus": 409
+      "atomicTargetCount": 0,
+      "configuration": "missing-stage",
+      "coachAtomicTargetCount": 0
     }
   ],
   "directMathCanonicalDefaultRetained": true,
+  "publishedPersonalizationFlow": {
+    "resolvedScope": {
+      "rootLandscapeId": "19b53458-3f94-5bcf-8fcd-e85444851cff",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "schoolForm": "Gymnasium",
+      "jurisdiction": "ALL",
+      "stage": "SekI",
+      "durationModel": null,
+      "courseProfile": null
+    },
+    "complete": true,
+    "choices": [
+      {
+        "groupId": "jurisdiction",
+        "optionId": "po_add4bf7c-ea28-31a7-8ffd-7fb5e28d5fcb",
+        "kind": "VALUE"
+      },
+      {
+        "groupId": "stage",
+        "optionId": "po_308cb53b-e8dc-34ac-8d6a-c086c30df36c",
+        "kind": "SCOPE_VALUE"
+      },
+      {
+        "groupId": "subject",
+        "optionId": "po_e62fd626-0876-32da-a6ca-fc939af1e89f",
+        "kind": "VALUE"
+      },
+      {
+        "groupId": "subject",
+        "optionId": "po_87526cd0-ca67-350a-9348-81872c6725c1",
+        "kind": "COMPLETE_GROUP"
+      }
+    ],
+    "usesOnlyPublishedOpaqueOptionIds": true,
+    "targetCount": 251
+  },
   "operationalNativeMappingInputSha256": {
     "DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json": "20958c408a08c32491d582b5ac5ffed155871bd0a6c906a1409ec8167fc29b49",
     "DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_math_upper_secondary_to_canonical_math.json": "24e830171ed5e1f2376bef02a8164bca59b864e8a314fd9626cbe610d2d656a6",
@@ -7500,16 +7536,16 @@
           "revision": "2026-11-05-v1",
           "programUnitId": "de-gym-math-monotonicity-extrema",
           "title": {
-            "de": "Monotonie und lokale sowie globale Extrema begründen",
-            "en": "Justify monotonicity and local and global extrema"
+            "en": "Justify monotonicity and local and global extrema",
+            "de": "Monotonie und lokale sowie globale Extrema begründen"
           },
           "promise": {
-            "de": "Du kannst mit der ersten Ableitung das Steigen und Fallen einer Funktion auf einem abgeschlossenen Bereich begründen sowie lokale und globale Extremwerte einschließlich der Randwerte unterscheiden.",
-            "en": "You can use the first derivative to justify increase and decrease on a closed domain and distinguish local from global extrema, including boundary values."
+            "en": "You can use the first derivative to justify increase and decrease on a closed domain and distinguish local from global extrema, including boundary values.",
+            "de": "Du kannst mit der ersten Ableitung das Steigen und Fallen einer Funktion auf einem abgeschlossenen Bereich begründen sowie lokale und globale Extremwerte einschließlich der Randwerte unterscheiden."
           },
           "introduction": {
-            "de": "Bei einer Führungsschiene kommt es auf den Verlauf im gesamten Arbeitsbereich an. Du nutzt Vorzeichen und Randwerte, um lokale Beobachtungen von globalen Aussagen zu unterscheiden.",
-            "en": "A guide rail depends on its behavior throughout its working domain. Use signs and boundary values to distinguish local observations from global claims."
+            "en": "A guide rail depends on its behavior throughout its working domain. Use signs and boundary values to distinguish local observations from global claims.",
+            "de": "Bei einer Führungsschiene kommt es auf den Verlauf im gesamten Arbeitsbereich an. Du nutzt Vorzeichen und Randwerte, um lokale Beobachtungen von globalen Aussagen zu unterscheiden."
           },
           "ownGoalIds": ["2850e8f6-2330-50d3-a577-d519540d9924","010c133c-dcf1-5530-8305-61bc638017bc"],
           "requiredChildContractRefs": [],
@@ -7527,16 +7563,16 @@
           "revision": "2026-11-05-v1",
           "programUnitId": "de-gym-math-coordinate-plane-spatial-description",
           "title": {
-            "de": "Eine Ebene aus ihrer Koordinatenform räumlich beschreiben",
-            "en": "Describe a plane spatially from its coordinate equation"
+            "en": "Describe a plane spatially from its coordinate equation",
+            "de": "Eine Ebene aus ihrer Koordinatenform räumlich beschreiben"
           },
           "promise": {
-            "de": "Du kannst Achsenschnittpunkte, Normalenrichtung und Punktproben zu einer begründeten räumlichen Beschreibung einer Ebene zusammenführen.",
-            "en": "You can combine axis intercepts, a normal direction and point tests into a justified spatial description of a plane."
+            "en": "You can combine axis intercepts, a normal direction and point tests into a justified spatial description of a plane.",
+            "de": "Du kannst Achsenschnittpunkte, Normalenrichtung und Punktproben zu einer begründeten räumlichen Beschreibung einer Ebene zusammenführen."
           },
           "introduction": {
-            "de": "Eine Gleichung beschreibt eine ganze Ebene. Du setzt ihre einzelnen Merkmale zu einem räumlichen Bild zusammen.",
-            "en": "An equation describes an entire plane. Combine its individual features into a spatial picture."
+            "en": "An equation describes an entire plane. Combine its individual features into a spatial picture.",
+            "de": "Eine Gleichung beschreibt eine ganze Ebene. Du setzt ihre einzelnen Merkmale zu einem räumlichen Bild zusammen."
           },
           "ownGoalIds": ["06de364f-9b63-4044-8229-a975621dc6df","03b00864-7001-5c6a-875b-dc269b3484d9"],
           "requiredChildContractRefs": [],
@@ -7554,16 +7590,16 @@
           "revision": "2026-11-05-v1",
           "programUnitId": "de-gym-math-orthogonal-projection-linear-map",
           "title": {
-            "de": "Orthogonale Projektion als lineare Abbildung verstehen",
-            "en": "Understand orthogonal projection as a linear map"
+            "en": "Understand orthogonal projection as a linear map",
+            "de": "Orthogonale Projektion als lineare Abbildung verstehen"
           },
           "promise": {
-            "de": "Du kannst einen Vektor in seinen Anteil in einer Ebene und einen senkrechten Rest zerlegen und an der Projektion die Linearität begründen.",
-            "en": "You can decompose a vector into its component in a plane and a perpendicular remainder and justify the linearity of the projection."
+            "en": "You can decompose a vector into its component in a plane and a perpendicular remainder and justify the linearity of the projection.",
+            "de": "Du kannst einen Vektor in seinen Anteil in einer Ebene und einen senkrechten Rest zerlegen und an der Projektion die Linearität begründen."
           },
           "introduction": {
-            "de": "Ein Schatten auf einer Koordinatenebene verliert eine Richtung. Du untersuchst, was die Projektion bewahrt und welche Vektoren sie auf null abbildet.",
-            "en": "A shadow on a coordinate plane loses one direction. Examine what the projection preserves and which vectors it maps to zero."
+            "en": "A shadow on a coordinate plane loses one direction. Examine what the projection preserves and which vectors it maps to zero.",
+            "de": "Ein Schatten auf einer Koordinatenebene verliert eine Richtung. Du untersuchst, was die Projektion bewahrt und welche Vektoren sie auf null abbildet."
           },
           "ownGoalIds": ["ed5d869b-af4e-4b80-b34d-a2338e16ce34","e3c70a12-7886-51f7-8bcd-ed54865415d6"],
           "requiredChildContractRefs": [],
@@ -7581,16 +7617,16 @@
           "revision": "2026-11-05-v1",
           "programUnitId": "de-gym-math-pyramid-volume-derivation",
           "title": {
-            "de": "Die Pyramidenvolumenformel aus Querschnitten herleiten",
-            "en": "Derive the pyramid volume formula from cross-sections"
+            "en": "Derive the pyramid volume formula from cross-sections",
+            "de": "Die Pyramidenvolumenformel aus Querschnitten herleiten"
           },
           "promise": {
-            "de": "Du kannst die Volumenformel einer Pyramide mit ähnlichen Querschnitten und einem geeigneten Integral herleiten und die Herleitung geometrisch erklären.",
-            "en": "You can derive a pyramid volume formula using similar cross-sections and an appropriate integral and explain the geometry of the derivation."
+            "en": "You can derive a pyramid volume formula using similar cross-sections and an appropriate integral and explain the geometry of the derivation.",
+            "de": "Du kannst die Volumenformel einer Pyramide mit ähnlichen Querschnitten und einem geeigneten Integral herleiten und die Herleitung geometrisch erklären."
           },
           "introduction": {
-            "de": "Warum ist eine Pyramide nur ein Drittel des passenden Prismas? Du setzt ihre kleiner werdenden Querschnitte zu einer Volumenherleitung zusammen.",
-            "en": "Why does a pyramid occupy one third of the corresponding prism? Combine its shrinking cross-sections into a volume derivation."
+            "en": "Why does a pyramid occupy one third of the corresponding prism? Combine its shrinking cross-sections into a volume derivation.",
+            "de": "Warum ist eine Pyramide nur ein Drittel des passenden Prismas? Du setzt ihre kleiner werdenden Querschnitte zu einer Volumenherleitung zusammen."
           },
           "ownGoalIds": ["e9181209-1506-59df-9053-17f36b91bb06","938d47a2-5d7c-52d6-8644-5cc6060d76a1"],
           "requiredChildContractRefs": [],

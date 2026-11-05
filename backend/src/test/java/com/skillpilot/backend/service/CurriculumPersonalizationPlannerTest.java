@@ -29,6 +29,54 @@ class CurriculumPersonalizationPlannerTest {
     private static final String SAFFRON_ID = "landscape-saffron";
 
     @Test
+    void aLandscapeUpperBoundMayExceedTheActualNumberOfCandidatesWithoutInventingOptions() {
+        for (boolean offered : List.of(false, true)) {
+            SkillLandscape root = landscape(ROOT_ID, "Entry");
+            SkillLandscape subject = landscape(COBALT_ID, "Subject");
+            root.setPersonalizationFlow(flow(stage("subjects", 1,
+                    group("subjects", 1, 1, 20, landscapeChoiceSource(offered, COBALT_ID)))));
+            PersonalizationPlan plan = CurriculumPersonalizationPlanner.plan(ROOT_ID, List.of(root, subject),
+                    (id, scope) -> scope, Map.of());
+            assertThat(plan.valid()).isTrue();
+            assertThat(plan.stage()).isEqualTo(PersonalizationPlan.Stage.SELECTION);
+            assertThat(plan.minSelections()).isEqualTo(1);
+            assertThat(plan.maxSelections()).isEqualTo(20);
+            assertThat(plan.options()).extracting(PersonalizationPlan.Option::landscapeId).containsExactly(COBALT_ID);
+        }
+    }
+
+    @Test
+    void aLandscapeMinimumMustRemainReachableFromRealDistinctCandidates() {
+        for (boolean offered : List.of(false, true)) {
+            SkillLandscape root = landscape(ROOT_ID, "Entry");
+            SkillLandscape subject = landscape(COBALT_ID, "Subject");
+            root.setPersonalizationFlow(flow(stage("subjects", 1,
+                    group("subjects", 1, 2, 20, landscapeChoiceSource(offered, COBALT_ID)))));
+            var plan = CurriculumPersonalizationPlanner.plan(ROOT_ID, List.of(root, subject), (id, scope) -> scope, Map.of());
+            assertThat(plan.valid()).isFalse();
+            assertThat(plan.problemCode()).isEqualTo(offered ? "personalization-offered-landscape-source-unresolved" : "personalization-landscape-source-unresolved");
+        }
+    }
+
+    @Test
+    void generousLandscapeUpperBoundsNeverAllowDuplicateUnknownOrExcessActualSelections() {
+        for (boolean offered : List.of(false, true)) {
+            SkillLandscape root = landscape(ROOT_ID, "Entry");
+            SkillLandscape first = landscape(COBALT_ID, "First"), second = landscape(EMBER_ID, "Second");
+            for (String[] ids : List.of(new String[]{COBALT_ID, COBALT_ID}, new String[]{COBALT_ID, "unknown"})) {
+                root.setPersonalizationFlow(flow(stage("subjects", 1,
+                        group("subjects", 1, 1, 20, landscapeChoiceSource(offered, ids)))));
+                assertThat(CurriculumPersonalizationPlanner.plan(ROOT_ID, List.of(root, first, second), (id, scope) -> scope, Map.of()).valid()).isFalse();
+            }
+            root.setPersonalizationFlow(flow(stage("subjects", 1,
+                    group("subjects", 1, 1, 1, landscapeChoiceSource(offered, COBALT_ID, EMBER_ID)))));
+            var excessive = CurriculumPersonalizationPlanner.plan(ROOT_ID, List.of(root, first, second), (id, scope) -> scope,
+                    config(entry(COBALT_ID, true, null), entry(EMBER_ID, true, null)));
+            assertThat(excessive.problemCode()).isEqualTo("personalization-cardinality-exceeded");
+        }
+    }
+
+    @Test
     void completesWithoutMandatoryChoicesWhenNoFlowIsAuthored() {
         SkillLandscape root = landscape(ROOT_ID, "Orbit");
 
@@ -1916,6 +1964,12 @@ class CurriculumPersonalizationPlannerTest {
         PersonalizationOptionSource source = new PersonalizationOptionSource();
         source.setKind(PersonalizationSourceKind.OFFERED_LANDSCAPES);
         source.setLandscapeIds(List.of(landscapeIds));
+        return source;
+    }
+
+    private static PersonalizationOptionSource landscapeChoiceSource(boolean offered, String... ids) {
+        PersonalizationOptionSource source = offered ? offeredLandscapes(ids) : landscapes(ids);
+        if (offered) source.setScopeBindings(List.of(fixedBinding("schoolForm", "Gymnasium")));
         return source;
     }
 

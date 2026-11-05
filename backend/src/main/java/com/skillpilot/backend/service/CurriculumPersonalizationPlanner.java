@@ -544,7 +544,7 @@ public final class CurriculumPersonalizationPlanner {
                         .anyMatch(id -> blank(id)
                                 || !unique.add(id)
                                 || resolveExact(resolver, id) == null);
-                if (unresolved || group.getMaxSelections() > source.getLandscapeIds().size()) {
+                if (unresolved || group.getMinSelections() > source.getLandscapeIds().size()) {
                     yield "personalization-landscape-source-unresolved";
                 }
                 yield null;
@@ -625,7 +625,7 @@ public final class CurriculumPersonalizationPlanner {
                     yield "personalization-offered-landscape-source-invalid";
                 }
                 if (!landscapeIdsResolve(source.getLandscapeIds(), resolver)
-                        || group.getMaxSelections() > source.getLandscapeIds().size()) {
+                        || group.getMinSelections() > source.getLandscapeIds().size()) {
                     yield "personalization-offered-landscape-source-unresolved";
                 }
                 yield null;

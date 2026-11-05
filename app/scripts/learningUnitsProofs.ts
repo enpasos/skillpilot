@@ -70,6 +70,7 @@ if (mode === 'installed-offers') {
     entryNavigationController: report.entryNavigationController,
     unresolvedEntryProjectionCases: report.unresolvedEntryProjectionCases,
     directMathCanonicalDefaultRetained: report.directMathCanonicalDefaultRetained,
+    publishedPersonalizationFlow: report.publishedPersonalizationFlow,
     operationalNativeMappingInputSha256: report.operationalNativeMappingInputSha256,
     operationalNativeMappingTupleCount: report.operationalNativeMappingTupleCount,
     operationalNativeMappingTupleSha256: report.operationalNativeMappingTupleSha256,
