@@ -24,10 +24,10 @@ APP_ROOT = REPO_ROOT / "app"
 BACKEND_ROOT = REPO_ROOT / "backend"
 JAVA_VERSION_PATH = REPO_ROOT / ".java-version"
 CORRETTO_VERSION_PATH = REPO_ROOT / ".corretto-version"
-SCHEMA_PATH = REPO_ROOT / "contracts/curriculum-package/v1/package-consumer-smoke-report.schema.json"
-REPORT_SCHEMA_ID = "https://skillpilot.com/schemas/curriculum-package/v1/package-consumer-smoke-report.schema.json"
+SCHEMA_PATH = REPO_ROOT / "contracts/curriculum-package/v1/package-consumer-smoke-report-v1.1.schema.json"
+REPORT_SCHEMA_ID = "https://skillpilot.com/schemas/curriculum-package/v1/package-consumer-smoke-report-v1.1.schema.json"
 RUNNER_ID = "skillpilot-package-consumer-smoke"
-RUNNER_VERSION = "1.0.0"
+RUNNER_VERSION = "1.1.0"
 CONSUMER_API_VERSION = "0.1.0"
 SANDBOX_JAVA_HOME = "/opt/skillpilot-jdk"
 SANDBOX_PYTHON_HOME = "/opt/skillpilot-python"
@@ -83,10 +83,10 @@ PINNED_HELPER_SHA256 = {
     "backend/src/main/resources/action-regression-report.html": "a8531a620b3d923cfdc3b9f8839d99d9b60edf01795c33fd84b2572c06ae59fe",
     "backend/src/main/resources/claude-mcp-regression-report.html": "0237929c224ab7cf1e512cfedbb31e2401766d80a4b5e16bc937dcbf5b01addf",
     "backend/src/main/resources/db/changelog/changes/030-add-oauth-client-security.yaml": "1e35e8063d2bb93423223f0d427935d9fdd616cccc705bfec235abc25d5823d9",
-    "scripts/package_consumer_browser_smoke.cjs": "b328b8ab63f8df6143602a2b2fd71fcf88008b7c4de7e2f9845a1fb476081f6e",
+    "scripts/package_consumer_browser_smoke.cjs": "b542fcf4f735d3aa6f0c07262cda68089871f712bde17aef95a3549092fe2c31",
     "scripts/package_consumer_runtime.init.gradle": "e084d70053a16a9a499a3cab7e807035d9179ee0f318f26318de798f096b470b",
     "scripts/package_consumer_sandbox_entry.py": "32c348c4912271f3773705477bd4f2d86ad332ed2a68a92498188f45879499d3",
-    "scripts/package_consumer_smoke_http.py": "7a9c5943480e9d223367dc4c54164029d936d557d8072c623c669ad5a471668a",
+    "scripts/package_consumer_smoke_http.py": "031159002afda8cde6f862480bfcd28038bc23a27a7f85afda155189e2f09a0d",
 }
 
 BACKEND_CLASSPATH_RESOURCES = (

@@ -52,7 +52,7 @@ MANIFEST_SCHEMA_PATH = CONTRACT_DIR / "package-manifest.schema.json"
 PROFILE_PATH = CONTRACT_DIR / "profiles" / "full-standalone-v1.profile.json"
 POLICY_PATH = CONTRACT_DIR / "profiles" / "full-standalone-v1.readiness-policy.json"
 REPORT_SCHEMA_PATH = CONTRACT_DIR / "package-readiness-report.schema.json"
-CONSUMER_REPORT_SCHEMA_PATH = CONTRACT_DIR / "package-consumer-smoke-report.schema.json"
+CONSUMER_REPORT_SCHEMA_PATH = CONTRACT_DIR / "package-consumer-smoke-report-v1.1.schema.json"
 FIXTURE_DIR = CONTRACT_DIR / "fixtures" / "readiness"
 
 REPORT_SCHEMA_ID = (
@@ -61,7 +61,7 @@ REPORT_SCHEMA_ID = (
 )
 CONSUMER_REPORT_SCHEMA_ID = (
     "https://skillpilot.com/schemas/curriculum-package/v1/"
-    "package-consumer-smoke-report.schema.json"
+    "package-consumer-smoke-report-v1.1.schema.json"
 )
 EVALUATOR_NAME = "skillpilot-json-package-readiness"
 EVALUATOR_VERSION = "1.3.0"
@@ -176,7 +176,7 @@ MAX_CONSUMER_REPORT_BYTES = 16 * 1024 * 1024
 CONSUMER_RUNNER_PATH = SCRIPT_DIR / "run_package_consumer_smoke.py"
 CONSUMER_RUNNER_TIMEOUT_SECONDS = 30 * 60
 CONSUMER_RUNNER_ID = "skillpilot-package-consumer-smoke"
-CONSUMER_RUNNER_VERSION = "1.0.0"
+CONSUMER_RUNNER_VERSION = "1.1.0"
 CONSUMER_API_VERSION = "0.1.0"
 FUNCTIONAL_CHECK_IDS = [
     "app-shell.served",

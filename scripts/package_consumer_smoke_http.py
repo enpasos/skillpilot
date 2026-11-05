@@ -122,6 +122,73 @@ def goal_ids(landscapes: list[dict[str, Any]]) -> set[str]:
     }
 
 
+def select_personalization_option(plan: Any) -> dict[str, Any]:
+    """Choose a deterministic fixture only among the backend's current actions."""
+    require(isinstance(plan, dict) and plan.get("stage") not in ("INVALID", "COMPLETE"),
+            "personalization plan is not an actionable selection")
+    options = plan.get("options")
+    require(isinstance(options, list) and options, "personalization plan has no actionable options")
+    require(all(isinstance(option, dict) and isinstance(option.get("optionId"), str)
+                and option["optionId"] and option.get("kind") in ("VALUE", "COMPLETE_GROUP")
+                for option in options), "personalization plan has an invalid action")
+    preferred = (
+        lambda option: option.get("kind") == "COMPLETE_GROUP",
+        lambda option: option.get("scopeKey") == "stage" and option.get("scopeValue") == "CrossStage",
+        lambda option: option.get("scopeKey") == "durationModel" and option.get("scopeValue") == "G9",
+        lambda option: option.get("filterId") == "DE-HE",
+        lambda option: option.get("filterId") == "LK" or (
+            option.get("scopeKey") == "courseProfile" and option.get("scopeValue") == "LK"),
+    )
+    for predicate in preferred:
+        match = next((option for option in options if predicate(option)), None)
+        if match is not None:
+            return match
+    return options[0]
+
+
+def configure_authored_personalization(learner_id: str, landscape: dict[str, Any]) -> dict[str, Any]:
+    if not landscape.get("personalizationFlow"):
+        return {"setup": "legacy-base-without-authored-flow"}
+    base = f"/api/ui/learners/{urllib.parse.quote(learner_id, safe='')}"
+    initial_status, initial, _ = json_response(f"{base}/state")
+    require(initial_status == 200, "unconfigured entry state failed")
+    personalized = (initial.get("goals") or {}).get("personalized") or {}
+    require(personalized.get("total_atomic") == 0, "unconfigured entry has learning targets")
+    frontier_status, frontier, _ = json_response(f"{base}/frontier")
+    require(frontier_status == 200 and response_frontier_ids(frontier) == [],
+            "unconfigured entry has a frontier")
+    choices = []
+    for _ in range(32):
+        status, plan, _ = json_response(f"{base}/personalization-plan")
+        require(status == 200 and isinstance(plan, dict), "authored personalization plan failed")
+        if plan.get("stage") == "COMPLETE":
+            profile_status, profile, _ = json_response(base)
+            require(profile_status == 200, "configured learner profile failed")
+            config = profile.get("personalCurriculum")
+            if isinstance(config, str):
+                config = json.loads(config)
+            root_config = config.get(landscape["landscapeId"]) if isinstance(config, dict) else None
+            require(isinstance(root_config, dict) and isinstance(root_config.get("stage"), str)
+                    and bool(root_config["stage"]), "authored setup did not commit an explicit root stage")
+            state_status, state, _ = json_response(f"{base}/state")
+            require(state_status == 200 and ((state.get("goals") or {}).get("personalized") or {}).get("total_atomic", 0) > 0,
+                    "completed authored setup has no target scope")
+            offer = (state.get("learningUnits") or {}).get("offerBinding") or {}
+            return {"setup": "published-personalization-options", "choices": choices,
+                    "explicitStage": root_config["stage"], "rootFilter": root_config.get("filterId"),
+                    "durationModel": root_config.get("durationModel"),
+                    "targetCount": state["goals"]["personalized"]["total_atomic"],
+                    "offerBindingStatus": offer.get("status"),
+                    "unconfiguredTargetCount": 0, "unconfiguredFrontierCount": 0}
+        option = select_personalization_option(plan)
+        status, _, _ = json_response(f"{base}/personalization-options", method="POST",
+                                     json_body={"optionId": option["optionId"]})
+        require(status == 200, f"published personalization option returned {status}")
+        choices.append({key: option.get(key) for key in ("stageId", "kind", "scopeKey", "scopeValue", "filterId")}
+                       | {"optionIdSha256": sha256(option["optionId"].encode())})
+    raise CheckFailure("authored personalization did not finish within 32 published actions")
+
+
 def select_verified_recall_fixture_pair(
     goals: list[dict[str, Any]],
     catalog_deck_ids: set[str],
@@ -580,6 +647,7 @@ def run() -> int:
             json_body={"curriculumId": root_id},
         )
         require(curriculum_status == 200, f"learner curriculum selection status is {curriculum_status}")
+        setup_evidence = configure_authored_personalization(learner_id, context["rootLandscape"])
         status, frontier, frontier_body = json_response(
             f"/api/ui/learners/{urllib.parse.quote(learner_id, safe='')}/frontier"
         )
@@ -603,6 +671,7 @@ def run() -> int:
             "learnerResponseSha256": sha256(create_body),
             "frontierResponseSha256": sha256(frontier_body),
             "frontierGoalCount": len(frontier_ids),
+            "personalization": setup_evidence,
         }
 
     @check("cards.deck-loaded")
@@ -617,7 +686,7 @@ def run() -> int:
 
     @check("cards.verified-recall-loaded")
     def verified_recall() -> dict[str, Any]:
-        goals = context["rootLandscape"]["goals"]
+        goals = [goal for landscape in context["closure"] for goal in landscape.get("goals", [])]
         learner_id = context["learnerId"]
         catalog_deck_ids = {
             deck["deckId"]

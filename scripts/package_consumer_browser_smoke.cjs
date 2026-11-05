@@ -125,6 +125,66 @@ const selectDefaultOffering = (catalog, rootId) => {
   return { rootDescriptor, offeringDescriptor }
 }
 
+const selectPersonalizationOption = (plan) => {
+  requireCondition(plan && !['INVALID', 'COMPLETE'].includes(plan.stage),
+    'browser personalization plan is not an actionable selection')
+  const options = plan.options
+  requireCondition(Array.isArray(options) && options.length > 0
+    && options.every((option) => typeof option?.optionId === 'string' && option.optionId
+      && ['VALUE', 'COMPLETE_GROUP'].includes(option.kind)),
+  'browser personalization plan has no valid actionable options')
+  const preferred = [
+    (option) => option.kind === 'COMPLETE_GROUP',
+    (option) => option.scopeKey === 'stage' && option.scopeValue === 'CrossStage',
+    (option) => option.scopeKey === 'durationModel' && option.scopeValue === 'G9',
+    (option) => option.filterId === 'DE-HE',
+    (option) => option.filterId === 'LK'
+      || (option.scopeKey === 'courseProfile' && option.scopeValue === 'LK'),
+  ]
+  for (const predicate of preferred) {
+    const selected = options.find(predicate)
+    if (selected) return selected
+  }
+  return options[0]
+}
+
+const configureAuthoredPersonalization = async (api, learnerId, landscape) => {
+  if (!landscape.personalizationFlow) return { setup: 'legacy-base-without-authored-flow' }
+  const base = `/api/ui/learners/${encodeURIComponent(learnerId)}`
+  const initial = await responseJson(await api.get(`${base}/state`), 'unconfigured entry state')
+  requireCondition(initial.goals?.personalized?.total_atomic === 0,
+    'browser unconfigured entry has learning targets')
+  const frontier = await responseJson(await api.get(`${base}/frontier`), 'unconfigured entry frontier')
+  requireCondition(Array.isArray(frontier.goals) && frontier.goals.length === 0,
+    'browser unconfigured entry has a frontier')
+  const choices = []
+  for (let index = 0; index < 32; index += 1) {
+    const plan = await responseJson(await api.get(`${base}/personalization-plan`), 'personalization plan')
+    if (plan.stage === 'COMPLETE') {
+      const profile = await responseJson(await api.get(base), 'configured learner profile')
+      const config = typeof profile.personalCurriculum === 'string'
+        ? JSON.parse(profile.personalCurriculum) : profile.personalCurriculum
+      const root = config?.[landscape.landscapeId]
+      requireCondition(typeof root?.stage === 'string' && root.stage,
+        'browser authored setup did not commit an explicit root stage')
+      const state = await responseJson(await api.get(`${base}/state`), 'configured entry state')
+      requireCondition(state.goals?.personalized?.total_atomic > 0, 'browser authored setup has no target scope')
+      return { setup: 'published-personalization-options', choices,
+        explicitStage: root.stage, rootFilter: root.filterId, durationModel: root.durationModel,
+        targetCount: state.goals.personalized.total_atomic,
+        offerBindingStatus: state.learningUnits?.offerBinding?.status,
+        unconfiguredTargetCount: 0, unconfiguredFrontierCount: 0 }
+    }
+    const option = selectPersonalizationOption(plan)
+    await responseJson(await api.post(`${base}/personalization-options`, {
+      data: { optionId: option.optionId },
+    }), 'published personalization option')
+    choices.push({ stageId: option.stageId, kind: option.kind, scopeKey: option.scopeKey,
+      scopeValue: option.scopeValue, filterId: option.filterId, optionIdSha256: sha256(option.optionId) })
+  }
+  throw new Error('browser authored personalization did not finish within 32 published actions')
+}
+
 const selfTestDefaultOfferingSelector = () => {
   const validCatalog = {
     landscapes: [{
@@ -171,7 +231,22 @@ const selfTestDefaultOfferingSelector = () => {
   })
   requireCondition(rejected === 4,
     `default-offering selector rejection count differs: ${rejected}`)
+  const first = { optionId: 'first', kind: 'VALUE', scopeKey: 'stage', scopeValue: 'SekI' }
+  const cross = { ...first, optionId: 'cross', scopeValue: 'CrossStage' }
+  const plan = { stage: 'SELECTION', options: [first, cross],
+    displayOptions: [{ optionId: 'display-only', kind: 'COMPLETE_GROUP' }] }
+  requireCondition(selectPersonalizationOption(plan) === cross,
+    'browser fixture did not select the published explicit stage')
+  const done = { optionId: 'done', kind: 'COMPLETE_GROUP' }
+  requireCondition(selectPersonalizationOption({ ...plan, options: [cross, done] }) === done,
+    'browser fixture did not finish the published selection group')
+  for (const options of [[], [{ optionId: 'bad', kind: 'UNKNOWN' }], [{ kind: 'VALUE' }]]) {
+    let failed = false
+    try { selectPersonalizationOption({ ...plan, options }) } catch { failed = true }
+    requireCondition(failed, 'browser fixture accepted a malformed action list')
+  }
   process.stdout.write('Package-consumer browser default-offering selector self-test passed (1 valid, 4 invalid).\n')
+  process.stdout.write('Package-consumer authored-plan selector self-test passed (2 valid, 3 invalid).\n')
 }
 
 const run = async () => {
@@ -234,6 +309,7 @@ const run = async () => {
       data: { curriculumId: rootId },
     })
     requireCondition(selectionResponse.ok(), `browser learner curriculum selection returned ${selectionResponse.status()}`)
+    const personalization = await configureAuthoredPersonalization(api, learnerId, landscape)
 
     const contentCandidates = closure.flatMap((entry) => Array.isArray(entry?.goals) ? entry.goals : [])
       .flatMap((goal) => [goal?.title, goal?.titleDe, goal?.description])
@@ -387,6 +463,7 @@ const run = async () => {
           rootLandscapeId: rootId,
           rootPackageId: rootDescriptor.packageId,
           defaultOfferingId,
+          personalization,
           learnerId,
           renderedContent: renderedText,
           renderedBodyBytes: Buffer.byteLength(renderedBody),

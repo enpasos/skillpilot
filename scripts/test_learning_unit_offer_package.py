@@ -17,8 +17,9 @@ def run() -> None:
         readiness.select_contract_directory(contracts, offers=offers)
         trusted = readiness.trusted_contracts()
         assert trusted.profile['profileId'] == (units.OFFER_PROFILE_ID if offers else units.PROFILE_ID)
-        assert trusted.policy['consumerSmokeRunner']['sha256'] == 'd0b8721c3830d1e616f9ee7c6053baecc18f67b52f404af4fad93e82bfec3dff', \
-            'the offer profile must preserve the exact existing hermetic runner'
+        assert trusted.policy['consumerSmokeRunner']['version'] == '1.1.0'
+        assert trusted.policy['consumerSmokeRunner']['sha256'] == readiness.sha256_file(readiness.CONSUMER_RUNNER_PATH), \
+            'the policy must attest the exact shared current consumer revision'
     with tempfile.TemporaryDirectory(prefix='learning-unit-offer-package.') as temporary:
         repo = Path(temporary)
         source = repo / 'curricula'
