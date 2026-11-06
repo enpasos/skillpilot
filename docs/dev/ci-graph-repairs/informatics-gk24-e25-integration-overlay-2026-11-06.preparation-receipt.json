@@ -1,0 +1,67 @@
+{
+  "status": "actual-private-materializer-and-global-replay-exit0-no-application",
+  "command": [
+    "python",
+    "docs/dev/ci-graph-repairs/prepare_informatics_gk24_e25_overlay.py",
+    "--output-root",
+    "/dev/shm/skillpilot-gk24-e25-final-verified"
+  ],
+  "exitCode": 0,
+  "toolSha256": "0915bcfd93c7683a9edc094b0bd519075e50b6403b5b4c1c0aa9a496b15b4524",
+  "stdoutSha256": "6eb2276dad9a32f5d1ed39b10162d6e7defa384e50598e45e3df7b2bd05af404",
+  "result": {
+    "status": "private-guarded-overlay-materialized-global-proof-pass-NOT-application",
+    "manifestSha256": "8ab47c7148fc3ba772b47a7ce0d326a89c168eac8219e82f31702814bea271bd",
+    "outputRoot": "/dev/shm/skillpilot-gk24-e25-final-verified",
+    "files": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "sha256": "4e378c93da59a14aad4d6c0086b9afc16715c66dc484bd97d34fc8154bde8ec2",
+        "bytes": 642345
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-by-gym-informatics-crossstage.view.json",
+        "sha256": "fa7b54a155eb1594e467c39803318214e335c48f3d7cda3062c91c6e29877514",
+        "bytes": 47830
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json",
+        "sha256": "b87ef96c764e1eabceb7b33fe2a1cfd8c88c2d5793601e5d8bdfb9962502d14e",
+        "bytes": 5050
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-he-gym-informatics-crossstage.view.json",
+        "sha256": "ad339e4480216343e849922a40511052a0ebd6958f333e0d60a23d6a3f385db3",
+        "bytes": 47830
+      },
+      {
+        "path": "app/scripts/generateCurriculumQualityStatus.ts",
+        "sha256": "08db5581129004bcca2837e3786675a33035f04502944d38e3c1fd820df7c293",
+        "bytes": 285774
+      }
+    ],
+    "globalExistingGoalChanges": [
+      {
+        "sourceKey": "7d51b38c-a149-5407-bddc-d2ce7878b020:ace0c141-9e7c-546e-914f-64c24d42d85d",
+        "removed": [
+          "7d51b38c-a149-5407-bddc-d2ce7878b020:6539320a-aa0e-59e5-a34a-55f1a8b78337"
+        ],
+        "added": []
+      }
+    ],
+    "globalExistingAtomicChanges": [
+      {
+        "sourceKey": "7d51b38c-a149-5407-bddc-d2ce7878b020:ace0c141-9e7c-546e-914f-64c24d42d85d",
+        "removed": [
+          "7d51b38c-a149-5407-bddc-d2ce7878b020:6539320a-aa0e-59e5-a34a-55f1a8b78337"
+        ],
+        "added": []
+      }
+    ],
+    "gkDirectPreparationCount": 16,
+    "gkAtomicPreparationCount": 25,
+    "fullRouteGatePassClaimed": false,
+    "nativeProducerRerun": false,
+    "sourceOrStateWritten": false
+  }
+}
