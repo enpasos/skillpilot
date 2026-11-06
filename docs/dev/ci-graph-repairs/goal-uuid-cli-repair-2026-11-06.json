@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "cli-scope-repaired-controls-pass-real-catalog-correctly-fails-unmigrated-identities",
+  "dataChanged": false,
+  "warningOrBaselineBypass": false,
+  "files": [
+    {
+      "path": "scripts/validate_goal_ids_uuid.py",
+      "sha256": "2cdcd5b1dfb492b31b504effd99f0f3fb3ed937192ed4dd9f794406909782a56"
+    },
+    {
+      "path": "scripts/test_validate_goal_ids_uuid.py",
+      "sha256": "7b3f28bc2525c9e8f4d4798132033b6f92242e8a79ef4ac468b1763fef537582"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "e380ab409f3172a9d3121a5e9031d8ffc0613ef344f7867f86afc8f3307179af"
+    },
+    {
+      "path": "scripts/plugin_ci_workflows.test.mjs",
+      "sha256": "6f1a33124f912cc67fb11f2388cc3a869aa4f46b1e97af9487728e9566346c8d"
+    }
+  ],
+  "contract": {
+    "universe": "Every runtime-shaped JSON landscape under curricula outside pruned quality directories; no fixed file-count condition. A landscape declares landscapeId:string and goals:list; malformed types on objects claiming both fields fail. Other valid metadata is not a landscape.",
+    "goalId": "UUID fullmatch, any hex case, exact8-4-4-4-12 groups, no trailing newline.",
+    "relations": "Only typed requires/contains syntax here. Missing means[], explicitnull/nonlist/nonstrings fail. Endpoint is a local UUID or exactly owner:UUID.",
+    "owner": "Current strict graph G05 contract: exact nonempty unqualified namespace string, no leading/trailing whitespace or colon. Owner UUID is not required, even though all current593 source owners happen to be UUIDs.",
+    "separateGraphResponsibilities": [
+      "Reference existence and owner membership",
+      "Focus/Personal Curriculum scope",
+      "Logical/global identity uniqueness and duplicate topology"
+    ],
+    "json": "Invalid/read-failed JSON outside quality, duplicate object keys and nonfinite constants are hard errors. Discovery must check at least one landscape and at least one goal ID; individual empty landscapes remain allowed alongside real goals."
+  },
+  "regression": {
+    "beforeFix": {
+      "command": "python3 -B scripts/test_validate_goal_ids_uuid.py GoalIdUuidCliTests.test_canonical_bad_id_is_a_real_cli_failure -v",
+      "exitCode": 1,
+      "tests": 1,
+      "failures": 1,
+      "observation": "Actual copied oldCLI returned0 with0files/0goals despite a canonical-path invalid goal; genuine negative fixture failed as expected before repair.",
+      "log": "tmp/ci-contract-goal-uuid-canonical-red.log",
+      "logSha256": "dc5bb80242c522d1fb2726e72abc836de399e0e0a38e39e55ef0800f16e10600"
+    },
+    "afterFix": {
+      "command": "python3 -B scripts/test_validate_goal_ids_uuid.py -v",
+      "exitCode": 0,
+      "testMethods": 15,
+      "failures": 0,
+      "log": "tmp/ci-contract-goal-uuid-cli-tests.log",
+      "logSha256": "e6ce6f7084492670b2de8516f2e4bba5eb2e088f28b54161674f4cd8bd55b74b",
+      "controls": [
+        "canonical-only invalid goal fails",
+        "uppercase and qualified symbolic namespaces pass",
+        "quality subtree pruned before parse",
+        "malformed JSON fails even when not a landscape",
+        "strict UUID group widths and final-newline rejection",
+        "null/nonobject goals",
+        "null/nonlist relations",
+        "typed reference elements, empty/multiple qualification and owner whitespace",
+        "malformed owner/collection types",
+        "all folders discovered without hard593floor",
+        "no duplicate/global-uniqueness policy added",
+        "duplicate JSON keys/nonfinite JSON fail",
+        "empty discovery fails",
+        "one or more empty landscapes cannot pass without checking a single goal ID"
+      ]
+    },
+    "emptyGoalScopeBeforeFix": {
+      "command": "python3 -B scripts/test_validate_goal_ids_uuid.py GoalIdUuidCliTests.test_only_empty_landscapes_cannot_pass_without_checking_any_goal_id -v",
+      "exitCode": 1,
+      "tests": 1,
+      "failures": 1,
+      "observation": "The new discovery code originally returned0 for1file/0goals; genuine added negative was red before the total-goals guard.",
+      "log": "tmp/ci-contract-goal-uuid-empty-red.log",
+      "logSha256": "7ae05cbbc4159748ec8de486ce98d26877dcf59568221a247e5da53e0bc4372a"
+    }
+  },
+  "ciWiring": {
+    "workflow": ".github/workflows/ci.yml",
+    "fixtureStep": "Test Curriculum Goal UUID CLI",
+    "fixtureCommand": "python -B scripts/test_validate_goal_ids_uuid.py -v",
+    "hardProductionCommand": "cd .. && python scripts/validate_goal_ids_uuid.py",
+    "workflowContractCommand": "node --test scripts/plugin_ci_workflows.test.mjs",
+    "workflowContractTests": 10,
+    "failures": 0,
+    "skipped": 0,
+    "log": "tmp/ci-contract-goal-uuid-workflow-tests.log",
+    "logSha256": "6567a2487efa4310bd6d9f17203f638633af231a514693fce1596b7cea446c15"
+  },
+  "actualCatalog": {
+    "command": "python3 -B scripts/validate_goal_ids_uuid.py",
+    "exitCode": 1,
+    "runtimeShapedFiles": 593,
+    "serializedGoals": 56171,
+    "invalidGoalIds": 164,
+    "invalidReferenceEndpoints": 327,
+    "otherInputErrors": 0,
+    "totalHardErrors": 491,
+    "log": "tmp/ci-contract-goal-uuid-real-catalog.log",
+    "logSha256": "b176456df655b33eed19776b5f0399af3b21d072bb75d752224b68f6af0ae361",
+    "interpretation": "Expected current failure: the164 original malformed identities have not been migrated. This repair reveals them; it does not rename, warn-only, baseline or bypass them."
+  },
+  "limits": [
+    "Local fixture/workflow controls and current whole-catalog run are verified; no fresh remoteCI success claimed.",
+    "No curriculum, QA/SRS/mastery, source-A/schema kernel, published/retained or runtime identity state is changed.",
+    "UUID grammar checking is not graph existence, scope, unique topology or assessment-coverage validation."
+  ]
+}

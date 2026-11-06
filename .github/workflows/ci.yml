@@ -695,6 +695,9 @@ jobs:
         run: python -B scripts/test_validate_schemas_symlinks.py -v
       - name: Validate Schemas
         run: cd .. && python scripts/validate_schemas.py
+      - name: Test Curriculum Goal UUID CLI
+        working-directory: .
+        run: python -B scripts/test_validate_goal_ids_uuid.py -v
       - name: Validate Curriculum Goal IDs (UUIDs)
         run: cd .. && python scripts/validate_goal_ids_uuid.py
       - name: Validate Hessen Upper-Secondary Archive Paths

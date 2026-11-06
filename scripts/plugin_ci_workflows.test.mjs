@@ -10,6 +10,18 @@ const ci = readWorkflow('ci.yml')
 const marketplace = readWorkflow('claude-marketplace.yml')
 const dialogs = readWorkflow('openai-dialog-regression.yml')
 
+test('UUID CLI negative fixtures run before the hard full-curriculum UUID gate', () => {
+  const fixtures = ci.indexOf('      - name: Test Curriculum Goal UUID CLI\n')
+  const actual = ci.indexOf('      - name: Validate Curriculum Goal IDs (UUIDs)\n')
+  assert.ok(fixtures >= 0 && actual > fixtures)
+  const fixtureStep = ci.slice(fixtures, actual)
+  assert.match(fixtureStep, /working-directory: \./u)
+  assert.match(fixtureStep, /python -B scripts\/test_validate_goal_ids_uuid\.py -v/u)
+  const actualStep = ci.slice(actual).split(/\n      - name:/u)[0]
+  assert.match(actualStep, /python scripts\/validate_goal_ids_uuid\.py/u)
+  assert.doesNotMatch(fixtureStep + actualStep, /continue-on-error|\|\| true|--warn|--baseline/u)
+})
+
 test('demo-video CI installs its own pinned browser before browser-dependent tests', () => {
   const installStepName = '      - name: Install browser demo-video tool dependencies\n'
   const validationStepName = '      - name: Validate reproducible browser demo-video tool\n'
