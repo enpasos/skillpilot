@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-06T20:48:07Z",
+  "status": "terminal-remote-evidence-on-explicit-5c9-head-not-newer-local-acceptance",
+  "commit": "5c9ff83586c407fd9189207c38238400c74bce51",
+  "repository": "enpasos/skillpilot",
+  "pr": 84,
+  "runs": [
+    {
+      "id": 42278464942,
+      "name": "Gemini integration local checks",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/enpasos/skillpilot/actions/runs/42278464942"
+    },
+    {
+      "id": 42278464876,
+      "name": "Assessment completion",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "url": "https://github.com/enpasos/skillpilot/actions/runs/42278464876"
+    },
+    {
+      "id": 42278464712,
+      "name": "OAuth client authentication",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/enpasos/skillpilot/actions/runs/42278464712"
+    },
+    {
+      "id": 42278465423,
+      "name": "Docs Checks",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/enpasos/skillpilot/actions/runs/42278465423"
+    },
+    {
+      "id": 42278464832,
+      "name": "CI",
+      "status": "completed",
+      "conclusion": "failure",
+      "url": "https://github.com/enpasos/skillpilot/actions/runs/42278464832"
+    }
+  ],
+  "mainJobs": [
+    {
+      "id": 128101009724,
+      "name": "Learning-goal book build",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128101009954,
+      "name": "OpenAI MCP Apps CI",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128101010096,
+      "name": "action-regression-ci",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128101010128,
+      "name": "OpenAI MCP V1 public edge CI",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128101010196,
+      "name": "Claude Connector V1 CI",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128113206453,
+      "name": "backend-ci",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128113206631,
+      "name": "Application frontend CI",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128113206934,
+      "name": "Curriculum CI",
+      "status": "completed",
+      "conclusion": "failure",
+      "failedSteps": [
+        {
+          "name": "Check generated Math G8/G9 Composition Views",
+          "conclusion": "failure"
+        }
+      ]
+    }
+  ],
+  "assessmentJobs": [
+    {
+      "id": 128100873179,
+      "name": "Completion core, HTTP browser, sessions and PostgreSQL snapshots",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128100873495,
+      "name": "Completion profiles, shared fixtures and Cockpit",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "failedSteps": [
+        {
+          "name": "Run actions/checkout@v6",
+          "conclusion": "cancelled"
+        }
+      ]
+    },
+    {
+      "id": 128100874611,
+      "name": "Optional completion performance measurements",
+      "status": "completed",
+      "conclusion": "skipped",
+      "failedSteps": []
+    }
+  ],
+  "interpretation": {
+    "backendAndFrontendRepairsAcceptedByThisRemoteHead": true,
+    "curriculumFailure": "The unchanged Math duration-view checker rejects the stale split-policy canonical input binding before reaching the protected-floor step.",
+    "assessmentCore": "success",
+    "assessmentUi": "cancelled at actions/checkout, before any UI test executed; not a passing job or a local observer timeout",
+    "newerLocalRepairs": "Not included in this head; require fresh remote runs.",
+    "allTenSubjectFloorsRestored": false,
+    "deployedMergedOrProductionAccepted": false
+  }
+}
