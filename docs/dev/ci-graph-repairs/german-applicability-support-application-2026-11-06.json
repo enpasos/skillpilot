@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "applied-production-scope-checks-passed-awaiting-fresh-CQR",
+  "status": "applied-production-scope-and-fresh-CQR-M6-passed",
   "humanApproval": false,
   "baselineCommit": "e0f09df8a43cd138a7fa1c924ff56595f375cbad",
   "reviewPath": "docs/dev/ci-graph-repairs/german-applicability-support-review-2026-11-06.json",
@@ -990,5 +990,17 @@
     "errors": 0,
     "warnings": 2358,
     "logSha256": "70d06b45c8d07918ae8cbab698ac2221b8fece8e6dd7337ebf3dbff7712c2841"
+  },
+  "freshCqrVerification": {
+    "generatedAt": "2026-11-06T11:36:07.203Z",
+    "statusPath": "docs/qa-ci/status/curriculum-quality-status.json",
+    "statusSha256": "58b8c35a22dd62ed87105cd7ec3c3fd67ca0df761a1b2f26256242b73541bc50",
+    "maturity": "M6",
+    "graphStatus": "pass",
+    "scopeConsistencyStatus": "pass",
+    "generationExitCode": 0,
+    "protectedFloor": "M6",
+    "exceptionsAdded": 0,
+    "otherProtectedSubjectFailures": 7
   }
 }

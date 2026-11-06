@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-11-06T10:41:36.865Z
+Generated: 2026-11-06T11:36:07.203Z
 Rules version: curriculum-quality-v5
 
 ## Summary
@@ -15,13 +15,13 @@ Rules version: curriculum-quality-v5
 | Metric | Value |
 | --- | ---: |
 | Curricula | 21 |
-| M0 | 19 |
+| M0 | 18 |
 | M1 | 0 |
 | M2 | 0 |
 | M3 | 0 |
 | M4 | 0 |
 | M5 | 0 |
-| M6 | 2 |
+| M6 | 3 |
 | M7 | 0 |
 
 ## Curricula
@@ -31,7 +31,7 @@ Rules version: curriculum-quality-v5
 | Biologie (Gymnasium, DE) | M0 | 484 | 427 | 17/23 | 16/16 | 1 | 0 | 1 |
 | Chemie (Gymnasium, DE) | M0 | 742 | 641 | 31/32 | 16/16 | 1 | 0 | 1 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 2/2 | 2/16 | 0 | 2 | 1 |
-| Deutsch (Gymnasium, DE) | M0 | 354 | 291 | 31/31 | 16/16 | 1 | 0 | 1 |
+| Deutsch (Gymnasium, DE) | M6 | 354 | 291 | 31/31 | 16/16 | 1 | 0 | 0 |
 | Englisch (Gymnasium, DE) | M0 | 130 | 104 | 2/2 | 2/16 | 0 | 2 | 1 |
 | Französisch (Gymnasium, DE) | M0 | 331 | 275 | 3/3 | 2/16 | 0 | 2 | 1 |
 | Geschichte (Gymnasium, DE) | M6 | 217 | 177 | 31/31 | 16/16 | 1 | 0 | 0 |

@@ -542,7 +542,7 @@ bestehenden leeren Default; explizites null oder Skalare sind ungültig.
 
 | Neue Belegkette | Implementierung / Gegenprüfer | Tatsächlicher Aufruf und Grenze |
 | --- | --- | --- |
-| E61 Strikter Gesamtstrukturvertrag vor Maturity | `app/scripts/lib/skillGraphIntegrity.ts` reiner Prüfer/Abdeckungsmanifest; `auditTransitiveMinimality.ts` unveränderte §7.3-Entfernungssemantik mit iterativen Hilfen. `testSkillGraphIntegrity.ts` prüft echte UUID-/Gewichts-/Identitäts-/Referenzfehler, fremde direkte/geerbte/atomar expandierte Zyklen, Entfernen aller geerbten Kopien eines Ursprungs, gültige Polyhierarchie und gültige/zyklische 12000-Knotenketten. Lokal bestanden. Vorhandener Minimalitätstest unverändert bestanden:572 literale Vergleiche,3593 korrekt verworfene ungültige Graphen. Fokussierter strenger TypeScriptcheck und diffcheck bestanden. | `app/package.json:78` führt über C611 `npm run test:deep-understanding-rollout` zuerst die vollständige Suite `npm run test:skill-graph-integrity` und danach `testDeepUnderstandingRollout.ts` aus. Dessen Import bei `:5` bindet zusätzlich `testCurriculumGraphMaturity.ts` ein:13 tatsächlich fehlerhafte Graphen führen über CQR-001 zu M0 und M6/M7-Floorfehlern,35 fehlende/gefälschte Berichte werden zurückgewiesen. C618/C619 regeneriert/prüft tatsächliche Daten. Ein Suitefehler beendet denselben CI-Step; eine frische Remote-Ausführung dieses Branchstands ist damit nicht behauptet. |
+| E61 Strikter Gesamtstrukturvertrag vor Maturity | `app/scripts/lib/skillGraphIntegrity.ts` reiner Prüfer/Abdeckungsmanifest; `auditTransitiveMinimality.ts` unveränderte §7.3-Entfernungssemantik mit iterativen Hilfen. `testSkillGraphIntegrity.ts` prüft echte UUID-/Gewichts-/Identitäts-/Referenzfehler, fremde direkte/geerbte/atomar expandierte Zyklen, Entfernen aller geerbten Kopien eines Ursprungs, gültige Polyhierarchie und gültige/zyklische 12000-Knotenketten. Lokal bestanden. Vorhandener Minimalitätstest unverändert bestanden:572 literale Vergleiche,3593 korrekt verworfene ungültige Graphen. Fokussierter strenger TypeScriptcheck und diffcheck bestanden. | `app/package.json:78` führt über C611 `npm run test:deep-understanding-rollout` zuerst die vollständige Suite `npm run test:skill-graph-integrity` danach `testPoliticsEconomicsMemoryEntries.ts` und `testDeepUnderstandingRollout.ts` aus. Dessen Import bei `:5` bindet zusätzlich `testCurriculumGraphMaturity.ts` ein:14 tatsächlich fehlerhafte Graphen führen über CQR-001 zu M0 und M6/M7-Floorfehlern,35 fehlende/gefälschte Berichte werden zurückgewiesen. C618/C619 regeneriert/prüft tatsächliche Daten. Ein Suitefehler beendet denselben CI-Step; eine frische Remote-Ausführung dieses Branchstands ist damit nicht behauptet. |
 
 Der ursprüngliche Q04-/D-QS-Konflikt bleibt in der Baselinezeile sichtbar.
 Im aktuellen Branch wurde der widersprüchliche Fließtext in
@@ -595,3 +595,23 @@ die acht anderen geschützten Fächer bleiben M0 und ihr Floorcheck schlägt feh
 Die [Anwendungsquittung](../dev/ci-graph-repairs/history-inherited-duplicate-repair-2026-11-06.json)
 bindet die tatsächlichen Daten- und Berichthashes. Unveränderte Reviewledgers
 werden dabei nicht umetikettiert.
+
+Der anschließende Deutsch-Stand ist ebenfalls tatsächlich M6: Der frische
+Gesamtbericht vom `2026-11-06T11:36:07.203Z` enthält null Strukturbefunde und
+bestandene CQR-301/302/401/501. Die 68 fachlichen Voraussetzungskorrekturen,
+41 getrennt closuregleiche Normalisierungen und 23 separat geprüften
+Scopeoperationen sind durch die verlinkten Einzelquittungen gebunden; alle
+27 authored Targetmengen bleiben unverändert. Die sieben übrigen geschützten
+Fachstände bleiben M0 und lassen die unveränderten Untergrenzen scheitern.
+
+Ein zusätzliches echtes G01b-Gegenbeispiel wurde zunächst fälschlich akzeptiert:
+Groß- und Kleinschrift desselben UUID-Werts ergaben zwei Strings. Die
+wertbezogene Kollisionsprüfung verwirft jetzt solche Doppelidentitäten;
+positive Referenzfälle bestätigen gleichzeitig, dass gültige UUID-Verweise
+unabhängig von Hex-Schreibweise auflösen. Qualifizierte Eigentümer bleiben
+verbindlich, und die verfassten IDs werden nicht umgeschrieben. Die ursprünglichen
+13 Graphgegenfälle sind damit um einen vollständigen Maturity-Negativfall
+erweitert; Einzel-Großschreibung bleibt zulässig. Die aktuelle 14-/35-Integration,
+Strictsuite, fokussiertes ESLint und der bestehende Deep-QA-Aufruf bestehen.
+Ein frischer Aufruf desselben Graphprüfers auf allen 21 aktuellen Katalogen
+stimmt exakt mit den gespeicherten CQR-001-Berichten überein.

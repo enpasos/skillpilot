@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "in-progress-bounded-source-census-complete-semantic-review-pending",
+  "status": "in-progress-six-memory-cases-independently-reviewed-other917-pending",
   "humanApproval": false,
   "reviewer": "Astra Ultra independent conceptual reviewer",
   "rule": "graph-definition.md §7.3: remove authored origin and recompute Goal-node effective inheritance, no atomic expansion for G17",
@@ -38256,10 +38256,21 @@
           "mode": "direct"
         }
       ],
-      "decision": "pending_semantic_review",
-      "reason": null,
-      "conditions": [],
-      "humanApproval": false
+      "decision": "semantic_repair_instead_of_normalization",
+      "reason": "Alle acht aktiven DE/EN-Karten behandeln i, algebraische Form, Konjugation, Betrag, Eulersche Formel, Drehstreckung, Division und Einheitswurzeln. Keine Karte verlangt das Auswählen und schrittweise Anwenden einer Ableitungsregel. Der Q4-Elterncluster enthält auch Funktionenscharen; dessen Themenmix macht Differentialrechnung aber nicht zur Voraussetzung des ausdrücklich auf komplexe Zahlen beschränkten Decks. Die früheren Parameter-/Ortskurvenkarten c08/c09 wurden laut unverändertem Kartenledger entfernt. Deshalb entfällt ausschließlich das fachfremde Ableiten-Gate; der vorhandene Orientierungseinstieg bleibt. Die Karten lehren ihre kompakten Definitionen und Regeln selbst, während Verständnis und Anwendung in den unveränderten Herkunftszielen geprüft werden.",
+      "conditions": [
+        "Use the separately reviewed memory proposal; do not remove the census edge automatically.",
+        "Recheck exact source/goal/array guards, global expected semantic changes and subsequent sequential full closure equality."
+      ],
+      "humanApproval": false,
+      "repairProposal": {
+        "path": "docs/dev/ci-graph-repairs/math-memory-prerequisites-repair-proposal-2026-11-06.json",
+        "sha256": "19bb5102c3644b3810a097a4e4fa72bd61df096bc61e78d3c7f6861cbdfa5f16",
+        "operationIds": [
+          "MATH-MEM-SEM-01"
+        ],
+        "independentReview": "ci_runtime; all42 DE/EN cards and four goal texts reviewed; AI only"
+      }
     },
     {
       "caseId": "MATH-MIN-0102",
@@ -102421,10 +102432,21 @@
           "mode": "direct"
         }
       ],
-      "decision": "pending_semantic_review",
-      "reason": null,
-      "conditions": [],
-      "humanApproval": false
+      "decision": "semantic_repair_instead_of_normalization",
+      "reason": "Die acht aktiven DE/EN-Karten betreffen Vektorbetrag, Mittelpunkt, Orthogonalität, Winkel, Geraden- und Ebenennotation sowie Matrixdimensionen und stochastische Matrizen. Weder Ableitungsregel-Auswahl noch Stammfunktionswahl, Integralberechnung oder orientierte Flächenbilanz wird abgefragt. Der gemeinsame Elterncluster nennt auch vertiefte Analysis, doch die konkrete Deckbeschreibung und alle acht Herkunftsbelege sind linear-algebraisch/geometrisch. Die zwei Analysis-Gates entfallen als fachfremde Vorbereitung. Der bestehende Orientierungseinstieg bleibt; die Formeln/Begriffe werden innerhalb des Memoryziels gelernt und die umfangreicheren Anwendungen weiterhin in eigenen Inhaltszielen.",
+      "conditions": [
+        "Use the separately reviewed memory proposal; do not remove the census edge automatically.",
+        "Recheck exact source/goal/array guards, global expected semantic changes and subsequent sequential full closure equality."
+      ],
+      "humanApproval": false,
+      "repairProposal": {
+        "path": "docs/dev/ci-graph-repairs/math-memory-prerequisites-repair-proposal-2026-11-06.json",
+        "sha256": "19bb5102c3644b3810a097a4e4fa72bd61df096bc61e78d3c7f6861cbdfa5f16",
+        "operationIds": [
+          "MATH-MEM-SEM-02"
+        ],
+        "independentReview": "ci_runtime; all42 DE/EN cards and four goal texts reviewed; AI only"
+      }
     },
     {
       "caseId": "MATH-MIN-0667",
@@ -102539,10 +102561,21 @@
           "mode": "direct"
         }
       ],
-      "decision": "pending_semantic_review",
-      "reason": null,
-      "conditions": [],
-      "humanApproval": false
+      "decision": "semantic_repair_instead_of_normalization",
+      "reason": "Die acht aktiven DE/EN-Karten betreffen Vektorbetrag, Mittelpunkt, Orthogonalität, Winkel, Geraden- und Ebenennotation sowie Matrixdimensionen und stochastische Matrizen. Weder Ableitungsregel-Auswahl noch Stammfunktionswahl, Integralberechnung oder orientierte Flächenbilanz wird abgefragt. Der gemeinsame Elterncluster nennt auch vertiefte Analysis, doch die konkrete Deckbeschreibung und alle acht Herkunftsbelege sind linear-algebraisch/geometrisch. Die zwei Analysis-Gates entfallen als fachfremde Vorbereitung. Der bestehende Orientierungseinstieg bleibt; die Formeln/Begriffe werden innerhalb des Memoryziels gelernt und die umfangreicheren Anwendungen weiterhin in eigenen Inhaltszielen.",
+      "conditions": [
+        "Use the separately reviewed memory proposal; do not remove the census edge automatically.",
+        "Recheck exact source/goal/array guards, global expected semantic changes and subsequent sequential full closure equality."
+      ],
+      "humanApproval": false,
+      "repairProposal": {
+        "path": "docs/dev/ci-graph-repairs/math-memory-prerequisites-repair-proposal-2026-11-06.json",
+        "sha256": "19bb5102c3644b3810a097a4e4fa72bd61df096bc61e78d3c7f6861cbdfa5f16",
+        "operationIds": [
+          "MATH-MEM-SEM-02"
+        ],
+        "independentReview": "ci_runtime; all42 DE/EN cards and four goal texts reviewed; AI only"
+      }
     },
     {
       "caseId": "MATH-MIN-0668",
@@ -110664,10 +110697,21 @@
           "mode": "direct"
         }
       ],
-      "decision": "pending_semantic_review",
-      "reason": null,
-      "conditions": [],
-      "humanApproval": false
+      "decision": "conditional_remove_direct_edge",
+      "reason": "Die 14 aktiven Analysis-Karten festigen ausdrücklich Ableitungs-, Stammfunktions- und Kurvendiskussionsregeln. Das bestehende elementare Ableitungsziel behandelt eine begrenzte Grundanwendung (Polynome bis Grad 3, einfache Exponential-/Potenzfunktionen) und bildet einen passenden fachlichen Einstieg in diese anschließende Regel-Festigung. Es verlangt nicht bereits Produkt-/Kettenregel, Kurvendiskussion, Integralrechnung oder sämtliche Herkunftsziele des Decks. Seine konkrete Vorbereitungskette führt über Differenzenquotienten und Änderungsraten zur Funktionsgrundlage und Orientierung. Nur die zusätzliche direkte Orientierungskante wird entfernt; keine fachliche Nachfrage entfällt und die eigene Kartenlernung/Recallprüfung bleibt unverändert.",
+      "conditions": [
+        "Use the separately reviewed memory proposal; do not remove the census edge automatically.",
+        "Recheck exact source/goal/array guards, global expected semantic changes and subsequent sequential full closure equality."
+      ],
+      "humanApproval": false,
+      "repairProposal": {
+        "path": "docs/dev/ci-graph-repairs/math-memory-prerequisites-repair-proposal-2026-11-06.json",
+        "sha256": "19bb5102c3644b3810a097a4e4fa72bd61df096bc61e78d3c7f6861cbdfa5f16",
+        "operationIds": [
+          "MATH-MEM-NORM-01"
+        ],
+        "independentReview": "ci_runtime; all42 DE/EN cards and four goal texts reviewed; AI only"
+      }
     },
     {
       "caseId": "MATH-MIN-0739",
@@ -131346,10 +131390,21 @@
           "mode": "direct"
         }
       ],
-      "decision": "pending_semantic_review",
-      "reason": null,
-      "conditions": [],
-      "humanApproval": false
+      "decision": "semantic_repair_instead_of_normalization",
+      "reason": "Die zwölf aktiven DE/EN-Karten verlangen kurze Formeln und Begriffe zu bedingter Wahrscheinlichkeit, Unabhängigkeit, Laplace, Erwartungswert, Binomialkoeffizient/-verteilung, Sigma-Regeln und Testfehlern. Keine verlangt Differenzieren; auch die Sigma-Karte ist ein kompakter Verteilungszusammenhang und keine Dichteintegral- oder Ableitungsaufgabe. Die Ableitungs-Anwendungsleistung entfällt. Die bereits vorhandene grundlegende Funktion-/Zuordnungskompetenz bleibt als Vorbereitung für die verwendeten Zuordnungen von Werten zu Wahrscheinlichkeiten erhalten; es wird keine Verteilungsberechnung oder Hypothesentest-Durchführung als neue Vorbedingung eingeführt.",
+      "conditions": [
+        "Use the separately reviewed memory proposal; do not remove the census edge automatically.",
+        "Recheck exact source/goal/array guards, global expected semantic changes and subsequent sequential full closure equality."
+      ],
+      "humanApproval": false,
+      "repairProposal": {
+        "path": "docs/dev/ci-graph-repairs/math-memory-prerequisites-repair-proposal-2026-11-06.json",
+        "sha256": "19bb5102c3644b3810a097a4e4fa72bd61df096bc61e78d3c7f6861cbdfa5f16",
+        "operationIds": [
+          "MATH-MEM-SEM-03"
+        ],
+        "independentReview": "ci_runtime; all42 DE/EN cards and four goal texts reviewed; AI only"
+      }
     },
     {
       "caseId": "MATH-MIN-0922",
@@ -131452,10 +131507,22 @@
           "mode": "direct"
         }
       ],
-      "decision": "pending_semantic_review",
-      "reason": null,
-      "conditions": [],
-      "humanApproval": false
+      "decision": "conditional_remove_direct_edge",
+      "reason": "Die zwölf aktiven DE/EN-Karten verlangen kurze Formeln und Begriffe zu bedingter Wahrscheinlichkeit, Unabhängigkeit, Laplace, Erwartungswert, Binomialkoeffizient/-verteilung, Sigma-Regeln und Testfehlern. Keine verlangt Differenzieren; auch die Sigma-Karte ist ein kompakter Verteilungszusammenhang und keine Dichteintegral- oder Ableitungsaufgabe. Die Ableitungs-Anwendungsleistung entfällt. Die bereits vorhandene grundlegende Funktion-/Zuordnungskompetenz bleibt als Vorbereitung für die verwendeten Zuordnungen von Werten zu Wahrscheinlichkeiten erhalten; es wird keine Verteilungsberechnung oder Hypothesentest-Durchführung als neue Vorbedingung eingeführt. Nach dem getrennten Entzug des fachfremden Ableiten-Gates bleibt das ursprüngliche Funktionsgrundlagenziel erhalten. Dieses verlangt die Sek-II-Orientierung direkt. Die zusätzliche Orientierungskante des Stochastik-Decks ist deshalb redundant; ihre Entfernung verändert weder dessen Vorbereitung noch die Goal-/atomare Closure.",
+      "conditions": [
+        "Use the separately reviewed memory proposal; do not remove the census edge automatically.",
+        "Recheck exact source/goal/array guards, global expected semantic changes and subsequent sequential full closure equality."
+      ],
+      "humanApproval": false,
+      "repairProposal": {
+        "path": "docs/dev/ci-graph-repairs/math-memory-prerequisites-repair-proposal-2026-11-06.json",
+        "sha256": "19bb5102c3644b3810a097a4e4fa72bd61df096bc61e78d3c7f6861cbdfa5f16",
+        "operationIds": [
+          "MATH-MEM-SEM-03",
+          "MATH-MEM-NORM-02"
+        ],
+        "independentReview": "ci_runtime; all42 DE/EN cards and four goal texts reviewed; AI only"
+      }
     },
     {
       "caseId": "MATH-MIN-0923",
@@ -131571,8 +131638,10 @@
     }
   ],
   "reviewSummary": {
-    "pending": 923,
-    "conditionalRemovalProposals": 0,
-    "heldForSemanticRepair": 0
+    "pending": 917,
+    "conditionalRemovalProposals": 2,
+    "heldForSemanticRepair": 4,
+    "independentlyReviewedMemoryCases": 6,
+    "sourceDataEdits": 0
   }
 }

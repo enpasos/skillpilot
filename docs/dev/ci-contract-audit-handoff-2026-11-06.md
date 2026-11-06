@@ -88,7 +88,7 @@ G05 (eindeutige Referenzen), G06/G07/G15/G42 (vier DAG-Prüfungen) sowie
 G16/G17 (lokale und transitive Minimalität). Fehlende, blockierte, doppelte
 oder falsch abgegrenzte Prüfberichte begründen keinen Meilenstein.
 
-Die lokale Integrationsprüfung führt 13 tatsächlich fehlerhafte Graphen
+Die lokale Integrationsprüfung führt inzwischen 14 tatsächlich fehlerhafte Graphen
 durch die gesamte Kette bis zur M6-/M7-Floor-Verletzung. Zusätzlich werden
 35 unvollständige bzw. unzutreffende Berichte zurückgewiesen. Der echte
 Bestandsbericht wurde neu erzeugt; sein frischer Check bestätigt zunächst
@@ -103,7 +103,7 @@ ist die erneute Gesamterzeugung bestanden; acht Fachuntergrenzen bleiben rot.
 | Mathematik | M7 | M0 | 925 |
 | Physik | M7 | M0 | 626 |
 | Wirtschaftswissenschaften | M7 | M0 | 104 |
-| Deutsch | M6 | M0 | 91 |
+| Deutsch | M6 | M6 | 0 |
 | Geschichte | M6 | M6 | 0 |
 | Informatik | M6 | M0 | 116 |
 | Latein | M6 | M6 | 0 |
@@ -111,10 +111,11 @@ ist die erneute Gesamterzeugung bestanden; acht Fachuntergrenzen bleiben rot.
 
 Diese Zahlen bezeichnen den neuen vollständigen kanonischen Prüfumfang
 einschließlich erforderlicher fremder Vorfahren und Abhängigkeiten.
-Bereits korrigiert sind ausschließlich die 19 unten beschriebenen
-Nullgewichte. Ihr exakter Felddiff verändert weder IDs, Texte, Atomgewichte
-noch Kanten; alle 19 G02-Defekte sind im frischen Bericht beseitigt. Die
-übrigen Befunde bleiben echte Fehler und sind keine akzeptierte Baseline.
+Der erste Reparaturschritt beseitigte 19 Nullgewichte. Sein exakter Felddiff
+verändert weder IDs, Texte, Atomgewichte noch Kanten; alle 19 G02-Defekte sind
+im frischen Bericht beseitigt. Danach folgten die unten beschriebenen
+Geschichte- und Deutsch-Reparaturen. Die in der Tabelle verbleibenden
+Befunde sind echte Fehler und keine akzeptierte Baseline.
 
 **Nachfolgender Geschichte-Zwischenstand:** Commit `00b441ed4c` entfernt
 13 konkret geprüfte direkte Voraussetzungen aus sieben Assessmentzielen,
@@ -125,6 +126,50 @@ Der echte Strukturprüfer besteht danach für Geschichte alle zehn Checks
 mit null Befunden. Die anschließend tatsächlich neu erzeugte CQR-Gesamtableitung
 bestätigt M6; der eigenständige Floorprüfer beanstandet Geschichte nicht mehr.
 Der exakte Befehlslauf `quality:curriculum-status` endete mit Exit 0.
+
+**Nachfolgende Deutsch-Reparatur:** Die unabhängigen Einzelprüfungen und der
+Root-Zweitblick führten zu 68 konkret geschützten fachlichen Korrekturen.
+Ihre beabsichtigten Änderungen betreffen exakt die einzeln benannten 84
+Goal- und 99 atomaren Nachfragemengen; die Gesamtaufgabe behält ihre volle
+Vorbereitung. Danach wurden 41 gesondert geprüfte Direktkanten der
+Gesamtaufgabe entfernt. Nach jedem dieser Entzüge bleiben die vollständigen
+globalen Goal- und Atom-Closures exakt gleich. Insgesamt ändern sich nur
+`requires`-Arrays von 69 Goals. IDs, Texte, `contains`, Karten, Aufgaben,
+Bewertung, Zielmitgliedschaft und bestehende Reviewbytes bleiben erhalten.
+Der echte Strukturprüfer bestätigt danach für Deutsch zehn bestandene Checks
+und null Befunde. Die tatsächliche CQR-Gesamterzeugung vom
+`2026-11-06T11:05:14.975Z` ergibt zunächst M4: CQR-501 meldet 21 Unterschiede
+zwischen berechneter und gespeicherter Applicability. Zusätzlich braucht
+ein vorhandener HE-Sek-I-Kommunikationsbaustein seine explizite Supportrolle
+in den beiden HE-Sek-II-Sichten. Die
+[Anwendungsquittung](ci-graph-repairs/german-semantic-and-minimality-repair-2026-11-06.json)
+und der [lesende globale Replay](ci-graph-repairs/verify_german_semantic_repair.py)
+binden Quelle, Zweitreviews, exakte Deltas und alle 41 überlebenden Zeugen.
+
+Die anschließende [Scope-Integration](ci-graph-repairs/german-applicability-support-review-2026-11-06.md)
+ist ebenfalls konkret angewandt: genau 21 einzeln begründete Metadatenderivate
+und zwei authored `prerequisiteOnly`-Einträge. Root hat mit denselben
+Produktionsfunktionen alle 27 exakten Zielmengen erneut unverändert bestätigt;
+beide HE-Sichten behalten 175 Targets und ihren sichtbaren Baum, erhalten
+aber je eine explizite Supportkompetenz. Der Applicability-Compiler meldet
+danach null Fehler und null APV-203-Drift. Der vollständige Composition-CLI
+prüft 352 Views mit null Fehlern und 2358 ausgewiesenen Warnungen.
+Die anschließende echte CQR-Gesamterzeugung vom `2026-11-06T11:36:07.203Z`
+bestätigt Deutsch wieder als M6; alle CQR-001/301/302/401/501-Prüfungen
+bestehen. Geschichte und Latein bleiben M6; die sieben übrigen geschützten
+Fächer bleiben wegen ihrer tatsächlichen offenen Befunde auf M0. Keine
+Ausnahme oder Warnungsfreigabe wurde hinzugefügt. Die [Anwendungsquittung](ci-graph-repairs/german-applicability-support-application-2026-11-06.json)
+und der [lesende Produktionsreplay](ci-graph-repairs/verify_german_scope_integration.ts)
+binden diesen eigenen Schritt.
+
+Ein zusätzlicher echter G01b-Gegenfall zeigte, dass verschiedene Hex-Schreibweisen
+desselben UUID-Werts bislang als getrennte Strings durchgingen. Die neue
+wertbezogene Kollisionsprüfung verwirft solche Doppelidentitäten innerhalb und
+zwischen kanonischen Landschaften. Einzelne Großschreibungen bleiben zulässig;
+keine ID wird dabei umgeschrieben. Der zunächst rote Test und die gesamte
+14-Graphen-/35-Berichte-Integration bestehen nach der Korrektur. Die neue
+PoWi-Generatorprobe prüft die vorhandenen fünf Deckeinträge und echte
+Fehl-/Mehrdeutigkeitsfälle ebenfalls über den bestehenden C611-Aufruf.
 
 Vor Kantenkorrekturen wird die bestehende Main-Laufzeitauflösung korrigiert:
 Ein gemeisterter oder außerhalb liegender Zwischenknoten darf einen weiterhin
@@ -141,16 +186,14 @@ JDK 25.0.2+10, vorhandene Offline-Abhängigkeiten und vorhandene Ressourcen
 wurden verwendet; ein frischer vollständiger Ressourcen-/Remote-CI-Lauf bleibt
 gesondert erforderlich. Der Backendumfang ist danach eingefroren.
 
-Der bisher gespeicherte CQR-Bericht trägt bereits diese alten M6-/M7-Werte;
-seine Existenz ist kein Nachweis der neuen harten Prüfungen. Der frische
-Abgleich des bisherigen Prüferprofils und die anschließende Integration der
-vollständigen Strukturprüfungen sind getrennt zu belegen. Die statische
-Reparatur beginnt beim Graphvertrag in CQR-001, einschließlich eindeutigem
-Referenzraum, UUID-/Gewichtsdomäne, globalen und atomar normalisierten Zyklen
-sowie lokaler und transitiver Minimalität. Tatsächliche Befunde und notwendige
-Identitätsmigrationen werden vor Datenkorrekturen präzise inventarisiert.
-Keine automatische fachliche Kantenkorrektur und keine Einheitenzerlegung
-sind dadurch erlaubt.
+Der auf main gespeicherte CQR-Bericht trug die früheren M6-/M7-Werte ohne
+den neuen vollständigen Graphvertrag. Der aktuelle Branchbericht ist dagegen
+tatsächlich mit der strikten CQR-001-Prüfung erzeugt und enthält den oben
+ausgewiesenen Zwischenstand. Der historische Abgleich des bisherigen
+Prüferprofils und die anschließende Integration der vollständigen
+Strukturprüfungen bleiben getrennt belegt. Notwendige Identitätsmigrationen
+werden vor Datenkorrekturen präzise inventarisiert. Keine automatische
+fachliche Kantenkorrektur und keine Einheitenzerlegung sind dadurch erlaubt.
 
 ## Verbindlicher Wiederherstellungsplan nach Astra-Prüfung
 
@@ -296,6 +339,45 @@ geprüft; Fälligkeit entzieht keine Verifikation oder Mastery.
    optionale Paket-/OWL-Workflows sind verschiedene Durchsetzungsstärken.
    Grüne CI oder M7 belegen nur den tatsächlich implementierten Prüfvertrag.
 
+## Gesicherter CI- und Identitätszwischenstand
+
+Die frische Remote-Assessment-CI für PR-Kopf `be07d93e9357a8405a892b354c1eefaa3442568e`
+führte 347 Tests aus; zwei Testaufbauten bedienten noch ausschließlich den
+alten Resolver-Aufruf. Die konkrete [Fixture-Reparatur](ci-graph-repairs/assessment-ci-fixture-repair-2026-11-06.json)
+erhält alle Produktionsguards und prüft den vollständigen Level-2-Leseumfang
+sowie Readonly-Grenzen. Die beiden Methoden und danach die gesamte 55er-Klasse
+bestehen lokal mit gepinntem JDK/Offline-Ressourcen. Frische vollständige
+Remote-CI für den nächsten gepushten Kopf bleibt erforderlich.
+
+Der ebenfalls abgeschlossene Hauptlauf `42205723343` meldete drei weitere
+fehlgeschlagene Jobs: Der interne unveröffentlichte OpenAI-Entwurf war nach
+der begrenzten Instruktionskorrektur veraltet; zwei Jobs prüfen dieselben
+gebundenen Entwurfsquellen. Der dritte meldete den durch die neuen echten
+Meilensteine veralteten G8/G9-Statusbericht. Beide Ableitungen sind mit ihren
+bestehenden Produzenten aktualisiert. `openai_plugin_release.mjs prepare`
+und `verify` sowie alle 24 Submissiontests bestehen lokal. Die 15 vorab
+gebundenen veröffentlichten/historischen/retained Dateien bleiben bytegleich.
+Der G8/G9-Bericht und sein eigener Aktualitätscheck bestehen für die drei
+aktuell abgeleiteten M6-Fächer; die sieben übrigen Fachfloors bleiben Fehler.
+
+Für die spätere 164-ID-Korrektur liegen gesonderte unveröffentlichte
+Bijektionswerkzeuge und ein unverdrahteter Backendkern vor. Eine unabhängig
+verifizierte Quellhülle A auf `80d70f08e0ce31cbdc214e62b5d3e0e80cd850db`
+belegt 164 UUID-v5-Zuordnungen, 593 Katalogdateien und 14926 exakte
+Feldprojektionen. Ihre einzige Fähigkeit ist isolierte Kandidaten-QA; sie
+behauptet weder QA-Gültigkeit noch Speicherung, Runtimeintegration oder
+Aktivierung. Die historische 212-Hülle bleibt mit echten Readinessblockern
+gesperrt. Die separate operative Hülle B, Repository-/Paketadapter,
+Zustandskontinuität und echte neue QA-Outputs sind noch herzustellen.
+Kein Aliasbestand wird durch Statusflag, Hashnachführen oder Repo-Fallback
+in einem Paketbackend als aktiviert ausgegeben.
+
+Der [unabhängige Zweitblick](ci-graph-repairs/canonical-identity-proof-independent-review-2026-11-06.md)
+fand vier konkrete Fehler im zunächst unverdrahteten Java-A-Kern. Alle vier
+sind inzwischen mit echten roten Regressionen und anschließend 23 grünen
+Tests behoben; der Reviewer reproduzierte die 23 Tests zusätzlich separat.
+Dieser begrenzte Quellprojektionskern ist weiterhin keine Runtimeintegration.
+
 ## Nächste Schritte im neuen Chat
 
 1. Main-Basis und Arbeitsstatus verifizieren. Gesicherte Dateien lesen und ein
@@ -303,9 +385,15 @@ geprüft; Fälligkeit entzieht keine Verifikation oder Mastery.
 2. Den abgeschlossenen 518-Regelkorpus und seine getrennten CI-Matrizen als
    festen Nenner verwenden; die 29 Alt-IDs sind Aliase und keine weiteren Regeln.
    Astra Ultra prüft die fachliche Reparatur, Sol 6.1 Ultra setzt sie um.
-3. Sol 6.1 Ultra ordnet je Regel Implementierung, tatsächlichen Gegenprüfer,
-   Workflow/Job/Befehl, Trigger, geprüften Scope und Fehlerwirkung zu.
-   „Test vorhanden“ genügt nicht. Nicht geprüft ist kein erfülltes Kriterium.
+3. Die sieben noch fehlenden Fachstände mit den konkreten Einzelbefunden
+   reparieren und nach jedem abgegrenzten Schritt frisch prüfen. Math-Memory
+   und Arithmetik sind getrennt vorbereitete Pakete; sechs aktuelle
+   Klassifikationsbindungen sowie zwei tatsächliche D-/P-Kontexte würden
+   dabei veralten und benötigen echte Neuqualifikation. Keine vorhandenen
+   Reviews bloß mit neuen Hashes versehen. Die [Bindungsanalyse](ci-graph-repairs/math-pilot-qa-binding-impact-2026-11-06.json)
+   und die [Buchfolgenanalyse](ci-graph-repairs/math-pilot-book-impact-2026-11-06.json)
+   sind ausdrücklich hypothetische Folgenprüfungen, keine aktuelle QA-Freigabe.
+   Nicht geprüft ist kein erfülltes Kriterium.
 4. Normkonflikte und nicht deterministisch entscheidbare Inhaltsurteile
    gesondert ausweisen. Maschinen können aktuelle Reviewbelege prüfen, nicht
    fachliche Richtigkeit oder reale Lernwirksamkeit beweisen.

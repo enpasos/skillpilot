@@ -451,7 +451,7 @@ von M6/M7 noch den direkten Untergrenzenprüfer erfüllen. Die zehn geschützten
 Untergrenzen bleiben unverändert; die tatsächlich gefundenen Datenprobleme
 müssen behoben werden.
 
-`testCurriculumGraphMaturity.ts` prüft 13 echte fehlerhafte Graphen bis zur
+`testCurriculumGraphMaturity.ts` prüft inzwischen 14 echte fehlerhafte Graphen bis zur
 Ableitung M0 und zum M6-/M7-Untergrenzenfehler sowie 35 unvollständige oder
 widersprüchliche Belegvarianten. Diese fokussierte Prüfung, der reguläre
 App-Typecheck und ESLint der geänderten Integrationsdateien bestanden lokal.
@@ -460,6 +460,23 @@ vollständiger neu erzeugter Status, wiederhergestellte reale Reifestufen und
 frische Remote-CI werden damit noch nicht als bestanden erklärt. Die obigen
 Auditzeilen behalten ihren angegebenen Ausgangsstand; diese Ergänzung beschreibt
 den konkreten späteren Reparaturumfang.
+
+Die anschließend getrennt ausgeführte Deutsch-Reparatur hat im echten
+CQR-Gesamtbericht vom `2026-11-06T11:36:07.203Z` M6 erreicht. Alle zehn
+Strukturchecks sowie CQR-301/302/401/501 bestehen. Die zusätzlich geprüften
+27 authored Zielmengen bleiben unverändert; beide HE-Sichten erhalten je eine
+explizite Supportkompetenz. Deutsch, Geschichte und Latein erfüllen damit ihre
+geschützten M6-Grenzen, sieben weitere Fachgrenzen scheitern weiterhin.
+
+Der frische Assessment-Workflow für PR-Kopf `be07d93e9357a8405a892b354c1eefaa3442568e`
+führte 347 Tests aus und meldete zwei fehlgeschlagene Testaufbauten, deren
+Resolver-Mocks nur den alten `load`-Aufruf bedienten. Die gezielte Korrektur
+prüft den neuen vollständigen Level-2-Aufruf, erhält den verbotenen historischen
+Read und alle Readonly-Grenzen als Gegenprüfungen. Beide betroffenen Methoden
+und danach die gesamte 55er-Testklasse bestehen lokal; Produktionscode wurde
+dabei nicht verändert. Der [gesonderte Prüfnachweis](../dev/ci-graph-repairs/assessment-ci-fixture-repair-2026-11-06.json)
+enthält echte Remote-Artefakthashes und die lokale Ressourcengrenze. Der neue
+vollständige Remote-Lauf steht aus.
 
 ## Begrenzte weitere Reparaturen
 
