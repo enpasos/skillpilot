@@ -90,6 +90,21 @@ Umfang und die Stoppgrenze stehen im
   Workflowtrigger und harte Fehlerwirkung sind unten beschrieben. Eine frische
   vollständige Remote-CI wird hier nicht behauptet.
 
+Der anschließende [begrenzte Fixture-Folgeschritt](../dev/ci-graph-repairs/backend-ci-transitive-fixture-repair-2026-11-06.json)
+behebt fünf echte Fehler des vorherigen Main-CI-Laufs ausschließlich in drei
+Testklassen. Offene tiefe Voraussetzungen sperren weiterhin; gespeicherte
+vollständige Grundlagen öffnen den Weg. Falscher Owner und unbekannter Support
+bleiben Konfigurationsfehler vor Fokusfilterung. Der Quotenfall lässt bewusst
+ein weiteres offenes, lernbares Ziel übrig. Alle 231 Tests dieser drei Klassen
+bestehen mit normaler Ressourcenverarbeitung und gepinntem JDK, ohne Fehler
+oder Skips; der unabhängige Gegenblick hat die XMLs und den Diff geprüft.
+Der zusätzliche tatsächliche Remote-Assessment-Lauf `42233674881` für Kopf
+`e8f97c2b7a93578beef77be729f166f6fd47e206` und Merge
+`39a9fc5d8ea869d8ffea0e4931244e2895d3b383` besteht ebenfalls: Das heruntergeladene
+und per SHA-256 geprüfte Artefakt enthält 37 Suiten, 347 Tests, null Fehler und
+Skips. Diese beiden Nachweise haben unterschiedliche Klassen- und Quellscopes;
+der folgende neue Kopf benötigt wiederum seine eigene Remote-CI.
+
 **Weiter offen:** R03 und die lokalen/globalen Anerkennungsregeln einschließlich
 U35–U38 werden durch vollständige Voraussetzungspfade nicht erfüllt. Die alten
 Automatic-Waiver-Regeln, fehlende Vertragsownership und zusätzliche PR83-C(q)-

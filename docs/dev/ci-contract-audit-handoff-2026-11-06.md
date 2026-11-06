@@ -177,6 +177,19 @@ M6-Fächer; Informatik bleibt wegen seiner 62 offenen Befunde M0. Die
 bindet diese Ergebnisse. Aufgaben, historische Praxisquittungen und Mastery
 wurden dadurch nicht umgeschrieben oder neu freigegeben.
 
+**Aktueller Grundlagen-Folgeschritt:** Sechs unabhängig geprüfte gewöhnliche
+Informatik-Voraussetzungsarrays und sieben Deutsch-Felder sind inzwischen
+angewandt. Zwei Deutsch-Phasenverstöße entfallen durch vorhandene fachliche
+E-Grundlagen; die Gesamtaufgabe behält ihren bisherigen Vorbereitungsumfang.
+Ein vollständiger Replay über alle 21 Kataloge bestätigt exakt die 23
+einzeln geprüften Goal-/Atomic-Nachfrageänderungen und keine fremden Folgen.
+Der allgemeine Graphvalidator besteht für 593 Landschaften, die vollständige
+Compositionprüfung für 352 Views/21 Kataloge mit null Fehlern und 2358 Warnungen.
+Der echte CQR-Bericht vom `2026-11-06T14:51:11.291Z` bestätigt weiterhin Deutsch,
+Geschichte und Latein als M6 sowie Informatik als M0 mit 62 G17-Befunden.
+Die [Anwendung mit Replay](ci-graph-repairs/informatics-german-foundation-application-2026-11-06.md)
+bindet diese eigenen Ergebnisse. Sieben geschützte Fachfloors bleiben rot.
+
 Ein zusätzlicher echter G01b-Gegenfall zeigte, dass verschiedene Hex-Schreibweisen
 desselben UUID-Werts bislang als getrennte Strings durchgingen. Die neue
 wertbezogene Kollisionsprüfung verwirft solche Doppelidentitäten innerhalb und
@@ -365,6 +378,23 @@ geprüft; Fälligkeit entzieht keine Verifikation oder Mastery.
    Grüne CI oder M7 belegen nur den tatsächlich implementierten Prüfvertrag.
 
 ## Gesicherter CI- und Identitätszwischenstand
+
+Der zusätzliche tatsächliche Assessment-Lauf `42233674881` für Kopf
+`e8f97c2b7a93578beef77be729f166f6fd47e206` und Merge
+`39a9fc5d8ea869d8ffea0e4931244e2895d3b383` ist ebenfalls bestanden: 347 Tests
+in 37 XML-Suiten, null Fehler oder Skips. Das echte Artefakt ist heruntergeladen
+und gegen seinen SHA-256 geprüft; die erweiterte Fixturequittung bindet alle
+Suiten. Der OpenAI-Apps-Job des zugehörigen Hauptlaufs `42233675012` besteht
+nach der begrenzten Submission-Neuerzeugung ebenfalls.
+
+Die fünf verbliebenen Backend-Testfehler des älteren Hauptlaufs sind inzwischen
+ausschließlich in drei Testklassen korrigiert. Offene transitive Vorbereitung,
+korrekte Owner und bekannte Supportziele bleiben verbindlich; ein Quotenfall
+lässt ein weiteres lernbares Ziel ausdrücklich offen. Alle 231 Tests dieser
+Klassen bestehen mit normaler Ressourcenverarbeitung und gepinntem JDK ohne
+Fehler oder Skips. Der [unabhängige Gegenblick](ci-graph-repairs/main-transitivity-fixture-independent-review-2026-11-06.json)
+prüft Diff, echte Definitionen und XMLs. Dies ist ein lokaler Nachweis; der
+folgende gepushte Stand benötigt frische vollständige Remote-CI.
 
 Die frische Remote-Assessment-CI für PR-Kopf `be07d93e9357a8405a892b354c1eefaa3442568e`
 führte 347 Tests aus; zwei Testaufbauten bedienten noch ausschließlich den

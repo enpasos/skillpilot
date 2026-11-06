@@ -649,3 +649,14 @@ bindet die wirklichen CLI-Läufe, Baselinevergleiche und Grenzen. Damit wird
 die in der ursprünglichen G05-Zeile dokumentierte Mehrdeutigkeitslücke repariert;
 die ebenfalls dort genannten weitergehenden Strukturverträge benötigen ihre
 jeweiligen eigenen Gegenprüfer.
+
+Der danach angewandte [Grundlagen-Folgeschritt](../dev/ci-graph-repairs/informatics-german-foundation-application-2026-11-06.md)
+behebt auch die beiden Deutsch-Phasenfehler fachlich. Der tatsächliche allgemeine
+CLI besteht jetzt für alle 593 Landschaften; keine Phase oder Prüfregel wurde
+ausgenommen. Der vollständige CQR-Bericht vom `2026-11-06T14:51:11.291Z`
+bestätigt weiterhin Deutsch, Geschichte und Latein als M6. Sechs geprüfte
+Informatik-Voraussetzungskorrekturen ändern tatsächlichen fachlichen Bedarf;
+sie sind ausdrücklich keine closuregleichen Normalisierungen. Informatik
+behält 62 G17-Befunde und bleibt M0. Die vollständige Compositionprüfung
+besteht mit 352 Views, 21 Katalogen, null Fehlern und 2358 Warnungen; der echte
+Floorcheck scheitert weiterhin an sieben unveränderten Fachuntergrenzen.

@@ -29,6 +29,12 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
   Tatsächlich fehlende Materialien und unbelegte Prüfungsabdeckung mit konkretem Reparaturumfang.
 - [Informatik: Grundlagen für den Voraussetzungsreview](ci-graph-repairs/informatics-ordinary-prerequisite-review-input-2026-11-06.md)
   Vollständige Endpunkttexte und wirkliche Wege über gewöhnliche Ziele und fremde Prüfungen.
+- [Angewandte Grundlagenkorrekturen in Informatik und Deutsch](ci-graph-repairs/informatics-german-foundation-application-2026-11-06.md)
+  13 geschützte Feldänderungen mit vollständigen Nachfragedeltas und frischer tatsächlicher QA.
+- [Backend-Fixtures: unabhängiger Zweitblick](ci-graph-repairs/main-transitivity-fixture-independent-review-2026-11-06.json)
+  Fünf echte Remote-Fehler eingegrenzt; 231 Tests ohne Produktionsänderung bestanden.
+- [Informatik-Q4: tatsächliche Prologausführung](ci-graph-repairs/informatics-q4-prolog-execution-2026-11-06.md)
+  40 Interpreterabfragen für getrennte Aufgabenentwürfe, ohne Prüfungs- oder Runtimefreigabe.
 - [Mathematik: fachliche Minimalitätsprüfung](ci-graph-repairs/math-minimality-review-2026-11-06.md)
   Vollständige 923-Fall-Zuordnung; laufende Einzelprüfung, noch keine Kantenübernahme.
 - [Mathematik: Voraussetzungen der Kartenziele](ci-graph-repairs/math-memory-prerequisites-review-2026-11-06.md)
