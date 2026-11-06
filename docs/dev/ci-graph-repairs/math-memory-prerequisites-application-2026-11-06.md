@@ -58,8 +58,14 @@ besteht für 593 Landschaften.
 
 Die echte aktive CQR-001-Teilprüfung führt alle zehn Strukturchecks aus und
 meldet **919 verbleibende Befunde**, darunter 917 G17-Fälle. Mathematik ist damit
-weiterhin nicht M7. Vollständige CQR-Neuerzeugung, weitere Integrationsprüfungen
-und frische Remote-CI bleiben getrennte Pflichten. Die
+weiterhin nicht M7. Die vollständige lokale CQR-Neuerzeugung ist inzwischen
+abgeschlossen: Der Bericht von `2026-11-06T18:13:50.840Z` bestätigt die 919
+Befunde. Alle 352 Views bestehen mit null Fehlern und 2358 ausgewiesenen
+Warnungen. Der Floorcheck scheitert korrekt an sieben Fachuntergrenzen;
+Deutsch, Geschichte und Latein bleiben M6. Der
+[nachfolgende Gesamtbeleg](post-memory-orientation-current-cqr-2026-11-06.json)
+bindet diese tatsächlichen Nachläufe nach der zusätzlichen Sprachkorrektur.
+Frische Remote-CI für die neuen Änderungen bleibt erforderlich. Die
 [Anwendungsquittung](math-memory-prerequisites-application-2026-11-06.json)
 bindet tatsächliche Befehle, Artefakte und Quellen. Die historische Source-A80-
 Hülle wird durch diese fachliche Änderung nicht aktuell; Migration und Runtime
