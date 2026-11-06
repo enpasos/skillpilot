@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-11-06T18:45:31.502Z
+Generated: 2026-11-06T20:52:17.680Z
 Rules version: curriculum-quality-v5
 
 ## Summary
@@ -37,7 +37,7 @@ Rules version: curriculum-quality-v5
 | Geschichte (Gymnasium, DE) | M6 | 217 | 177 | 31/31 | 16/16 | 1 | 0 | 0 |
 | Griechisch (Gymnasium, DE) | M0 | 198 | 185 | 2/2 | 2/16 | 0 | 2 | 1 |
 | Gymnasium (DE) | M0 | 1 | 0 | - | 0/16 | 0 | 2 | 1 |
-| Informatik (Gymnasium, DE) | M0 | 282 | 237 | 29/29 | 16/16 | 1 | 0 | 2 |
+| Informatik (Gymnasium, DE) | M0 | 282 | 237 | 29/29 | 16/16 | 1 | 0 | 4 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Latein (Gymnasium, DE) | M6 | 176 | 136 | 26/26 | 16/16 | 1 | 0 | 0 |
 | Mathematik (Gymnasium, DE) | M0 | 1252 | 978 | 31/31 | 16/16 | 2 | 0 | 1 |
@@ -404,8 +404,9 @@ Rules version: curriculum-quality-v5
 | CQR-103 | M3 | route | Configured route scopes no longer depend on cluster-level requires for ordinary didactic sequencing. |
 | CQR-104 | M3 | route | Configured route scopes expose motivation anchors and terminal autonomy goals in relevant learner-facing composition views. |
 | CQR-201 | M4 | assessment | Terminal autonomy goals in configured scopes carry examData. |
-| CQR-202 | M4 | assessment | Terminal autonomy examData is concrete enough for hard exam mode and is not placeholder prose. |
+| CQR-202 | M4 | assessment | Route endpoints, released-offer exams and rendered subject-view exam targets are ready for hard exam mode and are not placeholders. |
 | CQR-203 | M4 | assessment | Terminal autonomy examData has release status, covered goals, covered strands, and demand-level metadata. |
+| CQR-204 | M4 | assessment | Every retained exam definition has task, solution and scoring structure, including non-offered drafts. |
 | CQR-301 | M5 | review | Configured semantic-atomicity ledgers are complete, current, and free of unresolved review queue entries. |
 | CQR-302 | M6 | review | Configured memory-card ledgers explicitly decide for ordinary atomic goals whether memorization is justified; every kept primary card traces to such a decision, every existing memory deck remains traced, and configured composition views expose referenced memory nodes where memory-required goals are visible. |
 | CQR-303 | M7 | review | The central five-gate report proves a nonempty current curricularAtomic scope, complete D/P/A/M/V intersection, successful required validation checks, and no blocking findings. Technical visualization deferrals remain incomplete; AI evidence never becomes human approval. |

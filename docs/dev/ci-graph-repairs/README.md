@@ -1,14 +1,32 @@
 # Belege zu den CI-Vertragsreparaturen
 
-Aktueller gesicherter Nachlauf: `2026-11-06T18:45:31.502Z`. Der
-[Gesamt-CQR-Beleg nach den 26 Informatik-Korrekturen](informatics-bounded26-current-cqr-2026-11-06.json)
-bindet alle 21 Quellen und die genau zehn unveränderten Fachfloors:
-Deutsch, Geschichte und Latein sind M6; sieben Floors bleiben offen.
-Mathematik hat 919 CQR-001-/917 G17-Befunde, Informatik noch 47 G17.
-CQR-101/102 bestehen dort; sechs generische Terminalprüfungen bleiben offen.
-Die vollständige Tabelle wird im Gesamtbeleg geführt. Der
-[vorherige Nachlauf von 18:13 UTC](post-memory-orientation-current-cqr-2026-11-06.md)
-bleibt als historischer Zwischenstand erhalten.
+Aktueller gesicherter Nachlauf: `2026-11-06T20:52:17.680Z`. Der
+[Gesamt-CQR-Beleg mit vollständigen Assessmentgates](complete-assessment-current-cqr-2026-11-06.md)
+bindet alle 21 Quellen, 925 Definitions- und 872 Bereitschaftsprüfungen sowie
+die zehn unveränderten Fachfloors. Deutsch, Geschichte und Latein bleiben M6;
+der tatsächliche harte Floorcheck scheitert an sieben übrigen Fachständen.
+Mathematik hat 919 Strukturbefunde, davon 917 G17; Informatik noch 37 G17 und
+sechs unzureichende Prüfungen. Die [vorherige 18:45-Quittung](informatics-bounded26-current-cqr-2026-11-06.json)
+bleibt historisch erhalten.
+
+- [Vollständiger technischer Assessmentumfang](cqr202-complete-assessment-scope-repair-2026-11-06.md):
+  native Sollmengen, gemeinsamer Validator für Ableitung und direkten
+  Floorverbrauch, echte Gegenfälle und vollständiger lokaler Deep-Pass.
+- [Angewandte E9-Normalisierung](informatics-ephase-terminal-normalization-application-2026-11-06.md)
+  und [einzelne Authentisierungs-/Logkorrektur](informatics-auth-logs-prerequisite-application-2026-11-06.md):
+  erste Operation mit gleicher globaler Nachfrage, zweite fachlich begründet
+  mit expliziten Deltas; SMTP bleibt eigene Prüfungsleistung.
+- [Technische Math-Duration-Reparatur](math-duration-input-binding-application-2026-11-06.md):
+  18 alt/neu/live bytegleiche Ausgaben, unveränderte Gegenwächter und tatsächlicher
+  grüner Nachlauf des zuvor remote roten Originalchecks.
+- [Terminale Remote-Evidenz auf 5c9](remote-5c9-terminal-2026-11-06.json):
+  sieben Hauptjobs einschließlich Backend und Frontend bestehen; Curriculum
+  scheitert vor der lokalen Math-Reparatur. Assessment-Core besteht, UI wird
+  beim Checkout abgebrochen. Die [lokal geprüfte Checkoutreparatur](assessment-authoring-checkout-repair-2026-11-06.md)
+  benötigt einen frischen Remote-Lauf.
+- [Vollständiger unabhängiger GK24-Review](informatics-gk24-terminal-independent-review-2026-11-06.md):
+  24 konkrete Leistungen samt eigenen Referenzläufen positiv; Angebots- und
+  Vorbereitungseinbindung bleiben ebenso wie beim E25-Draft gesondert offen.
 
 - [Angewandte fünf Sprachkorrekturen](global-orientation-cycles-application-2026-11-06.md):
   drei reale Sprachdateien, exakte Feldrekonstruktion, aktueller direkter
@@ -17,8 +35,9 @@ bleibt als historischer Zwischenstand erhalten.
 - [Enger Informatik-Kandidat](informatics-bounded26-overview-2026-11-06.md):
   inzwischen [angewandte](informatics-bounded26-prerequisites-application-2026-11-06.md)
   24 Fachkorrekturen plus getrennte Turing-/Dokumentationsschritte;
-  Cache, ISA, drei Abiturverträge, 47 G17 und Assessment-Inhalte bleiben offen.
-- [Terminaler Remote-Lauf auf 5cb](remote-main-5cb-terminal-2026-11-06.json):
+  Cache, ISA, drei Abiturverträge und Assessment-Inhalte bleiben offen;
+  der dortige historische Nachlauf hatte 47 G17.
+- [Historischer Remote-Lauf auf 5cb](remote-main-5cb-terminal-2026-11-06.json):
   fünf Jobs bestehen; Backend, Frontend und Curriculum scheitern. Die beiden
   Testfehler und die sieben echten Fachfloor-Verletzungen sind getrennte
   Aufgaben; der aktuelle lokale Stand ist dadurch nicht remote abgenommen.

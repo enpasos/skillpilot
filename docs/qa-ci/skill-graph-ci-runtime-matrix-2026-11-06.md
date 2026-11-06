@@ -561,3 +561,17 @@ Der frühere SRS-Normkonflikt ist nach der verbindlichen Klarstellung aufgelöst
 Keine Due-Rücknahme und keine erneute Prüfung bestandener Karten werden als
 offene Produktoptionen weitergeführt. Historische Auditnotizen bleiben als
 historische Befunde erhalten; sie setzen den aktuellen Kartenvertrag nicht.
+
+## Folgeschritt zu N19: vollständiger technischer Prüferumfang
+
+Der [CQR-202/204-Folgeschritt](../dev/ci-graph-repairs/cqr202-complete-assessment-scope-repair-2026-11-06.md)
+schließt die zuvor belegte Erfassungslücke: alle 925 erhaltenen Definitionen
+werden mit dem bestehenden Materialkern geprüft; 872 verbindliche Routen-,
+Offer- oder tatsächlich gerenderte Fachviewprüfungen benötigen zusätzlich
+Bereitschaft. Derselbe vollständige Nachweis ist Voraussetzung höherer
+Meilensteine und wird auch beim direkten Floorverbrauch verlangt.
+
+Das sind deterministische Material- und Umfangsprüfungen für Main-N19. Sie
+beweisen weder fachliche Richtigkeit beliebiger Aufgaben noch die vollständige
+U37-Qualifikation jedes freigebenden Consumer-Sets. Die vorbereiteten
+PR-83-Anerkennungsregeln bleiben getrennt und werden hier nicht implementiert.

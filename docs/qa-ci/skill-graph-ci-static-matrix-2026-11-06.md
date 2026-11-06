@@ -713,3 +713,22 @@ Deutsch, Geschichte und Latein bleiben M6, sieben geschützte Floors scheitern
 weiterhin hart. Frühere datierte Zähler bleiben historische Zwischenstände.
 Der feste Regelkorpus und seine 261/243/14-Zuordnung werden hierdurch nicht
 umgeschrieben; diese Nachträge beschreiben die tatsächlichen späteren Reparaturen.
+
+## Folgeschritt: vollständiger technischer Assessmentumfang
+
+Der [implementierte CQR-202/204-Folgeschritt](../dev/ci-graph-repairs/cqr202-complete-assessment-scope-repair-2026-11-06.md)
+ergänzt die bisherigen E28-/E29-Belege für Q01, Q03 und Q05. Der native
+Bestandszensus erfasst 925 Prüfungsdefinitionen auf Struktur und 872 verbindliche
+Prüfungen auf Bereitschaft: konfigurierte Routen einschließlich Daueralternativen,
+veröffentlichte Offer-Zweige und tatsächliche Prüfungs-Targets eigener Fachviews.
+Vollständige, nicht angebotene Drafts bleiben strukturell prüfpflichtig.
+
+Meilensteinableitung und direkter Floorverbrauch verwenden denselben Validator
+gegen eine vom Report unabhängige aktuelle native Sollmenge. Der
+[unabhängige Schlussreview](../dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06.md)
+belegt fehlende, rote, doppelte, gemeinsam gekürzte, fremd zugeordnete und
+in-place manipulierte Reports als tatsächliche Gegenfälle. Der vollständige
+lokale Deep-Einstieg besteht. Die Fachfloors bleiben unverändert; fachliche
+Aufgabeneignung und neue Anerkennungsregeln werden durch diese technische
+Umfangskorrektur nicht als erfüllt erklärt. Der feste Regelkorpus und seine
+Baselinezeilen bleiben nachvollziehbar.

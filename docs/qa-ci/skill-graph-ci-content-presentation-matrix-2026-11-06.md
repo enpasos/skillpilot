@@ -87,3 +87,13 @@ Quellpins allein beweisen eine solche Lückenbegründung nicht. Die
 und ihre [Bestands-/Prüfgrenze](../dev/ci-graph-repairs/informatics-875-retained-definition-contract-review-2026-11-06.md)
 halten die nachgewiesenen Befunde und die noch offene vollständige Reparatur
 getrennt. Die 14 Regelzuordnungen dieser Matrix bleiben unverändert.
+
+Der ergänzende [vollständige CQR-202/204-Prüfumfang](../dev/ci-graph-repairs/cqr202-complete-assessment-scope-repair-2026-11-06.md)
+erfasst 925 erhaltene Definitionen und 872 verbindliche Prüfungen. Er schützt
+auch die Meilensteinableitung und den direkten Floorverbrauch gegen fehlende
+oder gekürzte Berichte. Die bestehenden sechs unzureichenden Informatikprüfungen
+bleiben rot. Die vollständig begutachteten E25- und
+[GK24-Materialien](../dev/ci-graph-repairs/informatics-gk24-terminal-independent-review-2026-11-06.md)
+bleiben bis zur gesondert geprüften Angebots-/Vorbereitungsintegration Drafts.
+Diese technische Erweiterung belegt weiterhin keine allgemeine fachliche
+Richtigkeit oder Lernwirksamkeit.

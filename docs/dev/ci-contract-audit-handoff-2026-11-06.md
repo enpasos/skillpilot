@@ -95,7 +95,7 @@ Bestandsbericht wurde neu erzeugt; sein frischer Check bestätigt zunächst
 die Aktualität des ersten strikten Berichts und scheiterte danach an neun
 unverändert geschützten Floors. Nach der unten belegten Geschichte-Korrektur
 ist die erneute Gesamterzeugung bestanden. Weitere unten belegte Reparaturen
-führen im aktuellen Gesamtbericht vom `2026-11-06T18:45:31.502Z` zu drei
+führen im damaligen Gesamtbericht vom `2026-11-06T18:45:31.502Z` zu drei
 bestandenen M6-Fächern; sieben Fachuntergrenzen bleiben rot.
 
 | Fach | Ziel | Neuer abgeleiteter Stand | CQR-001-Befunde |
@@ -561,9 +561,9 @@ die obige Anwendung und die frische CQR-Erzeugung benennen den Stand. Der
 unterscheidet 32 später einzeln nachzuweisende Normalisierungen und 27 echte
 fachliche Holds. Kein Zeugenpfad berechtigt zum pauschalen Löschen einer Kante.
 
-## Aktuelle Fortsetzung: angewandte Reparaturen und getrennte Kandidaten
+## Zwischenstand 18:45 UTC: angewandte Reparaturen und getrennte Kandidaten
 
-Der [vollständige aktuelle Gesamtnachlauf](ci-graph-repairs/informatics-bounded26-current-cqr-2026-11-06.json)
+Der [damalige vollständige Gesamtnachlauf](ci-graph-repairs/informatics-bounded26-current-cqr-2026-11-06.json)
 vom `2026-11-06T18:45:31.502Z` enthält die tatsächlich angewandte kleine
 [Math-Memory-Reparatur](ci-graph-repairs/math-memory-prerequisites-application-2026-11-06.md)
 und die fünf Sprachoperationen sowie die 26 Informatikkorrekturen.
@@ -671,3 +671,35 @@ Der 518-Regelkorpus und seine Matrizen bleiben unverändert.
 > den Fortschritt im neuen PR. Vermische die Regeln von main nicht mit der
 > noch ungemergten Anerkennungsänderung aus dem eingefrorenen Einheitenstand.
 > Keine weitere Einheitenzerlegung oder Produktionsänderung.
+
+
+## Aktueller Nachlauf 20:52 UTC: vollständige Assessmentgates
+
+Der [neue vollständige CQR-Nachlauf](ci-graph-repairs/complete-assessment-current-cqr-2026-11-06.md)
+vom `2026-11-06T20:52:17.680Z` prüft 925 erhaltene Prüfungsdefinitionen
+und 872 verbindliche Prüfungen. Meilensteinableitung und direkter Floorconsumer
+verlangen die vollständigen positiven Nachweise gegen eine unabhängige native
+Sollmenge. Der vollständige lokale Deep-Einstieg und der unabhängige
+[Consumer-/Codegegenreview](ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06.md)
+bestehen. Die sechs unzureichenden Informatikprüfungen bleiben rot.
+
+Die E9-Normalisierung und die separat fachlich geprüfte Authentisierungs-/Logkorrektur
+sind angewandt. Informatik hat nun 37 G17 statt 47; alle 24 dortigen
+Prüfungsdefinitionen sind erfasst. Mathematik bleibt bei 919 Strukturbefunden,
+darunter 917 G17. Deutsch, Geschichte und Latein bleiben M6; der tatsächliche
+harte Floorcheck endet mit Exit 1 an sieben unveränderten Fachuntergrenzen.
+Der allgemeine Graphvalidator besteht für 593 Landschaften.
+
+Auf dem [terminalen Remote-Kopf 5c9](ci-graph-repairs/remote-5c9-terminal-2026-11-06.json)
+bestehen Backend und Frontend. Die tatsächlich rot gewesene Math-Duration-Policy
+ist inzwischen separat [technisch repariert](ci-graph-repairs/math-duration-input-binding-application-2026-11-06.md):
+alle 18 Ausgaben sind alt/neu/live bytegleich; der unveränderte Originalcheck
+besteht lokal. Der Assessment-UI-Checkoutabbruch hat eine lokal geprüfte
+[sparse Checkoutreparatur](ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06.md).
+Beide brauchen frische Remote-Abnahme auf dem neuen PR-Kopf.
+
+E25 und GK24 sind vollständig positiv inhaltlich begutachtete Drafts. Ihre
+Kurs-/Länderangebote und Vorbereitungsgrenzen sind noch nicht integriert.
+Source-A bleibt isolierte Kandidatenvorbereitung; das 5c9-Manifest ist ein
+expliziter historischer Checkpoint und enthält die spätere E9-/Log-/Policy-/Gate-
+Fortsetzung nicht. PR #83 bleibt unverändert eingefroren.
