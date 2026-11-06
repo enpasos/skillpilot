@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "implemented-local-RED-GREEN-full-deep-suite-pass-Root-review-pending",
+  "problem": "All6 known generic Informatics terminal tasks were accepted because their133-character solution contained no concrete solution but did not match existing placeholder families. Task digits or subtask markers must not qualify that same solution.",
+  "files": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "rawSha256": "f1eac647b9f87302f102252aa5b005056ff2d00279f68a7d0541806d2c756357"
+    },
+    {
+      "path": "app/scripts/testDeepUnderstandingRollout.ts",
+      "rawSha256": "b11831b6021e92bfbd0a715b965b6297ccdd73e0370d487af3c38927844855fa"
+    },
+    {
+      "path": "app/scripts/testCurriculumExamReadiness.ts",
+      "rawSha256": "0c47da955e5f2cb127c9f731cab65d3aa0ca35893502ddbf50d268179e2bd72e"
+    },
+    {
+      "path": "app/scripts/fixtures/informatics-generic-terminal-exams.json",
+      "rawSha256": "7fe25577e0bdedfbf2d51316878793faa3fbcd2158df076ec4ad8e4aade24d58"
+    }
+  ],
+  "scopeOfProductionChange": {
+    "predicate": "Compare the entire known solution sentence through the existing normalization, independently of task numbers/markers. No length limit, Goal-ID denylist or claim of sufficient general content quality.",
+    "pureRefactor": "Move the existing CQR202 aggregation unchanged into exported evaluateExamTaskReadiness and reuse it in evaluateRouteProfile; export unchanged deriveScopeMaturity for native integration checks.",
+    "runtime": "No backend or coach-runtime behavior changed. The actual tasks still require content repair."
+  },
+  "frozenRealCounterexamples": {
+    "fixture": {
+      "path": "app/scripts/fixtures/informatics-generic-terminal-exams.json",
+      "rawSha256": "7fe25577e0bdedfbf2d51316878793faa3fbcd2158df076ec4ad8e4aade24d58"
+    },
+    "source": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "rawSha256": "93a653b110949ff410a73bd750b2a605a9ab0329fe1cd157f016869d848e1f7e"
+    },
+    "counterexampleCount": 6,
+    "originalPayloadsStillEqualCurrentSource": true,
+    "futureBoundary": "The fixture preserves these historical negatives even when real tasks are later repaired. It does not require live curriculum content to remain defective."
+  },
+  "checks": [
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/testCurriculumExamReadiness.ts",
+      "phase": "RED-before-predicate-fix",
+      "exitCode": 1,
+      "log": {
+        "path": "tmp/cqr202-generic-template-fixture-red.log",
+        "rawSha256": "72ff779c7e51e0e0e668077e1b5d9009a398536df1f0de2d1aaf9b526d10f60c"
+      },
+      "result": "All6 exact real payloads were incorrectly pass; the aggregate assertion expected fail."
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/testCurriculumExamReadiness.ts",
+      "phase": "GREEN",
+      "exitCode": 0,
+      "log": {
+        "path": "tmp/cqr202-generic-template-green.log",
+        "rawSha256": "6add63e0fb9071299128d1917f99b788d9706208fceddd1ace3b21b9d0d8283d"
+      },
+      "result": {
+        "actualNegatives": 6,
+        "misleadingTaskVariants": 12,
+        "actualConcretePositives": 2,
+        "preservedStatusMissingFieldAndOldPlaceholderControls": 8
+      }
+    },
+    {
+      "command": "cd app && npm run test:deep-understanding-rollout",
+      "phase": "GREEN-full-existing-CI-entrypoint",
+      "exitCode": 0,
+      "log": {
+        "path": "tmp/cqr202-deep-understanding-green.log",
+        "rawSha256": "cdb06f6df3ceb179cf211be62b3c920d9e256085df6149ffe98f283ab6d07bbe"
+      },
+      "result": "Strict graph12k controls, Politik/Wirtschaft memory ordering, standalone/CQR Memory parity, supersession/retirement chains, actual malformed graph gates, new readiness/floor controls, existing strict5-gate selftest all passed."
+    }
+  ],
+  "actualMaturityAndFloorChain": {
+    "graph": "strictGraphFixtureRule is produced by actual evaluateGraphIntegrity on a valid2-goal graph; complete required checkmanifest and ok===true verified. No earlier realInfoM0 is used as proof.",
+    "concretePositive": "native CQR202 pass → native scopeM4 → native curriculumM7 → existing floorchecker succeeds for M6/M7.",
+    "genericNegative": "native aggregate CQR202 fail with weakExamData6 → native scopeM2 → native curriculumM3 → existing floorchecker reports currentM3 below each protected floorM6/M7 and CQR202fail, without an invalid-graph failure.",
+    "productionWiring": "evaluateRouteProfile now uses that exact tested aggregation; existing testDeepUnderstandingRollout imports the focused regression module, so the existing CI invocation executes it.",
+    "limits": "Fixture checks isolate this real gate with other fixture requirements passing. No current whole-curriculumM6/M7 or10-floor success is claimed."
+  },
+  "nativeAll21AfterComparison": {
+    "beforeCensus": {
+      "path": "docs/dev/ci-graph-repairs/canonical-exam-readiness-census-2026-11-06.json",
+      "rawSha256": "b3adf7cf2ac0db97a908a37ace3548f86404ed0e0551d63f60edaf93600c172a"
+    },
+    "afterProbe": {
+      "path": "tmp/cqr202-post-fix-census.ts",
+      "rawSha256": "94d9d6a2e66f14c974fb9c9d08ec1e3033754269ecdcb7cbad76b326f1903444"
+    },
+    "afterLog": {
+      "path": "tmp/cqr202-post-fix-census.log",
+      "rawSha256": "e17071a84cb468280d998431156960bfba712fdb1d245580ae2f5ebee5d6d63f"
+    },
+    "afterReport": {
+      "path": "tmp/canonical-exam-readiness-after-cqr202.json",
+      "rawSha256": "7fa4c3cbb60ca120abb1f2d164be260b3ce7ee2215789396933358137a9c2381"
+    },
+    "delta": {
+      "examDataCount": 925,
+      "changed": [
+        [
+          "Grundlagen und Querschnitt vernetzt anwenden",
+          "342511c3-45fb-5783-b601-906149e78c2d",
+          [
+            "readinessIssues",
+            "placeholderDetected"
+          ],
+          [
+            "placeholder examData"
+          ]
+        ],
+        [
+          "E-Phase vernetzt anwenden",
+          "49ba66cf-accd-5938-a63e-f031bc786767",
+          [
+            "readinessIssues",
+            "placeholderDetected"
+          ],
+          [
+            "placeholder examData"
+          ]
+        ],
+        [
+          "Q1 vernetzt anwenden",
+          "65aa807f-f998-5648-a3a6-2e0e96dba714",
+          [
+            "readinessIssues",
+            "placeholderDetected"
+          ],
+          [
+            "placeholder examData"
+          ]
+        ],
+        [
+          "Q2 vernetzt anwenden",
+          "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+          [
+            "readinessIssues",
+            "placeholderDetected"
+          ],
+          [
+            "placeholder examData"
+          ]
+        ],
+        [
+          "Q3 vernetzt anwenden",
+          "1ce620dc-93cf-579c-a286-e74451d0a4d7",
+          [
+            "readinessIssues",
+            "placeholderDetected"
+          ],
+          [
+            "placeholder examData"
+          ]
+        ],
+        [
+          "Q4 vernetzt anwenden",
+          "a5e33d4d-f312-51d2-816b-e0b10dd1e701",
+          [
+            "readinessIssues",
+            "placeholderDetected"
+          ],
+          [
+            "placeholder examData"
+          ]
+        ]
+      ],
+      "other919ResultsUnchanged": true
+    },
+    "examDataCount": 925,
+    "actualChangesOnly": [
+      "readinessIssues",
+      "placeholderDetected"
+    ],
+    "other919ResultsBitIdentical": true,
+    "all21CanonicalSourcesUnchanged": true
+  },
+  "auxiliaryTypecheck": {
+    "command": "cd app && ./node_modules/.bin/tsc --noEmit --strict --target ES2022 --module ESNext --moduleResolution bundler --esModuleInterop --skipLibCheck scripts/testDeepUnderstandingRollout.ts",
+    "baseline": "UnchangedHEAD generator and Deep entrypoint mounted read-only withbwrap; no worktree checkout/reset or source rewrite.",
+    "baselineExitCode": 2,
+    "currentExitCode": 2,
+    "comparison": {
+      "baselinePrimaryErrors": 48,
+      "currentPrimaryErrors": 48,
+      "new": [],
+      "removed": []
+    },
+    "baselineLog": {
+      "path": "tmp/cqr202-baseline-deep-tsc.log",
+      "rawSha256": "12b98c380cd16c362eac822fbebf6282a01d245691525de1844fd20b7755c1a4"
+    },
+    "currentLog": {
+      "path": "tmp/cqr202-current-deep-tsc.log",
+      "rawSha256": "ecdeb59da2ff8e01d196bac75f896a9f728eb81574a58951bcc2935719402cde"
+    },
+    "interpretation": "Existing48 diagnostics unchanged; not a claim of a green repository TypeScript build."
+  },
+  "unchangedContracts": {
+    "floorPolicy": {
+      "path": "app/scripts/config/curriculum-maturity-floor-policy.json",
+      "rawSha256": "35e711cea5d5709093bddd53fc1fca91e30bf3c7bec906ca178ed6d8ff364cd7"
+    },
+    "norms": [
+      {
+        "path": "docs/concept/skill-graph/node-types.md",
+        "rawSha256": "4a07a12fa22e1e0e5044c78ef2820c224443e97f77169f3844c703264948cc69"
+      },
+      {
+        "path": "docs/qa-ci/curriculum-quality-maturity-and-routes.md",
+        "rawSha256": "5b9aa9b1ed0a2ea20a1e90b52fe6af3ab28bdcaababa8d972aa4b4ca9b2e0dbe"
+      }
+    ],
+    "data": "All21 raw canonical source bindings from before census rechecked after full suite; Info remains93a653. No exam/goal/source/QA/review-status/floor/policy change."
+  },
+  "independentReview": {
+    "status": "requested-read-only-code-frozen",
+    "reviewer": "/root/normative_corpus"
+  },
+  "boundaries": [
+    "No source, examData, Mastery, SRS, accepted review status, protected floor or policy was changed.",
+    "The six active tasks remain incomplete; neither the remaining919 exams nor any recognition/learning-unit contract becomes content-approved through this narrow exclusion.",
+    "Stored CQR reports must be regenerated by Root; this task did not run or write the full central generator.",
+    "No Java, Gradle, Spring, deployment, publication, commit or push."
+  ]
+}

@@ -2595,6 +2595,11 @@ function isPlaceholderExamData(goal: LearningGoal): boolean {
   if (!goal.examData) return false
   const task = normalizeExamTextForInspection(goal.examData.taskContent)
   const solution = normalizeExamTextForInspection(goal.examData.solutionContent)
+  // This known boilerplate supplies no solution, regardless of task numbers
+  // or subtask markers. Other text still requires substantive content review.
+  if (solution === normalizeExamTextForInspection(
+    'Erwartet wird eine fachlich korrekte, begründete und überprüfte Lösung, die die relevanten Kompetenzen des Abschnitts vernetzt nutzt.',
+  )) return true
   if (/^eine materialgestuetzte j\d+[- ]uebungsaufgabe\b/u.test(task)) return true
   if (/^eine integrative sek[- ]i[- ]abschlussaufgabe\b/u.test(task)) return true
   if (task.includes('uebungsaufgabe verbindet') && !hasExamSubtaskMarkers(task)) return true
@@ -2622,6 +2627,26 @@ function concreteExamReadinessIssues(goal: LearningGoal): string[] {
     issues.push('placeholder examData')
   }
   return issues
+}
+
+export function evaluateExamTaskReadiness(terminalAutonomyGoals: LearningGoal[]): RuleResult {
+  const terminalAutonomyGoalsWithWeakExamData = terminalAutonomyGoals
+    .map((goal) => ({ goal, issues: concreteExamReadinessIssues(goal).filter((issue) => issue !== 'missing examData') }))
+    .filter((entry) => entry.issues.length > 0)
+  return makeRule(
+    'CQR-202',
+    terminalAutonomyGoalsWithWeakExamData.length === 0 ? 'pass' : 'fail',
+    terminalAutonomyGoalsWithWeakExamData.length === 0
+      ? 'All terminal autonomy examData is concrete enough for hard exam mode.'
+      : `${terminalAutonomyGoalsWithWeakExamData.length} terminal autonomy examData item(s) are placeholders or incomplete.`,
+    {
+      terminalAutonomyGoals: terminalAutonomyGoals.length,
+      concreteExamData: terminalAutonomyGoals.length - terminalAutonomyGoalsWithWeakExamData.length,
+      weakExamData: terminalAutonomyGoalsWithWeakExamData.length,
+    },
+    terminalAutonomyGoalsWithWeakExamData.map(({ goal, issues }) =>
+      `Weak examData: ${formatGoal(goal, goal.id)} (${issues.join(', ')})`),
+  )
 }
 
 function stringArray(value: unknown): string[] {
@@ -2684,9 +2709,6 @@ function evaluateRouteProfile(
     !isAtomicGoal(goal) && profile.clusterSelector(goal) && (goal.requires?.length ?? 0) > 0)
 
   const terminalAutonomyGoalsWithoutExamData = terminalAutonomyGoals.filter((goal) => !goal.examData)
-  const terminalAutonomyGoalsWithWeakExamData = terminalAutonomyGoals
-    .map((goal) => ({ goal, issues: concreteExamReadinessIssues(goal).filter((issue) => issue !== 'missing examData') }))
-    .filter((entry) => entry.issues.length > 0)
   const terminalAutonomyGoalsWithMissingReleaseCoverage = terminalAutonomyGoals
     .map((goal) => ({ goal, issues: examReleaseCoverageIssues(goal).filter((issue) => issue !== 'missing examData') }))
     .filter((entry) => entry.issues.length > 0)
@@ -2758,20 +2780,7 @@ function evaluateRouteProfile(
       },
       terminalAutonomyGoalsWithoutExamData.map((goal) => `Missing examData: ${formatGoal(goal, goal.id)}`),
     ),
-    makeRule(
-      'CQR-202',
-      terminalAutonomyGoalsWithWeakExamData.length === 0 ? 'pass' : 'fail',
-      terminalAutonomyGoalsWithWeakExamData.length === 0
-        ? 'All terminal autonomy examData is concrete enough for hard exam mode.'
-        : `${terminalAutonomyGoalsWithWeakExamData.length} terminal autonomy examData item(s) are placeholders or incomplete.`,
-      {
-        terminalAutonomyGoals: terminalAutonomyGoals.length,
-        concreteExamData: terminalAutonomyGoals.length - terminalAutonomyGoalsWithWeakExamData.length,
-        weakExamData: terminalAutonomyGoalsWithWeakExamData.length,
-      },
-      terminalAutonomyGoalsWithWeakExamData.map(({ goal, issues }) =>
-        `Weak examData: ${formatGoal(goal, goal.id)} (${issues.join(', ')})`),
-    ),
+    evaluateExamTaskReadiness(terminalAutonomyGoals),
     makeRule(
       'CQR-203',
       terminalAutonomyGoalsWithMissingReleaseCoverage.length === 0 ? 'pass' : 'warn',
@@ -5934,7 +5943,7 @@ function evaluateSourceGoalCountPlausibility(pipeline: MappingPipelineStatus | u
   )
 }
 
-function deriveScopeMaturity(rules: RuleResult[]): MaturityLevel {
+export function deriveScopeMaturity(rules: RuleResult[]): MaturityLevel {
   if (rules.find((rule) => rule.id === 'CQR-101')?.status !== 'pass') return 'M0'
   if (rules.find((rule) => rule.id === 'CQR-102')?.status !== 'pass') return 'M1'
   if (rules.find((rule) => rule.id === 'CQR-103')?.status !== 'pass') return 'M1'
