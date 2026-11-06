@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-11-06",
-  "status": "fixture-only-repair-locally-verified-fresh-remote-ci-pending",
+  "status": "fixture-only-repair-locally-and-fresh-remote-verified",
   "remote": {
     "runUrl": "https://github.com/enpasos/skillpilot/actions/runs/42205723370",
     "runId": 42205723370,
@@ -110,5 +110,323 @@
     "receipt": "docs/dev/ci-graph-repairs/goal-identity-ab-core-review-2026-11-06.json",
     "runtimeActivationAllowed": false,
     "includedInThisRepair": false
+  },
+  "freshRemoteVerification": {
+    "runUrl": "https://github.com/enpasos/skillpilot/actions/runs/42219374462",
+    "conclusion": "success",
+    "workflowRunId": 42219374462,
+    "headCommit": "42e62121a991e29c108b85a1ffa81f50ff1a5e63",
+    "actualMergeCommit": "7ac65594d00b47ba8e58d1b5e47e57a1207aaf85",
+    "artifactId": 13503905131,
+    "artifactSha256": "015dbfc84bab1cb8b4022e18dcfed5745c4dcd09745b06a29c4d52297819443c",
+    "totals": {
+      "tests": 347,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "suites": [
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.ai.CoachToolFacadeTest.xml",
+        "sha256": "11ac386456a36af6e1bc4d6c37a05a949f05ce38c856ef7eb4b0e0ca4aa36c9b",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.completion.AutomaticCompletionApplicationServiceTest.xml",
+        "sha256": "c1ad7632828ff0eb54cf23b69c3365a84ad36b4c75bd7c313ca14ddf456616c8",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.ai.AssessmentShortcutDiscoveryTest.xml",
+        "sha256": "5d01d67bebad4cccc6b65ea9530b9e01f9d4c125d336a12319a485fad0aa53e0",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.completion.AutomaticCompletionTest.xml",
+        "sha256": "182f60314dbb29de4bbc258e0f8672887e4775024be586ae52ec6302a4770f48",
+        "tests": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.completion.AutomaticLearningPlanCompletionProjectionTest.xml",
+        "sha256": "68c389bcb40e8ee973392ffdddeb63ad926f19dddd18cc1a54d6e0bfd4ea33e5",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.completion.CompletionApplicabilityTest.xml",
+        "sha256": "1007b45542907a61e219a24381bb1cdda2865733dc77da8265c662bd552382c0",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.completion.CompletionApplicationServiceTest.xml",
+        "sha256": "beb34b06414538f5f6f03f31eb1437f7da13bae8d8f225b1184bf09113bad15f",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.completion.CompletionCatalogTest.xml",
+        "sha256": "9630c4707da8c6b05a505fa09e945c004e1f4292566fc1928faf423fbcab3f00",
+        "tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.completion.CompletionCoreTest.xml",
+        "sha256": "4d3cbbae180a65e84bfcbd3d35e32ef4282941d6e73644c7b3ee3f07214e5e92",
+        "tests": 33,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.completion.CompletionResponseProjectionTest.xml",
+        "sha256": "d0e93f57c646d08eb79efe69ae7318314dbfc3a949b68f61bcf700f7414e0523",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.completion.CompletionTelemetryTest.xml",
+        "sha256": "9a3e55b48211dcf0aef32c726017f3e98b3a30f3efe56732cddb31fede092533",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.completion.CompletionWarmupRunnerTest.xml",
+        "sha256": "fb3a2a0a534329ca39b9419b05d8bb9b019add79f9187703485ba6069dff62a1",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.completion.LearningPlanCompletionProjectionTest.xml",
+        "sha256": "7fd9963d75489cccd27b451b6873ad5916cf3ee4d2f32a18947ce28a2dfbb3fb",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CapabilityServiceTest.xml",
+        "sha256": "6abaae11022b2de64c96588fc6fe4584341b06cd35b1f32847b5a33555efa1ad",
+        "tests": 16,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionContractReceiptIntegrationTest.xml",
+        "sha256": "b11ea5d0eeaa7dfc23e4fbb18e641ea7e1ac5a3b9df0e56aef497cc9f9214e5a",
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionContractRegistryTest.xml",
+        "sha256": "30eeb2c29bf258fe698f8c565a60d8ebd816041814e1a4e5f0beea0650ff752e",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionProjectionTest.xml",
+        "sha256": "6da3f2a61a1ea4cab4ff0d41ba46113b63f6bbf52605d2bf5f86b47846dc82bf",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionReceiptCapabilityTest.xml",
+        "sha256": "3a6532ff15e2616d31acdac45759ee3314de4486dbfb21a621a2ac8cf9f9ee96",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+        "sha256": "a6778107dc96d4a76ce60c67f0fb80e6d52303dc952da80860bb857473dcf3b5",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1McpContractTest.xml",
+        "sha256": "fcf7227f7179dbcc66df61bf9baa959f8477576c9aa5b07784e6059d2ecca485",
+        "tests": 29,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1SessionCoordinatorTest.xml",
+        "sha256": "e9dccba96f525fddc830a9dc663b7a3f2b7379f845417d358004448de0a3a46c",
+        "tests": 18,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.curriculumpackage.CompletionPackageLoaderTest.xml",
+        "sha256": "8cf8a7388b2b1373c14ca50e116b1850a08beca8559fcf3198963ec9670bd855",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.landscape.LandscapeServiceTest.xml",
+        "sha256": "664f069c950d222654cc23be4ca73fab0ffcd8894157e7d9cfbac6fb57c0c4e8",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.migration.LearningPlanCountingPreferenceMigrationTest.xml",
+        "sha256": "fa6ec17bb9bd1676596bf90f0f804e83bf79e3a4fb6b3c269f71cd50340b6fc6",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.service.AssessmentCompletionBackendBrowserIntegrationTest.xml",
+        "sha256": "a4242520dc2456ba2ab31e6c415a445f16250ebcd61a62fa8c10e524d8e915cc",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.service.AssessmentCompletionIntegrationTest.xml",
+        "sha256": "0be307f39a3c10f3716a0a1e56c83b799d6a02afba5cf2e9e204c7bde33eaed0",
+        "tests": 55,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.service.AssessmentCompletionPostgresIntegrationTest.xml",
+        "sha256": "82bc0455b2ca149b76f63f992e8aaca44157b9e2a06854ba085c0acb92725587",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.service.AssessmentCompletionRestartIntegrationTest.xml",
+        "sha256": "2e46092338ed34b65fc92d43f15fd9a9193d9471f7415a70bd99254900aac635",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.service.AssessmentCompletionSrsIntegrationTest.xml",
+        "sha256": "8beb52090e49d04be75ba03a8aefd61b6dedf4fb71a6fdd21c9370c0e9299c63",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.service.AutomaticCompletionFrontierTest.xml",
+        "sha256": "4e8d4d9fc7846539eaa278e89c142c4dec8b51d19909523074f6d274e247cdbc",
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.service.AutomaticCompletionIntegrationTest.xml",
+        "sha256": "92b183dbd73c41a73b2012a66eb0febaea3bf82bb54ced5fe7e45aae5882441a",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.service.CompositionViewServiceCacheTest.xml",
+        "sha256": "c2f2f355df899ec121ce750834805bf9cfc4609e8bb524b67a3c925d876b9f76",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.service.LearnerServiceTest.xml",
+        "sha256": "3b24175359fb4c3aa6657b3665d6686fb059d77e68dc86eac05042982c5869fc",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.service.LearningPlanAssessmentCreditTest.xml",
+        "sha256": "988f5aea81f1d4c9c0821d64c05dac49d825dae34f6ebfaa243332e25bf69b8f",
+        "tests": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.service.SrsMasteryBatchQueryTest.xml",
+        "sha256": "6fa28a93442b6a26bdb6cee51524ea8255c2798c77aaaf4f84895552e4c07dca",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.service.srs.SrsPracticeStateGuardTest.xml",
+        "sha256": "ae1704f6586cc06ddbffd64e3d30c2b25f41e8ecbd3ebf1b0b87d4b5581db2e6",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.ui.LearnerUiControllerPersonalizationTest.xml",
+        "sha256": "ba4a14dbc9f1761848ae22a954ffaf50888d31cf7eade477510065469f3c1506",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ],
+    "otherJobs": {
+      "Completion profiles, shared fixtures and Cockpit": "success",
+      "Optional completion performance measurements": "skipped"
+    },
+    "boundary": "The exact pushed head and its actual PR merge were tested. Main CI and later source edits require their own fresh results; this is not full repository CI acceptance."
   }
 }

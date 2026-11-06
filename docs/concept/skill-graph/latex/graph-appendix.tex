@@ -5,21 +5,25 @@
 Diese Fassung beschreibt die verbindliche Konzeptkorrektur vom
 4. November 2026 und die Klarstellung zum Kartenzielabschluss vom
 6. November 2026. Geprüfte Hauptlinie für den Konzeptabgleich vom 4. November:
-\code{616324e857} (kurzer Git-Präfix). Es wurde ausschließlich Dokumentation
-und deren Werkzeugbestand verändert. Die neue globale Anwendungsanerkennung
-ist \textbf{noch nicht implementiert}. Ein lesbarer Beleg oder ein erfolgreicher
-Dokumentbuild beweist weder Laufzeitkonformität noch Deployment.
+\code{616324e857} (kurzer Git-Präfix). Dieser ursprüngliche Konzeptabgleich
+änderte Dokumentation und Werkzeugbestand. Im anschließenden eigenständigen
+CI-Auditbranch wurde die vollständige transitive Voraussetzungenauflösung
+inzwischen begrenzt repariert. Die neue globale Anwendungsanerkennung und
+Einheitenruntime sind weiterhin \textbf{nicht implementiert}. Ein lesbarer
+Beleg oder ein erfolgreicher Dokumentbuild beweist weder vollständige
+Laufzeitkonformität noch Deployment.
 
 \begin{longtable}{@{}P{32mm}P{116mm}@{}}
 \toprule
 Gegenstand & Nachprüfbare Grenze\\
 \midrule\endhead
 Abschlussrechnung &
-\code{CompletionEvaluator.evaluateAutomaticGraph} stoppt an gemeisterten
-Zwischenzielen. In $Q\to B\to A$ mit nur B gemeistert wird A dort
-entlassen. Die neue Formel lässt A für die offene Prüfung Q benötigt.
-Der historische Profilpfad im selben Service ist ein anderer Algorithmus;
-auch seine Existenz beweist keine Umsetzung des neuen Vertrags.\\
+Der reparierte Main-Pfad erhält vollständige Voraussetzungspfade auch durch
+gemeisterte oder außerhalb des Fokus liegende Zwischenziele. In
+$Q\to B\to A$ mit nur B gemeistert bleibt A für die offene Prüfung Q
+benötigt. Die gemeinsame Normalisierung trägt Frontier, automatische Restarbeit
+und Plandiagnose; erst nach der Traversierung wird der Endpunktscope geprüft.
+Diese begrenzte Reparatur ist noch keine globale Anwendungsanerkennung.\\
 Geschützte Ziele & Der bisherige automatische Pfad beginnt bei offenen
 Assessments; der neue Vertrag schützt zusätzlich alle ausgewählten
 Memorierziele und verlangt eigene fachliche Assessmentabdeckung für jede
@@ -34,10 +38,15 @@ kanonischen Katalog einschließlich UUIDs, positiver Gewichte, Referenzen,
 direkter und geerbter Zyklen, atomarer Zyklen sowie lokaler und transitiver
 Minimalität. Ein fehlender oder fehlerhafter vollständiger Prüfnachweis
 verhindert höhere Meilensteine. Offene Bestandsfehler müssen behoben werden;
-ein erfolgreicher Algorithmustest ersetzt diese Reparatur nicht.\\
+ein erfolgreicher Algorithmustest ersetzt diese Reparatur nicht. Zusätzlich
+prüft die reparierte UUID-CLI alle Runtime-Landschaftsdateien außerhalb von
+\code{quality}; kanonische Dateien werden nicht mehr durch den alten Pfadglob
+übersprungen. Fehlformate bleiben harte Fehler.\\
 Clustererfüllung & Der normative Kern verwendet alle atomaren Nachfahren.
-Die gelesenen Backendpfade bevorzugen in bestimmten Fällen rekursiv
-\code{isCoreForPrereqs}-Kinder. Das ist nicht dieselbe Aggregation.\\
+Die gemeinsame Voraussetzungennormalisierung expandiert inzwischen alle
+atomaren Nachfahren von Voraussetzungsklustern. Ein früherer Core-Filter
+belegt deshalb nicht den aktuellen reparierten Pfad. Fokus- und globale
+Prüfung bleiben ausdrücklich verschiedene Endpunktscopes.\\
 Memorierung & Wiederholungen gehören zum Lernen der Karten; die bestandene
 Abschlussprüfung liefert den Masterednachweis. Kartenfälligkeit öffnet
 abgeschlossene Ziele nicht erneut. Der am 6. November gelesene Backendpfad
@@ -55,11 +64,13 @@ Planung, kein Synonym für die Einheit.\\
 
 \paragraph{Prüfbare Codeanker.}
 \srcref{backend/src/main/java/com/skillpilot/backend/completion/CompletionEvaluator.java}{CompletionEvaluator.java};
+\srcref{backend/src/main/java/com/skillpilot/backend/completion/CompletionProfileCompiler.java}{CompletionProfileCompiler.java};
 \srcref{backend/src/main/java/com/skillpilot/backend/service/LearnerService.java}{LearnerService.java};
 \srcref{app/src/hooks/useSrsMastery.ts}{useSrsMastery.ts};
 \srcref{app/scripts/validateGraph.ts}{validateGraph.ts};
 \srcref{app/scripts/lib/skillGraphIntegrity.ts}{skillGraphIntegrity.ts};
 \srcref{app/scripts/generateCurriculumQualityStatus.ts}{generateCurriculumQualityStatus.ts};
+\srcref{scripts/validate_goal_ids_uuid.py}{validate\_goal\_ids\_uuid.py};
 \srcref{backend/src/main/java/com/skillpilot/backend/domain/Mastery.java}{Mastery.java}.
 Die verlinkte Hauptlinie entwickelt sich weiter. Das Build-Manifest bindet
 die bei dieser Dokumentfassung tatsächlich gelesenen Dateien per SHA-256.

@@ -105,7 +105,7 @@ ist die erneute Gesamterzeugung bestanden; acht Fachuntergrenzen bleiben rot.
 | Wirtschaftswissenschaften | M7 | M0 | 104 |
 | Deutsch | M6 | M6 | 0 |
 | Geschichte | M6 | M6 | 0 |
-| Informatik | M6 | M0 | 116 |
+| Informatik | M6 | M0 | 62 |
 | Latein | M6 | M6 | 0 |
 | Politik und Wirtschaft | M6 | M0 | 603 |
 
@@ -161,6 +161,21 @@ Fächer bleiben wegen ihrer tatsächlichen offenen Befunde auf M0. Keine
 Ausnahme oder Warnungsfreigabe wurde hinzugefügt. Die [Anwendungsquittung](ci-graph-repairs/german-applicability-support-application-2026-11-06.json)
 und der [lesende Produktionsreplay](ci-graph-repairs/verify_german_scope_integration.ts)
 binden diesen eigenen Schritt.
+
+**Anschließende Informatik-Normalisierung:** 22 geerbte und zehn unabhängig
+geprüfte transitive Duplikate wurden aus neun Assessment-Arrays entfernt.
+Ein elfter G17-Vorschlag bleibt nach dem unabhängigen DFS-/BFS-Hold erhalten.
+Nach jedem der 32 Entzüge bleiben die vollständigen globalen Goal-, atomaren
+und rein atomaren Autorenrouten gleich. Der tatsächliche Produktionschecker
+meldet danach null G16 und 62 G17; die übrigen acht Checks bestehen. Der
+lesende Replay vergleicht die angewandte Quelle zusätzlich mit dem vollständig
+rekonstruierten Kandidaten. Die vollständige Compositionprüfung besteht für
+352 Views mit null Fehlern und 2358 ausgewiesenen Warnungen. Die echte
+CQR-Gesamterzeugung vom `2026-11-06T13:18:14.655Z` bestätigt weiterhin drei
+M6-Fächer; Informatik bleibt wegen seiner 62 offenen Befunde M0. Die
+[Anwendungsquittung](ci-graph-repairs/informatics-normalization-application-2026-11-06.json)
+bindet diese Ergebnisse. Aufgaben, historische Praxisquittungen und Mastery
+wurden dadurch nicht umgeschrieben oder neu freigegeben.
 
 Ein zusätzlicher echter G01b-Gegenfall zeigte, dass verschiedene Hex-Schreibweisen
 desselben UUID-Werts bislang als getrennte Strings durchgingen. Die neue
@@ -318,10 +333,20 @@ geprüft; Fälligkeit entzieht keine Verifikation oder Mastery.
    CQR-001-Gates. Die tatsächlichen Curriculumfehler sind weiterhin offen;
    die Fachuntergrenzen scheitern deshalb zu Recht. Kleine Formalbeispiele
    ersetzen diese Bestandsvalidierung nicht.
-2. Der UUID-CLI sucht mit einem Pfadglob, der kanonische Dateien nicht erfasst.
-   Der allgemeine Graphvalidator prüft Zyklen landschaftslokal und erzwingt im
-   unqualifizierten Fremd-ID-Fallback keine Eindeutigkeit. Gegen-Gates wie
-   kanonische Eindeutigkeitsprüfung sind getrennt zu berücksichtigen.
+2. Der ursprüngliche UUID-CLI übersah kanonische Dateien. Die
+   [reparierte native Bestandsprüfung](ci-graph-repairs/goal-uuid-cli-repair-2026-11-06.json)
+   prüft inzwischen alle Runtime-Landschaften außerhalb `quality`: 593 Dateien,
+   56171 Goals, weiterhin 164 ungültige IDs und 327 ungültige Referenzendpunkte
+   als 491 harte Fehler. 15 echte CLI-Fixtures und zehn Workflowkontrollen
+   bestehen; leere Gesamtprüfungen, JSON-/Typfehler und UUID-Randwhitespace
+   gehen nicht als Pass durch. Keine Datenmigration wurde damit vorgenommen.
+   Der [allgemeine Graphvalidator](ci-graph-repairs/general-graph-reference-cli-repair-2026-11-06.json)
+   erzwingt inzwischen ebenfalls eindeutige Fremdverweise: lokaler Owner zuerst,
+   qualifizierter Owner exakt, sonst genau ein logischer Fremdowner. 23 echte
+   CLI-Kontrollen und elf Workflowtests bestehen. Zyklen bleiben dort
+   landschaftslokal; die separaten strengen CQR-Checks besitzen ihren eigenen
+   vollständigen Scope. Bestehende Topologiekonflikte zwischen Sprachdateien
+   werden durch diesen reinen Identitätsindex nicht als konsistent freigegeben.
 3. Ein Test kann aktiv die alte Semantik absichern. Die vorbereitete neue
    globale Anerkennung und vollständige transitive Fokusauswertung sind
    dadurch nicht bereits nachgewiesen.
@@ -346,8 +371,29 @@ führte 347 Tests aus; zwei Testaufbauten bedienten noch ausschließlich den
 alten Resolver-Aufruf. Die konkrete [Fixture-Reparatur](ci-graph-repairs/assessment-ci-fixture-repair-2026-11-06.json)
 erhält alle Produktionsguards und prüft den vollständigen Level-2-Leseumfang
 sowie Readonly-Grenzen. Die beiden Methoden und danach die gesamte 55er-Klasse
-bestehen lokal mit gepinntem JDK/Offline-Ressourcen. Frische vollständige
-Remote-CI für den nächsten gepushten Kopf bleibt erforderlich.
+bestehen lokal mit gepinntem JDK/Offline-Ressourcen. Der anschließende frische
+Assessment-Lauf `42219374462` für Kopf `42e62121a991e29c108b85a1ffa81f50ff1a5e63`
+und tatsächlichen Merge `7ac65594d00b47ba8e58d1b5e47e57a1207aaf85`
+ist vollständig bestanden: 347 Tests in 37 XML-Suiten, null Fehler/Fehlschläge/
+Skips, einschließlich aller 55 Tests der betroffenen Klasse. Das tatsächliche
+Remote-Artefakt ist heruntergeladen und gegen seinen SHA-256 geprüft. Der
+Haupt-CI-Lauf und spätere Datenstände benötigen weiterhin eigene Ergebnisse.
+
+Der anschließende Hauptlauf `42219374143` auf demselben Kopf ist inzwischen
+abgeschlossen. Frontend, Buchbau, Action-, Claude- und Public-Edge-Jobs
+bestehen. Drei Jobs scheitern: Curriculum an genau zwei Deutsch-GVR-002-
+Phasenverstößen (Geschlechterrollen Q1 → Rollenbilder Q2 und mediale
+Aufarbeitung Q3 → Filmsprache Q4), Backend mit fünf fehlgeschlagenen Tests
+bei 2729 ausgeführten Tests und 19 Skips sowie OpenAI Apps an
+der veralteten Submission-Ableitung des unveröffentlichten Entwurfs.
+Die fünf Backendfälle enthalten Erwartungen an den alten Mastery-Cut oder
+ungültige Referenz-Fixtures; die Reparatur bewahrt die neuen vollständigen
+Voraussetzungs- und Ownerguards und benötigt eigene lokale/Remote-Ergebnisse.
+Die beiden Phasenverstöße werden fachlich geprüft. Die vier Submission-
+Ableitungen sind lokal mit dem vorhandenen Producer aktualisiert;
+`check`, Paketbau und tatsächlicher
+ZIP-Audit bestehen, `readyForSubmission` bleibt falsch. Das ist keine
+Portalveröffentlichung und noch kein frischer grüner Remote-Gesamtlauf.
 
 Der ebenfalls abgeschlossene Hauptlauf `42205723343` meldete drei weitere
 fehlgeschlagene Jobs: Der interne unveröffentlichte OpenAI-Entwurf war nach
@@ -378,6 +424,15 @@ sind inzwischen mit echten roten Regressionen und anschließend 23 grünen
 Tests behoben; der Reviewer reproduzierte die 23 Tests zusätzlich separat.
 Dieser begrenzte Quellprojektionskern ist weiterhin keine Runtimeintegration.
 
+Die anschließende [reine Zustandsprojektion](ci-graph-repairs/canonical-identity-state-projection-independent-review-2026-11-06.md)
+besitzt 15 eigene Tests zusätzlich zu den 23 A-Kontrollen; beide Klassen
+wurden unabhängig frisch kompiliert und ausgeführt. B bleibt geschlossen.
+Vier konkrete Gegenbeispiele zeigen weiterhin nötige Integrationsarbeit für
+unbekannte alte Zeilen und tatsächlich gespeicherte qualifizierte bzw.
+anders geschriebene UUID-Keys. Der Helfer darf deshalb nicht einfach vor
+bestehende Reads/Upserts geschaltet werden. Reale Zustands-/Browser-/Paket-
+Abnahme und aktuelle QA-Ausgaben bleiben eigenständige Pflichten.
+
 ## Nächste Schritte im neuen Chat
 
 1. Main-Basis und Arbeitsstatus verifizieren. Gesicherte Dateien lesen und ein
@@ -393,6 +448,10 @@ Dieser begrenzte Quellprojektionskern ist weiterhin keine Runtimeintegration.
    Reviews bloß mit neuen Hashes versehen. Die [Bindungsanalyse](ci-graph-repairs/math-pilot-qa-binding-impact-2026-11-06.json)
    und die [Buchfolgenanalyse](ci-graph-repairs/math-pilot-book-impact-2026-11-06.json)
    sind ausdrücklich hypothetische Folgenprüfungen, keine aktuelle QA-Freigabe.
+   Der [vollständige globale Replay](ci-graph-repairs/math-pilot-global-integration-review-2026-11-06.md)
+   weist zusätzlich 142 geänderte Goal- und 136 atomare Nachfragemengen in
+   Physik aus. Deren tatsächliche Vorbereitungsbedarfe sind vor Anwendung
+   getrennt fachlich zu prüfen; die lokale 428er-Prüfung deckt sie nicht ab.
    Nicht geprüft ist kein erfülltes Kriterium.
 4. Normkonflikte und nicht deterministisch entscheidbare Inhaltsurteile
    gesondert ausweisen. Maschinen können aktuelle Reviewbelege prüfen, nicht

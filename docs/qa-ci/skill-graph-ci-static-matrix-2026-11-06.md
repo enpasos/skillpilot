@@ -3,8 +3,8 @@
 **Auditbasis:** `0ce5a8d791eeb9783a919195fd8590bfb79f3595` (main),
 Arbeitsbranch `feat/skill-graph-ci-contracts`, zum Lesebeginn
 `1678bb28e8720ee07249d512d10666011dcab2bc`. Die Einzelzeilen dokumentieren diesen unveränderten Audit-Ausgangsstand.
-Der unten getrennte Reparaturnachtrag E61 beschreibt den danach implementierten
-lokalen Prüfer samt CQR-Anbindung; er ist keine rückwirkende grüne Bewertung
+Die unten getrennten Reparaturnachträge E61–E63 beschreiben den danach implementierten
+lokalen Prüfer samt CQR-Anbindung und die reparierten UUID-/Referenz-CLIs; sie sind keine rückwirkende grüne Bewertung
 der damaligen Daten und keine Remote-CI-Abnahme. Der eingefrorene
 Einheitenstand `52619b960e7b261e1cc18d070063c8e7aca74e21` aus PR #83 ist
 **zusätzliches Zielmaterial**, kein bereits implementierter Main-Vertrag.
@@ -15,7 +15,7 @@ I01–17 und sämtliche B-/K-Regeln. Gemeinsame statische R-/U-/N-Facetten stehe
 in der [Laufzeitmatrix](skill-graph-ci-runtime-matrix-2026-11-06.md),
 Content-/Bildruntime in der [Content-/Präsentationsmatrix](skill-graph-ci-content-presentation-matrix-2026-11-06.md).
 Die Zuordnung wurde gegen 518 Korpusregeln auf fehlende/fremde/doppelte IDs geprüft.
-E01–E61
+E01–E63
 sind wiederverwendbare **Belegketten**, keine normativen Regel-IDs. Die früheren
 S01–S45 werden damit ausdrücklich nicht zum Ersatz für die einzelnen G/V/Q/S/I/B/K-
 Regeln. Jede Matrixzeile nennt ihre eigene Grenze und verweist auf die unten
@@ -615,3 +615,37 @@ erweitert; Einzel-Großschreibung bleibt zulässig. Die aktuelle 14-/35-Integrat
 Strictsuite, fokussiertes ESLint und der bestehende Deep-QA-Aufruf bestehen.
 Ein frischer Aufruf desselben Graphprüfers auf allen 21 aktuellen Katalogen
 stimmt exakt mit den gespeicherten CQR-001-Berichten überein.
+
+Die anschließend tatsächlich angewandte Informatik-Normalisierung entfernt
+22 geerbte und zehn unabhängig geprüfte transitive Duplikate aus neun
+`requires`-Arrays. Nach jedem Entzug bleiben die vollständige globale
+Goal-Erreichbarkeit, die atomare Erreichbarkeit und die rein atomaren
+Autorenrouten identisch. Der zurückgestellte Fall `INFO-G17-056` bleibt
+unverändert. Der vollständige frische CQR-Bericht vom
+`2026-11-06T13:18:14.655Z` bestätigt null G16 und weiterhin 62 G17 in Informatik;
+die übrigen acht Strukturchecks bestehen. Informatik bleibt M0; Deutsch,
+Geschichte und Latein bleiben M6, die sieben übrigen geschützten Fachfloors
+scheitern weiterhin. Die [Anwendungsquittung](../dev/ci-graph-repairs/informatics-normalization-application-2026-11-06.json)
+bindet Quellen, unabhängigen Review, vollständigen Replay und tatsächlichen
+CQR-Bericht. Diese Normalisierung genehmigt keine neuen Aufgaben- oder
+Anerkennungsverträge.
+
+| Neue Belegkette | Implementierung / Gegenprüfer | Tatsächlicher Aufruf und Grenze |
+| --- | --- | --- |
+| E62 UUID-CLI auf dem tatsächlichen Curriculumkatalog | `scripts/validate_goal_ids_uuid.py` entdeckt laufzeitförmige Landschaften unter `curricula` und schließt nur Qualitätsunterverzeichnisse aus; keine festgeschriebene Dateianzahl. Exakte UUID-Gruppen, typisierte Relationsendpunkte, fehlende versus explizit ungültige Felder und JSON-Fehler werden hart geprüft; ein insgesamt leerer Goalumfang scheitert. `scripts/test_validate_goal_ids_uuid.py` führt 15 echte CLI-Fixtures aus: Der kanonische Fehlformatfall war mit dem alten Glob tatsächlich rot, weil die alte CLI bei null geprüften Dateien fälschlich Erfolg meldete. Alle 15 Kontrollen bestehen nach Reparatur. | C-Job `graph-validation`: eigener Step `Test Curriculum Goal UUID CLI` mit `python -B scripts/test_validate_goal_ids_uuid.py -v` im Repositoryroot; bestehender Produktionsstep `Validate Curriculum Goal IDs (UUIDs)` mit `python scripts/validate_goal_ids_uuid.py` bleibt hart. Zehn lokale Workflowkontrollen bestanden am Commit dieser Reparatur; spätere zusätzliche Workflowtests besitzen eigene Belege. Der tatsächliche Kataloglauf prüft 593 Dateien / 56.171 serialisierte Goals und scheitert an 164 ungültigen IDs plus 327 ungültigen Referenzendpunkten, insgesamt 491 Fehlern. Keine Migration oder Baseline-Ausnahme. Referenzexistenz, Identitätseindeutigkeit und Topologiekonflikte bleiben separate Graphverträge. |
+
+Der [CLI-Reparaturbeleg](../dev/ci-graph-repairs/goal-uuid-cli-repair-2026-11-06.json)
+enthält die konkreten Eingabe-/Code-/Logbindungen und die echte Rot-Grün-Folge.
+Die ursprüngliche G01a-Baselinezeile oben bleibt als Befund der unveränderten
+Main-Auditbasis erhalten. E62 beschreibt die spätere Reparatur, keinen
+bestandenen Vollkatalog und keine frische Remote-Abnahme.
+
+| Neue Belegkette | Implementierung / Gegenprüfer | Tatsächlicher Aufruf und Grenze |
+| --- | --- | --- |
+| E63 Eindeutige Referenzauflösung im allgemeinen Graph-CLI | `app/scripts/validateGraph.ts` verwendet einen reinen Identitäts-/Ownerindex: lokal hat Vorrang, qualifizierter Owner wird exakt geprüft, sonst ist genau ein logischer Fremdowner erforderlich. Sprachserialisierungen zählen nicht als zusätzliche Owner; UUID-Endpunkte werden wertbezogen verglichen, symbolische Alt-IDs bleiben exakt. Die Topologieprüfungen verwenden weiterhin die jeweils verfasste Datei; fremde oder konfliktbehaftete Graphen werden nicht vereinigt. `testGeneralGraphReferenceCli.ts` führt 23 echte CLI-Kontrollen aus; der mehrdeutige Fremdverweis wurde von der alten CLI tatsächlich fälschlich akzeptiert und wird jetzt verworfen. | C-Job `graph-validation`: `npm run test:general-graph-references` vor `npm run validate:graph`, beide hart. 23 CLI- und elf Workflowtests bestehen lokal. Der tatsächliche Vollkatalog scheitert vor und nach dieser Reparatur exakt an denselben zwei Deutsch-Phasenverstößen GVR-002; null zusätzliche G05-Befunde. Drei vorhandene Standalone-TypeScriptdiagnosen und ein getrennt fehlgeschlagener Mathematik-Projektionstest sind ausdrücklich erhalten. Kein neuer globaler Zyklus-/Topologiekonsistenznachweis und keine Datenänderung. |
+
+Der [Referenz-Reparaturbeleg](../dev/ci-graph-repairs/general-graph-reference-cli-repair-2026-11-06.json)
+bindet die wirklichen CLI-Läufe, Baselinevergleiche und Grenzen. Damit wird
+die in der ursprünglichen G05-Zeile dokumentierte Mehrdeutigkeitslücke repariert;
+die ebenfalls dort genannten weitergehenden Strukturverträge benötigen ihre
+jeweiligen eigenen Gegenprüfer.

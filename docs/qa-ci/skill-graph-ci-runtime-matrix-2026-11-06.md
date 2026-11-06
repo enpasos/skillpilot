@@ -476,7 +476,11 @@ Read und alle Readonly-Grenzen als Gegenprüfungen. Beide betroffenen Methoden
 und danach die gesamte 55er-Testklasse bestehen lokal; Produktionscode wurde
 dabei nicht verändert. Der [gesonderte Prüfnachweis](../dev/ci-graph-repairs/assessment-ci-fixture-repair-2026-11-06.json)
 enthält echte Remote-Artefakthashes und die lokale Ressourcengrenze. Der neue
-vollständige Remote-Lauf steht aus.
+vollständige Haupt-CI-Lauf steht aus. Der anschließend tatsächlich ausgeführte
+Assessment-Lauf `42219374462` für `42e62121a991e29c108b85a1ffa81f50ff1a5e63`
+ist inzwischen grün: 347 Tests, null Fehlschläge/Fehler/Skips, darunter alle 55
+Tests der betroffenen Klasse. Die heruntergeladenen 37 XML-Suiten und ihr
+Artefaktdigest sind in derselben Quittung gebunden.
 
 ## Begrenzte weitere Reparaturen
 
