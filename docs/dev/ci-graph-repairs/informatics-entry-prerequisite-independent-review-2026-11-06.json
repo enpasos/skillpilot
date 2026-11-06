@@ -1,0 +1,2308 @@
+{
+  "schemaVersion": 1,
+  "status": "content-review-complete-proposed-arrays-not-applied",
+  "reviewDate": "2026-11-06",
+  "reviewer": "ci_runtime (Sol 6.1 Ultra)",
+  "dataChangesApplied": false,
+  "qaApprovalClaimed": false,
+  "masteryOrExamMeaningChanged": false,
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "rawSha256": "5a1487a47e61f59fbc9dfcd71e350443ce3357da171f6507cd85cd6c3a785e7e",
+    "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020"
+  },
+  "input": {
+    "path": "docs/dev/ci-graph-repairs/informatics-ordinary-prerequisite-review-input-2026-11-06.json",
+    "rawSha256": "a771d16b332520b82387b58f36f6f8742c3445ab364398da291b11cadfbfea4b"
+  },
+  "scope": "Independent didactic review of two whole-exam prerequisite bridges and the existing DFS/BFS hold. This is review input for a separately guarded semantic repair; it is not a normalization or application receipt.",
+  "proposedOperations": [
+    {
+      "operationId": "INFO-FOUNDATION-ER",
+      "hopId": "INFO-HOP-053",
+      "goalId": "2cf7589d-5451-5239-badf-1ebb981a2f20",
+      "beforeRequires": [
+        "65aa807f-f998-5648-a3a6-2e0e96dba714"
+      ],
+      "afterRequires": [
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ]
+    },
+    {
+      "operationId": "INFO-FOUNDATION-AUTOMATA",
+      "hopId": "INFO-HOP-107",
+      "goalId": "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+      "beforeRequires": [
+        "0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+      ],
+      "afterRequires": [
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ]
+    }
+  ],
+  "operationsSha256": "9c34add34fcdeb3ebe62c7a18c506c2b353239e0dee0ab2b4737a3aaf98afdd0",
+  "operationsHashSerialization": "UTF-8 json.dumps(ensure_ascii=False, sort_keys=True, separators=(comma,colon)); operation values contain only strings and arrays.",
+  "reviewedGoalsAndAncestors": [
+    {
+      "goal": {
+        "id": "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "title": "ER-Modell anwenden",
+        "titleEn": "Apply ER Model",
+        "description": "Die lernende Person kann Entitäten, Beziehungen, Kardinalitäten und Optionalitäten modellieren.",
+        "descriptionEn": "The learner can model entities, relationships, cardinalities, and optionalities.",
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "requires": [
+          "65aa807f-f998-5648-a3a6-2e0e96dba714"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P2",
+            "P3"
+          ],
+          "guidingIdeas": [
+            "I3",
+            "I4",
+            "I5"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic"
+      },
+      "ancestors": [
+        {
+          "id": "29ec47db-7dfe-553d-b850-40e06f164545",
+          "title": "Informatik",
+          "titleEn": "Computer Science",
+          "description": "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
+          "descriptionEn": "Shared root for computer science at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "subject:informatics",
+            "root"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4",
+              "P5"
+            ],
+            "guidingIdeas": [],
+            "phase": "GLOBAL"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "900065ef-d3ae-5145-b92c-50821795107a",
+          "title": "Q2.1 ER- und Relationenmodell",
+          "titleEn": "Q2.1 ER and Relational Model",
+          "description": "Datenstrukturen modellieren und normalisieren.",
+          "descriptionEn": "Model and normalize data structures.",
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "b7acdaa9-4d14-5ec4-9048-8c969f8252cc",
+          "title": "Datenbanken",
+          "titleEn": "Databases",
+          "description": "Relationale Datenbanken modellieren und einsetzen.",
+          "descriptionEn": "Model and use relational databases.",
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        }
+      ],
+      "englishTextPresent": {
+        "titleEn": true,
+        "descriptionEn": true
+      }
+    },
+    {
+      "goal": {
+        "id": "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+        "title": "Zustandsautomaten modellieren",
+        "titleEn": "Model State Automata",
+        "description": "Die lernende Person kann Automaten aus realen Kontexten modellieren und simulieren.",
+        "descriptionEn": "The learner can model and simulate automata from real contexts.",
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "requires": [
+          "0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P3"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I5"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic"
+      },
+      "ancestors": [
+        {
+          "id": "29ec47db-7dfe-553d-b850-40e06f164545",
+          "title": "Informatik",
+          "titleEn": "Computer Science",
+          "description": "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
+          "descriptionEn": "Shared root for computer science at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "subject:informatics",
+            "root"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4",
+              "P5"
+            ],
+            "guidingIdeas": [],
+            "phase": "GLOBAL"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "31026f4a-629b-571f-b45d-a87f47a09d9e",
+          "title": "Q3.2 Endliche Automaten",
+          "titleEn": "Q3.2 Finite Automata",
+          "description": "Endliche Automaten als Akzeptoren und Transduktoren modellieren.",
+          "descriptionEn": "Model finite automata as acceptors and transducers.",
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I2",
+              "I5"
+            ],
+            "phase": "Q3"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "7b18ca8c-830d-5533-b471-f97cd16ce2b7",
+          "title": "Theoretische Informatik",
+          "titleEn": "Theoretical Computer Science",
+          "description": "Formale Sprachen, Automaten und Berechenbarkeit untersuchen.",
+          "descriptionEn": "Investigate formal languages, automata, and computability.",
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I2",
+              "I5"
+            ],
+            "phase": "Q3"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        }
+      ],
+      "englishTextPresent": {
+        "titleEn": true,
+        "descriptionEn": true
+      }
+    },
+    {
+      "goal": {
+        "id": "6d10ced5-0213-558c-9b65-db70ccb824b4",
+        "title": "Kreis- und Brückenerkennung",
+        "titleEn": "Cycle and Bridge Detection",
+        "description": "Die lernende Person kann Kreise/Brücken in Graphen erkennen (DFS-Anwendungen).",
+        "descriptionEn": "The learner can detect cycles/bridges in graphs (DFS applications).",
+        "tags": [
+          "LK"
+        ],
+        "requires": [
+          "881edb2d-b0c9-5775-b2ba-3062f2e91f83"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P2",
+            "P3"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I3",
+            "I4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic"
+      },
+      "ancestors": [
+        {
+          "id": "1d1d7b01-91e5-5436-8c40-a17361ec5d81",
+          "title": "Q1.5 Graphen (LK)",
+          "titleEn": "Q1.5 Graphs (Advanced Course)",
+          "description": "Graphen modellieren und Algorithmen anwenden.",
+          "descriptionEn": "Model graphs and apply algorithms.",
+          "tags": [
+            "LK"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "29ec47db-7dfe-553d-b850-40e06f164545",
+          "title": "Informatik",
+          "titleEn": "Computer Science",
+          "description": "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
+          "descriptionEn": "Shared root for computer science at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "subject:informatics",
+            "root"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4",
+              "P5"
+            ],
+            "guidingIdeas": [],
+            "phase": "GLOBAL"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "423e088a-1b38-544f-8cac-b4f8f4979850",
+          "title": "Algorithmik & objektorientierte Modellierung",
+          "titleEn": "Algorithms & Object-Oriented Modeling",
+          "description": "Klassenmodelle, Such- und Sortieralgorithmen sowie Rekursion vertiefen.",
+          "descriptionEn": "Deepen class models, search and sort algorithms, and recursion.",
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        }
+      ],
+      "englishTextPresent": {
+        "titleEn": true,
+        "descriptionEn": true
+      }
+    },
+    {
+      "goal": {
+        "id": "881edb2d-b0c9-5775-b2ba-3062f2e91f83",
+        "title": "Graphenalgorithmen anwenden",
+        "titleEn": "Apply Graph Algorithms",
+        "description": "Die lernende Person kann Tiefen-/Breitensuche sowie kürzeste Wege mit BFS beschreiben.",
+        "descriptionEn": "The learner can describe depth-first/breadth-first search as well as shortest paths with BFS.",
+        "tags": [
+          "LK"
+        ],
+        "requires": [
+          "bb0173dc-5cda-50f6-ac10-6c439bbb2578"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P2",
+            "P3"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I3",
+            "I4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic"
+      },
+      "ancestors": [
+        {
+          "id": "1d1d7b01-91e5-5436-8c40-a17361ec5d81",
+          "title": "Q1.5 Graphen (LK)",
+          "titleEn": "Q1.5 Graphs (Advanced Course)",
+          "description": "Graphen modellieren und Algorithmen anwenden.",
+          "descriptionEn": "Model graphs and apply algorithms.",
+          "tags": [
+            "LK"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "29ec47db-7dfe-553d-b850-40e06f164545",
+          "title": "Informatik",
+          "titleEn": "Computer Science",
+          "description": "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
+          "descriptionEn": "Shared root for computer science at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "subject:informatics",
+            "root"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4",
+              "P5"
+            ],
+            "guidingIdeas": [],
+            "phase": "GLOBAL"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "423e088a-1b38-544f-8cac-b4f8f4979850",
+          "title": "Algorithmik & objektorientierte Modellierung",
+          "titleEn": "Algorithms & Object-Oriented Modeling",
+          "description": "Klassenmodelle, Such- und Sortieralgorithmen sowie Rekursion vertiefen.",
+          "descriptionEn": "Deepen class models, search and sort algorithms, and recursion.",
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        }
+      ],
+      "englishTextPresent": {
+        "titleEn": true,
+        "descriptionEn": true
+      }
+    },
+    {
+      "goal": {
+        "id": "c10e647b-2f51-5002-b352-830933a67214",
+        "title": "Informatische Modelle analysieren und reflektieren",
+        "description": "Die lernende Person kann Realitaetsausschnitte als Modelle beschreiben, geeignete Modellierungsverfahren auswaehlen und Modellentscheidungen beurteilen.",
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "requires": [
+          "d848ceb9-cd73-5a13-9407-f3364764c223"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "dimensionTags": {
+          "framework": "canonical-de-gymnasium-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P1",
+            "P2",
+            "P3"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4",
+            "I5"
+          ],
+          "phase": "GLOBAL"
+        }
+      },
+      "ancestors": [
+        {
+          "id": "2514384b-8ef7-5800-bf92-29ec8ef71511",
+          "title": "Informatische Arbeitsweisen und Kommunikation",
+          "description": "Die lernende Person kann grundlegende informatische Arbeitsweisen, Modellierungsentscheidungen, Informationsbegriffe und fachliche Kommunikation anwenden.",
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "requires": [],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster",
+          "dimensionTags": {
+            "framework": "canonical-de-gymnasium-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P1",
+              "P2",
+              "P3"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I2",
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "GLOBAL"
+          }
+        },
+        {
+          "id": "29ec47db-7dfe-553d-b850-40e06f164545",
+          "title": "Informatik",
+          "titleEn": "Computer Science",
+          "description": "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
+          "descriptionEn": "Shared root for computer science at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "subject:informatics",
+            "root"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4",
+              "P5"
+            ],
+            "guidingIdeas": [],
+            "phase": "GLOBAL"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        }
+      ],
+      "englishTextPresent": {
+        "titleEn": false,
+        "descriptionEn": false
+      }
+    },
+    {
+      "goal": {
+        "id": "2aaefe0b-3e56-477e-94f0-bb05fa035ed5",
+        "title": "Attributwerte ändern und Objektzustände deuten",
+        "titleEn": "Modify Attribute Values and Interpret Object States",
+        "description": "Die lernende Person kann bei der Implementierung Wertzuweisungen verwenden, um Attributwerte zu ändern, und diese als Zustandsänderung des zugehörigen Objekts deuten.",
+        "descriptionEn": "The learner can use assignments during implementation to change attribute values and interpret them as state changes of the corresponding object.",
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "requires": [
+          "d848ceb9-cd73-5a13-9407-f3364764c223"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P3"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4",
+            "I5"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic"
+      },
+      "ancestors": [
+        {
+          "id": "29ec47db-7dfe-553d-b850-40e06f164545",
+          "title": "Informatik",
+          "titleEn": "Computer Science",
+          "description": "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
+          "descriptionEn": "Shared root for computer science at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "subject:informatics",
+            "root"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4",
+              "P5"
+            ],
+            "guidingIdeas": [],
+            "phase": "GLOBAL"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "c5d04946-497e-5ede-84ec-2d019138e3a0",
+          "title": "Programmdaten und Objektzustände nutzen",
+          "titleEn": "Use Program Data and Object States",
+          "description": "Cluster zum Nutzen grundlegender Variablen, Ein-/Ausgabe und Zustandsänderungen in einfachen Programmen.",
+          "descriptionEn": "Cluster for using basic variables, input/output, and state changes in simple programs.",
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I2",
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "E"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "d0a3b319-4051-58c8-abb6-0d1d7badfb6b",
+          "title": "Grundlagen der Programmierung",
+          "titleEn": "Fundamentals of Programming",
+          "description": "Algorithmisches Denken sowie Programmierkonzepte zur Bearbeitung realitätsnaher Probleme nutzen.",
+          "descriptionEn": "Use algorithmic thinking and programming concepts to solve realistic problems.",
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I2",
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "E"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "eaf62c0d-5e76-5467-94e0-bd100f3cb7e1",
+          "title": "Einführungsphase Informatik",
+          "titleEn": "Introductory Phase Computer Science",
+          "description": "Grundlagen zu Internetprotokollen, Webdokumenten und Programmierung als Fundament für die Qualifikationsphase.",
+          "descriptionEn": "Fundamentals of internet protocols, web documents and programming as a foundation for the qualification phase.",
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P1",
+              "P3",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I2",
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "E"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        }
+      ],
+      "englishTextPresent": {
+        "titleEn": true,
+        "descriptionEn": true
+      }
+    },
+    {
+      "goal": {
+        "id": "d848ceb9-cd73-5a13-9407-f3364764c223",
+        "title": "Warum Informatik? - Relevanz und Orientierung",
+        "titleEn": "Why Informatik? - Relevance and Orientation",
+        "description": "Der Big-Picture-Einstieg zeigt, welche Möglichkeiten Informatik im Alltag, bei gesellschaftlicher Teilhabe sowie in Studium und Beruf eröffnet und welche positiven Perspektiven der folgende Stoff bietet. Die lernende Person wählt nur, was sie neugierig macht oder ob sie weiterlernen möchte; fachliches Detailwissen wird hier weder vorausgesetzt noch geprüft.",
+        "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how working through this curriculum systematically leads to durable competence growth.",
+        "tags": [
+          "GK",
+          "LK",
+          "Motivation",
+          "Orientation"
+        ],
+        "requires": [],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "P1",
+            "P2",
+            "P3"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4",
+            "I5"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic"
+      },
+      "ancestors": [
+        {
+          "id": "29ec47db-7dfe-553d-b850-40e06f164545",
+          "title": "Informatik",
+          "titleEn": "Computer Science",
+          "description": "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
+          "descriptionEn": "Shared root for computer science at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "subject:informatics",
+            "root"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4",
+              "P5"
+            ],
+            "guidingIdeas": [],
+            "phase": "GLOBAL"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        }
+      ],
+      "englishTextPresent": {
+        "titleEn": true,
+        "descriptionEn": true
+      }
+    },
+    {
+      "goal": {
+        "id": "bb0173dc-5cda-50f6-ac10-6c439bbb2578",
+        "title": "Graphen modellieren",
+        "titleEn": "Model Graphs",
+        "description": "Die lernende Person kann Graphen mit Adjazenzlisten oder objektorientierten Strukturen darstellen.",
+        "descriptionEn": "The learner can represent graphs with adjacency lists or object-oriented structures.",
+        "tags": [
+          "LK"
+        ],
+        "requires": [
+          "7d4fe994-2325-5fa9-8718-491957da4eed",
+          "49ba66cf-accd-5938-a63e-f031bc786767"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P2",
+            "P3",
+            "P4"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I3",
+            "I4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic"
+      },
+      "ancestors": [
+        {
+          "id": "1d1d7b01-91e5-5436-8c40-a17361ec5d81",
+          "title": "Q1.5 Graphen (LK)",
+          "titleEn": "Q1.5 Graphs (Advanced Course)",
+          "description": "Graphen modellieren und Algorithmen anwenden.",
+          "descriptionEn": "Model graphs and apply algorithms.",
+          "tags": [
+            "LK"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "29ec47db-7dfe-553d-b850-40e06f164545",
+          "title": "Informatik",
+          "titleEn": "Computer Science",
+          "description": "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
+          "descriptionEn": "Shared root for computer science at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "subject:informatics",
+            "root"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4",
+              "P5"
+            ],
+            "guidingIdeas": [],
+            "phase": "GLOBAL"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "423e088a-1b38-544f-8cac-b4f8f4979850",
+          "title": "Algorithmik & objektorientierte Modellierung",
+          "titleEn": "Algorithms & Object-Oriented Modeling",
+          "description": "Klassenmodelle, Such- und Sortieralgorithmen sowie Rekursion vertiefen.",
+          "descriptionEn": "Deepen class models, search and sort algorithms, and recursion.",
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        }
+      ],
+      "englishTextPresent": {
+        "titleEn": true,
+        "descriptionEn": true
+      }
+    },
+    {
+      "goal": {
+        "id": "f0910b55-48a9-4f81-aed6-d15ac0446c70",
+        "title": "Graphbegriffe kennen",
+        "titleEn": "Know Graph Terms",
+        "description": "Die lernende Person kann Knoten, Kanten, Pfade sowie gerichtete und gewichtete Graphen erläutern.",
+        "descriptionEn": "The learner can explain nodes, edges, paths, as well as directed and weighted graphs.",
+        "tags": [
+          "LK"
+        ],
+        "requires": [
+          "49ba66cf-accd-5938-a63e-f031bc786767"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "P2"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I3",
+            "I4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic"
+      },
+      "ancestors": [
+        {
+          "id": "1d1d7b01-91e5-5436-8c40-a17361ec5d81",
+          "title": "Q1.5 Graphen (LK)",
+          "titleEn": "Q1.5 Graphs (Advanced Course)",
+          "description": "Graphen modellieren und Algorithmen anwenden.",
+          "descriptionEn": "Model graphs and apply algorithms.",
+          "tags": [
+            "LK"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "29ec47db-7dfe-553d-b850-40e06f164545",
+          "title": "Informatik",
+          "titleEn": "Computer Science",
+          "description": "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
+          "descriptionEn": "Shared root for computer science at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "subject:informatics",
+            "root"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4",
+              "P5"
+            ],
+            "guidingIdeas": [],
+            "phase": "GLOBAL"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "423e088a-1b38-544f-8cac-b4f8f4979850",
+          "title": "Algorithmik & objektorientierte Modellierung",
+          "titleEn": "Algorithms & Object-Oriented Modeling",
+          "description": "Klassenmodelle, Such- und Sortieralgorithmen sowie Rekursion vertiefen.",
+          "descriptionEn": "Deepen class models, search and sort algorithms, and recursion.",
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "7d4fe994-2325-5fa9-8718-491957da4eed",
+          "title": "Graphbegriffe und vernetzte Strukturen",
+          "titleEn": "Graph Concepts and Networked Structures",
+          "description": "Cluster zu Graphbegriffen sowie zur Modellierung und Klassifikation vernetzter Strukturen.",
+          "descriptionEn": "Cluster for graph concepts and for modeling and classifying networked structures.",
+          "tags": [
+            "LK"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB1",
+            "processCompetencies": [
+              "P2"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        }
+      ],
+      "englishTextPresent": {
+        "titleEn": true,
+        "descriptionEn": true
+      }
+    },
+    {
+      "goal": {
+        "id": "c9d20743-dfda-4425-ae40-8f51d9f0c72a",
+        "title": "Vernetzte Strukturen als Graphen modellieren und klassifizieren",
+        "titleEn": "Model and Classify Networked Structures as Graphs",
+        "description": "Die lernende Person kann vernetzte Strukturen in praktischen Fragestellungen als Graphen modellieren und diese anhand ihrer Eigenschaften klassifizieren.",
+        "descriptionEn": "The learner can model networked structures in practical contexts as graphs and classify them by their properties.",
+        "tags": [
+          "LK"
+        ],
+        "requires": [
+          "49ba66cf-accd-5938-a63e-f031bc786767"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "P2"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I3",
+            "I4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic"
+      },
+      "ancestors": [
+        {
+          "id": "1d1d7b01-91e5-5436-8c40-a17361ec5d81",
+          "title": "Q1.5 Graphen (LK)",
+          "titleEn": "Q1.5 Graphs (Advanced Course)",
+          "description": "Graphen modellieren und Algorithmen anwenden.",
+          "descriptionEn": "Model graphs and apply algorithms.",
+          "tags": [
+            "LK"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "29ec47db-7dfe-553d-b850-40e06f164545",
+          "title": "Informatik",
+          "titleEn": "Computer Science",
+          "description": "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
+          "descriptionEn": "Shared root for computer science at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "subject:informatics",
+            "root"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4",
+              "P5"
+            ],
+            "guidingIdeas": [],
+            "phase": "GLOBAL"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "423e088a-1b38-544f-8cac-b4f8f4979850",
+          "title": "Algorithmik & objektorientierte Modellierung",
+          "titleEn": "Algorithms & Object-Oriented Modeling",
+          "description": "Klassenmodelle, Such- und Sortieralgorithmen sowie Rekursion vertiefen.",
+          "descriptionEn": "Deepen class models, search and sort algorithms, and recursion.",
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "7d4fe994-2325-5fa9-8718-491957da4eed",
+          "title": "Graphbegriffe und vernetzte Strukturen",
+          "titleEn": "Graph Concepts and Networked Structures",
+          "description": "Cluster zu Graphbegriffen sowie zur Modellierung und Klassifikation vernetzter Strukturen.",
+          "descriptionEn": "Cluster for graph concepts and for modeling and classifying networked structures.",
+          "tags": [
+            "LK"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB1",
+            "processCompetencies": [
+              "P2"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "cluster"
+        }
+      ],
+      "englishTextPresent": {
+        "titleEn": true,
+        "descriptionEn": true
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "operationId": "INFO-FOUNDATION-ER",
+      "decision": "recommend-exact-array",
+      "rationale": [
+        "The complete goal is the entry acquisition of entities, relations, cardinalities and optionalities. None of its contains ancestors adds a requirement.",
+        "A passed whole Q1 assessment additionally demands OO implementations, sorting, recursion, data structures and graph algorithms. These are not necessary to start or demonstrate this ER competence.",
+        "Keep only the already authored shared orientation entry. Its German description explicitly requires no technical detail knowledge; this is course entry, not a replacement broad competence exam.",
+        "Do not substitute the whole general model-reflection goal: choosing among modelling procedures and judging model decisions is broader than applying an explicitly supplied ER method to a small world. A learner need not first master that complete cross-model metacompetence.",
+        "OO class abstraction is a possible teaching bridge, but not a necessary unique route to ER concepts, and its current prerequisite would import another whole exam. No new mandatory OO path is justified here."
+      ],
+      "concreteReviewCounterexample": {
+        "kind": "review-example-not-existing-published-task",
+        "context": "Ein Mitglied kann momentan null oder mehrere Exemplare ausleihen. Jedes Exemplar ist momentan an höchstens ein Mitglied ausgeliehen.",
+        "requiredPerformance": "Mitglied und Exemplar als Entitätstypen, ausleihen als Beziehung sowie 0..* beziehungsweise 0..1 als Kardinalität und Optionalität korrekt darstellen und am Sachtext begründen.",
+        "whyOldGateIsNotNecessary": "This complete ER performance can be learned and demonstrated without programming inheritance, implementing sorting/recursion or executing graph algorithms. ER notation and cardinality interpretation are the content of this goal, not prior completion of all Q1."
+      }
+    },
+    {
+      "operationId": "INFO-FOUNDATION-AUTOMATA",
+      "decision": "recommend-exact-array",
+      "rationale": [
+        "The complete goal concerns modelling and simulation of automata from real contexts; its parent specifies finite acceptors/transducers. It does not demand implementing a simulator or an object-oriented program. None of its contains ancestors adds a prerequisite.",
+        "The whole Q2 assessment adds ER normalization/cardinalities, SQL aggregation, web/database integration and further topics. These are not necessary for a finite-state real-world model.",
+        "Keep only the existing shared orientation entry. Do not use the general model-reflection goal as a mandatory complete metacompetence before a first specified finite-state model.",
+        "Reject 2aaefe0b as a required replacement: its complete description explicitly demands assignments during implementation and attribute-state changes. A transition table or paper simulation need not execute any program assignment.",
+        "Do not use DFA/NFA conversion, minimization or later regular-language goals as foundations: their present prerequisite paths already depend on the elementary automaton goal.",
+        "The separately reviewed complex-state-diagram goal can require this elementary goal after this Q2-exam bridge is removed; leaving the bridge while adding that later dependency would create a cycle through the Q2 assessment."
+      ],
+      "concreteReviewCounterexample": {
+        "kind": "review-example-not-existing-published-task",
+        "context": "Drehkreuz mit Zuständen gesperrt/offen, Start gesperrt, Eingaben Münze/Drücken.",
+        "transitionTable": [
+          {
+            "from": "gesperrt",
+            "input": "Münze",
+            "to": "offen",
+            "output": "keine Freigabe"
+          },
+          {
+            "from": "gesperrt",
+            "input": "Drücken",
+            "to": "gesperrt",
+            "output": "zurückweisen"
+          },
+          {
+            "from": "offen",
+            "input": "Münze",
+            "to": "offen",
+            "output": "keine weitere Zustandsänderung"
+          },
+          {
+            "from": "offen",
+            "input": "Drücken",
+            "to": "gesperrt",
+            "output": "Durchgang freigeben"
+          }
+        ],
+        "simulationInputs": [
+          "Münze",
+          "Drücken",
+          "Drücken",
+          "Münze"
+        ],
+        "simulationStatesAfterInput": [
+          "offen",
+          "gesperrt",
+          "gesperrt",
+          "offen"
+        ],
+        "requiredPerformance": "Den endlichen Zustandsspeicher, die Übergänge und Ausgaben aus dem realen Kontext modellieren sowie die angegebene Eingabefolge korrekt simulieren.",
+        "whyOldOrAlternativeGateIsNotNecessary": "This complete model/simulation requires neither an ER/SQL/web assessment pass nor implementing assignments into object attributes."
+      }
+    },
+    {
+      "caseId": "INFO-G17-056",
+      "goalId": "6d10ced5-0213-558c-9b65-db70ccb824b4",
+      "decision": "hold-unchanged-not-approved-as-necessary-whole-bundle",
+      "currentRequires": [
+        "881edb2d-b0c9-5775-b2ba-3062f2e91f83"
+      ],
+      "proposedRequires": null,
+      "rationale": [
+        "The application goal explicitly names DFS. Its current predecessor bundles DFS, BFS and shortest paths using BFS. Full BFS/shortest-path mastery does not follow from DFS cycle/bridge performance and is not established as a necessary preparation gate by these texts.",
+        "The complete canonical title/description search found no separately assessable DFS-only foundation. The existing graph-representation goal is useful preparation but does not supply the DFS traversal, discovery/back-edge or bridge reasoning that this application needs. Replacing the predecessor with representation alone would silently drop that prerequisite rather than repair the bundle.",
+        "Therefore this package neither removes the bundled edge nor approves its whole bundle as didactically necessary. It needs a separately reviewed goal/content decomposition or a documented acquisition route before a narrower exact array can be justified. No new goal or changed coverage is proposed here."
+      ]
+    }
+  ],
+  "actualAssessmentContext": [
+    {
+      "goalId": "65aa807f-f998-5648-a3a6-2e0e96dba714",
+      "finding": "The current task only asks for a material-supported phase task without supplying the material, a concrete problem or a specific worked solution. Its released label and generic rubric do not establish an additional concrete prerequisite for these entry goals.",
+      "currentTaskAndRubric": {
+        "id": "65aa807f-f998-5648-a3a6-2e0e96dba714",
+        "title": "Q1 vernetzt anwenden",
+        "titleEn": "Q1 integrated application",
+        "description": "Die lernende Person kann die Informatik-Kompetenzen aus Q1 in einer materialgestützten, zusammenhängenden Übungssituation sicher anwenden.",
+        "descriptionEn": "The learner can apply the Informatik competencies from Q1 in a coherent, material-based practice situation.",
+        "examData": {
+          "reviewStatus": "released",
+          "coveredStrands": [
+            "I1",
+            "I2",
+            "I3",
+            "I4",
+            "I5",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "Bearbeiten Sie eine materialgestützte Informatik-Aufgabe zu Q1. Erläutern Sie die relevanten Begriffe, modellieren oder implementieren Sie den fachlichen Kern, prüfen Sie Ihre Lösung und beurteilen Sie Grenzen oder Auswirkungen der gewählten Lösung.",
+          "solutionContent": "Erwartet wird eine fachlich korrekte, begründete und überprüfte Lösung, die die relevanten Kompetenzen des Abschnitts vernetzt nutzt.",
+          "scoring": {
+            "maxPoints": 20,
+            "passingPoints": 12,
+            "steps": [
+              {
+                "id": "s1",
+                "points": 5,
+                "description": "Fachliche Begriffe und Problemstellung korrekt erschlossen"
+              },
+              {
+                "id": "s2",
+                "points": 6,
+                "description": "Modellierung oder Implementierung fachlich tragfähig ausgeführt"
+              },
+              {
+                "id": "s3",
+                "points": 5,
+                "description": "Lösung systematisch geprüft und Fehlerquellen reflektiert"
+              },
+              {
+                "id": "s4",
+                "points": 4,
+                "description": "Grenzen, Auswirkungen oder Alternativen begründet beurteilt"
+              }
+            ]
+          }
+        },
+        "coveredGoalCount": 58
+      }
+    },
+    {
+      "goalId": "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+      "finding": "The current task only asks for a material-supported phase task without supplying the material, a concrete problem or a specific worked solution. Its released label and generic rubric do not establish an additional concrete prerequisite for these entry goals.",
+      "currentTaskAndRubric": {
+        "id": "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+        "title": "Q2 vernetzt anwenden",
+        "titleEn": "Q2 integrated application",
+        "description": "Die lernende Person kann die Informatik-Kompetenzen aus Q2 in einer materialgestützten, zusammenhängenden Übungssituation sicher anwenden.",
+        "descriptionEn": "The learner can apply the Informatik competencies from Q2 in a coherent, material-based practice situation.",
+        "examData": {
+          "reviewStatus": "released",
+          "coveredStrands": [
+            "I1",
+            "I2",
+            "I3",
+            "I4",
+            "I5",
+            "P1",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "Bearbeiten Sie eine materialgestützte Informatik-Aufgabe zu Q2. Erläutern Sie die relevanten Begriffe, modellieren oder implementieren Sie den fachlichen Kern, prüfen Sie Ihre Lösung und beurteilen Sie Grenzen oder Auswirkungen der gewählten Lösung.",
+          "solutionContent": "Erwartet wird eine fachlich korrekte, begründete und überprüfte Lösung, die die relevanten Kompetenzen des Abschnitts vernetzt nutzt.",
+          "scoring": {
+            "maxPoints": 20,
+            "passingPoints": 12,
+            "steps": [
+              {
+                "id": "s1",
+                "points": 5,
+                "description": "Fachliche Begriffe und Problemstellung korrekt erschlossen"
+              },
+              {
+                "id": "s2",
+                "points": 6,
+                "description": "Modellierung oder Implementierung fachlich tragfähig ausgeführt"
+              },
+              {
+                "id": "s3",
+                "points": 5,
+                "description": "Lösung systematisch geprüft und Fehlerquellen reflektiert"
+              },
+              {
+                "id": "s4",
+                "points": 4,
+                "description": "Grenzen, Auswirkungen oder Alternativen begründet beurteilt"
+              }
+            ]
+          }
+        },
+        "coveredGoalCount": 41
+      }
+    },
+    {
+      "goalId": "1ce620dc-93cf-579c-a286-e74451d0a4d7",
+      "finding": "The current task only asks for a material-supported phase task without supplying the material, a concrete problem or a specific worked solution. Its released label and generic rubric do not establish an additional concrete prerequisite for these entry goals.",
+      "currentTaskAndRubric": {
+        "id": "1ce620dc-93cf-579c-a286-e74451d0a4d7",
+        "title": "Q3 vernetzt anwenden",
+        "titleEn": "Q3 integrated application",
+        "description": "Die lernende Person kann die Informatik-Kompetenzen aus Q3 in einer materialgestützten, zusammenhängenden Übungssituation sicher anwenden.",
+        "descriptionEn": "The learner can apply the Informatik competencies from Q3 in a coherent, material-based practice situation.",
+        "examData": {
+          "reviewStatus": "released",
+          "coveredStrands": [
+            "I1",
+            "I2",
+            "I3",
+            "I4",
+            "I5",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "Bearbeiten Sie eine materialgestützte Informatik-Aufgabe zu Q3. Erläutern Sie die relevanten Begriffe, modellieren oder implementieren Sie den fachlichen Kern, prüfen Sie Ihre Lösung und beurteilen Sie Grenzen oder Auswirkungen der gewählten Lösung.",
+          "solutionContent": "Erwartet wird eine fachlich korrekte, begründete und überprüfte Lösung, die die relevanten Kompetenzen des Abschnitts vernetzt nutzt.",
+          "scoring": {
+            "maxPoints": 20,
+            "passingPoints": 12,
+            "steps": [
+              {
+                "id": "s1",
+                "points": 5,
+                "description": "Fachliche Begriffe und Problemstellung korrekt erschlossen"
+              },
+              {
+                "id": "s2",
+                "points": 6,
+                "description": "Modellierung oder Implementierung fachlich tragfähig ausgeführt"
+              },
+              {
+                "id": "s3",
+                "points": 5,
+                "description": "Lösung systematisch geprüft und Fehlerquellen reflektiert"
+              },
+              {
+                "id": "s4",
+                "points": 4,
+                "description": "Grenzen, Auswirkungen oder Alternativen begründet beurteilt"
+              }
+            ]
+          }
+        },
+        "coveredGoalCount": 35
+      }
+    }
+  ],
+  "checks": {
+    "sourceRawSha256Matched": true,
+    "fullGermanGoalAndAncestorTextsRead": true,
+    "existingEnglishGoalAndAncestorTextsRead": true,
+    "absentEnglishFieldsNotInvented": true,
+    "sourceAuthoredBeforeArraysMatched": true,
+    "noInheritedAncestorPrerequisiteOnThreeReviewedTargets": true,
+    "existingCandidateFoundationsReviewedAsWholeGoals": true,
+    "noLiveCurriculumOrFrozenQ4ArtifactWrites": true,
+    "globalClosureOrCycleReplayPerformed": false
+  },
+  "limits": [
+    "This review changes preparation demand semantically. It does not assert closure equality or infer didactic necessity from a transitive witness.",
+    "Astra/root must independently calculate full global Goal/atomic demand changes, cycles, applicability/projection effects, exact source guards and any later terminal-normalization consequences before application.",
+    "Both whole-exam removal recommendations and the unchanged DFS hold are independent of exam coverage, successful explicit results, practice approval, learner mastery, SRS or learning-unit recognition.",
+    "Existing unrelated whole-exam prerequisite paths, task-material gaps and the DFS/BFS goal bundle remain open; this is not a full Informatik maturity approval."
+  ]
+}
