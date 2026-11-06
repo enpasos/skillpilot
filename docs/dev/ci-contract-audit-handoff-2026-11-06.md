@@ -733,9 +733,34 @@ Quellenlücken und ausstehende Relationsbegründungen bleiben ausgewiesen.
 Assessment, Docs, OAuth und Gemini bestehen auf diesem Remote-Kopf.
 
 Für die nächsten drei Math-Normalisierungen sind echte unabhängige D-Runden
-vorbereitet und ausgeführt; eine vorgeschlagene Diagrammpräzisierung benötigt
-nach endgültiger Festlegung zwei neue aktuelle Rechecks. Drei P-Kandidaten,
-aktuelle Kind-/gegebenenfalls A/M/V-Bindungen sowie die konkrete technische
-Duration-Policybindung sind vor einer Anwendung zu schließen. Es wurde bislang
-keine dieser drei Quellenkorrekturen angewandt. Der aktualisierte vollständige
-CQR-/Floorstand bleibt der Nachlauf von 20:52 UTC: drei M6, sieben offene Floors.
+ausgeführt. Die endgültige Diagrammpräzisierung B hat zwei neue aktuelle
+keep/keep-Rechecks und eine eigene native D-Auflösung; die ursprünglichen
+revise-Records bleiben erhalten. Drei neue P-Kandidaten samt 28 unveränderten
+Bestandsrecords sowie frische Kind-/A-/M-Urteile sind vorbereitet. Die harte
+V-Kontextbindung an echte Originalreviews, deren Bestandsqualifikation, die
+konkrete Duration-Policybindung und die vollständige Integration bleiben offen.
+Es wurde bislang keine dieser drei Quellenkorrekturen angewandt.
+
+## Aktueller Nachlauf 22:41 UTC: vollständiger Informatik-Routenscope
+
+Der [tatsächlich neu erzeugte Bericht](ci-graph-repairs/cqr104-current-cqr-2026-11-06.json)
+vom `2026-11-06T22:41:52.172Z` enthält die
+[CQR-104-Reparatur](ci-graph-repairs/cqr104-informatics-route-scope-repair-2026-11-06.md).
+Alle 48 realen Informatik-Projektionen werden geprüft; 42 haben keine
+vorgesehenen Abschlussprüfungen und scheitern ausdrücklich. Das sind
+Scopebefunde, keine Aufforderung, 42 voneinander unabhängige Prüfungen zu
+erfinden. Alle elf anderen Routenprofile sind im nativen Vorher-/Nachher-Vergleich
+exakt unverändert. Die Quellkataloge und zehn Fachfloors wurden nicht geändert.
+Deutsch, Geschichte und Latein bleiben M6; der tatsächliche harte Floorcheck
+endet mit Exit 1 an sieben übrigen Fächern. Die 925 Definitions- und 872
+Bereitschaftsprüfungen bleiben vollständig; sechs Informatikprüfungen sind
+weiter unzureichend.
+
+Der spätere Remote-Kopf `6fe35a6b…` bestätigt Assessment und Gemini sowie
+OAuth. Docs scheitert im MkDocs-Build an fehlenden Audit-Originalen im
+schlanken Checkout; Apps-CI an einem alten Workflowtest, der noch vier statt
+19 Isolationstests erwartet. Beide [konkreten Einbindungen](ci-graph-repairs/remote-6fe-ci-integration-repairs-2026-11-06.json)
+sind lokal repariert: tatsächlicher Docs-sparse-Build rot/grün und alle 94
+Tests des Original-Apps-Befehls grün. Die 19 harten Kontrollen, Quellen und
+Fachfloors bleiben unverändert. Der Hauptlauf dieses Kopfes war bei diesem
+Zwischenstand noch nicht terminal; eine neue Remote-Abnahme ist erforderlich.

@@ -14,9 +14,12 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         timeout-minutes: 10
-        # MkDocs only needs docs/ and root files; avoid fetching curriculum assets.
+        # Docs retain aliases to immutable audit originals outside docs/.
+        # Include their bounded archive without fetching curriculum assets.
         with:
-          sparse-checkout: docs
+          sparse-checkout: |
+            docs
+            qa-artifacts/ci-contract-audit
       - uses: actions/setup-python@v6
         with:
           python-version: '3.11'

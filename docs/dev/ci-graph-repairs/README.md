@@ -1,7 +1,7 @@
 # Belege zu den CI-Vertragsreparaturen
 
-Aktueller gesicherter Nachlauf: `2026-11-06T20:52:17.680Z`. Der
-[Gesamt-CQR-Beleg mit vollständigen Assessmentgates](complete-assessment-current-cqr-2026-11-06.md)
+Aktueller gesicherter Nachlauf: `2026-11-06T22:41:52.172Z`. Der
+[Gesamt-CQR-Beleg mit vollständigen Assessmentgates](cqr104-current-cqr-2026-11-06.json)
 bindet alle 21 Quellen, 925 Definitions- und 872 Bereitschaftsprüfungen sowie
 die zehn unveränderten Fachfloors. Deutsch, Geschichte und Latein bleiben M6;
 der tatsächliche harte Floorcheck scheitert an sieben übrigen Fachständen.
@@ -9,6 +9,20 @@ Mathematik hat 919 Strukturbefunde, davon 917 G17; Informatik noch 37 G17 und
 sechs unzureichende Prüfungen. Die [vorherige 18:45-Quittung](informatics-bounded26-current-cqr-2026-11-06.json)
 bleibt historisch erhalten.
 
+- [Korrigierter Informatik-Routenscope](cqr104-informatics-route-scope-repair-2026-11-06.md):
+  CQR-104 prüft alle 48 tatsächlichen Länder-/Kurs-/Dauerprojektionen und
+  beanstandet 42 leere Abschlussmengen. Alle elf übrigen Routenprofile bleiben
+  exakt gleich. Echte Gegenfälle, der vollständige lokale Deep-Lauf und der
+  unabhängige Codegegenreview bestehen; die fehlenden Prüfungen bleiben offen.
+- [Math-D3/P31-Auditcheckpoint](math-three-current-evidence-completion-2026-11-06.md):
+  drei aktuelle native D-Auflösungen, drei echte neue P-Kandidaten und 28
+  unveränderte Bestandsrecords; keine Anwendung oder neue menschliche Freigabe.
+- [Konkrete Remote-Integrationsreparaturen auf 6fe](remote-6fe-ci-integration-repairs-2026-11-06.json):
+  der Workflowtest schützt jetzt alle 19 Capture-/Vorbereitungskontrollen;
+  alle 94 Tests des tatsächlichen Apps-CI-Befehls bestehen lokal. Der Docs-Build
+  braucht die erhaltenen Audit-Originale zusätzlich im schlanken Checkout;
+  der konkrete MkDocs-Fehler ist damit lokal reproduziert und geschlossen.
+  Die frische Remote-Abnahme dieser Reparaturen steht noch aus.
 - [Aktuelle Source-A-Neuverifikation](source-identity-db9c-source-rebase-2026-11-06.md):
   593 Quellen, 8.591 exakt gebundene Dokumente und 164 unveränderte Regeln;
   sieben historische Belege sind bytegleich archiviert, v1 bleibt unverändert.

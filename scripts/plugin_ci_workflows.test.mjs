@@ -67,9 +67,9 @@ function assertIdentityAndMathCiWiring(workflow, scripts = packageJson.scripts) 
   assert.match(isolation, /set -euo pipefail/u)
   assert.match(isolation, /^\s+command -v bwrap$/mu)
   assert.match(isolation, /^\s+python3 -B - <<'PY'$/mu)
-  assert.ok(isolation.includes('unittest.defaultTestLoader.discover("scripts", pattern="test_prepare_identity_qa_candidate.py")'))
-  assert.match(isolation, /^\s+if result\.testsRun != 4 or result\.skipped:$/mu)
-  assert.match(isolation, /^\s+raise SystemExit\("All four identity QA preparation controls must execute without skips"\)$/mu)
+  assert.ok(isolation.includes('unittest.defaultTestLoader.discover("scripts", pattern="test_*identity_qa*py")'))
+  assert.match(isolation, /^\s+if result\.testsRun != 19 or result\.skipped:$/mu)
+  assert.match(isolation, /^\s+raise SystemExit\("All nineteen identity QA preparation and capture controls must execute without skips"\)$/mu)
   assert.match(isolation, /^\s+raise SystemExit\(0 if result\.wasSuccessful\(\) else 1\)$/mu)
   assert.doesNotMatch(steps.join(''), /(?:python3?|python)\s+(?:-B\s+)?(?:\.\.\/)?scripts\/prepare_identity_qa_candidate\.py\b/u)
   assert.equal(scripts['test:hessen-math-q24-q25-scope'], 'tsx scripts/testHessenMathQ24Q25Scope.ts')
@@ -98,8 +98,10 @@ test('identity and Math CI wiring rejects missing, skipped, reordered, stale and
     ['boundary before fixture fetch', ci.replace(boundary, '').replace(fixture, boundary + fixture)],
     ['isolation enabled after fixtures', ci.replace(enable, '').replace(isolation, isolation + enable)],
     ['missing bubblewrap prerequisite', ci.replace('command -v bwrap', 'true')],
-    ['accepted unittest skips', ci.replace('result.testsRun != 4 or result.skipped', 'result.testsRun != 4 or False')],
-    ['missing fixture-count guard', ci.replace('result.testsRun != 4 or result.skipped', 'result.skipped')],
+    ['omitted private capture suite', ci.replace('test_*identity_qa*py', 'test_prepare_identity_qa_candidate.py')],
+    ['stale seventeen-control count', ci.replace('result.testsRun != 19', 'result.testsRun != 17')],
+    ['accepted unittest skips', ci.replace('result.testsRun != 19 or result.skipped', 'result.testsRun != 19 or False')],
+    ['missing fixture-count guard', ci.replace('result.testsRun != 19 or result.skipped', 'result.skipped')],
     ['ignored unittest failure', ci.replace('0 if result.wasSuccessful() else 1', '0 if result.wasSuccessful() else 0')],
     ['soft boundary failure', ci.replace(boundary, boundary.replace('        run:', '        continue-on-error: true\n        run:'))],
     ['conditional boundary execution', ci.replace(boundary, boundary.replace('        run:', "        if: github.event_name == 'push'\n        run:"))],
