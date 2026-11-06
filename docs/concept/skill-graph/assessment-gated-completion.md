@@ -33,8 +33,12 @@ withdraw valid recognition. Correction of an invalid source result or contract
 is a separate explicit integrity process.
 
 Assessment and memorization goals are never implicitly mastered. Exams need
-their normal positive outcome; memory goals need M1 verified recall. A due
-card is not a failed recall, and self-rated practice is not verified recall.
+their normal positive outcome; memory goals need Verified Recall of all required
+cards within that same goal. Successful card verifications persist across
+batches. Under the [6 November 2026 clarification](node-types.md#due-and-mastery-semantics),
+later due dates or practice do not reopen mastery, and passed cards are not
+retested. A failed attempt before passing leaves the affected card unverified;
+self-rated practice is not verified recall.
 Orientation retains its motivational-marker meaning; its completion does not
 certify subject competence or fabricate an interaction.
 

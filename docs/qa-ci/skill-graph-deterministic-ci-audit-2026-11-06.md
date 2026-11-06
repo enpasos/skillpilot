@@ -10,6 +10,15 @@
 > Abgleich fehlen. Maßgeblich für die Fortsetzung ist die
 > [Übergabe](../dev/ci-contract-audit-handoff-2026-11-06.md).
 
+**Korrektur zum Kartenzielvertrag vom 6. November 2026:** Der Product Owner
+hat klargestellt, dass Wiederholungen zum Lernen der zugehörigen Karten
+gehören und die bestandene Abschlussprüfung den Masterednachweis liefert.
+Kartenfälligkeit öffnet ein abgeschlossenes Ziel nicht erneut und entzieht
+keine Mastery. Die frühere No-due-/Retest-Widerrufsdarstellung war veraltet;
+Zeile K2 ist entsprechend korrigiert. Die eingefrorenen ZIP-Notizen bleiben
+historische Belege, keine aktuelle Entscheidungsgrundlage für diese Regel.
+Der weitere CI-Audit ist pausiert.
+
 **Arbeitsentwurf vom 6. November 2026.** Die technischen Belege stehen; der
 abschließende Abgleich jeder normativen Rule-ID mit Astras Inventar folgt in
 dieser Datei. Bis dahin ist dies keine Behauptung einer vollständigen Abdeckung
@@ -325,7 +334,7 @@ aktuell gelesenen lokalen Stand.
 | ID | Eigenständige Bedingung | Runtime und konkreter Test | CI / Bewertung |
 | --- | --- | --- | --- |
 | K1 | Jede erforderliche Karte braucht echten Verified-Recall-Pass. | LS:1401 prüft alle Karten, :1426 verlangt passed plus nichtleeres passedAt. `app/src/hooks/useSrsMastery.ts:185` benutzt alle verifizierten Karten. `service/LearnerServiceTest.java:3283` `verifiedRecallForSekOneFlashcardsStartsAndControlsSrsMastery`; :258 `publicPracticeSyncCannotCreateVerifiedRecall`. | B; **Verifikationsbedingung vorhanden**. Ein Practice-Sync kann sie nicht erfinden. |
-| K2 | Aktueller veröffentlichter Node-Type-Vertrag fordert zusätzlich keine fälligen Karten. | `docs/concept/skill-graph/node-types.md:164` verlangt bei :165 keine fälligen Karten. LS:1401–1417 prüft nur Verified-Status, nicht nextReview. Hook:164 zählt due separat und benutzt ihn bei :185 nicht für Mastery. | **offener dokumentierter Widerspruch**. Bestehende Verified-Tests beweisen die No-due-Bedingung nicht. Vor Implementierungsbehauptung fachlich entscheiden/angleichen. |
+| K2 | Wiederholungen betreffen das Kartenlernen; die bestandene Abschlussprüfung liefert Mastery. Kartenfälligkeit öffnet abgeschlossene Ziele nicht erneut; bereits bestandene Karten werden nicht erneut geprüft. | [Zieltypvertrag, Klarstellung vom 6. November](../concept/skill-graph/node-types.md#due-and-mastery-semantics). LS:1401–1417 prüft Verified-Status ohne nextReview; Hook:185 verwendet alle verifizierten Karten. LS:1819–1823 weist erneute Einzelresultate für bestandene Karten zurück; :2441–2464 schließt sie aus der Auswahl aus, :2007–2034 validiert die exakte Batchauswahl. | **Veraltete Dokumentation korrigiert; kein offener Produktentscheid.** Die Codepfade wurden lesend geprüft. Ein eigener Negativtest und dessen CI-Durchsetzung für diese Gesamtregel sind damit noch nicht nachgewiesen. |
 | K3 | Fehlende/kaputte erforderliche Decks sind unavailable, nicht leere vollständige Mengen. | LS:1246/1256/1263/1272/1277 wirft im strikten Pfad. `service/AssessmentCompletionSrsIntegrationTest.java:99`, :103, :107 prüfen missing/unreadable/empty; :131 prüft valide Decks ohne alten Zustand als unmastered. | B; **strikter Completion-Input fail-closed**. Normalüberlagerung darf beschädigte Einzelziele auslassen und vorhandenen gespeicherten Wert behalten (LS:1385); das ist kein neuer positiver Nachweis. |
 | K4 | Kein K-Abschluss durch eine gewöhnliche/Prüfungs-Waiverregel. | CP:48 beschreibt ausdrücklich nur Assessmentschutz; `completion/AutomaticCompletionTest.java:38`/`:46` erlässt cards. SRS-Inputschutz verhindert diesen späteren Waiver nicht. | B; **Widerspruch im Automatic-Pfad**, trotz K1/K3. |
 | U1 | Eindeutiger Erwerbsowner, aufgelöste Pflichtvarianten und RequiredOwnQ-Abdeckung jedes eigenen gewöhnlichen Ziels. | `completion/CompletionScopeDefinition.java:6` beschreibt alte Programmscope, nicht rekursive LearningUnit. CE/CP haben keine Own-/RequiredOwnQ-/C(q)-Invariante. | **S1 offen**, kein entsprechender Runtime-/CI-Vertrag. Der neue mathematische Referenzchecker ist keine Produkttestabdeckung. |

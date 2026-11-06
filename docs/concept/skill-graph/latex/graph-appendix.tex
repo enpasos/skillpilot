@@ -3,7 +3,8 @@
 \section{Statusabgleich und Grenzen der Aussagen}
 \label{sec:implementation}
 Diese Fassung beschreibt die verbindliche Konzeptkorrektur vom
-4. November 2026. Geprüfte Hauptlinie für den jüngsten Konzeptabgleich:
+4. November 2026 und die Klarstellung zum Kartenzielabschluss vom
+6. November 2026. Geprüfte Hauptlinie für den Konzeptabgleich vom 4. November:
 \code{616324e857} (kurzer Git-Präfix). Es wurde ausschließlich Dokumentation
 und deren Werkzeugbestand verändert. Die neue globale Anwendungsanerkennung
 ist \textbf{noch nicht implementiert}. Ein lesbarer Beleg oder ein erfolgreicher
@@ -34,10 +35,13 @@ normalisierten Relation und keine fachliche Inhaltsprüfung.\\
 Clustererfüllung & Der normative Kern verwendet alle atomaren Nachfahren.
 Die gelesenen Backendpfade bevorzugen in bestimmten Fällen rekursiv
 \code{isCoreForPrereqs}-Kinder. Das ist nicht dieselbe Aggregation.\\
-Memorierung & Der dokumentierte Zieltypvertrag nennt verifizierten Abruf
-und keine fälligen Karten. Backend und \code{useSrsMastery} verwenden den
-verifizierten Abruf aller erforderlichen Karten. Die Abweichung ist
-vor einer entsprechenden Konformitätsbehauptung ausdrücklich aufzulösen.\\
+Memorierung & Wiederholungen gehören zum Lernen der Karten; die bestandene
+Abschlussprüfung liefert den Masterednachweis. Kartenfälligkeit öffnet
+abgeschlossene Ziele nicht erneut. Der am 6. November gelesene Backendpfad
+und \code{useSrsMastery} verwenden den verifizierten Abruf aller
+erforderlichen Karten; der Prüfablauf schließt bereits bestandene Karten aus.
+Die frühere Dokumentbehauptung einer Fälligkeitsbedingung und eines
+Mastery-Entzugs durch erneuten Abruf ist korrigiert.\\
 Lerneinheiten & Rekursive Ziel-/Kinderstruktur mit eindeutigem Ersterwerb
 und abgeleitetem Abschluss; noch kein behauptetes Runtimefeature.
 Technische Ganzheitssperren und direkter Prüfungszugriff unter einem

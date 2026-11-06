@@ -61,9 +61,16 @@ Es wurde noch kein neues hartes Curriculum-Gate in die Workflows verdrahtet.
 3. Ein Test kann aktiv die alte Semantik absichern. Die vorbereitete neue
    globale Anerkennung und vollständige transitive Fokusauswertung sind
    dadurch nicht bereits nachgewiesen.
-4. SRS hat einen dokumentierten Normkonflikt: „keine Karte fällig und alle
-   verifiziert“ gegenüber aktuell verifiziertem Abruf ohne Due-Rücknahme.
-   Erst eindeutig festlegen, dann Tests ableiten; nicht still einen Stand wählen.
+4. Der Product Owner hat den Kartenzielvertrag am **6. November 2026**
+   klargestellt: Die Karten gehören zum Lernziel und werden mit Wiederholungen
+   gelernt; die bestandene Abschlussprüfung liefert dessen Masterednachweis.
+   Kartenfälligkeit öffnet ein abgeschlossenes Ziel nicht erneut und entzieht
+   keine Mastery. Die alten Aussagen über eine zusätzliche Fälligkeitsbedingung
+   und einen Widerruf durch erneute Prüfung waren veraltete Dokumentation.
+   Bereits bestandene Karten sind im aktuellen Prüfablauf ausgeschlossen.
+   Maßgeblich ist [der korrigierte Zieltypvertrag](../concept/skill-graph/node-types.md#due-and-mastery-semantics).
+   Die eingefrorenen Reviewnotizen enthalten noch die alte Darstellung und
+   dürfen sie nicht wieder als offene Produktentscheidung einführen.
 5. CQR-Bericht, harte Einzelprüfungen, geschützte Reifegrad-Untergrenzen und
    optionale Paket-/OWL-Workflows sind verschiedene Durchsetzungsstärken.
    Grüne CI oder M7 belegen nur den tatsächlich implementierten Prüfvertrag.

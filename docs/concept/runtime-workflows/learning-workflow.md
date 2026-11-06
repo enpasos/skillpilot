@@ -185,8 +185,16 @@ estimate or separate assessment qualification is not another goal state.
   - Their mastery is derived from card state rather than manually set.
   - SRS scheduling shows whether cards are currently due.
   - Verified recall records whether each required card has been answered correctly in a learning-coach/GPT-led hard test.
-  - A memorization goal counts as mastered only after all required cards are verified and no required card is currently due.
-  - The learner may start the hard recall test at any time while the memorization node is the active goal.
+  - Cards belong to their memorization goal; learning it includes repetitions.
+    Its concluding Verified Recall assessment establishes mastery of that goal
+    once all required cards are verified. Successful card verifications remain
+    valid across batches while the remaining cards are learned and assessed.
+  - Due dates and practice do not revoke verification or reopen mastered goals.
+    Passed cards are excluded from further Verified Recall tests. Failed
+    attempts before passing leave only the affected cards unverified.
+  - The learner may start the hard recall test for eligible unverified cards
+    while the memorization node is the active goal, without first emptying the
+    practice queue.
   - A memorization node offers ordinary flashcard learning in the Cockpit and,
     where the provider supports the dedicated reviewed component, directly in
     the chat UI. Both surfaces use the same simple learner-facing decisions
@@ -195,13 +203,16 @@ estimate or separate assessment qualification is not another goal state.
   - Verified Recall remains a separate learning-coach handoff. Neither the
     Cockpit nor the ordinary chat card component grades that strict recall or
     treats a practice rating as mastery evidence.
+    The backend issues the complete ordered batch; after the complete submission
+    and feedback, the learner consents to its one atomic result write. Existing
+    state/version, idempotency and continuation rules apply.
 
 The node types define how a goal is achieved. For example, an orientation
 goal's completion marker records the completed motivational interaction, not
 subject-matter competence. Card repetition schedules and verified-recall
 results are card-level process data, not additional outcome states for the
-memorization goal. The documented/current recall-condition discrepancy is
-listed in [Node Types](../skill-graph/node-types.md#due-and-mastery-semantics).
+memorization goal. The binding 6 November 2026 clarification is recorded in
+[Node Types](../skill-graph/node-types.md#due-and-mastery-semantics).
 
 **Implementation status (checked 30 October 2026).** New general mastery writes
 and ordinary atomic goal controls enforce the binary outcome contract.

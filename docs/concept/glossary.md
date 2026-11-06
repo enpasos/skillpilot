@@ -210,7 +210,11 @@ The default type: conceptual or procedural competence, coached and practised in 
 
 *DE: Sich merken*
 
-A spaced-repetition goal for facts, vocabulary, or formulas. It is mastered only when no required card is due **and** every required card has passed a verified recall test.
+A goal whose assigned cards teach facts, vocabulary or formulas through practice
+and repetition. Its concluding Verified Recall assessment establishes mastery
+when every required card has passed. Successful card verifications are retained
+across batches; later due dates do not reopen mastery, and passed cards are not
+retested.
 
 ### Exam
 
@@ -245,7 +249,12 @@ Spaced repetition scheduling after the SuperMemo-2 algorithm. Each card stores `
 
 *DE: geprüfter Abruf* — see [Node Types](skill-graph/node-types.md)
 
-The hard recall gate on memorization cards: the coach shows only the prompt, the learner answers unaided, and only afterwards does the coach retrieve the expected answer and persist `passed` or `failed`. SRS practice alone is explicitly not a mastery proof.
+The concluding assessment within a memorization goal. The backend selects a
+complete ordered batch of eligible unverified cards. The coach presents its
+prompts, waits for the complete unaided answers, then retrieves the answers and
+gives feedback. After learner consent, one atomic write saves the batch results.
+A failed attempt leaves the affected card unverified; successful verifications
+remain valid. Ordinary practice and repetition alone do not establish mastery.
 
 ---
 
@@ -512,9 +521,8 @@ focus selection. I is derived, not another stored outcome; examinations and
 memory goals never enter I. A prerequisite path alone does not establish the
 required task quality. See [the completion contract](skill-graph/assessment-gated-completion.md).
 The current runtime still needs adaptation to that corrected contract.
-Memorization mastery is determined
-by its card workflow. The linked workflow documents remaining discrepancies
-in the current numeric implementation.
+Memorization mastery follows its card workflow: all required cards must pass
+Verified Recall. Repetition due dates do not withdraw that proof.
 
 ### Curriculum timeline and pacing plan
 

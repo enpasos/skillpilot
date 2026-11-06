@@ -552,6 +552,17 @@ interaction contract above. SRS/memorization goals (`srs-deck:*` /
 memory workflow; a coach must not manually assign it. Card scheduling and
 review data describe the learning process, not additional goal-result states.
 
+**Product Owner clarification, 6 November 2026:** cards belong to their
+memorization goal, and learning that goal includes repetitions. Its concluding
+Verified Recall assessment establishes mastery when all required cards have
+passed. Successful card verifications are retained across batches while the
+remaining cards are learned and assessed. Due dates and practice do not revoke
+verification or reopen mastery; passed cards are not retested. Failed attempts
+before passing leave the affected cards unverified. Keep the existing
+backend-owned batch, feedback, consent, atomic-write and continuation workflow;
+do not introduce a separate card-exam goal or require the whole deck to pass
+again in one attempt. See [Node Types](docs/concept/skill-graph/node-types.md#due-and-mastery-semantics).
+
 **Implementation status (30 October 2026):** new general mastery writes enforce
 `0` or `1`, and ordinary atomic goal controls offer binary choices. Historical
 numeric rows remain readable through the shared legacy threshold `>= 0.9`;
