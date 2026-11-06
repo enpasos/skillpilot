@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "local-three-class-check-pass-independent-second-review-complete-fresh-remote-ci-open",
+  "productionLogicChanged": false,
+  "curriculumOrQaSourceWritesApplied": false,
+  "newRecognitionOrUnitRuntimeImplemented": false,
+  "changedTestFiles": [
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceCrossSubjectPilotTest.java",
+      "rawSha256": "5738e34a5e2ce9db608f2f0bf0e8be510841ad7341fca624ec325bad4194df25"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceReproTest.java",
+      "rawSha256": "ed12ebfd2e80ac1ea3b15a9a2d21020f4f18905cc430632eade7e48455863b17"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java",
+      "rawSha256": "7395a5cd050bf4dd7bc08355a2307f68868a8ded795326ef65cb2149796a871e"
+    }
+  ],
+  "sourceInputsBoundAtFullTestRun": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "rawSha256": "e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "rawSha256": "e1719316bdacf2a874b23ee06ed77192ce71831781309991ddc26ba0e49faf1d"
+    }
+  ],
+  "sourceInputsUnchangedDuringFullTestRun": true,
+  "remoteFailure": {
+    "repository": "enpasos/skillpilot",
+    "runId": 42219374143,
+    "jobId": 127908037267,
+    "testedMergeSha": "7ac65594d00b47ba8e58d1b5e47e57a1207aaf85",
+    "url": "https://github.com/enpasos/skillpilot/actions/runs/42219374143/job/127908037267",
+    "failedStep": "Run backend tests",
+    "openAiSnapshotVerification": "passed before tests",
+    "suiteSummary": {
+      "testsCompleted": 2729,
+      "failed": 5,
+      "skipped": 19
+    },
+    "excerptLog": {
+      "path": "tmp/ci-42219374143-backend-127908037267-failure-excerpts.log",
+      "rawSha256": "e91df08b2f21a2d17a3b395527a9148d1a8e7b188a1fd46eb03584bce40b2806"
+    },
+    "sourceReconciliation": {
+      "runId": 42219374143,
+      "jobId": 127908037267,
+      "testedMergeSha": "7ac65594d00b47ba8e58d1b5e47e57a1207aaf85",
+      "method": "GitHub connector fetched exact ref; full text equality against committed HEAD pre-repair source for five Java files. Relevant graph goals were read from the same exact remote JSON ref.",
+      "javaComparisons": [
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceReproTest.java",
+          "matchesCurrentHeadBaseline": true,
+          "truncated": false
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceCrossSubjectPilotTest.java",
+          "matchesCurrentHeadBaseline": true,
+          "truncated": false
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java",
+          "matchesCurrentHeadBaseline": true,
+          "truncated": false
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/completion/CompletionEvaluator.java",
+          "matchesCurrentHeadBaseline": true,
+          "truncated": false
+        },
+        {
+          "path": "backend/src/main/java/com/skillpilot/backend/completion/CompletionCanonicalGraphResolver.java",
+          "matchesCurrentHeadBaseline": true,
+          "truncated": false
+        }
+      ],
+      "remoteRelevantGoals": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "goals": [
+            {
+              "id": "9ac4973a-21d5-48a5-90b4-eb90e10391ae",
+              "title": "Teilchenmodell für Temperaturänderungen nutzen",
+              "description": "Die lernende Person kann im einfachen Teilchenmodell Temperaturänderungen qualitativ mit Veränderungen der mittleren ungeordneten Teilchenbewegung erklären und das Modell auf einfache Wärmeübertragungsvorgänge innerhalb oder zwischen Stoffen anwenden.",
+              "requires": [
+                "940978fa-1f2d-4e54-9c28-081a6df9b76f"
+              ],
+              "assessment": false
+            },
+            {
+              "id": "fbe0faae-7fba-482b-888e-341f926770f3",
+              "title": "Wärmeleitung, Konvektion und Wärmestrahlung unterscheiden",
+              "description": "Die lernende Person kann Wärmeleitung als Energieübertragung ohne makroskopischen Stofftransport, Konvektion als Übertragung durch strömende Flüssigkeiten oder Gase und Wärmestrahlung als elektromagnetische Übertragung auch ohne Materie unterscheiden und Alltagsbeispiele begründet zuordnen.",
+              "requires": [
+                "9ac4973a-21d5-48a5-90b4-eb90e10391ae"
+              ],
+              "assessment": false
+            },
+            {
+              "id": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+              "title": "Energieerhaltung",
+              "description": "Die lernende Person kann für ein System, über dessen Grenze keine Energie übertragen wird, die Energieerhaltung formulieren und einfache Umwandlungen zwischen Energieformen bilanziell beschreiben.",
+              "requires": [
+                "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+              ],
+              "assessment": false
+            },
+            {
+              "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "title": "Impulserhaltung",
+              "description": "Die lernende Person kann in einem abgegrenzten System ohne resultierenden äußeren Kraftstoß den Gesamtimpuls als vektorielle Erhaltungsgröße nutzen und einfache Rückstoßsituationen damit qualitativ begründen.",
+              "requires": [
+                "5f289cdc-fda1-4058-b44f-041ba1398e79",
+                "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+              ],
+              "assessment": false
+            },
+            {
+              "id": "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+              "title": "Inelastische Stöße",
+              "description": "Die lernende Person kann inelastische Stöße in einer Dimension mithilfe der Impulserhaltung analysieren und Energieumwandlungen qualitativ beschreiben.",
+              "requires": [
+                "839ecc8f-3a60-418b-bc92-64bfeef33824",
+                "91c49019-ea51-4ce5-a919-c91c45b25e83"
+              ],
+              "assessment": false
+            }
+          ]
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "goals": [
+            {
+              "id": "3f4d1340-1fbb-5109-b9c2-08fc61303133",
+              "title": "Darstellung erstellen und beschriften",
+              "description": "Die lernende Person kann eine Darstellung aus gegebenen Informationen erstellen (z. B. Wertetabelle, Funktionsgraph) und Achsen, Einheiten und Parameter korrekt beschriften.",
+              "requires": [
+                "8dd9f210-2683-5902-acab-e3be22725232"
+              ],
+              "assessment": false
+            },
+            {
+              "id": "cf4fe700-dec2-502f-888b-90acefa307bb",
+              "title": "Informationen aus Darstellungen entnehmen",
+              "description": "Die lernende Person kann aus einer Darstellung relevante Informationen entnehmen (z. B. Nullstellen, Steigungen, Schnittpunkte) und in Worten oder Symbolen formulieren.",
+              "requires": [
+                "3f4d1340-1fbb-5109-b9c2-08fc61303133"
+              ],
+              "assessment": false
+            },
+            {
+              "id": "7337049a-c85c-5b94-adaa-81dc93528bf8",
+              "title": "Darstellungen sicher wechseln und bewerten",
+              "description": "Die lernende Person kann eine Aufgabe zu verschiedenen Darstellungen selbstständig bearbeiten, zwischen ihnen sicher wechseln und ihre Aussagekraft bewerten.",
+              "requires": [
+                "cf4fe700-dec2-502f-888b-90acefa307bb",
+                "42b57670-d2be-5da2-be2f-d58055901813",
+                "d668c22d-caeb-5e91-8980-721c931a2bcf",
+                "7c4e8d59-4acb-5f62-a387-c804c6fa23e0",
+                "d0475ed5-cb6f-5694-9501-a1c94288d65a"
+              ],
+              "assessment": true
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "repairs": [
+    {
+      "test": "LearnerServiceCrossSubjectPilotTest.canonicalPhysicsPilotFrontierUnlocksHeatTransferFromProjectedLegacyParticleModelMastery",
+      "originalFailure": "Expected target fbe0faae-7fba-482b-888e-341f926770f3 before full stored preparation; actual [] at prepareLegacyFrontierContext:1113.",
+      "confirmedRemotePath": [
+        "fbe0faae-7fba-482b-888e-341f926770f3",
+        "9ac4973a-21d5-48a5-90b4-eb90e10391ae",
+        "940978fa-1f2d-4e54-9c28-081a6df9b76f"
+      ],
+      "negativeNow": "Legacy-projected mastery of the middle particle-model goal does not make the target available while deeper preparation remains open.",
+      "positiveNow": "The unchanged withStoredPrerequisites fixture adds explicit earlier preparation, excludes the tested target and projected endpoint from new stored rows, and then still requires the target in the real frontier. No service mastery writes."
+    },
+    {
+      "test": "LearnerServiceCrossSubjectPilotTest.canonicalPhysicsPilotFrontierUnlocksInelasticCollisionsFromProjectedLegacyEnergyAndMomentumMastery",
+      "originalFailure": "Expected target 0da13365-02c2-44f1-8a81-d524ca0ac3ae before full stored preparation; actual [] at prepareLegacyFrontierContext:1113.",
+      "confirmedRemotePath": [
+        "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+        "91c49019-ea51-4ce5-a919-c91c45b25e83",
+        "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+      ],
+      "negativeNow": "Both projected direct prerequisites retain their complete transitive demand. The obsolete initially-available flag is removed.",
+      "positiveNow": "The same preexisting explicit-prereparation fixture still verifies legacy projection and real target availability without passing the target or storing projected aliases."
+    },
+    {
+      "test": "LearnerServiceReproTest.testFrontierWithMasteredPrerequisites",
+      "originalFailure": "Target was expected despite an explicitly unmastered DeepPrereq; real frontier offered E.2 and DeepPrereq.",
+      "negativeNow": "Target absent, DeepPrereq present, and no DeepPrereq mastery inferred.",
+      "positiveNow": "After an explicit DeepPrereq mastery fixture row, Target is present and DeepPrereq absent; service save/saveAll never called."
+    },
+    {
+      "test": "LearnerServiceReproTest.getRichFrontier_shouldResolveQualifiedIdsMatches",
+      "originalFailure": "Fixture used Subject:GoalA/B although their actual owner was CURR_1, and EXTERNAL_REQ had no definition. It expected a nonempty frontier; actual [].",
+      "positiveNow": "CURR_1:GoalA/B refer to their actual owner. EXTERNAL_REQ is a real defined target outside YEAR_11, with normal-focus availability for GoalA and no mastery fabricated for support. GoalB still waits for GoalA.",
+      "newSeparateNegatives": [
+        "wrongQualifiedOwnerRemainsAConfigurationErrorBeforeFocusFiltering",
+        "unknownOutsidePrerequisiteRemainsAConfigurationErrorBeforeFocusFiltering"
+      ],
+      "negativeNow": "Each invalid variant throws public resolver MISSING_REFERENCE, keeps both public service frontier forms empty and performs no mastery writes."
+    },
+    {
+      "test": "LearnerServiceTest.earlierWorkOnFutureGoalsCoversQuotaAndStopsAutomaticExtraWork",
+      "originalFailure": "Expected CREATE 3f4d1340-1fbb-5109-b9c2-08fc61303133 in waivedTargetGoalIds after READ mastery. It is still needed through an open assessment.",
+      "confirmedRemotePath": [
+        "7337049a-c85c-5b94-adaa-81dc93528bf8",
+        "cf4fe700-dec2-502f-888b-90acefa307bb",
+        "3f4d1340-1fbb-5109-b9c2-08fc61303133"
+      ],
+      "newSeparateNegative": "masteredReadRetainsCreateDemandFromAnOpenTransitiveAssessment",
+      "negativeNow": "READ alone never waives or stores CREATE; CHOOSE remains the eligible prerequisite, CREATE remains unavailable until preparation. No invented completion event.",
+      "positiveNow": "The independent quota fixture explicitly stores CREATE and READ after its fixed baseline. Four fixed targets over two days keep the daily quota at two. The fourth existing target 0272c501-2931-5e52-b62f-af068db63c44 stays unmastered and actually available after explicit CHOOSE completion, while the covered quota stops automatic extra work. Only the actual CHOOSE event is recorded; fixed blocks and plan revision stay equal."
+    }
+  ],
+  "localValidation": {
+    "environment": {
+      "javaHome": "/home/enpasos/projects/skillpilot/tmp/amazon-corretto-25.0.2.10.1",
+      "javaVersionLog": "tmp/ci-42219374143-backend-java-version.log",
+      "javaVersionOutput": "openjdk version \"25.0.2\" 2026-01-20 LTS\nOpenJDK Runtime Environment Corretto-25.0.2.10.1 (build 25.0.2+10-LTS)\nOpenJDK 64-Bit Server VM Corretto-25.0.2.10.1 (build 25.0.2+10-LTS, mixed mode, sharing)",
+      "gradleUserHome": "/tmp/skillpilot-plan-gradle-20261022",
+      "offline": true,
+      "normalResourceTasksUsed": true,
+      "excludedTasks": [],
+      "resourceBoundary": "Existing 6.2 GB resource output was updated by normal processResources in the focused run, not skipped. generateClaudePluginPublication was normally evaluated as UP-TO-DATE. Later quota/full-class runs evaluated the normal resource tasks as UP-TO-DATE. This is no clean-build or fresh-remote claim."
+    },
+    "initialFocusedRun": {
+      "log": "tmp/ci-42219374143-backend-fixture-focused.log",
+      "exitCode": 0,
+      "tests": 15,
+      "failures": 0,
+      "skipped": 0,
+      "duration": "4m32s",
+      "classes": [
+        {
+          "name": "com.skillpilot.backend.service.LearnerServiceCrossSubjectPilotTest",
+          "tests": "2",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0"
+        },
+        {
+          "name": "com.skillpilot.backend.service.LearnerServiceReproTest",
+          "tests": "11",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0"
+        },
+        {
+          "name": "com.skillpilot.backend.service.LearnerServiceTest",
+          "tests": "2",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0"
+        }
+      ],
+      "boundary": "Precedes the final fourth-target strengthening; its original 14 other cases are also included in the final full-class run."
+    },
+    "finalQuotaCounterexample": {
+      "log": "tmp/ci-42219374143-backend-quota-counterexample.log",
+      "exitCode": 0,
+      "tests": 1,
+      "failures": 0,
+      "skipped": 0,
+      "duration": "58s",
+      "test": "com.skillpilot.backend.service.LearnerServiceTest.earlierWorkOnFutureGoalsCoversQuotaAndStopsAutomaticExtraWork"
+    },
+    "finalWholeClasses": {
+      "command": "cd backend && GRADLE_USER_HOME=/tmp/skillpilot-plan-gradle-20261022 JAVA_HOME=/home/enpasos/projects/skillpilot/tmp/amazon-corretto-25.0.2.10.1 PATH=/home/enpasos/projects/skillpilot/tmp/amazon-corretto-25.0.2.10.1/bin:$PATH ./gradlew test --offline --console=plain --tests com.skillpilot.backend.service.LearnerServiceCrossSubjectPilotTest --tests com.skillpilot.backend.service.LearnerServiceReproTest --tests com.skillpilot.backend.service.LearnerServiceTest",
+      "log": "tmp/ci-42219374143-backend-three-classes.log",
+      "exitCode": 0,
+      "tests": 231,
+      "failures": 0,
+      "skipped": 0,
+      "duration": "2m55s",
+      "classes": [
+        {
+          "name": "com.skillpilot.backend.service.LearnerServiceCrossSubjectPilotTest",
+          "tests": "95",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "reportRawSha256": "75c540485304aa1d2b79697e4e1a3e707f1f708875f75a0d345b7b50dde8648d"
+        },
+        {
+          "name": "com.skillpilot.backend.service.LearnerServiceReproTest",
+          "tests": "11",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "reportRawSha256": "9f65a2322465f6f40a7246d98b0aaa90bd9fd70d100b6321e267c6b6d871c6b4"
+        },
+        {
+          "name": "com.skillpilot.backend.service.LearnerServiceTest",
+          "tests": "125",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "reportRawSha256": "ad4f697381d6a26c5e98d5278ca222f154defe0f5a67e7325b855e03e86c9f19"
+        }
+      ]
+    },
+    "gitDiffCheck": "passed for exactly the three changed test files"
+  },
+  "independentReview": {
+    "status": "no-holds-on-bounded-test-fixture-repair",
+    "reviewer": "Astra independent agent review",
+    "humanApproval": false,
+    "path": "docs/dev/ci-graph-repairs/main-transitivity-fixture-independent-review-2026-11-06.json",
+    "sha256": "e61407960927f23e0b77c111fc050a2172469e7bef52d0734f6413be9e181006",
+    "freshTestRunClaimedByReviewer": false,
+    "observedLocalTests": 231,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "limits": [
+    "This is a focused test repair for the already authorized Main transitive-demand and reference-integrity contract. No production resolver, completion evaluator, learner service, state, SRS, canonical curriculum, recognition or C(q) implementation changed.",
+    "Original failing remote run remains a failure. The new checks are local, not a passing new remote CI run.",
+    "All three changed classes were run, not the whole 2729-test backend suite. Initial15 and final1 controls overlap with the231 final cases and must not be added to claim247 unique tests.",
+    "Repository maturity floors, global recognition implementation, A/B identity activation, Q4 release and publication/host acceptance are separate and remain outside this repair."
+  ]
+}

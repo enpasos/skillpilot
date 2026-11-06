@@ -1,13 +1,18 @@
 package com.skillpilot.backend.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.completion.CompletionCanonicalGraphResolver;
+import com.skillpilot.backend.completion.CompletionCompilationException;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.landscape.GoalMappingService;
@@ -93,20 +98,7 @@ public class LearnerServiceReproTest {
 
     @Test
     void getRichFrontier_shouldResolveQualifiedIdsMatches() {
-        SkillLandscape landscape = new SkillLandscape();
-        landscape.setLandscapeId(curriculumId);
-
-        LearningGoal root = goal("ROOT", null, List.of("YEAR_11"));
-        LearningGoal year11 = goal("YEAR_11", null, List.of("Subject:GoalA", "Subject:GoalB")); // Qualified Ref
-
-        // In the map/closure, we have simple IDs
-        LearningGoal goalA = goal("GoalA", List.of("EXTERNAL_REQ"), null);
-        LearningGoal goalB = goal("GoalB", List.of("GoalA"), null);
-
-        landscape.setGoals(List.of(root, year11, goalA, goalB));
-
-        when(landscapeService.getById(curriculumId)).thenReturn(landscape);
-        when(landscapeService.getClosure(curriculumId)).thenReturn(List.of(landscape));
+        qualifiedReferenceFixture(curriculumId, true);
 
         // Execute
         List<FrontierGoal> frontier = null;
@@ -122,12 +114,60 @@ public class LearnerServiceReproTest {
 
         // Assert
         assertThat(frontier).isNotEmpty();
-        // GoalA should be visible because EXTERNAL_REQ is out of scope (Pragmatic
-        // Filter)
+        // The correctly owned, known support is outside YEAR_11. Normal focus
+        // does not gate on it, but it must remain a valid authored definition.
         assertThat(frontier).anyMatch(g -> g.id().equals("GoalA"));
 
         // GoalB should NOT be visible because GoalA is unmastered
         assertThat(frontier).noneMatch(g -> g.id().equals("GoalB"));
+        assertThat(learnerService.getMastery(learnerId)).doesNotContainKey("EXTERNAL_REQ");
+        verify(masteryRepository, never()).save(any(com.skillpilot.backend.domain.Mastery.class));
+        verify(masteryRepository, never()).saveAll(any());
+    }
+
+    @Test
+    void wrongQualifiedOwnerRemainsAConfigurationErrorBeforeFocusFiltering() {
+        qualifiedReferenceFixture("Subject", true);
+
+        assertThatThrownBy(() -> new CompletionCanonicalGraphResolver(landscapeService, new ObjectMapper())
+                .load(curriculumId))
+                .isInstanceOfSatisfying(CompletionCompilationException.class,
+                        error -> assertThat(error.code()).isEqualTo("MISSING_REFERENCE"))
+                .hasMessageContaining("Subject:GoalA");
+        assertThat(learnerService.getFrontier(learnerId)).isEmpty();
+        assertThat(learnerService.getRichFrontier(learnerId)).isEmpty();
+        verify(masteryRepository, never()).save(any(com.skillpilot.backend.domain.Mastery.class));
+        verify(masteryRepository, never()).saveAll(any());
+    }
+
+    @Test
+    void unknownOutsidePrerequisiteRemainsAConfigurationErrorBeforeFocusFiltering() {
+        qualifiedReferenceFixture(curriculumId, false);
+
+        assertThatThrownBy(() -> new CompletionCanonicalGraphResolver(landscapeService, new ObjectMapper())
+                .load(curriculumId))
+                .isInstanceOfSatisfying(CompletionCompilationException.class,
+                        error -> assertThat(error.code()).isEqualTo("MISSING_REFERENCE"))
+                .hasMessageContaining("EXTERNAL_REQ");
+        assertThat(learnerService.getFrontier(learnerId)).isEmpty();
+        assertThat(learnerService.getRichFrontier(learnerId)).isEmpty();
+        verify(masteryRepository, never()).save(any(com.skillpilot.backend.domain.Mastery.class));
+        verify(masteryRepository, never()).saveAll(any());
+    }
+
+    private void qualifiedReferenceFixture(String qualifiedOwner, boolean includeOutsideSupport) {
+        SkillLandscape landscape = new SkillLandscape();
+        landscape.setLandscapeId(curriculumId);
+        LearningGoal root = goal("ROOT", null, List.of("YEAR_11", "EXTERNAL_REQ"));
+        LearningGoal year11 = goal("YEAR_11", null,
+                List.of(qualifiedOwner + ":GoalA", qualifiedOwner + ":GoalB"));
+        List<LearningGoal> definitions = new ArrayList<>(List.of(root, year11,
+                goal("GoalA", List.of("EXTERNAL_REQ"), null), goal("GoalB", List.of("GoalA"), null)));
+        if (includeOutsideSupport) definitions.add(goal("EXTERNAL_REQ", null, null));
+        else root.setContains(List.of("YEAR_11"));
+        landscape.setGoals(definitions);
+        when(landscapeService.getById(curriculumId)).thenReturn(landscape);
+        when(landscapeService.getClosure(curriculumId)).thenReturn(List.of(landscape));
     }
 
     @Test
@@ -343,7 +383,7 @@ public class LearnerServiceReproTest {
             // - Prereq (GK, Mastered) -> Requires DeepPrereq
             // - DeepPrereq (GK, Unmastered)
             // Plan: E.2
-            // Expected: Target should be in Frontier (since Prereq is mastered)
+            // Expected: Target waits for DeepPrereq despite mastered Prereq.
 
             Map<String, Object> personalConfig = new HashMap<>();
             personalConfig.put("test-landscape", Map.of("selected", true, "filterId", "GK"));
@@ -382,7 +422,7 @@ public class LearnerServiceReproTest {
             when(plannedGoalRepository.findByLearner_SkillpilotId("test-learner"))
                     .thenReturn(List.of(new com.skillpilot.backend.domain.PlannedGoal(learner, "E.2")));
 
-            // Mastery of the intermediate prerequisite ends its earlier demand.
+            // Mastery of the intermediate prerequisite retains its earlier demand.
             com.skillpilot.backend.domain.Mastery m1 = new com.skillpilot.backend.domain.Mastery(learner, "Prereq",
                     1.0);
             when(masteryRepository.findByLearner_SkillpilotId("test-learner")).thenReturn(List.of(m1));
@@ -393,10 +433,21 @@ public class LearnerServiceReproTest {
             System.out.println("DEBUG: testFrontierWithMasteredPrerequisites Frontier: " + frontier);
 
             // Assertions
-            // "Target" should be visible
+            // The unresolved depth is the next work; it is never inferred mastered.
             assertThat(frontier).isNotEmpty();
-            assertThat(frontier).anyMatch(g -> g.id().equals("Target"));
+            assertThat(frontier).noneMatch(g -> g.id().equals("Target"));
+            assertThat(frontier).anyMatch(g -> g.id().equals("DeepPrereq"));
             assertThat(learnerService.getMastery("test-learner")).doesNotContainKey("DeepPrereq");
+
+            com.skillpilot.backend.domain.Mastery deepMastery = new com.skillpilot.backend.domain.Mastery(
+                    learner, "DeepPrereq", 1.0);
+            when(masteryRepository.findByLearner_SkillpilotId("test-learner"))
+                    .thenReturn(List.of(m1, deepMastery));
+            assertThat(learnerService.getRichFrontier("test-learner"))
+                    .anyMatch(g -> g.id().equals("Target"))
+                    .noneMatch(g -> g.id().equals("DeepPrereq"));
+            verify(masteryRepository, never()).save(any(com.skillpilot.backend.domain.Mastery.class));
+            verify(masteryRepository, never()).saveAll(any());
 
         } catch (Exception e) {
             e.printStackTrace();

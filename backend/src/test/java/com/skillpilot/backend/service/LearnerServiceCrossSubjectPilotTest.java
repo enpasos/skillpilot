@@ -1092,25 +1092,16 @@ class LearnerServiceCrossSubjectPilotTest {
             String targetId,
             List<String> originallyStoredIds,
             Set<String> suppliedByLegacyProjection) {
-        prepareLegacyFrontierContext(service, targetId, originallyStoredIds, suppliedByLegacyProjection, false);
-    }
-
-    private void prepareLegacyFrontierContext(
-            LearnerService service,
-            String targetId,
-            List<String> originallyStoredIds,
-            Set<String> suppliedByLegacyProjection,
-            boolean targetInitiallyAvailable) {
         // These migration checks deliberately exercise all global prerequisite
         // gates. Ordinary focus follows only dependencies inside its selected graph.
         learner.setStrictMode(true);
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(
                 originallyStoredIds.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
-        // Mapped mastery of a direct predecessor ends its earlier preparation
-        // demand. Targets with another open direct requirement remain blocked.
+        // Mapped direct mastery does not erase earlier transitive preparation.
+        // Each migration fixture remains blocked until that preparation is stored.
         assertThat(service.getRichFrontier(LEARNER_ID).stream().map(FrontierGoal::id)
                 .filter(targetId::equals).toList())
-                .containsExactlyElementsOf(targetInitiallyAvailable ? List.of(targetId) : List.of());
+                .isEmpty();
         Map<String, Double> projectedMastery = service.getMastery(LEARNER_ID);
         assertThat(projectedMastery).containsAllEntriesOf(
                 suppliedByLegacyProjection.stream().collect(java.util.stream.Collectors.toMap(
@@ -1297,7 +1288,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
         prepareLegacyFrontierContext(learnerService, CANONICAL_PHYSICS_SEK1_HEAT_TRANSFER_ID,
                 List.of(LEGACY_SEK1_PHYSICS_PARTICLE_MODEL_ID),
-                Set.of(CANONICAL_PHYSICS_SEK1_PARTICLE_MODEL_ID), true);
+                Set.of(CANONICAL_PHYSICS_SEK1_PARTICLE_MODEL_ID));
 
         List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
 
@@ -1494,7 +1485,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
         prepareLegacyFrontierContext(learnerService, CANONICAL_PHYSICS_INELASTIC_COLLISIONS_ID,
                 List.of(LEGACY_PHYSICS_ENERGY_CONSERVATION_ID, LEGACY_PHYSICS_MOMENTUM_CONSERVATION_ID),
-                Set.of("91c49019-ea51-4ce5-a919-c91c45b25e83", "839ecc8f-3a60-418b-bc92-64bfeef33824"), true);
+                Set.of("91c49019-ea51-4ce5-a919-c91c45b25e83", "839ecc8f-3a60-418b-bc92-64bfeef33824"));
 
         List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
 

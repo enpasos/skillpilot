@@ -1287,25 +1287,55 @@ public class LearnerServiceTest {
     }
 
     @Test
+    void masteredReadRetainsCreateDemandFromAnOpenTransitiveAssessment() {
+        prepareRepresentationLearningPlan();
+        LocalDate today = LocalDate.parse("2026-09-02");
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        masteryRepository.saveAndFlush(new Mastery(learner, CANONICAL_READ_REPRESENTATION_ID, 1.0));
+
+        // The open assessment 7337049a... still requires READ -> CREATE.
+        assertThat(learnerService.getCoachLearnerState(learnerId).levelCompletion().waivedTargetGoalIds())
+                .doesNotContain(CANONICAL_CREATE_REPRESENTATION_ID, CANONICAL_CHOOSE_REPRESENTATION_ID);
+        assertThat(learnerService.getMastery(learnerId)
+                .getOrDefault(CANONICAL_CREATE_REPRESENTATION_ID, 0.0)).isZero();
+        assertThat(learnerService.getGoalCompletionsOnDate(learnerId, today)).isEmpty();
+        assertThat(learnerService.getUncompactedRichFrontierForFocus(
+                learnerId, List.of(CANONICAL_REPRESENTATION_CLUSTER_ID)))
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_CHOOSE_REPRESENTATION_ID)
+                .doesNotContain(CANONICAL_CREATE_REPRESENTATION_ID);
+    }
+
+    @Test
     void earlierWorkOnFutureGoalsCoversQuotaAndStopsAutomaticExtraWork() {
         prepareRepresentationLearningPlan();
         LocalDate today = LocalDate.parse("2026-09-02");
-        replaceRepresentationLearningPlanSchedule(today, today.plusDays(1),
-                List.of(CANONICAL_CHOOSE_REPRESENTATION_ID,
-                        CANONICAL_CREATE_REPRESENTATION_ID, CANONICAL_READ_REPRESENTATION_ID));
-        // This mastery was acquired after the plan baseline, with no known completion
-        // timestamp. It contributes to I, never to H, and stays in the fixed plan set.
+        String futureGraphGoalId = "0272c501-2931-5e52-b62f-af068db63c44";
+        learnerService.setPlannedGoals(learnerId,
+                Set.of(CANONICAL_REPRESENTATION_CLUSTER_ID, futureGraphGoalId));
+        var initialPlan = learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, today);
+        // Four fixed targets over two days preserve a daily quota of two. The
+        // fourth target remains learnable after CHOOSE, so stopping cannot be
+        // explained by completing the whole focus or exhausting the plan.
+        learnerLearningPlanService.upsert(learnerId, CANONICAL_MATH_LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(initialPlan.revision(), "Darstellungen", List.of(
+                        new LearnerLearningPlanApi.Block("representations", "learning",
+                                CANONICAL_MATH_ROOT_SCOPE_ID, "Darstellungen", today, today.plusDays(1), null,
+                                List.of(CANONICAL_CHOOSE_REPRESENTATION_ID,
+                                        CANONICAL_CREATE_REPRESENTATION_ID, CANONICAL_READ_REPRESENTATION_ID,
+                                        futureGraphGoalId)))), today);
+        // Both explicit results were acquired after the plan baseline, with no
+        // known completion timestamp. They contribute to I, never to H.
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         var fixedPlan = learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, today);
+        masteryRepository.saveAndFlush(new Mastery(learner, CANONICAL_CREATE_REPRESENTATION_ID, 1.0));
         masteryRepository.saveAndFlush(new Mastery(learner, CANONICAL_READ_REPRESENTATION_ID, 1.0));
-        // READ is CREATE's only consumer. Mastering READ also ends CREATE's
-        // demand, so the default I now credits both without inventing an event
-        // or mastery for CREATE. CHOOSE still has other open consumers.
+        // Quota credit is independent of implicit completion. Open assessments
+        // retain the earlier demand through READ; CREATE is explicitly stored.
         assertThat(learnerService.getCoachLearnerState(learnerId).levelCompletion().waivedTargetGoalIds())
-                .contains(CANONICAL_CREATE_REPRESENTATION_ID)
-                .doesNotContain(CANONICAL_CHOOSE_REPRESENTATION_ID);
+                .doesNotContain(CANONICAL_CREATE_REPRESENTATION_ID, CANONICAL_CHOOSE_REPRESENTATION_ID);
         assertThat(learnerService.getMastery(learnerId)
-                .getOrDefault(CANONICAL_CREATE_REPRESENTATION_ID, 0.0)).isZero();
+                .getOrDefault(CANONICAL_CREATE_REPRESENTATION_ID, 0.0)).isEqualTo(1.0);
         assertThat(learnerService.getGoalCompletionsOnDate(learnerId, today)).isEmpty();
         var before = subjectBalance(today, CANONICAL_MATH_LANDSCAPE_ID);
         assertThat(before.erfuelltesPeriodenziel()).isEqualTo(2);
@@ -1327,13 +1357,16 @@ public class LearnerServiceTest {
         assertThat(learnerService.getGoalCompletionsOnDate(learnerId, today))
                 .containsOnlyKeys(CANONICAL_CHOOSE_REPRESENTATION_ID);
         assertThat(learnerService.getMastery(learnerId)
-                .getOrDefault(CANONICAL_CREATE_REPRESENTATION_ID, 0.0)).isZero();
+                .getOrDefault(CANONICAL_CREATE_REPRESENTATION_ID, 0.0)).isEqualTo(1.0);
         var afterPlan = learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, today);
         assertThat(afterPlan.blocks()).isEqualTo(fixedPlan.blocks());
         assertThat(afterPlan.revision()).isEqualTo(fixedPlan.revision());
         assertThat(learnerService.getUncompactedRichFrontierForFocus(
-                learnerId, List.of(CANONICAL_REPRESENTATION_CLUSTER_ID)))
-                .extracting(FrontierGoal::id).contains(CANONICAL_CREATE_REPRESENTATION_ID);
+                learnerId, List.of(CANONICAL_REPRESENTATION_CLUSTER_ID, futureGraphGoalId)))
+                .extracting(FrontierGoal::id)
+                .contains(futureGraphGoalId)
+                .doesNotContain(CANONICAL_CREATE_REPRESENTATION_ID);
+        assertThat(learnerService.getMastery(learnerId).getOrDefault(futureGraphGoalId, 0.0)).isZero();
     }
 
     @Test
