@@ -9,6 +9,21 @@ Mathematik hat 919 Strukturbefunde, davon 917 G17; Informatik noch 37 G17 und
 sechs unzureichende Prüfungen. Die [vorherige 18:45-Quittung](informatics-bounded26-current-cqr-2026-11-06.json)
 bleibt historisch erhalten.
 
+- [Aktuelle Source-A-Neuverifikation](source-identity-db9c-source-rebase-2026-11-06.md):
+  593 Quellen, 8.591 exakt gebundene Dokumente und 164 unveränderte Regeln;
+  sieben historische Belege sind bytegleich archiviert, v1 bleibt unverändert.
+  Das ist weiterhin keine tatsächliche vollständige Kandidaten-QA oder Aktivierung.
+- [Privates Capture nach unabhängigem Gegenreview](source-identity-private-capture-peer-repair-2026-11-06.md):
+  vier echte Grenzfehler geschlossen, Originalstände erhalten; der
+  [CI-Caller](source-identity-private-capture-ci-wiring-2026-11-06.json) verlangt
+  alle 19 Methoden ohne Skips. Der Komponentenpass ist kein M7-Nachweis.
+- [Terminaler Hauptlauf auf 8a56](remote-main-8a56-terminal-2026-11-06.json):
+  sieben Jobs einschließlich Backend, Frontend und Buchbau bestehen.
+  Die Math-Duration-Prüfung besteht remote. Curriculum scheitert danach am
+  [inzwischen lokal erneuerten Coveragebericht](goal-source-rationale-coverage-current-repair-2026-11-06.json);
+  die späteren Deep-/Floor-Schritte wurden remote noch nicht ausgeführt.
+  [Assessment](remote-assessment-8a56-terminal-2026-11-06.json), Docs, OAuth und Gemini bestehen.
+
 - [Vollständiger technischer Assessmentumfang](cqr202-complete-assessment-scope-repair-2026-11-06.md):
   native Sollmengen, gemeinsamer Validator für Ableitung und direkten
   Floorverbrauch, echte Gegenfälle und vollständiger lokaler Deep-Pass.

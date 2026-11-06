@@ -703,3 +703,39 @@ Kurs-/Länderangebote und Vorbereitungsgrenzen sind noch nicht integriert.
 Source-A bleibt isolierte Kandidatenvorbereitung; das 5c9-Manifest ist ein
 expliziter historischer Checkpoint und enthält die spätere E9-/Log-/Policy-/Gate-
 Fortsetzung nicht. PR #83 bleibt unverändert eingefroren.
+
+
+## Fortsetzung nach 22 Uhr: Source-A-Beweis und Capture-Grenzen
+
+Die [volle Source-A-Neuverifikation](ci-graph-repairs/source-identity-db9c-source-rebase-2026-11-06.md)
+auf dem ausdrücklich gebundenen Git-Checkpoint `db9c71155997842ebb7cf48dda413ff6196f1a9f`
+besteht: 593 Quellen, 8.591 gebundene Dokumente, unveränderte 164 Regeln.
+Sieben historische Belege sind bytegleich über bestehende v1-Archivregeln
+gebunden; ursprüngliche Dateipfade bleiben interne Locators. V1-Vertrag und
+Verifier sind unverändert. Diese Aussage gibt keine A/B-Aktivierung frei.
+
+Der private Capture-Vorbereiter hat vier tatsächliche unabhängige Gegenbefunde
+zu Text-/Projektionsbytes, Asset-Forest, Ausgabepfaden und Verzeichnis-Aliassen
+repariert. Der [endliche Komponentenbeleg](ci-graph-repairs/source-identity-private-capture-peer-repair-2026-11-06.md)
+und der unabhängige Schlussreview bestehen mit 19 ausgeführten Methoden ohne
+Skips. Der bestehende CI-Caller verlangt jetzt diesen vollständigen Satz;
+Originale der 14er-/17er-Zwischenstände bleiben exakt erhalten. Der tatsächliche
+vollständige Read-Scope, die eng begrenzten Identitätsleseadapter und die große
+physische Original-/Kandidaten-QA stehen weiter aus.
+
+Der [abgeschlossene Remote-Hauptlauf auf 8a56](ci-graph-repairs/remote-main-8a56-terminal-2026-11-06.json)
+besteht in sieben Jobs einschließlich Backend, Frontend und Buchbau. Die
+reparierte Math-Duration-Prüfung besteht auch dort; Curriculum scheitert später
+an einem veralteten abgeleiteten Quellenbegründungsbericht. Dieser ist lokal
+mit unverändertem Generator erneuert und geprüft: sechs bereits entfernte
+Math-Voraussetzungen ergeben 2.454 statt 2.460 Beziehungen. Bestehende
+Quellenlücken und ausstehende Relationsbegründungen bleiben ausgewiesen.
+Assessment, Docs, OAuth und Gemini bestehen auf diesem Remote-Kopf.
+
+Für die nächsten drei Math-Normalisierungen sind echte unabhängige D-Runden
+vorbereitet und ausgeführt; eine vorgeschlagene Diagrammpräzisierung benötigt
+nach endgültiger Festlegung zwei neue aktuelle Rechecks. Drei P-Kandidaten,
+aktuelle Kind-/gegebenenfalls A/M/V-Bindungen sowie die konkrete technische
+Duration-Policybindung sind vor einer Anwendung zu schließen. Es wurde bislang
+keine dieser drei Quellenkorrekturen angewandt. Der aktualisierte vollständige
+CQR-/Floorstand bleibt der Nachlauf von 20:52 UTC: drei M6, sieben offene Floors.
