@@ -1,0 +1,1873 @@
+{
+  "schemaVersion": 1,
+  "status": "candidate-review-pending",
+  "humanApproval": false,
+  "independentReview": null,
+  "dataChangesApplied": false,
+  "runtimePolicyChanged": false,
+  "target": {
+    "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "sourceFileSha256": "5a1487a47e61f59fbc9dfcd71e350443ce3357da171f6507cd85cd6c3a785e7e",
+    "observedHead": "42e62121a991e29c108b85a1ffa81f50ff1a5e63",
+    "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+    "goalId": "a5e33d4d-f312-51d2-816b-e0b10dd1e701",
+    "goalPointer": "/goals/281",
+    "originalGoalCanonicalSha256": "103adc4420d915ae9486bdd02e2f28eaeec7f1d048e4b74c0dd86c049cf08124",
+    "originalExamDataCanonicalSha256": "2d3110e57f4a9f41fec546c379d05aa09f6cea89408e2d8f97030e5565efffc1",
+    "coveredGoalIds": [
+      "70b8919e-8707-580f-9e13-0536c9e81476",
+      "ca39fae0-1b12-5982-a453-54d12602dde8",
+      "01cd4048-8ce2-5167-bfa6-f3cb042c84f1",
+      "5f48f0bb-a1a6-588e-a498-fab20245efcd",
+      "82911b58-bd79-5e96-8fcc-2adb029e2f70",
+      "170a6edb-64af-5bb5-a59d-69b6ac5ee7e8",
+      "9ab554ad-c308-50ed-a5d2-499dd06120ff",
+      "17a72609-a619-52e7-a154-67b714826e74",
+      "a93357e9-5e5b-57c5-98d2-35404a6e6e56",
+      "5f6fb041-835b-51b1-aea9-6c42fee54e69",
+      "e9b74953-2c4c-553c-aa2c-eca278f336ed",
+      "e9f348d8-300e-5101-b7f1-3ba00ff969a1",
+      "42467606-f969-5bd7-bfc8-114c4853ecad",
+      "d3adb904-ee7e-503b-b67b-c2a65497cb3b",
+      "3b98d9f8-b63e-53b6-b447-3881a95e4841",
+      "e6b07eba-a0dd-5cbf-aed0-1c1259d21a7f",
+      "325661fb-1df9-54d1-8fca-e651c94483f1",
+      "feb50fce-1dad-5a48-8ff3-c9737d507843",
+      "d6577123-0842-520e-b039-8ac72ab507b6"
+    ],
+    "coveredGoalIdsCanonicalSha256": "c47ea466bcf34195284a7799083ab468064e6b6ed23ca430cef8d00a771eaf0b"
+  },
+  "sourceReadContinuity": {
+    "initialReadGitCommit": "a0e3c164426ee9d4513e9678daf0a47371cc8bbd",
+    "initialSourceSha256": "1da16f406ca6c3a7363894130bac877ce73c89e6e933dc86f3ca723dc85ed3e5",
+    "currentSourceSha256": "5a1487a47e61f59fbc9dfcd71e350443ce3357da171f6507cd85cd6c3a785e7e",
+    "targetAndAll19WholeGoalPayloadsUnchangedAfterSeparate32Normalization": true,
+    "recheckedWholePayloadCount": 20
+  },
+  "proposedExamData": {
+    "path": "docs/dev/ci-graph-repairs/informatics-q4-terminal-candidate-2026-11-06.examData.json",
+    "rawSha256": "b4443aa806b10bafbd849efddfba73d1a928731a9e1a3662827f491e0363c910",
+    "canonicalSha256": "336c07e9bbe473cc99aacafda796916599e104e1131c66856f2b7de748653040",
+    "reviewStatus": "draft"
+  },
+  "authoredMaterials": [
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-terminal-candidate-2026-11-06.task.md",
+      "sha256": "49a74c33ed2611e75a144884c5c199c3ffbad9733a67fabb65fa1ec5d1c56024"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-terminal-candidate-2026-11-06.solution.md",
+      "sha256": "bf2830329eaadc588b5e96f2a8f98e21ef34af6224e5357026a0a121a31470ed"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-terminal-candidate-2026-11-06.prolog.pl",
+      "sha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-terminal-candidate-2026-11-06.functional.mjs",
+      "sha256": "dadbd7875fb79e2051d5fa037a9130e192cb9e1792f1417b144f3a1ae3242be4"
+    }
+  ],
+  "scoringRationale": {
+    "implementedMechanism": "existing total-points threshold only",
+    "maxPoints": 19,
+    "passingPoints": 19,
+    "criterionCount": 19,
+    "pointsPerCriterion": 1,
+    "criterionAwards": "Each criterion is0or1; award1 only when all named core performances are present and correct. No partial points, extra credit or substitution.",
+    "reason": "Exactly19 one-point complete-competence criteria and total19 passing prevent compensation for an entirely absent claimed competence without inventing a per-goal runtime policy.",
+    "coverageUnchanged": true,
+    "goalDefinitionsUnchanged": true
+  },
+  "goalEvidenceBindings": [
+    {
+      "criterionId": "K01",
+      "goalId": "70b8919e-8707-580f-9e13-0536c9e81476",
+      "sourceGoalPointer": "/goals/107",
+      "goalCanonicalSha256": "148309feb18181cf92e75c63efa9204f3f6da17958e6d04278b3e04b2057a4c0",
+      "originalGoal": {
+        "id": "70b8919e-8707-580f-9e13-0536c9e81476",
+        "title": "Binärsysteme anwenden",
+        "titleEn": "Apply Binary Systems",
+        "description": "Die lernende Person kann mit Binär-/Hexadezimalzahlen rechnen und Zweierkomplement erklären.",
+        "descriptionEn": "The learner can calculate with binary/hexadecimal numbers and explain two's complement.",
+        "weight": 1.15,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "1ce620dc-93cf-579c-a286-e74451d0a4d7"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P2",
+            "P3"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "ca6cc70b-43b5-4309-96a6-a79a5cfa0140"
+          }
+        },
+        "type": "atomic"
+      },
+      "parentContexts": [
+        {
+          "id": "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f",
+          "title": "Grundlagen der technischen Informatik",
+          "description": "Digitalelektronik und Schaltnetze analysieren.",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "materialSections": [
+        "A1"
+      ],
+      "taskId": "A1",
+      "observableExpectedPerformance": "01000100₂=0x44=68, correct carries; −13=11110011₂; signed-overflow distinction.",
+      "solutionSection": "A1 / K01",
+      "scoringStepId": "K01",
+      "points": 1,
+      "fullCompetenceCriterion": "Binärsysteme anwenden: nur bei richtiger Binär-/Hexrechnung mit Überträgen, begründeter Zweierkomplementdarstellung und korrekter Unterscheidung beider Overflowdeutungen."
+    },
+    {
+      "criterionId": "K02",
+      "goalId": "ca39fae0-1b12-5982-a453-54d12602dde8",
+      "sourceGoalPointer": "/goals/108",
+      "goalCanonicalSha256": "3d28007ece510f475dbed512fe60a265444065aa1384db5f906055b10379fc14",
+      "originalGoal": {
+        "id": "ca39fae0-1b12-5982-a453-54d12602dde8",
+        "title": "Schaltnetze entwerfen",
+        "titleEn": "Design Combinational Circuits",
+        "description": "Die lernende Person kann logische Gatter, Wahrheitstabellen, DNF und Vereinfachungen mit KV-Diagrammen nutzen.",
+        "descriptionEn": "The learner can use logic gates, truth tables, DNF, and simplification with K-maps.",
+        "weight": 1.15,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "70b8919e-8707-580f-9e13-0536c9e81476"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P2",
+            "P3"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "4231dd3f-d382-485f-8e31-53733351ba86"
+          }
+        },
+        "type": "atomic"
+      },
+      "parentContexts": [
+        {
+          "id": "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f",
+          "title": "Grundlagen der technischen Informatik",
+          "description": "Digitalelektronik und Schaltnetze analysieren.",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "materialSections": [
+        "A1"
+      ],
+      "taskId": "A2",
+      "observableExpectedPerformance": "Three minterms, correct Gray K-map, F=A(B∨C), corrected net and counterexample001.",
+      "solutionSection": "A2 / K02",
+      "scoringStepId": "K02",
+      "points": 1,
+      "fullCompetenceCriterion": "Schaltnetze entwerfen: nur bei vollständiger DNF, korrekter achtzelliger Gray-KV-Belegung und Gruppenbegründung sowie funktionierender Gatternetzkorrektur mit Gegenbeispiel."
+    },
+    {
+      "criterionId": "K03",
+      "goalId": "01cd4048-8ce2-5167-bfa6-f3cb042c84f1",
+      "sourceGoalPointer": "/goals/109",
+      "goalCanonicalSha256": "8cfbd61cc38342f093cda194d11da3aa9d28d4f44265edbde82e7761457a823e",
+      "originalGoal": {
+        "id": "01cd4048-8ce2-5167-bfa6-f3cb042c84f1",
+        "title": "Folgeglieder verstehen",
+        "titleEn": "Understand Sequential Circuits",
+        "description": "Die lernende Person kann RS- und D-Flip-Flops modellieren und Anwendungen beschreiben.",
+        "descriptionEn": "The learner can model RS and D flip-flops and describe applications.",
+        "weight": 1.15,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "ca39fae0-1b12-5982-a453-54d12602dde8"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P2",
+            "P3"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-MV"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "840361c1-9a27-438a-831b-74d1bf842238"
+          }
+        },
+        "type": "atomic"
+      },
+      "parentContexts": [
+        {
+          "id": "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f",
+          "title": "Grundlagen der technischen Informatik",
+          "description": "Digitalelektronik und Schaltnetze analysieren.",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "materialSections": [
+        "A2"
+      ],
+      "taskId": "A3",
+      "observableExpectedPerformance": "RS full transition table/prohibited11, D outputs1,1,1,0,1; request-memory and synchronous-capture applications.",
+      "solutionSection": "A3 / K03",
+      "scoringStepId": "K03",
+      "points": 1,
+      "fullCompetenceCriterion": "Folgeglieder verstehen: nur bei vollständiger RS-Tabelle mit verbotenem Fall, richtiger D-Zeitfolge und beiden passenden Speicheranwendungen samt Zustandsunterscheidung."
+    },
+    {
+      "criterionId": "K04",
+      "goalId": "5f48f0bb-a1a6-588e-a498-fab20245efcd",
+      "sourceGoalPointer": "/goals/111",
+      "goalCanonicalSha256": "c811a7856c557c5e5229dd9bdabd8d8c82d6418bb87cd1c643c570709303abd5",
+      "originalGoal": {
+        "id": "5f48f0bb-a1a6-588e-a498-fab20245efcd",
+        "title": "Fakten und Regeln schreiben",
+        "titleEn": "Write Facts and Rules",
+        "description": "Die lernende Person kann einfache Fakten, Regeln und Anfragen formulieren.",
+        "descriptionEn": "The learner can formulate simple facts, rules, and queries.",
+        "weight": 1.15,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "1ce620dc-93cf-579c-a286-e74451d0a4d7"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P3"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-MV",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "1e28033b-93e6-496e-9294-7b0ad4a1462e"
+          }
+        },
+        "type": "atomic"
+      },
+      "parentContexts": [
+        {
+          "id": "f5e6a2d7-6793-5023-8296-dea1de828a68",
+          "title": "Prolog als logische Programmiersprache",
+          "description": "Wissensbasen und logische Anfragen formulieren.",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-RP",
+              "DE-SL",
+              "DE-SN"
+            ]
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "materialSections": [
+        "B1"
+      ],
+      "taskId": "B1",
+      "observableExpectedPerformance": "Four facts plus grandparent rule and two queries; children ben/clara; pairs ada-dora/ada-emil.",
+      "solutionSection": "B1 / K04",
+      "scoringStepId": "K04",
+      "points": 1,
+      "fullCompetenceCriterion": "Fakten und Regeln schreiben: nur bei allen vier richtigen Fakten, korrekter Großelternregel, beiden syntaktisch richtigen Anfragen und vollständigen Antworten."
+    },
+    {
+      "criterionId": "K05",
+      "goalId": "82911b58-bd79-5e96-8fcc-2adb029e2f70",
+      "sourceGoalPointer": "/goals/112",
+      "goalCanonicalSha256": "1409038d487801dbc65e3fa2b51989fa98dfa9fc2a4a0e8afd5524445bb01946",
+      "originalGoal": {
+        "id": "82911b58-bd79-5e96-8fcc-2adb029e2f70",
+        "title": "Probleme mit Prolog lösen",
+        "titleEn": "Solve Problems with Prolog",
+        "description": "Die lernende Person kann Verwandtschaftsbeziehungen oder Logikrätsel modellieren.",
+        "descriptionEn": "The learner can model kinship relations or logic puzzles.",
+        "weight": 1.15,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "5f48f0bb-a1a6-588e-a498-fab20245efcd"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P3"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-MV",
+            "DE-RP",
+            "DE-SL"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "030e57d5-cda3-43b8-8346-54336fa11efd"
+          }
+        },
+        "type": "atomic"
+      },
+      "parentContexts": [
+        {
+          "id": "f5e6a2d7-6793-5023-8296-dea1de828a68",
+          "title": "Prolog als logische Programmiersprache",
+          "description": "Wissensbasen und logische Anfragen formulieren.",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-RP",
+              "DE-SL",
+              "DE-SN"
+            ]
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "materialSections": [
+        "B1"
+      ],
+      "taskId": "B2",
+      "observableExpectedPerformance": "Sibling model with shared parent/different persons; clara in both directions; no self relation.",
+      "solutionSection": "B2 / K05",
+      "scoringStepId": "K05",
+      "points": 1,
+      "fullCompetenceCriterion": "Probleme mit Prolog lösen: nur bei einer fachlich passenden Geschwistermodellierung einschließlich gemeinsamem Elternteil und Verschiedenheit, richtigen Antworten beider Anfragerichtungen und begründetem Ausschluss der Selbstbeziehung."
+    },
+    {
+      "criterionId": "K06",
+      "goalId": "170a6edb-64af-5bb5-a59d-69b6ac5ee7e8",
+      "sourceGoalPointer": "/goals/113",
+      "goalCanonicalSha256": "28e6ea41f74aee845be00059f5c00171c0a9b15f1e104fca89ab8a88fbb25ba8",
+      "originalGoal": {
+        "id": "170a6edb-64af-5bb5-a59d-69b6ac5ee7e8",
+        "title": "Listenverarbeitung in Prolog",
+        "titleEn": "List Processing in Prolog",
+        "description": "Die lernende Person kann Listenoperationen implementieren.",
+        "descriptionEn": "The learner can implement list operations.",
+        "weight": 1.15,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "82911b58-bd79-5e96-8fcc-2adb029e2f70"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P3"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "95f56a8e-e68a-4bda-91c5-8070650bd92c"
+          }
+        },
+        "type": "atomic"
+      },
+      "parentContexts": [
+        {
+          "id": "f5e6a2d7-6793-5023-8296-dea1de828a68",
+          "title": "Prolog als logische Programmiersprache",
+          "description": "Wissensbasen und logische Anfragen formulieren.",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-RP",
+              "DE-SL",
+              "DE-SN"
+            ]
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "materialSections": [
+        "B1/B2 lists"
+      ],
+      "taskId": "B3",
+      "observableExpectedPerformance": "Own member/length recursion, membership success/failure, lengths0/3.",
+      "solutionSection": "B3 / K06",
+      "scoringStepId": "K06",
+      "points": 1,
+      "fullCompetenceCriterion": "Listenverarbeitung in Prolog: nur bei beiden korrekt implementierten Operationen, Basis- und Rekursionsfällen sowie den vier geforderten Erfolgs-/Misserfolgs-/Längentests."
+    },
+    {
+      "criterionId": "K07",
+      "goalId": "9ab554ad-c308-50ed-a5d2-499dd06120ff",
+      "sourceGoalPointer": "/goals/132",
+      "goalCanonicalSha256": "cd51a214e73201016aab27bef5b66d9c350f99b861489ec44c07d0063c7f9ccc",
+      "originalGoal": {
+        "id": "9ab554ad-c308-50ed-a5d2-499dd06120ff",
+        "title": "Schaltnetze praktisch optimieren",
+        "titleEn": "Optimize Combinational Circuits Practically",
+        "description": "Die lernende Person kann Schaltnetze mit KV-Diagrammen vereinfachen und Addierer implementieren.",
+        "descriptionEn": "The learner can simplify combinational circuits with K-maps and implement adders.",
+        "weight": 1.15,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "ca39fae0-1b12-5982-a453-54d12602dde8"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "P2",
+            "P3",
+            "P5"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "61f33827-6dd0-4bc8-88ea-244a10a66d20"
+          }
+        },
+        "type": "atomic"
+      },
+      "parentContexts": [
+        {
+          "id": "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f",
+          "title": "Grundlagen der technischen Informatik",
+          "description": "Digitalelektronik und Schaltnetze analysieren.",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "materialSections": [
+        "A2"
+      ],
+      "taskId": "A4",
+      "observableExpectedPerformance": "Carry DNF/K-map, XOR sum, eight cases, two-bit ripple01+11=100.",
+      "solutionSection": "A4 / K07",
+      "scoringStepId": "K07",
+      "points": 1,
+      "fullCompetenceCriterion": "Schaltnetze praktisch optimieren: nur bei vollständiger Carry-DNF/KV-Vereinfachung, korrekter Summenfunktion, eigener funktionsfähiger Addiererimplementierung mit allen acht Tests sowie richtig verbundenem Zweibitlauf. Eine abgelesene Summe allein genügt nicht."
+    },
+    {
+      "criterionId": "K08",
+      "goalId": "17a72609-a619-52e7-a154-67b714826e74",
+      "sourceGoalPointer": "/goals/133",
+      "goalCanonicalSha256": "00b323b1e003d8a0c605b77592d7fb3e088183e6603edee926cf9dad037bcbff",
+      "originalGoal": {
+        "id": "17a72609-a619-52e7-a154-67b714826e74",
+        "title": "Wissensbasis strukturieren",
+        "titleEn": "Structure Knowledge Base",
+        "description": "Die lernende Person kann Fakten und Regeln so modellieren, dass logische Anfragen vielfältige Probleme lösen.",
+        "descriptionEn": "The learner can model facts and rules so that logical queries solve diverse problems.",
+        "weight": 1.15,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "82911b58-bd79-5e96-8fcc-2adb029e2f70"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P3",
+            "P4"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-RP"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "6f4e4e70-e9f7-4531-94a4-e7613a5ae9b1"
+          }
+        },
+        "type": "atomic"
+      },
+      "parentContexts": [
+        {
+          "id": "f5e6a2d7-6793-5023-8296-dea1de828a68",
+          "title": "Prolog als logische Programmiersprache",
+          "description": "Wissensbasen und logische Anfragen formulieren.",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-RP",
+              "DE-SL",
+              "DE-SN"
+            ]
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "materialSections": [
+        "B1 organizational facts"
+      ],
+      "taskId": "B4",
+      "observableExpectedPerformance": "Reusable roles/zones/badge rules; lab ada, library ben, renewal clara; after fact change lab adds clara and renewal empties.",
+      "solutionSection": "B4 / K08",
+      "scoringStepId": "K08",
+      "points": 1,
+      "fullCompetenceCriterion": "Wissensbasis strukturieren: nur bei den zwei wiederverwendbaren Regeln, allen drei vollständigen Antwortmengen vor und nach der Faktenänderung und nachvollziehbarer Trennung von Wissensbasis und Problemanfragen. Hartcodierte Antworttabellen genügen nicht."
+    },
+    {
+      "criterionId": "K09",
+      "goalId": "a93357e9-5e5b-57c5-98d2-35404a6e6e56",
+      "sourceGoalPointer": "/goals/194",
+      "goalCanonicalSha256": "6f7eea4dfb49efe1dad07764181455616d5e8097811f8f5594f65ff76752b17c",
+      "originalGoal": {
+        "id": "a93357e9-5e5b-57c5-98d2-35404a6e6e56",
+        "title": "Netz- und Systemsicherheit",
+        "titleEn": "Network and System Security",
+        "description": "Die lernende Person kann grundlegende Schutzmechanismen (TLS, Auth, Firewalls) einordnen.",
+        "descriptionEn": "The learner can classify basic protection mechanisms (TLS, Auth, Firewalls).",
+        "weight": 1.1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "70b8919e-8707-580f-9e13-0536c9e81476"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "P5"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4",
+            "I5"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "28ade124-de45-4517-bb00-123d4cc51ac7"
+          }
+        },
+        "type": "atomic"
+      },
+      "parentContexts": [
+        {
+          "id": "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f",
+          "title": "Grundlagen der technischen Informatik",
+          "description": "Digitalelektronik und Schaltnetze analysieren.",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "materialSections": [
+        "C1"
+      ],
+      "taskId": "C1",
+      "observableExpectedPerformance": "TLS/authentication/authorization/firewall distinctions for all3 incidents and concrete limits.",
+      "solutionSection": "C1 / K09",
+      "scoringStepId": "K09",
+      "points": 1,
+      "fullCompetenceCriterion": "Netz- und Systemsicherheit: nur bei richtiger Zuordnung aller drei Vorfälle, konkretem Bezug auf erlaubte/verhinderte Verbindungen und den genannten Grenzen der drei Mechanismen."
+    },
+    {
+      "criterionId": "K10",
+      "goalId": "5f6fb041-835b-51b1-aea9-6c42fee54e69",
+      "sourceGoalPointer": "/goals/195",
+      "goalCanonicalSha256": "86b719981c43eb9066c95fd219e51cb969b6492eb31ba0a895d91fa6ed51c70c",
+      "originalGoal": {
+        "id": "5f6fb041-835b-51b1-aea9-6c42fee54e69",
+        "title": "Nebenläufigkeit/Threads",
+        "titleEn": "Concurrency/Threads",
+        "description": "Die lernende Person kann Threads, Race Conditions und Synchronisation erklären.",
+        "descriptionEn": "The learner can explain threads, race conditions, and synchronization.",
+        "weight": 1.1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "eb4b3d2b-6756-5d88-97de-c404793003d4"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "P2"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4",
+            "I5"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-NW",
+            "DE-SH",
+            "DE-SN"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "89c888d7-4d07-4e75-bdb8-ad0dbd4d4f8c"
+          }
+        },
+        "type": "atomic"
+      },
+      "parentContexts": [
+        {
+          "id": "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f",
+          "title": "Grundlagen der technischen Informatik",
+          "description": "Digitalelektronik und Schaltnetze analysieren.",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "materialSections": [
+        "C2"
+      ],
+      "taskId": "C2",
+      "observableExpectedPerformance": "Legal complete interleavings reaching1 and2; mutex covers read-modify-write; write-only lock insufficient.",
+      "solutionSection": "C2 / K10",
+      "scoringStepId": "K10",
+      "points": 1,
+      "fullCompetenceCriterion": "Nebenläufigkeit/Threads: nur bei beiden vollständigen zulässigen Interleavings, korrekter Thread-/Speicher-/Race-Erklärung sowie ausreichend großem kritischem Abschnitt und begründeter Ablehnung der Nur-Schreiben-Sperre."
+    },
+    {
+      "criterionId": "K11",
+      "goalId": "e9b74953-2c4c-553c-aa2c-eca278f336ed",
+      "sourceGoalPointer": "/goals/196",
+      "goalCanonicalSha256": "34c1d946277d77ef069f5ab5498200bb022e1e7dd1e9fe82cbab423528495aea",
+      "originalGoal": {
+        "id": "e9b74953-2c4c-553c-aa2c-eca278f336ed",
+        "title": "Virtualisierung/Container",
+        "titleEn": "Virtualization/Containers",
+        "description": "Die lernende Person kann Virtualisierung und Containerisierung einordnen.",
+        "descriptionEn": "The learner can classify virtualization and containerization.",
+        "weight": 1.1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "70b8919e-8707-580f-9e13-0536c9e81476"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4",
+            "I5"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-SN"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "92d6f617-0033-4e89-bece-f1cef2f21004"
+          }
+        },
+        "type": "atomic"
+      },
+      "parentContexts": [
+        {
+          "id": "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f",
+          "title": "Grundlagen der technischen Informatik",
+          "description": "Digitalelektronik und Schaltnetze analysieren.",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "materialSections": [
+        "C3"
+      ],
+      "taskId": "C3",
+      "observableExpectedPerformance": "VM guest kernel versus shared container kernel; RAM7GiB/2.5GiB and isolation limits.",
+      "solutionSection": "C3 / K11",
+      "scoringStepId": "K11",
+      "points": 1,
+      "fullCompetenceCriterion": "Virtualisierung/Container: nur bei beiden richtigen Rechnungen und einer zutreffenden Einordnung von OS-/Kernelgrenze, Ressourcendichte und Grenzen der Isolation."
+    },
+    {
+      "criterionId": "K12",
+      "goalId": "e9f348d8-300e-5101-b7f1-3ba00ff969a1",
+      "sourceGoalPointer": "/goals/197",
+      "goalCanonicalSha256": "8054e2a7f6716a36864604887e851df19766018e83ec33c31e21394f6fdb127c",
+      "originalGoal": {
+        "id": "e9f348d8-300e-5101-b7f1-3ba00ff969a1",
+        "title": "Cloud-Grundprinzipien",
+        "titleEn": "Cloud Fundamentals",
+        "description": "Die lernende Person kann Cloud-Betriebsmodelle und Skalierung erklären.",
+        "descriptionEn": "The learner can explain cloud operating models and scaling.",
+        "weight": 1.1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "e9b74953-2c4c-553c-aa2c-eca278f336ed"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "P2"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4",
+            "I5"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-SN"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "3b489e97-d2da-45ea-a76f-2bfddd019fb1"
+          }
+        },
+        "type": "atomic"
+      },
+      "parentContexts": [
+        {
+          "id": "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f",
+          "title": "Grundlagen der technischen Informatik",
+          "description": "Digitalelektronik und Schaltnetze analysieren.",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "materialSections": [
+        "C3"
+      ],
+      "taskId": "C4",
+      "observableExpectedPerformance": "Private/Public/PaaS/SaaS/IaaS/Hybrid; horizontal/vertical;3 normal/4 one-failure workers and DB120 bound.",
+      "solutionSection": "C4 / K12",
+      "scoringStepId": "K12",
+      "points": 1,
+      "fullCompetenceCriterion": "Cloud-Grundprinzipien: nur bei den richtigen Betriebs-/Servicemodellen einschließlich IaaS/Hybrid, verständlichem Skalierungsvergleich, beiden Instanzzahlen und einer expliziten Prüfung der Datenbank-/Modellgrenzen."
+    },
+    {
+      "criterionId": "K13",
+      "goalId": "42467606-f969-5bd7-bfc8-114c4853ecad",
+      "sourceGoalPointer": "/goals/198",
+      "goalCanonicalSha256": "cb52a4636215a624019cbf6584d053d32758eb23dcbe0d69fae32f8d8f3f0d1d",
+      "originalGoal": {
+        "id": "42467606-f969-5bd7-bfc8-114c4853ecad",
+        "title": "Logikprogrammierung vertiefen",
+        "titleEn": "Deepen Logic Programming",
+        "description": "Die lernende Person kann Backtracking/Unifikation in Prolog analysieren.",
+        "descriptionEn": "The learner can analyze backtracking/unification in Prolog.",
+        "weight": 1.1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "82911b58-bd79-5e96-8fcc-2adb029e2f70"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "P3"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4",
+            "I5"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-RP"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "8077b466-d1fc-4be5-9f02-d8de022185c1"
+          }
+        },
+        "type": "atomic"
+      },
+      "parentContexts": [
+        {
+          "id": "f5e6a2d7-6793-5023-8296-dea1de828a68",
+          "title": "Prolog als logische Programmiersprache",
+          "description": "Wissensbasen und logische Anfragen formulieren.",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-RP",
+              "DE-SL",
+              "DE-SN"
+            ]
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "materialSections": [
+        "B1"
+      ],
+      "taskId": "B5",
+      "observableExpectedPerformance": "Head unification, failed fact match, binding undo; dora then emil then false.",
+      "solutionSection": "B5 / K13",
+      "scoringStepId": "K13",
+      "points": 1,
+      "fullCompetenceCriterion": "Logikprogrammierung vertiefen: nur bei Regelkopfunifikation, richtiger Teilziel-/Faktenreihenfolge, konkretem Fehlvergleich, Belegungsrücknahme und vollständiger Antwort-/Suchspur."
+    },
+    {
+      "criterionId": "K14",
+      "goalId": "d3adb904-ee7e-503b-b67b-c2a65497cb3b",
+      "sourceGoalPointer": "/goals/199",
+      "goalCanonicalSha256": "b17fb1bab1435c6a1d0cb26212ef0df74d52beb8519a1bb77e97b6a10f88540f",
+      "originalGoal": {
+        "id": "d3adb904-ee7e-503b-b67b-c2a65497cb3b",
+        "title": "Listen in Prolog",
+        "titleEn": "Lists in Prolog",
+        "description": "Die lernende Person kann rekursive Listenoperationen in Prolog formulieren.",
+        "descriptionEn": "The learner can formulate recursive list operations in Prolog.",
+        "weight": 1.1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "82911b58-bd79-5e96-8fcc-2adb029e2f70"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P3"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4",
+            "I5"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "73c0eb72-a853-42e3-9944-6b7027e96b01"
+          }
+        },
+        "type": "atomic"
+      },
+      "parentContexts": [
+        {
+          "id": "f5e6a2d7-6793-5023-8296-dea1de828a68",
+          "title": "Prolog als logische Programmiersprache",
+          "description": "Wissensbasen und logische Anfragen formulieren.",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-RP",
+              "DE-SL",
+              "DE-SN"
+            ]
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "materialSections": [
+        "B2 lists"
+      ],
+      "taskId": "B6",
+      "observableExpectedPerformance": "Own recursive append/reverse with empty base and complete start,a,finish trace.",
+      "solutionSection": "B6 / K14",
+      "scoringStepId": "K14",
+      "points": 1,
+      "fullCompetenceCriterion": "Listen in Prolog: nur bei beiden eigenen rekursiven Definitionen mit richtigen Basisfällen, den richtigen Ergebnissen und einer erklärten Rekursionsspur."
+    },
+    {
+      "criterionId": "K15",
+      "goalId": "3b98d9f8-b63e-53b6-b447-3881a95e4841",
+      "sourceGoalPointer": "/goals/200",
+      "goalCanonicalSha256": "8a11a56d7631c0e23842f17d4eb9a48c36d48b7116182a79bd1c8a665760f577",
+      "originalGoal": {
+        "id": "3b98d9f8-b63e-53b6-b447-3881a95e4841",
+        "title": "Graphalgorithmen in Prolog",
+        "titleEn": "Graph Algorithms in Prolog",
+        "description": "Die lernende Person kann einfache Graphalgorithmen deklarativ ausdrücken.",
+        "descriptionEn": "The learner can express simple graph algorithms declaratively.",
+        "weight": 1.1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "170a6edb-64af-5bb5-a59d-69b6ac5ee7e8"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4",
+            "I5"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "21d1de50-6637-416f-8bca-dfa6f6e1a1ed"
+          }
+        },
+        "type": "atomic"
+      },
+      "parentContexts": [
+        {
+          "id": "f5e6a2d7-6793-5023-8296-dea1de828a68",
+          "title": "Prolog als logische Programmiersprache",
+          "description": "Wissensbasen und logische Anfragen formulieren.",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-RP",
+              "DE-SL",
+              "DE-SN"
+            ]
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "materialSections": [
+        "B2 graph"
+      ],
+      "taskId": "B7",
+      "observableExpectedPerformance": "Visited-list path code; both simple paths, no cycle and termination.",
+      "solutionSection": "B7 / K15",
+      "scoringStepId": "K15",
+      "points": 1,
+      "fullCompetenceCriterion": "Graphalgorithmen in Prolog: nur bei ausführbar formuliertem Weg-/Besuchslistenmodell, beiden richtigen Pfaden, wirksamem Zyklusausschluss und begründetem Terminierungsargument."
+    },
+    {
+      "criterionId": "K16",
+      "goalId": "e6b07eba-a0dd-5cbf-aed0-1c1259d21a7f",
+      "sourceGoalPointer": "/goals/201",
+      "goalCanonicalSha256": "c371d8ee3732e7dc9ea21cbdc811b98adc9bc043d4ffb7e4d175b95807cf8a73",
+      "originalGoal": {
+        "id": "e6b07eba-a0dd-5cbf-aed0-1c1259d21a7f",
+        "title": "Cut und Nichtdeterminismus",
+        "titleEn": "Cut and Nondeterminism",
+        "description": "Die lernende Person kann Cut/Nichtdeterminismus in Prolog steuern.",
+        "descriptionEn": "The learner can control Cut/Nondeterminism in Prolog.",
+        "weight": 1.1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "42467606-f969-5bd7-bfc8-114c4853ecad"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4",
+            "I5"
+          ],
+          "phase": "Q4"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "b1cc5af3-97af-408c-8275-32b84aa64764"
+          }
+        },
+        "type": "atomic"
+      },
+      "parentContexts": [
+        {
+          "id": "f5e6a2d7-6793-5023-8296-dea1de828a68",
+          "title": "Prolog als logische Programmiersprache",
+          "description": "Wissensbasen und logische Anfragen formulieren.",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-RP",
+              "DE-SL",
+              "DE-SN"
+            ]
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "materialSections": [
+        "B2 gate program"
+      ],
+      "taskId": "B8",
+      "observableExpectedPerformance": "Wrong cut commits west; all-open gate versus first-open policy, including both-open case.",
+      "solutionSection": "B8 / K16",
+      "scoringStepId": "K16",
+      "points": 1,
+      "fullCompetenceCriterion": "Cut und Nichtdeterminismus: nur bei genauer Fehler-/Alternativenspur, beiden richtigen Korrekturen und korrektem Ergebnisvergleich für beide Wissensbasen samt Erklärung der kontrollierten Nichtdeterminismusbeschränkung."
+    },
+    {
+      "criterionId": "K17",
+      "goalId": "325661fb-1df9-54d1-8fca-e651c94483f1",
+      "sourceGoalPointer": "/goals/260",
+      "goalCanonicalSha256": "01713c226feef41a4c151af5c53b58a6d255e13dac347a75c58c6bb800175409",
+      "originalGoal": {
+        "id": "325661fb-1df9-54d1-8fca-e651c94483f1",
+        "title": "Funktionale Programmierung einordnen",
+        "description": "Die lernende Person kann funktionale Programmierung als deklaratives Paradigma von imperativer und logischer Programmierung abgrenzen.",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "1ce620dc-93cf-579c-a286-e74451d0a4d7"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-MV",
+            "DE-RP",
+            "DE-SN"
+          ]
+        },
+        "type": "atomic",
+        "dimensionTags": {
+          "framework": "canonical-de-gymnasium-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P1",
+            "P3",
+            "P4"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4",
+            "I5"
+          ],
+          "phase": "Q4"
+        }
+      },
+      "parentContexts": [
+        {
+          "id": "b7bc2bf3-582c-5e01-b7c9-1b10d30e6103",
+          "title": "Vertiefendes Themenfeld",
+          "description": "Technische Informatik oder logische Programmierung vertiefen.",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "materialSections": [
+        "D1"
+      ],
+      "taskId": "D1",
+      "observableExpectedPerformance": "Pure functional equations versus imperative state and logical relations/search; directional is limit.",
+      "solutionSection": "D1 / K17",
+      "scoringStepId": "K17",
+      "points": 1,
+      "fullCompetenceCriterion": "Funktionale Programmierung einordnen: nur bei zutreffender Abgrenzung aller drei Formen, deklarativer Einordnung und richtiger Grenze des gegebenen arithmetischen Prolog-Prädikats."
+    },
+    {
+      "criterionId": "K18",
+      "goalId": "feb50fce-1dad-5a48-8ff3-c9737d507843",
+      "sourceGoalPointer": "/goals/261",
+      "goalCanonicalSha256": "c0763cfde296842a8615f85cd58cd6c656129814150f32e398b0b3247ab390ae",
+      "originalGoal": {
+        "id": "feb50fce-1dad-5a48-8ff3-c9737d507843",
+        "title": "Funktionen und Terme deklarativ modellieren",
+        "description": "Die lernende Person kann einfache funktionale Programme mit Termen, Funktionsdeklarationen und rekursiven Abhaengigkeiten modellieren.",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "1ce620dc-93cf-579c-a286-e74451d0a4d7"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-MV",
+            "DE-RP"
+          ]
+        },
+        "type": "atomic",
+        "dimensionTags": {
+          "framework": "canonical-de-gymnasium-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P1",
+            "P3",
+            "P4"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4",
+            "I5"
+          ],
+          "phase": "Q4"
+        }
+      },
+      "parentContexts": [
+        {
+          "id": "b7bc2bf3-582c-5e01-b7c9-1b10d30e6103",
+          "title": "Vertiefendes Themenfeld",
+          "description": "Technische Informatik oder logische Programmierung vertiefen.",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "materialSections": [
+        "D1 term language"
+      ],
+      "taskId": "D2",
+      "observableExpectedPerformance": "Complete raised/sum recursion and total composition, bases and dependencies.",
+      "solutionSection": "D2 / K18",
+      "scoringStepId": "K18",
+      "points": 1,
+      "fullCompetenceCriterion": "Funktionen und Terme deklarativ modellieren: nur bei vollständigen eigenen Funktionsdeklarationen mit beiden Basis-/Rekursionsfällen, korrekter Zusammensetzung und erklärten Abhängigkeiten."
+    },
+    {
+      "criterionId": "K19",
+      "goalId": "d6577123-0842-520e-b039-8ac72ab507b6",
+      "sourceGoalPointer": "/goals/262",
+      "goalCanonicalSha256": "c910462da6ec4193933292cb6e4b2d7983da4c7a740a66662071b0429cbc8592",
+      "originalGoal": {
+        "id": "d6577123-0842-520e-b039-8ac72ab507b6",
+        "title": "Funktionale Auswertung durch Reduktion erklaeren",
+        "description": "Die lernende Person kann die Auswertung funktionaler Programme durch wiederholte Reduktion von Termen erlaeutern.",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "1ce620dc-93cf-579c-a286-e74451d0a4d7"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-RP"
+          ]
+        },
+        "type": "atomic",
+        "dimensionTags": {
+          "framework": "canonical-de-gymnasium-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P1",
+            "P3",
+            "P4"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I2",
+            "I3",
+            "I4",
+            "I5"
+          ],
+          "phase": "Q4"
+        }
+      },
+      "parentContexts": [
+        {
+          "id": "b7bc2bf3-582c-5e01-b7c9-1b10d30e6103",
+          "title": "Vertiefendes Themenfeld",
+          "description": "Technische Informatik oder logische Programmierung vertiefen.",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "materialSections": [
+        "D1 term language"
+      ],
+      "taskId": "D3",
+      "observableExpectedPerformance": "Complete term reduction to5; empty total0; decreasing-list termination.",
+      "solutionSection": "D3 / K19",
+      "scoringStepId": "K19",
+      "points": 1,
+      "fullCompetenceCriterion": "Funktionale Auswertung durch Reduktion erklaeren: nur bei vollständiger nachvollziehbarer Termreduktion einschließlich beider leeren Basisfälle, richtiger Arithmetik und Endlichkeitsbegründung."
+    }
+  ],
+  "localVerification": {
+    "status": "bounded-local-checks-pass-independent-didactic-review-pending",
+    "command": "python3 docs/dev/ci-graph-repairs/verify_informatics_q4_terminal_candidate.py",
+    "verifier": {
+      "path": "docs/dev/ci-graph-repairs/verify_informatics_q4_terminal_candidate.py",
+      "sha256": "26ba180f581b1c9904fbc7de2948963dd35074b10a288239e4fea60df07ae974"
+    },
+    "result": {
+      "path": "tmp/informatics-q4-candidate-model-checks.json",
+      "sha256": "81e9824f0f35d07e3a43245c84ec8c0ceef633bb892bfb09437b255f44aa42b9"
+    },
+    "observations": {
+      "status": "PASS-bounded-executable-and-reference-checks-only",
+      "readOnly": true,
+      "candidateExamDataSha256": "b4443aa806b10bafbd849efddfba73d1a928731a9e1a3662827f491e0363c910",
+      "sourceSha256": "5a1487a47e61f59fbc9dfcd71e350443ce3357da171f6507cd85cd6c3a785e7e",
+      "coverageBindings": 19,
+      "completeBinaryCriteria": 19,
+      "compensationPossibleAtPassingThreshold": false,
+      "executedAuthoredPython": {
+        "fullAdderCases": 8,
+        "rippleAdderCases": 16
+      },
+      "booleanCases": 8,
+      "rsCases": 8,
+      "dFlipFlopOutputs": [
+        1,
+        1,
+        1,
+        0,
+        1
+      ],
+      "threadInterleavings": {
+        "total": 20,
+        "final1": 18,
+        "final2": 2
+      },
+      "functionalNodeExecution": {
+        "status": "PASS",
+        "runtime": "Node.js",
+        "cases": 4,
+        "total12": 5,
+        "totalEmpty": 0,
+        "immutableInputs": true
+      },
+      "prologReferenceModel": {
+        "sourceFactsRead": true,
+        "grandparentAnswers": [
+          [
+            "ada",
+            "dora"
+          ],
+          [
+            "ada",
+            "emil"
+          ]
+        ],
+        "simplePathAnswers": [
+          [
+            "start",
+            "a",
+            "finish"
+          ],
+          [
+            "start",
+            "b",
+            "a",
+            "finish"
+          ]
+        ]
+      },
+      "prologProgramExecuted": false,
+      "prologRuntimeAvailable": false,
+      "limits": [
+        "Prolog fact/reference models are not a Prolog interpreter or clause/cut execution proof.",
+        "Term-equation reasoning, security explanations, didactic quality and complete competence coverage still need independent review.",
+        "No runtime, curriculum, learner, QA, publication or release state is changed."
+      ]
+    },
+    "prologProgramExecuted": false,
+    "prologRuntimeAvailable": false,
+    "haskellRuntimeAvailable": false,
+    "limits": "Exact authored Python solution and Node functional reference executed; digital/concurrency/arithmetic and Prolog-fact/graph reference models checked. No Prolog or Haskell interpreter run, no independent didactic approval, no live application."
+  },
+  "requiredBeforeApplication": [
+    "Independent complete didactic review of all19 mappings, correctness, solvability, difficulty and full-competence rubric.",
+    "Recheck source/goal/exam/coverage guards and every full goal binding; changes need explicit rebase/review.",
+    "Only actual review may justify a later release status; candidate draft is not approval.",
+    "Validate actual schema/exam parser, composition/applicability, relevant CI and genuine new QA/report bindings after application; no fingerprint-only relabel.",
+    "Old practice receipts remain historical; no new trial, mastery, SRS result, recognition or unit-runtime claim follows."
+  ],
+  "missingOriginalEnglishGoalTexts": [
+    "325661fb-1df9-54d1-8fca-e651c94483f1",
+    "feb50fce-1dad-5a48-8ff3-c9737d507843",
+    "d6577123-0842-520e-b039-8ac72ab507b6"
+  ]
+}

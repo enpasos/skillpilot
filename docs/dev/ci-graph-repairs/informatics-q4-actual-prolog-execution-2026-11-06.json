@@ -1,0 +1,364 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS-actual-Prolog-execution",
+  "readOnly": true,
+  "runtimeVersion": "swi(8,4,2,[])",
+  "programs": [
+    {
+      "profile": "LK19",
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-terminal-candidate-2026-11-06.prolog.pl",
+      "sha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "GK6",
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-gk-terminal-candidate-2026-11-06.prolog.pl",
+      "sha256": "53252cb647d764b5787c01ea915d47f95c50f50c138e4eebb79a713a479f4e82"
+    }
+  ],
+  "executedQueries": 40,
+  "queries": [
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "children",
+      "query": "findall(K,parent(ada,K),A)",
+      "actual": "[ben,clara]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "grandparents",
+      "query": "findall([G,K],grandparent(G,K),A)",
+      "actual": "[[ada,dora],[ada,emil]]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "sibling_forward",
+      "query": "findall(X,sibling(ben,X),A)",
+      "actual": "[clara]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "sibling_backward",
+      "query": "findall(X,sibling(X,ben),A)",
+      "actual": "[clara]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "sibling_self_rejected",
+      "query": "findall(yes,sibling(ben,ben),A)",
+      "actual": "[]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "lab",
+      "query": "findall(P,can_enter(P,lab),A)",
+      "actual": "[ada]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "library",
+      "query": "findall(P,can_enter(P,library),A)",
+      "actual": "[ben]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "renewal",
+      "query": "findall(P,needs_renewal(P),A)",
+      "actual": "[clara]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "member_present",
+      "query": "findall(yes,member_id(a,[start,a,finish]),A)",
+      "actual": "[yes]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "member_absent",
+      "query": "findall(yes,member_id(b,[start,a,finish]),A)",
+      "actual": "[]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "length_empty",
+      "query": "findall(N,length_list([],N),A)",
+      "actual": "[0]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "length_three",
+      "query": "findall(N,length_list([start,a,finish],N),A)",
+      "actual": "[3]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "append",
+      "query": "findall(P,append_list([start,a],[finish],P),A)",
+      "actual": "[[start,a,finish]]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "append_empty",
+      "query": "findall(P,append_list([],[],P),A)",
+      "actual": "[[]]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "reverse",
+      "query": "findall(P,reverse_list([finish,a,start],P),A)",
+      "actual": "[[start,a,finish]]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "reverse_empty",
+      "query": "findall(P,reverse_list([],P),A)",
+      "actual": "[[]]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "simple_paths",
+      "query": "findall(P,path(start,finish,P),A)",
+      "actual": "[[start,a,finish],[start,b,a,finish]]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "null_path",
+      "query": "findall(P,path(start,start,P),A)",
+      "actual": "[[start]]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "bad_cut",
+      "query": "findall(X,gate_bug(X),A)",
+      "actual": "[]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "open_gates",
+      "query": "findall(X,gate(X),A)",
+      "actual": "[east]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "first_open",
+      "query": "findall(X,first_open(X),A)",
+      "actual": "[east]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "total",
+      "query": "findall(T,total_rel([1,2],T),A)",
+      "actual": "[5]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "total_empty",
+      "query": "findall(T,total_rel([],T),A)",
+      "actual": "[0]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "original",
+      "queryId": "total_reverse_instantiation_error",
+      "query": "findall(yes,catch((total_rel([_],2),fail),error(instantiation_error,_),true),A)",
+      "actual": "[yes]",
+      "programSha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "profile": "LK19",
+      "variant": "badge-fact-replaced",
+      "queryId": "changed_lab",
+      "query": "findall(P,can_enter(P,lab),A)",
+      "actual": "[ada,clara]",
+      "programSha256": "65aeeec835c892fc1232f6bcdf4aa57b9da8b9fe81ac3b6dcdd58c6eaad620f6"
+    },
+    {
+      "profile": "LK19",
+      "variant": "badge-fact-replaced",
+      "queryId": "changed_library",
+      "query": "findall(P,can_enter(P,library),A)",
+      "actual": "[ben]",
+      "programSha256": "65aeeec835c892fc1232f6bcdf4aa57b9da8b9fe81ac3b6dcdd58c6eaad620f6"
+    },
+    {
+      "profile": "LK19",
+      "variant": "badge-fact-replaced",
+      "queryId": "changed_renewal",
+      "query": "findall(P,needs_renewal(P),A)",
+      "actual": "[]",
+      "programSha256": "65aeeec835c892fc1232f6bcdf4aa57b9da8b9fe81ac3b6dcdd58c6eaad620f6"
+    },
+    {
+      "profile": "LK19",
+      "variant": "second-open-fact",
+      "queryId": "two_open_gates",
+      "query": "findall(X,gate(X),A)",
+      "actual": "[west,east]",
+      "programSha256": "1d756b7709d353ebf38fc13cd5cece36a2c104beaea89cfea76bf4eaf6b3ee59"
+    },
+    {
+      "profile": "LK19",
+      "variant": "second-open-fact",
+      "queryId": "first_of_two_open",
+      "query": "findall(X,first_open(X),A)",
+      "actual": "[west]",
+      "programSha256": "1d756b7709d353ebf38fc13cd5cece36a2c104beaea89cfea76bf4eaf6b3ee59"
+    },
+    {
+      "profile": "GK6",
+      "variant": "original",
+      "queryId": "children",
+      "query": "findall(K,parent(ada,K),A)",
+      "actual": "[ben,clara]",
+      "programSha256": "53252cb647d764b5787c01ea915d47f95c50f50c138e4eebb79a713a479f4e82"
+    },
+    {
+      "profile": "GK6",
+      "variant": "original",
+      "queryId": "grandparents",
+      "query": "findall([G,K],grandparent(G,K),A)",
+      "actual": "[[ada,dora],[ada,emil]]",
+      "programSha256": "53252cb647d764b5787c01ea915d47f95c50f50c138e4eebb79a713a479f4e82"
+    },
+    {
+      "profile": "GK6",
+      "variant": "original",
+      "queryId": "sibling_forward",
+      "query": "findall(X,sibling(ben,X),A)",
+      "actual": "[clara]",
+      "programSha256": "53252cb647d764b5787c01ea915d47f95c50f50c138e4eebb79a713a479f4e82"
+    },
+    {
+      "profile": "GK6",
+      "variant": "original",
+      "queryId": "sibling_backward",
+      "query": "findall(X,sibling(X,ben),A)",
+      "actual": "[clara]",
+      "programSha256": "53252cb647d764b5787c01ea915d47f95c50f50c138e4eebb79a713a479f4e82"
+    },
+    {
+      "profile": "GK6",
+      "variant": "original",
+      "queryId": "sibling_self_rejected",
+      "query": "findall(yes,sibling(ben,ben),A)",
+      "actual": "[]",
+      "programSha256": "53252cb647d764b5787c01ea915d47f95c50f50c138e4eebb79a713a479f4e82"
+    },
+    {
+      "profile": "GK6",
+      "variant": "original",
+      "queryId": "lab",
+      "query": "findall(P,can_enter(P,lab),A)",
+      "actual": "[ada]",
+      "programSha256": "53252cb647d764b5787c01ea915d47f95c50f50c138e4eebb79a713a479f4e82"
+    },
+    {
+      "profile": "GK6",
+      "variant": "original",
+      "queryId": "library",
+      "query": "findall(P,can_enter(P,library),A)",
+      "actual": "[ben]",
+      "programSha256": "53252cb647d764b5787c01ea915d47f95c50f50c138e4eebb79a713a479f4e82"
+    },
+    {
+      "profile": "GK6",
+      "variant": "original",
+      "queryId": "renewal",
+      "query": "findall(P,needs_renewal(P),A)",
+      "actual": "[clara]",
+      "programSha256": "53252cb647d764b5787c01ea915d47f95c50f50c138e4eebb79a713a479f4e82"
+    },
+    {
+      "profile": "GK6",
+      "variant": "badge-fact-replaced",
+      "queryId": "changed_lab",
+      "query": "findall(P,can_enter(P,lab),A)",
+      "actual": "[ada,clara]",
+      "programSha256": "f43aa6fd3ff5b391fc641429bb5f064a83b79056894007d1f7465831d8e168c4"
+    },
+    {
+      "profile": "GK6",
+      "variant": "badge-fact-replaced",
+      "queryId": "changed_library",
+      "query": "findall(P,can_enter(P,library),A)",
+      "actual": "[ben]",
+      "programSha256": "f43aa6fd3ff5b391fc641429bb5f064a83b79056894007d1f7465831d8e168c4"
+    },
+    {
+      "profile": "GK6",
+      "variant": "badge-fact-replaced",
+      "queryId": "changed_renewal",
+      "query": "findall(P,needs_renewal(P),A)",
+      "actual": "[]",
+      "programSha256": "f43aa6fd3ff5b391fc641429bb5f064a83b79056894007d1f7465831d8e168c4"
+    }
+  ],
+  "humanApproval": false,
+  "learnerResultsWritten": false,
+  "limits": [
+    "Exercises the exact two frozen reference programs and guarded fact variants.",
+    "Does not prove didactic adequacy, actual learner competence, QA release or runtime deployment."
+  ],
+  "verifier": {
+    "path": "docs/dev/ci-graph-repairs/verify_informatics_q4_prolog.py",
+    "sha256": "445fcf5323f2a41f3fafe46fed04e55e67b169c3f867cfff66e62e44a4cb72b0"
+  },
+  "observedAt": "2026-11-06T14:31:18.284945+00:00",
+  "interpreterPackage": {
+    "name": "swi-prolog-core",
+    "version": "8.4.2+dfsg-2ubuntu1",
+    "architecture": "amd64",
+    "distribution": "Ubuntu jammy configured package archive",
+    "archiveSha256": "7312719903eff5cd3951aef04087b6baabcef6e1951e41a4d796bbd3ec2d0bba",
+    "installation": "Privately extracted under /dev/shm, no system package installation"
+  },
+  "actualOutput": {
+    "path": "tmp/ci-contract-informatics-q4-actual-prolog.json",
+    "sha256": "dbc2e31c95c34847856975342583673abb2fa1583ffa64c9cc5b8086736fe66b"
+  }
+}

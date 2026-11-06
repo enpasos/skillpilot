@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "independent-GK-content-review-positive-integration-and-Root-second-review-pending",
+  "humanApproval": false,
+  "dataChangesApplied": false,
+  "reviewer": "Astra independent agent review",
+  "newAssessmentGoalId": "4a6fcdd7-bcec-5b66-9008-7267a5fcf636",
+  "sourceGuard": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "sha256": "5a1487a47e61f59fbc9dfcd71e350443ce3357da171f6507cd85cd6c3a785e7e",
+    "original19GoalId": "a5e33d4d-f312-51d2-816b-e0b10dd1e701",
+    "original19GoalCanonicalSha256": "103adc4420d915ae9486bdd02e2f28eaeec7f1d048e4b74c0dd86c049cf08124"
+  },
+  "artifactBindings": [
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-gk-terminal-candidate-2026-11-06.review-input.json",
+      "sha256": "fc1831919b60b27aca68c794e6858798b9675af34ddb1168194e32bf2d7e96b3"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-gk-terminal-candidate-2026-11-06.examData.json",
+      "sha256": "649948b613e4218d8434fe1a14ec9b2325b576df12989efca16877257eb9130f"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-gk-terminal-candidate-2026-11-06.task.md",
+      "sha256": "c83fd5bb834df3810ba68100e41605d5e443795ed35398b4be42ededa863146f"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-gk-terminal-candidate-2026-11-06.solution.md",
+      "sha256": "b9137c9ed937d135ff3d60bb7ca114b8b302011ca425827330076c9e9a0044c3"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-gk-terminal-candidate-2026-11-06.prolog.pl",
+      "sha256": "53252cb647d764b5787c01ea915d47f95c50f50c138e4eebb79a713a479f4e82"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/verify_informatics_q4_gk_terminal_candidate.py",
+      "sha256": "e8cfd56335288463430e618c80a4a189c718560e9cf357b047328817eda7cf89"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-gk-goal-metadata-proposal-2026-11-06.json",
+      "sha256": "60decac8393833c63de8c9542b2b782c8a615dd1fbb75639d94f8b86660bd09e"
+    }
+  ],
+  "readScope": "Full new GK task, full new solution, complete GK Prolog program, examData, verifier, six complete original goal definitions with current parent contexts, frozen separate metadata. The 19-goal review was background, not a substitute for this new review.",
+  "criterionReviews": [
+    {
+      "criterionId": "K01",
+      "goalId": "70b8919e-8707-580f-9e13-0536c9e81476",
+      "goalCanonicalSha256": "148309feb18181cf92e75c63efa9204f3f6da17958e6d04278b3e04b2057a4c0",
+      "taskId": "A1",
+      "decision": "content-approved-for-this-distinct-GK-six-competence-assessment",
+      "reason": "Das eigenständige GK-Material behält beide Summanden, Byte-/Zweierkomplementmodell und Überlauffall vollständig. Rechnung, Überträge und Begründung bleiben verpflichtend; keine außerhalb der GK-Fassung liegende Erläuterung wird vorausgesetzt."
+    },
+    {
+      "criterionId": "K02",
+      "goalId": "ca39fae0-1b12-5982-a453-54d12602dde8",
+      "goalCanonicalSha256": "3d28007ece510f475dbed512fe60a265444065aa1384db5f906055b10379fc14",
+      "taskId": "A2",
+      "decision": "content-approved-for-this-distinct-GK-six-competence-assessment",
+      "reason": "Wahrheitstabelle, fehlerhafte Gatternetzliste und Gray-Anordnung stehen in Material A1. DNF, beide gültigen KV-Gruppen, neues Gatternetz und Gegenbeispiel bleiben verlangt; die Umstellung hat keine Nachweisleistung entfernt."
+    },
+    {
+      "criterionId": "K04",
+      "goalId": "5f48f0bb-a1a6-588e-a498-fab20245efcd",
+      "goalCanonicalSha256": "c811a7856c557c5e5229dd9bdabd8d8c82d6418bb87cd1c643c570709303abd5",
+      "taskId": "B1",
+      "decision": "content-approved-for-this-distinct-GK-six-competence-assessment",
+      "reason": "Alle vier Familienbeziehungen sind vorhanden. Fakten, Großelternregel, zwei Anfragen und vollständige Antwortmengen müssen weiterhin selbst formuliert werden; die Rollen-/Ausweisfakten ersetzen diese Leistung nicht."
+    },
+    {
+      "criterionId": "K05",
+      "goalId": "82911b58-bd79-5e96-8fcc-2adb029e2f70",
+      "goalCanonicalSha256": "1409038d487801dbc65e3fa2b51989fa98dfa9fc2a4a0e8afd5524445bb01946",
+      "taskId": "B2",
+      "decision": "content-approved-for-this-distinct-GK-six-competence-assessment",
+      "reason": "Das Geschwisterproblem mit gemeinsamem Elternteil und Ausschluss der Selbstbeziehung ist vollständig erhalten. Die eingefügte Erklärung von \\= verhindert eine undeutliche Eingabebindung, ohne die Modellierungsregel vorzugeben. Beide Anfragerichtungen sind richtig gelöst."
+    },
+    {
+      "criterionId": "K07",
+      "goalId": "9ab554ad-c308-50ed-a5d2-499dd06120ff",
+      "goalCanonicalSha256": "cd51a214e73201016aab27bef5b66d9c350f99b861489ec44c07d0063c7f9ccc",
+      "taskId": "A3",
+      "decision": "content-approved-for-this-distinct-GK-six-competence-assessment",
+      "reason": "Der Addierer hat eigenes vollständiges Material A2 ohne RS-/D-Flip-Flop-Aufgabe. DNF, KV-Vereinfachung, eigene Implementierung, acht Tests und Zweibitlauf sind unverändert erforderlich; A3 verweist korrekt auf K07. Die exakten Pythondefinitionen bestehen erneut 8 und 16 Fälle."
+    },
+    {
+      "criterionId": "K08",
+      "goalId": "17a72609-a619-52e7-a154-67b714826e74",
+      "goalCanonicalSha256": "00b323b1e003d8a0c605b77592d7fb3e088183e6603edee926cf9dad037bcbff",
+      "taskId": "B3",
+      "decision": "content-approved-for-this-distinct-GK-six-competence-assessment",
+      "reason": "Rollen-, Ausweis- und Zonenfakten sowie Regelzweck und einzelne Faktenänderung sind vollständig vorhanden. Die beiden Regeln und alle Antworten vor/nach Änderung stimmen. Wiederverwendbarkeit muss erklärt werden, sodass bloße Antwortlisten nicht reichen."
+    }
+  ],
+  "materialsComplete": true,
+  "correctAndSolvableWithinDeclaredModel": true,
+  "noLkOnlyTaskOrMissingMaterialDependency": true,
+  "passingRoute": {
+    "criteria": 6,
+    "maxPoints": 6,
+    "passingPoints": 6,
+    "scoreVectorsChecked": 64,
+    "passingVectors": 1,
+    "condition": "Each full criterion earns exactly0or1; only all six complete performances pass. Equivalent correct implementations remain allowed."
+  },
+  "metadataCheck": {
+    "originalGoalPayloadsUnchanged": 6,
+    "parentsVerified": 6,
+    "coveredIdsAndOrderEqualFrozenMetadata": true,
+    "coveredStrandsDerivedFromSixActualGoals": [
+      "I1",
+      "I2",
+      "I3",
+      "I4",
+      "P2",
+      "P3",
+      "P4",
+      "P5"
+    ],
+    "demandLevels": [
+      "AB2",
+      "AB3"
+    ],
+    "inventedOriginalEnglishOrOfficialSourceClaims": false
+  },
+  "verification": {
+    "independentVerifierRun": "PASS-bounded-checks-only",
+    "exactAuthoredPythonFullAdderCases": 8,
+    "exactAuthoredPythonTwoBitCases": 16,
+    "booleanReferenceCases": 8,
+    "familyAndRoleFactModels": "PASS",
+    "prologProgramExecuted": false,
+    "prologRuntimeAvailable": false,
+    "prologReview": "Complete source traced manually for the stated queries and changed facts; Python fact models do not execute Prolog clauses."
+  },
+  "identityAndScopeBoundary": "Distinct new stable ID and explicit result; the existing19-goal ID and meaning remain unchanged. No implicit transfer in either direction. Actual course integration is bound separately to the reviewed three-GK-context proposal and requires Root final review.",
+  "openApplicationConditions": [
+    "Assemble exact reviewed GK examData into frozen new metadata; retain complete original19 LK examData under original ID",
+    "Root second review plus actual schema, global graph, applicability/composition and QA/report checks before application/release",
+    "No existing learner state, practice receipt, source review or QA fingerprint relabelling; no recognition or unit runtime"
+  ]
+}

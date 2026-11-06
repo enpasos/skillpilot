@@ -1,0 +1,427 @@
+{
+  "schemaVersion": 1,
+  "status": "unapplied-reviewed-scope-hypothesis-GK-content-binding-and-Root-application-review-required",
+  "dataChangesApplied": false,
+  "humanApproval": false,
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "sha256": "5a1487a47e61f59fbc9dfcd71e350443ce3357da171f6507cd85cd6c3a785e7e"
+  },
+  "newGoalId": "4a6fcdd7-bcec-5b66-9008-7267a5fcf636",
+  "uuidDerivation": {
+    "algorithm": "UUIDv5",
+    "namespace": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+    "name": "route-terminal-q4-gk-v1"
+  },
+  "uuidCollisionCheck": {
+    "currentFilesChecked": 593,
+    "currentGoalSerializationsChecked": 56171,
+    "collisionComparison": "case-insensitive UUID values",
+    "collisions": [],
+    "catalogPathUniverseSource": "canonical-goal-source-bijection-2026-11-06.proposal.json/catalog/sourceFiles; actual current bytes were read, old source hashes were not treated as current"
+  },
+  "gkCoveredGoalIds": [
+    "70b8919e-8707-580f-9e13-0536c9e81476",
+    "ca39fae0-1b12-5982-a453-54d12602dde8",
+    "5f48f0bb-a1a6-588e-a498-fab20245efcd",
+    "82911b58-bd79-5e96-8fcc-2adb029e2f70",
+    "9ab554ad-c308-50ed-a5d2-499dd06120ff",
+    "17a72609-a619-52e7-a154-67b714826e74"
+  ],
+  "lkCoveredGoalIdsUnchanged": [
+    "70b8919e-8707-580f-9e13-0536c9e81476",
+    "ca39fae0-1b12-5982-a453-54d12602dde8",
+    "01cd4048-8ce2-5167-bfa6-f3cb042c84f1",
+    "5f48f0bb-a1a6-588e-a498-fab20245efcd",
+    "82911b58-bd79-5e96-8fcc-2adb029e2f70",
+    "170a6edb-64af-5bb5-a59d-69b6ac5ee7e8",
+    "9ab554ad-c308-50ed-a5d2-499dd06120ff",
+    "17a72609-a619-52e7-a154-67b714826e74",
+    "a93357e9-5e5b-57c5-98d2-35404a6e6e56",
+    "5f6fb041-835b-51b1-aea9-6c42fee54e69",
+    "e9b74953-2c4c-553c-aa2c-eca278f336ed",
+    "e9f348d8-300e-5101-b7f1-3ba00ff969a1",
+    "42467606-f969-5bd7-bfc8-114c4853ecad",
+    "d3adb904-ee7e-503b-b67b-c2a65497cb3b",
+    "3b98d9f8-b63e-53b6-b447-3881a95e4841",
+    "e6b07eba-a0dd-5cbf-aed0-1c1259d21a7f",
+    "325661fb-1df9-54d1-8fca-e651c94483f1",
+    "feb50fce-1dad-5a48-8ff3-c9737d507843",
+    "d6577123-0842-520e-b039-8ac72ab507b6"
+  ],
+  "newGoalRequires": [
+    "9ab554ad-c308-50ed-a5d2-499dd06120ff",
+    "17a72609-a619-52e7-a154-67b714826e74"
+  ],
+  "parentPlacementReason": "Direct canonical root avoids inheriting both unrestricted technical/Prolog clusters from Übungen Q4. Three explicit view entries give the intended adjacent Q4 presentation. No new cluster/unit.",
+  "requiresReason": "Adder design requires circuit design and binary arithmetic; structured knowledge bases require Prolog problem modelling and facts/rules. These two existing branches carry the six GK performances; no new direct redundant prerequisite is authored. Existing earlier Q3-terminal paths are preserved, not independently approved by this repair.",
+  "applicabilityReason": "The new root child uses the already-authored inherited root mapping visibility for DE-BY and DE-HE. This is inherited applicability evidence, not direct official source coverage or task approval. No new mapping, override or applicabilityFromRequires is introduced; the latter would wrongly add RP.",
+  "operations": [
+    {
+      "id": "INFO-Q4-SCOPE-LK-TAGS",
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "op": "replace",
+      "path": "/goals/281/tags",
+      "guardGoalId": "a5e33d4d-f312-51d2-816b-e0b10dd1e701",
+      "guardBefore": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "value": [
+        "LK",
+        "Practice",
+        "Assessment"
+      ]
+    },
+    {
+      "id": "INFO-Q4-CONTENT-LK",
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "op": "replace",
+      "path": "/goals/281/examData",
+      "guardGoalId": "a5e33d4d-f312-51d2-816b-e0b10dd1e701",
+      "guardBeforeSha256": "2d3110e57f4a9f41fec546c379d05aa09f6cea89408e2d8f97030e5565efffc1",
+      "valueFromArtifact": {
+        "path": "docs/dev/ci-graph-repairs/informatics-q4-terminal-candidate-2026-11-06.examData.json",
+        "rawSha256": "b4443aa806b10bafbd849efddfba73d1a928731a9e1a3662827f491e0363c910",
+        "canonicalSha256": "336c07e9bbe473cc99aacafda796916599e104e1131c66856f2b7de748653040",
+        "reviewStatus": "draft"
+      },
+      "reviewStatusToApply": "still draft; released status requires Root second review and actual checks"
+    },
+    {
+      "id": "INFO-Q4-SCOPE-ROOT",
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "op": "replace",
+      "path": "/goals/0/contains",
+      "guardGoalId": "29ec47db-7dfe-553d-b850-40e06f164545",
+      "guardBefore": [
+        "d848ceb9-cd73-5a13-9407-f3364764c223",
+        "7432c2b5-bb66-5032-ba6f-8655c0fc67b1",
+        "c254fd74-d449-5e2a-989e-cbd435c6429b",
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa",
+        "dbad1333-5783-57b5-8715-92d725f5c303",
+        "2bf5b882-065e-5379-b8b8-79e2831f86ed",
+        "eaf62c0d-5e76-5467-94e0-bd100f3cb7e1",
+        "423e088a-1b38-544f-8cac-b4f8f4979850",
+        "b7acdaa9-4d14-5ec4-9048-8c969f8252cc",
+        "7b18ca8c-830d-5533-b471-f97cd16ce2b7",
+        "b7bc2bf3-582c-5e01-b7c9-1b10d30e6103",
+        "91c5be09-cc6b-5f57-bfe1-9f0038faf26a",
+        "6982b63a-c6c8-5a6f-b5cb-51568301ac1c",
+        "010651ba-ddd0-510b-8ed1-e3610031f6e1",
+        "70ef7a45-540a-5d8c-b970-19b9f740c40a",
+        "4d22b75a-c395-5785-9131-68a8a5e203c1",
+        "bd075253-1e7e-57a2-9df4-2d0099dacba3",
+        "c764b417-2d6b-5f1f-ba1a-851bfb44fb24",
+        "a86229be-98d8-5987-8c7d-35d105f957d5",
+        "2514384b-8ef7-5800-bf92-29ec8ef71511",
+        "f05a9276-f27c-5d74-af65-588f12ab4de3"
+      ],
+      "value": [
+        "d848ceb9-cd73-5a13-9407-f3364764c223",
+        "7432c2b5-bb66-5032-ba6f-8655c0fc67b1",
+        "c254fd74-d449-5e2a-989e-cbd435c6429b",
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa",
+        "dbad1333-5783-57b5-8715-92d725f5c303",
+        "2bf5b882-065e-5379-b8b8-79e2831f86ed",
+        "eaf62c0d-5e76-5467-94e0-bd100f3cb7e1",
+        "423e088a-1b38-544f-8cac-b4f8f4979850",
+        "b7acdaa9-4d14-5ec4-9048-8c969f8252cc",
+        "7b18ca8c-830d-5533-b471-f97cd16ce2b7",
+        "b7bc2bf3-582c-5e01-b7c9-1b10d30e6103",
+        "91c5be09-cc6b-5f57-bfe1-9f0038faf26a",
+        "6982b63a-c6c8-5a6f-b5cb-51568301ac1c",
+        "010651ba-ddd0-510b-8ed1-e3610031f6e1",
+        "70ef7a45-540a-5d8c-b970-19b9f740c40a",
+        "4d22b75a-c395-5785-9131-68a8a5e203c1",
+        "bd075253-1e7e-57a2-9df4-2d0099dacba3",
+        "c764b417-2d6b-5f1f-ba1a-851bfb44fb24",
+        "a86229be-98d8-5987-8c7d-35d105f957d5",
+        "2514384b-8ef7-5800-bf92-29ec8ef71511",
+        "f05a9276-f27c-5d74-af65-588f12ab4de3",
+        "4a6fcdd7-bcec-5b66-9008-7267a5fcf636"
+      ]
+    },
+    {
+      "id": "INFO-Q4-SCOPE-GK-GOAL",
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "op": "add",
+      "path": "/goals/-",
+      "guardGoalsLength": 282,
+      "guardGoalIdAbsent": "4a6fcdd7-bcec-5b66-9008-7267a5fcf636",
+      "valueWithoutExamData": {
+        "id": "4a6fcdd7-bcec-5b66-9008-7267a5fcf636",
+        "title": "Schaltungen und Wissensbasen vernetzt anwenden",
+        "titleEn": "Apply circuits and knowledge bases together",
+        "description": "Die lernende Person kann Binär- und Hexadezimalrechnung, Schaltnetzentwurf und Addierer sowie Fakten, Verwandtschaftsregeln und wiederverwendbare Wissensbasen in einer materialgestützten Q4-Übungssituation selbständig anwenden.",
+        "descriptionEn": "The learner can independently apply binary and hexadecimal arithmetic, combinational-circuit and adder design, and facts, kinship rules and reusable knowledge bases in a material-based Q4 practice situation.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "Practice",
+          "Assessment"
+        ],
+        "contains": [],
+        "requires": [
+          "9ab554ad-c308-50ed-a5d2-499dd06120ff",
+          "17a72609-a619-52e7-a154-67b714826e74"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB3",
+          "processCompetencies": [],
+          "guidingIdeas": [],
+          "phase": "Q4"
+        },
+        "phase": "Q4",
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "extendedData": {
+          "routeTerminal": true,
+          "provenance": {
+            "sourceLandscapeTitle": "Canonical Informatik route QA supplement",
+            "sourceGoalId": "route-terminal-q4-gk-v1"
+          }
+        },
+        "type": "atomic"
+      },
+      "requiredBeforeApplication": "Bind the actual separately authored and independently reviewed GK examData artifact with exactly the six listed coveredGoalIds; the scope-only payload is not an executable application package."
+    },
+    {
+      "id": "INFO-Q4-SCOPE-VIEW-de-he-gym-informatics-crossstage.view.json",
+      "file": "curricula/DE/Gymnasium/composition-views/informatik/de-he-gym-informatics-crossstage.view.json",
+      "fileSha256": "ffb1f0c68e294253fd2d806dd2939d781b89317083406dbc70df7d7d714a07df",
+      "op": "add",
+      "path": "/rootNodes/0/children/3/children/6",
+      "guardParentChildren": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f05a9276-f27c-5d74-af65-588f12ab4de3"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "91c5be09-cc6b-5f57-bfe1-9f0038faf26a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "6982b63a-c6c8-5a6f-b5cb-51568301ac1c"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "010651ba-ddd0-510b-8ed1-e3610031f6e1"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "70ef7a45-540a-5d8c-b970-19b9f740c40a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "4d22b75a-c395-5785-9131-68a8a5e203c1"
+        }
+      ],
+      "value": {
+        "kind": "goalEntry",
+        "goalId": "4a6fcdd7-bcec-5b66-9008-7267a5fcf636",
+        "projectionRole": "target",
+        "displayLabel": "Q4 vernetzt anwenden (GK)"
+      }
+    },
+    {
+      "id": "INFO-Q4-SCOPE-VIEW-de-by-gym-informatics-crossstage.view.json",
+      "file": "curricula/DE/Gymnasium/composition-views/informatik/de-by-gym-informatics-crossstage.view.json",
+      "fileSha256": "e27fb27ee64bc2fefd900efda6951dbe27a7c6fc508d59dde4e98c542c119fa6",
+      "op": "add",
+      "path": "/rootNodes/0/children/3/children/6",
+      "guardParentChildren": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f05a9276-f27c-5d74-af65-588f12ab4de3"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "91c5be09-cc6b-5f57-bfe1-9f0038faf26a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "6982b63a-c6c8-5a6f-b5cb-51568301ac1c"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "010651ba-ddd0-510b-8ed1-e3610031f6e1"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "70ef7a45-540a-5d8c-b970-19b9f740c40a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "4d22b75a-c395-5785-9131-68a8a5e203c1"
+        }
+      ],
+      "value": {
+        "kind": "goalEntry",
+        "goalId": "4a6fcdd7-bcec-5b66-9008-7267a5fcf636",
+        "projectionRole": "target",
+        "displayLabel": "Q4 vernetzt anwenden (GK)"
+      }
+    },
+    {
+      "id": "INFO-Q4-SCOPE-VIEW-de-de-gym-informatics-gk.view.json",
+      "file": "curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json",
+      "fileSha256": "5f630e13df9cbb4ad28210e5f98659f362d3ba28bdba2005c813e33180cc69a3",
+      "op": "add",
+      "path": "/rootNodes/0/children/3/children/10",
+      "guardParentChildren": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "eaf62c0d-5e76-5467-94e0-bd100f3cb7e1"
+        },
+        {
+          "kind": "structure",
+          "id": "informatics-q1-gk",
+          "label": "Q1 Algorithmik und objektorientierte Modellierung",
+          "children": [
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "2421e381-59a9-5f51-a746-fbc2c8e56633"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "ce4502f6-2759-5ba4-b287-15ab80a48b2f"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "8288d8e7-e577-566c-ba95-ca1c3dc018ca"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "6bbf9fa6-d6c0-520c-9b49-4dd3609bb86b"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b7acdaa9-4d14-5ec4-9048-8c969f8252cc"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "7b18ca8c-830d-5533-b471-f97cd16ce2b7"
+        },
+        {
+          "kind": "structure",
+          "id": "informatics-q4-gk",
+          "label": "Q4 Vertiefendes Themenfeld",
+          "children": [
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "f5e6a2d7-6793-5023-8296-dea1de828a68"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "91c5be09-cc6b-5f57-bfe1-9f0038faf26a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "6982b63a-c6c8-5a6f-b5cb-51568301ac1c"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "010651ba-ddd0-510b-8ed1-e3610031f6e1"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "70ef7a45-540a-5d8c-b970-19b9f740c40a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "4d22b75a-c395-5785-9131-68a8a5e203c1"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "bd075253-1e7e-57a2-9df4-2d0099dacba3",
+          "displayLabel": "Abiturpruefung Informatik (GK)"
+        }
+      ],
+      "value": {
+        "kind": "goalEntry",
+        "goalId": "4a6fcdd7-bcec-5b66-9008-7267a5fcf636",
+        "projectionRole": "target",
+        "displayLabel": "Q4 vernetzt anwenden (GK)"
+      }
+    }
+  ],
+  "hypothesisFiles": {
+    "source": "tmp/informatics-q4-scope-hypothesis/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "views": [
+      {
+        "source": "curricula/DE/Gymnasium/composition-views/informatik/de-he-gym-informatics-crossstage.view.json",
+        "hypothesis": "tmp/informatics-q4-scope-hypothesis/de-he-gym-informatics-crossstage.view.json"
+      },
+      {
+        "source": "curricula/DE/Gymnasium/composition-views/informatik/de-by-gym-informatics-crossstage.view.json",
+        "hypothesis": "tmp/informatics-q4-scope-hypothesis/de-by-gym-informatics-crossstage.view.json"
+      },
+      {
+        "source": "curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json",
+        "hypothesis": "tmp/informatics-q4-scope-hypothesis/de-de-gym-informatics-gk.view.json"
+      }
+    ]
+  },
+  "invariants": [
+    "Existing19 competence meanings, original19 coverage and all ordinary goal payloads unchanged",
+    "No mastery, SRS, historical result or source-review rewrite",
+    "Exactly3 GK scope target replacements;3 LK and29 other scope target sets unchanged",
+    "No implicit GK result on LK pass; no mandatory GK target added to LK"
+  ],
+  "requiredBeforeApplication": [
+    "Complete and independently review actualGKtask/solution/scoring artifact, then bind exact bytes",
+    "Root review of complete source/view payloads and independent scope/compiler proofs",
+    "Actual schema, all graph checks, applicability and relevant QA/report checks; no old fingerprint relabelling"
+  ],
+  "metadataArtifact": {
+    "path": "docs/dev/ci-graph-repairs/informatics-q4-gk-goal-metadata-proposal-2026-11-06.json",
+    "sha256": "60decac8393833c63de8c9542b2b782c8a615dd1fbb75639d94f8b86660bd09e"
+  },
+  "hypothesisFileBindings": [
+    {
+      "path": "tmp/informatics-q4-scope-hypothesis/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "sha256": "689ff41fb75d90af902627f8577191cd67dbfee4151b718113c2e025b0be2669"
+    },
+    {
+      "path": "tmp/informatics-q4-scope-hypothesis/de-he-gym-informatics-crossstage.view.json",
+      "sha256": "666abde2cce855d968239b726d6140d65df3b6fe8e6b35839117210b5408c894"
+    },
+    {
+      "path": "tmp/informatics-q4-scope-hypothesis/de-by-gym-informatics-crossstage.view.json",
+      "sha256": "95782eaa20f1ca2b8a4070095fdf7162de17898ecc730c10207a8db40e816407"
+    },
+    {
+      "path": "tmp/informatics-q4-scope-hypothesis/de-de-gym-informatics-gk.view.json",
+      "sha256": "d05c540b070642838140e94dbcbc2385f5b32d19d9567c1d9fc7490b475be1ea"
+    }
+  ],
+  "verifiedCurrentPayloadChanges": {
+    "existingGoalIds": [
+      "29ec47db-7dfe-553d-b850-40e06f164545",
+      "a5e33d4d-f312-51d2-816b-e0b10dd1e701"
+    ],
+    "newGoalIds": [
+      "4a6fcdd7-bcec-5b66-9008-7267a5fcf636"
+    ],
+    "allOrdinaryGoalPayloadsUnchanged": true,
+    "allOtherAssessmentPayloadsUnchanged": true,
+    "original19CoveredGoalIdsUnchanged": true
+  }
+}

@@ -1,0 +1,2218 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "unapplied-combined-twelve-operation-candidate-integration-review-pending",
+  "dataChangesApplied": false,
+  "humanApproval": false,
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "sha256": "5a1487a47e61f59fbc9dfcd71e350443ce3357da171f6507cd85cd6c3a785e7e"
+  },
+  "inputs": [
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-complete-application-candidate-2026-11-06.json",
+      "sha256": "be1b2296ed50799870a4385474e16c9f800df014f7a759e01bfb941fed1d6d63"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-foundation-prerequisite-repair-proposal-2026-11-06.json",
+      "sha256": "220da5643e7f50fd72ea8cc198b53b6a3e1b6f649a538c0201fbc7a130e56d83"
+    }
+  ],
+  "operations": [
+    {
+      "id": "INFO-Q4-SCOPE-LK-TAGS",
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "op": "replace",
+      "path": "/goals/281/tags",
+      "guardGoalId": "a5e33d4d-f312-51d2-816b-e0b10dd1e701",
+      "guardBefore": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "value": [
+        "LK",
+        "Practice",
+        "Assessment"
+      ]
+    },
+    {
+      "id": "INFO-Q4-CONTENT-LK",
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "op": "replace",
+      "path": "/goals/281/examData",
+      "guardGoalId": "a5e33d4d-f312-51d2-816b-e0b10dd1e701",
+      "guardBeforeSha256": "2d3110e57f4a9f41fec546c379d05aa09f6cea89408e2d8f97030e5565efffc1",
+      "valueFromArtifact": {
+        "path": "docs/dev/ci-graph-repairs/informatics-q4-terminal-candidate-2026-11-06.examData.json",
+        "rawSha256": "b4443aa806b10bafbd849efddfba73d1a928731a9e1a3662827f491e0363c910",
+        "canonicalSha256": "336c07e9bbe473cc99aacafda796916599e104e1131c66856f2b7de748653040",
+        "reviewStatus": "draft"
+      },
+      "reviewStatusToApply": "draft; candidate assembly is not release approval",
+      "value": {
+        "reviewStatus": "draft",
+        "coveredGoalIds": [
+          "70b8919e-8707-580f-9e13-0536c9e81476",
+          "ca39fae0-1b12-5982-a453-54d12602dde8",
+          "01cd4048-8ce2-5167-bfa6-f3cb042c84f1",
+          "5f48f0bb-a1a6-588e-a498-fab20245efcd",
+          "82911b58-bd79-5e96-8fcc-2adb029e2f70",
+          "170a6edb-64af-5bb5-a59d-69b6ac5ee7e8",
+          "9ab554ad-c308-50ed-a5d2-499dd06120ff",
+          "17a72609-a619-52e7-a154-67b714826e74",
+          "a93357e9-5e5b-57c5-98d2-35404a6e6e56",
+          "5f6fb041-835b-51b1-aea9-6c42fee54e69",
+          "e9b74953-2c4c-553c-aa2c-eca278f336ed",
+          "e9f348d8-300e-5101-b7f1-3ba00ff969a1",
+          "42467606-f969-5bd7-bfc8-114c4853ecad",
+          "d3adb904-ee7e-503b-b67b-c2a65497cb3b",
+          "3b98d9f8-b63e-53b6-b447-3881a95e4841",
+          "e6b07eba-a0dd-5cbf-aed0-1c1259d21a7f",
+          "325661fb-1df9-54d1-8fca-e651c94483f1",
+          "feb50fce-1dad-5a48-8ff3-c9737d507843",
+          "d6577123-0842-520e-b039-8ac72ab507b6"
+        ],
+        "coveredStrands": [
+          "I1",
+          "I2",
+          "I3",
+          "I4",
+          "I5",
+          "P1",
+          "P2",
+          "P3",
+          "P4",
+          "P5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "# Q4: Ein Modellcampus mit nachvollziehbarer Steuerung\n\nSie entwickeln und prüfen ein Schulprojekt: Ein Modellcampus erfasst Anfragen,\nzeigt Freigaben an und beantwortet organisatorische Anfragen. Bearbeiten Sie\nalle vier Blöcke. Die Materialien sind vollständig unten abgedruckt. Hardware\nund Programme werden im angegebenen vereinfachten Modell beurteilt; zusätzliche\nInternetquellen oder ein echtes Cloudkonto sind nicht nötig.\n\nGeben Sie Tabellen, Programme, Laufspuren und Begründungen ab. Bei Prolog gelten\nKlauseln von oben nach unten, Teilziele von links nach rechts, Tiefensuche und\nBacktracking. `\\+ G` bedeutet: Das vollständig eingesetzte Ziel G scheitert.\nBei unseren Negationstests sind die abgefragten Werte gebunden. `N is Ausdruck`\nwertet einen vollständig bestimmten arithmetischen Ausdruck aus. Variablen\nbeginnen groß, Konstanten klein. Alle Listen in den Aufgaben sind endlich.\n\nDie Bewertung hat 19 Kriterien K01–K19, jeweils genau 0 oder 1 Punkt. Einen Punkt\ngibt es nur, wenn die im Kriterium verlangte Kompetenz vollständig sichtbar\nist. Das vollständige Q4-Ergebnis setzt **19 von 19 Punkten** voraus. Eine\nfachlich gleichwertige Lösung ist zulässig; bloße Ergebnissätze ohne den\nverlangten Rechen-/Entwicklungs-/Begründungsweg genügen nicht.\n\n## A. Zahlen und digitale Schaltungen\n\n### Material A1: Datenformat und Signalregeln\n\nEin Datenwort hat acht Bits. Unsignierte Wörter stehen für 0 bis 255;\nvorzeichenbehaftete Wörter verwenden Zweierkomplement. Es wird jeweils nur ein\nByte gespeichert. Für Freigabeanzeigen gelten drei boolesche Eingänge:\n\n| Zeichen | Bedeutung bei 1 |\n| --- | --- |\n| A | der Betriebsmodus ist gültig |\n| B | an Station links liegt eine Anfrage vor |\n| C | an Station rechts liegt eine Anfrage vor |\n\nDie Anzeige F soll genau dann 1 sein, wenn der Betriebsmodus gültig ist und\nmindestens eine Anfrage vorliegt. Das aktuell verdrahtete, zu prüfende Netz ist:\n\n```text\ng1 := AND(A, B)\nF_falsch := OR(g1, C)\n```\n\nDie Messung der gewünschten Freigabefunktion liefert:\n\n| A | B | C | F |\n| --- | --- | --- | --- |\n| 0 | 0 | 0 | 0 |\n| 0 | 0 | 1 | 0 |\n| 0 | 1 | 0 | 0 |\n| 0 | 1 | 1 | 0 |\n| 1 | 0 | 0 | 0 |\n| 1 | 0 | 1 | 1 |\n| 1 | 1 | 0 | 1 |\n| 1 | 1 | 1 | 1 |\n\nFür ein KV-Diagramm verwenden Sie Zeilen A=0,1 und Spalten BC=00,01,11,10.\nBenachbarte Spalten unterscheiden sich damit in genau einem Bit.\n\n### Material A2: Speicher- und Addierermodell\n\nEin **aktives High-RS-Speicherglied aus NOR-Gattern** speichert Q. Bei R=S=0\nbleibt der alte Wert erhalten; R setzt zurück, S setzt. Der Zustand R=S=1 ist\nverboten: Er ist kein weiterer zulässiger Speicherwert. Ein **positiv\nflankengesteuertes D-Flip-Flop** übernimmt D ausschließlich bei einer steigenden\nTaktflanke; ohne solche Flanke hält es Q. Ausgangszustand ist Q=0.\n\n| Zeitpunkt | D | Taktsituation |\n| --- | --- | --- |\n| t1 | 1 | steigende Flanke |\n| t2 | 0 | keine Flanke |\n| t3 | 0 | fallende Flanke |\n| t4 | 0 | steigende Flanke |\n| t5 | 1 | steigende Flanke |\n\nEin Volladdierer erhält Bits x,y,c und liefert Summenbit s und Übertrag k.\nSeine Spezifikation lautet `x+y+c = s+2*k`. Prüfen Sie alle acht Eingaben.\nEin Zweibitaddierer besteht aus zwei Volladdierern: Der Übertrag der niedereren\nStelle geht als c in die höhere; die niederere Stelle startet mit c=0.\n\n**A1 [K01].** Rechnen Sie `00101101₂ + 00010111₂` binär und hexadezimal;\nzeigen Sie die Überträge. Stellen Sie −13 als achtbittiges Zweierkomplement dar\nund begründen Sie die Konstruktion sowie den Wertebereich −128…127. Addieren\nSie `0x7F + 0x01`. Erklären Sie, warum das Ergebnis unsigniert korrekt ist,\nvorzeichenbehaftet aber einen Überlauf zeigt.\n\n**A2 [K02].** Stellen Sie F aus A1 als vollständige DNF dar. Übertragen Sie alle\nacht Werte in das angegebene KV-Diagramm, markieren Sie gültige Zweiergruppen\nund vereinfachen Sie. Geben Sie eine korrigierte Gatternetzliste und eine\nkonkrete Eingabe an, die den Fehler von `F_falsch` nachweist.\n\n**A3 [K03].** Geben Sie die vollständige RS-Übergangstabelle für beide möglichen\nalten Q-Werte an und kennzeichnen Sie den verbotenen Eingang. Ermitteln Sie die\nD-Flip-Flop-Folge t1…t5. Begründen Sie, wie das RS-Glied eine einmal gedrückte\nAnfragetaste bis zur Quittierung merken und das D-Flip-Flop einen stabilen\nFreigabewert taktsynchron übernehmen kann. Benennen Sie den Unterschied\nzwischen kombinatorischer Funktion und gespeichertem Zustand.\n\n**A4 [K07].** Entwickeln Sie für k eine vollständige DNF und ein KV-Diagramm\n(Zeilen x; Spalten yc=00,01,11,10). Leiten Sie eine vereinfachte Funktion für k\nund eine Funktion für s ab. Implementieren Sie beide Funktionen, etwa mit\nbooleschen/Bitoperatoren in Python oder JavaScript, und testen Sie alle acht\nEingaben gegen die Spezifikation. Verbinden Sie zwei Addierer und zeigen Sie\nden vollständigen Lauf für `01₂ + 11₂` einschließlich Endübertrag.\n\n## B. Eine ausführbare deklarative Wissensbasis\n\n### Material B1: Fakten und zu ergänzende Beziehungen\n\nDie Familie für das Abholregister hat die folgenden **vollständigen** bekannten\nElternbeziehungen; daraus sollen keine weiteren Elternschaften geraten werden:\n\n| Elternteil | Kind |\n| --- | --- |\n| ada | ben |\n| ada | clara |\n| ben | dora |\n| clara | emil |\n\nAußerdem liegen folgende organisatorischen Daten vor:\n\n```prolog\nrole(ada,staff).\nrole(ben,student).\nrole(clara,staff).\nbadge(ada,valid).\nbadge(ben,valid).\nbadge(clara,expired).\nzone(lab,staff).\nzone(library,student).\n```\n\nEine Person darf eine Zone betreten, wenn ihre Rolle für diese Zone vorgesehen\nund ihr Ausweis gültig ist. Eine Erneuerung ist bei `expired` nötig.\nDiese Projektregel behauptet keine allgemeine reale Zutrittsberechtigung.\n\n### Material B2: Wege und Auswahl\n\nDie Wege im Modell sind gerichtet; alle vorhandenen Kanten sind:\n\n```prolog\nedge(start,a).\nedge(start,b).\nedge(a,finish).\nedge(b,a).\nedge(a,start).\n```\n\nEin Weg soll eine Liste seiner Knoten in Laufrichtung liefern. Er darf keinen\nKnoten wiederholen. Die Kante a→start bildet also einen zu behandelnden Zyklus.\n\nFür eine separate Torauswahl gilt diese feste Reihenfolge:\n\n```prolog\ncandidate_gate(west).\ncandidate_gate(east).\nopen(east).\n\ngate_bug(X) :- candidate_gate(X), !, open(X).\n```\n\n**B1 [K04].** Schreiben Sie die vier `parent/2`-Fakten aus der Tabelle. Formulieren\nSie die Regel `grandparent/2` und die zwei Anfragen „alle Kinder von ada“ und\n„alle Großeltern-Kind-Paare“. Geben Sie ihre vollständigen Antwortmengen an.\n\n**B2 [K05].** Modellieren Sie Geschwister als zwei verschiedene Personen mit\nmindestens einem gemeinsamen Elternteil. Schreiben Sie eine Prolog-Regel und\nermitteln Sie alle Antworten für `sibling(ben,X)` und `sibling(X,ben)` aus B1.\nBegründen Sie, warum die Anfrage nicht ben als sein eigenes Geschwister liefert.\n\n**B3 [K06].** Implementieren Sie `member_id/2` und `length_list/2` für endliche\nListen. Prüfen Sie Mitgliedschaft mit Erfolg und Misserfolg sowie die Länge\nfür `[]` und `[start,a,finish]`. Zeigen Sie die verwendeten Basis- und\nRekursionsfälle; nicht nur Aufrufe eingebauter Listenprädikate abgeben.\n\n**B4 [K08].** Strukturieren Sie die organisatorische Wissensbasis mit\n`can_enter/2` und `needs_renewal/1`. Zeigen Sie vollständige Antworten für\n`can_enter(P,lab)`, `can_enter(P,library)` und `needs_renewal(P)`. Ändern Sie\nanschließend genau den Fakt `badge(clara,expired)` in `badge(clara,valid)`.\nLeiten Sie die geänderten Ergebnisse ohne Änderung der Regeln ab und erklären\nSie daran die Trennung gespeicherter Tatsachen von wiederverwendbaren Regeln.\n\n**B5 [K13].** Analysieren Sie `grandparent(ada,Z)` nach den angegebenen\nProlog-Ausführungsregeln. Schreiben Sie die Unifikation mit dem Regelkopf,\ndie sukzessiven Belegungen von Zwischenvariable und Z, mindestens einen\ngescheiterten Faktenabgleich, das Zurücknehmen von Belegungen und die Fortsetzung\nbeim Backtracking auf. Geben Sie die Ausgabereihenfolge bis zur vollständigen\nErschöpfung an.\n\n**B6 [K14].** Formulieren Sie rekursiv `append_list/3` und `reverse_list/2` ohne\ndie eingebauten Append-/Reverse-Prädikate. Zeigen Sie das Ergebnis von\n`append_list([start,a],[finish],P)`, den Rückwärtslauf für `[finish,a,start]`\nsowie den leeren Basisfall.\n\n**B7 [K15].** Entwickeln Sie ein deklaratives Wegprädikat `path/3` für B2.\nNutzen Sie einen Besuchslistenparameter und Ihre Listenoperationen, um den\nZyklus zu beherrschen. Zeigen Sie beide vollständigen Antworten für\n`path(start,finish,P)` und begründen Sie, warum das Programm bei dieser\nendlichen Anfrage terminiert und kein zyklischer Weg ausgegeben wird.\n\n**B8 [K16].** Verfolgen Sie `gate_bug(X)` bis zum Scheitern. Erklären Sie exakt,\nwelche Alternative der Cut entfernt. Schreiben Sie `gate/1`, das alle offenen\nKandidaten aufzählt, und `first_open/1`, das absichtlich nur den ersten offenen\nKandidaten liefert. Platzieren Sie einen Cut nur dort, wo diese zweite\nAuswahlpolitik ihn rechtfertigt. Vergleichen Sie beide Programme zusätzlich\nfür eine Wissensbasis, die auch `open(west)` enthält.\n\n## C. Betrieb, Sicherheit und geteilte Zustände\n\n### Material C1: Systemgrenzen und Vorfälle\n\n```text\nBrowser -- HTTPS/TCP443 --> Gateway -- privates Netz --> Dienst\n                                                    |\n                                                    v\n                                             Datenbank/TCP5432\n```\n\nDer Browser prüft Zertifikat und Hostnamen des Gateways. Der Dienst prüft die\nAnmeldung und anschließend die benötigte Rolle. Eine Firewall lässt von außen\nnur TCP443 zum Gateway und von dort im privaten Netz nur die nötigen Verbindungen\nzu. Die Datenbank ist nicht öffentlich erreichbar.\n\n| Vorfall | Beobachtung |\n| --- | --- |\n| V1 | Eine Person liest Pakete im fremden WLAN mit. |\n| V2 | Ein gültiges Schülerkonto fordert eine ausschließlich für Mitarbeitende vorgesehene Änderung an. |\n| V3 | Ein externer Rechner versucht, direkt TCP5432 der Datenbank zu erreichen. |\n\n### Material C2: Zwei Threads in einem Prozess\n\nBeide Threads teilen `n`, anfangs 0. r1 und r2 sind private Register. Jede der\nfolgenden Einzeloperationen ist atomar; ihre Kombination ist es nicht. Es gilt\nsequentielle Konsistenz und keine weitere Optimierung des Modells.\n\n```text\nThread T1:                 Thread T2:\n1 r1 := n                  1 r2 := n\n2 r1 := r1 + 1             2 r2 := r2 + 1\n3 n := r1                  3 n := r2\n```\n\n### Material C3: Drei Betriebsangebote\n\nDie Werte sind feste Mess-/Planungsannahmen dieses Projekts, keine Anbieterwerbung.\n\n| Angebot | Gegebene Eigenschaften |\n| --- | --- |\n| L | Schule betreibt eigene Rechner im eigenen Rechenraum; nur sie nutzt die Cloudumgebung. |\n| P | Öffentlich angebotene Plattform führt das eigene Dienstprogramm aus; Anbieter verwaltet Betriebssystem und Laufzeit. |\n| S | Fertiger Onlinedienst mit festem Funktionsumfang; kein Upload eigener Dienstprogramme. |\n\nAuf einem lokalen 8-GiB-Rechner benötigt der Host 1 GiB. Eine Dienst-VM benötigt\n2 GiB einschließlich eigenem Gastbetriebssystem. Eine Dienst-Containerinstanz\nbenötigt 0,5 GiB; alle Container teilen den Kernel des Hosts. Für drei Instanzen\nzählen wir hier nur diese RAM-Anteile, keine weiteren Reserven.\n\nIn Angebot P schafft eine Instanz gemessen 30 Anfragen/s. Die Spitzenlast beträgt\n90 Anfragen/s. Ein idealer Lastverteiler verteilt gleichmäßig; gemeinsame\nAnwendungsdaten liegen außerhalb der Instanzen. Die Datenbank schafft\n120 Anfragen/s. Instanzen fallen gegebenenfalls vollständig aus; die anderen\nbehalten im Modell ihre Kapazität.\n\n**C1 [K09].** Ordnen Sie V1–V3 TLS, Authentisierung/Autorisierung und Firewall\nzu. Erklären Sie jeweils Wirkung und Grenze: insbesondere schützt ein gültiger\nLogin nicht automatisch vor fehlenden Rollenrechten und verschlüsselt TLS\nkeine unverschlüsselt abgelegte Datenbank. Beschreiben Sie die tatsächlich\nverhinderte beziehungsweise erlaubte Verbindung im Diagramm.\n\n**C2 [K10].** Geben Sie ein vollständiges zulässiges Interleaving mit Endwert\nn=1 und ein weiteres mit n=2 an. Erläutern Sie Threads, gemeinsamen Speicher\nund die Race Condition. Reparieren Sie den Ablauf durch eine begründete\ngegenseitig ausschließende kritische Sektion. Erklären Sie, warum das Sperren\nnur des Schreibschritts nicht genügt.\n\n**C3 [K11].** Vergleichen Sie VM und Container anhand von Gastbetriebssystem,\nKernelgrenze, Ressourcen und Isolation. Berechnen Sie den RAM-Bedarf für drei\nInstanzen einschließlich Host. Begründen Sie, weshalb ein Containerabbild\nnicht schon ein eigenes Gastbetriebssystem beziehungsweise einen unabhängigen\nKernel bereitstellt und weshalb die dichtere Belegung keine pauschale\nSicherheitsgarantie ist.\n\n**C4 [K12].** Ordnen Sie L und P als Private beziehungsweise Public Cloud und\nP/S als PaaS/SaaS ein; beschreiben Sie zusätzlich IaaS und ein sinnvolles\nHybridmodell für lokale Modellsteuerung und entfernte Auswertung. Erklären\nSie horizontale gegenüber vertikaler Skalierung. Bestimmen Sie die minimale\nInstanzzahl für die Spitzenlast ohne Ausfall und mit Ausfall genau einer\nInstanz. Prüfen Sie die Datenbankgrenze; erläutern Sie, weshalb die Rechnung\nkeine unbegrenzte reale Skalierbarkeit beweist.\n\n## D. Funktionale Modellierung und Reduktion\n\n### Material D1: Dieselbe Wartezeitaufgabe in drei Formen\n\nFür jede Wartezeit x soll x+1 berechnet und über eine endliche Liste summiert\nwerden. Alle Werte sind nichtnegative ganze Zahlen. Die Eingabe ist `[1,2]`.\n\nEin imperativer JavaScript-Ausschnitt lautet:\n\n```javascript\nlet total = 0;\nfor (const x of [1, 2]) {\n  total = total + (x + 1);\n}\n```\n\nEin logisches Prolog-Programm für diese **eingesetzte Eingaberichtung** lautet:\n\n```prolog\ntotal_rel([],0).\ntotal_rel([X|Xs],T) :- total_rel(Xs,R), T is (X+1)+R.\n```\n\nFür eine funktionale Termsprache sind `[]` und `x::xs` Listenkonstruktoren.\nEine Definition besteht aus Gleichungen mit Mustern; Reduktion ersetzt einen\nFunktionsaufruf durch seine passende rechte Seite. `inc(x)=x+1` ist gegeben.\nEs gibt keine Zuweisungen und keine versteckten veränderlichen Zustände.\n\n**D1 [K17].** Grenzen Sie die funktionale Lösung von beiden abgedruckten\nProgrammen ab: Zustandsänderung versus Funktionswert sowie Relation,\nUnifikation und Suchsteuerung. Ordnen Sie funktionale und logische Programme\nals deklarative Ansätze ein. Erklären Sie, weshalb das konkrete Prolog-`is`\nhier keine beliebige Umkehranfrage mit unbekannten Zahlen erlaubt.\n\n**D2 [K18].** Deklarieren Sie in der Termsprache `raised`, das jedes Element\nmit inc erhöht, `sum`, das eine Liste summiert, und `total`, das beides\nzusammensetzt. Geben Sie für raised und sum leeren Basisfall und rekursiven\nFall sowie die Abhängigkeiten der drei Funktionen an. Ihre Definition muss\nfür jede endliche Liste des angegebenen Bereichs gelten.\n\n**D3 [K19].** Führen Sie `total([1,2])` durch wiederholte Reduktion Ihrer\nDefinitionen vollständig auf einen Zahlenwert zurück. Zeigen Sie beide\nListenbasisfälle und die arithmetischen Schritte. Prüfen Sie zusätzlich die\nleere Eingabe und erläutern Sie, weshalb die rekursiven Definitionen auf\nendlichen Listen enden.\n",
+        "solutionContent": "# Musterlösung und binäre Bewertungsmaßstäbe\n\nDiese Lösung gehört ausschließlich zum vorliegenden Q4-Kandidaten. Zulässige\ngleichwertige Programme, Schaltungen und Begründungen sind anzuerkennen. Jeder\nder 19 Kompetenzpunkte ist entweder 0 oder 1; alle im jeweiligen Kriterium\ngenannten Kernleistungen müssen beobachtbar sein. Fehlende Kompetenz darf\nnicht durch Zusatzpunkte in einem anderen Bereich ausgeglichen werden.\n\n## A. Zahlen und Schaltungen\n\n### A1 / K01\n\n`00101101₂ = 0x2D = 45`, `00010111₂ = 0x17 = 23`.\nDie Summe ist `01000100₂ = 0x44 = 68`.\n\n| Bitposition ab rechts | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| erster Summand | 1 | 0 | 1 | 1 | 0 | 1 | 0 | 0 |\n| zweiter Summand | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 |\n| Eingangsübertrag | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 0 |\n| Summenbit | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 |\n| Ausgangsübertrag | 1 | 1 | 1 | 1 | 1 | 1 | 0 | 0 |\n\nFür −13: `13=00001101₂`, Invertieren ergibt `11110010₂`, plus 1 ergibt\n`11110011₂=0xF3`. Das ist 243 unsigniert beziehungsweise `243−256=−13`.\nBeim Zweierkomplement hat die höchste Stelle Gewicht −128, die übrigen zusammen\n0…127; daraus folgt −128…127. `0x7F+0x01=0x80=10000000₂`: unsigniert ist\n128 darstellbar; vorzeichenbehaftet wird das Muster als −128 gelesen. Die\nmathematische Summe zweier positiver Operanden ist +128 und liegt außerhalb\ndes signed-Bereichs. Signed-Überlauf ist hier nicht mit einem ninth-bit-Carry\ngleichzusetzen.\n\n**K01 = 1** nur bei richtiger Binär-/Hexrechnung mit Überträgen, begründeter\nZweierkomplementdarstellung und korrekter Unterscheidung beider Overflowdeutungen.\n\n### A2 / K02\n\nVollständige DNF:\n`F = A∧¬B∧C ∨ A∧B∧¬C ∨ A∧B∧C`.\n\n| A \\ BC | 00 | 01 | 11 | 10 |\n| --- | --- | --- | --- | --- |\n| 0 | 0 | 0 | 0 | 0 |\n| 1 | 0 | 1 | 1 | 1 |\n\nDie unteren Felder 01/11 bilden `A∧C`, die unteren Felder 11/10 bilden `A∧B`.\nÜberlappende Gruppen sind erlaubt. Also `F=A∧C∨A∧B=A∧(B∨C)`.\nKorrekte Netzliste: `g1=OR(B,C); F=AND(A,g1)`.\nBeim Gegenbeispiel A=0,B=0,C=1 gibt das alte Netz 1, die Spezifikation 0.\nDas alte Netz lässt die rechte Anfrage am Gültigkeitseingang vorbei.\n\n**K02 = 1** nur bei vollständiger DNF, korrekter achtzelliger Gray-KV-Belegung\nund Gruppenbegründung sowie funktionierender Gatternetzkorrektur mit Gegenbeispiel.\n\n### A3 / K03\n\n| R | S | Q alt=0 → Q neu | Q alt=1 → Q neu |\n| --- | --- | --- | --- |\n| 0 | 0 | 0 | 1 |\n| 0 | 1 | 1 | 1 |\n| 1 | 0 | 0 | 0 |\n| 1 | 1 | verboten | verboten |\n\nDie D-Folge lautet t1…t5: **1,1,1,0,1**. Die fallende Flanke t3 übernimmt\nkein D. Der RS-Speicher kann durch einen kurzen S-Impuls eine Anfrage merken;\nbis zu einem getrennten R-Quittierimpuls bleibt sie gespeichert. Die Eingänge\ndürfen dabei nicht beide aktiv werden. Das D-Flip-Flop übernimmt einen stabil\nanliegenden Freigabewert an definierten Taktzeitpunkten. Ein Schaltnetz hat\nkein Gedächtnis; das Folgeglied hängt zusätzlich vom bisherigen Zustand ab.\n\n**K03 = 1** nur bei vollständiger RS-Tabelle mit verbotenem Fall, richtiger\nD-Zeitfolge und beiden passenden Speicheranwendungen samt Zustandsunterscheidung.\n\n### A4 / K07\n\n| x | y | c | s | k |\n| --- | --- | --- | --- | --- |\n| 0 | 0 | 0 | 0 | 0 |\n| 0 | 0 | 1 | 1 | 0 |\n| 0 | 1 | 0 | 1 | 0 |\n| 0 | 1 | 1 | 0 | 1 |\n| 1 | 0 | 0 | 1 | 0 |\n| 1 | 0 | 1 | 0 | 1 |\n| 1 | 1 | 0 | 0 | 1 |\n| 1 | 1 | 1 | 1 | 1 |\n\n`k=¬x∧y∧c ∨ x∧¬y∧c ∨ x∧y∧¬c ∨ x∧y∧c`.\n\n| x \\ yc | 00 | 01 | 11 | 10 |\n| --- | --- | --- | --- | --- |\n| 0 | 0 | 0 | 1 | 0 |\n| 1 | 0 | 1 | 1 | 1 |\n\nDie senkrechte Gruppe in 11 ergibt `y∧c`; die unteren Gruppen 01/11 und\n11/10 ergeben `x∧c` und `x∧y`. Damit `k=xy∨xc∨yc`, `s=x XOR y XOR c`.\n\n```python\ndef full_add(x, y, c):\n    return x ^ y ^ c, (x & y) | (x & c) | (y & c)\n\ndef add_two_bits(a, b):\n    s0, c1 = full_add(a & 1, b & 1, 0)\n    s1, c2 = full_add((a >> 1) & 1, (b >> 1) & 1, c1)\n    return (c2 << 2) | (s1 << 1) | s0\n```\n\nFür `01+11`: niedere Stelle `(1,1,0)→(s0=0,c1=1)`; höhere Stelle\n`(0,1,1)→(s1=0,c2=1)`. Ergebnis `100₂=4`. Alle acht Zeilen erfüllen\n`x+y+c=s+2k`; alle 16 Zweibitpaare ergeben ihre arithmetische Summe.\n\n**K07 = 1** nur bei vollständiger Carry-DNF/KV-Vereinfachung, korrekter\nSummenfunktion, eigener funktionsfähiger Addiererimplementierung mit allen acht\nTests sowie richtig verbundenem Zweibitlauf. Eine abgelesene Summe allein genügt nicht.\n\n## B. Prolog\n\n### B1 / K04 und B2 / K05\n\n```prolog\nparent(ada,ben).\nparent(ada,clara).\nparent(ben,dora).\nparent(clara,emil).\n\ngrandparent(X,Z) :- parent(X,Y), parent(Y,Z).\nsibling(X,Y) :- parent(P,X), parent(P,Y), X \\= Y.\n```\n\n`parent(ada,K)` liefert der Reihe nach K=ben, clara. `grandparent(G,K)` liefert\n(ada,dora), (ada,emil). Die Geschwisteranfragen liefern jeweils X=clara.\nDie Ungleichheitsprüfung steht nach dem Binden beider Personen und verhindert\n(ben,ben). Ohne gemeinsame Elternfakten werden keine Geschwisterbeziehungen geraten.\n\n**K04 = 1** nur bei allen vier richtigen Fakten, korrekter Großelternregel,\nbeiden syntaktisch richtigen Anfragen und vollständigen Antworten.\n\n**K05 = 1** nur bei einer fachlich passenden Geschwistermodellierung einschließlich\ngemeinsamem Elternteil und Verschiedenheit, richtigen Antworten beider\nAnfragerichtungen und begründetem Ausschluss der Selbstbeziehung.\n\n### B3 / K06\n\n```prolog\nmember_id(X,[X|_]).\nmember_id(X,[_|Xs]) :- member_id(X,Xs).\n\nlength_list([],0).\nlength_list([_|Xs],N) :- length_list(Xs,M), N is M+1.\n```\n\n`member_id(a,[start,a,finish])` gelingt, `member_id(b,[start,a,finish])`\nscheitert nach vollständiger Suche. `length_list([],N)` liefert 0;\nfür `[start,a,finish]` entstehen rückwärts 0,1,2,3, also N=3.\nDer Rekursionsfall arbeitet jeweils auf einer kürzeren Liste.\n\n**K06 = 1** nur bei beiden korrekt implementierten Operationen, Basis- und\nRekursionsfällen sowie den vier geforderten Erfolgs-/Misserfolgs-/Längentests.\n\n### B4 / K08\n\n```prolog\ncan_enter(P,Z) :- role(P,R), zone(Z,R), badge(P,valid).\nneeds_renewal(P) :- badge(P,expired).\n```\n\nMit den unveränderten Materialfakten liefert lab nur ada, library nur ben und\nneeds_renewal nur clara. Nach dem Ersetzen des einen badge-Fakts liefert lab\nada und clara, library weiterhin ben; die Erneuerungsanfrage hat keine Lösung.\nKeine Regel wird für einzelne Personen oder für eine bestimmte Anfrage\numgeschrieben. Rollen-/Ausweis-/Zonenfakten können unabhängig gepflegt und in\nverschiedenen Anfragen kombiniert werden.\n\n**K08 = 1** nur bei den zwei wiederverwendbaren Regeln, allen drei vollständigen\nAntwortmengen vor und nach der Faktenänderung und nachvollziehbarer Trennung\nvon Wissensbasis und Problemanfragen. Hartcodierte Antworttabellen genügen nicht.\n\n### B5 / K13\n\nDie Anfrage vereinigt sich mit `grandparent(X,Z)` durch X=ada; Y ist frisch.\nDas erste Teilziel `parent(ada,Y)` findet zuerst Y=ben. Für `parent(ben,Z)`\nscheitert beispielsweise der Abgleich mit `parent(ada,ben)` wegen ben≠ada;\nder dritte Elternfakt liefert Z=dora. Beim Anfordern weiterer Antworten werden\nZ und schließlich Y zurückgenommen. `parent(ada,Y)` liefert als nächste\nAlternative Y=clara; `parent(clara,Z)` findet Z=emil. Weitere passende\nEltern-/Kindkombinationen existieren nicht, die Suche endet mit false.\n\nAusgabereihenfolge: **Z=dora; Z=emil; false**. Die Variablen verschiedener\nRegelanwendungen werden frisch behandelt; Backtracking ist keine Mutation der Fakten.\n\n**K13 = 1** nur bei Regelkopfunifikation, richtiger Teilziel-/Faktenreihenfolge,\nkonkretem Fehlvergleich, Belegungsrücknahme und vollständiger Antwort-/Suchspur.\n\n### B6 / K14\n\n```prolog\nappend_list([],Ys,Ys).\nappend_list([X|Xs],Ys,[X|Zs]) :- append_list(Xs,Ys,Zs).\n\nreverse_list([],[]).\nreverse_list([X|Xs],R) :- reverse_list(Xs,T), append_list(T,[X],R).\n```\n\nAppend liefert `[start,a,finish]`. Beim Reverse wird erst `[]` umgedreht;\ndann entstehen `[start]`, `[start,a]`, `[start,a,finish]` beim Rückkehrweg der\nRekursion für die Eingabe `[finish,a,start]`. Der leere Reversefall liefert `[]`.\nDie gezeigte Reversevariante ist nicht die einzig mögliche; eine korrekte\nakkumulatorbasierte Variante ist ebenfalls zulässig.\n\n**K14 = 1** nur bei beiden eigenen rekursiven Definitionen mit richtigen\nBasisfällen, den richtigen Ergebnissen und einer erklärten Rekursionsspur.\n\n### B7 / K15\n\n```prolog\npath(S,T,P) :- walk(S,T,[S],Rev), reverse_list(Rev,P).\nwalk(T,T,V,V).\nwalk(V,T,Seen,P) :- edge(V,N), \\+ member_id(N,Seen),\n                    walk(N,T,[N|Seen],P).\n```\n\nZuerst entsteht die rückwärts aufgebaute Besuchsliste `[finish,a,start]`, also\nP=`[start,a,finish]`. Nach Backtracking folgt P=`[start,b,a,finish]`. In beiden\nFällen darf a→start nicht genommen werden, weil start bereits in Seen steht.\nVor jeder rekursiven Erweiterung wird ein noch nicht besuchter Knoten gewählt.\nBei endlich vielen gegebenen Knoten ist die Tiefe damit begrenzt; es werden\nendlich viele einfache Pfade untersucht. Die Negation wird auf gebundenes N\nund eine gebundene Besuchsliste angewendet. Die Regel erlaubt auch einen\nnullkantigen Pfad `[S]` von S zu sich selbst; diese Konvention widerspricht den\nbeiden geforderten Start-Finish-Antworten nicht.\n\n**K15 = 1** nur bei ausführbar formuliertem Weg-/Besuchslistenmodell, beiden\nrichtigen Pfaden, wirksamem Zyklusausschluss und begründetem Terminierungsargument.\n\n### B8 / K16\n\n`gate_bug(X)` bindet X zuerst an west. Der Cut entfernt die Alternative\n`candidate_gate(east)` innerhalb dieses Aufrufs. `open(west)` scheitert,\naber die entfernte Alternative wird nicht mehr versucht: Die Anfrage scheitert.\n\n```prolog\ngate(X) :- candidate_gate(X), open(X).\nfirst_open(X) :- candidate_gate(X), open(X), !.\n```\n\nIm Original liefert gate nur east, first_open ebenfalls east. Der zweite Cut\nsteht erst nach einem vollständig gefundenen offenen Tor. Wird zusätzlich\n`open(west)` eingefügt, liefert gate der Kandidatenreihenfolge nach west und\neast, first_open nur west. Der Cut drückt hier die ausdrücklich gewählte\nErstlösungsstrategie aus; er ist keine allgemein bedeutungsneutrale Abkürzung.\n\n**K16 = 1** nur bei genauer Fehler-/Alternativenspur, beiden richtigen\nKorrekturen und korrektem Ergebnisvergleich für beide Wissensbasen samt\nErklärung der kontrollierten Nichtdeterminismusbeschränkung.\n\n## C. Betrieb\n\n### C1 / K09\n\nV1 betrifft die durch korrekt geprüftes TLS geschützte Vertraulichkeit und\nIntegrität zwischen Browser und Gateway einschließlich Serverauthentisierung.\nDas schützt weder kompromittierte Endgeräte noch automatisch den Speicher\noder eine weitere unverschlüsselte interne Verbindung. V2 erfordert trotz\nerfolgreicher Authentisierung eine verweigerte **Autorisierung**: Schülerrolle\nhat das Änderungsrecht nicht. TLS oder eine Portfreigabe erteilen diese Rolle\nnicht. V3 wird durch die Firewall-/Netzregel abgewehrt: Von außen wird nur\nGateway443, nicht Datenbank5432 erreicht. Die ausdrücklich nötige interne\nVerbindung Dienst→Datenbank bleibt möglich. Ein Filter allein ersetzt keine\nAnwendungsrechte und keinen Schutz rechtmäßig erreichbarer Dienste.\n\n**K09 = 1** nur bei richtiger Zuordnung aller drei Vorfälle, konkretem Bezug\nauf erlaubte/verhinderte Verbindungen und den genannten Grenzen der drei Mechanismen.\n\n### C2 / K10\n\nEin verlorenes Update:\n\n| Schritt | Operation | r1 | r2 | n |\n| --- | --- | --- | --- | --- |\n| 1 | T1 liest | 0 | – | 0 |\n| 2 | T2 liest | 0 | 0 | 0 |\n| 3 | T1 erhöht privat | 1 | 0 | 0 |\n| 4 | T2 erhöht privat | 1 | 1 | 0 |\n| 5 | T1 schreibt | 1 | 1 | 1 |\n| 6 | T2 schreibt | 1 | 1 | 1 |\n\nDie Reihenfolge T1.1,T1.2,T1.3,T2.1,T2.2,T2.3 liefert dagegen n=2.\nThreads haben eigene Ausführung/Registersichten und teilen hier denselben\nProzessspeicher n. Das Zusammenspiel mehrerer Zugriffe verursacht die Race\nCondition. Ein gemeinsamer Mutex muss jeweils **Lesen, Erhöhen und Schreiben**\nals eine kritische Sektion umschließen. Dann beginnt der zweite Abschnitt\nmit n=1. Werden nur die Schreibschritte geschützt, bleiben beide vorangehenden\nReads von 0 möglich; der verlorene Updateablauf bleibt zulässig.\n\n**K10 = 1** nur bei beiden vollständigen zulässigen Interleavings, korrekter\nThread-/Speicher-/Race-Erklärung sowie ausreichend großem kritischem Abschnitt\nund begründeter Ablehnung der Nur-Schreiben-Sperre.\n\n### C3 / K11\n\nDrei VMs benötigen `1+3·2=7 GiB`; drei Container benötigen\n`1+3·0,5=2,5 GiB` im ausdrücklich begrenzten RAM-Modell.\nDie VM hat ein eigenes Gastbetriebssystem mit eigenem Kernel über einer\nVirtualisierungsschicht. Container isolieren Prozesse/Ressourcen, teilen\naber den Hostkernel; ein Dateisystemabbild mit Bibliotheken ist kein eigener\nKernel. Das ermöglicht hier höhere Dichte. Die tatsächliche Sicherheit hängt\nunter anderem von Konfiguration, Rechten, Aktualisierung und Kernelangriffen\nab; weder die RAM-Rechnung noch die Bezeichnung garantiert sichere Isolation.\n\n**K11 = 1** nur bei beiden richtigen Rechnungen und einer zutreffenden\nEinordnung von OS-/Kernelgrenze, Ressourcendichte und Grenzen der Isolation.\n\n### C4 / K12\n\nL ist hier Private Cloud, P Public Cloud. Die Anbieterübernahme von OS und\nLaufzeit macht P zu PaaS; S liefert die fertige Anwendung als SaaS. Bei IaaS\nstellt der Anbieter Infrastruktur wie virtuelle Rechner bereit, während der\nKunde OS und Anwendungen verwaltet. Ein Hybridmodell kann lokale,\nverbindungsunabhängige Modellsteuerung mit entfernter Auswertung verbinden;\ndafür sind eine definierte Schnittstelle und ein Umgang mit Ausfällen nötig.\nDie Bezeichnung Public sagt nicht, dass fremde Kunden die eigenen Daten sehen dürfen.\n\nHorizontal: mehr Instanzen; vertikal: mehr Ressourcen für eine Instanz.\nOhne Ausfall sind `ceil(90/30)=3` Instanzen nötig. Um den vollständigen Ausfall\neiner Instanz auszuhalten, sind vier nötig: `(4−1)·30=90`. Die Datenbankgrenze\n120 ist bei 90 nicht überschritten; sie verhindert aber, aus weiteren\nDienstinstanzen unbegrenzten Gesamtdurchsatz abzuleiten. Die Rechnung setzt\ngemessene konstante Instanzleistung, ideale Verteilung, externen gemeinsamen\nZustand und das vorgegebene Ausfallmodell voraus; reale Engpässe/Overhead sind\ndamit nicht geprüft.\n\n**K12 = 1** nur bei den richtigen Betriebs-/Servicemodellen einschließlich\nIaaS/Hybrid, verständlichem Skalierungsvergleich, beiden Instanzzahlen und\neiner expliziten Prüfung der Datenbank-/Modellgrenzen.\n\n## D. Funktionales Modell\n\n### D1 / K17\n\nDer imperative Code führt einen veränderlichen Akkumulator durch eine\nOperationsfolge. Die funktionale Lösung beschreibt Werte durch reine\nFunktionsgleichungen; derselbe Aufruf mit denselben Eingaben hat im Modell\ndenselben Wert und keine versteckte Zustandswirkung. Das Prolog-Programm\nbeschreibt Beziehungen zwischen Eingabe und Ergebnis und wird über\nUnifikation/Teilziele und seine Suchsteuerung ausgeführt. Funktionale und\nlogische Programmierung sind deklarative Ansätze, aber Funktionsanwendung\nist nicht gleich Prolog-Zielsuche. Das arithmetische `is` verlangt hier eine\neingesetzte rechte Seite: etwa aus `T is (X+1)+R` lässt sich ein unbekanntes X\nnicht einfach rückwärts lösen. Das ist eine Ausführungsgrenze des konkreten\nPrädikats, keine Behauptung, jedes Prolog-Programm sei reversibel.\n\n**K17 = 1** nur bei zutreffender Abgrenzung aller drei Formen, deklarativer\nEinordnung und richtiger Grenze des gegebenen arithmetischen Prolog-Prädikats.\n\n### D2 / K18\n\n```text\ninc(x) = x + 1\nraised([]) = []\nraised(x::xs) = inc(x) :: raised(xs)\nsum([]) = 0\nsum(x::xs) = x + sum(xs)\ntotal(xs) = sum(raised(xs))\n```\n\ntotal hängt von raised und sum ab; raised von inc und sich selbst, sum von\nsich selbst. Die Rekursion arbeitet auf dem jeweiligen Listenrest.\n\n**K18 = 1** nur bei vollständigen eigenen Funktionsdeklarationen mit beiden\nBasis-/Rekursionsfällen, korrekter Zusammensetzung und erklärten Abhängigkeiten.\n\n### D3 / K19\n\nEine mögliche Reduktionsfolge ist:\n\n```text\ntotal(1::2::[])\n= sum(raised(1::2::[]))\n= sum(inc(1)::raised(2::[]))\n= sum(2::raised(2::[]))\n= sum(2::inc(2)::raised([]))\n= sum(2::3::raised([]))\n= sum(2::3::[])\n= 2 + sum(3::[])\n= 2 + (3 + sum([]))\n= 2 + (3 + 0)\n= 2 + 3\n= 5\n```\n\nDie leere Eingabe reduziert `total([])=sum(raised([]))=sum([])=0`.\nBei raised/sum wird jeweils eine endliche Liste echt verkürzt, bis der\npassende Basisfall greift. Andere korrekte Auswertungsreihenfolgen sind zulässig,\nwenn die Gleichungsanwendungen erkennbar und die Werte identisch sind.\n\n**K19 = 1** nur bei vollständiger nachvollziehbarer Termreduktion einschließlich\nbeider leeren Basisfälle, richtiger Arithmetik und Endlichkeitsbegründung.\n",
+        "scoring": {
+          "maxPoints": 19,
+          "passingPoints": 19,
+          "steps": [
+            {
+              "id": "K01",
+              "points": 1,
+              "description": "Binärsysteme anwenden: nur bei richtiger Binär-/Hexrechnung mit Überträgen, begründeter Zweierkomplementdarstellung und korrekter Unterscheidung beider Overflowdeutungen."
+            },
+            {
+              "id": "K02",
+              "points": 1,
+              "description": "Schaltnetze entwerfen: nur bei vollständiger DNF, korrekter achtzelliger Gray-KV-Belegung und Gruppenbegründung sowie funktionierender Gatternetzkorrektur mit Gegenbeispiel."
+            },
+            {
+              "id": "K03",
+              "points": 1,
+              "description": "Folgeglieder verstehen: nur bei vollständiger RS-Tabelle mit verbotenem Fall, richtiger D-Zeitfolge und beiden passenden Speicheranwendungen samt Zustandsunterscheidung."
+            },
+            {
+              "id": "K04",
+              "points": 1,
+              "description": "Fakten und Regeln schreiben: nur bei allen vier richtigen Fakten, korrekter Großelternregel, beiden syntaktisch richtigen Anfragen und vollständigen Antworten."
+            },
+            {
+              "id": "K05",
+              "points": 1,
+              "description": "Probleme mit Prolog lösen: nur bei einer fachlich passenden Geschwistermodellierung einschließlich gemeinsamem Elternteil und Verschiedenheit, richtigen Antworten beider Anfragerichtungen und begründetem Ausschluss der Selbstbeziehung."
+            },
+            {
+              "id": "K06",
+              "points": 1,
+              "description": "Listenverarbeitung in Prolog: nur bei beiden korrekt implementierten Operationen, Basis- und Rekursionsfällen sowie den vier geforderten Erfolgs-/Misserfolgs-/Längentests."
+            },
+            {
+              "id": "K07",
+              "points": 1,
+              "description": "Schaltnetze praktisch optimieren: nur bei vollständiger Carry-DNF/KV-Vereinfachung, korrekter Summenfunktion, eigener funktionsfähiger Addiererimplementierung mit allen acht Tests sowie richtig verbundenem Zweibitlauf. Eine abgelesene Summe allein genügt nicht."
+            },
+            {
+              "id": "K08",
+              "points": 1,
+              "description": "Wissensbasis strukturieren: nur bei den zwei wiederverwendbaren Regeln, allen drei vollständigen Antwortmengen vor und nach der Faktenänderung und nachvollziehbarer Trennung von Wissensbasis und Problemanfragen. Hartcodierte Antworttabellen genügen nicht."
+            },
+            {
+              "id": "K09",
+              "points": 1,
+              "description": "Netz- und Systemsicherheit: nur bei richtiger Zuordnung aller drei Vorfälle, konkretem Bezug auf erlaubte/verhinderte Verbindungen und den genannten Grenzen der drei Mechanismen."
+            },
+            {
+              "id": "K10",
+              "points": 1,
+              "description": "Nebenläufigkeit/Threads: nur bei beiden vollständigen zulässigen Interleavings, korrekter Thread-/Speicher-/Race-Erklärung sowie ausreichend großem kritischem Abschnitt und begründeter Ablehnung der Nur-Schreiben-Sperre."
+            },
+            {
+              "id": "K11",
+              "points": 1,
+              "description": "Virtualisierung/Container: nur bei beiden richtigen Rechnungen und einer zutreffenden Einordnung von OS-/Kernelgrenze, Ressourcendichte und Grenzen der Isolation."
+            },
+            {
+              "id": "K12",
+              "points": 1,
+              "description": "Cloud-Grundprinzipien: nur bei den richtigen Betriebs-/Servicemodellen einschließlich IaaS/Hybrid, verständlichem Skalierungsvergleich, beiden Instanzzahlen und einer expliziten Prüfung der Datenbank-/Modellgrenzen."
+            },
+            {
+              "id": "K13",
+              "points": 1,
+              "description": "Logikprogrammierung vertiefen: nur bei Regelkopfunifikation, richtiger Teilziel-/Faktenreihenfolge, konkretem Fehlvergleich, Belegungsrücknahme und vollständiger Antwort-/Suchspur."
+            },
+            {
+              "id": "K14",
+              "points": 1,
+              "description": "Listen in Prolog: nur bei beiden eigenen rekursiven Definitionen mit richtigen Basisfällen, den richtigen Ergebnissen und einer erklärten Rekursionsspur."
+            },
+            {
+              "id": "K15",
+              "points": 1,
+              "description": "Graphalgorithmen in Prolog: nur bei ausführbar formuliertem Weg-/Besuchslistenmodell, beiden richtigen Pfaden, wirksamem Zyklusausschluss und begründetem Terminierungsargument."
+            },
+            {
+              "id": "K16",
+              "points": 1,
+              "description": "Cut und Nichtdeterminismus: nur bei genauer Fehler-/Alternativenspur, beiden richtigen Korrekturen und korrektem Ergebnisvergleich für beide Wissensbasen samt Erklärung der kontrollierten Nichtdeterminismusbeschränkung."
+            },
+            {
+              "id": "K17",
+              "points": 1,
+              "description": "Funktionale Programmierung einordnen: nur bei zutreffender Abgrenzung aller drei Formen, deklarativer Einordnung und richtiger Grenze des gegebenen arithmetischen Prolog-Prädikats."
+            },
+            {
+              "id": "K18",
+              "points": 1,
+              "description": "Funktionen und Terme deklarativ modellieren: nur bei vollständigen eigenen Funktionsdeklarationen mit beiden Basis-/Rekursionsfällen, korrekter Zusammensetzung und erklärten Abhängigkeiten."
+            },
+            {
+              "id": "K19",
+              "points": 1,
+              "description": "Funktionale Auswertung durch Reduktion erklaeren: nur bei vollständiger nachvollziehbarer Termreduktion einschließlich beider leeren Basisfälle, richtiger Arithmetik und Endlichkeitsbegründung."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "INFO-Q4-SCOPE-ROOT",
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "op": "replace",
+      "path": "/goals/0/contains",
+      "guardGoalId": "29ec47db-7dfe-553d-b850-40e06f164545",
+      "guardBefore": [
+        "d848ceb9-cd73-5a13-9407-f3364764c223",
+        "7432c2b5-bb66-5032-ba6f-8655c0fc67b1",
+        "c254fd74-d449-5e2a-989e-cbd435c6429b",
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa",
+        "dbad1333-5783-57b5-8715-92d725f5c303",
+        "2bf5b882-065e-5379-b8b8-79e2831f86ed",
+        "eaf62c0d-5e76-5467-94e0-bd100f3cb7e1",
+        "423e088a-1b38-544f-8cac-b4f8f4979850",
+        "b7acdaa9-4d14-5ec4-9048-8c969f8252cc",
+        "7b18ca8c-830d-5533-b471-f97cd16ce2b7",
+        "b7bc2bf3-582c-5e01-b7c9-1b10d30e6103",
+        "91c5be09-cc6b-5f57-bfe1-9f0038faf26a",
+        "6982b63a-c6c8-5a6f-b5cb-51568301ac1c",
+        "010651ba-ddd0-510b-8ed1-e3610031f6e1",
+        "70ef7a45-540a-5d8c-b970-19b9f740c40a",
+        "4d22b75a-c395-5785-9131-68a8a5e203c1",
+        "bd075253-1e7e-57a2-9df4-2d0099dacba3",
+        "c764b417-2d6b-5f1f-ba1a-851bfb44fb24",
+        "a86229be-98d8-5987-8c7d-35d105f957d5",
+        "2514384b-8ef7-5800-bf92-29ec8ef71511",
+        "f05a9276-f27c-5d74-af65-588f12ab4de3"
+      ],
+      "value": [
+        "d848ceb9-cd73-5a13-9407-f3364764c223",
+        "7432c2b5-bb66-5032-ba6f-8655c0fc67b1",
+        "c254fd74-d449-5e2a-989e-cbd435c6429b",
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa",
+        "dbad1333-5783-57b5-8715-92d725f5c303",
+        "2bf5b882-065e-5379-b8b8-79e2831f86ed",
+        "eaf62c0d-5e76-5467-94e0-bd100f3cb7e1",
+        "423e088a-1b38-544f-8cac-b4f8f4979850",
+        "b7acdaa9-4d14-5ec4-9048-8c969f8252cc",
+        "7b18ca8c-830d-5533-b471-f97cd16ce2b7",
+        "b7bc2bf3-582c-5e01-b7c9-1b10d30e6103",
+        "91c5be09-cc6b-5f57-bfe1-9f0038faf26a",
+        "6982b63a-c6c8-5a6f-b5cb-51568301ac1c",
+        "010651ba-ddd0-510b-8ed1-e3610031f6e1",
+        "70ef7a45-540a-5d8c-b970-19b9f740c40a",
+        "4d22b75a-c395-5785-9131-68a8a5e203c1",
+        "bd075253-1e7e-57a2-9df4-2d0099dacba3",
+        "c764b417-2d6b-5f1f-ba1a-851bfb44fb24",
+        "a86229be-98d8-5987-8c7d-35d105f957d5",
+        "2514384b-8ef7-5800-bf92-29ec8ef71511",
+        "f05a9276-f27c-5d74-af65-588f12ab4de3",
+        "4a6fcdd7-bcec-5b66-9008-7267a5fcf636"
+      ]
+    },
+    {
+      "id": "INFO-Q4-SCOPE-GK-GOAL",
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "op": "add",
+      "path": "/goals/-",
+      "guardGoalsLength": 282,
+      "guardGoalIdAbsent": "4a6fcdd7-bcec-5b66-9008-7267a5fcf636",
+      "value": {
+        "id": "4a6fcdd7-bcec-5b66-9008-7267a5fcf636",
+        "title": "Schaltungen und Wissensbasen vernetzt anwenden",
+        "titleEn": "Apply circuits and knowledge bases together",
+        "description": "Die lernende Person kann Binär- und Hexadezimalrechnung, Schaltnetzentwurf und Addierer sowie Fakten, Verwandtschaftsregeln und wiederverwendbare Wissensbasen in einer materialgestützten Q4-Übungssituation selbständig anwenden.",
+        "descriptionEn": "The learner can independently apply binary and hexadecimal arithmetic, combinational-circuit and adder design, and facts, kinship rules and reusable knowledge bases in a material-based Q4 practice situation.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "Practice",
+          "Assessment"
+        ],
+        "contains": [],
+        "requires": [
+          "9ab554ad-c308-50ed-a5d2-499dd06120ff",
+          "17a72609-a619-52e7-a154-67b714826e74"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB3",
+          "processCompetencies": [],
+          "guidingIdeas": [],
+          "phase": "Q4"
+        },
+        "phase": "Q4",
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "extendedData": {
+          "routeTerminal": true,
+          "provenance": {
+            "sourceLandscapeTitle": "Canonical Informatik route QA supplement",
+            "sourceGoalId": "route-terminal-q4-gk-v1"
+          }
+        },
+        "type": "atomic",
+        "examData": {
+          "reviewStatus": "draft",
+          "coveredGoalIds": [
+            "70b8919e-8707-580f-9e13-0536c9e81476",
+            "ca39fae0-1b12-5982-a453-54d12602dde8",
+            "5f48f0bb-a1a6-588e-a498-fab20245efcd",
+            "82911b58-bd79-5e96-8fcc-2adb029e2f70",
+            "9ab554ad-c308-50ed-a5d2-499dd06120ff",
+            "17a72609-a619-52e7-a154-67b714826e74"
+          ],
+          "coveredStrands": [
+            "I1",
+            "I2",
+            "I3",
+            "I4",
+            "P2",
+            "P3",
+            "P4",
+            "P5"
+          ],
+          "demandLevels": [
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "# Q4 GK: Schaltungen und eine deklarative Wissensbasis\n\nSie entwickeln einen Modellcampus mit Freigabeanzeige und organisatorischer\nWissensbasis. Bearbeiten Sie alle sechs Teilaufgaben. Alle Materialien stehen\nunten; zusätzliche Quellen werden nicht benötigt.\nGeben Sie Rechnungen, Diagramme, Programme, Tests und Begründungen ab.\n\nFür Prolog beginnen Variablen groß und Konstanten klein. `:-` verbindet\nRegelkopf und Bedingungen; ein Komma bedeutet die gemeinsame Erfüllung der\nBedingungen. `X \\= Y` prüft Verschiedenheit nach dem Binden beider Personen.\nDie Tabellen geben alle bekannten Tatsachen an; weitere werden nicht geraten.\n\nEs gibt die sechs Kriterien K01, K02, K04, K05, K07 und K08 mit jeweils genau\n0 oder 1 Punkt. Ein Punkt erfordert die vollständige genannte Kernleistung;\nfachlich gleichwertige Lösungen sind zulässig. Das eigenständige GK-Ergebnis\nsetzt **6 von 6 Punkten** voraus. Zusatzleistungen ersetzen kein fehlendes Kriterium.\n\n## A. Zahlen und Schaltungen\n\n### Material A1: Datenformat und Signalregeln\n\nEin Datenwort hat acht Bits. Unsignierte Wörter stehen für 0 bis 255;\nvorzeichenbehaftete Wörter verwenden Zweierkomplement. Es wird jeweils nur ein\nByte gespeichert. Für Freigabeanzeigen gelten drei boolesche Eingänge:\n\n| Zeichen | Bedeutung bei 1 |\n| --- | --- |\n| A | der Betriebsmodus ist gültig |\n| B | an Station links liegt eine Anfrage vor |\n| C | an Station rechts liegt eine Anfrage vor |\n\nDie Anzeige F soll genau dann 1 sein, wenn der Betriebsmodus gültig ist und\nmindestens eine Anfrage vorliegt. Das aktuell verdrahtete, zu prüfende Netz ist:\n\n```text\ng1 := AND(A, B)\nF_falsch := OR(g1, C)\n```\n\nDie Messung der gewünschten Freigabefunktion liefert:\n\n| A | B | C | F |\n| --- | --- | --- | --- |\n| 0 | 0 | 0 | 0 |\n| 0 | 0 | 1 | 0 |\n| 0 | 1 | 0 | 0 |\n| 0 | 1 | 1 | 0 |\n| 1 | 0 | 0 | 0 |\n| 1 | 0 | 1 | 1 |\n| 1 | 1 | 0 | 1 |\n| 1 | 1 | 1 | 1 |\n\nFür ein KV-Diagramm verwenden Sie Zeilen A=0,1 und Spalten BC=00,01,11,10.\nBenachbarte Spalten unterscheiden sich damit in genau einem Bit.\n\n### Material A2: Volladdierer und Verbindung\n\nEin Volladdierer erhält Bits x,y,c und liefert Summenbit s und Übertrag k.\nSeine Spezifikation lautet `x+y+c = s+2*k`. Prüfen Sie alle acht Eingaben.\nEin Zweibitaddierer besteht aus zwei Volladdierern: Der Übertrag der niedereren\nStelle geht als c in die höhere; die niederere Stelle startet mit c=0.\n\n**A1 [K01].** Rechnen Sie `00101101₂ + 00010111₂` binär und hexadezimal;\nzeigen Sie die Überträge. Stellen Sie −13 als achtbittiges Zweierkomplement dar\nund begründen Sie die Konstruktion sowie den Wertebereich −128…127. Addieren\nSie `0x7F + 0x01`. Erklären Sie, warum das Ergebnis unsigniert korrekt ist,\nvorzeichenbehaftet aber einen Überlauf zeigt.\n\n**A2 [K02].** Stellen Sie F aus A1 als vollständige DNF dar. Übertragen Sie alle\nacht Werte in das angegebene KV-Diagramm, markieren Sie gültige Zweiergruppen\nund vereinfachen Sie. Geben Sie eine korrigierte Gatternetzliste und eine\nkonkrete Eingabe an, die den Fehler von `F_falsch` nachweist.\n\n**A3 [K07].** Entwickeln Sie für k eine vollständige DNF und ein KV-Diagramm\n(Zeilen x; Spalten yc=00,01,11,10). Leiten Sie eine vereinfachte Funktion für k\nund eine Funktion für s ab. Implementieren Sie beide Funktionen, etwa mit\nbooleschen/Bitoperatoren in Python oder JavaScript, und testen Sie alle acht\nEingaben gegen die Spezifikation. Verbinden Sie zwei Addierer und zeigen Sie\nden vollständigen Lauf für `01₂ + 11₂` einschließlich Endübertrag.\n\n## B. Eine wiederverwendbare Wissensbasis\n\n### Material B1: Familie und organisatorische Fakten\n\nDie Familie für das Abholregister hat die folgenden **vollständigen** bekannten\nElternbeziehungen; daraus sollen keine weiteren Elternschaften geraten werden:\n\n| Elternteil | Kind |\n| --- | --- |\n| ada | ben |\n| ada | clara |\n| ben | dora |\n| clara | emil |\n\nAußerdem liegen folgende organisatorischen Daten vor:\n\n```prolog\nrole(ada,staff).\nrole(ben,student).\nrole(clara,staff).\nbadge(ada,valid).\nbadge(ben,valid).\nbadge(clara,expired).\nzone(lab,staff).\nzone(library,student).\n```\n\nEine Person darf eine Zone betreten, wenn ihre Rolle für diese Zone vorgesehen\nund ihr Ausweis gültig ist. Eine Erneuerung ist bei `expired` nötig.\nDiese Projektregel behauptet keine allgemeine reale Zutrittsberechtigung.\n\n**B1 [K04].** Schreiben Sie die vier `parent/2`-Fakten aus der Tabelle. Formulieren\nSie die Regel `grandparent/2` und die zwei Anfragen „alle Kinder von ada“ und\n„alle Großeltern-Kind-Paare“. Geben Sie ihre vollständigen Antwortmengen an.\n\n**B2 [K05].** Modellieren Sie Geschwister als zwei verschiedene Personen mit\nmindestens einem gemeinsamen Elternteil. Schreiben Sie eine Prolog-Regel und\nermitteln Sie alle Antworten für `sibling(ben,X)` und `sibling(X,ben)` aus B1.\nBegründen Sie, warum die Anfrage nicht ben als sein eigenes Geschwister liefert.\n\n**B3 [K08].** Strukturieren Sie die organisatorische Wissensbasis mit\n`can_enter/2` und `needs_renewal/1`. Zeigen Sie vollständige Antworten für\n`can_enter(P,lab)`, `can_enter(P,library)` und `needs_renewal(P)`. Ändern Sie\nanschließend genau den Fakt `badge(clara,expired)` in `badge(clara,valid)`.\nLeiten Sie die geänderten Ergebnisse ohne Änderung der Regeln ab und erklären\nSie daran die Trennung gespeicherter Tatsachen von wiederverwendbaren Regeln.\n",
+          "solutionContent": "# Musterlösung und sechs binäre Kompetenzkriterien\n\nJedes der sechs Kriterien K01, K02, K04, K05, K07 und K08 erhält genau 0 oder\n1 Punkt. Alle genannten Kernleistungen sind erforderlich; gleichwertige\nkorrekte Lösungen sind zulässig. Das eigenständige GK-Ergebnis wird nur bei\n6/6 Punkten erreicht. Die folgenden Lösungen beziehen sich auf das vollständig\nabgedruckte GK-Material.\n\n## A. Zahlen und Schaltungen\n\n### A1 / K01\n\n`00101101₂ = 0x2D = 45`, `00010111₂ = 0x17 = 23`.\nDie Summe ist `01000100₂ = 0x44 = 68`.\n\n| Bitposition ab rechts | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| erster Summand | 1 | 0 | 1 | 1 | 0 | 1 | 0 | 0 |\n| zweiter Summand | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 |\n| Eingangsübertrag | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 0 |\n| Summenbit | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 |\n| Ausgangsübertrag | 1 | 1 | 1 | 1 | 1 | 1 | 0 | 0 |\n\nFür −13: `13=00001101₂`, Invertieren ergibt `11110010₂`, plus 1 ergibt\n`11110011₂=0xF3`. Das ist 243 unsigniert beziehungsweise `243−256=−13`.\nBeim Zweierkomplement hat die höchste Stelle Gewicht −128, die übrigen zusammen\n0…127; daraus folgt −128…127. `0x7F+0x01=0x80=10000000₂`: unsigniert ist\n128 darstellbar; vorzeichenbehaftet wird das Muster als −128 gelesen. Die\nmathematische Summe zweier positiver Operanden ist +128 und liegt außerhalb\ndes signed-Bereichs. Signed-Überlauf ist hier nicht mit einem ninth-bit-Carry\ngleichzusetzen.\n\n**K01 = 1** nur bei richtiger Binär-/Hexrechnung mit Überträgen, begründeter\nZweierkomplementdarstellung und korrekter Unterscheidung beider Overflowdeutungen.\n\n### A2 / K02\n\nVollständige DNF:\n`F = A∧¬B∧C ∨ A∧B∧¬C ∨ A∧B∧C`.\n\n| A \\ BC | 00 | 01 | 11 | 10 |\n| --- | --- | --- | --- | --- |\n| 0 | 0 | 0 | 0 | 0 |\n| 1 | 0 | 1 | 1 | 1 |\n\nDie unteren Felder 01/11 bilden `A∧C`, die unteren Felder 11/10 bilden `A∧B`.\nÜberlappende Gruppen sind erlaubt. Also `F=A∧C∨A∧B=A∧(B∨C)`.\nKorrekte Netzliste: `g1=OR(B,C); F=AND(A,g1)`.\nBeim Gegenbeispiel A=0,B=0,C=1 gibt das alte Netz 1, die Spezifikation 0.\nDas alte Netz lässt die rechte Anfrage am Gültigkeitseingang vorbei.\n\n**K02 = 1** nur bei vollständiger DNF, korrekter achtzelliger Gray-KV-Belegung\nund Gruppenbegründung sowie funktionierender Gatternetzkorrektur mit Gegenbeispiel.\n\n### A3 / K07\n\n| x | y | c | s | k |\n| --- | --- | --- | --- | --- |\n| 0 | 0 | 0 | 0 | 0 |\n| 0 | 0 | 1 | 1 | 0 |\n| 0 | 1 | 0 | 1 | 0 |\n| 0 | 1 | 1 | 0 | 1 |\n| 1 | 0 | 0 | 1 | 0 |\n| 1 | 0 | 1 | 0 | 1 |\n| 1 | 1 | 0 | 0 | 1 |\n| 1 | 1 | 1 | 1 | 1 |\n\n`k=¬x∧y∧c ∨ x∧¬y∧c ∨ x∧y∧¬c ∨ x∧y∧c`.\n\n| x \\ yc | 00 | 01 | 11 | 10 |\n| --- | --- | --- | --- | --- |\n| 0 | 0 | 0 | 1 | 0 |\n| 1 | 0 | 1 | 1 | 1 |\n\nDie senkrechte Gruppe in 11 ergibt `y∧c`; die unteren Gruppen 01/11 und\n11/10 ergeben `x∧c` und `x∧y`. Damit `k=xy∨xc∨yc`, `s=x XOR y XOR c`.\n\n```python\ndef full_add(x, y, c):\n    return x ^ y ^ c, (x & y) | (x & c) | (y & c)\n\ndef add_two_bits(a, b):\n    s0, c1 = full_add(a & 1, b & 1, 0)\n    s1, c2 = full_add((a >> 1) & 1, (b >> 1) & 1, c1)\n    return (c2 << 2) | (s1 << 1) | s0\n```\n\nFür `01+11`: niedere Stelle `(1,1,0)→(s0=0,c1=1)`; höhere Stelle\n`(0,1,1)→(s1=0,c2=1)`. Ergebnis `100₂=4`. Alle acht Zeilen erfüllen\n`x+y+c=s+2k`; alle 16 Zweibitpaare ergeben ihre arithmetische Summe.\n\n**K07 = 1** nur bei vollständiger Carry-DNF/KV-Vereinfachung, korrekter\nSummenfunktion, eigener funktionsfähiger Addiererimplementierung mit allen acht\nTests sowie richtig verbundenem Zweibitlauf. Eine abgelesene Summe allein genügt nicht.\n\n## B. Prolog\n\n### B1 / K04 und B2 / K05\n\n```prolog\nparent(ada,ben).\nparent(ada,clara).\nparent(ben,dora).\nparent(clara,emil).\n\ngrandparent(X,Z) :- parent(X,Y), parent(Y,Z).\nsibling(X,Y) :- parent(P,X), parent(P,Y), X \\= Y.\n```\n\n`parent(ada,K)` liefert der Reihe nach K=ben, clara. `grandparent(G,K)` liefert\n(ada,dora), (ada,emil). Die Geschwisteranfragen liefern jeweils X=clara.\nDie Ungleichheitsprüfung steht nach dem Binden beider Personen und verhindert\n(ben,ben). Ohne gemeinsame Elternfakten werden keine Geschwisterbeziehungen geraten.\n\n**K04 = 1** nur bei allen vier richtigen Fakten, korrekter Großelternregel,\nbeiden syntaktisch richtigen Anfragen und vollständigen Antworten.\n\n**K05 = 1** nur bei einer fachlich passenden Geschwistermodellierung einschließlich\ngemeinsamem Elternteil und Verschiedenheit, richtigen Antworten beider\nAnfragerichtungen und begründetem Ausschluss der Selbstbeziehung.\n\n### B3 / K08\n\n```prolog\ncan_enter(P,Z) :- role(P,R), zone(Z,R), badge(P,valid).\nneeds_renewal(P) :- badge(P,expired).\n```\n\nMit den unveränderten Materialfakten liefert lab nur ada, library nur ben und\nneeds_renewal nur clara. Nach dem Ersetzen des einen badge-Fakts liefert lab\nada und clara, library weiterhin ben; die Erneuerungsanfrage hat keine Lösung.\nKeine Regel wird für einzelne Personen oder für eine bestimmte Anfrage\numgeschrieben. Rollen-/Ausweis-/Zonenfakten können unabhängig gepflegt und in\nverschiedenen Anfragen kombiniert werden.\n\n**K08 = 1** nur bei den zwei wiederverwendbaren Regeln, allen drei vollständigen\nAntwortmengen vor und nach der Faktenänderung und nachvollziehbarer Trennung\nvon Wissensbasis und Problemanfragen. Hartcodierte Antworttabellen genügen nicht.\n",
+          "scoring": {
+            "maxPoints": 6,
+            "passingPoints": 6,
+            "steps": [
+              {
+                "id": "K01",
+                "points": 1,
+                "description": "Binärsysteme anwenden: nur bei richtiger Binär-/Hexrechnung mit Überträgen, begründeter Zweierkomplementdarstellung und korrekter Unterscheidung beider Overflowdeutungen."
+              },
+              {
+                "id": "K02",
+                "points": 1,
+                "description": "Schaltnetze entwerfen: nur bei vollständiger DNF, korrekter achtzelliger Gray-KV-Belegung und Gruppenbegründung sowie funktionierender Gatternetzkorrektur mit Gegenbeispiel."
+              },
+              {
+                "id": "K04",
+                "points": 1,
+                "description": "Fakten und Regeln schreiben: nur bei allen vier richtigen Fakten, korrekter Großelternregel, beiden syntaktisch richtigen Anfragen und vollständigen Antworten."
+              },
+              {
+                "id": "K05",
+                "points": 1,
+                "description": "Probleme mit Prolog lösen: nur bei einer fachlich passenden Geschwistermodellierung einschließlich gemeinsamem Elternteil und Verschiedenheit, richtigen Antworten beider Anfragerichtungen und begründetem Ausschluss der Selbstbeziehung."
+              },
+              {
+                "id": "K07",
+                "points": 1,
+                "description": "Schaltnetze praktisch optimieren: nur bei vollständiger Carry-DNF/KV-Vereinfachung, korrekter Summenfunktion, eigener funktionsfähiger Addiererimplementierung mit allen acht Tests sowie richtig verbundenem Zweibitlauf. Eine abgelesene Summe allein genügt nicht."
+              },
+              {
+                "id": "K08",
+                "points": 1,
+                "description": "Wissensbasis strukturieren: nur bei den zwei wiederverwendbaren Regeln, allen drei vollständigen Antwortmengen vor und nach der Faktenänderung und nachvollziehbarer Trennung von Wissensbasis und Problemanfragen. Hartcodierte Antworttabellen genügen nicht."
+              }
+            ]
+          }
+        }
+      },
+      "examArtifact": {
+        "path": "docs/dev/ci-graph-repairs/informatics-q4-gk-terminal-candidate-2026-11-06.examData.json",
+        "sha256": "649948b613e4218d8434fe1a14ec9b2325b576df12989efca16877257eb9130f"
+      }
+    },
+    {
+      "id": "INFO-Q4-SCOPE-VIEW-de-he-gym-informatics-crossstage.view.json",
+      "file": "curricula/DE/Gymnasium/composition-views/informatik/de-he-gym-informatics-crossstage.view.json",
+      "fileSha256": "ffb1f0c68e294253fd2d806dd2939d781b89317083406dbc70df7d7d714a07df",
+      "op": "add",
+      "path": "/rootNodes/0/children/3/children/6",
+      "guardParentChildren": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f05a9276-f27c-5d74-af65-588f12ab4de3"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "91c5be09-cc6b-5f57-bfe1-9f0038faf26a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "6982b63a-c6c8-5a6f-b5cb-51568301ac1c"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "010651ba-ddd0-510b-8ed1-e3610031f6e1"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "70ef7a45-540a-5d8c-b970-19b9f740c40a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "4d22b75a-c395-5785-9131-68a8a5e203c1"
+        }
+      ],
+      "value": {
+        "kind": "goalEntry",
+        "goalId": "4a6fcdd7-bcec-5b66-9008-7267a5fcf636",
+        "projectionRole": "target",
+        "displayLabel": "Q4 vernetzt anwenden (GK)"
+      }
+    },
+    {
+      "id": "INFO-Q4-SCOPE-VIEW-de-by-gym-informatics-crossstage.view.json",
+      "file": "curricula/DE/Gymnasium/composition-views/informatik/de-by-gym-informatics-crossstage.view.json",
+      "fileSha256": "e27fb27ee64bc2fefd900efda6951dbe27a7c6fc508d59dde4e98c542c119fa6",
+      "op": "add",
+      "path": "/rootNodes/0/children/3/children/6",
+      "guardParentChildren": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "f05a9276-f27c-5d74-af65-588f12ab4de3"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "91c5be09-cc6b-5f57-bfe1-9f0038faf26a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "6982b63a-c6c8-5a6f-b5cb-51568301ac1c"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "010651ba-ddd0-510b-8ed1-e3610031f6e1"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "70ef7a45-540a-5d8c-b970-19b9f740c40a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "4d22b75a-c395-5785-9131-68a8a5e203c1"
+        }
+      ],
+      "value": {
+        "kind": "goalEntry",
+        "goalId": "4a6fcdd7-bcec-5b66-9008-7267a5fcf636",
+        "projectionRole": "target",
+        "displayLabel": "Q4 vernetzt anwenden (GK)"
+      }
+    },
+    {
+      "id": "INFO-Q4-SCOPE-VIEW-de-de-gym-informatics-gk.view.json",
+      "file": "curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json",
+      "fileSha256": "5f630e13df9cbb4ad28210e5f98659f362d3ba28bdba2005c813e33180cc69a3",
+      "op": "add",
+      "path": "/rootNodes/0/children/3/children/10",
+      "guardParentChildren": [
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "eaf62c0d-5e76-5467-94e0-bd100f3cb7e1"
+        },
+        {
+          "kind": "structure",
+          "id": "informatics-q1-gk",
+          "label": "Q1 Algorithmik und objektorientierte Modellierung",
+          "children": [
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "2421e381-59a9-5f51-a746-fbc2c8e56633"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "ce4502f6-2759-5ba4-b287-15ab80a48b2f"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "8288d8e7-e577-566c-ba95-ca1c3dc018ca"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "6bbf9fa6-d6c0-520c-9b49-4dd3609bb86b"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "b7acdaa9-4d14-5ec4-9048-8c969f8252cc"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "7b18ca8c-830d-5533-b471-f97cd16ce2b7"
+        },
+        {
+          "kind": "structure",
+          "id": "informatics-q4-gk",
+          "label": "Q4 Vertiefendes Themenfeld",
+          "children": [
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "f5e6a2d7-6793-5023-8296-dea1de828a68"
+            }
+          ]
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "91c5be09-cc6b-5f57-bfe1-9f0038faf26a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "6982b63a-c6c8-5a6f-b5cb-51568301ac1c"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "010651ba-ddd0-510b-8ed1-e3610031f6e1"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "70ef7a45-540a-5d8c-b970-19b9f740c40a"
+        },
+        {
+          "kind": "canonicalSubtree",
+          "goalId": "4d22b75a-c395-5785-9131-68a8a5e203c1"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "bd075253-1e7e-57a2-9df4-2d0099dacba3",
+          "displayLabel": "Abiturpruefung Informatik (GK)"
+        }
+      ],
+      "value": {
+        "kind": "goalEntry",
+        "goalId": "4a6fcdd7-bcec-5b66-9008-7267a5fcf636",
+        "projectionRole": "target",
+        "displayLabel": "Q4 vernetzt anwenden (GK)"
+      }
+    },
+    {
+      "operationId": "INFO-FOUND-01",
+      "stage": "semantic-preparation-correction",
+      "op": "replace",
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "path": "/goals/65/requires",
+      "guardGoalId": "2cf7589d-5451-5239-badf-1ebb981a2f20",
+      "guardGoalCanonicalSha256": "c9f122db13e8aa96ecd40cbe2cf1d6a2faeae00b2f39f175bb88ed90d3234b71",
+      "guardRequiresBefore": [
+        "65aa807f-f998-5648-a3a6-2e0e96dba714"
+      ],
+      "value": [
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ],
+      "reason": "ER-Modell anwenden ist die vorhandene Einstiegskompetenz für Entitäten, Beziehungen, Kardinalitäten und Optionalitäten. Diese werden an einem verständlichen Realitätsausschnitt erst erworben. Ein Bibliotheksmodell kann ohne vorherige Sortierverfahren, Rekursion, Bäume, Graphalgorithmen oder komplette Q1-Prüfung aufgebaut werden. Der gemeinsame bereits vorhandene Orientierungseinstieg bleibt. Auch die allgemeine Meta-Kompetenz zur Wahl und Bewertung verschiedener Modellierungsverfahren und die Objektprogrammierung werden nicht neu als Voraussetzung des eigenen ersten Modellerwerbs vorgeschrieben. Der ganze Q1-Pass entfällt als fachfremder Block; seine Zieltexte, Coverage und Ergebnisse bleiben unangetastet.",
+      "reviewedHopIds": [
+        "INFO-HOP-053"
+      ],
+      "sourceContext": {
+        "goal": {
+          "id": "2cf7589d-5451-5239-badf-1ebb981a2f20",
+          "title": "ER-Modell anwenden",
+          "titleEn": "Apply ER Model",
+          "description": "Die lernende Person kann Entitäten, Beziehungen, Kardinalitäten und Optionalitäten modellieren.",
+          "descriptionEn": "The learner can model entities, relationships, cardinalities, and optionalities.",
+          "weight": 1.05,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "65aa807f-f998-5648-a3a6-2e0e96dba714"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P2",
+              "P3"
+            ],
+            "guidingIdeas": [
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "08d48b39-df35-4db9-800c-a3f338cfbb9f"
+            }
+          },
+          "type": "atomic"
+        },
+        "parents": [
+          {
+            "id": "900065ef-d3ae-5145-b92c-50821795107a",
+            "title": "Q2.1 ER- und Relationenmodell",
+            "titleEn": "Q2.1 ER and Relational Model",
+            "description": "Datenstrukturen modellieren und normalisieren.",
+            "descriptionEn": "Model and normalize data structures.",
+            "weight": 1.05,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "contains": [
+              "2cf7589d-5451-5239-badf-1ebb981a2f20",
+              "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+              "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+              "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+              "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+              "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+              "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+              "5054427c-9b93-547d-8c17-b30064f180c5"
+            ],
+            "requires": [],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024-informatics",
+              "demandLevel": "AB2",
+              "processCompetencies": [
+                "P3",
+                "P4"
+              ],
+              "guidingIdeas": [
+                "I3",
+                "I4",
+                "I5"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "provenance": {
+                "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+                "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+                "sourceGoalId": "18f714d2-62ea-440f-be5c-f4c203fe9d90"
+              }
+            },
+            "type": "cluster"
+          }
+        ]
+      },
+      "removedEndpointContexts": [
+        {
+          "id": "65aa807f-f998-5648-a3a6-2e0e96dba714",
+          "title": "Q1 vernetzt anwenden",
+          "titleEn": "Q1 integrated application",
+          "description": "Die lernende Person kann die Informatik-Kompetenzen aus Q1 in einer materialgestützten, zusammenhängenden Übungssituation sicher anwenden.",
+          "descriptionEn": "The learner can apply the Informatik competencies from Q1 in a coherent, material-based practice situation.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "Practice",
+            "Assessment"
+          ],
+          "contains": [],
+          "requires": [
+            "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a",
+            "8522727c-8793-57ed-b314-eeff6d17f652",
+            "814c7112-f2e7-5719-8896-765d7063e5ff",
+            "2a87fb3c-394b-47b4-bda2-58c5f1403475",
+            "c62c529f-3732-4c66-a8e4-6d91ed2285d0",
+            "82fe54dd-d29f-540c-9ef1-f4feb17845c6",
+            "c5c1620d-60a7-521c-9fad-2a180c0a3169",
+            "61b14635-f827-5a5a-8416-fe6eddefc981",
+            "3035b447-8287-5d23-85a1-e92cc76248b3",
+            "4c12d4f5-ce17-561d-ae96-71bcc10d76c0",
+            "8179e63e-764c-4348-a5f1-f738fb2cc04e",
+            "0bfd9371-8a7b-407c-9244-fe6ecbe2b56d",
+            "c9d20743-dfda-4425-ae40-8f51d9f0c72a",
+            "bb0173dc-5cda-50f6-ac10-6c439bbb2578",
+            "881edb2d-b0c9-5775-b2ba-3062f2e91f83",
+            "84af2e26-45c9-5075-80f7-7c6f37847e9d",
+            "1dc5260a-f3c5-5f32-8ea5-6388126eb6fa",
+            "6a946a09-ddac-5caa-aec7-0de66f33a05c",
+            "b899d7ee-5c05-54de-8be2-0b5ff00b134f",
+            "1891f6f8-5a1e-552a-adc4-1e25751d9a17",
+            "bc46922d-d874-528b-a183-5a3eaef12e4d",
+            "d5d33c5f-83ac-5338-a922-5c99d4a2c351",
+            "d8f83bf0-5ab0-5bd8-b64d-87451653a296",
+            "45a27914-ccbd-5d0b-ad12-6a6ada4362c6",
+            "59fe2996-e18b-5ee1-af74-de99176a694b",
+            "64b54f92-5895-5853-aab8-26942527d3f9",
+            "937f1429-1024-5710-b734-3ceb34d245c3",
+            "9952c581-7646-5205-8c07-f1fd32e2e547",
+            "779ae14c-8bde-543e-b898-009bd9fe0b0a",
+            "0b39206b-725d-5fca-bdd1-8d24c8d424f3",
+            "5944b04b-cf9f-5a71-babe-f50014a7f478",
+            "d81e3ba4-bab6-5237-9315-fcdcf7775f52",
+            "2b4e68c5-5105-5d04-a207-4edabfac4097",
+            "038ca1a8-9d0d-5201-9148-d3984209c5bb",
+            "ce0966fa-ce95-5b26-81a1-85df48beeff4",
+            "4196aaa8-7e87-54f0-a624-d71ec3d823e1",
+            "4ff6b2b1-97cd-5ccb-b5a2-dde71116f757",
+            "1f20ccda-2a88-5684-a03a-fd1a989588e6",
+            "a8a53f33-ccce-5158-a810-c162113316b1",
+            "5ac3f762-2b2d-5414-9765-335962a3d2c1",
+            "c85e5d19-31e3-58d9-88f3-eae00a7af205",
+            "8d7aacfd-3e57-5c18-b97e-941ad402c5ab",
+            "6d10ced5-0213-558c-9b65-db70ccb824b4",
+            "91230113-91b0-5a8b-94e4-4419014cfb58",
+            "fb84fcc4-7a5c-533c-88ca-34b064c7f263",
+            "69f09bee-69a8-5155-9c81-9044e4bff5ac",
+            "c54693ae-448b-5a06-8972-785022f35cd7",
+            "35849012-1b9d-58dc-b5c9-e56912acbe96"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB3",
+            "processCompetencies": [],
+            "guidingIdeas": [],
+            "phase": "Q1"
+          },
+          "phase": "Q1",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "routeTerminal": true,
+            "provenance": {
+              "sourceLandscapeTitle": "Canonical Informatik route QA supplement",
+              "sourceGoalId": "route-terminal-q1"
+            }
+          },
+          "type": "atomic",
+          "examData": {
+            "reviewStatus": "released",
+            "coveredGoalIds": [
+              "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a",
+              "6c284640-1f28-4837-aabd-445656ad7f54",
+              "8522727c-8793-57ed-b314-eeff6d17f652",
+              "1c1c2576-3e02-5928-8c28-f3aaf528ae55",
+              "b24084e1-bff3-5fc6-800d-ec6c024e52aa",
+              "814c7112-f2e7-5719-8896-765d7063e5ff",
+              "2a87fb3c-394b-47b4-bda2-58c5f1403475",
+              "c62c529f-3732-4c66-a8e4-6d91ed2285d0",
+              "9bb399e1-fd49-5220-9c81-82efbeae47eb",
+              "82fe54dd-d29f-540c-9ef1-f4feb17845c6",
+              "c5c1620d-60a7-521c-9fad-2a180c0a3169",
+              "25be929d-624d-5654-bbb8-32fa1fba50c2",
+              "61b14635-f827-5a5a-8416-fe6eddefc981",
+              "3035b447-8287-5d23-85a1-e92cc76248b3",
+              "4c12d4f5-ce17-561d-ae96-71bcc10d76c0",
+              "8179e63e-764c-4348-a5f1-f738fb2cc04e",
+              "0bfd9371-8a7b-407c-9244-fe6ecbe2b56d",
+              "56a88f2f-cc47-5e1d-b7d9-1822a66e3b91",
+              "f0910b55-48a9-4f81-aed6-d15ac0446c70",
+              "c9d20743-dfda-4425-ae40-8f51d9f0c72a",
+              "bb0173dc-5cda-50f6-ac10-6c439bbb2578",
+              "881edb2d-b0c9-5775-b2ba-3062f2e91f83",
+              "84af2e26-45c9-5075-80f7-7c6f37847e9d",
+              "1dc5260a-f3c5-5f32-8ea5-6388126eb6fa",
+              "6a946a09-ddac-5caa-aec7-0de66f33a05c",
+              "54d88684-d4e5-50d3-9453-d141af7316d2",
+              "b899d7ee-5c05-54de-8be2-0b5ff00b134f",
+              "1891f6f8-5a1e-552a-adc4-1e25751d9a17",
+              "bc46922d-d874-528b-a183-5a3eaef12e4d",
+              "d5d33c5f-83ac-5338-a922-5c99d4a2c351",
+              "d8f83bf0-5ab0-5bd8-b64d-87451653a296",
+              "45a27914-ccbd-5d0b-ad12-6a6ada4362c6",
+              "59fe2996-e18b-5ee1-af74-de99176a694b",
+              "64b54f92-5895-5853-aab8-26942527d3f9",
+              "485ce283-3bb5-54a6-be3f-d6bda1e90f8a",
+              "83e24696-f094-5752-b0a6-40400312a8c5",
+              "937f1429-1024-5710-b734-3ceb34d245c3",
+              "9952c581-7646-5205-8c07-f1fd32e2e547",
+              "779ae14c-8bde-543e-b898-009bd9fe0b0a",
+              "0b39206b-725d-5fca-bdd1-8d24c8d424f3",
+              "5944b04b-cf9f-5a71-babe-f50014a7f478",
+              "d81e3ba4-bab6-5237-9315-fcdcf7775f52",
+              "2b4e68c5-5105-5d04-a207-4edabfac4097",
+              "038ca1a8-9d0d-5201-9148-d3984209c5bb",
+              "ce0966fa-ce95-5b26-81a1-85df48beeff4",
+              "4196aaa8-7e87-54f0-a624-d71ec3d823e1",
+              "4ff6b2b1-97cd-5ccb-b5a2-dde71116f757",
+              "1f20ccda-2a88-5684-a03a-fd1a989588e6",
+              "a8a53f33-ccce-5158-a810-c162113316b1",
+              "5ac3f762-2b2d-5414-9765-335962a3d2c1",
+              "c85e5d19-31e3-58d9-88f3-eae00a7af205",
+              "8d7aacfd-3e57-5c18-b97e-941ad402c5ab",
+              "6d10ced5-0213-558c-9b65-db70ccb824b4",
+              "91230113-91b0-5a8b-94e4-4419014cfb58",
+              "fb84fcc4-7a5c-533c-88ca-34b064c7f263",
+              "69f09bee-69a8-5155-9c81-9044e4bff5ac",
+              "c54693ae-448b-5a06-8972-785022f35cd7",
+              "35849012-1b9d-58dc-b5c9-e56912acbe96"
+            ],
+            "coveredStrands": [
+              "I1",
+              "I2",
+              "I3",
+              "I4",
+              "I5",
+              "P1",
+              "P2",
+              "P3",
+              "P4",
+              "P5"
+            ],
+            "demandLevels": [
+              "AB1",
+              "AB2",
+              "AB3"
+            ],
+            "taskContent": "Bearbeiten Sie eine materialgestützte Informatik-Aufgabe zu Q1. Erläutern Sie die relevanten Begriffe, modellieren oder implementieren Sie den fachlichen Kern, prüfen Sie Ihre Lösung und beurteilen Sie Grenzen oder Auswirkungen der gewählten Lösung.",
+            "solutionContent": "Erwartet wird eine fachlich korrekte, begründete und überprüfte Lösung, die die relevanten Kompetenzen des Abschnitts vernetzt nutzt.",
+            "scoring": {
+              "maxPoints": 20,
+              "passingPoints": 12,
+              "steps": [
+                {
+                  "id": "s1",
+                  "points": 5,
+                  "description": "Fachliche Begriffe und Problemstellung korrekt erschlossen"
+                },
+                {
+                  "id": "s2",
+                  "points": 6,
+                  "description": "Modellierung oder Implementierung fachlich tragfähig ausgeführt"
+                },
+                {
+                  "id": "s3",
+                  "points": 5,
+                  "description": "Lösung systematisch geprüft und Fehlerquellen reflektiert"
+                },
+                {
+                  "id": "s4",
+                  "points": 4,
+                  "description": "Grenzen, Auswirkungen oder Alternativen begründet beurteilt"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "addedEndpointContexts": [
+        {
+          "id": "d848ceb9-cd73-5a13-9407-f3364764c223",
+          "semanticKind": "orientation",
+          "title": "Warum Informatik? - Relevanz und Orientierung",
+          "titleEn": "Why Informatik? - Relevance and Orientation",
+          "description": "Der Big-Picture-Einstieg zeigt, welche Möglichkeiten Informatik im Alltag, bei gesellschaftlicher Teilhabe sowie in Studium und Beruf eröffnet und welche positiven Perspektiven der folgende Stoff bietet. Die lernende Person wählt nur, was sie neugierig macht oder ob sie weiterlernen möchte; fachliches Detailwissen wird hier weder vorausgesetzt noch geprüft.",
+          "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how working through this curriculum systematically leads to durable competence growth.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "Motivation",
+            "Orientation"
+          ],
+          "contains": [],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB1",
+            "processCompetencies": [
+              "P1",
+              "P2",
+              "P3"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I2",
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "E"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "db2d4785-9a69-468f-ba42-ac4be2bcfdb3"
+            }
+          },
+          "type": "atomic"
+        }
+      ]
+    },
+    {
+      "operationId": "INFO-FOUND-02",
+      "stage": "semantic-preparation-correction",
+      "op": "replace",
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "path": "/goals/89/requires",
+      "guardGoalId": "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+      "guardGoalCanonicalSha256": "0da85c2e5b72516a3d916c35d975252382f56a329973dd004883d74b0c1d2fa6",
+      "guardRequiresBefore": [
+        "0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+      ],
+      "value": [
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ],
+      "reason": "Elementare Zustandsautomaten werden hier aus realen Kontexten modelliert und simuliert; ein manuell verfolgter Drehkreuz- oder Ampelautomat setzt weder ER-Kardinalitäten/SQL noch das Bestehen der ganzen Q2-Prüfung voraus. Zustände, Ereignisse, Übergänge und die Simulation gehören gerade zum neu erworbenen Ziel. Der vorhandene gemeinsame Orientierungseinstieg bleibt; keine Implementierung von Objektzuweisungen und keine vorgelagerte modellübergreifende Bewertungsleistung wird als neue Hürde erfunden. Diese Operation muss vor dem Umhängen der komplexen Zustandsdiagramme wirksam sein.",
+      "reviewedHopIds": [
+        "INFO-HOP-107"
+      ],
+      "sourceContext": {
+        "goal": {
+          "id": "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+          "title": "Zustandsautomaten modellieren",
+          "titleEn": "Model State Automata",
+          "description": "Die lernende Person kann Automaten aus realen Kontexten modellieren und simulieren.",
+          "descriptionEn": "The learner can model and simulate automata from real contexts.",
+          "weight": 1.1,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I2",
+              "I5"
+            ],
+            "phase": "Q3"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "eafbc1a5-eb2a-4710-a399-fcf42d5a17fd"
+            }
+          },
+          "type": "atomic"
+        },
+        "parents": [
+          {
+            "id": "31026f4a-629b-571f-b45d-a87f47a09d9e",
+            "title": "Q3.2 Endliche Automaten",
+            "titleEn": "Q3.2 Finite Automata",
+            "description": "Endliche Automaten als Akzeptoren und Transduktoren modellieren.",
+            "descriptionEn": "Model finite automata as acceptors and transducers.",
+            "weight": 1.1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "contains": [
+              "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+              "7b491c6e-a03a-57bf-947d-a4a4f60785b4",
+              "9b497287-aa68-5bb1-974f-5be11dd11ae2",
+              "deea09c2-474e-5c3d-bd6b-ced143df8070",
+              "d6eb4c08-4994-5853-b2ba-f07a01ea823c",
+              "0515f5f1-22bb-5164-9af0-e84d8137085a",
+              "baa4be56-45d0-539a-a810-113392bdaa23"
+            ],
+            "requires": [],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024-informatics",
+              "demandLevel": "AB2",
+              "processCompetencies": [
+                "P3",
+                "P4"
+              ],
+              "guidingIdeas": [
+                "I1",
+                "I2",
+                "I5"
+              ],
+              "phase": "Q3"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "provenance": {
+                "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+                "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+                "sourceGoalId": "074cec9d-b501-405c-a131-be6db239ddad"
+              }
+            },
+            "type": "cluster"
+          }
+        ]
+      },
+      "removedEndpointContexts": [
+        {
+          "id": "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+          "title": "Q2 vernetzt anwenden",
+          "titleEn": "Q2 integrated application",
+          "description": "Die lernende Person kann die Informatik-Kompetenzen aus Q2 in einer materialgestützten, zusammenhängenden Übungssituation sicher anwenden.",
+          "descriptionEn": "The learner can apply the Informatik competencies from Q2 in a coherent, material-based practice situation.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "Practice",
+            "Assessment"
+          ],
+          "contains": [],
+          "requires": [
+            "2cf7589d-5451-5239-badf-1ebb981a2f20",
+            "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+            "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+            "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+            "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+            "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+            "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+            "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+            "43164b7c-3ef9-5d45-9f7d-07adfd13964a",
+            "71fe327a-9677-5348-a405-fba0dbd302d7",
+            "58173dab-0cb2-52ae-a052-63d3a0f33644",
+            "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+            "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+            "56e5edb6-b883-50a0-92bb-732d5e44c781",
+            "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+            "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+            "16ce7d7a-fc31-58d0-83f8-427318331e73",
+            "70523f2e-b331-51c0-95d0-919c8a189cad",
+            "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+            "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+            "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+            "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+            "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+            "5054427c-9b93-547d-8c17-b30064f180c5",
+            "5d07f77d-d955-54ff-90d8-2dddf01566be",
+            "98fcf9d1-71b8-5e5b-928b-166917330da4",
+            "5b969704-05c0-5c15-a5cc-d671e15be036",
+            "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+            "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+            "303cb242-31c2-579d-b50f-16b03a0e412c",
+            "955c771a-6c00-5cfc-872a-3f1b1accf730",
+            "0e09df97-e0e4-592b-b204-f0754a3296d7",
+            "1a355b54-4da7-56ef-a731-8aa9dc91b1c0",
+            "7299e142-0c10-55b2-a72a-c62057e22943",
+            "2f5f29fb-ff3f-5a7e-a256-6ae058a985df",
+            "f029bea7-1c08-5844-894c-9aeb96bf9ec2",
+            "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+            "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+            "fbc07e78-53a7-5fb5-a5c7-04a85e605339",
+            "e94beeaa-784d-5490-932b-38b81bf669fc",
+            "7a9fdfe7-a806-5a31-b276-0da27a4617fc"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB3",
+            "processCompetencies": [],
+            "guidingIdeas": [],
+            "phase": "Q2"
+          },
+          "phase": "Q2",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "routeTerminal": true,
+            "provenance": {
+              "sourceLandscapeTitle": "Canonical Informatik route QA supplement",
+              "sourceGoalId": "route-terminal-q2"
+            }
+          },
+          "type": "atomic",
+          "examData": {
+            "reviewStatus": "released",
+            "coveredGoalIds": [
+              "2cf7589d-5451-5239-badf-1ebb981a2f20",
+              "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+              "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+              "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+              "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+              "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+              "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+              "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+              "43164b7c-3ef9-5d45-9f7d-07adfd13964a",
+              "71fe327a-9677-5348-a405-fba0dbd302d7",
+              "58173dab-0cb2-52ae-a052-63d3a0f33644",
+              "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+              "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+              "56e5edb6-b883-50a0-92bb-732d5e44c781",
+              "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+              "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+              "16ce7d7a-fc31-58d0-83f8-427318331e73",
+              "70523f2e-b331-51c0-95d0-919c8a189cad",
+              "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+              "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+              "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+              "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+              "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+              "5054427c-9b93-547d-8c17-b30064f180c5",
+              "5d07f77d-d955-54ff-90d8-2dddf01566be",
+              "98fcf9d1-71b8-5e5b-928b-166917330da4",
+              "5b969704-05c0-5c15-a5cc-d671e15be036",
+              "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+              "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+              "303cb242-31c2-579d-b50f-16b03a0e412c",
+              "955c771a-6c00-5cfc-872a-3f1b1accf730",
+              "0e09df97-e0e4-592b-b204-f0754a3296d7",
+              "1a355b54-4da7-56ef-a731-8aa9dc91b1c0",
+              "7299e142-0c10-55b2-a72a-c62057e22943",
+              "2f5f29fb-ff3f-5a7e-a256-6ae058a985df",
+              "f029bea7-1c08-5844-894c-9aeb96bf9ec2",
+              "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+              "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+              "fbc07e78-53a7-5fb5-a5c7-04a85e605339",
+              "e94beeaa-784d-5490-932b-38b81bf669fc",
+              "7a9fdfe7-a806-5a31-b276-0da27a4617fc"
+            ],
+            "coveredStrands": [
+              "I1",
+              "I2",
+              "I3",
+              "I4",
+              "I5",
+              "P1",
+              "P2",
+              "P3",
+              "P4",
+              "P5"
+            ],
+            "demandLevels": [
+              "AB1",
+              "AB2",
+              "AB3"
+            ],
+            "taskContent": "Bearbeiten Sie eine materialgestützte Informatik-Aufgabe zu Q2. Erläutern Sie die relevanten Begriffe, modellieren oder implementieren Sie den fachlichen Kern, prüfen Sie Ihre Lösung und beurteilen Sie Grenzen oder Auswirkungen der gewählten Lösung.",
+            "solutionContent": "Erwartet wird eine fachlich korrekte, begründete und überprüfte Lösung, die die relevanten Kompetenzen des Abschnitts vernetzt nutzt.",
+            "scoring": {
+              "maxPoints": 20,
+              "passingPoints": 12,
+              "steps": [
+                {
+                  "id": "s1",
+                  "points": 5,
+                  "description": "Fachliche Begriffe und Problemstellung korrekt erschlossen"
+                },
+                {
+                  "id": "s2",
+                  "points": 6,
+                  "description": "Modellierung oder Implementierung fachlich tragfähig ausgeführt"
+                },
+                {
+                  "id": "s3",
+                  "points": 5,
+                  "description": "Lösung systematisch geprüft und Fehlerquellen reflektiert"
+                },
+                {
+                  "id": "s4",
+                  "points": 4,
+                  "description": "Grenzen, Auswirkungen oder Alternativen begründet beurteilt"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "addedEndpointContexts": [
+        {
+          "id": "d848ceb9-cd73-5a13-9407-f3364764c223",
+          "semanticKind": "orientation",
+          "title": "Warum Informatik? - Relevanz und Orientierung",
+          "titleEn": "Why Informatik? - Relevance and Orientation",
+          "description": "Der Big-Picture-Einstieg zeigt, welche Möglichkeiten Informatik im Alltag, bei gesellschaftlicher Teilhabe sowie in Studium und Beruf eröffnet und welche positiven Perspektiven der folgende Stoff bietet. Die lernende Person wählt nur, was sie neugierig macht oder ob sie weiterlernen möchte; fachliches Detailwissen wird hier weder vorausgesetzt noch geprüft.",
+          "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how working through this curriculum systematically leads to durable competence growth.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "Motivation",
+            "Orientation"
+          ],
+          "contains": [],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB1",
+            "processCompetencies": [
+              "P1",
+              "P2",
+              "P3"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I2",
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "E"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "db2d4785-9a69-468f-ba42-ac4be2bcfdb3"
+            }
+          },
+          "type": "atomic"
+        }
+      ]
+    },
+    {
+      "operationId": "INFO-FOUND-03",
+      "stage": "semantic-preparation-correction",
+      "op": "replace",
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "path": "/goals/123/requires",
+      "guardGoalId": "16ce7d7a-fc31-58d0-83f8-427318331e73",
+      "guardGoalCanonicalSha256": "93194a7d57f01cc9e8a4edab8012551ef77686cf6ce815beeadba7da061ce71c",
+      "guardRequiresBefore": [
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589"
+      ],
+      "value": [
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4"
+      ],
+      "reason": "DML/DDL/DCL und Rechtegestaltung brauchen den elementaren Umgang mit SQL-Tabellen und Anweisungen. Das vorhandene grundlegende SELECT-Ziel stellt SQL-Ausdrücke und relationale Ergebnismengen bereit. Gruppierung und Aggregatfunktionen sind eine unabhängige Abfrageerweiterung: CREATE/INSERT/GRANT/REVOKE an einer gegebenen Tabelle verlangen weder GROUP BY noch SUM/COUNT. Deshalb wird genau diese zusätzliche Hürde ersetzt; die bereits über Aggregation erreichte SELECT-Basis bleibt erhalten. Die weiter bestehende SELECT→Q1-Prüfung ist dadurch nicht neu fachlich freigegeben.",
+      "reviewedHopIds": [
+        "INFO-HOP-030"
+      ],
+      "sourceContext": {
+        "goal": {
+          "id": "16ce7d7a-fc31-58d0-83f8-427318331e73",
+          "title": "SQL-Berechtigungen verwalten",
+          "titleEn": "Manage SQL Permissions",
+          "description": "Die lernende Person kann DML-, DDL- und DCL-Befehle anwenden und Berechtigungen gestalten.",
+          "descriptionEn": "The learner can apply DML, DDL, and DCL commands and design permissions.",
+          "weight": 1.05,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "13be8508-9eb3-510d-bd5c-4ba4efcc2589"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3"
+            ],
+            "guidingIdeas": [
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "90060560-c8ce-4f2d-88c6-20a92ae36993"
+            }
+          },
+          "type": "atomic"
+        },
+        "parents": [
+          {
+            "id": "52aea365-b7b5-5018-8756-d7dbfc96c6ba",
+            "title": "Q2.2 SQL",
+            "titleEn": "Q2.2 SQL",
+            "description": "SQL-Abfragen formulieren und erweitern.",
+            "descriptionEn": "Formulate and extend SQL queries.",
+            "weight": 1.05,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "contains": [
+              "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+              "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+              "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+              "16ce7d7a-fc31-58d0-83f8-427318331e73",
+              "5d07f77d-d955-54ff-90d8-2dddf01566be",
+              "98fcf9d1-71b8-5e5b-928b-166917330da4",
+              "5b969704-05c0-5c15-a5cc-d671e15be036",
+              "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+              "c7394a41-d900-5b31-8ac1-bac8c3be8b26"
+            ],
+            "requires": [],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024-informatics",
+              "demandLevel": "AB2",
+              "processCompetencies": [
+                "P3",
+                "P4"
+              ],
+              "guidingIdeas": [
+                "I3",
+                "I4",
+                "I5"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "provenance": {
+                "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+                "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+                "sourceGoalId": "250ee1b5-a9af-44a9-bfa1-d0322370e32b"
+              }
+            },
+            "type": "cluster"
+          }
+        ]
+      },
+      "removedEndpointContexts": [
+        {
+          "id": "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+          "title": "Gruppierung und Aggregatfunktionen",
+          "titleEn": "Grouping and Aggregate Functions",
+          "description": "Die lernende Person kann Aggregatfunktionen und Gruppierung einsetzen.",
+          "descriptionEn": "The learner can use aggregate functions and grouping.",
+          "weight": 1.05,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "fd1f5c79-20e6-5829-98c1-0909e047cad4"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "36f2cfbf-9a51-4292-a711-593793347652"
+            }
+          },
+          "type": "atomic"
+        }
+      ],
+      "addedEndpointContexts": [
+        {
+          "id": "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+          "title": "Grundlegende Selects schreiben",
+          "titleEn": "Write Basic Selects",
+          "description": "Die lernende Person kann projektion, Selektion, Join und Sortierung mit SQL formulieren.",
+          "descriptionEn": "The learner can formulate projection, selection, join, and sorting with SQL.",
+          "weight": 1.05,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "65aa807f-f998-5648-a3a6-2e0e96dba714"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P1",
+              "P3"
+            ],
+            "guidingIdeas": [
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "e60191e1-b616-49f3-ac8a-804dd2717b9a"
+            }
+          },
+          "type": "atomic"
+        }
+      ]
+    },
+    {
+      "operationId": "INFO-FOUND-04",
+      "stage": "semantic-preparation-correction",
+      "op": "replace",
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "path": "/goals/164/requires",
+      "guardGoalId": "5054427c-9b93-547d-8c17-b30064f180c5",
+      "guardGoalCanonicalSha256": "1164ec68583d1a7ec5885da33fbbb8441e2c2e4c3f2486434b9aa9fb33da3165",
+      "guardRequiresBefore": [
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471"
+      ],
+      "value": [
+        "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a"
+      ],
+      "reason": "Sequenzdiagramme stellen zeitliche Nachrichten/Methodenaufrufe zwischen Beteiligten dar; deren Nebenläufigkeit und Serviceinteraktionen sind die neue Leistung. Die bestehende Grundlage zum Zusammenspiel von Klassen, Attributen, Methoden und Konstruktoren trägt Objektidentität und Aufrufe. Anomalien und dritte Normalform eines Datenbankschemas sind dazu nicht notwendig, auch wenn der Knoten unter ER-/Relationenmodell abgelegt ist. Kein neues Pflichtziel zu POP/SMTP oder zur ganzen Q1-Prüfung wird eingeführt. Die vorhandene Objektgrundlage führt historisch weiter zur E-Prüfung; diese alte Brücke bleibt ein gesonderter Befund und wird nicht als minimaler Gesamtpfad bestätigt.",
+      "reviewedHopIds": [
+        "INFO-HOP-075"
+      ],
+      "sourceContext": {
+        "goal": {
+          "id": "5054427c-9b93-547d-8c17-b30064f180c5",
+          "title": "Sequenzdiagramme optimieren",
+          "titleEn": "Optimize Sequence Diagrams",
+          "description": "Die lernende Person kann Sequenzdiagramme für Nebenläufigkeit und Services modellieren.",
+          "descriptionEn": "The learner can model sequence diagrams for concurrency and services.",
+          "weight": 1.1,
+          "tags": [
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB3",
+            "processCompetencies": [
+              "P2",
+              "P3",
+              "P5"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I2",
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "f3711a2a-c99c-45ea-a522-1c98fbb08708"
+            }
+          },
+          "type": "atomic"
+        },
+        "parents": [
+          {
+            "id": "900065ef-d3ae-5145-b92c-50821795107a",
+            "title": "Q2.1 ER- und Relationenmodell",
+            "titleEn": "Q2.1 ER and Relational Model",
+            "description": "Datenstrukturen modellieren und normalisieren.",
+            "descriptionEn": "Model and normalize data structures.",
+            "weight": 1.05,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "contains": [
+              "2cf7589d-5451-5239-badf-1ebb981a2f20",
+              "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+              "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+              "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+              "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+              "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+              "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+              "5054427c-9b93-547d-8c17-b30064f180c5"
+            ],
+            "requires": [],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024-informatics",
+              "demandLevel": "AB2",
+              "processCompetencies": [
+                "P3",
+                "P4"
+              ],
+              "guidingIdeas": [
+                "I3",
+                "I4",
+                "I5"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "provenance": {
+                "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+                "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+                "sourceGoalId": "18f714d2-62ea-440f-be5c-f4c203fe9d90"
+              }
+            },
+            "type": "cluster"
+          }
+        ]
+      },
+      "removedEndpointContexts": [
+        {
+          "id": "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+          "title": "Normalisierung durchführen",
+          "titleEn": "Perform Normalization",
+          "description": "Die lernende Person kann Anomalien erkennen und bis zur dritten Normalform normalisieren.",
+          "descriptionEn": "The learner can detect anomalies and normalize up to the third normal form.",
+          "weight": 1.05,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P2",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "076b8d0a-c1ce-449f-859e-ca639f30064c"
+            }
+          },
+          "type": "atomic"
+        }
+      ],
+      "addedEndpointContexts": [
+        {
+          "id": "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a",
+          "title": "Objekte instanziieren",
+          "titleEn": "Instantiate Objects",
+          "description": "Die lernende Person kann das Zusammenspiel von Klasse, Attributen, Methoden und Konstruktoren erläutern.",
+          "descriptionEn": "The learner can explain the interaction of class, attributes, methods, and constructors.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "49ba66cf-accd-5938-a63e-f031bc786767"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB1",
+            "processCompetencies": [
+              "P1",
+              "P2"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "6836e91a-2ec5-4a8d-9a56-1ad7d1c9be5d"
+            }
+          },
+          "type": "atomic"
+        }
+      ]
+    },
+    {
+      "operationId": "INFO-FOUND-05",
+      "stage": "semantic-preparation-correction",
+      "op": "replace",
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "path": "/goals/194/requires",
+      "guardGoalId": "a93357e9-5e5b-57c5-98d2-35404a6e6e56",
+      "guardGoalCanonicalSha256": "6f7eea4dfb49efe1dad07764181455616d5e8097811f8f5594f65ff76752b17c",
+      "guardRequiresBefore": [
+        "70b8919e-8707-580f-9e13-0536c9e81476"
+      ],
+      "value": [
+        "6c4fd4a4-b245-512f-99ec-4ec6d1e37126"
+      ],
+      "reason": "TLS, Authentisierung/Autorisierung und Firewalls werden nach ihrem Schutzgegenstand und ihren Grenzen eingeordnet. Die vorhandene Grundlage Authentifizierung, Logfiles und Risiken bei Client-Server-Diensten liefert dafür konkrete Netzrisiken und Identitätsprüfung; sie führt über reale Protokoll- und TCP/IP-Grundlagen. Binär-/Hexrechnung und Zweierkomplement sind hierfür keine notwendige Vorbereitung. Das vollständig gelesene neue Q4-Material C1 und seine Lösung verlangen genau WLAN-Mitlesen, fehlende Rollenrechte und unerlaubten Datenbankport, keine Zahlencodierungsrechnung. Diese Taskprüfung ist ein begrenzter zusätzlicher Kontextbeleg, kein neuer Quellen- oder Praxisnachweis.",
+      "reviewedHopIds": [
+        "INFO-HOP-126"
+      ],
+      "sourceContext": {
+        "goal": {
+          "id": "a93357e9-5e5b-57c5-98d2-35404a6e6e56",
+          "title": "Netz- und Systemsicherheit",
+          "titleEn": "Network and System Security",
+          "description": "Die lernende Person kann grundlegende Schutzmechanismen (TLS, Auth, Firewalls) einordnen.",
+          "descriptionEn": "The learner can classify basic protection mechanisms (TLS, Auth, Firewalls).",
+          "weight": 1.1,
+          "tags": [
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "70b8919e-8707-580f-9e13-0536c9e81476"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB3",
+            "processCompetencies": [
+              "P5"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I2",
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "Q4"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-SH",
+              "DE-SN",
+              "DE-ST"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "28ade124-de45-4517-bb00-123d4cc51ac7"
+            }
+          },
+          "type": "atomic"
+        },
+        "parents": [
+          {
+            "id": "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f",
+            "title": "Grundlagen der technischen Informatik",
+            "titleEn": "Fundamentals of Computer Engineering",
+            "description": "Digitalelektronik und Schaltnetze analysieren.",
+            "descriptionEn": "Analyze digital electronics and combinational circuits.",
+            "weight": 1.15,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "contains": [
+              "70b8919e-8707-580f-9e13-0536c9e81476",
+              "ca39fae0-1b12-5982-a453-54d12602dde8",
+              "01cd4048-8ce2-5167-bfa6-f3cb042c84f1",
+              "9ab554ad-c308-50ed-a5d2-499dd06120ff",
+              "a93357e9-5e5b-57c5-98d2-35404a6e6e56",
+              "5f6fb041-835b-51b1-aea9-6c42fee54e69",
+              "e9b74953-2c4c-553c-aa2c-eca278f336ed",
+              "e9f348d8-300e-5101-b7f1-3ba00ff969a1"
+            ],
+            "requires": [],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024-informatics",
+              "demandLevel": "AB3",
+              "processCompetencies": [
+                "P4"
+              ],
+              "guidingIdeas": [
+                "I1",
+                "I2",
+                "I3",
+                "I4"
+              ],
+              "phase": "Q4"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "provenance": {
+                "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+                "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+                "sourceGoalId": "e50fad37-b94e-495d-b17d-c337e187d9fe"
+              }
+            },
+            "type": "cluster"
+          }
+        ]
+      },
+      "removedEndpointContexts": [
+        {
+          "id": "70b8919e-8707-580f-9e13-0536c9e81476",
+          "title": "Binärsysteme anwenden",
+          "titleEn": "Apply Binary Systems",
+          "description": "Die lernende Person kann mit Binär-/Hexadezimalzahlen rechnen und Zweierkomplement erklären.",
+          "descriptionEn": "The learner can calculate with binary/hexadecimal numbers and explain two's complement.",
+          "weight": 1.15,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "1ce620dc-93cf-579c-a286-e74451d0a4d7"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P2",
+              "P3"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I2",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q4"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "ca6cc70b-43b5-4309-96a6-a79a5cfa0140"
+            }
+          },
+          "type": "atomic"
+        }
+      ],
+      "addedEndpointContexts": [
+        {
+          "id": "6c4fd4a4-b245-512f-99ec-4ec6d1e37126",
+          "title": "Sicherheitsaspekte in Netzen reflektieren",
+          "titleEn": "Reflect on Security Aspects in Networks",
+          "description": "Die lernende Person kann Authentifizierung, Logfiles und Risiken bei Client-Server-Diensten erläutern.",
+          "descriptionEn": "The learner can explain authentication, log files, and risks in client-server services.",
+          "weight": 0.9,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "ace0c141-9e7c-546e-914f-64c24d42d85d"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB3",
+            "processCompetencies": [
+              "P2",
+              "P5"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I2",
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "E"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "1ad65ec2-69eb-493e-b7fd-fbe4c812c07a"
+            }
+          },
+          "type": "atomic"
+        }
+      ]
+    }
+  ],
+  "expectedOutputs": [
+    {
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "originalSha256": "5a1487a47e61f59fbc9dfcd71e350443ce3357da171f6507cd85cd6c3a785e7e",
+      "candidateCanonicalSha256": "36edd4ccce224a66afe3843572a8eb148cba4f730a0edfddc7af10fdbcaa0878",
+      "hypotheticalFile": {
+        "path": "tmp/informatics-q4-foundation-combined/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "sha256": "09872f757e032b94231cca5b02c251d2687943c49b482999a6a8d79ec37ff536"
+      }
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/informatik/de-he-gym-informatics-crossstage.view.json",
+      "originalSha256": "ffb1f0c68e294253fd2d806dd2939d781b89317083406dbc70df7d7d714a07df",
+      "candidateCanonicalSha256": "549333b362f0e60135b5d190ba376ce1d4a991f4b9692e495fb01477bddac2c6",
+      "hypotheticalFile": {
+        "path": "tmp/informatics-q4-foundation-combined/de-he-gym-informatics-crossstage.view.json",
+        "sha256": "666abde2cce855d968239b726d6140d65df3b6fe8e6b35839117210b5408c894"
+      }
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/informatik/de-by-gym-informatics-crossstage.view.json",
+      "originalSha256": "e27fb27ee64bc2fefd900efda6951dbe27a7c6fc508d59dde4e98c542c119fa6",
+      "candidateCanonicalSha256": "2b87f39cde86a6edd2ad2dd901972346385e912763ccd3f04e9d61ed89f5b672",
+      "hypotheticalFile": {
+        "path": "tmp/informatics-q4-foundation-combined/de-by-gym-informatics-crossstage.view.json",
+        "sha256": "95782eaa20f1ca2b8a4070095fdf7162de17898ecc730c10207a8db40e816407"
+      }
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json",
+      "originalSha256": "5f630e13df9cbb4ad28210e5f98659f362d3ba28bdba2005c813e33180cc69a3",
+      "candidateCanonicalSha256": "79b67eebb6955f3cb0896c4c930bdccba17463e9890c1782c9327eca280b15ac",
+      "hypotheticalFile": {
+        "path": "tmp/informatics-q4-foundation-combined/de-de-gym-informatics-gk.view.json",
+        "sha256": "d05c540b070642838140e94dbcbc2385f5b32d19d9567c1d9fc7490b475be1ea"
+      }
+    }
+  ],
+  "compositionGuards": {
+    "distinctFieldOperations": 12,
+    "q4Operations": 7,
+    "ordinaryRequiresOperations": 5,
+    "wholeFilesNotOverwrittenFromIndependentSnapshots": true,
+    "changedExistingGoalIds": [
+      "29ec47db-7dfe-553d-b850-40e06f164545",
+      "2cf7589d-5451-5239-badf-1ebb981a2f20",
+      "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+      "16ce7d7a-fc31-58d0-83f8-427318331e73",
+      "5054427c-9b93-547d-8c17-b30064f180c5",
+      "a93357e9-5e5b-57c5-98d2-35404a6e6e56",
+      "a5e33d4d-f312-51d2-816b-e0b10dd1e701"
+    ],
+    "addedGoalIds": [
+      "4a6fcdd7-bcec-5b66-9008-7267a5fcf636"
+    ],
+    "unchangedExistingGoalPayloads": 275,
+    "old19CoverageDefinitionChanges": [
+      "a93357e9-5e5b-57c5-98d2-35404a6e6e56"
+    ],
+    "unchangedOld19CoverageDefinitions": 18,
+    "gk6CoverageDefinitionsUnchanged": 6,
+    "q4ExamArtifactsUnchanged": true,
+    "bothExamStatusesRemainDraft": true
+  },
+  "newGoalId": "4a6fcdd7-bcec-5b66-9008-7267a5fcf636",
+  "requiredBeforeApplication": [
+    "Fresh content review of the changed a933 prerequisite context against exact previously reviewed19 task/rubric; old review hashes stay immutable.",
+    "Root second review, real combined graph/schema/applicability/composition checks, and relevant actual QA/release evidence."
+  ],
+  "limits": [
+    "No existing source/review/history/mastery record is rewritten.",
+    "The deferred complex-automata sixth operation is excluded.",
+    "Existing wider prerequisite paths are not automatically qualified by this candidate."
+  ]
+}
