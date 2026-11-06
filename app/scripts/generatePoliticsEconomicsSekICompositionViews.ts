@@ -1,6 +1,10 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import {
+  resolvePoliticsEconomicsMemoryEntries,
+  type PoliticsEconomicsMemoryGoal,
+} from './lib/politicsEconomicsMemoryEntries'
 
 type CompositionNode =
   | {
@@ -31,8 +35,7 @@ interface CompositionView {
   rootNodes: CompositionNode[]
 }
 
-interface LearningGoal {
-  id: string
+interface LearningGoal extends PoliticsEconomicsMemoryGoal {
   tags?: string[]
 }
 
@@ -100,7 +103,10 @@ const isSekIYearStructure = (node: CompositionNode) =>
     || /(?:Phase J|Jahrgangsstufe )(?:5|6|7|8|9|10)\b/u.test(node.label)
   )
 
-const findStructureByIdSuffix = (nodes: CompositionNode[], suffix: string): CompositionNode | null => {
+const findStructureByIdSuffix = (
+  nodes: CompositionNode[],
+  suffix: string,
+): Extract<CompositionNode, { kind: 'structure' }> | null => {
   for (const node of nodes) {
     if (node.kind !== 'structure') continue
     if (node.id.endsWith(suffix)) return node
@@ -118,33 +124,7 @@ const createMemoryStructure = (sourceRoot: CompositionNode | undefined, jurisdic
     kind: 'structure',
     id: `${jurisdictionSlug(jurisdiction)}-gym-politics-economics-seki-memory`,
     label: 'Lernkarten - Politik und Wirtschaft',
-    children: clone(sourceMemory?.children ?? [
-      {
-        kind: 'goalEntry',
-        goalId: 'mem_de_gym_powi_democracy_law',
-        displayLabel: 'Lernkarten - Demokratie, Rechtsstaat und Recht',
-      },
-      {
-        kind: 'goalEntry',
-        goalId: 'mem_de_gym_powi_participation_media',
-        displayLabel: 'Lernkarten - Beteiligung, Parteien und Medien',
-      },
-      {
-        kind: 'goalEntry',
-        goalId: 'mem_de_gym_powi_market_social_policy',
-        displayLabel: 'Lernkarten - Markt, Geld und Sozialstaat',
-      },
-      {
-        kind: 'goalEntry',
-        goalId: 'mem_de_gym_powi_global_security',
-        displayLabel: 'Lernkarten - Internationale Politik und Global Governance',
-      },
-      {
-        kind: 'goalEntry',
-        goalId: 'mem_de_gym_powi_europe_integration',
-        displayLabel: 'Lernkarten - Europäische Union und Integration',
-      },
-    ]),
+    children: clone(sourceMemory?.children ?? canonicalMemoryEntries),
   }
 }
 
@@ -181,6 +161,7 @@ const createView = (jurisdiction: string, root: CompositionNode): CompositionVie
 
 const canonicalLandscape = readJson<SkillLandscape>(canonicalLandscapePath)
 const goalById = new Map(canonicalLandscape.goals.map((goal) => [goal.id, goal]))
+const canonicalMemoryEntries = resolvePoliticsEconomicsMemoryEntries(canonicalLandscape.goals)
 
 const createFromCrossStage = (jurisdiction: string): CompositionView => {
   const sourcePath = resolve(
