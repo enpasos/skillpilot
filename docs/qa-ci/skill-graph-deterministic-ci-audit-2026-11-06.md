@@ -368,5 +368,3 @@ vorgenommene Umstellung oder Freigabe.
 Die finale Quellenliste und SHA-256-Bindung der tatsächlich verwendeten Audit-
 und Konzeptquellen wird mit dem abgeschlossenen Rule-ID-Abgleich ergänzt.
 Diese Bindung beschreibt die gelesene Revision; sie simuliert keinen CI-Lauf.
-
-

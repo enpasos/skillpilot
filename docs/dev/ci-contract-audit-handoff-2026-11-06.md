@@ -18,7 +18,8 @@ Sein eingefrorener Commit ist
 zusätzlich unverändert gesichert auf
 `archive/learning-units-s0-before-ci-audit-20261106`.
 Die [Sicherung mit Reviewnotizen](../archive/learning-units/2026-11-06-s0-freeze/README.md)
-erklärt deren Umfang und Grenzen. Der neue CI-PR wird getrennt angelegt.
+erklärt deren Umfang und Grenzen. Der getrennte
+[Draft-PR #84](https://github.com/enpasos/skillpilot/pull/84) ist angelegt.
 
 **Zwei Vertragsstände unterscheiden:** Der neue CI-Branch hat die Normtexte
 von main. Die vorbereitete Anerkennungsänderung des Einheitenbranchs vom
