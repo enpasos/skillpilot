@@ -1,0 +1,759 @@
+{
+  "schemaVersion": 1,
+  "status": "independent-ai-review-40-conditional-approvals-10-holds-not-applied",
+  "humanApproval": false,
+  "reviewer": "Sol 6.1 Ultra independent runtime/audit reviewer",
+  "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+  "currentSourceSha256": "971bdd01947d57c7785ee5c30dd33ac3107c486206d4c39e8357dc50ae72b77a",
+  "reviewedInputs": [
+    {
+      "path": "tmp/ci-contract-german-after-semantic-g17.json",
+      "sha256": "4909efdb2170ecd48809cee1a472c6bddfda6365340d90cc9618db70e14386bf"
+    },
+    {
+      "path": "tmp/ci-contract-german-after-semantic-proposal.json",
+      "sha256": "61bd00b3262d98254e461e6dc95f9ac92a19af06ca7ffa74a507432a904b7672"
+    }
+  ],
+  "terminalGoalId": "886ffd34-44f6-5daa-4451-d21dd846a53a",
+  "scope": "Exactly the 50 terminal G17 candidates after the separately proposed 58 semantic corrections; no production or curriculum changes. Read all endpoint texts and relevant contains topic contexts.",
+  "summary": {
+    "cases": 50,
+    "conditionalApprovals": 40,
+    "holds": 10,
+    "holdCaseIds": [
+      "T02",
+      "T03",
+      "T17",
+      "T22",
+      "T32",
+      "T40",
+      "T45",
+      "T46",
+      "T47",
+      "T48"
+    ]
+  },
+  "technicalChecks": {
+    "allCandidatesHaveExactlyTwoCurrentWitnessEdges": true,
+    "bothTerminalDirectEndpointsPresentForEveryCase": true,
+    "allEndpointsExist": true,
+    "fullGoalAndAtomicClosureEqualityExecutedByThisReview": false
+  },
+  "conditions": [
+    "Do not apply all 50 as a batch while any retained-hop hold is unresolved. A formal witness alone does not validate its prerequisite semantics.",
+    "For each approved removal, root must prove sequential complete effective-Goal closure and normalized atomic closure equality on the exact reviewed bytes. Recompute after any semantic correction.",
+    "Keep all goal IDs, goal result states, card passes, descriptions and target membership unchanged for a terminal-normalization-only operation.",
+    "These are AI content judgments, not independent human-review/QA artifacts or proof of learner mastery."
+  ],
+  "reviewRevision": "T19 nach explizitem Film-und-Literatur-Kontext freigegeben. T50 nach Astra-Gegenprüfung des ausdrücklich epochenbezogenen LK-Erwerb-zu-Transfer-Zusammenhangs ebenfalls bedingt freigegeben. Beide vorläufigen Einwände bleiben hier dokumentiert; keine Quelldaten geändert.",
+  "cases": [
+    {
+      "caseId": "T01",
+      "removedPrerequisiteGoalId": "001b6ae3-207a-400d-852d-2c4068df8d2f",
+      "witnessIntermediateGoalId": "28eb9da8-c410-5863-96f2-71649ad33f5f",
+      "topic": [
+        "Natur als Imagination und Wirklichkeit"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Medienübergreifende Naturdarstellungen benötigen die grundlegende Untersuchung medialer Gestaltungsmittel."
+    },
+    {
+      "caseId": "T02",
+      "removedPrerequisiteGoalId": "064b0ebb-02fe-51a8-8e97-e70f00989d52",
+      "witnessIntermediateGoalId": "7d61bb9a-f916-5c1a-8946-c6d083f614ea",
+      "topic": [
+        "Darstellung von Wirklichkeit im Realismus/Naturalismus"
+      ],
+      "decision": "hold-retained-hop-not-justified",
+      "reason": "Milieu-/Detaildeutung ist ein Teilaspekt; umfassendere Erzähltechnik-/Perspektivanalyse ist aus Zieltext und gemeinsamem Realismus-Thema nicht als zwingender Vorbereitungsschritt belegt."
+    },
+    {
+      "caseId": "T03",
+      "removedPrerequisiteGoalId": "0c807f91-04b5-59dd-9c16-b366467e2557",
+      "witnessIntermediateGoalId": "293e8221-f2b1-5526-a195-e38e536f5020",
+      "topic": [
+        "Sprache, Denken, Wirklichkeit"
+      ],
+      "decision": "hold-retained-hop-not-justified",
+      "reason": "Weltbildkonstruktion durch Wortwahl/Metaphern kann semantisch untersucht werden; Sprechakt-/Pragmatikmodelle sind eine andere Analyseperspektive, keine aus dem Zieltext zwingende Vorleistung."
+    },
+    {
+      "caseId": "T04",
+      "removedPrerequisiteGoalId": "0f036059-721e-5304-967a-217f8a91db86",
+      "witnessIntermediateGoalId": "e369f367-c2d8-5301-a5be-f2c15ced9c30",
+      "topic": [
+        "Epochenumbruch 18./19. Jahrhundert"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Die ausdrücklich epochenbezogene Werkanalyse um 1800 baut plausibel auf Grundkenntnissen dieses Epochenkontexts auf."
+    },
+    {
+      "caseId": "T05",
+      "removedPrerequisiteGoalId": "139e4c3f-3702-41e7-bf10-71b89d8dd75f",
+      "witnessIntermediateGoalId": "4ba31df1-73e8-5922-a949-67bdd844fde7",
+      "topic": [
+        "Literarisches Leben der Gegenwart"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Analyse literarischer neuer Formate baut auf grundlegender literarischer/gattungsspezifischer Erschließung auf."
+    },
+    {
+      "caseId": "T06",
+      "removedPrerequisiteGoalId": "1a382700-5775-50b6-b7dc-50df93e71687",
+      "witnessIntermediateGoalId": "d789b689-d7a2-524e-9e59-3d7fa85105f0",
+      "topic": [
+        "Anthropologische Grundfragen"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Der LK-Vergleich von Utopie/Dystopie hinsichtlich Menschenbild benötigt den grundlegenden Menschenbildvergleich."
+    },
+    {
+      "caseId": "T07",
+      "removedPrerequisiteGoalId": "1cec69fc-391b-5485-ba16-a9a7a2960893",
+      "witnessIntermediateGoalId": "f7c67734-f0d9-5af4-9141-1bc6fe24905c",
+      "topic": [
+        "Frauen- und Männerbilder"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Im ausdrücklich eingegrenzten Themenfeld Frauen-/Männerbilder ist Gender-Modellanwendung eine plausible methodische Grundlage der vertieften Dekonstruktion."
+    },
+    {
+      "caseId": "T08",
+      "removedPrerequisiteGoalId": "2402a559-7091-54f7-b31d-6208a798f52c",
+      "witnessIntermediateGoalId": "28eb9da8-c410-5863-96f2-71649ad33f5f",
+      "topic": [
+        "Natur als Imagination und Wirklichkeit"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Vergleich von Naturmotiven über Medien hinweg setzt die grundlegende Erfassung literarischer Naturbilder voraus."
+    },
+    {
+      "caseId": "T09",
+      "removedPrerequisiteGoalId": "24d89140-1548-524e-b0e0-0b05ed8e7897",
+      "witnessIntermediateGoalId": "79e0abad-ae9a-5074-84f2-82ee4acfa8c6",
+      "topic": [
+        "Darstellung von Wirklichkeit im Realismus/Naturalismus"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Umfassende LK-Werkinterpretation im Realismus/Naturalismus verlangt die Analyse epochenbezogener Sprache und Stilmittel."
+    },
+    {
+      "caseId": "T10",
+      "removedPrerequisiteGoalId": "263b9af0-c584-4364-a35f-6dfccd7aaf21",
+      "witnessIntermediateGoalId": "e3cd968b-6b23-5bb7-a94e-f4e498568467",
+      "topic": [
+        "Sprache und Öffentlichkeit"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Medienformate und ihre öffentliche Kommunikationsfunktion beurteilen zu können baut auf Textsorten-/Absichtserkennung auf."
+    },
+    {
+      "caseId": "T11",
+      "removedPrerequisiteGoalId": "285f7604-bc75-53ca-bec9-e94ae94ae0aa",
+      "witnessIntermediateGoalId": "0dcabdb2-e22e-51bb-9dd9-613e754a62d9",
+      "topic": [
+        "Sprache und Öffentlichkeit"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Stil-/Registerurteile öffentlicher Rede benötigen grundlegende Analyse rhetorischer Mittel und Wirkungen."
+    },
+    {
+      "caseId": "T12",
+      "removedPrerequisiteGoalId": "293e8221-f2b1-5526-a195-e38e536f5020",
+      "witnessIntermediateGoalId": "4b548b29-f475-5c2c-97ed-a10d9cd2c6fe",
+      "topic": [
+        "Sprache, Denken, Wirklichkeit"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Vertiefte Sprach-/Diskurskritik baut auf der Analyse sprachlich konstruierter Weltbilder auf."
+    },
+    {
+      "caseId": "T13",
+      "removedPrerequisiteGoalId": "2aeeb00a-f223-528f-a964-666a2798085b",
+      "witnessIntermediateGoalId": "961df82b-34ea-5d31-b6ab-07e3c6195def",
+      "topic": [
+        "Soziales Drama und politisches Theater"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Vergleichende Inszenierungsanalyse benötigt die Deutung einzelner Bühnenmittel; die zusätzliche fragliche Vorleistung dieses Grundlagenziels wird separat in T22 gehalten."
+    },
+    {
+      "caseId": "T14",
+      "removedPrerequisiteGoalId": "2eb3741a-6cab-522b-9b56-c4c514e9e16d",
+      "witnessIntermediateGoalId": "66712ca9-d5bf-5d8d-a333-94bc721ede39",
+      "topic": [
+        "Literatur zwischen Widerstand, Exil und innerer Emigration"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Vergleich von Exil-/Widerstands- und innerer Emigrationsliteratur benötigt die Analyse der stilistischen Besonderheiten dieser Texte."
+    },
+    {
+      "caseId": "T15",
+      "removedPrerequisiteGoalId": "3acbe349-5d1c-5adb-9ec6-233f34fcd681",
+      "witnessIntermediateGoalId": "4decdc66-8830-5be7-9790-d8c22228fce1",
+      "topic": [
+        "Literatur/Sprache im Kontext Migration"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Postkoloniale Lesarten im Themenfeld Migration bauen plausibel auf der Analyse von Innen-/Außenperspektiven auf."
+    },
+    {
+      "caseId": "T16",
+      "removedPrerequisiteGoalId": "518ec458-78a7-5546-9a65-29ef6d197742",
+      "witnessIntermediateGoalId": "dafcc02a-b02e-56ac-898e-3bdd4f109b57",
+      "topic": [
+        "Soziales Drama und politisches Theater"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Sozialgeschichtliche Deutung von Dramen benötigt grundlegendes Verständnis ihrer Struktur und Figurenkonstellation."
+    },
+    {
+      "caseId": "T17",
+      "removedPrerequisiteGoalId": "54337679-b96a-542b-b236-c6ca9e890541",
+      "witnessIntermediateGoalId": "6b1d0f9d-604f-5866-a4c2-e15d94fc0985",
+      "topic": [
+        "Soziales Drama und politisches Theater"
+      ],
+      "decision": "hold-retained-hop-not-justified",
+      "reason": "Figuren-/Machtkonstellationen sind ein Teil der umfassenderen Dramenanalyse. Die gesamte Analyse von Aufbau, Konflikt und sprachlicher Gestaltung als Vorleistung kehrt die Teil-/Gesamtaufgabenfolge um."
+    },
+    {
+      "caseId": "T18",
+      "removedPrerequisiteGoalId": "55d8e114-c138-5db9-a958-3cfa8920c228",
+      "witnessIntermediateGoalId": "064b0ebb-02fe-51a8-8e97-e70f00989d52",
+      "topic": [
+        "Darstellung von Wirklichkeit im Realismus/Naturalismus"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Genrebezogene Erzähltechnik im Realismus/Naturalismus kann curricular auf dessen grundlegenden poetologischen Positionen aufbauen."
+    },
+    {
+      "caseId": "T19",
+      "removedPrerequisiteGoalId": "56d551ae-231b-5244-8894-668043b725b9",
+      "witnessIntermediateGoalId": "a9ab046a-187e-57c4-948b-1c11d152b427",
+      "topic": [
+        "Film und Literatur"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Beide Ziele liegen ausdrücklich unter Film und Literatur; filmische Gestaltungsmittel sind dort eine plausible Grundlage für die vertiefte intermediale Bezugsanalyse."
+    },
+    {
+      "caseId": "T20",
+      "removedPrerequisiteGoalId": "5887daf2-ae80-5ab5-8c09-ba3ed86d341b",
+      "witnessIntermediateGoalId": "00402c5f-7d7e-5b23-86fe-6620debcab72",
+      "topic": [
+        "Literarische Moderne frühes 20. Jh."
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Einordnung experimenteller Avantgarde im Themenfeld literarische Moderne benötigt deren grundlegende ästhetische Merkmale."
+    },
+    {
+      "caseId": "T21",
+      "removedPrerequisiteGoalId": "66932cc2-9ea9-5ad1-93a0-153618dc05f7",
+      "witnessIntermediateGoalId": "7d020e64-c3ae-57e6-9b3e-2871bed44d25",
+      "topic": [
+        "Emanzipation und Aufklärung"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Emanzipationsdiskurse im ausdrücklich auf Aufklärung bezogenen Themenfeld bauen auf deren Grundgedanken auf."
+    },
+    {
+      "caseId": "T22",
+      "removedPrerequisiteGoalId": "6b1d0f9d-604f-5866-a4c2-e15d94fc0985",
+      "witnessIntermediateGoalId": "2aeeb00a-f223-528f-a964-666a2798085b",
+      "topic": [
+        "Soziales Drama und politisches Theater"
+      ],
+      "decision": "hold-retained-hop-not-justified",
+      "reason": "Wirkung von Raum, Licht oder Requisiten kann analysiert werden, ohne zuvor sämtliche gesellschaftskritischen Figuren-/Machtverhältnisse herauszuarbeiten. Gemeinsamer Theaterkontext belegt diese Universalabhängigkeit nicht."
+    },
+    {
+      "caseId": "T23",
+      "removedPrerequisiteGoalId": "70f5f3c6-f0e9-4bd7-8095-a20be459975c",
+      "witnessIntermediateGoalId": "597b563a-8a89-5c84-9ec1-ed59bbc16376",
+      "topic": [
+        "Sprache, Denken, Wirklichkeit"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Rekonstruktion komplexerer Sachtextargumentation benötigt grundlegende These-Argument-Beleg-Erkennung."
+    },
+    {
+      "caseId": "T24",
+      "removedPrerequisiteGoalId": "714301ae-99be-5616-b3d5-77c124d53959",
+      "witnessIntermediateGoalId": "2eb3741a-6cab-522b-9b56-c4c514e9e16d",
+      "topic": [
+        "Literatur zwischen Widerstand, Exil und innerer Emigration"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Funktionsdeutung von Stilmitteln in Exil-/Widerstandsliteratur baut plausibel auf ihren Zensur-/Publikationsbedingungen auf."
+    },
+    {
+      "caseId": "T25",
+      "removedPrerequisiteGoalId": "716dab51-8edd-5f30-82be-2d3cb3978c0c",
+      "witnessIntermediateGoalId": "1cec69fc-391b-5485-ba16-a9a7a2960893",
+      "topic": [
+        "Frauen- und Männerbilder"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Anwendung von Gender-Modellen auf literarische und mediale Beispiele baut auf grundlegender kritischer Analyse medialer Geschlechterbilder auf."
+    },
+    {
+      "caseId": "T26",
+      "removedPrerequisiteGoalId": "74ca633e-e31c-5e07-80d4-1f0683444971",
+      "witnessIntermediateGoalId": "716eefdf-b7e6-529c-a494-d34f19844631",
+      "topic": [
+        "Kommunikation im Wandel"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Analyse sprachlicher Diskursstrategien kann im Themenfeld Kommunikation im Wandel auf pragmatischen Modellen aufbauen."
+    },
+    {
+      "caseId": "T27",
+      "removedPrerequisiteGoalId": "7aa6334f-18d6-543e-9aff-794aa76f5f3a",
+      "witnessIntermediateGoalId": "031a2b94-5f29-5c77-badd-a4553152616e",
+      "topic": [
+        "Literatur/Sprache im Kontext Migration"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Identitätsverhandlungen von Figuren in Migrationserzählungen setzen die grundlegende Erschließung ihrer Handlung, Perspektive und Konflikte voraus."
+    },
+    {
+      "caseId": "T28",
+      "removedPrerequisiteGoalId": "8885320d-d224-5618-952f-f8ba7c746427",
+      "witnessIntermediateGoalId": "c6724563-db89-5e7d-ae6e-6247b997cd1e",
+      "topic": [
+        "Anthropologische Grundfragen"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Vertiefte existenzielle Interpretation im anthropologischen Themenfeld baut plausibel auf grundlegenden philosophischen Deutungsbezügen auf."
+    },
+    {
+      "caseId": "T29",
+      "removedPrerequisiteGoalId": "97d958b1-93d3-58ad-b208-80af1cdfd4d4",
+      "witnessIntermediateGoalId": "454b90ca-3d02-5e8d-83e5-7ce76d6bb4f1",
+      "topic": [
+        "Literarische Wirkungen und Wertungen"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Anwendung literaturtheoretischer Interpretationsmodelle benötigt nachvollziehbare grundlegende Interpretationsschritte."
+    },
+    {
+      "caseId": "T30",
+      "removedPrerequisiteGoalId": "9d399f9f-3551-55b8-9710-013b341c55cf",
+      "witnessIntermediateGoalId": "0f3cd8a9-258a-56b6-81dc-470fb1103e92",
+      "topic": [
+        "Literarisches Leben der Gegenwart"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Bewertung digitaler literarischer Publikationsformen im literarischen Gegenwartsbetrieb baut plausibel auf dessen grundlegenden Markt-/Vermittlungsstrukturen auf."
+    },
+    {
+      "caseId": "T31",
+      "removedPrerequisiteGoalId": "a2759ea0-a8b3-5657-819f-6a3585a1ee8d",
+      "witnessIntermediateGoalId": "07bdef9a-2ccf-554c-9459-50919121b57c",
+      "topic": [
+        "Romantische Spiegelungen"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Romantik-Rezeption und ihre Transformationen verlangen grundlegende Kenntnis romantischer Merkmale."
+    },
+    {
+      "caseId": "T32",
+      "removedPrerequisiteGoalId": "a51a2b9d-9365-5137-801f-f609810d4b6c",
+      "witnessIntermediateGoalId": "716dab51-8edd-5f30-82be-2d3cb3978c0c",
+      "topic": [
+        "Frauen- und Männerbilder"
+      ],
+      "decision": "hold-retained-hop-not-justified",
+      "reason": "Kritische Analyse medialer Geschlechterbilder umfasst auch rein visuelle Beispiele; Beherrschung sprachlicher Metaphern/Zuschreibungen ist dafür nach Zielwortlaut keine universelle Voraussetzung."
+    },
+    {
+      "caseId": "T33",
+      "removedPrerequisiteGoalId": "a67edc3f-054c-521a-9177-c3b097eb1eb7",
+      "witnessIntermediateGoalId": "3c42558c-0be2-566b-8678-41d490b566d0",
+      "topic": [
+        "Literatur/Sprache im Kontext Migration"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Vertiefte Transkulturalitäts-/Übersetzungsreflexion im Migrationsthema baut auf grundlegender Mehrsprachigkeits-/Hybriditätsdeutung auf."
+    },
+    {
+      "caseId": "T34",
+      "removedPrerequisiteGoalId": "ada7390c-bc64-5d53-d23f-b45f1465cd7b",
+      "witnessIntermediateGoalId": "0c807f91-04b5-59dd-9c16-b366467e2557",
+      "topic": [
+        "Sprache, Denken, Wirklichkeit"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Pragmatische Sprechakt-/Kontextmodelle können auf grundlegender Erklärung von Kommunikationssituationen mit einem Modell aufbauen."
+    },
+    {
+      "caseId": "T35",
+      "removedPrerequisiteGoalId": "c2f901ad-9469-5f84-aa19-e80d300842c5",
+      "witnessIntermediateGoalId": "3acbe349-5d1c-5adb-9ec6-233f34fcd681",
+      "topic": [
+        "Literatur/Sprache im Kontext Migration"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Analyse perspektivischer Wechsel benötigt grundlegende Begriffe der Erzählperspektive."
+    },
+    {
+      "caseId": "T36",
+      "removedPrerequisiteGoalId": "c6774f8a-8dea-5c73-9791-864f676b55a4",
+      "witnessIntermediateGoalId": "a51a2b9d-9365-5137-801f-f609810d4b6c",
+      "topic": [
+        "Frauen- und Männerbilder"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Untersuchung sprachlicher Geschlechtskonstruktion baut auf Bedeutungsfeldern, Konnotationen und Zuschreibungen auf."
+    },
+    {
+      "caseId": "T37",
+      "removedPrerequisiteGoalId": "c6a10b42-b126-5e19-b152-3a4b1abfd819",
+      "witnessIntermediateGoalId": "38818969-e671-50c6-9a69-306f07a3ed17",
+      "topic": [
+        "Literarische Moderne frühes 20. Jh."
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Vertiefte LK-Analyse des Bewusstseinsstroms baut auf grundlegender Deutung moderner innerer Erzählformen auf."
+    },
+    {
+      "caseId": "T38",
+      "removedPrerequisiteGoalId": "c8912a37-3c16-5d56-8473-e7f3d0ab35a5",
+      "witnessIntermediateGoalId": "8e07e95a-a5ba-514b-aeed-c3fefaee8c33",
+      "topic": [
+        "Emanzipation und Aufklärung"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Vertiefte historische/literarische Kritik von Geschlechterrollen baut auf grundlegendem Epochenvergleich solcher Rollenbilder auf."
+    },
+    {
+      "caseId": "T39",
+      "removedPrerequisiteGoalId": "d4124fd5-e0fb-5044-b18d-699ce7203ebf",
+      "witnessIntermediateGoalId": "3da94853-abf9-5c97-a38c-b25d17057007",
+      "topic": [
+        "Film und Literatur"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Vergleich von Erzählen in Text und Film benötigt grundlegende Filmanalyse."
+    },
+    {
+      "caseId": "T40",
+      "removedPrerequisiteGoalId": "d7e283e4-c510-52f0-8c8b-37ab5b2d34b3",
+      "witnessIntermediateGoalId": "86e9029b-5390-5e57-9d29-6e409a55da23",
+      "topic": [
+        "Kommunikation im Wandel"
+      ],
+      "decision": "hold-retained-hop-not-justified",
+      "reason": "Gesamtaussage und Moduswechselwirkung multimodaler Texte können rein informierend sein. Persuasive Rhetorik ist keine für alle solchen Aufgaben belegte Vorleistung."
+    },
+    {
+      "caseId": "T41",
+      "removedPrerequisiteGoalId": "dafcc02a-b02e-56ac-898e-3bdd4f109b57",
+      "witnessIntermediateGoalId": "ec6c8ecf-36ec-571f-9622-f0a4d69ff10e",
+      "topic": [
+        "Soziales Drama und politisches Theater"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Abgrenzung politischen/epischen/dokumentarischen Theaters in Zielen und Mitteln baut plausibel auf dessen historischen und politischen Kontexten auf."
+    },
+    {
+      "caseId": "T42",
+      "removedPrerequisiteGoalId": "df0d291b-e340-501c-b82a-257fc26cb1e3",
+      "witnessIntermediateGoalId": "a6f1d30e-6b6f-5b55-be98-15c70c992b26",
+      "topic": [
+        "Natur als Imagination und Wirklichkeit"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Ökologische Deutung literarischer Naturdarstellung baut plausibel auf grundlegender Naturmotiv-/Metapherndeutung auf."
+    },
+    {
+      "caseId": "T43",
+      "removedPrerequisiteGoalId": "df846e98-f04e-5af7-9e0d-72f48b2c10b0",
+      "witnessIntermediateGoalId": "3a9a1891-dc7c-5310-a0e0-f569830be7f0",
+      "topic": [
+        "Literatur zwischen Widerstand, Exil und innerer Emigration"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Analyse historisch ausdrücklich gebundener Exil-/Widerstandstexte benötigt deren Grundkontext 1933–45."
+    },
+    {
+      "caseId": "T44",
+      "removedPrerequisiteGoalId": "e2de5dd7-39bf-5511-9230-d747accb6977",
+      "witnessIntermediateGoalId": "09026fe8-d56c-5937-a099-3678b8a047f5",
+      "topic": [
+        "Literarische Wirkungen und Wertungen"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Reflexion literarischer Kanonbildung setzt grundlegende Beurteilungskriterien literarischer Auswahl voraus."
+    },
+    {
+      "caseId": "T45",
+      "removedPrerequisiteGoalId": "e369f367-c2d8-5301-a5be-f2c15ced9c30",
+      "witnessIntermediateGoalId": "393a2edc-a2f7-54e1-b44f-f24c4325bce0",
+      "topic": [
+        "Epochenumbruch 18./19. Jahrhundert"
+      ],
+      "decision": "hold-retained-hop-not-justified",
+      "reason": "Motive mit Textbelegen herauszuarbeiten ist ein Teilaspekt. Vorherige Beherrschung einer breiteren Werkanalyse von Aufbau, Erzählweise und Figuren ist im Zielwortlaut nicht zwingend."
+    },
+    {
+      "caseId": "T46",
+      "removedPrerequisiteGoalId": "e3cd968b-6b23-5bb7-a94e-f4e498568467",
+      "witnessIntermediateGoalId": "338f1f67-0337-512e-bae2-7270de6a2634",
+      "topic": [
+        "Sprache und Öffentlichkeit"
+      ],
+      "decision": "hold-retained-hop-not-justified",
+      "reason": "Sprachlich-argumentative Untersuchung eines öffentlichen Diskurses ist möglich, ohne zuvor verschiedene Medienformate in ihrer Meinungsbildungsfunktion zu vergleichen/beschreiben. Die zwei Linsen sind nicht als feste Folge belegt."
+    },
+    {
+      "caseId": "T47",
+      "removedPrerequisiteGoalId": "e4a165c8-4c20-5a13-b643-7b535774fea3",
+      "witnessIntermediateGoalId": "fbe49d63-91de-5e25-9e90-01f6dd6a93ce",
+      "topic": [
+        "Anthropologische Grundfragen"
+      ],
+      "decision": "hold-retained-hop-not-justified",
+      "reason": "Ethische Dilemmata/Entscheidungen können ohne Entwicklung eines Figuren-Selbstentwurfs untersucht werden. Das gemeinsame anthropologische Thema begründet keine universelle Abhängigkeit."
+    },
+    {
+      "caseId": "T48",
+      "removedPrerequisiteGoalId": "e8c566a8-b488-5315-b889-a9fa51dcd144",
+      "witnessIntermediateGoalId": "33befb34-d91e-574f-b22c-e80046b5c979",
+      "topic": [
+        "Romantische Spiegelungen"
+      ],
+      "decision": "hold-retained-hop-not-justified",
+      "reason": "Romantische Märchen/Novellen müssen weder fragmentarisch noch ironisch/offen gestaltet sein. Die gesamte Kompetenz Fragment/Ironie/offene Formen ist keine universelle Vorleistung für ihre Struktur-/Motivanalyse."
+    },
+    {
+      "caseId": "T49",
+      "removedPrerequisiteGoalId": "ee24035d-38d6-567c-8aeb-e6878d3cdfda",
+      "witnessIntermediateGoalId": "f5ffa1e2-09a2-55f7-89f6-9f31308398bb",
+      "topic": [
+        "Epochenumbruch 18./19. Jahrhundert"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Vergleich klassischer/romantischer Texte baut auf grundlegender Kenntnis der betreffenden Gattungen und Formen auf."
+    },
+    {
+      "caseId": "T50",
+      "removedPrerequisiteGoalId": "f5ffa1e2-09a2-55f7-89f6-9f31308398bb",
+      "witnessIntermediateGoalId": "0e518e41-139b-5d14-8d59-4974a7c6dd77",
+      "topic": [
+        "Epochenumbruch 18./19. Jahrhundert"
+      ],
+      "decision": "approve-terminal-normalization-conditional",
+      "reason": "Erneut mit dem expliziten LK-Epochenumbruchkontext geprüft: Der vorbereitete Klassik-/Romantikvergleich erarbeitet Deutungsmuster an Motivgestaltung, Sprachgestalt und Menschenbild; deren anschließender Transfer auf unbekannte Texte ist eine plausible Erwerb-zu-Transfer-Folge."
+    }
+  ],
+  "followUpReview": {
+    "reviewedSemanticProposal": {
+      "path": "docs/dev/ci-graph-repairs/german-held-prerequisites-repair-proposal-2026-11-06.json",
+      "sha256": "745da5c6e0c7a8c28a3663fad4f8707fb0ededd9f4fe2cd943541b2a2fb397ea"
+    },
+    "status": "10-targeted-semantic-corrections-and41-terminal-candidates-conditionally-approved-not-applied",
+    "additionalOperationsReviewed": [
+      {
+        "repairId": "DE-SEM-T02",
+        "goalId": "7d61bb9a-f916-5c1a-8946-c6d083f614ea",
+        "oldPrerequisiteGoalIds": [
+          "064b0ebb-02fe-51a8-8e97-e70f00989d52"
+        ],
+        "newPrerequisiteGoalIds": [
+          "97d958b1-93d3-58ad-b208-80af1cdfd4d4"
+        ],
+        "decision": "approve-bounded-semantic-correction"
+      },
+      {
+        "repairId": "DE-SEM-T03",
+        "goalId": "293e8221-f2b1-5526-a195-e38e536f5020",
+        "oldPrerequisiteGoalIds": [
+          "0c807f91-04b5-59dd-9c16-b366467e2557"
+        ],
+        "newPrerequisiteGoalIds": [
+          "c6774f8a-8dea-5c73-9791-864f676b55a4"
+        ],
+        "decision": "approve-bounded-semantic-correction"
+      },
+      {
+        "repairId": "DE-SEM-T17",
+        "goalId": "6b1d0f9d-604f-5866-a4c2-e15d94fc0985",
+        "oldPrerequisiteGoalIds": [
+          "54337679-b96a-542b-b236-c6ca9e890541"
+        ],
+        "newPrerequisiteGoalIds": [
+          "518ec458-78a7-5546-9a65-29ef6d197742"
+        ],
+        "decision": "approve-bounded-semantic-correction"
+      },
+      {
+        "repairId": "DE-SEM-T22",
+        "goalId": "2aeeb00a-f223-528f-a964-666a2798085b",
+        "oldPrerequisiteGoalIds": [
+          "6b1d0f9d-604f-5866-a4c2-e15d94fc0985"
+        ],
+        "newPrerequisiteGoalIds": [
+          "518ec458-78a7-5546-9a65-29ef6d197742"
+        ],
+        "decision": "approve-bounded-semantic-correction"
+      },
+      {
+        "repairId": "DE-SEM-T32",
+        "goalId": "716dab51-8edd-5f30-82be-2d3cb3978c0c",
+        "oldPrerequisiteGoalIds": [
+          "a51a2b9d-9365-5137-801f-f609810d4b6c"
+        ],
+        "newPrerequisiteGoalIds": [
+          "001b6ae3-207a-400d-852d-2c4068df8d2f"
+        ],
+        "decision": "approve-bounded-semantic-correction"
+      },
+      {
+        "repairId": "DE-SEM-T40",
+        "goalId": "86e9029b-5390-5e57-9d29-6e409a55da23",
+        "oldPrerequisiteGoalIds": [
+          "d7e283e4-c510-52f0-8c8b-37ab5b2d34b3"
+        ],
+        "newPrerequisiteGoalIds": [
+          "001b6ae3-207a-400d-852d-2c4068df8d2f"
+        ],
+        "decision": "approve-bounded-semantic-correction"
+      },
+      {
+        "repairId": "DE-SEM-T45",
+        "goalId": "393a2edc-a2f7-54e1-b44f-f24c4325bce0",
+        "oldPrerequisiteGoalIds": [
+          "e369f367-c2d8-5301-a5be-f2c15ced9c30"
+        ],
+        "newPrerequisiteGoalIds": [
+          "97d958b1-93d3-58ad-b208-80af1cdfd4d4"
+        ],
+        "decision": "approve-bounded-semantic-correction"
+      },
+      {
+        "repairId": "DE-SEM-T46",
+        "goalId": "338f1f67-0337-512e-bae2-7270de6a2634",
+        "oldPrerequisiteGoalIds": [
+          "e3cd968b-6b23-5bb7-a94e-f4e498568467"
+        ],
+        "newPrerequisiteGoalIds": [
+          "70f5f3c6-f0e9-4bd7-8095-a20be459975c",
+          "285f7604-bc75-53ca-bec9-e94ae94ae0aa"
+        ],
+        "decision": "approve-bounded-semantic-correction"
+      },
+      {
+        "repairId": "DE-SEM-T47",
+        "goalId": "fbe49d63-91de-5e25-9e90-01f6dd6a93ce",
+        "oldPrerequisiteGoalIds": [
+          "e4a165c8-4c20-5a13-b643-7b535774fea3"
+        ],
+        "newPrerequisiteGoalIds": [
+          "97d958b1-93d3-58ad-b208-80af1cdfd4d4"
+        ],
+        "decision": "approve-bounded-semantic-correction"
+      },
+      {
+        "repairId": "DE-SEM-T48",
+        "goalId": "33befb34-d91e-574f-b22c-e80046b5c979",
+        "oldPrerequisiteGoalIds": [
+          "e8c566a8-b488-5315-b889-a9fa51dcd144"
+        ],
+        "newPrerequisiteGoalIds": [
+          "a2759ea0-a8b3-5657-819f-6a3585a1ee8d",
+          "c2f901ad-9469-5f84-aa19-e80d300842c5"
+        ],
+        "decision": "approve-bounded-semantic-correction"
+      }
+    ],
+    "additionalOperationBasis": "Alle zehn beseitigen die konkret gehaltene Gattungs-/Methoden-/Teil-Gesamt-Abhängigkeit und verwenden vorhandene engere Grundkompetenzen. T02/T45 schließen Drama/Lyrik nicht mehr durch Prosa-/Dramengesamtanalyse aus; T32/T40 verlangen allgemeine Medienanalyse; T46 Grundargumentation und Rhetorikanalyse; T48 Romantik- und Erzählgrundlagen. Quellen-/Elternkontexte und alle alten/neuen Zieltexte gelesen.",
+    "remainingTerminalCases": 41,
+    "unchangedApprovedWitnesses": 35,
+    "changedWitnessReviews": [
+      {
+        "oldCaseId": "T23",
+        "sourceGoalId": "886ffd34-44f6-5daa-4451-d21dd846a53a",
+        "witnessIntermediateGoalId": "338f1f67-0337-512e-bae2-7270de6a2634",
+        "removedPrerequisiteGoalId": "70f5f3c6-f0e9-4bd7-8095-a20be459975c",
+        "witnessTitles": [
+          "Gesamtaufgabe Deutsch",
+          "Diskursanalyse zu politischen Texten",
+          "Argumentationsaufbau"
+        ],
+        "decision": "approve-terminal-normalization-conditional",
+        "reason": "Öffentliche Diskursanalyse braucht grundlegenden Argumentationsaufbau; der engere sprachlich-argumentative Erwerb ersetzt den Medienformat-Umweg."
+      },
+      {
+        "oldCaseId": "T35",
+        "sourceGoalId": "886ffd34-44f6-5daa-4451-d21dd846a53a",
+        "witnessIntermediateGoalId": "33befb34-d91e-574f-b22c-e80046b5c979",
+        "removedPrerequisiteGoalId": "c2f901ad-9469-5f84-aa19-e80d300842c5",
+        "witnessTitles": [
+          "Gesamtaufgabe Deutsch",
+          "Märchen/Novelle romantischer Prägung",
+          "Erzähltheorie Grundbegriffe"
+        ],
+        "decision": "approve-terminal-normalization-conditional",
+        "reason": "Analyse romantischer Erzählungen braucht Erzählperspektiv-/Zeitbegriffe; allgemeine Erzählgrundlagen statt spezifischer Fragment/Ironiepflicht."
+      },
+      {
+        "oldCaseId": "T16",
+        "sourceGoalId": "886ffd34-44f6-5daa-4451-d21dd846a53a",
+        "witnessIntermediateGoalId": "2aeeb00a-f223-528f-a964-666a2798085b",
+        "removedPrerequisiteGoalId": "518ec458-78a7-5546-9a65-29ef6d197742",
+        "witnessTitles": [
+          "Gesamtaufgabe Deutsch",
+          "Bühnenmittel deuten",
+          "Drama-Grundbegriffe"
+        ],
+        "decision": "approve-terminal-normalization-conditional",
+        "reason": "Bühnenmittel werden im Grundverständnis dramatischer Struktur/Figuren eingeordnet; keine vorgängige ganze sozialkritische Figurenanalyse."
+      },
+      {
+        "oldCaseId": "T29",
+        "sourceGoalId": "886ffd34-44f6-5daa-4451-d21dd846a53a",
+        "witnessIntermediateGoalId": "393a2edc-a2f7-54e1-b44f-f24c4325bce0",
+        "removedPrerequisiteGoalId": "97d958b1-93d3-58ad-b208-80af1cdfd4d4",
+        "witnessTitles": [
+          "Gesamtaufgabe Deutsch",
+          "Zentrale Motive (Natur, Subjekt)",
+          "Interpretationsschritte"
+        ],
+        "decision": "approve-terminal-normalization-conditional",
+        "reason": "Motive mit Belegen deuten baut auf gattungsübergreifenden Interpretationsschritten auf."
+      },
+      {
+        "oldCaseId": "T36",
+        "sourceGoalId": "886ffd34-44f6-5daa-4451-d21dd846a53a",
+        "witnessIntermediateGoalId": "293e8221-f2b1-5526-a195-e38e536f5020",
+        "removedPrerequisiteGoalId": "c6774f8a-8dea-5c73-9791-864f676b55a4",
+        "witnessTitles": [
+          "Gesamtaufgabe Deutsch",
+          "Sprachliche Deutung von Weltbildern",
+          "Begriffs- und Bedeutungsfelder"
+        ],
+        "decision": "approve-terminal-normalization-conditional",
+        "reason": "Sprachliche Weltbildkonstruktion baut auf Wort-/Bedeutungsfeldern und Konnotationen auf."
+      },
+      {
+        "oldCaseId": "T03",
+        "sourceGoalId": "886ffd34-44f6-5daa-4451-d21dd846a53a",
+        "witnessIntermediateGoalId": "74ca633e-e31c-5e07-80d4-1f0683444971",
+        "removedPrerequisiteGoalId": "0c807f91-04b5-59dd-9c16-b366467e2557",
+        "witnessTitles": [
+          "Gesamtaufgabe Deutsch",
+          "Pragmatische Modelle",
+          "Sprachhandlungen einordnen"
+        ],
+        "decision": "approve-terminal-normalization-conditional",
+        "reason": "Erweiterte pragmatische Modelle bauen auf grundlegender Einordnung von Sprechakten und Kommunikationskontexten auf; dies ist die bereits begründete Grundlagen-zu-Modellerweiterungsfolge."
+      }
+    ],
+    "actualSourceDataModified": false,
+    "fullGlobalClosureProofExecutedByThisReview": false,
+    "requiredNextCheck": "Root independently verifies semantic68-operation candidate and global integration; then each of41terminal removals must separately preserve completeGoal and normalizedAtomic closure. Semantic corrections deliberately change84Goal/99Atomic closures; do not label these68operations as reachability-preserving."
+  }
+}

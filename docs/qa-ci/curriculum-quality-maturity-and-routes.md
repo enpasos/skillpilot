@@ -10,9 +10,16 @@ Kompetenzen absichern. Diese zusätzliche Autorenpflicht verlangt ein
 unabhängiges Aufgaben-/Rubrikreview nach dem
 [korrigierten Abschlusskonzept](../concept/skill-graph/assessment-gated-completion.md).
 Transitive Minimalität und gültige lokale Abschlussverträge bleiben
-Strukturbedingungen, keine Ersatzbelege für Aufgabenqualität. Bestehende
-Statusdateien und historische Reviewnachweise werden hier nicht neu bewertet
-oder umgeschrieben; die konkrete neue Prüfung wird erst geplant.
+Strukturbedingungen, keine Ersatzbelege für Aufgabenqualität. Historische
+Reviewnachweise werden dadurch nicht nachtraeglich umgedeutet.
+Die separate neue Pruefung der Anerkennungsvertraege bleibt offen.
+
+**Harte Strukturpruefung vom 6. November 2026:** `CQR-001` fuehrt die unten
+beschriebenen zehn deterministischen Graphpruefungen tatsaechlich aus.
+Fehlende, blockierte oder fehlgeschlagene Pruefungen verhindern einen hoeheren
+Meilenstein. Alte M6-/M7-Werte ersetzen diesen Nachweis nicht. Die zehn
+geschuetzten Fach-Untergrenzen bleiben bestehen; echte Bestandsfehler sind
+unter dem strengeren Vertrag zu beheben.
 
 Normative Implementierung:
 
@@ -235,7 +242,10 @@ Die Reifegrade sind kumulativ und konservativ. Ein hoeherer Reifegrad setzt alle
 
 ### Scope-Reife
 
-Ein einzelner QA-Scope kann maximal `M3` erreichen.
+Ein einzelner QA-Scope kann maximal `M4` erreichen. Dies entspricht der
+folgenden Tabelle, der bisherigen Berechnung und der bereits geltenden
+Voraussetzung fuer Curriculum-`M5`; die fruehere Angabe `M3` war ein
+widerspruechlicher Dokumentationssatz.
 
 | Scope-Reife | Exakte Bedingung |
 | --- | --- |
@@ -324,30 +334,57 @@ Reifeziel:
 
 - Erster fachlicher Meilenstein `M1`.
 
-### `CQR-001` - Basic graph integrity
+### `CQR-001` - Strict graph integrity
 
 Ziel:
 
 > Die Landschaft ist als Graph technisch konsistent.
 
-Geprueft wird:
+Geprueft wird der vollstaendige kanonische Katalog. Fuer ein Curriculum gehoeren
+alle seine Ziele sowie die erforderliche Referenz- und Contains-Vorfahrenhuelle
+zum Pruefumfang. Eine nur zur Vererbung benoetigte fremde Vorfahrengruppe zieht
+keine unbeteiligten Geschwister in den Umfang. Lernendenfokus und
+Applicability-Filter verkuerzen diese Strukturpruefung nicht.
 
-- jede Ziel-ID ist eindeutig,
-- lokale `requires`-Referenzen zeigen auf vorhandene Ziele oder bekannte globale Ziele,
-- lokale `contains`-Referenzen zeigen auf vorhandene Ziele oder bekannte globale Ziele,
-- ein Ziel referenziert sich nicht selbst,
-- direkte `requires` bilden keinen Zyklus,
-- direkte `contains` bilden keinen Zyklus.
+Die zehn Pflichtpruefungen sind:
 
-Metriken:
+| Regel | Tatsaechliche Bedingung |
+| --- | --- |
+| `G01a` | Kanonische Goal-IDs und Referenzendpunkte haben UUID-Format. |
+| `G01b` | Die aufgeloesten kanonischen Identitaeten sind eindeutig; widerspruechliche Definitionen werden nicht willkuerlich ausgewaehlt. |
+| `G02` | Gewichte sind endlich und strikt positiv. |
+| `G05` | Referenzen existieren und sind eindeutig; qualifizierte Referenzen werden exakt aufgeloest. |
+| `G06` | Der Contains-Graph ist azyklisch. |
+| `G07` | Der direkte Requires-Graph ist azyklisch. |
+| `G15` | Auch geerbte Anforderungen sind azyklisch und erzeugen keine Selbstanforderung. |
+| `G42` | Die atomar normalisierte Voraussetzungsrelation ist azyklisch. |
+| `G16` | Eine direkte Anforderung wird nicht bereits von einem Contains-Vorfahren geerbt. |
+| `G17` | Nach Entfernen einer verfassten Kante und erneuter Berechnung der Vererbung bleibt kein alternativer effektiver Pfad zu derselben Voraussetzung. |
 
-- `goals`: Anzahl der Ziele in der Landschaft.
-- `localReferenceIssues`: Anzahl gefundener Integritaetsprobleme.
+`G17` verwendet die Goal-Knotenrelation aus Graph Definition §7.3;
+die atomare Normalisierung fuer `G42` ist eine getrennte Pruefung.
+Fehlende optionale `contains`-/`requires`-Felder bedeuten leere Mengen;
+ungueltige Feldtypen sind Fehler.
 
-Status:
+Der Status enthaelt den vollstaendigen `graphIntegrity`-Bericht mit
+Pruefmanifest, genauem Wurzelumfang, geprueften Goalkeys, Einzelbefunden und
+Zeugenpfaden. Zu den Metriken gehoeren `checkedGoals`, `checkedLandscapes`,
+`effectiveRequires`, `atomicRequires`, `localRedundancies` und
+`transitiveRedundancies`.
 
-- `pass`, wenn `localReferenceIssues = 0`.
-- `fail`, wenn mindestens ein Integritaetsproblem existiert.
+`pass` setzt einen nichtleeren richtigen Umfang, alle zehn tatsaechlich
+ausgefuehrten bestandenen Pruefungen und null Befunde voraus. Fehlende oder
+blockierte Pruefungen ergeben `fail`; ein alter nackter `CQR-001: pass`-Wert
+ist unzureichend. Die Reifegradberechnung prueft diesen Bericht vor allen
+hoeheren Stufen und ergibt andernfalls `M0`. Der Untergrenzenpruefer lehnt
+auch eine behauptete M6-/M7-Angabe ohne diesen Nachweis ab.
+
+Die Pruefer und ihre echten Negativfaelle laufen ueber
+`npm run test:deep-understanding-rollout` im bestehenden Curriculum-CI-Job.
+Der anschliessende Statuslauf und `check:curriculum-maturity-floors` verbinden
+den realen Bestand mit der unveraenderten Fehlerwirkung im CI-Job. Die
+[Einzelregelmatrix](skill-graph-ci-static-matrix-2026-11-06.md) trennt den
+alten Pruefstand vom Reparaturnachtrag.
 
 Reifeziel:
 

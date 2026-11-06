@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "applied-strict-graph-passed-awaiting-fresh-CQR",
+  "status": "applied-strict-graph-and-fresh-CQR-M6-passed",
   "humanApproval": false,
   "baselineCommit": "212eebd39a28afba212551efd773633fd55d6338",
   "proposalPath": "docs/dev/ci-graph-repairs/inherited-duplicate-review-2026-11-06.json",
@@ -123,5 +123,15 @@
     ],
     "allPass": true,
     "findings": 0
+  },
+  "freshCqrVerification": {
+    "statusPath": "docs/qa-ci/status/curriculum-quality-status.json",
+    "statusSha256": "1ebf94753d3e352ab79cd9582518b16f7c740e4135291c8d0fd824435e4b1237",
+    "generatedAt": "2026-11-06T10:41:36.865Z",
+    "maturity": "M6",
+    "graphStatus": "pass",
+    "floor": "M6",
+    "generationExitCode": 0,
+    "otherProtectedSubjectFailures": 8
   }
 }

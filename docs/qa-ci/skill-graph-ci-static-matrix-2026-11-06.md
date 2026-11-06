@@ -2,8 +2,10 @@
 
 **Auditbasis:** `0ce5a8d791eeb9783a919195fd8590bfb79f3595` (main),
 Arbeitsbranch `feat/skill-graph-ci-contracts`, zum Lesebeginn
-`1678bb28e8720ee07249d512d10666011dcab2bc`. Die späteren Reparaturen müssen
-mit eigenem Commit und erneuter Befundbewertung ergänzt werden. Der eingefrorene
+`1678bb28e8720ee07249d512d10666011dcab2bc`. Die Einzelzeilen dokumentieren diesen unveränderten Audit-Ausgangsstand.
+Der unten getrennte Reparaturnachtrag E61 beschreibt den danach implementierten
+lokalen Prüfer samt CQR-Anbindung; er ist keine rückwirkende grüne Bewertung
+der damaligen Daten und keine Remote-CI-Abnahme. Der eingefrorene
 Einheitenstand `52619b960e7b261e1cc18d070063c8e7aca74e21` aus PR #83 ist
 **zusätzliches Zielmaterial**, kein bereits implementierter Main-Vertrag.
 
@@ -12,8 +14,8 @@ statische G-/V-Regeln sowie Q ohne Championblock40–48, S ohne Runtime19–24,
 I01–17 und sämtliche B-/K-Regeln. Gemeinsame statische R-/U-/N-Facetten stehen
 in der [Laufzeitmatrix](skill-graph-ci-runtime-matrix-2026-11-06.md),
 Content-/Bildruntime in der [Content-/Präsentationsmatrix](skill-graph-ci-content-presentation-matrix-2026-11-06.md).
-Die Zuordnung wurde gegen 494 Korpusregeln auf fehlende/fremde/doppelte IDs geprüft.
-E01–E60
+Die Zuordnung wurde gegen 518 Korpusregeln auf fehlende/fremde/doppelte IDs geprüft.
+E01–E61
 sind wiederverwendbare **Belegketten**, keine normativen Regel-IDs. Die früheren
 S01–S45 werden damit ausdrücklich nicht zum Ersatz für die einzelnen G/V/Q/S/I/B/K-
 Regeln. Jede Matrixzeile nennt ihre eigene Grenze und verweist auf die unten
@@ -501,3 +503,95 @@ sind nicht als neuer Nachweis übernommen.
 | E58 Unabhängige Normalform und Closure | `scripts/validate_full_standalone_curriculum_package.py:1794–1871` FieldRegistry, `:2255` content/assets, `:2945` DerivedClosure, `:3647–3724` unabhängige hardreferenceclosure; `validate_curriculum_release_model.py:929–1285` Pointer/Normalform, `:1411` Digests, `:3350` expected model. | Fullvalidator selftest `:3848–3908` echte badZIPs; `:4065–4200` Closure-reference/seedelision wird unabhängig entdeckt. `validate_curriculum_release_model_fixtures.py:226` Closure, `:494` Migration, `:714` Publication, `:857` publicationoutsideclosure, `:919` mutierte Ausführung. Aktuelle Modellmutationen u.a. Source/fingerprint/binary/Migration5790–6505. | C684–692 ContractCLIs/Selftests/Realrelease-Modellconformance; O77–81 actual fullZIPvalidation. Hauptworkflow-/optionaltrigger unterscheiden sich wie oben. Nichtnull hart, keine versteckte Baseline. | Normalisierungs-/Closurevertrag des expliziten v1Releaseprofils; nicht automatische didaktische Minimalität aller G/V-Normen. Echte fullZIP-Prüfung nicht in jeder PR. |
 | E59 Quarantäne, Store und atomarer Lock | `scripts/provision_curriculum_package.py:627–716` quarantine identity, `:804` reportbind, `:1526–1640` Install, `:1658` Locksemantik, `:2014` CASactivate. | Wirklicher `self-test` delegiert an `scripts/test_curriculum_package_provisioner.py:358` ff.; staleCAS520–577, Symlink591–632, Payload-/Permissiontamper715–763. Fakevalidator in dieser Suite ist begrenzte Lifecyclefixture, kein Beweis tatsächlicher FinishedZIPvalidierung. | C689 `python -B scripts/provision_curriculum_package.py self-test`; O-fullconformance reale install/verify/activate/status plus Reporterabgleich (`run_curriculum_release_model_conformance.sh:185–244`). Fehler hart. | Kein ungültiger Kandidat darf aktiven Lock ersetzen; tatsächlicher Realpaketpfad zusätzlich optional. Packageactivation ist lokale Runtimevorbereitung, keine Produktionsumstellung/Stablepublikation. |
 | E60 Ontologie- und Reverseverträge | `app/scripts/buildFwuOwlCurriculumPackage.ts` SourceZIP/Schema/Sidecars, `app/scripts/memFwuRoundtrip.ts:200–221,2006–2028` Core/authoringrelations; `scripts/validate_fwu_owl_curriculum_package.py:1045` Validation/SecureZIP, `reconstruct_json_curriculum_package_from_fwu_owl.py:527` Registry/`:705` Reconstructor, `run_fwu_owl_reverse_compiler_hermetic.py:789` pathlayout/`:2159` reconstructedvalidation. | `testFwuOwlCurriculumPackageBuilder.ts` echte Buildernegative; Python CLIselftests FullFWU2038,Reverse2472,Hermetic2957,Packagecontracts mutationmatrix1569–1649. Fixtures prüfen schema-/sourcearchive-/core-/carrier-/segment-/Tool-/reportdrift, nicht automatisch jeden vollständigen realen Release. | O160–186 typecheck+buildertest, echter Mathematiksubjectexport und MEMsemantic-/OWL2DL/HermiTpilot, danach explizite --self-test- und Contractaufrufe. Schedule/Dispatch, kein allgemeiner PR-Trigger. A94 Completion-FWUbuildertest ist engeres alternatives Profil. | Vollständiger echter JSON→OWLZIP→isolierterJSONZIP→beide hermetische Smoke-/Reprolauf ist aus diesen **Selftest**-Kommandos nicht als universeller Produktgate abzuleiten. Alle tatsächlich aufgerufenen Fehler hart; stable Cryptooperationen E50 weiterhin offen. |
+
+
+## Reparaturnachtrag: echte Strukturprüfungen vor jeder höheren Maturity
+
+**Lokaler Implementierungsstand nach dem ursprünglichen Audit, noch keine
+behauptete Remote-Abnahme oder Wiederherstellung der zehn Floors.** Der reine
+Prüfer `app/scripts/lib/skillGraphIntegrity.ts` führt G01a/G01b/G02/G05/G06/G07/
+G15/G42/G16/G17 aus. Jede Prüfung besitzt einen expliziten Status `pass`, `fail`
+oder `blocked`; fehlende, blockierte oder doppelte Einträge und ein leerer/fremder
+Scope können keinen vollständigen Integritätsnachweis erzeugen.
+
+`generateCurriculumQualityStatus.ts:1814–1845` persistiert den tatsächlich
+berechneten Bericht in CQR-001. `deriveCurriculumMaturity:5949–5960` verlangt ihn
+vor jeder höheren Stufe und liefert bei einem unvollständigen oder fehlerhaften
+Strukturbericht M0. Auch der eigenständige Floorchecker
+`checkCurriculumMaturityFloors.ts:103–108` weist ein behauptetes M6/M7 ohne
+vollständigen passenden Strukturbericht zurück. Die zehn genehmigten Floors
+werden dafür nicht gesenkt. Der nachgewiesene D/P/A/M/V-Reviewstand bleibt
+getrennte Evidenz; eine alte Stufenzeichenfolge ersetzt keinen neu ausgeführten
+harten Vertrag.
+
+Die feste Auflösungsmenge ist der Katalog aller 21 kanonischen deutschen
+Landschaftsdateien. Pro Fach wird dessen vollständiger Goalumfang plus echte
+Referenzclosure und sämtliche contains-Vorfahren mit ihren Anforderungen geprüft.
+Ein nur für Vererbung benötigter fremder Vorfahr importiert keine unbeteiligten
+Geschwister. Personalisierung, Fokus, Applicability und Mastery kürzen diese
+Strukturprüfung nicht. Identitätsduplikate werden zurückgewiesen; keine erste
+Datei und keine vereinigte Konflikttopologie wird still als Wahrheit gewählt.
+
+G17 benutzt weiterhin genau `effective(C,R ohne die betrachtete Autorenkante)`
+auf Goal-Knoten. Der vorhandene §7.3-Kern wurde dafür wiederverwendet. Die
+getrennte G42-Prüfung expandiert Clusteranforderungen in Atome und prüft deren
+Graph auf Zyklen. Iterative Traversierung und nur tatsächlich beitragende
+Vorfahrenursprünge verhindern Rekursionsüberlauf sowie quadratische Mengen
+anforderungsfreier Vorfahren. Ausgelassene `requires`/`contains` behalten den
+bestehenden leeren Default; explizites null oder Skalare sind ungültig.
+
+| Neue Belegkette | Implementierung / Gegenprüfer | Tatsächlicher Aufruf und Grenze |
+| --- | --- | --- |
+| E61 Strikter Gesamtstrukturvertrag vor Maturity | `app/scripts/lib/skillGraphIntegrity.ts` reiner Prüfer/Abdeckungsmanifest; `auditTransitiveMinimality.ts` unveränderte §7.3-Entfernungssemantik mit iterativen Hilfen. `testSkillGraphIntegrity.ts` prüft echte UUID-/Gewichts-/Identitäts-/Referenzfehler, fremde direkte/geerbte/atomar expandierte Zyklen, Entfernen aller geerbten Kopien eines Ursprungs, gültige Polyhierarchie und gültige/zyklische 12000-Knotenketten. Lokal bestanden. Vorhandener Minimalitätstest unverändert bestanden:572 literale Vergleiche,3593 korrekt verworfene ungültige Graphen. Fokussierter strenger TypeScriptcheck und diffcheck bestanden. | `app/package.json:78` führt über C611 `npm run test:deep-understanding-rollout` zuerst die vollständige Suite `npm run test:skill-graph-integrity` und danach `testDeepUnderstandingRollout.ts` aus. Dessen Import bei `:5` bindet zusätzlich `testCurriculumGraphMaturity.ts` ein:13 tatsächlich fehlerhafte Graphen führen über CQR-001 zu M0 und M6/M7-Floorfehlern,35 fehlende/gefälschte Berichte werden zurückgewiesen. C618/C619 regeneriert/prüft tatsächliche Daten. Ein Suitefehler beendet denselben CI-Step; eine frische Remote-Ausführung dieses Branchstands ist damit nicht behauptet. |
+
+Der ursprüngliche Q04-/D-QS-Konflikt bleibt in der Baselinezeile sichtbar.
+Im aktuellen Branch wurde der widersprüchliche Fließtext in
+`curriculum-quality-maturity-and-routes.md:243–247` redaktionell auf maximal
+Scope-`M4` berichtigt. Die bereits vorhandene M4-Tabelle, die Voraussetzung
+für Curriculum-M5, die bestehende `deriveScopeMaturity`-Berechnung und sämtliche
+Fach-Untergrenzen wurden dadurch nicht verändert.
+
+Die **lesende Erhebung vor Datenreparaturen** liegt vollständig mit
+Quellbytes-Hashes und Zeugen in `tmp/ci-contract-strict-graph-before-repair.json`.
+Sie ergab für den neuen Strukturvertrag:
+
+| Fach / bestehender Floor | G16 | G17 im geprüften vollständigen Scope | UUID-Feststellungen | nichtpositive Gewichte |
+| --- | --- | --- | --- | --- |
+| Biologie M7 |16|359|0|0|
+| Chemie M7 |13|341|0|0|
+| Deutsch M6 |0|91|0|0|
+| Geschichte M6 |13|13|0|0|
+| Informatik M6 |22|94|0|0|
+| Latein M6 |0|0|0|0|
+| Mathematik M7 |0|923|2|0|
+| Physik M7 |14|610|2|0|
+| Politik und Wirtschaft M6 |0|126|477|18|
+| Wirtschaftswissenschaften M7 |0|92|12|1|
+
+Physiks Scope enthält214 Mathematikbefunde zusätzlich zu396 eigenen
+§7.3-Befunden. UUID-Feststellungen zählen Goal- und Referenzverletzungen, nicht
+verschiedene zu migrierende IDs. Alle zehn Scopes bestanden in dieser Erhebung
+die direkten, effektiven und atomar normalisierten DAG-Prüfungen; Latein bestand
+den gesamten neuen Strukturvertrag. Daraus folgt noch keine vollständige neue
+M6-Abnahme. Die anderen tatsächlichen Befunde benötigen fachlich geprüfte
+Korrektur beziehungsweise eine ausdrücklich entworfene Identitätsmigration;
+kein automatischer Kantenabbau, reines Hashnachführen oder Ausnehmen bestehender
+Daten wird dadurch autorisiert.
+
+Der erste danach tatsächlich neu erzeugte CQR-Bericht enthält die 19 behobenen
+Nullgewichte (18 Politik/Wirtschaft, eines Wirtschaftswissenschaften) und weist
+Latein mit bestandenem Strukturvertrag wieder als M6 aus. Die anderen neun
+geschützten Fächer stehen wegen ihrer tatsächlichen verbleibenden Fehler auf M0.
+Der frische Artefaktabgleich besteht; der anschließende Floorcheck scheitert
+ehrlich an diesen neun unverändert geltenden Untergrenzen. Die vollständigen
+aktuellen Fachzahlen stehen im [Reparatur-Handoff](../dev/ci-contract-audit-handoff-2026-11-06.md).
+
+Der anschließende getrennte Geschichte-Commit entfernt 13 nachweislich geerbte
+Duplikate aus sieben Assessmentzielen. Nach jedem Entzug bleibt die vollständige
+effektive und atomare Adjazenz identisch; Aufgaben und Bewertung bleiben gleich.
+Die echte erneute Gesamterzeugung vom `2026-11-06T10:41:36.865Z` bestätigt
+Geschichte mit zehn bestandenen Strukturchecks als M6. Latein bleibt M6;
+die acht anderen geschützten Fächer bleiben M0 und ihr Floorcheck schlägt fehl.
+Die [Anwendungsquittung](../dev/ci-graph-repairs/history-inherited-duplicate-repair-2026-11-06.json)
+bindet die tatsächlichen Daten- und Berichthashes. Unveränderte Reviewledgers
+werden dabei nicht umetikettiert.

@@ -35,6 +35,14 @@ Pushes and pull requests always run both the application and curriculum jobs. Th
 
 The local and hosted curriculum paths intentionally run the same scope/readiness and goal-source-rationale gates, so a local curriculum result cannot diverge merely because the two checklists differ.
 
+The maturity calculation itself now requires the actual complete strict
+`CQR-001` graph report before any higher milestone. `test:deep-understanding-rollout`
+runs the structural and maturity-counterexample suites; the generated status
+is then checked against the ten protected subject floors. Invalid graphs,
+skipped checks and a legacy bare `pass` cannot preserve an M6/M7 claim. A truthful
+lower status still fails the protected floor until the underlying content is
+repaired; there is no accepted-finding baseline.
+
 ### Optional package, subject-export, and FWU-OWL workflow
 
 `.github/workflows/owl-ci.yml` is the single optional Package CI. It runs weekly and can be started manually; it is not run for every push or pull request. Separate fresh runners cover the real 1.7-GB standalone JSON package and hermetic consumer, all real subject-export packages, and the Core-first FWU-OWL/roundtrip lane. Ordinary per-commit CI materializes no real curriculum package for any subject; it validates code, contracts, models, reviews, schemas, and committed status instead. SkillPilot's production runtime consumes the JSON curriculum package and does not require OWL.

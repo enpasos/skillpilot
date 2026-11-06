@@ -29,9 +29,12 @@ Globale Wirkung & Kontextbezogene bisherige Freistellung ist nicht schon
 die dauerhaft vertragsgebundene globale Menge $M_{\mathrm{eff}}$.
 Folge-Frontier, Gesamt-IST, Vertragsrevision und historische Bedeutung
 müssen gemeinsam implementiert und gesondert geprüft werden.\\
-Graphgültigkeit & Transitive Minimalität ist verbindlich. Ein lokaler
-Validator oder historische Tests ersetzen keine Prüfung der vollständigen
-normalisierten Relation und keine fachliche Inhaltsprüfung.\\
+Graphgültigkeit & Im CI-Vertragsaudit vom 6. November prüft CQR-001 den
+kanonischen Katalog einschließlich UUIDs, positiver Gewichte, Referenzen,
+direkter und geerbter Zyklen, atomarer Zyklen sowie lokaler und transitiver
+Minimalität. Ein fehlender oder fehlerhafter vollständiger Prüfnachweis
+verhindert höhere Meilensteine. Offene Bestandsfehler müssen behoben werden;
+ein erfolgreicher Algorithmustest ersetzt diese Reparatur nicht.\\
 Clustererfüllung & Der normative Kern verwendet alle atomaren Nachfahren.
 Die gelesenen Backendpfade bevorzugen in bestimmten Fällen rekursiv
 \code{isCoreForPrereqs}-Kinder. Das ist nicht dieselbe Aggregation.\\
@@ -55,6 +58,8 @@ Planung, kein Synonym für die Einheit.\\
 \srcref{backend/src/main/java/com/skillpilot/backend/service/LearnerService.java}{LearnerService.java};
 \srcref{app/src/hooks/useSrsMastery.ts}{useSrsMastery.ts};
 \srcref{app/scripts/validateGraph.ts}{validateGraph.ts};
+\srcref{app/scripts/lib/skillGraphIntegrity.ts}{skillGraphIntegrity.ts};
+\srcref{app/scripts/generateCurriculumQualityStatus.ts}{generateCurriculumQualityStatus.ts};
 \srcref{backend/src/main/java/com/skillpilot/backend/domain/Mastery.java}{Mastery.java}.
 Die verlinkte Hauptlinie entwickelt sich weiter. Das Build-Manifest bindet
 die bei dieser Dokumentfassung tatsächlich gelesenen Dateien per SHA-256.

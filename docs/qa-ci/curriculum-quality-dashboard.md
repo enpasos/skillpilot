@@ -107,7 +107,7 @@ The current rule catalog is versioned as `curriculum-quality-v5`.
 | Rule | Target | Meaning |
 | --- | --- | --- |
 | `CQR-000` | `M1` | Source inventory ingestion: original source inventories are readable, linked to official HTTP(S) source URLs, and their extracted goals are registered. |
-| `CQR-001` | `M0` | Basic graph integrity: IDs, local/global references, self-reference guards, and direct DAG checks. |
+| `CQR-001` | `M0` | Strict graph integrity: UUID identity, positive weights, exact references, global containment/direct/effective/atomic DAGs, and authored local/transitive minimality. Every required check and the resolved scope must be recorded; missing or failed proof blocks higher maturity. |
 | `CQR-002` | `M0` | Explicit `type` metadata matches structural atomic/cluster classification. |
 | `CQR-003` | `M2` | Bundesland atomic coverage: every declared jurisdiction view has full source-backed coverage for its source-coverage atoms, no unsupported assigned source-coverage atom, and no registered source original goal missing from the view mapping. |
 | `CQR-004` | `M2` | Course-level mapping consistency: source goals marked `GK_LK`, `LK`, or `unspecified` map only to canonical SkillPilot goals with compatible `GK`/`LK` tags; `unspecified` defaults to `GK_LK` unless an LK-only decision is explicitly reviewed. |

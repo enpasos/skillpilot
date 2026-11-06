@@ -1,6 +1,6 @@
 # Skill-Graph-CI: festes Normenregister vom 6. November 2026
 
-Dieser abgegrenzte Korpus enthält **494 unabhängige Regel-IDs**: 415 deterministische Prädikate, 63 Anforderungen an Artefakt-/Reviewevidenz und 16 menschliche Urteile. Die redaktionelle Inventur der unten genannten Quellen ist abgeschlossen. Das ist weder ein Nachweis hinreichender CI-Abdeckung noch ein M6/M7- oder Wirksamkeitsnachweis.
+Dieser abgegrenzte Korpus enthält **518 unabhängige Regel-IDs**: 439 deterministische Prädikate, 63 Anforderungen an Artefakt-/Reviewevidenz und 16 menschliche Urteile. Die redaktionelle Inventur der unten genannten Quellen ist abgeschlossen. Das ist weder ein Nachweis hinreichender CI-Abdeckung noch ein M6/M7- oder Wirksamkeitsnachweis.
 
 Die [maschinenlesbare Fassung](skill-graph-ci-rule-corpus-2026-11-06.json) enthält für jede Regel Prädikat, Vertragsstand, Klasse, Scope, Quellenpfad, Abschnitt, exakte Revision und SHA-256 der Quelle. Sie ist der feste ID-Nenner für die getrennten statischen, Runtime- und Content-Präsentationsmatrizen. Die alten 147 ZIP-Zeilen waren ein Ausgangszensus, kein Vollständigkeitsbeweis. Mehrfachpflichten wurden mit stabilen Suffixen aufgeteilt; Plan/Periode, QA, Quellen, Bilder, Bücher und Pakete wurden aus den tatsächlichen Quellen ergänzt.
 
@@ -47,7 +47,7 @@ Alle 20 direkten Markdown-Dateien unter `docs/concept/skill-graph/` wurden dispo
 | EP | [docs/concept/runtime-workflows/exam-preparation-planning.md](../../docs/concept/runtime-workflows/exam-preparation-planning.md) · Main | Gesamter aktiver Prüfungsabschnitts-/Vervollständigungsvertrag; keine neue Prüfungsart oder zusätzliche Unit-Gatepolitik. |
 | HQ | [docs/concept/curriculum-quality-and-human-trial.md](../../docs/concept/curriculum-quality-and-human-trial.md) · Main | Qualitätsregeln, unabhängiger KI-Review, menschliche Erprobung und Wirksamkeitsnachweis. Historische Counts/Farben und Umsetzungspläne sind keine neue Pflichtregel. |
 | GV | [docs/qa-ci/graph-validation-rules.md](../../docs/qa-ci/graph-validation-rules.md) · Main | Alle dokumentierten GVR/APV/CPV- und ergänzenden Graph-/Content-Prüfverträge einschließlich Scope- und Warning-Grenzen. Undokumentierte technische Zusatzchecks werden nicht zur Norm erfunden. |
-| QM | [docs/qa-ci/curriculum-quality-maturity-and-routes.md](../../docs/qa-ci/curriculum-quality-maturity-and-routes.md) · Main | Scope-/Curriculum-Reife, Regelstatus und sämtliche CQR-Regelblöcke. Der Widerspruch Scope max M3 versus M4-Tabelle bleibt D-QS; historische aktuelle Fachcounts sind keine Norm. |
+| QM | [docs/qa-ci/curriculum-quality-maturity-and-routes.md](../../docs/qa-ci/curriculum-quality-maturity-and-routes.md) · Main | Scope-/Curriculum-Reife, Regelstatus und sämtliche CQR-Regelblöcke. Der historische Widerspruch Scope max M3 versus M4-Tabelle ist D-QS; die aktuelle Prosa ist an die bereits geltende M4-Tabelle angeglichen; historische aktuelle Fachcounts sind keine Norm. |
 | HRG | [docs/qa-ci/curriculum-package-human-review-gates.md](../../docs/qa-ci/curriculum-package-human-review-gates.md) · Main | Menschliche Review-Gates HR-001 bis HR-006 soweit mit aktueller fester Lizenzentscheidung vereinbar; historische Pending-Zahlen und überholte Eigenmaterial-Einzellizenzfreigabe sind keine aktuelle Pflicht. |
 | LIC | [LICENSING.md](https://github.com/enpasos/skillpilot/blob/main/LICENSING.md) · Main | Feste funktionale Lizenzzuordnung und Grenzen für Drittmaterial, Attribution und exportierte Artefakte; keine pauschale Neulizenzierung. |
 | TEX | [docs/concept/skill-graph/latex/graph-planning.tex](../../docs/concept/skill-graph/latex/graph-planning.tex) · Main | Formale optionale Erwerbs-/Zeitplanung als Präzisierung von G §§12.5–12.6; keine zusätzliche produktive Laufzeit oder Planpflicht. |
@@ -92,6 +92,24 @@ Diese Alias-IDs sind keine zusätzlichen Regeln und zählen nicht zum Nenner. Al
 | N17 | N17a, N17b, N17c |
 | N22 | N22a, N22b |
 | N26 | N26a, N26b |
+| P56 | P56a, P56b, P56c, P56d |
+| P58 | P58a, P58b, P58c |
+| P59 | P59a, P59b |
+| P60 | P60a, P60b |
+| P61 | P61a, P61b, P61c |
+| P62 | P62a, P62b |
+| P65 | P65a, P65b |
+| P66 | P66a, P66b |
+| P67 | P67a, P67b |
+| P70 | P70a, P70b |
+| P72 | P72a, P72b |
+| P73 | P73a, P73b |
+| P74 | P74a, P74b |
+| P75 | P75a, P75b, P75c |
+| P76 | P76a, P76b |
+| P77 | P77a, P77b |
+| P78 | P78a, P78b |
+| P80 | P80a, P80b, P80c |
 
 ## Offene und entschiedene Vertragsfragen
 
@@ -99,8 +117,8 @@ Diese Alias-IDs sind keine zusätzlichen Regeln und zählen nicht zum Nenner. Al
 |---|---|---|
 | D-ID | G01a, G01b, K21, K49 | open-scope-and-migration | Die UUID-Domäne der formalen Graphnorm und stabile Identitäten treffen auf aktive Alt-/Importdaten. Die erweiterte 593-Datei-Inventur fand 164 Nicht-UUID-Goals, 327 entsprechende Referenzen; unter 56024 qualifizierten Schlüsseln liegen 147 Mehrfachserialisierungen und 19 tatsächlich verschiedene contains/requires-Definitionen vor. Diese Bestandszahlen sind Auditbefunde, keine Normnenner. **Konsequenz:** Verbindliches Loader-/Exportuniversum, kanonische Eigentümerschaft und schonende Migration festlegen. Kein stilles Umbenennen, first-file-wins oder Vereinigungsgraph. |
 | D-WEIGHT | G02, R05, R06 | open-norm-scope | G §§2.1–2.2 verlangt Weight > 0; compiled-landscape.schema.json erlaubt bei weight minimum 0. Die erweiterte Bestandsinventur fand 39704 Nullgewichte und 16467 positive Gewichte, überwiegend Hochschul-Struktur-/Importdaten. **Konsequenz:** Anwendungsbereich tatsächlicher Kompetenzen gegenüber kompatiblen Programm-/Strukturknoten und beabsichtigte Gewichtungssemantik klären; keine automatische Umgewichtung oder Abschwächung. |
-| D-MIN-SCOPE | G17 | open-rollout-scope-not-formula | §7.3 definiert die goal-node-Relation R_effective. Nach Entfernen einer authored Kante wird Vererbung neu berechnet. Die pauschale atomare Lesart des alten ZIP-Zensus war falsch. Der vorhandene S0-Auditor verwendet bereits die spezifizierte goal-node-Relation. **Konsequenz:** Verbindliches Eingabeuniversum und fachliche Behandlung der vorhandenen Befunde festlegen. Kein automatisches didaktisches Kantenlöschen und keine scheinbare Lösung durch bloßen Baseline-/Warning-Verzicht. |
-| D-QS | Q04 | open-documentation-conflict | QM beschreibt Scope-Reife im Fließtext als höchstens M3; unmittelbar danach enthält die Tabelle M4 und Curriculum M5 verlangt Scope M4. **Konsequenz:** Den dokumentarischen Rangkonflikt an der beabsichtigten aktiven Reifelogik ausdrücklich auflösen; keine Senkung der Fach-Mindeststände. |
+| D-MIN-SCOPE | G17 | canonical-rollout-authorized-content-repair-open | §7.3 definiert die goal-node-Relation R_effective. Nach Entfernen einer authored Kante wird Vererbung neu berechnet. Die pauschale atomare Lesart des alten ZIP-Zensus war falsch. Der vorhandene S0-Auditor verwendet bereits die spezifizierte goal-node-Relation. **Konsequenz:** Der Owner verlangt harte CQR-Meilensteinprüfung. Der konkrete erste Rollout umfasst den vollständigen 21-Landschaften-Katalog mit Curriculum-Abhängigkeits- und Vorfahrenhülle; fachliche Befundreparaturen bleiben auszuführen. Kein automatisches didaktisches Kantenlöschen und keine Fehlerbaseline. Das erweiterte Importuniversum ist dadurch nicht pauschal entschieden. |
+| D-QS | Q04 | resolved-editorial-scope-M4 | QM beschreibt Scope-Reife im Fließtext als höchstens M3; unmittelbar danach enthält die Tabelle M4 und Curriculum M5 verlangt Scope M4. **Konsequenz:** Am 6. November ist der Fliesstext auf maximal M4 berichtigt. Die benachbarte normative Tabelle, die Voraussetzung fuer Curriculum M5, die bisherige deriveScopeMaturity-Berechnung und alle Fach-Untergrenzen bleiben unveraendert. Der Main-Basiswiderspruch bleibt als historischer Auditbefund erhalten. |
 | D-RECOGNITION | U02, U20, U35, U36, U37, U38 | separated-contract-versions | Globale Anerkennungswirkung ist bereits seit 4. November Main-Norm. Main enthält den lokalen I_U-Vertrag; PR83 ergänzt/ersetzt ihn durch qualifiziertes unveränderliches C(q) und dessen Vereinigung. **Konsequenz:** Implementierung und Tests müssen jeweils den bezeichneten Vertragsstand nachweisen; weder Main als bloße PR83-Zukunft abtun noch beide Formeln kumulativ als widerspruchsfreie Istnorm behandeln. |
 | D-SRS | N07, N11, N12, N28 | resolved-owner-clarification6Nov | Wiederholtes Kartenlernen und abschließender Verified Recall gehören zum selben Cardgoal. Alle benötigten Karten müssen explizit bestanden sein; bestandene Karten bleiben über Batches hinweg bestanden. Fälligkeit entzieht weder Verifikation noch Mastery; bestandene Karten werden nicht erneut geprüft. **Konsequenz:** Kein neuer Policyentscheid offen. Die irreführende historische No-due-/Retest-/29.-Oktober-Abweichungsbehauptung ist ersetzt; bestehende Guards belegen den vereinbarten Ablauf. |
 | D-LICENSE | K56, K57, K58, K59, K61 | resolved-by-explicit-precedence | Die feste Owner-Zuordnung vom 21. September (Software Apache-2.0, eigene Landschaftsinhalte CC-BY-4.0) geht älteren individuellen Eigenmaterial-Lizenzwarteschlangen vor. **Konsequenz:** Drittmaterialrechte, Provenienz und Qualitätsreview bleiben getrennte Pflichten; keine zusätzliche allgemeine Einzellizenzfreigabe eigener Goals. |
@@ -127,7 +145,7 @@ Diese Alias-IDs sind keine zusätzlichen Regeln und zählen nicht zum Nenner. Al
 | G14 | M | D | Basis | Effektive/atomar normalisierte Voraussetzungshülle ist unabhängig vom aktuellen Mastery-Zustand. | G §6.4; A@M §3 |
 | G15 | M | D | Basis | Effektive Voraussetzungen bleiben azyklisch; insbesondere keine geerbte Selbstanforderung. | G §7.1 |
 | G16 | M | D | Basis | Lokale Minimalität: keine direkte Anforderung, die schon aus einem `contains`-Vorfahren geerbt wird. | G §7.2 |
-| G17 | M | D | Gesamter aufgelöster Graph; konkretes verpflichtendes CI-Eingabeuniversum gesondert festzulegen | Für jede verfasste Kante (g,p): diese Kante entfernen, effective(C,R ohne Kante) vollständig neu berechnen; p darf von g darin nicht mehr erreichbar sein. Die Norm prüft Goal-Knoten, nicht automatisch eine atomar expandierte Ersatzrelation. | G §7.3; GV Einleitung |
+| G17 | M | D | Gesamter aufgelöster Graph, unabhängig vom Learner-Fokus | Für jede verfasste Kante (g,p): diese Kante entfernen, effective(C,R ohne Kante) vollständig neu berechnen; p darf von g darin nicht mehr erreichbar sein. Die Norm prüft Goal-Knoten, nicht automatisch eine atomar expandierte Ersatzrelation. | G §7.3; GV Einleitung |
 | G18 | M | D | Bedingt Baumprofil | Ein als Baum/Wald deklarierter Graph erlaubt höchstens einen `contains`-Elternknoten. Nicht auf die allgemeine Polyhierarchie übertragen. | G §8.3 |
 | G19 | M | D | GV-Profil | Keine eigene Voraussetzung entlang der Vorfahrenlinie. Nur dort hart, wo entsprechendes GVR-Profil es festlegt. | G §8.2; GV GVR001/003 |
 | G20 | M | D | GV-Profil | Im ausgewiesenen GVR-006-Profil darf ein Goal keines seiner direkten contains-Kinder direkt erfordern. Das allgemeinere Vermeiden aller Nachfahren ist G§8.1-Empfehlung, keine zusätzliche universelle Pflicht. | G §8.1; GV GVR-006 |
@@ -276,7 +294,7 @@ Diese Alias-IDs sind keine zusätzlichen Regeln und zählen nicht zum Nenner. Al
 | U32 | M | D | Integrität | Widerruf, Korrektur oder entfernte explizite Q berechnet globale effektive Anerkennung neu; alternative weiterhin gültige Beweise bleiben wirksam. | A@M §§1,4; LS §5.2 |
 | U33 | M | D | Anerkennungskonzept; Implementierungsstand separat | Änderung von Q/Coverage/Graph/Scope muss abhängige Ableitungen und Cachegültigkeit korrekt binden; kein gemischter alter Beweis/neuer Graph. | A@M §4; LS §7.4 |
 | U34 | T | D | Einführung 6.11. | Migration behauptet ohne qualifizierten Nachweis keine rückwirkenden Fortschrittsgewinne und ändert nicht pauschal andere Fächer. | A@T §8 |
-| U35 | M-alt | D | Gültige dauerhaft anwendbare direkte Unitverträge | Mit P_U=Own(U) geschnitten mit Q vereinigt K und N_U=Reach*(P_U ohne M) gilt I_U=Own(U) ohne (M vereinigt P_U vereinigt N_U); nur explizites M geht in diese Ableitung ein. PR83 ersetzt diese Formel durch U02. | A@M §4; G@M §12.2 |
+| U35 | M-alt | D | Gültige dauerhaft anwendbare direkte Unitverträge | Mit P_U = Own(U) ∩ (Q ∪ K) und N_U = Reach*(P_U \ M) gilt I_U = Own(U) \ (M ∪ P_U ∪ N_U); nur explizites M geht in diese Ableitung ein. PR83 ersetzt diese Formel durch U02. | A@M §4; G@M §12.2 |
 | U36 | M-alt | D | Direkt besessene gewöhnliche Unitziele | Jedes eigene gewöhnliche Ziel besitzt einen eigenen lokalen Prüfungsverbraucher in der vollständigen normalisierten Relation; ein Memoryendpunkt allein genügt nicht. PR83 stärkt dies zu U20. | A@M §2 |
 | U37 | M-alt | H | Qualifikation der main-Anerkennungsverträge | Für jedes verschiedene freigebende protected-consumer-Set und jede erlaubte Aufgabenvariante belegen tatsächliche Aufgaben und normale Bestehensrubrik zusammen jede wesentliche anerkannte Kompetenz ohne kompensierbares vollständiges Fehlen. PR83 verlangt U12 je qualifiziertem Q. | A@M §5; BK Application-based recognition |
 | U38 | M-alt | D | main-Anerkennung | M_eff ist M vereinigt mit allen I_U dauerhaft anwendbarer unveränderlicher Verträge; Fokusbesuche oder T(U) als Ersatz für Own(U) erzeugen keinen neuen Vertrag. PR83 ersetzt die Ableitung durch U02. | A@M §4 |
@@ -330,7 +348,7 @@ Diese Alias-IDs sind keine zusätzlichen Regeln und zählen nicht zum Nenner. Al
 | N32 | M | D | Verified Recall | Die vollständigen erwarteten Antworten werden erst nach vollständiger Lernendenabgabe freigegeben. | AG §7.2 |
 | N33 | M | D | Verified Recall | Bewertungsprosa verbleibt im Providerdialog; der persistierte atomare Batch enthält genau die serverseitig vorgegebenen geordneten passed-Ergebnisse. | AG §7.2 |
 
-## P: Lernplan, Periodenstatus und optionale Zeitplanung (80)
+## P: Lernplan, Periodenstatus und optionale Zeitplanung (104)
 
 | ID | Stand | Art | Scope | Präzises Prädikat | Normquelle |
 |---|---|---|---|---|---|
@@ -389,31 +407,55 @@ Diese Alias-IDs sind keine zusätzlichen Regeln und zählen nicht zum Nenner. Al
 | P53 | M | E | Workload-Gültigkeitsclaim | Ohne belastbare Aufwandsschätzung wird ausschließlich strukturelle Machbarkeit behauptet, keine belegte Zeitmachbarkeit für Lernende. | G §12.6 |
 | P54 | M | D | Statusmonotonie bei festem Plan/Zeitraum | Ein zusätzlicher gültiger Abschluss verschlechtert weder erfülltes Pensum noch Rückstand. | LS §12 |
 | P55 | M | D | Klausurstoff/Zuordnung | Ausgewählter sichtbarer Themenumfang, hinterlegte coveredGoalIds-Aufgabenabdeckung und requires-Vorbereitungsbedarf bleiben drei getrennte Mengen; keine davon ist ein neuer Kompetenznachweis. | EP Drei verschiedene Aussagen |
-| P56 | M | D | Klausurabdeckung | Die Ansicht zeigt beide Mengendifferenzen zwischen gewählten Themen und gewählten Aufgaben; nur ausgewählte Pakete zählen, Prüfungsziele werden getrennt und IDs dedupliziert. | EP Drei verschiedene Aussagen |
+| P56a | M | D | Klausurabdeckung | Die Abdeckungsansicht zeigt beide Mengendifferenzen zwischen ausdrücklich gewählten Themen und ausdrücklich gewählten Aufgaben. | EP Drei verschiedene Aussagen |
+| P56b | M | D | Klausurabdeckung | Nur ausdrücklich ausgewählte Aufgabenpakete zählen zur angezeigten Aufgabenabdeckung; bloß verfügbare Pakete zählen nicht. | EP Drei verschiedene Aussagen |
+| P56c | M | D | Klausurabdeckung | Prüfungsziele werden in der Abdeckungsansicht getrennt von Lernthemen gezählt. | EP Drei verschiedene Aussagen |
+| P56d | M | D | Klausurabdeckung | In jeder angezeigten Klausurstoff-/Abdeckungsmenge zählt eine kanonische Ziel-ID höchstens einmal. | EP Drei verschiedene Aussagen |
 | P57 | M | D | Klausurabdeckung | Eine versteckte kanonische Clusterreferenz darf nur bereits sichtbare Kursatome zusammenfassen; sie nimmt keine ausgeblendeten Atome in den Kurs auf. | EP Drei verschiedene Aussagen |
-| P58 | M | D | Klausurpakete | Ungültige oder nicht verfügbare Aufgaben werden ausgewiesen und nicht eingeplant; offene Metadaten erzeugen keine Vollständigkeitszusage und blockieren nicht die gültige Auswahl. | EP Drei verschiedene Aussagen |
-| P59 | M | D | Vorbereitungsvorschau | Öffnen der Vorschau schreibt keinen Plan; der vorgesehene Zeitraum endet vor der Klausur und enthält mindestens einen Werktag. | EP Vorbereitung vervollständigen |
-| P60 | M | D | Vorbereitungsauswahl | Standardmäßig wird nur explizit gewählter Stoff vorbereitet; zusätzliche Aufgabenthemen/Grundlagen sind zunächst deaktivierte Vorschläge und externe Voraussetzungen werden nie still zu Kurszielen. | EP Vorbereitung vervollständigen |
-| P61 | M | D | Vorbereitungsübernahme | Übernahme erzeugt einen aktiven Abschnitt mit den gewählten kanonischen Wurzeln, verändert den Klausurstoff nicht und plant rechtzeitig bereits zugeordnete Ziele nicht doppelt. | EP Vorbereitung vervollständigen |
-| P62 | M | D | Vorgezogene Planarbeit | Verschiebung aus anderen Abschnitten benennt alle betroffenen Abschnitte und verlangt Zustimmung; dadurch leere Abschnitte bleiben inaktiv erhalten. | EP Vorbereitung vervollständigen |
+| P58a | M | D | Klausurpakete | Nicht verfügbare oder ungültige Aufgaben werden ausgewiesen und nicht eingeplant. | EP Drei verschiedene Aussagen |
+| P58b | M | D | Klausurpakete | Fehlende oder ungültige Aufgabeninhalte, Freigaben oder Zuordnungen begründen keine Vollständigkeitszusage. | EP Drei verschiedene Aussagen |
+| P58c | M | D | Klausurpakete | Offene Metadaten verhindern die Planung gültiger ausgewählter Themen und verfügbarer Aufgaben nicht. | EP Drei verschiedene Aussagen |
+| P59a | M | D | Vorbereitungsvorschau | Das Öffnen der Vorbereitungs-Vorschau verändert keinen gespeicherten Plan. | EP Vorbereitung vervollständigen |
+| P59b | M | D | Vorbereitungsvorschau | Der vorgesehene Vorbereitungszeitraum endet vor dem Klausurtermin und enthält mindestens einen Werktag. | EP Vorbereitung vervollständigen |
+| P60a | M | D | Vorbereitungsauswahl | Standardmäßig wird nur ausdrücklich gewählter Stoff vorbereitet; zusätzliche Aufgabenthemen und Grundlagen werden ausschließlich über zunächst deaktivierte optionale Auswahl übernommen. | EP Vorbereitung vervollständigen |
+| P60b | M | D | Vorbereitungsauswahl | Voraussetzungen außerhalb des aktuellen Kursumfangs werden gesondert angezeigt und niemals still zu Kurszielen. | EP Vorbereitung vervollständigen |
+| P61a | M | D | Vorbereitungsübernahme | Vorbereitung übernehmen erzeugt einen aktiven Lernabschnitt mit den gewählten kanonischen Wurzeln; neue Aufgabentreffer erweitern diese feste Auswahl nicht erneut. | EP Vorbereitung vervollständigen |
+| P61b | M | D | Vorbereitungsübernahme | Die Übernahme einer Vorbereitung verändert den gewählten Klausurstoff nicht. | EP Vorbereitung vervollständigen |
+| P61c | M | D | Vorbereitungsübernahme | Bereits rechtzeitig eingeplante Ziele werden bei Übernahme einer Vorbereitung nicht zusätzlich eingeplant. | EP Vorbereitung vervollständigen |
+| P62a | M | D | Vorgezogene Planarbeit | Das Vorziehen von Zielen aus anderen Abschnitten benennt alle betroffenen Abschnitte und verlangt ausdrückliche Zustimmung. | EP Vorbereitung vervollständigen |
+| P62b | M | D | Vorgezogene Planarbeit | Ein durch bestätigtes Vorziehen seiner Ziele leer gewordener Abschnitt bleibt inaktiv erhalten. | EP Vorbereitung vervollständigen |
 | P63 | M | D | Vorbereitungsbasis | Ergänzung erhält die vorhandene unveränderliche persönliche Planungsbasis; eine neue Zeitstempelaufnahme ersetzt sie nicht. | EP Vorbereitung vervollständigen |
 | P64 | M | D | Fehlgeschlagene Übernahme | Fehlgeschlagene Speicherung lässt die Vorschau mit konkretem Fehler offen und behauptet keine Übernahme. | EP Vorbereitung vervollständigen |
-| P65 | M | D | Aktive Planabschnitte | Fehlendes active gilt für Bestandsdaten als true; inaktive Abschnitte werden vor Zielzuordnung/Deduplizierung ausgeschlossen und erzeugen weder Soll/Pufferwirkung noch nächsten Termin. | EP Aktive und inaktive Abschnitte |
-| P66 | M | D | De-/Reaktivierung | Deaktivierung ändert keine Mastery oder persönlichen Kursziele; Reaktivierung erhält Termine und berücksichtigt aktuellen Lernstand, Terminverschiebung bleibt explizite Änderung. | EP Aktive und inaktive Abschnitte |
-| P67 | M | D | Undatierter Klausurumfang | Explizit gewählter aktiver Klausurstoff ist auch ohne datierte Vorbereitung lernbar; Fortschritt zählt alle gewählten sichtbaren Atome einschließlich erreichter, ohne erfundenes Pensum/Rückstand/Bilanzskala. | EP Lernstand und Lernfokus; AG §10.2 |
+| P65a | M | D | Aktive Planabschnitte | Fehlendes active gilt für bestehende Plandokumente als true. | EP Aktive und inaktive Abschnitte |
+| P65b | M | D | Aktive Planabschnitte | Inaktive Abschnitte werden vor Zielzuordnung und Deduplizierung ausgeschlossen; sie erzeugen weder Soll oder Rückstand noch Pufferwirkung, nächsten Termin oder planbezogene Lernsteuerung. | EP Aktive und inaktive Abschnitte |
+| P66a | M | D | De-/Reaktivierung | Deaktivierung eines Planabschnitts ändert weder Mastery noch persönliche Kursziele oder das gerade manuell bearbeitete Lernziel. | EP Aktive und inaktive Abschnitte |
+| P66b | M | D | De-/Reaktivierung | Reaktivierung verwendet erhaltene Termine und aktuellen Lernstand; eine Terminverschiebung ist eine gesonderte ausdrückliche Planänderung. | EP Aktive und inaktive Abschnitte |
+| P67a | M | D | Undatierter Klausurumfang | Explizit gewählter aktiver Klausurstoff ist auch ohne datierte Vorbereitung lernbar. | EP Lernstand und Lernfokus; AG §10.2 |
+| P67b | M | D | Undatierter Klausurumfang | Fortschritt des gewählten Klausurstoffs zählt alle gewählten sichtbaren Atome einschließlich erreichter; ohne datierte Vorbereitung werden kein Pensum, Rückstand oder Bilanzzeiger erfunden. | EP Lernstand und Lernfokus; AG §10.2 |
 | P68 | M | D | Mehrere Klausurtermine | Ein gemeinsamer Resolver wählt zunächst den nächsten aktiven Termin, bei Datumsgleichheit stabil nach Abschnitts-ID; er vereinigt keine Klausurstoffmengen. | EP Lernstand und Lernfokus |
 | P69 | M | D | Klausuraktivierung | Explizite Aktivierung übernimmt den vollständigen gewählten atomaren Klausurumfang als Fokus; aktives Einzelziel oder Fortsetzung verkleinert/erweitert ihn nicht still. | EP Lernstand und Lernfokus |
-| P70 | M | D | Laufender Klausurfokus | Datumssprung oder neues Ergebnis ersetzt den laufenden Umfang nicht ungefragt durch einen anderen Klausurtermin; Speichern/Statusfrage verdrängt kein laufendes Goal. | EP Lernstand und Lernfokus |
+| P70a | M | D | Laufender Klausurfokus | Datumssprung oder neues Ergebnis ersetzt den laufenden gewählten Klausurumfang nicht ungefragt durch einen anderen Klausurtermin. | EP Lernstand und Lernfokus |
+| P70b | M | D | Laufender Klausurfokus | Das Speichern eines Plans oder eine Statusfrage verdrängt kein laufendes Lernziel. | EP Lernstand und Lernfokus |
 | P71 | M | D | Lokaler Kurskontext | Browserplan-Schlüssel bindet Klasse, Root, Fach und wirksamen Level2-Kontext; Kontextwechsel lädt keinen anderen Kursplan still weiter. | TA §19.1 |
-| P72 | M | D | Lokale Planrevision | Jede gespeicherte Änderung und Undo erzeugt eine Revision; offener Entwurf wird nicht über eine alte Publikationsbestätigung übernommen. | TA §19.1 |
-| P73 | M | D | Lokaler Planexport | JSON-Planexport enthält keine Klassen-ID, Namen, Lernenden-ID oder Masterywerte; erhaltene Altdokumentation erzeugt keinen neuen Ergebnisstand. | TA §19.1 |
-| P74 | M | D | Lokale Planzeit | Werktagsverteilung verwendet Montag–Freitag und Berlin-Datum; fehlende Feiertags-/Ferien-/reale Kapazitätsdaten werden als Grenze ausgewiesen. | TA §19.1 |
-| P75 | M | D | Persönliche Planübergabe | Übergabe ist eine ausdrücklich bestätigte eigenständige Fachplankopie; sie erzeugt keine neue institutionelle Klassen-/Lehrkraftberechtigung oder Übertragung privater Klassen-/Coverage-/Masterydaten. | TA §19.2 |
-| P76 | M | D | Persönliche Planvalidierung | Server prüft eingehende Goal-IDs gegen aktuellen Fachumfang; neue bereits abgeschlossene IDs werden nicht zu neuer Planarbeit, vorhandene Plan-IDs dürfen zur Kontinuität erhalten bleiben. | TA §19.2 |
-| P77 | M | D | Planrevision/Personalisierung | expectedRevision verhindert stilles Überschreiben; geänderter relevanter Personal-Curriculum-Fingerprint macht den Plan stale und löst keinen Fokuswechsel aus. | TA §19.2 |
-| P78 | M | D | Mehrfachplanaktivierung | Bestätigte gemeinsame Aktivierung ist atomar alle Fachkopien oder keine; ein Startreconcile füllt nur fehlendes aktives Goal und verdrängt kein laufendes. | TA §19.2 |
+| P72a | M | D | Lokale Planrevision | Jede gespeicherte Planänderung und jedes Undo erzeugt eine neue Revision. | TA §19.1 |
+| P72b | M | D | Lokale Planrevision | Solange ein nicht gespeicherter Entwurf offen ist, darf keine ältere Publikationsbestätigung zur Übernahme verwendet werden. | TA §19.1 |
+| P73a | M | D | Lokaler Planexport | Der JSON-Planexport enthält keine Klassen-ID, Namen, Lernenden-ID oder Masterywerte. | TA §19.1 |
+| P73b | M | D | Lokaler Planexport | Erhaltene Planungsbasis und alte Unterrichts-/Coverage-Dokumentation ersetzen nicht den aktuellen backendseitigen Lernstand und erzeugen keinen neuen Ergebnisstand. | TA §19.1 |
+| P74a | M | D | Lokale Planzeit | Die lokale Werktagsverteilung verwendet Montag bis Freitag und für Soll und Übergabe denselben Kalendertag in Europe/Berlin. | TA §19.1 |
+| P74b | M | D | Lokale Planzeit | Fehlende Ferien-, Feiertags-, Ausfall- und reale Stundenkapazitätsdaten werden als fehlende Planungsgrundlage deutlich ausgewiesen. | TA §19.1 |
+| P75a | M | D | Persönliche Planübergabe | Erst ausdrücklich bestätigte Übergabe erzeugt eine eigenständige persönliche Fachplankopie; der lokale Lehrkraftplan bleibt ein unabhängiger Arbeitsstand. | TA §19.2 |
+| P75b | M | D | Persönliche Planübergabe | Die Planübergabe erzeugt keine institutionelle Lehrkraft-, Klassen- oder Mitgliedschaftsberechtigung. | TA §19.2 |
+| P75c | M | D | Persönliche Planübergabe | Die Planübergabe überträgt weder Klassen-ID, Klarnamen, Coverage, Attestierungen, Masterywerte noch den lernendenbezogenen Planungs-Baseline-Snapshot. | TA §19.2 |
+| P76a | M | D | Persönliche Planvalidierung | Der Server validiert eingehende kanonische Goal-IDs erneut gegen den aktuellen persönlichen Fachumfang; veraltete oder fachfremde Ziele werden nicht still umgedeutet. | TA §19.2 |
+| P76b | M | D | Persönliche Planvalidierung | Neu hinzukommende bereits abgeschlossene IDs werden nicht als neue Planarbeit übernommen; vorhandene persönliche Plan-IDs dürfen bei bestätigtem Ersetzen zur Kontinuität erhalten bleiben. | TA §19.2 |
+| P77a | M | D | Planrevision/Personalisierung | expectedRevision verhindert, dass eine ältere lokale Kopie eine zwischenzeitlich geänderte persönliche Planrevision still überschreibt. | TA §19.2 |
+| P77b | M | D | Planrevision/Personalisierung | Ein geänderter relevanter Personal-Curriculum-Fingerprint macht den Plan stale; der veraltete Plan verändert den Fokus nicht. | TA §19.2 |
+| P78a | M | D | Mehrfachplanaktivierung | Bestätigte gemeinsame Aktivierung mehrerer Fachpläne schreibt atomar alle Fachkopien oder keine. | TA §19.2 |
+| P78b | M | D | Mehrfachplanaktivierung | Ein idempotenter Startreconcile füllt nur den Zustand Planmodus an ohne aktives Ziel; er verdrängt kein laufendes Ziel und schreibt bei fehlendem Kandidaten nichts um. | TA §19.2 |
 | P79 | M | D | Planmodus ohne Kandidat | Ungültiger/staler/fehlender Plan oder kein geeigneter fälliger Kandidat erzeugt kein erfundenes Ersatzziel; allgemeiner Autopilot bleibt bei aktivem Planmodus unterdrückt. | TA §19.2 |
-| P80 | M | D | Plantermin-Conformance | Lehrer- und Lerneransicht verwenden dieselbe kumulative Rundung und voraussetzungstreue Atomordnung; beschränkte Konfliktreparatur verändert nur Reihenfolge innerhalb gewählter Blöcke und scheitert ohne vollständig gültige Endprüfung. | TA §19.2 |
+| P80a | M | D | Plantermin-Conformance | Lehrer- und Lernendenprojektion verwenden dieselbe kumulative Rundung über chronologisch geordnete Lernblöcke. | TA §19.2 |
+| P80b | M | D | Plantermin-Conformance | Innerhalb jedes Lernblocks folgt die Atomordnung den wirksamen Voraussetzungen topologisch; unabhängige Ziele behalten soweit möglich ihre redaktionelle Reihenfolge. | TA §19.2 |
+| P80c | M | D | Plantermin-Conformance | Blockübergreifende Konfliktreparatur verändert ausschließlich Atomreihenfolgen innerhalb bereits gewählter Blöcke; nur eine vollständig voraussetzungsgültige Endprüfung aller relevanten Plantermine erlaubt Veröffentlichung, auch bei begrenztem Suchaufwand. | TA §19.2 |
 
 ## Q: Qualität, Reife und Review (55)
 
@@ -422,7 +464,7 @@ Diese Alias-IDs sind keine zusätzlichen Regeln und zählen nicht zum Nenner. Al
 | Q01 | M | D | Curriculum-Maturity | M0–M7 sind kumulativ; eine höhere Stufe setzt alle im jeweiligen Profil verlangten niedrigeren Bedingungen voraus. | HQ §2; QM Curriculum-Reife |
 | Q02 | M | D | CQR-Status | pass, warn, fail und not_configured bleiben verschiedene Ergebnisse; fehlende Konfiguration zählt nicht als bestandene Prüfung. | QM Regelstatus |
 | Q03 | M | D | M0–M6-Ableitung | Die erreichte Stufe folgt exakt der veröffentlichten CQR-Bedingungstabelle und den aktuellen konfigurierten Routen-/Reviewscopes, nicht einem manuell vergebenen Badge. | QM Curriculum-Reife |
-| Q04 | M | D | Scope-Maturity | Die Scope-Stufe folgt der CQR-101/102/103/104/201/202/203-Tabelle; der Widerspruch maximal M3 versus Tabelle M4 bleibt als D-QS dokumentiert. | QM Scope-Reife |
+| Q04 | M | D | Scope-Maturity | Die Scope-Stufe folgt der CQR-101/102/103/104/201/202/203-Tabelle bis M4. Der widerspruechliche M3-Fliesstext im Main-Basisstand ist als D-QS belegt und im aktuellen Branch redaktionell an diese bereits geltende Tabelle angeglichen. | QM Scope-Reife |
 | Q05 | M | D | Geschützte Curricula | Aktuelle Curriculum-QA darf eine geschützte Maturity-Untergrenze nicht unterschreiten; betroffene nicht bestandene CQR-Regeln werden konkret ausgewiesen. | AG §7.2 |
 | Q06 | M | E | Änderung geschützter Untergrenzen | Eine Absenkung benötigt eine ausdrückliche Product-Owner-Entscheidung mit dokumentierter fachlicher Begründung in der Floor-Policy. | AG §7.2 |
 | Q07 | M | D | Kanonische Änderungen | Nach Beschreibungs-, Assessment-, Routen-, Mapping- oder Kompositionsänderungen wird der aktuelle Qualitätsstatus aus Quellen neu erzeugt und die Floor-Policy geprüft. | AG §7.2 |

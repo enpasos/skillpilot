@@ -7,6 +7,16 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 - [CI-Vertragsaudit: Übergabe vom 6. November 2026](ci-contract-audit-handoff-2026-11-06.md)
   Eigenständiger Auftrag vor weiterer Einheitenarbeit; eingefrorener Stand,
   gesicherte Befunde und Starttext für den neuen Chat.
+- [Kanonische ID-Korrektur und vollständige Voraussetzungenauflösung](canonical-id-repair-and-transitive-frontier-plan-2026-11-06.md)
+  Konkrete Reparaturgrenzen für Identitäten, gespeicherte Ergebnisse, Reviewbelege und vollständige Voraussetzungen.
+- [Laufzeitkorrektur: vollständige transitive Voraussetzungen](ci-contract-runtime-transitivity-proposal-2026-11-06.md)
+  Begrenzte Korrektur der bestehenden Graphauflösung mit tatsächlichen Gegenbeispielen und getrennten Sollständen.
+- [Prüfung geerbter Voraussetzungsduplikate](ci-graph-repairs/inherited-duplicate-review-2026-11-06.md)
+  Einzelbelege, exakte Vererbungsgleichheit und Auswirkungen auf gebundene Reviews vor Inhaltskorrekturen.
+- [Deutsch: fachliche Prüfung der Zwischenvoraussetzungen](ci-graph-repairs/german-held-prerequisites-review-2026-11-06.md)
+  Einzeln begründete Kantenkorrekturen vor einer erneut geprüften Minimalitätsnormalisierung.
+- [Mathematik: fachliche Minimalitätsprüfung](ci-graph-repairs/math-minimality-review-2026-11-06.md)
+  Vollständige 923-Fall-Zuordnung; laufende Einzelprüfung, noch keine Kantenübernahme.
 - [Natives Mathematik-/Physikinventar](learning-units-inventory/2026-11-06/README.md)
   Reproduzierbare Angebotsauflösung als Ausgangsbefund für den CI-Audit.
 - [Transitive Minimalität: Istbericht](learning-units-inventory/2026-11-06/transitive-minimality.md)

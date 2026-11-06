@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "scope": "Bounded local Main transitive-demand correction; no full remote or host acceptance",
+  "preRepairBackendBase": "0ce5a8d791eeb9783a919195fd8590bfb79f3595",
+  "toolchain": {
+    "jdk": "25.0.2+10-LTS",
+    "gradle": "9.7.1",
+    "offline": true,
+    "skippedTasks": [
+      "processResources",
+      "generateClaudePluginPublication"
+    ],
+    "resourceBoundary": "Existing cached backend resources; regular fresh-resource/full remote CI remains required"
+  },
+  "initialNegativeRun": {
+    "tests": 3,
+    "failures": 3,
+    "errors": 0,
+    "logSha256": "dad4d0b70df13306d763b1abb9c88f75e846a647fa34eed1e4a7a6da0d1928b3"
+  },
+  "jointRun": {
+    "tests": 181,
+    "passing": 180,
+    "failures": 1,
+    "suites": [
+      {
+        "name": "com.skillpilot.backend.service.ProjectionRoleLearnerServiceTest",
+        "tests": "47",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "failedTests": []
+      },
+      {
+        "name": "com.skillpilot.backend.completion.CompletionCanonicalGraphResolverTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "failedTests": []
+      },
+      {
+        "name": "com.skillpilot.backend.completion.CompletionApplicationServiceTest",
+        "tests": "6",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "failedTests": []
+      },
+      {
+        "name": "com.skillpilot.backend.completion.AutomaticCompletionApplicationServiceTest",
+        "tests": "6",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "failedTests": []
+      },
+      {
+        "name": "com.skillpilot.backend.service.LearnerServiceTest",
+        "tests": "11",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "failedTests": []
+      },
+      {
+        "name": "com.skillpilot.backend.completion.TransitivePrerequisiteDemandContractTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "failedTests": []
+      },
+      {
+        "name": "com.skillpilot.backend.service.AutomaticCompletionFrontierTest",
+        "tests": "13",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "failedTests": []
+      },
+      {
+        "name": "com.skillpilot.backend.completion.AutomaticLearningPlanCompletionProjectionTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "failedTests": []
+      },
+      {
+        "name": "com.skillpilot.backend.controller.LearnerControllerIntegrationTest",
+        "tests": "4",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "failedTests": []
+      },
+      {
+        "name": "com.skillpilot.backend.service.LearnerFrontierInvariantTest",
+        "tests": "8",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "failedTests": []
+      },
+      {
+        "name": "com.skillpilot.backend.completion.LearningPlanCompletionProjectionTest",
+        "tests": "8",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "failedTests": []
+      },
+      {
+        "name": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1McpContractTest",
+        "tests": "1",
+        "failures": "1",
+        "errors": "0",
+        "skipped": "0",
+        "failedTests": [
+          "completionInstructionsFollowAutomaticDemandWithoutRequiringAnAssessmentPass()"
+        ]
+      },
+      {
+        "name": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+        "tests": "11",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "failedTests": []
+      },
+      {
+        "name": "com.skillpilot.backend.service.LearnerServiceReproTest",
+        "tests": "2",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "failedTests": []
+      },
+      {
+        "name": "com.skillpilot.backend.completion.AutomaticCompletionTest",
+        "tests": "12",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "failedTests": []
+      },
+      {
+        "name": "com.skillpilot.backend.completion.CompletionCoreTest",
+        "tests": "33",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "failedTests": []
+      },
+      {
+        "name": "com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachMcpContractTest",
+        "tests": "1",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "failedTests": []
+      },
+      {
+        "name": "com.skillpilot.backend.service.LearnerServiceCrossSubjectPilotTest",
+        "tests": "1",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "failedTests": []
+      }
+    ],
+    "failureExplanation": "Sole Claude startup failed closed because History curriculum bytes changed concurrently during CompletionProfileCatalog.verifyUnchanged. Root froze writes; repeat only this selector on stable sources.",
+    "logSha256": "1501b71852965ea5be471031f9ea489570595e637bbecb131781640b464da17c"
+  },
+  "stableRetry": {
+    "selector": "ClaudeV1McpContractTest#completionInstructionsFollowAutomaticDemandWithoutRequiringAnAssessmentPass",
+    "tests": 1,
+    "passing": 1,
+    "failures": 0,
+    "logSha256": "e8852cccf03b44d99471af16863b246058811635c2d630494dc0d4941e4d6424"
+  },
+  "claim": "All 181 selected tests have a successful execution across two final runs; no single uninterrupted green 181-test run is claimed.",
+  "currentSourceSha256": {
+    "backend/src/main/java/com/skillpilot/backend/completion/CompletionApplicationService.java": "2c9527edb8c641aeee0daa6c1afad8d8d93a1e114ed57148001db62c5374cf7b",
+    "backend/src/main/java/com/skillpilot/backend/completion/CompletionCanonicalGraphResolver.java": "b98ec7e33fc32132430796b9b0971be5c75725eda88e4896fa9c87ac4e6713cb",
+    "backend/src/main/java/com/skillpilot/backend/completion/CompletionEvaluator.java": "b878fb7b2d3257a37ec856c980f0cfb49a92930b8c56431fcd16d271e7c6f6fa",
+    "backend/src/main/java/com/skillpilot/backend/completion/CompletionProfileCompiler.java": "5efb7a2922ce9eb83b3c1d0996bbf13e411f6ae4318fb2a98af460b1f31a9f25",
+    "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionChoices.java": "bac2558dd0c5b16464588759e2a7800092c4807e0e9ae6b94b044fca301d59e2",
+    "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractAdapter.java": "7e22980eb9c9cfeb842386d7f1bf21c01aafd7c7c3e4089c65a6b7359b2a1307",
+    "backend/src/main/java/com/skillpilot/backend/openai/mcp/de/v1/OpenAiDeV1McpContractAdapter.java": "4c4f80fa81e090506f4dcf1e333f6bb034e2e31f33ba3725b563b9f65fb7ce20",
+    "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java": "ef64d164448b6ac0cb106008e2367ac690cc6619e586b8193b5dd6656b21e659",
+    "backend/src/test/java/com/skillpilot/backend/completion/AutomaticCompletionTest.java": "874c80b2fd060836c9188641917d8727920bf0b2c7c4b8d4a5f0928602db743a",
+    "backend/src/test/java/com/skillpilot/backend/completion/AutomaticLearningPlanCompletionProjectionTest.java": "64873b0f20c1a584708bccb7e99d7bc056f87bb856dab23fabb714661fa7cd8a",
+    "backend/src/test/java/com/skillpilot/backend/completion/CompletionCanonicalGraphResolverTest.java": "db9e667f6d5e48aac4342e5557b0dd79c60d0f0e8ead36b5616a509c35a19423",
+    "backend/src/test/java/com/skillpilot/backend/completion/TransitivePrerequisiteDemandContractTest.java": "79f360993d1302c574d362b3c9b1d30e27bb5d2c29d8858aae8dd06bbca121ac",
+    "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractTest.java": "84579f98bc0f544f578cf709005b31621fb106d7ee203ad1bd01339c3429ba0c",
+    "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java": "572aa740488be701b2384a367a952c03d3ee3e790134fe55c49b6a2b20f1ba03",
+    "backend/src/test/java/com/skillpilot/backend/openai/mcp/de/OpenAiDeCoachMcpContractTest.java": "24afb22721d98d5564f74300462a2f33efd68338ad10ed2e97b59a397ff9628e",
+    "backend/src/test/java/com/skillpilot/backend/service/AutomaticCompletionFrontierTest.java": "e4a9532b91ec77042479bcc2afd28961ca9bb9b8473d848581824e4d90f6357e",
+    "backend/src/test/java/com/skillpilot/backend/service/ExamLearningScopeIntegrationTest.java": "f4be7fc2782639afd4eb0b73ae64185c5185623ab81ce2c2ca94c13f65255f7f",
+    "backend/src/test/java/com/skillpilot/backend/service/LearnerFrontierInvariantTest.java": "741a211fe3f7a806f607e8239a5e08e549f0dd55696250c3b59e63355247f5a0",
+    "backend/src/test/java/com/skillpilot/backend/service/ProjectionRoleLearnerServiceTest.java": "709b88e4ea1b8dd9dd6a35bf86b76bdc5ce3433a338fac93ee01c556ba0a2981"
+  }
+}
