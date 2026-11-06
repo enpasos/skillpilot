@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "negativeCases": [
+    {
+      "case": "external-hash",
+      "exitCode": 1,
+      "expectedFailure": "External capsule digest differs",
+      "actualLastError": "ValueError: External capsule digest differs"
+    },
+    {
+      "case": "external-anchor",
+      "exitCode": 1,
+      "expectedFailure": "External capsule authority differs",
+      "actualLastError": "ValueError: External capsule authority differs"
+    },
+    {
+      "case": "unknown-field",
+      "exitCode": 1,
+      "expectedFailure": "Unknown or missing capsule field",
+      "actualLastError": "ValueError: Unknown or missing capsule field"
+    },
+    {
+      "case": "runtime-claim",
+      "exitCode": 1,
+      "expectedFailure": "cannot claim a review",
+      "actualLastError": "ValueError: A transport cannot claim a review or runtime activation"
+    },
+    {
+      "case": "missing-original-ref",
+      "exitCode": 1,
+      "expectedFailure": "Independent input/receipt inventory differs",
+      "actualLastError": "ValueError: Independent input/receipt inventory differs"
+    },
+    {
+      "case": "duplicate-object",
+      "exitCode": 1,
+      "expectedFailure": "Duplicate capsule objects",
+      "actualLastError": "ValueError: Duplicate capsule objects"
+    },
+    {
+      "case": "changed-object-bytes",
+      "exitCode": 1,
+      "expectedFailure": "Capsule object SHA/type/length differs",
+      "actualLastError": "ValueError: Capsule object SHA/type/length differs"
+    },
+    {
+      "case": "extra-valid-object",
+      "exitCode": 1,
+      "expectedFailure": "outside exact commit/path closure",
+      "actualLastError": "ValueError: Capsule contains undeclared objects outside exact commit/path closure"
+    },
+    {
+      "case": "false-shallow-boundary",
+      "exitCode": 1,
+      "expectedFailure": "Original reference commit is not in authenticated parent graph",
+      "actualLastError": "ValueError: Original reference commit is not in authenticated parent graph"
+    }
+  ],
+  "sourceWritesPerformed": false,
+  "fullProducerExecuted": false,
+  "boundary": "Mutated private capsule manifests may receive a new synthetic test pin to exercise internal validation; none is proposed as an accepted real transport or review."
+}
